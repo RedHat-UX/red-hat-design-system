@@ -1,0 +1,262 @@
+<link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-font/4/webfonts/red-hat-font.min.css">
+<link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-theme/6/advanced-theme.css">
+<link rel="stylesheet" href="demo.css">
+
+<section id="variants">
+  <h2>Variants</h2>
+  <rh-cta><a href="#default">Default</a></rh-cta>
+  <rh-cta icon="circle-play"><a href="#default-video">Default Video</a></rh-cta>
+  <rh-cta variant="primary"><a href="#primary">Primary</a></rh-cta>
+  <rh-cta variant="primary" icon="circle-play"><a href="#primary-video">Video</a></rh-cta>
+  <rh-cta variant="secondary"><a href="#secondary">Secondary</a></rh-cta>
+  <rh-cta variant="brick"><a href="#brick">Brick</a></rh-cta>
+  <rh-cta variant="brick" icon="circle-play"><a href="#brick-video">Brick Video</a></rh-cta>
+</section>
+<style>
+  rh-cta:not(:defined) {
+    color: var(--rh-cta-color);
+    font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+    font-size: var(--rh-font-size-text-xl, 1.125rem);
+    font-weight: var(--rh-font-weight-bold, 600);
+    line-height: var(--rh-line-height-lg, 1.5);
+    background-color: var(--rh-cta-background-color);
+    border-color: var(--rh-cta-border-color, transparent);
+    border-radius: var(--rh-border-radius-default, 3px);
+    border-width: var(--rh-border-width-sm, 1px);
+  }
+
+  rh-cta:not(:defined):not([variant]) {
+    --rh-cta-background-color: transparent;
+    --rh-cta-border-color: transparent;
+    --rh-cta-color: var(--rh-color-interactive-blue, #0066cc);
+    --rh-cta-hover-background-color: transparent;
+    --rh-cta-hover-border-color: transparent;
+    --rh-cta-hover-inner-border-color: transparent;
+    --rh-cta-hover-color: var(--rh-color-interactive-blue-darkest, #004080);
+    --rh-cta-hover-text-decoration: none;
+    --rh-cta-focus-background-color: transparent;
+    --rh-cta-focus-container-background-color: #0066cc1a;
+    --rh-cta-focus-border-color: transparent;
+    --rh-cta-focus-inner-border-color: transparent;
+    --rh-cta-focus-color: var(--rh-color-interactive-blue-darker, #0066cc);
+    --rh-cta-focus-text-decoration: none;
+    --rh-cta-active-container-background-color: #0066cc1a;
+    --rh-cta-active-inner-border-color: transparent;
+    --rh-cta-active-text-decoration: none;
+  }
+
+  [data-rh-theme^="dark"] rh-cta:not(:defined):not([variant]),
+  [color-palette^="dark"] rh-cta:not(:defined):not([variant]),
+  rh-cta[color-palette^="dark"]:not(:defined):not([variant]) {
+    --rh-cta-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
+    --rh-cta-hover-color: var(--rh-color-interactive-blue-lightest, #bee1f4);
+
+    /* --rh-color-interactive-blue-lighter with 25% opacity */
+    --rh-cta-focus-container-background-color: #73bcf740;
+    --rh-cta-focus-border-color: transparent;
+    --rh-cta-focus-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
+    --rh-cta-focus-inner-border-color: transparent;
+    --rh-cta-focus-text-decoration: none;
+
+    /* --rh-color-interactive-blue-lighter with 25% opacity */
+    --rh-cta-active-container-background-color: #73bcf740;
+    --rh-cta-active-text-decoration: none;
+  }
+
+  rh-cta:not(:defined):focus-within {
+    border-color: var(--rh-cta-focus-border-color);
+    background-color: var(--rh-cta-focus-container-background-color, var(--rh-cta-focus-background-color));
+    --rh-cta-color: var(--rh-cta-focus-color);
+    --rh-cta-text-decoration: var(--rh-cta-focus-text-decoration);
+  }
+  rh-cta:not(:defined):hover {
+    color: var(--rh-cta-hover-color);
+    border-color: var(--rh-cta-hover-border-color);
+    background-color: var(--rh-cta-hover-background-color);
+    --rh-cta-text-decoration: var(--rh-cta-hover-text-decoration);
+  }
+  rh-cta:not(:defined):active {
+    background-color: var(--rh-cta-active-background-color);
+  }
+  rh-cta:not(:defined) *:focus {
+    outline: none !important;
+  }
+  rh-cta:not(:defined) * {
+    text-decoration: var(--rh-cta-text-decoration);
+    display: block !important;
+    color: inherit !important;
+    font-family: inherit !important;
+    font-size: inherit !important;
+    font-weight: inherit !important;
+    line-height: inherit !important;
+    padding: var(--rh-space-lg, 16px) 0 !important;
+  }
+  rh-cta[variant]:not(:defined) * {
+    padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px) !important;
+  }
+  rh-cta[variant$="ary"]:not(:defined) * {
+    padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px) !important;
+  }
+  rh-cta[variant="primary"]:not(:defined) {
+    border-style: solid;
+    --rh-cta-background-color: var(--rh-color-brand-red-on-light, #ee0000);
+    --rh-cta-border-color: var(--rh-color-brand-red-on-light, #ee0000);
+    --rh-cta-color: var(--rh-color-text-primary-on-dark, #ffffff);
+    --rh-cta-hover-background-color: var(--rh-color-brand-red-dark, #be0000);
+    --rh-cta-hover-border-color: var(--rh-color-brand-red-dark, #be0000);
+    --rh-cta-hover-color: var(--rh-color-text-primary-on-dark, #ffffff);
+    --rh-cta-focus-background-color: var(--rh-color-brand-red-on-light, #ee0000);
+    --rh-cta-focus-border-color: var(--rh-color-brand-red-on-light, #ee0000);
+    --rh-cta-focus-color: var(--rh-color-text-primary-on-dark, #ffffff);
+    --rh-cta-focus-inner-border-color: var(--rh-color-text-primary-on-dark, #ffffff);
+    --rh-cta-active-background-color: var(--rh-color-brand-red-dark, #be0000);
+    --rh-cta-active-inner-border-color: var(--rh-color-text-primary-on-dark, #ffffff);
+  }
+
+  [data-rh-theme^="dark"] rh-cta[variant="primary"]:not(:defined),
+  [color-palette^="dark"] rh-cta[variant="primary"]:not(:defined),
+  rh-cta[variant="primary"][color-palette^="dark"]:not(:defined) {
+    --rh-cta-hover-border-color: var(--rh-color-brand-red-dark, #be0000);
+  }
+
+  rh-cta[variant="primary"]:not(:defined) *:focus {
+    outline-style: solid !important;
+    outline-color: var(--rh-color-text-primary-on-dark, #ffffff) !important;
+    outline-width: var(--rh-border-width-sm, 1px) !important;
+    outline-offset: -2px;
+  }
+  rh-cta[variant="secondary"]:not(:defined) {
+    border-style: solid;
+    --rh-cta-background-color: transparent;
+    --rh-cta-border-color: var(--rh-color-border-strong-on-light, #151515);
+    --rh-cta-color: var(--rh-color-text-primary-on-light, #151515);
+    --rh-cta-hover-background-color: var(--rh-color-surface-darkest, #151515);
+    --rh-cta-hover-border-color: var(--rh-color-border-strong-on-light, #151515);
+    --rh-cta-hover-color: var(--rh-color-text-primary-on-dark, #ffffff);
+    --rh-cta-focus-background-color: var(--rh-color-surface-lighter, #f2f2f2);
+    --rh-cta-focus-border-color: var(--rh-color-border-strong-on-light, #151515);
+    --rh-cta-focus-color: var(--rh-color-surface-darkest, #151515);
+    --rh-cta-focus-inner-border-color: var(--rh-color-border-strong-on-light, #151515);
+    --rh-cta-active-color: var(--rh-color-text-primary-on-dark, #ffffff);
+    --rh-cta-active-background-color: var(--rh-color-border-strong-on-light, #151515);
+    --rh-cta-active-inner-border-color: var(--rh-color-surface-light, #e0e0e0);;
+  }
+
+  [data-rh-them^="dark"] rh-cta[variant="secondary"]:not(:defined),
+  [color-palette^="dark"] rh-cta[variant="secondary"]:not(:defined),
+  rh-cta[variant="secondary"][color-palette^="dark"]:not(:defined) {
+    --rh-cta-border-color: var(--rh-color-border-strong-on-dark, #ffffff);
+    --rh-cta-color: var(--rh-color-text-primary-on-dark, #ffffff);
+    --rh-cta-hover-background-color: var(--rh-color-surface-lightest, #ffffff);
+    --rh-cta-hover-border-color: var(--rh-color-border-strong-on-dark, #ffffff);
+    --rh-cta-hover-color: var(--rh-color-text-primary-on-light, #151515);
+    --rh-cta-focus-background-color: var(--rh-color-surface-dark, #383838);
+    --rh-cta-focus-border-color: var(--rh-color-border-strong-on-dark, #ffffff);
+    --rh-cta-focus-inner-border-color: var(--rh-color-border-strong-on-dark, #ffffff);
+    --rh-cta-focus-color: var(--rh-color-text-primary-on-dark, #ffffff);
+    --rh-cta-active-color: var(--rh-color-text-primary-on-light, #151515);
+    --rh-cta-active-background-color: var(--rh-color-surface-lightest, #ffffff);
+    --rh-cta-active-inner-border-color: var(--rh-color-border-strong-on-light, #151515);
+  } 
+
+  rh-cta[variant="brick"]:not(:defined) {
+    border-style: solid;
+    font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+    font-weight: var(--rh-font-weight-body-text-regular, 400);
+    --rh-cta-background-color: transparent;
+    --rh-cta-border-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
+    --rh-cta-color: var(--rh-color-interactive-blue-darker, #0066cc);
+    --rh-cta-hover-background-color: var(--rh-color-surface-lighter, #f2f2f2);
+    --rh-cta-hover-border-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
+    --rh-cta-hover-color: var(--rh-color-interactive-blue-darkest, #004080);
+    --rh-cta-hover-text-decoration: underline;
+    --rh-cta-focus-color: var(--rh-color-interactive-blue-darker, #0066cc);
+    --rh-cta-focus-border-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
+    --rh-cta-focus-inner-border-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
+    --rh-cta-focus-text-decoration: none;
+    --rh-cta-active-background-color: var(--rh-color-surface-lighter, #f2f2f2);
+    --rh-cta-active-inner-border-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
+    --rh-cta-active-text-decoration: underline;
+  }
+
+  [data-rh-theme^="dark"] rh-cta[variant="brick"]:not(:defined),
+  [color-palette^="dark"] rh-cta[variant="brick"]:not(:defined),
+  rh-cta[variant="brick"][color-palette^="dark"]:not(:defined) {
+    --rh-cta-border-color: var(--rh-color-border-subtle-on-dark, #707070);
+    --rh-cta-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
+    --rh-cta-hover-background-color: var(--rh-color-surface-darker, #1f1f1f);
+    --rh-cta-hover-border-color: var(--rh-color-border-subtle-on-dark, #707070);
+    --rh-cta-hover-color: var(--rh-color-interactive-blue-lightest, #bee1f4);
+    --rh-cta-hover-text-decoration: underline;
+    --rh-cta-focus-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
+    --rh-cta-focus-border-color: var(--rh-color-border-subtle-on-dark, #707070);
+    --rh-cta-focus-inner-border-color: var(--rh-color-border-subtle-on-dark, #707070);
+    --rh-cta-focus-text-decoration: none;
+    --rh-cta-active-background-color: var(--rh-color-surface-darker, #1f1f1f);
+    --rh-cta-active-inner-border-color: var(--rh-color-border-subtle-on-dark, #707070);
+    --rh-cta-active-text-decoration: underline;
+  }
+</style>
+<rh-context-provider id="dark" color-palette="darkest">
+  <h2>Dark Colour Context</h2>
+  <rh-cta><a href="#default">Default</a></rh-cta>
+  <rh-cta icon="circle-play"><a href="#default-video">Default Video</a></rh-cta>
+  <rh-cta variant="primary"><a href="#primary">Primary</a></rh-cta>
+  <rh-cta variant="primary" icon="circle-play"><a href="#primary-video">Video</a></rh-cta>
+  <rh-cta variant="secondary"><a href="#secondary">Secondary</a></rh-cta>
+  <rh-cta variant="brick"><a href="#brick">Brick</a></rh-cta>
+  <rh-cta variant="brick" icon="circle-play"><a href="#brick-video">Brick Video</a></rh-cta>
+</rh-context-provider>
+
+<section dir="rtl">
+  <h2>Right-to-Left Languages</h2>
+  <rh-cta><a href="#default">ברירת מחדל</a></rh-cta>
+  <rh-cta icon="circle-play"><a href="#default-video">ברירת מחדל - וידאו</a></rh-cta>
+  <rh-cta variant="primary"><a href="#primary">ראשי</a></rh-cta>
+  <rh-cta variant="primary" icon="circle-play"><a href="#primary-video">ראשי - וידאו</a></rh-cta>
+  <rh-cta variant="secondary"><a href="#secondary">משני</a></rh-cta>
+  <rh-cta variant="brick"><a href="#brick">לבנה</a></rh-cta>
+  <rh-cta variant="brick" icon="circle-play"><a href="#brick-video">לבנה - וידאו</a></rh-cta>
+</section>
+
+<section dir="rtl">
+  <h2>Deep Shadow RTL</h2>
+  <p dir="ltr">When the CTA is found within the shadow root of an element which is itself within a RTL context.</p>
+  <shadow-root>
+    <template shadowroot="open">
+      <style>:host{display: flex; flex-flow: row wrap; gap: 16px;}</style>
+      <rh-cta id="deep"><a href="#default">ברירת מחדל</a></rh-cta>
+      <rh-cta icon="circle-play"><a href="#default-video">ברירת מחדל - וידאו</a></rh-cta>
+      <rh-cta variant="primary"><a href="#primary">ראשי</a></rh-cta>
+      <rh-cta variant="primary" icon="circle-play"><a href="#primary-video">ראשי - וידאו</a></rh-cta>
+      <rh-cta variant="secondary"><a href="#secondary">משני</a></rh-cta>
+      <rh-cta variant="brick"><a href="#brick">לבנה</a></rh-cta>
+      <rh-cta variant="brick" icon="circle-play"><a href="#brick-video">לבנה - וידאו</a></rh-cta>
+    </template>
+  </shadow-root>
+</section>
+
+<section id="wrap">
+  <h2>Force wrap to test arrow line-wrap</h2>
+  <p>No matter the container size, the arrow trailing the CTA message should never appear on a line by itself.</p>
+  <div class="resize">
+    <rh-cta><a href="#default">Default link cta with longer text</a></rh-cta>
+  </div>
+  <div class="resize" dir="rtl">
+    <rh-cta><a href="#default">קריאה לפעולה בררית מחדל עם טקסט ארוך</a></rh-cta>
+  </div>
+</section>
+
+<section id="link-button" class="grid">
+  <h2>Link and button styles (displayed inline)</h2>
+  <rh-cta><a href="">Link</a></rh-cta>
+  <rh-cta><button>Button</button></rh-cta>
+
+  <rh-cta variant="primary"><a href="">Link</a></rh-cta>
+  <rh-cta variant="primary"><button>Button</button></rh-cta>
+
+  <rh-cta variant="secondary"><a href="">Link</a></rh-cta>
+  <rh-cta variant="secondary"><button>Button</button></rh-cta>
+
+</section>
+
