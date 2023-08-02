@@ -124,7 +124,7 @@
 
   {% example palette="none",
     alt="Image of secondary navigation showing the scrolling behavior when the menu panel is taller than the viewport height",
-    src="../nav-secondary-guidelines-scrolling-menu-expanded-ba.png" %}
+    src="../nav-secondary-guidelines-scrolling-menu-expanded-b.png" %}
 
 
 

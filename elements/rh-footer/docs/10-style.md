@@ -24,7 +24,7 @@ websites.
 9) Website-specific footer
 10) redhat.com link
 11) Universal footer
-{.example-notes}
+  {.example-notes}
 
 ### Grays
 
@@ -79,7 +79,7 @@ theme.
 
 {% example palette="none",
           alt="Image of a footer with the language selector menu open",
-          src="../footer-language selector.png" %}
+          src="../footer-language-selector.png" %}
 
 {% tokensTable %}          
 

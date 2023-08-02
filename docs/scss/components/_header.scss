@@ -4,11 +4,10 @@
 @use "../__core/mixins" as *;
 
 .header {
-  padding-top: 32px;
-  padding-bottom: 32px;
+  padding-block: var(--rh-space-2xl);
 
   @include breakpoint(tango) {
-    padding-top: 80px;
+    padding-block: var(--rh-space-5xl);
   }
 
   .page-title {
@@ -16,11 +15,11 @@
 
 
     &:only-child {
-      margin-bottom: 0;
+      margin-block-end: 0;
     }
 
     + rh-subnav {
-      margin-top: 32px;
+      margin-block-start: var(--rh-space-2xl);
     }
   }
 }

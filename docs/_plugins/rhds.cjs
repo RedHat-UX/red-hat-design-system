@@ -146,7 +146,8 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     'node_modules/element-internals-polyfill': '/assets/packages/element-internals-polyfill',
   });
 
-  eleventyConfig.addPassthroughCopy(getFilesToCopy(), {
+  const filesToCopy = getFilesToCopy();
+  eleventyConfig.addPassthroughCopy(filesToCopy, {
     filter: /** @param {string} path */path => !path.endsWith('.html'),
   });
 
@@ -269,12 +270,6 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   eleventyConfig.on('eleventy.before', async function() {
     const config = await import('@patternfly/pfe-tools/config.js').then(m => m.getPfeConfig());
     eleventyConfig.addGlobalData('pfeconfig', config);
-  });
-
-  /** generate a bundle that packs all of rhds with all dependencies into a single large js file */
-  eleventyConfig.on('eleventy.before', async function() {
-    const { bundle } = await import('../../scripts/bundle.js');
-    await bundle({ outfile: '_site/assets/rhds.min.js' });
   });
 
   /** custom-elements.json */
