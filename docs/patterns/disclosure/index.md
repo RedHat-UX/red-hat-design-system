@@ -43,17 +43,17 @@ of an active border on the left and a slight drop shadow, similar to an
 
 {% example palette="light",
            alt="Anatomy of a disclosure",
-           src="./disclosure-style-1.svg" %}
+           src="./disclosure-style-1.svg" %}{% endexample %}
 
 ### Theme
 
 {% example palette="light",
            alt="A disclosure in a light theme",
-           src="./disclosure-theme-1.svg" %}
+           src="./disclosure-theme-1.svg" %}{% endexample %}
 
 {% example palette="darkest",
            alt="A disclosure in a dark theme",
-           src="./disclosure-theme-2.svg" %}
+           src="./disclosure-theme-2.svg" %}{% endexample %}
 
 ## Usage
 
@@ -69,7 +69,7 @@ or requires more focus to read, don’t use a disclosure.
 {% example palette = "light",
            class="centered",
            alt="A disclosure in a dark theme",
-           src="./disclosure-usage-1.svg" %}
+           src="./disclosure-usage-1.svg" %}{% endexample %}
 
 ### Usage vs. Accordion
 
@@ -87,12 +87,12 @@ text label.
 {% example palette = "light",
            class="centered",
            alt="Example of a disclosure",
-           src="./disclosure-usage-2.svg" %}
+           src="./disclosure-usage-2.svg" %}{% endexample %}
 
 {% example palette = "light",
            class="centered",
            alt="Example of an accordion",
-           src="./disclosure-usage-3.svg" %}
+           src="./disclosure-usage-3.svg" %}{% endexample %}
 </div>
 
 ### Label formatting
@@ -117,7 +117,7 @@ a disclosure and act as persistent navigation.
 {% example palette = "light",
            class="centered",
            alt="Example of Jump links wrapped in a disclosure",
-           src="./disclosure-usage-4.svg" %}
+           src="./disclosure-usage-4.svg" %}{% endexample %}
 
 ### Best practices
 
@@ -127,12 +127,12 @@ an accordion instead.
 {% example palette="wrong",
            class="centered",
            alt="Inline alert in the top right corner of a page",
-           src="./disclosure-bestpractice-1.svg" %}
+           src="./disclosure-bestpractice-1.svg" %}{% endexample %}
 
 {% example palette="wrong",
            class="centered",
            alt="Inline alert in the top right corner of a page",
-           src="./disclosure-bestpractice-1.svg" %}
+           src="./disclosure-bestpractice-1.svg" %}{% endexample %}
 
 Text inside the panel shouldn’t exceed eight grid columns to maintain optimal 
 readability.
@@ -140,7 +140,7 @@ readability.
 {% example palette="wrong",
            class="centered",
            alt="Inline alert in the top right corner of a page",
-           src="./disclosure-bestpractice-2.svg" %}
+           src="./disclosure-bestpractice-2.svg" %}{% endexample %}
 
 Don’t wrap other complex components inside of a disclosure unless absolutely 
 necessary, like jump links.
@@ -148,7 +148,7 @@ necessary, like jump links.
 {% example palette="wrong",
            class="centered",
            alt="Inline alert in the top right corner of a page",
-           src="./disclosure-bestpractice-3.svg" %}
+           src="./disclosure-bestpractice-3.svg" %}{% endexample %}
 
 <hgroup>
 
@@ -172,7 +172,7 @@ inside.
 {% example palette="light",
            class="centered",
            alt="Disclosure with the expand/collapse panel highlighted",
-           src="./disclosure-behavior-1.svg" %}
+           src="./disclosure-behavior-1.svg" %}{% endexample %}
 
 ### Tab order
 
@@ -185,7 +185,7 @@ of content.
 {% example palette="light",
            class="centered",
            alt="Disclosure showing links with the focus style",
-           src="./disclosure-behavior-2.svg" %}
+           src="./disclosure-behavior-2.svg" %}{% endexample %}
 
 ## Responsive design
 
@@ -202,7 +202,7 @@ content is included.
 {% example palette="light",
            class="centered",
            alt="Example of a disclosure on desktop",
-           src="./disclosure-responsive-1.svg" %}
+           src="./disclosure-responsive-1.svg" %}{% endexample %}
 
 ![Example of a disclosure on desktop](./disclosure-responsive-1.svg)
 
@@ -211,14 +211,14 @@ content is included.
 {% example palette="light",
            class="centered",
            alt="Example of a disclosure on tablet",
-           src="./disclosure-responsive-2.svg" %}
+           src="./disclosure-responsive-2.svg" %}{% endexample %}
 
 ### Mobile
 
 {% example palette="light",
            class="centered",
            alt="Example of a disclosure on mobile",
-           src="./disclosure-responsive-3.svg" %}
+           src="./disclosure-responsive-3.svg" %}{% endexample %}
 
 ## Interaction states
 
@@ -252,7 +252,7 @@ values between elements.
 {% example palette="light",
            class="centered",
            alt="Disclosure showing with spacing blocks",
-           src="./disclosure-spacing-1.svg" %}
+           src="./disclosure-spacing-1.svg" %}{% endexample %}
 
 {% include 'feedback.html' %}
 

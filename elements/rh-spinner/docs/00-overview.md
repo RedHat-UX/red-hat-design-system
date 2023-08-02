@@ -3,7 +3,7 @@
 
 {% example palette="light",
            alt="Example of a spinner",
-           src="spinner-sample.png" %}
+           src="spinner-sample.png" %}{% endexample %}
 
 
 

@@ -6,7 +6,7 @@ A dialog can be opened by pressing `Enter` when the dialog trigger has focus. Wh
 
 {% example palette="none",
            alt="Flowchart of a dialog container outlining several keyboard interactions",
-           src="../dialog-a11y-keyboard-interactions.png" %}
+           src="../dialog-a11y-keyboard-interactions.png" %}{% endexample %}
 
 | Key   | Result                                                   |
 | ----- | -------------------------------------------------------- |
@@ -36,7 +36,7 @@ Only the close button and any interactive elements are selectable.
 
 {% example palette="none",
            alt="A dialog container with three touch targets; one on the close button and one on each button",
-           src="../dialog-a11y-touch-targets.png" %}
+           src="../dialog-a11y-touch-targets.png" %}{% endexample %}
 
 ### Backdrop
 

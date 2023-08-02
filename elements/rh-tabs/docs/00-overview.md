@@ -1,7 +1,7 @@
 ## Overview
   {{ tagName | getElementDescription }}
 
-  {% example palette="light", alt="Image of open tabs, box tabs, and tabs with overflow buttons", src="./tabs-sample.png" %}
+  {% example palette="light", alt="Image of open tabs, box tabs, and tabs with overflow buttons", src="./tabs-sample.png" %}{% endexample %}
 
 ## Sample element
   <rh-tabs>

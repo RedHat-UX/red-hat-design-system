@@ -8,7 +8,7 @@
              width=599,
              style="margin-block:var(--rh-space-2xl);",
              alt="A breakdown of the parts of a card",
-             src="../card-style.svg" %}
+             src="../card-style.svg" %}{% endexample %}
 
 
 ## Theme
@@ -17,13 +17,13 @@
              class="inline-flex centered",
              width=784,
              alt="Card in light theme",
-             src="../card-theme-light.svg" %}
+             src="../card-theme-light.svg" %}{% endexample %}
 
   {% example palette="darkest",
              class="inline-flex centered",
              width=784,
              alt="Card in dark theme",
-             src="../card-theme-dark.svg" %}
+             src="../card-theme-dark.svg" %}{% endexample %}
 
 ### Color
   Cards are secondary layouts that shouldn’t command too much attention and 
@@ -38,7 +38,7 @@
                  class="centered",
                  width=242,
                  alt="White card colors",
-                 src="../card-color-light-white.svg" %}
+                 src="../card-color-light-white.svg" %}{% endexample %}
       <figcaption class="footnote">
         A white card with a light gray border is the most common use case in the 
         light theme
@@ -49,7 +49,7 @@
                  class="centered",
                  width=242,
                  alt="Gray card colors",
-                 src="../card-color-light-gray.svg" %}
+                 src="../card-color-light-gray.svg" %}{% endexample %}
       <figcaption class="footnote">
         A light gray card without a border can also be used as an alternate 
         option
@@ -60,7 +60,7 @@
                  class="centered",
                  width=242,
                  alt="Black card colors",
-                 src="../card-color-dark-black.svg" %}
+                 src="../card-color-dark-black.svg" %}{% endexample %}
       <figcaption class="footnote">
         A black card with a dark gray border is the most common use case in the 
         dark theme
@@ -71,7 +71,7 @@
                  class="centered",
                  width=242,
                  alt="Dark theme gray card colors",
-                 src="../card-color-dark-gray.svg" %}
+                 src="../card-color-dark-gray.svg" %}{% endexample %}
      <figcaption class="footnote">
        A dark gray card without a border can also be used as an alternate option
      </figcaption>
@@ -88,12 +88,13 @@
                class="centered",
                width=360,
                alt="Example of a card layout",
-               src="../card-layout-1.svg" %}
+               src="../card-layout-1.svg" %}{% endexample %}
+
     {% example palette="light",
                class="centered",
                width=360,
                alt="Anatomy of a card layout",
-               src="../card-layout-2.svg" %}
+               src="../card-layout-2.svg" %}{% endexample %}
   </div>
 
 ### Header
@@ -121,7 +122,7 @@
       width=784,
       alt="Card layout on desktop",
       src="../card-layout-desktop.svg"
-  %}
+  %}{% endexample %}
 
 ### Small screens
   {% example 
@@ -129,7 +130,7 @@
       width=360,
       alt="Card layout on mobile",
       src="../card-layout-mobile.svg"
-  %}
+  %}{% endexample %}
 
 
 ## Spacing
@@ -149,12 +150,12 @@
              class="centered",
              width=360,
              alt="Card spacing on desktop",
-             src="../card-spacing-desktop.svg" %}
+             src="../card-spacing-desktop.svg" %}{% endexample %}
 
 ### Mobile
   {% example palette="light",
              class="inline-flex centered",
              width=360,
              alt="Card spacing on mobile",
-             src="../card-spacing-mobile.svg" %}
+             src="../card-spacing-mobile.svg" %}{% endexample %}
 

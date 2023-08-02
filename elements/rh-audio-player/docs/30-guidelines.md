@@ -9,7 +9,7 @@ When choosing one size over the other, consider where it is being used and what 
 
 {% example palette="light",
           alt="Image of all audio player sizes with text labels",
-          src="../audio-player-guidelines-sizes.png" %}
+          src="../audio-player-guidelines-sizes.png" %}{% endexample %}
 
 
 | Size {style="width: 25%" } | Use case                                                                                           |
@@ -24,7 +24,7 @@ It is acceptable to remove optional elements, but doing so will change the heigh
 
 {% example palette="light",
           alt="Image of two Full players; one is without an image and the other is without an image and description text",
-          src="../audio-player-removing-elements.png" %}
+          src="../audio-player-removing-elements.png" %}{% endexample %}
 
 
 
@@ -34,7 +34,7 @@ In certain edge cases, the Mini player can hide the volume and contextual menu b
 
 {% example palette="light",
           alt="Image of three Mini players; one is the default state, one is missing the menu button, and one is missing both the volume and menu buttons",
-          src="../audio-player-mini-player.png" %}
+          src="../audio-player-mini-player.png" %}{% endexample %}
 
 
 ## Writing content 
@@ -50,7 +50,7 @@ The description and title are not included in the Mini size players.
 
 {% example palette="light",
           alt="Image of the Full player and two Compact players; one Compact player has both description and title text and the other Compact player has only title text",
-          src="../audio-player-description-and-title.png" %}
+          src="../audio-player-description-and-title.png" %}{% endexample %}
 
 
 ### Character count 
@@ -69,7 +69,7 @@ Compact and Mini players can be used inline with titles, headings, and a call to
 
 {% example palette="light",
           alt="Image of Compact and Mini players used with titles, headings, and calls to action",
-          src="../audio-player-layout-inline.png" %}
+          src="../audio-player-layout-inline.png" %}{% endexample %}
 
 
 ### Stacking 
@@ -77,7 +77,7 @@ Compact players can be stacked with headings, text, and horizontal rules.
 
 {% example palette="light",
           alt="Image of the Compact player in a stacked layout with headers, text, and horizontal rules ",
-          src="../audio-player-layout-stacking.png" %}
+          src="../audio-player-layout-stacking.png" %}{% endexample %}
 
 
 ### Full-width 
@@ -91,12 +91,12 @@ When a Compact size is used full-width, the contextual menu button is replaced b
 
 {% example palette="none",
           alt="Image of a full-width Compact player in a light theme context",
-          src="../audio-player-layout-full-width-1.png" %}
+          src="../audio-player-layout-full-width-1.png" %}{% endexample %}
 
 
 {% example palette="none",
           alt="Image of a full-width Compact player in a dark theme context",
-          src="../audio-player-layout-full-width-2.png" %}
+          src="../audio-player-layout-full-width-2.png" %}{% endexample %}
 
 
 ## Behavior 
@@ -106,7 +106,7 @@ When a page loads, audio should **never** start playing automatically without re
 
 {% example palette="light",
           alt="Image of the Full player showing audio stopped",
-          src="../audio-player-behavior-autoplay.png" %}
+          src="../audio-player-behavior-autoplay.png" %}{% endexample %}
 
 
 ### Scrolling text 
@@ -114,7 +114,7 @@ If the description or title is long, it scrolls from left to right while audio i
 
 {% example palette="light",
           alt="Image of the Full player with description and title text cut off and scrolling from left to right as audio plays",
-          src="../audio-player-behavior-scrolling-text.png" %}
+          src="../audio-player-behavior-scrolling-text.png" %}{% endexample %}
 
 
 ## Playback 
@@ -125,7 +125,7 @@ Dragging the current time indicator will jump to a specific time. Arrow keys wil
 
 {% example palette="light",
           alt="Image of the Full player showing how to seek with a cursor or keyboard",
-          src="../audio-player-playback-seek.png" %}
+          src="../audio-player-playback-seek.png" %}{% endexample %}
 
 
 ### Unmute/mute 
@@ -133,7 +133,7 @@ Audio can be toggled on or off by pressing the unmute/mute button.
 
 {% example palette="light",
           alt="Image of the Full player showing how to toggle the unmute/mute button with a cursor or keyboard",
-          src="../audio-player-playback-unmute-mute.png" %}
+          src="../audio-player-playback-unmute-mute.png" %}{% endexample %}
 
 
 ### Volume 
@@ -141,7 +141,7 @@ Dragging the slider will adjust the volume. Arrow keys will increase or decrease
 
 {% example palette="light",
           alt="Image of the Full player showing how to adjust the volume with a cursor or keyboard",
-          src="../audio-player-playback-volume.png" %}
+          src="../audio-player-playback-volume.png" %}{% endexample %}
 
 
 ### Speed 
@@ -149,7 +149,7 @@ The rate of speed can be adjusted by clicking the carets or selecting the speed 
 
 {% example palette="light",
           alt="Image of the Full player showing how to open the speed menu and selecting another speed with a cursor or keyboard",
-          src="../audio-player-playback-speed.png" %}
+          src="../audio-player-playback-speed.png" %}{% endexample %}
 
 
 ### Rewind/forward 
@@ -157,7 +157,7 @@ Audio rewinds or advances by 15 seconds if either button is pressed.
 
 {% example palette="light",
           alt="Image of the Full player showing how to toggle the rewind or forward buttons with a cursor or keyboard",
-          src="../audio-player-playback-rewind-forward.png" %}
+          src="../audio-player-playback-rewind-forward.png" %}{% endexample %}
 
 
 ### Play/pause 
@@ -165,7 +165,7 @@ Audio playback can be resumed/stopped by pressing the play/pause button.
 
 {% example palette="light",
           alt="Image of the Full player showing how to toggle the play/pause button with a cursor or keyboard",
-          src="../audio-player-playback-play-pause.png" %}
+          src="../audio-player-playback-play-pause.png" %}{% endexample %}
 
 
 ## Responsive design 
@@ -175,20 +175,20 @@ All audio players can be used on large breakpoints. The Mini player can be stret
 
 {% example palette="none",
           alt="Image of the Full, Full without image, and Compact players as well as a stretched Mini player on desktop breakpoints",
-          src="../audio-player-responsive-breakpoints-desktop.png" %}
+          src="../audio-player-responsive-breakpoints-desktop.png" %}{% endexample %}
 
 
 The Full player will change to the Compact player and the Compact player will change to the Mini player as breakpoints get smaller.
 
 {% example palette="none",
           alt="Image of the Compact player and a stretched Mini player on tablet breakpoints",
-          src="../audio-player-responsive-breakpoints-tablet.png" %}
+          src="../audio-player-responsive-breakpoints-tablet.png" %}{% endexample %}
 
 
 ### Small breakpoints 
 {% example palette="none",
           alt="Image of Mini players on mobile breakpoints",
-          src="../audio-player-responsive-breakpoints-mobile.png" %}
+          src="../audio-player-responsive-breakpoints-mobile.png" %}{% endexample %}
 
 
 ## Best practices 
@@ -198,7 +198,7 @@ Be careful when using the Full player near too many other elements.
 
 {% example palette="wrong",
           alt="Image of the Full player used near lots of other elements",
-          src="../audio-player-best-practice-1.png" %}
+          src="../audio-player-best-practice-1.png" %}{% endexample %}
 
 
 ### Contextual menu 
@@ -206,4 +206,4 @@ Do not alter contextual menu theming.
 
 {% example palette="wrong",
           alt="Image of Compact players with contextual menus that are a different theme than the audio player which is incorrect usage",
-          src="../audio-player-best-practice-2.png" %}
+          src="../audio-player-best-practice-2.png" %}{% endexample %}

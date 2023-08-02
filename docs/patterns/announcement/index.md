@@ -14,7 +14,7 @@ audience.
 
 {% example palette="medium",
            alt="Example of an announcement banner",
-           src="./announcement-sample-1.svg" %}
+           src="./announcement-sample-1.svg" %}{% endexample %}
 
 {% repoStatus %}
 
@@ -26,17 +26,17 @@ background container.
 
 {% example palette="medium",
            alt="Anatomy of an announcement banner",
-           src="./announcement-style-1.svg" %}
+           src="./announcement-style-1.svg" %}{% endexample %}
 
 ## Theme
 
 {% example palette="medium",
            alt="Announcement banner on light theme",
-           src="./announcement-theme-1.svg" %}
+           src="./announcement-theme-1.svg" %}{% endexample %}
 
 {% example palette="light",
            alt="Announcement banner on dark theme",
-           src="./announcement-theme-2.svg" %}
+           src="./announcement-theme-2.svg" %}{% endexample %}
 
 ## Usage
 
@@ -60,7 +60,7 @@ places.
 
 {% example palette="medium",
            alt="Announcement banner positioned above the main menu on Redhat.com",
-           src="./announcement-usage-2.svg" %}
+           src="./announcement-usage-2.svg" %}{% endexample %}
 
 ### Content
 
@@ -70,7 +70,7 @@ its objective is.
 
 {% example palette="medium",
            alt="One announcement banner showing center-aligned content and one showing left and right-aligned content",
-           src="./announcement-usage-content.svg" %}
+           src="./announcement-usage-content.svg" %}{% endexample %}
 
 ## Best practices
 
@@ -78,7 +78,7 @@ Do not position the announcement banner below the navigation.
 
 {% example palette="wrong",
            alt="Example of an announcement banner below the primary navigation",
-           src="./announcement-bestpractice-1.svg" %}
+           src="./announcement-bestpractice-1.svg" %}{% endexample %}
 
 ## Behavior
 
@@ -130,7 +130,7 @@ The announcement banner uses [space tokens](/tokens/space/) to define spacing va
 
 {% example palette="medium",
            alt="Example of an announcement banner with spacers",
-           src="./announcement-spacing-1.svg"  %}
+           src="./announcement-spacing-1.svg"  %}{% endexample %}
 
 {% include 'feedback.html' %}
 

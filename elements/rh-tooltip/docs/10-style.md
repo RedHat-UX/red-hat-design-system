@@ -3,7 +3,7 @@ A tooltip is a container with text that includes an arrow and sometimes a drop s
 ### Anatomy 
 {% example palette="light",
           alt="Anatomy of a tooltip with annotations; number 1 is pointing to the container, number 2 is pointing to the text, number 3 is pointing to the arrow, and number 4 is pointing to the trigger",
-          src="../tooltip-anatomy.png" %}
+          src="../tooltip-anatomy.png" %}{% endexample %}
 
 1) Container
 2) Text
@@ -16,24 +16,24 @@ A tooltip is available in both light and dark themes. The dark theme tooltip con
 ### Light theme 
 {% example palette="light",
           alt="Light theme tooltip which is black",
-          src="../tooltip-theme-light.png" %}
+          src="../tooltip-theme-light.png" %}{% endexample %}
 
 ### Dark theme 
 {% example palette="darkest",
           alt="Dark theme tooltip which is white",
-          src="../tooltip-theme-dark.png" %}
+          src="../tooltip-theme-dark.png" %}{% endexample %}
 
 ## Configuration 
 All badges have the same height and border radius.
 
 {% example palette="light",
           alt="How a tooltip is constructed showing alignment, border radius, and arrow details",
-          src="../tooltip-configuration.png" %}
+          src="../tooltip-configuration.png" %}{% endexample %}
 
 ## Space 
 {% example palette="light",
           alt="Tooltip spacing both within the element and in between the element and trigger",
-          src="../tooltip-space.png" %}
+          src="../tooltip-space.png" %}{% endexample %}
 
 {% spacerTokensTable 
   headline="",
@@ -49,4 +49,4 @@ A tooltip appears near an icon or element on hover, focus, or when tapped. A too
 
 {% example palette="light",
           alt="Tooltip trigger interaction states",
-          src="../tooltip-interaction-states.png" %}
+          src="../tooltip-interaction-states.png" %}{% endexample %}

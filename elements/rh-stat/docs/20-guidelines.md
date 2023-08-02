@@ -14,7 +14,7 @@ better integrates the data with the rest of the page content.
 {% example 
   palette="light",
   alt="A statistic with a small text footnote underneath",
-  src="../stat-footnote.png" %}
+  src="../stat-footnote.png" %}{% endexample %}
 
 ## Icons
 Use an icon to add visual context and emphasis while helping to explain a 
@@ -23,7 +23,7 @@ statistic further.
 {% example 
   palette="light",
   alt="Two statistics with icons; the left statistic has a fighter jet icon on top whereas the right has a wrench",
-  src="../stat-icon-regular.png" %}
+  src="../stat-icon-regular.png" %}{% endexample %}
 
 ### Large icon
 There are situations where a large icon is used in place of data text and the 
@@ -34,7 +34,7 @@ instead.
 {% example 
   palette="light",
   alt="Three statistics with large icons and body text",
-  src="../stat-icon-large.png" %}
+  src="../stat-icon-large.png" %}{% endexample %}
 
 ## Writing content
 Statistic text is meant to be short so it can have impact especially when 
@@ -76,7 +76,7 @@ grouped.
 {% example 
   palette="light",
   alt="Two statistics, one with title text above the data text and the other with title text below data text",
-  src="../stat-text-slot-title.png" %}
+  src="../stat-text-slot-title.png" %}{% endexample %}
 
 ### Data text
 Data text is the number or percent that represents data.
@@ -84,7 +84,7 @@ Data text is the number or percent that represents data.
 {% example
   palette="light",
   alt="Two statistics with different data text percents",
-  src="../stat-text-slot-data.png" %}
+  src="../stat-text-slot-data.png" %}{% endexample %}
 
 ### Body text
 Body text explains data text. A percent or number means nothing without 
@@ -93,7 +93,7 @@ something that explains the rest of the statistic.
 {% example
   palette="light",
   alt="Two statistics with different body text examples",
-  src="../stat-text-slot-body.png" %}
+  src="../stat-text-slot-body.png" %}{% endexample %}
 
 ### Call to action text
 Use a call to action to entice users to learn more after they read a statistic. 
@@ -103,7 +103,7 @@ call to action.
 {% example
   palette="light",
   alt="Statistic with a call to action",
-  src="../stat-text-slot-cta.png" %}
+  src="../stat-text-slot-cta.png" %}{% endexample %}
 
 ### Internationalization
 Translated text can increase or decrease character counts, line length, and the 
@@ -115,12 +115,12 @@ around them.
 {% example
   palette="light",
   alt="Two statistics with English on top and German on the bottom; the English statistic has two lines of body text whereas the German has three",
-  src="../stat-i18n-a.png" %}
+  src="../stat-i18n-a.png" %}{% endexample %}
 
 {% example
     palette="light",
     alt="Two statistics with English on top and Chinese on the bottom; the English statistic body text is wider whereas the Chinese is thinner",
-    src="../stat-i18n-b.png" %}
+    src="../stat-i18n-b.png" %}{% endexample %}
 
 ## Layout
 
@@ -131,7 +131,7 @@ regardless if they are in a container or not.
 {% example
     palette="light",
     alt="Four statistics arranged evenly-spaced on a 12-column grid",
-    src="../stat-layout-grouping.png" %}
+    src="../stat-layout-grouping.png" %}{% endexample %}
 
 ### Card
 A statistic can be placed in a card if the body text or other text styles are 
@@ -140,7 +140,7 @@ short enough. Otherwise, keep them on the page to avoid readability issues.
 {% example
     palette="light",
     alt="Four statistics placed in cards and arranged evenly-spaced on a 12-column grid",
-    src="../stat-layout-card.png" %}
+    src="../stat-layout-card.png" %}{% endexample %}
 
 ### Alignment
 By default, a statistic is always center aligned. However, a statistic may be 
@@ -149,7 +149,7 @@ left aligned if grouped and if the surrounding content is also left aligned.
 {% example
     palette="light",
     alt="Three statistics left aligned with vertical dashed lines on the left side of each",
-    src="../stat-layout-alignment.png" %}
+    src="../stat-layout-alignment.png" %}{% endexample %}
 
 ### Padding
 The page grid usually determines the space between blocks or containers of 
@@ -159,7 +159,7 @@ breakpoints, the padding is 48px for better vertical rhythm.
 {% example
     palette="light",
     alt="Two groups of statistics; one group has 32px of padding with text underneath that says ‘Large breakpoints’, the other group has 48px of padding with text underneath that says ‘Small breakpoints’",
-    src="../stat-layout-padding.png" %}
+    src="../stat-layout-padding.png" %}{% endexample %}
 
 ## Responsive design
 
@@ -169,7 +169,7 @@ If only one statistic is used, it can span a maximum of six columns.
 {% example
     palette="light",
     alt="Statistic spanning less than six columns with a box around the body copy spanning six columns",
-    src="../stat-breakpoint-large.png" %}
+    src="../stat-breakpoint-large.png" %}{% endexample %}
 
 ### Small breakpoints
 Statistics arranged in a row on large breakpoints will stack on small
@@ -179,7 +179,7 @@ typography scale](https://ux.redhat.com/foundations/typography/).
 {% example
     palette="light",
     alt="Three statistics spanning the width of one column on mobile",
-    src="../stat-breakpoint-small.png" %}
+    src="../stat-breakpoint-small.png" %}{% endexample %}
 
 ## Best practices
 
@@ -189,7 +189,7 @@ Do not duplicate or rearrange any element to create a custom statistic.
 {% example
     palette="wrong",
     alt="Statistic with some elements arranged horizontally and some vertically which is incorrect usage",
-    src="../stat-best-practice-1.png" %}
+    src="../stat-best-practice-1.png" %}{% endexample %}
 
 ### Unrelated icon
 Do not use an icon that is unrelated to the rest of the statistic content.
@@ -197,7 +197,7 @@ Do not use an icon that is unrelated to the rest of the statistic content.
 {% example
     palette="wrong",
     alt="Statistic with a crab icon on top of text which is incorrect usage",
-    src="../stat-best-practice-2.png" %}
+    src="../stat-best-practice-2.png" %}{% endexample %}
 
 ### Inconsistent elements
 Keep statistics consistent when grouping. Either use the same number of elements 
@@ -208,7 +208,7 @@ icon.
 {% example
     palette="wrong",
     alt="Three statistics with different element combinations with is incorrect usage",
-    src="../stat-best-practice-3.png" %}
+    src="../stat-best-practice-3.png" %}{% endexample %}
 
 ### Too much text
 Do not include too much body text, a statistic should clarify a single data 
@@ -217,5 +217,5 @@ point quickly and with impact, not tell a long story.
 {% example
     palette="wrong",
     alt="Statistic with data text and long lines of body text which is incorrect usage",
-    src="../stat-best-practice-4.png" %}
+    src="../stat-best-practice-4.png" %}{% endexample %}
 

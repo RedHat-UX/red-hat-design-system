@@ -18,7 +18,7 @@
 
   {% example palette="light",
               alt="Image of all avatar thumbnail sizes and their pixel values underneath",
-              src="../avatar-usage-sizes.png" %}
+              src="../avatar-usage-sizes.png" %}{% endexample %}
 
   | Variation and range  | Use case                                                  |
   | -------------------- | --------------------------------------------------------- |
@@ -34,7 +34,7 @@
 
   {% example palette="light",
               alt="Image of three job details text, ranging from short to long",
-              src="../avatar-writing-content.png" %}
+              src="../avatar-writing-content.png" %}{% endexample %}
 
 
 ## Layout
@@ -46,14 +46,14 @@
 
   {% example palette="light",
               alt="Image of two avatar groups; one is horizontally centered and the other is vertically centered",
-              src="../avatar-usage-alignment.png" %}
+              src="../avatar-usage-alignment.png" %}{% endexample %}
 
 ### Stacking
   There is `48px` of space when avatar groups are stacked vertically.
 
   {% example palette="light",
               alt="Image of three avatar groups stacked vertically with 48 pixel of space in between",
-              src="../avatar-usage-stacking.png" %}
+              src="../avatar-usage-stacking.png" %}{% endexample %}
 
 
 ## Responsive design
@@ -62,13 +62,13 @@
 
   {% example palette="none",
               alt="Image of two avatar groups used on large breakpoints; one is aligned left and the other is aligned in the center",
-              src="../avatar-breakpoints-large.png" %}
+              src="../avatar-breakpoints-large.png" %}{% endexample %}
 
 ### Small breakpoints
 
   {% example palette="none",
               alt="Image of four avatar groups used on small breakpoints; two are aligned left and the other two are aligned in the center",
-              src="../avatar-breakpoints-small.png" %}
+              src="../avatar-breakpoints-small.png" %}{% endexample %}
 
 ### Line breaks
 
@@ -77,7 +77,7 @@
 
   {% example palette="light",
               alt="Image of two avatar groups with specs on top; one has two lines and the other has five lines",
-              src="../avatar-line-breaks.png" %}
+              src="../avatar-line-breaks.png" %}{% endexample %}
 
 
 ## Best practices
@@ -88,7 +88,7 @@
 
   {% example palette="wrong",
               alt="Image of a square avatar thumbnail which is incorrect usage",
-              src="../avatar-best-practice-1.png" %}
+              src="../avatar-best-practice-1.png" %}{% endexample %}
 
 ### Light theme thumbnail
 
@@ -96,7 +96,7 @@
 
   {% example palette="wrong",
               alt="Image of a light theme avatar thumbnail placed on a black background which is incorrect usage",
-              src="../avatar-best-practice-2.png" %}
+              src="../avatar-best-practice-2.png" %}{% endexample %}
 
 ### Icon vs. avatar thumbnail
 
@@ -104,5 +104,5 @@
 
   {% example palette="wrong",
               alt="Image of an icon and avatar thumbnail right next to each other",
-              src="../avatar-best-practice-3.png" %}
+              src="../avatar-best-practice-3.png" %}{% endexample %}
 

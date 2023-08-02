@@ -58,7 +58,7 @@ async function getImageHTML(opts) {
 
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function(eleventyConfig) {
-  eleventyConfig.addShortcode('example',
+  eleventyConfig.addPairedShortcode('example',
     /**
      * Example
      * An example image or component
@@ -75,7 +75,7 @@ module.exports = function(eleventyConfig) {
      * @param {boolean}   [options.srcAbsolute=false] If true, doesn't include the page url in the img src
      * @this {EleventyContext}
      */
-    async function example({
+    async function example(content, {
       alt = '',
       src = '',
       style = '',
@@ -85,22 +85,25 @@ module.exports = function(eleventyConfig) {
       headingLevel = 3,
       srcAbsolute = src.startsWith('/'),
     } = {}) {
-      const { page } = this.ctx || {};
-      const srcHref = src && path.join('_site', !srcAbsolute ? page?.url : '', src);
-      const slugify = eleventyConfig.getFilter('slugify');
-      const imgDir = srcHref.replace(/\/[^/]+$/, '/');
-      const urlPath = imgDir.replace(/^_site/, '');
-      const outputDir = `./${imgDir}`;
-      const imageFile = src && await sizeOf(srcHref);
-      const loading = 'lazy';
-      const decoding = 'async';
+      let imageHTML;
       const classes = `example example--palette-${palette} ${wrapperClass ?? ''}`;
-      const imageHTML = src && await getImageHTML({ alt, decoding, imageFile, loading, outputDir, src, srcHref, style, urlPath });
+      const slugify = eleventyConfig.getFilter('slugify');
+      if (src) {
+        const { page } = this.ctx || {};
+        const srcHref = src && path.join('_site', !srcAbsolute ? page?.url : '', src);
+        const imgDir = srcHref.replace(/\/[^/]+$/, '/');
+        const urlPath = imgDir.replace(/^_site/, '');
+        const outputDir = `./${imgDir}`;
+        const imageFile = src && await sizeOf(srcHref);
+        const loading = 'lazy';
+        const decoding = 'async';
+        imageHTML = src && await getImageHTML({ alt, decoding, imageFile, loading, outputDir, src, srcHref, style, urlPath });
+      }
       return /* html */`
         <div ${attrMap({ style, class: classes })}>${!headline ? '' : `
           <a id="${encodeURIComponent(headline)}"></a>
           <h${headingLevel} id="${slugify(headline)}" class="example-title">${headline}</h${headingLevel}>`}
-          ${imageHTML}
+          ${src ? imageHTML : content}
         </div>`.trim();
     });
 };

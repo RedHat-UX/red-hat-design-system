@@ -7,7 +7,7 @@ used on its own or grouped with other buttons.
 
 {% example palette="light",
           alt=" Anatomy image of buttons with numbered annotations",
-          src="../button-anatomy.png" %}
+          src="../button-anatomy.png" %}{% endexample %}
 
 1) Text
 2) Container
@@ -26,11 +26,11 @@ Buttons are available in both light and dark themes.
 
 {% example palette="light",
       alt=" Image of light theme Danger, Primary, Secondary, Tertiary, Link, Play, and Close buttons",
-      src="../button-theme-light.png" %}
+      src="../button-theme-light.png" %}{% endexample %}
 
 {% example palette="darkest",
       alt=" Image of dark theme Danger, Primary, Secondary, Tertiary, Link, Play, and Close buttons",
-      src="../button-theme-dark.png" %}
+      src="../button-theme-dark.png" %}{% endexample %}
 
 {% tokensTable %}
 
@@ -61,7 +61,7 @@ or small the image gets.
 
 {% example palette="light",
           alt=" Image of buttons and various specs like border radius, height, icon size, width, alignment, placement, and more",
-          src="../button-configuration.png" %}
+          src="../button-configuration.png" %}{% endexample %}
 
 ## Space
 
@@ -74,7 +74,7 @@ Buttons include a custom `6px` spacer, do not use it anywhere else.
 
 {% example palette="light",
           alt=" Image of Danger, Primary, Secondary, Tertiary, Link, and Close buttons with spacing values in between",
-          src="../button-space.png" %}
+          src="../button-space.png" %}{% endexample %}
 
 {% spacerTokensTable 
   headline="",
@@ -92,11 +92,11 @@ an element or pattern.
 
 {% example palette="light",
           alt=" Image of light theme button hover states",
-          src="../button-interaction-state-hover-theme-light.png" %}
+          src="../button-interaction-state-hover-theme-light.png" %}{% endexample %}
 
 {% example palette="darkest",
           alt=" Image of dark theme button hover states",
-          src="../button-interaction-state-hover-theme-dark.png" %}
+          src="../button-interaction-state-hover-theme-dark.png" %}{% endexample %}
 
 {% tokensTable %}
 
@@ -121,11 +121,11 @@ The Focus state has the same styles as the Hover state.
 
 {% example palette="light",
           alt=" Image of light theme button focus states",
-          src="../button-interaction-state-focus-theme-light.png" %}
+          src="../button-interaction-state-focus-theme-light.png" %}{% endexample %}
 
 {% example palette="darkest",
           alt=" Image of dark theme button focus states",
-          src="../button-interaction-state-focus-theme-dark.png" %}
+          src="../button-interaction-state-focus-theme-dark.png" %}{% endexample %}
 
 {% tokensTable %}
 
@@ -143,11 +143,11 @@ The Active state has the same styles as the Hover state.
 
 {% example palette="light",
           alt=" Image of light theme button active states",
-          src="../button-interaction-state-active-theme-light.png" %}
+          src="../button-interaction-state-active-theme-light.png" %}{% endexample %}
 
 {% example palette="light",
           alt=" Image of dark theme button active states",
-          src="../button-interaction-state-active-theme-dark.png" %}
+          src="../button-interaction-state-active-theme-dark.png" %}{% endexample %}
 
 {% tokensTable %}
 

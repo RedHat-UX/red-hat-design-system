@@ -11,7 +11,7 @@ A Sticky banner slides into view at a certain scroll position and then anchors i
 ## Sample component
 {% example palette="none",
            alt="Sticky banner",
-           src="./sticky-banner.svg" %}
+           src="./sticky-banner.svg" %}{% endexample %}
 
 {% repoStatus %}
 
@@ -21,7 +21,7 @@ A sticky banner can be used in the light theme only. The large size can include 
 
 {% example palette="lightest",
            alt="Sticky banner style",
-           src="./sticky-banner-style.svg" %}
+           src="./sticky-banner-style.svg" %}{% endexample %}
 
 ### Sizes
 
@@ -31,12 +31,12 @@ Large and Small are the two sticky banner sizes. The large size spans the full-w
 
 {% example palette="none",
            alt="Sticky banner large size",
-           src="./sticky-banner-size-desktop.svg" %}
+           src="./sticky-banner-size-desktop.svg" %}{% endexample %}
 
         
 {% example palette="none",
            alt="Sticky banner small size",
-           src="./sticky-banner-size-mobile.svg" %}
+           src="./sticky-banner-size-mobile.svg" %}{% endexample %}
 
 ### Content
 
@@ -61,12 +61,12 @@ A sticky banner is anchored on the bottom of the page where it doesn’t distrac
         
 {% example palette="none",
            alt="Sticky banner desktop placement",
-           src="./sticky-banner-usage.svg" %}
+           src="./sticky-banner-usage.svg" %}{% endexample %}
 
         
 {% example palette="none",
            alt="Sticky banner desktop placement",
-           src="./sticky-banner-usage-mobile.svg" %}
+           src="./sticky-banner-usage-mobile.svg" %}{% endexample %}
 
 ### Layout
 
@@ -89,26 +89,26 @@ Don't change the large sticky banner to be fixed width.
 
 {% example palette="wrong",
            alt="Fixed width issue",
-           src="./sticky-banner-best-practices-1.svg" %}
+           src="./sticky-banner-best-practices-1.svg" %}{% endexample %}
 
 Don’t omit the thumbnail image from the sticky banner on large screens like _Desktop_ or _Tablet, landscape_, it helps users get a better idea of what they’re downloading.
 
 {% example palette="wrong",
            alt="Full width small banner issue",
-           src="./sticky-banner-best-practices-2.svg" %}
+           src="./sticky-banner-best-practices-2.svg" %}{% endexample %}
 
 Don’t omit the drop shadow because the banner will blend into the background.
 
 {% example palette="wrong",
            alt="Banner without thumbnail issue",
-           src="./sticky-banner-best-practices-3.svg" %}
+           src="./sticky-banner-best-practices-3.svg" %}{% endexample %}
 
 ## Behavior
 
 The behavior of a sticky banner is similar to a Sticky card, they stick to the edge of a browser window and remain there until a user dismisses them. The difference is that a sticky banner is conversion-driven, they promote a more important offer that drives a user to a landing page whereas a sticky card promotes a less important offer like a resource or webinar.
 {% example palette="none",
            alt="Sticky banner behavior",
-           src="./sticky-banner-behavior.svg" %}
+           src="./sticky-banner-behavior.svg" %}{% endexample %}
 
 ### Sliding
 
@@ -127,24 +127,24 @@ A sticky banner can work on both large and small screens. Some elements will be 
 ### Desktop
 {% example palette="none",
            alt="Sticky banner desktop breakpoint",
-           src="./sticky-banner-breakpoints-desktop.svg" %}
+           src="./sticky-banner-breakpoints-desktop.svg" %}{% endexample %}
 
 ### Tablet
 {% example palette="none",
            alt="Sticky banner tablet breakpoint",
-           src="./sticky-banner-breakpoints-tablet.svg" %}
+           src="./sticky-banner-breakpoints-tablet.svg" %}{% endexample %}
 
 ### Mobile, landscape
 {% example palette="none",
            alt="Sticky banner mobile landscape breakpoint",
-           src="./sticky-banner-breakpoints-mobile-landscape.svg" %}
+           src="./sticky-banner-breakpoints-mobile-landscape.svg" %}{% endexample %}
 
     <p class="footnote">Some text styles reduce in size on small screens. Learn more about typography on mobile
 
 ### Mobile, portrait
 {% example palette="none",
            alt="Sticky banner mobile portrait breakpoint",
-           src="./sticky-banner-breakpoints-mobile-portrait.svg" %}
+           src="./sticky-banner-breakpoints-mobile-portrait.svg" %}{% endexample %}
 
 ## Interaction states
 
@@ -165,13 +165,13 @@ values between elements.
 ### Large size
 {% example palette="lightest",
            alt="Sticky banner large spacing",
-           src="./sticky-banner-spacing-large-screens.svg" %}
+           src="./sticky-banner-spacing-large-screens.svg" %}{% endexample %}
 
 ### Small size
 Content padding defines how far away elements are from each other inside each section.
 
 {% example palette="light",
            alt="Sticky banner spacing small",
-           src="./sticky-banner-spacing-small-screens.svg" %}
+           src="./sticky-banner-spacing-small-screens.svg" %}{% endexample %}
 
 {% include 'feedback.html' %}

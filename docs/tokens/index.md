@@ -33,7 +33,7 @@ websites, libraries, and tools.
 
 {% example palette="lightest",
   alt="Flow showing how a color like brand red becomes a token, how it is named, and how it is applied to a call to action",
-  src="images/design-tokens-intro.png" %}
+  src="images/design-tokens-intro.png" %}{% endexample %}
 
 ## Installation
 
@@ -52,61 +52,61 @@ values or if you have an idea for an output format or tool integration.
   <figure>
     {% example
       alt="Tokens for border radius, width, color, and more",
-      src="images/design-tokens-category-border.png" %}
+      src="images/design-tokens-category-border.png" %}{% endexample %}
     <figcaption>Border</figcaption>
   </figure>
   <figure>
     {% example
       alt="Tokens for box shadows",
-      src="images/design-tokens-category-box-shadow.png" %}
+      src="images/design-tokens-category-box-shadow.png" %}{% endexample %}
     <figcaption>Box shadow</figcaption>
   </figure>
   <figure>
     {% example
       alt="Tokens for breakpoint sizes",
-      src="images/design-tokens-category-breakpoint.png" %}
+      src="images/design-tokens-category-breakpoint.png" %}{% endexample %}
     <figcaption>Breakpoint</figcaption>
   </figure>
   <figure>
     {% example
       alt="Tokens for colors",
-      src="images/design-tokens-category-color.png" %}
+      src="images/design-tokens-category-color.png" %}{% endexample %}
     <figcaption>Color</figcaption>
   </figure>
   <figure>
     {% example
       alt="Tokens for icon sizes",
-      src="images/design-tokens-category-icon.png" %}
+      src="images/design-tokens-category-icon.png" %}{% endexample %}
     <figcaption>Icon</figcaption>
   </figure>
   <figure>
     {% example
       alt="Tokens for length values",
-      src="images/design-tokens-category-length.png" %}
+      src="images/design-tokens-category-length.png" %}{% endexample %}
     <figcaption>Length</figcaption>
   </figure>
   <figure>
     {% example
       alt="Tokens for media query sizes",
-      src="images/design-tokens-category-media-query.png" %}
+      src="images/design-tokens-category-media-query.png" %}{% endexample %}
     <figcaption>Media query</figcaption>
   </figure>
   <figure>
     {% example
       alt="Tokens for opacity values",
-      src="images/design-tokens-category-opacity.png" %}
+      src="images/design-tokens-category-opacity.png" %}{% endexample %}
     <figcaption>Opacity</figcaption>
   </figure>
   <figure>
     {% example
       alt="Tokens for spacer sizes",
-      src="images/design-tokens-category-space.png" %}
+      src="images/design-tokens-category-space.png" %}{% endexample %}
     <figcaption>Space</figcaption>
   </figure>
   <figure>
     {% example
       alt="Tokens for fonts, sizes, weights, line heights, color, and more",
-      src="images/design-tokens-category-typography.png" %}
+      src="images/design-tokens-category-typography.png" %}{% endexample %}
     <figcaption>Typography</figcaption>
   </figure>
 </nav>
@@ -157,7 +157,7 @@ toward consistency even if a token is updated.
 
 {% example
   alt="Flow showing how changing a global token like a color will propagate through the entire design system",
-  src="images/design-tokens-why-we-need-tokens.png" %}
+  src="images/design-tokens-why-we-need-tokens.png" %}{% endexample %}
 
 ## Tokens and our design system
 
@@ -168,7 +168,7 @@ websites, libraries, and tools.
 
 {% example
   alt="Flow showing how tokens can be utilized in design programs as well as applied to various touchpoints like brand, web, and product",
-  src="images/design-tokens-and-our-ds.png" %}
+  src="images/design-tokens-and-our-ds.png" %}{% endexample %}
 
 ## Naming tokens
 
@@ -181,7 +181,7 @@ proceeding from the general to the specific, e.g. `colour` (general), `surface`
 
 {% example
   alt="Destructive button with a Danger text label showing its assigned token name underneath",
-  src="images/design-tokens-naming.png" %}
+  src="images/design-tokens-naming.png" %}{% endexample %}
 
 ### Aliases
 
@@ -197,7 +197,7 @@ order for it to propagate everywhere.
 
 {% example
   alt="Flow showing how 1 global token is applied to 2 different elements because the alias names are different",
-  src="images/design-tokens-aliases.png" %}
+  src="images/design-tokens-aliases.png" %}{% endexample %}
 
 ## Themes
 
@@ -208,7 +208,7 @@ different audience or brand requirements.
 
 {% example
   alt="Examples of how tokens are applied to elements in the light and dark themes",
-  src="images/design-tokens-themes.png" %}
+  src="images/design-tokens-themes.png" %}{% endexample %}
 
 [color]: /tokens/color/
 [space]: /tokens/space/

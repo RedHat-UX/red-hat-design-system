@@ -25,7 +25,7 @@ occupies, use a spinner size that matches.
 {% example palette="none",
           alt="Spinner usage examples; from top to bottom, an app, a dialog, a card, and a 
 button showing spinners of various sizes with and without text labels",
-          src="../spinner-examples.png" %}
+          src="../spinner-examples.png" %}{% endexample %}
 
 ## Orientation
 
@@ -33,7 +33,7 @@ A spinner is always oriented above the optional text label, if visible.
 
 {% example palette="light",
           alt=" Two spinners; one showing the correct orientation and the other showing an incorrect orientation",
-          src="../spinner-orientation.png" %}
+          src="../spinner-orientation.png" %}{% endexample %}
 
 ## Text label
 
@@ -42,7 +42,7 @@ enough time to read it.
 
 {% example palette="light",
           alt=" Two spinners; one with a short text label, which is acceptable, and one with a very long text label which is not acceptable",
-          src="../spinner-text-label.png" %}
+          src="../spinner-text-label.png" %}{% endexample %}
 
 ## Animation
 
@@ -59,7 +59,7 @@ specific part.
 
 {% example palette="wrong",
           alt=" A spinner not horizontally or vertically centered in a container which is incorrect usage",
-          src="../spinner-best-practice-1.png" %}
+          src="../spinner-best-practice-1.png" %}{% endexample %}
 
 ### Cut off by browser window
 
@@ -68,7 +68,7 @@ it does.
 
 {% example palette="wrong",
           alt=" A small spinner used in a large container which is incorrect usage",
-          src="../spinner-best-practice-2.png" %}
+          src="../spinner-best-practice-2.png" %}{% endexample %}
 
 ### Wrong orientation
 
@@ -77,5 +77,5 @@ text label.
 
 {% example palette="wrong",
           alt=" Two spinners with different orientations which is incorrect usage",
-          src="../spinner-best-practice-3.png" %}
+          src="../spinner-best-practice-3.png" %}{% endexample %}
 

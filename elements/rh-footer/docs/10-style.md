@@ -11,7 +11,7 @@ websites.
 
 {% example palette="none",
           alt="Image of a footer showing lots of annotation numbers next to various styles and other elements",
-          src="../footer-anatomy.png" %}
+          src="../footer-anatomy.png" %}{% endexample %}
 
 1) Website logo
 2) Social media links
@@ -34,7 +34,7 @@ distinguish both footers from each other.
 
 {% example palette="none",
           alt="Image of a footer with no elements except for backgrounds; the top background is dark gray and the bottom is black",
-          src="../footer-grays.png" %}
+          src="../footer-grays.png" %}{% endexample %}
 
 ## Theme
 
@@ -43,7 +43,7 @@ theme.
 
 {% example palette="none",
           alt="Image of a large footer",
-          src="../footer-theme.png" %}
+          src="../footer-theme.png" %}{% endexample %}
 
 {% tokensTable %}
 
@@ -79,7 +79,7 @@ theme.
 
 {% example palette="none",
           alt="Image of a footer with the language selector menu open",
-          src="../footer-language-selector.png" %}
+          src="../footer-language-selector.png" %}{% endexample %}
 
 {% tokensTable %}          
 
@@ -100,25 +100,25 @@ maintain consistency.
 
 {% example palette="none",
           alt="Image of how a footer is architected showing lots of alignment examples",
-          src="../footer-configuration.png" %}
+          src="../footer-configuration.png" %}{% endexample %}
 
 ## Space 
 
 {% example palette="none",
           alt="Image of a desktop footer showing space values in between elements",
-          src="../footer-space-desktop.png" %}
+          src="../footer-space-desktop.png" %}{% endexample %}
 
 {% example palette="none",
           alt="Image of a tablet footer showing space values in between elements",
-          src="../footer-space-tablet.png" %}
+          src="../footer-space-tablet.png" %}{% endexample %}
 
 {% example palette="none",
           alt="Image of a mobile footer showing space values in between elements",
-          src="../footer-space-mobile.png" %}
+          src="../footer-space-mobile.png" %}{% endexample %}
 
 {% example palette="none",
           alt="Image of a footer showing space values in the language selector menu",
-          src="../footer-space-language-selector.png" %}
+          src="../footer-space-language-selector.png" %}{% endexample %}
 
 {% spacerTokensTable 
   headline="Spacing tokens",
@@ -133,7 +133,7 @@ maintain consistency.
 
 {% example palette="none",
           alt="Hover state examples within a footer",
-          src="../footer-interaction-state-hover.png" %}
+          src="../footer-interaction-state-hover.png" %}{% endexample %}
 
 {% tokensTable %}
 
@@ -151,7 +151,7 @@ maintain consistency.
 
 {% example palette="none",
           alt="Hover state example within the language selector menu",
-          src="../footer-ls-interaction-state-hover.png" %}
+          src="../footer-ls-interaction-state-hover.png" %}{% endexample %}
 
 {% tokensTable %}
 
@@ -169,7 +169,7 @@ The Focus state has the same styles as the Hover state.
 
 {% example palette="none",
           alt="Focus state examples within a footer",
-          src="../footer-interaction-state-focus.png" %}
+          src="../footer-interaction-state-focus.png" %}{% endexample %}
 
 {% tokensTable %}
 
@@ -187,7 +187,7 @@ The Focus state has the same styles as the Hover state.
 
 {% example palette="none",
           alt="Focus state example within the language selector menu",
-          src="../footer-ls-interaction-state-focus.png" %}
+          src="../footer-ls-interaction-state-focus.png" %}{% endexample %}
 
 {% tokensTable %}
 
@@ -205,7 +205,7 @@ The Active state has the same styles as the Hover state.
 
 {% example palette="none",
           alt="Active state examples within a footer",
-          src="../footer-interaction-state-active.png" %}
+          src="../footer-interaction-state-active.png" %}{% endexample %}
 
 
 {% tokensTable %}
@@ -224,7 +224,7 @@ The Active state has the same styles as the Hover state.
 
 {% example palette="none",
           alt="Active state example within the language selector menu",
-          src="../footer-ls-interaction-state-active.png" %}
+          src="../footer-ls-interaction-state-active.png" %}{% endexample %}
 
 {% tokensTable %}
 

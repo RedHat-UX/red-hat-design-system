@@ -28,7 +28,7 @@
              width=129,
              class="inline-flex centered",
              alt="Jump links not enough links issue",
-             src="../jump-links-best-practices-1.svg" %}
+             src="../jump-links-best-practices-1.svg" %}{% endexample %}
 
   Don’t include section links that are really long, they can be customized to be 
   shorter when added to a group of jump links.
@@ -37,7 +37,7 @@
              width=361,
              class="inline-flex centered",
              alt="Jump links too long titles",
-             src="../jump-links-best-practices-2.svg" %}
+             src="../jump-links-best-practices-2.svg" %}{% endexample %}
 
   Don’t overload jump links with too many section links, but including lots 
   of nested section links is acceptable.
@@ -46,7 +46,7 @@
              width=146,
              class="inline-flex centered",
              alt="Jump links too many top level links issue",
-             src="../jump-links-best-practices-3.svg" %}
+             src="../jump-links-best-practices-3.svg" %}{% endexample %}
 
   Don’t nest section links within nested section links.
 
@@ -54,7 +54,7 @@
              width=141,
              class="inline-flex centered",
              alt="Jump links nesting issue",
-             src="../jump-links-best-practices-4.svg" %}
+             src="../jump-links-best-practices-4.svg" %}{% endexample %}
 
 
 
@@ -84,7 +84,7 @@
              width=872,
              class="inline-flex centered",
              alt="Jump links on mobile",
-             src="../jump-links-behavior-mobile.svg" %}
+             src="../jump-links-behavior-mobile.svg" %}{% endexample %}
 
 
 ## Interaction states
@@ -102,5 +102,5 @@
              width=872,
              class="inline-flex centered",
              alt="Jump links tab order",
-             src="../jump-links-tab-order.svg" %}
+             src="../jump-links-tab-order.svg" %}{% endexample %}
 

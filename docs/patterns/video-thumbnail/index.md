@@ -11,7 +11,7 @@ A Video thumbnail is a graphical preview of a video overlayed with a play button
 ## Sample component
 {% example palette="none",
            alt="Video thumbnail",
-           src="./video-thumbnail.svg" %}
+           src="./video-thumbnail.svg" %}{% endexample %}
 
 {% repoStatus %}
 
@@ -21,16 +21,16 @@ A video thumbnail is a combination of a graphic with a slightly transparent play
 
 {% example palette="light",
            alt="Video thumbnail specs",
-           src="./video-thumbnail-style.svg" %}
+           src="./video-thumbnail-style.svg" %}{% endexample %}
 
 ## Theme
 {% example palette="light",
            alt="Video thumbnail light theme",
-           src="./video-thumbnail-theme-light.svg" %}
+           src="./video-thumbnail-theme-light.svg" %}{% endexample %}
            
 {% example palette="darkest",
            alt="Video thumbnail dark theme",
-           src="./video-thumbnail-theme-dark.svg" %}
+           src="./video-thumbnail-theme-dark.svg" %}{% endexample %}
 
 ### Button
 
@@ -39,11 +39,11 @@ A video thumbnail can include either a light or a dark play button, depending on
 <div class="multi-column--min-300-wide"><div>
     {% example palette="light",
               alt="Play button on light theme",
-              src="./video-button-light.svg" %}
+              src="./video-button-light.svg" %}{% endexample %}
   </div><div>
     {% example palette="darkest",
               alt="Play button on dark theme",
-              src="./video-button-dark.svg" %}
+              src="./video-button-dark.svg" %}{% endexample %}
 </div></div>
 
 ## Usage
@@ -56,7 +56,7 @@ A video thumbnail can be used in most layouts that have enough space to accommod
 
 {% example palette="light",
            alt="Specs of video button thumbnail",
-           src="./video-thumbnail-layout-specs.svg" %}
+           src="./video-thumbnail-layout-specs.svg" %}{% endexample %}
 
 ### Caption
 
@@ -68,13 +68,13 @@ Don't reposition the play button.
 
 {% example palette="wrong",
            alt="Don't reposition play button",
-           src="./video-thumbnail-best-practices-1.png" %}
+           src="./video-thumbnail-best-practices-1.png" %}{% endexample %}
 
 Don't change the aspect ratio of a video thumbnail.
 
 {% example palette="wrong",
            alt="Don't change aspect ratio",
-           src="./video-thumbnail-best-practices-2.png" %}
+           src="./video-thumbnail-best-practices-2.png" %}{% endexample %}
 
 ## Behavior
 
@@ -94,13 +94,13 @@ A video thumbnail changes size, but it should maintain its aspect ratio across a
 
 {% example palette="none",
            alt="Video thumbnail centered",
-           src="./video-thumbnail-responsive-desktop.svg" %}
+           src="./video-thumbnail-responsive-desktop.svg" %}{% endexample %}
 
 When centered, the video thumbnail and caption should span six grid columns
 
 {% example palette="none",
            alt="Video thumbnail sides",
-           src="./video-thumbnail-responsive-desktop-sides.svg" %}
+           src="./video-thumbnail-responsive-desktop-sides.svg" %}{% endexample %}
 
 When aligned on the left or right edge of the grid, the video thumbnail and caption should span five grid columns
 
@@ -108,7 +108,7 @@ When aligned on the left or right edge of the grid, the video thumbnail and capt
 
 {% example palette="none",
            alt="Video thumbnail on mobile",
-           src="./video-thumbnail-responsive-mobile.svg" %}
+           src="./video-thumbnail-responsive-mobile.svg" %}{% endexample %}
 
 ## Interaction states
 
@@ -117,34 +117,34 @@ The only interactive element in a video thumbnail is the play button. For more i
 ### Default
 {% example palette="light",
            alt="Video thumbnail default state",
-           src="./video-thumbnail-interaction-default.svg" %}
+           src="./video-thumbnail-interaction-default.svg" %}{% endexample %}
 
 ### Focus
 {% example palette="light",
            alt="Video thumbnail focus state",
-           src="./video-thumbnail-interaction-focus.svg" %}
+           src="./video-thumbnail-interaction-focus.svg" %}{% endexample %}
 
 ### Hover
 {% example palette="light",
            alt="Video thumbnail hover state",
-           src="./video-thumbnail-interaction-hover.svg" %}
+           src="./video-thumbnail-interaction-hover.svg" %}{% endexample %}
 
 ### Active
 {% example palette="light",
            alt="Video thumbnail active state",
-           src="./video-thumbnail-interaction-active.svg" %}
+           src="./video-thumbnail-interaction-active.svg" %}{% endexample %}
 
 <div class="multi-column--min-300-wide"><div>
     {% example palette="light",
               alt="Video thumbnail hover state light",
-              src="./video-button-hover-state-dark.svg" %}
+              src="./video-button-hover-state-dark.svg" %}{% endexample %}
 
     The dark play button background becomes 25% darker on hover
     {.example-notes}
 </div><div>
     {% example palette="darkest",
               alt="Video thumbnail hover state dark",
-              src="./video-button-hover-state-light.svg" %}
+              src="./video-button-hover-state-light.svg" %}{% endexample %}
 
     The light play button background becomes 25% lighter on hover
     {.example-notes}
@@ -164,6 +164,6 @@ values between elements.
 
 {% example palette="light",
            alt="Video thumbnail spacing specs",
-           src="./video-thumbnail-spacing.svg" %}
+           src="./video-thumbnail-spacing.svg" %}{% endexample %}
 
 {% include 'feedback.html' %}

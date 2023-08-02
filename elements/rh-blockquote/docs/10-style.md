@@ -12,7 +12,7 @@ also include the following optional elements:
 {% example palette="light",
            class="centered",
            alt="Anatomy image of a blockquote with numbered annotations",
-           src="../blockquote-anatomy.png" %}
+           src="../blockquote-anatomy.png" %}{% endexample %}
 
 1. Quote icon
 2. Quotation text
@@ -26,7 +26,7 @@ also include the following optional elements:
 {% example palette="light",
            class="centered",
            alt="Image of two blockquotes, default size on the left and large size on the right",
-           src="../blockquote-style-sizes.png" %}
+           src="../blockquote-style-sizes.png" %}{% endexample %}
 
 {% tokensTable %}
 
@@ -52,7 +52,7 @@ A blockquote is available in both light and dark themes.
 {% example palette="light",
            class="centered",
            alt="Image of a light theme blockquote, red quote icon, black quotation text, and dark gray citation text",
-           src="../blockquote-theme-light.png" %}
+           src="../blockquote-theme-light.png" %}{% endexample %}
 
 {% tokensTable %}
 
@@ -71,7 +71,7 @@ A blockquote is available in both light and dark themes.
 {% example palette="darkest",
            class="centered",
            alt=" Image of a dark theme blockquote, red quote icon, white quotation text, and light gray citation text",
-           src="../blockquote-theme-dark.png" %}
+           src="../blockquote-theme-dark.png" %}{% endexample %}
 
 {% tokensTable %}
 
@@ -90,12 +90,12 @@ A blockquote is available in both light and dark themes.
 {% example palette="light",
            class="centered",
            alt="Image of two blockquotes, a red emphasis border on the left and a black emphasis border on the right",
-           src="../blockquote-emphasis-theme-light.png" %}
+           src="../blockquote-emphasis-theme-light.png" %}{% endexample %}
 
 {% example palette="darkest",
            class="centered",
            alt="Image of two blockquotes, a red emphasis border on the left and a black emphasis border on the right",
-           src="../blockquote-emphasis-theme-dark.png" %}
+           src="../blockquote-emphasis-theme-dark.png" %}{% endexample %}
 
 {% tokensTable %}
 
@@ -113,12 +113,12 @@ A blockquote is available in both light and dark themes.
 {% example palette="light",
            class="centered",
            alt="Image of two blockquotes, both with red title text and black header text",
-           src="../blockquote-title-heading-theme-light.png" %}
+           src="../blockquote-title-heading-theme-light.png" %}{% endexample %}
 
 {% example palette="darkest",
            class="centered",
            alt="Image of two blockquotes, both with red title text and white header text",
-           src="../blockquote-title-heading-theme-dark.png" %}
+           src="../blockquote-title-heading-theme-dark.png" %}{% endexample %}
 
 {% tokensTable %}
 
@@ -138,7 +138,7 @@ The base elements in both sizes are stacked and left aligned by default, but the
 {% example palette="light",
            class="centered",
            alt="Image of four blockquotes, two are left aligned and two are vertically centered, the quote icon is 20px tall",
-           src="../blockquote-configuration.png" %}
+           src="../blockquote-configuration.png" %}{% endexample %}
 
 ### Order
 A blockquote was designed to be read from top to bottom. If certain optional elements are included, the order will change.
@@ -146,7 +146,7 @@ A blockquote was designed to be read from top to bottom. If certain optional ele
 {% example palette="light",
            class="centered",
            alt="Image of a blockquote with numbers 1 - 4 on the right side going from top to bottom",
-           src="../blockquote-configuration.png" %}
+           src="../blockquote-configuration.png" %}{% endexample %}
 
 1. Logo or text (always ordered first if included)
 2. Quotate icon (always included and ordered first if there is no logo or text)
@@ -160,7 +160,7 @@ Citation text has specific styles applied to it.
 {% example palette="light",
            class="centered",
            alt="Image of three citation text examples",
-           src="../blockquote-configuration-citation.png" %}
+           src="../blockquote-configuration-citation.png" %}{% endexample %}
 
 {% tokensTable %}
 
@@ -182,7 +182,7 @@ Space values are the same in both sizes and on all breakpoints.
 {% example palette="light",
            class="centered",
            alt="Image of four blockquotes with spacing values in between",
-           src="../blockquote-space.png" %}
+           src="../blockquote-space.png" %}{% endexample %}
 
 {% spacerTokensTable 
   headline="",

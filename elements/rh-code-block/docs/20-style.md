@@ -7,7 +7,7 @@ container.
 
 {% example palette="lightest",
            alt="Image of code block anatomy showing two annotations",
-           src="../code-block-anatomy.png" %}
+           src="../code-block-anatomy.png" %}{% endexample %}
 
 1) Code text
 2) Container
@@ -21,13 +21,13 @@ A code block is available in both light and dark themes.
 
 {% example palette="lightest",
            alt="Image of light theme code block",
-           src="../code-block-theme-light.png" %}
+           src="../code-block-theme-light.png" %}{% endexample %}
 
 ### Dark theme
 
 {% example palette="darkest",
            alt="Image of light dark code block",
-           src="../code-block-theme-dark.png" %}
+           src="../code-block-theme-dark.png" %}{% endexample %}
 
 
 ### Configuration
@@ -36,14 +36,14 @@ Code block text is always horizontally and vertically centered.
 
 {% example palette="lightest",
            alt="Image of a code block showing alignment and border radius specs",
-           src="../code-block-configuration.png" %}
+           src="../code-block-configuration.png" %}{% endexample %}
 
 ## Space
 Container spacing reduces as breakpoints get smaller.
 
 {% example palette="lightest",
            alt="Image of a code block spacing for all breakpoints",
-           src="../code-block-space.png" %}
+           src="../code-block-space.png" %}{% endexample %}
 
 {% spacerTokensTable tokens="--rh-space-lg, --rh-space-xl" %}{% endspacerTokensTable %}
 

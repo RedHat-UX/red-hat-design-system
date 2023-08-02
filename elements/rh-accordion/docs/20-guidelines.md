@@ -7,14 +7,14 @@ An accordion is used to organize important information whereas a [Disclosure](/p
 
 {% example palette="light",
           alt="Comparison of how to use accordion vs. disclosure elements showing an accordion on top and a disclosure on the bottom",
-          src="../accordion-vs-disclosure.png" %}
+          src="../accordion-vs-disclosure.png" %}{% endexample %}
 
 ### Sizes 
 It is acceptable to use the Small size on large breakpoints, but do not use the Large size on small breakpoints.
 
 {% example palette="light",
           alt="Size comparison of accordions; a wide small size accordion is on top, which is acceptable to use, and a thin large size accordion below it which is not acceptable to use",
-          src="../accordion-sizes-best-practices.png" %}
+          src="../accordion-sizes-best-practices.png" %}{% endexample %}
 
 ## Writing content 
 ### Title text 
@@ -22,7 +22,7 @@ Title text should be written concisely so users know what to expect when they ex
 
 {% example palette="light",
           alt="Title text examples of various lengths; it should not be too long, too short, or too vague",
-          src="../accordion-title-text.png" %}
+          src="../accordion-title-text.png" %}{% endexample %}
 
 1) Title text is too long and should be broken into two sections
 2) Title text is short and might not help users understand the content within
@@ -41,21 +41,21 @@ When a panel is expanded, some content must appear below the title text and chev
 
 {% example palette="light",
           alt="Accordion showing different elements you may include in the expanded panel like headings, body text, links, cards, and more",
-          src="../accordion-panel-content.png" %}
+          src="../accordion-panel-content.png" %}{% endexample %}
 
 ### Long title text 
 Title text can be two lines on small breakpoints, but no more.
 
 {% example palette="light",
           alt="Two accordions; one wide accordion with the text title on one line and one thin accordion with the text title on two lines",
-          src="../accordion-long-title-text.png" %}
+          src="../accordion-long-title-text.png" %}{% endexample %}
 
 ## Layout 
 The width of an accordion can be adjusted on large breakpoints to fit less columns if necessary.
 
 {% example palette="light",
           alt="A thinner accordion placed on a 12-column grid and occupying eight grid columns",
-          src="../accordion-layout.png" %}
+          src="../accordion-layout.png" %}{% endexample %}
 
 ## Behavior
 
@@ -67,18 +67,18 @@ Users can expand multiple panels simultaneously either stacked on top of each ot
 
 {% example palette="light",
           alt="Two accordions; one is showing two expanded panels stacked on top of each other and the other is showing two expanded panels and one collapsed panel in between",
-          src="../accordion-expanding-multiple-panels.png" %}
+          src="../accordion-expanding-multiple-panels.png" %}{% endexample %}
 
 ## Responsive design 
 An accordion changes from the Large size to the Small size as breakpoints get smaller.
 
 {% example palette="none",
           alt="Accordions on large breakpoints",
-          src="../accordion-breakpoints-large.png" %}
+          src="../accordion-breakpoints-large.png" %}{% endexample %}
 
 {% example palette="none",
           alt="Accordions on small breakpoints",
-          src="../accordion-breakpoints-small.png" %}
+          src="../accordion-breakpoints-small.png" %}{% endexample %}
 
 ### Breakpoints
 
@@ -98,18 +98,18 @@ Do not display one panel only, use an expandable section instead.
 
 {% example palette="wrong",
           alt="Accordion having only one panel is incorrect usage",
-          src="../accordion-best-practice-1.png" %}
+          src="../accordion-best-practice-1.png" %}{% endexample %}
 
 ### Text readability 
 Text within panels should not exceed `750px` to maintain optimal readability.
 
 {% example palette="wrong",
           alt="Accordion with body text exceeding 750px wide which is incorrect usage",
-          src="../accordion-best-practice-2.png" %}
+          src="../accordion-best-practice-2.png" %}{% endexample %}
 
 ### Mixing themes 
 Do not use a dark theme accordion in a light theme environment and vice versa.
 
 {% example palette="wrong",
           alt="Do not use a dark theme accordion in a light theme environment and vice versa.",
-          src="../accordion-best-practice-3.png" %}
+          src="../accordion-best-practice-3.png" %}{% endexample %}

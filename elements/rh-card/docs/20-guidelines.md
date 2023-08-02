@@ -79,7 +79,7 @@ There are several card variants that can be used for a variety of use cases.
              class="inline-flex centered",
              width=784,
              alt="Grouping of a card",
-             src="../card-usage-grouping.svg" %}
+             src="../card-usage-grouping.svg" %}{% endexample %}
 
   These cards can be grouped together because they have similar styles and 
   content {.footnote}
@@ -99,7 +99,7 @@ There are several card variants that can be used for a variety of use cases.
              class="inline-flex centered",
              width=664,
              alt="Alternative card usage",
-             src="../card-usage-other.svg" %}
+             src="../card-usage-other.svg" %}{% endexample %}
 
 
 
@@ -111,7 +111,7 @@ There are several card variants that can be used for a variety of use cases.
              class="inline-flex centered",
              width=872,
              alt="Too many cards",
-             src="../card-bestpractice-1.svg" %}
+             src="../card-bestpractice-1.svg" %}{% endexample %}
 
   Don’t use a primary call to action in any card unless the primary action of a 
   page is positioned inside of that card.
@@ -120,7 +120,7 @@ There are several card variants that can be used for a variety of use cases.
              class="inline-flex centered",
              width=360,
              alt="Card width error",
-             src="../card-bestpractice-2.svg" %}
+             src="../card-bestpractice-2.svg" %}{% endexample %}
 
   Don’t use multiple calls to action in one card. Instead, distribute them to 
   other cards.
@@ -129,7 +129,7 @@ There are several card variants that can be used for a variety of use cases.
              class="inline-flex centered",
              width=360,
              alt="Multiple calls to action",
-             src="../card-bestpractice-3.svg" %}
+             src="../card-bestpractice-3.svg" %}{% endexample %}
 
 
 
@@ -144,7 +144,7 @@ There are several card variants that can be used for a variety of use cases.
              class="inline-flex centered",
              width=784,
              alt="Card height behavior",
-             src="../card-behavior-height.svg" %}
+             src="../card-behavior-height.svg" %}{% endexample %}
 
 ### Interactivity
   If a card contains only one link destination, the entire container and any 
@@ -155,7 +155,7 @@ There are several card variants that can be used for a variety of use cases.
              class="inline-flex centered",
              width=784,
              alt="Card interaction",
-             src="../card-behavior-interaction.svg" %}
+             src="../card-behavior-interaction.svg" %}{% endexample %}
 
 
 ## Interaction states

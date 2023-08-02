@@ -4,7 +4,7 @@ Accordion panels include title text, a chevron icon, body text, and other conten
 ### Anatomy 
 {% example palette="light",
           alt="Anatomy of an accordion with lots of annotations pointing to various parts",
-          src="../accordion-anatomy.png" %}
+          src="../accordion-anatomy.png" %}{% endexample %}
 
 1) Collapsed panel
 2) Expanded panel
@@ -21,45 +21,45 @@ There are two available sizes and the only difference is the title text size. Yo
 
 {% example palette="light",
           alt="A large size accordion with text underneath saying ‘Large size’ and a small size accordion with text underneath saying ‘Small size’",
-          src="../accordion-sizes.png" %}
+          src="../accordion-sizes.png" %}{% endexample %}
 
 ## Theme 
 An accordion is available in both light and dark themes. The light theme expanded panel includes a box shadow, but the dark theme does not.
 ### Light theme 
 {% example palette="light",
           alt="Light theme accordion with an expanded panel",
-          src="../accordion-theme-light.png" %}
+          src="../accordion-theme-light.png" %}{% endexample %}
 
 ### Dark theme 
 {% example palette="darkest",
           alt="Dark theme accordion with an expanded panel",
-          src="../accordion-theme-dark.png" %}
+          src="../accordion-theme-dark.png" %}{% endexample %}
 
 ## Configuration 
 An expanded panel does not have a maximum height, but it may scroll if constrained by vertical space. The width of an accordion varies based on content and page layout. Title text and icons are horizontally aligned.
 
 {% example palette="light",
           alt="How an accordion is constructed showing alignment, space, scrolling, and width details",
-          src="../accordion-configuration.png" %}
+          src="../accordion-configuration.png" %}{% endexample %}
 
 ### Nested panels 
 Panels can be nested to help organize complex or granular sections of content.
 
 {% example palette="light",
           alt="An accordion with an expanded panel and a nested expanded panel",
-          src="../accordion-nested-panels.png" %}
+          src="../accordion-nested-panels.png" %}{% endexample %}
 
 ### Stacked panels 
 Multiple panels can be expanded simultaneously even when nested.
 
 {% example palette="light",
           alt="An accordion with one collapsed panel on top and two stacked expanded panels below",
-          src="../accordion-stacked-panels.png" %}
+          src="../accordion-stacked-panels.png" %}{% endexample %}
 
 ## Space 
 {% example palette="light",
           alt="Accordion spacing within panels and in between elements like titles, body text, rules, and icons",
-          src="../accordion-space.png" %}
+          src="../accordion-space.png" %}{% endexample %}
 
 {% spacerTokensTable 
   headline="",
@@ -74,11 +74,11 @@ Interaction states are visual representations used to communicate the status of 
 ### Hover 
 {% example palette="light",
           alt="Light theme accordion hover state examples",
-          src="../accordion-hover-theme-light.png" %}
+          src="../accordion-hover-theme-light.png" %}{% endexample %}
 
 {% example palette="darkest",
           alt="Dark theme accordion hover state example",
-          src="../accordion-hover-theme-dark.png" %}
+          src="../accordion-hover-theme-dark.png" %}{% endexample %}
 
 {% tokensTable %}
 
@@ -91,11 +91,11 @@ Interaction states are visual representations used to communicate the status of 
 ### Focus 
 {% example palette="light",
           alt="Light theme accordion focus state examples",
-          src="../accordion-focus-theme-light.png" %}
+          src="../accordion-focus-theme-light.png" %}{% endexample %}
 
 {% example palette="darkest",
           alt="Dark theme accordion focus state example",
-          src="../accordion-focus-theme-dark.png" %}
+          src="../accordion-focus-theme-dark.png" %}{% endexample %}
 
 {% tokensTable %}
 
@@ -109,11 +109,11 @@ Interaction states are visual representations used to communicate the status of 
 ### Active 
 {% example palette="light",
           alt="Light theme accordion active state examples",
-          src="../accordion-active-theme-light.png" %}
+          src="../accordion-active-theme-light.png" %}{% endexample %}
 
 {% example palette="darkest",
           alt="Dark theme accordion active state example",
-          src="../accordion-active-theme-dark.png" %}
+          src="../accordion-active-theme-dark.png" %}{% endexample %}
 
 {% tokensTable %}
 

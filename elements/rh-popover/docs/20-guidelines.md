@@ -30,7 +30,7 @@
   {% example palette="lightest",
              width=832,
              alt="Popover component usage, content",
-             src="../popover-usage-content.svg" %}
+             src="../popover-usage-content.svg" %}{% endexample %}
 
 ### Character count
 
@@ -59,7 +59,7 @@
   {% example palette="lightest",
              width=844,
              alt="Popover component usage, orientation",
-             src="../popover-usage-orientation.svg" %}
+             src="../popover-usage-orientation.svg" %}{% endexample %}
 
 ### Black on black
 
@@ -69,7 +69,7 @@
   {% example palette="darkest",
              width=392,
              alt="Popover component usage, black on black",
-             src="../popover-usage-black.svg" %}
+             src="../popover-usage-black.svg" %}{% endexample %}
 
 ### White on white
 
@@ -79,7 +79,7 @@
   {% example palette="lightest",
              width=392,
              alt="Popover component usage, white on white",
-             src="../popover-usage-white.svg" %}
+             src="../popover-usage-white.svg" %}{% endexample %}
 
 
 
@@ -95,7 +95,7 @@
   {% example palette="lightest",
              width=832,
              alt="Popover component behavior, trigger",
-             src="../popover-behavior-trigger.svg" %}
+             src="../popover-behavior-trigger.svg" %}{% endexample %}
 
 ### Form
 
@@ -106,7 +106,7 @@
   {% example palette="lightest",
              width=832,
              alt=" Popover component behavior, form",
-             src="../popover-behavior-form.svg" %}
+             src="../popover-behavior-form.svg" %}{% endexample %}
 
 ### Mobile
 
@@ -116,7 +116,7 @@
   {% example palette="lightest",
              width=772,
              alt=" Popover component behavior, mobile",
-             src="../popover-behavior-mobile.svg" %}
+             src="../popover-behavior-mobile.svg" %}{% endexample %}
 
 
 ## Interaction states
@@ -169,7 +169,7 @@
   {% example palette="lightest",
              width=392,
              alt=" Popover component accesssibility",
-             src="../popover-accessibility.svg" %}
+             src="../popover-accessibility.svg" %}{% endexample %}
 
   | Key          | Action                                                       |
   |--------------|--------------------------------------------------------------|
@@ -188,7 +188,7 @@
   {% example palette="wrong",
              width=479,
              alt="Popover component best practice 1",
-             src="../popover-best-practice-1.svg" %}
+             src="../popover-best-practice-1.svg" %}{% endexample %}
 
 ### Too much content
 
@@ -197,7 +197,7 @@
   {% example palette="wrong",
              width=432,
              alt="Popover component best practice 2",
-             src="../popover-best-practice-2.svg" %}
+             src="../popover-best-practice-2.svg" %}{% endexample %}
 
 ### No close button
 
@@ -206,5 +206,5 @@
   {% example palette="wrong",
              width=392,
              alt="Popover component best practice 3",
-             src="../popover-best-practice-3.svg" %}
+             src="../popover-best-practice-3.svg" %}{% endexample %}
 

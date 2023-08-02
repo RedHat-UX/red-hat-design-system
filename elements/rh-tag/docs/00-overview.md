@@ -4,7 +4,7 @@
 
 {% example palette="light",
            alt="Two rows of tags; the top row is ‘Filled’ tags and the bottom row is ‘Unfilled’ tags; from left to right, both rows of tags include red, orange, green, cyan, blue, purple, and gray colors",
-           src="tag-sample-element.png" %}
+           src="tag-sample-element.png" %}{% endexample %}
 
 
 

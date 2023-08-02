@@ -15,7 +15,7 @@ A logical focus order helps visitors understand and operate our websites. Elemen
 
 {% example palette="light",
            alt="Focus goes to action buttons and to the close button last",
-           src="../alert-focus-order.svg" %}
+           src="../alert-focus-order.svg" %}{% endexample %}
 
 {% include 'accessibility/ariaguide.md' %}
 
