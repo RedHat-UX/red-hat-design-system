@@ -82,6 +82,9 @@ rh-tag:
  - rh-avatar
  - rh-badge
  - rh-button
+rh-timestamp:
+ - rh-blockquote
+ - rh-statistic
 rh-tooltip: 
  - rh-footer
  - form
@@ -128,7 +131,4 @@ sticky-card:
  - sticky-banner
 video-thumbnail: 
  - rh-audio-player
-timestamp:
- - rh-blockquote
- - rh-statistic
 
