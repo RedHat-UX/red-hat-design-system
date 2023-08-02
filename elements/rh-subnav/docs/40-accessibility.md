@@ -9,7 +9,7 @@ Overflow buttons do not have focus so there are no keyboard interactions.
 
 {% example palette="lightest",
            alt="Image of desktop and mobile subnavigations with diagrams of what happens when Tab keys are pressed",
-           src="../subnav-a11y-keyboard-interactions.png" %}
+           src="../subnav-a11y-keyboard-interactions.png" %}{% endexample %}
 
 | Key                             | Result                                                  |
 | ------------------------------- | ------------------------------------------------------- |
@@ -27,7 +27,7 @@ element.
 
 {% example palette="lightest",
            alt="Image of desktop and mobile subnavigations showing the focus order from left to right",
-           src="../subnav-a11y-focus-order.png" %}
+           src="../subnav-a11y-focus-order.png" %}{% endexample %}
 
 ## Touch targets
 
@@ -35,7 +35,7 @@ Links are adequately spaced for optimal touch targets.
 
 {% example palette="lightest",
            alt="Image of desktop and mobile subnavigations showing adequate touch target spacing",
-           src="../subnav-a11y-touch-targets.png" %}
+           src="../subnav-a11y-touch-targets.png" %}{% endexample %}
 
 {% include 'accessibility/ariaguide.md' %}
 

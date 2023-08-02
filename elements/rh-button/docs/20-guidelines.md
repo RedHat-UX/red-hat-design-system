@@ -24,7 +24,7 @@ consistently so they communicate the correct actions.
 
 {% example palette="light",
           alt="Image of the seven available button variant",
-          src="../button-variants.png" %}
+          src="../button-variants.png" %}{% endexample %}
 
 | Variant {style="width: 25%" } | Use case                                                                                                                                                                                                 |
 | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -47,7 +47,7 @@ image or photo.
 
 {% example palette="light",
           alt="Image of play button examples; a video thumbnail on the left and a text layout on the right",
-          src="../button-usage-play.png" %}
+          src="../button-usage-play.png" %}{% endexample %}
 
 ### Close button
 
@@ -56,7 +56,7 @@ Close buttons are mostly found in [dialogs](/elements/dialog/).
 
 {% example palette="none",
           alt="Image of a dialog with a close button in the top right corner",
-          src="../button-usage-close.png" %}
+          src="../button-usage-close.png" %}{% endexample %}
 
 ### Disabled
 
@@ -66,7 +66,7 @@ buttons do not include a disabled state.
 
 {% example palette="light",
           alt="Image of five disabled buttons not including play and close buttons, underneath is a dropdown with a disabled button",
-          src="../button-usage-disabled.png" %}
+          src="../button-usage-disabled.png" %}{% endexample %}
 
 ## Writing content
 
@@ -93,7 +93,7 @@ that matches what users will see when they arrive at their location.
 
 {% example palette="light",
           alt="Image of link button text labels",
-          src="../button-link-text-labels.png" %}
+          src="../button-link-text-labels.png" %}{% endexample %}
 
 ### Button vs. call to action text labels
 
@@ -102,7 +102,7 @@ call to action text labels are written to entice users to select a link.
 
 {% example palette="light",
           alt="Image of two buttons on the left and two calls to action on the right",
-          src="../button-vs-cta-text-labels.png" %}
+          src="../button-vs-cta-text-labels.png" %}{% endexample %}
 
 ### Character and word count
 
@@ -128,7 +128,7 @@ elements are stacked vertically
 
 {% example palette="none",
           alt="Image of buttons used in a dialog and a form",
-          src="../button-layout-placement.png" %}
+          src="../button-layout-placement.png" %}{% endexample %}
 
 ### Hierarchy
 
@@ -137,7 +137,7 @@ Primary, or Close buttons in the same area.
 
 {% example palette="light",
           alt="Image of buttons grouped by hierarchy from left to right",
-          src="../button-layout-hierarchy.png" %}
+          src="../button-layout-hierarchy.png" %}{% endexample %}
 
 ### Grouping
 
@@ -146,7 +146,7 @@ Group buttons logically into sets based on hierarchy and usage.
 
 {% example palette="light",
           alt="Image of button groups and their hierarchy from left to right",
-          src="../button-layout-grouping.png" %}
+          src="../button-layout-grouping.png" %}{% endexample %}
 
 ### Space in groups
 
@@ -156,7 +156,7 @@ buttons. If buttons are stacked, the spacing between each button should be
 
 {% example palette="light",
           alt="Image of button groups and their horizontal and vertical spacing in between each button",
-          src="../button-layout-spacing.png" %}
+          src="../button-layout-spacing.png" %}{% endexample %}
 
 ## Best practices
 
@@ -166,7 +166,7 @@ Buttons should never have more than one line of text.
 
 {% example palette="wrong",
           alt="Image of a button with two lines of text which is incorrect usage",
-          src="../button-best-practice-1.png" %}
+          src="../button-best-practice-1.png" %}{% endexample %}
 
 ### Multiple buttons
 
@@ -174,7 +174,7 @@ Do not use multiple Danger or Primary buttons in the same area.
 
 {% example palette="wrong",
           alt="Image of two danger and two primary button groups which is incorrect usage",
-          src="../button-best-practice-2.png" %}
+          src="../button-best-practice-2.png" %}{% endexample %}
 
 ### Text labels
 
@@ -182,7 +182,7 @@ Do not write button text labels that are expressive or ambiguous.
 
 {% example palette="wrong",
           alt="Image of two buttons; one has expressive language and the other has ambiguous language which is incorrect usage ",
-          src="../button-best-practice-3.png" %}
+          src="../button-best-practice-3.png" %}{% endexample %}
 
 ### Danger button
 
@@ -190,7 +190,7 @@ Do not use a Danger button for non-destructive purposes.
 
 {% example palette="wrong",
           alt="Image of a search bar using a danger button which is incorrect usage",
-          src="../button-best-practice-4.png" %}
+          src="../button-best-practice-4.png" %}{% endexample %}
 
 ### Button as a call to action
 
@@ -199,5 +199,5 @@ call to action instead.
 
 {% example palette="wrong",
           alt="Image of text styles with a button underneath that resembles a call to action",
-          src="../button-best-practice-5.png" %}
+          src="../button-best-practice-5.png" %}{% endexample %}
 

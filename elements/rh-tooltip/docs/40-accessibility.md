@@ -3,7 +3,7 @@ A tooltip will appear when the trigger receives focus and disappear when moving 
 
 {% example palette="light",
           alt="Tooltip keyboard interactions; pressing tab to focus the trigger will show the tooltip, but pressing tab again will hide the tooltip",
-          src="../tooltip-keyboard-interactions.png" %}
+          src="../tooltip-keyboard-interactions.png" %}{% endexample %}
 
 | Key {style="width: 50%" } | Result                                                       |
 | ------------------------- | ------------------------------------------------------------ |

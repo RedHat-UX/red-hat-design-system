@@ -17,20 +17,20 @@ Users can skip opening the language selector menu, but the trigger still receive
 
 {% example palette="none",
           alt="Image of a footer showing groups of focus indicators in different regions with annotation numbers",
-          src="../footer-a11y-focus-order.png" %}
+          src="../footer-a11y-focus-order.png" %}{% endexample %}
 
 ### Language selector
 Users can open the language selector menu by pressing `Enter` if the trigger has focus. If they do, they can press `Tab` to move focus to the first language. Each language can receive focus from left to right and top to bottom.
 
 {% example palette="none",
           alt="Image of a footer with the language selector menu open showing the focus order of languages",
-          src="../footer-a11y-language-selector-a.png" %}
+          src="../footer-a11y-language-selector-a.png" %}{% endexample %}
 
 When the focus is moved outside of the menu, the menu closes.
 
 {% example palette="none",
           alt="Image of a footer with the language selector menu open showing the menu closing when focus is moved",
-          src="../footer-a11y-language-selector-b.png" %}
+          src="../footer-a11y-language-selector-b.png" %}{% endexample %}
 
 ## Additional guidelines
 - Content outside of a dialog cannot be interacted with or navigated to while the dialog is open

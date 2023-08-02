@@ -5,7 +5,7 @@
 ## Sample component
 {% example palette="light",
            alt="Two examples of the alert element",
-           src="alert-sample.svg" %}
+           src="alert-sample.svg" %}{% endexample %}
 
 
 ## Demos

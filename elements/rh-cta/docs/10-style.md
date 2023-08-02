@@ -6,7 +6,7 @@ A call to action is text in a container or paired with an icon that directs user
 
 {% example palette="light",
             alt="Anatomy image showing calls to action with various annotation numbers",
-            src="../cta-anatomy.png" %}
+            src="../cta-anatomy.png" %}{% endexample %}
 
 1. Text label
 2. Container
@@ -22,11 +22,11 @@ Calls to action are available in both light and dark themes.
 
 {% example palette="light",
             alt="Image of light theme Primary, Secondary, Brick, Default, and Default video variants",
-            src="../cta-theme-light.png" %}
+            src="../cta-theme-light.png" %}{% endexample %}
 
 {% example palette="darkest",
             alt="Image of dark theme Primary, Secondary, Brick, Default, and Default video variants",
-            src="../cta-theme-dark.png" %}
+            src="../cta-theme-dark.png" %}{% endexample %}
 
 {% tokensTable %}
 | Property                          | Light theme      | Dark theme       |
@@ -52,11 +52,11 @@ The Brick variant includes a slot for an icon as well as an extra orientation.
 
 {% example palette="light",
             alt="Image of light theme Brick variants; one with text and no icon, one with an icon on the left of text, and one with an icon on top of text",
-            src="../cta-bricks-theme-light.png" %}
+            src="../cta-bricks-theme-light.png" %}{% endexample %}
 
 {% example palette="darkest",
             alt="Image of light theme Brick variants; one with text and no icon, one with an icon on the left of text, and one with an icon on top of text",
-            src="../cta-bricks-theme-dark.png" %}
+            src="../cta-bricks-theme-dark.png" %}{% endexample %}
 
 {% tokensTable %}
 | Property     | Light theme | Dark theme |
@@ -72,7 +72,7 @@ Primary, Secondary, and Default variants include a slot for a video icon. The vi
 
 {% example palette="light",
             alt="Image of Primary, Secondary, and Default variants with video icons to the right of text",
-            src="../cta-video-variants.png" %}
+            src="../cta-video-variants.png" %}{% endexample %}
 
 ### White variants
 
@@ -80,7 +80,7 @@ Dark theme includes white variants if other variants are duplicative or if they 
 
 {% example palette="darkest",
             alt="Image of Primary and Primary video variants with a white background and black text and Default and Default video variants with white text",
-            src="../cta-white-variants.png" %}
+            src="../cta-white-variants.png" %}{% endexample %}
 
 {% tokensTable %}
 | Property                      | Current Value  |
@@ -99,7 +99,7 @@ All calls to action with a container have the same border radius, but the height
 
 {% example palette="light",
             alt="Image of all variants with various specs like border radius, height, width, alignment, and more",
-            src="../cta-configuration.png" %}
+            src="../cta-configuration.png" %}{% endexample %}
 
 ## Space
 
@@ -107,7 +107,7 @@ Space values are the same on all breakpoints for calls to action. To see space v
 
 {% example palette="light",
             alt="Image of Primary, Secondary, two Brick variants, and two Default variants with spacing values in between",
-            src="../cta-space.png" %}
+            src="../cta-space.png" %}{% endexample %}
 
 {% spacerTokensTable 
     headline='',
@@ -123,15 +123,15 @@ Interaction states are visual representations used to communicate the status of 
 
 {% example palette="light",
             alt="Image of light theme hover states",
-            src="../cta-interaction-state-hover-theme-light.png" %}
+            src="../cta-interaction-state-hover-theme-light.png" %}{% endexample %}
 
 {% example palette="darkest",
             alt="Image of dark theme hover states",
-            src="../cta-interaction-state-hover-theme-dark.png" %}
+            src="../cta-interaction-state-hover-theme-dark.png" %}{% endexample %}
 
 {% example palette="darkest",
             alt="Image of dark theme white variant hover states",
-            src="../cta-interaction-state-hover-white-variants.png" %}
+            src="../cta-interaction-state-hover-white-variants.png" %}{% endexample %}
 
 {% tokensTable %}
 | Property                          | Light theme | Dark theme |
@@ -158,15 +158,15 @@ The Focus state has the same styles as the Hover state.
 
 {% example palette="light",
             alt="Image of light theme focus states",
-            src="../cta-interaction-state-focus-theme-light.png" %}
+            src="../cta-interaction-state-focus-theme-light.png" %}{% endexample %}
 
 {% example palette="darkest",
             alt="Image of dark theme focus states",
-            src="../cta-interaction-state-focus-theme-dark.png" %}
+            src="../cta-interaction-state-focus-theme-dark.png" %}{% endexample %}
 
 {% example palette="darkest",
             alt="Image of dark theme white variant focus states",
-            src="../cta-interaction-state-focus-white-variants.png" %}
+            src="../cta-interaction-state-focus-white-variants.png" %}{% endexample %}
 
 {% tokensTable %}
 | Property           | Light theme | Dark theme |
@@ -184,15 +184,15 @@ The Active state has the same styles as the Hover state.
 
 {% example palette="light",
             alt="Image of light theme active states",
-            src="../cta-interaction-state-active-theme-light.png" %}
+            src="../cta-interaction-state-active-theme-light.png" %}{% endexample %}
 
 {% example palette="darkest",
             alt="Image of dark theme active states",
-            src="../cta-interaction-state-active-theme-dark.png" %}
+            src="../cta-interaction-state-active-theme-dark.png" %}{% endexample %}
 
 {% example palette="darkest",
             alt="Image of dark theme white variant active states",
-            src="../cta-interaction-state-active-white-variants.png" %}
+            src="../cta-interaction-state-active-white-variants.png" %}{% endexample %}
 
 {% tokensTable %}
 | Property           | Light theme | Dark theme |

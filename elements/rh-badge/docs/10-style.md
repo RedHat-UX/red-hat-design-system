@@ -4,7 +4,7 @@ A badge is number text on a pill background used to reflect the count of somethi
 ### Anatomy 
 {% example palette="light",
           alt="Anatomy of a badge with annotations; number 1 is pointing to the container and number 2 is pointing to the counter number",
-          src="../badge-anatomy.png" %}
+          src="../badge-anatomy.png" %}{% endexample %}
 
 1. Container
 2. Counter number
@@ -15,19 +15,19 @@ A badge is available in the light theme only.
 
 {% example palette="light",
           alt="Light theme badges",
-          src="../badge-theme-light.png" %}
+          src="../badge-theme-light.png" %}{% endexample %}
 
 ## Configuration 
 All badges have the same height and border radius.
 
 {% example palette="light",
           alt="How a badge is constructed showing border radius and height details",
-          src="../badge-configuration.png" %}
+          src="../badge-configuration.png" %}{% endexample %}
 
 ## Space and width 
 {% example palette="light",
           alt="Badge spacing and minimum width",
-          src="../badge-space-and-width.png" %}
+          src="../badge-space-and-width.png" %}{% endexample %}
 
 {% spacerTokensTable 
   headline="",

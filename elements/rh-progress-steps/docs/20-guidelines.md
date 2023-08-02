@@ -18,7 +18,7 @@
   {% example palette="lightest",
              width=360,
              alt="Progress steps component mobile usage",
-             src="../progress-steps-mobile-usage.svg" %}
+             src="../progress-steps-mobile-usage.svg" %}{% endexample %}
 
 ### Progression
 
@@ -35,12 +35,12 @@
   {% example palette="lightest",
              width=691,
              alt="Progress steps component progression, part 1",
-             src="../progress-steps-progression-1.svg" %}
+             src="../progress-steps-progression-1.svg" %}{% endexample %}
 
   {% example palette="lightest",
              width=687,
              alt="Progress steps component progression, part 2",
-             src="../progress-steps-progression-2.svg" %}
+             src="../progress-steps-progression-2.svg" %}{% endexample %}
 
 ### Error validation
 
@@ -53,7 +53,7 @@
   {% example palette="lightest",
              width=687,
              alt="Progress steps component validation",
-             src="../progress-steps-validation.svg" %}
+             src="../progress-steps-validation.svg" %}{% endexample %}
 
 ### Completion
 
@@ -69,7 +69,7 @@
   {% example palette="lightest",
              width=702,
              alt="Progress steps component completion",
-             src="../progress-steps-completion.svg" %}
+             src="../progress-steps-completion.svg" %}{% endexample %}
 
 
 ## Behavior
@@ -84,7 +84,7 @@
   {% example palette="lightest",
              width=728,
              alt="Progress steps component behavior",
-             src="../progress-steps-behavior.svg" %}
+             src="../progress-steps-behavior.svg" %}{% endexample %}
 
 
 ## Interaction states
@@ -96,28 +96,28 @@
   {% example palette="lightest",
              width=738,
              alt="Progress steps component interaction state, link",
-             src="../progress-steps-interaction-states-link.svg" %}
+             src="../progress-steps-interaction-states-link.svg" %}{% endexample %}
 
 ### Hover
 
   {% example palette="lightest",
              width=738,
              alt="Progress steps component interaction state, hover",
-             src="../progress-steps-interaction-states-hover.svg" %}
+             src="../progress-steps-interaction-states-hover.svg" %}{% endexample %}
 
 ### Focus
 
   {% example palette="lightest",
              width=738,
              alt="Progress steps component interaction state, focus",
-             src="../progress-steps-interaction-states-focus.svg" %}
+             src="../progress-steps-interaction-states-focus.svg" %}{% endexample %}
 
 ### Active
 
   {% example palette="lightest",
              width=738,
              alt="Progress steps component interaction state, active",
-             src="../progress-steps-interaction-states-active.svg" %}
+             src="../progress-steps-interaction-states-active.svg" %}{% endexample %}
 
 ### Tab order
 
@@ -128,7 +128,7 @@
   {% example palette="lightest",
              width=738,
              alt="Progress steps component tab order",
-             src="../progress-steps-tab-order.svg" %}
+             src="../progress-steps-tab-order.svg" %}{% endexample %}
 
 
 
@@ -155,7 +155,7 @@
   {% example palette="wrong",
              width=698,
              alt="Progress steps component best practice 1",
-             src="../progress-steps-best-practice-1.svg" %}
+             src="../progress-steps-best-practice-1.svg" %}{% endexample %}
 
 ### Usage on mobile
 
@@ -166,7 +166,7 @@
   {% example palette="wrong",
              width=360,
              alt="Progress steps component best practice 2",
-             src="../progress-steps-best-practice-2.svg" %}
+             src="../progress-steps-best-practice-2.svg" %}{% endexample %}
 
 ### Validation
 
@@ -177,7 +177,7 @@
   {% example palette="wrong",
              width=687,
              alt="Progress steps component best practice 3",
-             src="../progress-steps-best-practice-3.svg" %}
+             src="../progress-steps-best-practice-3.svg" %}{% endexample %}
 
 ### Text labels
 
@@ -188,7 +188,7 @@
   {% example palette="wrong",
              width=687,
              alt="Progress steps component best practice 4",
-             src="../progress-steps-best-practice-4.svg" %}
+             src="../progress-steps-best-practice-4.svg" %}{% endexample %}
 
 ### Carousel
 
@@ -198,7 +198,7 @@
   {% example palette="wrong",
              width=687,
              alt="Progress steps component best practice 5",
-             src="../progress-steps-best-practice-5.svg" %}
+             src="../progress-steps-best-practice-5.svg" %}{% endexample %}
 
 ### Tabs
 
@@ -208,5 +208,5 @@
   {% example palette="wrong",
              width=687,
              alt="Progress steps component best practice 6",
-             src="../progress-steps-best-practice-6.svg" %}
+             src="../progress-steps-best-practice-6.svg" %}{% endexample %}
 

@@ -3,7 +3,7 @@
 {% example palette="light",
           width=143,
           alt="Two badges; from left to right, one badge has a light gray background with a dark gray counter number and the other badge has a blue background with a white counter number",
-          src="./badge-sample-element.png" %}
+          src="./badge-sample-element.png" %}{% endexample %}
 
 
 ## Sample component

@@ -3,7 +3,7 @@
 
 {% example palette="light",
           alt="An accordion with four collapsed panels and one expanded panel",
-          src="./accordion-sample-element.png" %}
+          src="./accordion-sample-element.png" %}{% endexample %}
 
 ## Sample component
 

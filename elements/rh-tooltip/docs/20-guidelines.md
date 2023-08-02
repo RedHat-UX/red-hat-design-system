@@ -11,28 +11,28 @@ Content in a tooltip is limited to text only. Consider the following when writin
 
 {% example palette="light",
           alt="Various text examples; from left to right, the text length starts very short, but gets longer and longer",
-          src="../tooltip-content.png" %}
+          src="../tooltip-content.png" %}{% endexample %}
 
 ## Orientation 
 The correct orientation of a tooltip depends on the amount of content and browser window. If a tooltip covers up important information or gets cut off, choose a different orientation.
 
 {% example palette="light",
           alt="Various orientation examples; from left to right and top to bottom, top, right, bottom, and left",
-          src="../tooltip-orientation.png" %}
+          src="../tooltip-orientation.png" %}{% endexample %}
 
 ## Behavior 
 When a cursor or focus is moved, the tooltip disappears. On mobile devices, users must tap to trigger a tooltip and then tap again to make it disappear.
 
 {% example palette="light",
           alt="Various behavior examples; from top to bottom, how a tooltip behaves when the trigger is hovered, focused, and tapped",
-          src="../tooltip-behavior.png" %}
+          src="../tooltip-behavior.png" %}{% endexample %}
 
 ## Responsive design 
 A tooltip can generally be used on both large and small breakpoints if the content is not too long.
 
 {% example palette="none",
           alt="Examples of a tooltip used on large and small breakpoints",
-          src="../tooltip-responsive-design.png" %}
+          src="../tooltip-responsive-design.png" %}{% endexample %}
 
 ## Best practices 
 ### White on white 
@@ -40,18 +40,18 @@ Do not use a dark theme tooltip in light theme environments.
 
 {% example palette="wrong",
           alt="A dark theme or white tooltip used on a white background is incorrect usage",
-          src="../tooltip-best-practice-1.png" %}
+          src="../tooltip-best-practice-1.png" %}{% endexample %}
 
 ### Cut off by browser window 
 A tooltip should not be cut off by the browser window. Change the orientation if it does.
 
 {% example palette="wrong",
           alt="If using the top orientation will cause the tooltip to get cut off, that is incorrect usage",
-          src="../tooltip-best-practice-2.png" %}
+          src="../tooltip-best-practice-2.png" %}{% endexample %}
 
 ### Unnecessary pairing 
 Do not add a tooltip to interface elements or actions that do not require further explanation.
 
 {% example palette="wrong",
           alt="Pairing a tooltip with an element that already has adequate descriptive text is incorrect usage",
-          src="../tooltip-best-practice-3.png" %}
+          src="../tooltip-best-practice-3.png" %}{% endexample %}

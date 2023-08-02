@@ -25,7 +25,7 @@ navigation.
 
 {% example palette="lightest",
            alt="Image of the primary navigation, secondary navigation, and subnavigation being compared",
-           src="../subnav-vs-other-navs.png" %}
+           src="../subnav-vs-other-navs.png" %}{% endexample %}
 
 ### Number of links
 
@@ -34,7 +34,7 @@ four or five links.
 
 {% example palette="lightest",
            alt="Image of a subnavigation with five short link text labels",
-           src="../subnav-number-of-links.png" %}
+           src="../subnav-number-of-links.png" %}{% endexample %}
 
 ### Inset
 
@@ -43,7 +43,7 @@ text labels, and overflow buttons.
 
 {% example palette="lightest",
            alt="Image of three desktop and one mobile subnavigations with various inset values",
-           src="../subnav-inset.png" %}
+           src="../subnav-inset.png" %}{% endexample %}
 
 <hgroup>
 
@@ -58,7 +58,7 @@ strategist to shorten them.
 
 {% example palette="lightest",
            alt="Image of two subnavigations; one with short text labels and one with long text labels",
-           src="../subnav-link-text-labels.png" %}
+           src="../subnav-link-text-labels.png" %}{% endexample %}
 
 ### Character count
 
@@ -79,7 +79,7 @@ A subnavigation can be placed below the primary navigation or a heading.
 
 {% example palette="none",
            alt="Image of subnavigations positioned below the primary navigation and a heading",
-           src="../subnav-layout.png" %}
+           src="../subnav-layout.png" %}{% endexample %}
 
 <hgroup>
 
@@ -94,7 +94,7 @@ user moves from page to page.
 
 {% example palette="lightest",
            alt="Image of a desktip and mobile subnavigation showing with the current page indicator visible",
-           src="../subnav-current-page-indicator.png" %}
+           src="../subnav-current-page-indicator.png" %}{% endexample %}
 
 ### Scrolling
 
@@ -108,13 +108,13 @@ positioned under the primary navigation or heading again.
 
 {% example palette="none",
            alt="Image of a subnavigation and how it behaves when scrolling under the primary navigation",
-           src="../subnav-scrolling-primary-nav.png" %}
+           src="../subnav-scrolling-primary-nav.png" %}{% endexample %}
 
 ### With heading
 
 {% example palette="none",
            alt="Image of a subnavigation and how it behaves when scrolling under a heading",
-           src="../subnav-scrolling-heading.png" %}
+           src="../subnav-scrolling-heading.png" %}{% endexample %}
 
 ### Overflow
 
@@ -124,7 +124,7 @@ scroll to reveal hidden links.
 
 {% example palette="lightest",
            alt="Image of a desktop subnavigation with no overflow buttons and two mobile subnavigations with overflow buttons visible",
-           src="../subnav-overflow.png" %}
+           src="../subnav-overflow.png" %}{% endexample %}
 
 ### Navigating overflow links
 
@@ -135,7 +135,7 @@ view.
 
 {% example palette="lightest",
            alt="Image of selecting a cut off link and the list of links shifting to reveal the selected link in full view",
-           src="../subnav-navigating-overflow-links.png" %}
+           src="../subnav-navigating-overflow-links.png" %}{% endexample %}
 
 ## Responsive design
 
@@ -148,13 +148,13 @@ labels.
 
 {% example palette="none",
            alt="Image of subnavigations on large breakpoints",
-           src="../subnav-responsive-breakpoints-large.png" %}
+           src="../subnav-responsive-breakpoints-large.png" %}{% endexample %}
 
 ### Small breakpoints
 
 {% example palette="none",
            alt="Image of subnavigations on small breakpoints",
-           src="../subnav-responsive-breakpoints-small.png" %}
+           src="../subnav-responsive-breakpoints-small.png" %}{% endexample %}
 
 <hgroup>
 
@@ -167,7 +167,7 @@ Do not position the subnavigation above the primary navigation.
 
 {% example palette="wrong",
            alt="Image of a subnavigation above the primary navigation, which is incorrect usage",
-           src="../subnav-best-practice-1.png" %}
+           src="../subnav-best-practice-1.png" %}{% endexample %}
 
 ### Not enough links
 
@@ -175,7 +175,7 @@ There should be at least two links minimum.
 
 {% example palette="wrong",
            alt="Image of a subnavigation with only one link, which is incorrect usage",
-           src="../subnav-best-practice-2.png" %}
+           src="../subnav-best-practice-2.png" %}{% endexample %}
 
 ### Too many links
 
@@ -184,7 +184,7 @@ at large breakpoints.
 
 {% example palette="wrong",
            alt="Image of a subnavigation with seven links and overflow buttons, which is incorrect usage",
-           src="../subnav-best-practice-3.png" %}
+           src="../subnav-best-practice-3.png" %}{% endexample %}
 
 ### Extra spacing
 
@@ -192,7 +192,7 @@ Do not add extra spacing or stretch the width of links.
 
 {% example palette="wrong",
            alt="Image of a subnavigation with stretched links, which is incorrect usage",
-           src="../subnav-best-practice-4.png" %}
+           src="../subnav-best-practice-4.png" %}{% endexample %}
 
 ### Overflow buttons
 
@@ -200,5 +200,5 @@ Overflow buttons should not be visible if all links are visible.
 
 {% example palette="wrong",
            alt="Image of a subnavigation with only two links and overflow buttons, which is incorrect usage",
-           src="../subnav-best-practice-5.png" %}
+           src="../subnav-best-practice-5.png" %}{% endexample %}
 

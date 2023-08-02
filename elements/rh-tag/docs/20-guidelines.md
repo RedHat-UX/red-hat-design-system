@@ -26,7 +26,7 @@ many users. Learn more in the [Accessibility](/accessibility) section.
         width=404,
         alt="A row of filled tags with text ‘Filled tags’ underneath and a row 
         of unfilled tags with text ‘Unfilled tags’ underneath",
-        src="../tag-variants-colors.png" %}
+        src="../tag-variants-colors.png" %}{% endexample %}
 
 ## Icons
 
@@ -40,7 +40,7 @@ tags of the same color.
 
 {% example palette="light",
         alt="A row of tags showing examples of optional icons",
-        src="../tag-icons.png" %}
+        src="../tag-icons.png" %}{% endexample %}
 
 ## White tag
 
@@ -65,7 +65,7 @@ tags because they are more visually prominent.
 
 {% example palette="light",
         alt="A row of filled tags with examples of unique status text labels per each color",
-        src="../tag-status-color.png" %}
+        src="../tag-status-color.png" %}{% endexample %}
 
 ### Text
 
@@ -74,7 +74,7 @@ color that makes sense.
 
 {% example palette="light",
         alt="Two groups of two tags with examples of correct status text labels",
-        src="../tag-status-text.png" %}
+        src="../tag-status-text.png" %}{% endexample %}
 
 
 
@@ -89,7 +89,7 @@ instead.
 
 {% example palette="light",
         alt="Two groups of two tags with examples of correct and incorrect text labels",
-        src="../tag-text-labels.png" %}
+        src="../tag-text-labels.png" %}{% endexample %}
 
 | Element    | Character count |
 | ---------- | --------------- |
@@ -104,7 +104,7 @@ in one row, a new row will appear.
 
 {% example palette="light",
         alt="Two groups of two tags, one group is three tags in one row and the other group is two tags in one row and one tag in a second row",
-        src="../tag-grouping.png" %}
+        src="../tag-grouping.png" %}{% endexample %}
 
 ## Best practices
 
@@ -115,7 +115,7 @@ container.
 
 {% example palette="light",
         alt="Two rows of tags; the first row shows a mix of variants and the second row shows a mix of tags with and without icons, both are incorrect usage",
-        src="../tag-best-practice-1.png" %}
+        src="../tag-best-practice-1.png" %}{% endexample %}
 
 ### Dark theme tags
 
@@ -124,7 +124,7 @@ dark theme tags.
 
 {% example palette="darkest",
         alt="Light theme tags used on a dark background which is incorrect usage",
-        src="../tag-best-practice-2.png" %}
+        src="../tag-best-practice-2.png" %}{% endexample %}
 
 ### Custom tags
 
@@ -133,7 +133,7 @@ Do not make your own custom tags. If you need a custom set of tags designed,
 
 {% example palette="light",
         alt="Three tags with custom colors which is incorrect usage",
-        src="../tag-best-practice-3.png" %}
+        src="../tag-best-practice-3.png" %}{% endexample %}
 
 
 

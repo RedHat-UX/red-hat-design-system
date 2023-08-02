@@ -14,7 +14,7 @@ a button. It allows a user to input text and then perform a search.
 
 {% example palette="none",
     alt="Search bar component sample",
-    src="./search-bar-sample.svg" %}
+    src="./search-bar-sample.svg" %}{% endexample %}
 
 {% repoStatus %}
 
@@ -25,7 +25,7 @@ red button that is placed on the right.
 
 {% example palette="lightest",
     alt="Search bar component blueprint",
-    src="./search-bar-blueprint.svg" %}
+    src="./search-bar-blueprint.svg" %}{% endexample %}
 
 #### Button
 
@@ -41,7 +41,7 @@ buttons and calls to action.
 
 {% example palette="lightest",
     alt="Search bar component button vs. CTA",
-    src="./search-bar-button-vs-cta.svg" %}
+    src="./search-bar-button-vs-cta.svg" %}{% endexample %}
 
 ## Theme
 
@@ -51,7 +51,7 @@ The light theme search bar includes a light theme form field and red button.
 
 {% example palette="lightest",
     alt="Search bar component, light theme",
-    src="./search-bar-light-theme.svg" %}
+    src="./search-bar-light-theme.svg" %}{% endexample %}
   
 
 #### Dark theme
@@ -60,7 +60,7 @@ For now, the light theme search bar can also be used in the dark theme.
 
 {% example palette="darkest",
     alt="Search bar component, dark theme",
-    src="./search-bar-dark-theme.svg" %}
+    src="./search-bar-dark-theme.svg" %}{% endexample %}
 
 ## Usage
 
@@ -74,7 +74,7 @@ boundaries of whatever container or grid it is placed in.
 
 {% example palette="medium",
     alt="Search bar component usage",
-    src="./search-bar-layout.svg" %}
+    src="./search-bar-layout.svg" %}{% endexample %}
 
 #### Content
 
@@ -85,7 +85,7 @@ resources), a user might expect to search through an individual page.
 
 {% example palette="lightest",
     alt="Search bar component placeholder text options",
-    src="./search-bar-placeholder-text.svg" %}
+    src="./search-bar-placeholder-text.svg" %}{% endexample %}
 
 ## Behavior
 
@@ -102,7 +102,7 @@ Visit the [Form](/patterns/form/) pattern page to learn more about form fields.
 
 {% example palette="lightest",
     alt="Search bar component styling changes",
-    src="./search-bar-form-field.svg" %}
+    src="./search-bar-form-field.svg" %}{% endexample %}
 
 #### Typeahead
 
@@ -112,7 +112,7 @@ options.
 
 {% example palette="lightest",
     alt="Search bar component typeahead",
-    src="./search-bar-typeahead.svg" %}
+    src="./search-bar-typeahead.svg" %}{% endexample %}
   
 #### Errors
 
@@ -127,7 +127,7 @@ errors.
 
 {% example palette="lightest",
     alt="Search bar component form field errors",
-    src="./search-bar-errors.svg" %}
+    src="./search-bar-errors.svg" %}{% endexample %}
 
 ## Interaction states
 
@@ -140,7 +140,7 @@ more about interaction states.
 
 {% example palette="lightest",
     alt="Search bar component interaction state, link",
-    src="./search-bar-interaction-states-link.svg" %}
+    src="./search-bar-interaction-states-link.svg" %}{% endexample %}
 
 #### Hover
 
@@ -148,7 +148,7 @@ A blue line appears at the bottom of the form field indicating it is selectable.
 
 {% example palette="lightest",
     alt="Search bar component interaction state, hover",
-    src="./search-bar-interaction-states-hover.svg" %}
+    src="./search-bar-interaction-states-hover.svg" %}{% endexample %}
 
 #### Focus
 
@@ -158,7 +158,7 @@ moved away, the placeholder text will be visible again.
 
 {% example palette="lightest",
     alt="Search bar component interaction state, focus",
-    src="./search-bar-interaction-states-focus.svg" %}
+    src="./search-bar-interaction-states-focus.svg" %}{% endexample %}
 
 #### Active
 
@@ -168,7 +168,7 @@ away, the placeholder text will be visible again.
 
 {% example palette="lightest",
     alt="Search bar component interaction state, active",
-    src="./search-bar-interaction-states-active.svg" %}
+    src="./search-bar-interaction-states-active.svg" %}{% endexample %}
 
 #### Tab order
 
@@ -178,7 +178,7 @@ button without an error being displayed.
 
 {% example palette="lightest",
     alt="Search bar component tab order",
-    src="./search-bar-tab-order.svg" %}
+    src="./search-bar-tab-order.svg" %}{% endexample %}
   
 ## Accessibility
 
@@ -201,19 +201,19 @@ whereas the button always stays the same size.
 
 {% example palette="none",
     alt="Search bar component responsive design, desktop",
-    src="./search-bar-responsive-desktop.svg" %}
+    src="./search-bar-responsive-desktop.svg" %}{% endexample %}
 
 #### Tablet
 
 {% example palette="none",
     alt="Search bar component responsive design, tablet",
-    src="./search-bar-responsive-tablet.svg" %}
+    src="./search-bar-responsive-tablet.svg" %}{% endexample %}
 
 #### Mobile
 
 {% example palette="none",
     alt="Search bar component responsive design, mobile",
-    src="./search-bar-responsive-mobile.svg" %}
+    src="./search-bar-responsive-mobile.svg" %}{% endexample %}
 
 ## Best practices
 
@@ -224,7 +224,7 @@ Do not write placeholder text too long, it should be short and to the point
 
 {% example palette="wrong",
     alt="Search component best practice 1",
-    src="./search-bar-best-practice-1.svg" %}
+    src="./search-bar-best-practice-1.svg" %}{% endexample %}
 
 #### Call to action as button
 
@@ -232,7 +232,7 @@ Do not replace the button with a call to action.
 
 {% example palette="wrong",
     alt="Search component best practice 2",
-    src="./search-bar-best-practice-2.svg" %}
+    src="./search-bar-best-practice-2.svg" %}{% endexample %}
 
 #### Different style or color
 
@@ -241,7 +241,7 @@ Do not use a different button color or style when using a search bar on Red Hat
 
 {% example palette="wrong",
     alt="Search component best practice 3",
-    src="./search-bar-best-practice-3.svg" %}
+    src="./search-bar-best-practice-3.svg" %}{% endexample %}
 
 #### Disabled
 
@@ -251,7 +251,7 @@ in the form field, an error should be displayed instead.
 
 {% example palette="wrong",
     alt="Search component best practice 4",
-    src="./search-bar-best-practice-4.svg" %}
+    src="./search-bar-best-practice-4.svg" %}{% endexample %}
 
 
 #### Solo button
@@ -265,7 +265,7 @@ use buttons.
 
 {% example palette="wrong",
     alt="Search component best practice 5",
-    src="./search-bar-best-practice-5.svg" %}
+    src="./search-bar-best-practice-5.svg" %}{% endexample %}
 
 #### Rearranging the component
 
@@ -274,7 +274,7 @@ changing its width.
 
 {% example palette="wrong",
     alt="Search component best practice 6",
-    src="./search-bar-best-practice-6.svg" %}
+    src="./search-bar-best-practice-6.svg" %}{% endexample %}
 
 ## Spacing
 
@@ -289,6 +289,6 @@ between elements.
 
 {% example palette="light",
         alt="Search bar spacing",
-        src="./search-bar-spacing.svg" %}
+        src="./search-bar-spacing.svg" %}{% endexample %}
 
 {% include 'feedback.html' %}

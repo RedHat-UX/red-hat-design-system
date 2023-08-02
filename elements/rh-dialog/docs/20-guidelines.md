@@ -34,7 +34,7 @@ like marketing pages.
 
 {% example palette="none",
            alt="A dialog container spanning a 12-column grid that is fixed in the center of the page",
-           src="../dialog-width-fixed.png" %}
+           src="../dialog-width-fixed.png" %}{% endexample %}
 
 ### Full-width
 
@@ -43,7 +43,7 @@ grid like apps or dashboards.
 
 {% example palette="none",
            alt="A dialog container spanning a 6-column fluid grid that takes up the whole screen",
-           src="../dialog-width-full.png" %}
+           src="../dialog-width-full.png" %}{% endexample %}
 
 
 
@@ -63,7 +63,7 @@ actions. When confirming a non-destructive action, do the following:
 
 {% example palette="none",
            alt="Non-destructive confirmation dialog example with a blue primary button",
-           src="../dialog-confirmation-non-destructive.png" %}
+           src="../dialog-confirmation-non-destructive.png" %}{% endexample %}
 
 When confirming a destructive action, do the following.
 
@@ -72,7 +72,7 @@ When confirming a destructive action, do the following.
 
 {% example palette="none",
            alt="Destructive confirmation dialog example with a red primary button",
-           src="../dialog-confirmation-destructive.png" %}
+           src="../dialog-confirmation-destructive.png" %}{% endexample %}
 
 ### Error
 
@@ -82,7 +82,7 @@ and then provide actionable steps toward a solution.
 
 {% example palette="none",
            alt="Error dialog example with a blue primary button",
-           src="../dialog-error.png" %}
+           src="../dialog-error.png" %}{% endexample %}
 
 ### Passive
 
@@ -99,7 +99,7 @@ using a passive dialog, consider the following:
 
 {% example palette="none",
            alt="Passive dialog example with a blue primary button",
-           src="../dialog-passive.png" %}
+           src="../dialog-passive.png" %}{% endexample %}
 
 ### Video player dialog
 
@@ -108,7 +108,7 @@ width and include a close button.
 
 {% example palette="none",
            alt="A dialog video player spanning a 12-column grid with a white close button",
-           src="../dialog-video-player.png" %}
+           src="../dialog-video-player.png" %}{% endexample %}
 
 
 
@@ -156,7 +156,7 @@ scroll horizontally.
 
 {% example palette="none",
            alt="Dialog with a long amount of content showing visible gradient at the bottom of the body text section",
-           src="../dialog-overflow.png" %}
+           src="../dialog-overflow.png" %}{% endexample %}
 
 
 
@@ -169,14 +169,14 @@ the backdrop and viewport.
 
 {% example palette="none",
            alt="Dialog with container horizontally and vertically centered",
-           src="../dialog-placement-center.png" %}
+           src="../dialog-placement-center.png" %}{% endexample %}
 
 By default, a dialog container is horizontally and vertically centered on top of 
 the backdrop and viewport.
 
 {% example palette="none",
            alt="Dialog with container horizontally centered, but positioned at the top of the page",
-           src="../dialog-placement-top.png" %}
+           src="../dialog-placement-top.png" %}{% endexample %}
 
 
 
@@ -189,7 +189,7 @@ breakpoints.
 
 {% example palette="none",
            alt="A dialog container on a large breakpoint",
-           src="../dialog-breakpoint-large.png" %}
+           src="../dialog-breakpoint-large.png" %}{% endexample %}
 
 ### Small breakpoints
 
@@ -198,7 +198,7 @@ full-width and become taller.
 
 {% example palette="none",
            alt="Two dialog containers on small breakpoints, one tablet size and one mobile size",
-           src="../dialog-breakpoint-small.png" %}
+           src="../dialog-breakpoint-small.png" %}{% endexample %}
 
 
 
@@ -212,7 +212,7 @@ bring users back to their original workflow as quickly as possible.
 
 {% example palette="wrong",
            alt="A dialog container with a three-panel accordion which is incorrect usage",
-           src="../dialog-best-practice-1.png" %}
+           src="../dialog-best-practice-1.png" %}{% endexample %}
 
 ### Unclear context
 
@@ -221,7 +221,7 @@ action.
 
 {% example palette="wrong",
            alt="A dialog container with vague text which is incorrect usage",
-           src="../dialog-best-practice-2.png" %}
+           src="../dialog-best-practice-2.png" %}{% endexample %}
 
 ### Two many buttons
 
@@ -230,5 +230,5 @@ variants.
 
 {% example palette="wrong",
            alt="A dialog container with three buttons which is incorrect usage",
-           src="../dialog-best-practice-3.png" %}
+           src="../dialog-best-practice-3.png" %}{% endexample %}
 

@@ -10,7 +10,7 @@ additional emphasis or context.
 ### Anatomy
 {% example palette="light",
            alt="Anatomy of a statistic with annotations; number 1 is pointing to an optional icon, number 2 is pointing to optional title text, number 3 is pointing to data text, number 4 is pointing to body text, and number 5 is pointing to an optional call to action",
-           src="../stat-anatomy.png" %}
+           src="../stat-anatomy.png" %}{% endexample %}
 
 1. Optional icon
 2. Optional title text
@@ -25,7 +25,7 @@ elements.
 
 {% example palette="light",
            alt="Default size and Large size statistics both with icons and body text; text under the default size says ‘Default size’ and text under the large size says ‘Large size’",
-           src="../stat-sizes.png" %}
+           src="../stat-sizes.png" %}{% endexample %}
 
 {% tokensTable %}
 
@@ -52,14 +52,14 @@ requirements.
 {% example
    palette="light",
    alt="Light theme statistic with a red icon, red data text, and black body text",
-   src="../stat-theme-light.png" %}
+   src="../stat-theme-light.png" %}{% endexample %}
 
 ### Dark theme
 
 {% example
    palette="darkest",
    alt="Dark theme statistic with a white icon and white text styles to meet accessibility contrast requirements",
-   src="../stat-theme-dark.png" %}
+   src="../stat-theme-dark.png" %}{% endexample %}
 
 ## Configuration
 ### Container
@@ -72,7 +72,7 @@ surrounding content is all left aligned.
 {% example
   palette="light",
   alt="Statistic with a dotted vertical line through it",
-  src="../stat-configuration.png" %}
+  src="../stat-configuration.png" %}{% endexample %}
 
 ### Order
 A statistic was designed to be read from top to bottom. If certain optional 
@@ -81,7 +81,7 @@ elements are included, the order will change.
 {% example
   palette="light",
   alt="Statistic with boxes around each element slot, there are also numbers next to each box arranged 1 to 4 from top to bottom",
-  src="../stat-configuration-order.png" %}
+  src="../stat-configuration-order.png" %}{% endexample %}
 
 1. Icon (always ordered first if included)
 2. Title text and data text (ordered first if there is no icon)
@@ -97,7 +97,7 @@ go to the [Guidelines](../guidelines) page.
 {% example 
   palette="light",
   alt="Default and Large size spacing between all elements",
-  src="../stat-space.png" %}
+  src="../stat-space.png" %}{% endexample %}
 
 {% spacerTokensTable 
     headline='',

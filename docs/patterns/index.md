@@ -36,7 +36,7 @@ create uniform, accessible experiences.
                  wrapperClass=wrapperClass,
                  alt=pattern.data.title,
                  srcAbsolute="true",
-                 src=('/assets/patterns/all-patterns-' + slug + '.png') %}
+                 src=('/assets/patterns/all-patterns-' + slug + '.png') %}{% endexample %}
     </a>
     <a href="{{ pattern.url }}"><h3>{{ pattern.data.title }}</h3></a>
     <p>{{ summary }}</p>

@@ -6,7 +6,7 @@
   {% example palette="light",
              width=360,
              alt="Example of a card element",
-             src="card.svg" %}
+             src="card.svg" %}{% endexample %}
 
 
 ## Demos

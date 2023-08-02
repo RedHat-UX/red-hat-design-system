@@ -6,7 +6,7 @@ A blockquote is a styled quotation and citation offset from other text styles on
 {% example palette="light",
            class="centered",
            alt="Image of a blockquote including a quote icon, quotation text, and citation text",
-           src="./blockquote-sample.png" %}
+           src="./blockquote-sample.png" %}{% endexample %}
 
 ## Demo
   View a live version of this component and see how it can be customized.

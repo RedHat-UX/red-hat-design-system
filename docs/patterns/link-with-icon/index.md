@@ -13,7 +13,7 @@ Link with icon features an icon that adds context to the link itself. It’s pos
 
 {% example palette="none",
            alt="Link with icon",
-           src="./link-with-icon.svg" %}
+           src="./link-with-icon.svg" %}{% endexample %}
 
 {% repoStatus %}
 
@@ -23,17 +23,17 @@ Link with icon is available in light and dark themes. It’s a grouping of a sma
 
 {% example palette="light",
            alt="Link with icon specs",
-           src="./link-with-icon-style.svg" %}
+           src="./link-with-icon-style.svg" %}{% endexample %}
 
 ### Theme
 
 {% example palette="light",
            alt="Link with icon theme light",
-           src="./link-with-icon-theme-light.svg" %}
+           src="./link-with-icon-theme-light.svg" %}{% endexample %}
   
 {% example palette="darkest",
            alt="Link with icon theme dark",
-           src="./link-with-icon-theme-dark.svg" %}
+           src="./link-with-icon-theme-dark.svg" %}{% endexample %}
 
 ## Usage
 
@@ -45,7 +45,7 @@ Don't increase the icon size because the link text size will appear smaller.
 
 {% example palette="wrong",
            alt="Link with icon icon size issue",
-           src="./link-with-icon-best-practices.svg" %}
+           src="./link-with-icon-best-practices.svg" %}{% endexample %}
 
 ## Behavior
 
@@ -55,11 +55,11 @@ Link with icon can be used on large and small screens. When the width of the lin
 
 {% example palette="none",
            alt="Link with icon responsive desktop",
-           src="./link-with-icon-responsive.svg" %}
+           src="./link-with-icon-responsive.svg" %}{% endexample %}
 
 {% example palette="none",
            alt="Link with icon responsive mobile",
-           src="./link-with-icon-responsive-mobile.svg" %}
+           src="./link-with-icon-responsive-mobile.svg" %}{% endexample %}
 
 Some text styles reduce in size on small screens. Learn more about typography on mobile
 {.footnote}
@@ -70,11 +70,11 @@ The icon and the link are always vertically-aligned.
 
 {% example palette="light",
            alt="Link with icon alignment",
-           src="./link-with-icon-alignment-1.svg" %}
+           src="./link-with-icon-alignment-1.svg" %}{% endexample %}
 
 {% example palette="light",
            alt="Link with icon alignment",
-           src="./link-with-icon-alignment-2.svg" %}
+           src="./link-with-icon-alignment-2.svg" %}{% endexample %}
 
 ## Interaction states
 
@@ -86,7 +86,7 @@ Link with icon uses [space tokens](/tokens/space/) to define spacing values betw
 
 {% example palette="light",
            alt="Link with icon spacing",
-           src="./link-with-icon-spacing.svg" %}
+           src="./link-with-icon-spacing.svg" %}{% endexample %}
 
 {% include 'feedback.html' %}
 

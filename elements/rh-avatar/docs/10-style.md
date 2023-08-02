@@ -15,7 +15,7 @@
 
   {% example palette="light",
               alt="Anatomy of an avatar group with numbered annotations",
-              src="../avatar-anatomy.png" %}
+              src="../avatar-anatomy.png" %}{% endexample %}
 
   1. Thumbnail
   2. Job details text
@@ -32,7 +32,7 @@
 
   {% example palette="light",
               alt="Image of all avatar groups including default, photo, green squares, purple squares, and blue triangles",
-              src="../avatar-variations.png" %}
+              src="../avatar-variations.png" %}{% endexample %}
 
 ### Plain
   The avatar thumbnail can be used on its own in places like 
@@ -41,7 +41,7 @@
 
   {% example palette="light",
               alt="Image of a row of only avatar thumbnails",
-              src="../avatar-plain.png" %}
+              src="../avatar-plain.png" %}{% endexample %}
 
 ### Link
   Links can be applied to full name or job details text.
@@ -52,7 +52,7 @@
 
   {% example palette="light",
               alt="Image of two avatar groups; one has the full name linked and the other has the company name linked",
-              src="../avatar-links.png" %}
+              src="../avatar-links.png" %}{% endexample %}
 
 
 ## Theme
@@ -63,11 +63,11 @@
 
   {% example palette="light",
               alt="Image of a light theme avatar group",
-              src="../avatar-theme-light.png" %}
+              src="../avatar-theme-light.png" %}{% endexample %}
 
   {% example palette="darkest",
               alt="Image of a dark theme avatar group",
-              src="../avatar-theme-dark.png" %}
+              src="../avatar-theme-dark.png" %}{% endexample %}
 
   {% tokensTable %}
 
@@ -89,14 +89,14 @@
 
   {% example palette="light",
               alt="Image of two avatar groups showing specs like height, width, and centering/alignment",
-              src="../avatar-configuration.png" %}
+              src="../avatar-configuration.png" %}{% endexample %}
 
 ### Job details text
   Job details text has specific styles applied to it.
 
   {% example palette="light",
               alt="Image of two avatar groups showing only job details text left justified and center justified",
-              src="../avatar-job-details-text.png" %}
+              src="../avatar-job-details-text.png" %}{% endexample %}
 
   {% tokensTable %}
 
@@ -116,7 +116,7 @@
 
   {% example palette="light",
               alt="Image of all avatar groups with spacing values in between",
-              src="../avatar-space.png" %}
+              src="../avatar-space.png" %}{% endexample %}
 
   {% spacerTokensTable 
       headline='',
@@ -134,11 +134,11 @@
 
   {% example palette="light",
              alt="Image of light theme avatar group hover states",
-             src="../avatar-interaction-state-hover-theme-light.png" %}
+             src="../avatar-interaction-state-hover-theme-light.png" %}{% endexample %}
 
   {% example palette="darkest",
               alt="Image of dark theme avatar group hover states",
-              src="../avatar-interaction-state-hover-theme-dark.png" %}
+              src="../avatar-interaction-state-hover-theme-dark.png" %}{% endexample %}
 
   {% tokensTable %}
 
@@ -159,11 +159,11 @@
 
   {% example palette="light",
               alt="Image of light theme avatar group focus states",
-              src="../avatar-interaction-state-focus-theme-light.png" %}
+              src="../avatar-interaction-state-focus-theme-light.png" %}{% endexample %}
 
   {% example palette="darkest",
               alt="Image of dark theme avatar group focus states",
-              src="../avatar-interaction-state-focus-theme-dark.png" %}
+              src="../avatar-interaction-state-focus-theme-dark.png" %}{% endexample %}
 
   {% tokensTable %}
 
@@ -184,11 +184,11 @@
   {% example palette="light",
              class="centered",
              alt="Image of light theme avatar group active states",
-             src="../avatar-interaction-state-active-theme-light.png" %}
+             src="../avatar-interaction-state-active-theme-light.png" %}{% endexample %}
 
   {% example palette="darkest",
               alt="Image of dark theme avatar group active states",
-              src="../avatar-interaction-state-active-theme-dark.png" %}
+              src="../avatar-interaction-state-active-theme-dark.png" %}{% endexample %}
 
   {% tokensTable %}
 

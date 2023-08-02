@@ -8,7 +8,7 @@ helps users focus on the dialog content.
 
 {% example palette="light",
            alt="Anatomy of a dialog with lots of annotations pointing to various parts",
-           src="../dialog-anatomy.png" %}
+           src="../dialog-anatomy.png" %}{% endexample %}
 
 1. Backdrop
 2. Container
@@ -25,7 +25,7 @@ A dialog is available in the light theme only.
 
 {% example palette="none",
            alt="Light theme dialog",
-           src="../dialog-theme-light.png" %}
+           src="../dialog-theme-light.png" %}{% endexample %}
 
 ## Configuration
 
@@ -34,7 +34,7 @@ body text section will cause scrolling.
 
 {% example palette="none",
            alt="How a dialog container is constructed showing border radius, region, and scrolling details",
-           src="../dialog-configuration.png" %}
+           src="../dialog-configuration.png" %}{% endexample %}
 
 ## Space
 
@@ -44,13 +44,13 @@ The amount of space in a dialog reduces as breakpoints get smaller.
 
 {% example palette="none",
            alt="A dialog container on a large breakpoint with spacing between all elements",
-           src="../dialog-space-breakpoint-large.png" %}
+           src="../dialog-space-breakpoint-large.png" %}{% endexample %}
 
 ### Small breakpoints
 
 {% example palette="none",
            alt="A dialog container on a small breakpoint with spacing between all elements",
-           src="../dialog-space-breakpoint-small.png" %}
+           src="../dialog-space-breakpoint-small.png" %}{% endexample %}
 
 {% spacerTokensTable 
     headingLevel="4",
@@ -70,7 +70,7 @@ is not interactive so it has no hover state.
 
 {% example palette="none",
            alt="Light theme dialog hover state example",
-           src="../dialog-interaction-state-hover.png" %}
+           src="../dialog-interaction-state-hover.png" %}{% endexample %}
 
 {% tokensTable %}
 
@@ -84,7 +84,7 @@ is not interactive so it has no hover state.
 
 {% example palette="none",
            alt="Light theme dialog focus state example",
-           src="../dialog-interaction-state-focus.png" %}
+           src="../dialog-interaction-state-focus.png" %}{% endexample %}
 
 {% tokensTable %}           
 
@@ -99,7 +99,7 @@ is not interactive so it has no hover state.
 
 {% example palette="none",
            alt="Light theme dialog active state example",
-           src="../dialog-interaction-state-active.png" %}
+           src="../dialog-interaction-state-active.png" %}{% endexample %}
 
 {% tokensTable %}           
 

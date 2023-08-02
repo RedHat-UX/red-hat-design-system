@@ -15,7 +15,7 @@ many readers. Go to the Accessibility page to learn more.
 {% example palette="light",
           alt="Image of neutral, default, success, warning, error, and danger 
           badges in a row",
-          src="../badge-variants.png" %}
+          src="../badge-variants.png" %}{% endexample %}
 #}
 
 | Badge {style="width: 33%%" }             | Name {style="width: 33%%" } | Use case                               |
@@ -42,7 +42,7 @@ threshold, using `1,000` or larger will display `999+`.
 
 {% example palette="light",
   alt="Badges with various counter numbers; from left to right, a badge with 1, a badge with 50, a badge with 500, and a badge with 999+",
-  src="../badge-counter-number.png" %}
+  src="../badge-counter-number.png" %}{% endexample %}
 
 
 ## Behavior
@@ -52,7 +52,7 @@ that are made in a toolbar filter or select list.
 
 {% example palette="light",
           alt="A badge used in a filter dropdown and counting three selected checkboxes within a menu",
-          src="../badge-filtering.png" %}
+          src="../badge-filtering.png" %}{% endexample %}
 
 ## Best practices
 
@@ -62,7 +62,7 @@ Do not allow a badge to display a count over 999.
 
 {% example palette="wrong",
           alt="A badge counting to 1,00,000 which is incorrect usage",
-          src="../badge-best-practice-1.png" %}
+          src="../badge-best-practice-1.png" %}{% endexample %}
 
 ### Two badges
 
@@ -72,4 +72,4 @@ with the badges.
 
 {% example palette="wrong",
           alt="Two badges with the same counter number, but with different background colors and no other unique visual cues which is incorrect usage",
-          src="../badge-best-practice-2.png" %}
+          src="../badge-best-practice-2.png" %}{% endexample %}

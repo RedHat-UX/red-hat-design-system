@@ -15,7 +15,7 @@ Users should have the ability to navigate to and interact with buttons using the
 {% example palette="light",
           class="inline-flex centered",
           alt="Image of a button group showing focus indicators and tab key labels",
-          src="../button-a11y-keyboard-interactions.png" %}
+          src="../button-a11y-keyboard-interactions.png" %}{% endexample %}
 
 | Key {style="width: 50%" }         | Result                                                    |
 | --------------------------------- | --------------------------------------------------------- |
@@ -29,14 +29,14 @@ Users should have the ability to navigate to and interact with buttons using the
 
 {% example palette="light",
           alt="Image of rows of button groups with numbers; one row has focus indicators only and the other has focus indicators and a tooltip",
-          src="../button-a11y-focus-order.png" %}
+          src="../button-a11y-focus-order.png" %}{% endexample %}
 
 ## Touch targets
 Buttons in groups are adequately spaced for optimal touch targets.
 
 {% example palette="light",
           alt="Image of button group with touch targets on top of each button",
-          src="../button-a11y-touch-targets.png" %}
+          src="../button-a11y-touch-targets.png" %}{% endexample %}
 
 ## Screen reader guidelines
 

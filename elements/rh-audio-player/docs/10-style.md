@@ -9,7 +9,7 @@ The audio player is a collection of elements used to play audio clips and browse
 ### Anatomy
 {% example palette="light",
           alt="Image of audio player anatomy showing all players with lots of annotations",
-          src="../audio-player-anatomy.png" %}
+          src="../audio-player-anatomy.png" %}{% endexample %}
 
 1) Image
 2) Description
@@ -31,7 +31,7 @@ There are three available sizes and the only difference is the amount of interfa
 
 {% example palette="light",
           alt="Image of all audio player sizes with text labels",
-          src="../audio-player-style-sizes.png" %}
+          src="../audio-player-style-sizes.png" %}{% endexample %}
 
 ## Theme
 The audio player is available in both light and dark themes.
@@ -39,12 +39,12 @@ The audio player is available in both light and dark themes.
 ### Light theme
 {% example palette="light",
           alt="Image of light theme audio players",
-          src="../audio-player-theme-light.png" %}
+          src="../audio-player-theme-light.png" %}{% endexample %}
 
 ### Dark theme
 {% example palette="darkest",
           alt="Image of dark theme audio players",
-          src="../audio-player-theme-dark.png" %}
+          src="../audio-player-theme-dark.png" %}{% endexample %}
 
 ### Custom theme
 {% alert title="Helpful tip" %}
@@ -54,21 +54,21 @@ If your audio player requires a custom theme, [contact](https://github.com/orgs/
 
 {% example palette="darkest",
           alt="Image of custom theme audio players",
-          src="../audio-player-theme-custom.png" %}
+          src="../audio-player-theme-custom.png" %}{% endexample %}
 
 ## Configuration
 The size of audio players change if an image is included or not.
 
 {% example palette="light",
           alt="Image of all audio players showing various specs like alignment, border radius, height, width, and more",
-          src="../audio-player-configuration.png" %}
+          src="../audio-player-configuration.png" %}{% endexample %}
 
 ## Space
 The amount of space in all audio players remains the same on all breakpoints.
 
 {% example palette="light",
           alt="Image of audio player spacing for all sizes",
-          src="../audio-player-space.png" %}
+          src="../audio-player-space.png" %}{% endexample %}
 
 {% spacerTokensTable 
     caption='',
@@ -87,12 +87,12 @@ Every interactive element includes a tooltip as part of the Hover state. To lear
 
 {% example palette="light",
           alt="Image of light theme audio player hover states",
-          src="../audio-player-interaction-state-hover-theme-light.png" %}
+          src="../audio-player-interaction-state-hover-theme-light.png" %}{% endexample %}
 
 
 {% example palette="darkest",
           alt="Image of dark theme audio player hover states",
-          src="../audio-player-interaction-state-hover-theme-dark.png" %}
+          src="../audio-player-interaction-state-hover-theme-dark.png" %}{% endexample %}
 
 ### Focus
 {% alert title="Helpful tip" %}
@@ -102,11 +102,11 @@ The Focus state has the same styles as the Hover state.
 
 {% example palette="light",
           alt="Image of light theme audio player focus states",
-          src="../audio-player-interaction-state-focus-theme-light.png" %}
+          src="../audio-player-interaction-state-focus-theme-light.png" %}{% endexample %}
 
 {% example palette="darkest",
           alt="Image of dark theme audio player focus states",
-          src="../audio-player-interaction-state-focus-theme-dark.png" %}
+          src="../audio-player-interaction-state-focus-theme-dark.png" %}{% endexample %}
 
 
 ### Active
@@ -117,10 +117,10 @@ The Active state has the same styles as the Hover state.
 
 {% example palette="light",
           alt="Image of light theme audio player active states",
-          src="../audio-player-interaction-state-active-theme-light.png" %}
+          src="../audio-player-interaction-state-active-theme-light.png" %}{% endexample %}
 
 
 {% example palette="darkest",
           alt="Image of dark theme audio player active states",
-          src="../audio-player-interaction-state-active-theme-dark.png" %}
+          src="../audio-player-interaction-state-active-theme-dark.png" %}{% endexample %}
 

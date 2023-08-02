@@ -12,7 +12,7 @@ Skip navigation is a styled link that appears at the top of a page when the Tab 
 
 {% example palette="none",
            alt="Skip navigation",
-           src="./skip-nav.svg" %}
+           src="./skip-nav.svg" %}{% endexample %}
 
 {% repoStatus %}
 
@@ -21,7 +21,7 @@ Skip navigation is a styled link that appears at the top of a page when the Tab 
 Skip to main content is a styled link that consists of a text label and a background container. Even though it looks like a Button, it functions more like a jump link.
 {% example palette="medium",
            alt="Skip navigation specs",
-           src="./skip-nav-style.svg" %}
+           src="./skip-nav-style.svg" %}{% endexample %}
 
 ## Usage
 
@@ -29,22 +29,22 @@ A skip to main content link helps some users browse the web more effectively. It
 
 {% example palette="none",
            alt="Skip navigation usage",
-           src="./skip-nav-usage-1.svg" %}
+           src="./skip-nav-usage-1.svg" %}{% endexample %}
 
 {% example palette="none",
            alt="Skip navigation usage",
-           src="./skip-nav-usage-2.svg" %}
+           src="./skip-nav-usage-2.svg" %}{% endexample %}
 
 {% example palette="none",
            alt="Skip navigation usage",
-           src="./skip-nav-usage-3.svg" %}
+           src="./skip-nav-usage-3.svg" %}{% endexample %}
 
 ## Best practices
 
 Don't apply the skip to main content link style to other components.
 {% example palette="wrong",
            alt="Skip navigation style errors",
-           src="./skip-nav-best-practices-1.svg" %}
+           src="./skip-nav-best-practices-1.svg" %}{% endexample %}
 
 ## Behavior
 
@@ -52,7 +52,7 @@ When a user presses the Tab key upon page load, the skip to main content link wi
 
 {% example palette="none",
            alt="Skip navigation behavior",
-           src="./skip-nav-behavior.svg" %}
+           src="./skip-nav-behavior.svg" %}{% endexample %}
 
 ## Spacing
 
@@ -68,6 +68,6 @@ values between elements.
 
 {% example palette="none",
            alt="Skip navigation spacing diagram",
-           src="./skip-nav-spacing.svg" %}
+           src="./skip-nav-spacing.svg" %}{% endexample %}
 
 {% include 'feedback.html' %}

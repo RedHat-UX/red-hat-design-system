@@ -48,7 +48,7 @@ summaries:
                  alt=linkTitle,
                  wrapperClass=wrapperClass,
                  srcAbsolute=true,
-                 src=doc.screenshotPath %}
+                 src=doc.screenshotPath %}{% endexample %} 
     {% if not comingSoon %}</a>{% endif %}
     <h3>{{ title }}</h3>
     <p>{{ summary }}</p>
