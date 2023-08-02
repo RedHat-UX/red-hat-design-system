@@ -26,22 +26,49 @@ const BooleanStringConverter: ComplexAttributeConverter = {
 export class RhTimestamp extends LitElement {
   static readonly styles = [styles];
 
+  /**
+   * Custom date formatting style. See [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#datestyle) for options.
+   */
   @property({ reflect: true, attribute: 'date-format' }) dateFormat?: DateTimeFormat;
 
+  /**
+   * Custom time formatting style. See [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#timestyle) for options.
+   */
   @property({ reflect: true, attribute: 'time-format' }) timeFormat?: DateTimeFormat;
 
+  /**
+   * Custom date and time formatting options. See [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#options) for a list of options.
+   */
   @property({ attribute: false }) customFormat?: object;
 
+  /**
+   * Text to display after the timestamp
+   */
   @property({ reflect: true, attribute: 'display-suffix' }) displaySuffix?: string;
 
+  /**
+   * Overrides the runtime's default locale
+   */
   @property({ reflect: true }) locale?: string;
 
+  /**
+   * Formats a timestamp in realtive terms
+   */
   @property({ reflect: true, type: Boolean }) relative?: boolean;
 
+  /**
+   * Sets the timezone as UTC
+   */
   @property({ reflect: true, type: Boolean }) utc?: boolean;
 
+  /**
+   * Whether to use 12-hour time (as opposed to 24-hour time)
+   */
   @property({ reflect: true, attribute: 'hour-12', converter: BooleanStringConverter }) hour12?: boolean;
 
+  /**
+   * A string value representing a date
+   */
   @property({ reflect: true })
   get date() {
     return this.#timestamp.localeString;
