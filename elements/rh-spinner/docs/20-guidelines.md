@@ -44,6 +44,12 @@ enough time to read it.
           alt=" Two spinners; one with a short text label, which is acceptable, and one with a very long text label which is not acceptable",
           src="../spinner-text-label.png" %}
 
+### Character and word count
+
+| Element    | Character count |
+| ---------- | --------------- |
+| Text label | 30              |
+
 ## Animation
 
 The spinner animation will loop until the data is retrieved and disappears when 
