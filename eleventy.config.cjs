@@ -16,6 +16,9 @@ const ImportMapPlugin = require('./docs/_plugins/importMap.cjs');
 
 const path = require('node:path');
 
+const isWatch =
+  process.argv.includes('--serve') || process.argv.includes('--watch');
+
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function(eleventyConfig) {
   eleventyConfig.setQuietMode(true);
@@ -122,7 +125,7 @@ module.exports = function(eleventyConfig) {
     },
   });
 
-  eleventyConfig.addPlugin(DirectoryOutputPlugin, {
+  !isWatch && eleventyConfig.addPlugin(DirectoryOutputPlugin, {
     // Customize columns
     columns: {
       filesize: true, // Use `false` to disable

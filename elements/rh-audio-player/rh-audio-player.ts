@@ -34,7 +34,7 @@ import { RhTooltip } from '../rh-tooltip/rh-tooltip.js';
  * @slot title - optional, title of episode
  * @slot media - html `audio` element
  * @slot about - optional `rh-audio-player-about` panel with attribution
- * @slot about - optional `rh-audio-player-subscribe` panel with links to subscribe
+ * @slot subscribe - optional `rh-audio-player-subscribe` panel with links to subscribe
  * @slot transcript - optional `rh-transcript` panel with `rh-cue` elements
  * @cssprop --rh-audio-player-background-color - color of player background - {@default var(--rh-color-surface-lightest, #ffffff)}
  * @cssprop --rh-audio-player-icon-background-color {@default var(--rh-audio-player-background-color)}
@@ -46,6 +46,11 @@ import { RhTooltip } from '../rh-tooltip/rh-tooltip.js';
  * @cssprop --rh-tooltip-content-padding-block-end - padding bottom on tooltips - {@default var(--rh-space-md, 8px)}
  * @cssprop --rh-tooltip-content-padding-inline-start - padding left on tooltips -  {@default var(--rh-space-md, 8px)}
  * @cssprop --rh-tooltip-content-padding-inline-end - padding right on tooltips - {@default var(--rh-space-md, 8px)}
+ * @csspart panel - expandable panel
+ * @csspart toolbar - main controls
+ * @csspart about - about the episode panel
+ * @csspart subscribe - subscribe panel
+ * @csspart transcript - transcript panel
  */
 @customElement('rh-audio-player')
 export class RhAudioPlayer extends LitElement {

@@ -1,3 +1,5 @@
+import { toast } from './toast.js';
+
 const hPermalinkTpl = document.createElement('template');
 // TODO: rh-button icon variant, delegate aria-label
 hPermalinkTpl.innerHTML = `
@@ -53,20 +55,7 @@ customElements.define('copy-permalink', class CopyPermalink extends HTMLElement 
       const { href } = this.querySelector('a');
       if (href) {
         await navigator.clipboard.writeText(href);
-        const toast = document.createElement('rh-alert');
-        toast.dismissable = true;
-        toast.setAttribute('aria-live', 'polite');
-        toast.style.position = 'fixed';
-        toast.style.setProperty('inset-block-end', 'var(--rh-space-lg)');
-        toast.style.setProperty('inset-inline-end', 'var(--rh-space-lg)');
-        toast.style.setProperty('z-index', 'var(--rh-copy-permalink-z-index, 2)');
-        const heading = document.createElement('h2');
-        heading.textContent = this.getAttribute('copied-text') ?? 'Link copied';
-        heading.slot = 'header';
-        toast.append(heading);
-        document.body.append(toast);
-        const toastDelay = parseInt(this.getAttribute('toast-delay') ?? '10');
-        setTimeout(() => toast.remove(), toastDelay * 1000);
+        toast({ heading: this.getAttribute('copied-text') ?? 'Link copied' });
       }
     });
   }
