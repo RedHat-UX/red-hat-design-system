@@ -12,7 +12,7 @@ rh-cta:not(:defined) {
   border-width: var(--rh-border-width-sm, 1px);
 }
 
-rh-cta:not(:defined):not([variant]) {
+rh-cta:not(:defined, [variant]) {
   --rh-cta-background-color: transparent;
   --rh-cta-border-color: transparent;
   --rh-cta-color: var(--rh-color-interactive-blue, #0066cc);
@@ -32,9 +32,9 @@ rh-cta:not(:defined):not([variant]) {
   --rh-cta-active-text-decoration: none;
 }
 
-[data-rh-theme^="dark"] rh-cta:not(:defined):not([variant]),
-[color-palette^="dark"] rh-cta:not(:defined):not([variant]),
-rh-cta[color-palette^="dark"]:not(:defined):not([variant]) {
+[data-rh-theme^="dark"] rh-cta:not(:defined, [variant]),
+[color-palette^="dark"] rh-cta:not(:defined, [variant]),
+rh-cta[color-palette^="dark"]:not(:defined, [variant]) {
   --rh-cta-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
   --rh-cta-hover-color: var(--rh-color-interactive-blue-lightest, #bee1f4);
 
@@ -52,7 +52,9 @@ rh-cta[color-palette^="dark"]:not(:defined):not([variant]) {
 
 rh-cta:not(:defined):focus-within {
   border-color: var(--rh-cta-focus-border-color);
-  background-color: var(--rh-cta-focus-container-background-color, var(--rh-cta-focus-background-color));
+  background-color:
+    var(--rh-cta-focus-container-background-color,
+      var(--rh-cta-focus-background-color));
   --rh-cta-color: var(--rh-cta-focus-color);
   --rh-cta-text-decoration: var(--rh-cta-focus-text-decoration);
 }
@@ -61,6 +63,7 @@ rh-cta:not(:defined):hover {
   color: var(--rh-cta-hover-color);
   border-color: var(--rh-cta-hover-border-color);
   background-color: var(--rh-cta-hover-background-color);
+
   --rh-cta-text-decoration: var(--rh-cta-hover-text-decoration);
 }
 
@@ -70,6 +73,7 @@ rh-cta:not(:defined):active {
 
 rh-cta[variant="primary"]:not(:defined) {
   border-style: solid;
+
   --rh-cta-background-color: var(--rh-color-brand-red-on-light, #ee0000);
   --rh-cta-border-color: var(--rh-color-brand-red-on-light, #ee0000);
   --rh-cta-color: var(--rh-color-text-primary-on-dark, #ffffff);
@@ -93,6 +97,7 @@ rh-cta[variant="primary"][color-palette^="dark"]:not(:defined) {
 rh-cta[variant="secondary"]:not(:defined) {
   border-style: solid;
   --rh-cta-background-color: transparent;
+
   --rh-cta-border-color: var(--rh-color-border-strong-on-light, #151515);
   --rh-cta-color: var(--rh-color-text-primary-on-light, #151515);
   --rh-cta-hover-background-color: var(--rh-color-surface-darkest, #151515);
@@ -104,7 +109,8 @@ rh-cta[variant="secondary"]:not(:defined) {
   --rh-cta-focus-inner-border-color: var(--rh-color-border-strong-on-light, #151515);
   --rh-cta-active-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --rh-cta-active-background-color: var(--rh-color-border-strong-on-light, #151515);
-  --rh-cta-active-inner-border-color: var(--rh-color-surface-light, #e0e0e0);;
+  --rh-cta-active-inner-border-color: var(--rh-color-surface-light, #e0e0e0);
+  ;
 }
 
 [data-rh-them^="dark"] rh-cta[variant="secondary"]:not(:defined),
@@ -122,12 +128,13 @@ rh-cta[variant="secondary"][color-palette^="dark"]:not(:defined) {
   --rh-cta-active-color: var(--rh-color-text-primary-on-light, #151515);
   --rh-cta-active-background-color: var(--rh-color-surface-lightest, #ffffff);
   --rh-cta-active-inner-border-color: var(--rh-color-border-strong-on-light, #151515);
-} 
+}
 
 rh-cta[variant="brick"]:not(:defined) {
   border-style: solid;
   font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
   font-weight: var(--rh-font-weight-body-text-regular, 400);
+
   --rh-cta-background-color: transparent;
   --rh-cta-border-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
   --rh-cta-color: var(--rh-color-interactive-blue-darker, #0066cc);
@@ -188,8 +195,6 @@ rh-cta[variant$="ary"]:not(:defined) * {
 }
 
 rh-cta[variant="primary"]:not(:defined) *:focus {
-  outline-style: solid !important;
-  outline-color: var(--rh-color-text-primary-on-dark, #ffffff) !important;
-  outline-width: var(--rh-border-width-sm, 1px) !important;
+  outline: var(--rh-border-width-sm, 1px) solid var(--rh-color-text-primary-on-dark, #ffffff) !important;
   outline-offset: -2px;
 }
