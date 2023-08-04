@@ -27,7 +27,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.watchIgnores.add('elements/*/test/');
   eleventyConfig.watchIgnores.add('lib/elements/*/test/');
   eleventyConfig.addPassthroughCopy('docs/public/red-hat-outfit.css');
-  eleventyConfig.addPassthroughCopy('docs/patterns/**/*.{svg,jpe?g,png}');
+  eleventyConfig.addPassthroughCopy('docs/patterns/**/*.{svg,jpeg,png}');
   eleventyConfig.addPassthroughCopy('docs/CNAME');
   eleventyConfig.addPassthroughCopy('docs/.nojekyll');
   eleventyConfig.addPassthroughCopy('docs/robots.txt');
