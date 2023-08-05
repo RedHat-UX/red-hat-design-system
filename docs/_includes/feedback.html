@@ -10,11 +10,11 @@
         </li>{% endfor %}
       </ul>
     {% elseif title === 'Patterns' %}
-      <h2>Elements</h2>
-      <p>To learn how to use our elements in your designs, visit the <a href="{{ '/elements/' | url }}">Elements</a> section.</p>
-    {% else %}
       <h2>Patterns</h2>
       <p>To learn how to use our patterns in your designs, visit the <a href="{{ '/patterns/' | url }}">Patterns</a> section.</p>
+    {% else %}
+      <h2>Elements</h2>
+      <p>To learn how to use our elements in your designs, visit the <a href="{{ '/elements/' | url }}">Elements</a> section.</p>
     {% endif %}
   {% endsection %}
 
