@@ -168,3 +168,4 @@ A card can be used in light and dark themes.
   }
 </style>
 
+[element]: /elements/card
