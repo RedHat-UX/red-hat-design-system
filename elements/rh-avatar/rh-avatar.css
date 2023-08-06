@@ -55,8 +55,8 @@
     auto;
 }
 
-:host([layout="block"]) :is(img, canvas),
-#container.mobile :is(img, canvas) {
+:host([layout="block"]) :is(img, canvas, svg),
+#container.mobile :is(img, canvas, svg) {
   margin-block-end: var(--rh-space-lg, 16px);
 }
 
@@ -92,13 +92,13 @@ slot {
     var(--rh-color-purple-700, #1f0066));
 }
 
-img {
+img, svg {
   object-fit: cover;
   object-position: center;
 }
 
 canvas,
-img {
+img, svg {
   overflow: hidden;
   width: var(--rh-avatar-size, var(--rh-size-icon-06, 64px));
   max-width: var(--rh-size-icon-06, 64px);
