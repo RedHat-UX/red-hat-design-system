@@ -129,27 +129,8 @@ A card can be used in light and dark themes.
     max-width: 360px;
   }
 
-  rh-card.alt,
-  rh-context-provider[color-palette^="light"] rh-card.alt {
+  rh-card.alt {
     --rh-card-background-color: #f0f0f0;
-  }
-
-  rh-context-provider[color-palette^="dark"] rh-card.alt {
-    --rh-card-background-color: #3c3f42;
-  }
-
-  rh-card.bar::part(header) {
-    background-color: var(--_background-color, #f0f0f0);
-    text-transform: uppercase;
-    font-weight: var(--rh-font-weight-heading-regular, 300);
-    font-size: var(--rh-font-size-body-text-md, 1rem);
-  }
-
-  rh-card.bar::part(header) {
-    background-color: var(--_header-background-color);
-    text-transform: uppercase;
-    font-weight: var(--rh-font-weight-heading-regular, 300);
-    font-size: var(--rh-font-size-body-text-md, 1rem);
   }
 
   rh-card.bar::part(header) {
