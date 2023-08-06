@@ -101,25 +101,22 @@ A card can be used in light and dark themes.
 
 ### Theme
 
-<rh-context-provider color-palette="light">
-  <rh-card>
-    <h2 slot="header">Card title</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
-      libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
-      elit. Donec id elit non mi porta gravida at eget metus.</p>
-    <rh-cta slot="footer"><a href="#">Footer</a></rh-cta>
-  </rh-card>
-</rh-context-provider>
+<rh-card color-palette="light">
+  <h2 slot="header">Card title</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
+    libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
+    elit. Donec id elit non mi porta gravida at eget metus.</p>
+  <rh-cta slot="footer"><a href="#">Footer</a></rh-cta>
+</rh-card>
 
-<rh-context-provider color-palette="dark">
-  <rh-card>
-    <h2 slot="header">Card title</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
-      libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
-      elit. Donec id elit non mi porta gravida at eget metus.</p>
-    <rh-cta slot="footer"><a href="#">Footer</a></rh-cta>
-  </rh-card>
-</rh-context-provider>
+<rh-card color-palette="dark">
+  <h2 slot="header">Card title</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
+    libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
+    elit. Donec id elit non mi porta gravida at eget metus.</p>
+  <rh-cta slot="footer"><a href="#">Footer</a></rh-cta>
+</rh-card>
+
 
 {% repoStatus %}
 
