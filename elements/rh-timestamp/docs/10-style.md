@@ -28,13 +28,15 @@ Two lines of text with timestamps applied, one is showing no styling and the oth
 A timestamp can be used in the same themes as text.
 
 ### Light theme
-<!-- todo: light theme container -->
-<rh-timestamp></rh-timestamp>
+<div class="example example--palette-lightest example--component">
+    <rh-timestamp></rh-timestamp>
+</div>
 
 
 ### Dark theme
-<!-- todo: dark theme container -->
-<rh-timestamp></rh-timestamp>
+<div class="example example--palette-darkest example--component">
+    <rh-timestamp></rh-timestamp>
+</div>
 
 ## Interaction states 
 If a timestamp is linked, the interaction states are the same as a [link](https://ux.redhat.com/patterns/link/). Go to the Link page to see the interaction states.

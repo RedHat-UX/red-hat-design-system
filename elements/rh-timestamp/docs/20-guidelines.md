@@ -4,16 +4,18 @@ Use a timestamp to display date and time values.
 ### Default
 By default, a timestamp will display the current date and time based on the current locale if the `date` attribute is not set.
 
-<!-- todo: light theme container -->
-<rh-timestamp></rh-timestamp>
+<div class="example example--palette-lightest example--component">
+    <rh-timestamp></rh-timestamp>
+</div>
 
 ## Basic formats
-The format of the displayed content can be customized by setting the `date-format` and/or `time-format` attributes. Setting only one of the attributes will display only the date or time, depending on which attribute is set. The possible options are **full**,**long**, **medium**, and **short**.
+The format of the displayed content can be customized by setting the `date-format` and/or `time-format` attributes. Setting only one of the attributes will display only the date or time, depending on which attribute is set. The possible options are **full**, **long**, **medium**, and **short**.
 
 You can also set the `display-suffix` attribute to display a custom suffix at the end of the displayed content. This will not override a timezone that is already displayed from the applied time format.
 
-<!-- todo: light theme container -->
-<rh-timestamp date-format="full" time-format="full"></rh-timestamp>
+<div class="example example--palette-lightest example--component">
+  <rh-timestamp date-format="full" time-format="full"></rh-timestamp>
+</div>
 
 <rh-code-block compact>
   <script type="text/html">
@@ -21,8 +23,9 @@ You can also set the `display-suffix` attribute to display a custom suffix at th
   </script>
 </rh-code-block>
 
-<!-- todo: light theme container -->
-<rh-timestamp date-format="full"></rh-timestamp>
+<div class="example example--palette-lightest example--component">
+  <rh-timestamp date-format="full"></rh-timestamp>
+</div>
 
 <rh-code-block compact>
   <script type="text/html">
@@ -30,9 +33,9 @@ You can also set the `display-suffix` attribute to display a custom suffix at th
   </script>
 </rh-code-block>
 
-
-<!-- todo: light theme container -->
-<rh-timestamp time-format="full"></rh-timestamp>
+<div class="example example--palette-lightest example--component">
+  <rh-timestamp time-format="full"></rh-timestamp>
+</div>
 
 <rh-code-block compact>
   <script type="text/html">
@@ -40,8 +43,9 @@ You can also set the `display-suffix` attribute to display a custom suffix at th
   </script>
 </rh-code-block>
 
-<!-- todo: light theme container -->
-<rh-timestamp date-format="medium" time-format="short" display-suffix="US Eastern"></rh-timestamp>
+<div class="example example--palette-lightest example--component">
+  <rh-timestamp date-format="medium" time-format="short" display-suffix="US Eastern"></rh-timestamp>
+</div>
 
 <rh-code-block compact>
   <script type="text/html">
@@ -53,9 +57,9 @@ You can also set the `display-suffix` attribute to display a custom suffix at th
 ### Custom format
 The format of the displayed content can be further customized by setting the custom-format attributes. Read [datetime format options](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#options) for a list of options that can be set.
 
-<!-- todo: light theme container -->
-<rh-timestamp id="timestamp-custom-format"
-              date="Sat Jan 01 2022 00:00:00 GMT-0500"></rh-timestamp>
+<div class="example example--palette-lightest example--component">
+  <rh-timestamp id="timestamp-custom-format" date="Sat Jan 01 2022 00:00:00 GMT-0500"></rh-timestamp>
+</div>
 
 <rh-code-block compact>
   <script type="text/html">
@@ -73,6 +77,8 @@ The format of the displayed content can be further customized by setting the cus
 </rh-code-block>
 
 ### Adding a tooltip
+To add a tooltip that displays the timestamp content as a UTC time, you can wrap `rh-timestamp` with `rh-tooltip` and set the `UTC` attribute on an additional `rh-timestamp`.
+
 {% example palette="light",
           alt="Timestamp with a tooltip on top showing the time with the UTC acronym at the end",
           src="../timestamp-tooltip-1.png" %}
@@ -100,8 +106,9 @@ The format of the displayed content can be further customized by setting the cus
 ### Relative time
 To display relative time, set the `relative` attribute on `rh-timestamp`.
 
-<!-- todo -->
-<rh-timestamp date="Tue Aug 09 2022 14:57:00 GMT-0400 (Eastern Daylight Time)" relative></rh-timestamp>
+<div class="example example--palette-lightest example--component">
+  <rh-timestamp date="Tue Aug 09 2022 14:57:00 GMT-0400 (Eastern Daylight Time)" relative></rh-timestamp>
+</div>
 
 <rh-code-block compact>
   <script type="text/html">
@@ -109,8 +116,9 @@ To display relative time, set the `relative` attribute on `rh-timestamp`.
   </script>
 </rh-code-block>
 
-<!-- todo -->
-<rh-timestamp date="Aug 09 2024 14:57:00 GMT-0400 (Eastern Daylight Time)" relative></rh-timestamp>
+<div class="example example--palette-lightest example--component">
+  <rh-timestamp date="Aug 09 2024 14:57:00 GMT-0400 (Eastern Daylight Time)" relative></rh-timestamp>
+</div>
 
 <rh-code-block compact>
   <script type="text/html">
@@ -146,8 +154,11 @@ To display relative time, set the `relative` attribute on `rh-timestamp`.
 </rh-code-block>
 
 ### Set a locale other than default
-<!-- todo -->
-<rh-timestamp locale="en-GB" date-format="full" time-format="full"></rh-timestamp>
+The default locale is inferred by the browser. To set the locale to something else, set the `locale` attribute.
+
+<div class="example example--palette-lightest example--component">
+  <rh-timestamp locale="en-GB" date-format="full" time-format="full"></rh-timestamp>
+</div>
 
 <rh-code-block compact>
   <script type="text/html">
@@ -155,8 +166,9 @@ To display relative time, set the `relative` attribute on `rh-timestamp`.
   </script>
 </rh-code-block>
 
-<!-- todo -->
-<rh-timestamp locale="es" date-format="full" time-format="full"></rh-timestamp>
+<div class="example example--palette-lightest example--component">
+  <rh-timestamp locale="es" date-format="full" time-format="full"></rh-timestamp>
+</div>
 
 <rh-code-block compact>
   <script type="text/html">
@@ -167,8 +179,9 @@ To display relative time, set the `relative` attribute on `rh-timestamp`.
 ### UTC timestamp
 Set the `UTC` attribute.
 
-<!-- todo -->
-<rh-timestamp utc></rh-timestamp>
+<div class="example example--palette-lightest example--component">
+  <rh-timestamp utc></rh-timestamp>
+</div>
 
 <rh-code-block compact>
   <script type="text/html">
@@ -193,5 +206,6 @@ Just like text, a timestamp will break to two lines as breakpoints get smaller.
 ### Headings
 Do not apply a timestamp to headings.
 
-<!-- todo: add container -->
-<rh-timestamp></rh-timestamp>
+<div class="example example--palette-wrong example--component">
+  <h2><rh-timestamp></rh-timestamp></h2>
+</div>
