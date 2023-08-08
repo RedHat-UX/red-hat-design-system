@@ -76,21 +76,18 @@ it's near. Several cards can be used together to group related information.
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
     libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
     elit. Donec id elit non mi porta gravida at eget metus.</p>
-  <rh-cta href="#" slot="footer">Footer</rh-cta>
+  <rh-cta priority="primary" slot="footer"><a href="#">Footer</a></rh-cta>
 </rh-card>
 
 ## Image title bar
 
 <rh-card class="bar full">
   <img src="./kitten-900x300.jpeg" slot="header">
-  <h2 slot="header">Card title</h2>
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
     libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
     elit. Donec id elit non mi porta gravida at eget metus.</p>
   <rh-cta slot="footer"><a href="#">Footer</a></rh-cta>
 </rh-card>
-
-{% repoStatus %}
 
 ## Style
 
@@ -104,7 +101,7 @@ A card can be used in light and dark themes.
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
       libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
       elit. Donec id elit non mi porta gravida at eget metus.</p>
-    <rh-cta href="#" slot="footer">Footer</rh-cta>
+    <rh-cta slot="footer"><a href="#">Footer</a></rh-cta>
   </rh-card>
 </rh-context-provider>
 
@@ -114,9 +111,11 @@ A card can be used in light and dark themes.
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
       libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
       elit. Donec id elit non mi porta gravida at eget metus.</p>
-    <rh-cta href="#" slot="footer">Footer</rh-cta>
+    <rh-cta slot="footer"><a href="#">Footer</a></rh-cta>
   </rh-card>
 </rh-context-provider>
+
+{% repoStatus %}
 
 {% include 'feedback.html' %}
 
@@ -159,6 +158,7 @@ A card can be used in light and dark themes.
 
   rh-card.full::part(header) {
     padding-inline: 0;
+    padding-block: 0;
   }
 </style>
 
