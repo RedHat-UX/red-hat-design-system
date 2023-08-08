@@ -16,7 +16,6 @@ many readers. Go to the Accessibility page to learn more.
           badges in a row",
           src="../badge-variants.png" %}
 
-
 | Badge {style="width: 33%%" }             | Name {style="width: 33%%" } | Use case                               |
 | ---------------------------------------- | --------------------------- | -------------------------------------- |
 | <rh-badge>17<rh-badge>                   | Neutral                     | Indicates neutrality or no impact      |
