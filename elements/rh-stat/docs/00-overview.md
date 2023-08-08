@@ -4,7 +4,7 @@
 
 {% example palette="light",
            alt="A vertically aligned stack of elements; includes a small red icon, large red data text showing 80% percent, and two lines of black body text",
-           src="stat-sample-element.png" %}{% endexample %}
+           src="stat-sample-element.png" %}
 
 
 ## Sample element

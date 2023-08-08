@@ -6,7 +6,7 @@
 
   {% example palette="light",
       alt="Image of secondary navigations with diagrams of what happens when Tab or Enter keys are pressed",
-      src="../nav-secondary-a11y-keyboard-interactions.png" %}{% endexample %}
+      src="../nav-secondary-a11y-keyboard-interactions.png" %}
 
 ### Keyboard events
 

@@ -7,7 +7,7 @@ An alert contains title text with an icon, body text, and a close button. They m
 
 {% example palette="light",
            alt="Alert with numbers pointing to parts of the element",
-           src="../alert-anatomy.svg" %}{% endexample %}
+           src="../alert-anatomy.svg" %}
 
 1. Severity indicator
 2. Severity icon
@@ -25,7 +25,7 @@ The required elements of an Inline alert are a thin top bar or thin border, icon
 
 {% example palette="light",
            alt="Two examples of an inline alert",
-           src="../alert-style-inline.svg" %}{% endexample %}
+           src="../alert-style-inline.svg" %}
 
 ### Inline, alternate
 
@@ -33,7 +33,7 @@ The alternate Inline alert style includes a border instead of a line which can b
 
 {% example palette="light",
            alt="Two examples of an alternate design for inline alerts",
-           src="../alert-style-inline-alt.svg" %}{% endexample %}
+           src="../alert-style-inline-alt.svg" %}
 
 ### Toast
 
@@ -41,7 +41,7 @@ The required elements of a Toast alert are a thin top bar, icon, title, close bu
 
 {% example palette="light",
            alt="Two examples of a toast alert",
-           src="../alert-style-toast.svg" %}{% endexample %}
+           src="../alert-style-toast.svg" %}
 
 
 ## Interaction states
@@ -52,19 +52,19 @@ Interaction states are visual representations used to communicate the status of 
 
 {% example palette="light",
            alt="Examples showing hover state",
-           src="../alert-interaction-states-hover.svg" %}{% endexample %}
+           src="../alert-interaction-states-hover.svg" %}
 
 ### Focus
 
 {% example palette="light",
            alt="Examples showing focus state",
-           src="../alert-interaction-states-focus.svg" %}{% endexample %}
+           src="../alert-interaction-states-focus.svg" %}
 
 ### Active
 
 {% example palette="light",
            alt="Examples showing active state",
-           src="../alert-interaction-states-active.svg" %}{% endexample %}
+           src="../alert-interaction-states-active.svg" %}
 
 
 ## Spacing
@@ -73,19 +73,19 @@ Interaction states are visual representations used to communicate the status of 
 
 {% example palette="light",
            alt="Diagram of spacing for inline alerts",
-           src="../alert-spacing-inline.svg" %}{% endexample %}
+           src="../alert-spacing-inline.svg" %}
 
 ### Toast
 
 {% example palette="light",
            alt="Diagram of spacing for toast alerts",
-           src="../alert-spacing-toast.svg" %}{% endexample %}
+           src="../alert-spacing-toast.svg" %}
 
 ### Toast (stacked)
 
 {% example palette="none",
            alt="Diagram of spacing between stacked toast alerts",
-           src="../alert-spacing-toast-layout.svg" %}{% endexample %}
+           src="../alert-spacing-toast-layout.svg" %}
 
 {% spacerTokensTable 
     caption='',

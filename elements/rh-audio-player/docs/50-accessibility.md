@@ -4,7 +4,7 @@ Every interactive element is a focus stop and controls are operated using differ
 
 {% example palette="light",
           alt="Image of all players with labels of how to activate or adjust all controls and menus",
-          src="../audio-player-a11y-keyboard-interactions.png" %}{% endexample %}
+          src="../audio-player-a11y-keyboard-interactions.png" %}
 
 
 | Key {style="width: 33%" } | Result                                                                          |
@@ -23,7 +23,7 @@ A logical focus order helps keyboard users operate our websites. Elements need t
 
 {% example palette="light",
           alt="Image of all players and the Compact player with a contextual menu open showing the focus order from left to right and top to bottom",
-          src="../audio-player-a11y-focus-order.png" %}{% endexample %}
+          src="../audio-player-a11y-focus-order.png" %}
 
 
 ### Toggling a feature
@@ -31,7 +31,7 @@ When a user closes a feature by pressing <kbd>Space</kbd> or <kbd>Esc</kbd>, foc
 
 {% example palette="light",
           alt="Image of the Compact player showing focus landing on the contextual menu or close buttons regardless if a feature is open or closed",
-          src="../audio-player-a11y-toggling-feature.png" %}{% endexample %}
+          src="../audio-player-a11y-toggling-feature.png" %}
 
 
 {% include 'accessibility/ariaguide.md' %}

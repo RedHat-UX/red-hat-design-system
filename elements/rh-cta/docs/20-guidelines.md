@@ -16,7 +16,7 @@ Each call to action has a specific function and the design of each variant signa
 
 {% example palette="light",
             alt="Image of the Primary, Secondary, Brick, and Default variants with descriptive text labels below",
-            src="../cta-variants.png" %}{% endexample %}
+            src="../cta-variants.png" %}
 
 | Variant     | Use case                                                                                                     |
 | ------------| -------------------------------------------------------------------------------------------------------------|
@@ -34,7 +34,7 @@ To indicate that a link is currently unavailable, calls to action can become dis
 
 {% example palette="light",
             alt="Image of disabled Primary, Secondary, Brick, and Default variants",
-            src="../cta-disabled.png" %}{% endexample %}
+            src="../cta-disabled.png" %}
 
 ### Brick icons
 
@@ -42,7 +42,7 @@ When grouping Brick variants, icons can be paired with text labels to communicat
 
 {% example palette="light",
             alt="Image of Brick variants with an icon on the left of text and on top of text",
-            src="../cta-brick-icons.png" %}{% endexample %}
+            src="../cta-brick-icons.png" %}
 
 ## Writing content
 
@@ -61,7 +61,7 @@ Call to action text labels should be more action-oriented than button text label
 
 {% example palette="light",
            alt="Image of Default variants showing how to incorrectly and correctly write text labels",
-           src="../cta-text-labels.png" %}{% endexample %}
+           src="../cta-text-labels.png" %}
 
 ### Clarity of language
   
@@ -70,7 +70,7 @@ help our users make informed decisions.
 
 {% example palette="light",
            alt="Image of how to incorrectly and correctly use clear and straightforward language",
-           src="../cta-clarity-of-language.png" %}{% endexample %}
+           src="../cta-clarity-of-language.png" %}
 
 ### Long text labels
 
@@ -78,7 +78,7 @@ Users do not want to spend more time reading than necessary, so write text label
 
 {% example palette="light",
         alt="Image of comparing very long and shortened text labels",
-        src="../cta-long-text-labels-1.png" %}{% endexample %}
+        src="../cta-long-text-labels-1.png" %}
 
 Long text labels will break to two lines on small breakpoints or when translated to certain languages. This can be avoided by writing less text.
 
@@ -88,7 +88,7 @@ The arrow icon in the Default variant should always be connected to at least one
 
 {% example palette="light",
         alt="Image of Primary, Default, and Brick variants within a small breakpoint showing each text label breaking to two lines",
-        src="../cta-long-text-labels-2.png" %}{% endexample %}
+        src="../cta-long-text-labels-2.png" %}
 
 ### Call to action vs. button text labels
 
@@ -96,7 +96,7 @@ Call to action text labels are written to entice users to select a link whereas 
 
 {% example palette="light",
         alt="Image of comparing text labels in calls to action versus text labels in buttons",
-        src="../cta-call-to-action-vs-button-text-labels.png" %}{% endexample %}
+        src="../cta-call-to-action-vs-button-text-labels.png" %}
 
 ### Character count
 
@@ -117,7 +117,7 @@ Calls to action are ordered by hierarchy with the Primary variant being the most
 
 {% example palette="light",
             alt="Image of calls to action hierarchy and usage guidance",
-            src="../cta-layout-hierarchy.png" %}{% endexample %}
+            src="../cta-layout-hierarchy.png" %}
 
 ### Placement
 
@@ -125,11 +125,11 @@ Calls to action can be placed in a variety of layouts including cards, grids, li
 
 {% example palette="light",
             alt="Image of calls to action used in context including under a text block and within a card",
-            src="../cta-placement-examples-1.png" %}{% endexample %}
+            src="../cta-placement-examples-1.png" %}
 
 {% example palette="light",
             alt="Image of calls to action used in context including within a grid and in a list",
-            src="../cta-placement-examples-2.png" %}{% endexample %}
+            src="../cta-placement-examples-2.png" %}
 
 ### Grouping
 
@@ -137,7 +137,7 @@ Call to action variants are ordered by hierarchy with Primary being the highest.
 
 {% example palette="light",
             alt="Image of call to action groups and their hierarchy from left to right",
-            src="../cta-layout-grouping.png" %}{% endexample %}
+            src="../cta-layout-grouping.png" %}
 
 ### Bricks
 
@@ -149,7 +149,7 @@ Long text labels will break to two lines, therefore write no more than **two or 
 
 {% example palette="light",
             alt="Image of Brick variants stretched to fit a variety of grid formations",
-            src="../cta-layout-bricks.png" %}{% endexample %}
+            src="../cta-layout-bricks.png" %}
 
 ### Space in groups
   
@@ -161,19 +161,19 @@ Spacing guidance between calls to action and text or other elements are on the S
 
 {% example palette="light",
             alt="Image of 24px spacers in between Primary and Secondary variants",
-            src="../cta-layout-space-in-groups-1.png" %}{% endexample %}
+            src="../cta-layout-space-in-groups-1.png" %}
 
 Horizontal and vertical spacing between the Default variant is `24px`.
 
 {% example palette="light",
             alt="Image of 24px spacers in between Default variants",
-            src="../cta-layout-space-in-groups-2.png" %}{% endexample %}
+            src="../cta-layout-space-in-groups-2.png" %}
 
 Horizontal and vertical spacing between Brick variants should be the same as grid gutters.
 
 {% example palette="light",
             alt="Image of a variety of space values in between Brick variants",
-            src="../cta-layout-space-in-groups-3.png" %}{% endexample %}
+            src="../cta-layout-space-in-groups-3.png" %}
 
 ## Behavior
 
@@ -183,7 +183,7 @@ A Brick variant can hide and reveal a panel of content when selected like an [ac
 
 {% example palette="none",
             alt="Image of Brick variants with a panel open showing a variety of styles and content formations",
-            src="../cta-bricks-hide-and-reveal.png" %}{% endexample %}
+            src="../cta-bricks-hide-and-reveal.png" %}
 
 ## Responsive design
 
@@ -191,11 +191,11 @@ On large breakpoints, calls to action are ordered by hierarchy from left to righ
 
 {% example palette="none",
             alt="Image of calls to action in a layout on a large breakpoint showing them all in one row",
-            src="../cta-breakpoints-large.png" %}{% endexample %}
+            src="../cta-breakpoints-large.png" %}
 
 {% example palette="none",
             alt="Image of calls to action in a layout on a small breakpoint showing two variants in one row and one variant in a second row",
-            src="../cta-breakpoints-small.png" %}{% endexample %}
+            src="../cta-breakpoints-small.png" %}
 
 ## Best practices
 
@@ -205,7 +205,7 @@ Do not change the styles of any variant.
 
 {% example palette="wrong",
             alt="Image of several variants with brand new styles which is incorrect usage",
-            src="../cta-best-practice-1.png" %}{% endexample %}
+            src="../cta-best-practice-1.png" %}
 
 ### Primary variants
 
@@ -213,7 +213,7 @@ Do not use more than one Primary variant on any page.
 
 {% example palette="wrong",
             alt="Image of two Primary variants in one row which is incorrect usage",
-            src="../cta-best-practice-2.png" %}{% endexample %}
+            src="../cta-best-practice-2.png" %}
 
 ### Brick variants
 
@@ -221,7 +221,7 @@ Do not group different Brick variants together, use one variant per grid.
 
 {% example palette="wrong",
             alt="Image of Brick variants in one row with and without icons which is incorrect usage",
-            src="../cta-best-practice-3.png" %}{% endexample %}
+            src="../cta-best-practice-3.png" %}
 
 
 ### Grouping
@@ -230,7 +230,7 @@ Do not group more than two different variants together.
 
 {% example palette="wrong",
             alt="Image of Primary, Secondary, and Default variants in one row which is incorrect usage",
-            src="../cta-best-practice-4.png" %}{% endexample %}
+            src="../cta-best-practice-4.png" %}
 
 ### Changing heirarchy
 
@@ -242,7 +242,7 @@ Hierarchy should be reversed when using right-to-left languages.
 
 {% example palette="wrong",
             alt="Image of the Primary variant last in a row which is incorrect usage",
-            src="../cta-best-practice-5.png" %}{% endexample %}
+            src="../cta-best-practice-5.png" %}
 
 ### Too many options
 
@@ -250,7 +250,7 @@ Do not group more than three variants together otherwise the risk of [choice par
 
 {% example palette="wrong",
             alt="Image of two rows of calls to action with four variants in each row which is incorrect usage",
-            src="../cta-best-practice-6.png" %}{% endexample %}
+            src="../cta-best-practice-6.png" %}
 
 ### Stretching
 
@@ -258,6 +258,6 @@ Do not add extra spacing or stretch the width of any variant except for Bricks.
 
 {% example palette="wrong",
             alt="Image of Primary and Secondary variants stretched which is incorrect usage",
-            src="../cta-best-practice-7.png" %}{% endexample %}
+            src="../cta-best-practice-7.png" %}
 
 [paralysis]: https://www.shopify.com/partners/blog/choice-paralysis

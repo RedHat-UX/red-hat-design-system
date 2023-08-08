@@ -5,7 +5,7 @@
 {% example palette="light",
            width=360,
            alt="Image of a code block with black code text within a light gray container",
-           src="./code-block-sample.png" %}{% endexample %}
+           src="./code-block-sample.png" %}
 
 ## Sample element
 

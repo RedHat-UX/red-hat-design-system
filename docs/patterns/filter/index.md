@@ -13,11 +13,11 @@ A Filter gives users the ability to sort a results listing by turning on and off
 <div class="multi-column--300-wide"><div>
     {% example palette="none",
           alt="Example of a filter using an accordion",
-          src="./filter-sample-1.svg" %}{% endexample %}
+          src="./filter-sample-1.svg" %}
   </div><div>
     {% example palette="none",
           alt="Example of a filter using a disclosure",
-          src="./filter-sample-2.svg" %}{% endexample %}
+          src="./filter-sample-2.svg" %}
 </div></div>
 
 {% repoStatus %}
@@ -29,7 +29,7 @@ A filter can be used in the light theme only. It features a list of checkboxes a
 
 {% example palette="light",
       alt="Filter component with different parts labeled",
-      src="./filter-style-1.svg" %}{% endexample %}
+      src="./filter-style-1.svg" %}
 
 
 ## Usage
@@ -45,7 +45,7 @@ A filter has several selection methods that enable users to narrow down what the
 <div class="multi-column--min-300-wide"><div>
     {% example palette="light",
       alt="Expanded disclosure panel with one checkbox",
-      src="./filter-usage-1.svg" %}{% endexample %}
+      src="./filter-usage-1.svg" %}
 
     A user can select one or multiple tags to sort by in one category
     {.example-notes}
@@ -53,7 +53,7 @@ A filter has several selection methods that enable users to narrow down what the
   </div><div>
     {% example palette="light",
       alt="Expanded accordion panels with multiple checkboxes selected",
-      src="./filter-usage-2.svg" %}{% endexample %}
+      src="./filter-usage-2.svg" %}
 
     A user can select multiple tags to sort by in multiple categories
     {.example-notes}
@@ -75,14 +75,14 @@ Even when used in a filter, accordions still require at least two panels. If onl
 
 {% example palette="wrong",
           alt="A filter using an accordion instead of a disclosure even though it has only one panel",
-          src="./filter-best-practices-1.svg" %}{% endexample %}
+          src="./filter-best-practices-1.svg" %}
 
   
 Don’t change the width of a filter on large screens because the aside region is already a fixed width.
 
 {% example palette="wrong",
         alt="A filter that is abnormally wide on desktop",
-        src="./filter-best-practices-2.svg" %}{% endexample %}
+        src="./filter-best-practices-2.svg" %}
 
 ## Behavior
 
@@ -92,7 +92,7 @@ By default, a filter loads with all category panels collapsed, enabling users to
 
 {% example palette="light",
         alt="Two filters showing collapsed and expanded states of the enclosed accordions",
-        src="./filter-behavior-1.svg" %}{% endexample %}
+        src="./filter-behavior-1.svg" %}
 
 ### Multiple panels
   
@@ -100,7 +100,7 @@ Multiple category panels can be expanded simultaneously or stack. Expanding one 
 
 {% example palette="light",
         alt="Two filters, one showing an expanded accordion panel and one showing two expanded accordion panels",
-        src="./filter-behavior-2.svg" %}{% endexample %}
+        src="./filter-behavior-2.svg" %}
 
 ### Selecting checkboxes
   
@@ -108,7 +108,7 @@ A filter is also required to load with all checkboxes unselected which means tha
 
 {% example palette="light",
         alt="Two accordions, one showing an expanded accordion with unselected checkboxes, and one showing selected checkboxes.",
-        src="./filter-behavior-3.svg" %}{% endexample %}
+        src="./filter-behavior-3.svg" %}
 
 ### Progressive disclosure
   
@@ -116,7 +116,7 @@ If there are more than 10 checkboxes in one category panel, not all of them shou
 
 {% example palette="light",
         alt="A filter showing 10 checkboxes and an link to see more",
-        src="./filter-behavior-4.svg" %}{% endexample %}
+        src="./filter-behavior-4.svg" %}
 
 ### Clear all button
   
@@ -133,22 +133,22 @@ A filter can work well in a variety of layouts. On small screens, it stretches t
 
 {% example palette="light",
       alt="A filter that stretches across the entire grid",
-      src="./filter-responsive-1.svg" %}{% endexample %}
+      src="./filter-responsive-1.svg" %}
 
 ### Desktop
   {% example palette="none",
            alt="A filter on desktop taking up almost 4 columns",
-           src="./filter-responsive-2.svg" %}{% endexample %}
+           src="./filter-responsive-2.svg" %}
 
 ### Tablet
   {% example palette="none",
            alt="A filter on a tablet taking up the full width",
-           src="./filter-responsive-3.svg" %}{% endexample %}
+           src="./filter-responsive-3.svg" %}
 
 ### Mobile
   {% example palette="none",
            alt="A filter on a mobile device taking up the full width",
-           src="./filter-responsive-4.svg" %}{% endexample %}
+           src="./filter-responsive-4.svg" %}
 
 ## Interaction states
 
@@ -157,17 +157,17 @@ A filter is a collection of components and the interaction states remain the sam
 ### Default
 {% example palette="none",
       alt="Example of expanded accordions with filter checkboxes",
-      src="./filter-interaction-1.svg" %}{% endexample %}
+      src="./filter-interaction-1.svg" %}
 
 ### Focus
 {% example palette="none",
       alt="Example of focus states for filters",
-      src="./filter-interaction-2.svg" %}{% endexample %}
+      src="./filter-interaction-2.svg" %}
 
 ### Hover
 {% example palette="none",
       alt="Example of hover states for filters",
-      src="./filter-interaction-3.svg" %}{% endexample %}
+      src="./filter-interaction-3.svg" %}
 
 ### Tab order
   
@@ -175,7 +175,7 @@ When the Tab key is pressed repeatedly, the focus indicator moves from top to bo
 
 {% example palette="light",
     alt="Example of interaction states for a filter",
-    src="./filter-interaction-4.svg" %}{% endexample %}
+    src="./filter-interaction-4.svg" %}
 
 ## Spacing
 
@@ -191,6 +191,6 @@ values between elements.
 
 {% example palette="light",
             alt="A filter with spacers",
-            src="./filter-spacing-1.svg" %}{% endexample %}
+            src="./filter-spacing-1.svg" %}
 
 {% include 'feedback.html' %}

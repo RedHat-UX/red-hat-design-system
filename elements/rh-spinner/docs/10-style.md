@@ -8,7 +8,7 @@ optional text label.
 ### Anatomy
 {% example palette="light",
           alt=" Anatomy of a spinner with annotations; number 1 is pointing to the track, number 2 is pointing to the indicator, and number 3 is pointing to the optional text label",
-          src="../spinner-anatomy.png" %}{% endexample %}
+          src="../spinner-anatomy.png" %}
 
 1) Track
 2) Indicator
@@ -25,7 +25,7 @@ optional text label on the bottom.
 
 {% example palette="light",
           alt=" Small size, medium size, and large size spinners with their text labels below",
-          src="../spinner-sizes.png" %}{% endexample %}
+          src="../spinner-sizes.png" %}
 
 {% tokensTable %}
 
@@ -47,13 +47,13 @@ A spinner is available in both light and dark themes.
 
 {% example palette="light",
           alt=" Light theme spinner",
-          src="../spinner-theme-light.png" %}{% endexample %}
+          src="../spinner-theme-light.png" %}
 
 ### Dark theme
 
 {% example palette="darkest",
           alt=" Dark theme spinner",
-          src="../spinner-theme-dark.png" %}{% endexample %}
+          src="../spinner-theme-dark.png" %}
 
 
 
@@ -66,7 +66,7 @@ rather than one specific area.
 
 {% example palette="light",
           alt=" Diagram of how a spinner should be horizontally and vertically centered within a container no matter its size or if a text label is included or not",
-          src="../spinner-configuration-container.png" %}{% endexample %}
+          src="../spinner-configuration-container.png" %}
 
 ### Button
 
@@ -75,13 +75,13 @@ left of the text as if it were an icon.
 
 {% example palette="light",
           alt=" Button with a small size spinner icon to the left as if it were an icon",
-          src="../spinner-configuration-button.png" %}{% endexample %}
+          src="../spinner-configuration-button.png" %}
 
 ## Space
 
 {% example palette="light",
           alt=" Spacing between all spinner sizes and their text labels",
-          src="../spinner-space.png" %}{% endexample %}
+          src="../spinner-space.png" %}
 
 {% tokensTable %}
 

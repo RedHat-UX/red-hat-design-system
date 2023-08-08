@@ -4,7 +4,7 @@
 
   {% alert state="info", title="Helpful tip" %}Overflow buttons do not have focus so there are no keyboard interactions.{% endalert %}
 
-  {% example palette="light", alt="Image of horizontal tabs with diagrams of what happens when Arrow or Tab keys are pressed", src="../tabs-a11y-keyboard-interactions.png" %}{% endexample %}
+  {% example palette="light", alt="Image of horizontal tabs with diagrams of what happens when Arrow or Tab keys are pressed", src="../tabs-a11y-keyboard-interactions.png" %}
 
   | Key         | Result { style="width: 66%;" } |
   | ----------- | ------------------------------- |
@@ -18,12 +18,12 @@
 ## Focus order
   A logical focus order helps keyboard users operate our websites. Elements need to receive focus in an order that preserves meaning, therefore the focus order should make sense and not jump around randomly. For both sizes and orientations, the focus order is from left to right and top to bottom. Disabled buttons are not included in the focus order.
 
-  {% example palette="light", alt="Image of horizontal, vertical, and tabs with overflow buttons showing the focus order from left to right and top to bottom", src="../tabs-a11y-focus-order.png" %}{% endexample %}
+  {% example palette="light", alt="Image of horizontal, vertical, and tabs with overflow buttons showing the focus order from left to right and top to bottom", src="../tabs-a11y-focus-order.png" %}
 
 ### Touch targets
   Tabs are adequately spaced for optimal touch targets.
 
-  {% example palette="light", alt="Image of open, box, and tabs with overflow buttons showing adequate touch target spacing", src="../tabs-a11y-touch-targets.png" %}{% endexample %}
+  {% example palette="light", alt="Image of open, box, and tabs with overflow buttons showing adequate touch target spacing", src="../tabs-a11y-touch-targets.png" %}
 
 ## Additional guidelines
   - Tabs must communicate to users which tab in the list is currently selected and the total number of tabs available

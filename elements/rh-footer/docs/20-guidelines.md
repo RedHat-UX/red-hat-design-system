@@ -15,7 +15,7 @@ Most of the content in the website-specific footer can be customized.
 
 {% example palette="none",
           alt="Image of the website-specific footer showing regions that can and cannot be customized",
-          src="../footer-variant-website-specific.png" %}{% endexample %}
+          src="../footer-variant-website-specific.png" %}
 
 | Region {style="width: 25%" } | Customizable {style="width: 25%" } | Use case                                                    |
 | ---------------------------- | ---------------------------------- | ----------------------------------------------------------- |
@@ -32,7 +32,7 @@ Content in the universal footer is always the same across all websites.
 
 {% example palette="none",
           alt=" Image of the universal footer showing only one region that cannot be customized",
-          src="../footer-variant-universal.png" %}{% endexample %}
+          src="../footer-variant-universal.png" %}
 
 | Region {style="width: 25%" } | Customizable {style="width: 25%" } | Use case                                              |
 | ---------------------------- | ---------------------------------- | ----------------------------------------------------- |
@@ -44,7 +44,7 @@ A footer spans the entire width of the browser window at all breakpoints.
 
 {% example palette="none",
           alt=" Image of a footer in a layout spanning the width of the browser window",
-          src="../footer-layout-browser-window.png" %}{% endexample %}
+          src="../footer-layout-browser-window.png" %}
 
 ### Universal footer
 
@@ -59,7 +59,7 @@ website-specific footer by itself.
 
 {% example palette="none",
           alt=" Image of the universal footer by itself",
-          src="../footer-layout-universal-footer.png" %}{% endexample %}
+          src="../footer-layout-universal-footer.png" %}
 
 ### Other web properties
 
@@ -68,15 +68,15 @@ is flexible enough to accommodate grids, elements, text, and more.
 
 {% example palette="none",
           alt=" Image of a footer on a Customer Portal website",
-          src="../footer-layout-customer-portal.png" %}{% endexample %}
+          src="../footer-layout-customer-portal.png" %}
 
 {% example palette="none",
           alt=" Image of a footer on a Developer website",
-          src="../footer-layout-developer.png" %}{% endexample %}
+          src="../footer-layout-developer.png" %}
 
 {% example palette="none",
           alt=" Image of a footer on a Partner Connect website",
-          src="../footer-layout-partner-connect.png" %}{% endexample %}
+          src="../footer-layout-partner-connect.png" %}
 
 ## Behavior
 
@@ -87,21 +87,21 @@ below the first row of columns.
 
 {% example palette="none",
           alt=" Image of a footer with four columns of links in one row and two columns in the second row",
-          src="../footer-behavior-columns-two-rows.png" %}{% endexample %}
+          src="../footer-behavior-columns-two-rows.png" %}
 
 If the website-specific footer includes less content, columns will stretch to 
 fill the empty space.
 
 {% example palette="none",
           alt=" Image of a footer with only two columns of links in one row",
-          src="../footer-behavior-columns-less-content.png" %}{% endexample %}
+          src="../footer-behavior-columns-less-content.png" %}
 
 If the number of columns changes, social media links will shift position to 
 remain aligned to the left edge of the last column.
 
 {% example palette="none",
           alt=" Image of a footer with three columns of links showing an example of social media icons shifting",
-          src="../footer-behavior-columns-social-media-icons.png" %}{% endexample %}
+          src="../footer-behavior-columns-social-media-icons.png" %}
 
 ## Responsive design
 
@@ -109,7 +109,7 @@ remain aligned to the left edge of the last column.
 
 {% example palette="none",
           alt=" Image of a large breakpoint footer",
-          src="../footer-responsive-large-breakpoints.png" %}{% endexample %}
+          src="../footer-responsive-large-breakpoints.png" %}
 
 ### Small breakpoints
 
@@ -123,11 +123,11 @@ is no longer visible.
 
 {% example palette="none",
           alt=" Image of a tablet breakpoint footer",
-          src="../footer-responsive-small-breakpoints-a.png" %}{% endexample %}
+          src="../footer-responsive-small-breakpoints-a.png" %}
 
 {% example palette="none",
           alt=" Image of a mobile breakpoint footer",
-          src="../footer-responsive-small-breakpoints-b.png" %}{% endexample %}
+          src="../footer-responsive-small-breakpoints-b.png" %}
 
 | Breakpoint {style="width: 33%" } | Range {style="width: 33%" } | Content layout |
 | -------------------------------- | --------------------------- | -------------- |
@@ -147,7 +147,7 @@ be on top.
 
 {% example palette="none",
           alt=" Image of the global footer on top of the website-specific footer which is incorrect usage",
-          src="../footer-best-practice-1.png" %}{% endexample %}
+          src="../footer-best-practice-1.png" %}
 
 ### Replacing columns
 
@@ -155,7 +155,7 @@ Do not replace columns with an accordion if there is still adequate space.
 
 {% example palette="none",
           alt=" Image of a desktop footer with an accordion replacing four columns of links which is incorrect usage",
-          src="../footer-best-practice-2.png" %}{% endexample %}
+          src="../footer-best-practice-2.png" %}
 
 ### Website-specific footer
 
@@ -163,7 +163,7 @@ Do not use the website-specific footer without the universal footer.
 
 {% example palette="none",
           alt=" Image of a footer missing the universal footer which is incorrect usage",
-          src="../footer-best-practice-3.png" %}{% endexample %}
+          src="../footer-best-practice-3.png" %}
 
 ### Custom universal footer
 
@@ -172,4 +172,4 @@ rearranging any elements.
 
 {% example palette="none",
           alt=" Image of a universal footer with a new design which is incorrect usage",
-          src="../footer-best-practice-4.png" %}{% endexample %}
+          src="../footer-best-practice-4.png" %}

@@ -7,7 +7,7 @@
   {% example palette="lightest",
              width=538,
              alt="Popover component blueprint",
-             src="../popover-style.svg" %}{% endexample %}
+             src="../popover-style.svg" %}
 
 ### Variants
 
@@ -64,14 +64,14 @@
   {% example palette="lightest",
              width=392,
              alt="Popover component, light theme",
-             src="../popover-theme-light.svg" %}{% endexample %}
+             src="../popover-theme-light.svg" %}
 
 ### White (dark backgrounds)
 
   {% example palette="darkest",
              width=392,
              alt="Popover component, dark theme",
-             src="../popover-theme-dark.svg" %}{% endexample %}
+             src="../popover-theme-dark.svg" %}
 
 
 ## Responsive design
@@ -102,5 +102,5 @@
   {% example palette="lightest",
              width=392,
              alt="Popover component spacing",
-             src="../popover-spacing.svg" %}{% endexample %}
+             src="../popover-spacing.svg" %}
 

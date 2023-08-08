@@ -66,10 +66,6 @@ rh-alert + .example {
     }
   }
 
-  &--component {
-    justify-content: center;
-  }
-
   rh-cta {
     margin-bottom: 16px;
   }
@@ -106,7 +102,6 @@ rh-alert + .example {
 }
 
 .example--palette-darkest {
-  color: #fff;
   background: #151515;
   border-radius: 8px;
 }

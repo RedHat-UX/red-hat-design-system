@@ -4,7 +4,7 @@
 
 {% example palette="none",
            alt="A dialog container with a black headline, black body text, two blue buttons, and a dark gray close button all on a white background on top of a slightly transparent black background",
-           src="./dialog-sample.png" %}{% endexample %}
+           src="./dialog-sample.png" %}
 
 
 

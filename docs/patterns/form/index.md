@@ -11,7 +11,7 @@ A Form is a group of elements used to collect information from a user. It can in
 ## Sample component
   {% example palette="none",
            alt="Form component samples",
-           src="./form-samples.svg" %}{% endexample %}
+           src="./form-samples.svg" %}
 
 {% repoStatus %}
 
@@ -19,7 +19,7 @@ A Form is a group of elements used to collect information from a user. It can in
 
 {% example palette="lightest",
            alt="Form component blueprint",
-           src="./form-blueprint.svg" %}{% endexample %}
+           src="./form-blueprint.svg" %}
 
 ### Visual elements
 
@@ -38,7 +38,7 @@ Visit the [Popover](https://ux.redhat.com/elements/popover/) component page to l
 
 {% example palette="lightest",
            alt="Form component visual elements",
-           src="./form-visual-elements.svg" %}{% endexample %}
+           src="./form-visual-elements.svg" %}
 
 ### Variants
 
@@ -48,7 +48,7 @@ There are two form variants available for use.
 
 {% example palette="lightest",
            alt="Form component variants",
-           src="./form-variants.svg" %}{% endexample %}
+           src="./form-variants.svg" %}
 
 ## Theme
 
@@ -56,7 +56,7 @@ There are two form variants available for use.
 
 {% example palette="lightest",
            alt="Form component, light theme",
-           src="./form-theme-light.svg" %}{% endexample %}
+           src="./form-theme-light.svg" %}
 
 ### Dark theme
 
@@ -66,7 +66,7 @@ More details and specs surrounding dark theme are coming soon.
 
 {% example palette="darkest",
            alt="Form component, dark theme",
-           src="./form-theme-dark.svg" %}{% endexample %}
+           src="./form-theme-dark.svg" %}
 
 ## Orientation
 
@@ -80,7 +80,7 @@ Do not write text labels with **more than a few words** as they might break to t
 
 {% example palette="none",
         alt="Form components (Container and Floating), default orientaton",
-        src="./form-container-floating-orientation-default.svg" %}{% endexample %}
+        src="./form-container-floating-orientation-default.svg" %}
 
 ### Horizontal
   
@@ -96,11 +96,11 @@ Do not write text labels with **more than a few words** as they might break to t
 
 {% example palette="none",
         alt="Form component (Container), horizontal orientaton",
-        src="./form-container-orientation-horizontal.svg" %}{% endexample %}
+        src="./form-container-orientation-horizontal.svg" %}
         
 {% example palette="none",
         alt="Form component (Floating), horizontal orientaton",
-        src="./form-floating-orientation-horizontal.svg" %}{% endexample %}
+        src="./form-floating-orientation-horizontal.svg" %}
            
 
 ### Text label alignment
@@ -109,7 +109,7 @@ In the Horizontal orientation, text labels should be **left justified** making i
 
 {% example palette="lightest",
            alt="Form component text label alignment",
-           src="./form-text-label-alignment.svg" %}{% endexample %}
+           src="./form-text-label-alignment.svg" %}
 
 ## Usage
   
@@ -125,11 +125,11 @@ When the Container variant is positioned near content, there should be **at leas
 
 {% example palette="none",
         alt="Form (Container), default orientaton",
-        src="./form-in-use-container-default-orientation.svg" %}{% endexample %}
+        src="./form-in-use-container-default-orientation.svg" %}
         
 {% example palette="none",
         alt="Form (Container), horizontal orientaton",
-        src="./form-in-use-container-horizontal-orientation.svg" %}{% endexample %}
+        src="./form-in-use-container-horizontal-orientation.svg" %}
            
 ### Floating variant
 
@@ -141,11 +141,11 @@ When the Floating variant is positioned near content, there should be **at least
 
 {% example palette="none",
         alt="Form (Floating), default orientaton",
-        src="./form-in-use-floating-default-orientation.svg" %}{% endexample %}
+        src="./form-in-use-floating-default-orientation.svg" %}
         
 {% example palette="none",
         alt="Form (Floating), horizontal orientaton",
-        src="./form-in-use-floating-horizontal-orientation.svg" %}{% endexample %}   
+        src="./form-in-use-floating-horizontal-orientation.svg" %}   
 
 ### Form content
 
@@ -158,7 +158,7 @@ A user will have a better experience with submitting a form if the elements are 
 
 {% example palette="lightest",
            alt="Form component content",
-           src="./form-content.svg" %}{% endexample %}
+           src="./form-content.svg" %}
 
 ### Required fields
   
@@ -166,7 +166,7 @@ If a user is required to input information when submitting a form, indicate exac
 
 {% example palette="none",
            alt="Form component required fields",
-           src="./form-required-fields.svg" %}{% endexample %}
+           src="./form-required-fields.svg" %}
 
 ### Data inputs
 
@@ -174,7 +174,7 @@ Data inputs provide additional ways for a user to submit information. Each data 
 
 {% example palette="lightest",
            alt="Form component data inputs",
-           src="./form-data-inputs.svg" %}{% endexample %}
+           src="./form-data-inputs.svg" %}
 
 ### Using data inputs
 
@@ -195,7 +195,7 @@ Radio buttons and checkboxes can be stacked horizontally or vertically depending
 
 {% example palette="lightest",
            alt="Form component arranging data inputs",
-           src="./form-arranging-data-inputs.svg" %}{% endexample %}
+           src="./form-arranging-data-inputs.svg" %}
 
 ### Popover
 
@@ -211,7 +211,7 @@ Avoid using a popover for critical information, a user will have a hard time fin
 
 {% example palette="lightest",
            alt="Form component popover",
-           src="./form-popover.svg" %}{% endexample %}
+           src="./form-popover.svg" %}
 
 ### Placement
 
@@ -219,11 +219,11 @@ A form can span various grid columns when used on a page. To preserve readabilit
 
 {% example palette="none",
         alt="Form component placement, default orientaton",
-        src="./form-placement-default-orientation.svg" %}{% endexample %}
+        src="./form-placement-default-orientation.svg" %}
         
 {% example palette="none",
         alt="Form component placement, horizontal orientaton",
-        src="./form-placement-horizontal-orientation.svg" %}{% endexample %}
+        src="./form-placement-horizontal-orientation.svg" %}
            
 ## Behavior
 
@@ -237,7 +237,7 @@ Do not disable form elements that **require** input as a user might skip over th
 
 {% example palette="lightest",
            alt="Form component disabled state",
-           src="./form-disabled-state.svg" %}{% endexample %}
+           src="./form-disabled-state.svg" %}
 
 ### Error states
 
@@ -249,7 +249,7 @@ An error will be displayed after a user moves the focus away from a required for
 
 {% example palette="none",
         alt="Form component, error validation on loss of focus",
-        src="./form-error-loss-of-focus.svg" %}{% endexample %}
+        src="./form-error-loss-of-focus.svg" %}
 
 ### Error validation on submission
   
@@ -257,7 +257,7 @@ Errors will be displayed if a user tries to submit a completed form with invalid
 
 {% example palette="none",
         alt="Form component, error validation on submission",
-        src="./form-error-submission.svg" %}{% endexample %}
+        src="./form-error-submission.svg" %}
 
 ## Interaction states
 
@@ -269,7 +269,7 @@ Visit the [Button](https://ux.redhat.com/elements/button/) and [Link](https://ux
 
 {% example palette="lightest",
            alt="Form component interaction state, link",
-           src="./form-interaction-states-link.svg" %}{% endexample %}
+           src="./form-interaction-states-link.svg" %}
 
 ### Hover
   
@@ -277,7 +277,7 @@ Form fields and select lists share the same hover state.
 
 {% example palette="lightest",
            alt="Form component interaction state, hover",
-           src="./form-interaction-states-hover.svg" %}{% endexample %}
+           src="./form-interaction-states-hover.svg" %}
 
 ### Focus
   
@@ -285,7 +285,7 @@ When the focus is moved to a form field with placeholder text, the text will dis
 
 {% example palette="lightest",
            alt="Form component interaction state, focus",
-           src="./form-interaction-states-focus.svg" %}{% endexample %}
+           src="./form-interaction-states-focus.svg" %}
 
 ### Active
 
@@ -293,7 +293,7 @@ Form fields and select lists share the same active state.
 
 {% example palette="lightest",
            alt="Form component interaction state, active",
-           src="./form-interaction-states-active.svg" %}{% endexample %}
+           src="./form-interaction-states-active.svg" %}
 
 ### Tab order
 
@@ -301,7 +301,7 @@ When the Tab key is pressed repeatedly, the focus highlights each form element i
 
 {% example palette="none",
         alt="Form component tab order",
-        src="./form-tab-order.svg" %}{% endexample %}
+        src="./form-tab-order.svg" %}
 
 ## Accessibility
 
@@ -320,11 +320,11 @@ The Default variant mostly remains the same on large and small screens, but the 
 
 {% example palette="none",
         alt="Form component (Default) responsive design, desktop",
-        src="./form-responsive-default-desktop.svg" %}{% endexample %}
+        src="./form-responsive-default-desktop.svg" %}
         
 {% example palette="none",
         alt="Form component (Horizontal) responsive design, desktop",
-        src="./form-responsive-horizontal-desktop.svg" %}{% endexample %}
+        src="./form-responsive-horizontal-desktop.svg" %}
            
 
 ### Tablet
@@ -333,13 +333,13 @@ As screens get smaller, the Horizontal variant will switch to the Default varian
 
 {% example palette="none",
         alt="Form component responsive design, tablet",
-        src="./form-responsive-tablet.svg" %}{% endexample %}
+        src="./form-responsive-tablet.svg" %}
 
 ### Mobile
 
 {% example palette="none",
         alt="Form component responsive design, mobile",
-        src="./form-responsive-mobile.svg" %}{% endexample %}
+        src="./form-responsive-mobile.svg" %}
 
 ## Best practices
 
@@ -349,7 +349,7 @@ Do not align the button group and privacy link to the **right edge** of other fo
 
 {% example palette="wrong",
            alt="Form component, best practice 1",
-           src="./form-best-practice-1.svg" %}{% endexample %}
+           src="./form-best-practice-1.svg" %}
 
 ### Two Primary buttons
 
@@ -361,7 +361,7 @@ Visit the [Button](https://ux.redhat.com/elements/button/) component page to lea
 
 {% example palette="wrong",
            alt="Form component, best practice 2",
-           src="./form-best-practice-2.svg" %}{% endexample %}
+           src="./form-best-practice-2.svg" %}
 
 ### Too many required fields
 
@@ -369,7 +369,7 @@ If all inputs are required, **do not** add an asterisk next to every text label.
 
 {% example palette="wrong",
            alt="Form component, best practice 3",
-           src="./form-best-practice-3.svg" %}{% endexample %}
+           src="./form-best-practice-3.svg" %}
 
 ### 12 columns
 
@@ -381,7 +381,7 @@ Visit the [Grid](https://ux.redhat.com/foundations/grid/) foundation page to lea
 
 {% example palette="wrong",
            alt="Form component, best practice 4",
-           src="./form-best-practice-4.svg" %}{% endexample %}
+           src="./form-best-practice-4.svg" %}
 
 ### Rearranging data inputs and button groups
 
@@ -389,7 +389,7 @@ Do not change the stacking order of data inputs and button groups, except in rar
 
 {% example palette="wrong",
            alt="Form component, best practice 5",
-           src="./form-best-practice-5.svg" %}{% endexample %}
+           src="./form-best-practice-5.svg" %}
 
 ## Spacing
 
@@ -407,12 +407,12 @@ values between elements.
 
 {% example palette="lightest",
            alt="Form component spacing, default",
-           src="./form-spacing-default.svg" %}{% endexample %}
+           src="./form-spacing-default.svg" %}
 
 ### Horizontal
 
 {% example palette="lightest",
            alt="Form component spacing, horizontal",
-           src="./form-spacing-horizontal.svg" %}{% endexample %}
+           src="./form-spacing-horizontal.svg" %}
 
 {% include 'feedback.html' %}

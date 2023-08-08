@@ -4,7 +4,7 @@ Users should have the ability to navigate to and interact with calls to action u
 
 {% example palette="light",
             alt="Image of three groups with different variants showing focus indicators and tab key labels",
-            src="../cta-a11y-keyboard-interactions.png" %}{% endexample %}
+            src="../cta-a11y-keyboard-interactions.png" %}
 
 | Key         | Result                                                            |
 | ------------| ------------------------------------------------------------------|
@@ -21,7 +21,7 @@ A logical focus order helps keyboard users operate our websites. Elements need t
 
 {% example palette="light",
             alt="Image of groups of three variants with numbers one through three moving from left to right and top to bottom",
-            src="../cta-a11y-focus-order.png" %}{% endexample %}
+            src="../cta-a11y-focus-order.png" %}
 
 ## Touch targets
 
@@ -29,7 +29,7 @@ Grouped calls to action are adequately spaced for optimal touch targets.
 
 {% example palette="light",
             alt="Image of groups of variants with touch targets on top of each",
-            src="../cta-a11y-touch-targets.png" %}{% endexample %}
+            src="../cta-a11y-touch-targets.png" %}
 
 ## Screen reader guidelines
 

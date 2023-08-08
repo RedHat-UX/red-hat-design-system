@@ -3,7 +3,7 @@
 
   {% example palette="light",
               alt=" Image of an avatar group with a photo of a woman and text",
-              src="./avatar-sample.png" %}{% endexample %}
+              src="./avatar-sample.png" %}
 
 
 ## Sample component

@@ -13,7 +13,7 @@ Links are navigational elements that allow a user to move between content, pages
 
 {% example palette="none",
            alt="Link component examples",
-           src="./example-links.svg" %}{% endexample %}
+           src="./example-links.svg" %}
 
 {% repoStatus %}
 
@@ -29,7 +29,7 @@ View a live version of the Call to action link and see how it can be customized.
 
 {% example palette="lightest",
            alt="Link component blueprint",
-           src="./link-blueprint.svg" %}{% endexample %}
+           src="./link-blueprint.svg" %}
 
 ### Variants
 
@@ -53,7 +53,7 @@ Visit the [Call to action](https://ux.redhat.com/elements/call-to-action/) compo
 
 {% example palette="lightest",
            alt="Link component visual elements",
-           src="./link-visual-elements.svg" %}{% endexample %}
+           src="./link-visual-elements.svg" %}
 
 ### Text size
 
@@ -73,7 +73,7 @@ Visit the [Call to action](https://ux.redhat.com/elements/call-to-action/) compo
 
 {% example palette="lightest",
            alt="Link component, light theme",
-           src="./theme-light.svg" %}{% endexample %}
+           src="./theme-light.svg" %}
 
 ### Dark theme
 
@@ -83,7 +83,7 @@ Visit the [Call to action](https://ux.redhat.com/elements/call-to-action/) compo
 
 {% example palette="darkest",
            alt="Link component, light theme",
-           src="./theme-dark.svg" %}{% endexample %}
+           src="./theme-dark.svg" %}
 
 ## Usage
 
@@ -91,7 +91,7 @@ Links should be applied when a user needs to jump to content on the same page, v
 
 {% example palette="lightest",
            alt="Link component usage",
-           src="./when-to-use.svg" %}{% endexample %}
+           src="./when-to-use.svg" %}
 
 ### Content
 
@@ -103,7 +103,7 @@ Link content needs to be written clearly in order to be understood, therefore wr
   
 {% example palette="lightest",
            alt="Link component usage, content",
-           src="./usage-content.svg" %}{% endexample %}
+           src="./usage-content.svg" %}
 
 ### Images
 
@@ -123,7 +123,7 @@ In a form, selecting a button will trigger an action whereas selecting a link wi
 
 {% example palette="lightest",
            alt="Link component usage, buttons",
-           src="./usage-buttons.svg" %}{% endexample %}
+           src="./usage-buttons.svg" %}
 
 ## Behavior
 
@@ -145,7 +145,7 @@ If navigating to a new page in the same tab is very disruptive to the experience
 
 {% example palette="lightest",
            alt="Link component, internal vs. external pages",
-           src="./external-pages.svg" %}{% endexample %}
+           src="./external-pages.svg" %}
 
 ## Interaction states
 
@@ -157,41 +157,41 @@ Visit the [Call to action](https://ux.redhat.com/elements/call-to-action/) compo
 
 {% example palette="lightest",
            alt="Link component interaction state, link (light theme)",
-           src="./interaction-state-link-light.svg" %}{% endexample %}
+           src="./interaction-state-link-light.svg" %}
 
 {% example palette="darkest",
            alt="Link component interaction state, link (dark theme)",
-           src="./interaction-state-link-dark.svg" %}{% endexample %}
+           src="./interaction-state-link-dark.svg" %}
 
 ### Hover
 
 {% example palette="lightest",
            alt="Link component interaction state, hover (light theme)",
-           src="./interaction-state-hover-light.svg" %}{% endexample %}
+           src="./interaction-state-hover-light.svg" %}
 
 {% example palette="darkest",
            alt="Link component interaction state, hover (dark theme)",
-           src="./interaction-state-hover-dark.svg" %}{% endexample %}
+           src="./interaction-state-hover-dark.svg" %}
 
 ### Focus
 
 {% example palette="lightest",
            alt="Link component interaction state, focus (light theme)",
-           src="./interaction-state-focus-light.svg" %}{% endexample %}
+           src="./interaction-state-focus-light.svg" %}
 
 {% example palette="darkest",
            alt="Link component interaction state, focus (dark theme)",
-           src="./interaction-state-focus-dark.svg" %}{% endexample %}
+           src="./interaction-state-focus-dark.svg" %}
 
 ### Active
 
 {% example palette="lightest",
            alt="Link component interaction state, active (light theme)",
-           src="./interaction-state-active-light.svg" %}{% endexample %}
+           src="./interaction-state-active-light.svg" %}
 
 {% example palette="darkest",
            alt="Link component interaction state, active (dark theme)",
-           src="./interaction-state-active-dark.svg" %}{% endexample %}
+           src="./interaction-state-active-dark.svg" %}
 
 ### Visited
 
@@ -201,11 +201,11 @@ A popover trigger can be a linked text, or it can be an icon. For example, when 
 
 {% example palette="lightest",
            alt="Link component interaction state, visited (light theme)",
-           src="./interaction-state-visited-light.svg" %}{% endexample %}
+           src="./interaction-state-visited-light.svg" %}
 
 {% example palette="darkest",
            alt="Link component interaction state, visited (dark theme)",
-           src="./interaction-state-visited-dark.svg" %}{% endexample %}
+           src="./interaction-state-visited-dark.svg" %}
 
 ### Tab order
 
@@ -213,7 +213,7 @@ When the Tab key is pressed repeatedly, the focus highlights each Inline and Cal
 
 {% example palette="lightest",
            alt="Link component tab order",
-           src="./tab-order.svg" %}{% endexample %}
+           src="./tab-order.svg" %}
 
 ### Accessibility
 
@@ -231,19 +231,19 @@ Both link variants mostly remain the same on large and small screens. Inline lin
 
 {% example palette="none",
            alt="Link component responsive design, desktop",
-           src="./responsive-design-desktop.svg" %}{% endexample %}
+           src="./responsive-design-desktop.svg" %}
 
 ### Tablet
     
 {% example palette="none",
            alt="Link component responsive design, tablet",
-           src="./responsive-design-tablet.svg" %}{% endexample %}
+           src="./responsive-design-tablet.svg" %}
   
 ### Mobile
 
 {% example palette="none",
            alt="Link component responsive design, mobile",
-           src="./responsive-design-mobile.svg" %}{% endexample %}
+           src="./responsive-design-mobile.svg" %}
  
 ## Best practices
 
@@ -253,7 +253,7 @@ Do not apply lots of links to paragraph text otherwise a user will have trouble 
 
 {% example palette="wrong",
            alt="Link component best practice 1",
-           src="./link-best-practice-1.svg" %}{% endexample %}
+           src="./link-best-practice-1.svg" %}
 
 ### Different link variants
 
@@ -261,7 +261,7 @@ Do not use different link variants to direct a user to the same page.
     
 {% example palette="wrong",
            alt="Link component best practice 2",
-           src="./link-best-practice-2.svg" %}{% endexample %}
+           src="./link-best-practice-2.svg" %}
 
 ### Ambiguity
 
@@ -269,7 +269,7 @@ When writing link content, avoid ambiguous phrases or a full website URL. A user
 
 {% example palette="wrong",
            alt="Link component best practice 3",
-           src="./link-best-practice-3.svg" %}{% endexample %}
+           src="./link-best-practice-3.svg" %}
 
 ### Long links
 
@@ -277,7 +277,7 @@ Do not apply links to long strings of text.
     
 {% example palette="wrong",
            alt="Link component best practice 4",
-           src="./link-best-practice-4.svg" %}{% endexample %}
+           src="./link-best-practice-4.svg" %}
 
 ### Buttons
 
@@ -289,7 +289,7 @@ Visit the [Button](https://ux.redhat.com/elements/button/) component page to lea
     
 {% example palette="wrong",
            alt="Link component best practice 5",
-           src="./link-best-practice-5.svg" %}{% endexample %}
+           src="./link-best-practice-5.svg" %}
 
 ### External link icon
 
@@ -301,7 +301,7 @@ Visit the [Call to action](https://ux.redhat.com/elements/call-to-action/) compo
     
 {% example palette="wrong",
            alt="Link component best practice 6",
-           src="./link-best-practice-6.svg" %}{% endexample %}
+           src="./link-best-practice-6.svg" %}
 
 ### Widows
 
@@ -309,7 +309,7 @@ The Default call to action link arrow and the external link icon should not appe
 
 {% example palette="wrong",
         alt="Link component best practice 7",
-        src="./link-best-practice-7.svg" %}{% endexample %}
+        src="./link-best-practice-7.svg" %}
 
 ## Spacing
 

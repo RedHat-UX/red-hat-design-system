@@ -22,7 +22,7 @@ Use the Full size for all applications and the Compact size for when breakpoints
 
 {% example palette="light",
            alt="Image of pagination sizes and how to use them",
-           src="../pagination-usage-sizes.png" %}{% endexample %}
+           src="../pagination-usage-sizes.png" %}
 
 ### Compact size
 
@@ -30,7 +30,7 @@ The page input field must **always** be visible if using the Compact size so tha
 
 {% example palette="light",
            alt="Image of compact size paginations with page input field on the right and below",
-           src="../pagination-compact-size.png" %}{% endexample %}
+           src="../pagination-compact-size.png" %}
 
 ### Page input field orientation
 
@@ -38,11 +38,11 @@ The page input field can be oriented on the right or below pagination. If used b
 
 {% example palette="light",
            alt="Image of two full size paginations; one has a page input field on the right and the other has one below",
-           src="../pagination-pif-orientation-a.png" %}{% endexample %}
+           src="../pagination-pif-orientation-a.png" %}
 
 {% example palette="light",
            alt="Image of full size and compact size pagination; one has a page input field on the right and the other has one below",
-           src="../pagination-pif-orientation-b.png" %}{% endexample %}  
+           src="../pagination-pif-orientation-b.png" %}  
 
 
 
@@ -58,7 +58,7 @@ If there are more than seven pages, the page input field must be visible.
 
 {% example palette="light",
            alt="Image of two groups of pagination; one group shows full sizes with different page locations and the other group shows compact sizes with different page locations",
-           src="../pagination-behavior-pif.png" %}{% endexample %}
+           src="../pagination-behavior-pif.png" %}
 
 ### Low page count
 
@@ -70,7 +70,7 @@ Pagination will not be displayed if a search returns zero results or if there is
 
 {% example palette="light",
            alt="Image of groups of paginations with low page counts; first pagination group shows only 1 page and the second group shows only 3 pages",
-           src="../pagination-behavior-low-page-count.png" %}{% endexample %}
+           src="../pagination-behavior-low-page-count.png" %}
 
 ### Disabled butons
 
@@ -78,7 +78,7 @@ When the beginning or end of the pagination range is reached, certain control bu
 
 {% example palette="light",
            alt="Image of paginations with a variety of disabled control buttons",
-           src="../pagination-behavior-disabled-buttons.png" %}{% endexample %}
+           src="../pagination-behavior-disabled-buttons.png" %}
 
 ### Truncation
 
@@ -90,7 +90,7 @@ Truncation does not apply to the Compact size because it does not display page n
 
 {% example palette="light",
            alt="Image of paginations with a variety of truncation examples",
-           src="../pagination-behavior-truncation.png" %}{% endexample %}
+           src="../pagination-behavior-truncation.png" %}
 
 
 
@@ -102,19 +102,19 @@ Both pagination sizes and orientations are horizontally centered below content b
 
 {% example palette="none",
            alt="Image of full size pagination with the page input field on the right",
-           src="../pagination-alignment-pif-right-a.png" %}{% endexample %}
+           src="../pagination-alignment-pif-right-a.png" %}
 
 {% example palette="none",
            alt="Image of compact size pagination with the page input field on the right",
-           src="../pagination-alignment-pif-right-b.png" %}{% endexample %}
+           src="../pagination-alignment-pif-right-b.png" %}
 
 {% example palette="none",
            alt="Image of full size pagination with the page input field below",
-           src="../pagination-alignment-pif-below-a.png" %}{% endexample %}
+           src="../pagination-alignment-pif-below-a.png" %}
 
 {% example palette="none",
            alt="Image of compact size pagination with the page input field below",
-           src="../pagination-alignment-pif-below-b.png" %}{% endexample %}
+           src="../pagination-alignment-pif-below-b.png" %}
 
 
 
@@ -126,13 +126,13 @@ As breakpoints get smaller, pagination will switch sizes to accommodate the page
 
 {% example palette="none",
            alt="Images of pagination with the page input field on the right",
-           src="../pagination-page-input-field-right.png" %}{% endexample %}
+           src="../pagination-page-input-field-right.png" %}
 
 If the page input field is used below, pagination will not switch sizes as quickly.
 
 {% example palette="none",
            alt="Images of pagination with the page input field below",
-           src="../pagination-page-input-field-below.png" %}{% endexample %}
+           src="../pagination-page-input-field-below.png" %}
 
 ### Without page input field
 
@@ -140,7 +140,7 @@ When the page input field is not visible, it will become visible when the Full s
 
 {% example palette="none",
            alt="Image of pagination without page input field",
-           src="../pagination-without-page-input-field.png" %}{% endexample %}
+           src="../pagination-without-page-input-field.png" %}
 
 ## Best practices
 
@@ -150,7 +150,7 @@ Do not use the Compact size without including the page input field.
 
 {% example palette="wrong",
            alt="Image of compact size pagination with no page input field is incorrect usage",
-           src="../pagination-best-practice-1.png" %}{% endexample %}
+           src="../pagination-best-practice-1.png" %}
 
 ### No input field
 
@@ -158,7 +158,7 @@ The page input field needs to be visible if there is truncation.
 
 {% example palette="wrong",
            alt="Image of pagination with truncation but no page input field is incorrect usage",
-           src="../pagination-best-practice-2.png" %}{% endexample %}
+           src="../pagination-best-practice-2.png" %}
 
 ### Truncation
 
@@ -166,7 +166,7 @@ Do not truncate pagination if there is less than seven pages.
 
 {% example palette="wrong",
            alt="Image of pagination that is truncating only four pages is incorrect usage",
-           src="../pagination-best-practice-3.png" %}{% endexample %}
+           src="../pagination-best-practice-3.png" %}
 
 ### Order or alignment
 
@@ -174,5 +174,5 @@ Do not change the order or alignment of the page input field.
 
 {% example palette="wrong",
            alt="Image of paginations with page input fields; one group shows incorrect order and the other group shows incorrect alignment",
-           src="../pagination-best-practice-4.png" %}{% endexample %}
+           src="../pagination-best-practice-4.png" %}
 

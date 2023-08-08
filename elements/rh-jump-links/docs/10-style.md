@@ -10,7 +10,7 @@
              width=537,
              class="inline-flex centered",
              alt="Jump links specs",
-             src="../jump-links-style.svg" %}{% endexample %}
+             src="../jump-links-style.svg" %}
 
 ### Theme
 
@@ -18,13 +18,13 @@
              width=385,
              class="inline-flex centered",
              alt="Jump links theme light",
-             src="../jump-links-theme-light.svg" %}{% endexample %}
+             src="../jump-links-theme-light.svg" %}
 
   {% example palette="darkest",
              width=385,
              class="inline-flex centered",
              alt="Jump links theme dark",
-             src="../jump-links-theme-dark.svg" %}{% endexample %}
+             src="../jump-links-theme-dark.svg" %}
 
 ### Label
   Jump links display a label at the top indicating there are section links that 
@@ -45,7 +45,7 @@
              width=129,
              class="inline-flex centered",
              alt="Jump links nested section",
-             src="../jump-links-nested.svg" %}{% endexample %}
+             src="../jump-links-nested.svg" %}
 
 ### Active indicator bar
   A red indicator bar highlights what the active section is. It’s positioned on 
@@ -55,7 +55,7 @@
              width=206,
              class="inline-flex centered",
              alt="Jump links active indicator bar",
-             src="../jump-links-indicator.svg" %}{% endexample %}
+             src="../jump-links-indicator.svg" %}
 
 
 ## Responsive design
@@ -102,11 +102,11 @@
              width=385,
              class="inline-flex centered",
              alt="Jump links spacing on desktop",
-             src="../jump-links-spacing.svg" %}{% endexample %}
+             src="../jump-links-spacing.svg" %}
 
   {% example palette="light",
              width=872,
              class="inline-flex centered",
              alt="Jump links spacing on mobile",
-             src="../jump-links-spacing-2.svg" %}{% endexample %}
+             src="../jump-links-spacing-2.svg" %}
 

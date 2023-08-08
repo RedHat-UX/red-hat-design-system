@@ -28,7 +28,7 @@ for status and severity.
 
 {% example palette="light",
            alt="Examples of the different colors indicating alert severity",
-           src="../alert-severity.svg" %}{% endexample %}
+           src="../alert-severity.svg" %}
 
 ### Dismissal
 
@@ -46,7 +46,7 @@ If an issue cannot be resolved on the current page or if a user needs to correct
 {% example palette="light",
            class="medium",
            alt="Alert element dismissal examples",
-           src="../alert-dismissal-examples.svg" %}{% endexample %}
+           src="../alert-dismissal-examples.svg" %}
 
 
 ## Writing content
@@ -73,11 +73,11 @@ An Inline alert can be placed toward the **top of a layout** if the message appl
 
 {% example palette="none",
            alt="Example of an inline alert at the top of a layout",
-           src="../alert-positioning-inline-global.svg" %}{% endexample %}
+           src="../alert-positioning-inline-global.svg" %}
 
 {% example palette="none",
            alt="Example of an inline alert inside a form",
-           src="../alert-positioning-inline-local.svg" %}{% endexample %}
+           src="../alert-positioning-inline-local.svg" %}
 
 ### Toast
 
@@ -91,13 +91,13 @@ If a Toast alert is set to persistent, a close button needs to be included so a 
 
 {% example palette="none",
            alt="Toast alert with a link in the body text includes a close button",
-           src="../alert-positioning-toast-persistent.svg" %}{% endexample %}
+           src="../alert-positioning-toast-persistent.svg" %}
 
 If a Toast alert is set to be temporary or time out, the alert will disappear after **eight seconds**. A user might want to dismiss the alert before then, in which case a close button needs be included.
 
 {% example palette="none",
            alt="Toast alert without actions or links includes a close button",
-           src="../alert-positioning-toast-temporary.svg" %}{% endexample %}
+           src="../alert-positioning-toast-temporary.svg" %}
 
 
 
@@ -109,11 +109,11 @@ When multiple Toast alerts are triggered around the same time, they will stack o
 
 {% example palette="none",
            alt="Three toast alerts are stacked in the top left corner of a layout",
-           src="../alert-behavior-stack-1.svg" %}{% endexample %}
+           src="../alert-behavior-stack-1.svg" %}
 
 {% example palette="none",
            alt="Only one toast alert in the stack from the previous image is left",
-           src="../alert-behavior-stack-2.svg" %}{% endexample %}
+           src="../alert-behavior-stack-2.svg" %}
 
 
 
@@ -125,7 +125,7 @@ The maximum width of a Toast alert on large screens is **six grid columns**.
 
 {% example palette="none",
            alt="Toast alert spans six grid columns, while inline alert spans all grid columns",
-           src="../alert-responsive-large-screens.svg" %}{% endexample %}
+           src="../alert-responsive-large-screens.svg" %}
 
 ### Small screens
 
@@ -133,7 +133,7 @@ On small screens, both alert variants will span the full column of the layout. T
 
 {% example palette="none",
            alt="Toast and inline alerts span full column of small screen layout",
-           src="../alert-responsive-small-screens.svg" %}{% endexample %}
+           src="../alert-responsive-small-screens.svg" %}
 
 
 
@@ -145,7 +145,7 @@ Do not use an Inline alert to communicate messages about important events, updat
 
 {% example palette="wrong",
            alt="Inline alert is incorrectly positioned like a toast alert",
-           src="../alert-bestpractice-1.svg" %}{% endexample %}
+           src="../alert-bestpractice-1.svg" %}
 
 ### Toast as Inline
 
@@ -153,7 +153,7 @@ Do not use a Toast alert to present simple information or inline messages.
 
 {% example palette="wrong",
            alt="Toast alert incorrectly placed inline with a layout",
-           src="../alert-bestpractice-2.svg" %}{% endexample %}
+           src="../alert-bestpractice-2.svg" %}
 
 ### Different variants
 
@@ -161,5 +161,5 @@ Do not use both variants when stacking.
 
 {% example palette="wrong",
            alt="Toast and inline alerts incorrectly stacked in top left corner of page",
-           src="../alert-bestpractice-3.svg" %}{% endexample %}
+           src="../alert-bestpractice-3.svg" %}
 

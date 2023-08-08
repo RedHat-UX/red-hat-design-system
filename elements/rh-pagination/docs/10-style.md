@@ -8,7 +8,7 @@ Pagination is a horizontal row of square containers that include a control butto
 
 {% example palette="light",
            alt="Image of pagination anatomy with lots of annotations",
-           src="../pagination-anatomy.png" %}{% endexample %}
+           src="../pagination-anatomy.png" %}
 
 1. First page
 2. Previous page
@@ -34,7 +34,7 @@ The Compact size always includes the page input field.
 
 {% example palette="light",
            alt="Image of three paginations; full size, full size with page input field, and compact size",
-           src="../pagination-style-sizes.png" %}{% endexample %}
+           src="../pagination-style-sizes.png" %}
 
 
 
@@ -46,13 +46,13 @@ Pagination is available in both light and dark themes.
 
 {% example palette="light",
            alt="Image of light theme pagination",
-           src="../pagination-theme-light.png" %}{% endexample %}
+           src="../pagination-theme-light.png" %}
 
 ### Dark theme
 
 {% example palette="darkest",
            alt="Image of dark theme pagination",
-           src="../pagination-theme-dark.png" %}{% endexample %}
+           src="../pagination-theme-dark.png" %}
 
 
 
@@ -62,7 +62,7 @@ Pagination is a collection of navigation elements including controls, page numbe
 
 {% example palette="light",
            alt="Image of pagination construction; several pagination examples showing details like alignment, height, width, and more",
-           src="../pagination-configuration.png" %}{% endexample %}
+           src="../pagination-configuration.png" %}
 
 ### Active page
 
@@ -74,11 +74,11 @@ Active page styles do not apply to the Compact size because there are no page nu
 
 {% example palette="light",
            alt="Image of two light theme paginations; one is showing an active page of 4 and the other one is showing an active page of 25",
-           src="../pagination-active-page-theme-light.png" %}{% endexample %}
+           src="../pagination-active-page-theme-light.png" %}
 
 {% example palette="darkest",
            alt="Image of two dark theme paginations; one is showing an active page of 4 and the other one is showing an active page of 25",
-           src="../pagination-active-page-theme-dark.png" %}{% endexample %}
+           src="../pagination-active-page-theme-dark.png" %}
 
 
 
@@ -88,7 +88,7 @@ Space values between elements are the same for both sizes and on all breakpoints
 
 {% example palette="light",
            alt="Image of pagination spacing for all sizes and orientations",
-           src="../pagination-space.png" %}{% endexample %}
+           src="../pagination-space.png" %}
 
 {% spacerTokensTable 
     caption='',
@@ -108,11 +108,11 @@ Control and inactive page number buttons have the same hover state. Truncation i
 
 {% example palette="light",
            alt="Image of light theme pagination hover states",
-           src="../pagination-interaction-state-hover-theme-light.png" %}{% endexample %}
+           src="../pagination-interaction-state-hover-theme-light.png" %}
 
 {% example palette="darkest",
            alt="Image of dark theme pagination hover states",
-           src="../pagination-interaction-state-hover-theme-dark.png" %}{% endexample %}
+           src="../pagination-interaction-state-hover-theme-dark.png" %}
 
 {% tokensTable %}
 
@@ -130,11 +130,11 @@ Control and inactive page number buttons have the same hover state. Truncation i
 
 {% example palette="light",
            alt="Image of light theme pagination focus states",
-           src="../pagination-interaction-state-focus-theme-light.png" %}{% endexample %}
+           src="../pagination-interaction-state-focus-theme-light.png" %}
 
 {% example palette="darkest",
            alt="Image of dark theme pagination focus states",
-           src="../pagination-interaction-state-focus-theme-dark.png" %}{% endexample %}
+           src="../pagination-interaction-state-focus-theme-dark.png" %}
 
 
 {% tokensTable %}
@@ -154,11 +154,11 @@ Control and inactive page number buttons have the same hover state. Truncation i
 
 {% example palette="light",
            alt="Image of light theme pagination active states",
-           src="../pagination-interaction-state-active-theme-light.png" %}{% endexample %}
+           src="../pagination-interaction-state-active-theme-light.png" %}
 
 {% example palette="darkest",
            alt="Image of dark theme pagination active states",
-           src="../pagination-interaction-state-active-theme-dark.png" %}{% endexample %}
+           src="../pagination-interaction-state-active-theme-dark.png" %}
 
 {% tokensTable %}
 

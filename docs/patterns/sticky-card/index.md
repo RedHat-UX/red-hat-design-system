@@ -11,7 +11,7 @@ Sticky cards slide into view at a certain scroll position and then anchor themse
 ## Sample component
 {% example palette="none",
           alt="Sticky card",
-          src="./sticky-card.svg" %}{% endexample %}
+          src="./sticky-card.svg" %}
 
 {% repoStatus %}
 
@@ -21,7 +21,7 @@ A sticky card acts as a small container for a limited amount of content.
 
 {% example palette="lightest",
            alt="Sticky card naming",
-           src="./sticky-card-style.svg" %}{% endexample %}
+           src="./sticky-card-style.svg" %}
 
 ### Theme
 
@@ -29,11 +29,11 @@ The required elements in a sticky card are a close button, a title or a headline
 
 {% example palette="lightest",
         alt="Sticky card light theme",
-        src="./sticky-card-theme-light.svg" %}{% endexample %}
+        src="./sticky-card-theme-light.svg" %}
 
 {% example palette="darkest",
         alt="Sticky card dark theme",
-        src="./sticky-card-theme-dark.svg" %}{% endexample %}
+        src="./sticky-card-theme-dark.svg" %}
 
 ### Layout
 
@@ -57,7 +57,7 @@ The footer section can include normal links or a call to action. A sticky card f
 
 {% example palette="lightest",
         alt="Sticky card content sections",
-        src="./sticky-card-layout.svg" %}{% endexample %}
+        src="./sticky-card-layout.svg" %}
 
 ## Usage
 
@@ -69,7 +69,7 @@ A sticky card can be placed on the left or the right edge of a page and it has a
 
 {% example palette="medium",
         alt="Sticky card on right side",
-        src="./sticky-card-layout-right.svg" %}{% endexample %}
+        src="./sticky-card-layout-right.svg" %}
 
 ### Content
 
@@ -77,7 +77,7 @@ A sticky card has limited vertical height, so keep content short and only includ
 
 {% example palette="lightest",
         alt="Sticky card content sections",
-        src="./sticky-card-content.svg" %}{% endexample %}
+        src="./sticky-card-content.svg" %}
 
 ### Alignment
 
@@ -89,31 +89,31 @@ Don’t use more than one sticky card per page.
 
 {% example palette="wrong",
         alt="Sticky card multiple issue",
-        src="./sticky-card-best-practices-1.svg" %}{% endexample %}
+        src="./sticky-card-best-practices-1.svg" %}
 
 Don’t change the width of a sticky card on large screens, it’s fixed at 262px.
 
 {% example palette="wrong",
         alt="Sticky card width issue",
-        src="./sticky-card-best-practices-2.svg" %}{% endexample %}
+        src="./sticky-card-best-practices-2.svg" %}
 
 Don’t anchor a sticky card on small screens, it covers too much content.
 
 {% example palette="wrong",
         alt="Sticky card overlap issue",
-        src="./sticky-card-best-practices-3.svg" %}{% endexample %}
+        src="./sticky-card-best-practices-3.svg" %}
 
 Don't omit the close button, it’s needed for accessibility.
 
 {% example palette="wrong",
         alt="Sticky card close button issue",
-        src="./sticky-card-best-practices-4.svg" %}{% endexample %}
+        src="./sticky-card-best-practices-4.svg" %}
 
 Don’t use more than one call to action.
 
 {% example palette="wrong",
         alt="Sticky card call to action issue",
-        src="./sticky-card-best-practices-5.svg" %}{% endexample %}
+        src="./sticky-card-best-practices-5.svg" %}
 
 ## Behavior
 
@@ -135,7 +135,7 @@ The vertical height of a sticky card greatly expands when too much content is pl
 
 {% example palette="lightest",
         alt="Sticky card vertical height caution",
-        src="./sticky-card-behavior-height.svg" %}{% endexample %}
+        src="./sticky-card-behavior-height.svg" %}
 
 ## Breakpoints
 
@@ -145,19 +145,19 @@ A sticky card is 262px wide on large screens only. On small screens, it acts lik
 
 {% example palette="none",
         alt="Sticky card desktop layout",
-        src="./sticky-card-responsive-desktop.svg" %}{% endexample %}
+        src="./sticky-card-responsive-desktop.svg" %}
 
 ### Tablet
 
 {% example palette="none",
         alt="Sticky card tablet layout",
-        src="./sticky-card-responsive-tablet.svg" %}{% endexample %}
+        src="./sticky-card-responsive-tablet.svg" %}
 
 ### Mobile
 
 {% example palette="none",
         alt="Sticky card mobile layout",
-        src="./sticky-card-responsive-mobile.svg" %}{% endexample %}
+        src="./sticky-card-responsive-mobile.svg" %}
 
 ## Interaction states
 
@@ -177,7 +177,7 @@ values between elements.
 
   {% example palette="lightest",
            alt="Sticky card spacing",
-           src="./sticky-card-spacing.svg" %}{% endexample %}
+           src="./sticky-card-spacing.svg" %}
 
 {% include 'feedback.html' %}
 

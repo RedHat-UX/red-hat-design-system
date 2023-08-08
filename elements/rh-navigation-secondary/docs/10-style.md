@@ -11,7 +11,7 @@
 
   {% example palette="light",
       alt="Image of a gray secondary navigation background with dotted line boxes that say slot 1, slot 2, and slot 3 from left to right",
-      src="../nav-secondary-style-slots.png" %}{% endexample %}
+      src="../nav-secondary-style-slots.png" %}
 
 ### Using slots
   Slots are defined areas where content can be inserted, each slot includes a specific type of content.
@@ -29,7 +29,7 @@
 
   {% example palette="light",
       alt="Image of four secondary navigations; two large ones and two small ones with dotted line boxes around each slot and labels that say slot 1, slot 2, and slot 3",
-      src="../nav-secondary-style-slots-and-breakpoints.png" %}{% endexample %}
+      src="../nav-secondary-style-slots-and-breakpoints.png" %}
 
 ### Using the expandable menu
   The expandable menu is an area where content can be placed like text, links, calls to action, and more. The menu requires a backdrop so it can separate itself from the page underneath, this helps users focus on the menu content.
@@ -55,7 +55,7 @@
 
   {% example palette="light",
       alt="Image of a light theme secondary navigation",
-      src="../nav-secondary-style-theme-light.png" %}{% endexample %}
+      src="../nav-secondary-style-theme-light.png" %}
 
   {% tokensTable %}
 
@@ -74,7 +74,7 @@
 
   {% example palette="darkest",
       alt="Image of a dark theme secondary navigation",
-      src="../nav-secondary-style-theme-dark.png" %}{% endexample %}
+      src="../nav-secondary-style-theme-dark.png" %}
 
   {% tokensTable %}
 
@@ -94,14 +94,14 @@
 
   {% example palette="light",
       alt="Image of a secondary navigation construction; several examples showing details like spacing, alignment, height, width, and more",
-      src="../nav-secondary-style-configuration.png" %}{% endexample %}
+      src="../nav-secondary-style-configuration.png" %}
 
 ### Expandable menu styles
   An expandable menu includes content like text, links, calls to action, and more. The menu tab, panel, and backdrop have the same styles on all breakpoints.
 
   {% example palette="light",
       alt="Image of two stacked secondary navigations with menus expanded; one for large breakpoints and the other for small breakpoints",
-      src="../nav-secondary-style-expandable-menu-styles.png" %}{% endexample %}
+      src="../nav-secondary-style-expandable-menu-styles.png" %}
 
 ### Slot text labels
   Slot 1 and Slot 2 text elements have specific styles applied to them.
@@ -112,7 +112,7 @@
 
   {% example palette="light",
       alt="Image of four stacked secondary navigations; two are light theme and two are dark theme, both with dotted line boxes and labels that say slot 1 and slot 2",
-      src="../nav-secondary-style-text-labels.png" %}{% endexample %}
+      src="../nav-secondary-style-text-labels.png" %}
 
   {% tokensTable %}
 
@@ -141,13 +141,13 @@
 
   {% example palette="none",
     alt="Image of secondary navigation spacing values on large breakpoints",
-    src="../nav-secondary-space-breakpoints-large.png" %}{% endexample %}
+    src="../nav-secondary-space-breakpoints-large.png" %}
 
 ### Small breakpoints  
 
   {% example palette="none",
     alt="Image of secondary navigation spacing values on small breakpoints",
-    src="../nav-secondary-space-breakpoints-small.png" %}{% endexample %}
+    src="../nav-secondary-space-breakpoints-small.png" %}
 
   {% spacerTokensTable 
     headline="",
@@ -165,11 +165,11 @@
 
   {% example palette="light",
       alt="Image of light theme secondary navigation hover states",
-      src="../nav-secondary-interaction-state-hover-theme-light.png" %}{% endexample %}
+      src="../nav-secondary-interaction-state-hover-theme-light.png" %}
 
   {% example palette="darkest",
       alt="Image of dark theme secondary navigation hover states",
-      src="../nav-secondary-interaction-state-hover-theme-dark.png" %}{% endexample %}
+      src="../nav-secondary-interaction-state-hover-theme-dark.png" %}
 
   {% tokensTable %}
 
@@ -193,11 +193,11 @@
 
   {% example palette="light",
       alt="Image of light theme secondary navigation focus states",
-      src="../nav-secondary-interaction-state-focus-theme-light.png" %}{% endexample %}
+      src="../nav-secondary-interaction-state-focus-theme-light.png" %}
 
   {% example palette="darkest",
       alt="Image of dark theme secondary navigation focus states",
-      src="../nav-secondary-interaction-state-focus-theme-dark.png" %}{% endexample %}      
+      src="../nav-secondary-interaction-state-focus-theme-dark.png" %}      
 
   {% tokensTable %}
 
@@ -217,11 +217,11 @@
 
   {% example palette="light",
       alt="Image of light theme secondary navigation active states",
-      src="../nav-secondary-interaction-state-active-theme-light.png" %}{% endexample %}
+      src="../nav-secondary-interaction-state-active-theme-light.png" %}
 
   {% example palette="darkest",
       alt="Image of dark theme secondary navigation active states",
-      src="../nav-secondary-interaction-state-active-theme-dark.png" %}{% endexample %}
+      src="../nav-secondary-interaction-state-active-theme-dark.png" %}
 
   {% tokensTable %}
 

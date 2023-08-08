@@ -8,7 +8,7 @@
   {% example palette="lightest",
              width=699,
              alt="Progress steps component blueprint",
-             src="../progress-steps-blueprint.svg" %}{% endexample %}
+             src="../progress-steps-blueprint.svg" %}
 
 ### Visual elements
 
@@ -30,7 +30,7 @@
   {% example palette="lightest",
              width=385,
              alt="Progress steps component visual elements",
-             src="../progress-steps-visual-elements.svg" %}{% endexample %}
+             src="../progress-steps-visual-elements.svg" %}
 
 ### Text labels
 
@@ -47,7 +47,7 @@
   {% example palette="lightest",
              width=687,
              alt="Progress steps component text labels",
-             src="../progress-steps-text-labels.svg" %}{% endexample %}
+             src="../progress-steps-text-labels.svg" %}
 
 
 ## Orientation
@@ -66,7 +66,7 @@
   {% example palette="lightest",
              width=687,
              alt="Progress steps component horizontal orientation",
-             src="../progress-steps-horizontal-orientation.svg" %}{% endexample %}
+             src="../progress-steps-horizontal-orientation.svg" %}
 
 ### Vertical
 
@@ -83,7 +83,7 @@
   {% example palette="lightest",
              width=872,
              alt="Progress steps component vertical orientation",
-             src="../progress-steps-vertical-orientation.svg" %}{% endexample %}
+             src="../progress-steps-vertical-orientation.svg" %}
 
 
 ## Responsive design
@@ -118,5 +118,5 @@
   {% example palette="lightest",
              width=687,
              alt="Progress steps component spacing",
-             src="../progress-steps-spacing.svg" %}{% endexample %}
+             src="../progress-steps-spacing.svg" %}
 
