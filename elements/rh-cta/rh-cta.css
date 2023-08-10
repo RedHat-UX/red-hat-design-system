@@ -199,7 +199,7 @@ svg {
   padding-block: var(--rh-space-lg, 16px) !important;
 }
 
-:host([variant]:not([variant="brick"])) #container.icon {
+:host([variant]) #container.icon {
   text-align: center;
 }
 
