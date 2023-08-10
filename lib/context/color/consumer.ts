@@ -60,9 +60,9 @@ export class ColorContextConsumer<
   async hostConnected() {
     const event = new ContextEvent(this.context, e => this.#contextCallback(e), true);
     this.#override = this.#propertyValue;
-    this.host.dispatchEvent(event);
     contextEvents.set(this.host, event);
     await this.host.updateComplete;
+    this.host.dispatchEvent(event);
     this.#override = null;
   }
 
