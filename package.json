@@ -43,6 +43,7 @@
   "scripts": {
     "🐒-DEV": "❓ Development aids",
     "start": "wireit",
+    "dev": "wireit",
     "new": "npm init @patternfly/element",
     "🚧-BUILD": "❓ Make packages and artifacts",
     "build": "wireit",
@@ -79,6 +80,15 @@
         "compile",
         "watch:compile",
         "watch:docs"
+      ]
+    },
+    "dev": {
+      "service": true,
+      "command": "web-dev-server --watch",
+      "dependencies": [
+        "analyze",
+        "compile",
+        "watch:compile"
       ]
     },
     "build": {
