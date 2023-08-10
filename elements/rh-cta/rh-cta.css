@@ -38,6 +38,7 @@
 }
 
 #container {
+  position: relative;
   white-space: nowrap;
   color: var(--rh-cta-color);
   font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
@@ -212,7 +213,7 @@ svg {
 }
 
 :host([variant]) #container.icon pf-icon {
-  margin-inline: var(--rh-space-lg, 16px);
+  margin-inline-start: var(--rh-space-lg, 16px);
 }
 
 /* prefer to group state-bound styles */
