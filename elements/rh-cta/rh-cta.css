@@ -193,17 +193,23 @@ svg {
   text-align: center;
 }
 
-:host([variant]) #container.icon ::slotted(*) {
-  padding-inline-end: calc(var(--_pf-icon-plus-padding) + var(--rh-space-xl, 24px)) !important;
+:host([variant]) #container.icon {
+  padding-inline: var(--rh-space-xl, 24px) !important;
+  padding-block: var(--rh-space-lg, 16px) !important;
+  text-align: center;
 }
 
-:host([variant]) #container.svg  ::slotted(*) {
+:host([variant]) #container.icon ::slotted(*) {
+  display: inline !important;
+  padding-inline: 0 !important;
+}
+
+:host([variant]) #container.svg ::slotted(*) {
   padding-inline-end: calc(var(--_arrow-plus-padding) + var(--rh-space-xl, 24px)) !important;
 }
 
-:host([variant]) #container pf-icon {
-  margin-inline-start: calc(-24px - var(--_arrow-size));
-  margin-inline-end: var(--rh-space-xl, 24px);
+:host([variant]) #container.icon pf-icon {
+  margin-inline: var(--rh-space-lg, 16px);
 }
 
 /* prefer to group state-bound styles */
