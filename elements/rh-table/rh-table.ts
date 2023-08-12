@@ -26,8 +26,8 @@ export class RhTable extends LitElement {
   render() {
     return html`
     <div id="container" 
-         @pointerleave=${this.activeFocus ? this.onPointerleave : nothing}
-         @pointerover=${this.activeFocus ? this.onPointerover2 : nothing}>
+         @pointerleave=${this.onPointerleave}
+         @pointerover=${this.onPointerover}>
       <slot @slotchange="${this.onSlotchange}"></slot>
     </div>
     `;
@@ -37,7 +37,7 @@ export class RhTable extends LitElement {
     this.cols.forEach(col => col.classList.remove('active'));
   }
 
-  private onPointerover2(event: PointerEvent) {
+  private onPointerover(event: PointerEvent) {
     event.preventDefault();
 
     let { target } = event;

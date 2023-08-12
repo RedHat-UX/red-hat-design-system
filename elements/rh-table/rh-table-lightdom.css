@@ -41,7 +41,9 @@
 
 /* New */
 
-/* all */
+/* TODO: consolidate color discrepancies */
+
+/* All */
 :is(rh-table) table {
   background: var(--rh-color-surface-lightest, #ffffff);
 }
@@ -50,12 +52,18 @@
   border-bottom: 1px solid #d2d2d2;
 }
 
+/* TODO: don't apply background color to header row */
+:is(rh-table:not([active-focus])) tr:hover {
+  background: rgba(210, 210, 210, 0.2);
+}
+
 :is(rh-table) tr > * {
   border: none;
   white-space: nowrap;
 }
 
-:is(rh-table[active-focus]) :is(tr, col){
+/* TODO: refine transition */
+:is(rh-table) :is(tr, col){
   transition: background .3s ease-out;
 }
 
@@ -79,7 +87,9 @@
   padding-bottom: var(--rh-space-lg, 16px);
 }
 
-:is(rh-table[active-focus]) :is(tbody tr:hover, .active) {
+
+:is(rh-table) :is(col.active),
+:is(rh-table[active-focus]) :is(tbody tr:hover) {
   background: rgba(0, 102, 204, 0.1);
 }
 
