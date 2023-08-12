@@ -1,22 +1,10 @@
-/* taken from Wes's implementation */
+/* Taken from Wes's implementation */
 :is(rh-table) caption {
   margin-top: var(--rh-space-md, 8px);
   margin-bottom: var(--rh-space-md, 8px);
   color: currentcolor;
-
-  /* corresponds with bold? */
   font-weight: var(--rh-font-weight-heading-bold, 700); 
   text-align: center;
-}
-
-:is(rh-table) :is(th, td)  {
-  padding: var(--rh-space-xl, 24px) var(--rh-space-lg, 16px);
-  border-right: 0;
-
-  /* originally #d2d2d2 */
-  border-bottom: 1px solid var(--rh-color-gray-20, #c7c7c7); 
-  border-left: 0;
-  transition: background 0.1s ease;
 }
 
 :is(rh-table) :is(th, td).content--lg {
@@ -51,53 +39,109 @@
   vertical-align: bottom;
 }
 
-:is(rh-table) thead :is(th, td) {
-  padding-top: var(--rh-space-lg, 16px);
-  padding-bottom: var(--rh-space-lg, 16px);
-  border-top: 0;
-
-  /* originally 600? */
-  font-weight: var(--rh-font-weight-heading-bold, 700);
-  background: transparent;
-}
-
 /* New */
 
-:is(rh-table) td {
-  /* confirm border width */
-  border: 1.5px solid transparent;
+/* all */
+:is(rh-table) table {
+  background: var(--rh-color-surface-lightest, #ffffff);
+}
+
+:is(rh-table) tr {
+  border-bottom: 1px solid #d2d2d2;
+}
+
+:is(rh-table) tr > * {
+  border: none;
+  white-space: nowrap;
+}
+
+:is(rh-table[active-focus]) :is(tr, col){
+  transition: background .3s ease-out;
 }
 
 :is(rh-table) a {
-  /* confirm link color; following token naming instead of wires */
-  color: var(--rh-color-interactive-blue-darker, #0066cc);
+  color: var(--rh-color-interactive-blue-darkest, #004080);
   text-decoration: none;
 }
 
-:is(rh-table) td:hover a {
-  color: var(--rh-color-interactive-blue-darkest, #004080);
+:is(rh-table) a:hover  {
   text-decoration: underline;
 }
 
-/* Column styling the same on desktop & mobile */
-
-/* not liking double negative here */
-:is(rh-table):not([no-hover]) :is(td, th).active-column {
-  background-color: rgba(0, 102, 204, 0.1)
+/* Desktop */
+:is(rh-table) :is(th, td)  {
+  padding: var(--rh-space-xl, 24px) var(--rh-space-lg, 16px);
 }
 
-:is(rh-table):not([no-hover]) tr:has(.active-row--mouse):hover {
-  background-color: rgba(0, 102, 204, 0.1)
+:is(rh-table) thead :is(th, td) {
+  font-weight: var(--rh-font-weight-heading-bold, 700);
+  padding-top: var(--rh-space-lg, 16px);
+  padding-bottom: var(--rh-space-lg, 16px);
 }
 
-:is(rh-table):not([no-hover]) tr:has(.active-row--touch):hover {
-  /* need token equivalent */
-  background-color: #f5f5f5;
+:is(rh-table[active-focus]) :is(tbody tr:hover, .active) {
+  background: rgba(0, 102, 204, 0.1);
 }
 
-:is(rh-table):not([no-hover]) td.active-cell--mouse {
-  background-color: var(--rh-color-surface-lightest, #ffffff);
+:is(rh-table[active-focus]) tbody td:hover {
+  background: var(--rh-color-surface-lightest, #ffffff);
+  outline: 1.5px solid var(--rh-color-border-interactive-on-light, #0066cc);
+  outline-offset: -1.5px;
+}
 
-  /* same here; using hover token name instead; slightly darker */
-  border-color: var(--rh-color-interactive-blue-darkest, #004080);
+/* Tablet */
+@media (min-width: 768px) and (max-width: 1200px) {
+  :is(rh-table[active-focus]) tbody tr:hover {
+    background: #f5f5f5;
+  }
+}
+
+@media (max-width: 1200px) {
+  :is(rh-table[active-focus]) tbody td:hover {
+    background: rgba(0, 102, 204, 0.1);
+    outline: unset;
+    outline-offset: unset;
+  }
+}
+
+/* Mobile: */
+@media (max-width: 768px) {
+  :is(rh-table) table:has(thead) {
+    display: grid;
+  }
+
+  :is(rh-table) table:has(thead) thead {
+    display: none;
+  }
+
+  :is(rh-table) table:has(thead) tbody tr {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  :is(rh-table[active-focus]) table:has(thead) tbody tr:hover {
+    background: rgba(0, 102, 204, 0.1);
+  }
+
+  :is(rh-table) table:has(thead) tbody tr > * {
+    padding: var(--rh-space-lg, 16px);
+  }
+
+  /* todo: need styling for row header */
+  :is(rh-table) table:has(thead) tbody tr th {
+    text-align: center;
+  }
+
+  :is(rh-table) table:has(thead) tbody tr td {
+    display: grid;
+    grid-column-gap: var(--rh-space-lg, 16px);
+    grid-template-columns: 1fr minmax(0, 1.5fr);
+    align-items: start;
+  }
+
+  :is(rh-table) table:has(thead) tbody tr td:before {
+    font-weight: var(--rh-font-weight-heading-bold, 700);
+    text-align: left;
+    content: attr(data-label);
+  }
 }
