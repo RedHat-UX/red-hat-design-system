@@ -62,10 +62,6 @@ button {
   max-height: 100%;
 }
 
-:host([vertical]) button {
-  text-align: start;
-}
-
 button:focus-visible {
   outline: var(--rh-border-width-md, 2px) solid var(--_button-focus-outline-color);
   outline-offset: -8px;
@@ -81,6 +77,10 @@ button:after {
   border-inline: 0 solid transparent;
   border-block-start: var(--rh-border-width-lg, 3px) solid transparent;
   border-block-end: var(--rh-border-width-sm, 1px) solid transparent;
+}
+
+:host([vertical]) button {
+  text-align: start;
 }
 
 [part="icon"] {
