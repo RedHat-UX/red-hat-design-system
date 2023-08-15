@@ -60,7 +60,11 @@ article {
           var(--rh-color-border-subtle-on-light, #c7c7c7)
         )
       );
-  background-color: var(--_background-color, var(--rh-color-surface-lightest, #ffffff));
+  background-color: 
+    var(
+        --rh-card-background-color, 
+        var(--_background-color, var(--rh-color-surface-lightest, #ffffff))
+      );
   border-radius: var(--_border-radius, var(--rh-border-width-lg, 3px));
   color: var(--_color, var(--rh-color-text-primary-on-light, #151515));
   font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
