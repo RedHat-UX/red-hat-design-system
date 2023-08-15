@@ -1,11 +1,9 @@
 # Timestamp
-Add a description of the component here.
+A timestamp provides consistent formats for displaying date and time values.
 
 ## Usage
-Describe how best to use this web component along with best practices.
+Use a timestamp to display date and time values.
 
 ```html
-<rh-timestamp>
-
-</rh-timestamp>
+<rh-timestamp></rh-timestamp>
 ```
