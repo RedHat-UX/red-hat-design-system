@@ -1,5 +1,4 @@
 ---
-layout: layout-basic.njk
 title: Patterns
 summaries:
   announcement: Displays important messages across web properties
@@ -9,7 +8,6 @@ summaries:
   form: Collects information from a user through inputs
   link: Directs users to other domains or pages
   link-with-icon: Adds additional context or decoration to a link
-  promo: Advertises a specific promotional message or offer
   search-bar: Performs a search and displays relevant content
   skip-navigation: Moves a user down to content by keyboard input
   sticky-banner: Anchors an offer to the bottom edge of a page
@@ -19,11 +17,9 @@ summaries:
 
 {# NOTE: all images in this view need to be 340 by 200 px in order to maintain same ratio. #}
 
-{% section %}
-  ## Overview
-  Patterns compose elements and tokens with content and validation rules to 
-  create uniform, accessible experiences.
-{% endsection %}
+## Overview
+Patterns compose elements and tokens with content and validation rules to 
+create uniform, accessible experiences.
 
 <div class="multi-column--min-400-wide margin-top--10">
 {%- for pattern in collections.pattern -%}
@@ -31,11 +27,6 @@ summaries:
   {%- set summary = pattern.description -%}
   {% if not summary %}
     {%- set summary = summaries[slug] -%}
-  {% endif %}
-
-  {%- set wrapperClass = '' -%}
-  {% if pattern.data.title in ['Promo'] %}
-    {%- set wrapperClass = 'blue-bg' -%}
   {% endif %}
 
   <div class="padding-stacked">
@@ -53,10 +44,8 @@ summaries:
 {% endfor %}
 </div>
 
-{% section %}
-  ## Make a request
-  To request a new element or if updates need to be made to an existing element, 
-  [contact us](mailto:digital-design-system@redhat.com).
-{% endsection %}
+## Make a request
+To request a new element or if updates need to be made to an existing element, 
+[contact us](mailto:digital-design-system@redhat.com).
 
 {% include 'feedback.html' %}

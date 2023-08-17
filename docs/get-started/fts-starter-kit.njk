@@ -4,10 +4,14 @@ title: FTS starter kit
 order: 2
 tags:
   - getstarted
-includeComponent:
-  - pfe-modal
 ---
 
+<script type="module">
+  import '@rhds/elements/rh-alert/rh-alert.js';
+  import '@rhds/elements/rh-button/rh-button.js';
+  import '@rhds/elements/rh-card/rh-card.js';
+  import '@rhds/elements/rh-dialog/rh-dialog.js';
+</script>
 <!-- Body -->
 
 {% import 'component/get-started.njk' as getstarted %}
@@ -50,63 +54,48 @@ includeComponent:
 
   <p>If necessary, complete any Drupal or XD trainings before requesting an invite to access the FTS starter kit library.</p>
 
-  <div class="list-box">
-    <div class="list-box--item">
-      <div class="list-box--item-number">
-        <span>1</span>
-      </div>
-      <div class="list-box--item-description">
-        <h4>Request an invite</h4>
-        <p><a href="mailto:digital-design-system@redhat.com">Contact us</a> about what you are working on and then we will send you an invite to access the library.</p>
-      </div>
-    </div>
-    <div class="list-box--item">
-      <div class="list-box--item-number">
-        <span>2</span>
-      </div>
-      <div class="list-box--item-description">
-        <h4>Sync the library</h4>
-        <p>Once you accept the invite, a library of patterns will sync in XD. There are a lot, so this might take some time.</p>
-      </div>
-    </div>
+  <div class="card-grid">
+    <rh-card>
+      <div slot="header" class="number">1</div>
+      <h3 slot="header" data-number="1">Request an invite</h3>
+      <p>
+        <a href="mailto:digital-design-system@redhat.com">Contact us</a> 
+        about what you are working on and then we will send you an invite to access the library.
+      </p>
+    </rh-card>
 
-    <div class="list-box--item">
-      <div class="list-box--item-number">
-        <span>3</span>
-      </div>
-      <div class="list-box--item-description">
+    <rh-card>
+      <div slot="header" class="number">2</div>
+      <h3 slot="header">Sync the library</h3>
+      <p>
+        Once you accept the invite, a library of patterns will sync in XD. There are a lot, so this might take some time.
+      </p>
+    </rh-card>
 
-        <!-- Start modal content -->
+    <rh-card>
+      <div slot="header" class="number">3</div>
+      <h3 slot="header">Load the library</h3>
+      <p>When syncing is done, the library will appear in the Libraries panel. Selecting this library will load all of the patterns.</p>
+      <rh-button id="connect-kit-trigger" slot="footer">About the Libraries panel</rh-button>
+      <rh-dialog id="connect-kit" trigger="connect-kit-trigger">
+        <h3 slot="header">Load the library</h3>
+        <p>When the FTS starter kit library is done syncing, it should appear in the <em>Libraries</em> panel in XD. You can view the Libraries panel by pressing <strong>Shift+Command+Y</strong> (or <strong>Shift+Control+Y</strong> on Windows). Clicking on the library will load all of the FTS patterns for you to work with.</p>
+        <div style="text-align:center;">
+          <img src="{{ '/assets/get-started/dialog/get-started-dialog-image-3.png' | url }}" alt="Library name" style="padding-top: 40px; padding-bottom: 12px; max-width: 326px; text-align: center; margin: 0 auto;">
+        </div>
+        <p>If you do not see the library, click on the <em>Manage libraries</em> link in the Libraries panel. The library might be turned off for you. To turn it on, toggle the switch as pictured below. It does take some time for XD to sync our libraries, so be patient. Remember that our libraries require access to Adobe Creative Cloud through a Red Hat account.</p>
+        <div style="text-align:center;">
+          <img src="{{ '/assets/get-started/dialog/get-started-dialog-image-4.png' | url }}" alt="Turn on library" style="padding-top: 40px; padding-bottom: 12px; max-width: 466px; text-align: center; margin: 0 auto;">
+        </div>
+        <p>Still need assistance? No problem, just <a href="mailto:digital-design-system@redhat.com">contact us</a> and we will make sure you get connected.</p>
+      </rh-dialog>
+    </rh-card>
 
-        <rh-dialog id="connect-kit" trigger="connect-kit-trigger">
-          <h3 slot="header">Load the library</h3>
-          <p>When the FTS starter kit library is done syncing, it should appear in the <em>Libraries</em> panel in XD. You can view the Libraries panel by pressing <strong>Shift+Command+Y</strong> (or <strong>Shift+Control+Y</strong> on Windows). Clicking on the library will load all of the FTS patterns for you to work with.</p>
-          <div style="text-align:center;">
-            <img src="{{ '/assets/get-started/dialog/get-started-dialog-image-3.png' | url }}" alt="Library name" style="padding-top: 40px; padding-bottom: 12px; max-width: 326px; text-align: center; margin: 0 auto;">
-          </div>
-          <p>If you do not see the library, click on the <em>Manage libraries</em> link in the Libraries panel. The library might be turned off for you. To turn it on, toggle the switch as pictured below. It does take some time for XD to sync our libraries, so be patient. Remember that our libraries require access to Adobe Creative Cloud through a Red Hat account.</p>
-          <div style="text-align:center;">
-            <img src="{{ '/assets/get-started/dialog/get-started-dialog-image-4.png' | url }}" alt="Turn on library" style="padding-top: 40px; padding-bottom: 12px; max-width: 466px; text-align: center; margin: 0 auto;">
-          </div>
-          <p>Still need assistance? No problem, just <a href="mailto:digital-design-system@redhat.com">contact us</a> and we will make sure you get connected.</p>
-        </rh-dialog>
-
-        <!-- End modal content -->
-
-        <h4>Load the library</h4>
-        <p>When syncing is done, the library will appear in the <a class="modal-launch" id="connect-kit-trigger">Libraries</a> panel. Selecting this library will load all of the patterns.</p>
-      </div>
-    </div>
-
-    <div class="list-box--item">
-      <div class="list-box--item-number">
-        <span>4</span>
-      </div>
-      <div class="list-box--item-description">
-        <h4>Create pages and experiences</h4>
-        <p>Use these patterns to create designs and experiences that look consistent when building them in Drupal.</p>
-      </div>
-    </div>
+    <rh-card>
+      <div slot="header" class="number">4</div>
+      <h3 slot="header">Create pages and experiences</h3>
+      <p>Use these patterns to create designs and experiences that look consistent when building them in Drupal.</p>
+    </rh-card>
   </div>
 
 {%- endcall %}
@@ -197,8 +186,14 @@ includeComponent:
     <li>If you think something needs to be updated, describe which asset and what the updates are</li>
   </ul>
 
-  <!-- Warning alert -->
-  <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />When changes to an FTS pattern are made, you must <a href="https://helpx.adobe.com/xd/help/work-with-components-xd.html">update that pattern in XD</a> in order to see the changes.</p>
+  <rh-alert state="warning">
+    <h3 slot="header">Warning</h3>
+    <p>
+      When changes to an FTS pattern are made, you must
+      <a href="https://helpx.adobe.com/xd/help/work-with-components-xd.html">update that pattern in XD</a>
+      in order to see the changes.
+    </p>
+  </rh-alert>
 
 {%- endcall %}
 
@@ -236,7 +231,7 @@ includeComponent:
 
 <!-- Cross links -->
 
-<div class="multi-column--min-300-wide">
+<div class="multi-column--min-300-wide section section--palette-default container feedback">
   <div>
     {% call getstarted.section("Feedback") -%}
       <p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>

@@ -74,10 +74,6 @@ function prettyDate(dateStr, options = {}) {
     .format(new Date(dateStr));
 }
 
-/**
- * @param {string} tagName
- * @param {import('@patternfly/pfe-tools/config.js').PfeConfig} config
- */
 function getTagNameSlug(tagName, config) {
   const name = config?.aliases?.[tagName] ?? tagName.replace(`${config?.tagPrefix ?? 'rh'}-`, '');
   return slugify(name, {
@@ -150,7 +146,8 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     'node_modules/element-internals-polyfill': '/assets/packages/element-internals-polyfill',
   });
 
-  eleventyConfig.addPassthroughCopy(getFilesToCopy(), {
+  const filesToCopy = getFilesToCopy();
+  eleventyConfig.addPassthroughCopy(filesToCopy, {
     filter: /** @param {string} path */path => !path.endsWith('.html'),
   });
 
@@ -166,7 +163,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   });
 
   /** get the element overview from the manifest */
-  eleventyConfig.addFilter('getElementDescription', function getElementDescription(tagName) {
+  eleventyConfig.addFilter('getElementDescription', function getElementDescription() {
     /**
      * NB: since the data for this shortcode is no a POJO,
      * but a DocsPage instance, 11ty assigns it to this.ctx._
@@ -273,12 +270,6 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   eleventyConfig.on('eleventy.before', async function() {
     const config = await import('@patternfly/pfe-tools/config.js').then(m => m.getPfeConfig());
     eleventyConfig.addGlobalData('pfeconfig', config);
-  });
-
-  /** generate a bundle that packs all of rhds with all dependencies into a single large js file */
-  eleventyConfig.on('eleventy.before', async function() {
-    const { bundle } = await import('../../scripts/bundle.js');
-    await bundle({ outfile: '_site/assets/rhds.min.js' });
   });
 
   /** custom-elements.json */

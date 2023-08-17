@@ -1,0 +1,9 @@
+@use '../__core/variables' as *;
+
+.feedback:is(.section) {
+  margin-block-start: var(--rh-space-5xl, 80px);
+
+  &.feedback :is(h2):first-of-type {
+    margin-block-start: 0;
+  }
+}

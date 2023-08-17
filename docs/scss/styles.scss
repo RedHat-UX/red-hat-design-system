@@ -8,6 +8,7 @@
 @use "components/header";
 @use "components/section";
 @use "components/example";
+@use "components/feedback";
 @use "components/table-of-contents";
 @use "components/component-status-table";
 @use "components/spacer-tokens-table";
@@ -20,7 +21,7 @@ body.element-docs rh-subnav img {
   --inline-img-max-width: 992px;
 }
 
-body.element-docs .header.container {
+.header.container.has-subnav {
   padding-bottom: 0;
 }
 
@@ -60,8 +61,7 @@ a.heading-anchor:hover:before {
   content: "#";
   display: block;
   position: absolute;
-  inset-inline-start: -1.5rem;
-  inset-block-start: 0.125rem;
+  inset-inline-start: -1em;
 }
 
 copy-permalink > :is(h1, h2, h3, h4, h5, h6) {
@@ -69,7 +69,16 @@ copy-permalink > :is(h1, h2, h3, h4, h5, h6) {
 }
 
 body.element-docs copy-permalink.h2,
-body.element-docs copy-permalink.h3 {
+body.element-docs copy-permalink.h3,
+body.page-docs copy-permalink.h2,
+body.page-docs copy-permalink.h3,
+body.token-docs copy-permalink.h2,
+body.token-docs copy-permalink.h3 {
   margin-block-start: 82px;
 }
 
+body.element-docs copy-permalink.h2 + copy-permalink.h3,
+body.page-docs copy-permalink.h2 + copy-permalink.h3,
+body.token-docs copy-permalink.h2 + copy-permalink.h3 {
+  margin-block-start: var(--rh-space-2xl, 32px);
+}
