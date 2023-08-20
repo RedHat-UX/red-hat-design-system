@@ -16,8 +16,14 @@
   font-weight: inherit !important;
   line-height: inherit !important;
   text-decoration: var(--rh-cta-text-decoration);
-  position: relative;
   z-index: 2;
+}
+
+::slotted(a)::after {
+  display: block;
+  content: '';
+  position: absolute;
+  inset: 0;
 }
 
 ::slotted(button),
