@@ -19,9 +19,9 @@
   z-index: 2;
 }
 
-::slotted(a)::after {
+::slotted(a):after {
   display: block;
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
 }
