@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-`<rh-tabs>`: Fixed vertical tabs text alignment
+`<rh-tabs>`: fixed vertical tabs text alignment
