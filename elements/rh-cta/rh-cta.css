@@ -24,6 +24,7 @@
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 3;
 }
 
 ::slotted(button),
@@ -51,15 +52,13 @@
   --_context-background-color: var(--rh-cta-background-color) !important;
   --_arrow-size: 13px;
   --_arrow-plus-padding: calc(var(--rh-space-md, 8px) + var(--_arrow-size));
-  --pf-icon--size: var(--rh-font-size-text-xl, 1.125rem);
   --_pf-icon-plus-padding: calc(5px + var(--pf-icon--size));
+  --pf-icon--size: var(--rh-font-size-text-xl, 1.125rem);
 }
 
 .rtl {
   text-align: right;
 }
-
-
 
 /** Inner border */
 #container:after {
