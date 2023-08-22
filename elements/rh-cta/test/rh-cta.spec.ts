@@ -51,7 +51,7 @@ describe('<rh-cta>', function() {
           });
           it('navigates', function() {
             expect(element.querySelector('a')!.href).to.be.ok;
-            const { hash } = new URL(element.querySelector('a')!.href)
+            const { hash } = new URL(element.querySelector('a')!.href);
             expect(location.hash).to.equal(hash);
           });
         });
@@ -63,14 +63,14 @@ describe('<rh-cta>', function() {
               if (Number.isNaN(rhSpaceLg) || Number.isNaN(rhSpace2xl)) {
                 throw new Error('space tokens not found');
               }
-              await clickElementAtOffset(element, [rhSpace2xl / 2, rhSpaceLg / 2])
+              await clickElementAtOffset(element, [rhSpace2xl / 2, rhSpaceLg / 2]);
             } else {
               await clickElementAtOffset(element, [-5, 10]);
             }
           });
           it('navigates', function() {
             expect(element.querySelector('a')!.href).to.be.ok;
-            const { hash } = new URL(element.querySelector('a')!.href)
+            const { hash } = new URL(element.querySelector('a')!.href);
             expect(location.hash).to.equal(hash);
           });
         });
