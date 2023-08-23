@@ -5,6 +5,5 @@ export default pfeTestRunnerConfig({
   litcssOptions,
   tsconfig: 'tsconfig.json',
   files: ['elements/**/*.spec.ts'],
-  // uncomment to get default wtr reporter
-  // reporter: 'default',
+  ...process.argv.includes('--default-reporter') && { reporter: 'default' },
 });

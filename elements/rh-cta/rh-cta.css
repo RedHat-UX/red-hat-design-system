@@ -7,17 +7,25 @@
 }
 
 ::slotted(*) {
-  vertical-align: middle;
-  white-space: break-spaces;
+  vertical-align: middle !important;
+  white-space: break-spaces !important;
+  word-break: break-word !important;
   display: inline !important;
   color: inherit !important;
   font-family: inherit !important;
   font-size: inherit !important;
   font-weight: inherit !important;
   line-height: inherit !important;
-  text-decoration: var(--rh-cta-text-decoration);
-  position: relative;
-  z-index: 2;
+  text-decoration: var(--rh-cta-text-decoration) !important;
+  z-index: 2 !important;
+}
+
+::slotted(a):after {
+  display: block;
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
 }
 
 ::slotted(button),
@@ -29,15 +37,8 @@
   text-align: left;
 }
 
-#container.icon ::slotted(*) {
-  padding-inline-end: calc(5px + var(--pf-icon--size)) !important;
-}
-
-#container.svg ::slotted(*) {
-  padding-inline-end: calc(var(--rh-space-md, 8px) + var(--_arrow-size)) !important;
-}
-
 #container {
+  position: relative;
   white-space: nowrap;
   color: var(--rh-cta-color);
   font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
@@ -52,15 +53,13 @@
   --_context-background-color: var(--rh-cta-background-color) !important;
   --_arrow-size: 13px;
   --_arrow-plus-padding: calc(var(--rh-space-md, 8px) + var(--_arrow-size));
-  --pf-icon--size: var(--rh-font-size-text-xl, 1.125rem);
   --_pf-icon-plus-padding: calc(5px + var(--pf-icon--size));
+  --pf-icon--size: var(--rh-font-size-text-xl, 1.125rem);
 }
 
 .rtl {
   text-align: right;
 }
-
-
 
 /** Inner border */
 #container:after {
@@ -83,12 +82,12 @@
 /** Default variant arrow icon */
 pf-icon {
   vertical-align: middle;
-  margin-inline-start: calc(0px - var(--pf-icon--size));
+  margin-inline-start: var(--rh-space-md, 8px);
 }
 
 svg {
   vertical-align: middle;
-  margin-inline-start: calc(0px - var(--_arrow-size));
+  margin-inline-start: var(--rh-space-md, 8px);
   display: inline;
   fill: currentcolor;
   width: var(--_arrow-size);
@@ -180,37 +179,29 @@ svg {
   font-size: var(--rh-font-size-body-text-md, 1rem);
   border-radius: var(--rh-border-radius-default, 3px);
   border-width: var(--rh-border-width-sm, 1px);
-  padding: var(--rh-space-lg, 16px) 0 !important;
+  padding-inline: var(--rh-space-2xl, 32px);
+  padding-block: var(--rh-space-lg, 16px);
 }
 
 :host([variant]) #container ::slotted(*) {
-  padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px) !important;
+  display: inline-flex !important;
+  text-align: center !important;
 }
 
 :host([variant$="ary"]) #container ::slotted(*) {
   font-size: var(--rh-cta-font-size-priority, var(--rh-font-size-text-lg, 1rem));
-  text-align: center;
 }
 
 :host([variant]) #container.icon ::slotted(*) {
-  padding-inline-end: calc(var(--_pf-icon-plus-padding) + var(--rh-space-xl, 24px)) !important;
+  display: inline !important;
 }
 
-:host([variant]) #container.svg  ::slotted(*) {
+:host([variant]) #container.svg ::slotted(*) {
   padding-inline-end: calc(var(--_arrow-plus-padding) + var(--rh-space-xl, 24px)) !important;
 }
 
-:host([variant]) #container pf-icon {
-  margin-inline-start: calc(-24px - var(--_arrow-size));
-  margin-inline-end: var(--rh-space-xl, 24px);
-}
-
-/* prefer to group state-bound styles */
-/* stylelint-disable-next-line no-descending-specificity */
-:host([variant]) #container svg {
-  margin-inline-start: calc(-24px - var(--pf-icon--size));
-  margin-inline-end: var(--rh-space-xl, 24px);
-  display: none;
+:host([variant]) #container.icon pf-icon {
+  margin-inline-start: var(--rh-space-md, 8px);
 }
 
 /*****************************************************************************
@@ -327,6 +318,11 @@ svg {
   border-style: solid;
   font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
   font-weight: var(--rh-font-weight-body-text-regular, 400);
+  display: flex;
+  flex-flow: row wrap;
+  gap: var(--rh-space-md, 8px);
+  justify-content: center;
+  align-items: center;
 
   --rh-cta-background-color: transparent;
   --rh-cta-border-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
@@ -358,6 +354,10 @@ svg {
   --rh-cta-active-background-color: var(--rh-color-surface-darker, #1f1f1f);
   --rh-cta-active-inner-border-color: var(--rh-color-border-subtle-on-dark, #707070);
   --rh-cta-active-text-decoration: underline;
+}
+
+:host([variant="brick"]) #container.icon pf-icon {
+  margin-inline: 0;
 }
 
 /* chrome <= 103 */
