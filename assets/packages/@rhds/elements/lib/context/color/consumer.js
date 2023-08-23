@@ -24,9 +24,9 @@ export class ColorContextConsumer extends ColorContextController {
     async hostConnected() {
         const event = new ContextEvent(this.context, e => __classPrivateFieldGet(this, _ColorContextConsumer_instances, "m", _ColorContextConsumer_contextCallback).call(this, e), true);
         __classPrivateFieldSet(this, _ColorContextConsumer_override, __classPrivateFieldGet(this, _ColorContextConsumer_instances, "a", _ColorContextConsumer_propertyValue_get), "f");
-        this.host.dispatchEvent(event);
         contextEvents.set(this.host, event);
         await this.host.updateComplete;
+        this.host.dispatchEvent(event);
         __classPrivateFieldSet(this, _ColorContextConsumer_override, null, "f");
     }
     /** When a consumer disconnects, it's removed from the list of consumers. */

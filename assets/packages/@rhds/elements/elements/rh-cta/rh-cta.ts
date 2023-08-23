@@ -8,7 +8,6 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { DirController } from '../../lib/DirController.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import style from './rh-cta.css';
 
@@ -124,15 +123,6 @@ export class RhCta extends LitElement {
   @property({ reflect: true }) icon?: string;
 
   /**
-   * Sets color palette, which affects the element's styles as well as descendants' color theme.
-   * Overrides parent color context.
-   * Your theme will influence these colors so check there first if you are seeing inconsistencies.
-   * See [CSS Custom Properties](#css-custom-properties) for default values
-   */
-  @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
-
-  /**
    * Sets color theme based on parent context
    */
   @colorContextConsumer() private on?: ColorTheme;
@@ -171,7 +161,7 @@ export class RhCta extends LitElement {
     `;
   }
 
-  firstUpdated() {
+  override firstUpdated() {
     let [cta] = this.shadowRoot?.querySelector('slot')?.assignedElements() ?? [];
 
     while (cta instanceof HTMLSlotElement) {

@@ -1,5 +1,4 @@
 import { LitElement } from 'lit';
-import { type ColorPalette } from '../../lib/context/color/provider.js';
 import '@patternfly/elements/pf-icon/pf-icon.js';
 export interface CtaData {
     href?: string;
@@ -91,13 +90,6 @@ export declare class RhCta extends LitElement {
      */
     variant?: 'primary' | 'secondary' | 'brick';
     icon?: string;
-    /**
-     * Sets color palette, which affects the element's styles as well as descendants' color theme.
-     * Overrides parent color context.
-     * Your theme will influence these colors so check there first if you are seeing inconsistencies.
-     * See [CSS Custom Properties](#css-custom-properties) for default values
-     */
-    colorPalette?: ColorPalette;
     /**
      * Sets color theme based on parent context
      */

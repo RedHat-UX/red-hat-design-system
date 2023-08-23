@@ -35,7 +35,7 @@ export class ColorContextController {
         this.prefix = 'rh-';
         /** The last-known color context on the host */
         this.last = null;
-        this.prefix = options?.prefix ?? 'rh-';
+        this.prefix = options?.prefix ?? 'rh';
         this.context = createContext(`${this.prefix}-color-context`);
         this.styleController = new StyleController(host, CONTEXT_BASE_STYLES);
         host.addController(this);
