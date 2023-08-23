@@ -43,6 +43,7 @@
   "scripts": {
     "🐒-DEV": "❓ Development aids",
     "start": "wireit",
+    "dev": "wireit",
     "new": "npm init @patternfly/element",
     "🚧-BUILD": "❓ Make packages and artifacts",
     "build": "wireit",
@@ -80,6 +81,10 @@
         "watch:compile",
         "watch:docs"
       ]
+    },
+    "dev": {
+      "service": true,
+      "command": "web-dev-server --open --watch"
     },
     "build": {
       "dependencies": [
@@ -190,7 +195,7 @@
     }
   },
   "dependencies": {
-    "@patternfly/elements": "^2.3.2",
+    "@patternfly/elements": "^2.4.0",
     "@patternfly/icons": "^1.0.2",
     "@rhds/tokens": "^1.1.2",
     "lit": "^2.7.3",
@@ -207,7 +212,7 @@
     "@patternfly/create-element": "^1.0.1",
     "@patternfly/eslint-config-elements": "^2.0.1",
     "@patternfly/eslint-plugin-elements": "^1.1.0",
-    "@patternfly/pfe-tools": "^1.4.2",
+    "@patternfly/pfe-tools": "^1.5.0",
     "@playwright/test": "^1.31.1",
     "@types/mocha": "^10.0.0",
     "async-csv": "^2.1.3",
