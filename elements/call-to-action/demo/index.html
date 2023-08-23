@@ -32,7 +32,7 @@
   <rh-cta variant="primary" icon="circle-play"><a href="#primary-video">Video</a></rh-cta>
   <rh-cta variant="secondary"><a href="#secondary">Secondary</a></rh-cta>
   <rh-cta variant="brick"><a href="#brick">Brick</a></rh-cta>
-  <rh-cta variant="brick" icon="circle-play"><a href="#brick-video">Brick Video</a></rh-cta>
+  <rh-cta variant="brick" icon="user"><a href="#brick-icon">Brick Icon</a></rh-cta>
 </section>
 
 <rh-context-provider id="dark" color-palette="darkest">
@@ -43,7 +43,7 @@
   <rh-cta variant="primary" icon="circle-play"><a href="#primary-video">Video</a></rh-cta>
   <rh-cta variant="secondary"><a href="#secondary">Secondary</a></rh-cta>
   <rh-cta variant="brick"><a href="#brick">Brick</a></rh-cta>
-  <rh-cta variant="brick" icon="circle-play"><a href="#brick-video">Brick Video</a></rh-cta>
+  <rh-cta variant="brick" icon="user"><a href="#brick-icon">Brick Icon</a></rh-cta>
 </rh-context-provider>
 
 <section dir="rtl">
@@ -54,7 +54,7 @@
   <rh-cta variant="primary" icon="circle-play"><a href="#primary-video">ראשי - וידאו</a></rh-cta>
   <rh-cta variant="secondary"><a href="#secondary">משני</a></rh-cta>
   <rh-cta variant="brick"><a href="#brick">לבנה</a></rh-cta>
-  <rh-cta variant="brick" icon="circle-play"><a href="#brick-video">לבנה - וידאו</a></rh-cta>
+  <rh-cta variant="brick" icon="user"><a href="#brick-icon">לבנה עם אייקון</a></rh-cta>
 </section>
 
 <section dir="rtl">
@@ -62,16 +62,98 @@
   <p dir="ltr">When the CTA is found within the shadow root of an element which is itself within a RTL context.</p>
   <shadow-root>
     <template shadowroot="open">
-      <style>:host{display: flex; flex-flow: row wrap; gap: 16px;}</style>
+      <style>
+        :host {
+          display: flex;
+          flex-flow: row wrap;
+          gap: 16px;
+        }
+      </style>
       <rh-cta id="deep"><a href="#default">ברירת מחדל</a></rh-cta>
       <rh-cta icon="circle-play"><a href="#default-video">ברירת מחדל - וידאו</a></rh-cta>
       <rh-cta variant="primary"><a href="#primary">ראשי</a></rh-cta>
       <rh-cta variant="primary" icon="circle-play"><a href="#primary-video">ראשי - וידאו</a></rh-cta>
       <rh-cta variant="secondary"><a href="#secondary">משני</a></rh-cta>
       <rh-cta variant="brick"><a href="#brick">לבנה</a></rh-cta>
-      <rh-cta variant="brick" icon="circle-play"><a href="#brick-video">לבנה - וידאו</a></rh-cta>
+      <rh-cta variant="brick" icon="user"><a href="#brick-icon">לבנה עם אייקון</a></rh-cta>
     </template>
   </shadow-root>
+</section>
+
+<section id="resizing">
+  <h2>Resizing</h2>
+  <div class="resize">
+    <rh-cta><a href="#default">Get product details</a></rh-cta>
+  </div>
+  <br>
+  <div class="resize">
+    <rh-cta icon="circle-play"><a href="#default-video">Get product details</a></rh-cta>
+  </div>
+  <br>
+  <div class="resize">
+    <rh-cta variant="primary"><a href="#primary">Get product details</a></rh-cta>
+  </div>
+  <br>
+  <div class="resize">
+    <rh-cta variant="primary" icon="circle-play"><a href="#primary-video">Get product details</a></rh-cta>
+  </div>
+  <br>
+  <div class="resize">
+    <rh-cta variant="secondary"><a href="#secondary">Get product details</a></rh-cta>
+  </div>
+  <br>
+  <div class="resize">
+    <rh-cta variant="brick"><a href="#brick">Get product details</a></rh-cta>
+  </div>
+  <br>
+  <div class="resize">
+    <rh-cta variant="brick" icon="user"><a href="#brick-icon">Get product details</a></rh-cta>
+  </div>
+</section>
+
+<section id="resizing">
+  <h2>Extra-long words</h2>
+  <div class="resize">
+    <rh-cta>
+      <a href="#default">Supercalifragilisticexpialidocious</a>
+    </rh-cta>
+  </div>
+  <br>
+  <div class="resize">
+    <rh-cta icon="circle-play">
+      <a href="#default-video">Supercalifragilisticexpialidocious</a>
+    </rh-cta>
+  </div>
+  <br>
+  <div class="resize">
+    <rh-cta variant="primary">
+      <a href="#primary">Supercalifragilisticexpialidocious</a>
+    </rh-cta>
+  </div>
+  <br>
+  <div class="resize">
+    <rh-cta variant="primary" icon="circle-play">
+      <a href="#primary-video">Supercalifragilisticexpialidocious</a>
+    </rh-cta>
+  </div>
+  <br>
+  <div class="resize">
+    <rh-cta variant="secondary">
+      <a href="#secondary">Supercalifragilisticexpialidocious</a>
+    </rh-cta>
+  </div>
+  <br>
+  <div class="resize">
+    <rh-cta variant="brick">
+      <a href="#brick">Supercalifragilisticexpialidocious</a>
+    </rh-cta>
+  </div>
+  <br>
+  <div class="resize">
+    <rh-cta variant="brick" icon="user">
+      <a href="#brick-icon">Supercalifragilisticexpialidocious</a>
+    </rh-cta>
+  </div>
 </section>
 
 <section id="wrap">
@@ -97,7 +179,6 @@
   <rh-cta variant="secondary"><button>Button</button></rh-cta>
 
 </section>
-
 </div>
     </main>
 

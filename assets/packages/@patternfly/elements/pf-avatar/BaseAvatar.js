@@ -25,7 +25,6 @@ class BaseAvatar extends LitElement {
         /** Whether or not the Avatar image is dark */
         this.dark = false;
     }
-    static { this.styles = [style]; }
     render() {
         return this.src != null ? html `
       <img
@@ -47,6 +46,7 @@ class BaseAvatar extends LitElement {
       `;
     }
 }
+BaseAvatar.styles = [style];
 __decorate([
     property()
 ], BaseAvatar.prototype, "src", void 0);

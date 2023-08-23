@@ -1,4 +1,5 @@
 import { BaseTabs } from './BaseTabs.js';
+import { TabExpandEvent } from './BaseTab.js';
 import { PfTab } from './pf-tab.js';
 import { PfTabPanel } from './pf-tab-panel.js';
 /**
@@ -56,6 +57,7 @@ export declare class PfTabs extends BaseTabs {
     protected static readonly scrollTimeoutDelay = 150;
     static isTab(element: HTMLElement): element is PfTab;
     static isPanel(element: HTMLElement): element is PfTabPanel;
+    static isExpandEvent(event: Event): event is TabExpandEvent;
     box: 'light' | 'dark' | null;
     vertical: boolean;
     fill: boolean;

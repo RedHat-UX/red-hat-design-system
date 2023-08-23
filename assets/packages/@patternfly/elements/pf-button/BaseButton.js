@@ -1,4 +1,5 @@
-import { __decorate } from "tslib";
+var _BaseButton_instances, _BaseButton_internals, _BaseButton_onClick;
+import { __classPrivateFieldGet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -18,14 +19,11 @@ const styles = css `:host{display:inline-block;height:max-content}:host([hidden]
 class BaseButton extends LitElement {
     constructor() {
         super(...arguments);
+        _BaseButton_instances.add(this);
         /** Disables the button */
         this.disabled = false;
-        this.#internals = new InternalsController(this);
+        _BaseButton_internals.set(this, new InternalsController(this));
     }
-    static { this.styles = [styles]; }
-    static { this.formAssociated = true; }
-    static { this.shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true }; }
-    #internals;
     get hasIcon() {
         return !!this.icon;
     }
@@ -37,8 +35,8 @@ class BaseButton extends LitElement {
               part="button"
               type="${ifDefined(this.type)}"
               value="${ifDefined(this.value)}"
-              @click="${this.#onClick}"
-              ?disabled="${this.disabled || this.#internals.formDisabled}">
+              @click="${__classPrivateFieldGet(this, _BaseButton_instances, "m", _BaseButton_onClick)}"
+              ?disabled="${this.disabled || __classPrivateFieldGet(this, _BaseButton_internals, "f").formDisabled}">
         <slot id="icon" part="icon" aria-hidden="true" name="icon">${this.renderDefaultIcon()}</slot>
         <slot id="text" aria-hidden=${String(!!this.label)}></slot>
       </button>
@@ -48,15 +46,18 @@ class BaseButton extends LitElement {
         await this.updateComplete;
         this.requestUpdate();
     }
-    #onClick() {
-        switch (this.type) {
-            case 'reset':
-                return this.#internals.reset();
-            default:
-                return this.#internals.submit();
-        }
-    }
 }
+_BaseButton_internals = new WeakMap(), _BaseButton_instances = new WeakSet(), _BaseButton_onClick = function _BaseButton_onClick() {
+    switch (this.type) {
+        case 'reset':
+            return __classPrivateFieldGet(this, _BaseButton_internals, "f").reset();
+        default:
+            return __classPrivateFieldGet(this, _BaseButton_internals, "f").submit();
+    }
+};
+BaseButton.styles = [styles];
+BaseButton.formAssociated = true;
+BaseButton.shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
 __decorate([
     property({ reflect: true, type: Boolean })
 ], BaseButton.prototype, "disabled", void 0);

@@ -7,6 +7,6 @@ export const Tab = createComponent({
   elementClass,
   react,
   events: {
-    onTabExpand: 'tab-expand',
+    onExpand: 'expand',
   },
 });

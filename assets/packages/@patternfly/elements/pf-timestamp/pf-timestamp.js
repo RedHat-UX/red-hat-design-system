@@ -1,4 +1,5 @@
-import { __decorate } from "tslib";
+var _PfTimestamp_timestamp;
+import { __classPrivateFieldGet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
@@ -14,37 +15,41 @@ const BooleanStringConverter = {
  * A **timestamp** provides consistent formats for displaying date and time values.
  */
 let PfTimestamp = class PfTimestamp extends LitElement {
-    static { this.styles = [style]; }
+    constructor() {
+        super(...arguments);
+        _PfTimestamp_timestamp.set(this, new TimestampController(this));
+    }
     get date() {
-        return this.#timestamp.localeString;
+        return __classPrivateFieldGet(this, _PfTimestamp_timestamp, "f").localeString;
     }
     set date(string) {
-        this.#timestamp.date = new Date(string);
+        __classPrivateFieldGet(this, _PfTimestamp_timestamp, "f").date = new Date(string);
     }
     get isoString() {
-        return this.#timestamp.isoString;
+        return __classPrivateFieldGet(this, _PfTimestamp_timestamp, "f").isoString;
     }
     get time() {
-        return this.#timestamp.time;
+        return __classPrivateFieldGet(this, _PfTimestamp_timestamp, "f").time;
     }
-    #timestamp = new TimestampController(this);
     connectedCallback() {
         super.connectedCallback();
         if (this.hasAttribute('date')) {
-            this.#timestamp.date = new Date(this.getAttribute('date'));
+            __classPrivateFieldGet(this, _PfTimestamp_timestamp, "f").date = new Date(this.getAttribute('date'));
         }
     }
     willUpdate(changedProperties) {
         for (const [prop] of changedProperties) {
-            this.#timestamp.set(prop, this[prop]);
+            __classPrivateFieldGet(this, _PfTimestamp_timestamp, "f").set(prop, this[prop]);
         }
     }
     render() {
         return html `
-      <time datetime="${this.#timestamp.isoString}">${this.#timestamp.time}</time>
+      <time datetime="${__classPrivateFieldGet(this, _PfTimestamp_timestamp, "f").isoString}">${__classPrivateFieldGet(this, _PfTimestamp_timestamp, "f").time}</time>
     `;
     }
 };
+_PfTimestamp_timestamp = new WeakMap();
+PfTimestamp.styles = [style];
 __decorate([
     property({ reflect: true, attribute: 'date-format' })
 ], PfTimestamp.prototype, "dateFormat", void 0);

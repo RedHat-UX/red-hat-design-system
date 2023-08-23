@@ -1,4 +1,5 @@
-import { __decorate } from "tslib";
+var _PfPanel_slots;
+import { __classPrivateFieldGet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
@@ -19,13 +20,11 @@ let PfPanel = class PfPanel extends LitElement {
     constructor() {
         super(...arguments);
         this.scrollable = false;
-        this.#slots = new SlotController(this, 'header', null, 'footer');
+        _PfPanel_slots.set(this, new SlotController(this, 'header', null, 'footer'));
     }
-    static { this.styles = [styles]; }
-    #slots;
     render() {
-        const hasHeader = this.#slots.hasSlotted('header');
-        const hasFooter = this.#slots.hasSlotted('footer');
+        const hasHeader = __classPrivateFieldGet(this, _PfPanel_slots, "f").hasSlotted('header');
+        const hasFooter = __classPrivateFieldGet(this, _PfPanel_slots, "f").hasSlotted('footer');
         return html `
       <slot name="header" role="region" ?hidden="${!hasHeader}"></slot>
       <hr role="presentation" ?hidden="${!hasHeader}">
@@ -34,6 +33,8 @@ let PfPanel = class PfPanel extends LitElement {
     `;
     }
 };
+_PfPanel_slots = new WeakMap();
+PfPanel.styles = [styles];
 __decorate([
     property({ type: Boolean, reflect: true })
 ], PfPanel.prototype, "scrollable", void 0);

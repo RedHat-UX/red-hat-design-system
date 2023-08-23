@@ -1,5 +1,6 @@
+var _PfPopover_instances, _PfPopover_referenceTrigger, _PfPopover_float, _PfPopover_slots, _PfPopover_getReferenceTrigger, _PfPopover_triggerChanged, _PfPopover_outsideClick;
 var PfPopover_1;
-import { __decorate } from "tslib";
+import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, nothing, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
@@ -11,7 +12,6 @@ import { FloatingDOMController } from '@patternfly/pfe-core/controllers/floating
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { bound } from '@patternfly/pfe-core/decorators/bound.js';
 import { ComposedEvent, StringListConverter } from '@patternfly/pfe-core/core.js';
-import { observed } from '@patternfly/pfe-core/decorators/observed.js';
 import '@patternfly/elements/pf-button/pf-button.js';
 import { css } from "lit";
 const styles = css `:host{display:inline;--_floating-arrow-size:var(--pf-c-popover__arrow--Width, var(--pf-global--arrow--width-lg, 1.5625rem));--_header-text-color:var(--pf-c-popover__title-text--Color, inherit);--_header-icon-color:var(--pf-c-popover__title-icon--Color, var(--pf-global--Color--100, #151515));--_animation-speed:var(--pf-popover--animation-speed, 300ms);--_z-index:var(--pf-popover--z-index, 9999)}.visually-hidden{position:fixed;top:0;left:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}[hidden]{display:none!important}#container{display:inline-flex;position:relative}#trigger{display:inline-block;position:relative}#arrow{display:block;position:absolute;background-color:var(--pf-c-popover__arrow--BackgroundColor,var(--pf-global--BackgroundColor--100,#fff));box-shadow:var(--pf-c-popover__arrow--BoxShadow,var(--pf-global--BoxShadow--lg,0 .5rem 1rem 0 rgba(3,3,3,.16),0 0 .375rem 0 rgba(3,3,3,.08)));content:'';height:var(--pf-c-popover__arrow--Height,var(--pf-global--arrow--width-lg,1.5625rem));width:var(--pf-c-popover__arrow--Width,var(--pf-global--arrow--width-lg,1.5625rem));rotate:45deg;z-index:-1;pointer-events:none}#popover{display:block;position:absolute;opacity:0;z-index:-1;transition:visibility 0s,opacity var(--_animation-speed) cubic-bezier(.54, 1.5, .38, 1.11) 0s;left:0;top:0;translate:var(--_floating-content-translate);box-shadow:var(--pf-c-popover--BoxShadow,var(--pf-global--BoxShadow--lg,0 .5rem 1rem 0 rgba(3,3,3,.16),0 0 .375rem 0 rgba(3,3,3,.08)));border:0;padding:0;visibility:hidden}#popover[open]{opacity:1;z-index:var(--_z-index);visibility:visible}[part=content]{position:relative;padding:var(--pf-c-popover__content--PaddingTop,var(--pf-global--spacer--md,1rem)) var(--pf-c-popover__content--PaddingRight,var(--pf-global--spacer--md,1rem)) var(--pf-c-popover__content--PaddingBottom,var(--pf-global--spacer--md,1rem)) var(--pf-c-popover__content--PaddingLeft,var(--pf-global--spacer--md,1rem));word-break:break-word;line-height:var(--pf-c-popover--line-height, 1.5);font-size:var(--pf-c-popover__content--FontSize, var(--pf-global--FontSize--sm, .875rem));color:var(--pf-c-popover__content--Color,var(--pf-global--Color--100,#151515));background-color:var(--pf-c-popover__content--BackgroundColor,var(--pf-global--BackgroundColor--100,#fff));max-width:var(--pf-c-popover--MaxWidth,calc(var(--pf-c-popover__content--PaddingLeft,1rem) + var(--pf-c-popover__content--PaddingRight,1rem) + 18.75rem));min-width:var(--pf-c-popover--MinWidth,calc(var(--pf-c-popover__content--PaddingLeft,1rem) + var(--pf-c-popover__content--PaddingRight,1rem) + 18.75rem));width:max-content}[part=close-button]{cursor:pointer;position:absolute;right:var(--pf-c-popover--c-button--Right,calc(var(--pf-c-popover__content--PaddingRight,1rem) - var(--pf-global--spacer--md,1rem)));top:var(--pf-c-popover--c-button--Top,calc(var(--pf-c-popover__content--PaddingTop,1rem) - var(--pf-global--spacer--form-element,.375rem)))}[part=content]>[part=close-button]:not([hidden])~:not([hidden]){padding-right:var(--pf-c-popover--c-button--sibling--PaddingRight,var(--pf-global--spacer--2xl,3rem))}[part=header]{display:flex;align-items:baseline}[part=icon]{color:var(--_header-icon-color);margin-right:var(--pf-c-popover__title-icon--MarginRight,var(--pf-global--spacer--sm,.5rem))}[part=icon] *,[part=icon] ::slotted(*){vertical-align:-.125em}[part=heading] :is(h2,h3,h4,h5,h6),[part=heading]::slotted(:is(h2,h3,h4,h5,h6)),[part=icon]{font-size:var(--pf-c-popover__title--FontSize, var(--pf-global--FontSize--md, 1rem));font-weight:var(--pf-global--FontWeight--normal,400);--pf-icon--size:var(\n    --pf-c-popover__title--FontSize,\n    var(--pf-global--FontSize--md, var(--pf-global--icon--FontSize--md, 1em))\n  )}[part=heading] :is(h2,h3,h4,h5,h6),[part=heading]::slotted(:is(h2,h3,h4,h5,h6)){color:var(--_header-text-color);margin-top:0;margin-bottom:var(--pf-c-popover__title--MarginBottom,var(--pf-global--spacer--sm,.5rem));line-height:var(--pf-c-popover__title--LineHeight, var(--pf-global--LineHeight--md, 1.5));font-family:var(\n    --pf-c-popover__title--FontFamily,\n    var(\n      --pf-global--FontFamily--heading--sans-serif,\n      'RedHatDisplay',\n      'Overpass',\n      overpass,\n      helvetica,\n      arial,\n      sans-serif\n    )\n  )}[part=body]{display:block;word-wrap:break-word}[part=footer]{margin-top:var(--pf-c-popover__footer--MarginTop,var(--pf-global--spacer--md,1rem))}:host([alert-severity=default]){--_header-text-color:var(--pf-c-popover--m-default__title-text--Color, var(--pf-global--default-color--300, #003737));--_header-icon-color:var(--pf-c-popover--m-default__title-icon--Color, var(--pf-global--default-color--200, #009596))}:host([alert-severity=info]){--_header-text-color:var(--pf-c-popover--m-info__title-text--Color, var(--pf-global--info-color--200, #002952));--_header-icon-color:var(--pf-c-popover--m-info__title-icon--Color, var(--pf-global--info-color--100, #2b9af3))}:host([alert-severity=warning]){--_header-icon-color:var(--pf-c-popover--m-warning__title-icon--Color, var(--pf-global--warning-color--100, #f0ab00));--_header-text-color:var(--pf-c-popover--m-warning__title-text--Color, var(--pf-global--warning-color--200, #795600))}:host([alert-severity=success]){--_header-icon-color:var(--pf-c-popover--m-success__title-icon--Color, var(--pf-global--success-color--100, #3e8635));--_header-text-color:var(--pf-c-popover--m-success__title-text--Color, var(--pf-global--success-color--200, #1e4f18))}:host([alert-severity=danger]){--_header-icon-color:var(--pf-c-popover--m-danger__title-icon--Color, var(--pf-global--danger-color--100, #c9190b));--_header-text-color:var(--pf-c-popover--m-danger__title-text--Color, var(--pf-global--danger-color--200, #a30000))}`;
@@ -173,6 +173,7 @@ export class PopoverShownEvent extends ComposedEvent {
 let PfPopover = PfPopover_1 = class PfPopover extends LitElement {
     constructor() {
         super(...arguments);
+        _PfPopover_instances.add(this);
         /**
          * Indicates the initial popover position.
          * There are 12 options: `top`, `bottom`, `left`, `right`, `top-start`, `top-end`,
@@ -184,44 +185,23 @@ let PfPopover = PfPopover_1 = class PfPopover extends LitElement {
          * Disable the flip behavior. The default is `false`.
          */
         this.noFlip = false;
-        this.#referenceTrigger = null;
-        this.#float = new FloatingDOMController(this, {
+        _PfPopover_referenceTrigger.set(this, null);
+        _PfPopover_float.set(this, new FloatingDOMController(this, {
             content: () => this._popover,
             arrow: () => this._arrow,
-            invoker: () => this.#referenceTrigger || this._slottedTrigger,
-        });
-        this.#slots = new SlotController(this, null, 'icon', 'heading', 'body', 'footer');
+            invoker: () => __classPrivateFieldGet(this, _PfPopover_referenceTrigger, "f") || this._slottedTrigger,
+        }));
+        _PfPopover_slots.set(this, new SlotController(this, null, 'icon', 'heading', 'body', 'footer'));
     }
-    static { this.styles = [styles]; }
-    static { this.instances = new Set(); }
-    static { this.alertIcons = new Map(Object.entries({
-        default: 'bell',
-        info: 'circle-info',
-        success: 'circle-check',
-        warning: 'triangle-exclamation',
-        danger: 'circle-exclamation',
-    })); }
-    static {
-        document.addEventListener('click', function (event) {
-            for (const instance of PfPopover_1.instances) {
-                if (!instance.noOutsideClick) {
-                    instance.#outsideClick(event);
-                }
-            }
-        });
-    }
-    #referenceTrigger;
-    #float;
-    #slots;
     connectedCallback() {
         super.connectedCallback();
         this.addEventListener('keydown', this.onKeydown);
     }
     render() {
-        const { alignment, anchor, styles } = this.#float;
-        const hasFooter = this.#slots.hasSlotted('footer') || !!this.footer;
-        const hasHeading = this.#slots.hasSlotted('heading') || !!this.heading;
-        const hasIcon = this.#slots.hasSlotted('icon') || !!this.icon || !!this.alertSeverity;
+        const { alignment, anchor, styles } = __classPrivateFieldGet(this, _PfPopover_float, "f");
+        const hasFooter = __classPrivateFieldGet(this, _PfPopover_slots, "f").hasSlotted('footer') || !!this.footer;
+        const hasHeading = __classPrivateFieldGet(this, _PfPopover_slots, "f").hasSlotted('heading') || !!this.heading;
+        const hasIcon = __classPrivateFieldGet(this, _PfPopover_slots, "f").hasSlotted('icon') || !!this.icon || !!this.alertSeverity;
         // https://github.com/asyncLiz/minify-html-literals/issues/37
         let headingContent = html `<h6>${this.heading ?? ''}</h6>`;
         switch (this.headingLevel) {
@@ -258,7 +238,10 @@ let PfPopover = PfPopover_1 = class PfPopover extends LitElement {
       <div id="container"
            style="${styleMap(styles)}"
            class="${classMap({ [anchor]: !!anchor, [alignment]: !!alignment })}">
-        <slot id="trigger" @keydown=${this.onKeydown} @click=${this.toggle}></slot>
+        <slot id="trigger"
+              @slotchange="${__classPrivateFieldGet(this, _PfPopover_instances, "m", _PfPopover_triggerChanged)}"
+              @keydown=${this.onKeydown}
+              @click=${this.toggle}></slot>
         <dialog id="popover" aria-labelledby="heading" aria-describedby="body" aria-label=${ifDefined(this.label)}>
           <div id="arrow"></div>
           <div id="content" part="content">
@@ -286,8 +269,8 @@ let PfPopover = PfPopover_1 = class PfPopover extends LitElement {
     disconnectedCallback() {
         super.disconnectedCallback();
         PfPopover_1.instances.delete(this);
-        this.#referenceTrigger?.removeEventListener('click', this.show);
-        this.#referenceTrigger?.removeEventListener('keydown', this.onKeydown);
+        __classPrivateFieldGet(this, _PfPopover_referenceTrigger, "f")?.removeEventListener('click', this.toggle);
+        __classPrivateFieldGet(this, _PfPopover_referenceTrigger, "f")?.removeEventListener('keydown', this.onKeydown);
     }
     onKeydown(event) {
         switch (event.key) {
@@ -297,39 +280,27 @@ let PfPopover = PfPopover_1 = class PfPopover extends LitElement {
                 this.hide();
                 return;
             case 'Enter':
-                if (event.target === this.#referenceTrigger || event.target === this._slottedTrigger) {
+                if (event.target === __classPrivateFieldGet(this, _PfPopover_referenceTrigger, "f") || event.target === this._slottedTrigger) {
                     event.preventDefault();
                     this.show();
                 }
                 return;
         }
     }
-    #outsideClick(event) {
-        const path = event.composedPath();
-        if (!path.includes(this) && !path.includes(this.#referenceTrigger)) {
-            this.hide();
-        }
-    }
     /**
      * Removes event listeners from the old trigger element and attaches
      * them to the new trigger element.
      */
-    triggerChanged(oldValue, newValue) {
-        if (oldValue) {
-            this.#referenceTrigger?.removeEventListener('click', this.show);
-            this.#referenceTrigger?.removeEventListener('keydown', this.onKeydown);
-        }
-        if (newValue) {
-            this.#referenceTrigger = this.getRootNode().getElementById(newValue);
-            this.#referenceTrigger?.addEventListener('click', this.show);
-            this.#referenceTrigger?.addEventListener('keydown', this.onKeydown);
+    willUpdate(changed) {
+        if (changed.has('trigger')) {
+            __classPrivateFieldGet(this, _PfPopover_instances, "m", _PfPopover_triggerChanged).call(this);
         }
     }
     /**
      * Toggle the popover
      */
     async toggle() {
-        this.#float.open ? this.hide() : this.show();
+        __classPrivateFieldGet(this, _PfPopover_float, "f").open ? this.hide() : this.show();
     }
     /**
      * Opens the popover
@@ -337,7 +308,7 @@ let PfPopover = PfPopover_1 = class PfPopover extends LitElement {
     async show() {
         this.dispatchEvent(new PopoverShowEvent());
         await this.updateComplete;
-        await this.#float.show({
+        await __classPrivateFieldGet(this, _PfPopover_float, "f").show({
             offset: this.distance ?? 25,
             placement: this.position,
             flip: !this.noFlip,
@@ -352,12 +323,54 @@ let PfPopover = PfPopover_1 = class PfPopover extends LitElement {
      */
     async hide() {
         this.dispatchEvent(new PopoverHideEvent());
-        await this.#float.hide();
+        await __classPrivateFieldGet(this, _PfPopover_float, "f").hide();
         this._popover?.close();
         this.dispatchEvent(new PopoverHiddenEvent());
         PfPopover_1.instances.delete(this);
     }
 };
+_PfPopover_referenceTrigger = new WeakMap();
+_PfPopover_float = new WeakMap();
+_PfPopover_slots = new WeakMap();
+_PfPopover_instances = new WeakSet();
+_PfPopover_getReferenceTrigger = function _PfPopover_getReferenceTrigger() {
+    const root = this.getRootNode();
+    return !this.trigger ? null : root.getElementById(this.trigger);
+};
+_PfPopover_triggerChanged = function _PfPopover_triggerChanged() {
+    const oldReferenceTrigger = __classPrivateFieldGet(this, _PfPopover_referenceTrigger, "f");
+    __classPrivateFieldSet(this, _PfPopover_referenceTrigger, __classPrivateFieldGet(this, _PfPopover_instances, "m", _PfPopover_getReferenceTrigger).call(this), "f");
+    if (oldReferenceTrigger !== __classPrivateFieldGet(this, _PfPopover_referenceTrigger, "f")) {
+        oldReferenceTrigger?.removeEventListener('click', this.toggle);
+        oldReferenceTrigger?.removeEventListener('keydown', this.onKeydown);
+        __classPrivateFieldGet(this, _PfPopover_referenceTrigger, "f")?.addEventListener('click', this.toggle);
+        __classPrivateFieldGet(this, _PfPopover_referenceTrigger, "f")?.addEventListener('keydown', this.onKeydown);
+    }
+};
+_PfPopover_outsideClick = function _PfPopover_outsideClick(event) {
+    const path = event.composedPath();
+    if (!path.includes(this) && !path.includes(__classPrivateFieldGet(this, _PfPopover_referenceTrigger, "f"))) {
+        this.hide();
+    }
+};
+PfPopover.styles = [styles];
+PfPopover.instances = new Set();
+PfPopover.alertIcons = new Map(Object.entries({
+    default: 'bell',
+    info: 'circle-info',
+    success: 'circle-check',
+    warning: 'triangle-exclamation',
+    danger: 'circle-exclamation',
+}));
+(() => {
+    document.addEventListener('click', function (event) {
+        for (const instance of PfPopover_1.instances) {
+            if (!instance.noOutsideClick) {
+                __classPrivateFieldGet(instance, _PfPopover_instances, "m", _PfPopover_outsideClick).call(instance, event);
+            }
+        }
+    });
+})();
 __decorate([
     property({ reflect: true })
 ], PfPopover.prototype, "position", void 0);
@@ -414,7 +427,6 @@ __decorate([
     })
 ], PfPopover.prototype, "noOutsideClick", void 0);
 __decorate([
-    observed('triggerChanged'),
     property({ reflect: true })
 ], PfPopover.prototype, "trigger", void 0);
 __decorate([

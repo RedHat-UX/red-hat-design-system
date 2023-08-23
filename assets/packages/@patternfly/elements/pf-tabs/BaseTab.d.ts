@@ -6,6 +6,9 @@ export declare class TabExpandEvent extends ComposedEvent {
     tab: BaseTab;
     constructor(active: boolean, tab: BaseTab);
 }
+/**
+ * @fires {TabExpandEvent} expand - when a tab is selected
+ */
 export declare abstract class BaseTab extends LitElement {
     #private;
     static readonly styles: import("lit").CSSResult[];

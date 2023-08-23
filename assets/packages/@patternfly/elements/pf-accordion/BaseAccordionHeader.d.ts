@@ -6,6 +6,7 @@ export declare class AccordionHeaderChangeEvent extends ComposedEvent {
     expanded: boolean;
     toggle: BaseAccordionHeader;
     accordion: BaseAccordion;
+    target: BaseAccordionHeader;
     constructor(expanded: boolean, toggle: BaseAccordionHeader, accordion: BaseAccordion);
 }
 export declare abstract class BaseAccordionHeader extends LitElement {

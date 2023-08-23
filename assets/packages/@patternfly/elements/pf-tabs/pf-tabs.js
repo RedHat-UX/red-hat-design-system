@@ -3,6 +3,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { cascades } from '@patternfly/pfe-core/decorators.js';
 import { BaseTabs } from './BaseTabs.js';
+import { TabExpandEvent } from './BaseTab.js';
 import { PfTab } from './pf-tab.js';
 import { PfTabPanel } from './pf-tab-panel.js';
 import { css } from "lit";
@@ -65,18 +66,21 @@ let PfTabs = class PfTabs extends BaseTabs {
         this.fill = false;
         this.borderBottom = 'true';
     }
-    static { this.styles = [...BaseTabs.styles, styles]; }
-    static { this.scrollTimeoutDelay = 150; }
     static isTab(element) {
         return element instanceof PfTab;
     }
     static isPanel(element) {
         return element instanceof PfTabPanel;
     }
+    static isExpandEvent(event) {
+        return event instanceof TabExpandEvent;
+    }
     get canShowScrollButtons() {
         return !this.vertical;
     }
 };
+PfTabs.styles = [...BaseTabs.styles, styles];
+PfTabs.scrollTimeoutDelay = 150;
 __decorate([
     cascades('pf-tab', 'pf-tab-panel'),
     property({ reflect: true })

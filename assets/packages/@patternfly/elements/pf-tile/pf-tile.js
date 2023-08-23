@@ -54,8 +54,8 @@ let PfTile = class PfTile extends BaseTile {
         super(...arguments);
         this.selected = false;
     }
-    static { this.styles = [styles]; }
 };
+PfTile.styles = [styles];
 __decorate([
     property({ reflect: true, type: Boolean })
 ], PfTile.prototype, "selected", void 0);

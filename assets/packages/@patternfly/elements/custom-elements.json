@@ -728,6 +728,29 @@
               }
             },
             {
+              "kind": "method",
+              "name": "#isAccordionChangeEvent",
+              "static": true,
+              "return": {
+                "type": {
+                  "text": "event is AccordionHeaderChangeEvent"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ],
+              "privacy": "private",
+              "inheritedFrom": {
+                "name": "BaseAccordion",
+                "module": "pf-accordion/BaseAccordion.js"
+              }
+            },
+            {
               "kind": "field",
               "name": "#headerIndex",
               "privacy": "private",
@@ -876,6 +899,14 @@
             {
               "kind": "method",
               "name": "#updateActiveHeader",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "FocusEvent"
+                  }
+                }
+              ],
               "privacy": "private",
               "inheritedFrom": {
                 "name": "BaseAccordion",
@@ -1037,23 +1068,6 @@
             },
             {
               "kind": "method",
-              "name": "#onKeydown",
-              "parameters": [
-                {
-                  "name": "evt",
-                  "type": {
-                    "text": "KeyboardEvent"
-                  }
-                }
-              ],
-              "privacy": "private",
-              "inheritedFrom": {
-                "name": "BaseAccordion",
-                "module": "pf-accordion/BaseAccordion.js"
-              }
-            },
-            {
-              "kind": "method",
               "name": "#allHeaders",
               "return": {
                 "type": {
@@ -1092,42 +1106,6 @@
                   }
                 }
               ],
-              "privacy": "private",
-              "inheritedFrom": {
-                "name": "BaseAccordion",
-                "module": "pf-accordion/BaseAccordion.js"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "#previousHeader",
-              "privacy": "private",
-              "inheritedFrom": {
-                "name": "BaseAccordion",
-                "module": "pf-accordion/BaseAccordion.js"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "#nextHeader",
-              "privacy": "private",
-              "inheritedFrom": {
-                "name": "BaseAccordion",
-                "module": "pf-accordion/BaseAccordion.js"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "#firstHeader",
-              "privacy": "private",
-              "inheritedFrom": {
-                "name": "BaseAccordion",
-                "module": "pf-accordion/BaseAccordion.js"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "#lastHeader",
               "privacy": "private",
               "inheritedFrom": {
                 "name": "BaseAccordion",
@@ -1693,6 +1671,226 @@
           "declaration": {
             "name": "PfBadge",
             "module": "pf-badge/pf-badge.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "pf-banner/pf-banner.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A banner is a 1-line, full color, full width container that can be used to communicate short snippets of information to users.\nBanners are un-intrusive and non-dismissible.",
+          "name": "PfBanner",
+          "cssProperties": [
+            {
+              "description": "",
+              "name": "--pf-c-banner--PaddingTop",
+              "syntax": "<length>",
+              "default": "0.25rem"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-banner--PaddingRight",
+              "syntax": "<length>",
+              "default": "1rem"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-banner--PaddingBottom",
+              "syntax": "<length>",
+              "default": "0.25rem"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-banner--PaddingLeft",
+              "syntax": "<length>",
+              "default": "1rem"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-banner--md--PaddingRight",
+              "syntax": "<length>",
+              "default": "1.5rem"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-banner--md--PaddingLeft",
+              "syntax": "<length>",
+              "default": "1.5rem"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-banner--FontSize",
+              "syntax": "<length>",
+              "default": "0.875rem"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-banner--BackgroundColor",
+              "syntax": "<color>",
+              "default": "#4f5255"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-banner--m-info--BackgroundColor",
+              "syntax": "<color>",
+              "default": "#73bcf7"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-banner--m-danger--BackgroundColor",
+              "syntax": "<color>",
+              "default": "#c9190b"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-banner--m-success--BackgroundColor",
+              "syntax": "<color>",
+              "default": "#3e8635"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-banner--m-warning--BackgroundColor",
+              "syntax": "<color>",
+              "default": "#f0ab00"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-banner--m-sticky--ZIndex",
+              "default": "300"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-banner--m-sticky--BoxShadow",
+              "default": "0 0.5rem 0.5rem -0.375rem rgba(3, 3, 3, 0.18)"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "The container of the banner",
+              "name": "container"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Contains the labels's icon, e.g. web-icon-alert-success.",
+              "name": "icon"
+            },
+            {
+              "description": "Contains the text for the banner"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "BannerVariant | undefined"
+              },
+              "description": "Changes the visual appearance of the banner.",
+              "attribute": "variant",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Shorthand for the `icon` slot, the value is icon name",
+              "attribute": "icon"
+            },
+            {
+              "kind": "field",
+              "name": "sticky",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Shorthand for the `icon` slot, the value is icon name",
+              "attribute": "sticky"
+            },
+            {
+              "kind": "field",
+              "name": "#slots",
+              "privacy": "private",
+              "default": "new SlotController(this, null, 'icon')",
+              "description": "Represents the state of the anonymous and icon slots"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "variant",
+              "type": {
+                "text": "BannerVariant | undefined"
+              },
+              "description": "Changes the visual appearance of the banner.",
+              "fieldName": "variant"
+            },
+            {
+              "name": "icon",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Shorthand for the `icon` slot, the value is icon name",
+              "fieldName": "icon"
+            },
+            {
+              "name": "sticky",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Shorthand for the `icon` slot, the value is icon name",
+              "fieldName": "sticky"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "summary": "Allows users to display a stylized banner.",
+          "tagName": "pf-banner",
+          "customElement": true,
+          "demos": [
+            {
+              "url": "https://patternflyelements.org/components/banner/demo/",
+              "source": {
+                "href": "https://github.com/patternfly/patternfly-elements/tree/main/elements/pf-banner/demo/pf-banner.html"
+              }
+            },
+            {
+              "url": "https://patternflyelements.org/components/banner/demo/status-banners/",
+              "source": {
+                "href": "https://github.com/patternfly/patternfly-elements/tree/main/elements/pf-banner/demo/status-banners.html"
+              }
+            },
+            {
+              "url": "https://patternflyelements.org/components/banner/demo/sticky/",
+              "source": {
+                "href": "https://github.com/patternfly/patternfly-elements/tree/main/elements/pf-banner/demo/sticky.html"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PfBanner",
+          "declaration": {
+            "name": "PfBanner",
+            "module": "pf-banner/pf-banner.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "pf-banner",
+          "declaration": {
+            "name": "PfBanner",
+            "module": "pf-banner/pf-banner.js"
           }
         }
       ]
@@ -6139,6 +6337,12 @@
               "source": {
                 "href": "https://github.com/patternfly/patternfly-elements/tree/main/elements/pf-popover/demo/pf-popover.html"
               }
+            },
+            {
+              "url": "https://patternflyelements.org/components/popover/demo/flip/",
+              "source": {
+                "href": "https://github.com/patternfly/patternfly-elements/tree/main/elements/pf-popover/demo/flip.html"
+              }
             }
           ]
         }
@@ -6190,6 +6394,350 @@
           "declaration": {
             "name": "PfPopover",
             "module": "pf-popover/pf-popover.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "pf-progress/pf-progress.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A progress bar gives the user a visual representation of their completion status of an ongoing process or task.",
+          "name": "PfProgress",
+          "cssProperties": [
+            {
+              "description": "Gap between the sections of the progress bar.",
+              "name": "--pf-c-progress--GridGap",
+              "syntax": "<length>",
+              "default": "1rem"
+            },
+            {
+              "description": "Color of the progress bar.",
+              "name": "--pf-c-progress__bar--before--BackgroundColor",
+              "syntax": "<color>",
+              "default": "#06c"
+            },
+            {
+              "description": "Height of the progress bar.",
+              "name": "--pf-c-progress__bar--Height",
+              "syntax": "<length>",
+              "default": "1rem"
+            },
+            {
+              "description": "Background color of the progress bar.",
+              "name": "--pf-c-progress__bar--BackgroundColor",
+              "syntax": "<color>",
+              "default": "#ffffff"
+            },
+            {
+              "description": "Color of the status icon.",
+              "name": "--pf-c-progress__status-icon--Color",
+              "syntax": "<color>",
+              "default": "#151515"
+            },
+            {
+              "description": "Margin left of the status icon.",
+              "name": "--pf-c-progress__status-icon--MarginLeft",
+              "syntax": "<length>",
+              "default": "0.5rem"
+            },
+            {
+              "description": "Height of the progress bar indicator.",
+              "name": "--pf-c-progress__indicator--Height",
+              "syntax": "<length>",
+              "default": "1rem"
+            },
+            {
+              "description": "Background color of the progress bar indicator.",
+              "name": "--pf-c-progress__indicator--BackgroundColor",
+              "syntax": "<color>",
+              "default": "#ffffff"
+            },
+            {
+              "description": "Background color of the progress bar when variant is success.",
+              "name": "--pf-c-progress--m-success__bar--BackgroundColor",
+              "syntax": "<color>",
+              "default": "#3e8635"
+            },
+            {
+              "description": "Background color of the progress bar when variant is warning.",
+              "name": "--pf-c-progress--m-warning__bar--BackgroundColor",
+              "syntax": "<color>",
+              "default": "#f0ab00"
+            },
+            {
+              "description": "Background color of the progress bar when variant is danger.",
+              "name": "--pf-c-progress--m-danger__bar--BackgroundColor",
+              "syntax": "<color>",
+              "default": "#c9190b"
+            },
+            {
+              "description": "Color of the status icon when variant is success.",
+              "name": "--pf-c-progress--m-success__status-icon--Color",
+              "syntax": "<color>",
+              "default": "#3e8635"
+            },
+            {
+              "description": "Color of the status icon when variant is warning.",
+              "name": "--pf-c-progress--m-warning__status-icon--Color",
+              "syntax": "<color>",
+              "default": "#f0ab00"
+            },
+            {
+              "description": "Color of the status icon when variant is danger.",
+              "name": "--pf-c-progress--m-danger__status-icon--Color",
+              "syntax": "<color>",
+              "default": "#c9190b"
+            },
+            {
+              "description": "Color of the progress bar measure when variant is success and measure location is inside.",
+              "name": "--pf-c-progress--m-success--m-inside__measure--Color",
+              "syntax": "<color>",
+              "default": "#ffffff"
+            },
+            {
+              "description": "Font size of the progress bar measure when measure location is outside.",
+              "name": "--pf-c-progress--m-outside__measure--FontSize",
+              "syntax": "<length>",
+              "default": "0.875rem"
+            },
+            {
+              "description": "Height of the progress bar when the size is small.",
+              "name": "--pf-c-progress--m-sm__bar--Height",
+              "syntax": "<length>",
+              "default": "0.5rem"
+            },
+            {
+              "description": "Font size of the progress bar description when the size is small.",
+              "name": "--pf-c-progress--m-sm__description--FontSize",
+              "syntax": "<length>",
+              "default": "0.875rem"
+            },
+            {
+              "description": "Height of the progress bar when the size is large.",
+              "name": "--pf-c-progress--m-lg__bar--Height",
+              "syntax": "<length>",
+              "default": "1.5rem"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "#internals",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "description": "Represents the value of the progress bar",
+              "attribute": "value",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "description",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Description (title) above the progress bar",
+              "attribute": "description"
+            },
+            {
+              "kind": "field",
+              "name": "descriptionTruncated",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Indicate whether to truncate the string description (title)",
+              "attribute": "description-truncated",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "max",
+              "type": {
+                "text": "number"
+              },
+              "default": "100",
+              "description": "Maximum value for the progress bar",
+              "attribute": "max",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "min",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "description": "Minimum value for the progress bar",
+              "attribute": "min",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'lg' | undefined"
+              },
+              "description": "Size of the progress bar (height)",
+              "attribute": "size"
+            },
+            {
+              "kind": "field",
+              "name": "measureLocation",
+              "type": {
+                "text": "'outside' | 'inside' | 'none' | undefined"
+              },
+              "description": "Where the percentage will be displayed with the progress element",
+              "attribute": "measure-location"
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "'success' | 'danger' | 'warning' | undefined"
+              },
+              "description": "Variant of the progress bar",
+              "attribute": "variant"
+            },
+            {
+              "kind": "field",
+              "name": "#calculatedPercentage",
+              "privacy": "private",
+              "type": {
+                "text": "number"
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "#icon",
+              "privacy": "private",
+              "readonly": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "value",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "description": "Represents the value of the progress bar",
+              "fieldName": "value"
+            },
+            {
+              "name": "description",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Description (title) above the progress bar",
+              "fieldName": "description"
+            },
+            {
+              "name": "description-truncated",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Indicate whether to truncate the string description (title)",
+              "fieldName": "descriptionTruncated"
+            },
+            {
+              "name": "max",
+              "type": {
+                "text": "number"
+              },
+              "default": "100",
+              "description": "Maximum value for the progress bar",
+              "fieldName": "max"
+            },
+            {
+              "name": "min",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "description": "Minimum value for the progress bar",
+              "fieldName": "min"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'lg' | undefined"
+              },
+              "description": "Size of the progress bar (height)",
+              "fieldName": "size"
+            },
+            {
+              "name": "measure-location",
+              "type": {
+                "text": "'outside' | 'inside' | 'none' | undefined"
+              },
+              "description": "Where the percentage will be displayed with the progress element",
+              "fieldName": "measureLocation"
+            },
+            {
+              "name": "variant",
+              "type": {
+                "text": "'success' | 'danger' | 'warning' | undefined"
+              },
+              "description": "Variant of the progress bar",
+              "fieldName": "variant"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "summary": "Display completion status of ongoing process or task.",
+          "tagName": "pf-progress",
+          "customElement": true,
+          "demos": [
+            {
+              "url": "https://patternflyelements.org/components/progress/demo/",
+              "source": {
+                "href": "https://github.com/patternfly/patternfly-elements/tree/main/elements/pf-progress/demo/pf-progress.html"
+              }
+            },
+            {
+              "url": "https://patternflyelements.org/components/progress/demo/kitchen-sink/",
+              "source": {
+                "href": "https://github.com/patternfly/patternfly-elements/tree/main/elements/pf-progress/demo/kitchen-sink.html"
+              }
+            },
+            {
+              "url": "https://patternflyelements.org/components/progress/demo/truncated-description/",
+              "source": {
+                "href": "https://github.com/patternfly/patternfly-elements/tree/main/elements/pf-progress/demo/truncated-description.html"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PfProgress",
+          "declaration": {
+            "name": "PfProgress",
+            "module": "pf-progress/pf-progress.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "pf-progress",
+          "declaration": {
+            "name": "PfProgress",
+            "module": "pf-progress/pf-progress.js"
           }
         }
       ]
@@ -7154,6 +7702,2015 @@
     },
     {
       "kind": "javascript-module",
+      "path": "pf-table/pf-caption.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Caption",
+          "name": "PfCaption",
+          "slots": [
+            {
+              "description": "Place element content here",
+              "name": ""
+            }
+          ],
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "pf-caption",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PfCaption",
+          "declaration": {
+            "name": "PfCaption",
+            "module": "pf-table/pf-caption.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "pf-caption",
+          "declaration": {
+            "name": "PfCaption",
+            "module": "pf-table/pf-caption.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "pf-table/pf-table.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A **table** is used to display large data sets that can be easily laid out in a simple grid with column headers.",
+          "name": "PfTable",
+          "cssProperties": [
+            {
+              "description": "Table background color",
+              "name": "--pf-c-table--BackgroundColor",
+              "syntax": "<color>",
+              "default": "#fff"
+            },
+            {
+              "description": "Table border color",
+              "name": "--pf-c-table--BorderColor",
+              "syntax": "<color>",
+              "default": "#d2d2d2"
+            },
+            {
+              "description": "Table border base width",
+              "name": "--pf-c-table--border-width--base",
+              "syntax": "<dimension>",
+              "default": "1px"
+            },
+            {
+              "description": "Table caption font size",
+              "name": "--pf-c-table-caption--FontSize",
+              "syntax": "<dimension>",
+              "default": "0.875rem"
+            },
+            {
+              "description": "Table caption color",
+              "name": "--pf-c-table-caption--Color",
+              "syntax": "<color>",
+              "default": "#6a6e73"
+            },
+            {
+              "description": "Table caption top padding",
+              "name": "--pf-c-table-caption--PaddingTop",
+              "syntax": "<dimension>",
+              "default": "1rem"
+            },
+            {
+              "description": "Table caption right padding",
+              "name": "--pf-c-table-caption--PaddingRight",
+              "syntax": "<dimension>",
+              "default": "1.5rem"
+            },
+            {
+              "description": "Table caption bottom padding",
+              "name": "--pf-c-table-caption--PaddingBottom",
+              "syntax": "<dimension>",
+              "default": "1rem"
+            },
+            {
+              "description": "Table caption left padding",
+              "name": "--pf-c-table-caption--PaddingLeft",
+              "syntax": "<dimension>",
+              "default": "1.5rem"
+            },
+            {
+              "description": "Table XL caption right padding",
+              "name": "--pf-c-table-caption--xl--PaddingRight",
+              "syntax": "<length>",
+              "default": "1rem"
+            },
+            {
+              "description": "Table XL caption left padding",
+              "name": "--pf-c-table-caption--xl--PaddingLeft",
+              "syntax": "<dimension>",
+              "default": "1rem"
+            },
+            {
+              "description": "Table head cell font size",
+              "name": "--pf-c-table--thead--cell--FontSize",
+              "syntax": "<dimension>",
+              "default": "0.875rem"
+            },
+            {
+              "description": "Table head cell font weight",
+              "name": "--pf-c-table--thead--cell--FontWeight",
+              "syntax": "<number>",
+              "default": "700"
+            },
+            {
+              "description": "Table body cell padding top",
+              "name": "--pf-c-table--tbody--cell--PaddingTop",
+              "syntax": "<dimension>",
+              "default": "1.5rem"
+            },
+            {
+              "description": "Table body cell padding bottom",
+              "name": "--pf-c-table--tbody--cell--PaddingBottom",
+              "syntax": "<dimension>",
+              "default": "1.5rem"
+            },
+            {
+              "description": "Table row top base box shadow",
+              "name": "--pf-c-table--tr--BoxShadow--top--base",
+              "syntax": "<color>",
+              "default": "0 -0.1875rem 0.25rem -0.125rem rgba(3,3,3,.08)"
+            },
+            {
+              "description": "Table cell base padding",
+              "name": "--pf-c-table--cell--Padding--base",
+              "syntax": "<dimension>",
+              "default": "1rem"
+            },
+            {
+              "description": "Table cell font size",
+              "name": "--pf-c-table--cell--FontSize",
+              "syntax": "<dimension>",
+              "default": "1rem"
+            },
+            {
+              "description": "Table cell font weight",
+              "name": "--pf-c-table--cell--FontWeight",
+              "syntax": "<number>",
+              "default": "400"
+            },
+            {
+              "description": "Table cell color",
+              "name": "--pf-c-table--cell--Color",
+              "syntax": "<color>",
+              "default": "#151515"
+            },
+            {
+              "description": "Table cell top padding",
+              "name": "--pf-c-table--cell--PaddingTop",
+              "syntax": "<dimension>",
+              "default": "1rem"
+            },
+            {
+              "description": "Table cell right padding",
+              "name": "--pf-c-table--cell--PaddingRight",
+              "syntax": "<dimension>",
+              "default": "1rem"
+            },
+            {
+              "description": "Table cell bottom padding",
+              "name": "--pf-c-table--cell--PaddingBottom",
+              "syntax": "<dimension>",
+              "default": "1rem"
+            },
+            {
+              "description": "Table cell left padding",
+              "name": "--pf-c-table--cell--PaddingLeft",
+              "syntax": "<dimension>",
+              "default": "1rem"
+            },
+            {
+              "description": "Table cell last child left padding",
+              "name": "--pf-c-table--cell--first-last-child--PaddingLeft",
+              "syntax": "<dimension>",
+              "default": "1rem"
+            },
+            {
+              "description": "Table cell last child right padding",
+              "name": "--pf-c-table--cell--first-last-child--PaddingRight",
+              "syntax": "<dimension>",
+              "default": "1rem"
+            },
+            {
+              "description": "Table XL cell last child left padding",
+              "name": "--pf-c-table--cell--first-last-child--xl--PaddingLeft",
+              "syntax": "<dimension>",
+              "default": "1.5rem"
+            },
+            {
+              "description": "Table XL cell last child right padding",
+              "name": "--pf-c-table--cell--first-last-child--xl--PaddingRight",
+              "syntax": "<dimension>",
+              "default": "1.5rem"
+            },
+            {
+              "description": "Table row first cell offset reset cell left padding",
+              "name": "--pf-c-table--tr--m-first-cell-offset-reset--cell--PaddingLeft",
+              "syntax": "<dimension>",
+              "default": "1rem"
+            },
+            {
+              "description": "Table cell min width",
+              "name": "--pf-c-table--cell--MinWidth",
+              "syntax": "<length>",
+              "default": "0"
+            },
+            {
+              "description": "Table cell max width",
+              "name": "--pf-c-table--cell--MaxWidth",
+              "syntax": "<length>",
+              "default": "none"
+            },
+            {
+              "description": "Table cell width",
+              "name": "--pf-c-table--cell--Width",
+              "syntax": "<length>",
+              "default": "auto"
+            },
+            {
+              "description": "Table cell overflow",
+              "name": "--pf-c-table--cell--Overflow",
+              "syntax": "<overflow>",
+              "default": "visible"
+            },
+            {
+              "description": "Table cell text overflow",
+              "name": "--pf-c-table--cell--TextOverflow",
+              "syntax": "<>",
+              "default": "clip"
+            },
+            {
+              "description": "Table cell white space",
+              "name": "--pf-c-table--cell--WhiteSpace",
+              "syntax": "<>",
+              "default": "normal"
+            },
+            {
+              "description": "Table cell word break",
+              "name": "--pf-c-table--cell--WordBreak",
+              "syntax": "<>",
+              "default": "normal"
+            },
+            {
+              "description": "Table cell before right border width",
+              "name": "--pf-c-table--cell--m-border-right--before--BorderRightWidth",
+              "syntax": "<length>",
+              "default": "1px"
+            },
+            {
+              "description": "Table cell before right border color",
+              "name": "--pf-c-table--cell--m-border-right--before--BorderRightColor",
+              "syntax": "<color>",
+              "default": "#d2d2d2"
+            },
+            {
+              "description": "Table cell before left border width",
+              "name": "--pf-c-table--cell--m-border-left--before--BorderLeftWidth",
+              "syntax": "<length>",
+              "default": "1px"
+            },
+            {
+              "description": "Table cell before left border color",
+              "name": "--pf-c-table--cell--m-border-left--before--BorderLeftColor",
+              "syntax": "<color>",
+              "default": "#d2d2d2"
+            },
+            {
+              "description": "Help cell minimum width",
+              "name": "--pf-c-table--cell--m-help--MinWidth",
+              "syntax": "<length>",
+              "default": "11ch"
+            },
+            {
+              "description": "Help cell maximum width",
+              "name": "--pf-c-table--m-truncate--cell--MaxWidth",
+              "syntax": "<length>",
+              "default": "1px"
+            },
+            {
+              "description": "Truncated cell minimum width",
+              "name": "--pf-c-table--m-truncate--cell--MinWidth",
+              "syntax": "<calc-sum>",
+              "default": "calc(5ch + 1rem + 1rem)"
+            },
+            {
+              "description": "Cell visible display",
+              "name": "--pf-c-table--cell--hidden-visible--Display",
+              "syntax": "<>",
+              "default": "grid"
+            },
+            {
+              "description": "Toggle button top margin",
+              "name": "--pf-c-table__toggle--c-button--MarginTop",
+              "syntax": "<calc-product>",
+              "default": "calc(0.375rem * -1)"
+            },
+            {
+              "description": "Toggle button bottom margin",
+              "name": "--pf-c-table__toggle--c-button--MarginBottom",
+              "syntax": "<calc-product>",
+              "default": "calc(0.375rem * -1)"
+            },
+            {
+              "description": "Toggle button icon rotation",
+              "name": "--pf-c-table__toggle--c-button__toggle-icon--Rotate",
+              "syntax": "<>",
+              "default": "270deg"
+            },
+            {
+              "description": "Toggle button icon transition",
+              "name": "--pf-c-table__toggle--c-button__toggle-icon--Transition",
+              "syntax": "<>",
+              "default": ".2s ease-in 0s"
+            },
+            {
+              "description": "Expanded toggle button icon rotation",
+              "name": "--pf-c-table__toggle--c-button--m-expanded__toggle-icon--Rotate",
+              "syntax": "<>",
+              "default": "360deg"
+            },
+            {
+              "description": "Button background color",
+              "name": "--pf-c-table__button--BackgroundColor",
+              "syntax": "<color>",
+              "default": "transparent"
+            },
+            {
+              "description": "Button color",
+              "name": "--pf-c-table__button--Color",
+              "syntax": "<color>",
+              "default": "#151515"
+            },
+            {
+              "description": "Button hover color",
+              "name": "--pf-c-table__button--hover--Color",
+              "syntax": "<color>",
+              "default": "#151515"
+            },
+            {
+              "description": "Button focus color",
+              "name": "--pf-c-table__button--focus--Color",
+              "syntax": "<color>",
+              "default": "#151515"
+            },
+            {
+              "description": "Button active color",
+              "name": "--pf-c-table__button--active--Color",
+              "syntax": "<color>",
+              "default": "#151515"
+            },
+            {
+              "description": "Button outline offset",
+              "name": "--pf-c-table__button--OutlineOffset",
+              "syntax": "<calc-sum>",
+              "default": "calc(3px * -1)"
+            },
+            {
+              "description": "Compact toggle top padding",
+              "name": "--pf-c-table--m-compact__toggle--PaddingTop",
+              "syntax": "<dimension>",
+              "default": "0"
+            },
+            {
+              "description": "Compacy toggle bottom padding",
+              "name": "--pf-c-table--m-compact__toggle--PaddingBottom",
+              "syntax": "<dimension>",
+              "default": "0"
+            },
+            {
+              "description": "Check input top margin",
+              "name": "--pf-c-table__check--input--MarginTop",
+              "syntax": "<dimension>",
+              "default": "0.25rem"
+            },
+            {
+              "description": "Check input font size",
+              "name": "--pf-c-table__check--input--FontSize",
+              "syntax": "<dimension>",
+              "default": "1rem"
+            },
+            {
+              "description": "Favorite cell color",
+              "name": "--pf-c-table--cell--m-favorite--Color",
+              "syntax": "<color>",
+              "default": "#d2d2d2"
+            },
+            {
+              "description": "Favorite button color",
+              "name": "--pf-c-table__favorite--c-button--Color",
+              "syntax": "<color>",
+              "default": "#d2d2d2"
+            },
+            {
+              "description": "Favorite button font size",
+              "name": "--pf-c-table__favorite--c-button--FontSize",
+              "syntax": "<dimension>",
+              "default": "0.875rem"
+            },
+            {
+              "description": "Favorite button top margin",
+              "name": "--pf-c-table__favorite--c-button--MarginTop",
+              "syntax": "<calc-product>",
+              "default": "calc(0.375rem * -1)"
+            },
+            {
+              "description": "Favorite button right margin",
+              "name": "--pf-c-table__favorite--c-button--MarginRight",
+              "syntax": "<calc-product>",
+              "default": "calc(1rem * -1)"
+            },
+            {
+              "description": "Favorite button bottom margin",
+              "name": "--pf-c-table__favorite--c-button--MarginBottom",
+              "syntax": "<calc-product>",
+              "default": "calc(0.375rem * -1)"
+            },
+            {
+              "description": "Favorite button left margin",
+              "name": "--pf-c-table__favorite--c-button--MarginLeft",
+              "syntax": "<calc-product>",
+              "default": "calc(1rem * -1)"
+            },
+            {
+              "description": "Favorited button color",
+              "name": "--pf-c-table__favorite--m-favorited--c-button--Color",
+              "syntax": "<color>",
+              "default": "#f0ab00"
+            },
+            {
+              "description": "Favorite sort button text color",
+              "name": "--pf-c-table__sort--m-favorite__button__text--Color",
+              "syntax": "<color>",
+              "default": "#6a6e73"
+            },
+            {
+              "description": "Favorite sort button hover text color",
+              "name": "--pf-c-table__sort--m-favorite__button--hover__text--Color",
+              "syntax": "<color>",
+              "default": "#151515"
+            },
+            {
+              "description": "Favorite sort button focus text color",
+              "name": "--pf-c-table__sort--m-favorite__button--focus__text--Color",
+              "syntax": "<color>",
+              "default": "#151515"
+            },
+            {
+              "description": "Favorite sort button active text color",
+              "name": "--pf-c-table__sort--m-favorite__button--active__text--Color",
+              "syntax": "<color>",
+              "default": "#151515"
+            },
+            {
+              "description": "Draggable button top margin",
+              "name": "--pf-c-table__draggable--c-button--MarginTop",
+              "syntax": "<calc-product>",
+              "default": "calc(0.375rem * -1)"
+            },
+            {
+              "description": "Draggable button right margin",
+              "name": "--pf-c-table__draggable--c-button--MarginRight",
+              "syntax": "<calc-product>",
+              "default": "calc(1rem * -1)"
+            },
+            {
+              "description": "Draggable button bottom margin",
+              "name": "--pf-c-table__draggable--c-button--MarginBottom",
+              "syntax": "<calc-product>",
+              "default": "calc(0.375rem * -1)"
+            },
+            {
+              "description": "Draggable button left margin",
+              "name": "--pf-c-table__draggable--c-button--MarginLeft",
+              "syntax": "<calc-product>",
+              "default": "calc(1rem * -1)"
+            },
+            {
+              "description": "Ghost row opacity",
+              "name": "--pf-c-table__tr--m-ghost-row--Opacity",
+              "syntax": "<dimension>",
+              "default": ".4"
+            },
+            {
+              "description": "Ghost row background color",
+              "name": "--pf-c-table__tr--m-ghost-row--BackgroundColor",
+              "syntax": "<color>",
+              "default": "#fff"
+            },
+            {
+              "description": "Action top padding",
+              "name": "--pf-c-table__action--PaddingTop",
+              "syntax": "<dimension>",
+              "default": "0"
+            },
+            {
+              "description": "Action right padding",
+              "name": "--pf-c-table__action--PaddingRight",
+              "syntax": "<dimension>",
+              "default": "0"
+            },
+            {
+              "description": "Action bottom padding",
+              "name": "--pf-c-table__action--PaddingBottom",
+              "syntax": "<dimension>",
+              "default": "0"
+            },
+            {
+              "description": "Action left padding",
+              "name": "--pf-c-table__action--PaddingLeft",
+              "syntax": "<dimension>",
+              "default": "0"
+            },
+            {
+              "description": "Inline edit action top padding",
+              "name": "--pf-c-table__inline-edit-action--PaddingTop",
+              "syntax": "<dimension>",
+              "default": "0"
+            },
+            {
+              "description": "Inline edit action right padding",
+              "name": "--pf-c-table__inline-edit-action--PaddingRight",
+              "syntax": "<dimension>",
+              "default": "0"
+            },
+            {
+              "description": "Inline edit action bottom padding",
+              "name": "--pf-c-table__inline-edit-action--PaddingBottom",
+              "syntax": "<dimension>",
+              "default": "0"
+            },
+            {
+              "description": "Inline edit action left padding",
+              "name": "--pf-c-table__inline-edit-action--PaddingLeft",
+              "syntax": "<dimension>",
+              "default": "0"
+            },
+            {
+              "description": "Expandable row transition",
+              "name": "--pf-c-table__expandable-row--Transition",
+              "syntax": "<>",
+              "default": "all 250ms cubic-bezier(.42, 0, .58, 1)"
+            },
+            {
+              "description": "Expandable row max height",
+              "name": "--pf-c-table__expandable-row--MaxHeight",
+              "syntax": "<length>",
+              "default": "28.125rem"
+            },
+            {
+              "description": "Expandable row content transition",
+              "name": "--pf-c-table__expandable-row-content--Transition",
+              "syntax": "<>",
+              "default": "all 250ms cubic-bezier(.42, 0, .58, 1)"
+            },
+            {
+              "description": "Expandable row content top padding",
+              "name": "--pf-c-table__expandable-row-content--PaddingTop",
+              "syntax": "<dimension>",
+              "default": "1.5rem"
+            },
+            {
+              "description": "Expandable row content bottom padding",
+              "name": "--pf-c-table__expandable-row-content--PaddingBottom",
+              "syntax": "<dimension>",
+              "default": "1.5rem"
+            },
+            {
+              "description": "Expandable row after top",
+              "name": "--pf-c-table__expandable-row--after--Top",
+              "syntax": "<calc-product>",
+              "default": "calc(1px * -1)"
+            },
+            {
+              "description": "Expandable row after bottom",
+              "name": "--pf-c-table__expandable-row--after--Bottom",
+              "syntax": "<calc-product>",
+              "default": "calc(1px * -1)"
+            },
+            {
+              "description": "Expandable row after base border width",
+              "name": "--pf-c-table__expandable-row--after--border-width--base",
+              "syntax": "<length>",
+              "default": "3px"
+            },
+            {
+              "description": "Expandable row after left border width",
+              "name": "--pf-c-table__expandable-row--after--BorderLeftWidth",
+              "syntax": "<length>",
+              "default": "0"
+            },
+            {
+              "description": "Expandable row after border color",
+              "name": "--pf-c-table__expandable-row--after--BorderColor",
+              "syntax": "<color>",
+              "default": "#06c"
+            },
+            {
+              "description": "Inline icon right margin",
+              "name": "--pf-c-table__icon-inline--MarginRight",
+              "syntax": "<dimension>",
+              "default": "0.5rem"
+            },
+            {
+              "description": "Sort button minimum width",
+              "name": "--pf-c-table__sort--MinWidth",
+              "syntax": "<calc-sum>",
+              "default": "calc(6ch + 1rem + 1rem + 1rem)"
+            },
+            {
+              "description": "Sort button top padding",
+              "name": "--pf-c-table__sort__button--PaddingTop",
+              "syntax": "<dimension>",
+              "default": "0.375rem"
+            },
+            {
+              "description": "Sort button right padding",
+              "name": "--pf-c-table__sort__button--PaddingRight",
+              "syntax": "<dimension>",
+              "default": "0.5rem"
+            },
+            {
+              "description": "Sort button bottom padding",
+              "name": "--pf-c-table__sort__button--PaddingBottom",
+              "syntax": "<dimension>",
+              "default": "0.375rem"
+            },
+            {
+              "description": "Sort button left padding",
+              "name": "--pf-c-table__sort__button--PaddingLeft",
+              "syntax": "<dimension>",
+              "default": "0.5rem"
+            },
+            {
+              "description": "Sort button top margin",
+              "name": "--pf-c-table__sort__button--MarginTop",
+              "syntax": "<calc-product>",
+              "default": "calc(0.375rem * -1)"
+            },
+            {
+              "description": "Sort button bottom margin",
+              "name": "--pf-c-table__sort__button--MarginBottom",
+              "syntax": "<calc-product>",
+              "default": "calc(0.375rem * -1)"
+            },
+            {
+              "description": "Sort button left margin",
+              "name": "--pf-c-table__sort__button--MarginLeft",
+              "syntax": "<calc-product>",
+              "default": "calc(0.5rem * -1)"
+            },
+            {
+              "description": "Sort button color",
+              "name": "--pf-c-table__sort__button--Color",
+              "syntax": "<color>",
+              "default": "#151515"
+            },
+            {
+              "description": "Selected sort button color",
+              "name": "--pf-c-table__sort--m-selected__button--Color",
+              "syntax": "<color>",
+              "default": "#06c"
+            },
+            {
+              "description": "Help button minimum width",
+              "name": "--pf-c-table__sort--m-help--MinWidth",
+              "syntax": "<length>",
+              "default": "15ch"
+            },
+            {
+              "description": "Sort button text color",
+              "name": "--pf-c-table__sort__button__text--Color",
+              "syntax": "<color>",
+              "default": "currentcolor"
+            },
+            {
+              "description": "Sort button hover text color",
+              "name": "--pf-c-table__sort__button--hover__text--Color",
+              "syntax": "<color>",
+              "default": "currencolor"
+            },
+            {
+              "description": "Sort button focus text color",
+              "name": "--pf-c-table__sort__button--focus__text--Color",
+              "syntax": "<color>",
+              "default": "currentcolor"
+            },
+            {
+              "description": "Sort button active text color",
+              "name": "--pf-c-table__sort__button--active__text--Color",
+              "syntax": "<color>",
+              "default": "currentcolor"
+            },
+            {
+              "description": "Sort inidcator color",
+              "name": "--pf-c-table__sort-indicator--Color",
+              "syntax": "<color>",
+              "default": "#d2d2d2"
+            },
+            {
+              "description": "Sort inidcator left margin",
+              "name": "--pf-c-table__sort-indicator--MarginLeft",
+              "syntax": "<calc-sum>",
+              "default": "calc(6ch + 1rem + 1rem + 1rem)"
+            },
+            {
+              "description": "Selected sort inidcator color",
+              "name": "--pf-c-table__sort--m-selected__sort-indicator--Color",
+              "syntax": "<color>",
+              "default": "#06c"
+            },
+            {
+              "description": "Sort button hover sort indicator color",
+              "name": "--pf-c-table__sort__button--hover__sort-indicator--Color",
+              "syntax": "<color>",
+              "default": "#151515"
+            },
+            {
+              "description": "Sort button hover active sort indicator color",
+              "name": "--pf-c-table__sort__button--active__sort-indicator--Color",
+              "syntax": "<color>",
+              "default": "#151515"
+            },
+            {
+              "description": "Sort button hover focus sort indicator color",
+              "name": "--pf-c-table__sort__button--focus__sort-indicator--Color",
+              "syntax": "<color>",
+              "default": "#151515"
+            },
+            {
+              "description": "Header cell help minimum width",
+              "name": "--pf-c-table--th--m-help--MinWidth",
+              "syntax": "<length>",
+              "default": "11ch"
+            },
+            {
+              "description": "Help column left magin",
+              "name": "--pf-c-table__column-help--MarginLeft",
+              "syntax": "<dimension>",
+              "default": "0.25rem"
+            },
+            {
+              "description": "Help column translate y axis",
+              "name": "--pf-c-table__column-help--TranslateY",
+              "syntax": "<dimension>",
+              "default": "0.125rem"
+            },
+            {
+              "description": "Help column button top margin",
+              "name": "--pf-c-table__column-help--c-button--MarginTop",
+              "syntax": "<calc-product>",
+              "default": "calc(0.375rem * -1)"
+            },
+            {
+              "description": "Help column button bottom margin",
+              "name": "--pf-c-table__column-help--c-button--MarginBottom",
+              "syntax": "<calc-product>",
+              "default": "calc(0.375rem * -1)"
+            },
+            {
+              "description": "Help column button right padding",
+              "name": "--pf-c-table__column-help--c-button--PaddingRight",
+              "syntax": "<dimension>",
+              "default": "0.5rem"
+            },
+            {
+              "description": "Help column button left margin",
+              "name": "--pf-c-table__column-help--c-button--PaddingLeft",
+              "syntax": "<dimension>",
+              "default": "0.5rem"
+            },
+            {
+              "description": "Compound expansion toggle button color",
+              "name": "--pf-c-table__compound-expansion-toggle__button--Color",
+              "syntax": "<color>",
+              "default": "#06c"
+            },
+            {
+              "description": "Compound expansion hover toggle button color",
+              "name": "--pf-c-table__compound-expansion-toggle__button--hover--Color",
+              "syntax": "<color>",
+              "default": "#004080"
+            },
+            {
+              "description": "Compound expansion focus toggle button color",
+              "name": "--pf-c-table__compound-expansion-toggle__button--focus--Color",
+              "syntax": "<color>",
+              "default": "#004080"
+            },
+            {
+              "description": "Compound expansion active toggle button color",
+              "name": "--pf-c-table__compound-expansion-toggle__button--active--Color",
+              "syntax": "<color>",
+              "default": "#004080"
+            },
+            {
+              "description": "Compound expansion toggle button before border width",
+              "name": "--pf-c-table__compound-expansion-toggle__button--before--border-width--base",
+              "syntax": "<length>",
+              "default": "1px"
+            },
+            {
+              "description": "Compound expansion toggle button before border color",
+              "name": "--pf-c-table__compound-expansion-toggle__button--before--BorderColor",
+              "syntax": "<color>",
+              "default": "#d2d2d2"
+            },
+            {
+              "description": "Compound expansion toggle button before right border width",
+              "name": "--pf-c-table__compound-expansion-toggle__button--before--BorderRightWidth",
+              "syntax": "<length>",
+              "default": "0"
+            },
+            {
+              "description": "Compound expansion toggle button before left border width",
+              "name": "--pf-c-table__compound-expansion-toggle__button--before--BorderLeftWidth",
+              "syntax": "<length>",
+              "default": "0"
+            },
+            {
+              "description": "Compound expansion toggle button before bottom",
+              "name": "--pf-c-table__compound-expansion-toggle__button--before--Bottom",
+              "syntax": "<calc-product>",
+              "default": "calc(1px * -1)"
+            },
+            {
+              "description": "Compound expansion toggle button before left",
+              "name": "--pf-c-table__compound-expansion-toggle__button--before--Left",
+              "syntax": "<calc-product>",
+              "default": "calc(1px * -1)"
+            },
+            {
+              "description": "Compound expansion toggle button after base border width",
+              "name": "--pf-c-table__compound-expansion-toggle__button--after--border-width--base",
+              "syntax": "<length>",
+              "default": "3px"
+            },
+            {
+              "description": "Compound expansion toggle button after border color",
+              "name": "--pf-c-table__compound-expansion-toggle__button--after--BorderColor",
+              "syntax": "<color>",
+              "default": "#06c"
+            },
+            {
+              "description": "Compound expansion toggle button after top border width",
+              "name": "--pf-c-table__compound-expansion-toggle__button--after--BorderTopWidth",
+              "syntax": "<length>",
+              "default": "0"
+            },
+            {
+              "description": "Compound expansion toggle button after top",
+              "name": "--pf-c-table__compound-expansion-toggle__button--after--Top",
+              "syntax": "<calc-sum>",
+              "default": "calc(1px * -1)"
+            },
+            {
+              "description": "Compound expansion toggle button after left",
+              "name": "--pf-c-table__compound-expansion-toggle__button--after--Left",
+              "syntax": "<calc-sum>",
+              "default": "calc(1px * -1)"
+            },
+            {
+              "description": "Compact header cell top padding",
+              "name": "--pf-c-table--m-compact-th--PaddingTop",
+              "syntax": "<calc-sum>",
+              "default": "calc(0.5rem + 0.25rem)"
+            },
+            {
+              "description": "Compact header cell bottom padding",
+              "name": "--pf-c-table--m-compact-th--PaddingBottom",
+              "syntax": "<dimension>",
+              "default": "0.5rem"
+            },
+            {
+              "description": "Compact cell top padding",
+              "name": "--pf-c-table--m-compact--cell--PaddingTop",
+              "syntax": "<dimension>",
+              "default": "0.5rem"
+            },
+            {
+              "description": "Compact cell right padding",
+              "name": "--pf-c-table--m-compact--cell--PaddingRight",
+              "syntax": "<dimension>",
+              "default": "0.5rem"
+            },
+            {
+              "description": "Compact cell bottom padding",
+              "name": "--pf-c-table--m-compact--cell--PaddingBottom",
+              "syntax": "<dimension>",
+              "default": "0.5rem"
+            },
+            {
+              "description": "Compact cell left padding",
+              "name": "--pf-c-table--m-compact--cell--PaddingLeft",
+              "syntax": "<dimension>",
+              "default": "0.5rem"
+            },
+            {
+              "description": "Compact cell first child left padding",
+              "name": "--pf-c-table--m-compact--cell--first-last-child--PaddingLeft",
+              "syntax": "<dimension>",
+              "default": "1rem"
+            },
+            {
+              "description": "Compact XLcell first child right padding",
+              "name": "--pf-c-table--m-compact--cell--first-last-child--PaddingRight",
+              "syntax": "<dimension>",
+              "default": "1rem"
+            },
+            {
+              "description": "Compact cell first child XL left padding",
+              "name": "--pf-c-table--m-compact--cell--first-last-child--xl--PaddingLeft",
+              "syntax": "<dimension>",
+              "default": "1.5rem"
+            },
+            {
+              "description": "Compact cell first child XL right padding",
+              "name": "--pf-c-table--m-compact--cell--first-last-child--xl--PaddingRight",
+              "syntax": "<dimension>",
+              "default": "1.5rem"
+            },
+            {
+              "description": "Compact font size",
+              "name": "--pf-c-table--m-compact--FontSize",
+              "syntax": "<dimension>",
+              "default": "0.875rem"
+            },
+            {
+              "description": "Compact expandable row content top padding",
+              "name": "--pf-c-table--m-compact__expandable-row-content--PaddingTop",
+              "syntax": "<dimension>",
+              "default": "1.5rem"
+            },
+            {
+              "description": "Compact expandable row content right padding",
+              "name": "--pf-c-table--m-compact__expandable-row-content--PaddingRight",
+              "syntax": "<dimension>",
+              "default": "1.5rem"
+            },
+            {
+              "description": "Compact expandable row content bottom padding",
+              "name": "--pf-c-table--m-compact__expandable-row-content--PaddingBottom",
+              "syntax": "<dimension>",
+              "default": "1.5rem"
+            },
+            {
+              "description": "Compact expandable row content left padding",
+              "name": "--pf-c-table--m-compact__expandable-row-content--PaddingLeft",
+              "syntax": "<dimension>",
+              "default": "1.5rem"
+            },
+            {
+              "description": "Nested first child right padding",
+              "name": "--pf-c-table--nested--first-last-child--PaddingRight",
+              "syntax": "<dimension>",
+              "default": "1rem"
+            },
+            {
+              "description": "Nested first child left padding",
+              "name": "--pf-c-table--nested--first-last-child--PaddingLeft",
+              "syntax": "<dimension>",
+              "default": "1rem"
+            },
+            {
+              "description": "Expandable row expanded bottom border color",
+              "name": "--pf-c-table__expandable-row--m-expanded--BorderBottomColor",
+              "syntax": "<color>",
+              "default": "#d2d2d2"
+            },
+            {
+              "description": "Hoverable table row top box shadow",
+              "name": "--pf-c-table--tr--m-hoverable--BoxShadow--top",
+              "syntax": "<color>",
+              "default": "0 -0.1875rem 0.25rem -0.125rem rgba(3,3,3,.08)"
+            },
+            {
+              "description": "Hoverable table row background color",
+              "name": "--pf-c-table--tr--m-hoverable--BackgroundColor",
+              "syntax": "<dimension>",
+              "default": "transparent"
+            },
+            {
+              "description": "Hoverable table row box shadow",
+              "name": "--pf-c-table--tr--m-hoverable--BoxShadow",
+              "syntax": "<color>",
+              "default": "0 -0.1875rem 0.25rem -0.125rem rgba(3,3,3,.08)"
+            },
+            {
+              "description": "Hoverable table row outline offset",
+              "name": "--pf-c-table--tr--m-hoverable--OutlineOffset",
+              "syntax": "<calc-sum>",
+              "default": "calc(-1 * 0.25rem)"
+            },
+            {
+              "description": "Hoverable table row hover box shadow",
+              "name": "--pf-c-table--tr--m-hoverable--hover--BoxShadow",
+              "syntax": "<color>",
+              "default": "0 -0.1875rem 0.25rem -0.125rem rgba(3,3,3,.08), 0 0.125rem 0.25rem -0.0625rem rgba(3, 3, 3, 0.16)"
+            },
+            {
+              "description": "Hoverable table row hover background color",
+              "name": "--pf-c-table--tr--m-hoverable--hover--BackgroundColor",
+              "syntax": "<color>",
+              "default": "#fff"
+            },
+            {
+              "description": "Hoverable table row focus box shadow",
+              "name": "--pf-c-table--tr--m-hoverable--focus--BoxShadow",
+              "syntax": "<color>",
+              "default": "0 -0.1875rem 0.25rem -0.125rem rgba(3,3,3,.08), 0 0.125rem 0.25rem -0.0625rem rgba(3, 3, 3, 0.16)"
+            },
+            {
+              "description": "Hoverable table row focus background color",
+              "name": "--pf-c-table--tr--m-hoverable--focus--BackgroundColor",
+              "syntax": "<color>",
+              "default": "#fff"
+            },
+            {
+              "description": "Hoverable table row active box shadow",
+              "name": "--pf-c-table--tr--m-hoverable--active--BoxShadow",
+              "syntax": "<color>",
+              "default": "0 -0.1875rem 0.25rem -0.125rem rgba(3,3,3,.08), 0 0.125rem 0.25rem -0.0625rem rgba(3, 3, 3, 0.16)"
+            },
+            {
+              "description": "Hoverable table row active background color",
+              "name": "--pf-c-table--tr--m-hoverable--active--BackgroundColor",
+              "syntax": "<color>",
+              "default": "#fff"
+            },
+            {
+              "description": "Hoverable table row selected box shadow",
+              "name": "--pf-c-table--tr--m-hoverable--m-selected--BoxShadow",
+              "syntax": "<color>",
+              "default": "0 0.125rem 0.25rem -0.0625rem rgba(3, 3, 3, 0.16) inset, 0 0.125rem 0.25rem -0.0625rem rgba(3, 3, 3, 0.16)"
+            },
+            {
+              "description": "Selected table row top box shadow",
+              "name": "--pf-c-table--tr--m-selected--BoxShadow--top",
+              "syntax": "<color>",
+              "default": "0 -0.1875rem 0.25rem -0.125rem rgba(3,3,3,.08)"
+            },
+            {
+              "description": "Selected table row background color",
+              "name": "--pf-c-table--tr--m-selected--BackgroundColor",
+              "syntax": "<color>",
+              "default": "#fff"
+            },
+            {
+              "description": "Selected table row box shadow",
+              "name": "--pf-c-table--tr--m-selected--BoxShadow",
+              "syntax": "<color>",
+              "default": "0 -0.1875rem 0.25rem -0.125rem rgba(3,3,3,.08)"
+            },
+            {
+              "description": "Selected table row outline offset",
+              "name": "--pf-c-table--tr--m-selected--OutlineOffset",
+              "syntax": "<calc-sum>",
+              "default": "calc(-1 * 0.25rem)"
+            },
+            {
+              "description": "Selected table row after left border width",
+              "name": "--pf-c-table--tr--m-selected--after--BorderLeftWidth",
+              "syntax": "<length>",
+              "default": "3px"
+            },
+            {
+              "description": "Selected table row after left border color",
+              "name": "--pf-c-table--tr--m-selected--after--BorderLeftColor",
+              "syntax": "<color>",
+              "default": "#06c"
+            },
+            {
+              "description": "Selected table row box shadow",
+              "name": "--pf-c-table--tr--m-selected--m-selected--BoxShadow",
+              "syntax": "<color>",
+              "default": "0 0.125rem 0.25rem -0.0625rem rgba(3, 3, 3, 0.16)"
+            },
+            {
+              "description": "Selected table row hover box shadow",
+              "name": "--pf-c-table--tr--m-selected--hover--m-selected--BoxShadow",
+              "syntax": "<color>",
+              "default": "0 0.125rem 0.25rem -0.0625rem rgba(3, 3, 3, 0.16) inset, 0 0.125rem 0.25rem -0.0625rem rgba(3, 3, 3, 0.16)"
+            },
+            {
+              "description": "Selected table row hover box shadow",
+              "name": "--pf-c-table--tr--m-selected--tr--m-selected--hover--BoxShadow",
+              "syntax": "<color>",
+              "default": "0 -0.1875rem 0.25rem -0.125rem rgba(3,3,3,.08), 0 0.125rem 0.25rem -0.0625rem rgba(3, 3, 3, 0.16)"
+            },
+            {
+              "description": "Hoverable table body top box shadow",
+              "name": "--pf-c-table--tbody--m-hoverable--BoxShadow--top",
+              "syntax": "<color>",
+              "default": "0 -0.1875rem 0.25rem -0.125rem rgba(3,3,3,.08)"
+            },
+            {
+              "description": "Hoverable table body box shadow",
+              "name": "--pf-c-table--tbody--m-hoverable--BoxShadow",
+              "syntax": "<color>",
+              "default": "0 -0.1875rem 0.25rem -0.125rem rgba(3,3,3,.08)"
+            },
+            {
+              "description": "Hoverable table body background color",
+              "name": "--pf-c-table--tbody--m-hoverable--BackgroundColor",
+              "syntax": "<dimension>",
+              "default": "transparent"
+            },
+            {
+              "description": "Hoverable table body outline offset",
+              "name": "--pf-c-table--tbody--m-hoverable--OutlineOffset",
+              "syntax": "<calc-sum>",
+              "default": "calc(-1 * 0.25rem)"
+            },
+            {
+              "description": "Hoverable table body hover box shadow",
+              "name": "--pf-c-table--tbody--m-hoverable--hover--BoxShadow",
+              "syntax": "<color>",
+              "default": "0 -0.1875rem 0.25rem -0.125rem rgba(3,3,3,.08), 0 0.125rem 0.25rem -0.0625rem rgba(3, 3, 3, 0.16)"
+            },
+            {
+              "description": "Hoverable table body hover background color",
+              "name": "--pf-c-table--tbody--m-hoverable--hover--BackgroundColor",
+              "syntax": "<color>",
+              "default": "#fff"
+            },
+            {
+              "description": "Hoverable table body focus box shadow",
+              "name": "--pf-c-table--tbody--m-hoverable--focus--BoxShadow",
+              "syntax": "<color>",
+              "default": "0 -0.1875rem 0.25rem -0.125rem rgba(3,3,3,.08), 0 0.125rem 0.25rem -0.0625rem rgba(3, 3, 3, 0.16)"
+            },
+            {
+              "description": "Hoverable table body focus background color",
+              "name": "--pf-c-table--tbody--m-hoverable--focus--BackgroundColor",
+              "syntax": "<color>",
+              "default": "#fff"
+            },
+            {
+              "description": "Hoverable table body active box shadow",
+              "name": "--pf-c-table--tbody--m-hoverable--active--BoxShadow",
+              "syntax": "<color>",
+              "default": "0 -0.1875rem 0.25rem -0.125rem rgba(3,3,3,.08), 0 0.125rem 0.25rem -0.0625rem rgba(3, 3, 3, 0.16)"
+            },
+            {
+              "description": "Hoverable table body active background color",
+              "name": "--pf-c-table--tbody--m-hoverable--active--BackgroundColor",
+              "syntax": "<color>",
+              "default": "#fff"
+            },
+            {
+              "description": "Hoverable table body expanded border color",
+              "name": "--pf-c-table--tbody--m-hoverable--m-expanded--BorderColor",
+              "syntax": "<color>",
+              "default": "#73bcf7"
+            },
+            {
+              "description": "Hoverable table body selected table row box shadow",
+              "name": "--pf-c-table--tbody--m-hoverable--m-selected--hover--tr--BoxShadow",
+              "syntax": "<color>",
+              "default": "0 0.125rem 0.25rem -0.0625rem rgba(3, 3, 3, 0.16) inset, 0 0.125rem 0.25rem -0.0625rem rgba(3, 3, 3, 0.16)"
+            },
+            {
+              "description": "Selected table body background color",
+              "name": "--pf-c-table--tbody--m-selected--BackgroundColor",
+              "syntax": "<color>",
+              "default": "#fff"
+            },
+            {
+              "description": "Selected table body top box shadow",
+              "name": "--pf-c-table--tbody--m-selected--BoxShadow--top",
+              "syntax": "<color>",
+              "default": "0 -0.1875rem 0.25rem -0.125rem rgba(3,3,3,.08)"
+            },
+            {
+              "description": "Selected table body box shadow",
+              "name": "--pf-c-table--tbody--m-selected--BoxShadow",
+              "syntax": "<color>",
+              "default": "0 -0.1875rem 0.25rem -0.125rem rgba(3,3,3,.08)"
+            },
+            {
+              "description": "Selected table body outline offset",
+              "name": "--pf-c-table--tbody--m-selected--OutlineOffset",
+              "syntax": "<calc-product>",
+              "default": "calc(-1 * 0.25rem)"
+            },
+            {
+              "description": "Selected table body after left border width",
+              "name": "--pf-c-table--tbody--m-selected--after--BorderLeftWidth",
+              "syntax": "<length>",
+              "default": "3px"
+            },
+            {
+              "description": "Selected table body after left border color",
+              "name": "--pf-c-table--tbody--m-selected--after--BorderLeftColor",
+              "syntax": "<color>",
+              "default": "#06c"
+            },
+            {
+              "description": "Selected table body selected box shadow",
+              "name": "--pf-c-table--tbody--m-selected--m-selected--BoxShadow",
+              "syntax": "<color>",
+              "default": "0 0.125rem 0.25rem -0.0625rem rgba(3, 3, 3, 0.16)"
+            },
+            {
+              "description": "Selected table body hover selected box shadow",
+              "name": "--pf-c-table--tbody--m-selected--hover--tbody--m-selected--BoxShadow",
+              "syntax": "<color>",
+              "default": "0 0.125rem 0.25rem -0.0625rem rgba(3, 3, 3, 0.16) inset, 0 0.125rem 0.25rem -0.0625rem rgba(3, 3, 3, 0.16)"
+            },
+            {
+              "description": "Selected table body hover box shadow",
+              "name": "--pf-c-table--tbody--m-selected--tbody--m-selected--hover--BoxShadow",
+              "syntax": "<color>",
+              "default": "0 -0.1875rem 0.25rem -0.125rem rgba(3,3,3,.08), 0 0.125rem 0.25rem -0.0625rem rgba(3, 3, 3, 0.16)"
+            },
+            {
+              "description": "Table head nested column header button outline offset",
+              "name": "--pf-c-table--thead--m-nested-column-header--button--OutlineOffset",
+              "syntax": "<dimension>",
+              "default": "-0.1875rem"
+            },
+            {
+              "description": "Table head nested column header row top padding",
+              "name": "--pf-c-table--thead--m-nested-column-header--tr--PaddingTop",
+              "syntax": "<dimension>",
+              "default": "0.25rem"
+            },
+            {
+              "description": "Table head nested column header row bottom padding",
+              "name": "--pf-c-table--thead--m-nested-column-header--tr--PaddingBottom",
+              "syntax": "<dimension>",
+              "default": "0.25rem"
+            },
+            {
+              "description": "Subhead color",
+              "name": "--pf-c-table__subhead--Color",
+              "syntax": "<color>",
+              "default": "#6a6e73"
+            },
+            {
+              "description": "Striped row background color",
+              "name": "--pf-c-table--m-striped__tr--BackgroundColor",
+              "syntax": "<color>",
+              "default": "#fafafa"
+            },
+            {
+              "type": {
+                "text": "<dimension>"
+              },
+              "description": "Cell top padding\n{@default `1rem`}",
+              "name": "--pf-c-table--cell--PaddingTop"
+            },
+            {
+              "type": {
+                "text": "<dimension>"
+              },
+              "description": "Cell right padding\n{@default `1rem`}",
+              "name": "--pf-c-table--cell--PaddingRight"
+            },
+            {
+              "type": {
+                "text": "<dimension>"
+              },
+              "description": "Cell bottom padding\n{@default `1rem`}",
+              "name": "--pf-c-table--cell--PaddingBottom"
+            },
+            {
+              "type": {
+                "text": "<dimension>"
+              },
+              "description": "Cell left padding\n{@default `1rem`}",
+              "name": "--pf-c-table--cell--PaddingLeft"
+            },
+            {
+              "type": {
+                "text": "<calc-sum>"
+              },
+              "description": "Favorite button top margin\n{@default `calc(0.375rem * -1)`}",
+              "name": "--pf-c-table__favorite--c-button--MarginTop"
+            },
+            {
+              "type": {
+                "text": "<calc-sum>"
+              },
+              "description": "Favorite button right margin\n{@default `calc(1rem * -1)`}",
+              "name": "--pf-c-table__favorite--c-button--MarginRight"
+            },
+            {
+              "type": {
+                "text": "<calc-sum>"
+              },
+              "description": "Favorite button bottom margin\n{@default `calc(0.375rem * -1)`}",
+              "name": "--pf-c-table__favorite--c-button--MarginBottom"
+            },
+            {
+              "type": {
+                "text": "<calc-sum>"
+              },
+              "description": "Favorite button left margin\n{@default `calc(1rem * -1)`}",
+              "name": "--pf-c-table__favorite--c-button--MarginLeft"
+            }
+          ],
+          "slots": [
+            {
+              "description": "The default slot can hold an optional `pf-caption` element and a combination of `pf-tr`, `pf-thead`, or `pf-tbody` elements."
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "rows",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "columns",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "private",
+              "default": "0"
+            },
+            {
+              "kind": "method",
+              "name": "#onRequestExpand",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ],
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "#onSlotchange",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "#onRequestSort",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ],
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "#performSort",
+              "parameters": [
+                {
+                  "name": "header",
+                  "type": {
+                    "text": "PfTh"
+                  }
+                },
+                {
+                  "name": "direction",
+                  "type": {
+                    "text": "'asc' | 'desc'"
+                  }
+                }
+              ],
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "getNodeContentForSort",
+              "privacy": "private",
+              "static": true,
+              "parameters": [
+                {
+                  "name": "columnIndexToSort",
+                  "type": {
+                    "text": "number"
+                  }
+                },
+                {
+                  "name": "node",
+                  "type": {
+                    "text": "Element"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "sortByContent",
+              "privacy": "private",
+              "static": true,
+              "parameters": [
+                {
+                  "name": "direction",
+                  "type": {
+                    "text": "'asc' | 'desc'"
+                  }
+                },
+                {
+                  "name": "a",
+                  "type": {
+                    "text": "{ content: string }"
+                  }
+                },
+                {
+                  "name": "b",
+                  "type": {
+                    "text": "{ content: string }"
+                  }
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "pf-table",
+          "customElement": true,
+          "demos": [
+            {
+              "url": "https://patternflyelements.org/components/table/demo/",
+              "source": {
+                "href": "https://github.com/patternfly/patternfly-elements/tree/main/elements/pf-table/demo/pf-table.html"
+              }
+            },
+            {
+              "url": "https://patternflyelements.org/components/table/demo/expandable-rows-compound/",
+              "source": {
+                "href": "https://github.com/patternfly/patternfly-elements/tree/main/elements/pf-table/demo/expandable-rows-compound.html"
+              }
+            },
+            {
+              "url": "https://patternflyelements.org/components/table/demo/expandable-rows/",
+              "source": {
+                "href": "https://github.com/patternfly/patternfly-elements/tree/main/elements/pf-table/demo/expandable-rows.html"
+              }
+            },
+            {
+              "url": "https://patternflyelements.org/components/table/demo/sortable/",
+              "source": {
+                "href": "https://github.com/patternfly/patternfly-elements/tree/main/elements/pf-table/demo/sortable.html"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./pf-caption.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./pf-thead.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./pf-tbody.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./pf-tr.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./pf-th.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./pf-td.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "PfTable",
+          "declaration": {
+            "name": "PfTable",
+            "module": "pf-table/pf-table.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "pf-table",
+          "declaration": {
+            "name": "PfTable",
+            "module": "pf-table/pf-table.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "pf-table/pf-tbody.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Table body",
+          "name": "PfTbody",
+          "slots": [
+            {
+              "description": "Place element content here",
+              "name": ""
+            }
+          ],
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "pf-tbody",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PfTbody",
+          "declaration": {
+            "name": "PfTbody",
+            "module": "pf-table/pf-tbody.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "pf-tbody",
+          "declaration": {
+            "name": "PfTbody",
+            "module": "pf-table/pf-tbody.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "pf-table/pf-td.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Table data cell",
+          "name": "PfTd",
+          "slots": [
+            {
+              "description": "Place element content here",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "compoundExpand",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "compound-expand"
+            },
+            {
+              "kind": "field",
+              "name": "expanded",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "expanded",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "#onClick",
+              "privacy": "private"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "compound-expand",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "compoundExpand"
+            },
+            {
+              "name": "expanded",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "expanded"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "pf-td",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PfTd",
+          "declaration": {
+            "name": "PfTd",
+            "module": "pf-table/pf-td.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "pf-td",
+          "declaration": {
+            "name": "PfTd",
+            "module": "pf-table/pf-td.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "pf-table/pf-th.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "RequestSortEvent",
+          "members": [
+            {
+              "kind": "field",
+              "type": {
+                "text": "string",
+                "name": "string"
+              },
+              "name": "key",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "type": {
+                "text": "'asc' | 'desc'",
+                "name": "'asc' | 'desc'"
+              },
+              "name": "direction",
+              "privacy": "public"
+            }
+          ],
+          "superclass": {
+            "name": "Event",
+            "module": "global:"
+          }
+        },
+        {
+          "kind": "class",
+          "description": "Table header cell",
+          "name": "PfTh",
+          "slots": [
+            {
+              "description": "Place element content here",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "sortable",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "default": "false",
+              "attribute": "sortable",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "selected",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "default": "false",
+              "attribute": "selected",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "sortDirection",
+              "type": {
+                "text": "'asc' | 'desc' | undefined"
+              },
+              "attribute": "sort-direction",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "key",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "key"
+            },
+            {
+              "kind": "method",
+              "name": "#onClick",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "sort"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "sortable",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "default": "false",
+              "fieldName": "sortable"
+            },
+            {
+              "name": "selected",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "default": "false",
+              "fieldName": "selected"
+            },
+            {
+              "name": "sort-direction",
+              "type": {
+                "text": "'asc' | 'desc' | undefined"
+              },
+              "fieldName": "sortDirection"
+            },
+            {
+              "name": "key",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "key"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "pf-th",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "RequestSortEvent",
+          "declaration": {
+            "name": "RequestSortEvent",
+            "module": "pf-table/pf-th.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "PfTh",
+          "declaration": {
+            "name": "PfTh",
+            "module": "pf-table/pf-th.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "pf-th",
+          "declaration": {
+            "name": "PfTh",
+            "module": "pf-table/pf-th.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "pf-table/pf-thead.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Table head",
+          "name": "PfThead",
+          "slots": [
+            {
+              "description": "Place element content here",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "method",
+              "name": "#onSlotchange",
+              "privacy": "private"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "pf-thead",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PfThead",
+          "declaration": {
+            "name": "PfThead",
+            "module": "pf-table/pf-thead.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "pf-thead",
+          "declaration": {
+            "name": "PfThead",
+            "module": "pf-table/pf-thead.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "pf-table/pf-tr.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "RequestExpandEvent",
+          "members": [
+            {
+              "kind": "field",
+              "name": "compoundExpanded",
+              "type": {
+                "text": "string | boolean"
+              },
+              "privacy": "public",
+              "default": "false",
+              "description": "if provided, the slot name for the compound-expanded cell"
+            },
+            {
+              "kind": "field",
+              "name": "row",
+              "type": {
+                "text": "PfTr | undefined"
+              },
+              "privacy": "public",
+              "description": "if compoundExpanded is provided, a reference to the row\nmust also be provided."
+            }
+          ],
+          "superclass": {
+            "name": "Event",
+            "module": "global:"
+          }
+        },
+        {
+          "kind": "class",
+          "description": "Table row",
+          "name": "PfTr",
+          "slots": [
+            {
+              "description": "Place element content here",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "expandable",
+              "type": {
+                "text": "boolean | 'compound'"
+              },
+              "default": "false",
+              "attribute": "expandable",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "expanded",
+              "type": {
+                "text": "boolean | string"
+              },
+              "default": "false",
+              "attribute": "expanded",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "#expandedChanged",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "#expandableChanged",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "#onClick",
+              "privacy": "private"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "expandable",
+              "type": {
+                "text": "boolean | 'compound'"
+              },
+              "default": "false",
+              "fieldName": "expandable"
+            },
+            {
+              "name": "expanded",
+              "type": {
+                "text": "boolean | string"
+              },
+              "default": "false",
+              "fieldName": "expanded"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "pf-tr",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "RequestExpandEvent",
+          "declaration": {
+            "name": "RequestExpandEvent",
+            "module": "pf-table/pf-tr.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "PfTr",
+          "declaration": {
+            "name": "PfTr",
+            "module": "pf-table/pf-tr.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "pf-tr",
+          "declaration": {
+            "name": "PfTr",
+            "module": "pf-table/pf-tr.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "pf-tabs/pf-tab-panel.js",
       "declarations": [
         {
@@ -7566,10 +10123,14 @@
           "events": [
             {
               "type": {
-                "text": " TabExpandEvent "
+                "text": "TabExpandEvent"
               },
               "description": "when a tab expands",
-              "name": "tab-expand"
+              "name": "expand",
+              "inheritedFrom": {
+                "name": "BaseTab",
+                "module": "pf-tabs/BaseTab.ts"
+              }
             }
           ],
           "attributes": [
@@ -7885,6 +10446,24 @@
               }
             },
             {
+              "kind": "method",
+              "name": "isExpandEvent",
+              "static": true,
+              "return": {
+                "type": {
+                  "text": "event is TabExpandEvent"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
               "kind": "field",
               "name": "box",
               "type": {
@@ -8092,6 +10671,1022 @@
           "declaration": {
             "name": "PfTabs",
             "module": "pf-tabs/pf-tabs.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "pf-text-input/pf-text-input.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A **text input** is used to gather free-form text from a user.",
+          "name": "PfTextInput",
+          "cssProperties": [
+            {
+              "description": "",
+              "name": "--pf-c-form-control--Color",
+              "default": "var(--pf-global--Color--100, #151515)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--FontSize",
+              "default": "var(--pf-global--FontSize--md, 1rem)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--LineHeight",
+              "default": "var(--pf-global--LineHeight--md, 1.5)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--BorderWidth",
+              "default": "var(--pf-global--BorderWidth--sm, 1px)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--BorderTopColor",
+              "default": "var(--pf-global--BorderColor--300, #f0f0f0)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--BorderRightColor",
+              "default": "var(--pf-global--BorderColor--300, #f0f0f0)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--BorderBottomColor",
+              "default": "var(--pf-global--BorderColor--200, #8a8d90)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--BorderLeftColor",
+              "default": "var(--pf-global--BorderColor--300, #f0f0f0)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--BorderRadius",
+              "default": "0"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--BackgroundColor",
+              "default": "var(--pf-global--BackgroundColor--100, #fff)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--Width",
+              "default": "100%"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--Height",
+              "default": "calc(var(--pf-c-form-control--FontSize) * var(--pf-c-form-control--LineHeight) + var(--pf-c-form-control--BorderWidth) * 2 + var(--pf-c-form-control--PaddingTop) + var(--pf-c-form-control--PaddingBottom))"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--inset--base",
+              "default": "var(--pf-global--spacer--sm, 0.5rem)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--PaddingTop",
+              "default": "calc(var(--pf-global--spacer--form-element, 0.375rem) - var(--pf-global--BorderWidth--sm, 1px))"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--PaddingBottom",
+              "default": "calc(var(--pf-global--spacer--form-element, 0.375rem) - var(--pf-global--BorderWidth--sm, 1px))"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--PaddingRight",
+              "default": "var(--pf-c-form-control--inset--base)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--PaddingLeft",
+              "default": "var(--pf-c-form-control--inset--base)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--hover--BorderBottomColor",
+              "default": "var(--pf-global--primary-color--100, #06c)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--focus--BorderBottomWidth",
+              "default": "var(--pf-global--BorderWidth--md, 2px)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--focus--PaddingBottom",
+              "default": "calc(var(--pf-global--spacer--form-element, 0.375rem) - var(--pf-c-form-control--focus--BorderBottomWidth))"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--focus--BorderBottomColor",
+              "default": "var(--pf-global--primary-color--100, #06c)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-expanded--BorderBottomWidth",
+              "default": "var(--pf-global--BorderWidth--md, 2px)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-expanded--PaddingBottom",
+              "default": "calc(var(--pf-global--spacer--form-element, 0.375rem) - var(--pf-c-form-control--focus--BorderBottomWidth))"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-expanded--BorderBottomColor",
+              "default": "var(--pf-global--primary-color--100, #06c)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--placeholder--Color",
+              "default": "var(--pf-global--Color--dark-200, #6a6e73)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--placeholder--child--Color",
+              "default": "var(--pf-global--Color--100, #151515)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--disabled--Color",
+              "default": "var(--pf-global--disabled-color--100, #6a6e73)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--disabled--BackgroundColor",
+              "default": "var(--pf-global--disabled-color--300, #f0f0f0)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--disabled--BorderColor",
+              "default": "transparent"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--readonly--BackgroundColor",
+              "default": "var(--pf-global--disabled-color--300, #f0f0f0)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--readonly--hover--BorderBottomColor",
+              "default": "var(--pf-global--BorderColor--200, #8a8d90)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--readonly--focus--PaddingBottom",
+              "default": "calc(var(--pf-global--spacer--form-element, 0.375rem) - var(--pf-global--BorderWidth--sm, 1px))"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--readonly--focus--BorderBottomWidth",
+              "default": "var(--pf-global--BorderWidth--sm, 1px)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--readonly--focus--BorderBottomColor",
+              "default": "var(--pf-global--BorderColor--200, #8a8d90)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--readonly--m-plain--BackgroundColor",
+              "default": "transparent"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--readonly--m-plain--inset--base",
+              "default": "0"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--success--BorderBottomWidth",
+              "default": "var(--pf-global--BorderWidth--md, 2px)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--success--PaddingBottom",
+              "default": "calc(var(--pf-global--spacer--form-element, 0.375rem) - var(--pf-c-form-control--success--BorderBottomWidth))"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--success--BorderBottomColor",
+              "default": "var(--pf-global--success-color--100, #3e8635)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--success--PaddingRight",
+              "default": "var(--pf-global--spacer--xl, 2rem)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--success--BackgroundPositionX",
+              "default": "calc(100% - var(--pf-c-form-control--PaddingLeft))"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--success--BackgroundPositionY",
+              "default": "center"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--success--BackgroundPosition",
+              "default": "var(--pf-c-form-control--success--BackgroundPositionX) var(--pf-c-form-control--success--BackgroundPositionY)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--success--BackgroundSizeX",
+              "default": "var(--pf-c-form-control--FontSize)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--success--BackgroundSizeY",
+              "default": "var(--pf-c-form-control--FontSize)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--success--BackgroundSize",
+              "default": "var(--pf-c-form-control--success--BackgroundSizeX) var(--pf-c-form-control--success--BackgroundSizeY)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--success--BackgroundUrl",
+              "default": "url('data:image/svg+xml;charset=utf8,%3Csvg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"%3E%3Cpath fill=\"%235ba352\" d=\"M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z\"/%3E%3C/svg%3E')"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-warning--BorderBottomWidth",
+              "default": "var(--pf-global--BorderWidth--md, 2px)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-warning--PaddingBottom",
+              "default": "calc(var(--pf-global--spacer--form-element, 0.375rem) - var(--pf-c-form-control--m-warning--BorderBottomWidth))"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-warning--BorderBottomColor",
+              "default": "var(--pf-global--warning-color--100, #f0ab00)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-warning--PaddingRight",
+              "default": "var(--pf-global--spacer--xl, 2rem)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-warning--BackgroundPositionX",
+              "default": "calc(100% - calc(var(--pf-c-form-control--PaddingLeft) - 0.0625rem))"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-warning--BackgroundPositionY",
+              "default": "center"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-warning--BackgroundPosition",
+              "default": "var(--pf-c-form-control--m-warning--BackgroundPositionX) var(--pf-c-form-control--m-warning--BackgroundPositionY)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-warning--BackgroundSizeX",
+              "default": "1.25rem"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-warning--BackgroundSizeY",
+              "default": "var(--pf-c-form-control--FontSize)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-warning--BackgroundSize",
+              "default": "var(--pf-c-form-control--m-warning--BackgroundSizeX) var(--pf-c-form-control--m-warning--BackgroundSizeY)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-warning--BackgroundUrl",
+              "default": "url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23f0ab00' d='M569.517 440.013C587.975 472.007 564.806 512 527.94 512H48.054c-36.937 0-59.999-40.055-41.577-71.987L246.423 23.985c18.467-32.009 64.72-31.951 83.154 0l239.94 416.028zM288 354c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z'/%3E%3C/svg%3E\")"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--invalid--BorderBottomWidth",
+              "default": "var(--pf-global--BorderWidth--md, 2px)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--invalid--PaddingBottom",
+              "default": "calc(var(--pf-global--spacer--form-element, 0.375rem) - var(--pf-c-form-control--invalid--BorderBottomWidth))"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--invalid--BorderBottomColor",
+              "default": "var(--pf-global--danger-color--100, #c9190b)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--invalid--PaddingRight",
+              "default": "var(--pf-global--spacer--xl, 2rem)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--invalid--BackgroundPositionX",
+              "default": "calc(100% - var(--pf-c-form-control--PaddingLeft))"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--invalid--BackgroundPositionY",
+              "default": "center"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--invalid--BackgroundPosition",
+              "default": "var(--pf-c-form-control--invalid--BackgroundPositionX) var(--pf-c-form-control--invalid--BackgroundPositionY)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--invalid--BackgroundSizeX",
+              "default": "var(--pf-c-form-control--FontSize)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--invalid--BackgroundSizeY",
+              "default": "var(--pf-c-form-control--FontSize)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--invalid--BackgroundSize",
+              "default": "var(--pf-c-form-control--invalid--BackgroundSizeX) var(--pf-c-form-control--invalid--BackgroundSizeY)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--invalid--BackgroundUrl",
+              "default": "url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23fe5142' d='M504 256c0 136.997-111.043 248-248 248S8 392.997 8 256C8 119.083 119.043 8 256 8s248 111.083 248 248zm-248 50c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z'/%3E%3C/svg%3E\")"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--invalid--exclamation--Background",
+              "default": "var(--pf-c-form-control--invalid--BackgroundUrl) var(--pf-c-form-control--invalid--BackgroundPosition) / var(--pf-c-form-control--invalid--BackgroundSize) no-repeat"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--invalid--Background",
+              "default": "var(--pf-c-form-control--BackgroundColor) var(--pf-c-form-control--invalid--exclamation--Background)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-search--PaddingLeft",
+              "default": "var(--pf-global--spacer--xl, 2rem)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-search--BackgroundPosition",
+              "default": "var(--pf-c-form-control--PaddingRight)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-search--BackgroundSize",
+              "default": "var(--pf-c-form-control--FontSize) var(--pf-c-form-control--FontSize)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-search--BackgroundUrl",
+              "default": "url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23aaabac' d='M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z'/%3E%3C/svg%3E\")"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-icon--PaddingRight",
+              "default": "calc(var(--pf-c-form-control--inset--base) + var(--pf-c-form-control--m-icon--BackgroundSizeX) + var(--pf-c-form-control--m-icon--icon--spacer))"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-icon--BackgroundUrl",
+              "default": "none"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-icon--BackgroundPositionX",
+              "default": "calc(100% - var(--pf-c-form-control--inset--base))"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-icon--BackgroundPositionY",
+              "default": "center"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-icon--BackgroundSizeX",
+              "default": "var(--pf-c-form-control--FontSize)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-icon--BackgroundSizeY",
+              "default": "var(--pf-c-form-control--FontSize)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-icon--icon--spacer",
+              "default": "var(--pf-global--spacer--sm, 0.5rem)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-icon--icon--PaddingRight",
+              "default": "calc(var(--pf-c-form-control--inset--base) + var(--pf-c-form-control--invalid--BackgroundSizeX) + var(--pf-c-form-control--m-icon--icon--spacer) + var(--pf-c-form-control--m-icon--BackgroundSizeX) + var(--pf-c-form-control--m-icon--icon--spacer))"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-icon--icon--BackgroundPositionX",
+              "default": "calc(var(--pf-c-form-control--m-icon--BackgroundPositionX) - var(--pf-c-form-control--m-icon--icon--spacer) - var(--pf-c-form-control--invalid--BackgroundSizeX))"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-icon--invalid--BackgroundUrl",
+              "default": "var(--pf-c-form-control--invalid--BackgroundUrl), var(--pf-c-form-control--m-icon--BackgroundUrl)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-icon--invalid--BackgroundPosition",
+              "default": "var(--pf-c-form-control--invalid--BackgroundPosition), var(--pf-c-form-control--m-icon--icon--BackgroundPositionX) var(--pf-c-form-control--m-icon--BackgroundPositionY)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-icon--invalid--BackgroundSize",
+              "default": "var(--pf-c-form-control--invalid--BackgroundSize), var(--pf-c-form-control--m-icon--BackgroundSizeX) var(--pf-c-form-control--m-icon--BackgroundSizeY)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-icon--success--BackgroundUrl",
+              "default": "var(--pf-c-form-control--success--BackgroundUrl), var(--pf-c-form-control--m-icon--BackgroundUrl)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-icon--success--BackgroundPosition",
+              "default": "var(--pf-c-form-control--success--BackgroundPosition), var(--pf-c-form-control--m-icon--icon--BackgroundPositionX) var(--pf-c-form-control--m-icon--BackgroundPositionY)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-icon--success--BackgroundSize",
+              "default": "var(--pf-c-form-control--success--BackgroundSize), var(--pf-c-form-control--m-icon--BackgroundSizeX) var(--pf-c-form-control--m-icon--BackgroundSizeY)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-icon--m-warning--BackgroundUrl",
+              "default": "var(--pf-c-form-control--m-warning--BackgroundUrl), var(--pf-c-form-control--m-icon--BackgroundUrl)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-icon--m-warning--BackgroundPosition",
+              "default": "var(--pf-c-form-control--m-warning--BackgroundPosition), var(--pf-c-form-control--m-icon--icon--BackgroundPositionX) var(--pf-c-form-control--m-icon--BackgroundPositionY)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-icon--m-warning--BackgroundSize",
+              "default": "var(--pf-c-form-control--m-warning--BackgroundSize), var(--pf-c-form-control--m-icon--BackgroundSizeX) var(--pf-c-form-control--m-icon--BackgroundSizeY)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-calendar--BackgroundUrl",
+              "default": "url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23aaabac' d='M0 464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V192H0v272zm320-196c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zM192 268c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zM64 268c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zM400 64h-48V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H160V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H48C21.5 64 0 85.5 0 112v48h448v-48c0-26.5-21.5-48-48-48z'/%3E%3C/svg%3E\")"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-clock--BackgroundUrl",
+              "default": "url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23aaabac' d='M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z'/%3E%3C/svg%3E\")"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control__select--PaddingRight",
+              "default": "calc(var(--pf-global--spacer--lg, 1.5rem) + var(--pf-c-form-control--BorderWidth) + var(--pf-c-form-control--BorderWidth))"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control__select--PaddingLeft",
+              "default": "calc(var(--pf-global--spacer--sm, 0.5rem) - var(--pf-c-form-control--BorderWidth))"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control__select--BackgroundUrl",
+              "default": "url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'%3E%3Cpath fill='%23urrentColor' d='M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z'/%3E%3C/svg%3E\")"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control__select--BackgroundSize",
+              "default": ".625em"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control__select--BackgroundPositionX",
+              "default": "calc(100% - var(--pf-global--spacer--md, 1rem) + 1px)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control__select--BackgroundPositionY",
+              "default": "center"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control__select--BackgroundPosition",
+              "default": "var(--pf-c-form-control__select--BackgroundPositionX) var(--pf-c-form-control__select--BackgroundPositionY)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control__select--success--PaddingRight",
+              "default": "var(--pf-global--spacer--3xl, 4rem)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control__select--success--BackgroundPosition",
+              "default": "calc(var(--pf-c-form-control__select--BackgroundPositionX) - var(--pf-global--spacer--lg, 1.5rem))"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control__select--m-warning--PaddingRight",
+              "default": "var(--pf-global--spacer--3xl, 4rem)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control__select--m-warning--BackgroundPosition",
+              "default": "calc(var(--pf-c-form-control__select--BackgroundPositionX) - var(--pf-global--spacer--lg, 1.5rem) + 0.0625rem)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control__select--invalid--PaddingRight",
+              "default": "var(--pf-global--spacer--3xl, 4rem)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control__select--invalid--BackgroundPosition",
+              "default": "calc(var(--pf-c-form-control__select--BackgroundPositionX) - var(--pf-global--spacer--lg, 1.5rem))"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--textarea--Width",
+              "default": "var(--pf-c-form-control--Width)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--textarea--Height",
+              "default": "auto"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--textarea--success--BackgroundPositionY",
+              "default": "var(--pf-c-form-control--PaddingLeft)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--textarea--m-warning--BackgroundPositionY",
+              "default": "var(--pf-c-form-control--PaddingLeft)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--textarea--invalid--BackgroundPositionY",
+              "default": "var(--pf-c-form-control--PaddingLeft)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-icon-sprite--success--BackgroundUrl",
+              "default": "url(/v4/images/status-icon-sprite.4fee9fefc3971799d2dd4de0a15617f0.svg#success)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-icon-sprite--m-warning--BackgroundUrl",
+              "default": "url(/v4/images/status-icon-sprite.4fee9fefc3971799d2dd4de0a15617f0.svg#warning)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-icon-sprite--invalid--BackgroundUrl",
+              "default": "url(/v4/images/status-icon-sprite.4fee9fefc3971799d2dd4de0a15617f0.svg#invalid)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-icon-sprite__select--BackgroundUrl",
+              "default": "url(/v4/images/status-icon-sprite.4fee9fefc3971799d2dd4de0a15617f0.svg#select)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-icon-sprite--m-search--BackgroundUrl",
+              "default": "url(/v4/images/status-icon-sprite.4fee9fefc3971799d2dd4de0a15617f0.svg#search)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-icon-sprite--m-calendar--BackgroundUrl",
+              "default": "url(/v4/images/status-icon-sprite.4fee9fefc3971799d2dd4de0a15617f0.svg#calendar)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-icon-sprite--m-clock--BackgroundUrl",
+              "default": "url(/v4/images/status-icon-sprite.4fee9fefc3971799d2dd4de0a15617f0.svg#clock)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-icon-sprite__select--BackgroundSize",
+              "default": "var(--pf-c-form-control--FontSize)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-icon-sprite__select--BackgroundPositionX",
+              "default": "calc(100% - var(--pf-global--spacer--md, 1rem) + 7px)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-icon-sprite__select--success--BackgroundPosition",
+              "default": "calc(100% - var(--pf-global--spacer--md, 1rem) + 1px - var(--pf-global--spacer--lg, 1.5rem))"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-icon-sprite__select--m-warning--BackgroundPosition",
+              "default": "calc(100% - var(--pf-global--spacer--md, 1rem) - var(--pf-global--spacer--lg, 1.5rem) + 0.0625rem)"
+            },
+            {
+              "description": "",
+              "name": "--pf-c-form-control--m-icon-sprite__select--invalid--BackgroundPosition",
+              "default": "calc(100% - var(--pf-global--spacer--md, 1rem) - var(--pf-global--spacer--lg, 1.5rem))"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "formAssociated",
+              "type": {
+                "text": "boolean"
+              },
+              "static": true,
+              "default": "true",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "shadowRootOptions",
+              "type": {
+                "text": "ShadowRootInit"
+              },
+              "static": true,
+              "default": "{ ...LitElement.shadowRootOptions, delegatesFocus: true }"
+            },
+            {
+              "kind": "field",
+              "name": "leftTruncated",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Trim text on left",
+              "attribute": "left-truncated",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "validated",
+              "type": {
+                "text": "'success' | 'warning' | undefined"
+              },
+              "description": "Value to indicate if the input is modified to show that validation state.\nIf set to success, input will be modified to indicate valid state.\nIf set to warning,  input will be modified to indicate warning state.\nInvalid inputs will display an error state",
+              "attribute": "validated",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "type": {
+                "text": "'calendar' | 'clock' | 'search' | undefined"
+              },
+              "description": "icon variant",
+              "attribute": "icon",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "accessibleLabel",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Accessible label for the input when no `<label>` element is provided.",
+              "attribute": "accessible-label",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "customIconUrl",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Custom icon url to set as the text input's background-image",
+              "attribute": "custom-icon-url",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "customIconDimensions",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Dimensions for the custom icon set as the text input's background-size",
+              "attribute": "custom-icon-dimensions",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "plain",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "plain",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "'text' | 'date' | 'datetime-local' | 'email' | 'month' | 'number' | 'password' | 'search' | 'tel' | 'time' | 'url' | undefined"
+              },
+              "description": "Type that the input accepts.",
+              "attribute": "type",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Flag to show if the input is disabled.",
+              "attribute": "disabled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Flag to show if the input is required.",
+              "attribute": "required",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "readonly",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Flag to show if the input is read only.",
+              "attribute": "readonly",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Value of the input.",
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "#internals",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "#derivedLabel",
+              "privacy": "private",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "#input",
+              "privacy": "private",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "#onInput",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event & { target: HTMLInputElement }"
+                  }
+                }
+              ],
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "#setValidityFromInput",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "formDisabledCallback"
+            },
+            {
+              "kind": "method",
+              "name": "setCustomValidity",
+              "parameters": [
+                {
+                  "name": "message",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "checkValidity"
+            },
+            {
+              "kind": "method",
+              "name": "reportValidity"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "left-truncated",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Trim text on left",
+              "fieldName": "leftTruncated"
+            },
+            {
+              "name": "validated",
+              "type": {
+                "text": "'success' | 'warning' | undefined"
+              },
+              "description": "Value to indicate if the input is modified to show that validation state.\nIf set to success, input will be modified to indicate valid state.\nIf set to warning,  input will be modified to indicate warning state.\nInvalid inputs will display an error state",
+              "fieldName": "validated"
+            },
+            {
+              "name": "icon",
+              "type": {
+                "text": "'calendar' | 'clock' | 'search' | undefined"
+              },
+              "description": "icon variant",
+              "fieldName": "icon"
+            },
+            {
+              "name": "accessible-label",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Accessible label for the input when no `<label>` element is provided.",
+              "fieldName": "accessibleLabel"
+            },
+            {
+              "name": "custom-icon-url",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Custom icon url to set as the text input's background-image",
+              "fieldName": "customIconUrl"
+            },
+            {
+              "name": "custom-icon-dimensions",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Dimensions for the custom icon set as the text input's background-size",
+              "fieldName": "customIconDimensions"
+            },
+            {
+              "name": "plain",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "plain"
+            },
+            {
+              "name": "type",
+              "type": {
+                "text": "'text' | 'date' | 'datetime-local' | 'email' | 'month' | 'number' | 'password' | 'search' | 'tel' | 'time' | 'url' | undefined"
+              },
+              "description": "Type that the input accepts.",
+              "fieldName": "type"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Flag to show if the input is disabled.",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Flag to show if the input is required.",
+              "fieldName": "required"
+            },
+            {
+              "name": "readonly",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Flag to show if the input is read only.",
+              "fieldName": "readonly"
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Value of the input.",
+              "fieldName": "value"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "pf-text-input",
+          "customElement": true,
+          "demos": [
+            {
+              "url": "https://patternflyelements.org/components/text-input/demo/",
+              "source": {
+                "href": "https://github.com/patternfly/patternfly-elements/tree/main/elements/pf-text-input/demo/pf-text-input.html"
+              }
+            },
+            {
+              "url": "https://patternflyelements.org/components/text-input/demo/disabled/",
+              "source": {
+                "href": "https://github.com/patternfly/patternfly-elements/tree/main/elements/pf-text-input/demo/disabled.html"
+              }
+            },
+            {
+              "url": "https://patternflyelements.org/components/text-input/demo/icon-variants/",
+              "source": {
+                "href": "https://github.com/patternfly/patternfly-elements/tree/main/elements/pf-text-input/demo/icon-variants.html"
+              }
+            },
+            {
+              "url": "https://patternflyelements.org/components/text-input/demo/invalid/",
+              "source": {
+                "href": "https://github.com/patternfly/patternfly-elements/tree/main/elements/pf-text-input/demo/invalid.html"
+              }
+            },
+            {
+              "url": "https://patternflyelements.org/components/text-input/demo/kitchen-sink/",
+              "source": {
+                "href": "https://github.com/patternfly/patternfly-elements/tree/main/elements/pf-text-input/demo/kitchen-sink.html"
+              }
+            },
+            {
+              "url": "https://patternflyelements.org/components/text-input/demo/left-truncated/",
+              "source": {
+                "href": "https://github.com/patternfly/patternfly-elements/tree/main/elements/pf-text-input/demo/left-truncated.html"
+              }
+            },
+            {
+              "url": "https://patternflyelements.org/components/text-input/demo/read-only/",
+              "source": {
+                "href": "https://github.com/patternfly/patternfly-elements/tree/main/elements/pf-text-input/demo/read-only.html"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PfTextInput",
+          "declaration": {
+            "name": "PfTextInput",
+            "module": "pf-text-input/pf-text-input.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "pf-text-input",
+          "declaration": {
+            "name": "PfTextInput",
+            "module": "pf-text-input/pf-text-input.js"
           }
         }
       ]
@@ -8659,15 +12254,11 @@
               "kind": "field",
               "name": "position",
               "type": {
-                "text": "Placement | undefined"
+                "text": "Placement"
               },
-              "description": "The position of the tooltip, relative to the invoking content",
               "default": "'top'",
-              "attribute": "position",
-              "inheritedFrom": {
-                "name": "BaseTooltip",
-                "module": "pf-tooltip/BaseTooltip.js"
-              }
+              "description": "The position of the tooltip, relative to the invoking content",
+              "attribute": "position"
             },
             {
               "kind": "field",
@@ -8676,37 +12267,99 @@
                 "text": "string | undefined"
               },
               "description": "Tooltip content. Overridden by the content slot",
-              "attribute": "content",
-              "inheritedFrom": {
-                "name": "BaseTooltip",
-                "module": "pf-tooltip/BaseTooltip.js"
+              "attribute": "content"
+            },
+            {
+              "kind": "field",
+              "name": "noFlip",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "If false, prevents the tooltip from trying to remain in view by flipping itself when necessary",
+              "attribute": "no-flip"
+            },
+            {
+              "kind": "field",
+              "name": "trigger",
+              "type": {
+                "text": "string | Element | undefined"
+              },
+              "attribute": "trigger"
+            },
+            {
+              "kind": "field",
+              "name": "flipBehavior",
+              "type": {
+                "text": "Placement[] | undefined"
+              },
+              "description": "The flip order when flip is enabled and the initial position is not possible.\nThere are 12 options: `top`, `bottom`, `left`, `right`, `top-start`, `top-end`,\n`bottom-start`, `bottom-end`, `left-start`, `left-end`,`right-start`, `right-end`.\nThe default is [oppositePlacement], where only the opposite placement is tried.",
+              "attribute": "flip-behavior"
+            },
+            {
+              "kind": "field",
+              "name": "#invoker",
+              "privacy": "private",
+              "type": {
+                "text": "HTMLSlotElement | null"
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "#content",
+              "privacy": "private",
+              "type": {
+                "text": "HTMLElement | null"
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "#blockInvoker",
+              "privacy": "private",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "#referenceTrigger",
+              "privacy": "private",
+              "type": {
+                "text": "HTMLElement | null | undefined"
               }
             },
             {
               "kind": "field",
               "name": "#float",
               "privacy": "private",
-              "default": "new FloatingDOMController(this, {\n    content: (): HTMLElement | undefined | null => this.shadowRoot?.querySelector('#tooltip'),\n  })",
-              "inheritedFrom": {
-                "name": "BaseTooltip",
-                "module": "pf-tooltip/BaseTooltip.js"
-              }
+              "default": "new FloatingDOMController(this, {\n    content: (): HTMLElement | null | undefined => this.#content,\n    invoker: (): HTMLElement | null | undefined => {\n      if (this.#referenceTrigger) {\n        return this.#referenceTrigger;\n      } else if (this.#invoker instanceof HTMLSlotElement && this.#invoker.assignedElements().length > 0) {\n        return this.#invoker.assignedElements().at(0) as HTMLElement;\n      } else {\n        return this.#invoker;\n      }\n    },\n  })"
             },
             {
               "kind": "method",
-              "name": "show",
-              "inheritedFrom": {
-                "name": "BaseTooltip",
-                "module": "pf-tooltip/BaseTooltip.js"
-              }
+              "name": "#invokerChanged",
+              "description": "the invoker slot should render at block level if it only has text nodes",
+              "privacy": "private"
             },
             {
               "kind": "method",
-              "name": "hide",
-              "inheritedFrom": {
-                "name": "BaseTooltip",
-                "module": "pf-tooltip/BaseTooltip.js"
-              }
+              "name": "#getReferenceTrigger",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "#updateTrigger",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "show"
+            },
+            {
+              "kind": "method",
+              "name": "hide"
             }
           ],
           "attributes": [
@@ -8716,6 +12369,7 @@
                 "text": "Placement"
               },
               "default": "'top'",
+              "description": "The position of the tooltip, relative to the invoking content",
               "fieldName": "position"
             },
             {
@@ -8725,11 +12379,35 @@
               },
               "description": "Tooltip content. Overridden by the content slot",
               "fieldName": "content"
+            },
+            {
+              "name": "no-flip",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "If false, prevents the tooltip from trying to remain in view by flipping itself when necessary",
+              "fieldName": "noFlip"
+            },
+            {
+              "name": "trigger",
+              "type": {
+                "text": "string | Element | undefined"
+              },
+              "fieldName": "trigger"
+            },
+            {
+              "name": "flip-behavior",
+              "type": {
+                "text": "Placement[] | undefined"
+              },
+              "description": "The flip order when flip is enabled and the initial position is not possible.\nThere are 12 options: `top`, `bottom`, `left`, `right`, `top-start`, `top-end`,\n`bottom-start`, `bottom-end`, `left-start`, `left-end`,`right-start`, `right-end`.\nThe default is [oppositePlacement], where only the opposite placement is tried.",
+              "fieldName": "flipBehavior"
             }
           ],
           "superclass": {
-            "name": "BaseTooltip",
-            "module": "/pf-tooltip/BaseTooltip.js"
+            "name": "LitElement",
+            "package": "lit"
           },
           "summary": "Toggle the visibility of helpful or contextual information.",
           "tagName": "pf-tooltip",
@@ -8742,9 +12420,21 @@
               }
             },
             {
+              "url": "https://patternflyelements.org/components/tooltip/demo/flip/",
+              "source": {
+                "href": "https://github.com/patternfly/patternfly-elements/tree/main/elements/pf-tooltip/demo/flip.html"
+              }
+            },
+            {
               "url": "https://patternflyelements.org/components/tooltip/demo/performance/",
               "source": {
                 "href": "https://github.com/patternfly/patternfly-elements/tree/main/elements/pf-tooltip/demo/performance.html"
+              }
+            },
+            {
+              "url": "https://patternflyelements.org/components/tooltip/demo/trigger/",
+              "source": {
+                "href": "https://github.com/patternfly/patternfly-elements/tree/main/elements/pf-tooltip/demo/trigger.html"
               }
             }
           ]
@@ -8895,6 +12585,25 @@
               ]
             },
             {
+              "kind": "method",
+              "name": "#isAccordionChangeEvent",
+              "static": true,
+              "return": {
+                "type": {
+                  "text": "event is AccordionHeaderChangeEvent"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ],
+              "privacy": "private"
+            },
+            {
               "kind": "field",
               "name": "#headerIndex",
               "privacy": "private",
@@ -8987,6 +12696,14 @@
             {
               "kind": "method",
               "name": "#updateActiveHeader",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "FocusEvent"
+                  }
+                }
+              ],
               "privacy": "private"
             },
             {
@@ -9112,19 +12829,6 @@
             },
             {
               "kind": "method",
-              "name": "#onKeydown",
-              "parameters": [
-                {
-                  "name": "evt",
-                  "type": {
-                    "text": "KeyboardEvent"
-                  }
-                }
-              ],
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
               "name": "#allHeaders",
               "return": {
                 "type": {
@@ -9159,26 +12863,6 @@
                   }
                 }
               ],
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "#previousHeader",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "#nextHeader",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "#firstHeader",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "#lastHeader",
               "privacy": "private"
             },
             {
@@ -9311,6 +12995,13 @@
           "description": "",
           "name": "AccordionHeaderChangeEvent",
           "members": [
+            {
+              "kind": "field",
+              "name": "target",
+              "type": {
+                "text": "BaseAccordionHeader"
+              }
+            },
             {
               "kind": "field",
               "type": {
@@ -10897,6 +14588,15 @@
               "name": "#disabledChanged",
               "description": "if a tab is disabled, then it is also aria-disabled\nif a tab is removed from disabled its not necessarily\nnot still aria-disabled so we don't remove the aria-disabled",
               "privacy": "private"
+            }
+          ],
+          "events": [
+            {
+              "type": {
+                "text": "TabExpandEvent"
+              },
+              "description": "when a tab is selected",
+              "name": "expand"
             }
           ],
           "superclass": {

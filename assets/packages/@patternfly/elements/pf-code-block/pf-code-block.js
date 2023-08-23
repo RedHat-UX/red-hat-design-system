@@ -1,4 +1,5 @@
-import { __decorate } from "tslib";
+var _PfCodeBlock_instances, _PfCodeBlock_toggle, _PfCodeBlock_expandedContent_get;
+import { __classPrivateFieldGet, __decorate } from "tslib";
 import { html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
@@ -31,14 +32,8 @@ const styles = css `:host{background-color:var(--pf-c-code-block--BackgroundColo
 let PfCodeBlock = class PfCodeBlock extends BaseCodeBlock {
     constructor() {
         super(...arguments);
+        _PfCodeBlock_instances.add(this);
         this.expanded = false;
-    }
-    static { this.styles = [...BaseCodeBlock.styles, styles]; }
-    #toggle() {
-        this.expanded = !this.expanded;
-    }
-    get #expandedContent() {
-        return this.querySelector('script[data-expand]')?.textContent ?? '';
     }
     render() {
         const { expanded } = this;
@@ -50,9 +45,9 @@ let PfCodeBlock = class PfCodeBlock extends BaseCodeBlock {
       </div>
       <div id="container" class="${classMap({ expanded })}">
         <pre><code id="content">${this.content}</code><code id="code-block-expand"
-          ?hidden="${!expanded}">${this.#expandedContent}</code></pre>
-        <button ?hidden="${!this.#expandedContent}"
-                @click=${this.#toggle}
+          ?hidden="${!expanded}">${__classPrivateFieldGet(this, _PfCodeBlock_instances, "a", _PfCodeBlock_expandedContent_get)}</code></pre>
+        <button ?hidden="${!__classPrivateFieldGet(this, _PfCodeBlock_instances, "a", _PfCodeBlock_expandedContent_get)}"
+                @click=${__classPrivateFieldGet(this, _PfCodeBlock_instances, "m", _PfCodeBlock_toggle)}
                 aria-expanded=${this.expanded}
                 aria-controls="code-block-expand">
           <svg fill="currentColor" height="1em" width="1em" viewBox="0 0 256 512" aria-hidden="true" role="img" style="vertical-align: -0.125em;"><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"></path></svg>
@@ -62,6 +57,14 @@ let PfCodeBlock = class PfCodeBlock extends BaseCodeBlock {
     `;
     }
 };
+_PfCodeBlock_instances = new WeakSet();
+_PfCodeBlock_toggle = function _PfCodeBlock_toggle() {
+    this.expanded = !this.expanded;
+};
+_PfCodeBlock_expandedContent_get = function _PfCodeBlock_expandedContent_get() {
+    return this.querySelector('script[data-expand]')?.textContent ?? '';
+};
+PfCodeBlock.styles = [...BaseCodeBlock.styles, styles];
 __decorate([
     property({ type: Boolean, reflect: true })
 ], PfCodeBlock.prototype, "expanded", void 0);

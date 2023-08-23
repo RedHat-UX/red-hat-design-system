@@ -1,4 +1,4 @@
-import { LitElement } from 'lit';
+import { LitElement, type PropertyValues } from 'lit';
 import { ComposedEvent } from '@patternfly/pfe-core/core.js';
 import type { Placement } from '@patternfly/pfe-core/controllers/floating-dom-controller.js';
 import '@patternfly/elements/pf-button/pf-button.js';
@@ -244,7 +244,7 @@ export declare class PfPopover extends LitElement {
      * Removes event listeners from the old trigger element and attaches
      * them to the new trigger element.
      */
-    triggerChanged(oldValue?: string, newValue?: string): void;
+    willUpdate(changed: PropertyValues<this>): void;
     /**
      * Toggle the popover
      */

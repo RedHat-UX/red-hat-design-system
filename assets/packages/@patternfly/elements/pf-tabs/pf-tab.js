@@ -63,7 +63,7 @@ const styles = css `:host{scroll-snap-align:var(--pf-c-tabs__item--ScrollSnapAli
  *
  * @cssprop     {<length>} --pf-c-tabs__link--child--MarginRight  {@default `1rem`}
  *
- * @fires { TabExpandEvent } tab-expand - when a tab expands
+ * @fires { TabExpandEvent } expand - when a tab expands
  */
 let PfTab = class PfTab extends BaseTab {
     constructor() {
@@ -71,8 +71,8 @@ let PfTab = class PfTab extends BaseTab {
         this.active = false;
         this.disabled = false;
     }
-    static { this.styles = [...BaseTab.styles, styles]; }
 };
+PfTab.styles = [...BaseTab.styles, styles];
 __decorate([
     observed,
     property({ reflect: true, type: Boolean })

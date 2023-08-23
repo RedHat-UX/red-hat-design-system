@@ -25,11 +25,11 @@ const styles = css `[hidden]{display:none!important}div{display:contents}svg{wid
  * @cssprop {<string>} --pf-c-spinner__path--AnimationTimingFunction {@default `ease-in-out`}
  */
 let PfSpinner = class PfSpinner extends BaseSpinner {
-    static { this.styles = [...BaseSpinner.styles, styles]; }
     render() {
         return html `<div style=${styleMap({ '--pf-c-spinner--diameter': this.diameter })}>${super.render()}</div>`;
     }
 };
+PfSpinner.styles = [...BaseSpinner.styles, styles];
 PfSpinner = __decorate([
     customElement('pf-spinner')
 ], PfSpinner);

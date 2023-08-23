@@ -1,5 +1,8 @@
 import type { Placement } from '@patternfly/pfe-core/controllers/floating-dom-controller.js';
 import { LitElement } from 'lit';
+/**
+ * @deprecated - Will be removed in the next major version. Use FloatingDOMController
+ */
 export declare abstract class BaseTooltip extends LitElement {
     #private;
     static readonly styles: import("lit").CSSResult[];

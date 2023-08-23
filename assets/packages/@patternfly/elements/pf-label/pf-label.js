@@ -112,8 +112,6 @@ let PfLabel = class PfLabel extends BaseLabel {
         /** Flag indicating the label is removable */
         this.removable = false;
     }
-    static { this.styles = [...BaseLabel.styles, styles]; }
-    static { this.shadowRootOptions = { ...BaseLabel.shadowRootOptions, delegatesFocus: true }; }
     render() {
         const { compact, truncated } = this;
         return html `
@@ -139,6 +137,8 @@ let PfLabel = class PfLabel extends BaseLabel {
     `;
     }
 };
+PfLabel.styles = [...BaseLabel.styles, styles];
+PfLabel.shadowRootOptions = { ...BaseLabel.shadowRootOptions, delegatesFocus: true };
 __decorate([
     property()
 ], PfLabel.prototype, "variant", void 0);

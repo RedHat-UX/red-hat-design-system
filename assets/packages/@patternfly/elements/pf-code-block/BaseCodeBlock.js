@@ -2,7 +2,6 @@ import { LitElement } from 'lit';
 import { css } from "lit";
 const styles = css `:host{display:block}[hidden]{display:none!important}`;
 class BaseCodeBlock extends LitElement {
-    static { this.styles = [styles]; }
     get content() {
         const script = this.querySelector('script[type]');
         if (script?.type !== 'text/javascript-sample' &&
@@ -19,5 +18,6 @@ class BaseCodeBlock extends LitElement {
         return match ? stripped.replace(new RegExp(`^${match[0]}`, 'gm'), '') : str;
     }
 }
+BaseCodeBlock.styles = [styles];
 export { BaseCodeBlock };
 //# sourceMappingURL=BaseCodeBlock.js.map

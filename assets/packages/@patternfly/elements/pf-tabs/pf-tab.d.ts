@@ -57,7 +57,7 @@ import { BaseTab } from './BaseTab.js';
  *
  * @cssprop     {<length>} --pf-c-tabs__link--child--MarginRight  {@default `1rem`}
  *
- * @fires { TabExpandEvent } tab-expand - when a tab expands
+ * @fires { TabExpandEvent } expand - when a tab expands
  */
 export declare class PfTab extends BaseTab {
     static readonly styles: import("lit").CSSResult[];

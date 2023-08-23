@@ -28,8 +28,8 @@ const styles = css `:host{border-radius:var(--pf-c-badge--BorderRadius,var(--pf-
  * @cssprop {<color>} --pf-c-badge--m-unread--BackgroundColor   {@default `#06c`}
  */
 let PfBadge = class PfBadge extends BaseBadge {
-    static { this.styles = [...BaseBadge.styles, styles]; }
 };
+PfBadge.styles = [...BaseBadge.styles, styles];
 __decorate([
     property({ reflect: true })
 ], PfBadge.prototype, "state", void 0);

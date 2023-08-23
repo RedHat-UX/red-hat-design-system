@@ -162,7 +162,6 @@ let PfButton = class PfButton extends BaseButton {
          */
         this.variant = 'primary';
     }
-    static { this.styles = [...BaseButton.styles, styles]; }
     get hasIcon() {
         return !!this.icon || !!this.loading;
     }
@@ -179,6 +178,7 @@ let PfButton = class PfButton extends BaseButton {
     `;
     }
 };
+PfButton.styles = [...BaseButton.styles, styles];
 __decorate([
     property({ type: Boolean, reflect: true })
 ], PfButton.prototype, "loading", void 0);

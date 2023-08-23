@@ -1,4 +1,5 @@
-import { __decorate } from "tslib";
+var _BaseTab_instances, _BaseTab_internals, _BaseTab_clickHandler, _BaseTab_activeChanged, _BaseTab_disabledChanged;
+import { __classPrivateFieldGet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 import { query } from 'lit/decorators/query.js';
@@ -13,15 +14,20 @@ export class TabExpandEvent extends ComposedEvent {
         this.tab = tab;
     }
 }
+/**
+ * @fires {TabExpandEvent} expand - when a tab is selected
+ */
 class BaseTab extends LitElement {
-    static { this.styles = [style]; }
-    static { this.shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true }; }
-    #internals = this.attachInternals();
+    constructor() {
+        super(...arguments);
+        _BaseTab_instances.add(this);
+        _BaseTab_internals.set(this, this.attachInternals());
+    }
     connectedCallback() {
         super.connectedCallback();
-        this.id ||= getRandomId(this.localName);
-        this.addEventListener('click', this.#clickHandler);
-        this.#internals.role = 'tab';
+        this.id || (this.id = getRandomId(this.localName));
+        this.addEventListener('click', __classPrivateFieldGet(this, _BaseTab_instances, "m", _BaseTab_clickHandler));
+        __classPrivateFieldGet(this, _BaseTab_internals, "f").role = 'tab';
     }
     render() {
         return html `
@@ -35,41 +41,36 @@ class BaseTab extends LitElement {
     `;
     }
     updated(changed) {
-        this.#internals.ariaSelected = String(this.ariaSelected);
+        __classPrivateFieldGet(this, _BaseTab_internals, "f").ariaSelected = String(this.ariaSelected);
         if (changed.has('active')) {
-            this.#activeChanged();
+            __classPrivateFieldGet(this, _BaseTab_instances, "m", _BaseTab_activeChanged).call(this);
         }
         if (changed.has('disabled')) {
-            this.#disabledChanged();
+            __classPrivateFieldGet(this, _BaseTab_instances, "m", _BaseTab_disabledChanged).call(this);
         }
     }
     focus() {
         this.button.focus();
     }
-    #clickHandler() {
-        if (!this.disabled && this.#internals.ariaDisabled !== 'true' && this.ariaDisabled !== 'true') {
-            this.active = true;
-            this.focus(); // safari fix
-        }
-    }
-    #activeChanged() {
-        if (this.active && !this.disabled) {
-            this.#internals.ariaSelected = 'true';
-        }
-        else {
-            this.#internals.ariaSelected = 'false';
-        }
-        this.dispatchEvent(new TabExpandEvent(this.active, this));
-    }
-    /**
-     * if a tab is disabled, then it is also aria-disabled
-     * if a tab is removed from disabled its not necessarily
-     * not still aria-disabled so we don't remove the aria-disabled
-     */
-    #disabledChanged() {
-        this.#internals.ariaDisabled = String(!!this.disabled);
-    }
 }
+_BaseTab_internals = new WeakMap(), _BaseTab_instances = new WeakSet(), _BaseTab_clickHandler = function _BaseTab_clickHandler() {
+    if (!this.disabled && __classPrivateFieldGet(this, _BaseTab_internals, "f").ariaDisabled !== 'true' && this.ariaDisabled !== 'true') {
+        this.active = true;
+        this.focus(); // safari fix
+    }
+}, _BaseTab_activeChanged = function _BaseTab_activeChanged() {
+    if (this.active && !this.disabled) {
+        __classPrivateFieldGet(this, _BaseTab_internals, "f").ariaSelected = 'true';
+    }
+    else {
+        __classPrivateFieldGet(this, _BaseTab_internals, "f").ariaSelected = 'false';
+    }
+    this.dispatchEvent(new TabExpandEvent(this.active, this));
+}, _BaseTab_disabledChanged = function _BaseTab_disabledChanged() {
+    __classPrivateFieldGet(this, _BaseTab_internals, "f").ariaDisabled = String(!!this.disabled);
+};
+BaseTab.styles = [style];
+BaseTab.shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
 __decorate([
     queryAssignedElements({ slot: 'icon', flatten: true })
 ], BaseTab.prototype, "icons", void 0);

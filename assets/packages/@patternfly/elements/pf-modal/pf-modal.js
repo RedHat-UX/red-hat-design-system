@@ -1,5 +1,6 @@
+var _PfModal_headerId, _PfModal_triggerElement, _PfModal_header, _PfModal_body, _PfModal_headings, _PfModal_cancelling, _PfModal_slots;
 var PfModal_1;
-import { __decorate } from "tslib";
+import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
@@ -72,36 +73,25 @@ let PfModal = PfModal_1 = class PfModal extends LitElement {
         this.open = false;
         /** @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/returnValue */
         this.returnValue = '';
-        this.#headerId = getRandomId();
-        this.#triggerElement = null;
-        this.#header = null;
-        this.#body = [];
-        this.#headings = [];
-        this.#cancelling = false;
-        this.#slots = new SlotController(this, null, 'header', 'description', 'footer');
+        _PfModal_headerId.set(this, getRandomId());
+        _PfModal_triggerElement.set(this, null);
+        _PfModal_header.set(this, null);
+        _PfModal_body.set(this, []);
+        _PfModal_headings.set(this, []);
+        _PfModal_cancelling.set(this, false);
+        _PfModal_slots.set(this, new SlotController(this, null, 'header', 'description', 'footer'));
     }
-    static { this.shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true }; }
-    static { this.styles = [style]; }
-    /** Should the dialog close when user clicks outside the dialog? */
-    static { this.closeOnOutsideClick = false; }
-    #headerId;
-    #triggerElement;
-    #header;
-    #body;
-    #headings;
-    #cancelling;
-    #slots;
     connectedCallback() {
         super.connectedCallback();
         this.addEventListener('keydown', this.onKeydown);
         this.addEventListener('click', this.onClick);
     }
     render() {
-        const headerId = (this.#header || this.#headings.length) ? this.#headerId : undefined;
-        const headerLabel = this.#triggerElement ? this.#triggerElement.innerText : undefined;
-        const hasHeader = this.#slots.hasSlotted('header');
-        const hasDescription = this.#slots.hasSlotted('description');
-        const hasFooter = this.#slots.hasSlotted('footer');
+        const headerId = (__classPrivateFieldGet(this, _PfModal_header, "f") || __classPrivateFieldGet(this, _PfModal_headings, "f").length) ? __classPrivateFieldGet(this, _PfModal_headerId, "f") : undefined;
+        const headerLabel = __classPrivateFieldGet(this, _PfModal_triggerElement, "f") ? __classPrivateFieldGet(this, _PfModal_triggerElement, "f").innerText : undefined;
+        const hasHeader = __classPrivateFieldGet(this, _PfModal_slots, "f").hasSlotted('header');
+        const hasDescription = __classPrivateFieldGet(this, _PfModal_slots, "f").hasSlotted('description');
+        const hasFooter = __classPrivateFieldGet(this, _PfModal_slots, "f").hasSlotted('footer');
         return html `
       <section ?hidden=${!this.open}>
         <div id="overlay" part="overlay" ?hidden=${!this.open}></div>
@@ -142,23 +132,23 @@ let PfModal = PfModal_1 = class PfModal extends LitElement {
     disconnectedCallback() {
         super.disconnectedCallback();
         this.removeEventListener('keydown', this.onKeydown);
-        this.#triggerElement?.removeEventListener('click', this.onTriggerClick);
+        __classPrivateFieldGet(this, _PfModal_triggerElement, "f")?.removeEventListener('click', this.onTriggerClick);
     }
     async _init() {
         await this.updateComplete;
-        this.#header = this.querySelector(`[slot$="header"]`);
-        this.#body = [...this.querySelectorAll(`*:not([slot])`)];
-        this.#headings = this.#body.filter(el => el.tagName.slice(0, 1) === 'H');
-        if (this.#triggerElement) {
-            this.#triggerElement.addEventListener('click', this.onTriggerClick);
+        __classPrivateFieldSet(this, _PfModal_header, this.querySelector(`[slot$="header"]`), "f");
+        __classPrivateFieldSet(this, _PfModal_body, [...this.querySelectorAll(`*:not([slot])`)], "f");
+        __classPrivateFieldSet(this, _PfModal_headings, __classPrivateFieldGet(this, _PfModal_body, "f").filter(el => el.tagName.slice(0, 1) === 'H'), "f");
+        if (__classPrivateFieldGet(this, _PfModal_triggerElement, "f")) {
+            __classPrivateFieldGet(this, _PfModal_triggerElement, "f").addEventListener('click', this.onTriggerClick);
             this.removeAttribute('hidden');
         }
-        if (this.#header) {
-            this.#header.id = this.#headerId;
+        if (__classPrivateFieldGet(this, _PfModal_header, "f")) {
+            __classPrivateFieldGet(this, _PfModal_header, "f").id = __classPrivateFieldGet(this, _PfModal_headerId, "f");
         }
-        else if (this.#headings.length > 0) {
+        else if (__classPrivateFieldGet(this, _PfModal_headings, "f").length > 0) {
             // Get the first heading in the modal if it exists
-            this.#headings[0].id = this.#headerId;
+            __classPrivateFieldGet(this, _PfModal_headings, "f")[0].id = __classPrivateFieldGet(this, _PfModal_headerId, "f");
         }
     }
     async _openChanged(oldValue, newValue) {
@@ -173,22 +163,22 @@ let PfModal = PfModal_1 = class PfModal extends LitElement {
             await this.updateComplete;
             // Set the focus to the container
             this.dialog?.focus();
-            this.dispatchEvent(new ModalOpenEvent(this.#triggerElement));
+            this.dispatchEvent(new ModalOpenEvent(__classPrivateFieldGet(this, _PfModal_triggerElement, "f")));
         }
         else {
             // Return scrollability
             document.body.style.overflow = 'auto';
             await this.updateComplete;
-            if (this.#triggerElement) {
-                this.#triggerElement.focus();
+            if (__classPrivateFieldGet(this, _PfModal_triggerElement, "f")) {
+                __classPrivateFieldGet(this, _PfModal_triggerElement, "f").focus();
             }
-            this.dispatchEvent(this.#cancelling ? new ModalCancelEvent() : new ModalCloseEvent());
+            this.dispatchEvent(__classPrivateFieldGet(this, _PfModal_cancelling, "f") ? new ModalCancelEvent() : new ModalCloseEvent());
         }
     }
     _triggerChanged() {
         if (this.trigger) {
-            this.#triggerElement = this.getRootNode().getElementById(this.trigger);
-            this.#triggerElement?.addEventListener('click', this.onTriggerClick);
+            __classPrivateFieldSet(this, _PfModal_triggerElement, this.getRootNode().getElementById(this.trigger), "f");
+            __classPrivateFieldGet(this, _PfModal_triggerElement, "f")?.addEventListener('click', this.onTriggerClick);
         }
     }
     onTriggerClick(event) {
@@ -222,7 +212,7 @@ let PfModal = PfModal_1 = class PfModal extends LitElement {
                 this.cancel();
                 return;
             case 'Enter':
-                if (event.target === this.#triggerElement) {
+                if (event.target === __classPrivateFieldGet(this, _PfModal_triggerElement, "f")) {
                     event.preventDefault();
                     this.showModal();
                 }
@@ -230,14 +220,14 @@ let PfModal = PfModal_1 = class PfModal extends LitElement {
         }
     }
     async cancel() {
-        this.#cancelling = true;
+        __classPrivateFieldSet(this, _PfModal_cancelling, true, "f");
         this.open = false;
         await this.updateComplete;
-        this.#cancelling = false;
+        __classPrivateFieldSet(this, _PfModal_cancelling, false, "f");
     }
     setTrigger(element) {
-        this.#triggerElement = element;
-        this.#triggerElement.addEventListener('click', this.onTriggerClick);
+        __classPrivateFieldSet(this, _PfModal_triggerElement, element, "f");
+        __classPrivateFieldGet(this, _PfModal_triggerElement, "f").addEventListener('click', this.onTriggerClick);
     }
     /**
      * Manually toggles the modal.
@@ -274,6 +264,17 @@ let PfModal = PfModal_1 = class PfModal extends LitElement {
         this.open = false;
     }
 };
+_PfModal_headerId = new WeakMap();
+_PfModal_triggerElement = new WeakMap();
+_PfModal_header = new WeakMap();
+_PfModal_body = new WeakMap();
+_PfModal_headings = new WeakMap();
+_PfModal_cancelling = new WeakMap();
+_PfModal_slots = new WeakMap();
+PfModal.shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
+PfModal.styles = [style];
+/** Should the dialog close when user clicks outside the dialog? */
+PfModal.closeOnOutsideClick = false;
 __decorate([
     property({ reflect: true })
 ], PfModal.prototype, "variant", void 0);
