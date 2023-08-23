@@ -332,7 +332,7 @@ tr:is(:hover, :focus-within).on-dark .copy-cell .copy-button {
 .icon:not(.color) samp {
   aspect-ratio: 1;
   display: block;
-  width: var(--icon-size);
+  width: var(--icon);
   border: var(--rh-border-width-md) dotted var(--rh-color-border-strong-on-light);
 }
 
