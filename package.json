@@ -84,7 +84,12 @@
     },
     "dev": {
       "service": true,
-      "command": "web-dev-server --open --watch"
+      "command": "web-dev-server --watch",
+      "dependencies": [
+        "analyze",
+        "compile",
+        "watch:compile"
+      ]
     },
     "build": {
       "dependencies": [
