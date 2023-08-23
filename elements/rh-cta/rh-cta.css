@@ -7,16 +7,17 @@
 }
 
 ::slotted(*) {
-  vertical-align: middle;
-  white-space: break-spaces;
+  vertical-align: middle !important;
+  white-space: break-spaces !important;
+  word-break: break-word !important;
   display: inline !important;
   color: inherit !important;
   font-family: inherit !important;
   font-size: inherit !important;
   font-weight: inherit !important;
   line-height: inherit !important;
-  text-decoration: var(--rh-cta-text-decoration);
-  z-index: 2;
+  text-decoration: var(--rh-cta-text-decoration) !important;
+  z-index: 2 !important;
 }
 
 ::slotted(a):after {
