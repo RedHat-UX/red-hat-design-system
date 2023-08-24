@@ -4,7 +4,7 @@ Use a timestamp to display date and time values.
 ### Default
 By default, a timestamp will display the current date and time based on the current locale if the `date` attribute is not set.
 
-<div class="example example--palette-lightest example--component">
+<div class="example example--palette-lightest component">
     <rh-timestamp></rh-timestamp>
 </div>
 
@@ -13,7 +13,7 @@ The format of the displayed content can be customized by setting the `date-forma
 
 You can also set the `display-suffix` attribute to display a custom suffix at the end of the displayed content. This will not override a timezone that is already displayed from the applied time format.
 
-<div class="example example--palette-lightest example--component">
+<div class="example example--palette-lightest component">
   <rh-timestamp date-format="full" time-format="full"></rh-timestamp>
 </div>
 
@@ -23,7 +23,7 @@ You can also set the `display-suffix` attribute to display a custom suffix at th
   </script>
 </rh-code-block>
 
-<div class="example example--palette-lightest example--component">
+<div class="example example--palette-lightest component">
   <rh-timestamp date-format="full"></rh-timestamp>
 </div>
 
@@ -33,7 +33,7 @@ You can also set the `display-suffix` attribute to display a custom suffix at th
   </script>
 </rh-code-block>
 
-<div class="example example--palette-lightest example--component">
+<div class="example example--palette-lightest component">
   <rh-timestamp time-format="full"></rh-timestamp>
 </div>
 
@@ -43,7 +43,7 @@ You can also set the `display-suffix` attribute to display a custom suffix at th
   </script>
 </rh-code-block>
 
-<div class="example example--palette-lightest example--component">
+<div class="example example--palette-lightest component">
   <rh-timestamp date-format="medium" time-format="short" display-suffix="US Eastern"></rh-timestamp>
 </div>
 
@@ -57,7 +57,7 @@ You can also set the `display-suffix` attribute to display a custom suffix at th
 ### Custom format
 The format of the displayed content can be further customized by setting the custom-format attributes. Read [datetime format options](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#options) for a list of options that can be set.
 
-<div class="example example--palette-lightest example--component">
+<div class="example example--palette-lightest component">
   <rh-timestamp id="timestamp-custom-format" date="Sat Jan 01 2022 00:00:00 GMT-0500"></rh-timestamp>
 </div>
 
@@ -106,7 +106,7 @@ To add a tooltip that displays the timestamp content as a UTC time, you can wrap
 ### Relative time
 To display relative time, set the `relative` attribute on `rh-timestamp`.
 
-<div class="example example--palette-lightest example--component">
+<div class="example example--palette-lightest component">
   <rh-timestamp date="Tue Aug 09 2022 14:57:00 GMT-0400 (Eastern Daylight Time)" relative></rh-timestamp>
 </div>
 
@@ -116,7 +116,7 @@ To display relative time, set the `relative` attribute on `rh-timestamp`.
   </script>
 </rh-code-block>
 
-<div class="example example--palette-lightest example--component">
+<div class="example example--palette-lightest component">
   <rh-timestamp date="Aug 09 2024 14:57:00 GMT-0400 (Eastern Daylight Time)" relative></rh-timestamp>
 </div>
 
@@ -156,7 +156,7 @@ To display relative time, set the `relative` attribute on `rh-timestamp`.
 ### Set a locale other than default
 The default locale is inferred by the browser. To set the locale to something else, set the `locale` attribute.
 
-<div class="example example--palette-lightest example--component">
+<div class="example example--palette-lightest component">
   <rh-timestamp locale="en-GB" date-format="full" time-format="full"></rh-timestamp>
 </div>
 
@@ -166,7 +166,7 @@ The default locale is inferred by the browser. To set the locale to something el
   </script>
 </rh-code-block>
 
-<div class="example example--palette-lightest example--component">
+<div class="example example--palette-lightest component">
   <rh-timestamp locale="es" date-format="full" time-format="full"></rh-timestamp>
 </div>
 
@@ -179,7 +179,7 @@ The default locale is inferred by the browser. To set the locale to something el
 ### UTC timestamp
 Set the `UTC` attribute.
 
-<div class="example example--palette-lightest example--component">
+<div class="example example--palette-lightest component">
   <rh-timestamp utc></rh-timestamp>
 </div>
 
@@ -206,6 +206,6 @@ Just like text, a timestamp will break to two lines as breakpoints get smaller.
 ### Headings
 Do not apply a timestamp to headings.
 
-<div class="example example--palette-wrong example--component">
+<div class="example example--palette-wrong component">
   <h2><rh-timestamp></rh-timestamp></h2>
 </div>

@@ -28,13 +28,13 @@ Two lines of text with timestamps applied, one is showing no styling and the oth
 A timestamp can be used in the same themes as text.
 
 ### Light theme
-<div class="example example--palette-lightest example--component">
+<div class="example example--palette-lightest component">
     <rh-timestamp></rh-timestamp>
 </div>
 
 
 ### Dark theme
-<div class="example example--palette-darkest example--component">
+<div class="example example--palette-darkest component">
     <rh-timestamp></rh-timestamp>
 </div>
 
