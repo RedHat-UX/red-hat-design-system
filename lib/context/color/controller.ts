@@ -64,7 +64,7 @@ export abstract class ColorContextController<
     hostUpdate?(): void
 
     constructor(protected host: T, options?: ColorContextOptions<T>) {
-      this.prefix = options?.prefix ?? 'rh-';
+      this.prefix = options?.prefix ?? 'rh';
       this.context = createContext(`${this.prefix}-color-context`);
       this.styleController = new StyleController(host, CONTEXT_BASE_STYLES);
       host.addController(this);
