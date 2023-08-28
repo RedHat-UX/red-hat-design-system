@@ -12,8 +12,11 @@ article {
 
 [part="header"] {
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+}
+
+[part="header"].thumbnail {
+  gap: var(--rh-space-lg, 16px);
 }
 
 [part="body"] ::slotted(:not([slot]):first-of-type) {
@@ -75,10 +78,19 @@ article {
 
 #header {
   box-sizing: border-box;
-  max-height: 200px;
-  overflow: hidden;
   font-size: var(--rh-card-header-font-size, var(--rh-font-size-heading-sm, 1.5rem));
   padding-block: var(--rh-space-lg, 16px);
+  padding-inline: var(--rh-space-xl, 24px);
+}
+
+slot[name="thumbnail"]::slotted(img) {
+  box-sizing: border-box;
+  min-width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+slot[name="header"]::slotted(:is(h1, h2, h3, h4, h5, h6)) {
   padding-inline: var(--rh-space-xl, 24px);
 }
 
