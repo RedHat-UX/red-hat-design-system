@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+    "kind": "javascript-module",
+    "path": "elements/rh-card/rh-card.js",
+    "declarations": [
+      {
+        "kind": "class",
+        "description": "Card",
+        "name": "RhCard",
+        "cssParts": [
+          {
+            "description": "inline element containing the heading text or slotted heading content",
+            "name": "text"
+          },
+          {
+            "description": "container for accents within the header",
+            "name": "accents"
+          },
+          {
+            "description": "caret icon",
+            "name": "icon"
+          }
+        ],
+        "slots": [
+          {
+            "description": "We expect the light DOM of the rh-card to be a heading level tag (h1, h2, h3, h4, h5, h6)"
+          },
+          {
+            "description": "These elements will appear inline with the header.",
+            "name": "accents"
+          }
+        ],
+        "members": [
+          {
+            "kind": "field",
+            "name": "version",
+            "type": {
+              "text": "string"
+            },
+            "static": true,
+            "default": "1.0.1",
+            "readonly": true
+          },
+          {
+            "kind": "field",
+            "name": "icon",
+            "type": {
+              "text": "string"
+            },
+            "default": "'angle-down'",
+            "attribute": "icon",
+            "reflects": true
+          },
+          {
+            "kind": "field",
+            "name": "expanded",
+            "type": {
+              "text": "boolean"
+            },
+            "default": "false",
+            "attribute": "expanded",
+            "reflects": true
+          },
+          {
+            "kind": "field",
+
+      }
+    }
+  ]
+}
