@@ -115,6 +115,45 @@ A card can be used in light and dark themes.
   </rh-card>
 </rh-context-provider>
 
+### Custom Theming
+
+To customize a card the design tokens must be altered.  These design tokens are different depending on the context for the card (light or dark theme).
+
+Examples include:
+
+<ul>
+    <li>--rh-color-surface-lightest</li>
+    <li>--rh-color-border-subtle-on-light</li>
+    <li>--rh-color-text-primary-on-light</li>
+</ul>
+
+For more information, please see the <a href="/elements/card/code/#css-custom-properties">card css custom properties</a>.
+
+
+#### Custom Light Theme
+
+<rh-context-provider color-palette="light">
+  <rh-card class="custom-light-theme">
+    <h2 slot="header">Card title</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
+      libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
+      elit. Donec id elit non mi porta gravida at eget metus.</p>
+    <rh-cta slot="footer"><a href="#">Footer</a></rh-cta>
+  </rh-card>
+</rh-context-provider>
+
+#### Custom Dark Theme
+
+<rh-context-provider color-palette="dark">
+  <rh-card class="custom-dark-theme">
+    <h2 slot="header">Card title</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
+      libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
+      elit. Donec id elit non mi porta gravida at eget metus.</p>
+    <rh-cta slot="footer"><a href="#">Footer</a></rh-cta>
+  </rh-card>
+</rh-context-provider>
+
 {% repoStatus %}
 
 {% include 'feedback.html' %}
@@ -159,6 +198,18 @@ A card can be used in light and dark themes.
   rh-card.full::part(header) {
     padding-inline: 0;
     padding-block: 0;
+  }
+
+  rh-card.custom-light-theme {
+    --rh-color-border-subtle-on-light: #EF6461;
+    --rh-color-surface-lightest: #0081AF;
+    --rh-color-text-primary-on-light: #30292F;
+  }
+
+  rh-card.custom-dark-theme {
+    --rh-color-border-subtle-on-dark: #988B8E;
+    --rh-color-surface-darkest: #210B2C;
+    --rh-color-text-primary-on-dark: #F5FFC6;
   }
 </style>
 
