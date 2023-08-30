@@ -165,6 +165,10 @@ For more information, please see the <a href="/elements/card/code/#css-custom-pr
     max-width: 360px;
   }
 
+  rh-context-provider {
+    width: fit-content;
+  }
+
   rh-card.alt,
   rh-context-provider[color-palette^="light"] rh-card.alt {
     --rh-card-background-color: #f0f0f0;
@@ -202,14 +206,14 @@ For more information, please see the <a href="/elements/card/code/#css-custom-pr
 
   rh-card.custom-light-theme {
     --rh-color-border-subtle-on-light: #EF6461;
-    --rh-color-surface-lightest: #0081AF;
+    --rh-color-surface-lightest: #feeded;
     --rh-color-text-primary-on-light: #30292F;
   }
 
   rh-card.custom-dark-theme {
-    --rh-color-border-subtle-on-dark: #988B8E;
-    --rh-color-surface-darkest: #210B2C;
-    --rh-color-text-primary-on-dark: #F5FFC6;
+    --rh-color-border-subtle-on-dark: #5e40be;
+    --rh-color-surface-darkest: #261a4c;
+    --rh-color-text-primary-on-dark: #e8e4f5;
   }
 </style>
 
