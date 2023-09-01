@@ -6,6 +6,7 @@
 :host {
   display: inline-block;
 
+  --rh-table--full-screen-button-outline-focus: var(--rh-border-width-md, 2px) dashed var(--rh-color-black, #000000);
   --_rh-table--full-screen-button-size-px: 28;
   --_rh-table--full-screen-button-size: calc(var(--_rh-table--full-screen-button-size-px) / 16 * 1rem);
   --_rh-table--full-screen-button-icon-size: calc(calc(var(--_rh-table--full-screen-button-size-px) - 12) / 16 * 1rem);
@@ -30,21 +31,26 @@
 
 .button {
   border: 0;
+  cursor: pointer;
+  appearance: none;
+  background-color: var(--rh-color-surface-lighter, #f2f2f2);
+}
+
+.button:focus {
+  outline: var(--rh-table--button--outline--focus, 2px dashed black);
 }
 
 #full-screen-button {
   position: absolute;
 
   /* calc(var(--rh-table--scrollbar--width, 0px) + 8px) */
-  right: 0;
+  right: var(--rh-border-width-md, 2px);
+  top: var(--rh-border-width-md, 2px);
   width: var(--_rh-table--full-screen-button-size);
   height: var(--_rh-table--full-screen-button-size);
   padding: var(--rh-space-sm, 6px);
   color: var(--_rh-table--full-screen-button-color);
   z-index: 1;
-
-  /* #f0efef */
-  background: var(--rh-color-surface-lighter, #f2f2f2);
 }
 
 #full-screen-button:hover,
