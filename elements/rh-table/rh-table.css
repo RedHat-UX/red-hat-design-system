@@ -20,6 +20,7 @@
   width: fit-content;
   overflow: auto;
   position: relative;
+  max-height: var(--rh-table--max-height, max-content);
 }
 
 ::slotted(table) {
