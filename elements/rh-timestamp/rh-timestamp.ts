@@ -101,7 +101,7 @@ export class RhTimestamp extends LitElement {
     }
   }
 
-  render() {
+  override render() {
     return html`
       <time datetime="${this.#timestamp.isoString}">${this.#timestamp.time}</time>
     `;
