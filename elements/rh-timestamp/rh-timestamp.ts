@@ -88,7 +88,7 @@ export class RhTimestamp extends LitElement {
 
   #timestamp = new TimestampController(this);
 
-  connectedCallback() {
+  override connectedCallback() {
     super.connectedCallback();
     if (this.hasAttribute('date')) {
       this.#timestamp.date = new Date(this.getAttribute('date')!);
