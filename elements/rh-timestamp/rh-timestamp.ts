@@ -95,7 +95,7 @@ export class RhTimestamp extends LitElement {
     }
   }
 
-  willUpdate(changedProperties: PropertyValues<this>) {
+  override willUpdate(changedProperties: PropertyValues<this>) {
     for (const [prop] of changedProperties) {
       this.#timestamp.set(prop, this[prop as keyof this]);
     }
