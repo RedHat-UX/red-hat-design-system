@@ -127,7 +127,7 @@ Examples include:
     <li>--rh-color-text-primary-on-light</li>
 </ul>
 
-For more information, please see the <a href="/elements/card/code/#css-custom-properties">card css custom properties</a>.
+For more information, please see the [card css custom properties](/elements/card/code/#css-custom-properties").
 
 
 #### Custom Light Theme
