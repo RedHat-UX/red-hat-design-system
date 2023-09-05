@@ -121,11 +121,11 @@ To customize a card the design tokens must be altered.  These design tokens are 
 
 Examples include:
 
-- `--rh-color-surface-lightest`
-- `--rh-color-border-subtle-on-light`
-- `--rh-color-text-primary-on-light`
+- [`--rh-color-surface-lightest`](https://ux.redhat.com/tokens/color/#rh-color-surface-lightest)
+- [`--rh-color-border-subtle-on-light`](https://ux.redhat.com/tokens/border/#rh-color-border-subtle-on-light)
+- [`--rh-color-text-primary-on-light`](https://ux.redhat.com/tokens/font/#rh-color-text-primary-on-light)
 
-For more information, please see the [card css custom properties](/elements/card/code/#css-custom-properties").
+For more information, please see the [card css custom properties](/elements/card/code/#css-custom-properties).
 
 
 #### Custom Light Theme
