@@ -121,11 +121,9 @@ To customize a card the design tokens must be altered.  These design tokens are 
 
 Examples include:
 
-<ul>
-    <li>--rh-color-surface-lightest</li>
-    <li>--rh-color-border-subtle-on-light</li>
-    <li>--rh-color-text-primary-on-light</li>
-</ul>
+- `--rh-color-surface-lightest`
+- `--rh-color-border-subtle-on-light`
+- `--rh-color-text-primary-on-light`
 
 For more information, please see the [card css custom properties](/elements/card/code/#css-custom-properties").
 
