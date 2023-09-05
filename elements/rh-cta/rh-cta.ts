@@ -8,7 +8,6 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { DirController } from '../../lib/DirController.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import style from './rh-cta.css';
 
@@ -124,15 +123,6 @@ export class RhCta extends LitElement {
   @property({ reflect: true }) icon?: string;
 
   /**
-   * Sets color palette, which affects the element's styles as well as descendants' color theme.
-   * Overrides parent color context.
-   * Your theme will influence these colors so check there first if you are seeing inconsistencies.
-   * See [CSS Custom Properties](#css-custom-properties) for default values
-   */
-  @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
-
-  /**
    * Sets color theme based on parent context
    */
   @colorContextConsumer() private on?: ColorTheme;
@@ -159,9 +149,11 @@ export class RhCta extends LitElement {
     const icon = !!this.icon;
     const iconOrSvg = !!this.#isDefault || !!this.icon;
     return html`
-      <span id="container" part="container" class="${classMap({ rtl, [on]: !!on, icon, svg })}">
-        <slot @slotchange=${this.firstUpdated}></slot>${!iconOrSvg ? '' : this.icon ? html`
-        <pf-icon icon=${this.icon} size="md" set="far"></pf-icon>` : html`<svg xmlns="http://www.w3.org/2000/svg"
+      <span id="container" part="container" class="${classMap({ rtl, [on]: !!on, icon, svg })}">${this.variant === 'brick' && this.icon ? html`
+        <pf-icon icon=${this.icon} size="md" set="far"></pf-icon>` : ''}
+        <slot @slotchange=${this.firstUpdated}></slot>${!iconOrSvg ? '' : this.variant !== 'brick' && this.icon ? html`
+        <pf-icon icon=${this.icon} size="md" set="far"></pf-icon>` : this.variant ? '' : html`
+        <svg xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 31.56 31.56" focusable="false" width="1em" aria-hidden="true">
           <path d="M15.78 0l-3.1 3.1 10.5 10.49H0v4.38h23.18l-10.5 10.49 3.1 3.1 15.78-15.78L15.78 0z" />
         </svg>`}
@@ -169,7 +161,7 @@ export class RhCta extends LitElement {
     `;
   }
 
-  firstUpdated() {
+  override firstUpdated() {
     let [cta] = this.shadowRoot?.querySelector('slot')?.assignedElements() ?? [];
 
     while (cta instanceof HTMLSlotElement) {
