@@ -178,10 +178,6 @@ button[aria-expanded="true"],
     --_min-height: 86px;
   }
 
-  nav {
-    position: relative;
-  }
-
   #container {
     grid-template-areas: "logo main";
     grid-template-rows: auto;
