@@ -21,7 +21,6 @@ import { type ColorPalette } from '../../lib/context/color/provider.js';
  * @cssprop     {<length>} --rh-card-header-font-size
  *              Font size for header on card
  *              {@default `1.5rem`}
- *
  */
 export declare class RhCard extends LitElement {
     static readonly version = "{{version}}";

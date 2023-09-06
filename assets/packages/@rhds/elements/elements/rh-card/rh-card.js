@@ -28,7 +28,6 @@ const styles = css `:root{display:flex;flex-direction:column}article{position:re
  * @cssprop     {<length>} --rh-card-header-font-size
  *              Font size for header on card
  *              {@default `1.5rem`}
- *
  */
 let RhCard = class RhCard extends LitElement {
     constructor() {

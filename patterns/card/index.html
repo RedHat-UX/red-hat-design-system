@@ -941,6 +941,47 @@ it's near. Several cards can be used together to group related information.</p>
     <rh-cta slot="footer"><a href="#">Footer</a></rh-cta>
   </rh-card>
 </rh-context-provider>
+<copy-permalink class="h3">
+  <h3 id="custom-theming" tabindex="-1">
+    <a class="heading-anchor" href="#custom-theming">Custom Theming</a>
+      </h3>
+    </copy-permalink>
+<p>To customize a card the design tokens must be altered.  These design tokens are different depending on the context for the card (light or dark theme).</p>
+<p>Examples include:</p>
+<ul>
+<li><a href="https://ux.redhat.com/tokens/color/#rh-color-surface-lightest"><code>--rh-color-surface-lightest</code></a></li>
+<li><a href="https://ux.redhat.com/tokens/border/#rh-color-border-subtle-on-light"><code>--rh-color-border-subtle-on-light</code></a></li>
+<li><a href="https://ux.redhat.com/tokens/font/#rh-color-text-primary-on-light"><code>--rh-color-text-primary-on-light</code></a></li>
+</ul>
+<p>For more information, please see the <a href="/elements/card/code/#css-custom-properties">card css custom properties</a>.</p>
+<copy-permalink class="h4">
+  <h4 id="custom-light-theme" tabindex="-1">
+    <a class="heading-anchor" href="#custom-light-theme">Custom Light Theme</a>
+      </h4>
+    </copy-permalink>
+<rh-context-provider color-palette="light">
+  <rh-card class="custom-light-theme">
+    <h2 slot="header">Card title</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
+      libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
+      elit. Donec id elit non mi porta gravida at eget metus.</p>
+    <rh-cta slot="footer"><a href="#">Footer</a></rh-cta>
+  </rh-card>
+</rh-context-provider>
+<copy-permalink class="h4">
+  <h4 id="custom-dark-theme" tabindex="-1">
+    <a class="heading-anchor" href="#custom-dark-theme">Custom Dark Theme</a>
+      </h4>
+    </copy-permalink>
+<rh-context-provider color-palette="dark">
+  <rh-card class="custom-dark-theme">
+    <h2 slot="header">Card title</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
+      libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
+      elit. Donec id elit non mi porta gravida at eget metus.</p>
+    <rh-cta slot="footer"><a href="#">Footer</a></rh-cta>
+  </rh-card>
+</rh-context-provider>
 <section class="section section--palette-default container">
 <copy-permalink class="h2">
   <h2 class="section-title pfe-jump-links-panel__section" id="repo-status" tabindex="-1">
@@ -1095,6 +1136,10 @@ To give feedback about anything on this page,
     max-width: 360px;
   }
 
+  rh-context-provider {
+    width: fit-content;
+  }
+
   rh-card.alt,
   rh-context-provider[color-palette^="light"] rh-card.alt {
     --rh-card-background-color: #f0f0f0;
@@ -1128,6 +1173,18 @@ To give feedback about anything on this page,
   rh-card.full::part(header) {
     padding-inline: 0;
     padding-block: 0;
+  }
+
+  rh-card.custom-light-theme {
+    --rh-color-border-subtle-on-light: #EF6461;
+    --rh-color-surface-lightest: #feeded;
+    --rh-color-text-primary-on-light: #30292F;
+  }
+
+  rh-card.custom-dark-theme {
+    --rh-color-border-subtle-on-dark: #5e40be;
+    --rh-color-surface-darkest: #261a4c;
+    --rh-color-text-primary-on-dark: #e8e4f5;
   }
 </style>
 
