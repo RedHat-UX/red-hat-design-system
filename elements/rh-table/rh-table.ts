@@ -50,6 +50,9 @@ export class RhTable extends LitElement {
   @property({ type: Boolean, reflect: true, attribute: 'no-full-screen' }) fullScreenDisabled = false;
 
   @queryAssignedElements() _defaultSlot?: HTMLElement[];
+  @query('#slot') _slot!: HTMLSlotElement;
+  @query('#container') _container!: HTMLDivElement;
+  @query('#dialog-container') _dialogContainer!: HTMLDivElement;
   @query('#full-screen-dialog') _dialog!: HTMLDialogElement;
 
   #cols: HTMLTableColElement[] = [];
@@ -70,7 +73,7 @@ export class RhTable extends LitElement {
                 title="Maximize the table"
                 @click=${this.#toggleFullScreen}
                 ?hidden=${this.fullScreenDisabled}>${ICONS.get('full-screen')}</button>
-        <slot @slotchange="${this.onSlotchange}"></slot>
+        <slot id="slot" @slotchange="${this.onSlotchange}"></slot>
       </div>
       <dialog id="full-screen-dialog">
         <div id="dialog-container">
@@ -86,7 +89,17 @@ export class RhTable extends LitElement {
 
   #toggleFullScreen() {
     this.#expanded = !this.#expanded;
-    this.#expanded ? this._dialog.showModal() : this._dialog.close();
+    this.#expanded ? this.#show() : this.#close();
+  }
+
+  #show() {
+    this._dialogContainer.appendChild(this._slot);
+    this._dialog.showModal();
+  }
+
+  #close() {
+    this._container.appendChild(this._slot);
+    this._dialog.close();
   }
 
   #onPointerleave() {
