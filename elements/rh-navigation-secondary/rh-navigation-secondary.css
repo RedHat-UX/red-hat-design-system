@@ -14,7 +14,7 @@
     translate(var(--_chevron-correction-y), var(--_chevron-correction-y));
   --_button-font-color: var(--_context-text);
   --_nav-max-height: var(--_max-height, max-content);
-  --_nav-min-height: var(--_min-height, 74px);
+  --_nav-min-height: var(--_min-height, 80px);
 
   z-index: var(--rh-navigation-secondary-z-index, 102);
 }
@@ -174,6 +174,10 @@ button[aria-expanded="true"],
 }
 
 @media screen and (min-width: 992px) {
+  :host {
+    --_min-height: 86px;
+  }
+
   nav {
     position: relative;
   }
