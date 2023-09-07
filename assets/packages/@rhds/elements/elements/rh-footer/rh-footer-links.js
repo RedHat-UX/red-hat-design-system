@@ -1,9 +1,9 @@
-import { __decorate } from "tslib";
+var _RhFooterLinks_logger, _RhFooterLinks_mo;
+import { __classPrivateFieldGet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
-import { initializer } from '@patternfly/pfe-core/decorators.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { css } from "lit";
@@ -12,14 +12,18 @@ let RhFooterLinks = class RhFooterLinks extends LitElement {
     constructor() {
         super(...arguments);
         /**
-         * Visibily hide the header slot. Setting this to true will not affect
-         * aria-labelledby.
+         * Cause the header slot to be visually hidden.
+         * Setting this to true will not affect `aria-labelledby`.
          */
         this.headerHidden = false;
-        this.logger = new Logger(this);
-        this.slots = new SlotController(this, {
-            slots: ['header'],
-        });
+        _RhFooterLinks_logger.set(this, new Logger(this));
+        _RhFooterLinks_mo.set(this, new MutationObserver(() => this.updateAccessibility()));
+        this.slots = new SlotController(this, 'header');
+    }
+    connectedCallback() {
+        super.connectedCallback();
+        this.updateAccessibility();
+        __classPrivateFieldGet(this, _RhFooterLinks_mo, "f").observe(this, { childList: true });
     }
     updateAccessibility() {
         // ensure we've rendered to our shadowroot
@@ -31,7 +35,7 @@ let RhFooterLinks = class RhFooterLinks extends LitElement {
             ul.setAttribute('aria-labelledby', header.id);
         }
         else {
-            this.logger.warn('This links set doesn\'t have a valid header associated with it.');
+            __classPrivateFieldGet(this, _RhFooterLinks_logger, "f").warn('This links set doesn\'t have a valid header associated with it.');
         }
     }
     render() {
@@ -46,13 +50,15 @@ let RhFooterLinks = class RhFooterLinks extends LitElement {
     `;
     }
 };
+_RhFooterLinks_logger = new WeakMap(), _RhFooterLinks_mo = new WeakMap();
 RhFooterLinks.styles = style;
 __decorate([
-    property({ type: Boolean, attribute: 'header-hidden', reflect: true })
+    property({
+        type: Boolean,
+        attribute: 'header-hidden',
+        reflect: true,
+    })
 ], RhFooterLinks.prototype, "headerHidden", void 0);
-__decorate([
-    initializer()
-], RhFooterLinks.prototype, "updateAccessibility", null);
 RhFooterLinks = __decorate([
     customElement('rh-footer-links')
 ], RhFooterLinks);
