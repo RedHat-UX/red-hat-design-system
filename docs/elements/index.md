@@ -61,4 +61,7 @@ summaries:
   To request a new element or if updates need to be made to an existing element, <a href="https://github.com/RedHat-UX/red-hat-design-system/issues/new/choose" target="_blank">create a GitHub issue</a>.
 {% endsection %}
 
-{% include 'feedback.html' %}
+{% feedback %}
+  <h2>Elements</h2>
+  <p>To learn how to use our elements in your designs, visit the <a href="{{ '/elements/' | url }}">Elements</a> section.</p>
+{% endfeedback %}

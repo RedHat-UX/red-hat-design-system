@@ -115,6 +115,43 @@ A card can be used in light and dark themes.
   </rh-card>
 </rh-context-provider>
 
+### Custom Theming
+
+To customize a card the design tokens must be altered.  These design tokens are different depending on the context for the card (light or dark theme).
+
+Examples include:
+
+- [`--rh-color-surface-lightest`](https://ux.redhat.com/tokens/color/#rh-color-surface-lightest)
+- [`--rh-color-border-subtle-on-light`](https://ux.redhat.com/tokens/border/#rh-color-border-subtle-on-light)
+- [`--rh-color-text-primary-on-light`](https://ux.redhat.com/tokens/font/#rh-color-text-primary-on-light)
+
+For more information, please see the [card css custom properties](/elements/card/code/#css-custom-properties).
+
+
+#### Custom Light Theme
+
+<rh-context-provider color-palette="light">
+  <rh-card class="custom-light-theme">
+    <h2 slot="header">Card title</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
+      libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
+      elit. Donec id elit non mi porta gravida at eget metus.</p>
+    <rh-cta slot="footer"><a href="#">Footer</a></rh-cta>
+  </rh-card>
+</rh-context-provider>
+
+#### Custom Dark Theme
+
+<rh-context-provider color-palette="dark">
+  <rh-card class="custom-dark-theme">
+    <h2 slot="header">Card title</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
+      libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
+      elit. Donec id elit non mi porta gravida at eget metus.</p>
+    <rh-cta slot="footer"><a href="#">Footer</a></rh-cta>
+  </rh-card>
+</rh-context-provider>
+
 {% repoStatus %}
 
 {% include 'feedback.html' %}
@@ -124,6 +161,10 @@ A card can be used in light and dark themes.
   rh-card {
     display: grid;
     max-width: 360px;
+  }
+
+  rh-context-provider {
+    width: fit-content;
   }
 
   rh-card.alt,
@@ -159,6 +200,18 @@ A card can be used in light and dark themes.
   rh-card.full::part(header) {
     padding-inline: 0;
     padding-block: 0;
+  }
+
+  rh-card.custom-light-theme {
+    --rh-color-border-subtle-on-light: #EF6461;
+    --rh-color-surface-lightest: #feeded;
+    --rh-color-text-primary-on-light: #30292F;
+  }
+
+  rh-card.custom-dark-theme {
+    --rh-color-border-subtle-on-dark: #5e40be;
+    --rh-color-surface-darkest: #261a4c;
+    --rh-color-text-primary-on-dark: #e8e4f5;
   }
 </style>
 
