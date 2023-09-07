@@ -1,6 +1,9 @@
 const { readFile } = require('node:fs/promises');
 const { join } = require('node:path');
 
+const tokensJSON = require('@rhds/tokens/json/rhds.tokens.json');
+const tokensFlat = require('@rhds/tokens/json/rhds.tokens.flat.json');
+
 const getDocs = (x, options) => x?.$extensions?.[options.docsExtension];
 const capitalize = x => `${x.at(0).toUpperCase()}${x.slice(1)}`;
 
@@ -215,8 +218,11 @@ function getTokenDocs(path) {
  * @param {PluginOptions} [pluginOptions={}]
  */
 module.exports = function RHDSPlugin(eleventyConfig, pluginOptions = { }) {
+  eleventyConfig.addGlobalData('tokens', tokensJSON);
+  eleventyConfig.addGlobalData('tokenCategories', require('./tokenCategories.json'));
+
   eleventyConfig.addCollection('token', function() {
-    const cats = eleventyConfig.globalData?.tokenCategories ?? require('./tokenCategories.json');
+    const cats = eleventyConfig.globalData?.tokenCategories;
     return cats.map(cat => {
       const docs = getTokenDocs(cat.path ?? cat.slug);
       const title = docs?.heading ?? cat.slug.replaceAll('-', ' ');
@@ -235,12 +241,9 @@ module.exports = function RHDSPlugin(eleventyConfig, pluginOptions = { }) {
 
   eleventyConfig.addShortcode('category',
     async function category(options = {}) {
+      options.tokens ??= await eleventyConfig.globalData.tokens;
       options.attrs ??= pluginOptions.attrs ?? (() => '');
-      options.docsExtension ??= pluginOptions.docsExtension ?? 'com.redhat.ux';
 
-      const tokens = require('@rhds/tokens/json/rhds.tokens.json');
-
-      const isLast = options.isLast ?? false;
       const parentName = options.parentName ?? '';
 
       const path = options.path ?? '.';
@@ -249,7 +252,7 @@ module.exports = function RHDSPlugin(eleventyConfig, pluginOptions = { }) {
       const include = Array.isArray(options.include) ? options.include : [options.include].filter(Boolean);
 
       const name = options.name ?? path.split('.').pop();
-      const { parent, key } = getParentCollection(options, tokens);
+      const { parent, key } = getParentCollection(options, eleventyConfig.globalData.tokens);
       const collection = parent[key];
       const docs = getDocs(collection, options);
       const heading = docs?.heading ?? capitalize(name.replace('-', ' '));
