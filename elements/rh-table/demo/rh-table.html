@@ -14,21 +14,23 @@
         <col style="width: 25%">
         <col style="width: 25%">
       </colgroup>
-      <tbody>
+      <thead>
         <tr>
-          <th class="tableblock halign-left valign-top content--md" data-row="1" data-col="1">
+          <th sortable class="tableblock halign-left valign-top content--md" data-row="1" data-col="1">
             <p class="tableblock">Resource type</p>
           </th>
-          <th class="tableblock halign-left valign-top content--md" data-row="1" data-col="2">
+          <th sortable class="tableblock halign-left valign-top content--md" data-row="1" data-col="2">
             <p class="tableblock">Resource identifier</p>
           </th>
           <th class="tableblock halign-left valign-top content--md" data-row="1" data-col="3">
             <p class="tableblock">Access type</p>
           </th>
-          <th class="tableblock halign-left valign-top content--md" data-row="1" data-col="4">
+          <th sortable class="tableblock halign-left valign-top content--md" data-row="1" data-col="4">
             <p class="tableblock">Operations</p>
           </th>
         </tr>
+      </thead>
+        <tbody>
         <tr>
           <td class="tableblock halign-left valign-top content--lg" data-row="2" data-col="1">
             <p class="tableblock">
@@ -274,7 +276,7 @@
             </ul>
           </td>
         </tr>
-      </tbody>
+        </tbody>
     </table>
 
   </rh-table>
@@ -290,11 +292,11 @@
       <col/>
       <col/>
       <col/>
-      <thead>
+      <thesortable ad>
         <tr>
-          <th scope="col" data-label="Date">Date</th>
-          <th scope="col" data-label="Event">Event</th>
-          <th scope="col" data-label="Venue">Venue</th>
+          <th sortable scope="col" data-label="Date">Date</th>
+          <th sortable scope="col" data-label="Event">Event</th>
+          <th sortable scope="col" data-label="Venue">Venue</th>
         </tr>
       </thead>
       <tbody>
@@ -325,11 +327,11 @@
       <col/>
       <col/>
       <col/>
-      <thead>
+      <thesortable ad>
         <tr>
-          <th scope="col" data-label="Date">Date</th>
-          <th scope="col" data-label="Event">Event</th>
-          <th scope="col" data-label="Venue">Venue</th>
+          <th sortable scope="col" data-label="Date">Date</th>
+          <th sortable scope="col" data-label="Event">Event</th>
+          <th sortable scope="col" data-label="Venue">Venue</th>
         </tr>
       </thead>
       <tbody>
@@ -358,11 +360,11 @@
       <col/>
       <col/>
       <col/>
-      <thead>
+      <thesortable ad>
         <tr>
-          <th scope="col" data-label="Date">Date</th>
-          <th scope="col" data-label="Event">Event</th>
-          <th scope="col" data-label="Venue">Venue</th>
+          <th sortable scope="col" data-label="Date">Date</th>
+          <th sortable scope="col" data-label="Event">Event</th>
+          <th sortable scope="col" data-label="Venue">Venue</th>
         </tr>
       </thead>
       <tbody>
@@ -392,19 +394,19 @@
     <table>
       <tbody>
         <tr>
-          <th scope="row">Date</th>
+          <th sortable scope="row">Date</th>
           <td>12 February</td>
           <td>24 March</td>
           <td>14 April</td>
         </tr>
         <tr>
-          <th scope="row">Event</th>
+          <th sortable scope="row">Event</th>
           <td>Waltz with Strauss</td>
           <td>The Obelisks</td>
           <td>The What</td>
         </tr>
         <tr>
-          <th scope="row">Venue</th>
+          <th sortable scope="row">Venue</th>
           <td>Main Hall</td>
           <td>West Wing</td>
           <td>Main Hall</td>
@@ -423,19 +425,19 @@
       <col/>
       <col/>
       <col/>
-      <thead>
+      <thesortable ad>
         <tr>
           <td></td>
-          <th scope="col" data-label="Monday">Monday</th>
-          <th scope="col" data-label="Tuesday">Tuesday</th>
-          <th scope="col" data-label="Wednesday">Wednesday</th>
-          <th scope="col" data-label="Thursday">Thursday</th>
-          <th scope="col" data-label="Friday">Friday</th>
+          <th sortable scope="col" data-label="Monday">Monday</th>
+          <th sortable scope="col" data-label="Tuesday">Tuesday</th>
+          <th sortable scope="col" data-label="Wednesday">Wednesday</th>
+          <th sortable scope="col" data-label="Thursday">Thursday</th>
+          <th sortable scope="col" data-label="Friday">Friday</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <th scope="row">09:00 – 11:00</th>
+          <th sortable scope="row">09:00 – 11:00</th>
           <td data-label="Monday">Closed</td>
           <td data-label="Tuesday">Open</td>
           <td data-label="Wednesday">Open</td>
@@ -443,7 +445,7 @@
           <td data-label="Friday">Closed</td>
         </tr>
         <tr>
-          <th scope="row">11:00 – 13:00</th>
+          <th sortable scope="row">11:00 – 13:00</th>
           <td data-label="Monday">Open</td>
           <td data-label="Tuesday">Open</td>
           <td data-label="Wednesday">Closed</td>
@@ -451,7 +453,7 @@
           <td data-label="Friday">Closed</td>
         </tr>
         <tr>
-          <th scope="row">13:00 – 15:00</th>
+          <th sortable scope="row">13:00 – 15:00</th>
           <td data-label="Monday">Open</td>
           <td data-label="Tuesday">Open</td>
           <td data-label="Wednesday">Open</td>
@@ -459,7 +461,7 @@
           <td data-label="Friday">Closed</td>
         </tr>
         <tr>
-          <th scope="row">15:00 – 17:00</th>
+          <th sortable scope="row">15:00 – 17:00</th>
           <td data-label="Monday">Closed</td>
           <td data-label="Tuesday">Closed</td>
           <td data-label="Wednesday">Closed</td>

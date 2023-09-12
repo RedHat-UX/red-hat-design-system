@@ -1,6 +1,6 @@
 /* eslint-disable no-debugger */
 /* eslint-disable no-console */
-import { LitElement, html, svg } from 'lit';
+import { LitElement, html, svg, render } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
@@ -11,19 +11,33 @@ import { classMap } from 'lit/directives/class-map.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 import { query } from 'lit/decorators/query.js';
 
+const DIRECTIONS = { asc: 'desc', desc: 'asc' } as const;
+
 // TODO: translations
+/**
+ * Title
+ * Expand fullscreen functionality (cp-elements)
+ * Sorting
+ * - default sort
+ * - add event handler to each th element
+ * - shift nodes
+ * Vertical scrolling
+ * Hover
+ * Link styling
+ * Mobile styling
+ */
 
 // TODO: replace with rh-icon
 const ICONS = {
-  ['full-screen']: {
-    viewBox: '0 0 448 512',
-    path: 'M448 344v112a23.94 23.94 0 0 1-24 24H312c-21.39 0-32.09-25.9-17-41l36.2-36.2L224 295.6 116.77 402.9 153 439c15.09 15.1 4.39 41-17 41H24a23.94 23.94 0 0 1-24-24V344c0-21.4 25.89-32.1 41-17l36.19 36.2L184.46 256 77.18 148.7 41 185c-15.1 15.1-41 4.4-41-17V56a23.94 23.94 0 0 1 24-24h112c21.39 0 32.09 25.9 17 41l-36.2 36.2L224 216.4l107.23-107.3L295 73c-15.09-15.1-4.39-41 17-41h112a23.94 23.94 0 0 1 24 24v112c0 21.4-25.89 32.1-41 17l-36.19-36.2L263.54 256l107.28 107.3L407 327.1c15.1-15.2 41-4.5 41 16.9z',
+  ['asc']: {
+    viewBox: '0 0 320 512',
+    path: 'M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224z',
   },
-  ['close-full-screen']: {
-    viewBox: '0 0 512 512',
-    path: 'M200 288H88c-21.4 0-32.1 25.8-17 41l32.9 31-99.2 99.3c-6.2 6.2-6.2 16.4 0 22.6l25.4 25.4c6.2 6.2 16.4 6.2 22.6 0L152 408l31.1 33c15.1 15.1 40.9 4.4 40.9-17V312c0-13.3-10.7-24-24-24zm112-64h112c21.4 0 32.1-25.9 17-41l-33-31 99.3-99.3c6.2-6.2 6.2-16.4 0-22.6L481.9 4.7c-6.2-6.2-16.4-6.2-22.6 0L360 104l-31.1-33C313.8 55.9 288 66.6 288 88v112c0 13.3 10.7 24 24 24zm96 136l33-31.1c15.1-15.1 4.4-40.9-17-40.9H312c-13.3 0-24 10.7-24 24v112c0 21.4 25.9 32.1 41 17l31-32.9 99.3 99.3c6.2 6.2 16.4 6.2 22.6 0l25.4-25.4c6.2-6.2 6.2-16.4 0-22.6L408 360zM183 71.1L152 104 52.7 4.7c-6.2-6.2-16.4-6.2-22.6 0L4.7 30.1c-6.2 6.2-6.2 16.4 0 22.6L104 152l-33 31.1C55.9 198.2 66.6 224 88 224h112c13.3 0 24-10.7 24-24V88c0-21.3-25.9-32-41-16.9z'
+  ['desc']: {
+    viewBox: '0 0 320 512',
+    path: 'M311.9 335.1l-132.4 136.8C174.1 477.3 167.1 480 160 480c-7.055 0-14.12-2.702-19.47-8.109l-132.4-136.8C-9.229 317.8 3.055 288 27.66 288h264.7C316.9 288 329.2 317.8 311.9 335.1z',
   },
-  get(name: 'full-screen' | 'close-full-screen' ) {
+  get(name: 'asc' | 'desc') {
     const { viewBox, path } = ICONS[name];
     return svg`
       <svg
@@ -47,59 +61,41 @@ const ICONS = {
 export class RhTable extends LitElement {
   static readonly styles = [styles];
 
-  @property({ type: Boolean, reflect: true, attribute: 'no-full-screen' }) fullScreenDisabled = false;
+  get rows() {
+    console.log(this.querySelectorAll<HTMLTableRowElement>('tbody > tr'));
+    return this.querySelectorAll<HTMLTableRowElement>('tbody > tr');
+  }
+
+  @property({ reflect: true, attribute: 'sort-column' }) sortColumn?: string;
+  @property({ reflect: true, attribute: 'sort-direction' }) sortDirection?: 'asc' | 'desc';
 
   @queryAssignedElements() _defaultSlot?: HTMLElement[];
-  @query('#slot') _slot!: HTMLSlotElement;
   @query('#container') _container!: HTMLDivElement;
-  @query('#dialog-container') _dialogContainer!: HTMLDivElement;
-  @query('#full-screen-dialog') _dialog!: HTMLDialogElement;
 
+  #table!: HTMLTableElement | null;
+  #headers!: HTMLTableCellElement[] | null;
+  sortables: HTMLTableCellElement[] = [];
   #cols: HTMLTableColElement[] = [];
+
+  #listeners = new Map(Object.entries({
+    sort: this.#onSort.bind(this),
+  }));
+
   #logger = new Logger(this);
   #screenSize = new ScreenSizeController(this);
-  #expanded = false;
 
   render() {
     const { mobile } = this.#screenSize;
 
     return html`
-      <div id="container"
-           class=${classMap({ mobile })}
-           @pointerleave=${this.#onPointerleave}
-           @pointerover=${this.#onPointerover}>
-        <button id="full-screen-button"
-                class="button"
-                title="Maximize the table"
-                @click=${this.#toggleFullScreen}
-                ?hidden=${this.fullScreenDisabled}>${ICONS.get('full-screen')}</button>
-        <slot id="slot" @slotchange="${this.onSlotchange}"></slot>
+      <div
+        id="container"
+        class=${classMap({ mobile })}
+        @pointerleave=${this.#onPointerleave}
+        @pointerover=${this.#onPointerover}>
+        <slot @slotchange="${this.#onSlotchange}"></slot>
       </div>
-      <dialog id="full-screen-dialog">
-        <div id="dialog-container">
-        <button id="close-full-screen-button"
-                class="button"
-                title="Restore table to original size"
-                @click=${this.#toggleFullScreen}>${ICONS.get('close-full-screen')}</button>
-        <!-- clone slotted content? -->
-        </div>
-      </dialog>
     `;
-  }
-
-  #toggleFullScreen() {
-    this.#expanded = !this.#expanded;
-    this.#expanded ? this.#show() : this.#close();
-  }
-
-  #show() {
-    this._dialogContainer.appendChild(this._slot);
-    this._dialog.showModal();
-  }
-
-  #close() {
-    this._container.appendChild(this._slot);
-    this._dialog.close();
   }
 
   #onPointerleave() {
@@ -134,12 +130,124 @@ export class RhTable extends LitElement {
     });
   }
 
-  onSlotchange() {
-    const table = this._defaultSlot?.[0];
-    if (table) {
-      this.#cols = [...(table.querySelectorAll('col') || [])] as HTMLTableColElement[];
+  #onSlotchange() {
+    this.#table = this.querySelector('table');
+    this.sortables = [...(this.querySelectorAll('th[sortable]') || [])] as HTMLTableCellElement[];
+
+    // Enable sorting on table headings
+    for (const [index, header] of this.sortables.entries()) {
+      const children = header.childNodes;
+      // Create the button
+      const button = document.createElement('button');
+      button.classList.add('sort-button');
+      button.dataset.column = index.toString();
+      // TODO cleanup
+      button.addEventListener('click', this.#onSort.bind(this));
+      // a11y
+      const span = document.createElement('span');
+      span.classList.add('visually-hidden');
+      // icon
+      const icon = document.createElement('span');
+      icon.classList.add('sort-icon');
+
+      button.append(...children);
+      button.append(span);
+      button.append(icon);
+
+      // Add the button
+      header.replaceChildren(button);
+    }
+
+    this.#cols = [...(this.querySelectorAll('col') || [])];
+  }
+
+  // TODO
+  #getSortDirection(direction: string | null): 'asc' | 'desc' {
+    if (direction && Object.keys(DIRECTIONS).includes(direction)) {
+      // @ts-ignore
+      return DIRECTIONS[direction];
+    }
+    return DIRECTIONS['asc'];
+  }
+
+  #onSort(event: Event) {
+    let parent!: HTMLTableCellElement;
+    let direction!: 'desc' | 'asc';
+    for (const button of [...this.querySelectorAll('.sort-button')]) {
+      if (button === event.currentTarget) {
+        direction = this.#getSortDirection(button.getAttribute('sort-direction'));
+        button.setAttribute('sort-direction', direction);
+        // @ts-ignore
+        parent = button.closest('th');
+        if (parent) {
+          parent.ariaSort = `${direction}ending`;
+        }
+        const icon = button.querySelector('.sort-icon') as HTMLSpanElement;
+        if (icon) {
+          render(ICONS.get(direction), icon);
+        }
+        const a11y = button.querySelector('.visually-hidden') as HTMLSpanElement;
+        if (a11y) {
+          a11y.innerText = `(sorted ${direction}ending)`;
+        }
+      } else {
+        button.removeAttribute('sort-direction');
+        button.closest('th')?.removeAttribute('aria-sort');
+        const icon = button.querySelector('.sort-icon');
+        const a11y = button.querySelector('.visually-hidden');
+        if (icon) {
+          icon.innerHTML = '';
+        }
+        if (a11y) {
+          a11y.innerHTML = '';
+        }
+      }
+    }
+    if (!event.defaultPrevented) {
+      this.#performSort(parent, direction);
+    }
+  }
+
+  #performSort(header: HTMLTableCellElement, direction: 'asc' | 'desc') {
+    const children = header.parentElement?.children;
+    if (children) {
+      const columnIndexToSort = [...children].indexOf(header);
+      debugger;
+      Array
+        .from(this.rows, node => RhTable.getNodeContentForSort(columnIndexToSort, node))
+        .sort((a, b) => RhTable.sortByContent(direction, a, b))
+        .forEach(({ node }, index) => {
+          const target = this.rows[index];
+          if (this.rows[index] !== node) {
+            const position: InsertPosition =
+                direction === 'desc' ? 'afterend' : 'beforebegin';
+            target.insertAdjacentElement(position, node);
+          }
+        });
+    }
+  }
+
+  private static getNodeContentForSort(
+    columnIndexToSort: number,
+    node: Element,
+  ) {
+    debugger;
+    const content = node.querySelector(`
+      :is(th, td):nth-child(${columnIndexToSort + 1}),
+      tr > :is(th, td):nth-child(${columnIndexToSort + 1})
+    `.trim())?.textContent?.trim()?.toLowerCase() ?? '';
+    return { node, content };
+  }
+
+  private static sortByContent(
+    direction: 'asc' | 'desc',
+    a: { content: string },
+    b: { content: string },
+  ) {
+    if (direction === 'asc') {
+      return (a.content < b.content ? -1 : a.content > b.content ? 1 : 0);
     } else {
-      this.#logger.warn('[rh-table] expects a slotted <table> tag.');
+      return (b.content < a.content ? -1 : b.content > a.content ? 1 : 0);
     }
   }
 }
