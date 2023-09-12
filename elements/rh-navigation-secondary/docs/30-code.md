@@ -19,11 +19,13 @@ In order to maintain flexibility of integration with various systems, the curren
 The following code example shows how to style the current page indicator using the `current` class. The example contains styles needed for both the light and dark variant. 
 
 ```css
+rh-navigation-secondary [slot="nav"] li > a.current,
 rh-navigation-secondary-dropdown a.current {
     border-block-start-color: var(--rh-color-brand-red-on-light, #ee0000);
 }
 
-rh-navigation-secondary-dropdown[color-palette="dark"] a.current {
+rh-navigation-secondary[color-palette="dark"] [slot="nav"] li > a.current,
+rh-navigation-secondary[color-palette="dark"] rh-navigation-secondary-dropdown a.current {
     border-block-start-color: var(--rh-color-brand-red-on-dark, #ff442b);
 }
 ```
