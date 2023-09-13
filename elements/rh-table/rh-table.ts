@@ -29,13 +29,13 @@ const DIRECTIONS = { asc: 'desc', desc: 'asc' } as const;
 
 // TODO: replace with rh-icon
 const ICONS = {
-  ['asc']: {
+  asc: {
     viewBox: '0 0 320 512',
-    path: 'M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224z',
+    path: 'M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z',
   },
-  ['desc']: {
+  desc: {
     viewBox: '0 0 320 512',
-    path: 'M311.9 335.1l-132.4 136.8C174.1 477.3 167.1 480 160 480c-7.055 0-14.12-2.702-19.47-8.109l-132.4-136.8C-9.229 317.8 3.055 288 27.66 288h264.7C316.9 288 329.2 317.8 311.9 335.1z',
+    path: 'M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z',
   },
   get(name: 'asc' | 'desc') {
     const { viewBox, path } = ICONS[name];
@@ -62,25 +62,15 @@ export class RhTable extends LitElement {
   static readonly styles = [styles];
 
   get rows() {
-    console.log(this.querySelectorAll<HTMLTableRowElement>('tbody > tr'));
     return this.querySelectorAll<HTMLTableRowElement>('tbody > tr');
   }
-
-  @property({ reflect: true, attribute: 'sort-column' }) sortColumn?: string;
-  @property({ reflect: true, attribute: 'sort-direction' }) sortDirection?: 'asc' | 'desc';
 
   @queryAssignedElements() _defaultSlot?: HTMLElement[];
   @query('#container') _container!: HTMLDivElement;
 
   #table!: HTMLTableElement | null;
-  #headers!: HTMLTableCellElement[] | null;
-  sortables: HTMLTableCellElement[] = [];
+  #sortableHeaders: HTMLTableCellElement[] = [];
   #cols: HTMLTableColElement[] = [];
-
-  #listeners = new Map(Object.entries({
-    sort: this.#onSort.bind(this),
-  }));
-
   #logger = new Logger(this);
   #screenSize = new ScreenSizeController(this);
 
@@ -88,11 +78,10 @@ export class RhTable extends LitElement {
     const { mobile } = this.#screenSize;
 
     return html`
-      <div
-        id="container"
-        class=${classMap({ mobile })}
-        @pointerleave=${this.#onPointerleave}
-        @pointerover=${this.#onPointerover}>
+      <div id="container"
+           class=${classMap({ mobile })}
+           @pointerleave=${this.#onPointerleave}
+           @pointerover=${this.#onPointerover}>
         <slot @slotchange="${this.#onSlotchange}"></slot>
       </div>
     `;
@@ -130,89 +119,61 @@ export class RhTable extends LitElement {
     });
   }
 
+  #sortButtonTemplate(children: NodeListOf<ChildNode>) {
+    return html`
+      <button class="sort-button"
+              @click="${this.#onSort.bind(this)}">
+              ${[...children]}
+        <span class="visually-hidden"></span>
+        <span class="sort-indicator"></span>
+      </button>`;
+  }
+
   #onSlotchange() {
     this.#table = this.querySelector('table');
-    this.sortables = [...(this.querySelectorAll('th[sortable]') || [])] as HTMLTableCellElement[];
+    this.#sortableHeaders = [...(this.querySelectorAll('th[sortable]') || [])] as HTMLTableCellElement[];
 
-    // Enable sorting on table headings
-    for (const [index, header] of this.sortables.entries()) {
-      const children = header.childNodes;
-      // Create the button
-      const button = document.createElement('button');
-      button.classList.add('sort-button');
-      button.dataset.column = index.toString();
-      // TODO cleanup
-      button.addEventListener('click', this.#onSort.bind(this));
-      // a11y
-      const span = document.createElement('span');
-      span.classList.add('visually-hidden');
-      // icon
-      const icon = document.createElement('span');
-      icon.classList.add('sort-icon');
-
-      button.append(...children);
-      button.append(span);
-      button.append(icon);
-
-      // Add the button
-      header.replaceChildren(button);
+    // Add button to sortable headers
+    for (const header of this.#sortableHeaders) {
+      render(this.#sortButtonTemplate(header.childNodes), header);
     }
 
     this.#cols = [...(this.querySelectorAll('col') || [])];
   }
 
-  // TODO
-  #getSortDirection(direction: string | null): 'asc' | 'desc' {
-    if (direction && Object.keys(DIRECTIONS).includes(direction)) {
-      // @ts-ignore
-      return DIRECTIONS[direction];
-    }
-    return DIRECTIONS['asc'];
-  }
-
   #onSort(event: Event) {
-    let parent!: HTMLTableCellElement;
-    let direction!: 'desc' | 'asc';
-    for (const button of [...this.querySelectorAll('.sort-button')]) {
-      if (button === event.currentTarget) {
-        direction = this.#getSortDirection(button.getAttribute('sort-direction'));
-        button.setAttribute('sort-direction', direction);
-        // @ts-ignore
-        parent = button.closest('th');
-        if (parent) {
-          parent.ariaSort = `${direction}ending`;
-        }
-        const icon = button.querySelector('.sort-icon') as HTMLSpanElement;
-        if (icon) {
-          render(ICONS.get(direction), icon);
-        }
-        const a11y = button.querySelector('.visually-hidden') as HTMLSpanElement;
-        if (a11y) {
-          a11y.innerText = `(sorted ${direction}ending)`;
-        }
-      } else {
-        button.removeAttribute('sort-direction');
-        button.closest('th')?.removeAttribute('aria-sort');
-        const icon = button.querySelector('.sort-icon');
-        const a11y = button.querySelector('.visually-hidden');
-        if (icon) {
-          icon.innerHTML = '';
-        }
-        if (a11y) {
-          a11y.innerHTML = '';
-        }
+    // update selected
+    const selected = event.currentTarget as HTMLButtonElement;
+    const selectedParent = selected.closest('th');
+    // TODO better way of writing this to avoid ts errors
+    // @ts-ignore
+    const direction = DIRECTIONS[selectedParent?.getAttribute('sort-direction') ?? 'asc'] || 'desc';
+    selectedParent?.setAttribute('aria-sort', `${direction}ending`);
+    selectedParent?.setAttribute('sort-direction', direction);
+    const iconContainer = selected.querySelector('.sort-indicator') as HTMLSpanElement;
+    render(ICONS.get(direction), iconContainer);
+    const srContainer = selected.querySelector('.visually-hidden') as HTMLSpanElement;
+    render(`(sorted ${direction}ending)`, srContainer);
+
+    // clean up previously sorted headers
+    for (const header of this.#sortableHeaders) {
+      if (header !== selectedParent) {
+        header.removeAttribute('sort-direction');
+        header.removeAttribute('aria-sort');
       }
     }
-    if (!event.defaultPrevented) {
-      this.#performSort(parent, direction);
+
+    // only sort if it hasn't been handled already
+    if (!event.defaultPrevented && selectedParent instanceof HTMLTableCellElement) {
+      this.#performSort(selectedParent, direction);
     }
   }
 
+  // TODO should we move the remaining methods into a controller?
   #performSort(header: HTMLTableCellElement, direction: 'asc' | 'desc') {
     const children = header.parentElement?.children;
     if (children) {
       const columnIndexToSort = [...children].indexOf(header);
-      debugger;
       Array
         .from(this.rows, node => RhTable.getNodeContentForSort(columnIndexToSort, node))
         .sort((a, b) => RhTable.sortByContent(direction, a, b))
@@ -231,7 +192,6 @@ export class RhTable extends LitElement {
     columnIndexToSort: number,
     node: Element,
   ) {
-    debugger;
     const content = node.querySelector(`
       :is(th, td):nth-child(${columnIndexToSort + 1}),
       tr > :is(th, td):nth-child(${columnIndexToSort + 1})

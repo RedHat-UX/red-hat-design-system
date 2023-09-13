@@ -155,3 +155,43 @@
     content: attr(data-label);
   }
 }
+
+/* Sortable columns */
+:is(rh-table) th[sortable] {
+  padding: 0;
+}
+
+:is(rh-table) :not(th[sort-direction]) .sort-indicator,
+:is(rh-table) :not(th[sort-direction]) .visually-hidden {
+  display: none;
+}
+
+:is(rh-table) th[sort-direction] .sort-indicator,
+:is(rh-table) :not(th[sort-direction]) .visually-hidden {
+  display: unset;
+}
+
+:is(rh-table) th[sortable] .sort-button {
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--rh-space-sm, 6px);
+  background-color: transparent;
+  border: 0;
+  width: 100%;
+  padding: var(--rh-space-lg, 16px);
+}
+
+.visually-hidden {
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
