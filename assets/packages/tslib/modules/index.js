@@ -29,8 +29,6 @@ const {
     __classPrivateFieldGet,
     __classPrivateFieldSet,
     __classPrivateFieldIn,
-    __addDisposableResource,
-    __disposeResources,
 } = tslib;
 export {
     __extends,
@@ -62,7 +60,5 @@ export {
     __classPrivateFieldGet,
     __classPrivateFieldSet,
     __classPrivateFieldIn,
-    __addDisposableResource,
-    __disposeResources,
 };
 export default tslib;

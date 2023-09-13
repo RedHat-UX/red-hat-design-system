@@ -17,13 +17,7 @@
     return value instanceof getWindow(value).Node;
   }
   function getNodeName(node) {
-    if (isNode(node)) {
-      return (node.nodeName || '').toLowerCase();
-    }
-    // Mocked nodes in testing environments may not be instances of Node. By
-    // returning `#document` an infinite loop won't occur.
-    // https://github.com/floating-ui/floating-ui/issues/2317
-    return '#document';
+    return isNode(node) ? (node.nodeName || '').toLowerCase() : '';
   }
 
   function isHTMLElement(value) {
@@ -37,7 +31,8 @@
     if (typeof ShadowRoot === 'undefined') {
       return false;
     }
-    return node instanceof getWindow(node).ShadowRoot || node instanceof ShadowRoot;
+    const OwnElement = getWindow(node).ShadowRoot;
+    return node instanceof OwnElement || node instanceof ShadowRoot;
   }
   function isOverflowElement(element) {
     const {
@@ -56,7 +51,7 @@
     const css = getComputedStyle$1(element);
 
     // https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block#identifying_the_containing_block
-    return css.transform !== 'none' || css.perspective !== 'none' || (css.containerType ? css.containerType !== 'normal' : false) || !safari && (css.backdropFilter ? css.backdropFilter !== 'none' : false) || !safari && (css.filter ? css.filter !== 'none' : false) || ['transform', 'perspective', 'filter'].some(value => (css.willChange || '').includes(value)) || ['paint', 'layout', 'strict', 'content'].some(value => (css.contain || '').includes(value));
+    return css.transform !== 'none' || css.perspective !== 'none' || !safari && (css.backdropFilter ? css.backdropFilter !== 'none' : false) || !safari && (css.filter ? css.filter !== 'none' : false) || ['transform', 'perspective', 'filter'].some(value => (css.willChange || '').includes(value)) || ['paint', 'layout', 'strict', 'content'].some(value => (css.contain || '').includes(value));
   }
   function isSafari() {
     if (typeof CSS === 'undefined' || !CSS.supports) return false;
@@ -69,11 +64,6 @@
   const min = Math.min;
   const max = Math.max;
   const round = Math.round;
-  const floor = Math.floor;
-  const createEmptyCoords = v => ({
-    x: v,
-    y: v
-  });
 
   function getCssDimensions(element) {
     const css = getComputedStyle$1(element);
@@ -92,7 +82,7 @@
     return {
       width,
       height,
-      $: shouldFallback
+      fallback: shouldFallback
     };
   }
 
@@ -100,19 +90,23 @@
     return !isElement(element) ? element.contextElement : element;
   }
 
+  const FALLBACK_SCALE = {
+    x: 1,
+    y: 1
+  };
   function getScale(element) {
     const domElement = unwrapElement(element);
     if (!isHTMLElement(domElement)) {
-      return createEmptyCoords(1);
+      return FALLBACK_SCALE;
     }
     const rect = domElement.getBoundingClientRect();
     const {
       width,
       height,
-      $
+      fallback
     } = getCssDimensions(domElement);
-    let x = ($ ? round(rect.width) : rect.width) / width;
-    let y = ($ ? round(rect.height) : rect.height) / height;
+    let x = (fallback ? round(rect.width) : rect.width) / width;
+    let y = (fallback ? round(rect.height) : rect.height) / height;
 
     // 0, NaN, or Infinity should always fallback to 1.
 
@@ -128,7 +122,10 @@
     };
   }
 
-  const noOffsets = /*#__PURE__*/createEmptyCoords(0);
+  const noOffsets = {
+    x: 0,
+    y: 0
+  };
   function getVisualOffsets(element, isFixed, floatingOffsetParent) {
     var _win$visualViewport, _win$visualViewport2;
     if (isFixed === void 0) {
@@ -156,7 +153,7 @@
     }
     const clientRect = element.getBoundingClientRect();
     const domElement = unwrapElement(element);
-    let scale = createEmptyCoords(1);
+    let scale = FALLBACK_SCALE;
     if (includeScale) {
       if (offsetParent) {
         if (isElement(offsetParent)) {
@@ -179,14 +176,14 @@
         const iframeScale = getScale(currentIFrame);
         const iframeRect = currentIFrame.getBoundingClientRect();
         const css = getComputedStyle(currentIFrame);
-        const left = iframeRect.left + (currentIFrame.clientLeft + parseFloat(css.paddingLeft)) * iframeScale.x;
-        const top = iframeRect.top + (currentIFrame.clientTop + parseFloat(css.paddingTop)) * iframeScale.y;
+        iframeRect.x += (currentIFrame.clientLeft + parseFloat(css.paddingLeft)) * iframeScale.x;
+        iframeRect.y += (currentIFrame.clientTop + parseFloat(css.paddingTop)) * iframeScale.y;
         x *= iframeScale.x;
         y *= iframeScale.y;
         width *= iframeScale.x;
         height *= iframeScale.y;
-        x += left;
-        y += top;
+        x += iframeRect.x;
+        y += iframeRect.y;
         currentIFrame = getWindow(currentIFrame).frameElement;
       }
     }
@@ -230,8 +227,14 @@
       scrollLeft: 0,
       scrollTop: 0
     };
-    let scale = createEmptyCoords(1);
-    const offsets = createEmptyCoords(0);
+    let scale = {
+      x: 1,
+      y: 1
+    };
+    const offsets = {
+      x: 0,
+      y: 0
+    };
     if (isOffsetParentAnElement || !isOffsetParentAnElement && strategy !== 'fixed') {
       if (getNodeName(offsetParent) !== 'body' || isOverflowElement(documentElement)) {
         scroll = getNodeScroll(offsetParent);
@@ -297,7 +300,9 @@
   function getNearestOverflowAncestor(node) {
     const parentNode = getParentNode(node);
     if (isLastTraversableNode(parentNode)) {
-      return node.ownerDocument ? node.ownerDocument.body : node.body;
+      // `getParentNode` will never return a `Document` due to the fallback
+      // check, so it's either the <html> or <body> element.
+      return parentNode.ownerDocument.body;
     }
     if (isHTMLElement(parentNode) && isOverflowElement(parentNode)) {
       return parentNode;
@@ -349,7 +354,10 @@
     const clientRect = getBoundingClientRect(element, true, strategy === 'fixed');
     const top = clientRect.top + element.clientTop;
     const left = clientRect.left + element.clientLeft;
-    const scale = isHTMLElement(element) ? getScale(element) : createEmptyCoords(1);
+    const scale = isHTMLElement(element) ? getScale(element) : {
+      x: 1,
+      y: 1
+    };
     const width = element.clientWidth * scale.x;
     const height = element.clientHeight * scale.y;
     const x = left * scale.x;
@@ -500,7 +508,10 @@
       scrollLeft: 0,
       scrollTop: 0
     };
-    const offsets = createEmptyCoords(0);
+    const offsets = {
+      x: 0,
+      y: 0
+    };
     if (isOffsetParentAnElement || !isOffsetParentAnElement && !isFixed) {
       if (getNodeName(offsetParent) !== 'body' || isOverflowElement(documentElement)) {
         scroll = getNodeScroll(offsetParent);
@@ -550,80 +561,6 @@
     isRTL: element => getComputedStyle$1(element).direction === 'rtl'
   };
 
-  // https://samthor.au/2021/observing-dom/
-  function observeMove(element, onMove) {
-    let io = null;
-    let timeoutId;
-    const root = getDocumentElement(element);
-    function cleanup() {
-      clearTimeout(timeoutId);
-      io && io.disconnect();
-      io = null;
-    }
-    function refresh(skip, threshold) {
-      if (skip === void 0) {
-        skip = false;
-      }
-      if (threshold === void 0) {
-        threshold = 1;
-      }
-      cleanup();
-      const {
-        left,
-        top,
-        width,
-        height
-      } = element.getBoundingClientRect();
-      if (!skip) {
-        onMove();
-      }
-      if (!width || !height) {
-        return;
-      }
-      const insetTop = floor(top);
-      const insetRight = floor(root.clientWidth - (left + width));
-      const insetBottom = floor(root.clientHeight - (top + height));
-      const insetLeft = floor(left);
-      const rootMargin = -insetTop + "px " + -insetRight + "px " + -insetBottom + "px " + -insetLeft + "px";
-      const options = {
-        rootMargin,
-        threshold: max(0, min(1, threshold)) || 1
-      };
-      let isFirstUpdate = true;
-      function handleObserve(entries) {
-        const ratio = entries[0].intersectionRatio;
-        if (ratio !== threshold) {
-          if (!isFirstUpdate) {
-            return refresh();
-          }
-          if (!ratio) {
-            timeoutId = setTimeout(() => {
-              refresh(false, 1e-7);
-            }, 100);
-          } else {
-            refresh(false, ratio);
-          }
-        }
-        isFirstUpdate = false;
-      }
-
-      // Older browsers don't support a `document` as the root and will throw an
-      // error.
-      try {
-        io = new IntersectionObserver(handleObserve, {
-          ...options,
-          // Handle <iframe>s
-          root: root.ownerDocument
-        });
-      } catch (e) {
-        io = new IntersectionObserver(handleObserve, options);
-      }
-      io.observe(element);
-    }
-    refresh(true);
-    return cleanup;
-  }
-
   /**
    * Automatically updates the position of the floating element when necessary.
    * Should only be called when the floating element is mounted on the DOM or
@@ -639,39 +576,30 @@
     const {
       ancestorScroll = true,
       ancestorResize = true,
-      elementResize = typeof ResizeObserver === 'function',
-      layoutShift = typeof IntersectionObserver === 'function',
+      elementResize = true,
       animationFrame = false
     } = options;
-    const referenceEl = unwrapElement(reference);
-    const ancestors = ancestorScroll || ancestorResize ? [...(referenceEl ? getOverflowAncestors(referenceEl) : []), ...getOverflowAncestors(floating)] : [];
+    const ancestors = ancestorScroll || ancestorResize ? [...(isElement(reference) ? getOverflowAncestors(reference) : reference.contextElement ? getOverflowAncestors(reference.contextElement) : []), ...getOverflowAncestors(floating)] : [];
     ancestors.forEach(ancestor => {
-      ancestorScroll && ancestor.addEventListener('scroll', update, {
-        passive: true
-      });
+      // ignores Window, checks for [object VisualViewport]
+      const isVisualViewport = !isElement(ancestor) && ancestor.toString().includes('V');
+      if (ancestorScroll && (animationFrame ? isVisualViewport : true)) {
+        ancestor.addEventListener('scroll', update, {
+          passive: true
+        });
+      }
       ancestorResize && ancestor.addEventListener('resize', update);
     });
-    const cleanupIo = referenceEl && layoutShift ? observeMove(referenceEl, update) : null;
-    let reobserveFrame = -1;
-    let resizeObserver = null;
+    let observer = null;
     if (elementResize) {
-      resizeObserver = new ResizeObserver(_ref => {
-        let [firstEntry] = _ref;
-        if (firstEntry && firstEntry.target === referenceEl && resizeObserver) {
-          // Prevent update loops when using the `size` middleware.
-          // https://github.com/floating-ui/floating-ui/issues/1740
-          resizeObserver.unobserve(floating);
-          cancelAnimationFrame(reobserveFrame);
-          reobserveFrame = requestAnimationFrame(() => {
-            resizeObserver && resizeObserver.observe(floating);
-          });
-        }
+      observer = new ResizeObserver(() => {
         update();
       });
-      if (referenceEl && !animationFrame) {
-        resizeObserver.observe(referenceEl);
+      isElement(reference) && !animationFrame && observer.observe(reference);
+      if (!isElement(reference) && reference.contextElement && !animationFrame) {
+        observer.observe(reference.contextElement);
       }
-      resizeObserver.observe(floating);
+      observer.observe(floating);
     }
     let frameId;
     let prevRefRect = animationFrame ? getBoundingClientRect(reference) : null;
@@ -688,13 +616,13 @@
     }
     update();
     return () => {
+      var _observer;
       ancestors.forEach(ancestor => {
         ancestorScroll && ancestor.removeEventListener('scroll', update);
         ancestorResize && ancestor.removeEventListener('resize', update);
       });
-      cleanupIo && cleanupIo();
-      resizeObserver && resizeObserver.disconnect();
-      resizeObserver = null;
+      (_observer = observer) == null ? void 0 : _observer.disconnect();
+      observer = null;
       if (animationFrame) {
         cancelAnimationFrame(frameId);
       }

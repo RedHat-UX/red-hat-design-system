@@ -1,5 +1,5 @@
-import type { Boundary, Derivable, ElementContext, MiddlewareState, Padding, RootBoundary, SideObject } from './types';
-export type Options = Partial<{
+import type { Boundary, ElementContext, MiddlewareState, Padding, RootBoundary, SideObject } from './types';
+export interface Options {
     /**
      * The clipping element(s) or area in which overflow will be checked.
      * @default 'clippingAncestors'
@@ -26,7 +26,7 @@ export type Options = Partial<{
      * @default 0
      */
     padding: Padding;
-}>;
+}
 /**
  * Resolves with an object of overflow side offsets that determine how much the
  * element is overflowing a given clipping boundary on each side.
@@ -35,4 +35,4 @@ export type Options = Partial<{
  * - 0 = lies flush with the boundary
  * @see https://floating-ui.com/docs/detectOverflow
  */
-export declare function detectOverflow(state: MiddlewareState, options?: Options | Derivable<Options>): Promise<SideObject>;
+export declare function detectOverflow(state: MiddlewareState, options?: Partial<Options>): Promise<SideObject>;

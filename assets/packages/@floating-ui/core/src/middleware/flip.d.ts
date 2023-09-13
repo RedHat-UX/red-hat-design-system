@@ -1,5 +1,6 @@
-import type { Derivable, DetectOverflowOptions, Middleware, Placement } from '../types';
-export type FlipOptions = Partial<DetectOverflowOptions & {
+import { Options as DetectOverflowOptions } from '../detectOverflow';
+import type { Middleware, Placement } from '../types';
+export interface Options {
     /**
      * The axis that runs along the side of the floating element. Determines
      * whether overflow along this axis is checked to perform a flip.
@@ -34,11 +35,11 @@ export type FlipOptions = Partial<DetectOverflowOptions & {
      * @default true
      */
     flipAlignment: boolean;
-}>;
+}
 /**
  * Optimizes the visibility of the floating element by flipping the `placement`
  * in order to keep it in view when the preferred placement(s) will overflow the
  * clipping boundary. Alternative to `autoPlacement`.
  * @see https://floating-ui.com/docs/flip
  */
-export declare const flip: (options?: FlipOptions | Derivable<FlipOptions>) => Middleware;
+export declare const flip: (options?: Partial<Options & DetectOverflowOptions>) => Middleware;
