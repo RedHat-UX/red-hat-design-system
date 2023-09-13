@@ -1,5 +1,21 @@
 # @rhds/elements
 
+## 1.1.1
+
+### Patch Changes
+
+- ab339ac6: `<rh-tag>`: outline variant should now get the correct background styles added.
+- f79543b7: `<rh-avatar>`: uses SVG for default images instead of much larger base-64 PNG images
+- 77fa329a: `<rh-audio-player>`: Added @csspart docs.
+- f0f66ec2: `<rh-tabs>`: fixed vertical tabs text alignment
+- 716b52d1: `<rh-cta>` and other elements: color context support
+- cf8ee6cb: `<rh-audio-player>`: corrected subscribe slot documentation.
+- d709896f: `<rh-cta>`: corrected layout of icon brick variant
+- d709896f: `<rh-cta>`: ensured entire CTA is clickable
+- d709896f: `<rh-cta>`: fix a style bug which affects CTA links at narrow widths
+- ff90f4d6: `<rh-footer>`: prevent an error when using footer and react in certain chrome versions
+- 44a444a5: `<rh-navigation-secondary>`: corrected navigation bar height for small and large viewports'
+
 ## 1.1.0
 
 ### Minor Changes
