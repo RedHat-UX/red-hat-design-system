@@ -6,7 +6,7 @@
 
 When a user is viewing a page that is part of the secondary navigation information architecture, a red top border is visible.  If the active page is contained in a dropdown menu, the dropdown is marked with this top border current page indicator.  See the [design guidelines for current page indicator](../guidelines/#current-page-indicator) for more information.  
 
-In order to maintain flexibility of integration with various systems, the logic and css for the current page indicator is not controlled by the secondary navigation component itself.  Instead, the component can be styled with the systems selector of choice.
+In order to maintain flexibility of integration with various systems, the logic and css for the current page indicator is not controlled by the secondary navigation component itself.  Instead, the component can be styled with the system's selector of choice.
 
 The following code example shows how to style the current page indicator using a <code>current<code> class. The example contains styles needed for both the light and dark variant. 
 
