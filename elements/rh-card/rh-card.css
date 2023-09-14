@@ -13,6 +13,7 @@ article {
 [part="header"] {
   display: flex;
   flex-direction: column;
+  gap: var(--rh-space-lg, 16px);
 }
 
 [part="body"] ::slotted(:not([slot]):first-of-type) {
