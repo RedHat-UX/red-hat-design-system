@@ -8,7 +8,7 @@ When a user is viewing a page that is part of the secondary navigation informati
 
 In order to maintain flexibility of integration with various systems, the logic and css for the current page indicator is not controlled by the secondary navigation component itself.  Instead, the component can be styled with the system's selector of choice.
 
-The following code example shows how to style the current page indicator using a <code>current<code> class. The example contains styles needed for both the light and dark variant. 
+The following code example shows how to style the current page indicator using a <code>current</code> class. The example contains styles needed for both the light and dark variant. 
 
 ```css
 rh-navigation-secondary [slot="nav"] li > a.current,
