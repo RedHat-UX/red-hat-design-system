@@ -1,6 +1,6 @@
 /* eslint-disable no-debugger */
 /* eslint-disable no-console */
-import { LitElement, html, svg, render } from 'lit';
+import { LitElement, html, svg, render, nothing } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
