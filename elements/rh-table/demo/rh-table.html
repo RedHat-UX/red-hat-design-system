@@ -3,473 +3,595 @@
 <script type="module" src="rh-table.js"></script>
 
 <section>
-  <rh-table disclaimer="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do">
-    <table class="tableblock frame-all grid-all spread">
-      <caption class="title">
+  <rh-table disclaimer="Disclaimer">
+  <table>
+    <caption>Title, headers, and disclaimer</caption>
+    <col/>
+    <col/>
+    <col/>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Date">Date</th>
+        <th scope="col" data-label="Event">Event</th>
+        <th scope="col" data-label="Venue">Venue</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Date">12 February</td>
+        <td data-label="Event">
+          <a href="">Waltz with Strauss</a>
+        </td>
+        <td data-label="Venue">Main Hall</td>
+      </tr>
+      <tr>
+        <td data-label="Date">24 March</td>
+        <td data-label="Event">The Obelisks</td>
+        <td data-label="Venue">West Wing</td>
+      </tr>
+      <tr>
+        <td data-label="Date">14 April</td>
+        <td data-label="Event">The What</td>
+        <td data-label="Venue">Main Hall</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
+
+<rh-table disclaimer="Headers and disclaimer, but no title">
+  <table>
+    <col/>
+    <col/>
+    <col/>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Date">Date</th>
+        <th scope="col" data-label="Event">Event</th>
+        <th scope="col" data-label="Venue">Venue</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Date">12 February</td>
+        <td data-label="Event">
+          <a href="">Waltz with Strauss</a>
+        </td>
+        <td data-label="Venue">Main Hall</td>
+      </tr>
+      <tr>
+        <td data-label="Date">24 March</td>
+        <td data-label="Event">The Obelisks</td>
+        <td data-label="Venue">West Wing</td>
+      </tr>
+      <tr>
+        <td data-label="Date">14 April</td>
+        <td data-label="Event">The What</td>
+        <td data-label="Venue">Main Hall</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
+
+<rh-table disclaimer="Disclaimer">
+  <table>
+    <caption>Title and disclaimer, but no headers</caption>
+    <col/>
+    <col/>
+    <col/>
+    <tbody>
+      <tr>
+        <td data-label="Date">12 February</td>
+        <td data-label="Event">
+          <a href="">Waltz with Strauss</a>
+        </td>
+        <td data-label="Venue">Main Hall</td>
+      </tr>
+      <tr>
+        <td data-label="Date">24 March</td>
+        <td data-label="Event">The Obelisks</td>
+        <td data-label="Venue">West Wing</td>
+      </tr>
+      <tr>
+        <td data-label="Date">14 April</td>
+        <td data-label="Event">The What</td>
+        <td data-label="Venue">Main Hall</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
+
+<rh-table>
+  <table>
+    <col/>
+    <col/>
+    <col/>
+    <tbody>
+      <tr>
+        <td data-label="Date">12 February</td>
+        <td data-label="Event">
+          <a href="">Waltz with Strauss</a>
+        </td>
+        <td data-label="Venue">Main Hall</td>
+      </tr>
+      <tr>
+        <td data-label="Date">24 March</td>
+        <td data-label="Event">The Obelisks</td>
+        <td data-label="Venue">West Wing</td>
+      </tr>
+      <tr>
+        <td data-label="Date">14 April</td>
+        <td data-label="Event">The What</td>
+        <td data-label="Venue">Main Hall</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
+
+<rh-table disclaimer="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do">
+  <table class="tableblock frame-all grid-all spread">
+    <caption class="title">
                 Table 1. Supported ACL permissions
               </caption>
-      <colgroup>
-        <col style="width: 25%">
-        <col style="width: 25%">
-        <col style="width: 25%">
-        <col style="width: 25%">
-      </colgroup>
-      <thead>
-        <tr>
-          <th sortable class="tableblock halign-left valign-top content--md" data-row="1" data-col="1">
-            <p class="tableblock">Resource type</p>
-          </th>
-          <th sortable class="tableblock halign-left valign-top content--md" data-row="1" data-col="2">
-            <p class="tableblock">Resource identifier</p>
-          </th>
-          <th class="tableblock halign-left valign-top content--md" data-row="1" data-col="3">
-            <p class="tableblock">Access type</p>
-          </th>
-          <th sortable class="tableblock halign-left valign-top content--md" data-row="1" data-col="4">
-            <p class="tableblock">Operations</p>
-          </th>
-        </tr>
-      </thead>
-        <tbody>
-        <tr>
-          <td class="tableblock halign-left valign-top content--lg" data-row="2" data-col="1">
-            <p class="tableblock">
-              <code>Consumer group</code>
-            </p>
-            <p class="tableblock">
-              <a href="#top">Test anchor link outside of table</a><br>
-              <a href="#kafka-instance-row">Test anchor link inside of table</a><br>
+    <colgroup>
+      <col style="width: 25%">
+      <col style="width: 25%">
+      <col style="width: 25%">
+      <col style="width: 25%">
+    </colgroup>
+    <thead>
+      <tr>
+        <th sortable class="tableblock halign-left valign-top content--md" data-row="1" data-col="1">
+          <p class="tableblock">Resource type</p>
+        </th>
+        <th sortable class="tableblock halign-left valign-top content--md" data-row="1" data-col="2">
+          <p class="tableblock">Resource identifier</p>
+        </th>
+        <th class="tableblock halign-left valign-top content--md" data-row="1" data-col="3">
+          <p class="tableblock">Access type</p>
+        </th>
+        <th sortable class="tableblock halign-left valign-top content--md" data-row="1" data-col="4">
+          <p class="tableblock">Operations</p>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="tableblock halign-left valign-top content--lg" data-row="2" data-col="1">
+          <p class="tableblock">
+            <code>Consumer group</code>
+          </p>
+          <p class="tableblock">
+            <a href="#top">Test anchor link outside of table</a><br>
+            <a href="#kafka-instance-row">Test anchor link inside of table</a><br>
                       (For consumer group access to a resource)
                     </p>
-          </td>
-          <td class="tableblock halign-left valign-top content--lg" data-row="2" data-col="2">
-            <ul>
-              <li>
-                <p>
-                  <code>Starts with</code>
-                </p>
-              </li>
-              <li>
-                <p>
-                  <code>Is</code>
-                </p>
-              </li>
-            </ul>
-          </td>
-          <td class="tableblock halign-left valign-top content--lg" data-row="2" data-col="3">
-            <ul>
-              <li>
-                <p>
-                  <code>Allow</code>
-                </p>
-              </li>
-              <li>
-                <p>
-                  <code>Deny</code>
-                </p>
-              </li>
-            </ul>
-          </td>
-          <td class="tableblock halign-left valign-top content--lg" data-row="2" data-col="4">
-            <ul>
-              <li>
-                <p>
-                  <code>All</code>
-                </p>
-              </li>
-              <li>
-                <p>
-                  <code>Read</code>
-                </p>
-              </li>
-              <li>
-                <p>
-                  <code>Delete</code>
-                </p>
-              </li>
-              <li>
-                <p>
-                  <code>Describe</code>
-                </p>
-              </li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <td class="tableblock halign-left valign-top content--lg" data-row="3" data-col="1">
-            <p class="tableblock">
-              <code>Topic</code>
-            </p>
-            <p class="tableblock">(For access to a topic)</p>
-          </td>
-          <td class="tableblock halign-left valign-top content--lg" data-row="3" data-col="2">
-            <ul>
-              <li>
-                <p>
-                  <code>Starts with</code>
-                </p>
-              </li>
-              <li>
-                <p>
-                  <code>Is</code>
-                </p>
-              </li>
-            </ul>
-          </td>
-          <td class="tableblock halign-left valign-top content--lg" data-row="3" data-col="3">
-            <ul>
-              <li>
-                <p>
-                  <code>Allow</code>
-                </p>
-              </li>
-              <li>
-                <p>
-                  <code>Deny</code>
-                </p>
-              </li>
-            </ul>
-          </td>
-          <td class="tableblock halign-left valign-top content--lg" data-row="3" data-col="4">
-            <ul>
-              <li>
-                <p>
-                  <code>All</code>
-                </p>
-              </li>
-              <li>
-                <p>
-                  <code>Read</code>
-                </p>
-              </li>
-              <li>
-                <p>
-                  <code>Write</code>
-                </p>
-              </li>
-              <li>
-                <p>
-                  <code>Create</code>
-                </p>
-              </li>
-              <li>
-                <p>
-                  <code>Delete</code>
-                </p>
-              </li>
-              <li>
-                <p>
-                  <code>Alter</code>
-                </p>
-              </li>
-              <li>
-                <p>
-                  <code>Alter configs</code>
-                </p>
-              </li>
-              <li>
-                <p>
-                  <code>Describe</code>
-                </p>
-              </li>
-              <li>
-                <p>
-                  <code>Describe configs</code>
-                </p>
-              </li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <td class="tableblock halign-left valign-top content--lg" data-row="4" data-col="1">
-            <p class="tableblock">
-              <code>Transactional ID</code>
-            </p>
-            <p class="tableblock">(For producer access to a resource)</p>
-          </td>
-          <td class="tableblock halign-left valign-top content--lg" data-row="4" data-col="2">
-            <ul>
-              <li>
-                <p>
-                  <code>Starts with</code>
-                </p>
-              </li>
-              <li>
-                <p>
-                  <code>Is</code>
-                </p>
-              </li>
-            </ul>
-          </td>
-          <td class="tableblock halign-left valign-top content--lg" data-row="4" data-col="3">
-            <ul>
-              <li>
-                <p>
-                  <code>Allow</code>
-                </p>
-              </li>
-              <li>
-                <p>
-                  <code>Deny</code>
-                </p>
-              </li>
-            </ul>
-          </td>
-          <td class="tableblock halign-left valign-top content--lg" data-row="4" data-col="4">
-            <ul>
-              <li>
-                <p>
-                  <code>All</code>
-                </p>
-              </li>
-              <li>
-                <p>
-                  <code>Write</code>
-                </p>
-              </li>
-              <li>
-                <p>
-                  <code>Describe</code>
-                </p>
-              </li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <td class="tableblock halign-left valign-top content--lg" data-row="5" data-col="1">
-            <p class="tableblock">
-              <code id="kafka-instance-row">Kafka instance</code>
-            </p>
-            <p class="tableblock">
+        </td>
+        <td class="tableblock halign-left valign-top content--lg" data-row="2" data-col="2">
+          <ul>
+            <li>
+              <p>
+                <code>Starts with</code>
+              </p>
+            </li>
+            <li>
+              <p>
+                <code>Is</code>
+              </p>
+            </li>
+          </ul>
+        </td>
+        <td class="tableblock halign-left valign-top content--lg" data-row="2" data-col="3">
+          <ul>
+            <li>
+              <p>
+                <code>Allow</code>
+              </p>
+            </li>
+            <li>
+              <p>
+                <code>Deny</code>
+              </p>
+            </li>
+          </ul>
+        </td>
+        <td class="tableblock halign-left valign-top content--lg" data-row="2" data-col="4">
+          <ul>
+            <li>
+              <p>
+                <code>All</code>
+              </p>
+            </li>
+            <li>
+              <p>
+                <code>Read</code>
+              </p>
+            </li>
+            <li>
+              <p>
+                <code>Delete</code>
+              </p>
+            </li>
+            <li>
+              <p>
+                <code>Describe</code>
+              </p>
+            </li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td class="tableblock halign-left valign-top content--lg" data-row="3" data-col="1">
+          <p class="tableblock">
+            <code>Topic</code>
+          </p>
+          <p class="tableblock">(For access to a topic)</p>
+        </td>
+        <td class="tableblock halign-left valign-top content--lg" data-row="3" data-col="2">
+          <ul>
+            <li>
+              <p>
+                <code>Starts with</code>
+              </p>
+            </li>
+            <li>
+              <p>
+                <code>Is</code>
+              </p>
+            </li>
+          </ul>
+        </td>
+        <td class="tableblock halign-left valign-top content--lg" data-row="3" data-col="3">
+          <ul>
+            <li>
+              <p>
+                <code>Allow</code>
+              </p>
+            </li>
+            <li>
+              <p>
+                <code>Deny</code>
+              </p>
+            </li>
+          </ul>
+        </td>
+        <td class="tableblock halign-left valign-top content--lg" data-row="3" data-col="4">
+          <ul>
+            <li>
+              <p>
+                <code>All</code>
+              </p>
+            </li>
+            <li>
+              <p>
+                <code>Read</code>
+              </p>
+            </li>
+            <li>
+              <p>
+                <code>Write</code>
+              </p>
+            </li>
+            <li>
+              <p>
+                <code>Create</code>
+              </p>
+            </li>
+            <li>
+              <p>
+                <code>Delete</code>
+              </p>
+            </li>
+            <li>
+              <p>
+                <code>Alter</code>
+              </p>
+            </li>
+            <li>
+              <p>
+                <code>Alter configs</code>
+              </p>
+            </li>
+            <li>
+              <p>
+                <code>Describe</code>
+              </p>
+            </li>
+            <li>
+              <p>
+                <code>Describe configs</code>
+              </p>
+            </li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td class="tableblock halign-left valign-top content--lg" data-row="4" data-col="1">
+          <p class="tableblock">
+            <code>Transactional ID</code>
+          </p>
+          <p class="tableblock">(For producer access to a resource)</p>
+        </td>
+        <td class="tableblock halign-left valign-top content--lg" data-row="4" data-col="2">
+          <ul>
+            <li>
+              <p>
+                <code>Starts with</code>
+              </p>
+            </li>
+            <li>
+              <p>
+                <code>Is</code>
+              </p>
+            </li>
+          </ul>
+        </td>
+        <td class="tableblock halign-left valign-top content--lg" data-row="4" data-col="3">
+          <ul>
+            <li>
+              <p>
+                <code>Allow</code>
+              </p>
+            </li>
+            <li>
+              <p>
+                <code>Deny</code>
+              </p>
+            </li>
+          </ul>
+        </td>
+        <td class="tableblock halign-left valign-top content--lg" data-row="4" data-col="4">
+          <ul>
+            <li>
+              <p>
+                <code>All</code>
+              </p>
+            </li>
+            <li>
+              <p>
+                <code>Write</code>
+              </p>
+            </li>
+            <li>
+              <p>
+                <code>Describe</code>
+              </p>
+            </li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td class="tableblock halign-left valign-top content--lg" data-row="5" data-col="1">
+          <p class="tableblock">
+            <code id="kafka-instance-row">Kafka instance</code>
+          </p>
+          <p class="tableblock">
                       (For access to Kafka instance permissions in ACLs)
                     </p>
-          </td>
-          <td class="tableblock halign-left valign-top content--md" data-row="5" data-col="2">
-            <p class="tableblock">None</p>
-          </td>
-          <td class="tableblock halign-left valign-top content--lg" data-row="5" data-col="3">
-            <ul>
-              <li>
-                <p>
-                  <code>Allow</code>
-                </p>
-              </li>
-              <li>
-                <p>
-                  <code>Deny</code>
-                </p>
-              </li>
-            </ul>
-          </td>
-          <td class="tableblock halign-left valign-top content--lg" data-row="5" data-col="4">
-            <ul>
-              <li>
-                <p>
-                  <code>Alter</code>
-                </p>
-              </li>
-              <li>
-                <p>
-                  <code>Describe</code>
-                </p>
-              </li>
-            </ul>
-          </td>
-        </tr>
-        </tbody>
-    </table>
+        </td>
+        <td class="tableblock halign-left valign-top content--md" data-row="5" data-col="2">
+          <p class="tableblock">None</p>
+        </td>
+        <td class="tableblock halign-left valign-top content--lg" data-row="5" data-col="3">
+          <ul>
+            <li>
+              <p>
+                <code>Allow</code>
+              </p>
+            </li>
+            <li>
+              <p>
+                <code>Deny</code>
+              </p>
+            </li>
+          </ul>
+        </td>
+        <td class="tableblock halign-left valign-top content--lg" data-row="5" data-col="4">
+          <ul>
+            <li>
+              <p>
+                <code>Alter</code>
+              </p>
+            </li>
+            <li>
+              <p>
+                <code>Describe</code>
+              </p>
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
-  </rh-table>
+</rh-table>
 
-</section>
 
-<section>
-  <p>Examples taken from: <a href="https://www.w3.org/WAI/tutorials/tables">https://www.w3.org/WAI/tutorials/tables</a>.</p>
+<p>Examples taken from: <a href="https://www.w3.org/WAI/tutorials/tables">https://www.w3.org/WAI/tutorials/tables</a>.</p>
 
-  <h2>Row headers</h2>
-  <rh-table>
-    <table>
-      <col/>
-      <col/>
-      <col/>
-      <thead>
-        <tr>
-          <th sortable scope="col" data-label="Date">Date</th>
-          <th sortable scope="col" data-label="Event">Event</th>
-          <th sortable scope="col" data-label="Venue">Venue</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td data-label="Date">12 February</td>
-          <td data-label="Event">
-            <a href="">Waltz with Strauss</a>
-          </td>
-          <td data-label="Venue">Main Hall</td>
-        </tr>
-        <tr>
-          <td data-label="Date">24 March</td>
-          <td data-label="Event">The Obelisks</td>
-          <td data-label="Venue">West Wing</td>
-        </tr>
-        <tr>
-          <td data-label="Date">14 April</td>
-          <td data-label="Event">The What</td>
-          <td data-label="Venue">Main Hall</td>
-        </tr>
-      </tbody>
-    </table>
-    <p slot="disclaimer">Lorem ipsum dolor sit amet, <a href="#">consectetur</a> adipiscing elit, sed do</p>
-  </rh-table>
+<h2>Row headers</h2>
+<rh-table>
+  <table>
+    <col/>
+    <col/>
+    <col/>
+    <thead>
+      <tr>
+        <th sortable scope="col" data-label="Date">Date</th>
+        <th sortable scope="col" data-label="Event">Event</th>
+        <th sortable scope="col" data-label="Venue">Venue</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Date">12 February</td>
+        <td data-label="Event">
+          <a href="">Waltz with Strauss</a>
+        </td>
+        <td data-label="Venue">Main Hall</td>
+      </tr>
+      <tr>
+        <td data-label="Date">24 March</td>
+        <td data-label="Event">The Obelisks</td>
+        <td data-label="Venue">West Wing</td>
+      </tr>
+      <tr>
+        <td data-label="Date">14 April</td>
+        <td data-label="Event">The What</td>
+        <td data-label="Venue">Main Hall</td>
+      </tr>
+    </tbody>
+  </table>
+  <p slot="disclaimer">Lorem ipsum dolor sit amet, <a href="#">consectetur</a> adipiscing elit, sed do</p>
+</rh-table>
 
-  <h2>Overflow</h2>
-  <rh-table>
-    <table>
-      <col/>
-      <col/>
-      <col/>
-      <thead>
-        <tr>
-          <th sortable scope="col" data-label="Date">Date</th>
-          <th sortable scope="col" data-label="Event">Event</th>
-          <th sortable scope="col" data-label="Venue">Venue</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td data-label="Date">12 February</td>
-          <td data-label="Event">Waltz with Strauss</td>
-          <td data-label="Venue">Main Hall</td>
-        </tr>
-        <tr>
-          <td data-label="Date">24 March</td>
-          <td data-label="Event">The Obelisks</td>
-          <td data-label="Venue">West Wing</td>
-        </tr>
-        <tr>
-          <td data-label="Date">14 April</td>
-          <td data-label="Event">The What</td>
-          <td data-label="Venue">Main Hall</td>
-        </tr>
-      </tbody>
-    </table>
-  </rh-table>
+<h2>Overflow</h2>
+<rh-table>
+  <table>
+    <col/>
+    <col/>
+    <col/>
+    <thead>
+      <tr>
+        <th sortable scope="col" data-label="Date">Date</th>
+        <th sortable scope="col" data-label="Event">Event</th>
+        <th sortable scope="col" data-label="Venue">Venue</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Date">12 February</td>
+        <td data-label="Event">Waltz with Strauss</td>
+        <td data-label="Venue">Main Hall</td>
+      </tr>
+      <tr>
+        <td data-label="Date">24 March</td>
+        <td data-label="Event">The Obelisks</td>
+        <td data-label="Venue">West Wing</td>
+      </tr>
+      <tr>
+        <td data-label="Date">14 April</td>
+        <td data-label="Event">The What</td>
+        <td data-label="Venue">Main Hall</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
 
-  <h2>Active focus disabled</h2>
-  <rh-table>
-    <table>
-      <col/>
-      <col/>
-      <col/>
-      <thead>
-        <tr>
-          <th sortable scope="col" data-label="Date">Date</th>
-          <th sortable scope="col" data-label="Event">Event</th>
-          <th sortable scope="col" data-label="Venue">Venue</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td data-label="Date">12 February</td>
-          <td data-label="Event">Waltz with Strauss</td>
-          <td data-label="Venue">Main Hall</td>
-        </tr>
-        <tr>
-          <td data-label="Date">24 March</td>
-          <td data-label="Event">The Obelisks</td>
-          <td data-label="Venue">West Wing</td>
-        </tr>
-        <tr>
-          <td data-label="Date">14 April</td>
-          <td data-label="Event">The What</td>
-          <td data-label="Venue">Main Hall</td>
-        </tr>
-      </tbody>
-    </table>
-  </rh-table>
+<h2>Active focus disabled</h2>
+<rh-table>
+  <table>
+    <col/>
+    <col/>
+    <col/>
+    <thead>
+      <tr>
+        <th sortable scope="col" data-label="Date">Date</th>
+        <th sortable scope="col" data-label="Event">Event</th>
+        <th sortable scope="col" data-label="Venue">Venue</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Date">12 February</td>
+        <td data-label="Event">Waltz with Strauss</td>
+        <td data-label="Venue">Main Hall</td>
+      </tr>
+      <tr>
+        <td data-label="Date">24 March</td>
+        <td data-label="Event">The Obelisks</td>
+        <td data-label="Venue">West Wing</td>
+      </tr>
+      <tr>
+        <td data-label="Date">14 April</td>
+        <td data-label="Event">The What</td>
+        <td data-label="Venue">Main Hall</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
 
-  <h2>Column headers</h2>
-  <p>
-    <strong>Note: </strong>Tables with no <code>thead</code> will not stack on mobile.</p>
-  <rh-table>
-    <table>
-      <tbody>
-        <tr>
-          <th scope="row">Date</th>
-          <td>12 February</td>
-          <td>24 March</td>
-          <td>14 April</td>
-        </tr>
-        <tr>
-          <th scope="row">Event</th>
-          <td>Waltz with Strauss</td>
-          <td>The Obelisks</td>
-          <td>The What</td>
-        </tr>
-        <tr>
-          <th scope="row">Venue</th>
-          <td>Main Hall</td>
-          <td>West Wing</td>
-          <td>Main Hall</td>
-        </tr>
-      </tbody>
-    </table>
-  </rh-table>
+<h2>Column headers</h2>
+<p>
+  <strong>Note: </strong>Tables with no <code>thead</code> will not stack on mobile.</p>
+<rh-table>
+  <table>
+    <tbody>
+      <tr>
+        <th scope="row">Date</th>
+        <td>12 February</td>
+        <td>24 March</td>
+        <td>14 April</td>
+      </tr>
+      <tr>
+        <th scope="row">Event</th>
+        <td>Waltz with Strauss</td>
+        <td>The Obelisks</td>
+        <td>The What</td>
+      </tr>
+      <tr>
+        <th scope="row">Venue</th>
+        <td>Main Hall</td>
+        <td>West Wing</td>
+        <td>Main Hall</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
 
-  <h2>Row and column headers</h2>
-  <rh-table>
-    <table>
-      <caption>Delivery slots:</caption>
-      <col/>
-      <col/>
-      <col/>
-      <col/>
-      <col/>
-      <col/>
-      <thead>
-        <tr>
-          <td></td>
-          <th sortable scope="col" data-label="Monday">Monday</th>
-          <th sortable scope="col" data-label="Tuesday">Tuesday</th>
-          <th sortable scope="col" data-label="Wednesday">Wednesday</th>
-          <th sortable scope="col" data-label="Thursday">Thursday</th>
-          <th sortable scope="col" data-label="Friday">Friday</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">09:00 – 11:00</th>
-          <td data-label="Monday">Closed</td>
-          <td data-label="Tuesday">Open</td>
-          <td data-label="Wednesday">Open</td>
-          <td data-label="Thursday">Closed</td>
-          <td data-label="Friday">Closed</td>
-        </tr>
-        <tr>
-          <th scope="row">11:00 – 13:00</th>
-          <td data-label="Monday">Open</td>
-          <td data-label="Tuesday">Open</td>
-          <td data-label="Wednesday">Closed</td>
-          <td data-label="Thursday">Closed</td>
-          <td data-label="Friday">Closed</td>
-        </tr>
-        <tr>
-          <th cope="row">13:00 – 15:00</th>
-          <td data-label="Monday">Open</td>
-          <td data-label="Tuesday">Open</td>
-          <td data-label="Wednesday">Open</td>
-          <td data-label="Thursday">Closed</td>
-          <td data-label="Friday">Closed</td>
-        </tr>
-        <tr>
-          <th scope="row">15:00 – 17:00</th>
-          <td data-label="Monday">Closed</td>
-          <td data-label="Tuesday">Closed</td>
-          <td data-label="Wednesday">Closed</td>
-          <td data-label="Thursday">Open</td>
-          <td data-label="Friday">Open</td>
-        </tr>
-      </tbody>
-    </table>
-  </rh-table>
+<h2>Row and column headers</h2>
+<rh-table>
+  <table>
+    <caption>Delivery slots:</caption>
+    <col/>
+    <col/>
+    <col/>
+    <col/>
+    <col/>
+    <col/>
+    <thead>
+      <tr>
+        <td></td>
+        <th sortable scope="col" data-label="Monday">Monday</th>
+        <th sortable scope="col" data-label="Tuesday">Tuesday</th>
+        <th sortable scope="col" data-label="Wednesday">Wednesday</th>
+        <th sortable scope="col" data-label="Thursday">Thursday</th>
+        <th sortable scope="col" data-label="Friday">Friday</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">09:00 – 11:00</th>
+        <td data-label="Monday">Closed</td>
+        <td data-label="Tuesday">Open</td>
+        <td data-label="Wednesday">Open</td>
+        <td data-label="Thursday">Closed</td>
+        <td data-label="Friday">Closed</td>
+      </tr>
+      <tr>
+        <th scope="row">11:00 – 13:00</th>
+        <td data-label="Monday">Open</td>
+        <td data-label="Tuesday">Open</td>
+        <td data-label="Wednesday">Closed</td>
+        <td data-label="Thursday">Closed</td>
+        <td data-label="Friday">Closed</td>
+      </tr>
+      <tr>
+        <th cope="row">13:00 – 15:00</th>
+        <td data-label="Monday">Open</td>
+        <td data-label="Tuesday">Open</td>
+        <td data-label="Wednesday">Open</td>
+        <td data-label="Thursday">Closed</td>
+        <td data-label="Friday">Closed</td>
+      </tr>
+      <tr>
+        <th scope="row">15:00 – 17:00</th>
+        <td data-label="Monday">Closed</td>
+        <td data-label="Tuesday">Closed</td>
+        <td data-label="Wednesday">Closed</td>
+        <td data-label="Thursday">Open</td>
+        <td data-label="Friday">Open</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
 </section>
