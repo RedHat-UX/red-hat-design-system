@@ -218,7 +218,7 @@ content is included.
 {% example palette="light",
            class="centered",
            alt="Example of a disclosure on mobile",
-           src="./disclosure-responsive-3.svg" %}
+           src="./disclosure-responsive-3.png" %}
 
 ## Interaction states
 
