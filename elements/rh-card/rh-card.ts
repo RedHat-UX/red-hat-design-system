@@ -34,7 +34,7 @@ export class RhCard extends LitElement {
 
   static styles = [styles];
 
-  protected slots = new SlotController(this, 'thumbnail', 'header', null, 'footer');
+  protected slots = new SlotController(this, 'header', null, 'footer');
 
   /**
    * Sets color theme based on parent context
@@ -59,8 +59,7 @@ export class RhCard extends LitElement {
      <article part="container" id="container" class="${classMap({ [on]: !!on })}">
         <header id="header"
                 part="header"
-                class="${classMap({ empty: !this.slots.hasSlotted('header') && !this.slots.hasSlotted('thumbnail'), thumbnail: this.slots.hasSlotted('thumbnail') })}">
-          <slot name="thumbnail"></slot>
+                class="${classMap({ empty: !this.slots.hasSlotted('header') })}">
           <slot name="header"></slot>
         </header>
         <div id="body"

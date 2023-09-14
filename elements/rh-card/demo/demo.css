@@ -35,16 +35,17 @@ rh-card.bar::part(header) {
   font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
-rh-card.full-old::part(header),
+rh-card.full::part(header),
 rh-card.full::part(header) {
   padding: 0;
 }
 
-rh-card.full ::part(header)::slotted(*) {
-  padding-inline: 30px;
+rh-card.full :is(h1, h2, h3, h4, h5, h6)[slot="header"] {
+  padding-inline: var(--rh-space-xl, 24px);
+  padding-block-start: var(--rh-space-lg, 16px);
 }
 
-rh-card.full-old img {
+rh-card.full img {
   display: block;
   min-width: 100%;
   height: auto;
