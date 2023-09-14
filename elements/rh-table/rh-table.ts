@@ -61,6 +61,8 @@ const ICONS = {
 export class RhTable extends LitElement {
   static readonly styles = [styles];
 
+  @property({ reflect: true }) disclaimer?: string;
+
   get rows() {
     return this.querySelectorAll<HTMLTableRowElement>('tbody > tr');
   }
@@ -83,6 +85,9 @@ export class RhTable extends LitElement {
            @pointerleave=${this.#onPointerleave}
            @pointerover=${this.#onPointerover}>
         <slot @slotchange="${this.#onSlotchange}"></slot>
+        <slot name="disclaimer">
+          ${!this.disclaimer ? nothing : html`<small id="disclaimer" part="disclaimer">${this.disclaimer}</small>`}
+        </slot>
       </div>
     `;
   }
