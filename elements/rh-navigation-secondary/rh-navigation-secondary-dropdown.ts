@@ -146,12 +146,10 @@ export class RhNavigationSecondaryDropdown extends LitElement {
   async #mutationsCallback(): Promise<void> {
     const [menu] = this.#slots.getSlotted<HTMLElement>('menu');
     this.#highlight = menu.querySelector('[aria-current="page"]') ? true : false;
-    console.log(this, this.#highlight);
     this.requestUpdate();
   }
 
   #onSlotChange(): void {
-    console.log('slot changed');
     this.requestUpdate();
   }
 }
