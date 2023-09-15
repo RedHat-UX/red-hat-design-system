@@ -75,7 +75,7 @@ export class RhNavigationSecondaryDropdown extends LitElement {
     link.setAttribute('aria-controls', menu.id);
     link.addEventListener('click', this._clickHandler);
 
-    this.#mo.observe(this, { attributes: true, childList: true, subtree: true });
+    this.#mo.observe(this, { attributeFilter: ['aria-current'], childList: true, subtree: true });
   }
 
   render() {
