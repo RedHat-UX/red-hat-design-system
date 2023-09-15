@@ -228,7 +228,7 @@ describe('<rh-navigation-secondary>', async function() {
     });
   });
 
-  describe('current-page indicator', function() {
+  describe('current page indicator', function() {
     let dropdown: RhNavigationSecondaryDropdown;
 
     beforeEach(async function() {
