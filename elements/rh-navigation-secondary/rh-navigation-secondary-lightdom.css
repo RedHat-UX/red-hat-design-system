@@ -146,6 +146,12 @@
   color: var(--_nav-link-color) !important;
 }
 
+:is(rh-secondary-nav, rh-navigation-secondary) > [slot="nav"] > li > a:focus,
+:is(rh-secondary-nav-dropdown, rh-navigation-secondary-dropdown) > a:focus {
+  position: relative;
+  z-index: 1;
+}
+
 :is(rh-secondary-nav, rh-navigation-secondary) > [slot="nav"] > li {
   border-block-start: 1px solid var(--rh-color-border-subtle-on-light, #c7c7c7);
 }
