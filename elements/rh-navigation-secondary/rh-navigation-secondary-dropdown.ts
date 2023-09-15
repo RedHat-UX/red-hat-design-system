@@ -84,7 +84,7 @@ export class RhNavigationSecondaryDropdown extends LitElement {
     return html`
       <div id="container" part="container" class="${classMap(classes)}">
         <slot name="link"></slot>
-        <slot name="menu" @slotchange="${this.#onSlotChange}"></slot>
+        <slot name="menu"></slot>
       </div>
     `;
   }
@@ -146,10 +146,6 @@ export class RhNavigationSecondaryDropdown extends LitElement {
   async #mutationsCallback(): Promise<void> {
     const [menu] = this.#slots.getSlotted<HTMLElement>('menu');
     this.#highlight = menu.querySelector('[aria-current="page"]') ? true : false;
-    this.requestUpdate();
-  }
-
-  #onSlotChange(): void {
     this.requestUpdate();
   }
 }

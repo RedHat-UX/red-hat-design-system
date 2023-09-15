@@ -1,3 +1,4 @@
+import '@rhds/elements/rh-button/rh-button.js';
 
 const nav = document.querySelector('rh-navigation-secondary [slot="nav"]');
 const links = nav.querySelectorAll('a');
