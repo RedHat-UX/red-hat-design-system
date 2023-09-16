@@ -1,51 +1,15 @@
-/* Taken from Wes's implementation */
-:is(rh-table) :is(th, td).content--lg {
-  min-width: 16em;
-}
-
-:is(rh-table) :is(th, td).content--md {
-  min-width: 10em;
-}
-
-:is(rh-table) :is(th, td).halign-left  {
-  text-align: left;
-}
-
-:is(rh-table) :is(th, td).halign-center  {
-  text-align: center;
-}
-
-:is(rh-table) :is(th, td).halign-right  {
-  text-align: right;
-}
-
-:is(rh-table) :is(th, td).valign-top  {
-  vertical-align: top;
-}
-  
-:is(rh-table) :is(th, td).valign-middle  {
-  vertical-align: middle;
-}
-  
-:is(rh-table) :is(th, td).valign-bottom  {
-  vertical-align: bottom;
-}
-
-/* New */
-
-/* TODO: consolidate color discrepancies */
-
-/* All */
 :is(rh-table) table {
-  background: var(--rh-color-surface-lightest, #ffffff);
+  margin: 0 auto;
+  table-layout: fixed;
+  border: 0;
+  border-collapse: collapse;
 }
 
 :is(rh-table) tr {
   border-bottom: 1px solid #d2d2d2;
 }
 
-/* TODO: don't apply background color to header row */
-:is(rh-table:not([active-focus])) tr:hover {
+:is(rh-table) tr:hover {
   background: rgba(210, 210, 210, 0.2);
 }
 
@@ -54,7 +18,6 @@
   white-space: nowrap;
 }
 
-/* TODO: refine transition */
 :is(rh-table) :is(tr, col){
   transition: background .3s ease-out;
 }
@@ -68,6 +31,68 @@
   text-decoration: underline;
 }
 
+/* Caption */
+:is(rh-table) caption {
+  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+
+  /* font-weight: 500; */
+  font-weight: var(--rh-font-weight-heading-bold, 700);
+  line-height: var(--rh-line-height-body-text, 1.5);
+
+  /* margin-bottom: 36px; */
+  margin-bottom: var(--rh-space-2xl, 32px);
+  text-align: center;
+}
+
+/* Sortable columns */
+:is(rh-table) th[sortable] {
+  padding: 0;
+}
+
+:is(rh-table) th[sortable] .visually-hidden {
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+:is(rh-table) :not(th[sort-direction]) .sort-indicator {
+  color: var(--rh-color-gray-30, #a3a3a3);
+}
+
+:is(rh-table) th[sort-direction] .sort-indicator {
+  color: inherit;
+  transform: rotate(180deg);
+}
+
+:is(rh-table) :not(th[sort-direction]) .visually-hidden {
+  display: none;
+}
+
+:is(rh-table) th[sort-direction] .visually-hidden {
+  display: unset;
+}
+
+:is(rh-table) th[sortable] .sort-button {
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--rh-space-sm, 6px);
+  background-color: transparent;
+  border: 0;
+  width: 100%;
+  padding: var(--rh-space-lg, 16px);
+}
+
+
 /* Desktop */
 :is(rh-table) :is(th, td)  {
   padding: var(--rh-space-xl, 24px) var(--rh-space-lg, 16px);
@@ -79,16 +104,8 @@
   padding-bottom: var(--rh-space-lg, 16px);
 }
 
-
-:is(rh-table) :is(col.active),
-:is(rh-table[active-focus]) :is(tbody tr:hover) {
+:is(rh-table) :is(col.active) {
   background: rgba(0, 102, 204, 0.1);
-}
-
-:is(rh-table[active-focus]) tbody td:hover {
-  background: var(--rh-color-surface-lightest, #ffffff);
-  outline: 1.5px solid var(--rh-color-border-interactive-on-light, #0066cc);
-  outline-offset: -1.5px;
 }
 
 /* Tablet */
@@ -147,74 +164,3 @@
     content: attr(data-label);
   }
 }
-
-/* Utility */
-.visually-hidden {
-  position: fixed;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-/* Caption */
-:is(rh-table) caption {
-  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-  font-size: var(--rh-font-size-body-text-lg, 1.125rem);
-
-  /* font-weight: 500; */
-  font-weight: var(--rh-font-weight-heading-bold, 700);
-  line-height: var(--rh-line-height-body-text, 1.5);
-
-  /* margin-bottom: 36px; */
-  margin-bottom: var(--rh-space-2xl, 32px);
-}
-
-/* Sortable columns */
-:is(rh-table) th[sortable] {
-  padding: 0;
-}
-
-:is(rh-table) :not(th[sort-direction]) .sort-indicator {
-  color: var(--rh-color-gray-30, #a3a3a3);
-}
-
-:is(rh-table) th[sort-direction] .sort-indicator {
-  color: inherit;
-  transform: rotate(180deg);
-}
-
-:is(rh-table) th[sort-direction] .sort-indicator .desc {
-  transform: scaleY(1);
-}
-
-:is(rh-table) th[sort-direction] .sort-indicator .asc {
-  transform: scaleY(-1);
-}
-
-:is(rh-table) :not(th[sort-direction]) .visually-hidden {
-  display: none;
-}
-
-:is(rh-table) th[sort-direction] .visually-hidden {
-  display: unset;
-}
-
-:is(rh-table) th[sortable] .sort-button {
-  cursor: pointer;
-  font-family: inherit;
-  font-weight: inherit;
-  font-size: inherit;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--rh-space-sm, 6px);
-  background-color: transparent;
-  border: 0;
-  width: 100%;
-  padding: var(--rh-space-lg, 16px);
-}
-
-
