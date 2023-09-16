@@ -1,38 +1,44 @@
-/* stylelint-disable max-line-length */
+/**
+* TODO
+* - CSS variables
+* - Tokens
+* - Should disclaimer styling be in Light DOM CSS file?
+**/
+
 * {
   box-sizing: border-box;
 }
 
 :host {
-  display: inline-block;
-
-  --rh-table--button-outline-focus: var(--rh-border-width-md, 2px) dashed var(--rh-color-black, #000000);
-  --_rh-table--button-size-px: 28;
-  --_rh-table--button-size: calc(var(--_rh-table--button-size-px) / 16 * 1rem);
-  --_rh-table--button-icon-size: calc(calc(var(--_rh-table--button-size-px) - 12) / 16 * 1rem);
-
-  /* #8a8a8a */
-  --_rh-table--button-color: var(--rh-color-icon-subtle, #707070);
+  position: relative;
+  display: block;
+  width: auto;
+  max-width: 100%;
+  margin: 2rem 0;
 }
 
 #container {
+  width: auto;
   max-width: 100%;
-  width: fit-content;
+  max-height: max-content;
   overflow: auto;
-  position: relative;
-  max-height: var(--rh-table--max-height, max-content);
+  scrollbar-color: #d6d6d6 #8e8e8e;
 }
 
-::slotted(table) {
-  margin: 0;
-  table-layout: fixed;
-  border: 0;
-  border-collapse: collapse;
+#container::-webkit-scrollbar {
+  width: calc(10 / 16 * 1rem);
+  height: calc(10 / 16 * 1rem);
 }
 
-/* Table disclaimer */
+#container::-webkit-scrollbar,
+#container::-webkit-scrollbar-track {
+  background-color: #d6d6d6;
+}
 
-/* TODO: what styles should go here versus lightDOM CSS file? */
+#container::-webkit-scrollbar-thumb {
+  background-color: #8e8e8e;
+}
+
 slot[name="disclaimer"] {
   display: inline-block;
   padding-top: var(--rh-space-lg, 16px);
