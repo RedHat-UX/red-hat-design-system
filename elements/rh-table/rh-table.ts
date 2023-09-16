@@ -1,31 +1,13 @@
-/* eslint-disable no-debugger */
-/* eslint-disable no-console */
 import { LitElement, html, svg, render, nothing } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
-import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
+
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import styles from './rh-table.css';
 import { classMap } from 'lit/directives/class-map.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
-import { query } from 'lit/decorators/query.js';
+import { property } from 'lit/decorators/property.js';
 
-const DIRECTIONS = { asc: 'desc', desc: 'asc' } as const;
-
-// TODO: translations
-/**
- * Title
- * Expand fullscreen functionality (cp-elements)
- * Sorting
- * - default sort
- * - add event handler to each th element
- * - shift nodes
- * Vertical scrolling
- * Hover
- * Link styling
- * Mobile styling
- */
 
 // TODO: replace with rh-icon
 const ICONS = {
@@ -61,18 +43,20 @@ const ICONS = {
 export class RhTable extends LitElement {
   static readonly styles = [styles];
 
-  @property({ reflect: true }) disclaimer?: string;
-
-  get rows() {
-    return this.querySelectorAll<HTMLTableRowElement>('tbody > tr');
+  get #rows(): NodeListOf<HTMLTableRowElement> | undefined {
+    return this.querySelectorAll('tbody > tr') as NodeListOf<HTMLTableRowElement> | undefined;
   }
 
-  @queryAssignedElements() _defaultSlot?: HTMLElement[];
-  @query('#container') _container!: HTMLDivElement;
+  get #sortableHeaders(): NodeListOf<HTMLTableCellElement> | undefined {
+    return this.querySelectorAll('th[sortable]') as NodeListOf<HTMLTableCellElement> | undefined;
+  }
 
-  #table!: HTMLTableElement | null;
-  #sortableHeaders: HTMLTableCellElement[] = [];
-  #cols: HTMLTableColElement[] = [];
+  get #cols(): NodeListOf<HTMLTableColElement> | undefined {
+    return this.querySelectorAll('col') as NodeListOf<HTMLTableColElement> | undefined;
+  }
+
+  @property({ reflect: true }) disclaimer?: string;
+
   #logger = new Logger(this);
   #screenSize = new ScreenSizeController(this);
 
@@ -93,6 +77,9 @@ export class RhTable extends LitElement {
   }
 
   #onPointerleave() {
+    if (!this.#cols) {
+      return;
+    }
     this.#cols.forEach(col => col.classList.remove('active'));
   }
 
@@ -112,6 +99,10 @@ export class RhTable extends LitElement {
       } else {
         return;
       }
+    }
+
+    if (!this.#cols) {
+      return;
     }
 
     this.#cols.forEach((col, index) => {
@@ -135,30 +126,37 @@ export class RhTable extends LitElement {
   }
 
   #onSlotchange() {
-    this.#table = this.querySelector('table');
-    this.#sortableHeaders = [...(this.querySelectorAll('th[sortable]') || [])] as HTMLTableCellElement[];
+    if (!this.#sortableHeaders) {
+      return;
+    }
 
     // Add button to sortable headers
     for (const header of this.#sortableHeaders) {
       render(this.#sortButtonTemplate(header.childNodes), header);
     }
-
-    this.#cols = [...(this.querySelectorAll('col') || [])];
   }
 
   #onSort(event: Event) {
     // update selected
     const selected = event.currentTarget as HTMLButtonElement;
     const selectedParent = selected.closest('th');
-    // TODO better way of writing this to avoid ts errors
-    // @ts-ignore
-    const direction = DIRECTIONS[selectedParent?.getAttribute('sort-direction') ?? 'asc'] || 'desc';
+
+    const sorted = (selectedParent?.getAttribute('sort-direction') ?? 'asc');
+    const direction = sorted === 'asc' ? 'desc' : 'asc';
+
     selectedParent?.setAttribute('aria-sort', `${direction}ending`);
     selectedParent?.setAttribute('sort-direction', direction);
+
     const iconContainer = selected.querySelector('.sort-indicator') as HTMLSpanElement;
     render(ICONS.get(direction), iconContainer);
+
     const srContainer = selected.querySelector('.visually-hidden') as HTMLSpanElement;
     render(`(sorted ${direction}ending)`, srContainer);
+
+    if (!this.#sortableHeaders) {
+      this.#logger.warn('No sortable headers found');
+      return;
+    }
 
     // clean up previously sorted headers
     for (const header of this.#sortableHeaders) {
@@ -179,12 +177,21 @@ export class RhTable extends LitElement {
     const children = header.parentElement?.children;
     if (children) {
       const columnIndexToSort = [...children].indexOf(header);
+
+      if (!this.#rows) {
+        this.#logger.warn('No rows found');
+        return;
+      }
+
       Array
-        .from(this.rows, node => RhTable.getNodeContentForSort(columnIndexToSort, node))
+        .from(this.#rows, node => RhTable.getNodeContentForSort(columnIndexToSort, node))
         .sort((a, b) => RhTable.sortByContent(direction, a, b))
         .forEach(({ node }, index) => {
-          const target = this.rows[index];
-          if (this.rows[index] !== node) {
+          if (!this.#rows) {
+            return;
+          }
+          const target = this.#rows[index];
+          if (this.#rows[index] !== node) {
             const position: InsertPosition =
                 direction === 'desc' ? 'afterend' : 'beforebegin';
             target.insertAdjacentElement(position, node);
