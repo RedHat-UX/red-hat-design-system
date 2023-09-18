@@ -127,4 +127,9 @@ Released April 3, 2023
 For release notes on older versions, please [view our release notes on GitHub](https://github.com/RedHat-UX/red-hat-design-system/releases).
 
 </section>
-<!-- Cross links -->
+
+{% feedback %}
+  <h2>Design and code status</h2>
+  <p>To check the design and code status of a foundation or component, visit <a href="/design-code-status">this page</a>.</p>
+{% endfeedback %}
+
