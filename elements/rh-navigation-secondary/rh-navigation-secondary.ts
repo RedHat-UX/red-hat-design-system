@@ -2,14 +2,17 @@ import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
+import { state } from 'lit/decorators/state.js';
+import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
+
+import { ComposedEvent } from '@patternfly/pfe-core';
+import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import '../../lib/elements/rh-context-provider/rh-context-provider.js';
 
 import './rh-navigation-secondary-menu-section.js';
 import './rh-navigation-secondary-overlay.js';
-
-import { ComposedEvent } from '@patternfly/pfe-core';
 
 import { RhNavigationSecondaryDropdown, SecondaryNavDropdownExpandEvent } from './rh-navigation-secondary-dropdown.js';
 
@@ -32,7 +35,6 @@ export type NavPalette = Extract<ColorPalette, (
 )>;
 
 import styles from './rh-navigation-secondary.css';
-import { state } from 'lit/decorators/state.js';
 
 /**
  * The Secondary navigation is used to connect a series of pages together. It displays wayfinding content and links relevant to the page it is placed on. It should be used in conjunction with the [primary navigation](../navigation-primary).
@@ -67,6 +69,8 @@ export class RhNavigationSecondary extends LitElement {
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette: NavPalette = 'lighter';
 
+  @queryAssignedElements({ slot: 'nav' }) private _nav?: HTMLElement[];
+
   #logger = new Logger(this);
 
   #logoCopy: HTMLElement | null = null;
@@ -81,6 +85,11 @@ export class RhNavigationSecondary extends LitElement {
 
   /** Compact mode  */
   #compact = false;
+
+  #tabindex = new RovingTabindexController(this);
+
+  /** Navigation Items that should be initialized by Roving Tabindex */
+  #navItems: HTMLElement[] | undefined;
 
   /**
    * `mobileMenuExpanded` property is toggled when the mobile menu button is clicked,
@@ -141,7 +150,7 @@ export class RhNavigationSecondary extends LitElement {
                   aria-expanded="${String(expanded) as 'true' | 'false'}"
                   @click="${this.#toggleMobileMenu}"><slot name="mobile-menu">Menu</slot></button>
           <rh-context-provider color-palette="${dropdownPalette}">
-            <slot name="nav"></slot>
+            <slot name="nav" @slotchange="${this.#onSlotchange}"></slot>
             <div id="cta" part="cta">
               <slot name="cta"></slot>
             </div>
@@ -234,6 +243,20 @@ export class RhNavigationSecondary extends LitElement {
     }
   }
 
+  #onSlotchange() {
+    if (this._nav) {
+      this._nav.forEach(nav => {
+        this.#navItems = Array.from(
+          nav.querySelectorAll(':is(rh-navigation-secondary-dropdown, rh-secondary-nav-dropdown) > a, [slot="nav"] > li > a')
+        );
+      });
+      if (!this.#navItems) {
+        return;
+      }
+      this.#tabindex.initItems(this.#navItems);
+    }
+  }
+
   /**
    * Gets all dropdowns and finds the element given and returns its index
    */
@@ -268,6 +291,10 @@ export class RhNavigationSecondary extends LitElement {
     }
     const dropdown = this.#dropdownByIndex(index);
     if (dropdown && RhNavigationSecondary.isDropdown(dropdown)) {
+      const link = dropdown.querySelector('a');
+      if (link) {
+        this.#tabindex.updateActiveItem(link);
+      }
       this.#openDropdown(dropdown);
     }
   }
