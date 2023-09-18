@@ -1,0 +1,25 @@
+#sort-button {
+  background-color: transparent;
+  border: 0;
+}
+
+#sort-button:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+}
+
+#sort-button #sort-indicator {
+  color: var(--rh-color-gray-30, #a3a3a3);
+}
+
+.visually-hidden {
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

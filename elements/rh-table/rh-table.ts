@@ -7,36 +7,11 @@ import styles from './rh-table.css';
 import { classMap } from 'lit/directives/class-map.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 import { property } from 'lit/decorators/property.js';
-
-
-// TODO: replace with rh-icon
-const ICONS = {
-  asc: {
-    viewBox: '0 0 320 512',
-    path: 'M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z',
-  },
-  desc: {
-    viewBox: '0 0 320 512',
-    path: 'M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z',
-  },
-  get(name: 'asc' | 'desc') {
-    const { viewBox, path } = ICONS[name];
-    return svg`
-      <svg
-          aria-hidden="true"
-          class="icon"
-          fill="currentColor"
-          height="1em"
-          width="1em"
-          style="vertical-align:-0.125em"
-          viewBox="${viewBox}">
-        <path d="${path}"/>
-      </svg>`;
-  },
-};
+import { RequestSortEvent, RhSortButton } from './rh-sort-button.js';
+export * from './rh-sort-button.js';
 
 /**
- * Table
+ * Table sort button
  * @slot - Place element content here
  */
 @customElement('rh-table')
@@ -68,7 +43,8 @@ export class RhTable extends LitElement {
            class=${classMap({ mobile })}
            @pointerleave=${this.#onPointerleave}
            @pointerover=${this.#onPointerover}>
-        <slot @slotchange="${this.#onSlotchange}"></slot>
+        <slot @slotchange="${this.#onSlotchange}"
+              @request-sort="${this.#onRequestSort}"></slot>
         <slot name="disclaimer">
           ${!this.disclaimer ? nothing : html`<small id="disclaimer" part="disclaimer">${this.disclaimer}</small>`}
         </slot>
@@ -115,66 +91,29 @@ export class RhTable extends LitElement {
     });
   }
 
-  #sortButtonTemplate(children: NodeListOf<ChildNode>) {
-    return html`
-      <button class="sort-button"
-              @click="${this.#onSort.bind(this)}">
-              ${[...children]}
-        <span class="visually-hidden"></span>
-        <span class="sort-indicator"></span>
-      </button>`;
-  }
-
   #onSlotchange() {
-    if (!this.#sortableHeaders) {
-      return;
-    }
-
-    // Add button to sortable headers
-    for (const header of this.#sortableHeaders) {
-      render(this.#sortButtonTemplate(header.childNodes), header);
-    }
+    //
   }
 
-  #onSort(event: Event) {
-    // update selected
-    const selected = event.currentTarget as HTMLButtonElement;
-    const selectedParent = selected.closest('th');
-
-    const sorted = (selectedParent?.getAttribute('sort-direction') ?? 'asc');
-    const direction = sorted === 'asc' ? 'desc' : 'asc';
-
-    selectedParent?.setAttribute('aria-sort', `${direction}ending`);
-    selectedParent?.setAttribute('sort-direction', direction);
-
-    const iconContainer = selected.querySelector('.sort-indicator') as HTMLSpanElement;
-    render(ICONS.get(direction), iconContainer);
-
-    const srContainer = selected.querySelector('.visually-hidden') as HTMLSpanElement;
-    render(`(sorted ${direction}ending)`, srContainer);
-
-    if (!this.#sortableHeaders) {
-      this.#logger.warn('No sortable headers found');
-      return;
-    }
-
-    // clean up previously sorted headers
-    for (const header of this.#sortableHeaders) {
-      if (header !== selectedParent) {
-        header.removeAttribute('sort-direction');
-        header.removeAttribute('aria-sort');
+  #onRequestSort(event: Event) {
+    if (event instanceof RequestSortEvent) {
+      for (const button of this.querySelectorAll<RhSortButton>('rh-sort-button')) {
+        button.selected = button === event.target;
+        if (button !== event.target) {
+          button.removeAttribute('sort-direction');
+        }
       }
-    }
-
-    // only sort if it hasn't been handled already
-    if (!event.defaultPrevented && selectedParent instanceof HTMLTableCellElement) {
-      this.#performSort(selectedParent, direction);
+      if (!event.defaultPrevented && event.target instanceof RhSortButton) {
+        event.target.sortDirection = event.direction;
+        this.#performSort(event.target, event.direction);
+      }
     }
   }
 
   // TODO should we move the remaining methods into a controller?
-  #performSort(header: HTMLTableCellElement, direction: 'asc' | 'desc') {
-    const children = header.parentElement?.children;
+  #performSort(button: RhSortButton, direction: 'asc' | 'desc') {
+    const header = button.closest('th');
+    const children = header?.parentElement?.children;
     if (children) {
       const columnIndexToSort = [...children].indexOf(header);
 

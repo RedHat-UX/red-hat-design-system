@@ -1,0 +1,74 @@
+import { LitElement, html, svg } from 'lit';
+import { customElement } from 'lit/decorators/custom-element.js';
+import { classMap } from 'lit/directives/class-map.js';
+import { property } from 'lit/decorators/property.js';
+import styles from './rh-sort-button.css';
+
+const DIRECTIONS = { asc: 'desc', desc: 'asc' } as const;
+
+export class RequestSortEvent extends Event {
+  constructor(
+      public direction: 'asc' | 'desc',
+  ) {
+    super('request-sort', {
+      bubbles: true,
+      cancelable: true,
+    });
+  }
+}
+
+// TODO need finalized icons from designers
+const paths = new Map(Object.entries({
+  asc: 'M279 224H41c-21.4 0-32.1-25.9-17-41L143 64c9.4-9.4 24.6-9.4 33.9 0l119 119c15.2 15.1 4.5 41-16.9 41z',
+  desc: 'M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41z',
+  sort: 'M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41zm255-105L177 64c-9.4-9.4-24.6-9.4-33.9 0L24 183c-15.1 15.1-4.4 41 17 41h238c21.4 0 32.1-25.9 17-41z',
+}));
+
+/**
+ * Table sort button
+ * @slot - Place element content here
+ */
+@customElement('rh-sort-button')
+export class RhSortButton extends LitElement {
+  static readonly styles = [styles];
+
+  @property({ type: Boolean, reflect: true }) selected?: boolean = false;
+
+  @property({
+    reflect: true,
+    attribute: 'sort-direction',
+  }) sortDirection?: 'asc' | 'desc';
+
+  @property() column?: string;
+
+  render() {
+    const selected = !!this.selected;
+    return html`
+      <button id="sort-button" class="sortable ${classMap({ selected })}" part="sort-button" @click="${this.sort}">
+        <span class="visually-hidden">${!this.sortDirection ? '' : `(sort${!this.column ? '' : ` by ${this.column}`} in ${this.sortDirection === 'asc' ? 'ascending' : 'descending'} order)`}</span>
+        <span id="sort-indicator">
+          <svg fill="currentColor" 
+               height="1em"
+               width="1em"
+               viewBox="0 0 320 512"
+               aria-hidden="true"
+               role="img"
+               style="vertical-align: -0.125em;">
+            ${svg`<path d="${paths.get(this.sortDirection ?? 'sort')}"></path>`}
+          </svg>
+        </span>
+      </button>
+    `;
+  }
+
+  sort() {
+    const next = DIRECTIONS[this.sortDirection ?? 'asc'];
+    this.dispatchEvent(new RequestSortEvent(next));
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'rh-sort-button': RhSortButton;
+  }
+}
