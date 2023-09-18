@@ -98,9 +98,12 @@ export class RhTable extends LitElement {
   #onRequestSort(event: Event) {
     if (event instanceof RequestSortEvent) {
       for (const button of this.querySelectorAll<RhSortButton>('rh-sort-button')) {
-        button.selected = button === event.target;
-        if (button !== event.target) {
+        const header = button.closest('th');
+        if (button === event.target) {
+          header?.setAttribute('aria-sort', `${event.direction}ending`);
+        } else {
           button.removeAttribute('sort-direction');
+          header?.removeAttribute('aria-sort');
         }
       }
       if (!event.defaultPrevented && event.target instanceof RhSortButton) {

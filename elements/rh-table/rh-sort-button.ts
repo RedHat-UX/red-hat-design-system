@@ -26,13 +26,10 @@ const paths = new Map(Object.entries({
 
 /**
  * Table sort button
- * @slot - Place element content here
  */
 @customElement('rh-sort-button')
 export class RhSortButton extends LitElement {
   static readonly styles = [styles];
-
-  @property({ type: Boolean, reflect: true }) selected?: boolean = false;
 
   @property({
     reflect: true,
@@ -42,11 +39,10 @@ export class RhSortButton extends LitElement {
   @property() column?: string;
 
   render() {
-    const selected = !!this.selected;
     return html`
-      <button id="sort-button" class="sortable ${classMap({ selected })}" part="sort-button" @click="${this.sort}">
+      <button id="sort-button" part="sort-button" @click="${this.sort}">
         <span class="visually-hidden">${!this.sortDirection ? '' : `(sort${!this.column ? '' : ` by ${this.column}`} in ${this.sortDirection === 'asc' ? 'ascending' : 'descending'} order)`}</span>
-        <span id="sort-indicator">
+        <span id="sort-indicator" part="sort-indicator">
           <svg fill="currentColor" 
                height="1em"
                width="1em"
