@@ -64,49 +64,25 @@
   background: rgba(0, 102, 204, 0.1);
 }
 
-/* Tablet */
-@media (min-width: 768px) and (max-width: 1200px) {
-  :is(rh-table[active-focus]) tbody tr:hover {
-    background: #f5f5f5;
-  }
-}
-
-@media (max-width: 1200px) {
-  :is(rh-table[active-focus]) tbody td:hover {
-    background: rgba(0, 102, 204, 0.1);
-    outline: unset;
-    outline-offset: unset;
-  }
-}
-
 /* Mobile: */
 @media (max-width: 768px) {
-  :is(rh-table) table:has(thead) {
+  :is(rh-table) table {
     display: grid;
   }
 
-  :is(rh-table) table:has(thead) thead {
+  :is(rh-table) thead {
     display: none;
   }
 
-  :is(rh-table) table:has(thead) tbody tr {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
-  :is(rh-table[active-focus]) table:has(thead) tbody tr:hover {
-    background: rgba(0, 102, 204, 0.1);
-  }
-
-  :is(rh-table) table:has(thead) tbody tr > * {
+  :is(rh-table) tbody tr > * {
     padding: var(--rh-space-lg, 16px);
   }
 
-  /* todo: need styling for row header */
-  :is(rh-table) table:has(thead) tbody tr th {
+  :is(rh-table) tbody tr th {
     text-align: center;
   }
 
+  /* TODO: rewrite without :has */
   :is(rh-table) table:has(thead) tbody tr td {
     display: grid;
     grid-column-gap: var(--rh-space-lg, 16px);
