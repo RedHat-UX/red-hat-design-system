@@ -1,10 +1,9 @@
-import { LitElement, html, nothing } from 'lit';
+import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import styles from './rh-table.css';
-import { property } from 'lit/decorators/property.js';
 import { RequestSortEvent, RhSortButton } from './rh-sort-button.js';
 export * from './rh-sort-button.js';
 
@@ -16,15 +15,17 @@ export * from './rh-sort-button.js';
 export class RhTable extends LitElement {
   static readonly styles = [styles];
 
-  get #rows(): NodeListOf<HTMLTableRowElement> | undefined {
-    return this.querySelectorAll('tbody > tr') as NodeListOf<HTMLTableRowElement> | undefined;
+  get #table(): HTMLTableElement | undefined {
+    return this.querySelector('table') as HTMLTableElement | undefined;
   }
 
   get #cols(): NodeListOf<HTMLTableColElement> | undefined {
     return this.querySelectorAll('col') as NodeListOf<HTMLTableColElement> | undefined;
   }
 
-  @property({ reflect: true }) disclaimer?: string;
+  get #rows(): NodeListOf<HTMLTableRowElement> | undefined {
+    return this.querySelectorAll('tbody > tr') as NodeListOf<HTMLTableRowElement> | undefined;
+  }
 
   #logger = new Logger(this);
 
@@ -33,10 +34,8 @@ export class RhTable extends LitElement {
       <div id="container"
            @pointerleave=${this.#onPointerleave}
            @pointerover=${this.#onPointerover}>
-        <slot @request-sort="${this.#onRequestSort}"></slot>
-        <slot name="disclaimer">
-          ${!this.disclaimer ? nothing : html`<small id="disclaimer" part="disclaimer">${this.disclaimer}</small>`}
-        </slot>
+        <slot @request-sort="${this.#onRequestSort}" @slotchange=${this.#onSlotChange}></slot>
+        <slot id="summary" name="summary"></slot>
       </div>
     `;
   }
@@ -78,6 +77,12 @@ export class RhTable extends LitElement {
         col.classList.remove('active');
       }
     });
+  }
+
+  #onSlotChange() {
+    if (this.#table) {
+      this.#table.setAttribute('aria-describedby', 'summary');
+    }
   }
 
   #onRequestSort(event: Event) {
