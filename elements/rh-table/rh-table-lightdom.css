@@ -45,7 +45,7 @@
   line-height: var(--rh-line-height-body-text, 1.5);
 
   /* margin-bottom: 36px; */
-  margin-bottom: var(--rh-space-2xl, 32px);
+  margin-bottom: var(--rh-space-lg, 16px);
   text-align: center;
 }
 
