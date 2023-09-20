@@ -40,7 +40,7 @@ export class RhSortButton extends LitElement {
 
   render() {
     return html`
-      <button id="sort-button" part="sort-button" @click="${this.sort}">
+      <button id="sort-button" part="sort-button" @click="${this.sort}" aria-label="Sort">
         <span class="visually-hidden">${!this.sortDirection ? '' : `(sort${!this.column ? '' : ` by ${this.column}`} in ${this.sortDirection === 'asc' ? 'ascending' : 'descending'} order)`}</span>
         <span id="sort-indicator" part="sort-indicator">
           <svg fill="currentColor" 
