@@ -2,7 +2,6 @@ import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
-import { initializer } from '@patternfly/pfe-core/decorators.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
@@ -13,19 +12,28 @@ export class RhFooterLinks extends LitElement {
   static readonly styles = style;
 
   /**
-   * Visibily hide the header slot. Setting this to true will not affect
-   * aria-labelledby.
+   * Cause the header slot to be visually hidden.
+   * Setting this to true will not affect `aria-labelledby`.
    */
-  @property({ type: Boolean, attribute: 'header-hidden', reflect: true }) public headerHidden = false;
+  @property({
+    type: Boolean,
+    attribute: 'header-hidden',
+    reflect: true,
+  }) headerHidden = false;
 
-  private logger = new Logger(this);
+  #logger = new Logger(this);
 
-  protected slots = new SlotController(this, {
-    slots: ['header'],
-  });
+  #mo = new MutationObserver(() => this.updateAccessibility());
 
-  @initializer()
-  public updateAccessibility() {
+  protected slots = new SlotController(this, 'header');
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.updateAccessibility();
+    this.#mo.observe(this, { childList: true });
+  }
+
+  updateAccessibility() {
     // ensure we've rendered to our shadowroot
     const header = this.querySelector('[slot="header"]');
     const ul = this.querySelector('ul');
@@ -34,7 +42,7 @@ export class RhFooterLinks extends LitElement {
       header.id ||= getRandomId('rh-footer-links');
       ul.setAttribute('aria-labelledby', header.id);
     } else {
-      this.logger.warn('This links set doesn\'t have a valid header associated with it.');
+      this.#logger.warn('This links set doesn\'t have a valid header associated with it.');
     }
   }
 
