@@ -1,0 +1,9 @@
+:host {
+  display: block;
+}
+
+slot:has(.empty) {
+  border: 1px solid red;
+  display: block;
+  height: 100px;
+}
