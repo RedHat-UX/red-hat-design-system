@@ -421,13 +421,4 @@ title: Beta release notes
 
 {%- endcall %}
 
-<!-- Cross links -->
-
-<div class="multi-column--min-300-wide section section--palette-default container feedback">
-  {% call components.section("Feedback") -%}
-    <p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
-  {%- endcall %}
-  {% call components.section("Design and code status") -%}
-    <p>To check the design and code status of a foundation or component, visit <a href="../design-code-status">this page</a>.</p>
-  {%- endcall %}
-</div>
+{% include 'feedback.html' %}
