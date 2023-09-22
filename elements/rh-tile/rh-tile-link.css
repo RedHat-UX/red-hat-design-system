@@ -1,0 +1,17 @@
+:host {
+  display: inline-block;
+  outline: 1px solid blue;
+}
+
+:host,
+slot,
+::slotted(*) {
+  position: relative;
+}
+
+::slotted(*):after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  outline: 1px solid red;
+}

@@ -1,4 +1,14 @@
 <link rel="stylesheet" href="demo.css">
 <script type="module" src="rh-tile.js"></script>
 
-<rh-tile></rh-tile>
+<rh-tile>
+  <div slot="title">Title</div>
+  <h2 slot="headline"><a href="#top">Headline</a></h2>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</rh-tile>
+
+<rh-tile>
+  <div slot="title">Title</div>
+  <h2 slot="headline"><rh-tile-link><a href="#top">Headline</a></rh-tile-link></h2>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</rh-tile>
