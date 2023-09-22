@@ -9,7 +9,7 @@ bodyClasses: page-docs
 We are continually making changes in order to improve and grow the Red Hat Design System. If you think changes need to be made to a component, foundation, or anything else, please submit a [GitHub issue](https://github.com/RedHat-UX/red-hat-design-system/issues).
 
 <nav class="releases-links">
-  <rh-block id="changelog">
+  <rh-block id="changelog-block">
     <a href="https://github.com/RedHat-UX/red-hat-design-system/releases">
       <h2 slot="header">Changelog</h2>
     </a>

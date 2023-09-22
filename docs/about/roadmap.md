@@ -13,7 +13,7 @@ The roadmap is subject to change based on our users' feedback and needs. If you 
 Check out [our scrum board on GitHub](https://github.com/orgs/RedHat-UX/projects/1/views/18) to see what we're working on from week to week.
 
 <nav class="releases-links">
-  <rh-block id="roadmap">
+  <rh-block id="roadmap-block">
     <a href="https://github.com/orgs/RedHat-UX/projects/7/">
       <h2 slot="header">Roadmap</h2>
     </a>
@@ -23,5 +23,5 @@ Check out [our scrum board on GitHub](https://github.com/orgs/RedHat-UX/projects
 
 {% feedback %}
   <h2>Release Notes</h2>
-  <p>To see what foundations, tokens, elements, or patterns have been released recently, check out <a href="/about/roadmap">our release notes</a>.</p>
+  <p>To see what foundations, tokens, elements, or patterns have been released recently, check out <a href="/about/release-notes">our release notes</a>.</p>
 {% endfeedback %}
