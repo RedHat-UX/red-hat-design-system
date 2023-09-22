@@ -4,64 +4,16 @@ title: Release notes
 bodyClasses: page-docs
 ---
 
-<style>
-  .releases-links {
-    margin-block-start: var(--rh-space-3xl) !important;
-    display: flex;
-    gap: 2rem;
-  }
+## Changelog
 
-  rh-tile a {
-    display: flex;
-    flex-direction: column;
-    min-width: 20rem;
-    padding: var(--rh-space-lg);
-    border: 1px solid var(--rh-color-border-subtle-on-light);
-    border-radius: var(--rh-border-radius-default);
-    text-decoration: none;
-  }
-
-  rh-tile a:hover {
-    text-decoration: underline;
-    background: var(--rh-color-surface-light);
-  }
-
-  rh-tile a::after {
-    align-self: flex-end;
-    content: url('data:image/svg+xml;utf8,<svg focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M13,14H3c-0.6,0-1-0.4-1-1V3c0-0.6,0.4-1,1-1h5v1H3v10h10V8h1v5C14,13.6,13.6,14,13,14z"></path><path d="M10 1L10 2 13.3 2 9 6.3 9.7 7 14 2.7 14 6 15 6 15 1z"></path></svg>');
-  }
-
-  rh-tile a[href*="github"]::before {
-    content: url('data:image/svg+xml;utf8,<svg focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true" class="MdxIcon-module--mdx-icon--4dec0"><path fill-rule="evenodd" d="M16,2a14,14,0,0,0-4.43,27.28c.7.13,1-.3,1-.67s0-1.21,0-2.38c-3.89.84-4.71-1.88-4.71-1.88A3.71,3.71,0,0,0,6.24,22.3c-1.27-.86.1-.85.1-.85A2.94,2.94,0,0,1,8.48,22.9a3,3,0,0,0,4.08,1.16,2.93,2.93,0,0,1,.88-1.87c-3.1-.36-6.37-1.56-6.37-6.92a5.4,5.4,0,0,1,1.44-3.76,5,5,0,0,1,.14-3.7s1.17-.38,3.85,1.43a13.3,13.3,0,0,1,7,0c2.67-1.81,3.84-1.43,3.84-1.43a5,5,0,0,1,.14,3.7,5.4,5.4,0,0,1,1.44,3.76c0,5.38-3.27,6.56-6.39,6.91a3.33,3.33,0,0,1,.95,2.59c0,1.87,0,3.38,0,3.84s.25.81,1,.67A14,14,0,0,0,16,2Z"></path></svg>');
-  }
-
-  rh-tile [slot="header"] {
-    font-size: 1rem;
-  }
-
-  .release-version h3 {
-    margin-top: var(--rh-space-lg);
-  }
-
-  body.page-docs .release-version copy-permalink.h3 {
-    margin-block-start: var(--rh-space-xl);
-  }
-
-  .release-version table + p {
-    margin-block-start: var(--rh-space-2xl);
-  }
-</style>
-
-## Overview
-
-We are continually making changes in order to improve and grow the Red Hat Design System. If you think changes need to be made to a component, foundation, or anything else, [contact us](mailto:digital-design-system@redhat.com) or submit a [GitHub issue](https://github.com/RedHat-UX/red-hat-design-system/issues).
+We are continually making changes in order to improve and grow the Red Hat Design System. If you think changes need to be made to a component, foundation, or anything else, please submit a [GitHub issue](https://github.com/RedHat-UX/red-hat-design-system/issues).
 
 <nav class="releases-links">
-  <rh-tile id="changelog">
+  <rh-block id="changelog">
     <a href="https://github.com/RedHat-UX/red-hat-design-system/releases">
       <h2 slot="header">Changelog</h2>
     </a>
-  </rh-tile>
+  </rh-block>
 </nav>
 
 <section class="release-versions">
@@ -129,7 +81,6 @@ For release notes on older versions, please [view our release notes on GitHub](h
 </section>
 
 {% feedback %}
-  <h2>Design and code status</h2>
-  <p>To check the design and code status of a foundation or component, visit <a href="/design-code-status">this page</a>.</p>
+  <h2>Roadmap</h2>
+  <p>For an up-to-date outline of what we're working on and what we're planning to do in the Red Hat Design System, visit <a href="/about/roadmap">our roadmap</a>.</p>
 {% endfeedback %}
-
