@@ -15,7 +15,7 @@ Check out [our scrum board on GitHub](https://github.com/orgs/RedHat-UX/projects
 <nav class="releases-links">
   <rh-block id="roadmap-block">
     <a href="https://github.com/orgs/RedHat-UX/projects/7/">
-      <h2 slot="header">Roadmap</h2>
+      <h2>Roadmap</h2>
     </a>
   </rh-block>
 </nav>

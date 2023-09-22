@@ -11,7 +11,7 @@ We are continually making changes in order to improve and grow the Red Hat Desig
 <nav class="releases-links">
   <rh-block id="changelog-block">
     <a href="https://github.com/RedHat-UX/red-hat-design-system/releases">
-      <h2 slot="header">Changelog</h2>
+      <h2>Changelog</h2>
     </a>
   </rh-block>
 </nav>
