@@ -244,17 +244,12 @@ export class RhNavigationSecondary extends LitElement {
   }
 
   #onSlotchange() {
-    if (this._nav) {
-      this._nav.forEach(nav => {
-        this.#navItems = Array.from(
-          nav.querySelectorAll(':is(rh-navigation-secondary-dropdown, rh-secondary-nav-dropdown) > a, [slot="nav"] > li > a')
-        );
-      });
-      if (!this.#navItems) {
-        return;
-      }
-      this.#tabindex.initItems(this.#navItems);
-    }
+    this._nav?.forEach(nav => {
+      this.#navItems = Array.from(
+        nav.querySelectorAll(':is(rh-navigation-secondary-dropdown, rh-secondary-nav-dropdown) > a, [slot="nav"] > li > a')
+      );
+    });
+    this.#tabindex.initItems(this.#navItems ?? []);
   }
 
   /**
