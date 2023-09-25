@@ -1,0 +1,33 @@
+rh-tile a {
+  color: var(--rh-color-border-interactive-on-light, #0066cc) !important;
+  text-decoration: none !important;
+}
+
+rh-tile a:is(:hover, :focus, :after) {
+  text-decoration: underline  !important;
+}
+
+rh-tile a:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+rh-tile[desaturated] a {
+  color: black !important;
+  text-decoration: underline !important;
+}
+
+rh-tile[aria-disabled="true"] a {
+  text-decoration: none !important;
+  color: var(--rh-color-text-secondary-on-light, #4d4d4d) !important;
+}
+
+rh-tile[desaturated] a:is(:hover, :focus, :after) {
+  text-decoration: none !important;
+}
+
+rh-tile a[slot="image"] > :is(img, svg),
+rh-tile [slot="image"]:is(img, svg) {
+  width: 100%;
+}

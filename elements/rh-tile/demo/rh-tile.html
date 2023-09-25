@@ -1,14 +1,142 @@
 <link rel="stylesheet" href="demo.css">
+<link rel="stylesheet" href="../rh-tile-lightdom.css">
 <script type="module" src="rh-tile.js"></script>
 
-<rh-tile>
-  <div slot="title">Title</div>
-  <h2 slot="headline"><a href="#top">Headline</a></h2>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-</rh-tile>
+<div id="examples">
+  <h2>Basic</h2>
 
-<rh-tile>
-  <div slot="title">Title</div>
-  <h2 slot="headline"><rh-tile-link><a href="#top">Headline</a></rh-tile-link></h2>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-</rh-tile>
+  <rh-tile>
+    <img slot="image" src="//fakeimg.pl/296x50" alt="296 X 50 placeholder image">
+    <div slot="title">Title</div>
+    <h2 slot="headline"><a href="nothing.html">Link</a></h2>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    <div slot="footer">Suspendisse eu turpis elementum</div>
+  </rh-tile>
+
+  <rh-tile>
+    <div slot="title">Title</div>
+    <h2 slot="headline"><a href="nothing.html">Link</a></h2>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    <div slot="footer">Suspendisse eu turpis elementum</div>
+  </rh-tile>
+
+  <h2>Full-width images</h2>
+  <rh-tile bleed>
+    <img slot="image" src="//fakeimg.pl/300x200" alt="300 X 200 placeholder image">
+    <div slot="title">Title</div>
+    <h2 slot="headline"><a href="nothing.html">Link</a></h2>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    <div slot="footer">Suspendisse eu turpis elementum</div>
+  </rh-tile>
+
+  <rh-tile bleed>
+    <img slot="image" src="//fakeimg.pl/300x170" alt="300 X 170 placeholder image">
+    <pf-icon slot="icon" icon="aws" set="fab" size="xl"></pf-icon>
+    <h2 slot="headline"><a href="nothing.html">Link</a></h2>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    <div slot="footer">Suspendisse eu turpis elementum</div>
+  </rh-tile>
+
+  <h2>Desaturated heading</h2>
+
+  <rh-tile desaturated>
+    <img slot ="icon" src="/docs/assets/logo-red-hat.svg" alt="Red Hat" width="40">
+    <div slot="title">Title</div>
+    <h2 slot="headline"><a href="nothing.html">Link</a></h2>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    <div slot="footer">Suspendisse eu turpis elementum</div>
+  </rh-tile>
+
+  <h2>Disabled</h2>
+
+  <rh-tile aria-disabled="true">
+    <div slot="title">Title</div>
+    <h2 slot="headline"><a href="nothing.html">Link</a></h2>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    <div slot="footer">Suspendisse eu turpis elementum</div>
+  </rh-tile>
+
+  <h2>Compact</h2>
+
+  <rh-tile compact>
+    <h2 slot="headline"><a href="nothing.html">Link</a></h2>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    <div slot="footer">Suspendisse eu turpis elementum</div>
+  </rh-tile>
+
+  <rh-tile compact>
+    <img slot ="icon" src="/docs/assets/logo-red-hat.svg" alt="Red Hat" width="40">
+    <h2 slot="headline"><a href="nothing.html">Link</a></h2>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    <div slot="footer">Suspendisse eu turpis elementum</div>
+  </rh-tile>
+
+  <rh-tile compact>
+    <img slot ="icon" src="/docs/assets/logo-red-hat.svg" alt="Red Hat" width="40">
+    <h2 slot="headline"><a href="nothing.html">Link</a></h2>
+  </rh-tile>
+
+  <rh-tile compact bleed>
+    <img slot="image" src="//fakeimg.pl/300x50" alt="300 X 50 placeholder image">
+    <pf-icon slot="icon" icon="aws" set="fab" size="lg"></pf-icon>
+    <h2 slot="headline"><a href="nothing.html">Link</a></h2>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    <div slot="footer">Suspendisse eu turpis elementum</div>
+  </rh-tile>
+
+  <rh-tile compact>
+    <img slot="image" src="//fakeimg.pl/296x50" alt="300 X 50 placeholder image">
+    <div slot="title">Title</div>
+    <h2 slot="headline"><a href="nothing.html">Link</a></h2>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    <div slot="footer">Suspendisse eu turpis elementum</div>
+  </rh-tile>
+
+  <rh-tile compact bleed>
+    <a href="nothing.html" slot="image">
+      <img src="//fakeimg.pl/300x50" alt="300 X 50 placeholder image">
+    </a>
+  </rh-tile>
+
+  <h2>Checkboxes</h2>
+
+  <rh-tile checkable>
+    <h2 slot="headline"><a href="nothing.html">Link</a></h2>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    <div slot="footer">Suspendisse eu turpis elementum</div>
+  </rh-tile>
+
+  <rh-tile checkable>
+    <img slot ="icon" src="/docs/assets/logo-red-hat.svg" alt="Red Hat" width="40">
+    <h2 slot="headline"><a href="nothing.html">Link</a></h2>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    <div slot="footer">Suspendisse eu turpis elementum</div>
+  </rh-tile>
+
+  <rh-tile checkable>
+    <img slot ="icon" src="/docs/assets/logo-red-hat.svg" alt="Red Hat" width="40">
+    <h2 slot="headline"><a href="nothing.html">Link</a></h2>
+  </rh-tile>
+
+  <rh-tile checkable bleed>
+    <img slot="image" src="//fakeimg.pl/300x50" alt="300 X 50 placeholder image">
+    <pf-icon slot="icon" icon="aws" set="fab" size="xl"></pf-icon>
+    <h2 slot="headline"><a href="nothing.html">Link</a></h2>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    <div slot="footer">Suspendisse eu turpis elementum</div>
+  </rh-tile>
+
+  <rh-tile checkable>
+    <img slot="image" src="//fakeimg.pl/296x50" alt="300 X 50 placeholder image">
+    <div slot="title">Title</div>
+    <h2 slot="headline"><a href="nothing.html">Link</a></h2>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    <div slot="footer">Suspendisse eu turpis elementum</div>
+  </rh-tile>
+
+  <rh-tile checkable bleed>
+    <a href="nothing.html" slot="image">
+      <img src="//fakeimg.pl/300x50" alt="300 X 50 placeholder image">
+    </a>
+  </rh-tile>
+</div>

@@ -3,7 +3,6 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 import '@patternfly/elements/pf-icon/pf-icon.js';
-import './rh-tile-link.js';
 
 import styles from './rh-tile.css';
 
@@ -61,22 +60,30 @@ export class RhTile extends LitElement {
     const { bleed, compact } = this;
     return html`
       <div id="outer" class="${!compact ? '' : 'compact'}">
-        <slot name="image" class="${!bleed ? '' : 'bleed'}"></slot>
-        <div id="header">
-          <slot name="icon">
-            ${!this.icon ? '' : html`<pf-icon icon="${this.icon}" size="md" set="far"></pf-icon>`}
-          </slot>
-          <slot name="title"></slot>
-          <slot name="headline"></slot>
-          ${!this.checkable ? html`` : html`
-            <input type="checkbox" aria-hidden="true" ?checked=${this.checked}>
-            <input type="radio" aria-hidden="true" ?checked=${this.checked}>
-          `}
-        </div>
-        <div id="body"><slot></slot></div>
-        <div id="footer">
-          <slot name="footer"></slot>
-          ${!this.checkable ? html`<pf-icon icon="arrow-right" size="md" set="far"></pf-icon>` : html``}
+        <div id="image" class="${!bleed ? '' : 'bleed'}"><slot name="image"></slot></div>
+        <div id="inner">
+          <div id="icon">
+            <slot name="icon">
+              ${!this.icon ? '' : html`<pf-icon icon="${this.icon}" size="md" set="far"></pf-icon>`}
+            </slot>
+          </div>
+          <div id="content">
+            <div id="header">
+              <div id="title"><slot name="title"></slot></div>
+              <div id="headline"><slot name="headline"></slot></div>
+              ${!this.checkable ? html`` : html`
+                <input type="checkbox" ?checked=${this.checked}>
+                <input type="radio" ?checked=${this.checked}>
+              `}
+            </div>
+            <div id="body"><slot></slot></div>
+            <div id="footer">
+              <div id="footer-text"><slot name="footer"></slot></div>
+              ${!this.checkable ?
+                html`<pf-icon icon="${this.ariaDisabled !== 'true' ? 'arrow-right' : ''}" size="md" set="fas"></pf-icon>`
+                : ''}
+            </div>
+          </div>
         </div>
       </div>
     `;

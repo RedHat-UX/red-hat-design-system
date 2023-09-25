@@ -1,3 +1,5 @@
 rh-tile {
-  /* insert demo styles */
+  width: 360px;
+  display: inline-block;
+  margin: 32px;
 }
