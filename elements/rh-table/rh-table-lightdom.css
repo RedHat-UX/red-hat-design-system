@@ -5,10 +5,8 @@
   border-collapse: collapse;
 
   --rh-table--row-border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle-on-light, #c7c7c7);
-
-  /* @todo: use rgb token */
-  --rh-table--row-background-color: rgba(210, 210, 210, 0.2);
-  --rh-table--column-background-color: rgb(239, 247, 252);
+  --rh-table--row-background-color: rgb(var(--rh-color-gray-10-rgb, 224 224 224) / var(--rh-opacity-40, 40%));
+  --rh-table--column-background-color: rgb(var(--rh-color-blue-50-rgb, 231 241 250));
 }
 
 :is(rh-table) thead th {
@@ -44,21 +42,15 @@
   text-decoration: underline
 }
 
-/* Caption */
 :is(rh-table) caption {
   font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
-
-  /* font-weight: 500; */
   font-weight: var(--rh-font-weight-heading-bold, 700);
   line-height: var(--rh-line-height-body-text, 1.5);
-
-  /* margin-bottom: 36px; */
-  margin-bottom: var(--rh-space-lg, 16px);
-  text-align: center;
+  margin-bottom: var(--rh-space-2xl, 32px);
+  text-align: center
 }
 
-/* Desktop */
 :is(rh-table) :is(th, td)  {
   padding: var(--rh-space-xl, 24px) var(--rh-space-lg, 16px);
 }
@@ -111,8 +103,8 @@
   }
 
   :is(rh-table) tr td {
-    padding-top: 12px;
-    padding-bottom: 12px;
+    padding-top: calc(var(--rh-space-md, 8px) + var(--rh-space-xs, 4px));
+    padding-bottom: calc(var(--rh-space-md, 8px) + var(--rh-space-xs, 4px));
   }
 
   :is(rh-table) tr:first-child td:first-child {
