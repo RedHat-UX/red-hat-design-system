@@ -2,7 +2,14 @@
 <link rel="stylesheet" href="../rh-tile-lightdom.css">
 <script type="module" src="rh-tile.js"></script>
 
-<div id="examples">
+<script type="module">
+  import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+  import '@rhds/elements/lib/elements/rh-context-provider/rh-context-provider.js';
+</script>
+
+<rh-context-picker target="demo-container"></rh-context-picker>
+
+<rh-context-provider id="demo-container">
   <h2>Basic</h2>
 
   <rh-tile>
@@ -101,42 +108,28 @@
   <h2>Checkboxes</h2>
 
   <rh-tile checkable>
-    <h2 slot="headline"><a href="nothing.html">Link</a></h2>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    <div slot="footer">Suspendisse eu turpis elementum</div>
-  </rh-tile>
-
-  <rh-tile checkable>
-    <img slot ="icon" src="/docs/assets/logo-red-hat.svg" alt="Red Hat" width="40">
-    <h2 slot="headline"><a href="nothing.html">Link</a></h2>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    <div slot="footer">Suspendisse eu turpis elementum</div>
-  </rh-tile>
-
-  <rh-tile checkable>
-    <img slot ="icon" src="/docs/assets/logo-red-hat.svg" alt="Red Hat" width="40">
-    <h2 slot="headline"><a href="nothing.html">Link</a></h2>
-  </rh-tile>
-
-  <rh-tile checkable bleed>
-    <img slot="image" src="//fakeimg.pl/300x50" alt="300 X 50 placeholder image">
-    <pf-icon slot="icon" icon="aws" set="fab" size="xl"></pf-icon>
-    <h2 slot="headline"><a href="nothing.html">Link</a></h2>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    <div slot="footer">Suspendisse eu turpis elementum</div>
-  </rh-tile>
-
-  <rh-tile checkable>
-    <img slot="image" src="//fakeimg.pl/296x50" alt="300 X 50 placeholder image">
     <div slot="title">Title</div>
     <h2 slot="headline"><a href="nothing.html">Link</a></h2>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     <div slot="footer">Suspendisse eu turpis elementum</div>
   </rh-tile>
 
-  <rh-tile checkable bleed>
-    <a href="nothing.html" slot="image">
-      <img src="//fakeimg.pl/300x50" alt="300 X 50 placeholder image">
-    </a>
+  <rh-tile checkable>
+    <img slot="image" src="//fakeimg.pl/300x50" alt="300 X 50 placeholder image">
+    <h2 slot="headline"><a href="nothing.html">Link</a></h2>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    <div slot="footer">Suspendisse eu turpis elementum</div>
   </rh-tile>
-</div>
+
+  <rh-tile checkable bleed>
+    <img slot="image" src="//fakeimg.pl/300x50" alt="300 X 50 placeholder image">
+  </rh-tile>
+
+  <rh-tile checkable bleed>
+    <img slot="image" src="//fakeimg.pl/296x50" alt="300 X 50 placeholder image">
+    <div slot="title">Title</div>
+    <h2 slot="headline"><a href="nothing.html">Link</a></h2>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    <div slot="footer">Suspendisse eu turpis elementum</div>
+  </rh-tile>
+</rh-context-provider>
