@@ -16,7 +16,7 @@ import { BaseTab } from '@patternfly/elements/pf-tabs/BaseTab.js';
  * @cssprop {<length>} --rh-tabs-link-padding-inline-end - Tab padding inline end {@default 32px`}
  * @cssprop {<length>} --rh-tabs-link-padding-block-end - Tab padding block end {@default `16px`}
  *
- * @fires { TabExpandEvent } tab-expand - when a tab expands
+ * @fires { TabExpandEvent } expand - when a tab expands
  */
 export declare class RhTab extends BaseTab {
     static readonly version = "{{version}}";

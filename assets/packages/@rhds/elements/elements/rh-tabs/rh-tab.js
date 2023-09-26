@@ -25,7 +25,7 @@ const styles = css `#rhds-container{display:flex;width:100%;--_button-text-color
  * @cssprop {<length>} --rh-tabs-link-padding-inline-end - Tab padding inline end {@default 32px`}
  * @cssprop {<length>} --rh-tabs-link-padding-block-end - Tab padding block end {@default `16px`}
  *
- * @fires { TabExpandEvent } tab-expand - when a tab expands
+ * @fires { TabExpandEvent } expand - when a tab expands
  */
 let RhTab = class RhTab extends BaseTab {
     constructor() {
