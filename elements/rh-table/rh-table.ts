@@ -48,6 +48,10 @@ export class RhTable extends LitElement {
   }
 
   #onPointerover(event: PointerEvent) {
+    if (!this.#cols) {
+      return;
+    }
+
     event.preventDefault();
 
     let { target } = event;
@@ -63,10 +67,6 @@ export class RhTable extends LitElement {
       } else {
         return;
       }
-    }
-
-    if (!this.#cols) {
-      return;
     }
 
     this.#cols.forEach((col, index) => {

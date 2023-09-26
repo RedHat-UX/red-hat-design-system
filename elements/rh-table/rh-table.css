@@ -13,7 +13,7 @@
   position: relative;
   display: block;
   margin: 2rem 0;
-  width: min-content;
+  width: max-content;
 }
 
 #container {
