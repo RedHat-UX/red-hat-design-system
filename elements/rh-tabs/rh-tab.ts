@@ -29,7 +29,7 @@ import styles from './rh-tab.css';
  * @cssprop {<length>} --rh-tabs-link-padding-inline-end - Tab padding inline end {@default 32px`}
  * @cssprop {<length>} --rh-tabs-link-padding-block-end - Tab padding block end {@default `16px`}
  *
- * @fires { TabExpandEvent } tab-expand - when a tab expands
+ * @fires { TabExpandEvent } expand - when a tab expands
  */
 @customElement('rh-tab')
 export class RhTab extends BaseTab {
