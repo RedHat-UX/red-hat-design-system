@@ -1,11 +1,10 @@
-main {
+section {
   display: flex;
   flex-direction: column;
   align-items: center; 
   overflow: auto;
 }
 
-h2 {
-  margin-top: 2rem;
-  text-align: center;
+rh-table {
+  margin: 2rem 0;
 }

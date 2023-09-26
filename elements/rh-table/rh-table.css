@@ -12,14 +12,13 @@
 :host {
   position: relative;
   display: block;
-  margin: 2rem 0;
-  width: max-content;
+  width: auto;
+  height: 100%;
 }
 
 #container {
-  width: auto;
   max-width: 100%;
-  max-height: max-content;
+  max-height: 100%;
   overflow: auto;
   scrollbar-color: #d6d6d6 #8e8e8e;
 }
@@ -38,14 +37,9 @@
   background-color: #8e8e8e;
 }
 
-slot[name="summary"] {
-  display: inline-block;
-  padding-top: var(--rh-space-lg, 16px);
-}
-
 ::slotted([slot="summary"]) {
-  padding: 0;
-  margin: 0;
+  display: block;
+  padding-top: var(--rh-space-lg, 16px);
 
   /* color: #6A6E72; */
   color: var(--rh-color-text-secondary-on-light, #4d4d4d);
