@@ -8,8 +8,12 @@ import { RequestSortEvent, RhSortButton } from './rh-sort-button.js';
 export * from './rh-sort-button.js';
 
 /**
- * Table
- * @slot - HTML table
+ * A table represents tabular data
+ *
+ * @summary
+ *
+ * @slot            - an HTML table
+ * @slot    summary - a brief description of the data
  */
 @customElement('rh-table')
 export class RhTable extends LitElement {
@@ -44,6 +48,7 @@ export class RhTable extends LitElement {
     if (!this.#cols) {
       return;
     }
+
     this.#cols.forEach(col => col.classList.remove('active'));
   }
 
@@ -103,7 +108,7 @@ export class RhTable extends LitElement {
     }
   }
 
-  // TODO should we move the remaining methods into a controller?
+  // @todo: should we move the remaining methods into a controller to share with pf-table?
   #performSort(button: RhSortButton, direction: 'asc' | 'desc') {
     const header = button.closest('th');
     const children = header?.parentElement?.children;
