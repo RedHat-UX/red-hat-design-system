@@ -11,8 +11,10 @@
   --rh-table--column-background-color: rgb(239, 247, 252);
 }
 
-:is(rh-table) th {
+:is(rh-table) thead th {
   position: relative;
+  padding-top: var(--rh-space-lg, 16px);
+  padding-bottom: var(--rh-space-lg, 16px);
 }
 
 :is(rh-table) tr {
@@ -106,6 +108,19 @@
 
   :is(rh-table) tbody tr th {
     text-align: center;
+  }
+
+  :is(rh-table) tr td {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  :is(rh-table) tr:first-child td:first-child {
+    padding-top: var(--rh-space-lg, 16px);
+  }
+
+  :is(rh-table) tr:last-child td:last-child {
+    padding-bottom: var(--rh-space-lg, 16px);
   }
 
   /* TODO: rewrite without :has */

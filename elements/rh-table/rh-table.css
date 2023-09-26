@@ -5,19 +5,21 @@
 :host {
   position: relative;
   display: block;
-  width: auto;
+  width: min-content;
   height: 100%;
+  max-width: 100%;
+  max-height: 100%;
 
   --_scrollbar-size: calc(10 / 16 * 1rem);
-  --_scrollbar-track-color: var(--rh-color-gray-30, #a3a3a3);
-  --_scrollbar-thumb-color: var(--rh-color-gray-10, #e0e0e0);
+  --_scrollbar-thumb-color: var(--rh-color-gray-40, #707070);
+  --_scrollbar-track-color: var(--rh-color-border-subtle-on-light, #c7c7c7)
 }
 
 #container {
-  max-width: 100%;
   max-height: 100%;
+  max-width: 100%;
   overflow: auto;
-  scrollbar-color: var(--_scrollbar-thumb-color) var(--_scrollbar-track-color);
+  scrollbar-color: var(--_scrollbar-track-color) var(--_scrollbar-thum-color);
 }
 
 #container::-webkit-scrollbar {
@@ -27,17 +29,17 @@
 
 #container::-webkit-scrollbar,
 #container::-webkit-scrollbar-track {
-  background-color: var(--_scrollbar-thumb-color);
+  background-color: var(--_scrollbar-track-color);
 }
 
 #container::-webkit-scrollbar-thumb {
-  background-color: var(--_scrollbar-track-color);
+  background-color: var(--_scrollbar-thumb-color);
 }
 
 /* @todo: should I move these styles to light dom css file? */
 ::slotted([slot="summary"]) {
   display: block;
-  padding-top: var(--rh-space-lg, 16px);
+  padding-top: var(--rh-space-xl, 24px);
   color: var(--rh-color-text-secondary-on-light, #4d4d4d);
   font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-md, 1rem);

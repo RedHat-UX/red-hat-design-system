@@ -4,3 +4,7 @@ section {
   align-items: center; 
   overflow: auto;
 }
+
+h2 {
+  margin-top: var(--rh-space-5xl, 80px);
+}
