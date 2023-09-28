@@ -1,34 +1,24 @@
 rh-tile a {
-  color: var(--rh-tile-interactive-color,
-    var(--rh-color-border-interactive-on-light, #0066cc)
-  ) !important;
-  text-decoration: none !important;
+  color: var(--rh-tile-link-color) !important;
+  text-decoration: var(--rh-tile-link-text-decoration) !important;
 }
 
 rh-tile a:is(:hover, :focus, :active) {
-  text-decoration: underline  !important;
+  text-decoration: var(--rh-tile-link-focus-text-decoration) !important;
 }
 
-rh-tiles a:after {
+rh-tile a:after {
   content: "";
   position: absolute;
   inset: 0;
+  display: var(--rh-tile-link-after-display);
 }
 
-rh-tile[desaturated] a {
-  color: var(--rh-tile-text-color, var(--rh-color-text-primary-on-light, #151515)) !important;
-  text-decoration: underline !important;
-}
-
-rh-tile[aria-disabled="true"] a {
+*:is(rh-tile, rh-tile-group)[aria-disabled="true"] a {
   text-decoration: none !important;
   color: var(--rh-tile-text-color-secondary, 
     var(--rh-color-text-secondary-on-light, #4d4d4d)
   ) !important;
-}
-
-rh-tile[desaturated] a:is(:hover, :focus, :after) {
-  text-decoration: none !important;
 }
 
 rh-tile a[slot="image"] > :is(img, svg),

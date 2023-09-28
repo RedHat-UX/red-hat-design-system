@@ -1,0 +1,8 @@
+:host([aria-disabled="true"]) {
+  pointer-events: none;
+}
+
+.radio {
+  --_rh-tile-group-checkbox-display: none;
+  --_rh-tile-group-radio-display: inline;
+}

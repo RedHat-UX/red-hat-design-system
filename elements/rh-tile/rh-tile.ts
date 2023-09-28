@@ -1,13 +1,22 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, type PropertyValueMap } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
+import { ComposedEvent } from '@patternfly/pfe-core';
+
 import '@patternfly/elements/pf-icon/pf-icon.js';
 
 import styles from './rh-tile.css';
+
+export class TileClickEvent extends ComposedEvent {
+  declare target: RhTile;
+  constructor() {
+    super('select');
+  }
+}
 
 /**
  * Tile
@@ -59,7 +68,10 @@ export class RhTile extends LitElement {
    */
   @property({ attribute: 'checked', type: Boolean }) checked = false;
 
-  @queryAssignedElements({ slot: 'headline' }) private _headline?: HTMLElement;
+  /**
+   * if tile is checkable, whether only one tile in a group can be checked
+   */
+  @property({ attribute: 'radio', type: Boolean }) radio = false;
 
   /**
    * Sets color theme based on parent context
@@ -75,13 +87,21 @@ export class RhTile extends LitElement {
    * Tile always resets its context to `base`, unless explicitly provided with a `color-palette`.
    */
   @colorContextProvider()
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
+
+  #internals = new InternalsController(this, { });
+
+  connectedCallback(): void {
+    super.connectedCallback();
+    this.addEventListener('click', this.#onClick);
+  }
 
   render() {
-    const { bleed, compact, checkable, on = '' } = this;
+    const { bleed, compact, checkable, checked, desaturated, on = '' } = this;
     return html`
-      <div id="outer" class="${classMap({ [on]: !!on, compact, bleed })}">
+      <div id="outer" class="${classMap({ bleed, compact, checkable, checked, desaturated, [on]: !!on })}">
         <div id="image"><slot name="image"></slot></div>
-        <div id="inner" class="${!checkable ? '' : 'checkable'}">
+        <div id="inner">
           ${!this.checkable ?
             html`
               <div id="icon">
@@ -93,11 +113,15 @@ export class RhTile extends LitElement {
             <div id="header">
               <div id="title"><slot name="title"></slot></div>
               <div id="headline"><slot name="headline"></slot></div>
-              ${!this.checkable ? html`` : html`
-                <input type="checkbox" ?checked=${this.checked} ?disabled="${this.ariaDisabled === 'true'}">
-                <input type="radio" ?checked=${this.checked} ?disabled="${this.ariaDisabled === 'true'}">
+              ${!this.checkable ? '' : html`
+                <form id="form" aria-hidden="true">
+                    <input 
+                      type="${this.radio ? 'radio' : 'checkbox'}" 
+                      aria-hidden="true"
+                      ?checked=${this.checked}>
+                </form>
               `}
-              </div>
+            </div>
             <div id="body"><slot></slot></div>
             <div id="footer">
               <div id="footer-text"><slot name="footer"></slot></div>
@@ -109,6 +133,33 @@ export class RhTile extends LitElement {
         </div>
       </div>
     `;
+  }
+
+  protected async updated(_changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>) {
+    if (_changedProperties.has('checked') || _changedProperties.has('checkable')) {
+      this.#internals.ariaChecked = this.checkable && this.checked ? 'true' : 'false';
+      await this.updateComplete;
+      if (!this.checked) {
+        this.shadowRoot?.querySelector('form')?.reset();
+      }
+      return;
+    }
+
+    if (_changedProperties.has('radio') || _changedProperties.has('checkable')) {
+      this.#internals.role = this.checkable && this.radio ? 'radio' : this.checkable ? 'checkbox' : null;
+    }
+  }
+
+  disconnectedCallback(): void {
+    super.disconnectedCallback();
+    this.addEventListener('click', this.#onClick);
+  }
+
+  #onClick(event: Event) {
+    const { target } = event;
+    if (target === this) {
+      this.dispatchEvent(new TileClickEvent());
+    }
   }
 }
 
