@@ -11,7 +11,7 @@ import '@patternfly/elements/pf-icon/pf-icon.js';
 
 import styles from './rh-tile.css';
 
-export class TileClickEvent extends ComposedEvent {
+export class TileSelectEvent extends ComposedEvent {
   declare target: RhTile;
   constructor() {
     super('select');
@@ -21,7 +21,7 @@ export class TileClickEvent extends ComposedEvent {
 /**
  * A form of selection that can be used in place of a link, checkbox, or radio button.
  *
- * @fires {TileClickEvent} select - when tile is clicked
+ * @fires {TileSelectEvent} select - when tile is clicked
  * @slot image - optional image on top of tile
  * @slot icon - optional icon
  * @slot title - optional title
@@ -110,6 +110,15 @@ export class RhTile extends LitElement {
 
   connectedCallback(): void {
     super.connectedCallback();
+    this.#internals.ariaChecked = this.checkable && this.checked ? 'true' : 'false';
+    this.#internals.role = this.checkable && this.radio ? 'radio' : this.checkable ? 'checkbox' : null;
+    if (this.checkable && !this.radio) {
+      this.setAttribute('tabindex', '0');
+    } else if (!this.radio) {
+      this.removeAttribute('tabindex');
+    }
+    this.addEventListener('keydown', this.#onKeydown);
+    this.addEventListener('keyup', this.#onKeyup);
     this.addEventListener('click', this.#onClick);
   }
 
@@ -120,11 +129,17 @@ export class RhTile extends LitElement {
       if (!this.checked) {
         this.shadowRoot?.querySelector('form')?.reset();
       }
+      this.dispatchEvent(new TileSelectEvent());
       return;
     }
 
     if (_changedProperties.has('radio') || _changedProperties.has('checkable')) {
       this.#internals.role = this.checkable && this.radio ? 'radio' : this.checkable ? 'checkbox' : null;
+      if (this.checkable && !this.radio) {
+        this.setAttribute('tabindex', '0');
+      } else if (!this.radio) {
+        this.removeAttribute('tabindex');
+      }
     }
   }
 
@@ -149,7 +164,7 @@ export class RhTile extends LitElement {
                 <form id="form" aria-hidden="true">
                     <input 
                       type="${this.radio ? 'radio' : 'checkbox'}" 
-                      aria-hidden="true"
+                      tabindex="-1"
                       ?checked=${this.checked}>
                 </form>
               `}
@@ -168,8 +183,10 @@ export class RhTile extends LitElement {
   }
 
   disconnectedCallback(): void {
+    this.removeEventListener('keydown', this.#onKeydown);
+    this.removeEventListener('keyup', this.#onKeyup);
+    this.removeEventListener('click', this.#onClick);
     super.disconnectedCallback();
-    this.addEventListener('click', this.#onClick);
   }
 
   /**
@@ -177,8 +194,31 @@ export class RhTile extends LitElement {
    */
   #onClick(event: Event) {
     const { target } = event;
-    if (target === this) {
-      this.dispatchEvent(new TileClickEvent());
+    if (target === this && this.checkable) {
+      this.checked = !this.checked;
+    }
+  }
+
+  /**
+   * handles keydown and prevents scrolling when spacebar is clicked
+   * @param event {KeyboardEvent}
+   */
+  #onKeydown(event: KeyboardEvent) {
+    const { target, key } = event;
+    if (key === ' ' && target === this && this.checkable) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+    }
+  }
+
+  /**
+   * handles key up and toggles input
+   * @param event {KeyboardEvent}
+   */
+  #onKeyup(event: KeyboardEvent) {
+    const { target, key } = event;
+    if (['Enter', ' '].includes(key) && target === this && this.checkable) {
+      this.checked = !this.checked;
     }
   }
 }

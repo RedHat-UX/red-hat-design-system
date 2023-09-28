@@ -7,7 +7,7 @@ import { colorContextProvider, type ColorPalette } from '../../lib/context/color
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
-import { RhTile, TileClickEvent } from './rh-tile.js';
+import { RhTile, TileSelectEvent } from './rh-tile.js';
 
 import styles from './rh-tile-group.css';
 
@@ -68,7 +68,8 @@ export class RhTileGroup extends LitElement {
     return this.radio ? first : selected;
   }
 
-  protected firstUpdated(_changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>): void {
+  protected firstUpdated(): void {
+    this.#internals.role = this.radio ? 'radiogroup' : null;
     this.updateTiles();
   }
 
@@ -103,6 +104,11 @@ export class RhTileGroup extends LitElement {
     `;
   }
 
+  /** sets focus on active tile */
+  focus() {
+    (this.#tabindex?.activeItem || this.#tabindex.firstItem)?.focus();
+  }
+
   /**
    * programatically select a tile
    * @param tile {RhTile | null | undefined} tile to select
@@ -110,13 +116,7 @@ export class RhTileGroup extends LitElement {
   selectTile(tile: RhTile | null | undefined) {
     if (tile) {
       tile.checked = true;
-      if (tile.radio || this.radio) {
-        this.#tiles?.forEach(item => {
-          if (tile !== item && item.checked) {
-            item.checked = false;
-          }
-        });
-      }
+      this.#setTiles(tile);
     }
   }
 
@@ -151,13 +151,23 @@ export class RhTileGroup extends LitElement {
     }
   }
 
+  #setTiles(tile: RhTile | null | undefined) {
+    if (tile && tile.radio || this.radio) {
+      this.#tiles?.forEach(item => {
+        if (tile !== item && item.checked) {
+          item.checked = false;
+        }
+      });
+    }
+  }
+
   /**
-   * handles TileClickEvent
-   * @param event {TileClickEvent} tile click event
+   * handles TileSelectEvent
+   * @param event {TileSelectEvent} tile click event
    */
-  #onSelect(event: TileClickEvent) {
-    const target = event.target as RhTile;
-    this.toggleTile(target);
+  #onSelect(event: TileSelectEvent) {
+    const tile = event.target as RhTile;
+    this.#setTiles(tile);
   }
 
   /**
