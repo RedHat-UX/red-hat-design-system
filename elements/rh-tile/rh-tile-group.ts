@@ -7,13 +7,13 @@ import { colorContextProvider, type ColorPalette } from '../../lib/context/color
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
-import { RhTile } from './rh-tile.js';
+import { RhTile, TileClickEvent } from './rh-tile.js';
 
 import styles from './rh-tile-group.css';
 
 /**
- * Tile
- * @slot - Place element content here
+ * A group of `<rh-tile>` elements which handles radio selection.
+ * @slot - tiles
  */
 @customElement('rh-tile-group')
 export class RhTileGroup extends LitElement {
@@ -52,11 +52,20 @@ export class RhTileGroup extends LitElement {
   #tabindex = new RovingTabindexController<HTMLElement>(this);
   #internals = new InternalsController(this, { });
 
-  render() {
-    const { on = '', radio } = this;
-    return html`
-      <slot class="${classMap({ [on]: !!on, radio })}" @slotchange=${this.#onSlotchange} @select=${this.#onSelect}></slot>
-    `;
+  /**
+   * all slotted tiles
+   */
+  get tiles() {
+    return this.#tiles;
+  }
+
+  /**
+   * all selected tiles
+   */
+  get selected() {
+    const selected = this.#tiles?.filter(tile=> tile.checked);
+    const [first] = selected;
+    return this.radio ? first : selected;
   }
 
   protected firstUpdated(_changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>): void {
@@ -87,14 +96,17 @@ export class RhTileGroup extends LitElement {
     }
   }
 
-  get tiles() {
-    return this.#tiles;
+  render() {
+    const { on = '', radio } = this;
+    return html`
+      <slot class="${classMap({ [on]: !!on, radio })}" @slotchange=${this.#onSlotchange} @select=${this.#onSelect}></slot>
+    `;
   }
 
-  get selected() {
-    return this.#tiles?.filter(tile=> tile.checked);
-  }
-
+  /**
+   * programatically select a tile
+   * @param tile {RhTile | null | undefined} tile to select
+   */
   selectTile(tile: RhTile | null | undefined) {
     if (tile) {
       tile.checked = true;
@@ -108,6 +120,10 @@ export class RhTileGroup extends LitElement {
     }
   }
 
+  /**
+   * programatically toggle a tile
+   * @param tile {RhTile | null | undefined} tile to toggle
+   */
   toggleTile(tile: RhTile | null | undefined) {
     if (tile?.checked) {
       tile.checked = false;
@@ -116,6 +132,9 @@ export class RhTileGroup extends LitElement {
     }
   }
 
+  /**
+   * updates slotted tiles to set properties and keyboard navigation
+   */
   updateTiles() {
     this.#tiles = [...this.querySelectorAll('rh-tile')];
     this.#tiles.forEach(tile => {
@@ -132,11 +151,18 @@ export class RhTileGroup extends LitElement {
     }
   }
 
-  #onSelect(event: Event) {
+  /**
+   * handles TileClickEvent
+   * @param event {TileClickEvent} tile click event
+   */
+  #onSelect(event: TileClickEvent) {
     const target = event.target as RhTile;
     this.toggleTile(target);
   }
 
+  /**
+   * handles slot change by updating slotted tiles
+   */
   #onSlotchange() {
     this.updateTiles();
   }

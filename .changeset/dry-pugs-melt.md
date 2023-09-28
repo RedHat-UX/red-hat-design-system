@@ -1,8 +1,10 @@
-# Tile
-A form of selection that can be used in place of a link, checkbox, or radio button. 
+---
+"@rhds/elements": minor
+---
 
-## Usage
-If the tile is not checkable, a link slotted in the image or headline slots will become the link when the card is clicked. Be sure to include alt text for a slotted image especially if it is wrapped in a link.
+Added `<rh-tile>`.
+
+A form of selection that can be used in place of a link, checkbox, or radio button. 
 
 ```html
   <rh-tile>
@@ -14,10 +16,9 @@ If the tile is not checkable, a link slotted in the image or headline slots will
   </rh-tile>
 ```
 
-# Tile Group
+Added `<rh-tile-group>`.
+
 A group of `<rh-tile>` elements which handles radio selection.
-## Usage
-A tile group should include more than one tile in its slot.
 
 ```html
   <rh-tile-group radio>
