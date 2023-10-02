@@ -23,7 +23,7 @@ module.exports = function(eleventyConfig) {
     <h2>Feedback</h2>
     <p>
       To give feedback about anything on this page,
-      <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">contact us</a>.
+      <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions" class="feedback-contact-link">contact us</a>.
     </p>
   `)}
 </div>
