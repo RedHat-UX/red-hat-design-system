@@ -109,26 +109,25 @@
     padding-bottom: calc(var(--rh-space-md, 8px) + var(--rh-space-xs, 4px));
   }
 
-  :is(rh-table) tr:first-child td:first-child {
-    padding-top: var(--rh-space-lg, 16px);
-  }
-
-  :is(rh-table) tr:last-child td:last-child {
-    padding-bottom: var(--rh-space-lg, 16px);
-  }
-
-  /* TODO: rewrite without :has */
-  :is(rh-table) table:has(thead) tbody tr td {
+  :is(rh-table) thead ~ tbody tr td {
     display: grid;
     grid-column-gap: var(--rh-space-lg, 16px);
     grid-template-columns: 1fr minmax(0, 1.5fr);
     align-items: start;
   }
 
-  :is(rh-table) table:has(thead) tbody tr td:before {
+  :is(rh-table) thead ~ tbody tr td:before {
     font-weight: var(--rh-font-weight-heading-bold, 700);
     text-align: left;
     content: attr(data-label);
     display: inline-block;
+  }
+
+  :is(rh-table) tr:first-child td:first-child {
+    padding-top: var(--rh-space-lg, 16px);
+  }
+
+  :is(rh-table) tr:last-child td:last-child {
+    padding-bottom: var(--rh-space-lg, 16px);
   }
 }
