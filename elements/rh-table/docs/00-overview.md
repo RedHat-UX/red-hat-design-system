@@ -1,17 +1,15 @@
-{% renderOverview %}
-  <rh-table></rh-table>
-{% endrenderOverview %}
+## Overview
+{{ tagName | getElementDescription }}
 
-{% band header="Usage" %}{% endband %}
+## Sample component
 
-{% renderSlots %}{% endrenderSlots %}
+## Demos
+  View a live version of this component and see how it can be customized.
+  {% playground tagName=tagName %}{% endplayground %}
+  {% cta href="./demo/", target="_blank" %}
+    View the demo in a new tab
+  {% endcta %}
 
-{% renderAttributes %}{% endrenderAttributes %}
+## When to use
 
-{% renderMethods %}{% endrenderMethods %}
-
-{% renderEvents %}{% endrenderEvents %}
-
-{% renderCssCustomProperties %}{% endrenderCssCustomProperties %}
-
-{% renderCssParts %}{% endrenderCssParts %}
+{% repoStatus type="Element" %}
