@@ -11,7 +11,7 @@
 }
 
 #sort-button #sort-indicator {
-  color: var(--rh-color-gray-30, #a3a3a3);
+  color: currentcolor;
 }
 
 .visually-hidden {
