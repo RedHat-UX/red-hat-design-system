@@ -36,7 +36,11 @@ rh-card.bar::part(header) {
 }
 
 rh-card.full::part(header) {
-  padding-inline: 0;
+  padding: 0;
+}
+
+rh-card.full :is(h1, h2, h3, h4, h5, h6)[slot="header"] {
+  padding-inline: var(--rh-space-xl, 24px);
 }
 
 rh-card.full img {
