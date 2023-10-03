@@ -16,6 +16,9 @@ const ImportMapPlugin = require('./docs/_plugins/importMap.cjs');
 
 const path = require('node:path');
 
+const isWatch =
+  process.argv.includes('--serve') || process.argv.includes('--watch');
+
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function(eleventyConfig) {
   eleventyConfig.setQuietMode(true);
@@ -27,7 +30,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.watchIgnores.add('elements/*/test/');
   eleventyConfig.watchIgnores.add('lib/elements/*/test/');
   eleventyConfig.addPassthroughCopy('docs/public/red-hat-outfit.css');
-  eleventyConfig.addPassthroughCopy('docs/patterns/**/*.{svg,jpe?g,png}');
+  eleventyConfig.addPassthroughCopy('docs/patterns/**/*.{svg,jpg,jpeg,png}');
   eleventyConfig.addPassthroughCopy('docs/CNAME');
   eleventyConfig.addPassthroughCopy('docs/.nojekyll');
   eleventyConfig.addPassthroughCopy('docs/robots.txt');
@@ -122,7 +125,7 @@ module.exports = function(eleventyConfig) {
     },
   });
 
-  eleventyConfig.addPlugin(DirectoryOutputPlugin, {
+  !isWatch && eleventyConfig.addPlugin(DirectoryOutputPlugin, {
     // Customize columns
     columns: {
       filesize: true, // Use `false` to disable
