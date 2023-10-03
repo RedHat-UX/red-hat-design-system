@@ -129,5 +129,6 @@
     font-weight: var(--rh-font-weight-heading-bold, 700);
     text-align: left;
     content: attr(data-label);
+    display: inline-block;
   }
 }

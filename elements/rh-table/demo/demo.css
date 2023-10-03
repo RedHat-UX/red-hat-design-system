@@ -1,10 +1,11 @@
 section {
   display: flex;
   flex-direction: column;
-  align-items: center; 
-  overflow: auto;
+  align-items: center;
+  justify-content: center;
 }
 
-h2 {
+h2, p {
   margin-top: var(--rh-space-5xl, 80px);
+  text-align: center;
 }
