@@ -1,0 +1,18 @@
+{
+    "speed": "Vitesse",
+    "seek": "Recherche",
+    "play": "Écouter",
+    "pause": "Pause",
+    "rewind": "Reculer",
+    "advance": "Avancer",
+    "volume": "Volume",
+    "mute": "Mettre en sourdine",
+    "unmute": "Réactiver le son",
+    "menu": "Menu",
+    "close": "Fermer",
+    "about": "À propos",
+    "subscribe": "S'abonner",
+    "transcript": "Transcription",
+    "autoscroll": "Défilement automatique",
+    "download": "Télécharger"
+}
