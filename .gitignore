@@ -21,6 +21,8 @@ rhds.min.js
 *LEGAL.txt
 *.tgz
 
+/elements/react
+
 # e2e
 test-results
 *.ts-snapshots
