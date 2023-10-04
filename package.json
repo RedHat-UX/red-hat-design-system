@@ -8,7 +8,8 @@
   "exports": {
     ".": "./rhds.min.js",
     "./lib/*": "./lib/*",
-    "./*": "./elements/*"
+    "./*": "./elements/*",
+    "./react/*": "./react/*"
   },
   "contributors": [
     "Benny Powers <bennyp@redhat.com>",
@@ -97,7 +98,21 @@
         "analyze",
         "compile",
         "bundle",
-        "docs"
+        "docs",
+        "build:react"
+      ]
+    },
+    "build:react": {
+      "command": "ts-node --esm scripts/generate-react-wrappers.ts",
+      "dependencies": [
+        "analyze"
+      ],
+      "files": [
+        "custom-elements.json",
+        "scripts/generate-react-wrappers.ts"
+      ],
+      "output": [
+        "react/**/*"
       ]
     },
     "compile": {
@@ -117,6 +132,7 @@
     "bundle": {
       "command": "node scripts/bundle.js"
     },
+
     "analyze": {
       "command": "cem analyze && node scripts/cem-tokens.js && node scripts/system-tokens.js",
       "files": [

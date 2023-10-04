@@ -27,7 +27,7 @@
     "importHelpers": true,
     "incremental": true,
     "inlineSources": true,
-    "module": "es2020",
+    "module": "es2022",
     "moduleResolution": "node",
     "noEmitOnError": false,
     "preserveValueImports": true,
@@ -58,6 +58,7 @@
       "DOM",
       "es2015.iterable",
       "es2020",
+      "es2022",
       "es5",
       "es6",
       "ScriptHost"
