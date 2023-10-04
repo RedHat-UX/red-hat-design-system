@@ -8,7 +8,7 @@ import { RequestSortEvent, RhSortButton } from './rh-sort-button.js';
 export * from './rh-sort-button.js';
 
 /**
- * Displays tabular information in an easy and digestable manner.
+ * Displays tabular information in an easy and digestible manner.
  *
  * @summary
  *
