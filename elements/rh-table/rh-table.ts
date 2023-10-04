@@ -31,11 +31,16 @@ export class RhTable extends LitElement {
     return this.querySelectorAll('tbody > tr') as NodeListOf<HTMLTableRowElement> | undefined;
   }
 
+  get #summary(): HTMLElement | undefined {
+    return this.querySelector('[slot="summary"]') as HTMLElement | undefined;
+  }
+
   #logger = new Logger(this);
 
   render() {
     return html`
       <div id="container"
+           part="container"
            @pointerleave=${this.#onPointerleave}
            @pointerover=${this.#onPointerover}>
         <slot @request-sort="${this.#onRequestSort}" @slotchange=${this.#onSlotChange}></slot>
@@ -85,7 +90,7 @@ export class RhTable extends LitElement {
   }
 
   #onSlotChange() {
-    if (this.#table) {
+    if (this.#table && this.#summary) {
       this.#table.setAttribute('aria-describedby', 'summary');
     }
   }
