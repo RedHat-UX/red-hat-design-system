@@ -8,8 +8,7 @@
   "exports": {
     ".": "./rhds.min.js",
     "./lib/*": "./lib/*",
-    "./*": "./elements/*",
-    "./react/*": "./react/*"
+    "./*": "./elements/*"
   },
   "contributors": [
     "Benny Powers <bennyp@redhat.com>",
