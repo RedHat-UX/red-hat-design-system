@@ -14,10 +14,8 @@ tags:
 
 {%- endcall %}
 
-
-{#% call foundations.section("Style") -%#}<section class="section section--palette-default container">
+<section class="section section--palette-default container">
   <h2 id="style" class="section-title pfe-jump-links-panel__section">Style</h2>
-  
 
   <h3>Base increment</h3>
 
@@ -27,12 +25,12 @@ tags:
 
   <p>There are a variety of spacers available which can be used for different spacing needs, which are all divisible by 4. To keep the system simple, there’s only one scale for spacers that applies to components, patterns, and layouts. The smallest spacer is 4px and the largest is 80px. New spacers are added based on design needs, so do not create any new spacers, combine different spacers instead.</p>
 
-  {% spacerTokensTable
-    headline="",
-    caption='',
-    headingLevel="4",
-    tokens="--rh-space-xs, --rh-space-sm, --rh-space-md, --rh-space-lg,  --rh-space-xl,  --rh-space-2xl,  --rh-space-3xl,  --rh-space-4xl,  --rh-space-5xl,  --rh-space-6xl,  --rh-space-7xl" %}
-  {% endspacerTokensTable %}
+  {% spacerTokensTable 
+    headline="", 
+    caption="", 
+    headingLevel="4",
+    tokens="--rh-space-xs,--rh-space-sm,--rh-space-md,--rh-space-lg,--rh-space-xl,--rh-space-2xl,--rh-space-3xl,--rh-space-4xl,--rh-space-5xl,--rh-space-6xl,--rh-space-7xl"%}
+  {% endspacerTokensTable %}
 
   <h3>Applying spacers</h3>
 
@@ -40,11 +38,7 @@ tags:
 
   <img src="{{ '/assets/spacing/spacing-application-1.svg' | url }}" alt="How to apply spacing" style="">
 
-
-{#%- endcall %#}</section>
-
-
-
+</section>
 
 {% call foundations.section("Typography") -%}
 
