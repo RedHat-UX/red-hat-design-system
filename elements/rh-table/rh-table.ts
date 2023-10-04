@@ -12,8 +12,9 @@ export * from './rh-sort-button.js';
  *
  * @summary
  *
- * @slot            - an HTML table
- * @slot    summary - a brief description of the data
+ * @slot               - an HTML table
+ * @slot    summary    - a brief description of the data
+ * @csspart container  - table container
  */
 @customElement('rh-table')
 export class RhTable extends LitElement {
