@@ -840,10 +840,10 @@
   </section>
 
 
+<section class="section section--palette-default container">
+  <h2 id="style" class="section-title pfe-jump-links-panel__section">Style</h2>
 
-  <section class="section section--palette-default container" pfe-jump-links-panel__section="">
-    <h2 class="section-title" id="style">Style</h2>
-    <h3 id="base-increment">Base increment</h3>
+  <h3 id="base-increment">Base increment</h3>
 
   <p>The base increment of spacers starts at 4px. The Form field pattern features a 6px spacer for very specific use cases. <strong>It should not be used anywhere else</strong>.</p>
 
@@ -851,62 +851,85 @@
 
   <p>There are a variety of spacers available which can be used for different spacing needs, which are all divisible by 4. To keep the system simple, there’s only one scale for spacers that applies to components, patterns, and layouts. The smallest spacer is 4px and the largest is 80px. New spacers are added based on design needs, so do not create any new spacers, combine different spacers instead.</p>
 
-  <table style="width:100%;" class="spacer-table">
-    <tbody><tr>
-      <th>Variable</th>
-      <th>Amount</th>
-      <th>Example</th>
-    </tr>
-    <tr>
-      <td>--pf-global--spacer--xs</td>
-      <td>4px</td>
-      <td><img src="/assets/spacing/4px.svg" alt="4px spacer"></td>
-    </tr>
-    <tr>
-      <td>--pf-global--spacer--sm</td>
-      <td>8px</td>
-      <td><img src="/assets/spacing/8px.svg" alt="8px spacer"></td>
-    </tr>
-    <tr>
-      <td>--pf-global--spacer--md</td>
-      <td>16px</td>
-      <td><img src="/assets/spacing/16px.svg" alt="16px spacer"></td>
-    </tr>
-    <tr>
-      <td>--pf-global--spacer--lg</td>
-      <td>24px</td>
-      <td><img src="/assets/spacing/24px.svg" alt="24px spacer"></td>
-    </tr>
-    <tr>
-      <td>--pf-global--spacer--xl</td>
-      <td>32px</td>
-      <td><img src="/assets/spacing/32px.svg" alt="32px spacer"></td>
-    </tr>
-    <tr>
-      <td>--pf-global--spacer--2xl</td>
-      <td>48px</td>
-      <td><img src="/assets/spacing/48px.svg" alt="48px spacer"></td>
-    </tr>
-    <tr>
-      <td>--pf-global--spacer--3xl</td>
-      <td>64px</td>
-      <td><img src="/assets/spacing/64px.svg" alt="64px spacer"></td>
-    </tr>
-    <tr>
-      <td>--pf-global--spacer--4xl</td>
-      <td>80px</td>
-      <td><img src="/assets/spacing/80px.svg" alt="80px spacer"></td>
-    </tr>
-
-  </tbody></table>
+  <div class="token-props-table palette-light ">
+          <table width="100%" class="spacer-tokens-table">
+          <caption></caption>
+          <thead>
+            <tr>
+              <th>Example</th>
+              <th>Token</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+            <tbody>
+              <tr>
+              <td><samp class="offset size-4" style="--samp-width: 4px; --samp-color: #ec861b;"><span>4</span></samp></td>
+              <td>--rh-space-xs</td>
+              <td>4px spacer</td>
+            </tr>
+<tr>
+              <td><samp class="offset size-6" style="--samp-width: 6px; --samp-color: #f3d53c;"><span>6</span></samp></td>
+              <td>--rh-space-sm</td>
+              <td>6px spacer</td>
+            </tr>
+<tr>
+              <td><samp class="offset size-8" style="--samp-width: 8px; --samp-color: #9bd917;"><span>8</span></samp></td>
+              <td>--rh-space-md</td>
+              <td>8px spacer</td>
+            </tr>
+<tr>
+              <td><samp class="" style="--samp-width: 16px; --samp-color: #51a549;"><span>16</span></samp></td>
+              <td>--rh-space-lg</td>
+              <td>16px spacer</td>
+            </tr>
+<tr>
+              <td><samp class="" style="--samp-width: 24px; --samp-color: #1b8793;"><span>24</span></samp></td>
+              <td>--rh-space-xl</td>
+              <td>24px spacer</td>
+            </tr>
+<tr>
+              <td><samp class="" style="--samp-width: 32px; --samp-color: #1893d2;"><span>32</span></samp></td>
+              <td>--rh-space-2xl</td>
+              <td>32px spacer</td>
+            </tr>
+<tr>
+              <td><samp class="" style="--samp-width: 48px; --samp-color: #6743c6;"><span>48</span></samp></td>
+              <td>--rh-space-3xl</td>
+              <td>48px spacer</td>
+            </tr>
+<tr>
+              <td><samp class="" style="--samp-width: 64px; --samp-color: #341974;"><span>64</span></samp></td>
+              <td>--rh-space-4xl</td>
+              <td>64px spacer</td>
+            </tr>
+<tr>
+              <td><samp class="" style="--samp-width: 80px; --samp-color: #b300b3;"><span>80</span></samp></td>
+              <td>--rh-space-5xl</td>
+              <td>80px spacer</td>
+            </tr>
+<tr>
+              <td><samp class="" style="--samp-width: 96px; --samp-color: #f279a1;"><span>96</span></samp></td>
+              <td>--rh-space-6xl</td>
+              <td>96px spacer</td>
+            </tr>
+<tr>
+              <td><samp class="" style="--samp-width: 128px; --samp-color: #bf1d1d;"><span>128</span></samp></td>
+              <td>--rh-space-7xl</td>
+              <td>128px spacer</td>
+            </tr>
+            </tbody>
+          </table>
+          
+  
+        </div>
 
   <h3 id="applying-spacers">Applying spacers</h3>
 
   <p>The size of an element dictates its spatial relationship with other elements in a layout, i.e. small elements need less space and large elements need more space. For example, use small spacers to define the spacing between text styles or buttons and use large spacers to define the vertical rhythm in a layout or spacing between sections.</p>
 
   <img src="/assets/spacing/spacing-application-1.svg" alt="How to apply spacing" style="">
-  </section>
 
+</section>
 
 
   <section class="section section--palette-default container" pfe-jump-links-panel__section="">
@@ -1388,7 +1411,6 @@
 
 
 </div>
-
 
 
 
