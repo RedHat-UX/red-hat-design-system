@@ -1,17 +1,14 @@
 import { LitElement, html, svg } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
-import { classMap } from 'lit/directives/class-map.js';
 import { property } from 'lit/decorators/property.js';
 import styles from './rh-sort-button.css';
+import { ComposedEvent } from '@patternfly/pfe-core';
 
 const DIRECTIONS = { asc: 'desc', desc: 'asc' } as const;
 
-export class RequestSortEvent extends Event {
-  constructor(
-      public direction: 'asc' | 'desc',
-  ) {
+export class RequestSortEvent extends ComposedEvent {
+  constructor(public direction: 'asc' | 'desc') {
     super('request-sort', {
-      bubbles: true,
       cancelable: true,
     });
   }
