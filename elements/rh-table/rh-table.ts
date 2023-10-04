@@ -5,7 +5,6 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import styles from './rh-table.css';
 import { RequestSortEvent, RhSortButton } from './rh-sort-button.js';
-export * from './rh-sort-button.js';
 
 /**
  * Displays tabular information in an easy and digestible manner.
