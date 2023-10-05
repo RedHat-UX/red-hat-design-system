@@ -42,10 +42,19 @@
   --rh-tile-border-color: var(--rh-color-border-subtle-on-dark, #707070);
 }
 
-#outer.desaturated {
+#outer:is(.desaturated, .checkable) {
   --rh-tile-link-color: var(--rh-tile-text-color);
   --rh-tile-link-text-decoration: underline;
   --rh-tile-link-focus-text-decoration: none;
+}
+
+#outer.checkable {
+  --rh-tile-link-after-display: none;
+}
+
+#outer:is(.compact, .checkable) {
+  --_margin: var(--rh-space-xl, 24px);
+  --_half-margin: calc(var(--_margin) / 2);
 }
 
 :host(:focus-within) #outer {
@@ -61,16 +70,7 @@
   background-color: var(--rh-tile-disabled-background-color);
 }
 
-#outer.checkable {
-  --rh-tile-link-after-display: none;
-}
-
-#outer.compact {
-  --_margin: var(--rh-space-xl, 24px);
-  --_half-margin: calc(var(--_margin) / 2);
-}
-
-#outer.compact #inner {
+#outer:is(.compact, .checkable) #inner {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -80,11 +80,11 @@
   margin: 0 calc(0px - var(--_margin)) var(--_half-margin);
 }
 
-#outer.compact #icon {
+#outer:is(.compact, .checkable) #icon {
   flex: 0 0 auto;
 }
 
-#outer.compact #content {
+#outer:is(.compact, .checkable) #content {
   flex: 1 1 auto;
 }
 
@@ -163,7 +163,7 @@ svg {
   max-width: 40px;
 }
 
-#outer.compact ::slotted([slot="icon"]) {
+#outer:is(.compact, .checkable) ::slotted([slot="icon"]) {
   margin-top: 0;
   margin-inline-end: var(--_margin);
   max-width: 30px;
@@ -177,18 +177,18 @@ svg {
   margin: calc(0px - var(--_half-margin)) 0 0;
 }
 
-#outer.compact ::slotted([slot="headline"]),
-::slotted(:not([slot])) {
+#outer:is(.compact, .checkable) ::slotted([slot="headline"]),
+#body {
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
 }
 
-#outer.compact ::slotted([slot="title"]),
-#outer.compact ::slotted(:not([slot])),
+#outer:is(.compact, .checkable) ::slotted([slot="title"]),
+#outer:is(.compact, .checkable) #body,
 ::slotted([slot="footer"]) {
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
 }
 
-#outer.compact ::slotted([slot="footer"]) {
+#outer:is(.compact, .checkable) ::slotted([slot="footer"]) {
   font-size: var(--rh-font-size-body-text-xs, 0.75rem);
 }
 

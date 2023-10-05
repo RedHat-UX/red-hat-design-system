@@ -146,7 +146,7 @@ export class RhTile extends LitElement {
   render() {
     const { bleed, compact, checkable, checked, desaturated, on = '' } = this;
     return html`
-      <div id="outer" class="${classMap({ bleed, compact, checkable, checked, desaturated, [on]: !!on })}">
+      <div id="outer" class="${classMap({ bleed, checkable, compact, checked, desaturated, [on]: !!on })}">
         <div id="image"><slot name="image"></slot></div>
         <div id="inner">
           ${!this.checkable ?
