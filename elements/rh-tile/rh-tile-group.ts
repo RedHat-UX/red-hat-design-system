@@ -87,8 +87,7 @@ export class RhTileGroup extends LitElement {
       });
       this.selectTile(selected);
     }
-    if (_changedProperties.has('ariaDisabeld')) {
-      this.#internals.role = this.radio ? 'radiogroup' : null;
+    if (_changedProperties.has('ariaDisabled')) {
       this.#tiles.forEach(tile => {
         if (tile.ariaDisabled !== this.ariaDisabled) {
           tile.ariaDisabled = this.ariaDisabled;
