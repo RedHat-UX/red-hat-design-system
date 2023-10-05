@@ -7,7 +7,19 @@ rh-tile a:is(:hover, :focus, :active) {
   text-decoration: var(--rh-tile-link-focus-text-decoration) !important;
 }
 
-rh-tile a:after {
+rh-tile a:not([slot="image"], [slot="headline"]) {
+  z-index: 2 !important;
+  position: relative !important;
+}
+
+rh-tile *:is([slot="image"], [slot="headline"]) a,
+rh-tile a:is([slot="image"], [slot="headline"]) {
+  z-index: 1 !important;
+  position: static !important;
+}
+
+rh-tile *:is([slot="image"], [slot="headline"]) a:after,
+rh-tile a:is([slot="image"], [slot="headline"]):after {
   content: "";
   position: absolute;
   inset: 0;

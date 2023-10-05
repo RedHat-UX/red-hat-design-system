@@ -152,7 +152,7 @@ export class RhTileGroup extends LitElement {
   }
 
   #setTiles(tile: RhTile | null | undefined) {
-    if (tile && tile.radio || this.radio) {
+    if ((tile && tile.radio || this.radio) && tile?.checked) {
       this.#tiles?.forEach(item => {
         if (tile !== item && item.checked) {
           item.checked = false;
