@@ -39,7 +39,7 @@
     </rh-tile>
   </rh-tile-group>
 ```
-{% endband %}
+
 {% endband %}
 
 {% renderCodeDocs hideDescription=true %}{% endrenderCodeDocs %}
