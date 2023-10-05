@@ -9,7 +9,7 @@
     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     <div slot="footer">Suspendisse eu turpis elementum</div>
   </rh-tile>
-```
+```'
 {% endband %}
 
 {% renderCodeDocs hideDescription=true %}{% endrenderCodeDocs %}
