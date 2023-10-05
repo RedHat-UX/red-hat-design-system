@@ -33,7 +33,6 @@ export class TileSelectEvent extends ComposedEvent {
  * @cssprop --rh-tile-interactive-color - color of interactive elements - {@default var(--rh-color-border-interactive-on-light, #0066cc)}
  * @cssprop --rh-tile-link-color - color of tile link - {@default var(--rh-tile-interactive-color)}
  * @cssprop --rh-tile-link-text-decoration - tile link text decoration - {@default none}
- * @cssprop --rh-tile-link-focus-text-decoration - tile link text decoration on focus/hover - {@default underline}
  * @cssprop --rh-tile-background-color - color tile surface - {@default var(--rh-color-surface-lightest, #ffffff)}
  * @cssprop --rh-tile-focus-background-color - color tile surface on focus/hover - {@default var(--rh-color-surface-lighter, #f2f2f2)}
  * @cssprop --rh-tile-disabled-background-color - color tile surface when disabled - {@default var(--rh-color-surface-light, #e0e0e0)}
@@ -165,7 +164,8 @@ export class RhTile extends LitElement {
                     <input 
                       type="${this.radio ? 'radio' : 'checkbox'}" 
                       tabindex="-1"
-                      ?checked=${this.checked}>
+                      ?checked=${this.checked}
+                      ?disabled=${this.ariaDisabled === 'true'}>
                 </form>
               `}
             </div>

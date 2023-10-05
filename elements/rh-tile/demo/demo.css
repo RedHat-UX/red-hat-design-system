@@ -1,5 +1,20 @@
+#demo-container {
+  margin: 36px;
+  row-gap: 36px;
+}
+
+#demo-container, rh-tile-group {
+  display: flex;
+  align-items: top;
+  flex-wrap: wrap;
+  column-gap: 36px;
+}
+
+h2, rh-tile-group {
+  flex: 1 0 100%;
+  margin: 0;
+}
+
 rh-tile {
-  width: 360px;
-  display: inline-block;
-  margin: 32px;
+  flex: 0 0 360px;
 }
