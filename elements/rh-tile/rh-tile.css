@@ -59,6 +59,7 @@
 
 :host(:focus-within) #outer {
   outline: 3px solid var(--rh-tile-interactive-color);
+  outline-offset: 2px;
 }
 
 :host(:is(:hover, :focus-within)) #outer {
