@@ -1,6 +1,7 @@
 /* stylelint-disable max-line-length */
 
 :is(rh-table) table {
+  width: 100%;
   margin: 0 auto;
   table-layout: fixed;
   border: 0;
@@ -15,6 +16,7 @@
   position: relative;
   padding-top: var(--rh-space-lg, 16px);
   padding-bottom: var(--rh-space-lg, 16px);
+  text-align: left;
 }
 
 :is(rh-table) tr {
@@ -27,7 +29,6 @@
 
 :is(rh-table) tr > * {
   border: none;
-  white-space: nowrap;
 }
 
 :is(rh-table) :is(tr, col){
