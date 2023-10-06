@@ -88,6 +88,8 @@ export class RhNavigationSecondary extends LitElement {
 
   #tabindex = new RovingTabindexController(this);
 
+  #rtiInit = false;
+
   /** Navigation Items that should be initialized by Roving Tabindex */
   #navItems: HTMLElement[] | undefined;
 
@@ -225,21 +227,57 @@ export class RhNavigationSecondary extends LitElement {
    */
   #onKeydown(event: KeyboardEvent) {
     switch (event.key) {
-      case 'Escape':
-        if (this.#screenSize.matches.has('md')) {
+      case 'Escape': {
+        if (!this.#screenSize.matches.has('md')) {
           this.mobileMenuExpanded = false;
           this.shadowRoot?.querySelector('button')?.focus?.();
         } else {
-          this.#allDropdowns()
-            .find(x => x.expanded)
-            ?.querySelector('a')
-            ?.focus();
+          this.#tabindex.activeItem?.focus();
         }
         this.close();
         this.overlayOpen = false;
         break;
+      }
+      case 'Tab':
+        this.#onTabEvent(event);
+        break;
       default:
         break;
+    }
+  }
+
+  #onTabEvent(event: KeyboardEvent) {
+    // target is the element we are leaving with tab press
+    const target = event.target as HTMLElement;
+    // get target parent dropdown
+    const dropdowns = this.#allDropdowns();
+    const dropdownParent = dropdowns.find(dropdown => dropdown.contains(target));
+    if (!dropdownParent) {
+      return;
+    }
+    const focusableChildren = this.#focusableChildElements(dropdownParent);
+    if (!focusableChildren) {
+      return;
+    }
+    if (event.shiftKey) {
+      const firstFocusable = focusableChildren[0] === target;
+      if (!firstFocusable) {
+        return;
+      } else {
+        this.close();
+        this.overlayOpen = false;
+      }
+    } else {
+      // is the target the last focusableChildren element in the dropdown
+      const lastFocusable = focusableChildren[focusableChildren.length - 1] === target;
+      if (!lastFocusable) {
+        return;
+      }
+      event.preventDefault();
+      this.close();
+      this.overlayOpen = false;
+      this.#tabindex.updateActiveItem(this.#tabindex.nextItem);
+      this.#tabindex.activeItem?.focus();
     }
   }
 
@@ -249,7 +287,19 @@ export class RhNavigationSecondary extends LitElement {
         nav.querySelectorAll(':is(rh-navigation-secondary-dropdown, rh-secondary-nav-dropdown) > a, [slot="nav"] > li > a')
       );
     });
-    this.#tabindex.initItems(this.#navItems ?? []);
+    if (this.#rtiInit) {
+      this.#tabindex.updateItems(this.#navItems ?? []);
+    } else {
+      this.#tabindex.initItems(this.#navItems ?? []);
+      this.#rtiInit = true;
+    }
+  }
+
+  /* TODO: Abstract this out to a shareable function, should RTI handle something similar? */
+  #focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
+    return parent.querySelectorAll(
+      'a, button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"]):not([disabled]), details:not([disabled]), summary:not(:disabled)'
+    );
   }
 
   /**
