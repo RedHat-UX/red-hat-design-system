@@ -3,8 +3,8 @@
 {{ tagName | getElementDescription }}
 
 {% example palette="light",
-          alt="Table with four columns and three rows",
-          src="./table-sample-element.png" %}
+           alt="Image of table with four columns and three rows",
+           src="./table-sample-element.png" %}
 
 ## Sample element
 

@@ -54,10 +54,6 @@
   text-align: center
 }
 
-:is(rh-table) :is(th, td)  {
-  padding: var(--rh-space-xl, 24px) var(--rh-space-lg, 16px);
-}
-
 :is(rh-table) thead :is(th, td) {
   font-weight: var(--rh-font-weight-heading-bold, 700);
   padding-top: var(--rh-space-lg, 16px);
