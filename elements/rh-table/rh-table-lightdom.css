@@ -101,7 +101,7 @@
     text-align: center;
   }
 
-  :is(rh-table) tr td {
+  :is(rh-table) tbody tr td {
     padding-top: calc(var(--rh-space-md, 8px) + var(--rh-space-xs, 4px));
     padding-bottom: calc(var(--rh-space-md, 8px) + var(--rh-space-xs, 4px));
   }
@@ -111,6 +111,8 @@
     grid-column-gap: var(--rh-space-lg, 16px);
     grid-template-columns: 1fr minmax(0, 1.5fr);
     align-items: start;
+    white-space: normal;
+    word-wrap: break-word;
   }
 
   :is(rh-table) thead ~ tbody tr td:before {
