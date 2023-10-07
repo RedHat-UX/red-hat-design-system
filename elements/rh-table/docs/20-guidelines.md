@@ -122,7 +122,6 @@ Columns can be sorted in ascending or descending order. Sorting controls are loc
            alt="Image of table on small viewport sizes",
            src="../table-viewport-sizes-small.png" %}
 
-
 ## Best practices
 
 ### One-column table

@@ -51,7 +51,8 @@
   font-weight: var(--rh-font-weight-heading-bold, 700);
   line-height: var(--rh-line-height-body-text, 1.5);
   margin-bottom: var(--rh-space-2xl, 32px);
-  text-align: center
+  text-align: center;
+  font-style: normal;
 }
 
 :is(rh-table) thead :is(th, td) {
