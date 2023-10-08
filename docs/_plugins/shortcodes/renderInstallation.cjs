@@ -3,7 +3,7 @@
 /**
  * @param {string} content
  */
-function renderInstallation(content, {
+function renderInstall(content, {
   lightdomcss = false,
   cdnVersion = 'v1-alpha',
 } = {}) {
@@ -172,5 +172,5 @@ ${content ?? ''}`}
 }
 
 module.exports = function(eleventyConfig) {
-  eleventyConfig.addPairedShortcode('renderInstallation', renderInstallation);
+  eleventyConfig.addPairedShortcode('renderInstall', renderInstall);
 };
