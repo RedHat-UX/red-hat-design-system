@@ -49,24 +49,11 @@ module.exports = function(eleventyConfig) {
     const outdir = join(__dirname, `../../assets/playgrounds/`);
     const bundle = await rollup({
       input: join(__dirname, 'rh-playground.js'),
-      // output: ,
       plugins: [
         nodeResolve(),
         importMetaAssets(),
       ],
     });
-    await bundle.write({
-        dir: outdir,
-      });
-    // const workerFilename = 'playground-typescript-worker.js';
-    //
-    // if (!existsSync(join(outdir, workerFilename))) {
-    //   const pkgpath = require.resolve('playground-elements');
-    //
-    //   await cp(
-    //     join(dirname(pkgpath), workerFilename),
-    //     join(outdir, workerFilename),
-    //   );
-    // }
+    await bundle.write({ dir: outdir });
   });
 };

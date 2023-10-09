@@ -13677,6 +13677,7 @@ class RhPlayground extends s$1 {
       opacity: .3;
     }
     playground-project {
+      display: block;
       border: var(--rh-border-width-md, 2px) solid var(--rh-color-border-subtle-on-light, #c7c7c7);
       border-radius: var(--rh-border-radius-default, 3px);
       overflow: hidden;

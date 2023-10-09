@@ -105,7 +105,7 @@ class RhPlayground extends LitElement {
     }
   }
 
-  onChange(event/*: Event & { target: PlaygroundTabBar | PlaygroundFileEditor } */) {
+  onChange(event) {
     if (event.target === this.tabBar) {
       // @ts-expect-error: need a better way to handle this, but works for now
       this.switch((event.target)._activeFileName);
@@ -114,7 +114,7 @@ class RhPlayground extends LitElement {
     }
   }
 
-  switch(filename/*?: string*/) {
+  switch(filename) {
     if (filename && this.preview && this.fileEditor) {
       this.preview.htmlFile = filename;
       this.fileEditor.filename = filename;

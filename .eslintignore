@@ -37,6 +37,7 @@ docs/pfe.min.js
 docs/bundle.js
 docs/core
 docs/components
+docs/assets/playgrounds
 node_modules
 
 core/pfe-sass/docs/index.html
