@@ -1,6 +1,6 @@
 # Table
 
-Displays tabular information in an easy and digestable manner.
+A table is a container for displaying information. It allows a user to scan, examine, and compare large amounts of data.
 
 ## Usage
 
