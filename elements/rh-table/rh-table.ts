@@ -9,7 +9,7 @@ import { RequestSortEvent, RhSortButton } from './rh-sort-button.js';
 /**
  * A table is a container for displaying information. It allows a user to scan, examine, and compare large amounts of data.
  *
- * @summary
+ * @summary Organizes and displays information from a data set
  *
  * @slot               - an HTML table
  * @slot    summary    - a brief description of the data
