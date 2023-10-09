@@ -8,7 +8,6 @@ import '@rhds/elements/rh-spinner/rh-spinner.js';
 class RhPlayground extends LitElement {
   static styles = css`
     :host {
-      max-height: 785px;
       position: relative;
       display: block;
     }
