@@ -110,8 +110,9 @@ header[lang="en"] {
 
 <script type="module">
   import '@rhds/elements/rh-cta/rh-cta.js';
-  if (!('shadowRootMode' in HTMLTemplateElement.prototype))
+  if (!('shadowRootMode' in HTMLTemplateElement.prototype)) {
     import('/assets/dsd-polyfill.js');
+  }
   customElements.define('shadow-root', class ShadowRootElement extends HTMLElement { });
 </script>
 
