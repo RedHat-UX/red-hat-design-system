@@ -13641,47 +13641,58 @@ RhSpinner = __decorate([
 class RhPlayground extends s$1 {
   static styles = i$6`
     :host {
-      max-height: 785px;
       position: relative;
       display: block;
+
+      --_max-height: 785px;
     }
+
     ::slotted(pre) {
+      max-height:  var(--_max-height);
       margin: 0 !important;
-      margin-block-end: -36px !important;
     }
+
     [hidden],
     div.showing {
       display: none !important;
     }
+
     div {
-      max-height: 785px;
+      max-height: var(--_max-height);
       overflow-y: scroll;
     }
+
     rh-button {
       position: absolute;
       inset-block-end: 5px;
       inset-inline-end: 5px;
       display: block;
     }
+
     rh-spinner {
       opacity: 0;
       transition: opacity 0.5s ease;
-      position: sticky;
-      inset-block: 0 40%;
-      inset-inline: 41%;
+      position: absolute;
+      inset-block-start: 50%;
+      inset-inline-start: 50%;
+      transform: translateY(-50%) translateX(-50%);
     }
+
     .loading rh-spinner {
       opacity: 1;
     }
+
     .loading ::slotted(pre) {
       opacity: .3;
     }
+
     playground-project {
       display: block;
       border: var(--rh-border-width-md, 2px) solid var(--rh-color-border-subtle-on-light, #c7c7c7);
       border-radius: var(--rh-border-radius-default, 3px);
       overflow: hidden;
     }
+
     playground-preview {
       resize: vertical;
       overflow: hidden;
@@ -13734,7 +13745,7 @@ class RhPlayground extends s$1 {
     }
   }
 
-  onChange(event/*: Event & { target: PlaygroundTabBar | PlaygroundFileEditor } */) {
+  onChange(event) {
     if (event.target === this.tabBar) {
       // @ts-expect-error: need a better way to handle this, but works for now
       this.switch((event.target)._activeFileName);
@@ -13743,7 +13754,7 @@ class RhPlayground extends s$1 {
     }
   }
 
-  switch(filename/*?: string*/) {
+  switch(filename) {
     if (filename && this.preview && this.fileEditor) {
       this.preview.htmlFile = filename;
       this.fileEditor.filename = filename;
