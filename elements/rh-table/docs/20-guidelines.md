@@ -146,4 +146,4 @@ Do not use the small viewport size table on large viewports.
 
 {% example palette="wrong",
            alt="Image of small viewport table used on a large viewport which is incorrect usage",
-           src="../table-best-practices-2.png" %}
+           src="../table-best-practices-3.png" %}
