@@ -4,10 +4,6 @@ import { classMap } from 'lit/directives/class-map.js';
 import 'playground-elements';
 import '@rhds/elements/rh-button/rh-button.js';
 import '@rhds/elements/rh-spinner/rh-spinner.js';
-import { PlaygroundTabBar } from 'playground-elements/playground-tab-bar.js';
-import { PlaygroundFileEditor } from 'playground-elements/playground-file-editor.js';
-import { PlaygroundPreview } from 'playground-elements/playground-preview.js';
-import { PlaygroundProject } from 'playground-elements/playground-project.js';
 
 class RhPlayground extends LitElement {
   static styles = css`

@@ -1,6 +1,5 @@
-const { existsSync } = require('node:fs');
-const { readFile, cp } = require('node:fs/promises');
-const { dirname, join } = require('node:path');
+const { readFile } = require('node:fs/promises');
+const { join } = require('node:path');
 
 /** @typedef {import('@patternfly/pfe-tools/11ty/DocsPage').DocsPage} DocsPage */
 
