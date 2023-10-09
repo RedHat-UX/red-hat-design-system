@@ -1,4 +1,6 @@
-const { readFile } = require('node:fs/promises');
+const { existsSync } = require('node:fs');
+const { readFile, cp } = require('node:fs/promises');
+const { dirname, join } = require('node:path');
 
 /** @typedef {import('@patternfly/pfe-tools/11ty/DocsPage').DocsPage} DocsPage */
 
@@ -40,4 +42,31 @@ ${content}
 
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPairedShortcode('playground', playground);
+  eleventyConfig.on('eleventy.before', async function() {
+    const { rollup } = await import('rollup');
+    const { importMetaAssets } = await import('@web/rollup-plugin-import-meta-assets');
+    const { nodeResolve } = await import('@rollup/plugin-node-resolve');
+    const outdir = join(__dirname, `../../assets/playgrounds/`);
+    const bundle = await rollup({
+      input: join(__dirname, 'rh-playground.js'),
+      // output: ,
+      plugins: [
+        nodeResolve(),
+        importMetaAssets(),
+      ],
+    });
+    await bundle.write({
+        dir: outdir,
+      });
+    // const workerFilename = 'playground-typescript-worker.js';
+    //
+    // if (!existsSync(join(outdir, workerFilename))) {
+    //   const pkgpath = require.resolve('playground-elements');
+    //
+    //   await cp(
+    //     join(dirname(pkgpath), workerFilename),
+    //     join(outdir, workerFilename),
+    //   );
+    // }
+  });
 };
