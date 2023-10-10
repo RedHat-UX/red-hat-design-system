@@ -3,7 +3,7 @@
 /**
  * @param {string} content
  */
-function renderInstallation(content, { lightdomcss = false } = {}) {
+function renderInstall(content, { lightdomcss = false } = {}) {
   /**
    * NB: since the data for this shortcode is no a POJO,
    * but a DocsPage instance, 11ty assigns it to this.ctx._
@@ -57,5 +57,5 @@ ${content ?? ''}
 }
 
 module.exports = function(eleventyConfig) {
-  eleventyConfig.addPairedShortcode('renderInstallation', renderInstallation);
+  eleventyConfig.addPairedShortcode('renderInstall', renderInstall);
 };
