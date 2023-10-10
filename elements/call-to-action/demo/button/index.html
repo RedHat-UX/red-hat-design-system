@@ -2,10 +2,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
-    <title>Call to action | Red Hat Design System</title>
+    <title>Button | Red Hat Design System</title>
     <link rel="preconnect" href="https://ga.jspm.io">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href=" /assets/redhat/redhat-theme/4/advanced-theme.css">
+    <link rel="stylesheet" href="../ /assets/redhat/redhat-theme/4/advanced-theme.css">
     <link rel="stylesheet" href="/assets/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all">
     <link rel="stylesheet" href="/assets/base.css">
 
@@ -19,13 +19,52 @@
   </head>
   <body unresolved="">
     <main>
-      <div data-demo="rh-cta"><rh-cta>
-  <a href="#">Call to Action</a>
-</rh-cta>
+      <div data-demo="rh-cta"><section>
+  <h2>Links</h2>
+  <rh-cta>
+    <a href="#">Link</a>
+  </rh-cta>
+
+  <rh-cta variant="primary">
+    <a href="#">Link</a>
+  </rh-cta>
+
+  <rh-cta variant="secondary">
+    <a href="#">Link</a>
+  </rh-cta>
+</section>
+
+<section>
+  <h2>Buttons</h2>
+  <rh-cta>
+    <button>Button</button>
+  </rh-cta>
+
+  <rh-cta variant="primary">
+    <button>Button</button>
+  </rh-cta>
+
+  <rh-cta variant="secondary">
+    <button>Button</button>
+  </rh-cta>
+</section>
 
 <script type="module">
   import '@rhds/elements/rh-cta/rh-cta.js';
 </script>
+
+<style>
+section {
+  display: grid;
+  gap: var(--rh-space-md, 8px) var(--rh-space-xl, 24px);
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  padding: var(--rh-space-lg, 16px);
+}
+
+h2 {
+  grid-column: -1/1;
+}
+</style>
 </div>
     </main>
 
