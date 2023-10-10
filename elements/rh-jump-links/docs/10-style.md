@@ -1,9 +1,9 @@
 
 ## Style
 
-  Jump links are fixed on the page and follow a user as they scroll. It moves 
-  them to a section of content when the corresponding link is selected. It looks 
-  visually similar to <a href=".../tabs">Open tabs</a>, the only difference is 
+  Jump links are fixed on the page and follow a user as they scroll. It moves
+  them to a section of content when the corresponding link is selected. It looks
+  visually similar to <a href=".../tabs">Open tabs</a>, the only difference is
   the uppercase label on top.
 
   {% example palette="light",
@@ -27,18 +27,18 @@
              src="../jump-links-theme-dark.svg" %}
 
 ### Label
-  Jump links display a label at the top indicating there are section links that 
+  Jump links display a label at the top indicating there are section links that
   a user can select. This label isn’t interactive.
 
 ### Section links
-  Jump links feature links that float to the right of an anchor line, they 
+  Jump links feature links that float to the right of an anchor line, they
   represent the different sections that are available to select.
 
 ### Nested section links
-  Sections that contain lots of content can be broken into nested sections for 
-  better organization and hierarchy. Nested section links are positioned under 
-  their parent section link and indented slightly. There are guidelines about 
-  how many section links can be included, but no guidelines about how many 
+  Sections that contain lots of content can be broken into nested sections for
+  better organization and hierarchy. Nested section links are positioned under
+  their parent section link and indented slightly. There are guidelines about
+  how many section links can be included, but no guidelines about how many
   nested section links can be included.
 
   {% example palette="light",
@@ -48,7 +48,7 @@
              src="../jump-links-nested.svg" %}
 
 ### Active indicator bar
-  A red indicator bar highlights what the active section is. It’s positioned on 
+  A red indicator bar highlights what the active section is. It’s positioned on
   top of the anchor line, not adjacent.
 
   {% example palette="light",
@@ -62,7 +62,7 @@
   Jump links can be used on all screen sizes.
 
 ### Breakpoints
-  Jump links are displayed in layout on large screens, but on small screens it’s 
+  Jump links are displayed in layout on large screens, but on small screens it’s
   wrapped in a disclosure which is collapsed until a user expands the panel.
 
 ### Desktop
@@ -94,19 +94,20 @@
 
 ## Spacing
 
-  Jump links use [PatternFly 4 
-  spacers](https://www.patternfly.org/v4/guidelines/spacers) to define 
-  spacing values between elements.
+{% example palette="light",
+           width=385,
+           class="inline-flex centered",
+           alt="Jump links spacing on desktop",
+           src="../jump-links-spacing.svg" %}
 
-  {% example palette="light",
-             width=385,
-             class="inline-flex centered",
-             alt="Jump links spacing on desktop",
-             src="../jump-links-spacing.svg" %}
+{% example palette="light",
+           width=872,
+           class="inline-flex centered",
+           alt="Jump links spacing on mobile",
+           src="../jump-links-spacing-2.svg" %}
 
-  {% example palette="light",
-             width=872,
-             class="inline-flex centered",
-             alt="Jump links spacing on mobile",
-             src="../jump-links-spacing-2.svg" %}
-
+{% spacerTokensTable
+   caption='',
+   headingLevel="3",
+   tokens="--rh-space-sm, --rh-space-md, --rh-space-lg, --rh-space-xl" %}
+{% endspacerTokensTable %}
