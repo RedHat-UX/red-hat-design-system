@@ -146,10 +146,22 @@ export class RhCta extends LitElement {
   /** Is the element in an RTL context? */
   #dir = new DirController(this);
 
+  #mo = new MutationObserver(() => this.#onMutation());
+
   #logger = new Logger(this);
 
   get #isDefault(): boolean {
     return !this.hasAttribute('variant');
+  }
+
+  connectedCallback(): void {
+    super.connectedCallback();
+    this.#mo.observe(this, { attributes: true, attributeFilter: ['color-palette'] });
+  }
+
+  disconnectedCallback(): void {
+    super.disconnectedCallback();
+    this.#mo.disconnect();
   }
 
   render() {
@@ -197,6 +209,10 @@ export class RhCta extends LitElement {
       CONTENT.set(this.cta, true);
       this.#initializing = false;
     }
+  }
+
+  #onMutation() {
+    this.#logger.warn('The color-palette attribute is deprecated and will be removed in a future release.');
   }
 }
 
