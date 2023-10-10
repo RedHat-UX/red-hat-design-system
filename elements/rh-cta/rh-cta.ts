@@ -7,7 +7,7 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import { DirController } from '../../lib/DirController.js';
 
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+import { type ColorPalette } from 'lib/context/color/provider.js';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
 import style from './rh-cta.css';
@@ -130,7 +130,6 @@ export class RhCta extends LitElement {
    * Your theme will influence these colors so check there first if you are seeing inconsistencies.
    * See [CSS Custom Properties](#css-custom-properties) for default values
    */
-  @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   /**
@@ -155,7 +154,8 @@ export class RhCta extends LitElement {
 
   render() {
     const rtl = this.#dir.dir === 'rtl';
-    const { on = '' } = this;
+    const dark = this.colorPalette?.includes('dark') ? 'dark' : '';
+    const on = this.on ?? dark;
     const svg = !!this.#isDefault;
     const icon = !!this.icon;
     const iconOrSvg = !!this.#isDefault || !!this.icon;
