@@ -137,7 +137,7 @@ module.exports = async function(data) {
       // register demo script and css resources
       for (const el of modulesAndLinks) {
         const isLink = el.tagName === 'link';
-        const attrs = Object.fromEntries(el.attrs.map(({ name, value }) => [name, value]))
+        const attrs = Object.fromEntries(el.attrs.map(({ name, value }) => [name, value]));
         const subresourceURL = isLink ? attrs.href : attrs.src;
         if (!subresourceURL.startsWith('http')) {
           const subresourceFileURL = !subresourceURL.startsWith('/')
