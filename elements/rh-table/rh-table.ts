@@ -60,6 +60,11 @@ export class RhTable extends LitElement {
 
   #logger = new Logger(this);
 
+  connectedCallback() {
+    super.connectedCallback();
+    this.#init();
+  }
+
   render() {
     return html`
       <div id="container"
@@ -112,10 +117,14 @@ export class RhTable extends LitElement {
     });
   }
 
-  #onSlotChange() {
+  #init() {
     if (this.#table && this.#summary) {
       this.#table.setAttribute('aria-describedby', 'summary');
     }
+  }
+
+  #onSlotChange() {
+    this.#init();
   }
 
   #onRequestSort(event: Event) {
