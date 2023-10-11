@@ -121,7 +121,7 @@ export class RhTable extends LitElement {
       const columnIndexToSort = [...children].indexOf(header);
 
       if (!this.#rows) {
-        this.#logger.warn('No rows found');
+        this.#logger.warn('Could not perform sort: no rows found');
         return;
       }
 
