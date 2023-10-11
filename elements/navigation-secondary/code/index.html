@@ -885,6 +885,20 @@
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/path/to/rh-navigation-secondary/rh-navigation-secondary-lightdom.css<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span></code></pre>
 <p>Replace <code>/path/to</code> in the <code>href</code> attribute with the installation path to the <code>rh-navigation-secondary</code> directory in your project.</p>
 </section>
+<copy-permalink class="h3">
+  <h3 id="system-integration" tabindex="-1">
+    <a class="heading-anchor" href="#system-integration">System Integration</a>
+      </h3>
+    </copy-permalink>
+<copy-permalink class="h4">
+  <h4 id="current-page-indicator" tabindex="-1">
+    <a class="heading-anchor" href="#current-page-indicator">Current page indicator</a>
+      </h4>
+    </copy-permalink>
+<p>When a user is viewing a page that is part of the secondary navigation information architecture, a red top border is visible. If the current active page is part of a dropdown menu, that dropdown is highlighted with the same top border to indicate it contains the current page. For more details on how to use this current page indicator, refer to the <a href="../guidelines/#current-page-indicator">design guidelines</a> for current page indicator.</p>
+<p>To enable this indicator style, implementation should apply the <code>aria-current="page"</code> attribute to the current page link.</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/<span class="token punctuation">"</span></span> <span class="token attr-name">aria-current</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>page<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Current page being viewed<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span></code></pre>
+<p>The <code>rh-navigation-secondary</code> element does not apply the <code>aria-current="page"</code> attribute itself. The responsibility for keeping track of which link is currently active falls on the content management system or application.  The element checks for the presence of this attribute and applies the current page indicator style to nav links and dropdown menus when the active page is within a dropdown menu.</p>
 <copy-permalink class="h2">
   <h2 id="rh-navigation-secondary" tabindex="-1">
     <a class="heading-anchor" href="#rh-navigation-secondary">rh-navigation-secondary</a>
@@ -1021,6 +1035,18 @@
 <p>Subtle border color (light theme)</p>
 </td>
         <td style="text-align:left"><code data-color="#c7c7c7" style="--color:#c7c7c7">#c7c7c7</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-brand-red-on-dark</code></td>
+        <td style="text-align:left">
+<p>Brand red on dark background</p>
+</td>
+        <td style="text-align:left"><code data-color="#ff442b" style="--color:#ff442b">#ff442b</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-brand-red-on-light</code></td>
+        <td style="text-align:left">
+<p>Brand red on light background</p>
+</td>
+        <td style="text-align:left"><code data-color="#ee0000" style="--color:#ee0000">#ee0000</code></td>
       </tr> <tr>
         <td style="text-align:left"><code>--rh-color-interactive-blue-darker</code></td>
         <td style="text-align:left">
