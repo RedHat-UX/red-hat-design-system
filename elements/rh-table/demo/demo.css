@@ -9,3 +9,7 @@ h2, p {
   margin-top: var(--rh-space-5xl, 80px);
   text-align: center;
 }
+
+rh-table {
+  max-width: 50%;
+}
