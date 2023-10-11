@@ -19,6 +19,29 @@ import { RequestSortEvent, RhSortButton } from './rh-sort-button.js';
 export class RhTable extends LitElement {
   static readonly styles = [styles];
 
+  private static getNodeContentForSort(
+    columnIndexToSort: number,
+    node: Element,
+  ) {
+    const content = node.querySelector(`
+      :is(th, td):nth-child(${columnIndexToSort + 1}),
+      tr > :is(th, td):nth-child(${columnIndexToSort + 1})
+    `.trim())?.textContent?.trim()?.toLowerCase() ?? '';
+    return { node, content };
+  }
+
+  private static sortByContent(
+    direction: 'asc' | 'desc',
+    a: { content: string },
+    b: { content: string },
+  ) {
+    if (direction === 'asc') {
+      return (a.content < b.content ? -1 : a.content > b.content ? 1 : 0);
+    } else {
+      return (b.content < a.content ? -1 : b.content > a.content ? 1 : 0);
+    }
+  }
+
   get #table(): HTMLTableElement | undefined {
     return this.querySelector('table') as HTMLTableElement | undefined;
   }
@@ -97,7 +120,7 @@ export class RhTable extends LitElement {
 
   #onRequestSort(event: Event) {
     if (event instanceof RequestSortEvent) {
-      for (const button of this.querySelectorAll<RhSortButton>('rh-sort-button')) {
+      for (const button of this.querySelectorAll('rh-sort-button')) {
         const header = button.closest('th');
         if (button === event.target) {
           header?.setAttribute('aria-sort', `${event.direction}ending`);
@@ -139,29 +162,6 @@ export class RhTable extends LitElement {
             target.insertAdjacentElement(position, node);
           }
         });
-    }
-  }
-
-  private static getNodeContentForSort(
-    columnIndexToSort: number,
-    node: Element,
-  ) {
-    const content = node.querySelector(`
-      :is(th, td):nth-child(${columnIndexToSort + 1}),
-      tr > :is(th, td):nth-child(${columnIndexToSort + 1})
-    `.trim())?.textContent?.trim()?.toLowerCase() ?? '';
-    return { node, content };
-  }
-
-  private static sortByContent(
-    direction: 'asc' | 'desc',
-    a: { content: string },
-    b: { content: string },
-  ) {
-    if (direction === 'asc') {
-      return (a.content < b.content ? -1 : a.content > b.content ? 1 : 0);
-    } else {
-      return (b.content < a.content ? -1 : b.content > a.content ? 1 : 0);
     }
   }
 }
