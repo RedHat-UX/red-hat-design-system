@@ -1,6 +1,6 @@
 ---
 layout: layout-basic.njk
-title: Elements
+title: All elements
 summaries:
   audio-player: Plays audio clips and includes other features
   jump-links: Moves users to specific content when a link is selected
