@@ -20,6 +20,11 @@ jobs:
   test:
     name: Web Test Runner
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        firefox:
+          - latest
+          - latest-esr
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -39,6 +44,12 @@ jobs:
       - name: Lint
         id: lint
         run: npm run lint
+
+      - name: Setup Firefox ${{ matrix.firefox }}
+        id: setup-firefox
+        uses: browser-actions/setup-firefox@v1
+        with:
+          firefox-version: ${{ matrix.firefox }}
 
       - name: Run tests
         run: npm test
