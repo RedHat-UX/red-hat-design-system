@@ -1,4 +1,4 @@
-{% renderInstallation lightdomcss=true%}{% endrenderInstallation %}
+{% renderInstall lightdomcss=true%}{% endrenderInstall %}
 
 ### System Integration
 
