@@ -11,9 +11,9 @@ A table is a container for displaying information. It allows a user to scan, exa
       Concerts
     </caption>
     <colgroup>
-      <col />
-      <col />
-      <col />
+      <col>
+      <col>
+      <col>
     </colgroup>
     <thead>
       <tr>
