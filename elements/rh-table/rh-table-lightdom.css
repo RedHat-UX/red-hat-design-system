@@ -1,7 +1,6 @@
 /* stylelint-disable max-line-length */
 
 :is(rh-table) table {
-  width: 100%;
   margin: 0 auto;
   table-layout: fixed;
   border: 0;
