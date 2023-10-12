@@ -11,10 +11,10 @@
 <rh-table>
   <table>
     <colgroup>
-      <col/>
-      <col/>
-      <col/>
-      <col/>
+      <col>
+      <col>
+      <col>
+      <col>
     </colgroup>
     <thead>
       <tr>
