@@ -36,7 +36,7 @@ In general, header labels should be as short as possible. However, if columns ha
   <table>
     <colgroup>
         <col style="width: 25%" />
-        <col />
+        <col>
     </colgroup>
     <thead>
       <tr>
