@@ -14,7 +14,6 @@ export class RequestSortEvent extends ComposedEvent {
   }
 }
 
-// TODO need finalized icons from designers
 const paths = new Map(Object.entries({
   asc: 'M279 224H41c-21.4 0-32.1-25.9-17-41L143 64c9.4-9.4 24.6-9.4 33.9 0l119 119c15.2 15.1 4.5 41-16.9 41z',
   desc: 'M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41z',
@@ -23,16 +22,23 @@ const paths = new Map(Object.entries({
 
 /**
  * Table sort button
+ *
+ * @csspart sort-button    - button element
+ * @csspart sort-indicator - icon wrapper element
+ *
+ * @fires {RequestSortEvent} request-sort - when the button is clicked
  */
 @customElement('rh-sort-button')
 export class RhSortButton extends LitElement {
   static readonly styles = [styles];
 
+  /** The button's sorting order */
   @property({
     reflect: true,
     attribute: 'sort-direction',
   }) sortDirection?: 'asc' | 'desc';
 
+  /** The column name associated with this button (for screen readers) */
   @property() column?: string;
 
   render() {
@@ -54,6 +60,9 @@ export class RhSortButton extends LitElement {
     `;
   }
 
+  /**
+   * Dispatch a request-sort event in ascending (asc) or descending (desc) order
+   */
   sort() {
     const next = DIRECTIONS_OPPOSITES[this.sortDirection ?? 'asc'];
     this.dispatchEvent(new RequestSortEvent(next));
