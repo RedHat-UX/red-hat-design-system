@@ -152,7 +152,7 @@ export class RhCta extends LitElement {
     return !this.hasAttribute('variant');
   }
 
-  /* [Depreciation] start */
+  // START DEPRECATION WARNING
   /* note: remove ColorPalette type, and property decorator import above */
   /**
    * @deprecated
@@ -174,15 +174,15 @@ export class RhCta extends LitElement {
   #onMutation() {
     this.#logger.warn('The color-palette attribute is deprecated and will be removed in a future release.');
   }
-  /* [Depreciation] end */
+  // END DEPRECATION WARNING
 
   render() {
     const rtl = this.#dir.dir === 'rtl';
-    /* [Depreciation] start */
+    // START DEPRECATION WARNING
     /* note: remove on from classMap below */
     const dark = this.colorPalette?.includes('dark') ? 'dark' : '';
     const on = this.on ?? dark;
-    /* [Depreciation] end */
+    // END DEPRECATION WARNING
     const svg = !!this.#isDefault;
     const icon = !!this.icon;
     const iconOrSvg = !!this.#isDefault || !!this.icon;
