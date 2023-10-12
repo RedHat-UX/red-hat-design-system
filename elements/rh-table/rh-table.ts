@@ -109,11 +109,7 @@ export class RhTable extends LitElement {
 
     this.#cols.forEach((col, index) => {
       const { cellIndex } = target as HTMLTableCellElement;
-      if (index === cellIndex) {
-        col.classList.add('active');
-      } else {
-        col.classList.remove('active');
-      }
+      col.classList.toggle('active', index === cellIndex);
     });
   }
 
