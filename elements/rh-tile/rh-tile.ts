@@ -22,7 +22,7 @@ export class TileSelectEvent extends ComposedEvent {
  * Tile is a flexible element that creates a clickable, contained surface. In contrast to card, each tile can perform only one action. There are two types, 
  * link tiles and selectable tiles. Both can be used in groups or individually, except for the selectable tile with a radio button, which always has to be grouped.
  *
- * @summary 
+ * @summary Creates a clickable, contained surface
  *
  * @fires {TileSelectEvent} select - when tile is clicked
  * @slot image - optional image on top of tile

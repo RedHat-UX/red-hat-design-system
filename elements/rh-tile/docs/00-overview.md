@@ -4,7 +4,7 @@
 
 {% example palette="light",
            alt="",
-           src="../tile-sample.png" %}
+           src="./tile-sample.png" %}
 
 ## Sample element
 
