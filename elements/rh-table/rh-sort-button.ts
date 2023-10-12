@@ -4,7 +4,7 @@ import { property } from 'lit/decorators/property.js';
 import styles from './rh-sort-button.css';
 import { ComposedEvent } from '@patternfly/pfe-core';
 
-const DIRECTIONS = { asc: 'desc', desc: 'asc' } as const;
+const DIRECTIONS_OPPOSITES = { asc: 'desc', desc: 'asc' } as const;
 
 export class RequestSortEvent extends ComposedEvent {
   constructor(public direction: 'asc' | 'desc') {
@@ -55,7 +55,7 @@ export class RhSortButton extends LitElement {
   }
 
   sort() {
-    const next = DIRECTIONS[this.sortDirection ?? 'asc'];
+    const next = DIRECTIONS_OPPOSITES[this.sortDirection ?? 'asc'];
     this.dispatchEvent(new RequestSortEvent(next));
   }
 }
