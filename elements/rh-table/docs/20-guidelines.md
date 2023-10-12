@@ -35,7 +35,7 @@ In general, header labels should be as short as possible. However, if columns ha
 <rh-table>
   <table>
     <colgroup>
-        <col style="width: 25%" />
+        <col style="width: 25%">
         <col>
     </colgroup>
     <thead>

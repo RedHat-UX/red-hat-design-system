@@ -9,7 +9,7 @@ If a table is in a container that can receive keyboard focus (e.g., with a `tabi
 <rh-table>
   <table>
     <colgroup>
-        <col style="width: 25%" />
+        <col style="width: 25%">
         <col />
     </colgroup>
     <thead>
