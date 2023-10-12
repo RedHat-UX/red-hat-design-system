@@ -90,8 +90,6 @@ export class RhTable extends LitElement {
       return;
     }
 
-    event.preventDefault();
-
     let { target } = event;
 
     if (!(target instanceof Element)) {
@@ -106,6 +104,8 @@ export class RhTable extends LitElement {
         return;
       }
     }
+
+    event.preventDefault();
 
     this.#cols.forEach((col, index) => {
       const { cellIndex } = target as HTMLTableCellElement;
