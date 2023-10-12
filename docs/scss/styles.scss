@@ -151,3 +151,7 @@ body.page-docs rh-cta a[href^="http"]::after {
 :is(rh-table) th {
   font-size: unset;
 }
+
+rh-playground pre {
+  max-height: 785px;
+}
