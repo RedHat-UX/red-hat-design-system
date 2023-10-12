@@ -16,6 +16,7 @@
   padding-top: var(--rh-space-lg, 16px);
   padding-bottom: var(--rh-space-lg, 16px);
   text-align: left;
+  font-weight: var(--rh-font-weight-heading-bold, 700);
 }
 
 :is(rh-table) tr {
@@ -49,15 +50,19 @@
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   font-weight: var(--rh-font-weight-heading-bold, 700);
   line-height: var(--rh-line-height-body-text, 1.5);
-  margin-bottom: var(--rh-space-2xl, 32px);
+  margin-bottom: var(--rh-space-xl, 24px);
   text-align: center;
   font-style: normal;
 }
 
-:is(rh-table) thead :is(th, td) {
-  font-weight: var(--rh-font-weight-heading-bold, 700);
-  padding-top: var(--rh-space-lg, 16px);
-  padding-bottom: var(--rh-space-lg, 16px);
+:is(rh-table) :is(th, td) {
+  padding-right: var(--rh-space-lg, 16px);
+  padding-left: var(--rh-space-lg, 16px);
+}
+
+:is(rh-table) td {
+  padding-top: var(--rh-space-xl, 24px);
+  padding-bottom: var(--rh-space-xl, 24px);
 }
 
 :is(rh-table) :is(col.active) {
