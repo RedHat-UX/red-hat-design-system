@@ -13,7 +13,6 @@ import { RequestSortEvent, RhSortButton } from './rh-sort-button.js';
  *
  * @slot               - an HTML table
  * @slot    summary    - a brief description of the data
- * @csspart container  - table container
  */
 @customElement('rh-table')
 export class RhTable extends LitElement {
@@ -67,13 +66,11 @@ export class RhTable extends LitElement {
 
   render() {
     return html`
-      <div id="container"
-           part="container"
-           @pointerleave=${this.#onPointerleave}
-           @pointerover=${this.#onPointerover}>
-        <slot @request-sort="${this.#onRequestSort}" @slotchange=${this.#onSlotChange}></slot>
+        <slot @pointerleave=${this.#onPointerleave}
+              @pointerover=${this.#onPointerover}
+              @request-sort="${this.#onRequestSort}" 
+              @slotchange=${this.#onSlotChange}></slot>
         <slot id="summary" name="summary"></slot>
-      </div>
     `;
   }
 
