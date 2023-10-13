@@ -1,11 +1,11 @@
 
 ## Style
 
-Tile is available in both light and dark theme, and it comes as either a link tile or a selectable tile. Link tiles have two size and heading color options,  and the blue arrow in the bottom right corner helps distinguish it from card. Selectable tiles have a consistent style for both the checkbox and radio button variants.
+A tile is available as a <strong>Link tile</strong> or <strong>Selectable tile</strong>. A link tile has two sizes and heading color options; the blue arrow in the bottom right corner helps distinguish it from card. A selectable tile has a consistent style for both the checkbox and radio button variants.
 
 ### Anatomy
 {% example palette="light",
-           alt="",
+           alt="Default link tile with numbers pointing to locations of an image, an icon, text, and a footer",
            src="../link-tile-anatomy.png" %}
  
 1) Image
@@ -17,7 +17,7 @@ Tile is available in both light and dark theme, and it comes as either a link ti
 {.example-notes}
 
 {% example palette="light",
-           alt="",
+           alt="Selectable tiles with numbers pointing to locations of text, a checkbox or radio button, and a footer",
            src="../selectable-tile-anatomy.png" %}
 
 1) Heading
@@ -28,12 +28,13 @@ Tile is available in both light and dark theme, and it comes as either a link ti
 
 ### Sizes
 
-Link tiles come in default and compact size. Selectable tiles have only one size, which is based on the size of compact tiles.
+A link tile is available in Default and Compact sizes. A selectable tile has only one size which is based on the size of a compact tile.
 
 {% example palette="light",
-           alt="",
+           alt="Examples of a link tile, compact tile, and selectable tile to show size differences",
            src="../tile-sizes.png" %}
 
+<!---
 | Size                                 | Element                 | Value          |
 | ------------------------------------ | ----------------------- | -------------- |
 | Default (link)                       | Padding                 | 32px, 2rem     | 
@@ -53,32 +54,23 @@ Link tiles come in default and compact size. Selectable tiles have only one size
 | Default (link)                       | Icon size               | 48px, 3rem     |
 | Compact (link), Default (selectable) | Icon size               | 32px, 2rem     |
 
+
 {.full-width .col-111}
-
-## Heading color
-
-By default, link tiles have a blue heading, but a desaturated heading sub-variant exists for both light and dark themes. The desaturated heading uses either a black or white heading. Selectable tiles have a desaturated heading only and do not have the option for a blue heading.
-
-{% example palette="light",
-           alt="",
-           src="../tile-heading-color-light-theme.png" %}
-
-{% example palette="darkest",
-           alt="",
-           src="../tile-heading-color-dark-theme.png" %}
+-->
 
 ## Theme
 
-Both link and selectable tiles are available in dark and light themes.
+Both the link tile and the selectable tile are available in dark and light themes.
     
 {% example palette="light",
-        alt="",
+        alt="Light theme tiles use a white background, blue or black heading, black text, and a blue arrow icon",
         src="../tile-light-theme.png" %}
 
 {% example palette="darkest",
-        alt="",
+        alt="Dark theme tiles use a dark gray background, blue or white heading, white text, and a light blue arrow icon",
         src="../tile-dark-theme.png" %}
 
+<!---
 | Property                                        | Light theme    | Dark theme     | 
 | ----------------------------------------------- | -------------- | -------------- |
 | Color - Link tile surface                       | #FFFFFF        | #151515        | 
@@ -100,6 +92,19 @@ Both link and selectable tiles are available in dark and light themes.
 | Color - Link tile arrow                         | #0066CC        | #73BCF7        | 
 
 {.full-width .col-111}
+-->
+
+## Heading color
+
+A link tile has a blue heading by default, but a desaturated variant exists for both light and dark themes. The desaturated heading uses either a black or white heading. A selectable tile has a desaturated heading only and does not have the option for a blue heading.
+
+{% example palette="light",
+           alt="Examples of a light theme link tile with a blue heading, link tile with a black heading, and selectable tile with a black heading",
+           src="../tile-heading-color-light-theme.png" %}
+
+{% example palette="darkest",
+           alt="Examples of a dark theme link tile with a light blue heading, link tile with a white heading, and selectable tile with a white heading",
+           src="../tile-heading-color-dark-theme.png" %}
 
 ## Space
 
@@ -108,41 +113,44 @@ Space values remain the same at all breakpoints.
 ### Link tile without image
 
 {% example palette="light",
-        alt="",
+        alt="Default link tile and compact link tile with spacers showing padding and margins",
         src="../space-link-tile-no-image.png" %}
 
 ### Link tile with an image
 
 {% example palette="light",
-        alt="",
+        alt="Link tiles that have full-width and default image sizes with spacers showing padding and margins",
         src="../space-link-tile-with-image.png" %}
 
 ### Selectable tile
 
 {% example palette="light",
-        alt="",
+        alt="Selectable tile with spacers showing padding and margins",
         src="../space-selectable-tile.png" %}
 
+<!---
 {% spacerTokensTable 
     headline='',
     caption='',
     tokens="--rh-space-lg, --rh-space-xl, --rh-space-2xl" %}
 {% endspacerTokensTable %}
+-->
 
 ## Interaction states
 
-Interaction states are visual representations used to communicate the status of an element or pattern. The interaction states for a default link tile are the same for compact link tiles, as long as they use the same heading color.
+Interaction states are visual representations used to communicate the status of an element or pattern. The interaction states of a default link tile are the same for a compact link tile as long as they use the same heading color.
 
 ### Hover 
 
 {% example palette="light",
-        alt="",
+        alt="On hover, light theme tiles have a light gray background, an underlined (and sometimes darker blue) heading, a darker blue arrow icon ",
         src="../tile-states-hover-light-theme.png" %}
 
 {% example palette="darkest",
-        alt="",
+        alt="On hover, dark theme tiles have a lighter gray background, an underlined (and sometimes lighter blue) heading, a lighter blue arrow icon ",
         src="../tile-states-hover-dark-theme.png" %}
 
+<!---
 | Property                                        | Light theme | Dark theme | 
 | ------------------------------------------------| ----------- | ---------- |
 | Color - Link tile surface                       | #F2F2F2     | #1F1F1F    | 
@@ -156,6 +164,7 @@ Interaction states are visual representations used to communicate the status of 
 | Color - Link tile arrow                         | #004080     | #BEE1F4    |
 
 {.full-width .col-111}
+-->
 
 ### Focus
 
@@ -164,18 +173,20 @@ The Focus state has the same styles as the Hover state.
 {% endalert %}
 
 {% example palette="light",
-        alt="",
+        alt="Focused light theme tiles have a blue focus ring and use hover state styling",
         src="../tile-states-focus-light-theme.png" %}
 
 {% example palette="darkest",
-        alt="",
+        alt="Focused dark theme tiles have a light blue focus ring and use hover state styling",
         src="../tile-states-focus-dark-theme.png" %}
 
+<!---
 | Property           | Light theme | Dark theme |
 | -------------------| ----------- | ---------- | 
 | Color - Focus ring | #0066CC     | #73BCF7    |
 
 {.full-width .col-111}
+-->
 
 ### Active 
 
@@ -186,47 +197,52 @@ The Active state has the same styles as the Hover state.
 {% endalert %}
 
 {% example palette="light",
-        alt="",
+        alt="Active light theme link tiles use the focus state styles",
         src="../tile-states-active-light-theme.png" %}
 
 {% example palette="darkest",
-        alt="",
+        alt="Active dark theme link tiles use the focus state styles",
         src="../tile-states-active-dark-theme.png" %}
 
+<!---
 | Property           | Light theme | Dark theme |
 | -------------------| ----------- | ---------- | 
 | Color - Focus ring | #0066CC     | #73BCF7    |
 
 {.full-width .col-111}
+-->
 
 ### Selected 
 
-Only selectable tiles have a selected state. Link tiles have an active state instead.
+Only a selectable tile has a selected state. A link tile has an active state instead.
 
 {% example palette="light",
-        alt="",
+        alt="When selected, the form input of light theme selectable tiles appears blue and filled or checked",
         src="../tile-states-selected-light-theme.png" %}
 
 {% example palette="darkest",
-        alt="",
+        alt="When selected, the form input of dark theme selectable tiles appears light blue and filled or checked",
         src="../tile-states-selected-dark-theme.png" %}
 
+<!---
 | Property           | Light theme | Dark theme |
 | -------------------| ----------- | ---------- | 
 | Color - Form input | #0066CC     | #73BCF7    |
 
 {.full-width .col-111}
+-->
 
 ### Disabled
 
 {% example palette="light",
-        alt="",
+        alt="Disabled light theme tiles have a light gray background and lighter gray text. Disabled link tiles have a ban icon.",
         src="../tile-states-disabled-light-theme.png" %}
 
 {% example palette="darkest",
-        alt="",
+        alt="Disabled dark theme tiles have a lighter gray background and light gray text. Disabled link tiles have a ban icon.",
         src="../tile-states-disabled-dark-theme.png" %}
 
+<!---
 | Property                                  | Light theme  | Dark theme | 
 | ----------------------------------------- | ------------ | ---------- | 
 | Color - Link tile surface                 | #E0E0E0      | #4D4D4D    | 
@@ -240,3 +256,4 @@ Only selectable tiles have a selected state. Link tiles have an active state ins
 | Color - Selectable tile body text         | #4D4D4D      | #A3A3A3    |
 
 {.full-width .col-111}
+-->

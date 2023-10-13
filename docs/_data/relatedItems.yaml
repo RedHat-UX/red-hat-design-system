@@ -82,6 +82,10 @@ rh-tag:
  - rh-avatar
  - rh-badge
  - rh-button
+rh-tile:
+ - rh-cta
+ - rh-card
+ - form
 rh-timestamp:
  - rh-blockquote
  - rh-statistic
@@ -96,7 +100,7 @@ announcement:
 disclosure: 
  - rh-accordion
  - filter
- - form
+ - rh-form
 filter: 
  - rh-accordion
  - disclosure

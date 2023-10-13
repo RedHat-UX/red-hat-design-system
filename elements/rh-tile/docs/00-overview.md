@@ -3,7 +3,7 @@
 {{ tagName | getElementDescription }}
 
 {% example palette="light",
-           alt="",
+           alt="Example of a default link tile and a selectable tile",
            src="./tile-sample.png" %}
 
 ## Sample element

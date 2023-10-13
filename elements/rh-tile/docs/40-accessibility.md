@@ -1,10 +1,10 @@
 
 ## Keyboard interactions
 
-Users should have the ability to use the tab key to navigate to a tile or into a tile group. When tiles are in a group, users will need to use arrow keys to navigate from one tile to another. Pressing the enter key will activate a link tile or select a selectable tile.
+A user should have the ability to use the Tab key to navigate to a tile or into a tile group. When tiles are in a group, a user will need to use arrow keys to navigate from one tile to another. Pressing the `Enter`/`Return` key will activate a link tile or select a selectable tile.
 
 {% example palette="light",
-        alt="",
+        alt="Tile groups with labels showing which key to use for navigating",
         src="../tile-keyboard-interactions.png" %}
 
 | Key {style="width: 25%" } | Result                                                                          |
@@ -22,7 +22,7 @@ Users should have the ability to use the tab key to navigate to a tile or into a
 A logical focus order helps keyboard users operate our websites. Elements need to receive focus in an order that preserves meaning, therefore the focus order should make sense and not jump around randomly. In tile groups, focus moves from left to right and top to bottom.
 
 {% example palette="light",
-        alt="",
+        alt="Tile groups with numbers showing the focus order",
         src="../tile-focus-order.png" %}
 
 ## Touch targets
