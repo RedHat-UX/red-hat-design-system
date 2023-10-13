@@ -8,9 +8,10 @@
   align-items: top;
   flex-wrap: wrap;
   column-gap: 36px;
+  row-gap: 36px;
 }
 
-h2, rh-tile-group {
+h2:not(rh-tile > h2), rh-tile-group {
   flex: 1 0 100%;
   margin: 0;
 }

@@ -159,7 +159,11 @@ export class RhTile extends LitElement {
               </div>` : ''}
           <div id="content">
             <div id="header">
-              <div id="title"><slot name="title"></slot></div>
+              ${(!this.checkable || !this.compact) ?
+                 html`
+                   <div id="title">
+                    <slot name="title"></slot>
+                   </div>` : ''}
               <div id="headline"><slot name="headline"></slot></div>
               ${!this.checkable ? '' : html`
                 <form id="form" aria-hidden="true">
