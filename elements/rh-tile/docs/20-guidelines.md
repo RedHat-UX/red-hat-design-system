@@ -39,17 +39,18 @@ A selectable tile is a form element and can be used as either a radio button or 
 
 The four content slots within a tile are <strong>title</strong>, <strong>heading</strong>, <strong>body</strong>, and <strong>footer</strong>.
 
-### Title
-A title provides secondary descriptive context. A selectable tile does not have title slots.
+- ### Title 
+  A title provides secondary descriptive context. A selectable tile does not have title slots.
 
-### Heading
-In a link tile, the heading should indicate what clicking on the tile will do. In a selectable tile, the heading labels the radio button or checkbox.
+- ### Heading
+  In a link tile, the heading should indicate what clicking on the tile will do. In a selectable tile, the heading labels the radio button or checkbox.
 
-### Body
-The body text expands on heading content and gives the user more information.
+- ### Body
+  The body text expands on heading content and gives the user more information.
 
-### Footer
-Footer text should be brief and be used for supplementary information only.
+- ### Footer
+  Footer text should be brief and be used for supplementary information only.
+  {.multi-column--min-400-wide style="padding:0;list-style-type:none;"}
 
 ### Character count
 
