@@ -145,7 +145,6 @@ export class RhCta extends LitElement {
   /** Is the element in an RTL context? */
   #dir = new DirController(this);
 
-
   #logger = new Logger(this);
 
   get #isDefault(): boolean {
@@ -155,7 +154,7 @@ export class RhCta extends LitElement {
   // START DEPRECATION WARNING
   /* note: remove ColorPalette type, and property decorator import above */
   /**
-   * @deprecated
+   * @deprecated do not use the color-palette attribute, which was added by mistake. use context-providing containers (e.g. rh-card) instead
    */
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
