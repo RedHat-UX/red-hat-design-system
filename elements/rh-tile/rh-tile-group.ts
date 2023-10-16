@@ -26,7 +26,7 @@ export class RhTileGroup extends LitElement {
   @property({ reflect: true, attribute: 'aria-disabled', type: String }) ariaDisabled = 'false';
 
   /**
-   * if tile is checkable, whether only on tile can be checked
+   * if tile is checkable, whether only one tile can be checked
    */
   @property({ attribute: 'radio', type: Boolean }) radio = false;
 
