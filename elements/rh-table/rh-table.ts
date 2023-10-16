@@ -66,10 +66,10 @@ export class RhTable extends LitElement {
 
   render() {
     return html`
-        <slot @pointerleave=${this.#onPointerleave}
-              @pointerover=${this.#onPointerover}
+        <slot @pointerleave="${this.#onPointerleave}"
+              @pointerover="${this.#onPointerover}"
               @request-sort="${this.#onRequestSort}" 
-              @slotchange=${this.#onSlotChange}></slot>
+              @slotchange="${this.#onSlotChange}"></slot>
         <slot id="summary" name="summary"></slot>
     `;
   }
