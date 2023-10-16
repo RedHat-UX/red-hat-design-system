@@ -314,6 +314,12 @@ svg {
  * BRICK
  *****************************************************************************/
 
+:host([variant="brick"]) {
+  display: inline-block !important;
+  max-width: 100%;
+  width: 100%;
+}
+
 :host([variant="brick"]) #container {
   border-style: solid;
   font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);

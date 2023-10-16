@@ -148,3 +148,11 @@ body.page-docs rh-cta a[href^="http"]::after {
 .feedback-contact-link {
   white-space: nowrap; /* fix orphan issue on the Feedback shortcode's contact us link */
 }
+
+:is(rh-table) th {
+  font-size: unset;
+}
+
+rh-playground pre {
+  max-height: 785px;
+}
