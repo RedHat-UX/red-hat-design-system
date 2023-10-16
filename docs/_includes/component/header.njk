@@ -188,12 +188,9 @@
           <details {{ extraAttributes }}>
             <summary class="site-navigation__heading">Accessibility</summary>
             <ul class="site-navigation__sub-menu">
-              <li class="site-navigation__sub-menu__item">
-                {{ menuLink('Overview', '/accessibility/', 'site-navigation__sub-menu__link') }}
-              </li>
-              {%- for a11yDoc in collections.a11yDocs -%}
+              {%- for accessibility in collections.accessibility -%}
                 <li class="site-navigation__sub-menu__item">
-                  {{ menuLink(a11yDoc.data.title, a11yDoc.url, 'site-navigation__sub-menu__link') }}
+                  {{ menuLink(accessibility.data.title, accessibility.url, 'site-navigation__sub-menu__link') }}
                 </li>
               {%- endfor -%}
             </ul>
