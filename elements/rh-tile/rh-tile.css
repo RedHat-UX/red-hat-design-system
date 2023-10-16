@@ -158,14 +158,23 @@ svg {
   height: var(--rh-space-xl, 24px);
 }
 
-::slotted(*) {
-  margin: var(--_margin) 0;
+#body {
+  margin: 0 0 var(--_margin);
 }
 
-::slotted([slot="image"]),
-::slotted([slot="icon"]),
-::slotted(:last-child) {
+::slotted(*) {
+  margin-top: 0;
+  margin-bottom: var(--_margin);
+}
+
+::slotted(:last-child),
+#body ::slotted(:last-of-type) {
   margin-bottom: 0;
+}
+
+::slotted(:first-child),
+#body ::slotted(:first-of-type) {
+  margin-top: 0;
 }
 
 ::slotted(a) {
@@ -176,11 +185,17 @@ svg {
   display: block;
   max-width: 100%;
   margin-top: 0;
+  margin-bottom: var(--_padding);
 }
 
 ::slotted([slot="icon"]) {
   width: 100%;
+  margin: 0 0 var(--_padding);
   max-width: var(--rh-size-icon-05, 48px);
+}
+
+::slotted([slot="title"]) {
+  text-transform: uppercase;
 }
 
 #outer:is(.compact, .checkable) ::slotted([slot="icon"]) {
@@ -189,17 +204,8 @@ svg {
   max-height: var(--rh-size-icon-03, 32px);
 }
 
-::slotted([slot="title"]) {
-  text-transform: uppercase;
-}
-
 #outer:is(.compact, .checkable) ::slotted([slot="image"]) {
   margin-bottom: var(--_margin);
-}
-
-#outer:is(.compact, .checkable) ::slotted([slot="icon"]),
-#outer:is(.compact, .checkable) ::slotted([slot="headline"]) {
-  margin-top: 0;
 }
 
 #outer:is(.compact, .checkable) ::slotted([slot="headline"]),
