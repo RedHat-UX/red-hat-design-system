@@ -30,6 +30,7 @@ Released October 16, 2023
 | Added `<rh-tile>`              | A tile is a flexible layout with a clickable and contained surface. |
 | Added `<rh-timestamp>`         | Provides consistent formats for displaying date and time values. |
 | Added `<rh-navigation-secondary>` current page indicator support | Updated support for a current page indicator using `aria-current="page"`. |
+| Improved keyboard naviation on `<rh-navigation-secondary>` | Secondary Navigation now has improved keyboard navigation. |
 | Fixed `<rh-card>` `header` slot | Card's header slot now displays items vertically instead of stacking, allowing for more than one item to display in the header. |
 | Fixed `<rh-cta>` `brick` variant | Brick variants of calls-to-action (CTAs) are now full width. |
 
