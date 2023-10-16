@@ -79,7 +79,7 @@ export class RhTile extends LitElement {
    * `true` - tile behaves like a checkbox unless it is part of an
    * `rh-tile-group` with a `radio` type and more than one tile
    */
-  @property({ attribute: 'checkable', type: Boolean }) checkable = false;
+  @property({ type: Boolean }) checkable = false;
 
   /**
    * if tile is checkable, whether it is currently checked
