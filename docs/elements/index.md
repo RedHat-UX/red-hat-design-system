@@ -1,6 +1,6 @@
 ---
 layout: layout-basic.njk
-title: Elements
+title: All elements
 summaries:
   audio-player: Plays audio clips and includes other features
   jump-links: Moves users to specific content when a link is selected
@@ -27,7 +27,7 @@ summaries:
 {%- for tagName, docs in collections.elementDocs | groupby('tagName') -%}
   {%- set doc = docs[0] -%}
   {%- set slug = doc.slug -%}
-  {%- set title = docs | getTitleFromDocs -%}
+  {%- set title = docs | getTitleFromDocs | makeSentenceCase -%}
   {%- set comingSoon = tagName in comingSoonItems  -%}
   {% if comingSoon %}
     {%- set title = [title, "(coming soon)"] | join(" ") -%}
@@ -43,7 +43,7 @@ summaries:
   {% endif %}
 
   <div class="padding-stacked">
-    {% if not comingSoon %}<a href="{{ doc.href | url }}">{% endif %}
+    {% if not comingSoon %}<a href="{{ doc.overviewHref | url }}">{% endif %}
       {% example palette="descriptive",
                  width=340,
                  alt=linkTitle,

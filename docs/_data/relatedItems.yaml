@@ -74,6 +74,8 @@ rh-subnav:
  - rh-navigation
  - rh-navigation-secondary
  - skip-navigation
+rh-table:
+ - rh-code-block
 rh-tabs: 
  - rh-jump-links
  - rh-pagination
