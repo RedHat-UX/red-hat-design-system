@@ -6,9 +6,9 @@
   border: 0;
   border-collapse: collapse;
 
-  --rh-table--row-border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle-on-light, #c7c7c7);
-  --rh-table--row-background-color: rgb(var(--rh-color-gray-10-rgb, 224 224 224) / var(--rh-opacity-40, 40%));
-  --rh-table--column-background-color: rgb(var(--rh-color-blue-50-rgb, 231 241 250));
+  --rh-table-row-border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle-on-light, #c7c7c7);
+  --rh-table-row-background-color: rgb(var(--rh-color-gray-10-rgb, 224 224 224) / var(--rh-opacity-40, 40%));
+  --rh-table-column-background-color: rgb(var(--rh-color-blue-50-rgb, 231 241 250));
 }
 
 :is(rh-table) thead th {
@@ -20,11 +20,11 @@
 }
 
 :is(rh-table) tr {
-  border-bottom: var(--rh-table--row-border);
+  border-bottom: var(--rh-table-row-border);
 }
 
 :is(rh-table) tr:hover {
-  background: var(--rh-table--row-background-color);
+  background: var(--rh-table-row-background-color);
 }
 
 :is(rh-table) tr > * {
@@ -66,7 +66,7 @@
 }
 
 :is(rh-table) :is(col.active) {
-  background: var(--rh-table--column-background-color);
+  background: var(--rh-table-column-background-color);
 }
 
 @media (max-width: 768px) {
@@ -99,19 +99,19 @@
   }
 
   :is(rh-table) thead ~ tbody tr:first-child {
-    border-top: var(--rh-table--row-border);
+    border-top: var(--rh-table-row-border);
   }
 
   :is(rh-table) thead ~ tbody tr:last-child {
-    border-bottom: var(--rh-table--row-border);
+    border-bottom: var(--rh-table-row-border);
   }
 
   :is(rh-table) thead ~ tbody tr:nth-child(even) {
-    background: var(--rh-table--row-background-color);
+    background: var(--rh-table-row-background-color);
   }
 
   :is(rh-table) thead ~ tbody tr:hover {
-    background: var(--rh-table--column-background-color);
+    background: var(--rh-table-column-background-color);
   }
 
   :is(rh-table) thead ~ tbody tr > * {
