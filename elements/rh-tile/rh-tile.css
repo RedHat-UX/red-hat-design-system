@@ -24,25 +24,22 @@
   color: var(--rh-tile-text-color);
 
   --rh-tile-interactive-color: var(--rh-color-border-interactive-on-light, #0066cc);
+  --rh-tile-focus-interactive-color: var(--rh-color-interactive-blue-darkest, #004080);
   --rh-tile-text-color: var(--rh-color-text-primary-on-light, #151515);
   --rh-tile-text-color-secondary: var(--rh-color-text-secondary-on-light, #4d4d4d);
   --rh-tile-background-color: var(--rh-color-surface-lightest, #ffffff);
   --rh-tile-focus-background-color: var(--rh-color-surface-lighter, #f2f2f2);
   --rh-tile-disabled-background-color: var(--rh-color-surface-light, #e0e0e0);
   --rh-tile-border-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
-  --rh-tile-link-color: var(--rh-tile-interactive-color);
+  --rh-tile-link-color: var(--_interactive-color);
   --_margin: var(--rh-space-2xl, 32px);
   --_half-margin: calc(var(--_margin) / 2);
-}
-
-#outer:not(.desaturated):active,
-#outer:not(.desaturated):hover,
-#outer:not(.desaturated):focus {
-  --rh-tile-interactive-color: var(--rh-color-interactive-blue-darkest, #004080);
+  --_interactive-color: var(--rh-tile-interactive-color);
 }
 
 #outer.dark {
   --rh-tile-interactive-color: var(--rh-color-border-interactive-on-dark, #73bcf7);
+  --rh-tile-focus-interactive-color: var(--rh-color-interactive-blue-lightest, #bee1f4);
   --rh-tile-text-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --rh-tile-text-color-secondary: var(--rh-color-text-secondary-on-dark, #c7c7c7);
   --rh-tile-background-color: var(--rh-color-surface-darkest, #151515);
@@ -51,10 +48,10 @@
   --rh-tile-border-color: var(--rh-color-border-subtle-on-dark, #707070);
 }
 
-#outer.dark:not(.desaturated):active,
-#outer.dark:not(.desaturated):hover,
-#outer.dark:not(.desaturated):focus {
-  --rh-tile-interactive-color: var(--rh-color-interactive-blue-lightest, #bee1f4);
+#outer:active,
+#outer:hover,
+#outer:focus {
+  --_interactive-color: var(--rh-tile-focus-interactive-color);
 }
 
 #outer:is(.desaturated, .checkable) {
@@ -82,6 +79,8 @@
 :host([aria-disabled="true"]) #outer {
   color: var(--rh-tile-text-color-secondary);
   background-color: var(--rh-tile-disabled-background-color);
+
+  --_interactive-color: var(--rh-tile-text-color-secondary);
 }
 
 #outer:is(.compact, .checkable) #inner {
@@ -130,7 +129,7 @@ form {
   align-self: flex-start;
   justify-self: flex-end;
   margin: var(--_half-margin);
-  accent-color: var(--rh-tile-interactive-color);
+  accent-color: var(--_interactive-color);
 }
 
 input[type="checkbox"] {
@@ -143,7 +142,7 @@ input[type="radio"] {
 }
 
 pf-icon[icon="arrow-right"] {
-  color: var(--rh-tile-interactive-color);
+  color: var(--_interactive-color);
   width: var(--rh-space-xl, 24px);
   height: var(--rh-space-xl, 24px);
 }
@@ -170,6 +169,7 @@ svg {
 ::slotted([slot="image"]) {
   display: block;
   max-width: 100%;
+  margin-bottom: var(--_margin);
 }
 
 ::slotted([slot="icon"]) {

@@ -1,5 +1,5 @@
 rh-tile a {
-  color: var(--rh-tile-interactive-color) !important;
+  color: var(--rh-tile-link-color) !important;
   text-decoration: var(--rh-tile-link-text-decoration, none) !important;
 }
 

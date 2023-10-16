@@ -148,7 +148,7 @@ export class RhTile extends LitElement {
     const { bleed, compact, checkable, checked, desaturated, on = '' } = this;
     return html`
       <div id="outer" class="${classMap({ bleed, checkable, compact, checked, desaturated, [on]: !!on })}">
-        <div id="image"><slot name="image"></slot></div>
+        ${this.checkable ? '' : html`<div id="image"><slot name="image"></slot></div>`}
         <div id="inner">
           ${!this.checkable ?
             html`
@@ -159,7 +159,7 @@ export class RhTile extends LitElement {
               </div>` : ''}
           <div id="content">
             <div id="header">
-              ${(!this.checkable || !this.compact) ?
+              ${(!this.checkable && !this.compact) ?
                  html`
                    <div id="title">
                     <slot name="title"></slot>
