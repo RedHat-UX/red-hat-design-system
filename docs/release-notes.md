@@ -32,7 +32,7 @@ Released October 16, 2023
 | Added `<rh-navigation-secondary>` current page indicator support | Updated support for a current page indicator using `aria-current="page"`. |
 | Improved keyboard navigation on `<rh-navigation-secondary>` | Secondary Navigation now has improved keyboard navigation. |
 | Fixed `<rh-card>` `header` slot | Card's header slot now displays items vertically instead of stacking, allowing for more than one item to display in the header. |
-| Fixed `<rh-cta>` `brick` variant | Brick variants of calls-to-action (CTAs) are now full width. |
+| Fixed `<rh-cta>` `brick` variant | Brick variants of calls to action (CTAs) are now full width. |
 
 
 <rh-cta><a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.2.0">View version 1.2 release notes</a></rh-cta>
