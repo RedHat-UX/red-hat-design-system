@@ -70,7 +70,7 @@ export class RhTileGroup extends LitElement {
 
   protected firstUpdated(): void {
     this.#internals.role = this.radio ? 'radiogroup' : null;
-    this.updateTiles();
+    this.updateItems();
   }
 
   protected updated(_changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>): void {
@@ -123,7 +123,7 @@ export class RhTileGroup extends LitElement {
    * programatically toggle a tile
    * @param tile {RhTile | null | undefined} tile to toggle
    */
-  toggleTile(tile: RhTile | null | undefined) {
+  toggleItem(tile: RhTile | null | undefined) {
     if (tile?.checked) {
       tile.checked = false;
     } else {
@@ -134,7 +134,7 @@ export class RhTileGroup extends LitElement {
   /**
    * updates slotted tiles to set properties and keyboard navigation
    */
-  updateTiles() {
+  updateItems() {
     this.#tiles = [...this.querySelectorAll('rh-tile')];
     this.#tiles.forEach(tile => {
       tile.checkable = true;
@@ -173,7 +173,7 @@ export class RhTileGroup extends LitElement {
    * handles slot change by updating slotted tiles
    */
   #onSlotchange() {
-    this.updateTiles();
+    this.updateItems();
   }
 }
 
