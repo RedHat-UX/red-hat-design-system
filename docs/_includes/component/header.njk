@@ -178,6 +178,28 @@
           </details>
         </li>
 
+        <!-- Accessibility -->
+
+        <li class="site-navigation__item">
+          {% set extraAttributes = "" %}
+          {% if 'accessibility/' in page.url %}
+            {% set extraAttributes = " open" %}
+          {% endif %}
+          <details {{ extraAttributes }}>
+            <summary class="site-navigation__heading">Accessibility</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                {{ menuLink('Overview', '/accessibility/', 'site-navigation__sub-menu__link') }}
+              </li>
+              {%- for a11yDoc in collections.a11yDocs -%}
+                <li class="site-navigation__sub-menu__item">
+                  {{ menuLink(a11yDoc.data.title, a11yDoc.url, 'site-navigation__sub-menu__link') }}
+                </li>
+              {%- endfor -%}
+            </ul>
+          </details>
+        </li>
+
         <li class="site-navigation__item">
           {{ menuLink('Design/code status', '/design-code-status/', 'site-navigation__link') }}
         </li>
