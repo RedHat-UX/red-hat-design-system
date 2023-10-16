@@ -1,0 +1,1245 @@
+<!DOCTYPE html><html class="no-js" lang=""><head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Code | Table | Red Hat design system</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/svg+xml" sizes="any" href="/assets/logo-red-hat.svg">
+
+  <meta property="og:title" content="Red Hat design system">
+  <meta property="og:site_name" content="Red Hat design system">
+  <meta property="og:url" content="ux.redhat.com">
+  <meta property="og:description" content="This is Red Hat's design system. Using Red Hat brand standards and PatternFly as our foundational design language, we enable designers and developers to concurrently build branded experiences across redhat.com, Red Hat Customer Portal, and beyond.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://ux.redhat.com/assets/opengraph.png">
+
+  <meta name="pfe-auto-reveal" content="true">
+
+  <link rel="stylesheet" href=" /assets/redhat/redhat-theme/4/advanced-theme.css">
+  <link rel="stylesheet" href="/assets/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all">
+
+  <link rel="stylesheet" href="/assets/prism.css">
+  <link rel="stylesheet" href="/assets/rhds.min.css">
+  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-footer/rh-footer-lightdom.css">
+
+  <link rel="stylesheet" href="/assets/css/style.css" id="">
+
+  
+  <link rel="stylesheet" href="/assets/cem.css">
+  
+  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-subnav/rh-subnav-lightdom.css">
+  
+  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-pagination/rh-pagination-lightdom.css">
+  
+  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
+  
+
+  <noscript>
+    <link type="text/css" href="/assets/pfe--noscript.min.css">
+  </noscript>
+
+  <script type="importmap">{"imports":{"@rhds/elements/rh-dialog/yt-api.js":"/assets/packages/@rhds/elements/elements/rh-dialog/yt-api.js","@rhds/elements/rh-avatar/random-pattern-controller.js":"/assets/packages/@rhds/elements/elements/rh-avatar/random-pattern-controller.js","@rhds/elements/rh-timestamp/rh-timestamp.js":"/assets/packages/@rhds/elements/elements/rh-timestamp/rh-timestamp.js","@rhds/elements/rh-table/rh-table.js":"/assets/packages/@rhds/elements/elements/rh-table/rh-table.js","@rhds/elements/rh-table/rh-sort-button.js":"/assets/packages/@rhds/elements/elements/rh-table/rh-sort-button.js","@rhds/elements/rh-navigation-secondary/rh-navigation-secondary-overlay.js":"/assets/packages/@rhds/elements/elements/rh-navigation-secondary/rh-navigation-secondary-overlay.js","@rhds/elements/rh-navigation-secondary/rh-navigation-secondary-menu-section.js":"/assets/packages/@rhds/elements/elements/rh-navigation-secondary/rh-navigation-secondary-menu-section.js","@rhds/elements/rh-menu/rh-menu.js":"/assets/packages/@rhds/elements/elements/rh-menu/rh-menu.js","@rhds/elements/rh-footer/rh-footer-social-link.js":"/assets/packages/@rhds/elements/elements/rh-footer/rh-footer-social-link.js","@rhds/elements/rh-footer/rh-footer-links.js":"/assets/packages/@rhds/elements/elements/rh-footer/rh-footer-links.js","@rhds/elements/rh-footer/rh-footer-copyright.js":"/assets/packages/@rhds/elements/elements/rh-footer/rh-footer-copyright.js","@rhds/elements/rh-footer/rh-footer-block.js":"/assets/packages/@rhds/elements/elements/rh-footer/rh-footer-block.js","@rhds/elements/rh-alert/rh-alert.js":"/assets/packages/@rhds/elements/elements/rh-alert/rh-alert.js","@rhds/elements/rh-pagination/rh-pagination.js":"/assets/packages/@rhds/elements/elements/rh-pagination/rh-pagination.js","@rhds/elements/rh-badge/rh-badge.js":"/assets/packages/@rhds/elements/elements/rh-badge/rh-badge.js","@rhds/elements/rh-dialog/rh-dialog.js":"/assets/packages/@rhds/elements/elements/rh-dialog/rh-dialog.js","@rhds/elements/rh-audio-player/rh-cue.js":"/assets/packages/@rhds/elements/elements/rh-audio-player/rh-cue.js","@rhds/elements/rh-tooltip/rh-tooltip.js":"/assets/packages/@rhds/elements/elements/rh-tooltip/rh-tooltip.js","@rhds/elements/rh-tag/rh-tag.js":"/assets/packages/@rhds/elements/elements/rh-tag/rh-tag.js","@rhds/elements/rh-tabs/rh-tabs.js":"/assets/packages/@rhds/elements/elements/rh-tabs/rh-tabs.js","@rhds/elements/rh-tabs/rh-tab.js":"/assets/packages/@rhds/elements/elements/rh-tabs/rh-tab.js","@rhds/elements/rh-tabs/rh-tab-panel.js":"/assets/packages/@rhds/elements/elements/rh-tabs/rh-tab-panel.js","@rhds/elements/rh-subnav/rh-subnav.js":"/assets/packages/@rhds/elements/elements/rh-subnav/rh-subnav.js","@rhds/elements/rh-stat/rh-stat.js":"/assets/packages/@rhds/elements/elements/rh-stat/rh-stat.js","@rhds/elements/rh-spinner/rh-spinner.js":"/assets/packages/@rhds/elements/elements/rh-spinner/rh-spinner.js","@rhds/elements/rh-cta/rh-cta.js":"/assets/packages/@rhds/elements/elements/rh-cta/rh-cta.js","@rhds/elements/rh-code-block/rh-code-block.js":"/assets/packages/@rhds/elements/elements/rh-code-block/rh-code-block.js","@rhds/elements/rh-card/rh-card.js":"/assets/packages/@rhds/elements/elements/rh-card/rh-card.js","@rhds/elements/rh-button/rh-button.js":"/assets/packages/@rhds/elements/elements/rh-button/rh-button.js","@rhds/elements/rh-blockquote/rh-blockquote.js":"/assets/packages/@rhds/elements/elements/rh-blockquote/rh-blockquote.js","@rhds/elements/rh-avatar/rh-avatar.js":"/assets/packages/@rhds/elements/elements/rh-avatar/rh-avatar.js","@rhds/elements/rh-audio-player/rh-audio-player.js":"/assets/packages/@rhds/elements/elements/rh-audio-player/rh-audio-player.js","@rhds/elements/rh-audio-player/rh-audio-player-scrolling-text-overflow.js":"/assets/packages/@rhds/elements/elements/rh-audio-player/rh-audio-player-scrolling-text-overflow.js","@rhds/elements/rh-accordion/rh-accordion.js":"/assets/packages/@rhds/elements/elements/rh-accordion/rh-accordion.js","@rhds/elements/rh-accordion/rh-accordion-panel.js":"/assets/packages/@rhds/elements/elements/rh-accordion/rh-accordion-panel.js","@rhds/elements/rh-accordion/rh-accordion-header.js":"/assets/packages/@rhds/elements/elements/rh-accordion/rh-accordion-header.js","@rhds/elements/rh-navigation-secondary/rh-navigation-secondary.js":"/assets/packages/@rhds/elements/elements/rh-navigation-secondary/rh-navigation-secondary.js","@rhds/elements/rh-navigation-secondary/rh-navigation-secondary-menu.js":"/assets/packages/@rhds/elements/elements/rh-navigation-secondary/rh-navigation-secondary-menu.js","@rhds/elements/rh-footer/rh-footer-universal.js":"/assets/packages/@rhds/elements/elements/rh-footer/rh-footer-universal.js","@rhds/elements/rh-audio-player/rh-transcript.js":"/assets/packages/@rhds/elements/elements/rh-audio-player/rh-transcript.js","@rhds/elements/rh-audio-player/rh-audio-player-subscribe.js":"/assets/packages/@rhds/elements/elements/rh-audio-player/rh-audio-player-subscribe.js","@rhds/elements/rh-audio-player/rh-audio-player-about.js":"/assets/packages/@rhds/elements/elements/rh-audio-player/rh-audio-player-about.js","@rhds/elements/rh-footer/rh-footer.js":"/assets/packages/@rhds/elements/elements/rh-footer/rh-footer.js","@rhds/elements/rh-navigation-secondary/rh-navigation-secondary-dropdown.js":"/assets/packages/@rhds/elements/elements/rh-navigation-secondary/rh-navigation-secondary-dropdown.js","@rhds/elements/rh-footer/rh-global-footer.js":"/assets/packages/@rhds/elements/elements/rh-footer/rh-global-footer.js","@rhds/elements/rh-context-provider/rh-context-provider.js":"/assets/packages/@rhds/elements/elements/rh-context-provider/rh-context-provider.js","@floating-ui/core":"/assets/packages/@floating-ui/core/dist/floating-ui.core.browser.min.mjs","@patternfly/pfe-core":"/assets/packages/@patternfly/pfe-core/core.js","tslib":"/assets/packages/tslib/tslib.es6.js","@rhds/tokens":"/assets/packages/@rhds/tokens/js/tokens.js","@rhds/tokens/media.js":"/assets/packages/@rhds/tokens/js/media.js","@rhds/tokens/meta.js":"/assets/packages/@rhds/tokens/js/meta.js","@lit/reactive-element":"/assets/packages/@lit/reactive-element/reactive-element.js","@floating-ui/dom":"/assets/packages/@floating-ui/dom/dist/floating-ui.dom.browser.min.mjs","lit":"/assets/packages/@patternfly/elements/node_modules/lit/index.js","@patternfly/elements":"/assets/packages/@patternfly/elements/pfe.min.js","@patternfly/elements/pf-panel/pf-panel.js":"/assets/packages/@patternfly/elements/pf-panel/pf-panel.js","@patternfly/elements/pf-button/pf-button.js":"/assets/packages/@patternfly/elements/pf-button/pf-button.js","@patternfly/elements/pf-card/pf-card.js":"/assets/packages/@patternfly/elements/pf-card/pf-card.js","@patternfly/elements/pf-icon/pf-icon.js":"/assets/packages/@patternfly/elements/pf-icon/pf-icon.js","@patternfly/elements/pf-spinner/pf-spinner.js":"/assets/packages/@patternfly/elements/pf-spinner/pf-spinner.js","@patternfly/elements/pf-tabs/pf-tabs.js":"/assets/packages/@patternfly/elements/pf-tabs/pf-tabs.js","element-internals-polyfill":"/assets/packages/element-internals-polyfill/dist/index.js","fuse.js":"/assets/packages/fuse.js/dist/fuse.esm.js","@patternfly/pfe-core/controllers/logger.js":"/assets/packages/@patternfly/pfe-core/controllers/logger.js","@patternfly/pfe-core/controllers/timestamp-controller.js":"/assets/packages/@patternfly/pfe-core/controllers/timestamp-controller.js","lit/decorators/custom-element.js":"/assets/packages/lit/decorators/custom-element.js","lit/decorators/property.js":"/assets/packages/lit/decorators/property.js","lit/decorators/query.js":"/assets/packages/lit/decorators/query.js","lit/directives/class-map.js":"/assets/packages/lit/directives/class-map.js","lit/directives/if-defined.js":"/assets/packages/lit/directives/if-defined.js","@patternfly/pfe-core/functions/random.js":"/assets/packages/@patternfly/pfe-core/functions/random.js","@patternfly/pfe-core/controllers/roving-tabindex-controller.js":"/assets/packages/@patternfly/pfe-core/controllers/roving-tabindex-controller.js","@patternfly/pfe-core/controllers/slot-controller.js":"/assets/packages/@patternfly/pfe-core/controllers/slot-controller.js","@patternfly/elements/pf-badge/BaseBadge.js":"/assets/packages/@patternfly/elements/pf-badge/BaseBadge.js","@patternfly/elements/pf-modal/pf-modal.js":"/assets/packages/@patternfly/elements/pf-modal/pf-modal.js","@patternfly/pfe-core/decorators/observed.js":"/assets/packages/@patternfly/pfe-core/decorators/observed.js","@patternfly/elements/pf-tooltip/BaseTooltip.js":"/assets/packages/@patternfly/elements/pf-tooltip/BaseTooltip.js","@patternfly/elements/pf-label/BaseLabel.js":"/assets/packages/@patternfly/elements/pf-label/BaseLabel.js","@patternfly/elements/pf-tabs/BaseTabs.js":"/assets/packages/@patternfly/elements/pf-tabs/BaseTabs.js","@patternfly/pfe-core/decorators.js":"/assets/packages/@patternfly/pfe-core/decorators.js","@patternfly/elements/pf-tabs/BaseTab.js":"/assets/packages/@patternfly/elements/pf-tabs/BaseTab.js","@patternfly/elements/pf-tabs/BaseTabPanel.js":"/assets/packages/@patternfly/elements/pf-tabs/BaseTabPanel.js","@patternfly/pfe-core/controllers/overflow-controller.js":"/assets/packages/@patternfly/pfe-core/controllers/overflow-controller.js","lit/decorators/query-assigned-elements.js":"/assets/packages/lit/decorators/query-assigned-elements.js","@patternfly/elements/pf-spinner/BaseSpinner.js":"/assets/packages/@patternfly/elements/pf-spinner/BaseSpinner.js","@patternfly/elements/pf-button/BaseButton.js":"/assets/packages/@patternfly/elements/pf-button/BaseButton.js","@patternfly/pfe-core/controllers/floating-dom-controller.js":"/assets/packages/@patternfly/pfe-core/controllers/floating-dom-controller.js","lit/directives/style-map.js":"/assets/packages/lit/directives/style-map.js","@patternfly/elements/pf-accordion/BaseAccordion.js":"/assets/packages/@patternfly/elements/pf-accordion/BaseAccordion.js","@patternfly/elements/pf-accordion/BaseAccordionPanel.js":"/assets/packages/@patternfly/elements/pf-accordion/BaseAccordionPanel.js","@patternfly/elements/pf-accordion/BaseAccordionHeader.js":"/assets/packages/@patternfly/elements/pf-accordion/BaseAccordionHeader.js","lit/decorators/state.js":"/assets/packages/lit/decorators/state.js","@patternfly/pfe-core/controllers/style-controller.js":"/assets/packages/@patternfly/pfe-core/controllers/style-controller.js","@rhds/elements/lib/":"/assets/packages/@rhds/elements/lib/","@lit/reactive-element/decorators/":"/assets/packages/@lit/reactive-element/decorators/","@patternfly/pfe-core/":"/assets/packages/@patternfly/pfe-core/","lit-element/lit-element.js":"/assets/packages/lit-element/lit-element.js","lit-html":"/assets/packages/lit-html/lit-html.js","lit-html/":"/assets/packages/lit-html/","lit/":"/assets/packages/@patternfly/elements/node_modules/lit/","@rhds/elements/lib/context/":"/assets/packages/@rhds/elements/lib/context/","@rhds/elements/lib/context/color/":"/assets/packages/@rhds/elements/lib/context/color/"},"scopes":{"/assets/packages/":{"@lit/reactive-element/decorators/":"/assets/packages/@lit/reactive-element/decorators/","@patternfly/pfe-core/":"/assets/packages/@patternfly/pfe-core/","lit":"/assets/packages/@patternfly/elements/node_modules/lit/index.js","lit-element/lit-element.js":"/assets/packages/lit-element/lit-element.js","lit-html":"/assets/packages/lit-html/lit-html.js","lit-html/":"/assets/packages/lit-html/","lit/":"/assets/packages/@patternfly/elements/node_modules/lit/"}}}</script>
+  <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.7.1/dist/es-module-shims.js"></script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-alert/rh-alert.js';
+  </script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-cta/rh-cta.js';
+  </script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-footer/rh-footer.js';
+  </script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-subnav/rh-subnav.js';
+  </script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-code-block/rh-code-block.js';
+  </script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-table/rh-table.js';
+  </script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-table/rh-table.js';
+  </script>
+  
+  <script type="module">
+    import { PfIcon } from '@patternfly/elements/pf-icon/pf-icon.js';
+    PfIcon.getIconUrl = (set, icon) =>
+      new URL(`/assets/packages/@patternfly/elements/pf-icon/icons/${set}/${icon}.js`, location.origin);
+  </script>
+
+</head>
+
+
+
+
+  
+
+
+<body class="page element-docs page--code-or-table" id="top" unresolved="">
+
+  <div class="body-inner">
+
+    
+
+
+<script async="" defer="">
+  window.onUsersnapCXLoad = function(api) {
+    api.init();
+  }
+  var script = document.createElement('script');
+  script.async = 1;
+  script.src = 'https://widget.usersnap.com/load/64471a95-72fe-4239-b16d-ebcf8b1219f7?onload=onUsersnapCXLoad';
+  document.getElementsByTagName('head')[0].appendChild(script);
+</script>
+
+<header class="l-header">
+
+  <div class="l-header__logo-bar">
+    <a href="/"><img class="l-header__logo" src="/assets/red-hat-design-system.svg" alt="Red Hat design system logo" style="max-width: 188px; min-width: 42px;"></a>
+  </div>
+
+  <input id="mobile-menu-toggle" class="menu-toggle element-invisible" type="checkbox" aria-controls="mobile-menu-menu-container">
+
+  <label class="menu-toggle__button l-header__mobile-menu-toggle" for="mobile-menu-toggle" data-controls="mobile-menu-menu-container">
+    <span class="l-header__burger-icon"></span>
+    <span class="menu-toggle-assistive-text element-invisible">Toggle menu visibility</span>
+  </label>
+
+  <div class="menu-toggle__toggleable site-navigation__outer-wrapper">
+    <nav class="l-header__site-navigation site-navigation menu-toggle__toggleable-content-wrapper">
+      <ul class="site-navigation__wrapper">
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/">
+    Home
+  </a>
+
+        </li>
+
+        <!-- About
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/about/">
+    About this website
+  </a>
+
+        </li> -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">About</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/about/">
+    About this website
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/about/how-we-build/">
+    How we build
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/about/roadmap/">
+    Roadmap
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <!-- Get started -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">Get started</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/">
+    Overview
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/design-system-kit/">
+    Design system kit
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/fts-starter-kit/">
+    FTS starter kit
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/icon-libraries/">
+    Icon libraries
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/product-logo-library/">
+    Product logo library
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <!-- Foundations -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">Foundations</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/">
+    Overview
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/color/">
+    Color
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/grid/">
+    Grid
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/personalization/">
+    Personalization patterns
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
+    Spacing
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
+    Typography
+  </a>
+
+              </li>
+              <!--<li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/color/">
+    Color
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/grid/">
+    Grid
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/personalization/">
+    Personalization patterns
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
+    Spacing
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
+    Typography
+  </a>
+
+                </li>-->
+            </ul>
+          </details>
+        </li>
+
+        <!-- Tokens -->
+
+        <li class="site-navigation__item">
+          <details>
+            <summary class="site-navigation__heading">Tokens</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/tokens/">
+    Overview
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/tokens/color/">
+    Global color
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/tokens/box-shadow/">
+    Box shadow
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/tokens/font/">
+    Typography
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/tokens/border/">
+    Border
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/tokens/opacity/">
+    Opacity
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/tokens/space/">
+    Space
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/tokens/length/">
+    Length
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/tokens/icon/">
+    Icon
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/tokens/breakpoint/">
+    Breakpoints
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/tokens/media/">
+    Media queries
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <!-- Elements -->
+
+        <li class="site-navigation__item">
+          <details open="">
+            <summary class="site-navigation__heading">Elements</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/">
+    All elements
+  </a>
+
+              </li>
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/accordion/">
+    Accordion
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/alert/">
+    Alert
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/audio-player/">
+    Audio player
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/avatar/">
+    Avatar
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/badge/">
+    Badge
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/blockquote/">
+    Blockquote
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/button/">
+    Button
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/call-to-action/">
+    Call to action
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/card/">
+    Card
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/code-block/">
+    Code block
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/dialog/">
+    Dialog
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/footer/">
+    Footer
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/jump-links/">
+    Jump links
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/navigation-primary/">
+    Navigation (primary)
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/navigation-secondary/">
+    Navigation (secondary)
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/pagination/">
+    Pagination
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/popover/">
+    Popover
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/progress-steps/">
+    Progress steps
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/spinner/">
+    Spinner
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/statistic/">
+    Statistic
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/subnavigation/">
+    Subnavigation
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/table/">
+    Table
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/tabs/">
+    Tabs
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/tag/">
+    Tag
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/timestamp/">
+    Timestamp
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/tooltip/">
+    Tooltip
+  </a>
+
+                  </li>
+                </ul>
+          </details>
+        </li>
+
+        <!-- Patterns -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">Patterns</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/">
+    All patterns
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/announcement/">
+    Announcement
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/card/">
+    Card
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/disclosure/">
+    Disclosure
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/filter/">
+    Filter
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/form/">
+    Form
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/link-with-icon/">
+    Link with icon
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/link/">
+    Link
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/search-bar/">
+    Search bar
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/skip-navigation/">
+    Skip navigation
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/sticky-banner/">
+    Sticky banner
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/sticky-card/">
+    Sticky card
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/video-thumbnail/">
+    Video thumbnail
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/design-code-status/">
+    Design/code status
+  </a>
+
+        </li>
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/release-notes/">
+    Release notes
+  </a>
+
+        </li>
+
+        <!--
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/get-started/">
+    Get started
+  </a>
+
+        </li>
+
+        -->
+
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
+
+<main class="l-main">
+  <article class="l-main__inner">
+    <header class="l-main__header l-main__header--palette-lighter">
+      <div class="container header has-subnav">
+        <h1 id="table" class="page-title">Table</h1>
+        <rh-subnav>
+          <a href="/elements/table/">
+            Overview
+          </a>
+          <a href="/elements/table/style/">
+            Style
+          </a>
+          <a href="/elements/table/guidelines/">
+            Guidelines
+          </a>
+          <a active="" href="/elements/table/code/">
+            Code
+          </a>
+          <a href="/elements/table/accessibility/">
+            Accessibility
+          </a>
+        </rh-subnav>
+      </div>
+    </header>
+    <section class="l-main__content">
+      <div class="container">
+        <section class="band">
+<copy-permalink class="h2">
+  <h2 id="installation" tabindex="-1">
+    <a class="heading-anchor" href="#installation">Installation</a>
+      </h2>
+    </copy-permalink>
+<p><em>None</em></p>
+<copy-permalink class="h2">
+  <h2 id="usage" tabindex="-1">
+    <a class="heading-anchor" href="#usage">Usage</a>
+      </h2>
+    </copy-permalink>
+<copy-permalink class="h3">
+  <h3 id="title" tabindex="-1">
+    <a class="heading-anchor" href="#title">Title</a>
+      </h3>
+    </copy-permalink>
+<p>Specify the title of the table using a <code>caption</code> element.</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-table</span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>caption</span><span class="token punctuation">&gt;</span></span><br>      Concerts<br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>caption</span><span class="token punctuation">&gt;</span></span><br>    <span class="token comment">&lt;!-- ...table data --&gt;</span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">&gt;</span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-table</span><span class="token punctuation">&gt;</span></span></code></pre>
+<copy-permalink class="h3">
+  <h3 id="column-highlighting" tabindex="-1">
+    <a class="heading-anchor" href="#column-highlighting">Column highlighting</a>
+      </h3>
+    </copy-permalink>
+<p>To enable column highlighting, the <code>table</code> element must also include a <code>col</code> element for each column in the table, typically wrapped with a <code>colgroup</code>.</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-table</span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>caption</span><span class="token punctuation">&gt;</span></span><br>      Concerts<br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>caption</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>colgroup</span><span class="token punctuation">&gt;</span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>col</span><span class="token punctuation">&gt;</span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>col</span><span class="token punctuation">&gt;</span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>col</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>colgroup</span><span class="token punctuation">&gt;</span></span><br>    <span class="token comment">&lt;!-- ...table with three columns --&gt;</span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">&gt;</span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-table</span><span class="token punctuation">&gt;</span></span></code></pre>
+<copy-permalink class="h3">
+  <h3 id="sorting" tabindex="-1">
+    <a class="heading-anchor" href="#sorting">Sorting</a>
+      </h3>
+    </copy-permalink>
+<p>To enable sorting on a column, add an <code>rh-sort-button</code> as the last child of the <code>th</code> cell.</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-table</span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>caption</span><span class="token punctuation">&gt;</span></span><br>      Concerts<br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>caption</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>colgroup</span><span class="token punctuation">&gt;</span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>col</span><span class="token punctuation">&gt;</span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>col</span><span class="token punctuation">&gt;</span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>col</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>colgroup</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>thead</span><span class="token punctuation">&gt;</span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span> <span class="token attr-name">scope</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>col<span class="token punctuation">"</span></span> <span class="token attr-name">data-label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Date<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Date<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">&gt;</span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span> <span class="token attr-name">scope</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>col<span class="token punctuation">"</span></span> <span class="token attr-name">data-label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Event<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Event<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-sort-button</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-sort-button</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">&gt;</span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span> <span class="token attr-name">scope</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>col<span class="token punctuation">"</span></span> <span class="token attr-name">data-label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Venue<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Venue<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-sort-button</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-sort-button</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">&gt;</span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>thead</span><span class="token punctuation">&gt;</span></span><br>    <span class="token comment">&lt;!-- ...table data sortable by Event and Venue --&gt;</span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">&gt;</span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-table</span><span class="token punctuation">&gt;</span></span></code></pre>
+<copy-permalink class="h3">
+  <h3 id="summary" tabindex="-1">
+    <a class="heading-anchor" href="#summary">Summary</a>
+      </h3>
+    </copy-permalink>
+<p>Additional information about the data in the table should be slotted into the <code>summary</code> slot after the <code>table</code> element.</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-table</span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>caption</span><span class="token punctuation">&gt;</span></span><br>      Concerts<br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>caption</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>colgroup</span><span class="token punctuation">&gt;</span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>col</span><span class="token punctuation">&gt;</span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>col</span><span class="token punctuation">&gt;</span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>col</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>colgroup</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>thead</span><span class="token punctuation">&gt;</span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span> <span class="token attr-name">scope</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>col<span class="token punctuation">"</span></span> <span class="token attr-name">data-label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Date<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Date<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">&gt;</span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span> <span class="token attr-name">scope</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>col<span class="token punctuation">"</span></span> <span class="token attr-name">data-label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Event<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Event<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-sort-button</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-sort-button</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">&gt;</span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span> <span class="token attr-name">scope</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>col<span class="token punctuation">"</span></span> <span class="token attr-name">data-label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Venue<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Venue<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-sort-button</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-sort-button</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">&gt;</span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>thead</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tbody</span><span class="token punctuation">&gt;</span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span> <span class="token attr-name">data-label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Date<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>12 February<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span> <span class="token attr-name">data-label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Event<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Waltz with Strauss<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span> <span class="token attr-name">data-label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Venue<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Main Hall<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span> <span class="token attr-name">data-label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Date<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>24 March<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span> <span class="token attr-name">data-label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Event<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>The Obelisks<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span> <span class="token attr-name">data-label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Venue<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>West Wing<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span> <span class="token attr-name">data-label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Date<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>14 April<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span> <span class="token attr-name">data-label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Event<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>The What<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span> <span class="token attr-name">data-label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Venue<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Main Hall<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tbody</span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>small</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>summary<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Dates and venues subject to change.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>small</span><span class="token punctuation">&gt;</span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-table</span><span class="token punctuation">&gt;</span></span></code></pre>
+<copy-permalink class="h2">
+  <h2 id="example" tabindex="-1">
+    <a class="heading-anchor" href="#example">Example</a>
+      </h2>
+    </copy-permalink>
+<rh-table>
+  <table>
+    <caption>
+      Concerts
+    </caption>
+    <colgroup>
+      <col>
+      <col>
+      <col>
+    </colgroup>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Date">Date</th>
+        <th scope="col" data-label="Event">Event<rh-sort-button></rh-sort-button></th>
+        <th scope="col" data-label="Venue">Venue<rh-sort-button></rh-sort-button></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Date">12 February</td>
+        <td data-label="Event">Waltz with Strauss</td>
+        <td data-label="Venue">Main Hall</td>
+      </tr>
+      <tr>
+        <td data-label="Date">24 March</td>
+        <td data-label="Event">The Obelisks</td>
+        <td data-label="Venue">West Wing</td>
+      </tr>
+      <tr>
+        <td data-label="Date">14 April</td>
+        <td data-label="Event">The What</td>
+        <td data-label="Venue">Main Hall</td>
+      </tr>
+    </tbody>
+  </table>
+  <small slot="summary">Dates and venues subject to change.</small>
+</rh-table>
+<copy-permalink class="h2">
+  <h2 id="rh-table" tabindex="-1">
+    <a class="heading-anchor" href="#rh-table">rh-table</a>
+      </h2>
+    </copy-permalink>
+<section class="api band slots api-properties">
+<copy-permalink class="h3">
+  <h3 id="slots" tabindex="-1">
+    <a class="heading-anchor" href="#slots">Slots</a>
+      </h3>
+    </copy-permalink>
+  <dl> <dt><strong>Default Slot</strong> 
+    </dt>
+    <dd>
+<p>an HTML table</p>
+</dd> <dt><strong><code>summary</code></strong>
+    </dt>
+    <dd>
+<p>a brief description of the data</p>
+</dd> 
+  </dl></section>
+<section class="band api attributes api-properties">
+<copy-permalink class="h3">
+  <h3 id="attributes" tabindex="-1">
+    <a class="heading-anchor" href="#attributes">Attributes</a>
+      </h3>
+    </copy-permalink>
+<p><em>None</em></p></section><p></p>
+<section class="api band methods api-properties">
+<copy-permalink class="h3">
+  <h3 id="methods" tabindex="-1">
+    <a class="heading-anchor" href="#methods">Methods</a>
+      </h3>
+    </copy-permalink>
+<p><em>None</em> </p></section><p></p>
+<section class="api band events api-properties">
+<copy-permalink class="h3">
+  <h3 id="events" tabindex="-1">
+    <a class="heading-anchor" href="#events">Events</a>
+      </h3>
+    </copy-permalink>
+<p><em>None</em> </p></section><p></p>
+<section class="api band css-shadow-parts api-properties">
+<copy-permalink class="h3">
+  <h3 id="css-shadow-parts" tabindex="-1">
+    <a class="heading-anchor" href="#css-shadow-parts">CSS Shadow Parts</a>
+      </h3>
+    </copy-permalink>
+<p><em>None</em></p></section><p></p>
+<section class="api band css-custom-properties api-properties">
+  <a id="styling-hooks"></a>
+<copy-permalink class="h3">
+  <h3 id="css-custom-properties" tabindex="-1">
+    <a class="heading-anchor" href="#css-custom-properties">CSS Custom Properties</a>
+      </h3>
+    </copy-permalink>
+  <table class="css-custom-properties">
+    <thead>
+      <tr>
+        <th style="text-align:left">CSS Property</th>
+        <th style="text-align:left">Description</th>
+        <th style="text-align:left">Default</th>
+      </tr>
+    </thead>
+    <tbody> <tr>
+        <td style="text-align:left"><code>--rh-border-width-sm</code></td>
+        <td style="text-align:left">
+<p>1px border width; Example: Secondary CTA or Button</p>
+</td>
+        <td style="text-align:left"><code>1px</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-blue-50-rgb</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>231 241 250</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-border-subtle-on-light</code></td>
+        <td style="text-align:left">
+<p>Subtle border color (light theme)</p>
+</td>
+        <td style="text-align:left"><code data-color="#c7c7c7" style="--color:#c7c7c7">#c7c7c7</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-gray-10-rgb</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>224 224 224</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-gray-40</code></td>
+        <td style="text-align:left">
+<p>Subtle icon</p>
+</td>
+        <td style="text-align:left"><code data-color="#707070" style="--color:#707070">#707070</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-interactive-blue-darker</code></td>
+        <td style="text-align:left">
+<p>Inline link (light theme)</p>
+</td>
+        <td style="text-align:left"><code data-color="#0066cc" style="--color:#0066cc">#0066cc</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-interactive-blue-darkest</code></td>
+        <td style="text-align:left">
+<p>Inline link hover (light theme)</p>
+</td>
+        <td style="text-align:left"><code data-color="#004080" style="--color:#004080">#004080</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-text-secondary-on-light</code></td>
+        <td style="text-align:left">
+<p>Secondary text color for light theme</p>
+</td>
+        <td style="text-align:left"><code data-color="#4d4d4d" style="--color:#4d4d4d">#4d4d4d</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-font-family-body-text</code></td>
+        <td style="text-align:left">
+<p>Body text font family</p>
+</td>
+        <td style="text-align:left"><code>RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-font-size-body-text-lg</code></td>
+        <td style="text-align:left">
+<p>18px font size</p>
+</td>
+        <td style="text-align:left"><code>1.125rem</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-font-size-body-text-md</code></td>
+        <td style="text-align:left">
+<p>16px font size</p>
+</td>
+        <td style="text-align:left"><code>1rem</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-font-weight-body-text-regular</code></td>
+        <td style="text-align:left">
+<p>Regular font weight</p>
+</td>
+        <td style="text-align:left"><code>400</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-font-weight-heading-bold</code></td>
+        <td style="text-align:left">
+<p>Bold font weight for headings</p>
+</td>
+        <td style="text-align:left"><code>700</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-line-height-body-text</code></td>
+        <td style="text-align:left">
+<p>Line height for body text</p>
+</td>
+        <td style="text-align:left"><code>1.5</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-opacity-40</code></td>
+        <td style="text-align:left">
+<p>40% opacity</p>
+</td>
+        <td style="text-align:left"><code>40%</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-space-lg</code></td>
+        <td style="text-align:left">
+<p>16px spacer</p>
+</td>
+        <td style="text-align:left"><code>16px</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-space-md</code></td>
+        <td style="text-align:left">
+<p>8px spacer</p>
+</td>
+        <td style="text-align:left"><code>8px</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-space-xl</code></td>
+        <td style="text-align:left">
+<p>24px spacer</p>
+</td>
+        <td style="text-align:left"><code>24px</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-space-xs</code></td>
+        <td style="text-align:left">
+<p>4px spacer</p>
+</td>
+        <td style="text-align:left"><code>4px</code></td>
+      </tr> 
+    </tbody>
+  </table></section>
+<style>
+
+table.css-custom-properties code[data-color] {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+table.css-custom-properties code[data-color]:after {
+  content: '';
+  background: var(--color);
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 1rem;
+  inset-inline-end: -1rem;
+}
+</style>
+
+        
+
+
+
+<div class="multi-column--min-300-wide section section--palette-default container feedback">
+  <section class="section section--palette-default  container">
+
+
+  
+    <h2 id="related-elements-or-patterns">Related elements or patterns</h2>
+    <ul id="related-items-list">
+      <li>
+        <a href="/elements/code-block">Code block</a>
+      </li>
+    </ul>
+  
+
+
+</section>
+  
+<section class="section section--palette-default  container">
+
+
+    <h2 id="feedback">Feedback</h2>
+    <p>
+      To give feedback about anything on this page,
+      <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions" class="feedback-contact-link">contact us</a>.
+    </p>
+  
+
+</section>
+
+
+</div>
+
+
+
+      </section></div>
+    </section>
+      
+
+<rh-footer-universal>
+  <h3 slot="links-primary" data-analytics-text="Red Hat legal and privacy links" hidden="">Red Hat legal and privacy links</h3>
+  <ul slot="links-primary" data-analytics-region="page-footer-bottom-primary">
+    <li><a href="https://redhat.com/en/about/company" data-analytics-category="Footer|Corporate" data-analytics-text="About Red Hat">About Red Hat</a></li>
+    <li><a href="https://redhat.com/en/jobs" data-analytics-category="Footer|Corporate" data-analytics-text="Jobs">Jobs</a></li>
+    <li><a href="https://redhat.com/en/events" data-analytics-category="Footer|Corporate" data-analytics-text="Events">Events</a></li>
+    <li><a href="https://redhat.com/en/about/office-locations" data-analytics-category="Footer|Corporate" data-analytics-text="Locations">Locations</a></li>
+    <li><a href="https://redhat.com/en/contact" data-analytics-category="Footer|Corporate" data-analytics-text="Contact Red Hat">Contact Red Hat</a></li>
+    <li><a href="https://redhat.com/en/blog" data-analytics-category="Footer|Corporate" data-analytics-text="Red Hat Blog">Red Hat Blog</a></li>
+    <li><a href="https://redhat.com/en/about/our-culture/diversity-equity-inclusion" data-analytics-category="Footer|Corporate" data-analytics-text="Diversity equity and inclusion">Diversity, equity, and inclusion</a></li>
+    <li><a href="https://coolstuff.redhat.com/" data-analytics-category="Footer|Corporate" data-analytics-text="Cool Stuff Store">Cool Stuff Store</a></li>
+    <li><a href="https://www.redhat.com/en/summit" data-analytics-category="Footer|Corporate" data-analytics-text="Red Hat Summit">Red Hat Summit</a></li>
+  </ul>
+  <rh-footer-copyright slot="links-secondary">© 2021-2023 Red Hat, Inc.</rh-footer-copyright>
+  <h3 slot="links-secondary" data-analytics-text="Red Hat legal and privacy links" hidden="">Red Hat legal and privacy links</h3>
+  <ul slot="links-secondary" data-analytics-region="page-footer-bottom-secondary">
+    <li><a href="https://redhat.com/en/about/privacy-policy" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Privacy statement">Privacy statement</a></li>
+    <li><a href="https://redhat.com/en/about/terms-use" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Terms of use">Terms of use</a></li>
+    <li><a href="https://redhat.com/en/about/all-policies-guidelines" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="All policies and guidelines">All policies and guidelines</a></li>
+    <li><a href="https://redhat.com/en/about/digital-accessibility" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Digital accessibility" class="active">Digital accessibility</a></li>
+    <!-- If your website supports trustarc include this item to add Cookie Preferences to your site. -->
+    <!-- <li><span id="teconsent"> </span></li> -->
+  </ul>
+  <a slot="tertiary" id="netlify-badge" href="https://www.netlify.com" target="_blank" rel="noreferrer noopener">
+    <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify">
+  </a>
+</rh-footer-universal>
+
+<div class="back-to-top">
+    <a href="#top" class="back-to-top-link">
+        <img src="/assets/back-to-top.svg" alt="Scroll back to the top">
+    </a>
+</div>
+
+  </article>
+</main>
+
+
+  </div>
+  <script type="module" src="/assets/global.js"></script>
+  <script type="module" src="/assets/copy-permalink.js"></script>
+
+
+
+</body></html>
