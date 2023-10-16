@@ -62,34 +62,41 @@ describe('<rh-tile>', function() {
       <div slot="footer">Suspendisse eu turpis elementum</div>
     </rh-tile>`;
     let element: RhTile;
-    it('is accessible', async function() {
+
+    beforeEach(async function() {
       element = await createFixture<RhTile>(tile);
+    });
+
+    it('is accessible', function() {
       expect(element)
         .to.be.an.accessible;
     });
 
-    it('has a checkbox', async function() {
-      element = await createFixture<RhTile>(tile);
+    it('has a checkbox', function() {
       expect(input(element))
         .to.exist.and.to.be.visible;
     });
 
     describe('pressing Enter', async function() {
-      it('is checked', async function() {
-        element = await createFixture<RhTile>(tile);
+      beforeEach(async function() {
         element.focus();
         await enter();
+      });
+
+      it('is checked', function() {
         expect(element.checked)
           .to.equal(true);
+      });
 
-        describe('clicking', async function() {
-          it('is unchecked', async function() {
-            element = await createFixture<RhTile>(tile);
-            element.checked = true;
-            await click(element);
-            expect(element.checked)
-              .to.equal(false);
-          });
+      describe('clicking', async function() {
+        beforeEach(async function() {
+          element.checked = true;
+          await element.updateComplete;
+          await click(element);
+        });
+        it('is unchecked', function() {
+          expect(element.checked)
+            .to.equal(false);
         });
       });
     });
