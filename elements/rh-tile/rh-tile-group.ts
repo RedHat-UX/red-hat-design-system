@@ -85,7 +85,7 @@ export class RhTileGroup extends LitElement {
           selected = tile;
         }
       });
-      this.selectTile(selected);
+      this.selectItem(selected);
     }
     if (_changedProperties.has('ariaDisabled')) {
       this.#tiles.forEach(tile => {
@@ -112,7 +112,7 @@ export class RhTileGroup extends LitElement {
    * programatically select a tile
    * @param tile {RhTile | null | undefined} tile to select
    */
-  selectTile(tile: RhTile | null | undefined) {
+  selectItem(tile: RhTile | null | undefined) {
     if (tile) {
       tile.checked = true;
       this.#setTiles(tile);
@@ -127,7 +127,7 @@ export class RhTileGroup extends LitElement {
     if (tile?.checked) {
       tile.checked = false;
     } else {
-      this.selectTile(tile);
+      this.selectItem(tile);
     }
   }
 
