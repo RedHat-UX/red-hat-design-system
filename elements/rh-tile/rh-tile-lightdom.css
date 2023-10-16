@@ -3,6 +3,7 @@ rh-tile a {
   text-decoration: var(--rh-tile-link-text-decoration, none) !important;
 }
 
+rh-tile:focus-within a, 
 rh-tile a:is(:focus, :hover, :active) {
   --rh-tile-link-text-decoration: underline;
 }

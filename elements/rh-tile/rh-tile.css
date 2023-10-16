@@ -50,7 +50,8 @@
 
 #outer:active,
 #outer:hover,
-#outer:focus {
+#outer:focus,
+#outer:focus-within {
   --_interactive-color: var(--rh-tile-focus-interactive-color);
 }
 
@@ -188,7 +189,7 @@ svg {
 }
 
 #outer.bleed #image ::slotted([slot="image"]) {
-  margin: calc(0px - var(--_half-margin)) 0 0;
+  margin: calc(0px - var(--_half-margin)) 0 var(--_margin);;
 }
 
 #outer:is(.compact, .checkable) ::slotted([slot="headline"]),
