@@ -16,7 +16,7 @@
 
 #outer {
   position: relative;
-  padding: var(--_half-margin) var(--_margin) var(--_margin);
+  padding: var(--_padding);
   font-weight: var(--rh-font-weight-heading-medium, 500);
   border-radius: var(--rh-border-radius-default, 3px);
   border: var(--rh-border-width-sm, 1px) solid var(--rh-tile-border-color);
@@ -32,8 +32,8 @@
   --rh-tile-disabled-background-color: var(--rh-color-surface-light, #e0e0e0);
   --rh-tile-border-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
   --rh-tile-link-color: var(--_interactive-color);
-  --_margin: var(--rh-space-2xl, 32px);
-  --_half-margin: calc(var(--_margin) / 2);
+  --_padding: var(--rh-space-2xl, 32px);
+  --_margin: var(--rh-space-lg, 16px);
   --_interactive-color: var(--rh-tile-interactive-color);
 }
 
@@ -64,8 +64,7 @@
 }
 
 #outer:is(.compact, .checkable) {
-  --_margin: var(--rh-space-xl, 24px);
-  --_half-margin: calc(var(--_margin) / 2);
+  --_padding: var(--rh-space-xl, 24px);
 }
 
 :host(:focus-within) #outer {
@@ -90,8 +89,12 @@
   justify-content: space-between;
 }
 
+#image {
+  --_bleed: calc(0px - var(--_padding));
+}
+
 #outer.bleed #image {
-  margin: 0 calc(0px - var(--_margin)) var(--_half-margin);
+  margin: var(--_bleed) var(--_bleed) 0;
 }
 
 #outer:is(.compact, .checkable) #icon {
@@ -129,7 +132,8 @@ form {
   grid-row: 1 / 3;
   align-self: flex-start;
   justify-self: flex-end;
-  margin: var(--_half-margin);
+  margin-bottom: var(--_margin);
+  margin-inline-start: var(--_margin);
   accent-color: var(--_interactive-color);
 }
 
@@ -155,10 +159,11 @@ svg {
 }
 
 ::slotted(*) {
-  margin-top: var(--rh-space-lg, 16px);
-  margin-bottom: var(--rh-space-lg, 16px);
+  margin: var(--_margin) 0;
 }
 
+::slotted([slot="image"]),
+::slotted([slot="icon"]),
 ::slotted(:last-child) {
   margin-bottom: 0;
 }
@@ -170,7 +175,7 @@ svg {
 ::slotted([slot="image"]) {
   display: block;
   max-width: 100%;
-  margin-bottom: var(--_margin);
+  margin-top: 0;
 }
 
 ::slotted([slot="icon"]) {
@@ -179,7 +184,7 @@ svg {
 }
 
 #outer:is(.compact, .checkable) ::slotted([slot="icon"]) {
-  margin-inline-end: var(--rh-space-lg, 16px);
+  margin-inline-end: var(--_margin);
   max-width: var(--rh-size-icon-03, 32px);
   max-height: var(--rh-size-icon-03, 32px);
 }
@@ -188,8 +193,13 @@ svg {
   text-transform: uppercase;
 }
 
-#outer.bleed #image ::slotted([slot="image"]) {
-  margin: calc(0px - var(--_half-margin)) 0 var(--_margin);
+#outer:is(.compact, .checkable) ::slotted([slot="image"]) {
+  margin-bottom: var(--_margin);
+}
+
+#outer:is(.compact, .checkable) ::slotted([slot="icon"]),
+#outer:is(.compact, .checkable) ::slotted([slot="headline"]) {
+  margin-top: 0;
 }
 
 #outer:is(.compact, .checkable) ::slotted([slot="headline"]),
@@ -197,7 +207,6 @@ svg {
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
 }
 
-#outer:is(.compact, .checkable) ::slotted([slot="title"]),
 #outer:is(.compact, .checkable) #body,
 ::slotted([slot="footer"]) {
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
