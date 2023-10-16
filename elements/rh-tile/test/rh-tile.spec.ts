@@ -1,10 +1,12 @@
 import { expect, html } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
+import { a11ySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
 import { sendMouse, sendKeys } from '@web/test-runner-commands';
 import { RhTile } from '@rhds/elements/rh-tile/rh-tile.js';
 
 describe('<rh-tile>', function() {
   let element: RhTile;
+  let snapshot: A11yTreeSnapshot;
 
   async function click(element: HTMLElement) {
     const { x, y, width, height } = element.getBoundingClientRect();
@@ -15,10 +17,6 @@ describe('<rh-tile>', function() {
   async function enter() {
     await sendKeys({ press: 'Enter' });
     await element.updateComplete;
-  }
-
-  function input(element, checked = false) {
-    return element?.shadowRoot?.querySelector(`input[type="checkbox"]${checked ? ':checked' : ''}`);
   }
 
   describe('simply instantiating', function() {
@@ -65,16 +63,17 @@ describe('<rh-tile>', function() {
 
     beforeEach(async function() {
       element = await createFixture<RhTile>(tile);
+      snapshot = await a11ySnapshot();
     });
 
-    it('is accessible', function() {
-      expect(element)
-        .to.be.an.accessible;
+    it('is accessible', async function() {
+      await expect(element).to.be.an.accessible;
     });
 
     it('has a checkbox', function() {
-      expect(input(element))
-        .to.exist.and.to.be.visible;
+      const checkboxes = snapshot?.children.filter(child=>child.role === 'checkbox');
+      expect(checkboxes.length)
+        .to.equal(1);
     });
 
     describe('pressing Enter', async function() {
