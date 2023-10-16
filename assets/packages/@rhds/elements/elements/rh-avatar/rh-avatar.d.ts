@@ -2,7 +2,7 @@ import { LitElement, type PropertyValues } from 'lit';
 /**
  * An avatar is a small thumbnail representation of a user.
  *
- * @summary  An avatar is a small thumbnail representation of a user.
+ * @summary Visually represents a user in a masthead or navigation
  *
  * @slot name     - The subject's name
  * @slot subtitle - auxiliary information about the subject, e.g. job title
