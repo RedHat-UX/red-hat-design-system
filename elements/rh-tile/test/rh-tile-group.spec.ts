@@ -90,7 +90,7 @@ describe('<rh-tile>', function() {
         .to.equal(inputs(element).length);
     });
 
-    describe('acts as a radio group', async function() {
+    describe('as a radio group', async function() {
       it('sets focus', async function() {
         element = await createFixture<RhTileGroup>(tileGroup);
         const [tile1, tile2, tile3] = tiles(element);
