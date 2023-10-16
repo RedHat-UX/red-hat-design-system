@@ -1,5 +1,6 @@
 #demo-container {
-  margin: 36px;
+  margin: 36px 36px 0;
+  padding: 36px 0;
   row-gap: 36px;
 }
 
