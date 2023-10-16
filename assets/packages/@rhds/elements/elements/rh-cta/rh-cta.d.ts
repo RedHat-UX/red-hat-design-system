@@ -1,4 +1,5 @@
 import { LitElement } from 'lit';
+import { type ColorPalette } from 'lib/context/color/provider.js';
 import '@patternfly/elements/pf-icon/pf-icon.js';
 export interface CtaData {
     href?: string;
@@ -12,7 +13,15 @@ export interface CtaData {
  *
  * @summary     Directs users to other pages or displays extra content
  * @slot
- *              We expect an anchor tag, `<a>` with an `href`, to be the first child inside `rh-cta` element. Less preferred but allowed for specific use-cases include: `<button>` (note however that the `button` tag is not supported for the default CTA styles).
+ *              We expect an anchor tag, `<a>` with an `href`, to be the first child inside `rh-cta` element. Less preferred but
+ *              allowed for specific use-cases include: `<button>` (note however that the `button` tag is not supported for the
+ *              default CTA styles).
+ * @attr        color-palette
+ *              [**Deprecated**] intended for use in elements that have slotted descendants, will be removed in a future release.
+ *              - Sets color palette, which affects the element's styles as well as descendants' color theme. Overrides
+ *              parent color context. Your theme will influence these colors so check there first if you are seeing inconsistencies.
+ *              See [CSS Custom Properties](#css-custom-properties) for default values.
+ *              {@deprecated color-palette intended for usage in elements that have slotted descendants}
  * @csspart     container - container element for slotted CTA
  * @cssprop     {<color>} --rh-cta-color
  *              Sets the cta color
@@ -96,6 +105,12 @@ export declare class RhCta extends LitElement {
     private on?;
     /** The slotted `<a>` or `<button>` element */
     cta: HTMLAnchorElement | HTMLButtonElement | null;
+    /**
+     * @deprecated do not use the color-palette attribute, which was added by mistake. use context-providing containers (e.g. rh-card) instead
+     */
+    colorPalette?: ColorPalette;
+    connectedCallback(): void;
+    disconnectedCallback(): void;
     render(): import("lit-html").TemplateResult<1>;
     firstUpdated(): void;
 }

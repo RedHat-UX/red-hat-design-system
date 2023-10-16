@@ -1,4 +1,4 @@
-var _RhCta_instances, _RhCta_initializing, _RhCta_dir, _RhCta_logger, _RhCta_isDefault_get;
+var _RhCta_instances, _RhCta_initializing, _RhCta_dir, _RhCta_logger, _RhCta_isDefault_get, _RhCta_mo, _RhCta_onMutation;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
@@ -26,7 +26,15 @@ function isButton(element) {
  *
  * @summary     Directs users to other pages or displays extra content
  * @slot
- *              We expect an anchor tag, `<a>` with an `href`, to be the first child inside `rh-cta` element. Less preferred but allowed for specific use-cases include: `<button>` (note however that the `button` tag is not supported for the default CTA styles).
+ *              We expect an anchor tag, `<a>` with an `href`, to be the first child inside `rh-cta` element. Less preferred but
+ *              allowed for specific use-cases include: `<button>` (note however that the `button` tag is not supported for the
+ *              default CTA styles).
+ * @attr        color-palette
+ *              [**Deprecated**] intended for use in elements that have slotted descendants, will be removed in a future release.
+ *              - Sets color palette, which affects the element's styles as well as descendants' color theme. Overrides
+ *              parent color context. Your theme will influence these colors so check there first if you are seeing inconsistencies.
+ *              See [CSS Custom Properties](#css-custom-properties) for default values.
+ *              {@deprecated color-palette intended for usage in elements that have slotted descendants}
  * @csspart     container - container element for slotted CTA
  * @cssprop     {<color>} --rh-cta-color
  *              Sets the cta color
@@ -97,10 +105,24 @@ let RhCta = class RhCta extends LitElement {
         /** Is the element in an RTL context? */
         _RhCta_dir.set(this, new DirController(this));
         _RhCta_logger.set(this, new Logger(this));
+        _RhCta_mo.set(this, new MutationObserver(() => __classPrivateFieldGet(this, _RhCta_instances, "m", _RhCta_onMutation).call(this)));
     }
+    connectedCallback() {
+        super.connectedCallback();
+        __classPrivateFieldGet(this, _RhCta_mo, "f").observe(this, { attributes: true, attributeFilter: ['color-palette'] });
+    }
+    disconnectedCallback() {
+        super.disconnectedCallback();
+        __classPrivateFieldGet(this, _RhCta_mo, "f").disconnect();
+    }
+    // END DEPRECATION WARNING
     render() {
         const rtl = __classPrivateFieldGet(this, _RhCta_dir, "f").dir === 'rtl';
-        const { on = '' } = this;
+        // START DEPRECATION WARNING
+        /* note: remove on from classMap below */
+        const dark = this.colorPalette?.includes('dark') ? 'dark' : '';
+        const on = this.on ?? dark;
+        // END DEPRECATION WARNING
         const svg = !!__classPrivateFieldGet(this, _RhCta_instances, "a", _RhCta_isDefault_get);
         const icon = !!this.icon;
         const iconOrSvg = !!__classPrivateFieldGet(this, _RhCta_instances, "a", _RhCta_isDefault_get) || !!this.icon;
@@ -140,8 +162,10 @@ let RhCta = class RhCta extends LitElement {
         }
     }
 };
-_RhCta_initializing = new WeakMap(), _RhCta_dir = new WeakMap(), _RhCta_logger = new WeakMap(), _RhCta_instances = new WeakSet(), _RhCta_isDefault_get = function _RhCta_isDefault_get() {
+_RhCta_initializing = new WeakMap(), _RhCta_dir = new WeakMap(), _RhCta_logger = new WeakMap(), _RhCta_mo = new WeakMap(), _RhCta_instances = new WeakSet(), _RhCta_isDefault_get = function _RhCta_isDefault_get() {
     return !this.hasAttribute('variant');
+}, _RhCta_onMutation = function _RhCta_onMutation() {
+    __classPrivateFieldGet(this, _RhCta_logger, "f").warn('The color-palette attribute is deprecated and will be removed in a future release.');
 };
 RhCta.version = '{{version}}';
 RhCta.styles = [style];
@@ -154,6 +178,9 @@ __decorate([
 __decorate([
     colorContextConsumer()
 ], RhCta.prototype, "on", void 0);
+__decorate([
+    property({ reflect: true, attribute: 'color-palette' })
+], RhCta.prototype, "colorPalette", void 0);
 RhCta = __decorate([
     customElement('rh-cta')
 ], RhCta);
