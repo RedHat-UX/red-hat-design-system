@@ -138,7 +138,7 @@ Space values remain the same at all breakpoints.
 
 ## Interaction states
 
-Interaction states are visual representations used to communicate the status of an element or pattern. The interaction states of a default link tile are the same for a compact link tile as long as they use the same heading color.
+Interaction states are visual representations used to communicate the status of an element or pattern. The interaction states of a default link tile are the same for a compact link tile as long as they use the same heading color. A selectable tile does not have an underlined heading to avoid users thinking it contains a link.
 
 ### Hover 
 
