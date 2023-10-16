@@ -8,7 +8,7 @@ import style from './rh-code-block.css';
 
 /**
  * A code block is formatted text within a container.
- * @summary Formatted code strings in a container.
+ * @summary Formats code strings within a container
  * @slot - A non-executable script tag containing the sample content. JavaScript
  *         samples should use the type `text/sample-javascript`. HTML samples
  *         containing script tags must escape the closing `</script>` tag.
