@@ -155,8 +155,8 @@ svg {
 }
 
 ::slotted(*) {
-  margin-top: var(--_half-margin);
-  margin-bottom: var(--_half-margin);
+  margin-top: var(--rh-space-lg, 16px);
+  margin-bottom: var(--rh-space-lg, 16px);
 }
 
 ::slotted(:last-child) {
@@ -179,7 +179,7 @@ svg {
 }
 
 #outer:is(.compact, .checkable) ::slotted([slot="icon"]) {
-  margin-inline-end: var(--_margin);
+  margin-inline-end: var(--rh-space-lg, 16px);
   max-width: var(--rh-size-icon-03, 32px);
   max-height: var(--rh-size-icon-03, 32px);
 }
@@ -189,7 +189,7 @@ svg {
 }
 
 #outer.bleed #image ::slotted([slot="image"]) {
-  margin: calc(0px - var(--_half-margin)) 0 var(--_margin);;
+  margin: calc(0px - var(--_half-margin)) 0 var(--_margin);
 }
 
 #outer:is(.compact, .checkable) ::slotted([slot="headline"]),
