@@ -1,8 +1,8 @@
 import { LitElement } from 'lit';
+import { ComposedEvent } from '@patternfly/pfe-core';
 import '../../lib/elements/rh-context-provider/rh-context-provider.js';
 import './rh-navigation-secondary-menu-section.js';
 import './rh-navigation-secondary-overlay.js';
-import { ComposedEvent } from '@patternfly/pfe-core';
 import { RhNavigationSecondaryDropdown } from './rh-navigation-secondary-dropdown.js';
 import { type ColorPalette } from '../../lib/context/color/provider.js';
 export declare class SecondaryNavOverlayChangeEvent extends ComposedEvent {
@@ -41,6 +41,7 @@ export declare class RhNavigationSecondary extends LitElement {
      * Color palette darker | lighter (default: lighter)
      */
     colorPalette: NavPalette;
+    private _nav?;
     /**
      * `mobileMenuExpanded` property is toggled when the mobile menu button is clicked,
      * a focusout event occurs, or on an overlay click event.  It also switches state
