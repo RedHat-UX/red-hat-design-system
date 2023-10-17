@@ -1,4 +1,3 @@
-
 ## Keyboard interactions
 
 A user should have the ability to use the Tab key to navigate to a tile or into a tile group. When tiles are in a group, a user will need to use arrow keys to navigate from one tile to another. Pressing the `Enter`/`Return` key will activate a link tile or select a selectable tile.
