@@ -9,7 +9,7 @@ tags:
 
 Link with icon features an icon that adds context to the link itself. It’s positioned to the left or on top of a link, depending on orientation.
 
-## Sample component
+## Sample pattern
 
 {% example palette="none",
            alt="Link with icon",

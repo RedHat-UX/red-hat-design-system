@@ -6,7 +6,7 @@
           src="./badge-sample-element.png" %}
 
 
-## Sample component
+## Sample element
 <rh-badge number="1" aria-label="1 new message">1</rh-badge>
 <rh-badge number="99" state="info" aria-label="99 details">99</rh-badge>
 <rh-badge number="100" threshold="99" state="moderate" aria-label="99+ details">100</rh-badge>
