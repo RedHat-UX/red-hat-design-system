@@ -3,8 +3,11 @@ import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 import { sendKeys, sendMouse } from '@web/test-runner-commands';
 import { RhTileGroup } from '@rhds/elements/rh-tile/rh-tile-group.js';
 
-describe('<rh-tile>', function() {
+describe('<rh-tile-group>', function() {
   let element: RhTileGroup;
+  let tile1: HTMLElement;
+  let tile2: HTMLElement;
+  let tile3: HTMLElement;
   const tileGroup = html`
       <rh-tile-group radio>
         <rh-tile checked>
@@ -28,12 +31,6 @@ describe('<rh-tile>', function() {
           <div slot="footer">Suspendisse eu turpis elementum</div>
         </rh-tile>
       </rh-tile-group>`;
-
-  async function click(element: HTMLElement) {
-    const { x, y, width, height } = element.getBoundingClientRect();
-    const position = [x + width / 2, y + height / 2].map(Math.round) as [number, number];
-    await sendMouse({ type: 'click', position });
-  }
 
   async function arrowDown() {
     await sendKeys({ down: 'ArrowDown' });
@@ -78,93 +75,83 @@ describe('<rh-tile>', function() {
   });
 
   describe('radio tile', function() {
-    it('is accessible', async function() {
+    beforeEach(async function() {
       element = await createFixture<RhTileGroup>(tileGroup);
+    });
+
+    it('is accessible', function() {
       expect(element)
         .to.be.an.accessible;
     });
 
-    it('has radio buttons', async function() {
-      element = await createFixture<RhTileGroup>(tileGroup);
+    it('has radio buttons', function() {
       expect(tiles(element).length)
         .to.equal(inputs(element).length);
     });
+  });
 
-    describe('as a radio group', async function() {
-      it('sets focus', async function() {
-        element = await createFixture<RhTileGroup>(tileGroup);
-        const [tile1, tile2, tile3] = tiles(element);
-        await element.focus();
+  describe('as a radio group', async function() {
+    beforeEach(async function() {
+      element = await createFixture<RhTileGroup>(tileGroup);
+      [tile1, tile2, tile3] = tiles(element);
+      await element.focus();
+    });
+
+    it('sets focus', function() {
+      expect(document.activeElement)
+        .to.equal(tile1);
+    });
+
+    describe('arrow down', async function() {
+      beforeEach(async function() {
+        await arrowDown();
+      });
+      it('sets focus on second tile', function() {
         expect(document.activeElement)
-          .to.equal(tile1);
+          .to.equal(tile2);
+      });
+    });
 
-        describe('arrow down', async function() {
-          await arrowDown();
-          it('sets focus on second tile', function() {
-            expect(document.activeElement)
-              .to.equal(tile2);
-          });
+    describe('arrow up', async function() {
+      beforeEach(async function() {
+        await arrowUp();
+      });
+      it('sets focus on last tile', function() {
+        expect(document.activeElement)
+          .to.equal(tile3);
+      });
+    });
 
-          describe('another arrow down', async function() {
-            await arrowDown();
-            it('sets focus on third tile', function() {
-              expect(document.activeElement)
-                .to.equal(tile3);
-            });
-
-            describe('another arrow down', async function() {
-              await arrowDown();
-              it('sets focus on first tile', function() {
-                expect(document.activeElement)
-                  .to.equal(tile1);
-              });
-
-              describe('arrow up', async function() {
-                await arrowUp();
-                it('sets focus on last tile', function() {
-                  expect(document.activeElement)
-                    .to.equal(tile3);
-                });
-
-                describe('another arrow up', async function() {
-                  await arrowUp();
-                  it('sets focus on second tile', function() {
-                    expect(document.activeElement)
-                      .to.equal(tile2);
-                  });
-                });
-              });
-            });
-          });
-        });
+    describe('only allows one item to be selected', async function() {
+      beforeEach(async function() {
+        element = await createFixture<RhTileGroup>(tileGroup);
+        [tile1, tile2, tile3] = tiles(element);
+        await element.focus();
       });
 
-      describe('only allows one item to be selected', async function() {
-        element = await createFixture<RhTileGroup>(tileGroup);
-        const [tile1, tile2] = tiles(element);
-        await element.focus();
+      it('only has one selected element', function() {
+        expect(element.selected)
+          .to.equal(tile1);
+      });
 
-        it('only has one selected element', function() {
-          expect(element.selected)
-            .to.equal(tile1);
+      describe('only one tiles has a checked radio', function() {
+        const [checked1] = inputs(element, true);
+        const tileChecked = input(tile1, true);
 
-          describe('only one tiles has a checked radio', function() {
-            const [checked1] = inputs(element, true);
-            const tileChecked = input(tile1, true);
+        it('only has one checked radio button', function() {
+          expect(checked1)
+            .to.equal([tileChecked]);
+        });
 
-            it('only has one checked radio button', function() {
-              expect(checked1)
-                .to.equal([tileChecked]);
+        describe('clicking second tile', async function() {
+          beforeEach(async function() {
+            tile2.focus();
+            await enter();
+          });
 
-              describe('clicking second tile', async function() {
-                tile2.focus();
-                await enter();
-                it('selects the second tile only', function() {
-                  expect(element.selected)
-                    .to.equal(tile2);
-                });
-              });
-            });
+          it('selects the second tile only', function() {
+            expect(element.selected)
+              .to.equal(tile2);
           });
         });
       });
