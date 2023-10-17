@@ -152,7 +152,7 @@ export class RhTileGroup extends LitElement {
 
   #setTiles(tile: RhTile | null | undefined) {
     // @ts-expect-error: internal use of private prop. replace with context. see rh-tile.ts
-    if ((tile && tile.radioGroup || this.radio) && tile?.checked) {
+    if (!this.disabled && (tile && tile.radioGroup || this.radio) && tile?.checked) {
       this.#tiles?.forEach(item => {
         if (tile !== item && item.checked) {
           item.checked = false;

@@ -10,10 +10,6 @@
   outline: none !important;
 }
 
-:host([disabled]) {
-  pointer-events: none;
-}
-
 #outer {
   position: relative;
   padding: var(--_padding);
@@ -76,11 +72,12 @@
   background-color: var(--rh-tile-focus-background-color);
 }
 
-:host([disabled]) #outer {
-  color: var(--rh-tile-text-color-secondary);
-  background-color: var(--rh-tile-disabled-background-color);
+#outer.disabled {
+  pointer-events: none !important;
+  color: var(--rh-tile-text-color-secondary) !important;
+  background-color: var(--rh-tile-disabled-background-color) !important;
 
-  --_interactive-color: var(--rh-tile-text-color-secondary);
+  --_interactive-color: var(--rh-tile-text-color-secondary) !important;
 }
 
 #outer:is(.compact, .checkable) #inner {

@@ -237,7 +237,7 @@ export class RhTile extends LitElement {
    */
   #onKeyup(event: KeyboardEvent) {
     const { target, key } = event;
-    if (['Enter', ' '].includes(key) && target === this && this.checkable) {
+    if (['Enter', ' '].includes(key) && target === this && this.checkable && !this.disabled && !this.disabledGroup) {
       this.checked = !this.checked;
     }
   }
