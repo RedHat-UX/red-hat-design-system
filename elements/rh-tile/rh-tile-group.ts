@@ -20,10 +20,9 @@ export class RhTileGroup extends LitElement {
   static readonly styles = [styles];
 
   /**
-   * whether tile interaction is disabled but retains ability to be read by screen readers;
-   * preferred method of disabling instead of `disabled`
+   * whether tile group interaction is disabled
    */
-  @property({ reflect: true, attribute: 'aria-disabled', type: String }) ariaDisabled = 'false';
+  @property({ reflect: true, attribute: 'disabled', type: Boolean }) disabled = false;
 
   /**
    * if tile is checkable, whether only one tile can be checked
@@ -87,10 +86,12 @@ export class RhTileGroup extends LitElement {
       });
       this.selectItem(selected);
     }
-    if (_changedProperties.has('ariaDisabled')) {
+
+    if (_changedProperties.has('disabled')) {
+      this.#internals.ariaDisabled = this.disabled ? 'true' : 'false';
       this.#tiles.forEach(tile => {
-        if (tile.ariaDisabled !== this.ariaDisabled) {
-          tile.ariaDisabled = this.ariaDisabled;
+        if (tile.disabled !== this.disabled) {
+          tile.disabled = this.disabled;
         }
       });
     }
@@ -139,7 +140,7 @@ export class RhTileGroup extends LitElement {
     this.#tiles.forEach(tile => {
       tile.checkable = true;
       tile.radio = this.radio;
-      tile.ariaDisabled !== this.ariaDisabled;
+      tile.disabled !== this.disabled;
       tile.id = tile.id || getRandomId('rh-tile');
     });
     if (this.#initTiles) {

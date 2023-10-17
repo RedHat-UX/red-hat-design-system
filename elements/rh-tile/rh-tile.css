@@ -10,7 +10,7 @@
   outline: none !important;
 }
 
-:host([aria-disabled="true"]) {
+:host([disabled]) {
   pointer-events: none;
 }
 
@@ -76,7 +76,7 @@
   background-color: var(--rh-tile-focus-background-color);
 }
 
-:host([aria-disabled="true"]) #outer {
+:host([disabled]) #outer {
   color: var(--rh-tile-text-color-secondary);
   background-color: var(--rh-tile-disabled-background-color);
 

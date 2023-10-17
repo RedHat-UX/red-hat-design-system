@@ -47,10 +47,9 @@ export class RhTile extends LitElement {
   private static readonly _disabledIcon = html`<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><g id="uuid-0fd9e805-a455-40ef-9171-f2f334832bf2"><rect width="48" height="48" fill="none"/></g><g id="uuid-48f9e284-0601-4fcd-bbe7-8b444234ac6c"><path d="m24,7c-9.37,0-17,7.63-17,17s7.63,17,17,17,17-7.63,17-17S33.37,7,24,7Zm15,17c0,3.52-1.23,6.76-3.27,9.32L14.68,12.27c2.56-2.04,5.8-3.27,9.32-3.27,8.27,0,15,6.73,15,15Zm-30,0c0-4.03,1.61-7.69,4.2-10.38l21.18,21.18c-2.7,2.6-6.35,4.2-10.38,4.2-8.27,0-15-6.73-15-15Z"/></g></svg>`;
 
   /**
-   * whether tile interaction is disabled but retains ability to be read by screen readers;
-   * preferred method of disabling instead of `disabled`
+   * whether tile interaction is disabled
    */
-  @property({ reflect: true, attribute: 'aria-disabled', type: String }) ariaDisabled = 'false';
+  @property({ reflect: true, attribute: 'disabled', type: Boolean }) disabled = false;
 
   /**
    * whether image is full-width (i.e. bleeds into the padding)
@@ -142,6 +141,10 @@ export class RhTile extends LitElement {
         this.removeAttribute('tabindex');
       }
     }
+
+    if (_changedProperties.has('disabled')) {
+      this.#internals.ariaDisabled = this.disabled ? 'true' : 'false';
+    }
   }
 
   render() {
@@ -171,14 +174,14 @@ export class RhTile extends LitElement {
                       type="${this.radio ? 'radio' : 'checkbox'}" 
                       tabindex="-1"
                       ?checked=${this.checked}
-                      ?disabled=${this.ariaDisabled === 'true'}>
+                      ?disabled=${this.disabled}>
                 </form>
               `}
             </div>
             <div id="body"><slot></slot></div>
             <div id="footer">
               <div id="footer-text"><slot name="footer"></slot></div>
-              ${!this.checkable && this.ariaDisabled !== 'true' ?
+              ${!this.checkable && !this.disabled ?
                 html`<pf-icon icon="arrow-right" size="md" set="fas"></pf-icon>` : !this.checkable ?
                 RhTile._disabledIcon : ''}
             </div>

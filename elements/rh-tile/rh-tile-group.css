@@ -1,4 +1,4 @@
-:host([aria-disabled="true"]) {
+:host([disabled]) {
   pointer-events: none;
 }
 
