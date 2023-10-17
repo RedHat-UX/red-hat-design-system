@@ -139,7 +139,8 @@ export class RhTileGroup extends LitElement {
       tile.checkable = true;
       // @ts-expect-error: internal use of private prop. replace with context. see rh-tile.ts
       tile.radioGroup = this.radio;
-      tile.disabled !== this.disabled;
+      // @ts-expect-error: internal use of private prop. replace with context. see rh-tile.ts
+      tile.disabledGroup !== this.disabled;
       tile.id = tile.id || getRandomId('rh-tile');
     });
     if (this.#initTiles) {
