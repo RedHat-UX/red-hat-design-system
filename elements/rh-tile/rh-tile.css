@@ -137,13 +137,8 @@ form {
   accent-color: var(--_interactive-color);
 }
 
-input[type="checkbox"] {
-  display: var(--_rh-tile-group-checkbox-display, inline);
-}
-
 input[type="radio"] {
   flex: 0 0 auto;
-  display: var(--_rh-tile-group-radio-display, none);
 }
 
 pf-icon[icon="arrow-right"] {

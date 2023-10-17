@@ -55,6 +55,9 @@ export class RhTile extends LitElement {
   // TODO(bennyp): https://lit.dev/docs/data/context/#content
   @state() private disabledGroup = false;
 
+  // TODO(bennyp): https://lit.dev/docs/data/context/#content
+  @state() private radioGroup = false;
+
   /**
    * whether image is full-width (i.e. bleeds into the padding)
    */
@@ -90,11 +93,6 @@ export class RhTile extends LitElement {
   @property({ attribute: 'checked', type: Boolean }) checked = false;
 
   /**
-   * if tile is checkable, whether only one tile in a group can be checked
-   */
-  @property({ attribute: 'radio', type: Boolean }) radio = false;
-
-  /**
    * Sets color theme based on parent context
    */
   @colorContextConsumer() private on?: ColorTheme;
@@ -115,10 +113,10 @@ export class RhTile extends LitElement {
   connectedCallback(): void {
     super.connectedCallback();
     this.#internals.ariaChecked = this.checkable && this.checked ? 'true' : 'false';
-    this.#internals.role = this.checkable && this.radio ? 'radio' : this.checkable ? 'checkbox' : null;
-    if (this.checkable && !this.radio) {
+    this.#internals.role = this.checkable && this.radioGroup ? 'radio' : this.checkable ? 'checkbox' : null;
+    if (this.checkable && !this.radioGroup) {
       this.setAttribute('tabindex', '0');
-    } else if (!this.radio) {
+    } else if (!this.radioGroup) {
       this.removeAttribute('tabindex');
     }
     this.addEventListener('keydown', this.#onKeydown);
@@ -138,10 +136,10 @@ export class RhTile extends LitElement {
     }
 
     if (_changedProperties.has('radio') || _changedProperties.has('checkable')) {
-      this.#internals.role = this.checkable && this.radio ? 'radio' : this.checkable ? 'checkbox' : null;
-      if (this.checkable && !this.radio) {
+      this.#internals.role = this.checkable && this.radioGroup ? 'radio' : this.checkable ? 'checkbox' : null;
+      if (this.checkable && !this.radioGroup) {
         this.setAttribute('tabindex', '0');
-      } else if (!this.radio) {
+      } else if (!this.radioGroup) {
         this.removeAttribute('tabindex');
       }
     }
@@ -184,7 +182,7 @@ export class RhTile extends LitElement {
               ${!this.checkable ? '' : html`
                 <form id="form" aria-hidden="true">
                     <input 
-                      type="${this.radio ? 'radio' : 'checkbox'}" 
+                      type="${this.radioGroup ? 'radio' : 'checkbox'}" 
                       tabindex="-1"
                       ?checked=${this.checked}
                       ?disabled=${this.disabled}>

@@ -77,9 +77,8 @@ export class RhTileGroup extends LitElement {
       this.#internals.role = this.radio ? 'radiogroup' : null;
       let selected: RhTile | null | undefined;
       this.#tiles.forEach(tile => {
-        if (tile.radio !== this.radio) {
-          tile.radio = this.radio;
-        }
+        // @ts-expect-error: internal use of private prop. replace with context. see rh-tile.ts
+        tile.radioGroup = this.radio;
         if (this.radio && !selected && tile.checked) {
           selected = tile;
         }
@@ -138,7 +137,8 @@ export class RhTileGroup extends LitElement {
     this.#tiles = [...this.querySelectorAll('rh-tile')];
     this.#tiles.forEach(tile => {
       tile.checkable = true;
-      tile.radio = this.radio;
+      // @ts-expect-error: internal use of private prop. replace with context. see rh-tile.ts
+      tile.radioGroup = this.radio;
       tile.disabled !== this.disabled;
       tile.id = tile.id || getRandomId('rh-tile');
     });
@@ -151,7 +151,8 @@ export class RhTileGroup extends LitElement {
   }
 
   #setTiles(tile: RhTile | null | undefined) {
-    if ((tile && tile.radio || this.radio) && tile?.checked) {
+    // @ts-expect-error: internal use of private prop. replace with context. see rh-tile.ts
+    if ((tile && tile.radioGroup || this.radio) && tile?.checked) {
       this.#tiles?.forEach(item => {
         if (tile !== item && item.checked) {
           item.checked = false;
