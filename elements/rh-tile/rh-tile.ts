@@ -10,6 +10,7 @@ import { ComposedEvent } from '@patternfly/pfe-core';
 import '@patternfly/elements/pf-icon/pf-icon.js';
 
 import styles from './rh-tile.css';
+import { state } from 'lit/decorators/state.js';
 
 export class TileSelectEvent extends ComposedEvent {
   declare target: RhTile;
@@ -50,6 +51,9 @@ export class RhTile extends LitElement {
    * whether tile interaction is disabled
    */
   @property({ reflect: true, attribute: 'disabled', type: Boolean }) disabled = false;
+
+  // TODO(bennyp): https://lit.dev/docs/data/context/#content
+  @state() private disabledGroup = false;
 
   /**
    * whether image is full-width (i.e. bleeds into the padding)
@@ -149,8 +153,17 @@ export class RhTile extends LitElement {
 
   render() {
     const { bleed, compact, checkable, checked, desaturated, on = '' } = this;
+    const disabled = this.disabledGroup || this.disabled;
     return html`
-      <div id="outer" class="${classMap({ bleed, checkable, compact, checked, desaturated, [on]: !!on })}">
+      <div id="outer" class="${classMap({
+            bleed,
+            checkable,
+            compact,
+            checked,
+            desaturated,
+            disabled,
+            [on]: !!on,
+          })}">
         ${this.checkable ? '' : html`<div id="image"><slot name="image"></slot></div>`}
         <div id="inner">
           ${!this.checkable ?

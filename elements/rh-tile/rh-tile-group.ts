@@ -90,9 +90,8 @@ export class RhTileGroup extends LitElement {
     if (_changedProperties.has('disabled')) {
       this.#internals.ariaDisabled = this.disabled ? 'true' : 'false';
       this.#tiles.forEach(tile => {
-        if (tile.disabled !== this.disabled) {
-          tile.disabled = this.disabled;
-        }
+        // @ts-expect-error: internal use of private prop. replace with context. see rh-tile.ts
+        tile.disabledGroup = this.disabled;
       });
     }
   }
