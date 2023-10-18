@@ -53,9 +53,26 @@ function demoPaths(content, pathname) {
   }
 }
 
+function isModuleScript(node) {
+  return (
+    node.tagName === 'script' &&
+    node.attrs.some(x => x.name === 'type' && x.value === 'module') &&
+    node.attrs.some(x => x.name === 'src')
+  );
+}
+
+function isStyleLink(node) {
+  return (
+    node.tagName === 'link' &&
+    node.attrs.some(x => x.name === 'rel' && x.value === 'stylesheet') &&
+    node.attrs.some(x => x.name === 'href')
+  );
+}
+
 module.exports = async function(data) {
   performance.mark('playgrounds-start');
-  const { parseHTML } = await import('linkedom');
+  const { parseFragment, serialize } = await import('parse5');
+  const Tools = await import('@parse5/tools');
 
   const demoManifests = groupBy('primaryElementName', data.demos);
 
@@ -74,13 +91,22 @@ module.exports = async function(data) {
 
       const demoSource = await fs.readFile(demo.filePath, 'utf8');
 
-      const { document } = parseHTML(demoSource);
+      const fragment = parseFragment(demoSource);
 
       const baseCssPathPrefix = demo.filePath.match(DEMO_FILEPATH_IS_MAIN_DEMO_RE) ? '' : '../';
-      const baseCssLink = document.createElement('link');
-      baseCssLink.rel = 'stylesheet';
-      baseCssLink.href = `${baseCssPathPrefix}rhds-demo-base.css`;
-      document.head.append(baseCssLink);
+
+      Tools.spliceChildren(
+        fragment,
+        Infinity,
+        0,
+        Tools.createCommentNode('playground-fold'),
+        Tools.createElement('link', {
+          rel: 'stylesheet',
+          href: `${baseCssPathPrefix}rhds-demo-base.css`,
+        }),
+        Tools.createTextNode('\n\n'),
+        Tools.createCommentNode('playground-fold-end'),
+      );
 
       const filename = getDemoFilename(demo);
 
@@ -99,14 +125,20 @@ module.exports = async function(data) {
       fileMap.set(filename, {
         contentType: 'text/html',
         selected: isMainDemo,
-        content: demoPaths(document.toString(), demo.filePath),
+        content: demoPaths(serialize(fragment), demo.filePath),
         label: demo.title,
       });
 
+      const modulesAndLinks = Tools.queryAll(fragment, node =>
+        Tools.isElementNode(node) &&
+          isModuleScript(node) ||
+          isStyleLink(node));
+
       // register demo script and css resources
-      for (const el of document.querySelectorAll('script[type=module][src], link[rel=stylesheet][href]')) {
-        const isLink = el.localName === 'link';
-        const subresourceURL = isLink ? el.href : el.src;
+      for (const el of modulesAndLinks) {
+        const isLink = el.tagName === 'link';
+        const attrs = Object.fromEntries(el.attrs.map(({ name, value }) => [name, value]));
+        const subresourceURL = isLink ? attrs.href : attrs.src;
         if (!subresourceURL.startsWith('http')) {
           const subresourceFileURL = !subresourceURL.startsWith('/')
             // non-tabular tern
