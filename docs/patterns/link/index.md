@@ -9,7 +9,7 @@ tags:
 
 Links are navigational elements that allow a user to move between content, pages, and websites.
 
-## Sample component
+## Sample pattern
 
 {% example palette="none",
            alt="Link component examples",

@@ -2,7 +2,7 @@
   {{ tagName | getElementDescription }}
 
 
-## Sample component
+## Sample element
   {% example palette="light",
              width=360,
              alt="Example of a card element",

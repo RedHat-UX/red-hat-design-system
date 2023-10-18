@@ -8,7 +8,7 @@ tags:
   
 A Form is a group of elements used to collect information from a user. It can include a combination of text, fields, select lists, data inputs, buttons, and more.
 
-## Sample component
+## Sample pattern
   {% example palette="none",
            alt="Form component samples",
            src="./form-samples.svg" %}

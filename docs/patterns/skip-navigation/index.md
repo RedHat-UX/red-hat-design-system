@@ -8,7 +8,7 @@ tags:
 
 Skip navigation is a styled link that appears at the top of a page when the Tab key is pressed. It bypasses the navigation and jumps users down to the main content when selected.
 
-## Sample component
+## Sample pattern
 
 {% example palette="none",
            alt="Skip navigation",

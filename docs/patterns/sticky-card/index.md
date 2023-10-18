@@ -8,7 +8,7 @@ tags:
 
 Sticky cards slide into view at a certain scroll position and then anchor themselves to the edge of a browser window. They stay in one place as content scrolls underneath until a user dismisses them.
 
-## Sample component
+## Sample pattern
 {% example palette="none",
           alt="Sticky card",
           src="./sticky-card.svg" %}
