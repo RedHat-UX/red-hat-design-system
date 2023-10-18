@@ -6,7 +6,7 @@
   is visible in the browser window.
 
 
-## Sample component
+## Sample element
 
   ![Jump links sample component]({{ './jump-links-sample.svg' | 
   url }}){style="--inline-img-max-width:128px;"}
