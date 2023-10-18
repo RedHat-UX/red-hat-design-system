@@ -142,6 +142,7 @@ pf-icon[icon="arrow-right"] {
   color: var(--_interactive-color);
   width: var(--rh-space-xl, 24px);
   height: var(--rh-space-xl, 24px);
+  pointer-events: none;
 }
 
 svg {
