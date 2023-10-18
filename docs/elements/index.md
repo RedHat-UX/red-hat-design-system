@@ -9,6 +9,7 @@ summaries:
   progress-steps: Guides users through a task with sequential steps
   breadcrumb: Keeps track of location as users move through pages
   footnote: Provides additional information or a source for content
+  tile: A form of selection that can be used in place of a link, checkbox, or radio button
 ---
 
 {# NOTE: all images in this view need to be 340 by 200 px in order to maintain same ratio. #}
