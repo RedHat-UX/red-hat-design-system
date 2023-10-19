@@ -1,20 +1,13 @@
-import { html } from 'lit';
+import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
-
-import { BaseSpinner } from '@patternfly/elements/pf-spinner/BaseSpinner.js';
 
 import styles from './rh-spinner.css';
 
-export type SpinnerSize = (
-  | 'sm'
-  | 'md'
-  | 'lg'
-);
+export type SpinnerSize = RhSpinner['size'];
 
 /**
  * A spinner indicates that an action is in progress.
@@ -27,27 +20,18 @@ export type SpinnerSize = (
  *
  */
 @customElement('rh-spinner')
-export class RhSpinner extends BaseSpinner {
+export class RhSpinner extends LitElement {
   static readonly styles = [styles];
 
   /**
-   * Sets color palette, which affects the element's styles as well as descendants' color theme.
-   * Overrides parent color context.
-   * Your theme will influence these colors so check there first if you are seeing inconsistencies.
-   * See [CSS Custom Properties](#css-custom-properties) for default values
+   * Preset sizes for the spinner
    */
-  @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
+  @property({ reflect: true }) size: 'sm' | 'md' | 'lg' = 'lg';
 
   /**
    * Sets color theme based on parent context
    */
   @colorContextConsumer() private on?: ColorTheme;
-
-  /**
-   * Preset sizes for the spinner
-   */
-  @property({ reflect: true }) size: SpinnerSize = 'lg';
 
   render() {
     const { on = '' } = this;
