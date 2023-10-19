@@ -43,6 +43,23 @@ export class RhSpinner extends LitElement {
       <slot></slot>
     `;
   }
+
+  // START hack for removal of contextProvider. delete for version 2.0
+  /**
+   * Deprecated: Use Color context instead
+   * @deprecated Use Color context instead
+   */
+  @property({ attribute: 'color-palette' }) colorPalette?: string;
+
+  willUpdate() {
+    const [cp] = this.getAttribute('color-palette')?.match(/^dark|^light/) ?? [];
+    if (cp) {
+      this.on = cp as 'dark' | 'light';
+      // eslint-disable-next-line no-console
+      console.warn(`[rh-spinner]: do not use color-palette, it is deprecated`);
+    }
+  }
+  // END hack
 }
 
 declare global {
