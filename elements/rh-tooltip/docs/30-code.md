@@ -1,4 +1,4 @@
-{% renderInstallation %}{% endrenderInstallation %}
+{% renderInstall %}{% endrenderInstall %}
 
 ## Usage
   {% playground tagName=button %}{% endplayground %}

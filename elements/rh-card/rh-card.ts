@@ -27,7 +27,6 @@ import styles from './rh-card.css';
  * @cssprop     {<length>} --rh-card-header-font-size
  *              Font size for header on card
  *              {@default `1.5rem`}
- *
  */
 @customElement('rh-card')
 export class RhCard extends LitElement {

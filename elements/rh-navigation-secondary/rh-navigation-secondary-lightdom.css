@@ -1,6 +1,6 @@
 :is(rh-secondary-nav, rh-navigation-secondary) {
   --_max-height: max-content;
-  --_min-height: 74px;
+  --_min-height: 80px;
   --_nav-link-color: var(--rh-color-text-primary-on-light, #151515);
   --_logo-link-color: var(--rh-color-text-primary-on-light, #151515);
   --_nav-chevron-color: var(--rh-color-text-primary-on-light, #151515);
@@ -66,7 +66,7 @@
   margin-inline-start: var(--rh-space-lg, 16px);
   font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
   font-weight: var(--rh-font-weight-heading-medium, 500);
-  padding-block: var(--rh-space-md, 8px);
+  padding-block: var(--rh-space-lg, 16px);
 }
 
 :is(rh-secondary-nav, rh-navigation-secondary) > [slot="logo"]:hover {
@@ -131,10 +131,25 @@
   border-block-start: 3px solid transparent;
 }
 
+:is(rh-secondary-nav, rh-navigation-secondary) [slot="nav"] > li > a[aria-current="page"] {
+  border-block-start-color: var(--rh-color-brand-red-on-light, #ee0000);
+}
+
+:is(rh-secondary-nav, rh-navigation-secondary)[color-palette="dark"] 
+[slot="nav"] li > a[aria-current="page"] {
+  border-block-start-color: var(--rh-color-brand-red-on-dark, #ff442b);
+}
+
 :is(rh-secondary-nav, rh-navigation-secondary) > [slot="nav"] > li > a:hover,
 :is(rh-secondary-nav-dropdown, rh-navigation-secondary-dropdown) > a:hover {
   text-decoration: none !important;
   color: var(--_nav-link-color) !important;
+}
+
+:is(rh-secondary-nav, rh-navigation-secondary) > [slot="nav"] > li > a:focus,
+:is(rh-secondary-nav-dropdown, rh-navigation-secondary-dropdown) > a:focus {
+  position: relative;
+  z-index: 1;
 }
 
 :is(rh-secondary-nav, rh-navigation-secondary) > [slot="nav"] > li {
@@ -167,10 +182,14 @@
 }
 
 @media screen and (min-width: 992px) {
+  :is(rh-secondary-nav, rh-navigation-secondary) {
+    --_min-height: 86px;
+  }
+
   :is(rh-secondary-nav, rh-navigation-secondary):not(:defined) {
     display: grid;
     grid-template-areas: "logo nav cta";
-    grid-template-rows: 4.625rem max-content max-content;
+    grid-template-rows: minmax(var(--_min-height), var(--_max-height)) max-content max-content;
     grid-template-columns: max-content 1fr max-content;
   }
 

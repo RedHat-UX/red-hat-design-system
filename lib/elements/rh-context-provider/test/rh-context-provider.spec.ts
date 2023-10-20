@@ -58,6 +58,7 @@ describe('<rh-context-provider>', function() {
       describe('then imperatively adding children', function() {
         beforeEach(async function() {
           element.append(document.createElement('test-context-consumer'));
+          await element.updateComplete;
         });
         it('should notify the children', function() {
           expect(element.querySelector('test-context-consumer')?.on).to.equal('dark');

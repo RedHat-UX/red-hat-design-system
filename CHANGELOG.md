@@ -1,5 +1,144 @@
 # @rhds/elements
 
+## 1.2.0
+
+### Minor Changes
+
+- 35c28e72: Added `<rh-tile>`.
+
+  Tile creates a component that can be used in place of a link, checkbox, or radio button selection.
+
+  ```html
+  <rh-tile-group radio>
+    <rh-tile checked>
+      <div slot="title">Title</div>
+      <h2 slot="headline"><a href="#top">Link</a></h2>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      <div slot="footer">Suspendisse eu turpis elementum</div>
+    </rh-tile>
+
+    <rh-tile>
+      <div slot="title">Title</div>
+      <h2 slot="headline"><a href="#top">Link</a></h2>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      <div slot="footer">Suspendisse eu turpis elementum</div>
+    </rh-tile>
+
+    <rh-tile>
+      <div slot="title">Title</div>
+      <h2 slot="headline"><a href="#top">Link</a></h2>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      <div slot="footer">Suspendisse eu turpis elementum</div>
+    </rh-tile>
+  </rh-tile-group>
+  ```
+
+- 9d3c7b09: ✨ Added `<rh-table>`.
+
+  A table is a container for displaying information. It allows a user to scan, examine, and compare large amounts of data.
+
+  ```html
+  <rh-table>
+    <table>
+      <caption>
+        Concerts
+      </caption>
+      <colgroup>
+        <col />
+        <col />
+        <col />
+      </colgroup>
+      <thead>
+        <tr>
+          <th scope="col" data-label="Date">Date</th>
+          <th scope="col" data-label="Event">
+            Event<rh-sort-button></rh-sort-button>
+          </th>
+          <th scope="col" data-label="Venue">
+            Venue<rh-sort-button></rh-sort-button>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Date">12 February</td>
+          <td data-label="Event">Waltz with Strauss</td>
+          <td data-label="Venue">Main Hall</td>
+        </tr>
+        <tr>
+          <td data-label="Date">24 March</td>
+          <td data-label="Event">The Obelisks</td>
+          <td data-label="Venue">West Wing</td>
+        </tr>
+        <tr>
+          <td data-label="Date">14 April</td>
+          <td data-label="Event">The What</td>
+          <td data-label="Venue">Main Hall</td>
+        </tr>
+      </tbody>
+    </table>
+    <small slot="summary">Dates and venues subject to change.</small>
+  </rh-table>
+  ```
+
+- 39e76fc6: `rh-card`: `header` slot now displays items vertically instead of stacked, allowing for more than one item to display in the header.
+
+  Example:
+
+  ```html
+  <rh-card>
+    <img slot="header" src="kitten-400x250.jpeg"></img>
+    <h2 slot="header">Headline, sm</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+       Nullam eleifend elit sed est egestas, a sollicitudin mauris
+       tincidunt. Pellentesque vel dapibus risus. Nullam aliquam
+       felis orci, eget cursus mi lacinia quis. Vivamus at felis sem.</p>
+    <rh-cta priority="primary" slot="footer">
+      <a href="#">Call to action</a>
+    </rh-cta>
+  </rh-card>
+  ```
+
+- c9780fc2: ✨ Added `<rh-timestamp>`.
+
+  Provides consistent formats for displaying date and time values.
+
+  ```html
+  <rh-timestamp date="Tue Aug 09 2006 14:57:00 GMT-0400"
+    >Tue Aug 09 2006 14:57:00 GMT-0400</rh-timestamp
+  >
+  ```
+
+### Patch Changes
+
+- f4fcb1f3: `<rh-navigation-secondary>`: improved keyboard navigation
+- 681519b5: `<rh-avatar>`:
+  `<rh-code-block>`:
+  `<rh-navigation-secondary>`: Updated custom elements manifest summaries
+- ed6ff92e: `<rh-navigation-secondary>`: corrected and updated support for current page indicator
+- a6ca3987: `<rh-cta>`: `brick` variants are now full width.
+
+  `<rh-cta variant="brick">` should only be used within grids. Check your layouts to make sure they adhere to the guidelines.
+
+- 0c2d42b1: `<rh-tabs>`: corrects the custom element manifest's event name for the `expand` event
+- 7e2c9bb6: `<rh-cta>`: adds `color-palette` attribute back with deprecation notice
+
+## 1.1.1
+
+### Patch Changes
+
+- ab339ac6: `<rh-tag>`: outline variant should now get the correct background styles added.
+- f79543b7: `<rh-avatar>`: uses SVG for default images instead of much larger base-64 PNG images
+- 77fa329a: `<rh-audio-player>`: Added @csspart docs.
+- f0f66ec2: `<rh-tabs>`: fixed vertical tabs text alignment
+- 716b52d1: `<rh-cta>` and other elements: color context support
+- cf8ee6cb: `<rh-audio-player>`: corrected subscribe slot documentation.
+- d709896f: `<rh-cta>`: corrected layout of icon brick variant
+- d709896f: `<rh-cta>`: ensured entire CTA is clickable
+- d709896f: `<rh-cta>`: fix a style bug which affects CTA links at narrow widths
+- ff90f4d6: `<rh-footer>`: prevent an error when using footer and react in certain chrome versions
+- 44a444a5: `<rh-navigation-secondary>`: corrected navigation bar height for small and large viewports'
+
 ## 1.1.0
 
 ### Minor Changes

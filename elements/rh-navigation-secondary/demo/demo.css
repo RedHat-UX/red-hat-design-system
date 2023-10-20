@@ -26,6 +26,10 @@ body {
   background-color: black;
 }
 
+.option {
+  padding-block-end: var(--rh-space-lg, 16px);
+}
+
 rh-navigation-secondary-menu#custom-grid::part(sections) {
   display: block;
   grid: unset;

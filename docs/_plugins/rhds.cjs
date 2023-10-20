@@ -198,6 +198,10 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     return related;
   });
 
+  eleventyConfig.addFilter('makeSentenceCase', function(value) {
+    return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
+  });
+
   eleventyConfig.addCollection('elementDocs', async function(collectionApi) {
     const { pfeconfig } = eleventyConfig?.globalData ?? {};
     /**
@@ -215,6 +219,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
         capitalize(filePath.split(path.sep).pop()?.split('.').shift()?.replace(/^\d+-/, '') ?? '');
       const pageSlug = slugify(pageTitle, { strict: true, lower: true });
       /** e.g. `/elements/call-to-action/code/index.html` */
+      const overviewHref = `/elements/${slug}/`;
       const permalink =
           pageSlug === 'overview' ? `/elements/${slug}/index.html`
         : `/elements/${slug}/${pageSlug}/index.html`;
@@ -232,6 +237,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
         screenshotPath,
         permalink,
         href,
+        overviewHref
       };
     }
 

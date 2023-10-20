@@ -79,6 +79,10 @@ button:after {
   border-block-end: var(--rh-border-width-sm, 1px) solid transparent;
 }
 
+:host([vertical]) button {
+  text-align: start;
+}
+
 [part="icon"] {
   margin-inline-end: var(--rh-space-md, 8px);
 }

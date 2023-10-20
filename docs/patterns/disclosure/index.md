@@ -10,7 +10,7 @@ A Disclosure toggles the visibility of sections of content. It features one
 panel that consists of a caret icon and a section text label that collapses or 
 expands to reveal more information.
 
-## Sample component
+## Sample pattern
 
 <rh-accordion>
   <rh-accordion-header>
@@ -218,7 +218,7 @@ content is included.
 {% example palette="light",
            class="centered",
            alt="Example of a disclosure on mobile",
-           src="./disclosure-responsive-3.svg" %}
+           src="./disclosure-responsive-3.png" %}
 
 ## Interaction states
 

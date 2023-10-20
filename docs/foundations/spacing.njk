@@ -14,7 +14,8 @@ tags:
 
 {%- endcall %}
 
-{% call foundations.section("Style") -%}
+<section class="section section--palette-default container">
+  <h2 id="style" class="section-title pfe-jump-links-panel__section">Style</h2>
 
   <h3>Base increment</h3>
 
@@ -24,54 +25,12 @@ tags:
 
   <p>There are a variety of spacers available which can be used for different spacing needs, which are all divisible by 4. To keep the system simple, there’s only one scale for spacers that applies to components, patterns, and layouts. The smallest spacer is 4px and the largest is 80px. New spacers are added based on design needs, so do not create any new spacers, combine different spacers instead.</p>
 
-  <table style="width:100%;" class="spacer-table">
-    <tr>
-      <th>Variable</th>
-      <th>Amount</th>
-      <th>Example</th>
-    </tr>
-    <tr>
-      <td>--pf-global--spacer--xs</td>
-      <td>4px</td>
-      <td><img src="{{ '/assets/spacing/4px.svg' | url }}" alt="4px spacer"></td>
-    </tr>
-    <tr>
-      <td>--pf-global--spacer--sm</td>
-      <td>8px</td>
-      <td><img src="{{ '/assets/spacing/8px.svg' | url }}" alt="8px spacer"></td>
-    </tr>
-    <tr>
-      <td>--pf-global--spacer--md</td>
-      <td>16px</td>
-      <td><img src="{{ '/assets/spacing/16px.svg' | url }}" alt="16px spacer"></td>
-    </tr>
-    <tr>
-      <td>--pf-global--spacer--lg</td>
-      <td>24px</td>
-      <td><img src="{{ '/assets/spacing/24px.svg' | url }}" alt="24px spacer"></td>
-    </tr>
-    <tr>
-      <td>--pf-global--spacer--xl</td>
-      <td>32px</td>
-      <td><img src="{{ '/assets/spacing/32px.svg' | url }}" alt="32px spacer"></td>
-    </tr>
-    <tr>
-      <td>--pf-global--spacer--2xl</td>
-      <td>48px</td>
-      <td><img src="{{ '/assets/spacing/48px.svg' | url }}" alt="48px spacer"></td>
-    </tr>
-    <tr>
-      <td>--pf-global--spacer--3xl</td>
-      <td>64px</td>
-      <td><img src="{{ '/assets/spacing/64px.svg' | url }}" alt="64px spacer"></td>
-    </tr>
-    <tr>
-      <td>--pf-global--spacer--4xl</td>
-      <td>80px</td>
-      <td><img src="{{ '/assets/spacing/80px.svg' | url }}" alt="80px spacer"></td>
-    </tr>
-
-  </table>
+  {% spacerTokensTable 
+    headline="", 
+    caption="", 
+    headingLevel="4",
+    tokens="--rh-space-xs,--rh-space-sm,--rh-space-md,--rh-space-lg,--rh-space-xl,--rh-space-2xl,--rh-space-3xl,--rh-space-4xl,--rh-space-5xl,--rh-space-6xl,--rh-space-7xl"%}
+  {% endspacerTokensTable %}
 
   <h3>Applying spacers</h3>
 
@@ -79,7 +38,7 @@ tags:
 
   <img src="{{ '/assets/spacing/spacing-application-1.svg' | url }}" alt="How to apply spacing" style="">
 
-{%- endcall %}
+</section>
 
 {% call foundations.section("Typography") -%}
 
@@ -531,14 +490,7 @@ tags:
 
 {%- endcall %}
 
-<div class="multi-column--min-300-wide section section--palette-default container feedback">
-
-  {% call foundations.section("Feedback") -%}
-    <p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
-  {%- endcall %}
-
-  {% call foundations.section("Foundations") -%}
-    <p>To learn how to use our other foundations in your designs, visit the <a href="/foundations">foundations</a> section.</p>
-  {%- endcall %}
-
-</div>
+{% feedback %}
+  <h2>Foundations</h2>
+  <p>To learn how to use our other foundations in your designs, visit the <a href="/foundations">foundations</a> section.</p>
+{% endfeedback %}
