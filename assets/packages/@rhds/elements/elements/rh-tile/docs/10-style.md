@@ -86,6 +86,8 @@ Interaction states are visual representations used to communicate the status of 
 
 ### Hover 
 
+The hover state of a link tile also includes the arrow icon moving 3px to the right.
+
 {% example palette="light",
         alt="On hover, light theme tiles have a light gray background, an underlined (and sometimes darker blue) heading, a darker blue arrow icon ",
         src="../tile-states-hover-light-theme.png" %}
@@ -97,7 +99,7 @@ Interaction states are visual representations used to communicate the status of 
 ### Focus
 
 {% alert title="Helpful tip" %}
-The Focus state has the same styles as the Hover state.
+The Focus state has the same styles as the Hover state, except for the arrow icon animation.
 {% endalert %}
 
 {% example palette="light",
