@@ -1,5 +1,5 @@
-<rh-context-picker target="context-provider" value="darkest"></rh-context-picker>
-<rh-context-provider id="context-provider">
+<h2>In a container with padding</h2>
+<div class="padded">
   <rh-subnav>
     <a href="#">Users</a>
     <a href="#">Containers</a>
@@ -9,12 +9,23 @@
     <a href="#"><pf-icon slot="icon" icon="database" set="fas" size="sm"></pf-icon> Network</a>
     <a href="#">Cloud</a>
   </rh-subnav>
-</rh-context-provider>
+</div>
 
 <link rel="stylesheet" href="../rh-subnav-lightdom.css">
 
 <script type="module">
-  import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
-  import '@rhds/elements/lib/elements/rh-context-provider/rh-context-provider.js';
   import '@rhds/elements/rh-subnav/rh-subnav.js';
+  import '@patternfly/elements/pf-icon/pf-icon.js';
 </script>
+
+<style>
+  .padded {
+    padding-inline: var(--rh-space-2xl, 32px);
+  }
+
+  @media screen and (min-width: 576px) {
+    .padded {
+      padding: var(--rh-space-3xl, 48px) var(--rh-space-3xl, 48px) 0;
+    }
+  }
+</style>
