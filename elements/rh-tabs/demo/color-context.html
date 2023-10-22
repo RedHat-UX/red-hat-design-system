@@ -1,22 +1,28 @@
 <form>
-  <label>
-    <input type="radio" name="variant" value="default" checked> Default
-  </label>
-  <label>
-    <input type="radio" name="variant" value="box"> Box
-  </label>
-  <label>
-    <input type="radio" name="variant" value=""> None
-  </label>
-  <label>
-    <input type="checkbox" name="centered"> Centered
-  </label>
-  <label>
-    <input type="checkbox" name="vertical"> Vertical
-  </label>
+  <fieldset>
+    <legend>Box Layout</legend>
+    <label>
+      <input type="radio" name="variant" value=""> None
+    </label>
+    <label>
+      <input type="radio" name="variant" value="inset" checked> Inset
+    </label>
+    <label>
+      <input type="radio" name="variant" value="box"> Box
+    </label>
+  </fieldset>
+  <fieldset>
+    <legend>Layout</legend>
+    <label>
+      <input type="checkbox" name="centered"> Centered
+    </label>
+    <label>
+      <input type="checkbox" name="vertical"> Vertical
+    </label>
+  </fieldset>
+  <rh-context-picker target="context-provider" value="darkest"></rh-context-picker>
 </form>
 
-<rh-context-picker target="context-provider" value="darkest"></rh-context-picker>
 <rh-context-provider id="context-provider">
   <rh-tabs>
     <rh-tab id="users" slot="tab">Users</rh-tab>
