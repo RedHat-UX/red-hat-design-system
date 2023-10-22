@@ -105,6 +105,7 @@
       "command": "ttsc",
       "files": [
         "elements/**/*.ts",
+        "lib/**/*.css",
         "lib/**/*.ts"
       ],
       "output": [

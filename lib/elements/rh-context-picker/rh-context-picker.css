@@ -1,19 +1,69 @@
-form {
-  padding: var(--rh-space-lg, 16px);
+:host {
+  display: block;
+  width: 300px;
+  padding: 6px;
 }
 
-label {
-  display: block;
+#container {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  align-items: center;
 }
 
 datalist {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  writing-mode: vertical-lr;
+  inset: 0;
+  flex: 1 0 100%;
+  border-radius: var(--rh-border-radius-default, 3px);
+  overflow: hidden;
 }
 
-datalist,
 input {
-  width: 200px;
+  width: 100%;
+  height: 100%;
+  appearance: none;
+  background: transparent;
+  position: absolute;
+  z-index: 1;
+}
+
+label {
+  margin-inline: var(--rh-space-md, 8px);
+}
+
+input::-webkit-slider-thumb {
+  appearance: none;
+  margin-top: -14px;
+  position: relative;
+}
+
+input::-webkit-slider-thumb,
+input::-moz-range-thumb {
+  background: transparent;
+  border-radius: 3px;
+  border: 4px solid var(--rh-color-interactive-blue-darker, #0066cc);
+  box-shadow: rgb(0, 0, 0) 1px 1px 1px, rgb(13, 13, 13) 0px 0px 1px;
+  box-sizing: content-box;
+  cursor: pointer;
+  height: 100%;
+  translate: var(--offset);
+  width: calc(16.6667%);
+}
+
+option {
+  flex: 1 0 1px;
+  min-height: var(--rh-space-3xl, 48px);
+  background-color: var(--c);
+}
+
+.visually-hidden {
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }

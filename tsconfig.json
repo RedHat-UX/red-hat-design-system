@@ -65,6 +65,9 @@
     "paths": {
       "@rhds/elements/*": [
         "./elements/*"
+      ],
+      "@rhds/tokens/color.*": [
+        "./node_modules/@rhds/tokens/js/color.*"
       ]
     }
   }
