@@ -1,43 +1,25 @@
-<section>
-  <h2>Default</h2>
-  <p><rh-timestamp></rh-timestamp></p>
-</section>
+<rh-timestamp date-format="full"
+              time-format="full"></rh-timestamp>
 
-<section>
-  <h2>Basic formats</h2>
-  <p><rh-timestamp date-format="full" time-format="full"></rh-timestamp></p>
-  <p><rh-timestamp date-format="full"></rh-timestamp></p>
-  <p><rh-timestamp time-format="full"></rh-timestamp></p>
-  <p><rh-timestamp date-format="medium" time-format="short" display-suffix="US Eastern"></rh-timestamp></p>
-  <p><rh-timestamp date-format="full" locale="es"></rh-timestamp></p>
-</section>
+<rh-timestamp date-format="full"></rh-timestamp>
 
-<section>
-  <h2>Custom format</h2>
-  <p><rh-timestamp id="timestamp-custom-format" date="Sat Jan 01 2022 00:00:00 GMT-0500"></rh-timestamp></p>
 
-  <script>
-  document.getElementById('timestamp-custom-format').customFormat = {
-    year: '2-digit',
-    month: 'short',
-    weekday: 'short',
-    day: 'numeric',
-    hour: 'numeric'
-  };
-  </script>
-</section>
+<rh-timestamp time-format="full"></rh-timestamp>
 
-<section>
-  <h2>Relative formats</h2>
-  <p><rh-timestamp date="Tue Aug 09 2006 14:57:00 GMT-0400 (Eastern Daylight Time)" relative></rh-timestamp></p>
-  <p><rh-timestamp date="Tue Aug 09 2006 14:57:00 GMT-0400 (Eastern Daylight Time)" locale="es" relative></rh-timestamp></p>
-  <p><rh-timestamp date="Tue Aug 09 2022 14:57:00 GMT-0400 (Eastern Daylight Time)" relative></rh-timestamp></p>
-  <p><rh-timestamp date="Tue Aug 09 2022 14:57:00 GMT-0400 (Eastern Daylight Time)" locale="es" relative></rh-timestamp></p>
-  <p><rh-timestamp date="Tue Aug 09 2099 14:57:00 GMT-0400 (Eastern Daylight Time)" relative></rh-timestamp></p>
-  <p><rh-timestamp date="Tue Aug 09 2099 14:57:00 GMT-0400 (Eastern Daylight Time)" locale="es" relative></rh-timestamp></p>
-</section>
 
-<link rel="stylesheet" href="demo.css">
+<rh-timestamp date-format="medium"
+              time-format="short"
+              display-suffix="US Eastern"></rh-timestamp>
+
+<rh-timestamp date-format="full"
+              locale="es"></rh-timestamp>
+
 <script type="module">
   import '@rhds/elements/rh-timestamp/rh-timestamp.js';
 </script>
+
+<style>
+  rh-timestamp {
+    display: block;
+  }
+</style>
