@@ -1,5 +1,4 @@
-<rh-tile>
-  <img slot="image" src="//fakeimg.pl/296x50" alt="296 X 50 placeholder image">
+<rh-tile disabled>
   <div slot="title">Title</div>
   <h2 slot="headline"><a href="#top">Link</a></h2>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -15,5 +14,11 @@
 <style>
   [data-demo="rh-tile"] {
     margin: var(--rh-space-2xl, 32px);
+    padding-inline: var(--rh-space-2xl, 32px);
+    row-gap: var(--rh-space-2xl, 32px);
+  }
+
+  rh-tile {
+    flex: 0 0 calc(10 * var(--rh-length-2xl, 32px));
   }
 </style>

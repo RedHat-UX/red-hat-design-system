@@ -1,46 +1,58 @@
-<link rel="stylesheet" href="demo.css">
 <link rel="stylesheet" href="../rh-tile-lightdom.css">
-<script type="module" src="rh-tile.js"></script>
 
-<div id="demo-container">
-  <h2 id="compact">Compact</h2>
+<rh-tile compact>
+  <h2 slot="headline"><a href="#top">Link</a></h2>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  <div slot="footer">Suspendisse eu turpis elementum</div>
+</rh-tile>
 
-  <rh-tile compact>
-    <h2 slot="headline"><a href="#top">Link</a></h2>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    <div slot="footer">Suspendisse eu turpis elementum</div>
-  </rh-tile>
+<rh-tile compact>
+  <img slot ="icon" src="logo-red-hat.svg" alt="Red Hat">
+  <h2 slot="headline"><a href="#top">Link</a></h2>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  <div slot="footer">Suspendisse eu turpis elementum</div>
+</rh-tile>
 
-  <rh-tile compact>
-    <img slot ="icon" src="logo-red-hat.svg" alt="Red Hat">
-    <h2 slot="headline"><a href="#top">Link</a></h2>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    <div slot="footer">Suspendisse eu turpis elementum</div>
-  </rh-tile>
+<rh-tile compact>
+  <img slot ="icon" src="logo-red-hat.svg" alt="Red Hat">
+  <h2 slot="headline"><a href="#top">Link</a></h2>
+</rh-tile>
 
-  <rh-tile compact>
-    <img slot ="icon" src="logo-red-hat.svg" alt="Red Hat">
-    <h2 slot="headline"><a href="#top">Link</a></h2>
-  </rh-tile>
+<rh-tile compact bleed>
+  <img slot="image" src="//fakeimg.pl/300x50" alt="300 X 50 placeholder image">
+  <pf-icon slot="icon" icon="aws" set="fab" size="lg"></pf-icon>
+  <h2 slot="headline"><a href="#top">Link</a></h2>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  <div slot="footer">Suspendisse eu turpis elementum</div>
+</rh-tile>
 
-  <rh-tile compact bleed>
-    <img slot="image" src="//fakeimg.pl/300x50" alt="300 X 50 placeholder image">
-    <pf-icon slot="icon" icon="aws" set="fab" size="lg"></pf-icon>
-    <h2 slot="headline"><a href="#top">Link</a></h2>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    <div slot="footer">Suspendisse eu turpis elementum</div>
-  </rh-tile>
+<rh-tile compact>
+  <img slot="image" src="//fakeimg.pl/296x50" alt="300 X 50 placeholder image">
+  <h2 slot="headline"><a href="#top">Link</a></h2>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  <div slot="footer">Suspendisse eu turpis elementum</div>
+</rh-tile>
 
-  <rh-tile compact>
-    <img slot="image" src="//fakeimg.pl/296x50" alt="300 X 50 placeholder image">
-    <h2 slot="headline"><a href="#top">Link</a></h2>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    <div slot="footer">Suspendisse eu turpis elementum</div>
-  </rh-tile>
+<rh-tile compact bleed>
+  <a href="#top" slot="image">
+    <img src="//fakeimg.pl/300x50" alt="300 X 50 placeholder image">
+  </a>
+</rh-tile>
 
-  <rh-tile compact bleed>
-    <a href="#top" slot="image">
-      <img src="//fakeimg.pl/300x50" alt="300 X 50 placeholder image">
-    </a>
-  </rh-tile>
-</div>
+<script type="module">
+  import '@rhds/elements/rh-tile/rh-tile.js';
+</script>
+
+<link rel="stylesheet" href="../rh-tile-lightdom.css">
+
+<style>
+  [data-demo="rh-tile"] {
+    margin: var(--rh-space-2xl, 32px);
+    padding-inline: var(--rh-space-2xl, 32px);
+    row-gap: var(--rh-space-2xl, 32px);
+  }
+
+  rh-tile {
+    flex: 0 0 calc(10 * var(--rh-length-2xl, 32px));
+  }
+</style>
