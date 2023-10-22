@@ -31,17 +31,18 @@
 </rh-alert>
 
 <script type="module">
+  /* eslint-disable no-console */
   import { AlertCloseEvent } from '@rhds/elements/rh-alert/rh-alert.js';
   document.body.addEventListener('close', event => {
     if (event instanceof AlertCloseEvent) {
       if (event.target.dataset.onClose === 'prevent-default') {
-        console.log('prevent default')
+        console.log('prevent default');
         event.preventDefault();
       } else {
         return console.log('close');
       }
     }
-  })
+  });
 </script>
 
 <style>

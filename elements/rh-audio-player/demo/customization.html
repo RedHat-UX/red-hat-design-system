@@ -477,8 +477,8 @@
   function updateDemo() {
     const data = new FormData(form);
     const values = Object.fromEntries(data.entries());
-    const poster = !!values.poster
-    const { custom, palette, layout } = values
+    const poster = !!values.poster;
+    const { custom, palette, layout } = values;
     const colorClass = custom || '';
     const colorPalette = colorClass === 'cyan' ? 'light' : palette;
     player.poster = !values.poster || colorClass === 'purple img' ? undefined : "https://www.redhat.com/cms/managed-files/CLH-S7-ep1.png";
