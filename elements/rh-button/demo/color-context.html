@@ -1,7 +1,3 @@
-<link rel="stylesheet" href="demo.css">
-<script type="module" src="rh-button.js"></script>
-<script type="module" src="color-context.js"></script>
-
 <template id="template">
   <rh-button danger>Danger</rh-button>
   <rh-button>Primary</rh-button>
@@ -20,3 +16,22 @@
 <rh-context-provider color-palette="dark"></rh-context-provider>
 <rh-context-provider color-palette="darker"></rh-context-provider>
 <rh-context-provider color-palette="darkest"></rh-context-provider>
+
+<script type="module">
+  import '@rhds/elements/rh-button/rh-button.js';
+  for (const provider of document.querySelectorAll('rh-context-provider')) {
+    provider.append(document.getElementById('template').content.cloneNode(true));
+  }
+</script>
+
+
+<style>
+  [data-demo="rh-buton"],
+  rh-context-provider {
+    display: flex;
+    align-items: center;
+    flex-flow: row wrap;
+    gap: var(--rh-space-sm, 6px);
+    padding: var(--rh-space-xl, 24px) var(--rh-space-4xl, 64px);
+  }
+</style>

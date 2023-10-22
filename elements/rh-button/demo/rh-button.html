@@ -1,15 +1,15 @@
-<link rel="stylesheet" href="demo.css">
-<script type="module" src="rh-button.js"></script>
+<rh-button>Primary</rh-button>
 
-<section>
-  <h2>Variants</h2>
-  <rh-button danger>Danger</rh-button>
-  <rh-button>Primary</rh-button>
-  <rh-button variant="link">Link</rh-button>
-  <rh-button variant="secondary">Secondary</rh-button>
-  <rh-button variant="secondary" danger>Secondary Danger</rh-button>
-  <rh-button variant="tertiary">Tertiary</rh-button>
-  <rh-button variant="close">Close</rh-button>
-  <rh-button variant="play">Play</rh-button>
-  <rh-button disabled>Disabled</rh-button>
-</section>
+<script type="module">
+  import '@rhds/elements/rh-button/rh-button.js';
+</script>
+
+<style>
+  [data-demo="rh-buton"] {
+    display: flex;
+    align-items: center;
+    flex-flow: row wrap;
+    gap: var(--rh-space-sm, 6px);
+    padding: var(--rh-space-xl, 24px) var(--rh-space-4xl, 64px);
+  }
+</style>
