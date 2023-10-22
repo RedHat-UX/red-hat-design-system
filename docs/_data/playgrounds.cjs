@@ -162,7 +162,14 @@ module.exports = async function(data) {
       }
 
       const files = Object.fromEntries(fileMap.entries());
-      playgroundConfigsMap.set(primaryElementName, { files });
+      playgroundConfigsMap.set(primaryElementName, {
+        files,
+        importMap: {
+          imports: {
+            '@rhds/elements/': 'https://ux.redhat.com/assets/packages/@rhds/elements/'
+          }
+        }
+      });
     }
   }
   const config = Object.fromEntries(playgroundConfigsMap.entries());
