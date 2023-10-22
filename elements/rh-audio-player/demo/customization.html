@@ -469,7 +469,6 @@
   import '@rhds/elements/rh-audio-player/rh-audio-player.js';
   const form = document.querySelector('form');
   const player = document.querySelector('rh-audio-player');
-  const opposites = { dark: 'light', light: 'dark' };
 
   /**
    * update audio player demo based on form selections
@@ -477,15 +476,16 @@
   function updateDemo() {
     const data = new FormData(form);
     const values = Object.fromEntries(data.entries());
-    const poster = !!values.poster;
     const { custom, palette, layout } = values;
     const colorClass = custom || '';
     const colorPalette = colorClass === 'cyan' ? 'light' : palette;
-    player.poster = !values.poster || colorClass === 'purple img' ? undefined : "https://www.redhat.com/cms/managed-files/CLH-S7-ep1.png";
     player.layout = layout || undefined;
     player.colorPalette = colorPalette;
     player.className = colorClass;
     player.hasAccentColor = palette.match(/^(cyan|purple)/);
+    player.poster =
+          !values.poster || colorClass === 'purple img' ? undefined
+        : 'https://www.redhat.com/cms/managed-files/CLH-S7-ep1.png';
   }
 
   form.addEventListener('input', updateDemo);
