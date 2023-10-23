@@ -75,9 +75,7 @@ module.exports = async function(data) {
   const Tools = await import('@parse5/tools');
 
   function append(node, ...nodes) {
-
-      Tools.spliceChildren(node, Infinity, 0, ...nodes);
-
+    Tools.spliceChildren(node, Infinity, 0, ...nodes);
   }
 
   const demoManifests = groupBy('primaryElementName', data.demos);
