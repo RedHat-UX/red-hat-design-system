@@ -1,80 +1,30 @@
-<rh-context-picker target="context-provider"></rh-context-picker>
+<rh-context-demo>
+  <rh-avatar>George Boole
+    <span slot="subtitle">Professor of Mathematics, </span>
+    <a slot="subtitle"
+       href="https://www.wikiwand.com/en/Queen's_College,_Cork">Queen's College, Cork</a>
+  </rh-avatar>
+  <rh-avatar name="John von Neumann"
+             subtitle="Mathematician"
+             plain></rh-avatar>
+  <rh-avatar name="Grace Hopper"
+             subtitle="Rear Admiral"
+             src="hopper.jpg"
+             plain></rh-avatar>
+  <rh-avatar name="Haskell Curry"
+             subtitle="Computer Scientist"
+             pattern="squares"
+             plain></rh-avatar>
+  <rh-avatar name="Edsger Dijkstra"
+             subtitle="Computer Scientist"
+             pattern="triangles"
+             plain></rh-avatar>
+</rh-context-demo>
 
-<rh-context-provider id="context-provider">
-  <figure>
-    <figcaption>Default</figcaption>
-    <rh-avatar name="Omar Khayyam"
-               subtitle="Mathematician, Astronomer"></rh-avatar>
-  </figure>
-
-  <figure>
-    <figcaption>Position Below</figcaption>
-    <rh-avatar name="Ada Lovelace"
-               subtitle="Computer Programmer"
-               layout="block"></rh-avatar>
-  </figure>
-
-  <figure>
-    <figcaption>With link</figcaption>
-    <rh-avatar>George Boole
-      <span slot="subtitle">Professor of Mathematics, </span>
-      <a slot="subtitle"
-         href="https://www.wikiwand.com/en/Queen's_College,_Cork">Queen's College, Cork</a>
-    </rh-avatar>
-  </figure>
-
-
-  <figure>
-    <figcaption>Long Subtitle</figcaption>
-    <rh-avatar src="schoenfinkel.jpg">Moses Schoenfinkle
-      <span slot="subtitle">
-        Inventor of Combinatorics,
-        often uncreditted for inventing the process of "currying" functions,
-        however, "schoenfinkling" doesn't exactly roll off the tongue, so we'll
-        let it slide
-      </span>
-    </rh-avatar>
-  </figure>
-
-
-  <figure>
-    <figcaption>Squares pattern</figcaption>
-    <rh-avatar name="Alonzo Church"
-               subtitle="Inventor of the Lambda Calculus"
-               pattern="squares"></rh-avatar>
-  </figure>
-
-  <figure>
-    <figcaption>Triangles pattern</figcaption>
-    <rh-avatar name="Alan Turing"
-               subtitle="Cryptographer"
-               pattern="triangles"></rh-avatar>
-  </figure>
-
-  <figure>
-    <figcaption>Plain</figcaption>
-    <rh-avatar name="John von Neumann"
-               subtitle="Mathematician"
-               plain></rh-avatar>
-    <rh-avatar name="Grace Hopper"
-               subtitle="Rear Admiral"
-               src="hopper.jpg"
-               plain></rh-avatar>
-    <rh-avatar name="Haskell Curry"
-               subtitle="Computer Scientist"
-               pattern="squares"
-               plain></rh-avatar>
-    <rh-avatar name="Edsger Dijkstra"
-               subtitle="Computer Scientist"
-               pattern="triangles"
-               plain></rh-avatar>
-  </figure>
-</rh-context-provider>
 
 <link rel="stylesheet" href="demo.css">
 <script type="module">
   import '@rhds/elements/rh-avatar/rh-avatar.js';
-  import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
-  import '@rhds/elements/lib/elements/rh-context-provider/rh-context-provider.js';
+  import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
 </script>
 

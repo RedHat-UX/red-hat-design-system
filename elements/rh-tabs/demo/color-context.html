@@ -1,29 +1,28 @@
-<form>
-  <fieldset>
-    <legend>Box Layout</legend>
-    <label>
-      <input type="radio" name="variant" value=""> None
-    </label>
-    <label>
-      <input type="radio" name="variant" value="inset" checked> Inset
-    </label>
-    <label>
-      <input type="radio" name="variant" value="box"> Box
-    </label>
-  </fieldset>
-  <fieldset>
-    <legend>Layout</legend>
-    <label>
-      <input type="checkbox" name="centered"> Centered
-    </label>
-    <label>
-      <input type="checkbox" name="vertical"> Vertical
-    </label>
-  </fieldset>
-  <rh-context-picker target="context-provider" value="darkest"></rh-context-picker>
-</form>
+<rh-context-demo>
+  <form>
+    <fieldset>
+      <legend>Box Layout</legend>
+      <label>
+        <input type="radio" name="variant" value=""> None
+      </label>
+      <label>
+        <input type="radio" name="variant" value="inset" checked> Inset
+      </label>
+      <label>
+        <input type="radio" name="variant" value="box"> Box
+      </label>
+    </fieldset>
+    <fieldset>
+      <legend>Layout</legend>
+      <label>
+        <input type="checkbox" name="centered"> Centered
+      </label>
+      <label>
+        <input type="checkbox" name="vertical"> Vertical
+      </label>
+    </fieldset>
+  </form>
 
-<rh-context-provider id="context-provider">
   <rh-tabs>
     <rh-tab id="users" slot="tab">Users</rh-tab>
     <rh-tab-panel>Users</rh-tab-panel>
@@ -36,26 +35,22 @@
     <rh-tab slot="tab">Cloud</rh-tab>
     <rh-tab-panel>Cloud</rh-tab-panel>
   </rh-tabs>
-</rh-context-provider>
+</rh-context-demo>
 
 <script type="module">
-  import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
-  import '@rhds/elements/lib/elements/rh-context-provider/rh-context-provider.js';
   import '@rhds/elements/rh-tabs/rh-tabs.js';
   import '@patternfly/elements/pf-icon/pf-icon.js';
+  import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
 
   const form = document.querySelector('form');
   const tabs = document.querySelector('rh-tabs');
 
-  function sync(event) {
+  form.addEventListener('input', function sync(event) {
     event?.preventDefault();
     const data = Object.fromEntries(new FormData(form));
     tabs.box = data.variant || undefined;
     tabs.centered = 'centered' in data;
     tabs.vertical = 'vertical' in data;
-  }
-
-  form.addEventListener('input', sync);
-
+  });
 </script>
 

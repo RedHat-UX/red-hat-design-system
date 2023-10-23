@@ -1,6 +1,5 @@
-<rh-context-picker target="context-provider"></rh-context-picker>
-
-<rh-context-provider id="context-provider" color-palette="darkest">
+<rh-context-demo>
+  <p>Dialog is available in the light theme <strong>only</strong></p>
   <rh-dialog trigger="context-trigger">
     <h2 slot="header">Color Context</h2>
     <p>Lorem ipsum dolor sit amet, <a href="#foo">consectetur adipisicing</a> elit, sed do eiusmod tempor
@@ -21,14 +20,13 @@
       <a href="#bar">Learn more</a>
     </rh-cta>
   </rh-dialog>
-  <rh-button id="context-trigger" slot="footer">Open Dialog</rh-button>
-</rh-context-provider>
+  <rh-button id="context-trigger">Open Dialog</rh-button>
+</rh-context-demo>
 
 <script type="module">
   import '@rhds/elements/rh-button/rh-button.js';
   import '@rhds/elements/rh-cta/rh-cta.js';
   import '@rhds/elements/rh-dialog/rh-dialog.js';
-  import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
-  import '@rhds/elements/lib/elements/rh-context-provider/rh-context-provider.js';
+  import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
 </script>
 
