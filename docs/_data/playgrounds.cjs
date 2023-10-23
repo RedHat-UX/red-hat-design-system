@@ -161,7 +161,7 @@ module.exports = async function(data) {
       // HACK: https://github.com/google/playground-elements/issues/93#issuecomment-1775247123
       const modules = Tools.queryAll(fragment, node => Tools.isElementNode(node) && isModuleScript(node));
       Array.from(modules).forEach((el, i) => {
-        const moduleName = `demo/${primaryElementName}-${demoSlug}-inline-script-${i++}.js`;
+        const moduleName = `demo/${primaryElementName}-${demoSlug.replace('.html', '')}-inline-script-${i++}.js`;
         append(
           fragment,
           Tools.createCommentNode('playground-hide'),
