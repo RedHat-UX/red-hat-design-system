@@ -69,9 +69,6 @@
       "@rhds/elements/lib/*": [
         "./lib/*"
       ],
-      "@rhds/elements/lib/elements/*.js": [
-        "./lib/elements/*.ts"
-      ],
       "@rhds/tokens/color.*": [
         "./node_modules/@rhds/tokens/js/color.*"
       ]
