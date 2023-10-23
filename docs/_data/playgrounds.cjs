@@ -165,7 +165,7 @@ module.exports = async function(data) {
           Tools.createCommentNode('playground-hide'),
           Tools.createElement('script', {
             type: 'module',
-            src: `./${moduleName}`,
+            src: `./${demoSlug === 'index.html' ? '' : `${demoSlug}/`}${moduleName}`,
           }),
           Tools.createTextNode('\n\n'),
           Tools.createCommentNode('playground-hide-end'),
