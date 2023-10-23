@@ -161,19 +161,19 @@ module.exports = async function(data) {
       // HACK: https://github.com/google/playground-elements/issues/93#issuecomment-1775247123
       const modules = Tools.queryAll(fragment, node => Tools.isElementNode(node) && isModuleScript(node));
       Array.from(modules).forEach((el, i) => {
-        const moduleName = `demo/${primaryElementName}-${demoSlug.replace('.html', '')}-inline-script-${i++}.js`;
+        const moduleName = `${primaryElementName}-${demoSlug.replace('.html', '')}-inline-script-${i++}.js`;
         append(
           fragment,
           Tools.createCommentNode('playground-hide'),
           Tools.createElement('script', {
             type: 'module',
-            src: `./${moduleName}`,
+            src: `./${demoSlug === 'index.html' ? 'demo/' : ''}${moduleName}`,
           }),
           Tools.createTextNode('\n\n'),
           Tools.createCommentNode('playground-hide-end'),
         );
 
-        fileMap.set(moduleName, {
+        fileMap.set(`demo/${moduleName}`, {
           contentType: 'application/javascript',
           content: el.childNodes.map(x => x.value).join('\n'),
           hidden: true,
