@@ -74,6 +74,12 @@ module.exports = async function(data) {
   const { parseFragment, serialize } = await import('parse5');
   const Tools = await import('@parse5/tools');
 
+  function append(node, ...nodes) {
+
+      Tools.spliceChildren(node, Infinity, 0, ...nodes);
+
+  }
+
   const demoManifests = groupBy('primaryElementName', data.demos);
 
   const playgroundConfigsMap = new Map();
@@ -95,10 +101,8 @@ module.exports = async function(data) {
 
       const baseCssPathPrefix = demo.filePath.match(DEMO_FILEPATH_IS_MAIN_DEMO_RE) ? '' : '../';
 
-      Tools.spliceChildren(
+      append(
         fragment,
-        Infinity,
-        0,
         Tools.createCommentNode('playground-fold'),
         Tools.createElement('link', {
           rel: 'stylesheet',
@@ -121,8 +125,6 @@ module.exports = async function(data) {
         content: baseCssSource,
         hidden: true,
       });
-
-      let content = demoPaths(serialize(fragment), demo.filePath);
 
       const modulesAndLinks = Tools.queryAll(fragment, node =>
         Tools.isElementNode(node) &&
@@ -160,11 +162,17 @@ module.exports = async function(data) {
       const modules = Tools.queryAll(fragment, node => Tools.isElementNode(node) && isModuleScript(node));
       Array.from(modules).forEach((el, i) => {
         const moduleName = `demo/${primaryElementName}-${demoSlug}-inline-script-${i++}.js`;
-        content += `
-<!-- playground-hide -->
-<script type="module" src="./${moduleName}></script>
-<!-- playground-hide-end -->
-`;
+        append(
+          fragment,
+          Tools.createCommentNode('playground-hide'),
+          Tools.createElement('script', {
+            type: 'module',
+            src: `./${moduleName}`,
+          }),
+          Tools.createTextNode('\n\n'),
+          Tools.createCommentNode('playground-hide-end'),
+        );
+
         fileMap.set(moduleName, {
           contentType: 'application/javascript',
           content: el.childNodes.map(x => x.value).join('\n'),
@@ -175,7 +183,7 @@ module.exports = async function(data) {
       fileMap.set(filename, {
         contentType: 'text/html',
         selected: isMainDemo,
-        content,
+        content: demoPaths(serialize(fragment), demo.filePath),
         label: demo.title,
       });
 
