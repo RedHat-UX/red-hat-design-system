@@ -1,10 +1,20 @@
-import { BaseLabel } from '@patternfly/elements/pf-label/BaseLabel.js';
+import { LitElement } from 'lit';
 import '@patternfly/elements/pf-icon/pf-icon.js';
-export type TagColor = ('blue' | 'cyan' | 'green' | 'orange' | 'purple' | 'red' | 'grey');
 /**
  * A tag is a caption added to an element for better clarity and user convenience.
  *
  * @summary  Highlights an element to add clarity or draw attention
+ *
+ * @fires close - when a removable label's close button is clicked
+ *
+ * @slot icon
+ *       Contains the labels's icon, e.g. web-icon-alert-success.
+ *
+ * @slot
+ *       Must contain the text for the label.
+ *
+ * @csspart icon - container for the label icon
+ *
  * @cssprop  {<length>} --rh-tag-margin-inline-end
  *           The margin at the end of the direction parallel to the flow of the text.
  *           {@default 4px}
@@ -23,23 +33,19 @@ export type TagColor = ('blue' | 'cyan' | 'green' | 'orange' | 'purple' | 'red' 
  * @cssprop --pf-icon--size
  *
  */
-export declare class RhTag extends BaseLabel {
+export declare class RhTag extends LitElement {
+    #private;
     static readonly styles: import("lit").CSSResult[];
     /** The icon to display in the label. */
     icon?: string;
     /** The variant of the label. */
     variant?: 'filled' | 'outline';
     /** The color of the label. */
-    color?: TagColor;
+    color?: 'blue' | 'cyan' | 'green' | 'orange' | 'purple' | 'red' | 'grey';
     private on?;
-    /**
-     * RhIcon does not yet exist, so we are using pfe-icon until available
-     * <rh-icon ?hidden=${!this.icon} icon=${this.icon} set="${this.set}" size="sm"></rh-icon>
-     */
-    protected renderDefaultIcon(): import("lit-html").TemplateResult<1> | "";
     render(): import("lit-html").TemplateResult<1>;
-    protected renderSuffix(): import("lit-html").TemplateResult<1>;
 }
+export type TagColor = RhTag['color'];
 declare global {
     interface HTMLElementTagNameMap {
         'rh-tag': RhTag;
