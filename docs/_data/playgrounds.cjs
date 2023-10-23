@@ -1,3 +1,4 @@
+const { warn } = require('node:console');
 const fs = require('node:fs/promises');
 const path = require('node:path');
 const url = require('node:url');
@@ -56,8 +57,7 @@ function demoPaths(content, pathname) {
 function isModuleScript(node) {
   return (
     node.tagName === 'script' &&
-    node.attrs.some(x => x.name === 'type' && x.value === 'module') &&
-    node.attrs.some(x => x.name === 'src')
+    node.attrs.some(x => x.name === 'type' && x.value === 'module')
   );
 }
 
@@ -122,12 +122,7 @@ module.exports = async function(data) {
         hidden: true,
       });
 
-      fileMap.set(filename, {
-        contentType: 'text/html',
-        selected: isMainDemo,
-        content: demoPaths(serialize(fragment), demo.filePath),
-        label: demo.title,
-      });
+      let content = demoPaths(serialize(fragment), demo.filePath);
 
       const modulesAndLinks = Tools.queryAll(fragment, node =>
         Tools.isElementNode(node) &&
@@ -139,7 +134,7 @@ module.exports = async function(data) {
         const isLink = el.tagName === 'link';
         const attrs = Object.fromEntries(el.attrs.map(({ name, value }) => [name, value]));
         const subresourceURL = isLink ? attrs.href : attrs.src;
-        if (!subresourceURL.startsWith('http')) {
+        if (subresourceURL && !subresourceURL.startsWith('http')) {
           const subresourceFileURL = !subresourceURL.startsWith('/')
             // non-tabular tern
             // eslint-disable-next-line operator-linebreak
@@ -160,6 +155,29 @@ module.exports = async function(data) {
           }
         }
       }
+
+      // HACK: https://github.com/google/playground-elements/issues/93#issuecomment-1775247123
+      const modules = Tools.queryAll(fragment, node => Tools.isElementNode(node) && isModuleScript(node));
+      Array.from(modules).forEach((el, i) => {
+        const moduleName = `demo/${primaryElementName}-${demoSlug}-inline-script-${i++}.js`;
+        content += `
+<!-- playground-hide -->
+<script type="module" src="./${moduleName}></script>
+<!-- playground-hide-end -->
+`;
+        fileMap.set(moduleName, {
+          contentType: 'application/javascript',
+          content: el.childNodes.map(x => x.value).join('\n'),
+          hidden: true,
+        });
+      });
+
+      fileMap.set(filename, {
+        contentType: 'text/html',
+        selected: isMainDemo,
+        content,
+        label: demo.title,
+      });
 
       const files = Object.fromEntries(fileMap.entries());
       playgroundConfigsMap.set(primaryElementName, {
