@@ -5,7 +5,8 @@ import { classMap } from 'lit/directives/class-map.js';
 
 import { type ColorPalette } from '../../context/color/provider.js';
 import { ContextChangeEvent } from '../rh-context-picker/rh-context-picker.js';
-import '../rh-context-provider/rh-context-provider.js';
+
+import '@rhds/elements/lib/elements/rh-context-provider/rh-context-provider.js';
 
 import style from './rh-context-demo.css';
 

@@ -9,7 +9,7 @@ import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
 import styles from './rh-dialog.css';
 
-import '../../lib/elements/rh-context-provider/rh-context-provider.js';
+import '@rhds/elements/lib/elements/rh-context-provider/rh-context-provider.js';
 
 async function pauseYoutube(iframe: HTMLIFrameElement) {
   const { pauseVideo } = await import('./yt-api.js');
