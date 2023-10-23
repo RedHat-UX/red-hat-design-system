@@ -94,3 +94,4 @@ $RECYCLE.BIN/
 *.lnk
 
 !declaration.d.ts
+docs/assets/playgrounds/rh-playground.js
