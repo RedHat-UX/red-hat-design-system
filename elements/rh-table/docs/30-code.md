@@ -2,7 +2,7 @@
 
 ## Usage
 
-{% alert state="warning", title="Warning" %} Ensure that the table follows the recommendations on the [accessibility tab](./accessibility) so that the table works with assistive technology. {% endalert %}
+{% alert state="warning", title="Warning" %} Ensure that the table follows the recommendations on the [accessibility tab](../accessibility) so that the table works with assistive technology. {% endalert %}
 
 ### Title
 
