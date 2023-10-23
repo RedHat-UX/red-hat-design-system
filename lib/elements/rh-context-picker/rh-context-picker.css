@@ -53,6 +53,7 @@ input.darker,
 input.darkest {
   --thumb-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
 }
+
 input:is(.dark, .darker, .darkest):is(:focus, :hover) {
   --thumb-color: var(--rh-color-interactive-blue-lightest, #bee1f4);
 }
