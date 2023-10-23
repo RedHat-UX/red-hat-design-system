@@ -51,7 +51,7 @@
     "docs": "wireit",
     "site": "npm run docs",
     "🧪-TEST": "❓ Test packages",
-    "test": "wtr --group default",
+    "test": "wireit",
     "test:ci": "wtr",
     "test:watch": "wtr --watch --group default",
     "test:vue": "wtr --watch --group with-vue",
@@ -99,6 +99,12 @@
         "compile",
         "bundle",
         "docs"
+      ]
+    },
+    "test": {
+      "command": "wtr --group default",
+      "dependencies": [
+        "build"
       ]
     },
     "compile": {
