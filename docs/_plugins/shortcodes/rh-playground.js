@@ -51,7 +51,7 @@ class RhPlayground extends LitElement {
           <rh-tab slot="tab" ?active="${(this.activeIndex ?? 0) === i}">${label}</rh-tab>`)}
         </rh-tabs>
         <playground-file-editor filename="${this.filename}"></playground-file-editor>
-        <playground-preview filename="${this.filename}"></playground-preview>
+        <playground-preview .htmlFile="${this.filename}"></playground-preview>
       </playground-project>
     `;
   }
