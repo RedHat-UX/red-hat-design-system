@@ -16,7 +16,9 @@ class RhPlayground extends LitElement {
     loading: { type: Boolean, state: true },
     showing: { type: Boolean, state: true },
     tagName: { attribute: 'tag-name' },
-    activeTab: { state: true },
+    activeIndex: { state: true },
+    demos: { state: true },
+    filename: { state: true },
   };
 
   constructor() {
@@ -29,15 +31,13 @@ class RhPlayground extends LitElement {
     this.tabBar; // ?: PlaygroundTabBar | null;
     this.fileEditor; // ?: PlaygroundFileEditor | null;
     this.preview; // ?: PlaygroundPreview | null;
-    this.activeTab;
+    this.filename;
+    this.activeIndex;
+    this.demos = [];
   }
 
   render() {
     const { showing, loading } = this;
-    const demos = Object.entries(this.project?.config.files ?? {})
-      .filter(([, { contentType }]) => contentType.startsWith('text/html'))
-      .map(([filename, { label }]) => ({ filename, label }));
-    const activeIndex = demos.findIndex(x => x.filename === this.activeTab?.dataset.filename);
     return html`
       <div id="snippet" class="${classMap({ showing, loading })}">
         <slot></slot>
@@ -47,12 +47,13 @@ class RhPlayground extends LitElement {
       <playground-project ?hidden="${!showing}"
                           @filesChanged="${() => this.requestUpdate()}">
         <rh-tabs @expand="${this.onTab}"
-                 active-index="${ifDefined(this.project?.config.files && activeIndex)}">${demos.map(({ filename, label }) => html`
-          <rh-tab slot="tab"
-                  data-filename="${filename}">${label}</rh-tab>`)}
+                 active-index="${ifDefined(this.activeIndex)}">${this.demos.map(({ label }) => html`
+          <rh-tab slot="tab">${label}</rh-tab>`)}
         </rh-tabs>
-        <playground-file-editor @click="${this.onChange}" @keydown="${this.onChange}"></playground-file-editor>
-        <playground-preview></playground-preview>
+        <playground-file-editor .htmlFile="${this.filename}"
+                                @click="${this.onChange}"
+                                @keydown="${this.onChange}"></playground-file-editor>
+        <playground-preview .htmlFile="${this.filename}"></playground-preview>
       </playground-project>
     `;
   }
@@ -71,7 +72,6 @@ class RhPlayground extends LitElement {
 
   onTab(event) {
     this.switch(event.tab.dataset.filename);
-    this.activeTab = event.tab;
   }
 
   onChange(event) {
@@ -79,9 +79,12 @@ class RhPlayground extends LitElement {
   }
 
   switch(filename) {
-    if (filename && this.preview && this.fileEditor) {
-      this.preview.htmlFile = filename;
-      this.fileEditor.filename = filename;
+    this.filename = filename ?? undefined;
+    if (this.filename) {
+      this.demos = Object.entries(this.project?.config.files ?? {})
+        .filter(([, { contentType }]) => contentType.startsWith('text/html'))
+        .map(([filename, { label }]) => ({ filename, label }));
+      this.activeIndex = this.demos.findIndex(x => x.filename === this.filename);
     }
   }
 
