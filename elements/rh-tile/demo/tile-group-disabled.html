@@ -27,26 +27,15 @@
 <link rel="stylesheet" href="../rh-tile-lightdom.css">
 
 <style>
-[data-demo="rh-tile"] {
-  margin: var(--rh-space-2xl, 32px);
-  padding-inline: var(--rh-space-2xl, 32px);
-  row-gap: var(--rh-space-2xl, 32px);
-}
+  rh-tile-group {
+    display: flex;
+    align-items: top;
+    flex-wrap: wrap;
+    column-gap: var(--rh-space-2xl, 32px);
+    row-gap: var(--rh-space-2xl, 32px);
+  }
 
-rh-tile-group {
-  display: flex;
-  align-items: top;
-  flex-wrap: wrap;
-  column-gap: var(--rh-space-2xl, 32px);
-  row-gap: var(--rh-space-2xl, 32px);
-}
-
-h2:not(rh-tile > h2), rh-tile-group {
-  flex: 1 0 100%;
-  margin: 0;
-}
-
-rh-tile {
-  flex: 0 0 calc(10 * var(--rh-length-2xl, 32px));
-}
+  rh-tile {
+    width: 320px;
+  }
 </style>

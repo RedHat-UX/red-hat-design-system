@@ -1,4 +1,4 @@
-<rh-tile-group>
+<rh-tile-group radio disabled>
   <rh-tile checked>
     <h2 slot="headline">Headline</h2>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -12,7 +12,6 @@
   </rh-tile>
 
   <rh-tile>
-    <div slot="title">Title</div>
     <h2 slot="headline">Headline</h2>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     <div slot="footer">Suspendisse eu turpis elementum</div>
@@ -20,6 +19,8 @@
 </rh-tile-group>
 
 <script type="module">
+  import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+  import '@rhds/elements/lib/elements/rh-context-provider/rh-context-provider.js';
   import '@rhds/elements/rh-tile/rh-tile-group.js';
 </script>
 
