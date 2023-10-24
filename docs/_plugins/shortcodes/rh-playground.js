@@ -1,70 +1,15 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 
 import 'playground-elements';
 import '@rhds/elements/rh-button/rh-button.js';
 import '@rhds/elements/rh-spinner/rh-spinner.js';
+import '@rhds/elements/rh-tabs/rh-tabs.js';
+
+import style from './rh-playground.css.js';
 
 class RhPlayground extends LitElement {
-  static styles = css`
-    :host {
-      position: relative;
-      display: block;
-
-      --_max-height: 785px;
-    }
-
-    ::slotted(pre) {
-      max-height:  var(--_max-height);
-      margin: 0 !important;
-    }
-
-    [hidden],
-    div.showing {
-      display: none !important;
-    }
-
-    div {
-      max-height: var(--_max-height);
-      overflow-y: scroll;
-    }
-
-    rh-button {
-      position: absolute;
-      inset-block-end: 5px;
-      inset-inline-end: 5px;
-      display: block;
-    }
-
-    rh-spinner {
-      opacity: 0;
-      transition: opacity 0.5s ease;
-      position: absolute;
-      inset-block-start: 50%;
-      inset-inline-start: 50%;
-      transform: translateY(-50%) translateX(-50%);
-    }
-
-    .loading rh-spinner {
-      opacity: 1;
-    }
-
-    .loading ::slotted(pre) {
-      opacity: .3;
-    }
-
-    playground-project {
-      display: block;
-      border: var(--rh-border-width-md, 2px) solid var(--rh-color-border-subtle-on-light, #c7c7c7);
-      border-radius: var(--rh-border-radius-default, 3px);
-      overflow: hidden;
-    }
-
-    playground-preview {
-      resize: vertical;
-      overflow: hidden;
-    }
-  `;
+  static styles = [style];
 
   static properties = {
     loading: { type: Boolean, state: true },
@@ -86,14 +31,20 @@ class RhPlayground extends LitElement {
 
   render() {
     const { showing, loading } = this;
+    const demos = Object.entries(this.project?.config.files ?? {})
+      .filter(([, { contentType }]) => contentType.startsWith('text/html'))
+      .map(([filename, { label }]) => ({ filename, label }));
     return html`
       <div id="snippet" class="${classMap({ showing, loading })}">
         <slot></slot>
         <rh-spinner>Loading demo...</rh-spinner>
       </div>
       <rh-button ?hidden="${showing}" @click="${this.load}">Load Demo</rh-button>
-      <playground-project ?hidden="${!showing}">
-        <playground-tab-bar @click="${this.onChange}"></playground-tab-bar>
+      <playground-project ?hidden="${!showing}"
+                          @filesChanged="${() => this.requestUpdate()}">
+        <rh-tabs @expand="${this.onChange}">${demos.map(({ filename, label }) => html`
+          <rh-tab slot="tab" data-filename="${filename}">${label}</rh-tab>`)}
+        </rh-tabs>
         <playground-file-editor @click="${this.onChange}" @keydown="${this.onChange}"></playground-file-editor>
         <playground-preview></playground-preview>
       </playground-project>
@@ -113,9 +64,8 @@ class RhPlayground extends LitElement {
   }
 
   onChange(event) {
-    if (event.target === this.tabBar) {
-      // @ts-expect-error: need a better way to handle this, but works for now
-      this.switch((event.target)._activeFileName);
+    if (event.constructor.name === 'TabExpandEvent') {
+      this.switch(event.active.dataset.filename);
     } else {
       this.switch((event.target).filename);
     }
@@ -134,6 +84,7 @@ class RhPlayground extends LitElement {
     const { configure } = await import(`/assets/playgrounds/${this.tagName}-playground.js`);
     configure(this.project);
     await import('playground-elements');
+    this.requestUpdate();
     this.show();
   }
 
