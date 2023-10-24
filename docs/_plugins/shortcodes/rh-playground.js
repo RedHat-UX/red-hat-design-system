@@ -16,7 +16,6 @@ class RhPlayground extends LitElement {
     loading: { type: Boolean, state: true },
     showing: { type: Boolean, state: true },
     tagName: { attribute: 'tag-name' },
-    activeIndex: { state: true },
     demos: { state: true },
     filename: { state: true },
     config: { state: true },
@@ -32,7 +31,6 @@ class RhPlayground extends LitElement {
     this.fileEditor; // ?: PlaygroundFileEditor | null;
     this.preview; // ?: PlaygroundPreview | null;
     this.filename;
-    this.activeIndex;
     this.config;
     this.demos = [];
   }
@@ -47,8 +45,8 @@ class RhPlayground extends LitElement {
       <rh-button ?hidden="${showing}" @click="${this.load}">Load Demo</rh-button>
       <playground-project ?hidden="${!showing}"
                           @filesChanged="${() => this.requestUpdate()}">
-        <rh-tabs @expand="${this.onTab}">${this.demos.map(({ label }, i) => html`
-          <rh-tab slot="tab" ?active="${(this.activeIndex ?? 0) === i}">${label}</rh-tab>`)}
+        <rh-tabs @expand="${this.onTab}">${this.demos.map(({ label, active }) => html`
+          <rh-tab slot="tab" ?active="${active}">${label}</rh-tab>`)}
         </rh-tabs>
         <playground-file-editor filename="${this.filename}"></playground-file-editor>
         <playground-preview .htmlFile="${this.filename}"></playground-preview>
@@ -73,7 +71,7 @@ class RhPlayground extends LitElement {
   switch(filename) {
     if (filename) {
       this.filename = filename;
-      this.activeIndex = this.demos.findIndex(x => x.filename === filename);
+      this.demos = this.demos.map(x => ({ ...x, active: x.filename === filename }));
     }
   }
 
@@ -84,7 +82,6 @@ class RhPlayground extends LitElement {
     this.demos = Object.entries(config.files ?? {})
       .filter(([, { contentType }]) => contentType.startsWith('text/html'))
       .map(([filename, { label }]) => ({ filename, label }));
-    this.activeIndex = this.demos.findIndex(x => x.filename === this.filename);
     this.switch('demo/index.html');
     await import('playground-elements');
     this.requestUpdate();
