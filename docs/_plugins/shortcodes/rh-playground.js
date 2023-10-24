@@ -1,5 +1,6 @@
 import { LitElement, html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 import 'playground-elements';
 import '@rhds/elements/rh-button/rh-button.js';
@@ -36,7 +37,7 @@ class RhPlayground extends LitElement {
     const demos = Object.entries(this.project?.config.files ?? {})
       .filter(([, { contentType }]) => contentType.startsWith('text/html'))
       .map(([filename, { label }]) => ({ filename, label }));
-    const activeIndex = Math.max(0, demos.findIndex(x => x.filename === this.activeTab?.dataset.filename));
+    const activeIndex = demos.findIndex(x => x.filename === this.activeTab?.dataset.filename);
     return html`
       <div id="snippet" class="${classMap({ showing, loading })}">
         <slot></slot>
@@ -46,7 +47,7 @@ class RhPlayground extends LitElement {
       <playground-project ?hidden="${!showing}"
                           @filesChanged="${() => this.requestUpdate()}">
         <rh-tabs @expand="${this.onTab}"
-                 .activeIndex="${activeIndex}">${demos.map(({ filename, label }) => html`
+                 active-index="${ifDefined(this.project?.config.files && activeIndex)}">${demos.map(({ filename, label }) => html`
           <rh-tab slot="tab"
                   data-filename="${filename}">${label}</rh-tab>`)}
         </rh-tabs>
