@@ -29,7 +29,6 @@ class RhPlayground extends LitElement {
     /** Is the demo displayed? */
     this.showing = false;
     this.project; // ?: PlaygroundProject | null;
-    this.tabBar; // ?: PlaygroundTabBar | null;
     this.fileEditor; // ?: PlaygroundFileEditor | null;
     this.preview; // ?: PlaygroundPreview | null;
     this.filename;
@@ -51,19 +50,17 @@ class RhPlayground extends LitElement {
         <rh-tabs @expand="${this.onTab}">${this.demos.map(({ label }, i) => html`
           <rh-tab slot="tab" ?active="${(this.activeIndex ?? 0) === i}">${label}</rh-tab>`)}
         </rh-tabs>
-        <playground-file-editor .htmlFile="${this.filename}"></playground-file-editor>
-        <playground-preview .htmlFile="${this.filename}"></playground-preview>
+        <playground-file-editor filename="${this.filename}"></playground-file-editor>
+        <playground-preview filename="${this.filename}"></playground-preview>
       </playground-project>
     `;
   }
 
   firstUpdated() {
     this.project = this.shadowRoot?.querySelector('playground-project');
-    this.tabBar = this.shadowRoot?.querySelector('playground-tab-bar');
     this.fileEditor = this.shadowRoot?.querySelector('playground-file-editor');
     this.preview = this.shadowRoot?.querySelector('playground-preview');
-    if (this.project && this.tabBar && this.fileEditor && this.preview) {
-      this.tabBar.project = this.project;
+    if (this.project && this.fileEditor && this.preview) {
       this.fileEditor.project = this.project;
       this.preview.project = this.project;
     }
