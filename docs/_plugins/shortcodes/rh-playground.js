@@ -15,6 +15,7 @@ class RhPlayground extends LitElement {
     loading: { type: Boolean, state: true },
     showing: { type: Boolean, state: true },
     tagName: { attribute: 'tag-name' },
+    activeTab: { state: true },
   };
 
   constructor() {
@@ -27,6 +28,7 @@ class RhPlayground extends LitElement {
     this.tabBar; // ?: PlaygroundTabBar | null;
     this.fileEditor; // ?: PlaygroundFileEditor | null;
     this.preview; // ?: PlaygroundPreview | null;
+    this.activeTab;
   }
 
   render() {
@@ -66,8 +68,8 @@ class RhPlayground extends LitElement {
   }
 
   onTab(event) {
-    this.activeTab = event.tab;
     this.switch(event.tab.dataset.filename);
+    this.activeTab = event.tab;
   }
 
   onChange(event) {
