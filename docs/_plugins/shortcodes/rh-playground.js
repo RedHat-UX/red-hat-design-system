@@ -65,7 +65,7 @@ class RhPlayground extends LitElement {
 
   onChange(event) {
     if (event.constructor.name === 'TabExpandEvent') {
-      this.switch(event.active.dataset.filename);
+      this.switch(event.tab.dataset.filename);
     } else {
       this.switch((event.target).filename);
     }
