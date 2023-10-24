@@ -46,7 +46,7 @@ class RhPlayground extends LitElement {
                           @filesChanged="${() => this.requestUpdate()}">
         <rh-tabs @expand="${this.onTab}">${demos.map(({ filename, label }) => html`
           <rh-tab slot="tab"
-                  .active="${this.activeTab.dataset.filename === filename}"
+                  .active="${this.activeTab?.dataset.filename === filename ?? false}"
                   data-filename="${filename}">${label}</rh-tab>`)}
         </rh-tabs>
         <playground-file-editor @click="${this.onChange}" @keydown="${this.onChange}"></playground-file-editor>
