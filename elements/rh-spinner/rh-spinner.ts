@@ -46,8 +46,7 @@ export class RhSpinner extends LitElement {
 
   // START hack for removal of contextProvider. delete for version 2.0
   /**
-   * Deprecated: Use Color context instead
-   * @deprecated Use Color context instead
+   * @deprecated Use Color context instead. See https://ux.redhat.com/foundations/color/context/
    */
   @property({ attribute: 'color-palette' }) colorPalette?: string;
 
