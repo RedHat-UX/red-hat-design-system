@@ -19,6 +19,7 @@ class RhPlayground extends LitElement {
     activeIndex: { state: true },
     demos: { state: true },
     filename: { state: true },
+    config: { state: true },
   };
 
   constructor() {
@@ -33,6 +34,7 @@ class RhPlayground extends LitElement {
     this.preview; // ?: PlaygroundPreview | null;
     this.filename;
     this.activeIndex;
+    this.config;
     this.demos = [];
   }
 
@@ -45,6 +47,7 @@ class RhPlayground extends LitElement {
       </div>
       <rh-button ?hidden="${showing}" @click="${this.load}">Load Demo</rh-button>
       <playground-project ?hidden="${!showing}"
+                          .config="${this.config}"
                           @filesChanged="${() => this.requestUpdate()}">
         <rh-tabs @expand="${this.onTab}"
                  active-index="${ifDefined(this.activeIndex)}">${this.demos.map(({ label }) => html`
@@ -87,8 +90,8 @@ class RhPlayground extends LitElement {
 
   async load() {
     this.loading = true;
-    const { configure } = await import(`/assets/playgrounds/${this.tagName}-playground.js`);
-    const config = configure(this.project);
+    const { config } = await import(`/assets/playgrounds/${this.tagName}-playground.js`);
+    this.config = config;
     this.demos = Object.entries(config.files ?? {})
       .filter(([, { contentType }]) => contentType.startsWith('text/html'))
       .map(([filename, { label }]) => ({ filename, label }));
