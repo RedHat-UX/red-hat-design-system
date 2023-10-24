@@ -1,4 +1,3 @@
-const { warn } = require('node:console');
 const fs = require('node:fs/promises');
 const path = require('node:path');
 const url = require('node:url');
@@ -40,6 +39,14 @@ const DEMO_SUBRESOURCE_RE = /(?<attr>href|src)="\/elements\/rh-(?<unprefixed>.*)
 const DEMO_FILEPATH_IS_MAIN_DEMO_RE = /\/elements\/(.*)\/demo\/\1\.html/;
 
 /**
+ * Elements which can support a `src=""` attribute which points to a subresource
+ */
+const SRC_SUBRESOURCE_TAGNAMES = new Set([
+  'img',
+  'rh-avatar',
+]);
+
+/**
  * Replace paths in demo files from the dev SPA's format to 11ty's format
  * @param {string} content
  */
@@ -67,6 +74,25 @@ function isStyleLink(node) {
     node.attrs.some(x => x.name === 'rel' && x.value === 'stylesheet') &&
     node.attrs.some(x => x.name === 'href')
   );
+}
+
+function hasLocalSrcAttr(node) {
+  return (
+    node.attrs.some(({ name, value }) => name === 'src' && !value.startsWith('http'))
+  );
+}
+
+function getAttrMap(node) {
+  return Object.fromEntries(node.attrs.map(({ name, value }) =>
+    [name, value]));
+}
+
+class SubresourceError extends Error {
+  constructor(message, originalError, subresourceFileURL) {
+    super(message);
+    this.originalError = originalError;
+    this.subresourceFileURL = subresourceFileURL;
+  }
 }
 
 module.exports = async function(data) {
@@ -118,47 +144,78 @@ module.exports = async function(data) {
       const isMainDemo = filename === 'demo/index.html';
       const demoSlug = filename.split('/').at(1);
 
+      const addSubresourceURL = async subresourceURL => {
+        if (subresourceURL && !subresourceURL.startsWith('http')) {
+          const subresourceFileURL = !subresourceURL.startsWith('/')
+            // non-tabular ternary
+            // eslint-disable-next-line operator-linebreak
+            ? new URL(subresourceURL, base)
+            : new URL(subresourceURL.replace('/', './'), docsDir);
+          try {
+            const resourceName =
+              path.normalize(`demo${isMainDemo ? '' : `/${demoSlug}`}/${subresourceURL}`);
+            if (!fileMap.has(resourceName)) {
+              const content =
+                demoPaths(
+                  await fs.readFile(subresourceFileURL, 'utf8'),
+                  subresourceFileURL.pathname,
+                );
+              fileMap.set(resourceName, { content, hidden: true });
+            }
+          } catch (e) {
+            throw new SubresourceError(`Error generating playground for ${demo.slug}.\nCould not find subresource ${subresourceURL} at ${subresourceFileURL?.href ?? 'unknown'}`, e, subresourceFileURL);
+          }
+        }
+      };
+
       fileMap.set('demo/rhds-demo-base.css', {
         contentType: 'text/css',
         content: baseCssSource,
         hidden: true,
       });
 
-      const modulesAndLinks = Tools.queryAll(fragment, node =>
+      const hrefSubresourceElements = Tools.queryAll(fragment, node =>
         Tools.isElementNode(node) &&
-          isModuleScript(node) ||
           isStyleLink(node));
 
-      // register demo script and css resources
-      for (const el of modulesAndLinks) {
-        const isLink = el.tagName === 'link';
-        const attrs = Object.fromEntries(el.attrs.map(({ name, value }) => [name, value]));
-        const subresourceURL = isLink ? attrs.href : attrs.src;
-        if (subresourceURL && !subresourceURL.startsWith('http')) {
-          const subresourceFileURL = !subresourceURL.startsWith('/')
-            // non-tabular tern
-            // eslint-disable-next-line operator-linebreak
-            ? new URL(subresourceURL, base)
-            : new URL(subresourceURL.replace('/', './'), docsDir);
-          try {
-            const content = demoPaths(await fs.readFile(subresourceFileURL, 'utf8'), subresourceFileURL.pathname);
-            const resourceName = path.normalize(`demo${isMainDemo ? '' : `/${demoSlug}`}/${subresourceURL}`);
-            fileMap.set(resourceName, { content, hidden: true });
-          } catch (e) {
-            // we can swallow the error for the demo base file because we wrote it ourselves above.
-            // maybe not the most elegant solution, but it works
-            if (subresourceFileURL?.href?.endsWith('rhds-demo-base.css')) { continue; }
+      const srcSubresourceElements = Tools.queryAll(fragment, node =>
+        Tools.isElementNode(node) &&
+        SRC_SUBRESOURCE_TAGNAMES.has(node.tagName) &&
+        hasLocalSrcAttr(node));
+
+      // register demo css resources
+      for (const el of hrefSubresourceElements) {
+        try {
+          const attrs = getAttrMap(el);
+          await addSubresourceURL(attrs.href);
+        } catch (e) {
+          // we can swallow the error for the demo base file because we wrote it ourselves above.
+          // maybe not the most elegant solution, but it works
+          if (e.subresourceFileURL?.href?.endsWith('rhds-demo-base.css')) {
+            continue;
+          } else {
             // In order to surface the error to the user, let's enable console logging
             // eslint-disable-next-line no-console
-            console.log(`Error generating playground for ${demo.slug}.\nCould not find subresource ${subresourceURL} at ${subresourceFileURL?.href ?? 'unknown'}`);
+            console.log(e.message);
             throw e;
           }
         }
       }
 
+      // register demo script and image resources
+      for (const el of srcSubresourceElements) {
+        const attrs = getAttrMap(el);
+        await addSubresourceURL(attrs.src);
+      }
+
       // HACK: https://github.com/google/playground-elements/issues/93#issuecomment-1775247123
-      const modules = Tools.queryAll(fragment, node => Tools.isElementNode(node) && isModuleScript(node));
-      Array.from(modules).forEach((el, i) => {
+      const inlineModules =
+        Tools.queryAll(fragment, node =>
+          Tools.isElementNode(node) &&
+          isModuleScript(node) &&
+          !node.attrs.some(({ name }) => name === 'src'));
+
+      Array.from(inlineModules).forEach((el, i) => {
         const moduleName = `${primaryElementName}-${demoSlug.replace('.html', '')}-inline-script-${i++}.js`;
         append(
           fragment,
@@ -177,6 +234,7 @@ module.exports = async function(data) {
           hidden: true,
         });
       });
+      // ENDHACK
 
       fileMap.set(filename, {
         contentType: 'text/html',
