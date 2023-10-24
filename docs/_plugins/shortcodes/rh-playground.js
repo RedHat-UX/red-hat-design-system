@@ -1,6 +1,6 @@
 import { LitElement, html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
-import { ifDefined } from 'lit/directives/if-defined.js';
+import { repeat } from 'lit/directives/repeat.js';
 
 import 'playground-elements';
 import '@rhds/elements/rh-button/rh-button.js';
@@ -30,7 +30,7 @@ class RhPlayground extends LitElement {
     this.project; // ?: PlaygroundProject | null;
     this.fileEditor; // ?: PlaygroundFileEditor | null;
     this.preview; // ?: PlaygroundPreview | null;
-    this.filename;
+    this.filename = 'demo/index.html';
     this.config;
     this.demos = [];
   }
@@ -45,8 +45,10 @@ class RhPlayground extends LitElement {
       <rh-button ?hidden="${showing}" @click="${this.load}">Load Demo</rh-button>
       <playground-project ?hidden="${!showing}"
                           @filesChanged="${() => this.requestUpdate()}">
-        <rh-tabs @expand="${this.onTab}">${this.demos.map(({ label, active }) => html`
-          <rh-tab slot="tab" ?active="${active}">${label}</rh-tab>`)}
+        <rh-tabs @expand="${this.onTab}">${repeat(this.demos, x => x.filename, ({ label, filename }) => html`
+          <rh-tab slot="tab" data-filename="${filename}">${label}</rh-tab>
+          <rh-tab-panel style="display:none;"></rh-tab-panel>
+          `)}
         </rh-tabs>
         <playground-file-editor filename="${this.filename}"></playground-file-editor>
         <playground-preview .htmlFile="${this.filename}"></playground-preview>
@@ -65,13 +67,8 @@ class RhPlayground extends LitElement {
   }
 
   onTab(event) {
-    if (event.tab?.dataset.filename) { this.switch(event.tab.dataset.filename); }
-  }
-
-  switch(filename) {
-    if (filename) {
-      this.filename = filename;
-      this.demos = this.demos.map(x => ({ ...x, active: x.filename === filename }));
+    if (event.active && event.tab?.dataset.filename) {
+      this.filename = event.tab.dataset.filename;
     }
   }
 
@@ -81,8 +78,7 @@ class RhPlayground extends LitElement {
     this.config = config;
     this.demos = Object.entries(config.files ?? {})
       .filter(([, { contentType }]) => contentType.startsWith('text/html'))
-      .map(([filename, { label }]) => ({ filename, label }));
-    this.switch('demo/index.html');
+      .map(([filename, { label }]) => ({ filename, label, active: filename === 'demo/index.html' }));
     await import('playground-elements');
     this.requestUpdate();
     this.show();
