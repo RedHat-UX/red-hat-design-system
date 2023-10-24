@@ -47,11 +47,9 @@ class RhPlayground extends LitElement {
       </div>
       <rh-button ?hidden="${showing}" @click="${this.load}">Load Demo</rh-button>
       <playground-project ?hidden="${!showing}"
-                          .config="${this.config ?? {}}"
                           @filesChanged="${() => this.requestUpdate()}">
-        <rh-tabs @expand="${this.onTab}"
-                 active-index="${ifDefined(this.activeIndex)}">${this.demos.map(({ label }) => html`
-          <rh-tab slot="tab">${label}</rh-tab>`)}
+        <rh-tabs @expand="${this.onTab}">${this.demos.map(({ label }, i) => html`
+          <rh-tab slot="tab" ?active="${(this.activeIndex ?? 0) === i}">${label}</rh-tab>`)}
         </rh-tabs>
         <playground-file-editor .htmlFile="${this.filename}"></playground-file-editor>
         <playground-preview .htmlFile="${this.filename}"></playground-preview>
@@ -72,7 +70,7 @@ class RhPlayground extends LitElement {
   }
 
   onTab(event) {
-    this.switch(event.tab.dataset.filename);
+    if (event.tab?.dataset.filename) { this.switch(event.tab.dataset.filename); }
   }
 
   switch(filename) {
@@ -94,6 +92,8 @@ class RhPlayground extends LitElement {
     await import('playground-elements');
     this.requestUpdate();
     this.show();
+    await this.updateComplete;
+    this.project.config = config;
   }
 
   show() {
