@@ -1,29 +1,3 @@
-<header>
-  <h2>Valid HTML</h2>
-</header>
-
-<section>
-  <p>Paginators with 5 or fewer pages should not overflow, meaning all links should be visible.
-     Once a paginator has more than 5 pages, then it must overflow, meaning some links will be hidden.
-     Paginators with 9 or more pages will overflow on boths ends.</p>
-
-  <dl>
-    <dt>With 5 or fewer pages</dt>
-    <dd>No overflow</dd>
-    <dt>With more than 5 but fewer than 9 pages</dt>
-    <dd>Overflow on one side</dd>
-    <dt>With more than 9 pages, active page is less than 6</dt>
-    <dd>Overflow end</dd>
-    <dt>With more than 9 pages, active page is greater than 6</dt>
-    <dd>Overflow both</dd>
-    <dt>With more than 9 pages, active page is greater than 5 less than the total (e.g. 16/20)</dt>
-    <dd>Overflow start</dd>
-  </dl>
-
-  <rh-button id="add">Add Page</rh-button>
-  <rh-button id="remove" danger>Remove Page</rh-button>
-</section>
-
 <rh-pagination>
   <ol>
     <li><a href="#">1</a></li>
@@ -35,51 +9,8 @@
 </rh-pagination>
 
 <link rel="stylesheet" href="../rh-pagination-lightdom.css">
-<style>
-  [data-demo="rh-pagination"] {
-    display: contents;
-  }
 
-  main {
-    gap: var(--rh-space-2xl, 32px);
-    padding: var(--rh-space-xl, 24px) var(--rh-space-4xl, 64px);
-  }
-
-  rh-pagination {
-    justify-self: center;
-  }
-</style>
 <script type="module">
-  import '@rhds/elements/rh-button/rh-button.js';
   import '@rhds/elements/rh-pagination/rh-pagination.js';
-
-  const $ = s => document.querySelector(s);
-  const $$ = s => document.querySelectorAll(s);
-
-  for (const element of $$('rh-pagination')) {
-    element.addEventListener('click', event => {
-      const link = event.composedPath().find(x => x instanceof HTMLAnchorElement);
-      if (link) {
-        event.preventDefault();
-        history.pushState(null, link.innerText, link.href);
-        element.requestUpdate();
-      }
-    });
-  }
-
-  $('#add')?.addEventListener('click', function() {
-    const link = document.createElement('a');
-    const item = document.createElement('li');
-    item.append(link);
-    const i = $$('rh-pagination li').length + 1;
-    link.href = `#${i}`;
-    link.textContent = i;
-    $('rh-pagination ol').append(item);
-    $('rh-pagination').requestUpdate();
-  });
-
-  $('#remove')?.addEventListener('click', function() {
-    $('rh-pagination li:last-child')?.remove?.();
-  });
 </script>
 
