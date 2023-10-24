@@ -60,20 +60,24 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(ImportMapPlugin, {
     defaultProvider: 'nodemodules',
     localPackages: [
+      // ux-dot dependencies
       'fuse.js',
       'element-internals-polyfill',
+
+      // RHDS dependencies
       'lit',
       '@lit/reactive-element',
       'tslib',
       '@floating-ui/dom',
       '@floating-ui/core',
-      //
+
+      // RHDS modules
       '@rhds/tokens',
       '@rhds/tokens/media.js',
       '@rhds/tokens/meta.js',
       '@patternfly/pfe-core',
       '@patternfly/elements',
-      '@rhds/tokens',
+
       // extra modules used in demo that didn't get picked up in the sources trace
       // future solution could be to inject maps into each page in a transform
       // but that could be prohibitively expensive if it has to call out to network for each page
