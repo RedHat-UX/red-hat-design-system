@@ -42,8 +42,10 @@ class RhPlayground extends LitElement {
       <rh-button ?hidden="${showing}" @click="${this.load}">Load Demo</rh-button>
       <playground-project ?hidden="${!showing}"
                           @filesChanged="${() => this.requestUpdate()}">
-        <rh-tabs @expand="${this.onChange}">${demos.map(({ filename, label }) => html`
-          <rh-tab slot="tab" data-filename="${filename}">${label}</rh-tab>`)}
+        <rh-tabs @expand="${this.onTab}">${demos.map(({ filename, label }) => html`
+          <rh-tab slot="tab"
+                  .active="${this.activeTab.dataset.filename === filename}"
+                  data-filename="${filename}">${label}</rh-tab>`)}
         </rh-tabs>
         <playground-file-editor @click="${this.onChange}" @keydown="${this.onChange}"></playground-file-editor>
         <playground-preview></playground-preview>
@@ -63,12 +65,13 @@ class RhPlayground extends LitElement {
     }
   }
 
+  onTab(event) {
+    this.activeTab = event.tab;
+    this.switch(event.tab.dataset.filename);
+  }
+
   onChange(event) {
-    if (event.constructor.name === 'TabExpandEvent') {
-      this.switch(event.tab.dataset.filename);
-    } else {
-      this.switch((event.target).filename);
-    }
+    this.switch((event.target).filename);
   }
 
   switch(filename) {
