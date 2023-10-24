@@ -44,9 +44,9 @@ class RhPlayground extends LitElement {
       <rh-button ?hidden="${showing}" @click="${this.load}">Load Demo</rh-button>
       <playground-project ?hidden="${!showing}"
                           @filesChanged="${() => this.requestUpdate()}">
-        <rh-tabs @expand="${this.onTab}">${demos.map(({ filename, label }) => html`
+        <rh-tabs @expand="${this.onTab}"
+                 .activeIndex="${demos.findIndex(x => x.filename === this.activeTab?.dataset.filename)}">${demos.map(({ filename, label }) => html`
           <rh-tab slot="tab"
-                  .active="${this.activeTab?.dataset.filename === filename ?? false}"
                   data-filename="${filename}">${label}</rh-tab>`)}
         </rh-tabs>
         <playground-file-editor @click="${this.onChange}" @keydown="${this.onChange}"></playground-file-editor>
