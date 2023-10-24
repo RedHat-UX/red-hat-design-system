@@ -79,21 +79,21 @@ class RhPlayground extends LitElement {
   }
 
   switch(filename) {
-    this.filename = filename ?? undefined;
-    if (this.filename) {
-      this.activeIndex = this.demos.findIndex(x => x.filename === this.filename);
+    if (filename) {
+      this.filename = filename;
+      this.activeIndex = this.demos.findIndex(x => x.filename === filename);
     }
   }
 
   async load() {
     this.loading = true;
-    this.switch('demo/index.html');
     const { configure } = await import(`/assets/playgrounds/${this.tagName}-playground.js`);
-    configure(this.project);
-    this.demos = Object.entries(this.project?.config.files ?? {})
+    const config = configure(this.project);
+    this.demos = Object.entries(config.files ?? {})
       .filter(([, { contentType }]) => contentType.startsWith('text/html'))
       .map(([filename, { label }]) => ({ filename, label }));
     this.activeIndex = this.demos.findIndex(x => x.filename === this.filename);
+    this.switch('demo/index.html');
     await import('playground-elements');
     this.requestUpdate();
     this.show();
