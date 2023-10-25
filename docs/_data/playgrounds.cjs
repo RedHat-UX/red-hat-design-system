@@ -130,6 +130,14 @@ module.exports = async function(data) {
         Tools.createCommentNode('playground-fold'),
         Tools.createElement('link', {
           rel: 'stylesheet',
+          href: 'https://static.redhat.com/libs/redhat/redhat-font/4/webfonts/red-hat-font.min.css'
+        }),
+        Tools.createElement('link', {
+          rel: 'stylesheet',
+          href: 'https://static.redhat.com/libs/redhat/redhat-theme/6/advanced-theme.css'
+        }),
+        Tools.createElement('link', {
+          rel: 'stylesheet',
           href: `${baseCssPathPrefix}rhds-demo-base.css`,
         }),
         Tools.createTextNode('\n\n'),
