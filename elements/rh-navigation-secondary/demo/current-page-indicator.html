@@ -55,7 +55,7 @@
   </rh-cta>
 </rh-navigation-secondary>
 
-<div class="space-holder">
+<div id="space-holder">
   Move current page to:
   <div class="option"><rh-button id="prev-link">Previous link</rh-button> <rh-button id="next-link">Next link</rh-button> </div>
   <div class="option"><rh-button id="first-link">First link</rh-button></div>
@@ -76,18 +76,19 @@
 <link rel="stylesheet" href="../rh-navigation-secondary-lightdom.css">
 
 <style>
-  [data-demo="rh-navigation-secondary"] {
+  /* fixes demo for overflow and display of sticky nav */
+  main {
     display: contents;
   }
 
-  #space-holder {
-    min-height: 250vh;
-    padding: var(--_text-padding, var(--rh-space-lg, 16px));
+  [data-demo="rh-navigation-secondary"] {
+    padding: 0;
   }
 
-  #custom-grid::part(sections) {
-    display: block;
-    grid: unset;
+  /* content space-holder that allows for overflow */
+  #space-holder {
+    min-height: 101vh;
+    padding: var(--_text-padding, var(--rh-space-lg, 16px));
   }
 
   @media screen and (min-width: 768px) {

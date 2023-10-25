@@ -69,12 +69,18 @@
 <link rel="stylesheet" href="../rh-navigation-secondary-lightdom.css">
 
 <style>
-  [data-demo="rh-navigation-secondary"] {
+  /* fixes demo for overflow and display of sticky nav */
+  main {
     display: contents;
   }
 
+  [data-demo="rh-navigation-secondary"] {
+    padding: 0;
+  }
+
+  /* content space-holder that allows for overflow */
   #space-holder {
-    min-height: 250vh;
+    min-height: 101vh;
     padding: var(--_text-padding, var(--rh-space-lg, 16px));
   }
 

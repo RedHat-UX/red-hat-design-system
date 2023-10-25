@@ -55,7 +55,7 @@
   </rh-cta>
 </rh-navigation-secondary>
 
-<div class="space-holder">
+<div id="space-holder">
   <h2>Content Placeholder</h2>
   <a href="#">Link placeholder</a>
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt luctus odio, vitae accumsan tortor sagittis et. Integer facilisis rutrum suscipit. Morbi elementum purus vel varius tincidunt. Nulla fringilla lacus a nulla vehicula tincidunt. Praesent a turpis et elit laoreet ullamcorper et et metus. Praesent malesuada massa in tellus bibendum congue. Curabitur mollis purus et metus eleifend sagittis. Vivamus fringilla tincidunt sem id euismod. Maecenas a vestibulum nisl. Sed libero metus, ultrices in tortor facilisis, semper rhoncus nunc. Nullam ut diam et felis posuere lobortis vitae id leo. Sed hendrerit ex libero, a faucibus tellus maximus et. Aliquam erat volutpat. Phasellus vestibulum a lacus eget eleifend. Pellentesque ipsum nunc, scelerisque non neque id, bibendum vestibulum ante.</p>
@@ -69,18 +69,18 @@
 <link rel="stylesheet" href="../rh-navigation-secondary-lightdom.css">
 
 <style>
-  *,
-  *:after,
-  *:before {
-    box-sizing: border-box;
-  }
-
-  [data-demo="rh-navigation-secondary"] {
+  /* fixes demo for overflow and display of sticky nav */
+  main {
     display: contents;
   }
 
+  [data-demo="rh-navigation-secondary"] {
+    padding: 0;
+  }
+
+  /* content space-holder that allows for overflow */
   #space-holder {
-    min-height: 250vh;
+    min-height: 101vh;
     padding: var(--_text-padding, var(--rh-space-lg, 16px));
   }
 

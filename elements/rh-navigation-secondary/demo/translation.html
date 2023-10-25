@@ -1,5 +1,4 @@
 <div lang="he" dir="rtl">
-  <div id="mock-nav"></div>
   <rh-navigation-secondary role="navigation">
     <a href="#" slot="logo" id="logo-id">
       Red Hat Ansible Automation Platform
@@ -13,7 +12,7 @@
               <h2 slot="header" id="ansible-platform">
                 <a href="#">למה Red Hat Ansible Automation Platforms</a>
               </h2>
-              <ul slot="links" aria-labelledby="ansible-platform"">
+              <ul slot="links" aria-labelledby="ansible-platform">
                 <li>
                   <a href="#">
                     אינטגרציות
@@ -146,18 +145,19 @@
 </div>
 
 <style>
-  [data-demo="rh-navigation-secondary"] {
+  /* fixes demo for overflow and display of sticky nav */
+  main {
     display: contents;
   }
 
-  #space-holder {
-    min-height: 250vh;
-    padding: var(--_text-padding, var(--rh-space-lg, 16px));
+  [data-demo="rh-navigation-secondary"] {
+    padding: 0;
   }
 
-  #mock-nav {
-    height: 72px;
-    background-color: black;
+  /* content space-holder that allows for overflow */
+  #space-holder {
+    min-height: 101vh;
+    padding: var(--_text-padding, var(--rh-space-lg, 16px));
   }
 
   @media screen and (min-width: 768px) {
