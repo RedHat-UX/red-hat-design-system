@@ -72,6 +72,15 @@
   background-color: var(--rh-tile-focus-background-color);
 }
 
+#body,
+#title,
+#headline,
+#image,
+#icon,
+#footer-text {
+  display: block;
+}
+
 #outer.disabled {
   pointer-events: none !important;
   color: var(--rh-tile-text-color-secondary) !important;

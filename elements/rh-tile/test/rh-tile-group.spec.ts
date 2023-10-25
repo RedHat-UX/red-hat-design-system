@@ -1,62 +1,21 @@
 import { expect, html } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
-import { sendKeys, sendMouse } from '@web/test-runner-commands';
-import { RhTileGroup } from '@rhds/elements/rh-tile/rh-tile-group.js';
+import { a11ySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
+import { sendKeys } from '@web/test-runner-commands';
+import { RhTile } from '../rh-tile.js';
+import { RhTileGroup } from '../rh-tile-group.js';
 
 describe('<rh-tile-group>', function() {
   let element: RhTileGroup;
   let tile1: HTMLElement;
   let tile2: HTMLElement;
   let tile3: HTMLElement;
-  const tileGroup = html`
-      <rh-tile-group radio>
-        <rh-tile checked>
-          <div slot="title">Title</div>
-          <h2 slot="headline"><a href="#top">Link</a></h2>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          <div slot="footer">Suspendisse eu turpis elementum</div>
-        </rh-tile>
-    
-        <rh-tile>
-          <div slot="title">Title</div>
-          <h2 slot="headline"><a href="#top">Link</a></h2>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          <div slot="footer">Suspendisse eu turpis elementum</div>
-        </rh-tile>
-    
-        <rh-tile>
-          <div slot="title">Title</div>
-          <h2 slot="headline"><a href="#top">Link</a></h2>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          <div slot="footer">Suspendisse eu turpis elementum</div>
-        </rh-tile>
-      </rh-tile-group>`;
 
-  async function arrowDown() {
-    await sendKeys({ down: 'ArrowDown' });
-    await element.updateComplete;
-  }
-
-  async function enter() {
-    await sendKeys({ press: 'Enter' });
-    await element.updateComplete;
-  }
-
-  async function arrowUp() {
-    await sendKeys({ down: 'ArrowUp' });
-    await element.updateComplete;
-  }
-
-  function tiles(element) {
-    return [...element.querySelectorAll('rh-tile')];
-  }
-
-  function input(element, checked = false) {
-    return element?.shadowRoot?.querySelector(`input[type="radio"]${checked ? ':checked' : ''}`);
-  }
-
-  function inputs(element, checked = false) {
-    return tiles(element).map(tile => input(tile, checked)).filter(input=>input);
+  function press(press: string) {
+    return async function() {
+      await sendKeys({ press });
+      await element.updateComplete;
+    };
   }
 
   describe('simply instantiating', function() {
@@ -74,84 +33,148 @@ describe('<rh-tile-group>', function() {
     });
   });
 
-  describe('radio tile', function() {
-    beforeEach(async function() {
-      element = await createFixture<RhTileGroup>(tileGroup);
-    });
-
-    it('is accessible', function() {
-      expect(element)
-        .to.be.an.accessible;
-    });
-
-    it('has radio buttons', function() {
-      expect(tiles(element).length)
-        .to.equal(inputs(element).length);
-    });
-  });
-
   describe('as a radio group', async function() {
     beforeEach(async function() {
-      element = await createFixture<RhTileGroup>(tileGroup);
-      [tile1, tile2, tile3] = tiles(element);
-      await element.focus();
+      element = await createFixture<RhTileGroup>(html`
+        <rh-tile-group radio>
+          <rh-tile>Tile 1</rh-tile>
+          <rh-tile>Tile 2</rh-tile>
+          <rh-tile>Tile 3</rh-tile>
+        </rh-tile-group>
+      `);
+      [tile1, tile2, tile3] = element.querySelectorAll('rh-tile');
+      element.focus();
+    });
+
+    it('is accessible', async function() {
+      await expect(element).to.be.accessible();
+    });
+
+    it('has radio roles', async function() {
+      // TODO(bennypowers): write some query helpers for snapshots
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).to.deep.equal({
+        role: 'WebArea',
+        name: '',
+        children: [
+          {
+            focused: true,
+            checked: false,
+            name: 'Tile 1',
+            role: 'radio',
+          },
+          {
+            checked: false,
+            name: 'Tile 2',
+            role: 'radio',
+          },
+          {
+            checked: false,
+            name: 'Tile 3',
+            role: 'radio',
+          },
+        ],
+      });
     });
 
     it('sets focus', function() {
-      expect(document.activeElement)
-        .to.equal(tile1);
+      expect(document.activeElement).to.equal(tile1);
+    });
+
+    it('has no selected element', function() {
+      expect(element.selected)
+        .to.be.undefined;
+    });
+
+    describe('space on first tile', async function() {
+      beforeEach(press('Space'));
+      beforeEach(() => element.updateComplete);
+      it('selects the first tile', function() {
+        expect(element.selected)
+          .to.equal(tile1);
+      });
     });
 
     describe('arrow down', async function() {
-      beforeEach(async function() {
-        await arrowDown();
-      });
+      beforeEach(press('ArrowDown'));
       it('sets focus on second tile', function() {
         expect(document.activeElement)
           .to.equal(tile2);
       });
+
+      describe('clicking second tile', async function() {
+        beforeEach(press('Space'));
+        beforeEach(() => element.updateComplete);
+        it('selects the second tile only', function() {
+          expect(element.selected)
+            .to.equal(tile2);
+        });
+        it('has only one checked radio button', async function() {
+          // TODO(bennypowers): write snapshot query helpers
+          const snapshot = await a11ySnapshot();
+          function reduceRadios(count: number, node: typeof snapshot): number {
+            return count +
+                   ((node.role === 'radio' && node.checked) ? 1 : 0) +
+                    (node.children?.reduce(reduceRadios, 0) ?? 0);
+          }
+          const checkedRadios = snapshot.children.reduce(reduceRadios, 0);
+
+          expect(checkedRadios).to.equal(1);
+        });
+      });
     });
 
     describe('arrow up', async function() {
-      beforeEach(async function() {
-        await arrowUp();
-      });
+      beforeEach(press('ArrowUp'));
       it('sets focus on last tile', function() {
         expect(document.activeElement)
           .to.equal(tile3);
       });
     });
+  });
 
-    describe('only allows one item to be selected', async function() {
+
+  describe('in a form', function() {
+    let form: HTMLFormElement;
+
+    function submit() {
+      form.requestSubmit();
+    }
+
+    describe('as a radio group', function() {
       beforeEach(async function() {
-        element = await createFixture<RhTileGroup>(tileGroup);
-        [tile1, tile2, tile3] = tiles(element);
-        await element.focus();
+        form = await createFixture(html`
+          <form @submit="${(e: Event) => e.preventDefault()}">
+            <rh-tile-group radio>
+              <rh-tile name="radio" value="1">Tile 1</rh-tile>
+              <rh-tile name="radio" value="2">Tile 2</rh-tile>
+              <rh-tile name="radio" value="3">Tile 3</rh-tile>
+            </rh-tile-group>
+          </form>
+        `);
+        // because `createFixture` will only wait on the first element.
+        await Promise.all(Array.from(form.querySelectorAll('*'), x =>
+          (x as RhTile).updateComplete));
       });
 
-      it('only has one selected element', function() {
-        expect(element.selected)
-          .to.equal(tile1);
+      it('includes the radio in the form\'s elements list', function() {
+        expect(form.radio).to.be.an.instanceof(NodeList);
       });
 
-      describe('only one tiles has a checked radio', function() {
-        const [checked1] = inputs(element, true);
-        const tileChecked = input(tile1, true);
-
-        it('only has one checked radio button', function() {
-          expect(checked1)
-            .to.equal([tileChecked]);
+      describe('submitting the form', function() {
+        beforeEach(submit);
+        it('does not contain radio values', function() {
+          expect(new FormData(form).get('radio')).to.be.null;
         });
+      });
 
-        describe('clicking second tile', async function() {
-          beforeEach(async function() {
-            tile2.focus();
-            await enter();
-          });
-
-          it('selects the second tile only', function() {
-            expect(element.selected)
-              .to.equal(tile2);
+      describe('checking a radio tile', function() {
+        beforeEach(press('Tab'));
+        beforeEach(press('Space'));
+        describe('submitting the form', function() {
+          beforeEach(submit);
+          it('contains the selected radio value', function() {
+            expect(new FormData(form).get('radio')).to.equal('1');
           });
         });
       });

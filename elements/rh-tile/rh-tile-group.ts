@@ -1,4 +1,4 @@
-import { LitElement, html, type PropertyValueMap } from 'lit';
+import { LitElement, html, type PropertyValues } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
@@ -20,19 +20,14 @@ export class RhTileGroup extends LitElement {
   static readonly styles = [styles];
 
   /**
-   * whether tile group interaction is disabled
+   * Whether tile group interaction is disabled
    */
-  @property({ reflect: true, attribute: 'disabled', type: Boolean }) disabled = false;
+  @property({ type: Boolean, reflect: true }) disabled = false;
 
   /**
-   * if tile is checkable, whether only one tile can be checked
+   * If tile is checkable, whether only one tile can be checked
    */
-  @property({ attribute: 'radio', type: Boolean }) radio = false;
-
-  /**
-   * Sets color theme based on parent context
-   */
-  @colorContextConsumer() private on?: ColorTheme;
+  @property({ type: Boolean, reflect: true }) radio = false;
 
   /**
    * Sets color palette, which affects the element's styles as well as descendants' color theme.
@@ -45,21 +40,28 @@ export class RhTileGroup extends LitElement {
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
+  /**
+   * Sets color theme based on parent context
+   */
+  @colorContextConsumer() private on?: ColorTheme;
+
   #tiles: RhTile[] = [];
+
   #initTiles = false;
 
   #tabindex = new RovingTabindexController<HTMLElement>(this);
-  #internals = new InternalsController(this, { });
+
+  #internals = new InternalsController(this);
 
   /**
-   * all slotted tiles
+   * All slotted tiles
    */
   get tiles() {
     return this.#tiles;
   }
 
   /**
-   * all selected tiles
+   * All selected tiles
    */
   get selected() {
     const selected = this.#tiles?.filter(tile=> tile.checked);
@@ -67,62 +69,94 @@ export class RhTileGroup extends LitElement {
     return this.radio ? first : selected;
   }
 
-  protected firstUpdated(): void {
-    this.#internals.role = this.radio ? 'radiogroup' : null;
+  constructor() {
+    super();
+    this.addEventListener('slotchange', this.#onSlotchange);
+    this.addEventListener('select', this.#onSelect);
+  }
+
+  override firstUpdated(): void {
     this.updateItems();
   }
 
-  protected updated(_changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>): void {
-    if (_changedProperties.has('radio')) {
+  override willUpdate(changed: PropertyValues<this>) {
+    if (changed.has('radio')) {
       this.#internals.role = this.radio ? 'radiogroup' : null;
-      let selected: RhTile | null | undefined;
-      this.#tiles.forEach(tile => {
-        // @ts-expect-error: internal use of private prop. replace with context. see rh-tile.ts
-        tile.radioGroup = this.radio;
-        if (this.radio && !selected && tile.checked) {
-          selected = tile;
-        }
-      });
-      this.selectItem(selected);
     }
+    if (changed.has('disabled')) {
+      this.#internals.ariaDisabled = String(!!this.disabled);
+    }
+  }
 
-    if (_changedProperties.has('disabled')) {
-      this.#internals.ariaDisabled = this.disabled ? 'true' : 'false';
-      this.#tiles.forEach(tile => {
+  override updated(changed: PropertyValues<this>): void {
+    const radioChanged = changed.has('radio');
+    const disabledChanged = changed.has('disabled');
+    if (radioChanged || disabledChanged) {
+      for (const tile of this.#tiles) {
+        if (radioChanged) {
         // @ts-expect-error: internal use of private prop. replace with context. see rh-tile.ts
-        tile.disabledGroup = this.disabled;
-      });
+          tile.radioGroup = this.radio ? this : undefined;
+        }
+        if (disabledChanged) {
+          // @ts-expect-error: internal use of private prop. replace with context. see rh-tile.ts
+          tile.disabledGroup = this.disabled;
+        }
+      }
     }
   }
 
   render() {
     const { on = '', radio } = this;
     return html`
-      <slot class="${classMap({ [on]: !!on, radio })}" @slotchange=${this.#onSlotchange} @select=${this.#onSelect}></slot>
+      <slot class="${classMap({ [on]: !!on, radio })}"></slot>
     `;
   }
 
-  /** sets focus on active tile */
+  #selectTile(tileToSelect: RhTile, force?: boolean) {
+    if (this.radio) {
+      for (const tile of this.#tiles) {
+        tile.checked = tile === tileToSelect;
+      }
+    } else {
+      tileToSelect.checked = force ?? !tileToSelect.checked;
+    }
+  }
+
+  #onSelect(event: Event) {
+    if (event instanceof TileSelectEvent) {
+      if (this.disabled) {
+        event.preventDefault();
+        return false;
+      } else {
+        this.#selectTile(event.target, event.force);
+      }
+    }
+  }
+
+  #onSlotchange() {
+    this.updateItems();
+  }
+
+  /** Sets focus on active tile */
   focus() {
     (this.#tabindex?.activeItem || this.#tabindex.firstItem)?.focus();
   }
 
   /**
-   * programatically select a tile
-   * @param tile {RhTile | null | undefined} tile to select
+   * Programatically select a tile
+   * @param tile tile to select
    */
-  selectItem(tile: RhTile | null | undefined) {
+  selectItem(tile?: RhTile) {
     if (tile) {
-      tile.checked = true;
-      this.#setTiles(tile);
+      this.#selectTile(tile);
     }
   }
 
   /**
-   * programatically toggle a tile
-   * @param tile {RhTile | null | undefined} tile to toggle
+   * Programatically toggle a tile
+   * @param tile tile to toggle
    */
-  toggleItem(tile: RhTile | null | undefined) {
+  toggleItem(tile?: RhTile) {
     if (tile?.checked) {
       tile.checked = false;
     } else {
@@ -131,7 +165,7 @@ export class RhTileGroup extends LitElement {
   }
 
   /**
-   * updates slotted tiles to set properties and keyboard navigation
+   * Updates slotted tiles to set properties and keyboard navigation
    */
   updateItems() {
     this.#tiles = [...this.querySelectorAll('rh-tile')];
@@ -140,8 +174,8 @@ export class RhTileGroup extends LitElement {
       // @ts-expect-error: internal use of private prop. replace with context. see rh-tile.ts
       tile.radioGroup = this.radio;
       // @ts-expect-error: internal use of private prop. replace with context. see rh-tile.ts
-      tile.disabledGroup !== this.disabled;
-      tile.id = tile.id || getRandomId('rh-tile');
+      tile.disabledGroup = this.disabled;
+      tile.id ||= getRandomId('rh-tile');
     });
     if (this.#initTiles) {
       this.#tabindex.updateItems(this.#tiles);
@@ -149,33 +183,6 @@ export class RhTileGroup extends LitElement {
       this.#initTiles = true;
       this.#tabindex.initItems(this.#tiles);
     }
-  }
-
-  #setTiles(tile: RhTile | null | undefined) {
-    // @ts-expect-error: internal use of private prop. replace with context. see rh-tile.ts
-    if (!this.disabled && (tile && tile.radioGroup || this.radio) && tile?.checked) {
-      this.#tiles?.forEach(item => {
-        if (tile !== item && item.checked) {
-          item.checked = false;
-        }
-      });
-    }
-  }
-
-  /**
-   * handles TileSelectEvent
-   * @param event {TileSelectEvent} tile click event
-   */
-  #onSelect(event: TileSelectEvent) {
-    const tile = event.target as RhTile;
-    this.#setTiles(tile);
-  }
-
-  /**
-   * handles slot change by updating slotted tiles
-   */
-  #onSlotchange() {
-    this.updateItems();
   }
 }
 
