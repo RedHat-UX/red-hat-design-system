@@ -1,11 +1,12 @@
-import { html } from 'lit';
+import { LitElement, html, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
-import { BaseButton } from '@patternfly/elements/pf-button/BaseButton.js';
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
 import styles from './rh-button.css';
 
@@ -13,14 +14,37 @@ import styles from './rh-button.css';
  * A button is clickable text or an icon that triggers an action on the page or in the background. Depending on the action, content, and hierarchy, a button can be used on its own or grouped with other buttons.
  *
  * @summary Triggers actions on the page or in the background
- * @summary Triggers actions on the page or in the background
+ *
+ * @csspart button - Internal button element
  * @csspart icon - Container for the icon slot
+ *
  * @slot icon - Contains the button's icon or state indicator, e.g. a spinner.
  * @slot - Contains button text
  */
 @customElement('rh-button')
-export class RhButton extends BaseButton {
+export class RhButton extends LitElement {
   static readonly styles = [styles];
+
+  static readonly formAssociated = true;
+
+  static readonly shadowRootOptions: ShadowRootInit = { ...LitElement.shadowRootOptions, delegatesFocus: true };
+
+  /** Disables the button */
+  @property({ reflect: true, type: Boolean }) disabled = false;
+
+  @property({ reflect: true }) type?: 'button' | 'submit' | 'reset';
+
+  /** Accessible name for the button, use when the button does not have slotted text */
+  @property() label?: string;
+
+  /** Form value for the button */
+  @property() value?: string;
+
+  /** Form name for the button */
+  @property() name?: string;
+
+  /** Shorthand for the `icon` slot, the value is icon name */
+  @property() icon?: string;
 
   /**
    * Changes the style of the button.
@@ -34,34 +58,70 @@ export class RhButton extends BaseButton {
    */
   @property({ reflect: true }) variant: 'primary' | 'secondary' | 'tertiary' | 'close' | 'play' = 'primary';
 
-  /** @deprecated The size property is not currently used */
-  declare size: string;
-
   /**
-   * When set, indicates that the button performs a destructive action
+   * Use danger buttons for actions a user can take that are potentially
+   * destructive or difficult/impossible to undo, like deleting or removing
+   * user data.
    */
   @property({ type: Boolean, reflect: true }) danger = false;
 
   @colorContextConsumer() private on?: ColorTheme;
 
-  get #variant() { return this.variant?.toLowerCase(); }
+  get #hasIcon() { return !!this.icon; }
+
+  #internals = new InternalsController(this);
 
   override willUpdate() {
-    switch (this.#variant) {
+    const variant = this.variant.toLowerCase();
+    switch (variant) {
       case 'close':
       case 'play':
-        this.icon = this.#variant;
+        this.icon = variant;
         break;
     }
   }
 
   override render() {
     const { on = 'light' } = this;
-    return html`<div id="rhds-container" class="${classMap({ [on]: true })}">${super.render()}</div>`;
+    const hasIcon = this.#hasIcon;
+    return html`
+      <button aria-label="${ifDefined(this.label)}"
+              class="${classMap({ hasIcon, [on]: !!on })}"
+              part="button"
+              type="${ifDefined(this.type)}"
+              value="${ifDefined(this.value)}"
+              @click="${this.#onClick}"
+              ?disabled="${this.disabled || this.#internals.formDisabled}">
+        <slot id="icon" part="icon" aria-hidden="true" name="icon">${this.#renderDefaultIcon()}</slot>
+        <slot id="text" aria-hidden=${String(!!this.label) as 'true' | 'false'}></slot>
+      </button>
+    `;
   }
 
-  protected renderDefaultIcon() {
-    switch (this.#variant) {
+  protected async formDisabledCallback() {
+    await this.updateComplete;
+    this.requestUpdate();
+  }
+
+  #onClick() {
+    switch (this.type) {
+      case 'reset':
+        return this.#internals.reset();
+      default:
+        return this.#internals.submit();
+    }
+  }
+
+  /**
+   * Fallback content for the icon slot. When the `icon` attribute is set, it
+   * should render an icon corresponding to the value.
+   *
+   * @example ```html
+   *          <base-icon icon=${this.icon}></base-icon>
+   *          ```
+   */
+  #renderDefaultIcon(): TemplateResult | string {
+    switch (this.variant.toLowerCase()) {
       // TODO: revisit when rh-icon is ready
       // return html`<rh-icon icon=${this.variant}></rh-icon>`;
       case 'close':
@@ -77,7 +137,7 @@ export class RhButton extends BaseButton {
           </svg>
         `;
       default:
-        return '' as ReturnType<this['render']>;
+        return '';
     }
   }
 }
