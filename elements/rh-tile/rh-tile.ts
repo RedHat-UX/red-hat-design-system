@@ -141,6 +141,7 @@ export class RhTile extends LitElement {
   override async willUpdate(changed: PropertyValues<this>) {
     this.#internals.role = this.radioGroup ? 'radio' : this.checkable ? 'checkbox' : null;
     this.#internals.ariaChecked = !this.#isCheckable ? null : String(!!this.checked);
+    this.#internals.ariaLabel = !this.#isCheckable ? null : 'headline';
     if (changed.has('value') || changed.has('checked')) {
       this.#internals.setFormValue(
         this.#isCheckable && this.checked ? this.value ?? null : null,
@@ -191,16 +192,15 @@ export class RhTile extends LitElement {
             <div id="header">
               <slot id="title"
                     name="title"
-                    ?hidden="${!(!this.checkable && !this.compact)}"
-              ></slot>
+                    ?hidden="${this.checkable || this.compact}"></slot>
               <slot id="headline" name="headline"></slot>
-              <div aria-hidden="true" ?hidden="${!this.#isCheckable}" ?inert="${!this.#isCheckable}">
+              <div id="input-outer" aria-hidden="true" ?hidden="${!this.#isCheckable}" ?inert="${!this.#isCheckable}">
                 <input id="input"
                        type="${this.radioGroup ? 'radio' : 'checkbox'}"
                        tabindex="-1"
                        ?checked="${checked}"
-                       ?disabled="${disabled}">
-              </input>
+                       ?disabled="${disabled}"></input>
+              </div>
             </div>
             <slot id="body"></slot>
             <div id="footer">
