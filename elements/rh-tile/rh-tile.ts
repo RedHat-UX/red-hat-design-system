@@ -81,10 +81,8 @@ export class RhTile extends LitElement {
   @property() icon?: string;
 
   /**
-   * Whether tile can be checked like a radio or checkbox:
-   * `false` (default) - tile behaves like a link;
-   * `true` - tile behaves like a checkbox unless it is part of an
-   * `rh-tile-group` with a `radio` type and more than one tile
+   * When true, tile behaves like a checkbox unless it is part of an
+   * `<rh-tile-group radio>`, in which case it behaves like a radio button
    */
   @property({ type: Boolean }) checkable = false;
 
@@ -260,7 +258,7 @@ export class RhTile extends LitElement {
    */
   #onClick(event: Event) {
     if (event.target === this) {
-      this.dispatchEvent(new TileSelectEvent());
+      this.#requestSelect();
     }
   }
 
@@ -268,7 +266,11 @@ export class RhTile extends LitElement {
     if (this.checkable &&
         !this.disabled &&
         !this.disabledGroup) {
-      this.dispatchEvent(new TileSelectEvent(force));
+      if (this.radioGroup) {
+        this.dispatchEvent(new TileSelectEvent(force));
+      } else {
+        this.checked = !this.checked;
+      }
     }
   }
 
@@ -293,9 +295,8 @@ export class RhTile extends LitElement {
     switch (event.key) {
       case 'Enter':
       case ' ':
-        this.#requestSelect();
         if (event.target === this) {
-          this.dispatchEvent(new TileSelectEvent());
+          this.#requestSelect();
         }
         break;
     }
