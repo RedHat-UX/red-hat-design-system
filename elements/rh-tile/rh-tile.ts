@@ -86,6 +86,12 @@ export class RhTile extends LitElement {
    */
   @property({ type: Boolean }) checkable = false;
 
+  /**
+   * When checkable, the accessible (visually hidden) label for the form control
+   * If not set, the text content of the tile element will be used instead.
+   */
+  @property({ attribute: 'accessible-label' }) accessibleLabel?: string;
+
   /** Form name */
   @property() name?: string;
 
@@ -141,7 +147,11 @@ export class RhTile extends LitElement {
   override async willUpdate(changed: PropertyValues<this>) {
     this.#internals.role = this.radioGroup ? 'radio' : this.checkable ? 'checkbox' : null;
     this.#internals.ariaChecked = !this.#isCheckable ? null : String(!!this.checked);
-    this.#internals.ariaLabel = !this.#isCheckable ? null : 'headline';
+    if (!this.#isCheckable || !this.accessibleLabel) {
+      this.#internals.ariaLabel = null;
+    } else if (this.accessibleLabel) {
+      this.#internals.ariaLabel = this.accessibleLabel;
+    }
     if (changed.has('value') || changed.has('checked')) {
       this.#internals.setFormValue(
         this.#isCheckable && this.checked ? this.value ?? null : null,

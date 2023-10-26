@@ -7,9 +7,9 @@ import { RhTileGroup } from '../rh-tile-group.js';
 
 describe('<rh-tile-group>', function() {
   let element: RhTileGroup;
-  let tile1: HTMLElement;
-  let tile2: HTMLElement;
-  let tile3: HTMLElement;
+  let tile1: RhTile;
+  let tile2: RhTile;
+  let tile3: RhTile;
 
   function press(press: string) {
     return async function() {
@@ -131,8 +131,41 @@ describe('<rh-tile-group>', function() {
           .to.equal(tile3);
       });
     });
-  });
 
+    describe('with accessible labels', function() {
+      beforeEach(async function() {
+        tile2.setAttribute('accessible-label', 'carreau numéro 2');
+        await tile2.updateComplete;
+      });
+
+      it('has radio roles', async function() {
+      // TODO(bennypowers): write some query helpers for snapshots
+        const snapshot = await a11ySnapshot();
+        expect(snapshot).to.deep.equal({
+          role: 'WebArea',
+          name: '',
+          children: [
+            {
+              focused: true,
+              checked: false,
+              name: 'Tile 1',
+              role: 'radio',
+            },
+            {
+              checked: false,
+              name: 'carreau numéro 2',
+              role: 'radio',
+            },
+            {
+              checked: false,
+              name: 'Tile 3',
+              role: 'radio',
+            },
+          ],
+        });
+      });
+    });
+  });
 
   describe('in a form', function() {
     let form: HTMLFormElement;
