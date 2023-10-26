@@ -1,1 +1,1 @@
-export const configure = project => project.config = undefined;
+export const config = undefined;

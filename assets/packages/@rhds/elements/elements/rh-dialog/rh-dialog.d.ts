@@ -1,4 +1,5 @@
 import { PfModal } from '@patternfly/elements/pf-modal/pf-modal.js';
+import '@rhds/elements/lib/elements/rh-context-provider/rh-context-provider.js';
 /**
  * A dialog displays important information to users without requiring them to navigate away from the page.
  * @summary Communicates information requiring user input or action

@@ -1,1 +1,1 @@
-export * from '../../lib/elements/rh-context-provider/rh-context-provider.js';
+export * from '@rhds/elements/lib/elements/rh-context-provider/rh-context-provider.js';

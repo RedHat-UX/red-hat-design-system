@@ -1,6 +1,5 @@
 import { LitElement } from 'lit';
-import { ComposedEvent } from '@patternfly/pfe-core';
-export declare class MenuToggleEvent extends ComposedEvent {
+export declare class MenuToggleEvent extends Event {
     open: boolean;
     menu: HTMLElement;
     constructor(open: boolean, menu: HTMLElement);
@@ -12,6 +11,7 @@ export declare class MenuToggleEvent extends ComposedEvent {
 export declare class RhMenu extends LitElement {
     #private;
     static readonly styles: import("lit").CSSResult[];
+    private on?;
     get activeItem(): HTMLElement | undefined;
     connectedCallback(): void;
     render(): import("lit-html").TemplateResult<1>;

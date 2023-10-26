@@ -1,6 +1,6 @@
 import { LitElement } from 'lit';
 import { ComposedEvent } from '@patternfly/pfe-core';
-import '../../lib/elements/rh-context-provider/rh-context-provider.js';
+import '@rhds/elements/lib/elements/rh-context-provider/rh-context-provider.js';
 import './rh-navigation-secondary-menu-section.js';
 import './rh-navigation-secondary-overlay.js';
 import { RhNavigationSecondaryDropdown } from './rh-navigation-secondary-dropdown.js';

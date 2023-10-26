@@ -2,14 +2,15 @@ var _RhMenu_instances, _RhMenu_tabindex, _RhMenu_initItems;
 import { __classPrivateFieldGet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
-import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
+import { classMap } from 'lit/directives/class-map.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
-import { ComposedEvent } from '@patternfly/pfe-core';
+import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 import { css } from "lit";
-const styles = css `:host{display:contents}slot{display:inline-flex;align-items:stretch;flex-direction:column;width:max-content}`;
-export class MenuToggleEvent extends ComposedEvent {
+const styles = css `:host{display:contents}slot{display:inline-flex;align-items:stretch;flex-direction:column;width:max-content}.dark::slotted(a){color:var(--rh-color-interactive-blue-lightest,#bee1f4)!important;padding:5px!important}.dark::slotted(a:hover){color:var(--rh-color-interactive-blue-lighter,#73bcf7)}.dark::slotted(a:visited){color:var(--rh-color-interactive-purple-lighter,#a18fff)!important}.dark::slotted(a:visited:hover){color:var(--rh-color-interactive-purple-lighter,#a18fff)!important}`;
+export class MenuToggleEvent extends Event {
     constructor(open, menu) {
-        super('toggle');
+        super('toggle', { bubbles: true });
         this.open = open;
         this.menu = menu;
     }
@@ -34,8 +35,9 @@ let RhMenu = class RhMenu extends LitElement {
         __classPrivateFieldGet(this, _RhMenu_instances, "m", _RhMenu_initItems).call(this);
     }
     render() {
+        const { on = '' } = this;
         return html `
-      <slot part="menu"></slot>
+      <slot part="menu" class="${classMap({ [on]: !!on })}"></slot>
     `;
     }
     activateItem(item) {
@@ -52,6 +54,9 @@ _RhMenu_tabindex = new WeakMap(), _RhMenu_instances = new WeakSet(), _RhMenu_ini
     this.requestUpdate();
 };
 RhMenu.styles = [styles];
+__decorate([
+    colorContextConsumer()
+], RhMenu.prototype, "on", void 0);
 RhMenu = __decorate([
     customElement('rh-menu')
 ], RhMenu);
