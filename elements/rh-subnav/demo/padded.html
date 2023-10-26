@@ -1,0 +1,31 @@
+<h2>In a container with padding</h2>
+<div class="padded">
+  <rh-subnav>
+    <a href="#">Users</a>
+    <a href="#">Containers</a>
+    <a href="#">Databases</a>
+    <a href="#" active>Servers</a>
+    <a href="#">System</a>
+    <a href="#"><pf-icon slot="icon" icon="database" set="fas" size="sm"></pf-icon> Network</a>
+    <a href="#">Cloud</a>
+  </rh-subnav>
+</div>
+
+<link rel="stylesheet" href="../rh-subnav-lightdom.css">
+
+<script type="module">
+  import '@rhds/elements/rh-subnav/rh-subnav.js';
+  import '@patternfly/elements/pf-icon/pf-icon.js';
+</script>
+
+<style>
+  .padded {
+    padding-inline: var(--rh-space-2xl, 32px);
+  }
+
+  @media screen and (min-width: 576px) {
+    .padded {
+      padding: var(--rh-space-3xl, 48px) var(--rh-space-3xl, 48px) 0;
+    }
+  }
+</style>
