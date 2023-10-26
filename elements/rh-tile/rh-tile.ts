@@ -89,6 +89,22 @@ export class RhTile extends LitElement {
   /**
    * When checkable, the accessible (visually hidden) label for the form control
    * If not set, the text content of the tile element will be used instead.
+   * @example Setting an accessible label when there is no text content
+   *          ```html
+   *          <form>
+   *            <rh-tile-group radio>
+   *              <rh-tile name="radio" value="1">Tile 1</rh-tile>
+   *              <rh-tile name="radio" value="2">Tile 2</rh-tile>
+   *              <rh-tile name="radio"
+   *                       value="3"
+   *                       accessible-label="Tile 3">
+   *                <img slot="image"
+   *                     role="presentation"
+   *                     src="tile-3.webp">
+   *              </rh-tile>
+   *            </rh-tile-group>
+   *          </form>
+   *          ```
    */
   @property({ attribute: 'accessible-label' }) accessibleLabel?: string;
 
@@ -144,14 +160,12 @@ export class RhTile extends LitElement {
     this.addEventListener('click', this.#onClick);
   }
 
+  /** Update the internal accessible representation of the element's state */
   override async willUpdate(changed: PropertyValues<this>) {
     this.#internals.role = this.radioGroup ? 'radio' : this.checkable ? 'checkbox' : null;
     this.#internals.ariaChecked = !this.#isCheckable ? null : String(!!this.checked);
-    if (!this.#isCheckable || !this.accessibleLabel) {
-      this.#internals.ariaLabel = null;
-    } else if (this.accessibleLabel) {
-      this.#internals.ariaLabel = this.accessibleLabel;
-    }
+    this.#internals.ariaDisabled = !this.#isCheckable ? null : String(!!this.disabled);
+    this.#internals.ariaLabel = !(this.#isCheckable && this.accessibleLabel) ? null : this.accessibleLabel;
     if (changed.has('value') || changed.has('checked')) {
       this.#internals.setFormValue(
         this.#isCheckable && this.checked ? this.value ?? null : null,
@@ -159,10 +173,8 @@ export class RhTile extends LitElement {
     }
   }
 
-  override async updated(changed: PropertyValues<this>) {
-    if (changed.has('disabled')) {
-      this.#internals.ariaDisabled = String(!!this.disabled);
-    }
+  /** Update the external keyboard-accessible element state */
+  override async updated() {
     if (!this.radioGroup) {
       if (this.checkable) {
         this.tabIndex = 0;
