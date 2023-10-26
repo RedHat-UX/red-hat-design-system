@@ -1,64 +1,48 @@
-{% macro menuLink (text, linkUrl, className) %}
-  {% set classes = className %}
-  {% if page.url == linkUrl %}
-    {% set classes = classes + " " + className + "--active" %}
-  {% endif %}
-  <a class="{{ classes }}" href="{{ linkUrl | url }}">
-    {{ text }}
-  </a>
-{% endmacro %}
-
-<script async defer>
-  window.onUsersnapCXLoad = function(api) {
-    api.init();
-  }
-  var script = document.createElement('script');
-  script.async = 1;
-  script.src = 'https://widget.usersnap.com/load/64471a95-72fe-4239-b16d-ebcf8b1219f7?onload=onUsersnapCXLoad';
-  document.getElementsByTagName('head')[0].appendChild(script);
-</script>
-
-<header class="l-header">
-
-  <div class="l-header__logo-bar">
-    <a href="/"><img class="l-header__logo" src="{{ '/assets/red-hat-design-system.svg' | url }}" alt="Red Hat design system logo" style="max-width: 188px; min-width: 42px;" /></a>
+<header id="main-header">
+  <div class="logo-bar">
+    <a href="/">
+      <img class="logo"
+           alt="Red Hat design system logo"
+           src="{{ '/assets/red-hat-design-system.svg' | url }}"
+           style="max-width: 188px; min-width: 42px;">
+    </a>
   </div>
 
-  <input id="mobile-menu-toggle" class="menu-toggle element-invisible" type="checkbox" aria-controls="mobile-menu-menu-container">
+  <input id="mobile-menu-toggle"
+         class="menu-toggle element-invisible"
+         type="checkbox"
+         aria-controls="mobile-menu-menu-container">
 
-  <label class="menu-toggle__button l-header__mobile-menu-toggle" for="mobile-menu-toggle" data-controls="mobile-menu-menu-container">
-    <span class="l-header__burger-icon"></span>
+  <label class="menu-toggle-button mobile-menu-toggle"
+         for="mobile-menu-toggle"
+         data-controls="mobile-menu-menu-container">
+    <span class="burger-icon"></span>
     <span class="menu-toggle-assistive-text element-invisible">Toggle menu visibility</span>
   </label>
 
-  <div class="menu-toggle__toggleable site-navigation__outer-wrapper">
-    <nav class="l-header__site-navigation site-navigation menu-toggle__toggleable-content-wrapper">
-      <ul class="site-navigation__wrapper">
-        <li class="site-navigation__item">
-          {{ menuLink('Home', '/', 'site-navigation__link') }}
+  <div class="menu-toggle-toggleable site-navigation-outer-wrapper">
+    <nav class="site-navigation site-navigation menu-toggle-toggleable-content-wrapper">
+      <ul class="wrapper">
+        <li class="item">
+          <a class="link {{ 'active' if page.url === '/' }}"
+             href="{{ '/' | url }}">Home</a>
         </li>
 
-        <!-- About
+        <!-- About -->
 
-        <li class="site-navigation__item">
-          {{ menuLink('About this website', '/about/', 'site-navigation__link') }}
-        </li> -->
-
-        <li class="site-navigation__item">
-          {% set extraAttributes = "" %}
-          {% if 'about/' in page.url %}
-            {% set extraAttributes = " open" %}
-          {% endif %}
-          <details {{ extraAttributes }}>
-            <summary class="site-navigation__heading">About</summary>
-            <ul class="site-navigation__sub-menu">
-              <li class="site-navigation__sub-menu__item">
-                {{ menuLink('About this website', '/about/', 'site-navigation__sub-menu__link') }}
+        <li class="item">
+          <details {{ 'open' if 'about/' in page.url }}>
+            <summary class="heading">About</summary>
+            <ul class="sub-menu">
+              <li class="item">
+                <a class="link {{ 'active' if page.url.startsWith('/about/') }}"
+                   href="{{ '/about/' | url }}">About this website</a>
               </li>
-              {%- for about in collections.about -%}
-                <li class="site-navigation__sub-menu__item">
-                  {{ menuLink(about.data.title, about.url, 'site-navigation__sub-menu__link') }}
-                </li>
+              {%- for link in collections.about -%}
+              <li class="item">
+                <a class="link {{ 'active' if page.url === link.url }}"
+                   href="{{ link.url | url }}">{{ link.data.title }}</a>
+              </li>
               {%- endfor -%}
             </ul>
           </details>
@@ -66,21 +50,19 @@
 
         <!-- Get started -->
 
-        <li class="site-navigation__item">
-          {% set extraAttributes = "" %}
-          {% if 'get-started/' in page.url %}
-            {% set extraAttributes = " open" %}
-          {% endif %}
-          <details {{ extraAttributes }}>
-            <summary class="site-navigation__heading">Get started</summary>
-            <ul class="site-navigation__sub-menu">
-              <li class="site-navigation__sub-menu__item">
-                {{ menuLink('Overview', '/get-started/', 'site-navigation__sub-menu__link') }}
+        <li class="item">
+          <details {{ 'open' if 'get-started/' in page.url }}>
+            <summary class="heading">Get started</summary>
+            <ul class="sub-menu">
+              <li class="item">
+                <a class="link {{ 'active' if page.url === '/get-started/' }}"
+                   href="{{ '/get-started/' | url }}">Overview</a>
               </li>
-              {%- for getstarted in collections.getstarted -%}
-                <li class="site-navigation__sub-menu__item">
-                  {{ menuLink(getstarted.data.title, getstarted.url, 'site-navigation__sub-menu__link') }}
-                </li>
+              {%- for link in collections.getstarted -%}
+              <li class="item">
+                <a class="link {{ 'active' if page.url === link.url }}"
+                   href="{{ link.url | url }}">{{ link.data.title }}</a>
+              </li>
               {%- endfor -%}
             </ul>
           </details>
@@ -88,44 +70,43 @@
 
         <!-- Foundations -->
 
-        <li class="site-navigation__item">
-          {% set extraAttributes = "" %}
-          {% if 'foundations/' in page.url %}
-            {% set extraAttributes = " open" %}
-          {% endif %}
-          <details {{ extraAttributes }}>
-            <summary class="site-navigation__heading">Foundations</summary>
-            <ul class="site-navigation__sub-menu">
-              <li class="site-navigation__sub-menu__item">
-                {{ menuLink('Overview', '/foundations/', 'site-navigation__sub-menu__link') }}
-                {{ menuLink('Color', '/foundations/color/', 'site-navigation__sub-menu__link') }}
-                {{ menuLink('Grid', '/foundations/grid/', 'site-navigation__sub-menu__link') }}
-                {{ menuLink('Personalization patterns', '/foundations/personalization/', 'site-navigation__sub-menu__link') }}
-                {{ menuLink('Spacing', '/foundations/spacing/', 'site-navigation__sub-menu__link') }}
-                {{ menuLink('Typography', '/foundations/typography/', 'site-navigation__sub-menu__link') }}
+        <li class="item">
+          <details {{ 'open' if 'foundations/' in page.url }}>
+            <summary class="heading">Foundations</summary>
+            <ul class="sub-menu">
+              <li class="item">
+                {%- set foundationsLinks = [
+                  [ 'Overview', '/foundations/' ],
+                  [ 'Color', '/foundations/color/' ],
+                  [ 'Grid', '/foundations/grid/' ],
+                  [ 'Personalization patterns', '/foundations/personalization/' ],
+                  [ 'Spacing', '/foundations/spacing/' ],
+                  [ 'Typography', '/foundations/typography/' ]
+                ] -%}
+                {%- for text, link in foundationsLinks -%}
+                <a class="link {{ 'active' if page.url === link }}"
+                   href="{{ link | url }}">{{ text }}</a>
+                {%- endfor -%}
               </li>
-              <!-- {%- for foundation in collections.foundations -%}
-                <li class="site-navigation__sub-menu__item">
-                  {{ menuLink(foundation.data.title, foundation.url, 'site-navigation__sub-menu__link') }}
-                </li>
-              {%- endfor -%} -->
             </ul>
           </details>
         </li>
 
         <!-- Tokens -->
 
-        <li class="site-navigation__item">
-          <details{{ ' open' if 'tokens/' in page.url }}>
-            <summary class="site-navigation__heading">Tokens</summary>
-            <ul class="site-navigation__sub-menu">
-              <li class="site-navigation__sub-menu__item">
-                {{ menuLink('Overview', '/tokens/', 'site-navigation__sub-menu__link') }}
+        <li class="item">
+          <details {{ 'open' if 'tokens/' in page.url }}>
+            <summary class="heading">Tokens</summary>
+            <ul class="sub-menu">
+              <li class="item">
+                <a class="link {{ 'active' if page.url === '/tokens/' }}"
+                   href="{{ '/tokens/' | url }}">Overview</a>
               </li>
-              {%- for token in collections.token -%}
-                <li class="site-navigation__sub-menu__item">
-                  {{ menuLink(token.title | capitalize, token.url, 'site-navigation__sub-menu__link') }}
-                </li>
+              {%- for link in collections.token -%}
+              <li class="item">
+                <a class="link {{ 'active' if page.url === link.url }}"
+                   href="{{ link.url | url }}">{{ link.title | capitalize }}</a>
+              </li>
               {%- endfor -%}
             </ul>
           </details>
@@ -133,24 +114,24 @@
 
         <!-- Elements -->
 
-        <li class="site-navigation__item">
-          <details{{ ' open' if 'elements/' in page.url }}>
-            <summary class="site-navigation__heading">Elements</summary>
-            <ul class="site-navigation__sub-menu">
-              <li class="site-navigation__sub-menu__item">
-                {{ menuLink('All elements', '/elements/', 'site-navigation__sub-menu__link') }}
+        <li class="item">
+          <details {{ 'open' if 'elements/' in page.url }}>
+            <summary class="heading">Elements</summary>
+            <ul class="sub-menu">
+              <li class="item">
+                <a class="link {{ 'active' if page.url === '/elements/' }}"
+                   href="{{ '/elements/' | url }}">All elements</a>
               </li>
               {%- for tagName, docs in collections.elementDocs | groupby('tagName') -%}
                 {%- set fst = docs[0] -%}
                 {%- set slug = fst.slug -%}
                 {%- set href = '/elements/' + slug + '/' -%}
-                {%- set linkTitle = fst.alias or (slug | deslugify) -%}
-                {%- set comingSoon = tagName in comingSoonItems  -%}
-                {% if not comingSoon %}
-                  <li class="site-navigation__sub-menu__item">
-                    {{ menuLink(linkTitle, href, 'site-navigation__sub-menu__link') }}
+                {% if not (tagName in comingSoonItems) %}
+                  <li class="item">
+                    <a class="link {{ 'active' if page.url.startsWith(href) }}"
+                       href="{{ href | url }}">{{ (fst.alias) or (slug | deslugify) }}</a>
                   </li>
-                {% endif %}                
+                {% endif %}
               {%- endfor -%}
             </ul>
           </details>
@@ -158,43 +139,45 @@
 
         <!-- Patterns -->
 
-        <li class="site-navigation__item">
-          {% set extraAttributes = "" %}
-          {% if 'patterns/' in page.url %}
-            {% set extraAttributes = " open" %}
-          {% endif %}
-          <details {{ extraAttributes }}>
-            <summary class="site-navigation__heading">Patterns</summary>
-            <ul class="site-navigation__sub-menu">
-              <li class="site-navigation__sub-menu__item">
-                {{ menuLink('All patterns', '/patterns/', 'site-navigation__sub-menu__link') }}
+        <li class="item">
+          <details {{ 'open' if 'patterns/' in page.url }}>
+            <summary class="heading">Patterns</summary>
+            <ul class="sub-menu">
+              <li class="item">
+                <a class="link {{ 'active' if page.url === '/patterns/' }}"
+                   href="{{ '/patterns/' | url }}">All patterns</a>
               </li>
-              {%- for pattern in collections.pattern -%}
-                <li class="site-navigation__sub-menu__item">
-                  {{ menuLink(pattern.data.title, pattern.url, 'site-navigation__sub-menu__link') }}
-                </li>
+              {%- for link in collections.pattern -%}
+              <li class="item">
+                <a class="link {{ 'active' if page.url === pattern.url }}"
+                   href="{{ pattern.url | url }}">{{ pattern.data.title }}</a>
+              </li>
               {%- endfor -%}
             </ul>
           </details>
         </li>
 
-        <li class="site-navigation__item">
-          {{ menuLink('Design/code status', '/design-code-status/', 'site-navigation__link') }}
+        <li class="item">
+          <a class="link {{ 'active' if page.url ===  '/design-code-status/' }}"
+             href="{{  '/design-code-status/' | url }}">Design/code status</a>
         </li>
 
-        <li class="site-navigation__item">
-          {{ menuLink('Release notes', '/release-notes/', 'site-navigation__link') }}
+        <li class="item">
+          <a class="link {{ 'active' if page.url ===  '/release-notes/' }}"
+             href="{{ '/release-notes/' | url }}">Release notes</a>
         </li>
-
-        <!--
-
-        <li class="site-navigation__item">
-          {{ menuLink('Get started', '/get-started/', 'site-navigation__link') }}
-        </li>
-
-        -->
-
       </ul>
     </nav>
   </div>
 </header>
+
+<script type="module">
+  window.onUsersnapCXLoad = function(api) {
+    api.init();
+  }
+  var script = document.createElement('script');
+  script.async = 1;
+  script.src = 'https://widget.usersnap.com/load/64471a95-72fe-4239-b16d-ebcf8b1219f7?onload=onUsersnapCXLoad';
+  document.head.appendChild(script);
+</script>
+

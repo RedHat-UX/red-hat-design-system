@@ -6,9 +6,9 @@ $html.classList.add('js');
 // Add a link to the cheat sheet in the nav if we're local
 if (window.location.hostname === 'localhost') {
   const $cheatSheetItem = document.createElement('li');
-  $cheatSheetItem.classList.add('site-navigation__item');
-  $cheatSheetItem.innerHTML = '<a href="/cheatsheet" class="site-navigation__link">Cheat sheet!</a>';
-  document.querySelector('.site-navigation__wrapper').append($cheatSheetItem);
+  $cheatSheetItem.classList.add('item');
+  $cheatSheetItem.innerHTML = '<a href="/cheatsheet" class="link">Cheat sheet!</a>';
+  document.querySelector('.site-navigation .wrapper').append($cheatSheetItem);
 }
 
 // Dismissable alert
