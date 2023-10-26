@@ -180,6 +180,7 @@
     display: contents;
   }
 
+  /* dark variant must be on a dark background as per design spec */
   [data-demo="rh-navigation-secondary"] {
     padding: 0;
   }
@@ -188,6 +189,12 @@
   #space-holder {
     min-height: 101vh;
     padding: var(--_text-padding, var(--rh-space-lg, 16px));
+    background-color: var(--rh-color-surface-darker, #1f1f1f);
+    color: var(--rh-color-text-primary-on-dark, #ffffff);
+  }
+
+  #space-holder a {
+    color: var(--rh-color-accent-base-on-dark, #73bcf7);
   }
 
   @media screen and (min-width: 768px) {
