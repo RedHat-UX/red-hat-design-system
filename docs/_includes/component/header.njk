@@ -166,6 +166,12 @@
           <a class="link {{ 'active' if page.url ===  '/release-notes/' }}"
              href="{{ '/release-notes/' | url }}">Release notes</a>
         </li>
+
+        {%- if runMode == 'watch' -%}
+          <li class="item">
+            <a href="/cheatsheet" class="link">Cheat sheet!</a>
+          </li>
+        {%- endif -%}
       </ul>
     </nav>
   </div>
