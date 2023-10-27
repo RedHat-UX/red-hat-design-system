@@ -719,7 +719,7 @@ hr {
   right: 32px;
   bottom: 32px;
   width: 3em;
-  // pointer-events: none;
+  pointer-events: none;
   z-index: 1;
 }
 
@@ -730,6 +730,7 @@ hr {
   display: inline-block;
   transition: transform 80ms ease-in;
   z-index: 1;
+  pointer-events: all;
 
   img {
     transition: 0.3s ease all;
