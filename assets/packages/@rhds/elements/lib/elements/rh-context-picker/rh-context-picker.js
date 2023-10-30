@@ -1,4 +1,4 @@
-var _RhContextPicker_instances, _RhContextPicker_offset, _RhContextPicker_internals, _RhContextPicker_target, _RhContextPicker_onInput, _RhContextPicker_setValue;
+var _RhContextPicker_instances, _RhContextPicker_offset, _RhContextPicker_internals, _RhContextPicker_target, _RhContextPicker_onChange, _RhContextPicker_onInput, _RhContextPicker_setValue;
 var RhContextPicker_1;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { html, LitElement } from 'lit';
@@ -14,7 +14,7 @@ import { css } from "lit";
 const style = css `:host{display:inline-block;width:300px;padding:6px}#container{position:relative}input{--thumb-color:var(--rh-color-interactive-blue-darker, #0066cc);--s:1px;pointer-events:none;margin:0;width:100%;height:100%;appearance:none;background:0 0;position:absolute;z-index:1}input::-webkit-slider-thumb{appearance:none;margin-top:-14px;position:relative}input::-moz-range-thumb,input::-webkit-slider-thumb{pointer-events:auto;background:0 0;border-radius:3px;border:4px solid var(--thumb-color);box-shadow:#000 var(--s) var(--s) var(--s),#0d0d0d 0 0 var(--s);box-sizing:content-box;cursor:pointer;height:100%;translate:var(--offset);width:calc(16.6667%)}input:focus,input:hover{--thumb-color:var(--rh-color-interactive-blue-darkest, #004080);--s:2px}input.dark,input.darker,input.darkest{--thumb-color:var(--rh-color-interactive-blue-lighter, #73bcf7)}input:is(.dark,.darker,.darkest):is(:focus,:hover){--thumb-color:var(--rh-color-interactive-blue-lightest, #bee1f4)}datalist{display:flex;inset:0;flex:1 0 100%;border-radius:var(--rh-border-radius-default,3px);overflow:hidden}option{flex:1 0 1px;min-height:var(--rh-space-3xl,48px);background-color:var(--c)}.visually-hidden{position:fixed;top:0;left:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}#option-darkest{--c:var(--rh-color-surface-darkest, #151515)}#option-darker{--c:var(--rh-color-surface-darker, #1f1f1f)}#option-dark{--c:var(--rh-color-surface-dark, #383838)}#option-light{--c:var(--rh-color-surface-light, #e0e0e0)}#option-lighter{--c:var(--rh-color-surface-lighter, #f2f2f2)}#option-lightest{--c:var(--rh-color-surface-lightest, #ffffff)}`;
 export class ContextChangeEvent extends Event {
     constructor(colorPalette) {
-        super('change', { bubbles: true });
+        super('change', { bubbles: true, cancelable: true });
         this.colorPalette = colorPalette;
     }
 }
@@ -64,6 +64,7 @@ let RhContextPicker = RhContextPicker_1 = class RhContextPicker extends LitEleme
         __classPrivateFieldGet(this, _RhContextPicker_instances, "m", _RhContextPicker_setValue).call(this, state);
     }
     firstUpdated() {
+        const oldTarget = __classPrivateFieldGet(this, _RhContextPicker_target, "f");
         if (this.target) {
             const root = this.getRootNode();
             __classPrivateFieldSet(this, _RhContextPicker_target, root.getElementById(this.target), "f");
@@ -72,6 +73,8 @@ let RhContextPicker = RhContextPicker_1 = class RhContextPicker extends LitEleme
         else {
             __classPrivateFieldSet(this, _RhContextPicker_target, this.closest('rh-context-provider'), "f");
         }
+        oldTarget?.removeEventListener('change', __classPrivateFieldGet(this, _RhContextPicker_instances, "m", _RhContextPicker_onChange));
+        __classPrivateFieldGet(this, _RhContextPicker_target, "f")?.addEventListener('change', __classPrivateFieldGet(this, _RhContextPicker_instances, "m", _RhContextPicker_onChange));
     }
     sync() {
         if (this.value) {
@@ -79,7 +82,11 @@ let RhContextPicker = RhContextPicker_1 = class RhContextPicker extends LitEleme
         }
     }
 };
-_RhContextPicker_offset = new WeakMap(), _RhContextPicker_internals = new WeakMap(), _RhContextPicker_target = new WeakMap(), _RhContextPicker_instances = new WeakSet(), _RhContextPicker_onInput = function _RhContextPicker_onInput(event) {
+_RhContextPicker_offset = new WeakMap(), _RhContextPicker_internals = new WeakMap(), _RhContextPicker_target = new WeakMap(), _RhContextPicker_instances = new WeakSet(), _RhContextPicker_onChange = function _RhContextPicker_onChange(event) {
+    if (event instanceof ContextChangeEvent) {
+        event.stopPropagation();
+    }
+}, _RhContextPicker_onInput = function _RhContextPicker_onInput(event) {
     if (event.target instanceof HTMLInputElement) {
         event.stopPropagation();
         const value = RhContextPicker_1.paletteNames[+event.target.value];
