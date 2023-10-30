@@ -45,6 +45,7 @@
     "🐒-DEV": "❓ Development aids",
     "start": "wireit",
     "dev": "wireit",
+    "serve": "wireit",
     "new": "npm init @patternfly/element",
     "🚧-BUILD": "❓ Make packages and artifacts",
     "build": "wireit",
@@ -86,6 +87,15 @@
     "dev": {
       "service": true,
       "command": "web-dev-server --watch",
+      "dependencies": [
+        "analyze",
+        "compile",
+        "watch:compile"
+      ]
+    },
+    "serve": {
+      "service": true,
+      "command": "eleventy --serve",
       "dependencies": [
         "analyze",
         "compile",
