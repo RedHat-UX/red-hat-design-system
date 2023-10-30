@@ -1,15 +1,19 @@
-import { html, LitElement } from 'lit';
+import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
-import { colorContextProvider, type ColorPalette } from '../../context/color/provider.js';
+import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
-import contextStyle from '../../context/color/context-color.css';
-import style from './rh-context-provider.css';
+import contextStyle from '../../lib/context/color/context-color.css';
+import styles from './rh-surface.css';
 
-@customElement('rh-context-provider')
-export class RhContextProvider extends LitElement {
-  static readonly styles = [contextStyle, style];
+/**
+ * Surface
+ * @slot - Place element content here
+ */
+@customElement('rh-surface')
+export class RhSurface extends LitElement {
+  static readonly styles = [contextStyle, styles];
 
   /**
    * Sets color palette, which affects the element's styles as well as descendants' color theme.
@@ -26,5 +30,11 @@ export class RhContextProvider extends LitElement {
 
   #onSlotchange() {
     this.requestUpdate('colorPalette');
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'rh-surface': RhSurface;
   }
 }

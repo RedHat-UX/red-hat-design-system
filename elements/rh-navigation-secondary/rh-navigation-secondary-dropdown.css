@@ -16,12 +16,12 @@
 }
 
 ::slotted([slot="link"]) {
-  --_chevron-color: var(--_context-text);
+  --_chevron-color: var(--rh-context-text);
 
   justify-content: space-between;
   position: relative;
   gap: calc(var(--rh-font-size-body-text-md, 1rem) / 2);
-  background-color: var(--_context-background-color);
+  background-color: var(--rh-context-background-color);
 }
 
 #container.highlight ::slotted([slot="link"]),

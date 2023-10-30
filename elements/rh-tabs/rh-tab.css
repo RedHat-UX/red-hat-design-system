@@ -104,7 +104,7 @@ button:after {
   border-block-end:
     var(--rh-border-width-sm, 1px)
     solid
-    var(--_context-background-color, var(--rh-color-white, #ffffff));
+    var(--rh-context-background-color, var(--rh-color-white, #ffffff));
 }
 
 /* [box]:not([active]) */
@@ -214,7 +214,7 @@ button:after {
     border-block-end:
       var(--rh-border-width-sm, 1px)
       solid
-      var(--_context-background-color, var(--rh-color-white, #ffffff));
+      var(--rh-context-background-color, var(--rh-color-white, #ffffff));
   }
 
   /* .first[box][vertical][active] */
@@ -232,7 +232,7 @@ button:after {
     border-inline-end:
       var(--rh-border-width-sm, 1px)
       solid
-      var(--_context-background-color, var(--rh-color-white, #ffffff));
+      var(--rh-context-background-color, var(--rh-color-white, #ffffff));
   }
 
   /* [active][vertical]:not([box]) */

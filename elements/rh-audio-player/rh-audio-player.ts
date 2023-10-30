@@ -459,7 +459,7 @@ export class RhAudioPlayer extends LitElement {
     const accentColor = !!this.#styles?.getPropertyValue('--rh-audio-player-background-color');
 
     return html`
-      <rh-context-provider id="container"
+      <rh-surface id="container"
           color-palette="${ifDefined(this.colorPalette)}"
           class="${classMap({
               [on]: !!on,
@@ -649,7 +649,7 @@ export class RhAudioPlayer extends LitElement {
                 @transcriptdownload=${this.#onTranscriptDownload}>
           </slot>
         </div>
-      </rh-context-provider>
+      </rh-surface>
     `;
   }
 

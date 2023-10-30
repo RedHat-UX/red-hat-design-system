@@ -5,14 +5,14 @@
   --_chevron-down: -135deg;
   --_chevron-correction-x: calc(-1 * var(--rh-font-size-body-text-md, 1rem) / 16);
   --_chevron-correction-y: calc(-1 * var(--rh-font-size-body-text-md, 1rem) / 16);
-  --_chevron-color: var(--_context-text);
+  --_chevron-color: var(--rh-context-text);
   --_chevron-transform-collapsed:
     rotate(var(--_chevron-up))
     translate(var(--_chevron-correction-x), var(--_chevron-correction-x));
   --_chevron-transform-expanded:
     rotate(var(--_chevron-down))
     translate(var(--_chevron-correction-y), var(--_chevron-correction-y));
-  --_button-font-color: var(--_context-text);
+  --_button-font-color: var(--rh-context-text);
   --_nav-max-height: var(--_max-height, max-content);
   --_nav-min-height: var(--_min-height, 80px);
   --_current-active-child-border-color: var(--rh-color-brand-red-on-light, #ee0000);
@@ -49,7 +49,7 @@ nav.rtl {
   display: grid;
   position: relative;
   z-index: var(--rh-navigation-secondary-z-index, 102);
-  background-color: var(--_context-background-color);
+  background-color: var(--rh-context-background-color);
   gap: 0 var(--rh-space-lg, 16px);
   grid-template-rows:
     minmax(var(--_nav-min-height), var(--_nav-max-height))
@@ -65,7 +65,7 @@ nav.rtl {
   overflow-y: auto;
 }
 
-rh-context-provider {
+rh-surface {
   grid-area: main;
   display: flex;
   flex-direction: column;
@@ -139,7 +139,7 @@ button:focus {
 }
 
 :host([color-palette="dark"]) button {
-  background-color: var(--_context-background-color);
+  background-color: var(--rh-context-background-color);
 }
 
 button:active,
@@ -192,7 +192,7 @@ button[aria-expanded="true"],
     overflow-y: initial;
   }
 
-  rh-context-provider {
+  rh-surface {
     flex-direction: row;
     justify-content: space-between; 
     width: 100%;

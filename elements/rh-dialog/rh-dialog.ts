@@ -9,7 +9,7 @@ import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
 import styles from './rh-dialog.css';
 
-import '@rhds/elements/lib/elements/rh-context-provider/rh-context-provider.js';
+import '@rhds/elements/rh-surface/rh-surface.js';
 
 async function pauseYoutube(iframe: HTMLIFrameElement) {
   const { pauseVideo } = await import('./yt-api.js');
@@ -52,11 +52,11 @@ export class RhDialog extends PfModal {
   render() {
     const { mobile } = this.#screenSize;
     return html`
-      <rh-context-provider id="rhds-wrapper"
+      <rh-surface id="rhds-wrapper"
                            class="${classMap({ mobile })}"
                            color-palette="lightest">
         ${super.render()}
-      </rh-context-provider>
+      </rh-surface>
     `;
   }
 }
