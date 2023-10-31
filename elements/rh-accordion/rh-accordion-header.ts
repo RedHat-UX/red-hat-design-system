@@ -28,7 +28,7 @@ export class AccordionHeaderChangeEvent extends Event {
 /**
  * Accordion Header
  *
- * @csspart text - inline element containing the heading text or slotted heading content
+ * @csspart text - slot for the heading text or slotted heading content
  * @csspart accents - container for accents within the header
  * @csspart icon - caret icon
  *
@@ -73,16 +73,19 @@ export class RhAccordionHeader extends LitElement {
     const headingTag = this.querySelector(`:is(h1,h2,h3,h4,h5,h6)`);
     // icon is Font-Awesome free angle-down
     // TODO: use rh-icon when it's ready
-    return this.#levels.wrap(html`
+    return html`
       <button id="button"
               class="toggle ${classMap({ [on]: !!on, rtl })}"
               aria-expanded="${String(!!this.expanded) as 'true' | 'false'}">
-        <slot></slot>
-        <svg id="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+        ${this.#levels.wrap(html`
+        <slot part="text"></slot>
+        `, { forceWrap: !headingTag })}
+        <slot name="accents" part="accents"></slot>
+        <svg id="icon" part="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
           <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
         </svg>
       </button>
-    `, { forceWrap: !headingTag });
+    `;
   }
 
   #onClick(event: MouseEvent) {
