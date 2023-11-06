@@ -1,7 +1,7 @@
 /* stylelint-disable selector-id-pattern */
 :host {
-  background: var(--rh-context-background-color);
-  color: var(--rh-context-text);
+  background: var(--_context-background-color);
+  color: var(--_context-text);
 }
 
 #rhds-container {
@@ -64,7 +64,7 @@
 #nextTab {
   padding-block: 0;
   padding-inline: var(--rh-space-lg, 16px);
-  background-color: var(--rh-context-background-color);
+  background-color: var(--_context-background-color);
   color: var(--_overflow-button-text-color);
   position: relative;
   z-index: 2;
