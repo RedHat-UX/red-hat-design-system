@@ -6,38 +6,38 @@
 
 :host(:is([color-palette^="dark"])) {
   --context: dark;
-  --rh-context-text: var(--rh-color-text-primary-on-dark, #ffffff);
+  --_context-text: var(--rh-color-text-primary-on-dark, #ffffff);
 }
 
 :host(:is([color-palette^="light"],[color-palette="base"])) {
   --context: light;
-  --rh-context-text: var(--rh-color-text-primary-on-light, #151515);
+  --_context-text: var(--rh-color-text-primary-on-light, #151515);
 }
 
 :host(:is([color-palette="lightest"])) {
-  --rh-context-background-color: var(--rh-color-surface-lightest, #ffffff);
+  --_context-background-color: var(--rh-color-surface-lightest, #ffffff);
 }
 
 :host(:is([color-palette="lighter"])) {
-  --rh-context-background-color: var(--rh-color-surface-lighter, #f2f2f2);
+  --_context-background-color: var(--rh-color-surface-lighter, #f2f2f2);
 }
 
 :host(:is([color-palette="light"])) {
-  --rh-context-background-color: var(--rh-color-surface-light, #e0e0e0);
+  --_context-background-color: var(--rh-color-surface-light, #e0e0e0);
 }
 
 :host(:is([color-palette="base"])) {
-  --rh-context-background-color: var(--rh-color-surface-lightest, #ffffff);
+  --_context-background-color: var(--rh-color-surface-lightest, #ffffff);
 }
 
 :host(:is([color-palette="dark"])) {
-  --rh-context-background-color: var(--rh-color-surface-dark, #383838);
+  --_context-background-color: var(--rh-color-surface-dark, #383838);
 }
 
 :host(:is([color-palette="darker"])) {
-  --rh-context-background-color: var(--rh-color-surface-darker, #1f1f1f);
+  --_context-background-color: var(--rh-color-surface-darker, #1f1f1f);
 }
 
 :host(:is([color-palette="darkest"])) {
-  --rh-context-background-color: var(--rh-color-surface-darkest, #151515);
+  --_context-background-color: var(--rh-color-surface-darkest, #151515);
 }
