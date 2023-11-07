@@ -24,7 +24,7 @@ Our color palette is designed with brand, usability, and accessibility in mind a
 When colors are used together, they form relationships that communicate brand, hierarchy, state, and more.
 
 {% example palette="light",
-          alt="",
+          alt="Variants of several elements",
           src="/assets/color/color-relationships.png" %}
 
 ### Color design tokens
@@ -38,7 +38,7 @@ To learn more about our color design tokens, go to the <a href="/tokens">Tokens<
 Our design system includes multiple sets of colors known as primitives. Primitives reference hard-coded values, but offer no information about usage. Semantic colors reference primitive colors and define how a color is used. Semantic naming is essential not just for color, but for all foundational styles.
 
 {% example palette="light",
-          alt="",
+          alt="Example of how primitive tokens are aliased to semantic tokens, which are used to style a button",
           src="/assets/color/primitive-and-semantic-colors.png" %}
 
 {% feedback %}
