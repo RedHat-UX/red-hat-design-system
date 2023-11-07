@@ -6,6 +6,7 @@ tags:
   - color
 permalink: /foundations/color/accessibility/index.html
 order: 40
+bodyClasses: element-docs
 ---
 
 ## Approach

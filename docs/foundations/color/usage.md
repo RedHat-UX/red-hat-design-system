@@ -6,6 +6,7 @@ tags:
   - color
 permalink: /foundations/color/usage/index.html
 order: 20
+bodyClasses: element-docs
 ---
 
 ## Using color
@@ -178,7 +179,7 @@ The red-orange color is reserved for danger or error states, do not use it anywh
 
 ### Custom themes
 
-Most projects do not need elements and patterns in a custom theme. If you need a custom theme for a campaign or special project, contact the Brand team first. If you need one or more custom design tokens, <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">contact the Design system team</a> first. Do not create your own colors, design tokens, or change the colors of existing components.
+Most projects do not need elements and patterns in a custom theme. If you need a custom theme for a campaign or special project, contact the Brand team <!--what should this link to--> first. If you need one or more custom design tokens, <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">contact the Design system team</a> first. Do not create your own colors, design tokens, or change the colors of existing components.
 
 {% example palette="wrong",
           alt="Magenta button, brand red default call to action, green tooltip, dark orange switch, and light purple checkbox",

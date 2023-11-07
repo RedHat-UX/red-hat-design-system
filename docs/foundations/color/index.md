@@ -7,8 +7,10 @@ tags:
   - color
 permalink: /foundations/color/index.html
 order: 00
+bodyClasses: element-docs
 ---
 
+{% import 'component/foundations.njk' as foundations %}
 
 ## Introduction
 Color helps unify Red Hat digital properties, from website experiences to application interfaces.

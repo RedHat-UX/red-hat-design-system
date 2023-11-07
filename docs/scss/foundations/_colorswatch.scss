@@ -1,12 +1,12 @@
 .color-palette--swatch {
-  width: 100%;
-  height: 120px;
+  width: 40px;
+  height: 40px;
   display: block;
-  border-radius: 3px;
+  border-radius: var(--rh-border-radius-pill, 64px);
   background-color: var(--color-palette-background, #000);
-  margin-bottom: 24px;
 }
 
+/*
 .color-palette--item {
   margin-bottom: 32px;
 
@@ -19,3 +19,4 @@
     }
   }
 }
+*/
