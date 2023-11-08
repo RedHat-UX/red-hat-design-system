@@ -43,8 +43,6 @@ export class RhTooltip extends LitElement {
 
   static readonly styles = [styles];
 
-  #initialized = false;
-
   /** The position of the tooltip, relative to the invoking content */
   @property() position: Placement = 'top';
 
@@ -56,6 +54,8 @@ export class RhTooltip extends LitElement {
   #float = new FloatingDOMController(this, {
     content: (): HTMLElement | undefined | null => this.shadowRoot?.querySelector('#tooltip'),
   });
+
+  #initialized = false;
 
   override connectedCallback(): void {
     super.connectedCallback();
