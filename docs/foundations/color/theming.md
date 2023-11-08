@@ -56,7 +56,7 @@ The design system team is working on creating desaturated theme best practices i
 
 ### Custom theme
 
-A custom theme may be used for very specific brand projects like campaigns. However, the light and dark themes are fine for the majority of other projects. If your project does need a custom theme, contact the Brand team <!-- what should this link to? --> and <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">Design system</a> team for guidance. A custom theme may feature a bespoke color palette, but try to use other styles and components from the design system if possible.
+A custom theme may be used for very specific brand projects like campaigns. However, the light and dark themes are fine for the majority of other projects. If your project does need a custom theme, contact the Brand team and <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">Design system</a> team for guidance. A custom theme may feature a bespoke color palette, but try to use other styles and components from the design system if possible.
 
 {% alert title="Choosing a theme",
             state="warning" %}
@@ -89,7 +89,7 @@ The design system team is working on creating inline theming best practices in t
 
 ### Illustrations and imagery
 
-Illustrations and imagery should align to the theme. The light theme should feature imagery with light colors and vice versa. Imagery with high contrast is only acceptable if it has a transparent background. If you cannot find theme-specific imagery, contact the Brand team <!-- what should this link to? -->.
+Illustrations and imagery should align to the theme. The light theme should feature imagery with light colors and vice versa. Imagery with high contrast is only acceptable if it has a transparent background. If you cannot find theme-specific imagery, contact the Brand team.
 
 {% alert title="More information" %}
 High contrast is using bright components or images in dark environments and vice versa. This is useful to focus attention or create visual tension.
