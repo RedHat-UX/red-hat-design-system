@@ -1,7 +1,7 @@
 ## Overview
 {{ tagName | getElementDescription }}
 
-## Sample component
+## Sample element
 
   {% example palette="light",
       alt="Image of two stacked secondary navigations; one for large breakpoints and the other for small breakpoints",

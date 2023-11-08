@@ -1,6 +1,6 @@
 ---
 layout: layout-basic.njk
-title: Elements
+title: All elements
 summaries:
   audio-player: Plays audio clips and includes other features
   jump-links: Moves users to specific content when a link is selected
@@ -9,6 +9,7 @@ summaries:
   progress-steps: Guides users through a task with sequential steps
   breadcrumb: Keeps track of location as users move through pages
   footnote: Provides additional information or a source for content
+  tile: A form of selection that can be used in place of a link, checkbox, or radio button
 ---
 
 {# NOTE: all images in this view need to be 340 by 200 px in order to maintain same ratio. #}
@@ -26,7 +27,7 @@ summaries:
 {%- for tagName, docs in collections.elementDocs | groupby('tagName') -%}
   {%- set doc = docs[0] -%}
   {%- set slug = doc.slug -%}
-  {%- set title = docs | getTitleFromDocs -%}
+  {%- set title = docs | getTitleFromDocs | makeSentenceCase -%}
   {%- set comingSoon = tagName in comingSoonItems  -%}
   {% if comingSoon %}
     {%- set title = [title, "(coming soon)"] | join(" ") -%}
@@ -42,7 +43,7 @@ summaries:
   {% endif %}
 
   <div class="padding-stacked">
-    {% if not comingSoon %}<a href="{{ doc.href | url }}">{% endif %}
+    {% if not comingSoon %}<a href="{{ doc.overviewHref | url }}">{% endif %}
       {% example palette="descriptive",
                  width=340,
                  alt=linkTitle,

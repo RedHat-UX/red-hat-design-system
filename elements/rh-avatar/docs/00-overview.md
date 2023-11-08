@@ -6,7 +6,7 @@
               src="./avatar-sample.png" %}
 
 
-## Sample component
+## Sample element
 
   <rh-avatar></rh-avatar>
 

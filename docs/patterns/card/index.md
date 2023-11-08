@@ -11,7 +11,7 @@ A card formats content in a small, contained space. It can be used to display a
 preview of information or provide secondary content in relation to the content 
 it's near. Several cards can be used together to group related information.
 
-## Sample
+## Sample pattern
 
 <rh-card>
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend 

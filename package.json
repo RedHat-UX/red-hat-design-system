@@ -1,6 +1,6 @@
 {
   "name": "@rhds/elements",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Red Hat Design System Elements",
   "type": "module",
   "license": "MIT",
@@ -33,6 +33,7 @@
     "!*.{spec,e2e}.ts",
     "elements/*/*.{js,md,map,txt,d.ts}",
     "elements/*/*-lightdom.css",
+    "elements/rh-audio-player/i18n/*.json",
     "!elements/*/docs/**/*.{js,html,css,md}",
     "!elements/*/demo/**/*.{js,html,css,md}",
     "!elements/*/test/*.{spec,e2e}.{ts,d.ts}",
@@ -44,13 +45,14 @@
     "🐒-DEV": "❓ Development aids",
     "start": "wireit",
     "dev": "wireit",
+    "serve": "wireit",
     "new": "npm init @patternfly/element",
     "🚧-BUILD": "❓ Make packages and artifacts",
     "build": "wireit",
     "docs": "wireit",
     "site": "npm run docs",
     "🧪-TEST": "❓ Test packages",
-    "test": "wtr --group default",
+    "test": "wireit",
     "test:ci": "wtr",
     "test:watch": "wtr --watch --group default",
     "test:vue": "wtr --watch --group with-vue",
@@ -91,6 +93,15 @@
         "watch:compile"
       ]
     },
+    "serve": {
+      "service": true,
+      "command": "eleventy --serve",
+      "dependencies": [
+        "analyze",
+        "compile",
+        "watch:compile"
+      ]
+    },
     "build": {
       "dependencies": [
         "patch",
@@ -100,10 +111,17 @@
         "docs"
       ]
     },
+    "test": {
+      "command": "wtr --group default",
+      "dependencies": [
+        "build"
+      ]
+    },
     "compile": {
       "command": "ttsc",
       "files": [
         "elements/**/*.ts",
+        "lib/**/*.css",
         "lib/**/*.ts"
       ],
       "output": [
@@ -214,12 +232,16 @@
     "@commitlint/config-conventional": "^17.4.4",
     "@jspm/generator": "^1.1.7",
     "@lit/reactive-element": "^1.6.1",
+    "@parse5/tools": "^0.3.0",
     "@patternfly/create-element": "^1.0.1",
     "@patternfly/eslint-config-elements": "^2.0.1",
     "@patternfly/eslint-plugin-elements": "^1.1.0",
     "@patternfly/pfe-tools": "^1.5.0",
     "@playwright/test": "^1.31.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-typescript": "^11.1.5",
     "@types/mocha": "^10.0.0",
+    "@web/rollup-plugin-import-meta-assets": "^2.1.0",
     "async-csv": "^2.1.3",
     "autoprefixer": "^10.4.14",
     "cssnano": "^5.1.15",
@@ -233,10 +255,11 @@
     "glob": "^9.3.1",
     "image-size": "^1.0.2",
     "leasot": "^13.3.0",
-    "linkedom": "^0.14.25",
     "markdown-it-anchor": "^8.6.7",
     "markdown-it-attrs": "^4.1.6",
     "markdownlint-cli2": "^0.8.1",
+    "parse5": "^7.1.2",
+    "playground-elements": "^0.18.1",
     "postcss-pxtorem": "^6.0.0",
     "renamer": "^4.0.0",
     "sinon": "^15.0.4",

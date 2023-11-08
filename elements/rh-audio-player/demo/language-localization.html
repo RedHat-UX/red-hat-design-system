@@ -1,34 +1,3 @@
-<h2>rh-audio-player: Language Localization</h2>
-
-<!-- Options for demo -->
-<form>
-  <p>Options:</p>
-  <ul>
-    <li><label>Poster: <input name="poster"
-               type="checkbox"
-               checked /></label></li>
-    <li><label>Color Palette:
-        <select name="palette">
-          <option value="light" selected>Light</option>
-          <option value="dark">Dark</option>
-          <option value="purple">Purple</option>
-          <option value="purple-img">Purple with Image</option>
-          <option value="cyan">Cyan </option>
-        </select>
-      </label></li>
-    <li>
-      <label>Layout:
-        <select name="layout">
-          <option value="full" selected>Full</option>
-          <option value="compact-wide">Compact Wide</option>
-          <option value="compact">Compact</option>
-          <option value="">Mini</option>
-        </select>
-      </label>
-    </li>
-  </ul>
-</form>
-
 <rh-audio-player lang="es"
                  layout="full"
                  poster="https://www.redhat.com/cms/managed-files/img-clh-s4e1-hero-455x539_0.png">
@@ -423,7 +392,15 @@
   </rh-transcript>
 </rh-audio-player>
 
-<link rel="stylesheet" href="demo.css">
 <link rel="stylesheet" href="../rh-audio-player-lightdom.css">
-<script type="module" src="customization.js"></script>
+
+<script type="module">
+  import '@rhds/elements/rh-audio-player/rh-audio-player.js';
+</script>
+
+<style>
+  [data-demo="rh-audio-player"] {
+    padding: var(--rh-space-xl, 24px);
+  }
+</style>
 

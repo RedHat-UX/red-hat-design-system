@@ -8,7 +8,7 @@ tags:
 
 A Video thumbnail is a graphical preview of a video overlayed with a play button. When it’s selected, a video player modal will be displayed so a user can watch the video at a larger size.
 
-## Sample component
+## Sample pattern
 {% example palette="none",
            alt="Video thumbnail",
            src="./video-thumbnail.svg" %}

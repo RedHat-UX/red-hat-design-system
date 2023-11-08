@@ -2,14 +2,17 @@ import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
+import { state } from 'lit/decorators/state.js';
+import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
+
+import { ComposedEvent } from '@patternfly/pfe-core';
+import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
-import '../../lib/elements/rh-context-provider/rh-context-provider.js';
+import '@rhds/elements/lib/elements/rh-context-provider/rh-context-provider.js';
 
 import './rh-navigation-secondary-menu-section.js';
 import './rh-navigation-secondary-overlay.js';
-
-import { ComposedEvent } from '@patternfly/pfe-core';
 
 import { RhNavigationSecondaryDropdown, SecondaryNavDropdownExpandEvent } from './rh-navigation-secondary-dropdown.js';
 
@@ -32,12 +35,11 @@ export type NavPalette = Extract<ColorPalette, (
 )>;
 
 import styles from './rh-navigation-secondary.css';
-import { state } from 'lit/decorators/state.js';
 
 /**
  * The Secondary navigation is used to connect a series of pages together. It displays wayfinding content and links relevant to the page it is placed on. It should be used in conjunction with the [primary navigation](../navigation-primary).
  *
- * @summary  Guides users through a task with sequential steps
+ * @summary Propagates related content across a series of pages
  *
  * @slot logo           - Logo added to the main nav bar, expects `<a>Text</a> | <a><svg/></a> | <a><img/></a>` element
  * @slot nav            - Navigation list added to the main nav bar, expects `<ul>` element
@@ -67,6 +69,8 @@ export class RhNavigationSecondary extends LitElement {
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette: NavPalette = 'lighter';
 
+  @queryAssignedElements({ slot: 'nav' }) private _nav?: HTMLElement[];
+
   #logger = new Logger(this);
 
   #logoCopy: HTMLElement | null = null;
@@ -81,6 +85,13 @@ export class RhNavigationSecondary extends LitElement {
 
   /** Compact mode  */
   #compact = false;
+
+  #tabindex = new RovingTabindexController(this);
+
+  #rtiInit = false;
+
+  /** Navigation Items that should be initialized by Roving Tabindex */
+  #navItems: HTMLElement[] | undefined;
 
   /**
    * `mobileMenuExpanded` property is toggled when the mobile menu button is clicked,
@@ -141,7 +152,7 @@ export class RhNavigationSecondary extends LitElement {
                   aria-expanded="${String(expanded) as 'true' | 'false'}"
                   @click="${this.#toggleMobileMenu}"><slot name="mobile-menu">Menu</slot></button>
           <rh-context-provider color-palette="${dropdownPalette}">
-            <slot name="nav"></slot>
+            <slot name="nav" @slotchange="${this.#onSlotchange}"></slot>
             <div id="cta" part="cta">
               <slot name="cta"></slot>
             </div>
@@ -216,22 +227,79 @@ export class RhNavigationSecondary extends LitElement {
    */
   #onKeydown(event: KeyboardEvent) {
     switch (event.key) {
-      case 'Escape':
-        if (this.#screenSize.matches.has('md')) {
+      case 'Escape': {
+        if (!this.#screenSize.matches.has('md')) {
           this.mobileMenuExpanded = false;
           this.shadowRoot?.querySelector('button')?.focus?.();
         } else {
-          this.#allDropdowns()
-            .find(x => x.expanded)
-            ?.querySelector('a')
-            ?.focus();
+          this.#tabindex.activeItem?.focus();
         }
         this.close();
         this.overlayOpen = false;
         break;
+      }
+      case 'Tab':
+        this.#onTabEvent(event);
+        break;
       default:
         break;
     }
+  }
+
+  #onTabEvent(event: KeyboardEvent) {
+    // target is the element we are leaving with tab press
+    const target = event.target as HTMLElement;
+    // get target parent dropdown
+    const dropdowns = this.#allDropdowns();
+    const dropdownParent = dropdowns.find(dropdown => dropdown.contains(target));
+    if (!dropdownParent) {
+      return;
+    }
+    const focusableChildren = this.#focusableChildElements(dropdownParent);
+    if (!focusableChildren) {
+      return;
+    }
+    if (event.shiftKey) {
+      const firstFocusable = focusableChildren[0] === target;
+      if (!firstFocusable) {
+        return;
+      } else {
+        this.close();
+        this.overlayOpen = false;
+      }
+    } else {
+      // is the target the last focusableChildren element in the dropdown
+      const lastFocusable = focusableChildren[focusableChildren.length - 1] === target;
+      if (!lastFocusable) {
+        return;
+      }
+      event.preventDefault();
+      this.close();
+      this.overlayOpen = false;
+      this.#tabindex.updateActiveItem(this.#tabindex.nextItem);
+      this.#tabindex.activeItem?.focus();
+    }
+  }
+
+  #onSlotchange() {
+    this._nav?.forEach(nav => {
+      this.#navItems = Array.from(
+        nav.querySelectorAll(':is(rh-navigation-secondary-dropdown, rh-secondary-nav-dropdown) > a, [slot="nav"] > li > a')
+      );
+    });
+    if (this.#rtiInit) {
+      this.#tabindex.updateItems(this.#navItems ?? []);
+    } else {
+      this.#tabindex.initItems(this.#navItems ?? []);
+      this.#rtiInit = true;
+    }
+  }
+
+  /* TODO: Abstract this out to a shareable function, should RTI handle something similar? */
+  #focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
+    return parent.querySelectorAll(
+      'a, button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"]):not([disabled]), details:not([disabled]), summary:not(:disabled)'
+    );
   }
 
   /**
@@ -268,6 +336,10 @@ export class RhNavigationSecondary extends LitElement {
     }
     const dropdown = this.#dropdownByIndex(index);
     if (dropdown && RhNavigationSecondary.isDropdown(dropdown)) {
+      const link = dropdown.querySelector('a');
+      if (link) {
+        this.#tabindex.updateActiveItem(link);
+      }
       this.#openDropdown(dropdown);
     }
   }
