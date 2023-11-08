@@ -36,11 +36,10 @@ A canvas is a background color and it determines what theme is used. The default
           alt="swatches of the default canvas colors for dark and light theme and examples of custom canvas colors",
           src="/assets/color/canvas.png" %}
 
-### Surface <!-- UPDATE THIS WITH SURFACE DEFINITION -->
+### Surface
 
-A surface is a container background color that sits on top of a canvas. Surface colors are used as backgrounds for large sections or small components and everything in between. For example, a call to action (red surface) can be placed on a card (white surface) as part of a section (light gray surface) on a canvas (white).
+A surface is a container background color that sits on top of a canvas. Surface colors are used as backgrounds for elements, patterns, and large sections. For example, a card (white surface) can be placed in a section (light gray surface) on a canvas (white).
 
-<!-- REMOVE SURFACE ANNOTATION FROM CTA -->
 {% example palette="none",
           alt="Annotations pointing to canvas and surface colors in a section with a card",
           src="/assets/color/surface.png" %}
