@@ -5,6 +5,9 @@ const fs = require('fs');
  * @this {EleventyContext}
  */
 function repoStatus({ heading = 'Repo status', type = 'Pattern', level = 2 } = {}) {
+  return '';
+  // https://github.com/RedHat-UX/red-hat-design-system/issues/1174
+  // eslint-disable-next-line no-unreachable
   const headingLevel = Array.from({ length: level }, () => '#').join('');
   const checkSVG = fs.readFileSync('node_modules/@patternfly/icons/fas/check.svg', 'utf8');
   /** @type {string[][]} */

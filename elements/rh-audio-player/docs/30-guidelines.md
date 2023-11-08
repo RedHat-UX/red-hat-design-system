@@ -42,7 +42,9 @@ In certain edge cases, the Mini player can hide the volume and contextual menu b
 ### Description and title 
 The description and title help add context to an audio clip. The description is optional, but the title is mandatory.
 
-{% alert title="Warning" %}
+{% alert title="Warning",
+          state="warning" %}
+
 The description and title are not included in the Mini size players.
 {% endalert %}
 
@@ -81,7 +83,9 @@ Compact players can be stacked with headings, text, and horizontal rules.
 ### Full-width 
 The Compact size can span the width of a browser window and be anchored to the top or bottom of a page.
 
-{% alert title="Warning" %}
+{% alert title="Warning",
+          state="warning" %}
+          
 When a Compact size is used full-width, the contextual menu button is replaced by a close button and there is no access to features.
 {% endalert %}
 
