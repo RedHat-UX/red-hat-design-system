@@ -25,7 +25,7 @@ import style from './rh-context-picker.css';
 
 export class ContextChangeEvent extends Event {
   constructor(public colorPalette: ColorPalette) {
-    super('change', { bubbles: true });
+    super('change', { bubbles: true, cancelable: true });
   }
 }
 
@@ -113,6 +113,7 @@ export class RhContextPicker extends LitElement {
   }
 
   firstUpdated() {
+    const oldTarget = this.#target;
     if (this.target) {
       const root = this.getRootNode() as Document | ShadowRoot;
       this.#target = root.getElementById(this.target);
@@ -120,6 +121,12 @@ export class RhContextPicker extends LitElement {
     } else {
       this.#target = this.closest('rh-context-provider');
     }
+    oldTarget?.removeEventListener('change', this.#onChange);
+    this.#target?.addEventListener('change', this.#onChange);
+  }
+
+  #onChange(event: Event) {
+    if (event instanceof ContextChangeEvent) { event.stopPropagation(); }
   }
 
   #onInput(event: Event) {
