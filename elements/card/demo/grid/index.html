@@ -2,10 +2,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
-    <title>Card | Red Hat Design System</title>
+    <title>Grid | Red Hat Design System</title>
     <link rel="preconnect" href="https://ga.jspm.io">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href=" /assets/redhat/redhat-theme/4/advanced-theme.css">
+    <link rel="stylesheet" href="../ /assets/redhat/redhat-theme/4/advanced-theme.css">
     <link rel="stylesheet" href="/assets/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all">
     <link rel="stylesheet" href="/assets/base.css">
 
@@ -22,16 +22,40 @@
   </head>
   <body unresolved="">
     <main>
-      <div data-demo="rh-card"><rh-card>
-  <h2 slot="header">Card</h2>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-     Nullam eleifend elit sed est egestas, a sollicitudin mauris
-     tincidunt. Pellentesque vel dapibus risus. Nullam aliquam
-     felis orci, eget cursus mi lacinia quis. Vivamus at felis sem.</p>
-  <rh-cta slot="footer" priority="primary">
-    <a href="#">Call to action</a>
-  </rh-cta>
-</rh-card>
+      <div data-demo="rh-card"><div id="card-grid">
+  <rh-card>
+    <h2 slot="header">Grid Card</h2>
+    <p>In a grid, cards will fill all the available vertical space.</p>
+    <rh-cta priority="primary" slot="footer">
+      <a href="#">Call to action</a>
+    </rh-cta>
+  </rh-card>
+
+  <rh-card>
+    <h2 slot="header">Grid Card with More Content</h2>
+    <p>
+      In such a case, all of the grid card's footers should be
+      vertically aligned. Meaning, they should always rest in
+      the bottom of their card. Even when one card has much more
+      content than its neighbour, and thus fill more vertical space
+      in it's body, the footers should still be aligned.
+    </p>
+    <rh-cta priority="primary" slot="footer">
+      <a href="#">Call to action</a>
+    </rh-cta>
+  </rh-card>
+
+  <rh-card>
+    <h2 slot="header">Grid Card</h2>
+    <p>
+      These kinds of situations should best be avoided. See the
+      guidelines for more information.
+    </p>
+    <rh-cta priority="primary" slot="footer">
+      <a href="https://ux.redhat.com/elements/card/guidelines/#vertical-height">Read the Guidelines</a>
+    </rh-cta>
+  </rh-card>
+</div>
 
 <script type="module">
   import '@rhds/elements/rh-cta/rh-cta.js';
@@ -39,7 +63,11 @@
 </script>
 
 <style>
-[data-demo] { height: auto; }
+#card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--rh-space-lg, 16px);
+}
 </style>
 </div>
     </main>
