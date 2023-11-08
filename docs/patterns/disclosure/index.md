@@ -109,6 +109,13 @@ section text label. It may contain the same elements that can also be used in
 other sections of a page, like text, cards, images, etc. To maintain optimal 
 readability, text shouldn’t exceed eight grid columns.
 
+### Character count
+The label should have fewer characters to help users make sense of what the content will be when they expand a content area.
+
+| Element {style="width: 50%" } | Character count |
+| ----------------------------- | --------------- |
+| Label                         | 45              |
+
 ### Jump links
 
 On small screens, vertical [Jump links](/elements/jump-links/) can be wrapped in 
