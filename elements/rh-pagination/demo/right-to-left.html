@@ -11,7 +11,20 @@
     </ol>
   </rh-pagination>
 </div>
-<link rel="stylesheet" href="demo.css">
+
 <link rel="stylesheet" href="../rh-pagination-lightdom.css">
-<script type="module" src="rh-pagination.js"></script>
+<style>
+  [data-demo="rh-pagination"] {
+    gap: var(--rh-space-2xl, 32px);
+    padding: var(--rh-space-xl, 24px) var(--rh-space-4xl, 64px);
+  }
+  rh-pagination {
+    justify-self: center;
+  }
+</style>
+<script type="module">
+  import '@rhds/elements/rh-button/rh-button.js';
+  import '@rhds/elements/rh-pagination/rh-pagination.js';
+</script>
+
 

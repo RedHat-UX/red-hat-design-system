@@ -7,7 +7,7 @@
 
 
 
-## Sample component
+## Sample element
 <rh-spinner>Loading...</rh-spinner>
 
 

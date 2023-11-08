@@ -1,4 +1,4 @@
-{% renderInstallation %}{% endrenderInstallation %}
+{% renderInstall %}{% endrenderInstall %}
 
 {% band header="Usage" %}
   ```html

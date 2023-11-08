@@ -1,20 +1,13 @@
-import { html } from 'lit';
+import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
-
-import { BaseSpinner } from '@patternfly/elements/pf-spinner/BaseSpinner.js';
 
 import styles from './rh-spinner.css';
 
-export type SpinnerSize = (
-  | 'sm'
-  | 'md'
-  | 'lg'
-);
+export type SpinnerSize = RhSpinner['size'];
 
 /**
  * A spinner indicates that an action is in progress.
@@ -27,27 +20,18 @@ export type SpinnerSize = (
  *
  */
 @customElement('rh-spinner')
-export class RhSpinner extends BaseSpinner {
+export class RhSpinner extends LitElement {
   static readonly styles = [styles];
 
   /**
-   * Sets color palette, which affects the element's styles as well as descendants' color theme.
-   * Overrides parent color context.
-   * Your theme will influence these colors so check there first if you are seeing inconsistencies.
-   * See [CSS Custom Properties](#css-custom-properties) for default values
+   * Preset sizes for the spinner
    */
-  @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
+  @property({ reflect: true }) size: 'sm' | 'md' | 'lg' = 'lg';
 
   /**
    * Sets color theme based on parent context
    */
   @colorContextConsumer() private on?: ColorTheme;
-
-  /**
-   * Preset sizes for the spinner
-   */
-  @property({ reflect: true }) size: SpinnerSize = 'lg';
 
   render() {
     const { on = '' } = this;
@@ -59,6 +43,22 @@ export class RhSpinner extends BaseSpinner {
       <slot></slot>
     `;
   }
+
+  // START hack for removal of contextProvider. delete for version 2.0
+  /**
+   * @deprecated Use Color context instead. See https://ux.redhat.com/foundations/color/context/
+   */
+  @property({ attribute: 'color-palette' }) colorPalette?: string;
+
+  willUpdate() {
+    const [cp] = this.getAttribute('color-palette')?.match(/^dark|^light/) ?? [];
+    if (cp) {
+      this.on = cp as 'dark' | 'light';
+      // eslint-disable-next-line no-console
+      console.warn(`[rh-spinner]: do not use color-palette, it is deprecated`);
+    }
+  }
+  // END hack
 }
 
 declare global {

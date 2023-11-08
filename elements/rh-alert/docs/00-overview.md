@@ -2,7 +2,7 @@
 {{ tagName | getElementDescription }}
 
 
-## Sample component
+## Sample element
 {% example palette="light",
            alt="Two examples of the alert element",
            src="alert-sample.svg" %}
