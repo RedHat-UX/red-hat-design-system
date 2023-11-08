@@ -56,6 +56,10 @@
     var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515)));
 }
 
+:not(.initialized) #tooltip {
+  display: none;
+}
+
 #tooltip:after {
   display: block;
   content: "";

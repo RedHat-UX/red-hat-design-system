@@ -43,6 +43,8 @@ export class RhTooltip extends LitElement {
 
   static readonly styles = [styles];
 
+  #initialized = false;
+
   /** The position of the tooltip, relative to the invoking content */
   @property() position: Placement = 'top';
 
@@ -70,6 +72,7 @@ export class RhTooltip extends LitElement {
       <div id="container"
            style="${styleMap(styles)}"
            class="${classMap({ open,
+                              'initialized': !!this.#initialized,
                                [on]: !!on,
                                [anchor]: !!anchor,
                                [alignment]: !!alignment })}">
@@ -89,6 +92,7 @@ export class RhTooltip extends LitElement {
         !placement?.match(/top|bottom/) ? 15
       : { mainAxis: 15, alignmentAxis: -4 };
     await this.#float.show({ offset, placement });
+    this.#initialized = true;
   }
 
   /** Hide the tooltip */
