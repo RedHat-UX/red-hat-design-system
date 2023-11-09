@@ -73,634 +73,237 @@
     PfIcon.getIconUrl = (set, icon) =>
       new URL(`/assets/packages/@patternfly/elements/pf-icon/icons/${set}/${icon}.js`, location.origin);
   </script>
-
+  <script type="module">
+    // As soon as the DOM is ready, toggle JS class
+    document.documentElement.classList.remove('no-js');
+    document.documentElement.classList.add('js');
+  </script>
+  <script type="module" src="/assets/copy-permalink.js"></script>
 </head>
 
 
 
-
   
 
-
 <body class="page element-docs page--style-or-blockquote" id="top" unresolved="">
-
   <div class="body-inner">
 
     
-
-
-<script async="" defer="">
-  window.onUsersnapCXLoad = function(api) {
-    api.init();
-  }
-  var script = document.createElement('script');
-  script.async = 1;
-  script.src = 'https://widget.usersnap.com/load/64471a95-72fe-4239-b16d-ebcf8b1219f7?onload=onUsersnapCXLoad';
-  document.getElementsByTagName('head')[0].appendChild(script);
-</script>
-
-<header class="l-header">
-
-  <div class="l-header__logo-bar">
-    <a href="/"><img class="l-header__logo" src="/assets/red-hat-design-system.svg" alt="Red Hat design system logo" style="max-width: 188px; min-width: 42px;"></a>
+<header id="main-header">
+  <div class="logo-bar">
+    <a href="/">
+      <img class="logo" alt="Red Hat design system logo" src="/assets/red-hat-design-system.svg" style="max-width: 188px; min-width: 42px;">
+    </a>
   </div>
 
   <input id="mobile-menu-toggle" class="menu-toggle element-invisible" type="checkbox" aria-controls="mobile-menu-menu-container">
 
-  <label class="menu-toggle__button l-header__mobile-menu-toggle" for="mobile-menu-toggle" data-controls="mobile-menu-menu-container">
-    <span class="l-header__burger-icon"></span>
+  <label class="menu-toggle-button mobile-menu-toggle" for="mobile-menu-toggle" data-controls="mobile-menu-menu-container">
+    <span class="burger-icon"></span>
     <span class="menu-toggle-assistive-text element-invisible">Toggle menu visibility</span>
   </label>
 
-  <div class="menu-toggle__toggleable site-navigation__outer-wrapper">
-    <nav class="l-header__site-navigation site-navigation menu-toggle__toggleable-content-wrapper">
-      <ul class="site-navigation__wrapper">
-        <li class="site-navigation__item">
-          
-  
-  
-  <a class="site-navigation__link" href="/">
-    Home
-  </a>
-
+  <div class="menu-toggle-toggleable site-navigation-outer-wrapper">
+    <nav class="site-navigation site-navigation menu-toggle-toggleable-content-wrapper">
+      <ul class="wrapper">
+        <li class="item">
+          <a class="link " href="/">Home</a>
         </li>
 
-        <!-- About
+        <!-- About -->
 
-        <li class="site-navigation__item">
-          
-  
-  
-  <a class="site-navigation__link" href="/about/">
-    About this website
-  </a>
-
-        </li> -->
-
-        <li class="site-navigation__item">
-          
-          
+        <li class="item">
           <details>
-            <summary class="site-navigation__heading">About</summary>
-            <ul class="site-navigation__sub-menu">
-              <li class="site-navigation__sub-menu__item">
-                
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/about/">
-    About this website
-  </a>
-
-              </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/about/how-we-build/">
-    How we build
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/about/roadmap/">
-    Roadmap
-  </a>
-
-                </li></ul>
+            <summary class="heading">About</summary>
+            <ul class="sub-menu">
+              <li class="item">
+                <a class="link " href="/about/">About this website</a>
+              </li><li class="item">
+                <a class="link " href="/about/how-we-build/">How we build</a>
+              </li><li class="item">
+                <a class="link " href="/about/roadmap/">Roadmap</a>
+              </li></ul>
           </details>
         </li>
 
         <!-- Get started -->
 
-        <li class="site-navigation__item">
-          
-          
+        <li class="item">
           <details>
-            <summary class="site-navigation__heading">Get started</summary>
-            <ul class="site-navigation__sub-menu">
-              <li class="site-navigation__sub-menu__item">
-                
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/get-started/">
-    Overview
-  </a>
-
-              </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/get-started/design-system-kit/">
-    Design system kit
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/get-started/fts-starter-kit/">
-    FTS starter kit
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/get-started/icon-libraries/">
-    Icon libraries
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/get-started/product-logo-library/">
-    Product logo library
-  </a>
-
-                </li></ul>
+            <summary class="heading">Get started</summary>
+            <ul class="sub-menu">
+              <li class="item">
+                <a class="link " href="/get-started/">Overview</a>
+              </li><li class="item">
+                <a class="link " href="/get-started/design-system-kit/">Design system kit</a>
+              </li><li class="item">
+                <a class="link " href="/get-started/fts-starter-kit/">FTS starter kit</a>
+              </li><li class="item">
+                <a class="link " href="/get-started/icon-libraries/">Icon libraries</a>
+              </li><li class="item">
+                <a class="link " href="/get-started/product-logo-library/">Product logo library</a>
+              </li></ul>
           </details>
         </li>
 
         <!-- Foundations -->
 
-        <li class="site-navigation__item">
-          
-          
+        <li class="item">
           <details>
-            <summary class="site-navigation__heading">Foundations</summary>
-            <ul class="site-navigation__sub-menu">
-              <li class="site-navigation__sub-menu__item">
-                
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/foundations/">
-    Overview
-  </a>
-
-                
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/foundations/color/">
-    Color
-  </a>
-
-                
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/foundations/grid/">
-    Grid
-  </a>
-
-                
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/foundations/personalization/">
-    Personalization patterns
-  </a>
-
-                
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
-    Spacing
-  </a>
-
-                
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
-    Typography
-  </a>
-
-              </li>
-              <!--<li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/foundations/color/">
-    Color
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/foundations/grid/">
-    Grid
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/foundations/personalization/">
-    Personalization patterns
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
-    Spacing
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
-    Typography
-  </a>
-
-                </li>-->
+            <summary class="heading">Foundations</summary>
+            <ul class="sub-menu">
+              <li class="item"><a class="link " href="/foundations/">Overview</a><a class="link " href="/foundations/color/">Color</a><a class="link " href="/foundations/grid/">Grid</a><a class="link " href="/foundations/personalization/">Personalization patterns</a><a class="link " href="/foundations/spacing/">Spacing</a><a class="link " href="/foundations/typography/">Typography</a></li>
             </ul>
           </details>
         </li>
 
         <!-- Tokens -->
 
-        <li class="site-navigation__item">
+        <li class="item">
           <details>
-            <summary class="site-navigation__heading">Tokens</summary>
-            <ul class="site-navigation__sub-menu">
-              <li class="site-navigation__sub-menu__item">
-                
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/tokens/">
-    Overview
-  </a>
-
-              </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/tokens/color/">
-    Global color
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/tokens/box-shadow/">
-    Box shadow
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/tokens/font/">
-    Typography
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/tokens/border/">
-    Border
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/tokens/opacity/">
-    Opacity
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/tokens/space/">
-    Space
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/tokens/length/">
-    Length
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/tokens/icon/">
-    Icon
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/tokens/breakpoint/">
-    Breakpoints
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/tokens/media/">
-    Media queries
-  </a>
-
-                </li></ul>
+            <summary class="heading">Tokens</summary>
+            <ul class="sub-menu">
+              <li class="item">
+                <a class="link " href="/tokens/">Overview</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/color/">Global color</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/box-shadow/">Box shadow</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/font/">Typography</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/border/">Border</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/opacity/">Opacity</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/space/">Space</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/length/">Length</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/icon/">Icon</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/breakpoint/">Breakpoints</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/media/">Media queries</a>
+              </li></ul>
           </details>
         </li>
 
         <!-- Elements -->
 
-        <li class="site-navigation__item">
+        <li class="item">
           <details open="">
-            <summary class="site-navigation__heading">Elements</summary>
-            <ul class="site-navigation__sub-menu">
-              <li class="site-navigation__sub-menu__item">
-                
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/elements/">
-    All elements
-  </a>
-
+            <summary class="heading">Elements</summary>
+            <ul class="sub-menu">
+              <li class="item">
+                <a class="link " href="/elements/">All elements</a>
               </li>
-                  <li class="site-navigation__sub-menu__item">
-                    
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/elements/accordion/">
-    Accordion
-  </a>
-
+                  <li class="item">
+                    <a class="link " href="/elements/accordion/">Accordion</a>
                   </li>
                 
-                  <li class="site-navigation__sub-menu__item">
-                    
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/elements/alert/">
-    Alert
-  </a>
-
+                  <li class="item">
+                    <a class="link " href="/elements/alert/">Alert</a>
                   </li>
                 
-                  <li class="site-navigation__sub-menu__item">
-                    
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/elements/audio-player/">
-    Audio player
-  </a>
-
+                  <li class="item">
+                    <a class="link " href="/elements/audio-player/">Audio player</a>
                   </li>
                 
-                  <li class="site-navigation__sub-menu__item">
-                    
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/elements/avatar/">
-    Avatar
-  </a>
-
+                  <li class="item">
+                    <a class="link " href="/elements/avatar/">Avatar</a>
                   </li>
                 
-                  <li class="site-navigation__sub-menu__item">
-                    
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/elements/badge/">
-    Badge
-  </a>
-
+                  <li class="item">
+                    <a class="link " href="/elements/badge/">Badge</a>
                   </li>
                 
-                  <li class="site-navigation__sub-menu__item">
-                    
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/elements/blockquote/">
-    Blockquote
-  </a>
-
+                  <li class="item">
+                    <a class="link active" href="/elements/blockquote/">Blockquote</a>
                   </li>
                 
-                  <li class="site-navigation__sub-menu__item">
-                    
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/elements/button/">
-    Button
-  </a>
-
+                  <li class="item">
+                    <a class="link " href="/elements/button/">Button</a>
                   </li>
                 
-                  <li class="site-navigation__sub-menu__item">
-                    
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/elements/call-to-action/">
-    Call to action
-  </a>
-
+                  <li class="item">
+                    <a class="link " href="/elements/call-to-action/">Call to action</a>
                   </li>
                 
-                  <li class="site-navigation__sub-menu__item">
-                    
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/elements/card/">
-    Card
-  </a>
-
+                  <li class="item">
+                    <a class="link " href="/elements/card/">Card</a>
                   </li>
                 
-                  <li class="site-navigation__sub-menu__item">
-                    
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/elements/code-block/">
-    Code block
-  </a>
-
+                  <li class="item">
+                    <a class="link " href="/elements/code-block/">Code block</a>
                   </li>
                 
-                  <li class="site-navigation__sub-menu__item">
-                    
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/elements/dialog/">
-    Dialog
-  </a>
-
+                  <li class="item">
+                    <a class="link " href="/elements/dialog/">Dialog</a>
                   </li>
                 
-                  <li class="site-navigation__sub-menu__item">
-                    
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/elements/footer/">
-    Footer
-  </a>
-
+                  <li class="item">
+                    <a class="link " href="/elements/footer/">Footer</a>
                   </li>
                 
-                  <li class="site-navigation__sub-menu__item">
-                    
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/elements/jump-links/">
-    Jump links
-  </a>
-
+                  <li class="item">
+                    <a class="link " href="/elements/jump-links/">Jump links</a>
                   </li>
                 
-                  <li class="site-navigation__sub-menu__item">
-                    
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/elements/navigation-primary/">
-    Navigation (primary)
-  </a>
-
+                  <li class="item">
+                    <a class="link " href="/elements/navigation-primary/">Navigation (primary)</a>
                   </li>
                 
-                  <li class="site-navigation__sub-menu__item">
-                    
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/elements/navigation-secondary/">
-    Navigation (secondary)
-  </a>
-
+                  <li class="item">
+                    <a class="link " href="/elements/navigation-secondary/">Navigation (secondary)</a>
                   </li>
                 
-                  <li class="site-navigation__sub-menu__item">
-                    
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/elements/pagination/">
-    Pagination
-  </a>
-
+                  <li class="item">
+                    <a class="link " href="/elements/pagination/">Pagination</a>
                   </li>
                 
-                  <li class="site-navigation__sub-menu__item">
-                    
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/elements/popover/">
-    Popover
-  </a>
-
+                  <li class="item">
+                    <a class="link " href="/elements/popover/">Popover</a>
                   </li>
                 
-                  <li class="site-navigation__sub-menu__item">
-                    
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/elements/progress-steps/">
-    Progress steps
-  </a>
-
+                  <li class="item">
+                    <a class="link " href="/elements/progress-steps/">Progress steps</a>
                   </li>
                 
-                  <li class="site-navigation__sub-menu__item">
-                    
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/elements/spinner/">
-    Spinner
-  </a>
-
+                  <li class="item">
+                    <a class="link " href="/elements/spinner/">Spinner</a>
                   </li>
                 
-                  <li class="site-navigation__sub-menu__item">
-                    
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/elements/statistic/">
-    Statistic
-  </a>
-
+                  <li class="item">
+                    <a class="link " href="/elements/statistic/">Statistic</a>
                   </li>
                 
-                  <li class="site-navigation__sub-menu__item">
-                    
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/elements/subnavigation/">
-    Subnavigation
-  </a>
-
+                  <li class="item">
+                    <a class="link " href="/elements/subnavigation/">Subnavigation</a>
                   </li>
                 
-                  <li class="site-navigation__sub-menu__item">
-                    
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/elements/table/">
-    Table
-  </a>
-
+                  <li class="item">
+                    <a class="link " href="/elements/table/">Table</a>
                   </li>
                 
-                  <li class="site-navigation__sub-menu__item">
-                    
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/elements/tabs/">
-    Tabs
-  </a>
-
+                  <li class="item">
+                    <a class="link " href="/elements/tabs/">Tabs</a>
                   </li>
                 
-                  <li class="site-navigation__sub-menu__item">
-                    
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/elements/tag/">
-    Tag
-  </a>
-
+                  <li class="item">
+                    <a class="link " href="/elements/tag/">Tag</a>
                   </li>
                 
-                  <li class="site-navigation__sub-menu__item">
-                    
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/elements/tile/">
-    Tile
-  </a>
-
+                  <li class="item">
+                    <a class="link " href="/elements/tile/">Tile</a>
                   </li>
                 
-                  <li class="site-navigation__sub-menu__item">
-                    
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/elements/timestamp/">
-    Timestamp
-  </a>
-
+                  <li class="item">
+                    <a class="link " href="/elements/timestamp/">Timestamp</a>
                   </li>
                 
-                  <li class="site-navigation__sub-menu__item">
-                    
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/elements/tooltip/">
-    Tooltip
-  </a>
-
+                  <li class="item">
+                    <a class="link " href="/elements/tooltip/">Tooltip</a>
                   </li>
                 </ul>
           </details>
@@ -708,158 +311,61 @@
 
         <!-- Patterns -->
 
-        <li class="site-navigation__item">
-          
-          
+        <li class="item">
           <details>
-            <summary class="site-navigation__heading">Patterns</summary>
-            <ul class="site-navigation__sub-menu">
-              <li class="site-navigation__sub-menu__item">
-                
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/patterns/">
-    All patterns
-  </a>
-
-              </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/patterns/announcement/">
-    Announcement
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/patterns/card/">
-    Card
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/patterns/disclosure/">
-    Disclosure
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/patterns/filter/">
-    Filter
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/patterns/form/">
-    Form
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/patterns/link-with-icon/">
-    Link with icon
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/patterns/link/">
-    Link
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/patterns/search-bar/">
-    Search bar
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/patterns/skip-navigation/">
-    Skip navigation
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/patterns/sticky-banner/">
-    Sticky banner
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/patterns/sticky-card/">
-    Sticky card
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/patterns/video-thumbnail/">
-    Video thumbnail
-  </a>
-
-                </li></ul>
+            <summary class="heading">Patterns</summary>
+            <ul class="sub-menu">
+              <li class="item">
+                <a class="link " href="/patterns/">All patterns</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/announcement/">Announcement</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/card/">Card</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/disclosure/">Disclosure</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/filter/">Filter</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/form/">Form</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/link-with-icon/">Link with icon</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/link/">Link</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/search-bar/">Search bar</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/skip-navigation/">Skip navigation</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/sticky-banner/">Sticky banner</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/sticky-card/">Sticky card</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/video-thumbnail/">Video thumbnail</a>
+              </li></ul>
           </details>
         </li>
 
-        <li class="site-navigation__item">
-          
-  
-  
-  <a class="site-navigation__link" href="/design-code-status/">
-    Design/code status
-  </a>
-
+        <li class="item">
+          <a class="link " href="/design-code-status/">Design/code status</a>
         </li>
 
-        <li class="site-navigation__item">
-          
-  
-  
-  <a class="site-navigation__link" href="/release-notes/">
-    Release notes
-  </a>
-
-        </li>
-
-        <!--
-
-        <li class="site-navigation__item">
-          
-  
-  
-  <a class="site-navigation__link" href="/get-started/">
-    Get started
-  </a>
-
-        </li>
-
-        -->
-
-      </ul>
+        <li class="item">
+          <a class="link " href="/release-notes/">Release notes</a>
+        </li></ul>
     </nav>
   </div>
 </header>
+
+<script type="module">
+  window.onUsersnapCXLoad = function(api) {
+    api.init();
+  }
+  var script = document.createElement('script');
+  script.async = 1;
+  script.src = 'https://widget.usersnap.com/load/64471a95-72fe-4239-b16d-ebcf8b1219f7?onload=onUsersnapCXLoad';
+  document.head.appendChild(script);
+</script>
+
 
 
 
@@ -1237,9 +743,7 @@ also include the following optional elements:</p>
 
       </div>
     </section>
-      
-
-<rh-footer-universal>
+    <rh-footer-universal>
   <h3 slot="links-primary" data-analytics-text="Red Hat legal and privacy links" hidden="">Red Hat legal and privacy links</h3>
   <ul slot="links-primary" data-analytics-region="page-footer-bottom-primary">
     <li><a href="https://redhat.com/en/about/company" data-analytics-category="Footer|Corporate" data-analytics-text="About Red Hat">About Red Hat</a></li>
@@ -1278,9 +782,6 @@ also include the following optional elements:</p>
 
 
   </div>
-  <script type="module" src="/assets/global.js"></script>
-  <script type="module" src="/assets/copy-permalink.js"></script>
-
 
 
 </body></html>
