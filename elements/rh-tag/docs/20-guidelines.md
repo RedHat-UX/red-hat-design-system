@@ -113,7 +113,7 @@ in one row, a new row will appear.
 Do not mix variants or tags with and without icons in the same area or 
 container.
 
-{% example palette="light",
+{% example palette="wrong",
         alt="Two rows of tags; the first row shows a mix of variants and the second row shows a mix of tags with and without icons, both are incorrect usage",
         src="../tag-best-practice-1.png" %}
 
@@ -122,7 +122,7 @@ container.
 Do not use light theme tags in the dark theme, [contact us][contact] if you need 
 dark theme tags.
 
-{% example palette="darkest",
+{% example palette="wrong",
         alt="Light theme tags used on a dark background which is incorrect usage",
         src="../tag-best-practice-2.png" %}
 
@@ -131,7 +131,7 @@ dark theme tags.
 Do not make your own custom tags. If you need a custom set of tags designed, 
 [contact us][contact].
 
-{% example palette="light",
+{% example palette="wrong",
         alt="Three tags with custom colors which is incorrect usage",
         src="../tag-best-practice-3.png" %}
 

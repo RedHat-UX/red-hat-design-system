@@ -92,6 +92,7 @@ async function getCachedImportMap({
 
       // TODO: automate this
       Object.assign(json.imports ?? {}, {
+        '@rhds/tokens/': '/assets/packages/@rhds/tokens/js/',
         '@rhds/elements/lib/': '/assets/packages/@rhds/elements/lib/',
         '@rhds/elements/lib/context/': '/assets/packages/@rhds/elements/lib/context/',
         '@rhds/elements/lib/context/color/': '/assets/packages/@rhds/elements/lib/context/color/',
