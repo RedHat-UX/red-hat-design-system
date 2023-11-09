@@ -46,24 +46,23 @@
     PfIcon.getIconUrl = (set, icon) =>
       new URL(`/assets/packages/@patternfly/elements/pf-icon/icons/${set}/${icon}.js`, location.origin);
   </script>
-
+  <script type="module">
+    // As soon as the DOM is ready, toggle JS class
+    document.documentElement.classList.remove('no-js');
+    document.documentElement.classList.add('js');
+  </script>
+  <script type="module" src="{{ '/assets/copy-permalink.js' | url }}"></script>
 </head>
 
 {% set extraPageClasses = bodyClasses or "" %}
-
 {% if title %}
   {% set extraPageClasses = extraPageClasses + ' page--' + title | slug %}
 {% endif %}
-
-<body class="page {{extraPageClasses}}" id="top" unresolved>
-
+<body class="page {{ extraPageClasses }}" id="top" unresolved>
   <div class="body-inner">
 
     {{ content | safe }}
 
   </div>
-  <script type="module" src="{{ '/assets/global.js' | url }}"></script>
-  <script type="module" src="{{ '/assets/copy-permalink.js' | url }}"></script>
 </body>
-
 </html>
