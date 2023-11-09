@@ -62,8 +62,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ 'elements': 'assets/packages/@rhds/elements/elements/' });
   eleventyConfig.addPassthroughCopy({ 'lib': 'assets/packages/@rhds/elements/lib/' });
   eleventyConfig.addPlugin(ImportMapPlugin, {
-    // TODO(bennypowers): There must be a better way
-    baseUrl: isWatch ? 'http://localhost:8080' : 'https://ux.redhat.com',
     nodemodulesPublicPath: '/assets/packages',
     manualImportMap: {
       imports: {

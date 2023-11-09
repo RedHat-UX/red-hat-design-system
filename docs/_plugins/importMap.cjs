@@ -132,7 +132,7 @@ module.exports = function(eleventyConfig, {
       inputMap,
       localPackages,
       cwd,
-      assetCache,
+      assetCache
     });
   });
 
