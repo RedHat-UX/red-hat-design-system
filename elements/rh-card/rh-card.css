@@ -27,8 +27,6 @@ article {
 [part="footer"] {
   display: flex;
   gap: 0.5em;
-  inset-block-end: 0;
-  margin-block-start: auto;
 }
 
 .empty {
@@ -76,25 +74,29 @@ article {
 #header {
   box-sizing: border-box;
   font-size: var(--rh-card-header-font-size, var(--rh-font-size-heading-sm, 1.5rem));
-  padding-block: var(--rh-space-lg, 16px);
-  padding-inline: var(--rh-space-xl, 24px);
+  margin-block-start: var(--rh-space-lg, 16px);
+  margin-inline: var(--rh-space-xl, 24px);
 }
 
 #body {
-  padding: var(--rh-space-xl, 24px);
+  margin: var(--rh-space-xl, 24px);
 }
 
 #footer {
-  padding: var(--rh-space-xl, 24px);
+  margin-inline: var(--rh-space-xl, 24px);
+  margin-block-end: var(--rh-space-xl, 24px);
+  margin-block-start: auto;
 }
 
 @media screen and (min-width: 768px) {
   #body {
-    padding: var(--rh-space-2xl, 32px);
+    margin-block-start: var(--rh-space-2xl, 32px);
+    margin-inline: var(--rh-space-2xl, 32px);
   }
 
   #footer {
-    padding: var(--rh-space-2xl, 32px);
+    margin-inline: var(--rh-space-2xl, 32px);
+    margin-block-end: var(--rh-space-2xl, 32px);
   }
 }
 
