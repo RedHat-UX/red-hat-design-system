@@ -1,7 +1,9 @@
-
+{%- set extraPageClasses = bodyClasses or "" -%}
+{%- if title -%}
+  {% set extraPageClasses = extraPageClasses + ' page-' + title | slug -%}
+{%- endif -%}
 <!doctype html>
 <html class="no-js" lang="">
-
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -35,7 +37,7 @@
   </noscript>
 
   <script type="importmap">{{ importMap | dump | safe }}</script>
-  <script async src="https://ga.jspm.io/npm:es-module-shims@1.7.1/dist/es-module-shims.js"></script>
+  <script async src="https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js"></script>
   {% for tag in importElements %}
   <script type="module">
     import '@rhds/elements/{{tag}}/{{tag}}.js';
@@ -52,17 +54,15 @@
     document.documentElement.classList.add('js');
   </script>
   <script type="module" src="{{ '/assets/copy-permalink.js' | url }}"></script>
+  <script type="module">
+    import { PfIcon } from '@patternfly/elements/pf-icon/pf-icon.js';
+    PfIcon.getIconUrl = (set, icon) =>
+      new URL(`/assets/packages/@patternfly/elements/pf-icon/icons/${set}/${icon}.js`, location.origin);
+  </script>
 </head>
-
-{% set extraPageClasses = bodyClasses or "" %}
-{% if title %}
-  {% set extraPageClasses = extraPageClasses + ' page--' + title | slug %}
-{% endif %}
-<body class="page {{ extraPageClasses }}" id="top" unresolved>
+<body id="top" class="page {{ extraPageClasses }}" unresolved>
   <div class="body-inner">
-
     {{ content | safe }}
-
   </div>
 </body>
 </html>
