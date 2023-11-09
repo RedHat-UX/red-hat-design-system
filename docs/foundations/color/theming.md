@@ -31,11 +31,11 @@ The light theme is the default theme and has lots of use cases.
 
 ### Dark theme
 
-The dark theme can be used for highlighting content with dark colors or if a brighter interface would otherwise disrupt the user experience. Most light theme components have dark theme counterparts.
+The dark theme can be used for highlighting content with dark colors or if a brighter interface would otherwise disrupt the user experience. Most light theme elements and patterns have dark theme counterparts.
 
 {% alert title="Brand red and accessibility",
             state="warning" %}
-Do not apply the Red Hat red color to text in dark environments unless it meets <a href="https://www.w3.org/TR/WCAG21/">WCAG 2.1 AA</a> requirements.
+Do not apply the Red Hat red color to text in dark environments unless it meets <a href="https://www.w3.org/WAI/WCAG21/Understanding/">WCAG 2.1 AA</a> requirements.
 {% endalert %}
 
 {% example palette="darkest",
@@ -44,7 +44,7 @@ Do not apply the Red Hat red color to text in dark environments unless it meets 
 
 ### Desaturated theme <!-- add purple Beta tag -->
 
-The desaturated theme can be used when components need to be placed on large areas of color or some of the surface gray values.
+The desaturated theme can be used when elements or patterns need to be placed on large areas of color or some of the surface gray values.
 
 {% alert title="Update from the team" %}
 The design system team is working on creating desaturated theme best practices in the near future. <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">Contact us</a> if you would like to contribute.
@@ -56,7 +56,7 @@ The design system team is working on creating desaturated theme best practices i
 
 ### Custom theme
 
-A custom theme may be used for very specific brand projects like campaigns. However, the light and dark themes are fine for the majority of other projects. If your project does need a custom theme, contact the Brand team and <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">Design system</a> team for guidance. A custom theme may feature a bespoke color palette, but try to use other styles and components from the design system if possible.
+A custom theme may be used for very specific brand projects like campaigns. However, the light and dark themes are fine for the majority of other projects. If your project does need a custom theme, contact the Brand team and <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">Design system</a> team for guidance. A custom theme may feature a bespoke color palette, but try to use other styles with elements and patterns from the design system if possible.
 
 {% alert title="Choosing a theme",
             state="warning" %}
@@ -92,7 +92,7 @@ The design system team is working on creating inline theming best practices in t
 Illustrations and imagery should align to the theme. The light theme should feature imagery with light colors and vice versa. Imagery with high contrast is only acceptable if it has a transparent background. If you cannot find theme-specific imagery, contact the Brand team.
 
 {% alert title="More information" %}
-High contrast is using bright components or images in dark environments and vice versa. This is useful to focus attention or create visual tension.
+High contrast is using bright elements, patterns, or images in dark environments and vice versa. This is useful to focus attention or create visual tension.
 {% endalert %}
 
 {% example palette="light",

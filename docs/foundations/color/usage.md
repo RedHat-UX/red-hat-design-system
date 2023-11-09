@@ -21,7 +21,7 @@ To learn more about our Red Hat red color, go to the <a href="https://www.redhat
 
 {% alert title="Usage warning",
           state="warning" %}
-Do not apply the Red Hat red color to text in dark environments unless it meets <a href="https://www.w3.org/TR/WCAG21/">WCAG 2.1 AA</a> requirements.
+Do not apply the Red Hat red color to text in dark environments unless it meets <a href="https://www.w3.org/WAI/WCAG21/Understanding/">WCAG 2.1 AA</a> requirements.
 {% endalert %}
 
 {% example palette="light",
@@ -72,19 +72,19 @@ In the dark theme, gray values should get one step lighter when stacked.
 
 Text may be different colors depending on content, hierarchy, and theme. Our accessible colors help promote text legibility and readability. These are general usage guidelines; there may be other situations not represented.
 
-<ul>
+<ol>
 <li><strong>Custom</strong> - use to represent a temporary campaign or custom design</li>
 <li><strong>Brand</strong> - use to communicate our brand or add a brand accent</li>
 <li><strong>Primary</strong> - use for large text including headlines and body text as well as small link text in dark environments (white)</li>
 <li><strong>Secondary</strong> - use for small text including annotations, captions, and footnotes</li>
 <li><strong>Links</strong> - use for small or large text that is linked</li>
-<li><strong>Interactive</strong> - use for styled text within calls to action, buttons, or other interactive components</li>
+<li><strong>Interactive</strong> - use for styled text within calls to action, buttons, or other interactive elements</li>
 <li><strong>Status</strong> - use for text that needs to communicate a particular status</li>
-</ul>
+</ol>
 
 {% alert title="Usage warning",
           state="warning" %}
-Do not apply the Red Hat red color to text in dark environments unless it meets <a href="https://www.w3.org/TR/WCAG21/">WCAG 2.1 AA</a> requirements.
+Do not apply the Red Hat red color to text in dark environments unless it meets <a href="https://www.w3.org/WAI/WCAG21/Understanding/">WCAG 2.1 AA</a> requirements.
 {% endalert %}
 
 {% example palette="none",
@@ -95,11 +95,11 @@ Do not apply the Red Hat red color to text in dark environments unless it meets 
 
 Icons may be different colors depending on usage and theme. There are three categories of icons: Brand, Technology, and UI.
 
-<ul>
+<ol>
 <li><strong>Brand</strong> - monochromatic and usually red, black, or white</li>
 <li><strong>Technology</strong> - always black, gray, red, and white</li>
-<li><strong>UI</strong> - may be different colors depending on how they are used within a component</li>
-</ul>
+<li><strong>UI</strong> - may be different colors depending on how they are used within an element or pattern</li>
+</ol>
 
 To learn more about icons, go to the <a href="https://www.redhat.com/en/about/brand/standards">Brand standards</a> website.
 
@@ -111,13 +111,13 @@ To learn more about icons, go to the <a href="https://www.redhat.com/en/about/br
 
 Certain colors are used to indicate that something is interactive.
 
-<ul>
+<ol>
 <li><strong>Blue</strong> - use for inline links, Default calls to action, or Primary button surfaces</li>
 <li><strong>Purple</strong> - use for visited inline links</li>
 <li><strong>Gray</strong> - use for secondary or small links (using white is also acceptable in dark environments)</li>
 <li><strong>Red-orange</strong> - use for destructive actions (and errors)</li>
 <li><strong>Red</strong> - use sparingly for Primary calls to action only</li>
-</ul>
+</ol>
 
 {% example palette="none",
           alt="Examples of elements using the five colors that denote interactivity",
@@ -125,7 +125,7 @@ Certain colors are used to indicate that something is interactive.
 
 ### Status
 
-Status colors have assigned meanings and communicate information, states, or actions. Status colors are commonly used in components and patterns like <a href="/elements/alert">alerts</a>, <a href="/elements/badge">badges</a>, <a href="/elements/buttons">buttons</a>, <a href="/elements/form">forms</a>, and <a href="/elements/alert/style/#toast">toasts</a>.
+Status colors have assigned meanings and communicate information, states, or actions. Status colors are commonly used in elements and patterns like <a href="/elements/alert">alerts</a>, <a href="/elements/badge">badges</a>, <a href="/elements/button">buttons</a>, <a href="/patterns/form">forms</a>, and <a href="/elements/alert/style/#toast">toasts</a>.
 
 {% alert title="Usage warning",
           state="warning" %}
@@ -142,27 +142,27 @@ The red-orange color is reserved for danger or error states, do not use it anywh
     </thead>
     <tbody>
       <tr>
-        <td>Note/Tip</td>
+        <td><code>Note/Tip</code></td>
         <td>Use purple to communicate helpful or important information.</td>
       </tr>
       <tr>
-        <td>Neutral</td>
+        <td><code>Neutral</code></td>
         <td>Use gray to communicate information that will have no impact on a user.</td>
       </tr>
       <tr>
-        <td>Success</td>
+        <td><code>Success</code></td>
         <td>Use green to communicate a success state.</td>
       </tr>
       <tr>
-        <td>Caution</td>
+        <td><code>Caution</code></td>
         <td>Use yellow to communicate that an issue can be avoided.</td>
       </tr>
       <tr>
-        <td>Warning</td>
+        <td><code>Warning</code></td>
         <td>Use orange to communicate that a destructive action might occur if an issue is not resolved.</td>
       </tr>
       <tr>
-        <td>Danger/Error</td>
+        <td><code>Danger/Error</code></td>
         <td>Use red-orange to communicate a destructive action or critical error.</td>
       </tr>
     </tbody>
@@ -177,7 +177,7 @@ The red-orange color is reserved for danger or error states, do not use it anywh
 
 ### Custom themes
 
-Most projects do not need elements and patterns in a custom theme. If you need a custom theme for a campaign or special project, contact the Brand team first. If you need one or more custom design tokens, <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">contact the Design system team</a> first. Do not create your own colors, design tokens, or change the colors of existing components.
+Most projects do not need elements and patterns in a custom theme. If you need a custom theme for a campaign or special project, contact the Brand team first. If you need one or more custom design tokens, <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">contact the Design system team</a> first. Do not create your own colors, design tokens, or change the colors of existing elements and patterns.
 
 {% example palette="wrong",
           alt="Magenta button, brand red default call to action, green tooltip, dark orange switch, and light purple checkbox",
@@ -185,7 +185,7 @@ Most projects do not need elements and patterns in a custom theme. If you need a
 
 ### Sufficient contrast
 
-Using colors with the same hue, saturation, and lightness is acceptable, but do not put them near or on top of each other as doing so will cause vibration resulting in a poor user experience. If you have a large section of color or an image background with low contrast, consider using components from the desaturated theme instead.
+Using colors with the same hue, saturation, and lightness is acceptable, but do not put them near or on top of each other as doing so will cause vibration resulting in a poor user experience. If you have a large section of color or an image background with low contrast, consider using elements and patterns from the desaturated theme instead.
 
 {% example palette="wrong",
           alt="Examples of a blue button against a red background and a red CTA against a blue background",
@@ -195,6 +195,6 @@ Using colors with the same hue, saturation, and lightness is acceptable, but do 
 
 <ul>
 <li><a href="https://www.redhat.com/en/about/brand/standards">Brand standards</a></li>
-<li><a href="https://www.w3.org/TR/WCAG21/">WCAG 2.1</a></li>
+<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/">WCAG 2.1</a></li>
 <li><a href="https://webaim.org/articles/contrast/">WebAIM: Contrast and Color Accessibility</a></li>
 </ul>

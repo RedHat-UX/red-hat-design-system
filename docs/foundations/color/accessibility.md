@@ -15,7 +15,7 @@ At our core, we believe in creating interactions and experiences that are inclus
 
 ## Using color alone
 
-When considering methods of communication or feedback, do not use color (or location) alone. Ensure there is a text label, icon, underline, or other visual cue to communicate meaning. Consider how the following components would look to a color blind user.
+When considering methods of communication or feedback, do not use color (or location) alone. Ensure there is a text label, icon, underline, or other visual cue to communicate meaning. Consider how the following elements would look to a color blind user.
 
 {% example palette="light",
           alt="Dialog with a red-orange Leave button, a form field with a red bottom border, and progress steps without labels",
@@ -23,7 +23,7 @@ When considering methods of communication or feedback, do not use color (or loca
 
 ## Contrast
 
-We strive to adhere to <a href="https://www.w3.org/TR/WCAG21/">WCAG 2.1 AA</a> requirements. Our text, links, interface elements, etc. are designed with sufficient contrast when used on top of a canvas, surfaces, image backgrounds with low contrast, and near adjacent colors.
+We strive to adhere to <a href="https://www.w3.org/WAI/WCAG21/Understanding/">WCAG 2.1 AA</a> requirements. Our text, links, interface elements, etc. are designed with sufficient contrast when used on top of a canvas, surfaces, image backgrounds with low contrast, and near adjacent colors.
 
 ### Text
 
@@ -55,7 +55,7 @@ Graphical objects and UI components should have a contrast ratio of at least 3:1
 
 ### Layering
 
-It is acceptable to layer colors with the same hue, saturation, or lightness on white, black, or gray. However, layering them near or on top of each other might cause vibration. If you need to layer colors, follow WCAG 2.1 AA requirements.
+It is acceptable to layer colors with the same hue, saturation, or lightness on white, black, or gray. However, layering them near or on top of each other might cause vibration. If you need to layer colors, follow <a href="https://www.w3.org/WAI/WCAG21/Understanding/">WCAG 2.1 AA</a> requirements.
 
 {% example palette="light",
           alt="Red CTA against a white background, blue button against a light gray background, and a light red-orange button against a black background",
