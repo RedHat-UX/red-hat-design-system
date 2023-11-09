@@ -149,8 +149,8 @@
               </li>
               {%- for link in collections.pattern -%}
               <li class="item">
-                <a class="link {{ 'active' if page.url === pattern.url }}"
-                   href="{{ pattern.url | url }}">{{ pattern.data.title }}</a>
+                <a class="link {{ 'active' if page.url === link.url }}"
+                   href="{{ link.url | url }}">{{ link.data.title }}</a>
               </li>
               {%- endfor -%}
             </ul>
