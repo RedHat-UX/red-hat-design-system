@@ -215,3 +215,13 @@ For more information, please see the [card css custom properties](/elements/card
   }
 </style>
 
+## Usage
+
+### Character count
+  The maximum character count for the elements of a sticky card are listed below.
+
+  | Element        | Maximum characters |
+  |----------------|--------------------|
+  | Title          | 20                 |
+  | Headline       | 50                 | 
+  | Body text      | 120                | 
