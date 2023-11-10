@@ -68,6 +68,15 @@ There are several card variants that can be used for a variety of use cases.
   contain similar content, but it sticks to the side of a page and it’s always 
   present until a user dismisses it.
 
+### Character count
+  The maximum character count for the elements of a card are listed below.
+
+  | Element        | Maximum characters |
+  |----------------|--------------------|
+  | Title          | 20                 |
+  | Headline       | 50                 | 
+  | Body text      | 165                | 
+
 ### Grouping
   Different card styles can sometimes be grouped together. They can be arranged 
   in a grid horizontally or vertically, depending on available space or screen 
