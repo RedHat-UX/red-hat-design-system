@@ -44,7 +44,7 @@ A surface is a container background color that sits on top of a canvas. Surface 
           alt="Annotations pointing to canvas and surface colors in a section with a card",
           src="/assets/color/surface.png" %}
 
-### Layering <!-- add purple Beta tag --> 
+### Layering  <rh-tag color="purple">Beta</rh-tag>
 
 Layering is the relationship between the canvas color and surface colors as well as how they stack to create depth and separate content.
 

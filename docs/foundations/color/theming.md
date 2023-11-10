@@ -42,7 +42,7 @@ Do not apply the Red Hat red color to text in dark environments unless it meets 
           alt="examples of several elements against a dark gray surface",
           src="/assets/color/dark-theme.png" %}
 
-### Desaturated theme <!-- add purple Beta tag -->
+### Desaturated theme <rh-tag color="purple">Beta</rh-tag>
 
 The desaturated theme can be used when elements or patterns need to be placed on large areas of color or some of the surface gray values.
 
@@ -67,7 +67,7 @@ For most projects, the light and dark themes are good enough. Evaluate your proj
           alt="Example of a hero that uses light blue tags against a background image",
           src="/assets/color/custom-theme.png" %}
 
-### Inline theming <!-- add purple Beta tag -->
+### Inline theming  <rh-tag color="purple">Beta</rh-tag>
 
 Inline theming is when a section switches themes and looks different than the rest of the page or interface. Some use cases include highlighting an important section on a page or adding a sidebar to an interface. Use inline theming only for major shifts in color. For minor shifts, use a different surface color from the same theme.
 
