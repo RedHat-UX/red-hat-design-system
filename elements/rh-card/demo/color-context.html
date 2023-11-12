@@ -46,18 +46,24 @@
     gap: var(--rh-space-lg, 16px);
   }
 
-  rh-card.full::part(header) {
-    padding: 0;
+  rh-card.full {
+    &::part(header) {
+      margin: 0;
+    }
+
+    & :is(h1, h2, h3, h4, h5, h6)[slot="header"] {
+      padding-inline: var(--rh-space-xl, 24px);
+    }
+
+    & img {
+      display: block;
+      min-width: 100%;
+      height: auto;
+    }
   }
 
-  rh-card.full :is(h1, h2, h3, h4, h5, h6)[slot="header"] {
-    padding-inline: var(--rh-space-xl, 24px);
-  }
-
-  rh-card.full img {
+  label[for="picker"] {
     display: block;
-    min-width: 100%;
-    height: auto;
   }
 </style>
 
