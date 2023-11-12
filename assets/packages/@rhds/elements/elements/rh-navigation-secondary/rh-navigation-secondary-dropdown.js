@@ -58,6 +58,7 @@ let RhNavigationSecondaryDropdown = class RhNavigationSecondaryDropdown extends 
         link.setAttribute('aria-controls', menu.id);
         link.addEventListener('click', this._clickHandler);
         __classPrivateFieldGet(this, _RhNavigationSecondaryDropdown_mo, "f").observe(this, { attributeFilter: ['aria-current'], childList: true, subtree: true });
+        __classPrivateFieldGet(this, _RhNavigationSecondaryDropdown_instances, "m", _RhNavigationSecondaryDropdown_mutationsCallback).call(this);
     }
     render() {
         const classes = { 'expanded': this.expanded, 'highlight': __classPrivateFieldGet(this, _RhNavigationSecondaryDropdown_highlight, "f") };
