@@ -49,7 +49,7 @@ it meets [WCAG 2.1 AA][wcag-2-1-aa] requirements.
           alt="examples of several elements against a dark gray surface",
           src="/assets/color/dark-theme.png" %}
 
-### Desaturated theme <rh-tag color="purple">Beta</rh-tag>
+### Desaturated theme {% tag color="purple" %}Beta{%endtag%}
 
 The desaturated theme can be used when elements or patterns need to be placed on 
 large areas of color or some of the surface gray values.
@@ -83,7 +83,7 @@ your project thoroughly before creating a custom theme.
           alt="Example of a hero that uses light blue tags against a background image",
           src="/assets/color/custom-theme.png" %}
 
-### Inline theming  <rh-tag color="purple">Beta</rh-tag>
+### Inline theming  {% tag color="purple" %}Beta{%endtag%}
 
 Inline theming is when a section switches themes and looks different
 than the rest of the page or interface. Some use cases include

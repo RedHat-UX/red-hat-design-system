@@ -61,7 +61,7 @@ sections. For example, a card (white surface) can be placed in a section
           alt="Annotations pointing to canvas and surface colors in a section with a card",
           src="/assets/color/surface.png" %}
 
-### Layering  <rh-tag color="purple">Beta</rh-tag>
+### Layering {% tag color="purple" %}Beta{% endtag %}
 
 Layering is the relationship between the canvas color and surface colors
 as well as how they stack to create depth and separate content.
