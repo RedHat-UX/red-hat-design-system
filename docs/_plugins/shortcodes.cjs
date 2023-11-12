@@ -3,6 +3,7 @@ const RepoStatus = require('./shortcodes/repoStatus.cjs');
 const RenderInstallation = require('./shortcodes/renderInstallation.cjs');
 const ExampleImage = require('./shortcodes/example.cjs');
 const Cta = require('./shortcodes/cta.cjs');
+const Swatch = require('./shortcodes/swatch.cjs');
 const Alert = require('./shortcodes/alert.cjs');
 const { Section } = require('./shortcodes/section.cjs');
 const Demo = require('./shortcodes/demo.cjs');
@@ -26,6 +27,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(RenderInstallation);
   eleventyConfig.addPlugin(ExampleImage);
   eleventyConfig.addPlugin(Cta);
+  eleventyConfig.addPlugin(Swatch);
   eleventyConfig.addPlugin(Alert);
   eleventyConfig.addPlugin(Demo);
   eleventyConfig.addPlugin(SpacerTokensTable);

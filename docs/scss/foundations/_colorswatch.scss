@@ -1,22 +1,8 @@
-.color-palette--swatch {
+.swatch {
   width: 40px;
   height: 40px;
   display: block;
   border-radius: var(--rh-border-radius-pill, 64px);
-  background-color: var(--color-palette-background, #000);
+  background-color: var(--color, #000000);
 }
 
-/*
-.color-palette--item {
-  margin-bottom: 32px;
-
-  p {
-    font-size: 16px;
-    margin: 0;
-
-    &:first-of-type {
-      font-weight: 600;
-    }
-  }
-}
-*/

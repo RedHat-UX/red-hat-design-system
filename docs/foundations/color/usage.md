@@ -11,17 +11,26 @@ bodyClasses: element-docs
 
 ## Using color
 
-Our color palette is designed to work across all digital properties, from websites to applications to ads and more. To view our colors as design tokens, go to the <a href="/tokens">Tokens</a> section. If you have questions about how to apply the color palette, <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">contact us</a>.
+Our color palette is designed to work across all digital properties,
+from websites to applications to ads and more. To view our colors as
+design tokens, go to the [Tokens](/tokens) section. If you have
+questions about how to apply the color palette, [contact
+us](https://github.com/RedHat-UX/red-hat-design-system/discussions).
 
 ### Brand red
 
-Our primary brand color is red. It is important to use it consistently and thoughtfully to maximize accessibility and build brand recognition. Red is a strong color; use it as an accent instead of filling large areas. If you need a color for danger or error states, use red-orange.
-
-To learn more about our Red Hat red color, go to the <a href="https://www.redhat.com/en/about/brand/standards">Brand standards</a> website.
+Our primary brand color is red. It is important to use it consistently
+and thoughtfully to maximize accessibility and build brand recognition.
+Red is a strong color; use it as an accent instead of filling large
+areas. If you need a color for danger or error states, use red-orange.
+To learn more about our Red Hat red color, go to the [Brand
+standards](https://www.redhat.com/en/about/brand/standards) website.
 
 {% alert title="Usage warning",
           state="warning" %}
-Do not apply the Red Hat red color to text in dark environments unless it meets <a href="https://www.w3.org/WAI/WCAG21/Understanding/">WCAG 2.1 AA</a> requirements.
+Do not apply the Red Hat red color to text in dark environments unless
+it meets [WCAG 2.1 AA](https://www.w3.org/WAI/WCAG21/Understanding/)
+requirements.
 {% endalert %}
 
 {% example palette="light",
@@ -30,7 +39,12 @@ Do not apply the Red Hat red color to text in dark environments unless it meets 
 
 ### Canvas
 
-A canvas is a background color and it determines what theme is used. The default canvas colors are white and black, but there might be situations where grays or even custom colors are needed. It is acceptable to use other colors as long as contrast is maintained throughout the entire design. If a custom canvas color is lighter or darker than the defaults, white or black may be used as surface colors.
+A canvas is a background color and it determines what theme is used. The
+default canvas colors are white and black, but there might be situations
+where grays or even custom colors are needed. It is acceptable to use
+other colors as long as contrast is maintained throughout the entire
+design. If a custom canvas color is lighter or darker than the defaults,
+white or black may be used as surface colors.
 
 {% example palette="light",
           alt="swatches of the default canvas colors for dark and light theme and examples of custom canvas colors",
@@ -38,7 +52,10 @@ A canvas is a background color and it determines what theme is used. The default
 
 ### Surface
 
-A surface is a container background color that sits on top of a canvas. Surface colors are used as backgrounds for elements, patterns, and large sections. For example, a card (white surface) can be placed in a section (light gray surface) on a canvas (white).
+A surface is a container background color that sits on top of a canvas.
+Surface colors are used as backgrounds for elements, patterns, and large
+sections. For example, a card (white surface) can be placed in a section
+(light gray surface) on a canvas (white).
 
 {% example palette="none",
           alt="Annotations pointing to canvas and surface colors in a section with a card",
@@ -46,10 +63,14 @@ A surface is a container background color that sits on top of a canvas. Surface 
 
 ### Layering  <rh-tag color="purple">Beta</rh-tag>
 
-Layering is the relationship between the canvas color and surface colors as well as how they stack to create depth and separate content.
+Layering is the relationship between the canvas color and surface colors
+as well as how they stack to create depth and separate content.
 
 {% alert title="Update from the team" %}
-The design system team is working on creating best practices for layering in the near future. <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">Contact us</a> if you would like to contribute.
+The design system team is working on creating best practices for
+layering in the near future. [Contact
+us](https://github.com/RedHat-UX/red-hat-design-system/discussions) if
+you would like to contribute.
 {% endalert %}
 
 #### Light theme
@@ -70,21 +91,28 @@ In the dark theme, gray values should get one step lighter when stacked.
 
 ### Text
 
-Text may be different colors depending on content, hierarchy, and theme. Our accessible colors help promote text legibility and readability. These are general usage guidelines; there may be other situations not represented.
+Text may be different colors depending on content, hierarchy, and theme.
+Our accessible colors help promote text legibility and readability.
+These are general usage guidelines; there may be other situations not
+represented.
 
-<ol>
-<li><strong>Custom</strong> - use to represent a temporary campaign or custom design</li>
-<li><strong>Brand</strong> - use to communicate our brand or add a brand accent</li>
-<li><strong>Primary</strong> - use for large text including headlines and body text as well as small link text in dark environments (white)</li>
-<li><strong>Secondary</strong> - use for small text including annotations, captions, and footnotes</li>
-<li><strong>Links</strong> - use for small or large text that is linked</li>
-<li><strong>Interactive</strong> - use for styled text within calls to action, buttons, or other interactive elements</li>
-<li><strong>Status</strong> - use for text that needs to communicate a particular status</li>
-</ol>
+1.  **Custom** - use to represent a temporary campaign or custom design
+2.  **Brand** - use to communicate our brand or add a brand accent
+3.  **Primary** - use for large text including headlines and body text
+    as well as small link text in dark environments (white)
+4.  **Secondary** - use for small text including annotations, captions,
+    and footnotes
+5.  **Links** - use for small or large text that is linked
+6.  **Interactive** - use for styled text within calls to action,
+    buttons, or other interactive elements
+7.  **Status** - use for text that needs to communicate a particular
+    status
 
 {% alert title="Usage warning",
           state="warning" %}
-Do not apply the Red Hat red color to text in dark environments unless it meets <a href="https://www.w3.org/WAI/WCAG21/Understanding/">WCAG 2.1 AA</a> requirements.
+Do not apply the Red Hat red color to text in dark environments unless
+it meets [WCAG 2.1 AA](https://www.w3.org/WAI/WCAG21/Understanding/)
+requirements.
 {% endalert %}
 
 {% example palette="none",
@@ -93,15 +121,16 @@ Do not apply the Red Hat red color to text in dark environments unless it meets 
 
 ### Icons
 
-Icons may be different colors depending on usage and theme. There are three categories of icons: Brand, Technology, and UI.
+Icons may be different colors depending on usage and theme. There are
+three categories of icons: Brand, Technology, and UI.
 
-<ol>
-<li><strong>Brand</strong> - monochromatic and usually red, black, or white</li>
-<li><strong>Technology</strong> - always black, gray, red, and white</li>
-<li><strong>UI</strong> - may be different colors depending on how they are used within an element or pattern</li>
-</ol>
+1.  **Brand** - monochromatic and usually red, black, or white
+2.  **Technology** - always black, gray, red, and white
+3.  **UI** - may be different colors depending on how they are used
+    within an element or pattern
 
-To learn more about icons, go to the <a href="https://www.redhat.com/en/about/brand/standards">Brand standards</a> website.
+To learn more about icons, go to the [Brand
+standards](https://www.redhat.com/en/about/brand/standards) website.
 
 {% example palette="none",
           alt="Examples of the three icon categories",
@@ -111,13 +140,13 @@ To learn more about icons, go to the <a href="https://www.redhat.com/en/about/br
 
 Certain colors are used to indicate that something is interactive.
 
-<ol>
-<li><strong>Blue</strong> - use for inline links, Default calls to action, or Primary button surfaces</li>
-<li><strong>Purple</strong> - use for visited inline links</li>
-<li><strong>Gray</strong> - use for secondary or small links (using white is also acceptable in dark environments)</li>
-<li><strong>Red-orange</strong> - use for destructive actions (and errors)</li>
-<li><strong>Red</strong> - use sparingly for Primary calls to action only</li>
-</ol>
+1.  **Blue** - use for inline links, Default calls to action, or Primary
+    button surfaces
+2.  **Purple** - use for visited inline links
+3.  **Gray** - use for secondary or small links (using white is also
+    acceptable in dark environments)
+4.  **Red-orange** - use for destructive actions (and errors)
+5.  **Red** - use sparingly for Primary calls to action only
 
 {% example palette="none",
           alt="Examples of elements using the five colors that denote interactivity",
@@ -125,7 +154,11 @@ Certain colors are used to indicate that something is interactive.
 
 ### Status
 
-Status colors have assigned meanings and communicate information, states, or actions. Status colors are commonly used in elements and patterns like <a href="/elements/alert">alerts</a>, <a href="/elements/badge">badges</a>, <a href="/elements/button">buttons</a>, <a href="/patterns/form">forms</a>, and <a href="/elements/alert/style/#toast">toasts</a>.
+Status colors have assigned meanings and communicate information,
+states, or actions. Status colors are commonly used in elements and
+patterns like [alerts](/elements/alert), [badges](/elements/badge),
+[buttons](/elements/button), [forms](/patterns/form), and
+[toasts](/elements/alert/style/#toast).
 
 {% alert title="Usage warning",
           state="warning" %}
@@ -133,40 +166,16 @@ The red-orange color is reserved for danger or error states, do not use it anywh
 {% endalert %}
 
 <section class="section">
-  <table width="100%;">
-    <thead>
-      <tr>
-        <th>Status</th>
-        <th>Use case</td\h>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code>Note/Tip</code></td>
-        <td>Use purple to communicate helpful or important information.</td>
-      </tr>
-      <tr>
-        <td><code>Neutral</code></td>
-        <td>Use gray to communicate information that will have no impact on a user.</td>
-      </tr>
-      <tr>
-        <td><code>Success</code></td>
-        <td>Use green to communicate a success state.</td>
-      </tr>
-      <tr>
-        <td><code>Caution</code></td>
-        <td>Use yellow to communicate that an issue can be avoided.</td>
-      </tr>
-      <tr>
-        <td><code>Warning</code></td>
-        <td>Use orange to communicate that a destructive action might occur if an issue is not resolved.</td>
-      </tr>
-      <tr>
-        <td><code>Danger/Error</code></td>
-        <td>Use red-orange to communicate a destructive action or critical error.</td>
-      </tr>
-    </tbody>
-  </table>
+
+| Status         | Use case                                                                                     |
+|----------------|----------------------------------------------------------------------------------------------|
+| `Note/Tip`     | Use purple to communicate helpful or important information.                                  |
+| `Neutral`      | Use gray to communicate information that will have no impact on a user.                      |
+| `Success`      | Use green to communicate a success state.                                                    |
+| `Caution`      | Use yellow to communicate that an issue can be avoided.                                      |
+| `Warning`      | Use orange to communicate that a destructive action might occur if an issue is not resolved. |
+| `Danger/Error` | Use red-orange to communicate a destructive action or critical error.                        |
+
 </section>
 
 {% example palette="light",
@@ -175,9 +184,20 @@ The red-orange color is reserved for danger or error states, do not use it anywh
 
 ## Best practices
 
+The design system's guidelines and best practices are more than just 
+suggestions. By following them scrupulously, you will ensure that your project 
+aligns with branding and accessibility guidelines. Diverge from the guidelines 
+only after significant planning and consideration.
+
 ### Custom themes
 
-Most projects do not need elements and patterns in a custom theme. If you need a custom theme for a campaign or special project, contact the Brand team first. If you need one or more custom design tokens, <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">contact the Design system team</a> first. Do not create your own colors, design tokens, or change the colors of existing elements and patterns.
+Most projects do not need elements and patterns in a custom theme. If
+you need a custom theme for a campaign or special project, contact the
+Brand team first. If you need one or more custom design tokens, [contact
+the Design system
+team](https://github.com/RedHat-UX/red-hat-design-system/discussions)
+first. Do not create your own colors, design tokens, or change the
+colors of existing elements and patterns.
 
 {% example palette="wrong",
           alt="Magenta button, brand red default call to action, green tooltip, dark orange switch, and light purple checkbox",
@@ -185,7 +205,11 @@ Most projects do not need elements and patterns in a custom theme. If you need a
 
 ### Sufficient contrast
 
-Using colors with the same hue, saturation, and lightness is acceptable, but do not put them near or on top of each other as doing so will cause vibration resulting in a poor user experience. If you have a large section of color or an image background with low contrast, consider using elements and patterns from the desaturated theme instead.
+Using colors with the same hue, saturation, and lightness is acceptable,
+but do not put them near or on top of each other as doing so will cause
+vibration resulting in a poor user experience. If you have a large
+section of color or an image background with low contrast, consider
+using elements and patterns from the desaturated theme instead.
 
 {% example palette="wrong",
           alt="Examples of a blue button against a red background and a red CTA against a blue background",
@@ -193,8 +217,7 @@ Using colors with the same hue, saturation, and lightness is acceptable, but do 
 
 ## Resources
 
-<ul>
-<li><a href="https://www.redhat.com/en/about/brand/standards">Brand standards</a></li>
-<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/">WCAG 2.1</a></li>
-<li><a href="https://webaim.org/articles/contrast/">WebAIM: Contrast and Color Accessibility</a></li>
-</ul>
+- [Brand standards](https://www.redhat.com/en/about/brand/standards)
+- [WCAG 2.1](https://www.w3.org/WAI/WCAG21/Understanding/)
+- [WebAIM: Contrast and Color
+    Accessibility](https://webaim.org/articles/contrast/)

@@ -9,227 +9,93 @@ order: 30
 bodyClasses: element-docs
 ---
 
-<!-- TO DO: Once tokens are updated, hex codes in swatches should be replaced with tokens, OR this page should be removed/replaced in favor of the Global Colors token page. -->
+<!-- TO DO: Once tokens are updated,
+     hex codes in swatches should be replaced with tokens,
+     OR this page should be removed/replaced in favor of the Global Colors token page. -->
 
 ## Core palette
 
-Our primitives are named and organized logically from light to dark, starting with `10`. <strong>Always prioritize use of semantic design tokens over primitive ones.</strong> Hex codes can be referenced in situations where design tokens cannot be used.
+Our primitives are named and organized logically from light to dark,
+starting with `10`. **Always prioritize use of semantic design tokens
+over primitive ones.** Hex codes can be referenced in situations where
+design tokens cannot be used.
 
 ### Red
 
 {% alert title="Brand red and accessibility",
-            state="warning" %}
-The `red-50` token is designated as Red Hat red. Its application should adhere to <a href="/foundations/color/usage/index.html/#brand-red">usage guidelines</a>.
+         state="warning" %}
+The `red-50` token is designated as Red Hat red. Its application
+should adhere to [usage guidelines][red-guidelines].
 {% endalert %}
 
 <section class="section">
-    <table>
-        <thead>
-            <tr>
-                <th>Preview</th>
-                <th>Token name</th>
-                <th>Hex code</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #FCE3E3;"></div></td>
-                <td><code>red-10</code></td>
-                <td><code>#FCE3E3</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #FBC5C5;"></div></td>
-                <td><code>red-20</code></td>
-                <td><code>#FBC5C5</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #F9A8A8;"></div></td>
-                <td><code>red-30</code></td>
-                <td><code>#F9A8A8</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #F56E6E;"></div></td>
-                <td><code>red-40</code></td>
-                <td><code>#F56E6E</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #EE0000;"></div></td>
-                <td><code>red-50</code></td>
-                <td><code>#EE0000</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #A60000;"></div></td>
-                <td><code>red-60</code></td>
-                <td><code>#A60000</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #5F0000;"></div></td>
-                <td><code>red-70</code></td>
-                <td><code>#5F0000</code></td>
-            </tr>
-        </tbody>
-    </table>
+
+| Preview                      | Token name | Hex code  |
+| ---------------------------- | ---------- | --------- |
+| {% swatch color="#FCE3E3" %} | `red-10`   | `#FCE3E3` |
+| {% swatch color="#FBC5C5" %} | `red-20`   | `#FBC5C5` |
+| {% swatch color="#F9A8A8" %} | `red-30`   | `#F9A8A8` |
+| {% swatch color="#F56E6E" %} | `red-40`   | `#F56E6E` |
+| {% swatch color="#EE0000" %} | `red-50`   | `#EE0000` |
+| {% swatch color="#A60000" %} | `red-60`   | `#A60000` |
+| {% swatch color="#5F0000" %} | `red-70`   | `#5F0000` |
+
 </section>
 
 
 ### Red-orange
 
 {% alert title="Brand red and accessibility",
-            state="warning" %}
+         state="warning" %}
 The red-orange color is reserved for danger or error states, do not use it anywhere else.
 {% endalert %}
 
 <section class="section">
-    <table>
-        <thead>
-            <tr>
-                <th>Preview</th>
-                <th>Token name</th>
-                <th>Hex code</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #FFE3D9;"></div></td>
-                <td><code>red-orange-10</code></td>
-                <td><code>#FFE3D9</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #FBBEA8;"></div></td>
-                <td><code>red-orange-20</code></td>
-                <td><code>#FBBEA8</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #F89B78;"></div></td>
-                <td><code>red-orange-30</code></td>
-                <td><code>#F89B78</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #F4784A;"></div></td>
-                <td><code>red-orange-40</code></td>
-                <td><code>#F4784A</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #F0561D;"></div></td>
-                <td><code>red-orange-50</code></td>
-                <td><code>#F0561D</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #B1380B;"></div></td>
-                <td><code>red-orange-60</code></td>
-                <td><code>#B1380B</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #731F00;"></div></td>
-                <td><code>red-orange-70</code></td>
-                <td><code>#731F00</code></td>
-            </tr>
-        </tbody>
-    </table>
+
+| Preview                      | Token name      | Hex code  |
+| ---------------------------- | --------------- | --------- |
+| {% swatch color="#FFE3D9" %} | `red-orange-10` | `#FFE3D9` |
+| {% swatch color="#FBBEA8" %} | `red-orange-20` | `#FBBEA8` |
+| {% swatch color="#F89B78" %} | `red-orange-30` | `#F89B78` |
+| {% swatch color="#F4784A" %} | `red-orange-40` | `#F4784A` |
+| {% swatch color="#F0561D" %} | `red-orange-50` | `#F0561D` |
+| {% swatch color="#B1380B" %} | `red-orange-60` | `#B1380B` |
+| {% swatch color="#731F00" %} | `red-orange-70` | `#731F00` |
+
 </section>
 
 
 ### Orange
 
 <section class="section">
-    <table>
-        <thead>
-            <tr>
-                <th>Preview</th>
-                <th>Token name</th>
-                <th>Hex code</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #FFE8CC;"></div></td>
-                <td><code>orange-10</code></td>
-                <td><code>#FFE8CC</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #FCCB8F;"></div></td>
-                <td><code>orange-20</code></td>
-                <td><code>#FCCB8F</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #F8AE54;"></div></td>
-                <td><code>orange-30</code></td>
-                <td><code>#F8AE54</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #F5921B;"></div></td>
-                <td><code>orange-40</code></td>
-                <td><code>#F5921B</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #CA6C0F;"></div></td>
-                <td><code>orange-50</code></td>
-                <td><code>#CA6C0F</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #9E4A06;"></div></td>
-                <td><code>orange-60</code></td>
-                <td><code>#9E4A06</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #732E00;"></div></td>
-                <td><code>orange-70</code></td>
-                <td><code>#732E00</code></td>
-            </tr>
-        </tbody>
-</table>
+
+| Preview                      | Token name  | Hex code  |
+| ---------------------------- | ----------- | --------- |
+| {% swatch color="#FFE8CC" %} | `orange-10` | `#FFE8CC` |
+| {% swatch color="#FCCB8F" %} | `orange-20` | `#FCCB8F` |
+| {% swatch color="#F8AE54" %} | `orange-30` | `#F8AE54` |
+| {% swatch color="#F5921B" %} | `orange-40` | `#F5921B` |
+| {% swatch color="#CA6C0F" %} | `orange-50` | `#CA6C0F` |
+| {% swatch color="#9E4A06" %} | `orange-60` | `#9E4A06` |
+| {% swatch color="#732E00" %} | `orange-70` | `#732E00` |
+
 </section>
 
 
 ### Yellow
 
 <section class="section">
-    <table>
-        <thead>
-            <tr>
-                <th>Preview</th>
-                <th>Token name</th>
-                <th>Hex code</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #FFF4CC;"></div></td>
-                <td><code>yellow-10</code></td>
-                <td><code>#FFF4CC</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #FFE072;"></div></td>
-                <td><code>yellow-20</code></td>
-                <td><code>#FFE072</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #FFCC17;"></div></td>
-                <td><code>yellow-30</code></td>
-                <td><code>#FFCC17</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #DCA614;"></div></td>
-                <td><code>yellow-40</code></td>
-                <td><code>#DCA614</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #B98412;"></div></td>
-                <td><code>yellow-50</code></td>
-                <td><code>#B98412</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #96640F;"></div></td>
-                <td><code>yellow-60</code></td>
-                <td><code>#96640F</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #73480B;"></div></td>
-                <td><code>yellow-70</code></td>
-                <td><code>#73480B</code></td>
-            </tr>
-        </tbody>
-    </table>
+
+| Preview                      | Token name  | Hex code  |
+|------------------------------|-------------|-----------|
+| {% swatch color="#FFF4CC" %} | `yellow-10` | `#FFF4CC` |
+| {% swatch color="#FFE072" %} | `yellow-20` | `#FFE072` |
+| {% swatch color="#FFCC17" %} | `yellow-30` | `#FFCC17` |
+| {% swatch color="#DCA614" %} | `yellow-40` | `#DCA614` |
+| {% swatch color="#B98412" %} | `yellow-50` | `#B98412` |
+| {% swatch color="#96640F" %} | `yellow-60` | `#96640F` |
+| {% swatch color="#73480B" %} | `yellow-70` | `#73480B` |
+
 </section>
 
 
@@ -240,208 +106,68 @@ The green color is primarily used to indicate a success state, but it can also b
 {% endalert %}
 
 <section class="section">
-    <table>
-        <thead>
-            <tr>
-                <th>Preview</th>
-                <th>Token name</th>
-                <th>Hex code</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #E9F7DF;"></div></td>
-                <td><code>green-10</code></td>
-                <td><code>#E9F7DF</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #D1F1BB;"></div></td>
-                <td><code>green-20</code></td>
-                <td><code>#D1F1BB</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #AFDC8F;"></div></td>
-                <td><code>green-30</code></td>
-                <td><code>#AFDC8F</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #87BB62;"></div></td>
-                <td><code>green-40</code></td>
-                <td><code>#87BB62</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #63993D;"></div></td>
-                <td><code>green-50</code></td>
-                <td><code>#63993D</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #3D7317;"></div></td>
-                <td><code>green-60</code></td>
-                <td><code>#3D7317</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #204D00;"></div></td>
-                <td><code>green-70</code></td>
-                <td><code>#204D00</code></td>
-            </tr>
-        </tbody>
-    </table>
+
+| Preview                      | Token name | Hex code  |
+|------------------------------|------------|-----------|
+| {% swatch color="#E9F7DF" %} | `green-10` | `#E9F7DF` |
+| {% swatch color="#D1F1BB" %} | `green-20` | `#D1F1BB` |
+| {% swatch color="#AFDC8F" %} | `green-30` | `#AFDC8F` |
+| {% swatch color="#87BB62" %} | `green-40` | `#87BB62` |
+| {% swatch color="#63993D" %} | `green-50` | `#63993D` |
+| {% swatch color="#3D7317" %} | `green-60` | `#3D7317` |
+| {% swatch color="#204D00" %} | `green-70` | `#204D00` |
+
 </section>
 
 
 ### Teal
 
 <section class="section">
-    <table>
-        <thead>
-            <tr>
-                <th>Preview</th>
-                <th>Token name</th>
-                <th>Hex code</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #DAF2F2;"></div></td>
-                <td><code>teal-10</code></td>
-                <td><code>#DAF2F2</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #B9E5E5;"></div></td>
-                <td><code>teal-20</code></td>
-                <td><code>#B9E5E5</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #9AD8D8;"></div></td>
-                <td><code>teal-30</code></td>
-                <td><code>#9AD8D8</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #63BDBD;"></div></td>
-                <td><code>teal-40</code></td>
-                <td><code>#63BDBD</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #37A3A3;"></div></td>
-                <td><code>teal-50</code></td>
-                <td><code>#37A3A3</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #147878;"></div></td>
-                <td><code>teal-60</code></td>
-                <td><code>#147878</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #004D4D;"></div></td>
-                <td><code>teal-70</code></td>
-                <td><code>#004D4D</code></td>
-            </tr>
-        </tbody>
-    </table>
+
+| Preview                      | Token name | Hex code  |
+|------------------------------|------------|-----------|
+| {% swatch color="#DAF2F2" %} | `teal-10`  | `#DAF2F2` |
+| {% swatch color="#B9E5E5" %} | `teal-20`  | `#B9E5E5` |
+| {% swatch color="#9AD8D8" %} | `teal-30`  | `#9AD8D8` |
+| {% swatch color="#63BDBD" %} | `teal-40`  | `#63BDBD` |
+| {% swatch color="#37A3A3" %} | `teal-50`  | `#37A3A3` |
+| {% swatch color="#147878" %} | `teal-60`  | `#147878` |
+| {% swatch color="#004D4D" %} | `teal-70`  | `#004D4D` |
+
 </section>
 
 
 ### Blue
 
 <section class="section">
-    <table>
-        <thead>
-            <tr>
-                <th>Preview</th>
-                <th>Token name</th>
-                <th>Hex code</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #E0F0F;"></div></td>
-                <td><code>blue-10</code></td>
-                <td><code>#E0F0FF</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #B9DAFC;"></div></td>
-                <td><code>blue-20</code></td>
-                <td><code>#B9DAFC</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #92C5F9;"></div></td>
-                <td><code>blue-30</code></td>
-                <td><code>#92C5F9</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #4394E5;"></div></td>
-                <td><code>blue-40</code></td>
-                <td><code>#4394E5</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #0066CC;"></div></td>
-                <td><code>blue-50</code></td>
-                <td><code>#0066CC</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #004D99;"></div></td>
-                <td><code>blue-60</code></td>
-                <td><code>#004D99</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #003366;"></div></td>
-                <td><code>blue-70</code></td>
-                <td><code>#003366</code></td>
-            </tr>
-        </tbody>
-    </table>
+
+| Preview                      | Token name | Hex code  |
+|------------------------------|------------|-----------|
+| {% swatch color="#E0F0F" %}  | `blue-10`  | `#E0F0FF` |
+| {% swatch color="#B9DAFC" %} | `blue-20`  | `#B9DAFC` |
+| {% swatch color="#92C5F9" %} | `blue-30`  | `#92C5F9` |
+| {% swatch color="#4394E5" %} | `blue-40`  | `#4394E5` |
+| {% swatch color="#0066CC" %} | `blue-50`  | `#0066CC` |
+| {% swatch color="#004D99" %} | `blue-60`  | `#004D99` |
+| {% swatch color="#003366" %} | `blue-70`  | `#003366` |
+
 </section>
 
 
 ### Purple
 
 <section class="section">
-    <table>
-        <thead>
-            <tr>
-                <th>Preview</th>
-                <th>Token name</th>
-                <th>Hex code</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #ECE6FF;"></div></td>
-                <td><code>purple-10</code></td>
-                <td><code>#ECE6FF</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #D0C5F4;"></div></td>
-                <td><code>purple-20</code></td>
-                <td><code>#D0C5F4</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #B6A6E9;"></div></td>
-                <td><code>purple-30</code></td>
-                <td><code>#B6A6E9</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #876FD4;"></div></td>
-                <td><code>purple-40</code></td>
-                <td><code>#876FD4</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #5E40BE;"></div></td>
-                <td><code>purple-50</code></td>
-                <td><code>#5E40BE</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #3D2785;"></div></td>
-                <td><code>purple-60</code></td>
-                <td><code>#3D2785</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #21134D;"></div></td>
-                <td><code>purple-70</code></td>
-                <td><code>#21134D</code></td>
-            </tr>
-        </tbody>
-    </table>
+
+| Preview                      | Token name  | Hex code  |
+|------------------------------|-------------|-----------|
+| {% swatch color="#ECE6FF" %} | `purple-10` | `#ECE6FF` |
+| {% swatch color="#D0C5F4" %} | `purple-20` | `#D0C5F4` |
+| {% swatch color="#B6A6E9" %} | `purple-30` | `#B6A6E9` |
+| {% swatch color="#876FD4" %} | `purple-40` | `#876FD4` |
+| {% swatch color="#5E40BE" %} | `purple-50` | `#5E40BE` |
+| {% swatch color="#3D2785" %} | `purple-60` | `#3D2785` |
+| {% swatch color="#21134D" %} | `purple-70` | `#21134D` |
+
 </section>
 
 
@@ -452,85 +178,35 @@ The black color is primarily used for brand purposes, use `gray-95` and above as
 {% endalert %}
 
 <section class="section">
-    <table>
-        <thead>
-            <tr>
-                <th>Preview</th>
-                <th>Token name</th>
-                <th>Hex code</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #FFFFFF; border: 1px #c7c7c7 solid;"></div></td>
-                <td><code>white</code></td>
-                <td><code>#FFFFFF</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #F2F2F2;"></div></td>
-                <td><code>gray-10</code></td>
-                <td><code>#F2F2F2</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #E0E0E0;"></div></td>
-                <td><code>gray-20</code></td>
-                <td><code>#E0E0E0</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #C7C7C7;"></div></td>
-                <td><code>gray-30</code></td>
-                <td><code>#C7C7C7</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #A3A3A3;"></div></td>
-                <td><code>gray-40</code></td>
-                <td><code>#A3A3A3</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #707070;"></div></td>
-                <td><code>gray-50</code></td>
-                <td><code>#707070</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #4D4D4D;"></div></td>
-                <td><code>gray-60</code></td>
-                <td><code>#4D4D4D</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #383838;"></div></td>
-                <td><code>gray-70</code></td>
-                <td><code>#383838</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #292929;"></div></td>
-                <td><code>gray-80</code></td>
-                <td><code>#292929</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #1F1F1F;"></div></td>
-                <td><code>gray-90</code></td>
-                <td><code>#1F1F1F</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #151515;"></div></td>
-                <td><code>gray-95</code></td>
-                <td><code>#151515</code></td>
-            </tr>
-            <tr>
-                <td><div class="color-palette--swatch" style="--color-palette-background: #000000;"></div></td>
-                <td><code>black</code></td>
-                <td><code>#000000</code></td>
-            </tr>
-        </tbody>
-    </table>
+
+| Preview                                  | Token name | Hex code  |
+| ---------------------------------------- | ---------- | --------- |
+| {% swatch color="#FFFFFF", light=true %} | `white`    | `#FFFFFF` |
+| {% swatch color="#F2F2F2" %}             | `gray-10`  | `#F2F2F2` |
+| {% swatch color="#E0E0E0" %}             | `gray-20`  | `#E0E0E0` |
+| {% swatch color="#C7C7C7" %}             | `gray-30`  | `#C7C7C7` |
+| {% swatch color="#A3A3A3" %}             | `gray-40`  | `#A3A3A3` |
+| {% swatch color="#707070" %}             | `gray-50`  | `#707070` |
+| {% swatch color="#4D4D4D" %}             | `gray-60`  | `#4D4D4D` |
+| {% swatch color="#383838" %}             | `gray-70`  | `#383838` |
+| {% swatch color="#292929" %}             | `gray-80`  | `#292929` |
+| {% swatch color="#1F1F1F" %}             | `gray-90`  | `#1F1F1F` |
+| {% swatch color="#151515" %}             | `gray-95`  | `#151515` |
+| {% swatch color="#000000" %}             | `black`    | `#000000` |
+
 </section>
 
 
 ### Skin tones
 
-To learn more about using skin tone colors, go to the <a href="https://brand.redhat.com/">Brand standards</a> website.
+To learn more about using skin tone colors, go to the [Brand standards][brand] website.
 
 {% feedback %}
-  <h2>Foundations</h2>
-  <p>To learn how to use our other foundations in your designs, visit the <a href="/foundations">foundations</a> section.</p>
+## Foundations
+
+To learn how to use our other foundations in your designs, visit the
+[foundations](/foundations) section.
 {% endfeedback %}
+
+[red-guidelines]: /foundations/color/usage/index.html/#brand-red
+[brand]: https://brand.redhat.com/
