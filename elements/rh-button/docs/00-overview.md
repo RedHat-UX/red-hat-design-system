@@ -6,7 +6,7 @@
           src="./button-sample.png" %}
 
 
-## Sample component
+## Sample element
   <rh-button>Primary</rh-button>
 
 

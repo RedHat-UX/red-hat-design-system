@@ -5,7 +5,7 @@
           alt="An accordion with four collapsed panels and one expanded panel",
           src="./accordion-sample-element.png" %}
 
-## Sample component
+## Sample element
 
 <rh-accordion>
   <rh-accordion-header>

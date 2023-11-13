@@ -48,6 +48,7 @@ module.exports = function(eleventyConfig) {
     const outdir = join(__dirname, `../../assets/playgrounds/`);
     const bundle = await rollup({
       input: join(__dirname, 'rh-playground.js'),
+      external: [/^@rhds/],
       plugins: [
         nodeResolve(),
         importMetaAssets(),

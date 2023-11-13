@@ -1,17 +1,20 @@
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
-import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
+import { classMap } from 'lit/directives/class-map.js';
+
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
-import { ComposedEvent } from '@patternfly/pfe-core';
+import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
+
+import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-menu.css';
 
-export class MenuToggleEvent extends ComposedEvent {
+export class MenuToggleEvent extends Event {
   constructor(
     public open: boolean,
     public menu: HTMLElement
   ) {
-    super('toggle');
+    super('toggle', { bubbles: true });
   }
 }
 
@@ -22,6 +25,8 @@ export class MenuToggleEvent extends ComposedEvent {
 @customElement('rh-menu')
 export class RhMenu extends LitElement {
   static readonly styles = [styles];
+
+  @colorContextConsumer() private on?: ColorTheme;
 
   #tabindex = new RovingTabindexController(this);
 
@@ -37,8 +42,9 @@ export class RhMenu extends LitElement {
   }
 
   render() {
+    const { on = '' } = this;
     return html`
-      <slot part="menu"></slot>
+      <slot part="menu" class="${classMap({ [on]: !!on })}"></slot>
     `;
   }
 
