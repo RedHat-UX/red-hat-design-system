@@ -71,11 +71,11 @@ There are several card variants that can be used for a variety of use cases.
 ### Character count
   The maximum character count for the elements of a card are listed below.
 
-  | Element        | Maximum characters |
-  |----------------|--------------------|
-  | Title          | 20                 |
-  | Headline       | 50                 | 
-  | Body text      | 165                | 
+  | Element {style="width: 50%" } | Character count |
+  |-------------------------------|-----------------|
+  | Title                         | 20              |
+  | Headline                      | 50              | 
+  | Body text                     | 165             | 
 
 ### Grouping
   Different card styles can sometimes be grouped together. They can be arranged 

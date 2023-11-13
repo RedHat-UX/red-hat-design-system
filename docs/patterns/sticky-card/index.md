@@ -83,11 +83,11 @@ A sticky card has limited vertical height, so keep content short and only includ
 ### Character count
   The maximum character count for the elements of a sticky card are listed below.
 
-  | Element        | Maximum characters |
-  |----------------|--------------------|
-  | Title          | 20                 |
-  | Headline       | 50                 | 
-  | Body text      | 120                | 
+  | Element {style="width: 50%" } | Character count |
+  |-------------------------------|-----------------|
+  | Title                         | 20              |
+  | Headline                      | 50              | 
+  | Body text                     | 120             | 
 
 
 ### Alignment

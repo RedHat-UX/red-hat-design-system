@@ -91,9 +91,9 @@ instead.
         alt="Two groups of two tags with examples of correct and incorrect text labels",
         src="../tag-text-labels.png" %}
 
-| Element    | Character count |
-| ---------- | --------------- |
-| Text label | 20              |
+| Element {style="width: 50%" } | Character count |
+| ----------------------------- | --------------- |
+| Text label                    | 20              |
 
 {style="width:100%"}
 

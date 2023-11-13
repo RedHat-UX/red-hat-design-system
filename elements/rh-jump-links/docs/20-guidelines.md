@@ -13,10 +13,10 @@
 ### Character count
 The label and section links should have fewer characters.
 
-  | Element       | Maximum characters |
-  |---------------|--------------------|
-  | Label         | 18                 |
-  | Section links | 100                |
+  | Element {style="width: 50%" } | Character count |
+  |-------------------------------|-----------------|
+  | Label                         | 18              |
+  | Section links                 | 100             |
 
 ### Positioning
 

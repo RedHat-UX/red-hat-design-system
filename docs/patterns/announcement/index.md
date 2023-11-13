@@ -75,10 +75,10 @@ its objective is.
 ### Character count
 The maximum character count for the elements of an announcement are listed below.
 
-| Element        | Maximum characters |
-|----------------|--------------------|
-| Text           | 60                 |
-| Call to action | 20                 | 
+| Element {style="width: 50%" } | Character count |
+|-------------------------------|-----------------|
+| Text                          | 60              |
+| Call to action                | 20              | 
 
 ## Best practices
 

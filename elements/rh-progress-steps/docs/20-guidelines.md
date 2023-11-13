@@ -71,13 +71,13 @@
              alt="Progress steps component completion",
              src="../progress-steps-completion.svg" %}
 
-### Character count
+### Character and word counts
 
-  Each step indicator text label should be written clearly and use ideally one word to avoid crowding.
+  Each step indicator text label should be written clearly and use ideally one word to avoid crowding. Recommended maximum character and word counts are listed in the table below:
 
-  | Element       | Maximum characters | Maximum words |
-  |---------------|--------------------|---------------|
-  | Label         | 20                 | 2             |
+  | Element {style="width: 50%" } | Character count | Word count |
+  |-------------------------------|-----------------|------------|
+  | Label                         | 20              | 2          |
 
 
 ## Behavior
