@@ -11,12 +11,12 @@
   section link.
 
 ### Character count
-The label and section links should have fewer characters.
+The label and section links should have fewer characters. The recommended maximum character count for the elements of jump links are listed below and include spaces.
 
   | Element {style="width: 50%" } | Character count |
   |-------------------------------|-----------------|
   | Label                         | 18              |
-  | Section links                 | 100             |
+  | Section links                 | 30              |
 
 ### Positioning
 

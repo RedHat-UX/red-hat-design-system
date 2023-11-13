@@ -140,13 +140,13 @@ from the headline for better scannability.
 
 ### Character and line counts
 
-The maximum character and line counts for title, body, and button are listed below:
+The recommended maximum character and line counts for the elements of a dialog are listed below and include spaces.
 
 | Element {style="width: 50%" } | Character count | Line count |
 | ----------------------------- | --------------- | ---------- |
 | Title text                    |       40        |     1      |
 | Body text                     |       175       |     2      |
-| Button text                   |       20        |     1      |
+| Button text                   |       30        |     1      |
 
 ### Overflow content
 

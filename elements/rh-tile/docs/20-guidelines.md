@@ -63,8 +63,6 @@ The recommended character counts below include spaces. Line counts are based on 
 | Body text                     | 160              | 7          |
 | Footer text                   | 25               | 1          |
 
-{.full-width .col-111}
-
 ## Layouts
 
 Like a card, the default tile should have a minimum width of four grid columns, so there is a maximum of three default link tiles in one row.

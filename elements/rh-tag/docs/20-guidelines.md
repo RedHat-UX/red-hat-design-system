@@ -91,11 +91,12 @@ instead.
         alt="Two groups of two tags with examples of correct and incorrect text labels",
         src="../tag-text-labels.png" %}
 
+
+The recommended maximum character count for the elements of a tag are listed below and include spaces.
+
 | Element {style="width: 50%" } | Character count |
 | ----------------------------- | --------------- |
 | Text label                    | 20              |
-
-{style="width:100%"}
 
 ## Grouping
 

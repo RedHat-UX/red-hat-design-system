@@ -114,7 +114,7 @@ The label should have fewer characters to help users make sense of what the cont
 
 | Element {style="width: 50%" } | Character count |
 | ----------------------------- | --------------- |
-| Label                         | 45              |
+| Label                         | 65              |
 
 ### Jump links
 
