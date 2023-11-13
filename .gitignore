@@ -2,6 +2,7 @@
 node_modules
 .wireit
 .rollup.cache
+.cache
 
 # Ignore compiled files in webroot
 _site

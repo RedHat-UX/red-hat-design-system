@@ -33,6 +33,7 @@
     "!*.{spec,e2e}.ts",
     "elements/*/*.{js,md,map,txt,d.ts}",
     "elements/*/*-lightdom.css",
+    "elements/rh-audio-player/i18n/*.json",
     "!elements/*/docs/**/*.{js,html,css,md}",
     "!elements/*/demo/**/*.{js,html,css,md}",
     "!elements/*/test/*.{spec,e2e}.{ts,d.ts}",
@@ -44,13 +45,14 @@
     "🐒-DEV": "❓ Development aids",
     "start": "wireit",
     "dev": "wireit",
+    "serve": "wireit",
     "new": "npm init @patternfly/element",
     "🚧-BUILD": "❓ Make packages and artifacts",
     "build": "wireit",
     "docs": "wireit",
     "site": "npm run docs",
     "🧪-TEST": "❓ Test packages",
-    "test": "wtr --group default",
+    "test": "wireit",
     "test:ci": "wtr",
     "test:watch": "wtr --watch --group default",
     "test:vue": "wtr --watch --group with-vue",
@@ -91,6 +93,15 @@
         "watch:compile"
       ]
     },
+    "serve": {
+      "service": true,
+      "command": "eleventy --serve",
+      "dependencies": [
+        "analyze",
+        "compile",
+        "watch:compile"
+      ]
+    },
     "build": {
       "dependencies": [
         "patch",
@@ -100,10 +111,17 @@
         "docs"
       ]
     },
+    "test": {
+      "command": "wtr --group default",
+      "dependencies": [
+        "build"
+      ]
+    },
     "compile": {
       "command": "ttsc",
       "files": [
         "elements/**/*.ts",
+        "lib/**/*.css",
         "lib/**/*.ts"
       ],
       "output": [

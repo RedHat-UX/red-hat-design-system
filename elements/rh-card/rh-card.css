@@ -28,6 +28,7 @@ article {
   display: flex;
   gap: 0.5em;
   inset-block-end: 0;
+  margin-block-start: auto;
 }
 
 .empty {
@@ -42,7 +43,6 @@ article {
 ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
   font-size: inherit !important;
 }
-
 
 #container {
   align-self: stretch;

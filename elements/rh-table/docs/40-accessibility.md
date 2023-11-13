@@ -15,6 +15,12 @@ Since tables are inherently complex HTML structures, they can create barriers fo
 
 - Define sections with `<thead>` and `<tbody>` (and optionally `<tfoot>` for larger tables)
 
+### Further guidance
+
+- Use `id` and `headers` attributes to associate data cells with their table headers
+- Add a `<caption>` element for brief descriptive text
+- Define sections with `thead` and `tbody` (and optionally `tfoot` for larger tables)
+
 ### Example markup
 
 ```html

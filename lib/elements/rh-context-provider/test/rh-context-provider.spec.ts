@@ -1,6 +1,6 @@
 import { expect, fixture, html, nextFrame, aTimeout } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
-import { RhContextProvider } from '../rh-context-provider.js';
+import { RhContextProvider } from '@rhds/elements/lib/elements/rh-context-provider/rh-context-provider.js';
 
 import { LitElement, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
