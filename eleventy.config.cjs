@@ -35,8 +35,10 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('docs/.nojekyll');
   eleventyConfig.addPassthroughCopy('docs/robots.txt');
   eleventyConfig.addPassthroughCopy('docs/assets/**/*');
-  eleventyConfig.addPassthroughCopy({ 'elements': 'assets/packages/@rhds/elements/elements/' });
-  eleventyConfig.addPassthroughCopy({ 'lib': 'assets/packages/@rhds/elements/lib/' });
+
+  eleventyConfig.on('eleventy.before', function({ runMode }) {
+    eleventyConfig.addGlobalData('runMode', runMode);
+  });
 
   eleventyConfig.addPlugin(RHDSMarkdownItPlugin);
 
@@ -57,37 +59,42 @@ module.exports = function(eleventyConfig) {
 
   /** Bespoke import map for ux-dot pages and demos */
   eleventyConfig.addPassthroughCopy({ 'node_modules/@lit/reactive-element': '/assets/packages/@lit/reactive-element' });
+  eleventyConfig.addPassthroughCopy({ 'elements': 'assets/packages/@rhds/elements/elements/' });
+  eleventyConfig.addPassthroughCopy({ 'lib': 'assets/packages/@rhds/elements/lib/' });
   eleventyConfig.addPlugin(ImportMapPlugin, {
-    defaultProvider: 'nodemodules',
+    nodemodulesPublicPath: '/assets/packages',
+    manualImportMap: {
+      imports: {
+        '@rhds/tokens/': '/assets/packages/@rhds/tokens/js/',
+        '@rhds/elements/': '/assets/packages/@rhds/elements/elements/',
+        '@rhds/elements/lib/': '/assets/packages/@rhds/elements/lib/',
+        '@patternfly/elements/': '/assets/packages/@patternfly/elements/',
+        '@patternfly/icons/': '/assets/packages/@patternfly/icons/',
+        '@patternfly/pfe-core/': '/assets/packages/@patternfly/pfe-core/',
+      }
+    },
     localPackages: [
       // ux-dot dependencies
       'fuse.js',
       'element-internals-polyfill',
 
       // RHDS dependencies
+      // `manualImportMap` is not traced, so we need to manually specify these
+      //
+      // 1st party
+      '@rhds/tokens',
+      '@rhds/tokens/media.js',
+      '@rhds/tokens/meta.js',
+      '@patternfly/elements',
+      '@patternfly/pfe-core',
+      // Vendor
       'lit',
+      'lit-html',
+      'lit-element',
       '@lit/reactive-element',
       'tslib',
       '@floating-ui/dom',
       '@floating-ui/core',
-
-      // RHDS modules
-      '@rhds/tokens',
-      '@rhds/tokens/media.js',
-      '@rhds/tokens/meta.js',
-      '@patternfly/pfe-core',
-      '@patternfly/elements',
-
-      // extra modules used in demo that didn't get picked up in the sources trace
-      // future solution could be to inject maps into each page in a transform
-      // but that could be prohibitively expensive if it has to call out to network for each page
-      // SEE: https://github.com/jspm/generator#generating-html
-      '@patternfly/elements/pf-panel/pf-panel.js',
-      '@patternfly/elements/pf-button/pf-button.js',
-      '@patternfly/elements/pf-card/pf-card.js',
-      '@patternfly/elements/pf-icon/pf-icon.js',
-      '@patternfly/elements/pf-spinner/pf-spinner.js',
-      '@patternfly/elements/pf-tabs/pf-tabs.js',
     ],
   });
 

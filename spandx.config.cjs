@@ -39,7 +39,7 @@ async function injectLocalSources(_req, res, next) {
         }
 
         chunk = chunk
-          .replace('</head>', `<script type="importmap">${importMapJson}</script><script async src="https://ga.jspm.io/npm:es-module-shims@1.5.1/dist/es-module-shims.js" crossorigin="anonymous"></script>\n</head>`)
+          .replace('</head>', `<script type="importmap">${importMapJson}</script><script async src="https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js" crossorigin="anonymous"></script>\n</head>`)
           .replace('</body>', `${proxyContents}\n\n</body>`);
 
         // res.setHeader('Content-Length', chunk.length);
