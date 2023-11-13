@@ -141,6 +141,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   eleventyConfig.addPlugin(RHDSShortcodesPlugin);
 
   eleventyConfig.addPassthroughCopy('docs/demo.{js,map,ts}');
+  eleventyConfig.addPassthroughCopy('elements/*/*-lightdom.css');
 
   eleventyConfig.addPassthroughCopy({
     'node_modules/element-internals-polyfill': '/assets/packages/element-internals-polyfill',
