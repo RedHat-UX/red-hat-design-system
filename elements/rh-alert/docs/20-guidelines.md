@@ -60,7 +60,7 @@ The body would ideally be one brief sentence. This is especially important for t
 
 ### Character count
 
-The maximum character count for title text is listed below:
+The recommended maximum character count for the elements of an alert are listed below and include spaces.
 
 | Element {style="width: 50%" } | Character count |
 | ----------------------------- | --------------- |

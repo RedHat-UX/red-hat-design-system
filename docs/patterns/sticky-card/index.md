@@ -81,7 +81,7 @@ A sticky card has limited vertical height, so keep content short and only includ
 
 
 ### Character count
-  The maximum character count for the elements of a sticky card are listed below.
+  The recommended maximum character count for the elements of a sticky card are listed below and include spaces.
 
   | Element {style="width: 50%" } | Character count |
   |-------------------------------|-----------------|

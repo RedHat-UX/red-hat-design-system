@@ -73,7 +73,7 @@ its objective is.
            src="./announcement-usage-content.svg" %}
 
 ### Character count
-The maximum character count for the elements of an announcement are listed below.
+The recommended maximum character count for the elements of an announcement are listed below and include spaces.
 
 | Element {style="width: 50%" } | Character count |
 |-------------------------------|-----------------|

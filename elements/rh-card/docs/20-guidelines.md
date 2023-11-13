@@ -69,7 +69,7 @@ There are several card variants that can be used for a variety of use cases.
   present until a user dismisses it.
 
 ### Character count
-  The maximum character count for the elements of a card are listed below.
+  The recommended maximum character count for the elements of a card are listed below and include spaces.
 
   | Element {style="width: 50%" } | Character count |
   |-------------------------------|-----------------|

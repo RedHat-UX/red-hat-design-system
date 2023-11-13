@@ -218,7 +218,7 @@ For more information, please see the [card css custom properties](/elements/card
 ## Usage
 
 ### Character count
-  The maximum character count for the elements of a sticky card are listed below.
+  The recommended maximum character count for the elements of a card are listed below and include spaces.
 
   | Element {style="width: 50%" } | Character count |
   |-------------------------------|-----------------|
