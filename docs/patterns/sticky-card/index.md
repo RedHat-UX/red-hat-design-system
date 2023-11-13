@@ -88,6 +88,7 @@ A sticky card has limited vertical height, so keep content short and only includ
   | Title                         | 20              |
   | Headline                      | 50              | 
   | Body text                     | 120             | 
+  | Footer                        | 55              |
 
 
 ### Alignment

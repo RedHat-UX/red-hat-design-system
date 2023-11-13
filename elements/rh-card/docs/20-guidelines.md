@@ -76,6 +76,7 @@ There are several card variants that can be used for a variety of use cases.
   | Title                         | 20              |
   | Headline                      | 50              | 
   | Body text                     | 165             | 
+  | Footer                        | 55              |
 
 ### Grouping
   Different card styles can sometimes be grouped together. They can be arranged 

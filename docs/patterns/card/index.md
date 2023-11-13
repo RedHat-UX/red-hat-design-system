@@ -224,4 +224,5 @@ For more information, please see the [card css custom properties](/elements/card
   |-------------------------------|-----------------|
   | Title                         | 20              |
   | Headline                      | 50              | 
-  | Body text                     | 120             | 
+  | Body text                     | 165             |
+  | Footer                        | 55              |
