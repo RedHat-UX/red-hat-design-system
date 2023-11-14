@@ -28,13 +28,6 @@ nav {
   z-index: var(--rh-navigation-secondary-z-index, 102);
 }
 
-:host([color-palette="dark"]) nav.compact {
-  border-block-end: 
-    var(--rh-border-width-sm, 1px) 
-    solid
-    var(--rh-color-border-subtle-on-dark, #707070);
-}
-
 nav.rtl {
   --_chevron-transform-collapsed:
     rotate(calc(-1 * var(--_chevron-up)))
