@@ -48,11 +48,7 @@ section.
 
 ### Primitive and semantic colors
 
-Our design system includes multiple sets of colors known as primitives. 
-Primitives reference hard-coded values, but offer no information about usage. 
-Semantic colors reference primitive colors and define how a color is used. 
-Semantic naming is essential not just for color, but for all foundational 
-styles.
+Our design system includes multiple sets of colors known as <strong>primitives</strong>. Primitives reference hard-coded values, but offer no information about usage. <strong>Semantic</strong> colors reference primitive colors and define how a color is used. Semantic naming is essential not just for color, but for all foundational styles.
 
 {% example palette="light",
           alt="Example of how primitive tokens are aliased to semantic tokens, which are used to style a button",

@@ -193,10 +193,8 @@ only after significant planning and consideration.
 
 Most projects do not need elements and patterns in a custom theme. If
 you need a custom theme for a campaign or special project, contact the
-Brand team first. If you need one or more custom design tokens, [contact
-the Design system
-team](https://github.com/RedHat-UX/red-hat-design-system/discussions)
-first. Do not create your own colors, design tokens, or change the
+Brand team first. If you need one or more custom design tokens, contact
+the [Design system](https://github.com/RedHat-UX/red-hat-design-system/discussions) team first. Do not create your own colors, design tokens, or change the
 colors of existing elements and patterns.
 
 {% example palette="wrong",
@@ -219,5 +217,4 @@ using elements and patterns from the desaturated theme instead.
 
 - [Brand standards](https://www.redhat.com/en/about/brand/standards)
 - [WCAG 2.1](https://www.w3.org/WAI/WCAG21/Understanding/)
-- [WebAIM: Contrast and Color
-    Accessibility](https://webaim.org/articles/contrast/)
+- [WebAIM: Contrast and Color Accessibility](https://webaim.org/articles/contrast/)
