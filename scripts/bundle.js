@@ -1,20 +1,25 @@
 #!/usr/bin/env node
 /* eslint-env node */
 import { build } from 'esbuild';
-import { join, dirname } from 'node:path';
+import { join, dirname, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { litCssPlugin } from 'esbuild-plugin-lit-css';
 import { minifyHTMLLiteralsPlugin } from 'esbuild-plugin-minify-html-literals';
 
-import glob from 'glob';
+import { glob } from 'glob';
 
 import CleanCSS from 'clean-css';
+
+import postcss from 'postcss';
+import nesting from 'postcss-nesting';
 
 const cleanCSS = new CleanCSS({
   sourceMap: true,
   returnPromise: true,
 });
 
+
+// TODO(bennypowers): remove for 2.0, don't ship a bundle
 export async function bundle({ outfile = 'rhds.min.js', external = [], additionalPackages = [] } = {}) {
   const resolveDir = join(fileURLToPath(import.meta.url), '../elements');
 
@@ -23,7 +28,7 @@ export async function bundle({ outfile = 'rhds.min.js', external = [], additiona
   const elementFiles = Array.from(elementDirs, x => join(process.cwd(), `elements/${x}/${x}.js`));
 
   const contents = [...additionalPackages, ...elementFiles]
-    .map(x => `export * from '${x.replace('.ts', '.js')}';`).join('\n');
+    .map(x => `export * from './${relative(resolveDir, x).replace('.ts', '.js')}';`).join('\n');
 
   await build({
     stdin: {
@@ -53,7 +58,12 @@ export async function bundle({ outfile = 'rhds.min.js', external = [], additiona
       minifyHTMLLiteralsPlugin(),
       litCssPlugin({
         include: /elements\/rh-(.*)\/(.*)\.css$/,
-        transform: source => cleanCSS.minify(source).then(x => x.styles)
+        transform: async (source, meta) =>
+          Promise.resolve(source)
+            .then(source => postcss([nesting]).process(source, { from: meta.filePath }))
+            .then(x => x.css)
+            .then(unnested => cleanCSS.minify(unnested))
+            .then(x => x.styles)
       }),
     ],
   });

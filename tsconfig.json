@@ -30,7 +30,7 @@
     "module": "es2020",
     "moduleResolution": "node",
     "noEmitOnError": false,
-    "preserveValueImports": true,
+    "verbatimModuleSyntax": true,
     "rootDir": ".",
     "sourceMap": true,
     "strict": true,
@@ -42,9 +42,9 @@
     ],
     "plugins": [
       {
-        "transform": "@patternfly/pfe-tools/typescript/transformers/css-imports.cjs",
+        "transform": "typescript-transform-lit-css",
         "inline": true,
-        "minify": true
+        "cleanCss": true
       },
       {
         "name": "typescript-lit-html-plugin"
