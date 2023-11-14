@@ -4,6 +4,10 @@ title: Design
 
 ## Overview
 
+{% alert title="Note" %}
+This section covers design accessibility. Designers should also be familiart with [accessibility fundamentals](./fundamentals) as well as [content accessibility](./content).
+{% endalert %}
+
 ### See also fundamentals, development, and content
 
 ### Design approach/accessibility lenses/lense of …
