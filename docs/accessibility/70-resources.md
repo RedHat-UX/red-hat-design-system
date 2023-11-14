@@ -1,5 +1,6 @@
 ---
 title: Resources
+tags: accessibility
 ---
 
 ## Overview

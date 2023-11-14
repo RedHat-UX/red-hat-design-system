@@ -1,5 +1,6 @@
 ---
 title: Fundamentals
+tags: accessibility
 ---
 
 ## Overview
