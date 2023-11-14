@@ -2,10 +2,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
-    <title>Statistic | Red Hat Design System</title>
+    <title>No Numeric Control | Red Hat Design System</title>
     <link rel="preconnect" href="https://ga.jspm.io">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href=" /assets/redhat/redhat-theme/4/advanced-theme.css">
+    <link rel="stylesheet" href="../ /assets/redhat/redhat-theme/4/advanced-theme.css">
     <link rel="stylesheet" href="/assets/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all">
     <link rel="stylesheet" href="/assets/base.css">
 
@@ -22,15 +22,28 @@
   </head>
   <body unresolved="">
     <main>
-      <div data-demo="rh-stat"><rh-stat>
-  <span slot="statistic">Statistic Placeholder</span>
-  <span>Description Placeholder</span>
-</rh-stat>
+      <div data-demo="rh-pagination"><rh-pagination>
+  <ol>
+    <li><a href="#">1</a></li>
+    <li><a href="#2">2</a></li>
+    <li><a href="#3">3</a></li>
+    <li><a href="#4">4</a></li>
+    <li><a href="#5">5</a></li>
+  </ol>
+</rh-pagination>
+
+<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-pagination/rh-pagination-lightdom.css">
+
+<style>
+  rh-pagination::part(numeric) {
+    display: none;
+  }
+</style>
 
 <script type="module">
-  import '@patternfly/elements/pf-icon/pf-icon.js';
-  import '@rhds/elements/rh-stat/rh-stat.js';
+  import '@rhds/elements/rh-pagination/rh-pagination.js';
 </script>
+
 </div>
     </main>
 
