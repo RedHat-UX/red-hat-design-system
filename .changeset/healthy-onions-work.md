@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-rh-tooltip: fixing issue where content would take up unwanted space before floating-ui initialization
+`<rh-tooltip>`: fixes issue where content would take up unwanted space before the element fully upgraded
