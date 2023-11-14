@@ -3,8 +3,8 @@
 }
 
 #container {
-  border-inline-start: 3px solid transparent;
-  border-inline-end: 1px solid transparent;
+  border-inline-start: var(--rh-border-width-lg, 3px) solid transparent;
+  border-inline-end: var(--rh-border-width-sm, 1px) solid transparent;
   display: block;
   height: 100%;
 }
