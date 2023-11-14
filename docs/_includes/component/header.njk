@@ -68,26 +68,6 @@
           </details>
         </li>
 
-        <!-- Accessibility -->
-
-        <li class="item">
-          <details {{ 'open' if '/accessibility/' in page.url }}>
-            <summary class="heading">Get started</summary>
-            <ul class="sub-menu">
-              <li class="item">
-                <a class="link {{ 'active' if page.url === '/accessibility/' }}"
-                   href="{{ '/accessibility/' | url }}">Overview</a>
-              </li>
-              {%- for link in collections.getstarted -%}
-              <li class="item">
-                <a class="link {{ 'active' if page.url === link.url }}"
-                   href="{{ link.url | url }}">{{ link.data.title }}</a>
-              </li>
-              {%- endfor -%}
-            </ul>
-          </details>
-        </li>
-
         <!-- Foundations -->
 
         <li class="item">

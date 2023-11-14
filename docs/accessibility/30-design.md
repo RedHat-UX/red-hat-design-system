@@ -1,3 +1,7 @@
+---
+title: Design
+---
+
 ## Overview
 
 ### See also fundamentals, development, and content

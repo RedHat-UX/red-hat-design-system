@@ -1,3 +1,7 @@
+---
+title: Contributors
+---
+
 ## Overview / See also fundamentals, content, design, and development
 
 ## Accessible patterns
