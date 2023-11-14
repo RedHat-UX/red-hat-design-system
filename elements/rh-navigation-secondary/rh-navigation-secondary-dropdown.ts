@@ -76,6 +76,7 @@ export class RhNavigationSecondaryDropdown extends LitElement {
     link.addEventListener('click', this._clickHandler);
 
     this.#mo.observe(this, { attributeFilter: ['aria-current'], childList: true, subtree: true });
+    this.#mutationsCallback();
   }
 
   render() {
