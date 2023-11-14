@@ -141,7 +141,7 @@ svg {
   border-color: var(--_hover-border-color);
   background-color: var(--_hover-background-color);
 
-  --_text-decoration: var(--rh-cta-hover-text-decoration var(--_hover-text-decoration));
+  --_text-decoration: var(--rh-cta-hover-text-decoration, var(--_hover-text-decoration));
 }
 
 :host(:hover) #container svg {
@@ -215,7 +215,7 @@ svg {
   --_background-color: var(--rh-cta-background-color,transparent);
   --_border-color: var(--rh-cta-border-color, transparent);
   --_color: var(--rh-cta-color, var(--rh-color-interactive-blue, #0066cc));
-  --_hover-background-color: var(--rh-cta-hover-background-colo, transparent);
+  --_hover-background-color: var(--rh-cta-hover-background-color, transparent);
   --_hover-border-color: var(--rh-cta-hover-border-color, transparent);
   --_hover-color: var(--rh-cta-hover-color, var(--rh-color-interactive-blue-darkest, #004080));
   --_hover-text-decoration: var(--rh-cta-hover-text-decoration, none);
