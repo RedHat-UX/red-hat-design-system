@@ -128,7 +128,7 @@ export class RhPagination extends LitElement {
         <a id="next" class="stepper" href=${ifDefined(nextHref)} ?inert=${!nextHref} aria-label=${labelNext}>${L1}</a>
         <a id="last" class="stepper" href=${ifDefined(lastHref)} ?inert=${!lastHref} aria-label=${labelLast}>${L2}</a>
 
-        <div id="numeric">
+        <div id="numeric" part="numeric">
           <span id="go-to-page">
             <slot name="go-to-page">Go to page</slot>
           </span>
