@@ -29,7 +29,10 @@ nav {
 }
 
 :host([color-palette="dark"]) nav.compact {
-  border-block-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle-on-dark, #707070);
+  border-block-end: 
+    var(--rh-border-width-sm, 1px) 
+    solid
+    var(--rh-color-border-subtle-on-dark, #707070);
 }
 
 nav.rtl {
