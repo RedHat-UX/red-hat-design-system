@@ -13,11 +13,13 @@ import type { HeadingLevelContextConsumer } from './consumer.js';
 export interface HeadingLevelTemplateOptions {
   id?: string;
   hidden?: boolean;
+  /** When false, return the content immediately */
+  forceWrap?: boolean;
 }
 
 export interface HeadingLevelContextOptions {
   /** Root Heading level. default 1 */
-  level?: number;
+  level?: 1 | 2 | 3 | 4 | 5 | 6;
   /** Heading offset for children. default 1 */
   offset?: number;
   /**
@@ -59,13 +61,13 @@ export class HeadingLevelController implements ReactiveController {
 
   protected context = createContext<number>(HeadingLevelController.CONTEXT);
 
-  #level = 1;
+  #level: 1 | 2 | 3 | 4 | 5 | 6 = 1;
 
-  get level(): number { return this.#level; }
+  get level(): 1 | 2 | 3 | 4 | 5 | 6 { return this.#level; }
   set level(level: string | number | undefined | null) {
     const val = typeof level === 'string' ? parseInt(level) : level;
-    if (typeof val === 'number' && !Number.isNaN(val)) {
-      this.#level = val;
+    if (typeof val === 'number' && !Number.isNaN(val) && val > 0 && val <= 6) {
+      this.#level = val as 1 | 2 | 3 | 4 | 5 | 6;
     }
   }
 
@@ -88,7 +90,8 @@ export class HeadingLevelController implements ReactiveController {
   /**
    * Wraps any renderable content in a heading, based on heading level
    */
-  wrap(content: unknown, options?: HeadingLevelTemplateOptions): TemplateResult {
+  wrap<T>(content: T, options?: HeadingLevelTemplateOptions): T | TemplateResult {
+    if (options?.forceWrap === false) { return content; }
     const level = Math.max(1, this.level + this.offset);
     const id = options?.id;
     const hidden = options?.hidden ?? false;
