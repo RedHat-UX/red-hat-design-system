@@ -3,7 +3,11 @@ title: Content
 tags: accessibility
 ---
 
-## Overview / See also fundamentals
+## Overview 
+
+{% alert title="Note" %}
+This section covers content accessibility. Content authors should also be familiar with accessibility [fundamentals](./fundamentals).
+{% endalert %}
 
 ## Alt text
 

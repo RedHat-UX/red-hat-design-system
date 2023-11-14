@@ -3,7 +3,11 @@ title: Contributors
 tags: accessibility
 ---
 
-## Overview / See also fundamentals, content, design, and development
+## Overview
+
+{% alert title="Note" %}
+This section covers accessibility for design system contributors. Contribultrs should also be familiar with accessibility [fundamentals](./fundamentals), [content](./content), [design](./design), and [development](./design).
+{% endalert %}
 
 ## Accessible patterns
 

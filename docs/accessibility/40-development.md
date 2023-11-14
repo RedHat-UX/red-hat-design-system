@@ -5,7 +5,9 @@ tags: accessibility
 
 ## Overview
 
-### See also fundamentals, design, and content
+{% alert title="Note" %}
+This section covers development accessibility. Developers should also be familiar with accessibility [fundamentals](./fundamentals), [content](./content), and [design](./design).
+{% endalert %}
 
 ### Why just using the component isn’t the catch-all a11y solution
 
