@@ -27,7 +27,6 @@ color blind user.
           src="/assets/color/using-color-alone.png" %}
 
 ## Contrast
-
 We strive to adhere to [WCAG 2.1 AA](https://www.w3.org/WAI/WCAG21/Understanding/) requirements. Our text, links, 
 interface elements, etc. are designed with sufficient contrast when used on top 
 of a canvas, surfaces, image backgrounds with low contrast, and near adjacent 
@@ -49,6 +48,7 @@ If color is the only way to distinguish between links and surrounding text (for
 example, if link underlines are removed), the contrast ratio between the link 
 and surrounding text must be at least 3:1.
 
+
 - Non-color cues must be used to signify when the link receives hover or focus (for example, an underline)
 
 {% example palette="light",
@@ -67,14 +67,12 @@ ratio between the control and text must be at least 3:1.
 ### Layering
 
 It is acceptable to layer colors with the same hue, saturation, or lightness on 
-white, black, or gray. However, layering them near or on top of each other might 
-cause vibration. If you need to layer colors, follow [WCAG 2.1 AA](https://www.w3.org/WAI/WCAG21/Understanding/) 
+white, black, or gray. However, layering them near or on top of each other might cause vibration. If you need to layer colors, follow [WCAG 2.1 AA](https://www.w3.org/WAI/WCAG21/Understanding/) 
 requirements.
 
 {% example palette="light",
           alt="Red CTA against a white background, blue button against a light gray background, and a light red-orange button against a black background",
-          src="/assets/color/contrast-layering.png",
-          caption="TEST" %}
+          src="/assets/color/contrast-layering.png" %}
 
 ### Tools
 

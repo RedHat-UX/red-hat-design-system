@@ -36,7 +36,7 @@ hierarchy, state, and more.
 
 {% example palette="light",
           alt="Variants of several elements",
-          src="/assets/color/color-relationships.png"%}
+          src="/assets/color/color-relationships.png" %}
 
 ### Color design tokens
 
@@ -44,6 +44,7 @@ Design tokens are the source of truth of our design decisions. They allow for
 changes at scale, making design language updates easy to implement.
 
 To learn more about our color design tokens, go to the [Tokens](/tokens) section.
+
 
 ### Primitive and semantic colors
 
