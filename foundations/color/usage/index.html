@@ -1,0 +1,686 @@
+<!DOCTYPE html><html class="no-js" lang=""><head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Usage | Red Hat design system</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/svg+xml" sizes="any" href="/assets/logo-red-hat.svg">
+
+  <meta property="og:title" content="Red Hat design system">
+  <meta property="og:site_name" content="Red Hat design system">
+  <meta property="og:url" content="ux.redhat.com">
+  <meta property="og:description" content="This is Red Hat's design system. Using Red Hat brand standards and PatternFly as our foundational design language, we enable designers and developers to concurrently build branded experiences across redhat.com, Red Hat Customer Portal, and beyond.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://ux.redhat.com/assets/opengraph.png">
+
+  <meta name="pfe-auto-reveal" content="true">
+
+  <link rel="stylesheet" href=" /assets/redhat/redhat-theme/4/advanced-theme.css">
+  <link rel="stylesheet" href="/assets/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all">
+
+  <link rel="stylesheet" href="/assets/prism.css">
+  <link rel="stylesheet" href="/assets/rhds.min.css">
+  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-footer/rh-footer-lightdom.css">
+
+  <link rel="stylesheet" href="/assets/css/style.css" id="">
+
+  
+
+  <noscript>
+    <link type="text/css" href="/assets/pfe--noscript.min.css">
+  </noscript>
+
+  <script type="importmap">{"imports":{"@patternfly/pfe-core":"/assets/packages/@patternfly/pfe-core/core.js","lit-html":"/assets/packages/lit-html/lit-html.js","@floating-ui/core":"/assets/packages/@floating-ui/core/dist/floating-ui.core.browser.min.mjs","tslib":"/assets/packages/tslib/tslib.es6.js","@lit/reactive-element":"/assets/packages/@lit/reactive-element/reactive-element.js","@floating-ui/dom":"/assets/packages/@floating-ui/dom/dist/floating-ui.dom.browser.min.mjs","lit-element":"/assets/packages/lit-element/index.js","lit":"/assets/packages/lit/index.js","@patternfly/elements":"/assets/packages/@patternfly/elements/pfe.min.js","@rhds/tokens":"https://ga.jspm.io/npm:@rhds/tokens@1.1.2/js/tokens.js","@rhds/tokens/media.js":"https://ga.jspm.io/npm:@rhds/tokens@1.1.2/js/media.js","@rhds/tokens/meta.js":"https://ga.jspm.io/npm:@rhds/tokens@1.1.2/js/meta.js","element-internals-polyfill":"/assets/packages/element-internals-polyfill/dist/index.js","fuse.js":"/assets/packages/fuse.js/dist/fuse.esm.js","@rhds/tokens/":"/assets/packages/@rhds/tokens/js/","@rhds/elements/":"/assets/packages/@rhds/elements/elements/","@rhds/elements/lib/":"/assets/packages/@rhds/elements/lib/","@patternfly/elements/":"/assets/packages/@patternfly/elements/","@patternfly/icons/":"/assets/packages/@patternfly/icons/","@patternfly/pfe-core/":"/assets/packages/@patternfly/pfe-core/"},"scopes":{"/assets/packages/":{"@lit/reactive-element/decorators/":"/assets/packages/@lit/reactive-element/decorators/","lit":"/assets/packages/@patternfly/elements/node_modules/lit/index.js","lit-element/lit-element.js":"/assets/packages/lit-element/lit-element.js","lit-html/":"/assets/packages/lit-html/","lit/":"/assets/packages/@patternfly/elements/node_modules/lit/"}}}</script>
+  <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js"></script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-alert/rh-alert.js';
+  </script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-cta/rh-cta.js';
+  </script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-footer/rh-footer.js';
+  </script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-subnav/rh-subnav.js';
+  </script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-tag/rh-tag.js';
+  </script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-badge/rh-badge.js';
+  </script>
+  
+  <script type="module">
+    import { PfIcon } from '@patternfly/elements/pf-icon/pf-icon.js';
+    PfIcon.getIconUrl = (set, icon) =>
+      new URL(`/assets/packages/@patternfly/elements/pf-icon/icons/${set}/${icon}.js`, location.origin);
+  </script>
+  <script type="module">
+    // As soon as the DOM is ready, toggle JS class
+    document.documentElement.classList.remove('no-js');
+    document.documentElement.classList.add('js');
+  </script>
+  <script type="module" src="/assets/copy-permalink.js"></script>
+  <script type="module">
+    import { PfIcon } from '@patternfly/elements/pf-icon/pf-icon.js';
+    PfIcon.getIconUrl = (set, icon) =>
+      new URL(`/assets/packages/@patternfly/elements/pf-icon/icons/${set}/${icon}.js`, location.origin);
+  </script>
+</head>
+<body id="top" class="page element-docs page-usage" unresolved="">
+  <div class="body-inner">
+    
+<header id="main-header">
+  <div class="logo-bar">
+    <a href="/">
+      <img class="logo" alt="Red Hat design system logo" src="/assets/red-hat-design-system.svg" style="max-width: 188px; min-width: 42px;">
+    </a>
+  </div>
+
+  <input id="mobile-menu-toggle" class="menu-toggle element-invisible" type="checkbox" aria-controls="mobile-menu-menu-container">
+
+  <label class="menu-toggle-button mobile-menu-toggle" for="mobile-menu-toggle" data-controls="mobile-menu-menu-container">
+    <span class="burger-icon"></span>
+    <span class="menu-toggle-assistive-text element-invisible">Toggle menu visibility</span>
+  </label>
+
+  <div class="menu-toggle-toggleable site-navigation-outer-wrapper">
+    <nav class="site-navigation site-navigation menu-toggle-toggleable-content-wrapper">
+      <ul class="wrapper">
+        <li class="item">
+          <a class="link " href="/">Home</a>
+        </li>
+
+        <!-- About -->
+
+        <li class="item">
+          <details>
+            <summary class="heading">About</summary>
+            <ul class="sub-menu">
+              <li class="item">
+                <a class="link " href="/about/">About this website</a>
+              </li><li class="item">
+                <a class="link " href="/about/how-we-build/">How we build</a>
+              </li><li class="item">
+                <a class="link " href="/about/roadmap/">Roadmap</a>
+              </li></ul>
+          </details>
+        </li>
+
+        <!-- Get started -->
+
+        <li class="item">
+          <details>
+            <summary class="heading">Get started</summary>
+            <ul class="sub-menu">
+              <li class="item">
+                <a class="link " href="/get-started/">Overview</a>
+              </li><li class="item">
+                <a class="link " href="/get-started/design-system-kit/">Design system kit</a>
+              </li><li class="item">
+                <a class="link " href="/get-started/fts-starter-kit/">FTS starter kit</a>
+              </li><li class="item">
+                <a class="link " href="/get-started/icon-libraries/">Icon libraries</a>
+              </li><li class="item">
+                <a class="link " href="/get-started/product-logo-library/">Product logo library</a>
+              </li></ul>
+          </details>
+        </li>
+
+        <!-- Foundations -->
+
+        <li class="item">
+          <details open="">
+            <summary class="heading">Foundations</summary>
+            <ul class="sub-menu">
+              <li class="item">
+                    <a class="link " href="/foundations/">Overview</a>
+                  
+                    <a class="link active" href="/foundations/color/">Color</a>
+                  
+                    <a class="link " href="/foundations/grid/">Grid</a>
+                  
+                    <a class="link " href="/foundations/personalization/">Personalization patterns</a>
+                  
+                    <a class="link " href="/foundations/spacing/">Spacing</a>
+                  
+                    <a class="link " href="/foundations/typography/">Typography</a>
+                  </li>
+            </ul>
+          </details>
+        </li>
+
+        <!-- Tokens -->
+
+        <li class="item">
+          <details>
+            <summary class="heading">Tokens</summary>
+            <ul class="sub-menu">
+              <li class="item">
+                <a class="link " href="/tokens/">Overview</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/color/">Global color</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/box-shadow/">Box shadow</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/font/">Typography</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/border/">Border</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/opacity/">Opacity</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/space/">Space</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/length/">Length</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/icon/">Icon</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/breakpoint/">Breakpoints</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/media/">Media queries</a>
+              </li></ul>
+          </details>
+        </li>
+
+        <!-- Elements -->
+
+        <li class="item">
+          <details>
+            <summary class="heading">Elements</summary>
+            <ul class="sub-menu">
+              <li class="item">
+                <a class="link " href="/elements/">All elements</a>
+              </li>
+                  <li class="item">
+                    <a class="link " href="/elements/accordion/">Accordion</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/alert/">Alert</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/audio-player/">Audio player</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/avatar/">Avatar</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/badge/">Badge</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/blockquote/">Blockquote</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/button/">Button</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/call-to-action/">Call to action</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/card/">Card</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/code-block/">Code block</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/dialog/">Dialog</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/footer/">Footer</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/jump-links/">Jump links</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/navigation-primary/">Navigation (primary)</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/navigation-secondary/">Navigation (secondary)</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/pagination/">Pagination</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/popover/">Popover</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/progress-steps/">Progress steps</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/spinner/">Spinner</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/statistic/">Statistic</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/subnavigation/">Subnavigation</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/table/">Table</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/tabs/">Tabs</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/tag/">Tag</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/tile/">Tile</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/timestamp/">Timestamp</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/tooltip/">Tooltip</a>
+                  </li>
+                </ul>
+          </details>
+        </li>
+
+        <!-- Patterns -->
+
+        <li class="item">
+          <details>
+            <summary class="heading">Patterns</summary>
+            <ul class="sub-menu">
+              <li class="item">
+                <a class="link " href="/patterns/">All patterns</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/announcement/">Announcement</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/card/">Card</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/disclosure/">Disclosure</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/filter/">Filter</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/form/">Form</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/link-with-icon/">Link with icon</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/link/">Link</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/search-bar/">Search bar</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/skip-navigation/">Skip navigation</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/sticky-banner/">Sticky banner</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/sticky-card/">Sticky card</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/video-thumbnail/">Video thumbnail</a>
+              </li></ul>
+          </details>
+        </li>
+
+        <li class="item">
+          <a class="link " href="/design-code-status/">Design/code status</a>
+        </li>
+
+        <li class="item">
+          <a class="link " href="/release-notes/">Release notes</a>
+        </li></ul>
+    </nav>
+  </div>
+</header>
+
+<script type="module">
+  window.onUsersnapCXLoad = function(api) {
+    api.init();
+  }
+  var script = document.createElement('script');
+  script.async = 1;
+  script.src = 'https://widget.usersnap.com/load/64471a95-72fe-4239-b16d-ebcf8b1219f7?onload=onUsersnapCXLoad';
+  document.head.appendChild(script);
+</script>
+
+
+
+<main class="l-main">
+  <article class="l-main__inner">
+    <header class="l-main__header l-main__header--palette-lighter">
+      <div class="container header has-subnav">
+        <h1 id="Color" class="page-title">Color</h1>
+        <rh-subnav>
+          <a href="/foundations/color/">
+            Overview
+          </a>
+          <a active="" href="/foundations/color/usage/">
+            Usage
+          </a>
+          <a href="/foundations/color/accessibility/">
+            Accessibility
+          </a>
+        </rh-subnav>
+      </div>
+    </header>
+    <div class="l-main__content">
+      <div class="container">
+        
+        <copy-permalink class="h2">
+  <h2 id="using-color" tabindex="-1">
+    <a class="heading-anchor" href="#using-color">Using color</a>
+      </h2>
+    </copy-permalink>
+<p>Our color palette is designed to work across all digital properties,
+from websites to applications to ads and more. To view our colors as
+design tokens, go to the <a href="/tokens">Tokens</a> section. If you have
+questions about how to apply the color palette, <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">contact
+us</a>.</p>
+<copy-permalink class="h3">
+  <h3 id="brand-red" tabindex="-1">
+    <a class="heading-anchor" href="#brand-red">Brand red</a>
+      </h3>
+    </copy-permalink>
+<p>Our primary brand color is red. It is important to use it consistently
+and thoughtfully to maximize accessibility and build brand recognition.
+Red is a strong color; use it as an accent instead of filling large
+areas. If you need a color for danger or error states, use red-orange.
+To learn more about our Red Hat red color, go to the <a href="https://www.redhat.com/en/about/brand/standards">Brand
+standards</a> website.</p>
+<rh-alert state="warning">
+  <h3 slot="header">Usage warning</h3>
+<p>Do not apply the Red Hat red color to text in dark environments unless
+it meets <a href="https://www.w3.org/WAI/WCAG21/Understanding/">WCAG 2.1 AA</a>
+requirements.</p>
+</rh-alert>
+<div style="" class="example example--palette-light ">
+          <img alt="spectrum of brand red shades with examples of brand red being used" style="width:872px;height:auto" loading="lazy" decoding="async" src="/assets/color/brand-red-872w.png" width="1744" height="532" srcset="/assets/color/brand-red-872w.png 872w, /assets/color/brand-red.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
+        </div>
+<copy-permalink class="h3">
+  <h3 id="canvas" tabindex="-1">
+    <a class="heading-anchor" href="#canvas">Canvas</a>
+      </h3>
+    </copy-permalink>
+<p>A canvas is a background color and it determines what theme is used. The
+default canvas colors are white and black, but there might be situations
+where grays or even custom colors are needed. It is acceptable to use
+other colors as long as contrast is maintained throughout the entire
+design. If a custom canvas color is lighter or darker than the defaults,
+white or black may be used as surface colors.</p>
+<div style="" class="example example--palette-light ">
+          <img alt="swatches of the default canvas colors for dark and light theme and examples of custom canvas colors" style="width:872px;height:auto" loading="lazy" decoding="async" src="/assets/color/canvas-872w.png" width="1744" height="496" srcset="/assets/color/canvas-872w.png 872w, /assets/color/canvas.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
+        </div>
+<copy-permalink class="h3">
+  <h3 id="surface" tabindex="-1">
+    <a class="heading-anchor" href="#surface">Surface</a>
+      </h3>
+    </copy-permalink>
+<p>A surface is a container background color that sits on top of a canvas.
+Surface colors are used as backgrounds for elements, patterns, and large
+sections. For example, a card (white surface) can be placed in a section
+(light gray surface) on a canvas (white).</p>
+<div style="" class="example example--palette-none ">
+          <img alt="Annotations pointing to canvas and surface colors in a section with a card" style="width:1000px;height:auto" loading="lazy" decoding="async" src="/assets/color/surface-1000w.png" width="2000" height="1364" srcset="/assets/color/surface-1000w.png 1000w, /assets/color/surface.png 2000w" sizes="(max-width: 1000px) 1000px, 2000px">
+        </div>
+<copy-permalink class="h3">
+  <h3 id="layering-beta" tabindex="-1">
+    <a class="heading-anchor" href="#layering-beta">Layering <rh-tag color="purple">Beta</rh-tag></a>
+      </h3>
+    </copy-permalink>
+<p>Layering is the relationship between the canvas color and surface colors
+as well as how they stack to create depth and separate content.</p>
+<rh-alert state="info">
+  <h3 slot="header">Update from the team</h3>
+<p>The design system team is working on creating best practices for
+layering in the near future. <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">Contact
+us</a> if
+you would like to contribute.</p>
+</rh-alert>
+<copy-permalink class="h4">
+  <h4 id="light-theme" tabindex="-1">
+    <a class="heading-anchor" href="#light-theme">Light theme</a>
+      </h4>
+    </copy-permalink>
+<p>In the light theme, white and gray values alternate when stacked.</p>
+<div style="" class="example example--palette-none ">
+          <img alt="A light gray card in a larger, white card, which sits in a light gray section" style="width:1000px;height:auto" loading="lazy" decoding="async" src="/assets/color/layering-light-theme-1000w.png" width="2000" height="1120" srcset="/assets/color/layering-light-theme-1000w.png 1000w, /assets/color/layering-light-theme.png 2000w" sizes="(max-width: 1000px) 1000px, 2000px">
+        </div>
+<copy-permalink class="h4">
+  <h4 id="dark-theme" tabindex="-1">
+    <a class="heading-anchor" href="#dark-theme">Dark theme</a>
+      </h4>
+    </copy-permalink>
+<p>In the dark theme, gray values should get one step lighter when stacked.</p>
+<div style="" class="example example--palette-none ">
+          <img alt="A dark gray card in a larger, darker gray card, which sits in an even dark gray section" style="width:1000px;height:auto" loading="lazy" decoding="async" src="/assets/color/layering-dark-theme-1000w.png" width="2000" height="1120" srcset="/assets/color/layering-dark-theme-1000w.png 1000w, /assets/color/layering-dark-theme.png 2000w" sizes="(max-width: 1000px) 1000px, 2000px">
+        </div>
+<copy-permalink class="h3">
+  <h3 id="text" tabindex="-1">
+    <a class="heading-anchor" href="#text">Text</a>
+      </h3>
+    </copy-permalink>
+<p>Text may be different colors depending on content, hierarchy, and theme.
+Our accessible colors help promote text legibility and readability.
+These are general usage guidelines; there may be other situations not
+represented.</p>
+<ol>
+<li><strong>Custom</strong> - use to represent a temporary campaign or custom design</li>
+<li><strong>Brand</strong> - use to communicate our brand or add a brand accent</li>
+<li><strong>Primary</strong> - use for large text including headlines and body text
+as well as small link text in dark environments (white)</li>
+<li><strong>Secondary</strong> - use for small text including annotations, captions,
+and footnotes</li>
+<li><strong>Links</strong> - use for small or large text that is linked</li>
+<li><strong>Interactive</strong> - use for styled text within calls to action,
+buttons, or other interactive elements</li>
+<li><strong>Status</strong> - use for text that needs to communicate a particular
+status</li>
+</ol>
+<rh-alert state="warning">
+  <h3 slot="header">Usage warning</h3>
+<p>Do not apply the Red Hat red color to text in dark environments unless
+it meets <a href="https://www.w3.org/WAI/WCAG21/Understanding/">WCAG 2.1 AA</a>
+requirements.</p>
+</rh-alert>
+<div style="" class="example example--palette-none ">
+          <img alt="Dark and light theme examples of the seven types of semantic colors used by text" style="width:1000px;height:auto" loading="lazy" decoding="async" src="/assets/color/text-1000w.png" width="2000" height="1702" srcset="/assets/color/text-1000w.png 1000w, /assets/color/text.png 2000w" sizes="(max-width: 1000px) 1000px, 2000px">
+        </div>
+<copy-permalink class="h3">
+  <h3 id="icons" tabindex="-1">
+    <a class="heading-anchor" href="#icons">Icons</a>
+      </h3>
+    </copy-permalink>
+<p>Icons may be different colors depending on usage and theme. There are
+three categories of icons: Brand, Technology, and UI.</p>
+<ol>
+<li><strong>Brand</strong> - monochromatic and usually red, black, or white</li>
+<li><strong>Technology</strong> - always black, gray, red, and white</li>
+<li><strong>UI</strong> - may be different colors depending on how they are used
+within an element or pattern</li>
+</ol>
+<p>To learn more about icons, go to the <a href="https://www.redhat.com/en/about/brand/standards">Brand
+standards</a> website.</p>
+<div style="" class="example example--palette-none ">
+          <img alt="Examples of the three icon categories" style="width:1000px;height:auto" loading="lazy" decoding="async" src="/assets/color/icons-1000w.png" width="2000" height="924" srcset="/assets/color/icons-1000w.png 1000w, /assets/color/icons.png 2000w" sizes="(max-width: 1000px) 1000px, 2000px">
+        </div>
+<copy-permalink class="h3">
+  <h3 id="interactivity" tabindex="-1">
+    <a class="heading-anchor" href="#interactivity">Interactivity</a>
+      </h3>
+    </copy-permalink>
+<p>Certain colors are used to indicate that something is interactive.</p>
+<ol>
+<li><strong>Blue</strong> - use for inline links, Default calls to action, or Primary
+button surfaces</li>
+<li><strong>Purple</strong> - use for visited inline links</li>
+<li><strong>Gray</strong> - use for secondary or small links (using white is also
+acceptable in dark environments)</li>
+<li><strong>Red-orange</strong> - use for destructive actions (and errors)</li>
+<li><strong>Red</strong> - use sparingly for Primary calls to action only</li>
+</ol>
+<div style="" class="example example--palette-none ">
+          <img alt="Examples of elements using the five colors that denote interactivity" style="width:1000px;height:auto" loading="lazy" decoding="async" src="/assets/color/interactivity-1000w.png" width="2000" height="1186" srcset="/assets/color/interactivity-1000w.png 1000w, /assets/color/interactivity.png 2000w" sizes="(max-width: 1000px) 1000px, 2000px">
+        </div>
+<copy-permalink class="h3">
+  <h3 id="status" tabindex="-1">
+    <a class="heading-anchor" href="#status">Status</a>
+      </h3>
+    </copy-permalink>
+<p>Status colors have assigned meanings and communicate information,
+states, or actions. Status colors are commonly used in elements and
+patterns like <a href="/elements/alert">alerts</a>, <a href="/elements/badge">badges</a>,
+<a href="/elements/button">buttons</a>, <a href="/patterns/form">forms</a>, and
+<a href="/elements/alert/style/#toast">toasts</a>.</p>
+<rh-alert state="warning">
+  <h3 slot="header">Usage warning</h3>
+<p>The red-orange color is reserved for danger or error states, do not use it anywhere else.</p>
+</rh-alert>
+<section class="section">
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Use case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Note/Tip</code></td>
+<td>Use purple to communicate helpful or important information.</td>
+</tr>
+<tr>
+<td><code>Neutral</code></td>
+<td>Use gray to communicate information that will have no impact on a user.</td>
+</tr>
+<tr>
+<td><code>Success</code></td>
+<td>Use green to communicate a success state.</td>
+</tr>
+<tr>
+<td><code>Caution</code></td>
+<td>Use yellow to communicate that an issue can be avoided.</td>
+</tr>
+<tr>
+<td><code>Warning</code></td>
+<td>Use orange to communicate that a destructive action might occur if an issue is not resolved.</td>
+</tr>
+<tr>
+<td><code>Danger/Error</code></td>
+<td>Use red-orange to communicate a destructive action or critical error.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<div style="" class="example example--palette-light ">
+          <img alt="Alerts, a form field, and tags that use status colors" style="width:648px;height:auto" loading="lazy" decoding="async" src="/assets/color/status-648w.png" width="1296" height="978" srcset="/assets/color/status-648w.png 648w, /assets/color/status.png 1296w" sizes="(max-width: 648px) 648px, 1296px">
+        </div>
+<copy-permalink class="h2">
+  <h2 id="best-practices" tabindex="-1">
+    <a class="heading-anchor" href="#best-practices">Best practices</a>
+      </h2>
+    </copy-permalink>
+<p>The design system's guidelines and best practices are more than just
+suggestions. By following them scrupulously, you will ensure that your project
+aligns with branding and accessibility guidelines. Diverge from the guidelines
+only after significant planning and consideration.</p>
+<copy-permalink class="h3">
+  <h3 id="custom-themes" tabindex="-1">
+    <a class="heading-anchor" href="#custom-themes">Custom themes</a>
+      </h3>
+    </copy-permalink>
+<p>Most projects do not need elements and patterns in a custom theme. If
+you need a custom theme for a campaign or special project, contact the
+Brand team first. If you need one or more custom design tokens, contact
+the <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">Design system</a> team first. Do not create your own colors, design tokens, or change the
+colors of existing elements and patterns.</p>
+<div style="" class="example example--palette-wrong ">
+          <img alt="Magenta button, brand red default call to action, green tooltip, dark orange switch, and light purple checkbox" style="width:856px;height:auto" loading="lazy" decoding="async" src="/assets/color/best-practices-custom-themes-856w.png" width="1712" height="172" srcset="/assets/color/best-practices-custom-themes-856w.png 856w, /assets/color/best-practices-custom-themes.png 1712w" sizes="(max-width: 856px) 856px, 1712px">
+        </div>
+<copy-permalink class="h3">
+  <h3 id="sufficient-contrast" tabindex="-1">
+    <a class="heading-anchor" href="#sufficient-contrast">Sufficient contrast</a>
+      </h3>
+    </copy-permalink>
+<p>Using colors with the same hue, saturation, and lightness is acceptable,
+but do not put them near or on top of each other as doing so will cause
+vibration resulting in a poor user experience. If you have a large
+section of color or an image background with low contrast, consider
+using elements and patterns from the desaturated theme instead.</p>
+<div style="" class="example example--palette-wrong ">
+          <img alt="Examples of a blue button against a red background and a red CTA against a blue background" style="width:872px;height:auto" loading="lazy" decoding="async" src="/assets/color/best-practices-sufficient-contrast-872w.png" width="1744" height="568" srcset="/assets/color/best-practices-sufficient-contrast-872w.png 872w, /assets/color/best-practices-sufficient-contrast.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
+        </div>
+<copy-permalink class="h2">
+  <h2 id="resources" tabindex="-1">
+    <a class="heading-anchor" href="#resources">Resources</a>
+      </h2>
+    </copy-permalink>
+<ul>
+<li><a href="https://www.redhat.com/en/about/brand/standards">Brand standards</a></li>
+<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/">WCAG 2.1</a></li>
+<li><a href="https://webaim.org/articles/contrast/">WebAIM: Contrast and Color Accessibility</a></li>
+</ul>
+
+      </div>
+    </div>
+  </article>
+  <rh-footer-universal>
+  <h3 slot="links-primary" data-analytics-text="Red Hat legal and privacy links" hidden="">Red Hat legal and privacy links</h3>
+  <ul slot="links-primary" data-analytics-region="page-footer-bottom-primary">
+    <li><a href="https://redhat.com/en/about/company" data-analytics-category="Footer|Corporate" data-analytics-text="About Red Hat">About Red Hat</a></li>
+    <li><a href="https://redhat.com/en/jobs" data-analytics-category="Footer|Corporate" data-analytics-text="Jobs">Jobs</a></li>
+    <li><a href="https://redhat.com/en/events" data-analytics-category="Footer|Corporate" data-analytics-text="Events">Events</a></li>
+    <li><a href="https://redhat.com/en/about/office-locations" data-analytics-category="Footer|Corporate" data-analytics-text="Locations">Locations</a></li>
+    <li><a href="https://redhat.com/en/contact" data-analytics-category="Footer|Corporate" data-analytics-text="Contact Red Hat">Contact Red Hat</a></li>
+    <li><a href="https://redhat.com/en/blog" data-analytics-category="Footer|Corporate" data-analytics-text="Red Hat Blog">Red Hat Blog</a></li>
+    <li><a href="https://redhat.com/en/about/our-culture/diversity-equity-inclusion" data-analytics-category="Footer|Corporate" data-analytics-text="Diversity equity and inclusion">Diversity, equity, and inclusion</a></li>
+    <li><a href="https://coolstuff.redhat.com/" data-analytics-category="Footer|Corporate" data-analytics-text="Cool Stuff Store">Cool Stuff Store</a></li>
+    <li><a href="https://www.redhat.com/en/summit" data-analytics-category="Footer|Corporate" data-analytics-text="Red Hat Summit">Red Hat Summit</a></li>
+  </ul>
+  <rh-footer-copyright slot="links-secondary">© 2021-2023 Red Hat, Inc.</rh-footer-copyright>
+  <h3 slot="links-secondary" data-analytics-text="Red Hat legal and privacy links" hidden="">Red Hat legal and privacy links</h3>
+  <ul slot="links-secondary" data-analytics-region="page-footer-bottom-secondary">
+    <li><a href="https://redhat.com/en/about/privacy-policy" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Privacy statement">Privacy statement</a></li>
+    <li><a href="https://redhat.com/en/about/terms-use" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Terms of use">Terms of use</a></li>
+    <li><a href="https://redhat.com/en/about/all-policies-guidelines" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="All policies and guidelines">All policies and guidelines</a></li>
+    <li><a href="https://redhat.com/en/about/digital-accessibility" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Digital accessibility" class="active">Digital accessibility</a></li>
+    <!-- If your website supports trustarc include this item to add Cookie Preferences to your site. -->
+    <!-- <li><span id="teconsent"> </span></li> -->
+  </ul>
+  <a slot="tertiary" id="netlify-badge" href="https://www.netlify.com" target="_blank" rel="noreferrer noopener">
+    <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify">
+  </a>
+</rh-footer-universal>
+
+<div class="back-to-top">
+    <a href="#top" class="back-to-top-link">
+        <img src="/assets/back-to-top.svg" alt="Scroll back to the top">
+    </a>
+</div>
+
+</main>
+  </div>
+
+
+</body></html>
