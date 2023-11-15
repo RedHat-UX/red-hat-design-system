@@ -28,7 +28,7 @@ color blind user.
 
 ## Contrast
 
-We strive to adhere to [WCAG 2.1 AA][wcag-2-1-aa] requirements. Our text, links, 
+We strive to adhere to [WCAG 2.1 AA](https://www.w3.org/WAI/WCAG21/Understanding/) requirements. Our text, links, 
 interface elements, etc. are designed with sufficient contrast when used on top 
 of a canvas, surfaces, image backgrounds with low contrast, and near adjacent 
 colors.
@@ -49,8 +49,7 @@ If color is the only way to distinguish between links and surrounding text (for
 example, if link underlines are removed), the contrast ratio between the link 
 and surrounding text must be at least 3:1.
 
-- Non-color cues must be used to signify when the link receives hover or focus 
-(for example, an underline)
+- Non-color cues must be used to signify when the link receives hover or focus (for example, an underline)
 
 {% example palette="light",
           alt="Contrast ratio of a blue link next to black text and an example of a link's darker blue, underlined hover state",
@@ -63,31 +62,26 @@ Graphical objects and UI components should have a contrast ratio of at least 3:1
 distinguish between inline controls and their surrounding text, the contrast 
 ratio between the control and text must be at least 3:1.
 
-- Non-color cues (for example, a border) must be used to signify when the 
-element receives focus
+- Non-color cues (for example, a border) must be used to signify when the element receives focus
 
 ### Layering
 
 It is acceptable to layer colors with the same hue, saturation, or lightness on 
 white, black, or gray. However, layering them near or on top of each other might 
-cause vibration. If you need to layer colors, follow [WCAG 2.1 AA][wcag-2-1-aa] 
+cause vibration. If you need to layer colors, follow [WCAG 2.1 AA](https://www.w3.org/WAI/WCAG21/Understanding/) 
 requirements.
 
 {% example palette="light",
           alt="Red CTA against a white background, blue button against a light gray background, and a light red-orange button against a black background",
-          src="/assets/color/contrast-layering.png" %}
+          src="/assets/color/contrast-layering.png",
+          caption="TEST" %}
 
 ### Tools
 
-TPGi’s [Colour Contrast Analyzer][checker] can help you identify colors and 
+TPGi’s [Colour Contrast Analyzer](https://www.tpgi.com/color-contrast-checker/) can help you identify colors and 
 gauge their contrast from one another.
 
 {% feedback %}
-## Foundations
-
-To learn how to use our other foundations in your designs, visit the
-[foundations](/foundations) section.
+  <h2>Foundations</h2>
+  <p>To learn how to use our other foundations in your designs, visit the <a href="/foundations">foundations</a> section.</p>
 {% endfeedback %}
-
-[checker]: https://www.tpgi.com/color-contrast-checker/
-[wcag-2-1-aa]: https://www.w3.org/WAI/WCAG21/Understanding/
