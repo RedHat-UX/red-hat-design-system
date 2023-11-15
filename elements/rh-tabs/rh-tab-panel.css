@@ -1,9 +1,9 @@
-#rhds-container {
+:host {
   display: block;
   padding: var(--rh-space-2xl, 32px);
 }
 
-:host([box="inset"]) #rhds-container {
+:host([box="inset"]) {
   padding-inline: var(--_panels-overflow-padding, var(--rh-space-4xl, 64px));
 }
 
@@ -12,11 +12,11 @@
 }
 
 @media screen and (min-width: 768px) {
-  :host([vertical]) #rhds-container {
+  :host([vertical]) {
     margin-inline: 0;
   }
 
-  :host([box][vertical]) #rhds-container {
+  :host([box][vertical]) {
     padding: var(--rh-space-3xl, 48px);
   }
 }
