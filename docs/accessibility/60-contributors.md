@@ -29,7 +29,11 @@ Heydon Pickering describes his [Inclusive Components](https://inclusive-componen
 
 ## Interactivity
 
-### Onchange and activate rather than focus (see https://www.ibm.com/able/toolkit/develop/keyboard)
+### Keyboard Accessibility
+- Ensure that all interactive elements can be accessed via keyboard exactly as they appear in the DOM as well as visibly.
+- Ensure that focus is clearly visible.
+- Replicate expect kayboard interaction patterns of native elements or of accepted [accessible patterns](#accessible-patterns).
+- Don't change content on a focus event. 
 
 ### When/how to show/hide new content (pop ups, tooltips, etc.) (https://www.ibm.com/able/toolkit/develop/dynamic-updates)
 
