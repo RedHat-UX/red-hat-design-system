@@ -49,16 +49,20 @@ rh-audio-player[color-palette="dark"] {
 
 rh-audio-player[color-palette="dark"] > * {
   background-color:
-    var(--rh-audio-player-background-color,
-      var(--rh-color-surface-darkest, #151515));
+    var(
+        --rh-audio-player-background-color,
+        var(--rh-color-surface-darkest, #151515)
+      );
 }
 
 rh-audio-player-about,
 rh-audio-player-subscribe,
 rh-transcript {
   background-color:
-    var(--rh-audio-player-background-color,
-      var(--rh-color-surface-lightest, #ffffff));
+    var(
+        --rh-audio-player-background-color,
+        var(--rh-color-surface-lightest, #ffffff)
+      );
 }
 
 rh-audio-player > [slot="series"] {
@@ -82,4 +86,3 @@ rh-audio-player [slot="heading"] {
 rh-audio-player [slot="heading"] {
   font-size: var(--rh-font-size-body-text-md, 1rem);
 }
-
