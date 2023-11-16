@@ -4,7 +4,7 @@ import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { html, LitElement } from 'lit';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+import { colorContextProvider } from '../../lib/context/color/provider.js';
 
 import styles from './rh-card.css';
 /**

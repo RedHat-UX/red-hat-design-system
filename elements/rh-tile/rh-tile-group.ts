@@ -1,4 +1,4 @@
-import { LitElement, html, type PropertyValueMap } from 'lit';
+import { LitElement, html, type PropertyValues } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
@@ -72,8 +72,8 @@ export class RhTileGroup extends LitElement {
     this.updateItems();
   }
 
-  protected updated(_changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>): void {
-    if (_changedProperties.has('radio')) {
+  protected updated(changed: PropertyValues<this>): void {
+    if (changed.has('radio')) {
       this.#internals.role = this.radio ? 'radiogroup' : null;
       let selected: RhTile | null | undefined;
       this.#tiles.forEach(tile => {
@@ -86,7 +86,7 @@ export class RhTileGroup extends LitElement {
       this.selectItem(selected);
     }
 
-    if (_changedProperties.has('disabled')) {
+    if (changed.has('disabled')) {
       this.#internals.ariaDisabled = this.disabled ? 'true' : 'false';
       this.#tiles.forEach(tile => {
         // @ts-expect-error: internal use of private prop. replace with context. see rh-tile.ts

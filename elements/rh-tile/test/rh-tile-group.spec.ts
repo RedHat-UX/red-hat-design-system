@@ -1,6 +1,6 @@
 import { expect, html } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
-import { sendKeys, sendMouse } from '@web/test-runner-commands';
+import { sendKeys } from '@web/test-runner-commands';
 import { RhTileGroup } from '@rhds/elements/rh-tile/rh-tile-group.js';
 
 describe('<rh-tile-group>', function() {
@@ -16,14 +16,12 @@ describe('<rh-tile-group>', function() {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           <div slot="footer">Suspendisse eu turpis elementum</div>
         </rh-tile>
-    
         <rh-tile>
           <div slot="title">Title</div>
           <h2 slot="headline"><a href="#top">Link</a></h2>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           <div slot="footer">Suspendisse eu turpis elementum</div>
         </rh-tile>
-    
         <rh-tile>
           <div slot="title">Title</div>
           <h2 slot="headline"><a href="#top">Link</a></h2>

@@ -1,8 +1,9 @@
-@use '../__core/mixins' as *;
+@use "../__core/mixins" as *;
 
 .table-of-contents {
   background: var(--rh-color-surface-lighter, #f2f2f2);
   padding: 16px 24px;
+
   @include breakpoint(tango) {
     margin-bottom: 80px;
   }
