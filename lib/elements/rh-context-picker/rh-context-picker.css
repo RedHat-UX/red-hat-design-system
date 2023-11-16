@@ -39,7 +39,7 @@ input::-moz-range-thumb {
   cursor: pointer;
   height: 100%;
   translate: var(--offset);
-  width: calc(16.6667%);
+  width: calc(6 / var(--count, 6) * 16.6667%);
 }
 
 input:focus,
