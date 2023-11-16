@@ -1,24 +1,32 @@
-/* Via pfe-base.css */
 :is(rh-footer, :is(rh-footer-universal, rh-global-footer)) a {
   color: var(--rh-color-link-inline-on-dark, var(--rh-color-interactive-blue-lighter, #73bcf7));
   text-decoration: none;
 }
 
 :is(rh-footer, :is(rh-footer-universal, rh-global-footer)) a:hover {
-  color: var(--rh-color-link-inline-hover-on-dark,
-    var(--rh-color-interactive-blue-lightest, #bee1f4));
+  color:
+    var(
+        --rh-color-link-inline-hover-on-dark,
+        var(--rh-color-interactive-blue-lightest, #bee1f4)
+      );
   text-decoration: underline;
 }
 
 :is(rh-footer, :is(rh-footer-universal, rh-global-footer)) a:is(:focus, :focus-within) {
-  color: var(--rh-color-link-inline-focus-on-dark,
-    var(--rh-color-interactive-blue-lightest, #bee1f4));
+  color:
+    var(
+        --rh-color-link-inline-focus-on-dark,
+        var(--rh-color-interactive-blue-lightest, #bee1f4)
+      );
   text-decoration: underline;
 }
 
 :is(rh-footer, :is(rh-footer-universal, rh-global-footer)) a:visited {
-  color: var(--rh-color-link-inline-visited-on-dark,
-    var(--rh-color-interactive-blue-lightest, #bee1f4));
+  color:
+    var(
+        --rh-color-link-inline-visited-on-dark,
+        var(--rh-color-interactive-blue-lightest, #bee1f4)
+      );
   text-decoration: none;
 }
 
@@ -72,7 +80,7 @@ rh-footer [slot^="links"] a {
 }
 
 /* (min-width: --rh-breakpoint-sm) */
-@media screen and (min-width: 768px) { 
+@media screen and (min-width: 768px) {
   :is(rh-footer, rh-footer-universal, rh-global-footer) {
     --rh-footer-section-side-gap: var(--rh-space-2xl, 32px);
   }

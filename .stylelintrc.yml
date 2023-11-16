@@ -1,4 +1,7 @@
-extends: stylelint-config-standard
+extends:
+  - stylelint-config-standard
+  - stylelint-stylistic/config
+
 ignoreFiles:
   - node_modules/**/*
 
@@ -61,7 +64,7 @@ overrides:
     defaultSeverity: warning
     extends: stylelint-config-standard-scss
     rules:
-      max-line-length:
+      stylistic/max-line-length:
         - 120
         - ignorePattern: /--rh-font-family-/
 

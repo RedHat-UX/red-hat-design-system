@@ -43,7 +43,7 @@
 }
 
 #container.dark,
-#container.outline.dark  {
+#container.outline.dark {
   --_content-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_background-color: transparent;
   --_before-border-color: var(--rh-color-text-primary-on-dark, #ffffff);
@@ -130,4 +130,3 @@
   display: inline-flex;
   align-items: center;
 }
-

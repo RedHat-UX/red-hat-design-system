@@ -6,8 +6,14 @@
   border: 0;
   border-collapse: collapse;
 
-  --rh-table-row-border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle-on-light, #c7c7c7);
-  --rh-table-row-background-color: rgb(var(--rh-color-gray-10-rgb, 224 224 224) / var(--rh-opacity-40, 40%));
+  --rh-table-row-border:
+    var(--rh-border-width-sm, 1px)
+    solid
+    var(--rh-color-border-subtle-on-light, #c7c7c7);
+  --rh-table-row-background-color:
+    rgb(
+        var(--rh-color-gray-10-rgb, 224 224 224) / var(--rh-opacity-40, 40%)
+      );
   --rh-table-column-background-color: rgb(var(--rh-color-blue-50-rgb, 231 241 250));
 }
 
@@ -31,18 +37,18 @@
   border: none;
 }
 
-:is(rh-table) :is(tr, col){
-  transition: background .3s ease-out;
+:is(rh-table) :is(tr, col) {
+  transition: background 0.3s ease-out;
 }
 
 :is(rh-table) a {
   color: var(--rh-color-interactive-blue-darker, #0066cc);
-  text-decoration: none
+  text-decoration: none;
 }
 
-:is(rh-table) a:hover  {
+:is(rh-table) a:hover {
   color: var(--rh-color-interactive-blue-darkest, #004080);
-  text-decoration: underline
+  text-decoration: underline;
 }
 
 :is(rh-table) caption {
