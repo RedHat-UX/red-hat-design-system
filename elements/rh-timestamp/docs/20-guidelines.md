@@ -165,8 +165,8 @@ Just like text, a timestamp will break to two lines as breakpoints get smaller.
 ### Headings
 Do not apply a timestamp to headings.
 
-{% sample %}
+```html
 <h2><rh-timestamp></rh-timestamp></h2>
-{% endsample %}
+```
 
 [formatoptions]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#options
