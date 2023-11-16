@@ -2,6 +2,7 @@ const Playground = require('./shortcodes/playground.cjs');
 const RepoStatus = require('./shortcodes/repoStatus.cjs');
 const RenderInstallation = require('./shortcodes/renderInstallation.cjs');
 const ExampleImage = require('./shortcodes/example.cjs');
+const Sample = require('./shortcodes/sample.cjs');
 const Cta = require('./shortcodes/cta.cjs');
 const Tag = require('./shortcodes/tag.cjs');
 const Swatch = require('./shortcodes/swatch.cjs');
@@ -27,6 +28,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(Playground);
   eleventyConfig.addPlugin(RenderInstallation);
   eleventyConfig.addPlugin(ExampleImage);
+  eleventyConfig.addPlugin(Sample);
   eleventyConfig.addPlugin(Cta);
   eleventyConfig.addPlugin(Swatch);
   eleventyConfig.addPlugin(Tag);
