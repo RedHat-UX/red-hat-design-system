@@ -7,7 +7,7 @@
   gap: var(--rh-space-md);
 
   &.stacked {
-    grid-template: repeat(auto-fill, 1fr) / 1fr;
+    grid-template: repeat(auto-fill, minmax(1px, 1fr)) / 1fr;
   }
 
   @media (min-width: 992px) {

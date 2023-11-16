@@ -4,6 +4,13 @@ const { attrMap } = require('./helpers.cjs');
 
 /** @typedef {import('../shortcodes.cjs').EleventyContext} EleventyContext */
 
+/** Returns a string with common indent stripped from each line. Useful for templating HTML */
+function dedent(str) {
+  const stripped = str.replace(/^\n/, '');
+  const match = stripped.match(/^\s+/);
+  return match ? stripped.replace(new RegExp(`^${match[0]}`, 'gm'), '') : str;
+}
+
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPairedShortcode('sample',
@@ -21,20 +28,15 @@ module.exports = function(eleventyConfig) {
     function example(content, { style = '', colorPalette = 'lightest', stacked = false } = {}) {
       let className = 'sample-element';
       if (stacked) { className += ' stacked'; }
-      return /* html */`
+      return dedent(/* html */`\
 <rh-surface color-palette="${colorPalette}" ${attrMap({ style, class: className })}>
 
 ${content}
 
-<rh-code-block compact>
-  <script type="text/html">
-
 ~~~html
-${content.trim()}
+${dedent(content).trim()}
 ~~~
 
-  </script>
-</rh-code-block>
-</rh-surface>`;
+</rh-surface>`);
     });
 };
