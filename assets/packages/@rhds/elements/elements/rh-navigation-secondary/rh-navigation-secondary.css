@@ -137,7 +137,7 @@ button:focus {
 button:active,
 button[aria-expanded="true"],
 :host([color-palette="dark"]) button[aria-expanded="true"] {
-  --_chevron-color:var(--rh-color-text-primary-on-light, #151515);
+  --_chevron-color: var(--rh-color-text-primary-on-light, #151515);
 
   color: var(--rh-color-text-primary-on-light, #151515);
   background-color: var(--rh-color-surface-lightest, #ffffff);
@@ -186,7 +186,7 @@ button[aria-expanded="true"],
 
   rh-context-provider {
     flex-direction: row;
-    justify-content: space-between; 
+    justify-content: space-between;
   }
 
   #container.expanded ::slotted([slot="nav"]) {

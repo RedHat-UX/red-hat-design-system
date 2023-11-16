@@ -11,7 +11,7 @@ import { styleMap } from 'lit/directives/style-map.js';
 import { classMap } from 'lit/directives/class-map.js';
 import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 import { css } from "lit";
-const style = css `:host{display:inline-block;width:300px;padding:6px}#container{position:relative}input{--thumb-color:var(--rh-color-interactive-blue-darker, #0066cc);--s:1px;pointer-events:none;margin:0;width:100%;height:100%;appearance:none;background:0 0;position:absolute;z-index:1}input::-webkit-slider-thumb{appearance:none;margin-top:-14px;position:relative}input::-moz-range-thumb,input::-webkit-slider-thumb{pointer-events:auto;background:0 0;border-radius:3px;border:4px solid var(--thumb-color);box-shadow:#000 var(--s) var(--s) var(--s),#0d0d0d 0 0 var(--s);box-sizing:content-box;cursor:pointer;height:100%;translate:var(--offset);width:calc(16.6667%)}input:focus,input:hover{--thumb-color:var(--rh-color-interactive-blue-darkest, #004080);--s:2px}input.dark,input.darker,input.darkest{--thumb-color:var(--rh-color-interactive-blue-lighter, #73bcf7)}input:is(.dark,.darker,.darkest):is(:focus,:hover){--thumb-color:var(--rh-color-interactive-blue-lightest, #bee1f4)}datalist{display:flex;inset:0;flex:1 0 100%;border-radius:var(--rh-border-radius-default,3px);overflow:hidden}option{flex:1 0 1px;min-height:var(--rh-space-3xl,48px);background-color:var(--c)}.visually-hidden{position:fixed;top:0;left:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}#option-darkest{--c:var(--rh-color-surface-darkest, #151515)}#option-darker{--c:var(--rh-color-surface-darker, #1f1f1f)}#option-dark{--c:var(--rh-color-surface-dark, #383838)}#option-light{--c:var(--rh-color-surface-light, #e0e0e0)}#option-lighter{--c:var(--rh-color-surface-lighter, #f2f2f2)}#option-lightest{--c:var(--rh-color-surface-lightest, #ffffff)}`;
+const style = css `:host{display:inline-block;width:300px;padding:6px}#container{position:relative}input{--thumb-color:var(--rh-color-interactive-blue-darker, #0066cc);--s:1px;pointer-events:none;margin:0;width:100%;height:100%;appearance:none;background:0 0;position:absolute;z-index:1}input::-webkit-slider-thumb{appearance:none;margin-top:-14px;position:relative}input::-moz-range-thumb,input::-webkit-slider-thumb{pointer-events:auto;background:0 0;border-radius:3px;border:4px solid var(--thumb-color);box-shadow:#000 var(--s) var(--s) var(--s),#0d0d0d 0 0 var(--s);box-sizing:content-box;cursor:pointer;height:100%;translate:var(--offset);width:calc(6 / var(--count,6) * 16.6667%)}input:focus,input:hover{--thumb-color:var(--rh-color-interactive-blue-darkest, #004080);--s:2px}input.dark,input.darker,input.darkest{--thumb-color:var(--rh-color-interactive-blue-lighter, #73bcf7)}input:is(.dark,.darker,.darkest):is(:focus,:hover){--thumb-color:var(--rh-color-interactive-blue-lightest, #bee1f4)}datalist{display:flex;inset:0;flex:1 0 100%;border-radius:var(--rh-border-radius-default,3px);overflow:hidden}option{flex:1 0 1px;min-height:var(--rh-space-3xl,48px);background-color:var(--c)}.visually-hidden{position:fixed;top:0;left:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}#option-darkest{--c:var(--rh-color-surface-darkest, #151515)}#option-darker{--c:var(--rh-color-surface-darker, #1f1f1f)}#option-dark{--c:var(--rh-color-surface-dark, #383838)}#option-light{--c:var(--rh-color-surface-light, #e0e0e0)}#option-lighter{--c:var(--rh-color-surface-lighter, #f2f2f2)}#option-lightest{--c:var(--rh-color-surface-lightest, #ffffff)}`;
 export class ContextChangeEvent extends Event {
     constructor(colorPalette) {
         super('change', { bubbles: true, cancelable: true });
@@ -23,6 +23,7 @@ let RhContextPicker = RhContextPicker_1 = class RhContextPicker extends LitEleme
         super(...arguments);
         _RhContextPicker_instances.add(this);
         this.value = 'darkest';
+        this.allow = RhContextPicker_1.paletteNames;
         _RhContextPicker_offset.set(this, RhContextPicker_1.offsets[this.value]);
         _RhContextPicker_internals.set(this, this.attachInternals());
         _RhContextPicker_target.set(this, null);
@@ -40,11 +41,16 @@ let RhContextPicker = RhContextPicker_1 = class RhContextPicker extends LitEleme
                  name="range"
                  type="range"
                  list="palettes"
-                 max="5"
+                 min="0"
+                 max="${this.allow.length - 1}"
+                .value="${this.allow.indexOf(this.value).toString()}"
                  aria-label="${derivedLabel}"
-                 style="${styleMap({ '--offset': `${__classPrivateFieldGet(this, _RhContextPicker_offset, "f")}px` })}"
+                 style="${styleMap({
+            '--count': `${this.allow.length}`,
+            '--offset': `${__classPrivateFieldGet(this, _RhContextPicker_offset, "f")}px`,
+        })}"
                  @input="${__classPrivateFieldGet(this, _RhContextPicker_instances, "m", _RhContextPicker_onInput)}">
-          <datalist id="palettes">${Array.from(RhContextPicker_1.palettes, ([palette]) => html `
+          <datalist id="palettes">${this.allow.map(palette => html `
             <option id="option-${palette}"
                     value="${palette}"
                     title="${palette}"
@@ -54,11 +60,6 @@ let RhContextPicker = RhContextPicker_1 = class RhContextPicker extends LitEleme
           </datalist>
       </div>
     `;
-    }
-    updated(changedProperties) {
-        if (changedProperties.has('value') && this.range) {
-            this.range.value = RhContextPicker_1.paletteNames.indexOf(this.value).toString();
-        }
     }
     formStateRestoreCallback(state) {
         __classPrivateFieldGet(this, _RhContextPicker_instances, "m", _RhContextPicker_setValue).call(this, state);
@@ -89,13 +90,15 @@ _RhContextPicker_offset = new WeakMap(), _RhContextPicker_internals = new WeakMa
 }, _RhContextPicker_onInput = function _RhContextPicker_onInput(event) {
     if (event.target instanceof HTMLInputElement) {
         event.stopPropagation();
-        const value = RhContextPicker_1.paletteNames[+event.target.value];
-        __classPrivateFieldGet(this, _RhContextPicker_instances, "m", _RhContextPicker_setValue).call(this, value);
+        const value = this.allow.at(+event.target.value);
+        if (value) {
+            __classPrivateFieldGet(this, _RhContextPicker_instances, "m", _RhContextPicker_setValue).call(this, value);
+        }
     }
 }, _RhContextPicker_setValue = function _RhContextPicker_setValue(value) {
     __classPrivateFieldGet(this, _RhContextPicker_internals, "f").setFormValue(value);
-    this.value = value;
-    if (this.dispatchEvent(new ContextChangeEvent(this.value))) {
+    if (value !== this.value && this.dispatchEvent(new ContextChangeEvent(value))) {
+        this.value = value;
         this.sync();
     }
 };
@@ -130,6 +133,20 @@ __decorate([
 __decorate([
     colorContextConsumer()
 ], RhContextPicker.prototype, "on", void 0);
+__decorate([
+    property({
+        converter: {
+            fromAttribute(list) {
+                return list?.split(',')
+                    ?.map(x => x.trim())
+                    ?.filter(x => RhContextPicker_1.paletteNames.includes(x)) ?? [];
+            },
+            toAttribute(list) {
+                return list.join(',');
+            },
+        },
+    })
+], RhContextPicker.prototype, "allow", void 0);
 RhContextPicker = RhContextPicker_1 = __decorate([
     customElement('rh-context-picker')
 ], RhContextPicker);

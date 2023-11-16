@@ -1,4 +1,4 @@
-import { LitElement, type PropertyValues } from 'lit';
+import { LitElement } from 'lit';
 import { type ColorPalette } from '../../context/color/provider.js';
 import type { Color } from '@rhds/tokens/js/types.js';
 import '@rhds/elements/rh-tooltip/rh-tooltip.js';
@@ -19,9 +19,9 @@ export declare class RhContextPicker extends LitElement {
     value: ColorPalette;
     private range?;
     private on?;
+    allow: ColorPalette[];
     willUpdate(): void;
     render(): import("lit-html").TemplateResult<1>;
-    updated(changedProperties: PropertyValues<this>): void;
     formStateRestoreCallback(state: string): void;
     firstUpdated(): void;
     sync(): void;

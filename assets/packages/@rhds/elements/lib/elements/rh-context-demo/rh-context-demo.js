@@ -14,6 +14,7 @@ let RhContextDemo = class RhContextDemo extends LitElement {
         _RhContextDemo_instances.add(this);
         this.value = 'darkest';
         this.label = 'Color Palette';
+        this.colorPalette = this.value;
         _RhContextDemo_internals.set(this, this.attachInternals());
     }
     render() {
@@ -33,6 +34,14 @@ let RhContextDemo = class RhContextDemo extends LitElement {
         <slot part="demo"></slot>
       </rh-context-provider>
     `;
+    }
+    willUpdate(changed) {
+        if (changed.has('colorPalette')) {
+            this.value = this.colorPalette;
+        }
+        if (changed.has('value')) {
+            this.colorPalette = this.value;
+        }
     }
     formStateRestoreCallback(state) {
         __classPrivateFieldGet(this, _RhContextDemo_instances, "m", _RhContextDemo_setValue).call(this, state);
@@ -56,6 +65,9 @@ __decorate([
 __decorate([
     property()
 ], RhContextDemo.prototype, "label", void 0);
+__decorate([
+    property({ attribute: 'color-palette', reflect: true })
+], RhContextDemo.prototype, "colorPalette", void 0);
 RhContextDemo = __decorate([
     customElement('rh-context-demo')
 ], RhContextDemo);
