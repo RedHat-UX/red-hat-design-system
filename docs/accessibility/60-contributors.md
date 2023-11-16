@@ -37,9 +37,17 @@ Heydon Pickering describes his [Inclusive Components](https://inclusive-componen
 
 ### When/how to show/hide new content (pop ups, tooltips, etc.) (https://www.ibm.com/able/toolkit/develop/dynamic-updates)
 
-## Minimize chance for consumer errors.
+## Cross-root ARIA
+Currently there is no way to associate aria attributes with elements in different DOM trees. So an element in light DOM can't use the ID reference of an element in shadowDOM to associate the elements with one another, and vice versa. 
 
-## Accessibility controllers
+The following resources explain the problem in more detail, provide examples, and potentially some workarounds or future proposals:
+
+- Alice Boxhall's [How Shadow DOM and accessibility are in conflict](https://alice.pages.igalia.com/blog/how-shadow-dom-and-accessibility-are-in-conflict/)
+- Nolan Lawson's [Shadow DOM and accessibility: the trouble with ARIA](https://nolanlawson.com/2022/11/28/shadow-dom-and-accessibility-the-trouble-with-aria/)
+- Leo Balter's [Cross-root ARIA](https://github.com/leobalter/cross-root-aria-delegation/blob/main/explainer.md) explainer
+
+## Recommendations
+### Use applicable accessibility controllers.
 
 When applicable use [controllers](https://lit.dev/docs/api/controllers/) for accessible keyboard navigation as well as ARIA roles, states and properties. Examples of our `@patternfly/pfe-core/controllers` are listed below:
 
@@ -48,5 +56,4 @@ When applicable use [controllers](https://lit.dev/docs/api/controllers/) for acc
 - `roving-tabindex-controller`: Used for groups of elements that are more easily navigated with arrow keys instead of the <kbd>Tab</kbd> key.
 - `toggle-controller`: Sets keyboard navigation as well as ARIA roles, states and properties for a popup that with show/hid toggling.
 
-## Cross-root ARIA
-
+### Minimize posssibility of consumer errors.
