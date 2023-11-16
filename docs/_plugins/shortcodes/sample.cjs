@@ -17,8 +17,8 @@ module.exports = function(eleventyConfig) {
      * @param {string}    [options.style]             styles for the surface
      * @this {EleventyContext}
      */
-    function example(content, { style = '', colorPalette = 'lightest' } = {}) {
-      return /* html */`<rh-surface color-palette="${colorPalette}" class="sample-element" ${attrMap({ style })}>
+    function example(content, { style = '', colorPalette = 'lightest', stacked = false } = {}) {
+      return /* html */`<rh-surface color-palette="${colorPalette}" class="sample-element ${stacked ? 'stacked' : ''}" ${attrMap({ style })}>
 
 ${content}
 
