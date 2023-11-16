@@ -16,18 +16,6 @@ rules:
     - ignoreShorthands:
         - /grid/
 
-  # TODO: migrate the following paragraph to stylelint-stylistic
-  # see https://github.com/elirasza/stylelint-stylistic/tree/main/lib/rules/indentation
-  string-quotes: double
-  selector-combinator-space-after: always
-  selector-combinator-space-before: always
-  indentation:
-   - 2
-   - indentInsideParens: 'once-at-root-twice-in-block'
-  max-line-length:
-    - 100
-    - ignorePattern: /--rh-font-family-/
-
   number-max-precision: 6
   no-descending-specificity:
     - true
@@ -49,10 +37,23 @@ rules:
     - ignorePseudoElements:
       - /part(.*)/
 
+  stylistic/string-quotes: double
+  stylistic/selector-combinator-space-after: always
+  stylistic/selector-combinator-space-before: always
+  stylistic/indentation:
+   - 2
+   - indentInsideParens: 'once-at-root-twice-in-block'
+  stylistic/max-line-length:
+    - 100
+    - ignorePattern: /--rh-font-family-/
+
   rhds/token-values: true
+
+  media-feature-range-notation: prefix
 
 plugins:
   - ./node_modules/@rhds/tokens/plugins/stylelint.cjs
+  - stylelint-stylistic
 
 overrides:
   - files:
