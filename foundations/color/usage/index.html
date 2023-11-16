@@ -29,7 +29,7 @@
     <link type="text/css" href="/assets/pfe--noscript.min.css">
   </noscript>
 
-  <script type="importmap">{"imports":{"@patternfly/pfe-core":"/assets/packages/@patternfly/pfe-core/core.js","lit-html":"/assets/packages/lit-html/lit-html.js","@floating-ui/core":"/assets/packages/@floating-ui/core/dist/floating-ui.core.browser.min.mjs","tslib":"/assets/packages/tslib/tslib.es6.js","@lit/reactive-element":"/assets/packages/@lit/reactive-element/reactive-element.js","@floating-ui/dom":"/assets/packages/@floating-ui/dom/dist/floating-ui.dom.browser.min.mjs","lit-element":"/assets/packages/lit-element/index.js","lit":"/assets/packages/lit/index.js","@patternfly/elements":"/assets/packages/@patternfly/elements/pfe.min.js","@rhds/tokens":"https://ga.jspm.io/npm:@rhds/tokens@1.1.2/js/tokens.js","@rhds/tokens/meta.js":"https://ga.jspm.io/npm:@rhds/tokens@1.1.2/js/meta.js","@rhds/tokens/media.js":"https://ga.jspm.io/npm:@rhds/tokens@1.1.2/js/media.js","element-internals-polyfill":"/assets/packages/element-internals-polyfill/dist/index.js","fuse.js":"/assets/packages/fuse.js/dist/fuse.esm.js","@rhds/tokens/":"/assets/packages/@rhds/tokens/js/","@rhds/elements/":"/assets/packages/@rhds/elements/elements/","@rhds/elements/lib/":"/assets/packages/@rhds/elements/lib/","@patternfly/elements/":"/assets/packages/@patternfly/elements/","@patternfly/icons/":"/assets/packages/@patternfly/icons/","@patternfly/pfe-core/":"/assets/packages/@patternfly/pfe-core/"},"scopes":{"/assets/packages/":{"@lit/reactive-element/decorators/":"/assets/packages/@lit/reactive-element/decorators/","lit":"/assets/packages/@patternfly/elements/node_modules/lit/index.js","lit-element/lit-element.js":"/assets/packages/lit-element/lit-element.js","lit-html/":"/assets/packages/lit-html/","lit/":"/assets/packages/@patternfly/elements/node_modules/lit/"}}}</script>
+  <script type="importmap">{"imports":{"@patternfly/pfe-core":"/assets/packages/@patternfly/pfe-core/core.js","lit-html":"/assets/packages/lit-html/lit-html.js","@floating-ui/core":"/assets/packages/@floating-ui/core/dist/floating-ui.core.browser.min.mjs","tslib":"/assets/packages/tslib/tslib.es6.js","@lit/reactive-element":"/assets/packages/@lit/reactive-element/reactive-element.js","@floating-ui/dom":"/assets/packages/@floating-ui/dom/dist/floating-ui.dom.browser.min.mjs","lit-element":"/assets/packages/lit-element/index.js","lit":"/assets/packages/lit/index.js","@patternfly/elements":"/assets/packages/@patternfly/elements/pfe.min.js","@rhds/tokens/media.js":"https://ga.jspm.io/npm:@rhds/tokens@1.1.2/js/media.js","@rhds/tokens":"https://ga.jspm.io/npm:@rhds/tokens@1.1.2/js/tokens.js","@rhds/tokens/meta.js":"https://ga.jspm.io/npm:@rhds/tokens@1.1.2/js/meta.js","element-internals-polyfill":"/assets/packages/element-internals-polyfill/dist/index.js","fuse.js":"/assets/packages/fuse.js/dist/fuse.esm.js","@rhds/tokens/":"/assets/packages/@rhds/tokens/js/","@rhds/elements/":"/assets/packages/@rhds/elements/elements/","@rhds/elements/lib/":"/assets/packages/@rhds/elements/lib/","@patternfly/elements/":"/assets/packages/@patternfly/elements/","@patternfly/icons/":"/assets/packages/@patternfly/icons/","@patternfly/pfe-core/":"/assets/packages/@patternfly/pfe-core/"},"scopes":{"/assets/packages/":{"@lit/reactive-element/decorators/":"/assets/packages/@lit/reactive-element/decorators/","lit":"/assets/packages/@patternfly/elements/node_modules/lit/index.js","lit-element/lit-element.js":"/assets/packages/lit-element/lit-element.js","lit-html/":"/assets/packages/lit-html/","lit/":"/assets/packages/@patternfly/elements/node_modules/lit/"}}}</script>
   <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js"></script>
   
   <script type="module">
@@ -613,11 +613,19 @@ only after significant planning and consideration.</p>
 <p>Most projects do not need elements and patterns in a custom theme. If
 you need a custom theme for a campaign or special project, contact the
 Brand team first. If you need one or more custom design tokens, contact
-the <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">Design system</a> team first. Do not create your own colors, design tokens, or change the
-colors of existing elements and patterns.</p>
-<div style="" class="example example--palette-wrong ">
-          <img alt="Magenta button, brand red default call to action, green tooltip, dark orange switch, and light purple checkbox" style="width:856px;height:auto" loading="lazy" decoding="async" src="/assets/color/best-practices-custom-themes-856w.png" width="1712" height="172" srcset="/assets/color/best-practices-custom-themes-856w.png 856w, /assets/color/best-practices-custom-themes.png 1712w" sizes="(max-width: 856px) 856px, 1712px">
-        </div>
+the <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">Design system</a> team first.</p>
+<div class="best-practices-grid">
+    <div>
+        <img slot="header" src="/assets/color/best-practices-custom-themes-correct.svg" alt="Blue submit button, blue default call to action, black tooltip, and blue switch">
+        <h4 class="correct" id="do">Do</h4>
+        <p>Use the color variants already available for elements and patterns.</p>
+    </div>
+    <div>
+        <img slot="header" src="/assets/color/best-practices-custom-themes-wrong.svg" alt="Magenta button, brand red default call to action, green tooltip, and dark orange switch">
+        <h4 class="wrong" id="dont">Don't</h4>
+        <p>Do not create your own colors, design tokens, or change the colors of existing elements and patterns.</p>
+    </div>
+</div>
 <copy-permalink class="h3">
   <h3 id="sufficient-contrast" tabindex="-1">
     <a class="heading-anchor" href="#sufficient-contrast">Sufficient contrast</a>
@@ -628,9 +636,18 @@ but do not put them near or on top of each other as doing so will cause
 vibration resulting in a poor user experience. If you have a large
 section of color or an image background with low contrast, consider
 using elements and patterns from the desaturated theme instead.</p>
-<div style="" class="example example--palette-wrong ">
-          <img alt="Examples of a blue button against a red background and a red CTA against a blue background" style="width:872px;height:auto" loading="lazy" decoding="async" src="/assets/color/best-practices-sufficient-contrast-872w.png" width="1744" height="568" srcset="/assets/color/best-practices-sufficient-contrast-872w.png 872w, /assets/color/best-practices-sufficient-contrast.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
-        </div>
+<div class="best-practices-grid">
+    <div>
+        <img slot="header" src="/assets/color/best-practices-sufficient-contrast-correct.svg" alt="Examples of a blue button against a light gray background and a red CTA against a black background">
+        <h4 class="correct" id="do">Do</h4>
+        <p>Use a surface color token for background to ensure accessibility, or use a <a href="../accessibility/#tools">tool</a> to check proper contrast.</p>
+    </div>
+    <div>
+        <img slot="header" src="/assets/color/best-practices-sufficient-contrast-wrong.svg" alt="Examples of a blue button against a red background and a red CTA against a blue background">
+        <h4 class="wrong" id="dont">Don't</h4>
+        <p>Do not use a background color that has a similar hue, saturation, or lightness to foreground elements.</p>
+    </div>
+</div>
 <copy-permalink class="h2">
   <h2 id="resources" tabindex="-1">
     <a class="heading-anchor" href="#resources">Resources</a>
@@ -641,6 +658,19 @@ using elements and patterns from the desaturated theme instead.</p>
 <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/">WCAG 2.1</a></li>
 <li><a href="https://webaim.org/articles/contrast/">WebAIM: Contrast and Color Accessibility</a></li>
 </ul>
+<div class="multi-column--min-300-wide section section--palette-default container feedback">
+  <section class="section section--palette-default  container">
+  <h2 id="foundations">Foundations</h2>
+  <p>To learn how to use our other foundations in your designs, visit the <a href="/foundations">foundations</a> section.</p>
+</section>
+<section class="section section--palette-default  container">
+<p></p><h2 id="feedback">Feedback</h2>
+<p>
+To give feedback about anything on this page,
+<a href="https://github.com/RedHat-UX/red-hat-design-system/discussions" class="feedback-contact-link">contact us</a>.
+</p><p></p>
+</section>
+</div>
 
       </div>
     </div>
