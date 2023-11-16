@@ -33,10 +33,13 @@ module.exports = function(eleventyConfig) {
 
 ${content}
 
+<rh-code-block compact full-height>
+
 ~~~html
 ${dedent(content).trim()}
 ~~~
 
+</rh-code-block>
 </rh-surface>`);
     });
 };
