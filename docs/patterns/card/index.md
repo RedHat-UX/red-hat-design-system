@@ -18,7 +18,7 @@ it's near. Several cards can be used together to group related information.
     elit sed est egestas, a sollicitudin mauris tincidunt. Pellentesque vel 
     dapibus risus. Nullam aliquam felis orci, eget cursus mi lacinia quis. 
     Vivamus at felis sem.</p>
-  <rh-cta priority="primary" slot="footer">
+  <rh-cta variant="primary" slot="footer">
     <a href="#">Call to action</a>
   </rh-cta>
 </rh-card>
@@ -33,7 +33,7 @@ it's near. Several cards can be used together to group related information.
     dapibus risus. Nullam aliquam felis orci, eget cursus milacinia quis. 
     Vivamus at felis sem.
   </p>
-  <rh-cta priority="primary" slot="footer">
+  <rh-cta variant="primary" slot="footer">
     <a href="#">Call to action</a>
   </rh-cta>
 </rh-card>
@@ -48,7 +48,7 @@ it's near. Several cards can be used together to group related information.
     aliquam felis orci, eget cursus mi
     lacinia quis. Vivamus at felis sem.
   </p>
-  <rh-cta priority="primary" slot="footer">
+  <rh-cta variant="primary" slot="footer">
     <a href="#">Call to action</a>
   </rh-cta>
 </rh-card>
@@ -64,7 +64,7 @@ it's near. Several cards can be used together to group related information.
     aliquam felis orci, eget cursus mi
     lacinia quis. Vivamus at felis sem.
   </p>
-  <rh-cta priority="primary" slot="footer">
+  <rh-cta variant="primary" slot="footer">
     <a href="#">Call to action</a>
   </rh-cta>
 </rh-card>
@@ -76,7 +76,7 @@ it's near. Several cards can be used together to group related information.
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
     libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
     elit. Donec id elit non mi porta gravida at eget metus.</p>
-  <rh-cta priority="primary" slot="footer"><a href="#">Footer</a></rh-cta>
+  <rh-cta variant="primary" slot="footer"><a href="#">Footer</a></rh-cta>
 </rh-card>
 
 ## Image title bar

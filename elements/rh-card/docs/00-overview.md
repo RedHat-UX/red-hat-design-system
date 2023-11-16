@@ -3,10 +3,18 @@
 
 
 ## Sample element
-  {% example palette="light",
-             width=360,
-             alt="Example of a card element",
-             src="card.svg" %}
+
+{% sample %}
+<rh-card>
+  <h2 slot="header">Case study</h2>
+  <p>Company Z enhances digital guest
+     experience with Red Hat container
+     and automation technology</p>
+  <rh-cta slot="footer">
+    <a href="#">Read more</a>
+  </rh-cta>
+</rh-card>
+{% endsample %}
 
 
 ## Demos
