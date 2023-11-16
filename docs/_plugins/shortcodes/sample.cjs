@@ -15,10 +15,14 @@ module.exports = function(eleventyConfig) {
      * @param {object}    options
      * @param {string}    [options.colorPalette]      color palette for surface
      * @param {string}    [options.style]             styles for the surface
+     * @param {string}    [options.stacked]           vertical layout
      * @this {EleventyContext}
      */
     function example(content, { style = '', colorPalette = 'lightest', stacked = false } = {}) {
-      return /* html */`<rh-surface color-palette="${colorPalette}" class="sample-element ${stacked ? 'stacked' : ''}" ${attrMap({ style })}>
+      let className = 'sample-element';
+      if (stacked) { className += ' stacked'; }
+      return /* html */`
+<rh-surface color-palette="${colorPalette}" ${attrMap({ style, class: className })}>
 
 ${content}
 
