@@ -3,8 +3,6 @@ title: QA and Testing
 tags: accessibility
 ---
 
-## UX dot a11y: QA and testing section
-
 ## Accessibility tools
 
 Automated tools can help you quickly identify many potential high-impact accessibility issues. Among such tools are free browser extensions like WebAIM’s WAVE and Deque’s axe DevTools.
