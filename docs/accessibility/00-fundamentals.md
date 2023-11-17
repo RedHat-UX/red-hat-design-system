@@ -98,7 +98,7 @@ The [W3C’s Accessibility Principles](https://www.w3.org/WAI/fundamentals/acces
 
 ## ATAG
 
-As a companion to WCAG, The World Wide Web Consortium’s Web Accessibility Initiative (WAI) has also developed a set of Authoring Tool Accessibility Guidelines (ATAG). ATAG covers both the accessibility of authoring tool interfaces (e.g., for content management systems) and supporting the production of accessible content using these tools. In other words, where WCAG is for end users, ATAG is for content creators.
+As a companion to WCAG, The W3C's Web Accessibility Initiative (WAI) has also developed a set of Authoring Tool Accessibility Guidelines (ATAG). ATAG covers both the accessibility of authoring tool interfaces (e.g., for content management systems) and supporting the production of accessible content using these tools. In other words, where WCAG is for end users, ATAG is for content creators.
 
 [ATAG 2.0](https://www.w3.org/TR/ATAG20/) is the current version of the standard. And, as with WCAG, there are three levels of conformance: A, AA, and AAA (from lowest to highest). We recommend using tools that meet or exceed ATAG 2.0 AA, when possible.
 
