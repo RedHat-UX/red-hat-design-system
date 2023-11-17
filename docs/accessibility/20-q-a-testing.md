@@ -25,8 +25,6 @@ You can read the full list of rules being tested at the [axe-core GitHub reposit
 
 The [axe DevTools extension](https://www.deque.com/axe/devtools/) is available for Chrome, Firefox, and Edge. The free version allows you to test entire pages. The paid Pro version includes the capability to test page sections, additional export options, and also some guided walkthroughs for further testing.
 
-## Our checklist (_on hold_)
-
 ## Testing
 
 If you already have web properties out in the wild, but you or your organization are just getting started with accessibility, your first experiences with accessibility testing will likely be in an effort to remediate these experiences. But shifting left on accessibility—incorporating it earlier in your processes—can ultimately save time and help ensure your projects are inclusive at launch.
