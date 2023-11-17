@@ -27,7 +27,7 @@ The [axe DevTools extension](https://www.deque.com/axe/devtools/) is available f
 
 ## Testing
 
-If you already have web properties out in the wild, but you or your organization are just getting started with accessibility, your first experiences with accessibility testing will likely be in an effort to remediate these experiences. But shifting left on accessibility—incorporating it earlier in your processes—can ultimately save time and help ensure your projects are inclusive at launch.
+If you're getting started with accessibility after you already have web properties out in the wild, your first experiences with accessibility testing will likely be in an effort to remediate these experiences. But learning to shift left on accessibility—incorporating it earlier in your processes—can ultimately save time and help ensure your projects are inclusive at launch.
 
 Making accessibility testing part of your pre-launch QA allows designers, developers, and content writers to revisit their work before they’ve moved on to the next project. Better still, you can incorporate role-based testing in each phase of your project, so issues can be avoided before handoffs between creators.
 
