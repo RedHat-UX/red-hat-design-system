@@ -108,4 +108,4 @@ WAI also provides an [ATAG Report Tool](https://www.w3.org/WAI/atag/report-tool)
 
 ## Credits
 
-_Some content on this page derives from the Web Accessibility Initiative (WAI) document: Introduction to Understanding WCAG. Accessibility Guidelines Working Group (AG WG) Participants. Copyright © 2023 W3C® (MIT, ERCIM, Keio). Status: Draft Updated 20 June 2023. https://www.w3.org/WAI/WCAG21/Understanding/intro_
+_Some content on this page derives from the Web Accessibility Initiative (WAI) document: [Introduction to Understanding WCAG](https://www.w3.org/WAI/WCAG21/Understanding/intro). Accessibility Guidelines Working Group (AG WG) Participants. Copyright © 2023 W3C® (MIT, ERCIM, Keio). Status: Draft Updated 20 June 2023._
