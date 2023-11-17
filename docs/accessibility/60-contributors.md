@@ -9,7 +9,6 @@ tags: accessibility
 This section covers accessibility for design system contributors. Contribultrs should also be familiar with accessibility [fundamentals](../fundamentals), [content](../content), [design](../design), and [development](../design).
 {% endalert %}
 
-
 ## Interactivity
 The following World Wide Web Consortium (W3C) Web Content Accessibility Guidelines (WCAG) 2.1 A and AA apply to developing interactive elements:
 
@@ -24,8 +23,14 @@ For more on keyboard navigation, see the WAI ARIA Authoring Practices Guide's  (
 {% endalert %}
 
 ## Dynamic Content
-TODO When/how to show/hide new content (pop ups, tooltips, etc.) (https://www.ibm.com/able/toolkit/develop/dynamic-updates)
 
+The following World Wide Web Consortium (W3C) Web Content Accessibility Guidelines (WCAG) 2.1 A and AA apply to dyanmic content:
+
+- Ensure content that appears or disappears on changes to mouse hover or keyboard focus is dismissable, hoverable, and persistent. (See [1.4.13 Content on Hover or Focus - Level AA](https://www.w3.org/WAI/WCAG21/Understanding/content-on-hover-or-focus.html).)
+
+{% alert title="Tip" %}
+For more on dynamic content, see the Mozilla Developer Network's (MDN) [ARIA live regions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions).
+{% endalert %}
 
 ## Error Handling
 
@@ -35,7 +40,6 @@ The following World Wide Web Consortium (W3C) Web Content Accessibility Guidelin
 - Use text labels and instructions for user input. (See [3.3.2 Labels or Instructions - Level A](https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html).)
 - Provide text suggestions for user errors that are automatically detected. (See [3.3.3 Error Suggestion - Level AA](https://www.w3.org/WAI/WCAG22/Understanding/error-suggestion.html).)
 - Ensure that submissions are reversible, checked, or confirmed. (See [3.3.4 Error Prevention (Legal, Financial, Data) - Level AA](https://www.w3.org/WAI/WCAG22/Understanding/error-prevention-legal-financial-data.html).)
-
 
 ## Using ARIA with shadowDOM
 Currently there is no way to associate aria attributes with elements in different DOM trees. So an element in light DOM can't use the ID reference of an element in shadowDOM to associate the elements with one another, and vice versa. 
