@@ -1,0 +1,36 @@
+---
+layout: layout-base.njk
+importElements:
+  - rh-alert
+  - rh-cta
+  - rh-footer
+  - rh-subnav
+  - rh-tag
+  - rh-badge
+---
+
+{% include 'component/header.njk' %}
+
+<main class="l-main">
+  <article class="l-main__inner">
+    <header class="l-main__header l-main__header--palette-lighter">
+      <div class="container header has-subnav">
+        <h1 id="{{ heading or title }}" class="page-title">{{ heading or title }}</h1>
+        <rh-subnav>{% for tab in collections.sortedColor %}
+          <a {{ 'active' if tab.url == page.url }} href="{{ tab.url }}">
+            {{ tab.data.title }}
+          </a>{% endfor %}
+        </rh-subnav>
+      </div>
+    </header>
+    <div class="l-main__content">
+      <div class="container">
+        {% if hasToc %}
+          {{ content | toc | safe }}
+        {% endif %}
+        {{ content | safe }}
+      </div>
+    </div>
+  </article>
+  {% include 'component/footer.njk' %}
+</main>

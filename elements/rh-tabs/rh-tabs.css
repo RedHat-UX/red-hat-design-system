@@ -39,7 +39,6 @@
   margin-inline: var(--rh-tabs-inset, var(--_inset-inline-margin, auto));
 }
 
-
 /* BOX INSET TABS */
 :host([box="inset"]) {
   --_inset-inline-margin: var(--rh-space-2xl, 32px);
