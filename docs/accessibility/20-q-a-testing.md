@@ -33,7 +33,7 @@ Making accessibility testing part of your pre-launch QA allows designers, develo
 
 Designers can evaluate their designs for things like color contrast, honest affordance of interactive items, visually-meaningful reading/focus order of elements, etc. Writers can check their source documentation for a logical content outline, clearly-written labels and instructions for forms, appropriate alternative text for images, and so on. And developers can test their work (and the content that was handed off to them) right in the browser.
 
-Keep in mind that testing isn’t easy. With many accessibility checks being judgment calls (what constitutes good alt text or clear form instructions?), even [experts disagree on accessibility](https://www.w3.org/TR/accessibility-conformance-challenges/#themes-from-research). Seek perfection, but accept progress. Fix obvious errors, and use your best judgment with other potential issues—asking subject matter experts along the way, if you have access to them (even if you are one, yourself).
+Keep in mind that testing isn’t easy. With many accessibility checks being judgment calls (what constitutes good alt text or clear form instructions?), even [experts disagree on accessibility](https://www.w3.org/TR/accessibility-conformance-challenges/#themes-from-research). Seek perfection, but accept progress along the way. Fix obvious errors, and use your best judgment with other potential issues—asking other subject matter experts along the way, if you have access to them.
 
 ### Testing technologies
 
