@@ -6,7 +6,7 @@ tags: accessibility
 ## Overview
 
 {% alert title="Note" %}
-This section covers design accessibility. Designers should also be familiar with accessibility [fundamentals](./fundamentals) as well as [content](./content).
+This section covers design accessibility. Designers should also be familiar with accessibility [fundamentals](../fundamentals) as well as [content](../content).
 {% endalert %}
 
 ### See also fundamentals, development, and content

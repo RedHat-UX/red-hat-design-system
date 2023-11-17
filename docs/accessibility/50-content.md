@@ -6,7 +6,7 @@ tags: accessibility
 ## Overview 
 
 {% alert title="Note" %}
-This section covers content accessibility. Content authors should also be familiar with accessibility [fundamentals](./fundamentals).
+This section covers content accessibility. Content authors should also be familiar with accessibility [fundamentals](../fundamentals).
 {% endalert %}
 
 ## Alt text

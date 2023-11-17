@@ -6,7 +6,7 @@ tags: accessibility
 ## Overview
 
 {% alert title="Note" %}
-This section covers accessibility for design system contributors. Contribultrs should also be familiar with accessibility [fundamentals](./fundamentals), [content](./content), [design](./design), and [development](./design).
+This section covers accessibility for design system contributors. Contribultrs should also be familiar with accessibility [fundamentals](../fundamentals), [content](../content), [design](../design), and [development](../design).
 {% endalert %}
 
 
