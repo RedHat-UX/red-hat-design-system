@@ -46,12 +46,12 @@ changes at scale, making design language updates easy to implement.
 To learn more about our color design tokens, go to the [Tokens](/tokens) section.
 
 
-### Primitive and semantic colors
+### "Crayon" and semantic colors
 
-Our design system includes multiple sets of colors known as <strong>primitives</strong>. Primitives reference hard-coded values, but offer no information about usage. <strong>Semantic</strong> colors reference primitive colors and define how a color is used. Semantic naming is essential not just for color, but for all foundational styles.
+Our design system includes multiple sets of colors known as <strong>"crayon" colors</strong>. Crayon colors reference hard-coded values, but offer no information about usage. <strong>Semantic</strong> colors reference crayon colors and define how a color is used. Semantic naming is essential not just for color, but for all foundational styles.
 
 {% example palette="light",
-          alt="Example of how primitive tokens are aliased to semantic tokens, which are used to style a button",
+          alt="Example of how crayon color tokens are aliased to semantic tokens, which are used to style a button",
           src="/assets/color/primitive-and-semantic-colors.png" %}
 
 {% feedback %}
