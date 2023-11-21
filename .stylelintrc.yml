@@ -51,6 +51,22 @@ rules:
     - ignorePattern: /--rh-font-family-/
 
   rhds/token-values: true
+  rhds/no-unknown-token-value:
+    - true
+    - migrations:
+      # grays
+      --rh-color-gray-05: --rh-color-gray-10
+      --rh-color-gray-10: --rh-color-gray-20
+      --rh-color-gray-20: --rh-color-gray-30
+      --rh-color-gray-30: --rh-color-gray-40
+      --rh-color-gray-40: --rh-color-gray-50
+      --rh-color-gray-50: --rh-color-gray-60
+      --rh-color-gray-60: --rh-color-gray-70
+      --rh-color-gray-70: --rh-color-gray-80
+      --rh-color-gray-80: --rh-color-gray-90
+      --rh-color-gray-90: --rh-color-gray-95
+      --rh-color-black: --rh-color-gray-100
+
 
   media-feature-range-notation: prefix
 
