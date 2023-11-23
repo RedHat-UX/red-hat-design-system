@@ -440,6 +440,7 @@
   font-size: 14px;
   color: #6a6e73;
   line-height: 18px;
+
   // Not ideal negative margins, need to dynamically
   // ask if there is a footnote below example
   margin-top: 16px;
@@ -447,6 +448,10 @@
 
   @include breakpoint(tango) {
     margin-top: -16px;
+
+    uxdot-code-sample + & {
+      margin-top: 16px;
+    }
   }
 }
 
