@@ -75,6 +75,29 @@ There are several card variants that can be used for a variety of use cases.
   content. For example, grouping a basic card with a pricing card will look bad 
   because they’re not very similar.
 
+  {% sample %}
+  <rh-card>
+    <img slot="header"
+         alt="red fedora angled over cubicle wall corner"
+         src="fedora.jpg">
+    <img alt="logo" src="logo.svg">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut suscipit aliquet mauris, in consequat</p>
+    <rh-cta>
+      <a href="#">Call to action</a>
+    </rh-cta>
+  </rh-card>
+
+  <rh-card>
+    <img slot="header"
+         alt="red fedora angled over cubicle wall corner"
+         src="fedora-video.jpg">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut suscipit aliquet mauris, in consequat</p>
+    <rh-cta variant="tertiary">
+      <a href="#">Call to action</a>
+    </rh-cta>
+  </rh-card>
+  {% endsample %}
+
   {% example palette="light",
              class="inline-flex centered",
              width=784,
