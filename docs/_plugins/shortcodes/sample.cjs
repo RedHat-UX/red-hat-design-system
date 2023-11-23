@@ -59,6 +59,7 @@ module.exports = function(eleventyConfig) {
       <slot></slot>
     </rh-surface>
   </template>
+
 ${content}${code === 'hidden' ? '' : /* html */`
 
   <rh-code-block compact full-height>
@@ -67,7 +68,7 @@ ${content}${code === 'hidden' ? '' : /* html */`
 ${dedent(content).trim()}
 ~~~
 
-  </rh-code-block>`}\
+  </rh-code-block>`}
 </uxdot-code-sample>`);
     });
 };
