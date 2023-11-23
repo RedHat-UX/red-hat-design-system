@@ -59,6 +59,9 @@
     PfIcon.getIconUrl = (set, icon) =>
       new URL(`/assets/packages/@patternfly/elements/pf-icon/icons/${set}/${icon}.js`, location.origin);
   </script>
+  <script type="module">
+  if (!('shadowRootMode' in HTMLTemplateElement.prototype)) { import('/assets/dsd-polyfill.js'); }
+  </script>
 </head>
 <body id="top" class="page {{ extraPageClasses }}" unresolved>
   <div class="body-inner">

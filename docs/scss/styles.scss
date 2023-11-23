@@ -8,7 +8,6 @@
 @use "components/header";
 @use "components/section";
 @use "components/example";
-@use "components/sample";
 @use "components/feedback";
 @use "components/table-of-contents";
 @use "components/component-status-table";
@@ -155,4 +154,9 @@ body.page-docs rh-cta a[href^="http"]:after {
 
 rh-playground pre {
   max-height: 785px;
+}
+
+pf-icon.do {
+  color: var(--rh-color-green-500);
+  justify-self: center;
 }
