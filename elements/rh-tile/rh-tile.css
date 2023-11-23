@@ -10,6 +10,23 @@
   outline: none !important;
 }
 
+:host,
+#outer,
+#inner,
+#content {
+  display: flex;
+  flex-flow: column;
+}
+
+#outer,
+#inner {
+  flex: 1 0 0;
+}
+
+#footer {
+  margin-block-start: auto;
+}
+
 #outer {
   position: relative;
   padding: var(--_padding);
