@@ -92,7 +92,7 @@ There are several card variants that can be used for a variety of use cases.
   content. For example, grouping a basic card with a pricing card will look bad 
   because they’re not very similar.
 
-  {% sample code='hidden' %}
+  {% sample code="hidden", class="column-2" %}
 
   <rh-card class="full">
     <img slot="header"

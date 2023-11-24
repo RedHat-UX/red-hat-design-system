@@ -34,12 +34,12 @@ module.exports = function(eleventyConfig) {
       code = 'show',
       class: classNames = '',
     } = {}) {
-      const classes = classNames.split(' ').map(x => x.trim());
-      if (stacked) { classes.push('stacked'); }
-      if (code === 'show') { classes.push('show-code'); }
+      const classes = new Set(classNames.split(' ').map(x => x.trim()));
+      if (stacked) { classes.add('stacked'); }
+      if (code === 'show') { classes.add('column-2'); }
       /* eslint-disable indent */
       return dedent(/* html */`\
-<uxdot-code-sample ${attrMap({ class: classes.join(' ') })}>
+<uxdot-code-sample ${attrMap({ class: [...classes].join(' ') })}>
   <template shadowrootmode="open">
     <style>
       :host {
@@ -54,6 +54,7 @@ module.exports = function(eleventyConfig) {
         :host(.dont) & {
           border-color: var(--rh-color-red-500);
         }
+        :host(.column-2) &,
         :host(.show-code) & {
           grid-template-columns: 1fr 1fr;
         }
