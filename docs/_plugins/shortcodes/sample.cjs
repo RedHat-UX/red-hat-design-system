@@ -72,7 +72,7 @@ module.exports = function(eleventyConfig) {
         inset-block-start: var(--rh-space-xl);
         inset-inline-start: var(--rh-space-sm);
       }
-    </style>${!classes.includes('dont') ? '' : /* html */`
+    </style>${!classes.has('dont') ? '' : /* html */`
     <pf-icon class="dont" icon="circle-exclamation" size="lg"></pf-icon>`}
     <rh-surface color-palette="${colorPalette}"
                 ${attrMap({ style })}
