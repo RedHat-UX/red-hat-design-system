@@ -130,7 +130,7 @@ There are several card variants that can be used for a variety of use cases.
       <path d="M44,32,24,42V22Z" fill="#fff"/>
     </svg>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut suscipit aliquet mauris, in consequat</p>
-    <rh-cta variant="secondary" slot="footer">
+    <rh-cta slot="footer" variant="secondary">
       <a href="#">Call to action</a>
     </rh-cta>
   </rh-card>
@@ -159,8 +159,6 @@ There are several card variants that can be used for a variety of use cases.
              alt="Alternative card usage",
              src="../card-usage-other.svg" %}
 
-
-
 ## Best practices
   The minimum width of a card in any layout is four columns and the maximum 
   number of cards that can be used in a row is three.
@@ -179,7 +177,7 @@ There are several card variants that can be used for a variety of use cases.
   <rh-card>
     <h2 slot="header">Try our learning subscription</h2>
     <p>Get limited, self-service access to select labs and courses with a free trial of Red Hat Learning Subscription</p>
-    <rh-cta variant="primary">
+    <rh-cta slot="footer" variant="primary">
       <a href="#">Learn for free</a>
     </rh-cta>
   </rh-card>
@@ -189,11 +187,20 @@ There are several card variants that can be used for a variety of use cases.
   Don’t use multiple calls to action in one card. Instead, distribute them to 
   other cards.
 
-  {% example palette="wrong",
-             class="inline-flex centered",
-             width=360,
-             alt="Multiple calls to action",
-             src="../card-bestpractice-3.svg" %}
+  {% sample class="dont", code="hidden" %}
+
+  <rh-card>
+    <h2 slot="header">Try our learning subscription</h2>
+    <p>Get limited, self-service access to select labs and courses with a free trial of Red Hat Learning Subscription</p>
+    <rh-cta slot="footer" variant="secondary">
+      <a href="#">Continue</a>
+    </rh-cta>
+    <rh-cta slot="footer">
+      <a href="#">Learn more</a>
+    </rh-cta>
+  </rh-card>
+
+  {% endsample %}
 
 
 
@@ -204,7 +211,7 @@ There are several card variants that can be used for a variety of use cases.
   determined by the tallest card. Don’t place inconsistent amounts of content in 
   cards, as this will impact how scannable the group will appear to users.
 
-  {% sample code='hidden' %}
+  {% sample code="hidden", class="column-2" %}
 
   <rh-card class="full">
     <img slot="header"
@@ -228,7 +235,7 @@ There are several card variants that can be used for a variety of use cases.
         margin-block-start: 0;
     ">Lorem ipsum dolor sit amet, consectetur</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut suscipit aliquet mauris, in consequat</p>
-    <rh-cta variant="secondary" slot="footer">
+    <rh-cta slot="footer" variant="secondary">
       <a href="#">Call to action</a>
     </rh-cta>
   </rh-card>
@@ -263,7 +270,6 @@ There are several card variants that can be used for a variety of use cases.
              width=784,
              alt="Card interaction",
              src="../card-behavior-interaction.svg" %}
-
 
 ## Interaction states
   Since cards can consist of a variety of elements, refer to the specific 
