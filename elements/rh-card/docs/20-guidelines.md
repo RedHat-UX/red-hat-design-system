@@ -174,7 +174,7 @@ There are several card variants that can be used for a variety of use cases.
 
   {% sample class="dont", code="hidden" %}
 
-  <rh-card>
+  <rh-card style="width:360px; place-self: center;">
     <h2 slot="header">Try our learning subscription</h2>
     <p>Get limited, self-service access to select labs and courses with a free trial of Red Hat Learning Subscription</p>
     <rh-cta slot="footer" variant="primary">
@@ -189,7 +189,7 @@ There are several card variants that can be used for a variety of use cases.
 
   {% sample class="dont", code="hidden" %}
 
-  <rh-card>
+  <rh-card style="width:360px; place-self: center;">
     <h2 slot="header">Try our learning subscription</h2>
     <p>Get limited, self-service access to select labs and courses with a free trial of Red Hat Learning Subscription</p>
     <rh-cta slot="footer" variant="secondary">
