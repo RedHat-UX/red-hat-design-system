@@ -32,21 +32,32 @@ module.exports = function(eleventyConfig) {
       colorPalette = 'lightest',
       stacked = false,
       code = 'show',
+      class: classNames = '',
     } = {}) {
-      const classes = [];
+      const classes = classNames.split(' ').map(x => x.trim());
       if (stacked) { classes.push('stacked'); }
+      if (code === 'show') { classes.push('show-code'); }
+      /* eslint-disable indent */
       return dedent(/* html */`\
-<uxdot-code-sample>
+<uxdot-code-sample ${attrMap({ class: classes.join(' ') })}>
   <template shadowrootmode="open">
     <style>
+      :host {
+        position: relative;
+      }
       rh-surface {
         display: grid;
-        grid-template-columns: 1fr 1fr;
         padding: var(--rh-space-4xl);
         border-radius: var(--rh-border-radius-default);
         border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle-on-light);
         gap: var(--rh-space-md);
-        &.stacked {
+        :host(.dont) & {
+          border-color: var(--rh-color-red-500);
+        }
+        :host(.show-code) & {
+          grid-template-columns: 1fr 1fr;
+        }
+        :host(.stacked) & {
           grid-template: repeat(auto-fill, minmax(1px, 1fr)) / 1fr;
         }
         @media ${tokens.get('--rh-media-md')} {
@@ -54,13 +65,19 @@ module.exports = function(eleventyConfig) {
           gap: var(--rh-space-lg);
         }
       }
-    </style>
-    <rh-surface color-palette="${colorPalette}" ${attrMap({ style, class: classes.join(' ') })}>
-      <slot></slot>
-    </rh-surface>
+      pf-icon.dont {
+        color: var(--rh-color-red-500);
+        position: absolute;
+        inset-block-start: var(--rh-space-xl);
+        inset-inline-start: var(--rh-space-sm);
+      }
+    </style>${!classes.includes('dont') ? '' : /* html */`
+    <pf-icon class="dont" icon="circle-exclamation" size="lg"></pf-icon>`}
+    <rh-surface color-palette="${colorPalette}"
+                ${attrMap({ style })}
+    ><slot></slot></rh-surface>
   </template>
-
-${content}${code === 'hidden' ? '' : /* html */`
+  ${content}${code === 'hidden' ? '' : /* html */`
 
   <rh-code-block compact full-height>
 
@@ -70,5 +87,6 @@ ${dedent(content).trim()}
 
   </rh-code-block>`}
 </uxdot-code-sample>`);
+    /* eslint-enable indent */
     });
 };

@@ -93,48 +93,50 @@ There are several card variants that can be used for a variety of use cases.
   because they’re not very similar.
 
   {% sample code='hidden' %}
-<rh-card class="full">
-  <img slot="header"
-       id="fedora"
-       alt="red fedora angled over cubicle wall corner"
-       src="../fedora.jpg">
-  <div style="
-      background: var(--rh-color-surface-lighter);
-      height: var(--rh-length-4xl);
-      width: 200px;
-      display: grid;
-      place-content: center;
-      font-size: 80%;
-  ">Logo</div>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut suscipit aliquet mauris, in consequat</p>
-  <rh-cta slot="footer">
-    <a href="#">Call to action</a>
-  </rh-cta>
-</rh-card>
 
-<rh-card class="full">
-  <img slot="header"
-       id="fedora"
-       alt="red fedora angled over cubicle wall corner"
-       src="../fedora.jpg">
-  <svg xmlns="http://www.w3.org/2000/svg"
-       slot="header"
-       viewBox="0 0 64 64"
-       style="
-          position: absolute;
-          inset: 90px 138px;
-          width: 64px;
-       ">
-    <circle cx="32" cy="32" r="32" fill="#fff" opacity="0.25"/>
-    <path d="M44,32,24,42V22Z" fill="#fff"/>
-  </svg>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut suscipit aliquet mauris, in consequat</p>
-  <rh-cta variant="secondary" slot="footer">
-    <a href="#">Call to action</a>
-  </rh-cta>
-</rh-card>
-<pf-icon icon="circle-check" size="lg" class="do"></pf-icon>
-<pf-icon icon="circle-check" size="lg" class="do"></pf-icon>
+  <rh-card class="full">
+    <img slot="header"
+         id="fedora"
+         alt="red fedora angled over cubicle wall corner"
+         src="../fedora.jpg">
+    <div style="
+        background: var(--rh-color-surface-lighter);
+        height: var(--rh-length-4xl);
+        width: 200px;
+        display: grid;
+        place-content: center;
+        font-size: 80%;
+    ">Logo</div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut suscipit aliquet mauris, in consequat</p>
+    <rh-cta slot="footer">
+      <a href="#">Call to action</a>
+    </rh-cta>
+  </rh-card>
+
+  <rh-card class="full">
+    <img slot="header"
+         id="fedora"
+         alt="red fedora angled over cubicle wall corner"
+         src="../fedora.jpg">
+    <svg xmlns="http://www.w3.org/2000/svg"
+         slot="header"
+         viewBox="0 0 64 64"
+         style="
+            position: absolute;
+            inset: 90px 138px;
+            width: 64px;
+         ">
+      <circle cx="32" cy="32" r="32" fill="#fff" opacity="0.25"/>
+      <path d="M44,32,24,42V22Z" fill="#fff"/>
+    </svg>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut suscipit aliquet mauris, in consequat</p>
+    <rh-cta variant="secondary" slot="footer">
+      <a href="#">Call to action</a>
+    </rh-cta>
+  </rh-card>
+  <pf-icon icon="circle-check" size="lg" class="do"></pf-icon>
+  <pf-icon icon="circle-check" size="lg" class="do"></pf-icon>
+
   {% endsample %}
 
   These cards can be grouped together because they have similar styles and 
@@ -172,11 +174,17 @@ There are several card variants that can be used for a variety of use cases.
   Don’t use a primary call to action in any card unless the primary action of a 
   page is positioned inside of that card.
 
-  {% example palette="wrong",
-             class="inline-flex centered",
-             width=360,
-             alt="Card width error",
-             src="../card-bestpractice-2.svg" %}
+  {% sample class="dont", code="hidden" %}
+
+  <rh-card>
+    <h2 slot="header">Try our learning subscription</h2>
+    <p>Get limited, self-service access to select labs and courses with a free trial of Red Hat Learning Subscription</p>
+    <rh-cta variant="primary">
+      <a href="#">Learn for free</a>
+    </rh-cta>
+  </rh-card>
+
+  {% endsample %}
 
   Don’t use multiple calls to action in one card. Instead, distribute them to 
   other cards.
@@ -197,49 +205,51 @@ There are several card variants that can be used for a variety of use cases.
   cards, as this will impact how scannable the group will appear to users.
 
   {% sample code='hidden' %}
-<rh-card class="full">
-  <img slot="header"
-       id="fedora"
-       alt="red fedora angled over cubicle wall corner"
-       src="../fedora.jpg">
-  <svg xmlns="http://www.w3.org/2000/svg"
-       slot="header"
-       viewBox="0 0 64 64"
-       style="
-          position: absolute;
-          inset: 90px 138px;
-          width: 64px;
-       ">
-    <circle cx="32" cy="32" r="32" fill="#fff" opacity="0.25"/>
-    <path d="M44,32,24,42V22Z" fill="#fff"/>
-  </svg>
-  <h2 style="
-      font-weight: var(--rh-font-weight-heading-bold);
-      font-size: var(--rh-font-size-heading-md);
-      margin-block-start: 0;
-  ">Lorem ipsum dolor sit amet, consectetur</h2>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut suscipit aliquet mauris, in consequat</p>
-  <rh-cta variant="secondary" slot="footer">
-    <a href="#">Call to action</a>
-  </rh-cta>
-</rh-card>
 
-<rh-card class="full">
-  <div style="
-      background: var(--rh-color-surface-lighter);
-      height: var(--rh-length-4xl);
-      width: 200px;
-      display: grid;
-      place-content: center;
-      font-size: 80%;
-  ">Logo</div>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut suscipit aliquet mauris, in consequat lorem ullamcorper a. Curabitur tempor ante vitae ultrices dignissim.</p>
-  <rh-cta slot="footer">
-    <a href="#">Learn more</a>
-  </rh-cta>
-</rh-card>
-<pf-icon icon="circle-check" size="lg" class="do"></pf-icon>
-<pf-icon icon="circle-exclamation" size="lg" class="dont"></pf-icon>
+  <rh-card class="full">
+    <img slot="header"
+         id="fedora"
+         alt="red fedora angled over cubicle wall corner"
+         src="../fedora.jpg">
+    <svg xmlns="http://www.w3.org/2000/svg"
+         slot="header"
+         viewBox="0 0 64 64"
+         style="
+            position: absolute;
+            inset: 90px 138px;
+            width: 64px;
+         ">
+      <circle cx="32" cy="32" r="32" fill="#fff" opacity="0.25"/>
+      <path d="M44,32,24,42V22Z" fill="#fff"/>
+    </svg>
+    <h2 style="
+        font-weight: var(--rh-font-weight-heading-bold);
+        font-size: var(--rh-font-size-heading-md);
+        margin-block-start: 0;
+    ">Lorem ipsum dolor sit amet, consectetur</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut suscipit aliquet mauris, in consequat</p>
+    <rh-cta variant="secondary" slot="footer">
+      <a href="#">Call to action</a>
+    </rh-cta>
+  </rh-card>
+
+  <rh-card class="full">
+    <div style="
+        background: var(--rh-color-surface-lighter);
+        height: var(--rh-length-4xl);
+        width: 200px;
+        display: grid;
+        place-content: center;
+        font-size: 80%;
+    ">Logo</div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut suscipit aliquet mauris, in consequat lorem ullamcorper a. Curabitur tempor ante vitae ultrices dignissim.</p>
+    <rh-cta slot="footer">
+      <a href="#">Learn more</a>
+    </rh-cta>
+  </rh-card>
+  <pf-icon icon="circle-check" size="lg" class="do"></pf-icon>
+  <pf-icon icon="circle-exclamation" size="lg" class="dont"></pf-icon>
+
   {% endsample %}
 
 
