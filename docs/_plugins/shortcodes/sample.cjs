@@ -47,42 +47,50 @@ module.exports = function(eleventyConfig) {
   })}>
   <template shadowrootmode="open">
     <style>
-      :host {
-        position: relative;
+    :host {
+      position: relative;
+    }
+    rh-surface {
+      display: grid;
+      padding: var(--rh-space-4xl);
+      border-radius: var(--rh-border-radius-default);
+      border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle-on-light);
+      gap: var(--rh-space-md);
+      :host(.dont) & {
+        border-color: var(--rh-color-red-500);
       }
-      rh-surface {
-        display: grid;
-        padding: var(--rh-space-4xl);
-        border-radius: var(--rh-border-radius-default);
-        border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle-on-light);
-        gap: var(--rh-space-md);
-        :host(.dont) & {
-          border-color: var(--rh-color-red-500);
-        }
-        :host(.column-2) &,
-        :host(.show-code) & {
-          grid-template-columns: 1fr 1fr;
-        }
-        :host(.stacked) & {
-          grid-template: repeat(auto-fill, minmax(1px, 1fr)) / 1fr;
-        }
-        @media ${tokens.get('--rh-media-md')} {
-          padding: var(--rh-space-7xl);
-          gap: var(--rh-space-lg);
-        }
+      :host(.column-2) &,
+      :host(.show-code) & {
+        grid-template-columns: 1fr 1fr;
       }
-      pf-icon.dont {
-        color: var(--rh-color-red-500);
-        position: absolute;
-        inset-block-start: var(--rh-space-xl);
-        inset-inline-start: var(--rh-space-sm);
+      :host(.stacked) & {
+        grid-template: repeat(auto-fill, minmax(1px, 1fr)) / 1fr;
       }
+      @media (min-width: 992px) { /* --rh-media-md */
+        padding: var(--rh-space-7xl);
+        gap: var(--rh-space-lg);
+      }
+    }
+    label {
+      position: absolute;
+      inset-block-start: 2em;
+      inset-inline-start: 1em;
+    }
+    pf-icon.dont {
+      color: var(--rh-color-red-500);
+      position: absolute;
+      inset-block-start: var(--rh-space-xl);
+      inset-inline-start: var(--rh-space-sm);
+    }
     </style>${!classes.has('dont') ? '' : /* html */`
     <pf-icon class="dont"
              icon="circle-exclamation"
              size="lg"></pf-icon>`}${!picker ? '' : /* html */`
-    <rh-context-picker target="surface"
-                       color-palette="${colorPalette}"></rh-context-picker>`}
+    <label>Color Palette
+      <rh-context-picker id="picker"
+                         target="surface"
+                         color-palette="${colorPalette}"></rh-context-picker>
+    </label>`}
     <rh-surface id="surface"
                 color-palette="${colorPalette}"
                 ${attrMap({ style })}

@@ -1,15 +1,11 @@
 ## Overview
 {{ tagName | getElementDescription }}
 
-{% example palette="light",
-          alt="An accordion with four collapsed panels and one expanded panel",
-          src="./accordion-sample-element.png" %}
-
-## Sample element
+{% sample colorPalette="light", code="hidden" %}
 
 <rh-accordion>
   <rh-accordion-header>
-    <h2>Officia eu id pariatur enim exercitation ipsum laboris irure reprehenderit</h2>
+    <h2>What is the Red Hat subscription model?</h2>
   </rh-accordion-header>
   <rh-accordion-panel>
     <p>Exercitation officia pariatur minim exercitation elit anim aliquip nulla dolor. Labore non elit sunt commodo qui mollit quis anim in eu irure consectetur veniam. Proident non Lorem veniam fugiat do amet amet enim proident ullamco aliquip magna duis. Magna proident est in eiusmod enim in.</p>
@@ -21,7 +17,7 @@
     <p>Ea mollit dolore nisi id veniam nisi dolor est commodo sunt non proident. Commodo cillum dolore consequat labore laborum aliqua in ad quis laborum reprehenderit non. Eiusmod quis irure tempor anim tempor quis pariatur est. Tempor nostrud veniam reprehenderit incididunt quis incididunt. Qui pariatur aliquip officia consequat voluptate duis fugiat occaecat.</p>
   </rh-accordion-panel>
   <rh-accordion-header>
-    <h2>Consectetur id nisi do ipsum anim labore mollit cillum fugiat elit</h2>
+    <h2>What is included?</h2>
   </rh-accordion-header>
   <rh-accordion-panel>
     <p>Amet dolor deserunt consectetur enim. Amet irure esse est minim sint eu aliquip officia nulla dolore proident. Voluptate dolore nisi aute ut amet quis elit. Id voluptate et ipsum commodo aute do. Eu excepteur sunt ex nostrud sit cillum eu excepteur aliqua fugiat. Tempor ad exercitation amet ad tempor esse.</p>
@@ -30,7 +26,7 @@
     <p>Eiusmod in voluptate excepteur ea aute Lorem pariatur minim. Adipisicing adipisicing irure commodo sunt et ullamco consectetur dolore occaecat ad. Culpa commodo est ea sit laborum.</p>
   </rh-accordion-panel>
   <rh-accordion-header>
-    <h2>Culpa dolore aute ipsum ut quis nulla Lorem sit deserunt</h2>
+    <h2>Is support included?</h2>
   </rh-accordion-header>
   <rh-accordion-panel>
     <p>Ullamco culpa ad minim tempor id. Sit ad veniam pariatur incididunt occaecat sit in duis exercitation. Duis labore ullamco proident Lorem excepteur id commodo eiusmod.</p>
@@ -38,7 +34,7 @@
     <p>Ea laboris ullamco enim labore velit voluptate cupidatat do do ipsum enim cupidatat. Laboris excepteur voluptate veniam nulla laboris nostrud dolor aliquip et quis. Anim id irure ipsum culpa exercitation eiusmod consectetur ullamco velit ipsum. Id id eu eiusmod proident veniam. Sunt tempor voluptate ipsum consectetur excepteur aliquip ut labore et. Laborum excepteur tempor nisi deserunt do est in sint ex duis fugiat voluptate minim enim.</p>
   </rh-accordion-panel>
   <rh-accordion-header>
-    <h2>Ipsum exercitation eu esse incididunt nisi anim quis non ex anim pariatur labore deserunt</h2>
+    <h2>What subscription terms does Red Hat offer?</h2>
   </rh-accordion-header>
   <rh-accordion-panel>
     <p>Aliquip dolore elit duis pariatur in ipsum eu adipisicing eiusmod proident occaecat ullamco cupidatat. Do anim reprehenderit in anim qui eiusmod Lorem. Amet fugiat dolor sint incididunt excepteur fugiat anim dolor tempor aliqua nulla esse incididunt aliquip. Deserunt enim et laborum proident reprehenderit culpa labore deserunt minim enim. In aliqua irure sint nulla sit ullamco elit non.</p>
@@ -48,18 +44,18 @@
     <p>Sit amet minim sunt nisi ut dolore laboris enim est commodo. Mollit consectetur id aute duis. Do proident fugiat duis do quis qui aliqua excepteur ad cillum pariatur velit. Ea amet aute do sunt sint labore. Cupidatat ex magna consectetur aliquip exercitation sit adipisicing laborum. Magna officia reprehenderit duis dolore elit velit aliqua.</p>
     <p>Nisi labore nostrud mollit qui exercitation ea velit cupidatat esse. Fugiat exercitation culpa ipsum commodo mollit dolore anim nostrud Lorem sit deserunt fugiat. Sit minim esse eiusmod fugiat labore minim officia ipsum aliquip amet enim. Fugiat cillum sint consequat non. Aute do do Lorem eu reprehenderit ut do labore.</p>
   </rh-accordion-panel>
-  <rh-accordion-header>
-    <h2>Duis nisi ex irure dolore nulla et tempor adipisicing tempor commodo</h2>
+  <rh-accordion-header expanded>
+    <h2>Where can I learn more?</h2>
   </rh-accordion-header>
   <rh-accordion-panel>
-    <p>Tempor dolor non magna consectetur. Dolore Lorem aliqua fugiat cupidatat enim non ea duis ex nulla magna cillum nisi. Id sit aliquip ipsum consequat quis elit exercitation esse. Proident sit exercitation culpa nulla anim incididunt cillum enim qui adipisicing exercitation nulla. Voluptate eiusmod aliquip magna enim velit culpa voluptate. Ipsum qui consequat aliqua enim incididunt occaecat fugiat reprehenderit minim in reprehenderit ullamco in. Mollit duis consectetur exercitation exercitation nisi minim laborum do.</p>
-    <p>Incididunt esse ipsum excepteur id do. Occaecat eiusmod ad tempor incididunt labore in voluptate Lorem sunt. Aliquip culpa aliqua et aliquip elit et consequat commodo dolore. Enim duis dolor deserunt veniam eiusmod. Duis Lorem aliqua amet qui enim irure consectetur ipsum. Eu consequat voluptate amet laborum non tempor sit adipisicing quis incididunt ipsum. Consequat reprehenderit tempor mollit sint nisi nulla in cillum.</p>
-    <p>Commodo proident consectetur aute nostrud eiusmod proident aute officia aliqua fugiat Lorem incididunt consectetur. Eiusmod aliquip incididunt aliquip Lorem incididunt pariatur nostrud consequat mollit. Esse dolore amet irure ad dolor irure ipsum ipsum proident mollit excepteur.</p>
-    <p>Enim sit aute voluptate velit esse occaecat consequat qui adipisicing. Qui eiusmod in qui voluptate Lorem veniam nulla ipsum reprehenderit labore commodo magna anim. Anim amet eu amet sunt amet excepteur proident exercitation. Non duis magna duis officia excepteur veniam voluptate non ullamco. Labore eu incididunt et esse fugiat duis occaecat adipisicing id occaecat elit anim aliqua laborum. Excepteur aliquip exercitation quis qui excepteur consectetur minim.</p>
-    <p>Irure Lorem ad esse aliqua culpa Lorem ea ullamco consectetur aliqua Lorem nostrud consectetur esse. Eiusmod reprehenderit deserunt eu laborum aliquip et in. Do nisi adipisicing nulla reprehenderit reprehenderit. Ex do ex cillum laborum elit ad veniam culpa aute reprehenderit irure. Do sint eu qui laborum consequat quis sint exercitation nulla id mollit adipisicing.</p>
+    <p>Find out how to get the most out of your subscription.</p>
+    <rh-cta>
+      <a href="#">Talk to a Red Hatter</a>
+    </rh-cta>
   </rh-accordion-panel>
 </rh-accordion>
 
+{% endsample %}
 
 ## Demos
   View a live version of this component and see how it can be customized.

@@ -1,3 +1,5 @@
+<script type="module">import '/assets/elements/uxdot-code-sample.js';</script>
+
 ## Style 
 Accordion panels include title text, a chevron icon, body text, and other content. When a panel is collapsed, only the top and bottom borders are visible. When a panel is expanded, all borders are visible including a thicker left border for emphasis.
 
@@ -19,21 +21,38 @@ Accordion panels include title text, a chevron icon, body text, and other conten
 ### Sizes 
 There are two available sizes and the only difference is the title text size. You can use the Small size on large breakpoints, but not the Large size on small breakpoints due to the potential of long title text wrapping to more than two lines.
 
-{% example palette="light",
-          alt="A large size accordion with text underneath saying ‘Large size’ and a small size accordion with text underneath saying ‘Small size’",
-          src="../accordion-sizes.png" %}
+{% sample code="hidden" %}
+
+<rh-accordion large>
+  <rh-accordion-header><h2>Exterior panel</h2></rh-accordion-header>
+  <rh-accordion-panel><p>Lorem ipsum dolor sit amet.</p></rh-accordion-panel>
+  <rh-accordion-header expanded><h2>Exterior panel expanded</h2></rh-accordion-header>
+  <rh-accordion-panel><p>Amet eget nulla porttitor dictumst nullam euismod imperdiet nunc sapien magnis ut aliquam proin et tristique sem platea vestibulum sagittis.</p></rh-accordion-panel>
+</rh-accordion>
+<small class="example-notes">Large size</small>
+<rh-accordion>
+  <rh-accordion-header><h2>Exterior panel</h2></rh-accordion-header>
+  <rh-accordion-panel><p>Lorem ipsum dolor sit amet.</p></rh-accordion-panel>
+  <rh-accordion-header expanded><h2>Exterior panel expanded</h2></rh-accordion-header>
+  <rh-accordion-panel><p>Amet eget nulla porttitor dictumst nullam euismod imperdiet nunc sapien magnis ut aliquam proin et tristique sem platea vestibulum sagittis.</p></rh-accordion-panel>
+</rh-accordion>
+<small class="example-notes">Small size</small>
+
+{% endsample %}
 
 ## Theme 
 An accordion is available in both light and dark themes. The light theme expanded panel includes a box shadow, but the dark theme does not.
-### Light theme 
-{% example palette="light",
-          alt="Light theme accordion with an expanded panel",
-          src="../accordion-theme-light.png" %}
 
-### Dark theme 
-{% example palette="darkest",
-          alt="Dark theme accordion with an expanded panel",
-          src="../accordion-theme-dark.png" %}
+{% sample picker=true, code="hidden" %}
+
+<rh-accordion>
+  <rh-accordion-header><h2>Exterior panel</h2></rh-accordion-header>
+  <rh-accordion-panel><p>Lorem ipsum dolor sit amet.</p></rh-accordion-panel>
+  <rh-accordion-header expanded><h2>Exterior panel expanded</h2></rh-accordion-header>
+  <rh-accordion-panel><p>Amet eget nulla porttitor dictumst nullam euismod imperdiet nunc sapien magnis ut aliquam proin et tristique sem platea vestibulum sagittis.</p></rh-accordion-panel>
+</rh-accordion>
+
+{% endsample %}
 
 ## Configuration 
 An expanded panel does not have a maximum height, but it may scroll if constrained by vertical space. The width of an accordion varies based on content and page layout. Title text and icons are horizontally aligned.
@@ -45,16 +64,58 @@ An expanded panel does not have a maximum height, but it may scroll if constrain
 ### Nested panels 
 Panels can be nested to help organize complex or granular sections of content.
 
-{% example palette="light",
-          alt="An accordion with an expanded panel and a nested expanded panel",
-          src="../accordion-nested-panels.png" %}
+{% sample code="hidden" %}
+
+<rh-accordion>
+  <rh-accordion-header><h2>Exterior panel</h2></rh-accordion-header>
+  <rh-accordion-panel><p>Lorem ipsum dolor sit amet.</p></rh-accordion-panel>
+  <rh-accordion-header expanded><h2>Exterior panel expanded</h2></rh-accordion-header>
+  <rh-accordion-panel>
+    <p>Amet eget nulla porttitor dictumst nullam euismod imperdiet nunc sapien magnis ut aliquam proin et tristique sem platea vestibulum sagittis.</p>
+    <rh-accordion>
+      <rh-accordion-header expanded><h2>Interior panel expanded</h2></rh-accordion-header>
+      <rh-accordion-panel><p>Amet eget nulla porttitor dictumst nullam euismod imperdiet nunc sapien magnis ut aliquam proin et tristique sem platea vestibulum sagittis.</p></rh-accordion-panel>
+      <rh-accordion-header><h2>Interior panel</h2></rh-accordion-header>
+      <rh-accordion-panel><p>Lorem ipsum dolor sit amet.</p></rh-accordion-panel>
+    </rh-accordion>
+  </rh-accordion-panel>
+</rh-accordion>
+
+{% endsample %}
 
 ### Stacked panels 
 Multiple panels can be expanded simultaneously even when nested.
 
-{% example palette="light",
-          alt="An accordion with one collapsed panel on top and two stacked expanded panels below",
-          src="../accordion-stacked-panels.png" %}
+{% sample code="hidden" %}
+
+<rh-accordion>
+  <rh-accordion-header><h2>Exterior panel</h2></rh-accordion-header>
+  <rh-accordion-panel><p>Lorem ipsum dolor sit amet.</p></rh-accordion-panel>
+  <rh-accordion-header expanded><h2>Exterior panel expanded</h2></rh-accordion-header>
+  <rh-accordion-panel><p>Amet eget nulla porttitor dictumst nullam euismod imperdiet nunc sapien magnis ut aliquam proin et tristique sem platea vestibulum sagittis.</p></rh-accordion-panel>
+  <rh-accordion-header expanded><h2>Exterior panel expanded</h2></rh-accordion-header>
+  <rh-accordion-panel><p>Amet eget nulla porttitor dictumst nullam euismod imperdiet nunc sapien magnis ut aliquam proin et tristique sem platea vestibulum sagittis.</p></rh-accordion-panel>
+</rh-accordion>
+<small class="example-notes">Multiple expanded exterior panels</small>
+<rh-accordion>
+  <rh-accordion-header><h2>Exterior panel</h2></rh-accordion-header>
+  <rh-accordion-panel><p>Lorem ipsum dolor sit amet.</p></rh-accordion-panel>
+  <rh-accordion-header expanded><h2>Exterior panel expanded</h2></rh-accordion-header>
+  <rh-accordion-panel>
+    <p>Amet eget nulla porttitor dictumst nullam euismod imperdiet nunc sapien magnis ut aliquam proin et tristique sem platea vestibulum sagittis.</p>
+    <rh-accordion>
+      <rh-accordion-header><h2>Interior panel</h2></rh-accordion-header>
+      <rh-accordion-panel><p>Lorem ipsum dolor sit amet.</p></rh-accordion-panel>
+      <rh-accordion-header expanded><h2>Interior panel expanded</h2></rh-accordion-header>
+      <rh-accordion-panel><p>Amet eget nulla porttitor dictumst nullam euismod imperdiet nunc sapien magnis ut aliquam proin et tristique sem platea vestibulum sagittis.</p></rh-accordion-panel>
+      <rh-accordion-header expanded><h2>Interior panel expanded</h2></rh-accordion-header>
+      <rh-accordion-panel><p>Amet eget nulla porttitor dictumst nullam euismod imperdiet nunc sapien magnis ut aliquam proin et tristique sem platea vestibulum sagittis.</p></rh-accordion-panel>
+    </rh-accordion>
+  </rh-accordion-panel>
+</rh-accordion>
+<small class="example-notes">Multiple expanded nested panels</small>
+
+{% endsample %}
 
 ## Space 
 {% example palette="light",
