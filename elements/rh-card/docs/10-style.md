@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="../custom-variants.css">
+<script type="module"> import '/assets/elements/uxdot-code-sample.js'; </script>
 
 ## Style
   Cards can be used in light and dark themes. They act as a blank canvas where
@@ -13,17 +15,47 @@
 
 ## Theme
 
-  {% example palette="light",
-             class="inline-flex centered",
-             width=784,
-             alt="Card in light theme",
-             src="../card-theme-light.svg" %}
+{% sample code="hidden", class="column-2", picker=true %}
 
-  {% example palette="darkest",
-             class="inline-flex centered",
-             width=784,
-             alt="Card in dark theme",
-             src="../card-theme-dark.svg" %}
+  <rh-card class="full">
+    <img slot="header"
+         id="fedora"
+         alt="red fedora angled over cubicle wall corner"
+         src="../fedora.jpg">
+    <svg xmlns="http://www.w3.org/2000/svg"
+         slot="header"
+         viewBox="0 0 64 64"
+         style="
+            position: absolute;
+            inset: 90px 138px;
+            width: 64px;
+         ">
+      <circle cx="32" cy="32" r="32" fill="#fff" opacity="0.25"/>
+      <path d="M44,32,24,42V22Z" fill="#fff"/>
+    </svg>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut suscipit aliquet mauris, in consequat</p>
+    <rh-cta slot="footer" variant="secondary">
+      <a href="#">Call to action</a>
+    </rh-cta>
+  </rh-card>
+
+  <rh-card class="bar">
+    <pf-icon slot="header" set="fas" icon="square" size="lg"></pf-icon>
+    <h3 slot="header">Card title</h3>
+    <div style="
+        background: var(--rh-color-surface-lighter);
+        height: var(--rh-length-4xl);
+        width: 200px;
+        display: grid;
+        place-content: center;
+        font-size: 80%;
+    ">Logo</div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut suscipit aliquet mauris, in consequat lorem ullamcorper a. Curabitur tempor ante vitae ultrices dignissim. Nullam ut urna eros. Morbi interdum luctus lacus, lacinia tempor purus</p>
+    <rh-cta slot="footer">
+      <a href="#">Call to action</a>
+    </rh-cta>
+  </rh-card>
+{% endsample %}
 
 ### Color
   Cards are secondary layouts that shouldn’t command too much attention and

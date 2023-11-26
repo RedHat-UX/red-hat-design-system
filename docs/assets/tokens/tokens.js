@@ -7,7 +7,8 @@ import '@rhds/elements/rh-footer/rh-footer-universal.js';
 import { toast } from '../toast.js';
 
 // search bar
-import '/assets/uxdot-search.js';
+import '/assets/elements/uxdot-search.js';
+
 document
   .getElementById('search-input')
   .addEventListener('focus', async function() {
@@ -31,5 +32,3 @@ for (const details of document.querySelectorAll('.variants details')) {
     event.target.closest('tr.variants')?.classList.toggle('open', event.target.open);
   });
 }
-
-

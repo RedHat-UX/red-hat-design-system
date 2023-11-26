@@ -1,19 +1,4 @@
-<style>
-rh-card.full {
-  &::part(header) { margin: 0; }
-  & img {
-    object-position: right;
-    object-fit: cover;
-    height: 229px;
-  }
-  &:not(:defined) {
-    display: block;
-    opacity: 0;
-    width: 363px;
-    height: 495px;
-  }
-}
-</style>
+<link rel="stylesheet" href="../custom-variants.css">
 
 ## Usage
 ### Variants

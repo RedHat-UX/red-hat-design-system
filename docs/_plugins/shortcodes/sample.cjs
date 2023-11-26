@@ -31,15 +31,20 @@ module.exports = function(eleventyConfig) {
       style = '',
       colorPalette = 'lightest',
       stacked = false,
+      picker = false,
+      columns = 1,
       code = 'show',
       class: classNames = '',
     } = {}) {
       const classes = new Set(classNames.split(' ').map(x => x.trim()));
+      classes.add(`column-${columns}`);
       if (stacked) { classes.add('stacked'); }
-      if (code === 'show') { classes.add('column-2'); }
       /* eslint-disable indent */
       return dedent(/* html */`\
-<uxdot-code-sample ${attrMap({ class: [...classes].join(' ') })}>
+<uxdot-code-sample ${attrMap({
+    'class': [...classes].join(' '),
+    'color-palette': colorPalette,
+  })}>
   <template shadowrootmode="open">
     <style>
       :host {
@@ -73,8 +78,13 @@ module.exports = function(eleventyConfig) {
         inset-inline-start: var(--rh-space-sm);
       }
     </style>${!classes.has('dont') ? '' : /* html */`
-    <pf-icon class="dont" icon="circle-exclamation" size="lg"></pf-icon>`}
-    <rh-surface color-palette="${colorPalette}"
+    <pf-icon class="dont"
+             icon="circle-exclamation"
+             size="lg"></pf-icon>`}${!picker ? '' : /* html */`
+    <rh-context-picker target="surface"
+                       color-palette="${colorPalette}"></rh-context-picker>`}
+    <rh-surface id="surface"
+                color-palette="${colorPalette}"
                 ${attrMap({ style })}
     ><slot></slot></rh-surface>
   </template>
