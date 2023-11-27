@@ -52,12 +52,12 @@ possible for text styles.
 
 ### Character and line counts
 
-| Element             | Character count | Line count |
-| ------------------- | --------------- | ---------- |
-| Title text          | 20              | 1          |
-| Data text           | 7               | 1          |
-| Body text           | 100             | 2          |
-| Call to action text | 30              | 1          |
+| Element {style="width: 50%" } | Character count | Line count |
+| ----------------------------- | --------------- | ---------- |
+| Title text                    | 20              | 1          |
+| Data text                     | 7               | 1          |
+| Body text                     | 100             | 2          |
+| Call to action text           | 30              | 1          |
 
 {.full-width}
 

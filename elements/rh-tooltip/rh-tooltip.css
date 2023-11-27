@@ -76,6 +76,10 @@
       );
 }
 
+:not(.initialized) #tooltip {
+  display: none;
+}
+
 #tooltip:after {
   display: block;
   content: "";
