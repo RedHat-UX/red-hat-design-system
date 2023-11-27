@@ -61,11 +61,13 @@ export class RhTabs extends BaseTabs {
 
   @property({ reflect: true, type: Boolean }) centered? = false;
 
-  // cascade doesn't like undefined values as default
+  /**
+   * Sets the theme for the tabs and panels
+   * @deprecated attribute will be removed in future release, please use the `--rh-tabs-active-border-color` css property directly.
+   */
   @cascades('rh-tab')
   @property({ reflect: true }) theme?: 'base' | null = null;
 
-  // cascade doesn't like undefined values as default
   @cascades('rh-tab', 'rh-tab-panel')
   @property({ reflect: true }) box?: 'box' | 'inset' | null = null;
 
