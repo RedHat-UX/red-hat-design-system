@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-`<rh-tabs>`: adds depreciation notice on `theme` attribute
+`<rh-tabs>`: adds deprecation notice on `theme` attribute
