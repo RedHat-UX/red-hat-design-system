@@ -1,3 +1,4 @@
+import { css } from 'lit';
 import '@rhds/elements/rh-alert/rh-alert.js';
 import { RhTabs } from '@rhds/elements/rh-tabs/rh-tabs.js';
 
@@ -9,6 +10,13 @@ export class InstallationTabs extends RhTabs {
   static stored = localStorage.getItem(TABS_KEY);
 
   static is = 'uxdot-installation-tabs';
+
+  static styles = [...RhTabs.styles, css`
+    ::slotted(pre) {
+      max-width: 800px !important;
+      overflow-x: scroll;
+    }
+  `];
 
   static { customElements.define(this.is, this); }
 
