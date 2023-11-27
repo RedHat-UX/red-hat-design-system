@@ -1,4 +1,4 @@
-<rh-tabs theme="base">
+<rh-tabs>
   <rh-tab id="users" slot="tab">Users</rh-tab>
   <rh-tab-panel>Users</rh-tab-panel>
   <rh-tab slot="tab">Containers</rh-tab>
@@ -11,7 +11,7 @@
   <rh-tab-panel>Cloud</rh-tab-panel>
 </rh-tabs>
 
-<rh-tabs theme="base" box>
+<rh-tabs box>
   <rh-tab id="users" slot="tab">Users</rh-tab>
   <rh-tab-panel>Users</rh-tab-panel>
   <rh-tab slot="tab">Containers</rh-tab>
@@ -24,7 +24,7 @@
   <rh-tab-panel>Cloud</rh-tab-panel>
 </rh-tabs>
 
-<rh-tabs theme="base" vertical>
+<rh-tabs vertical>
   <rh-tab id="users" slot="tab">Users</rh-tab>
   <rh-tab-panel>Users</rh-tab-panel>
   <rh-tab slot="tab">Containers</rh-tab>
@@ -37,7 +37,7 @@
   <rh-tab-panel>Cloud</rh-tab-panel>
 </rh-tabs>
 
-<rh-tabs theme="base" vertical box>
+<rh-tabs vertical box>
   <rh-tab id="users" slot="tab">Users</rh-tab>
   <rh-tab-panel>Users</rh-tab-panel>
   <rh-tab slot="tab">Containers</rh-tab>
@@ -49,6 +49,12 @@
   <rh-tab slot="tab">Cloud</rh-tab>
   <rh-tab-panel>Cloud</rh-tab-panel>
 </rh-tabs>
+
+<style>
+  rh-tabs {
+    --rh-tabs-active-border-color: #06c;
+  }
+</style>
 
 <script type="module">
   import '@rhds/elements/rh-tabs/rh-tabs.js';
