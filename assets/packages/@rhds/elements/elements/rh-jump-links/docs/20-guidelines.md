@@ -10,6 +10,14 @@
   displayed when a user scrolls past them or if they select the specific parent 
   section link.
 
+### Character count
+The label and section links should have fewer characters. The recommended maximum character count for the elements of jump links are listed below and include spaces.
+
+  | Element {style="width: 50%" } | Character count |
+  |-------------------------------|-----------------|
+  | Label                         | 18              |
+  | Section links                 | 30              |
+
 ### Positioning
 
   Jump links are placed on the left edge of the grid on large screens so content 
