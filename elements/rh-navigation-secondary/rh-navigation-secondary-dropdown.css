@@ -26,7 +26,7 @@
 
 #container.highlight ::slotted([slot="link"]),
 ::slotted([slot="link"][aria-current="page"]) {
-  border-block-start-color: var(--_current-active-child-border-color,#ee0000) !important;
+  border-block-start-color: var(--_current-active-child-border-color, #ee0000) !important;
 }
 
 ::slotted([slot="link"]):after {
@@ -61,5 +61,5 @@
 
   ::slotted([slot="link"][aria-expanded="true"]):after {
     --_chevron-color: var(--rh-color-text-primary-on-light, #151515) !important;
-  } 
+  }
 }
