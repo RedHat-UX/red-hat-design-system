@@ -24,13 +24,13 @@ fully initialized.
   `;
 
   return /* md */`
-<script type="module" src="/assets/rhds-installation-tabs.js"></script>
+<script type="module" src="/assets/elements/uxdot-installation-tabs.js"></script>
 
 <section class="band">
 
   ## Installation ${!docsPage.manifest?.packageJson ? '' : /* md */`
 
-<rhds-installation-tabs>
+<uxdot-installation-tabs>
 <rh-tab slot="tab">Red Hat CDN</rh-tab>
 <rh-tab-panel>
   <rh-alert state="warning">
@@ -154,7 +154,7 @@ ${!lightdomcss ? '' : /* md */ `${lightdomcssblock}
 
 `}
   </rh-tab-panel>
-</rhds-installation-tabs>
+</uxdot-installation-tabs>
 
 ${content ?? ''}`}
 

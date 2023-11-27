@@ -8,10 +8,20 @@ const TABS_KEY = 'rhds-installation-tabs-selected-index';
 export class InstallationTabs extends RhTabs {
   static stored = localStorage.getItem(TABS_KEY);
 
+  static is = 'uxdot-installation-tabs';
+
+  static { customElements.define(this.is, this); }
+
   #onExpand(event) {
     if (event instanceof TabExpandEvent) {
       localStorage.setItem(TABS_KEY, this.activeIndex.toString());
     }
+  }
+
+  constructor() {
+    super();
+    this.variant = 'box';
+    this.layout = 'vertical';
   }
 
   async firstUpdated() {
@@ -31,5 +41,3 @@ export class InstallationTabs extends RhTabs {
     this.addEventListener('expand', this.#onExpand);
   }
 }
-
-customElements.define('rhds-installation-tabs', InstallationTabs);
