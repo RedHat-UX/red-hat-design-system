@@ -20,8 +20,8 @@ export class InstallationTabs extends RhTabs {
 
   constructor() {
     super();
-    this.variant = 'box';
-    this.layout = 'vertical';
+    this.box = true;
+    this.vertical = true;
   }
 
   async firstUpdated() {
