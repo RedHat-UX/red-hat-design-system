@@ -2,6 +2,7 @@
 node_modules
 .wireit
 .rollup.cache
+.cache
 
 # Ignore compiled files in webroot
 _site
@@ -94,3 +95,4 @@ $RECYCLE.BIN/
 *.lnk
 
 !declaration.d.ts
+docs/assets/playgrounds/rh-playground.js

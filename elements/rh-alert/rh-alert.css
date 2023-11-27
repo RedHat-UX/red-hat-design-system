@@ -41,7 +41,7 @@
 }
 
 :host([toast]),
-:host([variant="toast"]){
+:host([variant="toast"]) {
   --_background-color: var(--rh-color-surface-lightest, #ffffff);
 
   max-width: 550px;
@@ -128,7 +128,7 @@ footer.hasActions {
   margin-top: var(--rh-space-lg, 16px);
 }
 
-footer ::slotted([slot="actions"]) {
+footer ::slotted([slot="actions"]:not(rh-button[variant="link"])) {
   margin-inline-end: var(--rh-space-xl, 24px) !important;
   padding: 0 !important;
   border: none !important;
@@ -148,6 +148,11 @@ footer ::slotted([slot="actions"]:hover) {
   cursor: pointer !important;
   text-decoration: underline !important;
   color: var(--rh-color-interactive-blue-darkest, #004080) !important;
+}
+
+footer ::slotted(rh-button[variant="link"]) {
+  display: inline-block;
+  translate: calc(-1 * var(--rh-space-lg, 16px));
 }
 
 :host(:not([variant])) #container,

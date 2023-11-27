@@ -1,46 +1,15 @@
-<section>
-  <h2>Links</h2>
-  <rh-cta>
-    <a href="#">Link</a>
-  </rh-cta>
+<rh-cta>
+  <button>Button</button>
+</rh-cta>
 
-  <rh-cta variant="primary">
-    <a href="#">Link</a>
-  </rh-cta>
+<rh-cta variant="primary">
+  <button>Button</button>
+</rh-cta>
 
-  <rh-cta variant="secondary">
-    <a href="#">Link</a>
-  </rh-cta>
-</section>
-
-<section>
-  <h2>Buttons</h2>
-  <rh-cta>
-    <button>Button</button>
-  </rh-cta>
-
-  <rh-cta variant="primary">
-    <button>Button</button>
-  </rh-cta>
-
-  <rh-cta variant="secondary">
-    <button>Button</button>
-  </rh-cta>
-</section>
+<rh-cta variant="secondary">
+  <button>Button</button>
+</rh-cta>
 
 <script type="module">
   import '@rhds/elements/rh-cta/rh-cta.js';
 </script>
-
-<style>
-section {
-  display: grid;
-  gap: var(--rh-space-md, 8px) var(--rh-space-xl, 24px);
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  padding: var(--rh-space-lg, 16px);
-}
-
-h2 {
-  grid-column: -1/1;
-}
-</style>

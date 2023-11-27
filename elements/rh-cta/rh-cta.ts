@@ -7,7 +7,7 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import { DirController } from '../../lib/DirController.js';
 
-import { type ColorPalette } from 'lib/context/color/provider.js';
+import { type ColorPalette } from '../../lib/context/color/provider.js';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
 import style from './rh-cta.css';

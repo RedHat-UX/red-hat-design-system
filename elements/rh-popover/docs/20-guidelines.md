@@ -42,12 +42,12 @@
     understand what to do next if the content is too brief.
   {% endalert %}
 
-  | Element     | Maximum characters |
-  |-------------|--------------------|
-  | Heading     | 25                 |
-  | Body text   | 100                |
-  | Single link | 35                 |
-  | Two links   | 15 (each)          |
+  | Element {style="width: 50%" } | Character count |
+  |-------------------------------|-----------------|
+  | Heading                       | 25              |
+  | Body text                     | 100             |
+  | Single link                   | 35              |
+  | Two links                     | 15 (each)       |
 
 ### Orientation
 

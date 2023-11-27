@@ -142,6 +142,22 @@ pf-icon[icon="arrow-right"] {
   color: var(--_interactive-color);
   width: var(--rh-space-xl, 24px);
   height: var(--rh-space-xl, 24px);
+  pointer-events: none;
+  translate: 0 0;
+  transition: translate var(--_trans);
+
+  --_trans:
+    var(--rh-animation-speed, 0.3s)
+    var(--rh-animation-timing, cubic-bezier(0.465, 0.183, 0.153, 0.946));
+}
+
+:host(:hover) #footer pf-icon {
+  translate: 3px 0;
+}
+
+/* chrome <= 103 */
+@supports not (translate: 0 0) {
+  :host(:hover) #footer pf-icon { transform: translate(3px, 0); }
 }
 
 svg {

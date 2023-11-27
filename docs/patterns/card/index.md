@@ -215,3 +215,14 @@ For more information, please see the [card css custom properties](/elements/card
   }
 </style>
 
+## Usage
+
+### Character count
+  The recommended maximum character count for the elements of a card are listed below and include spaces.
+
+  | Element {style="width: 50%" } | Character count |
+  |-------------------------------|-----------------|
+  | Title                         | 20              |
+  | Headline                      | 50              | 
+  | Body text                     | 165             |
+  | Footer                        | 55              |
