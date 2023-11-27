@@ -37,7 +37,7 @@
     <link type="text/css" href="/assets/pfe--noscript.min.css">
   </noscript>
 
-  <script type="importmap">{"imports":{"@patternfly/pfe-core":"/assets/packages/@patternfly/pfe-core/core.js","lit-html":"/assets/packages/lit-html/lit-html.js","@floating-ui/core":"/assets/packages/@floating-ui/core/dist/floating-ui.core.browser.min.mjs","tslib":"/assets/packages/tslib/tslib.es6.js","@lit/reactive-element":"/assets/packages/@lit/reactive-element/reactive-element.js","@floating-ui/dom":"/assets/packages/@floating-ui/dom/dist/floating-ui.dom.browser.min.mjs","lit-element":"/assets/packages/lit-element/index.js","lit":"/assets/packages/lit/index.js","@patternfly/elements":"/assets/packages/@patternfly/elements/pfe.min.js","@rhds/tokens/media.js":"https://ga.jspm.io/npm:@rhds/tokens@1.1.2/js/media.js","@rhds/tokens":"https://ga.jspm.io/npm:@rhds/tokens@1.1.2/js/tokens.js","@rhds/tokens/meta.js":"https://ga.jspm.io/npm:@rhds/tokens@1.1.2/js/meta.js","element-internals-polyfill":"/assets/packages/element-internals-polyfill/dist/index.js","fuse.js":"/assets/packages/fuse.js/dist/fuse.esm.js","@rhds/tokens/":"/assets/packages/@rhds/tokens/js/","@rhds/elements/":"/assets/packages/@rhds/elements/elements/","@rhds/elements/lib/":"/assets/packages/@rhds/elements/lib/","@patternfly/elements/":"/assets/packages/@patternfly/elements/","@patternfly/icons/":"/assets/packages/@patternfly/icons/","@patternfly/pfe-core/":"/assets/packages/@patternfly/pfe-core/"},"scopes":{"/assets/packages/":{"@lit/reactive-element/decorators/":"/assets/packages/@lit/reactive-element/decorators/","lit":"/assets/packages/@patternfly/elements/node_modules/lit/index.js","lit-element/lit-element.js":"/assets/packages/lit-element/lit-element.js","lit-html/":"/assets/packages/lit-html/","lit/":"/assets/packages/@patternfly/elements/node_modules/lit/"}}}</script>
+  <script type="importmap">{"imports":{"@patternfly/pfe-core":"/assets/packages/@patternfly/pfe-core/core.js","lit-html":"/assets/packages/lit-html/lit-html.js","@floating-ui/core":"/assets/packages/@floating-ui/core/dist/floating-ui.core.browser.min.mjs","tslib":"/assets/packages/tslib/tslib.es6.js","@lit/reactive-element":"/assets/packages/@lit/reactive-element/reactive-element.js","@floating-ui/dom":"/assets/packages/@floating-ui/dom/dist/floating-ui.dom.browser.min.mjs","lit-element":"/assets/packages/lit-element/index.js","lit":"/assets/packages/lit/index.js","@patternfly/elements":"/assets/packages/@patternfly/elements/pfe.min.js","@rhds/tokens":"https://ga.jspm.io/npm:@rhds/tokens@1.1.2/js/tokens.js","@rhds/tokens/media.js":"https://ga.jspm.io/npm:@rhds/tokens@1.1.2/js/media.js","@rhds/tokens/meta.js":"https://ga.jspm.io/npm:@rhds/tokens@1.1.2/js/meta.js","element-internals-polyfill":"/assets/packages/element-internals-polyfill/dist/index.js","fuse.js":"/assets/packages/fuse.js/dist/fuse.esm.js","@rhds/tokens/":"/assets/packages/@rhds/tokens/js/","@rhds/elements/":"/assets/packages/@rhds/elements/elements/","@rhds/elements/lib/":"/assets/packages/@rhds/elements/lib/","@patternfly/elements/":"/assets/packages/@patternfly/elements/","@patternfly/icons/":"/assets/packages/@patternfly/icons/","@patternfly/pfe-core/":"/assets/packages/@patternfly/pfe-core/"},"scopes":{"/assets/packages/":{"@lit/reactive-element/decorators/":"/assets/packages/@lit/reactive-element/decorators/","lit":"/assets/packages/@patternfly/elements/node_modules/lit/index.js","lit-element/lit-element.js":"/assets/packages/lit-element/lit-element.js","lit-html/":"/assets/packages/lit-html/","lit/":"/assets/packages/@patternfly/elements/node_modules/lit/"}}}</script>
   <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js"></script>
   
   <script type="module">
@@ -425,6 +425,8 @@
 <ul>
 <li>Column titles (or headers) must use <code>&lt;th&gt;</code> elements with <code>scope="col"</code> attributes</li>
 <li>Row titles (or headers) must use <code>&lt;th&gt;</code> elements with <code>scope="row"</code> attributes</li>
+<li>Use <code>id</code> and <code>headers</code> attributes to associate data cells with their table headers</li>
+<li>Add a <code>&lt;caption&gt;</code> element to title a table and help users identify its purpose</li>
 </ul>
 <copy-permalink class="h3">
   <h3 id="further-guidance" tabindex="-1">
@@ -432,9 +434,7 @@
       </h3>
     </copy-permalink>
 <ul>
-<li>Use <code>id</code> and <code>headers</code> attributes to associate data cells with their table headers</li>
-<li>Add a <code>&lt;caption&gt;</code> element for brief descriptive text</li>
-<li>Define sections with <code>thead</code> and <code>tbody</code> (and optionally <code>tfoot</code> for larger tables)</li>
+<li>Define sections with <code>&lt;thead&gt;</code> and <code>&lt;tbody&gt;</code> (and optionally <code>&lt;tfoot&gt;</code> for larger tables)</li>
 </ul>
 <copy-permalink class="h3">
   <h3 id="example-markup" tabindex="-1">
@@ -453,40 +453,43 @@
         </div>
 <rh-table>
   <table>
+    <caption>
+      Keyboard interactions
+    </caption>
     <colgroup>
         <col style="width: 25%">
         <col>
     </colgroup>
     <thead>
       <tr>
-        <th data-label="Key" scope="col">Key</th>
-        <th data-label="Result" scope="col">Result</th>
+        <th id="keyboard-key" data-label="Key" scope="col">Key</th>
+        <th id="keyboard-result" data-label="Result" scope="col">Result</th>
       </tr>
     </thead>
     <tbody>
         <tr>
-            <td data-label="Key">Up Arrow</td>
-            <td data-label="Result">Moves the table view up</td>
+            <td headers="keyboard-key" data-label="Key">Up Arrow</td>
+            <td headers="keyboard-result" data-label="Result">Moves the table view up</td>
         </tr>
         <tr>
-            <td data-label="Key">Left Arrow</td>
-            <td data-label="Result">Moves the table view left</td>
+            <td headers="keyboard-key" data-label="Key">Left Arrow</td>
+            <td headers="keyboard-result" data-label="Result">Moves the table view left</td>
         </tr>
         <tr>
-            <td data-label="Key">Right Arrow</td>
-            <td data-label="Result">Moves the table view right</td>
+            <td headers="keyboard-key" data-label="Key">Right Arrow</td>
+            <td headers="keyboard-result" data-label="Result">Moves the table view right</td>
         </tr>
         <tr>
-            <td data-label="Key">Down Arrow</td>
-            <td data-label="Result">Moves the table view down</td>
+            <td headers="keyboard-key" data-label="Key">Down Arrow</td>
+            <td headers="keyboard-result" data-label="Result">Moves the table view down</td>
         </tr>
         <tr>
-            <td data-label="Key">Tab</td>
-            <td data-label="Result">Moves focus to next interactive element within a cell or outside of the table</td>
+            <td headers="keyboard-key" data-label="Key">Tab</td>
+            <td headers="keyboard-result" data-label="Result">Moves focus to next interactive element within a cell or outside of the table</td>
         </tr>
         <tr>
-            <td data-label="Key">Shift+Tab</td>
-            <td data-label="Result">Moves focus to previous interactive element within a cell or outside of the table</td>
+            <td headers="keyboard-key" data-label="Key">Shift+Tab</td>
+            <td headers="keyboard-result" data-label="Result">Moves focus to previous interactive element within a cell or outside of the table</td>
         </tr>
     </tbody>
   </table>
@@ -525,6 +528,7 @@
 <ul>
 <li>No column title cells should be blank</li>
 <li>Each cell should only have one piece of data</li>
+<li>Avoid merged cells. When possible consider breaking a complex table into a series of simpler tables</li>
 <li>Do not place multiple inactive elements in a single cell</li>
 </ul>
 <section class="section section--palette-default  container">
