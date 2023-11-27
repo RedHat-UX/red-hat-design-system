@@ -17,4 +17,3 @@
   padding: var(--rh-context-demo-padding, var(--rh-space-xl, 24px));
   height: calc(100% - 2 * var(--rh-context-demo-padding, var(--rh-space-xl, 24px)));
 }
-
