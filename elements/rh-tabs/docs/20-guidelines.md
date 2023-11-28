@@ -65,13 +65,13 @@ Text labels should be concise, scannable, and descriptive of content in the pane
 {% example palette="light", alt="Image of open tabs with examples of adequate and long text labels", src="../tabs-text-labels.png" %}
 
 ### Character count
-In general, tabs should have three or four text labels maximum. However, if text labels are <strong>very short</strong>, more can be added.
+In general, tabs should have three or four text labels maximum. Text labels should be short but descriptive.
 
-| Tab count {style="width: 50%;"} | Character count |
-| ------------------------------- | --------------- |
-| 6                               | < 13            |
-| 5                               | 14 - 17         |
-| 4                               | 18 - 23         |
+Text labels should be short but descriptive.
+
+| Character count | Word count |
+| --------------- | ---------- |
+| 20              | 2 to 3     |
 
 ## Layout
 ### Horizontal tabs width

@@ -8,7 +8,7 @@
   </rh-card>
 
   <rh-card>
-    <h2 slot="header">Grid Card with More Content</h2>
+    <h2 slot="header">Longer Content</h2>
     <p>
       In such a case, all of the grid card's footers should be
       vertically aligned. Meaning, they should always rest in
@@ -31,6 +31,31 @@
       <a href="https://ux.redhat.com/elements/card/guidelines/#vertical-height">Read the Guidelines</a>
     </rh-cta>
   </rh-card>
+
+  <rh-card>
+    <p>This card has no header and short body content.</p>
+    <rh-cta priority="primary" slot="footer">
+      <a href="#">Call to action</a>
+    </rh-cta>
+  </rh-card>
+
+  <rh-card>
+    <h2 slot="header">No footer, More Content</h2>
+    <p>
+      In such a case, all of the grid card's footers should be
+      vertically aligned. Meaning, they should always rest in
+      the bottom of their card. Even when one card has much more
+      content than its neighbour, and thus fill more vertical space
+      in it's body, the footers should still be aligned.
+    </p>
+  </rh-card>
+
+  <rh-card>
+    <h2 slot="header">No body</h2>
+    <rh-cta priority="primary" slot="footer">
+      <a href="https://ux.redhat.com/elements/card/guidelines/#vertical-height">Read the Guidelines</a>
+    </rh-cta>
+  </rh-card>
 </div>
 
 <script type="module">
@@ -43,5 +68,6 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: var(--rh-space-lg, 16px);
+  max-width: 1058px;
 }
 </style>

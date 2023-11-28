@@ -84,8 +84,12 @@
                   [ 'Typography', '/foundations/typography/' ]
                 ] -%}
                 {%- for text, link in foundationsLinks -%}
-                <a class="link {{ 'active' if page.url === link }}"
-                   href="{{ link | url }}">{{ text }}</a>
+                  {% if page.url.includes('/foundations/color/') and link.includes('/foundations/color') %}
+                    <a class="link active" href="{{ link | url }}">{{ text }}</a>
+                  {% else %}
+                    <a class="link {{ 'active' if page.url === link }}"
+                      href="{{ link | url }}">{{ text }}</a>
+                  {% endif %}
                 {%- endfor -%}
               </li>
             </ul>

@@ -547,4 +547,3 @@ button[disabled] {
 :host(:not([disabled])) .hasIcon [part="icon"] {
   cursor: pointer;
 }
-
