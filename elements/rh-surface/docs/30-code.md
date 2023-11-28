@@ -1,3 +1,5 @@
+{% renderInstall %}{% endrenderInstall %}
+
 {% renderOverview %}
   <rh-surface></rh-surface>
 {% endrenderOverview %}
