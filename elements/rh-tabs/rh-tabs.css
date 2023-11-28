@@ -33,12 +33,12 @@
   bottom: 0;
   margin: 0;
   width: auto;
+  font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
 :host(:is([centered], [box="inset"])) [part="tabs"] {
   margin-inline: var(--rh-tabs-inset, var(--_inset-inline-margin, auto));
 }
-
 
 /* BOX INSET TABS */
 :host([box="inset"]) {

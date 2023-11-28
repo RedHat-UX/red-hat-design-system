@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit';
+import { LitElement, type PropertyValues, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -20,6 +20,8 @@ export class RhContextDemo extends LitElement {
 
   @property() label = 'Color Palette';
 
+  @property({ attribute: 'color-palette', reflect: true }) colorPalette = this.value;
+
   #internals = this.attachInternals();
 
   render() {
@@ -39,6 +41,15 @@ export class RhContextDemo extends LitElement {
         <slot part="demo"></slot>
       </rh-surface>
     `;
+  }
+
+  willUpdate(changed: PropertyValues<this>) {
+    if (changed.has('colorPalette')) {
+      this.value = this.colorPalette;
+    }
+    if (changed.has('value')) {
+      this.colorPalette = this.value;
+    }
   }
 
   formStateRestoreCallback(state: string) {

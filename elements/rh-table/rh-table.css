@@ -12,7 +12,7 @@
 
   --_scrollbar-size: calc(10 / 16 * 1rem);
   --_scrollbar-thumb-color: var(--rh-color-gray-40, #707070);
-  --_scrollbar-track-color: var(--rh-color-border-subtle-on-light, #c7c7c7)
+  --_scrollbar-track-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
 }
 
 :host::-webkit-scrollbar {

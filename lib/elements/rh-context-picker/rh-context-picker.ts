@@ -66,6 +66,19 @@ export class RhContextPicker extends LitElement {
 
   @colorContextConsumer() private on?: ColorTheme;
 
+  @property({
+    converter: {
+      fromAttribute(list: string) {
+        return list?.split(',')
+          ?.map(x => x.trim())
+          ?.filter(x => RhContextPicker.paletteNames.includes(x as ColorPalette)) ?? [];
+      },
+      toAttribute(list: ColorPalette[]) {
+        return list.join(',');
+      },
+    },
+  }) allow = RhContextPicker.paletteNames;
+
   #offset = RhContextPicker.offsets[this.value];
 
   #internals = this.attachInternals();
@@ -86,11 +99,16 @@ export class RhContextPicker extends LitElement {
                  name="range"
                  type="range"
                  list="palettes"
-                 max="5"
+                 min="0"
+                 max="${this.allow.length - 1}"
+                .value="${this.allow.indexOf(this.value).toString()}"
                  aria-label="${derivedLabel}"
-                 style="${styleMap({ '--offset': `${this.#offset}px` })}"
+                 style="${styleMap({
+                   '--count': `${this.allow.length}`,
+                   '--offset': `${this.#offset}px`,
+                  })}"
                  @input="${this.#onInput}">
-          <datalist id="palettes">${Array.from(RhContextPicker.palettes, ([palette]) => html`
+          <datalist id="palettes">${this.allow.map(palette => html`
             <option id="option-${palette}"
                     value="${palette}"
                     title="${palette}"
@@ -102,14 +120,8 @@ export class RhContextPicker extends LitElement {
     `;
   }
 
-  updated(changedProperties: PropertyValues<this>) {
-    if (changedProperties.has('value') && this.range) {
-      this.range.value = RhContextPicker.paletteNames.indexOf(this.value).toString();
-    }
-  }
-
   formStateRestoreCallback(state: string) {
-    this.#setValue(state);
+    this.#setValue(state as this['value']);
   }
 
   firstUpdated() {
@@ -132,15 +144,17 @@ export class RhContextPicker extends LitElement {
   #onInput(event: Event) {
     if (event.target instanceof HTMLInputElement) {
       event.stopPropagation();
-      const value = RhContextPicker.paletteNames[+event.target.value];
-      this.#setValue(value);
+      const value = this.allow.at(+event.target.value);
+      if (value) {
+        this.#setValue(value);
+      }
     }
   }
 
-  #setValue(value: string) {
+  #setValue(value: this['value']) {
     this.#internals.setFormValue(value);
-    this.value = value as this['value'];
-    if (this.dispatchEvent(new ContextChangeEvent(this.value))) {
+    if (value !== this.value && this.dispatchEvent(new ContextChangeEvent(value))) {
+      this.value = value;
       this.sync();
     }
   }

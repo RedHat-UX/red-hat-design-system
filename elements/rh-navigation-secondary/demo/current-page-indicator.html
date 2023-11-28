@@ -1,5 +1,5 @@
 <rh-navigation-secondary role="navigation">
-  <a href="#" slot="logo" id="logo-id">
+  <a href="#" slot="logo" id="logo-id" aria-current="page">
     Logo/Title
   </a>
   <ul slot="nav" aria-labelledby="logo-id">
@@ -106,9 +106,7 @@
   import '@rhds/elements/rh-card/rh-card.js';
   import '@rhds/elements/rh-button/rh-button.js';
 
-  const nav = document.querySelector('rh-navigation-secondary [slot="nav"]');
-  const links = nav.querySelectorAll('a');
-
+  const links = document.querySelectorAll('rh-navigation-secondary [slot="logo"], rh-navigation-secondary [slot="nav"] a');
   const [firstLink] = links;
   const lastLink = [...links].pop();
 
@@ -163,7 +161,7 @@
 
   function resetCurrentPageIndex() {
     // get the current page
-    const currentPage = nav.querySelector('[aria-current="page"]');
+    const currentPage = document.querySelector('rh-navigation-secondary [slot="logo"][aria-current="page"], rh-navigation-secondary [slot="nav"] a[aria-current="page"]');
     // get the index of the current page
     const currentPageIndex = Array.from(links).indexOf(currentPage);
     // remove the current page
