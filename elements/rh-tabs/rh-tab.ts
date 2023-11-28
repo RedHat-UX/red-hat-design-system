@@ -24,7 +24,6 @@ import styles from './rh-tab.css';
  *
  * @cssprop {<color>} --rh-tabs-link-color - Tab link text color {@default `#4d4d4d`}
  * @cssprop {<color>} --rh-tabs-active-border-color - Tab active border color {@default `#ff442b`}
- * @cssprop {<length>} --rh-tabs-link-font-size - Tab font size {@default `16px`}
  * @cssprop {<length>} --rh-tabs-link-padding-inline-start - Tab padding inline start {@default `32px`}
  * @cssprop {<length>} --rh-tabs-link-padding-block-start - Tab padding block start {@default `16px`}
  * @cssprop {<length>} --rh-tabs-link-padding-inline-end - Tab padding inline end {@default 32px`}
