@@ -35,6 +35,10 @@ export declare class RhTabs extends BaseTabs {
      */
     colorPalette?: ColorPalette;
     centered?: boolean | undefined;
+    /**
+     * Sets the theme for the tabs and panels
+     * @deprecated attribute will be removed in future release, please use the `--rh-tabs-active-border-color` css property directly.
+     */
     theme?: 'base' | null;
     box?: 'box' | 'inset' | null;
     vertical: boolean;
