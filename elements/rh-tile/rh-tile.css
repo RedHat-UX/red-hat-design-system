@@ -113,6 +113,7 @@
 
 #outer:is(.compact, .checkable) #content {
   flex: 1 1 auto;
+  width: 100%;
 }
 
 #outer.checkable #header {
