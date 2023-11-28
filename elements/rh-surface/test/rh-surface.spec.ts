@@ -1,6 +1,6 @@
 import { expect, fixture, html, nextFrame, aTimeout } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
-import { RhSurface } from '@rhds/elements/lib/elements/rh-surface/rh-surface.js';
+import { RhSurface } from '../rh-surface.js';
 
 import { LitElement, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
