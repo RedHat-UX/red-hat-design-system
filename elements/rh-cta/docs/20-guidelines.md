@@ -99,15 +99,14 @@ Call to action text labels are written to entice users to select a link whereas 
         src="../cta-call-to-action-vs-button-text-labels.png" %}
 
 ### Character count
+The recommended maximum character count for the variants of a call to action are listed below and include spaces.
 
-| Variant     | Character count |
-| ------------| ----------------|
-| Primary     | 30              |
-| Secondary   | 40              |
-| Brick       | 25              |
-| Default     | 55              |
-
-{.full-width .col-11}
+| Variants {style="width: 50%" } | Character count |
+|--------------------------------|-----------------|
+| Primary                        | 30              |
+| Secondary                      | 40              |
+| Brick                          | 25              |
+| Default                        | 55              |
 
 ## Layout
 
