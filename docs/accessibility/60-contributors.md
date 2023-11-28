@@ -22,7 +22,12 @@ The following World Wide Web Consortium (W3C) Web Content Accessibility Guidelin
 For more on keyboard navigation, see the WAI ARIA Authoring Practices Guide's  (APG) [Developing a Keyboard Interface](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/).
 {% endalert %}
 
-## Dynamic Content
+## Disabled components
+For compostite components, such as fieldsets, radio groups, menus, and listboxes, [WAI-ARIA recommends](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#focusabilityofdisabledcontrols) that elements of a disabled composite components remain focusable.
+
+Users should still be able to read options within the composite group even if they cannot activate or trigger them.  For example, a disabled dropdown menu should allow users to toggle it open via keyboard and focus on options even if activating the options is disabled.
+
+## Dynamic content
 
 The following World Wide Web Consortium (W3C) Web Content Accessibility Guidelines (WCAG) 2.1 A and AA apply to dyanmic content:
 
