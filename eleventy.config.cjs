@@ -156,6 +156,7 @@ module.exports = function(eleventyConfig) {
       'component',
       'foundations',
       'getstarted',
+      'color'
     ]
   });
 

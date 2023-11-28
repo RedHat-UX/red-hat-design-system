@@ -5,7 +5,7 @@ heading: Color
 tags:
   - color
 permalink: /foundations/color/accessibility/index.html
-order: 40
+order: 3
 bodyClasses: element-docs
 ---
 

@@ -203,13 +203,6 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
   });
 
-  eleventyConfig.addCollection('sortedColor', async function(collectionApi) {
-    const colorCollection = collectionApi.getFilteredByTags('color');
-    return colorCollection.sort((a, b) => {
-      if (a.data.order > b.data.order) { return 1; } else if (a.data.order < b.data.order) { return -1; } else { return 0; }
-    });
-  });
-
   eleventyConfig.addCollection('elementDocs', async function(collectionApi) {
     const { pfeconfig } = eleventyConfig?.globalData ?? {};
     /**
