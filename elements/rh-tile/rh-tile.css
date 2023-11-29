@@ -23,6 +23,10 @@
   flex: 1 0 0;
 }
 
+#content {
+  height: 100%;
+}
+
 #outer {
   position: relative;
   padding: var(--_padding);
