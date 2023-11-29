@@ -20,8 +20,7 @@ test-results.xml
 rhds.min.js
 *LEGAL.txt
 *.tgz
-
-/elements/react
+react/**/*
 
 # e2e
 test-results
