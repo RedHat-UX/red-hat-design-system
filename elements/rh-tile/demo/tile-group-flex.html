@@ -17,20 +17,20 @@
   </rh-tile>
 </rh-tile-group>
 
+<link rel="stylesheet" href="../rh-tile-lightdom.css">
+
+<style>
+  rh-tile-group {
+    display: flex;
+    gap: var(--rh-space-2xl, 32px);
+    align-items: stretch;
+    & rh-tile {
+      width: calc(10 * var(--rh-space-2xl, 32px));
+    }
+  }
+</style>
+
 <script type="module">
   import '@rhds/elements/rh-tile/rh-tile-group.js';
 </script>
 
-<link rel="stylesheet" href="../rh-tile-lightdom.css">
-
-<style>
-
-rh-tile-group {
-  display: flex;
-  gap: var(--rh-space-2xl, 32px);
-  align-items: stretch;
-  & rh-tile {
-    width: calc(10 * var(--rh-space-2xl, 32px));
-  }
-}
-</style>
