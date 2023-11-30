@@ -105,6 +105,10 @@ Link content needs to be written clearly in order to be understood, therefore wr
            alt="Link component usage, content",
            src="./usage-content.svg" %}
 
+### Character count
+
+There is no maximum character count for a link. The link text should be long enough to be descriptive and no longer.
+
 ### Images
 
 Photos or images can be links as long as there is supporting content nearby explaining that a selection can be made, like a headline, content, or Call to action link. Do not hide links in photos or images otherwise a user will miss the opportunity to make a selection if they cannot see the link.
