@@ -1,5 +1,4 @@
 <link rel="stylesheet" href="../custom-variants.css">
-<script type="module"> import '/assets/elements/uxdot-code-sample.js'; </script>
 
 ## Style
   Cards can be used in light and dark themes. They act as a blank canvas where

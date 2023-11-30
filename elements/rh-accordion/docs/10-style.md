@@ -1,5 +1,3 @@
-<script type="module">import '/assets/elements/uxdot-code-sample.js';</script>
-
 ## Style 
 Accordion panels include title text, a chevron icon, body text, and other content. When a panel is collapsed, only the top and bottom borders are visible. When a panel is expanded, all borders are visible including a thicker left border for emphasis.
 

@@ -41,6 +41,7 @@ module.exports = function(eleventyConfig) {
       if (stacked) { classes.add('stacked'); }
       /* eslint-disable indent */
       return dedent(/* html */`\
+<script type="module" src="/assets/elements/uxdot-code-sample.js"></script>
 <uxdot-code-sample ${attrMap({
     'class': [...classes].join(' '),
     'color-palette': colorPalette,
