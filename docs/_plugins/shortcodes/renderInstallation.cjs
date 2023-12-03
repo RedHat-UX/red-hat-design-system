@@ -31,7 +31,7 @@ fully initialized.
   ## Installation ${!docsPage.manifest?.packageJson ? '' : /* md */`
 
 <uxdot-installation-tabs>
-<rh-tab slot="tab">Red Hat CDN</rh-tab>
+<uxdot-installation-tab slot="tab">Red Hat CDN</uxdot-installation-tab>
 <rh-tab-panel>
   <rh-alert state="warning">
     <h3 slot="header">CDN Prerelease</h3>
@@ -82,7 +82,7 @@ ${!lightdomcss ? '' : /* md */`${lightdomcssblock}
 
 `}
 </rh-tab-panel>
-<rh-tab slot="tab">NPM</rh-tab>
+<uxdot-installation-tab slot="tab">NPM</uxdot-installation-tab>
 <rh-tab-panel>
 
 Install RHDS using your team's preferred NPM package manager, e.g.
@@ -112,7 +112,7 @@ to the \`${docsPage.tagName}\` directory in your project.
 
   `}
 </rh-tab-panel>
-<rh-tab slot="tab">JSPM</rh-tab>
+<uxdot-installation-tab slot="tab">JSPM</uxdot-installation-tab>
 <rh-tab-panel>
   <rh-alert state="warning">
     <h3 slot="header">Public CDNs</h3>

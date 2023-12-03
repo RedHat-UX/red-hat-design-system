@@ -1,8 +1,11 @@
 import { css } from 'lit';
-import '@rhds/elements/rh-alert/rh-alert.js';
-import { RhTabs } from '@rhds/elements/rh-tabs/rh-tabs.js';
 
-import { TabExpandEvent } from '@patternfly/elements/pf-tabs/BaseTab.js';
+import { RhTabs } from '@rhds/elements/rh-tabs/rh-tabs.js';
+import { RhTab } from '@rhds/elements/rh-tabs/rh-tab.js';
+
+import '@rhds/elements/rh-alert/rh-alert.js';
+
+import { TabExpandEvent } from '@rhds/elements/rh-tabs/rh-tabs.js';
 
 const TABS_KEY = 'rhds-installation-tabs-selected-index';
 
@@ -11,16 +14,10 @@ export class InstallationTabs extends RhTabs {
 
   static is = 'uxdot-installation-tabs';
 
-  static styles = [...RhTabs.styles, css`
-    ::slotted(pre) {
-      max-width: 800px !important;
-      overflow-x: scroll;
-    }
-  `];
-
   static { customElements.define(this.is, this); }
 
   #onExpand(event) {
+    // TODO: when tabs is decoupled from PFE, update the event type here
     if (event instanceof TabExpandEvent) {
       localStorage.setItem(TABS_KEY, this.activeIndex.toString());
     }
@@ -48,4 +45,15 @@ export class InstallationTabs extends RhTabs {
     }
     this.addEventListener('expand', this.#onExpand);
   }
+}
+
+export class InstallationTab extends RhTab {
+  static is = 'uxdot-installation-tab';
+
+  static styles = [...RhTabs.styles, css`
+    ::slotted(pre) {
+      max-width: 800px !important;
+      overflow-x: scroll;
+    }
+  `];
 }
