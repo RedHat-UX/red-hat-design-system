@@ -54,4 +54,6 @@ export class InstallationTab extends RhTab {
       overflow-x: scroll;
     }
   `];
+
+  static { customElements.define(this.is, this); }
 }
