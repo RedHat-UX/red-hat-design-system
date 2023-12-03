@@ -5,8 +5,6 @@ import { RhTab } from '@rhds/elements/rh-tabs/rh-tab.js';
 
 import '@rhds/elements/rh-alert/rh-alert.js';
 
-import { TabExpandEvent } from '@rhds/elements/rh-tabs/rh-tabs.js';
-
 const TABS_KEY = 'rhds-installation-tabs-selected-index';
 
 export class InstallationTabs extends RhTabs {
@@ -18,7 +16,7 @@ export class InstallationTabs extends RhTabs {
 
   #onExpand(event) {
     // TODO: when tabs is decoupled from PFE, update the event type here
-    if (event instanceof TabExpandEvent) {
+    if (event.constructor.name === 'TabExpandEvent') {
       localStorage.setItem(TABS_KEY, this.activeIndex.toString());
     }
   }
