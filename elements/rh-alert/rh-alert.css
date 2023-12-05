@@ -6,52 +6,22 @@
   --_font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
 
   display: block;
+  max-width: var(--_max-width, initial);
 }
 
 :host([hidden]) {
   display: none;
 }
 
-:host([state="info"]) {
-  --_border-color: var(--rh-color-blue-250, #2b9af3);
-  --_icon-color: var(--rh-color-blue-250, #2b9af3);
-  --_header-color: var(--rh-color-blue-600, #002952);
-  --_background-color: var(--rh-color-blue-50, #e7f1fa);
-}
-
-:host([state="success"]) {
-  --_border-color: var(--rh-color-green-500, #3e8635);
-  --_icon-color: var(--rh-color-green-500, #3e8635);
-  --_header-color: var(--rh-color-green-600, #1e4f18);
-  --_background-color: var(--rh-color-green-50, #f3faf2);
-}
-
-:host([state="warning"]) {
-  --_border-color: var(--rh-color-gold-400, #f0ab00);
-  --_icon-color: var(--rh-color-gold-400, #f0ab00);
-  --_header-color: var(--rh-color-gold-600, #795600);
-  --_background-color: var(--rh-color-gold-50, #fdf7e7);
-}
-
-:host([state="danger"]) {
-  --_border-color: #c9190b; /* WARNING: not a recognized token value */
-  --_icon-color: #c9190b; /* WARNING: not a recognized token value */
-  --_header-color: #7d1007; /* WARNING: not a recognized token value */
-  --_background-color: var(--rh-color-red-50, #faeae8);
-}
-
-:host([toast]),
-:host([variant="toast"]) {
-  --_background-color: var(--rh-color-surface-lightest, #ffffff);
-
-  max-width: 550px;
-}
-
 #container {
   border-width: var(--rh-border-width-md, 2px);
-  border-color: var(--_border-color);
   border-style: solid;
+  border-block-start-color: var(--_border-color);
+  border-inline-start-color: var(--_border-inline-color, transparent);
+  border-block-end-color: var(--_border-block-end-color, transparent);
+  border-inline-end-color: var(--_border-inline-color, transparent);
   background-color: var(--_background-color);
+  box-shadow: var(--_box-shadow, none);
   padding: var(--rh-space-lg, 16px);
   display: grid;
   grid-template-columns: min-content 1fr;
@@ -155,15 +125,41 @@ footer ::slotted(rh-button[variant="link"]) {
   translate: calc(-1 * var(--rh-space-lg, 16px));
 }
 
-:host(:not([variant])) #container,
-:host([toast]) #container,
-:host([variant="toast"]) #container {
-  border-left: 0;
-  border-bottom: none;
-  border-right: 0;
+:host([state="info"]) {
+  --_border-color: var(--rh-color-blue-250, #2b9af3);
+  --_icon-color: var(--rh-color-blue-250, #2b9af3);
+  --_header-color: var(--rh-color-blue-600, #002952);
+  --_background-color: var(--rh-color-blue-50, #e7f1fa);
 }
 
-:host([toast]) #container,
-:host([variant="toast"]) #container {
-  box-shadow: var(--rh-box-shadow-lg, 0 6px 8px 2px rgba(21, 21, 21, 0.3));
+:host([state="success"]) {
+  --_border-color: var(--rh-color-green-500, #3e8635);
+  --_icon-color: var(--rh-color-green-500, #3e8635);
+  --_header-color: var(--rh-color-green-600, #1e4f18);
+  --_background-color: var(--rh-color-green-50, #f3faf2);
+}
+
+:host([state="warning"]) {
+  --_border-color: var(--rh-color-gold-400, #f0ab00);
+  --_icon-color: var(--rh-color-gold-400, #f0ab00);
+  --_header-color: var(--rh-color-gold-600, #795600);
+  --_background-color: var(--rh-color-gold-50, #fdf7e7);
+}
+
+:host([state="danger"]) {
+  --_border-color: #c9190b; /* WARNING: not a recognized token value */
+  --_icon-color: #c9190b; /* WARNING: not a recognized token value */
+  --_header-color: #7d1007; /* WARNING: not a recognized token value */
+  --_background-color: var(--rh-color-red-50, #faeae8);
+}
+
+:host([variant="toast"]) {
+  --_background-color: var(--rh-color-surface-lightest, #ffffff);
+  --_max-width: 550px;
+  --_box-shadow: var(--rh-box-shadow-lg, 0 6px 8px 2px rgba(21, 21, 21, 0.3));
+}
+
+:host([variant="alternate"]) {
+  --_border-inline-color: var(--_border-color);
+  --_border-block-end-color: var(--_border-color);
 }

@@ -107,6 +107,10 @@ export class RhAlert extends LitElement {
   }
 
   willUpdate(changed: PropertyValues<this>) {
+    // toast as a boolean attr is deprecated, so this replicates the previous behaviour
+    if (changed.has('toast') && this.toast) {
+      this.variant = 'toast';
+    }
     // variant as a boolean attr is deprecated, so this replicates the previous behaviour
     if (changed.has('variant') && (this.variant as unknown as boolean) === false) {
       this.variant = undefined;
