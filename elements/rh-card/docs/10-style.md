@@ -14,7 +14,7 @@
 
 ## Theme
 
-{% sample code="hidden", class="column-2", picker=true %}
+{% sample code="hidden", columns=2, picker=true %}
 
   <rh-card class="full">
     <img slot="header"

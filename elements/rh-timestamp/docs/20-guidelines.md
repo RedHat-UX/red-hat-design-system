@@ -10,7 +10,7 @@ Use a timestamp to display date and time values.
 By default, a timestamp will display the current date and time based on the 
 current locale if the `date` attribute is not set.
 
-{% sample stacked=true %}
+{% sample columns=1, class='compact' %}
 <rh-timestamp></rh-timestamp>
 {% endsample %}
 
@@ -24,21 +24,21 @@ You can also set the `display-suffix` attribute to display a custom suffix at
 the end of the displayed content. This will not override a timezone that is 
 already displayed from the applied time format.
 
-{% sample stacked=true %}
+{% sample columns=1, class='compact' %}
 <rh-timestamp date-format="full"
               time-format="full"></rh-timestamp>
 {% endsample %}
 
 
-{% sample stacked=true %}
+{% sample columns=1, class='compact' %}
 <rh-timestamp date-format="full"></rh-timestamp>
 {% endsample %}
 
-{% sample stacked=true %}
+{% sample columns=1, class='compact' %}
 <rh-timestamp time-format="full"></rh-timestamp>
 {% endsample %}
 
-{% sample stacked=true %}
+{% sample columns=1, class='compact' %}
 <rh-timestamp date-format="medium"
               time-format="short"
               display-suffix="US Eastern"></rh-timestamp>
@@ -50,7 +50,7 @@ The format of the displayed content can be further customized by setting the
 custom-format attributes. Read [datetime format options][formatoptions] for a 
 list of options that can be set.
 
-{% sample stacked=true %}
+{% sample columns=1, class='compact' %}
 <rh-timestamp id="timestamp-custom-format"
               date="Sat Jan 01 2022 00:00:00 GMT-0500"></rh-timestamp>
 <script>
@@ -71,7 +71,7 @@ To add a tooltip that displays the timestamp content as a UTC time, you can wrap
 `rh-timestamp` with `rh-tooltip` and set the `UTC` attribute on an additional 
 `rh-timestamp`.
 
-{% sample stacked=true %}
+{% sample columns=1, class='compact' %}
 <rh-tooltip>
   <rh-timestamp></rh-timestamp>
   <rh-timestamp slot="content"
@@ -79,7 +79,7 @@ To add a tooltip that displays the timestamp content as a UTC time, you can wrap
 </rh-tooltip>
 {% endsample %}
 
-{% sample stacked=true %}
+{% sample columns=1, class='compact' %}
 <rh-tooltip>
   <rh-timestamp></rh-timestamp>
   <rh-timestamp slot="content"
@@ -91,12 +91,12 @@ To add a tooltip that displays the timestamp content as a UTC time, you can wrap
 ### Relative time
 To display relative time, set the `relative` attribute on `rh-timestamp`.
 
-{% sample stacked=true %}
+{% sample columns=1, class='compact' %}
 <rh-timestamp date="Tue Aug 09 2022 14:57:00 GMT-0400 (Eastern Daylight Time)"
               relative></rh-timestamp>
 {% endsample %}
 
-{% sample stacked=true %}
+{% sample columns=1, class='compact' %}
 <rh-timestamp date="Aug 09 2024 14:57:00 GMT-0400 (Eastern Daylight Time)"
               relative></rh-timestamp>
 {% endsample %}
@@ -104,7 +104,7 @@ To display relative time, set the `relative` attribute on `rh-timestamp`.
 ### Relative time with tooltip
 To display relative time, set the `relative` attribute on `rh-timestamp`.
 
-{% sample stacked=true %}
+{% sample columns=1, class='compact' %}
 <rh-tooltip>
   <rh-timestamp date="Tue Aug 09 2022 14:57:00 GMT-0400 (Eastern Daylight Time)"
                 relative
@@ -115,7 +115,7 @@ To display relative time, set the `relative` attribute on `rh-timestamp`.
 </rh-tooltip>
 {% endsample %}
 
-{% sample stacked=true %}
+{% sample columns=1, class='compact' %}
 <rh-tooltip>
   <rh-timestamp relative
                 date="Aug 09 2024 14:57:00 GMT-0400 (Eastern Daylight Time)"></rh-timestamp>
@@ -128,13 +128,13 @@ To display relative time, set the `relative` attribute on `rh-timestamp`.
 The default locale is inferred by the browser. To set the locale to something 
 else, set the `locale` attribute.
 
-{% sample stacked=true %}
+{% sample columns=1, class='compact' %}
 <rh-timestamp locale="en-GB"
               date-format="full"
               time-format="full"></rh-timestamp>
 {% endsample %}
 
-{% sample stacked=true %}
+{% sample columns=1, class='compact' %}
 <rh-timestamp locale="es"
               date-format="full"
               time-format="full"></rh-timestamp>
@@ -144,7 +144,7 @@ else, set the `locale` attribute.
 ### UTC timestamp
 Set the `UTC` attribute.
 
-{% sample stacked=true %}
+{% sample columns=1, class='compact' %}
 <rh-timestamp utc></rh-timestamp>
 {% endsample %}
 

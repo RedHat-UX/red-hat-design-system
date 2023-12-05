@@ -87,7 +87,7 @@ There are several card variants that can be used for a variety of use cases.
   content. For example, grouping a basic card with a pricing card will look bad 
   because they’re not very similar.
 
-  {% sample code="hidden", class="column-2" %}
+  {% sample code="hidden", columns=2 %}
 
   <rh-card class="full">
     <img slot="header"
@@ -206,7 +206,7 @@ There are several card variants that can be used for a variety of use cases.
   determined by the tallest card. Don’t place inconsistent amounts of content in 
   cards, as this will impact how scannable the group will appear to users.
 
-  {% sample code="hidden", class="column-2" %}
+  {% sample code="hidden", columns=2 %}
 
   <rh-card class="full">
     <img slot="header"

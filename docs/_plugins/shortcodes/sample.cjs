@@ -21,31 +21,29 @@ module.exports = function(eleventyConfig) {
      *
      * @param {string}    content
      * @param {object}    options
-     * @param {string}    [options.colorPalette]      color palette for surface
-     * @param {string}    [options.style]             styles for the surface
-     * @param {string}    [options.stacked]           vertical layout
-     * @param {string}    [options.code]              vertical layout
+     * @param {string}    [options.colorPalette] color palette for surface
+     * @param {string}    [options.style]        styles for the surface
+     * @param {string}    [options.class]        class name to use
+     * @param {boolean}   [options.picker]       show the color palette picker
+     * @param {boolean}   [options.stacked]      use the vertical layout
+     * @param {number}    [options.columns]      how many columns to show
+     * @param {'hidden'|'show'|'disclosure'}    [options.code]              vertical layout
      * @this {EleventyContext}
      */
     function example(content, {
       style = '',
       colorPalette = 'lightest',
-      stacked = false,
       picker = false,
       columns = 1,
       code = 'show',
       class: classNames = '',
     } = {}) {
+      style = `--columns:${columns};${style}`;
       const classes = new Set(classNames.split(' ').map(x => x.trim()));
-      classes.add(`column-${columns}`);
-      if (stacked) { classes.add('stacked'); }
       /* eslint-disable indent */
       return dedent(/* html */`\
 <script type="module" src="/assets/elements/uxdot-code-sample.js"></script>
-<uxdot-code-sample ${attrMap({
-    'class': [...classes].join(' '),
-    'color-palette': colorPalette,
-  })}>
+<uxdot-code-sample ${attrMap({ style, 'class': [...classes].join(' '), 'color-palette': colorPalette })}>
   <template shadowrootmode="open">
     <style>
     :host {
@@ -54,18 +52,16 @@ module.exports = function(eleventyConfig) {
     rh-surface {
       display: grid;
       padding: var(--rh-space-4xl);
+      :host(.compact) & {
+        padding: var(--rh-space-2xl);
+      }
       border-radius: var(--rh-border-radius-default);
       border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle-on-light);
       gap: var(--rh-space-md);
+      grid-template-columns: repeat(var(--columns), 1fr);
+      grid-template-rows: repeat(auto-fill, minmax(1px, 1fr));
       :host(.dont) & {
         border-color: var(--rh-color-red-500);
-      }
-      :host(.column-2) &,
-      :host(.show-code) & {
-        grid-template-columns: 1fr 1fr;
-      }
-      :host(.stacked) & {
-        grid-template: repeat(auto-fill, minmax(1px, 1fr)) / 1fr;
       }
       @media (min-width: 992px) { /* --rh-media-md */
         padding: var(--rh-space-7xl);
@@ -83,6 +79,10 @@ module.exports = function(eleventyConfig) {
       inset-block-start: var(--rh-space-xl);
       inset-inline-start: var(--rh-space-sm);
     }
+    slot[name="code"] {
+      display: block;
+      margin-block: var(--rh-space-lg);
+    }
     ::slotted(:not(:defined)) {
       opacity: 0;
     }
@@ -98,17 +98,18 @@ module.exports = function(eleventyConfig) {
     <rh-surface id="surface"
                 color-palette="${colorPalette}"
                 ${attrMap({ style })}
-    ><slot></slot></rh-surface>
+    ><slot></slot></rh-surface>${code === 'hidden' ? '' : /* html*/ `
+    <slot name="code"></slot>`}
   </template>
-  ${content}${code === 'hidden' ? '' : /* html */`
+  ${content}
 
-  <rh-code-block compact full-height>
+  <rh-code-block slot="code" compact full-height>
 
 ~~~html
 ${dedent(content).trim()}
 ~~~
 
-  </rh-code-block>`}
+  </rh-code-block>
 </uxdot-code-sample>`);
     /* eslint-enable indent */
     });
