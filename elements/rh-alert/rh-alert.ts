@@ -128,7 +128,7 @@ export class RhAlert extends LitElement {
           <header>
             <div id="header">
               <slot name="header"></slot>
-            </div>${!this.dismissable ? '' : html`
+            </div>${!this.dismissable && this.variant !== 'toast' ? '' : html`
             <div id="header-actions">
               <button id="close-button"
                   aria-label="Close"
