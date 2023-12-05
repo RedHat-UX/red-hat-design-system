@@ -34,7 +34,7 @@ Title text should have fewer characters to help users make sense of what the con
 
 | Element {style="width: 50%" } | Character count |
 | ----------------------------- | --------------- |
-| Title text                    | 45              |
+| Title text                    | 65              |
 
 ### Panel content 
 When a panel is expanded, some content must appear below the title text and chevron icon. Content can include text, cards, images, etc. Text blocks should not exceed `750px` to maintain optimal readability.

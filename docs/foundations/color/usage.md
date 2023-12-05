@@ -5,7 +5,7 @@ heading: Color
 tags:
   - color
 permalink: /foundations/color/usage/index.html
-order: 20
+order: 10
 bodyClasses: element-docs
 ---
 

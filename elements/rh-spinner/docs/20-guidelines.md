@@ -12,6 +12,19 @@ a few seconds, a spinner should be used. For experiences that need longer than a
 few seconds to load, use a Progress bar instead. Lastly, when the result of an 
 experience has no data or the screen is empty, use an Empty state instead.
 
+### Character count
+
+The text label should be as brief and general as possible in order to give users 
+enough time to read it.
+
+{% example palette="light",
+          alt=" Two spinners; one with a short text label, which is acceptable, and one with a very long text label which is not acceptable",
+          src="../spinner-text-label.png" %}
+
+| Element {style="width: 50%" } | Character count |
+| ----------------------------- | --------------- |
+| Text label                    | 30              |
+
 ## Sizes
 
 Depending on what data is being retrieved and loaded and how much space it 
@@ -35,14 +48,6 @@ A spinner is always oriented above the optional text label, if visible.
           alt=" Two spinners; one showing the correct orientation and the other showing an incorrect orientation",
           src="../spinner-orientation.png" %}
 
-## Text label
-
-The text label should be as brief and general as possible in order to give users 
-enough time to read it.
-
-{% example palette="light",
-          alt=" Two spinners; one with a short text label, which is acceptable, and one with a very long text label which is not acceptable",
-          src="../spinner-text-label.png" %}
 
 ## Animation
 
