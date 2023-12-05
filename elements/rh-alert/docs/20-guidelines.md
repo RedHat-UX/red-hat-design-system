@@ -1,3 +1,7 @@
+<style>hr, uxdot-code-sample rh-alert { max-width: 550px; width: 100%; }</style>
+<script type="module">
+  import '@rhds/elements/rh-button/rh-button.js';
+</script>
 
 ## Guidelines
 
@@ -26,9 +30,59 @@ Visit the [Color](/foundations/color) foundation page to learn more about how to
 for status and severity.
 {% endalert %}
 
-{% example palette="light",
-           alt="Examples of the different colors indicating alert severity",
-           src="../alert-severity.svg" %}
+{% sample code="hidden", columns=2 %}
+
+<rh-alert>
+  <h2 slot="header">Default</h2>
+  <p>Information that is not urgent to know.</p>
+</rh-alert>
+
+<rh-alert variant="toast">
+  <h2 slot="header">Default</h2>
+  <p>Information that is not urgent to know.</p>
+</rh-alert>
+
+<rh-alert state="info">
+  <h2 slot="header">Info</h2>
+  <p>Information that is helpful to know.</p>
+</rh-alert>
+
+<rh-alert variant="toast" state="info">
+  <h2 slot="header">Info</h2>
+  <p>Information that is helpful to know.</p>
+</rh-alert>
+
+<rh-alert state="success">
+  <h2 slot="header">Success</h2>
+  <p>A process has completed successfully.</p>
+</rh-alert>
+
+<rh-alert variant="toast" state="success">
+  <h2 slot="header">Success</h2>
+  <p>A process has completed successfully.</p>
+</rh-alert>
+
+<rh-alert state="warning">
+  <h2 slot="header">Warning</h2>
+  <p>A process has encountered an error.</p>
+</rh-alert>
+
+<rh-alert variant="toast" state="warning">
+  <h2 slot="header">Warning</h2>
+  <p>A process has encountered an error.</p>
+</rh-alert>
+
+<rh-alert state="danger">
+  <h2 slot="header">Danger</h2>
+  <p>A process failed due to errors.</p>
+</rh-alert>
+
+<rh-alert variant="toast" state="danger">
+  <h2 slot="header">Danger</h2>
+  <p>A process failed due to errors.</p>
+</rh-alert>
+
+{% endsample %}
 
 ### Dismissal
 
@@ -43,10 +97,32 @@ Alert variants have different rules regarding their ability to be dismissed by a
 If an issue cannot be resolved on the current page or if a user needs to correct a situation outside of the experience, use a [Dialog](/elements/dialog) instead.
 {% endalert %}
 
-{% example palette="light",
-           class="medium",
-           alt="Alert element dismissal examples",
-           src="../alert-dismissal-examples.svg" %}
+{% sample code="hidden", style="justify-items:center;" %}
+
+<rh-alert dismissable>
+  <h2 slot="header">Info</h2>
+  <p>Your personal information will be secure after submitting.</p>
+</rh-alert>
+
+<rh-alert variant="toast" state="success">
+  <h2 slot="header">Success</h2>
+  <p>Your information has been submitted successfully.</p>
+</rh-alert>
+
+<hr style="max-width:550px;width:100%;">
+
+<rh-alert state="warning">
+  <p slot="header">Your Red Hat Enterprise Linux 9 trial will expire in 7 days</p>
+</rh-alert>
+
+<rh-alert variant="toast" state="danger">
+  <h2 slot="header">Danger</h2>
+  <p>An error occurred when the system tried to log you out.</p>
+  <rh-button slot="actions" variant="link" data-action="confirm">Try again</rh-button>
+  <rh-button slot="actions" variant="link">Contact support</rh-button>
+</rh-alert>
+
+{% endsample %}
 
 
 ## Writing content
