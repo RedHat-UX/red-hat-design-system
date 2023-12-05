@@ -2,11 +2,14 @@ import { LitElement, html, type PropertyValues } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
+
+import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+
 import { RhTile, TileSelectEvent } from './rh-tile.js';
 
 import styles from './rh-tile-group.css';
@@ -77,7 +80,6 @@ export class RhTileGroup extends LitElement {
       this.#internals.role = this.radio ? 'radiogroup' : null;
       let selected: RhTile | null | undefined;
       this.#tiles.forEach(tile => {
-        // @ts-expect-error: internal use of private prop. replace with context. see rh-tile.ts
         tile.radioGroup = this.radio;
         if (this.radio && !selected && tile.checked) {
           selected = tile;
@@ -137,7 +139,6 @@ export class RhTileGroup extends LitElement {
     this.#tiles = [...this.querySelectorAll('rh-tile')];
     this.#tiles.forEach(tile => {
       tile.checkable = true;
-      // @ts-expect-error: internal use of private prop. replace with context. see rh-tile.ts
       tile.radioGroup = this.radio;
       // @ts-expect-error: internal use of private prop. replace with context. see rh-tile.ts
       tile.disabledGroup !== this.disabled;
@@ -152,7 +153,6 @@ export class RhTileGroup extends LitElement {
   }
 
   #setTiles(tile: RhTile | null | undefined) {
-    // @ts-expect-error: internal use of private prop. replace with context. see rh-tile.ts
     if (!this.disabled && (tile && tile.radioGroup || this.radio) && tile?.checked) {
       this.#tiles?.forEach(item => {
         if (tile !== item && item.checked) {
