@@ -98,7 +98,7 @@ footer.hasActions {
   margin-top: var(--rh-space-lg, 16px);
 }
 
-footer ::slotted([slot="actions"]:not(rh-button[variant="link"])) {
+footer ::slotted([slot="actions"]:not(rh-button[variant="link" i])) {
   margin-inline-end: var(--rh-space-xl, 24px) !important;
   padding: 0 !important;
   border: none !important;
@@ -120,46 +120,46 @@ footer ::slotted([slot="actions"]:hover) {
   color: var(--rh-color-interactive-blue-darkest, #004080) !important;
 }
 
-footer ::slotted(rh-button[variant="link"]) {
+footer ::slotted(rh-button[variant="link" i]) {
   display: inline-block;
   translate: calc(-1 * var(--rh-space-lg, 16px));
 }
 
-:host([state="info"]) {
+:host([state="info" i]) {
   --_border-color: var(--rh-color-blue-250, #2b9af3);
   --_icon-color: var(--rh-color-blue-250, #2b9af3);
   --_header-color: var(--rh-color-blue-600, #002952);
   --_background-color: var(--rh-color-blue-50, #e7f1fa);
 }
 
-:host([state="success"]) {
+:host([state="success" i]) {
   --_border-color: var(--rh-color-green-500, #3e8635);
   --_icon-color: var(--rh-color-green-500, #3e8635);
   --_header-color: var(--rh-color-green-600, #1e4f18);
   --_background-color: var(--rh-color-green-50, #f3faf2);
 }
 
-:host([state="warning"]) {
+:host([state="warning" i]) {
   --_border-color: var(--rh-color-gold-400, #f0ab00);
   --_icon-color: var(--rh-color-gold-400, #f0ab00);
   --_header-color: var(--rh-color-gold-600, #795600);
   --_background-color: var(--rh-color-gold-50, #fdf7e7);
 }
 
-:host([state="danger"]) {
+:host([state="danger" i]) {
   --_border-color: #c9190b; /* WARNING: not a recognized token value */
   --_icon-color: #c9190b; /* WARNING: not a recognized token value */
   --_header-color: #7d1007; /* WARNING: not a recognized token value */
   --_background-color: var(--rh-color-red-50, #faeae8);
 }
 
-:host([variant="toast"]) {
+:host([variant="toast" i]) {
   --_background-color: var(--rh-color-surface-lightest, #ffffff);
   --_max-width: 550px;
   --_box-shadow: var(--rh-box-shadow-lg, 0 6px 8px 2px rgba(21, 21, 21, 0.3));
 }
 
-:host([variant="alternate"]) {
+:host([variant="alternate" i]) {
   --_border-inline-color: var(--_border-color);
   --_border-block-end-color: var(--_border-color);
 }

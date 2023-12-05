@@ -61,7 +61,7 @@ export class RhAlert extends LitElement {
   static readonly styles = styles;
 
   private get icon() {
-    return ICONS.get(this.state) ?? ``;
+    return ICONS.get(this.state.toLowerCase() as this['state']) ?? '';
   }
 
   /**
