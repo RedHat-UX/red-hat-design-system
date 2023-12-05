@@ -14,6 +14,9 @@ import '@rhds/elements/lib/elements/rh-context-provider/rh-context-provider.js';
 import './rh-navigation-secondary-menu-section.js';
 import './rh-navigation-secondary-overlay.js';
 
+/** @deprecated */
+import './rh-secondary-nav.js';
+
 import { RhNavigationSecondaryDropdown, SecondaryNavDropdownExpandEvent } from './rh-navigation-secondary-dropdown.js';
 
 import { DirController } from '../../lib/DirController.js';
@@ -432,19 +435,8 @@ export class RhNavigationSecondary extends LitElement {
   }
 }
 
-@customElement('rh-secondary-nav')
-class RhSecondaryNav extends RhNavigationSecondary {
-  #logger = new Logger(this);
-
-  constructor() {
-    super();
-    this.#logger.warn('rh-secondary-nav is deprecated. Use rh-navigation-secondary instead.');
-  }
-}
-
 declare global {
   interface HTMLElementTagNameMap {
     'rh-navigation-secondary': RhNavigationSecondary;
-    'rh-secondary-nav': RhSecondaryNav;
   }
 }
