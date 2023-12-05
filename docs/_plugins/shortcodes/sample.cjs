@@ -103,7 +103,7 @@ module.exports = function(eleventyConfig) {
   </template>
   ${content}
 
-  <rh-code-block slot="code" compact full-height>
+  <rh-code-block slot="code" compact>
 
 ~~~html
 ${dedent(content).trim()}
