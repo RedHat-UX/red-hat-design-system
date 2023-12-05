@@ -1048,8 +1048,10 @@ pfe-jump-links-nav {
 // Alert styles
 
 rh-alert {
-  margin-top: 32px;
-  margin-bottom: 32px;
+  margin-block: 32px;
+  uxdot-code-sample & {
+    margin-block: 0;
+  }
 }
 
 // Delete the alert styles below after making sure all alerts are converted to rh-alert element

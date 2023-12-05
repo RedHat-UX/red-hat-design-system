@@ -83,6 +83,9 @@ module.exports = function(eleventyConfig) {
       inset-block-start: var(--rh-space-xl);
       inset-inline-start: var(--rh-space-sm);
     }
+    ::slotted(:not(:defined)) {
+      opacity: 0;
+    }
     </style>${!classes.has('dont') ? '' : /* html */`
     <pf-icon class="dont"
              icon="circle-exclamation"
