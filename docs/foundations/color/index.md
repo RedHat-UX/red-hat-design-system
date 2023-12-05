@@ -43,20 +43,18 @@ hierarchy, state, and more.
 Design tokens are the source of truth of our design decisions. They allow for 
 changes at scale, making design language updates easy to implement.
 
-To learn more about our color design tokens, go to the [Tokens](/tokens)
-section.
+To learn more about our color design tokens, go to the [Tokens](/tokens) section.
 
-### Primitive and semantic colors
 
-Our design system includes multiple sets of colors known as <strong>primitives</strong>. Primitives reference hard-coded values, but offer no information about usage. <strong>Semantic</strong> colors reference primitive colors and define how a color is used. Semantic naming is essential not just for color, but for all foundational styles.
+### "Crayon" and semantic colors
+
+Our design system includes multiple sets of colors known as **"crayon" colors**. Crayon colors reference hard-coded values, but offer no information about usage. **Semantic** colors reference crayon colors and define how a color is used. Semantic naming is essential not just for color, but for all foundational styles.
 
 {% example palette="light",
-          alt="Example of how primitive tokens are aliased to semantic tokens, which are used to style a button",
+          alt="Example of how crayon color tokens are aliased to semantic tokens, which are used to style a button",
           src="/assets/color/primitive-and-semantic-colors.png" %}
 
 {% feedback %}
-## Foundations
-
-To learn how to use our other foundations in your designs, visit the
-[foundations](/foundations) section.
+  <h2>Foundations</h2>
+  <p>To learn how to use our other foundations in your designs, visit the <a href="/foundations">foundations</a> section.</p>
 {% endfeedback %}

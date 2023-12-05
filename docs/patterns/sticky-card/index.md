@@ -79,6 +79,18 @@ A sticky card has limited vertical height, so keep content short and only includ
         alt="Sticky card content sections",
         src="./sticky-card-content.png" %}
 
+
+### Character count
+  The recommended maximum character count for the elements of a sticky card are listed below and include spaces.
+
+  | Element {style="width: 50%" } | Character count |
+  |-------------------------------|-----------------|
+  | Title                         | 20              |
+  | Headline                      | 50              | 
+  | Body text                     | 120             | 
+  | Footer                        | 55              |
+
+
 ### Alignment
 
 Text and other content in a sticky card is always left-aligned, even if the sticky card is anchored to the right edge of a page.

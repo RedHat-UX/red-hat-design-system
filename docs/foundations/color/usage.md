@@ -5,7 +5,7 @@ heading: Color
 tags:
   - color
 permalink: /foundations/color/usage/index.html
-order: 20
+order: 10
 bodyClasses: element-docs
 ---
 
@@ -194,12 +194,20 @@ only after significant planning and consideration.
 Most projects do not need elements and patterns in a custom theme. If
 you need a custom theme for a campaign or special project, contact the
 Brand team first. If you need one or more custom design tokens, contact
-the [Design system](https://github.com/RedHat-UX/red-hat-design-system/discussions) team first. Do not create your own colors, design tokens, or change the
-colors of existing elements and patterns.
+the [Design system](https://github.com/RedHat-UX/red-hat-design-system/discussions) team first. 
 
-{% example palette="wrong",
-          alt="Magenta button, brand red default call to action, green tooltip, dark orange switch, and light purple checkbox",
-          src="/assets/color/best-practices-custom-themes.png" %}
+<div class="best-practices-grid">
+    <div>
+        <img slot="header" src="/assets/color/best-practices-custom-themes-correct.svg" alt="Blue submit button, blue default call to action, black tooltip, and blue switch">
+        <h4 class="correct">Do</h4>
+        <p>Use the color variants already available for elements and patterns.</p>
+    </div>
+    <div>
+        <img slot="header" src="/assets/color/best-practices-custom-themes-wrong.svg" alt="Magenta button, brand red default call to action, green tooltip, and dark orange switch">
+        <h4 class="wrong">Don't</h4>
+        <p>Do not create your own colors, design tokens, or change the colors of existing elements and patterns.</p>
+    </div>
+</div>
 
 ### Sufficient contrast
 
@@ -209,12 +217,26 @@ vibration resulting in a poor user experience. If you have a large
 section of color or an image background with low contrast, consider
 using elements and patterns from the desaturated theme instead.
 
-{% example palette="wrong",
-          alt="Examples of a blue button against a red background and a red CTA against a blue background",
-          src="/assets/color/best-practices-sufficient-contrast.png" %}
+<div class="best-practices-grid">
+    <div>
+        <img slot="header" src="/assets/color/best-practices-sufficient-contrast-correct.svg" alt="Examples of a blue button against a light gray background and a red CTA against a black background">
+        <h4 class="correct">Do</h4>
+        <p>Use a surface color token for background to ensure accessibility, or use a <a href="../accessibility/#tools">tool</a> to check proper contrast.</p>
+    </div>
+    <div>
+        <img slot="header" src="/assets/color/best-practices-sufficient-contrast-wrong.svg" alt="Examples of a blue button against a red background and a red CTA against a blue background">
+        <h4 class="wrong">Don't</h4>
+        <p>Do not use a background color that has a similar hue, saturation, or lightness to foreground elements.</p>
+    </div>
+</div>
 
 ## Resources
 
 - [Brand standards](https://www.redhat.com/en/about/brand/standards)
 - [WCAG 2.1](https://www.w3.org/WAI/WCAG21/Understanding/)
 - [WebAIM: Contrast and Color Accessibility](https://webaim.org/articles/contrast/)
+
+{% feedback %}
+  <h2>Foundations</h2>
+  <p>To learn how to use our other foundations in your designs, visit the <a href="/foundations">foundations</a> section.</p>
+{% endfeedback %}

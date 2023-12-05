@@ -62,16 +62,11 @@ strategist to shorten them.
 
 ### Character count
 
-A subnavigation should have four or five links maximum. However, if text labels 
-are very short, more can be added.
+A subnavigation should have four or five links maximum. Text labels should be short but descriptive. The recommended maximum character count for the elements of a subnavigation are listed below and include spaces.
 
-| Link count | Character count |
-| ---------- | --------------- |
-| 6          | < 13            |
-| 5          | 14 - 17         |
-| 4          | 18 - 23         |
-
-{.full-width}
+| Element {style="width: 50%" } | Character count | Word count |
+|-------------------------------|-----------------|------------|
+| Link                          | 20              | 2 to 3     |
 
 ## Layout
 
