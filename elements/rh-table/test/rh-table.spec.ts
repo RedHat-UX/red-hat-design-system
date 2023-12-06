@@ -2,7 +2,6 @@ import { expect, html, fixture } from '@open-wc/testing';
 import { a11ySnapshot, type A11yTreeSnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
 import { RhTable } from '@rhds/elements/rh-table/rh-table.js';
 import { sendKeys } from '@web/test-runner-commands';
-import { oneEvent } from '@open-wc/testing';
 
 const takeProps = (props: string[]) => (obj: object) =>
   Object.fromEntries(Object.entries(obj).filter(([k]) => props.includes(k)));

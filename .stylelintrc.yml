@@ -123,6 +123,8 @@ overrides:
     defaultSeverity: warning
     extends: stylelint-config-standard-scss
     rules:
+      stylistic/block-closing-brace-newline-after: null
+      scss/at-if-closing-brace-newline-after: always-last-in-chain
       stylistic/max-line-length:
         - 120
         - ignorePattern: /--rh-font-family-/

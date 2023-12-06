@@ -2,7 +2,6 @@ const { readFile } = require('node:fs/promises');
 const { join } = require('node:path');
 
 const tokensJSON = require('@rhds/tokens/json/rhds.tokens.json');
-const tokensFlat = require('@rhds/tokens/json/rhds.tokens.flat.json');
 
 const getDocs = (x, options) => x?.$extensions?.[options.docsExtension];
 const capitalize = x => `${x.at(0).toUpperCase()}${x.slice(1)}`;
