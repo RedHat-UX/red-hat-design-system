@@ -38,8 +38,9 @@ let RhTimestamp = class RhTimestamp extends LitElement {
     }
     connectedCallback() {
         super.connectedCallback();
-        if (this.hasAttribute('date')) {
-            __classPrivateFieldGet(this, _RhTimestamp_timestamp, "f").date = new Date(this.getAttribute('date'));
+        const date = this.getAttribute('date');
+        if (date) {
+            __classPrivateFieldGet(this, _RhTimestamp_timestamp, "f").date = new Date(date);
         }
     }
     willUpdate(changedProperties) {

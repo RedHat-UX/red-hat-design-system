@@ -1,4 +1,4 @@
-import { LitElement, type PropertyValueMap } from 'lit';
+import { LitElement, type PropertyValues } from 'lit';
 import { type ColorPalette } from '../../lib/context/color/provider.js';
 import { ComposedEvent } from '@patternfly/pfe-core';
 import '@patternfly/elements/pf-icon/pf-icon.js';
@@ -37,7 +37,8 @@ export declare class RhTile extends LitElement {
      */
     disabled: boolean;
     private disabledGroup;
-    private radioGroup;
+    /** @private @internal */
+    radioGroup: boolean;
     /**
      * whether image is full-width (i.e. bleeds into the padding)
      */
@@ -80,7 +81,7 @@ export declare class RhTile extends LitElement {
      */
     colorPalette?: ColorPalette;
     connectedCallback(): void;
-    protected updated(_changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>): Promise<void>;
+    protected updated(changed: PropertyValues<this>): Promise<void>;
     render(): import("lit-html").TemplateResult<1>;
     disconnectedCallback(): void;
 }

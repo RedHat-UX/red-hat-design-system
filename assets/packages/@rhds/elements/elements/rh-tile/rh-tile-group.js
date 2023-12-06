@@ -4,11 +4,11 @@ import { LitElement, html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { colorContextConsumer } from '../../lib/context/color/consumer.js';
-import { colorContextProvider } from '../../lib/context/color/provider.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
+import { colorContextProvider } from '../../lib/context/color/provider.js';
 import { RhTile, TileSelectEvent } from './rh-tile.js';
 import { css } from "lit";
 const styles = css `:host([disabled]){pointer-events:none}`;
@@ -51,12 +51,11 @@ let RhTileGroup = class RhTileGroup extends LitElement {
         __classPrivateFieldGet(this, _RhTileGroup_internals, "f").role = this.radio ? 'radiogroup' : null;
         this.updateItems();
     }
-    updated(_changedProperties) {
-        if (_changedProperties.has('radio')) {
+    updated(changed) {
+        if (changed.has('radio')) {
             __classPrivateFieldGet(this, _RhTileGroup_internals, "f").role = this.radio ? 'radiogroup' : null;
             let selected;
             __classPrivateFieldGet(this, _RhTileGroup_tiles, "f").forEach(tile => {
-                // @ts-expect-error: internal use of private prop. replace with context. see rh-tile.ts
                 tile.radioGroup = this.radio;
                 if (this.radio && !selected && tile.checked) {
                     selected = tile;
@@ -64,7 +63,7 @@ let RhTileGroup = class RhTileGroup extends LitElement {
             });
             this.selectItem(selected);
         }
-        if (_changedProperties.has('disabled')) {
+        if (changed.has('disabled')) {
             __classPrivateFieldGet(this, _RhTileGroup_internals, "f").ariaDisabled = this.disabled ? 'true' : 'false';
             __classPrivateFieldGet(this, _RhTileGroup_tiles, "f").forEach(tile => {
                 // @ts-expect-error: internal use of private prop. replace with context. see rh-tile.ts
@@ -111,7 +110,6 @@ let RhTileGroup = class RhTileGroup extends LitElement {
         __classPrivateFieldSet(this, _RhTileGroup_tiles, [...this.querySelectorAll('rh-tile')], "f");
         __classPrivateFieldGet(this, _RhTileGroup_tiles, "f").forEach(tile => {
             tile.checkable = true;
-            // @ts-expect-error: internal use of private prop. replace with context. see rh-tile.ts
             tile.radioGroup = this.radio;
             // @ts-expect-error: internal use of private prop. replace with context. see rh-tile.ts
             tile.disabledGroup !== this.disabled;
@@ -127,7 +125,6 @@ let RhTileGroup = class RhTileGroup extends LitElement {
     }
 };
 _RhTileGroup_tiles = new WeakMap(), _RhTileGroup_initTiles = new WeakMap(), _RhTileGroup_tabindex = new WeakMap(), _RhTileGroup_internals = new WeakMap(), _RhTileGroup_instances = new WeakSet(), _RhTileGroup_setTiles = function _RhTileGroup_setTiles(tile) {
-    // @ts-expect-error: internal use of private prop. replace with context. see rh-tile.ts
     if (!this.disabled && (tile && tile.radioGroup || this.radio) && tile?.checked) {
         __classPrivateFieldGet(this, _RhTileGroup_tiles, "f")?.forEach(item => {
             if (tile !== item && item.checked) {

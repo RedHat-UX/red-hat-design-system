@@ -1,4 +1,4 @@
-import { LitElement, type PropertyValueMap } from 'lit';
+import { LitElement, type PropertyValues } from 'lit';
 import { type ColorPalette } from '../../lib/context/color/provider.js';
 import { RhTile } from './rh-tile.js';
 /**
@@ -38,7 +38,7 @@ export declare class RhTileGroup extends LitElement {
      */
     get selected(): RhTile | RhTile[];
     protected firstUpdated(): void;
-    protected updated(_changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>): void;
+    protected updated(changed: PropertyValues<this>): void;
     render(): import("lit-html").TemplateResult<1>;
     /** sets focus on active tile */
     focus(): void;
