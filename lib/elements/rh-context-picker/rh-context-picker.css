@@ -1,19 +1,90 @@
-form {
-  padding: var(--rh-space-lg, 16px);
+:host {
+  display: inline-block;
+  width: 300px;
+  padding: 6px;
 }
 
-label {
-  display: block;
+#container {
+  position: relative;
+}
+
+input {
+  --thumb-color: var(--rh-color-interactive-blue-darker, #0066cc);
+  --s: 1px;
+
+  pointer-events: none;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  appearance: none;
+  background: transparent;
+  position: absolute;
+  z-index: 1;
+}
+
+input::-webkit-slider-thumb {
+  appearance: none;
+  margin-top: -14px;
+  position: relative;
+}
+
+input::-webkit-slider-thumb,
+input::-moz-range-thumb {
+  pointer-events: auto;
+  background: transparent;
+  border-radius: 3px;
+  border: 4px solid var(--thumb-color);
+  box-shadow: black var(--s) var(--s) var(--s), rgb(13, 13, 13) 0 0 var(--s);
+  box-sizing: content-box;
+  cursor: pointer;
+  height: 100%;
+  translate: var(--offset);
+  width: calc(6 / var(--count, 6) * 16.6667%);
+}
+
+input:focus,
+input:hover {
+  --thumb-color: var(--rh-color-interactive-blue-darkest, #004080);
+  --s: 2px;
+}
+
+input.dark,
+input.darker,
+input.darkest {
+  --thumb-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
+}
+
+input:is(.dark, .darker, .darkest):is(:focus, :hover) {
+  --thumb-color: var(--rh-color-interactive-blue-lightest, #bee1f4);
 }
 
 datalist {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  writing-mode: vertical-lr;
+  inset: 0;
+  flex: 1 0 100%;
+  border-radius: var(--rh-border-radius-default, 3px);
+  overflow: hidden;
 }
 
-datalist,
-input {
-  width: 200px;
+option {
+  flex: 1 0 1px;
+  min-height: var(--rh-space-3xl, 48px);
+  background-color: var(--c);
 }
+
+.visually-hidden {
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+#option-darkest { --c: var(--rh-color-surface-darkest, #151515); }
+#option-darker { --c: var(--rh-color-surface-darker, #1f1f1f); }
+#option-dark { --c: var(--rh-color-surface-dark, #383838); }
+#option-light { --c: var(--rh-color-surface-light, #e0e0e0); }
+#option-lighter { --c: var(--rh-color-surface-lighter, #f2f2f2); }
+#option-lightest { --c: var(--rh-color-surface-lightest, #ffffff); }

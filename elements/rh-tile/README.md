@@ -6,7 +6,7 @@ If the tile is not checkable, a link slotted in the image or headline slots will
 
 ```html
 <rh-tile>
-  <img slot="image" src="//fakeimg.pl/296x50" alt="296 X 50 placeholder image">
+  <img slot="image" src="https://fakeimg.pl/296x50" alt="296 X 50 placeholder image">
   <div slot="title">Title</div>
   <h2 slot="headline"><a href="#top">Link</a></h2>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -23,6 +23,7 @@ A tile group should include more than one tile in its slot.
 ```html
 <rh-tile-group radio>
   <rh-tile checked>
+    <img slot="image" src="https://fakeimg.pl/296x50" alt="296 X 50 placeholder image">
     <div slot="title">Title</div>
     <h2 slot="headline"><a href="#top">Link</a></h2>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit.

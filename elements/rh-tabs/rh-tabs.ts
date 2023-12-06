@@ -3,7 +3,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
 import { classMap } from 'lit/directives/class-map.js';
-import { cascades } from '@patternfly/pfe-core/decorators.js';
+import { cascades, deprecation } from '@patternfly/pfe-core/decorators.js';
 
 import { BaseTabs } from '@patternfly/elements/pf-tabs/BaseTabs.js';
 
@@ -61,11 +61,13 @@ export class RhTabs extends BaseTabs {
 
   @property({ reflect: true, type: Boolean }) centered? = false;
 
-  // cascade doesn't like undefined values as default
+  /**
+   * Sets the theme for the tabs and panels
+   * @deprecated attribute will be removed in future release, please use the `--rh-tabs-active-border-color` css property directly.
+   */
   @cascades('rh-tab')
-  @property({ reflect: true }) theme?: 'base' | null = null;
+  @deprecation({ alias: 'css property --rh-tabs-active-border-color', reflect: true, attribute: 'theme' }) theme?: 'base' | null = null;
 
-  // cascade doesn't like undefined values as default
   @cascades('rh-tab', 'rh-tab-panel')
   @property({ reflect: true }) box?: 'box' | 'inset' | null = null;
 

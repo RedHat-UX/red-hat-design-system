@@ -9,7 +9,7 @@ import { ComposedEvent } from '@patternfly/pfe-core';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
-import '../../lib/elements/rh-context-provider/rh-context-provider.js';
+import '@rhds/elements/lib/elements/rh-context-provider/rh-context-provider.js';
 
 import './rh-navigation-secondary-menu-section.js';
 import './rh-navigation-secondary-overlay.js';

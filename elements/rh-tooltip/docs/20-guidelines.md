@@ -13,6 +13,14 @@ Content in a tooltip is limited to text only. Consider the following when writin
           alt="Various text examples; from left to right, the text length starts very short, but gets longer and longer",
           src="../tooltip-content.png" %}
 
+### Character count
+
+A tooltip's body text should be short and descriptive.
+
+| Element {style="width: 50%" } | Character count |
+| ----------------------------- | --------------- |
+| Body                          | 60              |
+
 ## Orientation 
 The correct orientation of a tooltip depends on the amount of content and browser window. If a tooltip covers up important information or gets cut off, choose a different orientation.
 

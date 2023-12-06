@@ -8,12 +8,12 @@ Since tables are inherently complex HTML structures, they can create barriers fo
 
 - Column titles (or headers) must use `<th>` elements with `scope="col"` attributes
 - Row titles (or headers) must use `<th>` elements with `scope="row"` attributes
+- Use `id` and `headers` attributes to associate data cells with their table headers
+- Add a `<caption>` element to title a table and help users identify its purpose
 
 ### Further guidance
 
-- Use `id` and `headers` attributes to associate data cells with their table headers
-- Add a `<caption>` element for brief descriptive text
-- Define sections with `thead` and `tbody` (and optionally `tfoot` for larger tables)
+- Define sections with `<thead>` and `<tbody>` (and optionally `<tfoot>` for larger tables)
 
 ### Example markup
 
@@ -66,40 +66,43 @@ If a table is in a container that can receive keyboard focus (e.g., with a `tabi
 
 <rh-table>
   <table>
+    <caption>
+      Keyboard interactions
+    </caption>
     <colgroup>
         <col style="width: 25%">
         <col />
     </colgroup>
     <thead>
       <tr>
-        <th data-label="Key" scope="col">Key</th>
-        <th data-label="Result" scope="col">Result</th>
+        <th id="keyboard-key" data-label="Key" scope="col">Key</th>
+        <th id="keyboard-result" data-label="Result" scope="col">Result</th>
       </tr>
     </thead>
     <tbody>
         <tr>
-            <td data-label="Key">Up Arrow</td>
-            <td data-label="Result">Moves the table view up</td>
+            <td headers="keyboard-key" data-label="Key">Up Arrow</td>
+            <td headers="keyboard-result" data-label="Result">Moves the table view up</td>
         </tr>
         <tr>
-            <td data-label="Key">Left Arrow</td>
-            <td data-label="Result">Moves the table view left</td>
+            <td headers="keyboard-key" data-label="Key">Left Arrow</td>
+            <td headers="keyboard-result" data-label="Result">Moves the table view left</td>
         </tr>
         <tr>
-            <td data-label="Key">Right Arrow</td>
-            <td data-label="Result">Moves the table view right</td>
+            <td headers="keyboard-key" data-label="Key">Right Arrow</td>
+            <td headers="keyboard-result" data-label="Result">Moves the table view right</td>
         </tr>
         <tr>
-            <td data-label="Key">Down Arrow</td>
-            <td data-label="Result">Moves the table view down</td>
+            <td headers="keyboard-key" data-label="Key">Down Arrow</td>
+            <td headers="keyboard-result" data-label="Result">Moves the table view down</td>
         </tr>
         <tr>
-            <td data-label="Key">Tab</td>
-            <td data-label="Result">Moves focus to next interactive element within a cell or outside of the table</td>
+            <td headers="keyboard-key" data-label="Key">Tab</td>
+            <td headers="keyboard-result" data-label="Result">Moves focus to next interactive element within a cell or outside of the table</td>
         </tr>
         <tr>
-            <td data-label="Key">Shift+Tab</td>
-            <td data-label="Result">Moves focus to previous interactive element within a cell or outside of the table</td>
+            <td headers="keyboard-key" data-label="Key">Shift+Tab</td>
+            <td headers="keyboard-result" data-label="Result">Moves focus to previous interactive element within a cell or outside of the table</td>
         </tr>
     </tbody>
   </table>
@@ -134,6 +137,7 @@ Each cell includes enough spacing for selecting interactive elements.
 
 - No column title cells should be blank
 - Each cell should only have one piece of data
+- Avoid merged cells. When possible consider breaking a complex table into a series of simpler tables
 - Do not place multiple inactive elements in a single cell
 
 {% include 'accessibility/ariaguide.md' %}

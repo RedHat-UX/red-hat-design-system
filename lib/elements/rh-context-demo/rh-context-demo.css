@@ -1,0 +1,19 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.light { color: var(--rh-color-text-primary-on-light, #151515); }
+.dark { color: var(--rh-color-text-primary-on-dark, #ffffff); }
+
+#picker-container {
+  display: flex;
+  align-items: center;
+  margin-block-end: var(--rh-context-demo-padding, var(--rh-space-xl, 24px));
+  gap: var(--rh-space-lg, 16px);
+}
+
+#provider {
+  padding: var(--rh-context-demo-padding, var(--rh-space-xl, 24px));
+  height: calc(100% - 2 * var(--rh-context-demo-padding, var(--rh-space-xl, 24px)));
+}
