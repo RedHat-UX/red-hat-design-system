@@ -47,7 +47,7 @@
 }
 
 :is(rh-secondary-nav-menu, rh-navigation-secondary-menu) a:hover {
-  color: var(--rh-color-interactive-blue-darkest, #004080) !important;
+  color: var(--rh-color-interactive-blue-darkest, #003366) !important;
   text-decoration: none !important;
 }
 
@@ -152,7 +152,7 @@
 rh-secondary-nav,
 rh-navigation-secondary
 )[color-palette="dark"] [slot="nav"] li > a[aria-current="page"] {
-  border-block-start-color: var(--rh-color-brand-red-on-dark, #ff442b);
+  border-block-start-color: var(--rh-color-brand-red-on-dark, #ee0000);
 }
 
 :is(rh-secondary-nav, rh-navigation-secondary) > [slot="nav"] > li > a:hover,

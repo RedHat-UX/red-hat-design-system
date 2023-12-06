@@ -52,7 +52,7 @@
 
 .blue {
   --_content-color: var(--rh-color-blue-600, #002952);
-  --_background-color: var(--rh-color-blue-50, #e7f1fa);
+  --_background-color: var(--rh-color-blue-50, #0066cc);
   --_before-border-color: var(--rh-color-blue-100, #bee1f4);
   --_icon-color: var(--rh-color-accent-base-on-light, #0066cc);
 }
@@ -74,7 +74,7 @@
 
 .green {
   --_content-color: var(--rh-color-green-600, #1e4f18);
-  --_background-color: var(--rh-color-green-50, #f3faf2);
+  --_background-color: var(--rh-color-green-50, #63993d);
   --_before-border-color: var(--rh-color-green-100, #bde5b8);
   --_icon-color: var(--rh-color-green-500, #3e8635);
 }
@@ -85,7 +85,7 @@
 
 .orange {
   --_content-color: var(--rh-color-orange-700, #3b1f00);
-  --_background-color: var(--rh-color-orange-50, #fff6ec);
+  --_background-color: var(--rh-color-orange-50, #ca6c0f);
   --_before-border-color: var(--rh-color-orange-100, #f4b678);
   --_icon-color: var(--rh-color-orange-300, #ec7a08);
 }
@@ -96,7 +96,7 @@
 
 .purple {
   --_content-color: var(--rh-color-purple-700, #1f0066);
-  --_background-color: var(--rh-color-purple-50, #f2f0fc);
+  --_background-color: var(--rh-color-purple-50, #5e40be);
   --_before-border-color: var(--rh-color-purple-100, #cbc1ff);
   --_icon-color: var(--rh-color-purple-500, #6753ac);
 }
@@ -107,7 +107,7 @@
 
 .red {
   --_content-color: var(--rh-color-red-800, #5f0000);
-  --_background-color: var(--rh-color-red-50, #faeae8);
+  --_background-color: var(--rh-color-red-50, #ee0000);
   --_before-border-color: var(--rh-color-red-600, #be0000);
   --_icon-color: var(--rh-color-red-600, #be0000);
 }

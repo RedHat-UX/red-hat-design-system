@@ -75,7 +75,7 @@ svg {
 
 :host([color-palette="darkest"]) svg,
 .dark svg {
-  color: var(--rh-color-icon-primary-on-dark, #ff442b);
+  color: var(--rh-color-icon-primary-on-dark, #ee0000);
 }
 
 :host([color-palette="darkest"]) figcaption,

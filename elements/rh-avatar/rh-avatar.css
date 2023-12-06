@@ -73,16 +73,16 @@ slot {
   text-decoration: none;
 }
 
-::slotted(a:visited) { color: var(--rh-color-interactive-purple-darker, #6753ac); }
+::slotted(a:visited) { color: var(--rh-color-interactive-purple-darker, #5e40be); }
 
 ::slotted(a:active),
-::slotted(a:hover) { color: var(--rh-color-interactive-blue-darkest, #004080); }
+::slotted(a:hover) { color: var(--rh-color-interactive-blue-darkest, #003366); }
 
-.dark ::slotted(a) { color: var(--rh-color-interactive-blue-lighter, #73bcf7); }
-.dark ::slotted(a:visited) { color: var(--rh-color-interactive-purple-lighter, #a18fff); }
+.dark ::slotted(a) { color: var(--rh-color-interactive-blue-lighter, #92c5f9); }
+.dark ::slotted(a:visited) { color: var(--rh-color-interactive-purple-lighter, #b6a6e9); }
 
 .dark ::slotted(a:active),
-.dark ::slotted(a:hover) { color: var(--rh-color-interactive-blue-lightest, #bee1f4); }
+.dark ::slotted(a:hover) { color: var(--rh-color-interactive-blue-lightest, #b9dafc); }
 
 #container.dark {
   color: var(--rh-color-text-secondary-on-dark, #c7c7c7);

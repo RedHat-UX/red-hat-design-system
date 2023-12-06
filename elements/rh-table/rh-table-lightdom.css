@@ -12,9 +12,9 @@
     var(--rh-color-border-subtle-on-light, #c7c7c7);
   --rh-table-row-background-color:
     rgb(
-        var(--rh-color-gray-10-rgb, 224 224 224) / var(--rh-opacity-40, 40%)
+        var(--rh-color-gray-10-rgb, 242 242 242 224 224) / var(--rh-opacity-40, 40%)
       );
-  --rh-table-column-background-color: rgb(var(--rh-color-blue-50-rgb, 231 241 250));
+  --rh-table-column-background-color: rgb(var(--rh-color-blue-50-rgb, 0 102 204 241 250));
 }
 
 :is(rh-table) thead th {
@@ -47,7 +47,7 @@
 }
 
 :is(rh-table) a:hover {
-  color: var(--rh-color-interactive-blue-darkest, #004080);
+  color: var(--rh-color-interactive-blue-darkest, #003366);
   text-decoration: underline;
 }
 

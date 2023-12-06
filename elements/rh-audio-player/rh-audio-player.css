@@ -104,7 +104,7 @@
 #container.dark.has-accent-color {
   --_static-border-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
   --_static-text-color: var(--rh-color-text-primary-on-light, #151515);
-  --_static-highlight-color: var(--rh-color-interactive-blue-lightest, #bee1f4);
+  --_static-highlight-color: var(--rh-color-interactive-blue-lightest, #b9dafc);
   --_static-undeline-color: var(--rh-color-border-subtle-on-dark, #707070);
   --_static-surface-color: var(--rh-color-surface-lightest, #ffffff);
   --_static-surface-focus-color: var(--rh-color-surface-light, #e0e0e0);

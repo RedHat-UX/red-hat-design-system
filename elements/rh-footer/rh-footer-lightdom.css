@@ -1,5 +1,5 @@
 :is(rh-footer, :is(rh-footer-universal, rh-global-footer)) a {
-  color: var(--rh-color-link-inline-on-dark, var(--rh-color-interactive-blue-lighter, #73bcf7));
+  color: var(--rh-color-link-inline-on-dark, var(--rh-color-interactive-blue-lighter, #92c5f9));
   text-decoration: none;
 }
 
@@ -7,7 +7,7 @@
   color:
     var(
         --rh-color-link-inline-hover-on-dark,
-        var(--rh-color-interactive-blue-lightest, #bee1f4)
+        var(--rh-color-interactive-blue-lightest, #b9dafc)
       );
   text-decoration: underline;
 }
@@ -16,7 +16,7 @@
   color:
     var(
         --rh-color-link-inline-focus-on-dark,
-        var(--rh-color-interactive-blue-lightest, #bee1f4)
+        var(--rh-color-interactive-blue-lightest, #b9dafc)
       );
   text-decoration: underline;
 }
@@ -25,7 +25,7 @@
   color:
     var(
         --rh-color-link-inline-visited-on-dark,
-        var(--rh-color-interactive-blue-lightest, #bee1f4)
+        var(--rh-color-interactive-blue-lightest, #b9dafc)
       );
   text-decoration: none;
 }

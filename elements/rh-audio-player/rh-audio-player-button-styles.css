@@ -11,7 +11,7 @@
   --_outline:
     var(--rh-border-width-md, 2px)
     solid
-    var(--rh-color-border-interactive-on-dark, #73bcf7);
+    var(--rh-color-border-interactive-on-dark, #92c5f9);
 }
 
 rh-tooltip {

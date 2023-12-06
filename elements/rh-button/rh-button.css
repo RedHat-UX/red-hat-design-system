@@ -89,13 +89,13 @@ button:after {
   --_primary-border-color: transparent;
   --_primary-border-width: var(--rh-border-width-sm, 1px);
   --_primary-active-color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_primary-active-background-color: var(--rh-color-interactive-blue-darkest, #004080);
+  --_primary-active-background-color: var(--rh-color-interactive-blue-darkest, #003366);
   --_primary-active-border-width: var(--rh-border-width-sm, 1px);
   --_primary-focus-color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_primary-focus-background-color: var(--rh-color-interactive-blue-darkest, #004080);
+  --_primary-focus-background-color: var(--rh-color-interactive-blue-darkest, #003366);
   --_primary-focus-border-width: var(--rh-border-width-md, 2px);
   --_primary-hover-color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_primary-hover-background-color: var(--rh-color-interactive-blue-darkest, #004080);
+  --_primary-hover-background-color: var(--rh-color-interactive-blue-darkest, #003366);
   --_primary-hover-border-width: var(--rh-border-width-sm, 1px);
 
   /* DANGER */
@@ -174,7 +174,7 @@ button:after {
   --_close-hover-background-color: transparent;
 
   /* PLAY */
-  --_gray-90-rgb: var(--rh-color-gray-90-rgb, 21 21 21);
+  --_gray-90-rgb: var(--rh-color-gray-90-rgb, 31 31 31 21 21);
   --_play-color: var(--rh-color-icon-secondary-on-dark, #ffffff);
   --_play-background-color: rgb(var(--_gray-90-rgb) / var(--rh-opacity-50, 50%));
   --_play-active-background-color: rgb(var(--_gray-90-rgb) / var(--rh-opacity-80, 80%));
@@ -184,7 +184,7 @@ button:after {
 }
 
 .dark {
-  --_focus-outline-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
+  --_focus-outline-color: var(--rh-color-interactive-blue-lighter, #92c5f9);
 
   /* PRIMARY */
   --_primary-color: var(--rh-color-text-primary-on-dark, #ffffff);
@@ -192,11 +192,11 @@ button:after {
   --_primary-border-color: transparent;
   --_primary-border-width: var(--rh-border-width-sm, 1px);
   --_primary-active-color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_primary-active-background-color: var(--rh-color-interactive-blue-darkest, #004080);
+  --_primary-active-background-color: var(--rh-color-interactive-blue-darkest, #003366);
   --_primary-focus-color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_primary-focus-background-color: var(--rh-color-interactive-blue-darkest, #004080);
+  --_primary-focus-background-color: var(--rh-color-interactive-blue-darkest, #003366);
   --_primary-hover-color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_primary-hover-background-color: var(--rh-color-interactive-blue-darkest, #004080);
+  --_primary-hover-background-color: var(--rh-color-interactive-blue-darkest, #003366);
 
   /* DANGER */
   --_danger-color: var(--rh-color-text-primary-on-light, #151515);
@@ -214,22 +214,22 @@ button:after {
   --_danger-hover-border-color: transparent;
 
   /* SECONDARY */
-  --_secondary-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
+  --_secondary-color: var(--rh-color-interactive-blue-lighter, #92c5f9);
   --_secondary-danger-color: var(--rh-color-red-200, #fab6b6);
   --_secondary-background-color: transparent;
-  --_secondary-border-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
+  --_secondary-border-color: var(--rh-color-interactive-blue-lighter, #92c5f9);
   --_secondary-border-width: var(--rh-border-width-sm, 1px);
-  --_secondary-active-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
+  --_secondary-active-color: var(--rh-color-interactive-blue-lighter, #92c5f9);
   --_secondary-active-background-color: transparent;
-  --_secondary-active-border-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
+  --_secondary-active-border-color: var(--rh-color-interactive-blue-lighter, #92c5f9);
   --_secondary-active-border-width: var(--rh-border-width-md, 2px);
-  --_secondary-focus-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
+  --_secondary-focus-color: var(--rh-color-interactive-blue-lighter, #92c5f9);
   --_secondary-focus-background-color: transparent;
-  --_secondary-focus-border-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
+  --_secondary-focus-border-color: var(--rh-color-interactive-blue-lighter, #92c5f9);
   --_secondary-focus-border-width: var(--rh-border-width-md, 2px);
-  --_secondary-hover-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
+  --_secondary-hover-color: var(--rh-color-interactive-blue-lighter, #92c5f9);
   --_secondary-hover-background-color: transparent;
-  --_secondary-hover-border-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
+  --_secondary-hover-border-color: var(--rh-color-interactive-blue-lighter, #92c5f9);
   --_secondary-hover-border-width: var(--rh-border-width-md, 2px);
 
   /* TERTIARY */
@@ -251,21 +251,21 @@ button:after {
   --_tertiary-hover-border-width: var(--rh-border-width-md, 2px);
 
   /* LINK */
-  --_link-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
+  --_link-color: var(--rh-color-interactive-blue-lighter, #92c5f9);
   --_link-background-color: transparent;
-  --_link-active-color: var(--rh-color-interactive-blue-lightest, #bee1f4);
+  --_link-active-color: var(--rh-color-interactive-blue-lightest, #b9dafc);
   --_link-active-background-color: transparent;
-  --_link-focus-color: var(--rh-color-interactive-blue-lightest, #bee1f4);
+  --_link-focus-color: var(--rh-color-interactive-blue-lightest, #b9dafc);
   --_link-focus-background-color: transparent;
-  --_link-focus-outline-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
-  --_link-hover-color: var(--rh-color-interactive-blue-lightest, #bee1f4);
+  --_link-focus-outline-color: var(--rh-color-interactive-blue-lighter, #92c5f9);
+  --_link-hover-color: var(--rh-color-interactive-blue-lightest, #b9dafc);
   --_link-hover-background-color: transparent;
 
   /* CLOSE */
   --_close-color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
   --_close-background-color: transparent;
   --_close-focus-background-color: transparent;
-  --_close-focus-outline-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
+  --_close-focus-outline-color: var(--rh-color-interactive-blue-lighter, #92c5f9);
 
   /* PLAY */
   --_white-rgb: var(--rh-color-white-rgb, 255 255 255);
@@ -273,7 +273,7 @@ button:after {
   --_play-background-color: rgb(var(--_white-rgb) / var(--rh-opacity-50, 50%));
   --_play-active-background-color: rgb(var(--_white-rgb) / var(--rh-opacity-80, 80%));
   --_play-focus-background-color: rgb(var(--_white-rgb) / var(--rh-opacity-80, 80%));
-  --_play-focus-outline-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
+  --_play-focus-outline-color: var(--rh-color-interactive-blue-lighter, #92c5f9);
   --_play-hover-background-color: rgb(var(--_white-rgb) / var(--rh-opacity-80, 80%));
 }
 
