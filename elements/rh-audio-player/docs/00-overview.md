@@ -2,7 +2,7 @@
 {{ tagName | getElementDescription }}
 
 ## Sample element
-<h3 hidden></h3>
+{% sample %}
 
 <rh-audio-player lang="en-US"
                  layout="full"
@@ -2628,6 +2628,8 @@
     </rh-cue>
   </rh-transcript>
 </rh-audio-player>
+
+{% endsample %}
 
 ## Demos
   View a live version of this component and see how it can be customized.
