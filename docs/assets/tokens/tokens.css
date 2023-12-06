@@ -55,7 +55,8 @@ tr.on-dark {
   color: var(--rh-color-text-primary-on-dark, #ffffff);
 }
 
-th, td {
+th,
+ td {
   padding-block: var(--rh-space-sm);
   padding-inline: var(--rh-space-md);
 }
@@ -170,9 +171,9 @@ code {
   display: inline-block;
   border-radius: 100%;
   background-color: var(--color);
-  height: .5rem;
+  height: 0.5rem;
   aspect-ratio: 1;
-  margin-inline-start: .5rem;
+  margin-inline-start: 0.5rem;
 }
 
 .copy-button:is(:focus, :active, :hover) {
@@ -329,7 +330,7 @@ tr:is(:hover, :focus-within).on-dark .copy-cell .copy-button {
 }
 
 .language-html .hljs-tag { color: var(--rh-color-blue-500, #004080); }
-.language-html .hljs-name { color: var(--rh-color-brand-red-dark, #be0000); }
+.language-html .hljs-name { color: var(--rh-color-brand-red-dark, #a60000); }
 .language-html .hljs-attr { color: var(--rh-color-orange-300, #ec7a08); }
 .language-html .hljs-string { color: var(--rh-color-green-500, #3e8635); }
 
@@ -368,4 +369,3 @@ dl.grid dd {
   display: flex;
   align-items: center;
 }
-
