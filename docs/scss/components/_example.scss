@@ -51,6 +51,15 @@
   rh-cta {
     margin-bottom: 16px;
   }
+
+  & img:only-child {
+    display: block;
+    margin: 0 auto;
+  }
+
+  rh-alert + & {
+    margin-top: 32px;
+  }
 }
 
 .example--descriptor {
@@ -64,10 +73,6 @@
     margin-bottom: 16px;
     flex-shrink: 0;
   }
-}
-
-rh-alert + .example {
-  margin-top: 32px;
 }
 
 .example--palette-none {
@@ -230,11 +235,6 @@ rh-alert + .example {
       overflow: hidden;
     }
   }
-}
-
-.example img:only-child {
-  display: block;
-  margin: 0 auto;
 }
 
 .example + .example {
