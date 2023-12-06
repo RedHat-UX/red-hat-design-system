@@ -174,7 +174,7 @@ button:after {
   --_close-hover-background-color: transparent;
 
   /* PLAY */
-  --_gray-90-rgb: var(--rh-color-gray-90-rgb, 31 31 31 21 21);
+  --_gray-90-rgb: var(--rh-color-gray-90-rgb, 31 31 31);
   --_play-color: var(--rh-color-icon-secondary-on-dark, #ffffff);
   --_play-background-color: rgb(var(--_gray-90-rgb) / var(--rh-opacity-50, 50%));
   --_play-active-background-color: rgb(var(--_gray-90-rgb) / var(--rh-opacity-80, 80%));
