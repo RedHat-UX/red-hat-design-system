@@ -1,7 +1,7 @@
 
 ## Style
 
-  A popover should include text and interactive elements like a close button and 
+  A popover should include text and interactive elements like a close button and
   links.
 
   {% example palette="lightest",
@@ -11,12 +11,12 @@
 
 ### Variants
 
-  **Black and white** are the two popover variants available for use depending 
+  **Black and white** are the two popover variants available for use depending
   on the content and color of the background.
 
   {% alert state="warning", title="Warning" %}
-    A heading does not need to be included, but if links are not included 
-    either, use a [Tooltip]({{ 
+    A heading does not need to be included, but if links are not included
+    either, use a [Tooltip]({{
     '/elements/tooltip' | url }}){target="_blank"} component instead.
   {% endalert %}
 
@@ -54,9 +54,9 @@
 
 ## Theme
 
-  For popovers and [tooltips]({{ '/elements/tooltip' | url }}){target="_blank"}, 
-  the themes are inverted. For example, light theme popovers are **black* and 
-  should be used on light backgrounds; dark theme popovers are **white** and 
+  For popovers and [tooltips]({{ '/elements/tooltip' | url }}){target="_blank"},
+  the themes are inverted. For example, light theme popovers are **black* and
+  should be used on light backgrounds; dark theme popovers are **white** and
   should be used on dark backgrounds.
 
 ### Black (light backgrounds)
@@ -76,31 +76,33 @@
 
 ## Responsive design
 
-  A popover has the same proportions and spacing on both large and small 
+  A popover has the same proportions and spacing on both large and small
   screens.
 
 ### Large screens
 
-  ![Popover component responsive design, large screens]({{ 
-  '../popover-responsive-design-lg.svg' | url 
+  ![Popover component responsive design, large screens]({{
+  '../popover-responsive-design-lg.svg' | url
   }}){style="--inline-img-max-width:1000px;"}
 
 ### Small screens
 
-  ![Popover component responsive design, small screens]({{ 
-  '../popover-responsive-design-sm.svg' | url 
+  ![Popover component responsive design, small screens]({{
+  '../popover-responsive-design-sm.svg' | url
   }}){style="--inline-img-max-width:360px;"}
 
 
 ## Spacing
 
-  A popover uses [PatternFly 4 
-  spacers](https://www.patternfly.org/v4/guidelines/spacers) to define 
-  spacing values between elements. Each popover orientation contains the same 
-  amount of spacing in between the component and icon.
+  Each popover orientation contains the same amount of spacing in between the component and icon.
 
-  {% example palette="lightest",
-             width=392,
-             alt="Popover component spacing",
-             src="../popover-spacing.svg" %}
+{% example palette="lightest",
+           width=392,
+           alt="Popover component spacing",
+           src="../popover-spacing.svg" %}
 
+ {% spacerTokensTable
+    caption='',
+    headingLevel="3",
+    tokens="--rh-space-lg, --rh-space-xl" %}
+ {% endspacerTokensTable %}

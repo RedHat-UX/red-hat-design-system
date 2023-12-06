@@ -11,7 +11,7 @@ A card formats content in a small, contained space. It can be used to display a
 preview of information or provide secondary content in relation to the content 
 it's near. Several cards can be used together to group related information.
 
-## Sample
+## Sample pattern
 
 <rh-card>
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend 
@@ -215,3 +215,14 @@ For more information, please see the [card css custom properties](/elements/card
   }
 </style>
 
+## Usage
+
+### Character count
+  The recommended maximum character count for the elements of a card are listed below and include spaces.
+
+  | Element {style="width: 50%" } | Character count |
+  |-------------------------------|-----------------|
+  | Title                         | 20              |
+  | Headline                      | 50              | 
+  | Body text                     | 165             |
+  | Footer                        | 55              |

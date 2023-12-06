@@ -1,6 +1,6 @@
-@use 'sass:map';
-@use '__core/mixins' as *;
-@use '__core/variables' as *;
+@use "sass:map";
+@use "__core/mixins" as *;
+@use "__core/variables" as *;
 
 body {
   padding-top: 60px;
@@ -10,50 +10,61 @@ body {
   }
 }
 
-// .l-header {
-// }
-
-.l-header__logo-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  height: map.get($header-height, default);
-  padding: 0 24px;
-  color: #fff;
-  background: #000;
-  @include breakpoint(bravo) {
+#main-header {
+  & .logo-bar {
     position: fixed;
-  }
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    height: map.get($header-height, default);
+    padding: 0 24px;
+    color: #ffffff;
+    background: #000000;
 
-  .feedback-button {
-    align-self: center;
-    justify-content: center;
-    position: absolute;
-    right: 64px;
     @include breakpoint(bravo) {
-      right: 48px;
+      position: fixed;
     }
-  }
 
-  @each $breakpoint, $height in $header-height {
-    @if $breakpoint != 'default' {
-      @include breakpoint($breakpoint) {
-        height: $height;
+    .feedback-button {
+      align-self: center;
+      justify-content: center;
+      position: absolute;
+      right: 64px;
+
+      @include breakpoint(bravo) {
+        right: 48px;
       }
     }
-  }
-}
 
-.l-header__logo {
-  max-width: 136px;
+    @each $breakpoint, $height in $header-height {
+      @if $breakpoint != "default" {
+        @include breakpoint($breakpoint) {
+          height: $height;
+        }
+      }
+    }
+
+    & a {
+      display: inherit;
+    }
+  }
+
+  & .logo {
+    max-width: 136px;
+    margin-left: 0;
+
+    @include breakpoint($nav-break) {
+      margin-left: 0;
+    }
+  }
 }
 
 .l-main {
   position: relative;
+
   @include breakpoint($nav-break) {
     // padding-bottom: 40px;
     padding-left: $fixed-sidebar-width;
@@ -101,6 +112,7 @@ body {
     display: block;
     margin: 0 auto 24px;
     text-align: center;
+
     @include breakpoint(bravo) {
       text-align: left;
       margin: 0 24px;
@@ -121,6 +133,7 @@ body {
       margin: 0;
       list-style: none;
       padding: 0;
+
       @include breakpoint(bravo) {
         display: flex;
       }
@@ -128,6 +141,7 @@ body {
       li {
         padding: 0 8px;
         line-height: 24px;
+
         @include breakpoint(bravo) {
           line-height: 12px;
         }
@@ -139,7 +153,7 @@ body {
         color: #d2d2d2;
 
         &:hover {
-          color: #fff;
+          color: #ffffff;
         }
       }
     }

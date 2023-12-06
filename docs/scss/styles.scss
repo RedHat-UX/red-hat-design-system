@@ -13,6 +13,7 @@
 @use "components/component-status-table";
 @use "components/spacer-tokens-table";
 @use "components/related-elements-or-patterns";
+@use "components/best-practices";
 @use "foundations/colorswatch";
 @use "layout";
 @use "utility";
@@ -100,6 +101,7 @@ rh-block a {
   border: 1px solid var(--rh-color-border-subtle-on-light);
   border-radius: var(--rh-border-radius-default);
   text-decoration: none;
+  font-weight: bold;
 }
 
 rh-block a:hover {
@@ -146,4 +148,12 @@ body.page-docs rh-cta a[href^="http"]::after {
 
 .feedback-contact-link {
   white-space: nowrap; /* fix orphan issue on the Feedback shortcode's contact us link */
+}
+
+:is(rh-table) th {
+  font-size: unset;
+}
+
+rh-playground pre {
+  max-height: 785px;
 }

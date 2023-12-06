@@ -1,7 +1,7 @@
 ## Overview
 {{ tagName | getElementDescription }}
 
-## Sample component
+## Sample element
 <h3 hidden></h3>
 
 <rh-audio-player lang="en-US"

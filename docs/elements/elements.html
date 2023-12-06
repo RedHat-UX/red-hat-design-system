@@ -10,6 +10,7 @@ stylesheets:
   - /assets/cem.css
   - /assets/packages/@rhds/elements/elements/rh-subnav/rh-subnav-lightdom.css
   - /assets/packages/@rhds/elements/elements/rh-pagination/rh-pagination-lightdom.css
+  - /assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css
 eleventyComputed:
   title: "{{ doc.pageTitle }} | {{ doc.slug | deslugify }}"
   importElements:
@@ -18,6 +19,7 @@ eleventyComputed:
     - rh-footer
     - rh-subnav
     - rh-code-block
+    - rh-table
     - "{{ doc.tagName }}"
 ---
 

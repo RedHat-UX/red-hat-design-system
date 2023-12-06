@@ -1,0 +1,156 @@
+/* stylelint-disable max-line-length */
+:is(rh-table) table {
+  min-width: 100%;
+  margin: 0 auto;
+  table-layout: fixed;
+  border: 0;
+  border-collapse: collapse;
+
+  --rh-table-row-border:
+    var(--rh-border-width-sm, 1px)
+    solid
+    var(--rh-color-border-subtle-on-light, #c7c7c7);
+  --rh-table-row-background-color:
+    rgb(
+        var(--rh-color-gray-10-rgb, 224 224 224) / var(--rh-opacity-40, 40%)
+      );
+  --rh-table-column-background-color: rgb(var(--rh-color-blue-50-rgb, 231 241 250));
+}
+
+:is(rh-table) thead th {
+  position: relative;
+  padding-top: var(--rh-space-lg, 16px);
+  padding-bottom: var(--rh-space-lg, 16px);
+  text-align: left;
+  font-weight: var(--rh-font-weight-heading-bold, 700);
+}
+
+:is(rh-table) tr {
+  border-bottom: var(--rh-table-row-border);
+}
+
+:is(rh-table) tr:hover {
+  background: var(--rh-table-row-background-color);
+}
+
+:is(rh-table) tr > * {
+  border: none;
+}
+
+:is(rh-table) :is(tr, col) {
+  transition: background 0.3s ease-out;
+}
+
+:is(rh-table) a {
+  color: var(--rh-color-interactive-blue-darker, #0066cc);
+  text-decoration: none;
+}
+
+:is(rh-table) a:hover {
+  color: var(--rh-color-interactive-blue-darkest, #004080);
+  text-decoration: underline;
+}
+
+:is(rh-table) caption {
+  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+  font-weight: var(--rh-font-weight-heading-bold, 700);
+  line-height: var(--rh-line-height-body-text, 1.5);
+  margin-bottom: var(--rh-space-xl, 24px);
+  text-align: center;
+  font-style: normal;
+}
+
+:is(rh-table) :is(th, td) {
+  padding-right: var(--rh-space-lg, 16px);
+  padding-left: var(--rh-space-lg, 16px);
+}
+
+:is(rh-table) td {
+  padding-top: var(--rh-space-xl, 24px);
+  padding-bottom: var(--rh-space-xl, 24px);
+}
+
+:is(rh-table) :is(col.active) {
+  background: var(--rh-table-column-background-color);
+}
+
+@media (max-width: 768px) {
+  :is(rh-table) table {
+    display: grid;
+  }
+
+  :is(rh-table) thead {
+    display: none;
+    visibility: hidden;
+  }
+
+  :is(rh-table) tbody {
+    display: block;
+  }
+
+  :is(rh-table) :not(thead) ~ tbody tr {
+    display: grid;
+    grid-auto-columns: auto;
+    grid-auto-flow: column;
+  }
+
+  :is(rh-table) thead ~ tbody tr {
+    border: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    height: auto;
+    grid-auto-columns: max-content;
+    grid-auto-flow: unset;
+  }
+
+  :is(rh-table) thead ~ tbody tr:first-child {
+    border-top: var(--rh-table-row-border);
+  }
+
+  :is(rh-table) thead ~ tbody tr:last-child {
+    border-bottom: var(--rh-table-row-border);
+  }
+
+  :is(rh-table) thead ~ tbody tr:nth-child(even) {
+    background: var(--rh-table-row-background-color);
+  }
+
+  :is(rh-table) thead ~ tbody tr:hover {
+    background: var(--rh-table-column-background-color);
+  }
+
+  :is(rh-table) thead ~ tbody tr > * {
+    padding: var(--rh-space-lg, 16px);
+  }
+
+  :is(rh-table) thead ~ tbody tr th {
+    text-align: center;
+  }
+
+  :is(rh-table) thead ~ tbody tr td {
+    padding-top: calc(var(--rh-space-md, 8px) + var(--rh-space-xs, 4px));
+    padding-bottom: calc(var(--rh-space-md, 8px) + var(--rh-space-xs, 4px));
+    display: grid;
+    grid-column-gap: var(--rh-space-lg, 16px);
+    grid-template-columns: 1fr minmax(0, 1.5fr);
+    align-items: start;
+    white-space: normal;
+    word-wrap: break-word;
+  }
+
+  :is(rh-table) thead ~ tbody tr td:before {
+    font-weight: var(--rh-font-weight-heading-bold, 700);
+    text-align: left;
+    content: attr(data-label);
+    display: inline-block;
+  }
+
+  :is(rh-table) thead ~ tbody tr:first-child td:first-child {
+    padding-top: var(--rh-space-lg, 16px);
+  }
+
+  :is(rh-table) thead ~ tbody tr:last-child td:last-child {
+    padding-bottom: var(--rh-space-lg, 16px);
+  }
+}

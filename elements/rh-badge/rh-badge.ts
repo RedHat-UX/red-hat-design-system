@@ -1,7 +1,6 @@
+import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-
-import { BaseBadge } from '@patternfly/elements/pf-badge/BaseBadge.js';
 
 import styles from './rh-badge.css';
 
@@ -18,19 +17,40 @@ import styles from './rh-badge.css';
  *
  */
 @customElement('rh-badge')
-export class RhBadge extends BaseBadge {
+export class RhBadge extends LitElement {
   static readonly version = '{{version}}';
 
-  static readonly styles = [...BaseBadge.styles, styles];
+  static readonly styles = [styles];
 
   /**
    * Denotes the state-of-affairs this badge represents
    */
   @property({ reflect: true }) state?: 'info' | 'success' | 'moderate' | 'important' | 'critical';
 
+  /**
+   * Sets a numeric value for a badge.
+   *
+   * You can pair it with `threshold` attribute to add a `+` sign
+   * if the number exceeds the threshold value.
+   */
   @property({ reflect: true, type: Number }) number?: number;
 
+  /**
+   * Sets a threshold for the numeric value and adds `+` sign if
+   * the numeric value exceeds the threshold value.
+   */
   @property({ reflect: true, type: Number }) threshold?: number;
+
+  override render() {
+    const { threshold, number, textContent } = this;
+    const displayText =
+        (threshold && number && (threshold < number)) ? `${threshold.toString()}+`
+      : (number != null) ? number.toString()
+      : textContent ?? '';
+    return html`
+      <span>${displayText}</span>
+    `;
+  }
 }
 
 declare global {

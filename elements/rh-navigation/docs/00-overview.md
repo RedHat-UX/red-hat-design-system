@@ -4,7 +4,7 @@
   every page to ensure a consistent user experience across websites.
 
 
-## Sample component
+## Sample element
   ![Primary navigation component sample]({{ './primary-nav-example.png' | url 
   }}){style="--inline-img-max-width:1000px;"}
 
