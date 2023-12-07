@@ -1,4 +1,6 @@
 import('@patternfly/pfe-tools/11ty/DocsPage.js');
+const { tokens } = require('@rhds/tokens');
+const { copyCell, getTokenHref } = require('../tokensHelpers.cjs');
 
 /** quick and dirty dedent, also provides in-editor syntax highlighting */
 const html = (...args) =>
@@ -63,7 +65,24 @@ class Renderers {
     const level = length + 1;
     const component = this.kwargs.for ?? this.docsPage.tagName;
     const description = this.manifest.getDescription(component);
+    // TODO: dsd
     return html`
+      <style>
+        table.css-custom-properties code[data-color] {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+        }
+        table.css-custom-properties code[data-color]:after {
+          content: '';
+          background: var(--color);
+          display: inline-block;
+          width: 1rem;
+          height: 1rem;
+          border-radius: 1rem;
+          inset-inline-end: -1rem;
+        }
+      </style>
 
       ${Array.from({ length }, () => '#').join('')} ${component}
 
@@ -74,6 +93,7 @@ class Renderers {
       ${this.renderEvents('', { level, for: component })}
       ${this.renderCssParts('', { level, for: component })}
       ${this.renderCssCustomProperties('', { level, for: component })}
+      ${this.renderTokens('', { level, for: component })}
       ${content}
     `.trim();
   }
@@ -193,29 +213,40 @@ class Renderers {
       </section>`;
   }
 
+  /** Render a table of element Design Tokens */
+  renderTokens(content, { header = 'Design Tokens', level = 2, ...kwargs } = {}) {
+    const allCssProperties = this.manifest.getCssCustomProperties(this.packageTagName(kwargs)) ?? [];
+    const elTokens = allCssProperties.filter(x => tokens.has(x.name));
+    return html`
+      <section class="api band design-tokens api-properties">
+        ${mdHeading(header)}${!content && !elTokens.length ? html`
+        <em>None</em>` : html`
+        ${innerMD(content)}
+        <table class="design-tokens">
+          <thead>
+            <tr>
+              <th style="text-align:left">Token</th>
+              <th style="text-align:left">Copy</th>
+            </tr>
+          </thead>
+          <tbody>${elTokens.map(token => html`
+            <tr>
+              <td style="text-align:left">
+                <a href="${getTokenHref(token)}"><code>${token.name}</code></a>
+              </td>
+            ${copyCell(token)}
+            </tr>`).join('\n')}
+          </tbody>
+        </table>`}
+      </section>`;
+  }
+
   /** Render a table of element CSS Custom Properties */
   renderCssCustomProperties(content, { header = 'CSS Custom Properties', level = 2, ...kwargs } = {}) {
     const allCssProperties = this.manifest.getCssCustomProperties(this.packageTagName(kwargs)) ?? [];
-    const cssProperties = allCssProperties.filter(x => !x.deprecated);
-    const deprecated = allCssProperties.filter(x => x.deprecated);
-    // TODO: dsd
+    const cssProperties = allCssProperties.filter(x => !x.deprecated && !tokens.has(x.name));
+    const deprecated = allCssProperties.filter(x => x.deprecated && !tokens.has(x.name));
     return html`
-      <style>
-        table.css-custom-properties code[data-color] {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-        }
-        table.css-custom-properties code[data-color]:after {
-          content: '';
-          background: var(--color);
-          display: inline-block;
-          width: 1rem;
-          height: 1rem;
-          border-radius: 1rem;
-          inset-inline-end: -1rem;
-        }
-      </style>
       <section class="api band css-custom-properties api-properties">
         ${mdHeading(header)}${!content && !cssProperties.length ? html`
         <em>None</em>` : html`

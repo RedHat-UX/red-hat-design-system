@@ -56,7 +56,7 @@ tr.on-dark {
 }
 
 th,
- td {
+td {
   padding-block: var(--rh-space-sm);
   padding-inline: var(--rh-space-md);
 }
@@ -101,10 +101,6 @@ td.token > div {
   gap: var(--rh-space-xs);
 }
 
-.hex {
-  text-transform: uppercase;
-}
-
 section {
   /* display: grid; */
   gap: var(--rh-space-md);
@@ -137,23 +133,7 @@ code {
   display: none;
 }
 
-.copy-button {
-  display: inline-flex;
-  align-items: center;
-  color: inherit;
-  border-radius: var(--rh-border-radius-default);
-  border-width: 0;
-  padding: var(--rh-space-xs);
-  background: none;
-  cursor: pointer;
-}
-
-.copy-button svg {
-  width: 24px;
-  fill: currentcolor;
-}
-
-.token:is(.value, .name) .copy-button {
+.token:is(.value, .name) uxdot-copy-button code {
   background-color: var(--rh-color-surface-lighter);
   overflow-x: hidden;
   max-width: 350px;
@@ -161,12 +141,12 @@ code {
   text-overflow: ellipsis;
 }
 
-.token.value .copy-button.color {
+.token.value uxdot-copy-button.color {
   border-radius: var(--rh-border-radius-pill);
   padding-block: 0;
 }
 
-.token.value .copy-button.color:after {
+.token.value uxdot-copy-button.color:after {
   content: "";
   display: inline-block;
   border-radius: 100%;
@@ -176,16 +156,11 @@ code {
   margin-inline-start: 0.5rem;
 }
 
-.copy-button:is(:focus, :active, :hover) {
-  background: var(--rh-color-interactive-blue-lightest);
-  opacity: 1;
-}
-
-.on-dark :is(.value, .name) .copy-button {
+.on-dark :is(.value, .name) uxdot-copy-button {
   background-color: var(--rh-color-surface-darker);
 }
 
-.on-dark .copy-button:is(:focus, :active, :hover) {
+.on-dark uxdot-copy-button:is(:focus, :active, :hover) {
   background: var(--rh-color-interactive-blue-darker);
 }
 
@@ -194,19 +169,19 @@ code {
   vertical-align: middle;
 }
 
-.copy-cell .copy-button {
+.copy-cell uxdot-copy-button {
   color: var(--rh-color-icon-subtle);
 }
 
-.on-dark .copy-cell .copy-button {
+.on-dark .copy-cell uxdot-copy-button {
   color: var(--rh-color-icon-subtle-hover);
 }
 
-tr:is(:hover, :focus-within) .copy-cell .copy-button {
+tr:is(:hover, :focus-within) .copy-cell uxdot-copy-button {
   color: var(--rh-color-icon-secondary-on-light);
 }
 
-tr:is(:hover, :focus-within).on-dark .copy-cell .copy-button {
+tr:is(:hover, :focus-within).on-dark .copy-cell uxdot-copy-button {
   color: var(--rh-color-icon-secondary-on-dark);
 }
 
