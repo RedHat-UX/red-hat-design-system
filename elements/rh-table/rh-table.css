@@ -3,10 +3,8 @@
 }
 
 :host {
-  position: relative;
   display: block;
   width: 100%;
-  height: 100%;
   overflow: auto;
   scrollbar-color: var(--_scrollbar-track-color) var(--_scrollbar-thum-color);
 
