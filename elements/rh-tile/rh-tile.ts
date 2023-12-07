@@ -1,4 +1,4 @@
-import { LitElement, html, type PropertyValueMap } from 'lit';
+import { LitElement, html, type PropertyValues } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
@@ -56,28 +56,29 @@ export class RhTile extends LitElement {
   @state() private disabledGroup = false;
 
   // TODO(bennyp): https://lit.dev/docs/data/context/#content
-  @state() private radioGroup = false;
+  /** @private @internal */
+  @state() radioGroup = false;
 
   /**
    * whether image is full-width (i.e. bleeds into the padding)
    */
-  @property({ attribute: 'bleed', type: Boolean }) bleed = false;
+  @property({ type: Boolean }) bleed = false;
 
   /**
    * whether headline link text is a desaturated color instead of blue;
    * `true` sets headline color to white on dark tiles or black on light tiles
    */
-  @property({ attribute: 'desaturated', type: Boolean }) desaturated = false;
+  @property({ type: Boolean }) desaturated = false;
 
   /**
    * reduces tile padding for more compact spaces
    */
-  @property({ attribute: 'compact', type: Boolean }) compact = false;
+  @property({ type: Boolean }) compact = false;
 
   /**
    * namespace of icon
    */
-  @property({ attribute: 'icon', type: String }) icon = false;
+  @property({ type: Boolean }) icon = false;
 
   /**
    * whether tile can be checked like a radio or checkbox:
@@ -90,7 +91,7 @@ export class RhTile extends LitElement {
   /**
    * if tile is checkable, whether it is currently checked
    */
-  @property({ attribute: 'checked', type: Boolean }) checked = false;
+  @property({ type: Boolean }) checked = false;
 
   /**
    * Sets color theme based on parent context
@@ -124,8 +125,8 @@ export class RhTile extends LitElement {
     this.addEventListener('click', this.#onClick);
   }
 
-  protected async updated(_changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>) {
-    if (_changedProperties.has('checked') || _changedProperties.has('checkable')) {
+  protected async updated(changed: PropertyValues<this>) {
+    if (changed.has('checked') || changed.has('checkable')) {
       this.#internals.ariaChecked = this.checkable && this.checked ? 'true' : 'false';
       await this.updateComplete;
       if (!this.checked) {
@@ -135,7 +136,7 @@ export class RhTile extends LitElement {
       return;
     }
 
-    if (_changedProperties.has('radio') || _changedProperties.has('checkable')) {
+    if (changed.has('radioGroup') || changed.has('checkable')) {
       this.#internals.role = this.checkable && this.radioGroup ? 'radio' : this.checkable ? 'checkbox' : null;
       if (this.checkable && !this.radioGroup) {
         this.setAttribute('tabindex', '0');
@@ -144,7 +145,7 @@ export class RhTile extends LitElement {
       }
     }
 
-    if (_changedProperties.has('disabled')) {
+    if (changed.has('disabled')) {
       this.#internals.ariaDisabled = this.disabled ? 'true' : 'false';
     }
   }

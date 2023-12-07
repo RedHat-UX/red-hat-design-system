@@ -1,4 +1,7 @@
-extends: stylelint-config-standard
+extends:
+  - stylelint-config-standard
+  - stylelint-stylistic/config
+
 ignoreFiles:
   - node_modules/**/*
 
@@ -15,18 +18,6 @@ rules:
     - true
     - ignoreShorthands:
         - /grid/
-
-  # TODO: migrate the following paragraph to stylelint-stylistic
-  # see https://github.com/elirasza/stylelint-stylistic/tree/main/lib/rules/indentation
-  string-quotes: double
-  selector-combinator-space-after: always
-  selector-combinator-space-before: always
-  indentation:
-   - 2
-   - indentInsideParens: 'once-at-root-twice-in-block'
-  max-line-length:
-    - 100
-    - ignorePattern: /--rh-font-family-/
 
   number-max-precision: 6
   no-descending-specificity:
@@ -49,10 +40,23 @@ rules:
     - ignorePseudoElements:
       - /part(.*)/
 
+  stylistic/string-quotes: double
+  stylistic/selector-combinator-space-after: always
+  stylistic/selector-combinator-space-before: always
+  stylistic/indentation:
+   - 2
+   - indentInsideParens: 'once-at-root-twice-in-block'
+  stylistic/max-line-length:
+    - 100
+    - ignorePattern: /--rh-font-family-/
+
   rhds/token-values: true
+
+  media-feature-range-notation: prefix
 
 plugins:
   - ./node_modules/@rhds/tokens/plugins/stylelint.cjs
+  - stylelint-stylistic
 
 overrides:
   - files:
@@ -60,7 +64,9 @@ overrides:
     defaultSeverity: warning
     extends: stylelint-config-standard-scss
     rules:
-      max-line-length:
+      stylistic/block-closing-brace-newline-after: null
+      scss/at-if-closing-brace-newline-after: always-last-in-chain
+      stylistic/max-line-length:
         - 120
         - ignorePattern: /--rh-font-family-/
 

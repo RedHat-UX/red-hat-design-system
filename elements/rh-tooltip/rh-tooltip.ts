@@ -55,6 +55,8 @@ export class RhTooltip extends LitElement {
     content: (): HTMLElement | undefined | null => this.shadowRoot?.querySelector('#tooltip'),
   });
 
+  #initialized = false;
+
   override connectedCallback(): void {
     super.connectedCallback();
     ENTER_EVENTS.forEach(evt => this.addEventListener(evt, this.show));
@@ -70,6 +72,7 @@ export class RhTooltip extends LitElement {
       <div id="container"
            style="${styleMap(styles)}"
            class="${classMap({ open,
+                              'initialized': !!this.#initialized,
                                [on]: !!on,
                                [anchor]: !!anchor,
                                [alignment]: !!alignment })}">
@@ -89,6 +92,7 @@ export class RhTooltip extends LitElement {
         !placement?.match(/top|bottom/) ? 15
       : { mainAxis: 15, alignmentAxis: -4 };
     await this.#float.show({ offset, placement });
+    this.#initialized = true;
   }
 
   /** Hide the tooltip */

@@ -120,8 +120,11 @@ svg {
 
 :host(:is(:focus, :focus-within)) #container {
   border-color: var(--rh-cta-focus-border-color);
-  background-color: var(--rh-cta-focus-container-background-color,
-    var(--rh-cta-focus-background-color));
+  background-color:
+    var(
+        --rh-cta-focus-container-background-color,
+        var(--rh-cta-focus-background-color)
+      );
 
   --rh-cta-color: var(--rh-cta-focus-color);
   --rh-cta-text-decoration: var(--rh-cta-focus-text-decoration);
@@ -161,15 +164,17 @@ svg {
 }
 
 :host(:active) #container {
-  --rh-cta-background-color: var(--rh-cta-active-container-background-color,
-    var(--rh-cta-active-background-color));
+  --rh-cta-background-color:
+    var(
+        --rh-cta-active-container-background-color,
+        var(--rh-cta-active-background-color)
+      );
 }
 
 :host(:active) #container:after {
   border-style: solid;
   border-color: var(--rh-cta-active-inner-border-color) !important;
 }
-
 
 /*****************************************************************************
  * VARIANTS                                                                  *
