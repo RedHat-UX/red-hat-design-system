@@ -1,10 +1,16 @@
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
+import { property } from 'lit/decorators/property.js';
+import { classMap } from 'lit/directives/class-map.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
-import styles from './rh-table.css';
 import { RequestSortEvent, RhSortButton } from './rh-sort-button.js';
+
+import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+
+import styles from './rh-table.css';
 
 /**
  * A table is a container for displaying information. It allows a user to scan, examine, and compare large amounts of data.
@@ -17,6 +23,11 @@ import { RequestSortEvent, RhSortButton } from './rh-sort-button.js';
 @customElement('rh-table')
 export class RhTable extends LitElement {
   static readonly styles = [styles];
+
+  @colorContextConsumer() private on?: ColorTheme;
+
+  @colorContextProvider()
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   private static getNodeContentForSort(
     columnIndexToSort: number,
@@ -65,12 +76,15 @@ export class RhTable extends LitElement {
   }
 
   render() {
+    const { on = '' } = this;
     return html`
+      <div id="container" class="${classMap({ [on]: !!on })}" part="container">
         <slot @pointerleave="${this.#onPointerleave}"
               @pointerover="${this.#onPointerover}"
               @request-sort="${this.#onRequestSort}" 
               @slotchange="${this.#onSlotChange}"></slot>
         <slot id="summary" name="summary"></slot>
+      </div>
     `;
   }
 
