@@ -46,11 +46,4 @@
   import '@rhds/elements/rh-table/rh-table.js';
 
   import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
-  import { ContextChangeEvent } from '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
-
-  document.getElementById('nested').addEventListener('change', function(event) {
-    if (event instanceof ContextChangeEvent) {
-      event.stopPropagation();
-    }
-  });
 </script>
