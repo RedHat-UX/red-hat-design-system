@@ -19,8 +19,6 @@ import styles from './rh-tab-panel.css';
  */
 @customElement('rh-tab-panel')
 export class RhTabPanel extends BaseTabPanel {
-  static readonly version = '{{version}}';
-
   static readonly styles = [styles];
 
   /**

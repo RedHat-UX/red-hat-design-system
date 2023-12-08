@@ -33,8 +33,6 @@ import styles from './rh-tab.css';
  */
 @customElement('rh-tab')
 export class RhTab extends BaseTab {
-  static readonly version = '{{version}}';
-
   static readonly styles = [...BaseTab.styles, styles];
 
   /**
