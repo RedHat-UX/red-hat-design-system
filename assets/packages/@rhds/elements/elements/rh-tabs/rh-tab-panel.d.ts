@@ -1,5 +1,4 @@
 import { BaseTabPanel } from '@patternfly/elements/pf-tabs/BaseTabPanel.js';
-import { type ColorPalette } from '../../lib/context/color/provider.js';
 /**
  * The tab panel for use within a rh-tabs element, must be paired with a rh-tab.
  *
@@ -13,10 +12,6 @@ export declare class RhTabPanel extends BaseTabPanel {
      * Sets color theme based on parent context
      */
     private on?;
-    /**
-     * Sets color context for child components, overrides parent context
-     */
-    colorPalette?: ColorPalette;
     render(): import("lit-html").TemplateResult<1>;
 }
 declare global {
