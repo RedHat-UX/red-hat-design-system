@@ -1,5 +1,5 @@
 ---
-"@rhds/elements": minor
+"@rhds/elements": patch
 ---
 
-`<rh-tab-panel>`: removed color-palette attribute`
+`<rh-tab-panel>`: removed unused color-palette attribute
