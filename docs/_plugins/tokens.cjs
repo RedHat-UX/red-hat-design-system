@@ -173,7 +173,7 @@ module.exports = function RHDSPlugin(eleventyConfig, pluginOptions = { }) {
       const include = Array.isArray(options.include) ? options.include : [options.include].filter(Boolean);
 
       const name = options.name ?? path.split('.').pop();
-      const { parent, key } = getParentCollection(options, eleventyConfig.globalData.tokens ?? tokenCategories);
+      const { parent, key } = getParentCollection(options, eleventyConfig.globalData.tokens ?? eleventyConfig.globalData?.tokenCategories);
       const collection = parent[key];
       const docs = getDocs(collection, options);
       const heading = docs?.heading ?? capitalize(name.replace('-', ' '));
