@@ -11,7 +11,7 @@
 }
 
 #mediaseries {
-  letter-spacing: var(--rh-font-letter-spacing-body-text, 0.0125rem);
+  letter-spacing: var(--rh-letter-spacing-body-text, 0.0125rem);
   font-size: var(--rh-font-size-body-text-xs, 0.75rem);
   line-height: var(--rh-line-height-body-text, 1.5);
   height: 18px;
