@@ -57,7 +57,7 @@ header ::slotted(*) {
 }
 
 header ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  padding-block: 2px 4px !important;
+  padding-block: 2px var(--rh-space-xs, 4px) !important;  /* 2px is a non standard value */
 }
 
 #header-actions {
