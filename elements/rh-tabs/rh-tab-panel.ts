@@ -7,7 +7,6 @@ import { classMap } from 'lit/directives/class-map.js';
 import { BaseTabPanel } from '@patternfly/elements/pf-tabs/BaseTabPanel.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import styles from './rh-tab-panel.css';
 
@@ -19,18 +18,14 @@ import styles from './rh-tab-panel.css';
  */
 @customElement('rh-tab-panel')
 export class RhTabPanel extends BaseTabPanel {
+  static readonly version = '{{version}}';
+
   static readonly styles = [styles];
 
   /**
    * Sets color theme based on parent context
    */
   @colorContextConsumer() private on?: ColorTheme;
-
-  /**
-   * Sets color context for child components, overrides parent context
-   */
-  @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   render() {
     const { on = '' } = this;
