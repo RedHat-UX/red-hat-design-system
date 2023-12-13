@@ -61,7 +61,7 @@ rules:
       --rh-color-red-400: --rh-color-red-50
       --rh-color-red-500: --rh-color-red-50
       --rh-color-red-600: --rh-color-red-60
-      --rh-color-red-700: --rh-color-red 60
+      --rh-color-red-700: --rh-color-red-60
       --rh-color-red-800: --rh-color-red-70
       # oranges
       --rh-color-orange-50: --rh-color-orange-10
