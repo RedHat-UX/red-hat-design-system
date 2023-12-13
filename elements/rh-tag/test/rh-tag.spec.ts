@@ -52,12 +52,12 @@ describe('<rh-tag>', async function() {
 
     it('should have correct border color', function() {
       expect(normalizeColor(beforeStyles.getPropertyValue('border-color')))
-        .to.equal(normalizeColor(tokens.get('--rh-color-gray-20')));
+        .to.equal(normalizeColor(tokens.get('--rh-color-border-subtle-on-light')));
     });
 
     it('should have correct text color', function() {
       expect(normalizeColor(styles.getPropertyValue('color')))
-        .to.equal(normalizeColor(tokens.get('--rh-color-gray-90')));
+        .to.equal(normalizeColor(tokens.get('--rh-color-text-primary-on-light')));
     });
   });
 
@@ -73,17 +73,17 @@ describe('<rh-tag>', async function() {
 
     it('should have correct background color', function() {
       expect(normalizeColor(styles.getPropertyValue('background-color')))
-        .to.equal(normalizeColor(tokens.get('--rh-color-red-50')));
+        .to.equal(normalizeColor(tokens.get('--rh-color-red-10')));
     });
 
     it('should have correct border color', function() {
       expect(normalizeColor(beforeStyles.getPropertyValue('border-color')))
-        .to.equal(normalizeColor(tokens.get('--rh-color-red-600')));
+        .to.equal(normalizeColor(tokens.get('--rh-color-red-60')));
     });
 
     it('should have correct text color', function() {
       expect(normalizeColor(styles.getPropertyValue('color')))
-        .to.equal(normalizeColor(tokens.get('--rh-color-red-800')));
+        .to.equal(normalizeColor(tokens.get('--rh-color-red-70')));
     });
   });
 
