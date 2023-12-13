@@ -1,6 +1,7 @@
 ---
-title: Color Palettes
+title: Color palettes
 order: 2
+bodyClasses: element-docs
 ---
 <link rel="stylesheet" href="/assets/packages/@rhds/elements/rh-pagination/rh-pagination-lightdom.css">
 
@@ -17,12 +18,13 @@ order: 2
   import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
 </script>
 
+## What are color palettes
 There are various color palettes within our design system. The palettes you will use the 
 most for the majority of your projects are the lightest and darkest themes.
 
 {% example palette="light",
            alt="examples of several elements against a white surface",
-           src="light-theme.png" %}
+           src="/assets/theming/light-theme.png" %}
 
 ### How color palettes work
 
@@ -37,17 +39,17 @@ needs.
 
 ### Lightest color palette
 
-The lightest color palette is the default, and has lots of use cases.
+The lightest color palette is the default and has lots of use cases.
 
 ### Darkest color palette
 
 The darkest color palette can be used for highlighting content with dark colors or if a 
-brighter interface would otherwise disrupt the user experience. Most light  
+brighter interface would otherwise disrupt the user experience. Most light 
 elements and patterns have dark counterparts.
 
 {% alert title="Brand red and accessibility", state="warning" %}
 Do not apply the Red Hat red color to text in dark environments unless
-it meets [WCAG 2.1 AA][wcag-2-1-aa] requirements.
+it meets [WCAG 2.1 AA](https://www.w3.org/WAI/WCAG21/Understanding/) requirements.
 {% endalert %}
 
 <rh-context-demo id="elements" color-palette="lightest"></rh-context-demo>
@@ -61,13 +63,13 @@ large areas of color or some of the surface gray values.
 
 {% alert title="Update from the team" %}
 The design system team is working on creating desaturated theme best
-practices in the near future. [Contact us][contact] if you would like to 
+practices in the near future. [Contact us](https://github.com/RedHat-UX/red-hat-design-system/discussions) if you would like to 
 contribute.
 {% endalert %}
 
 {% example palette="light",
            alt="examples of white call to action variants against dark blue and dark gray surfaces",
-           src="desaturated-theme.png" %}
+           src="/assets/theming/desaturated-theme.png" %}
 
 </div>
 
@@ -86,18 +88,10 @@ visual tension.
 
 {% example palette="light",
            alt="correct uses of an illustration with a transparent background and one illustration incorrectly using a white background in a dark theme area",
-           src="illustrations-and-imagery.png" %}
+           src="/assets/theming/illustrations-and-imagery.png" %}
 
-{% feedback %}
-## Foundations
-To learn how to use our other foundations in your designs, visit the
-[foundations](/foundations) section.
-{% endfeedback %}
 
-[wcag-2-1-aa]: https://www.w3.org/WAI/WCAG21/Understanding/
-[contact]: https://github.com/RedHat-UX/red-hat-design-system/discussions
-
-<hr> <p>content below this line should be revised to emphasize "palettes" over "context" and integrated into the above</p>
+<!-- ATTN: content below this line should be revised to emphasize "palettes" over "context" and integrated into the above -->
 
 <style>
   .card-snippet-grid {
@@ -298,3 +292,10 @@ can also set its own color palette.
   }
 </style>
 
+
+<!-- This is a footer -->
+{% feedback %}
+## Foundations
+To learn how to use our other foundations in your designs, visit the
+[foundations](/foundations) section.
+{% endfeedback %}
