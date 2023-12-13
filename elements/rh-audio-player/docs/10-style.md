@@ -1,15 +1,26 @@
 <style>
-.audio-player-sizes {
-  display: grid;
+.audio-player-layouts {
+  & .full { grid-column: 1/-1; }
   & figure {
     padding: 0;
     margin: 0;
     display: block;
     height: max-content;
-    &.full { grid-column: 1/-1; }
     & figcaption {
       font-size: var(--rh-font-size-body-text-sm);
       color: var(--rh-color-text-secondary-on-light);
+    }
+  }
+  /*
+   Warning:
+   The following are demonstrations of using CSS variables to customize player color.
+   They do not use our design token values for color.
+  */
+  &.custom {
+    rh-audio-player {
+      --rh-audio-player-background-color: #633ec5;
+      --rh-audio-player-range-thumb-color: #f56d6d;
+      --rh-audio-player-range-progress-color: #f56d6d;
     }
   }
 }
@@ -46,7 +57,7 @@ The audio player is a collection of elements used to play audio clips and browse
 ## Sizes
 There are three available sizes and the only difference is the amount of interface elements. The Compact and Mini players can be used on large breakpoints, but the Full player cannot be used on small breakpoints due to space constraints.
 
-{% sample class="audio-player-sizes", columns=2 %}
+{% sample class="audio-player-layouts", columns=2 %}
 
 <figure class="full">
   <rh-audio-player lang="en-US"
@@ -101,25 +112,126 @@ There are three available sizes and the only difference is the amount of interfa
 ## Theme
 The audio player is available in both light and dark themes.
 
-### Light theme
-{% example palette="light",
-          alt="Image of light theme audio players",
-          src="../audio-player-theme-light.png" %}
+{% sample class="audio-player-layouts",
+          columns=2 -%}
+<rh-audio-player class="full"
+                 lang="en-US"
+                 layout="full"
+                 mediaseries="Code Comments"
+                 mediatitle="Challenges in solutions engineering"
+                 poster="https://www.redhat.com/cms/managed-files/CLH-S7-ep1.png">
+  <audio crossorigin="anonymous"
+         slot="media"
+         src="https://cdn.simplecast.com/audio/28d037d3-7d17-42d4-a8e2-2e00fd8b602b/episodes/bd38190e-516f-49c0-b47e-6cf663d80986/audio/dc570fd1-7a5e-41e2-b9a4-96deb346c20f/default_tc.mp3"></audio>
+</rh-audio-player>
+<rh-audio-player class="full"
+                 lang="en-US"
+                 layout="compact"
+                 mediaseries="Code Comments"
+                 mediatitle="Challenges in solutions engineering"
+                 poster="https://www.redhat.com/cms/managed-files/CLH-S7-ep1.png">
+  <audio crossorigin="anonymous"
+         slot="media"
+         src="https://cdn.simplecast.com/audio/28d037d3-7d17-42d4-a8e2-2e00fd8b602b/episodes/bd38190e-516f-49c0-b47e-6cf663d80986/audio/dc570fd1-7a5e-41e2-b9a4-96deb346c20f/default_tc.mp3"></audio>
+</rh-audio-player>
+<rh-audio-player lang="en-US"
+                 layout="mini"
+                 mediaseries="Code Comments"
+                 mediatitle="Challenges in solutions engineering"
+                 poster="https://www.redhat.com/cms/managed-files/CLH-S7-ep1.png">
+  <audio crossorigin="anonymous"
+         slot="media"
+         src="https://cdn.simplecast.com/audio/28d037d3-7d17-42d4-a8e2-2e00fd8b602b/episodes/bd38190e-516f-49c0-b47e-6cf663d80986/audio/dc570fd1-7a5e-41e2-b9a4-96deb346c20f/default_tc.mp3"></audio>
+</rh-audio-player>
+<rh-audio-player lang="en-US" layout="mini">
+  <audio crossorigin="anonymous"
+         slot="media"
+         src="https://cdn.simplecast.com/audio/28d037d3-7d17-42d4-a8e2-2e00fd8b602b/episodes/bd38190e-516f-49c0-b47e-6cf663d80986/audio/dc570fd1-7a5e-41e2-b9a4-96deb346c20f/default_tc.mp3"></audio>
+</rh-audio-player>{% endsample %}
+
 
 ### Dark theme
-{% example palette="darkest",
-          alt="Image of dark theme audio players",
-          src="../audio-player-theme-dark.png" %}
+{% sample class="audio-player-layouts",
+          columns=2,
+          colorPalette="darkest" -%}
+<rh-audio-player class="full"
+                 lang="en-US"
+                 layout="full"
+                 mediaseries="Code Comments"
+                 mediatitle="Challenges in solutions engineering"
+                 poster="https://www.redhat.com/cms/managed-files/CLH-S7-ep1.png">
+  <audio crossorigin="anonymous"
+         slot="media"
+         src="https://cdn.simplecast.com/audio/28d037d3-7d17-42d4-a8e2-2e00fd8b602b/episodes/bd38190e-516f-49c0-b47e-6cf663d80986/audio/dc570fd1-7a5e-41e2-b9a4-96deb346c20f/default_tc.mp3"></audio>
+</rh-audio-player>
+<rh-audio-player class="full"
+                 lang="en-US"
+                 layout="compact"
+                 mediaseries="Code Comments"
+                 mediatitle="Challenges in solutions engineering"
+                 poster="https://www.redhat.com/cms/managed-files/CLH-S7-ep1.png">
+  <audio crossorigin="anonymous"
+         slot="media"
+         src="https://cdn.simplecast.com/audio/28d037d3-7d17-42d4-a8e2-2e00fd8b602b/episodes/bd38190e-516f-49c0-b47e-6cf663d80986/audio/dc570fd1-7a5e-41e2-b9a4-96deb346c20f/default_tc.mp3"></audio>
+</rh-audio-player>
+<rh-audio-player lang="en-US"
+                 layout="mini"
+                 mediaseries="Code Comments"
+                 mediatitle="Challenges in solutions engineering"
+                 poster="https://www.redhat.com/cms/managed-files/CLH-S7-ep1.png">
+  <audio crossorigin="anonymous"
+         slot="media"
+         src="https://cdn.simplecast.com/audio/28d037d3-7d17-42d4-a8e2-2e00fd8b602b/episodes/bd38190e-516f-49c0-b47e-6cf663d80986/audio/dc570fd1-7a5e-41e2-b9a4-96deb346c20f/default_tc.mp3"></audio>
+</rh-audio-player>
+<rh-audio-player lang="en-US" layout="mini">
+  <audio crossorigin="anonymous"
+         slot="media"
+         src="https://cdn.simplecast.com/audio/28d037d3-7d17-42d4-a8e2-2e00fd8b602b/episodes/bd38190e-516f-49c0-b47e-6cf663d80986/audio/dc570fd1-7a5e-41e2-b9a4-96deb346c20f/default_tc.mp3"></audio>
+</rh-audio-player>{% endsample %}
+
 
 ### Custom theme
 {% alert title="Helpful tip" %}
 If your audio player requires a custom theme, [contact](https://github.com/orgs/RedHat-UX/discussions) the design system team.
 {% endalert %}
 
-
-{% example palette="darkest",
-          alt="Image of custom theme audio players",
-          src="../audio-player-theme-custom.png" %}
+{% sample class="audio-player-layouts custom",
+          columns=2,
+          colorPalette="darkest" -%}
+<rh-audio-player class="full"
+                 lang="en-US"
+                 layout="full"
+                 mediaseries="Code Comments"
+                 mediatitle="Challenges in solutions engineering"
+                 poster="https://www.redhat.com/cms/managed-files/CLH-S7-ep1.png">
+  <audio crossorigin="anonymous"
+         slot="media"
+         src="https://cdn.simplecast.com/audio/28d037d3-7d17-42d4-a8e2-2e00fd8b602b/episodes/bd38190e-516f-49c0-b47e-6cf663d80986/audio/dc570fd1-7a5e-41e2-b9a4-96deb346c20f/default_tc.mp3"></audio>
+</rh-audio-player>
+<rh-audio-player class="full"
+                 lang="en-US"
+                 layout="compact"
+                 mediaseries="Code Comments"
+                 mediatitle="Challenges in solutions engineering"
+                 poster="https://www.redhat.com/cms/managed-files/CLH-S7-ep1.png">
+  <audio crossorigin="anonymous"
+         slot="media"
+         src="https://cdn.simplecast.com/audio/28d037d3-7d17-42d4-a8e2-2e00fd8b602b/episodes/bd38190e-516f-49c0-b47e-6cf663d80986/audio/dc570fd1-7a5e-41e2-b9a4-96deb346c20f/default_tc.mp3"></audio>
+</rh-audio-player>
+<rh-audio-player lang="en-US"
+                 layout="mini"
+                 mediaseries="Code Comments"
+                 mediatitle="Challenges in solutions engineering"
+                 poster="https://www.redhat.com/cms/managed-files/CLH-S7-ep1.png">
+  <audio crossorigin="anonymous"
+         slot="media"
+         src="https://cdn.simplecast.com/audio/28d037d3-7d17-42d4-a8e2-2e00fd8b602b/episodes/bd38190e-516f-49c0-b47e-6cf663d80986/audio/dc570fd1-7a5e-41e2-b9a4-96deb346c20f/default_tc.mp3"></audio>
+</rh-audio-player>
+<rh-audio-player lang="en-US" layout="mini">
+  <audio crossorigin="anonymous"
+         slot="media"
+         src="https://cdn.simplecast.com/audio/28d037d3-7d17-42d4-a8e2-2e00fd8b602b/episodes/bd38190e-516f-49c0-b47e-6cf663d80986/audio/dc570fd1-7a5e-41e2-b9a4-96deb346c20f/default_tc.mp3"></audio>
+</rh-audio-player>{% endsample %}
 
 ## Configuration
 The size of audio players change if an image is included or not.
