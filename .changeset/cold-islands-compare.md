@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-`<rh-tabs>`: fixed incorrect application of inline margin on vertical'
+`<rh-tabs>`: fixed layout of non-vertical box variant tabs
