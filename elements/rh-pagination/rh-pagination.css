@@ -83,7 +83,10 @@ input {
 
 input:focus {
   outline: none;
-  border: 2px solid var(--rh-pagination-accent-color, var(--rh-color-interactive-blue, #0066cc));
+  border:
+    2px
+    solid
+    var(--rh-pagination-accent-color, var(--rh-color-interactive-blue-darker, #0066cc));
   padding: 1px;
 }
 

@@ -1,6 +1,6 @@
 :host {
   --_button-size: 40px;
-  --_svg-size: var(--rh-icon-size-03, 32px);
+  --_svg-size: var(--rh-size-icon-03, 32px);
   --_outline:
     var(--rh-border-width-md, 2px)
     solid

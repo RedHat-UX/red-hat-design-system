@@ -4,7 +4,7 @@
   flex-direction: column;
   align-items: stretch;
   line-height: var(--rh-line-height-body-text, 1.5);
-  font-weight: var(--rh-font-weight-body-regular, 400);
+  font-weight: var(--rh-font-weight-body-text-regular, 400);
   font-size: var(--rh-font-size-code-md, 1rem);
   font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
   color: var(--rh-audio-player-text-color, var(--rh-color-text-primary-on-light, #151515));
@@ -132,7 +132,7 @@
 }
 
 ::slotted([slot="series"]) {
-  letter-spacing: var(--rh-font-letter-spacing-body-text, 0.0125rem);
+  letter-spacing: var(--rh-letter-spacing-body-text, 0.0125rem);
   font-size: var(--rh-font-size-body-text-xs, 0.75rem);
   font-weight: var(--rh-font-weight-heading-medium, 500);
   margin: 0 0 var(--rh-space-md, 8px);
@@ -160,9 +160,9 @@
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
   height: 18px;
   line-height: 1;
-  font-weight: var(--rh-font-weight-body-regular, 400);
+  font-weight: var(--rh-font-weight-body-text-regular, 400);
   font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-  letter-spacing: var(--rh-font-letter-spacing-body-text, 0.0125rem);
+  letter-spacing: var(--rh-letter-spacing-body-text, 0.0125rem);
   margin: 0 0 var(--rh-space-md, 8px);
   color: var(--_secondary-text-color);
   opacity: var(--_secondary-opacity, 1);
@@ -366,7 +366,7 @@ input[type="range"] {
 #mute-tooltip,
 #close-tooltip,
 #menu-tooltip {
-  --_svg-size: var(--rh-icon-size-02, 24px);
+  --_svg-size: var(--rh-size-icon-02, 24px);
 }
 
 [part="toolbar"] {
@@ -591,7 +591,7 @@ rh-menu > button:focus {
   }
 
   :host([layout]) #mute-tooltipp {
-    --_svg-size: var(--rh-icon-size-02, 24px);
+    --_svg-size: var(--rh-size-icon-02, 24px);
   }
 
   :host([layout="full"]) {
