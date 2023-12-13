@@ -62,6 +62,11 @@ A video thumbnail can be used in most layouts that have enough space to accommod
 
 An optional descriptor caption can be placed underneath the video thumbnail, it can be left- or center-aligned, depending on how the video is oriented.
 
+### Character counts
+
+A caption should be limited to 150 characters.
+
+
 ## Best practices
 
 Don't reposition the play button.

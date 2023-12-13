@@ -39,23 +39,23 @@ input::-moz-range-thumb {
   cursor: pointer;
   height: 100%;
   translate: var(--offset);
-  width: calc(16.6667%);
+  width: calc(6 / var(--count, 6) * 16.6667%);
 }
 
 input:focus,
 input:hover {
-  --thumb-color: var(--rh-color-interactive-blue-darkest, #004080);
+  --thumb-color: var(--rh-color-interactive-blue-darkest, #003366);
   --s: 2px;
 }
 
 input.dark,
 input.darker,
 input.darkest {
-  --thumb-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
+  --thumb-color: var(--rh-color-interactive-blue-lighter, #92c5f9);
 }
 
 input:is(.dark, .darker, .darkest):is(:focus, :hover) {
-  --thumb-color: var(--rh-color-interactive-blue-lightest, #bee1f4);
+  --thumb-color: var(--rh-color-interactive-blue-lightest, #b9dafc);
 }
 
 datalist {

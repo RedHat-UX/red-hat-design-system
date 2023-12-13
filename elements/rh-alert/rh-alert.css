@@ -1,8 +1,8 @@
 :host {
-  --_background-color: var(--rh-color-cyan-50, #f2f9f9);
-  --_border-color: var(--rh-color-cyan-300, #009596);
-  --_header-color: var(--rh-color-cyan-500, #003737);
-  --_icon-color: var(--rh-color-cyan-300, #009596);
+  --_background-color: var(--rh-color-teal-10, #daf2f2);
+  --_border-color: var(--rh-color-teal-50, #37a3a3);
+  --_header-color: var(--rh-color-teal-70, #004d4d);
+  --_icon-color: var(--rh-color-teal-50, #37a3a3);
   --_font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
 
   display: block;
@@ -13,35 +13,35 @@
 }
 
 :host([state="info"]) {
-  --_border-color: var(--rh-color-blue-250, #2b9af3);
-  --_icon-color: var(--rh-color-blue-250, #2b9af3);
-  --_header-color: var(--rh-color-blue-600, #002952);
-  --_background-color: var(--rh-color-blue-50, #e7f1fa);
+  --_border-color: var(--rh-color-blue-40, #4394e5);
+  --_icon-color: var(--rh-color-blue-40, #4394e5);
+  --_header-color: var(--rh-color-blue-70, #003366);
+  --_background-color: var(--rh-color-blue-10, #e0f0ff);
 }
 
 :host([state="success"]) {
-  --_border-color: var(--rh-color-green-500, #3e8635);
-  --_icon-color: var(--rh-color-green-500, #3e8635);
-  --_header-color: var(--rh-color-green-600, #1e4f18);
-  --_background-color: var(--rh-color-green-50, #f3faf2);
+  --_border-color: var(--rh-color-green-60, #3d7317);
+  --_icon-color: var(--rh-color-green-60, #3d7317);
+  --_header-color: var(--rh-color-green-70, #204d00);
+  --_background-color: var(--rh-color-green-10, #e9f7df);
 }
 
 :host([state="warning"]) {
-  --_border-color: var(--rh-color-gold-400, #f0ab00);
-  --_icon-color: var(--rh-color-gold-400, #f0ab00);
-  --_header-color: var(--rh-color-gold-600, #795600);
-  --_background-color: var(--rh-color-gold-50, #fdf7e7);
+  --_border-color: var(--rh-color-yellow-40, #dca614);
+  --_icon-color: var(--rh-color-yellow-40, #dca614);
+  --_header-color: var(--rh-color-yellow-70, #73480b);
+  --_background-color: var(--rh-color-yellow-10, #fff4cc);
 }
 
 :host([state="danger"]) {
   --_border-color: #c9190b; /* WARNING: not a recognized token value */
   --_icon-color: #c9190b; /* WARNING: not a recognized token value */
   --_header-color: #7d1007; /* WARNING: not a recognized token value */
-  --_background-color: var(--rh-color-red-50, #faeae8);
+  --_background-color: var(--rh-color-red-10, #fce3e3);
 }
 
 :host([toast]),
-:host([variant="toast"]){
+:host([variant="toast"]) {
   --_background-color: var(--rh-color-surface-lightest, #ffffff);
 
   max-width: 550px;
@@ -141,13 +141,13 @@ footer ::slotted([slot="actions"]:not(rh-button[variant="link"])) {
 /* TODO: separate focus and hover styles */
 footer ::slotted([slot="actions"]:focus) {
   text-decoration: underline !important;
-  color: var(--rh-color-interactive-blue-darkest, #004080) !important;
+  color: var(--rh-color-interactive-blue-darkest, #003366) !important;
 }
 
 footer ::slotted([slot="actions"]:hover) {
   cursor: pointer !important;
   text-decoration: underline !important;
-  color: var(--rh-color-interactive-blue-darkest, #004080) !important;
+  color: var(--rh-color-interactive-blue-darkest, #003366) !important;
 }
 
 footer ::slotted(rh-button[variant="link"]) {

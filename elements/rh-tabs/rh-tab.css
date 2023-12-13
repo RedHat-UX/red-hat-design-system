@@ -2,30 +2,48 @@
   display: flex;
   width: 100%;
 
-  --_button-text-color: var(--rh-tabs-link-color,
-    var(--rh-color-text-secondary-on-light, #4d4d4d));
+  --_button-text-color:
+    var(
+        --rh-tabs-link-color,
+        var(--rh-color-text-secondary-on-light, #4d4d4d)
+      );
   --_button-focus-outline-color: var(--rh-color-border-interactive-on-light, #0066cc);
 }
 
 #rhds-container.dark {
-  --_button-text-color: var(--rh-tabs-link-color,
-    var(--rh-color-text-secondary-on-dark, #c7c7c7));
-  --_button-focus-outline-color: var(--rh-color-border-interactive-on-dark, #73bcf7);
+  --_button-text-color:
+    var(
+        --rh-tabs-link-color,
+        var(--rh-color-text-secondary-on-dark, #c7c7c7)
+      );
+  --_button-focus-outline-color: var(--rh-color-border-interactive-on-dark, #92c5f9);
 }
 
 /* Context switch on attributes */
 :host([active]) #rhds-container {
-  --_button-text-color: var(--rh-tabs-link-color,
-    var(--rh-color-text-primary-on-light, #151515));
-  --_active-tab-border-color: var(--rh-tabs-active-border-color,
-    var(--rh-color-accent-brand-on-light, #ee0000));
+  --_button-text-color:
+    var(
+        --rh-tabs-link-color,
+        var(--rh-color-text-primary-on-light, #151515)
+      );
+  --_active-tab-border-color:
+    var(
+        --rh-tabs-active-border-color,
+        var(--rh-color-accent-brand-on-light, #ee0000)
+      );
 }
 
 :host([active]) #rhds-container.dark {
-  --_button-text-color: var(--rh-tabs-link-color,
-    var(--rh-color-text-primary-on-dark, #ffffff));
-  --_active-tab-border-color: var(--rh-tabs-active-border-color,
-    var(--rh-color-accent-brand-on-dark, #ff442b));
+  --_button-text-color:
+    var(
+        --rh-tabs-link-color,
+        var(--rh-color-text-primary-on-dark, #ffffff)
+      );
+  --_active-tab-border-color:
+    var(
+        --rh-tabs-active-border-color,
+        var(--rh-color-accent-brand-on-dark, #ee0000)
+      );
 }
 
 /* Box context */
@@ -39,13 +57,19 @@
 
 /* Theme base context */
 :host([active][theme="base"]) #rhds-container {
-  --_active-tab-border-color: var(--rh-tabs-active-border-color,
-    var(--rh-color-border-interactive-on-light, #0066cc));
+  --_active-tab-border-color:
+    var(
+        --rh-tabs-active-border-color,
+        var(--rh-color-border-interactive-on-light, #0066cc)
+      );
 }
 
 :host([active][theme="base"]) #rhds-container.dark {
-  --_active-tab-border-color: var(--rh-tabs-active-border-color,
-    var(--rh-color-border-interactive-on-dark, #73bcf7));
+  --_active-tab-border-color:
+    var(
+        --rh-tabs-active-border-color,
+        var(--rh-color-border-interactive-on-dark, #92c5f9)
+      );
 }
 
 /* Button Resets */
@@ -92,7 +116,6 @@ button:after {
   border-block-end: var(--rh-border-width-lg, 3px) solid var(--_active-tab-border-color);
 }
 
-
 /* [box][active]) */
 :host([active][box]) button:before {
   border-inline-color: var(--_border-color);
@@ -138,15 +161,14 @@ button:after {
   border-inline-end-width: var(--rh-border-width-sm, 1px);
 }
 
-
 @media screen and (min-width: 768px) {
   /* [vertical]:not([box]) */
   :host([vertical]:not([box])) button {
     padding-block:
       var(--rh-tabs-link-padding-block-start, var(--rh-space-md, 8px))
       var(--rh-tabs-link-padding-block-start, var(--rh-space-md, 8px));
-  } 
-   
+  }
+
   /* [vertical][active] */
   :host([vertical][active]) button:after {
     border-block-end: transparent;
@@ -165,23 +187,23 @@ button:after {
       var(--rh-border-width-sm, 1px)
       solid
       var(--_border-color);
-    border-block-start: 
-      var(--rh-border-width-sm, 1px) 
-      solid 
+    border-block-start:
+      var(--rh-border-width-sm, 1px)
+      solid
       var(--_border-color);
   }
 
   /* [box]:not([active], [vertical]) */
   :host([box]:not([active], [vertical])) button:after {
     border-block-end-color: var(--_border-color);
-  }  
+  }
 
   /* [active][box][vertical] */
   :host([active][box][vertical]) button:after {
-    border-block-start: 
+    border-block-start:
       var(--rh-border-width-sm, 1px)
       solid
-      var(--_border-color);    
+      var(--_border-color);
   }
 
   :host([box][vertical]:not([active])) button:after {
@@ -196,7 +218,7 @@ button:after {
   /* .last[vertical][box]  */
   :host(.last[vertical][box]) {
     margin-block-end: var(--rh-space-2xl, 32px);
-  }  
+  }
 
   /* .first[vertical]:not([box]) */
   :host(.first[vertical]:not([box])) {
@@ -242,8 +264,8 @@ button:after {
 
   /* .first[vertical][box]:not([active]) */
   :host(.first[vertical][box]:not([active])) button:before {
-    border-block-start-color: transparent
-  }  
+    border-block-start-color: transparent;
+  }
 
   /* .first[box][active]:not([vertical]) */
   :host(.first[box][active]:not([vertical])) button:before {
@@ -267,5 +289,4 @@ button:after {
   :host(.last[box][vertical]:not([active])) button:after {
     border-block-end: none;
   }
-
 }

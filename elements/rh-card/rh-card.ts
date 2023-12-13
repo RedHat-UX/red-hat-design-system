@@ -4,7 +4,7 @@ import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { html, LitElement } from 'lit';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+import { colorContextProvider } from '../../lib/context/color/provider.js';
 
 import styles from './rh-card.css';
 /**
@@ -34,8 +34,6 @@ export class RhCard extends LitElement {
 
   static styles = [styles];
 
-  protected slots = new SlotController(this, 'header', null, 'footer');
-
   /**
    * Sets color theme based on parent context
    */
@@ -50,16 +48,17 @@ export class RhCard extends LitElement {
    * Card always resets its context to `base`, unless explicitly provided with a `color-palette`.
    */
   @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: 'darkest' | 'lightest' | 'lighter';
 
+  #slots = new SlotController(this, 'header', null, 'footer');
 
   override render() {
-    const { on = '' } = this;
+    const { on = '', colorPalette = '' } = this;
     return html`
-     <article part="container" id="container" class="${classMap({ [on]: !!on })}">
+     <article part="container" id="container" class="${classMap({ [on]: !!on, [colorPalette]: !!colorPalette })}">
         <header id="header"
                 part="header"
-                class="${classMap({ empty: !this.slots.hasSlotted('header') })}">
+                class="${classMap({ empty: !this.#slots.hasSlotted('header') })}">
           <slot name="header"></slot>
         </header>
         <div id="body"
@@ -69,7 +68,7 @@ export class RhCard extends LitElement {
         </div>
         <footer id="footer"
                 part="footer"
-                class="${classMap({ empty: !this.slots.hasSlotted('footer') })}">
+                class="${classMap({ empty: !this.#slots.hasSlotted('footer') })}">
           <slot name="footer"></slot>
         </footer>
       </article>
