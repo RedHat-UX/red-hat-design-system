@@ -82,11 +82,11 @@ article {
   font-weight: var(--rh-font-weight-body-text-medium, 500);
 }
 
-#body ::slotted(:not([slot]):first-of-type) {
+#body ::slotted(:not([slot]):first-child) {
   margin-block-start: 0;
 }
 
-#body ::slotted(:not([slot]):last-of-type) {
+#body ::slotted(:not([slot]):last-child) {
   margin-block-end: 0;
 }
 
