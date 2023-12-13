@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 23 May 2023 15:21:18 GMT
+ * Generated on Wed, 13 Dec 2023 08:19:14 GMT
  *
  * @license
  * MIT License
@@ -31,7 +31,7 @@ export const ColorTextPrimaryOnDark = { "hex": "ffffff", "rgb": { "r": 255, "g":
 export const ColorTextSecondaryOnLight = { "hex": "4d4d4d", "rgb": { "r": 77, "g": 77, "b": 77, "a": 1 }, "hsl": { "h": 0, "s": 0, "l": 30.19607843137255, "a": 1 }, "hsv": { "h": 0, "s": 0, "v": 0.30196078431372547, "a": 1 }, "isLight": false };
 export const ColorTextSecondaryOnDark = { "hex": "c7c7c7", "rgb": { "r": 199, "g": 199, "b": 199, "a": 1 }, "hsl": { "h": 0, "s": 0, "l": 78.03921568627452, "a": 1 }, "hsv": { "h": 0, "s": 0, "v": 0.7803921568627451, "a": 1 }, "isLight": true };
 export const ColorTextBrandOnLight = { "hex": "ee0000", "rgb": { "r": 238, "g": 0, "b": 0, "a": 1 }, "hsl": { "h": 0, "s": 100, "l": 46.666666666666664, "a": 1 }, "hsv": { "h": 0, "s": 1, "v": 0.9333333333333333, "a": 1 }, "isLight": false };
-export const ColorTextBrandOnDark = { "hex": "ff442b", "rgb": { "r": 255, "g": 68, "b": 43, "a": 1 }, "hsl": { "h": 7.0754716981132075, "s": 100, "l": 58.43137254901961, "a": 1 }, "hsv": { "h": 7.0754716981132075, "s": 0.8313725490196078, "v": 1, "a": 1 }, "isLight": false };
+export const ColorTextBrandOnDark = { "hex": "ee0000", "rgb": { "r": 238, "g": 0, "b": 0, "a": 1 }, "hsl": { "h": 0, "s": 100, "l": 46.666666666666664, "a": 1 }, "hsv": { "h": 0, "s": 1, "v": 0.9333333333333333, "a": 1 }, "isLight": false };
 export const FontFamilyHeading = "RedHatDisplay, \"Red Hat Display\", \"Noto Sans Arabic\", \"Noto Sans Hebrew\", \"Noto Sans JP\", \"Noto Sans KR\", \"Noto Sans Malayalam\", \"Noto Sans SC\", \"Noto Sans TC\", \"Noto Sans Thai\", Helvetica, Arial, sans-serif";
 export const FontFamilyBodyText = "RedHatText, \"Red Hat Text\", \"Noto Sans Arabic\", \"Noto Sans Hebrew\", \"Noto Sans JP\", \"Noto Sans KR\", \"Noto Sans Malayalam\", \"Noto Sans SC\", \"Noto Sans TC\", \"Noto Sans Thai\", Helvetica, Arial, sans-serif";
 export const FontFamilyCode = "RedHatMono, \"Red Hat Mono\", \"Courier New\", Courier, monospace";

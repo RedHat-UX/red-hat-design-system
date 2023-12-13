@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 23 May 2023 15:21:18 GMT
+ * Generated on Wed, 13 Dec 2023 08:19:14 GMT
  */
 
 
@@ -723,9 +723,9 @@ export const tokens = new Map([
       "filePath": "tokens/color/accent.yml",
       "isSource": true,
       "original": {
-        "$value": "{color.blue.400}",
+        "$value": "{color.blue.50}",
         "$description": "Inline link (light theme)",
-        "value": "{color.blue.400}"
+        "value": "{color.blue.50}"
       },
       "name": "rh-color-accent-base-on-light",
       "attributes": {
@@ -767,15 +767,15 @@ export const tokens = new Map([
   [
     "--rh-color-accent-base-on-dark",
     {
-      "$value": "#73bcf7",
+      "$value": "#92c5f9",
       "$description": "Inline link (dark theme)",
-      "value": "#73bcf7",
+      "value": "#92c5f9",
       "filePath": "tokens/color/accent.yml",
       "isSource": true,
       "original": {
-        "$value": "{color.blue.200}",
+        "$value": "{color.blue.30}",
         "$description": "Inline link (dark theme)",
-        "value": "{color.blue.200}"
+        "value": "{color.blue.30}"
       },
       "name": "rh-color-accent-base-on-dark",
       "attributes": {
@@ -783,23 +783,23 @@ export const tokens = new Map([
         "type": "accent",
         "item": "base",
         "subitem": "on-dark",
-        "hex": "73bcf7",
+        "hex": "92c5f9",
         "rgb": {
-          "r": 115,
-          "g": 188,
-          "b": 247,
+          "r": 146,
+          "g": 197,
+          "b": 249,
           "a": 1
         },
         "hsl": {
-          "h": 206.8181818181818,
-          "s": 89.1891891891892,
-          "l": 70.98039215686275,
+          "h": 210.29126213592232,
+          "s": 89.56521739130436,
+          "l": 77.45098039215685,
           "a": 1
         },
         "hsv": {
-          "h": 206.8181818181818,
-          "s": 0.534412955465587,
-          "v": 0.9686274509803922,
+          "h": 210.29126213592232,
+          "s": 0.4136546184738956,
+          "v": 0.9764705882352941,
           "a": 1
         },
         "isLight": true
@@ -823,9 +823,9 @@ export const tokens = new Map([
       "filePath": "tokens/color/accent.yml",
       "isSource": true,
       "original": {
-        "$value": "{color.red.500}",
+        "$value": "{color.brand.red.on-light}",
         "$description": "Brand red (light theme)",
-        "value": "{color.red.500}"
+        "value": "{color.brand.red.on-light}"
       },
       "name": "rh-color-accent-brand-on-light",
       "attributes": {
@@ -867,15 +867,15 @@ export const tokens = new Map([
   [
     "--rh-color-accent-brand-on-dark",
     {
-      "$value": "#ff442b",
+      "$value": "#ee0000",
       "$description": "Brand red (dark theme)",
-      "value": "#ff442b",
+      "value": "#ee0000",
       "filePath": "tokens/color/accent.yml",
       "isSource": true,
       "original": {
-        "$value": "{color.red.400}",
+        "$value": "{color.brand.red.on-dark}",
         "$description": "Brand red (dark theme)",
-        "value": "{color.red.400}"
+        "value": "{color.brand.red.on-dark}"
       },
       "name": "rh-color-accent-brand-on-dark",
       "attributes": {
@@ -883,23 +883,23 @@ export const tokens = new Map([
         "type": "accent",
         "item": "brand",
         "subitem": "on-dark",
-        "hex": "ff442b",
+        "hex": "ee0000",
         "rgb": {
-          "r": 255,
-          "g": 68,
-          "b": 43,
+          "r": 238,
+          "g": 0,
+          "b": 0,
           "a": 1
         },
         "hsl": {
-          "h": 7.0754716981132075,
+          "h": 0,
           "s": 100,
-          "l": 58.43137254901961,
+          "l": 46.666666666666664,
           "a": 1
         },
         "hsv": {
-          "h": 7.0754716981132075,
-          "s": 0.8313725490196078,
-          "v": 1,
+          "h": 0,
+          "s": 1,
+          "v": 0.9333333333333333,
           "a": 1
         },
         "isLight": false
@@ -949,13 +949,13 @@ export const tokens = new Map([
       "filePath": "tokens/color/border.yml",
       "isSource": true,
       "original": {
-        "$value": "{color.gray.90}",
+        "$value": "{color.gray.95}",
         "$description": "Strong border color (light theme)",
         "attributes": {
           "category": "border",
           "type": "color"
         },
-        "value": "{color.gray.90}"
+        "value": "{color.gray.95}"
       },
       "name": "rh-color-border-strong-on-light",
       "path": [
@@ -1057,13 +1057,13 @@ export const tokens = new Map([
       "filePath": "tokens/color/border.yml",
       "isSource": true,
       "original": {
-        "$value": "{color.gray.20}",
+        "$value": "{color.gray.30}",
         "$description": "Subtle border color (light theme)",
         "attributes": {
           "category": "border",
           "type": "color"
         },
-        "value": "{color.gray.20}"
+        "value": "{color.gray.30}"
       },
       "name": "rh-color-border-subtle-on-light",
       "path": [
@@ -1111,13 +1111,13 @@ export const tokens = new Map([
       "filePath": "tokens/color/border.yml",
       "isSource": true,
       "original": {
-        "$value": "{color.gray.40}",
+        "$value": "{color.gray.50}",
         "$description": "Subtle border color (dark theme)",
         "attributes": {
           "category": "border",
           "type": "color"
         },
-        "value": "{color.gray.40}"
+        "value": "{color.gray.50}"
       },
       "name": "rh-color-border-subtle-on-dark",
       "path": [
@@ -1165,13 +1165,13 @@ export const tokens = new Map([
       "filePath": "tokens/color/border.yml",
       "isSource": true,
       "original": {
-        "$value": "{color.blue.400}",
+        "$value": "{color.blue.50}",
         "$description": "Interactive border color (light theme)",
         "attributes": {
           "category": "border",
           "type": "color"
         },
-        "value": "{color.blue.400}"
+        "value": "{color.blue.50}"
       },
       "name": "rh-color-border-interactive-on-light",
       "path": [
@@ -1187,45 +1187,45 @@ export const tokens = new Map([
   [
     "--rh-color-border-interactive-on-dark",
     {
-      "$value": "#73bcf7",
+      "$value": "#92c5f9",
       "$description": "Interactive border color (dark theme)",
       "attributes": {
         "category": "border",
         "type": "color",
         "item": "interactive",
         "subitem": "on-dark",
-        "hex": "73bcf7",
+        "hex": "92c5f9",
         "rgb": {
-          "r": 115,
-          "g": 188,
-          "b": 247,
+          "r": 146,
+          "g": 197,
+          "b": 249,
           "a": 1
         },
         "hsl": {
-          "h": 206.8181818181818,
-          "s": 89.1891891891892,
-          "l": 70.98039215686275,
+          "h": 210.29126213592232,
+          "s": 89.56521739130436,
+          "l": 77.45098039215685,
           "a": 1
         },
         "hsv": {
-          "h": 206.8181818181818,
-          "s": 0.534412955465587,
-          "v": 0.9686274509803922,
+          "h": 210.29126213592232,
+          "s": 0.4136546184738956,
+          "v": 0.9764705882352941,
           "a": 1
         },
         "isLight": true
       },
-      "value": "#73bcf7",
+      "value": "#92c5f9",
       "filePath": "tokens/color/border.yml",
       "isSource": true,
       "original": {
-        "$value": "{color.blue.200}",
+        "$value": "{color.blue.30}",
         "$description": "Interactive border color (dark theme)",
         "attributes": {
           "category": "border",
           "type": "color"
         },
-        "value": "{color.blue.200}"
+        "value": "{color.blue.30}"
       },
       "name": "rh-color-border-interactive-on-dark",
       "path": [
@@ -1241,15 +1241,15 @@ export const tokens = new Map([
   [
     "--rh-color-brand-red-lightest",
     {
-      "$value": "#fddbdb",
+      "$value": "#fbc5c5",
       "$description": "Lightest brand red",
-      "value": "#fddbdb",
+      "value": "#fbc5c5",
       "filePath": "tokens/color/brand.yml",
       "isSource": true,
       "original": {
-        "$value": "{color.red.100}",
+        "$value": "{color.red.20}",
         "$description": "Lightest brand red",
-        "value": "{color.red.100}"
+        "value": "{color.red.20}"
       },
       "name": "rh-color-brand-red-lightest",
       "attributes": {
@@ -1257,23 +1257,23 @@ export const tokens = new Map([
         "type": "brand",
         "item": "red",
         "subitem": "lightest",
-        "hex": "fddbdb",
+        "hex": "fbc5c5",
         "rgb": {
-          "r": 253,
-          "g": 219,
-          "b": 219,
+          "r": 251,
+          "g": 197,
+          "b": 197,
           "a": 1
         },
         "hsl": {
           "h": 0,
-          "s": 89.47368421052634,
-          "l": 92.54901960784314,
+          "s": 87.09677419354838,
+          "l": 87.84313725490196,
           "a": 1
         },
         "hsv": {
           "h": 0,
-          "s": 0.1343873517786562,
-          "v": 0.9921568627450981,
+          "s": 0.21513944223107562,
+          "v": 0.984313725490196,
           "a": 1
         },
         "isLight": true
@@ -1291,15 +1291,15 @@ export const tokens = new Map([
   [
     "--rh-color-brand-red-lighter",
     {
-      "$value": "#fab6b6",
+      "$value": "#f9a8a8",
       "$description": "lighter brand red",
-      "value": "#fab6b6",
+      "value": "#f9a8a8",
       "filePath": "tokens/color/brand.yml",
       "isSource": true,
       "original": {
-        "$value": "{color.red.200}",
+        "$value": "{color.red.30}",
         "$description": "lighter brand red",
-        "value": "{color.red.200}"
+        "value": "{color.red.30}"
       },
       "name": "rh-color-brand-red-lighter",
       "attributes": {
@@ -1307,23 +1307,23 @@ export const tokens = new Map([
         "type": "brand",
         "item": "red",
         "subitem": "lighter",
-        "hex": "fab6b6",
+        "hex": "f9a8a8",
         "rgb": {
-          "r": 250,
-          "g": 182,
-          "b": 182,
+          "r": 249,
+          "g": 168,
+          "b": 168,
           "a": 1
         },
         "hsl": {
           "h": 0,
-          "s": 87.17948717948718,
-          "l": 84.70588235294117,
+          "s": 87.0967741935484,
+          "l": 81.76470588235294,
           "a": 1
         },
         "hsv": {
           "h": 0,
-          "s": 0.27199999999999996,
-          "v": 0.9803921568627451,
+          "s": 0.3253012048192771,
+          "v": 0.9764705882352941,
           "a": 1
         },
         "isLight": true
@@ -1341,15 +1341,15 @@ export const tokens = new Map([
   [
     "--rh-color-brand-red-light",
     {
-      "$value": "#f56d6d",
+      "$value": "#f56e6e",
       "$description": "Light brand red",
-      "value": "#f56d6d",
+      "value": "#f56e6e",
       "filePath": "tokens/color/brand.yml",
       "isSource": true,
       "original": {
-        "$value": "{color.red.300}",
+        "$value": "{color.red.40}",
         "$description": "Light brand red",
-        "value": "{color.red.300}"
+        "value": "{color.red.40}"
       },
       "name": "rh-color-brand-red-light",
       "attributes": {
@@ -1357,22 +1357,22 @@ export const tokens = new Map([
         "type": "brand",
         "item": "red",
         "subitem": "light",
-        "hex": "f56d6d",
+        "hex": "f56e6e",
         "rgb": {
           "r": 245,
-          "g": 109,
-          "b": 109,
+          "g": 110,
+          "b": 110,
           "a": 1
         },
         "hsl": {
           "h": 0,
-          "s": 87.17948717948723,
-          "l": 69.41176470588235,
+          "s": 87.09677419354841,
+          "l": 69.6078431372549,
           "a": 1
         },
         "hsv": {
           "h": 0,
-          "s": 0.5551020408163266,
+          "s": 0.5510204081632653,
           "v": 0.9607843137254902,
           "a": 1
         },
@@ -1391,15 +1391,15 @@ export const tokens = new Map([
   [
     "--rh-color-brand-red-dark",
     {
-      "$value": "#be0000",
+      "$value": "#a60000",
       "$description": "Dark brand red/Brand red hover",
-      "value": "#be0000",
+      "value": "#a60000",
       "filePath": "tokens/color/brand.yml",
       "isSource": true,
       "original": {
-        "$value": "{color.red.600}",
+        "$value": "{color.red.60}",
         "$description": "Dark brand red/Brand red hover",
-        "value": "{color.red.600}"
+        "value": "{color.red.60}"
       },
       "name": "rh-color-brand-red-dark",
       "attributes": {
@@ -1407,9 +1407,9 @@ export const tokens = new Map([
         "type": "brand",
         "item": "red",
         "subitem": "dark",
-        "hex": "be0000",
+        "hex": "a60000",
         "rgb": {
-          "r": 190,
+          "r": 166,
           "g": 0,
           "b": 0,
           "a": 1
@@ -1417,13 +1417,13 @@ export const tokens = new Map([
         "hsl": {
           "h": 0,
           "s": 100,
-          "l": 37.254901960784316,
+          "l": 32.549019607843135,
           "a": 1
         },
         "hsv": {
           "h": 0,
           "s": 1,
-          "v": 0.7450980392156863,
+          "v": 0.6509803921568628,
           "a": 1
         },
         "isLight": false
@@ -1441,15 +1441,15 @@ export const tokens = new Map([
   [
     "--rh-color-brand-red-darker",
     {
-      "$value": "#8f0000",
+      "$value": "#5f0000",
       "$description": "Darker brand red",
-      "value": "#8f0000",
+      "value": "#5f0000",
       "filePath": "tokens/color/brand.yml",
       "isSource": true,
       "original": {
-        "$value": "{color.red.700}",
+        "$value": "{color.red.70}",
         "$description": "Darker brand red",
-        "value": "{color.red.700}"
+        "value": "{color.red.70}"
       },
       "name": "rh-color-brand-red-darker",
       "attributes": {
@@ -1457,9 +1457,9 @@ export const tokens = new Map([
         "type": "brand",
         "item": "red",
         "subitem": "darker",
-        "hex": "8f0000",
+        "hex": "5f0000",
         "rgb": {
-          "r": 143,
+          "r": 95,
           "g": 0,
           "b": 0,
           "a": 1
@@ -1467,13 +1467,13 @@ export const tokens = new Map([
         "hsl": {
           "h": 0,
           "s": 100,
-          "l": 28.03921568627451,
+          "l": 18.627450980392158,
           "a": 1
         },
         "hsv": {
           "h": 0,
           "s": 1,
-          "v": 0.5607843137254902,
+          "v": 0.37254901960784315,
           "a": 1
         },
         "isLight": false
@@ -1497,9 +1497,9 @@ export const tokens = new Map([
       "filePath": "tokens/color/brand.yml",
       "isSource": true,
       "original": {
-        "$value": "{color.red.800}",
+        "$value": "{color.red.70}",
         "$description": "Darkest brand red",
-        "value": "{color.red.800}"
+        "value": "{color.red.70}"
       },
       "name": "rh-color-brand-red-darkest",
       "attributes": {
@@ -1541,15 +1541,15 @@ export const tokens = new Map([
   [
     "--rh-color-brand-red-on-dark",
     {
-      "$value": "#ff442b",
+      "$value": "#ee0000",
       "$description": "Brand red on dark background",
-      "value": "#ff442b",
+      "value": "#ee0000",
       "filePath": "tokens/color/brand.yml",
       "isSource": true,
       "original": {
-        "$value": "{color.red.400}",
+        "$value": "{color.red.50}",
         "$description": "Brand red on dark background",
-        "value": "{color.red.400}"
+        "value": "{color.red.50}"
       },
       "name": "rh-color-brand-red-on-dark",
       "attributes": {
@@ -1557,23 +1557,23 @@ export const tokens = new Map([
         "type": "brand",
         "item": "red",
         "subitem": "on-dark",
-        "hex": "ff442b",
+        "hex": "ee0000",
         "rgb": {
-          "r": 255,
-          "g": 68,
-          "b": 43,
+          "r": 238,
+          "g": 0,
+          "b": 0,
           "a": 1
         },
         "hsl": {
-          "h": 7.0754716981132075,
+          "h": 0,
           "s": 100,
-          "l": 58.43137254901961,
+          "l": 46.666666666666664,
           "a": 1
         },
         "hsv": {
-          "h": 7.0754716981132075,
-          "s": 0.8313725490196078,
-          "v": 1,
+          "h": 0,
+          "s": 1,
+          "v": 0.9333333333333333,
           "a": 1
         },
         "isLight": false
@@ -1597,9 +1597,9 @@ export const tokens = new Map([
       "filePath": "tokens/color/brand.yml",
       "isSource": true,
       "original": {
-        "$value": "{color.red.500}",
+        "$value": "{color.red.50}",
         "$description": "Brand red on light background",
-        "value": "{color.red.500}"
+        "value": "{color.red.50}"
       },
       "name": "rh-color-brand-red-on-light",
       "attributes": {
@@ -1695,9 +1695,9 @@ export const tokens = new Map([
       "filePath": "tokens/color/canvas.yaml",
       "isSource": true,
       "original": {
-        "$value": "{color.gray.90}",
+        "$value": "{color.gray.95}",
         "$description": "Primary canvas (dark theme)",
-        "value": "{color.gray.90}"
+        "value": "{color.gray.95}"
       },
       "name": "rh-color-canvas-black",
       "attributes": {
@@ -1735,40 +1735,40 @@ export const tokens = new Map([
     }
   ],
   [
-    "--rh-color-blue-50",
+    "--rh-color-blue-10",
     {
-      "$value": "#e7f1fa",
+      "$value": "#E0F0FF",
       "$description": "Alert - Info background",
-      "value": "#e7f1fa",
+      "value": "#e0f0ff",
       "filePath": "tokens/color/crayon/blue.yaml",
       "isSource": true,
       "original": {
-        "$value": "#e7f1fa",
+        "$value": "#E0F0FF",
         "$description": "Alert - Info background",
-        "value": "#e7f1fa"
+        "value": "#E0F0FF"
       },
-      "name": "rh-color-blue-50",
+      "name": "rh-color-blue-10",
       "attributes": {
         "category": "color",
         "type": "blue",
-        "item": "50",
-        "hex": "e7f1fa",
+        "item": "10",
+        "hex": "e0f0ff",
         "rgb": {
-          "r": 231,
-          "g": 241,
-          "b": 250,
+          "r": 224,
+          "g": 240,
+          "b": 255,
           "a": 1
         },
         "hsl": {
-          "h": 208.42105263157896,
-          "s": 65.51724137931035,
-          "l": 94.31372549019608,
+          "h": 209.03225806451616,
+          "s": 100,
+          "l": 93.92156862745098,
           "a": 1
         },
         "hsv": {
-          "h": 208.42105263157896,
-          "s": 0.07599999999999996,
-          "v": 0.9803921568627451,
+          "h": 209.03225806451616,
+          "s": 0.1215686274509804,
+          "v": 1,
           "a": 1
         },
         "isLight": true
@@ -1776,47 +1776,47 @@ export const tokens = new Map([
       "path": [
         "color",
         "blue",
-        "50"
+        "10"
       ],
       "comment": "Alert - Info background",
       "$type": "color"
     }
   ],
   [
-    "--rh-color-blue-100",
+    "--rh-color-blue-20",
     {
-      "$value": "#bee1f4",
+      "$value": "#B9DAFC",
       "$description": "Label - Filled (Blue) border color",
-      "value": "#bee1f4",
+      "value": "#b9dafc",
       "filePath": "tokens/color/crayon/blue.yaml",
       "isSource": true,
       "original": {
-        "$value": "#bee1f4",
+        "$value": "#B9DAFC",
         "$description": "Label - Filled (Blue) border color",
-        "value": "#bee1f4"
+        "value": "#B9DAFC"
       },
-      "name": "rh-color-blue-100",
+      "name": "rh-color-blue-20",
       "attributes": {
         "category": "color",
         "type": "blue",
-        "item": "100",
-        "hex": "bee1f4",
+        "item": "20",
+        "hex": "b9dafc",
         "rgb": {
-          "r": 190,
-          "g": 225,
-          "b": 244,
+          "r": 185,
+          "g": 218,
+          "b": 252,
           "a": 1
         },
         "hsl": {
-          "h": 201.11111111111111,
-          "s": 71.05263157894743,
-          "l": 85.09803921568628,
+          "h": 210.44776119402988,
+          "s": 91.78082191780825,
+          "l": 85.68627450980392,
           "a": 1
         },
         "hsv": {
-          "h": 201.11111111111111,
-          "s": 0.2213114754098361,
-          "v": 0.9568627450980393,
+          "h": 210.44776119402988,
+          "s": 0.2658730158730159,
+          "v": 0.9882352941176471,
           "a": 1
         },
         "isLight": true
@@ -1824,45 +1824,47 @@ export const tokens = new Map([
       "path": [
         "color",
         "blue",
-        "100"
+        "20"
       ],
       "comment": "Label - Filled (Blue) border color",
       "$type": "color"
     }
   ],
   [
-    "--rh-color-blue-200",
+    "--rh-color-blue-30",
     {
-      "$value": "#73bcf7",
-      "value": "#73bcf7",
+      "$value": "#92C5F9",
+      "$description": "Inline link (dark theme)",
+      "value": "#92c5f9",
       "filePath": "tokens/color/crayon/blue.yaml",
       "isSource": true,
       "original": {
-        "$value": "#73bcf7",
-        "value": "#73bcf7"
+        "$value": "#92C5F9",
+        "$description": "Inline link (dark theme)",
+        "value": "#92C5F9"
       },
-      "name": "rh-color-blue-200",
+      "name": "rh-color-blue-30",
       "attributes": {
         "category": "color",
         "type": "blue",
-        "item": "200",
-        "hex": "73bcf7",
+        "item": "30",
+        "hex": "92c5f9",
         "rgb": {
-          "r": 115,
-          "g": 188,
-          "b": 247,
+          "r": 146,
+          "g": 197,
+          "b": 249,
           "a": 1
         },
         "hsl": {
-          "h": 206.8181818181818,
-          "s": 89.1891891891892,
-          "l": 70.98039215686275,
+          "h": 210.29126213592232,
+          "s": 89.56521739130436,
+          "l": 77.45098039215685,
           "a": 1
         },
         "hsv": {
-          "h": 206.8181818181818,
-          "s": 0.534412955465587,
-          "v": 0.9686274509803922,
+          "h": 210.29126213592232,
+          "s": 0.4136546184738956,
+          "v": 0.9764705882352941,
           "a": 1
         },
         "isLight": true
@@ -1870,46 +1872,47 @@ export const tokens = new Map([
       "path": [
         "color",
         "blue",
-        "200"
+        "30"
       ],
+      "comment": "Inline link (dark theme)",
       "$type": "color"
     }
   ],
   [
-    "--rh-color-blue-250",
+    "--rh-color-blue-40",
     {
-      "$value": "#2b9af3",
+      "$value": "#4394E5",
       "$description": "Alert - Info accent",
-      "value": "#2b9af3",
+      "value": "#4394e5",
       "filePath": "tokens/color/crayon/blue.yaml",
       "isSource": true,
       "original": {
-        "$value": "#2b9af3",
+        "$value": "#4394E5",
         "$description": "Alert - Info accent",
-        "value": "#2b9af3"
+        "value": "#4394E5"
       },
-      "name": "rh-color-blue-250",
+      "name": "rh-color-blue-40",
       "attributes": {
         "category": "color",
         "type": "blue",
-        "item": "250",
-        "hex": "2b9af3",
+        "item": "40",
+        "hex": "4394e5",
         "rgb": {
-          "r": 43,
-          "g": 154,
-          "b": 243,
+          "r": 67,
+          "g": 148,
+          "b": 229,
           "a": 1
         },
         "hsl": {
-          "h": 206.7,
-          "s": 89.28571428571426,
-          "l": 56.07843137254902,
+          "h": 210,
+          "s": 75.70093457943923,
+          "l": 58.03921568627452,
           "a": 1
         },
         "hsv": {
-          "h": 206.7,
-          "s": 0.8230452674897119,
-          "v": 0.9529411764705882,
+          "h": 210,
+          "s": 0.7074235807860262,
+          "v": 0.8980392156862745,
           "a": 1
         },
         "isLight": true
@@ -1917,30 +1920,30 @@ export const tokens = new Map([
       "path": [
         "color",
         "blue",
-        "250"
+        "40"
       ],
       "comment": "Alert - Info accent",
       "$type": "color"
     }
   ],
   [
-    "--rh-color-blue-400",
+    "--rh-color-blue-50",
     {
-      "$value": "#0066cc",
+      "$value": "#0066CC",
       "$description": "Label - Filled (Blue) accent color",
       "value": "#0066cc",
       "filePath": "tokens/color/crayon/blue.yaml",
       "isSource": true,
       "original": {
-        "$value": "#0066cc",
+        "$value": "#0066CC",
         "$description": "Label - Filled (Blue) accent color",
-        "value": "#0066cc"
+        "value": "#0066CC"
       },
-      "name": "rh-color-blue-400",
+      "name": "rh-color-blue-50",
       "attributes": {
         "category": "color",
         "type": "blue",
-        "item": "400",
+        "item": "50",
         "hex": "0066cc",
         "rgb": {
           "r": 0,
@@ -1965,45 +1968,47 @@ export const tokens = new Map([
       "path": [
         "color",
         "blue",
-        "400"
+        "50"
       ],
       "comment": "Label - Filled (Blue) accent color",
       "$type": "color"
     }
   ],
   [
-    "--rh-color-blue-500",
+    "--rh-color-blue-60",
     {
-      "$value": "#004080",
-      "value": "#004080",
+      "$value": "#004D99",
+      "$description": "Inline link hover (light theme)",
+      "value": "#004d99",
       "filePath": "tokens/color/crayon/blue.yaml",
       "isSource": true,
       "original": {
-        "$value": "#004080",
-        "value": "#004080"
+        "$value": "#004D99",
+        "$description": "Inline link hover (light theme)",
+        "value": "#004D99"
       },
-      "name": "rh-color-blue-500",
+      "name": "rh-color-blue-60",
       "attributes": {
         "category": "color",
         "type": "blue",
-        "item": "500",
-        "hex": "004080",
+        "item": "60",
+        "hex": "004d99",
         "rgb": {
           "r": 0,
-          "g": 64,
-          "b": 128,
+          "g": 77,
+          "b": 153,
           "a": 1
         },
         "hsl": {
-          "h": 210,
+          "h": 209.80392156862746,
           "s": 100,
-          "l": 25.098039215686274,
+          "l": 30,
           "a": 1
         },
         "hsv": {
-          "h": 210,
+          "h": 209.80392156862746,
           "s": 1,
-          "v": 0.5019607843137255,
+          "v": 0.6,
           "a": 1
         },
         "isLight": false
@@ -2011,46 +2016,47 @@ export const tokens = new Map([
       "path": [
         "color",
         "blue",
-        "500"
+        "60"
       ],
+      "comment": "Inline link hover (light theme)",
       "$type": "color"
     }
   ],
   [
-    "--rh-color-blue-600",
+    "--rh-color-blue-70",
     {
-      "$value": "#002952",
+      "$value": "#003366",
       "$description": "Alert - Info title text",
-      "value": "#002952",
+      "value": "#003366",
       "filePath": "tokens/color/crayon/blue.yaml",
       "isSource": true,
       "original": {
-        "$value": "#002952",
+        "$value": "#003366",
         "$description": "Alert - Info title text",
-        "value": "#002952"
+        "value": "#003366"
       },
-      "name": "rh-color-blue-600",
+      "name": "rh-color-blue-70",
       "attributes": {
         "category": "color",
         "type": "blue",
-        "item": "600",
-        "hex": "002952",
+        "item": "70",
+        "hex": "003366",
         "rgb": {
           "r": 0,
-          "g": 41,
-          "b": 82,
+          "g": 51,
+          "b": 102,
           "a": 1
         },
         "hsl": {
           "h": 210,
           "s": 100,
-          "l": 16.07843137254902,
+          "l": 20,
           "a": 1
         },
         "hsv": {
           "h": 210,
           "s": 1,
-          "v": 0.3215686274509804,
+          "v": 0.4,
           "a": 1
         },
         "isLight": false
@@ -2058,18 +2064,386 @@ export const tokens = new Map([
       "path": [
         "color",
         "blue",
-        "600"
+        "70"
       ],
       "comment": "Alert - Info title text",
       "$type": "color"
     }
   ],
   [
+    "--rh-color-blue-10-hsl",
+    {
+      "$type": "color",
+      "$value": "209.03225806451616 100% 93.92156862745098%",
+      "value": "209.03225806451616 100% 93.92156862745098%",
+      "filePath": "tokens/color/crayon/blue.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.blue.10}",
+        "value": "{color.blue.10}"
+      },
+      "name": "rh-color-blue-10-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "blue",
+        "item": "10-hsl",
+        "hex": "e0f0ff",
+        "rgb": {
+          "r": 224,
+          "g": 240,
+          "b": 255,
+          "a": 1
+        },
+        "hsl": {
+          "h": 209.03225806451616,
+          "s": 100,
+          "l": 93.92156862745098,
+          "a": 1
+        },
+        "hsv": {
+          "h": 209.03225806451616,
+          "s": 0.1215686274509804,
+          "v": 1,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "blue",
+        "10-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-blue-10-rgb",
+    {
+      "$type": "color",
+      "$value": "224 240 255",
+      "value": "224 240 255",
+      "filePath": "tokens/color/crayon/blue.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.blue.10}",
+        "value": "{color.blue.10}"
+      },
+      "name": "rh-color-blue-10-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "blue",
+        "item": "10-rgb",
+        "hex": "e0f0ff",
+        "rgb": {
+          "r": 224,
+          "g": 240,
+          "b": 255,
+          "a": 1
+        },
+        "hsl": {
+          "h": 209.03225806451616,
+          "s": 100,
+          "l": 93.92156862745098,
+          "a": 1
+        },
+        "hsv": {
+          "h": 209.03225806451616,
+          "s": 0.1215686274509804,
+          "v": 1,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "blue",
+        "10-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-blue-20-hsl",
+    {
+      "$type": "color",
+      "$value": "210.44776119402988 91.78082191780825% 85.68627450980392%",
+      "value": "210.44776119402988 91.78082191780825% 85.68627450980392%",
+      "filePath": "tokens/color/crayon/blue.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.blue.20}",
+        "value": "{color.blue.20}"
+      },
+      "name": "rh-color-blue-20-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "blue",
+        "item": "20-hsl",
+        "hex": "b9dafc",
+        "rgb": {
+          "r": 185,
+          "g": 218,
+          "b": 252,
+          "a": 1
+        },
+        "hsl": {
+          "h": 210.44776119402988,
+          "s": 91.78082191780825,
+          "l": 85.68627450980392,
+          "a": 1
+        },
+        "hsv": {
+          "h": 210.44776119402988,
+          "s": 0.2658730158730159,
+          "v": 0.9882352941176471,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "blue",
+        "20-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-blue-20-rgb",
+    {
+      "$type": "color",
+      "$value": "185 218 252",
+      "value": "185 218 252",
+      "filePath": "tokens/color/crayon/blue.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.blue.20}",
+        "value": "{color.blue.20}"
+      },
+      "name": "rh-color-blue-20-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "blue",
+        "item": "20-rgb",
+        "hex": "b9dafc",
+        "rgb": {
+          "r": 185,
+          "g": 218,
+          "b": 252,
+          "a": 1
+        },
+        "hsl": {
+          "h": 210.44776119402988,
+          "s": 91.78082191780825,
+          "l": 85.68627450980392,
+          "a": 1
+        },
+        "hsv": {
+          "h": 210.44776119402988,
+          "s": 0.2658730158730159,
+          "v": 0.9882352941176471,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "blue",
+        "20-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-blue-30-hsl",
+    {
+      "$type": "color",
+      "$value": "210.29126213592232 89.56521739130436% 77.45098039215685%",
+      "value": "210.29126213592232 89.56521739130436% 77.45098039215685%",
+      "filePath": "tokens/color/crayon/blue.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.blue.30}",
+        "value": "{color.blue.30}"
+      },
+      "name": "rh-color-blue-30-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "blue",
+        "item": "30-hsl",
+        "hex": "92c5f9",
+        "rgb": {
+          "r": 146,
+          "g": 197,
+          "b": 249,
+          "a": 1
+        },
+        "hsl": {
+          "h": 210.29126213592232,
+          "s": 89.56521739130436,
+          "l": 77.45098039215685,
+          "a": 1
+        },
+        "hsv": {
+          "h": 210.29126213592232,
+          "s": 0.4136546184738956,
+          "v": 0.9764705882352941,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "blue",
+        "30-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-blue-30-rgb",
+    {
+      "$type": "color",
+      "$value": "146 197 249",
+      "value": "146 197 249",
+      "filePath": "tokens/color/crayon/blue.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.blue.30}",
+        "value": "{color.blue.30}"
+      },
+      "name": "rh-color-blue-30-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "blue",
+        "item": "30-rgb",
+        "hex": "92c5f9",
+        "rgb": {
+          "r": 146,
+          "g": 197,
+          "b": 249,
+          "a": 1
+        },
+        "hsl": {
+          "h": 210.29126213592232,
+          "s": 89.56521739130436,
+          "l": 77.45098039215685,
+          "a": 1
+        },
+        "hsv": {
+          "h": 210.29126213592232,
+          "s": 0.4136546184738956,
+          "v": 0.9764705882352941,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "blue",
+        "30-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-blue-40-hsl",
+    {
+      "$type": "color",
+      "$value": "210 75.70093457943923% 58.03921568627452%",
+      "value": "210 75.70093457943923% 58.03921568627452%",
+      "filePath": "tokens/color/crayon/blue.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.blue.40}",
+        "value": "{color.blue.40}"
+      },
+      "name": "rh-color-blue-40-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "blue",
+        "item": "40-hsl",
+        "hex": "4394e5",
+        "rgb": {
+          "r": 67,
+          "g": 148,
+          "b": 229,
+          "a": 1
+        },
+        "hsl": {
+          "h": 210,
+          "s": 75.70093457943923,
+          "l": 58.03921568627452,
+          "a": 1
+        },
+        "hsv": {
+          "h": 210,
+          "s": 0.7074235807860262,
+          "v": 0.8980392156862745,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "blue",
+        "40-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-blue-40-rgb",
+    {
+      "$type": "color",
+      "$value": "67 148 229",
+      "value": "67 148 229",
+      "filePath": "tokens/color/crayon/blue.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.blue.40}",
+        "value": "{color.blue.40}"
+      },
+      "name": "rh-color-blue-40-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "blue",
+        "item": "40-rgb",
+        "hex": "4394e5",
+        "rgb": {
+          "r": 67,
+          "g": 148,
+          "b": 229,
+          "a": 1
+        },
+        "hsl": {
+          "h": 210,
+          "s": 75.70093457943923,
+          "l": 58.03921568627452,
+          "a": 1
+        },
+        "hsv": {
+          "h": 210,
+          "s": 0.7074235807860262,
+          "v": 0.8980392156862745,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "blue",
+        "40-rgb"
+      ]
+    }
+  ],
+  [
     "--rh-color-blue-50-hsl",
     {
       "$type": "color",
-      "$value": "208.42105263157896 65.51724137931035% 94.31372549019608%",
-      "value": "208.42105263157896 65.51724137931035% 94.31372549019608%",
+      "$value": "210 100% 40%",
+      "value": "210 100% 40%",
       "filePath": "tokens/color/crayon/blue.yaml",
       "isSource": true,
       "original": {
@@ -2082,26 +2456,26 @@ export const tokens = new Map([
         "category": "color",
         "type": "blue",
         "item": "50-hsl",
-        "hex": "e7f1fa",
+        "hex": "0066cc",
         "rgb": {
-          "r": 231,
-          "g": 241,
-          "b": 250,
+          "r": 0,
+          "g": 102,
+          "b": 204,
           "a": 1
         },
         "hsl": {
-          "h": 208.42105263157896,
-          "s": 65.51724137931035,
-          "l": 94.31372549019608,
+          "h": 210,
+          "s": 100,
+          "l": 40,
           "a": 1
         },
         "hsv": {
-          "h": 208.42105263157896,
-          "s": 0.07599999999999996,
-          "v": 0.9803921568627451,
+          "h": 210,
+          "s": 1,
+          "v": 0.8,
           "a": 1
         },
-        "isLight": true
+        "isLight": false
       },
       "path": [
         "color",
@@ -2114,8 +2488,8 @@ export const tokens = new Map([
     "--rh-color-blue-50-rgb",
     {
       "$type": "color",
-      "$value": "231 241 250",
-      "value": "231 241 250",
+      "$value": "0 102 204",
+      "value": "0 102 204",
       "filePath": "tokens/color/crayon/blue.yaml",
       "isSource": true,
       "original": {
@@ -2128,328 +2502,6 @@ export const tokens = new Map([
         "category": "color",
         "type": "blue",
         "item": "50-rgb",
-        "hex": "e7f1fa",
-        "rgb": {
-          "r": 231,
-          "g": 241,
-          "b": 250,
-          "a": 1
-        },
-        "hsl": {
-          "h": 208.42105263157896,
-          "s": 65.51724137931035,
-          "l": 94.31372549019608,
-          "a": 1
-        },
-        "hsv": {
-          "h": 208.42105263157896,
-          "s": 0.07599999999999996,
-          "v": 0.9803921568627451,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "blue",
-        "50-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-blue-100-hsl",
-    {
-      "$type": "color",
-      "$value": "201.11111111111111 71.05263157894743% 85.09803921568628%",
-      "value": "201.11111111111111 71.05263157894743% 85.09803921568628%",
-      "filePath": "tokens/color/crayon/blue.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.blue.100}",
-        "value": "{color.blue.100}"
-      },
-      "name": "rh-color-blue-100-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "blue",
-        "item": "100-hsl",
-        "hex": "bee1f4",
-        "rgb": {
-          "r": 190,
-          "g": 225,
-          "b": 244,
-          "a": 1
-        },
-        "hsl": {
-          "h": 201.11111111111111,
-          "s": 71.05263157894743,
-          "l": 85.09803921568628,
-          "a": 1
-        },
-        "hsv": {
-          "h": 201.11111111111111,
-          "s": 0.2213114754098361,
-          "v": 0.9568627450980393,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "blue",
-        "100-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-blue-100-rgb",
-    {
-      "$type": "color",
-      "$value": "190 225 244",
-      "value": "190 225 244",
-      "filePath": "tokens/color/crayon/blue.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.blue.100}",
-        "value": "{color.blue.100}"
-      },
-      "name": "rh-color-blue-100-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "blue",
-        "item": "100-rgb",
-        "hex": "bee1f4",
-        "rgb": {
-          "r": 190,
-          "g": 225,
-          "b": 244,
-          "a": 1
-        },
-        "hsl": {
-          "h": 201.11111111111111,
-          "s": 71.05263157894743,
-          "l": 85.09803921568628,
-          "a": 1
-        },
-        "hsv": {
-          "h": 201.11111111111111,
-          "s": 0.2213114754098361,
-          "v": 0.9568627450980393,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "blue",
-        "100-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-blue-200-hsl",
-    {
-      "$type": "color",
-      "$value": "206.8181818181818 89.1891891891892% 70.98039215686275%",
-      "value": "206.8181818181818 89.1891891891892% 70.98039215686275%",
-      "filePath": "tokens/color/crayon/blue.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.blue.200}",
-        "value": "{color.blue.200}"
-      },
-      "name": "rh-color-blue-200-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "blue",
-        "item": "200-hsl",
-        "hex": "73bcf7",
-        "rgb": {
-          "r": 115,
-          "g": 188,
-          "b": 247,
-          "a": 1
-        },
-        "hsl": {
-          "h": 206.8181818181818,
-          "s": 89.1891891891892,
-          "l": 70.98039215686275,
-          "a": 1
-        },
-        "hsv": {
-          "h": 206.8181818181818,
-          "s": 0.534412955465587,
-          "v": 0.9686274509803922,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "blue",
-        "200-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-blue-200-rgb",
-    {
-      "$type": "color",
-      "$value": "115 188 247",
-      "value": "115 188 247",
-      "filePath": "tokens/color/crayon/blue.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.blue.200}",
-        "value": "{color.blue.200}"
-      },
-      "name": "rh-color-blue-200-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "blue",
-        "item": "200-rgb",
-        "hex": "73bcf7",
-        "rgb": {
-          "r": 115,
-          "g": 188,
-          "b": 247,
-          "a": 1
-        },
-        "hsl": {
-          "h": 206.8181818181818,
-          "s": 89.1891891891892,
-          "l": 70.98039215686275,
-          "a": 1
-        },
-        "hsv": {
-          "h": 206.8181818181818,
-          "s": 0.534412955465587,
-          "v": 0.9686274509803922,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "blue",
-        "200-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-blue-250-hsl",
-    {
-      "$type": "color",
-      "$value": "206.7 89.28571428571426% 56.07843137254902%",
-      "value": "206.7 89.28571428571426% 56.07843137254902%",
-      "filePath": "tokens/color/crayon/blue.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.blue.250}",
-        "value": "{color.blue.250}"
-      },
-      "name": "rh-color-blue-250-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "blue",
-        "item": "250-hsl",
-        "hex": "2b9af3",
-        "rgb": {
-          "r": 43,
-          "g": 154,
-          "b": 243,
-          "a": 1
-        },
-        "hsl": {
-          "h": 206.7,
-          "s": 89.28571428571426,
-          "l": 56.07843137254902,
-          "a": 1
-        },
-        "hsv": {
-          "h": 206.7,
-          "s": 0.8230452674897119,
-          "v": 0.9529411764705882,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "blue",
-        "250-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-blue-250-rgb",
-    {
-      "$type": "color",
-      "$value": "43 154 243",
-      "value": "43 154 243",
-      "filePath": "tokens/color/crayon/blue.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.blue.250}",
-        "value": "{color.blue.250}"
-      },
-      "name": "rh-color-blue-250-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "blue",
-        "item": "250-rgb",
-        "hex": "2b9af3",
-        "rgb": {
-          "r": 43,
-          "g": 154,
-          "b": 243,
-          "a": 1
-        },
-        "hsl": {
-          "h": 206.7,
-          "s": 89.28571428571426,
-          "l": 56.07843137254902,
-          "a": 1
-        },
-        "hsv": {
-          "h": 206.7,
-          "s": 0.8230452674897119,
-          "v": 0.9529411764705882,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "blue",
-        "250-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-blue-400-hsl",
-    {
-      "$type": "color",
-      "$value": "210 100% 40%",
-      "value": "210 100% 40%",
-      "filePath": "tokens/color/crayon/blue.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.blue.400}",
-        "value": "{color.blue.400}"
-      },
-      "name": "rh-color-blue-400-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "blue",
-        "item": "400-hsl",
         "hex": "0066cc",
         "rgb": {
           "r": 0,
@@ -2474,1357 +2526,191 @@ export const tokens = new Map([
       "path": [
         "color",
         "blue",
-        "400-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-blue-400-rgb",
-    {
-      "$type": "color",
-      "$value": "0 102 204",
-      "value": "0 102 204",
-      "filePath": "tokens/color/crayon/blue.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.blue.400}",
-        "value": "{color.blue.400}"
-      },
-      "name": "rh-color-blue-400-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "blue",
-        "item": "400-rgb",
-        "hex": "0066cc",
-        "rgb": {
-          "r": 0,
-          "g": 102,
-          "b": 204,
-          "a": 1
-        },
-        "hsl": {
-          "h": 210,
-          "s": 100,
-          "l": 40,
-          "a": 1
-        },
-        "hsv": {
-          "h": 210,
-          "s": 1,
-          "v": 0.8,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "blue",
-        "400-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-blue-500-hsl",
-    {
-      "$type": "color",
-      "$value": "210 100% 25.098039215686274%",
-      "value": "210 100% 25.098039215686274%",
-      "filePath": "tokens/color/crayon/blue.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.blue.500}",
-        "value": "{color.blue.500}"
-      },
-      "name": "rh-color-blue-500-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "blue",
-        "item": "500-hsl",
-        "hex": "004080",
-        "rgb": {
-          "r": 0,
-          "g": 64,
-          "b": 128,
-          "a": 1
-        },
-        "hsl": {
-          "h": 210,
-          "s": 100,
-          "l": 25.098039215686274,
-          "a": 1
-        },
-        "hsv": {
-          "h": 210,
-          "s": 1,
-          "v": 0.5019607843137255,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "blue",
-        "500-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-blue-500-rgb",
-    {
-      "$type": "color",
-      "$value": "0 64 128",
-      "value": "0 64 128",
-      "filePath": "tokens/color/crayon/blue.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.blue.500}",
-        "value": "{color.blue.500}"
-      },
-      "name": "rh-color-blue-500-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "blue",
-        "item": "500-rgb",
-        "hex": "004080",
-        "rgb": {
-          "r": 0,
-          "g": 64,
-          "b": 128,
-          "a": 1
-        },
-        "hsl": {
-          "h": 210,
-          "s": 100,
-          "l": 25.098039215686274,
-          "a": 1
-        },
-        "hsv": {
-          "h": 210,
-          "s": 1,
-          "v": 0.5019607843137255,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "blue",
-        "500-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-blue-600-hsl",
-    {
-      "$type": "color",
-      "$value": "210 100% 16.07843137254902%",
-      "value": "210 100% 16.07843137254902%",
-      "filePath": "tokens/color/crayon/blue.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.blue.600}",
-        "value": "{color.blue.600}"
-      },
-      "name": "rh-color-blue-600-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "blue",
-        "item": "600-hsl",
-        "hex": "002952",
-        "rgb": {
-          "r": 0,
-          "g": 41,
-          "b": 82,
-          "a": 1
-        },
-        "hsl": {
-          "h": 210,
-          "s": 100,
-          "l": 16.07843137254902,
-          "a": 1
-        },
-        "hsv": {
-          "h": 210,
-          "s": 1,
-          "v": 0.3215686274509804,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "blue",
-        "600-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-blue-600-rgb",
-    {
-      "$type": "color",
-      "$value": "0 41 82",
-      "value": "0 41 82",
-      "filePath": "tokens/color/crayon/blue.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.blue.600}",
-        "value": "{color.blue.600}"
-      },
-      "name": "rh-color-blue-600-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "blue",
-        "item": "600-rgb",
-        "hex": "002952",
-        "rgb": {
-          "r": 0,
-          "g": 41,
-          "b": 82,
-          "a": 1
-        },
-        "hsl": {
-          "h": 210,
-          "s": 100,
-          "l": 16.07843137254902,
-          "a": 1
-        },
-        "hsv": {
-          "h": 210,
-          "s": 1,
-          "v": 0.3215686274509804,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "blue",
-        "600-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-cyan-50",
-    {
-      "$value": "#f2f9f9",
-      "$description": "Alert - Default background",
-      "value": "#f2f9f9",
-      "filePath": "tokens/color/crayon/cyan.yml",
-      "isSource": true,
-      "original": {
-        "$value": "#f2f9f9",
-        "$description": "Alert - Default background",
-        "value": "#f2f9f9"
-      },
-      "name": "rh-color-cyan-50",
-      "attributes": {
-        "category": "color",
-        "type": "cyan",
-        "item": "50",
-        "hex": "f2f9f9",
-        "rgb": {
-          "r": 242,
-          "g": 249,
-          "b": 249,
-          "a": 1
-        },
-        "hsl": {
-          "h": 180,
-          "s": 36.84210526315793,
-          "l": 96.27450980392156,
-          "a": 1
-        },
-        "hsv": {
-          "h": 180,
-          "s": 0.0281124497991968,
-          "v": 0.9764705882352941,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "cyan",
-        "50"
-      ],
-      "comment": "Alert - Default background",
-      "$type": "color"
-    }
-  ],
-  [
-    "--rh-color-cyan-100",
-    {
-      "$value": "#a2d9d9",
-      "$description": "Label (Cyan) border color",
-      "value": "#a2d9d9",
-      "filePath": "tokens/color/crayon/cyan.yml",
-      "isSource": true,
-      "original": {
-        "$value": "#a2d9d9",
-        "$description": "Label (Cyan) border color",
-        "value": "#a2d9d9"
-      },
-      "name": "rh-color-cyan-100",
-      "attributes": {
-        "category": "color",
-        "type": "cyan",
-        "item": "100",
-        "hex": "a2d9d9",
-        "rgb": {
-          "r": 162,
-          "g": 217,
-          "b": 217,
-          "a": 1
-        },
-        "hsl": {
-          "h": 180,
-          "s": 41.98473282442749,
-          "l": 74.31372549019608,
-          "a": 1
-        },
-        "hsv": {
-          "h": 180,
-          "s": 0.2534562211981567,
-          "v": 0.8509803921568627,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "cyan",
-        "100"
-      ],
-      "comment": "Label (Cyan) border color",
-      "$type": "color"
-    }
-  ],
-  [
-    "--rh-color-cyan-300",
-    {
-      "$value": "#009596",
-      "$description": "Alert - Default accent",
-      "value": "#009596",
-      "filePath": "tokens/color/crayon/cyan.yml",
-      "isSource": true,
-      "original": {
-        "$value": "#009596",
-        "$description": "Alert - Default accent",
-        "value": "#009596"
-      },
-      "name": "rh-color-cyan-300",
-      "attributes": {
-        "category": "color",
-        "type": "cyan",
-        "item": "300",
-        "hex": "009596",
-        "rgb": {
-          "r": 0,
-          "g": 149,
-          "b": 150,
-          "a": 1
-        },
-        "hsl": {
-          "h": 180.40000000000003,
-          "s": 100,
-          "l": 29.411764705882355,
-          "a": 1
-        },
-        "hsv": {
-          "h": 180.40000000000003,
-          "s": 1,
-          "v": 0.5882352941176471,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "cyan",
-        "300"
-      ],
-      "comment": "Alert - Default accent",
-      "$type": "color"
-    }
-  ],
-  [
-    "--rh-color-cyan-400",
-    {
-      "$value": "#005f60",
-      "$description": "Alert - Default accent",
-      "value": "#005f60",
-      "filePath": "tokens/color/crayon/cyan.yml",
-      "isSource": true,
-      "original": {
-        "$value": "#005f60",
-        "$description": "Alert - Default accent",
-        "value": "#005f60"
-      },
-      "name": "rh-color-cyan-400",
-      "attributes": {
-        "category": "color",
-        "type": "cyan",
-        "item": "400",
-        "hex": "005f60",
-        "rgb": {
-          "r": 0,
-          "g": 95,
-          "b": 96,
-          "a": 1
-        },
-        "hsl": {
-          "h": 180.62499999999997,
-          "s": 100,
-          "l": 18.823529411764707,
-          "a": 1
-        },
-        "hsv": {
-          "h": 180.62499999999997,
-          "s": 1,
-          "v": 0.3764705882352941,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "cyan",
-        "400"
-      ],
-      "comment": "Alert - Default accent",
-      "$type": "color"
-    }
-  ],
-  [
-    "--rh-color-cyan-500",
-    {
-      "$value": "#003737",
-      "$description": "Alert - Default title text",
-      "value": "#003737",
-      "filePath": "tokens/color/crayon/cyan.yml",
-      "isSource": true,
-      "original": {
-        "$value": "#003737",
-        "$description": "Alert - Default title text",
-        "value": "#003737"
-      },
-      "name": "rh-color-cyan-500",
-      "attributes": {
-        "category": "color",
-        "type": "cyan",
-        "item": "500",
-        "hex": "003737",
-        "rgb": {
-          "r": 0,
-          "g": 55,
-          "b": 55,
-          "a": 1
-        },
-        "hsl": {
-          "h": 180,
-          "s": 100,
-          "l": 10.784313725490197,
-          "a": 1
-        },
-        "hsv": {
-          "h": 180,
-          "s": 1,
-          "v": 0.21568627450980393,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "cyan",
-        "500"
-      ],
-      "comment": "Alert - Default title text",
-      "$type": "color"
-    }
-  ],
-  [
-    "--rh-color-cyan-50-hsl",
-    {
-      "$type": "color",
-      "$value": "180 36.84210526315793% 96.27450980392156%",
-      "value": "180 36.84210526315793% 96.27450980392156%",
-      "filePath": "tokens/color/crayon/cyan.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.cyan.50}",
-        "value": "{color.cyan.50}"
-      },
-      "name": "rh-color-cyan-50-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "cyan",
-        "item": "50-hsl",
-        "hex": "f2f9f9",
-        "rgb": {
-          "r": 242,
-          "g": 249,
-          "b": 249,
-          "a": 1
-        },
-        "hsl": {
-          "h": 180,
-          "s": 36.84210526315793,
-          "l": 96.27450980392156,
-          "a": 1
-        },
-        "hsv": {
-          "h": 180,
-          "s": 0.0281124497991968,
-          "v": 0.9764705882352941,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "cyan",
-        "50-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-cyan-50-rgb",
-    {
-      "$type": "color",
-      "$value": "242 249 249",
-      "value": "242 249 249",
-      "filePath": "tokens/color/crayon/cyan.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.cyan.50}",
-        "value": "{color.cyan.50}"
-      },
-      "name": "rh-color-cyan-50-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "cyan",
-        "item": "50-rgb",
-        "hex": "f2f9f9",
-        "rgb": {
-          "r": 242,
-          "g": 249,
-          "b": 249,
-          "a": 1
-        },
-        "hsl": {
-          "h": 180,
-          "s": 36.84210526315793,
-          "l": 96.27450980392156,
-          "a": 1
-        },
-        "hsv": {
-          "h": 180,
-          "s": 0.0281124497991968,
-          "v": 0.9764705882352941,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "cyan",
         "50-rgb"
       ]
     }
   ],
   [
-    "--rh-color-cyan-100-hsl",
+    "--rh-color-blue-60-hsl",
     {
       "$type": "color",
-      "$value": "180 41.98473282442749% 74.31372549019608%",
-      "value": "180 41.98473282442749% 74.31372549019608%",
-      "filePath": "tokens/color/crayon/cyan.yml",
+      "$value": "209.80392156862746 100% 30%",
+      "value": "209.80392156862746 100% 30%",
+      "filePath": "tokens/color/crayon/blue.yaml",
       "isSource": true,
       "original": {
         "$type": "color",
-        "$value": "{color.cyan.100}",
-        "value": "{color.cyan.100}"
+        "$value": "{color.blue.60}",
+        "value": "{color.blue.60}"
       },
-      "name": "rh-color-cyan-100-hsl",
+      "name": "rh-color-blue-60-hsl",
       "attributes": {
         "category": "color",
-        "type": "cyan",
-        "item": "100-hsl",
-        "hex": "a2d9d9",
-        "rgb": {
-          "r": 162,
-          "g": 217,
-          "b": 217,
-          "a": 1
-        },
-        "hsl": {
-          "h": 180,
-          "s": 41.98473282442749,
-          "l": 74.31372549019608,
-          "a": 1
-        },
-        "hsv": {
-          "h": 180,
-          "s": 0.2534562211981567,
-          "v": 0.8509803921568627,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "cyan",
-        "100-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-cyan-100-rgb",
-    {
-      "$type": "color",
-      "$value": "162 217 217",
-      "value": "162 217 217",
-      "filePath": "tokens/color/crayon/cyan.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.cyan.100}",
-        "value": "{color.cyan.100}"
-      },
-      "name": "rh-color-cyan-100-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "cyan",
-        "item": "100-rgb",
-        "hex": "a2d9d9",
-        "rgb": {
-          "r": 162,
-          "g": 217,
-          "b": 217,
-          "a": 1
-        },
-        "hsl": {
-          "h": 180,
-          "s": 41.98473282442749,
-          "l": 74.31372549019608,
-          "a": 1
-        },
-        "hsv": {
-          "h": 180,
-          "s": 0.2534562211981567,
-          "v": 0.8509803921568627,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "cyan",
-        "100-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-cyan-300-hsl",
-    {
-      "$type": "color",
-      "$value": "180.40000000000003 100% 29.411764705882355%",
-      "value": "180.40000000000003 100% 29.411764705882355%",
-      "filePath": "tokens/color/crayon/cyan.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.cyan.300}",
-        "value": "{color.cyan.300}"
-      },
-      "name": "rh-color-cyan-300-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "cyan",
-        "item": "300-hsl",
-        "hex": "009596",
+        "type": "blue",
+        "item": "60-hsl",
+        "hex": "004d99",
         "rgb": {
           "r": 0,
-          "g": 149,
-          "b": 150,
+          "g": 77,
+          "b": 153,
           "a": 1
         },
         "hsl": {
-          "h": 180.40000000000003,
+          "h": 209.80392156862746,
           "s": 100,
-          "l": 29.411764705882355,
+          "l": 30,
           "a": 1
         },
         "hsv": {
-          "h": 180.40000000000003,
+          "h": 209.80392156862746,
           "s": 1,
-          "v": 0.5882352941176471,
+          "v": 0.6,
           "a": 1
         },
         "isLight": false
       },
       "path": [
         "color",
-        "cyan",
-        "300-hsl"
+        "blue",
+        "60-hsl"
       ]
     }
   ],
   [
-    "--rh-color-cyan-300-rgb",
+    "--rh-color-blue-60-rgb",
     {
       "$type": "color",
-      "$value": "0 149 150",
-      "value": "0 149 150",
-      "filePath": "tokens/color/crayon/cyan.yml",
+      "$value": "0 77 153",
+      "value": "0 77 153",
+      "filePath": "tokens/color/crayon/blue.yaml",
       "isSource": true,
       "original": {
         "$type": "color",
-        "$value": "{color.cyan.300}",
-        "value": "{color.cyan.300}"
+        "$value": "{color.blue.60}",
+        "value": "{color.blue.60}"
       },
-      "name": "rh-color-cyan-300-rgb",
+      "name": "rh-color-blue-60-rgb",
       "attributes": {
         "category": "color",
-        "type": "cyan",
-        "item": "300-rgb",
-        "hex": "009596",
+        "type": "blue",
+        "item": "60-rgb",
+        "hex": "004d99",
         "rgb": {
           "r": 0,
-          "g": 149,
-          "b": 150,
+          "g": 77,
+          "b": 153,
           "a": 1
         },
         "hsl": {
-          "h": 180.40000000000003,
+          "h": 209.80392156862746,
           "s": 100,
-          "l": 29.411764705882355,
+          "l": 30,
           "a": 1
         },
         "hsv": {
-          "h": 180.40000000000003,
+          "h": 209.80392156862746,
           "s": 1,
-          "v": 0.5882352941176471,
+          "v": 0.6,
           "a": 1
         },
         "isLight": false
       },
       "path": [
         "color",
-        "cyan",
-        "300-rgb"
+        "blue",
+        "60-rgb"
       ]
     }
   ],
   [
-    "--rh-color-cyan-400-hsl",
+    "--rh-color-blue-70-hsl",
     {
       "$type": "color",
-      "$value": "180.62499999999997 100% 18.823529411764707%",
-      "value": "180.62499999999997 100% 18.823529411764707%",
-      "filePath": "tokens/color/crayon/cyan.yml",
+      "$value": "210 100% 20%",
+      "value": "210 100% 20%",
+      "filePath": "tokens/color/crayon/blue.yaml",
       "isSource": true,
       "original": {
         "$type": "color",
-        "$value": "{color.cyan.400}",
-        "value": "{color.cyan.400}"
+        "$value": "{color.blue.70}",
+        "value": "{color.blue.70}"
       },
-      "name": "rh-color-cyan-400-hsl",
+      "name": "rh-color-blue-70-hsl",
       "attributes": {
         "category": "color",
-        "type": "cyan",
-        "item": "400-hsl",
-        "hex": "005f60",
+        "type": "blue",
+        "item": "70-hsl",
+        "hex": "003366",
         "rgb": {
           "r": 0,
-          "g": 95,
-          "b": 96,
+          "g": 51,
+          "b": 102,
           "a": 1
         },
         "hsl": {
-          "h": 180.62499999999997,
+          "h": 210,
           "s": 100,
-          "l": 18.823529411764707,
+          "l": 20,
           "a": 1
         },
         "hsv": {
-          "h": 180.62499999999997,
+          "h": 210,
           "s": 1,
-          "v": 0.3764705882352941,
+          "v": 0.4,
           "a": 1
         },
         "isLight": false
       },
       "path": [
         "color",
-        "cyan",
-        "400-hsl"
+        "blue",
+        "70-hsl"
       ]
     }
   ],
   [
-    "--rh-color-cyan-400-rgb",
+    "--rh-color-blue-70-rgb",
     {
       "$type": "color",
-      "$value": "0 95 96",
-      "value": "0 95 96",
-      "filePath": "tokens/color/crayon/cyan.yml",
+      "$value": "0 51 102",
+      "value": "0 51 102",
+      "filePath": "tokens/color/crayon/blue.yaml",
       "isSource": true,
       "original": {
         "$type": "color",
-        "$value": "{color.cyan.400}",
-        "value": "{color.cyan.400}"
+        "$value": "{color.blue.70}",
+        "value": "{color.blue.70}"
       },
-      "name": "rh-color-cyan-400-rgb",
+      "name": "rh-color-blue-70-rgb",
       "attributes": {
         "category": "color",
-        "type": "cyan",
-        "item": "400-rgb",
-        "hex": "005f60",
+        "type": "blue",
+        "item": "70-rgb",
+        "hex": "003366",
         "rgb": {
           "r": 0,
-          "g": 95,
-          "b": 96,
+          "g": 51,
+          "b": 102,
           "a": 1
         },
         "hsl": {
-          "h": 180.62499999999997,
+          "h": 210,
           "s": 100,
-          "l": 18.823529411764707,
+          "l": 20,
           "a": 1
         },
         "hsv": {
-          "h": 180.62499999999997,
+          "h": 210,
           "s": 1,
-          "v": 0.3764705882352941,
+          "v": 0.4,
           "a": 1
         },
         "isLight": false
       },
       "path": [
         "color",
-        "cyan",
-        "400-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-cyan-500-hsl",
-    {
-      "$type": "color",
-      "$value": "180 100% 10.784313725490197%",
-      "value": "180 100% 10.784313725490197%",
-      "filePath": "tokens/color/crayon/cyan.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.cyan.500}",
-        "value": "{color.cyan.500}"
-      },
-      "name": "rh-color-cyan-500-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "cyan",
-        "item": "500-hsl",
-        "hex": "003737",
-        "rgb": {
-          "r": 0,
-          "g": 55,
-          "b": 55,
-          "a": 1
-        },
-        "hsl": {
-          "h": 180,
-          "s": 100,
-          "l": 10.784313725490197,
-          "a": 1
-        },
-        "hsv": {
-          "h": 180,
-          "s": 1,
-          "v": 0.21568627450980393,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "cyan",
-        "500-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-cyan-500-rgb",
-    {
-      "$type": "color",
-      "$value": "0 55 55",
-      "value": "0 55 55",
-      "filePath": "tokens/color/crayon/cyan.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.cyan.500}",
-        "value": "{color.cyan.500}"
-      },
-      "name": "rh-color-cyan-500-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "cyan",
-        "item": "500-rgb",
-        "hex": "003737",
-        "rgb": {
-          "r": 0,
-          "g": 55,
-          "b": 55,
-          "a": 1
-        },
-        "hsl": {
-          "h": 180,
-          "s": 100,
-          "l": 10.784313725490197,
-          "a": 1
-        },
-        "hsv": {
-          "h": 180,
-          "s": 1,
-          "v": 0.21568627450980393,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "cyan",
-        "500-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-gold-50",
-    {
-      "$value": "#fdf7e7",
-      "$description": "Alert - Warning background",
-      "value": "#fdf7e7",
-      "filePath": "tokens/color/crayon/gold.yml",
-      "isSource": true,
-      "original": {
-        "$value": "#fdf7e7",
-        "$description": "Alert - Warning background",
-        "value": "#fdf7e7"
-      },
-      "name": "rh-color-gold-50",
-      "attributes": {
-        "category": "color",
-        "type": "gold",
-        "item": "50",
-        "hex": "fdf7e7",
-        "rgb": {
-          "r": 253,
-          "g": 247,
-          "b": 231,
-          "a": 1
-        },
-        "hsl": {
-          "h": 43.636363636363626,
-          "s": 84.61538461538467,
-          "l": 94.90196078431372,
-          "a": 1
-        },
-        "hsv": {
-          "h": 43.636363636363626,
-          "s": 0.08695652173913046,
-          "v": 0.9921568627450981,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "gold",
-        "50"
-      ],
-      "comment": "Alert - Warning background",
-      "$type": "color"
-    }
-  ],
-  [
-    "--rh-color-gold-400",
-    {
-      "$value": "#f0ab00",
-      "$description": "Alert - Warning accent",
-      "value": "#f0ab00",
-      "filePath": "tokens/color/crayon/gold.yml",
-      "isSource": true,
-      "original": {
-        "$value": "#f0ab00",
-        "$description": "Alert - Warning accent",
-        "value": "#f0ab00"
-      },
-      "name": "rh-color-gold-400",
-      "attributes": {
-        "category": "color",
-        "type": "gold",
-        "item": "400",
-        "hex": "f0ab00",
-        "rgb": {
-          "r": 240,
-          "g": 171,
-          "b": 0,
-          "a": 1
-        },
-        "hsl": {
-          "h": 42.74999999999999,
-          "s": 100,
-          "l": 47.05882352941176,
-          "a": 1
-        },
-        "hsv": {
-          "h": 42.74999999999999,
-          "s": 1,
-          "v": 0.9411764705882353,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "gold",
-        "400"
-      ],
-      "comment": "Alert - Warning accent",
-      "$type": "color"
-    }
-  ],
-  [
-    "--rh-color-gold-600",
-    {
-      "$value": "#795600",
-      "$description": "Alert - Warning title text",
-      "value": "#795600",
-      "filePath": "tokens/color/crayon/gold.yml",
-      "isSource": true,
-      "original": {
-        "$value": "#795600",
-        "$description": "Alert - Warning title text",
-        "value": "#795600"
-      },
-      "name": "rh-color-gold-600",
-      "attributes": {
-        "category": "color",
-        "type": "gold",
-        "item": "600",
-        "hex": "795600",
-        "rgb": {
-          "r": 121,
-          "g": 86,
-          "b": 0,
-          "a": 1
-        },
-        "hsl": {
-          "h": 42.64462809917356,
-          "s": 100,
-          "l": 23.72549019607843,
-          "a": 1
-        },
-        "hsv": {
-          "h": 42.64462809917356,
-          "s": 1,
-          "v": 0.4745098039215686,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "gold",
-        "600"
-      ],
-      "comment": "Alert - Warning title text",
-      "$type": "color"
-    }
-  ],
-  [
-    "--rh-color-gold-50-hsl",
-    {
-      "$type": "color",
-      "$value": "43.636363636363626 84.61538461538467% 94.90196078431372%",
-      "value": "43.636363636363626 84.61538461538467% 94.90196078431372%",
-      "filePath": "tokens/color/crayon/gold.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.gold.50}",
-        "value": "{color.gold.50}"
-      },
-      "name": "rh-color-gold-50-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "gold",
-        "item": "50-hsl",
-        "hex": "fdf7e7",
-        "rgb": {
-          "r": 253,
-          "g": 247,
-          "b": 231,
-          "a": 1
-        },
-        "hsl": {
-          "h": 43.636363636363626,
-          "s": 84.61538461538467,
-          "l": 94.90196078431372,
-          "a": 1
-        },
-        "hsv": {
-          "h": 43.636363636363626,
-          "s": 0.08695652173913046,
-          "v": 0.9921568627450981,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "gold",
-        "50-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-gold-50-rgb",
-    {
-      "$type": "color",
-      "$value": "253 247 231",
-      "value": "253 247 231",
-      "filePath": "tokens/color/crayon/gold.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.gold.50}",
-        "value": "{color.gold.50}"
-      },
-      "name": "rh-color-gold-50-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "gold",
-        "item": "50-rgb",
-        "hex": "fdf7e7",
-        "rgb": {
-          "r": 253,
-          "g": 247,
-          "b": 231,
-          "a": 1
-        },
-        "hsl": {
-          "h": 43.636363636363626,
-          "s": 84.61538461538467,
-          "l": 94.90196078431372,
-          "a": 1
-        },
-        "hsv": {
-          "h": 43.636363636363626,
-          "s": 0.08695652173913046,
-          "v": 0.9921568627450981,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "gold",
-        "50-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-gold-400-hsl",
-    {
-      "$type": "color",
-      "$value": "42.74999999999999 100% 47.05882352941176%",
-      "value": "42.74999999999999 100% 47.05882352941176%",
-      "filePath": "tokens/color/crayon/gold.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.gold.400}",
-        "value": "{color.gold.400}"
-      },
-      "name": "rh-color-gold-400-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "gold",
-        "item": "400-hsl",
-        "hex": "f0ab00",
-        "rgb": {
-          "r": 240,
-          "g": 171,
-          "b": 0,
-          "a": 1
-        },
-        "hsl": {
-          "h": 42.74999999999999,
-          "s": 100,
-          "l": 47.05882352941176,
-          "a": 1
-        },
-        "hsv": {
-          "h": 42.74999999999999,
-          "s": 1,
-          "v": 0.9411764705882353,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "gold",
-        "400-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-gold-400-rgb",
-    {
-      "$type": "color",
-      "$value": "240 171 0",
-      "value": "240 171 0",
-      "filePath": "tokens/color/crayon/gold.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.gold.400}",
-        "value": "{color.gold.400}"
-      },
-      "name": "rh-color-gold-400-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "gold",
-        "item": "400-rgb",
-        "hex": "f0ab00",
-        "rgb": {
-          "r": 240,
-          "g": 171,
-          "b": 0,
-          "a": 1
-        },
-        "hsl": {
-          "h": 42.74999999999999,
-          "s": 100,
-          "l": 47.05882352941176,
-          "a": 1
-        },
-        "hsv": {
-          "h": 42.74999999999999,
-          "s": 1,
-          "v": 0.9411764705882353,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "gold",
-        "400-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-gold-600-hsl",
-    {
-      "$type": "color",
-      "$value": "42.64462809917356 100% 23.72549019607843%",
-      "value": "42.64462809917356 100% 23.72549019607843%",
-      "filePath": "tokens/color/crayon/gold.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.gold.600}",
-        "value": "{color.gold.600}"
-      },
-      "name": "rh-color-gold-600-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "gold",
-        "item": "600-hsl",
-        "hex": "795600",
-        "rgb": {
-          "r": 121,
-          "g": 86,
-          "b": 0,
-          "a": 1
-        },
-        "hsl": {
-          "h": 42.64462809917356,
-          "s": 100,
-          "l": 23.72549019607843,
-          "a": 1
-        },
-        "hsv": {
-          "h": 42.64462809917356,
-          "s": 1,
-          "v": 0.4745098039215686,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "gold",
-        "600-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-gold-600-rgb",
-    {
-      "$type": "color",
-      "$value": "121 86 0",
-      "value": "121 86 0",
-      "filePath": "tokens/color/crayon/gold.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.gold.600}",
-        "value": "{color.gold.600}"
-      },
-      "name": "rh-color-gold-600-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "gold",
-        "item": "600-rgb",
-        "hex": "795600",
-        "rgb": {
-          "r": 121,
-          "g": 86,
-          "b": 0,
-          "a": 1
-        },
-        "hsl": {
-          "h": 42.64462809917356,
-          "s": 100,
-          "l": 23.72549019607843,
-          "a": 1
-        },
-        "hsv": {
-          "h": 42.64462809917356,
-          "s": 1,
-          "v": 0.4745098039215686,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "gold",
-        "600-rgb"
+        "blue",
+        "70-rgb"
       ]
     }
   ],
@@ -3880,1299 +2766,12 @@ export const tokens = new Map([
   [
     "--rh-color-gray-10",
     {
-      "$value": "#E0E0E0",
-      "$description": "Secondary surface (light theme)",
-      "attributes": {
-        "type": "gray",
-        "category": "color",
-        "item": "10",
-        "hex": "e0e0e0",
-        "rgb": {
-          "r": 224,
-          "g": 224,
-          "b": 224,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 0,
-          "l": 87.84313725490196,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 0,
-          "v": 0.8784313725490196,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "value": "#e0e0e0",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
-      "original": {
-        "$value": "#E0E0E0",
-        "$description": "Secondary surface (light theme)",
-        "attributes": {
-          "type": "gray"
-        },
-        "value": "#E0E0E0"
-      },
-      "name": "rh-color-gray-10",
-      "path": [
-        "color",
-        "gray",
-        "10"
-      ],
-      "comment": "Secondary surface (light theme)",
-      "$type": "color"
-    }
-  ],
-  [
-    "--rh-color-gray-20",
-    {
-      "$value": "#C7C7C7",
-      "$description": "Subtle borders (light theme)",
-      "attributes": {
-        "type": "gray",
-        "category": "color",
-        "item": "20",
-        "hex": "c7c7c7",
-        "rgb": {
-          "r": 199,
-          "g": 199,
-          "b": 199,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 0,
-          "l": 78.03921568627452,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 0,
-          "v": 0.7803921568627451,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "value": "#c7c7c7",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
-      "original": {
-        "$value": "#C7C7C7",
-        "$description": "Subtle borders (light theme)",
-        "attributes": {
-          "type": "gray"
-        },
-        "value": "#C7C7C7"
-      },
-      "name": "rh-color-gray-20",
-      "path": [
-        "color",
-        "gray",
-        "20"
-      ],
-      "comment": "Subtle borders (light theme)",
-      "$type": "color"
-    }
-  ],
-  [
-    "--rh-color-gray-30",
-    {
-      "$value": "#A3A3A3",
-      "$description": "Subtle icon (hover state)",
-      "attributes": {
-        "type": "gray",
-        "category": "color",
-        "item": "30",
-        "hex": "a3a3a3",
-        "rgb": {
-          "r": 163,
-          "g": 163,
-          "b": 163,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 0,
-          "l": 63.921568627450974,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 0,
-          "v": 0.6392156862745098,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "value": "#a3a3a3",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
-      "original": {
-        "$value": "#A3A3A3",
-        "$description": "Subtle icon (hover state)",
-        "attributes": {
-          "type": "gray"
-        },
-        "value": "#A3A3A3"
-      },
-      "name": "rh-color-gray-30",
-      "path": [
-        "color",
-        "gray",
-        "30"
-      ],
-      "comment": "Subtle icon (hover state)",
-      "$type": "color"
-    }
-  ],
-  [
-    "--rh-color-gray-40",
-    {
-      "$value": "#707070",
-      "$description": "Subtle icon",
-      "attributes": {
-        "type": "gray",
-        "category": "color",
-        "item": "40",
-        "hex": "707070",
-        "rgb": {
-          "r": 112,
-          "g": 112,
-          "b": 112,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 0,
-          "l": 43.92156862745098,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 0,
-          "v": 0.4392156862745098,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "value": "#707070",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
-      "original": {
-        "$value": "#707070",
-        "$description": "Subtle icon",
-        "attributes": {
-          "type": "gray"
-        },
-        "value": "#707070"
-      },
-      "name": "rh-color-gray-40",
-      "path": [
-        "color",
-        "gray",
-        "40"
-      ],
-      "comment": "Subtle icon",
-      "$type": "color"
-    }
-  ],
-  [
-    "--rh-color-gray-50",
-    {
-      "$value": "#4D4D4D",
-      "$description": "Secondary text (light theme)",
-      "attributes": {
-        "type": "gray",
-        "category": "color",
-        "item": "50",
-        "hex": "4d4d4d",
-        "rgb": {
-          "r": 77,
-          "g": 77,
-          "b": 77,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 0,
-          "l": 30.19607843137255,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 0,
-          "v": 0.30196078431372547,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "value": "#4d4d4d",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
-      "original": {
-        "$value": "#4D4D4D",
-        "$description": "Secondary text (light theme)",
-        "attributes": {
-          "type": "gray"
-        },
-        "value": "#4D4D4D"
-      },
-      "name": "rh-color-gray-50",
-      "path": [
-        "color",
-        "gray",
-        "50"
-      ],
-      "comment": "Secondary text (light theme)",
-      "$type": "color"
-    }
-  ],
-  [
-    "--rh-color-gray-60",
-    {
-      "$value": "#383838",
-      "$description": "Tertiary surface (dark theme)",
-      "attributes": {
-        "type": "gray",
-        "category": "color",
-        "item": "60",
-        "hex": "383838",
-        "rgb": {
-          "r": 56,
-          "g": 56,
-          "b": 56,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 0,
-          "l": 21.96078431372549,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 0,
-          "v": 0.2196078431372549,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "value": "#383838",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
-      "original": {
-        "$value": "#383838",
-        "$description": "Tertiary surface (dark theme)",
-        "attributes": {
-          "type": "gray"
-        },
-        "value": "#383838"
-      },
-      "name": "rh-color-gray-60",
-      "path": [
-        "color",
-        "gray",
-        "60"
-      ],
-      "comment": "Tertiary surface (dark theme)",
-      "$type": "color"
-    }
-  ],
-  [
-    "--rh-color-gray-70",
-    {
-      "$value": "#292929",
-      "$description": null,
-      "attributes": {
-        "type": "gray",
-        "category": "color",
-        "item": "70",
-        "hex": "292929",
-        "rgb": {
-          "r": 41,
-          "g": 41,
-          "b": 41,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 0,
-          "l": 16.07843137254902,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 0,
-          "v": 0.1607843137254902,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "value": "#292929",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
-      "original": {
-        "$value": "#292929",
-        "$description": null,
-        "attributes": {
-          "type": "gray"
-        },
-        "value": "#292929"
-      },
-      "name": "rh-color-gray-70",
-      "path": [
-        "color",
-        "gray",
-        "70"
-      ],
-      "comment": null,
-      "$type": "color"
-    }
-  ],
-  [
-    "--rh-color-gray-80",
-    {
-      "$value": "#1F1F1F",
-      "$description": "Secondary surface (dark theme)",
-      "attributes": {
-        "type": "gray",
-        "category": "color",
-        "item": "80",
-        "hex": "1f1f1f",
-        "rgb": {
-          "r": 31,
-          "g": 31,
-          "b": 31,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 0,
-          "l": 12.156862745098039,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 0,
-          "v": 0.12156862745098039,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "value": "#1f1f1f",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
-      "original": {
-        "$value": "#1F1F1F",
-        "$description": "Secondary surface (dark theme)",
-        "attributes": {
-          "type": "gray"
-        },
-        "value": "#1F1F1F"
-      },
-      "name": "rh-color-gray-80",
-      "path": [
-        "color",
-        "gray",
-        "80"
-      ],
-      "comment": "Secondary surface (dark theme)",
-      "$type": "color"
-    }
-  ],
-  [
-    "--rh-color-gray-90",
-    {
-      "$value": "#151515",
-      "$description": "Primary surface (dark theme) or primary text (light theme)",
-      "attributes": {
-        "type": "gray",
-        "category": "color",
-        "item": "90",
-        "hex": "151515",
-        "rgb": {
-          "r": 21,
-          "g": 21,
-          "b": 21,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 0,
-          "l": 8.235294117647058,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 0,
-          "v": 0.08235294117647059,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "value": "#151515",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
-      "original": {
-        "$value": "#151515",
-        "$description": "Primary surface (dark theme) or primary text (light theme)",
-        "attributes": {
-          "type": "gray"
-        },
-        "value": "#151515"
-      },
-      "name": "rh-color-gray-90",
-      "path": [
-        "color",
-        "gray",
-        "90"
-      ],
-      "comment": "Primary surface (dark theme) or primary text (light theme)",
-      "$type": "color"
-    }
-  ],
-  [
-    "--rh-color-gray-10-hsl",
-    {
-      "$type": "color",
-      "$value": "0 0% 87.84313725490196%",
-      "value": "0 0% 87.84313725490196%",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.gray.10}",
-        "value": "{color.gray.10}"
-      },
-      "name": "rh-color-gray-10-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "gray",
-        "item": "10-hsl",
-        "hex": "e0e0e0",
-        "rgb": {
-          "r": 224,
-          "g": 224,
-          "b": 224,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 0,
-          "l": 87.84313725490196,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 0,
-          "v": 0.8784313725490196,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "gray",
-        "10-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-gray-10-rgb",
-    {
-      "$type": "color",
-      "$value": "224 224 224",
-      "value": "224 224 224",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.gray.10}",
-        "value": "{color.gray.10}"
-      },
-      "name": "rh-color-gray-10-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "gray",
-        "item": "10-rgb",
-        "hex": "e0e0e0",
-        "rgb": {
-          "r": 224,
-          "g": 224,
-          "b": 224,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 0,
-          "l": 87.84313725490196,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 0,
-          "v": 0.8784313725490196,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "gray",
-        "10-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-gray-20-hsl",
-    {
-      "$type": "color",
-      "$value": "0 0% 78.03921568627452%",
-      "value": "0 0% 78.03921568627452%",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.gray.20}",
-        "value": "{color.gray.20}"
-      },
-      "name": "rh-color-gray-20-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "gray",
-        "item": "20-hsl",
-        "hex": "c7c7c7",
-        "rgb": {
-          "r": 199,
-          "g": 199,
-          "b": 199,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 0,
-          "l": 78.03921568627452,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 0,
-          "v": 0.7803921568627451,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "gray",
-        "20-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-gray-20-rgb",
-    {
-      "$type": "color",
-      "$value": "199 199 199",
-      "value": "199 199 199",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.gray.20}",
-        "value": "{color.gray.20}"
-      },
-      "name": "rh-color-gray-20-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "gray",
-        "item": "20-rgb",
-        "hex": "c7c7c7",
-        "rgb": {
-          "r": 199,
-          "g": 199,
-          "b": 199,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 0,
-          "l": 78.03921568627452,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 0,
-          "v": 0.7803921568627451,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "gray",
-        "20-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-gray-30-hsl",
-    {
-      "$type": "color",
-      "$value": "0 0% 63.921568627450974%",
-      "value": "0 0% 63.921568627450974%",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.gray.30}",
-        "value": "{color.gray.30}"
-      },
-      "name": "rh-color-gray-30-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "gray",
-        "item": "30-hsl",
-        "hex": "a3a3a3",
-        "rgb": {
-          "r": 163,
-          "g": 163,
-          "b": 163,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 0,
-          "l": 63.921568627450974,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 0,
-          "v": 0.6392156862745098,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "gray",
-        "30-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-gray-30-rgb",
-    {
-      "$type": "color",
-      "$value": "163 163 163",
-      "value": "163 163 163",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.gray.30}",
-        "value": "{color.gray.30}"
-      },
-      "name": "rh-color-gray-30-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "gray",
-        "item": "30-rgb",
-        "hex": "a3a3a3",
-        "rgb": {
-          "r": 163,
-          "g": 163,
-          "b": 163,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 0,
-          "l": 63.921568627450974,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 0,
-          "v": 0.6392156862745098,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "gray",
-        "30-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-gray-40-hsl",
-    {
-      "$type": "color",
-      "$value": "0 0% 43.92156862745098%",
-      "value": "0 0% 43.92156862745098%",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.gray.40}",
-        "value": "{color.gray.40}"
-      },
-      "name": "rh-color-gray-40-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "gray",
-        "item": "40-hsl",
-        "hex": "707070",
-        "rgb": {
-          "r": 112,
-          "g": 112,
-          "b": 112,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 0,
-          "l": 43.92156862745098,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 0,
-          "v": 0.4392156862745098,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "gray",
-        "40-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-gray-40-rgb",
-    {
-      "$type": "color",
-      "$value": "112 112 112",
-      "value": "112 112 112",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.gray.40}",
-        "value": "{color.gray.40}"
-      },
-      "name": "rh-color-gray-40-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "gray",
-        "item": "40-rgb",
-        "hex": "707070",
-        "rgb": {
-          "r": 112,
-          "g": 112,
-          "b": 112,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 0,
-          "l": 43.92156862745098,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 0,
-          "v": 0.4392156862745098,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "gray",
-        "40-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-gray-50-hsl",
-    {
-      "$type": "color",
-      "$value": "0 0% 30.19607843137255%",
-      "value": "0 0% 30.19607843137255%",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.gray.50}",
-        "value": "{color.gray.50}"
-      },
-      "name": "rh-color-gray-50-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "gray",
-        "item": "50-hsl",
-        "hex": "4d4d4d",
-        "rgb": {
-          "r": 77,
-          "g": 77,
-          "b": 77,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 0,
-          "l": 30.19607843137255,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 0,
-          "v": 0.30196078431372547,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "gray",
-        "50-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-gray-50-rgb",
-    {
-      "$type": "color",
-      "$value": "77 77 77",
-      "value": "77 77 77",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.gray.50}",
-        "value": "{color.gray.50}"
-      },
-      "name": "rh-color-gray-50-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "gray",
-        "item": "50-rgb",
-        "hex": "4d4d4d",
-        "rgb": {
-          "r": 77,
-          "g": 77,
-          "b": 77,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 0,
-          "l": 30.19607843137255,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 0,
-          "v": 0.30196078431372547,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "gray",
-        "50-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-gray-60-hsl",
-    {
-      "$type": "color",
-      "$value": "0 0% 21.96078431372549%",
-      "value": "0 0% 21.96078431372549%",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.gray.60}",
-        "value": "{color.gray.60}"
-      },
-      "name": "rh-color-gray-60-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "gray",
-        "item": "60-hsl",
-        "hex": "383838",
-        "rgb": {
-          "r": 56,
-          "g": 56,
-          "b": 56,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 0,
-          "l": 21.96078431372549,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 0,
-          "v": 0.2196078431372549,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "gray",
-        "60-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-gray-60-rgb",
-    {
-      "$type": "color",
-      "$value": "56 56 56",
-      "value": "56 56 56",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.gray.60}",
-        "value": "{color.gray.60}"
-      },
-      "name": "rh-color-gray-60-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "gray",
-        "item": "60-rgb",
-        "hex": "383838",
-        "rgb": {
-          "r": 56,
-          "g": 56,
-          "b": 56,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 0,
-          "l": 21.96078431372549,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 0,
-          "v": 0.2196078431372549,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "gray",
-        "60-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-gray-70-hsl",
-    {
-      "$type": "color",
-      "$value": "0 0% 16.07843137254902%",
-      "value": "0 0% 16.07843137254902%",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.gray.70}",
-        "value": "{color.gray.70}"
-      },
-      "name": "rh-color-gray-70-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "gray",
-        "item": "70-hsl",
-        "hex": "292929",
-        "rgb": {
-          "r": 41,
-          "g": 41,
-          "b": 41,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 0,
-          "l": 16.07843137254902,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 0,
-          "v": 0.1607843137254902,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "gray",
-        "70-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-gray-70-rgb",
-    {
-      "$type": "color",
-      "$value": "41 41 41",
-      "value": "41 41 41",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.gray.70}",
-        "value": "{color.gray.70}"
-      },
-      "name": "rh-color-gray-70-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "gray",
-        "item": "70-rgb",
-        "hex": "292929",
-        "rgb": {
-          "r": 41,
-          "g": 41,
-          "b": 41,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 0,
-          "l": 16.07843137254902,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 0,
-          "v": 0.1607843137254902,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "gray",
-        "70-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-gray-80-hsl",
-    {
-      "$type": "color",
-      "$value": "0 0% 12.156862745098039%",
-      "value": "0 0% 12.156862745098039%",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.gray.80}",
-        "value": "{color.gray.80}"
-      },
-      "name": "rh-color-gray-80-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "gray",
-        "item": "80-hsl",
-        "hex": "1f1f1f",
-        "rgb": {
-          "r": 31,
-          "g": 31,
-          "b": 31,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 0,
-          "l": 12.156862745098039,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 0,
-          "v": 0.12156862745098039,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "gray",
-        "80-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-gray-80-rgb",
-    {
-      "$type": "color",
-      "$value": "31 31 31",
-      "value": "31 31 31",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.gray.80}",
-        "value": "{color.gray.80}"
-      },
-      "name": "rh-color-gray-80-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "gray",
-        "item": "80-rgb",
-        "hex": "1f1f1f",
-        "rgb": {
-          "r": 31,
-          "g": 31,
-          "b": 31,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 0,
-          "l": 12.156862745098039,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 0,
-          "v": 0.12156862745098039,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "gray",
-        "80-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-gray-90-hsl",
-    {
-      "$type": "color",
-      "$value": "0 0% 8.235294117647058%",
-      "value": "0 0% 8.235294117647058%",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.gray.90}",
-        "value": "{color.gray.90}"
-      },
-      "name": "rh-color-gray-90-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "gray",
-        "item": "90-hsl",
-        "hex": "151515",
-        "rgb": {
-          "r": 21,
-          "g": 21,
-          "b": 21,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 0,
-          "l": 8.235294117647058,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 0,
-          "v": 0.08235294117647059,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "gray",
-        "90-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-gray-90-rgb",
-    {
-      "$type": "color",
-      "$value": "21 21 21",
-      "value": "21 21 21",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.gray.90}",
-        "value": "{color.gray.90}"
-      },
-      "name": "rh-color-gray-90-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "gray",
-        "item": "90-rgb",
-        "hex": "151515",
-        "rgb": {
-          "r": 21,
-          "g": 21,
-          "b": 21,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 0,
-          "l": 8.235294117647058,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 0,
-          "v": 0.08235294117647059,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "gray",
-        "90-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-gray-05",
-    {
       "$value": "#F2F2F2",
       "$description": "Tertiary surface (light theme)",
       "attributes": {
         "type": "gray",
         "category": "color",
-        "item": "05",
+        "item": "10",
         "hex": "f2f2f2",
         "rgb": {
           "r": 242,
@@ -5205,18 +2804,477 @@ export const tokens = new Map([
         },
         "value": "#F2F2F2"
       },
-      "name": "rh-color-gray-05",
+      "name": "rh-color-gray-10",
       "path": [
         "color",
         "gray",
-        "05"
+        "10"
       ],
       "comment": "Tertiary surface (light theme)",
       "$type": "color"
     }
   ],
   [
-    "--rh-color-gray-05-hsl",
+    "--rh-color-gray-20",
+    {
+      "$value": "#E0E0E0",
+      "$description": "Secondary surface (light theme)",
+      "attributes": {
+        "type": "gray",
+        "category": "color",
+        "item": "20",
+        "hex": "e0e0e0",
+        "rgb": {
+          "r": 224,
+          "g": 224,
+          "b": 224,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 87.84313725490196,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.8784313725490196,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "value": "#e0e0e0",
+      "filePath": "tokens/color/crayon/gray.yaml",
+      "isSource": true,
+      "original": {
+        "$value": "#E0E0E0",
+        "$description": "Secondary surface (light theme)",
+        "attributes": {
+          "type": "gray"
+        },
+        "value": "#E0E0E0"
+      },
+      "name": "rh-color-gray-20",
+      "path": [
+        "color",
+        "gray",
+        "20"
+      ],
+      "comment": "Secondary surface (light theme)",
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-gray-30",
+    {
+      "$value": "#C7C7C7",
+      "$description": "Subtle borders (light theme)",
+      "attributes": {
+        "type": "gray",
+        "category": "color",
+        "item": "30",
+        "hex": "c7c7c7",
+        "rgb": {
+          "r": 199,
+          "g": 199,
+          "b": 199,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 78.03921568627452,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.7803921568627451,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "value": "#c7c7c7",
+      "filePath": "tokens/color/crayon/gray.yaml",
+      "isSource": true,
+      "original": {
+        "$value": "#C7C7C7",
+        "$description": "Subtle borders (light theme)",
+        "attributes": {
+          "type": "gray"
+        },
+        "value": "#C7C7C7"
+      },
+      "name": "rh-color-gray-30",
+      "path": [
+        "color",
+        "gray",
+        "30"
+      ],
+      "comment": "Subtle borders (light theme)",
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-gray-40",
+    {
+      "$value": "#A3A3A3",
+      "$description": "Subtle icon (hover state)",
+      "attributes": {
+        "type": "gray",
+        "category": "color",
+        "item": "40",
+        "hex": "a3a3a3",
+        "rgb": {
+          "r": 163,
+          "g": 163,
+          "b": 163,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 63.921568627450974,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.6392156862745098,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "value": "#a3a3a3",
+      "filePath": "tokens/color/crayon/gray.yaml",
+      "isSource": true,
+      "original": {
+        "$value": "#A3A3A3",
+        "$description": "Subtle icon (hover state)",
+        "attributes": {
+          "type": "gray"
+        },
+        "value": "#A3A3A3"
+      },
+      "name": "rh-color-gray-40",
+      "path": [
+        "color",
+        "gray",
+        "40"
+      ],
+      "comment": "Subtle icon (hover state)",
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-gray-50",
+    {
+      "$value": "#707070",
+      "$description": "Subtle icon",
+      "attributes": {
+        "type": "gray",
+        "category": "color",
+        "item": "50",
+        "hex": "707070",
+        "rgb": {
+          "r": 112,
+          "g": 112,
+          "b": 112,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 43.92156862745098,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.4392156862745098,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "value": "#707070",
+      "filePath": "tokens/color/crayon/gray.yaml",
+      "isSource": true,
+      "original": {
+        "$value": "#707070",
+        "$description": "Subtle icon",
+        "attributes": {
+          "type": "gray"
+        },
+        "value": "#707070"
+      },
+      "name": "rh-color-gray-50",
+      "path": [
+        "color",
+        "gray",
+        "50"
+      ],
+      "comment": "Subtle icon",
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-gray-60",
+    {
+      "$value": "#4D4D4D",
+      "$description": "Secondary text (light theme)",
+      "attributes": {
+        "type": "gray",
+        "category": "color",
+        "item": "60",
+        "hex": "4d4d4d",
+        "rgb": {
+          "r": 77,
+          "g": 77,
+          "b": 77,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 30.19607843137255,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.30196078431372547,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "value": "#4d4d4d",
+      "filePath": "tokens/color/crayon/gray.yaml",
+      "isSource": true,
+      "original": {
+        "$value": "#4D4D4D",
+        "$description": "Secondary text (light theme)",
+        "attributes": {
+          "type": "gray"
+        },
+        "value": "#4D4D4D"
+      },
+      "name": "rh-color-gray-60",
+      "path": [
+        "color",
+        "gray",
+        "60"
+      ],
+      "comment": "Secondary text (light theme)",
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-gray-70",
+    {
+      "$value": "#383838",
+      "$description": "Tertiary surface (dark theme)",
+      "attributes": {
+        "type": "gray",
+        "category": "color",
+        "item": "70",
+        "hex": "383838",
+        "rgb": {
+          "r": 56,
+          "g": 56,
+          "b": 56,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 21.96078431372549,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.2196078431372549,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "value": "#383838",
+      "filePath": "tokens/color/crayon/gray.yaml",
+      "isSource": true,
+      "original": {
+        "$value": "#383838",
+        "$description": "Tertiary surface (dark theme)",
+        "attributes": {
+          "type": "gray"
+        },
+        "value": "#383838"
+      },
+      "name": "rh-color-gray-70",
+      "path": [
+        "color",
+        "gray",
+        "70"
+      ],
+      "comment": "Tertiary surface (dark theme)",
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-gray-80",
+    {
+      "$value": "#292929",
+      "$description": "Alternative tertiary surface (not available for use with context provider)",
+      "attributes": {
+        "type": "gray",
+        "category": "color",
+        "item": "80",
+        "hex": "292929",
+        "rgb": {
+          "r": 41,
+          "g": 41,
+          "b": 41,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 16.07843137254902,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.1607843137254902,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "value": "#292929",
+      "filePath": "tokens/color/crayon/gray.yaml",
+      "isSource": true,
+      "original": {
+        "$value": "#292929",
+        "$description": "Alternative tertiary surface (not available for use with context provider)",
+        "attributes": {
+          "type": "gray"
+        },
+        "value": "#292929"
+      },
+      "name": "rh-color-gray-80",
+      "path": [
+        "color",
+        "gray",
+        "80"
+      ],
+      "comment": "Alternative tertiary surface (not available for use with context provider)",
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-gray-90",
+    {
+      "$value": "#1F1F1F",
+      "$description": "Secondary surface (dark theme)",
+      "attributes": {
+        "type": "gray",
+        "category": "color",
+        "item": "90",
+        "hex": "1f1f1f",
+        "rgb": {
+          "r": 31,
+          "g": 31,
+          "b": 31,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 12.156862745098039,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.12156862745098039,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "value": "#1f1f1f",
+      "filePath": "tokens/color/crayon/gray.yaml",
+      "isSource": true,
+      "original": {
+        "$value": "#1F1F1F",
+        "$description": "Secondary surface (dark theme)",
+        "attributes": {
+          "type": "gray"
+        },
+        "value": "#1F1F1F"
+      },
+      "name": "rh-color-gray-90",
+      "path": [
+        "color",
+        "gray",
+        "90"
+      ],
+      "comment": "Secondary surface (dark theme)",
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-gray-95",
+    {
+      "$value": "#151515",
+      "$description": "Primary surface (dark theme) or primary text (light theme)",
+      "attributes": {
+        "type": "gray",
+        "category": "color",
+        "item": "95",
+        "hex": "151515",
+        "rgb": {
+          "r": 21,
+          "g": 21,
+          "b": 21,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 8.235294117647058,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.08235294117647059,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "value": "#151515",
+      "filePath": "tokens/color/crayon/gray.yaml",
+      "isSource": true,
+      "original": {
+        "$value": "#151515",
+        "$description": "Primary surface (dark theme) or primary text (light theme)",
+        "attributes": {
+          "type": "gray"
+        },
+        "value": "#151515"
+      },
+      "name": "rh-color-gray-95",
+      "path": [
+        "color",
+        "gray",
+        "95"
+      ],
+      "comment": "Primary surface (dark theme) or primary text (light theme)",
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-gray-10-hsl",
     {
       "$type": "color",
       "$value": "0 0% 94.90196078431372%",
@@ -5225,14 +3283,14 @@ export const tokens = new Map([
       "isSource": true,
       "original": {
         "$type": "color",
-        "$value": "{color.gray.05}",
-        "value": "{color.gray.05}"
+        "$value": "{color.gray.10}",
+        "value": "{color.gray.10}"
       },
-      "name": "rh-color-gray-05-hsl",
+      "name": "rh-color-gray-10-hsl",
       "attributes": {
         "category": "color",
         "type": "gray",
-        "item": "05-hsl",
+        "item": "10-hsl",
         "hex": "f2f2f2",
         "rgb": {
           "r": 242,
@@ -5257,12 +3315,12 @@ export const tokens = new Map([
       "path": [
         "color",
         "gray",
-        "05-hsl"
+        "10-hsl"
       ]
     }
   ],
   [
-    "--rh-color-gray-05-rgb",
+    "--rh-color-gray-10-rgb",
     {
       "$type": "color",
       "$value": "242 242 242",
@@ -5271,14 +3329,14 @@ export const tokens = new Map([
       "isSource": true,
       "original": {
         "$type": "color",
-        "$value": "{color.gray.05}",
-        "value": "{color.gray.05}"
+        "$value": "{color.gray.10}",
+        "value": "{color.gray.10}"
       },
-      "name": "rh-color-gray-05-rgb",
+      "name": "rh-color-gray-10-rgb",
       "attributes": {
         "category": "color",
         "type": "gray",
-        "item": "05-rgb",
+        "item": "10-rgb",
         "hex": "f2f2f2",
         "rgb": {
           "r": 242,
@@ -5303,7 +3361,835 @@ export const tokens = new Map([
       "path": [
         "color",
         "gray",
-        "05-rgb"
+        "10-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-gray-20-hsl",
+    {
+      "$type": "color",
+      "$value": "0 0% 87.84313725490196%",
+      "value": "0 0% 87.84313725490196%",
+      "filePath": "tokens/color/crayon/gray.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.gray.20}",
+        "value": "{color.gray.20}"
+      },
+      "name": "rh-color-gray-20-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "gray",
+        "item": "20-hsl",
+        "hex": "e0e0e0",
+        "rgb": {
+          "r": 224,
+          "g": 224,
+          "b": 224,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 87.84313725490196,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.8784313725490196,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "gray",
+        "20-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-gray-20-rgb",
+    {
+      "$type": "color",
+      "$value": "224 224 224",
+      "value": "224 224 224",
+      "filePath": "tokens/color/crayon/gray.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.gray.20}",
+        "value": "{color.gray.20}"
+      },
+      "name": "rh-color-gray-20-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "gray",
+        "item": "20-rgb",
+        "hex": "e0e0e0",
+        "rgb": {
+          "r": 224,
+          "g": 224,
+          "b": 224,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 87.84313725490196,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.8784313725490196,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "gray",
+        "20-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-gray-30-hsl",
+    {
+      "$type": "color",
+      "$value": "0 0% 78.03921568627452%",
+      "value": "0 0% 78.03921568627452%",
+      "filePath": "tokens/color/crayon/gray.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.gray.30}",
+        "value": "{color.gray.30}"
+      },
+      "name": "rh-color-gray-30-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "gray",
+        "item": "30-hsl",
+        "hex": "c7c7c7",
+        "rgb": {
+          "r": 199,
+          "g": 199,
+          "b": 199,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 78.03921568627452,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.7803921568627451,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "gray",
+        "30-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-gray-30-rgb",
+    {
+      "$type": "color",
+      "$value": "199 199 199",
+      "value": "199 199 199",
+      "filePath": "tokens/color/crayon/gray.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.gray.30}",
+        "value": "{color.gray.30}"
+      },
+      "name": "rh-color-gray-30-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "gray",
+        "item": "30-rgb",
+        "hex": "c7c7c7",
+        "rgb": {
+          "r": 199,
+          "g": 199,
+          "b": 199,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 78.03921568627452,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.7803921568627451,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "gray",
+        "30-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-gray-40-hsl",
+    {
+      "$type": "color",
+      "$value": "0 0% 63.921568627450974%",
+      "value": "0 0% 63.921568627450974%",
+      "filePath": "tokens/color/crayon/gray.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.gray.40}",
+        "value": "{color.gray.40}"
+      },
+      "name": "rh-color-gray-40-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "gray",
+        "item": "40-hsl",
+        "hex": "a3a3a3",
+        "rgb": {
+          "r": 163,
+          "g": 163,
+          "b": 163,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 63.921568627450974,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.6392156862745098,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "gray",
+        "40-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-gray-40-rgb",
+    {
+      "$type": "color",
+      "$value": "163 163 163",
+      "value": "163 163 163",
+      "filePath": "tokens/color/crayon/gray.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.gray.40}",
+        "value": "{color.gray.40}"
+      },
+      "name": "rh-color-gray-40-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "gray",
+        "item": "40-rgb",
+        "hex": "a3a3a3",
+        "rgb": {
+          "r": 163,
+          "g": 163,
+          "b": 163,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 63.921568627450974,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.6392156862745098,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "gray",
+        "40-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-gray-50-hsl",
+    {
+      "$type": "color",
+      "$value": "0 0% 43.92156862745098%",
+      "value": "0 0% 43.92156862745098%",
+      "filePath": "tokens/color/crayon/gray.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.gray.50}",
+        "value": "{color.gray.50}"
+      },
+      "name": "rh-color-gray-50-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "gray",
+        "item": "50-hsl",
+        "hex": "707070",
+        "rgb": {
+          "r": 112,
+          "g": 112,
+          "b": 112,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 43.92156862745098,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.4392156862745098,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "gray",
+        "50-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-gray-50-rgb",
+    {
+      "$type": "color",
+      "$value": "112 112 112",
+      "value": "112 112 112",
+      "filePath": "tokens/color/crayon/gray.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.gray.50}",
+        "value": "{color.gray.50}"
+      },
+      "name": "rh-color-gray-50-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "gray",
+        "item": "50-rgb",
+        "hex": "707070",
+        "rgb": {
+          "r": 112,
+          "g": 112,
+          "b": 112,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 43.92156862745098,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.4392156862745098,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "gray",
+        "50-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-gray-60-hsl",
+    {
+      "$type": "color",
+      "$value": "0 0% 30.19607843137255%",
+      "value": "0 0% 30.19607843137255%",
+      "filePath": "tokens/color/crayon/gray.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.gray.60}",
+        "value": "{color.gray.60}"
+      },
+      "name": "rh-color-gray-60-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "gray",
+        "item": "60-hsl",
+        "hex": "4d4d4d",
+        "rgb": {
+          "r": 77,
+          "g": 77,
+          "b": 77,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 30.19607843137255,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.30196078431372547,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "gray",
+        "60-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-gray-60-rgb",
+    {
+      "$type": "color",
+      "$value": "77 77 77",
+      "value": "77 77 77",
+      "filePath": "tokens/color/crayon/gray.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.gray.60}",
+        "value": "{color.gray.60}"
+      },
+      "name": "rh-color-gray-60-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "gray",
+        "item": "60-rgb",
+        "hex": "4d4d4d",
+        "rgb": {
+          "r": 77,
+          "g": 77,
+          "b": 77,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 30.19607843137255,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.30196078431372547,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "gray",
+        "60-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-gray-70-hsl",
+    {
+      "$type": "color",
+      "$value": "0 0% 21.96078431372549%",
+      "value": "0 0% 21.96078431372549%",
+      "filePath": "tokens/color/crayon/gray.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.gray.70}",
+        "value": "{color.gray.70}"
+      },
+      "name": "rh-color-gray-70-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "gray",
+        "item": "70-hsl",
+        "hex": "383838",
+        "rgb": {
+          "r": 56,
+          "g": 56,
+          "b": 56,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 21.96078431372549,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.2196078431372549,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "gray",
+        "70-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-gray-70-rgb",
+    {
+      "$type": "color",
+      "$value": "56 56 56",
+      "value": "56 56 56",
+      "filePath": "tokens/color/crayon/gray.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.gray.70}",
+        "value": "{color.gray.70}"
+      },
+      "name": "rh-color-gray-70-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "gray",
+        "item": "70-rgb",
+        "hex": "383838",
+        "rgb": {
+          "r": 56,
+          "g": 56,
+          "b": 56,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 21.96078431372549,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.2196078431372549,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "gray",
+        "70-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-gray-80-hsl",
+    {
+      "$type": "color",
+      "$value": "0 0% 16.07843137254902%",
+      "value": "0 0% 16.07843137254902%",
+      "filePath": "tokens/color/crayon/gray.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.gray.80}",
+        "value": "{color.gray.80}"
+      },
+      "name": "rh-color-gray-80-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "gray",
+        "item": "80-hsl",
+        "hex": "292929",
+        "rgb": {
+          "r": 41,
+          "g": 41,
+          "b": 41,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 16.07843137254902,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.1607843137254902,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "gray",
+        "80-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-gray-80-rgb",
+    {
+      "$type": "color",
+      "$value": "41 41 41",
+      "value": "41 41 41",
+      "filePath": "tokens/color/crayon/gray.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.gray.80}",
+        "value": "{color.gray.80}"
+      },
+      "name": "rh-color-gray-80-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "gray",
+        "item": "80-rgb",
+        "hex": "292929",
+        "rgb": {
+          "r": 41,
+          "g": 41,
+          "b": 41,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 16.07843137254902,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.1607843137254902,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "gray",
+        "80-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-gray-90-hsl",
+    {
+      "$type": "color",
+      "$value": "0 0% 12.156862745098039%",
+      "value": "0 0% 12.156862745098039%",
+      "filePath": "tokens/color/crayon/gray.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.gray.90}",
+        "value": "{color.gray.90}"
+      },
+      "name": "rh-color-gray-90-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "gray",
+        "item": "90-hsl",
+        "hex": "1f1f1f",
+        "rgb": {
+          "r": 31,
+          "g": 31,
+          "b": 31,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 12.156862745098039,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.12156862745098039,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "gray",
+        "90-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-gray-90-rgb",
+    {
+      "$type": "color",
+      "$value": "31 31 31",
+      "value": "31 31 31",
+      "filePath": "tokens/color/crayon/gray.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.gray.90}",
+        "value": "{color.gray.90}"
+      },
+      "name": "rh-color-gray-90-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "gray",
+        "item": "90-rgb",
+        "hex": "1f1f1f",
+        "rgb": {
+          "r": 31,
+          "g": 31,
+          "b": 31,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 12.156862745098039,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.12156862745098039,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "gray",
+        "90-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-gray-95-hsl",
+    {
+      "$type": "color",
+      "$value": "0 0% 8.235294117647058%",
+      "value": "0 0% 8.235294117647058%",
+      "filePath": "tokens/color/crayon/gray.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.gray.95}",
+        "value": "{color.gray.95}"
+      },
+      "name": "rh-color-gray-95-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "gray",
+        "item": "95-hsl",
+        "hex": "151515",
+        "rgb": {
+          "r": 21,
+          "g": 21,
+          "b": 21,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 8.235294117647058,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.08235294117647059,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "gray",
+        "95-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-gray-95-rgb",
+    {
+      "$type": "color",
+      "$value": "21 21 21",
+      "value": "21 21 21",
+      "filePath": "tokens/color/crayon/gray.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.gray.95}",
+        "value": "{color.gray.95}"
+      },
+      "name": "rh-color-gray-95-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "gray",
+        "item": "95-rgb",
+        "hex": "151515",
+        "rgb": {
+          "r": 21,
+          "g": 21,
+          "b": 21,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 8.235294117647058,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.08235294117647059,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "gray",
+        "95-rgb"
       ]
     }
   ],
@@ -5357,40 +4243,40 @@ export const tokens = new Map([
     }
   ],
   [
-    "--rh-color-green-50",
+    "--rh-color-green-10",
     {
-      "$value": "#f3faf2",
-      "$description": "alert - success background",
-      "value": "#f3faf2",
+      "$value": "#E9F7DF",
+      "$description": "Alert - success background",
+      "value": "#e9f7df",
       "filePath": "tokens/color/crayon/green.yml",
       "isSource": true,
       "original": {
-        "$value": "#f3faf2",
-        "$description": "alert - success background",
-        "value": "#f3faf2"
+        "$value": "#E9F7DF",
+        "$description": "Alert - success background",
+        "value": "#E9F7DF"
       },
-      "name": "rh-color-green-50",
+      "name": "rh-color-green-10",
       "attributes": {
         "category": "color",
         "type": "green",
-        "item": "50",
-        "hex": "f3faf2",
+        "item": "10",
+        "hex": "e9f7df",
         "rgb": {
-          "r": 243,
-          "g": 250,
-          "b": 242,
+          "r": 233,
+          "g": 247,
+          "b": 223,
           "a": 1
         },
         "hsl": {
-          "h": 112.50000000000001,
-          "s": 44.444444444444464,
-          "l": 96.4705882352941,
+          "h": 95.00000000000003,
+          "s": 60.00000000000004,
+          "l": 92.15686274509804,
           "a": 1
         },
         "hsv": {
-          "h": 112.50000000000001,
-          "s": 0.032,
-          "v": 0.9803921568627451,
+          "h": 95.00000000000003,
+          "s": 0.09716599190283401,
+          "v": 0.9686274509803922,
           "a": 1
         },
         "isLight": true
@@ -5398,47 +4284,47 @@ export const tokens = new Map([
       "path": [
         "color",
         "green",
-        "50"
+        "10"
       ],
-      "comment": "alert - success background",
+      "comment": "Alert - success background",
       "$type": "color"
     }
   ],
   [
-    "--rh-color-green-100",
+    "--rh-color-green-20",
     {
-      "$value": "#bde5b8",
+      "$value": "#D1F1BB",
       "$description": "Label - Filled (Green) border color",
-      "value": "#bde5b8",
+      "value": "#d1f1bb",
       "filePath": "tokens/color/crayon/green.yml",
       "isSource": true,
       "original": {
-        "$value": "#bde5b8",
+        "$value": "#D1F1BB",
         "$description": "Label - Filled (Green) border color",
-        "value": "#bde5b8"
+        "value": "#D1F1BB"
       },
-      "name": "rh-color-green-100",
+      "name": "rh-color-green-20",
       "attributes": {
         "category": "color",
         "type": "green",
-        "item": "100",
-        "hex": "bde5b8",
+        "item": "20",
+        "hex": "d1f1bb",
         "rgb": {
-          "r": 189,
-          "g": 229,
-          "b": 184,
+          "r": 209,
+          "g": 241,
+          "b": 187,
           "a": 1
         },
         "hsl": {
-          "h": 113.33333333333331,
-          "s": 46.391752577319586,
-          "l": 80.98039215686275,
+          "h": 95.55555555555556,
+          "s": 65.85365853658536,
+          "l": 83.92156862745097,
           "a": 1
         },
         "hsv": {
-          "h": 113.33333333333331,
-          "s": 0.19650655021834065,
-          "v": 0.8980392156862745,
+          "h": 95.55555555555556,
+          "s": 0.2240663900414938,
+          "v": 0.9450980392156862,
           "a": 1
         },
         "isLight": true
@@ -5446,47 +4332,137 @@ export const tokens = new Map([
       "path": [
         "color",
         "green",
-        "100"
+        "20"
       ],
       "comment": "Label - Filled (Green) border color",
       "$type": "color"
     }
   ],
   [
-    "--rh-color-green-500",
+    "--rh-color-green-30",
     {
-      "$value": "#3e8635",
-      "$description": "Alert - Success accent",
-      "value": "#3e8635",
+      "$value": "#AFDC8F",
+      "value": "#afdc8f",
       "filePath": "tokens/color/crayon/green.yml",
       "isSource": true,
       "original": {
-        "$value": "#3e8635",
-        "$description": "Alert - Success accent",
-        "value": "#3e8635"
+        "$value": "#AFDC8F",
+        "value": "#AFDC8F"
       },
-      "name": "rh-color-green-500",
+      "name": "rh-color-green-30",
       "attributes": {
         "category": "color",
         "type": "green",
-        "item": "500",
-        "hex": "3e8635",
+        "item": "30",
+        "hex": "afdc8f",
         "rgb": {
-          "r": 62,
-          "g": 134,
-          "b": 53,
+          "r": 175,
+          "g": 220,
+          "b": 143,
           "a": 1
         },
         "hsl": {
-          "h": 113.33333333333334,
-          "s": 43.31550802139037,
-          "l": 36.66666666666667,
+          "h": 95.06493506493506,
+          "s": 52.380952380952394,
+          "l": 71.17647058823529,
           "a": 1
         },
         "hsv": {
-          "h": 113.33333333333334,
-          "s": 0.6044776119402985,
-          "v": 0.5254901960784314,
+          "h": 95.06493506493506,
+          "s": 0.35000000000000003,
+          "v": 0.8627450980392157,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "green",
+        "30"
+      ],
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-green-40",
+    {
+      "$value": "#87BB62",
+      "value": "#87bb62",
+      "filePath": "tokens/color/crayon/green.yml",
+      "isSource": true,
+      "original": {
+        "$value": "#87BB62",
+        "value": "#87BB62"
+      },
+      "name": "rh-color-green-40",
+      "attributes": {
+        "category": "color",
+        "type": "green",
+        "item": "40",
+        "hex": "87bb62",
+        "rgb": {
+          "r": 135,
+          "g": 187,
+          "b": 98,
+          "a": 1
+        },
+        "hsl": {
+          "h": 95.05617977528091,
+          "s": 39.55555555555555,
+          "l": 55.88235294117647,
+          "a": 1
+        },
+        "hsv": {
+          "h": 95.05617977528091,
+          "s": 0.4759358288770053,
+          "v": 0.7333333333333333,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "green",
+        "40"
+      ],
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-green-50",
+    {
+      "$value": "#63993D",
+      "$description": null,
+      "value": "#63993d",
+      "filePath": "tokens/color/crayon/green.yml",
+      "isSource": true,
+      "original": {
+        "$value": "#63993D",
+        "$description": null,
+        "value": "#63993D"
+      },
+      "name": "rh-color-green-50",
+      "attributes": {
+        "category": "color",
+        "type": "green",
+        "item": "50",
+        "hex": "63993d",
+        "rgb": {
+          "r": 99,
+          "g": 153,
+          "b": 61,
+          "a": 1
+        },
+        "hsl": {
+          "h": 95.21739130434783,
+          "s": 42.99065420560747,
+          "l": 41.96078431372549,
+          "a": 1
+        },
+        "hsv": {
+          "h": 95.21739130434783,
+          "s": 0.6013071895424836,
+          "v": 0.6,
           "a": 1
         },
         "isLight": false
@@ -5494,47 +4470,95 @@ export const tokens = new Map([
       "path": [
         "color",
         "green",
-        "500"
+        "50"
+      ],
+      "comment": null,
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-green-60",
+    {
+      "$value": "#3D7317",
+      "$description": "Alert - Success accent",
+      "value": "#3d7317",
+      "filePath": "tokens/color/crayon/green.yml",
+      "isSource": true,
+      "original": {
+        "$value": "#3D7317",
+        "$description": "Alert - Success accent",
+        "value": "#3D7317"
+      },
+      "name": "rh-color-green-60",
+      "attributes": {
+        "category": "color",
+        "type": "green",
+        "item": "60",
+        "hex": "3d7317",
+        "rgb": {
+          "r": 61,
+          "g": 115,
+          "b": 23,
+          "a": 1
+        },
+        "hsl": {
+          "h": 95.21739130434783,
+          "s": 66.66666666666667,
+          "l": 27.058823529411764,
+          "a": 1
+        },
+        "hsv": {
+          "h": 95.21739130434783,
+          "s": 0.7999999999999999,
+          "v": 0.45098039215686275,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "green",
+        "60"
       ],
       "comment": "Alert - Success accent",
       "$type": "color"
     }
   ],
   [
-    "--rh-color-green-600",
+    "--rh-color-green-70",
     {
-      "$value": "#1e4f18",
+      "$value": "#204D00",
       "$description": "Alert - Success title text",
-      "value": "#1e4f18",
+      "value": "#204d00",
       "filePath": "tokens/color/crayon/green.yml",
       "isSource": true,
       "original": {
-        "$value": "#1e4f18",
+        "$value": "#204D00",
         "$description": "Alert - Success title text",
-        "value": "#1e4f18"
+        "value": "#204D00"
       },
-      "name": "rh-color-green-600",
+      "name": "rh-color-green-70",
       "attributes": {
         "category": "color",
         "type": "green",
-        "item": "600",
-        "hex": "1e4f18",
+        "item": "70",
+        "hex": "204d00",
         "rgb": {
-          "r": 30,
-          "g": 79,
-          "b": 24,
+          "r": 32,
+          "g": 77,
+          "b": 0,
           "a": 1
         },
         "hsl": {
-          "h": 113.45454545454544,
-          "s": 53.398058252427184,
-          "l": 20.19607843137255,
+          "h": 95.06493506493506,
+          "s": 100,
+          "l": 15.098039215686274,
           "a": 1
         },
         "hsv": {
-          "h": 113.45454545454544,
-          "s": 0.6962025316455697,
-          "v": 0.30980392156862746,
+          "h": 95.06493506493506,
+          "s": 1,
+          "v": 0.30196078431372547,
           "a": 1
         },
         "isLight": false
@@ -5542,18 +4566,386 @@ export const tokens = new Map([
       "path": [
         "color",
         "green",
-        "600"
+        "70"
       ],
       "comment": "Alert - Success title text",
       "$type": "color"
     }
   ],
   [
+    "--rh-color-green-10-hsl",
+    {
+      "$type": "color",
+      "$value": "95.00000000000003 60.00000000000004% 92.15686274509804%",
+      "value": "95.00000000000003 60.00000000000004% 92.15686274509804%",
+      "filePath": "tokens/color/crayon/green.yml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.green.10}",
+        "value": "{color.green.10}"
+      },
+      "name": "rh-color-green-10-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "green",
+        "item": "10-hsl",
+        "hex": "e9f7df",
+        "rgb": {
+          "r": 233,
+          "g": 247,
+          "b": 223,
+          "a": 1
+        },
+        "hsl": {
+          "h": 95.00000000000003,
+          "s": 60.00000000000004,
+          "l": 92.15686274509804,
+          "a": 1
+        },
+        "hsv": {
+          "h": 95.00000000000003,
+          "s": 0.09716599190283401,
+          "v": 0.9686274509803922,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "green",
+        "10-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-green-10-rgb",
+    {
+      "$type": "color",
+      "$value": "233 247 223",
+      "value": "233 247 223",
+      "filePath": "tokens/color/crayon/green.yml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.green.10}",
+        "value": "{color.green.10}"
+      },
+      "name": "rh-color-green-10-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "green",
+        "item": "10-rgb",
+        "hex": "e9f7df",
+        "rgb": {
+          "r": 233,
+          "g": 247,
+          "b": 223,
+          "a": 1
+        },
+        "hsl": {
+          "h": 95.00000000000003,
+          "s": 60.00000000000004,
+          "l": 92.15686274509804,
+          "a": 1
+        },
+        "hsv": {
+          "h": 95.00000000000003,
+          "s": 0.09716599190283401,
+          "v": 0.9686274509803922,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "green",
+        "10-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-green-20-hsl",
+    {
+      "$type": "color",
+      "$value": "95.55555555555556 65.85365853658536% 83.92156862745097%",
+      "value": "95.55555555555556 65.85365853658536% 83.92156862745097%",
+      "filePath": "tokens/color/crayon/green.yml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.green.20}",
+        "value": "{color.green.20}"
+      },
+      "name": "rh-color-green-20-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "green",
+        "item": "20-hsl",
+        "hex": "d1f1bb",
+        "rgb": {
+          "r": 209,
+          "g": 241,
+          "b": 187,
+          "a": 1
+        },
+        "hsl": {
+          "h": 95.55555555555556,
+          "s": 65.85365853658536,
+          "l": 83.92156862745097,
+          "a": 1
+        },
+        "hsv": {
+          "h": 95.55555555555556,
+          "s": 0.2240663900414938,
+          "v": 0.9450980392156862,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "green",
+        "20-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-green-20-rgb",
+    {
+      "$type": "color",
+      "$value": "209 241 187",
+      "value": "209 241 187",
+      "filePath": "tokens/color/crayon/green.yml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.green.20}",
+        "value": "{color.green.20}"
+      },
+      "name": "rh-color-green-20-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "green",
+        "item": "20-rgb",
+        "hex": "d1f1bb",
+        "rgb": {
+          "r": 209,
+          "g": 241,
+          "b": 187,
+          "a": 1
+        },
+        "hsl": {
+          "h": 95.55555555555556,
+          "s": 65.85365853658536,
+          "l": 83.92156862745097,
+          "a": 1
+        },
+        "hsv": {
+          "h": 95.55555555555556,
+          "s": 0.2240663900414938,
+          "v": 0.9450980392156862,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "green",
+        "20-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-green-30-hsl",
+    {
+      "$type": "color",
+      "$value": "95.06493506493506 52.380952380952394% 71.17647058823529%",
+      "value": "95.06493506493506 52.380952380952394% 71.17647058823529%",
+      "filePath": "tokens/color/crayon/green.yml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.green.30}",
+        "value": "{color.green.30}"
+      },
+      "name": "rh-color-green-30-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "green",
+        "item": "30-hsl",
+        "hex": "afdc8f",
+        "rgb": {
+          "r": 175,
+          "g": 220,
+          "b": 143,
+          "a": 1
+        },
+        "hsl": {
+          "h": 95.06493506493506,
+          "s": 52.380952380952394,
+          "l": 71.17647058823529,
+          "a": 1
+        },
+        "hsv": {
+          "h": 95.06493506493506,
+          "s": 0.35000000000000003,
+          "v": 0.8627450980392157,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "green",
+        "30-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-green-30-rgb",
+    {
+      "$type": "color",
+      "$value": "175 220 143",
+      "value": "175 220 143",
+      "filePath": "tokens/color/crayon/green.yml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.green.30}",
+        "value": "{color.green.30}"
+      },
+      "name": "rh-color-green-30-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "green",
+        "item": "30-rgb",
+        "hex": "afdc8f",
+        "rgb": {
+          "r": 175,
+          "g": 220,
+          "b": 143,
+          "a": 1
+        },
+        "hsl": {
+          "h": 95.06493506493506,
+          "s": 52.380952380952394,
+          "l": 71.17647058823529,
+          "a": 1
+        },
+        "hsv": {
+          "h": 95.06493506493506,
+          "s": 0.35000000000000003,
+          "v": 0.8627450980392157,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "green",
+        "30-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-green-40-hsl",
+    {
+      "$type": "color",
+      "$value": "95.05617977528091 39.55555555555555% 55.88235294117647%",
+      "value": "95.05617977528091 39.55555555555555% 55.88235294117647%",
+      "filePath": "tokens/color/crayon/green.yml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.green.40}",
+        "value": "{color.green.40}"
+      },
+      "name": "rh-color-green-40-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "green",
+        "item": "40-hsl",
+        "hex": "87bb62",
+        "rgb": {
+          "r": 135,
+          "g": 187,
+          "b": 98,
+          "a": 1
+        },
+        "hsl": {
+          "h": 95.05617977528091,
+          "s": 39.55555555555555,
+          "l": 55.88235294117647,
+          "a": 1
+        },
+        "hsv": {
+          "h": 95.05617977528091,
+          "s": 0.4759358288770053,
+          "v": 0.7333333333333333,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "green",
+        "40-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-green-40-rgb",
+    {
+      "$type": "color",
+      "$value": "135 187 98",
+      "value": "135 187 98",
+      "filePath": "tokens/color/crayon/green.yml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.green.40}",
+        "value": "{color.green.40}"
+      },
+      "name": "rh-color-green-40-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "green",
+        "item": "40-rgb",
+        "hex": "87bb62",
+        "rgb": {
+          "r": 135,
+          "g": 187,
+          "b": 98,
+          "a": 1
+        },
+        "hsl": {
+          "h": 95.05617977528091,
+          "s": 39.55555555555555,
+          "l": 55.88235294117647,
+          "a": 1
+        },
+        "hsv": {
+          "h": 95.05617977528091,
+          "s": 0.4759358288770053,
+          "v": 0.7333333333333333,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "green",
+        "40-rgb"
+      ]
+    }
+  ],
+  [
     "--rh-color-green-50-hsl",
     {
       "$type": "color",
-      "$value": "112.50000000000001 44.444444444444464% 96.4705882352941%",
-      "value": "112.50000000000001 44.444444444444464% 96.4705882352941%",
+      "$value": "95.21739130434783 42.99065420560747% 41.96078431372549%",
+      "value": "95.21739130434783 42.99065420560747% 41.96078431372549%",
       "filePath": "tokens/color/crayon/green.yml",
       "isSource": true,
       "original": {
@@ -5566,26 +4958,26 @@ export const tokens = new Map([
         "category": "color",
         "type": "green",
         "item": "50-hsl",
-        "hex": "f3faf2",
+        "hex": "63993d",
         "rgb": {
-          "r": 243,
-          "g": 250,
-          "b": 242,
+          "r": 99,
+          "g": 153,
+          "b": 61,
           "a": 1
         },
         "hsl": {
-          "h": 112.50000000000001,
-          "s": 44.444444444444464,
-          "l": 96.4705882352941,
+          "h": 95.21739130434783,
+          "s": 42.99065420560747,
+          "l": 41.96078431372549,
           "a": 1
         },
         "hsv": {
-          "h": 112.50000000000001,
-          "s": 0.032,
-          "v": 0.9803921568627451,
+          "h": 95.21739130434783,
+          "s": 0.6013071895424836,
+          "v": 0.6,
           "a": 1
         },
-        "isLight": true
+        "isLight": false
       },
       "path": [
         "color",
@@ -5598,8 +4990,8 @@ export const tokens = new Map([
     "--rh-color-green-50-rgb",
     {
       "$type": "color",
-      "$value": "243 250 242",
-      "value": "243 250 242",
+      "$value": "99 153 61",
+      "value": "99 153 61",
       "filePath": "tokens/color/crayon/green.yml",
       "isSource": true,
       "original": {
@@ -5612,26 +5004,26 @@ export const tokens = new Map([
         "category": "color",
         "type": "green",
         "item": "50-rgb",
-        "hex": "f3faf2",
+        "hex": "63993d",
         "rgb": {
-          "r": 243,
-          "g": 250,
-          "b": 242,
+          "r": 99,
+          "g": 153,
+          "b": 61,
           "a": 1
         },
         "hsl": {
-          "h": 112.50000000000001,
-          "s": 44.444444444444464,
-          "l": 96.4705882352941,
+          "h": 95.21739130434783,
+          "s": 42.99065420560747,
+          "l": 41.96078431372549,
           "a": 1
         },
         "hsv": {
-          "h": 112.50000000000001,
-          "s": 0.032,
-          "v": 0.9803921568627451,
+          "h": 95.21739130434783,
+          "s": 0.6013071895424836,
+          "v": 0.6,
           "a": 1
         },
-        "isLight": true
+        "isLight": false
       },
       "path": [
         "color",
@@ -5641,132 +5033,40 @@ export const tokens = new Map([
     }
   ],
   [
-    "--rh-color-green-100-hsl",
+    "--rh-color-green-60-hsl",
     {
       "$type": "color",
-      "$value": "113.33333333333331 46.391752577319586% 80.98039215686275%",
-      "value": "113.33333333333331 46.391752577319586% 80.98039215686275%",
+      "$value": "95.21739130434783 66.66666666666667% 27.058823529411764%",
+      "value": "95.21739130434783 66.66666666666667% 27.058823529411764%",
       "filePath": "tokens/color/crayon/green.yml",
       "isSource": true,
       "original": {
         "$type": "color",
-        "$value": "{color.green.100}",
-        "value": "{color.green.100}"
+        "$value": "{color.green.60}",
+        "value": "{color.green.60}"
       },
-      "name": "rh-color-green-100-hsl",
+      "name": "rh-color-green-60-hsl",
       "attributes": {
         "category": "color",
         "type": "green",
-        "item": "100-hsl",
-        "hex": "bde5b8",
+        "item": "60-hsl",
+        "hex": "3d7317",
         "rgb": {
-          "r": 189,
-          "g": 229,
-          "b": 184,
+          "r": 61,
+          "g": 115,
+          "b": 23,
           "a": 1
         },
         "hsl": {
-          "h": 113.33333333333331,
-          "s": 46.391752577319586,
-          "l": 80.98039215686275,
+          "h": 95.21739130434783,
+          "s": 66.66666666666667,
+          "l": 27.058823529411764,
           "a": 1
         },
         "hsv": {
-          "h": 113.33333333333331,
-          "s": 0.19650655021834065,
-          "v": 0.8980392156862745,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "green",
-        "100-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-green-100-rgb",
-    {
-      "$type": "color",
-      "$value": "189 229 184",
-      "value": "189 229 184",
-      "filePath": "tokens/color/crayon/green.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.green.100}",
-        "value": "{color.green.100}"
-      },
-      "name": "rh-color-green-100-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "green",
-        "item": "100-rgb",
-        "hex": "bde5b8",
-        "rgb": {
-          "r": 189,
-          "g": 229,
-          "b": 184,
-          "a": 1
-        },
-        "hsl": {
-          "h": 113.33333333333331,
-          "s": 46.391752577319586,
-          "l": 80.98039215686275,
-          "a": 1
-        },
-        "hsv": {
-          "h": 113.33333333333331,
-          "s": 0.19650655021834065,
-          "v": 0.8980392156862745,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "green",
-        "100-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-green-500-hsl",
-    {
-      "$type": "color",
-      "$value": "113.33333333333334 43.31550802139037% 36.66666666666667%",
-      "value": "113.33333333333334 43.31550802139037% 36.66666666666667%",
-      "filePath": "tokens/color/crayon/green.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.green.500}",
-        "value": "{color.green.500}"
-      },
-      "name": "rh-color-green-500-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "green",
-        "item": "500-hsl",
-        "hex": "3e8635",
-        "rgb": {
-          "r": 62,
-          "g": 134,
-          "b": 53,
-          "a": 1
-        },
-        "hsl": {
-          "h": 113.33333333333334,
-          "s": 43.31550802139037,
-          "l": 36.66666666666667,
-          "a": 1
-        },
-        "hsv": {
-          "h": 113.33333333333334,
-          "s": 0.6044776119402985,
-          "v": 0.5254901960784314,
+          "h": 95.21739130434783,
+          "s": 0.7999999999999999,
+          "v": 0.45098039215686275,
           "a": 1
         },
         "isLight": false
@@ -5774,45 +5074,45 @@ export const tokens = new Map([
       "path": [
         "color",
         "green",
-        "500-hsl"
+        "60-hsl"
       ]
     }
   ],
   [
-    "--rh-color-green-500-rgb",
+    "--rh-color-green-60-rgb",
     {
       "$type": "color",
-      "$value": "62 134 53",
-      "value": "62 134 53",
+      "$value": "61 115 23",
+      "value": "61 115 23",
       "filePath": "tokens/color/crayon/green.yml",
       "isSource": true,
       "original": {
         "$type": "color",
-        "$value": "{color.green.500}",
-        "value": "{color.green.500}"
+        "$value": "{color.green.60}",
+        "value": "{color.green.60}"
       },
-      "name": "rh-color-green-500-rgb",
+      "name": "rh-color-green-60-rgb",
       "attributes": {
         "category": "color",
         "type": "green",
-        "item": "500-rgb",
-        "hex": "3e8635",
+        "item": "60-rgb",
+        "hex": "3d7317",
         "rgb": {
-          "r": 62,
-          "g": 134,
-          "b": 53,
+          "r": 61,
+          "g": 115,
+          "b": 23,
           "a": 1
         },
         "hsl": {
-          "h": 113.33333333333334,
-          "s": 43.31550802139037,
-          "l": 36.66666666666667,
+          "h": 95.21739130434783,
+          "s": 66.66666666666667,
+          "l": 27.058823529411764,
           "a": 1
         },
         "hsv": {
-          "h": 113.33333333333334,
-          "s": 0.6044776119402985,
-          "v": 0.5254901960784314,
+          "h": 95.21739130434783,
+          "s": 0.7999999999999999,
+          "v": 0.45098039215686275,
           "a": 1
         },
         "isLight": false
@@ -5820,45 +5120,45 @@ export const tokens = new Map([
       "path": [
         "color",
         "green",
-        "500-rgb"
+        "60-rgb"
       ]
     }
   ],
   [
-    "--rh-color-green-600-hsl",
+    "--rh-color-green-70-hsl",
     {
       "$type": "color",
-      "$value": "113.45454545454544 53.398058252427184% 20.19607843137255%",
-      "value": "113.45454545454544 53.398058252427184% 20.19607843137255%",
+      "$value": "95.06493506493506 100% 15.098039215686274%",
+      "value": "95.06493506493506 100% 15.098039215686274%",
       "filePath": "tokens/color/crayon/green.yml",
       "isSource": true,
       "original": {
         "$type": "color",
-        "$value": "{color.green.600}",
-        "value": "{color.green.600}"
+        "$value": "{color.green.70}",
+        "value": "{color.green.70}"
       },
-      "name": "rh-color-green-600-hsl",
+      "name": "rh-color-green-70-hsl",
       "attributes": {
         "category": "color",
         "type": "green",
-        "item": "600-hsl",
-        "hex": "1e4f18",
+        "item": "70-hsl",
+        "hex": "204d00",
         "rgb": {
-          "r": 30,
-          "g": 79,
-          "b": 24,
+          "r": 32,
+          "g": 77,
+          "b": 0,
           "a": 1
         },
         "hsl": {
-          "h": 113.45454545454544,
-          "s": 53.398058252427184,
-          "l": 20.19607843137255,
+          "h": 95.06493506493506,
+          "s": 100,
+          "l": 15.098039215686274,
           "a": 1
         },
         "hsv": {
-          "h": 113.45454545454544,
-          "s": 0.6962025316455697,
-          "v": 0.30980392156862746,
+          "h": 95.06493506493506,
+          "s": 1,
+          "v": 0.30196078431372547,
           "a": 1
         },
         "isLight": false
@@ -5866,45 +5166,45 @@ export const tokens = new Map([
       "path": [
         "color",
         "green",
-        "600-hsl"
+        "70-hsl"
       ]
     }
   ],
   [
-    "--rh-color-green-600-rgb",
+    "--rh-color-green-70-rgb",
     {
       "$type": "color",
-      "$value": "30 79 24",
-      "value": "30 79 24",
+      "$value": "32 77 0",
+      "value": "32 77 0",
       "filePath": "tokens/color/crayon/green.yml",
       "isSource": true,
       "original": {
         "$type": "color",
-        "$value": "{color.green.600}",
-        "value": "{color.green.600}"
+        "$value": "{color.green.70}",
+        "value": "{color.green.70}"
       },
-      "name": "rh-color-green-600-rgb",
+      "name": "rh-color-green-70-rgb",
       "attributes": {
         "category": "color",
         "type": "green",
-        "item": "600-rgb",
-        "hex": "1e4f18",
+        "item": "70-rgb",
+        "hex": "204d00",
         "rgb": {
-          "r": 30,
-          "g": 79,
-          "b": 24,
+          "r": 32,
+          "g": 77,
+          "b": 0,
           "a": 1
         },
         "hsl": {
-          "h": 113.45454545454544,
-          "s": 53.398058252427184,
-          "l": 20.19607843137255,
+          "h": 95.06493506493506,
+          "s": 100,
+          "l": 15.098039215686274,
           "a": 1
         },
         "hsv": {
-          "h": 113.45454545454544,
-          "s": 0.6962025316455697,
-          "v": 0.30980392156862746,
+          "h": 95.06493506493506,
+          "s": 1,
+          "v": 0.30196078431372547,
           "a": 1
         },
         "isLight": false
@@ -5912,44 +5212,44 @@ export const tokens = new Map([
       "path": [
         "color",
         "green",
-        "600-rgb"
+        "70-rgb"
       ]
     }
   ],
   [
-    "--rh-color-orange-50",
+    "--rh-color-orange-10",
     {
-      "$value": "#fff6ec",
+      "$value": "#FFE8CC",
       "$description": "Label - Filled (Orange) background color",
-      "value": "#fff6ec",
+      "value": "#ffe8cc",
       "filePath": "tokens/color/crayon/orange.yml",
       "isSource": true,
       "original": {
-        "$value": "#fff6ec",
+        "$value": "#FFE8CC",
         "$description": "Label - Filled (Orange) background color",
-        "value": "#fff6ec"
+        "value": "#FFE8CC"
       },
-      "name": "rh-color-orange-50",
+      "name": "rh-color-orange-10",
       "attributes": {
         "category": "color",
         "type": "orange",
-        "item": "50",
-        "hex": "fff6ec",
+        "item": "10",
+        "hex": "ffe8cc",
         "rgb": {
           "r": 255,
-          "g": 246,
-          "b": 236,
+          "g": 232,
+          "b": 204,
           "a": 1
         },
         "hsl": {
-          "h": 31.57894736842105,
+          "h": 32.941176470588225,
           "s": 100,
-          "l": 96.27450980392157,
+          "l": 90,
           "a": 1
         },
         "hsv": {
-          "h": 31.57894736842105,
-          "s": 0.07450980392156858,
+          "h": 32.941176470588225,
+          "s": 0.19999999999999996,
           "v": 1,
           "a": 1
         },
@@ -5958,47 +5258,45 @@ export const tokens = new Map([
       "path": [
         "color",
         "orange",
-        "50"
+        "10"
       ],
       "comment": "Label - Filled (Orange) background color",
       "$type": "color"
     }
   ],
   [
-    "--rh-color-orange-100",
+    "--rh-color-orange-20",
     {
-      "$value": "#f4b678",
-      "$description": "Label - Filled (Orange) border color",
-      "value": "#f4b678",
+      "$value": "#FCCB8F",
+      "value": "#fccb8f",
       "filePath": "tokens/color/crayon/orange.yml",
       "isSource": true,
       "original": {
-        "$value": "#f4b678",
-        "$description": "Label - Filled (Orange) border color",
-        "value": "#f4b678"
+        "$value": "#FCCB8F",
+        "value": "#FCCB8F"
       },
-      "name": "rh-color-orange-100",
+      "name": "rh-color-orange-20",
       "attributes": {
         "category": "color",
         "type": "orange",
-        "item": "100",
-        "hex": "f4b678",
+        "item": "20",
+        "hex": "fccb8f",
         "rgb": {
-          "r": 244,
-          "g": 182,
-          "b": 120,
+          "r": 252,
+          "g": 203,
+          "b": 143,
           "a": 1
         },
         "hsl": {
-          "h": 30,
-          "s": 84.9315068493151,
-          "l": 71.37254901960785,
+          "h": 33.02752293577981,
+          "s": 94.78260869565219,
+          "l": 77.45098039215686,
           "a": 1
         },
         "hsv": {
-          "h": 30,
-          "s": 0.5081967213114754,
-          "v": 0.9568627450980393,
+          "h": 33.02752293577981,
+          "s": 0.43253968253968256,
+          "v": 0.9882352941176471,
           "a": 1
         },
         "isLight": true
@@ -6006,47 +5304,94 @@ export const tokens = new Map([
       "path": [
         "color",
         "orange",
-        "100"
+        "20"
+      ],
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-orange-30",
+    {
+      "$value": "#F8AE54",
+      "$description": "Label - Filled (Orange) border color",
+      "value": "#f8ae54",
+      "filePath": "tokens/color/crayon/orange.yml",
+      "isSource": true,
+      "original": {
+        "$value": "#F8AE54",
+        "$description": "Label - Filled (Orange) border color",
+        "value": "#F8AE54"
+      },
+      "name": "rh-color-orange-30",
+      "attributes": {
+        "category": "color",
+        "type": "orange",
+        "item": "30",
+        "hex": "f8ae54",
+        "rgb": {
+          "r": 248,
+          "g": 174,
+          "b": 84,
+          "a": 1
+        },
+        "hsl": {
+          "h": 32.926829268292686,
+          "s": 92.13483146067415,
+          "l": 65.09803921568627,
+          "a": 1
+        },
+        "hsv": {
+          "h": 32.926829268292686,
+          "s": 0.6612903225806451,
+          "v": 0.9725490196078431,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "orange",
+        "30"
       ],
       "comment": "Label - Filled (Orange) border color",
       "$type": "color"
     }
   ],
   [
-    "--rh-color-orange-300",
+    "--rh-color-orange-40",
     {
-      "$value": "#ec7a08",
+      "$value": "#F5921B",
       "$description": "Label - Filled (Orange) accent color",
-      "value": "#ec7a08",
+      "value": "#f5921b",
       "filePath": "tokens/color/crayon/orange.yml",
       "isSource": true,
       "original": {
-        "$value": "#ec7a08",
+        "$value": "#F5921B",
         "$description": "Label - Filled (Orange) accent color",
-        "value": "#ec7a08"
+        "value": "#F5921B"
       },
-      "name": "rh-color-orange-300",
+      "name": "rh-color-orange-40",
       "attributes": {
         "category": "color",
         "type": "orange",
-        "item": "300",
-        "hex": "ec7a08",
+        "item": "40",
+        "hex": "f5921b",
         "rgb": {
-          "r": 236,
-          "g": 122,
-          "b": 8,
+          "r": 245,
+          "g": 146,
+          "b": 27,
           "a": 1
         },
         "hsl": {
-          "h": 30,
-          "s": 93.44262295081968,
-          "l": 47.84313725490196,
+          "h": 32.752293577981646,
+          "s": 91.5966386554622,
+          "l": 53.333333333333336,
           "a": 1
         },
         "hsv": {
-          "h": 30,
-          "s": 0.9661016949152542,
-          "v": 0.9254901960784314,
+          "h": 32.752293577981646,
+          "s": 0.889795918367347,
+          "v": 0.9607843137254902,
           "a": 1
         },
         "isLight": true
@@ -6054,47 +5399,47 @@ export const tokens = new Map([
       "path": [
         "color",
         "orange",
-        "300"
+        "40"
       ],
       "comment": "Label - Filled (Orange) accent color",
       "$type": "color"
     }
   ],
   [
-    "--rh-color-orange-500",
+    "--rh-color-orange-50",
     {
-      "$value": "#8f4700",
+      "$value": "#CA6C0F",
       "$description": "Label - Filled (Orange) accent color",
-      "value": "#8f4700",
+      "value": "#ca6c0f",
       "filePath": "tokens/color/crayon/orange.yml",
       "isSource": true,
       "original": {
-        "$value": "#8f4700",
+        "$value": "#CA6C0F",
         "$description": "Label - Filled (Orange) accent color",
-        "value": "#8f4700"
+        "value": "#CA6C0F"
       },
-      "name": "rh-color-orange-500",
+      "name": "rh-color-orange-50",
       "attributes": {
         "category": "color",
         "type": "orange",
-        "item": "500",
-        "hex": "8f4700",
+        "item": "50",
+        "hex": "ca6c0f",
         "rgb": {
-          "r": 143,
-          "g": 71,
-          "b": 0,
+          "r": 202,
+          "g": 108,
+          "b": 15,
           "a": 1
         },
         "hsl": {
-          "h": 29.79020979020979,
-          "s": 100,
-          "l": 28.03921568627451,
+          "h": 29.83957219251337,
+          "s": 86.17511520737327,
+          "l": 42.549019607843135,
           "a": 1
         },
         "hsv": {
-          "h": 29.79020979020979,
-          "s": 1,
-          "v": 0.5607843137254902,
+          "h": 29.83957219251337,
+          "s": 0.9257425742574257,
+          "v": 0.792156862745098,
           "a": 1
         },
         "isLight": false
@@ -6102,47 +5447,45 @@ export const tokens = new Map([
       "path": [
         "color",
         "orange",
-        "500"
+        "50"
       ],
       "comment": "Label - Filled (Orange) accent color",
       "$type": "color"
     }
   ],
   [
-    "--rh-color-orange-700",
+    "--rh-color-orange-60",
     {
-      "$value": "#3b1f00",
-      "$description": "Label - Filled (Orange) text color",
-      "value": "#3b1f00",
+      "$value": "#9E4A06",
+      "value": "#9e4a06",
       "filePath": "tokens/color/crayon/orange.yml",
       "isSource": true,
       "original": {
-        "$value": "#3b1f00",
-        "$description": "Label - Filled (Orange) text color",
-        "value": "#3b1f00"
+        "$value": "#9E4A06",
+        "value": "#9E4A06"
       },
-      "name": "rh-color-orange-700",
+      "name": "rh-color-orange-60",
       "attributes": {
         "category": "color",
         "type": "orange",
-        "item": "700",
-        "hex": "3b1f00",
+        "item": "60",
+        "hex": "9e4a06",
         "rgb": {
-          "r": 59,
-          "g": 31,
-          "b": 0,
+          "r": 158,
+          "g": 74,
+          "b": 6,
           "a": 1
         },
         "hsl": {
-          "h": 31.525423728813553,
-          "s": 100,
-          "l": 11.568627450980392,
+          "h": 26.842105263157904,
+          "s": 92.68292682926828,
+          "l": 32.15686274509804,
           "a": 1
         },
         "hsv": {
-          "h": 31.525423728813553,
-          "s": 1,
-          "v": 0.23137254901960785,
+          "h": 26.842105263157904,
+          "s": 0.9620253164556961,
+          "v": 0.6196078431372549,
           "a": 1
         },
         "isLight": false
@@ -6150,18 +5493,433 @@ export const tokens = new Map([
       "path": [
         "color",
         "orange",
-        "700"
+        "60"
+      ],
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-orange-70",
+    {
+      "$value": "#732E00",
+      "$description": "Label - Filled (Orange) text color",
+      "value": "#732e00",
+      "filePath": "tokens/color/crayon/orange.yml",
+      "isSource": true,
+      "original": {
+        "$value": "#732E00",
+        "$description": "Label - Filled (Orange) text color",
+        "value": "#732E00"
+      },
+      "name": "rh-color-orange-70",
+      "attributes": {
+        "category": "color",
+        "type": "orange",
+        "item": "70",
+        "hex": "732e00",
+        "rgb": {
+          "r": 115,
+          "g": 46,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 24,
+          "s": 100,
+          "l": 22.54901960784314,
+          "a": 1
+        },
+        "hsv": {
+          "h": 24,
+          "s": 1,
+          "v": 0.45098039215686275,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "orange",
+        "70"
       ],
       "comment": "Label - Filled (Orange) text color",
       "$type": "color"
     }
   ],
   [
+    "--rh-color-orange-10-hsl",
+    {
+      "$type": "color",
+      "$value": "32.941176470588225 100% 90%",
+      "value": "32.941176470588225 100% 90%",
+      "filePath": "tokens/color/crayon/orange.yml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.orange.10}",
+        "value": "{color.orange.10}"
+      },
+      "name": "rh-color-orange-10-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "orange",
+        "item": "10-hsl",
+        "hex": "ffe8cc",
+        "rgb": {
+          "r": 255,
+          "g": 232,
+          "b": 204,
+          "a": 1
+        },
+        "hsl": {
+          "h": 32.941176470588225,
+          "s": 100,
+          "l": 90,
+          "a": 1
+        },
+        "hsv": {
+          "h": 32.941176470588225,
+          "s": 0.19999999999999996,
+          "v": 1,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "orange",
+        "10-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-orange-10-rgb",
+    {
+      "$type": "color",
+      "$value": "255 232 204",
+      "value": "255 232 204",
+      "filePath": "tokens/color/crayon/orange.yml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.orange.10}",
+        "value": "{color.orange.10}"
+      },
+      "name": "rh-color-orange-10-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "orange",
+        "item": "10-rgb",
+        "hex": "ffe8cc",
+        "rgb": {
+          "r": 255,
+          "g": 232,
+          "b": 204,
+          "a": 1
+        },
+        "hsl": {
+          "h": 32.941176470588225,
+          "s": 100,
+          "l": 90,
+          "a": 1
+        },
+        "hsv": {
+          "h": 32.941176470588225,
+          "s": 0.19999999999999996,
+          "v": 1,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "orange",
+        "10-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-orange-20-hsl",
+    {
+      "$type": "color",
+      "$value": "33.02752293577981 94.78260869565219% 77.45098039215686%",
+      "value": "33.02752293577981 94.78260869565219% 77.45098039215686%",
+      "filePath": "tokens/color/crayon/orange.yml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.orange.20}",
+        "value": "{color.orange.20}"
+      },
+      "name": "rh-color-orange-20-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "orange",
+        "item": "20-hsl",
+        "hex": "fccb8f",
+        "rgb": {
+          "r": 252,
+          "g": 203,
+          "b": 143,
+          "a": 1
+        },
+        "hsl": {
+          "h": 33.02752293577981,
+          "s": 94.78260869565219,
+          "l": 77.45098039215686,
+          "a": 1
+        },
+        "hsv": {
+          "h": 33.02752293577981,
+          "s": 0.43253968253968256,
+          "v": 0.9882352941176471,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "orange",
+        "20-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-orange-20-rgb",
+    {
+      "$type": "color",
+      "$value": "252 203 143",
+      "value": "252 203 143",
+      "filePath": "tokens/color/crayon/orange.yml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.orange.20}",
+        "value": "{color.orange.20}"
+      },
+      "name": "rh-color-orange-20-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "orange",
+        "item": "20-rgb",
+        "hex": "fccb8f",
+        "rgb": {
+          "r": 252,
+          "g": 203,
+          "b": 143,
+          "a": 1
+        },
+        "hsl": {
+          "h": 33.02752293577981,
+          "s": 94.78260869565219,
+          "l": 77.45098039215686,
+          "a": 1
+        },
+        "hsv": {
+          "h": 33.02752293577981,
+          "s": 0.43253968253968256,
+          "v": 0.9882352941176471,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "orange",
+        "20-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-orange-30-hsl",
+    {
+      "$type": "color",
+      "$value": "32.926829268292686 92.13483146067415% 65.09803921568627%",
+      "value": "32.926829268292686 92.13483146067415% 65.09803921568627%",
+      "filePath": "tokens/color/crayon/orange.yml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.orange.30}",
+        "value": "{color.orange.30}"
+      },
+      "name": "rh-color-orange-30-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "orange",
+        "item": "30-hsl",
+        "hex": "f8ae54",
+        "rgb": {
+          "r": 248,
+          "g": 174,
+          "b": 84,
+          "a": 1
+        },
+        "hsl": {
+          "h": 32.926829268292686,
+          "s": 92.13483146067415,
+          "l": 65.09803921568627,
+          "a": 1
+        },
+        "hsv": {
+          "h": 32.926829268292686,
+          "s": 0.6612903225806451,
+          "v": 0.9725490196078431,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "orange",
+        "30-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-orange-30-rgb",
+    {
+      "$type": "color",
+      "$value": "248 174 84",
+      "value": "248 174 84",
+      "filePath": "tokens/color/crayon/orange.yml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.orange.30}",
+        "value": "{color.orange.30}"
+      },
+      "name": "rh-color-orange-30-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "orange",
+        "item": "30-rgb",
+        "hex": "f8ae54",
+        "rgb": {
+          "r": 248,
+          "g": 174,
+          "b": 84,
+          "a": 1
+        },
+        "hsl": {
+          "h": 32.926829268292686,
+          "s": 92.13483146067415,
+          "l": 65.09803921568627,
+          "a": 1
+        },
+        "hsv": {
+          "h": 32.926829268292686,
+          "s": 0.6612903225806451,
+          "v": 0.9725490196078431,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "orange",
+        "30-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-orange-40-hsl",
+    {
+      "$type": "color",
+      "$value": "32.752293577981646 91.5966386554622% 53.333333333333336%",
+      "value": "32.752293577981646 91.5966386554622% 53.333333333333336%",
+      "filePath": "tokens/color/crayon/orange.yml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.orange.40}",
+        "value": "{color.orange.40}"
+      },
+      "name": "rh-color-orange-40-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "orange",
+        "item": "40-hsl",
+        "hex": "f5921b",
+        "rgb": {
+          "r": 245,
+          "g": 146,
+          "b": 27,
+          "a": 1
+        },
+        "hsl": {
+          "h": 32.752293577981646,
+          "s": 91.5966386554622,
+          "l": 53.333333333333336,
+          "a": 1
+        },
+        "hsv": {
+          "h": 32.752293577981646,
+          "s": 0.889795918367347,
+          "v": 0.9607843137254902,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "orange",
+        "40-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-orange-40-rgb",
+    {
+      "$type": "color",
+      "$value": "245 146 27",
+      "value": "245 146 27",
+      "filePath": "tokens/color/crayon/orange.yml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.orange.40}",
+        "value": "{color.orange.40}"
+      },
+      "name": "rh-color-orange-40-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "orange",
+        "item": "40-rgb",
+        "hex": "f5921b",
+        "rgb": {
+          "r": 245,
+          "g": 146,
+          "b": 27,
+          "a": 1
+        },
+        "hsl": {
+          "h": 32.752293577981646,
+          "s": 91.5966386554622,
+          "l": 53.333333333333336,
+          "a": 1
+        },
+        "hsv": {
+          "h": 32.752293577981646,
+          "s": 0.889795918367347,
+          "v": 0.9607843137254902,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "orange",
+        "40-rgb"
+      ]
+    }
+  ],
+  [
     "--rh-color-orange-50-hsl",
     {
       "$type": "color",
-      "$value": "31.57894736842105 100% 96.27450980392157%",
-      "value": "31.57894736842105 100% 96.27450980392157%",
+      "$value": "29.83957219251337 86.17511520737327% 42.549019607843135%",
+      "value": "29.83957219251337 86.17511520737327% 42.549019607843135%",
       "filePath": "tokens/color/crayon/orange.yml",
       "isSource": true,
       "original": {
@@ -6174,26 +5932,26 @@ export const tokens = new Map([
         "category": "color",
         "type": "orange",
         "item": "50-hsl",
-        "hex": "fff6ec",
+        "hex": "ca6c0f",
         "rgb": {
-          "r": 255,
-          "g": 246,
-          "b": 236,
+          "r": 202,
+          "g": 108,
+          "b": 15,
           "a": 1
         },
         "hsl": {
-          "h": 31.57894736842105,
-          "s": 100,
-          "l": 96.27450980392157,
+          "h": 29.83957219251337,
+          "s": 86.17511520737327,
+          "l": 42.549019607843135,
           "a": 1
         },
         "hsv": {
-          "h": 31.57894736842105,
-          "s": 0.07450980392156858,
-          "v": 1,
+          "h": 29.83957219251337,
+          "s": 0.9257425742574257,
+          "v": 0.792156862745098,
           "a": 1
         },
-        "isLight": true
+        "isLight": false
       },
       "path": [
         "color",
@@ -6206,8 +5964,8 @@ export const tokens = new Map([
     "--rh-color-orange-50-rgb",
     {
       "$type": "color",
-      "$value": "255 246 236",
-      "value": "255 246 236",
+      "$value": "202 108 15",
+      "value": "202 108 15",
       "filePath": "tokens/color/crayon/orange.yml",
       "isSource": true,
       "original": {
@@ -6220,26 +5978,26 @@ export const tokens = new Map([
         "category": "color",
         "type": "orange",
         "item": "50-rgb",
-        "hex": "fff6ec",
+        "hex": "ca6c0f",
         "rgb": {
-          "r": 255,
-          "g": 246,
-          "b": 236,
+          "r": 202,
+          "g": 108,
+          "b": 15,
           "a": 1
         },
         "hsl": {
-          "h": 31.57894736842105,
-          "s": 100,
-          "l": 96.27450980392157,
+          "h": 29.83957219251337,
+          "s": 86.17511520737327,
+          "l": 42.549019607843135,
           "a": 1
         },
         "hsv": {
-          "h": 31.57894736842105,
-          "s": 0.07450980392156858,
-          "v": 1,
+          "h": 29.83957219251337,
+          "s": 0.9257425742574257,
+          "v": 0.792156862745098,
           "a": 1
         },
-        "isLight": true
+        "isLight": false
       },
       "path": [
         "color",
@@ -6249,224 +6007,40 @@ export const tokens = new Map([
     }
   ],
   [
-    "--rh-color-orange-100-hsl",
+    "--rh-color-orange-60-hsl",
     {
       "$type": "color",
-      "$value": "30 84.9315068493151% 71.37254901960785%",
-      "value": "30 84.9315068493151% 71.37254901960785%",
+      "$value": "26.842105263157904 92.68292682926828% 32.15686274509804%",
+      "value": "26.842105263157904 92.68292682926828% 32.15686274509804%",
       "filePath": "tokens/color/crayon/orange.yml",
       "isSource": true,
       "original": {
         "$type": "color",
-        "$value": "{color.orange.100}",
-        "value": "{color.orange.100}"
+        "$value": "{color.orange.60}",
+        "value": "{color.orange.60}"
       },
-      "name": "rh-color-orange-100-hsl",
+      "name": "rh-color-orange-60-hsl",
       "attributes": {
         "category": "color",
         "type": "orange",
-        "item": "100-hsl",
-        "hex": "f4b678",
+        "item": "60-hsl",
+        "hex": "9e4a06",
         "rgb": {
-          "r": 244,
-          "g": 182,
-          "b": 120,
+          "r": 158,
+          "g": 74,
+          "b": 6,
           "a": 1
         },
         "hsl": {
-          "h": 30,
-          "s": 84.9315068493151,
-          "l": 71.37254901960785,
+          "h": 26.842105263157904,
+          "s": 92.68292682926828,
+          "l": 32.15686274509804,
           "a": 1
         },
         "hsv": {
-          "h": 30,
-          "s": 0.5081967213114754,
-          "v": 0.9568627450980393,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "orange",
-        "100-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-orange-100-rgb",
-    {
-      "$type": "color",
-      "$value": "244 182 120",
-      "value": "244 182 120",
-      "filePath": "tokens/color/crayon/orange.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.orange.100}",
-        "value": "{color.orange.100}"
-      },
-      "name": "rh-color-orange-100-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "orange",
-        "item": "100-rgb",
-        "hex": "f4b678",
-        "rgb": {
-          "r": 244,
-          "g": 182,
-          "b": 120,
-          "a": 1
-        },
-        "hsl": {
-          "h": 30,
-          "s": 84.9315068493151,
-          "l": 71.37254901960785,
-          "a": 1
-        },
-        "hsv": {
-          "h": 30,
-          "s": 0.5081967213114754,
-          "v": 0.9568627450980393,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "orange",
-        "100-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-orange-300-hsl",
-    {
-      "$type": "color",
-      "$value": "30 93.44262295081968% 47.84313725490196%",
-      "value": "30 93.44262295081968% 47.84313725490196%",
-      "filePath": "tokens/color/crayon/orange.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.orange.300}",
-        "value": "{color.orange.300}"
-      },
-      "name": "rh-color-orange-300-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "orange",
-        "item": "300-hsl",
-        "hex": "ec7a08",
-        "rgb": {
-          "r": 236,
-          "g": 122,
-          "b": 8,
-          "a": 1
-        },
-        "hsl": {
-          "h": 30,
-          "s": 93.44262295081968,
-          "l": 47.84313725490196,
-          "a": 1
-        },
-        "hsv": {
-          "h": 30,
-          "s": 0.9661016949152542,
-          "v": 0.9254901960784314,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "orange",
-        "300-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-orange-300-rgb",
-    {
-      "$type": "color",
-      "$value": "236 122 8",
-      "value": "236 122 8",
-      "filePath": "tokens/color/crayon/orange.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.orange.300}",
-        "value": "{color.orange.300}"
-      },
-      "name": "rh-color-orange-300-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "orange",
-        "item": "300-rgb",
-        "hex": "ec7a08",
-        "rgb": {
-          "r": 236,
-          "g": 122,
-          "b": 8,
-          "a": 1
-        },
-        "hsl": {
-          "h": 30,
-          "s": 93.44262295081968,
-          "l": 47.84313725490196,
-          "a": 1
-        },
-        "hsv": {
-          "h": 30,
-          "s": 0.9661016949152542,
-          "v": 0.9254901960784314,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "orange",
-        "300-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-orange-500-hsl",
-    {
-      "$type": "color",
-      "$value": "29.79020979020979 100% 28.03921568627451%",
-      "value": "29.79020979020979 100% 28.03921568627451%",
-      "filePath": "tokens/color/crayon/orange.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.orange.500}",
-        "value": "{color.orange.500}"
-      },
-      "name": "rh-color-orange-500-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "orange",
-        "item": "500-hsl",
-        "hex": "8f4700",
-        "rgb": {
-          "r": 143,
-          "g": 71,
-          "b": 0,
-          "a": 1
-        },
-        "hsl": {
-          "h": 29.79020979020979,
-          "s": 100,
-          "l": 28.03921568627451,
-          "a": 1
-        },
-        "hsv": {
-          "h": 29.79020979020979,
-          "s": 1,
-          "v": 0.5607843137254902,
+          "h": 26.842105263157904,
+          "s": 0.9620253164556961,
+          "v": 0.6196078431372549,
           "a": 1
         },
         "isLight": false
@@ -6474,45 +6048,45 @@ export const tokens = new Map([
       "path": [
         "color",
         "orange",
-        "500-hsl"
+        "60-hsl"
       ]
     }
   ],
   [
-    "--rh-color-orange-500-rgb",
+    "--rh-color-orange-60-rgb",
     {
       "$type": "color",
-      "$value": "143 71 0",
-      "value": "143 71 0",
+      "$value": "158 74 6",
+      "value": "158 74 6",
       "filePath": "tokens/color/crayon/orange.yml",
       "isSource": true,
       "original": {
         "$type": "color",
-        "$value": "{color.orange.500}",
-        "value": "{color.orange.500}"
+        "$value": "{color.orange.60}",
+        "value": "{color.orange.60}"
       },
-      "name": "rh-color-orange-500-rgb",
+      "name": "rh-color-orange-60-rgb",
       "attributes": {
         "category": "color",
         "type": "orange",
-        "item": "500-rgb",
-        "hex": "8f4700",
+        "item": "60-rgb",
+        "hex": "9e4a06",
         "rgb": {
-          "r": 143,
-          "g": 71,
-          "b": 0,
+          "r": 158,
+          "g": 74,
+          "b": 6,
           "a": 1
         },
         "hsl": {
-          "h": 29.79020979020979,
-          "s": 100,
-          "l": 28.03921568627451,
+          "h": 26.842105263157904,
+          "s": 92.68292682926828,
+          "l": 32.15686274509804,
           "a": 1
         },
         "hsv": {
-          "h": 29.79020979020979,
-          "s": 1,
-          "v": 0.5607843137254902,
+          "h": 26.842105263157904,
+          "s": 0.9620253164556961,
+          "v": 0.6196078431372549,
           "a": 1
         },
         "isLight": false
@@ -6520,45 +6094,45 @@ export const tokens = new Map([
       "path": [
         "color",
         "orange",
-        "500-rgb"
+        "60-rgb"
       ]
     }
   ],
   [
-    "--rh-color-orange-700-hsl",
+    "--rh-color-orange-70-hsl",
     {
       "$type": "color",
-      "$value": "31.525423728813553 100% 11.568627450980392%",
-      "value": "31.525423728813553 100% 11.568627450980392%",
+      "$value": "24 100% 22.54901960784314%",
+      "value": "24 100% 22.54901960784314%",
       "filePath": "tokens/color/crayon/orange.yml",
       "isSource": true,
       "original": {
         "$type": "color",
-        "$value": "{color.orange.700}",
-        "value": "{color.orange.700}"
+        "$value": "{color.orange.70}",
+        "value": "{color.orange.70}"
       },
-      "name": "rh-color-orange-700-hsl",
+      "name": "rh-color-orange-70-hsl",
       "attributes": {
         "category": "color",
         "type": "orange",
-        "item": "700-hsl",
-        "hex": "3b1f00",
+        "item": "70-hsl",
+        "hex": "732e00",
         "rgb": {
-          "r": 59,
-          "g": 31,
+          "r": 115,
+          "g": 46,
           "b": 0,
           "a": 1
         },
         "hsl": {
-          "h": 31.525423728813553,
+          "h": 24,
           "s": 100,
-          "l": 11.568627450980392,
+          "l": 22.54901960784314,
           "a": 1
         },
         "hsv": {
-          "h": 31.525423728813553,
+          "h": 24,
           "s": 1,
-          "v": 0.23137254901960785,
+          "v": 0.45098039215686275,
           "a": 1
         },
         "isLight": false
@@ -6566,45 +6140,45 @@ export const tokens = new Map([
       "path": [
         "color",
         "orange",
-        "700-hsl"
+        "70-hsl"
       ]
     }
   ],
   [
-    "--rh-color-orange-700-rgb",
+    "--rh-color-orange-70-rgb",
     {
       "$type": "color",
-      "$value": "59 31 0",
-      "value": "59 31 0",
+      "$value": "115 46 0",
+      "value": "115 46 0",
       "filePath": "tokens/color/crayon/orange.yml",
       "isSource": true,
       "original": {
         "$type": "color",
-        "$value": "{color.orange.700}",
-        "value": "{color.orange.700}"
+        "$value": "{color.orange.70}",
+        "value": "{color.orange.70}"
       },
-      "name": "rh-color-orange-700-rgb",
+      "name": "rh-color-orange-70-rgb",
       "attributes": {
         "category": "color",
         "type": "orange",
-        "item": "700-rgb",
-        "hex": "3b1f00",
+        "item": "70-rgb",
+        "hex": "732e00",
         "rgb": {
-          "r": 59,
-          "g": 31,
+          "r": 115,
+          "g": 46,
           "b": 0,
           "a": 1
         },
         "hsl": {
-          "h": 31.525423728813553,
+          "h": 24,
           "s": 100,
-          "l": 11.568627450980392,
+          "l": 22.54901960784314,
           "a": 1
         },
         "hsv": {
-          "h": 31.525423728813553,
+          "h": 24,
           "s": 1,
-          "v": 0.23137254901960785,
+          "v": 0.45098039215686275,
           "a": 1
         },
         "isLight": false
@@ -6612,45 +6186,45 @@ export const tokens = new Map([
       "path": [
         "color",
         "orange",
-        "700-rgb"
+        "70-rgb"
       ]
     }
   ],
   [
-    "--rh-color-purple-50",
+    "--rh-color-purple-10",
     {
-      "$value": "#f2f0fc",
+      "$value": "#ECE6FF",
       "$description": "Label - Filled (Purple) background color",
-      "value": "#f2f0fc",
+      "value": "#ece6ff",
       "filePath": "tokens/color/crayon/purple.yaml",
       "isSource": true,
       "original": {
-        "$value": "#f2f0fc",
+        "$value": "#ECE6FF",
         "$description": "Label - Filled (Purple) background color",
-        "value": "#f2f0fc"
+        "value": "#ECE6FF"
       },
-      "name": "rh-color-purple-50",
+      "name": "rh-color-purple-10",
       "attributes": {
         "category": "color",
         "type": "purple",
-        "item": "50",
-        "hex": "f2f0fc",
+        "item": "10",
+        "hex": "ece6ff",
         "rgb": {
-          "r": 242,
-          "g": 240,
-          "b": 252,
+          "r": 236,
+          "g": 230,
+          "b": 255,
           "a": 1
         },
         "hsl": {
-          "h": 249.99999999999994,
-          "s": 66.66666666666677,
-          "l": 96.47058823529412,
+          "h": 254.4,
+          "s": 100,
+          "l": 95.09803921568627,
           "a": 1
         },
         "hsv": {
-          "h": 249.99999999999994,
-          "s": 0.04761904761904767,
-          "v": 0.9882352941176471,
+          "h": 254.4,
+          "s": 0.0980392156862745,
+          "v": 1,
           "a": 1
         },
         "isLight": true
@@ -6658,44 +6232,328 @@ export const tokens = new Map([
       "path": [
         "color",
         "purple",
-        "50"
+        "10"
       ],
       "comment": "Label - Filled (Purple) background color",
       "$type": "color"
     }
   ],
   [
-    "--rh-color-purple-100",
+    "--rh-color-purple-20",
     {
-      "$value": "#cbc1ff",
-      "value": "#cbc1ff",
+      "$value": "#D0C5F4",
+      "$description": "Inline link visited hover (dark theme)",
+      "value": "#d0c5f4",
       "filePath": "tokens/color/crayon/purple.yaml",
       "isSource": true,
       "original": {
-        "$value": "#cbc1ff",
-        "value": "#cbc1ff"
+        "$value": "#D0C5F4",
+        "$description": "Inline link visited hover (dark theme)",
+        "value": "#D0C5F4"
       },
-      "name": "rh-color-purple-100",
+      "name": "rh-color-purple-20",
       "attributes": {
         "category": "color",
         "type": "purple",
-        "item": "100",
-        "hex": "cbc1ff",
+        "item": "20",
+        "hex": "d0c5f4",
         "rgb": {
-          "r": 203,
-          "g": 193,
+          "r": 208,
+          "g": 197,
+          "b": 244,
+          "a": 1
+        },
+        "hsl": {
+          "h": 254.0425531914893,
+          "s": 68.11594202898556,
+          "l": 86.47058823529412,
+          "a": 1
+        },
+        "hsv": {
+          "h": 254.0425531914893,
+          "s": 0.19262295081967212,
+          "v": 0.9568627450980393,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "purple",
+        "20"
+      ],
+      "comment": "Inline link visited hover (dark theme)",
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-purple-30",
+    {
+      "$value": "#B6A6E9",
+      "value": "#b6a6e9",
+      "filePath": "tokens/color/crayon/purple.yaml",
+      "isSource": true,
+      "original": {
+        "$value": "#B6A6E9",
+        "value": "#B6A6E9"
+      },
+      "name": "rh-color-purple-30",
+      "attributes": {
+        "category": "color",
+        "type": "purple",
+        "item": "30",
+        "hex": "b6a6e9",
+        "rgb": {
+          "r": 182,
+          "g": 166,
+          "b": 233,
+          "a": 1
+        },
+        "hsl": {
+          "h": 254.32835820895522,
+          "s": 60.36036036036033,
+          "l": 78.23529411764706,
+          "a": 1
+        },
+        "hsv": {
+          "h": 254.32835820895522,
+          "s": 0.2875536480686695,
+          "v": 0.9137254901960784,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "purple",
+        "30"
+      ],
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-purple-40",
+    {
+      "$value": "#876FD4",
+      "$description": "Inline link visited (dark theme)",
+      "value": "#876fd4",
+      "filePath": "tokens/color/crayon/purple.yaml",
+      "isSource": true,
+      "original": {
+        "$value": "#876FD4",
+        "$description": "Inline link visited (dark theme)",
+        "value": "#876FD4"
+      },
+      "name": "rh-color-purple-40",
+      "attributes": {
+        "category": "color",
+        "type": "purple",
+        "item": "40",
+        "hex": "876fd4",
+        "rgb": {
+          "r": 135,
+          "g": 111,
+          "b": 212,
+          "a": 1
+        },
+        "hsl": {
+          "h": 254.25742574257427,
+          "s": 54.010695187165794,
+          "l": 63.33333333333333,
+          "a": 1
+        },
+        "hsv": {
+          "h": 254.25742574257427,
+          "s": 0.47641509433962265,
+          "v": 0.8313725490196079,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "purple",
+        "40"
+      ],
+      "comment": "Inline link visited (dark theme)",
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-purple-50",
+    {
+      "$value": "#5E40BE",
+      "value": "#5e40be",
+      "filePath": "tokens/color/crayon/purple.yaml",
+      "isSource": true,
+      "original": {
+        "$value": "#5E40BE",
+        "value": "#5E40BE"
+      },
+      "name": "rh-color-purple-50",
+      "attributes": {
+        "category": "color",
+        "type": "purple",
+        "item": "50",
+        "hex": "5e40be",
+        "rgb": {
+          "r": 94,
+          "g": 64,
+          "b": 190,
+          "a": 1
+        },
+        "hsl": {
+          "h": 254.2857142857143,
+          "s": 49.60629921259843,
+          "l": 49.80392156862745,
+          "a": 1
+        },
+        "hsv": {
+          "h": 254.2857142857143,
+          "s": 0.6631578947368422,
+          "v": 0.7450980392156863,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "purple",
+        "50"
+      ],
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-purple-60",
+    {
+      "$value": "#3D2785",
+      "$description": "Inline link visited (light theme)",
+      "value": "#3d2785",
+      "filePath": "tokens/color/crayon/purple.yaml",
+      "isSource": true,
+      "original": {
+        "$value": "#3D2785",
+        "$description": "Inline link visited (light theme)",
+        "value": "#3D2785"
+      },
+      "name": "rh-color-purple-60",
+      "attributes": {
+        "category": "color",
+        "type": "purple",
+        "item": "60",
+        "hex": "3d2785",
+        "rgb": {
+          "r": 61,
+          "g": 39,
+          "b": 133,
+          "a": 1
+        },
+        "hsl": {
+          "h": 254.0425531914894,
+          "s": 54.65116279069767,
+          "l": 33.72549019607843,
+          "a": 1
+        },
+        "hsv": {
+          "h": 254.0425531914894,
+          "s": 0.706766917293233,
+          "v": 0.5215686274509804,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "purple",
+        "60"
+      ],
+      "comment": "Inline link visited (light theme)",
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-purple-70",
+    {
+      "$value": "#21134D",
+      "$description": "Inline link visited hover (light theme)",
+      "value": "#21134d",
+      "filePath": "tokens/color/crayon/purple.yaml",
+      "isSource": true,
+      "original": {
+        "$value": "#21134D",
+        "$description": "Inline link visited hover (light theme)",
+        "value": "#21134D"
+      },
+      "name": "rh-color-purple-70",
+      "attributes": {
+        "category": "color",
+        "type": "purple",
+        "item": "70",
+        "hex": "21134d",
+        "rgb": {
+          "r": 33,
+          "g": 19,
+          "b": 77,
+          "a": 1
+        },
+        "hsl": {
+          "h": 254.48275862068965,
+          "s": 60.416666666666664,
+          "l": 18.823529411764707,
+          "a": 1
+        },
+        "hsv": {
+          "h": 254.48275862068965,
+          "s": 0.7532467532467532,
+          "v": 0.30196078431372547,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "purple",
+        "70"
+      ],
+      "comment": "Inline link visited hover (light theme)",
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-purple-10-hsl",
+    {
+      "$type": "color",
+      "$value": "254.4 100% 95.09803921568627%",
+      "value": "254.4 100% 95.09803921568627%",
+      "filePath": "tokens/color/crayon/purple.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.purple.10}",
+        "value": "{color.purple.10}"
+      },
+      "name": "rh-color-purple-10-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "purple",
+        "item": "10-hsl",
+        "hex": "ece6ff",
+        "rgb": {
+          "r": 236,
+          "g": 230,
           "b": 255,
           "a": 1
         },
         "hsl": {
-          "h": 249.6774193548387,
+          "h": 254.4,
           "s": 100,
-          "l": 87.84313725490196,
+          "l": 95.09803921568627,
           "a": 1
         },
         "hsv": {
-          "h": 249.6774193548387,
-          "s": 0.2431372549019608,
+          "h": 254.4,
+          "s": 0.0980392156862745,
           "v": 1,
           "a": 1
         },
@@ -6704,43 +6562,44 @@ export const tokens = new Map([
       "path": [
         "color",
         "purple",
-        "100"
-      ],
-      "$type": "color"
+        "10-hsl"
+      ]
     }
   ],
   [
-    "--rh-color-purple-300",
+    "--rh-color-purple-10-rgb",
     {
-      "$value": "#a18fff",
-      "value": "#a18fff",
+      "$type": "color",
+      "$value": "236 230 255",
+      "value": "236 230 255",
       "filePath": "tokens/color/crayon/purple.yaml",
       "isSource": true,
       "original": {
-        "$value": "#a18fff",
-        "value": "#a18fff"
+        "$type": "color",
+        "$value": "{color.purple.10}",
+        "value": "{color.purple.10}"
       },
-      "name": "rh-color-purple-300",
+      "name": "rh-color-purple-10-rgb",
       "attributes": {
         "category": "color",
         "type": "purple",
-        "item": "300",
-        "hex": "a18fff",
+        "item": "10-rgb",
+        "hex": "ece6ff",
         "rgb": {
-          "r": 161,
-          "g": 143,
+          "r": 236,
+          "g": 230,
           "b": 255,
           "a": 1
         },
         "hsl": {
-          "h": 249.64285714285714,
+          "h": 254.4,
           "s": 100,
-          "l": 78.03921568627452,
+          "l": 95.09803921568627,
           "a": 1
         },
         "hsv": {
-          "h": 249.64285714285714,
-          "s": 0.4392156862745098,
+          "h": 254.4,
+          "s": 0.0980392156862745,
           "v": 1,
           "a": 1
         },
@@ -6749,107 +6608,292 @@ export const tokens = new Map([
       "path": [
         "color",
         "purple",
-        "300"
-      ],
-      "$type": "color"
+        "10-rgb"
+      ]
     }
   ],
   [
-    "--rh-color-purple-500",
+    "--rh-color-purple-20-hsl",
     {
-      "$value": "#6753ac",
-      "value": "#6753ac",
+      "$type": "color",
+      "$value": "254.0425531914893 68.11594202898556% 86.47058823529412%",
+      "value": "254.0425531914893 68.11594202898556% 86.47058823529412%",
       "filePath": "tokens/color/crayon/purple.yaml",
       "isSource": true,
       "original": {
-        "$value": "#6753ac",
-        "value": "#6753ac"
+        "$type": "color",
+        "$value": "{color.purple.20}",
+        "value": "{color.purple.20}"
       },
-      "name": "rh-color-purple-500",
+      "name": "rh-color-purple-20-hsl",
       "attributes": {
         "category": "color",
         "type": "purple",
-        "item": "500",
-        "hex": "6753ac",
+        "item": "20-hsl",
+        "hex": "d0c5f4",
         "rgb": {
-          "r": 103,
-          "g": 83,
-          "b": 172,
+          "r": 208,
+          "g": 197,
+          "b": 244,
           "a": 1
         },
         "hsl": {
-          "h": 253.4831460674157,
-          "s": 34.90196078431373,
-          "l": 50,
+          "h": 254.0425531914893,
+          "s": 68.11594202898556,
+          "l": 86.47058823529412,
           "a": 1
         },
         "hsv": {
-          "h": 253.4831460674157,
-          "s": 0.5174418604651163,
-          "v": 0.6745098039215687,
+          "h": 254.0425531914893,
+          "s": 0.19262295081967212,
+          "v": 0.9568627450980393,
           "a": 1
         },
-        "isLight": false
+        "isLight": true
       },
       "path": [
         "color",
         "purple",
-        "500"
-      ],
-      "$type": "color"
+        "20-hsl"
+      ]
     }
   ],
   [
-    "--rh-color-purple-700",
+    "--rh-color-purple-20-rgb",
     {
-      "$value": "#1f0066",
-      "value": "#1f0066",
+      "$type": "color",
+      "$value": "208 197 244",
+      "value": "208 197 244",
       "filePath": "tokens/color/crayon/purple.yaml",
       "isSource": true,
       "original": {
-        "$value": "#1f0066",
-        "value": "#1f0066"
+        "$type": "color",
+        "$value": "{color.purple.20}",
+        "value": "{color.purple.20}"
       },
-      "name": "rh-color-purple-700",
+      "name": "rh-color-purple-20-rgb",
       "attributes": {
         "category": "color",
         "type": "purple",
-        "item": "700",
-        "hex": "1f0066",
+        "item": "20-rgb",
+        "hex": "d0c5f4",
         "rgb": {
-          "r": 31,
-          "g": 0,
-          "b": 102,
+          "r": 208,
+          "g": 197,
+          "b": 244,
           "a": 1
         },
         "hsl": {
-          "h": 258.2352941176471,
-          "s": 100,
-          "l": 20,
+          "h": 254.0425531914893,
+          "s": 68.11594202898556,
+          "l": 86.47058823529412,
           "a": 1
         },
         "hsv": {
-          "h": 258.2352941176471,
-          "s": 1,
-          "v": 0.4,
+          "h": 254.0425531914893,
+          "s": 0.19262295081967212,
+          "v": 0.9568627450980393,
           "a": 1
         },
-        "isLight": false
+        "isLight": true
       },
       "path": [
         "color",
         "purple",
-        "700"
-      ],
-      "$type": "color"
+        "20-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-purple-30-hsl",
+    {
+      "$type": "color",
+      "$value": "254.32835820895522 60.36036036036033% 78.23529411764706%",
+      "value": "254.32835820895522 60.36036036036033% 78.23529411764706%",
+      "filePath": "tokens/color/crayon/purple.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.purple.30}",
+        "value": "{color.purple.30}"
+      },
+      "name": "rh-color-purple-30-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "purple",
+        "item": "30-hsl",
+        "hex": "b6a6e9",
+        "rgb": {
+          "r": 182,
+          "g": 166,
+          "b": 233,
+          "a": 1
+        },
+        "hsl": {
+          "h": 254.32835820895522,
+          "s": 60.36036036036033,
+          "l": 78.23529411764706,
+          "a": 1
+        },
+        "hsv": {
+          "h": 254.32835820895522,
+          "s": 0.2875536480686695,
+          "v": 0.9137254901960784,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "purple",
+        "30-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-purple-30-rgb",
+    {
+      "$type": "color",
+      "$value": "182 166 233",
+      "value": "182 166 233",
+      "filePath": "tokens/color/crayon/purple.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.purple.30}",
+        "value": "{color.purple.30}"
+      },
+      "name": "rh-color-purple-30-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "purple",
+        "item": "30-rgb",
+        "hex": "b6a6e9",
+        "rgb": {
+          "r": 182,
+          "g": 166,
+          "b": 233,
+          "a": 1
+        },
+        "hsl": {
+          "h": 254.32835820895522,
+          "s": 60.36036036036033,
+          "l": 78.23529411764706,
+          "a": 1
+        },
+        "hsv": {
+          "h": 254.32835820895522,
+          "s": 0.2875536480686695,
+          "v": 0.9137254901960784,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "purple",
+        "30-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-purple-40-hsl",
+    {
+      "$type": "color",
+      "$value": "254.25742574257427 54.010695187165794% 63.33333333333333%",
+      "value": "254.25742574257427 54.010695187165794% 63.33333333333333%",
+      "filePath": "tokens/color/crayon/purple.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.purple.40}",
+        "value": "{color.purple.40}"
+      },
+      "name": "rh-color-purple-40-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "purple",
+        "item": "40-hsl",
+        "hex": "876fd4",
+        "rgb": {
+          "r": 135,
+          "g": 111,
+          "b": 212,
+          "a": 1
+        },
+        "hsl": {
+          "h": 254.25742574257427,
+          "s": 54.010695187165794,
+          "l": 63.33333333333333,
+          "a": 1
+        },
+        "hsv": {
+          "h": 254.25742574257427,
+          "s": 0.47641509433962265,
+          "v": 0.8313725490196079,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "purple",
+        "40-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-purple-40-rgb",
+    {
+      "$type": "color",
+      "$value": "135 111 212",
+      "value": "135 111 212",
+      "filePath": "tokens/color/crayon/purple.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.purple.40}",
+        "value": "{color.purple.40}"
+      },
+      "name": "rh-color-purple-40-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "purple",
+        "item": "40-rgb",
+        "hex": "876fd4",
+        "rgb": {
+          "r": 135,
+          "g": 111,
+          "b": 212,
+          "a": 1
+        },
+        "hsl": {
+          "h": 254.25742574257427,
+          "s": 54.010695187165794,
+          "l": 63.33333333333333,
+          "a": 1
+        },
+        "hsv": {
+          "h": 254.25742574257427,
+          "s": 0.47641509433962265,
+          "v": 0.8313725490196079,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "purple",
+        "40-rgb"
+      ]
     }
   ],
   [
     "--rh-color-purple-50-hsl",
     {
       "$type": "color",
-      "$value": "249.99999999999994 66.66666666666677% 96.47058823529412%",
-      "value": "249.99999999999994 66.66666666666677% 96.47058823529412%",
+      "$value": "254.2857142857143 49.60629921259843% 49.80392156862745%",
+      "value": "254.2857142857143 49.60629921259843% 49.80392156862745%",
       "filePath": "tokens/color/crayon/purple.yaml",
       "isSource": true,
       "original": {
@@ -6862,26 +6906,26 @@ export const tokens = new Map([
         "category": "color",
         "type": "purple",
         "item": "50-hsl",
-        "hex": "f2f0fc",
+        "hex": "5e40be",
         "rgb": {
-          "r": 242,
-          "g": 240,
-          "b": 252,
+          "r": 94,
+          "g": 64,
+          "b": 190,
           "a": 1
         },
         "hsl": {
-          "h": 249.99999999999994,
-          "s": 66.66666666666677,
-          "l": 96.47058823529412,
+          "h": 254.2857142857143,
+          "s": 49.60629921259843,
+          "l": 49.80392156862745,
           "a": 1
         },
         "hsv": {
-          "h": 249.99999999999994,
-          "s": 0.04761904761904767,
-          "v": 0.9882352941176471,
+          "h": 254.2857142857143,
+          "s": 0.6631578947368422,
+          "v": 0.7450980392156863,
           "a": 1
         },
-        "isLight": true
+        "isLight": false
       },
       "path": [
         "color",
@@ -6894,8 +6938,8 @@ export const tokens = new Map([
     "--rh-color-purple-50-rgb",
     {
       "$type": "color",
-      "$value": "242 240 252",
-      "value": "242 240 252",
+      "$value": "94 64 190",
+      "value": "94 64 190",
       "filePath": "tokens/color/crayon/purple.yaml",
       "isSource": true,
       "original": {
@@ -6908,26 +6952,26 @@ export const tokens = new Map([
         "category": "color",
         "type": "purple",
         "item": "50-rgb",
-        "hex": "f2f0fc",
+        "hex": "5e40be",
         "rgb": {
-          "r": 242,
-          "g": 240,
-          "b": 252,
+          "r": 94,
+          "g": 64,
+          "b": 190,
           "a": 1
         },
         "hsl": {
-          "h": 249.99999999999994,
-          "s": 66.66666666666677,
-          "l": 96.47058823529412,
+          "h": 254.2857142857143,
+          "s": 49.60629921259843,
+          "l": 49.80392156862745,
           "a": 1
         },
         "hsv": {
-          "h": 249.99999999999994,
-          "s": 0.04761904761904767,
-          "v": 0.9882352941176471,
+          "h": 254.2857142857143,
+          "s": 0.6631578947368422,
+          "v": 0.7450980392156863,
           "a": 1
         },
-        "isLight": true
+        "isLight": false
       },
       "path": [
         "color",
@@ -6937,224 +6981,40 @@ export const tokens = new Map([
     }
   ],
   [
-    "--rh-color-purple-100-hsl",
+    "--rh-color-purple-60-hsl",
     {
       "$type": "color",
-      "$value": "249.6774193548387 100% 87.84313725490196%",
-      "value": "249.6774193548387 100% 87.84313725490196%",
+      "$value": "254.0425531914894 54.65116279069767% 33.72549019607843%",
+      "value": "254.0425531914894 54.65116279069767% 33.72549019607843%",
       "filePath": "tokens/color/crayon/purple.yaml",
       "isSource": true,
       "original": {
         "$type": "color",
-        "$value": "{color.purple.100}",
-        "value": "{color.purple.100}"
+        "$value": "{color.purple.60}",
+        "value": "{color.purple.60}"
       },
-      "name": "rh-color-purple-100-hsl",
+      "name": "rh-color-purple-60-hsl",
       "attributes": {
         "category": "color",
         "type": "purple",
-        "item": "100-hsl",
-        "hex": "cbc1ff",
+        "item": "60-hsl",
+        "hex": "3d2785",
         "rgb": {
-          "r": 203,
-          "g": 193,
-          "b": 255,
+          "r": 61,
+          "g": 39,
+          "b": 133,
           "a": 1
         },
         "hsl": {
-          "h": 249.6774193548387,
-          "s": 100,
-          "l": 87.84313725490196,
+          "h": 254.0425531914894,
+          "s": 54.65116279069767,
+          "l": 33.72549019607843,
           "a": 1
         },
         "hsv": {
-          "h": 249.6774193548387,
-          "s": 0.2431372549019608,
-          "v": 1,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "purple",
-        "100-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-purple-100-rgb",
-    {
-      "$type": "color",
-      "$value": "203 193 255",
-      "value": "203 193 255",
-      "filePath": "tokens/color/crayon/purple.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.purple.100}",
-        "value": "{color.purple.100}"
-      },
-      "name": "rh-color-purple-100-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "purple",
-        "item": "100-rgb",
-        "hex": "cbc1ff",
-        "rgb": {
-          "r": 203,
-          "g": 193,
-          "b": 255,
-          "a": 1
-        },
-        "hsl": {
-          "h": 249.6774193548387,
-          "s": 100,
-          "l": 87.84313725490196,
-          "a": 1
-        },
-        "hsv": {
-          "h": 249.6774193548387,
-          "s": 0.2431372549019608,
-          "v": 1,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "purple",
-        "100-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-purple-300-hsl",
-    {
-      "$type": "color",
-      "$value": "249.64285714285714 100% 78.03921568627452%",
-      "value": "249.64285714285714 100% 78.03921568627452%",
-      "filePath": "tokens/color/crayon/purple.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.purple.300}",
-        "value": "{color.purple.300}"
-      },
-      "name": "rh-color-purple-300-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "purple",
-        "item": "300-hsl",
-        "hex": "a18fff",
-        "rgb": {
-          "r": 161,
-          "g": 143,
-          "b": 255,
-          "a": 1
-        },
-        "hsl": {
-          "h": 249.64285714285714,
-          "s": 100,
-          "l": 78.03921568627452,
-          "a": 1
-        },
-        "hsv": {
-          "h": 249.64285714285714,
-          "s": 0.4392156862745098,
-          "v": 1,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "purple",
-        "300-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-purple-300-rgb",
-    {
-      "$type": "color",
-      "$value": "161 143 255",
-      "value": "161 143 255",
-      "filePath": "tokens/color/crayon/purple.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.purple.300}",
-        "value": "{color.purple.300}"
-      },
-      "name": "rh-color-purple-300-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "purple",
-        "item": "300-rgb",
-        "hex": "a18fff",
-        "rgb": {
-          "r": 161,
-          "g": 143,
-          "b": 255,
-          "a": 1
-        },
-        "hsl": {
-          "h": 249.64285714285714,
-          "s": 100,
-          "l": 78.03921568627452,
-          "a": 1
-        },
-        "hsv": {
-          "h": 249.64285714285714,
-          "s": 0.4392156862745098,
-          "v": 1,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "purple",
-        "300-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-purple-500-hsl",
-    {
-      "$type": "color",
-      "$value": "253.4831460674157 34.90196078431373% 50%",
-      "value": "253.4831460674157 34.90196078431373% 50%",
-      "filePath": "tokens/color/crayon/purple.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.purple.500}",
-        "value": "{color.purple.500}"
-      },
-      "name": "rh-color-purple-500-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "purple",
-        "item": "500-hsl",
-        "hex": "6753ac",
-        "rgb": {
-          "r": 103,
-          "g": 83,
-          "b": 172,
-          "a": 1
-        },
-        "hsl": {
-          "h": 253.4831460674157,
-          "s": 34.90196078431373,
-          "l": 50,
-          "a": 1
-        },
-        "hsv": {
-          "h": 253.4831460674157,
-          "s": 0.5174418604651163,
-          "v": 0.6745098039215687,
+          "h": 254.0425531914894,
+          "s": 0.706766917293233,
+          "v": 0.5215686274509804,
           "a": 1
         },
         "isLight": false
@@ -7162,45 +7022,45 @@ export const tokens = new Map([
       "path": [
         "color",
         "purple",
-        "500-hsl"
+        "60-hsl"
       ]
     }
   ],
   [
-    "--rh-color-purple-500-rgb",
+    "--rh-color-purple-60-rgb",
     {
       "$type": "color",
-      "$value": "103 83 172",
-      "value": "103 83 172",
+      "$value": "61 39 133",
+      "value": "61 39 133",
       "filePath": "tokens/color/crayon/purple.yaml",
       "isSource": true,
       "original": {
         "$type": "color",
-        "$value": "{color.purple.500}",
-        "value": "{color.purple.500}"
+        "$value": "{color.purple.60}",
+        "value": "{color.purple.60}"
       },
-      "name": "rh-color-purple-500-rgb",
+      "name": "rh-color-purple-60-rgb",
       "attributes": {
         "category": "color",
         "type": "purple",
-        "item": "500-rgb",
-        "hex": "6753ac",
+        "item": "60-rgb",
+        "hex": "3d2785",
         "rgb": {
-          "r": 103,
-          "g": 83,
-          "b": 172,
+          "r": 61,
+          "g": 39,
+          "b": 133,
           "a": 1
         },
         "hsl": {
-          "h": 253.4831460674157,
-          "s": 34.90196078431373,
-          "l": 50,
+          "h": 254.0425531914894,
+          "s": 54.65116279069767,
+          "l": 33.72549019607843,
           "a": 1
         },
         "hsv": {
-          "h": 253.4831460674157,
-          "s": 0.5174418604651163,
-          "v": 0.6745098039215687,
+          "h": 254.0425531914894,
+          "s": 0.706766917293233,
+          "v": 0.5215686274509804,
           "a": 1
         },
         "isLight": false
@@ -7208,233 +7068,1096 @@ export const tokens = new Map([
       "path": [
         "color",
         "purple",
-        "500-rgb"
+        "60-rgb"
       ]
     }
   ],
   [
-    "--rh-color-purple-700-hsl",
+    "--rh-color-purple-70-hsl",
     {
       "$type": "color",
-      "$value": "258.2352941176471 100% 20%",
-      "value": "258.2352941176471 100% 20%",
+      "$value": "254.48275862068965 60.416666666666664% 18.823529411764707%",
+      "value": "254.48275862068965 60.416666666666664% 18.823529411764707%",
       "filePath": "tokens/color/crayon/purple.yaml",
       "isSource": true,
       "original": {
         "$type": "color",
-        "$value": "{color.purple.700}",
-        "value": "{color.purple.700}"
+        "$value": "{color.purple.70}",
+        "value": "{color.purple.70}"
       },
-      "name": "rh-color-purple-700-hsl",
+      "name": "rh-color-purple-70-hsl",
       "attributes": {
         "category": "color",
         "type": "purple",
-        "item": "700-hsl",
-        "hex": "1f0066",
+        "item": "70-hsl",
+        "hex": "21134d",
         "rgb": {
-          "r": 31,
-          "g": 0,
-          "b": 102,
+          "r": 33,
+          "g": 19,
+          "b": 77,
           "a": 1
         },
         "hsl": {
-          "h": 258.2352941176471,
+          "h": 254.48275862068965,
+          "s": 60.416666666666664,
+          "l": 18.823529411764707,
+          "a": 1
+        },
+        "hsv": {
+          "h": 254.48275862068965,
+          "s": 0.7532467532467532,
+          "v": 0.30196078431372547,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "purple",
+        "70-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-purple-70-rgb",
+    {
+      "$type": "color",
+      "$value": "33 19 77",
+      "value": "33 19 77",
+      "filePath": "tokens/color/crayon/purple.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.purple.70}",
+        "value": "{color.purple.70}"
+      },
+      "name": "rh-color-purple-70-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "purple",
+        "item": "70-rgb",
+        "hex": "21134d",
+        "rgb": {
+          "r": 33,
+          "g": 19,
+          "b": 77,
+          "a": 1
+        },
+        "hsl": {
+          "h": 254.48275862068965,
+          "s": 60.416666666666664,
+          "l": 18.823529411764707,
+          "a": 1
+        },
+        "hsv": {
+          "h": 254.48275862068965,
+          "s": 0.7532467532467532,
+          "v": 0.30196078431372547,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "purple",
+        "70-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-red-orange-10",
+    {
+      "$value": "#FFE3D9",
+      "value": "#ffe3d9",
+      "filePath": "tokens/color/crayon/red-orange.yaml",
+      "isSource": true,
+      "original": {
+        "$value": "#FFE3D9",
+        "value": "#FFE3D9"
+      },
+      "name": "rh-color-red-orange-10",
+      "attributes": {
+        "category": "color",
+        "type": "red-orange",
+        "item": "10",
+        "hex": "ffe3d9",
+        "rgb": {
+          "r": 255,
+          "g": 227,
+          "b": 217,
+          "a": 1
+        },
+        "hsl": {
+          "h": 15.789473684210513,
           "s": 100,
-          "l": 20,
-          "a": 1
-        },
-        "hsv": {
-          "h": 258.2352941176471,
-          "s": 1,
-          "v": 0.4,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "purple",
-        "700-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-purple-700-rgb",
-    {
-      "$type": "color",
-      "$value": "31 0 102",
-      "value": "31 0 102",
-      "filePath": "tokens/color/crayon/purple.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.purple.700}",
-        "value": "{color.purple.700}"
-      },
-      "name": "rh-color-purple-700-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "purple",
-        "item": "700-rgb",
-        "hex": "1f0066",
-        "rgb": {
-          "r": 31,
-          "g": 0,
-          "b": 102,
-          "a": 1
-        },
-        "hsl": {
-          "h": 258.2352941176471,
-          "s": 100,
-          "l": 20,
-          "a": 1
-        },
-        "hsv": {
-          "h": 258.2352941176471,
-          "s": 1,
-          "v": 0.4,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "purple",
-        "700-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-red-50",
-    {
-      "$value": "#faeae8",
-      "$description": "Alert - Critical background",
-      "value": "#faeae8",
-      "filePath": "tokens/color/crayon/red.yaml",
-      "isSource": true,
-      "original": {
-        "$value": "#faeae8",
-        "$description": "Alert - Critical background",
-        "value": "#faeae8"
-      },
-      "name": "rh-color-red-50",
-      "attributes": {
-        "category": "color",
-        "type": "red",
-        "item": "50",
-        "hex": "faeae8",
-        "rgb": {
-          "r": 250,
-          "g": 234,
-          "b": 232,
-          "a": 1
-        },
-        "hsl": {
-          "h": 6.666666666666645,
-          "s": 64.28571428571429,
-          "l": 94.50980392156862,
-          "a": 1
-        },
-        "hsv": {
-          "h": 6.666666666666645,
-          "s": 0.07199999999999997,
-          "v": 0.9803921568627451,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "red",
-        "50"
-      ],
-      "comment": "Alert - Critical background",
-      "$type": "color"
-    }
-  ],
-  [
-    "--rh-color-red-100",
-    {
-      "$value": "#fddbdb",
-      "$description": "Lightest red",
-      "value": "#fddbdb",
-      "filePath": "tokens/color/crayon/red.yaml",
-      "isSource": true,
-      "original": {
-        "$value": "#fddbdb",
-        "$description": "Lightest red",
-        "value": "#fddbdb"
-      },
-      "name": "rh-color-red-100",
-      "attributes": {
-        "category": "color",
-        "type": "red",
-        "item": "100",
-        "hex": "fddbdb",
-        "rgb": {
-          "r": 253,
-          "g": 219,
-          "b": 219,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 89.47368421052634,
           "l": 92.54901960784314,
           "a": 1
         },
         "hsv": {
-          "h": 0,
-          "s": 0.1343873517786562,
-          "v": 0.9921568627450981,
+          "h": 15.789473684210513,
+          "s": 0.14901960784313728,
+          "v": 1,
           "a": 1
         },
         "isLight": true
       },
       "path": [
         "color",
-        "red",
-        "100"
+        "red-orange",
+        "10"
       ],
-      "comment": "Lightest red",
       "$type": "color"
     }
   ],
   [
-    "--rh-color-red-200",
+    "--rh-color-red-orange-20",
     {
-      "$value": "#fab6b6",
-      "$description": "Lighter red",
-      "value": "#fab6b6",
+      "$value": "#FBBEA8",
+      "value": "#fbbea8",
+      "filePath": "tokens/color/crayon/red-orange.yaml",
+      "isSource": true,
+      "original": {
+        "$value": "#FBBEA8",
+        "value": "#FBBEA8"
+      },
+      "name": "rh-color-red-orange-20",
+      "attributes": {
+        "category": "color",
+        "type": "red-orange",
+        "item": "20",
+        "hex": "fbbea8",
+        "rgb": {
+          "r": 251,
+          "g": 190,
+          "b": 168,
+          "a": 1
+        },
+        "hsl": {
+          "h": 15.903614457831333,
+          "s": 91.20879120879121,
+          "l": 82.15686274509804,
+          "a": 1
+        },
+        "hsv": {
+          "h": 15.903614457831333,
+          "s": 0.33067729083665337,
+          "v": 0.984313725490196,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "red-orange",
+        "20"
+      ],
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-red-orange-30",
+    {
+      "$value": "#F89B78",
+      "value": "#f89b78",
+      "filePath": "tokens/color/crayon/red-orange.yaml",
+      "isSource": true,
+      "original": {
+        "$value": "#F89B78",
+        "value": "#F89B78"
+      },
+      "name": "rh-color-red-orange-30",
+      "attributes": {
+        "category": "color",
+        "type": "red-orange",
+        "item": "30",
+        "hex": "f89b78",
+        "rgb": {
+          "r": 248,
+          "g": 155,
+          "b": 120,
+          "a": 1
+        },
+        "hsl": {
+          "h": 16.406249999999996,
+          "s": 90.14084507042254,
+          "l": 72.15686274509804,
+          "a": 1
+        },
+        "hsv": {
+          "h": 16.406249999999996,
+          "s": 0.5161290322580645,
+          "v": 0.9725490196078431,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "red-orange",
+        "30"
+      ],
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-red-orange-40",
+    {
+      "$value": "#F4784A",
+      "value": "#f4784a",
+      "filePath": "tokens/color/crayon/red-orange.yaml",
+      "isSource": true,
+      "original": {
+        "$value": "#F4784A",
+        "value": "#F4784A"
+      },
+      "name": "rh-color-red-orange-40",
+      "attributes": {
+        "category": "color",
+        "type": "red-orange",
+        "item": "40",
+        "hex": "f4784a",
+        "rgb": {
+          "r": 244,
+          "g": 120,
+          "b": 74,
+          "a": 1
+        },
+        "hsl": {
+          "h": 16.235294117647054,
+          "s": 88.54166666666671,
+          "l": 62.35294117647059,
+          "a": 1
+        },
+        "hsv": {
+          "h": 16.235294117647054,
+          "s": 0.6967213114754098,
+          "v": 0.9568627450980393,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "red-orange",
+        "40"
+      ],
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-red-orange-50",
+    {
+      "$value": "#F4784A",
+      "value": "#f4784a",
+      "filePath": "tokens/color/crayon/red-orange.yaml",
+      "isSource": true,
+      "original": {
+        "$value": "#F4784A",
+        "value": "#F4784A"
+      },
+      "name": "rh-color-red-orange-50",
+      "attributes": {
+        "category": "color",
+        "type": "red-orange",
+        "item": "50",
+        "hex": "f4784a",
+        "rgb": {
+          "r": 244,
+          "g": 120,
+          "b": 74,
+          "a": 1
+        },
+        "hsl": {
+          "h": 16.235294117647054,
+          "s": 88.54166666666671,
+          "l": 62.35294117647059,
+          "a": 1
+        },
+        "hsv": {
+          "h": 16.235294117647054,
+          "s": 0.6967213114754098,
+          "v": 0.9568627450980393,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "red-orange",
+        "50"
+      ],
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-red-orange-60",
+    {
+      "$value": "#B1380B",
+      "value": "#b1380b",
+      "filePath": "tokens/color/crayon/red-orange.yaml",
+      "isSource": true,
+      "original": {
+        "$value": "#B1380B",
+        "value": "#B1380B"
+      },
+      "name": "rh-color-red-orange-60",
+      "attributes": {
+        "category": "color",
+        "type": "red-orange",
+        "item": "60",
+        "hex": "b1380b",
+        "rgb": {
+          "r": 177,
+          "g": 56,
+          "b": 11,
+          "a": 1
+        },
+        "hsl": {
+          "h": 16.265060240963855,
+          "s": 88.29787234042554,
+          "l": 36.86274509803921,
+          "a": 1
+        },
+        "hsv": {
+          "h": 16.265060240963855,
+          "s": 0.9378531073446328,
+          "v": 0.6941176470588235,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "red-orange",
+        "60"
+      ],
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-red-orange-70",
+    {
+      "$value": "#731F00",
+      "value": "#731f00",
+      "filePath": "tokens/color/crayon/red-orange.yaml",
+      "isSource": true,
+      "original": {
+        "$value": "#731F00",
+        "value": "#731F00"
+      },
+      "name": "rh-color-red-orange-70",
+      "attributes": {
+        "category": "color",
+        "type": "red-orange",
+        "item": "70",
+        "hex": "731f00",
+        "rgb": {
+          "r": 115,
+          "g": 31,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 16.17391304347826,
+          "s": 100,
+          "l": 22.54901960784314,
+          "a": 1
+        },
+        "hsv": {
+          "h": 16.17391304347826,
+          "s": 1,
+          "v": 0.45098039215686275,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "red-orange",
+        "70"
+      ],
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-red-orange-10-hsl",
+    {
+      "$type": "color",
+      "$value": "15.789473684210513 100% 92.54901960784314%",
+      "value": "15.789473684210513 100% 92.54901960784314%",
+      "filePath": "tokens/color/crayon/red-orange.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.red-orange.10}",
+        "value": "{color.red-orange.10}"
+      },
+      "name": "rh-color-red-orange-10-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "red-orange",
+        "item": "10-hsl",
+        "hex": "ffe3d9",
+        "rgb": {
+          "r": 255,
+          "g": 227,
+          "b": 217,
+          "a": 1
+        },
+        "hsl": {
+          "h": 15.789473684210513,
+          "s": 100,
+          "l": 92.54901960784314,
+          "a": 1
+        },
+        "hsv": {
+          "h": 15.789473684210513,
+          "s": 0.14901960784313728,
+          "v": 1,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "red-orange",
+        "10-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-red-orange-10-rgb",
+    {
+      "$type": "color",
+      "$value": "255 227 217",
+      "value": "255 227 217",
+      "filePath": "tokens/color/crayon/red-orange.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.red-orange.10}",
+        "value": "{color.red-orange.10}"
+      },
+      "name": "rh-color-red-orange-10-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "red-orange",
+        "item": "10-rgb",
+        "hex": "ffe3d9",
+        "rgb": {
+          "r": 255,
+          "g": 227,
+          "b": 217,
+          "a": 1
+        },
+        "hsl": {
+          "h": 15.789473684210513,
+          "s": 100,
+          "l": 92.54901960784314,
+          "a": 1
+        },
+        "hsv": {
+          "h": 15.789473684210513,
+          "s": 0.14901960784313728,
+          "v": 1,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "red-orange",
+        "10-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-red-orange-20-hsl",
+    {
+      "$type": "color",
+      "$value": "15.903614457831333 91.20879120879121% 82.15686274509804%",
+      "value": "15.903614457831333 91.20879120879121% 82.15686274509804%",
+      "filePath": "tokens/color/crayon/red-orange.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.red-orange.20}",
+        "value": "{color.red-orange.20}"
+      },
+      "name": "rh-color-red-orange-20-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "red-orange",
+        "item": "20-hsl",
+        "hex": "fbbea8",
+        "rgb": {
+          "r": 251,
+          "g": 190,
+          "b": 168,
+          "a": 1
+        },
+        "hsl": {
+          "h": 15.903614457831333,
+          "s": 91.20879120879121,
+          "l": 82.15686274509804,
+          "a": 1
+        },
+        "hsv": {
+          "h": 15.903614457831333,
+          "s": 0.33067729083665337,
+          "v": 0.984313725490196,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "red-orange",
+        "20-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-red-orange-20-rgb",
+    {
+      "$type": "color",
+      "$value": "251 190 168",
+      "value": "251 190 168",
+      "filePath": "tokens/color/crayon/red-orange.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.red-orange.20}",
+        "value": "{color.red-orange.20}"
+      },
+      "name": "rh-color-red-orange-20-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "red-orange",
+        "item": "20-rgb",
+        "hex": "fbbea8",
+        "rgb": {
+          "r": 251,
+          "g": 190,
+          "b": 168,
+          "a": 1
+        },
+        "hsl": {
+          "h": 15.903614457831333,
+          "s": 91.20879120879121,
+          "l": 82.15686274509804,
+          "a": 1
+        },
+        "hsv": {
+          "h": 15.903614457831333,
+          "s": 0.33067729083665337,
+          "v": 0.984313725490196,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "red-orange",
+        "20-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-red-orange-30-hsl",
+    {
+      "$type": "color",
+      "$value": "16.406249999999996 90.14084507042254% 72.15686274509804%",
+      "value": "16.406249999999996 90.14084507042254% 72.15686274509804%",
+      "filePath": "tokens/color/crayon/red-orange.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.red-orange.30}",
+        "value": "{color.red-orange.30}"
+      },
+      "name": "rh-color-red-orange-30-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "red-orange",
+        "item": "30-hsl",
+        "hex": "f89b78",
+        "rgb": {
+          "r": 248,
+          "g": 155,
+          "b": 120,
+          "a": 1
+        },
+        "hsl": {
+          "h": 16.406249999999996,
+          "s": 90.14084507042254,
+          "l": 72.15686274509804,
+          "a": 1
+        },
+        "hsv": {
+          "h": 16.406249999999996,
+          "s": 0.5161290322580645,
+          "v": 0.9725490196078431,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "red-orange",
+        "30-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-red-orange-30-rgb",
+    {
+      "$type": "color",
+      "$value": "248 155 120",
+      "value": "248 155 120",
+      "filePath": "tokens/color/crayon/red-orange.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.red-orange.30}",
+        "value": "{color.red-orange.30}"
+      },
+      "name": "rh-color-red-orange-30-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "red-orange",
+        "item": "30-rgb",
+        "hex": "f89b78",
+        "rgb": {
+          "r": 248,
+          "g": 155,
+          "b": 120,
+          "a": 1
+        },
+        "hsl": {
+          "h": 16.406249999999996,
+          "s": 90.14084507042254,
+          "l": 72.15686274509804,
+          "a": 1
+        },
+        "hsv": {
+          "h": 16.406249999999996,
+          "s": 0.5161290322580645,
+          "v": 0.9725490196078431,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "red-orange",
+        "30-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-red-orange-40-hsl",
+    {
+      "$type": "color",
+      "$value": "16.235294117647054 88.54166666666671% 62.35294117647059%",
+      "value": "16.235294117647054 88.54166666666671% 62.35294117647059%",
+      "filePath": "tokens/color/crayon/red-orange.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.red-orange.40}",
+        "value": "{color.red-orange.40}"
+      },
+      "name": "rh-color-red-orange-40-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "red-orange",
+        "item": "40-hsl",
+        "hex": "f4784a",
+        "rgb": {
+          "r": 244,
+          "g": 120,
+          "b": 74,
+          "a": 1
+        },
+        "hsl": {
+          "h": 16.235294117647054,
+          "s": 88.54166666666671,
+          "l": 62.35294117647059,
+          "a": 1
+        },
+        "hsv": {
+          "h": 16.235294117647054,
+          "s": 0.6967213114754098,
+          "v": 0.9568627450980393,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "red-orange",
+        "40-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-red-orange-40-rgb",
+    {
+      "$type": "color",
+      "$value": "244 120 74",
+      "value": "244 120 74",
+      "filePath": "tokens/color/crayon/red-orange.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.red-orange.40}",
+        "value": "{color.red-orange.40}"
+      },
+      "name": "rh-color-red-orange-40-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "red-orange",
+        "item": "40-rgb",
+        "hex": "f4784a",
+        "rgb": {
+          "r": 244,
+          "g": 120,
+          "b": 74,
+          "a": 1
+        },
+        "hsl": {
+          "h": 16.235294117647054,
+          "s": 88.54166666666671,
+          "l": 62.35294117647059,
+          "a": 1
+        },
+        "hsv": {
+          "h": 16.235294117647054,
+          "s": 0.6967213114754098,
+          "v": 0.9568627450980393,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "red-orange",
+        "40-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-red-orange-50-hsl",
+    {
+      "$type": "color",
+      "$value": "16.235294117647054 88.54166666666671% 62.35294117647059%",
+      "value": "16.235294117647054 88.54166666666671% 62.35294117647059%",
+      "filePath": "tokens/color/crayon/red-orange.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.red-orange.50}",
+        "value": "{color.red-orange.50}"
+      },
+      "name": "rh-color-red-orange-50-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "red-orange",
+        "item": "50-hsl",
+        "hex": "f4784a",
+        "rgb": {
+          "r": 244,
+          "g": 120,
+          "b": 74,
+          "a": 1
+        },
+        "hsl": {
+          "h": 16.235294117647054,
+          "s": 88.54166666666671,
+          "l": 62.35294117647059,
+          "a": 1
+        },
+        "hsv": {
+          "h": 16.235294117647054,
+          "s": 0.6967213114754098,
+          "v": 0.9568627450980393,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "red-orange",
+        "50-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-red-orange-50-rgb",
+    {
+      "$type": "color",
+      "$value": "244 120 74",
+      "value": "244 120 74",
+      "filePath": "tokens/color/crayon/red-orange.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.red-orange.50}",
+        "value": "{color.red-orange.50}"
+      },
+      "name": "rh-color-red-orange-50-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "red-orange",
+        "item": "50-rgb",
+        "hex": "f4784a",
+        "rgb": {
+          "r": 244,
+          "g": 120,
+          "b": 74,
+          "a": 1
+        },
+        "hsl": {
+          "h": 16.235294117647054,
+          "s": 88.54166666666671,
+          "l": 62.35294117647059,
+          "a": 1
+        },
+        "hsv": {
+          "h": 16.235294117647054,
+          "s": 0.6967213114754098,
+          "v": 0.9568627450980393,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "red-orange",
+        "50-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-red-orange-60-hsl",
+    {
+      "$type": "color",
+      "$value": "16.265060240963855 88.29787234042554% 36.86274509803921%",
+      "value": "16.265060240963855 88.29787234042554% 36.86274509803921%",
+      "filePath": "tokens/color/crayon/red-orange.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.red-orange.60}",
+        "value": "{color.red-orange.60}"
+      },
+      "name": "rh-color-red-orange-60-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "red-orange",
+        "item": "60-hsl",
+        "hex": "b1380b",
+        "rgb": {
+          "r": 177,
+          "g": 56,
+          "b": 11,
+          "a": 1
+        },
+        "hsl": {
+          "h": 16.265060240963855,
+          "s": 88.29787234042554,
+          "l": 36.86274509803921,
+          "a": 1
+        },
+        "hsv": {
+          "h": 16.265060240963855,
+          "s": 0.9378531073446328,
+          "v": 0.6941176470588235,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "red-orange",
+        "60-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-red-orange-60-rgb",
+    {
+      "$type": "color",
+      "$value": "177 56 11",
+      "value": "177 56 11",
+      "filePath": "tokens/color/crayon/red-orange.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.red-orange.60}",
+        "value": "{color.red-orange.60}"
+      },
+      "name": "rh-color-red-orange-60-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "red-orange",
+        "item": "60-rgb",
+        "hex": "b1380b",
+        "rgb": {
+          "r": 177,
+          "g": 56,
+          "b": 11,
+          "a": 1
+        },
+        "hsl": {
+          "h": 16.265060240963855,
+          "s": 88.29787234042554,
+          "l": 36.86274509803921,
+          "a": 1
+        },
+        "hsv": {
+          "h": 16.265060240963855,
+          "s": 0.9378531073446328,
+          "v": 0.6941176470588235,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "red-orange",
+        "60-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-red-orange-70-hsl",
+    {
+      "$type": "color",
+      "$value": "16.17391304347826 100% 22.54901960784314%",
+      "value": "16.17391304347826 100% 22.54901960784314%",
+      "filePath": "tokens/color/crayon/red-orange.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.red-orange.70}",
+        "value": "{color.red-orange.70}"
+      },
+      "name": "rh-color-red-orange-70-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "red-orange",
+        "item": "70-hsl",
+        "hex": "731f00",
+        "rgb": {
+          "r": 115,
+          "g": 31,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 16.17391304347826,
+          "s": 100,
+          "l": 22.54901960784314,
+          "a": 1
+        },
+        "hsv": {
+          "h": 16.17391304347826,
+          "s": 1,
+          "v": 0.45098039215686275,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "red-orange",
+        "70-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-red-orange-70-rgb",
+    {
+      "$type": "color",
+      "$value": "115 31 0",
+      "value": "115 31 0",
+      "filePath": "tokens/color/crayon/red-orange.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.red-orange.70}",
+        "value": "{color.red-orange.70}"
+      },
+      "name": "rh-color-red-orange-70-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "red-orange",
+        "item": "70-rgb",
+        "hex": "731f00",
+        "rgb": {
+          "r": 115,
+          "g": 31,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 16.17391304347826,
+          "s": 100,
+          "l": 22.54901960784314,
+          "a": 1
+        },
+        "hsv": {
+          "h": 16.17391304347826,
+          "s": 1,
+          "v": 0.45098039215686275,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "red-orange",
+        "70-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-red-10",
+    {
+      "$value": "#FCE3E3",
+      "$description": null,
+      "value": "#fce3e3",
       "filePath": "tokens/color/crayon/red.yaml",
       "isSource": true,
       "original": {
-        "$value": "#fab6b6",
-        "$description": "Lighter red",
-        "value": "#fab6b6"
+        "$value": "#FCE3E3",
+        "$description": null,
+        "value": "#FCE3E3"
       },
-      "name": "rh-color-red-200",
+      "name": "rh-color-red-10",
       "attributes": {
         "category": "color",
         "type": "red",
-        "item": "200",
-        "hex": "fab6b6",
+        "item": "10",
+        "hex": "fce3e3",
         "rgb": {
-          "r": 250,
-          "g": 182,
-          "b": 182,
+          "r": 252,
+          "g": 227,
+          "b": 227,
           "a": 1
         },
         "hsl": {
           "h": 0,
-          "s": 87.17948717948718,
-          "l": 84.70588235294117,
+          "s": 80.64516129032265,
+          "l": 93.92156862745098,
           "a": 1
         },
         "hsv": {
           "h": 0,
-          "s": 0.27199999999999996,
-          "v": 0.9803921568627451,
+          "s": 0.0992063492063493,
+          "v": 0.9882352941176471,
           "a": 1
         },
         "isLight": true
@@ -7442,46 +8165,142 @@ export const tokens = new Map([
       "path": [
         "color",
         "red",
-        "200"
+        "10"
       ],
-      "comment": "Lighter red",
+      "comment": null,
       "$type": "color"
     }
   ],
   [
-    "--rh-color-red-300",
+    "--rh-color-red-20",
     {
-      "$value": "#f56d6d",
-      "$description": "Light red",
-      "value": "#f56d6d",
+      "$value": "#FBC5C5",
+      "$description": "Lightest brand red",
+      "value": "#fbc5c5",
       "filePath": "tokens/color/crayon/red.yaml",
       "isSource": true,
       "original": {
-        "$value": "#f56d6d",
-        "$description": "Light red",
-        "value": "#f56d6d"
+        "$value": "#FBC5C5",
+        "$description": "Lightest brand red",
+        "value": "#FBC5C5"
       },
-      "name": "rh-color-red-300",
+      "name": "rh-color-red-20",
       "attributes": {
         "category": "color",
         "type": "red",
-        "item": "300",
-        "hex": "f56d6d",
+        "item": "20",
+        "hex": "fbc5c5",
+        "rgb": {
+          "r": 251,
+          "g": 197,
+          "b": 197,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 87.09677419354838,
+          "l": 87.84313725490196,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0.21513944223107562,
+          "v": 0.984313725490196,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "red",
+        "20"
+      ],
+      "comment": "Lightest brand red",
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-red-30",
+    {
+      "$value": "#F9A8A8",
+      "$description": "Lighter brand red",
+      "value": "#f9a8a8",
+      "filePath": "tokens/color/crayon/red.yaml",
+      "isSource": true,
+      "original": {
+        "$value": "#F9A8A8",
+        "$description": "Lighter brand red",
+        "value": "#F9A8A8"
+      },
+      "name": "rh-color-red-30",
+      "attributes": {
+        "category": "color",
+        "type": "red",
+        "item": "30",
+        "hex": "f9a8a8",
+        "rgb": {
+          "r": 249,
+          "g": 168,
+          "b": 168,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 87.0967741935484,
+          "l": 81.76470588235294,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0.3253012048192771,
+          "v": 0.9764705882352941,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "red",
+        "30"
+      ],
+      "comment": "Lighter brand red",
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-red-40",
+    {
+      "$value": "#F56E6E",
+      "$description": "Light brand red",
+      "value": "#f56e6e",
+      "filePath": "tokens/color/crayon/red.yaml",
+      "isSource": true,
+      "original": {
+        "$value": "#F56E6E",
+        "$description": "Light brand red",
+        "value": "#F56E6E"
+      },
+      "name": "rh-color-red-40",
+      "attributes": {
+        "category": "color",
+        "type": "red",
+        "item": "40",
+        "hex": "f56e6e",
         "rgb": {
           "r": 245,
-          "g": 109,
-          "b": 109,
+          "g": 110,
+          "b": 110,
           "a": 1
         },
         "hsl": {
           "h": 0,
-          "s": 87.17948717948723,
-          "l": 69.41176470588235,
+          "s": 87.09677419354841,
+          "l": 69.6078431372549,
           "a": 1
         },
         "hsv": {
           "h": 0,
-          "s": 0.5551020408163266,
+          "s": 0.5510204081632653,
           "v": 0.9607843137254902,
           "a": 1
         },
@@ -7490,78 +8309,30 @@ export const tokens = new Map([
       "path": [
         "color",
         "red",
-        "300"
+        "40"
       ],
-      "comment": "Light red",
+      "comment": "Light brand red",
       "$type": "color"
     }
   ],
   [
-    "--rh-color-red-400",
+    "--rh-color-red-50",
     {
-      "$value": "#ff442b",
-      "$description": "Brand red (dark theme)",
-      "value": "#ff442b",
-      "filePath": "tokens/color/crayon/red.yaml",
-      "isSource": true,
-      "original": {
-        "$value": "#ff442b",
-        "$description": "Brand red (dark theme)",
-        "value": "#ff442b"
-      },
-      "name": "rh-color-red-400",
-      "attributes": {
-        "category": "color",
-        "type": "red",
-        "item": "400",
-        "hex": "ff442b",
-        "rgb": {
-          "r": 255,
-          "g": 68,
-          "b": 43,
-          "a": 1
-        },
-        "hsl": {
-          "h": 7.0754716981132075,
-          "s": 100,
-          "l": 58.43137254901961,
-          "a": 1
-        },
-        "hsv": {
-          "h": 7.0754716981132075,
-          "s": 0.8313725490196078,
-          "v": 1,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "red",
-        "400"
-      ],
-      "comment": "Brand red (dark theme)",
-      "$type": "color"
-    }
-  ],
-  [
-    "--rh-color-red-500",
-    {
-      "$value": "#ee0000",
-      "$description": "Brand red (light theme)",
+      "$value": "#EE0000",
+      "$description": "Brand red (light and dark theme)",
       "value": "#ee0000",
       "filePath": "tokens/color/crayon/red.yaml",
       "isSource": true,
       "original": {
-        "$value": "#ee0000",
-        "$description": "Brand red (light theme)",
-        "value": "#ee0000"
+        "$value": "#EE0000",
+        "$description": "Brand red (light and dark theme)",
+        "value": "#EE0000"
       },
-      "name": "rh-color-red-500",
+      "name": "rh-color-red-50",
       "attributes": {
         "category": "color",
         "type": "red",
-        "item": "500",
+        "item": "50",
         "hex": "ee0000",
         "rgb": {
           "r": 238,
@@ -7586,33 +8357,33 @@ export const tokens = new Map([
       "path": [
         "color",
         "red",
-        "500"
+        "50"
       ],
-      "comment": "Brand red (light theme)",
+      "comment": "Brand red (light and dark theme)",
       "$type": "color"
     }
   ],
   [
-    "--rh-color-red-600",
+    "--rh-color-red-60",
     {
-      "$value": "#be0000",
-      "$description": "Dark red or brand red hover",
-      "value": "#be0000",
+      "$value": "#A60000",
+      "$description": "Dark brand red",
+      "value": "#a60000",
       "filePath": "tokens/color/crayon/red.yaml",
       "isSource": true,
       "original": {
-        "$value": "#be0000",
-        "$description": "Dark red or brand red hover",
-        "value": "#be0000"
+        "$value": "#A60000",
+        "$description": "Dark brand red",
+        "value": "#A60000"
       },
-      "name": "rh-color-red-600",
+      "name": "rh-color-red-60",
       "attributes": {
         "category": "color",
         "type": "red",
-        "item": "600",
-        "hex": "be0000",
+        "item": "60",
+        "hex": "a60000",
         "rgb": {
-          "r": 190,
+          "r": 166,
           "g": 0,
           "b": 0,
           "a": 1
@@ -7620,13 +8391,13 @@ export const tokens = new Map([
         "hsl": {
           "h": 0,
           "s": 100,
-          "l": 37.254901960784316,
+          "l": 32.549019607843135,
           "a": 1
         },
         "hsv": {
           "h": 0,
           "s": 1,
-          "v": 0.7450980392156863,
+          "v": 0.6509803921568628,
           "a": 1
         },
         "isLight": false
@@ -7634,78 +8405,30 @@ export const tokens = new Map([
       "path": [
         "color",
         "red",
-        "600"
+        "60"
       ],
-      "comment": "Dark red or brand red hover",
+      "comment": "Dark brand red",
       "$type": "color"
     }
   ],
   [
-    "--rh-color-red-700",
+    "--rh-color-red-70",
     {
-      "$value": "#8f0000",
-      "$description": "Darker red",
-      "value": "#8f0000",
-      "filePath": "tokens/color/crayon/red.yaml",
-      "isSource": true,
-      "original": {
-        "$value": "#8f0000",
-        "$description": "Darker red",
-        "value": "#8f0000"
-      },
-      "name": "rh-color-red-700",
-      "attributes": {
-        "category": "color",
-        "type": "red",
-        "item": "700",
-        "hex": "8f0000",
-        "rgb": {
-          "r": 143,
-          "g": 0,
-          "b": 0,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 100,
-          "l": 28.03921568627451,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 1,
-          "v": 0.5607843137254902,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "red",
-        "700"
-      ],
-      "comment": "Darker red",
-      "$type": "color"
-    }
-  ],
-  [
-    "--rh-color-red-800",
-    {
-      "$value": "#5f0000",
-      "$description": "Darkest red",
+      "$value": "#5F0000",
+      "$description": "Darker brand red",
       "value": "#5f0000",
       "filePath": "tokens/color/crayon/red.yaml",
       "isSource": true,
       "original": {
-        "$value": "#5f0000",
-        "$description": "Darkest red",
-        "value": "#5f0000"
+        "$value": "#5F0000",
+        "$description": "Darker brand red",
+        "value": "#5F0000"
       },
-      "name": "rh-color-red-800",
+      "name": "rh-color-red-70",
       "attributes": {
         "category": "color",
         "type": "red",
-        "item": "800",
+        "item": "70",
         "hex": "5f0000",
         "rgb": {
           "r": 95,
@@ -7730,18 +8453,386 @@ export const tokens = new Map([
       "path": [
         "color",
         "red",
-        "800"
+        "70"
       ],
-      "comment": "Darkest red",
+      "comment": "Darker brand red",
       "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-red-10-hsl",
+    {
+      "$type": "color",
+      "$value": "0 80.64516129032265% 93.92156862745098%",
+      "value": "0 80.64516129032265% 93.92156862745098%",
+      "filePath": "tokens/color/crayon/red.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.red.10}",
+        "value": "{color.red.10}"
+      },
+      "name": "rh-color-red-10-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "red",
+        "item": "10-hsl",
+        "hex": "fce3e3",
+        "rgb": {
+          "r": 252,
+          "g": 227,
+          "b": 227,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 80.64516129032265,
+          "l": 93.92156862745098,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0.0992063492063493,
+          "v": 0.9882352941176471,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "red",
+        "10-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-red-10-rgb",
+    {
+      "$type": "color",
+      "$value": "252 227 227",
+      "value": "252 227 227",
+      "filePath": "tokens/color/crayon/red.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.red.10}",
+        "value": "{color.red.10}"
+      },
+      "name": "rh-color-red-10-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "red",
+        "item": "10-rgb",
+        "hex": "fce3e3",
+        "rgb": {
+          "r": 252,
+          "g": 227,
+          "b": 227,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 80.64516129032265,
+          "l": 93.92156862745098,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0.0992063492063493,
+          "v": 0.9882352941176471,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "red",
+        "10-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-red-20-hsl",
+    {
+      "$type": "color",
+      "$value": "0 87.09677419354838% 87.84313725490196%",
+      "value": "0 87.09677419354838% 87.84313725490196%",
+      "filePath": "tokens/color/crayon/red.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.red.20}",
+        "value": "{color.red.20}"
+      },
+      "name": "rh-color-red-20-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "red",
+        "item": "20-hsl",
+        "hex": "fbc5c5",
+        "rgb": {
+          "r": 251,
+          "g": 197,
+          "b": 197,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 87.09677419354838,
+          "l": 87.84313725490196,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0.21513944223107562,
+          "v": 0.984313725490196,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "red",
+        "20-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-red-20-rgb",
+    {
+      "$type": "color",
+      "$value": "251 197 197",
+      "value": "251 197 197",
+      "filePath": "tokens/color/crayon/red.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.red.20}",
+        "value": "{color.red.20}"
+      },
+      "name": "rh-color-red-20-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "red",
+        "item": "20-rgb",
+        "hex": "fbc5c5",
+        "rgb": {
+          "r": 251,
+          "g": 197,
+          "b": 197,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 87.09677419354838,
+          "l": 87.84313725490196,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0.21513944223107562,
+          "v": 0.984313725490196,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "red",
+        "20-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-red-30-hsl",
+    {
+      "$type": "color",
+      "$value": "0 87.0967741935484% 81.76470588235294%",
+      "value": "0 87.0967741935484% 81.76470588235294%",
+      "filePath": "tokens/color/crayon/red.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.red.30}",
+        "value": "{color.red.30}"
+      },
+      "name": "rh-color-red-30-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "red",
+        "item": "30-hsl",
+        "hex": "f9a8a8",
+        "rgb": {
+          "r": 249,
+          "g": 168,
+          "b": 168,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 87.0967741935484,
+          "l": 81.76470588235294,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0.3253012048192771,
+          "v": 0.9764705882352941,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "red",
+        "30-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-red-30-rgb",
+    {
+      "$type": "color",
+      "$value": "249 168 168",
+      "value": "249 168 168",
+      "filePath": "tokens/color/crayon/red.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.red.30}",
+        "value": "{color.red.30}"
+      },
+      "name": "rh-color-red-30-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "red",
+        "item": "30-rgb",
+        "hex": "f9a8a8",
+        "rgb": {
+          "r": 249,
+          "g": 168,
+          "b": 168,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 87.0967741935484,
+          "l": 81.76470588235294,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0.3253012048192771,
+          "v": 0.9764705882352941,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "red",
+        "30-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-red-40-hsl",
+    {
+      "$type": "color",
+      "$value": "0 87.09677419354841% 69.6078431372549%",
+      "value": "0 87.09677419354841% 69.6078431372549%",
+      "filePath": "tokens/color/crayon/red.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.red.40}",
+        "value": "{color.red.40}"
+      },
+      "name": "rh-color-red-40-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "red",
+        "item": "40-hsl",
+        "hex": "f56e6e",
+        "rgb": {
+          "r": 245,
+          "g": 110,
+          "b": 110,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 87.09677419354841,
+          "l": 69.6078431372549,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0.5510204081632653,
+          "v": 0.9607843137254902,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "red",
+        "40-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-red-40-rgb",
+    {
+      "$type": "color",
+      "$value": "245 110 110",
+      "value": "245 110 110",
+      "filePath": "tokens/color/crayon/red.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.red.40}",
+        "value": "{color.red.40}"
+      },
+      "name": "rh-color-red-40-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "red",
+        "item": "40-rgb",
+        "hex": "f56e6e",
+        "rgb": {
+          "r": 245,
+          "g": 110,
+          "b": 110,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 87.09677419354841,
+          "l": 69.6078431372549,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0.5510204081632653,
+          "v": 0.9607843137254902,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "red",
+        "40-rgb"
+      ]
     }
   ],
   [
     "--rh-color-red-50-hsl",
     {
       "$type": "color",
-      "$value": "6.666666666666645 64.28571428571429% 94.50980392156862%",
-      "value": "6.666666666666645 64.28571428571429% 94.50980392156862%",
+      "$value": "0 100% 46.666666666666664%",
+      "value": "0 100% 46.666666666666664%",
       "filePath": "tokens/color/crayon/red.yaml",
       "isSource": true,
       "original": {
@@ -7754,26 +8845,26 @@ export const tokens = new Map([
         "category": "color",
         "type": "red",
         "item": "50-hsl",
-        "hex": "faeae8",
+        "hex": "ee0000",
         "rgb": {
-          "r": 250,
-          "g": 234,
-          "b": 232,
+          "r": 238,
+          "g": 0,
+          "b": 0,
           "a": 1
         },
         "hsl": {
-          "h": 6.666666666666645,
-          "s": 64.28571428571429,
-          "l": 94.50980392156862,
+          "h": 0,
+          "s": 100,
+          "l": 46.666666666666664,
           "a": 1
         },
         "hsv": {
-          "h": 6.666666666666645,
-          "s": 0.07199999999999997,
-          "v": 0.9803921568627451,
+          "h": 0,
+          "s": 1,
+          "v": 0.9333333333333333,
           "a": 1
         },
-        "isLight": true
+        "isLight": false
       },
       "path": [
         "color",
@@ -7786,8 +8877,8 @@ export const tokens = new Map([
     "--rh-color-red-50-rgb",
     {
       "$type": "color",
-      "$value": "250 234 232",
-      "value": "250 234 232",
+      "$value": "238 0 0",
+      "value": "238 0 0",
       "filePath": "tokens/color/crayon/red.yaml",
       "isSource": true,
       "original": {
@@ -7800,26 +8891,26 @@ export const tokens = new Map([
         "category": "color",
         "type": "red",
         "item": "50-rgb",
-        "hex": "faeae8",
+        "hex": "ee0000",
         "rgb": {
-          "r": 250,
-          "g": 234,
-          "b": 232,
+          "r": 238,
+          "g": 0,
+          "b": 0,
           "a": 1
         },
         "hsl": {
-          "h": 6.666666666666645,
-          "s": 64.28571428571429,
-          "l": 94.50980392156862,
+          "h": 0,
+          "s": 100,
+          "l": 46.666666666666664,
           "a": 1
         },
         "hsv": {
-          "h": 6.666666666666645,
-          "s": 0.07199999999999997,
-          "v": 0.9803921568627451,
+          "h": 0,
+          "s": 1,
+          "v": 0.9333333333333333,
           "a": 1
         },
-        "isLight": true
+        "isLight": false
       },
       "path": [
         "color",
@@ -7829,394 +8920,26 @@ export const tokens = new Map([
     }
   ],
   [
-    "--rh-color-red-100-hsl",
+    "--rh-color-red-60-hsl",
     {
       "$type": "color",
-      "$value": "0 89.47368421052634% 92.54901960784314%",
-      "value": "0 89.47368421052634% 92.54901960784314%",
+      "$value": "0 100% 32.549019607843135%",
+      "value": "0 100% 32.549019607843135%",
       "filePath": "tokens/color/crayon/red.yaml",
       "isSource": true,
       "original": {
         "$type": "color",
-        "$value": "{color.red.100}",
-        "value": "{color.red.100}"
+        "$value": "{color.red.60}",
+        "value": "{color.red.60}"
       },
-      "name": "rh-color-red-100-hsl",
+      "name": "rh-color-red-60-hsl",
       "attributes": {
         "category": "color",
         "type": "red",
-        "item": "100-hsl",
-        "hex": "fddbdb",
+        "item": "60-hsl",
+        "hex": "a60000",
         "rgb": {
-          "r": 253,
-          "g": 219,
-          "b": 219,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 89.47368421052634,
-          "l": 92.54901960784314,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 0.1343873517786562,
-          "v": 0.9921568627450981,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "red",
-        "100-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-red-100-rgb",
-    {
-      "$type": "color",
-      "$value": "253 219 219",
-      "value": "253 219 219",
-      "filePath": "tokens/color/crayon/red.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.red.100}",
-        "value": "{color.red.100}"
-      },
-      "name": "rh-color-red-100-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "red",
-        "item": "100-rgb",
-        "hex": "fddbdb",
-        "rgb": {
-          "r": 253,
-          "g": 219,
-          "b": 219,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 89.47368421052634,
-          "l": 92.54901960784314,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 0.1343873517786562,
-          "v": 0.9921568627450981,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "red",
-        "100-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-red-200-hsl",
-    {
-      "$type": "color",
-      "$value": "0 87.17948717948718% 84.70588235294117%",
-      "value": "0 87.17948717948718% 84.70588235294117%",
-      "filePath": "tokens/color/crayon/red.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.red.200}",
-        "value": "{color.red.200}"
-      },
-      "name": "rh-color-red-200-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "red",
-        "item": "200-hsl",
-        "hex": "fab6b6",
-        "rgb": {
-          "r": 250,
-          "g": 182,
-          "b": 182,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 87.17948717948718,
-          "l": 84.70588235294117,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 0.27199999999999996,
-          "v": 0.9803921568627451,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "red",
-        "200-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-red-200-rgb",
-    {
-      "$type": "color",
-      "$value": "250 182 182",
-      "value": "250 182 182",
-      "filePath": "tokens/color/crayon/red.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.red.200}",
-        "value": "{color.red.200}"
-      },
-      "name": "rh-color-red-200-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "red",
-        "item": "200-rgb",
-        "hex": "fab6b6",
-        "rgb": {
-          "r": 250,
-          "g": 182,
-          "b": 182,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 87.17948717948718,
-          "l": 84.70588235294117,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 0.27199999999999996,
-          "v": 0.9803921568627451,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "red",
-        "200-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-red-300-hsl",
-    {
-      "$type": "color",
-      "$value": "0 87.17948717948723% 69.41176470588235%",
-      "value": "0 87.17948717948723% 69.41176470588235%",
-      "filePath": "tokens/color/crayon/red.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.red.300}",
-        "value": "{color.red.300}"
-      },
-      "name": "rh-color-red-300-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "red",
-        "item": "300-hsl",
-        "hex": "f56d6d",
-        "rgb": {
-          "r": 245,
-          "g": 109,
-          "b": 109,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 87.17948717948723,
-          "l": 69.41176470588235,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 0.5551020408163266,
-          "v": 0.9607843137254902,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "red",
-        "300-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-red-300-rgb",
-    {
-      "$type": "color",
-      "$value": "245 109 109",
-      "value": "245 109 109",
-      "filePath": "tokens/color/crayon/red.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.red.300}",
-        "value": "{color.red.300}"
-      },
-      "name": "rh-color-red-300-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "red",
-        "item": "300-rgb",
-        "hex": "f56d6d",
-        "rgb": {
-          "r": 245,
-          "g": 109,
-          "b": 109,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 87.17948717948723,
-          "l": 69.41176470588235,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 0.5551020408163266,
-          "v": 0.9607843137254902,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "red",
-        "300-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-red-400-hsl",
-    {
-      "$type": "color",
-      "$value": "7.0754716981132075 100% 58.43137254901961%",
-      "value": "7.0754716981132075 100% 58.43137254901961%",
-      "filePath": "tokens/color/crayon/red.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.red.400}",
-        "value": "{color.red.400}"
-      },
-      "name": "rh-color-red-400-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "red",
-        "item": "400-hsl",
-        "hex": "ff442b",
-        "rgb": {
-          "r": 255,
-          "g": 68,
-          "b": 43,
-          "a": 1
-        },
-        "hsl": {
-          "h": 7.0754716981132075,
-          "s": 100,
-          "l": 58.43137254901961,
-          "a": 1
-        },
-        "hsv": {
-          "h": 7.0754716981132075,
-          "s": 0.8313725490196078,
-          "v": 1,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "red",
-        "400-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-red-400-rgb",
-    {
-      "$type": "color",
-      "$value": "255 68 43",
-      "value": "255 68 43",
-      "filePath": "tokens/color/crayon/red.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.red.400}",
-        "value": "{color.red.400}"
-      },
-      "name": "rh-color-red-400-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "red",
-        "item": "400-rgb",
-        "hex": "ff442b",
-        "rgb": {
-          "r": 255,
-          "g": 68,
-          "b": 43,
-          "a": 1
-        },
-        "hsl": {
-          "h": 7.0754716981132075,
-          "s": 100,
-          "l": 58.43137254901961,
-          "a": 1
-        },
-        "hsv": {
-          "h": 7.0754716981132075,
-          "s": 0.8313725490196078,
-          "v": 1,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "red",
-        "400-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-red-500-hsl",
-    {
-      "$type": "color",
-      "$value": "0 100% 46.666666666666664%",
-      "value": "0 100% 46.666666666666664%",
-      "filePath": "tokens/color/crayon/red.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.red.500}",
-        "value": "{color.red.500}"
-      },
-      "name": "rh-color-red-500-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "red",
-        "item": "500-hsl",
-        "hex": "ee0000",
-        "rgb": {
-          "r": 238,
+          "r": 166,
           "g": 0,
           "b": 0,
           "a": 1
@@ -8224,13 +8947,13 @@ export const tokens = new Map([
         "hsl": {
           "h": 0,
           "s": 100,
-          "l": 46.666666666666664,
+          "l": 32.549019607843135,
           "a": 1
         },
         "hsv": {
           "h": 0,
           "s": 1,
-          "v": 0.9333333333333333,
+          "v": 0.6509803921568628,
           "a": 1
         },
         "isLight": false
@@ -8238,31 +8961,31 @@ export const tokens = new Map([
       "path": [
         "color",
         "red",
-        "500-hsl"
+        "60-hsl"
       ]
     }
   ],
   [
-    "--rh-color-red-500-rgb",
+    "--rh-color-red-60-rgb",
     {
       "$type": "color",
-      "$value": "238 0 0",
-      "value": "238 0 0",
+      "$value": "166 0 0",
+      "value": "166 0 0",
       "filePath": "tokens/color/crayon/red.yaml",
       "isSource": true,
       "original": {
         "$type": "color",
-        "$value": "{color.red.500}",
-        "value": "{color.red.500}"
+        "$value": "{color.red.60}",
+        "value": "{color.red.60}"
       },
-      "name": "rh-color-red-500-rgb",
+      "name": "rh-color-red-60-rgb",
       "attributes": {
         "category": "color",
         "type": "red",
-        "item": "500-rgb",
-        "hex": "ee0000",
+        "item": "60-rgb",
+        "hex": "a60000",
         "rgb": {
-          "r": 238,
+          "r": 166,
           "g": 0,
           "b": 0,
           "a": 1
@@ -8270,13 +8993,13 @@ export const tokens = new Map([
         "hsl": {
           "h": 0,
           "s": 100,
-          "l": 46.666666666666664,
+          "l": 32.549019607843135,
           "a": 1
         },
         "hsv": {
           "h": 0,
           "s": 1,
-          "v": 0.9333333333333333,
+          "v": 0.6509803921568628,
           "a": 1
         },
         "isLight": false
@@ -8284,196 +9007,12 @@ export const tokens = new Map([
       "path": [
         "color",
         "red",
-        "500-rgb"
+        "60-rgb"
       ]
     }
   ],
   [
-    "--rh-color-red-600-hsl",
-    {
-      "$type": "color",
-      "$value": "0 100% 37.254901960784316%",
-      "value": "0 100% 37.254901960784316%",
-      "filePath": "tokens/color/crayon/red.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.red.600}",
-        "value": "{color.red.600}"
-      },
-      "name": "rh-color-red-600-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "red",
-        "item": "600-hsl",
-        "hex": "be0000",
-        "rgb": {
-          "r": 190,
-          "g": 0,
-          "b": 0,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 100,
-          "l": 37.254901960784316,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 1,
-          "v": 0.7450980392156863,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "red",
-        "600-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-red-600-rgb",
-    {
-      "$type": "color",
-      "$value": "190 0 0",
-      "value": "190 0 0",
-      "filePath": "tokens/color/crayon/red.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.red.600}",
-        "value": "{color.red.600}"
-      },
-      "name": "rh-color-red-600-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "red",
-        "item": "600-rgb",
-        "hex": "be0000",
-        "rgb": {
-          "r": 190,
-          "g": 0,
-          "b": 0,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 100,
-          "l": 37.254901960784316,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 1,
-          "v": 0.7450980392156863,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "red",
-        "600-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-red-700-hsl",
-    {
-      "$type": "color",
-      "$value": "0 100% 28.03921568627451%",
-      "value": "0 100% 28.03921568627451%",
-      "filePath": "tokens/color/crayon/red.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.red.700}",
-        "value": "{color.red.700}"
-      },
-      "name": "rh-color-red-700-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "red",
-        "item": "700-hsl",
-        "hex": "8f0000",
-        "rgb": {
-          "r": 143,
-          "g": 0,
-          "b": 0,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 100,
-          "l": 28.03921568627451,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 1,
-          "v": 0.5607843137254902,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "red",
-        "700-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-red-700-rgb",
-    {
-      "$type": "color",
-      "$value": "143 0 0",
-      "value": "143 0 0",
-      "filePath": "tokens/color/crayon/red.yaml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.red.700}",
-        "value": "{color.red.700}"
-      },
-      "name": "rh-color-red-700-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "red",
-        "item": "700-rgb",
-        "hex": "8f0000",
-        "rgb": {
-          "r": 143,
-          "g": 0,
-          "b": 0,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 100,
-          "l": 28.03921568627451,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 1,
-          "v": 0.5607843137254902,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "red",
-        "700-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-red-800-hsl",
+    "--rh-color-red-70-hsl",
     {
       "$type": "color",
       "$value": "0 100% 18.627450980392158%",
@@ -8482,14 +9021,14 @@ export const tokens = new Map([
       "isSource": true,
       "original": {
         "$type": "color",
-        "$value": "{color.red.800}",
-        "value": "{color.red.800}"
+        "$value": "{color.red.70}",
+        "value": "{color.red.70}"
       },
-      "name": "rh-color-red-800-hsl",
+      "name": "rh-color-red-70-hsl",
       "attributes": {
         "category": "color",
         "type": "red",
-        "item": "800-hsl",
+        "item": "70-hsl",
         "hex": "5f0000",
         "rgb": {
           "r": 95,
@@ -8514,12 +9053,12 @@ export const tokens = new Map([
       "path": [
         "color",
         "red",
-        "800-hsl"
+        "70-hsl"
       ]
     }
   ],
   [
-    "--rh-color-red-800-rgb",
+    "--rh-color-red-70-rgb",
     {
       "$type": "color",
       "$value": "95 0 0",
@@ -8528,14 +9067,14 @@ export const tokens = new Map([
       "isSource": true,
       "original": {
         "$type": "color",
-        "$value": "{color.red.800}",
-        "value": "{color.red.800}"
+        "$value": "{color.red.70}",
+        "value": "{color.red.70}"
       },
-      "name": "rh-color-red-800-rgb",
+      "name": "rh-color-red-70-rgb",
       "attributes": {
         "category": "color",
         "type": "red",
-        "item": "800-rgb",
+        "item": "70-rgb",
         "hex": "5f0000",
         "rgb": {
           "r": 95,
@@ -8560,7 +9099,1946 @@ export const tokens = new Map([
       "path": [
         "color",
         "red",
-        "800-rgb"
+        "70-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-teal-10",
+    {
+      "$value": "#DAF2F2",
+      "$description": "Alert - Default background",
+      "value": "#daf2f2",
+      "filePath": "tokens/color/crayon/teal.yaml",
+      "isSource": true,
+      "original": {
+        "$value": "#DAF2F2",
+        "$description": "Alert - Default background",
+        "value": "#DAF2F2"
+      },
+      "name": "rh-color-teal-10",
+      "attributes": {
+        "category": "color",
+        "type": "teal",
+        "item": "10",
+        "hex": "daf2f2",
+        "rgb": {
+          "r": 218,
+          "g": 242,
+          "b": 242,
+          "a": 1
+        },
+        "hsl": {
+          "h": 180,
+          "s": 47.99999999999998,
+          "l": 90.19607843137254,
+          "a": 1
+        },
+        "hsv": {
+          "h": 180,
+          "s": 0.09917355371900827,
+          "v": 0.9490196078431372,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "teal",
+        "10"
+      ],
+      "comment": "Alert - Default background",
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-teal-20",
+    {
+      "$value": "#B9E5E5",
+      "value": "#b9e5e5",
+      "filePath": "tokens/color/crayon/teal.yaml",
+      "isSource": true,
+      "original": {
+        "$value": "#B9E5E5",
+        "value": "#B9E5E5"
+      },
+      "name": "rh-color-teal-20",
+      "attributes": {
+        "category": "color",
+        "type": "teal",
+        "item": "20",
+        "hex": "b9e5e5",
+        "rgb": {
+          "r": 185,
+          "g": 229,
+          "b": 229,
+          "a": 1
+        },
+        "hsl": {
+          "h": 180,
+          "s": 45.833333333333336,
+          "l": 81.17647058823529,
+          "a": 1
+        },
+        "hsv": {
+          "h": 180,
+          "s": 0.19213973799126643,
+          "v": 0.8980392156862745,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "teal",
+        "20"
+      ],
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-teal-30",
+    {
+      "$value": "#9AD8D8",
+      "$description": "Label (Cyan) border color",
+      "value": "#9ad8d8",
+      "filePath": "tokens/color/crayon/teal.yaml",
+      "isSource": true,
+      "original": {
+        "$value": "#9AD8D8",
+        "$description": "Label (Cyan) border color",
+        "value": "#9AD8D8"
+      },
+      "name": "rh-color-teal-30",
+      "attributes": {
+        "category": "color",
+        "type": "teal",
+        "item": "30",
+        "hex": "9ad8d8",
+        "rgb": {
+          "r": 154,
+          "g": 216,
+          "b": 216,
+          "a": 1
+        },
+        "hsl": {
+          "h": 180,
+          "s": 44.28571428571429,
+          "l": 72.54901960784314,
+          "a": 1
+        },
+        "hsv": {
+          "h": 180,
+          "s": 0.2870370370370371,
+          "v": 0.8470588235294118,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "teal",
+        "30"
+      ],
+      "comment": "Label (Cyan) border color",
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-teal-40",
+    {
+      "$value": "#63BDBD",
+      "value": "#63bdbd",
+      "filePath": "tokens/color/crayon/teal.yaml",
+      "isSource": true,
+      "original": {
+        "$value": "#63BDBD",
+        "value": "#63BDBD"
+      },
+      "name": "rh-color-teal-40",
+      "attributes": {
+        "category": "color",
+        "type": "teal",
+        "item": "40",
+        "hex": "63bdbd",
+        "rgb": {
+          "r": 99,
+          "g": 189,
+          "b": 189,
+          "a": 1
+        },
+        "hsl": {
+          "h": 180,
+          "s": 40.54054054054054,
+          "l": 56.470588235294116,
+          "a": 1
+        },
+        "hsv": {
+          "h": 180,
+          "s": 0.4761904761904762,
+          "v": 0.7411764705882353,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "teal",
+        "40"
+      ],
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-teal-50",
+    {
+      "$value": "#37A3A3",
+      "$description": "Alert - Default accent",
+      "value": "#37a3a3",
+      "filePath": "tokens/color/crayon/teal.yaml",
+      "isSource": true,
+      "original": {
+        "$value": "#37A3A3",
+        "$description": "Alert - Default accent",
+        "value": "#37A3A3"
+      },
+      "name": "rh-color-teal-50",
+      "attributes": {
+        "category": "color",
+        "type": "teal",
+        "item": "50",
+        "hex": "37a3a3",
+        "rgb": {
+          "r": 55,
+          "g": 163,
+          "b": 163,
+          "a": 1
+        },
+        "hsl": {
+          "h": 180,
+          "s": 49.54128440366972,
+          "l": 42.745098039215684,
+          "a": 1
+        },
+        "hsv": {
+          "h": 180,
+          "s": 0.6625766871165644,
+          "v": 0.6392156862745098,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "teal",
+        "50"
+      ],
+      "comment": "Alert - Default accent",
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-teal-60",
+    {
+      "$value": "#147878",
+      "value": "#147878",
+      "filePath": "tokens/color/crayon/teal.yaml",
+      "isSource": true,
+      "original": {
+        "$value": "#147878",
+        "value": "#147878"
+      },
+      "name": "rh-color-teal-60",
+      "attributes": {
+        "category": "color",
+        "type": "teal",
+        "item": "60",
+        "hex": "147878",
+        "rgb": {
+          "r": 20,
+          "g": 120,
+          "b": 120,
+          "a": 1
+        },
+        "hsl": {
+          "h": 180,
+          "s": 71.42857142857142,
+          "l": 27.450980392156865,
+          "a": 1
+        },
+        "hsv": {
+          "h": 180,
+          "s": 0.8333333333333334,
+          "v": 0.47058823529411764,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "teal",
+        "60"
+      ],
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-teal-70",
+    {
+      "$value": "#004D4D",
+      "$description": "Alert - Default title text",
+      "value": "#004d4d",
+      "filePath": "tokens/color/crayon/teal.yaml",
+      "isSource": true,
+      "original": {
+        "$value": "#004D4D",
+        "$description": "Alert - Default title text",
+        "value": "#004D4D"
+      },
+      "name": "rh-color-teal-70",
+      "attributes": {
+        "category": "color",
+        "type": "teal",
+        "item": "70",
+        "hex": "004d4d",
+        "rgb": {
+          "r": 0,
+          "g": 77,
+          "b": 77,
+          "a": 1
+        },
+        "hsl": {
+          "h": 180,
+          "s": 100,
+          "l": 15.098039215686274,
+          "a": 1
+        },
+        "hsv": {
+          "h": 180,
+          "s": 1,
+          "v": 0.30196078431372547,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "teal",
+        "70"
+      ],
+      "comment": "Alert - Default title text",
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-teal-10-hsl",
+    {
+      "$type": "color",
+      "$value": "180 47.99999999999998% 90.19607843137254%",
+      "value": "180 47.99999999999998% 90.19607843137254%",
+      "filePath": "tokens/color/crayon/teal.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.teal.10}",
+        "value": "{color.teal.10}"
+      },
+      "name": "rh-color-teal-10-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "teal",
+        "item": "10-hsl",
+        "hex": "daf2f2",
+        "rgb": {
+          "r": 218,
+          "g": 242,
+          "b": 242,
+          "a": 1
+        },
+        "hsl": {
+          "h": 180,
+          "s": 47.99999999999998,
+          "l": 90.19607843137254,
+          "a": 1
+        },
+        "hsv": {
+          "h": 180,
+          "s": 0.09917355371900827,
+          "v": 0.9490196078431372,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "teal",
+        "10-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-teal-10-rgb",
+    {
+      "$type": "color",
+      "$value": "218 242 242",
+      "value": "218 242 242",
+      "filePath": "tokens/color/crayon/teal.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.teal.10}",
+        "value": "{color.teal.10}"
+      },
+      "name": "rh-color-teal-10-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "teal",
+        "item": "10-rgb",
+        "hex": "daf2f2",
+        "rgb": {
+          "r": 218,
+          "g": 242,
+          "b": 242,
+          "a": 1
+        },
+        "hsl": {
+          "h": 180,
+          "s": 47.99999999999998,
+          "l": 90.19607843137254,
+          "a": 1
+        },
+        "hsv": {
+          "h": 180,
+          "s": 0.09917355371900827,
+          "v": 0.9490196078431372,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "teal",
+        "10-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-teal-20-hsl",
+    {
+      "$type": "color",
+      "$value": "180 45.833333333333336% 81.17647058823529%",
+      "value": "180 45.833333333333336% 81.17647058823529%",
+      "filePath": "tokens/color/crayon/teal.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.teal.20}",
+        "value": "{color.teal.20}"
+      },
+      "name": "rh-color-teal-20-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "teal",
+        "item": "20-hsl",
+        "hex": "b9e5e5",
+        "rgb": {
+          "r": 185,
+          "g": 229,
+          "b": 229,
+          "a": 1
+        },
+        "hsl": {
+          "h": 180,
+          "s": 45.833333333333336,
+          "l": 81.17647058823529,
+          "a": 1
+        },
+        "hsv": {
+          "h": 180,
+          "s": 0.19213973799126643,
+          "v": 0.8980392156862745,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "teal",
+        "20-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-teal-20-rgb",
+    {
+      "$type": "color",
+      "$value": "185 229 229",
+      "value": "185 229 229",
+      "filePath": "tokens/color/crayon/teal.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.teal.20}",
+        "value": "{color.teal.20}"
+      },
+      "name": "rh-color-teal-20-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "teal",
+        "item": "20-rgb",
+        "hex": "b9e5e5",
+        "rgb": {
+          "r": 185,
+          "g": 229,
+          "b": 229,
+          "a": 1
+        },
+        "hsl": {
+          "h": 180,
+          "s": 45.833333333333336,
+          "l": 81.17647058823529,
+          "a": 1
+        },
+        "hsv": {
+          "h": 180,
+          "s": 0.19213973799126643,
+          "v": 0.8980392156862745,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "teal",
+        "20-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-teal-30-hsl",
+    {
+      "$type": "color",
+      "$value": "180 44.28571428571429% 72.54901960784314%",
+      "value": "180 44.28571428571429% 72.54901960784314%",
+      "filePath": "tokens/color/crayon/teal.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.teal.30}",
+        "value": "{color.teal.30}"
+      },
+      "name": "rh-color-teal-30-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "teal",
+        "item": "30-hsl",
+        "hex": "9ad8d8",
+        "rgb": {
+          "r": 154,
+          "g": 216,
+          "b": 216,
+          "a": 1
+        },
+        "hsl": {
+          "h": 180,
+          "s": 44.28571428571429,
+          "l": 72.54901960784314,
+          "a": 1
+        },
+        "hsv": {
+          "h": 180,
+          "s": 0.2870370370370371,
+          "v": 0.8470588235294118,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "teal",
+        "30-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-teal-30-rgb",
+    {
+      "$type": "color",
+      "$value": "154 216 216",
+      "value": "154 216 216",
+      "filePath": "tokens/color/crayon/teal.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.teal.30}",
+        "value": "{color.teal.30}"
+      },
+      "name": "rh-color-teal-30-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "teal",
+        "item": "30-rgb",
+        "hex": "9ad8d8",
+        "rgb": {
+          "r": 154,
+          "g": 216,
+          "b": 216,
+          "a": 1
+        },
+        "hsl": {
+          "h": 180,
+          "s": 44.28571428571429,
+          "l": 72.54901960784314,
+          "a": 1
+        },
+        "hsv": {
+          "h": 180,
+          "s": 0.2870370370370371,
+          "v": 0.8470588235294118,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "teal",
+        "30-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-teal-40-hsl",
+    {
+      "$type": "color",
+      "$value": "180 40.54054054054054% 56.470588235294116%",
+      "value": "180 40.54054054054054% 56.470588235294116%",
+      "filePath": "tokens/color/crayon/teal.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.teal.40}",
+        "value": "{color.teal.40}"
+      },
+      "name": "rh-color-teal-40-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "teal",
+        "item": "40-hsl",
+        "hex": "63bdbd",
+        "rgb": {
+          "r": 99,
+          "g": 189,
+          "b": 189,
+          "a": 1
+        },
+        "hsl": {
+          "h": 180,
+          "s": 40.54054054054054,
+          "l": 56.470588235294116,
+          "a": 1
+        },
+        "hsv": {
+          "h": 180,
+          "s": 0.4761904761904762,
+          "v": 0.7411764705882353,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "teal",
+        "40-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-teal-40-rgb",
+    {
+      "$type": "color",
+      "$value": "99 189 189",
+      "value": "99 189 189",
+      "filePath": "tokens/color/crayon/teal.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.teal.40}",
+        "value": "{color.teal.40}"
+      },
+      "name": "rh-color-teal-40-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "teal",
+        "item": "40-rgb",
+        "hex": "63bdbd",
+        "rgb": {
+          "r": 99,
+          "g": 189,
+          "b": 189,
+          "a": 1
+        },
+        "hsl": {
+          "h": 180,
+          "s": 40.54054054054054,
+          "l": 56.470588235294116,
+          "a": 1
+        },
+        "hsv": {
+          "h": 180,
+          "s": 0.4761904761904762,
+          "v": 0.7411764705882353,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "teal",
+        "40-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-teal-50-hsl",
+    {
+      "$type": "color",
+      "$value": "180 49.54128440366972% 42.745098039215684%",
+      "value": "180 49.54128440366972% 42.745098039215684%",
+      "filePath": "tokens/color/crayon/teal.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.teal.50}",
+        "value": "{color.teal.50}"
+      },
+      "name": "rh-color-teal-50-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "teal",
+        "item": "50-hsl",
+        "hex": "37a3a3",
+        "rgb": {
+          "r": 55,
+          "g": 163,
+          "b": 163,
+          "a": 1
+        },
+        "hsl": {
+          "h": 180,
+          "s": 49.54128440366972,
+          "l": 42.745098039215684,
+          "a": 1
+        },
+        "hsv": {
+          "h": 180,
+          "s": 0.6625766871165644,
+          "v": 0.6392156862745098,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "teal",
+        "50-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-teal-50-rgb",
+    {
+      "$type": "color",
+      "$value": "55 163 163",
+      "value": "55 163 163",
+      "filePath": "tokens/color/crayon/teal.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.teal.50}",
+        "value": "{color.teal.50}"
+      },
+      "name": "rh-color-teal-50-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "teal",
+        "item": "50-rgb",
+        "hex": "37a3a3",
+        "rgb": {
+          "r": 55,
+          "g": 163,
+          "b": 163,
+          "a": 1
+        },
+        "hsl": {
+          "h": 180,
+          "s": 49.54128440366972,
+          "l": 42.745098039215684,
+          "a": 1
+        },
+        "hsv": {
+          "h": 180,
+          "s": 0.6625766871165644,
+          "v": 0.6392156862745098,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "teal",
+        "50-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-teal-60-hsl",
+    {
+      "$type": "color",
+      "$value": "180 71.42857142857142% 27.450980392156865%",
+      "value": "180 71.42857142857142% 27.450980392156865%",
+      "filePath": "tokens/color/crayon/teal.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.teal.60}",
+        "value": "{color.teal.60}"
+      },
+      "name": "rh-color-teal-60-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "teal",
+        "item": "60-hsl",
+        "hex": "147878",
+        "rgb": {
+          "r": 20,
+          "g": 120,
+          "b": 120,
+          "a": 1
+        },
+        "hsl": {
+          "h": 180,
+          "s": 71.42857142857142,
+          "l": 27.450980392156865,
+          "a": 1
+        },
+        "hsv": {
+          "h": 180,
+          "s": 0.8333333333333334,
+          "v": 0.47058823529411764,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "teal",
+        "60-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-teal-60-rgb",
+    {
+      "$type": "color",
+      "$value": "20 120 120",
+      "value": "20 120 120",
+      "filePath": "tokens/color/crayon/teal.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.teal.60}",
+        "value": "{color.teal.60}"
+      },
+      "name": "rh-color-teal-60-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "teal",
+        "item": "60-rgb",
+        "hex": "147878",
+        "rgb": {
+          "r": 20,
+          "g": 120,
+          "b": 120,
+          "a": 1
+        },
+        "hsl": {
+          "h": 180,
+          "s": 71.42857142857142,
+          "l": 27.450980392156865,
+          "a": 1
+        },
+        "hsv": {
+          "h": 180,
+          "s": 0.8333333333333334,
+          "v": 0.47058823529411764,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "teal",
+        "60-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-teal-70-hsl",
+    {
+      "$type": "color",
+      "$value": "180 100% 15.098039215686274%",
+      "value": "180 100% 15.098039215686274%",
+      "filePath": "tokens/color/crayon/teal.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.teal.70}",
+        "value": "{color.teal.70}"
+      },
+      "name": "rh-color-teal-70-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "teal",
+        "item": "70-hsl",
+        "hex": "004d4d",
+        "rgb": {
+          "r": 0,
+          "g": 77,
+          "b": 77,
+          "a": 1
+        },
+        "hsl": {
+          "h": 180,
+          "s": 100,
+          "l": 15.098039215686274,
+          "a": 1
+        },
+        "hsv": {
+          "h": 180,
+          "s": 1,
+          "v": 0.30196078431372547,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "teal",
+        "70-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-teal-70-rgb",
+    {
+      "$type": "color",
+      "$value": "0 77 77",
+      "value": "0 77 77",
+      "filePath": "tokens/color/crayon/teal.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.teal.70}",
+        "value": "{color.teal.70}"
+      },
+      "name": "rh-color-teal-70-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "teal",
+        "item": "70-rgb",
+        "hex": "004d4d",
+        "rgb": {
+          "r": 0,
+          "g": 77,
+          "b": 77,
+          "a": 1
+        },
+        "hsl": {
+          "h": 180,
+          "s": 100,
+          "l": 15.098039215686274,
+          "a": 1
+        },
+        "hsv": {
+          "h": 180,
+          "s": 1,
+          "v": 0.30196078431372547,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "teal",
+        "70-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-yellow-10",
+    {
+      "$value": "#FFF4CC",
+      "$description": "Alert - Warning background",
+      "value": "#fff4cc",
+      "filePath": "tokens/color/crayon/yellow.yaml",
+      "isSource": true,
+      "original": {
+        "$value": "#FFF4CC",
+        "$description": "Alert - Warning background",
+        "value": "#FFF4CC"
+      },
+      "name": "rh-color-yellow-10",
+      "attributes": {
+        "category": "color",
+        "type": "yellow",
+        "item": "10",
+        "hex": "fff4cc",
+        "rgb": {
+          "r": 255,
+          "g": 244,
+          "b": 204,
+          "a": 1
+        },
+        "hsl": {
+          "h": 47.058823529411775,
+          "s": 100,
+          "l": 90,
+          "a": 1
+        },
+        "hsv": {
+          "h": 47.058823529411775,
+          "s": 0.19999999999999996,
+          "v": 1,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "yellow",
+        "10"
+      ],
+      "comment": "Alert - Warning background",
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-yellow-20",
+    {
+      "$value": "#FFE072",
+      "value": "#ffe072",
+      "filePath": "tokens/color/crayon/yellow.yaml",
+      "isSource": true,
+      "original": {
+        "$value": "#FFE072",
+        "value": "#FFE072"
+      },
+      "name": "rh-color-yellow-20",
+      "attributes": {
+        "category": "color",
+        "type": "yellow",
+        "item": "20",
+        "hex": "ffe072",
+        "rgb": {
+          "r": 255,
+          "g": 224,
+          "b": 114,
+          "a": 1
+        },
+        "hsl": {
+          "h": 46.80851063829787,
+          "s": 100,
+          "l": 72.35294117647058,
+          "a": 1
+        },
+        "hsv": {
+          "h": 46.80851063829787,
+          "s": 0.5529411764705883,
+          "v": 1,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "yellow",
+        "20"
+      ],
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-yellow-30",
+    {
+      "$value": "#FFCC17",
+      "value": "#ffcc17",
+      "filePath": "tokens/color/crayon/yellow.yaml",
+      "isSource": true,
+      "original": {
+        "$value": "#FFCC17",
+        "value": "#FFCC17"
+      },
+      "name": "rh-color-yellow-30",
+      "attributes": {
+        "category": "color",
+        "type": "yellow",
+        "item": "30",
+        "hex": "ffcc17",
+        "rgb": {
+          "r": 255,
+          "g": 204,
+          "b": 23,
+          "a": 1
+        },
+        "hsl": {
+          "h": 46.81034482758621,
+          "s": 100,
+          "l": 54.509803921568626,
+          "a": 1
+        },
+        "hsv": {
+          "h": 46.81034482758621,
+          "s": 0.9098039215686274,
+          "v": 1,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "yellow",
+        "30"
+      ],
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-yellow-40",
+    {
+      "$value": "#DCA614",
+      "$description": "Alert - Warning accent",
+      "value": "#dca614",
+      "filePath": "tokens/color/crayon/yellow.yaml",
+      "isSource": true,
+      "original": {
+        "$value": "#DCA614",
+        "$description": "Alert - Warning accent",
+        "value": "#DCA614"
+      },
+      "name": "rh-color-yellow-40",
+      "attributes": {
+        "category": "color",
+        "type": "yellow",
+        "item": "40",
+        "hex": "dca614",
+        "rgb": {
+          "r": 220,
+          "g": 166,
+          "b": 20,
+          "a": 1
+        },
+        "hsl": {
+          "h": 43.79999999999999,
+          "s": 83.33333333333334,
+          "l": 47.05882352941176,
+          "a": 1
+        },
+        "hsv": {
+          "h": 43.79999999999999,
+          "s": 0.9090909090909092,
+          "v": 0.8627450980392157,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "yellow",
+        "40"
+      ],
+      "comment": "Alert - Warning accent",
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-yellow-50",
+    {
+      "$value": "#B98412",
+      "value": "#b98412",
+      "filePath": "tokens/color/crayon/yellow.yaml",
+      "isSource": true,
+      "original": {
+        "$value": "#B98412",
+        "value": "#B98412"
+      },
+      "name": "rh-color-yellow-50",
+      "attributes": {
+        "category": "color",
+        "type": "yellow",
+        "item": "50",
+        "hex": "b98412",
+        "rgb": {
+          "r": 185,
+          "g": 132,
+          "b": 18,
+          "a": 1
+        },
+        "hsl": {
+          "h": 40.95808383233534,
+          "s": 82.26600985221675,
+          "l": 39.80392156862745,
+          "a": 1
+        },
+        "hsv": {
+          "h": 40.95808383233534,
+          "s": 0.9027027027027027,
+          "v": 0.7254901960784313,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "yellow",
+        "50"
+      ],
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-yellow-60",
+    {
+      "$value": "#96640F",
+      "value": "#96640f",
+      "filePath": "tokens/color/crayon/yellow.yaml",
+      "isSource": true,
+      "original": {
+        "$value": "#96640F",
+        "value": "#96640F"
+      },
+      "name": "rh-color-yellow-60",
+      "attributes": {
+        "category": "color",
+        "type": "yellow",
+        "item": "60",
+        "hex": "96640f",
+        "rgb": {
+          "r": 150,
+          "g": 100,
+          "b": 15,
+          "a": 1
+        },
+        "hsl": {
+          "h": 37.77777777777777,
+          "s": 81.81818181818181,
+          "l": 32.35294117647059,
+          "a": 1
+        },
+        "hsv": {
+          "h": 37.77777777777777,
+          "s": 0.9,
+          "v": 0.5882352941176471,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "yellow",
+        "60"
+      ],
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-yellow-70",
+    {
+      "$value": "#73480B",
+      "$description": "Alert - Warning title text",
+      "value": "#73480b",
+      "filePath": "tokens/color/crayon/yellow.yaml",
+      "isSource": true,
+      "original": {
+        "$value": "#73480B",
+        "$description": "Alert - Warning title text",
+        "value": "#73480B"
+      },
+      "name": "rh-color-yellow-70",
+      "attributes": {
+        "category": "color",
+        "type": "yellow",
+        "item": "70",
+        "hex": "73480b",
+        "rgb": {
+          "r": 115,
+          "g": 72,
+          "b": 11,
+          "a": 1
+        },
+        "hsl": {
+          "h": 35.192307692307686,
+          "s": 82.53968253968253,
+          "l": 24.705882352941178,
+          "a": 1
+        },
+        "hsv": {
+          "h": 35.192307692307686,
+          "s": 0.9043478260869565,
+          "v": 0.45098039215686275,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "yellow",
+        "70"
+      ],
+      "comment": "Alert - Warning title text",
+      "$type": "color"
+    }
+  ],
+  [
+    "--rh-color-yellow-10-hsl",
+    {
+      "$type": "color",
+      "$value": "47.058823529411775 100% 90%",
+      "value": "47.058823529411775 100% 90%",
+      "filePath": "tokens/color/crayon/yellow.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.yellow.10}",
+        "value": "{color.yellow.10}"
+      },
+      "name": "rh-color-yellow-10-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "yellow",
+        "item": "10-hsl",
+        "hex": "fff4cc",
+        "rgb": {
+          "r": 255,
+          "g": 244,
+          "b": 204,
+          "a": 1
+        },
+        "hsl": {
+          "h": 47.058823529411775,
+          "s": 100,
+          "l": 90,
+          "a": 1
+        },
+        "hsv": {
+          "h": 47.058823529411775,
+          "s": 0.19999999999999996,
+          "v": 1,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "yellow",
+        "10-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-yellow-10-rgb",
+    {
+      "$type": "color",
+      "$value": "255 244 204",
+      "value": "255 244 204",
+      "filePath": "tokens/color/crayon/yellow.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.yellow.10}",
+        "value": "{color.yellow.10}"
+      },
+      "name": "rh-color-yellow-10-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "yellow",
+        "item": "10-rgb",
+        "hex": "fff4cc",
+        "rgb": {
+          "r": 255,
+          "g": 244,
+          "b": 204,
+          "a": 1
+        },
+        "hsl": {
+          "h": 47.058823529411775,
+          "s": 100,
+          "l": 90,
+          "a": 1
+        },
+        "hsv": {
+          "h": 47.058823529411775,
+          "s": 0.19999999999999996,
+          "v": 1,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "yellow",
+        "10-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-yellow-20-hsl",
+    {
+      "$type": "color",
+      "$value": "46.80851063829787 100% 72.35294117647058%",
+      "value": "46.80851063829787 100% 72.35294117647058%",
+      "filePath": "tokens/color/crayon/yellow.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.yellow.20}",
+        "value": "{color.yellow.20}"
+      },
+      "name": "rh-color-yellow-20-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "yellow",
+        "item": "20-hsl",
+        "hex": "ffe072",
+        "rgb": {
+          "r": 255,
+          "g": 224,
+          "b": 114,
+          "a": 1
+        },
+        "hsl": {
+          "h": 46.80851063829787,
+          "s": 100,
+          "l": 72.35294117647058,
+          "a": 1
+        },
+        "hsv": {
+          "h": 46.80851063829787,
+          "s": 0.5529411764705883,
+          "v": 1,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "yellow",
+        "20-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-yellow-20-rgb",
+    {
+      "$type": "color",
+      "$value": "255 224 114",
+      "value": "255 224 114",
+      "filePath": "tokens/color/crayon/yellow.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.yellow.20}",
+        "value": "{color.yellow.20}"
+      },
+      "name": "rh-color-yellow-20-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "yellow",
+        "item": "20-rgb",
+        "hex": "ffe072",
+        "rgb": {
+          "r": 255,
+          "g": 224,
+          "b": 114,
+          "a": 1
+        },
+        "hsl": {
+          "h": 46.80851063829787,
+          "s": 100,
+          "l": 72.35294117647058,
+          "a": 1
+        },
+        "hsv": {
+          "h": 46.80851063829787,
+          "s": 0.5529411764705883,
+          "v": 1,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "yellow",
+        "20-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-yellow-30-hsl",
+    {
+      "$type": "color",
+      "$value": "46.81034482758621 100% 54.509803921568626%",
+      "value": "46.81034482758621 100% 54.509803921568626%",
+      "filePath": "tokens/color/crayon/yellow.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.yellow.30}",
+        "value": "{color.yellow.30}"
+      },
+      "name": "rh-color-yellow-30-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "yellow",
+        "item": "30-hsl",
+        "hex": "ffcc17",
+        "rgb": {
+          "r": 255,
+          "g": 204,
+          "b": 23,
+          "a": 1
+        },
+        "hsl": {
+          "h": 46.81034482758621,
+          "s": 100,
+          "l": 54.509803921568626,
+          "a": 1
+        },
+        "hsv": {
+          "h": 46.81034482758621,
+          "s": 0.9098039215686274,
+          "v": 1,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "yellow",
+        "30-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-yellow-30-rgb",
+    {
+      "$type": "color",
+      "$value": "255 204 23",
+      "value": "255 204 23",
+      "filePath": "tokens/color/crayon/yellow.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.yellow.30}",
+        "value": "{color.yellow.30}"
+      },
+      "name": "rh-color-yellow-30-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "yellow",
+        "item": "30-rgb",
+        "hex": "ffcc17",
+        "rgb": {
+          "r": 255,
+          "g": 204,
+          "b": 23,
+          "a": 1
+        },
+        "hsl": {
+          "h": 46.81034482758621,
+          "s": 100,
+          "l": 54.509803921568626,
+          "a": 1
+        },
+        "hsv": {
+          "h": 46.81034482758621,
+          "s": 0.9098039215686274,
+          "v": 1,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "yellow",
+        "30-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-yellow-40-hsl",
+    {
+      "$type": "color",
+      "$value": "43.79999999999999 83.33333333333334% 47.05882352941176%",
+      "value": "43.79999999999999 83.33333333333334% 47.05882352941176%",
+      "filePath": "tokens/color/crayon/yellow.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.yellow.40}",
+        "value": "{color.yellow.40}"
+      },
+      "name": "rh-color-yellow-40-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "yellow",
+        "item": "40-hsl",
+        "hex": "dca614",
+        "rgb": {
+          "r": 220,
+          "g": 166,
+          "b": 20,
+          "a": 1
+        },
+        "hsl": {
+          "h": 43.79999999999999,
+          "s": 83.33333333333334,
+          "l": 47.05882352941176,
+          "a": 1
+        },
+        "hsv": {
+          "h": 43.79999999999999,
+          "s": 0.9090909090909092,
+          "v": 0.8627450980392157,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "yellow",
+        "40-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-yellow-40-rgb",
+    {
+      "$type": "color",
+      "$value": "220 166 20",
+      "value": "220 166 20",
+      "filePath": "tokens/color/crayon/yellow.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.yellow.40}",
+        "value": "{color.yellow.40}"
+      },
+      "name": "rh-color-yellow-40-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "yellow",
+        "item": "40-rgb",
+        "hex": "dca614",
+        "rgb": {
+          "r": 220,
+          "g": 166,
+          "b": 20,
+          "a": 1
+        },
+        "hsl": {
+          "h": 43.79999999999999,
+          "s": 83.33333333333334,
+          "l": 47.05882352941176,
+          "a": 1
+        },
+        "hsv": {
+          "h": 43.79999999999999,
+          "s": 0.9090909090909092,
+          "v": 0.8627450980392157,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "yellow",
+        "40-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-yellow-50-hsl",
+    {
+      "$type": "color",
+      "$value": "40.95808383233534 82.26600985221675% 39.80392156862745%",
+      "value": "40.95808383233534 82.26600985221675% 39.80392156862745%",
+      "filePath": "tokens/color/crayon/yellow.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.yellow.50}",
+        "value": "{color.yellow.50}"
+      },
+      "name": "rh-color-yellow-50-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "yellow",
+        "item": "50-hsl",
+        "hex": "b98412",
+        "rgb": {
+          "r": 185,
+          "g": 132,
+          "b": 18,
+          "a": 1
+        },
+        "hsl": {
+          "h": 40.95808383233534,
+          "s": 82.26600985221675,
+          "l": 39.80392156862745,
+          "a": 1
+        },
+        "hsv": {
+          "h": 40.95808383233534,
+          "s": 0.9027027027027027,
+          "v": 0.7254901960784313,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "yellow",
+        "50-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-yellow-50-rgb",
+    {
+      "$type": "color",
+      "$value": "185 132 18",
+      "value": "185 132 18",
+      "filePath": "tokens/color/crayon/yellow.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.yellow.50}",
+        "value": "{color.yellow.50}"
+      },
+      "name": "rh-color-yellow-50-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "yellow",
+        "item": "50-rgb",
+        "hex": "b98412",
+        "rgb": {
+          "r": 185,
+          "g": 132,
+          "b": 18,
+          "a": 1
+        },
+        "hsl": {
+          "h": 40.95808383233534,
+          "s": 82.26600985221675,
+          "l": 39.80392156862745,
+          "a": 1
+        },
+        "hsv": {
+          "h": 40.95808383233534,
+          "s": 0.9027027027027027,
+          "v": 0.7254901960784313,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "yellow",
+        "50-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-yellow-60-hsl",
+    {
+      "$type": "color",
+      "$value": "37.77777777777777 81.81818181818181% 32.35294117647059%",
+      "value": "37.77777777777777 81.81818181818181% 32.35294117647059%",
+      "filePath": "tokens/color/crayon/yellow.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.yellow.60}",
+        "value": "{color.yellow.60}"
+      },
+      "name": "rh-color-yellow-60-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "yellow",
+        "item": "60-hsl",
+        "hex": "96640f",
+        "rgb": {
+          "r": 150,
+          "g": 100,
+          "b": 15,
+          "a": 1
+        },
+        "hsl": {
+          "h": 37.77777777777777,
+          "s": 81.81818181818181,
+          "l": 32.35294117647059,
+          "a": 1
+        },
+        "hsv": {
+          "h": 37.77777777777777,
+          "s": 0.9,
+          "v": 0.5882352941176471,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "yellow",
+        "60-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-yellow-60-rgb",
+    {
+      "$type": "color",
+      "$value": "150 100 15",
+      "value": "150 100 15",
+      "filePath": "tokens/color/crayon/yellow.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.yellow.60}",
+        "value": "{color.yellow.60}"
+      },
+      "name": "rh-color-yellow-60-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "yellow",
+        "item": "60-rgb",
+        "hex": "96640f",
+        "rgb": {
+          "r": 150,
+          "g": 100,
+          "b": 15,
+          "a": 1
+        },
+        "hsl": {
+          "h": 37.77777777777777,
+          "s": 81.81818181818181,
+          "l": 32.35294117647059,
+          "a": 1
+        },
+        "hsv": {
+          "h": 37.77777777777777,
+          "s": 0.9,
+          "v": 0.5882352941176471,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "yellow",
+        "60-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-yellow-70-hsl",
+    {
+      "$type": "color",
+      "$value": "35.192307692307686 82.53968253968253% 24.705882352941178%",
+      "value": "35.192307692307686 82.53968253968253% 24.705882352941178%",
+      "filePath": "tokens/color/crayon/yellow.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.yellow.70}",
+        "value": "{color.yellow.70}"
+      },
+      "name": "rh-color-yellow-70-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "yellow",
+        "item": "70-hsl",
+        "hex": "73480b",
+        "rgb": {
+          "r": 115,
+          "g": 72,
+          "b": 11,
+          "a": 1
+        },
+        "hsl": {
+          "h": 35.192307692307686,
+          "s": 82.53968253968253,
+          "l": 24.705882352941178,
+          "a": 1
+        },
+        "hsv": {
+          "h": 35.192307692307686,
+          "s": 0.9043478260869565,
+          "v": 0.45098039215686275,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "yellow",
+        "70-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-yellow-70-rgb",
+    {
+      "$type": "color",
+      "$value": "115 72 11",
+      "value": "115 72 11",
+      "filePath": "tokens/color/crayon/yellow.yaml",
+      "isSource": true,
+      "original": {
+        "$type": "color",
+        "$value": "{color.yellow.70}",
+        "value": "{color.yellow.70}"
+      },
+      "name": "rh-color-yellow-70-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "yellow",
+        "item": "70-rgb",
+        "hex": "73480b",
+        "rgb": {
+          "r": 115,
+          "g": 72,
+          "b": 11,
+          "a": 1
+        },
+        "hsl": {
+          "h": 35.192307692307686,
+          "s": 82.53968253968253,
+          "l": 24.705882352941178,
+          "a": 1
+        },
+        "hsv": {
+          "h": 35.192307692307686,
+          "s": 0.9043478260869565,
+          "v": 0.45098039215686275,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "yellow",
+        "70-rgb"
       ]
     }
   ],
@@ -8618,34 +11096,34 @@ export const tokens = new Map([
   [
     "--rh-color-icon-primary-on-dark",
     {
-      "$value": "#ff442b",
+      "$value": "#ee0000",
       "attributes": {
         "category": "icon",
         "type": "color",
         "item": "primary",
         "subitem": "on-dark",
-        "hex": "ff442b",
+        "hex": "ee0000",
         "rgb": {
-          "r": 255,
-          "g": 68,
-          "b": 43,
+          "r": 238,
+          "g": 0,
+          "b": 0,
           "a": 1
         },
         "hsl": {
-          "h": 7.0754716981132075,
+          "h": 0,
           "s": 100,
-          "l": 58.43137254901961,
+          "l": 46.666666666666664,
           "a": 1
         },
         "hsv": {
-          "h": 7.0754716981132075,
-          "s": 0.8313725490196078,
-          "v": 1,
+          "h": 0,
+          "s": 1,
+          "v": 0.9333333333333333,
           "a": 1
         },
         "isLight": false
       },
-      "value": "#ff442b",
+      "value": "#ee0000",
       "filePath": "tokens/color/icon.yml",
       "isSource": true,
       "original": {
@@ -8700,12 +11178,12 @@ export const tokens = new Map([
       "filePath": "tokens/color/icon.yml",
       "isSource": true,
       "original": {
-        "$value": "{color.gray.90}",
+        "$value": "{color.gray.95}",
         "attributes": {
           "category": "icon",
           "type": "color"
         },
-        "value": "{color.gray.90}"
+        "value": "{color.gray.95}"
       },
       "name": "rh-color-icon-secondary-on-light",
       "path": [
@@ -8802,12 +11280,12 @@ export const tokens = new Map([
       "filePath": "tokens/color/icon.yml",
       "isSource": true,
       "original": {
-        "$value": "{color.gray.40}",
+        "$value": "{color.gray.50}",
         "attributes": {
           "category": "icon",
           "type": "color"
         },
-        "value": "{color.gray.40}"
+        "value": "{color.gray.50}"
       },
       "name": "rh-color-icon-subtle",
       "path": [
@@ -8853,12 +11331,12 @@ export const tokens = new Map([
       "filePath": "tokens/color/icon.yml",
       "isSource": true,
       "original": {
-        "$value": "{color.gray.30}",
+        "$value": "{color.gray.40}",
         "attributes": {
           "category": "icon",
           "type": "color"
         },
-        "value": "{color.gray.30}"
+        "value": "{color.gray.40}"
       },
       "name": "rh-color-icon-subtle-hover",
       "path": [
@@ -8873,15 +11351,15 @@ export const tokens = new Map([
   [
     "--rh-color-interactive-blue-lightest",
     {
-      "$value": "#bee1f4",
+      "$value": "#b9dafc",
       "$description": "Inline link hover (dark theme)",
-      "value": "#bee1f4",
+      "value": "#b9dafc",
       "filePath": "tokens/color/interactive.yaml",
       "isSource": true,
       "original": {
-        "$value": "{color.blue.100}",
+        "$value": "{color.blue.20}",
         "$description": "Inline link hover (dark theme)",
-        "value": "{color.blue.100}"
+        "value": "{color.blue.20}"
       },
       "name": "rh-color-interactive-blue-lightest",
       "attributes": {
@@ -8889,23 +11367,23 @@ export const tokens = new Map([
         "type": "interactive",
         "item": "blue",
         "subitem": "lightest",
-        "hex": "bee1f4",
+        "hex": "b9dafc",
         "rgb": {
-          "r": 190,
-          "g": 225,
-          "b": 244,
+          "r": 185,
+          "g": 218,
+          "b": 252,
           "a": 1
         },
         "hsl": {
-          "h": 201.11111111111111,
-          "s": 71.05263157894743,
-          "l": 85.09803921568628,
+          "h": 210.44776119402988,
+          "s": 91.78082191780825,
+          "l": 85.68627450980392,
           "a": 1
         },
         "hsv": {
-          "h": 201.11111111111111,
-          "s": 0.2213114754098361,
-          "v": 0.9568627450980393,
+          "h": 210.44776119402988,
+          "s": 0.2658730158730159,
+          "v": 0.9882352941176471,
           "a": 1
         },
         "isLight": true
@@ -8923,15 +11401,15 @@ export const tokens = new Map([
   [
     "--rh-color-interactive-blue-lighter",
     {
-      "$value": "#73bcf7",
+      "$value": "#92c5f9",
       "$description": "Inline link (dark theme)",
-      "value": "#73bcf7",
+      "value": "#92c5f9",
       "filePath": "tokens/color/interactive.yaml",
       "isSource": true,
       "original": {
-        "$value": "{color.blue.200}",
+        "$value": "{color.blue.30}",
         "$description": "Inline link (dark theme)",
-        "value": "{color.blue.200}"
+        "value": "{color.blue.30}"
       },
       "name": "rh-color-interactive-blue-lighter",
       "attributes": {
@@ -8939,23 +11417,23 @@ export const tokens = new Map([
         "type": "interactive",
         "item": "blue",
         "subitem": "lighter",
-        "hex": "73bcf7",
+        "hex": "92c5f9",
         "rgb": {
-          "r": 115,
-          "g": 188,
-          "b": 247,
+          "r": 146,
+          "g": 197,
+          "b": 249,
           "a": 1
         },
         "hsl": {
-          "h": 206.8181818181818,
-          "s": 89.1891891891892,
-          "l": 70.98039215686275,
+          "h": 210.29126213592232,
+          "s": 89.56521739130436,
+          "l": 77.45098039215685,
           "a": 1
         },
         "hsv": {
-          "h": 206.8181818181818,
-          "s": 0.534412955465587,
-          "v": 0.9686274509803922,
+          "h": 210.29126213592232,
+          "s": 0.4136546184738956,
+          "v": 0.9764705882352941,
           "a": 1
         },
         "isLight": true
@@ -8979,9 +11457,9 @@ export const tokens = new Map([
       "filePath": "tokens/color/interactive.yaml",
       "isSource": true,
       "original": {
-        "$value": "{color.blue.400}",
+        "$value": "{color.blue.50}",
         "$description": "Inline link (light theme)",
-        "value": "{color.blue.400}"
+        "value": "{color.blue.50}"
       },
       "name": "rh-color-interactive-blue-darker",
       "attributes": {
@@ -9023,15 +11501,15 @@ export const tokens = new Map([
   [
     "--rh-color-interactive-blue-darkest",
     {
-      "$value": "#004080",
+      "$value": "#003366",
       "$description": "Inline link hover (light theme)",
-      "value": "#004080",
+      "value": "#003366",
       "filePath": "tokens/color/interactive.yaml",
       "isSource": true,
       "original": {
-        "$value": "{color.blue.500}",
+        "$value": "{color.blue.70}",
         "$description": "Inline link hover (light theme)",
-        "value": "{color.blue.500}"
+        "value": "{color.blue.70}"
       },
       "name": "rh-color-interactive-blue-darkest",
       "attributes": {
@@ -9039,23 +11517,23 @@ export const tokens = new Map([
         "type": "interactive",
         "item": "blue",
         "subitem": "darkest",
-        "hex": "004080",
+        "hex": "003366",
         "rgb": {
           "r": 0,
-          "g": 64,
-          "b": 128,
+          "g": 51,
+          "b": 102,
           "a": 1
         },
         "hsl": {
           "h": 210,
           "s": 100,
-          "l": 25.098039215686274,
+          "l": 20,
           "a": 1
         },
         "hsv": {
           "h": 210,
           "s": 1,
-          "v": 0.5019607843137255,
+          "v": 0.4,
           "a": 1
         },
         "isLight": false
@@ -9073,15 +11551,15 @@ export const tokens = new Map([
   [
     "--rh-color-interactive-purple-lightest",
     {
-      "$value": "#cbc1ff",
+      "$value": "#ece6ff",
       "$description": "Inline link visited hover (dark theme)",
-      "value": "#cbc1ff",
+      "value": "#ece6ff",
       "filePath": "tokens/color/interactive.yaml",
       "isSource": true,
       "original": {
-        "$value": "{color.purple.100}",
+        "$value": "{color.purple.10}",
         "$description": "Inline link visited hover (dark theme)",
-        "value": "{color.purple.100}"
+        "value": "{color.purple.10}"
       },
       "name": "rh-color-interactive-purple-lightest",
       "attributes": {
@@ -9089,22 +11567,22 @@ export const tokens = new Map([
         "type": "interactive",
         "item": "purple",
         "subitem": "lightest",
-        "hex": "cbc1ff",
+        "hex": "ece6ff",
         "rgb": {
-          "r": 203,
-          "g": 193,
+          "r": 236,
+          "g": 230,
           "b": 255,
           "a": 1
         },
         "hsl": {
-          "h": 249.6774193548387,
+          "h": 254.4,
           "s": 100,
-          "l": 87.84313725490196,
+          "l": 95.09803921568627,
           "a": 1
         },
         "hsv": {
-          "h": 249.6774193548387,
-          "s": 0.2431372549019608,
+          "h": 254.4,
+          "s": 0.0980392156862745,
           "v": 1,
           "a": 1
         },
@@ -9123,15 +11601,15 @@ export const tokens = new Map([
   [
     "--rh-color-interactive-purple-lighter",
     {
-      "$value": "#a18fff",
+      "$value": "#b6a6e9",
       "$description": "Inline link visited (dark theme)",
-      "value": "#a18fff",
+      "value": "#b6a6e9",
       "filePath": "tokens/color/interactive.yaml",
       "isSource": true,
       "original": {
-        "$value": "{color.purple.300}",
+        "$value": "{color.purple.30}",
         "$description": "Inline link visited (dark theme)",
-        "value": "{color.purple.300}"
+        "value": "{color.purple.30}"
       },
       "name": "rh-color-interactive-purple-lighter",
       "attributes": {
@@ -9139,23 +11617,23 @@ export const tokens = new Map([
         "type": "interactive",
         "item": "purple",
         "subitem": "lighter",
-        "hex": "a18fff",
+        "hex": "b6a6e9",
         "rgb": {
-          "r": 161,
-          "g": 143,
-          "b": 255,
+          "r": 182,
+          "g": 166,
+          "b": 233,
           "a": 1
         },
         "hsl": {
-          "h": 249.64285714285714,
-          "s": 100,
-          "l": 78.03921568627452,
+          "h": 254.32835820895522,
+          "s": 60.36036036036033,
+          "l": 78.23529411764706,
           "a": 1
         },
         "hsv": {
-          "h": 249.64285714285714,
-          "s": 0.4392156862745098,
-          "v": 1,
+          "h": 254.32835820895522,
+          "s": 0.2875536480686695,
+          "v": 0.9137254901960784,
           "a": 1
         },
         "isLight": true
@@ -9173,15 +11651,15 @@ export const tokens = new Map([
   [
     "--rh-color-interactive-purple-darker",
     {
-      "$value": "#6753ac",
+      "$value": "#5e40be",
       "$description": "Inline link visited (light theme)",
-      "value": "#6753ac",
+      "value": "#5e40be",
       "filePath": "tokens/color/interactive.yaml",
       "isSource": true,
       "original": {
-        "$value": "{color.purple.500}",
+        "$value": "{color.purple.50}",
         "$description": "Inline link visited (light theme)",
-        "value": "{color.purple.500}"
+        "value": "{color.purple.50}"
       },
       "name": "rh-color-interactive-purple-darker",
       "attributes": {
@@ -9189,23 +11667,23 @@ export const tokens = new Map([
         "type": "interactive",
         "item": "purple",
         "subitem": "darker",
-        "hex": "6753ac",
+        "hex": "5e40be",
         "rgb": {
-          "r": 103,
-          "g": 83,
-          "b": 172,
+          "r": 94,
+          "g": 64,
+          "b": 190,
           "a": 1
         },
         "hsl": {
-          "h": 253.4831460674157,
-          "s": 34.90196078431373,
-          "l": 50,
+          "h": 254.2857142857143,
+          "s": 49.60629921259843,
+          "l": 49.80392156862745,
           "a": 1
         },
         "hsv": {
-          "h": 253.4831460674157,
-          "s": 0.5174418604651163,
-          "v": 0.6745098039215687,
+          "h": 254.2857142857143,
+          "s": 0.6631578947368422,
+          "v": 0.7450980392156863,
           "a": 1
         },
         "isLight": false
@@ -9223,15 +11701,15 @@ export const tokens = new Map([
   [
     "--rh-color-interactive-purple-darkest",
     {
-      "$value": "#1f0066",
+      "$value": "#21134d",
       "$description": "Inline link visited hover (light theme)",
-      "value": "#1f0066",
+      "value": "#21134d",
       "filePath": "tokens/color/interactive.yaml",
       "isSource": true,
       "original": {
-        "$value": "{color.purple.700}",
+        "$value": "{color.purple.70}",
         "$description": "Inline link visited hover (light theme)",
-        "value": "{color.purple.700}"
+        "value": "{color.purple.70}"
       },
       "name": "rh-color-interactive-purple-darkest",
       "attributes": {
@@ -9239,23 +11717,23 @@ export const tokens = new Map([
         "type": "interactive",
         "item": "purple",
         "subitem": "darkest",
-        "hex": "1f0066",
+        "hex": "21134d",
         "rgb": {
-          "r": 31,
-          "g": 0,
-          "b": 102,
+          "r": 33,
+          "g": 19,
+          "b": 77,
           "a": 1
         },
         "hsl": {
-          "h": 258.2352941176471,
-          "s": 100,
-          "l": 20,
+          "h": 254.48275862068965,
+          "s": 60.416666666666664,
+          "l": 18.823529411764707,
           "a": 1
         },
         "hsv": {
-          "h": 258.2352941176471,
-          "s": 1,
-          "v": 0.4,
+          "h": 254.48275862068965,
+          "s": 0.7532467532467532,
+          "v": 0.30196078431372547,
           "a": 1
         },
         "isLight": false
@@ -9327,9 +11805,9 @@ export const tokens = new Map([
       "filePath": "tokens/color/surface.yaml",
       "isSource": true,
       "original": {
-        "$value": "{color.gray.05}",
+        "$value": "{color.gray.10}",
         "$description": "Tertiary surface (light theme)",
-        "value": "{color.gray.05}"
+        "value": "{color.gray.10}"
       },
       "name": "rh-color-surface-lighter",
       "attributes": {
@@ -9375,9 +11853,9 @@ export const tokens = new Map([
       "filePath": "tokens/color/surface.yaml",
       "isSource": true,
       "original": {
-        "$value": "{color.gray.10}",
+        "$value": "{color.gray.20}",
         "$description": "Secondary surface (light theme)",
-        "value": "{color.gray.10}"
+        "value": "{color.gray.20}"
       },
       "name": "rh-color-surface-light",
       "attributes": {
@@ -9423,9 +11901,9 @@ export const tokens = new Map([
       "filePath": "tokens/color/surface.yaml",
       "isSource": true,
       "original": {
-        "$value": "{color.gray.60}",
+        "$value": "{color.gray.70}",
         "$description": "Tertiary surface (dark theme)",
-        "value": "{color.gray.60}"
+        "value": "{color.gray.70}"
       },
       "name": "rh-color-surface-dark",
       "attributes": {
@@ -9471,9 +11949,9 @@ export const tokens = new Map([
       "filePath": "tokens/color/surface.yaml",
       "isSource": true,
       "original": {
-        "$value": "{color.gray.70}",
+        "$value": "{color.gray.80}",
         "$description": "Alternative tertiary surface (not available for use with context provider)",
-        "value": "{color.gray.70}"
+        "value": "{color.gray.80}"
       },
       "name": "rh-color-surface-dark-alt",
       "attributes": {
@@ -9519,9 +11997,9 @@ export const tokens = new Map([
       "filePath": "tokens/color/surface.yaml",
       "isSource": true,
       "original": {
-        "$value": "{color.gray.80}",
+        "$value": "{color.gray.90}",
         "$description": "Secondary surface (dark theme)",
-        "value": "{color.gray.80}"
+        "value": "{color.gray.90}"
       },
       "name": "rh-color-surface-darker",
       "attributes": {
@@ -9567,9 +12045,9 @@ export const tokens = new Map([
       "filePath": "tokens/color/surface.yaml",
       "isSource": true,
       "original": {
-        "$value": "{color.gray.90}",
+        "$value": "{color.gray.95}",
         "$description": "Primary surface (dark theme)",
-        "value": "{color.gray.90}"
+        "value": "{color.gray.95}"
       },
       "name": "rh-color-surface-darkest",
       "attributes": {
@@ -9641,13 +12119,13 @@ export const tokens = new Map([
       "filePath": "tokens/color/text.yaml",
       "isSource": true,
       "original": {
-        "$value": "{color.gray.90}",
+        "$value": "{color.gray.95}",
         "$description": "Primary text color for light theme",
         "attributes": {
           "category": "typography",
           "type": "color"
         },
-        "value": "{color.gray.90}"
+        "value": "{color.gray.95}"
       },
       "name": "rh-color-text-primary-on-light",
       "path": [
@@ -9749,13 +12227,13 @@ export const tokens = new Map([
       "filePath": "tokens/color/text.yaml",
       "isSource": true,
       "original": {
-        "$value": "{color.gray.50}",
+        "$value": "{color.gray.60}",
         "$description": "Secondary text color for light theme",
         "attributes": {
           "category": "typography",
           "type": "color"
         },
-        "value": "{color.gray.50}"
+        "value": "{color.gray.60}"
       },
       "name": "rh-color-text-secondary-on-light",
       "path": [
@@ -9803,13 +12281,13 @@ export const tokens = new Map([
       "filePath": "tokens/color/text.yaml",
       "isSource": true,
       "original": {
-        "$value": "{color.gray.20}",
+        "$value": "{color.gray.30}",
         "$description": "Secondary text color for dark theme",
         "attributes": {
           "category": "typography",
           "type": "color"
         },
-        "value": "{color.gray.20}"
+        "value": "{color.gray.30}"
       },
       "name": "rh-color-text-secondary-on-dark",
       "path": [
@@ -9857,13 +12335,13 @@ export const tokens = new Map([
       "filePath": "tokens/color/text.yaml",
       "isSource": true,
       "original": {
-        "$value": "{color.red.500}",
+        "$value": "{color.brand.red.on-light}",
         "$description": "Brand text color for light theme",
         "attributes": {
           "category": "typography",
           "type": "color"
         },
-        "value": "{color.red.500}"
+        "value": "{color.brand.red.on-light}"
       },
       "name": "rh-color-text-brand-on-light",
       "path": [
@@ -9879,45 +12357,45 @@ export const tokens = new Map([
   [
     "--rh-color-text-brand-on-dark",
     {
-      "$value": "#ff442b",
+      "$value": "#ee0000",
       "$description": "Brand text color for dark theme",
       "attributes": {
         "category": "typography",
         "type": "color",
         "item": "brand",
         "subitem": "on-dark",
-        "hex": "ff442b",
+        "hex": "ee0000",
         "rgb": {
-          "r": 255,
-          "g": 68,
-          "b": 43,
+          "r": 238,
+          "g": 0,
+          "b": 0,
           "a": 1
         },
         "hsl": {
-          "h": 7.0754716981132075,
+          "h": 0,
           "s": 100,
-          "l": 58.43137254901961,
+          "l": 46.666666666666664,
           "a": 1
         },
         "hsv": {
-          "h": 7.0754716981132075,
-          "s": 0.8313725490196078,
-          "v": 1,
+          "h": 0,
+          "s": 1,
+          "v": 0.9333333333333333,
           "a": 1
         },
         "isLight": false
       },
-      "value": "#ff442b",
+      "value": "#ee0000",
       "filePath": "tokens/color/text.yaml",
       "isSource": true,
       "original": {
-        "$value": "{color.red.400}",
+        "$value": "{color.brand.red.on-dark}",
         "$description": "Brand text color for dark theme",
         "attributes": {
           "category": "typography",
           "type": "color"
         },
-        "value": "{color.red.400}"
+        "value": "{color.brand.red.on-dark}"
       },
       "name": "rh-color-text-brand-on-dark",
       "path": [

@@ -1,3 +1,4 @@
+const path = require('node:path');
 const { tokens } = require('@rhds/tokens');
 const stylelint = require('stylelint');
 const declarationValueIndex = require('stylelint/lib/utils/declarationValueIndex');
@@ -16,6 +17,10 @@ const meta = {
 /** @type {import('stylelint').Plugin} */
 const ruleFunction = (_, opts, ctx) => {
   return (root, result) => {
+    // here we assume a file structure of */rh-tagname/rh-tagname.css
+    const tagName = path.dirname(root.source.input.file)
+      .split(path.sep)
+      .findLast(x => x.startsWith('rh-'));
     const validOptions = stylelint.utils.validateOptions(
       result,
       ruleName,
@@ -36,7 +41,10 @@ const ruleFunction = (_, opts, ctx) => {
         parsedValue.walk(parsed => {
           if (parsed.type === 'function' && parsed.value === 'var') {
             const [{ value }] = parsed.nodes ?? [];
-            if (value.startsWith('--rh') && !tokens.has(value) || migrations.has(value)) {
+            if (value.startsWith('--rh') &&
+                !value.startsWith(`--${tagName}`) &&
+                !tokens.has(value) ||
+                migrations.has(value)) {
               const message = `Expected ${value} to be a known token name`;
               const { nodes: [{ sourceIndex, sourceEndIndex }] } = parsed;
               const declIndex = declarationValueIndex(node);

@@ -24,7 +24,7 @@
   --_background-color: var(--rh-color-surface-darkest, #151515);
   --_active-background-color: var(--rh-color-surface-darkest, #151515);
   --_active-text-color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_expanded-background-color: var(--rh-color-accent-brand-on-dark, #ff442b);
+  --_expanded-background-color: var(--rh-color-accent-brand-on-dark, #ee0000);
   --_border-inline-end-color: var(--rh-color-border-subtle-on-dark, #707070);
 }
 

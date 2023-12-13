@@ -7,7 +7,7 @@ import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 import { css } from "lit";
-const styles = css `:host{display:contents}slot{display:inline-flex;align-items:stretch;flex-direction:column;width:max-content}.dark::slotted(a){color:var(--rh-color-interactive-blue-lightest,#bee1f4)!important;padding:5px!important}.dark::slotted(a:hover){color:var(--rh-color-interactive-blue-lighter,#73bcf7)}.dark::slotted(a:visited){color:var(--rh-color-interactive-purple-lighter,#a18fff)!important}.dark::slotted(a:visited:hover){color:var(--rh-color-interactive-purple-lighter,#a18fff)!important}`;
+const styles = css `:host{display:contents}slot{display:inline-flex;align-items:stretch;flex-direction:column;width:max-content}.dark::slotted(a){color:var(--rh-color-interactive-blue-lightest,#b9dafc)!important;padding:5px!important}.dark::slotted(a:hover){color:var(--rh-color-interactive-blue-lighter,#92c5f9)}.dark::slotted(a:visited){color:var(--rh-color-interactive-purple-lighter,#b6a6e9)!important}.dark::slotted(a:visited:hover){color:var(--rh-color-interactive-purple-lighter,#b6a6e9)!important}`;
 export class MenuToggleEvent extends Event {
     constructor(open, menu) {
         super('toggle', { bubbles: true });

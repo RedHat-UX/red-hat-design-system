@@ -37,7 +37,7 @@
     <link type="text/css" href="/assets/pfe--noscript.min.css">
   </noscript>
 
-  <script type="importmap">{"imports":{"@patternfly/pfe-core":"/assets/packages/@patternfly/pfe-core/core.js","lit-html":"/assets/packages/lit-html/lit-html.js","@floating-ui/core":"/assets/packages/@floating-ui/core/dist/floating-ui.core.browser.min.mjs","tslib":"/assets/packages/tslib/tslib.es6.js","@lit/reactive-element":"/assets/packages/@lit/reactive-element/reactive-element.js","@floating-ui/dom":"/assets/packages/@floating-ui/dom/dist/floating-ui.dom.browser.min.mjs","lit-element":"/assets/packages/lit-element/index.js","lit":"/assets/packages/lit/index.js","@patternfly/elements":"/assets/packages/@patternfly/elements/pfe.min.js","@rhds/tokens/media.js":"https://ga.jspm.io/npm:@rhds/tokens@1.1.2/js/media.js","@rhds/tokens/meta.js":"https://ga.jspm.io/npm:@rhds/tokens@1.1.2/js/meta.js","@rhds/tokens":"https://ga.jspm.io/npm:@rhds/tokens@1.1.2/js/tokens.js","element-internals-polyfill":"/assets/packages/element-internals-polyfill/dist/index.js","fuse.js":"/assets/packages/fuse.js/dist/fuse.esm.js","@rhds/tokens/":"/assets/packages/@rhds/tokens/js/","@rhds/elements/":"/assets/packages/@rhds/elements/elements/","@rhds/elements/lib/":"/assets/packages/@rhds/elements/lib/","@patternfly/elements/":"/assets/packages/@patternfly/elements/","@patternfly/icons/":"/assets/packages/@patternfly/icons/","@patternfly/pfe-core/":"/assets/packages/@patternfly/pfe-core/"},"scopes":{"/assets/packages/":{"@lit/reactive-element/decorators/":"/assets/packages/@lit/reactive-element/decorators/","lit":"/assets/packages/@patternfly/elements/node_modules/lit/index.js","lit-element/lit-element.js":"/assets/packages/lit-element/lit-element.js","lit-html/":"/assets/packages/lit-html/","lit/":"/assets/packages/@patternfly/elements/node_modules/lit/"}}}</script>
+  <script type="importmap">{"imports":{"@patternfly/pfe-core":"/assets/packages/@patternfly/pfe-core/core.js","lit-html":"/assets/packages/lit-html/lit-html.js","@floating-ui/core":"/assets/packages/@floating-ui/core/dist/floating-ui.core.browser.min.mjs","tslib":"/assets/packages/tslib/tslib.es6.js","@lit/reactive-element":"/assets/packages/@lit/reactive-element/reactive-element.js","@floating-ui/dom":"/assets/packages/@floating-ui/dom/dist/floating-ui.dom.browser.min.mjs","lit-element":"/assets/packages/lit-element/index.js","lit/directives/if-defined.js":"/assets/packages/lit/directives/if-defined.js","lit":"/assets/packages/lit/index.js","@patternfly/elements":"/assets/packages/@patternfly/elements/pfe.min.js","@rhds/tokens":"https://ga.jspm.io/npm:@rhds/tokens@2.0.0/js/tokens.js","@rhds/tokens/meta.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.0/js/meta.js","@rhds/tokens/media.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.0/js/media.js","element-internals-polyfill":"/assets/packages/element-internals-polyfill/dist/index.js","fuse.js":"/assets/packages/fuse.js/dist/fuse.esm.js","@rhds/tokens/":"/assets/packages/@rhds/tokens/js/","@rhds/elements/":"/assets/packages/@rhds/elements/elements/","@rhds/elements/lib/":"/assets/packages/@rhds/elements/lib/","@patternfly/elements/":"/assets/packages/@patternfly/elements/","@patternfly/icons/":"/assets/packages/@patternfly/icons/","@patternfly/pfe-core/":"/assets/packages/@patternfly/pfe-core/"},"scopes":{"/assets/packages/":{"@lit/reactive-element/decorators/":"/assets/packages/@lit/reactive-element/decorators/","lit":"/assets/packages/@patternfly/elements/node_modules/lit/index.js","lit-element/lit-element.js":"/assets/packages/lit-element/lit-element.js","lit-html/":"/assets/packages/lit-html/","lit/":"/assets/packages/@patternfly/elements/node_modules/lit/"}}}</script>
   <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js"></script>
   
   <script type="module">
@@ -88,6 +88,8 @@
 <body id="top" class="page element-docs page-code-or-statistic" unresolved="">
   <div class="body-inner">
     
+<script type="module" src="/assets/elements/uxdot-copy-button.js"></script>
+
 <header id="main-header">
   <div class="logo-bar">
     <a href="/">
@@ -480,214 +482,402 @@ they will not block rendering.</p>
     </copy-permalink>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-stat</span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>statistic<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Statistic Placeholder<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">&gt;</span></span>Description Placeholder<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-stat</span><span class="token punctuation">&gt;</span></span></code></pre>
 </section>
+<style>
+  table.css-custom-properties code[data-color] {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  table.css-custom-properties code[data-color]:after {
+    content: '';
+    background: var(--color);
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 1rem;
+    inset-inline-end: -1rem;
+  }
+</style>
 <copy-permalink class="h2">
   <h2 id="rh-stat" tabindex="-1">
     <a class="heading-anchor" href="#rh-stat">rh-stat</a>
       </h2>
     </copy-permalink>
 <section class="api band slots api-properties">
-<copy-permalink class="h3">
-  <h3 id="slots" tabindex="-1">
+<copy-permalink class="h2">
+  <h2 id="slots" tabindex="-1">
     <a class="heading-anchor" href="#slots">Slots</a>
-      </h3>
+      </h2>
     </copy-permalink>
-  <dl> <dt><strong><code>icon</code></strong>
+  <dl>
+    <dt>
+<strong><code>icon</code></strong>
     </dt>
     <dd>
 <p>Optional icon</p>
-</dd> <dt><strong><code>title</code></strong>
-    </dt>
-    <dd>
+</dd>
+<p></p><dt>
+<strong><code>title</code></strong>
+</dt>
+<dd><p></p>
 <p>Statistic title</p>
-</dd> <dt><strong><code>statistic</code></strong>
-    </dt>
-    <dd>
+</dd>
+<p></p><dt>
+<strong><code>statistic</code></strong>
+</dt>
+<dd><p></p>
 <p>Statistic data</p>
-</dd> <dt><strong><code>cta</code></strong>
-    </dt>
-    <dd>
+</dd>
+<p></p><dt>
+<strong><code>cta</code></strong>
+</dt>
+<dd><p></p>
 <p>Call to action</p>
-</dd> <dt><strong>Default Slot</strong> 
-    </dt>
-    <dd>
+</dd>
+<p></p><dt>
+<strong>Default Slot</strong>
+</dt>
+<dd><p></p>
 <p>Description of the stat</p>
-</dd> 
-  </dl></section>
+</dd>
+  </dl>
+</section>
 <section class="band api attributes api-properties">
-<copy-permalink class="h3">
-  <h3 id="attributes" tabindex="-1">
+<copy-permalink class="h2">
+  <h2 id="attributes" tabindex="-1">
     <a class="heading-anchor" href="#attributes">Attributes</a>
-      </h3>
+      </h2>
     </copy-permalink>
-  <dl><dt><strong><code>icon</code></strong></dt>
+  <dl>
+    <dt><strong><code>icon</code></strong></dt>
     <dd>
 <p>The icon to display in the statistic</p>
-<dl class="member"><dt>DOM Property</dt> <dd><code>icon</code></dd><dt>Type</dt> <dd class="inline-type">
+<dl class="member">
+  <dt>DOM Property</dt>
+  <dd><code>icon</code></dd>
+  <dt>Type</dt>
+  <dd class="inline-type">
 <pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span> <span class="token operator">|</span> <span class="token keyword">undefined</span><br></code></pre>
 </dd>
-        <dt>Default</dt> <dd class="inline-type">
+  <dt>Default</dt>
+  <dd class="inline-type">
 <pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span><br></code></pre>
 </dd>
-      </dl>
-    </dd><dt><strong><code>top</code></strong></dt>
-    <dd>
+</dl>
+    </dd>
+<p></p><dt><strong><code>top</code></strong></dt>
+<dd><p></p>
 <p>Whether the title or statistic should be displayed on top in the statistic</p>
-<dl class="member"><dt>DOM Property</dt> <dd><code>top</code></dd><dt>Type</dt> <dd class="inline-type">
+<dl class="member">
+  <dt>DOM Property</dt>
+  <dd><code>top</code></dd>
+  <dt>Type</dt>
+  <dd class="inline-type">
 <pre class="language-ts"><code class="language-ts"><span class="token string">'default'</span> <span class="token operator">|</span> <span class="token string">'statistic'</span><br></code></pre>
 </dd>
-        <dt>Default</dt> <dd class="inline-type">
+  <dt>Default</dt>
+  <dd class="inline-type">
 <pre class="language-ts"><code class="language-ts"><span class="token string">'default'</span><br></code></pre>
 </dd>
-      </dl>
-    </dd><dt><strong><code>size</code></strong></dt>
-    <dd>
+</dl>
+    </dd>
+<p></p><dt><strong><code>size</code></strong></dt>
+<dd><p></p>
 <p>The size of the statistic</p>
-<dl class="member"><dt>DOM Property</dt> <dd><code>size</code></dd><dt>Type</dt> <dd class="inline-type">
+<dl class="member">
+  <dt>DOM Property</dt>
+  <dd><code>size</code></dd>
+  <dt>Type</dt>
+  <dd class="inline-type">
 <pre class="language-ts"><code class="language-ts"><span class="token string">'default'</span> <span class="token operator">|</span> <span class="token string">'large'</span><br></code></pre>
 </dd>
-        <dt>Default</dt> <dd class="inline-type">
+  <dt>Default</dt>
+  <dd class="inline-type">
 <pre class="language-ts"><code class="language-ts"><span class="token string">'default'</span><br></code></pre>
 </dd>
-      </dl>
-    </dd><dt><strong><code>is-mobile</code></strong></dt>
-    <dd>
+</dl>
+    </dd>
+<p></p><dt><strong><code>is-mobile</code></strong></dt>
+<dd><p></p>
 <p>Whether the statistic is in a mobile view or not for styling</p>
-<dl class="member"><dt>DOM Property</dt> <dd><code>isMobile</code></dd><dt>Type</dt> <dd class="inline-type">
+<dl class="member">
+  <dt>DOM Property</dt>
+  <dd><code>isMobile</code></dd>
+  <dt>Type</dt>
+  <dd class="inline-type">
 <pre class="language-ts"><code class="language-ts"><span class="token builtin">boolean</span><br></code></pre>
 </dd>
-        <dt>Default</dt> <dd class="inline-type">
+  <dt>Default</dt>
+  <dd class="inline-type">
 <pre class="language-ts"><code class="language-ts"><span class="token boolean">false</span><br></code></pre>
 </dd>
-      </dl>
-    </dd></dl></section>
+</dl>
+    </dd>
+  </dl>
+</section>
 <section class="api band methods api-properties">
-<copy-permalink class="h3">
-  <h3 id="methods" tabindex="-1">
+<copy-permalink class="h2">
+  <h2 id="methods" tabindex="-1">
     <a class="heading-anchor" href="#methods">Methods</a>
-      </h3>
+      </h2>
     </copy-permalink>
-<p><em>None</em> </p></section><p></p>
+<p><em>None</em></p>
+</section>
 <section class="api band events api-properties">
-<copy-permalink class="h3">
-  <h3 id="events" tabindex="-1">
+<copy-permalink class="h2">
+  <h2 id="events" tabindex="-1">
     <a class="heading-anchor" href="#events">Events</a>
-      </h3>
+      </h2>
     </copy-permalink>
-<p><em>None</em> </p></section><p></p>
+<p><em>None</em></p>
+</section>
 <section class="api band css-shadow-parts api-properties">
-<copy-permalink class="h3">
-  <h3 id="css-shadow-parts" tabindex="-1">
+<copy-permalink class="h2">
+  <h2 id="css-shadow-parts" tabindex="-1">
     <a class="heading-anchor" href="#css-shadow-parts">CSS Shadow Parts</a>
-      </h3>
+      </h2>
     </copy-permalink>
-<p><em>None</em></p></section><p></p>
+<p><em>None</em></p>
+</section>
 <section class="api band css-custom-properties api-properties">
-  <a id="styling-hooks"></a>
-<copy-permalink class="h3">
-  <h3 id="css-custom-properties" tabindex="-1">
+<copy-permalink class="h2">
+  <h2 id="css-custom-properties" tabindex="-1">
     <a class="heading-anchor" href="#css-custom-properties">CSS Custom Properties</a>
-      </h3>
+      </h2>
     </copy-permalink>
   <table class="css-custom-properties">
     <thead>
-      <tr>
-        <th style="text-align:left">CSS Property</th>
-        <th style="text-align:left">Description</th>
-        <th style="text-align:left">Default</th>
-      </tr>
+<tr>
+  <th style="text-align:left">CSS Property</th>
+  <th style="text-align:left">Description</th>
+  <th style="text-align:left">Default</th>
+</tr>
     </thead>
-    <tbody> <tr>
-        <td style="text-align:left"><code>--pf-icon--size</code></td>
-        <td style="text-align:left"></td>
-        <td style="text-align:left"><code>—</code></td>
-      </tr> <tr>
-        <td style="text-align:left"><code>--rh-color-icon-secondary-on-dark</code></td>
-        <td style="text-align:left"></td>
-        <td style="text-align:left"><code data-color="#ffffff" style="--color:#ffffff">#ffffff</code></td>
-      </tr> <tr>
-        <td style="text-align:left"><code>--rh-color-icon-secondary-on-light</code></td>
-        <td style="text-align:left"></td>
-        <td style="text-align:left"><code data-color="#151515" style="--color:#151515">#151515</code></td>
-      </tr> <tr>
-        <td style="text-align:left"><code>--rh-color-text-brand-on-light</code></td>
-        <td style="text-align:left">
-<p>Brand text color for light theme</p>
-</td>
-        <td style="text-align:left"><code data-color="#ee0000" style="--color:#ee0000">#ee0000</code></td>
-      </tr> <tr>
-        <td style="text-align:left"><code>--rh-color-text-primary-on-dark</code></td>
-        <td style="text-align:left">
-<p>Primary text color for dark theme</p>
-</td>
-        <td style="text-align:left"><code data-color="#ffffff" style="--color:#ffffff">#ffffff</code></td>
-      </tr> <tr>
-        <td style="text-align:left"><code>--rh-font-family-heading</code></td>
-        <td style="text-align:left">
-<p>Heading font family</p>
-</td>
-        <td style="text-align:left"><code>RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif</code></td>
-      </tr> <tr>
-        <td style="text-align:left"><code>--rh-font-size-body-text-lg</code></td>
-        <td style="text-align:left">
-<p>18px font size</p>
-</td>
-        <td style="text-align:left"><code>1.125rem</code></td>
-      </tr> <tr>
-        <td style="text-align:left"><code>--rh-font-size-body-text-xl</code></td>
-        <td style="text-align:left">
-<p>20px font size</p>
-</td>
-        <td style="text-align:left"><code>1.25rem</code></td>
-      </tr> <tr>
-        <td style="text-align:left"><code>--rh-font-size-heading-2xl</code></td>
-        <td style="text-align:left">
-<p>h1 heading font size</p>
-</td>
-        <td style="text-align:left"><code>3rem</code></td>
-      </tr> <tr>
-        <td style="text-align:left"><code>--rh-font-size-heading-lg</code></td>
-        <td style="text-align:left">
-<p>h3 heading font size</p>
-</td>
-        <td style="text-align:left"><code>2.25rem</code></td>
-      </tr> <tr>
-        <td style="text-align:left"><code>--rh-size-icon-04</code></td>
-        <td style="text-align:left">
-<p>40px icon box</p>
-</td>
-        <td style="text-align:left"><code>40px</code></td>
-      </tr> <tr>
-        <td style="text-align:left"><code>--rh-space-lg</code></td>
-        <td style="text-align:left">
-<p>16px spacer</p>
-</td>
-        <td style="text-align:left"><code>16px</code></td>
-      </tr> <tr>
-        <td style="text-align:left"><code>--rh-space-sm</code></td>
-        <td style="text-align:left">
-<p>6px spacer</p>
-</td>
-        <td style="text-align:left"><code>6px</code></td>
-      </tr> 
+    <tbody>
+<tr>
+  <td style="text-align:left"><code>--pf-icon--size</code></td>
+  <td style="text-align:left"></td>
+  <td style="text-align:left">
+    <code>
+—
+    </code>
+  </td>
+</tr>
     </tbody>
-  </table></section>
-<style>
-
-table.css-custom-properties code[data-color] {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-table.css-custom-properties code[data-color]:after {
-  content: '';
-  background: var(--color);
-  display: inline-block;
-  width: 1rem;
-  height: 1rem;
-  border-radius: 1rem;
-  inset-inline-end: -1rem;
-}
-</style>
+  </table>
+</section>
+<section class="api band design-tokens api-properties">
+<copy-permalink class="h2">
+  <h2 id="design-tokens" tabindex="-1">
+    <a class="heading-anchor" href="#design-tokens">Design Tokens</a>
+      </h2>
+    </copy-permalink>
+  <p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><table class="design-tokens">
+    <thead>
+<tr>
+  <th style="text-align:left">Token</th>
+  <th style="text-align:left">Copy</th>
+</tr>
+    </thead>
+    <tbody>
+<tr>
+  <td style="text-align:left">
+    <a href="https://ux.redhat.com/tokens/icon/#--rh-color-icon-secondary-on-dark"><code>--rh-color-icon-secondary-on-dark</code></a>
+  </td>
+<td class="copy-cell">
+<uxdot-copy-button copy="var(----rh-color-icon-secondary-on-dark, #ffffff)"></uxdot-copy-button>
+<uxdot-copy-button copy="https://ux.redhat.com/tokens/icon/#--rh-color-icon-secondary-on-dark">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+<path d="M172.5 131.1C228.1 75.51 320.5 75.51 376.1 131.1C426.1 181.1 433.5 260.8 392.4 318.3L391.3 319.9C381 334.2 361 337.6 346.7 327.3C332.3 317 328.9 297 339.2 282.7L340.3 281.1C363.2 249 359.6 205.1 331.7 177.2C300.3 145.8 249.2 145.8 217.7 177.2L105.5 289.5C73.99 320.1 73.99 372 105.5 403.5C133.3 431.4 177.3 435 209.3 412.1L210.9 410.1C225.3 400.7 245.3 404 255.5 418.4C265.8 432.8 262.5 452.8 248.1 463.1L246.5 464.2C188.1 505.3 110.2 498.7 60.21 448.8C3.741 392.3 3.741 300.7 60.21 244.3L172.5 131.1zM467.5 380C411 436.5 319.5 436.5 263 380C213 330 206.5 251.2 247.6 193.7L248.7 192.1C258.1 177.8 278.1 174.4 293.3 184.7C307.7 194.1 311.1 214.1 300.8 229.3L299.7 230.9C276.8 262.1 280.4 306.9 308.3 334.8C339.7 366.2 390.8 366.2 422.3 334.8L534.5 222.5C566 191 566 139.1 534.5 108.5C506.7 80.63 462.7 76.99 430.7 99.9L429.1 101C414.7 111.3 394.7 107.1 384.5 93.58C374.2 79.2 377.5 59.21 391.9 48.94L393.5 47.82C451 6.731 529.8 13.25 579.8 63.24C636.3 119.7 636.3 211.3 579.8 267.7L467.5 380z"></path>
+</svg>
+</uxdot-copy-button>
+</td>
+</tr>
+<tr>
+  <td style="text-align:left">
+    <a href="https://ux.redhat.com/tokens/icon/#--rh-color-icon-secondary-on-light"><code>--rh-color-icon-secondary-on-light</code></a>
+  </td>
+<td class="copy-cell">
+<uxdot-copy-button copy="var(----rh-color-icon-secondary-on-light, #151515)"></uxdot-copy-button>
+<uxdot-copy-button copy="https://ux.redhat.com/tokens/icon/#--rh-color-icon-secondary-on-light">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+<path d="M172.5 131.1C228.1 75.51 320.5 75.51 376.1 131.1C426.1 181.1 433.5 260.8 392.4 318.3L391.3 319.9C381 334.2 361 337.6 346.7 327.3C332.3 317 328.9 297 339.2 282.7L340.3 281.1C363.2 249 359.6 205.1 331.7 177.2C300.3 145.8 249.2 145.8 217.7 177.2L105.5 289.5C73.99 320.1 73.99 372 105.5 403.5C133.3 431.4 177.3 435 209.3 412.1L210.9 410.1C225.3 400.7 245.3 404 255.5 418.4C265.8 432.8 262.5 452.8 248.1 463.1L246.5 464.2C188.1 505.3 110.2 498.7 60.21 448.8C3.741 392.3 3.741 300.7 60.21 244.3L172.5 131.1zM467.5 380C411 436.5 319.5 436.5 263 380C213 330 206.5 251.2 247.6 193.7L248.7 192.1C258.1 177.8 278.1 174.4 293.3 184.7C307.7 194.1 311.1 214.1 300.8 229.3L299.7 230.9C276.8 262.1 280.4 306.9 308.3 334.8C339.7 366.2 390.8 366.2 422.3 334.8L534.5 222.5C566 191 566 139.1 534.5 108.5C506.7 80.63 462.7 76.99 430.7 99.9L429.1 101C414.7 111.3 394.7 107.1 384.5 93.58C374.2 79.2 377.5 59.21 391.9 48.94L393.5 47.82C451 6.731 529.8 13.25 579.8 63.24C636.3 119.7 636.3 211.3 579.8 267.7L467.5 380z"></path>
+</svg>
+</uxdot-copy-button>
+</td>
+</tr>
+<tr>
+  <td style="text-align:left">
+    <a href="https://ux.redhat.com/tokens/typography/#--rh-color-text-brand-on-light"><code>--rh-color-text-brand-on-light</code></a>
+  </td>
+<td class="copy-cell">
+<uxdot-copy-button copy="var(----rh-color-text-brand-on-light, #ee0000)"></uxdot-copy-button>
+<uxdot-copy-button copy="https://ux.redhat.com/tokens/typography/#--rh-color-text-brand-on-light">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+<path d="M172.5 131.1C228.1 75.51 320.5 75.51 376.1 131.1C426.1 181.1 433.5 260.8 392.4 318.3L391.3 319.9C381 334.2 361 337.6 346.7 327.3C332.3 317 328.9 297 339.2 282.7L340.3 281.1C363.2 249 359.6 205.1 331.7 177.2C300.3 145.8 249.2 145.8 217.7 177.2L105.5 289.5C73.99 320.1 73.99 372 105.5 403.5C133.3 431.4 177.3 435 209.3 412.1L210.9 410.1C225.3 400.7 245.3 404 255.5 418.4C265.8 432.8 262.5 452.8 248.1 463.1L246.5 464.2C188.1 505.3 110.2 498.7 60.21 448.8C3.741 392.3 3.741 300.7 60.21 244.3L172.5 131.1zM467.5 380C411 436.5 319.5 436.5 263 380C213 330 206.5 251.2 247.6 193.7L248.7 192.1C258.1 177.8 278.1 174.4 293.3 184.7C307.7 194.1 311.1 214.1 300.8 229.3L299.7 230.9C276.8 262.1 280.4 306.9 308.3 334.8C339.7 366.2 390.8 366.2 422.3 334.8L534.5 222.5C566 191 566 139.1 534.5 108.5C506.7 80.63 462.7 76.99 430.7 99.9L429.1 101C414.7 111.3 394.7 107.1 384.5 93.58C374.2 79.2 377.5 59.21 391.9 48.94L393.5 47.82C451 6.731 529.8 13.25 579.8 63.24C636.3 119.7 636.3 211.3 579.8 267.7L467.5 380z"></path>
+</svg>
+</uxdot-copy-button>
+</td>
+</tr>
+<tr>
+  <td style="text-align:left">
+    <a href="https://ux.redhat.com/tokens/typography/#--rh-color-text-primary-on-dark"><code>--rh-color-text-primary-on-dark</code></a>
+  </td>
+<td class="copy-cell">
+<uxdot-copy-button copy="var(----rh-color-text-primary-on-dark, #ffffff)"></uxdot-copy-button>
+<uxdot-copy-button copy="https://ux.redhat.com/tokens/typography/#--rh-color-text-primary-on-dark">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+<path d="M172.5 131.1C228.1 75.51 320.5 75.51 376.1 131.1C426.1 181.1 433.5 260.8 392.4 318.3L391.3 319.9C381 334.2 361 337.6 346.7 327.3C332.3 317 328.9 297 339.2 282.7L340.3 281.1C363.2 249 359.6 205.1 331.7 177.2C300.3 145.8 249.2 145.8 217.7 177.2L105.5 289.5C73.99 320.1 73.99 372 105.5 403.5C133.3 431.4 177.3 435 209.3 412.1L210.9 410.1C225.3 400.7 245.3 404 255.5 418.4C265.8 432.8 262.5 452.8 248.1 463.1L246.5 464.2C188.1 505.3 110.2 498.7 60.21 448.8C3.741 392.3 3.741 300.7 60.21 244.3L172.5 131.1zM467.5 380C411 436.5 319.5 436.5 263 380C213 330 206.5 251.2 247.6 193.7L248.7 192.1C258.1 177.8 278.1 174.4 293.3 184.7C307.7 194.1 311.1 214.1 300.8 229.3L299.7 230.9C276.8 262.1 280.4 306.9 308.3 334.8C339.7 366.2 390.8 366.2 422.3 334.8L534.5 222.5C566 191 566 139.1 534.5 108.5C506.7 80.63 462.7 76.99 430.7 99.9L429.1 101C414.7 111.3 394.7 107.1 384.5 93.58C374.2 79.2 377.5 59.21 391.9 48.94L393.5 47.82C451 6.731 529.8 13.25 579.8 63.24C636.3 119.7 636.3 211.3 579.8 267.7L467.5 380z"></path>
+</svg>
+</uxdot-copy-button>
+</td>
+</tr>
+<tr>
+  <td style="text-align:left">
+    <a href="https://ux.redhat.com/tokens/typography/#--rh-font-family-body-text"><code>--rh-font-family-body-text</code></a>
+  </td>
+<td class="copy-cell">
+<uxdot-copy-button copy="var(----rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif)"></uxdot-copy-button>
+<uxdot-copy-button copy="https://ux.redhat.com/tokens/typography/#--rh-font-family-body-text">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+<path d="M172.5 131.1C228.1 75.51 320.5 75.51 376.1 131.1C426.1 181.1 433.5 260.8 392.4 318.3L391.3 319.9C381 334.2 361 337.6 346.7 327.3C332.3 317 328.9 297 339.2 282.7L340.3 281.1C363.2 249 359.6 205.1 331.7 177.2C300.3 145.8 249.2 145.8 217.7 177.2L105.5 289.5C73.99 320.1 73.99 372 105.5 403.5C133.3 431.4 177.3 435 209.3 412.1L210.9 410.1C225.3 400.7 245.3 404 255.5 418.4C265.8 432.8 262.5 452.8 248.1 463.1L246.5 464.2C188.1 505.3 110.2 498.7 60.21 448.8C3.741 392.3 3.741 300.7 60.21 244.3L172.5 131.1zM467.5 380C411 436.5 319.5 436.5 263 380C213 330 206.5 251.2 247.6 193.7L248.7 192.1C258.1 177.8 278.1 174.4 293.3 184.7C307.7 194.1 311.1 214.1 300.8 229.3L299.7 230.9C276.8 262.1 280.4 306.9 308.3 334.8C339.7 366.2 390.8 366.2 422.3 334.8L534.5 222.5C566 191 566 139.1 534.5 108.5C506.7 80.63 462.7 76.99 430.7 99.9L429.1 101C414.7 111.3 394.7 107.1 384.5 93.58C374.2 79.2 377.5 59.21 391.9 48.94L393.5 47.82C451 6.731 529.8 13.25 579.8 63.24C636.3 119.7 636.3 211.3 579.8 267.7L467.5 380z"></path>
+</svg>
+</uxdot-copy-button>
+</td>
+</tr>
+<tr>
+  <td style="text-align:left">
+    <a href="https://ux.redhat.com/tokens/typography/#--rh-font-family-heading"><code>--rh-font-family-heading</code></a>
+  </td>
+<td class="copy-cell">
+<uxdot-copy-button copy="var(----rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif)"></uxdot-copy-button>
+<uxdot-copy-button copy="https://ux.redhat.com/tokens/typography/#--rh-font-family-heading">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+<path d="M172.5 131.1C228.1 75.51 320.5 75.51 376.1 131.1C426.1 181.1 433.5 260.8 392.4 318.3L391.3 319.9C381 334.2 361 337.6 346.7 327.3C332.3 317 328.9 297 339.2 282.7L340.3 281.1C363.2 249 359.6 205.1 331.7 177.2C300.3 145.8 249.2 145.8 217.7 177.2L105.5 289.5C73.99 320.1 73.99 372 105.5 403.5C133.3 431.4 177.3 435 209.3 412.1L210.9 410.1C225.3 400.7 245.3 404 255.5 418.4C265.8 432.8 262.5 452.8 248.1 463.1L246.5 464.2C188.1 505.3 110.2 498.7 60.21 448.8C3.741 392.3 3.741 300.7 60.21 244.3L172.5 131.1zM467.5 380C411 436.5 319.5 436.5 263 380C213 330 206.5 251.2 247.6 193.7L248.7 192.1C258.1 177.8 278.1 174.4 293.3 184.7C307.7 194.1 311.1 214.1 300.8 229.3L299.7 230.9C276.8 262.1 280.4 306.9 308.3 334.8C339.7 366.2 390.8 366.2 422.3 334.8L534.5 222.5C566 191 566 139.1 534.5 108.5C506.7 80.63 462.7 76.99 430.7 99.9L429.1 101C414.7 111.3 394.7 107.1 384.5 93.58C374.2 79.2 377.5 59.21 391.9 48.94L393.5 47.82C451 6.731 529.8 13.25 579.8 63.24C636.3 119.7 636.3 211.3 579.8 267.7L467.5 380z"></path>
+</svg>
+</uxdot-copy-button>
+</td>
+</tr>
+<tr>
+  <td style="text-align:left">
+    <a href="https://ux.redhat.com/tokens/typography/#--rh-font-size-body-text-lg"><code>--rh-font-size-body-text-lg</code></a>
+  </td>
+<td class="copy-cell">
+<uxdot-copy-button copy="var(----rh-font-size-body-text-lg, 1.125rem)"></uxdot-copy-button>
+<uxdot-copy-button copy="https://ux.redhat.com/tokens/typography/#--rh-font-size-body-text-lg">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+<path d="M172.5 131.1C228.1 75.51 320.5 75.51 376.1 131.1C426.1 181.1 433.5 260.8 392.4 318.3L391.3 319.9C381 334.2 361 337.6 346.7 327.3C332.3 317 328.9 297 339.2 282.7L340.3 281.1C363.2 249 359.6 205.1 331.7 177.2C300.3 145.8 249.2 145.8 217.7 177.2L105.5 289.5C73.99 320.1 73.99 372 105.5 403.5C133.3 431.4 177.3 435 209.3 412.1L210.9 410.1C225.3 400.7 245.3 404 255.5 418.4C265.8 432.8 262.5 452.8 248.1 463.1L246.5 464.2C188.1 505.3 110.2 498.7 60.21 448.8C3.741 392.3 3.741 300.7 60.21 244.3L172.5 131.1zM467.5 380C411 436.5 319.5 436.5 263 380C213 330 206.5 251.2 247.6 193.7L248.7 192.1C258.1 177.8 278.1 174.4 293.3 184.7C307.7 194.1 311.1 214.1 300.8 229.3L299.7 230.9C276.8 262.1 280.4 306.9 308.3 334.8C339.7 366.2 390.8 366.2 422.3 334.8L534.5 222.5C566 191 566 139.1 534.5 108.5C506.7 80.63 462.7 76.99 430.7 99.9L429.1 101C414.7 111.3 394.7 107.1 384.5 93.58C374.2 79.2 377.5 59.21 391.9 48.94L393.5 47.82C451 6.731 529.8 13.25 579.8 63.24C636.3 119.7 636.3 211.3 579.8 267.7L467.5 380z"></path>
+</svg>
+</uxdot-copy-button>
+</td>
+</tr>
+<tr>
+  <td style="text-align:left">
+    <a href="https://ux.redhat.com/tokens/typography/#--rh-font-size-body-text-xl"><code>--rh-font-size-body-text-xl</code></a>
+  </td>
+<td class="copy-cell">
+<uxdot-copy-button copy="var(----rh-font-size-body-text-xl, 1.25rem)"></uxdot-copy-button>
+<uxdot-copy-button copy="https://ux.redhat.com/tokens/typography/#--rh-font-size-body-text-xl">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+<path d="M172.5 131.1C228.1 75.51 320.5 75.51 376.1 131.1C426.1 181.1 433.5 260.8 392.4 318.3L391.3 319.9C381 334.2 361 337.6 346.7 327.3C332.3 317 328.9 297 339.2 282.7L340.3 281.1C363.2 249 359.6 205.1 331.7 177.2C300.3 145.8 249.2 145.8 217.7 177.2L105.5 289.5C73.99 320.1 73.99 372 105.5 403.5C133.3 431.4 177.3 435 209.3 412.1L210.9 410.1C225.3 400.7 245.3 404 255.5 418.4C265.8 432.8 262.5 452.8 248.1 463.1L246.5 464.2C188.1 505.3 110.2 498.7 60.21 448.8C3.741 392.3 3.741 300.7 60.21 244.3L172.5 131.1zM467.5 380C411 436.5 319.5 436.5 263 380C213 330 206.5 251.2 247.6 193.7L248.7 192.1C258.1 177.8 278.1 174.4 293.3 184.7C307.7 194.1 311.1 214.1 300.8 229.3L299.7 230.9C276.8 262.1 280.4 306.9 308.3 334.8C339.7 366.2 390.8 366.2 422.3 334.8L534.5 222.5C566 191 566 139.1 534.5 108.5C506.7 80.63 462.7 76.99 430.7 99.9L429.1 101C414.7 111.3 394.7 107.1 384.5 93.58C374.2 79.2 377.5 59.21 391.9 48.94L393.5 47.82C451 6.731 529.8 13.25 579.8 63.24C636.3 119.7 636.3 211.3 579.8 267.7L467.5 380z"></path>
+</svg>
+</uxdot-copy-button>
+</td>
+</tr>
+<tr>
+  <td style="text-align:left">
+    <a href="https://ux.redhat.com/tokens/typography/#--rh-font-size-heading-2xl"><code>--rh-font-size-heading-2xl</code></a>
+  </td>
+<td class="copy-cell">
+<uxdot-copy-button copy="var(----rh-font-size-heading-2xl, 3rem)"></uxdot-copy-button>
+<uxdot-copy-button copy="https://ux.redhat.com/tokens/typography/#--rh-font-size-heading-2xl">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+<path d="M172.5 131.1C228.1 75.51 320.5 75.51 376.1 131.1C426.1 181.1 433.5 260.8 392.4 318.3L391.3 319.9C381 334.2 361 337.6 346.7 327.3C332.3 317 328.9 297 339.2 282.7L340.3 281.1C363.2 249 359.6 205.1 331.7 177.2C300.3 145.8 249.2 145.8 217.7 177.2L105.5 289.5C73.99 320.1 73.99 372 105.5 403.5C133.3 431.4 177.3 435 209.3 412.1L210.9 410.1C225.3 400.7 245.3 404 255.5 418.4C265.8 432.8 262.5 452.8 248.1 463.1L246.5 464.2C188.1 505.3 110.2 498.7 60.21 448.8C3.741 392.3 3.741 300.7 60.21 244.3L172.5 131.1zM467.5 380C411 436.5 319.5 436.5 263 380C213 330 206.5 251.2 247.6 193.7L248.7 192.1C258.1 177.8 278.1 174.4 293.3 184.7C307.7 194.1 311.1 214.1 300.8 229.3L299.7 230.9C276.8 262.1 280.4 306.9 308.3 334.8C339.7 366.2 390.8 366.2 422.3 334.8L534.5 222.5C566 191 566 139.1 534.5 108.5C506.7 80.63 462.7 76.99 430.7 99.9L429.1 101C414.7 111.3 394.7 107.1 384.5 93.58C374.2 79.2 377.5 59.21 391.9 48.94L393.5 47.82C451 6.731 529.8 13.25 579.8 63.24C636.3 119.7 636.3 211.3 579.8 267.7L467.5 380z"></path>
+</svg>
+</uxdot-copy-button>
+</td>
+</tr>
+<tr>
+  <td style="text-align:left">
+    <a href="https://ux.redhat.com/tokens/typography/#--rh-font-size-heading-lg"><code>--rh-font-size-heading-lg</code></a>
+  </td>
+<td class="copy-cell">
+<uxdot-copy-button copy="var(----rh-font-size-heading-lg, 2.25rem)"></uxdot-copy-button>
+<uxdot-copy-button copy="https://ux.redhat.com/tokens/typography/#--rh-font-size-heading-lg">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+<path d="M172.5 131.1C228.1 75.51 320.5 75.51 376.1 131.1C426.1 181.1 433.5 260.8 392.4 318.3L391.3 319.9C381 334.2 361 337.6 346.7 327.3C332.3 317 328.9 297 339.2 282.7L340.3 281.1C363.2 249 359.6 205.1 331.7 177.2C300.3 145.8 249.2 145.8 217.7 177.2L105.5 289.5C73.99 320.1 73.99 372 105.5 403.5C133.3 431.4 177.3 435 209.3 412.1L210.9 410.1C225.3 400.7 245.3 404 255.5 418.4C265.8 432.8 262.5 452.8 248.1 463.1L246.5 464.2C188.1 505.3 110.2 498.7 60.21 448.8C3.741 392.3 3.741 300.7 60.21 244.3L172.5 131.1zM467.5 380C411 436.5 319.5 436.5 263 380C213 330 206.5 251.2 247.6 193.7L248.7 192.1C258.1 177.8 278.1 174.4 293.3 184.7C307.7 194.1 311.1 214.1 300.8 229.3L299.7 230.9C276.8 262.1 280.4 306.9 308.3 334.8C339.7 366.2 390.8 366.2 422.3 334.8L534.5 222.5C566 191 566 139.1 534.5 108.5C506.7 80.63 462.7 76.99 430.7 99.9L429.1 101C414.7 111.3 394.7 107.1 384.5 93.58C374.2 79.2 377.5 59.21 391.9 48.94L393.5 47.82C451 6.731 529.8 13.25 579.8 63.24C636.3 119.7 636.3 211.3 579.8 267.7L467.5 380z"></path>
+</svg>
+</uxdot-copy-button>
+</td>
+</tr>
+<tr>
+  <td style="text-align:left">
+    <a href="https://ux.redhat.com/tokens/typography/#--rh-font-weight-body-text-regular"><code>--rh-font-weight-body-text-regular</code></a>
+  </td>
+<td class="copy-cell">
+<uxdot-copy-button copy="var(----rh-font-weight-body-text-regular, 400)"></uxdot-copy-button>
+<uxdot-copy-button copy="https://ux.redhat.com/tokens/typography/#--rh-font-weight-body-text-regular">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+<path d="M172.5 131.1C228.1 75.51 320.5 75.51 376.1 131.1C426.1 181.1 433.5 260.8 392.4 318.3L391.3 319.9C381 334.2 361 337.6 346.7 327.3C332.3 317 328.9 297 339.2 282.7L340.3 281.1C363.2 249 359.6 205.1 331.7 177.2C300.3 145.8 249.2 145.8 217.7 177.2L105.5 289.5C73.99 320.1 73.99 372 105.5 403.5C133.3 431.4 177.3 435 209.3 412.1L210.9 410.1C225.3 400.7 245.3 404 255.5 418.4C265.8 432.8 262.5 452.8 248.1 463.1L246.5 464.2C188.1 505.3 110.2 498.7 60.21 448.8C3.741 392.3 3.741 300.7 60.21 244.3L172.5 131.1zM467.5 380C411 436.5 319.5 436.5 263 380C213 330 206.5 251.2 247.6 193.7L248.7 192.1C258.1 177.8 278.1 174.4 293.3 184.7C307.7 194.1 311.1 214.1 300.8 229.3L299.7 230.9C276.8 262.1 280.4 306.9 308.3 334.8C339.7 366.2 390.8 366.2 422.3 334.8L534.5 222.5C566 191 566 139.1 534.5 108.5C506.7 80.63 462.7 76.99 430.7 99.9L429.1 101C414.7 111.3 394.7 107.1 384.5 93.58C374.2 79.2 377.5 59.21 391.9 48.94L393.5 47.82C451 6.731 529.8 13.25 579.8 63.24C636.3 119.7 636.3 211.3 579.8 267.7L467.5 380z"></path>
+</svg>
+</uxdot-copy-button>
+</td>
+</tr>
+<tr>
+  <td style="text-align:left">
+    <a href="https://ux.redhat.com/tokens/typography/#--rh-font-weight-heading-regular"><code>--rh-font-weight-heading-regular</code></a>
+  </td>
+<td class="copy-cell">
+<uxdot-copy-button copy="var(----rh-font-weight-heading-regular, 300)"></uxdot-copy-button>
+<uxdot-copy-button copy="https://ux.redhat.com/tokens/typography/#--rh-font-weight-heading-regular">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+<path d="M172.5 131.1C228.1 75.51 320.5 75.51 376.1 131.1C426.1 181.1 433.5 260.8 392.4 318.3L391.3 319.9C381 334.2 361 337.6 346.7 327.3C332.3 317 328.9 297 339.2 282.7L340.3 281.1C363.2 249 359.6 205.1 331.7 177.2C300.3 145.8 249.2 145.8 217.7 177.2L105.5 289.5C73.99 320.1 73.99 372 105.5 403.5C133.3 431.4 177.3 435 209.3 412.1L210.9 410.1C225.3 400.7 245.3 404 255.5 418.4C265.8 432.8 262.5 452.8 248.1 463.1L246.5 464.2C188.1 505.3 110.2 498.7 60.21 448.8C3.741 392.3 3.741 300.7 60.21 244.3L172.5 131.1zM467.5 380C411 436.5 319.5 436.5 263 380C213 330 206.5 251.2 247.6 193.7L248.7 192.1C258.1 177.8 278.1 174.4 293.3 184.7C307.7 194.1 311.1 214.1 300.8 229.3L299.7 230.9C276.8 262.1 280.4 306.9 308.3 334.8C339.7 366.2 390.8 366.2 422.3 334.8L534.5 222.5C566 191 566 139.1 534.5 108.5C506.7 80.63 462.7 76.99 430.7 99.9L429.1 101C414.7 111.3 394.7 107.1 384.5 93.58C374.2 79.2 377.5 59.21 391.9 48.94L393.5 47.82C451 6.731 529.8 13.25 579.8 63.24C636.3 119.7 636.3 211.3 579.8 267.7L467.5 380z"></path>
+</svg>
+</uxdot-copy-button>
+</td>
+</tr>
+<tr>
+  <td style="text-align:left">
+    <a href="https://ux.redhat.com/tokens/icon/#--rh-size-icon-04"><code>--rh-size-icon-04</code></a>
+  </td>
+<td class="copy-cell">
+<uxdot-copy-button copy="var(----rh-size-icon-04, 40px)"></uxdot-copy-button>
+<uxdot-copy-button copy="https://ux.redhat.com/tokens/icon/#--rh-size-icon-04">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+<path d="M172.5 131.1C228.1 75.51 320.5 75.51 376.1 131.1C426.1 181.1 433.5 260.8 392.4 318.3L391.3 319.9C381 334.2 361 337.6 346.7 327.3C332.3 317 328.9 297 339.2 282.7L340.3 281.1C363.2 249 359.6 205.1 331.7 177.2C300.3 145.8 249.2 145.8 217.7 177.2L105.5 289.5C73.99 320.1 73.99 372 105.5 403.5C133.3 431.4 177.3 435 209.3 412.1L210.9 410.1C225.3 400.7 245.3 404 255.5 418.4C265.8 432.8 262.5 452.8 248.1 463.1L246.5 464.2C188.1 505.3 110.2 498.7 60.21 448.8C3.741 392.3 3.741 300.7 60.21 244.3L172.5 131.1zM467.5 380C411 436.5 319.5 436.5 263 380C213 330 206.5 251.2 247.6 193.7L248.7 192.1C258.1 177.8 278.1 174.4 293.3 184.7C307.7 194.1 311.1 214.1 300.8 229.3L299.7 230.9C276.8 262.1 280.4 306.9 308.3 334.8C339.7 366.2 390.8 366.2 422.3 334.8L534.5 222.5C566 191 566 139.1 534.5 108.5C506.7 80.63 462.7 76.99 430.7 99.9L429.1 101C414.7 111.3 394.7 107.1 384.5 93.58C374.2 79.2 377.5 59.21 391.9 48.94L393.5 47.82C451 6.731 529.8 13.25 579.8 63.24C636.3 119.7 636.3 211.3 579.8 267.7L467.5 380z"></path>
+</svg>
+</uxdot-copy-button>
+</td>
+</tr>
+<tr>
+  <td style="text-align:left">
+    <a href="https://ux.redhat.com/tokens/space/#--rh-space-lg"><code>--rh-space-lg</code></a>
+  </td>
+<td class="copy-cell">
+<uxdot-copy-button copy="var(----rh-space-lg, 16px)"></uxdot-copy-button>
+<uxdot-copy-button copy="https://ux.redhat.com/tokens/space/#--rh-space-lg">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+<path d="M172.5 131.1C228.1 75.51 320.5 75.51 376.1 131.1C426.1 181.1 433.5 260.8 392.4 318.3L391.3 319.9C381 334.2 361 337.6 346.7 327.3C332.3 317 328.9 297 339.2 282.7L340.3 281.1C363.2 249 359.6 205.1 331.7 177.2C300.3 145.8 249.2 145.8 217.7 177.2L105.5 289.5C73.99 320.1 73.99 372 105.5 403.5C133.3 431.4 177.3 435 209.3 412.1L210.9 410.1C225.3 400.7 245.3 404 255.5 418.4C265.8 432.8 262.5 452.8 248.1 463.1L246.5 464.2C188.1 505.3 110.2 498.7 60.21 448.8C3.741 392.3 3.741 300.7 60.21 244.3L172.5 131.1zM467.5 380C411 436.5 319.5 436.5 263 380C213 330 206.5 251.2 247.6 193.7L248.7 192.1C258.1 177.8 278.1 174.4 293.3 184.7C307.7 194.1 311.1 214.1 300.8 229.3L299.7 230.9C276.8 262.1 280.4 306.9 308.3 334.8C339.7 366.2 390.8 366.2 422.3 334.8L534.5 222.5C566 191 566 139.1 534.5 108.5C506.7 80.63 462.7 76.99 430.7 99.9L429.1 101C414.7 111.3 394.7 107.1 384.5 93.58C374.2 79.2 377.5 59.21 391.9 48.94L393.5 47.82C451 6.731 529.8 13.25 579.8 63.24C636.3 119.7 636.3 211.3 579.8 267.7L467.5 380z"></path>
+</svg>
+</uxdot-copy-button>
+</td>
+</tr>
+<tr>
+  <td style="text-align:left">
+    <a href="https://ux.redhat.com/tokens/space/#--rh-space-sm"><code>--rh-space-sm</code></a>
+  </td>
+<td class="copy-cell">
+<uxdot-copy-button copy="var(----rh-space-sm, 6px)"></uxdot-copy-button>
+<uxdot-copy-button copy="https://ux.redhat.com/tokens/space/#--rh-space-sm">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+<path d="M172.5 131.1C228.1 75.51 320.5 75.51 376.1 131.1C426.1 181.1 433.5 260.8 392.4 318.3L391.3 319.9C381 334.2 361 337.6 346.7 327.3C332.3 317 328.9 297 339.2 282.7L340.3 281.1C363.2 249 359.6 205.1 331.7 177.2C300.3 145.8 249.2 145.8 217.7 177.2L105.5 289.5C73.99 320.1 73.99 372 105.5 403.5C133.3 431.4 177.3 435 209.3 412.1L210.9 410.1C225.3 400.7 245.3 404 255.5 418.4C265.8 432.8 262.5 452.8 248.1 463.1L246.5 464.2C188.1 505.3 110.2 498.7 60.21 448.8C3.741 392.3 3.741 300.7 60.21 244.3L172.5 131.1zM467.5 380C411 436.5 319.5 436.5 263 380C213 330 206.5 251.2 247.6 193.7L248.7 192.1C258.1 177.8 278.1 174.4 293.3 184.7C307.7 194.1 311.1 214.1 300.8 229.3L299.7 230.9C276.8 262.1 280.4 306.9 308.3 334.8C339.7 366.2 390.8 366.2 422.3 334.8L534.5 222.5C566 191 566 139.1 534.5 108.5C506.7 80.63 462.7 76.99 430.7 99.9L429.1 101C414.7 111.3 394.7 107.1 384.5 93.58C374.2 79.2 377.5 59.21 391.9 48.94L393.5 47.82C451 6.731 529.8 13.25 579.8 63.24C636.3 119.7 636.3 211.3 579.8 267.7L467.5 380z"></path>
+</svg>
+</uxdot-copy-button>
+</td>
+</tr>
+    </tbody>
+  </table>
+</section>
 
         
 

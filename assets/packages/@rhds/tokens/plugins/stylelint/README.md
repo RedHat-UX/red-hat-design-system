@@ -11,7 +11,7 @@ plugins:
 # Make sure to activate the rule:
 rules:
   rhds/token-values: true
-  rhds/no-unknown-token-value: true
+  rhds/no-unknown-token-name: true
 ```
 
 Be sure to configure your editor to fix stylelint issues on save:
@@ -25,7 +25,7 @@ Validates that the fallback values for tokens correspond with the values
 specified in the token sources. Automatically fixed incorrect values. This rule 
 has no options.
 
-### `no-unknown-token-value`
+### `no-unknown-token-name`
 Validates CSS Custom Property names beginning with `--rh` are legit token names. 
 
 #### Options
@@ -34,9 +34,9 @@ specified names, it will automatically replace it with the new one.
 
 ```yaml
 rules:
-  rhds/no-unknown-token-value:
+  rhds/no-unknown-token-name:
     - true
     - migrations:
-      # instances of black-900 will be replaced with gray-90
-      --rh-color-black-900: --rh-color-gray-90
+      # instances of gray-90 will be replaced with gray-95
+      --rh-color-gray-90: --rh-color-gray-95
 ```

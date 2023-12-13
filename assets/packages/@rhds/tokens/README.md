@@ -46,7 +46,9 @@ import { ColorBlue300 } from '@rhds/tokens/values.js';
 
 html`<span style="color: ${ColorBlue300}">I'm blue</span>`;
 ```
-**NOTE**: We *strongly* recommend using CSS variables (and accompanying snippets)
+> :warning: **NOTE**
+>
+> We *strongly* recommend using CSS variables (and accompanying snippets)
 wherever, instead of importing tokens as JavaScript objects.
 
 ### Stylelint Plugin
