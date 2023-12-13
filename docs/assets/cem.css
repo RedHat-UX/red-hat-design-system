@@ -59,7 +59,6 @@
   word-break: break-word;
 }
 
-
 .api dl.member {
   display: grid;
   grid-auto-flow: column;
