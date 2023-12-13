@@ -87,9 +87,13 @@ function copyCell(token) {
 }
 
 function getTokenCategorySlug(token) {
-  const t = require('@rhds/tokens/meta.js').tokens.get(`--${token.name}`.replace('----', '--'));
-  if (!t?.attributes) { console.log(token.name, t); }
-  return t?.attributes?.category;
+  const name = `--${token.name}`.replace('----', '--');
+  const data = require('@rhds/tokens/meta.js').tokens.get(name);
+  if (!data) {
+    throw new Error(`Could not find token ${name}`);
+  } else {
+    return data?.attributes?.category;
+  }
 }
 
 function getTokenHref(token) {
