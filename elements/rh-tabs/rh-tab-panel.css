@@ -7,7 +7,7 @@
   padding-inline: var(--_panels-overflow-padding, var(--rh-space-4xl, 64px));
 }
 
-[hidden] {
+:host([hidden]) {
   display: none !important;
 }
 
