@@ -1,3 +1,4 @@
+// @ts-check
 const { join } = require('node:path');
 const { readFile } = require('node:fs/promises');
 const tokenCategories = require('./tokenCategories.json');
@@ -64,8 +65,11 @@ function getDescription(collection, options) {
   }
 }
 
+/** @typedef {ReturnType<import('@rhds/tokens/js/meta.js')['tokens']['get']>} DesignToken */
+/** @typedef {import('custom-elements-manifest').CssCustomProperty} CssCustomProperty */
+/** @param {DesignToken|CssCustomProperty} token*/
 function getVariableSyntax(token) {
-  return `var(--${token.name}, ${escapeDoubleQuotes(token.$value)})`;
+  return `var(--${token.name}, ${escapeDoubleQuotes(token.$value ?? token.default)})`;
 }
 
 function copyCell(token) {
