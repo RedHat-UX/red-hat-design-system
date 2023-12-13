@@ -14,9 +14,16 @@ export class UxdotSample extends LitElement {
   };
 
   createRenderRoot() {
-    return this.shadowRoot ?? this.attachShadow({ mode: 'open' });
+    const template = this.querySelector('template[shadowrootmode]');
+    if (!template) {
+      return this.shadowRoot;
+    } else {
+      const mode = template.getAttribute('shadowrootmode');
+      this.attachShadow({ mode }).appendChild(template.content);
+      template.remove();
+      return this.shadowRoot;
+    }
   }
-}
 
-await new Promise(requestIdleCallback);
-customElements.define(UxdotSample.is, UxdotSample);
+  static { customElements.define(this.is, this); }
+}

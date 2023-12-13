@@ -59,7 +59,6 @@ module.exports = function(eleventyConfig) {
       border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle-on-light);
       gap: var(--rh-space-md);
       grid-template-columns: repeat(var(--columns), 1fr);
-      grid-template-rows: repeat(auto-fill, minmax(1px, 1fr));
       :host(.dont) & {
         border-color: var(--rh-color-red-500);
       }
