@@ -304,10 +304,10 @@ tr:is(:hover, :focus-within).on-dark .copy-cell uxdot-copy-button {
   display: block;
 }
 
-.language-html .hljs-tag { color: var(--rh-color-blue-500, #004080); }
+.language-html .hljs-tag { color: var(--rh-color-blue-60, #004d99); }
 .language-html .hljs-name { color: var(--rh-color-brand-red-dark, #a60000); }
-.language-html .hljs-attr { color: var(--rh-color-orange-300, #ec7a08); }
-.language-html .hljs-string { color: var(--rh-color-green-500, #3e8635); }
+.language-html .hljs-attr { color: var(--rh-color-orange-40, #f5921b); }
+.language-html .hljs-string { color: var(--rh-color-green-60, #3d7317); }
 
 code[class^="language-"] {
   max-width: 100%;

@@ -1,7 +1,7 @@
 :host {
   --_background-color: var(--rh-color-teal-10, #daf2f2);
   --_border-color: var(--rh-color-teal-50, #37a3a3);
-  --_header-color: var(--rh-color-cyan-500, #003737);
+  --_header-color: var(--rh-color-teal-70, #004d4d);
   --_icon-color: var(--rh-color-teal-50, #37a3a3);
   --_font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
 

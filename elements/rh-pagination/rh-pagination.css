@@ -88,11 +88,11 @@ input:focus {
 }
 
 input:invalid {
-  border-block-end: 1px solid var(--rh-color-red-700, #8f0000);
+  border-block-end: 1px solid var(--rh-color-red-60, #a60000);
 }
 
 :host([on="dark"]) input:invalid {
-  border-block-end: 1px solid var(--rh-color-red-300, #f56d6d);
+  border-block-end: 1px solid var(--rh-color-red-40, #f56e6e);
 }
 
 #numeric a {
