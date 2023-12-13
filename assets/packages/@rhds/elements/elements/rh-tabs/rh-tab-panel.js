@@ -6,7 +6,7 @@ import { classMap } from 'lit/directives/class-map.js';
 import { BaseTabPanel } from '@patternfly/elements/pf-tabs/BaseTabPanel.js';
 import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 import { css } from "lit";
-const styles = css `:host{display:block;padding:var(--rh-space-2xl,32px)}:host([box=inset]){padding-inline:var(--_panels-overflow-padding,var(--rh-space-4xl,64px))}[hidden]{display:none!important}@media screen and (min-width:768px){:host([vertical]) #rhds-container{margin-inline:0}:host([box][vertical]){padding:var(--rh-space-3xl,48px)}}`;
+const styles = css `:host{display:block;padding:var(--rh-space-2xl,32px)}:host([box=inset]){padding-inline:var(--_panels-overflow-padding,var(--rh-space-4xl,64px))}:host([hidden]){display:none!important}@media screen and (min-width:768px){:host([vertical]) #rhds-container{margin-inline:0}:host([box][vertical]){padding:var(--rh-space-3xl,48px)}}`;
 /**
  * The tab panel for use within a rh-tabs element, must be paired with a rh-tab.
  *
