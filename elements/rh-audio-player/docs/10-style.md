@@ -57,8 +57,9 @@ The audio player is a collection of elements used to play audio clips and browse
 ## Sizes
 There are three available sizes and the only difference is the amount of interface elements. The Compact and Mini players can be used on large breakpoints, but the Full player cannot be used on small breakpoints due to space constraints.
 
-{% sample class="audio-player-layouts", columns=2 %}
-
+{% sample class="audio-player-layouts",
+          code="hidden",
+          columns=2 -%}
 <figure class="full">
   <rh-audio-player lang="en-US"
                    layout="full"
@@ -106,13 +107,13 @@ There are three available sizes and the only difference is the amount of interfa
   </rh-audio-player>
   <figcaption>Mini size - no contextual menu</figcaption>
 </figure>
-
-{% endsample %}
+{%- endsample %}
 
 ## Theme
 The audio player is available in both light and dark themes.
 
 {% sample class="audio-player-layouts",
+          code="hidden",
           columns=2 -%}
 <rh-audio-player class="full"
                  lang="en-US"
@@ -147,11 +148,13 @@ The audio player is available in both light and dark themes.
   <audio crossorigin="anonymous"
          slot="media"
          src="https://cdn.simplecast.com/audio/28d037d3-7d17-42d4-a8e2-2e00fd8b602b/episodes/bd38190e-516f-49c0-b47e-6cf663d80986/audio/dc570fd1-7a5e-41e2-b9a4-96deb346c20f/default_tc.mp3"></audio>
-</rh-audio-player>{% endsample %}
+</rh-audio-player>
+{%- endsample %}
 
 
 ### Dark theme
 {% sample class="audio-player-layouts",
+          code="hidden",
           columns=2,
           colorPalette="darkest" -%}
 <rh-audio-player class="full"
@@ -187,8 +190,8 @@ The audio player is available in both light and dark themes.
   <audio crossorigin="anonymous"
          slot="media"
          src="https://cdn.simplecast.com/audio/28d037d3-7d17-42d4-a8e2-2e00fd8b602b/episodes/bd38190e-516f-49c0-b47e-6cf663d80986/audio/dc570fd1-7a5e-41e2-b9a4-96deb346c20f/default_tc.mp3"></audio>
-</rh-audio-player>{% endsample %}
-
+</rh-audio-player>
+{%- endsample %}
 
 ### Custom theme
 {% alert title="Helpful tip" %}
@@ -196,6 +199,7 @@ If your audio player requires a custom theme, [contact](https://github.com/orgs/
 {% endalert %}
 
 {% sample class="audio-player-layouts custom",
+          code="hidden",
           columns=2,
           colorPalette="darkest" -%}
 <rh-audio-player class="full"
@@ -231,7 +235,8 @@ If your audio player requires a custom theme, [contact](https://github.com/orgs/
   <audio crossorigin="anonymous"
          slot="media"
          src="https://cdn.simplecast.com/audio/28d037d3-7d17-42d4-a8e2-2e00fd8b602b/episodes/bd38190e-516f-49c0-b47e-6cf663d80986/audio/dc570fd1-7a5e-41e2-b9a4-96deb346c20f/default_tc.mp3"></audio>
-</rh-audio-player>{% endsample %}
+</rh-audio-player>
+{%- endsample %}
 
 ## Configuration
 The size of audio players change if an image is included or not.
