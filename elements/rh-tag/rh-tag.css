@@ -52,7 +52,7 @@
 
 .blue {
   --_content-color: var(--rh-color-blue-70, #003366);
-  --_background-color: var(--rh-color-blue-50, #0066cc);
+  --_background-color: var(--rh-color-blue-10, #e0f0ff);
   --_before-border-color: var(--rh-color-blue-20, #b9dafc);
   --_icon-color: var(--rh-color-accent-base-on-light, #0066cc);
 }
