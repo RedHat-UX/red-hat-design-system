@@ -1,6 +1,5 @@
 import { LitElement, type PropertyValues } from 'lit';
-import { ComposedEvent } from '@patternfly/pfe-core';
-export declare class AlertCloseEvent extends ComposedEvent {
+export declare class AlertCloseEvent extends Event {
     constructor();
 }
 /**

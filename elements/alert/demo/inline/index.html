@@ -1,0 +1,82 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
+    <title>Inline | Red Hat Design System</title>
+    <link rel="preconnect" href="https://ga.jspm.io">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="../ /assets/redhat/redhat-theme/4/advanced-theme.css">
+    <link rel="stylesheet" href="/assets/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all">
+    <link rel="stylesheet" href="/assets/base.css">
+
+    <script type="importmap">{"imports":{"@patternfly/pfe-core":"/assets/packages/@patternfly/pfe-core/core.js","lit-html":"/assets/packages/lit-html/lit-html.js","@floating-ui/core":"/assets/packages/@floating-ui/core/dist/floating-ui.core.browser.min.mjs","tslib":"/assets/packages/tslib/tslib.es6.js","@lit/reactive-element":"/assets/packages/@lit/reactive-element/reactive-element.js","@floating-ui/dom":"/assets/packages/@floating-ui/dom/dist/floating-ui.dom.browser.min.mjs","lit-element":"/assets/packages/lit-element/index.js","lit/directives/if-defined.js":"/assets/packages/lit/directives/if-defined.js","lit":"/assets/packages/lit/index.js","@patternfly/elements":"/assets/packages/@patternfly/elements/pfe.min.js","@rhds/tokens/media.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js","@rhds/tokens/meta.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js","@rhds/tokens":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/tokens.js","element-internals-polyfill":"/assets/packages/element-internals-polyfill/dist/index.js","fuse.js":"/assets/packages/fuse.js/dist/fuse.esm.js","@rhds/tokens/":"/assets/packages/@rhds/tokens/js/","@rhds/elements/":"/assets/packages/@rhds/elements/elements/","@rhds/elements/lib/":"/assets/packages/@rhds/elements/lib/","@patternfly/elements/":"/assets/packages/@patternfly/elements/","@patternfly/icons/":"/assets/packages/@patternfly/icons/","@patternfly/pfe-core/":"/assets/packages/@patternfly/pfe-core/"},"scopes":{"/assets/packages/":{"@lit/reactive-element/decorators/":"/assets/packages/@lit/reactive-element/decorators/","lit":"/assets/packages/@patternfly/elements/node_modules/lit/index.js","lit-element/lit-element.js":"/assets/packages/lit-element/lit-element.js","lit-html/":"/assets/packages/lit-html/","lit/":"/assets/packages/@patternfly/elements/node_modules/lit/"}}}</script>
+    <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
+    <script type="module">
+      import 'element-internals-polyfill';
+    </script>
+    <style>
+      html, body, main, [data-demo] { height: 100%; }
+      [data-demo] { grid-row: -1/1; }
+      main { display: grid; }
+    </style>
+  </head>
+  <body unresolved="">
+    <main>
+      <div data-demo="rh-alert"><rh-alert variant="inline">
+  <h3 slot="header">Default</h3>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
+    egestas, a sollicitudin mauris tincidunt.</p>
+  <rh-button slot="actions" variant="link" data-action="dismiss">Dismiss</rh-button>
+  <rh-button slot="actions" variant="link" data-action="confirm">Confirm</rh-button>
+</rh-alert>
+
+<rh-alert state="info" variant="inline">
+  <h3 slot="header">Info</h3>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
+    egestas, a sollicitudin mauris tincidunt.</p>
+  <rh-button slot="actions" variant="link" data-action="dismiss">Dismiss</rh-button>
+  <rh-button slot="actions" variant="link" data-action="confirm">Confirm</rh-button>
+</rh-alert>
+
+<rh-alert state="success" variant="inline">
+  <h3 slot="header">Success</h3>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
+    egestas, a sollicitudin mauris tincidunt.</p>
+  <rh-button slot="actions" variant="link" data-action="dismiss">Dismiss</rh-button>
+  <rh-button slot="actions" variant="link" data-action="confirm">Confirm</rh-button>
+</rh-alert>
+
+<rh-alert state="warning" variant="inline">
+  <h3 slot="header">Warning</h3>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
+    egestas, a sollicitudin mauris tincidunt.</p>
+  <rh-button slot="actions" variant="link" data-action="dismiss">Dismiss</rh-button>
+  <rh-button slot="actions" variant="link" data-action="confirm">Confirm</rh-button>
+</rh-alert>
+
+<rh-alert state="danger" variant="inline">
+  <h3 slot="header">Danger</h3>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
+    egestas, a sollicitudin mauris tincidunt.</p>
+  <rh-button slot="actions" variant="link" data-action="dismiss">Dismiss</rh-button>
+  <rh-button slot="actions" variant="link" data-action="confirm">Confirm</rh-button>
+</rh-alert>
+
+<script type="module">
+  import '@rhds/elements/rh-alert/rh-alert.js';
+  import '@rhds/elements/rh-button/rh-button.js';
+</script>
+
+<style>
+  [data-demo] {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, max(40vh, 40%)));
+    grid-auto-rows: min-content;
+    gap: var(--rh-space-lg, 16px);
+  }
+</style>
+</div>
+    </main>
+
+
+</body></html>
