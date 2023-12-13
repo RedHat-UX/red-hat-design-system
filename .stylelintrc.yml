@@ -50,7 +50,9 @@ rules:
     - 100
     - ignorePattern: /--rh-font-family-/
 
-  rhds/token-values:
+  rhds/token-values: true
+
+  rhds/no-unknown-token-name:
     - true
     - migrations:
       # reds
