@@ -14,7 +14,7 @@
     rgb(
         var(--rh-color-gray-10-rgb, 242 242 242) / var(--rh-opacity-40, 40%)
       );
-  --rh-table-column-background-color: rgb(var(--rh-color-blue-50-rgb, 0 102 204));
+  --rh-table-column-background-color: rgb(var(--rh-color-blue-10-rgb, 224 240 255));
 }
 
 :is(rh-table) thead th {
