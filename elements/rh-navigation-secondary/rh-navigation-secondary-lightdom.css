@@ -47,7 +47,7 @@
 }
 
 :is(rh-secondary-nav-menu, rh-navigation-secondary-menu) a:hover {
-  color: var(--rh-color-interactive-blue-darkest, #004080) !important;
+  color: var(--rh-color-interactive-blue-darkest, #003366) !important;
   text-decoration: none !important;
 }
 
@@ -57,8 +57,10 @@
   align-items: center;
   height: 100%;
   color: var(--_logo-link-color);
-  max-width: var(--rh-navigation-secondary-logo-max-width,
-    var(--rh-secondary-nav-logo-max-width, 10em));
+
+  /* TODO: remove for v2 */
+  /* stylelint-disable-next-line */
+  max-width: var(--rh-navigation-secondary-logo-max-width, var(--rh-secondary-nav-logo-max-width, 10em));
   text-decoration: none;
   font-size: var(--rh-font-size-body-text-md, 1rem);
   letter-spacing: 0.01125em;
@@ -145,9 +147,11 @@
   border-block-start-color: var(--rh-color-brand-red-on-light, #ee0000);
 }
 
-:is(rh-secondary-nav, rh-navigation-secondary)[color-palette="dark"] 
-[slot="nav"] li > a[aria-current="page"] {
-  border-block-start-color: var(--rh-color-brand-red-on-dark, #ff442b);
+:is(
+rh-secondary-nav,
+rh-navigation-secondary
+)[color-palette="dark"] [slot="nav"] li > a[aria-current="page"] {
+  border-block-start-color: var(--rh-color-brand-red-on-dark, #ee0000);
 }
 
 :is(rh-secondary-nav, rh-navigation-secondary) > [slot="nav"] > li > a:hover,
@@ -163,16 +167,16 @@
 }
 
 :is(rh-secondary-nav, rh-navigation-secondary) > [slot="nav"] > li {
-  border-block-start: 
+  border-block-start:
     var(--rh-border-width-sm, 1px)
     solid
     var(--rh-color-border-subtle-on-light, #c7c7c7);
 }
 
 :is(rh-secondary-nav, rh-navigation-secondary) > [slot="nav"] > li:last-of-type {
-  border-block-end: 
+  border-block-end:
     var(--rh-border-width-sm, 1px)
-    solid 
+    solid
     var(--rh-color-border-subtle-on-light, #c7c7c7);
 }
 
@@ -214,8 +218,11 @@
     --_nav-chevron-color: var(--rh-color-text-primary-on-dark, #ffffff);
   }
 
-  :is(rh-secondary-nav, rh-navigation-secondary)[color-palette="dark"]
-  :is(rh-secondary-nav-dropdown, rh-navigation-secondary-dropdown) > a[aria-expanded="true"] {
+  :is(
+    rh-secondary-nav,
+    rh-navigation-secondary)[color-palette="dark"] :is(
+      rh-secondary-nav-dropdown,
+      rh-navigation-secondary-dropdown) > a[aria-expanded="true"] {
     --_nav-link-color: var(--rh-color-text-primary-on-light, #151515);
     --_nav-chevron-color: var(--rh-color-text-primary-on-light, #151515);
 

@@ -19,9 +19,9 @@ export class RhContextDemo extends LitElement {
 
   @property() value: ColorPalette = 'darkest';
 
-  @property({ attribute: 'color-palette' }) colorPalette: ColorPalette = this.value;
-
   @property() label = 'Color Palette';
+
+  @property({ attribute: 'color-palette', reflect: true }) colorPalette = this.value;
 
   #internals = this.attachInternals();
 
@@ -95,6 +95,12 @@ export class RhContextDemo extends LitElement {
   willUpdate(changed: PropertyValues<this>) {
     if (changed.has('colorPalette')) {
       this.value = this.colorPalette;
+    }
+    if (changed.has('colorPalette')) {
+      this.value = this.colorPalette;
+    }
+    if (changed.has('value')) {
+      this.colorPalette = this.value;
     }
   }
 

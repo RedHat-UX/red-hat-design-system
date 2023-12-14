@@ -220,7 +220,7 @@
   "dependencies": {
     "@patternfly/elements": "^2.4.0",
     "@patternfly/icons": "^1.0.2",
-    "@rhds/tokens": "^1.1.2",
+    "@rhds/tokens": "^2.0.1",
     "lit": "^2.7.3",
     "tslib": "^2.6.2"
   },
@@ -264,11 +264,12 @@
     "postcss-nesting": "^12.0.1",
     "postcss-pxtorem": "^6.0.0",
     "renamer": "^4.0.0",
-    "sinon": "^17.0.1",
+    "sinon": "^15.0.4",
     "spandx": "^3.0.0",
     "stylelint": "^15.11.0",
     "stylelint-config-standard": "^34.0.0",
     "stylelint-config-standard-scss": "^11.1.0",
+    "stylelint-stylistic": "^0.4.3",
     "ttypescript": "^1.5.15",
     "typescript": "^5.2.2",
     "typescript-transform-lit-css": "^1.1.1",

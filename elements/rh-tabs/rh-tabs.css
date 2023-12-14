@@ -16,9 +16,9 @@
 
 #rhds-container.dark {
   --_border-color: var(--rh-tabs-border-color, var(--rh-color-border-subtle-on-dark, #707070));
-  --_arrow-color: var(--rh-color-accent-base-on-dark, #73bcf7);
+  --_arrow-color: var(--rh-color-accent-base-on-dark, #92c5f9);
   --_overflow-button-text-color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
-  --_overflow-button-disabled-text-color: var(--rh-color-gray-40, #707070);
+  --_overflow-button-disabled-text-color: var(--rh-color-gray-40, #a3a3a3);
   --_overflow-button-hover-text-color: var(--rh-color-text-primary-on-dark, #ffffff);
 }
 
@@ -33,15 +33,15 @@
   bottom: 0;
   margin: 0;
   width: auto;
+  font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
 :host(:is([centered], [box="inset"])) [part="tabs"] {
   margin-inline: var(--rh-tabs-inset, var(--_inset-inline-margin, auto));
 }
 
-
 /* BOX INSET TABS */
-:host([box="inset"]) {
+:host([box="inset"]:not([vertical])) [part="tabs"] {
   --_inset-inline-margin: var(--rh-space-2xl, 32px);
 }
 

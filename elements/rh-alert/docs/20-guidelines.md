@@ -55,14 +55,16 @@ If an issue cannot be resolved on the current page or if a user needs to correct
 
 The title should fit on one line at any screen size and would typically be only one to three words, if the alert includes body text. If the alert does not contain body text, however, the title can be a concise, full sentence. The title can also communicate the severity of the alert, e.g. **Warning** or **Success**.
 
+### Body
+The body would ideally be one brief sentence. This is especially important for toast alerts because users may receive more than one at a time. Not all alerts will require body text if the title is enough to convey the message.
+
 ### Character count
+
+The recommended maximum character count for the elements of an alert are listed below and include spaces.
 
 | Element {style="width: 50%" } | Character count |
 | ----------------------------- | --------------- |
 | Title text                    | 60              |
-
-### Body
-The body would ideally be one brief sentence. This is especially important for toast alerts because users may receive more than one at a time. Not all alerts will require body text if the title is enough to convey the message.
 
 
 ## Layout

@@ -89,6 +89,7 @@ module.exports = function(eleventyConfig) {
       '@patternfly/pfe-core',
       // Vendor
       'lit',
+      'lit/directives/if-defined.js',
       'lit-html',
       'lit-element',
       '@lit/reactive-element',
