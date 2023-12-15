@@ -25,9 +25,9 @@
   --_subnav-link-text-color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
   --_subnav-link-hover-text-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_subnav-link-hover-border-end-color: var(--rh-color-border-subtle-on-dark, #707070);
-  --_subnav-link-active-border-end-color: var(--rh-color-accent-brand-on-dark, #ff442b);
+  --_subnav-link-active-border-end-color: var(--rh-color-accent-brand-on-dark, #ee0000);
   --_subnav-link-visited-text-color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
-  --_subnav-link-focus-outline-color: var(--rh-color-border-interactive-on-dark, #73bcf7);
+  --_subnav-link-focus-outline-color: var(--rh-color-border-interactive-on-dark, #92c5f9);
   --_subnav-next-prev-button-text-color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
   --_subnav-next-prev-disabled-text-color: var(--rh-color-border-subtle-on-dark, #707070);
   --_subnav-next-prev-hover-text-color: var(--rh-color-text-primary-on-dark, #ffffff);
@@ -126,7 +126,7 @@ button {
 
 button:disabled {
   pointer-events: none;
-  color: var(--_subnav-next-prev-disabled-text-color, var(--rh-color-gray-10, #e0e0e0));
+  color: var(--_subnav-next-prev-disabled-text-color, var(--rh-color-gray-10, #f2f2f2));
 }
 
 button:hover {

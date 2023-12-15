@@ -59,6 +59,12 @@ export class RhTile extends LitElement {
    */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
+  // TODO(bennyp): https://lit.dev/docs/data/context/#content
+  @state() private disabledGroup = false;
+
+  // TODO(bennyp): https://lit.dev/docs/data/context/#content
+  @state() private radioGroup = false;
+
   /**
    * Whether image is full-width (i.e. bleeds into the padding)
    */
@@ -117,7 +123,7 @@ export class RhTile extends LitElement {
   /**
    * If tile is checkable, whether it is currently checked
    */
-  @property({ type: Boolean }) checked = false;
+  @property({ type: Boolean, reflect: true }) checked = false;
 
   /**
    * Sets color theme based on parent context
@@ -167,20 +173,13 @@ export class RhTile extends LitElement {
     this.#internals.ariaDisabled = !this.#isCheckable ? null : String(!!this.disabled);
     this.#internals.ariaLabel = !(this.#isCheckable && this.accessibleLabel) ? null : this.accessibleLabel;
     if (changed.has('value') || changed.has('checked')) {
-      this.#internals.setFormValue(
-        this.#isCheckable && this.checked ? this.value ?? null : null,
-      );
+      const formValue = this.#isCheckable && this.checked ? this.value ?? null : null;
+      this.#internals.setFormValue(formValue);
     }
-  }
-
-  /** Update the external keyboard-accessible element state */
-  override async updated() {
-    if (!this.radioGroup) {
-      if (this.checkable) {
-        this.tabIndex = 0;
-      } else {
-        this.removeAttribute('tabindex');
-      }
+    if (this.checkable && !this.radioGroup) {
+      this.setAttribute('tabindex', '0');
+    } else if (!this.radioGroup) {
+      this.removeAttribute('tabindex');
     }
   }
 

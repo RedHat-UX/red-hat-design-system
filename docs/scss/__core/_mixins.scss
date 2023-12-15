@@ -1,18 +1,17 @@
-@use 'sass:map';
-@use 'variables' as *;
+@use "sass:map";
+@use "variables" as *;
 
 /// Breakpoint helper
 /// @todo Do we need an IE11 hack? I think we should have fallback styles for non-grid
 ///
 /// @param {string} $breakpoint This can be a breakpoint from the $breakpoints map, or a value in pixels.
 /// @param {string} $min-max Can be either 'min-width' or 'max-width'. Defaults to 'min-width'.
-@mixin breakpoint($breakpoint, $min-max: 'min-width') {
+@mixin breakpoint($breakpoint, $min-max: "min-width") {
   $output: false;
 
-  @if (type-of($breakpoint) == number) {
+  @if type-of($breakpoint) == number {
     $output: $breakpoint;
-  }
-  @else {
+  } @else {
     $output: #{map.get($breakpoints, $breakpoint)};
   }
 
@@ -54,13 +53,12 @@
   margin-right: auto;
 }
 
-
 /// Helper that makes an element a grid container
 @mixin grid-container() {
   grid-column: 1 / -1; // If nested in a grid, always span the full width of that parent grid.
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
-  grid-column-gap: $gutter;
+  column-gap: 18px;
   justify-self: stretch;
 
   @include breakpoint(lima) {
@@ -102,7 +100,7 @@
 /// Creates a before element that will maintain aspect ratio of element
 @mixin aspect-ratio($width, $height) {
   &:before {
-    content: '';
+    content: "";
     display: block;
     box-sizing: content-box;
     width: 100%;

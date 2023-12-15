@@ -5,8 +5,6 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 
-import { ComposedEvent } from '@patternfly/pfe-core';
-
 import styles from './rh-alert.css';
 
 // TODO: replace with rh-icon
@@ -32,11 +30,9 @@ const ICONS = {
   }
 };
 
-export class AlertCloseEvent extends ComposedEvent {
+export class AlertCloseEvent extends Event {
   constructor() {
-    super('close', {
-      cancelable: true
-    });
+    super('close', { bubbles: true, cancelable: true });
   }
 }
 
@@ -61,7 +57,7 @@ export class RhAlert extends LitElement {
   static readonly styles = styles;
 
   private get icon() {
-    return ICONS.get(this.state) ?? ``;
+    return ICONS.get(this.state.toLowerCase() as this['state']) ?? '';
   }
 
   /**
@@ -107,6 +103,10 @@ export class RhAlert extends LitElement {
   }
 
   willUpdate(changed: PropertyValues<this>) {
+    // toast as a boolean attr is deprecated, so this replicates the previous behaviour
+    if (changed.has('toast') && this.toast) {
+      this.variant = 'toast';
+    }
     // variant as a boolean attr is deprecated, so this replicates the previous behaviour
     if (changed.has('variant') && (this.variant as unknown as boolean) === false) {
       this.variant = undefined;
@@ -115,8 +115,12 @@ export class RhAlert extends LitElement {
 
   render() {
     const hasActions = this.#slots.hasSlotted('actions');
+    const hasBody = this.#slots.hasSlotted(SlotController.anonymous as unknown as string);
     return html`
-      <div id="container" role="alert" aria-hidden="false">
+      <div id="container"
+           class="${classMap({ hasBody })}"
+           role="alert"
+           aria-hidden="false">
         <div id="left-column">
           <div id="icon">${this.icon}</div>
         </div>
@@ -124,7 +128,7 @@ export class RhAlert extends LitElement {
           <header>
             <div id="header">
               <slot name="header"></slot>
-            </div>${!this.dismissable ? '' : html`
+            </div>${!this.dismissable && this.variant !== 'toast' ? '' : html`
             <div id="header-actions">
               <button id="close-button"
                   aria-label="Close"

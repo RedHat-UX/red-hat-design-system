@@ -90,8 +90,9 @@ export class RhTimestamp extends LitElement {
 
   override connectedCallback() {
     super.connectedCallback();
-    if (this.hasAttribute('date')) {
-      this.#timestamp.date = new Date(this.getAttribute('date')!);
+    const date = this.getAttribute('date');
+    if (date) {
+      this.#timestamp.date = new Date(date);
     }
   }
 
