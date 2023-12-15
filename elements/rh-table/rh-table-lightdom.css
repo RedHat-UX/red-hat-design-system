@@ -32,8 +32,7 @@ rh-table table {
         )
         / var(--rh-opacity-70, 70%)
       );
-  --rh-table-column-background-color:
-    var(--rh-color-interactive-blue-darkest, #003366);
+  --rh-table-column-background-color: var(--rh-color-interactive-blue-darkest, #003366);
 }
 
 [color-palette^="light"] rh-table table {
