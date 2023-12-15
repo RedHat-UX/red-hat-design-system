@@ -26,9 +26,6 @@ export class RhTable extends LitElement {
 
   @colorContextConsumer() private on?: ColorTheme;
 
-  @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
-
   private static getNodeContentForSort(
     columnIndexToSort: number,
     node: Element,
