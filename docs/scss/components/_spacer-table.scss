@@ -1,0 +1,21 @@
+// Status table styles
+.spacer-table {
+  width: 100%;
+
+  img {
+    width: auto;
+  }
+
+  table {
+    th {
+      font-weight: bold;
+    }
+
+    tr td {
+      &:nth-child(1) {
+        font-family: var(--rh-font-family-code);
+        font-size: 14px;
+      }
+    }
+  }
+}

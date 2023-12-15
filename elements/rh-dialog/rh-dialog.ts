@@ -30,6 +30,7 @@ function openChanged(this: RhDialog, oldValue: unknown) {
  * A dialog displays important information to users without requiring them to navigate away from the page.
  * @summary Communicates information requiring user input or action
  *
+ * @cssprop {<number>} --rh-dialog-video-aspect-ratio
  * @cssprop {<color>} --rh-dialog-close-button-color
  *           Sets the dialog close button color.
  *          {@default `var(--rh-color-icon-secondary-on-dark, #ffffff)`}

@@ -47,13 +47,15 @@ header ::slotted(:is(h1, h2, h3, h4, h5, h6)[slot="header"]) {
 }
 
 :host([type="video"][open]) [part="overlay"] {
-  --_gray-90-rgb: var(--rh-color-gray-90-rgb, 21 21 21);
+  --_gray-90-rgb: var(--rh-color-gray-90-rgb, 31 31 31);
 
   background-color: rgb(var(--_gray-90-rgb) / var(--rh-opacity-60, 60%));
 }
 
 :host([type="video"][open]) [part="dialog"] {
-  --_aspect-ratio: var(--rh-modal-video-aspect-ratio, 16/9);
+  /* TODO remove --rh-modal-video-aspect-ratio for v2 */
+  /* stylelint-disable-next-line */
+  --_aspect-ratio: var(--rh-dialog-video-aspect-ratio, var(--rh-modal-video-aspect-ratio, 16/9));
 
   aspect-ratio: var(--_aspect-ratio);
   max-width: min(90%, calc(90vh * var(--_aspect-ratio) + var(--offset-top)));
@@ -68,7 +70,9 @@ header ::slotted(:is(h1, h2, h3, h4, h5, h6)[slot="header"]) {
 :host([type="video"]) #container,
 :host([type="video"]) [part="content"],
 :host([type="video"]) ::slotted(:not([slot])) {
-  aspect-ratio: var(--rh-modal-video-aspect-ratio, 16/9);
+  /* TODO remove --rh-modal-video-aspect-ratio for v2 */
+  /* stylelint-disable-next-line */
+  aspect-ratio: var(--rh-dialog-video-aspect-ratio, var(--rh-modal-video-aspect-ratio, 16/9));
 
   /* account for a 1px descrepency between dialog and container aspect ratio */
   width: calc(100% + 1px);

@@ -8,8 +8,8 @@ import { RhCue, getFormattedTime } from './rh-cue.js';
 import './rh-audio-player-scrolling-text-overflow.js';
 import '../rh-tooltip/rh-tooltip.js';
 
-import buttonStyles from './rh-audio-player-button-styles.css';
-import panelStyles from './rh-audio-player-panel-styles.css';
+import buttonStyles from './rh-audio-player-button.css';
+import panelStyles from './rh-audio-player-panel.css';
 import styles from './rh-transcript.css';
 import { state } from 'lit/decorators/state.js';
 
