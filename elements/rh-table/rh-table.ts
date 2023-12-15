@@ -8,7 +8,6 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { RequestSortEvent, RhSortButton } from './rh-sort-button.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import styles from './rh-table.css';
 
