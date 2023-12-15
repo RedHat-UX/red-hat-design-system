@@ -4,7 +4,7 @@
 
 rh-audio-player {
   line-height: var(--rh-line-height-body-text, 1.5);
-  font-weight: var(--rh-font-weight-body-regular, 400);
+  font-weight: var(--rh-font-weight-body-text-regular, 400);
   font-size: var(--rh-font-size-code-md, 1rem);
   font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
   color: var(--rh-audio-player-text-color, var(--rh-color-text-primary-on-light, #151515));
@@ -66,7 +66,7 @@ rh-transcript {
 }
 
 rh-audio-player > [slot="series"] {
-  letter-spacing: var(--rh-font-letter-spacing-body-text, 0.0125rem);
+  letter-spacing: var(--rh-letter-spacing-body-text, 0.0125rem);
   font-size: var(--rh-font-size-body-text-xs, 0.75rem);
   font-weight: var(--rh-font-weight-heading-medium, 500);
   margin: 0 0 var(--rh-space-md, 8px);

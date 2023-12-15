@@ -55,7 +55,8 @@ tr.on-dark {
   color: var(--rh-color-text-primary-on-dark, #ffffff);
 }
 
-th, td {
+th,
+td {
   padding-block: var(--rh-space-sm);
   padding-inline: var(--rh-space-md);
 }
@@ -100,10 +101,6 @@ td.token > div {
   gap: var(--rh-space-xs);
 }
 
-.hex {
-  text-transform: uppercase;
-}
-
 section {
   /* display: grid; */
   gap: var(--rh-space-md);
@@ -136,23 +133,7 @@ code {
   display: none;
 }
 
-.copy-button {
-  display: inline-flex;
-  align-items: center;
-  color: inherit;
-  border-radius: var(--rh-border-radius-default);
-  border-width: 0;
-  padding: var(--rh-space-xs);
-  background: none;
-  cursor: pointer;
-}
-
-.copy-button svg {
-  width: 24px;
-  fill: currentcolor;
-}
-
-.token:is(.value, .name) .copy-button {
+.token:is(.value, .name) uxdot-copy-button code {
   background-color: var(--rh-color-surface-lighter);
   overflow-x: hidden;
   max-width: 350px;
@@ -160,31 +141,26 @@ code {
   text-overflow: ellipsis;
 }
 
-.token.value .copy-button.color {
+.token.value uxdot-copy-button.color {
   border-radius: var(--rh-border-radius-pill);
   padding-block: 0;
 }
 
-.token.value .copy-button.color:after {
+.token.value uxdot-copy-button.color:after {
   content: "";
   display: inline-block;
   border-radius: 100%;
   background-color: var(--color);
-  height: .5rem;
+  height: 0.5rem;
   aspect-ratio: 1;
-  margin-inline-start: .5rem;
+  margin-inline-start: 0.5rem;
 }
 
-.copy-button:is(:focus, :active, :hover) {
-  background: var(--rh-color-interactive-blue-lightest);
-  opacity: 1;
-}
-
-.on-dark :is(.value, .name) .copy-button {
+.on-dark :is(.value, .name) uxdot-copy-button {
   background-color: var(--rh-color-surface-darker);
 }
 
-.on-dark .copy-button:is(:focus, :active, :hover) {
+.on-dark uxdot-copy-button:is(:focus, :active, :hover) {
   background: var(--rh-color-interactive-blue-darker);
 }
 
@@ -193,19 +169,19 @@ code {
   vertical-align: middle;
 }
 
-.copy-cell .copy-button {
+.copy-cell uxdot-copy-button {
   color: var(--rh-color-icon-subtle);
 }
 
-.on-dark .copy-cell .copy-button {
+.on-dark .copy-cell uxdot-copy-button {
   color: var(--rh-color-icon-subtle-hover);
 }
 
-tr:is(:hover, :focus-within) .copy-cell .copy-button {
+tr:is(:hover, :focus-within) .copy-cell uxdot-copy-button {
   color: var(--rh-color-icon-secondary-on-light);
 }
 
-tr:is(:hover, :focus-within).on-dark .copy-cell .copy-button {
+tr:is(:hover, :focus-within).on-dark .copy-cell uxdot-copy-button {
   color: var(--rh-color-icon-secondary-on-dark);
 }
 
@@ -328,10 +304,10 @@ tr:is(:hover, :focus-within).on-dark .copy-cell .copy-button {
   display: block;
 }
 
-.language-html .hljs-tag { color: var(--rh-color-blue-500, #004080); }
-.language-html .hljs-name { color: var(--rh-color-brand-red-dark, #be0000); }
-.language-html .hljs-attr { color: var(--rh-color-orange-300, #ec7a08); }
-.language-html .hljs-string { color: var(--rh-color-green-500, #3e8635); }
+.language-html .hljs-tag { color: var(--rh-color-blue-60, #004d99); }
+.language-html .hljs-name { color: var(--rh-color-brand-red-dark, #a60000); }
+.language-html .hljs-attr { color: var(--rh-color-orange-40, #f5921b); }
+.language-html .hljs-string { color: var(--rh-color-green-60, #3d7317); }
 
 code[class^="language-"] {
   max-width: 100%;
@@ -368,4 +344,3 @@ dl.grid dd {
   display: flex;
   align-items: center;
 }
-

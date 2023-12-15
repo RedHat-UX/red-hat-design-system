@@ -220,7 +220,7 @@
   "dependencies": {
     "@patternfly/elements": "^2.4.0",
     "@patternfly/icons": "^1.0.2",
-    "@rhds/tokens": "^1.1.2",
+    "@rhds/tokens": "^2.0.1",
     "lit": "^2.7.3",
     "tslib": "^2.5.0"
   },

@@ -7,7 +7,7 @@ import { HeadingLevelContextConsumer } from '../../lib/context/headings/consumer
 
 import './rh-audio-player-scrolling-text-overflow.js';
 
-import panelStyles from './rh-audio-player-panel-styles.css';
+import panelStyles from './rh-audio-player-panel.css';
 import styles from './rh-audio-player-subscribe.css';
 
 

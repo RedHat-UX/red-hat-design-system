@@ -12,22 +12,21 @@ rh-table table {
     var(--rh-color-border-subtle-on-light, #c7c7c7);
   --rh-table-row-background-color:
     rgb(
-        var(--rh-color-gray-10-rgb, 224 224 224) / var(--rh-opacity-40, 40%)
+        var(--rh-color-gray-10-rgb, 242 242 242) / var(--rh-opacity-40, 40%)
       );
   --rh-table-column-background-color:
     rgb(
         var(
           --rh-color-blue-50-rgb,
-          231 241 250
+          0 102 204
         )
       );
 }
 
-[color-palette^="dark"] rh-table table,
-rh-table[color-palette^="dark"] table {
+[color-palette^="dark"] rh-table table {
   --rh-table-row-background-color:
     rgb(
-        var(--rh-color-gray-10-rgb, 224 224 224) / var(--rh-opacity-20, 20%)
+        var(--rh-color-gray-10-rgb, 242 242 242) / var(--rh-opacity-20, 20%)
       );
   --rh-table-column-background-color:
     rgb(
@@ -39,8 +38,7 @@ rh-table[color-palette^="dark"] table {
       );
 }
 
-[color-palette="dark"] rh-table table,
-rh-table[color-palette="dark"] table {
+[color-palette="dark"] rh-table table {
   --rh-table-column-background-color:
     rgb(
         var(
@@ -51,13 +49,12 @@ rh-table[color-palette="dark"] table {
       );
 }
 
-[color-palette="light"] rh-table table,
-rh-table[color-palette="light"] table {
+[color-palette="light"] rh-table table {
   --rh-table-row-background-color:
     rgb(
         var(
           --rh-color-gray-40-rgb,
-          112 112 112
+          163 163 163
         )
         / var(--rh-opacity-10, 10%)
       );
@@ -65,7 +62,7 @@ rh-table[color-palette="light"] table {
     rgb(
         var(
           --rh-color-blue-50-rgb,
-          231 241 250
+          0 102 204
         )
         / var(--rh-opacity-70, 70%)
       );
@@ -101,7 +98,7 @@ rh-table a {
 }
 
 rh-table a:hover {
-  color: var(--rh-color-interactive-blue-darkest, #004080);
+  color: var(--rh-color-interactive-blue-darkest, #003366);
   text-decoration: underline;
 }
 
