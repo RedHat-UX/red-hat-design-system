@@ -26,37 +26,24 @@ rh-table table {
 [color-palette^="dark"] rh-table table {
   --rh-table-row-background-color:
     rgb(
-        var(--rh-color-gray-10-rgb, 242 242 242) / var(--rh-opacity-20, 20%)
+        var(
+          --rh-color-gray-80-rgb,
+          41 41 41
+        )
+        / var(--rh-opacity-70, 70%)
       );
   --rh-table-column-background-color:
-    rgb(
-        var(
-          --rh-color-blue-70-rgb,
-          0 51 102
-        )
-        / var(--rh-opacity-30, 30%)
-      );
+    var(--rh-color-interactive-blue-darkest, #003366);
 }
 
-[color-palette="dark"] rh-table table {
-  --rh-table-column-background-color:
-    rgb(
-        var(
-          --rh-color-blue-60-rgb,
-          0 77 153
-        )
-        / var(--rh-opacity-20, 20%)
-      );
-}
-
-[color-palette="light"] rh-table table {
+[color-palette^="light"] rh-table table {
   --rh-table-row-background-color:
     rgb(
         var(
-          --rh-color-gray-40-rgb,
-          163 163 163
+          --rh-color-gray-20-rgb,
+          224 224 224
         )
-        / var(--rh-opacity-10, 10%)
+        / var(--rh-opacity-40, 40%)
       );
   --rh-table-column-background-color:
     rgb(
@@ -64,7 +51,7 @@ rh-table table {
           --rh-color-blue-50-rgb,
           0 102 204
         )
-        / var(--rh-opacity-70, 70%)
+        / var(--rh-opacity-10, 10%)
       );
 }
 
