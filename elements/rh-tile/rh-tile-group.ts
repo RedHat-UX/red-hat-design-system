@@ -83,20 +83,24 @@ export class RhTileGroup extends LitElement {
   }
 
   override willUpdate(changed: PropertyValues<this>) {
-    if (changed.has('radio')) {
-      this.#internals.role = this.radio ? 'radiogroup' : null;
-      let selected: RhTile | null | undefined;
-      this.#tiles.forEach(tile => {
-      // @ts-expect-error: internal use of private prop. replace with context. see rh-tile.ts
+    this.#internals.ariaDisabled = String(!!this.disabled);
+    this.#internals.role = this.radio ? 'radiogroup' : null;
+    let selected: RhTile | undefined;
+    for (const tile of this.#tiles) {
+      if (changed.has('radio')) {
+        // @ts-expect-error: internal use of private prop. replace with context. see rh-tile.ts
         tile.radioGroup = this.radio;
         if (this.radio && !selected && tile.checked) {
           selected = tile;
         }
-      });
-      this.selectItem(selected ?? undefined);
+      }
+      if (changed.has('disabled')) {
+        // @ts-expect-error: internal use of private prop. replace with context. see rh-tile.ts
+        tile.disabledGroup = this.disabled;
+      }
     }
-    if (changed.has('disabled')) {
-      this.#internals.ariaDisabled = String(!!this.disabled);
+    if (changed.has('radio')) {
+      this.selectItem(selected);
     }
   }
 
@@ -105,23 +109,6 @@ export class RhTileGroup extends LitElement {
     return html`
       <slot class="${classMap({ [on]: !!on, radio })}"></slot>
     `;
-  }
-
-  override updated(changed: PropertyValues<this>): void {
-    const radioChanged = changed.has('radio');
-    const disabledChanged = changed.has('disabled');
-    if (radioChanged || disabledChanged) {
-      for (const tile of this.#tiles) {
-        if (radioChanged) {
-          // @ts-expect-error: internal use of private prop. replace with context. see rh-tile.ts
-          tile.radioGroup = this.radio ? this : undefined;
-        }
-        if (disabledChanged) {
-          // @ts-expect-error: internal use of private prop. replace with context. see rh-tile.ts
-          tile.disabledGroup = this.disabled;
-        }
-      }
-    }
   }
 
   #selectTile(tileToSelect: RhTile, force?: boolean) {

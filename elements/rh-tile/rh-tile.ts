@@ -55,17 +55,6 @@ export class RhTile extends LitElement {
   declare shadowRoot: ShadowRoot;
 
   /**
-   * Whether tile interaction is disabled
-   */
-  @property({ type: Boolean, reflect: true }) disabled = false;
-
-  // TODO(bennyp): https://lit.dev/docs/data/context/#content
-  @state() private disabledGroup = false;
-
-  // TODO(bennyp): https://lit.dev/docs/data/context/#content
-  @state() private radioGroup = false;
-
-  /**
    * Whether image is full-width (i.e. bleeds into the padding)
    */
   @property({ type: Boolean }) bleed = false;
@@ -85,12 +74,6 @@ export class RhTile extends LitElement {
    * Icon (must be a member of the fontawesome "far" icon set)
    */
   @property() icon?: string;
-
-  /**
-   * When true, tile behaves like a checkbox unless it is part of an
-   * `<rh-tile-group radio>`, in which case it behaves like a radio button
-   */
-  @property({ type: Boolean }) checkable = false;
 
   /**
    * When checkable, the accessible (visually hidden) label for the form control
@@ -121,14 +104,20 @@ export class RhTile extends LitElement {
   @property() value?: string;
 
   /**
+   * When true, tile behaves like a checkbox unless it is part of an
+   * `<rh-tile-group radio>`, in which case it behaves like a radio button
+   */
+  @property({ type: Boolean }) checkable = false;
+
+  /**
    * If tile is checkable, whether it is currently checked
    */
   @property({ type: Boolean, reflect: true }) checked = false;
 
   /**
-   * Sets color theme based on parent context
+   * Whether tile interaction is disabled
    */
-  @colorContextConsumer() private on?: ColorTheme;
+  @property({ type: Boolean, reflect: true }) disabled = false;
 
   /**
    * Sets color palette, which affects the element's styles as well as descendants' color theme.
@@ -141,11 +130,16 @@ export class RhTile extends LitElement {
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
+  /**
+   * Sets color theme based on parent context
+   */
+  @colorContextConsumer() private on?: ColorTheme;
+
   // TODO(bennyp): https://lit.dev/docs/data/context/#content
   @state() private disabledGroup = false;
 
   // TODO(bennyp): https://lit.dev/docs/data/context/#content
-  @state() private radioGroup?: RhTileGroup;
+  @state() private radioGroup = false;
 
   #internals = new InternalsController(this);
 
