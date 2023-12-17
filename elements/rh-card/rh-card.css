@@ -5,7 +5,9 @@ article {
   flex-direction: column;
 }
 
-.empty {
+.emptyHeader #header,
+.emptyBody #body,
+.emptyFooter #footer {
   display: none;
 }
 

@@ -54,21 +54,24 @@ export class RhCard extends LitElement {
 
   override render() {
     const { on = '', colorPalette = '' } = this;
+    const emptyHeader = !this.#slots.hasSlotted('header');
+    const emptyBody = !this.querySelector(':not([slot])');
+    const emptyFooter = !this.#slots.hasSlotted('footer');
     return html`
-     <article part="container" id="container" class="${classMap({ [on]: !!on, [colorPalette]: !!colorPalette })}">
-        <header id="header"
-                part="header"
-                class="${classMap({ empty: !this.#slots.hasSlotted('header') })}">
+      <article id="container"
+               part="container"
+               class="${classMap({
+                 [on]: !!on,
+                 [colorPalette]: !!colorPalette,
+                 emptyHeader, emptyBody, emptyFooter,
+               })}">
+        <header id="header" part="header">
           <slot name="header"></slot>
         </header>
-        <div id="body"
-             part="body"
-             class="${classMap({ empty: !this.querySelector(':not([slot])') })}">
+        <div id="body" part="body">
           <slot></slot>
         </div>
-        <footer id="footer"
-                part="footer"
-                class="${classMap({ empty: !this.#slots.hasSlotted('footer') })}">
+        <footer id="footer" part="footer">
           <slot name="footer"></slot>
         </footer>
       </article>
