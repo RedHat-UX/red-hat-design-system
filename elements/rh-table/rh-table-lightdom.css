@@ -1,4 +1,3 @@
-/* stylelint-disable max-line-length */
 rh-table table {
   min-width: 100%;
   margin: 0 auto;
@@ -10,32 +9,6 @@ rh-table table {
     var(--rh-border-width-sm, 1px)
     solid
     var(--rh-color-border-subtle-on-light, #c7c7c7);
-  --rh-table-row-background-color:
-    rgb(
-        var(--rh-color-gray-10-rgb, 242 242 242) / var(--rh-opacity-40, 40%)
-      );
-  --rh-table-column-background-color:
-    rgb(
-        var(
-          --rh-color-blue-50-rgb,
-          0 102 204
-        )
-      );
-}
-
-[color-palette^="dark"] rh-table table {
-  --rh-table-row-background-color:
-    rgb(
-        var(
-          --rh-color-gray-80-rgb,
-          41 41 41
-        )
-        / var(--rh-opacity-70, 70%)
-      );
-  --rh-table-column-background-color: var(--rh-color-interactive-blue-darkest, #003366);
-}
-
-[color-palette^="light"] rh-table table {
   --rh-table-row-background-color:
     rgb(
         var(
@@ -51,6 +24,37 @@ rh-table table {
           0 102 204
         )
         / var(--rh-opacity-10, 10%)
+      );
+}
+
+[color-palette^="dark"] rh-table table {
+  --rh-table-row-background-color:
+    rgb(
+        var(
+          --_rh-color-surface-lightest-rgb, /* making private as currently doesn't exist */
+          255 255 255
+        )
+        / var(--rh-opacity-10, 10%)
+      );
+  --rh-table-column-background-color:
+    rgb(
+        var(
+          --rh-color-blue-70-rgb,
+          0 51 102
+        )
+        / var(--rh-opacity-30, 30%)
+      );
+}
+
+[color-palette="light"] rh-table table,
+[color-palette="lighter"] rh-table table {
+  --rh-table-row-background-color:
+    rgb(
+        var(
+          --_rh-color-surface-lightest-rgb, /* making private as currently doesn't exist */
+          255 255 255
+        )
+        / var(--rh-opacity-50, 50%)
       );
 }
 
