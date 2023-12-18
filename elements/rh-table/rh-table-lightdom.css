@@ -31,7 +31,7 @@ rh-table table {
   --rh-table-row-background-color:
     rgb(
         var(
-          --_rh-color-surface-lightest-rgb, /* making private as currently doesn't exist */
+          --_rh-color-white-rgb, /* making private as currently doesn't exist */
           255 255 255
         )
         / var(--rh-opacity-10, 10%)
@@ -51,7 +51,7 @@ rh-table table {
   --rh-table-row-background-color:
     rgb(
         var(
-          --_rh-color-surface-lightest-rgb, /* making private as currently doesn't exist */
+          --_rh-color-white-rgb, /* making private as currently doesn't exist */
           255 255 255
         )
         / var(--rh-opacity-50, 50%)
