@@ -27,7 +27,7 @@ rh-table table {
       );
 }
 
-[color-palette^="dark"] rh-table table {
+rh-table[color-palette^="dark"] table {
   --rh-table-row-background-color:
     rgb(
         var(
@@ -46,8 +46,8 @@ rh-table table {
       );
 }
 
-[color-palette="light"] rh-table table,
-[color-palette="lighter"] rh-table table {
+rh-table[color-palette="light"] table,
+rh-table[color-palette="lighter"] table {
   --rh-table-row-background-color:
     rgb(
         var(
