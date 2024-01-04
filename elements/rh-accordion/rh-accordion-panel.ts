@@ -23,12 +23,12 @@ export class RhAccordionPanel extends LitElement {
 
   static readonly styles = [styles];
 
-  @colorContextConsumer() private on?: ColorTheme;
+  @property({ type: Boolean, reflect: true }) expanded = false;
 
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
-  @property({ type: Boolean, reflect: true }) expanded = false;
+  @colorContextConsumer() private on?: ColorTheme;
 
   connectedCallback() {
     super.connectedCallback();

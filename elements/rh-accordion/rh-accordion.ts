@@ -57,22 +57,6 @@ export class RhAccordion extends BaseAccordion {
 
   static readonly styles = [styles];
 
-  @colorContextConsumer() private on?: ColorTheme;
-
-  @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
-
-  @observed(function largeChanged(this: RhAccordion) {
-    [...this.headers, ...this.panels].forEach(el => el.toggleAttribute('large', this.large));
-  })
-  @property({ reflect: true, type: Boolean }) large = false;
-
-  @property({ reflect: true, type: Boolean }) bordered = true;
-
-  #headerIndex = new RovingTabindexController<RhAccordionHeader>(this);
-
-  #expandedIndex: number[] = [];
-
   static isHeader(target: EventTarget | null): target is RhAccordionHeader {
     return target instanceof RhAccordionHeader;
   }
@@ -115,35 +99,29 @@ export class RhAccordion extends BaseAccordion {
     }
   }
 
-  get headers() {
-    return this.#allHeaders();
-  }
+  @observed(function largeChanged(this: RhAccordion) {
+    [...this.headers, ...this.panels].forEach(el => el.toggleAttribute('large', this.large));
+  })
 
-  get panels() {
-    return this.#allPanels();
-  }
+  @property({ reflect: true, type: Boolean }) large = false;
 
-  get #activeHeader() {
-    const { headers } = this;
-    const index = headers.findIndex(header => header.matches(':focus,:focus-within'));
-    return index > -1 ? headers.at(index) : undefined;
-  }
+  @property({ reflect: true, type: Boolean }) bordered = true;
+
+  @colorContextProvider()
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
+
+  @colorContextConsumer() private on?: ColorTheme;
 
   protected expandedSets = new Set<number>();
 
-  #logger = new Logger(this);
+  #expandedIndex: number[] = [];
+
+  #headerIndex = new RovingTabindexController<RhAccordionHeader>(this);
 
   // actually is read in #init, by the `||=` operator
   #initialized = false;
 
-  protected override async getUpdateComplete(): Promise<boolean> {
-    const c = await super.getUpdateComplete();
-    const results = await Promise.all([
-      ...this.#allHeaders().map(x => x.updateComplete),
-      ...this.#allPanels().map(x => x.updateComplete),
-    ]);
-    return c && results.every(Boolean);
-  }
+  #logger = new Logger(this);
 
   #mo = new MutationObserver(() => this.#init());
 
@@ -186,6 +164,21 @@ export class RhAccordion extends BaseAccordion {
     // Event listener to the accordion header after the accordion has been initialized to add the roving tabindex
     this.addEventListener('focusin', this.#updateActiveHeader);
     this.updateAccessibility();
+  }
+
+  protected override async getUpdateComplete(): Promise<boolean> {
+    const c = await super.getUpdateComplete();
+    const results = await Promise.all([
+      ...this.#allHeaders().map(x => x.updateComplete),
+      ...this.#allPanels().map(x => x.updateComplete),
+    ]);
+    return c && results.every(Boolean);
+  }
+
+  get #activeHeader() {
+    const { headers } = this;
+    const index = headers.findIndex(header => header.matches(':focus,:focus-within'));
+    return index > -1 ? headers.at(index) : undefined;
   }
 
   #updateActiveHeader() {
@@ -264,6 +257,14 @@ export class RhAccordion extends BaseAccordion {
 
     this.#logger.warn('The #getIndex method expects to receive a header or panel element.');
     return -1;
+  }
+
+  get headers() {
+    return this.#allHeaders();
+  }
+
+  get panels() {
+    return this.#allPanels();
   }
 
   public updateAccessibility() {

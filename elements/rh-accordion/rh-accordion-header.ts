@@ -63,17 +63,17 @@ export class RhAccordionHeader extends LitElement {
 
   @property({ reflect: true, attribute: 'heading-tag' }) headingTag?: string;
 
+  @property({ reflect: true }) icon = 'angle-down';
+
+  @colorContextConsumer() private on?: ColorTheme;
+
   #generatedHtag?: HTMLHeadingElement;
 
   #logger = new Logger(this);
 
   #header?: HTMLElement;
 
-  @property({ reflect: true }) icon = 'angle-down';
-
   #dir = new DirController(this);
-
-  @colorContextConsumer() private on?: ColorTheme;
 
   override connectedCallback() {
     super.connectedCallback();
@@ -81,6 +81,24 @@ export class RhAccordionHeader extends LitElement {
     this.hidden = true;
     this.id ||= getRandomId(this.localName);
     this.#initHeader();
+  }
+
+  render(): Array<TemplateResult> {
+    const { on = '' } = this;
+    const rtl = this.#dir.dir === 'rtl';
+    const res = [];
+    res.push(html`<div id="container" class="${classMap({ [on]: !!on, rtl })}" part="container">`);
+    switch (this.headingTag) {
+      case 'h1': res.push(html`<h1 id="heading">${this.#renderHeaderContent()}</h1>`); break;
+      case 'h2': res.push(html`<h2 id="heading">${this.#renderHeaderContent()}</h2>`); break;
+      case 'h3': res.push(html`<h3 id="heading">${this.#renderHeaderContent()}</h3>`); break;
+      case 'h4': res.push(html`<h4 id="heading">${this.#renderHeaderContent()}</h4>`); break;
+      case 'h5': res.push(html`<h5 id="heading">${this.#renderHeaderContent()}</h5>`); break;
+      case 'h6': res.push(html`<h6 id="heading">${this.#renderHeaderContent()}</h6>`); break;
+      default: res.push(this.#renderHeaderContent());
+    }
+    res.push(html`</div>`);
+    return res;
   }
 
   async #initHeader() {
@@ -102,25 +120,7 @@ export class RhAccordionHeader extends LitElement {
     this.hidden = false;
   }
 
-  render(): Array<TemplateResult> {
-    const { on = '' } = this;
-    const rtl = this.#dir.dir === 'rtl';
-    const res = [];
-    res.push(html`<div id="container" class="${classMap({ [on]: !!on, rtl })}" part="container">`);
-    switch (this.headingTag) {
-      case 'h1': res.push(html`<h1 id="heading">${this.#renderHeaderContent()}</h1>`); break;
-      case 'h2': res.push(html`<h2 id="heading">${this.#renderHeaderContent()}</h2>`); break;
-      case 'h3': res.push(html`<h3 id="heading">${this.#renderHeaderContent()}</h3>`); break;
-      case 'h4': res.push(html`<h4 id="heading">${this.#renderHeaderContent()}</h4>`); break;
-      case 'h5': res.push(html`<h5 id="heading">${this.#renderHeaderContent()}</h5>`); break;
-      case 'h6': res.push(html`<h6 id="heading">${this.#renderHeaderContent()}</h6>`); break;
-      default: res.push(this.#renderHeaderContent());
-    }
-    res.push(html`</div>`);
-    return res;
-  }
-
-  renderAfterButton() {
+  #renderAfterButton() {
     // Font-Awesome free angle-down
     // TODO: use rh-icon when it's ready
     return html`
@@ -139,7 +139,7 @@ export class RhAccordionHeader extends LitElement {
         <span part="text">${headingText ?? html`
           <slot></slot>`}
         </span>
-        ${this.renderAfterButton?.()}
+        ${this.#renderAfterButton?.()}
       </button>
     `;
   }
