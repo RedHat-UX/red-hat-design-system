@@ -1,10 +1,5 @@
-rh-table table {
-  min-width: 100%;
-  margin: 0 auto;
-  table-layout: fixed;
-  border: 0;
-  border-collapse: collapse;
-
+rh-table,
+rh-table[color-palette="lightest"] {
   --rh-table-row-border:
     var(--rh-border-width-sm, 1px)
     solid
@@ -27,7 +22,22 @@ rh-table table {
       );
 }
 
-rh-table[color-palette^="dark"] table {
+[color-palette="light"] > rh-table,
+rh-table[color-palette="light"],
+[color-palette="lighter"] > rh-table,
+rh-table[color-palette="lighter"] {
+  --rh-table-row-background-color:
+    rgb(
+        var(
+          --_rh-color-white-rgb, /* making private as currently doesn't exist */
+          255 255 255
+        )
+        / var(--rh-opacity-50, 50%)
+      );
+}
+
+[color-palette^="dark"] > rh-table,
+rh-table[color-palette^="dark"] {
   --rh-table-row-background-color:
     rgb(
         var(
@@ -46,16 +56,12 @@ rh-table[color-palette^="dark"] table {
       );
 }
 
-rh-table[color-palette="light"] table,
-rh-table[color-palette="lighter"] table {
-  --rh-table-row-background-color:
-    rgb(
-        var(
-          --_rh-color-white-rgb, /* making private as currently doesn't exist */
-          255 255 255
-        )
-        / var(--rh-opacity-50, 50%)
-      );
+rh-table table {
+  min-width: 100%;
+  margin: 0 auto;
+  table-layout: fixed;
+  border: 0;
+  border-collapse: collapse;
 }
 
 rh-table thead th {
