@@ -6,15 +6,15 @@ import { property } from 'lit/decorators/property.js';
 import { NumberListConverter, ComposedEvent } from '@patternfly/pfe-core';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
-import { AccordionHeaderChangeEvent, BaseAccordionHeader } from './BaseAccordionHeader.js';
-import { BaseAccordionPanel } from './BaseAccordionPanel.js';
+import { RhAccordionPanel } from './rh-accordion-panel.js';
 
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
+import { AccordionHeaderChangeEvent, RhAccordionHeader } from './rh-accordion-header.js';
 
 export class AccordionExpandEvent extends ComposedEvent {
   constructor(
-    public toggle: BaseAccordionHeader,
-    public panel: BaseAccordionPanel,
+    public toggle: RhAccordionHeader,
+    public panel: RhAccordionPanel,
   ) {
     super('expand');
   }
@@ -22,8 +22,8 @@ export class AccordionExpandEvent extends ComposedEvent {
 
 export class AccordionCollapseEvent extends ComposedEvent {
   constructor(
-    public toggle: BaseAccordionHeader,
-    public panel: BaseAccordionPanel,
+    public toggle: RhAccordionHeader,
+    public panel: RhAccordionPanel,
   ) {
     super('collapse');
   }
@@ -34,19 +34,19 @@ export abstract class BaseAccordion extends LitElement {
     return target instanceof BaseAccordion;
   }
 
-  static isHeader(target: EventTarget | null): target is BaseAccordionHeader {
-    return target instanceof BaseAccordionHeader;
+  static isHeader(target: EventTarget | null): target is RhAccordionHeader {
+    return target instanceof RhAccordionHeader;
   }
 
-  static isPanel(target: EventTarget | null): target is BaseAccordionPanel {
-    return target instanceof BaseAccordionPanel;
+  static isPanel(target: EventTarget | null): target is RhAccordionPanel {
+    return target instanceof RhAccordionPanel;
   }
 
   static #isAccordionChangeEvent(event: Event): event is AccordionHeaderChangeEvent {
     return event instanceof AccordionHeaderChangeEvent;
   }
 
-  #headerIndex = new RovingTabindexController<BaseAccordionHeader>(this);
+  #headerIndex = new RovingTabindexController<RhAccordionHeader>(this);
 
   #expandedIndex: number[] = [];
 
@@ -158,7 +158,7 @@ export abstract class BaseAccordion extends LitElement {
     }
   }
 
-  #panelForHeader(header: BaseAccordionHeader) {
+  #panelForHeader(header: RhAccordionHeader) {
     const next = header.nextElementSibling;
     if (!BaseAccordion.isPanel(next)) {
       return void this.#logger.error('Sibling element to a header needs to be a panel');
@@ -167,19 +167,19 @@ export abstract class BaseAccordion extends LitElement {
     }
   }
 
-  #expandHeader(header: BaseAccordionHeader, index = this.#getIndex(header)) {
+  #expandHeader(header: RhAccordionHeader, index = this.#getIndex(header)) {
     // If this index is not already listed in the expandedSets array, add it
     this.expandedSets.add(index);
     this.#expandedIndex = [...this.expandedSets as Set<number>];
     header.expanded = true;
   }
 
-  #expandPanel(panel: BaseAccordionPanel) {
+  #expandPanel(panel: RhAccordionPanel) {
     panel.expanded = true;
     panel.hidden = false;
   }
 
-  async #collapseHeader(header: BaseAccordionHeader, index = this.#getIndex(header)) {
+  async #collapseHeader(header: RhAccordionHeader, index = this.#getIndex(header)) {
     if (!this.expandedSets) {
       await this.updateComplete;
     }
@@ -188,7 +188,7 @@ export abstract class BaseAccordion extends LitElement {
     await header.updateComplete;
   }
 
-  async #collapsePanel(panel: BaseAccordionPanel) {
+  async #collapsePanel(panel: RhAccordionPanel) {
     await panel.updateComplete;
     if (!panel.expanded) {
       return;
@@ -209,11 +209,11 @@ export abstract class BaseAccordion extends LitElement {
     }
   }
 
-  #allHeaders(accordion: BaseAccordion = this): BaseAccordionHeader[] {
+  #allHeaders(accordion: BaseAccordion = this): RhAccordionHeader[] {
     return Array.from(accordion.children).filter(BaseAccordion.isHeader);
   }
 
-  #allPanels(accordion: BaseAccordion = this): BaseAccordionPanel[] {
+  #allPanels(accordion: BaseAccordion = this): RhAccordionPanel[] {
     return Array.from(accordion.children).filter(BaseAccordion.isPanel);
   }
 
@@ -263,7 +263,7 @@ export abstract class BaseAccordion extends LitElement {
    * Accepts an optional parent accordion to search for headers and panels.
    */
   public async expand(index: number, parentAccordion?: BaseAccordion) {
-    const allHeaders: Array<BaseAccordionHeader> = this.#allHeaders(parentAccordion);
+    const allHeaders: Array<RhAccordionHeader> = this.#allHeaders(parentAccordion);
 
     const header = allHeaders[index];
     if (!header) {
