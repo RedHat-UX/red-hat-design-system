@@ -7,7 +7,7 @@
     var(--rh-color-border-interactive-on-light, #0066cc);
 }
 
-#container.dark {
+#container:is(.dark, .darker, .darkest) {
   --_outline:
     var(--rh-border-width-md, 2px)
     solid

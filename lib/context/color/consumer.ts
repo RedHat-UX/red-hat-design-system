@@ -14,8 +14,12 @@ import { ContextEvent } from '../event.js';
    * `ColorTheme` is associated with the `on` attribute and the `--context` css property
    */
 export type ColorTheme = (
+  | 'darkest'
+  | 'darker'
   | 'dark'
   | 'light'
+  | 'lighter'
+  | 'lightest'
   | 'saturated'
 );
 

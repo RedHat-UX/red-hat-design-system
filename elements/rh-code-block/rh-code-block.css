@@ -22,7 +22,7 @@
   border-radius: var(--rh-border-radius-default, 3px);
 }
 
-#content.dark {
+#content:is(.dark, .darker, .darkest) {
   background-color: var(--rh-color-surface-darker, #1f1f1f);
   border-color: var(--rh-color-border-subtle-on-dark, #707070);
   color: var(--rh-color-text-secondary-on-dark, #c7c7c7);

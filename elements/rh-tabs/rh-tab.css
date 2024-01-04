@@ -10,7 +10,7 @@
   --_button-focus-outline-color: var(--rh-color-border-interactive-on-light, #0066cc);
 }
 
-#rhds-container.dark {
+#rhds-container:is(.dark, .darker, .darkest) {
   --_button-text-color:
     var(
         --rh-tabs-link-color,
@@ -33,7 +33,7 @@
       );
 }
 
-:host([active]) #rhds-container.dark {
+:host([active]) #rhds-container:is(.dark, .darker, .darkest) {
   --_button-text-color:
     var(
         --rh-tabs-link-color,
@@ -47,11 +47,12 @@
 }
 
 /* Box context */
+/* stylelint-disable-next-line no-descending-specificity */
 :host([box]) #rhds-container {
   --_inactive-tab-background-color: var(--rh-color-surface-lighter, #f2f2f2);
 }
 
-:host([box]) #rhds-container.dark {
+:host([box]) #rhds-container:is(.dark, .darker, .darkest) {
   --_inactive-tab-background-color: var(--rh-color-surface-dark, #383838);
 }
 
@@ -64,7 +65,7 @@
       );
 }
 
-:host([active][theme="base"]) #rhds-container.dark {
+:host([active][theme="base"]) #rhds-container:is(.dark, .darker, .darkest) {
   --_active-tab-border-color:
     var(
         --rh-tabs-active-border-color,
@@ -131,6 +132,7 @@ button:after {
 }
 
 /* [box]:not([active]) */
+/* stylelint-disable-next-line no-descending-specificity */
 :host([box]:not([active])) #rhds-container {
   background-color: var(--_inactive-tab-background-color);
 }

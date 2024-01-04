@@ -9,19 +9,19 @@ slot {
   width: max-content;
 }
 
-.dark::slotted(a) {
+:is(.dark, .darker, .darkest) ::slotted(a) {
   color: var(--rh-color-interactive-blue-lightest, #b9dafc) !important;
   padding: 5px !important; /* WARNING: not a token value */
 }
 
-.dark::slotted(a:hover) {
+:is(.dark, .darker, .darkest) ::slotted(a:hover) {
   color: var(--rh-color-interactive-blue-lighter, #92c5f9);
 }
 
-.dark::slotted(a:visited) {
+:is(.dark, .darker, .darkest) ::slotted(a:visited) {
   color: var(--rh-color-interactive-purple-lighter, #b6a6e9) !important;
 }
 
-.dark::slotted(a:visited:hover) {
+:is(.dark, .darker, .darkest) ::slotted(a:visited:hover) {
   color: var(--rh-color-interactive-purple-lighter, #b6a6e9) !important;
 }

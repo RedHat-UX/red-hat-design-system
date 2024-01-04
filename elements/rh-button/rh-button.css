@@ -82,7 +82,7 @@ button:after {
   inset: 0;
 }
 
-.light {
+:is(.light, .lighter, .lightest) {
   /* PRIMARY */
   --_primary-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_primary-background-color: var(--rh-color-interactive-blue-darker, #0066cc);
@@ -183,7 +183,7 @@ button:after {
   --_play-hover-background-color: rgb(var(--_gray-90-rgb) / var(--rh-opacity-80, 80%));
 }
 
-.dark {
+:is(.dark, .darker, .darkest) {
   --_focus-outline-color: var(--rh-color-interactive-blue-lighter, #92c5f9);
 
   /* PRIMARY */

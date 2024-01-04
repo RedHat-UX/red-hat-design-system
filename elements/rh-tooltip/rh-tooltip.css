@@ -129,7 +129,7 @@
   --_text-alignment: "start";
 }
 
-.dark {
+:is(.dark, .darker, .darkest) {
   --rh-tooltip-content-background-color: var(--rh-color-surface-lightest, #ffffff);
   --rh-tooltip-content-color: var(--rh-color-text-primary-on-light, #151515);
 }

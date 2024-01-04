@@ -43,12 +43,12 @@ export class ColorContextProvider<
   T extends ReactiveElement
 > extends ColorContextController<T> implements ReactiveController {
   static contexts = new Map(Object.entries({
-    darkest: 'dark' as const,
-    darker: 'dark' as const,
+    darkest: 'darkest' as const,
+    darker: 'darker' as const,
     dark: 'dark' as const,
     light: 'light' as const,
-    lighter: 'light' as const,
-    lightest: 'light' as const,
+    lighter: 'lighter' as const,
+    lightest: 'lightest' as const,
   }));
 
   #attribute: string;

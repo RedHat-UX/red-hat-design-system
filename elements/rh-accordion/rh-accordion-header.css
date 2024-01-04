@@ -19,7 +19,7 @@
   font-weight: var(--rh-font-weight-heading-medium, 500);
 }
 
-.dark {
+:is(.dark, .darker, .darkest) {
   --_text-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_background-color: var(--rh-color-surface-darkest, #151515);
   --_active-background-color: var(--rh-color-surface-darkest, #151515);

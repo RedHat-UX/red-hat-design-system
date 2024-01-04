@@ -13,6 +13,8 @@ import { DirController } from '../../lib/DirController.js';
 
 import styles from './rh-pagination.css';
 
+import { colorContextConsumer, type ColorTheme } from '@rhds/elements/lib/context/color/consumer.js';
+
 const L1 = html`
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 14">
     <path d="M.3 6.26 6.24.3C6.63-.1 7.3-.1 7.7.3l.99.99c.4.4.4 1.07 0 1.48L4.49 7l4.2 4.22c.41.4.41 1.07 0 1.48l-.98 1c-.41.4-1.07.4-1.48 0L.31 7.73a1.05 1.05 0 0 1 0-1.48Z"/>
@@ -47,6 +49,11 @@ export class RhPagination extends LitElement {
   static readonly version = '{{version}}';
 
   static readonly styles = [styles];
+
+  /**
+   * Sets color theme based on parent context
+   */
+  @colorContextConsumer() private on?: ColorTheme;
 
   /**
    * Override `overflow` values set from HTML or JS.
@@ -116,8 +123,9 @@ export class RhPagination extends LitElement {
     const nextHref = this.#nextLink?.href;
     const lastHref = this.#currentLink === this.#lastLink ? undefined : this.#lastLink?.href;
     const currentPage = this.#currentPage.toString();
+    const { on = '' } = this;
     return html`
-      <div id="container" class=${classMap({ mobile, [size as string]: true, [dir]: true })}>
+      <div id="container" class=${classMap({ [on]: !!on, mobile, [size as string]: true, [dir]: true })}>
         <a id="first" class="stepper" href=${ifDefined(firstHref)} ?inert=${!firstHref} aria-label=${labelFirst}>${L2}</a>
         <a id="prev" class="stepper" href=${ifDefined(prevHref)} ?inert=${!prevHref} aria-label=${labelPrevious}>${L1}</a>
 
