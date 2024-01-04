@@ -15,11 +15,6 @@ import styles from './rh-accordion.css';
 import './rh-accordion-header.js';
 import './rh-accordion-panel.js';
 
-export type AccordionPalette = Extract<ColorPalette, (
-  | 'light'
-  | 'dark'
-)>;
-
 /**
  * An accordion is a stacked list of panels which allows users to expand or collapse information when selected. They feature panels that consist of a section text label and a caret icon that collapses or expands to reveal more information.
  *
@@ -42,7 +37,7 @@ export class RhAccordion extends BaseAccordion {
   @colorContextConsumer() private on?: ColorTheme;
 
   @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: AccordionPalette;
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   @observed(function largeChanged(this: RhAccordion) {
     [...this.headers, ...this.panels].forEach(el => el.toggleAttribute('large', this.large));
