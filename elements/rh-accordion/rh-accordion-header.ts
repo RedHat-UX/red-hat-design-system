@@ -9,7 +9,7 @@ import { DirController } from '../../lib/DirController.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
-import { BaseAccordionHeader } from '@patternfly/elements/pf-accordion/BaseAccordionHeader.js';
+import { BaseAccordionHeader } from './BaseAccordionHeader.js';
 
 import styles from './rh-accordion-header.css';
 
