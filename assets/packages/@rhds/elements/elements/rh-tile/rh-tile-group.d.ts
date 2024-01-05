@@ -9,17 +9,13 @@ export declare class RhTileGroup extends LitElement {
     #private;
     static readonly styles: import("lit").CSSResult[];
     /**
-     * whether tile group interaction is disabled
+     * Whether tile group interaction is disabled
      */
     disabled: boolean;
     /**
-     * if tile is checkable, whether only one tile can be checked
+     * If tile is checkable, whether only one tile can be checked
      */
     radio: boolean;
-    /**
-     * Sets color theme based on parent context
-     */
-    private on?;
     /**
      * Sets color palette, which affects the element's styles as well as descendants' color theme.
      * Overrides parent color context.
@@ -30,30 +26,35 @@ export declare class RhTileGroup extends LitElement {
      */
     colorPalette?: ColorPalette;
     /**
-     * all slotted tiles
+     * Sets color theme based on parent context
+     */
+    private on?;
+    /**
+     * All slotted tiles
      */
     get tiles(): RhTile[];
     /**
-     * all selected tiles
+     * All selected tiles
      */
     get selected(): RhTile | RhTile[];
-    protected firstUpdated(): void;
-    protected updated(changed: PropertyValues<this>): void;
+    constructor();
+    firstUpdated(): void;
+    willUpdate(changed: PropertyValues<this>): void;
     render(): import("lit-html").TemplateResult<1>;
-    /** sets focus on active tile */
+    /** Sets focus on active tile */
     focus(): void;
     /**
-     * programatically select a tile
-     * @param tile {RhTile | null | undefined} tile to select
+     * Programatically select a tile
+     * @param tile tile to select
      */
-    selectItem(tile: RhTile | null | undefined): void;
+    selectItem(tile?: RhTile): void;
     /**
-     * programatically toggle a tile
-     * @param tile {RhTile | null | undefined} tile to toggle
+     * Programatically toggle a tile
+     * @param tile tile to toggle
      */
-    toggleItem(tile: RhTile | null | undefined): void;
+    toggleItem(tile?: RhTile): void;
     /**
-     * updates slotted tiles to set properties and keyboard navigation
+     * Updates slotted tiles to set properties and keyboard navigation
      */
     updateItems(): void;
 }

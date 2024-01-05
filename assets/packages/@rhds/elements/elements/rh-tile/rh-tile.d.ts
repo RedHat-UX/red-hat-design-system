@@ -1,10 +1,10 @@
 import { LitElement, type PropertyValues } from 'lit';
-import { type ColorPalette } from '../../lib/context/color/provider.js';
-import { ComposedEvent } from '@patternfly/pfe-core';
 import '@patternfly/elements/pf-icon/pf-icon.js';
-export declare class TileSelectEvent extends ComposedEvent {
+import { type ColorPalette } from '../../lib/context/color/provider.js';
+export declare class TileSelectEvent extends Event {
+    force?: boolean | undefined;
     target: RhTile;
-    constructor();
+    constructor(force?: boolean | undefined);
 }
 /**
  * A tile is a flexible layout with a clickable and contained surface.
@@ -31,46 +31,63 @@ export declare class TileSelectEvent extends ComposedEvent {
 export declare class RhTile extends LitElement {
     #private;
     static readonly styles: import("lit").CSSResult[];
-    private static readonly _disabledIcon;
+    static readonly formAssociated = true;
+    shadowRoot: ShadowRoot;
     /**
-     * whether tile interaction is disabled
-     */
-    disabled: boolean;
-    private disabledGroup;
-    /** @private @internal */
-    radioGroup: boolean;
-    /**
-     * whether image is full-width (i.e. bleeds into the padding)
+     * Whether image is full-width (i.e. bleeds into the padding)
      */
     bleed: boolean;
     /**
-     * whether headline link text is a desaturated color instead of blue;
+     * Whether headline link text is a desaturated color instead of blue;
      * `true` sets headline color to white on dark tiles or black on light tiles
      */
     desaturated: boolean;
     /**
-     * reduces tile padding for more compact spaces
+     * Reduces tile padding for more compact spaces
      */
     compact: boolean;
     /**
-     * namespace of icon
+     * Icon (must be a member of the fontawesome "far" icon set)
      */
-    icon: boolean;
+    icon?: string;
     /**
-     * whether tile can be checked like a radio or checkbox:
-     * `false` (default) - tile behaves like a link;
-     * `true` - tile behaves like a checkbox unless it is part of an
-     * `rh-tile-group` with a `radio` type and more than one tile
+     * When checkable, the accessible (visually hidden) label for the form control
+     * If not set, the text content of the tile element will be used instead.
+     * @example Setting an accessible label when there is no text content
+     *          ```html
+     *          <form>
+     *            <rh-tile-group radio>
+     *              <rh-tile name="radio" value="1">Tile 1</rh-tile>
+     *              <rh-tile name="radio" value="2">Tile 2</rh-tile>
+     *              <rh-tile name="radio"
+     *                       value="3"
+     *                       accessible-label="Tile 3">
+     *                <img slot="image"
+     *                     role="presentation"
+     *                     src="tile-3.webp">
+     *              </rh-tile>
+     *            </rh-tile-group>
+     *          </form>
+     *          ```
+     */
+    accessibleLabel?: string;
+    /** Form name */
+    name?: string;
+    /** Form value */
+    value?: string;
+    /**
+     * When true, tile behaves like a checkbox unless it is part of an
+     * `<rh-tile-group radio>`, in which case it behaves like a radio button
      */
     checkable: boolean;
     /**
-     * if tile is checkable, whether it is currently checked
+     * If tile is checkable, whether it is currently checked
      */
     checked: boolean;
     /**
-     * Sets color theme based on parent context
+     * Whether tile interaction is disabled
      */
-    private on?;
+    disabled: boolean;
     /**
      * Sets color palette, which affects the element's styles as well as descendants' color theme.
      * Overrides parent color context.
@@ -80,10 +97,21 @@ export declare class RhTile extends LitElement {
      * Tile always resets its context to `base`, unless explicitly provided with a `color-palette`.
      */
     colorPalette?: ColorPalette;
-    connectedCallback(): void;
-    protected updated(changed: PropertyValues<this>): Promise<void>;
+    /**
+     * Sets color theme based on parent context
+     */
+    private on?;
+    private disabledGroup;
+    private radioGroup;
+    constructor();
+    /** Update the internal accessible representation of the element's state */
+    willUpdate(changed: PropertyValues<this>): Promise<void>;
     render(): import("lit-html").TemplateResult<1>;
-    disconnectedCallback(): void;
+    formDisabledCallback(): Promise<void>;
+    formStateRestoreCallback(state: string, mode: string): Promise<void>;
+    setCustomValidity(message: string): void;
+    checkValidity(): boolean;
+    reportValidity(): boolean;
 }
 declare global {
     interface HTMLElementTagNameMap {

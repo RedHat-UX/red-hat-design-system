@@ -91,6 +91,17 @@ export const config = {
       "content": "<rh-tile disabled=\"\">\n  <div slot=\"title\">Title</div>\n  <h2 slot=\"headline\"><a href=\"#top\">Link</a></h2>\n  Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n  <div slot=\"footer\">Suspendisse eu turpis elementum</div>\n</rh-tile>\n\n<script type=\"module\">\n  import '@rhds/elements/rh-tile/rh-tile.js';\n</script>\n\n<link rel=\"stylesheet\" href=\"../rh-tile-lightdom.css\">\n\n<style>\n  rh-tile {\n    margin-inline-end: var(--rh-space-md, 8px);\n  }\n</style>\n\n\n\n<!--playground-fold--><link rel=\"stylesheet\" href=\"https://static.redhat.com/libs/redhat/redhat-font/4/webfonts/red-hat-font.min.css\"><link rel=\"stylesheet\" href=\"https://static.redhat.com/libs/redhat/redhat-theme/6/advanced-theme.css\"><link rel=\"stylesheet\" href=\"../rhds-demo-base.css\">\n\n<!--playground-fold-end--><!--playground-hide--><script type=\"module\" src=\"./../rh-tile-disabled-inline-script-0.js\"></script>\n\n<!--playground-hide-end-->",
       "label": "Disabled"
     },
+    "demo/rh-tile-form-control-inline-script-0.js": {
+      "contentType": "application/javascript",
+      "content": "\n  import '@rhds/elements/rh-button/rh-button.js';\n  import '@rhds/elements/rh-tile/rh-tile-group.js';\n  const form = document.getElementById('form');\n  form.addEventListener('submit', function(event) {\n    event.preventDefault();\n    const data = new FormData(form);\n    form.output.value = JSON.stringify(Array.from(data.entries()).reduce((acc, [k, v]) => ({\n      ...acc, [k]: k in acc ? [acc[k], v].flat() : v,\n    }), {}), null, 2);\n  });\n",
+      "hidden": true
+    },
+    "demo/form-control/index.html": {
+      "contentType": "text/html",
+      "selected": false,
+      "content": "<form id=\"form\">\n  <rh-tile-group radio=\"\">\n    <rh-tile name=\"radio\" value=\"1\">Radio 1</rh-tile>\n    <rh-tile name=\"radio\" value=\"2\">Radio 2</rh-tile>\n  </rh-tile-group>\n  <rh-tile-group checkable=\"\">\n    <rh-tile name=\"check\" value=\"1\">Check 1</rh-tile>\n    <rh-tile name=\"check\" value=\"2\">Check 2</rh-tile>\n  </rh-tile-group>\n  <rh-button type=\"submit\">Submit</rh-button>\n  <output name=\"output\"></output>\n</form>\n\n<script type=\"module\">\n  import '@rhds/elements/rh-button/rh-button.js';\n  import '@rhds/elements/rh-tile/rh-tile-group.js';\n  const form = document.getElementById('form');\n  form.addEventListener('submit', function(event) {\n    event.preventDefault();\n    const data = new FormData(form);\n    form.output.value = JSON.stringify(Array.from(data.entries()).reduce((acc, [k, v]) => ({\n      ...acc, [k]: k in acc ? [acc[k], v].flat() : v,\n    }), {}), null, 2);\n  });\n</script>\n\n<link rel=\"stylesheet\" href=\"../rh-tile-lightdom.css\">\n<!--playground-fold--><link rel=\"stylesheet\" href=\"https://static.redhat.com/libs/redhat/redhat-font/4/webfonts/red-hat-font.min.css\"><link rel=\"stylesheet\" href=\"https://static.redhat.com/libs/redhat/redhat-theme/6/advanced-theme.css\"><link rel=\"stylesheet\" href=\"../rhds-demo-base.css\">\n\n<!--playground-fold-end--><!--playground-hide--><script type=\"module\" src=\"./../rh-tile-form-control-inline-script-0.js\"></script>\n\n<!--playground-hide-end-->",
+      "label": "Form Control"
+    },
     "demo/rh-tile-full-width-images-inline-script-0.js": {
       "contentType": "application/javascript",
       "content": "\n  import '@rhds/elements/rh-tile/rh-tile.js';\n  import '@patternfly/elements/pf-icon/pf-icon.js';\n",
