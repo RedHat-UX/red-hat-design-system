@@ -126,12 +126,12 @@ input:invalid {
   color: var(--rh-color-interactive-blue-darkest, #003366);
 }
 
-:is(.dark, .darker, .darkest) #numeric a:hover {
-  color: var(--rh-color-interactive-blue-lightest, #b9dafc);
-}
-
 #numeric a:visited {
   color: var(--rh-color-interactive-purple-darker, #5e40be);
+}
+
+:is(.dark, .darker, .darkest) #numeric a:hover {
+  color: var(--rh-color-interactive-blue-lightest, #b9dafc);
 }
 
 :is(.dark, .darker, .darkest) #numeric a:visited {
