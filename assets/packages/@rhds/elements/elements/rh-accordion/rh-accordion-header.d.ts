@@ -1,5 +1,14 @@
 import type { TemplateResult } from 'lit';
-import { BaseAccordionHeader } from '@patternfly/elements/pf-accordion/BaseAccordionHeader.js';
+import { LitElement } from 'lit';
+import { ComposedEvent } from '@patternfly/pfe-core';
+import { BaseAccordion } from './BaseAccordion.js';
+export declare class AccordionHeaderChangeEvent extends ComposedEvent {
+    expanded: boolean;
+    toggle: RhAccordionHeader;
+    accordion: BaseAccordion;
+    target: RhAccordionHeader;
+    constructor(expanded: boolean, toggle: RhAccordionHeader, accordion: BaseAccordion);
+}
 /**
  * Accordion Header
  *
@@ -16,15 +25,23 @@ import { BaseAccordionHeader } from '@patternfly/elements/pf-accordion/BaseAccor
  * @fires {AccordionHeaderChangeEvent} change - when the open panels change
  *
  */
-export declare class RhAccordionHeader extends BaseAccordionHeader {
+export declare class RhAccordionHeader extends LitElement {
     #private;
     static readonly version = "{{version}}";
     static readonly styles: import("lit").CSSResult[];
-    icon: string;
+    static readonly shadowRootOptions: {
+        delegatesFocus: boolean;
+        mode: ShadowRootMode;
+        slotAssignment?: SlotAssignmentMode | undefined;
+        customElements?: CustomElementRegistry | undefined;
+    };
     expanded: boolean;
+    headingText?: string;
+    headingTag?: string;
+    icon: string;
     private on?;
-    render(): TemplateResult;
-    renderAfterButton(): TemplateResult<1>;
+    connectedCallback(): void;
+    render(): Array<TemplateResult>;
 }
 declare global {
     interface HTMLElementTagNameMap {

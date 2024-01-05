@@ -1,8 +1,19 @@
 import { type TemplateResult } from 'lit';
 import { type ColorPalette } from '../../lib/context/color/provider.js';
-import { BaseAccordion } from '@patternfly/elements/pf-accordion/BaseAccordion.js';
-import './rh-accordion-header.js';
-import './rh-accordion-panel.js';
+import { BaseAccordion } from './BaseAccordion.js';
+import { ComposedEvent } from '@patternfly/pfe-core';
+import { AccordionHeaderChangeEvent, RhAccordionHeader } from './rh-accordion-header.js';
+import { RhAccordionPanel } from './rh-accordion-panel.js';
+export declare class AccordionExpandEvent extends ComposedEvent {
+    toggle: RhAccordionHeader;
+    panel: RhAccordionPanel;
+    constructor(toggle: RhAccordionHeader, panel: RhAccordionPanel);
+}
+export declare class AccordionCollapseEvent extends ComposedEvent {
+    toggle: RhAccordionHeader;
+    panel: RhAccordionPanel;
+    constructor(toggle: RhAccordionHeader, panel: RhAccordionPanel);
+}
 /**
  * An accordion is a stacked list of panels which allows users to expand or collapse information when selected. They feature panels that consist of a section text label and a caret icon that collapses or expands to reveal more information.
  *
@@ -17,13 +28,56 @@ import './rh-accordion-panel.js';
  *
  */
 export declare class RhAccordion extends BaseAccordion {
+    #private;
     static readonly version = "{{version}}";
     static readonly styles: import("lit").CSSResult[];
-    private on?;
-    colorPalette?: ColorPalette;
+    static isHeader(target: EventTarget | null): target is RhAccordionHeader;
+    static isPanel(target: EventTarget | null): target is RhAccordionPanel;
+    static isAccordionChangeEvent(event: Event): event is AccordionHeaderChangeEvent;
+    /**
+     * Sets and reflects the currently expanded accordion 0-based indexes.
+     * Use commas to separate multiple indexes.
+     * ```html
+     * <pf-accordion expanded-index="1,2">
+     *   ...
+     * </pf-accordion>
+     * ```
+     */
+    get expandedIndex(): number[];
+    set expandedIndex(value: number[]);
     large: boolean;
     bordered: boolean;
+    colorPalette?: ColorPalette;
+    private on?;
+    protected expandedSets: Set<number>;
+    connectedCallback(): void;
     render(): TemplateResult;
+    firstUpdated(): Promise<void>;
+    protected getUpdateComplete(): Promise<boolean>;
+    get headers(): RhAccordionHeader[];
+    get panels(): RhAccordionPanel[];
+    updateAccessibility(): void;
+    /**
+     * Accepts a 0-based index value (integer) for the set of accordion items to expand or collapse.
+     */
+    toggle(index: number): Promise<void>;
+    /**
+     * Accepts a 0-based index value (integer) for the set of accordion items to expand.
+     * Accepts an optional parent accordion to search for headers and panels.
+     */
+    expand(index: number, parentAccordion?: BaseAccordion): Promise<void>;
+    /**
+     * Expands all accordion items.
+     */
+    expandAll(): Promise<void>;
+    /**
+     * Accepts a 0-based index value (integer) for the set of accordion items to collapse.
+     */
+    collapse(index: number): Promise<void>;
+    /**
+     * Collapses all accordion items.
+     */
+    collapseAll(): Promise<void>;
 }
 declare global {
     interface HTMLElementTagNameMap {

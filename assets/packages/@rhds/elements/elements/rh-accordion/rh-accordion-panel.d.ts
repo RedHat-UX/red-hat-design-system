@@ -1,4 +1,4 @@
-import { BaseAccordionPanel } from '@patternfly/elements/pf-accordion/BaseAccordionPanel.js';
+import { LitElement } from 'lit';
 import { type ColorPalette } from '../../lib/context/color/provider.js';
 /**
  * Accordion Panel
@@ -6,11 +6,13 @@ import { type ColorPalette } from '../../lib/context/color/provider.js';
  * @slot
  *       The content of the accordion panel can be any basic markup including but not limited to div, paragraph, or nested accordion panels.
  */
-export declare class RhAccordionPanel extends BaseAccordionPanel {
+export declare class RhAccordionPanel extends LitElement {
     static readonly version = "{{version}}";
     static readonly styles: import("lit").CSSResult[];
-    private on?;
+    expanded: boolean;
     colorPalette?: ColorPalette;
+    private on?;
+    connectedCallback(): void;
     render(): import("lit-html").TemplateResult<1>;
 }
 declare global {
