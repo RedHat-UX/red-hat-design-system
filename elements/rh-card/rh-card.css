@@ -32,13 +32,13 @@ article {
 }
 
 #container,
-#container.light {
+#container:is(.light, .lighter, .lightest) {
   color: var(--rh-color-text-primary-on-light, #151515);
   background-color: var(--rh-color-surface-lightest, #ffffff);
   border-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
 }
 
-#container.dark {
+#container:is(.dark, .darker, .darkest) {
   background-color: var(--rh-color-surface-darkest, #151515);
   color: var(--rh-color-text-primary-on-dark, #ffffff);
   border-color: var(--rh-color-border-subtle-on-dark, #707070);

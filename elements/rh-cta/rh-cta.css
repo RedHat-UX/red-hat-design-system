@@ -237,7 +237,7 @@ svg {
   --rh-cta-active-text-decoration: none;
 }
 
-:host(:not([variant])) .dark {
+:host(:not([variant])) :is(.dark, .darker, .darkest) {
   --rh-cta-color: var(--rh-color-interactive-blue-lighter, #92c5f9);
   --rh-cta-hover-color: var(--rh-color-interactive-blue-lightest, #b9dafc);
 
@@ -274,7 +274,7 @@ svg {
   --rh-cta-active-inner-border-color: var(--rh-color-text-primary-on-dark, #ffffff);
 }
 
-:host([variant="primary"]) #container.dark {
+:host([variant="primary"]) #container:is(.dark, .darker, .darkest) {
   --rh-cta-hover-border-color: var(--rh-color-brand-red-dark, #a60000);
 }
 
@@ -282,6 +282,7 @@ svg {
  * SECONDARY
  *****************************************************************************/
 
+/* stylelint-disable-next-line no-descending-specificity */
 :host([variant="secondary"]) #container {
   border-style: solid;
 
@@ -300,7 +301,7 @@ svg {
   --rh-cta-active-inner-border-color: var(--rh-color-surface-light, #e0e0e0);
 }
 
-:host([variant="secondary"]) #container.dark {
+:host([variant="secondary"]) #container:is(.dark, .darker, .darkest) {
   --rh-cta-border-color: var(--rh-color-border-strong-on-dark, #ffffff);
   --rh-cta-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --rh-cta-hover-background-color: var(--rh-color-surface-lightest, #ffffff);
@@ -325,6 +326,7 @@ svg {
   width: 100%;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 :host([variant="brick"]) #container {
   border-style: solid;
   font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
@@ -351,7 +353,7 @@ svg {
   --rh-cta-active-text-decoration: underline;
 }
 
-:host([variant="brick"]) #container.dark {
+:host([variant="brick"]) #container:is(.dark, .darker, .darkest) {
   --rh-cta-border-color: var(--rh-color-border-subtle-on-dark, #707070);
   --rh-cta-color: var(--rh-color-interactive-blue-lighter, #92c5f9);
   --rh-cta-hover-background-color: var(--rh-color-surface-darker, #1f1f1f);

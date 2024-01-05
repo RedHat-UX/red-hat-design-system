@@ -61,7 +61,7 @@ describe('<rh-context-provider>', function() {
           await element.updateComplete;
         });
         it('should notify the children', function() {
-          expect(element.querySelector('test-context-consumer')?.on).to.equal('dark');
+          expect(element.querySelector('test-context-consumer')?.on).to.equal('darkest');
         });
       });
     });
@@ -81,7 +81,7 @@ describe('<rh-context-provider>', function() {
       await nextFrame();
     });
     it('sets the parent context on the child', function() {
-      expect(child.on).to.equal('dark');
+      expect(child.on).to.equal('darkest');
     });
     describe('updating the parent context', function() {
       beforeEach(async function() {
@@ -89,7 +89,7 @@ describe('<rh-context-provider>', function() {
         await nextFrame();
       });
       it('updates the child context', function() {
-        expect(child.on).to.equal('light');
+        expect(child.on).to.equal('lightest');
       });
     });
   });
@@ -109,7 +109,7 @@ describe('<rh-context-provider>', function() {
             await nextFrame();
           });
           it('sets the grandparent context on the child', function() {
-            expect(child.on).to.equal('dark');
+            expect(child.on).to.equal('darkest');
           });
           describe('updating the parent context', function() {
             beforeEach(async function() {
@@ -117,7 +117,7 @@ describe('<rh-context-provider>', function() {
               await nextFrame();
             });
             it('updates the child context', function() {
-              expect(child.on).to.equal('light');
+              expect(child.on).to.equal('lightest');
             });
           });
           describe('updating the grandparent context', function() {
@@ -126,7 +126,7 @@ describe('<rh-context-provider>', function() {
               await aTimeout(100);
             });
             it('updates the child context', function() {
-              expect(child.on).to.equal('light');
+              expect(child.on).to.equal('lightest');
             });
             describe('then updating the parent context', function() {
               beforeEach(async function() {
@@ -134,7 +134,7 @@ describe('<rh-context-provider>', function() {
                 await aTimeout(100);
               });
               it('updates the child context', function() {
-                expect(child.on).to.equal('dark');
+                expect(child.on).to.equal('darker');
               });
             });
           });
@@ -181,7 +181,7 @@ describe('<rh-context-provider>', function() {
           it('does not set the grandparent context on the child', function() {
             // Parent color context should override the grandparent context
             expect(child.on).to.not.equal('dark');
-            expect(child.on).to.equal('light');
+            expect(child.on).to.equal('lightest');
           });
           describe('updating the grandparent context', function() {
             beforeEach(async function() {
@@ -190,7 +190,7 @@ describe('<rh-context-provider>', function() {
             });
             it('does not update the child context', function() {
               // Parent color context should override the grandparent context
-              expect(child.on).to.equal('light');
+              expect(child.on).to.equal('lightest');
             });
             describe('then updating the parent context', function() {
               beforeEach(async function() {
@@ -198,7 +198,7 @@ describe('<rh-context-provider>', function() {
                 await aTimeout(100);
               });
               it('updates the child context', function() {
-                expect(child.on).to.equal('dark');
+                expect(child.on).to.equal('darker');
               });
             });
           });

@@ -17,24 +17,38 @@ rh-pagination li {
 
 rh-pagination li > a {
   text-decoration: none;
-  color: var(--rh-color-text-primary-on-light, #151515);
+  color: var(--_text-color, var(--rh-color-text-primary-on-light, #151515));
   font-weight: var(--rh-font-weight-body-text-medium, 500);
   outline: none;
   width: var(--_link-size);
   height: var(--_link-size);
   display: grid;
   place-content: center;
-  background: var(--rh-color-surface-lighter, #f2f2f2);
+  background: var(--_background-color, var(--rh-color-surface-lighter, #f2f2f2));
   box-sizing: border-box;
 }
 
 rh-pagination li a[aria-current="page"] {
-  background: var(--rh-color-surface-lightest, #ffffff);
+  background:
+    var(
+        --_current-page-background,
+        var(
+          --rh-color-surface-lightest,
+          #ffffff
+        )
+      );
   position: relative;
 
   --_border-color: #b8bbbe;
   --_border-width: 1px;
-  --_border-accent-color: var(--rh-color-interactive-blue-darker, #0066cc);
+  --_border-accent-color:
+    var(
+        --_current-page-border,
+        var(
+          --rh-color-interactive-blue-darker,
+          #0066cc
+        )
+      );
 }
 
 rh-pagination li a {

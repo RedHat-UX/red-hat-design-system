@@ -15,7 +15,7 @@ div {
   justify-content: space-around;
 }
 
-.dark {
+:is(.dark, .darker, .darkest) {
   --_accent-color: var(--rh-color-text-primary-on-dark, #ffffff);
 }
 
@@ -44,7 +44,7 @@ span,
   --pf-icon--size: 100%;
 }
 
-.dark #icon {
+:is(.dark, .darker, .darkest) #icon {
   color: var(--rh-color-icon-secondary-on-dark, #ffffff);
 }
 

@@ -57,7 +57,7 @@ input[type="range"][hidden] {
   --_track-fill-color: var(--_progress-color);
 }
 
-.dark input[type="range"] {
+:is(.dark, .darker, .darkest) input[type="range"] {
   --_thumb-disabled-color: rgb(255 255 255 / 0.5);
   --_track-color: rgb(255 255 255 / 0.5);
   --_interactive-color: var(--rh-color-border-interactive-on-dark, #92c5f9);

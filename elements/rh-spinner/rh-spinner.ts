@@ -36,9 +36,9 @@ export class RhSpinner extends LitElement {
   render() {
     const { on = '' } = this;
     return html`
-      <svg role="status" viewBox="0 0 100 100" aria-live="polite">
-        <circle class="track ${classMap({ [on]: !!on })}" cx="50" cy="50" r="40" fill="none" vector-effect="non-scaling-stroke" />
-        <circle class="dash ${classMap({ [on]: !!on })}" cx="50" cy="50" r="40" fill="none" vector-effect="non-scaling-stroke" />
+      <svg role="status" viewBox="0 0 100 100" aria-live="polite" class="${classMap({ [on]: !!on })}">
+        <circle class="track" cx="50" cy="50" r="40" fill="none" vector-effect="non-scaling-stroke" />
+        <circle class="dash" cx="50" cy="50" r="40" fill="none" vector-effect="non-scaling-stroke" />
       </svg>
       <slot></slot>
     `;

@@ -11,7 +11,7 @@
   --_panel-body-padding-inline-start: var(--rh-space-xl, 24px);
 }
 
-.dark {
+:is(.dark, .darker, .darkest) {
   --_background-color: var(--rh-color-surface-darkest, #151515);
   --_panel-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_panel-content-body-accent-color: var(--rh-color-accent-brand-on-dark, #ee0000);

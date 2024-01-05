@@ -50,7 +50,7 @@
   --_interactive-color: var(--rh-tile-interactive-color);
 }
 
-#outer.dark {
+#outer:is(.dark, .darker, .darkest) {
   --rh-tile-interactive-color: var(--rh-color-border-interactive-on-dark, #92c5f9);
   --rh-tile-focus-interactive-color: var(--rh-color-interactive-blue-lightest, #b9dafc);
   --rh-tile-text-color: var(--rh-color-text-primary-on-dark, #ffffff);
