@@ -28,8 +28,8 @@ button {
   cursor: pointer;
 }
 
-button::before,
-button::after {
+button:before,
+button:after {
   position: absolute;
   top: 0;
   right: 0;
@@ -42,7 +42,7 @@ button::after {
   background-color: transparent;
 }
 
-button::before {
+button:before {
   pointer-events: none;
 }
 
