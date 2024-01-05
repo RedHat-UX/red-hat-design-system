@@ -5,7 +5,7 @@ import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { cascades, deprecation } from '@patternfly/pfe-core/decorators.js';
 
-import { BaseTabs } from '@patternfly/elements/pf-tabs/BaseTabs.js';
+import { BaseTabs } from './BaseTabs.js';
 
 import { RhTab } from './rh-tab.js';
 import { RhTabPanel } from './rh-tab-panel.js';

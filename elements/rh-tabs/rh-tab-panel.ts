@@ -4,7 +4,7 @@ import { property } from 'lit/decorators/property.js';
 
 import { classMap } from 'lit/directives/class-map.js';
 
-import { BaseTabPanel } from '@patternfly/elements/pf-tabs/BaseTabPanel.js';
+import { BaseTabPanel } from './BaseTabPanel.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
