@@ -1,4 +1,5 @@
 import { LitElement } from 'lit';
+import { type ColorPalette } from '@rhds/elements/lib/context/color/provider.js';
 /**
  * A table is a container for displaying information. It allows a user to scan, examine, and compare large amounts of data.
  *
@@ -10,6 +11,8 @@ import { LitElement } from 'lit';
 export declare class RhTable extends LitElement {
     #private;
     static readonly styles: import("lit").CSSResult[];
+    private on?;
+    colorPalette?: ColorPalette;
     private static getNodeContentForSort;
     private static sortByContent;
     connectedCallback(): void;
