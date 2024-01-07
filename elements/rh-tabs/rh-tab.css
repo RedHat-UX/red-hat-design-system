@@ -53,6 +53,19 @@ button:before {
   border: 0 solid transparent;
 }
 
+button:focus-visible {
+  outline: var(--rh-border-width-md, 2px) solid var(--_button-focus-outline-color);
+  outline-offset: -8px;
+  border-radius: 10px;
+}
+
+button:after {
+  background-color: transparent;
+  border-inline: 0 solid transparent;
+  border-block-start: var(--rh-border-width-lg, 3px) solid transparent;
+  border-block-end: var(--rh-border-width-sm, 1px) solid transparent;
+}
+
 :host([fill]) button {
   flex-basis: 100%;
   justify-content: center;
@@ -65,8 +78,6 @@ button:before {
 :host([aria-disabled="true"]) button {
   cursor: default;
 }
-
-/* START RHDS */
 
 #rhds-container {
   display: flex;
@@ -140,19 +151,6 @@ button:before {
         --rh-tabs-active-border-color,
         var(--rh-color-border-interactive-on-dark, #92c5f9)
       );
-}
-
-button:focus-visible {
-  outline: var(--rh-border-width-md, 2px) solid var(--_button-focus-outline-color);
-  outline-offset: -8px;
-  border-radius: 10px;
-}
-
-button:after {
-  background-color: transparent;
-  border-inline: 0 solid transparent;
-  border-block-start: var(--rh-border-width-lg, 3px) solid transparent;
-  border-block-end: var(--rh-border-width-sm, 1px) solid transparent;
 }
 
 :host([vertical]) button {
