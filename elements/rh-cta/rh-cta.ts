@@ -178,7 +178,7 @@ export class RhCta extends LitElement {
   render() {
     const rtl = this.#dir.dir === 'rtl';
     // START DEPRECATION WARNING
-    // note: remove on from classMap belo
+    // note: remove on from classMap below
     const dark = this.colorPalette?.includes('dark') ? 'dark' : '';
     const on = this.on ?? dark;
     // END DEPRECATION WARNING

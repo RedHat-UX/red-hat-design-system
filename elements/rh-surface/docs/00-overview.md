@@ -7,7 +7,7 @@
   <rh-blockquote>
     <p>Surface is used to provide a theme to children</p>
   </rh-blockquote>
-  <rh-card color-palette="dark">
+  <rh-card>
     <h2 slot="header">Containers</h2>
     <p>Children inherit their parent's <code>theme</code></p>
   </rh-card>
