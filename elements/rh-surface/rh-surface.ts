@@ -8,8 +8,19 @@ import contextStyle from '../../lib/context/color/context-color.css';
 import styles from './rh-surface.css';
 
 /**
- * Surface
- * @slot - Place element content here
+ * Surfaces are content containers with a color palette which provide a theme
+ * (i.e. a background color as well as accessible font colors) to their child
+ * elements. Use surfaces only when other containers like `<rh-card>` or
+ * `<rh-accordion>` are inappropriate.
+ *
+ * @slot - The `<rh-surface>` element has a single anonymous slot which accepts any content and does not provide additional layout styling
+ *
+ * @example A surface providing a theme to a spinner
+ *          ```html
+ *          <rh-surface color-palette="light">
+ *            <rh-spinner>Loading...</rh-spinner>
+ *          </rh-surface>
+ *          ```
  */
 @customElement('rh-surface')
 export class RhSurface extends LitElement {
