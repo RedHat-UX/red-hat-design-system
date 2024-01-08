@@ -10,8 +10,8 @@ import styles from './rh-surface.css';
 /**
  * Surfaces are content containers with a color palette which provide a theme
  * (i.e. a background color as well as accessible font colors) to their child
- * elements. Use surfaces only when other containers like `<rh-card>` or
- * `<rh-accordion>` are inappropriate.
+ * elements. Use surface only when other containers like card or accordion
+ * are inappropriate.
  *
  * @slot - The `<rh-surface>` element has a single anonymous slot which accepts any content and does not provide additional layout styling
  *
