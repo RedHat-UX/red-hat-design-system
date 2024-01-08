@@ -16,10 +16,10 @@ export class UxdotSample extends LitElement {
   createRenderRoot() {
     const template = this.querySelector('template[shadowrootmode]');
     if (!template) {
-      return this.shadowRoot;
+      return this.shadowRoot ?? super.createRenderRoot();
     } else {
       const mode = template.getAttribute('shadowrootmode');
-      this.attachShadow({ mode }).appendChild(template.content);
+      (this.shadowRoot ?? this.attachShadow({ mode })).appendChild(template.content);
       template.remove();
       return this.shadowRoot;
     }
