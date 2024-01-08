@@ -55,7 +55,9 @@ export class RhCard extends LitElement {
   override render() {
     const { on = '', colorPalette = '' } = this;
     return html`
-     <article part="container" id="container" class="${classMap({ [on]: !!on, [colorPalette]: !!colorPalette })}">
+     <article id="container"
+              part="container"
+              class="${classMap({ [on]: !!on, [colorPalette as string]: !!colorPalette })}">
         <header id="header"
                 part="header"
                 class="${classMap({ empty: !this.#slots.hasSlotted('header') })}">
