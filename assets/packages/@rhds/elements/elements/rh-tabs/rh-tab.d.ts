@@ -1,4 +1,10 @@
-import { BaseTab } from '@patternfly/elements/pf-tabs/BaseTab.js';
+import type { PropertyValues } from 'lit';
+import { LitElement } from 'lit';
+export declare class TabExpandEvent extends Event {
+    active: boolean;
+    tab: RhTab;
+    constructor(active: boolean, tab: RhTab);
+}
 /**
  * The tab button for use within a rh-tabs element, must be paired with a rh-tab-panel.
  *
@@ -18,16 +24,30 @@ import { BaseTab } from '@patternfly/elements/pf-tabs/BaseTab.js';
  *
  * @fires { TabExpandEvent } expand - when a tab expands
  */
-export declare class RhTab extends BaseTab {
+export declare class RhTab extends LitElement {
+    #private;
+    static shadowRootOptions: {
+        delegatesFocus: boolean;
+        mode: ShadowRootMode;
+        slotAssignment?: SlotAssignmentMode | undefined;
+        customElements?: CustomElementRegistry | undefined;
+    };
     static readonly version = "{{version}}";
     static readonly styles: import("lit").CSSResult[];
+    /** `active` should be observed, and true when the tab is selected */
+    active: boolean;
+    /** `disabled` should be observed, and true when the tab is disabled */
+    disabled: boolean;
     /**
      * Sets color theme based on parent context
      */
     private on?;
-    active: boolean;
-    disabled: boolean;
+    private icons;
+    private button;
+    connectedCallback(): void;
     render(): import("lit-html").TemplateResult<1>;
+    updated(changed: PropertyValues<this>): void;
+    focus(): void;
 }
 declare global {
     interface HTMLElementTagNameMap {

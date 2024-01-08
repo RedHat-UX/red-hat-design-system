@@ -37,7 +37,7 @@
     <link type="text/css" href="/assets/pfe--noscript.min.css">
   </noscript>
 
-  <script type="importmap">{"imports":{"@patternfly/pfe-core":"/assets/packages/@patternfly/pfe-core/core.js","lit-html":"/assets/packages/lit-html/lit-html.js","@floating-ui/core":"/assets/packages/@floating-ui/core/dist/floating-ui.core.browser.min.mjs","tslib":"/assets/packages/tslib/tslib.es6.js","@lit/reactive-element":"/assets/packages/@lit/reactive-element/reactive-element.js","@floating-ui/dom":"/assets/packages/@floating-ui/dom/dist/floating-ui.dom.browser.min.mjs","lit-element":"/assets/packages/lit-element/index.js","lit/directives/if-defined.js":"/assets/packages/lit/directives/if-defined.js","lit":"/assets/packages/lit/index.js","@patternfly/elements":"/assets/packages/@patternfly/elements/pfe.min.js","@rhds/tokens":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/tokens.js","@rhds/tokens/media.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js","@rhds/tokens/meta.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js","element-internals-polyfill":"/assets/packages/element-internals-polyfill/dist/index.js","fuse.js":"/assets/packages/fuse.js/dist/fuse.esm.js","@rhds/tokens/":"/assets/packages/@rhds/tokens/js/","@rhds/elements/":"/assets/packages/@rhds/elements/elements/","@rhds/elements/lib/":"/assets/packages/@rhds/elements/lib/","@patternfly/elements/":"/assets/packages/@patternfly/elements/","@patternfly/icons/":"/assets/packages/@patternfly/icons/","@patternfly/pfe-core/":"/assets/packages/@patternfly/pfe-core/"},"scopes":{"/assets/packages/":{"@lit/reactive-element/decorators/":"/assets/packages/@lit/reactive-element/decorators/","lit":"/assets/packages/@patternfly/elements/node_modules/lit/index.js","lit-element/lit-element.js":"/assets/packages/lit-element/lit-element.js","lit-html/":"/assets/packages/lit-html/","lit/":"/assets/packages/@patternfly/elements/node_modules/lit/"}}}</script>
+  <script type="importmap">{"imports":{"@patternfly/pfe-core":"/assets/packages/@patternfly/pfe-core/core.js","lit-html":"/assets/packages/lit-html/lit-html.js","@floating-ui/core":"/assets/packages/@floating-ui/core/dist/floating-ui.core.browser.min.mjs","tslib":"/assets/packages/tslib/tslib.es6.js","@lit/reactive-element":"/assets/packages/@lit/reactive-element/reactive-element.js","@floating-ui/dom":"/assets/packages/@floating-ui/dom/dist/floating-ui.dom.browser.min.mjs","lit-element":"/assets/packages/lit-element/index.js","lit/directives/if-defined.js":"/assets/packages/lit/directives/if-defined.js","lit":"/assets/packages/lit/index.js","@patternfly/elements":"/assets/packages/@patternfly/elements/pfe.min.js","@rhds/tokens/meta.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js","@rhds/tokens/media.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js","@rhds/tokens":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/tokens.js","element-internals-polyfill":"/assets/packages/element-internals-polyfill/dist/index.js","fuse.js":"/assets/packages/fuse.js/dist/fuse.esm.js","@rhds/tokens/":"/assets/packages/@rhds/tokens/js/","@rhds/elements/":"/assets/packages/@rhds/elements/elements/","@rhds/elements/lib/":"/assets/packages/@rhds/elements/lib/","@patternfly/elements/":"/assets/packages/@patternfly/elements/","@patternfly/icons/":"/assets/packages/@patternfly/icons/","@patternfly/pfe-core/":"/assets/packages/@patternfly/pfe-core/"},"scopes":{"/assets/packages/":{"@lit/reactive-element/decorators/":"/assets/packages/@lit/reactive-element/decorators/","lit":"/assets/packages/@patternfly/elements/node_modules/lit/index.js","lit-element/lit-element.js":"/assets/packages/lit-element/lit-element.js","lit-html/":"/assets/packages/lit-html/","lit/":"/assets/packages/@patternfly/elements/node_modules/lit/"}}}</script>
   <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js"></script>
   
   <script type="module">
@@ -529,64 +529,31 @@ they will not block rendering.</p>
       </h2>
     </copy-permalink>
   <dl>
-    <dt><strong><code>color-palette</code></strong></dt>
+    <dt><strong><code>label-scroll-left</code></strong></dt>
     <dd>
-<p>Sets color context for child components, overrides parent context</p>
+<p>accessible label for the tab panel's scroll left button.</p>
 <dl class="member">
-  <dt>DOM Property</dt>
-  <dd><code>colorPalette</code></dd>
   <dt>Type</dt>
-  <dd class="inline-type">
-<pre class="language-ts"><code class="language-ts">ColorPalette <span class="token operator">|</span> <span class="token keyword">undefined</span><br></code></pre>
-</dd>
-  <dt>Default</dt>
   <dd class="inline-type">
 <pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span><br></code></pre>
 </dd>
-</dl>
-    </dd>
-<p></p><dt><strong><code>centered</code></strong></dt>
-<dd><p></p>
-<dl class="member">
-  <dt>DOM Property</dt>
-  <dd><code>centered</code></dd>
-  <dt>Type</dt>
-  <dd class="inline-type">
-<pre class="language-ts"><code class="language-ts"><span class="token builtin">boolean</span><br></code></pre>
-</dd>
   <dt>Default</dt>
   <dd class="inline-type">
-<pre class="language-ts"><code class="language-ts"><span class="token boolean">false</span><br></code></pre>
+<pre class="language-ts"><code class="language-ts"><span class="token string">"Scroll left"</span><br></code></pre>
 </dd>
 </dl>
     </dd>
-<p></p><dt><strong><code>box</code></strong></dt>
+<p></p><dt><strong><code>label-scroll-right</code></strong></dt>
 <dd><p></p>
+<p>accessible label for the tab panel's scroll right button.</p>
 <dl class="member">
-  <dt>DOM Property</dt>
-  <dd><code>box</code></dd>
   <dt>Type</dt>
   <dd class="inline-type">
-<pre class="language-ts"><code class="language-ts"><span class="token string">'box'</span> <span class="token operator">|</span> <span class="token string">'inset'</span> <span class="token operator">|</span> <span class="token keyword">null</span> <span class="token operator">|</span> <span class="token keyword">undefined</span><br></code></pre>
+<pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span><br></code></pre>
 </dd>
   <dt>Default</dt>
   <dd class="inline-type">
-<pre class="language-ts"><code class="language-ts"><span class="token keyword">null</span><br></code></pre>
-</dd>
-</dl>
-    </dd>
-<p></p><dt><strong><code>vertical</code></strong></dt>
-<dd><p></p>
-<dl class="member">
-  <dt>DOM Property</dt>
-  <dd><code>vertical</code></dd>
-  <dt>Type</dt>
-  <dd class="inline-type">
-<pre class="language-ts"><code class="language-ts"><span class="token builtin">boolean</span><br></code></pre>
-</dd>
-  <dt>Default</dt>
-  <dd class="inline-type">
-<pre class="language-ts"><code class="language-ts"><span class="token boolean">false</span><br></code></pre>
+<pre class="language-ts"><code class="language-ts"><span class="token string">"Scroll right"</span><br></code></pre>
 </dd>
 </dl>
     </dd>
@@ -924,6 +891,7 @@ auto
   <dl>
     <dt><strong><code>active</code></strong></dt>
     <dd>
+<p><code>active</code> should be observed, and true when the tab is selected</p>
 <dl class="member">
   <dt>DOM Property</dt>
   <dd><code>active</code></dd>
@@ -939,6 +907,7 @@ auto
     </dd>
 <p></p><dt><strong><code>disabled</code></strong></dt>
 <dd><p></p>
+<p><code>disabled</code> should be observed, and true when the tab is disabled</p>
 <dl class="member">
   <dt>DOM Property</dt>
   <dd><code>disabled</code></dd>
@@ -960,7 +929,10 @@ auto
     <a class="heading-anchor" href="#methods-1">Methods</a>
       </h2>
     </copy-permalink>
-<p><em>None</em></p>
+  <dl>
+    <dt><strong><code>focus()</code></strong></dt>
+    <dd></dd>
+  </dl>
 </section>
 <section class="api band events api-properties">
 <copy-permalink class="h2">
