@@ -1,13 +1,13 @@
 import { expect, fixture, html, nextFrame, aTimeout } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
-import { RhContextProvider } from '@rhds/elements/lib/elements/rh-context-provider/rh-context-provider.js';
+import { RhSurface } from '../rh-surface.js';
 
 import { LitElement, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../../context/color/consumer.js';
-import { colorContextProvider, type ColorPalette } from '../../../context/color/provider.js';
+import { colorContextConsumer, type ColorTheme } from '../../../lib/context/color/consumer.js';
+import { colorContextProvider, type ColorPalette } from '../../../lib/context/color/provider.js';
 
 @customElement('test-context-consumer')
 export class ContextConsumer extends LitElement {
@@ -37,18 +37,18 @@ declare global {
   }
 }
 
-describe('<rh-context-provider>', function() {
+describe('<rh-surface>', function() {
   describe('simply instantiating', function() {
-    let element: RhContextProvider;
+    let element: RhSurface;
     beforeEach(async function() {
-      element = await createFixture<RhContextProvider>(html`<rh-context-provider></rh-context-provider>`);
+      element = await createFixture<RhSurface>(html`<rh-surface></rh-surface>`);
     });
     it('should upgrade', async function() {
-      const klass = customElements.get('rh-context-provider');
+      const klass = customElements.get('rh-surface');
       expect(element)
         .to.be.an.instanceOf(klass)
         .and
-        .to.be.an.instanceOf(RhContextProvider);
+        .to.be.an.instanceOf(RhSurface);
     });
     describe('setting darkest color palette', function() {
       beforeEach(async function() {
@@ -68,15 +68,15 @@ describe('<rh-context-provider>', function() {
   });
 
   describe('with child', function() {
-    let parent: RhContextProvider;
+    let parent: RhSurface;
     let child: ContextConsumer;
     beforeEach(async function() {
       await fixture(html`
-        <rh-context-provider id="p" color-palette="darkest">
+        <rh-surface id="p" color-palette="darkest">
           <test-context-consumer id="c"></test-context-consumer>
-        </rh-context-provider>
+        </rh-surface>
       `);
-      parent = document.getElementById('p') as RhContextProvider;
+      parent = document.getElementById('p') as RhSurface;
       child = document.getElementById('c') as ContextConsumer;
       await nextFrame();
     });
@@ -98,13 +98,13 @@ describe('<rh-context-provider>', function() {
     describe('and no parent value', function() {
       function describeNestedNoParentValue(title: string, template: TemplateResult) {
         describe(`and nested ${title}`, function() {
-          let grandparent: RhContextProvider;
-          let parent: RhContextProvider;
+          let grandparent: RhSurface;
+          let parent: RhSurface;
           let child: ContextConsumer;
           beforeEach(async function() {
             await fixture(template);
-            grandparent = document.getElementById('gp') as RhContextProvider;
-            parent = document.getElementById('p') as RhContextProvider;
+            grandparent = document.getElementById('gp') as RhSurface;
+            parent = document.getElementById('p') as RhSurface;
             child = document.getElementById('c') as ContextConsumer;
             await nextFrame();
           });
@@ -142,39 +142,39 @@ describe('<rh-context-provider>', function() {
       }
 
       describeNestedNoParentValue('consumer', html`
-        <rh-context-provider id="gp" color-palette="darkest">
-          <rh-context-provider id="p">
+        <rh-surface id="gp" color-palette="darkest">
+          <rh-surface id="p">
             <test-context-consumer id="c"></test-context-consumer>
-          </rh-context-provider>
-        </rh-context-provider>
+          </rh-surface>
+        </rh-surface>
       `);
 
       describeNestedNoParentValue('consumer/provider', html`
-        <rh-context-provider id="gp" color-palette="darkest">
-          <rh-context-provider id="p">
+        <rh-surface id="gp" color-palette="darkest">
+          <rh-surface id="p">
             <test-context-consumer-provider id="c"></test-context-consumer-provider>
-          </rh-context-provider>
-        </rh-context-provider>
+          </rh-surface>
+        </rh-surface>
       `);
 
       describeNestedNoParentValue('provider/consumer', html`
-        <rh-context-provider id="gp" color-palette="darkest">
-          <rh-context-provider id="p">
+        <rh-surface id="gp" color-palette="darkest">
+          <rh-surface id="p">
             <test-context-provider-consumer id="c"></test-context-provider-consumer>
-          </rh-context-provider>
-        </rh-context-provider>
+          </rh-surface>
+        </rh-surface>
       `);
     });
     describe('and parent value is set', function() {
       function describeNestedWithParentValue(title: string, template: TemplateResult) {
         describe(`nested ${title}`, function() {
-          let grandparent: RhContextProvider;
-          let parent: RhContextProvider;
+          let grandparent: RhSurface;
+          let parent: RhSurface;
           let child: ContextConsumer;
           beforeEach(async function() {
             await fixture(template);
-            grandparent = document.getElementById('gp') as RhContextProvider;
-            parent = document.getElementById('p') as RhContextProvider;
+            grandparent = document.getElementById('gp') as RhSurface;
+            parent = document.getElementById('p') as RhSurface;
             child = document.getElementById('c') as ContextConsumer;
             await Promise.all([grandparent, parent, child].map(x => x.updateComplete));
           });
@@ -206,27 +206,27 @@ describe('<rh-context-provider>', function() {
       }
 
       describeNestedWithParentValue('consumer', html`
-        <rh-context-provider id="gp" color-palette="darkest">
-          <rh-context-provider id="p" color-palette="lightest">
+        <rh-surface id="gp" color-palette="darkest">
+          <rh-surface id="p" color-palette="lightest">
             <test-context-consumer id="c"></test-context-consumer>
-          </rh-context-provider>
-        </rh-context-provider>
+          </rh-surface>
+        </rh-surface>
       `);
 
       describeNestedWithParentValue('consumer/provider', html`
-        <rh-context-provider id="gp" color-palette="darkest">
-          <rh-context-provider id="p" color-palette="lightest">
+        <rh-surface id="gp" color-palette="darkest">
+          <rh-surface id="p" color-palette="lightest">
             <test-context-consumer id="c"></test-context-consumer>
-          </rh-context-provider>
-        </rh-context-provider>
+          </rh-surface>
+        </rh-surface>
       `);
 
       describeNestedWithParentValue('provider/consumer', html`
-        <rh-context-provider id="gp" color-palette="darkest">
-          <rh-context-provider id="p" color-palette="lightest">
+        <rh-surface id="gp" color-palette="darkest">
+          <rh-surface id="p" color-palette="lightest">
             <test-context-consumer id="c"></test-context-consumer>
-          </rh-context-provider>
-        </rh-context-provider>
+          </rh-surface>
+        </rh-surface>
       `);
     });
   });
