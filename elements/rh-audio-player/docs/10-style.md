@@ -26,6 +26,10 @@
 }
 </style>
 
+<script type="module">
+  import '/assets/elements/uxdot-anatomy-sample.js';
+</script>
+
 ## Style
 The audio player is a collection of elements used to play audio clips and browse [features](../features). There are also optional slots for an image and description text. The audio player must include the following elements **at a minimum**:
 - Audio clip title
@@ -38,6 +42,27 @@ The audio player is a collection of elements used to play audio clips and browse
 {% example palette="light",
           alt="Image of audio player anatomy showing all players with lots of annotations",
           src="../audio-player-anatomy.png" %}
+
+<uxdot-anatomy-sample>
+  <rh-audio-player slot="element"
+                   lang="en-US"
+                   layout="full"
+                   mediaseries="Code Comments"
+                   mediatitle="Challenges in solutions engineering"
+                   poster="https://www.redhat.com/cms/managed-files/CLH-S7-ep1.png">
+    <rh-audio-player-about slot="about"></rh-audio-player-about>
+    <audio crossorigin="anonymous"
+           slot="media"
+           controls>
+      <source type="audio/mp3"
+              srclang="en"
+              src="https://cdn.simplecast.com/audio/28d037d3-7d17-42d4-a8e2-2e00fd8b602b/episodes/bd38190e-516f-49c0-b47e-6cf663d80986/audio/dc570fd1-7a5e-41e2-b9a4-96deb346c20f/default_tc.mp3">
+    </audio>
+    <rh-audio-player-subscribe slot="subscribe"></rh-audio-player-subscribe>
+    <rh-transcript slot="transcript"></rh-transcript>
+  </rh-audio-player>
+  <rh-badge number="1" data-shadow-selector="#poster img"></rh-badge>
+</uxdot-anatomy-sample>
 
 1) Image
 2) Description
