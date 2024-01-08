@@ -10,7 +10,7 @@ import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
 import styles from './rh-dialog.css';
 
-import '@rhds/elements/lib/elements/rh-context-provider/rh-context-provider.js';
+import '@rhds/elements/rh-surface/rh-surface.js';
 import { query } from 'lit/decorators/query.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
@@ -136,18 +136,18 @@ export class RhDialog extends LitElement {
 
     const { mobile } = this.#screenSize;
     return html`
-      <rh-context-provider id="rhds-wrapper"
+      <rh-surface id="rhds-wrapper"
                            class="${classMap({ mobile })}"
                            color-palette="lightest">
         <section ?hidden=${!this.open}>
           <div id="overlay" part="overlay" ?hidden=${!this.open}></div>
           <div id="dialog"
-              part="dialog"
-              tabindex="0"
-              role="dialog"
-              aria-labelledby=${ifDefined(headerId)}
-              aria-label=${ifDefined(headerLabel)}
-              ?hidden="${!this.open}">
+               part="dialog"
+               tabindex="0"
+               role="dialog"
+               aria-labelledby=${ifDefined(headerId)}
+               aria-label=${ifDefined(headerLabel)}
+               ?hidden="${!this.open}">
             <div id="container">
               <div id="content" part="content" class=${classMap({ hasHeader, hasDescription, hasFooter })}>
                 <header part="header">
@@ -173,15 +173,13 @@ export class RhDialog extends LitElement {
             </div>
           </div>
         </section>
-      </rh-context-provider>
+      </rh-surface>
     `;
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
-
     this.removeEventListener('keydown', this.onKeydown);
-
     this.#triggerElement?.removeEventListener('click', this.onTriggerClick);
   }
 

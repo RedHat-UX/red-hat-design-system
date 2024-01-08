@@ -6,7 +6,7 @@ import { classMap } from 'lit/directives/class-map.js';
 import { type ColorPalette } from '../../context/color/provider.js';
 import { ContextChangeEvent } from '../rh-context-picker/rh-context-picker.js';
 
-import '@rhds/elements/lib/elements/rh-context-provider/rh-context-provider.js';
+import '@rhds/elements/rh-surface/rh-surface.js';
 
 import style from './rh-context-demo.css';
 import paginationLightdomStyle from '../../../elements/rh-pagination/rh-pagination-lightdom.css';
@@ -29,10 +29,10 @@ export class RhContextDemo extends LitElement {
     const { value = 'darkest' } = this;
     const [on = 'dark'] = value.match(/dark|light/) ?? [];
     return html`
-      <rh-context-provider id="provider"
-                           color-palette="${value}"
-                           class="${classMap({ [on]: true })}"
-                           @change="${this.#onChange}">
+      <rh-surface id="provider"
+                  color-palette="${value}"
+                  class="${classMap({ [on]: true })}"
+                  @change="${this.#onChange}">
           <div id="picker-container">
             <rh-context-picker id="picker"
                                .value="${this.value}"
@@ -75,7 +75,7 @@ export class RhContextDemo extends LitElement {
             </rh-tabs>
           </div>
         </slot>
-      </rh-context-provider>
+      </rh-surface>
     `;
   }
 
