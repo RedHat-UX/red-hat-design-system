@@ -6,7 +6,7 @@ import { classMap } from 'lit/directives/class-map.js';
 import { type ColorPalette } from '../../context/color/provider.js';
 import { ContextChangeEvent } from '../rh-context-picker/rh-context-picker.js';
 
-import '@rhds/elements/lib/elements/rh-context-provider/rh-context-provider.js';
+import '@rhds/elements/rh-surface/rh-surface.js';
 
 import style from './rh-context-demo.css';
 
@@ -28,7 +28,7 @@ export class RhContextDemo extends LitElement {
     const { value = 'darkest' } = this;
     const [on = 'dark'] = value.match(/dark|light/) ?? [];
     return html`
-      <rh-context-provider id="provider"
+      <rh-surface id="provider"
                            color-palette="${value}"
                            class="${classMap({ [on]: true })}"
                            @change="${this.#onChange}">
@@ -39,7 +39,7 @@ export class RhContextDemo extends LitElement {
             <label for="picker">${this.label}</label>
           </div>
         <slot part="demo"></slot>
-      </rh-context-provider>
+      </rh-surface>
     `;
   }
 

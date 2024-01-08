@@ -95,7 +95,7 @@ A card can be used in light and dark themes.
 
 ### Theme
 
-<rh-context-provider color-palette="light">
+<rh-surface color-palette="light">
   <rh-card>
     <h2 slot="header">Card title</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
@@ -103,9 +103,9 @@ A card can be used in light and dark themes.
       elit. Donec id elit non mi porta gravida at eget metus.</p>
     <rh-cta slot="footer"><a href="#">Footer</a></rh-cta>
   </rh-card>
-</rh-context-provider>
+</rh-surface>
 
-<rh-context-provider color-palette="dark">
+<rh-surface color-palette="dark">
   <rh-card>
     <h2 slot="header">Card title</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
@@ -113,7 +113,7 @@ A card can be used in light and dark themes.
       elit. Donec id elit non mi porta gravida at eget metus.</p>
     <rh-cta slot="footer"><a href="#">Footer</a></rh-cta>
   </rh-card>
-</rh-context-provider>
+</rh-surface>
 
 ### Custom Theming
 
@@ -130,7 +130,7 @@ For more information, please see the [card css custom properties](/elements/card
 
 #### Custom Light Theme
 
-<rh-context-provider color-palette="light">
+<rh-surface color-palette="light">
   <rh-card class="custom-light-theme">
     <h2 slot="header">Card title</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
@@ -138,11 +138,11 @@ For more information, please see the [card css custom properties](/elements/card
       elit. Donec id elit non mi porta gravida at eget metus.</p>
     <rh-cta slot="footer"><a href="#">Footer</a></rh-cta>
   </rh-card>
-</rh-context-provider>
+</rh-surface>
 
 #### Custom Dark Theme
 
-<rh-context-provider color-palette="dark">
+<rh-surface color-palette="dark">
   <rh-card class="custom-dark-theme">
     <h2 slot="header">Card title</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
@@ -150,7 +150,7 @@ For more information, please see the [card css custom properties](/elements/card
       elit. Donec id elit non mi porta gravida at eget metus.</p>
     <rh-cta slot="footer"><a href="#">Footer</a></rh-cta>
   </rh-card>
-</rh-context-provider>
+</rh-surface>
 
 {% repoStatus %}
 
@@ -163,16 +163,16 @@ For more information, please see the [card css custom properties](/elements/card
     max-width: 360px;
   }
 
-  rh-context-provider {
+  rh-surface {
     width: fit-content;
   }
 
   rh-card.alt,
-  rh-context-provider[color-palette^="light"] rh-card.alt {
+  rh-surface[color-palette^="light"] rh-card.alt {
     --rh-card-background-color: #f0f0f0;
   }
 
-  rh-context-provider[color-palette^="dark"] rh-card.alt {
+  rh-surface[color-palette^="dark"] rh-card.alt {
     --rh-card-background-color: #3c3f42;
   }
 
