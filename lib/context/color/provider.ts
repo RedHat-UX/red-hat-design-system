@@ -171,9 +171,10 @@ export class ColorContextProvider<
     }
   }
 
-  protected static __INTERNAL_NO_TOUCHY__getParentPalette(
+  protected static async __INTERNAL_NO_TOUCHY__getParentPalette(
     consumer: ReactiveControllerHost,
-  ): ColorPalette {
+  ): Promise<ColorPalette> {
+    await consumer.updateComplete;
     const provider = ColorContextProvider.consumers.get(consumer);
     console.log(ColorContextProvider.consumers, consumer, provider);
     return provider?.colorPalette as ColorPalette;
@@ -181,7 +182,6 @@ export class ColorContextProvider<
 
   protected static consumers =
     new Map<ReactiveControllerHost, ColorContextProvider<any>>();
-
 
   /** Calls the context callback for all consumers */
   public override async update(force?: ColorTheme) {

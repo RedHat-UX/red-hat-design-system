@@ -11,6 +11,7 @@ import { colorContextProvider, ColorContextProvider, type ColorPalette } from '@
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-table.css';
+import { state } from 'lit/decorators/state.js';
 
 /**
  * A table is a container for displaying information. It allows a user to scan, examine, and compare large amounts of data.
@@ -75,12 +76,18 @@ export class RhTable extends LitElement {
     this.#init();
   }
 
-  render() {
+  @state() colorPalette?: ColorPalette;
+
+  async willUpdate() {
     // @ts-expect-error: it's ok, mom, really!
-    const colorPalette = ColorContextProvider.__INTERNAL_NO_TOUCHY__getParentPalette(this);
-    console.log({ colorPalette });
+    this.colorPalette = await ColorContextProvider.__INTERNAL_NO_TOUCHY__getParentPalette(this);
+  }
+
+  render() {
+    // QUESTION: WHY UNDEFINED? MAP should be GOOD
+    console.log(this.colorPalette);
     return html`
-      <div id="container" class="${classMap({ [colorPalette]: true })}" part="container">
+      <div id="container" class="${classMap({ [this.colorPalette ?? '']: !!this.colorPalette })}" part="container">
         <slot @pointerleave="${this.#onPointerleave}"
               @pointerover="${this.#onPointerover}"
               @request-sort="${this.#onRequestSort}"
