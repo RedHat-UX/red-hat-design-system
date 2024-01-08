@@ -119,7 +119,7 @@ let RhCta = class RhCta extends LitElement {
     render() {
         const rtl = __classPrivateFieldGet(this, _RhCta_dir, "f").dir === 'rtl';
         // START DEPRECATION WARNING
-        /* note: remove on from classMap below */
+        // note: remove on from classMap below
         const dark = this.colorPalette?.includes('dark') ? 'dark' : '';
         const on = this.on ?? dark;
         // END DEPRECATION WARNING

@@ -131,7 +131,7 @@ export class RhContextPicker extends LitElement {
       this.#target = root.getElementById(this.target);
       this.sync();
     } else {
-      this.#target = this.closest('rh-context-provider');
+      this.#target = this.closest('rh-surface');
     }
     oldTarget?.removeEventListener('change', this.#onChange);
     this.#target?.addEventListener('change', this.#onChange);

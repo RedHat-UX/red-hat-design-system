@@ -106,7 +106,7 @@ export declare class RhCta extends LitElement {
     /** The slotted `<a>` or `<button>` element */
     cta: HTMLAnchorElement | HTMLButtonElement | null;
     /**
-     * @deprecated do not use the color-palette attribute, which was added by mistake. use context-providing containers (e.g. rh-card) instead
+     * @deprecated do not use the color-palette attribute: Use themable containers (e.g. rh-surface or rh-card) instead
      */
     colorPalette?: ColorPalette;
     connectedCallback(): void;

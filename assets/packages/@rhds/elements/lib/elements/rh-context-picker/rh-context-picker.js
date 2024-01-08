@@ -72,7 +72,7 @@ let RhContextPicker = RhContextPicker_1 = class RhContextPicker extends LitEleme
             this.sync();
         }
         else {
-            __classPrivateFieldSet(this, _RhContextPicker_target, this.closest('rh-context-provider'), "f");
+            __classPrivateFieldSet(this, _RhContextPicker_target, this.closest('rh-surface'), "f");
         }
         oldTarget?.removeEventListener('change', __classPrivateFieldGet(this, _RhContextPicker_instances, "m", _RhContextPicker_onChange));
         __classPrivateFieldGet(this, _RhContextPicker_target, "f")?.addEventListener('change', __classPrivateFieldGet(this, _RhContextPicker_instances, "m", _RhContextPicker_onChange));

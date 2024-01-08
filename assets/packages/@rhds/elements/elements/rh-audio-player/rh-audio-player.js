@@ -182,7 +182,7 @@ let RhAudioPlayer = RhAudioPlayer_1 = class RhAudioPlayer extends LitElement {
         const currentTimePct = (Number.isNaN(currentTimeQ) ? 0 : currentTimeQ) * 100;
         const accentColor = !!__classPrivateFieldGet(this, _RhAudioPlayer_styles, "f")?.getPropertyValue('--rh-audio-player-background-color');
         return html `
-      <rh-context-provider id="container"
+      <rh-surface id="container"
           color-palette="${ifDefined(this.colorPalette)}"
           class="${classMap({
             [on]: !!on,
@@ -372,7 +372,7 @@ let RhAudioPlayer = RhAudioPlayer_1 = class RhAudioPlayer extends LitElement {
                 @transcriptdownload=${__classPrivateFieldGet(this, _RhAudioPlayer_instances, "m", _RhAudioPlayer_onTranscriptDownload)}>
           </slot>
         </div>
-      </rh-context-provider>
+      </rh-surface>
     `;
     }
     async firstUpdated() {

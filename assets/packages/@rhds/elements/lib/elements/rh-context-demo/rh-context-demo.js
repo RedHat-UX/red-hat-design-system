@@ -5,7 +5,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { ContextChangeEvent } from '../rh-context-picker/rh-context-picker.js';
-import '@rhds/elements/lib/elements/rh-context-provider/rh-context-provider.js';
+import '@rhds/elements/rh-surface/rh-surface.js';
 import { css } from "lit";
 const style = css `:host{display:block;height:100%}.light{color:var(--rh-color-text-primary-on-light,#151515)}.dark{color:var(--rh-color-text-primary-on-dark,#fff)}#picker-container{display:flex;align-items:center;margin-block-end:var(--rh-context-demo-padding,var(--rh-space-xl,24px));gap:var(--rh-space-lg,16px)}#provider{padding:var(--rh-context-demo-padding,var(--rh-space-xl,24px));height:calc(100% - 2 * var(--rh-context-demo-padding,var(--rh-space-xl,24px)))}`;
 let RhContextDemo = class RhContextDemo extends LitElement {
@@ -21,7 +21,7 @@ let RhContextDemo = class RhContextDemo extends LitElement {
         const { value = 'darkest' } = this;
         const [on = 'dark'] = value.match(/dark|light/) ?? [];
         return html `
-      <rh-context-provider id="provider"
+      <rh-surface id="provider"
                            color-palette="${value}"
                            class="${classMap({ [on]: true })}"
                            @change="${__classPrivateFieldGet(this, _RhContextDemo_instances, "m", _RhContextDemo_onChange)}">
@@ -32,7 +32,7 @@ let RhContextDemo = class RhContextDemo extends LitElement {
             <label for="picker">${this.label}</label>
           </div>
         <slot part="demo"></slot>
-      </rh-context-provider>
+      </rh-surface>
     `;
     }
     willUpdate(changed) {

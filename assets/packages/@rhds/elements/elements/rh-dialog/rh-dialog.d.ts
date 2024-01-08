@@ -1,5 +1,5 @@
 import { LitElement } from 'lit';
-import '@rhds/elements/lib/elements/rh-context-provider/rh-context-provider.js';
+import '@rhds/elements/rh-surface/rh-surface.js';
 export declare class DialogCancelEvent extends Event {
     constructor();
 }
