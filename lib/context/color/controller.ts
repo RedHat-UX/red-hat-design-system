@@ -1,5 +1,6 @@
-import type { ColorTheme } from './consumer.js';
-import type { ReactiveController, ReactiveElement } from 'lit';
+import type { ColorContextProvider, ColorPalette } from './provider.js';
+import type { ColorContextConsumer, ColorTheme } from './consumer.js';
+import type { ReactiveController, ReactiveControllerHost, ReactiveElement } from 'lit';
 
 import { StyleController } from '@patternfly/pfe-core/controllers/style-controller.js';
 

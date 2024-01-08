@@ -7,7 +7,7 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import { RequestSortEvent, RhSortButton } from './rh-sort-button.js';
 
-import { colorContextProvider, type ColorPalette } from '@rhds/elements/lib/context/color/provider.js';
+import { colorContextProvider, ColorContextProvider, type ColorPalette } from '@rhds/elements/lib/context/color/provider.js';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-table.css';
@@ -26,8 +26,8 @@ export class RhTable extends LitElement {
 
   @colorContextConsumer() private on?: ColorTheme;
 
-  @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
+  // @colorContextProvider()
+  // @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   private static getNodeContentForSort(
     columnIndexToSort: number,
@@ -76,12 +76,14 @@ export class RhTable extends LitElement {
   }
 
   render() {
-    const { on = '' } = this;
+    // @ts-expect-error: it's ok, mom, really!
+    const colorPalette = ColorContextProvider.__INTERNAL_NO_TOUCHY__getParentPalette(this);
+    console.log({ colorPalette });
     return html`
-      <div id="container" class="${classMap({ [on]: !!on })}" part="container">
+      <div id="container" class="${classMap({ [colorPalette]: true })}" part="container">
         <slot @pointerleave="${this.#onPointerleave}"
               @pointerover="${this.#onPointerover}"
-              @request-sort="${this.#onRequestSort}" 
+              @request-sort="${this.#onRequestSort}"
               @slotchange="${this.#onSlotChange}"></slot>
         <slot id="summary" name="summary"></slot>
       </div>

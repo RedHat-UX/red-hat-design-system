@@ -1,4 +1,4 @@
-import type { ReactiveController, ReactiveElement } from 'lit';
+import type { ReactiveController, ReactiveControllerHost, ReactiveElement } from 'lit';
 import type { Context, ContextCallback, ContextEvent, UnknownContext } from '../event.js';
 
 import {
@@ -77,7 +77,11 @@ export class ColorContextProvider<
 
   get #local() {
     return ColorContextProvider
-      .contexts.get(this.host.getAttribute(this.#attribute) ?? '');
+      .contexts.get(this.colorPalette ?? '');
+  }
+
+  protected get colorPalette() {
+    return this.host.getAttribute(this.#attribute);
   }
 
   get value(): ColorTheme {
@@ -151,6 +155,15 @@ export class ColorContextProvider<
       // Run the callback to initialize the child's colour-context
       event.callback(this.value);
 
+      // Solve a problem in table by providing an internal-only way to access
+      // the provider's color-palette from a consumer
+      ColorContextProvider.consumers.set(
+        event.target as unknown as ReactiveControllerHost,
+        this,
+      );
+
+      console.log(ColorContextProvider.consumers);
+
       // Cache the callback for future updates, if requested
       if (event.multiple) {
         this.#callbacks.add(event.callback);
@@ -158,10 +171,21 @@ export class ColorContextProvider<
     }
   }
 
+  protected static __INTERNAL_NO_TOUCHY__getParentPalette(
+    consumer: ReactiveControllerHost,
+  ): ColorPalette {
+    const provider = ColorContextProvider.consumers.get(consumer);
+    console.log(ColorContextProvider.consumers, consumer, provider);
+    return provider?.colorPalette as ColorPalette;
+  }
+
+  protected static consumers =
+    new Map<ReactiveControllerHost, ColorContextProvider<any>>();
+
+
   /** Calls the context callback for all consumers */
   public override async update(force?: ColorTheme) {
     const { value } = this;
-
     for (const cb of this.#callbacks) {
       cb(force ?? value);
     }
