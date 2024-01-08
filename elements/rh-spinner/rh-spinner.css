@@ -83,7 +83,7 @@ circle.dash.dark {
 }
 
 circle.track.dark {
-  stroke: var(--rh-color-gray-60, #4d4d4d);
+  stroke: var(--rh-color-gray-70, #383838);
 }
 
 @keyframes rh-spinner-animation-dash {
