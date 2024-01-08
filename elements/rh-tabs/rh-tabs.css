@@ -1,8 +1,90 @@
-/* stylelint-disable selector-id-pattern */
 :host {
+  display: block;
   background: var(--_context-background-color);
   color: var(--_context-text);
 }
+
+[part="tabs-container"] {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+}
+
+[part="tabs-container"]:before {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-width: 0 0 var(--rh-border-width-sm, 1px);
+  border-color: var(--_border-color);
+  border-style: solid;
+}
+
+[part="tabs"],
+[part="panels"] {
+  display: block;
+}
+
+[part="tabs"] {
+  scrollbar-width: none;
+  position: relative;
+  max-width: 100%;
+  overflow-x: auto;
+  display: flex;
+  bottom: 0;
+  margin: 0;
+  width: auto;
+  font-size: var(--rh-font-size-body-text-md, 1rem);
+}
+
+[part="tabs-container"]:before,
+[part="tabs"]:before,
+button:before {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: "";
+  border-style: solid;
+}
+
+[part="tabs"]:before,
+button:before {
+  top: 0;
+}
+
+button,
+[part="tabs"]:before {
+  border: 0;
+}
+
+button {
+  flex: none;
+  line-height: 1;
+  opacity: 1;
+}
+
+button:before {
+  border-block-start-width: 0;
+}
+
+button:nth-of-type(1) {
+  margin-inline-end: 0;
+  translate: 0 0;
+}
+
+button:nth-of-type(2) {
+  margin-inline-start: 0;
+  translate: 0 0;
+}
+
+button:disabled {
+  pointer-events: none;
+}
+
+/* START RH-TABS */
+
+/* stylelint-disable selector-id-pattern */
 
 #rhds-container {
   display: contents;
@@ -18,22 +100,8 @@
   --_border-color: var(--rh-tabs-border-color, var(--rh-color-border-subtle-on-dark, #707070));
   --_arrow-color: var(--rh-color-accent-base-on-dark, #92c5f9);
   --_overflow-button-text-color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
-  --_overflow-button-disabled-text-color: var(--rh-color-gray-40, #a3a3a3);
+  --_overflow-button-disabled-text-color: var(--rh-color-gray-50, #707070);
   --_overflow-button-hover-text-color: var(--rh-color-text-primary-on-dark, #ffffff);
-}
-
-[part="tabs-container"]:before {
-  border-width: 0 0 var(--rh-border-width-sm, 1px);
-  border-color: var(--_border-color);
-  border-style: solid;
-}
-
-[part="tabs"] {
-  display: flex;
-  bottom: 0;
-  margin: 0;
-  width: auto;
-  font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
 :host(:is([centered], [box="inset"])) [part="tabs"] {
