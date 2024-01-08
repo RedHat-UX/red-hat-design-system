@@ -1,7 +1,9 @@
 ## Usage
 Use tabs to help users navigate information while staying on the same page. Text labels and content in the panel should be related so users know what to expect when they select each tab. Never force users to switch back and forth between tabs to complete a task.
+
 ### When to use tabs
 Use tabs to organize lots of information into logical sections. Consider using an accordion if that information needs to be viewed simultaneously because using tabs is not suitable as it forces users to rely on short-term memory when switching back and forth. Using an accordion can also accommodate more sections with longer text labels whereas tabs should only display three or four sections with short text labels. Therefore, if viewing lots of sections of content simultaneously is critical to the user experience or if important information requires more focus and less clicking, use an accordion instead.
+
 ### Tabs vs. accordion
 Tabs allow users to click through content one section at a time whereas an accordion allows users to view multiple sections of content simultaneously.
 
@@ -41,6 +43,8 @@ An inset is used to ensure consistent alignment and padding between text labels,
 {% example palette="light", alt="Image of box tabs showing detailed inset specs", src="../tabs-inset-box.png" %}
 
 {% example palette="light", alt="Image of vertical tabs showing detailed inset specs", src="../tabs-inset-vertical.png" %}
+
+Certain content layouts may require removing the inset. While this is not a default style, it is possible with custom CSS.
 
 ### Logos
 In certain edge cases, logos can be used instead of text labels.
