@@ -33,7 +33,7 @@ If using horizontal tabs, the default orientation is left aligned, but center al
 
 {% example palette="light", alt="Image of open tabs with left and center alignment and box tabs with left and center alignment", src="../tabs-alignment.png" %}
 
-### Inset
+### Inset and tab panel spacing
 An inset is used to ensure consistent alignment and padding between text labels, overflow buttons, and content in the panel.
 
 {% alert state="info", title="Helpful Tip" %} With horizontal tabs, there are two inset options. With vertical tabs, there is only one. {% endalert %}
