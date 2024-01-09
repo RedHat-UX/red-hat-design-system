@@ -8,7 +8,8 @@ import { observed } from '@patternfly/pfe-core/decorators.js';
 
 import { BaseTab } from '@patternfly/elements/pf-tabs/BaseTab.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { type ColorPalette } from '@rhds/elements/lib/context/color/provider.js';
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-tab.css';
 
@@ -40,7 +41,7 @@ export class RhTab extends BaseTab {
   /**
    * Sets color theme based on parent context
    */
-  @colorContextConsumer() private on?: ColorTheme;
+  @colorContextConsumer() private on?: ColorPalette;
 
   @observed
   @property({ reflect: true, type: Boolean }) active = false;

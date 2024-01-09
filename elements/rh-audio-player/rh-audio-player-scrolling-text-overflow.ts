@@ -2,10 +2,10 @@ import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { type ColorPalette } from '../../lib/context/color/provider.js';
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-audio-player-scrolling-text-overflow.css';
-
 
 /**
  * Audio Player Scrolling Text Overflow
@@ -16,7 +16,7 @@ import styles from './rh-audio-player-scrolling-text-overflow.css';
 export class RhAudioPlayerScrollingTextOverflow extends LitElement {
   static readonly styles = [styles];
 
-  @colorContextConsumer() private on?: ColorTheme;
+  @colorContextConsumer() private on?: ColorPalette;
 
   #scrolling = false;
 

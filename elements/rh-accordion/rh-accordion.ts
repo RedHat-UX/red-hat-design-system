@@ -5,7 +5,7 @@ import { property } from 'lit/decorators/property.js';
 
 import { observed } from '@patternfly/pfe-core/decorators/observed.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import { BaseAccordion } from '@patternfly/elements/pf-accordion/BaseAccordion.js';
@@ -34,7 +34,7 @@ export class RhAccordion extends BaseAccordion {
 
   static readonly styles = [...BaseAccordion.styles, styles];
 
-  @colorContextConsumer() private on?: ColorTheme;
+  @colorContextConsumer() private on?: ColorPalette;
 
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;

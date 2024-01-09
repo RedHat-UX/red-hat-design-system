@@ -13,7 +13,8 @@ import { DirController } from '../../lib/DirController.js';
 
 import styles from './rh-pagination.css';
 
-import { colorContextConsumer, type ColorTheme } from '@rhds/elements/lib/context/color/consumer.js';
+import { type ColorPalette } from '@rhds/elements/lib/context/color/provider.js';
+import { colorContextConsumer } from '@rhds/elements/lib/context/color/consumer.js';
 
 const L1 = html`
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 14">
@@ -53,7 +54,7 @@ export class RhPagination extends LitElement {
   /**
    * Sets color theme based on parent context
    */
-  @colorContextConsumer() private on?: ColorTheme;
+  @colorContextConsumer() private on?: ColorPalette;
 
   /**
    * Override `overflow` values set from HTML or JS.

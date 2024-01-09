@@ -3,7 +3,8 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { type ColorPalette } from '@rhds/elements/lib/context/color/provider.js';
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-spinner.css';
 
@@ -31,7 +32,7 @@ export class RhSpinner extends LitElement {
   /**
    * Sets color theme based on parent context
    */
-  @colorContextConsumer() private on?: ColorTheme;
+  @colorContextConsumer() private on?: ColorPalette;
 
   render() {
     const { on = '' } = this;

@@ -4,7 +4,7 @@ import { property } from 'lit/decorators/property.js';
 import { query } from 'lit/decorators/query.js';
 
 import { type ColorPalette } from '../../context/color/provider.js';
-import { colorContextConsumer, type ColorTheme } from '../../context/color/consumer.js';
+import { colorContextConsumer } from '../../context/color/consumer.js';
 
 import type { Color } from '@rhds/tokens/js/types.js';
 import {
@@ -64,7 +64,7 @@ export class RhContextPicker extends LitElement {
 
   @query('#context-range') private range?: HTMLInputElement;
 
-  @colorContextConsumer() private on?: ColorTheme;
+  @colorContextConsumer() private on?: ColorPalette;
 
   @property({
     converter: {

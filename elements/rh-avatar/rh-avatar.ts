@@ -6,7 +6,8 @@ import { LitElement, html, type PropertyValues } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { type ColorPalette } from '../../lib/context/color/provider.js';
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-avatar.css';
 
@@ -24,10 +25,8 @@ const DEFAULT_AVATARS = {
   dark: darkSVG,
   darker: darkSVG,
   darkest: darkSVG,
-  saturated: html``
 };
 
-DEFAULT_AVATARS.saturated = DEFAULT_AVATARS.dark;
 
 /**
  * An avatar is a small thumbnail representation of a user.
@@ -69,7 +68,7 @@ export class RhAvatar extends LitElement {
   /** When true, hides the title and subtitle */
   @property({ reflect: true, type: Boolean }) plain = false;
 
-  @colorContextConsumer() @property() private on?: ColorTheme;
+  @colorContextConsumer() private on?: ColorPalette;
 
   #style?: CSSStyleDeclaration;
 
@@ -98,12 +97,12 @@ export class RhAvatar extends LitElement {
   }
 
   render() {
-    const { on } = this;
+    const { on = '' } = this;
     const { mobile } = this.#screen;
     return html`
-      <div id="container" class="${classMap({ mobile, [on ?? 'light']: !!on })}">${this.pattern ? html`
+      <div id="container" class="${classMap({ mobile, [on]: !!on })}">${this.pattern ? html`
         <canvas part="canvas"></canvas>` : this.src ? html`
-        <img src="${this.src}" role="presentation" part="img">` : html`${DEFAULT_AVATARS[on ?? 'light']}`}
+        <img src="${this.src}" role="presentation" part="img">` : html`${DEFAULT_AVATARS[this.on ?? 'light']}`}
         <slot id="title">${this.name}</slot>
         <slot id="subtitle" name="subtitle">${this.subtitle}</slot>
       </div>

@@ -3,7 +3,8 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { type ColorPalette } from '@rhds/elements/lib/context/color/provider.js';
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
@@ -33,7 +34,7 @@ export class RhStat extends LitElement {
 
   static readonly styles = [styles];
 
-  @colorContextConsumer() private on?: ColorTheme;
+  @colorContextConsumer() private on?: ColorPalette;
 
   /** The icon to display in the statistic */
   @property({ reflect: true, type: String }) icon?: string;

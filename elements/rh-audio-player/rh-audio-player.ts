@@ -6,7 +6,7 @@ import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import { FloatingDOMController } from '@patternfly/pfe-core/controllers/floating-dom-controller.js';
@@ -204,7 +204,7 @@ export class RhAudioPlayer extends LitElement {
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
-  @colorContextConsumer() private on?: ColorTheme;
+  @colorContextConsumer() private on?: ColorPalette;
 
   @queryAssignedElements({ slot: 'series' })
   private _mediaseries?: HTMLElement[];

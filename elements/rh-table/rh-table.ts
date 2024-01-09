@@ -7,7 +7,8 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import styles from './rh-table.css';
 import { RequestSortEvent, RhSortButton } from './rh-sort-button.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { type ColorPalette } from '@rhds/elements/lib/context/color/provider';
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 
 /**
  * A table is a container for displaying information. It allows a user to scan, examine, and compare large amounts of data.
@@ -21,7 +22,7 @@ import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/c
 export class RhTable extends LitElement {
   static readonly styles = [styles];
 
-  @colorContextConsumer() private on?: ColorTheme;
+  @colorContextConsumer() private on?: ColorPalette;
 
   private static getNodeContentForSort(
     columnIndexToSort: number,

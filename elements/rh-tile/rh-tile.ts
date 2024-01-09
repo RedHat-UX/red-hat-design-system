@@ -2,7 +2,7 @@ import { LitElement, html, type PropertyValues } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { ComposedEvent } from '@patternfly/pfe-core';
@@ -96,7 +96,7 @@ export class RhTile extends LitElement {
   /**
    * Sets color theme based on parent context
    */
-  @colorContextConsumer() private on?: ColorTheme;
+  @colorContextConsumer() private on?: ColorPalette;
 
   /**
    * Sets color palette, which affects the element's styles as well as descendants' color theme.

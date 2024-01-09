@@ -6,17 +6,17 @@ import { LitElement, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../../context/color/consumer.js';
+import { colorContextConsumer } from '../../../context/color/consumer.js';
 import { colorContextProvider, type ColorPalette } from '../../../context/color/provider.js';
 
 @customElement('test-context-consumer')
 export class ContextConsumer extends LitElement {
-  @colorContextConsumer() on?: ColorTheme;
+  @colorContextConsumer() on?: ColorPalette;
 }
 
 @customElement('test-context-consumer-provider')
 export class ContextConsumerProvider extends LitElement {
-  @colorContextConsumer() on?: ColorTheme;
+  @colorContextConsumer() on?: ColorPalette;
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 }
@@ -26,7 +26,7 @@ export class ContextProviderConsumer extends LitElement {
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
-  @colorContextConsumer() on?: ColorTheme;
+  @colorContextConsumer() on?: ColorPalette;
 }
 
 declare global {

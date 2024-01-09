@@ -6,7 +6,7 @@ import { property } from 'lit/decorators/property.js';
 
 import { BaseAccordionPanel } from '@patternfly/elements/pf-accordion/BaseAccordionPanel.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import styles from './rh-accordion-panel.css';
@@ -23,7 +23,7 @@ export class RhAccordionPanel extends BaseAccordionPanel {
 
   static readonly styles = [...BaseAccordionPanel.styles, styles];
 
-  @colorContextConsumer() private on?: ColorTheme;
+  @colorContextConsumer() private on?: ColorPalette;
 
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;

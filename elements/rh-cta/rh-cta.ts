@@ -8,7 +8,7 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { DirController } from '../../lib/DirController.js';
 
 import { type ColorPalette } from '../../lib/context/color/provider.js';
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 
 import style from './rh-cta.css';
 
@@ -134,7 +134,7 @@ export class RhCta extends LitElement {
   /**
    * Sets color theme based on parent context
    */
-  @colorContextConsumer() private on?: ColorTheme;
+  @colorContextConsumer() private on?: ColorPalette;
 
   /** The slotted `<a>` or `<button>` element */
   public cta: HTMLAnchorElement | HTMLButtonElement | null = null;

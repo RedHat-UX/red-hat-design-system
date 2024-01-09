@@ -4,7 +4,8 @@ import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { type ColorPalette } from '@rhds/elements/lib/context/color/provider.js';
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
@@ -65,7 +66,7 @@ export class RhButton extends LitElement {
    */
   @property({ type: Boolean, reflect: true }) danger = false;
 
-  @colorContextConsumer() private on?: ColorTheme;
+  @colorContextConsumer() private on?: ColorPalette;
 
   get #hasIcon() { return !!this.icon; }
 

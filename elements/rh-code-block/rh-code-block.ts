@@ -1,8 +1,11 @@
-import { type ColorTheme, colorContextConsumer } from '../../lib/context/color/consumer.js';
+
 import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { property } from 'lit/decorators/property.js';
+
+import { type ColorPalette } from '@rhds/elements/lib/context/color/provider.js';
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 
 import style from './rh-code-block.css';
 
@@ -26,7 +29,7 @@ export class RhCodeBlock extends LitElement {
   /** When set, the code block occupies it's full height, without scrolling */
   @property({ type: Boolean, reflect: true, attribute: 'full-height' }) fullHeight = false;
 
-  @colorContextConsumer() private on?: ColorTheme;
+  @colorContextConsumer() private on?: ColorPalette;
 
   render() {
     const { on = '' } = this;

@@ -4,7 +4,8 @@ import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { type ColorPalette } from '@rhds/elements/lib/context/color/provider.js';
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 
 import {
   FloatingDOMController,
@@ -49,7 +50,7 @@ export class RhTooltip extends LitElement {
   /** Tooltip content. Overridden by the content slot */
   @property() content?: string;
 
-  @colorContextConsumer() private on?: ColorTheme;
+  @colorContextConsumer() private on?: ColorPalette;
 
   #float = new FloatingDOMController(this, {
     content: (): HTMLElement | undefined | null => this.shadowRoot?.querySelector('#tooltip'),

@@ -10,7 +10,7 @@ import { BaseTabs } from '@patternfly/elements/pf-tabs/BaseTabs.js';
 import { RhTab } from './rh-tab.js';
 import { RhTabPanel } from './rh-tab-panel.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import styles from './rh-tabs.css';
@@ -51,7 +51,7 @@ export class RhTabs extends BaseTabs {
   /**
    * Sets color theme based on parent context
    */
-  @colorContextConsumer() private on?: ColorTheme;
+  @colorContextConsumer() private on?: ColorPalette;
 
   /**
    * Sets color context for child components, overrides parent context

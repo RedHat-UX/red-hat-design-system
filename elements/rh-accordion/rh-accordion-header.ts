@@ -7,7 +7,8 @@ import { property } from 'lit/decorators/property.js';
 
 import { DirController } from '../../lib/DirController.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { type ColorPalette } from '../../lib/context/color/provider.js';
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 
 import { BaseAccordionHeader } from '@patternfly/elements/pf-accordion/BaseAccordionHeader.js';
 
@@ -42,7 +43,7 @@ export class RhAccordionHeader extends BaseAccordionHeader {
 
   #dir = new DirController(this);
 
-  @colorContextConsumer() private on?: ColorTheme;
+  @colorContextConsumer() private on?: ColorPalette;
 
   override render(): TemplateResult {
     const { on = '' } = this;
