@@ -24,20 +24,20 @@
 
 :host([state="success"]) {
   --_color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_background-color: var(--rh-color-green-500, #3e8635);
+  --_background-color: var(--rh-color-green-60, #3d7317);
 }
 
 :host([state="moderate"]) {
   --_color: var(--rh-color-text-primary-on-light, #151515);
-  --_background-color: var(--rh-color-gold-400, #f0ab00);
+  --_background-color: var(--rh-color-yellow-40, #dca614);
 }
 
 :host([state="important"]) {
   --_color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_background-color: var(--rh-color-red-600, #be0000);
+  --_background-color: var(--rh-color-red-60, #a60000);
 }
 
 :host([state="critical"]) {
   --_color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_background-color: var(--rh-color-red-700, #8f0000);
+  --_background-color: var(--rh-color-red-60, #a60000);
 }

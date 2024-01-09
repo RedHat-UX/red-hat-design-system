@@ -17,6 +17,7 @@
   color: var(--rh-color-text-primary-on-light, #151515);
   max-width: 1000px;
   max-height: 640px;
+  height: calc(100% - 2 * var(--rh-space-xl, 24px));
   overflow-y: auto;
   border-radius: var(--rh-border-radius-default, 3px);
 }
@@ -27,7 +28,7 @@
   color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
 }
 
-#content::slotted(script) {
+#content::slotted(:is(script, pre)) {
   display: inline;
   white-space: pre;
   color: inherit;
@@ -35,6 +36,7 @@
 
 :host([compact]) #content {
   padding: var(--rh-space-lg, 16px);
+  height: calc(100% - 2 * var(--rh-space-lg, 16px));
 }
 
 :host([resizable]) #content {
@@ -42,11 +44,18 @@
   overflow-x: scroll;
 }
 
-.wrap::slotted(script),
-:host([wrap]) #content::slotted(script) {
+.wrap::slotted(:is(script, pre)),
+:host([wrap]) #content::slotted(:is(script, pre)) {
   white-space: pre-wrap;
 }
 
 :host([full-height]) #content {
-  max-height: max-content;
+  max-height: initial;
+}
+
+::slotted(pre) {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
 }
