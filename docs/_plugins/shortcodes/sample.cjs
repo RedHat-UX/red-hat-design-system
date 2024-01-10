@@ -68,7 +68,7 @@ module.exports = function(eleventyConfig) {
       gap: var(--rh-space-md);
       grid-template-columns: repeat(var(--columns), 1fr);
       :host(.dont) & {
-        border-color: var(--rh-color-red-500);
+        border-color: var(--rh-color-red-orange-50);
       }
       @media (min-width: 992px) { /* --rh-media-md */
         padding: var(--rh-space-7xl);
@@ -81,10 +81,11 @@ module.exports = function(eleventyConfig) {
       inset-inline-start: 1em;
     }
     pf-icon.dont {
-      color: var(--rh-color-red-500);
+      color: var(--rh-color-red-orange-50);
       position: absolute;
       inset-block-start: var(--rh-space-xl);
       inset-inline-start: var(--rh-space-sm);
+      z-index: 1;
     }
     slot[name="code"] {
       display: block;
