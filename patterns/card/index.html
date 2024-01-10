@@ -29,7 +29,7 @@
     <link type="text/css" href="/assets/pfe--noscript.min.css">
   </noscript>
 
-  <script type="importmap">{"imports":{"@patternfly/pfe-core":"/assets/packages/@patternfly/pfe-core/core.js","lit-html":"/assets/packages/lit-html/lit-html.js","@floating-ui/core":"/assets/packages/@floating-ui/core/dist/floating-ui.core.browser.min.mjs","tslib":"/assets/packages/tslib/tslib.es6.js","@lit/reactive-element":"/assets/packages/@lit/reactive-element/reactive-element.js","@floating-ui/dom":"/assets/packages/@floating-ui/dom/dist/floating-ui.dom.browser.min.mjs","lit-element":"/assets/packages/lit-element/index.js","lit/directives/if-defined.js":"/assets/packages/lit/directives/if-defined.js","lit":"/assets/packages/lit/index.js","@patternfly/elements":"/assets/packages/@patternfly/elements/pfe.min.js","@rhds/tokens":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/tokens.js","@rhds/tokens/media.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js","@rhds/tokens/meta.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js","element-internals-polyfill":"/assets/packages/element-internals-polyfill/dist/index.js","fuse.js":"/assets/packages/fuse.js/dist/fuse.esm.js","@rhds/tokens/":"/assets/packages/@rhds/tokens/js/","@rhds/elements/":"/assets/packages/@rhds/elements/elements/","@rhds/elements/lib/":"/assets/packages/@rhds/elements/lib/","@patternfly/elements/":"/assets/packages/@patternfly/elements/","@patternfly/icons/":"/assets/packages/@patternfly/icons/","@patternfly/pfe-core/":"/assets/packages/@patternfly/pfe-core/"},"scopes":{"/assets/packages/":{"@lit/reactive-element/decorators/":"/assets/packages/@lit/reactive-element/decorators/","lit":"/assets/packages/@patternfly/elements/node_modules/lit/index.js","lit-element/lit-element.js":"/assets/packages/lit-element/lit-element.js","lit-html/":"/assets/packages/lit-html/","lit/":"/assets/packages/@patternfly/elements/node_modules/lit/"}}}</script>
+  <script type="importmap">{"imports":{"@patternfly/pfe-core":"/assets/packages/@patternfly/pfe-core/core.js","lit-html":"/assets/packages/lit-html/lit-html.js","@floating-ui/core":"/assets/packages/@floating-ui/core/dist/floating-ui.core.browser.min.mjs","tslib":"/assets/packages/tslib/tslib.es6.js","@lit/reactive-element":"/assets/packages/@lit/reactive-element/reactive-element.js","@floating-ui/dom":"/assets/packages/@floating-ui/dom/dist/floating-ui.dom.browser.min.mjs","lit-element":"/assets/packages/lit-element/index.js","lit/directives/if-defined.js":"/assets/packages/lit/directives/if-defined.js","lit":"/assets/packages/lit/index.js","@patternfly/elements":"/assets/packages/@patternfly/elements/pfe.min.js","@rhds/tokens":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/tokens.js","@rhds/tokens/meta.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js","@rhds/tokens/media.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js","element-internals-polyfill":"/assets/packages/element-internals-polyfill/dist/index.js","fuse.js":"/assets/packages/fuse.js/dist/fuse.esm.js","@rhds/tokens/":"/assets/packages/@rhds/tokens/js/","@rhds/elements/":"/assets/packages/@rhds/elements/elements/","@rhds/elements/lib/":"/assets/packages/@rhds/elements/lib/","@patternfly/elements/":"/assets/packages/@patternfly/elements/","@patternfly/icons/":"/assets/packages/@patternfly/icons/","@patternfly/pfe-core/":"/assets/packages/@patternfly/pfe-core/"},"scopes":{"/assets/packages/":{"@lit/reactive-element/decorators/":"/assets/packages/@lit/reactive-element/decorators/","lit":"/assets/packages/@patternfly/elements/node_modules/lit/index.js","lit-element/lit-element.js":"/assets/packages/lit-element/lit-element.js","lit-html/":"/assets/packages/lit-html/","lit/":"/assets/packages/@patternfly/elements/node_modules/lit/"}}}</script>
   <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js"></script>
   
   <script type="module">
@@ -369,7 +369,69 @@
     <div class="l-main__content">
       <div class="container">
         
-        <copy-permalink class="h2">
+        <script type="module">
+import '@rhds/elements/rh-card/rh-card.js';
+import '@rhds/elements/rh-cta/rh-cta.js';
+import '@rhds/elements/rh-surface/rh-surface.js';
+</script>
+<style>
+  rh-card {
+    display: grid;
+    max-width: 360px;
+  }
+
+  rh-surface {
+    width: fit-content;
+  }
+
+  rh-card.alt,
+  rh-surface[color-palette^="light"] rh-card.alt {
+    --rh-card-background-color: #f0f0f0;
+  }
+
+  rh-surface[color-palette^="dark"] rh-card.alt {
+    --rh-card-background-color: #3c3f42;
+  }
+
+  rh-card.bar::part(header) {
+    background-color: var(--_background-color, #f0f0f0);
+    text-transform: uppercase;
+    font-weight: var(--rh-font-weight-heading-regular, 300);
+    font-size: var(--rh-font-size-body-text-md, 1rem);
+  }
+
+  rh-card.bar::part(header) {
+    background-color: var(--_header-background-color);
+    text-transform: uppercase;
+    font-weight: var(--rh-font-weight-heading-regular, 300);
+    font-size: var(--rh-font-size-body-text-md, 1rem);
+  }
+
+  rh-card.bar::part(header) {
+    background-color: var(--_header-background-color);
+    text-transform: uppercase;
+    font-weight: var(--rh-font-weight-heading-regular, 300);
+    font-size: var(--rh-font-size-body-text-md, 1rem);
+  }
+
+  rh-card.full::part(header) {
+    padding-inline: 0;
+    padding-block: 0;
+  }
+
+  rh-card.custom-light-theme {
+    --rh-color-border-subtle-on-light: #EF6461;
+    --rh-color-surface-lightest: #feeded;
+    --rh-color-text-primary-on-light: #30292F;
+  }
+
+  rh-card.custom-dark-theme {
+    --rh-color-border-subtle-on-dark: #5e40be;
+    --rh-color-surface-darkest: #261a4c;
+    --rh-color-text-primary-on-dark: #e8e4f5;
+  }
+</style>
+<copy-permalink class="h2">
   <h2 id="overview" tabindex="-1">
     <a class="heading-anchor" href="#overview">Overview</a>
       </h2>
@@ -550,64 +612,6 @@ To give feedback about anything on this page,
 </p><p></p>
 </section>
 </div>
-<script src="/elements/card/demo/rh-card.js" type="module"></script>
-<style>
-  rh-card {
-    display: grid;
-    max-width: 360px;
-  }
-
-  rh-surface {
-    width: fit-content;
-  }
-
-  rh-card.alt,
-  rh-surface[color-palette^="light"] rh-card.alt {
-    --rh-card-background-color: #f0f0f0;
-  }
-
-  rh-surface[color-palette^="dark"] rh-card.alt {
-    --rh-card-background-color: #3c3f42;
-  }
-
-  rh-card.bar::part(header) {
-    background-color: var(--_background-color, #f0f0f0);
-    text-transform: uppercase;
-    font-weight: var(--rh-font-weight-heading-regular, 300);
-    font-size: var(--rh-font-size-body-text-md, 1rem);
-  }
-
-  rh-card.bar::part(header) {
-    background-color: var(--_header-background-color);
-    text-transform: uppercase;
-    font-weight: var(--rh-font-weight-heading-regular, 300);
-    font-size: var(--rh-font-size-body-text-md, 1rem);
-  }
-
-  rh-card.bar::part(header) {
-    background-color: var(--_header-background-color);
-    text-transform: uppercase;
-    font-weight: var(--rh-font-weight-heading-regular, 300);
-    font-size: var(--rh-font-size-body-text-md, 1rem);
-  }
-
-  rh-card.full::part(header) {
-    padding-inline: 0;
-    padding-block: 0;
-  }
-
-  rh-card.custom-light-theme {
-    --rh-color-border-subtle-on-light: #EF6461;
-    --rh-color-surface-lightest: #feeded;
-    --rh-color-text-primary-on-light: #30292F;
-  }
-
-  rh-card.custom-dark-theme {
-    --rh-color-border-subtle-on-dark: #5e40be;
-    --rh-color-surface-darkest: #261a4c;
-    --rh-color-text-primary-on-dark: #e8e4f5;
-  }
-</style>
 <copy-permalink class="h2">
   <h2 id="usage" tabindex="-1">
     <a class="heading-anchor" href="#usage">Usage</a>
