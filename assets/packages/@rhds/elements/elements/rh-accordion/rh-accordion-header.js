@@ -1,21 +1,19 @@
-var _RhAccordionHeader_instances, _RhAccordionHeader_generatedHtag, _RhAccordionHeader_logger, _RhAccordionHeader_header, _RhAccordionHeader_dir, _RhAccordionHeader_initHeader, _RhAccordionHeader_renderAfterButton, _RhAccordionHeader_renderHeaderContent, _RhAccordionHeader_getOrCreateHeader, _RhAccordionHeader_onClick;
+var _RhAccordionHeader_instances, _RhAccordionHeader_generatedHtag, _RhAccordionHeader_logger, _RhAccordionHeader_header, _RhAccordionHeader_dir, _RhAccordionHeader_initHeader, _RhAccordionHeader_renderHeaderContent, _RhAccordionHeader_getOrCreateHeader, _RhAccordionHeader_onClick;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { html, LitElement } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { ComposedEvent } from '@patternfly/pfe-core';
-import { DirController } from '../../lib/DirController.js';
-import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
-import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
+import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
+import { DirController } from '../../lib/DirController.js';
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 import { css } from "lit";
 const styles = css `:host{--_padding-block-start:var(--rh-space-lg, 16px);--_padding-inline-end:var(--rh-space-xl, 24px);--_padding-block-end:var(--rh-space-lg, 16px);--_padding-inline-start:var(--rh-space-xl, 24px);--_text-color:var(--rh-color-text-primary-on-light, #151515);--_active-text-color:var(--rh-color-text-primary-on-light, #151515);--_background-color:var(--rh-color-surface-lightest, #ffffff);--_active-background-color:var(--_rhds-background-color, #f2f2f2);--_font-size:var(--rh-font-size-body-text-md, 1rem);--_after-background-color:transparent;--_expanded-background-color:var(--rh-color-accent-brand-on-light, #ee0000);--_isRTL:-1}#heading{font-size:100%;padding:0;margin:0;color:var(--rh-color-text-primary-on-light,#151515);background-color:var(--_rhds-background-color,var(--rh-color-surface-lightest,#fff));font-weight:var(--rh-font-weight-heading-medium,500)}a,button{cursor:pointer}.dark{--_text-color:var(--rh-color-text-primary-on-dark, #ffffff);--_background-color:var(--rh-color-surface-darkest, #151515);--_active-background-color:var(--rh-color-surface-darkest, #151515);--_active-text-color:var(--rh-color-text-primary-on-dark, #ffffff);--_expanded-background-color:var(--rh-color-accent-brand-on-dark, #ee0000);--_border-inline-end-color:var(--rh-color-border-subtle-on-dark, #707070)}.rtl{--_isRTL:1}:host([large]){--_font-size:var(--rh-font-size-body-text-lg, 1.125rem);--_padding-block-start:var(--rh-space-lg, 16px);--_padding-inline-end:var(--rh-space-xl, 24px);--_padding-block-end:var(--rh-space-lg, 16px);--_padding-inline-start:var(--rh-space-xl, 24px)}:host([expanded]){border-inline-end:var(--rh-border-width-sm,1px) solid var(--_border-inline-end-color,#c7c7c7)}:host(.animating) #button,:host([expanded]) #button{border-inline-end-color:var(--rh-color-border-subtle-on-light,#c7c7c7);border-inline-start-color:var(--rh-color-border-subtle-on-light,#c7c7c7)}#button,#button:after,#button:before{background-color:var(--_background-color,transparent)}#icon{width:16px;height:16px;will-change:rotate;transition:rotate .2s ease-in 0s}#button{padding:var(--_padding-block-start) var(--_padding-inline-end) var(--_padding-block-end) var(--_padding-inline-start);font-family:var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);font-size:var(--_font-size, var(--rh-font-size-body-text-md, 1rem));font-weight:var(--rh-font-weight-heading-medium,500);color:var(--_text-color)}#button #icon{fill:var(--_text-color)}#button[aria-expanded=true]{--_after-background-color:var(--_expanded-background-color)}#button:after{inset-block-start:-1px;width:var(--rh-border-width-lg,3px);background-color:var(--_after-background-color)}span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:calc(100% - var(--rh-space-xl,24px));text-align:start}#button[aria-expanded=true] #icon{rotate:calc(var(--_isRTL,-1) * 180deg)}#button:active,#button:focus,#button:hover{background-color:var(--_active-background-color)}#button:active span,#button:focus span,#button:hover span{color:var(--_active-text-color)}.toggle,.toggle:after,.toggle:before{padding:0;margin:0}.toggle{position:relative;display:flex;align-items:center;justify-content:space-between;width:100%;border:0}.toggle:after{content:"";position:absolute;inset-block:0;inset-inline-start:0}`;
-import { BaseAccordion } from './BaseAccordion.js';
 const isPorHeader = (el) => el instanceof HTMLElement && !!el.tagName.match(/P|^H[1-6]/);
-export class AccordionHeaderChangeEvent extends ComposedEvent {
+export class AccordionHeaderChangeEvent extends Event {
     constructor(expanded, toggle, accordion) {
-        super('change');
+        super('change', { bubbles: true, cancelable: true });
         this.expanded = expanded;
         this.toggle = toggle;
         this.accordion = accordion;
@@ -58,31 +56,21 @@ let RhAccordionHeader = class RhAccordionHeader extends LitElement {
     render() {
         const { on = '' } = this;
         const rtl = __classPrivateFieldGet(this, _RhAccordionHeader_dir, "f").dir === 'rtl';
-        const res = [];
-        res.push(html `<div id="container" class="${classMap({ [on]: !!on, rtl })}" part="container">`);
-        switch (this.headingTag) {
-            case 'h1':
-                res.push(html `<h1 id="heading">${__classPrivateFieldGet(this, _RhAccordionHeader_instances, "m", _RhAccordionHeader_renderHeaderContent).call(this)}</h1>`);
-                break;
-            case 'h2':
-                res.push(html `<h2 id="heading">${__classPrivateFieldGet(this, _RhAccordionHeader_instances, "m", _RhAccordionHeader_renderHeaderContent).call(this)}</h2>`);
-                break;
-            case 'h3':
-                res.push(html `<h3 id="heading">${__classPrivateFieldGet(this, _RhAccordionHeader_instances, "m", _RhAccordionHeader_renderHeaderContent).call(this)}</h3>`);
-                break;
-            case 'h4':
-                res.push(html `<h4 id="heading">${__classPrivateFieldGet(this, _RhAccordionHeader_instances, "m", _RhAccordionHeader_renderHeaderContent).call(this)}</h4>`);
-                break;
-            case 'h5':
-                res.push(html `<h5 id="heading">${__classPrivateFieldGet(this, _RhAccordionHeader_instances, "m", _RhAccordionHeader_renderHeaderContent).call(this)}</h5>`);
-                break;
-            case 'h6':
-                res.push(html `<h6 id="heading">${__classPrivateFieldGet(this, _RhAccordionHeader_instances, "m", _RhAccordionHeader_renderHeaderContent).call(this)}</h6>`);
-                break;
-            default: res.push(__classPrivateFieldGet(this, _RhAccordionHeader_instances, "m", _RhAccordionHeader_renderHeaderContent).call(this));
-        }
-        res.push(html `</div>`);
-        return res;
+        return html `
+      <div id="container" class="${classMap({ [on]: !!on, rtl })}" part="container">
+        ${(() => {
+            switch (this.headingTag) {
+                case 'h1': return html `<h1 id="heading">${__classPrivateFieldGet(this, _RhAccordionHeader_instances, "m", _RhAccordionHeader_renderHeaderContent).call(this)}</h1>`;
+                case 'h2': return html `<h2 id="heading">${__classPrivateFieldGet(this, _RhAccordionHeader_instances, "m", _RhAccordionHeader_renderHeaderContent).call(this)}</h2>`;
+                case 'h3': return html `<h3 id="heading">${__classPrivateFieldGet(this, _RhAccordionHeader_instances, "m", _RhAccordionHeader_renderHeaderContent).call(this)}</h3>`;
+                case 'h4': return html `<h4 id="heading">${__classPrivateFieldGet(this, _RhAccordionHeader_instances, "m", _RhAccordionHeader_renderHeaderContent).call(this)}</h4>`;
+                case 'h5': return html `<h5 id="heading">${__classPrivateFieldGet(this, _RhAccordionHeader_instances, "m", _RhAccordionHeader_renderHeaderContent).call(this)}</h5>`;
+                case 'h6': return html `<h6 id="heading">${__classPrivateFieldGet(this, _RhAccordionHeader_instances, "m", _RhAccordionHeader_renderHeaderContent).call(this)}</h6>`;
+                default: return __classPrivateFieldGet(this, _RhAccordionHeader_instances, "m", _RhAccordionHeader_renderHeaderContent).call(this);
+            }
+        })()}
+      </div>
+    `;
     }
 };
 _RhAccordionHeader_generatedHtag = new WeakMap(), _RhAccordionHeader_logger = new WeakMap(), _RhAccordionHeader_header = new WeakMap(), _RhAccordionHeader_dir = new WeakMap(), _RhAccordionHeader_instances = new WeakSet(), _RhAccordionHeader_initHeader = async function _RhAccordionHeader_initHeader() {
@@ -99,14 +87,6 @@ _RhAccordionHeader_generatedHtag = new WeakMap(), _RhAccordionHeader_logger = ne
     } while (!await this.updateComplete);
     // Remove the hidden attribute after upgrade
     this.hidden = false;
-}, _RhAccordionHeader_renderAfterButton = function _RhAccordionHeader_renderAfterButton() {
-    // Font-Awesome free angle-down
-    // TODO: use rh-icon when it's ready
-    return html `
-      <svg id="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-        <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
-      </svg>
-    `;
 }, _RhAccordionHeader_renderHeaderContent = function _RhAccordionHeader_renderHeaderContent() {
     const headingText = this.headingText?.trim() ?? __classPrivateFieldGet(this, _RhAccordionHeader_header, "f")?.textContent?.trim();
     return html `
@@ -116,7 +96,9 @@ _RhAccordionHeader_generatedHtag = new WeakMap(), _RhAccordionHeader_logger = ne
         <span part="text">${headingText ?? html `
           <slot></slot>`}
         </span>
-        ${__classPrivateFieldGet(this, _RhAccordionHeader_instances, "m", _RhAccordionHeader_renderAfterButton)?.call(this)}
+        <svg id="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+          <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
+        </svg>
       </button>
     `;
 }, _RhAccordionHeader_getOrCreateHeader = function _RhAccordionHeader_getOrCreateHeader() {
@@ -154,7 +136,7 @@ _RhAccordionHeader_generatedHtag = new WeakMap(), _RhAccordionHeader_logger = ne
     }
 }, _RhAccordionHeader_onClick = function _RhAccordionHeader_onClick(event) {
     const expanded = !this.expanded;
-    const acc = event.composedPath().find(BaseAccordion.isAccordion);
+    const acc = event.composedPath().find((x) => x instanceof HTMLElement && x.localName === 'rh-accordion');
     if (acc) {
         this.dispatchEvent(new AccordionHeaderChangeEvent(expanded, this, acc));
     }

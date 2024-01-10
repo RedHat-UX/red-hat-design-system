@@ -1,7 +1,7 @@
 var _RhAccordion_instances, _RhAccordion_expandedIndex, _RhAccordion_headerIndex, _RhAccordion_initialized, _RhAccordion_logger, _RhAccordion_mo, _RhAccordion_init, _RhAccordion_activeHeader_get, _RhAccordion_updateActiveHeader, _RhAccordion_panelForHeader, _RhAccordion_expandHeader, _RhAccordion_expandPanel, _RhAccordion_collapseHeader, _RhAccordion_collapsePanel, _RhAccordion_onChange, _RhAccordion_allHeaders, _RhAccordion_allPanels, _RhAccordion_getIndex;
 var RhAccordion_1;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
-import { html } from 'lit';
+import { LitElement, html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
@@ -9,13 +9,12 @@ import { observed } from '@patternfly/pfe-core/decorators/observed.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 import { colorContextProvider } from '../../lib/context/color/provider.js';
-import { BaseAccordion } from './BaseAccordion.js';
 import { NumberListConverter, ComposedEvent } from '@patternfly/pfe-core';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
+import { RhAccordionHeader, AccordionHeaderChangeEvent } from './rh-accordion-header.js';
+import { RhAccordionPanel } from './rh-accordion-panel.js';
 import { css } from "lit";
 const styles = css `:host{--_border-color:var(--rh-color-border-subtle-on-light, #c7c7c7);color:var(--rh-color-text-primary-on-light,#151515);background-color:var(--rh-color-surface-lightest,#fff)}:host([on=dark]){--_border-color:var(--rh-color-border-subtle-on-dark, #707070)}#container{display:contents}::slotted(rh-accordion-header:first-child){display:block;border-block:1px solid var(--_border-color)}::slotted(rh-accordion-header:not(:first-child)){display:block;border-block-end:1px solid var(--_border-color)}::slotted(rh-accordion-header:is([expanded])){display:block;border-block-end:0;box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 rgba(21,21,21,.2))}::slotted(rh-accordion-panel:is([expanded])){display:block;border-block-end:1px solid var(--_border-color);box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 rgba(21,21,21,.2))}`;
-import { AccordionHeaderChangeEvent, RhAccordionHeader } from './rh-accordion-header.js';
-import { RhAccordionPanel } from './rh-accordion-panel.js';
 export class AccordionExpandEvent extends ComposedEvent {
     constructor(toggle, panel) {
         super('expand');
@@ -43,7 +42,7 @@ export class AccordionCollapseEvent extends ComposedEvent {
  *       Place the `rh-accordion-header` and `rh-accordion-panel` elements here.
  *
  */
-let RhAccordion = RhAccordion_1 = class RhAccordion extends BaseAccordion {
+let RhAccordion = RhAccordion_1 = class RhAccordion extends LitElement {
     constructor() {
         super(...arguments);
         _RhAccordion_instances.add(this);
@@ -56,6 +55,9 @@ let RhAccordion = RhAccordion_1 = class RhAccordion extends BaseAccordion {
         _RhAccordion_initialized.set(this, false);
         _RhAccordion_logger.set(this, new Logger(this));
         _RhAccordion_mo.set(this, new MutationObserver(() => __classPrivateFieldGet(this, _RhAccordion_instances, "m", _RhAccordion_init).call(this)));
+    }
+    static isAccordion(target) {
+        return target instanceof RhAccordion_1;
     }
     static isHeader(target) {
         return target instanceof RhAccordionHeader;
@@ -267,9 +269,9 @@ async function _RhAccordion_init() {
         }
     }
 }, _RhAccordion_allHeaders = function _RhAccordion_allHeaders(accordion = this) {
-    return Array.from(accordion.children).filter(RhAccordion_1.isHeader);
+    return Array.from(accordion.children).filter((x) => x instanceof RhAccordionHeader);
 }, _RhAccordion_allPanels = function _RhAccordion_allPanels(accordion = this) {
-    return Array.from(accordion.children).filter(RhAccordion_1.isPanel);
+    return Array.from(accordion.children).filter((x => RhAccordion_1.isPanel(x)));
 }, _RhAccordion_getIndex = function _RhAccordion_getIndex(el) {
     if (RhAccordion_1.isHeader(el)) {
         return this.headers.findIndex(header => header.id === el.id);

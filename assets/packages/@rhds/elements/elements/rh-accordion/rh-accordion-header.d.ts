@@ -1,13 +1,11 @@
-import type { TemplateResult } from 'lit';
+import type { RhAccordion } from './rh-accordion.js';
 import { LitElement } from 'lit';
-import { ComposedEvent } from '@patternfly/pfe-core';
-import { BaseAccordion } from './BaseAccordion.js';
-export declare class AccordionHeaderChangeEvent extends ComposedEvent {
+export declare class AccordionHeaderChangeEvent extends Event {
     expanded: boolean;
     toggle: RhAccordionHeader;
-    accordion: BaseAccordion;
+    accordion: RhAccordion;
     target: RhAccordionHeader;
-    constructor(expanded: boolean, toggle: RhAccordionHeader, accordion: BaseAccordion);
+    constructor(expanded: boolean, toggle: RhAccordionHeader, accordion: RhAccordion);
 }
 /**
  * Accordion Header
@@ -41,7 +39,7 @@ export declare class RhAccordionHeader extends LitElement {
     icon: string;
     private on?;
     connectedCallback(): void;
-    render(): Array<TemplateResult>;
+    render(): import("lit-html").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

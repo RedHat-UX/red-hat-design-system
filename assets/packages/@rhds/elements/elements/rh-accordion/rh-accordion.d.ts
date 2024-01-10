@@ -1,8 +1,7 @@
-import { type TemplateResult } from 'lit';
+import { LitElement, type TemplateResult } from 'lit';
 import { type ColorPalette } from '../../lib/context/color/provider.js';
-import { BaseAccordion } from './BaseAccordion.js';
 import { ComposedEvent } from '@patternfly/pfe-core';
-import { AccordionHeaderChangeEvent, RhAccordionHeader } from './rh-accordion-header.js';
+import { RhAccordionHeader, AccordionHeaderChangeEvent } from './rh-accordion-header.js';
 import { RhAccordionPanel } from './rh-accordion-panel.js';
 export declare class AccordionExpandEvent extends ComposedEvent {
     toggle: RhAccordionHeader;
@@ -27,10 +26,11 @@ export declare class AccordionCollapseEvent extends ComposedEvent {
  *       Place the `rh-accordion-header` and `rh-accordion-panel` elements here.
  *
  */
-export declare class RhAccordion extends BaseAccordion {
+export declare class RhAccordion extends LitElement {
     #private;
     static readonly version = "{{version}}";
     static readonly styles: import("lit").CSSResult[];
+    static isAccordion(target: EventTarget | null): target is RhAccordion;
     static isHeader(target: EventTarget | null): target is RhAccordionHeader;
     static isPanel(target: EventTarget | null): target is RhAccordionPanel;
     static isAccordionChangeEvent(event: Event): event is AccordionHeaderChangeEvent;
@@ -65,7 +65,7 @@ export declare class RhAccordion extends BaseAccordion {
      * Accepts a 0-based index value (integer) for the set of accordion items to expand.
      * Accepts an optional parent accordion to search for headers and panels.
      */
-    expand(index: number, parentAccordion?: BaseAccordion): Promise<void>;
+    expand(index: number, parentAccordion?: RhAccordion): Promise<void>;
     /**
      * Expands all accordion items.
      */
