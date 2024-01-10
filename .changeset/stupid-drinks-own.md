@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-`<rh-accordion>`: On dark mode borders are now the correct color again.
+`<rh-accordion>`: fixed border color for dark color palettes
