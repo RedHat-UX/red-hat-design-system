@@ -9,7 +9,7 @@
   --_context-text: var(--rh-color-text-primary-on-dark, #ffffff);
 }
 
-:host(:is([color-palette^="light"],[color-palette="base"])) {
+:host(:is([color-palette^="light"])) {
   --context: light;
   --_context-text: var(--rh-color-text-primary-on-light, #151515);
 }
@@ -24,10 +24,6 @@
 
 :host(:is([color-palette="light"])) {
   --_context-background-color: var(--rh-color-surface-light, #e0e0e0);
-}
-
-:host(:is([color-palette="base"])) {
-  --_context-background-color: var(--rh-color-surface-lightest, #ffffff);
 }
 
 :host(:is([color-palette="dark"])) {
