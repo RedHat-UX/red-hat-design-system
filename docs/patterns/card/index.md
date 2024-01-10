@@ -5,6 +5,69 @@ tags:
   - pattern
 ---
 
+<script type="module">
+import '@rhds/elements/rh-card/rh-card.js';
+import '@rhds/elements/rh-cta/rh-cta.js';
+import '@rhds/elements/rh-surface/rh-surface.js';
+</script>
+
+<style>
+  rh-card {
+    display: grid;
+    max-width: 360px;
+  }
+
+  rh-surface {
+    width: fit-content;
+  }
+
+  rh-card.alt,
+  rh-surface[color-palette^="light"] rh-card.alt {
+    --rh-card-background-color: #f0f0f0;
+  }
+
+  rh-surface[color-palette^="dark"] rh-card.alt {
+    --rh-card-background-color: #3c3f42;
+  }
+
+  rh-card.bar::part(header) {
+    background-color: var(--_background-color, #f0f0f0);
+    text-transform: uppercase;
+    font-weight: var(--rh-font-weight-heading-regular, 300);
+    font-size: var(--rh-font-size-body-text-md, 1rem);
+  }
+
+  rh-card.bar::part(header) {
+    background-color: var(--_header-background-color);
+    text-transform: uppercase;
+    font-weight: var(--rh-font-weight-heading-regular, 300);
+    font-size: var(--rh-font-size-body-text-md, 1rem);
+  }
+
+  rh-card.bar::part(header) {
+    background-color: var(--_header-background-color);
+    text-transform: uppercase;
+    font-weight: var(--rh-font-weight-heading-regular, 300);
+    font-size: var(--rh-font-size-body-text-md, 1rem);
+  }
+
+  rh-card.full::part(header) {
+    padding-inline: 0;
+    padding-block: 0;
+  }
+
+  rh-card.custom-light-theme {
+    --rh-color-border-subtle-on-light: #EF6461;
+    --rh-color-surface-lightest: #feeded;
+    --rh-color-text-primary-on-light: #30292F;
+  }
+
+  rh-card.custom-dark-theme {
+    --rh-color-border-subtle-on-dark: #5e40be;
+    --rh-color-surface-darkest: #261a4c;
+    --rh-color-text-primary-on-dark: #e8e4f5;
+  }
+</style>
 ## Overview
 
 A card formats content in a small, contained space. It can be used to display a 
@@ -156,64 +219,6 @@ For more information, please see the [card css custom properties](/elements/card
 
 {% include 'feedback.html' %}
 
-<script src="/elements/card/demo/rh-card.js" type="module"></script>
-<style>
-  rh-card {
-    display: grid;
-    max-width: 360px;
-  }
-
-  rh-surface {
-    width: fit-content;
-  }
-
-  rh-card.alt,
-  rh-surface[color-palette^="light"] rh-card.alt {
-    --rh-card-background-color: #f0f0f0;
-  }
-
-  rh-surface[color-palette^="dark"] rh-card.alt {
-    --rh-card-background-color: #3c3f42;
-  }
-
-  rh-card.bar::part(header) {
-    background-color: var(--_background-color, #f0f0f0);
-    text-transform: uppercase;
-    font-weight: var(--rh-font-weight-heading-regular, 300);
-    font-size: var(--rh-font-size-body-text-md, 1rem);
-  }
-
-  rh-card.bar::part(header) {
-    background-color: var(--_header-background-color);
-    text-transform: uppercase;
-    font-weight: var(--rh-font-weight-heading-regular, 300);
-    font-size: var(--rh-font-size-body-text-md, 1rem);
-  }
-
-  rh-card.bar::part(header) {
-    background-color: var(--_header-background-color);
-    text-transform: uppercase;
-    font-weight: var(--rh-font-weight-heading-regular, 300);
-    font-size: var(--rh-font-size-body-text-md, 1rem);
-  }
-
-  rh-card.full::part(header) {
-    padding-inline: 0;
-    padding-block: 0;
-  }
-
-  rh-card.custom-light-theme {
-    --rh-color-border-subtle-on-light: #EF6461;
-    --rh-color-surface-lightest: #feeded;
-    --rh-color-text-primary-on-light: #30292F;
-  }
-
-  rh-card.custom-dark-theme {
-    --rh-color-border-subtle-on-dark: #5e40be;
-    --rh-color-surface-darkest: #261a4c;
-    --rh-color-text-primary-on-dark: #e8e4f5;
-  }
-</style>
 
 ## Usage
 
