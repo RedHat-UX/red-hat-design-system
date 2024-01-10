@@ -24,9 +24,13 @@ module.exports = function(eleventyConfig) {
      * @param {string}    [options.colorPalette] color palette for surface
      * @param {string}    [options.style]        styles for the surface
      * @param {string}    [options.class]        class name to use
-     * @param {boolean}   [options.picker]       show the color palette picker
-     * @param {boolean}   [options.stacked]      use the vertical layout
      * @param {number}    [options.columns]      how many columns to show
+     * @param {boolean}   [options.stacked]      use the vertical layout
+     * @param {boolean}   [options.picker]       show the color palette picker
+     * @param {string}    [options.target]       Light DOM target selector for
+     *                                           the color-palette picker.
+     *                                           Defaults to the rh-surface in
+     *                                           shadow root.
      * @param {'hidden'|'show'|'disclosure'}    [options.code]              vertical layout
      * @this {EleventyContext}
      */
@@ -34,6 +38,7 @@ module.exports = function(eleventyConfig) {
       style = '',
       colorPalette = 'lightest',
       picker = false,
+      target = '',
       columns = 1,
       code = 'show',
       class: classNames = '',
@@ -43,7 +48,10 @@ module.exports = function(eleventyConfig) {
       /* eslint-disable indent */
       return dedent(/* html */`\
 <script type="module" src="/assets/elements/uxdot-code-sample.js"></script>
-<uxdot-code-sample ${attrMap({ style, 'class': [...classes].join(' '), 'color-palette': colorPalette })}>
+<uxdot-code-sample ${attrMap({ style,
+                               target,
+                               'class': [...classes].join(' '),
+                               'color-palette': colorPalette })}>
   <template shadowrootmode="open">
     <style>
     :host {

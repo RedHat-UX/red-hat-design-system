@@ -1,4 +1,5 @@
 import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+import '@rhds/elements/rh-surface/rh-surface.js';
 
 import { LitElement } from 'lit';
 
@@ -9,6 +10,7 @@ export class UxdotSample extends LitElement {
     colorPalette: { reflect: true, attribute: 'color-palette' },
     stacked: { reflect: true, type: Boolean },
     picker: { reflect: true, type: Boolean },
+    target: { },
     columns: { reflect: true, type: Number },
     code: { reflect: true, type: Boolean },
   };
@@ -22,6 +24,15 @@ export class UxdotSample extends LitElement {
       (this.shadowRoot ?? this.attachShadow({ mode })).appendChild(template.content);
       template.remove();
       return this.shadowRoot;
+    }
+  }
+
+  updated(changed) {
+    if (changed.has('target')) {
+      const picker = this.shadowRoot.querySelector('rh-context-picker');
+      if (picker) {
+        picker.target = this.querySelector(this.target);
+      }
     }
   }
 
