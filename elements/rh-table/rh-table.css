@@ -100,3 +100,7 @@
   font-weight: var(--rh-font-weight-body-text-regular, 400);
   line-height: var(--rh-line-height-body-text, 1.5);
 }
+
+:is(.dark,.darker,.darkest) ::slotted([slot="summary"]) {
+  color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
+}
