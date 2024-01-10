@@ -33,7 +33,6 @@ a {
   --_active-background-color: var(--rh-color-surface-darkest, #151515);
   --_active-text-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_expanded-background-color: var(--rh-color-accent-brand-on-dark, #ee0000);
-  --_border-inline-end-color: var(--rh-color-border-subtle-on-dark, #707070);
 }
 
 .rtl {
@@ -49,7 +48,10 @@ a {
 }
 
 :host([expanded]) {
-  border-inline-end: var(--rh-border-width-sm, 1px) solid var(--_border-inline-end-color, #c7c7c7);
+  border-inline-end:
+    var(--rh-border-width-sm, 1px)
+    solid
+    var(--_border-color, var(--rh-color-border-subtle-on-dark, #707070));
 }
 
 :host(.animating) #button,
