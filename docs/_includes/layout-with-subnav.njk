@@ -7,6 +7,7 @@ importElements:
   - rh-subnav
   - rh-tag
   - rh-badge
+  - rh-code-block
 ---
 
 {% include 'component/header.njk' %}
@@ -16,10 +17,11 @@ importElements:
     <header class="l-main__header l-main__header--palette-lighter">
       <div class="container header has-subnav">
         <h1 id="{{ heading or title }}" class="page-title">{{ heading or title }}</h1>
-        <rh-subnav>{% for tab in collections.sortedColor %}
-          <a {{ 'active' if tab.url == page.url }} href="{{ tab.url }}">
-            {{ tab.data.title }}
-          </a>{% endfor %}
+        <rh-subnav>
+          {% for tab in collections.sortedColor %}
+            <a {{ 'active' if tab.url == page.url }} href="{{ tab.url }}">
+            {{ tab.data.title }}</a>
+          {% endfor %}
         </rh-subnav>
       </div>
     </header>

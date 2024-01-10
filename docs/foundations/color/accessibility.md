@@ -1,5 +1,5 @@
 ---
-layout: layout-foundations.njk
+layout: layout-with-subnav.njk
 title: Accessibility
 heading: Color
 tags:
