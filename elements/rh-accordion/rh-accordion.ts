@@ -1,4 +1,4 @@
-import { html, type TemplateResult } from 'lit';
+import { LitElement, html, type TemplateResult } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
@@ -10,15 +10,13 @@ import { RovingTabindexController } from '@patternfly/pfe-core/controllers/rovin
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
-import { BaseAccordion } from './BaseAccordion.js';
-
 import { NumberListConverter, ComposedEvent } from '@patternfly/pfe-core';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
-import styles from './rh-accordion.css';
-
-import { AccordionHeaderChangeEvent, RhAccordionHeader } from './rh-accordion-header.js';
+import { RhAccordionHeader, AccordionHeaderChangeEvent } from './rh-accordion-header.js';
 import { RhAccordionPanel } from './rh-accordion-panel.js';
+
+import styles from './rh-accordion.css';
 
 export class AccordionExpandEvent extends ComposedEvent {
   constructor(
@@ -52,10 +50,14 @@ export class AccordionCollapseEvent extends ComposedEvent {
  *
  */
 @customElement('rh-accordion')
-export class RhAccordion extends BaseAccordion {
+export class RhAccordion extends LitElement {
   static readonly version = '{{version}}';
 
   static readonly styles = [styles];
+
+  static isAccordion(target: EventTarget | null): target is RhAccordion {
+    return target instanceof RhAccordion;
+  }
 
   static isHeader(target: EventTarget | null): target is RhAccordionHeader {
     return target instanceof RhAccordionHeader;
@@ -238,12 +240,12 @@ export class RhAccordion extends BaseAccordion {
     }
   }
 
-  #allHeaders(accordion: BaseAccordion = this): RhAccordionHeader[] {
-    return Array.from(accordion.children).filter(RhAccordion.isHeader);
+  #allHeaders(accordion: RhAccordion = this): RhAccordionHeader[] {
+    return Array.from(accordion.children).filter((x): x is RhAccordionHeader => x instanceof RhAccordionHeader);
   }
 
-  #allPanels(accordion: BaseAccordion = this): RhAccordionPanel[] {
-    return Array.from(accordion.children).filter(RhAccordion.isPanel);
+  #allPanels(accordion: RhAccordion = this): RhAccordionPanel[] {
+    return Array.from(accordion.children).filter((x => RhAccordion.isPanel(x)) as typeof RhAccordion.isPanel);
   }
 
   #getIndex(el: Element | null) {
@@ -299,7 +301,7 @@ export class RhAccordion extends BaseAccordion {
    * Accepts a 0-based index value (integer) for the set of accordion items to expand.
    * Accepts an optional parent accordion to search for headers and panels.
    */
-  public async expand(index: number, parentAccordion?: BaseAccordion) {
+  public async expand(index: number, parentAccordion?: RhAccordion) {
     const allHeaders: Array<RhAccordionHeader> = this.#allHeaders(parentAccordion);
 
     const header = allHeaders[index];
