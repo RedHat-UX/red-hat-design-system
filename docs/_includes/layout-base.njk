@@ -44,11 +44,6 @@
   </script>
   {% endfor %}
   <script type="module">
-    import { PfIcon } from '@patternfly/elements/pf-icon/pf-icon.js';
-    PfIcon.getIconUrl = (set, icon) =>
-      new URL(`/assets/packages/@patternfly/elements/pf-icon/icons/${set}/${icon}.js`, location.origin);
-  </script>
-  <script type="module">
     // As soon as the DOM is ready, toggle JS class
     document.documentElement.classList.remove('no-js');
     document.documentElement.classList.add('js');
