@@ -41,7 +41,10 @@ There are two available sizes and the only difference is the title text size. Yo
 ## Theme 
 An accordion is available in both light and dark themes. The light theme expanded panel includes a box shadow, but the dark theme does not.
 
-{% sample picker=true, code="hidden" %}
+{% sample picker=true,
+          target="rh-accordion",
+          colorPalette="darkest",
+          code="hidden" %}
 
 <rh-accordion>
   <rh-accordion-header><h2>Exterior panel</h2></rh-accordion-header>
