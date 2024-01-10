@@ -61,23 +61,20 @@ The audio player is a collection of elements used to play audio clips and browse
     <rh-audio-player-subscribe slot="subscribe"></rh-audio-player-subscribe>
     <rh-transcript slot="transcript"></rh-transcript>
   </rh-audio-player>
-  <rh-badge number="1" data-shadow-selector="#poster img"></rh-badge>
+  <uxdot-anatomy-tag label="1" description="Image" shadow-selector="#poster img"></uxdot-anatomy-tag>
+  <uxdot-anatomy-tag label="2" description="Description" shadow-selector="slot[name='series']"></uxdot-anatomy-tag>
+  <uxdot-anatomy-tag label="3" description="Title" shadow-selector="slot[name='title']"></uxdot-anatomy-tag>
+  <uxdot-anatomy-tag label="4a" description="Elapsed time" shadow-selector="#full-current"></uxdot-anatomy-tag>
+  <uxdot-anatomy-tag label="4b" description="Total time" shadow-selector="#duration"></uxdot-anatomy-tag>
+  <uxdot-anatomy-tag label="5" description="Current time / seek bar" shadow-selector="#time"></uxdot-anatomy-tag>
+  <uxdot-anatomy-tag label="6" description="Unmute/mute button" shadow-selector="#mute"></uxdot-anatomy-tag>
+  <uxdot-anatomy-tag label="7" description="Volume level" shadow-selector="#volume"></uxdot-anatomy-tag>
+  <uxdot-anatomy-tag label="8" description="Playback speed" shadow-selector="#full-playback-rate-tooltip"></uxdot-anatomy-tag>
+  <uxdot-anatomy-tag label="9" description="Rewind" shadow-selector="#rewind"></uxdot-anatomy-tag>
+  <uxdot-anatomy-tag label="10" description="Play/pause" shadow-selector="#full-play"></uxdot-anatomy-tag>
+  <uxdot-anatomy-tag label="11" description="Forward" shadow-selector="#forward"></uxdot-anatomy-tag>
+  <uxdot-anatomy-tag label="1d" description="Contextual menu" shadow-selector="#menu"></uxdot-anatomy-tag>
 </uxdot-anatomy-sample>
-
-1) Image
-2) Description
-3) Title
-  a. Elapsed time
-  b. Total time
-5) Current time/seek bar
-6) Unmute/mute button
-7) Volume level
-8) Playback speed
-9) Rewind
-10) Play/pause
-11) Forward
-12) Contextual menu
-{.example-notes}
 
 ## Sizes
 There are three available sizes and the only difference is the amount of interface elements. The Compact and Mini players can be used on large breakpoints, but the Full player cannot be used on small breakpoints due to space constraints.

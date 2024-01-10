@@ -90,6 +90,8 @@ module.exports = function(eleventyConfig) {
       // Vendor
       'lit',
       'lit/directives/if-defined.js',
+      'lit/directives/style-map.js',
+      'lit/directives/class-map.js',
       'lit-html',
       'lit-element',
       '@lit/reactive-element',

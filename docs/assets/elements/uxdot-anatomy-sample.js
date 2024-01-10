@@ -1,6 +1,9 @@
 import { LitElement, html, css } from 'lit';
-import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
-import '@rhds/elements/rh-badge/rh-badge.js';
+import { styleMap } from 'lit/directives/style-map.js';
+import { querySelectorDeep } from '/assets/qssd.js';
+
+import '@rhds/elements/rh-tag/rh-tag.js';
+import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 
 /**
  * @slot element - place demo element here
@@ -16,35 +19,28 @@ export class UxdotAnatomySample extends LitElement {
         display: block;
         position: relative;
       }
-      ::slotted(rh-badge) {
-        position: fixed;
+      rh-tooltip {
+        position: absolute;
+        left: 1px;
+        top: 1px;
         display: block;
+        z-index: 2000;
       }
     `,
   ];
 
-  static properties = { };
+  static properties = {
+    tags: { state: true },
+  };
 
-  static instances = new Set();
-
-  static {
-    customElements.define(this.is, this);
-    document.addEventListener('scroll', function() {
-      for (const i of UxdotAnatomySample.instances) {
-        i.#onResize();
-      }
-    });
-  }
+  static { customElements.define(this.is, this); }
 
   #ro = new ResizeObserver(() => this.#onResize);
 
   #mo = new MutationObserver(() => this.#onResize);
 
-  #log = new Logger(this);
-
   connectedCallback() {
     super.connectedCallback();
-    UxdotAnatomySample.instances.add(this);
     this.addEventListener('slotchange', this.#onResize);
     this.addEventListener('scroll', this.#onResize);
     this.#ro.observe(this);
@@ -52,35 +48,62 @@ export class UxdotAnatomySample extends LitElement {
     this.#onResize();
   }
 
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    UxdotAnatomySample.instances.delete(this);
+  firstUpdated() {
+    this.#onResize();
   }
 
   render() {
+    // TODO: render legend from tags
+    // TODO: allow for an external legend
+    // const egLightDOm = html`
+    //   <uxdot-anatomy-legend>
+    //     <uxdot-anatomy-sample>
+    //       <r-element slot="element"></r-element>
+    //       <uxdont-anatomy-tag>...</uxdont-anatomy-tag>
+    //     </uxdot-anatomy-sample>
+    //     <uxdot-anatomy-sample>
+    //       <r-element slot="element"></r-element>
+    //       <uxdont-anatomy-tag>...</uxdont-anatomy-tag>
+    //     </uxdot-anatomy-sample>
+    //   </uxdot-anatomy-legend>
+    // `;
     return html`
       <slot name="element"></slot>
       <slot></slot>
+      <div id="tags">${this.tags?.map?.(tag => !tag ? '' : html`
+        <rh-tooltip content="${tag.description}" style="${styleMap({ translate: `${tag.x}px ${tag.y}px` })}">
+          <rh-tag color="purple">${tag.label}</rh-tag>
+        </rh-tooltip>`)}
+      </div>
     `;
   }
 
   async #onResize() {
     const element = this.querySelector('[slot="element"]');
     await element.updateComplete;
-    // const er = element.getBoundingClientRect();
-    for (const badge of this.querySelectorAll('rh-badge')) {
-      const { shadowSelector } = badge.dataset;
+    const er = this.getBoundingClientRect();
+    this.tags = Array.from(this.querySelectorAll('uxdot-anatomy-tag'), tag => {
+      const shadowSelector = tag.getAttribute('shadow-selector');
       if (shadowSelector) {
-        const target = element.shadowRoot.querySelector(shadowSelector);
+        const target = querySelectorDeep(shadowSelector, element);
         if (target instanceof Element) {
           const tr = target.getBoundingClientRect();
-          const x = tr.left + window.scrollX;
-          const y = tr.top + window.scrollY;
-          badge.style.setProperty('translate', `${x + (tr.width / 2)}px ${y + (tr.height / 2)}px`);
-        } else {
-          this.#log.warn(`Could not find shadow element ${shadowSelector} in ${element.localName}${element.id ? `#${element.id}` : ''}`);
+          // TODO: position a la tooltip: left right top bottom, default to center
+          const x = tr.left + (tr.width / 2) - 1 - er.left;
+          const y = tr.top + (tr.height / 2) - 1 - er.top;
+          const label = tag.getAttribute('label');
+          const description = tag.getAttribute('description');
+          return {
+            x,
+            y,
+            // TODO: from attrs. thanks sspriggs for the idea
+            offsetX: 0,
+            offsetY: 0,
+            label,
+            description,
+          };
         }
       }
-    }
+    });
   }
 }
