@@ -1,35 +1,30 @@
-import type { TemplateResult } from 'lit';
+import type { RhAccordion } from './rh-accordion.js';
 
 import { html, LitElement } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
-import { ComposedEvent } from '@patternfly/pfe-core';
-
-import { DirController } from '../../lib/DirController.js';
-
+import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
+import { DirController } from '../../lib/DirController.js';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
-import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
-
 import styles from './rh-accordion-header.css';
-import { BaseAccordion } from './BaseAccordion.js';
 
 const isPorHeader =
   (el: Node): el is HTMLElement =>
     el instanceof HTMLElement && !!el.tagName.match(/P|^H[1-6]/);
 
-export class AccordionHeaderChangeEvent extends ComposedEvent {
+export class AccordionHeaderChangeEvent extends Event {
   declare target: RhAccordionHeader;
   constructor(
     public expanded: boolean,
     public toggle: RhAccordionHeader,
-    public accordion: BaseAccordion
+    public accordion: RhAccordion,
   ) {
-    super('change');
+    super('change', { bubbles: true, cancelable: true });
   }
 }
 
@@ -83,22 +78,24 @@ export class RhAccordionHeader extends LitElement {
     this.#initHeader();
   }
 
-  render(): Array<TemplateResult> {
+  render() {
     const { on = '' } = this;
     const rtl = this.#dir.dir === 'rtl';
-    const res = [];
-    res.push(html`<div id="container" class="${classMap({ [on]: !!on, rtl })}" part="container">`);
-    switch (this.headingTag) {
-      case 'h1': res.push(html`<h1 id="heading">${this.#renderHeaderContent()}</h1>`); break;
-      case 'h2': res.push(html`<h2 id="heading">${this.#renderHeaderContent()}</h2>`); break;
-      case 'h3': res.push(html`<h3 id="heading">${this.#renderHeaderContent()}</h3>`); break;
-      case 'h4': res.push(html`<h4 id="heading">${this.#renderHeaderContent()}</h4>`); break;
-      case 'h5': res.push(html`<h5 id="heading">${this.#renderHeaderContent()}</h5>`); break;
-      case 'h6': res.push(html`<h6 id="heading">${this.#renderHeaderContent()}</h6>`); break;
-      default: res.push(this.#renderHeaderContent());
-    }
-    res.push(html`</div>`);
-    return res;
+    return html`
+      <div id="container" class="${classMap({ [on]: !!on, rtl })}" part="container">
+        ${(() => {
+          switch (this.headingTag) {
+            case 'h1': return html`<h1 id="heading">${this.#renderHeaderContent()}</h1>`;
+            case 'h2': return html`<h2 id="heading">${this.#renderHeaderContent()}</h2>`;
+            case 'h3': return html`<h3 id="heading">${this.#renderHeaderContent()}</h3>`;
+            case 'h4': return html`<h4 id="heading">${this.#renderHeaderContent()}</h4>`;
+            case 'h5': return html`<h5 id="heading">${this.#renderHeaderContent()}</h5>`;
+            case 'h6': return html`<h6 id="heading">${this.#renderHeaderContent()}</h6>`;
+            default: return this.#renderHeaderContent();
+          }
+        })()}
+      </div>
+    `;
   }
 
   async #initHeader() {
@@ -120,16 +117,6 @@ export class RhAccordionHeader extends LitElement {
     this.hidden = false;
   }
 
-  #renderAfterButton() {
-    // Font-Awesome free angle-down
-    // TODO: use rh-icon when it's ready
-    return html`
-      <svg id="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-        <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
-      </svg>
-    `;
-  }
-
   #renderHeaderContent() {
     const headingText = this.headingText?.trim() ?? this.#header?.textContent?.trim();
     return html`
@@ -139,7 +126,9 @@ export class RhAccordionHeader extends LitElement {
         <span part="text">${headingText ?? html`
           <slot></slot>`}
         </span>
-        ${this.#renderAfterButton?.()}
+        <svg id="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+          <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
+        </svg>
       </button>
     `;
   }
@@ -180,7 +169,7 @@ export class RhAccordionHeader extends LitElement {
 
   #onClick(event: MouseEvent) {
     const expanded = !this.expanded;
-    const acc = event.composedPath().find(BaseAccordion.isAccordion);
+    const acc = event.composedPath().find((x): x is RhAccordion => x instanceof HTMLElement && x.localName === 'rh-accordion');
     if (acc) {
       this.dispatchEvent(new AccordionHeaderChangeEvent(expanded, this, acc));
     }
