@@ -48,7 +48,10 @@ a {
 }
 
 :host([expanded]) {
-  border-inline-end: var(--rh-border-width-sm, 1px) solid var(--_border-color, var(--rh-color-border-subtle-on-dark, #707070));
+  border-inline-end:
+    var(--rh-border-width-sm, 1px)
+    solid
+    var(--_border-color, var(--rh-color-border-subtle-on-dark, #707070));
 }
 
 :host(.animating) #button,
