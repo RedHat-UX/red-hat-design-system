@@ -39,15 +39,6 @@ export interface ColorContextProviderOptions<T extends ReactiveElement> extends 
 export class ColorContextProvider<
   T extends ReactiveElement
 > extends ColorContextController<T> implements ReactiveController {
-  static contexts = new Map(Object.entries({
-    darkest: 'darkest' as const,
-    darker: 'darker' as const,
-    dark: 'dark' as const,
-    light: 'light' as const,
-    lighter: 'lighter' as const,
-    lightest: 'lightest' as const,
-  }));
-
   #attribute: string;
 
   /** Cache of context callbacks. Call each to update consumers */
@@ -72,9 +63,8 @@ export class ColorContextProvider<
     return this.#local;
   }
 
-  get #local() {
-    return ColorContextProvider
-      .contexts.get(this.host.getAttribute(this.#attribute) ?? '');
+  get #local(): ColorPalette {
+    return this.host.getAttribute(this.#attribute) as ColorPalette;
   }
 
   get value(): ColorPalette {
