@@ -92,7 +92,7 @@ On all dark theme surface colors, the row highlight is white, and the column hig
 
 {% example palette="darkest",
            alt="Dark theme tables with hover effects on a black surface",
-           src="../table-interaction-state-hove-dark.png" %}
+           src="../table-interaction-state-hover-dark.png" %}
 
 ### Focus
 
