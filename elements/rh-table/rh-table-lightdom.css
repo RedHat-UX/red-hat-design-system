@@ -1,5 +1,4 @@
-rh-table,
-rh-table[color-palette="lightest"] {
+rh-table {
   --rh-table-row-border:
     var(--rh-border-width-sm, 1px)
     solid
@@ -19,40 +18,6 @@ rh-table[color-palette="lightest"] {
           0 102 204
         )
         / var(--rh-opacity-10, 10%)
-      );
-}
-
-[color-palette="light"] > rh-table,
-rh-table[color-palette="light"],
-[color-palette="lighter"] > rh-table,
-rh-table[color-palette="lighter"] {
-  --rh-table-row-background-color:
-    rgb(
-        var(
-          --_rh-color-white-rgb, /* making private as currently doesn't exist */
-          255 255 255
-        )
-        / var(--rh-opacity-50, 50%)
-      );
-}
-
-[color-palette^="dark"] > rh-table,
-rh-table[color-palette^="dark"] {
-  --rh-table-row-background-color:
-    rgb(
-        var(
-          --_rh-color-white-rgb, /* making private as currently doesn't exist */
-          255 255 255
-        )
-        / var(--rh-opacity-10, 10%)
-      );
-  --rh-table-column-background-color:
-    rgb(
-        var(
-          --rh-color-blue-70-rgb,
-          0 51 102
-        )
-        / var(--rh-opacity-30, 30%)
       );
 }
 
@@ -186,7 +151,7 @@ rh-table :is(col.active) {
     word-wrap: break-word;
   }
 
-  rh-table thead ~ tbody tr td:before {
+  rh-table thead ~ tbody tr :is(td,th):before {
     font-weight: var(--rh-font-weight-heading-bold, 700);
     text-align: left;
     content: attr(data-label);
