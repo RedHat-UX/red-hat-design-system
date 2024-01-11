@@ -19,7 +19,7 @@ Follow these steps to get started and e-mail [design-system@redhat.com](mailto:d
 Our [Brand standards](https://www.redhat.com/en/about/brand/standards) are the source code of the Red Hat brand. Using brand standards as the starting point for every project ensures that every interaction with Red Hat reflects our brand personality, brand strategy, and consistent visual language. Consistency is how we create authentic relationships and credibility with our customers, partners, and contributors.
 
 {% example palette="none",
-          alt="ADD TEXT",
+          alt="The text 'Brand Standards' with small illustrations of color swatches, dropdown element, and resizing an icon",
           src="/assets/get-started/designers/brand-standards.png" %}
 
 ## Learn about our design system
@@ -46,7 +46,7 @@ Our design system libraries and the documentation website offer assets and guida
 You need a Figma license to access our libraries. When you are granted a license, use your Red Hat e-mail address to log in to Figma via SSO authentication. When you are logged in, you should be able to access our libraries and add them to all of your [drafts](https://help.figma.com/hc/en-us/articles/360038743434-Manage-libraries-for-your-drafts) or [individual files](https://help.figma.com/hc/en-us/articles/1500008731201-Manage-libraries-in-design-files).
 
 {% example palette="light-compact",
-          alt="ADD TEXT",
+          alt="Figma's Libraries modal showing the Red Hat Design System library is added'",
           src="/assets/get-started/designers/access-figma-libraries.png" %}
 
 ### Agency access
@@ -83,7 +83,7 @@ If your project requires brand assets, the [Brand standards](https://www.redhat.
 To use an element or pattern in your design, select the **Assets** tab. Find your desired asset and drag it onto the canvas or frame. You can also preview an asset by selecting it. When you are satisfied with the preview, select the **Insert instance** button and the asset will appear on the canvas or frame. If you have questions about how to use an element or pattern correctly, review the documentation or connect with us on Slack.
 
 {% example palette="light-compact",
-          alt="ADD TEXT",
+          alt="Figma's asset preview dialog box for a card component with an 'Insert instance' button",
           src="/assets/get-started/designers/figma-inserting-elements-patterns.png" %}
 
 ### Properties
@@ -91,7 +91,7 @@ To use an element or pattern in your design, select the **Assets** tab. Find you
 Properties are changeable aspects of an element or pattern and you can see them in the right sidebar when the asset is selected. Properties change the appearance of an element or pattern so they can be used for different use cases. Some examples of properties include state, theme, variant, etc.
 
 {% example palette="light",
-          alt="ADD TEXT",
+          alt="Diagram showing a blue primary button being changed to a destroy button with Figma's properties selector",
           src="/assets/get-started/designers/figma-properties.png" %}
 
 ### Responsive resize
@@ -99,13 +99,13 @@ Properties are changeable aspects of an element or pattern and you can see them 
 Most elements and patterns can be resized to fit different viewport sizes. You can change the height or width of an asset by dragging an edge or corner.
 
 {% example palette="light",
-          alt="ADD TEXT",
+          alt="Screenshot of a progress steps element being resized by dragging the bottom right corner",
           src="/assets/get-started/designers/figma-responsive-resize-drag.png" %}
 
 You can also use [Constraints](https://help.figma.com/hc/en-us/articles/360039957734-Apply-constraints-to-define-how-layers-resize) to tell Figma how layers should respond when their frames are resized.
 
 {% example palette="light",
-          alt="ADD TEXT",
+          alt="Screenshot of a selected progress steps element next to Figma's constraints settings",
           src="/assets/get-started/designers/figma-responsive-resize-constraints.png" %}
 
 ### Instance swap
@@ -113,7 +113,7 @@ You can also use [Constraints](https://help.figma.com/hc/en-us/articles/36003995
 To speed up your design process, you can swap elements or patterns instead of dragging and dropping over and over again. Use the **Instance** menu to swap one element for another from any enabled library. Changing a property will not replace an element, but instance swapping will.
 
 {% example palette="light",
-          alt="ADD TEXT",
+          alt="Diagram of a primary CTA being changed to a secondary CTA via the instance swap panel",
           src="/assets/get-started/designers/figma-instance-swap.png" %}
 
 ## Get familiar with GitHub
@@ -123,7 +123,7 @@ GitHub is how we maintain the design system. We also use it to track changes, up
 The [GitHub Wiki](https://github.com/RedHat-UX/red-hat-design-system/wiki) can help you get started, and you can always chat with us for additional help.
 
 {% example palette="none",
-          alt="ADD TEXT",
+          alt="Screenshot of the red-hat-design-system GitHub repo's Code tab",
           src="/assets/get-started/designers/get-familiar-with-github.png" %}
 
 ## Best practices
@@ -138,7 +138,7 @@ Detached instances will not receive style or other updates from any of the libra
 {% endalert %}
 
 {% example palette="light",
-          alt="ADD TEXT",
+          alt="Comparison of a linked and a detached accordion with their layers panel below",
           src="/assets/get-started/designers/best-practices-detach-instance.png" %}
 
 ### Alignment resources
