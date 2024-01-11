@@ -341,7 +341,7 @@ let RhAudioPlayer = RhAudioPlayer_1 = class RhAudioPlayer extends LitElement {
             <button id="close"
                     aria-label="${__classPrivateFieldGet(this, _RhAudioPlayer_translation, "f").get('close')}"
                     class="toolbar-button"
-                    ?disabled=${!__classPrivateFieldGet(this, _RhAudioPlayer_mediaElement, "f")}
+                    ?disabled="${!__classPrivateFieldGet(this, _RhAudioPlayer_mediaElement, "f")}"
                     aria-controls="panel"
                     @click="${__classPrivateFieldGet(this, _RhAudioPlayer_instances, "m", _RhAudioPlayer_selectOpenPanel)}"
                     @keydown="${__classPrivateFieldGet(this, _RhAudioPlayer_instances, "m", _RhAudioPlayer_onCloseKeydown)}">
