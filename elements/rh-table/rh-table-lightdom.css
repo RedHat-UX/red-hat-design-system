@@ -151,7 +151,7 @@ rh-table :is(col.active) {
     word-wrap: break-word;
   }
 
-  rh-table thead ~ tbody tr td:before {
+  rh-table thead ~ tbody tr :is(td,th):before {
     font-weight: var(--rh-font-weight-heading-bold, 700);
     text-align: left;
     content: attr(data-label);
