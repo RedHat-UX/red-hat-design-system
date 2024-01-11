@@ -618,7 +618,7 @@ export class RhAudioPlayer extends LitElement {
             <button id="close"
                     aria-label="${this.#translation.get('close')}"
                     class="toolbar-button"
-                    ?disabled=${!this.#mediaElement}
+                    ?disabled="${!this.#mediaElement}"
                     aria-controls="panel"
                     @click="${this.#selectOpenPanel}"
                     @keydown="${this.#onCloseKeydown}">
