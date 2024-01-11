@@ -67,7 +67,7 @@ function table({ tokens, name = '', docs, options } = {}) {
               ${isColor && token.path.includes('text') ? 'Aa'
               : isFont ? (docs?.example ?? token.attributes?.aliases?.[0] ?? 'Aa')
               : name === 'breakpoint' ? `
-                <img src="assets/device-${token.name}.svg" role="presentation">`
+                <img src="/assets/breakpoints/device-${token.name}.svg" role="presentation">`
               : docs?.example ?? ''}
               </samp>
             </td>
