@@ -32,6 +32,21 @@ The table title should make it clear to a user what the data is and what purpose
            alt="Image of table with a title on top and a caption underneath",
            src="../table-title-caption.png" %}
 
+## Theme
+
+A table is available in both light and dark themes.
+
+### Light theme
+{% example palette="light",
+           alt="Light theme table with black text on white surface",
+           src="../table-light-theme.png" %}
+
+### Dark theme
+{% example palette="darkest",
+           alt="Dark theme table with white text on black surface",
+           src="../table-dark-theme.png" %}
+
+
 ## Scrolling
 
 A scrollbar is visible if content exceeds the width or height of a table. Content can scroll horizontally, vertically, or both.
@@ -60,16 +75,33 @@ Interaction states are visual representations used to communicate the status of 
 
 ### Hover
 
-Cell rows and columns are highlighted on hover.
+On hover, cell rows and columns are highlighted with a semitransparent background color to make content easier to view. 
+
+In light theme, a row is highlighted in light gray on white surface colors and white on light gray surface colors. The column highlight remains light blue.
 
 {% example palette="light",
-           alt="Image of table cell hover state",
+           alt="Light theme tables with hover effects on a white surface",
            src="../table-interaction-state-hover.png" %}
+
+<!--change bg to light gray -->
+{% example palette="lighter-gray",
+           alt="Light theme tables with hover effects on a light gray surface",
+           src="../table-interaction-state-hover-light-gray-surface.png" %}
+
+On all dark theme surface colors, the row highlight is white, and the column highlight uses a dark blue.
+
+{% example palette="darkest",
+           alt="Dark theme tables with hover effects on a black surface",
+           src="../table-interaction-state-hove-dark.png" %}
 
 ### Focus
 
 {% alert state="warning", title="Warning" %} A cell with focus does not display row and column highlighting unless it is hovered. {% endalert %}
 
 {% example palette="light",
-           alt="Image of table cell active state",
+           alt="Light theme table cell in focus state",
            src="../table-interaction-state-focus.png" %}
+
+{% example palette="darkest",
+           alt="Dark theme table cell in focus state",
+           src="../table-interaction-state-focus-dark.png" %}
