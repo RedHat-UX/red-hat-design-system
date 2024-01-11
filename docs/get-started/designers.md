@@ -11,7 +11,7 @@ bodyClasses: element-docs
 
 Welcome to the **Red Hat Design System** (RHDS) for digital experiences. If you need to design something using our design system, you have come to the right place.
 
-Follow these steps to get started and [send us an e-mail](mailto:design-system@redhat.com) or connect with us on Slack if you have any questions along the way.
+Follow these steps to get started and e-mail [design-system@redhat.com](mailto:design-system@redhat.com) or connect with us on Slack if you have any questions along the way.
 
 
 ## Explore brand standards
@@ -29,21 +29,21 @@ Our design system libraries and the documentation website offer assets and guida
 <div class="multi-column--min-400-wide">
     <div>
         <h3>Foundations</h3> 
-        <p><a href="foundations">Foundations</a> are how we express our brand through color, space, typography, etc.</p>
+        <p><a href="/foundations">Foundations</a> are how we express our brand through color, space, typography, etc.</p>
     </div>
     <div>
         <h3>Design tokens</h3>
-        <p><a href="tokens">Design tokens</a> are how we translate our design language decisions into code.</p>
+        <p><a href="/tokens">Design tokens</a> are how we translate our design language decisions into code.</p>
     </div>
     <div>
         <h3>Elements and patterns</h3>
-        <p>Our libraries include <a href="elements">elements</a> and <a href="patterns">patterns</a> you can use to create digital experiences.</p>
+        <p>Our libraries include <a href="/elements">elements</a> and <a href="/patterns">patterns</a> you can use to create digital experiences.</p>
     </div>
 </div>
 
 ## Access Figma
 
-You need a Figma license to access our libraries. When you are granted a license, use your Red Hat e-mail address to log in to Figma via SSO authentication. When you are logged in, you should be able to access our libraries and add them to all of your [drafts]("https://help.figma.com/hc/en-us/articles/360038743434-Manage-libraries-for-your-drafts) or [individual files](https://help.figma.com/hc/en-us/articles/1500008731201-Manage-libraries-in-design-files).
+You need a Figma license to access our libraries. When you are granted a license, use your Red Hat e-mail address to log in to Figma via SSO authentication. When you are logged in, you should be able to access our libraries and add them to all of your [drafts](https://help.figma.com/hc/en-us/articles/360038743434-Manage-libraries-for-your-drafts) or [individual files](https://help.figma.com/hc/en-us/articles/1500008731201-Manage-libraries-in-design-files).
 
 {% example palette="light-compact",
           alt="ADD TEXT",
@@ -51,7 +51,7 @@ You need a Figma license to access our libraries. When you are granted a license
 
 ### Agency access
 
-If you work with an agency and do not have a Red Hat e-mail address, [send us an e-mail](mailto:design-system@redhat.com) and we will invite you to view our libraries.
+If you work with an agency and do not have a Red Hat e-mail address, e-mail [design-system@redhat.com](mailto:design-system@redhat.com) and we will invite you to view our libraries.
 
 ## Use libraries
 
@@ -59,7 +59,7 @@ Our libraries are built and maintained in Figma, our primary design tool. By usi
 
 {% alert title="Warning",
           state="warning" %}
-We no longer support Adobe XD. You need to migrate to Figma in order to access and use our most up-to-date libraries. Do not continue to use Adobe XD for any kind of design work. If you need assistance migrating XD files to Figma, [send us an e-mail](mailto:design-system@redhat.com").
+We no longer support Adobe XD. You need to migrate to Figma in order to access and use our most up-to-date libraries. Do not continue to use Adobe XD for any kind of design work. If you need assistance migrating XD files to Figma, e-mail [design-system@redhat.com](mailto:design-system@redhat.com).
 {% endalert %}
 
 ### Core and subsystem libraries
@@ -130,7 +130,7 @@ The [GitHub Wiki](https://github.com/RedHat-UX/red-hat-design-system/wiki) can h
 
 ### Detaching an instance
 
-Currently, you **cannot** add new items to an element or pattern instance that you pull from a library. You need to detach it if you want to add new assets, more slots, etc. If you believe that an element or pattern in any library needs more slots for new items, [create an issue](https://github.com/RedHat-UX/red-hat-design-system/issues) and we will try and prioritize building them in.
+Currently, you **cannot** add new items to an element or pattern instance that you pull from a library. You need to detach it if you want to add new assets, more slots, etc. If you believe that an element or pattern in any library needs more slots for new items, [create an issue](https://github.com/RedHat-UX/red-hat-design-system/issues/new/choose) and we will try and prioritize building them in.
 
 {% alert title="Warning",
           state="warning" %}
@@ -147,13 +147,13 @@ Use these resources to help you stay aligned to our brand and design system whil
 
 <ul>
     <li><a href="https://www.redhat.com/en/about/brand/standards">Brand standards</a></li>
-    <li><a href="foundations">Foundations</a>, <a href="elements">elements</a>, and <a href="patterns">patterns</a></li>
+    <li><a href="/foundations">Foundations</a>, <a href="/elements">elements</a>, and <a href="/patterns">patterns</a></li>
     <li>Reference existing pages so you can see how brand and design system assets are being used</li>
         <ul>
             <li><a href="https://redhat.com/">redhat.com home page</a></li>
             <li><a href="https://www.redhat.com/en/technologies/cloud-computing/openshift">Product page</a></li>
             <li><a href="https://www.redhat.com/en/topics/cloud-computing/what-are-cloud-services">Resource article page</a></li>
-            <li><a href="https://catalog.redhat.com/software/search?functionalCategories=AI%20%26%20machine%20learning">SERP</a></li>
+            <li><a href="https://catalog.redhat.com/software/search?functionalCategories=AI%20%26%20machine%20learning">Catalog SERP</a></li>
             <li><a href="https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux/server/trial">Product trial page</a></li>
         </ul>
 </ul>
@@ -186,7 +186,7 @@ Use these resources to help you stay aligned to our brand and design system whil
 <p>
     <strong>What if an element or pattern I need is missing?</strong>
     <br>
-    If you think something is missing or you cannot find something, connect with us on Slack or <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">create a discussion</a>.
+    If you think something is missing or you cannot find something, connect with us on Slack or <a href="https://github.com/orgs/RedHat-UX/discussions/new/choose">create a discussion</a>.
 </p>
 
 <hr class="margin-top--4 margin-bottom--4">
@@ -194,7 +194,7 @@ Use these resources to help you stay aligned to our brand and design system whil
 <p>
     <strong>How can I contribute an idea?</strong>
     <br>
-    If you have feedback or you would like to contribute an idea, <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">create a discussion</a>.
+    If you have feedback or you would like to contribute an idea, <a href="https://github.com/orgs/RedHat-UX/discussions/new/choose">create a discussion</a>.
 </p>
 
 <hr class="margin-top--4 margin-bottom--4">
@@ -202,16 +202,16 @@ Use these resources to help you stay aligned to our brand and design system whil
 <p>
     <strong>How can I report a bug?</strong>
     <br>
-    If you find a bug, <a href="https://github.com/RedHat-UX/red-hat-design-system/issues/new/choose">create an issue</a> and describe it as thoroughly as possible. If something is broken, [send us an e-mail](mailto:design-system@redhat.com) or connect with us on Slack and we will investigate.
+    If you find a bug, <a href="https://github.com/RedHat-UX/red-hat-design-system/issues/new/choose">create an issue</a> and describe it as thoroughly as possible. If something is broken, e-mail [design-system@redhat.com](mailto:design-system@redhat.com) or connect with us on Slack and we will investigate.
 </p>
 
 ## Roadmap
 
-You can learn about our current release or future plans by going to the [Roadmap](https://ux.redhat.com/about/roadmap/) page. If you need something created sooner rather than later, [create an issue](https://github.com/RedHat-UX/red-hat-design-system/issues/new/choose), or [send us an e-mail](mailto:design-system@redhat.com), and we will discuss the priority and timeline.
+You can learn about our current release or future plans by going to the [Roadmap](https://ux.redhat.com/about/roadmap/) page. If you need something created sooner rather than later, [create an issue](https://github.com/RedHat-UX/red-hat-design-system/issues/new/choose), or e-mail [design-system@redhat.com](mailto:design-system@redhat.com), and we will discuss the priority and timeline.
 
 ## Connect with us
 
-For questions, additional support, or training, [send us an e-mail](mailto:design-system@redhat.com) or connect with us on Slack.
+For questions, additional support, or training, e-mail [design-system@redhat.com](mailto:design-system@redhat.com) or connect with us on Slack.
 
 ## Additional resources
 - [Brand standards](https://www.redhat.com/en/about/brand/standards)
