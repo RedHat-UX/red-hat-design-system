@@ -31,7 +31,7 @@ Released January 11, 2024
 | Updated `<rh-tabs-panel>`      | Tab Panels can now have their margin and padding overridden. |
 | Updated `<rh-pagination>`      | Added `numeric` CSS shadow part. |
 | Added `accessible-label` to `<rh-tile>` | Tile's form control labels can now be customized. |
-| Fixed `<rh-tile>` radio and checkboxes | Radio and checkbox tiles now submit their values in `<form>` elements |
+| Fixed `<rh-tile>` radio and checkboxes | Radio and checkbox tiles now submit their values in `<form>` elements. |
 
 <rh-cta><a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.3.0">View version 1.3 release notes</a></rh-cta>
 
