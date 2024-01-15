@@ -13,15 +13,17 @@ async function resolveLocal(pattern, fn) {
     .then(Object.fromEntries);
 }
 
+export const litcssOptions = {
+  include: (/** @type{string[]}*/(/** @type{unknown}*/([
+    /elements\/rh-[\w-]+\/[\w-]+\.css$/,
+    /lib\/.*\.css$/,
+  ]))),
+  exclude: /lightdom/,
+};
+
 export default pfeDevServerConfig({
   tsconfig: 'tsconfig.json',
-  litcssOptions: {
-    include: (/** @type{string[]}*/(/** @type{unknown}*/([
-      /elements\/rh-[\w-]+\/[\w-]+\.css$/,
-      /lib\/.*\.css$/,
-    ]))),
-    exclude: /lightdom/,
-  },
+  litcssOptions,
   importMapOptions: {
     providers: {
       '@patternfly/icons': 'nodemodules',
