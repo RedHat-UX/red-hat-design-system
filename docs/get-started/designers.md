@@ -202,7 +202,8 @@ Use these resources to help you stay aligned to our brand and design system whil
 <p>
     <strong>How can I report a bug?</strong>
     <br>
-    If you find a bug, <a href="https://github.com/RedHat-UX/red-hat-design-system/issues/new/choose">create an issue</a> and describe it as thoroughly as possible. If something is broken, e-mail [design-system@redhat.com](mailto:design-system@redhat.com) or connect with us on Slack and we will investigate.
+    If you find a bug, <a href="https://github.com/RedHat-UX/red-hat-design-system/issues/new/choose">create an issue</a> and describe it as thoroughly as possible. If something is broken, e-mail 
+    <a href="mailto:design-system@redhat.com" style="white-space: nowrap;">design-system@redhat.com</a> or connect with us on Slack and we will investigate.
 </p>
 
 ## Roadmap
