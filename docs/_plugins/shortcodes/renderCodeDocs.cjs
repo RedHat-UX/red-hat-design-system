@@ -11,12 +11,18 @@ const html = (...args) =>
 
 /** @typedef {import('@patternfly/pfe-tools/11ty/DocsPage').DocsPage} DocsPage */
 module.exports = function(eleventyConfig) {
-  eleventyConfig.addPairedShortcode('renderCodeDocs',
-    function renderCodeDocs(content, kwargs = {}) {
-      const renderers = new Renderers(this, kwargs);
-      return renderers.renderAll(content);
+  for (const member of Object.getOwnPropertyNames(Renderers.prototype)) {
+    if (member.startsWith('render')) {
+      const name =
+          member === 'renderBand' ? 'band'
+        : member === 'renderAll' ? 'renderCodeDocs'
+        : member;
+      eleventyConfig.addPairedShortcode(name, function(content, kwargs = {}) {
+        const renderers = new Renderers(this, kwargs);
+        return renderers[member](content, kwargs);
+      });
     }
-  );
+  }
 };
 
 function innerMD(content = '') {
