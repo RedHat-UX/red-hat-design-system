@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 import { litCssPlugin } from 'esbuild-plugin-lit-css';
 import { minifyHTMLLiteralsPlugin } from 'esbuild-plugin-minify-html-literals';
 
-import glob from 'glob';
+import { glob } from 'glob';
 
 import CleanCSS from 'clean-css';
 
