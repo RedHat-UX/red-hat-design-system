@@ -145,25 +145,29 @@ iframe {
 }
 
 table {
-  border: 1px solid #eeeeee;
+  border: 0;
+  width: 100%;
 
   td,
   th {
-    padding: 18px;
+    padding: 16px;
   }
 
   th {
-    font-size: 14px;
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: left;
 
     thead & {
-      border-bottom: 1px solid #d2d2d2;
+      border-bottom: 1px solid #c7c7c7;
     }
 
     tfoot & {
-      border-top: 1px solid #d2d2d2;
+      border-top: 1px solid #c7c7c7;
     }
   }
 
+  /*
   td {
     border: 1px solid #f5f5f5;
     border-left: 0;
@@ -171,6 +175,15 @@ table {
     &:last-child {
       border-right: 0;
     }
+  }
+  */
+  tr {
+    border-bottom: 1px solid #c7c7c7;
+  }
+
+  td {
+    font-size: 16px;
+    line-height: 1.5;
   }
 }
 
