@@ -17,7 +17,6 @@ order: 0
   }
   .overview-links a {
     text-decoration: none;
-    color: var(--rh-color-text-primary-on-light);
   }
   .overview-links a:hover, .overview-links a:active {
     text-decoration: underline;
@@ -26,7 +25,7 @@ order: 0
 
 ## Get started
 
-The Red Hat Design System gives designers and developers the tools to create accessible and on-brand digital experiences quickly. The role-specific pages linked below will guide you through using the design system.
+The Red Hat Design System for digital experiences gives designers and developers the tools to create accessible and on-brand user interfaces quickly. The role-specific pages linked below will guide you through using the design system.
 
 <nav class="multi-column--min-400-wide overview-links">
   <a href="/get-started/designers">
