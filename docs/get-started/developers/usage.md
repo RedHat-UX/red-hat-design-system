@@ -19,7 +19,9 @@ bodyClasses: element-docs
 
 ### Vue wrappers
 
-### Adding icons
+## Adding icons
+
+## Customizing
 
 ## Other resources
 

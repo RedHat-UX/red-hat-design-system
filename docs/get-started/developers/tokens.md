@@ -5,7 +5,7 @@ heading: Developers
 tags:
   - developers
 permalink: /get-started/developers/tokens/index.html
-order: 20
+order: 30
 bodyClasses: element-docs
 ---
 
