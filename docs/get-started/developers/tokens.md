@@ -49,7 +49,7 @@ import style from './rh-jazz-hands.css';
 
 @customElement('rh-jazz-hands')
 export class RhJazzHands extends LitElement {
-  static readonly styles = [resetStyles, style];
+  static readonly styles = [...resetStyles, style];
 }
   </script>
 </rh-code-block>

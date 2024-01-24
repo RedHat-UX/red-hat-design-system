@@ -15,30 +15,9 @@ To develop components or design system documentation, you must first install som
 
 ### Step 1: Install node
 
-**Fedora/RHEL users** should install nvm for bash directly from GitHub.
+**Fedora/RHEL users** should install [nvm](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating) for bash directly from GitHub.
 
-<rh-code-block>
-  <script type="text/sample-javascript">
-  curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
-  </script>
-</rh-code-block>
-
-**Mac users** should install Homebrew. Go to the website or run this command (takes 5-10 minutes).
-
-<rh-code-block>
-  <script type="text/sample-javascript">
-  /bin/bash -c "$(curl -fsSL
-  https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  </script>
-</rh-code-block>
-
-Then use that to install `nvm`:
-
-<rh-code-block>
-  <script type="text/sample-javascript">
-  brew install nvm
-  </script>
-</rh-code-block>
+**Mac users** should install [Homebrew](https://brew.sh/). Then use that to install `nvm`.
 
 ### Step 2: Clone the repository
 
