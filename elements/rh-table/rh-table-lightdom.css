@@ -140,7 +140,7 @@ rh-table :is(col.active) {
     text-align: center;
   }
 
-  rh-table thead ~ tbody tr td {
+  rh-table thead ~ tbody tr :is(th, td) {
     padding-top: calc(var(--rh-space-md, 8px) + var(--rh-space-xs, 4px));
     padding-bottom: calc(var(--rh-space-md, 8px) + var(--rh-space-xs, 4px));
     display: grid;
@@ -149,9 +149,10 @@ rh-table :is(col.active) {
     align-items: start;
     white-space: normal;
     word-wrap: break-word;
+    text-align: left;
   }
 
-  rh-table thead ~ tbody tr td:before {
+  rh-table thead ~ tbody tr :is(td,th):before {
     font-weight: var(--rh-font-weight-heading-bold, 700);
     text-align: left;
     content: attr(data-label);
