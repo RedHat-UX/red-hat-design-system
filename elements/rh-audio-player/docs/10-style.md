@@ -43,6 +43,7 @@ The audio player is a collection of elements used to play audio clips and browse
           alt="Image of audio player anatomy showing all players with lots of annotations",
           src="../audio-player-anatomy.png" %}
 
+{#
 <uxdot-anatomy-sample>
   <rh-audio-player slot="element"
                    lang="en-US"
@@ -75,6 +76,7 @@ The audio player is a collection of elements used to play audio clips and browse
   <uxdot-anatomy-tag label="11" description="Forward" shadow-selector="#forward"></uxdot-anatomy-tag>
   <uxdot-anatomy-tag label="1d" description="Contextual menu" shadow-selector="#menu"></uxdot-anatomy-tag>
 </uxdot-anatomy-sample>
+#}
 
 ## Sizes
 There are three available sizes and the only difference is the amount of interface elements. The Compact and Mini players can be used on large breakpoints, but the Full player cannot be used on small breakpoints due to space constraints.
