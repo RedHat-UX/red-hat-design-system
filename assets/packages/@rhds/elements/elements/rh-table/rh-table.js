@@ -17,6 +17,12 @@ const styles = css `*{box-sizing:border-box}:host{position:relative;display:bloc
  *
  * @slot               - an HTML table
  * @slot    summary    - a brief description of the data
+ *
+ * @cssprop {<color>} --rh-table-row-background-color - deprecated use --rh-table-row-background-hover-color {@default `224 224 224 / 40%`}
+ * @cssprop {<color>} --rh-table-column-background-color - deprecated use --rh-table-column-background-hover-color {@default `0 102 204 / 10%`}
+ * @cssprop {<color>} --rh-table-row-background-hover-color - row hover background color {@default `224 224 224 / 40%`}
+ * @cssprop {<color>} --rh-table-column-background-hover-color - column hover background color {@default `0 102 204 / 10%`}
+ * @cssprop --rh-table-row-border - row border {@default `1px solid #c7c7c7`}
  */
 let RhTable = RhTable_1 = class RhTable extends LitElement {
     constructor() {
