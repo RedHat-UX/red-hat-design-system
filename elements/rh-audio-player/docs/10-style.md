@@ -39,9 +39,25 @@ The audio player is a collection of elements used to play audio clips and browse
 - Contextual menu
 
 ### Anatomy
+
 {% example palette="light",
           alt="Image of audio player anatomy showing all players with lots of annotations",
           src="../audio-player-anatomy.png" %}
+
+1) Image
+2) Description
+3) Title
+  a. Elapsed time
+  b. Total time
+5) Current time/seek bar
+6) Unmute/mute button
+7) Volume level
+8) Playback speed
+9) Rewind
+10) Play/pause
+11) Forward
+12) Contextual menu
+{.example-notes}
 
 {#
 <uxdot-anatomy-sample>
@@ -79,8 +95,14 @@ The audio player is a collection of elements used to play audio clips and browse
 #}
 
 ## Sizes
+
 There are three available sizes and the only difference is the amount of interface elements. The Compact and Mini players can be used on large breakpoints, but the Full player cannot be used on small breakpoints due to space constraints.
 
+{% example palette="light",
+          alt="Image of all audio player sizes with text labels",
+          src="../audio-player-style-sizes.png" %}
+
+{# -- let's see if we can use container queries to make this display large size elements on mobile screens
 {% sample class="audio-player-layouts",
           code="hidden",
           columns=2 -%}
@@ -132,10 +154,16 @@ There are three available sizes and the only difference is the amount of interfa
   <figcaption>Mini size - no contextual menu</figcaption>
 </figure>
 {%- endsample %}
+#}
 
 ## Theme
 The audio player is available in both light and dark themes.
 
+{% example palette="light",
+          alt="Image of light theme audio players",
+          src="../audio-player-theme-light.png" %}
+
+{#
 {% sample class="audio-player-layouts",
           code="hidden",
           columns=2 -%}
@@ -174,9 +202,15 @@ The audio player is available in both light and dark themes.
          src="https://cdn.simplecast.com/audio/28d037d3-7d17-42d4-a8e2-2e00fd8b602b/episodes/bd38190e-516f-49c0-b47e-6cf663d80986/audio/dc570fd1-7a5e-41e2-b9a4-96deb346c20f/default_tc.mp3"></audio>
 </rh-audio-player>
 {%- endsample %}
-
+#}
 
 ### Dark theme
+
+{% example palette="darkest",
+          alt="Image of dark theme audio players",
+          src="../audio-player-theme-dark.png" %}
+
+{#
 {% sample class="audio-player-layouts",
           code="hidden",
           columns=2,
@@ -216,12 +250,18 @@ The audio player is available in both light and dark themes.
          src="https://cdn.simplecast.com/audio/28d037d3-7d17-42d4-a8e2-2e00fd8b602b/episodes/bd38190e-516f-49c0-b47e-6cf663d80986/audio/dc570fd1-7a5e-41e2-b9a4-96deb346c20f/default_tc.mp3"></audio>
 </rh-audio-player>
 {%- endsample %}
+#}
 
 ### Custom theme
 {% alert title="Helpful tip" %}
 If your audio player requires a custom theme, [contact](https://github.com/orgs/RedHat-UX/discussions) the design system team.
 {% endalert %}
 
+{% example palette="darkest",
+          alt="Image of custom theme audio players",
+          src="../audio-player-theme-custom.png" %}
+
+{#
 {% sample class="audio-player-layouts custom",
           code="hidden",
           columns=2,
@@ -261,6 +301,7 @@ If your audio player requires a custom theme, [contact](https://github.com/orgs/
          src="https://cdn.simplecast.com/audio/28d037d3-7d17-42d4-a8e2-2e00fd8b602b/episodes/bd38190e-516f-49c0-b47e-6cf663d80986/audio/dc570fd1-7a5e-41e2-b9a4-96deb346c20f/default_tc.mp3"></audio>
 </rh-audio-player>
 {%- endsample %}
+#}
 
 ## Configuration
 The size of audio players change if an image is included or not.
