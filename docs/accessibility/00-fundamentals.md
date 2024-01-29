@@ -7,7 +7,7 @@ tags: accessibility
 
 ### Types of disabilities
 
-The World Health Organization estimates that one-sixth of all people worldwide experience significant disabilities. Most web-related disabilities and limitations affect the eyes, ears, hands, and brain. These can be categorized several different ways: obvious, hidden, permanent, recurring, temporary, situational, etc..
+The World Health Organization estimates that one-sixth of all people worldwide experience significant disabilities. Most web-related disabilities and limitations affect the eyes, ears, hands, and brain. These can be categorized several different ways: obvious, hidden, permanent, recurring, temporary, situational, etc.
 
 Permanent and recurring disabilities like blindness or paralysis often may be readily apparent to others. But some disabilities aren’t so easily identified, such as deafness, neurodivergence, reading disorders, epilepsy, or migraines.
 
@@ -21,6 +21,7 @@ The former may imply that someone is lacking in some way, and thus they are resp
 
 The World Wide Web Consortium’s Web Accessibility Initiative (WAI) has authored a [Diverse Abilities and Barriers](https://www.w3.org/WAI/people-use-web/abilities-barriers/) page that lists potential barriers that individuals of varying auditory, cognitive, learning, neurological, physical, speech, and visual abilities are likely to face.
 
+
 ### Personas and user stories
 
 Personas are fictionalized distillations of the varying types of users who may engage with your web properties. Using them is a common UX design technique that can be helpful for developing empathy and building inclusive experiences.
@@ -28,6 +29,7 @@ Personas are fictionalized distillations of the varying types of users who may e
 When writing, designing, or developing, you can put yourself in the mind of these personas to imagine what outcomes the users they represent might want from your experience and how successfully they can accomplish these goals. Using personas shifts accessibility left in your processes, helping you avoid and catch issues before they ever get to handoffs, QA, or even launch.
 
 WAI has designed a collection of [web user stories](https://www.w3.org/WAI/people-use-web/user-stories/) (e.g., a color-blind online shopper, a hard-of-hearing student, etc.) that you may find helpful to adapt as personas for your own web projects.
+
 
 ## Laws
 
@@ -46,7 +48,6 @@ Businesses open to the public are subject to Title III of the Americans with Dis
 Section 508 of the Rehabilitation Act of 1973 requires that accessible electronic and information technology be provided by all federal agencies—and, by extension, by any companies doing business with the federal government or its subcontractors.
 
 #### Section 504
-
 Under Section 504 of the Rehabilitation Act of 1973, entities receiving federal funding must offer equal access to all facilities and communications—including online communications. This law is most commonly referenced in regard to publicly-funded educational institutions (PreK-12 and post-secondary). But it can apply to any organization that receives federal assistance and any companies doing business with such entities.
 
 ### International
@@ -61,11 +62,14 @@ The World Wide Web Consortium maintains a list of [international accessibility l
 
 ### IBM Accessibility Requirements
 
-As a subsidiary of IBM, Red Hat and its associates must adhere to the parent company’s corporate instructions, such as CHS 162: _Accessibility of information technology for people who have disabilities_. This instruction mandates that we “must follow standard, defined practices that make technology either compatible with assistive technology or directly accessible.”
+As a subsidiary of IBM, Red Hat and its associates must adhere to the parent company’s corporate instructions, such as CHS 162: Accessibility of information technology for people who have disabilities. This instruction mandates that we “must follow standard, defined practices that make technology either compatible with assistive technology or directly accessible.”
 
 ### Red Hat
 
-To demonstrate our intent to meet IBM’s corporate instruction, our legal requirements, and our ethical obligations, Red Hat’s Digital Experience team has developed an internal accessibility policy (pending release in Q4 of 2023) and posted a [digital accessibility statement](https://www.redhat.com/en/about/digital-accessibility) at our website. To put this intent into practice, we continuously remediate our existing properties, we’re building libraries of accessible Web Components and patterns, and we’ve shifted left to incorporate inclusive design in new web projects: from the earliest stages of discovery through launch.
+To demonstrate our intent to meet IBM’s corporate instruction, our legal requirements, and our ethical obligations, Red Hat’s Digital Experience team has developed an internal [accessibility policy](https://url.corp.redhat.com/accessibility-policy) and and posted a [digital accessibility statement](https://www.redhat.com/en/about/digital-accessibility) at our website. To put this intent into practice, we continuously remediate our existing properties, we’re building libraries of accessible Web Components and patterns, and we’ve shifted left to incorporate inclusive design in new web projects: from the earliest stages of discovery through launch.
+
+> “The power of the Web is in its universality. Access by everyone regardless of disability is an essential aspect.”
+> — Tim Berners-Lee
 
 ## Guidelines
 
@@ -102,7 +106,7 @@ As a companion to WCAG, The W3C's Web Accessibility Initiative (WAI) has also de
 
 [ATAG 2.0](https://www.w3.org/TR/ATAG20/) is the current version of the standard. And, as with WCAG, there are three levels of conformance: A, AA, and AAA (from lowest to highest). We recommend using tools that meet or exceed ATAG 2.0 AA, when possible.
 
-Keep in mind that, while an authoring tool (e.g., Drupal Core 9+) may be conformant with ATAG 2.0 AA out of the box, that’s no guarantee that web pages generated by this tool will also be accessible. And CMS add-ons (e.g., Drupal modules) can also impact accessibility, so they should be evaluated when they are intended to be used, as well.
+Keep in mind that, while an authoring tool (e.g., Drupal Core 9+) may be conformant with ATAG 2.0 AA out of the box, that’s not a guarantee that web pages generated by this tool will also be accessible. And CMS add-ons (e.g., Drupal modules) can also impact accessibility, so they should be evaluated when they are intended to be used, as well.
 
 WAI also provides an [ATAG Report Tool](https://www.w3.org/WAI/atag/report-tool) to help walk you through the process of authoring tool evaluation to gauge conformance.
 
