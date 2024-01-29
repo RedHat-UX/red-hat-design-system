@@ -167,10 +167,6 @@
           <details {{ 'open' if '/accessibility/' in page.url }}>
             <summary class="heading">Accessibility</summary>
             <ul class="sub-menu">
-              <li class="item">
-                <a class="link {{ 'active' if page.url === '/accessibility/' }}"
-                   href="{{ '/accessibility/' | url }}">Overview</a>
-              </li>
               {%- for link in collections.accessibility -%}
               <li class="item">
                 <a class="link {{ 'active' if page.url === link.url }}"
