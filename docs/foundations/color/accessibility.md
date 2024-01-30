@@ -5,6 +5,7 @@ heading: Color
 tags:
   - color
 permalink: /foundations/color/accessibility/index.html
+subNavCollection: sortedColor
 order: 20
 bodyClasses: element-docs
 ---

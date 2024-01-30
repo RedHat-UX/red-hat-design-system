@@ -5,6 +5,7 @@ heading: Developers
 tags:
   - developers
 permalink: /get-started/developers/tokens/index.html
+subNavCollection: sortedDevelopers
 order: 30
 bodyClasses: element-docs
 ---

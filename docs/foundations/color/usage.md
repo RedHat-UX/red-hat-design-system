@@ -5,6 +5,7 @@ heading: Color
 tags:
   - color
 permalink: /foundations/color/usage/index.html
+subNavCollection: sortedColor
 order: 10
 bodyClasses: element-docs
 ---

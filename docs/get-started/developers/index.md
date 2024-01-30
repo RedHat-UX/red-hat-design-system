@@ -6,6 +6,7 @@ tags:
   - getstarted
   - developers
 permalink: /get-started/developers/index.html
+subNavCollection: sortedDevelopers
 order: 00
 bodyClasses: element-docs
 ---
