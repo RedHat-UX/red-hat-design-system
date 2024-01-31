@@ -7,14 +7,12 @@ tags:
 importElements:
   - rh-tile
 ---
-<script type="module" src="{{ '/assets/elements/uxdot-feedback.js' | url }}"></script>
 
 <link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css' | url }}">
 
 <style>
   p {
     margin-block: var(--rh-space-lg, 16px);
-    font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   }
 
   rh-tile {

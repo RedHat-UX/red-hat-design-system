@@ -27,7 +27,7 @@ class UxdotHero extends LitElement {
     }
 
     slot[name="tagline"]::slotted(p) {
-      font-size: var(--rh-font-size-heading-2xl, 3rem);
+      font-size: var(--rh-font-size-heading-2xl, 3rem) !important;
       margin-block: var(--rh-space-lg, 16px) !important;
       text-align: center;
     }
