@@ -57,7 +57,7 @@ Most pages should have front matter that looks like this:
 
 ```jinja
 ---
-layout: layout-basic.njk
+layout: layouts/pages/basic.njk
 title: Grid
 order: -10
 tags:
@@ -73,7 +73,7 @@ tags:
 ### Getting pages into the navigation
 
 The navigation is an included template:
-`pages/component/header.njk`
+`pages/component/sidenav.njk`
 
 It is a mixture of hardcoding and dynamic listing so that it's _hopefully_ easy to understand.
 
@@ -129,14 +129,14 @@ Here's a two simple examples:
 
 ```jinja
 ---
-layout: layout-basic.njk
+layout: blayouts/pages/basic.njk
 title: Example page
 ---
 ```
 
 ```jinja
 ---
-layout: layout-home.njk
+layout: layouts/pages/home.njk
 title: Home
 ---
 ```
@@ -146,7 +146,7 @@ This tells 11ty what the page template should be (relative to the `pages` folder
 Here's an example including tags, which is a multi-value piece of data.
 ```jinja
 ---
-layout: layout-basic.njk
+layout: layouts/pages/basic.njk
 title: Accordion Element
 tags:
   - javascript
@@ -164,7 +164,7 @@ the components to be used on the page:
 
 ```jinja
 ---
-layout: layout-basic.njk
+layout: layouts/pages/basic.njk
 title: Card
 tags:
   - component
