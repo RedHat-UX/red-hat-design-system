@@ -85,12 +85,27 @@ main {
   width: 100%;
 }
 
-#get-started rh-card::part(header) {
+#get-started rh-card .stylized-image {
   display: flex;
   align-items: center;
-  margin: 0;
   padding: var(--rh-space-4xl, 64px);
   background-color: var(--rh-color-surface-light, #e0e0e0);
+}
+
+#get-started rh-card::part(header) {
+  margin: 0;
+}
+
+#get-started rh-card h2 {
+  margin-block-start: var(--rh-space-2xl, 32px) !important;
+  margin-inline: var(--rh-space-xl, 24px) !important;
+}
+
+@media (min-width: 768px) {
+  #get-started rh-card h2 {
+    margin-block-start: var(--rh-space-2xl, 32px) !important;
+    margin-inline: var(--rh-space-2xl, 32px) !important;
+  }
 }
 
 #contribute::part(header),
@@ -167,8 +182,10 @@ main {
 
     <div class="card-group">
       <rh-card>
-        <img src="{{ '/assets/home/foundations.svg' | url }}" alt="Foundations" slot="header">
-        <h2>Foundations</h2>
+        <div class="stylized-image" slot="header">
+          <img src="{{ '/assets/home/foundations.svg' | url }}" alt="Foundations" >
+        </div>
+        <h2 slot="header">Foundations</h2>
         <p>Design principles to help you create engaging layouts</p>
         <rh-cta slot="footer" priority="primary">
           <a href="/foundations">Foundations</a>
@@ -176,8 +193,10 @@ main {
       </rh-card>
         
       <rh-card>
-        <img src="{{ '/assets/home/elements.svg' | url }}" alt="Elements" slot="header">
-        <h2>Elements</h2>
+        <div class="stylized-image" slot="header">
+          <img src="{{ '/assets/home/elements.svg' | url }}" alt="Elements" slot="header">
+        </div>
+        <h2 slot="header">Elements</h2>
         <p>Guidance to help you create interactive user interfaces</p>
         <rh-cta slot="footer" priority="primary">
           <a href="/elements">Elements</a>
@@ -185,8 +204,10 @@ main {
       </rh-card>
 
       <rh-card>
-        <img src="{{ '/assets/home/code-status.svg' | url }}" alt="Code status" slot="header">
-        <h2>Code status</h2>
+        <div class="stylized-image" slot="header">
+          <img src="{{ '/assets/home/code-status.svg' | url }}" alt="Code status" slot="header">
+        </div>
+        <h2 slot="header">Code status</h2>
         <p>Track the status of our components and patterns</p>
         <rh-cta slot="footer" priority="primary">
           <a href="/design-code-status">Code status</a>
@@ -194,8 +215,10 @@ main {
       </rh-card>
 
       <rh-card>
-        <img src="{{ '/assets/home/release-notes.svg' | url }}" alt="Release notes" slot="header">
-        <h2>Release notes</h2>
+        <div class="stylized-image" slot="header">
+          <img src="{{ '/assets/home/release-notes.svg' | url }}" alt="Release notes" slot="header">
+        </div>
+        <h2 slot="header">Release notes</h2>
         <p>Track the updates we're making to the design system</p>
         <rh-cta slot="footer" priority="primary">
           <a href="/release-notes">Release notes</a>
