@@ -10,7 +10,7 @@ order: 00
 bodyClasses: element-docs
 ---
 
-{% import 'component/foundations.njk' as foundations %}
+{% import 'macros/foundations.njk' as foundations %}
 
 ## Introduction
 
