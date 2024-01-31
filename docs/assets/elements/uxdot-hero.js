@@ -22,7 +22,7 @@ class UxdotHero extends LitElement {
       text-transform: uppercase;
       font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
       line-height: var(--rh-line-height-heading, 1.3);
-      font-size: var(--rh-font-size-code-lg, 1.125rem);
+      font-size: var(--rh-font-size-code-lg, 1.125rem) !important;
       font-weight: var(--rh-font-weight-code-medium, 500);
     }
 
