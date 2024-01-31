@@ -1,0 +1,98 @@
+uxdot-sidenav {
+  padding-block-start: var(--rh-space-2xl, 32px);
+  padding-block-end: var(--rh-space-3xl, 48px);
+}
+
+uxdot-sidenav > ul {
+  list-style: none;
+}
+
+uxdot-sidenav-item {
+  display: block;
+}
+
+uxdot-sidenav-item > a {
+  display: block;
+}
+
+uxdot-sidenav-dropdown > details > summary {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+uxdot-sidenav-item,
+uxdot-sidenav-dropdown > details > summary,
+uxdot-sidenav-dropdown-menu-item > a{
+  border-inline-start:
+    var(--rh-border-width-lg, 3px)
+    solid
+    transparent;
+}
+
+uxdot-sidenav-item > a,
+uxdot-sidenav-dropdown > details > summary {
+  text-decoration: none;
+  color: var(--rh-color-text-primary-on-light, #151515);
+  font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+  padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
+}
+
+uxdot-sidenav-item:hover,
+uxdot-sidenav-dropdown > details > summary:hover,
+uxdot-sidenav-dropdown > details[open] > summary:focus,
+uxdot-sidenav-dropdown > details[open] > summary:hover {
+  background: var(--rh-color-surface-lighter, #f2f2f2);
+  border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
+}
+
+uxdot-sidenav-dropdown > details > summary:after {
+  content: "";
+  color: var(--rh-color-text-primary-on-light, #151515);
+  width: 9px;
+  height: 9px;
+  transform: rotate(45deg);
+  border-right:
+    var(--rh-border-width-lg, 3px)
+    solid
+    var(--rh-color-border-strong-on-light, #151515);
+  border-top:
+    var(--rh-border-width-lg, 3px)
+    solid
+    var(--rh-color-border-strong-on-light, #151515);
+}
+
+uxdot-sidenav-dropdown > details[open] > summary:after {
+  transform: rotate(135deg);
+}
+
+uxdot-sidenav-dropdown-menu > ul {
+  list-style: none;
+  padding-inline-start: var(--rh-space-2xl, 32px);
+}
+
+uxdot-sidenav-dropdown-menu-item > a {
+  display: inline-block;
+  padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
+  width: 100%;
+}
+
+uxdot-sidenav-item[active],
+uxdot-sidenav-dropdown-menu-item[active] > a {
+  background: var(--rh-color-surface-lighter, #f2f2f2);
+  border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
+}
+
+uxdot-sidenav-item > a,
+uxdot-sidenav-dropdown-menu-item > a {
+  text-decoration: none;
+  color: var(--rh-color-text-primary-on-light, #151515);
+}
+
+uxdot-sidenav-item > a:hover,
+uxdot-sidenav-dropdown-menu-item > a:hover {
+  background: var(--rh-color-surface-lighter, #f2f2f2);
+  border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
+}
