@@ -7,8 +7,7 @@ tags:
 ---
 
 <style>
-  figure {
-    margin: 16px 0 0 0;
+  #get-started {
     display: flex;
     flex-direction: column;
     gap: var(--rh-space-lg);
@@ -17,19 +16,14 @@ tags:
     font-family: var(--rh-font-family-heading);
     font-size: var(--rh-font-size-heading-sm);
   }
-  .overview-links a {
-    text-decoration: none;
-  }
-  .overview-links a:hover, .overview-links a:active {
-    text-decoration: underline;
-  }
+
 </style>
 
 ## Get started
 
 The Red Hat Design System for digital experiences gives designers and developers the tools to create accessible and on-brand user interfaces quickly. The role-specific pages linked below will guide you through using the design system.
 
-<nav class="multi-column--min-400-wide overview-links">
+<nav id="get-started">
   <a href="/get-started/designers">
     <figure>
       {% example
@@ -48,7 +42,7 @@ The Red Hat Design System for digital experiences gives designers and developers
   </figure>
 </nav>
 
-{% feedback %}
+<uxdot-feedback>
   <h2>Release notes</h2>
   <p>To see what foundations, tokens, elements, or patterns have been released recently, check out our <a href="/release-notes">release notes</a>.</p>
-{% endfeedback %}
+</uxdot-feedback>
