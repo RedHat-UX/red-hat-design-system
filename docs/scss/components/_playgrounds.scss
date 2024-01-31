@@ -1,9 +1,0 @@
-playground-project > *:defined {
-  border-block-end: var(--rh-border-width-sm) solid var(--rh-border-subtle-on-light);
-  border-inline-start: var(--rh-border-width-sm) solid var(--rh-border-subtle-on-lightc7c7c7);
-  border-inline-end: var(--rh-border-width-sm) solid var(--rh-border-subtle-on-lightc7c7c7);
-}
-
-playground-project > *:defined:first-child {
-  border-block-start: var(--rh-border-width-sm) solid var(--rh-border-subtle-on-light);
-}

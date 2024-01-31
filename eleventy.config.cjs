@@ -8,13 +8,10 @@ const CustomElementsManifestPlugin = require('@patternfly/pfe-tools/11ty/plugins
 const OrderTagsPlugin = require('@patternfly/pfe-tools/11ty/plugins/order-tags.cjs');
 const TodosPlugin = require('@patternfly/pfe-tools/11ty/plugins/todos.cjs');
 const TOCPlugin = require('@patternfly/pfe-tools/11ty/plugins/table-of-contents.cjs');
-const SassPlugin = require('eleventy-plugin-dart-sass');
 const RHDSPlugin = require('./docs/_plugins/rhds.cjs');
 const DesignTokensPlugin = require('./docs/_plugins/tokens.cjs');
 const RHDSMarkdownItPlugin = require('./docs/_plugins/markdown-it.cjs');
 const ImportMapPlugin = require('./docs/_plugins/importMap.cjs');
-
-const path = require('node:path');
 
 const isWatch =
   process.argv.includes('--serve') || process.argv.includes('--watch');
@@ -23,32 +20,35 @@ const isWatch =
 module.exports = function(eleventyConfig) {
   eleventyConfig.setQuietMode(true);
 
-  eleventyConfig.watchIgnores.add('docs/assets/redhat/');
-  eleventyConfig.watchIgnores.add('**/*.spec.ts');
-  eleventyConfig.watchIgnores.add('**/*.d.ts');
-  eleventyConfig.watchIgnores.add('**/*.js.map');
-  eleventyConfig.watchIgnores.add('elements/*/test/');
-  eleventyConfig.watchIgnores.add('lib/elements/*/test/');
-  eleventyConfig.addPassthroughCopy('docs/public/red-hat-outfit.css');
+  eleventyConfig.watchIgnores?.add('docs/assets/redhat/');
+  eleventyConfig.watchIgnores?.add('**/*.spec.ts');
+  eleventyConfig.watchIgnores?.add('**/*.d.ts');
+  eleventyConfig.watchIgnores?.add('**/*.js.map');
+  eleventyConfig.watchIgnores?.add('elements/*/test/');
+  eleventyConfig.watchIgnores?.add('lib/elements/*/test/');
   eleventyConfig.addPassthroughCopy('docs/patterns/**/*.{svg,jpg,jpeg,png}');
   eleventyConfig.addPassthroughCopy('docs/CNAME');
   eleventyConfig.addPassthroughCopy('docs/.nojekyll');
   eleventyConfig.addPassthroughCopy('docs/robots.txt');
   eleventyConfig.addPassthroughCopy('docs/assets/**/*');
+  eleventyConfig.addPassthroughCopy('docs/styles/**/*');
+
+  eleventyConfig.addWatchTarget('docs/styles/');
 
   eleventyConfig.on('eleventy.before', function({ runMode }) {
     eleventyConfig.addGlobalData('runMode', runMode);
   });
 
-  eleventyConfig.addPlugin(RHDSMarkdownItPlugin);
+  eleventyConfig.addGlobalData('sideNavDropdowns', [
+    { 'title': 'About', 'url': '/about', 'collection': 'about' },
+    { 'title': 'Get started', 'url': '/get-started', 'collection': 'getstarted' },
+    { 'title': 'Foundations', 'url': '/foundations', 'collection': 'foundations' },
+    { 'title': 'Tokens', 'url': '/tokens', 'collection': 'token' },
+    { 'title': 'Elements', 'url': '/elements', 'collection': 'elementDocs' },
+    { 'title': 'Patterns', 'url': '/patterns', 'collection': 'pattern' }
+  ]);
 
-  eleventyConfig.addPlugin(SassPlugin, {
-    sassLocation: `${path.join(__dirname, 'docs', 'scss')}/`,
-    sassIndexFile: 'styles.scss',
-    includePaths: ['node_modules', '**/*.{scss,sass}'],
-    domainName: '',
-    outDir: path.join(__dirname, '_site'),
-  });
+  eleventyConfig.addPlugin(RHDSMarkdownItPlugin);
 
   /** Table of Contents Shortcode */
   eleventyConfig.addPlugin(TOCPlugin, {
@@ -90,6 +90,7 @@ module.exports = function(eleventyConfig) {
       // Vendor
       'lit',
       'lit/directives/if-defined.js',
+      'lit/directives/class-map.js',
       'lit-html',
       'lit-element',
       '@lit/reactive-element',
