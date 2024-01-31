@@ -1,7 +1,9 @@
 ---
-layout: layout-basic.njk
+layout: layouts/pages/basic.njk
 title: Overview
 order: 0
+tags:
+  - getstarted
 ---
 
 <style>

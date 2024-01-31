@@ -1,5 +1,5 @@
 ---
-layout: layout-basic.njk
+layout: layouts/pages/basic.njk
 title: All elements
 summaries:
   audio-player: Plays audio clips and includes other features

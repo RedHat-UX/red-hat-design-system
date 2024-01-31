@@ -1,10 +1,40 @@
 ---
-layout: layout-basic.njk
+layout: layouts/pages/basic.njk
 title: Roadmap
 bodyClasses: page-docs
 tags:
   - about
+importElements:
+  - rh-tile
 ---
+<script type="module" src="{{ '/assets/elements/uxdot-feedback.js' | url }}"></script>
+
+<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css' | url }}">
+
+<style>
+  p {
+    margin-block: var(--rh-space-lg, 16px);
+    font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+  }
+
+  rh-tile {
+    margin-block: var(--rh-space-3xl, 48px);
+    max-width: 320px;
+    /* evil hack to fix non customizable padding internals */
+    --rh-space-2xl: 16px !important;
+    /* evil hack to fix non customizable margin internals */
+    --rh-space-lg: 0px !important;
+  }
+
+  rh-tile [slot="headline"] {
+    font-weight: var(--rh-font-weight-heading-bold, 700);
+  }
+
+  rh-tile [icon="github"] {
+    --pf-icon--size: var(--rh-size-icon-03, 32px);
+  }
+</style>
+
 
 Our roadmap is an up-to-date outline of what we're working on and what we're planning to do in the Red Hat Design System over the next 2–3 quarters (6-9 months). You can follow along through [our open source roadmap on GitHub](https://github.com/orgs/RedHat-UX/projects/7/).
 
@@ -12,16 +42,12 @@ The roadmap is subject to change based on our users' feedback and needs. If you 
 
 Check out [our scrum board on GitHub](https://github.com/orgs/RedHat-UX/projects/1/views/18) to see what we're working on from week to week.
 
-<nav class="releases-links">
-  <rh-block id="roadmap-block">
-    <a href="https://github.com/orgs/RedHat-UX/projects/7/">
-      Roadmap
-    </a>
-  </rh-block>
-</nav>
+<rh-tile>
+  <pf-icon slot="image" set="fab" icon="github" size="lg"></pf-icon>
+  <a slot="headline" href="https://github.com/orgs/RedHat-UX/projects/7/">Roadmap</a>
+</rh-tile>
 
-
-{% feedback %}
+<uxdot-feedback>
   <h2>Release Notes</h2>
   <p>To see what foundations, tokens, elements, or patterns have been released recently, check out <a href="/about/release-notes">our release notes</a>.</p>
-{% endfeedback %}
+</uxdot-feedback>

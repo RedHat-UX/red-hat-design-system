@@ -1,0 +1,15 @@
+---
+layout: layouts/base.njk
+importElements:
+  - rh-cta
+  - rh-footer
+---
+
+{% include 'component/masthead.njk' %}
+{% include 'component/sidenav.njk' %}
+<main>
+  {{ content | safe }}
+  {% include "component/back-to-top.njk" %}
+</main>
+{% include 'component/footer.njk' %}
+

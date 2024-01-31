@@ -1,5 +1,5 @@
 ---
-layout: layout-tokens.njk
+layout: layouts/pages/tokens.njk
 templateEngineOverride: njk
 permalink: /tokens/{{ cat.slug }}/index.html
 bodyClasses: token-docs
@@ -26,4 +26,4 @@ pagination:
             exclude = cat.exclude,
             include = cat.include %}
 
-{% include 'feedback.html' %}
+{% include 'layouts/snippets/feedback.html' %}

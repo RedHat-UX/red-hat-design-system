@@ -1,11 +1,11 @@
 ---
-layout: layout-basic.njk
+layout: layouts/pages/basic.njk
 title: Beta release notes
 ---
 
 <!-- Body -->
 
-{% import 'component/components.njk' as components %}
+{% import 'macros/components.njk' as components %}
 
 {% call components.section() -%}
 
@@ -421,4 +421,4 @@ title: Beta release notes
 
 {%- endcall %}
 
-{% include 'feedback.html' %}
+{% include 'layouts/snippets/feedback.html' %}

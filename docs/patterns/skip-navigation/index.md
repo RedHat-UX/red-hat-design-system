@@ -70,4 +70,4 @@ values between elements.
            alt="Skip navigation spacing diagram",
            src="./skip-nav-spacing.svg" %}
 
-{% include 'feedback.html' %}
+{% include 'layouts/snippets/feedback.html' %}

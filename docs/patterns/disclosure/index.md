@@ -261,5 +261,5 @@ values between elements.
            alt="Disclosure showing with spacing blocks",
            src="./disclosure-spacing-1.svg" %}
 
-{% include 'feedback.html' %}
+{% include 'layouts/snippets/feedback.html' %}
 

@@ -1,7 +1,7 @@
 ---
-layout: layout-basic.njk
+layout: layouts/pages/basic.njk
 title: Designers
-order: 2
+order: 1
 tags:
   - getstarted
 bodyClasses: element-docs

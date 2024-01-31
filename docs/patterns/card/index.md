@@ -1,6 +1,6 @@
 ---
 title: Card
-layout: layout-basic.njk
+layout: layouts/pages/basic.njk
 tags:
   - pattern
 ---
@@ -217,7 +217,7 @@ For more information, please see the [card css custom properties](/elements/card
 
 {% repoStatus %}
 
-{% include 'feedback.html' %}
+{% include 'layouts/snippets/feedback.html' %}
 
 
 ## Usage

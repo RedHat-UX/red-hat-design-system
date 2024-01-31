@@ -1,5 +1,5 @@
 ---
-layout: layout-basic.njk
+layout: layouts/pages/basic.njk
 title: Pages and 11ty documentation
 ---
 
@@ -14,14 +14,14 @@ Each page should have 'front-matter'. Front-matter should be at the top of the d
 Here's a two simple examples:
 ```
 ---
-layout: layout-basic.njk
+layout: layouts/pages/basic.njk
 title: Example page
 ---
 ```
 
 ```
 ---
-layout: layout-home.njk
+layout: layouts/pages/home.njk
 title: Home
 ---
 ```
@@ -31,7 +31,7 @@ This tells 11ty what the page template should be (relative to the `pages` folder
 Here's an example including tags, which is a multi-value piece of data.
 ```
 ---
-layout: layout-basic.njk
+layout: layouts/pages/basic.njk
 title: Accordion Element
 tags:
   - javascript

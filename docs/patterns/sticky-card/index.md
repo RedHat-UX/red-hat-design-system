@@ -191,5 +191,5 @@ values between elements.
            alt="Sticky card spacing",
            src="./sticky-card-spacing.svg" %}
 
-{% include 'feedback.html' %}
+{% include 'layouts/snippets/feedback.html' %}
 

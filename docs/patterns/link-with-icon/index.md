@@ -1,6 +1,6 @@
 ---
 title: Link with icon
-layout: layout-basic.njk
+layout: layouts/pages/basic.njk
 tags:
   - pattern
 ---
@@ -88,7 +88,7 @@ Link with icon uses [space tokens](/tokens/space/) to define spacing values betw
            alt="Link with icon spacing",
            src="./link-with-icon-spacing.svg" %}
 
-{% include 'feedback.html' %}
+{% include 'layouts/snippets/feedback.html' %}
 
 
 

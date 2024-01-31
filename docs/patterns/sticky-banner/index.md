@@ -174,4 +174,4 @@ Content padding defines how far away elements are from each other inside each se
            alt="Sticky banner spacing small",
            src="./sticky-banner-spacing-small-screens.svg" %}
 
-{% include 'feedback.html' %}
+{% include 'layouts/snippets/feedback.html' %}

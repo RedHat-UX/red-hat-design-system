@@ -1,6 +1,9 @@
 ---
-layout: layout-basic.njk
+layout: layouts/pages/basic.njk
 title: Foundations
+order: 0
+tags:
+  - foundations
 ---
 
 {% import 'component/foundations.njk' as foundations %}
@@ -63,4 +66,4 @@ title: Foundations
 
 {%- endcall %}
 
-{% include 'feedback.html' %}
+{% include 'layouts/snippets/feedback.html' %}

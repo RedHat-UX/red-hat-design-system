@@ -1,6 +1,6 @@
 ---
 title: Search bar
-layout: layout-basic.njk
+layout: layouts/pages/basic.njk
 tags:
     - pattern
 ---
@@ -291,4 +291,4 @@ between elements.
         alt="Search bar spacing",
         src="./search-bar-spacing.svg" %}
 
-{% include 'feedback.html' %}
+{% include 'layouts/snippets/feedback.html' %}

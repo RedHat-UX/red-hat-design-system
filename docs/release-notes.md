@@ -1,5 +1,5 @@
 ---
-layout: layout-basic.njk
+layout: layouts/pages/basic.njk
 title: Release notes
 bodyClasses: page-docs
 ---

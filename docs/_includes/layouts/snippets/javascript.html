@@ -1,0 +1,25 @@
+  <script type="importmap">{{ importMap | dump | safe }}</script>
+
+  <script async src="https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js"></script>
+
+  {% for tag in importElements %}
+  <script type="module">
+    import '@rhds/elements/{{tag}}/{{tag}}.js';
+  </script>
+  {% endfor %}
+
+  <script type="module" src="{{ '/assets/copy-permalink.js' | url }}"></script>
+  <script type="module" src="{{ '/assets/elements/uxdot-masthead.js' | url }}"></script>
+  <script type="module" src="{{ '/assets/elements/uxdot-sidenav.js' | url }}"></script>
+  <script type="module" src="{{ '/assets/elements/uxdot-header.js' | url }}"></script>
+
+  <script type="module">
+    import { PfButton } from '@patternfly/elements/pf-button/pf-button.js';
+    import { PfIcon } from '@patternfly/elements/pf-icon/pf-icon.js';
+    PfIcon.getIconUrl = (set, icon) =>
+      new URL(`/assets/packages/@patternfly/elements/pf-icon/icons/${set}/${icon}.js`, location.origin);
+  </script>
+
+  <script type="module">
+  if (!('shadowRootMode' in HTMLTemplateElement.prototype)) { import('/assets/dsd-polyfill.js'); }
+  </script>

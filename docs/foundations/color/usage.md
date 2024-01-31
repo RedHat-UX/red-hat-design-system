@@ -1,5 +1,5 @@
 ---
-layout: layout-foundations.njk
+layout: layouts/pages/foundations.njk
 title: Usage
 heading: Color
 tags:

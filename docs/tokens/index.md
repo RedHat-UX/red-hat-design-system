@@ -1,5 +1,5 @@
 ---
-layout: layout-tokens.njk
+layout: layouts/pages/tokens.njk
 title: Overview
 bodyClasses: token-docs
 ---
@@ -215,4 +215,4 @@ different audience or brand requirements.
 [typography]: /tokens/typography/
 [contact]: mailto:design-system@redhat.com
 
-{% include 'feedback.html' %}
+{% include 'layouts/snippets/feedback.html' %}
