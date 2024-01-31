@@ -41,7 +41,7 @@ class UxdotHero extends LitElement {
       color: var(--rh-color-text-brand-on-light, #ee0000);
       padding-block-end: var(--rh-space-2xl, 32px);
       font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-      font-size: var(--rh-font-size-heading-xl, 2.5rem);
+      font-size: var(--rh-font-size-heading-xl, 2.5rem) !important;
       font-weight: var(--rh-font-weight-heading-regular, 300);
       text-align: center;
     }
