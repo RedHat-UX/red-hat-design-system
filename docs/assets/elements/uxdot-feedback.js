@@ -2,9 +2,14 @@ import { LitElement, html, css } from 'lit';
 
 class UxdotFeedback extends LitElement {
   static styles = css`
+
     #container {
+      container-type: inline-size;
+    }
+
+    #grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       grid-gap: var(--rh-space-3xl, 48px);
       margin-block-start: var(--rh-space-5xl, 80px);
       margin-block-end: var(--rh-space-3xl, 48px);
@@ -22,23 +27,31 @@ class UxdotFeedback extends LitElement {
     p {
       font-size: var(--rh-font-size-body-text-lg, 1.125rem)
     }
+
+    @container (min-width: 567px) {
+      #grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
   `;
 
   render() {
     return html`
       <div id="container" part="container">
-        <div>
-          <slot>
-            <h2>Other libraries</h2>
-            <p>To learn more about our other libraries, visit <a href="/get-started/">this page</a>.</p>
-          </slot>
-        </div>
-        <div>
-        <h2>Feedback</h2>
-          <p>
-            To give feedback about anything on this page,
-            <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions" class="feedback-contact-link">contact us</a>.
-          </p>
+        <div id="grid" part="grid">
+          <div>
+            <slot>
+              <h2>Other libraries</h2>
+              <p>To learn more about our other libraries, visit <a href="/get-started/">this page</a>.</p>
+            </slot>
+          </div>
+          <div>
+          <h2>Feedback</h2>
+            <p>
+              To give feedback about anything on this page,
+              <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions" class="feedback-contact-link">contact us</a>.
+            </p>
+          </div>
         </div>
       </div>
     `;
