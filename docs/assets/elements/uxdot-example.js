@@ -10,6 +10,10 @@ class UxdotExample extends LitElement {
     #container {
       padding: var(--rh-space-4xl, 64px);
       margin-block-end: var(--rh-space-2xl, 32px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
     .light {
@@ -24,13 +28,20 @@ class UxdotExample extends LitElement {
       align-items: center;
       justify-content: center;
       max-width: 100%;
+      width: var(--_width, 100%);
+    }
+
+    :host([variant="full"]) #container {
+      padding: 0;
     }
   `;
 
   static properties = {
     headline: { type: String },
     headingLevel: { type: Number, attribute: 'heading-level' },
-    colorPalette: { type: String, attribute: 'color-palette' }
+    colorPalette: { type: String, reflect: true, attribute: 'color-palette' },
+    variant: { type: String, reflect: true },
+    width: { type: String, attribute: 'width-adjustment' },
   };
 
   constructor() {
@@ -38,6 +49,7 @@ class UxdotExample extends LitElement {
     this.headline = '';
     this.headingLevel = 3;
     this.colorPalette = 'light';
+    this.width = '100%';
   }
 
   render() {
@@ -45,8 +57,8 @@ class UxdotExample extends LitElement {
       [this.colorPalette]: true,
     };
     return html`
-      <div id="container" part="container" class="${classMap(classes)}">
-        ${!this.headline ? html``
+      <div id="container" part="container" class="${classMap(classes)}" style="--_width: ${this.width}">
+        ${this.headline ? html``
           : html`
             <h${this.headingLevel} id="${this.#slugify(this.headline)}" class="example-title">
               ${this.headline}
