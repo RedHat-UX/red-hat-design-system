@@ -28,14 +28,14 @@ The Red Hat Design System for digital experiences gives designers and developers
 <nav id="get-started-nav">
   <a href="/get-started/designers">
     <figure>
-      <uxdot-example color-palette="light">
+      <uxdot-example>
         <img alt="Row of two cards being resized with a mouse pointer" src="/assets/get-started/designers.png">
       </uxdot-example>
       <figcaption>Designers</figcaption>
     </figure>
   </a>
   <figure>
-  <uxdot-example color-palette="light">
+  <uxdot-example>
     <img alt="Card overlapping code editor user interface" src="/assets/get-started/developers.png">
   </uxdot-example>
   <figcaption>Developers (Coming soon)</figcaption>
