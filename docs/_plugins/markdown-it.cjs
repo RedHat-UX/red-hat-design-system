@@ -22,7 +22,7 @@ const rhdsPermalink = makePermalink((slug, opts, anchorOpts, state, idx) => {
     content: /* html */`
 <uxdot-copy-permalink class="${headerOpen.tag}">
   <${headerOpen.tag} ${headerOpen.attrs.map(([key, value]) => `${key}="${value}"`).join(' ')}>
-    <a class="heading-anchor" href="#${id}">`.trim()
+    <a href="#${id}">`.trim()
   }),
   inline,
   Object.assign(new state.Token('html_block', '', 0), { content: /* html */`

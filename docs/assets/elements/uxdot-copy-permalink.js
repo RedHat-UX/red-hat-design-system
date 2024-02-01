@@ -31,6 +31,11 @@ class UxdotCopyPermalink extends LitElement {
     #button:is(:hover, :focus) {
       background: var(--rh-color-surface-light, #e0e0e0);
     }
+
+    ::slotted(h2) {
+      font-size: var(--rh-font-size-heading-md, 1.75rem) !important;
+      font-weight: var(--rh-font-weight-heading-medium, 500);
+    }
   `;
 
   static properties = {
