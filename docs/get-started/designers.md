@@ -70,7 +70,9 @@ The RHDS library is our core library that includes our foundational styles, elem
 | ------------ | -------- |
 | RHDS         | Our core library for creating Red Hat digital experiences. |
 | <a href="https://www.patternfly.org/">PatternFly</a> | A library for creating application interfaces. |
-
+| Tier 1 Events | A library for tier 1 events, like Summit and AnsibleFest. |
+| Brand media |  A library for Red Hat original media like podcasts and video series. |
+| Page builder | A library with a boilerplate template and components specific to Drupal's page builder. |
 
 ## Work in Figma
 
