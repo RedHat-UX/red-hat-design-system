@@ -32,10 +32,6 @@ class UxdotCopyPermalink extends LitElement {
       background: var(--rh-color-surface-light, #e0e0e0);
     }
 
-    ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-      font-size: var(--rh-font-size-heading-md, 1.75rem) !important;
-      font-weight: var(--rh-font-weight-heading-medium, 500);
-    }
   `;
 
   static properties = {
