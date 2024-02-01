@@ -13,6 +13,10 @@ rh-tile a:not([slot="image"], [slot="headline"]) {
   position: relative !important;
 }
 
+rh-tile [slot="headline"] {
+  z-index: 3;
+}
+
 rh-tile[aria-disabled="true"] a {
   color:
     var(
