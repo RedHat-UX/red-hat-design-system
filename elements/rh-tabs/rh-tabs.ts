@@ -73,7 +73,7 @@ export class RhTabs extends LitElement {
   static {
     // on resize check for overflows to add or remove scroll buttons
     window.addEventListener('resize', () => {
-      for (const instance of this.instances) {
+      for (const instance of RhTabs.instances) {
         instance.#overflow.onScroll();
       }
     }, { capture: false });
