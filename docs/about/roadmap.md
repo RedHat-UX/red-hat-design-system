@@ -18,14 +18,14 @@ importElements:
   rh-tile {
     margin-block: var(--rh-space-3xl, 48px);
     max-width: 320px;
-    /* evil hack to fix non customizable padding internals */
-    --rh-space-2xl: 16px !important;
-    /* evil hack to fix non customizable margin internals */
-    --rh-space-lg: 0px !important;
   }
 
   rh-tile [slot="headline"] {
     font-weight: var(--rh-font-weight-heading-bold, 700);
+  }
+
+  rh-tile [slot="headline"]:after {
+     z-index: 3;
   }
 
   rh-tile [icon="github"] {
@@ -40,7 +40,7 @@ The roadmap is subject to change based on our users' feedback and needs. If you 
 
 Check out [our scrum board on GitHub](https://github.com/orgs/RedHat-UX/projects/1/views/18) to see what we're working on from week to week.
 
-<rh-tile>
+<rh-tile compact>
   <pf-icon slot="image" set="fab" icon="github" size="lg"></pf-icon>
   <a slot="headline" href="https://github.com/orgs/RedHat-UX/projects/7/">Roadmap</a>
 </rh-tile>
