@@ -240,7 +240,7 @@ RhTabs.instances = new Set();
 (() => {
     // on resize check for overflows to add or remove scroll buttons
     window.addEventListener('resize', () => {
-        for (const instance of (void 0).instances) {
+        for (const instance of RhTabs_1.instances) {
             __classPrivateFieldGet(instance, _RhTabs_overflow, "f").onScroll();
         }
     }, { capture: false });
