@@ -14,8 +14,8 @@ tags:
   }
 
   #get-started-nav {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr;
     gap: var(--rh-space-2xl, 32px);
     margin-block-start: var(--rh-space-2xl, 32px);
   }
@@ -23,6 +23,12 @@ tags:
   #get-started-nav figcaption {
     font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
     font-size: var(--rh-font-size-heading-sm, 1.5rem);
+  }
+
+  @container container (min-width: 567px) {
+    #get-started-nav {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 
 </style>
@@ -41,10 +47,10 @@ The Red Hat Design System for digital experiences gives designers and developers
     </figure>
   </a>
   <figure>
-  <uxdot-example>
-    <img alt="Card overlapping code editor user interface" src="/assets/get-started/developers.png">
-  </uxdot-example>
-  <figcaption>Developers (Coming soon)</figcaption>
+    <uxdot-example>
+      <img alt="Card overlapping code editor user interface" src="/assets/get-started/developers.png">
+    </uxdot-example>
+    <figcaption>Developers (Coming soon)</figcaption>
   </figure>
 </nav>
 

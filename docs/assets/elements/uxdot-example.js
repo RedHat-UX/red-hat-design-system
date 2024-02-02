@@ -5,10 +5,13 @@ class UxdotExample extends LitElement {
   static styles = css`
     :host {
       display: block;
+      container-type: inline-size;
+      container-name: host;
     }
 
     #container {
-      padding: var(--rh-space-4xl, 64px);
+      padding: var(--rh-space-2xl, 32px);
+
       margin-block-end: var(--rh-space-2xl, 32px);
       display: flex;
       flex-direction: column;
@@ -45,6 +48,12 @@ class UxdotExample extends LitElement {
 
     :host([no-border]) #container {
       border: none;
+    }
+
+    @container host (min-width: 320px) {
+      #container {
+        padding: var(--rh-space-4xl, 64px);
+      }
     }
   `;
 

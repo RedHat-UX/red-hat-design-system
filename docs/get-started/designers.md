@@ -51,7 +51,7 @@ importElements:
 
   #learn-about-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: var(--rh-space-2xl, 32px);
     margin-block-start: var(--rh-space-2xl, 32px);
   }
@@ -59,6 +59,12 @@ importElements:
   #learn-about-grid h3 {
     font-size: var(--rh-font-size-heading-sm, 1.5rem);
     font-weight: var(--rh-font-weight-heading-medium, 500);
+  }
+
+  @container container (min-width: 567px) {
+    #learn-about-grid {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 
 </style>
