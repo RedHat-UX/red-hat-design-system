@@ -38,21 +38,21 @@ module.exports = function(eleventyConfig) {
           const { color } = prop['$extensions']['com.redhat.ux'];
           return /* html */`
             <tr>
-              <td><samp class="${klass}" style="--samp-width: ${px}; --samp-color: ${color};"><span>${size}</span></samp></td>
-              <td>--${prop.name}</td>
-              <td>${prop['$description']}</td>
+              <td data-label="Example"><samp class="${klass}" style="--samp-width: ${px}; --samp-color: ${color};"><span>${size}</span></samp></td>
+              <td data-label="Token">--${prop.name}</td>
+              <td data-label="Description">${prop['$description']}</td>
             </tr>
           `.trim();
         }).join('\n');
 
         table = /* html */`
-          <table width="100%" class="spacer-tokens-table">
+          <table>
           <caption>${caption}</caption>
           <thead>
             <tr>
-              <th>Example</th>
-              <th>Token</th>
-              <th>Description</th>
+              <th scope="col" data-label="Example">Example</th>
+              <th scope="col" data-label="Token">Token</th>
+              <th scope="col" data-label="Description">Description</th>
             </tr>
           </thead>
             <tbody>
@@ -62,10 +62,10 @@ module.exports = function(eleventyConfig) {
         `.trim();
       }
       return `
+        ${table}
         <div class="token-props-table palette-${palette} ${wrapperClass ?? ''}" ${!style ? ''
-          : `style="${style}"}`.trim()}>${!headline ? ''
-          : `<h${headingLevel} id="${slugify(headline)}" class="image-title">${headline}</h${headingLevel}>`.trim()}
-          ${table}
+        : `style="${style}"}`.trim()}>${!headline ? ''
+        : `<h${headingLevel} id="${slugify(headline)}" class="image-title">${headline}</h${headingLevel}>`.trim()}          
           ${content}
         </div>
       `.trim();
