@@ -7,6 +7,12 @@ tags:
 ---
 
 <style>
+
+  .page-overview h2 {
+    font-size: var(--rh-font-size-heading-md, 1.75rem);
+    font-weight: var(--rh-font-weight-heading-medium, 500);
+  }
+
   #get-started-nav {
     display: flex;
     flex-direction: row;

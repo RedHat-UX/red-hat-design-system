@@ -6,8 +6,8 @@ import { toast } from './toast.js';
 class UxdotCopyPermalink extends LitElement {
   static styles = css`
     :host {
-      align-items: center;
       display: flex;
+      align-items: center;
     }
 
     svg {
