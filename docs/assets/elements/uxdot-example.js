@@ -36,7 +36,7 @@ class UxdotExample extends LitElement {
     ::slotted(*) {
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: var(--_alignment, center);
       justify-content: center;
       max-width: 100%;
       width: var(--_width, 100%);
@@ -44,6 +44,14 @@ class UxdotExample extends LitElement {
 
     :host([variant="full"]) #container {
       padding: 0;
+    }
+
+    :host([danger]) #container {
+      border-color: var(--rh-color-border-status-danger-on-light, #f0561d);
+      background-image: url('/assets/best-practices-danger-icon.svg');
+      background-position-x: 8px;
+      background-position-y: 8px;
+      background-repeat: no-repeat;
     }
 
     :host([no-border]) #container {
@@ -64,6 +72,8 @@ class UxdotExample extends LitElement {
     variant: { type: String, reflect: true },
     width: { type: String, attribute: 'width-adjustment' },
     noBorder: { type: Boolean, attribute: 'no-border' },
+    danger: { type: Boolean },
+    alignment: { type: String },
   };
 
   constructor() {
@@ -72,6 +82,7 @@ class UxdotExample extends LitElement {
     this.headingLevel = 3;
     this.colorPalette = 'light';
     this.width = '100%';
+    this.alignment = 'center';
   }
 
   render() {
@@ -79,7 +90,7 @@ class UxdotExample extends LitElement {
       [this.colorPalette]: true,
     };
     return html`
-      <div id="container" part="container" class="${classMap(classes)}" style="--_width: ${this.width}">
+      <div id="container" part="container" class="${classMap(classes)}" style="--_width: ${this.width}; --_alignment: ${this.alignment}">
         ${this.headline ? html``
           : html`
             <h${this.headingLevel} id="${this.#slugify(this.headline)}" class="example-title">
