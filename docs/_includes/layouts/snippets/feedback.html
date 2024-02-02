@@ -1,6 +1,6 @@
 {% set related = (doc.tagName if doc.tagName else (title | slug)) | relatedItems %}
 
-{% feedback %}
+<uxdot-feedback>
   {% if related.length %}
     <h2>Related elements or patterns</h2>
     <ul id="related-items-list">{% for item in related %}
@@ -12,4 +12,4 @@
     <h2>Other libraries</h2>
     <p>To learn more about our other libraries, visit <a href="/get-started/">this page</a>.</p>
   {% endif %}
-{% endfeedback %}
+</uxdot-feedback>
