@@ -91,6 +91,7 @@ module.exports = function(eleventyConfig) {
       'lit',
       'lit/directives/if-defined.js',
       'lit/directives/class-map.js',
+      'lit/static-html.js',
       'lit-html',
       'lit-element',
       '@lit/reactive-element',

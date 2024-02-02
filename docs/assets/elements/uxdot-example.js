@@ -1,5 +1,6 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, css } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
+import { html, unsafeStatic } from 'lit/static-html.js';
 
 class UxdotExample extends LitElement {
   static styles = css`
@@ -58,7 +59,13 @@ class UxdotExample extends LitElement {
       border: none;
     }
 
-    @container host (min-width: 320px) {
+    @container host (min-width: 567px) {
+      #container {
+        padding: var(--rh-space-3xl, 48px);
+      }
+    }
+
+    @container host (min-width: 768px) {
       #container {
         padding: var(--rh-space-4xl, 64px);
       }
@@ -78,7 +85,6 @@ class UxdotExample extends LitElement {
 
   constructor() {
     super();
-    this.headline = '';
     this.headingLevel = 3;
     this.colorPalette = 'light';
     this.width = '100%';
@@ -91,15 +97,19 @@ class UxdotExample extends LitElement {
     };
     return html`
       <div id="container" part="container" class="${classMap(classes)}" style="--_width: ${this.width}; --_alignment: ${this.alignment}">
-        ${this.headline ? html``
+        ${!this.headline ? html``
           : html`
-            <h${this.headingLevel} id="${this.#slugify(this.headline)}" class="example-title">
+            <${unsafeStatic(this.#setHeading())} id="${this.#slugify(this.headline)}">
               ${this.headline}
-            </h${this.headingLevel}>
+            </${unsafeStatic(this.#setHeading())}>
           `}
         <slot></slot>
       </div>
     `;
+  }
+
+  #setHeading() {
+    return `h${this.headingLevel}`;
   }
 
   #slugify(text) {
