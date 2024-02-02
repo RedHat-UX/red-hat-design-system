@@ -14,12 +14,20 @@ class UxdotExample extends LitElement {
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      border-width: var(--rh-border-width-sm, 1px);
+      border-style: solid;
+      border-color: transparent;
+      border-radius: var(--rh-border-radius-default, 3px);
     }
 
-    .light {
+    #container:is(.light, .lighter, .lightest) {
       background-color: var(--rh-color-surface-lightest, #ffffff);
-      border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle-on-light, #c7c7c7);
-      border-radius: var(--rh-border-radius-default, 3px);
+      border-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
+    }
+
+    #container:is(.dark, .darker, .darkest) {
+      background-color: var(--rh-color-surface-dark, #383838);
+      border-color: var(--rh-color-border-subtle-on-dark, #707070);
     }
 
     ::slotted(*) {
@@ -34,6 +42,10 @@ class UxdotExample extends LitElement {
     :host([variant="full"]) #container {
       padding: 0;
     }
+
+    :host([no-border]) #container {
+      border: none;
+    }
   `;
 
   static properties = {
@@ -42,6 +54,7 @@ class UxdotExample extends LitElement {
     colorPalette: { type: String, reflect: true, attribute: 'color-palette' },
     variant: { type: String, reflect: true },
     width: { type: String, attribute: 'width-adjustment' },
+    noBorder: { type: Boolean, attribute: 'no-border' },
   };
 
   constructor() {
