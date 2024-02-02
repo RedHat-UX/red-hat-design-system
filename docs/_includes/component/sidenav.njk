@@ -17,7 +17,6 @@
       {%- set open = link.url in page.url -%}
       <li>
         <uxdot-sidenav-dropdown {{ 'open' if open }}>
-          {# TODO: this should be in shadowRoot and DSD'd for nojs #}
           <details {{ 'open' if open }}>
             <summary>{{ link.title }}</summary>
             <uxdot-sidenav-dropdown-menu>
@@ -46,7 +45,7 @@
                     {%- set active = sublink.url === page.url -%}
                     <li>
                       <uxdot-sidenav-dropdown-menu-item {{ 'active' if active }}>
-                        <a href="{{ sublink.url | url }}">{{ (sublink.data.title | capitalize)  or (sublink.title | capitalize) }}</a>
+                        <a href="{{ sublink.url | url }}">{{ (sublink.data.heading) or (sublink.data.title | capitalize) or (sublink.title | capitalize) }}</a>
                       </uxdot-sidenav-dropdown-menu-item>
                     </li>
                   {%- endfor -%}
