@@ -12,11 +12,10 @@ class UxdotExample extends LitElement {
 
     #container {
       padding: var(--rh-space-2xl, 32px);
-
       margin-block-end: var(--rh-space-2xl, 32px);
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: var(--_alignment, center);
       justify-content: center;
       border-width: var(--rh-border-width-sm, 1px);
       border-style: solid;
