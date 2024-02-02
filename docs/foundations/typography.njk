@@ -4,448 +4,536 @@ title: Typography
 order: 5
 tags:
   - foundations
+importElements:
+  - rh-blockquote
+  - rh-table
 ---
-<!-- see XD for reference: https://xd.adobe.com/view/c3387de7-c738-43be-aed2-d631e283dde4-966b -->
+{# see XD for reference: https://xd.adobe.com/view/c3387de7-c738-43be-aed2-d631e283dde4-966b #}
 
-{% import 'macros/foundations.njk' as foundations %}
+<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
 
-{% call foundations.section("Overview") -%}
+<style>
+  .page-typography .container h2 {
+    font-size: var(--rh-font-size-heading-md, 1.75rem);
+  }
 
+  .page-typography .container h3 {
+    font-size: var(--rh-font-size-heading-sm, 1.5rem);
+  }
+
+  .page-typography .container h4 {
+    font-size: var(--rh-font-size-heading-xs, 1.25rem);
+  }
+
+  .page-typography .container :is(h2, h3, h4) {
+     font-weight: var(--rh-font-weight-heading-medium, 500);
+     margin-block: 1em;
+  }
+
+  .page-typography .container rh-table {
+    margin-block-end: var(--rh-space-3xl, 48px);
+  }
+
+  .page-typography .container .mock-h2 {
+    font-size: var(--rh-font-size-heading-xl, 2.5rem);
+  }
+
+  .page-typography .container .mock-h3 {
+    font-size: var(--rh-font-size-heading-lg, 2.25rem);
+  }
+
+  .page-typography .container .mock-h4 {
+    font-size: var(--rh-font-size-heading-md, 1.75rem);
+  }
+
+  .page-typography .container .mock-h5 {
+    font-size: var(--rh-font-size-heading-sm, 1.5rem);
+  }
+
+  .page-typography .container .mock-title {
+    text-transform: uppercase;
+    color: var(--rh-color-brand-red-on-light, #ee0000);
+    font-weight: var(--rh-font-weight-heading-bold, 700);
+  }
+
+  .page-typography .container .mock-h2 + .mock-h5,
+  .page-typography .container .mock-title + .mock-h2 {
+    margin-block-start: 0;
+  }
+
+  .page-typography .container .mock-body-text {
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif) !important;
+  }
+
+  .page-typography .container .mock-header-text {
+    font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif) !important;
+  }
+
+  .page-typography .container .mock-no-margin {
+    margin: 0 !important;
+  }
+
+  .page-typography .container :is(.mock-h2, .mock-h5) {
+    font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+    margin-block: 1em;
+  }
+
+  .page-typography .container .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--rh-space-2xl, 32px);
+    margin-block-end: var(--rh-space-2xl, 32px);
+  }
+
+  @container container (min-width: 567px) {
+    .page-typography .container .grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @container container (min-width: 992px) {
+    .page-typography .container .grid {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+
+</style>
+
+
+<section>
+  <h2>Overview</h2>
   <p>Typography organizes content and creates hierarchies. It brings consistency to experiences and extends the brand presence across web properties.</p>
+</section>
 
-{%- endcall %}
+<section>
+  <h2>Get started</h2>
+  <p>To get started using our fonts, visit our <a href="https://github.com/RedHatOfficial/RedHatFont" target="_blank">GitHub repo</a>.</p>
+</section>
 
-{# {% call foundations.section("Sample type") -%}
+<section>
+  <h2>Style</h2>
+  <p>The Red&nbsp;Hat typeface is a fresh take on the geometric sans genre, taking inspiration from a range of American sans serifs including <em>Tempo</em> and <em>Highway Gothic</em>. These two font families can be used together seamlessly and are available to download <a href="https://github.com/RedHatOfficial/RedHatFont">here</a>.</p>
 
-    <p class="pfe-headline-xl" style="margin-bottom: 16px;">Headline</p>
-    <p>Body copy</p>
-    <rh-cta variant="primary">
-        <a href="#">Call to action</a>
-    </rh-cta>
-
-{%- endcall %} #}
-
-{% call foundations.section("Get started") -%}
-  To get started using our fonts, visit our <a href="https://github.com/RedHatOfficial/RedHatFont" target="_blank">GitHub repo</a>.
-{%- endcall %}
-
-{% call foundations.section("Style") -%}
-    <p>The Red Hat typeface is a fresh take on the geometric sans genre, taking inspiration from a range of American sans serifs including <em>Tempo</em> and <em>Highway Gothic</em>. These two font families can be used together seamlessly and are available to download <a href="https://github.com/RedHatOfficial/RedHatFont">here</a>.</p>
-
+  <uxdot-example width-adjustment="75%" no-border>
     <img src="https://www.redhat.com/cms/managed-files/BrandStandards-Visual_System-Typography-ASSETS_Hero.svg?itok=QnUDviH1"/>
+  </uxdot-example>
 
-    <div class="multi-column--min-400-wide margin-top--6">
-        <div>
-            <h4>Red Hat Display</h4>
-            <p>The Display typeface is low contrast and spaced tightly with a large x-height and open counters.</p>
-        </div>
-
-        <div>
-            <h4>Red Hat Text</h4>
-            <p>The Text typeface has a slightly smaller x-height, a narrower width for better legibility, and thinned joins for a better performance at small sizes.</p>
-        </div>
-
-        <div>
-            <h4>Red Hat Mono</h4>
-            <p>The Mono typeface is our monospaced font that distinguishes code from natural-language text. It should only be used for code snippets or as a stylistic approach for a more technical audience.</p>
-        </div>
+  <div class="grid">
+    <div>
+      <h4>Red&nbsp;Hat Display</h4>
+      <p>The Display typeface is low contrast and spaced tightly with a large x-height and open counters.</p>
     </div>
 
-{%- endcall %}
+    <div>
+        <h4>Red&nbsp;Hat Text</h4>
+      <p>The Text typeface has a slightly smaller x-height, a narrower width for better legibility, and thinned joins for a better performance at small sizes.</p>
+    </div>
 
-{% call foundations.section("Text options") -%}
+    <div>
+      <h4>Red&nbsp;Hat Mono</h4>
+      <p>The Mono typeface is our monospaced font that distinguishes code from natural-language text. It should only be used for code snippets or as a stylistic approach for a more technical audience.</p>
+    </div>    
+  </div>
+</section>
 
-    <h4>Headline</h4>
-    <p>Headlines create various levels of content hierarchies.</p>
+<section>
+  <h2>Text options</h2>
+  <h3>Headline</h3>
+  <p>Headlines create various levels of content hierarchies.</p>
 
-    {% call foundations.example(palette='lightest') %}
-        <div class="centered example--typography">
-            <p class="pfe-headline-xl" style="padding-bottom:32px;">Red Hat Enterprise Linux</p>
-            <p class="pfe-headline-delta">Conquer complexity with Red Hat Enterprise Linux 8</p>
-        </div>
-    {%- endcall %}
+  <uxdot-example>
+    <p class="mock-h2">Red&nbsp;Hat Enterprise Linux</p>
+    <p class="mock-h5">Conquer complexity with Red&nbsp;Hat Enterprise Linux 8</p>
+  </uxdot-example>
 
-    <h4>Blockquote</h4>
-    <p>Blockquotes are emphasized blocks of text that include a quote icon and attribution.</p>
+  <h3>Blockquote</h3>
+  <p>Blockquotes are emphasized blocks of text that include a quote icon and attribution.</p>
 
-    {% call foundations.example(palette='lightest') %}
-        <img src="{{ '/assets/typography/typography-quote.svg' | url }}" alt="An example of a blockquote" style="--example-img-max-width: 780px;">
-    {%- endcall %}
+  <uxdot-example>
+    <rh-blockquote>
+      <p>The moment we have an idea, we can start building the product</p>
+      <span slot="author">John Smith</span>
+      <span slot="title">Senior Director, Dev Ops, Acme Corporation</span>
+    </rh-blockquote>
+  </uxdot-example>  
 
-    <h4>Title</h4>
-    <p>Titles disclose extra information above headlines or other content.</p>
+  <h3>Title</h3>
+  <p>Titles disclose extra information above headlines or other content.</p>  
 
-    {% call foundations.example(palette='lightest') %}
-        <div class="centered example--typography">
-            <p class="pfe-headline-delta" style="text-transform:uppercase;color:#e00;padding-bottom:16px;">Linux platforms</p>
-            <p class="pfe-headline-xl" style="">Red Hat Enterprise Linux</p>
-        </div>
-    {%- endcall %}
+  <uxdot-example>
+    <div>
+      <p class="mock-title">Linux platforms</p>
+      <p class="mock-h2">Red&nbsp;Hat Enterprise Linux</p>
+    </div>
+  </uxdot-example>
 
+  <h3>Body copy</h3>
+  <p>Body copy is a block of text that can include links or lists.</p> 
 
-    <h4>Body copy</h4>
-    <p>Body copy is a block of text that can include links or lists.</p>
+  <uxdot-example>
+    <div>
+      <p>We support Red&nbsp;Hat Enterprise Linux on multiple architectures—from <a href="#">IBM Power servers</a> and IBM Z mainframes to Arm microchips that power cloud workloads—so you can choose the right hardware for the right workload. All while using a single OS with a standardized experience.</p>
+    </div>
+  </uxdot-example>
 
-    {% call foundations.example(palette='lightest') %}
-        <div class="example--typography">
-            <p>We support Red Hat Enterprise Linux on multiple architectures—from <a href="#">IBM Power servers</a> and IBM Z mainframes to Arm microchips that power cloud workloads—so you can choose the right hardware for the right workload. All while using a single OS with a standardized experience.</p>
-        </div>
-    {%- endcall %}
+  <h3>Code</h3>
+  <p>Code is text that features a monospace font that can be used for coding purposes.</p>
 
-    <h4>Code</h4>
-    <p>Code is text that features a monospace font that can be used for coding purposes.</p>
+  <uxdot-example>
+    <pre>
+      <code>
+for (i = (numElementsReturned - 1); i >= 0; i--) {
+  console.log('Hello World');
+}
+     </code>
+    </pre>
+  </uxdot-example>
 
-    {% call foundations.example(palette='lightest') %}
-        <div class="centered example--typography">
-            <p style="font-family:var(--rh-font-family-code)">for (i = (numElementsReturned - 1); i >= 0; i--) {</p>
-        </div>
-    {%- endcall %}
+  <h3>Line length</h3>
+  <p>Headline and body copy line lengths aren’t measured by the number of characters. Instead, all text styles have a <strong>minimum width of three grid columns</strong> and a <strong>maximum width of eight grid columns</strong> on all screen sizes.</p>
 
-    <h4>Line length</h4>
-    <p>Headline and body copy line lengths aren’t measured by the number of characters. Instead, all text styles have a <strong>minimum width of three grid columns</strong> and a <strong>maximum width of eight grid columns</strong> on all screen sizes.</p>
+</section>
 
-{%- endcall %}
-
-{% call foundations.section("Scale") -%}
-
+<section>
+  <h2>Scale</h2>
   <p>The type scale features a range of text sizes and weights created to support the needs of various kinds of content. There’s a type scale for desktop and mobile breakpoints.</p>
 
-  <h4 id="desktop-scale">Desktop scale</h4>
+  <h3>Desktop scale</h3>
 
-    <table class="full-width">
+  <rh-table>
+    <table>
+      <thead>
         <tr>
-            <th>Style</th>
-            <th>Font / weight</th>
-            <th>Size / Line height</th>
-            <th>PatternFly Elements classname</th>
+          <th scope="col" data-label="Style">Style</th>
+          <th scope="col" data-label="Font / weight">Font / weight</th>
+          <th scope="col" data-label="Size / Line height">Size / Line height</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Style">Headline, 2xl</td>
+          <td data-label="Font / weight"> --- {# TODO: get correct value for RHDS #}</td>
+          <td data-label="Size / Line height"> --- {# TODO: get correct value for RHDS #}</td>
         </tr>
         <tr>
-            <td><span class="pfe-headline-xxl" style="">Headline, xxl</span></td>
-            <td>Display, Regular</td>
-            <td>48pt / 58 (1.2)</td>
-            <td><code>.pfe-title--6xl</code></td>
+          <td data-label="Style">Headline, xl</td>
+          <td data-label="Font / weight"> --- {# TODO: get correct value for RHDS #}</td>
+          <td data-label="Size / Line height"> --- {# TODO: get correct value for RHDS #}</td>
         </tr>
         <tr>
-            <td><span class="pfe-headline-xl" style="">Headline, xl</span></td>
-            <td>Display, Regular</td>
-            <td>40pt / 48 (1.2)</td>
-            <td><code>.pfe-title--5xl</code></td>
+          <td data-label="Style">Headline, lg</td>
+          <td data-label="Font / weight"> --- {# TODO: get correct value for RHDS #}</td>
+          <td data-label="Size / Line height"> --- {# TODO: get correct value for RHDS #}</td>
         </tr>
         <tr>
-            <td><span class="pfe-headline-alpha" style="">Headline, lg</span></td>
-            <td>Display, Medium</td>
-            <td>36pt / 47 (1.3)</td>
-            <td><code>.pfe-title--4xl</code></td>
+          <td data-label="Style">Headline, md</td>
+          <td data-label="Font / weight"> --- {# TODO: get correct value for RHDS #}</td>
+          <td data-label="Size / Line height"> --- {# TODO: get correct value for RHDS #}</td>
         </tr>
         <tr>
-            <td><span class="pfe-headline-beta" style="">Headline, md</span></td>
-            <td>Display, Medium</td>
-            <td>28pt / 37 (1.3)</td>
-            <td><code>.pfe-title--3xl</code></td>
+          <td data-label="Style">Headline, sm</td>
+          <td data-label="Font / weight"> --- {# TODO: get correct value for RHDS #}</td>
+          <td data-label="Size / Line height"> --- {# TODO: get correct value for RHDS #}</td>
         </tr>
         <tr>
-            <td><span class="pfe-headline-gamma" style="">Headline, sm</span></td>
-            <td>Display, Medium</td>
-            <td>24pt / 31 (1.3)</td>
-            <td><code>.pfe-title--2xl</code></td>
+          <td data-label="Style">Headline, xs</td>
+          <td data-label="Font / weight"> --- {# TODO: get correct value for RHDS #}</td>
+          <td data-label="Size / Line height"> --- {# TODO: get correct value for RHDS #}</td>
         </tr>
         <tr>
-            <td><span class="pfe-headline-delta" style="">Headline, xs</span></td>
-            <td>Display, Medium</td>
-            <td>20pt / 30 (1.5)</td>
-            <td><code>.pfe-title--xl</code></td>
+          <td data-label="Style">Blockquote, lg</td>
+          <td data-label="Font / weight"> --- {# TODO: get correct value for RHDS #}</td>
+          <td data-label="Size / Line height"> --- {# TODO: get correct value for RHDS #}</td>
         </tr>
         <tr>
-            <td><span class="" style="font-size:28px;line-height:37px;font-family:RedHatDisplay;font-weight:300;">Blockquote, lg</span></td>
-            <td>Display, Regular</td>
-            <td>28pt / 37 (1.3)</td>
-            <td></td>
+          <td data-label="Style">Blockquote, sm</td>
+          <td data-label="Font / weight"> --- {# TODO: get correct value for RHDS #}</td>
+          <td data-label="Size / Line height"> --- {# TODO: get correct value for RHDS #}</td>
         </tr>
         <tr>
-            <td><span class="" style="font-size:20px;line-height:30px;font-family:RedHatDisplay;font-weight:300;">Blockquote, sm</span></td>
-            <td>Display, Regular</td>
-            <td>20pt / 30 (1.5)</td>
-            <td></td>
+          <td data-label="Style">Layout title</td>
+          <td data-label="Font / weight"> --- {# TODO: get correct value for RHDS #}</td>
+          <td data-label="Size / Line height"> --- {# TODO: get correct value for RHDS #}</td>
         </tr>
         <tr>
-            <td><span class="pfe-headline-delta" style="text-transform:uppercase;">Layout title</span></td>
-            <td>Display, Medium (Uppercase)</td>
-            <td>20pt / 30 (1.5)</td>
-            <td></td>
+          <td data-label="Style">Card title</td>
+          <td data-label="Font / weight"> --- {# TODO: get correct value for RHDS #}</td>
+          <td data-label="Size / Line height"> --- {# TODO: get correct value for RHDS #}</td>
         </tr>
         <tr>
-            <td><span class="pfe-copy" style="text-transform:uppercase;">Card title</span></td>
-            <td>Text, Regular (Uppercase)</td>
-            <td>16pt / 24 (1.5)</td>
-            <td></td>
+          <td data-label="Style">Body copy, 2xl</td>
+          <td data-label="Font / weight"> --- {# TODO: get correct value for RHDS #}</td>
+          <td data-label="Size / Line height"> --- {# TODO: get correct value for RHDS #}</td>
         </tr>
         <tr>
-            <td><span class="pfe-text-lg" style="">Body copy, xl</span></td>
-            <td>Text, Regular</td>
-            <td>20pt / 30 (1.5)</td>
-            <td><code>.pfe-text--xl</code></td>
+          <td data-label="Style">Body copy, xl</td>
+          <td data-label="Font / weight"> --- {# TODO: get correct value for RHDS #}</td>
+          <td data-label="Size / Line height"> --- {# TODO: get correct value for RHDS #}</td>
         </tr>
         <tr>
-            <td><span class="pfe-text" style="">Body copy, lg</span></td>
-            <td>Text, Regular</td>
-            <td>18pt / 27 (1.5)</td>
-            <td><code>.pfe-text--lg</code></td>
+          <td data-label="Style">Body copy, lg</td>
+          <td data-label="Font / weight"> --- {# TODO: get correct value for RHDS #}</td>
+          <td data-label="Size / Line height"> --- {# TODO: get correct value for RHDS #}</td>
         </tr>
         <tr>
-            <td><span class="pfe-text-sm" style="">Body copy, md</span></td>
-            <td>Text, Regular</td>
-            <td>16pt / 24 (1.5)</td>
-            <td><code>.pfe-text--md</code></td>
+          <td data-label="Style">Body copy, md</td>
+          <td data-label="Font / weight"> --- {# TODO: get correct value for RHDS #}</td>
+          <td data-label="Size / Line height"> --- {# TODO: get correct value for RHDS #}</td>
         </tr>
         <tr>
-            <td><span class="pfe-text-xs" style="">Body copy, sm</span></td>
-            <td>Text, Regular</td>
-            <td>14pt / 21 (1.5)</td>
-            <td><code>.pfe-text--sm</code></td>
+          <td data-label="Style">Body copy, sm</td>
+          <td data-label="Font / weight"> --- {# TODO: get correct value for RHDS #}</td>
+          <td data-label="Size / Line height"> --- {# TODO: get correct value for RHDS #}</td>
         </tr>
         <tr>
-            <td><span class="pfe-text-xs" style="font-size:12px;line-height:18px;">Body copy, xs</span></td>
-            <td>Text, Regular</td>
-            <td>12pt / 18 (1.5)</td>
-            <td><code>.pfe-text--xs</code></td>
+          <td data-label="Style">Body copy, xs</td>
+          <td data-label="Font / weight"> --- {# TODO: get correct value for RHDS #}</td>
+          <td data-label="Size / Line height"> --- {# TODO: get correct value for RHDS #}</td>
         </tr>
+      </tbody>
     </table>
+  </rh-table>
 
-    <h4 id="mobile-scale">Mobile scale</h4>
-    <p>When larger text styles are used on smaller screens, they <strong>automatically decrease in size to fit smaller layouts</strong> better. The mobile type scale is applied when the Tablet, portrait breakpoint is reached or when a screen becomes less than 768px wide.</p>
+  <h3>Mobile scale</h3>
+  <p>When larger text styles are used on smaller screens, they <strong>automatically decrease in size to fit smaller layouts</strong> better. The mobile type scale is applied when the Tablet, portrait breakpoint is reached or when a screen becomes less than 768px wide.</p>
 
-    <table style="width:100%">
+  <rh-table>
+    <table>
+      <thead>
         <tr>
-            <th>Style</th>
-            <th>Font / weight</th>
-            <th>Size / Line height</th>
+          <th scope="col" data-label="Style">Style</th>
+          <th scope="col" data-label="Font / weight">Font / weight</th>
+          <th scope="col" data-label="Size / Line height">Size / Line height</th>
         </tr>
-        <tr class="font-scale-altered">
-            <td><span class="pfe-headline-xxl" style="font-size:35px;">Headline, xxl</span></td>
-            <td>48pt / 58 (1.2)</td>
-            <td>Decreases to 35pt / 42 (1.2)</td>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Style">Headline, 2xl</td>
+          <td data-label="Font / weight"> --- {# TODO: get correct value for RHDS #}</td>
+          <td data-label="Size / Line height"> --- {# TODO: get correct value for RHDS #}</td>
         </tr>
-        <tr class="font-scale-altered">
-            <td><span class="pfe-headline-xl" style="font-size:29px;">Headline, xl</span></td>
-            <td>40pt / 48 (1.2)</td>
-            <td>Decreases to 29pt / 35 (1.2)</td>
+        <tr>
+          <td data-label="Style">Headline, xl</td>
+          <td data-label="Font / weight"> --- {# TODO: get correct value for RHDS #}</td>
+          <td data-label="Size / Line height"> --- {# TODO: get correct value for RHDS #}</td>
         </tr>
-        <tr class="font-scale-altered" style="font-size:26px;">
-            <td><span class="pfe-headline-alpha" style="">Headline, lg</span></td>
-            <td>36pt / 47 (1.3)</td>
-            <td>Decreases to 26pt / 34 (1.3)</td>
+        <tr>
+          <td data-label="Style">Headline, lg</td>
+          <td data-label="Font / weight"> --- {# TODO: get correct value for RHDS #}</td>
+          <td data-label="Size / Line height"> --- {# TODO: get correct value for RHDS #}</td>
         </tr>
-        <tr class="font-scale-altered" style="font-size:24px;">
-            <td><span class="pfe-headline-beta" style="">Headline, md</span></td>
-            <td>28pt / 37 (1.3)</td>
-            <td>Decreases to 24pt / 31 (1.3)</td>
+        <tr>
+          <td data-label="Style">Headline, md</td>
+          <td data-label="Font / weight"> --- {# TODO: get correct value for RHDS #}</td>
+          <td data-label="Size / Line height"> --- {# TODO: get correct value for RHDS #}</td>
         </tr>
-        <tr class="font-scale-altered" style="font-size:20px;">
-            <td><span class="pfe-headline-gamma" style="">Headline, sm</span></td>
-            <td>24pt / 31 (1.5)</td>
-            <td>Decreases to 20pt / 26 (1.3)</td>
+        <tr>
+          <td data-label="Style">Headline, sm</td>
+          <td data-label="Font / weight"> --- {# TODO: get correct value for RHDS #}</td>
+          <td data-label="Size / Line height"> --- {# TODO: get correct value for RHDS #}</td>
         </tr>
-        <tr class="font-scale-altered" style="font-size:18px;">
-            <td><span class="pfe-headline-delta" style="">Headline, xs</span></td>
-            <td>20pt / 30 (1.5)</td>
-            <td>Decreases to 18pt / 27 (1.5)</td>
+        <tr>
+          <td data-label="Style">Headline, xs</td>
+          <td data-label="Font / weight"> --- {# TODO: get correct value for RHDS #}</td>
+          <td data-label="Size / Line height"> --- {# TODO: get correct value for RHDS #}</td>
         </tr>
-        <tr class="font-scale-altered">
-            <td><span class="" style="font-size:28px;line-height:37px;font-family:RedHatDisplay;font-weight:300;">Blockquote, lg</span></td>
-            <td>28pt / 37 (1.3)</td>
-            <td>Decreases to 24pt / 31 (1.3)</td>
+        <tr>
+          <td data-label="Style">Blockquote, lg</td>
+          <td data-label="Font / weight"> --- {# TODO: get correct value for RHDS #}</td>
+          <td data-label="Size / Line height"> --- {# TODO: get correct value for RHDS #}</td>
         </tr>
-        <tr class="font-scale-altered">
-            <td><span class="" style="font-size:20px;line-height:30px;font-family:RedHatDisplay;font-weight:300;">Blockquote, sm</span></td>
-            <td>20pt / 30 (1.5)</td>
-            <td>Decreases to 18pt / 27 (1.5)</td>
+        <tr>
+          <td data-label="Style">Blockquote, sm</td>
+          <td data-label="Font / weight"> --- {# TODO: get correct value for RHDS #}</td>
+          <td data-label="Size / Line height"> --- {# TODO: get correct value for RHDS #}</td>
         </tr>
-        <tr class="font-scale-altered">
-            <td><span class="pfe-headline-delta" style="text-transform:uppercase;">Layout title</span></td>
-            <td>20pt / 30 (1.5)</td>
-            <td>Decreases to 18pt / 27 (1.5)</td>
+        <tr>
+          <td data-label="Style">Layout title</td>
+          <td data-label="Font / weight"> --- {# TODO: get correct value for RHDS #}</td>
+          <td data-label="Size / Line height"> --- {# TODO: get correct value for RHDS #}</td>
         </tr>
-        <tr class="font-scale-same">
-            <td><span class="pfe-copy" style="text-transform:uppercase;">Card title</span></td>
-            <td>16pt / 24 (1.5)</td>
-            <td>Stays the same size</td>
+        <tr>
+          <td data-label="Style">Card title</td>
+          <td data-label="Font / weight"> --- {# TODO: get correct value for RHDS #}</td>
+          <td data-label="Size / Line height"> --- {# TODO: get correct value for RHDS #}</td>
         </tr>
-        <tr class="font-scale-altered">
-            <td><span class="pfe-text-lg" style="">Body copy, xl</span></td>
-            <td>20pt / 30 (1.5)</td>
-            <td>Decreases to 18pt / 27 (1.5)</td>
+        <tr>
+          <td data-label="Style">Body copy, 2xl</td>
+          <td data-label="Font / weight"> --- {# TODO: get correct value for RHDS #}</td>
+          <td data-label="Size / Line height"> --- {# TODO: get correct value for RHDS #}</td>
         </tr>
-        <tr class="font-scale-altered">
-            <td><span class="pfe-text" style="">Body copy, lg</span></td>
-            <td>18pt / 27 (1.5)</td>
-            <td>Decreases to 16pt / 24 (1.5)</td>
+        <tr>
+          <td data-label="Style">Body copy, xl</td>
+          <td data-label="Font / weight"> --- {# TODO: get correct value for RHDS #}</td>
+          <td data-label="Size / Line height"> --- {# TODO: get correct value for RHDS #}</td>
         </tr>
-        <tr class="font-scale-same">
-            <td><span class="pfe-text-sm" style="">Body copy, md</span></td>
-            <td>16pt / 24 (1.5)</td>
-            <td>Stays the same size</td>
+        <tr>
+          <td data-label="Style">Body copy, lg</td>
+          <td data-label="Font / weight"> --- {# TODO: get correct value for RHDS #}</td>
+          <td data-label="Size / Line height"> --- {# TODO: get correct value for RHDS #}</td>
         </tr>
-        <tr class="font-scale-same">
-            <td><span class="pfe-text-xs" style="">Body copy, sm</span></td>
-            <td>14pt / 21 (1.5)</td>
-            <td>Stays the same size</td>
+        <tr>
+          <td data-label="Style">Body copy, md</td>
+          <td data-label="Font / weight"> --- {# TODO: get correct value for RHDS #}</td>
+          <td data-label="Size / Line height"> --- {# TODO: get correct value for RHDS #}</td>
         </tr>
-        <tr class="font-scale-same">
-            <td><span class="pfe-text-xs" style="font-size:12px;line-height:18px;">Body copy, xs</span></td>
-            <td>12pt / 18 (1.5)</td>
-            <td>Stays the same size</td>
+        <tr>
+          <td data-label="Style">Body copy, sm</td>
+          <td data-label="Font / weight"> --- {# TODO: get correct value for RHDS #}</td>
+          <td data-label="Size / Line height"> --- {# TODO: get correct value for RHDS #}</td>
         </tr>
-    </table>
+        <tr>
+          <td data-label="Style">Body copy, xs</td>
+          <td data-label="Font / weight"> --- {# TODO: get correct value for RHDS #}</td>
+          <td data-label="Size / Line height"> --- {# TODO: get correct value for RHDS #}</td>
+        </tr>      
+      </tbody>
+    </table>  
+  </rh-table>
+</section>
 
-{%- endcall %}
 
-{% call foundations.section("Usage") -%}
+<section>
+  <h2>Usage</h2>
 
   <p>Each text style has its own unique hierarchy and application. Text styles can be used in layouts and in components to communicate messages or entice users to take an action.</p>
 
-    <div class="multi-column--min-400-wide margin-top--6">
-        <div>
-            <h4>Headline, xxl</h4>
-            <p>The largest headline available. Use in big hero layouts, like Summit or campaign pages. <strong>Reserved for marketing use cases only.</strong></p>
-        </div>
-
-        <div>
-            <h4>Headline, xl</h4>
-            <p>The second largest headline available. Use in hero layouts, like the home page or a product page. <strong>Reserved for marketing use cases only.</strong></p>
-        </div>
-        <div>
-            <h4>Headline, lg</h4>
-            <p>The primary headline for important layouts that aren’t the hero. Try and use only once per page, otherwise use the Headline 2 style.</p>
-        </div>
-
-        <div>
-            <h4>Headline, md</h4>
-            <p>The secondary headline for important layouts that are lower in hierarchy. Use this style multiple times per page.</p>
-        </div>
-
-        <div>
-            <h4>Headline, sm</h4>
-            <p>The tertiary headline for other layouts lower in hierarchy. Use this style in components like a Card or in multiple layouts per page.</p>
-        </div>
-
-        <div>
-            <h4>Headline, xs</h4>
-            <p>The smallest headline available. Use this style under larger headlines or in select components, like an Accordion.</p>
-        </div>
-        <div>
-            <h4>Blockquote, lg</h4>
-            <p>The larger style for adding more emphasis to blockquotes. Try not to use this style around other content, otherwise use the <em>Blockquote, sm</em> style.</p>
-        </div>
-
-        <div>
-            <h4>Blockquote, sm</h4>
-            <p>The smaller style for all blockquotes. Use this style around other content or in smaller layouts and components, like a Card.</p>
-        </div>
-
-        <div>
-            <h4>Layout title</h4>
-            <p>The larger style for an important title. Use this style above larger headlines or above important content in any layout.</p>
-        </div>
-
-        <div>
-            <h4>Card title</h4>
-            <p>The smaller style for less important titles. Use this style above headlines in smaller layouts only, like a Card.</p>
-        </div>
-
-        <div>
-            <h4>Body copy, xl</h4>
-            <p>The largest body copy style. Use this style for long-form content only, like Topic and Article pages. Text should not exceed 8 columns in width for optimal readability.</p>
-        </div>
-
-        <div>
-            <h4>Body copy, lg</h4>
-            <p>The base body copy style for marketing use cases only, unless an app interface calls for a larger text size. Text should not exceed 8 columns in width for optimal readability.</p>
-        </div>
-
-        <div>
-            <h4>Body copy, md</h4>
-            <p>The base body copy style for app interfaces or some smaller components, unless a marketing use case calls for a smaller text size. Text should not exceed 7 columns in width for optimal readability.</p>
-        </div>
-
-        <div>
-            <h4>Body copy, sm</h4>
-            <p>The supporting body copy style for all use cases, like under Form fields or for attribution purposes. Text should not exceed 7 columns in width for optimal readability.</p>
-        </div>
-
-        <div>
-            <h4>Body copy, xs</h4>
-            <p>The smallest body copy style for legal or footnote use cases only. Text should not exceed 7 columns in width for optimal readability.</p>
-        </div>
+  <div class="grid">
+    <div>
+      <h3>Headline, xxl</h3>
+      <p>The largest headline available. Use in big hero layouts, like Summit or campaign pages. <strong>Reserved for marketing use cases only.</strong></p>
     </div>
 
-{%- endcall %}
-
-{% call foundations.section("Best practices") -%}
-
-  <p>Don't use Red Hat Text for headlines.</p>
-
-  {% call foundations.example(palette='wrong') %}
-        <div class="centered example--typography">
-            <p class="pfe-headline-beta" style="font-family:RedHatText;font-weight:600;padding:">Red Hat and open source</p>
-        </div>
-  {%- endcall %}
-
-  <p>Don't use Red Hat Display for body copy.</p>
-
-  {% call foundations.example(palette='wrong') %}
-    <div class="centered example--typography">
-        <p style="font-family:RedHatDisplay;font-weight:300;">We believe in collaboration. We believe in choice, control, and freedom. Open source values like meritocracy, community building, and transparency are changing the way we approach business and life.</p>
+    <div>
+      <h3>Headline, xl</h3>
+      <p>The second largest headline available. Use in hero layouts, like the home page or a product page. <strong>Reserved for marketing use cases only.</strong></p>
     </div>
-  {%- endcall %}
+    
+    <div>
+      <h3>Headline, lg</h3>
+      <p>The primary headline for important layouts that aren’t the hero. Try and use only once per page, otherwise use the Headline 2 style.</p>
+    </div>
+
+    <div>
+      <h3>Headline, md</h3>
+      <p>The secondary headline for important layouts that are lower in hierarchy. Use this style multiple times per page.</p>
+    </div>
+
+    <div>
+      <h3>Headline, sm</h3>
+      <p>The tertiary headline for other layouts lower in hierarchy. Use this style in components like a Card or in multiple layouts per page.</p>
+    </div>
+
+    <div>
+      <h3>Headline, xs</h3>
+      <p>The smallest headline available. Use this style under larger headlines or in select components, like an Accordion.</p>
+    </div>
+    
+    <div>
+      <h3>Blockquote, lg</h3>
+      <p>The larger style for adding more emphasis to blockquotes. Try not to use this style around other content, otherwise use the <em>Blockquote, sm</em> style.</p>
+    </div>
+
+    <div>
+      <h3>Blockquote, sm</h3>
+      <p>The smaller style for all blockquotes. Use this style around other content or in smaller layouts and components, like a Card.</p>
+    </div>
+
+    <div>
+      <h3>Layout title</h3>
+      <p>The larger style for an important title. Use this style above larger headlines or above important content in any layout.</p>
+    </div>
+
+    <div>
+      <h3>Card title</h3>
+      <p>The smaller style for less important titles. Use this style above headlines in smaller layouts only, like a Card.</p>
+    </div>
+
+    <div>
+      <h3>Body copy, xl</h3>
+      <p>The largest body copy style. Use this style for long-form content only, like Topic and Article pages. Text should not exceed 8 columns in width for optimal readability.</p>
+    </div>
+
+    <div>
+      <h3>Body copy, lg</h3>
+      <p>The base body copy style for marketing use cases only, unless an app interface calls for a larger text size. Text should not exceed 8 columns in width for optimal readability.</p>
+    </div>
+
+    <div>
+      <h3>Body copy, md</h3>
+      <p>The base body copy style for app interfaces or some smaller components, unless a marketing use case calls for a smaller text size. Text should not exceed 7 columns in width for optimal readability.</p>
+    </div>
+
+    <div>
+      <h3>Body copy, sm</h3>
+      <p>The supporting body copy style for all use cases, like under Form fields or for attribution purposes. Text should not exceed 7 columns in width for optimal readability.</p>
+    </div>
+
+    <div>
+      <h3>Body copy, xs</h3>
+      <p>The smallest body copy style for legal or footnote use cases only. Text should not exceed 7 columns in width for optimal readability.</p>
+    </div>
+  
+  </div>
+
+</section>
+
+<section>
+  <h2>Best practices</h2>
+  <p>Don't use Red&nbsp;Hat Text for headlines.</p>
+
+  <uxdot-example danger>
+    <p class="mock-h2 mock-body-text">Red&nbsp;Hat and open source</p>
+  </uxdot-example>
+
+  <p>Don't use Red&nbsp;Hat Display for body copy.</p>
+
+  <uxdot-example danger>
+    <div>
+      <p class="mock-header-text">We believe in collaboration. We believe in choice, control, and freedom. Open source values like meritocracy, community building, and transparency are changing the way we approach business and life.</p>  
+    </div>
+  </uxdot-example>
 
   <p>Don't space text styles too closely together.</p>
-  {% call foundations.example(palette='wrong') %}
-        <div class="example--typography">
-            <p class="pfe-headline-delta" style="text-transform:uppercase;color:#e00;padding-bottom:0;">Linux platforms</p>
-            <p class="pfe-headline-xl" style="">Red Hat Enterprise Linux</p>
-        </div>
-  {%- endcall %}
+
+  <uxdot-example danger alignment="left">
+    <p class="mock-title mock-no-margin">Linux platforms</p>
+    <p class="mock-h2 mock-no-margin">Red&nbsp;Hat Enterprise Linux</p>
+  </uxdot-example>
 
   <p>Don't stack lots of text styles too closely together.</p>
-  {% call foundations.example(palette='wrong') %}
-        <div class="example--typography">
-            <p class="pfe-headline-xxl" style="padding-bottom: 16px;">Headline, xxl</p>
-            <p class="pfe-headline-beta" style="padding-bottom: 16px;">Headline, md</p>
-            <p class="pfe-headline-delta" style="padding-bottom: 16px;">Headline, xs</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut suscipit aliquet mauris, in consequat lorem ullamcorper a. Curabitur tempor ante vitae ultrices dignissim.</p>
-        </div>
-  {%- endcall %}
 
-{%- endcall %}
+  <uxdot-example danger alignment="left">
+    <p class="mock-h2 mock-no-margin">Headline, xl</p>
+    <p class="mock-h3 mock-no-margin">Headline, lg</p>
+    <p class="mock-h4 mock-no-margin">Headline, min-width</p>
+    <p class="mock-body-text mock-no-margin">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut suscipit aliquet mauris, in consequat lorem ullamcorper a. Curabitur tempor ante vitae ultrices dignissim.</p>
+  </uxdot-example>
 
-{% call foundations.section("Behavior") -%}
+</section>
 
-    <h4>Responsive design</h4>
+<section>
+  <h2>Behavior</h2>
+  <h3>Responsive design</h3>
+  <p>Text styles decrease in size when screens become smaller. This shift helps users consume content better without additional scrolling.</p>
 
-    <p>Text styles decrease in size when screens become smaller. This shift helps users consume content better without additional scrolling.</p>
+  <h3>Desktop</h3>
+  <uxdot-example width-adjustment="540px">
+    <img src="/assets/typography/typography-card-desktop.svg" alt="Card typography scale on desktop"> 
+  </uxdot-example>
 
-    <h4>Desktop</h4>
-    {% call foundations.example(palette='light') %}
-      <div class="centered margin-top--4 margin-bottom--4">
-        <img src="{{ '/assets/typography/typography-card-desktop.svg' | url }}" alt="Card typography scale on desktop" style="--example-img-max-width: 540px;">
-      </div>
-    {%- endcall %}
+  <h3>Mobile</h3>
+  <uxdot-example width-adjustment="363px">
+    <img src="/assets/typography/typography-card-mobile.svg" alt="Card typography scale on mobile">  
+  </uxdot-example>
+</section>
 
-    <h4>Mobile</h4>
-    {% call foundations.example(palette='light') %}
-      <div class="centered margin-top--4 margin-bottom--4">
-        <img src="{{ '/assets/typography/typography-card-mobile.svg' | url }}" alt="Card typography scale on mobile" style="--inline-img-max-width: 363px;">
-      </div>
-    {%- endcall %}
-{%- endcall %}
+<section>
+  <h2>Interaction states</h2>
+  <p>Since typography can be used in a variety of components, refer to the specific interaction states that are assigned to each <a href="/elements">component</a> for more information</p>
+</section>
 
-{% call foundations.section("Interaction states") -%}
-
-    <p>Since typography can be used in a variety of components, refer to the specific interaction states that are assigned to each <a href="/elements">component</a> for more information</p>
-
-{%- endcall %}
-
-{% feedback %}
+<uxdot-feedback>
   <h2>Foundations</h2>
   <p>To learn how to use our other foundations in your designs, visit the <a href="/foundations">foundations</a> section.</p>
-{% endfeedback %}
+</uxdot-feedback>
