@@ -55,6 +55,12 @@ importElements:
     }
   }
 
+  @container container (min-width: 768px) {
+    .page-personalization-patterns .container .grid {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }  
+
 </style>
 
 
@@ -64,7 +70,7 @@ importElements:
 
   <p>UX personalization patterns are a way for you to introduce targeting into your projects. They are ready-made and contain all the details you need to plug-and-play your concept into an personalization opportunity.</p>
 
-  <div class="grid">
+  <nav class="grid">
     <rh-tile compact bleed>
       <uxdot-example color-palette="dark" slot="image" no-border>
         <img src="{{ '/elements/dialog/screenshot.png' | url }}" alt="Dialog">
@@ -113,7 +119,7 @@ importElements:
       </uxdot-example>
       <a href="#inpage-alert" slot="headline"><h3>In-page alert</h3></a>
     </rh-tile>
-  </div>
+  </nav>
 </section>
 
 <hr>
