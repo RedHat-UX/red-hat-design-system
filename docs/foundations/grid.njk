@@ -4,184 +4,212 @@ title: Grid
 order: 2
 tags:
   - foundations
+importElements: 
+  - rh-table
 ---
 
-{% import 'macros/foundations.njk' as foundations %}
+<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
 
-{% call foundations.section("Overview") -%}
+<style>
+  hr {
+    margin-block: var(--rh-space-4xl, 64px);
+  }
+  
+  .page-grid .container h2 {
+    font-size: var(--rh-font-size-heading-md, 1.75rem);
+  }
 
-    <p>A Grid is a group of columns that organize layouts and allow content to scale responsively based on screen size. They provide structure to pages and ensure optimal viewing experiences.</p>
+  .page-grid .container h3 {
+    font-size: var(--rh-font-size-heading-sm, 1.5rem);
+  }
 
-{%- endcall %}
+</style>
 
-{% call foundations.section("Sample component") -%}
+<section>
+  <h2>Overview</h2>
+  <p>A grid is a group of columns that organize layouts and allow content to scale responsively based on screen size. They provide structure to pages and ensure optimal viewing experiences.</p>
 
-    <div class="inline-flex centered margin-top--4 margin-bottom--4">
-        <img src="{{ '/assets/grid/grid.svg' | url }}" alt="Grid" style="">
-    </div>
+  <h3>Sample component</h3>
+  <uxdot-example variant="full" no-border>  
+    <img src="{{ '/assets/grid/grid.svg' | url }}" alt="Grid">
+  </uxdot-example>
 
-{%- endcall %}
+  <h3>Grid availability</h3>
+  <uxdot-example variant="full" no-border>
+    <uxdot-component-status>
+      {# TODO: Add component status #}
+      (coming soon)
+    </uxdot-component-status>
+  </uxdot-example>
 
-{% call foundations.section("Grid availability") -%}
-    <rhds-component-status component="12-column"></rhds-component-status>
-{%- endcall %}
+  <h3>Style</h3>
+  <uxdot-example variant="full" no-border>
+    <img src="{{ '/assets/grid/grid-style.svg' | url }}" alt="Grid specs">
+  </uxdot-example>
+</section>
 
-{% call foundations.section("Style") -%}
+<hr>
 
-    {% call foundations.example(palette='light') %}
-        <div class="inline-flex centered margin-top--4 margin-bottom--4">
-        <img src="{{ '/assets/grid/grid-style.svg' | url }}" alt="Grid specs" style="--inline-img-max-width: 878px;">
-      </div>
-    {%- endcall %}
+<section>
+  <h2>Usage</h2>
+  <p>Grids are fundamental to how content is organized across various devices and screen sizes.</p>
 
-{%- endcall %}
+  <h3>Columns</h3>
+  <p>The number of columns that a grid contains is determined by the screen size.</p>
 
-<hr class="margin-top--10 margin-bottom--10">
+  <uxdot-example variant="full" no-border alignment="left">
+    <figure>
+      <img src="{{ '/assets/grid/grid-usage-desktop.svg' | url }}" alt="Grid columns on desktop">
+      <figcaption>A grid on large screens contains 12 columns</figcaption>
+    </figure>
+  </uxdot-example>
+  
+  <uxdot-example variant="full" no-border alignment="left" width-adjustment="576px">
+    <figure>
+      <img src="{{ '/assets/grid/grid-usage-mobile.svg' | url }}" alt="Grid columns on mobile">
+      <figcaption>A grid on small screens contains one column</figcaption>
+    </figure>
+  </uxdot-example>
 
-{% call foundations.section("Usage") -%}
+  <h3>Gutters</h3>
+  <p>Gutters are the spaces in between columns, they also change depending on the screen size. Gutters help separate content into layouts based on the amount of columns being used.</p>
 
-    <p>Grids are fundamental to how content is organized across various devices and screen sizes.</p>
+  <div class="grid">
+    <uxdot-example variant="full" no-border>
+      <img src="{{ '/assets/grid/grid-gutters-desktop.svg' | url }}" alt="Grid gutters on desktop">
+    </uxdot-example>
 
-    <h4>Columns</h4>
-    <p>The number of columns that a grid contains is determined by the screen size.</p>
+    <uxdot-example variant="full" no-border alignment="left" width-adjustment="576px">
+      <img src="{{ '/assets/grid/grid-gutters-mobile.svg' | url }}" alt="Grid gutters on mobile">
+    </uxdot-example>
+  </div>
 
-    <div class="inline-flex centered margin-top--4 margin-bottom--4">
-        <img src="{{ '/assets/grid/grid-usage-desktop.svg' | url }}" alt="Grid columns on desktop" style="">
-    </div>
-    <p class="footnote">A grid on large screens contains 12 columns</p>
+  <h3>Margins</h3>
+  <p>Margins are the spaces between a grid and the edges of the screen or window. They can be the same width or larger than gutters, depending on the screen size.</p>
 
-    <div class="margin-top--4 margin-bottom--4">
-        <img src="{{ '/assets/grid/grid-usage-mobile.svg' | url }}" alt="Grid columns on mobile" style="--inline-img-max-width: 576px;">
-      </div>
-      <p class="footnote">A grid on small screens contains one column</p>
+  <h3>Large screens</h3>
+  <p>The grid for large screens features 12 columns, like desktop and tablet. Column, gutter, and margin widths reduce as breakpoints get smaller.</p>
 
-    <h4>Gutters</h4>
-    <p>Gutters are the spaces in between columns, they also change depending on the screen size. Gutters help separate content into layouts based on the amount of columns being used.</p>
+  <uxdot-example variant="full" no-border>
+    <img src="{{ '/assets/grid/grid-margins-desktop.svg' | url }}" alt="Grid margins on desktop">
+  </uxdot-example>
 
-    <div class="margin-top--4 margin-bottom--4">
-        <img src="{{ '/assets/grid/grid-gutters-desktop.svg' | url }}" alt="Grid gutters on desktop" style="">
-    </div>
+  <h3>Small screens</h3>
+  <p>The grid for small screens features one column. In rare cases, content on small screens can sometimes be arranged in two columns.</p>
 
-    <div class="margin-top--4 margin-bottom--4">
-        <img src="{{ '/assets/grid/grid-gutters-mobile.svg' | url }}" alt="Grid gutters on mobile" style="--inline-img-max-width: 576px;">
-    </div>
+  <uxdot-example variant="full" no-border alignment="left" width-adjustment="576px">
+    <img src="{{ '/assets/grid/grid-margins-mobile.svg' | url }}" alt="Grid margins on mobile">
+  </uxdot-example>
 
-    <h4>Margins</h4>
-    <p>Margins are the spaces between a grid and the edges of the screen or window. They can be the same width or larger than gutters, depending on the screen size.</p>
+</section>
 
-    <h4>Large screens</h4>
-    <p>The grid for large screens features 12 columns, like desktop and tablet. Column, gutter, and margin widths reduce as breakpoints get smaller.</p>
+<hr>
 
-    <div class="margin-top--4 margin-bottom--4">
-        <img src="{{ '/assets/grid/grid-margins-desktop.svg' | url }}" alt="Grid margins on desktop" style="">
-    </div>
+<section>
+  <h2>Best practices</h2>
+  <p>Don’t align every component to the grid, doing so might compromise the design of individual elements.</p>
 
-    <h4>Small screens</h4>
-    <p>The grid for small screens features one column. In rare cases, content on small screens can sometimes be arranged in two columns.</p>
+  <uxdot-example variant="full" no-border alignment="left">
+    <figure>
+      <img src="{{ '/assets/grid/grid-best-practices-1.svg' | url }}" alt="Grid content outside of grid">
+      <figcaption>18px or larger text shouldn't exceed eight columns to maintain optimal readability.</figcaption>
+    </figure>
+  </uxdot-example>
 
-    <div class="margin-top--4 margin-bottom--4">
-        <img src="{{ '/assets/grid/grid-margins-mobile.svg' | url }}" alt="Grid margins on mobile" style="--inline-img-max-width: 576px;">
-    </div>
+  
+  <uxdot-example variant="full" no-border>
+    <img src="{{ '/assets/grid/grid-best-practices-2.svg' | url }}" alt="Grid alignment issues">
+  </uxdot-example>
+</section>
 
-{%- endcall %}
+<hr>
 
-<hr class="margin-top--10 margin-bottom--10">
+<section>
+  <h2>Responsive design</h2>
+  <p>Grids are designed to be responsive, meaning they adapt to different screen sizes and orientations.</p>
 
+  <h3>Large screens</h3>
+  <p>The grid for large screens features 12 columns, like desktop and tablet. Column, gutter, and margin widths reduce as breakpoints get smaller.</p>
 
-{% call foundations.section("Best practices") -%}
+  <uxdot-example variant="full" no-border>
+    <img src="{{ '/assets/grid/grid-responsive-1.svg' | url }}" alt="Example of responsive grid on large screen">
+  </uxdot-example>
 
-    <p>Don’t align every component to the grid, doing so might compromise the design of individual elements.</p>
-    {% call foundations.example(palette='wrong') %}
-        <div class="centered margin-top--4 margin-bottom--4">
-            <img src="{{ '/assets/grid/grid-best-practices-1.svg' | url }}" alt="Grid content outside of grid" style="--inline-img-max-width: 872px;">
-        </div>
-    {%- endcall %}
+  <uxdot-example variant="full" no-border>
+    <img src="{{ '/assets/grid/grid-responsive-2.svg' | url }}" alt="Example of responsive grid on smaller screen">
+  </uxdot-example>
 
-    <p>18px or larger text shouldn't exceed eight columns to maintain optimal readability.</p>
-    {% call foundations.example(palette='wrong') %}
-        <div class="centered margin-top--4 margin-bottom--4">
-            <img src="{{ '/assets/grid/grid-best-practices-2.svg' | url }}" alt="Grid alignment issues" style="--inline-img-max-width: 872px;">
-        </div>
-    {%- endcall %}
+  <h3>Small screens</h3>
+  <p>The grid for small screens features one column. In rare cases, content on small screens can sometimes be arranged in two columns.</p>
 
-{%- endcall %}
+  <uxdot-example variant="full" no-border alignment="left" width-adjustment="576px">
+    <img src="{{ '/assets/grid/grid-responsive-3.svg' | url }}" alt="Example of responsive grid on large screen">
+  </uxdot-example>
 
+  <uxdot-example variant="full" no-border alignment="left" width-adjustment="360px">
+    <img src="{{ '/assets/grid/grid-responsive-4.svg' | url }}" alt="Example of responsive grid on smaller screen">
+  </uxdot-example>
+</section>
 
-{% call foundations.section("Responsive design") -%}
-<h4>Large screens</h4>
-<p>The grid for large screens features 12 columns, like desktop and tablet. Column, gutter, and margin widths reduce as breakpoints get smaller.</p>
-<img src="{{ '/assets/grid/grid-responsive-1.svg' | url }}" alt="Example of responsive grid on large screen">
+<hr>
 
-<img class="margin-top--4" src="{{ '/assets/grid/grid-responsive-2.svg' | url }}" alt="Example of responsive grid on smaller screen">
+<section>
+  <h2>Breakpoints</h2>
+  <p>A breakpoint is a predetermined screen size that has specific layout requirements. When breakpoints change, content will shift around to fit the adjusted layout.</p>
 
-<h4>Small screens</h4>
-<p>The grid for small screens features one column. In rare cases, content on small screens can sometimes be arranged in two columns.</p>
+  <rh-table>
+    <table>
+      <thead>
+        <tr>
+          <th scope="col" data-label="Breakpoint name">Breakpoint name</th>
+          <th scope="col" data-label="Size range">Size range</th>
+          <th scope="col" data-label="Columns">Columns</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Breakpoint name">Desktop, large</td>
+          <td data-label="Size range">1680px</td>
+          <td data-label="Columns">12</td>
+        </tr>
+        <tr>
+          <td data-label="Breakpoint name">Desktop, medium</td>
+          <td data-label="Size range">1440px</td>
+          <td data-label="Columns">12</td>
+        </tr>
+          <tr>
+          <td data-label="Breakpoint name">Desktop, small</td>
+          <td data-label="Size range">1200px - 1439px</td>
+          <td data-label="Columns">12</td>
+        </tr>
+        <tr>
+          <td data-label="Breakpoint name">Tablet, large</td>
+          <td data-label="Size range">992px - 1199px</td>
+          <td data-label="Columns">12</td>
+        </tr>
+        <tr>
+          <td data-label="Breakpoint name">Tablet, small</td>
+          <td data-label="Size range">768px - 991px</td>
+          <td data-label="Columns">12</td>
+        </tr>
+        <tr>
+          <td data-label="Breakpoint name">Mobile, large</td>
+          <td data-label="Size range">576px - 767px</td>
+          <td data-label="Columns">2</td>
+        </tr>
+        <tr>
+          <td data-label="Breakpoint name">Mobile, small</td>
+          <td data-label="Size range">0px</td>
+          <td data-label="Columns">1</td>
+        </tr>
+      </tbody>
+    </table>    
+  </rh-table>
+</section>
 
-<img src="{{ '/assets/grid/grid-responsive-3.svg' | url }}" alt="Example of responsive grid on large screen" style="--inline-img-max-width: 576px;"><br>
-
-<img class="margin-top--4" src="{{ '/assets/grid/grid-responsive-4.svg' | url }}" alt="Example of responsive grid on smaller screen" style="--inline-img-max-width: 360px;">
-
-{%- endcall %}
-
-
-{% call foundations.section("Breakpoints") -%}
-
-    <p>A breakpoint is a predetermined screen size that has specific layout requirements. When breakpoints change, content will shift around to fit the adjusted layout.</p>
-
-    <section class="section">
-        <table width="100%;">
-            <thead>
-                <tr>
-                    <th>Breakpoint name</th>
-                    <th>Size range</th>
-                    <th>Columns</th>
-                </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>Desktop, large</td>
-                <td>1680px</td>
-                <td>12</td>
-            </tr>
-            <tr>
-                <td>Desktop, medium</td>
-                <td>1440px</td>
-                <td>12</td>
-            </tr>
-            <tr>
-                <td>Desktop, small</td>
-                <td>1200px - 1439px</td>
-                <td>12</td>
-            </tr>
-            <tr>
-                <td>Tablet, large</td>
-                <td>992px - 1199px</td>
-                <td>12</td>
-            </tr>
-            <tr>
-                <td>Tablet, small</td>
-                <td>768px - 991px</td>
-                <td>12</td>
-            </tr>
-            <tr>
-                <td>Mobile, large</td>
-                <td>576px - 767px</td>
-                <td>2</td>
-            </tr>
-            <tr>
-                <td>Mobile, small</td>
-                <td>0px</td>
-                <td>1</td>
-            </tr>
-            </tbody>
-        </table>
-    </section>
-
-{%- endcall %}
-
-{% feedback %}
+<uxdot-feedback>
   <h2>Foundations</h2>
   <p>To learn how to use our other foundations in your designs, visit the <a href="/foundations">foundations</a> section.</p>
-{% endfeedback %}
+</uxdot-feedback>
 
 
