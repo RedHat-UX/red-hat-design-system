@@ -19,19 +19,43 @@ class UxdotExample extends LitElement {
       justify-content: center;
       border-width: var(--rh-border-width-sm, 1px);
       border-style: solid;
-      border-color: transparent;
+      border-color: var(--_border-color, transparent);
       border-radius: var(--rh-border-radius-default, 3px);
+      background-color: var(--_background, var(--rh-color-surface-lightest, #ffffff));
     }
 
     #container:is(.light, .lighter, .lightest) {
-      background-color: var(--rh-color-surface-lightest, #ffffff);
-      border-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
+      --_border-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
 
     #container:is(.dark, .darker, .darkest) {
-      background-color: var(--rh-color-surface-dark, #383838);
-      border-color: var(--rh-color-border-subtle-on-dark, #707070);
+      --_border-color: var(--rh-color-border-subtle-on-dark, #707070);
     }
+
+    .light {
+      --_background: var(--rh-color-surface-light, #e0e0e0);
+    }
+
+    .lighter {
+      --_background: var(--rh-color-surface-lighter, #f2f2f2);
+    }
+
+    .lightest {
+      --_background: var(--rh-color-surface-lightest, #ffffff);
+    }
+
+    .dark {
+      --_background: var(--rh-color-surface-dark, #383838);
+    }
+
+    .darker {
+      --_background: var(--rh-color-surface-darker, #1f1f1f);
+    }
+
+    .darkest {
+      --_background: var(--rh-color-surface-darkest, #000000);
+    }
+
 
     ::slotted(*) {
       display: flex;
@@ -85,14 +109,14 @@ class UxdotExample extends LitElement {
   constructor() {
     super();
     this.headingLevel = 3;
-    this.colorPalette = 'light';
+    this.colorPalette = 'lightest';
     this.width = '100%';
     this.alignment = 'center';
   }
 
   render() {
     const classes = {
-      [this.colorPalette]: true,
+      [this.colorPalette]: true ?? 'lightest',
     };
     return html`
       <div id="container" part="container" class="${classMap(classes)}" style="--_width: ${this.width}; --_alignment: ${this.alignment}">
