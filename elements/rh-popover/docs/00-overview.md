@@ -3,7 +3,7 @@
   information or provides resources via text and links.
 
 
-## Sample component
+## Sample element
   ![Popover component sample]({{ './popover-sample-component.svg' 
   | url }}){style="--inline-img-max-width:424px;"}
 

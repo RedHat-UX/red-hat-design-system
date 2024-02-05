@@ -45,6 +45,10 @@ export class RhNavigationSecondaryDropdown extends LitElement {
 
   #logger = new Logger(this);
 
+  #highlight = false;
+
+  #mo = new MutationObserver(this.#mutationsCallback.bind(this));
+
   @query('#container') _container?: HTMLElement;
 
   @observed
@@ -70,10 +74,13 @@ export class RhNavigationSecondaryDropdown extends LitElement {
     link.setAttribute('aria-expanded', 'false');
     link.setAttribute('aria-controls', menu.id);
     link.addEventListener('click', this._clickHandler);
+
+    this.#mo.observe(this, { attributeFilter: ['aria-current'], childList: true, subtree: true });
+    this.#mutationsCallback();
   }
 
   render() {
-    const classes = { 'expanded': this.expanded };
+    const classes = { 'expanded': this.expanded, 'highlight': this.#highlight };
 
     return html`
       <div id="container" part="container" class="${classMap(classes)}">
@@ -135,6 +142,12 @@ export class RhNavigationSecondaryDropdown extends LitElement {
     // The RhNavigationSecondaryMenu could possibly become a sub component of the abstraction instead.
     const menu = this.#slots.getSlotted('menu').find(child => child instanceof RhNavigationSecondaryMenu) as RhNavigationSecondaryMenu;
     menu.visible = false;
+  }
+
+  async #mutationsCallback(): Promise<void> {
+    const [menu] = this.#slots.getSlotted<HTMLElement>('menu');
+    this.#highlight = menu.querySelector('[aria-current="page"]') ? true : false;
+    this.requestUpdate();
   }
 }
 

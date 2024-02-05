@@ -25,10 +25,10 @@ DEFAULT_AVATARS.saturated = DEFAULT_AVATARS.dark;
 /**
  * An avatar is a small thumbnail representation of a user.
  *
- * @summary  An avatar is a small thumbnail representation of a user.
+ * @summary Visually represents a user in a masthead or navigation
  *
- * @slot name     - The subject's name
- * @slot subtitle - auxiliary information about the subject, e.g. job title
+ * @slot                                                  - The subject's name
+ * @slot subtitle                                         - auxiliary information about the subject, e.g. job title
  * @cssprop {<color>+} --rh-avatar-colors                 - List of colors to use when generating avatars
  * @cssprop {<length>} --rh-avatar-size                   - Size of the avatar, {@default 64px}
  */

@@ -11,12 +11,52 @@ We are continually making changes in order to improve and grow the Red Hat Desig
 <nav class="releases-links">
   <rh-block id="changelog-block">
     <a href="https://github.com/RedHat-UX/red-hat-design-system/releases">
-      <h2>Changelog</h2>
+      Changelog
     </a>
   </rh-block>
 </nav>
 
 <section class="release-versions">
+<section class="section release-version">
+
+## Version 1.3.0
+Released January 11, 2024
+
+### Highlights
+
+| Change                         | Notes {style="width: 70%" } |
+| ------------------------------ | --------------------------------- |
+| Added `<rh-surface>`           | a content container that provides accessible background and font color theming for its child elements. |
+| Updated to `RH Tokens 2.0`     | Uses RHDS Tokens version 2.0. [See release notes](https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.3.0) for important info regarding this update. |
+| Updated `<rh-tabs-panel>`      | Tab Panels can now have their margin and padding overridden. |
+| Updated `<rh-pagination>`      | Added `numeric` CSS shadow part. |
+| Added `accessible-label` to `<rh-tile>` | Tile's form control labels can now be customized. |
+| Fixed `<rh-tile>` radio and checkboxes | Radio and checkbox tiles now submit their values in `<form>` elements. |
+
+<rh-cta><a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.3.0">View version 1.3 release notes</a></rh-cta>
+
+</section>
+<section class="section release-version">
+
+## Version 1.2.0
+Released October 16, 2023
+
+### Highlights
+
+| Change                         | Notes {style="width: 70%" } |
+| ------------------------------ | --------------------------------- |
+| Added `<rh-table>`             | A table is a container for displaying information. It allows a user to scan, examine, and compare large amounts of data. |
+| Added `<rh-tile>`              | A tile is a flexible layout with a clickable and contained surface. |
+| Added `<rh-timestamp>`         | Provides consistent formats for displaying date and time values. |
+| Added `<rh-navigation-secondary>` current page indicator support | Updated support for a current page indicator using `aria-current="page"`. |
+| Improved keyboard navigation on `<rh-navigation-secondary>` | Secondary Navigation now has improved keyboard navigation. |
+| Fixed `<rh-card>` `header` slot | Card's header slot now displays items vertically instead of stacking, allowing for more than one item to display in the header. |
+| Fixed `<rh-cta>` `brick` variant | Brick variants of calls to action (CTAs) are now full width. |
+
+
+<rh-cta><a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.2.0">View version 1.2 release notes</a></rh-cta>
+
+</section>
 <section class="section release-version">
 
 ## Version 1.1.0

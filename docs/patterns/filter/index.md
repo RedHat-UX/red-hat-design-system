@@ -8,7 +8,7 @@ tags:
 
 A Filter gives users the ability to sort a results listing by turning on and off predetermined tags. They feature a list of checkboxes and text that are wrapped in an accordion or a disclosure.
 
-## Sample Component
+## Sample pattern
 
 <div class="multi-column--300-wide"><div>
     {% example palette="none",

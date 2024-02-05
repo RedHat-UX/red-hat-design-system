@@ -7,7 +7,7 @@
           alt=" A black tooltip on top of a gray disabled button",
           src="./tooltip-sample-element.png" %}
 
-## Sample component
+## Sample element
   <p>
     <rh-tooltip position="top">
       <rh-button>Top Tooltip</rh-button>

@@ -22,7 +22,7 @@ import { RhAudioPlayerSubscribe } from './rh-audio-player-subscribe.js';
 import { RhTranscript } from './rh-transcript.js';
 import { RhAudioPlayerScrollingTextOverflow } from './rh-audio-player-scrolling-text-overflow.js';
 
-import buttonStyles from './rh-audio-player-button-styles.css';
+import buttonStyles from './rh-audio-player-button.css';
 import rangeStyles from './rh-audio-player-range-styles.css';
 import styles from './rh-audio-player.css';
 import { RhTooltip } from '../rh-tooltip/rh-tooltip.js';
@@ -459,7 +459,7 @@ export class RhAudioPlayer extends LitElement {
     const accentColor = !!this.#styles?.getPropertyValue('--rh-audio-player-background-color');
 
     return html`
-      <rh-context-provider id="container"
+      <rh-surface id="container"
           color-palette="${ifDefined(this.colorPalette)}"
           class="${classMap({
               [on]: !!on,
@@ -618,7 +618,7 @@ export class RhAudioPlayer extends LitElement {
             <button id="close"
                     aria-label="${this.#translation.get('close')}"
                     class="toolbar-button"
-                    ?disabled=${!this.#mediaElement}
+                    ?disabled="${!this.#mediaElement}"
                     aria-controls="panel"
                     @click="${this.#selectOpenPanel}"
                     @keydown="${this.#onCloseKeydown}">
@@ -649,7 +649,7 @@ export class RhAudioPlayer extends LitElement {
                 @transcriptdownload=${this.#onTranscriptDownload}>
           </slot>
         </div>
-      </rh-context-provider>
+      </rh-surface>
     `;
   }
 

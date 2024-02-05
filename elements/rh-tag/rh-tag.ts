@@ -1,31 +1,31 @@
-import { html } from 'lit';
+import { html, LitElement } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
-import { BaseLabel } from '@patternfly/elements/pf-label/BaseLabel.js';
+import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
 import '@patternfly/elements/pf-icon/pf-icon.js';
 
 import styles from './rh-tag.css';
 
-export type TagColor = (
-  | 'blue'
-  | 'cyan'
-  | 'green'
-  | 'orange'
-  | 'purple'
-  | 'red'
-  | 'grey'
-)
-
-
 /**
  * A tag is a caption added to an element for better clarity and user convenience.
  *
  * @summary  Highlights an element to add clarity or draw attention
+ *
+ * @fires close - when a removable label's close button is clicked
+ *
+ * @slot icon
+ *       Contains the labels's icon, e.g. web-icon-alert-success.
+ *
+ * @slot
+ *       Must contain the text for the label.
+ *
+ * @csspart icon - container for the label icon
+ *
  * @cssprop  {<length>} --rh-tag-margin-inline-end
  *           The margin at the end of the direction parallel to the flow of the text.
  *           {@default 4px}
@@ -45,7 +45,7 @@ export type TagColor = (
  *
  */
 @customElement('rh-tag')
-export class RhTag extends BaseLabel {
+export class RhTag extends LitElement {
   static readonly styles = [styles];
 
   /** The icon to display in the label. */
@@ -55,31 +55,34 @@ export class RhTag extends BaseLabel {
   @property() variant?: 'filled' | 'outline' = 'filled';
 
   /** The color of the label. */
-  @property() color?: TagColor;
+  @property() color?: 'blue' | 'cyan' | 'green' | 'orange' | 'purple' | 'red' | 'grey';
 
   @colorContextConsumer() private on?: ColorTheme;
 
-  /**
-   * RhIcon does not yet exist, so we are using pfe-icon until available
-   * <rh-icon ?hidden=${!this.icon} icon=${this.icon} set="${this.set}" size="sm"></rh-icon>
-   */
-  protected renderDefaultIcon() {
-    return !this.icon ? '' : html`
-      <pf-icon ?hidden=${!this.icon} icon="${this.icon}"></pf-icon>
-    `;
-  }
+  /** Represents the state of the anonymous and icon slots */
+  #slots = new SlotController(this, 'icon', null);
 
   override render() {
-    const { on = '' } = this;
+    const { variant, color, icon, on = '' } = this;
+    const hasIcon = !!icon || this.#slots.hasSlotted('icon');
     return html`
-      <span class="${classMap({ [on]: !!on })}">${super.render()}</span>
+      <span id="container"
+            class="${classMap({
+              hasIcon,
+              [on]: !!on,
+              [variant ?? '']: !!variant,
+              [color ?? '']: !!color })}">
+        <slot name="icon" part="icon">
+          <pf-icon ?hidden="${!icon}"
+                   .icon="${icon || undefined as unknown as string}"></pf-icon>
+        </slot>
+        <slot id="text"></slot>
+      </span>
     `;
   }
-
-  protected renderSuffix() {
-    return html``;
-  }
 }
+
+export type TagColor = RhTag['color'];
 
 declare global {
   interface HTMLElementTagNameMap {
