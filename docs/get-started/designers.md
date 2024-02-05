@@ -24,18 +24,6 @@ importElements:
     margin-block-start: var(--rh-space-2xl, 32px);
   }  
 
-  .page-designers .container h2 {
-    font-size: var(--rh-font-size-heading-md, 1.75rem);
-  }
-
-  .page-designers .container h3 {
-    font-size: var(--rh-font-size-heading-sm, 1.5rem);
-  }
-
-  .page-designers .container :is(h2, h3) {
-     font-weight: var(--rh-font-weight-heading-medium, 500);
-  }
-
   .page-designers .container ul {
     font-size: var(--rh-font-size-body-text-lg, 1.125rem);
     margin-block-end: var(--rh-space-2xl, 32px);

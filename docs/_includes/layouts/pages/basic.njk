@@ -34,6 +34,23 @@ importElements:
     container-name: container;
   }
 
+  .container h2 {
+    font-size: var(--rh-font-size-heading-md, 1.75rem);
+  }
+
+  .container h3 {
+    font-size: var(--rh-font-size-heading-sm, 1.5rem);
+  }
+
+  .container h4 {
+    font-size: var(--rh-font-size-heading-xs, 1.25rem);
+  }
+
+  .container :is(h2, h3, h3) {
+    font-weight: var(--rh-font-weight-heading-medium, 500);
+    margin-block: 1em;
+  }
+
   aside {
     grid-area: toc;
     padding-inline: var(--rh-space-lg, 16px);
