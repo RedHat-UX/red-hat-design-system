@@ -10,8 +10,16 @@ importElements:
 
 <link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css' | url }}">
 
+{# 
+TODO: document the need for each nav item to have an id on the header or 
+the js that runs and adds these casuses the nav to break 
+#}
 
 <style>
+  hr {
+    margin-block: var(--rh-space-4xl, 64px);
+  }
+
   .page-personalization-patterns .container h2 {
     font-size: var(--rh-font-size-heading-md, 1.75rem);
   }
@@ -78,46 +86,53 @@ importElements:
       <a href="#dialog" slot="headline"><h3>Dialog</h3></a>
     </rh-tile>
 
-    <rh-tile compact bleed>      
+    <rh-tile compact bleed>
       <uxdot-example slot="image" no-border>
         <img src="{{ '/assets/patterns/all-patterns-sticky-banner.png' | url }}" alt="Sticky banner">
       </uxdot-example>
-      <a href="#sticky-banner" slot="headline"><h3>Sticky banner</h3></a>
+      <a href="#sticky-banner" slot="headline"><h3 id="nav-1">Sticky banner</h3></a>
     </rh-tile>
 
     <rh-tile compact bleed>
       <uxdot-example slot="image" no-border>
         <img src="{{ '/assets/patterns/all-patterns-sticky-card.png' | url }}" alt="Sticky card">
       </uxdot-example>
-      <a href="#sticky-card" slot="headline"><h3>Sticky card</h3></a>
+      <a href="#sticky-card" slot="headline"><h3 id="nav-2">Sticky card</h3></a>
     </rh-tile>
 
     <rh-tile compact bleed>
       <uxdot-example slot="image" no-border color-palette="lighter">
         <img src="{{ '/assets/patterns/all-patterns-announcement.png' | url }}" alt="Announcement">
       </uxdot-example>
-      <a href="#announcement" slot="headline"><h3>Announcement</h3></a>
+      <a href="#announcement" slot="headline"><h3 id="nav-3">Announcement</h3></a>
     </rh-tile>
   
     <rh-tile compact bleed>
       <uxdot-example slot="image" no-border>
         <img src="{{ '/elements/card/screenshot.svg' | url }}" alt="Card">
       </uxdot-example>
-      <a href="#inpage-card" slot="headline"><h3>In-page card</h3></a>
+      <a href="#in-page-card" slot="headline"><h3 id="nav-4">In-page card</h3></a>
     </rh-tile>
   
     <rh-tile compact bleed>
       <uxdot-example slot="image" no-border>
         <img src="{{ '/elements/tabs/screenshot.png' | url }}" alt="Tabs">
       </uxdot-example>
-      <a href="#active-tab" slot="headline"><h3>Active tab</h3></a>
+      <a href="#active-tab" slot="headline"><h3 id="nav-5">Active tab</h3></a>
     </rh-tile>
 
     <rh-tile compact bleed>
       <uxdot-example slot="image" no-border>
         <img src="{{ '/elements/alert/screenshot.svg' | url }}" alt="Alert">
       </uxdot-example>
-      <a href="#inpage-alert" slot="headline"><h3>In-page alert</h3></a>
+      <a href="#inline-alert" slot="headline"><h3 id="nav-6">In-page alert</h3></a>
+    </rh-tile>
+
+    <rh-tile compact bleed>
+      <uxdot-example slot="image" no-border>
+        {# TODO: Add a custom pattern image #}
+      </uxdot-example>      
+      <a href="#custom-patterns" slot="headline"><h3 id="nav-7">Custom patterns</h3></a>
     </rh-tile>
   </nav>
 </section>
@@ -140,7 +155,7 @@ importElements:
   </ul>
 </section>
 
-<hr>
+<hr id="dialog">
 
 <section>
   <h2> Pattern 1: Dialog</h2>
@@ -172,7 +187,7 @@ importElements:
   </ul>
 </section>
 
-<hr>
+<hr id="sticky-banner">
 
 <section>
   <h2>Pattern 2: Sticky banner</h2>
@@ -207,7 +222,7 @@ importElements:
   </ul>
 </section>
 
-<hr>
+<hr id="sticky-card">
 
 <section>
   <h2>Pattern 3: Sticky card</h2>
@@ -251,7 +266,7 @@ importElements:
   </ul>
 </section>
 
-<hr>
+<hr id="announcement">
 
 <section>
   <h2>Pattern 4: Announcement</h2>
@@ -280,7 +295,7 @@ importElements:
   </ul>
 </section>
 
-<hr>
+<hr id="in-page-card">
 
 <section>
   <h2>Pattern 5: In-page card</h2>
@@ -316,7 +331,7 @@ importElements:
   <p>An in-page card should be relevant to the context of the page a user is currently on.</p>
 </section>
 
-<hr>
+<hr id="active-tab">
 
 <section>
   <h2>Pattern 6: Active tab</h2>
@@ -347,7 +362,7 @@ importElements:
   </ul>
 </section>
 
-<hr>
+<hr id="inline-alert">
 
 <section>
   <h2>Pattern 7: Inline alert</h2>
@@ -374,7 +389,7 @@ importElements:
   <p>An inline alert can be displayed to any appropriate audience group.</p>
 </section>
 
-<hr>
+<hr id="custom-patterns">
 
 <section>
   <h2>Custom patterns</h2>
