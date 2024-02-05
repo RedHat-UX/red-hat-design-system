@@ -3,9 +3,9 @@ rh-cta:not(:defined) {
   display: inline-flex !important;
   color: var(--rh-cta-color);
   font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-  font-size: var(--rh-font-size-text-xl, 1.125rem);
-  font-weight: var(--rh-font-weight-bold, 600);
-  line-height: var(--rh-line-height-lg, 1.5);
+  font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+  font-weight: 600; /* WARNING: not a token value */
+  line-height: var(--rh-line-height-body-text, 1.5);
   background-color: var(--rh-cta-background-color);
   border-color: var(--rh-cta-border-color, transparent);
   border-radius: var(--rh-border-radius-default, 3px);
@@ -15,7 +15,7 @@ rh-cta:not(:defined) {
 rh-cta:not(:defined, [variant]) {
   --rh-cta-background-color: transparent;
   --rh-cta-border-color: transparent;
-  --rh-cta-color: var(--rh-color-interactive-blue, #0066cc);
+  --rh-cta-color: var(--rh-color-interactive-blue-darker, #0066cc);
   --rh-cta-hover-background-color: transparent;
   --rh-cta-hover-border-color: transparent;
   --rh-cta-hover-inner-border-color: transparent;
@@ -53,8 +53,10 @@ rh-cta[color-palette^="dark"]:not(:defined, [variant]) {
 rh-cta:not(:defined):focus-within {
   border-color: var(--rh-cta-focus-border-color);
   background-color:
-    var(--rh-cta-focus-container-background-color,
-      var(--rh-cta-focus-background-color));
+    var(
+      --rh-cta-focus-container-background-color,
+      var(--rh-cta-focus-background-color)
+    );
 
   --rh-cta-color: var(--rh-cta-focus-color);
   --rh-cta-text-decoration: var(--rh-cta-focus-text-decoration);
@@ -111,7 +113,6 @@ rh-cta[variant="secondary"]:not(:defined) {
   --rh-cta-active-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --rh-cta-active-background-color: var(--rh-color-border-strong-on-light, #151515);
   --rh-cta-active-inner-border-color: var(--rh-color-surface-light, #e0e0e0);
-  ;
 }
 
 [data-rh-them^="dark"] rh-cta[variant="secondary"]:not(:defined),
@@ -195,7 +196,7 @@ rh-cta[variant$="ary"]:not(:defined) * {
 }
 
 rh-cta[variant="primary"]:not(:defined) *:focus {
-  outline:
+  outline: 
     var(--rh-border-width-sm, 1px) solid var(--rh-color-text-primary-on-dark, #ffffff) !important;
   outline-offset: -2px;
 }
