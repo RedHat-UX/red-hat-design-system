@@ -18,12 +18,15 @@
 
   const dialog = document.querySelector('rh-dialog');
   dialog.addEventListener('close', () => {
+    // @ts-ignore
     console.log('Dialog closed');
   });
   dialog.addEventListener('open', () => {
+    // @ts-ignore
     console.log('Dialog opened');
   });
   dialog.addEventListener('cancel', () => {
+    // @ts-ignore
     console.log('Dialog canceled');
   });
 </script>
