@@ -41,12 +41,16 @@ async function pauseYoutube(iframe: HTMLIFrameElement) {
 }
 
 function openChanged(this: RhDialog, oldValue: unknown) {
-  if (this.type === 'video' && oldValue === true && this.open === false) {
-    this.querySelector('video')?.pause?.();
-    const iframe = this.querySelector('iframe');
-    if (iframe?.src.match(/youtube/)) {
-      pauseYoutube(iframe);
+  if (this.type === 'video') {
+    if (oldValue === true && this.open === false) {
+      this.querySelector('video')?.pause?.();
+      const iframe = this.querySelector('iframe');
+      if (iframe?.src.match(/youtube/)) {
+        pauseYoutube(iframe);
+      }
     }
+  } else if (typeof oldValue === 'boolean' || typeof oldValue === 'undefined') {
+    this._openChanged(oldValue, this.open);
   }
 }
 
