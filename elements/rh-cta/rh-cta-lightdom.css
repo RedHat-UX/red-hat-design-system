@@ -196,6 +196,10 @@ rh-cta[variant$="ary"]:not(:defined) * {
 }
 
 rh-cta[variant="primary"]:not(:defined) *:focus {
-  outline: var(--rh-border-width-sm, 1px) solid var(--rh-color-text-primary-on-dark, #ffffff) !important;
+  outline: var(
+      --rh-border-width-sm, 1px
+    ) solid var(
+      --rh-color-text-primary-on-dark, #ffffff
+    ) !important;
   outline-offset: -2px;
 }
