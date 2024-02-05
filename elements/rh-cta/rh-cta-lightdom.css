@@ -180,7 +180,6 @@ rh-cta:not(:defined) * {
   font-size: inherit !important;
   font-weight: inherit !important;
   line-height: inherit !important;
-  padding: var(--rh-space-lg, 16px) 0 !important;
 }
 
 rh-cta:not(:defined) *:focus {
