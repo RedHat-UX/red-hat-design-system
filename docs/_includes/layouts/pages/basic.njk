@@ -4,6 +4,7 @@ importElements:
   - rh-cta
   - rh-footer
   - rh-alert
+  - rh-subnav
 ---
 
 <script type="module" src="{{ '/assets/elements/uxdot-feedback.js' | url }}"></script>
@@ -34,19 +35,32 @@ importElements:
     container-name: container;
   }
 
-  .container h2 {
-    font-size: var(--rh-font-size-heading-md, 1.75rem);
+  .container h2,
+  uxdot-copy-permalink h2 {
+    font-size: var(--rh-font-size-heading-md, 1.75rem) !important;
   }
 
-  .container h3 {
-    font-size: var(--rh-font-size-heading-sm, 1.5rem);
+  .container h3,
+  uxdot-copy-permalink h3 {
+    font-size: var(--rh-font-size-heading-sm, 1.5rem) !important;
   }
 
-  .container h4 {
-    font-size: var(--rh-font-size-heading-xs, 1.25rem);
+  .container h4,
+  uxdot-copy-permalink h4 {
+    font-size: var(--rh-font-size-heading-xs, 1.25rem) !important;
   }
 
-  .container :is(h2, h3, h3) {
+  .container h5,
+  uxdot-copy-permalink h5 {
+    font-size: var(--rh-font-size-heading-xs, 1.125rem) !important;
+  }
+
+  .container h6,
+  uxdot-copy-permalink h6 {
+    font-size: var(--rh-font-size-heading-xs, 1rem) !important;
+  }  
+
+  .container :is(h2, h3, h3, h4, h5, h6) {
     font-weight: var(--rh-font-weight-heading-medium, 500);
     margin-block: 1em;
   }
@@ -95,8 +109,15 @@ importElements:
 {% include 'component/sidenav.njk' %}
 <main>
   <article>
-    <uxdot-header>
+    <uxdot-header class="{% if subnav !== null %}hasSubnav{% endif %}">
       <h1 id="{{ title | slug }}" class="page-title">{{ title }}</h1>
+      {% if subnav !== null %}
+        <rh-subnav slot="subnav">{% for tab in collections[subnav.collection] %}
+          <a {{ 'active' if tab.url == page.url }} href="{{ tab.url }}">
+            {{ tab.data.title }}
+          </a>{% endfor %}
+        </rh-subnav>
+      {% endif %}
     </uxdot-header>
     
     {% if hasToc %}
