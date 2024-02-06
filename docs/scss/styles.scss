@@ -87,7 +87,8 @@ body.token-docs copy-permalink.h2 + copy-permalink.h3 {
   margin-block-start: var(--rh-space-2xl, 32px);
 }
 
-a.vpn:after {
+:not(rh-cta) a[href^="https://red.ht/"]:after,
+:not(rh-cta) a[href^="https://url.corp.redhat.com/"]:after {
   content: "";
   display: inline-block;
   width: 1em;
