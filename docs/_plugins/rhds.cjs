@@ -146,7 +146,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
         const modifiedAliases = { ...aliases };
         for (const key in aliases) {
           if (Object.prototype.hasOwnProperty.call(modifiedAliases, key)) {
-            aliases[key] = slugify(modifiedAliases[key], { strict: true, lower: true });
+            modifiedAliases[key] = slugify(modifiedAliases[key], { strict: true, lower: true });
           }
         }
         // does the tagName exist in the aliases object?
