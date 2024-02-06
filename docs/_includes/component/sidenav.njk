@@ -21,7 +21,7 @@
             <summary>{{ link.title }}</summary>
             <uxdot-sidenav-dropdown-menu>
               <ul>
-                {% if link.title === "Elements" %}
+                {% if link.collection === "elementDocs" %}
                   <li>
                     <uxdot-sidenav-dropdown-menu-item {{ 'active' if active }}>
                       <a href="{{ '/elements/' | url }}">All elements</a>
@@ -41,6 +41,14 @@
                     {% endif %}
                   {%- endfor -%}
                 {% else %}
+                  {% if link.collection === 'token' %}
+                    {%- set active = link.url === "/tokens" %}
+                    <li>
+                      <uxdot-sidenav-dropdown-menu-item {{ 'active' if active }}>
+                        <a href="/tokens/">Overview</a>
+                      </uxdot-sidenav-dropdown-menu-item>
+                    </li>
+                  {% endif %}
                   {%- for sublink in collections[link.collection] -%}
                     {%- set active = sublink.url === page.url -%}
                     <li>
