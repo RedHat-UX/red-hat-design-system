@@ -42,7 +42,7 @@
                   {%- endfor -%}
                 {% else %}
                   {% if link.collection === 'token' %}
-                    {%- set active = link.url === "/tokens" %}
+                    {%- set active = page.url === "/tokens/" %}
                     <li>
                       <uxdot-sidenav-dropdown-menu-item {{ 'active' if active }}>
                         <a href="/tokens/">Overview</a>
