@@ -3,7 +3,10 @@
 /**
  * @param {string} content
  */
-function renderInstall(content, { lightdomcss = false } = {}) {
+function renderInstall(content, {
+  lightdomcss = false,
+  cdnVersion = 'v1-alpha',
+} = {}) {
   /**
    * NB: since the data for this shortcode is no a POJO,
    * but a DocsPage instance, 11ty assigns it to this.ctx._
@@ -11,56 +14,161 @@ function renderInstall(content, { lightdomcss = false } = {}) {
    * @type {DocsPage}
    */
   const docsPage = this.ctx._;
-  return /* markdown */`
+
+  const lightdomcssblock = /* md */`
+### Lightdom CSS
+
+Lightdom CSS is required for this element to ensure a reduced
+[Cumulative Layout Shift (CLS)][cls] experience before the element has
+fully initialized.
+  `;
+
+  return /* md */`
+<script type="module" src="/assets/elements/uxdot-installation-tabs.js"></script>
 
 <section class="band">
 
-  ## Installation ${!docsPage.manifest?.packageJson ? '' : /* markdown */`
+  ## Installation ${!docsPage.manifest?.packageJson ? '' : /* md */`
 
-  We are currently working on our CDN which will be soon moving into beta.
-  This will be the preferred method of installation in the near future.
-  If you are a Red Hat employee and have questions or comments about the
-  CDN or installation process please join us in our
-  [Red Hat Design System Google chat][gchat]{.vpn}.
+<uxdot-installation-tabs>
+<rh-tab slot="tab">Red Hat CDN</rh-tab>
+<uxdot-installation-tab-panel>
+  <rh-alert state="warning">
+    <h3 slot="header">CDN Prerelease</h3>
+    <p>We are currently working on our CDN, which will be soon moving
+       into beta. This will be the preferred method of installation in
+       the near future. If you are a Red Hat associate and have questions
+       or comments about the CDN or installation process please join us
+       in our <a href="https://red.ht/43bBaB0">Red Hat Design System Google chat</a>.</p>
+    <p>In the meantime, install this component using npm</p>
+  </rh-alert>
 
-  In the meantime, install this component using npm:
+The recommended way to load RHDS is via the Red Hat Digital Experience CDN,
+and using an [import map][import-maps].
 
-  ~~~shell
-  npm install ${docsPage.manifest.packageJson.name}
-  ~~~`}
+If you have full control over the page you are using, add an import map
+to the \`<head>\`, pointing to the CDN, or update any existing import map.
+If you are not responsible for the page's \`<head>\`, request that the
+page owner makes the change on your behalf.
 
-  We recommend using an import map to manage your dependencies. For more
-  information on import maps and how to use them, see the
-  [import map reference on MDN Web Docs][im-mdn].
+~~~html
+<script type="importmap">
+  {
+    "imports": {
+      "@rhds/elements/": "https://www.redhatstatic.com/dx/${cdnVersion}/@rhds/elements@1.1.0/elements/",
+      "@patternfly/elements/": "https://www.redhatstatic.com/dx/${cdnVersion}/@patternfly/elements@2.2.2/"
+    }
+  }
+</script>
+~~~
 
-  Then import this component into your page or app by using a
-  [bare module specifier](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules):
+Once the import map is established, you can load the element with the following
+module, containing a [bare module specifier][bare-specifier]:
 
-  ~~~js
+~~~html
+<script type="module">
   import '@rhds/elements/${docsPage.tagName}/${docsPage.tagName}.js';
-  ~~~${!lightdomcss ? '' : /* markdown */`
+</script>
+~~~
 
-  ### Lightdom CSS
+Note that Modules may be placed in the \`<head>\`: since they are deferred by default,
+they will not block rendering.
 
-  Lightdom CSS is required for this element to ensure a reduced
-  [Cumulative Layout Shift (CLS)][cls] experience before
-  the element has fully initialized.
+${!lightdomcss ? '' : /* md */`${lightdomcssblock}
 
-  ~~~html
-  <link rel="stylesheet" href="/path/to/${docsPage.tagName}/${docsPage.tagName}-lightdom.css">
-  ~~~
+~~~html
+<link rel="stylesheet" href="https://www.redhatstatic.com/dx/${cdnVersion}/@rhds/elements@1.1.0/${docsPage.tagName}/${docsPage.tagName}-lightdom.css">
+~~~
 
-  Replace \`/path/to\` in the \`href\` attribute with the installation path
-  to the \`${docsPage.tagName}\` directory in your project.`}
+`}
+</uxdot-installation-tab-panel>
+<rh-tab slot="tab">NPM</rh-tab>
+<uxdot-installation-tab-panel>
 
-  ${content ?? ''}
+Install RHDS using your team's preferred NPM package manager, e.g.
+
+~~~shell
+npm install ${docsPage.manifest.packageJson.name}
+~~~
+
+Once that's been accomplished, you will need to use a bundler to resolve
+the bare module specifiers and optionally optimize the package for your
+site's particular use case and needs. Comprehensive guides to bundling are
+beyond the scope of this page; read more about bundlers on their websites:
+
+- [Rollup][rollup]
+- [esbuild][esbuild]
+- [Parcel][parcel]
+- [Webpack][webpack]
+
+${!lightdomcss ? '' : /* md */`${lightdomcssblock}
+
+~~~html
+<link rel="stylesheet" href="/path/to/@rhds/elements/elements/${docsPage.tagName}/${docsPage.tagName}-lightdom.css">
+~~~
+
+Replace \`/path/to\` in the \`href\` attribute with the installation path
+to the \`${docsPage.tagName}\` directory in your project.
+
+  `}
+</uxdot-installation-tab-panel>
+<rh-tab slot="tab">JSPM</rh-tab>
+<uxdot-installation-tab-panel>
+  <rh-alert state="warning">
+    <h3 slot="header">Public CDNs</h3>
+    <p>JSPM and other public CDNs should not be used on corporate domains.
+       Use them for <strong>development purposes only</strong>!</p>
+  </rh-alert>
+
+Add an [import map][import-maps] to the \`<head>\`, pointing to the CDN,
+or update any existing import map.
+
+~~~html
+<script type="importmap">
+  {
+    "imports": {
+      "@rhds/elements/": "https://jspm.dev/@rhds/elements/",
+      "@patternfly/elements/": "https://jspm.dev/@patternfly/elements/"
+    }
+  }
+</script>
+~~~
+
+Once the import map is established, you can load the element with the following
+module, containing a [bare module specifier][bare-specifier]:
+
+~~~html
+<script type="module">
+  import '@rhds/elements/${docsPage.tagName}/${docsPage.tagName}.js';
+</script>
+~~~
+
+Note that Modules may be placed in the \`<head>\`: since they are deferred by default,
+they will not block rendering.
+
+${!lightdomcss ? '' : /* md */ `${lightdomcssblock}
+
+~~~html
+<link rel="stylesheet" href="https://jspm.dev/@rhds/elements@1.1.0/elements/${docsPage.tagName}/${docsPage.tagName}-lightdom.css">
+~~~
+
+`}
+  </uxdot-installation-tab-panel>
+</uxdot-installation-tabs>
+
+${content ?? ''}`}
 
 </section>
 
-[gchat]: https://red.ht/43bBaB0
-[im-mdn]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap/
+[import-maps]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap
+[bare-specifier]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
+[rollup]: https://rollupjs.org/
+[esbuild]: https://esbuild.github.io/
+[parcel]: https://parceljs.org/
+[webpack]: https://webpack.js.org/
 [cls]: https://web.dev/cls/
-`;
+
+      `;
 }
 
 module.exports = function(eleventyConfig) {

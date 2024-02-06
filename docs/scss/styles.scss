@@ -8,11 +8,15 @@
 @use "components/header";
 @use "components/section";
 @use "components/example";
+@use "components/playgrounds";
+@use "components/feature";
 @use "components/feedback";
 @use "components/table-of-contents";
 @use "components/component-status-table";
+@use "components/spacer-table";
 @use "components/spacer-tokens-table";
 @use "components/related-elements-or-patterns";
+@use "components/best-practices";
 @use "foundations/colorswatch";
 @use "layout";
 @use "utility";

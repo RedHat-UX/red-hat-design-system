@@ -56,14 +56,12 @@ The four content slots within a tile are <strong>title</strong>, <strong>heading
 
 The recommended character counts below include spaces. Line counts are based on a default link tile at minimum width.
 
-| Element                  | Character count  | Line count |
-| -------------------------| ---------------- | ---------- |
-| Title text               | 20               | 1          |
-| Heading text             | 64               | 3          |
-| Body text                | 160              | 7          |
-| Footer text              | 25               | 1          |
-
-{.full-width .col-111}
+| Element {style="width: 50%" } | Character count  | Line count |
+| ------------------------------| ---------------- | ---------- |
+| Title text                    | 20               | 1          |
+| Heading text                  | 64               | 3          |
+| Body text                     | 160              | 7          |
+| Footer text                   | 25               | 1          |
 
 ## Layouts
 

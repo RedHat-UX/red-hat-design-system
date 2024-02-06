@@ -54,12 +54,12 @@ The description and title are not included in the Mini size players.
 
 
 ### Character count 
-There is no hardened character count, but writing too many characters will cause the description and title to get cut off. Use the following character count values to avoid text scrolling.
+Using too many characters will cause the description and title to scroll outside of the visible area. The recommended maximum character count for the elements of an audio player are listed below and include spaces.
 
-| Tab count {style="width: 25%" } | Character count |
-| ------------------------------- | --------------- |
-| Description                     | 80              | 
-| Title                           | 40              |
+| Element {style="width: 50%" } | Character count |
+| ----------------------------- | --------------- |
+| Description                   | 80              | 
+| Title                         | 40              |
 
 
 ## Layout 

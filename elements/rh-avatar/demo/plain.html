@@ -1,23 +1,25 @@
-<figure>
-  <figcaption>Plain</figcaption>
-  <rh-avatar name="John von Neumann"
-             subtitle="Mathematician"
-             plain></rh-avatar>
-  <rh-avatar name="Grace Hopper"
-             subtitle="Rear Admiral"
-             src="hopper.jpg"
-             plain></rh-avatar>
-  <rh-avatar name="Haskell Curry"
-             subtitle="Computer Scientist"
-             pattern="squares"
-             plain></rh-avatar>
-  <rh-avatar name="Edsger Dijkstra"
-             subtitle="Computer Scientist"
-             pattern="triangles"
-             plain></rh-avatar>
-</figure>
+<rh-avatar name="John von Neumann"
+           subtitle="Mathematician"
+           plain></rh-avatar>
+<rh-avatar name="Grace Hopper"
+           subtitle="Rear Admiral"
+           src="https://ux.redhat.com/elements/avatar/demo/hopper.jpg"
+           plain></rh-avatar>
+<rh-avatar name="Haskell Curry"
+           subtitle="Computer Scientist"
+           pattern="squares"
+           plain></rh-avatar>
+<rh-avatar name="Edsger Dijkstra"
+           subtitle="Computer Scientist"
+           pattern="triangles"
+           plain></rh-avatar>
 
-<link rel="stylesheet" href="demo.css">
+<style>
+  [data-demo="rh-avatar"] {
+    display: flex;
+    gap: var(--rh-space-md, 8px);
+  }
+</style>
 <script type="module">
   import '@rhds/elements/rh-avatar/rh-avatar.js';
 </script>

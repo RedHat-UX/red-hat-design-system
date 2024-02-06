@@ -1,7 +1,9 @@
 ## Usage
 Use tabs to help users navigate information while staying on the same page. Text labels and content in the panel should be related so users know what to expect when they select each tab. Never force users to switch back and forth between tabs to complete a task.
+
 ### When to use tabs
 Use tabs to organize lots of information into logical sections. Consider using an accordion if that information needs to be viewed simultaneously because using tabs is not suitable as it forces users to rely on short-term memory when switching back and forth. Using an accordion can also accommodate more sections with longer text labels whereas tabs should only display three or four sections with short text labels. Therefore, if viewing lots of sections of content simultaneously is critical to the user experience or if important information requires more focus and less clicking, use an accordion instead.
+
 ### Tabs vs. accordion
 Tabs allow users to click through content one section at a time whereas an accordion allows users to view multiple sections of content simultaneously.
 
@@ -31,7 +33,7 @@ If using horizontal tabs, the default orientation is left aligned, but center al
 
 {% example palette="light", alt="Image of open tabs with left and center alignment and box tabs with left and center alignment", src="../tabs-alignment.png" %}
 
-### Inset
+### Inset and tab panel spacing
 An inset is used to ensure consistent alignment and padding between text labels, overflow buttons, and content in the panel.
 
 {% alert state="info", title="Helpful Tip" %} With horizontal tabs, there are two inset options. With vertical tabs, there is only one. {% endalert %}
@@ -41,6 +43,8 @@ An inset is used to ensure consistent alignment and padding between text labels,
 {% example palette="light", alt="Image of box tabs showing detailed inset specs", src="../tabs-inset-box.png" %}
 
 {% example palette="light", alt="Image of vertical tabs showing detailed inset specs", src="../tabs-inset-vertical.png" %}
+
+Certain content layouts may require removing the inset. While this is not a default style, it is possible with custom CSS.
 
 ### Logos
 In certain edge cases, logos can be used instead of text labels.
@@ -65,13 +69,13 @@ Text labels should be concise, scannable, and descriptive of content in the pane
 {% example palette="light", alt="Image of open tabs with examples of adequate and long text labels", src="../tabs-text-labels.png" %}
 
 ### Character count
-In general, tabs should have three or four text labels maximum. However, if text labels are <strong>very short</strong>, more can be added.
+In general, tabs should have three or four text labels maximum. Text labels should be short but descriptive.
 
-| Tab count {style="width: 50%;"} | Character count |
-| ------------------------------- | --------------- |
-| 6                               | < 13            |
-| 5                               | 14 - 17         |
-| 4                               | 18 - 23         |
+Text labels should be short but descriptive.
+
+| Character count | Word count |
+| --------------- | ---------- |
+| 20              | 2 to 3     |
 
 ## Layout
 ### Horizontal tabs width

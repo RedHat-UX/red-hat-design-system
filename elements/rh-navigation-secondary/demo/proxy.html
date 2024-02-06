@@ -31,7 +31,7 @@
   </style>
   <link href="/elements/rh-navigation-secondary/rh-navigation-secondary-lightdom.css" rel="stylesheet"></link>
   <rh-navigation-secondary role="navigation">
-    <a href="#" slot="logo" id="logo-id">
+    <a href="#" slot="logo" id="logo-id" aria-current="page">
       Red Hat Ansible Automation Platform
     </a>
     <ul slot="nav" aria-labelledby="logo-id">
@@ -410,6 +410,4 @@
   }
 
   document.addEventListener('scroll', throttle(calculateLayout, 20));
-
-
 </script>

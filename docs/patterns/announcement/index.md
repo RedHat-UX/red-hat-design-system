@@ -72,6 +72,14 @@ its objective is.
            alt="One announcement banner showing center-aligned content and one showing left and right-aligned content",
            src="./announcement-usage-content.svg" %}
 
+### Character count
+The recommended maximum character count for the elements of an announcement are listed below and include spaces.
+
+| Element {style="width: 50%" } | Character count |
+|-------------------------------|-----------------|
+| Text                          | 60              |
+| Call to action                | 20              | 
+
 ## Best practices
 
 Do not position the announcement banner below the navigation.
