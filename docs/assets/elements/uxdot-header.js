@@ -23,6 +23,24 @@ class UxdotHeader extends LitElement {
       padding-block-end: var(--rh-space-2xl, 32px);
     }
 
+    .has-search {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-areas: 'heading' 'search';
+      gap: var(--rh-space-2xl, 32px);
+    }
+
+    ::slotted([slot="heading"]) {
+      grid-area: heading;
+    }
+
+    ::slotted([slot="search"]) {
+      grid-area: search;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+
     ::slotted(h1) {
       font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
       font-size: var(--rh-font-size-heading-2xl, 3rem);
@@ -43,32 +61,41 @@ class UxdotHeader extends LitElement {
       #container:not(.has-subnav) {
         padding-block-end: var(--rh-space-5xl, 80px);
       }
+
+      .has-search {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 'heading search';
+      }
     }
 
   `;
 
   static properties = {
     hasSubNav: { type: Boolean },
+    hasSearch: { type: Boolean },
   };
 
   constructor() {
     super();
     this.hasSubNav = false;
+    this.hasSearch = false;
   }
 
   firstUpdated() {
-    const slot = this.shadowRoot.querySelector('slot[name="subnav"]');
-    const nodes = slot.assignedNodes();
-    if (nodes.length > 0) {
-      this.hasSubNav = true;
-    }
+    const searchSlot = this.shadowRoot.querySelector('slot[name="search"]');
+    const subNavSlot = this.shadowRoot.querySelector('slot[name="subnav"]');
+    const subNavNodes = subNavSlot.assignedNodes();
+    const searchNodes = searchSlot.assignedNodes();
+    this.hasSearch = searchNodes.length > 0;
+    this.hasSubNav = subNavNodes.length > 0;
   }
 
   render() {
-    const classes = classMap({ 'has-subnav': this.hasSubNav });
+    const classes = classMap({ 'has-subnav': this.hasSubNav, 'has-search': this.hasSearch });
     return html`
       <div id="container" class=${classes} part="container">
         <slot part="heading"></slot>
+        <slot name="search" part="search"></slot>
         <slot name="subnav" part="subnav"></slot>
       </div>
     `;
