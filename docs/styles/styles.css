@@ -12,12 +12,12 @@ uxdot-masthead {
   grid-area: header;
 }
 
-uxdot-masthead > a > img {
+uxdot-masthead a[slot="logo"] > img {
   max-width: 188px;
 }
 
 @container masthead (max-width: 567px) {
-  uxdot-masthead a[slot="links"] span {
+  uxdot-masthead a[slot="links"] > span {
     clip: rect(0 0 0 0);
     clip-path: inset(50%);
     height: 1px;
