@@ -64,6 +64,13 @@ class UxdotMasthead extends LitElement {
       slot[name="logo"]::slotted(a) {
         margin-inline-start: var(--rh-space-lg, 16px);
       }
+
+      slot[name="links"]::slotted(a) {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: var(--rh-space-md, 8px);
+      }
     }
 
   `;
