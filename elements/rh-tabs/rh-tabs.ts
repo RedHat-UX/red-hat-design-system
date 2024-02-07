@@ -22,6 +22,8 @@ import styles from './rh-tabs.css';
 
 export { RhTab };
 
+/* TODO: Remove attrs in JSDoc below when updated use TabsController after PFE 3.0 release */
+
 /**
  * Tabs are used to organize and navigate between sections of content.
  * They feature a horizontal or a vertical list of section text labels
@@ -29,8 +31,14 @@ export { RhTab };
  *
  * @summary Arranges content in a contained view on the same page
  *
- * @attr [label-scroll-left="Scroll left"] - accessible label for the tab panel's scroll left button.
- * @attr [label-scroll-right="Scroll right"] - accessible label for the tab panel's scroll right button.
+ * @attr {string} [label-scroll-left] - accessible label for the tab panel's scroll left button. {@default `Scroll left`}
+ * @attr {string} [label-scroll-right] - accessible label for the tab panel's scroll right button. {@default `Scroll right`}
+ * @attr {boolean} [manual] - Tab activation {@default `false`}
+ * @attr {string | undefined} [theme] - Sets the theme for the tabs and panels {@default ``}
+ * @attr {string | undefined} [box] - Sets the border color for the active tab {@default ``}
+ * @attr {boolean} [vertical] - Sets the alignment of the tabs {@default `false`}
+ * @attr {ColorPalette | undefined} [color-palette] - Sets color context for child components, overrides parent context {@default ``}
+ * @attr {boolean} [centered] - Aligns tabs to the center {@default `false`}
  *
  * @csspart container - outer container
  * @csspart tabs-container - tabs container
@@ -80,12 +88,15 @@ export class RhTabs extends LitElement {
   }
 
   /**
-   * Tab activation
+   * @attr manual - Tab activation
    * Tabs can be either [automatic](https://w3c.github.io/aria-practices/examples/tabs/tabs-automatic.html) activated
    * or [manual](https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html)
    */
   @property({ reflect: true, type: Boolean }) manual = false;
 
+  /**
+   * Index of the active tab
+   */
   @property({ attribute: false })
   get activeIndex() {
     return this.#activeIndex;
@@ -126,6 +137,9 @@ export class RhTabs extends LitElement {
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
+  /**
+   * Aligns tabs to the center
+   */
   @property({ reflect: true, type: Boolean }) centered? = false;
 
   /**
@@ -139,9 +153,15 @@ export class RhTabs extends LitElement {
     attribute: 'theme',
   }) theme?: 'base' | null = null;
 
+  /**
+   * Sets the border color for the active tab
+   */
   @cascades('rh-tab', 'rh-tab-panel')
   @property({ reflect: true }) box?: 'box' | 'inset' | null = null;
 
+  /**
+   * Sets the alignment of the tabs
+   */
   @cascades('rh-tab', 'rh-tab-panel')
   @property({ reflect: true, type: Boolean }) vertical = false;
 
