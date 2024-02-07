@@ -1,0 +1,4 @@
+.dark {
+  background-color: var(--rh-color-surface-darkest, #151515);
+  color: var(--rh-color-text-primary-on-dark, #ffffff);
+}
