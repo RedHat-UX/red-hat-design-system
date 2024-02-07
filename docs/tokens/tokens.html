@@ -1,5 +1,5 @@
 ---
-layout: layouts/pages/tokens.njk
+layout: layouts/pages/basic.njk
 templateEngineOverride: njk
 permalink: /tokens/{{ cat.slug }}/index.html
 bodyClasses: token-docs
@@ -9,17 +9,19 @@ pagination:
   size: 1
   alias: cat
   data: collections.token
+tokenSearch: true
+importElements:
+  - rh-table
 ---
 
-<script type="module" src="/assets/elements/uxdot-copy-button.js"></script>
-<style>
-  .variants summary {
-    color: inherit;
-    display: list-item;
-  }
-</style>
+<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
+<link rel="stylesheet" href="/styles/samp.css">
 
-<link rel="stylesheet" href="/assets/tokens/tokens.css">
+<script type="module" src="/assets/elements/uxdot-copy-button.js"></script>
+
+<style>
+
+</style>
 
 {% category path = cat.path or cat.slug,
             name = cat.path and cat.slug,

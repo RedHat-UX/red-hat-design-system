@@ -12,6 +12,12 @@ const {
 } = require('./tokensHelpers.cjs');
 
 
+function classMap(classInfo) {
+  return Object.keys(classInfo)
+    .filter(key => classInfo[key])
+    .join(' ');
+}
+
 /**
  * Generate an HTML table of tokens
  * @param {object} [opts={}]
@@ -25,16 +31,18 @@ function table({ tokens, name = '', docs, options } = {}) {
     return '';
   }
   return dedent(/* html */`
+  <rh-table>
     <table>
       <thead>
         <tr>
-          <th><abbr title="Example">Ex.</abbr></th>
-          <th>Token name</th>
-          <th>Value</th>
-          <th>Use case</th>
-          <th></th>
+          <th scope="col" data-label="Example"><abbr title="Example">Ex.</abbr></th>
+          <th scope="col" data-label="Token name">Token name</th>
+          <th scope="col" data-label="Value">Value</th>
+          <th scope="col" data-label="Use case">Use case</th>
+          <th scope="col" data-label="Copy"></th>
         </tr>
       </thead>
+      <tbody>
       ${tokens.map(token => { /* eslint-disable indent */
         const { r, g, b } = token.attributes?.rgb ?? {};
         const { h, s, l } = token.attributes?.hsl ?? {};
@@ -48,22 +56,36 @@ function table({ tokens, name = '', docs, options } = {}) {
         const isSize = !!token.path.includes('size');
         const isWeight = !!token.path.includes('weight');
         const isWidth = !!token.path.includes('width');
+        const isLight = token.path.includes('on-light') || (token.attributes?.subitem !== 'on-light' && token.attributes?.subitem !== 'on-dark');
+
+        const classes = classMap({
+            'light': isLight,
+            'dark': !isLight,
+            'color': isColor,
+            'crayon': isCrayon,
+            'dimension': isDimension,
+            'family': isFamily,
+            'font': isFont,
+            'radius': isRadius,
+            'size': isSize,
+            'weight': isWeight,
+            'width': isWidth
+          });
 
         return isHSLorRGB ? '' : /* html */`
-        <tbody>
           <tr id="${token.name}"
-              class="${token.path.join(' ')}${token.attributes.isLight ? ' light' : ''}"
+              class="${classes}"
               style="${styleMap({
-                '--radius': isRadius ? token.$value : 'initial',
-                '--width': isWidth ? token.$value : 'initial',
-                '--color': isColor ? token.$value : 'initial',
-                '--font-family': isFamily ? token.$value : 'var(--rh-font-family-body-text)',
-                '--font-size': isSize ? token.$value : 'var(--rh-font-size-heading-md)',
-                '--font-weight': isWeight ? token.$value : 'var(--rh-font-weight-body-text-regular)',
-                [`--${token.attributes.type === 'icon' && token.$type === 'dimension' ? `${name}-size` : name}`]: token.$value,
+                '--samp-radius': isRadius ? token.$value : 'initial',
+                '--samp-width': isWidth ? token.$value : 'initial',
+                '--samp-color': isColor ? token.$value : 'initial',
+                '--samp-font-family': isFamily ? token.$value : 'var(--rh-font-family-body-text)',
+                '--samp-font-size': isSize ? token.$value : 'var(--rh-font-size-heading-md)',
+                '--samp-font-weight': isWeight ? token.$value : 'var(--rh-font-weight-body-text-regular)',
+                [`--samp-${token.attributes.type === 'icon' && token.$type === 'dimension' ? `${name}-size` : name}`]: token.$value,
               })}">
-            <td class="sample">
-              <samp${name === 'space' ? ` style="background-color: ${getDocs(token, options)?.color ?? ''};"` : ''}>
+            <td data-label="Example">
+              <samp class="${classes}" ${name === 'space' ? ` style="background-color: ${getDocs(token, options)?.color ?? ''};"` : ''}>
               ${isColor && token.path.includes('text') ? 'Aa'
               : isFont ? (docs?.example ?? token.attributes?.aliases?.[0] ?? 'Aa')
               : name === 'breakpoint' ? `
@@ -71,34 +93,27 @@ function table({ tokens, name = '', docs, options } = {}) {
               : docs?.example ?? ''}
               </samp>
             </td>
-            <td ${options.attrs({ type: 'name', token })} class="token name">
+            <td data-label="Token name">
               <uxdot-copy-button><code>--${token.name}</code></uxdot-copy-button>
             </td>
-            <td ${options.attrs({ type: 'value', token })} class="token value
-                     ${!isDimension ? '' : token.$value?.endsWith('rem') ? 'rem' : 'px'}
-                     ${!isColor ? '' : 'color'}
-                     ${!isHSLorRGB ? 'hex' : ''}">${(
-              isDimension ? `
-              <uxdot-copy-button><code>${token.$value}</code></uxdot-copy-button>`
-            : isColor ? `
-              <uxdot-copy-button style="--color: ${token.$value}">
-                <code>${token.$value}</code>
-              </button> `
-            : isWeight ? `
-              <uxdot-copy-button class="numerical"><code>${token.$value}</uxdot-copy-button>
-              <uxdot-copy-button class="common"><code>${token.attributes?.aliases?.[0] ?? ''}</code></uxdot-copy-button>`
-            : `
-              <uxdot-copy-button><code>${token.$value}</code></uxdot-copy-button>`)}
+            <td data-label="Value">
+              ${( isDimension ? `<uxdot-copy-button><code>${token.$value}</code></uxdot-copy-button>`
+                : isColor ? `<uxdot-copy-button style="--color: ${token.$value}"><code>${token.$value}</code></uxdot-copy-button> `
+                : isWeight ? `
+                  <uxdot-copy-button class="numerical"><code>${token.$value}</uxdot-copy-button>
+                  <uxdot-copy-button class="common"><code>${token.attributes?.aliases?.[0] ?? ''}</code></uxdot-copy-button>`
+                : `<uxdot-copy-button><code>${token.$value}</code></uxdot-copy-button>`
+              )}
             </td>
-            <td>${token.$description ?? ''}</td>
+            <td data-label="Use case">${token.$description ?? ''}</td>
             ${copyCell(token)}
           </tr>${!isCrayon ? '' : `
           <tr class="variants">
             <td colspan="5">
               <details ${options.attrs({ type: 'details', token })}>
-                <summary title="Color function variants"></summary>
-                <table class="${token.path.join(' ')}${token.attributes.isLight ? ' light' : ''}"
-                       style="--color: ${token.$value}">
+                <summary title="Color function variants">Color function variants</summary>
+                <table class="${classes}"
+                       style="--samp-color: ${token.$value}">
                   <tr id="${token.name}-rgb" style="--color: rgb(${r}, ${g}, ${b})">
                     <td class="sample"><samp>${token.path.includes('text') ? 'Aa' : docs?.example ?? ''}</samp></td>
                     <td ${options.attrs({ type: 'name', token })} class="token name">
@@ -121,9 +136,11 @@ function table({ tokens, name = '', docs, options } = {}) {
               </details>
             </td>
           </tr>
-        </tbody>`}`;
+        `}`;
         }).map(dedent).join('\n')}
-    </table>`).trim();
+        </tbody>
+        </table>
+  </rh-table>`).trim();
     /* eslint-enable indent */
 }
 
@@ -210,6 +227,7 @@ module.exports = function RHDSPlugin(eleventyConfig, pluginOptions = { }) {
           ${(dedent(await getDescription(collection, pluginOptions)))}
 
           </div>
+          
           ${await table({ /* eslint-disable indent */
             tokens: Object.values(collection).filter(x => x.$value),
             options,

@@ -38,7 +38,7 @@ module.exports = function(eleventyConfig) {
           const { color } = prop['$extensions']['com.redhat.ux'];
           return /* html */`
             <tr>
-              <td data-label="Example"><samp class="${klass}" style="--samp-width: ${px}; --samp-color: ${color};"><span>${size}</span></samp></td>
+              <td data-label="Example"><samp class="space ${klass}" style="--samp-width: ${px}; --samp-color: ${color};"><span>${size}</span></samp></td>
               <td data-label="Token">--${prop.name}</td>
               <td data-label="Description">${prop['$description']}</td>
             </tr>

@@ -60,6 +60,11 @@ hr {
   margin-block-end: var(--rh-space-2xl, 32px);
 }
 
+/* TODO: Document this bug table overflows vertically causing a scrollbar when it shouldn't */
+rh-table {
+  overflow: unset;
+}
+
 /* Footer */
 rh-footer-universal {
   grid-area: footer;

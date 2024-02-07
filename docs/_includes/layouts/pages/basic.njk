@@ -8,6 +8,10 @@ importElements:
 ---
 
 <script type="module" src="{{ '/assets/elements/uxdot-feedback.js' | url }}"></script>
+{% if tokenSearch %}
+<script type="module" src="{{ '/assets/elements/uxdot-search.js' | url }}"></script>
+{% endif %}
+
 
 <style>
   main {

@@ -14,7 +14,7 @@ class UxdotHeader extends LitElement {
     }
 
     #container {
-      max-width: 1300px;
+      max-width: 1140px;
       padding-block-start: var(--rh-space-2xl, 32px);
       padding-inline: var(--rh-space-2xl, 32px);
     }

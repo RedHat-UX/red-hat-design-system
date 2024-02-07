@@ -1,0 +1,109 @@
+/* Spacers */
+samp.space {
+  width: var(--samp-width);
+  aspect-ratio: 1/1;
+  outline: var(--rh-border-width-sm, 1px) dashed var(--samp-color, var(--rh-color-surface-darkest, #151515));
+  color: var(--samp-color, var(--rh-color-text-primary-on-light, #151515));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  font-size: var(--rh-font-size-body-text-xs, 0.75rem);
+}
+
+samp.space span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1rem;
+  min-height: 100%;
+}
+
+samp.space:before {
+  content: "";
+  width: var(--samp-width);
+  aspect-ratio: 1/1;
+  background-color: var(--samp-color, var(--rh-color-surface-darkest, #151515));
+  opacity: 0.125;
+  z-index: -1;
+  position: absolute;
+}
+
+samp.space.offset span {
+  position: absolute;
+  left: calc(var(--samp-width) + 2px);
+}
+
+samp.space.size-4:before {
+  opacity: 1;
+}
+
+samp.space.size-6 {
+  color: #c58c00;
+}
+
+samp.space.size-6:before {
+  opacity: 1;
+}
+
+samp.space.size-8 {
+  color: #51a549;
+}
+
+/* Fonts */
+samp.font {
+  font-size: var(--samp-font-size, var(--rh-font-size-heading-md, 1.75rem));
+  font-family: var(--samp-font-family, var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif));
+  font-weight: var(--samp-font-weight, var(--rh-font-weight-body-text-regular, 400));
+}
+
+/* Colors */
+samp.color {
+  color: var(--samp-color);
+}
+
+samp.color:not(.border, .text) {
+  aspect-ratio: 1;
+  height: var(--rh-length-xl, 24px);
+  display: block;
+  border-radius: 100%;
+  border: 1px solid transparent;
+  background: var(--samp-color);
+}
+
+samp.color:not(.border, .text, .dark) {
+  border-color: var(--rh-color-border-strong-on-light, #151515);
+}
+
+/* Line height */
+samp.line-height {
+  line-height: var(--samp-line-height);
+}
+
+/* Box shadow */
+samp.box-shadow {
+  height: var(--rh-length-2xl, 32px);
+  aspect-ratio: 1;
+  border-radius: var(--rh-border-radius-default, 3px);
+  box-shadow: var(--samp-box-shadow);
+  display: block;
+}
+
+/* Border */
+samp.border {
+  width: var(--rh-length-2xl, 32px);
+  aspect-ratio: 2;
+  display: block;
+  border-style: solid;
+  border-width: var(--width, var(--rh-border-width-md, 2px));
+  border-color: var(--color, var(--rh-color-border-strong-on-light, #151515));
+  border-radius: var(--radius, var(--rh-border-radius-default, 3px));
+}
+
+/* Opacity */
+samp.opacity {
+  opacity: var(--samp-opacity);
+  background-color: black;
+  display: block;
+}
+

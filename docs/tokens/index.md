@@ -10,8 +10,6 @@ importElements:
 
 <link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css' | url }}">
 
-<script type="module" src="{{ '/assets/elements/uxdot-search.js' | url }}"></script>
-
 <style>
   .page-overview .container .grid {
     display: grid;
