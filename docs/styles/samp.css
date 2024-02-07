@@ -95,9 +95,21 @@ samp.border {
   aspect-ratio: 2;
   display: block;
   border-style: solid;
-  border-width: var(--width, var(--rh-border-width-md, 2px));
-  border-color: var(--color, var(--rh-color-border-strong-on-light, #151515));
-  border-radius: var(--radius, var(--rh-border-radius-default, 3px));
+  border-width: var(--samp-width, var(--rh-border-width-md, 2px));
+  border-color: var(--samp-color, var(--rh-color-border-strong-on-light, #151515));
+  border-radius: var(--samp-radius, var(--rh-border-radius-default, 3px));
+}
+
+samp.border.sm {
+  border-width: var(--samp-width, var(--rh-border-width-sm, 1px));
+}
+
+samp.border.md {
+  border-width: var(--samp-width, var(--rh-border-width-md, 2px));
+}
+
+samp.border.lg {
+  border-width: var(--samp-width, var(--rh-border-width-lg, 3px));
 }
 
 /* Opacity */
@@ -106,4 +118,3 @@ samp.opacity {
   background-color: black;
   display: block;
 }
-

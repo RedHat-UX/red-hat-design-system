@@ -69,7 +69,12 @@ function table({ tokens, name = '', docs, options } = {}) {
             'radius': isRadius,
             'size': isSize,
             'weight': isWeight,
-            'width': isWidth
+            'width': isWidth,
+            'box-shadow': token.path.includes('box-shadow'),
+            'border': token.path.includes('border'),
+            'sm': token.path.includes('sm'),
+            'md': token.path.includes('md'),
+            'lg': token.path.includes('lg'),
           });
 
         return isHSLorRGB ? '' : /* html */`
@@ -112,10 +117,23 @@ function table({ tokens, name = '', docs, options } = {}) {
             <td colspan="5">
               <details ${options.attrs({ type: 'details', token })}>
                 <summary title="Color function variants">Color function variants</summary>
-                <table class="${classes}"
-                       style="--samp-color: ${token.$value}">
+                  <rh-table>
+                  <table class="${classes}"
+                  style="${styleMap({
+                    '--samp-color': isColor ? token.$value : 'initial',
+                  })}">
+                    <thead>
+                    <tr>
+                      <th scope="col" data-label="Example"><abbr title="Example">Ex.</abbr></th>
+                      <th scope="col" data-label="Token name">Token name</th>
+                      <th scope="col" data-label="Value">Value</th>
+                      <th scope="col" data-label="Use case">Use case</th>
+                      <th scope="col" data-label="Copy"></th>
+                    </tr>
+                  </thead>     
+                  <tbody>                  
                   <tr id="${token.name}-rgb" style="--color: rgb(${r}, ${g}, ${b})">
-                    <td class="sample"><samp>${token.path.includes('text') ? 'Aa' : docs?.example ?? ''}</samp></td>
+                    <td class="sample"><samp class="${classes}">${token.path.includes('text') ? 'Aa' : docs?.example ?? ''}</samp></td>
                     <td ${options.attrs({ type: 'name', token })} class="token name">
                       <uxdot-copy-button><code>--${token.name}-rgb</code></uxdot-copy-button>
                     </td>
@@ -124,7 +142,7 @@ function table({ tokens, name = '', docs, options } = {}) {
                     ${copyCell(token)}
                   </tr>
                   <tr id="${token.name}-hsl" style="--color: hsl(${h} ${s}% ${l}%)">
-                    <td class="sample"><samp>${token.path.includes('text') ? 'Aa' : docs?.example ?? ''}</samp></td>
+                    <td class="sample"><samp class="${classes}">${token.path.includes('text') ? 'Aa' : docs?.example ?? ''}</samp></td>
                     <td ${options.attrs({ type: 'name', token })} class="token name">
                       <uxdot-copy-button><code>--${token.name}-hsl</code></uxdot-copy-button>
                     </td>
@@ -132,7 +150,9 @@ function table({ tokens, name = '', docs, options } = {}) {
                     <td>To modify opacity</td>
                     ${copyCell(token)}
                   </tr>
+                  </tbody>
                 </table>
+                </rh-table>
               </details>
             </td>
           </tr>
