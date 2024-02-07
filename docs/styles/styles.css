@@ -5,6 +5,11 @@ body {
   min-height: 100dvh;
 }
 
+/* Decrease CLS of uxdot-example */
+uxdot-example:not(:defined) img {
+  max-width: 100%;
+}
+
 /* Masthead */
 uxdot-masthead {
   container-type: inline-size;
