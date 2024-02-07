@@ -7,11 +7,25 @@ body {
 
 /* Masthead */
 uxdot-masthead {
+  container-type: inline-size;
+  container-name: masthead;
   grid-area: header;
 }
 
 uxdot-masthead > a > img {
   max-width: 188px;
+}
+
+@container masthead (max-width: 567px) {
+  uxdot-masthead a[slot="links"] span {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
 }
 
 /* Sidenav */

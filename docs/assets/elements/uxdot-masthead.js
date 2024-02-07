@@ -4,7 +4,6 @@ class UxdotMasthead extends LitElement {
   static styles = css`
     :host {
       display: block;
-      padding: var(--rh-space-md, 8px);
       background-color: var(--rh-color-surface-darkest, #0a0a0a);
       position: sticky;
       top: 0;
@@ -14,8 +13,16 @@ class UxdotMasthead extends LitElement {
     #container {
       display: grid;
       gap: var(--rh-space-lg, 16px);
-      grid-template-columns: max-content 1fr max-content max-content;
+      grid-template-columns: max-content 1fr max-content;
+      height: var(--uxdot-masthead-height, 56px);
+      margin: var(--rh-space-md, 8px);
+    }
+
+    slot[name="hamburger"] {
+      display: flex;
+      flex-direction: row;
       align-items: center;
+      gap: var(--rh-space-md, 8px);
     }
 
     slot[name="hamburger"]::slotted(pf-button) {
@@ -39,11 +46,20 @@ class UxdotMasthead extends LitElement {
     }
 
     slot[name="logo"]::slotted(a) {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: var(--rh-space-md, 8px);
       max-width: 188px;
     }
 
     slot[name="links"]::slotted(a) {
       --pf-icon--size: 28px;
+
+      display: flex;
+      flex-direction: row;
+      gap: var(--rh-space-md, 8px);
+      align-items: center;
       color: var(--rh-color-text-on-dark, #ffffff) !important;
     }
 
@@ -66,9 +82,7 @@ class UxdotMasthead extends LitElement {
       }
 
       slot[name="links"]::slotted(a) {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
+
         gap: var(--rh-space-md, 8px);
       }
     }
@@ -80,7 +94,6 @@ class UxdotMasthead extends LitElement {
       <div id="container" part="container">
         <slot name="hamburger"></slot>
         <slot name="logo"></slot>
-        <slot name="search"></slot>
         <slot name="links"></slot>
       </div>
     `;
