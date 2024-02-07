@@ -1,6 +1,6 @@
 import { html, css, LitElement } from 'lit';
 
-import { toast } from '../toast.js';
+import { toast } from './toast.js';
 
 import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 
