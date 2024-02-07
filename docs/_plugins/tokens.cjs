@@ -118,48 +118,48 @@ function table({ tokens, name = '', docs, options } = {}) {
               <details ${options.attrs({ type: 'details', token })}>
                 <summary title="Color function variants">Color function variants</summary>
                   <rh-table>
-                  <table class="${classes}"
-                  style="${styleMap({
-                    '--samp-color': isColor ? token.$value : 'initial',
-                  })}">
-                    <thead>
-                    <tr>
-                      <th scope="col" data-label="Example"><abbr title="Example">Ex.</abbr></th>
-                      <th scope="col" data-label="Token name">Token name</th>
-                      <th scope="col" data-label="Value">Value</th>
-                      <th scope="col" data-label="Use case">Use case</th>
-                      <th scope="col" data-label="Copy"></th>
+                    <table class="${classes}"
+                    style="${styleMap({
+                      '--samp-color': isColor ? token.$value : 'initial',
+                    })}">
+                      <thead>
+                      <tr>
+                        <th scope="col" data-label="Example"><abbr title="Example">Ex.</abbr></th>
+                        <th scope="col" data-label="Token name">Token name</th>
+                        <th scope="col" data-label="Value">Value</th>
+                        <th scope="col" data-label="Use case">Use case</th>
+                        <th scope="col" data-label="Copy"></th>
+                      </tr>
+                    </thead>     
+                    <tbody>                  
+                    <tr id="${token.name}-rgb" style="--color: rgb(${r}, ${g}, ${b})">
+                      <td class="sample"><samp class="${classes}">${token.path.includes('text') ? 'Aa' : docs?.example ?? ''}</samp></td>
+                      <td ${options.attrs({ type: 'name', token })} class="token name">
+                        <uxdot-copy-button><code>--${token.name}-rgb</code></uxdot-copy-button>
+                      </td>
+                      <td><uxdot-copy-button><code>rgb(${r}, ${g}, ${b})</code></uxdot-copy-button></td>
+                      <td>To modify opacity</td>
+                      ${copyCell(token)}
                     </tr>
-                  </thead>     
-                  <tbody>                  
-                  <tr id="${token.name}-rgb" style="--color: rgb(${r}, ${g}, ${b})">
-                    <td class="sample"><samp class="${classes}">${token.path.includes('text') ? 'Aa' : docs?.example ?? ''}</samp></td>
-                    <td ${options.attrs({ type: 'name', token })} class="token name">
-                      <uxdot-copy-button><code>--${token.name}-rgb</code></uxdot-copy-button>
-                    </td>
-                    <td><uxdot-copy-button><code>rgb(${r}, ${g}, ${b})</code></uxdot-copy-button></td>
-                    <td>To modify opacity</td>
-                    ${copyCell(token)}
-                  </tr>
-                  <tr id="${token.name}-hsl" style="--color: hsl(${h} ${s}% ${l}%)">
-                    <td class="sample"><samp class="${classes}">${token.path.includes('text') ? 'Aa' : docs?.example ?? ''}</samp></td>
-                    <td ${options.attrs({ type: 'name', token })} class="token name">
-                      <uxdot-copy-button><code>--${token.name}-hsl</code></uxdot-copy-button>
-                    </td>
-                    <td><uxdot-copy-button><code>hsl(${h} ${s}% ${l}%)</code></uxdot-copy-button></td>
-                    <td>To modify opacity</td>
-                    ${copyCell(token)}
-                  </tr>
-                  </tbody>
-                </table>
+                    <tr id="${token.name}-hsl" style="--color: hsl(${h} ${s}% ${l}%)">
+                      <td class="sample"><samp class="${classes}">${token.path.includes('text') ? 'Aa' : docs?.example ?? ''}</samp></td>
+                      <td ${options.attrs({ type: 'name', token })} class="token name">
+                        <uxdot-copy-button><code>--${token.name}-hsl</code></uxdot-copy-button>
+                      </td>
+                      <td><uxdot-copy-button><code>hsl(${h} ${s}% ${l}%)</code></uxdot-copy-button></td>
+                      <td>To modify opacity</td>
+                      ${copyCell(token)}
+                    </tr>
+                    </tbody>
+                  </table>
                 </rh-table>
               </details>
             </td>
           </tr>
         `}`;
         }).map(dedent).join('\n')}
-        </tbody>
-        </table>
+      </tbody>
+    </table>
   </rh-table>`).trim();
     /* eslint-enable indent */
 }
@@ -240,26 +240,35 @@ module.exports = function RHDSPlugin(eleventyConfig, pluginOptions = { }) {
        * 2. for each remaining object, recurse
        */
       return dedent(/* html */`
-        <section id="${name}" class="token-category level-${level - 1}">
+        ${(level >= 4) ? /* html */`
+          <div class="token-category level-2">
+        ` : /* html */`
+          <section id="${name}" class="token-category level-${level - 1}">
+        `}
           <h${level} id="${slug}">${heading}<a href="#${slug}">#</a></h${level}>
-          <div class="description">
+            <div class="description">
 
-          ${(dedent(await getDescription(collection, pluginOptions)))}
+            ${(dedent(await getDescription(collection, pluginOptions)))}
 
-          </div>
-          
-          ${await table({ /* eslint-disable indent */
-            tokens: Object.values(collection).filter(x => x.$value),
-            options,
-            name,
-            docs,
-          })/* eslint-enable indent */}
-          ${(await Promise.all(children.map(category))).join('\n')}
-          ${(await Promise.all(include.map((path, i, a) => category({ /* eslint-disable indent */
-              path,
-              level: level + 1,
-              isLast: !a[i + 1],
-            })))).join('\n')/* eslint-enable indent*/}
-        </section>`);
+            </div>
+            
+            ${await table({ /* eslint-disable indent */
+              tokens: Object.values(collection).filter(x => x.$value),
+              options,
+              name,
+              docs,
+            })/* eslint-enable indent */}
+            ${(await Promise.all(children.map(category))).join('\n')}
+            ${(await Promise.all(include.map((path, i, a) => category({ /* eslint-disable indent */
+                path,
+                level: level + 1,
+                isLast: !a[i + 1],
+              })))).join('\n')/* eslint-enable indent*/}
+          ${(level >= 4) ? /* html */`
+            </div>
+          ` : /* html */`
+            </section>
+          `}
+        `);
     });
 };

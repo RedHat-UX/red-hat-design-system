@@ -1,3 +1,7 @@
+section + section {
+  margin-top: var(--rh-space-3xl, 48px);
+}
+
 rh-table tr.dark:not(:hover) {
   background-color: var(--rh-color-surface-darkest, #151515);
   color: var(--rh-color-text-primary-on-dark, #ffffff);
