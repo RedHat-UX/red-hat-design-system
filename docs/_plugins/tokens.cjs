@@ -30,6 +30,7 @@ function table({ tokens, name = '', docs, options } = {}) {
   if (!tokens.length || name.startsWith('$')) {
     return '';
   }
+
   return dedent(/* html */`
   <rh-table>
     <table>
@@ -60,6 +61,7 @@ function table({ tokens, name = '', docs, options } = {}) {
         const isOpacity = !!token.path.includes('opacity');
         const isSpace = !!token.path.includes('space');
         const isBreakpoint = !!token.path.includes('breakpoint');
+        const isHeading = !!token.path.includes('heading');
 
         const classes = classMap({
             'light': isLight,
@@ -83,6 +85,7 @@ function table({ tokens, name = '', docs, options } = {}) {
             'length': token.path.includes('length'),
             'icon': token.path.includes('icon'),
             'breakpoint': isBreakpoint,
+            'heading': isHeading,
           });
 
         return isHSLorRGB ? '' : /* html */`
@@ -100,7 +103,7 @@ function table({ tokens, name = '', docs, options } = {}) {
                 [`--samp-${token.$type === 'dimension' ? `${name}-size` : name}`]: token.$value,
                 [`${token.$type === 'dimension' && token.attributes.category === 'space' ? `--samp-${name}-color` : ``}`]: isSpace ? token.original['$extensions']['com.redhat.ux'].color : '',
               })}">
-            <td data-label="Example" class="${classMap({ 'media': token.path.includes('media') })}">
+            <td data-label="Example">
               <samp class="${classes}">
               ${isSpace ? `<span class="${parseInt(token.$value) < 16 ? `offset` : ''}">${parseInt(token.$value)}</span>` : ``}
               ${isColor && token.path.includes('text') ? 'Aa'

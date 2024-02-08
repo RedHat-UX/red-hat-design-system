@@ -104,6 +104,10 @@ samp.font {
   font-weight: var(--samp-font-weight, var(--rh-font-weight-body-text-regular, 400));
 }
 
+samp.font.heading {
+  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+}
+
 /* Colors */
 samp.color {
   color: var(--samp-color);
