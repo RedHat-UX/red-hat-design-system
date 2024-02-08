@@ -145,7 +145,7 @@ export class RhTabs extends LitElement {
   }) theme?: 'base' | null = null;
 
   /**
-   * Sets tabs to a boxed style with or without and inset
+   * Sets tabs to a boxed style with or without an inset
    */
   @cascades('rh-tab', 'rh-tab-panel')
   @property({ reflect: true }) box?: 'box' | 'inset' | null = null;
