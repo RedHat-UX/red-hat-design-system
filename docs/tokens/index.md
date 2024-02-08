@@ -79,61 +79,61 @@ values or if you have an idea for an output format or tool integration.
     <uxdot-example slot="image" no-border>
       <img alt="Tokens for border radius, width, color, and more" src="{{ '/tokens/images/design-tokens-category-border.png' | url }}">
     </uxdot-example>
-    <a slot="headline" href="border/"><h3>Border</h3></a>
+    <a slot="headline" href="{{ 'border/' | url }}"><h3>Border</h3></a>
   </rh-tile>
   <rh-tile compact bleed>
     <uxdot-example slot="image" no-border>
       <img alt="Tokens for box shadows" src="{{ '/tokens/images/design-tokens-category-box-shadow.png' | url }}">
     </uxdot-example>
-    <a href="box-shadow/" slot="headline"><h3>Box shadow</h3></a>
+    <a slot="headline" href="{{ 'box-shadow/' | url }}"><h3>Box shadow</h3></a>
   </rh-tile>
   <rh-tile compact bleed>
     <uxdot-example slot="image" no-border>
       <img alt="Tokens for breakpoint sizes" src="{{ '/tokens/images/design-tokens-category-breakpoint.png' | url }}">
     </uxdot-example>
-    <a href="breakpoin/" slot="headline"><h3>Breakpoint</h3></a>
+    <a slot="headline" href="{{ 'breakpoint/' | url }}" slot="headline"><h3>Breakpoint</h3></a>
   </rh-tile>
   <rh-tile compact bleed>
     <uxdot-example slot="image" no-border>
       <img alt="Tokens for colors" src="{{ '/tokens/images/design-tokens-category-color.png' | url }}">
     </uxdot-example>
-    <a href="color/" slot="headline"><h3>Color</h3></a>
+    <a slot="headline" href="{{ 'color/' | url }}"><h3>Color</h3></a>
   </rh-tile>
   <rh-tile compact bleed>
     <uxdot-example slot="image" no-border>
       <img alt="Tokens for icon sizes" src="{{ '/tokens/images/design-tokens-category-icon.png' | url }}">
     </uxdot-example>
-    <a href="icon/" slot="headline"><h3>Icon</h3></a>
+    <a slot="headline" href="{{ 'icon/' | url }}"><h3>Icon</h3></a>
   </rh-tile>
   <rh-tile compact bleed>
     <uxdot-example slot="image" no-border>
       <img alt="Tokens for length values" src="{{ '/tokens/images/design-tokens-category-length.png' | url }}">
     </uxdot-example>
-    <a href="length/" slot="headline"><h3>Length</h3></a>
+    <a slot="headline" href="{{ 'length/' | url }}"><h3>Length</h3></a>
   </rh-tile>
   <rh-tile compact bleed>
     <uxdot-example slot="image" no-border>
       <img alt="Tokens for media query sizes" src="{{ '/tokens/images/design-tokens-category-media-query.png' | url }}">
     </uxdot-example>
-    <a href="media-query/" slot="headline"><h3>Media query</h3></a>
+    <a slot="headline" href="{{ 'media/' | url }}"><h3>Media query</h3></a>
   </rh-tile>
   <rh-tile compact bleed>
     <uxdot-example slot="image" no-border>
       <img alt="Tokens for opacity values" src="{{ '/tokens/images/design-tokens-category-opacity.png' | url }}">
     </uxdot-example>
-    <a href="opacity/" slot="headline"><h3>Opacity</h3></a>
+    <a slot="headline" href="{{ 'opacity/' | url }}"><h3>Opacity</h3></a>
   </rh-tile>
   <rh-tile compact bleed>
     <uxdot-example slot="image" no-border>
       <img alt="Tokens for spacer sizes" src="{{ '/tokens/images/design-tokens-category-space.png' | url }}">
     </uxdot-example>
-    <a href="space/" slot="headline"><h3>Space</h3></a>
+    <a slot="headline" href="{{ 'space/' | url }}"><h3>Space</h3></a>
   </rh-tile>
   <rh-tile compact bleed>
     <uxdot-example slot="image" no-border>
       <img alt="Tokens for fonts, sizes, weights, line heights, color, and more" src="{{ '/tokens/images/design-tokens-category-typography.png' | url }}">
     </uxdot-example>
-    <a href="typography/" slot="headline"><h3>Typography</h3></a>
+    <a slot="headline" href="{{ 'font/' | url }}"><h3>Typography</h3></a>
   </rh-tile>
 </nav>
 
