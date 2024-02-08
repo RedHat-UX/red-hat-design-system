@@ -23,12 +23,7 @@ eleventyComputed:
     - "{{ doc.tagName }}"
 
 ---
-
-<link rel="stylesheet" href="{{ '/styles/page.css' | url }}">
-
-<script type="module" src="{{ '/assets/elements/uxdot-feedback.js' | url }}"></script>
-<script type="module" src="{{ '/assets/elements/uxdot-copy-button.js' | url }}"></script>
-
+<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
 {% if doc.slug == 'audio-player' %}
   <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-audio-player/rh-audio-player-lightdom.css">
   <noscript>
@@ -39,6 +34,12 @@ eleventyComputed:
     </style>
   </noscript>
 {% endif %}
+
+<link rel="stylesheet" href="{{ '/styles/page.css' | url }}">
+<link rel="stylesheet" href="{{ '/styles/samp.css' | url }}">
+
+<script type="module" src="{{ '/assets/elements/uxdot-feedback.js' | url }}"></script>
+<script type="module" src="{{ '/assets/elements/uxdot-copy-button.js' | url }}"></script>
 
 {% include 'component/masthead.njk' %}
 {% include 'component/sidenav.njk' %}
