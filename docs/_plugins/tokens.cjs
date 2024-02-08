@@ -86,6 +86,7 @@ function table({ tokens, name = '', docs, options } = {}) {
             'icon': token.path.includes('icon'),
             'breakpoint': isBreakpoint,
             'heading': isHeading,
+            'code': token.path.includes('code'),
           });
 
         return isHSLorRGB ? '' : /* html */`

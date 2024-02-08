@@ -99,13 +99,18 @@ samp.icon {
 
 /* Fonts */
 samp.font {
-  font-size: var(--samp-font-size, var(--rh-font-size-heading-md, 1.75rem));
+  font-size: var(--samp-font-size, var(--rh-font-size-body-text-md, 1rem));
   font-family: var(--samp-font-family, var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif));
   font-weight: var(--samp-font-weight, var(--rh-font-weight-body-text-regular, 400));
 }
 
 samp.font.heading {
+  font-size: var(--samp-font-size, var(--rh-font-size-heading-md, 1.75rem));
   font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+}
+
+samp.font.code {
+  font-family: var(--rh-font-family-code, RedHatMono, "Red Hat Mono", "Courier New", Courier, monospace);
 }
 
 /* Colors */
