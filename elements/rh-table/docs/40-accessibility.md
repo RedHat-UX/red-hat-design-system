@@ -140,11 +140,11 @@ Each cell includes enough spacing for selecting interactive elements.
 - Avoid merged cells. When possible consider breaking a complex table into a series of simpler tables
 - Do not place multiple inactive elements in a single cell
 
-{% include 'accessibility/ariaguide.md' %}
+{% include 'partials/accessibility/ariaguide.md' %}
 
-{% include 'accessibility/wcag.md' %}
-{% include 'accessibility/1.3.1-A.md' %}
-{% include 'accessibility/2.1.1-A.md' %}
-{% include 'accessibility/2.1.3-AAA.md' %}
-{% include 'accessibility/2.4.3-A.md' %}
-{% include 'accessibility/2.5.5-AAA.md' %}
+{% include 'partials/accessibility/wcag.md' %}
+{% include 'partials/accessibility/1.3.1-A.md' %}
+{% include 'partials/accessibility/2.1.1-A.md' %}
+{% include 'partials/accessibility/2.1.3-AAA.md' %}
+{% include 'partials/accessibility/2.4.3-A.md' %}
+{% include 'partials/accessibility/2.5.5-AAA.md' %}

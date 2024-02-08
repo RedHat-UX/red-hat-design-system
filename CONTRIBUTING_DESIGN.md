@@ -73,7 +73,7 @@ tags:
 ### Getting pages into the navigation
 
 The navigation is an included template:
-`pages/component/sidenav.njk`
+`pages/partials/component/sidenav.njk`
 
 It is a mixture of hardcoding and dynamic listing so that it's _hopefully_ easy to understand.
 

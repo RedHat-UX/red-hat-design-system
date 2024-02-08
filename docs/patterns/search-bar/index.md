@@ -291,4 +291,4 @@ between elements.
         alt="Search bar spacing",
         src="./search-bar-spacing.svg" %}
 
-{% include 'layouts/snippets/feedback.html' %}
+{% include 'partials/component/feedback.html' %}

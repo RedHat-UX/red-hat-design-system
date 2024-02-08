@@ -171,4 +171,4 @@ values between elements.
            alt="Video thumbnail spacing specs",
            src="./video-thumbnail-spacing.svg" %}
 
-{% include 'layouts/snippets/feedback.html' %}
+{% include 'partials/component/feedback.html' %}

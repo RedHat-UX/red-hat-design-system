@@ -8,6 +8,6 @@ In addition to indicating badge status via color, visible or visually-hidden tex
 - Ensure badge information is not conveyed by color alone like a read or unread badge
 - Ensure that surrounding content can convey the purpose of a badge via assistive technologies
 
-{% include 'accessibility/ariaguide.md' %}
-{% include 'accessibility/wcag.md' %}
-{% include 'accessibility/1.4.1-A.md' %}
+{% include 'partials/accessibility/ariaguide.md' %}
+{% include 'partials/accessibility/wcag.md' %}
+{% include 'partials/accessibility/1.4.1-A.md' %}

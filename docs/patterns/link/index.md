@@ -321,4 +321,4 @@ The Default call to action link arrow and the external link icon should not appe
 Visit the [Spacing](https://ux.redhat.com/foundations/spacing/) page to see spacing values between link variants and other elements.
 {% endalert %}
 
-{% include 'layouts/snippets/feedback.html' %}
+{% include 'partials/component/feedback.html' %}

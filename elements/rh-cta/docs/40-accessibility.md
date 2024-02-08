@@ -38,10 +38,10 @@ Calls to action should communicate the following to users:
 - The toggle state when a panel is hidden or visible
 - An instruction that a panel will open
 
-{% include 'accessibility/ariaguide.md' %}
+{% include 'partials/accessibility/ariaguide.md' %}
 
-{% include 'accessibility/wcag.md' %}
-{% include 'accessibility/2.1.1-A.md' %}
-{% include 'accessibility/2.1.3-AAA.md' %}
-{% include 'accessibility/2.4.3-A.md' %}
-{% include 'accessibility/2.5.5-AAA.md' %}
+{% include 'partials/accessibility/wcag.md' %}
+{% include 'partials/accessibility/2.1.1-A.md' %}
+{% include 'partials/accessibility/2.1.3-AAA.md' %}
+{% include 'partials/accessibility/2.4.3-A.md' %}
+{% include 'partials/accessibility/2.5.5-AAA.md' %}

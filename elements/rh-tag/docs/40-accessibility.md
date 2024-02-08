@@ -23,11 +23,11 @@ Compare Figure 1 to Figure 2. Both figures include a blue informational tag, a r
         alt="A row of three gray tags all with a unique icon and a unique text label",
         src="../tag-a11y-figure-2.png" %}
 
-{% include 'accessibility/ariaguide.md' %}
+{% include 'partials/accessibility/ariaguide.md' %}
 
-{% include 'accessibility/wcag.md' %}
-{% include 'accessibility/2.1.1-A.md' %}
-{% include 'accessibility/2.1.3-AAA.md' %}
-{% include 'accessibility/2.4.3-A.md' %}
-{% include 'accessibility/2.5.5-AAA.md' %}
+{% include 'partials/accessibility/wcag.md' %}
+{% include 'partials/accessibility/2.1.1-A.md' %}
+{% include 'partials/accessibility/2.1.3-AAA.md' %}
+{% include 'partials/accessibility/2.4.3-A.md' %}
+{% include 'partials/accessibility/2.5.5-AAA.md' %}
 

@@ -88,7 +88,7 @@ Link with icon uses [space tokens](/tokens/space/) to define spacing values betw
            alt="Link with icon spacing",
            src="./link-with-icon-spacing.svg" %}
 
-{% include 'layouts/snippets/feedback.html' %}
+{% include 'partials/component/feedback.html' %}
 
 
 

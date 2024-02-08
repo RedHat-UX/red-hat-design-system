@@ -193,4 +193,4 @@ values between elements.
             alt="A filter with spacers",
             src="./filter-spacing-1.svg" %}
 
-{% include 'layouts/snippets/feedback.html' %}
+{% include 'partials/component/feedback.html' %}

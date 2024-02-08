@@ -17,7 +17,7 @@ The buttons, page input field, and last page link all have keyboard interactions
 
 
 ## Focus order
-{% include 'accessibility/focusorder.md' %}
+{% include 'partials/accessibility/focusorder.md' %}
 
 {% example palette="light",
            alt="Image of paginations showing the focus order from left to right and top to bottom",
@@ -38,10 +38,10 @@ Buttons, page field input, and last page link are adequately spaced for optimal 
 * The active page must be conveyed to assistive technologies
 * Icon only buttons must have accessible names for assistive technologies
 
-{% include 'accessibility/ariaguide.md' %}
+{% include 'partials/accessibility/ariaguide.md' %}
 
-{% include 'accessibility/wcag.md' %}
-{% include 'accessibility/2.1.1-A.md' %}
-{% include 'accessibility/2.1.3-AAA.md' %}
-{% include 'accessibility/2.4.3-A.md' %}
-{% include 'accessibility/2.5.5-AAA.md' %}
+{% include 'partials/accessibility/wcag.md' %}
+{% include 'partials/accessibility/2.1.1-A.md' %}
+{% include 'partials/accessibility/2.1.3-AAA.md' %}
+{% include 'partials/accessibility/2.4.3-A.md' %}
+{% include 'partials/accessibility/2.5.5-AAA.md' %}

@@ -3,33 +3,26 @@ layout: layouts/pages/basic.njk
 title: Oops!
 permalink: 404.html
 ---
-<!doctype html>
 
-{% import 'macros/components.njk' as components %}
-
-    <div class="centered feature-box">
-        <h1 class="section-headline">404 error</h1>
-        <h2 class="pfe-headline-alpha">This is embarrassing, we can’t find that page</h2>
-        <h3 class="pfe-headline-gamma" style="margin-top:48px;">Try one of these popular links instead</h3>
-        <ul class="inline-list">
-            <li><a href="/about">About this website</a></li>
-            <li><a href="/foundations">Foundations</a></li>
-            <li><a href="/elements">Elements</a></li>
-            <li><a href="/patterns">Patterns</a></li>
-            <li><a href="/get-started">Get started</a></li>
-        </ul>
-    </div>
-
-<div class="multi-column--min-300-wide section section--palette-default container feedback">
-
-  <div>
-  {% call components.section("Feedback or requests") -%}
-    <p>Do you have any feedback? Or do you need to request something? Create an issue in our <a href="https://github.com/patternfly/patternfly-elements">GitHub repo</a> if so.</p>
-  {%- endcall %}
-  </div>
-  <div>
-  {% call components.section("Contact us") -%}
-    <p>If you feel that you reached this page in error, <a href="../get-started">contact us</a> and we'll point you in the right direction.</p>
-  {%- endcall %}
-  </div>
+<div class="centered feature-box">
+  <h1 class="section-headline">404 error</h1>
+  <h2 class="pfe-headline-alpha">This is embarrassing, we can’t find that page</h2>
+  <h3 class="pfe-headline-gamma" style="margin-top:48px;">Try one of these popular links instead</h3>
+  <ul class="inline-list">
+    <li><a href="/about">About this website</a></li>
+    <li><a href="/foundations">Foundations</a></li>
+    <li><a href="/elements">Elements</a></li>
+    <li><a href="/patterns">Patterns</a></li>
+    <li><a href="/get-started">Get started</a></li>
+  </ul>
 </div>
+
+<section>
+  <h2>Contact us</h2>
+  <p>If you feel that you reached this page in error, <a href="../get-started">contact us</a> and we'll point you in the right direction.</p>
+
+  <uxdot-feedback>
+    <h3 slot="header">Feedback or requests</h3>
+    <p slot="content">Do you have any feedback? Or do you need to request something? Create an issue in our <a href="https://github.com/patternfly/patternfly-elements">GitHub repo</a> if so.</p>
+  </uxdot-feedback>  
+</section>

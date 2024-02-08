@@ -217,7 +217,7 @@ For more information, please see the [card css custom properties](/elements/card
 
 {% repoStatus %}
 
-{% include 'layouts/snippets/feedback.html' %}
+{% include 'partials/component/feedback.html' %}
 
 
 ## Usage

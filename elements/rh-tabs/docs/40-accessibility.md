@@ -35,14 +35,14 @@
   - Content authors need to ensure content added to the panel is accessible
   - For example, if an image is added to the panel, alternative text needs to be provided to pass testing
 
-  {% include 'accessibility/ariaguide.md' %}
+  {% include 'partials/accessibility/ariaguide.md' %}
 
-  {% include 'accessibility/wcag.md' %}
+  {% include 'partials/accessibility/wcag.md' %}
 
-  {% include 'accessibility/2.1.1-A.md' %}
+  {% include 'partials/accessibility/2.1.1-A.md' %}
 
-  {% include 'accessibility/2.1.3-AAA.md' %}
+  {% include 'partials/accessibility/2.1.3-AAA.md' %}
 
-  {% include 'accessibility/2.4.3-A.md' %}
+  {% include 'partials/accessibility/2.4.3-A.md' %}
 
-  {% include 'accessibility/2.5.5-AAA.md' %}
+  {% include 'partials/accessibility/2.5.5-AAA.md' %}

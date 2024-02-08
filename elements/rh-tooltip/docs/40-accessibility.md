@@ -18,9 +18,9 @@ A tooltip will appear when the trigger receives focus and disappear when moving 
  - Users navigating via screen reader must have tooltip text announced to them when it is triggered
  - If a tooltip is added to a disabled trigger, that trigger must be able to receive focus
 
-{% include 'accessibility/ariaguide.md' %}
-{% include 'accessibility/wcag.md' %}
-{% include 'accessibility/2.1.1-A.md' %}
-{% include 'accessibility/2.1.3-AAA.md' %}
-{% include 'accessibility/2.4.3-A.md' %}
-{% include 'accessibility/2.5.5-AAA.md' %}
+{% include 'partials/accessibility/ariaguide.md' %}
+{% include 'partials/accessibility/wcag.md' %}
+{% include 'partials/accessibility/2.1.1-A.md' %}
+{% include 'partials/accessibility/2.1.3-AAA.md' %}
+{% include 'partials/accessibility/2.4.3-A.md' %}
+{% include 'partials/accessibility/2.5.5-AAA.md' %}

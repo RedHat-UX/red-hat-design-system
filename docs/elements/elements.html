@@ -41,8 +41,8 @@ eleventyComputed:
 <script type="module" src="{{ '/assets/elements/uxdot-feedback.js' | url }}"></script>
 <script type="module" src="{{ '/assets/elements/uxdot-copy-button.js' | url }}"></script>
 
-{% include 'component/masthead.njk' %}
-{% include 'component/sidenav.njk' %}
+{% include 'partials/component/masthead.njk' %}
+{% include 'partials/component/sidenav.njk' %}
 <main>
   <article>
     <uxdot-header>
@@ -62,10 +62,10 @@ eleventyComputed:
 
     <div class="container">
       {% renderFile doc.filePath, doc.docsPage %}
-      {% include 'layouts/snippets/feedback.html' %}
+      {% include 'partials/component/feedback.html' %}
     </div>
 
   </article>
-  {% include "component/back-to-top.njk" %}
+  {% include "partials/component/back-to-top.njk" %}
 </main>
-{% include 'component/footer.njk' %}
+{% include 'partials/component/footer.njk' %}

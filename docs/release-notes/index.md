@@ -120,7 +120,7 @@ For release notes on older versions, please [view our release notes on GitHub](h
 
 </section>
 
-{% feedback %}
+<uxdot-feedback>
   <h2>Roadmap</h2>
   <p>For an up-to-date outline of what we're working on and what we're planning to do in the Red Hat Design System, visit <a href="/about/roadmap">our roadmap</a>.</p>
-{% endfeedback %}
+</uxdot-feedback>

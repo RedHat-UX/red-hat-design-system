@@ -25,7 +25,7 @@ Users should have the ability to navigate to and interact with buttons using the
 
 ## Focus order
 
-{% include 'accessibility/focusorder.md' %} For buttons in groups, the focus order is from left to right and top to bottom when stacked. Disabled buttons are not included in the focus order unless they include the `aria-disabled=“true”` attribute and display a [tooltip](/elements/tooltip) when focused.
+{% include 'partials/accessibility/focusorder.md' %} For buttons in groups, the focus order is from left to right and top to bottom when stacked. Disabled buttons are not included in the focus order unless they include the `aria-disabled=“true”` attribute and display a [tooltip](/elements/tooltip) when focused.
 
 {% example palette="light",
           alt="Image of rows of button groups with numbers; one row has focus indicators only and the other has focus indicators and a tooltip",
@@ -45,9 +45,9 @@ Buttons should communicate the following to users:
  - The toggle state if it has two states
  - An instruction that a menu will open
 
-{% include 'accessibility/ariaguide.md' %}
-{% include 'accessibility/wcag.md' %}
-{% include 'accessibility/2.1.1-A.md' %}
-{% include 'accessibility/2.1.3-AAA.md' %}
-{% include 'accessibility/2.4.3-A.md' %}
-{% include 'accessibility/2.5.5-AAA.md' %}
+{% include 'partials/accessibility/ariaguide.md' %}
+{% include 'partials/accessibility/wcag.md' %}
+{% include 'partials/accessibility/2.1.1-A.md' %}
+{% include 'partials/accessibility/2.1.3-AAA.md' %}
+{% include 'partials/accessibility/2.4.3-A.md' %}
+{% include 'partials/accessibility/2.5.5-AAA.md' %}

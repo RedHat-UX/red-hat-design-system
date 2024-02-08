@@ -5,11 +5,11 @@ importElements:
   - rh-footer
 ---
 
-{% include 'component/masthead.njk' %}
-{% include 'component/sidenav.njk' %}
+{% include 'partials/component/masthead.njk' %}
+{% include 'partials/component/sidenav.njk' %}
 <main>
   {{ content | safe }}
-  {% include "component/back-to-top.njk" %}
+  {% include "partials/component/back-to-top.njk" %}
 </main>
-{% include 'component/footer.njk' %}
+{% include 'partials/component/footer.njk' %}
 

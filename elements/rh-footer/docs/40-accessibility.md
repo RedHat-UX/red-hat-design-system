@@ -39,9 +39,9 @@ When the focus is moved outside of the menu, the menu closes.
 - Long dialog content can still receive focus via keyboard if it overflows and a scrollbar appears
 - When a dialog closes, focus should return to the last focused item before the dialog was opened
 
-{% include 'accessibility/ariaguide.md' %}
-{% include 'accessibility/wcag.md' %}
-{% include 'accessibility/2.1.1-A.md' %}
-{% include 'accessibility/2.1.3-AAA.md' %}
-{% include 'accessibility/2.4.3-A.md' %}
-{% include 'accessibility/2.5.5-AAA.md' %}
+{% include 'partials/accessibility/ariaguide.md' %}
+{% include 'partials/accessibility/wcag.md' %}
+{% include 'partials/accessibility/2.1.1-A.md' %}
+{% include 'partials/accessibility/2.1.3-AAA.md' %}
+{% include 'partials/accessibility/2.4.3-A.md' %}
+{% include 'partials/accessibility/2.5.5-AAA.md' %}

@@ -243,4 +243,4 @@ different audience or brand requirements.
 [typography]: /tokens/typography/
 [contact]: mailto:design-system@redhat.com
 
-{% include 'layouts/snippets/feedback.html' %}
+{% include 'partials/component/feedback.html' %}

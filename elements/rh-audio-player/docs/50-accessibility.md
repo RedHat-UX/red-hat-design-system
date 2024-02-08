@@ -34,13 +34,13 @@ When a user closes a feature by pressing <kbd>Space</kbd> or <kbd>Esc</kbd>, foc
           src="../audio-player-a11y-toggling-feature.png" %}
 
 
-{% include 'accessibility/ariaguide.md' %}
+{% include 'partials/accessibility/ariaguide.md' %}
 
-{% include 'accessibility/wcag.md' %}
-{% include 'accessibility/1.2.1-A.md' %}
-{% include 'accessibility/1.2.2-A.md' %}
-{% include 'accessibility/1.4.1-A.md' %}
-{% include 'accessibility/2.1.1-A.md' %}
-{% include 'accessibility/2.1.3-AAA.md' %}
-{% include 'accessibility/2.4.3-A.md' %}
-{% include 'accessibility/2.5.5-AAA.md' %}
+{% include 'partials/accessibility/wcag.md' %}
+{% include 'partials/accessibility/1.2.1-A.md' %}
+{% include 'partials/accessibility/1.2.2-A.md' %}
+{% include 'partials/accessibility/1.4.1-A.md' %}
+{% include 'partials/accessibility/2.1.1-A.md' %}
+{% include 'partials/accessibility/2.1.3-AAA.md' %}
+{% include 'partials/accessibility/2.4.3-A.md' %}
+{% include 'partials/accessibility/2.5.5-AAA.md' %}

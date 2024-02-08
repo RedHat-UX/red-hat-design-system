@@ -140,7 +140,7 @@ The announcement banner uses [space tokens](/tokens/space/) to define spacing va
            alt="Example of an announcement banner with spacers",
            src="./announcement-spacing-1.svg"  %}
 
-{% include 'layouts/snippets/feedback.html' %}
+{% include 'partials/component/feedback.html' %}
 
 
 

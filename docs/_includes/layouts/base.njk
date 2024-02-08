@@ -1,22 +1,23 @@
 <!doctype html>
 <html class="no-js" lang="">
   <head>
-    {% include "./snippets/meta.njk" %}
+    {% include "../partials/meta.html" %}
 
-    <link rel="stylesheet" href="{{ '/styles/not-defined.css' | url }}">
     <link rel="stylesheet" href="{{ '/styles/reset.css' | url }}">
+    <link rel="stylesheet" href="{{ '/styles/not-defined.css' | url }}">
     <link rel="stylesheet" href="{{ '/assets/redhat/redhat-font/2/webfonts/red-hat-font.css' | url }}" media="all">
-    <link rel="stylesheet" href="{{ '/styles/typography.css' | url }}">
-
-    <link rel="stylesheet" href="{{ '/assets/prism.css' | url }}">
+    
     <link rel="stylesheet" href="{{ '/assets/elements/uxdot-sidenav-lightdom.css' | url }}">
     <link rel="stylesheet" href="{{ '/assets/elements/uxdot-copy-permalink-lightdom.css' | url }}">
     <link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-footer/rh-footer-lightdom.css' | url }}">
 
+    <link rel="stylesheet" href="{{ '/styles/prism.css' | url }}">
+    <link rel="stylesheet" href="{{ '/styles/typography.css' | url }}">
+
     <link rel="stylesheet" href="{{ '/styles/styles.css' | url }}">
 
-    {% include "./snippets/javascript.html" %}
-    {% include "./snippets/usersnap.html" %}
+    {% include "../partials/javascript/global.html" %}
+    {% include "../partials/javascript/usersnap.html" %}
 
     <script type="module">
       // As soon as the DOM is ready, toggle JS class

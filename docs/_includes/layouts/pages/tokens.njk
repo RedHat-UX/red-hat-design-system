@@ -53,8 +53,8 @@ layout: layouts/base.njk
   }
 </style>
 
-{% include 'component/masthead.njk' %}
-{% include 'component/sidenav.njk' %}
+{% include 'partials/component/masthead.njk' %}
+{% include 'partials/component/sidenav.njk' %}
 <main>
   <article >
     <uxdot-header>
@@ -71,10 +71,10 @@ layout: layouts/base.njk
       {{ content | safe }}
     </div>
     
-    {% include "component/back-to-top.njk" %}
+    {% include "partials/component/back-to-top.njk" %}
   </article>
 </main>
 
-{% include 'component/footer.njk' %}
+{% include 'partials/component/footer.njk' %}
 
 <script type="module" src="/assets/tokens/tokens.js"></script>

@@ -415,4 +415,4 @@ values between elements.
            alt="Form component spacing, horizontal",
            src="./form-spacing-horizontal.svg" %}
 
-{% include 'layouts/snippets/feedback.html' %}
+{% include 'partials/component/feedback.html' %}
