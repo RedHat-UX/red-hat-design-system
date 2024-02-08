@@ -167,3 +167,8 @@ samp.opacity {
   width: var(--rh-length-xl, 24px);
   aspect-ratio: 1;
 }
+
+/* Breakpoints */
+samp.breakpoint img {
+  max-height: var(--rh-length-3xl, 48px);
+}

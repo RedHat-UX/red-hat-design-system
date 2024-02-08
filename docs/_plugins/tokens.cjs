@@ -82,6 +82,7 @@ function table({ tokens, name = '', docs, options } = {}) {
             'space': isSpace,
             'length': token.path.includes('length'),
             'icon': token.path.includes('icon'),
+            'breakpoint': isBreakpoint,
           });
 
         return isHSLorRGB ? '' : /* html */`
