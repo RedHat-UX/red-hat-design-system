@@ -11,3 +11,7 @@ rh-table tr.dark:hover {
   background-color: var(--rh-color-surface-dark, #383838) !important;
   color: var(--rh-color-text-primary-on-dark, #ffffff);
 }
+
+rh-table td.media {
+  display: none;
+}

@@ -57,6 +57,9 @@ function table({ tokens, name = '', docs, options } = {}) {
         const isWeight = !!token.path.includes('weight');
         const isWidth = !!token.path.includes('width');
         const isLight = token.path.includes('on-light') || (token.attributes?.subitem !== 'on-light' && token.attributes?.subitem !== 'on-dark');
+        const isOpacity = !!token.path.includes('opacity');
+        const isSpace = !!token.path.includes('space');
+        const isBreakpoint = !!token.path.includes('breakpoint');
 
         const classes = classMap({
             'light': isLight,
@@ -75,6 +78,10 @@ function table({ tokens, name = '', docs, options } = {}) {
             'sm': token.path.includes('sm'),
             'md': token.path.includes('md'),
             'lg': token.path.includes('lg'),
+            'opacity': isOpacity,
+            'space': isSpace,
+            'length': token.path.includes('length'),
+            'icon': token.path.includes('icon'),
           });
 
         return isHSLorRGB ? '' : /* html */`
@@ -84,13 +91,17 @@ function table({ tokens, name = '', docs, options } = {}) {
                 '--samp-radius': isRadius ? token.$value : 'initial',
                 '--samp-width': isWidth ? token.$value : 'initial',
                 '--samp-color': isColor ? token.$value : 'initial',
+                '--samp-opacity': isOpacity ? token.$value : 'initial',
+                '--samp-space': isSpace ? token.$value : 'initial',
                 '--samp-font-family': isFamily ? token.$value : 'var(--rh-font-family-body-text)',
                 '--samp-font-size': isSize ? token.$value : 'var(--rh-font-size-heading-md)',
                 '--samp-font-weight': isWeight ? token.$value : 'var(--rh-font-weight-body-text-regular)',
-                [`--samp-${token.attributes.type === 'icon' && token.$type === 'dimension' ? `${name}-size` : name}`]: token.$value,
+                [`--samp-${token.$type === 'dimension' ? `${name}-size` : name}`]: token.$value,
+                [`${token.$type === 'dimension' && token.attributes.category === 'space' ? `--samp-${name}-color` : ``}`]: isSpace ? token.original['$extensions']['com.redhat.ux'].color : '',
               })}">
-            <td data-label="Example">
-              <samp class="${classes}" ${name === 'space' ? ` style="background-color: ${getDocs(token, options)?.color ?? ''};"` : ''}>
+            <td data-label="Example" class="${classMap({ 'media': token.path.includes('media') })}">
+              <samp class="${classes}">
+              ${isSpace ? `<span class="${parseInt(token.$value) < 16 ? `offset` : ''}">${parseInt(token.$value)}</span>` : ``}
               ${isColor && token.path.includes('text') ? 'Aa'
               : isFont ? (docs?.example ?? token.attributes?.aliases?.[0] ?? 'Aa')
               : name === 'breakpoint' ? `
