@@ -1,9 +1,9 @@
 ## Overview
 {{ tagName | getElementDescription }}
 
-{% example palette="light",
-          alt="An accordion with four collapsed panels and one expanded panel",
-          src="./accordion-sample-element.png" %}
+<uxdot-example>
+  <img src="./accordion-sample-element.png" alt="An accordion with four collapsed panels and one expanded panel">
+</uxdot-example>
 
 ## Sample element
 

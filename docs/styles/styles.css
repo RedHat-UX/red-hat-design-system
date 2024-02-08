@@ -79,6 +79,13 @@ rh-table {
   overflow: unset;
 }
 
+/* TODO: Remove this hack once https://github.com/RedHat-UX/red-hat-design-system/pull/1464
+ merges and can update to latest */
+rh-tile [slot="headline"] a:after,
+rh-tile a[slot="headline"]:after {
+  z-index: 3;
+}
+
 /* Footer */
 rh-footer-universal {
   grid-area: footer;

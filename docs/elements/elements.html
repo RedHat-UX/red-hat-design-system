@@ -24,11 +24,10 @@ eleventyComputed:
 
 ---
 
-<script type="module" src="/assets/elements/uxdot-copy-button.js"></script>
+<link rel="stylesheet" href="{{ '/styles/page.css' | url }}">
 
-{% include 'component/masthead.njk' %}
-
-{% include 'component/sidenav.njk' %}
+<script type="module" src="{{ '/assets/elements/uxdot-feedback.js' | url }}"></script>
+<script type="module" src="{{ '/assets/elements/uxdot-copy-button.js' | url }}"></script>
 
 {% if doc.slug == 'audio-player' %}
   <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-audio-player/rh-audio-player-lightdom.css">
@@ -41,27 +40,30 @@ eleventyComputed:
   </noscript>
 {% endif %}
 
+{% include 'component/masthead.njk' %}
+{% include 'component/sidenav.njk' %}
 <main>
   <article>
     <uxdot-header>
-        <h1 id="{{ doc.slug }}" class="page-title">{{ doc.alias or (doc.slug | deslugify) }}</h1>
-        <rh-subnav slot="subnav">{% for tab in doc.tabs %}
-          <a {{ 'active' if tab.href == page.url }} href="{{ tab.href }}">
-            {{ tab.pageTitle | capitalize }}
-          </a>{% endfor %}
-        </rh-subnav>
+      <h1 id="{{ doc.slug }}" class="page-title">{{ doc.alias or (doc.slug | deslugify) }}</h1>
+      <rh-subnav slot="subnav">{% for tab in doc.tabs %}
+        <a {{ 'active' if tab.href == page.url }} href="{{ tab.href }}">
+          {{ tab.pageTitle | capitalize }}
+        </a>{% endfor %}
+      </rh-subnav>
     </uxdot-header>
-
-    <div class="container">
-      {% renderFile doc.filePath, doc.docsPage %}
-      {% include 'layouts/snippets/feedback.html' %}
-    </div>
 
     {% if hasToc %}
       <aside>
         {{ content | toc | safe }}
       </aside>
     {% endif %}
+
+    <div class="container">
+      {% renderFile doc.filePath, doc.docsPage %}
+      {% include 'layouts/snippets/feedback.html' %}
+    </div>
+
   </article>
   {% include "component/back-to-top.njk" %}
 </main>
