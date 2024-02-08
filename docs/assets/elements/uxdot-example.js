@@ -56,6 +56,9 @@ class UxdotExample extends LitElement {
       --_background: var(--rh-color-surface-darkest, #000000);
     }
 
+    .transparent {
+      --_background: transparent;
+    }
 
     ::slotted(*) {
       display: flex;
@@ -99,6 +102,7 @@ class UxdotExample extends LitElement {
     headline: { type: String },
     headingLevel: { type: Number, attribute: 'heading-level' },
     colorPalette: { type: String, reflect: true, attribute: 'color-palette' },
+    transparent: { type: Boolean },
     variant: { type: String, reflect: true },
     width: { type: String, attribute: 'width-adjustment' },
     noBorder: { type: Boolean, attribute: 'no-border' },
@@ -112,11 +116,13 @@ class UxdotExample extends LitElement {
     this.colorPalette = 'lightest';
     this.width = '100%';
     this.alignment = 'center';
+    this.transparent = false;
   }
 
   render() {
     const classes = {
       [this.colorPalette]: true ?? 'lightest',
+      transparent: this.transparent,
     };
     return html`
       <div id="container" part="container" class="${classMap(classes)}" style="--_width: ${this.width}; --_alignment: ${this.alignment}">

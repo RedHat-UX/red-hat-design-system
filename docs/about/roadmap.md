@@ -24,10 +24,6 @@ importElements:
     font-weight: var(--rh-font-weight-heading-bold, 700);
   }
 
-  rh-tile [slot="headline"]:after {
-     z-index: 3;
-  }
-
   rh-tile [icon="github"] {
     --pf-icon--size: var(--rh-size-icon-03, 32px);
   }

@@ -24,10 +24,6 @@ importElements:
     background: transparent;
   }
 
-  rh-tile [slot="headline"]:after {
-     z-index: 3;
-  }  
-
   rh-tile [slot="headline"] h3,
   rh-tile [slot="image"] {
      margin-block: 0 !important;
