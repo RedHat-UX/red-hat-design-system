@@ -31,15 +31,6 @@ export { RhTab };
  *
  * @summary Arranges content in a contained view on the same page
  *
- * @attr {string} [label-scroll-left] - accessible label for the tab panel's scroll left button. {@default `Scroll left`}
- * @attr {string} [label-scroll-right] - accessible label for the tab panel's scroll right button. {@default `Scroll right`}
- * @attr {boolean} [manual] - Tab activation {@default `false`}
- * @attr {string | undefined} [theme] - Sets the theme for the tabs and panels {@default ``}
- * @attr {string | undefined} [box] - Sets the border color for the active tab {@default ``}
- * @attr {boolean} [vertical] - Sets the alignment of the tabs {@default `false`}
- * @attr {ColorPalette | undefined} [color-palette] - Sets color context for child components, overrides parent context {@default ``}
- * @attr {boolean} [centered] - Aligns tabs to the center {@default `false`}
- *
  * @csspart container - outer container
  * @csspart tabs-container - tabs container
  * @csspart tabs - tablist
@@ -78,17 +69,17 @@ export class RhTabs extends LitElement {
 
   private static instances = new Set<RhTabs>();
 
-  static {
-    // on resize check for overflows to add or remove scroll buttons
-    window.addEventListener('resize', () => {
-      for (const instance of RhTabs.instances) {
-        instance.#overflow.onScroll();
-      }
-    }, { capture: false });
-  }
+  /**
+   * Label for the scroll left button
+   */
+  @property({ reflect: true, attribute: 'label-scroll-left' }) labelScrollLeft = 'Scroll left';
 
   /**
-   * @attr manual - Tab activation
+   * Label for the scroll right button
+   */
+  @property({ reflect: true, attribute: 'label-scroll-right' }) labelScrollRight = 'Scroll right';
+
+  /**
    * Tabs can be either [automatic](https://w3c.github.io/aria-practices/examples/tabs/tabs-automatic.html) activated
    * or [manual](https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html)
    */
@@ -154,13 +145,13 @@ export class RhTabs extends LitElement {
   }) theme?: 'base' | null = null;
 
   /**
-   * Sets the border color for the active tab
+   * Sets tabs to a boxed style with or without and inset
    */
   @cascades('rh-tab', 'rh-tab-panel')
   @property({ reflect: true }) box?: 'box' | 'inset' | null = null;
 
   /**
-   * Sets the alignment of the tabs
+   * Sets the alignment of the tabs vertical
    */
   @cascades('rh-tab', 'rh-tab-panel')
   @property({ reflect: true, type: Boolean }) vertical = false;
@@ -348,6 +339,18 @@ export class RhTabs extends LitElement {
 
   #scrollRight() {
     this.#overflow.scrollRight();
+  }
+
+  // Moved to bottom of file to avoid Custom Element Manifest from incorrectly
+  // parsing the file due to the static block. This block will be removed from
+  // rh-tab.ts after PFE 3.0 is released and we migrate to the TabsController.
+  static {
+    // on resize check for overflows to add or remove scroll buttons
+    window.addEventListener('resize', () => {
+      for (const instance of RhTabs.instances) {
+        instance.#overflow.onScroll();
+      }
+    }, { capture: false });
   }
 }
 
