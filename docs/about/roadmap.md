@@ -11,10 +11,6 @@ importElements:
 <link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css' | url }}">
 
 <style>
-  p {
-    margin-block: var(--rh-space-lg, 16px);
-  }
-
   rh-tile {
     margin-block: var(--rh-space-3xl, 48px);
     max-width: 320px;
