@@ -64,9 +64,10 @@
 ## Demos
   View a live version of this component and see how it can be customized.
   {% playground tagName=tagName %}{% endplayground %}
-  {% cta href="./demo/", target="_blank" %}
-    View the `<rh-accordion>` demo in a new tab
-  {% endcta %}
+  
+  <rh-cta>
+    <a href="{{ './demo/' | url }}">Full screen Demo</a>
+  </rh-cta>
 
 ##  When to use
   - When space is at a premium and content cannot be displayed all at once
