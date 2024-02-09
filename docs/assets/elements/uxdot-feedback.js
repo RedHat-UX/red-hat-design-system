@@ -21,7 +21,7 @@ class UxdotFeedback extends LitElement {
     ::slotted(h2) {
       font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
       font-size: var(--rh-font-size-heading-md, 1.75rem) !important;
-      font-weight: var(--rh-font-weight-heading-regular, 300);
+      font-weight: var(--rh-font-weight-heading-medium, 500);
       line-height: var(--rh-line-height-heading, 1.3);
       margin: var(--rh-space-2xl, 32px) 0 !important;
     }
