@@ -529,29 +529,114 @@ they will not block rendering.</p>
   <dl>
     <dt><strong><code>label-scroll-left</code></strong></dt>
     <dd>
-<p>accessible label for the tab panel's scroll left button.</p>
+<p>Label for the scroll left button</p>
 <dl class="member">
+  <dt>DOM Property</dt>
+  <dd><code>labelScrollLeft</code></dd>
   <dt>Type</dt>
   <dd class="inline-type">
-<pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span><br></code></pre>
+<pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span><br></code></pre>
 </dd>
   <dt>Default</dt>
   <dd class="inline-type">
-<pre class="language-ts"><code class="language-ts"><span class="token string">"Scroll left"</span><br></code></pre>
+<pre class="language-ts"><code class="language-ts"><span class="token string">'Scroll left'</span><br></code></pre>
 </dd>
 </dl>
     </dd>
 <p></p><dt><strong><code>label-scroll-right</code></strong></dt>
 <dd><p></p>
-<p>accessible label for the tab panel's scroll right button.</p>
+<p>Label for the scroll right button</p>
 <dl class="member">
+  <dt>DOM Property</dt>
+  <dd><code>labelScrollRight</code></dd>
   <dt>Type</dt>
   <dd class="inline-type">
-<pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span><br></code></pre>
+<pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span><br></code></pre>
 </dd>
   <dt>Default</dt>
   <dd class="inline-type">
-<pre class="language-ts"><code class="language-ts"><span class="token string">"Scroll right"</span><br></code></pre>
+<pre class="language-ts"><code class="language-ts"><span class="token string">'Scroll right'</span><br></code></pre>
+</dd>
+</dl>
+    </dd>
+<p></p><dt><strong><code>manual</code></strong></dt>
+<dd><p></p>
+<p>Tabs can be either <a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-automatic.html">automatic</a> activated
+or <a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html">manual</a></p>
+<dl class="member">
+  <dt>DOM Property</dt>
+  <dd><code>manual</code></dd>
+  <dt>Type</dt>
+  <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token builtin">boolean</span><br></code></pre>
+</dd>
+  <dt>Default</dt>
+  <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token boolean">false</span><br></code></pre>
+</dd>
+</dl>
+    </dd>
+<p></p><dt><strong><code>color-palette</code></strong></dt>
+<dd><p></p>
+<p>Sets color context for child components, overrides parent context</p>
+<dl class="member">
+  <dt>DOM Property</dt>
+  <dd><code>colorPalette</code></dd>
+  <dt>Type</dt>
+  <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts">ColorPalette <span class="token operator">|</span> <span class="token keyword">undefined</span><br></code></pre>
+</dd>
+  <dt>Default</dt>
+  <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span><br></code></pre>
+</dd>
+</dl>
+    </dd>
+<p></p><dt><strong><code>centered</code></strong></dt>
+<dd><p></p>
+<p>Aligns tabs to the center</p>
+<dl class="member">
+  <dt>DOM Property</dt>
+  <dd><code>centered</code></dd>
+  <dt>Type</dt>
+  <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token builtin">boolean</span><br></code></pre>
+</dd>
+  <dt>Default</dt>
+  <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token boolean">false</span><br></code></pre>
+</dd>
+</dl>
+    </dd>
+<p></p><dt><strong><code>box</code></strong></dt>
+<dd><p></p>
+<p>Sets tabs to a boxed style with or without an inset</p>
+<dl class="member">
+  <dt>DOM Property</dt>
+  <dd><code>box</code></dd>
+  <dt>Type</dt>
+  <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token string">'box'</span> <span class="token operator">|</span> <span class="token string">'inset'</span> <span class="token operator">|</span> <span class="token keyword">null</span> <span class="token operator">|</span> <span class="token keyword">undefined</span><br></code></pre>
+</dd>
+  <dt>Default</dt>
+  <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token keyword">null</span><br></code></pre>
+</dd>
+</dl>
+    </dd>
+<p></p><dt><strong><code>vertical</code></strong></dt>
+<dd><p></p>
+<p>Sets the alignment of the tabs vertical</p>
+<dl class="member">
+  <dt>DOM Property</dt>
+  <dd><code>vertical</code></dd>
+  <dt>Type</dt>
+  <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token builtin">boolean</span><br></code></pre>
+</dd>
+  <dt>Default</dt>
+  <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token boolean">false</span><br></code></pre>
 </dd>
 </dl>
     </dd>

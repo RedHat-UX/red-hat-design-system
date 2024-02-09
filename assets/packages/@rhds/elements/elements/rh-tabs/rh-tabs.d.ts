@@ -10,9 +10,6 @@ export { RhTab };
  *
  * @summary Arranges content in a contained view on the same page
  *
- * @attr [label-scroll-left="Scroll left"] - accessible label for the tab panel's scroll left button.
- * @attr [label-scroll-right="Scroll right"] - accessible label for the tab panel's scroll right button.
- *
  * @csspart container - outer container
  * @csspart tabs-container - tabs container
  * @csspart tabs - tablist
@@ -40,24 +37,43 @@ export declare class RhTabs extends LitElement {
     protected static readonly scrollIconSet: string;
     private static instances;
     /**
-     * Tab activation
+     * Label for the scroll left button
+     */
+    labelScrollLeft: string;
+    /**
+     * Label for the scroll right button
+     */
+    labelScrollRight: string;
+    /**
      * Tabs can be either [automatic](https://w3c.github.io/aria-practices/examples/tabs/tabs-automatic.html) activated
      * or [manual](https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html)
      */
     manual: boolean;
+    /**
+     * Index of the active tab
+     */
     get activeIndex(): number;
     set activeIndex(index: number);
     /**
      * Sets color context for child components, overrides parent context
      */
     colorPalette?: ColorPalette;
+    /**
+     * Aligns tabs to the center
+     */
     centered?: boolean | undefined;
     /**
      * Sets the theme for the tabs and panels
      * @deprecated attribute will be removed in future release, please use the `--rh-tabs-active-border-color` css property directly.
      */
     theme?: 'base' | null;
+    /**
+     * Sets tabs to a boxed style with or without an inset
+     */
     box?: 'box' | 'inset' | null;
+    /**
+     * Sets the alignment of the tabs vertical
+     */
     vertical: boolean;
     protected get canShowScrollButtons(): boolean;
     /**
