@@ -5,7 +5,6 @@ pagination:
   size: 1
   alias: doc
 permalink: "{{ doc.permalink }}"
-bodyClasses: element-docs
 stylesheets:
   - /assets/cem.css
   - /assets/packages/@rhds/elements/elements/rh-subnav/rh-subnav-lightdom.css
@@ -20,10 +19,19 @@ eleventyComputed:
     - rh-subnav
     - rh-code-block
     - rh-table
+    - rh-accordion
+    - rh-badge
     - "{{ doc.tagName }}"
 
 ---
 <link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
+
+<style>
+  rh-accordion + uxdot-copy-permalink {
+    margin-block-start: var(--rh-space-4xl, 64px);
+  }
+</style>
+
 {% if doc.slug == 'audio-player' %}
   <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-audio-player/rh-audio-player-lightdom.css">
   <noscript>
