@@ -60,6 +60,23 @@ uxdot-header:not(:defined) {
 }
 
 /* TODO: `rh-subnav` not defined styles here */
+rh-subnav:not(:defined) {
+  display: flex;
+  flex-direction: row;
+  gap: var(--rh-space-md, 8px);
+  margin-block-start: var(--rh-space-2xl, 32px);
+  max-width: 100%;
+  overflow-x: scroll;
+}
+
+rh-subnav:not(:defined) a {
+  display: block;
+  white-space: nowrap;
+  padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
+  text-decoration: none;
+  color: var(--_subnav-link-text-color, var(--rh-color-text-secondary-on-light, #4d4d4d));
+  position: relative;
+}
 
 uxdot-example:not(:defined) img {
   max-width: 100%;
