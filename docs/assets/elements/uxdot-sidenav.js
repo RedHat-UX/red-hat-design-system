@@ -10,7 +10,7 @@ class UxdotSideNav extends LitElement {
       --_top: var(--uxdot-sidenav-top, 63px);
       --_zindex: var(--uxdot-sidenav-zindex, 2);
       --_padding-block-start: var(--rh-space-2xl, 32px);
-      --_padding-block-end: var(--rh-space-3xl, 48px);
+      --_padding-block-end: var(--rh-space-3xl, 32px);
 
       padding-block-start: var(--_padding-block-start);
       padding-block-end: var(--_padding-block-end);
