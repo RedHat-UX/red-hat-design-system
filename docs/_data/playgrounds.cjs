@@ -108,8 +108,12 @@ module.exports = async function(data) {
 
   const playgroundConfigsMap = new Map();
 
-  const baseCssPath = url.pathToFileURL(path.join(process.cwd(), 'docs/assets/base.css'));
-  const baseCssSource = await fs.readFile(baseCssPath.pathname, 'utf8');
+  const resetCSS = url.pathToFileURL(path.join(process.cwd(), 'docs/styles/reset.css'));
+  const resetCSSSource = await fs.readFile(resetCSS.pathname, 'utf8');
+  const fontsCSS = url.pathToFileURL(path.join(process.cwd(), 'docs/styles/fonts.css'));
+  const fontsCSSSource = await fs.readFile(fontsCSS.pathname, 'utf8');
+  const typographyCSS = url.pathToFileURL(path.join(process.cwd(), 'docs/styles/typography.css'));
+  const typographyCSSSource = await fs.readFile(typographyCSS.pathname, 'utf8');
 
   for (const [primaryElementName, demos] of Object.entries(demoManifests)) {
     const fileMap = new Map();
@@ -120,21 +124,24 @@ module.exports = async function(data) {
       }
 
       const demoSource = await fs.readFile(demo.filePath, 'utf8');
-
       const fragment = parseFragment(demoSource);
 
-      const baseCssPathPrefix = demo.filePath.match(DEMO_FILEPATH_IS_MAIN_DEMO_RE) ? '' : '../';
+      const cssPrefix = demo.filePath.match(DEMO_FILEPATH_IS_MAIN_DEMO_RE) ? '' : '../';
 
       append(
         fragment,
         Tools.createCommentNode('playground-fold'),
         Tools.createElement('link', {
           rel: 'stylesheet',
-          href: 'https://static.redhat.com/libs/redhat/redhat-font/4/webfonts/red-hat-font.min.css'
+          href: `${cssPrefix}reset.css`,
         }),
         Tools.createElement('link', {
           rel: 'stylesheet',
-          href: `${baseCssPathPrefix}rhds-demo-base.css`,
+          href: `${cssPrefix}fonts.css`,
+        }),
+        Tools.createElement('link', {
+          rel: 'stylesheet',
+          href: `${cssPrefix}typography.css`,
         }),
         Tools.createTextNode('\n\n'),
         Tools.createCommentNode('playground-fold-end'),
@@ -172,9 +179,21 @@ module.exports = async function(data) {
         }
       };
 
-      fileMap.set('demo/rhds-demo-base.css', {
+      fileMap.set('demo/reset.css', {
         contentType: 'text/css',
-        content: baseCssSource,
+        content: resetCSSSource,
+        hidden: true,
+      });
+
+      fileMap.set('demo/fonts.css', {
+        contentType: 'text/css',
+        content: fontsCSSSource,
+        hidden: true,
+      });
+
+      fileMap.set('demo/typography.css', {
+        contentType: 'text/css',
+        content: typographyCSSSource,
         hidden: true,
       });
 
@@ -193,9 +212,9 @@ module.exports = async function(data) {
           const attrs = getAttrMap(el);
           await addSubresourceURL(attrs.href);
         } catch (e) {
-          // we can swallow the error for the demo base file because we wrote it ourselves above.
+          // we can swallow the error for the demo typography and font file because we wrote it ourselves above.
           // maybe not the most elegant solution, but it works
-          if (e.subresourceFileURL?.href?.endsWith('rhds-demo-base.css')) {
+          if (e.subresourceFileURL?.href?.endsWith('typography.css') || e.subresourceFileURL?.href?.endsWith('fonts.css')) {
             continue;
           } else {
             // In order to surface the error to the user, let's enable console logging

@@ -28,6 +28,7 @@
   }
 
   p {
+    font-size: var(--rh-font-size-body-text-lg, 1.125rem);
     margin-block: 1em;
   }
 
