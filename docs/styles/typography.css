@@ -39,5 +39,5 @@ body {
 }
 
 :where(p) {
-  font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+  font-size: var(--rh-font-size-body-text-md, 1rem);
 }
