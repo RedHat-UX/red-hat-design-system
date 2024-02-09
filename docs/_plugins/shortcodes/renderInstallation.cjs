@@ -26,7 +26,7 @@ fully initialized.
   return /* md */`
 <script type="module" src="/assets/elements/uxdot-installation-tabs.js"></script>
 
-<section class="band">
+<section>
 
   ## Installation ${!docsPage.manifest?.packageJson ? '' : /* md */`
 

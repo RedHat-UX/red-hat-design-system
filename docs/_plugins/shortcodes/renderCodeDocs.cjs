@@ -100,7 +100,7 @@ class Renderers {
 
   renderBand(content, { level } = {}) {
     return html`
-      <section class="band">
+      <section>
         ${mdHeading(content, { level })}
         ${innerMD(content)}
       </section>`;
@@ -116,7 +116,7 @@ class Renderers {
         </div>
       </section>
 
-      <section class="band">
+      <section>
         <h2>Installation</h2>
 
       ~~~shell
@@ -358,7 +358,7 @@ class Renderers {
   /** Render the installation instructions for the element */
   renderInstallation(content, { header = 'Installation', level = 2, tagName } = {}) {
     return html`
-      <section class="band">
+      <section>
         <h2>Installation</h2>
 
       We recommend loading elements via a CDN such as [JSPM][inst-jspm] and
