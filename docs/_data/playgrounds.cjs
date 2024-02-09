@@ -134,10 +134,6 @@ module.exports = async function(data) {
         }),
         Tools.createElement('link', {
           rel: 'stylesheet',
-          href: 'https://static.redhat.com/libs/redhat/redhat-theme/6/advanced-theme.css'
-        }),
-        Tools.createElement('link', {
-          rel: 'stylesheet',
           href: `${baseCssPathPrefix}rhds-demo-base.css`,
         }),
         Tools.createTextNode('\n\n'),

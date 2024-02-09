@@ -1,0 +1,6 @@
+@layer prism, sidenav, permalink, footer;
+
+@import url('prism.css') layer(prism);
+@import url('../assets/elements/uxdot-sidenav-lightdom.css') layer(sidenav);
+@import url('../assets/elements/uxdot-copy-permalink-lightdom.css') layer(permalink);
+@import url('../assets/packages/@rhds/elements/elements/rh-footer/rh-footer-lightdom.css') layer(footer);

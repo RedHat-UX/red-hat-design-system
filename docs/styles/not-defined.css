@@ -22,6 +22,10 @@ uxdot-masthead:not(:defined) a {
   text-decoration: none;
 }
 
+uxdot-masthead:not(:defined) [slot="hamburger"] {
+  display: none;
+}
+
 uxdot-hero:not(:defined) {
   display: flex;
   flex-direction: column;
@@ -47,10 +51,6 @@ uxdot-hero:not(:defined) [slot="image"] {
   margin-block-start: var(--rh-space-4xl, 64px);
 }
 
-uxdot-masthead:not(:defined) [slot="hamburger"] {
-  display: none;
-}
-
 uxdot-header:not(:defined) {
   padding-inline: var(--rh-space-5xl, 80px);
   padding-block-start: var(--rh-space-5xl, 80px);
@@ -58,6 +58,8 @@ uxdot-header:not(:defined) {
   padding-block-end: var(--rh-space-5xl, 80px);
   background-color: var(--rh-color-surface-lighter, #f2f2f2);
 }
+
+/* TODO: `rh-subnav` not defined styles here */
 
 uxdot-example:not(:defined) img {
   max-width: 100%;

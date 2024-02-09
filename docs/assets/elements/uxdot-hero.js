@@ -16,6 +16,10 @@ class UxdotHero extends LitElement {
       align-items: center;
     }
 
+    slot[name="header"]::slotted(*) {
+      margin-block: 0 !important;
+    }
+
     slot[name="header"]::slotted(h1) {
       color: var(--rh-color-text-brand-on-light, #ee0000);
       margin-block-end: 0;
@@ -37,12 +41,12 @@ class UxdotHero extends LitElement {
       margin-block-start: var(--rh-space-4xl, 64px);
     }
 
-    :host([compact]) slot[name="header"]::slotted(h2) {
+    :host slot[name="header"]::slotted(h2) {
       color: var(--rh-color-text-brand-on-light, #ee0000);
-      padding-block-end: var(--rh-space-2xl, 32px);
       font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
       font-size: var(--rh-font-size-heading-xl, 2.5rem) !important;
-      font-weight: var(--rh-font-weight-heading-regular, 300);
+      font-weight: var(--rh-font-weight-heading-regular, 300) !important;
+      margin-block-end: var(--rh-space-2xl, 32px) !important;
       text-align: center;
     }
 

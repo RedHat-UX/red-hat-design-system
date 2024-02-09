@@ -1,132 +1,145 @@
-body {
-  display: grid;
-  grid-template-rows: max-content;
-  grid-template-areas: "header" "main" "footer";
-  min-height: 100dvh;
-}
+@layer not-defined, reset, fonts, typography, default, components, overrides;
 
-/* Masthead */
-uxdot-masthead {
-  container-type: inline-size;
-  container-name: masthead;
-  grid-area: header;
-}
+@import url('not-defined.css') layer(not-defined);
+@import url('reset.css') layer(reset);
+@import url('fonts.css') layer(fonts);
+@import url('typography.css') layer(typography);
+@import url('components.css') layer(components);
 
-uxdot-masthead a[slot="logo"] > img {
-  max-width: 188px;
-}
-
-@container masthead (max-width: 567px) {
-  uxdot-masthead a[slot="links"] > span {
-    clip: rect(0 0 0 0);
-    clip-path: inset(50%);
-    height: 1px;
-    overflow: hidden;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
-  }
-}
-
-/* Sidenav */
-uxdot-sidenav {
-  grid-area: nav;
-  display: none;
-}
-
-main {
-  grid-area: main;
-  border-inline-start:
-    var(--rh-border-width-sm, 1px)
-    solid
-    var(--rh-color-border-subtle-on-light, #c7c7c7);
-}
-
-.container {
-  padding-inline: var(--rh-space-lg, 16px);
-  padding-block-end: var(--rh-space-lg, 16px);
-}
-
-/* TODO: Determine default value if any */
-p {
-  margin-block: 1em;
-}
-
-a {
-  color: var(--rh-color-interactive-blue-darker, #0066cc);
-}
-
-a:hover {
-  color: var(--rh-color-interactive-blue-darkest, #003366);
-}
-
-a:visited {
-  color: var(--rh-color-interactive-purple-darkest, #21134d);
-}
-
-hr {
-  border-block-start:
-    var(--rh-border-width-sm, 1px)
-    solid
-    var(--rh-color-border-subtle-on-light, #c7c7c7);
-  border-inline: none;
-  border-block-end: none;
-  margin-block-end: var(--rh-space-2xl, 32px);
-}
-
-/* TODO: Document this bug table overflows vertically causing a scrollbar when it shouldn't */
-rh-table {
-  overflow: unset;
-}
-
-/* Tile */
-rh-tile[compact] uxdot-example::part(container) {
-  margin-block-end: 0;
-}
-
-/* TODO: Remove this hack once https://github.com/RedHat-UX/red-hat-design-system/pull/1464
- merges and can update to latest */
-rh-tile [slot="headline"] a:after,
-rh-tile a[slot="headline"]:after {
-  z-index: 3;
-}
-
-/* Footer */
-rh-footer-universal {
-  grid-area: footer;
-}
-
-@media (min-width: 567px) {
-  .container {
-    padding-inline: var(--rh-space-2xl, 32px);
-    padding-block-end: var(--rh-space-2xl, 32px);
-  }
-}
-
-@media (min-width: 768px) {
-  .container {
-    padding-inline: var(--rh-space-3xl, 48px);
-    padding-block-end: var(--rh-space-3xl, 48px);
-  }
-}
-
-@media (min-width: 992px) {
+@layer default {
   body {
-    grid-template-rows: max-content 1fr max-content;
-    grid-template-columns: minmax(300px, 320px) max-content 1fr;
-    grid-template-areas:
-      "header header header"
-      "nav main main"
-      "nav footer footer";
+    display: grid;
+    grid-template-rows: max-content;
+    grid-template-areas: "header" "main" "footer";
+    min-height: 100dvh;
   }
 
-  uxdot-sidenav {
-    display: block;
+  main {
+    grid-area: main;
+    border-inline-start:
+      var(--rh-border-width-sm, 1px)
+      solid
+      var(--rh-color-border-subtle-on-light, #c7c7c7);
   }
 
   .container {
-    max-width: 1300px;
-    padding-inline: var(--rh-space-5xl, 80px);
-    padding-block-end: var(--rh-space-5xl, 80px);
+    padding-inline: var(--rh-space-lg, 16px);
+    padding-block-end: var(--rh-space-lg, 16px);
+  }
+
+  p {
+    margin-block: 1em;
+  }
+
+  a {
+    color: var(--rh-color-interactive-blue-darker, #0066cc);
+  }
+
+  a:hover {
+    color: var(--rh-color-interactive-blue-darkest, #003366);
+  }
+
+  a:visited {
+    color: var(--rh-color-interactive-purple-darkest, #21134d);
+  }
+
+  hr {
+    border-block-start:
+      var(--rh-border-width-sm, 1px)
+      solid
+      var(--rh-color-border-subtle-on-light, #c7c7c7);
+    border-inline: none;
+    border-block-end: none;
+    margin-block-end: var(--rh-space-2xl, 32px);
+  }
+
+  @media (min-width: 567px) {
+    .container {
+      padding-inline: var(--rh-space-2xl, 32px);
+      padding-block-end: var(--rh-space-2xl, 32px);
+    }
+  }
+
+  @media (min-width: 768px) {
+    .container {
+      padding-inline: var(--rh-space-3xl, 48px);
+      padding-block-end: var(--rh-space-3xl, 48px);
+    }
+  }
+
+  @media (min-width: 992px) {
+    body {
+      grid-template-rows: max-content 1fr max-content;
+      grid-template-columns: minmax(300px, 320px) max-content 1fr;
+      grid-template-areas:
+        "header header header"
+        "nav main main"
+        "nav footer footer";
+    }
+
+    .container {
+      max-width: 1300px;
+      padding-inline: var(--rh-space-5xl, 80px);
+      padding-block-end: var(--rh-space-5xl, 80px);
+    }
+  }
+}
+
+@layer overrides {
+  /* Masthead */
+  uxdot-masthead {
+    container-type: inline-size;
+    container-name: masthead;
+    grid-area: header;
+  }
+
+  uxdot-masthead a[slot="logo"] > img {
+    max-width: 188px;
+  }
+
+  @container masthead (max-width: 567px) {
+    uxdot-masthead a[slot="links"] > span {
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      height: 1px;
+      overflow: hidden;
+      position: absolute;
+      white-space: nowrap;
+      width: 1px;
+    }
+  }
+
+  /* Sidenav */
+  uxdot-sidenav {
+    grid-area: nav;
+    display: none;
+  }
+
+  /* TODO: Document this bug table overflows vertically causing a scrollbar when it shouldn't */
+  rh-table {
+    overflow: unset;
+  }
+
+  /* Tile */
+  rh-tile[compact] uxdot-example::part(container) {
+    margin-block-end: 0;
+  }
+
+  /* TODO: Remove this hack once https://github.com/RedHat-UX/red-hat-design-system/pull/1464
+  merges and can update to latest */
+  rh-tile [slot="headline"] a:after,
+  rh-tile a[slot="headline"]:after {
+    z-index: 3;
+  }
+
+  /* Footer */
+  rh-footer-universal {
+    grid-area: footer;
+  }
+
+  @media (min-width: 992px) {
+    uxdot-sidenav {
+      display: block;
+    }
   }
 }
