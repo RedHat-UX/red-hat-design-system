@@ -15,31 +15,11 @@ importElements:
 <script type="module" src="{{ '/assets/tokens/tokens.js' | url }}"></script>
 {% endif %}
 
-
 {% include 'partials/component/masthead.njk' %}
 {% include 'partials/component/sidenav.njk' %}
 <main>
   <article>
-    <uxdot-header>
-      <h1 id="{{ title | slug }}" class="page-title">{{ title }}</h1>
-
-      {% if tokenSearch %}
-        <form slot="search" id="search-tokens" action="/tokens/search">
-          <uxdot-search id="search-input"
-            name="search"
-            aria-label="Search for tokens"
-            placeholder="Enter a token name"></uxdot-search>
-        </form>
-      {% endif %}
-
-      {% if subnav.collection %}
-        <rh-subnav slot="subnav">{% for tab in collections[subnav.collection] %}
-          <a {{ 'active' if tab.url == page.url }} href="{{ tab.url }}">
-            {{ tab.data.title }}
-          </a>{% endfor %}
-        </rh-subnav>
-      {% endif %}
-    </uxdot-header>
+    {% include 'partials/component/header.njk' %}
     
     {% if hasToc %}
       <aside>

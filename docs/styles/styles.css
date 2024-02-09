@@ -1,10 +1,10 @@
 @layer not-defined, reset, fonts, typography, default, components, overrides;
 
-@import url('not-defined.css') layer(not-defined);
-@import url('reset.css') layer(reset);
-@import url('fonts.css') layer(fonts);
-@import url('typography.css') layer(typography);
-@import url('components.css') layer(components);
+@import url("not-defined.css") layer(not-defined);
+@import url("reset.css") layer(reset);
+@import url("fonts.css") layer(fonts);
+@import url("typography.css") layer(typography);
+@import url("components.css") layer(components);
 
 @layer default {
   body {
