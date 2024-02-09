@@ -59,6 +59,10 @@ uxdot-header:not(:defined) {
   background-color: var(--rh-color-surface-lighter, #f2f2f2);
 }
 
+uxdot-header:not(:defined) h1 {
+  font-weight: var(--rh-font-weight-heading-regular, 300);
+}
+
 /* TODO: `rh-subnav` not defined styles here */
 rh-subnav:not(:defined) {
   display: flex;
