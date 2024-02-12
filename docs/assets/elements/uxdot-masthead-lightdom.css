@@ -2,6 +2,7 @@
 uxdot-masthead {
   container-type: inline-size;
   container-name: masthead;
+  z-index: 3;
 }
 
 uxdot-masthead a[slot="logo"] > img {

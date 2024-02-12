@@ -1,9 +1,4 @@
 @layer page {
-  main {
-    container-type: inline-size;
-    container-name: main;
-  }
-
   article {
     display: grid;
     width: 100%;

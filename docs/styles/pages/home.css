@@ -1,11 +1,5 @@
 @layer page {
   /* Homepage */
-
-  main {
-    container-type: inline-size;
-    container-name: main;
-  }
-
   .container {
     padding-block-start: var(--rh-space-4xl, 64px);
   }
