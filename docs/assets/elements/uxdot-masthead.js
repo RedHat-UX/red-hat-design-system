@@ -12,10 +12,11 @@ class UxdotMasthead extends LitElement {
 
     #container {
       display: grid;
-      gap: var(--rh-space-lg, 16px);
+      gap: var(--rh-space-lg, 8px);
       grid-template-columns: max-content 1fr max-content;
-      height: var(--uxdot-masthead-height, 56px);
-      margin: var(--rh-space-md, 8px);
+      max-height: var(--uxdot-masthead-max-height, 72px);
+      margin-inline: var(--rh-space-md, 8px);
+      margin-block: var(--rh-space-lg, 16px);
     }
 
     slot[name="hamburger"] {
@@ -50,7 +51,6 @@ class UxdotMasthead extends LitElement {
       flex-direction: row;
       align-items: center;
       gap: var(--rh-space-md, 8px);
-      max-width: 188px;
     }
 
     slot[name="links"]::slotted(a) {
@@ -66,6 +66,13 @@ class UxdotMasthead extends LitElement {
     slot[name="links"]:hover::slotted(a),
     slot[name="links"]::slotted(a:hover) {
       color: var(--rh-color-icon-subtle-hover, #a3a3a3) !important;
+    }
+
+    @media (min-width: 567px) {
+      #container {
+        gap: var(--rh-space-lg, 16px);
+        margin: var(--rh-space-lg, 16px);
+      }
     }
 
     @media (min-width: 992px) {

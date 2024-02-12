@@ -19,7 +19,7 @@ uxdot-masthead:not(:defined) {
   justify-content: space-between;
   align-items: center;
   gap: var(--rh-space-lg, 16px);
-  height: var(--uxdot-masthead-height, 72px);
+  max-height: var(--uxdot-masthead-max-height, 72px);
   padding: var(--rh-space-md, 8px);
 }
 

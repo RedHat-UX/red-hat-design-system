@@ -2,6 +2,9 @@ uxdot-sidenav {
   display: none;
   padding-block-start: var(--rh-space-2xl, 32px);
   padding-block-end: var(--rh-space-3xl, 48px);
+  max-height: calc(100dvh - var(--uxdot-masthead-max-height, 72px));
+  position: sticky;
+  top: var(--uxdot-masthead-max-height, 72px);
 }
 
 uxdot-sidenav > ul {
@@ -28,7 +31,7 @@ uxdot-sidenav-dropdown > details > summary {
 
 uxdot-sidenav-item,
 uxdot-sidenav-dropdown > details > summary,
-uxdot-sidenav-dropdown-menu-item > a{
+uxdot-sidenav-dropdown-menu-item > a {
   border-inline-start:
     var(--rh-border-width-lg, 3px)
     solid

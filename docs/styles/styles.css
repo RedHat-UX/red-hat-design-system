@@ -38,6 +38,10 @@
 }
 
 @layer layout {
+  :root {
+    --uxdot-masthead-max-height: 72px;
+  }
+
   body {
     display: grid;
     grid-template-rows: max-content;

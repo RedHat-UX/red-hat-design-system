@@ -7,28 +7,8 @@ import { LitElement, html, css } from 'lit';
 class UxdotSideNav extends LitElement {
   static styles = css`
     :host {
-      --_top: var(--uxdot-sidenav-top, 63px);
-      --_zindex: var(--uxdot-sidenav-zindex, 2);
-      --_padding-block-start: var(--rh-space-2xl, 32px);
-      --_padding-block-end: var(--rh-space-3xl, 32px);
-
-      padding-block-start: var(--_padding-block-start);
-      padding-block-end: var(--_padding-block-end);
+      display: block;
     }
-
-    nav {
-      position: sticky;
-      top: calc(var(--_top) + var(--rh-space-2xl, 32px));
-      max-height: calc(100dvh - (var(--_top) + var(--_padding-block-start) + var(--_padding-block-end)));
-      overflow-y: auto;
-    }
-
-    ::slotted(ul) {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-
   `;
 
   render() {
