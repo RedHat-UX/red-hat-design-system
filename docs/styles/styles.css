@@ -1,4 +1,5 @@
-@layer reset, fonts, typography, prism, not-defined, lightdom, default, patterns, overrides;
+@layer reset, fonts, typography, base, layout,
+  prism, not-defined, lightdom, default, patterns, overrides;
 
 @import url("not-defined.css") layer(not-defined);
 @import url("reset.css") layer(reset);
@@ -7,27 +8,7 @@
 @import url("lightdom.css") layer(lightdom);
 @import url("prism.css") layer(prism);
 
-@layer default {
-  body {
-    display: grid;
-    grid-template-rows: max-content;
-    grid-template-areas: "header" "main" "footer";
-    min-height: 100dvh;
-  }
-
-  main {
-    grid-area: main;
-    border-inline-start:
-      var(--rh-border-width-sm, 1px)
-      solid
-      var(--rh-color-border-subtle-on-light, #c7c7c7);
-  }
-
-  .container {
-    padding-inline: var(--rh-space-lg, 16px);
-    padding-block-end: var(--rh-space-lg, 16px);
-  }
-
+@layer base {
   p {
     font-size: var(--rh-font-size-body-text-lg, 1.125rem);
     margin-block: 1em;
@@ -53,6 +34,28 @@
     border-inline: none;
     border-block-end: none;
     margin-block-end: var(--rh-space-2xl, 32px);
+  }
+}
+
+@layer layout {
+  body {
+    display: grid;
+    grid-template-rows: max-content;
+    grid-template-areas: "header" "main" "footer";
+    min-height: 100dvh;
+  }
+
+  main {
+    grid-area: main;
+    border-inline-start:
+      var(--rh-border-width-sm, 1px)
+      solid
+      var(--rh-color-border-subtle-on-light, #c7c7c7);
+  }
+
+  .container {
+    padding-inline: var(--rh-space-lg, 16px);
+    padding-block-end: var(--rh-space-lg, 16px);
   }
 
   uxdot-masthead {
