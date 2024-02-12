@@ -1,7 +1,10 @@
 uxdot-sidenav {
+  --uxdot-sidenav-padding-start: var(--rh-space-2xl, 32px);
+  --uxdot-sidenav-padding-end: var(--rh-space-2xl, 32px);
+
   display: none;
   padding-block-start: var(--rh-space-2xl, 32px);
-  padding-block-end: var(--rh-space-3xl, 48px);
+  padding-block-end: var(--rh-space-2xl, 32px);
   max-height: calc(100dvh - var(--uxdot-masthead-max-height, 72px));
   position: sticky;
   top: var(--uxdot-masthead-max-height, 72px);
@@ -11,6 +14,15 @@ uxdot-sidenav > ul {
   list-style: none;
   padding: 0;
   margin-block: 0;
+  max-height:
+    calc(
+        100dvh - (
+          var(--uxdot-masthead-max-height, 72px)
+          + var(--uxdot-sidenav-padding-start)
+          + var(--uxdot-sidenav-padding-end)
+        )
+      );
+  overflow-y: scroll;
 }
 
 uxdot-sidenav-item {
