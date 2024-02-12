@@ -5,7 +5,6 @@ class UxdotHeader extends LitElement {
   static styles = css`
     :host {
       display: block;
-      width: 100%;
       background-color: var(--rh-color-surface-lighter, #f2f2f2);
       color: var(--rh-color-text-primary-on-light, #151515);
       margin-block-end: var(--rh-space-5xl, 80px);
@@ -14,6 +13,10 @@ class UxdotHeader extends LitElement {
     }
 
     #container {
+      display: block;
+      position: sticky;
+      top: -56px;
+      z-index: 2;
       max-width: 1140px;
       padding-block-start: var(--rh-space-2xl, 32px);
       padding-inline: var(--rh-space-2xl, 32px);
@@ -54,6 +57,7 @@ class UxdotHeader extends LitElement {
 
     @container header (min-width: 992px) {
       #container {
+        top: 100px;
         padding-inline: var(--rh-space-5xl, 80px);
         padding-block-start: var(--rh-space-5xl, 80px);
       }
@@ -67,7 +71,6 @@ class UxdotHeader extends LitElement {
         grid-template-areas: 'heading search';
       }
     }
-
   `;
 
   static properties = {

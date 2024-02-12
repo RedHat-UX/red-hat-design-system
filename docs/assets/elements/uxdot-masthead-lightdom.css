@@ -1,0 +1,48 @@
+/* Masthead */
+uxdot-masthead {
+  container-type: inline-size;
+  container-name: masthead;
+}
+
+uxdot-masthead a[slot="logo"] > img {
+  max-width: 188px;
+}
+
+uxdot-masthead:not(:defined) {
+  background-color: var(--rh-color-surface-darkest, #151515);
+  color: var(--rh-color-text-primary-on-dark, #ffffff);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--rh-space-lg, 16px);
+  height: var(--uxdot-masthead-height, 72px);
+  padding: var(--rh-space-md, 8px);
+}
+
+uxdot-masthead:not(:defined) a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--rh-space-md, 8px);
+  color: var(--rh-color-text-primary-on-dark, #ffffff);
+  text-decoration: none;
+}
+
+uxdot-masthead:not(:defined) [slot="hamburger"] {
+  display: none;
+}
+
+@container masthead (max-width: 567px) {
+  uxdot-masthead a[slot="links"] > span {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+}
