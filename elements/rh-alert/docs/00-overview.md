@@ -13,7 +13,7 @@
   {% playground tagName=tagName %}{% endplayground %}
   
   <rh-cta>
-    <a href="{{ './demo/' | url }}">Full screen Demo</a>
+    <a href="{{ './demo/' | url }}">Full screen demo</a>
   </rh-cta>
 
 ## When to use

@@ -1,8 +1,8 @@
 ## Overview
+
 {{ tagName | getElementDescription }}
 
 ## Sample element
-<h3 hidden></h3>
 
 <rh-audio-player lang="en-US"
                  layout="full"
@@ -2630,11 +2630,13 @@
 </rh-audio-player>
 
 ## Demos
-  View a live version of this component and see how it can be customized.
-  {% playground tagName=tagName %}{% endplayground %}
-  {% cta href="./demo/", target="_blank" %}
-    View the `<rh-audio-player>` demo in a new tab
-  {% endcta %}
+
+View a live version of this component and see how it can be customized.
+{% playground tagName=tagName %}{% endplayground %}
+
+<rh-cta>
+  <a href="{{ './demo/' | url }}">Full screen demo</a>
+</rh-cta>
 
 ## When to use
 - When you need a lightweight player to play short or long audio clips
