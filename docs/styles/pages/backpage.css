@@ -1,0 +1,93 @@
+@layer page {
+  main {
+    container-type: inline-size;
+    container-name: main;
+  }
+
+  article {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "toc"
+      "content";
+  }
+
+  uxdot-header {
+    grid-area: header;
+  }
+
+  .container {
+    grid-area: content;
+    container-type: inline-size;
+    container-name: container;
+  }
+
+  .container h2,
+  uxdot-copy-permalink h2 {
+    font-size: var(--rh-font-size-heading-md, 1.75rem) !important; /* RHDS h4 heading font size */
+  }
+
+  .container h3,
+  uxdot-copy-permalink h3 {
+    font-size: var(--rh-font-size-heading-sm, 1.5rem) !important; /* RHDS h5 heading font size */
+  }
+
+  .container h4,
+  uxdot-copy-permalink h4 {
+    font-size: var(--rh-font-size-heading-xs, 1.25rem) !important; /* RHDS h6 heading font size */
+  }
+
+  .container h5,
+  uxdot-copy-permalink h5 {
+    font-size: 1.125rem !important; /* Not a RHDS token */
+  }
+
+  .container h6,
+  uxdot-copy-permalink h6 {
+    font-size: 1rem !important; /* Not a RHDS token */
+  }
+
+  .container :is(h2, h3, h3, h4, h5, h6) {
+    font-weight: var(--rh-font-weight-heading-medium, 500);
+    margin-block: 1em;
+  }
+
+  aside {
+    grid-area: toc;
+    padding-inline: var(--rh-space-lg, 16px);
+  }
+
+  @media (min-width: 567px) {
+    aside {
+      padding-inline: var(--rh-space-2xl, 32px);
+    }
+  }
+
+  @media (min-width: 768px) {
+    aside {
+      padding-inline: var(--rh-space-3xl, 48px);
+    }
+  }
+
+  @media (min-width: 992px) {
+    aside {
+      padding-inline: var(--rh-space-5xl, 80px);
+    }
+  }
+
+  /* this follows the @media queries so that it can override the aside */
+  @container main (min-width: 1200px) {
+    article {
+      grid-template-columns: minmax(992px, 1300px) minmax(300px, 1fr);
+      grid-template-areas:
+        "header header"
+        "content toc";
+    }
+
+    aside {
+      padding-inline: 0;
+    }
+  }
+}

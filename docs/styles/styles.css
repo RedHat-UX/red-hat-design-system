@@ -1,12 +1,12 @@
-@layer reset, fonts, typography, base, layout,
-  prism, not-defined, lightdom, default, patterns, overrides;
+/* stylelint-disable-next-line stylistic/max-line-length */
+@layer reset, fonts, typography, base, layout, thirdparty, not-defined, lightdom, default, patterns, page, overrides;
 
 @import url("not-defined.css") layer(not-defined);
 @import url("reset.css") layer(reset);
 @import url("fonts.css") layer(fonts);
 @import url("typography.css") layer(typography);
 @import url("lightdom.css") layer(lightdom);
-@import url("prism.css") layer(prism);
+@import url("prism.css") layer(thirdparty);
 
 @layer base {
   p {
@@ -131,7 +131,7 @@
     overflow: unset;
   }
 
-  /* Tile */
+  /* Compact tile + Uxdot Example reduce overall spacing */
   rh-tile[compact] uxdot-example::part(container) {
     margin-block-end: 0;
   }

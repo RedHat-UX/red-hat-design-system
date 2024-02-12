@@ -1,51 +1,49 @@
-@layer default {
-  @font-face {
-    font-family: RedHatDisplay;
-    src: url("../assets/fonts/RedHatDisplay/RedHatDisplay-Regular.eot");
+@font-face {
+  font-family: RedHatDisplay;
+  src: url("../assets/fonts/RedHatDisplay/RedHatDisplay-Regular.eot");
 
-    /* Modern Browsers */
-    font-style: normal;
-    font-weight: 300;
-    text-rendering: optimizelegibility;
-  }
+  /* Modern Browsers */
+  font-style: normal;
+  font-weight: 300;
+  text-rendering: optimizelegibility;
+}
 
-  @font-face {
-    font-family: RedHatDisplay;
-    src: url("../assets/fonts/RedHatDisplay/RedHatDisplay-Medium.eot");
+@font-face {
+  font-family: RedHatDisplay;
+  src: url("../assets/fonts/RedHatDisplay/RedHatDisplay-Medium.eot");
 
-    /* Modern Browsers */
-    font-style: normal;
-    font-weight: 400;
-    text-rendering: optimizelegibility;
-  }
+  /* Modern Browsers */
+  font-style: normal;
+  font-weight: 400;
+  text-rendering: optimizelegibility;
+}
 
-  @font-face {
-    font-family: RedHatDisplay;
-    src: url("../assets/fonts/RedHatDisplay/RedHatDisplay-Bold.eot");
+@font-face {
+  font-family: RedHatDisplay;
+  src: url("../assets/fonts/RedHatDisplay/RedHatDisplay-Bold.eot");
 
-    /* Modern Browsers */
-    font-style: normal;
-    font-weight: 700;
-    text-rendering: optimizelegibility;
-  }
+  /* Modern Browsers */
+  font-style: normal;
+  font-weight: 700;
+  text-rendering: optimizelegibility;
+}
 
-  @font-face {
-    font-family: RedHatText;
-    src: url("../assets/fonts/RedHatText/RedHatText-Regular.eot");
+@font-face {
+  font-family: RedHatText;
+  src: url("../assets/fonts/RedHatText/RedHatText-Regular.eot");
 
-    /* Modern Browsers */
-    font-style: normal;
-    font-weight: 400;
-    text-rendering: optimizelegibility;
-  }
+  /* Modern Browsers */
+  font-style: normal;
+  font-weight: 400;
+  text-rendering: optimizelegibility;
+}
 
-  @font-face {
-    font-family: RedHatText;
-    src: url("../assets/fonts/RedHatText/RedHatText-Medium.eot");
+@font-face {
+  font-family: RedHatText;
+  src: url("../assets/fonts/RedHatText/RedHatText-Medium.eot");
 
-    /* Modern Browsers */
-    font-style: normal;
-    font-weight: 700;
-    text-rendering: optimizelegibility;
-  }
+  /* Modern Browsers */
+  font-style: normal;
+  font-weight: 700;
+  text-rendering: optimizelegibility;
 }
