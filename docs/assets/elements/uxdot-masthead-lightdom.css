@@ -2,25 +2,22 @@
 uxdot-masthead {
   container-type: inline-size;
   container-name: masthead;
-  z-index: 3;
-}
-
-uxdot-masthead a[slot="logo"] > img {
-  max-width: 188px;
-}
-
-uxdot-masthead:not(:defined) {
+  display: block;
   background-color: var(--rh-color-surface-darkest, #151515);
   color: var(--rh-color-text-primary-on-dark, #ffffff);
   position: sticky;
   top: 0;
-  z-index: 2;
+  z-index: 3;
+}
+
+uxdot-masthead:not(:defined) {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: var(--rh-space-lg, 16px);
   max-height: var(--uxdot-masthead-max-height, 72px);
-  padding: var(--rh-space-md, 8px);
+  padding-inline: var(--rh-space-md, 8px);
+  padding-block: var(--rh-space-lg, 16px);
 }
 
 uxdot-masthead:not(:defined) a {

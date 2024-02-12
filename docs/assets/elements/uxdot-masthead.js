@@ -2,13 +2,6 @@ import { LitElement, html, css } from 'lit';
 
 class UxdotMasthead extends LitElement {
   static styles = css`
-    :host {
-      display: block;
-      background-color: var(--rh-color-surface-darkest, #0a0a0a);
-      position: sticky;
-      top: 0;
-      z-index: 2;
-    }
 
     #container {
       display: grid;
