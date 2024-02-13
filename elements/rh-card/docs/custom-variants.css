@@ -1,0 +1,42 @@
+[color-palette^="light"] {
+  --bar-header-context-background-color: var(--rh-color-surface-light, #e0e0e0);
+}
+
+[color-palette^="dark"] {
+  --bar-header-context-background-color: var(--rh-color-surface-dark, #383838);
+}
+
+rh-card {
+  &:not(:defined) {
+    display: block;
+    opacity: 0;
+    width: 363px;
+    height: 495px;
+  }
+
+  &.full {
+    &::part(header) { margin: 0; }
+
+    & img {
+      object-position: right;
+      object-fit: cover;
+      height: 229px;
+    }
+  }
+
+  &.bar {
+    &::part(header) {
+      margin: 0;
+      padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
+      text-transform: uppercase;
+      font-weight: var(--rh-font-weight-heading-regular, 300);
+      font-size: var(--rh-font-size-body-text-md, 1rem);
+      background-color: var(--bar-header-context-background-color);
+      flex-flow: row wrap;
+    }
+
+    & pf-icon[slot="header"] {
+      color: var(--rh-color-surface-dark);
+    }
+  }
+}

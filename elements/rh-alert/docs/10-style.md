@@ -1,3 +1,7 @@
+<style>uxdot-code-sample rh-alert { max-width: 550px; width: 100%; }</style>
+<script type="module">
+  import '@rhds/elements/rh-button/rh-button.js';
+</script>
 
 ## Style
 
@@ -23,26 +27,58 @@ An alert contains title text with an icon, body text, and a close button. They m
 
 The required elements of an Inline alert are a thin top bar or thin border, icon, title, close button, and a container background. Supporting text and buttons may or may not be included below the title to add clarity or optional actions.
 
-{% example palette="light",
-           alt="Two examples of an inline alert",
-           src="../alert-style-inline.svg" %}
+{% sample code="hidden" %}
+
+<rh-alert state="success" variant="inline" dismissable>
+  <p slot="header">Your information has been submitted successfully.</p>
+</rh-alert>
+
+<rh-alert state="success" variant="inline" dismissable>
+  <h2 slot="header">Success</h2>
+  <p>Your information has been submitted successfully.</p>
+  <rh-button slot="actions" variant="link" data-action="dismiss">Go back</rh-button>
+  <rh-button slot="actions" variant="link" data-action="confirm">Continue</rh-button>
+</rh-alert>
+
+{% endsample %}
 
 ### Inline, alternate
 
 The alternate Inline alert style includes a border instead of a line which can be used to express more urgency or better grab the attention of a user.
 
-{% example palette="light",
-           alt="Two examples of an alternate design for inline alerts",
-           src="../alert-style-inline-alt.svg" %}
+{% sample code="hidden" %}
+
+<rh-alert state="success" variant="alternate" dismissable>
+  <p slot="header">Your information has been submitted successfully.</p>
+</rh-alert>
+
+<rh-alert state="success" variant="alternate" dismissable>
+  <h2 slot="header">Success</h2>
+  <p>Your information has been submitted successfully.</p>
+  <rh-button slot="actions" variant="link" data-action="dismiss">Go back</rh-button>
+  <rh-button slot="actions" variant="link" data-action="confirm">Continue</rh-button>
+</rh-alert>
+
+{% endsample %}
 
 ### Toast
 
 The required elements of a Toast alert are a thin top bar, icon, title, close button, and a white container with a subtle drop shadow. Supporting text and buttons may or may not be included below the title to add clarity or optional actions.
 
-{% example palette="light",
-           alt="Two examples of a toast alert",
-           src="../alert-style-toast.svg" %}
+{% sample code="hidden" %}
 
+<rh-alert state="success" variant="toast" dismissable>
+  <p slot="header">Your information has been submitted successfully.</p>
+</rh-alert>
+
+<rh-alert state="success" variant="toast" dismissable>
+  <h2 slot="header">Success</h2>
+  <p>Your information has been submitted successfully.</p>
+  <rh-button slot="actions" variant="link" data-action="dismiss">Go back</rh-button>
+  <rh-button slot="actions" variant="link" data-action="confirm">Continue</rh-button>
+</rh-alert>
+
+{% endsample %}
 
 ## Interaction states
 

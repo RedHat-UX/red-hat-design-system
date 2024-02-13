@@ -1,7 +1,7 @@
-## Style 
+## Style
 A timestamp is a simple line of text that displays date and time values.
 
-### Anatomy 
+### Anatomy
 {% example palette="light",
           alt="Anatomy of a timestamp which is a simple line of text showing the date first and then the time after",
           src="../timestamp-anatomy.png" %}
@@ -28,15 +28,15 @@ Two lines of text with timestamps applied, one is showing no styling and the oth
 A timestamp can be used in the same themes as text.
 
 ### Light theme
-<div class="example example--palette-lightest component">
-    <rh-timestamp></rh-timestamp>
-</div>
+{% sample %}
+  <rh-timestamp></rh-timestamp>
+{% endsample %}
 
 
 ### Dark theme
-<div class="example example--palette-darkest component">
-    <rh-timestamp></rh-timestamp>
-</div>
+{% sample colorPalette="darkest" %}
+  <rh-timestamp></rh-timestamp>
+{% endsample %}
 
 ## Interaction states 
 If a timestamp is linked, the interaction states are the same as a [link](https://ux.redhat.com/patterns/link/). Go to the Link page to see the interaction states.

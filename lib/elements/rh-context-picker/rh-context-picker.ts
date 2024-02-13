@@ -1,4 +1,4 @@
-import { html, LitElement } from 'lit';
+import { html, LitElement, PropertyValues } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { query } from 'lit/decorators/query.js';
@@ -58,7 +58,14 @@ export class RhContextPicker extends LitElement {
   declare shadowRoot: ShadowRoot;
 
   /** ID of context element to toggle (same root) */
-  @property() target?: string;
+  @property({
+    converter: {
+      fromAttribute(selector: string) { return selector || null; },
+      toAttribute(target: string | HTMLElement) {
+        return target instanceof HTMLElement ? null : target;
+      },
+    },
+  }) target?: string | HTMLElement;
 
   @property() value: ColorPalette = 'darkest';
 
@@ -124,21 +131,27 @@ export class RhContextPicker extends LitElement {
     this.#setValue(state as this['value']);
   }
 
-  firstUpdated() {
-    const oldTarget = this.#target;
-    if (this.target) {
-      const root = this.getRootNode() as Document | ShadowRoot;
-      this.#target = root.getElementById(this.target);
-      this.sync();
-    } else {
-      this.#target = this.closest('rh-surface');
+  updated(changed: PropertyValues<this>) {
+    if (changed.has('target')) {
+      const oldTarget = this.#target;
+      if (this.target instanceof HTMLElement) {
+        this.#target = this.target;
+      } else if (this.target) {
+        const root = this.getRootNode() as Document | ShadowRoot;
+        this.#target = root.getElementById(this.target);
+        this.sync();
+      } else {
+        this.#target = this.closest('rh-surface');
+      }
+      oldTarget?.removeEventListener('change', this.#onChange);
+      this.#target?.addEventListener('change', this.#onChange);
     }
-    oldTarget?.removeEventListener('change', this.#onChange);
-    this.#target?.addEventListener('change', this.#onChange);
   }
 
   #onChange(event: Event) {
-    if (event instanceof ContextChangeEvent) { event.stopPropagation(); }
+    if (event instanceof ContextChangeEvent && event.target !== this) {
+      event.stopPropagation();
+    }
   }
 
   #onInput(event: Event) {

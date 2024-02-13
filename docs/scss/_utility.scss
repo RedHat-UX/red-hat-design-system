@@ -283,6 +283,10 @@
 
   @include breakpoint(tango) {
     margin-top: -16px;
+
+    uxdot-code-sample + & {
+      margin-top: 16px;
+    }
   }
 }
 
@@ -720,8 +724,10 @@ pfe-jump-links-nav {
 // Alert styles
 
 rh-alert {
-  margin-top: 32px;
-  margin-bottom: 32px;
+  margin-block: 32px;
+  uxdot-code-sample & {
+    margin-block: 0;
+  }
 }
 
 .asset-header {
