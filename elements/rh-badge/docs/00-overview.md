@@ -1,12 +1,14 @@
 ## Overview
+
 {{ tagName | getElementDescription }}
-{% example palette="light",
-          width=143,
-          alt="Two badges; from left to right, one badge has a light gray background with a dark gray counter number and the other badge has a blue background with a white counter number",
-          src="./badge-sample-element.png" %}
+
+<uxdot-example width-adjustment="72px">
+  <img src="./badge-sample-element.png" alt="Two badges; from left to right, one badge has a light gray background with a dark gray counter number and the other badge has a blue background with a white counter number">
+</uxdot-example>
 
 
 ## Sample element
+
 <rh-badge number="1" aria-label="1 new message">1</rh-badge>
 <rh-badge number="99" state="info" aria-label="99 details">99</rh-badge>
 <rh-badge number="100" threshold="99" state="moderate" aria-label="99+ details">100</rh-badge>
@@ -15,16 +17,16 @@
 <rh-badge number="2" state="critical" aria-label="2 errors">2</rh-badge>
 
 ## Demos
-View a live version of this component and see how it can be customized.
-{% playground tagName=tagName %}{% endplayground %}
-{% cta href="./demo/", target="_blank" %}
-  View the `<rh-badge>` demo in a new tab
-{% endcta %}
 
+View a live version of this component and see how it can be customized.
+
+{% playground tagName=tagName %}{% endplayground %}
+
+<rh-cta><a href="{{ './demo/' | url }}">Full screen demo</a></rh-cta>
 
 ## When to use
-- When you need to reflect counts like number of objects, events, or unread items
 
+- When you need to reflect counts like number of objects, events, or unread items
 
 
 {% repoStatus type="Element" %}
