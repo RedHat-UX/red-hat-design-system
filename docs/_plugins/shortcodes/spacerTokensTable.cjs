@@ -34,11 +34,17 @@ module.exports = function(eleventyConfig) {
         const body = metaData.map(prop => {
           const px = prop['$value'];
           const size = px.substring(0, px.length - 2);
-          const klass = parseInt(size) < 16 ? `offset size-${size}` : '';
+          const offset = parseInt(size) < 16;
+          const sampClass = offset ? `size-${size}` : '';
+          const offsetClass = offset ? 'offset' : '';
           const { color } = prop['$extensions']['com.redhat.ux'];
           return /* html */`
             <tr>
-              <td data-label="Example"><samp class="space ${klass}" style="--samp-space-size: ${px}; --samp-space-color: ${color};"><span>${size}</span></samp></td>
+              <td data-label="Example">
+                <samp class="space ${sampClass}" style="--samp-space-size: ${px}; --samp-space-color: ${color};">
+                  <span class="${offsetClass}">${size}</span>
+                </samp>
+              </td>
               <td data-label="Token">--${prop.name}</td>
               <td data-label="Description">${prop['$description']}</td>
             </tr>
