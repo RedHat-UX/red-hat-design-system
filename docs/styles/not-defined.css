@@ -27,9 +27,3 @@ uxdot-hero:not(:defined) [slot="image"] {
 uxdot-example:not(:defined) img {
   max-width: 100%;
 }
-
-@media (min-width: 992px) {
-  uxdot-masthead:not(:defined) [slot="logo"] {
-    margin-inline-start: var(--rh-space-lg, 16px);
-  }
-}
