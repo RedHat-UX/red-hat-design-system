@@ -16,7 +16,7 @@ Users should have the ability to navigate to and interact with calls to action u
     </thead>
     <tbody>
       <tr>
-        <td data-label="Key"><kbd>Tab></td>
+        <td data-label="Key"><kbd>Tab</kbd></td>
         <td data-label="Result">Moves focus to the next call to action or interactive element</td>
       </tr>
       <tr>
