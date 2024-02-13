@@ -87,6 +87,18 @@ body.token-docs copy-permalink.h2 + copy-permalink.h3 {
   margin-block-start: var(--rh-space-2xl, 32px);
 }
 
+:not(rh-cta) a[href^="https://red.ht/"]:after,
+:not(rh-cta) a[href^="https://url.corp.redhat.com/"]:after {
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-image: url("/assets/padlock-locked.svg");
+  margin-inline-start: var(--rh-space-xs);
+  vertical-align: middle;
+  margin-block-end: 0.2em;
+}
+
 /* Release Notes & Roadmap styling */
 .releases-links {
   margin-block-start: var(--rh-space-3xl) !important;
