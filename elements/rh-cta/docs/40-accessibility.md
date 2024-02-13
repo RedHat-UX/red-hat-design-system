@@ -2,34 +2,55 @@
 
 Users should have the ability to navigate to and interact with calls to action using their keyboard.
 
-{% example palette="light",
-            alt="Image of three groups with different variants showing focus indicators and tab key labels",
-            src="../cta-a11y-keyboard-interactions.png" %}
+<uxdot-example width-adjustment="872px">
+  <img src="{{ '../cta-a11y-keyboard-interactions.png' | url }}" alt="Image of three groups with different variants showing focus indicators and tab key labels">
+</uxdot-example>
 
-| Key         | Result                                                            |
-| ------------| ------------------------------------------------------------------|
-| Tab         | Moves focus to the next call to action or interactive element     |
-| Shift+Tab   | Moves focus to the previous call to action or interactive element |
-| Enter       | Activates a link                                                  |
-| Enter       | Hides or reveals a panel below a Brick variant                    |
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Key">Key</th>
+        <th scope="col" data-label="Result">Result</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Key"><kbd>Tab></td>
+        <td data-label="Result">Moves focus to the next call to action or interactive element</td>
+      </tr>
+      <tr>
+        <td data-label="Key"><kbd>Shift+Tab</kbd</td>
+        <td data-label="Result">Moves focus to the previous call to action or interactive element</td>
+      </tr>
+      <tr>
+        <td data-label="Key"><kbd>Enter</kbd</td>
+        <td data-label="Result">Activates a link</td>
+      </tr>
+      <tr>
+        <td data-label="Key"><kbd>Enter</kbd</td>
+        <td data-label="Result">Hides or reveals a panel below a Brick variant</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
 
-{.full-width .col-11}
 
 ## Focus order
 
 A logical focus order helps keyboard users operate our websites. Elements need to receive focus in an order that preserves meaning, therefore the focus order should make sense and not jump around randomly. For grouped calls to action, the focus order is from left to right and top to bottom.
 
-{% example palette="light",
-            alt="Image of groups of three variants with numbers one through three moving from left to right and top to bottom",
-            src="../cta-a11y-focus-order.png" %}
+<uxdot-example width-adjustment="465px">
+  <img src="{{ '../cta-a11y-focus-order.png' | url }}" alt="Image of groups of three variants with numbers one through three moving from left to right and top to bottom">
+</uxdot-example>
 
 ## Touch targets
 
 Grouped calls to action are adequately spaced for optimal touch targets.
 
-{% example palette="light",
-            alt="Image of groups of variants with touch targets on top of each",
-            src="../cta-a11y-touch-targets.png" %}
+<uxdot-example width-adjustment="474px">
+  <img src="{{ '../cta-a11y-touch-targets.png' | url }}" alt="Image of groups of variants with touch targets on top of each">
+</uxdot-example>
 
 ## Screen reader guidelines
 
