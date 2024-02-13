@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-`<rh-tabs>`: improved tab reponsive styles
+`<rh-tabs>`: allow tabs with long text content to fit into different-sized containers
