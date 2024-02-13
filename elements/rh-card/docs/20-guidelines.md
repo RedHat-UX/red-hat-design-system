@@ -1,175 +1,268 @@
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--rh-space-2xl, 32px);
+    margin-block-end: var(--rh-space-4xl, 64px);
+  }
+
+  @container container (min-width: 567px) {
+    .grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @container container (min-width: 992px) {
+    .grid {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+</style>
+
 ## Usage
+
 ### Variants
+
 There are several card variants that can be used for a variety of use cases.
 
-- #### Basic
-  Use to display basic content or long paragraphs of text. Secondary and 
-  Default calls to action may be used.
+<div class="grid">
+  <rh-card>
+    <h4 slot="header">Basic</h4>
+    <p>
+      Use to display basic content or long paragraphs of text. Secondary and 
+      Default calls to action may be used.
+    </p>
+  </rh-card>
 
-- #### List
-  Use to display a short amount of content using various list styles. 
-  Secondary and Default calls to action may be used.
+  <rh-card>
+    <h4 slot="header">List</h4>
+    <p>
+      Use to display a short amount of content using various list styles. 
+      Secondary and Default calls to action may be used.
+    </p>
+  </rh-card>
 
-- #### Data
-  Use to display quick facts or short data points under a label. A Secondary 
-  call to action may be used or not.
+  <rh-card>
+    <h4 slot="header">Data</h4>
+    <p>
+      Use to display quick facts or short data points under a label. A Secondary 
+      call to action may be used or not.
+    </p>
+  </rh-card>
 
-- #### Logo
-  Use to display a customer logo in a variety of arrangements. A call to 
-  action is required, otherwise use a logo wall.
+  <rh-card>
+    <h4 slot="header">Logo</h4>
+    <p>
+      Use to display a customer logo in a variety of arrangements. A call to 
+      action is required, otherwise use a logo wall.
+    </p>
+  </rh-card>
 
-- #### Bar
-  Use to add a small icon and a label group to the header section. A larger 
-  icon or a logo may be used.
+  <rh-card>
+    <h4 slot="header">Bar</h4>
+    <p>
+      Use to add a small icon and a label group to the header section. A larger 
+      icon or a logo may be used.
+    </p>
+  </rh-card>
 
-- #### Icon
-  Use to add an icon to the basic style above the text. Secondary and Default 
-  calls to action may be used.
+  <rh-card>
+    <h4 slot="header">Icon</h4>
+    <p>
+      Use to add an icon to the basic style above the text. Secondary and Default 
+      calls to action may be used.
+    </p>
+  </rh-card>
 
-- #### Image
-  Use to add an image to the basic style above the text. Secondary and Default 
-  calls to action may be used.
+  <rh-card>
+    <h4 slot="header">Image</h4>
+    <p>
+      Use to add an image to the basic style above the text. Secondary and Default 
+      calls to action may be used.
+    </p>
+  </rh-card>
 
-- #### Asset
-  Use to display that an asset can be downloaded. An icon and label group or 
-  text may be used to describe the asset.
+  <rh-card>
+    <h4 slot="header">Asset</h4>
+    <p>
+      Use to display that an asset can be downloaded. An icon and label group or 
+      text may be used to describe the asset.
+    </p>
+  </rh-card>
 
-- #### Quote
-  Use to display a short quote with attribution text. Logos, images, and a 
-  Secondary call to action may be used or not.
+  <rh-card>
+    <h4 slot="header">Quote</h4>
+    <p>
+      Use to display a short quote with attribution text. Logos, images, and a 
+      Secondary call to action may be used or not.
+    </p>
+  </rh-card>
 
-- #### Avatars
-  Use to highlight a group of people who engage in an event. A label should be 
-  included, but including text is optional.
+  <rh-card>
+    <h4 slot="header">Avatars</h4>
+    <p>
+      Use to highlight a group of people who engage in an event. A label should be 
+      included, but including text is optional.
+    </p>
+  </rh-card>
 
-- #### Video
-  Use to trigger a video that will play in a [Modal dialog]({{ 
-  '/elements/dialog' }}). Different layout configurations may be used.
+  <rh-card>
+    <h4 slot="header">Video</h4>
+    <p>
+      Use to trigger a video that will play in a [Modal dialog]({{ 
+      '/elements/dialog' }}). Different layout configurations may be used.
+    </p>
+  </rh-card>
 
-- #### Pricing
-  Use to outline the pricing and benefits of something. Elements may be 
-  removed or rearranged depending on content needs.
+  <rh-card>
+    <h4 slot="header">Pricing</h4>
+    <p>
+      Use to outline the pricing and benefits of something. Elements may be 
+      removed or rearranged depending on content needs.
+    </p>
+  </rh-card>
 
-- #### Logo slider
-  Use to display more content about a company when expanded on hover or tap. A 
-  title and text should be included.
+  <rh-card>
+    <h4 slot="header">Logo slider</h4>
+    <p>
+      Use to display more content about a company when expanded on hover or tap. A 
+      title and text should be included.
+    </p>
+  </rh-card>
 
-- #### Name slider
-  Use to display more content about a person when the tray expands. A title 
-  and text should be included.
-  {.multi-column--min-400-wide style="padding:0;list-style-type:none;margin-block:var(--rh-space-2xl) var(--rh-space-4xl);"}
+  <rh-card>
+    <h4 slot="header">Name slider</h4>
+    <p>
+      Use to display more content about a person when the tray expands. A title 
+      and text should be included.
+    </p>
+  </rh-card>
+
+</div>
 
 ### Content
-  Cards have the potential to contain lots of content, like a combination of 
-  text, links, images, multimedia, etc. Ensure content serves the use case, but 
-  keep things simple at the same time. Don’t use too much content in one card, 
-  distribute extra content to other cards or somewhere else on the page. A 
-  [Sticky card]({{ '/patterns/sticky-card/' | url }}) is a kind of card that can 
-  contain similar content, but it sticks to the side of a page and it’s always 
-  present until a user dismisses it.
+
+Cards have the potential to contain lots of content, like a combination of 
+text, links, images, multimedia, etc. Ensure content serves the use case, but 
+keep things simple at the same time. Don’t use too much content in one card, 
+distribute extra content to other cards or somewhere else on the page. A 
+[Sticky card]({{ '/patterns/sticky-card/' | url }}) is a kind of card that can 
+contain similar content, but it sticks to the side of a page and it’s always 
+present until a user dismisses it.
 
 ### Character count
-  The recommended maximum character count for the elements of a card are listed below and include spaces.
 
-  | Element {style="width: 50%" } | Character count |
-  |-------------------------------|-----------------|
-  | Title                         | 20              |
-  | Headline                      | 50              | 
-  | Body text                     | 165             | 
-  | Footer                        | 55              |
+The recommended maximum character count for the elements of a card are listed below and include spaces.
+
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Element" style="width: 50%">Element</th>
+        <th scope="col" data-label="Character count">Character count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Element">Title</td>
+        <td data-label="Character count">20</td>
+      </tr>
+      <tr>
+        <td data-label="Element">Headline</td>
+        <td data-label="Character count">50</td>
+      </tr>
+      <tr>
+        <td data-label="Element">Body text</td>
+        <td data-label="Character count">165</td>
+      </tr>
+      <tr>
+        <td data-label="Element">Footer</td>
+        <td data-label="Character count">55</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
 
 ### Grouping
-  Different card styles can sometimes be grouped together. They can be arranged 
-  in a grid horizontally or vertically, depending on available space or screen 
-  size. Be sure to only group cards together that have similar styles or 
-  content. For example, grouping a basic card with a pricing card will look bad 
-  because they’re not very similar.
 
-  {% example palette="light",
-             class="inline-flex centered",
-             width=784,
-             alt="Grouping of a card",
-             src="../card-usage-grouping.svg" %}
+Different card styles can sometimes be grouped together. They can be arranged 
+in a grid horizontally or vertically, depending on available space or screen 
+size. Be sure to only group cards together that have similar styles or 
+content. For example, grouping a basic card with a pricing card will look bad 
+because they’re not very similar.
 
-  These cards can be grouped together because they have similar styles and 
-  content {.footnote}
+<uxdot-example width-adjustment="784px">
+  <img src="{{ '../card-usage-grouping.svg' | url }}" alt="Grouping of a card">
+</uxdot-example>
+
+These cards can be grouped together because they have similar styles and 
+content {.footnote}
 
 ### Layout
-  Cards are small layouts that should be arranged on a grid and not float 
-  randomly in larger layouts. Cards have a minimum width of four columns and a 
-  maximum width of six columns.
+
+Cards are small layouts that should be arranged on a grid and not float 
+randomly in larger layouts. Cards have a minimum width of four columns and a 
+maximum width of six columns.
 
 ### Other components
-  Cards can include complex components if necessary. For example, the 
-  [Filter]({{ '/patterns/filter/' | url }}) pattern requires an Accordion or a 
-  [Disclosure]({{ '/patterns/disclosure/' | url }}) to sort a content set. Don't 
-  place any other complex components in card layouts.
 
-  {% example palette="light",
-             class="inline-flex centered",
-             width=664,
-             alt="Alternative card usage",
-             src="../card-usage-other.svg" %}
+Cards can include complex components if necessary. For example, the 
+[Filter]({{ '/patterns/filter/' | url }}) pattern requires an Accordion or a 
+[Disclosure]({{ '/patterns/disclosure/' | url }}) to sort a content set. Don't 
+place any other complex components in card layouts.
 
-
+<uxdot-example width-adjustment="664px">
+  <img src="{{ '../card-usage-other.svg' | url }}" alt="Alternative card usage">
+</uxdot-example>
 
 ## Best practices
-  The minimum width of a card in any layout is four columns and the maximum 
-  number of cards that can be used in a row is three.
 
-  {% example palette="wrong",
-             class="inline-flex centered",
-             width=872,
-             alt="Too many cards",
-             src="../card-bestpractice-1.svg" %}
+The minimum width of a card in any layout is four columns and the maximum 
+number of cards that can be used in a row is three.
 
-  Don’t use a primary call to action in any card unless the primary action of a 
-  page is positioned inside of that card.
+<uxdot-example width-adjustment="872px" danger>
+  <img src="{{ '../card-bestpractice-1.svg' | url }}" alt="Too many cards">
+</uxdot-example>
 
-  {% example palette="wrong",
-             class="inline-flex centered",
-             width=360,
-             alt="Card width error",
-             src="../card-bestpractice-2.svg" %}
+Don’t use a primary call to action in any card unless the primary action of a 
+page is positioned inside of that card.
 
-  Don’t use multiple calls to action in one card. Instead, distribute them to 
-  other cards.
+<uxdot-example width-adjustment="360px" danger>
+  <img src="{{ '../card-bestpractice-2.svg' | url }}" alt="Card width error">
+</uxdot-example>
 
-  {% example palette="wrong",
-             class="inline-flex centered",
-             width=360,
-             alt="Multiple calls to action",
-             src="../card-bestpractice-3.svg" %}
+Don’t use multiple calls to action in one card. Instead, distribute them to 
+other cards.
 
-
+<uxdot-example width-adjustment="360px">
+  <img src="{{ '../card-bestpractice-3.svg' | url }}" alt="Multiple calls to action">
+</uxdot-example>
 
 ## Behavior
-### Vertical height
-  The vertical height of cards depends on how much content is placed inside. If 
-  there are multiple cards in a row, the vertical height of each of them will be 
-  determined by the tallest card. Don’t place inconsistent amounts of content in 
-  cards, as this will impact how scannable the group will appear to users.
 
-  {% example palette="light",
-             class="inline-flex centered",
-             width=784,
-             alt="Card height behavior",
-             src="../card-behavior-height.svg" %}
+### Vertical height
+
+The vertical height of cards depends on how much content is placed inside. If 
+there are multiple cards in a row, the vertical height of each of them will be 
+determined by the tallest card. Don’t place inconsistent amounts of content in 
+cards, as this will impact how scannable the group will appear to users.
+
+<uxdot-example width-adjustment="784px">
+  <img src="{{ '../card-behavior-height.svg' | url }}" alt="Card height behavior">
+</uxdot-example>
 
 ### Interactivity
-  If a card contains only one link destination, the entire container and any 
-  elements inside should all be interactive. Otherwise, each interactive element 
-  should continue to be interactive, but not the card container.
 
-  {% example palette="light",
-             class="inline-flex centered",
-             width=784,
-             alt="Card interaction",
-             src="../card-behavior-interaction.svg" %}
+If a card contains only one link destination, the entire container and any 
+elements inside should all be interactive. Otherwise, each interactive element 
+should continue to be interactive, but not the card container.
 
+<uxdot-example width-adjustment="784px">
+  <img src="{{ '../card-behavior-interaction.svg' | url }}" alt="Card interaction">
+</uxdot-example>
 
 ## Interaction states
-  Since cards can consist of a variety of elements, refer to the specific 
-  interaction states that are assigned to each style and component for more 
-  information.
 
+Since cards can consist of a variety of elements, refer to the specific 
+interaction states that are assigned to each style and component for more 
+information.
