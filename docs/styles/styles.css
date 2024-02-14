@@ -113,6 +113,10 @@
 }
 
 @layer flow {
+  figure uxdot-example {
+    margin-block-end: 0;
+  }
+
   rh-alert + uxdot-example {
     margin-block-start: var(--rh-space-2xl, 32px);
   }
