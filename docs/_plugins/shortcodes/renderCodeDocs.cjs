@@ -24,9 +24,14 @@ function innerMD(content = '') {
   return trimmed && `\n\n\n${trimmed}\n\n\n`;
 }
 
-function mdHeading(content, length = 2) {
-  const hashes = Array.from({ length }, () => '#').join('');
-  return innerMD(`${hashes} ${content}`);
+function mdHeading(content, { level = 2 }) {
+  // Following code does not work the 2nd line fixes, however I don't think
+  // this is what we want any more as we are only using this on depreciated
+  // summary headings.  This should be just plain text not a formatted heading.
+  // would be better just to apply styling to that text.
+  // const hashes = Array.from({ length }, () => '#').join('');
+  // const hashes = Array(level).fill('#').join('');
+  return content;
 }
 
 function type(content = '', { lang = 'ts' } = {}) {
