@@ -133,8 +133,19 @@ Users should still be able to read options within the composite group even if th
 
 ### Mouse and focus events
 
-https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/
-Focus order and roving tabindex
+When handling focus consider the following: 
+- The focus indicator should be visible.
+- Some element must be in focus at all times.
+- Focus is consistent and predictable.
+
+For more information see the WAI-ARIA APG's [Fundamental Keyboard Navigation Conventions](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_generalnav) and [Discernible and Predictable Keyboard Focus](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#discernibleandpredictablekeyboardfocus).
+
+
+### Focus order and roving tabindex
+
+Between components, the default method of navigating via keyboard is with the <kbd>Tab</kbd> to move to the next focusable component and <kbd>Shift+Tab</kbd> to move to the previous focusable component. Complex components&mdash;like tabs, toolbars and select lists&mdash;can have multiple focuable items, so rather than force keyboard users to tab through every focusable item within each component, a roving tabindex should be used to allow keboard users to <kbd>Tab</kbd>/<kbd>Shift+Tab</kbd> into the complex component, arrow keys to navigate within the component, and <kbd>Tab</kbd>/<kbd>Shift+Tab</kbd> into the complex component.
+
+Our 
 
 ### Keyboard traps
 Some resources…
