@@ -5,11 +5,6 @@ pagination:
   size: 1
   alias: doc
 permalink: "{{ doc.permalink }}"
-stylesheets:
-  - /assets/cem.css
-  - /assets/packages/@rhds/elements/elements/rh-subnav/rh-subnav-lightdom.css
-  - /assets/packages/@rhds/elements/elements/rh-pagination/rh-pagination-lightdom.css
-  - /assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css
 eleventyComputed:
   title: "{{ doc.pageTitle }} | {{ doc.slug | deslugify }}"
   importElements:
@@ -25,13 +20,6 @@ eleventyComputed:
 
 ---
 <link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
-
-<style>
-  rh-accordion details summary {
-    font-weight: var(--rh-font-weight-heading-medium, 500);
-  }
-</style>
-
 {% if doc.slug == 'audio-player' %}
   <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-audio-player/rh-audio-player-lightdom.css">
   <noscript>
@@ -42,9 +30,17 @@ eleventyComputed:
     </style>
   </noscript>
 {% endif %}
-
+{% if doc.slug == 'pagination' %}
+  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-pagination/rh-pagination-lightdom.css">
+{% endif %}
 <link rel="stylesheet" href="{{ '/styles/pages/backpage.css' | url }}">
 <link rel="stylesheet" href="{{ '/styles/samp.css' | url }}">
+
+<style>
+  rh-accordion details summary {
+    font-weight: var(--rh-font-weight-heading-medium, 500);
+  }
+</style>
 
 <script type="module" src="{{ '/assets/elements/uxdot-feedback.js' | url }}"></script>
 <script type="module" src="{{ '/assets/elements/uxdot-copy-button.js' | url }}"></script>
