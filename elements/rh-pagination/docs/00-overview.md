@@ -2,7 +2,6 @@
 
 {{ tagName | getElementDescription }}
 
-
 <uxdot-example width-adjustment="794px">
   <img src="{{ './pagination-sample.png' | url }}" alt="Image of two paginations; one is full size showing double truncation and a page input field and the other one is compact size showing only a page field input.">
 </uxdot-example>
@@ -38,4 +37,3 @@ View a live version of this element to see how it can be customized.
 
 
 {% repoStatus type="Element" %}
-
