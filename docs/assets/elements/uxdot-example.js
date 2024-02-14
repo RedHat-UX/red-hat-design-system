@@ -8,11 +8,11 @@ class UxdotExample extends LitElement {
       display: block;
       container-type: inline-size;
       container-name: host;
+      margin-block-end: var(--rh-space-2xl, 32px);
     }
 
     #container {
       padding: var(--rh-space-2xl, 32px);
-      margin-block-end: var(--rh-space-2xl, 32px);
       display: flex;
       flex-direction: column;
       align-items: var(--_alignment, center);

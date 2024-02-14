@@ -19,16 +19,6 @@ importElements:
 <link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
 
 
-<style>
-  rh-alert + uxdot-example {
-    margin-block-start: var(--rh-space-2xl, 32px);
-  }
-
-  rh-table {
-    margin-block: var(--rh-space-3xl, 48px);
-  }
-</style>
-
 ## Using color
 
 Our color palette is designed to work across all digital properties,

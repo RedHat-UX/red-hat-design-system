@@ -1,5 +1,5 @@
 /* stylelint-disable-next-line stylistic/max-line-length */
-@layer reset, fonts, typography, base, layout, thirdparty, not-defined, lightdom, default, patterns, page, overrides;
+@layer reset, fonts, typography, base, layout, thirdparty, not-defined, lightdom, default, flow, patterns, page, overrides;
 
 @import url("not-defined.css") layer(not-defined);
 @import url("reset.css") layer(reset);
@@ -34,6 +34,10 @@
     border-inline: none;
     border-block-end: none;
     margin-block-end: var(--rh-space-2xl, 32px);
+  }
+
+  figcaption {
+    color: var(--rh-color-text-secondary-on-light, #4d4d4d);
   }
 }
 
@@ -105,6 +109,16 @@
       padding-inline: var(--rh-space-5xl, 80px);
       padding-block-end: var(--rh-space-5xl, 80px);
     }
+  }
+}
+
+@layer flow {
+  rh-alert + uxdot-example {
+    margin-block-start: var(--rh-space-2xl, 32px);
+  }
+
+  rh-table {
+    margin-block: var(--rh-space-3xl, 48px);
   }
 }
 
