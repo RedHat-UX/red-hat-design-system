@@ -6,6 +6,14 @@
     margin-block-end: var(--rh-space-4xl, 64px);
   }
 
+  .grid rh-card h4 {
+    margin-block: 0;
+  }
+
+  .grid rh-card::part(footer) {
+    display: none;
+  }
+
   @container container (min-width: 567px) {
     .grid {
       grid-template-columns: 1fr 1fr;
