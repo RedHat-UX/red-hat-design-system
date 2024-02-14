@@ -131,7 +131,7 @@ For disabled composite components, such as fieldsets, radio groups, menus, and l
 
 Users should still be able to read options within the composite group even if they cannot activate or trigger them. For example, a disabled dropdown menu should allow users to toggle it open via keyboard and focus on options even when activating the options is disabled.
 
-### Mouse and focus events
+### Keyboard navigation and focus events
 
 When handling focus consider the following: 
 - The focus indicator should be visible.
@@ -143,15 +143,17 @@ For more information see the WAI-ARIA APG's [Fundamental Keyboard Navigation Con
 
 ### Focus order and roving tabindex
 
-Between components, the default method of navigating via keyboard is with the <kbd>Tab</kbd> to move to the next focusable component and <kbd>Shift+Tab</kbd> to move to the previous focusable component. Complex components&mdash;like tabs, toolbars and select lists&mdash;can have multiple focuable items, so rather than force keyboard users to tab through every focusable item within each component, a roving tabindex should be used to allow keboard users to <kbd>Tab</kbd>/<kbd>Shift+Tab</kbd> into the complex component, arrow keys to navigate within the component, and <kbd>Tab</kbd>/<kbd>Shift+Tab</kbd> into the complex component.
+Between components, the default method of navigating via keyboard is with the <kbd>Tab</kbd> to move to the next focusable component and <kbd>Shift+Tab</kbd> to move to the previous focusable component. Complex components can have multiple focuable items, so rather than force keyboard users to tab through every focusable item within each component, a [roving tabindex]((https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#keyboardnavigationbetweencomponents(thetabsequence))) should be used to allow keboard users to <kbd>Tab</kbd>/<kbd>Shift+Tab</kbd> into the complex component, arrow keys to navigate within the component, and <kbd>Tab</kbd>/<kbd>Shift+Tab</kbd> into the complex component.  (See the WAI-ARIA APG's [Managing Focus Within Components Using a Roving tabindex](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_roving_tabindex).)
 
-Our 
+Our complex components, like accordion, secondary navigation, subnavigation, tabs, and tile, use this roving tabindex method via a reactive controller. (See [Contributors: Accessibility controllers](../contributors/#accessibility-controllers).)
 
 ### Keyboard traps
-Some resources…
-- WCAG 2.1.2: No keyboard trap
-- WCAG 2.1, Technique G21: Ensuring that users are not trapped in content
-- CSUN: Web Accessibility Criteria - Keyboard Traps
+
+If the focus cannot be moved away from a focusable element by keyboard alone, a keyboard user can be "trapped" on the element, unable to focus on and interacti with other focusable elements.  See the following on avoiding keyboard traps:
+
+- [WCAG 2.1.2: No keyboard trap](https://www.w3.org/WAI/WCAG21/Understanding/no-keyboard-trap.html)
+- [WCAG 2.1, Technique G21: Ensuring that users are not trapped in content](https://www.w3.org/WAI/WCAG21/Techniques/general/G21)
+- [CSUN: Web Accessibility Criteria - Keyboard Traps](https://www.csun.edu/universal-design-center/web-accessibility-criteria-keyboard-traps#:~:text=Keyboard%20traps%20occur%20when%20a,menus%2C%20or%20even%20on%20hyperlinks.)
 
 
 ## Error Handling
