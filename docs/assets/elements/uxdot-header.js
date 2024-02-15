@@ -26,14 +26,14 @@ class UxdotHeader extends LitElement {
       padding-block-end: var(--rh-space-2xl, 32px);
     }
 
-    .has-search {
+    #container.has-search {
       display: grid;
       grid-template-columns: 1fr;
       grid-template-areas: 'heading' 'search';
       gap: var(--rh-space-2xl, 32px);
     }
 
-    ::slotted([slot="heading"]) {
+    [part="heading"] {
       grid-area: heading;
     }
 
@@ -66,7 +66,7 @@ class UxdotHeader extends LitElement {
         padding-block-end: var(--rh-space-5xl, 80px);
       }
 
-      .has-search {
+      #container.has-search {
         grid-template-columns: 1fr 1fr;
         grid-template-areas: 'heading search';
       }
