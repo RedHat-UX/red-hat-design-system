@@ -143,13 +143,13 @@ For more information see the WAI-ARIA APG's [Fundamental Keyboard Navigation Con
 
 ### Focus order and roving tabindex
 
-Between components, the default method of navigating via keyboard is with the <kbd>Tab</kbd> to move to the next focusable component and <kbd>Shift+Tab</kbd> to move to the previous focusable component. Complex components can have multiple focusable items, so rather than force keyboard users to tab through every focusable item within each component, a [roving tabindex]((https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#keyboardnavigationbetweencomponents(thetabsequence))) should be used to allow keyboard users to <kbd>Tab</kbd>/<kbd>Shift+Tab</kbd> into the complex component, arrow keys to navigate within the component, and <kbd>Tab</kbd>/<kbd>Shift+Tab</kbd> into the complex component.  (See the WAI-ARIA APG's [Managing Focus Within Components Using a Roving tabindex](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_roving_tabindex))
+Between components, the default method of navigating via keyboard is with the <kbd>Tab</kbd> to move to the next focusable component and <kbd>Shift+Tab</kbd> to move to the previous focusable component. Complex components can have multiple focusable items, so rather than force keyboard users to tab through every focusable item within each component, a [roving tabindex]((https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#keyboardnavigationbetweencomponents(thetabsequence))) should be used to allow keyboard users to <kbd>Tab</kbd>/<kbd>Shift+Tab</kbd> into the complex component, arrow keys to navigate within the component, and <kbd>Tab</kbd>/<kbd>Shift+Tab</kbd> back out of the complex component.  (See the WAI-ARIA APG's [Managing Focus Within Components Using a Roving tabindex](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_roving_tabindex))
 
 Our complex components, like accordion, secondary navigation, subnavigation, tabs, and tile, use this roving tabindex method via a reactive controller. (Refer to [Contributors: Accessibility controllers](../contributors/#accessibility-controllers))
 
 ### Keyboard traps
 
-If the focus cannot be moved away from a focusable element by keyboard alone, a keyboard user can be "trapped" on the element, unable to focus on and interacti with other focusable elements.  See the following on avoiding keyboard traps:
+If the focus cannot be moved away from a focusable element by keyboard alone, a keyboard user can be "trapped" on the element, unable to focus on and interact with other focusable elements. See the following on avoiding keyboard traps:
 
 - [WCAG 2.1.2: No keyboard trap](https://www.w3.org/WAI/WCAG21/Understanding/no-keyboard-trap.html)
 - [WCAG 2.1, Technique G21: Ensuring that users are not trapped in content](https://www.w3.org/WAI/WCAG21/Techniques/general/G21)
