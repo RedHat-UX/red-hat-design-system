@@ -106,11 +106,11 @@ Heydon Pickering describes his [Inclusive Components](https://inclusive-componen
 ## Interactivity
 The following World Wide Web Consortium (W3C) Web Content Accessibility Guidelines (WCAG) 2.1 A and AA apply to developing interactive elements:
 
-- Ensure that content that appears on hover or focus is dismissable, hoverable, and persistent for keyboard and mouse users. (See [1.4.13 Content on Hover or Focus - Level AA](https://www.w3.org/WAI/WCAG22/Understanding/content-on-hover-or-focus.html).)
-- Ensure that all interactive elements can be accessed via keyboard. (See [2.1.1 Keyboard - Level A](https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html).)
-- Allow keyboard users to navigate away from a component. (See [2.1.2 No Keyboard Trap - Level A](https://www.w3.org/WAI/WCAG22/Understanding/no-keyboard-trap.html).)
-- Align focus order with visual order and DOM order. (See [SC 2.4.3 Focus Order - Level AA](https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html).)
-- Ensure that the keyboard focus indicator is visible. (See[SC 2.4.7 Focus Visible - Level AA](https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html).)
+- Ensure that content that appears on hover or focus is dismissable, hoverable, and persistent for keyboard and mouse users. ([1.4.13 Content on Hover or Focus - Level AA](https://www.w3.org/WAI/WCAG22/Understanding/content-on-hover-or-focus.html))
+- Ensure that all interactive elements can be accessed via keyboard. ([2.1.1 Keyboard - Level A](https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html))
+- Allow keyboard users to navigate away from a component. ([2.1.2 No Keyboard Trap - Level A](https://www.w3.org/WAI/WCAG22/Understanding/no-keyboard-trap.html))
+- Align focus order with visual order and DOM order. ([2.4.3 Focus Order - Level AA](https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html))
+- Ensure that the keyboard focus indicator is visible. ([2.4.7 Focus Visible - Level AA](https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html))
 
 {% alert title="Tip" %}
 For more on keyboard navigation, see the WAI ARIA Authoring Practices Guide's  (APG) [Developing a Keyboard Interface](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/).
@@ -120,7 +120,7 @@ For more on keyboard navigation, see the WAI ARIA Authoring Practices Guide's  (
 
 The following World Wide Web Consortium (W3C) Web Content Accessibility Guidelines (WCAG) 2.1 A and AA apply to dyanmic content:
 
-- Ensure content that appears or disappears on changes to mouse hover or keyboard focus is dismissable, hoverable, and persistent. (See [1.4.13 Content on Hover or Focus - Level AA](https://www.w3.org/WAI/WCAG21/Understanding/content-on-hover-or-focus.html).)
+- Ensure content that appears or disappears on changes to mouse hover or keyboard focus is dismissable, hoverable, and persistent. ([1.4.13 Content on Hover or Focus - Level AA](https://www.w3.org/WAI/WCAG21/Understanding/content-on-hover-or-focus.html))
 
 {% alert title="Tip" %}
 For more on dynamic content, see the Mozilla Developer Network's (MDN) [ARIA live regions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions).
@@ -143,9 +143,9 @@ For more information see the WAI-ARIA APG's [Fundamental Keyboard Navigation Con
 
 ### Focus order and roving tabindex
 
-Between components, the default method of navigating via keyboard is with the <kbd>Tab</kbd> to move to the next focusable component and <kbd>Shift+Tab</kbd> to move to the previous focusable component. Complex components can have multiple focuable items, so rather than force keyboard users to tab through every focusable item within each component, a [roving tabindex]((https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#keyboardnavigationbetweencomponents(thetabsequence))) should be used to allow keboard users to <kbd>Tab</kbd>/<kbd>Shift+Tab</kbd> into the complex component, arrow keys to navigate within the component, and <kbd>Tab</kbd>/<kbd>Shift+Tab</kbd> into the complex component.  (See the WAI-ARIA APG's [Managing Focus Within Components Using a Roving tabindex](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_roving_tabindex).)
+Between components, the default method of navigating via keyboard is with the <kbd>Tab</kbd> to move to the next focusable component and <kbd>Shift+Tab</kbd> to move to the previous focusable component. Complex components can have multiple focuable items, so rather than force keyboard users to tab through every focusable item within each component, a [roving tabindex]((https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#keyboardnavigationbetweencomponents(thetabsequence))) should be used to allow keyboard users to <kbd>Tab</kbd>/<kbd>Shift+Tab</kbd> into the complex component, arrow keys to navigate within the component, and <kbd>Tab</kbd>/<kbd>Shift+Tab</kbd> into the complex component.  (See the WAI-ARIA APG's [Managing Focus Within Components Using a Roving tabindex](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_roving_tabindex))
 
-Our complex components, like accordion, secondary navigation, subnavigation, tabs, and tile, use this roving tabindex method via a reactive controller. (See [Contributors: Accessibility controllers](../contributors/#accessibility-controllers).)
+Our complex components, like accordion, secondary navigation, subnavigation, tabs, and tile, use this roving tabindex method via a reactive controller. (Refer to Contributors: Accessibility controllers](../contributors/#accessibility-controllers))
 
 ### Keyboard traps
 
@@ -160,21 +160,21 @@ If the focus cannot be moved away from a focusable element by keyboard alone, a 
 
 The following World Wide Web Consortium (W3C) Web Content Accessibility Guidelines (WCAG) 2.1 A and AA apply to error handling:
 
-- Use text to identify and describe errors that are automatically detected. (See [3.3.1 Error Identification - Level A](https://www.w3.org/WAI/WCAG22/Understanding/error-identification.html).)
-- Use text labels and instructions for user input. (See [3.3.2 Labels or Instructions - Level A](https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html).)
-- Provide text suggestions for user errors that are automatically detected. (See [3.3.3 Error Suggestion - Level AA](https://www.w3.org/WAI/WCAG22/Understanding/error-suggestion.html).)
-- Ensure that submissions are reversible, checked, or confirmed. (See [3.3.4 Error Prevention (Legal, Financial, Data) - Level AA](https://www.w3.org/WAI/WCAG22/Understanding/error-prevention-legal-financial-data.html).)
+- Use text to identify and describe errors that are automatically detected. ([3.3.1 Error Identification - Level A](https://www.w3.org/WAI/WCAG22/Understanding/error-identification.html))
+- Use text labels and instructions for user input. ([3.3.2 Labels or Instructions - Level A](https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html))
+- Provide text suggestions for user errors that are automatically detected. ([3.3.3 Error Suggestion - Level AA](https://www.w3.org/WAI/WCAG22/Understanding/error-suggestion.html))
+- Ensure that submissions are reversible, checked, or confirmed. ([3.3.4 Error Prevention (Legal, Financial, Data) - Level AA](https://www.w3.org/WAI/WCAG22/Understanding/error-prevention-legal-financial-data.html))
 
 ## Scaling and rotation
 
 ### Accounting for text scaling and spacing
 
-Your pages should permit users without assistive tech to scale text to at least 200% of its original size in the browser (e.g., via command-plus or control-plus on desktop, and pinch to zoom on touchscreens). Scaled text must all still be functional and visible after such scaling. That means no overlapping, clipping, or unexpected separation of content. (See [1.4.4: Resize Text](https://www.w3.org/WAI/WCAG21/Understanding/resize-text))
+Your pages should permit users without assistive tech to scale text to at least 200% of its original size in the browser (e.g., via command-plus or control-plus on desktop, and pinch to zoom on touchscreens). Scaled text must all still be functional and visible after such scaling. That means no overlapping, clipping, or unexpected separation of content. ([1.4.4: Resize Text](https://www.w3.org/WAI/WCAG21/Understanding/resize-text))
 
-To give users more control over scaling, font sizes specified in CSS should be set via relative measurements (e.g., em, rem, etc.) rather than absolute sizes (e.g., px, pt, etc.). This applies not only to body copy, but also to form element text. (See [1.4.4: Resize Text](https://www.w3.org/WAI/WCAG21/Understanding/resize-text))
+To give users more control over scaling, font sizes specified in CSS should be set via relative measurements (e.g., em, rem, etc.) rather than absolute sizes (e.g., px, pt, etc.). This applies not only to body copy, but also to form element text. ([1.4.4: Resize Text](https://www.w3.org/WAI/WCAG21/Understanding/resize-text))
 
-Content and functionality must also be maintained if users override the following text styles: line-height (up to 1.5× the font size), paragraph spacing (up to 2× the font size), letter spacing (up to .12× the font size), and word spacing (up to .16× the font size). (See [1.4.12: Text Spacing](https://www.w3.org/WAI/WCAG21/Understanding/text-spacing))
+Content and functionality must also be maintained if users override the following text styles: line-height (up to 1.5× the font size), paragraph spacing (up to 2× the font size), letter spacing (up to .12× the font size), and word spacing (up to .16× the font size). ([1.4.12: Text Spacing](https://www.w3.org/WAI/WCAG21/Understanding/text-spacing))
 
 ### Screen rotation
 
-Mobile users must be permitted to reorient their screen at will between landscape/portrait, without any messages requesting that they select a particular orientation. (See [1.3.4: Orientation](https://www.w3.org/WAI/WCAG21/Understanding/orientation.html))
+Mobile users must be permitted to reorient their screen at will between landscape/portrait, without any messages requesting that they select a particular orientation. ([1.3.4: Orientation](https://www.w3.org/WAI/WCAG21/Understanding/orientation.html))
