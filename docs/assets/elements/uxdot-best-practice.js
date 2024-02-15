@@ -6,12 +6,13 @@ class UxdotBestPractice extends LitElement {
       display: block;
       container-type: inline-size;
       container-name: host;
+      margin-block: var(--rh-space-2xl, 32px);
     }
 
     #container {
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-gap: var(--rh-space-3xl, 48px);
+      display: flex;
+      flex-direction: column;
+      gap: var(--rh-space-2xl, 32px);
       margin-block: var(--rh-space-2xl, 32px);
     }
 
@@ -38,6 +39,14 @@ class UxdotBestPractice extends LitElement {
       color: var(--_color);
     }
 
+    ::slotted(uxdot-example) {
+      margin: 0 !important;
+    }
+
+    figure {
+      margin: 0 !important;
+    }
+
     @container container (min-width: 567px) {
       #container {
         grid-template-columns: 1fr 1fr;
@@ -45,18 +54,29 @@ class UxdotBestPractice extends LitElement {
     }
   `;
 
+
+  static properties = {
+    do: { type: Boolean },
+    dont: { type: Boolean },
+  };
+
   render() {
     return html`
-      <div id="container" part="container">
-        <div part="do">
-          <span><pf-icon set="far" icon="check-circle" size="lg"></pf-icon> Do</span>
-          <slot name="do"></slot>
-        </div>
-        <div part="dont">
-          <span><pf-icon set="far" icon="times-circle" size="lg"></pf-icon> Don't</span>
-          <slot name="dont"></slot>
-        </div>
-      </div>
+      <figure id="container" part="container">
+        <slot name="image"></slot>
+        ${this.do ? html`
+          <figcaption part="do">
+            <span><pf-icon set="far" icon="check-circle" size="lg"></pf-icon> Do</span>
+            <slot></slot>
+          </figcaption>
+        ` : html``}
+        ${this.dont && !this.do ? html`
+          <figcaption part="dont">
+            <span><pf-icon set="far" icon="times-circle" size="lg"></pf-icon> Don't</span>
+            <slot></slot>
+          </figcaption>
+        ` : html``}
+      </figure>
     `;
   }
 }

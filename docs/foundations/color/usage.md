@@ -18,6 +18,19 @@ importElements:
 
 <link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
 
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--rh-space-2xl, 32px);
+  }
+
+  @container container (min-width: 768px) {
+    .grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>
 
 ## Using color
 
@@ -230,22 +243,21 @@ you need a custom theme for a campaign or special project, contact the
 Brand team first. If you need one or more custom design tokens, contact
 the [Design system](https://github.com/RedHat-UX/red-hat-design-system/discussions) team first. 
 
+<div class="grid">
+  <uxdot-best-practice do>
+    <uxdot-example slot="image" no-border variant="full" alignment="left">
+      <img src="/assets/color/best-practices-custom-themes-correct.svg" alt="Blue submit button, blue default call to action, black tooltip, and blue switch">
+    </uxdot-example>
+    <p>Use the color variants already available for elements and patterns.</p>
+  </uxdot-best-practice>
 
-<uxdot-best-practice>
-  <uxdot-example slot="do" no-border variant="full" alignment="left">
-    <figure>
-      <img slot="header" src="/assets/color/best-practices-custom-themes-correct.svg" alt="Blue submit button, blue default call to action, black tooltip, and blue switch">
-      <figcaption>Use the color variants already available for elements and patterns.</figcaption>
-    </figure>
-  </uxdot-example>
-  <uxdot-example slot="dont" no-border variant="full" alignment="left">
-    <figure>
-      <img slot="header" src="/assets/color/best-practices-custom-themes-wrong.svg" alt="Magenta button, brand red default call to action, green tooltip, and dark orange switch">
-      <figcaption>Do not create your own colors, design tokens, or change the colors of existing elements and patterns.</figcaption>
-    </figure>
-  </uxdot-example>
-</uxdot-best-practice>
-
+  <uxdot-best-practice dont>
+    <uxdot-example slot="image" no-border variant="full" alignment="left">
+      <img src="/assets/color/best-practices-custom-themes-wrong.svg" alt="Magenta button, brand red default call to action, green tooltip, and dark orange switch">
+    </uxdot-example>
+    <p>Do not create your own colors, design tokens, or change the colors of existing elements and patterns.</p>
+  </uxdot-best-practice>
+</div>
 
 ### Sufficient contrast
 
