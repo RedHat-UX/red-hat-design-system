@@ -53,7 +53,7 @@ class UxdotExample extends LitElement {
     }
 
     .darkest {
-      --_background: var(--rh-color-surface-darkest, #000000);
+      --_background: var(--rh-color-surface-darkest, #151515);
     }
 
     .transparent {
