@@ -66,7 +66,7 @@ As a subsidiary of IBM, Red Hat and its associates must adhere to the parent com
 
 ### Red Hat
 
-To demonstrate our intent to meet IBM’s corporate instruction, our legal requirements, and our ethical obligations, Red Hat’s Digital Experience team has developed an internal [accessibility policy](https://url.corp.redhat.com/accessibility-policy) and and posted a [digital accessibility statement](https://www.redhat.com/en/about/digital-accessibility) at our website. To put this intent into practice, we continuously remediate our existing properties, we’re building libraries of accessible Web Components and patterns, and we’ve shifted left to incorporate inclusive design in new web projects: from the earliest stages of discovery through launch.
+To demonstrate our intent to meet IBM’s corporate instruction, our legal requirements, and our ethical obligations, Red Hat’s Digital Experience team has developed an internal [accessibility policy](https://url.corp.redhat.com/accessibility-policy) and posted a [digital accessibility statement](https://www.redhat.com/en/about/digital-accessibility) at our website. To put this intent into practice, we continuously remediate our existing properties, we’re building libraries of accessible Web Components and patterns, and we’ve shifted left to incorporate inclusive design in new web projects: from the earliest stages of discovery through launch.
 
 > “The power of the Web is in its universality. Access by everyone regardless of disability is an essential aspect.”
 > — Tim Berners-Lee
@@ -87,7 +87,7 @@ At Red Hat, we currently target [WCAG 2.1 AA](https://www.w3.org/WAI/WCAG21/Unde
 
 #### POUR
 
-It’s important to remember that the goal of web accessibility is not conformance for its own sake. Accessibility is for real people. To reflect this, W3C has organized its WCAG criteria by these four guiding principles: perceivable, operable, understandable and robust (aka POUR):
+It’s important to remember that the goal of web accessibility is not conformance for its own sake. Accessibility is for real people. To reflect this, W3C has organized its WCAG criteria by these four guiding principles: perceivable, operable, understandable and robust (aka [POUR](https://www.w3.org/WAI/WCAG21/Understanding/intro)):
 
 > 1. Perceivable - Information and user interface components must be presentable to users in ways they can perceive.
 > 2. Operable - User interface components and navigation must be operable.
@@ -112,4 +112,4 @@ WAI also provides an [ATAG Report Tool](https://www.w3.org/WAI/atag/report-tool)
 
 ## Credits
 
-_Some content on this page derives from the Web Accessibility Initiative (WAI) document: [Introduction to Understanding WCAG](https://www.w3.org/WAI/WCAG21/Understanding/intro). Accessibility Guidelines Working Group (AG WG) Participants. Copyright © 2023 W3C® (MIT, ERCIM, Keio). Status: Draft Updated 20 June 2023._
+_The quoted POUR principles on this page are sourced from this Web Accessibility Initiative (WAI) document: [Introduction to Understanding WCAG](https://www.w3.org/WAI/WCAG21/Understanding/intro). Accessibility Guidelines Working Group (AG WG) Participants. Copyright © 2023 W3C® (MIT, ERCIM, Keio). Status: Draft Updated 20 June 2023._
