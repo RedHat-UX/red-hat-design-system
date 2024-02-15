@@ -70,7 +70,7 @@ If you’re feeling ambitious and want to combine testing tasks, perform your ke
 | Windows          | Firefox | [NVDA](https://www.nvaccess.org/download/) (free download)                                                                       |
 | Windows          | Chrome  | [JAWS](https://www.freedomscientific.com/products/software/jaws/) (paid)                                                         |
 | Linux            | Firefox | [Orca](https://help.gnome.org/users/orca/stable/index.html.en)  (included with GNOME desktop environment)                        |
-| Android          | Chrome  | [Talkback](https://support.google.com/accessibility/android/answer/6283677?hl=en&ref_topic=10601571&sjid=4695144848639410734-NC) |
+| Android          | Chrome  | [Talkback](https://support.google.com/accessibility/android/answer/6283677?hl=en&ref_topic=10601571&sjid=4695144848639410734-NC) (included with Android)|
 | iOS              | Safari  | [VoiceOver for iOS](https://support.apple.com/en-sa/guide/iphone/iph3e2e415f/ios) (included with iOS) |
 
 Deque offers a collection of [screen reader shortcuts](https://dequeuniversity.com/screenreaders/) for all of the above listed technologies.
