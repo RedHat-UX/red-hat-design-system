@@ -37,7 +37,7 @@ WAI has designed a collection of [web user stories](https://www.w3.org/WAI/peopl
 
 If you’re doing online business of any sort in the United States, it’s a pretty safe bet that your digital experiences are required to be accessible. Digital accessibility falls under one or more of the following federal laws. Additional state and local regulations may also apply.
 
-As of 2023, the U.S. Department of Justice has not approved any formal rules on what exactly constitutes accessibility under these laws—only that standards like WCAG provide “[helpful guidance](https://www.ada.gov/resources/web-guidance/).” However, it looks like that may be changing soon. A [proposed rule](https://www.federalregister.gov/documents/2023/08/04/2023-15823/nondiscrimination-on-the-basis-of-disability-accessibility-of-web-information-and-services-of-state) for Title II of the Americans with Disabilities Act (which applies to state and local government entities) specifies WCAG 2.1 AA as its targeted standard. If put into effect, similar rules may also be drafted for the laws listed below.
+As of 2024, the U.S. Department of Justice has not approved any formal rules on what exactly constitutes accessibility under these laws—only that standards like WCAG provide “[helpful guidance](https://www.ada.gov/resources/web-guidance/).” However, it looks like that may be changing soon. A [proposed rule](https://www.federalregister.gov/documents/2023/08/04/2023-15823/nondiscrimination-on-the-basis-of-disability-accessibility-of-web-information-and-services-of-state) for Title II of the Americans with Disabilities Act (which applies to state and local government entities) specifies WCAG 2.1 AA as its targeted standard. If put into effect, similar rules may also be drafted for the laws listed below.
 
 #### Americans with Disabilities Act, Title III
 
@@ -56,7 +56,7 @@ Web accessibility laws and policies vary by region. Many laws align with exact s
 
 For example, the European Union’s [European Accessibility Act](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32019L0882)—which dictates that electronic products and services must be accessible by June 28, 2025—does not directly name WCAG as its technical standard. However, it does state that services must align with WCAG’s guiding principles of being “perceivable, operable, understandable and robust” (aka POUR). And countries within the Union may transpose the Act to incorporate WCAG requirements.
 
-The World Wide Web Consortium maintains a list of [international accessibility laws and policies](https://www.w3.org/WAI/policies/), which they are updating in late 2023.
+The World Wide Web Consortium maintains a list of [international accessibility laws and policies](https://www.w3.org/WAI/policies/), which they last updated in late 2023.
 
 ## Policies
 
