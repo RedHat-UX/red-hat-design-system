@@ -53,15 +53,13 @@ Other non-text elements (e.g., ASCII emoticons) may use ARIA attributes, like `a
 <span role="img" aria-label="astonished face">:O</span>
 ```
 
-
 These are not the only means of providing alt text for non-text elements, but they cover many common situations. For less-common cases, view the [WCAG 2.1 documentation](https://www.w3.org/WAI/WCAG21/Understanding/non-text-content.html).
 
 ### Complex images
 
 Complex images, like diagrams, still require alt text. But they may also warrant longer descriptions to fully explain their meaning. These text descriptions must be available to all users: visual and non-visual. The descriptive text can be adjacent to the image, in footnotes, or on separate pages. Non-adjacent descriptions can be linked via nearby link text or by linking the image itself.
 
-
-### When not to use it
+### When not to use alt text
 
 Images and other non-text media that don’t add any meaningful information to a page are considered decorative and should be hidden from assistive tech:
 
@@ -105,7 +103,7 @@ Images acting as buttons or links are functional, and thus serve different purpo
 
 </figure>
 
-If the above image supplements the text of an article about Red Hat or our products, the appropriate alt text could be something like `"Red Hat, Inc. logo."` But if that image was a link on the club’s website pointing to its homepage, you might want something along the lines of `"Red Hat homepage"` for your alt text:
+If the above image supplements the text of an article about Red Hat or our products, the appropriate alt text could be something like `"Red Hat, Inc. logo."` But if that image is a link pointing to the corporate homepage, you might want something along the lines of `"Red Hat homepage"` for your alt text:
 
 ```
 <a href="https://www.redhat.com/">
@@ -115,7 +113,7 @@ If the above image supplements the text of an article about Red Hat or our produ
 
 ### Grouped images
 
-Grouped images that convey a single meaning (e.g., movie rating stars), can be grouped within an element with a single label (e.g., aria-label) that describes the meaning of the entire group:
+Grouped images that convey a single meaning (e.g., movie rating stars), can be grouped within an element with a single label (e.g., aria-label) that describes the meaning of the entire group.
 
 ```
 <div aria-label="2 of 3 attempts left">
@@ -165,14 +163,14 @@ In addition to the best practices for all microcopy, adhere to the following bes
 - Use clear and informative link text to indicate link destinations.
 - Use the same link text for links that go to the same place.
 - Use different link text for links that go to different places.
-- If you absolutely must use URLs as link text, choose short and easy-to-read URLs (e.g., “redhat.com”).
-- Links that point to external sites, open new windows/tabs, or launch other media should indicate this behavior to all visitors (users and non-users of assistive tech alike)
+- If you absolutely must use URLs as link text, try to choose short and easy-to-read URLs (e.g., “redhat.com” instead of "https://www.redhat.com/").
+- Links that point to external sites, open new windows/tabs, or launch other media should indicate this behavior to all visitors (both users and non-users of assistive tech alike)
 
 #### Avoid the following when creating links
 
 - Non-informative or vague phrases, like “click here” or “learn more.” (If in doubt about link text clarity, ensure that the surrounding context makes the destination clear.)
 - Unnecessarily long link text.
-- Long or unreadable URLs as link text, since long URLs are not easy to read and can be annoying when read by assistive technologies.
+- Long or unreadable URLs as link text, since long URLs are not easy to read visually and can be annoying when presented via assistive technologies.
 
 ### Button text
 
@@ -315,12 +313,11 @@ Strictly speaking, tabular data is information that requires a row and column st
 
 ### When not to use tables
 
-Tables are intended for tabular data, and shouldn’t be used for layout purposes, unless you're designing for visitors in the 1990s.  For browsing on anything more recent than the original iMac, use CSS for layout.
+Tables are intended for tabular data, and shouldn’t be used for layout purposes, unless you're designing for visitors in the 1990s. For browsing on anything more recent than the original iMac, use CSS for layout.
 
 Avoid using tables when a simple list (whether [ordered](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol), [unordered](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul), or [description](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl)) will do.
 
 For example, the following doesn’t need to be a table:
-
 
 ```
 <table>
@@ -360,6 +357,7 @@ In other words, if it doesn’t *need* to be a table, then it probably shouldn�
 The purpose of, and data relationships within, tables should be made apparent to all users: visual and non-visual, and both with and without assistive tech. To ensure tables are understandable by all, we need to pay special attention to their captions and row/column headings.
 
 When a table is placed on a page, users need to know its purpose. You can give your table a meaningful caption, accompany it by descriptive text, and/or place it under appropriate headers to put it in context.
+
 To categorize data successfully, row and column headings should be distinct within a table. Keep them brief but accurate and descriptive regarding their associated cells.
 
 ### Simplify
@@ -368,15 +366,15 @@ Users and technologies scanning a table are already doing a lot of work to inter
 
 If a table is too complex for simple row and column headings (e.g., if cells within a table may require their own sub-columns/rows/tables), then consider splitting this data out into separate tables.
 
-If your table design includes split/merged headings or cells, consider whether it can be restructured. Interpreting such complicated structures puts extra work on users and may be impossible to convey via assistive tech.
+If your table design includes split/merged headings or cells, consider whether it can be restructured. Interpreting such complicated structures puts extra work on users and may be difficult to convey via assistive tech.
 
-When creating tables, assume the burden of simplifying and clarifying, so it doesn’t fall on your users. But if the tables in a particular project require more complexity, the W3C’s Web Accessibility Initiative provides a [Tables Tutorial](https://www.w3.org/WAI/tutorials/tables/) that you may find useful.
+When creating tables, assume the burden of simplifying and clarifying, so it doesn’t fall on your users. But if the tables in a particular project do require more complexity, the W3C’s Web Accessibility Initiative provides a [Tables Tutorial](https://www.w3.org/WAI/tutorials/tables/) that you may find useful.
 
 ## Error messages and guidance
 
 Best practices for error messages:
 
-- Ensure the user knows the location of the error. Preferably this is done visually and for assistive technology.  Otherwise, additional text may be required explaining the label or section where the error occurred.
+- Ensure the user knows the location of the error. Preferably this is indicated both visually and for assistive technology.  Otherwise, additional text may be required explaining the label or section where the error occurred.
 - Tell the user what they did wrong.
 - Recommend how they can fix it.
 
@@ -384,7 +382,7 @@ Best practices for error messages:
 
 Because people and assistive technologies read linearly, your content must also be written with a clear logical order that follows the same linear flow of HTML code. That’s not to say people can’t and won’t jump around. But each section should have a logical start and end, and the logical ordering of these sections themselves should be considered.
 
-Your content order can impact not only how a page is read, but also how it’s operated. Users navigating via keyboard move sequentially (both forward and backward) among interactive elements on a page via the tab and arrow keys. Consider how the order in which you arrange your content could make such navigation easier or more difficult for both visual and non-visual keyboard users.
+Your content order can impact not only how a page is read, but also how it’s operated. Users navigating via keyboard move sequentially (both forward and backward) among interactive elements on a page via the <kbd>tab</kbd> and arrow keys. Consider how the order in which you arrange your content could make such navigation easier or more difficult for both visual and non-visual keyboard users.
 
 ## Internationalization
 
