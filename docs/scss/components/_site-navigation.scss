@@ -1,16 +1,19 @@
-@use 'sass:map';
-@use '../__core/variables' as *;
-@use '../__core/mixins' as *;
+@use "sass:map";
+@use "../__core/variables" as *;
+@use "../__core/mixins" as *;
 
 .site-navigation-outer-wrapper {
   $current-header-height: map.get($header-height, default);
+
   position: fixed;
   top: map.get($header-height, default);
   left: 0;
   z-index: 10;
   height: calc(100vh - #{$current-header-height});
+
   @include breakpoint($nav-break) {
     $current-header-height: map.get($header-height, $nav-break);
+
     position: fixed;
     top: $current-header-height;
     bottom: 0;
@@ -19,18 +22,20 @@
   }
 }
 
-
 .site-navigation {
   $current-header-height: map.get($header-height, default);
+
   width: $fixed-sidebar-width;
   padding-top: 30px;
   height: calc(100vh - #{$current-header-height});
   overflow-y: auto;
   color: #151515;
-  background: #fff;
+  background: #ffffff;
   border-right: 1px solid #d2d2d2;
+
   @include breakpoint($nav-break) {
     $current-header-height: map.get($header-height, $nav-break);
+
     width: $fixed-sidebar-width;
     height: calc(100vh - #{$current-header-height});
     padding-bottom: 40px;
@@ -44,7 +49,7 @@
     padding: 0.5em 32px 1em;
     border-bottom: 1px solid #dbdbdb;
     text-transform: uppercase;
-    color: #999;
+    color: #999999;
   }
 
   summary::-webkit-details-marker {
@@ -71,7 +76,7 @@
 
   & .heading {
     &:after {
-      content: '';
+      content: "";
       color: #151515;
       width: 9px;
       height: 9px;
@@ -102,8 +107,8 @@
   & .link.active,
   & .sub-menu .link.active {
     background: var(--rh-color-surface-lighter, #f2f2f2);
-    box-shadow: inset 3px 0 0 0 #e00;
-    color: #151515;
+    box-shadow: inset 3px 0 0 0 var(--rh-color-icon-primary-on-light, #ee0000);
+    color: var(--rh-color-text-primary-on-light, #151515);
   }
 
   & .wrapper,
@@ -118,10 +123,12 @@
 
   & .sub-menu {
     padding-left: 32px;
+
     & .link {
       font-size: 16px;
       line-height: 24px;
       padding-left: 16px;
+
       &:hover {
         color: #151515;
       }

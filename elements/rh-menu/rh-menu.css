@@ -10,18 +10,18 @@ slot {
 }
 
 .dark::slotted(a) {
-  color: var(--rh-color-interactive-blue-lightest, #bee1f4) !important;
+  color: var(--rh-color-interactive-blue-lightest, #b9dafc) !important;
   padding: 5px !important; /* WARNING: not a token value */
 }
 
 .dark::slotted(a:hover) {
-  color: var(--rh-color-interactive-blue-lighter, #73bcf7);
+  color: var(--rh-color-interactive-blue-lighter, #92c5f9);
 }
 
 .dark::slotted(a:visited) {
-  color: var(--rh-color-interactive-purple-lighter, #a18fff) !important;
+  color: var(--rh-color-interactive-purple-lighter, #b6a6e9) !important;
 }
 
 .dark::slotted(a:visited:hover) {
-  color: var(--rh-color-interactive-purple-lighter, #a18fff) !important;
+  color: var(--rh-color-interactive-purple-lighter, #b6a6e9) !important;
 }

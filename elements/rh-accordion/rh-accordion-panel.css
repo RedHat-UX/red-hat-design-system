@@ -1,7 +1,10 @@
 :host {
+  display: none;
+  overflow: hidden;
+  will-change: height;
   color: var(--rh-color-surface-darkest, #151515);
 
-  --_background-color: var(--rh-color-surface-white, #ffffff);
+  --_background-color: var(--rh-color-surface-lightest, #ffffff);
   --_panel-color: var(--rh-color-surface-darkest, #151515);
   --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
   --_panel-content-body-accent-color: var(--rh-color-accent-brand-on-light, #ee0000);
@@ -14,7 +17,7 @@
 .dark {
   --_background-color: var(--rh-color-surface-darkest, #151515);
   --_panel-color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_panel-content-body-accent-color: var(--rh-color-accent-brand-on-dark, #ff442b);
+  --_panel-content-body-accent-color: var(--rh-color-accent-brand-on-dark, #ee0000);
   --_panel-border-inline-end-color: var(--rh-color-border-subtle-on-dark, #707070);
 }
 
@@ -37,6 +40,8 @@
 }
 
 .body {
+  position: relative;
+  overflow: hidden;
   padding:
     var(--_panel-body-padding-block-start, var(--rh-space-md, 8px))
     var(--_panel-body-padding-inline-end, var(--rh-space-lg, 16px))
@@ -49,10 +54,13 @@
 }
 
 :host([fixed]) {
+  overflow-y: auto;
   max-height: 9.375rem;
 }
 
 :host([expanded]) {
+  display: block;
+  position: relative;
   position: unset;
 }
 
@@ -77,6 +85,11 @@
 }
 
 .body:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
   width: var(--_panel-body--before--Width, var(--rh-border-width-lg, 3px));
   background-color: var(--_panel-body--before-background-color, transparent);
   inset-block: 0;

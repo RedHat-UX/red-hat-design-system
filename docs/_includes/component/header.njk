@@ -35,7 +35,7 @@
             <summary class="heading">About</summary>
             <ul class="sub-menu">
               <li class="item">
-                <a class="link {{ 'active' if page.url.startsWith('/about/') }}"
+                <a class="link {{ 'active' if page.url === '/about/' }}"
                    href="{{ '/about/' | url }}">About this website</a>
               </li>
               {%- for link in collections.about -%}

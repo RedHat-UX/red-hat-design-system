@@ -1,4 +1,4 @@
-import { html, LitElement, type PropertyValues } from 'lit';
+import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { query } from 'lit/decorators/query.js';
@@ -131,7 +131,7 @@ export class RhContextPicker extends LitElement {
       this.#target = root.getElementById(this.target);
       this.sync();
     } else {
-      this.#target = this.closest('rh-context-provider');
+      this.#target = this.closest('rh-surface');
     }
     oldTarget?.removeEventListener('change', this.#onChange);
     this.#target?.addEventListener('change', this.#onChange);

@@ -1,5 +1,5 @@
 @use "sass:map";
-@use '../__core/_mixins' as *;
+@use "../__core/_mixins" as *;
 @use "../__core/variables" as *;
 
 * {
@@ -42,48 +42,46 @@
 
 html {
   scroll-padding-top: map.get($header-height, default);
+
   @include breakpoint(lima) {
     scroll-padding-top: map.get($header-height, lima);
   }
 }
 
 body {
-  font-family: RedHatText, Overpass, Helvetica, sans-serif;
+  font-family: var(--rh-font-family-body-text);
   font-size: 1rem;
-  line-height: 1.6;
+  line-height: var(--rh-line-height-body-text);
   overflow-y: scroll; // Force scrollbar on OS's with one to prevent UI jumping
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 .l-main__content {
-  font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+  font-size: var(--rh-font-size-body-text-lg);
 }
 
 h1,
 h2,
 h3,
-h4, 
-h5, 
+h4,
+h5,
 h6 {
-  line-height: var(--rh-line-height-heading, 1.3);
-  font-family: RedHatDisplay, Overpass, Helvetica, sans-serif;
+  line-height: var(--rh-line-height-heading);
+  font-family: var(--rh-font-family-heading);
 }
 
 h1 {
-  font-weight: var(--rh-font-weight-heading-regular, 300);
+  font-weight: var(--rh-font-weight-heading-regular);
+  font-size: var(--rh-font-size-heading-2xl);
 }
 
 h2,
 h3,
-h4, 
-h5, 
+h4,
+h5,
 h6 {
-  font-weight: var(--rh-font-weight-heading-medium, 500);
-}
-
-h1 {
-  font-size: var(--rh-font-size-heading-2xl, 3.0rem);
+  font-weight: var(--rh-font-weight-heading-medium);
 }
 
 h2 {
@@ -112,7 +110,6 @@ img {
   figure & {
     display: block;
   }
-
 }
 
 p:empty {
@@ -121,28 +118,21 @@ p:empty {
 }
 
 a {
-  color: map.get($colors-by-function, link);
+  color: var(--rh-color-interactive-blue-darker);
 
-  &:hover {
-    color: map.get($colors-by-function, link--hover);
-  }
-
-  &:focus {
-    color: map.get($colors-by-function, link--focus);
-  }
-
+  &:hover,
+  &:focus,
   &:active {
-    color: map.get($colors-by-function, link--active);
+    color: var(--rh-color-interactive-blue-darkest);
   }
 
   &:visited {
-    color: map.get($colors-by-function, link--visited);
-  }
+    color: var(--rh-color-interactive-purple-darker);
 
-  &:visited:hover {
-    color: map.get($colors-by-function, link--hover);
+    &:hover {
+      color: var(--rh-color-interactive-purple-darkest);
+    }
   }
-
 }
 
 li {
@@ -155,34 +145,45 @@ iframe {
 }
 
 table {
-  border: 1px solid #eeeeee;
-}
+  border: 0;
+  width: 100%;
 
-td,
-th {
-  padding: 18px $gutter;
-}
-
-th {
-  thead & {
-    border-bottom: 1px solid #d2d2d2;
+  td,
+  th {
+    padding: 16px;
   }
 
-  tfoot & {
-    border-top: 1px solid #d2d2d2;
+  th {
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: left;
+
+    thead & {
+      border-bottom: 1px solid #c7c7c7;
+    }
+
+    tfoot & {
+      border-top: 1px solid #c7c7c7;
+    }
   }
-}
 
-th {
-  font-size: 14px;
-}
+  /*
+  td {
+    border: 1px solid #f5f5f5;
+    border-left: 0;
 
-td {
-  border: 1px solid #f5f5f5;
-  border-left: 0;
+    &:last-child {
+      border-right: 0;
+    }
+  }
+  */
+  tr {
+    border-bottom: 1px solid #c7c7c7;
+  }
 
-  &:last-child {
-    border-right: 0;
+  td {
+    font-size: 16px;
+    line-height: 1.5;
   }
 }
 
@@ -197,18 +198,12 @@ pre {
 }
 
 summary {
-  color: map.get($colors-by-function, link);
+  color: var(--rh-color-interactive-blue-darker);
   cursor: pointer;
 
-  &:hover {
-    color: map.get($colors-by-function, link--hover);
-  }
-
-  &:focus {
-    color: map.get($colors-by-function, link--focus);
-  }
-
+  &:hover,
+  &:focus,
   &:active {
-    color: map.get($colors-by-function, link--active);
+    color: var(--rh-color-interactive-blue-darkest);
   }
 }

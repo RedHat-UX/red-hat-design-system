@@ -21,7 +21,7 @@
 }
 
 :host([color-palette="dark"]) {
-  --_current-active-child-border-color: var(--rh-color-brand-red-on-dark, #ff442b);
+  --_current-active-child-border-color: var(--rh-color-brand-red-on-dark, #ee0000);
 }
 
 nav {
@@ -57,7 +57,7 @@ nav.rtl {
   overflow-y: auto;
 }
 
-rh-context-provider {
+rh-surface {
   grid-area: main;
   display: flex;
   flex-direction: column;
@@ -184,7 +184,7 @@ button[aria-expanded="true"],
     overflow-y: initial;
   }
 
-  rh-context-provider {
+  rh-surface {
     flex-direction: row;
     justify-content: space-between;
   }
