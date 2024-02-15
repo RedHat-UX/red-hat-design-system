@@ -392,7 +392,7 @@ Your content order can impact not only how a page is read, but also how it’s o
 
 All HTML content must be contained within an element that has a `lang` attribute. On monolingual pages, it’s enough to add a `lang="en"` attribute (or whatever the page’s language is) to the `<html>` element.
 
-For pages with multilingual content, each element containing a different language should have an appropriate `lang` attribute. For example:
+For pages with multilingual content, each element containing a different language from the one indicated in the `<html>` element should have an appropriate `lang` attribute. For example:
 
 ```
 <html lang="en">
