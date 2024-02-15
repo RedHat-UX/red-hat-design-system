@@ -127,7 +127,7 @@ For more on dynamic content, see the Mozilla Developer Network's (MDN) [ARIA liv
 {% endalert %}
 
 ### Disabled elements
-For disabled composite components, such as fieldsets, radio groups, menus, and listboxes, [WAI-ARIA recommends(https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#focusabilityofdisabledcontrols)] that elements of these components remain focusable.
+For disabled composite components, such as fieldsets, radio groups, menus, and listboxes, [WAI-ARIA recommends](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#focusabilityofdisabledcontrols)] that elements of these components remain focusable.
 
 Users should still be able to read options within the composite group even if they cannot activate or trigger them. For example, a disabled dropdown menu should allow users to toggle it open via keyboard and focus on options even when activating the options is disabled.
 
