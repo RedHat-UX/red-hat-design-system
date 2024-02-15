@@ -128,6 +128,10 @@
   rh-accordion + uxdot-copy-permalink {
     margin-block-start: var(--rh-space-4xl, 64px);
   }
+
+  uxdot-copy-permalink.h2 + uxdot-copy-permalink.h3 {
+    --uxdot-copy-permalink-margin-block-start: 0;
+  }
 }
 
 @layer patterns {
