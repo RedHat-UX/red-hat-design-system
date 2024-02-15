@@ -98,7 +98,7 @@ It’s important to remember that the goal of web accessibility is not conforman
 
 While the WCAG criteria inform the “what” of accessibility conformance, POUR reminds us of the “why.”
 
-Just building your experiences with your users and these four principles in mind from the start will go a long way towards conformance, well before you open up an accessibility checklist or run any browser testing extensions.
+Keeping your users and these four principles in mind from the start will go a long way towards conformance, well before you open up an accessibility checklist or run any browser testing extensions.
 
 The [W3C’s Accessibility Principles](https://www.w3.org/WAI/fundamentals/accessibility-principles/) page provides more information on applying POUR.
 
