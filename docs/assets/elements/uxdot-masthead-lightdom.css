@@ -47,6 +47,10 @@ uxdot-masthead:not(:defined) [slot="hamburger"] {
 
 @container masthead (min-width: 992px) {
   uxdot-masthead:not(:defined) [slot="logo"] {
-    margin-inline-start: var(--rh-space-lg, 16px);
+    margin-inline-start: var(--rh-space-xl, 24px);
+  }
+
+  uxdot-masthead:not(:defined) [slot="links"] {
+    margin-inline-end: var(--rh-space-xl, 24px);
   }
 }
