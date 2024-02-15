@@ -87,7 +87,7 @@ At Red Hat, we currently target [WCAG 2.1 AA](https://www.w3.org/WAI/WCAG21/Unde
 
 #### POUR
 
-It’s important to remember that the goal of web accessibility is not conformance for its own sake. Accessibility is for real people. To reflect this, W3C has organized its WCAG criteria by these four guiding principles: perceivable, operable, understandable and robust (aka [POUR](https://www.w3.org/WAI/WCAG21/Understanding/intro)):
+It’s important to remember that the goal of web accessibility is not conformance for its own sake. Accessibility is for real people. To reflect this, W3C has organized its WCAG criteria by these four guiding principles: perceivable, operable, understandable and robust (aka POUR):
 
 > 1. Perceivable - Information and user interface components must be presentable to users in ways they can perceive.
 > 2. Operable - User interface components and navigation must be operable.
