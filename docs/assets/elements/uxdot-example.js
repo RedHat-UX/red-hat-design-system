@@ -74,14 +74,14 @@ class UxdotExample extends LitElement {
     }
 
     :host([danger]) #container {
-      border-color: var(--rh-color-border-status-danger-on-light, #f0561d);
+      --_border-color: var(--rh-color-border-status-danger-on-light, #f0561d);
       background-image: url('/assets/best-practices-danger-icon.svg');
       background-position-x: 8px;
       background-position-y: 8px;
       background-repeat: no-repeat;
     }
 
-    :host([no-border]) #container {
+    :host([no-border]:not([danger])) #container {
       border: none;
     }
 
