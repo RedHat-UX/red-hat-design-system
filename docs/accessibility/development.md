@@ -9,7 +9,7 @@ tags: accessibility
 This section covers development accessibility. Developers should also be familiar with accessibility [fundamentals](../), [content](../content), and [design](../design).
 {% endalert %}
 
-While our elements themselves were developed and tested with accessibility, components can still be rendered inaccessible in how they are used. The HTML slotted within a component could be inaccessible, or CSS variables and part selectors could be used in a way that renders the component inaccessible. Therefore, you should always consider how your particular use of a component may impact its accessibility.
+While our elements themselves were developed and tested with accessibility in mind, components can still be rendered inaccessible in how they are used. The HTML slotted within a component could be inaccessible, or CSS variables and part selectors could be used in a way that renders the component inaccessible. Therefore, you should always consider how your particular use of a component may impact its accessibility.
 
 ## Icons and SVGs
 
@@ -73,31 +73,31 @@ Carie Fisher explores several patterns (including the above) for embedding acces
 
 ## Web standards and semantics
 
-The W3C establishes standards for the web. Browsers work according to these standards. And assistive technology, like screen readers, are designed to work with this standard as well. When everything follows the same standard, it’s easy to be accessible. It’s what we do outside of the standards that has potential to make the web inaccessible. 
+The W3C establishes standards for the web. Browsers work according to these standards. And assistive technologies, like screen readers, are designed to work with this standard as well. When everything follows the same standard, it’s easy to be accessible. It’s what we do outside of the standards that has potential to make the web inaccessible. 
 
-Semantic HTML, using the standard HTML tags based on their meaning, is how we can communicate our intent to both the browser and the assistive technology. For example, `<a>` and `<h1>` indicate meaning while `<div>` and `<span>` do not. For interactive components that aren’t covered by semantic HTML, there is the Accessible Rich Internet Applications (ARIA) W3C specification. ARIA also allows us to specify certain regions of a page as [landmarks](https://www.w3.org/WAI/ARIA/apg/practices/landmark-regions/) that screen reader users can skip to.
+Semantic HTML, using the standard HTML tags based on their meaning, is how we can communicate our intent to both the browser and assistive tech. For example, `<a>` and `<h1>` indicate meaning while `<div>` and `<span>` do not. For interactive components that aren’t covered by semantic HTML, refer to the Accessible Rich Internet Applications (ARIA) W3C specification. ARIA also allows us to specify certain regions of a page as [landmarks](https://www.w3.org/WAI/ARIA/apg/practices/landmark-regions/) that screen reader users can skip to.
 
-So to ensure your work is accessible, do the following:
+To help ensure your work is accessible:
 
 - **Start by using semantic HTML as it was intended.** For example, use `<a>` for links and `<button>` for buttons, as they are already built to work the way they should work.
-- **Markup order, visual order, and focus order should match.** Ensure that assistive technology read order and keyboard focus order follow what is presented visually.
+- **Markup order, visual order, and focus order should match.** Ensure that the assistive tech read order and keyboard focus order follow what is presented visually.
 - **When there is no standard HTML for a UI component, use ARIA.** For example, there is no semantic HTML for a [tabs component](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/#wai-ariaroles,states,andproperties), so you’ll need to include some ARIA roles, states and properties to supply additional meaning to assistive technology.
-- **Use ARIA landmarks, but in a limited number.** Think of landmarks as shortcuts on a page, if there are too many of them, then they cease to be shortcuts.
+- **Use ARIA landmarks, but in a limited number.** Think of landmarks as shortcuts on a page, if there are too many of them, they cease to be shortcuts.
 
 ## Accessible patterns
 
-The best approach for making a component accessible is to refer to an existing HTML element or an established pattern. You can find examples of existing patterns in the following resources:
+The best approach for making a component accessible is to refer to an existing HTML element or an established pattern. You can find examples of existing patterns via the following resources:
 
 ### WAI ARIA authoring practices guide
 
 The [WAI ARIA Authoring Practices Guide (APG)](https://www.w3.org/WAI/ARIA/apg) includes [patterns](https://www.w3.org/WAI/ARIA/apg/patterns/) and [practices](https://www.w3.org/WAI/ARIA/apg/practices/) for making components accessible. Contributors should refer to the pattern that best matches the component they are building when considering the following:
 
-- keyboard navigation
+- Keyboard navigation.
 - WAI-ARIA roles, states and properties.
 
 ### Deque University Code Library
 
-Accessibility solution provider Deque Solutions offers training via its educational arm, Deque University. [Deque University's Code Library](https://dequeuniversity.com/library/) is a beta project that includes the Cauldron Pattern Library and ARIA examples. Contributors may also refer to examples in this code library. Each example includes all applicable HTML, CSS and JavaScript.
+Accessibility solutions provider Deque Solutions offers training via its educational arm, Deque University. [Deque University's Code Library](https://dequeuniversity.com/library/) is a beta project that includes the Cauldron Pattern Library and ARIA examples. Contributors may also refer to examples in this code library. Each example includes all applicable HTML, CSS and JavaScript.
 
 ### Inclusive Components
 
