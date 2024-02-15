@@ -45,10 +45,10 @@ class UxdotHeader extends LitElement {
     }
 
     ::slotted(h1) {
-      font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-      font-size: var(--rh-font-size-heading-2xl, 3rem);
-      font-weight: var(--rh-font-weight-heading-regular, 300);
-      line-height: var(--rh-line-height-heading, 1.3);
+      font-family: var(--uxdot-heading-font-family, var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif)) !important;
+      font-size: var(--uxdot-heading-heading-size, var(--rh-font-size-heading-2xl, 3rem)) !important;
+      font-weight: var(--uxdot-heading-font-weight, var(--rh-font-weight-heading-regular, 300)) !important;
+      line-height: var(--uxdot-heading-line-height, var(--rh-line-height-heading, 1.3)) !important;
     }
 
     ::slotted([slot="subnav"]) {
