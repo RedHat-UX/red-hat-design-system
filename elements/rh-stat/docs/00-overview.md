@@ -2,27 +2,27 @@
 
 {{ tagName | getElementDescription }}
 
-{% example palette="light",
-           alt="A vertically aligned stack of elements; includes a small red icon, large red data text showing 80% percent, and two lines of black body text",
-           src="stat-sample-element.png" %}
+<uxdot-example width-adjustment="346px">
+  <img src="{{ './stat-sample-element.png' | url }}" alt="A vertically aligned stack of elements; includes a small red icon, large red data text showing 80% percent, and two lines of black body text">
+</uxdot-example>
 
 
 ## Sample element
-  <rh-stat>
-    <pf-icon slot="icon" set="fas" icon="tower-cell" size="lg" style="color:#ee0000"></pf-icon>
-    <span slot="statistic">80%</span>
-    <span>of Fortune Global 500 telecommunications companies</span>
-  </rh-stat>
 
-<hr style="margin-block:var(--rh-space-xl) var(--rh-space-5xl);">
+<rh-stat>
+  <pf-icon slot="icon" set="fas" icon="tower-cell" size="lg" style="color: var(--rh-color-text-brand-on-light, #ee0000);"></pf-icon>
+  <span slot="statistic">80%</span>
+  <span>of Fortune Global 500 telecommunications companies</span>
+</rh-stat>
+
 
 ## Demo
-  View a live version of this element and see how it can be customized.
 
-  {% playground tagName=tagName %}{% endplayground %}
-  {% cta href="./demo/", target="_blank" %}
-    View the `<rh-stat>` demo in a new tab
-  {% endcta %}
+View a live version of this element and see how it can be customized.
+
+{% playground tagName=tagName %}{% endplayground %}
+
+<rh-cta><a href="{{ './demo/' | url }}>Full screen demo</a></rh-cta>
 
 
 ## When to use
@@ -30,4 +30,4 @@
 - When you need to pair a data point with supporting text to add more context
 - When you need to display several statistics together in a group
 
-{% repoStatus %} 
+{% repoStatus type="Element" %} 
