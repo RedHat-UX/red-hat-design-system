@@ -22,7 +22,7 @@ The contents of a page should be arranged in a meaningful order. Here are some t
 
 Elements that repeat across a site (e.g., navigation and site search) should appear in consistent locations and with consistent ordering. That said, it’s okay if some elements within repeating sections (e.g., individual items in a navigation menu) change and shift by necessity, depending on context.
 
-For repeating sections that come before a page’s main content (e.g., a navigation menu at the top of the site), there must be a means for keyboard users to bypass it and get to the unique content. Such "[skip links](https://webaim.org/techniques/skipnav/)" may be hidden by default, but you will want to design how they appear onscreen upon receiving keyboard focus.
+For repeating sections that come before a page’s main content (e.g., a navigation menu at the top of the site), there must be a means for keyboard users to bypass them and get to the unique content. Such "[skip links](https://webaim.org/techniques/skipnav/)" may be hidden by default, but you will want to design how they appear onscreen upon receiving keyboard focus.
 
 If one element has the same function as another, both should be labeled the same way. For example, a call to action for the Contact page should have consistent text labels.
 
@@ -50,9 +50,9 @@ Small foreground text (non-bold text under 24px and bold text under 19px) must h
 
 #### Links
 
-If color is the only way to distinguish between links and surrounding text (e.g., if link underlines are removed), the contrast ratio between the link and surrounding text must be at least 3:1.
+If color is the only way to distinguish between links and surrounding text (e.g., if link underlines are removed within a paragraph), the contrast ratio between the link and surrounding text must be at least 3:1.
 
-- Non-color cues must be used to signify when the link receives hover or focus (e.g., an underline)
+Non-color cues should be used to signify when a link receives hover and focus (e.g., an underline).
 
 {% example palette="light",
           alt="Contrast ratio of a blue link next to black text and an example of a link's darker blue, underlined hover state",
@@ -60,9 +60,9 @@ If color is the only way to distinguish between links and surrounding text (e.g.
 
 #### Graphical objects and UI components
 
-Graphical objects and UI components should have a contrast ratio of at least 3:1 (e.g., within charts and infographics). If color is the only way to distinguish between inline controls and their surrounding text (e.g., no outline or underline), the contrast ratio between the control and surrounding text must be at least 3:1.
+Graphical objects and UI components (including those within charts and infographics) should have a contrast ratio of at least 3:1 . If color is the only way to distinguish between inline controls and their surrounding text (e.g., no outline or underline), the contrast ratio between the control and surrounding text must be at least 3:1.
 
-- Non-color cues must be used to signify when the element receives focus (e.g., a border)
+Non-color cues must be also used to signify when an object or component receives focus (e.g., a border).
 
 #### Layering
 
@@ -74,17 +74,17 @@ It is acceptable to layer colors with the same hue, saturation, or lightness on 
 
 #### Further help
 
-TPGi’s [Colour Contrast Analyzer](https://www.tpgi.com/color-contrast-checker/) can help you identify colors and gauge their contrast from one another.
+TPGi’s [Colour Contrast Analyzer](https://www.tpgi.com/color-contrast-checker/) for Windows and Mac computers can help you identify colors and gauge their contrast from one another.
 
 ## Imagery
 
 ### Text in images
 
-Avoid using images of text, except for logotypes or text in decorative images. Many effects can be applied to text via CSS, and designers can work with developers or engineers to determine the best approach. In addition to making reading more difficult for screen readers users, images of text usually can’t be resized or manipulated by assistive tech well.
+Avoid using images of text, except for logotypes or text in decorative images. Many effects can be applied to text via CSS, and designers can work with developers or engineers to determine the best approach. In addition to making reading more difficult for screen reader users, images of text usually can’t be resized or manipulated by assistive tech well.
 
 ### Charts and diagrams
 
-Any charts, diagrams, or any complex images should have a description placed immediately before or after. Explaining these types of visuals is typically too long for alt text. So, this accompanying text can be a caption or integrated into the body copy.
+Any charts, diagrams, or complex images should have a description placed immediately before or after. Explaining these types of visuals is typically too long for alt text. So, this accompanying text can be a caption or integrated into the adjacent body copy.
 
 ### Decorative images
 
@@ -99,7 +99,7 @@ An image used as a link or button is always meaningful (i.e., not decorative) an
 
 ### Animations
 
-The following guidelines should be followed to make animated content accessible to users that may have motion sensitivity or who experience seizures.
+The following guidelines should be followed to make animated content accessible to users that may have motion sensitivity or who experience seizures:
 
 - Any animations lasting five seconds or more require mechanisms for stopping or hiding it. 
 - Any text that’s animated or that automatically changes needs a way to be viewed statically.
@@ -107,14 +107,14 @@ The following guidelines should be followed to make animated content accessible 
 
 ### Videos
 
-Designers must provide ways to pause or mute video content if the video:
+Designers must provide ways to pause and/or mute video content if the video:
 
 - Has no audio and lasts longer than five seconds, *or* 
 - Has audio and lasts longer than three seconds.
 
 These guidelines apply whether or not the video autoplays.
 
-Most video players have caption controls built-in, and designers will not typically be responsible for creating captions. However, designers will have to show text or audio descriptions for any embedded videos if essential information isn’t also conveyed through audio.
+Most video players have caption controls built in, and designers will not typically be responsible for creating captions. However, designers will have to show text or audio descriptions for any embedded videos if essential information isn’t also conveyed through audio.
 
 ### Audio
 
@@ -132,17 +132,17 @@ If a link opens in a new window, this will have to be indicated both visually an
 
 ### Target size
 
-A click or touch target, like a button or link, should be large enough for all users to activate easily on all devices. The minimum size is 24 × 24 pixels for level AA compliance and 44 × 44 pixels for level AAA. Proper target sizes ensure that a user with dexterity impairments can still select a link with a mouse, that a user in a moving vehicle can tap the correct button in an app, etc..
+A click or touch target, like a button or link, should be large enough for all users to activate easily on all devices. The minimum size is 24 × 24 pixels for level AA compliance and 44 × 44 pixels for level AAA. Proper target sizes ensure that a user with dexterity impairments can still select a link with a mouse, that a user in a moving vehicle can tap the correct button in an app, etc.
 
-If a target must be smaller than 24 pixels, it must be spaced from any other targets as if it were centered within its own 24 pixel diameter (or larger) circle.
+If a target must be smaller than 24 pixels in either direction, it must be spaced from any other targets as if it were centered within its own 24 pixel diameter (or larger) circle.
 
 ### Keyboard interactions
 
-Mouse and keyboard users must be able to interact with interfaces in functionally equivalent ways. For example, if a mouse user can scroll through a page and click to expand and collapse accordions in a group, a keyboard user must also be able to use the tab key to navigate through this accordion group and expand and collapse focused accordions by pressing enter.
+Mouse and keyboard users must be able to interact with interfaces in functionally equivalent ways. For example, if a mouse user can scroll through a page and click to expand and collapse accordions in a group, a keyboard user must also be able to use the <kbd>tab</kbd> key to navigate through this accordion group and expand and collapse focused accordions by pressing enter.
 
 Though much of the work of incorporating such functionality happens in the development stage, designers should consider how their designs will be approached by keyboard users. In the preceding example, a large accordion group may be more difficult for keyboard users to use because they may have to tab through many accordion panels before arriving at the one they want to read. In this case, it may be a better experience for both keyboard and mouse users to have those accordions broken into smaller groups.
 
-Keyboard and assistive tech users must also have the ability to perform path- and gesture-based tasks typically done via mouse or touchscreen. If users are expected to interact with an image gallery by swiping, the designer should include buttons to allow all users to cycle through these images. And clicking and holding down a slider marker with a mouse pointer shouldn’t be the only means of increasing/decreasing values for that element. (e.g., You could add up/down arrows to the interface, or a developer could ensure that arrow keys update the value.)
+Keyboard and assistive tech users must also have the ability to perform path- and gesture-based tasks typically done via mouse or touchscreen. If users are expected to interact with an image gallery by swiping, the designer should include buttons to allow all users to cycle through these images. And clicking and holding down a slider marker with a mouse pointer shouldn’t be the only means of increasing/decreasing values for that element. (e.g., You could add up/down arrows to the interface, or a developer could ensure that arrow keys update the value when the slider has focus.)
 
 ### Focus
 
@@ -152,7 +152,7 @@ The act of focusing on an element should not cause the element to change the int
 A change in a page’s content does not always mean that the context has changed. Learn more about what constitutes a [change in context](https://www.w3.org/WAI/WCAG21/Understanding/on-focus#dfn-changes-of-context).
 {% endalert %}
 
-If keyboard focus appears to be trapped in a subsection, instructions for exiting this section via keyboard will need to be available. For example, if pressing the tab key does not allow the user to exit an embedded video or learning module on a page, another method (e.g., pressing the escape key or some key combo) must exist, and instructions must be presented to all users.
+If keyboard focus appears to be trapped in a subsection, instructions for exiting this section via keyboard will need to be available. For example, if pressing the tab key does not allow the user to exit an embedded video or learning module on a page, another method (e.g., pressing the <kbd>escape</kbd> key or some key combo) must exist, and instructions must be presented to all users.
 
 ## Typography
 
