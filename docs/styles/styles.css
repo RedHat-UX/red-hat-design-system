@@ -46,6 +46,11 @@
     --uxdot-masthead-max-height: 72px;
   }
 
+  :target {
+    /* Set padding for #hash links */
+    scroll-margin-top: calc(var(--uxdot-masthead-max-height) + var(--rh-space-5xl, 80px));
+  }
+
   body {
     display: grid;
     grid-template-rows: max-content;
