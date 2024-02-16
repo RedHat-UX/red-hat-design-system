@@ -32,9 +32,9 @@ the js that runs and adds these casuses the nav to break
      margin-block: 0 !important;
   }
 
-  uxdot-example:not(:is([color-palette="dark"], [color-palette="lighter"]))::part(container) {
+  {# uxdot-example:not(:is([color-palette="dark"], [color-palette="lighter"]))::part(container) {
     background-color: transparent;
-  }
+  } #}
 
   @container container (min-width: 567px) {
     .page-personalization-patterns .container .grid {
@@ -66,14 +66,14 @@ the js that runs and adds these casuses the nav to break
     </rh-tile>
 
     <rh-tile compact bleed>
-      <uxdot-example slot="image" no-border>
+      <uxdot-example slot="image" transparent no-border>
         <img src="{{ '/assets/patterns/all-patterns-sticky-banner.png' | url }}" alt="Sticky banner">
       </uxdot-example>
       <a href="#sticky-banner" slot="headline"><h3 id="nav-1">Sticky banner</h3></a>
     </rh-tile>
 
     <rh-tile compact bleed>
-      <uxdot-example slot="image" no-border>
+      <uxdot-example slot="image" transparent no-border>
         <img src="{{ '/assets/patterns/all-patterns-sticky-card.png' | url }}" alt="Sticky card">
       </uxdot-example>
       <a href="#sticky-card" slot="headline"><h3 id="nav-2">Sticky card</h3></a>
@@ -87,28 +87,28 @@ the js that runs and adds these casuses the nav to break
     </rh-tile>
   
     <rh-tile compact bleed>
-      <uxdot-example slot="image" no-border>
+      <uxdot-example slot="image" transparent  no-border>
         <img src="{{ '/elements/card/screenshot.svg' | url }}" alt="Card">
       </uxdot-example>
       <a href="#in-page-card" slot="headline"><h3 id="nav-4">In-page card</h3></a>
     </rh-tile>
   
     <rh-tile compact bleed>
-      <uxdot-example slot="image" no-border>
+      <uxdot-example slot="image" transparent no-border>
         <img src="{{ '/elements/tabs/screenshot.png' | url }}" alt="Tabs">
       </uxdot-example>
       <a href="#active-tab" slot="headline"><h3 id="nav-5">Active tab</h3></a>
     </rh-tile>
 
     <rh-tile compact bleed>
-      <uxdot-example slot="image" no-border>
+      <uxdot-example slot="image" transparent no-border>
         <img src="{{ '/elements/alert/screenshot.svg' | url }}" alt="Alert">
       </uxdot-example>
       <a href="#inline-alert" slot="headline"><h3 id="nav-6">In-page alert</h3></a>
     </rh-tile>
 
     <rh-tile compact bleed>
-      <uxdot-example slot="image" no-border>
+      <uxdot-example slot="image" transparent no-border>
         {# TODO: Add a custom pattern image #}
       </uxdot-example>      
       <a href="#custom-patterns" slot="headline"><h3 id="nav-7">Custom patterns</h3></a>
