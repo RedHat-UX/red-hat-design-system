@@ -2,6 +2,9 @@ import { LitElement, css } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { html, unsafeStatic } from 'lit/static-html.js';
 
+import { ColorContextProvider } from '@rhds/elements/lib/context/color/provider.js';
+import { ColorContextConsumer } from '@rhds/elements/lib/context/color/consumer.js';
+
 class UxdotExample extends LitElement {
   static styles = css`
     :host {
@@ -9,6 +12,10 @@ class UxdotExample extends LitElement {
       container-type: inline-size;
       container-name: host;
       margin-block-end: var(--rh-space-2xl, 32px);
+    }
+
+    :host([transparent]) {
+      --_context-background-color: transparent;
     }
 
     #container {
@@ -21,7 +28,8 @@ class UxdotExample extends LitElement {
       border-style: solid;
       border-color: var(--_border-color, transparent);
       border-radius: var(--rh-border-radius-default, 3px);
-      background-color: var(--_background, var(--rh-color-surface-lightest, #ffffff));
+      background-color: var(--_context-background-color, var(--rh-color-surface-lightest, #ffffff));
+      color: var(--_context-text, var(--rh-color-text-on-light, #151515));
     }
 
     #container:is(.light, .lighter, .lightest) {
@@ -30,34 +38,6 @@ class UxdotExample extends LitElement {
 
     #container:is(.dark, .darker, .darkest) {
       --_border-color: var(--rh-color-border-subtle-on-dark, #707070);
-    }
-
-    .light {
-      --_background: var(--rh-color-surface-light, #e0e0e0);
-    }
-
-    .lighter {
-      --_background: var(--rh-color-surface-lighter, #f2f2f2);
-    }
-
-    .lightest {
-      --_background: var(--rh-color-surface-lightest, #ffffff);
-    }
-
-    .dark {
-      --_background: var(--rh-color-surface-dark, #383838);
-    }
-
-    .darker {
-      --_background: var(--rh-color-surface-darker, #1f1f1f);
-    }
-
-    .darkest {
-      --_background: var(--rh-color-surface-darkest, #151515);
-    }
-
-    .transparent {
-      --_background: transparent;
     }
 
     ::slotted(*) {
@@ -112,20 +92,18 @@ class UxdotExample extends LitElement {
 
   constructor() {
     super();
+    new ColorContextProvider(this);
+    new ColorContextConsumer(this);
     this.headingLevel = 3;
-    this.colorPalette = 'lightest';
     this.width = '100%';
     this.alignment = 'center';
     this.transparent = false;
   }
 
   render() {
-    const classes = {
-      [this.colorPalette]: true ?? 'lightest',
-      transparent: this.transparent,
-    };
+    const { on = '' } = this;
     return html`
-      <div id="container" part="container" class="${classMap(classes)}" style="--_width: ${this.width}; --_alignment: ${this.alignment}">
+      <div id="container" part="container" class="${classMap({ [on]: !!on })}" style="--_width: ${this.width}; --_alignment: ${this.alignment}">
         ${!this.headline ? html``
           : html`
             <${unsafeStatic(this.#setHeading())} id="${this.#slugify(this.headline)}">
