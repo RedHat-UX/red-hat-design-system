@@ -1,15 +1,20 @@
 ## Overview
+
 {{ tagName | getElementDescription }}
 
+
 ## Sample element
+
 <rh-timestamp></rh-timestamp>
 
+
 ## Demos
+
 View a live version of this element to see how it can be customized.
+
 {% playground tagName=tagName %}{% endplayground %}
-{% cta href="./demo/", target="_blank" %}
-  View the demo
-{% endcta %}
+
+<rh-cta><a href="{{ './demo/' | url }}">Full screen demo</a></rh-cta>
 
 
 ## When to use

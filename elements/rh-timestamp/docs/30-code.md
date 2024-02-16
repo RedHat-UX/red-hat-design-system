@@ -6,14 +6,5 @@
 ```
 {% endband %}
 
-{% renderSlots %}{% endrenderSlots %}
+{% renderCodeDocs hideDescription=true %}{% endrenderCodeDocs %}
 
-{% renderAttributes %}{% endrenderAttributes %}
-
-{% renderMethods %}{% endrenderMethods %}
-
-{% renderEvents %}{% endrenderEvents %}
-
-{% renderCssParts for='rh-timestamp', level=3 %}{% endrenderCssParts %}
-
-{% renderCssCustomProperties for='rh-timestamp', level=3 %}{% endrenderCssCustomProperties %}
