@@ -33,7 +33,7 @@ for our users.
 When colors are used together, they form relationships that communicate brand, 
 hierarchy, state, and more.
 
-<uxdot-example>
+<uxdot-example width-adjustment="840px">
   <img src="/assets/color/color-relationships.png" alt="Variants of several elements">
 </uxdot-example>
 
@@ -50,7 +50,7 @@ To learn more about our color design tokens, go to the [Tokens](/tokens) section
 
 Our design system includes multiple sets of colors known as **"crayon" colors**. Crayon colors reference hard-coded values, but offer no information about usage. **Semantic** colors reference crayon colors and define how a color is used. Semantic naming is essential not just for color, but for all foundational styles.
 
-<uxdot-example>
+<uxdot-example width-adjustment="626px">
   <img src="/assets/color/primitive-and-semantic-colors.png" alt="Example of how crayon color tokens are aliased to semantic tokens, which are used to style a button">
 </uxdot-example>
 
