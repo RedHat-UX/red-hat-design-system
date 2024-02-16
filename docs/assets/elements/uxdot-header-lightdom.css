@@ -8,9 +8,17 @@ uxdot-header {
 
 uxdot-header:not(:defined) {
   padding-inline: var(--rh-space-5xl, 80px);
-  padding-block-start: var(--rh-space-5xl, 80px);
+  padding-block: var(--rh-space-5xl, 80px);
   margin-block-end: var(--rh-space-5xl, 80px);
   background-color: var(--rh-color-surface-lighter, #f2f2f2);
+}
+
+uxdot-header:not(:defined):has([slot="subnav"]) {
+  padding-block-end: 0;
+}
+
+uxdot-header:not(:defined):has([slot="subnav"]) [slot="subnav"] {
+  margin-block-start: var(--rh-space-2xl, 32px);
 }
 
 uxdot-header:not(:defined) h1 {
