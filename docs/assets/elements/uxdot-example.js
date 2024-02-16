@@ -26,7 +26,7 @@ class UxdotExample extends LitElement {
       justify-content: center;
       border-width: var(--rh-border-width-sm, 1px);
       border-style: solid;
-      border-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
+      border-color: var(--_border-color, var(--rh-color-border-subtle-on-light, #c7c7c7));
       border-radius: var(--rh-border-radius-default, 3px);
       background-color: var(--_context-background-color, var(--rh-color-surface-lightest, #ffffff));
       color: var(--_context-text, var(--rh-color-text-on-light, #151515));
