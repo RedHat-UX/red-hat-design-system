@@ -14,14 +14,18 @@ Since a tag does not get an accessible name and is not focusable by default, eac
 Compare Figure 1 to Figure 2. Both figures include a blue informational tag, a red danger tag , and a cyan link tag. In Figure 1, note how difficult it is to determine the differences between the tags due to the lack of visual cues. In Figure 2, including icons and more descriptive text have increased the amount of helpful information available without using color alone.
 
 ### Figure 1
-{% example palette="darkest",
-        alt="A row of three gray tags that all look the same",
-        src="../tag-a11y-figure-1.png" %}
+
+<uxdot-example color-palette="darkest" width-adjustment="164px">
+  <img src="{{ '../tag-a11y-figure-1.png' | url }}" alt="A row of three gray tags that all look the same">
+</uxdot-example>
+
 
 ### Figure 2
-{% example palette="darkest",
-        alt="A row of three gray tags all with a unique icon and a unique text label",
-        src="../tag-a11y-figure-2.png" %}
+
+<uxdot-example color-palette="darkest" width-adjustment="467px">
+  <img src="{{ '../tag-a11y-figure-2.png' | url }}" alt="A row of three gray tags all with a unique icon and a unique text label">
+</uxdot-example>
+
 
 {% include 'partials/accessibility/ariaguide.md' %}
 

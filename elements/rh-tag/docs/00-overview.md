@@ -2,18 +2,13 @@
 
 {{ tagName | getElementDescription }}
 
-{% example palette="light",
-           alt="Two rows of tags; the top row is ‘Filled’ tags and the bottom row is ‘Unfilled’ tags; from left to right, both rows of tags include red, orange, green, cyan, blue, purple, and gray colors",
-           src="tag-sample-element.png" %}
-
-
-
-<hgroup>
+<uxdot-example width-adjustment="404px">
+  <img src="{{ './tag-sample-element.png' | url }}" alt="Two rows of tags; the top row is ‘Filled’ tags and the bottom row is ‘Unfilled’ tags; from left to right, both rows of tags include red, orange, green, cyan, blue, purple, and gray colors">
+</uxdot-example>
 
 ## Sample element
-### Filled
 
-</hgroup>
+### Filled
 
 <rh-tag color="red">Red<span class="visually-hidden">Hat</span></rh-tag>
 <rh-tag color="orange">Orange</rh-tag>
@@ -22,6 +17,7 @@
 <rh-tag color="blue">Blue</rh-tag>
 <rh-tag color="purple">Purple</rh-tag>
 <rh-tag>Gray</rh-tag>
+
 
 ### Unfilled
 
@@ -35,13 +31,10 @@ class="visually-hidden">Hat</span></rh-tag>
 <rh-tag variant="outline">Gray</rh-tag>
 
 
-
 ## Demo
-  View a live version of this element and see how it can be customized.
-  {% playground tagName=tagName %}{% endplayground %}
-  {% cta href="./demo/", target="_blank" %}
-    View the `<rh-tag>` demo in a new tab
-  {% endcta %}
+{% playground tagName=tagName %}{% endplayground %}
+
+<rh-cta><a href="{{ './demo/' | url }}">Full screen demo</a></rh-cta>
 
 
 ## When to use
@@ -50,6 +43,4 @@ class="visually-hidden">Hat</span></rh-tag>
   - When you need to indicate status
 
 
-
 {% repoStatus type="Element" %}
-
