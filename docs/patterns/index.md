@@ -1,5 +1,6 @@
 ---
 title: Patterns
+heading: All Patterns
 summaries:
   announcement: Displays important messages across web properties
   card: Arranges content and interactive elements in a layout

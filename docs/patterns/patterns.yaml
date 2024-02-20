@@ -2,3 +2,4 @@ bodyClasses: element-docs
 layout: layouts/pages/basic.njk
 importElements:
     - rh-alert
+    - rh-table

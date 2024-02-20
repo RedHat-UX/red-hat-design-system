@@ -1,6 +1,7 @@
 ---
 layout: layouts/pages/basic.njk
 title: Design/code status
+hasToc: true
 importElements: 
   - rh-table
 ---
@@ -8,13 +9,18 @@ importElements:
 <link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
 
 <section>
-  <h2>Overview</h2>
-  <p>Our team is building a robust library of foundations and components. When we add new foundations and components or make significant updates, this table will be updated so you know what is currently available to use.</p>
+
+  ## Overview
+  
+  Our team is building a robust library of foundations and components. When we add new foundations and components or make significant updates, this table will be updated so you know what is currently available to use.
+
 </section>
 
 <section>
-  <h2>Design/code status</h2>
-  <p>Last updated on October 5, 2022.</p>
+
+  ## Design/code status
+
+  Last updated on October 5, 2022.
 
   <rh-table>
     <table>

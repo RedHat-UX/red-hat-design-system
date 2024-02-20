@@ -4,6 +4,20 @@ tags:
   - pattern
 ---
 
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--rh-space-2xl, 32px);
+  }
+
+  @container (min-width: 567px) {
+    .grid {
+      grid-template-columns: 1fr 1fr;
+    } 
+  }
+</style>
+
 ## Overview
 
 A Disclosure toggles the visibility of sections of content. It features one 
@@ -29,7 +43,7 @@ expands to reveal more information.
   </rh-accordion-panel>
 </rh-accordion>
 
-{% repoStatus %}
+{% repoStatus type="Pattern" %}
 
 ## Style
 
@@ -41,19 +55,21 @@ When the panel is expanded, it includes different styling that consists
 of an active border on the left and a slight drop shadow, similar to an
 [Accordion](/elements/accordion).
 
-{% example palette="light",
-           alt="Anatomy of a disclosure",
-           src="./disclosure-style-1.svg" %}
+<uxdot-example width-adjustment="884px" variant="full" alignment="left" no-border>
+  <img src="{{ './disclosure-style-1.svg' | url }}" alt="Anatomy of a disclosure">
+</uxdot-example>
+
 
 ### Theme
 
-{% example palette="light",
-           alt="A disclosure in a light theme",
-           src="./disclosure-theme-1.svg" %}
+<uxdot-example width-adjustment="884px">
+  <img src="{{ './disclosure-theme-1.svg' | url }}" alt="A disclosure in a light theme">
+</uxdot-example>
 
-{% example palette="darkest",
-           alt="A disclosure in a dark theme",
-           src="./disclosure-theme-2.svg" %}
+<uxdot-example color-palette="darkest">
+  <img src="{{ './disclosure-theme-2.svg' | url }}" alt="A disclosure in a dark theme">
+</uxdot-example>
+
 
 ## Usage
 
@@ -66,10 +82,9 @@ of the user experience, it’s also beneficial because it reduces page
 scrolling. Consider whether a disclosure should be used. If content is crucial 
 or requires more focus to read, don’t use a disclosure.
 
-{% example palette = "light",
-           class="centered",
-           alt="A disclosure in a dark theme",
-           src="./disclosure-usage-1.svg" %}
+<uxdot-example width-adjustment="884px" variant="full" alignment="left" no-border>
+  <img src="{{ './disclosure-usage-1.svg' | url }}" alt="A disclosure in a light theme">
+</uxdot-example>
 
 ### Usage vs. Accordion
 
@@ -83,17 +98,20 @@ has the caret icon positioned on the left before the section text label
 whereas accordions have the caret icon placed on the right after the section 
 text label.
 
-<div class="multi-column--min-400-wide margin-top--4 margin-bottom--4">
-{% example palette = "light",
-           class="centered",
-           alt="Example of a disclosure",
-           src="./disclosure-usage-2.svg" %}
+<div class="grid">
 
-{% example palette = "light",
-           class="centered",
-           alt="Example of an accordion",
-           src="./disclosure-usage-3.svg" %}
+  <uxdot-example width-adjustment="340px">
+    <h4>Disclosure</h4>
+    <img src="{{ './disclosure-usage-2.svg' | url }}" alt="Example of a disclosure">
+  </uxdot-example>
+
+  <uxdot-example width-adjustment="340px">
+    <h4>Accordion</h4>
+    <img src="{{ './disclosure-usage-3.svg' | url }}" alt="Example of an accordion">
+  </uxdot-example>
+
 </div>
+
 
 ### Label formatting
 
@@ -102,6 +120,7 @@ content within. Be mindful of lengthy character counts and how they’ll impact
 the appearance of a disclosure, especially on smaller screens or if they’re 
 translated.
 
+
 ### Content area
 
 When the panel is expanded, it contains a content area under the caret icon and 
@@ -109,17 +128,36 @@ section text label. It may contain the same elements that can also be used in
 other sections of a page, like text, cards, images, etc. To maintain optimal 
 readability, text shouldn’t exceed eight grid columns.
 
+
 ### Character count
 The label should have fewer characters to help users make sense of what the content will be when they expand a content area.
 
-| Element {style="width: 50%" } | Character count |
-| ----------------------------- | --------------- |
-| Label                         | 65              |
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Element">Element</th>
+        <th scope="col" data-label="Character count">Character count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Label">Label</td>
+        <td data-label="Character count">65</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
+
 
 ### Jump links
 
 On small screens, vertical [Jump links](/elements/jump-links/) can be wrapped in 
 a disclosure and act as persistent navigation.
+
+<uxdot-example width-adjustment="884px" variant="full" alignment="left" no-border>
+  <img src="{{ './disclosure-usage-4.svg' | url }}" alt="Example of Jump links wrapped in a disclosure">
+</uxdot-example>
 
 {% example palette = "light",
            class="centered",

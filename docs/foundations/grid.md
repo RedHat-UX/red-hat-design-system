@@ -2,6 +2,7 @@
 layout: layouts/pages/basic.njk
 title: Grid
 order: 2
+hasToc: true
 tags:
   - foundations
 importElements: 
@@ -10,43 +11,42 @@ importElements:
 
 <link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
 
-<style>
-  hr {
-    margin-block: var(--rh-space-4xl, 64px);
-  }
-</style>
-
 <section>
-  <h2>Overview</h2>
-  <p>A grid is a group of columns that organize layouts and allow content to scale responsively based on screen size. They provide structure to pages and ensure optimal viewing experiences.</p>
 
-  <h3>Sample component</h3>
+  ## Overview
+
+  A grid is a group of columns that organize layouts and allow content to scale responsively based on screen size. They provide structure to pages and ensure optimal viewing experiences.
+
+  ### Sample component
+
   <uxdot-example variant="full" no-border>  
     <img src="{{ '/assets/grid/grid.svg' | url }}" alt="Grid">
   </uxdot-example>
 
-  <h3>Grid availability</h3>
+  ### Grid availability
+  
   <uxdot-example variant="full" no-border>
-    <uxdot-component-status>
-      {# TODO: Add component status #}
-      (coming soon)
-    </uxdot-component-status>
+    (coming soon)
   </uxdot-example>
 
-  <h3>Style</h3>
+  ### Style
+
   <uxdot-example variant="full" no-border>
     <img src="{{ '/assets/grid/grid-style.svg' | url }}" alt="Grid specs">
   </uxdot-example>
+
 </section>
 
-<hr>
 
 <section>
-  <h2>Usage</h2>
-  <p>Grids are fundamental to how content is organized across various devices and screen sizes.</p>
 
-  <h3>Columns</h3>
-  <p>The number of columns that a grid contains is determined by the screen size.</p>
+  ## Usage
+
+  Grids are fundamental to how content is organized across various devices and screen sizes.
+
+  ### Columns
+
+  The number of columns that a grid contains is determined by the screen size.
 
   <uxdot-example variant="full" no-border alignment="left">
     <figure>
@@ -62,31 +62,34 @@ importElements:
     </figure>
   </uxdot-example>
 
-  <h3>Gutters</h3>
-  <p>Gutters are the spaces in between columns, they also change depending on the screen size. Gutters help separate content into layouts based on the amount of columns being used.</p>
+  ### Gutters
+
+  Gutters are the spaces in between columns, they also change depending on the screen size. Gutters help separate content into layouts based on the amount of columns being used.
 
   <div class="grid">
     <uxdot-example variant="full" no-border>
       <img src="{{ '/assets/grid/grid-gutters-desktop.svg' | url }}" alt="Grid gutters on desktop">
     </uxdot-example>
-
     <uxdot-example variant="full" no-border alignment="left" width-adjustment="576px">
       <img src="{{ '/assets/grid/grid-gutters-mobile.svg' | url }}" alt="Grid gutters on mobile">
     </uxdot-example>
   </div>
 
-  <h3>Margins</h3>
-  <p>Margins are the spaces between a grid and the edges of the screen or window. They can be the same width or larger than gutters, depending on the screen size.</p>
+  ### Margins
 
-  <h3>Large screens</h3>
-  <p>The grid for large screens features 12 columns, like desktop and tablet. Column, gutter, and margin widths reduce as breakpoints get smaller.</p>
+  Margins are the spaces between a grid and the edges of the screen or window. They can be the same width or larger than gutters, depending on the screen size.
+
+  ### Large screens
+  
+  The grid for large screens features 12 columns, like desktop and tablet. Column, gutter, and margin widths reduce as breakpoints get smaller.
 
   <uxdot-example variant="full" no-border>
     <img src="{{ '/assets/grid/grid-margins-desktop.svg' | url }}" alt="Grid margins on desktop">
   </uxdot-example>
 
-  <h3>Small screens</h3>
-  <p>The grid for small screens features one column. In rare cases, content on small screens can sometimes be arranged in two columns.</p>
+  ### Small screens
+
+  The grid for small screens features one column. In rare cases, content on small screens can sometimes be arranged in two columns.
 
   <uxdot-example variant="full" no-border alignment="left" width-adjustment="576px">
     <img src="{{ '/assets/grid/grid-margins-mobile.svg' | url }}" alt="Grid margins on mobile">
@@ -94,11 +97,12 @@ importElements:
 
 </section>
 
-<hr>
 
 <section>
-  <h2>Best practices</h2>
-  <p>Don’t align every component to the grid, doing so might compromise the design of individual elements.</p>
+
+  ## Best practices
+  
+  Don’t align every component to the grid, doing so might compromise the design of individual elements.
 
   <uxdot-example variant="full" no-border alignment="left">
     <figure>
@@ -107,20 +111,23 @@ importElements:
     </figure>
   </uxdot-example>
 
-  
   <uxdot-example variant="full" no-border>
     <img src="{{ '/assets/grid/grid-best-practices-2.svg' | url }}" alt="Grid alignment issues">
   </uxdot-example>
+
 </section>
 
-<hr>
+
 
 <section>
-  <h2>Responsive design</h2>
-  <p>Grids are designed to be responsive, meaning they adapt to different screen sizes and orientations.</p>
 
-  <h3>Large screens</h3>
-  <p>The grid for large screens features 12 columns, like desktop and tablet. Column, gutter, and margin widths reduce as breakpoints get smaller.</p>
+  ## Responsive design
+  
+  Grids are designed to be responsive, meaning they adapt to different screen sizes and orientations.
+
+  ### Large screens
+
+  The grid for large screens features 12 columns, like desktop and tablet. Column, gutter, and margin widths reduce as breakpoints get smaller.
 
   <uxdot-example variant="full" no-border>
     <img src="{{ '/assets/grid/grid-responsive-1.svg' | url }}" alt="Example of responsive grid on large screen">
@@ -130,8 +137,9 @@ importElements:
     <img src="{{ '/assets/grid/grid-responsive-2.svg' | url }}" alt="Example of responsive grid on smaller screen">
   </uxdot-example>
 
-  <h3>Small screens</h3>
-  <p>The grid for small screens features one column. In rare cases, content on small screens can sometimes be arranged in two columns.</p>
+  ### Small screens
+
+  The grid for small screens features one column. In rare cases, content on small screens can sometimes be arranged in two columns.
 
   <uxdot-example variant="full" no-border alignment="left" width-adjustment="576px">
     <img src="{{ '/assets/grid/grid-responsive-3.svg' | url }}" alt="Example of responsive grid on large screen">
@@ -140,13 +148,15 @@ importElements:
   <uxdot-example variant="full" no-border alignment="left" width-adjustment="360px">
     <img src="{{ '/assets/grid/grid-responsive-4.svg' | url }}" alt="Example of responsive grid on smaller screen">
   </uxdot-example>
+
 </section>
 
-<hr>
 
 <section>
-  <h2>Breakpoints</h2>
-  <p>A breakpoint is a predetermined screen size that has specific layout requirements. When breakpoints change, content will shift around to fit the adjusted layout.</p>
+
+  ## Breakpoints
+
+  A breakpoint is a predetermined screen size that has specific layout requirements. When breakpoints change, content will shift around to fit the adjusted layout.
 
   <rh-table>
     <table>

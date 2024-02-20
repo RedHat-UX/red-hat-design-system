@@ -1,6 +1,7 @@
 ---
 layout: layouts/pages/basic.njk
 title: Release notes
+hasToc: true
 importElements:
   - rh-tile
 ---

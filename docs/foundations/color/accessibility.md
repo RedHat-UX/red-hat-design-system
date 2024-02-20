@@ -2,6 +2,7 @@
 layout: layouts/pages/basic.njk
 title: Accessibility
 heading: Color
+hasToc: true
 tags:
   - color
 subnav:

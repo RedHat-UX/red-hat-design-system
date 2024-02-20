@@ -2,6 +2,7 @@
 layout: layouts/pages/basic.njk
 title: Overview
 heading: Design tokens
+hasToc: true
 tokenSearch: true
 importElements: 
   - rh-tile

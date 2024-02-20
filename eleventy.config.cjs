@@ -51,10 +51,10 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(RHDSMarkdownItPlugin);
 
   /** Table of Contents Shortcode */
+  /** Table of Contents Shortcode */
   eleventyConfig.addPlugin(TOCPlugin, {
-    tags: ['h2', 'h3', 'h4', 'h5', 'h6'],
-    wrapperClass: 'table-of-contents',
-    headingText: 'Table of Contents'
+    tags: ['h2'],
+    headingText: 'On this page'
   });
 
   /** Bespoke import map for ux-dot pages and demos */

@@ -2,6 +2,7 @@
 layout: layouts/pages/basic.njk
 title: Typography
 order: 5
+hasToc: true
 tags:
   - foundations
 importElements:
@@ -84,18 +85,26 @@ importElements:
 
 
 <section>
-  <h2>Overview</h2>
-  <p>Typography organizes content and creates hierarchies. It brings consistency to experiences and extends the brand presence across web properties.</p>
+  
+  ## Overview
+
+  Typography organizes content and creates hierarchies. It brings consistency to experiences and extends the brand presence across web properties.
+
 </section>
 
 <section>
-  <h2>Get started</h2>
-  <p>To get started using our fonts, visit our <a href="https://github.com/RedHatOfficial/RedHatFont" target="_blank">GitHub repo</a>.</p>
+
+  ## Get started
+
+  To get started using our fonts, visit our <a href="https://github.com/RedHatOfficial/RedHatFont" target="_blank">GitHub repo</a>.
+
 </section>
 
 <section>
-  <h2>Style</h2>
-  <p>The Red&nbsp;Hat typeface is a fresh take on the geometric sans genre, taking inspiration from a range of American sans serifs including <em>Tempo</em> and <em>Highway Gothic</em>. These two font families can be used together seamlessly and are available to download <a href="https://github.com/RedHatOfficial/RedHatFont">here</a>.</p>
+
+  ## Style
+  
+  The Red&nbsp;Hat typeface is a fresh take on the geometric sans genre, taking inspiration from a range of American sans serifs including <em>Tempo</em> and <em>Highway Gothic</em>. These two font families can be used together seamlessly and are available to download <a href="https://github.com/RedHatOfficial/RedHatFont">here</a>.
 
   <uxdot-example width-adjustment="75%" no-border>
     <img src="https://www.redhat.com/cms/managed-files/BrandStandards-Visual_System-Typography-ASSETS_Hero.svg?itok=QnUDviH1"/>
@@ -103,34 +112,36 @@ importElements:
 
   <div class="grid">
     <div>
-      <h4>Red&nbsp;Hat Display</h4>
+      <h4 id="red-hat-display">Red&nbsp;Hat Display</h4>
       <p>The Display typeface is low contrast and spaced tightly with a large x-height and open counters.</p>
     </div>
-
     <div>
-        <h4>Red&nbsp;Hat Text</h4>
+      <h4 id="red-hat-text">Red&nbsp;Hat Text</h4>
       <p>The Text typeface has a slightly smaller x-height, a narrower width for better legibility, and thinned joins for a better performance at small sizes.</p>
     </div>
-
     <div>
-      <h4>Red&nbsp;Hat Mono</h4>
+      <h4 id="red-hat-mono">Red&nbsp;Hat Mono</h4>
       <p>The Mono typeface is our monospaced font that distinguishes code from natural-language text. It should only be used for code snippets or as a stylistic approach for a more technical audience.</p>
     </div>    
   </div>
 </section>
 
 <section>
-  <h2>Text options</h2>
-  <h3>Headline</h3>
-  <p>Headlines create various levels of content hierarchies.</p>
+
+  ## Text options
+
+  ### Headline
+
+  Headlines create various levels of content hierarchies.
 
   <uxdot-example>
     <p class="mock-h2">Red&nbsp;Hat Enterprise Linux</p>
     <p class="mock-h5">Conquer complexity with Red&nbsp;Hat Enterprise Linux 8</p>
   </uxdot-example>
 
-  <h3>Blockquote</h3>
-  <p>Blockquotes are emphasized blocks of text that include a quote icon and attribution.</p>
+  ### Blockquote
+
+  Blockquotes are emphasized blocks of text that include a quote icon and attribution.
 
   <uxdot-example>
     <rh-blockquote>
@@ -140,8 +151,9 @@ importElements:
     </rh-blockquote>
   </uxdot-example>  
 
-  <h3>Title</h3>
-  <p>Titles disclose extra information above headlines or other content.</p>  
+  ### Title
+
+  Titles disclose extra information above headlines or other content.
 
   <uxdot-example>
     <div>
@@ -150,8 +162,9 @@ importElements:
     </div>
   </uxdot-example>
 
-  <h3>Body copy</h3>
-  <p>Body copy is a block of text that can include links or lists.</p> 
+  ### Body copy
+
+  Body copy is a block of text that can include links or lists.
 
   <uxdot-example>
     <div>
@@ -159,8 +172,9 @@ importElements:
     </div>
   </uxdot-example>
 
-  <h3>Code</h3>
-  <p>Code is text that features a monospace font that can be used for coding purposes.</p>
+  ### Code
+
+  Code is text that features a monospace font that can be used for coding purposes.
 
   <uxdot-example>
     <pre>
@@ -172,16 +186,19 @@ for (i = (numElementsReturned - 1); i >= 0; i--) {
     </pre>
   </uxdot-example>
 
-  <h3>Line length</h3>
-  <p>Headline and body copy line lengths aren’t measured by the number of characters. Instead, all text styles have a <strong>minimum width of three grid columns</strong> and a <strong>maximum width of eight grid columns</strong> on all screen sizes.</p>
+  ### Line length
+  
+  Headline and body copy line lengths aren’t measured by the number of characters. Instead, all text styles have a <strong>minimum width of three grid columns</strong> and a <strong>maximum width of eight grid columns</strong> on all screen sizes.
 
 </section>
 
 <section>
-  <h2>Scale</h2>
-  <p>The type scale features a range of text sizes and weights created to support the needs of various kinds of content. There’s a type scale for desktop and mobile breakpoints.</p>
 
-  <h3>Desktop scale</h3>
+  ## Scale
+  
+  The type scale features a range of text sizes and weights created to support the needs of various kinds of content. There’s a type scale for desktop and mobile breakpoints.
+
+  ### Desktop scale
 
   <rh-table>
     <table>
@@ -277,8 +294,9 @@ for (i = (numElementsReturned - 1); i >= 0; i--) {
     </table>
   </rh-table>
 
-  <h3>Mobile scale</h3>
-  <p>When larger text styles are used on smaller screens, they <strong>automatically decrease in size to fit smaller layouts</strong> better. The mobile type scale is applied when the Tablet, portrait breakpoint is reached or when a screen becomes less than 768px wide.</p>
+  ### Mobile scale
+
+  When larger text styles are used on smaller screens, they <strong>automatically decrease in size to fit smaller layouts</strong> better. The mobile type scale is applied when the Tablet, portrait breakpoint is reached or when a screen becomes less than 768px wide.
 
   <rh-table>
     <table>
@@ -377,104 +395,91 @@ for (i = (numElementsReturned - 1); i >= 0; i--) {
 
 
 <section>
-  <h2>Usage</h2>
 
-  <p>Each text style has its own unique hierarchy and application. Text styles can be used in layouts and in components to communicate messages or entice users to take an action.</p>
+  ## Usage
+
+  Each text style has its own unique hierarchy and application. Text styles can be used in layouts and in components to communicate messages or entice users to take an action.
 
   <div class="grid">
     <div>
       <h3>Headline, 2xl</h3>
       <p>The largest headline available. Use in big hero layouts, like Summit or campaign pages. <strong>Reserved for marketing use cases only.</strong></p>
     </div>
-
     <div>
       <h3>Headline, xl</h3>
       <p>The second largest headline available. Use in hero layouts, like the home page or a product page. <strong>Reserved for marketing use cases only.</strong></p>
     </div>
-    
     <div>
       <h3>Headline, lg</h3>
       <p>The primary headline for important layouts that aren’t the hero. Try and use only once per page, otherwise use the Headline 2 style.</p>
     </div>
-
     <div>
       <h3>Headline, md</h3>
       <p>The secondary headline for important layouts that are lower in hierarchy. Use this style multiple times per page.</p>
     </div>
-
     <div>
       <h3>Headline, sm</h3>
       <p>The tertiary headline for other layouts lower in hierarchy. Use this style in components like a Card or in multiple layouts per page.</p>
     </div>
-
     <div>
       <h3>Headline, xs</h3>
       <p>The smallest headline available. Use this style under larger headlines or in select components, like an Accordion.</p>
     </div>
-    
     <div>
       <h3>Blockquote, lg</h3>
       <p>The larger style for adding more emphasis to blockquotes. Try not to use this style around other content, otherwise use the <em>Blockquote, sm</em> style.</p>
     </div>
-
     <div>
       <h3>Blockquote, sm</h3>
       <p>The smaller style for all blockquotes. Use this style around other content or in smaller layouts and components, like a Card.</p>
     </div>
-
     <div>
       <h3>Layout title</h3>
       <p>The larger style for an important title. Use this style above larger headlines or above important content in any layout.</p>
     </div>
-
     <div>
       <h3>Card title</h3>
       <p>The smaller style for less important titles. Use this style above headlines in smaller layouts only, like a Card.</p>
     </div>
-
     <div>
       <h3>Body copy, 2xl</h3>
       <p>The largest body copy style. Use this style for long-form content only, like Topic and Article pages. Text should not exceed 8 columns in width for optimal readability.</p>
     </div>
-
     <div>
       <h3>Body copy, xl</h3>
       <p>The largest body copy style. Use this style for long-form content only, like Topic and Article pages. Text should not exceed 8 columns in width for optimal readability.</p>
     </div>
-
     <div>
       <h3>Body copy, lg</h3>
       <p>The base body copy style for marketing use cases only, unless an app interface calls for a larger text size. Text should not exceed 8 columns in width for optimal readability.</p>
     </div>
-
     <div>
       <h3>Body copy, md</h3>
       <p>The base body copy style for app interfaces or some smaller components, unless a marketing use case calls for a smaller text size. Text should not exceed 7 columns in width for optimal readability.</p>
     </div>
-
     <div>
       <h3>Body copy, sm</h3>
       <p>The supporting body copy style for all use cases, like under Form fields or for attribution purposes. Text should not exceed 7 columns in width for optimal readability.</p>
     </div>
-
     <div>
       <h3>Body copy, xs</h3>
       <p>The smallest body copy style for legal or footnote use cases only. Text should not exceed 7 columns in width for optimal readability.</p>
     </div>
-  
   </div>
 
 </section>
 
 <section>
-  <h2>Best practices</h2>
-  <p>Don't use Red&nbsp;Hat Text for headlines.</p>
+
+  ## Best practices
+  
+  Don't use Red&nbsp;Hat Text for headlines.
 
   <uxdot-example danger>
     <p class="mock-h2 mock-body-text">Red&nbsp;Hat and open source</p>
   </uxdot-example>
 
-  <p>Don't use Red&nbsp;Hat Display for body copy.</p>
+  Don't use Red&nbsp;Hat Display for body copy.
 
   <uxdot-example danger>
     <div>
@@ -482,14 +487,14 @@ for (i = (numElementsReturned - 1); i >= 0; i--) {
     </div>
   </uxdot-example>
 
-  <p>Don't space text styles too closely together.</p>
+  Don't space text styles too closely together.
 
   <uxdot-example danger alignment="left">
     <p class="mock-title mock-no-margin">Linux platforms</p>
     <p class="mock-h2 mock-no-margin">Red&nbsp;Hat Enterprise Linux</p>
   </uxdot-example>
 
-  <p>Don't stack lots of text styles too closely together.</p>
+  Don't stack lots of text styles too closely together.
 
   <uxdot-example danger alignment="left">
     <p class="mock-h2 mock-no-margin">Headline, xl</p>
@@ -501,24 +506,32 @@ for (i = (numElementsReturned - 1); i >= 0; i--) {
 </section>
 
 <section>
-  <h2>Behavior</h2>
-  <h3>Responsive design</h3>
-  <p>Text styles decrease in size when screens become smaller. This shift helps users consume content better without additional scrolling.</p>
 
-  <h3>Desktop</h3>
+  ## Behavior
+  
+  ### Responsive design
+  
+  Text styles decrease in size when screens become smaller. This shift helps users consume content better without additional scrolling.
+
+  ### Desktop
+
   <uxdot-example width-adjustment="540px">
     <img src="/assets/typography/typography-card-desktop.svg" alt="Card typography scale on desktop"> 
   </uxdot-example>
 
-  <h3>Mobile</h3>
+  ### Mobile
+
   <uxdot-example width-adjustment="363px">
     <img src="/assets/typography/typography-card-mobile.svg" alt="Card typography scale on mobile">  
   </uxdot-example>
 </section>
 
 <section>
-  <h2>Interaction states</h2>
-  <p>Since typography can be used in a variety of components, refer to the specific interaction states that are assigned to each <a href="/elements">component</a> for more information</p>
+  
+  ## Interaction states
+
+  Since typography can be used in a variety of components, refer to the specific interaction states that are assigned to each <a href="/elements">component</a> for more information
+  
 </section>
 
 <uxdot-feedback>

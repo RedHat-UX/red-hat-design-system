@@ -2,6 +2,7 @@
 layout: layouts/pages/basic.njk
 title: Designers
 order: 1
+hasToc: true
 tags:
   - getstarted
 importElements: 

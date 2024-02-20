@@ -3,13 +3,14 @@ title: Card
 layout: layouts/pages/basic.njk
 tags:
   - pattern
+importElements:
+  - rh-card
+  - rh-cta
+  - rh-surface
 ---
 
-<script type="module">
-import '@rhds/elements/rh-card/rh-card.js';
-import '@rhds/elements/rh-cta/rh-cta.js';
-import '@rhds/elements/rh-surface/rh-surface.js';
-</script>
+<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
+<link rel="stylesheet" href="{{ '/styles/samp.css' | url }}">
 
 <style>
   rh-card {
@@ -158,6 +159,8 @@ A card can be used in light and dark themes.
 
 ### Theme
 
+#### Light Theme
+
 <rh-surface color-palette="light">
   <rh-card>
     <h2 slot="header">Card title</h2>
@@ -167,6 +170,8 @@ A card can be used in light and dark themes.
     <rh-cta slot="footer"><a href="#">Footer</a></rh-cta>
   </rh-card>
 </rh-surface>
+
+#### Dark Theme
 
 <rh-surface color-palette="dark">
   <rh-card>
@@ -215,19 +220,44 @@ For more information, please see the [card css custom properties](/elements/card
   </rh-card>
 </rh-surface>
 
-{% repoStatus %}
+## Usage
+
+### Character count
+The recommended maximum character count for the elements of a card are listed below and include spaces.
+
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Element">Element</th>
+        <th scope="col" data-label="Character count">Character count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Element">Title</td>
+        <td data-label="Character count">20</td>
+      </tr>
+      <tr>
+        <td data-label="Element">Headline</td>
+        <td data-label="Character count">50</td>
+      </tr>
+      <tr>
+        <td data-label="Element">Body text</td>
+        <td data-label="Character count">165</td>
+      </tr>
+      <tr>
+        <td data-label="Element">Footer</td>
+        <td data-label="Character count">55</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
+
+
+{% repoStatus type="Pattern" %}
 
 {% include 'partials/component/feedback.html' %}
 
 
-## Usage
 
-### Character count
-  The recommended maximum character count for the elements of a card are listed below and include spaces.
-
-  | Element {style="width: 50%" } | Character count |
-  |-------------------------------|-----------------|
-  | Title                         | 20              |
-  | Headline                      | 50              | 
-  | Body text                     | 165             |
-  | Footer                        | 55              |

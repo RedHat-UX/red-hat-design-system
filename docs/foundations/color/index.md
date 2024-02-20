@@ -2,6 +2,7 @@
 layout: layouts/pages/basic.njk
 title: Overview
 heading: Color
+hasToc: true
 tags:
   - foundations
   - color

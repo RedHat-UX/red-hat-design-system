@@ -4,6 +4,7 @@ pagination:
   data: collections.elementDocs
   size: 1
   alias: doc
+hasToc: true
 permalink: "{{ doc.permalink }}"
 eleventyComputed:
   title: "{{ doc.pageTitle }} | {{ doc.slug | deslugify }}"
@@ -63,7 +64,8 @@ eleventyComputed:
 
     {% if hasToc %}
       <aside>
-        {{ content | toc | safe }}
+        heyo
+        {{ doc.content | toc | safe }}
       </aside>
     {% endif %}
 
