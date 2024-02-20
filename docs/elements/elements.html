@@ -64,8 +64,7 @@ eleventyComputed:
 
     {% if hasToc %}
       <aside>
-        heyo
-        {{ doc.content | toc | safe }}
+        {{ content | toc | safe }}
       </aside>
     {% endif %}
 
