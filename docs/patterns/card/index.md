@@ -1,6 +1,7 @@
 ---
 title: Card
 layout: layouts/pages/basic.njk
+hasToc: true
 tags:
   - pattern
 importElements:

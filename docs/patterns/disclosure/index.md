@@ -1,8 +1,12 @@
 ---
 title: Disclosure
+hasToc: true
 tags:
   - pattern
 ---
+
+<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
+<link rel="stylesheet" href="{{ '/styles/samp.css' | url }}">
 
 <style>
   .grid {
@@ -99,7 +103,6 @@ whereas accordions have the caret icon placed on the right after the section
 text label.
 
 <div class="grid">
-
   <uxdot-example width-adjustment="340px">
     <h4>Disclosure</h4>
     <img src="{{ './disclosure-usage-2.svg' | url }}" alt="Example of a disclosure">
@@ -109,7 +112,6 @@ text label.
     <h4>Accordion</h4>
     <img src="{{ './disclosure-usage-3.svg' | url }}" alt="Example of an accordion">
   </uxdot-example>
-
 </div>
 
 
@@ -159,48 +161,37 @@ a disclosure and act as persistent navigation.
   <img src="{{ './disclosure-usage-4.svg' | url }}" alt="Example of Jump links wrapped in a disclosure">
 </uxdot-example>
 
-{% example palette = "light",
-           class="centered",
-           alt="Example of Jump links wrapped in a disclosure",
-           src="./disclosure-usage-4.svg" %}
 
-### Best practices
+## Best practices
 
 A disclosure consists of one panel only. If more than one panel is needed, use 
 an accordion instead.
 
-{% example palette="wrong",
-           class="centered",
-           alt="Inline alert in the top right corner of a page",
-           src="./disclosure-bestpractice-1.svg" %}
+<uxdot-example width-adjustment="872px" danger>
+  <img src="{{ './disclosure-bestpractice-1.svg' | url }}" alt="Inline alert in the top right corner of a page">
+  <img src="{{ './disclosure-bestpractice-1.svg' | url }}" alt="Inline alert in the top right corner of a page">
+</uxdot-example>
 
-{% example palette="wrong",
-           class="centered",
-           alt="Inline alert in the top right corner of a page",
-           src="./disclosure-bestpractice-1.svg" %}
 
 Text inside the panel shouldn’t exceed eight grid columns to maintain optimal 
 readability.
 
-{% example palette="wrong",
-           class="centered",
-           alt="Inline alert in the top right corner of a page",
-           src="./disclosure-bestpractice-2.svg" %}
+
+<uxdot-example width-adjustment="872px" danger>
+  <img src="{{ './disclosure-bestpractice-2.svg' | url }}" alt="Inline alert in the top right corner of a page">
+</uxdot-example>
 
 Don’t wrap other complex components inside of a disclosure unless absolutely 
 necessary, like jump links.
 
-{% example palette="wrong",
-           class="centered",
-           alt="Inline alert in the top right corner of a page",
-           src="./disclosure-bestpractice-3.svg" %}
+<uxdot-example width-adjustment="872px" danger>
+  <img src="{{ './disclosure-bestpractice-3.svg' | url }}" alt="Inline alert in the top right corner of a page">
+</uxdot-example>
 
-<hgroup>
 
-  ## Behavior
-  ### States
+## Behavior
 
-</hgroup>
+### States
 
 A disclosure can be collapsed and expanded to hide or reveal information when 
 toggled. By default, it loads with its panel collapsed (this can be customized), 
@@ -214,10 +205,10 @@ panel is collapsed, the caret icon points to the right toward the text. When the
 panel expands, the caret icon rotates 90º and points down, revealing the content 
 inside.
 
-{% example palette="light",
-           class="centered",
-           alt="Disclosure with the expand/collapse panel highlighted",
-           src="./disclosure-behavior-1.svg" %}
+<uxdot-example width-adjustment="872px">
+  <img src="{{ './disclosure-behavior-1.svg' | url }}" alt="Disclosure with the expand/collapse panel highlighted">
+</uxdot-example>
+
 
 ### Tab order
 
@@ -227,10 +218,10 @@ collapsed disclosure. When a user expands the panel by pressing the
 added to the tab order before the focus indicator moves away to the next section 
 of content.
 
-{% example palette="light",
-           class="centered",
-           alt="Disclosure showing links with the focus style",
-           src="./disclosure-behavior-2.svg" %}
+<uxdot-example width-adjustment="872px">
+  <img src="{{ './disclosure-behavior-2.svg' | url }}" alt="Disclosure showing links with the focus style">
+</uxdot-example>
+
 
 ## Responsive design
 
@@ -244,26 +235,23 @@ content is included.
 
 ### Desktop
 
-{% example palette="light",
-           class="centered",
-           alt="Example of a disclosure on desktop",
-           src="./disclosure-responsive-1.svg" %}
+<uxdot-example width-adjustment="872px" variant="full" alignment="left" no-border>
+  <img src="{{ './disclosure-responsive-1.svg' | url }}" alt="Example of a disclosure on desktop">
+</uxdot-example>
 
-![Example of a disclosure on desktop](./disclosure-responsive-1.svg)
 
 ### Tablet
 
-{% example palette="light",
-           class="centered",
-           alt="Example of a disclosure on tablet",
-           src="./disclosure-responsive-2.svg" %}
+<uxdot-example width-adjustment="768px" variant="full" alignment="left" no-border>
+  <img src="{{ './disclosure-responsive-2.svg' | url }}" alt="Example of a disclosure on tablet">
+</uxdot-example>
+
 
 ### Mobile
 
-{% example palette="light",
-           class="centered",
-           alt="Example of a disclosure on mobile",
-           src="./disclosure-responsive-3.png" %}
+<uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border>
+  <img src="{{ './disclosure-responsive-3.svg' | url }}" alt="Example of a disclosure on mobile">
+</uxdot-example>
 
 ## Interaction states
 
@@ -280,24 +268,23 @@ state.
   </rh-accordion-panel>
 </rh-accordion>
 
-<hr class="margin-top--10 margin-bottom--10">
 
 ## Spacing
 
 The announcement banner uses [space tokens](/tokens/space/) to define spacing 
 values between elements.
 
+<uxdot-example width-adjustment="872px">
+  <img src="{{ './disclosure-spacing-1.svg' | url }}" alt="Disclosure showing with spacing blocks">
+</uxdot-example>
+
+<rh-table>
 {% spacerTokensTable 
   headline="",
   caption='',
   headingLevel="4",
   tokens="--rh-space-sm,--rh-space-lg, --rh-space-xl, --rh-space-3xl" %}
 {% endspacerTokensTable %}
-
-{% example palette="light",
-           class="centered",
-           alt="Disclosure showing with spacing blocks",
-           src="./disclosure-spacing-1.svg" %}
+</rh-table>
 
 {% include 'partials/component/feedback.html' %}
-

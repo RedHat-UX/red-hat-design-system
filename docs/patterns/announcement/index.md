@@ -1,5 +1,6 @@
 ---
 title: Announcement
+hasToc: true
 tags:
   - pattern
 ---
