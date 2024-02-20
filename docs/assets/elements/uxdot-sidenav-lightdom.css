@@ -59,6 +59,10 @@ uxdot-sidenav-dropdown-menu-item > a {
     transparent;
 }
 
+uxdot-sidenav-dropdown > details > summary::-webkit-details-marker {
+  display: none;
+}
+
 uxdot-sidenav-item > a,
 uxdot-sidenav-dropdown > details > summary {
   text-decoration: none;
