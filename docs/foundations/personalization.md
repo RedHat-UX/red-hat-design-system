@@ -126,7 +126,7 @@ the js that runs and adds these casuses the nav to break
 
 <section>
   
-  ## Pattern 1: Dialog
+  ## Pattern 1: Dialog { id="pattern-1-dialog" }
 
   A Dialog displays content in a container which sits on top of the page and darkens any content underneath. This is a <strong>priority 1</strong> implementation as it prevents a user from completing a task or interacting with the rest of the page until they close the dialog.
 
@@ -163,7 +163,7 @@ the js that runs and adds these casuses the nav to break
 
 <section>
 
-  ## Pattern 2: Sticky banner
+  ## Pattern 2: Sticky banner { id="pattern-2-sticky-banner" }
 
   A Sticky banner displays a secondary offer without interrupting the experience of a user. It sticks to the bottom of the screen and overlays existing content.
   
@@ -202,7 +202,7 @@ the js that runs and adds these casuses the nav to break
 
 <section>
   
-  ## Pattern 3: Sticky card
+  ## Pattern 3: Sticky card { id="pattern-3-sticky-card" }
 
   A Sticky card is a single page or cross-page offer that persists on the side of the screen.
 
@@ -250,7 +250,8 @@ the js that runs and adds these casuses the nav to break
 <hr>
 
 <section>
-  ## Pattern 4: Announcement
+
+  ## Pattern 4: Announcement { id="pattern-4-announcement" }
 
   An Announcement is a <strong>priority 1</strong> personalization and should be used sparingly. It includes a skinny banner at the very top of a website above the navigation.
 
@@ -284,7 +285,7 @@ the js that runs and adds these casuses the nav to break
 
 <section>
 
-  ## Pattern 5: In-page card
+  ## Pattern 5: In-page card { id="pattern-5-in-page-card" }
 
   An In-page card is an existing card(s) within a page for personalization or targeting.
 
@@ -326,7 +327,7 @@ the js that runs and adds these casuses the nav to break
 
 <section>
 
-  ## Pattern 6: Active tab
+  ## Pattern 6: Active tab { id="pattern-6-active-tab" }
 
   The Active tab is a simple experience applicable to any page that contains tabs. It aims to customize the visitor experience by highlighting a tab based on the interests of a user.
 
@@ -361,7 +362,7 @@ the js that runs and adds these casuses the nav to break
 
 <section>
 
-  ## Pattern 7: Inline alert
+  ## Pattern 7: Inline alert { id="pattern-7-inline-alert" }
   
   An Inline alert is a single or multiple page offer that appears inline with page content.
 
