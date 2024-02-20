@@ -29,6 +29,10 @@ uxdot-masthead:not(:defined) a {
   text-decoration: none;
 }
 
+uxdot-masthead:not(:defined) [slot="logo"] {
+  margin-inline-start: var(--rh-space-xl, 24px);
+}
+
 uxdot-masthead:not(:defined) [slot="hamburger"] {
   display: none;
 }
