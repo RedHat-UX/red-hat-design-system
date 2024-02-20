@@ -22,9 +22,10 @@
             <uxdot-sidenav-dropdown-menu>
               <ul>
                 {% if link.collection === "elementDocs" %}
+                  {%- set active = '/elements/' === page.url -%}
                   <li>
                     <uxdot-sidenav-dropdown-menu-item {{ 'active' if active }}>
-                      <a href="{{ '/elements/' | url }}">All elements</a>
+                      <a href="{{ '/elements/' | url }}">All elements </a>
                     </uxdot-sidenav-dropdown-menu-item>
                   </li>
                   {%- for tagName, docs in collections.elementDocs | groupby('tagName') -%}
