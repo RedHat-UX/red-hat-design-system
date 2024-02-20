@@ -222,10 +222,8 @@ class UxdotSideNavDropdownMenuItem extends LitElement {
   }
 }
 
-// setTimeout(() => {
-  customElements.define('uxdot-sidenav', UxdotSideNav);
-  customElements.define('uxdot-sidenav-item', UxdotSideNavItem);
-  customElements.define('uxdot-sidenav-dropdown', UxdotSideNavDropdown);
-  customElements.define('uxdot-sidenav-dropdown-menu', UxdotSideNavDropdownMenu);
-  customElements.define('uxdot-sidenav-dropdown-menu-item', UxdotSideNavDropdownMenuItem);
-// }, '5000');
+customElements.define('uxdot-sidenav', UxdotSideNav);
+customElements.define('uxdot-sidenav-item', UxdotSideNavItem);
+customElements.define('uxdot-sidenav-dropdown', UxdotSideNavDropdown);
+customElements.define('uxdot-sidenav-dropdown-menu', UxdotSideNavDropdownMenu);
+customElements.define('uxdot-sidenav-dropdown-menu-item', UxdotSideNavDropdownMenuItem);
