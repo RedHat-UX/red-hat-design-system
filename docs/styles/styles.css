@@ -53,9 +53,15 @@
 
   body {
     display: grid;
-    grid-template-rows: max-content;
+    grid-template-rows: max-content 1fr max-content;
     grid-template-areas: "header" "main" "footer";
+    position: relative;
     min-height: 100dvh;
+  }
+
+  body:has(uxdot-sidenav:not(:defined)) {
+    grid-template-rows: max-content max-content 1fr max-content;
+    grid-template-areas: "header" "nav" "main" "footer";
   }
 
   main {
@@ -103,6 +109,14 @@
     body {
       grid-template-rows: max-content 1fr max-content;
       grid-template-columns: minmax(300px, 320px) max-content 1fr;
+      grid-template-areas:
+        "header header header"
+        "nav main main"
+        "nav footer footer";
+    }
+
+    body:has(uxdot-sidenav:not(:defined)) {
+      grid-template-rows: max-content 1fr max-content;
       grid-template-areas:
         "header header header"
         "nav main main"
@@ -188,4 +202,6 @@
     the component is trying to set internally on #description */
     font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
   }
+
+
 }

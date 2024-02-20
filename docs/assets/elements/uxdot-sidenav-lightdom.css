@@ -1,28 +1,28 @@
 uxdot-sidenav {
-  --uxdot-sidenav-padding-start: var(--rh-space-2xl, 32px);
-  --uxdot-sidenav-padding-end: var(--rh-space-2xl, 32px);
+  --_padding-start: var(--uxdot-sidenav-padding-start, var(--rh-space-2xl, 32px));
+  --_padding-end: var(--uxdot-sidenav-padding-end, var(--rh-space-2xl, 32px));
+  --_max-height: calc(100dvh - var(--uxdot-masthead-max-height, 72px));
 
-  display: none;
-  padding-block-start: var(--rh-space-2xl, 32px);
-  padding-block-end: var(--rh-space-2xl, 32px);
-  max-height: calc(100dvh - var(--uxdot-masthead-max-height, 72px));
-  position: sticky;
   top: var(--uxdot-masthead-max-height, 72px);
+  height: var(--_max-height);
+  z-index: 2;
+  box-shadow: var(--rh-box-shadow-md, 0 4px 6px 1px rgba(21, 21, 21, 0.25));
+}
+
+uxdot-sidenav:defined {
+  display: none;
+  position: sticky;
 }
 
 uxdot-sidenav > ul {
+  padding-inline: 0;
+  padding-block-start: var(--_padding-start);
+  padding-block-end: var(--_padding-end);
   list-style: none;
-  padding: 0;
   margin-block: 0;
-  max-height:
-    calc(
-        100dvh - (
-          var(--uxdot-masthead-max-height, 72px)
-          + var(--uxdot-sidenav-padding-start)
-          + var(--uxdot-sidenav-padding-end)
-        )
-      );
+  height: var(--_max-height);
   overflow-y: scroll;
+  background-color: var(--rh-color-surface-lightest, #ffffff);
 }
 
 uxdot-sidenav-item {
@@ -115,27 +115,19 @@ uxdot-sidenav-dropdown-menu-item > a:hover {
   border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
 }
 
-/* TODO: `rh-subnav` not defined styles here */
-rh-subnav:not(:defined) {
-  display: flex;
-  flex-direction: row;
-  gap: var(--rh-space-md, 8px);
-  margin-block-start: var(--rh-space-2xl, 32px);
-  max-width: 100%;
-  overflow-x: scroll;
-}
-
-rh-subnav:not(:defined) a {
-  display: block;
-  white-space: nowrap;
-  padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
-  text-decoration: none;
-  color: var(--_subnav-link-text-color, var(--rh-color-text-secondary-on-light, #4d4d4d));
-  position: relative;
-}
-
 @media (min-width: 992px) {
   uxdot-sidenav {
     display: block;
+    height: var(--_max-height);
+    box-shadow: unset;
+  }
+
+  uxdot-sidenav:not([open]) {
+    display: block;
+  }
+
+  uxdot-sidenav:not(:defined) {
+    height: var(--_max-height);
+    box-shadow: unset;
   }
 }
