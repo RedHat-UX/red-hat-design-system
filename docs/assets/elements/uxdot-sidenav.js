@@ -47,7 +47,7 @@ class UxdotSideNav extends LitElement {
       --_gray-90-rgb: var(--rh-color-gray-90-rgb, 31 31 31);
 
       display: block;
-      background-color: rgb(var(--_gray-90-rgb) / var(--rh-opacity-80, 80%));
+      background-color: rgb(var(--_gray-90-rgb) / var(--rh-opacity-60, 60%));
       position: fixed;
       top: 0;
       height: 100dvh;

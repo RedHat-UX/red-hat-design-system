@@ -72,6 +72,7 @@
       var(--rh-color-border-subtle-on-light, #c7c7c7);
     container-type: inline-size;
     container-name: main;
+    padding-block-start: var(--uxdot-masthead-max-height);
   }
 
   .container {

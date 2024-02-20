@@ -6,12 +6,17 @@ uxdot-sidenav {
   top: var(--uxdot-masthead-max-height, 72px);
   height: var(--_max-height);
   z-index: 2;
-  box-shadow: var(--rh-box-shadow-md, 0 4px 6px 1px rgba(21, 21, 21, 0.25));
+  box-shadow: var(--rh-box-shadow-lg, 0 6px 8px 2px rgba(21, 21, 21, 0.3));
 }
 
 uxdot-sidenav:defined {
   display: none;
   position: sticky;
+}
+
+uxdot-sidenav:not(:defined) {
+  height: fit-content;
+  overflow-y: scroll;
 }
 
 uxdot-sidenav > ul {
@@ -23,6 +28,10 @@ uxdot-sidenav > ul {
   height: var(--_max-height);
   overflow-y: scroll;
   background-color: var(--rh-color-surface-lightest, #ffffff);
+}
+
+uxdot-sidenav:not(:defined) > ul {
+  height: auto;
 }
 
 uxdot-sidenav-item {
