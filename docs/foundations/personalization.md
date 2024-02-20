@@ -74,25 +74,25 @@ the js that runs and adds these casuses the nav to break
       <uxdot-example slot="image" no-border color-palette="lighter">
         <img src="{{ '/assets/patterns/all-patterns-announcement.png' | url }}" alt="Announcement">
       </uxdot-example>
-      <h3 slot="headline"><a href="#announcement">Announcement</a></h3>
+      <h3 slot="headline"><a href="#pattern-4-announcement">Announcement</a></h3>
     </rh-tile>
     <rh-tile compact bleed>
       <uxdot-example slot="image" transparent  no-border>
         <img src="{{ '/elements/card/screenshot.svg' | url }}" alt="Card">
       </uxdot-example>
-      <h3 slot="headline"><a href="#in-page-card">In-page card</a></h3>
+      <h3 slot="headline"><a href="#pattern-5-in-page-card">In-page card</a></h3>
     </rh-tile>
     <rh-tile compact bleed>
       <uxdot-example slot="image" transparent no-border>
         <img src="{{ '/elements/tabs/screenshot.png' | url }}" alt="Tabs">
       </uxdot-example>
-      <h3 slot="headline"><a href="#active-tab">Active tab</a></h3>
+      <h3 slot="headline"><a href="#pattern-6-active-tab">Active tab</a></h3>
     </rh-tile>
     <rh-tile compact bleed>
       <uxdot-example slot="image" transparent no-border>
         <img src="{{ '/elements/alert/screenshot.svg' | url }}" alt="Alert">
       </uxdot-example>
-      <h3 slot="headline"><a href="#inline-alert">In-page alert</a></h3>
+      <h3 slot="headline"><a href="#pattern-7-inline-alert">In-page alert</a></h3>
     </rh-tile>
     <rh-tile compact bleed>
       <uxdot-example slot="image" transparent no-border>
