@@ -135,7 +135,7 @@
 
   @container main (min-width: 567px) {
     .container {
-      padding-block-start: var(--rh-space-5xl, 80px);
+      padding-block-start: var(--rh-space-6xl, 96px);
     }
   }
 }
