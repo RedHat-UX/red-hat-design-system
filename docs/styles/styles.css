@@ -44,6 +44,8 @@
 @layer layout {
   :root {
     --uxdot-masthead-max-height: 72px;
+    --container-min-width: 992px;
+    --container-max-width: 1332px;
   }
 
   :target {
@@ -92,20 +94,6 @@
     grid-area: footer;
   }
 
-  @media (min-width: 567px) {
-    .container {
-      padding-inline: var(--rh-space-2xl, 32px);
-      padding-block-end: var(--rh-space-2xl, 32px);
-    }
-  }
-
-  @media (min-width: 768px) {
-    .container {
-      padding-inline: var(--rh-space-3xl, 48px);
-      padding-block-end: var(--rh-space-3xl, 48px);
-    }
-  }
-
   @media (min-width: 992px) {
     body {
       grid-template-rows: max-content 1fr max-content;
@@ -123,11 +111,28 @@
         "nav main main"
         "nav footer footer";
     }
+  }
 
+  @container main (min-width: 567px) {
     .container {
-      max-width: 1300px;
-      padding-inline: var(--rh-space-5xl, 80px);
-      padding-block-end: var(--rh-space-5xl, 80px);
+      padding-inline: var(--rh-space-2xl, 32px);
+      padding-block-end: var(--rh-space-2xl, 32px);
+    }
+  }
+
+  @container main (min-width: 768px) {
+    .container {
+      padding-inline: var(--rh-space-3xl, 48px);
+      padding-block-end: var(--rh-space-3xl, 48px);
+    }
+  }
+
+  @container main (min-width: 992px) {
+    .container {
+      max-width: var(--container-max-width);
+      padding-inline: var(--rh-space-6xl, 96px);
+      padding-block-start: 0;
+      padding-block-end: var(--rh-space-6xl, 96px);
     }
   }
 }
@@ -175,7 +180,7 @@
 
   @container main (min-width: 992px) {
     uxdot-header:has(rh-subnav) {
-      top: -102px;
+      top: -118px;
     }
   }
 }

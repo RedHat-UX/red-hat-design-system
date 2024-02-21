@@ -58,12 +58,12 @@ class UxdotHeader extends LitElement {
     @container header (min-width: 992px) {
       #container {
         top: 100px;
-        padding-inline: var(--rh-space-5xl, 80px);
-        padding-block-start: var(--rh-space-5xl, 80px);
+        padding-inline: var(--rh-space-6xl, 96px);
+        padding-block-start: var(--rh-space-6xl, 96px);
       }
 
       #container:not(.has-subnav) {
-        padding-block-end: var(--rh-space-5xl, 80px);
+        padding-block-end: var(--rh-space-6xl, 96px);
       }
 
       #container.has-search {
