@@ -61,6 +61,10 @@ uxdot-sidenav-dropdown-menu-item > a {
     transparent;
 }
 
+uxdot-sidenav-dropdown-menu > ul {
+  margin: 0;
+}
+
 uxdot-sidenav-dropdown > details > summary::-webkit-details-marker {
   display: none;
 }
