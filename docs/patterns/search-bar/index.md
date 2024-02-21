@@ -1,31 +1,38 @@
 ---
 title: Search bar
 layout: layouts/pages/basic.njk
+hasToc: true
 tags:
     - pattern
 ---
+
+<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
+<link rel="stylesheet" href="{{ '/styles/samp.css' | url }}">
 
 ## Overview
 
 A Search bar is a horizontal grouping of a form field with placeholder text and 
 a button. It allows a user to input text and then perform a search.
 
+
 ## Sample pattern
 
-{% example palette="none",
-    alt="Search bar component sample",
-    src="./search-bar-sample.svg" %}
+<uxdot-example width-adjustment="1000px">
+  <img src="{{ './search-bar-sample.svg' | url }}" alt="Search bar component sample">
+</uxdot-example>
 
-{% repoStatus %}
+{% repoStatus type="Pattern" %}
+
 
 ## Style
 
 A search bar includes a narrow but wide form field with placeholder text and a 
 red button that is placed on the right.
 
-{% example palette="lightest",
-    alt="Search bar component blueprint",
-    src="./search-bar-blueprint.svg" %}
+<uxdot-example width-adjustment="870px">
+  <img src="{{ './search-bar-blueprint.svg' | url }}" alt="Search bar component blueprint">
+</uxdot-example>
+
 
 #### Button
 
@@ -33,15 +40,15 @@ A search bar includes a button so a user can perform a search. A call to action
 link would only direct a user to a results page without actually performing a 
 search, so a button must be used instead.
 
-{% alert title="Learn more" %}
-Visit the [Button](/elements/button/) or [Call to 
-action](/elements/call-to-action/) element pages to learn more about how to use 
-buttons and calls to action.
-{% endalert %}
+<rh-alert state="info">
+  <h4 slot="header">Learn more</h4>
+  <p>Visit the <a href="{{ '/elements/button/' | url }}">Button</a> or <a href="{{ '/elements/call-to-action/' | url }}">Call to action</a> element pages to learn more about how to use buttons and calls to action.</p>
+</rh-alert>
 
-{% example palette="lightest",
-    alt="Search bar component button vs. CTA",
-    src="./search-bar-button-vs-cta.svg" %}
+<uxdot-example width-adjustment="262px">
+  <img src="{{ './search-bar-button-vs-cta.svg' | url }}" alt="Search bar component button vs. CTA">
+</uxdot-example>
+
 
 ## Theme
 
@@ -49,18 +56,19 @@ buttons and calls to action.
 
 The light theme search bar includes a light theme form field and red button.
 
-{% example palette="lightest",
-    alt="Search bar component, light theme",
-    src="./search-bar-light-theme.svg" %}
+<uxdot-example width-adjustment="870px">
+  <img src="{{ './search-bar-light-theme.svg' | url }}" alt="Search bar component, light theme">
+</uxdot-example>
   
 
 #### Dark theme
 
 For now, the light theme search bar can also be used in the dark theme.
 
-{% example palette="darkest",
-    alt="Search bar component, dark theme",
-    src="./search-bar-dark-theme.svg" %}
+<uxdot-example color-palette="darkest" width-adjustment="870px">
+  <img src="{{ './search-bar-dark-theme.svg' | url }}" alt="Search bar component, dark theme">
+</uxdot-example>
+
 
 ## Usage
 
@@ -72,9 +80,10 @@ then display any relevant search results.
 A search bar can be used in most layouts. It has no set width other than the 
 boundaries of whatever container or grid it is placed in.
 
-{% example palette="medium",
-    alt="Search bar component usage",
-    src="./search-bar-layout.svg" %}
+<uxdot-example width-adjustment="872px">
+  <img src="{{ './search-bar-layout.svg' | url }}" alt="Search bar component usage">
+</uxdot-example>
+
 
 #### Content
 
@@ -83,9 +92,10 @@ the text is <em>*generic*</em> (Enter your search term), a user might expect to
 search through an entire website. If the text is *specific* (Search all 
 resources), a user might expect to search through an individual page.
 
-{% example palette="lightest",
-    alt="Search bar component placeholder text options",
-    src="./search-bar-placeholder-text.svg" %}
+<uxdot-example width-adjustment="870px">
+  <img src="{{ './search-bar-placeholder-text.svg' | url }}" alt="Search bar component placeholder text options">
+</uxdot-example>
+
 
 ## Behavior
 
@@ -96,13 +106,15 @@ placeholder text will disappear, the form field will have focus, and a blinking
 cursor will take its place. When a user starts typing, the text styling will 
 change.
 
-{% alert title="Learn more" %}
-Visit the [Form](/patterns/form/) pattern page to learn more about form fields.
-{% endalert %}
+<rh-alert state="info">
+  <h4 slot="header">Learn more</h4>
+  <p>Visit the <a href="{{ '/patterns/form/' | url }}">Form</a> pattern page to learn more about form fields.</p>
+</rh-alert>
 
-{% example palette="lightest",
-    alt="Search bar component styling changes",
-    src="./search-bar-form-field.svg" %}
+<uxdot-example width-adjustment="870px">
+  <img src="{{ './search-bar-form-field.svg' | url }}" alt="Search bar component styling changes">
+</uxdot-example>
+
 
 #### Typeahead
 
@@ -110,9 +122,10 @@ Typeahead allows a user to narrow down a displayed list of options when they
 input text within a form field, it is recommended for lists with more than 10 
 options.
 
-{% example palette="lightest",
-    alt="Search bar component typeahead",
-    src="./search-bar-typeahead.svg" %}
+<uxdot-example width-adjustment="870px">
+  <img src="{{ './search-bar-typeahead.svg' | url }}" alt="Search bar component typeahead">
+</uxdot-example>
+
   
 #### Errors
 
@@ -120,35 +133,39 @@ If focus is moved from the form field to the button, an error will not be
 displayed. However, if a user tries to perform a search without any text in the 
 form field, an error will be displayed.
 
-{% alert title="Learn more" %}
-Visit the [Form](/patterns/form/) pattern page to learn more about form field 
-errors.
-{% endalert %}
+<rh-alert state="info">
+  <h4 slot="header">Learn more</h4>
+  <p>Visit the <a href="{{ '/patterns/form/' | url }}">Form</a> pattern page to learn more about form field errors.</p>
+</rh-alert>
 
-{% example palette="lightest",
-    alt="Search bar component form field errors",
-    src="./search-bar-errors.svg" %}
+<uxdot-example width-adjustment="870px">
+  <img src="{{ './search-bar-errors.svg' | url }}" alt="Search bar component form field errors">
+</uxdot-example>
+
 
 ## Interaction states
 
-{% alert title="Learn more" %}
-Visit the [Form](/patterns/form/) or [Button](/elements/button/) pages to learn 
-more about interaction states.
-{% endalert %}
+<rh-alert state="info">
+  <h4 slot="header">Learn more</h4>
+  <p>Visit the <a href="{{ '/patterns/form/' | url }}">Form</a> or <a href="{{ '/elements/button/' | url }}">Button</a> pages to learn more about interaction states.</p>
+</rh-alert>
+
 
 #### Link
 
-{% example palette="lightest",
-    alt="Search bar component interaction state, link",
-    src="./search-bar-interaction-states-link.svg" %}
+<uxdot-example width-adjustment="870px">
+  <img src="{{ './search-bar-interaction-states-link.svg' | url }}" alt="Search bar component interaction state, link">
+</uxdot-example>
+
 
 #### Hover
 
 A blue line appears at the bottom of the form field indicating it is selectable.
 
-{% example palette="lightest",
-    alt="Search bar component interaction state, hover",
-    src="./search-bar-interaction-states-hover.svg" %}
+<uxdot-example width-adjustment="870px">
+  <img src="{{ './search-bar-interaction-states-hover.svg' | url }}" alt="Search bar component interaction state, hover">
+</uxdot-example>
+
 
 #### Focus
 
@@ -156,9 +173,10 @@ When the focus is moved to the form field via keyboard, the placeholder text
 will disappear and a blinking cursor will take its place. When the focus is 
 moved away, the placeholder text will be visible again.
 
-{% example palette="lightest",
-    alt="Search bar component interaction state, focus",
-    src="./search-bar-interaction-states-focus.svg" %}
+<uxdot-example width-adjustment="870px">
+  <img src="{{ './search-bar-interaction-states-focus.svg' | url }}" alt="Search bar component interaction state, focus">
+</uxdot-example>
+
 
 #### Active
 
@@ -166,9 +184,10 @@ When the focus is moved to the form field via cursor, the placeholder text will
 disappear and a blinking cursor will take its place. When the focus is moved 
 away, the placeholder text will be visible again.
 
-{% example palette="lightest",
-    alt="Search bar component interaction state, active",
-    src="./search-bar-interaction-states-active.svg" %}
+<uxdot-example width-adjustment="870px">
+  <img src="{{ './search-bar-interaction-states-active.svg' | url }}" alt="Search bar component interaction state, active">
+</uxdot-example>
+
 
 #### Tab order
 
@@ -176,20 +195,42 @@ When the Tab key is pressed repeatedly, the focus will highlight the form field
 first and then the button. A user can move the focus from the form field to the 
 button without an error being displayed.
 
-{% example palette="lightest",
-    alt="Search bar component tab order",
-    src="./search-bar-tab-order.svg" %}
+<uxdot-example width-adjustment="870px">
+  <img src="{{ './search-bar-tab-order.svg' | url }}" alt="Search bar component tab order">
+</uxdot-example>
+
   
 ## Accessibility
 
-| Key                               | Action                                                                            |
-| --------------------------------- | --------------------------------------------------------------------------------- |
-| <kbd>Tab</kbd>                    | Moves the focus to the button.                                                    |
-| <kbd>Shift</kbd> + <kbd>Tab</kbd> | Moves the focus to the form field.                                                |
-| <kbd>Enter</kbd> (if text)        | Triggers a search.                                                                |
-| <kbd>Enter</kbd> (if no text)     | Displays an error icon and text requiring a user to input text in the form field. |
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Key">Key</th>
+        <th scope="col" data-label="Action">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Key"><kbd>Tab</kbd></td>
+        <td data-label="Action">Moves the focus to the button.</td>
+      </tr>
+      <tr>
+        <td data-label="Key"><kbd>Shift</kbd> + <kbd>Tab</kbd></td>
+        <td data-label="Action">Moves the focus to the form field.</td>
+      </tr>
+      <tr>
+        <td data-label="Key"><kbd>Enter</kbd> (if text)</td>
+        <td data-label="Action">Triggers a search.</td>
+      </tr>
+      <tr>
+        <td data-label="Key"><kbd>Enter</kbd> (if no text)</td>
+        <td data-label="Action">Displays an error icon and text requiring a user to input text in the form field.</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
 
-{.full-width}
 
 ## Responsive design
 
@@ -199,21 +240,24 @@ whereas the button always stays the same size.
 
 #### Desktop
 
-{% example palette="none",
-    alt="Search bar component responsive design, desktop",
-    src="./search-bar-responsive-desktop.svg" %}
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ './search-bar-responsive-desktop.svg' | url }}" alt="Search bar component responsive design, desktop">
+</uxdot-example>
+
 
 #### Tablet
 
-{% example palette="none",
-    alt="Search bar component responsive design, tablet",
-    src="./search-bar-responsive-tablet.svg" %}
+<uxdot-example width-adjustment="768px" variant="full" alignment="left" no-border>
+  <img src="{{ './search-bar-responsive-tablet.svg' | url }}" alt="Search bar component responsive design, tablet">
+</uxdot-example>
+
 
 #### Mobile
 
-{% example palette="none",
-    alt="Search bar component responsive design, mobile",
-    src="./search-bar-responsive-mobile.svg" %}
+<uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border>
+  <img src="{{ './search-bar-responsive-mobile.svg' | url }}" alt="Search bar component responsive design, mobile">
+</uxdot-example>
+
 
 ## Best practices
 
@@ -222,26 +266,29 @@ whereas the button always stays the same size.
 Do not write placeholder text too long, it should be short and to the point 
 (maximum 30 characters).
 
-{% example palette="wrong",
-    alt="Search component best practice 1",
-    src="./search-bar-best-practice-1.svg" %}
+<uxdot-example width-adjustment="870px" danger>
+  <img src="{{ './search-bar-best-practice-1.svg' | url }}" alt="Search component best practice 1">
+</uxdot-example>
+
 
 #### Call to action as button
 
 Do not replace the button with a call to action.
 
-{% example palette="wrong",
-    alt="Search component best practice 2",
-    src="./search-bar-best-practice-2.svg" %}
+<uxdot-example width-adjustment="870px" danger>
+  <img src="{{ './search-bar-best-practice-2.svg' | url }}" alt="Search component best practice 2">
+</uxdot-example>
+
 
 #### Different style or color
 
 Do not use a different button color or style when using a search bar on Red Hat 
 *marketing* websites.
 
-{% example palette="wrong",
-    alt="Search component best practice 3",
-    src="./search-bar-best-practice-3.svg" %}
+<uxdot-example width-adjustment="870px" danger>
+  <img src="{{ './search-bar-best-practice-3.svg' | url }}" alt="Search component best practice 3">
+</uxdot-example>
+
 
 #### Disabled
 
@@ -249,46 +296,51 @@ Do not disable the button until a user inputs text in the form field. The button
 should always be active and if a user tries to perform a search without any text 
 in the form field, an error should be displayed instead.
 
-{% example palette="wrong",
-    alt="Search component best practice 4",
-    src="./search-bar-best-practice-4.svg" %}
+<uxdot-example width-adjustment="870px" danger>
+  <img src="{{ './search-bar-best-practice-4.svg' | url }}" alt="Search component best practice 4">
+</uxdot-example>
 
 
 #### Solo button
 
 Avoid using the search button on its own without a form field.
 
-{% alert title="Learn more" %}
-Visit the [Button](/elements/button/) component page to learn more about how to 
-use buttons.
-{% endalert %}
+<rh-alert state="info">
+  <h4 slot="header">Learn more</h4>
+  <p>Visit the <a href="{{ '/elements/button/' | url }}">Button</a> component page to learn more about how to use buttons.</p>
+</rh-alert>
 
-{% example palette="wrong",
-    alt="Search component best practice 5",
-    src="./search-bar-best-practice-5.svg" %}
+<uxdot-example width-adjustment="81px" danger>
+  <img src="{{ './search-bar-best-practice-5.svg' | url }}" alt="Search component best practice 5">
+</uxdot-example>
+
 
 #### Rearranging the component
 
 Do not rearrange a search bar by placing the button below the form field or 
 changing its width.
 
-{% example palette="wrong",
-    alt="Search component best practice 6",
-    src="./search-bar-best-practice-6.svg" %}
+<uxdot-example width-adjustment="360px" danger>
+  <img src="{{ './search-bar-best-practice-6.svg' | url }}" alt="Search component best practice 6">
+</uxdot-example>
+
 
 ## Spacing
 
 A search bar uses [space tokens](/tokens/space/) to define spacing values 
 between elements.
 
+<uxdot-example width-adjustment="870px">
+  <img src="{{ './search-bar-spacing.svg' | url }}" alt="Search bar spacing">
+</uxdot-example>
+
+<rh-table>
 {% spacerTokensTable headingLevel="3", tokens=[
   '--rh-space-sm',
   '--rh-space-md',
   '--rh-space-lg',
 '' ] %}{% endspacerTokensTable %}
+</rh-table>
 
-{% example palette="light",
-        alt="Search bar spacing",
-        src="./search-bar-spacing.svg" %}
 
 {% include 'partials/component/feedback.html' %}
