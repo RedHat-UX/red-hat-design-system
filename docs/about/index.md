@@ -15,10 +15,11 @@ tags:
     text-align: center;
     margin-block-start: var(--rh-space-2xl, 32px);
     margin-block-end: var(--rh-space-4xl, 64px);
+    font-size: var(--rh-font-size-heading-lg, 2.25rem);
   }
 
   :is(#approach, #fundamentals) :is(h2, h3) {
-    font-weight: var(--rh-font-weight-heading-regular, 300);
+    font-weight: var(--rh-font-weight-heading-medium, 500);
   }
 
   #fundamentals h3 {
@@ -98,6 +99,10 @@ tags:
     max-width: 70px;
   }
 
+  hr {
+    margin-block: var(--rh-space-5xl, 80px);
+  }
+
   @container container (min-width: 567px) {
     :is(#approach, #fundamentals) .grid {
       grid-template-columns: 1fr 1fr;
@@ -127,6 +132,7 @@ tags:
 
 <section id="approach">
   <h2>Our approach</h2>
+  
   <div class="grid">
     <div class="item">
       <h3>Brand standards</h3>

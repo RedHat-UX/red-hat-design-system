@@ -84,7 +84,7 @@
     margin-inline: var(--rh-space-xl, 24px) !important;
   }
 
-  @media (min-width: 768px) {
+  @container main (min-width: 768px) {
     #get-started rh-card h2 {
       margin-block-start: var(--rh-space-2xl, 32px) !important;
       margin-inline: var(--rh-space-2xl, 32px) !important;

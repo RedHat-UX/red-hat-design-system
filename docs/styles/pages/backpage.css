@@ -21,27 +21,27 @@
 
   .container h2,
   uxdot-copy-permalink h2 {
-    font-size: var(--rh-font-size-heading-md, 1.75rem) !important; /* RHDS h4 heading font size */
+    font-size: var(--rh-font-size-heading-md, 1.75rem);  /* RHDS h4 heading font size */
   }
 
   .container h3,
   uxdot-copy-permalink h3 {
-    font-size: var(--rh-font-size-heading-sm, 1.5rem) !important; /* RHDS h5 heading font size */
+    font-size: var(--rh-font-size-heading-sm, 1.5rem);  /* RHDS h5 heading font size */
   }
 
   .container h4,
   uxdot-copy-permalink h4 {
-    font-size: var(--rh-font-size-heading-xs, 1.25rem) !important; /* RHDS h6 heading font size */
+    font-size: var(--rh-font-size-heading-xs, 1.25rem);  /* RHDS h6 heading font size */
   }
 
   .container h5,
   uxdot-copy-permalink h5 {
-    font-size: 1.125rem !important; /* Not a RHDS token */
+    font-size: 1.125rem;  /* Not a RHDS token */
   }
 
   .container h6,
   uxdot-copy-permalink h6 {
-    font-size: 1rem !important; /* Not a RHDS token */
+    font-size: 1rem;  /* Not a RHDS token */
   }
 
   aside :is(h2, h3, h3, h4, h5, h6),
