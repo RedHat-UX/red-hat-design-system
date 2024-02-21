@@ -1,5 +1,6 @@
-@layer masthead, header, sidenav, permalink, footer;
+@layer skip-navigation, masthead, header, sidenav, permalink, footer;
 
+@import url('../assets/elements/uxdot-skip-navigation-lightdom.css') layer(skip-navigation);
 @import url('../assets/elements/uxdot-masthead-lightdom.css') layer(masthead);
 @import url('../assets/elements/uxdot-header-lightdom.css') layer(header);
 @import url('../assets/elements/uxdot-sidenav-lightdom.css') layer(sidenav);
