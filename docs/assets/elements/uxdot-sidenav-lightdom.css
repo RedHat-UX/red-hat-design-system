@@ -17,6 +17,8 @@ uxdot-sidenav:defined {
 uxdot-sidenav:not(:defined) {
   height: fit-content;
   overflow-y: scroll;
+  position: relative;
+  width: 100%;
 }
 
 uxdot-sidenav > ul {
