@@ -152,6 +152,10 @@
   uxdot-copy-permalink.h2 + uxdot-copy-permalink.h3 {
     --uxdot-copy-permalink-margin-block-start: 0;
   }
+
+  rh-alert + rh-alert {
+    margin-block-start: var(--rh-space-xl, 24px);
+  }
 }
 
 @layer patterns {
