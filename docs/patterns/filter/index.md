@@ -1,5 +1,7 @@
 ---
 title: Filter
+heading: Filter
+order: 40
 hasToc: true
 tags:
   - pattern

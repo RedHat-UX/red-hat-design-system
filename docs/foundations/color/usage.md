@@ -6,9 +6,9 @@ hasToc: true
 tags:
   - color
 subnav:
-  collection: sortedColor  
+  collection: sortedColor
+  order: 2
 permalink: /foundations/color/usage/index.html
-order: 10
 importElements: 
   - rh-alert
   - rh-tag

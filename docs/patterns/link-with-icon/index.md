@@ -1,5 +1,7 @@
 ---
 title: Link with icon
+heading: Link with icon
+order: 60
 layout: layouts/pages/basic.njk
 hasToc: true
 tags:

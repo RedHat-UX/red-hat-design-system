@@ -1,7 +1,7 @@
 ---
 layout: layouts/pages/basic.njk
 title: Spacing
-order: 4
+order: 40
 hasToc: true
 tags:
   - foundations

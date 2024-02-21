@@ -1,6 +1,7 @@
 ---
 layout: layouts/pages/basic.njk
 title: Roadmap
+order: 20
 bodyClasses: page-docs
 tags:
   - about

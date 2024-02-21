@@ -26,8 +26,10 @@ importElements:
 </style>
 
 <section>
-  <h2>Overview</h2>
-  <p>Foundations are the visual and structural elements of our design system. Foundations were created as the building blocks of all user interface elements. Foundations should be used as blueprints that all components and layouts are created from.</p>
+
+  ## Overview
+
+  Foundations are the visual and structural elements of our design system. Foundations were created as the building blocks of all user interface elements. Foundations should be used as blueprints that all components and layouts are created from.
 
   <div id="grid">
     <rh-card>
@@ -85,7 +87,6 @@ importElements:
   <h2>Make a request</h2>
    <p>To request a new foundation or if updates need to be made to an existing foundation, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
 </section>
-
 
 
 {% include 'partials/component/feedback.html' %}

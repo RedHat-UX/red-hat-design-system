@@ -50,7 +50,15 @@
                       </uxdot-sidenav-dropdown-menu-item>
                     </li>
                   {% endif %}
-                  {%- for sublink in collections[link.collection] -%}
+                  
+                  {% if (link.collection !== 'elementDocs') and (link.collection !== 'token') %}
+                    {%- set sortedOn = "data.order" %}
+                    {%- set sideNavCollection = collections[link.collection] | sort(attribute=sortedOn, case_sensitive=true) %}
+                  {% else %}
+                    {%- set sideNavCollection = collections[link.collection] %}
+                  {% endif %}
+
+                  {%- for sublink in sideNavCollection -%}
                     {%- set active = sublink.url === page.url -%}
                     <li>
                       <uxdot-sidenav-dropdown-menu-item {{ 'active' if active }}>

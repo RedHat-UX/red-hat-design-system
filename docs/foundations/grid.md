@@ -1,7 +1,7 @@
 ---
 layout: layouts/pages/basic.njk
 title: Grid
-order: 2
+order: 20
 hasToc: true
 tags:
   - foundations

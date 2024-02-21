@@ -1,7 +1,7 @@
 ---
 layout: layouts/pages/basic.njk
 title: How we build
-order: 1
+order: 10
 hasToc: true
 tags:
   - about

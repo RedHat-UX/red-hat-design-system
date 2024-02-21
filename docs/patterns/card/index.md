@@ -1,7 +1,9 @@
 ---
 title: Card
+heading: Card
 layout: layouts/pages/basic.njk
 hasToc: true
+order: 20
 tags:
   - pattern
 importElements:

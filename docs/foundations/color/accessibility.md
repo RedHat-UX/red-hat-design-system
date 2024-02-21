@@ -7,8 +7,8 @@ tags:
   - color
 subnav:
   collection: sortedColor  
+  order: 3
 permalink: /foundations/color/accessibility/index.html
-order: 20
 ---
 
 ## Approach

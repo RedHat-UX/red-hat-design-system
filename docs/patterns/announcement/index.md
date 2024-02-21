@@ -1,6 +1,8 @@
 ---
 title: Announcement
+heading: Announcement
 hasToc: true
+order: 10
 tags:
   - pattern
 ---

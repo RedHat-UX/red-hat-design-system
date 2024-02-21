@@ -1,7 +1,7 @@
 ---
 layout: layouts/pages/basic.njk
 title: Typography
-order: 5
+order: 50
 hasToc: true
 tags:
   - foundations

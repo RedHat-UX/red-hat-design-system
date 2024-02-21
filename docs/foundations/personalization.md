@@ -1,7 +1,7 @@
 ---
 layout: layouts/pages/basic.njk
 title: Personalization patterns
-order: 3
+order: 30
 hasToc: true
 tags:
   - foundations

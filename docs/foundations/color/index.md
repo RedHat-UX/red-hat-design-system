@@ -2,14 +2,16 @@
 layout: layouts/pages/basic.njk
 title: Overview
 heading: Color
+order: 10
 hasToc: true
 tags:
   - foundations
   - color
 subnav:
-  collection: sortedColor  
+  collection: sortedColor
+  order: 1
 permalink: /foundations/color/index.html
-order: 00
+
 ---
 
 ## Introduction

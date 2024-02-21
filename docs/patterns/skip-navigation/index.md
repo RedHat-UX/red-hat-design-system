@@ -1,5 +1,7 @@
 ---
 title: Skip navigation
+heading: Skip navigation
+order: 90
 hasToc: true
 tags:
   - pattern

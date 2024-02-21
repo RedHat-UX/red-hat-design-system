@@ -1,5 +1,7 @@
 ---
 title: Sticky card
+heading: Sticky card
+order: 110
 hasToc: true
 tags:
   - pattern
