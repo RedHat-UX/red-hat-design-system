@@ -51,7 +51,7 @@ eleventyComputed:
 
 {% include 'partials/component/masthead.njk' %}
 {% include 'partials/component/sidenav.njk' %}
-<main>
+<main id="main">
   <article>
     <uxdot-header>
       <h1 id="{{ doc.slug }}" class="page-title">{{ doc.alias or (doc.slug | deslugify) }}</h1>
