@@ -3,7 +3,18 @@ title: Fundamentals
 tags: 
  - accessibility
 order: 0
+importElements:
+  - rh-blockquote
+
 ---
+
+<style>
+    rh-blockquote {
+        display: block;
+        margin-block: 2em !important;
+        max-width: 36em;
+    }
+</style>
 
 ## Overview
 
@@ -70,8 +81,10 @@ As a subsidiary of IBM, Red Hat and its associates must adhere to the parent com
 
 To demonstrate our intent to meet IBM’s corporate instruction, our legal requirements, and our ethical obligations, Red Hat’s Digital Experience team has developed an internal [accessibility policy](https://url.corp.redhat.com/accessibility-policy) and posted a [digital accessibility statement](https://www.redhat.com/en/about/digital-accessibility) at our website. To put this intent into practice, we continuously remediate our existing properties, we’re building libraries of accessible Web Components and patterns, and we’ve shifted left to incorporate inclusive design in new web projects: from the earliest stages of discovery through launch.
 
-> “The power of the Web is in its universality. Access by everyone regardless of disability is an essential aspect.”
-> — Tim Berners-Lee
+<rh-blockquote>
+    <p>“The power of the Web is in its universality. Access by everyone regardless of disability is an essential aspect.”</p>
+    <span slot="author">Tim Berners-Lee</span>
+</rh-blockquote>
 
 ## Guidelines
 
@@ -91,12 +104,16 @@ At Red Hat, we currently target [WCAG 2.1 AA](https://www.w3.org/WAI/WCAG21/Unde
 
 It’s important to remember that the goal of web accessibility is not conformance for its own sake. Accessibility is for real people. To reflect this, W3C has organized its WCAG criteria by these four guiding principles: perceivable, operable, understandable and robust (aka POUR):
 
-> 1. Perceivable - Information and user interface components must be presentable to users in ways they can perceive.
-> 2. Operable - User interface components and navigation must be operable.
-> 3. Understandable - Information and the operation of user interface must be understandable.
-> 4. Robust - Content must be robust enough that it can be interpreted reliably by a wide variety of user agents, including assistive technologies.
->
-> _Source: [Introduction to Understanding WCAG](https://www.w3.org/WAI/WCAG21/Understanding/intro). Accessibility Guidelines Working Group (AG WG) Participants. Copyright © 2023 W3C® (MIT, ERCIM, Keio). Status: Draft Updated 20 June 2023._
+<rh-blockquote>
+  <ol>
+    <li><strong>Perceivable</strong> - Information and user interface components must be presentable to users in ways they can perceive.</li>
+    <li><strong>Operable</strong> - User interface components and navigation must be operable.</li>
+    <li><strong>Understandable</strong> - Information and the operation of user interface must be understandable.</li>
+    <li><strong>Robust</strong> - Content must be robust enough that it can be interpreted reliably by a wide variety of user agents, including assistive technologies.</li>
+  </ol>
+  <span slot="author">Source: <a href="https://www.w3.org/WAI/WCAG21/Understanding/intro">Introduction to Understanding WCAG</a>.</span>
+  <span slot="title">Accessibility Guidelines Working Group (AG WG) Participants. Copyright © 2023 W3C® (MIT, ERCIM, Keio). Status: Draft Updated 20 June 2023.</span>
+</rh-blockquote>
 
 While the WCAG criteria inform the “what” of accessibility conformance, POUR reminds us of the “why.”
 
