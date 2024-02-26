@@ -1,5 +1,10 @@
 module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   // Iterate over tags to sort
+
+  if (!tagsToAlphabetize || tagsToAlphabetize?.length <= 0) {
+    return;
+  }
+
   for (const tag of tagsToAlphabetize) {
     eleventyConfig.addCollection(tag, function(collection) {
       const currentCollection = [...collection.getFilteredByTag(tag)]
