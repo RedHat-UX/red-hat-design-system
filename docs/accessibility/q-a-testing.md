@@ -1,7 +1,17 @@
 ---
 title: QA and Testing
 tags: accessibility
+importElements:
+  - rh-blockquote
 ---
+
+<style>
+    rh-blockquote {
+        display: block;
+        margin-block: 2em !important;
+        max-width: 36em;
+    }
+</style>
 
 ## Accessibility tools
 
@@ -36,8 +46,10 @@ In addition to WCAG versions 2.0, 2.1, and 2.2, Equal Access Checker can run sca
 
 If you're getting started with accessibility after you already have web properties out in the wild, your first experiences with accessibility testing will likely be in an effort to remediate these experiences. But learning to shift left on accessibility—incorporating it earlier in your processes—can ultimately save time and help ensure your projects are inclusive at launch.
 
-> "When you call something an edge case, you're really just defining the limits of what you care about."
-> — Eric Meyer
+<rh-blockquote>
+    <p>"When you call something an edge case, you're really just defining the limits of what you care about."</p>
+    <span slot="author">Eric Meyer</span>
+</rh-blockquote>
 
 Making accessibility testing part of your pre-launch QA allows designers, developers, and content writers to revisit their work before they’ve moved on to the next project. Better still, you can incorporate role-based testing in each phase of your project, so issues can be avoided before handoffs between creators.
 
