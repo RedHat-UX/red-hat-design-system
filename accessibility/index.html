@@ -31,7 +31,7 @@
     <link type="text/css" href="/assets/pfe--noscript.min.css">
   </noscript>
 
-  <script type="importmap">{"imports":{"@patternfly/pfe-core":"/assets/packages/@patternfly/pfe-core/core.js","lit-html":"/assets/packages/lit-html/lit-html.js","@floating-ui/core":"/assets/packages/@floating-ui/core/dist/floating-ui.core.browser.min.mjs","tslib":"/assets/packages/tslib/tslib.es6.js","@lit/reactive-element":"/assets/packages/@lit/reactive-element/reactive-element.js","@floating-ui/dom":"/assets/packages/@floating-ui/dom/dist/floating-ui.dom.browser.min.mjs","lit-element":"/assets/packages/lit-element/index.js","lit/directives/if-defined.js":"/assets/packages/lit/directives/if-defined.js","lit":"/assets/packages/lit/index.js","@patternfly/elements":"/assets/packages/@patternfly/elements/pfe.min.js","@rhds/tokens/media.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js","@rhds/tokens/meta.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js","@rhds/tokens":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/tokens.js","element-internals-polyfill":"/assets/packages/element-internals-polyfill/dist/index.js","fuse.js":"/assets/packages/fuse.js/dist/fuse.esm.js","@rhds/tokens/":"/assets/packages/@rhds/tokens/js/","@rhds/elements/":"/assets/packages/@rhds/elements/elements/","@rhds/elements/lib/":"/assets/packages/@rhds/elements/lib/","@patternfly/elements/":"/assets/packages/@patternfly/elements/","@patternfly/icons/":"/assets/packages/@patternfly/icons/","@patternfly/pfe-core/":"/assets/packages/@patternfly/pfe-core/"},"scopes":{"/assets/packages/":{"@lit/reactive-element/decorators/":"/assets/packages/@lit/reactive-element/decorators/","lit":"/assets/packages/@patternfly/elements/node_modules/lit/index.js","lit-element/lit-element.js":"/assets/packages/lit-element/lit-element.js","lit-html/":"/assets/packages/lit-html/","lit/":"/assets/packages/@patternfly/elements/node_modules/lit/"}}}</script>
+  <script type="importmap">{"imports":{"@patternfly/pfe-core":"/assets/packages/@patternfly/pfe-core/core.js","lit-html":"/assets/packages/lit-html/lit-html.js","@floating-ui/core":"/assets/packages/@floating-ui/core/dist/floating-ui.core.browser.min.mjs","tslib":"/assets/packages/tslib/tslib.es6.js","@lit/reactive-element":"/assets/packages/@lit/reactive-element/reactive-element.js","@floating-ui/dom":"/assets/packages/@floating-ui/dom/dist/floating-ui.dom.browser.min.mjs","lit-element":"/assets/packages/lit-element/index.js","lit/directives/if-defined.js":"/assets/packages/lit/directives/if-defined.js","lit":"/assets/packages/lit/index.js","@patternfly/elements":"/assets/packages/@patternfly/elements/pfe.min.js","@rhds/tokens/media.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js","@rhds/tokens":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/tokens.js","@rhds/tokens/meta.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js","element-internals-polyfill":"/assets/packages/element-internals-polyfill/dist/index.js","fuse.js":"/assets/packages/fuse.js/dist/fuse.esm.js","@rhds/tokens/":"/assets/packages/@rhds/tokens/js/","@rhds/elements/":"/assets/packages/@rhds/elements/elements/","@rhds/elements/lib/":"/assets/packages/@rhds/elements/lib/","@patternfly/elements/":"/assets/packages/@patternfly/elements/","@patternfly/icons/":"/assets/packages/@patternfly/icons/","@patternfly/pfe-core/":"/assets/packages/@patternfly/pfe-core/"},"scopes":{"/assets/packages/":{"@lit/reactive-element/decorators/":"/assets/packages/@lit/reactive-element/decorators/","lit":"/assets/packages/@patternfly/elements/node_modules/lit/index.js","lit-element/lit-element.js":"/assets/packages/lit-element/lit-element.js","lit-html/":"/assets/packages/lit-html/","lit/":"/assets/packages/@patternfly/elements/node_modules/lit/"}}}</script>
   <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js"></script>
   
   <script type="module">
@@ -48,6 +48,10 @@
   
   <script type="module">
     import '@rhds/elements/rh-alert/rh-alert.js';
+  </script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-blockquote/rh-blockquote.js';
   </script>
   
   <script type="module">
@@ -387,7 +391,14 @@
     <div class="l-main__content">
       <div class="container">
         
-        <copy-permalink class="h2">
+        <style>
+    rh-blockquote {
+        display: block;
+        margin-block: 2em !important;
+        max-width: 36em;
+    }
+</style>
+<copy-permalink class="h2">
   <h2 id="overview" tabindex="-1">
     <a class="heading-anchor" href="#overview">Overview</a>
       </h2>
@@ -471,10 +482,10 @@
       </h3>
     </copy-permalink>
 <p>To demonstrate our intent to meet IBM’s corporate instruction, our legal requirements, and our ethical obligations, Red Hat’s Digital Experience team has developed an internal <a href="https://url.corp.redhat.com/accessibility-policy">accessibility policy</a> and posted a <a href="https://www.redhat.com/en/about/digital-accessibility">digital accessibility statement</a> at our website. To put this intent into practice, we continuously remediate our existing properties, we’re building libraries of accessible Web Components and patterns, and we’ve shifted left to incorporate inclusive design in new web projects: from the earliest stages of discovery through launch.</p>
-<blockquote>
-<p>“The power of the Web is in its universality. Access by everyone regardless of disability is an essential aspect.”
-— Tim Berners-Lee</p>
-</blockquote>
+<rh-blockquote>
+    <p>“The power of the Web is in its universality. Access by everyone regardless of disability is an essential aspect.”</p>
+    <span slot="author">Tim Berners-Lee</span>
+</rh-blockquote>
 <copy-permalink class="h2">
   <h2 id="guidelines" tabindex="-1">
     <a class="heading-anchor" href="#guidelines">Guidelines</a>
@@ -500,15 +511,16 @@
       </h4>
     </copy-permalink>
 <p>It’s important to remember that the goal of web accessibility is not conformance for its own sake. Accessibility is for real people. To reflect this, W3C has organized its WCAG criteria by these four guiding principles: perceivable, operable, understandable and robust (aka POUR):</p>
-<blockquote>
-<ol>
-<li>Perceivable - Information and user interface components must be presentable to users in ways they can perceive.</li>
-<li>Operable - User interface components and navigation must be operable.</li>
-<li>Understandable - Information and the operation of user interface must be understandable.</li>
-<li>Robust - Content must be robust enough that it can be interpreted reliably by a wide variety of user agents, including assistive technologies.</li>
-</ol>
-<p><em>Source: <a href="https://www.w3.org/WAI/WCAG21/Understanding/intro">Introduction to Understanding WCAG</a>. Accessibility Guidelines Working Group (AG WG) Participants. Copyright © 2023 W3C® (MIT, ERCIM, Keio). Status: Draft Updated 20 June 2023.</em></p>
-</blockquote>
+<rh-blockquote>
+  <ol>
+    <li><strong>Perceivable</strong> - Information and user interface components must be presentable to users in ways they can perceive.</li>
+    <li><strong>Operable</strong> - User interface components and navigation must be operable.</li>
+    <li><strong>Understandable</strong> - Information and the operation of user interface must be understandable.</li>
+    <li><strong>Robust</strong> - Content must be robust enough that it can be interpreted reliably by a wide variety of user agents, including assistive technologies.</li>
+  </ol>
+  <span slot="author">Source: <a href="https://www.w3.org/WAI/WCAG21/Understanding/intro">Introduction to Understanding WCAG</a>.</span>
+  <span slot="title">Accessibility Guidelines Working Group (AG WG) Participants. Copyright © 2023 W3C® (MIT, ERCIM, Keio). Status: Draft Updated 20 June 2023.</span>
+</rh-blockquote>
 <p>While the WCAG criteria inform the “what” of accessibility conformance, POUR reminds us of the “why.”</p>
 <p>Keeping your users and these four principles in mind from the start will go a long way towards conformance, well before you open up an accessibility checklist or run any browser testing extensions.</p>
 <p>The <a href="https://www.w3.org/WAI/fundamentals/accessibility-principles/">W3C’s Accessibility Principles</a> page provides more information on applying POUR.</p>

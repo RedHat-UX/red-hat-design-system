@@ -31,7 +31,7 @@
     <link type="text/css" href="/assets/pfe--noscript.min.css">
   </noscript>
 
-  <script type="importmap">{"imports":{"@patternfly/pfe-core":"/assets/packages/@patternfly/pfe-core/core.js","lit-html":"/assets/packages/lit-html/lit-html.js","@floating-ui/core":"/assets/packages/@floating-ui/core/dist/floating-ui.core.browser.min.mjs","tslib":"/assets/packages/tslib/tslib.es6.js","@lit/reactive-element":"/assets/packages/@lit/reactive-element/reactive-element.js","@floating-ui/dom":"/assets/packages/@floating-ui/dom/dist/floating-ui.dom.browser.min.mjs","lit-element":"/assets/packages/lit-element/index.js","lit/directives/if-defined.js":"/assets/packages/lit/directives/if-defined.js","lit":"/assets/packages/lit/index.js","@patternfly/elements":"/assets/packages/@patternfly/elements/pfe.min.js","@rhds/tokens/media.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js","@rhds/tokens/meta.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js","@rhds/tokens":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/tokens.js","element-internals-polyfill":"/assets/packages/element-internals-polyfill/dist/index.js","fuse.js":"/assets/packages/fuse.js/dist/fuse.esm.js","@rhds/tokens/":"/assets/packages/@rhds/tokens/js/","@rhds/elements/":"/assets/packages/@rhds/elements/elements/","@rhds/elements/lib/":"/assets/packages/@rhds/elements/lib/","@patternfly/elements/":"/assets/packages/@patternfly/elements/","@patternfly/icons/":"/assets/packages/@patternfly/icons/","@patternfly/pfe-core/":"/assets/packages/@patternfly/pfe-core/"},"scopes":{"/assets/packages/":{"@lit/reactive-element/decorators/":"/assets/packages/@lit/reactive-element/decorators/","lit":"/assets/packages/@patternfly/elements/node_modules/lit/index.js","lit-element/lit-element.js":"/assets/packages/lit-element/lit-element.js","lit-html/":"/assets/packages/lit-html/","lit/":"/assets/packages/@patternfly/elements/node_modules/lit/"}}}</script>
+  <script type="importmap">{"imports":{"@patternfly/pfe-core":"/assets/packages/@patternfly/pfe-core/core.js","lit-html":"/assets/packages/lit-html/lit-html.js","@floating-ui/core":"/assets/packages/@floating-ui/core/dist/floating-ui.core.browser.min.mjs","tslib":"/assets/packages/tslib/tslib.es6.js","@lit/reactive-element":"/assets/packages/@lit/reactive-element/reactive-element.js","@floating-ui/dom":"/assets/packages/@floating-ui/dom/dist/floating-ui.dom.browser.min.mjs","lit-element":"/assets/packages/lit-element/index.js","lit/directives/if-defined.js":"/assets/packages/lit/directives/if-defined.js","lit":"/assets/packages/lit/index.js","@patternfly/elements":"/assets/packages/@patternfly/elements/pfe.min.js","@rhds/tokens/media.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js","@rhds/tokens":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/tokens.js","@rhds/tokens/meta.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js","element-internals-polyfill":"/assets/packages/element-internals-polyfill/dist/index.js","fuse.js":"/assets/packages/fuse.js/dist/fuse.esm.js","@rhds/tokens/":"/assets/packages/@rhds/tokens/js/","@rhds/elements/":"/assets/packages/@rhds/elements/elements/","@rhds/elements/lib/":"/assets/packages/@rhds/elements/lib/","@patternfly/elements/":"/assets/packages/@patternfly/elements/","@patternfly/icons/":"/assets/packages/@patternfly/icons/","@patternfly/pfe-core/":"/assets/packages/@patternfly/pfe-core/"},"scopes":{"/assets/packages/":{"@lit/reactive-element/decorators/":"/assets/packages/@lit/reactive-element/decorators/","lit":"/assets/packages/@patternfly/elements/node_modules/lit/index.js","lit-element/lit-element.js":"/assets/packages/lit-element/lit-element.js","lit-html/":"/assets/packages/lit-html/","lit/":"/assets/packages/@patternfly/elements/node_modules/lit/"}}}</script>
   <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js"></script>
   
   <script type="module">
@@ -48,6 +48,10 @@
   
   <script type="module">
     import '@rhds/elements/rh-alert/rh-alert.js';
+  </script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-code-block/rh-code-block.js';
   </script>
   
   <script type="module">
@@ -426,16 +430,19 @@
       </h3>
     </copy-permalink>
 <p>Images loaded via the <code>&lt;img&gt;</code> element typically use the alt attribute for their alternative text:</p>
-<pre><code>&lt;img src="imagesource.jpg" alt="Description of image"&gt;
-</code></pre>
+<rh-code-block>
+  <script type="text/html"><img src="imagesource.jpg" alt="Description of image"></script>
+</rh-code-block>
 <p>Inline SVGs that compose simple images commonly use a combination of the <code>role="img"</code> attribute and a <code>&lt;title&gt;</code> element as the first child of the <code>&lt;svg&gt;</code> element:</p>
-<pre><code>&lt;svg role="img"&gt;
-  &lt;title&gt;Description of image&lt;/title&gt;
-&lt;/svg&gt;
-</code></pre>
+<rh-code-block>
+  <script type="text/html"><svg role="img">
+  <title>Description of image</title>
+</svg></script>
+</rh-code-block>
 <p>Other non-text elements (e.g., ASCII emoticons) may use ARIA attributes, like <code>aria-label</code> or <code>aria-labelledby</code>:</p>
-<pre><code>&lt;span role="img" aria-label="astonished face"&gt;:O&lt;/span&gt;
-</code></pre>
+<rh-code-block>
+  <script type="text/html"><span role="img" aria-label="astonished face">:O</span></script>
+</rh-code-block>
 <p>These are not the only means of providing alt text for non-text elements, but they cover many common situations. For less-common cases, view the <a href="https://www.w3.org/WAI/WCAG21/Understanding/non-text-content.html">WCAG 2.1 documentation</a>.</p>
 <copy-permalink class="h3">
   <h3 id="complex-images" tabindex="-1">
@@ -483,27 +490,30 @@
 </a>
 </figure>
 <p>If the above image supplements the text of an article about Red Hat or our products, the appropriate alt text could be something like <code>"Red Hat, Inc. logo."</code> But if that image is a link pointing to the corporate homepage, you might want something along the lines of <code>"Red Hat homepage"</code> for your alt text:</p>
-<pre><code>&lt;a href="https://www.redhat.com/"&gt;
-  &lt;img src="logo-redhat.png" alt="Red Hat homepage"&gt;
-&lt;/a&gt;
-</code></pre>
+<rh-code-block>
+  <script type="text/html"><a href="https://www.redhat.com/">
+  <img src="logo-redhat.png" alt="Red Hat homepage">
+</a></script>
+</rh-code-block>
 <copy-permalink class="h3">
   <h3 id="grouped-images" tabindex="-1">
     <a class="heading-anchor" href="#grouped-images">Grouped images</a>
       </h3>
     </copy-permalink>
 <p>Grouped images that convey a single meaning (e.g., movie rating stars), can be grouped within an element with a single label (e.g., aria-label) that describes the meaning of the entire group.</p>
-<pre><code>&lt;div aria-label="2 of 3 attempts left"&gt;
-  &lt;img src="pending.jpg" alt&gt;
-  &lt;img src="pending.jpg" alt&gt;
-  &lt;img src="failed.jpg" alt&gt;
-&lt;/div&gt;
-</code></pre>
+<rh-code-block>
+  <script type="text/html"><div aria-label="2 of 3 attempts left">
+  <img src="pending.jpg" alt>
+  <img src="pending.jpg" alt>
+  <img src="failed.jpg" alt>
+</div></script>
+</rh-code-block>
 <p>Or the first element of the group can have alt text, while the others are hidden:</p>
-<pre><code>&lt;img src="pending.jpg" alt="2 of 3 attempts left"&gt;
-&lt;img src="pending.jpg" alt&gt;
-&lt;img src="failed.jpg" alt&gt;
-</code></pre>
+<rh-code-block>
+  <script type="text/html"><img src="pending.jpg" alt="2 of 3 attempts left">
+<img src="pending.jpg" alt>
+<img src="failed.jpg" alt></script>
+</rh-code-block>
 <copy-permalink class="h3">
   <h3 id="embedded-media-(and-other-non-text)-titles" tabindex="-1">
     <a class="heading-anchor" href="#embedded-media-(and-other-non-text)-titles">Embedded media (and other non-text) titles</a>
@@ -511,8 +521,9 @@
     </copy-permalink>
 <p>Though the techniques may vary, meaningful embedded media objects require text alternatives—just like images do. This applies to <code>&lt;video&gt;</code>. <code>&lt;audio&gt;</code>, and <code>&lt;canvas&gt;</code> elements; objects; applets; ASCII art; and (if you still use them) multimedia embeds like Flash and Silverlight.
 A common technique is labeling objects with ARIA attributes:</p>
-<pre><code>&lt;video src="video.mp4" aria-label="Deploying applications with OpenShift"&gt;
-</code></pre>
+<rh-code-block>
+  <script type="text/html"><video src="video.mp4" aria-label="Deploying applications with OpenShift"></script>
+</rh-code-block>
 <copy-permalink class="h2">
   <h2 id="writing-microcopy" tabindex="-1">
     <a class="heading-anchor" href="#writing-microcopy">Writing microcopy</a>
@@ -531,8 +542,9 @@ A common technique is labeling objects with ARIA attributes:</p>
       </h3>
     </copy-permalink>
 <p>In addition to the best practices for all microcopy, adhere to the following best practices for links, when possible.</p>
-<pre><code>&lt;a href="signup.html"&gt;Sign-up form&lt;/a&gt;
-</code></pre>
+<rh-code-block>
+  <script type="text/html"><a href="signup.html">Sign-up form</a></script>
+</rh-code-block>
 <copy-permalink class="h4">
   <h4 id="best-practices-for-links" tabindex="-1">
     <a class="heading-anchor" href="#best-practices-for-links">Best practices for links</a>
@@ -561,8 +573,9 @@ A common technique is labeling objects with ARIA attributes:</p>
       </h3>
     </copy-permalink>
 <p>In addition to the best practices for all microcopy, adhere to the following best practices for buttons, when possible.</p>
-<pre><code>&lt;button&gt;Save draft&lt;/button&gt;
-</code></pre>
+<rh-code-block>
+  <script type="text/html"><button>Save draft</button></script>
+</rh-code-block>
 <copy-permalink class="h4">
   <h4 id="best-practices-for-buttons" tabindex="-1">
     <a class="heading-anchor" href="#best-practices-for-buttons">Best practices for buttons</a>
@@ -579,8 +592,9 @@ A common technique is labeling objects with ARIA attributes:</p>
       </h3>
     </copy-permalink>
 <p>In addition to the best practices for all microcopy, adhere to the following best practices for form labels, when possible.</p>
-<pre><code>&lt;label&gt;First name&lt;/label&gt;
-</code></pre>
+<rh-code-block>
+  <script type="text/html"><label>First name</label></script>
+</rh-code-block>
 <copy-permalink class="h4">
   <h4 id="best-practices-for-labels" tabindex="-1">
     <a class="heading-anchor" href="#best-practices-for-labels">Best practices for labels</a>
@@ -603,11 +617,13 @@ A common technique is labeling objects with ARIA attributes:</p>
       </h4>
     </copy-permalink>
 <p>Use clear language in headings to describe the content that follows them:</p>
-<pre><code>&lt;h1&gt;Red Hat Enterprise Linux&lt;/h1&gt;
-</code></pre>
+<rh-code-block>
+  <script type="text/html"><h1>Red Hat Enterprise Linux</h1></script>
+</rh-code-block>
 <p>At Red Hat, we use sentence case for our headings:</p>
-<pre><code>&lt;h2&gt;How companies are using RHEL&lt;/h2&gt;
-</code></pre>
+<rh-code-block>
+  <script type="text/html"><h2>How companies are using RHEL</h2></script>
+</rh-code-block>
 <copy-permalink class="h4">
   <h4 id="heading-levels" tabindex="-1">
     <a class="heading-anchor" href="#heading-levels">Heading levels</a>
@@ -649,40 +665,44 @@ Always increment by only one heading at a time. Don’t skip levels when increme
 </li>
 </ul>
 <p>And here’s how that outline would be reflected in a page’s heading structure:</p>
-<pre><code>&lt;h1&gt;Midwestern Recipes&lt;/h1&gt;
-  &lt;h2&gt;Sides&lt;/h2&gt;
-    &lt;h3&gt;Cheese&lt;/h3&gt;
-      &lt;h4&gt;Fried cheese curds&lt;/h4&gt;
-      &lt;h4&gt;Beer cheese dip&lt;/h4&gt;
-  &lt;h2&gt;Desserts&lt;/h2&gt;
-    &lt;h3&gt;Bars&lt;/h3&gt;
-      &lt;h4&gt;Scotch-a-roos&lt;/h4&gt;
-      &lt;h4&gt;Dream bars&lt;/h4&gt;
-    &lt;h3&gt;Pastries&lt;/h3&gt;
-      &lt;h4&gt;Kringle&lt;/h4&gt;
-      &lt;h4&gt;Dutch letters&lt;/h4&gt;
-</code></pre>
+<rh-code-block>
+  <script type="text/html"><h1>Midwestern Recipes</h1>
+  <h2>Sides</h2>
+    <h3>Cheese</h3>
+      <h4>Fried cheese curds</h4>
+      <h4>Beer cheese dip</h4>
+  <h2>Desserts</h2>
+    <h3>Bars</h3>
+      <h4>Scotch-a-roos</h4>
+      <h4>Dream bars</h4>
+    <h3>Pastries</h3>
+      <h4>Kringle</h4>
+      <h4>Dutch letters</h4></script>
+</rh-code-block>
 <p>Note that an <code>&lt;h1&gt;</code> is often the first heading on a page:</p>
-<pre><code>&lt;h1&gt;Midwestern Recipes&lt;/h1&gt;
-&lt;h2&gt;Navigation&lt;/h2&gt;
-</code></pre>
+<rh-code-block>
+  <script type="text/html"><h1>Midwestern Recipes</h1>
+<h2>Navigation</h2></script>
+</rh-code-block>
 <p>But it doesn’t have to be the first heading on a page. This is also acceptable:</p>
-<pre><code>&lt;h2&gt;Navigation&lt;/h2&gt;
-&lt;h1&gt;Midwestern Recipes&lt;/h1&gt;
-</code></pre>
+<rh-code-block>
+  <script type="text/html"><h2>Navigation</h2>
+<h1>Midwestern Recipes</h1></script>
+</rh-code-block>
 <copy-permalink class="h3">
   <h3 id="page-titles" tabindex="-1">
     <a class="heading-anchor" href="#page-titles">Page titles</a>
       </h3>
     </copy-permalink>
 <p>Each web page is required to have a page <code>&lt;title&gt;</code> element within its <code>&lt;head&gt;</code> that contains meaningful text describing the page’s context and purpose.</p>
-<pre><code>&lt;html lang="en"&gt;
-  &lt;head&gt;
-    &lt;title&gt;Red Hat Ansible Automation Platform&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;...&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
+<rh-code-block>
+  <script type="text/html"><html lang="en">
+  <head>
+    <title>Red Hat Ansible Automation Platform</title>
+  </head>
+  <body>...</body>
+</html></script>
+</rh-code-block>
 <p>Titles should be specific to each URL and not duplicated across a site. Otherwise, users (particularly assistive tech users) may not be aware when they’ve landed on a new or updated page. When users move to new pages or change contexts of the current page, the page title should change to reflect this.</p>
 <p>Text at the beginning of the title is what people will see in their browser tabs and hear first in screen readers. So, unique information in the title should come first, if possible. (i.e., Don’t put your site’s name first, if you’re including it in the title!)</p>
 <p>As mentioned in the Headings section, page titles and <code>&lt;h1&gt;</code> elements often relate to one another, though they needn’t be verbatim copies. Page titles often include information about both the page and the site itself, whereas an <code>&lt;h1&gt;</code> is more likely to include only information about its specific page.</p>
@@ -692,8 +712,9 @@ Always increment by only one heading at a time. Don’t skip levels when increme
       </h3>
     </copy-permalink>
 <p>Non-hidden, non-empty <code>&lt;iframe&gt;</code> elements are required to have titles describing their meaning or purpose, similar to alternative text for images.</p>
-<pre><code>&lt;iframe src="video.html" title="Video: Network automation with Ansible"&gt;&lt;/iframe&gt;
-</code></pre>
+<rh-code-block>
+  <script type="text/html"><iframe src="video.html" title="Video: Network automation with Ansible"></iframe></script>
+</rh-code-block>
 <p>Note that, as opposed to a page’s <code>&lt;title&gt;</code> element, <code>&lt;iframe&gt;</code> tags include title attributes to label them. (Yes, it can be confusing, especially when you consider that there are still more <code>&lt;title&gt;</code> elements and title attributes used in other contexts!)</p>
 <p>Each iframe embedded within a page should have a unique name, so users can differentiate between them. In other words, it would be bad practice to have multiple iframes with the exact same <code>title="Video player"</code> attribute.</p>
 <p>Pages contained within iframes are subject to the same accessibility requirements as other pages. For example, this means that they must each have their own <code>&lt;title&gt;</code> element, which will typically align with the title attribute for the parent <code>&lt;iframe&gt;</code>.</p>
@@ -721,32 +742,34 @@ Always increment by only one heading at a time. Don’t skip levels when increme
 <p>Tables are intended for tabular data, and shouldn’t be used for layout purposes, unless you're designing for visitors in the 1990s. For browsing on anything more recent than the original iMac, use CSS for layout.</p>
 <p>Avoid using tables when a simple list (whether <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol">ordered</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul">unordered</a>, or <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl">description</a>) will do.</p>
 <p>For example, the following doesn’t need to be a table:</p>
-<pre><code>&lt;table&gt;
-  &lt;caption&gt;Groceries&lt;/caption&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;th scope="row"&gt;Apples&lt;/th&gt;
-      &lt;td&gt;5&lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th scope="row"&gt;Oranges&lt;/th&gt;
-      &lt;td&gt;3&lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th scope="row"&gt;Lemons&lt;/th&gt;
-      &lt;td&gt;6&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-</code></pre>
+<rh-code-block>
+  <script type="text/html"><table>
+  <caption>Groceries</caption>
+  <tbody>
+    <tr>
+      <th scope="row">Apples</th>
+      <td>5</th>
+    </tr>
+    <tr>
+      <th scope="row">Oranges</th>
+      <td>3</th>
+    </tr>
+    <tr>
+      <th scope="row">Lemons</th>
+      <td>6</th>
+    </tr>
+  </tbody>
+</table></script>
+</rh-code-block>
 <p>Instead, a list would be simpler, easier to understand, and easier to code:</p>
-<pre><code>&lt;h3 id="groceries"&gt;Groceries&lt;/h3&gt;
-&lt;ul aria-labelledby="groceries"&gt;
-  &lt;li&gt;5 Apples&lt;/li&gt;
-  &lt;li&gt;3 Oranges&lt;/li&gt;
-  &lt;li&gt;6 Lemons&lt;/li&gt;
-&lt;/ul&gt;
-</code></pre>
+<rh-code-block>
+  <script type="text/html"><h3 id="groceries">Groceries</h3>
+<ul aria-labelledby="groceries">
+  <li>5 Apples</li>
+  <li>3 Oranges</li>
+  <li>6 Lemons</li>
+</ul></script>
+</rh-code-block>
 <p>In other words, if it doesn’t <em>need</em> to be a table, then it probably shouldn’t be a table.</p>
 <copy-permalink class="h3">
   <h3 id="captions-and-headings" tabindex="-1">
@@ -795,17 +818,18 @@ Always increment by only one heading at a time. Don’t skip levels when increme
     </copy-permalink>
 <p>All HTML content must be contained within an element that has a <code>lang</code> attribute. On monolingual pages, it’s enough to add a <code>lang="en"</code> attribute (or whatever the page’s language is) to the <code>&lt;html&gt;</code> element.</p>
 <p>For pages with multilingual content, each element containing a different language from the one indicated in the <code>&lt;html&gt;</code> element should have an appropriate <code>lang</code> attribute. For example:</p>
-<pre><code>&lt;html lang="en"&gt;
-  &lt;head&gt;...&lt;/head&gt;
-  &lt;body&gt;
-      &lt;p&gt;Colombian author Gabriel García Márquez wrote that
+<rh-code-block>
+  <script type="text/html"><html lang="en">
+  <head>...</head>
+  <body>
+      <p>Colombian author Gabriel García Márquez wrote that
       we each live three lives: one public, one private, and
-      one secret. (Full original quote: &lt;span lang="es"&gt;“Todos
+      one secret. (Full original quote: <span lang="es">“Todos
       los seres humanos tenemos tres vidas: pública, privada y
-      secreta.”&lt;/span&gt;)&lt;/p&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
+      secreta.”</span>)</p>
+  </body>
+</html></script>
+</rh-code-block>
 <p>The W3C has an <a href="https://www.w3.org/International/articles/language-tags/">article on language tags</a>, which covers both how to use them and where to find a full list of them.</p>
 <copy-permalink class="h3">
   <h3 id="direction-attribute%3A-dir" tabindex="-1">
