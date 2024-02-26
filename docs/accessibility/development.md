@@ -9,11 +9,13 @@ importElements:
 
 ## Overview
 
-{% alert title="Note" %}
-This section covers development accessibility. Developers should also be familiar with accessibility [fundamentals](../), [content](../content), and [design](../design).
-{% endalert %}
+<rh-alert state="info">
+  <h3 slot="header">Note</h3>
+  <p>This section covers development accessibility. Developers should also be familiar with accessibility <a href="../">fundamentals</a>, <a href="../content">content</a>, and <a href="../design">design</a>.</p>
+</rh-alert>
 
 While our elements themselves were developed and tested with accessibility in mind, components can still be rendered inaccessible in how they are used. The HTML slotted within a component could be inaccessible, or CSS variables and part selectors could be used in a way that renders the component inaccessible. Therefore, you should always consider how your particular use of a component may impact its accessibility.
+
 
 ## Icons and SVGs
 
@@ -21,6 +23,7 @@ While our elements themselves were developed and tested with accessibility in mi
 
 Icons must adhere to the same accessibility rules as other images. When icons are used for interactivity (e.g., as buttons or links), they are considered meaningful, unless they are either accompanied by sufficient text within that interactive element, or the interactive element itself is already labeled (e.g., via `aria-label`).
 Visit our [Content section](https://deploy-preview-1340--red-hat-design-system.netlify.app/accessibility/content) for more information on image accessibility.
+
 
 ### Avoiding icon fonts
 
@@ -31,6 +34,7 @@ Icon fonts are a nifty visual hack that you shouldn’t use.
 - And if the font file doesn’t load (or is overridden by the user), the icons may not display properly for visual users.
 
 To make icon fonts accessible, you often have to re-hack what’s already a hack. So best just to avoid them altogether.
+
 
 ### SVG accessibility
 
@@ -74,6 +78,7 @@ You can hide inline `<svg>` elements with an `aria-hidden="true"` attribute.
 
 Carie Fisher explores several patterns (including the above) for embedding accessible SVGs in her 2021 [Smashing Magazine article](https://www.smashingmagazine.com/2021/05/accessible-svg-patterns-comparison/).
 
+
 ## Web standards and semantics
 
 The W3C establishes standards for the web. Browsers work according to these standards. And assistive technologies, like screen readers, are designed to work with this standard as well. When everything follows the same standard, it’s easy to be accessible. It’s what we do outside of the standards that has potential to make the web inaccessible. 
@@ -87,9 +92,11 @@ To help ensure your work is accessible:
 - **When there is no standard HTML for a UI component, use ARIA.** For example, there is no semantic HTML for a [tabs component](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/#wai-ariaroles,states,andproperties), so you’ll need to include some ARIA roles, states and properties to supply additional meaning to assistive technology.
 - **Use ARIA landmarks, but in a limited number.** Think of landmarks as shortcuts on a page, if there are too many of them, they cease to be shortcuts.
 
+
 ## Accessible patterns
 
 The best approach for making a component accessible is to refer to an existing HTML element or an established pattern. You can find examples of existing patterns via the following resources:
+
 
 ### WAI ARIA authoring practices guide
 
@@ -98,9 +105,11 @@ The [WAI ARIA Authoring Practices Guide (APG)](https://www.w3.org/WAI/ARIA/apg) 
 - Keyboard navigation.
 - WAI-ARIA roles, states and properties.
 
+
 ### Deque University Code Library
 
 Accessibility solutions provider Deque Solutions offers training via its educational arm, Deque University. [Deque University's Code Library](https://dequeuniversity.com/library/) is a beta project that includes the Cauldron Pattern Library and ARIA examples. Contributors may also refer to examples in this code library. Each example includes all applicable HTML, CSS and JavaScript.
+
 
 ### Inclusive Components
 
@@ -115,9 +124,11 @@ The following World Wide Web Consortium (W3C) Web Content Accessibility Guidelin
 - Align focus order with visual order and DOM order. ([2.4.3 Focus Order - Level AA](https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html))
 - Ensure that the keyboard focus indicator is visible. ([2.4.7 Focus Visible - Level AA](https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html))
 
-{% alert title="Tip" %}
-For more on keyboard navigation, see the WAI ARIA Authoring Practices Guide's  (APG) [Developing a Keyboard Interface](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/).
-{% endalert %}
+<rh-alert state="info">
+  <h3 slot="header">Tip</h3>
+  <p>For more on keyboard navigation, see the WAI ARIA Authoring Practices Guide's  (APG) <a href="https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/">Developing a Keyboard Interface</a>.</p>
+</rh-alert>
+
 
 ### Hiding elements
 
@@ -125,14 +136,17 @@ The following World Wide Web Consortium (W3C) Web Content Accessibility Guidelin
 
 - Ensure content that appears or disappears on changes to mouse hover or keyboard focus is dismissable, hoverable, and persistent. ([1.4.13 Content on Hover or Focus - Level AA](https://www.w3.org/WAI/WCAG21/Understanding/content-on-hover-or-focus.html))
 
-{% alert title="Tip" %}
-For more on dynamic content, see the Mozilla Developer Network's (MDN) [ARIA live regions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions).
-{% endalert %}
+<rh-alert state="info">
+  <h3 slot="header">Tip</h3>
+  <p>For more on dynamic content, see the Mozilla Developer Network's (MDN) <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions">ARIA live regions</a>.</p>
+</rh-alert>
+
 
 ### Disabled elements
 For disabled composite components, such as fieldsets, radio groups, menus, and listboxes, [WAI-ARIA recommends](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#focusabilityofdisabledcontrols)] that elements of these components remain focusable.
 
 Users should still be able to read options within the composite group even if they cannot activate or trigger them. For example, a disabled dropdown menu should allow users to toggle it open via keyboard and focus on options even when activating the options is disabled.
+
 
 ### Keyboard navigation and focus events
 
@@ -149,6 +163,7 @@ For more information see the WAI-ARIA APG's [Fundamental Keyboard Navigation Con
 Between components, the default method of navigating via keyboard is with the <kbd>Tab</kbd> to move to the next focusable component and <kbd>Shift+Tab</kbd> to move to the previous focusable component. Complex components can have multiple focusable items, so rather than force keyboard users to tab through every focusable item within each component, a [roving tabindex]((https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#keyboardnavigationbetweencomponents(thetabsequence))) should be used to allow keyboard users to <kbd>Tab</kbd>/<kbd>Shift+Tab</kbd> into the complex component, arrow keys to navigate within the component, and <kbd>Tab</kbd>/<kbd>Shift+Tab</kbd> back out of the complex component.  (See the WAI-ARIA APG's [Managing Focus Within Components Using a Roving tabindex](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_roving_tabindex))
 
 Our complex components, like accordion, secondary navigation, subnavigation, tabs, and tile, use this roving tabindex method via a reactive controller. (Refer to [Contributors: Accessibility controllers](../contributors/#accessibility-controllers))
+
 
 ### Keyboard traps
 
@@ -168,6 +183,7 @@ The following World Wide Web Consortium (W3C) Web Content Accessibility Guidelin
 - Provide text suggestions for user errors that are automatically detected. ([3.3.3 Error Suggestion - Level AA](https://www.w3.org/WAI/WCAG22/Understanding/error-suggestion.html))
 - Ensure that submissions are reversible, checked, or confirmed. ([3.3.4 Error Prevention (Legal, Financial, Data) - Level AA](https://www.w3.org/WAI/WCAG22/Understanding/error-prevention-legal-financial-data.html))
 
+
 ## Scaling and rotation
 
 ### Accounting for text scaling and spacing
@@ -177,6 +193,7 @@ Your pages should permit users without assistive tech to scale text to at least 
 To give users more control over scaling, font sizes specified in CSS should be set via relative measurements (e.g., em, rem, etc.) rather than absolute sizes (e.g., px, pt, etc.). This applies not only to body copy, but also to form element text. ([1.4.4: Resize Text](https://www.w3.org/WAI/WCAG21/Understanding/resize-text))
 
 Content and functionality must also be maintained if users override the following text styles: line-height (up to 1.5× the font size), paragraph spacing (up to 2× the font size), letter spacing (up to .12× the font size), and word spacing (up to .16× the font size). ([1.4.12: Text Spacing](https://www.w3.org/WAI/WCAG21/Understanding/text-spacing))
+
 
 ### Screen rotation
 

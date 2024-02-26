@@ -28,10 +28,10 @@ importElements:
 
 ## Overview 
 
-{% alert title="Note" %}
-This section covers content accessibility. Content authors should also be familiar with accessibility [fundamentals](../fundamentals).
-{% endalert %}
-
+<rh-alert state="info">
+  <h3 slot="header">Note</h3>
+  <p>This section covers content accessibility. Content authors should also be familiar with accessibility <a href="../fundamentals">fundamentals</a>.</p>
+</rh-alert>
 ## Alt text
 
 Wherever meaningful images or other non-text elements are used on a page, you must also provide alternative text (aka “alt text”) to briefly describe these elements. Alt text makes this content machine-readable for assistive technologies (e.g, screen readers) and search engines. And browsers can substitute alt text on-screen when images don’t load.
