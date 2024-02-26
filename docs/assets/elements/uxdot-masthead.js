@@ -53,7 +53,7 @@ class UxdotMasthead extends LitElement {
 
       display: flex;
       flex-direction: row;
-      gap: var(--rh-space-md, 8px);
+      gap: var(--rh-space-lg, 16px);
       align-items: center;
       color: var(--rh-color-text-on-dark, #ffffff) !important;
     }
