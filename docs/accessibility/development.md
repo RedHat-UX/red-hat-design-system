@@ -1,6 +1,8 @@
 ---
 title: Development
 tags: accessibility
+importElements:
+  - rh-code-block
 ---
 
 ## Overview
@@ -34,40 +36,39 @@ To make icon fonts accessible, you often have to re-hack what’s already a hack
 
 As with any other image, SVGs that are loaded into your page via an `<img>` tag should include alt attributes. This attribute should be descriptive for meaningful SVGs and null for decorative SVGs. In addition, we recommend adding a role="img" attribute to the `<img>` element for SVGs:
 
-```
-<img src="logo.svg" alt="Image description" role="img">
-```
+<rh-code-block>
+  <script type="text/html"><img src="logo.svg" alt="Image description" role="img"></script>
+</rh-code-block>
 
 Inline `<svg>` elements (i.e., SVGs that are coded directly into the page source) cannot use the alt attribute. You must use some other means to describe or hide these images.
 Instead of an alt attribute, an `<svg>` element comprising a simple image can include the role="img" attribute and contain a descriptive `<title>` element as its first child, like in the following example:
 
-```
-<svg xmlns="http://www.w3.org/2000/svg" role="img">
+<rh-code-block>
+  <script type="text/html"><svg xmlns="http://www.w3.org/2000/svg" role="img">
   <title>Image description</title>
   ...
-</svg>
-```
+</svg></script>
+</rh-code-block>
 
 More complex `<svg>` elements may require additional descriptive information. One way of including this      information is via the `<desc>` element:
 
-```
-<svg xmlns="http://www.w3.org/2000/svg" role="img">
+<rh-code-block>
+  <script type="text/html"><svg xmlns="http://www.w3.org/2000/svg" role="img">
   <title>Basic image description</title>
   <desc>More info on the image</desc>
-  …
-</svg>
-
-```
+  ...
+</svg></script>
+</rh-code-block>
 
 #### Hiding SVGs
 
 You can hide inline `<svg>` elements with an `aria-hidden="true"` attribute.
 
-```
-<svg aria-hidden="true">
-  …
-</svg>
-```
+<rh-code-block>
+  <script type="text/html"><svg aria-hidden="true">
+  ...
+</svg></script>
+</rh-code-block>
 
 Carie Fisher explores several patterns (including the above) for embedding accessible SVGs in her 2021 [Smashing Magazine article](https://www.smashingmagazine.com/2021/05/accessible-svg-patterns-comparison/).
 
