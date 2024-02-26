@@ -39,6 +39,11 @@ class UxdotSideNav extends LitElement {
       max-height: var(--uxdot-masthead-max-height, 72px);
     }
 
+    #close-button:focus {
+      outline: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive-on-light, #0066cc);
+      border-radius: var(--rh-border-radius-default, 3px);
+    }
+
     [part="overlay"] {
       --_gray-90-rgb: var(--rh-color-gray-90-rgb, 31 31 31);
 
@@ -114,18 +119,16 @@ class UxdotSideNav extends LitElement {
   }
 
   updated() {
-    this.#closeButton = this.shadowRoot?.getElementById('close-button-container');
+    this.#closeButton = this.shadowRoot?.getElementById('close-button');
   }
 
-  toggle() {
+  async toggle() {
     this.open = !this.open;
+    await this.updateComplete;
 
     if (this.open) {
-      console.log('focus should be on close button');
       this.#closeButton?.focus();
-      console.log(this.#closeButton, document.activeElement);
     } else {
-      console.log('focus should be on trigger button');
       this.#triggerElement?.focus();
     }
   }
