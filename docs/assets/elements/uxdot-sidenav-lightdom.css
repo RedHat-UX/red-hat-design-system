@@ -148,12 +148,12 @@ uxdot-sidenav-dropdown-menu-item > a:hover {
     box-shadow: unset;
   }
 
-  uxdot-sidenav:defined:not([open]) {
-    display: block;
-  }
-
   uxdot-sidenav:not(:defined) {
     height: var(--_max-height);
     box-shadow: unset;
+  }
+
+  uxdot-sidenav:defined:not([open]) {
+    display: block;
   }
 }
