@@ -1,19 +1,21 @@
 uxdot-sidenav {
   --_padding-start: var(--uxdot-sidenav-padding-start, var(--rh-space-2xl, 32px));
   --_padding-end: var(--uxdot-sidenav-padding-end, var(--rh-space-2xl, 32px));
-  --_max-height: calc(100dvh - var(--uxdot-masthead-max-height, 72px));
+  --_max-height: 100dvh;
 
-  position: fixed;
-  width: var(--uxdot-sidenav-width, 100%);
-  top: var(--uxdot-masthead-max-height, 72px);
+  width: 100%;
   height: var(--_max-height);
-  z-index: 2;
+  top: 0;
+  z-index: var(--uxdot-sidenav-z-index, 2);
 }
 
 uxdot-sidenav:not(:defined) {
+  --uxdot-sidenav-z-index: 1;
+
   height: fit-content;
   overflow-y: scroll;
   position: relative;
+  top: var(--uxdot-masthead-max-height, 72px);
   width: 100%;
 }
 
@@ -59,6 +61,8 @@ uxdot-sidenav-dropdown-menu-item > a {
 
 uxdot-sidenav-dropdown-menu > ul {
   margin: 0;
+  list-style: none;
+  padding-inline-start: var(--rh-space-2xl, 32px);
 }
 
 uxdot-sidenav:not(:defined) > ul {
@@ -105,11 +109,6 @@ uxdot-sidenav-dropdown > details[open] > summary:after {
   transform: rotate(135deg);
 }
 
-uxdot-sidenav-dropdown-menu > ul {
-  list-style: none;
-  padding-inline-start: var(--rh-space-2xl, 32px);
-}
-
 uxdot-sidenav-dropdown-menu-item > a {
   display: inline-block;
   padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
@@ -137,14 +136,19 @@ uxdot-sidenav-dropdown-menu-item > a:hover {
 @media (min-width: 320px) {
   uxdot-sidenav {
     --uxdot-sidenav-width: 320px;
+
+    width: var(--uxdot-sidenav-width);
     box-shadow: var(--rh-box-shadow-lg, 0 6px 8px 2px rgba(21, 21, 21, 0.3));
   }
 }
 
 @media (min-width: 992px) {
   uxdot-sidenav {
-    display: block;
-    height: var(--_max-height);
+    --uxdot-siznav-z-index: 1;
+
+    position: fixed;
+    top: var(--uxdot-masthead-max-height, 72px);
+    height: calc(var(--_max-height) - var(--uxdot-masthead-max-height, 72px));
     box-shadow: unset;
   }
 

@@ -14,27 +14,29 @@ class UxdotMasthead extends LitElement {
 
     slot[name="hamburger"] {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       align-items: center;
       gap: var(--rh-space-md, 8px);
+      justify-content: center;
     }
 
-    slot[name="hamburger"]::slotted(pf-button) {
-      --pf-c-button--m-plain--Color: var(--rh-color-text-on-dark, #ffffff);
-      --pf-c-button--LineHeight: 10px !important; /* hack to get rid of extra spacing due to line-height */
+    slot[name="hamburger"]::slotted(button) {
       color: var(--rh-color-text-on-dark, #ffffff);
+      background-color: transparent;
+      border: none;
+      margin: 0;
+      padding: var(--rh-space-md, 8px);
+      line-height: 0 !important;
     }
 
-    slot[name="hamburger"]:hover::slotted(pf-button),
-    slot[name="hamburger"]::slotted(pf-button:hover),
-    slot[name="hamburger"]::slotted(pf-button:active),
-    slot[name="hamburger"]::slotted(pf-button:focus) {
-      --pf-c-button--m-plain--hover--Color: var(--rh-color-icon-subtle-hover, #a3a3a3) !important;
-      --pf-c-button--m-plain--Color: var(--rh-color-icon-subtle-hover, #a3a3a3);
+    slot[name="hamburger"]:hover::slotted(button),
+    slot[name="hamburger"]::slotted(button:hover),
+    slot[name="hamburger"]::slotted(button:active),
+    slot[name="hamburger"]::slotted(button:focus) {
       color: var(--rh-color-icon-subtle-hover, #a3a3a3);
     }
 
-    slot[name="hamburger"]::slotted(pf-button:focus) {
+    slot[name="hamburger"]::slotted(button:focus) {
       outline: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive-on-dark, #92c5f9);
       border-radius: var(--rh-border-radius-default, 3px);
     }

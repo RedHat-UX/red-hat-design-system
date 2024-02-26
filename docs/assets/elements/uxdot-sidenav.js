@@ -1,5 +1,6 @@
 import { LitElement, html, css } from 'lit';
 
+import '@patternfly/elements/pf-icon/pf-icon.js';
 
 /* ************* */
 /* UXDOT-SIDENAV */
@@ -15,43 +16,33 @@ class UxdotSideNav extends LitElement {
     :host([open]) {
       display: block !important;
       top: var(--_max-height);
-    }
-
-    @media (min-width: 320px) {
-      :host([open]) {
-        position: fixed !important;
-      }
+      position: fixed !important;
     }
 
     [part="close-button"] {
-      --_icon-size: var(--rh-size-icon-02, 24px);
-
-      background: transparent;
-      color: var(--rh-color-icon-subtle, #707070);
+      color: var(--rh-color-text-on-light, #151515);
+      background-color: transparent;
       border: none;
-      width: var(--_icon-size);
-      padding: var(--rh-space-sm, 4px);
-      margin: var(--rh-space-md, 8px);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      line-height: var(--_icon-size);
-      cursor: pointer;
-      position: absolute;
-      top: 0;
-      right: 0;
+      margin: 0;
+      padding: var(--rh-space-md, 8px);
+      line-height: 0 !important;
     }
 
     #container {
       position: relative;
-      width: var(--uxdot-sidenav-width, 320px);
+      background-color: var(--rh-color-surface-lightest, #ffffff);
+      width: auto;
+    }
+
+    #close-button-container {
+      padding: var(--rh-space-lg, 16px);
+      max-height: var(--uxdot-masthead-max-height, 72px);
     }
 
     [part="overlay"] {
       --_gray-90-rgb: var(--rh-color-gray-90-rgb, 31 31 31);
 
-      display: block;
+      display: none;
       background-color: rgb(var(--_gray-90-rgb) / var(--rh-opacity-60, 60%));
       position: fixed;
       top: 0;
@@ -60,16 +51,26 @@ class UxdotSideNav extends LitElement {
       z-index: -1;
     }
 
+    :host([open]) [part="overlay"] {
+      display: block;
+    }
+
+    @media (min-width: 320px) {
+      #container {
+        width: var(--uxdot-sidenav-width, 320px);
+      }
+    }
+
     @media (min-width: 992px) {
       :host(:not([open])) {
         display: block;
       }
 
-      [part="close-button"] {
+      #close-button-container {
         display: none;
       }
 
-      [part="overlay"] {
+      :host([open]) [part="overlay"] {
         display: none;
       }
     }
@@ -77,7 +78,7 @@ class UxdotSideNav extends LitElement {
 
   #triggerElement = null;
 
-  #closeElement = undefined;
+  #closeButton = null;
 
   async connectedCallback() {
     super.connectedCallback();
@@ -95,16 +96,16 @@ class UxdotSideNav extends LitElement {
   render() {
     return html`
       <div id="container" part="container">
-        <nav part="nav">
+        <div id="close-button-container">
           <button id="close-button"
               part="close-button"
               aria-label="Close dialog"
               @keydown=${this.onKeydownCloseButton}
               @click=${this.toggle}>
-            <svg fill="currentColor" viewBox="0 80 352 352">
-              <path d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path>
-            </svg>
+            <pf-icon set="patternfly" icon="close" size="lg"></pf-icon>
           </button>
+        </div>
+        <nav part="nav">
           <slot></slot>
         </nav>
       </div>
@@ -112,8 +113,21 @@ class UxdotSideNav extends LitElement {
     `;
   }
 
+  updated() {
+    this.#closeButton = this.shadowRoot?.getElementById('close-button-container');
+  }
+
   toggle() {
     this.open = !this.open;
+
+    if (this.open) {
+      console.log('focus should be on close button');
+      this.#closeButton?.focus();
+      console.log(this.#closeButton, document.activeElement);
+    } else {
+      console.log('focus should be on trigger button');
+      this.#triggerElement?.focus();
+    }
   }
 
   #onTriggerClick(event) {

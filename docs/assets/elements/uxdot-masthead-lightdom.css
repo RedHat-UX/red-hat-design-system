@@ -8,7 +8,7 @@ uxdot-masthead {
   position: fixed;
   inset: 0;
   height: max-content;
-  z-index: 3;
+  z-index: var(--uxdot-masthead-z-index, 2);
 }
 
 uxdot-masthead:not(:defined) {
