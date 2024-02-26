@@ -14,8 +14,13 @@ class UxdotSideNav extends LitElement {
   static styles = css`
     :host([open]) {
       display: block !important;
-      position: fixed !important;
       top: var(--_max-height);
+    }
+
+    @media (min-width: 320px) {
+      :host([open]) {
+        position: fixed !important;
+      }
     }
 
     [part="close-button"] {
