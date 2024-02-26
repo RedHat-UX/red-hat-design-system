@@ -91,6 +91,7 @@ class UxdotSideNav extends LitElement {
     this.#triggerElement = (this.getRootNode()).getElementById(this.trigger);
     this.#triggerElement.addEventListener('click', this.#onTriggerClick.bind(this));
     this.addEventListener('click', this.#onClick.bind(this));
+    this.addEventListener('keydown', this.#onKeydown.bind(this));
   }
 
   disconnectedCallback() {
@@ -151,6 +152,20 @@ class UxdotSideNav extends LitElement {
         event.preventDefault();
         this.toggle();
         return;
+    }
+  }
+
+  #onKeydown(event) {
+    switch (event.key) {
+      case 'Escape': {
+        if (!this.open) {
+          return;
+        }
+        this.toggle();
+        break;
+      }
+      default:
+        break;
     }
   }
 }
