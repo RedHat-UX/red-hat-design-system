@@ -44,7 +44,8 @@ module.exports = function(eleventyConfig) {
     { 'title': 'Foundations', 'url': '/foundations', 'collection': 'foundations' },
     { 'title': 'Tokens', 'url': '/tokens', 'collection': 'token' },
     { 'title': 'Elements', 'url': '/elements', 'collection': 'elementDocs' },
-    { 'title': 'Patterns', 'url': '/patterns', 'collection': 'pattern' }
+    { 'title': 'Patterns', 'url': '/patterns', 'collection': 'pattern' },
+    { 'title': 'Accessibility', 'url': '/accessibility', 'collection': 'accessibility' },
   ]);
 
   eleventyConfig.addPlugin(RHDSMarkdownItPlugin);
