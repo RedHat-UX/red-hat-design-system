@@ -1,0 +1,646 @@
+<!DOCTYPE html><html class="no-js" lang=""><head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Development | Red Hat design system</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/svg+xml" sizes="any" href="/assets/logo-red-hat.svg">
+
+  <meta property="og:title" content="Red Hat design system">
+  <meta property="og:site_name" content="Red Hat design system">
+  <meta property="og:url" content="ux.redhat.com">
+  <meta property="og:description" content="This is Red Hat's design system. Using Red Hat brand standards and PatternFly as our foundational design language, we enable designers and developers to concurrently build branded experiences across redhat.com, Red Hat Customer Portal, and beyond.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://ux.redhat.com/assets/opengraph.png">
+
+  <meta name="pfe-auto-reveal" content="true">
+
+  <link rel="stylesheet" href="/assets/redhat/redhat-theme/4/advanced-theme.css">
+  <link rel="stylesheet" href="/assets/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all">
+
+  <link rel="stylesheet" href="/assets/prism.css">
+  <link rel="stylesheet" href="/assets/rhds.min.css">
+  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-footer/rh-footer-lightdom.css">
+  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-cta/rh-cta-lightdom.css">
+  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-subnav/rh-subnav-lightdom.css">
+
+  <link rel="stylesheet" href="/assets/css/style.css" id="">
+
+  
+
+  <noscript>
+    <link type="text/css" href="/assets/pfe--noscript.min.css">
+  </noscript>
+
+  <script type="importmap">{"imports":{"@patternfly/pfe-core":"/assets/packages/@patternfly/pfe-core/core.js","lit-html":"/assets/packages/lit-html/lit-html.js","@floating-ui/core":"/assets/packages/@floating-ui/core/dist/floating-ui.core.browser.min.mjs","tslib":"/assets/packages/tslib/tslib.es6.js","@lit/reactive-element":"/assets/packages/@lit/reactive-element/reactive-element.js","@floating-ui/dom":"/assets/packages/@floating-ui/dom/dist/floating-ui.dom.browser.min.mjs","lit-element":"/assets/packages/lit-element/index.js","lit/directives/if-defined.js":"/assets/packages/lit/directives/if-defined.js","lit":"/assets/packages/lit/index.js","@patternfly/elements":"/assets/packages/@patternfly/elements/pfe.min.js","@rhds/tokens/media.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js","@rhds/tokens/meta.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js","@rhds/tokens":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/tokens.js","element-internals-polyfill":"/assets/packages/element-internals-polyfill/dist/index.js","fuse.js":"/assets/packages/fuse.js/dist/fuse.esm.js","@rhds/tokens/":"/assets/packages/@rhds/tokens/js/","@rhds/elements/":"/assets/packages/@rhds/elements/elements/","@rhds/elements/lib/":"/assets/packages/@rhds/elements/lib/","@patternfly/elements/":"/assets/packages/@patternfly/elements/","@patternfly/icons/":"/assets/packages/@patternfly/icons/","@patternfly/pfe-core/":"/assets/packages/@patternfly/pfe-core/"},"scopes":{"/assets/packages/":{"@lit/reactive-element/decorators/":"/assets/packages/@lit/reactive-element/decorators/","lit":"/assets/packages/@patternfly/elements/node_modules/lit/index.js","lit-element/lit-element.js":"/assets/packages/lit-element/lit-element.js","lit-html/":"/assets/packages/lit-html/","lit/":"/assets/packages/@patternfly/elements/node_modules/lit/"}}}</script>
+  <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js"></script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-cta/rh-cta.js';
+  </script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-footer/rh-footer.js';
+  </script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-alert/rh-alert.js';
+  </script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-alert/rh-alert.js';
+  </script>
+  
+  <script type="module">
+    // As soon as the DOM is ready, toggle JS class
+    document.documentElement.classList.remove('no-js');
+    document.documentElement.classList.add('js');
+  </script>
+  <script type="module" src="/assets/copy-permalink.js"></script>
+  <script type="module">
+    import { PfIcon } from '@patternfly/elements/pf-icon/pf-icon.js';
+    PfIcon.getIconUrl = (set, icon) =>
+      new URL(`/assets/packages/@patternfly/elements/pf-icon/icons/${set}/${icon}.js`, location.origin);
+  </script>
+  <script type="module">
+  if (!('shadowRootMode' in HTMLTemplateElement.prototype)) { import('/assets/dsd-polyfill.js'); }
+  </script>
+</head>
+<body id="top" class="page element-docs page-development" unresolved="">
+  <div class="body-inner">
+    
+<header id="main-header">
+  <div class="logo-bar">
+    <a href="/">
+      <img class="logo" alt="Red Hat design system logo" src="/assets/red-hat-design-system.svg" style="max-width: 188px; min-width: 42px;">
+    </a>
+  </div>
+
+  <input id="mobile-menu-toggle" class="menu-toggle element-invisible" type="checkbox" aria-controls="mobile-menu-menu-container">
+
+  <label class="menu-toggle-button mobile-menu-toggle" for="mobile-menu-toggle" data-controls="mobile-menu-menu-container">
+    <span class="burger-icon"></span>
+    <span class="menu-toggle-assistive-text element-invisible">Toggle menu visibility</span>
+  </label>
+
+  <div class="menu-toggle-toggleable site-navigation-outer-wrapper">
+    <nav class="site-navigation site-navigation menu-toggle-toggleable-content-wrapper">
+      <ul class="wrapper">
+        <li class="item">
+          <a class="link " href="/">Home</a>
+        </li>
+
+        <!-- About -->
+
+        <li class="item">
+          <details>
+            <summary class="heading">About</summary>
+            <ul class="sub-menu">
+              <li class="item">
+                <a class="link " href="/about/">About this website</a>
+              </li><li class="item">
+                <a class="link " href="/about/how-we-build/">How we build</a>
+              </li><li class="item">
+                <a class="link " href="/about/roadmap/">Roadmap</a>
+              </li></ul>
+          </details>
+        </li>
+
+        <!-- Get started -->
+
+        <li class="item">
+          <details>
+            <summary class="heading">Get started</summary>
+            <ul class="sub-menu">
+              <li class="item">
+                <a class="link " href="/get-started/">Overview</a>
+              </li><li class="item">
+                <a class="link " href="/get-started/designers/">Designers</a>
+              </li></ul>
+          </details>
+        </li>
+
+        <!-- Foundations -->
+
+        <li class="item">
+          <details>
+            <summary class="heading">Foundations</summary>
+            <ul class="sub-menu">
+              <li class="item">
+                    <a class="link " href="/foundations/">Overview</a>
+                  
+                    <a class="link " href="/foundations/color/">Color</a>
+                  
+                    <a class="link " href="/foundations/grid/">Grid</a>
+                  
+                    <a class="link " href="/foundations/personalization/">Personalization patterns</a>
+                  
+                    <a class="link " href="/foundations/spacing/">Spacing</a>
+                  
+                    <a class="link " href="/foundations/typography/">Typography</a>
+                  </li>
+            </ul>
+          </details>
+        </li>
+
+        <!-- Tokens -->
+
+        <li class="item">
+          <details>
+            <summary class="heading">Tokens</summary>
+            <ul class="sub-menu">
+              <li class="item">
+                <a class="link " href="/tokens/">Overview</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/color/">Global color</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/box-shadow/">Box shadow</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/font/">Typography</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/border/">Border</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/opacity/">Opacity</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/space/">Space</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/length/">Length</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/icon/">Icon</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/breakpoint/">Breakpoints</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/media/">Media queries</a>
+              </li></ul>
+          </details>
+        </li>
+
+        <!-- Elements -->
+
+        <li class="item">
+          <details>
+            <summary class="heading">Elements</summary>
+            <ul class="sub-menu">
+              <li class="item">
+                <a class="link " href="/elements/">All elements</a>
+              </li>
+                  <li class="item">
+                    <a class="link " href="/elements/accordion/">Accordion</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/alert/">Alert</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/audio-player/">Audio player</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/avatar/">Avatar</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/badge/">Badge</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/blockquote/">Blockquote</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/button/">Button</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/call-to-action/">Call to action</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/card/">Card</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/code-block/">Code block</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/dialog/">Dialog</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/footer/">Footer</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/jump-links/">Jump links</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/navigation-primary/">Navigation (primary)</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/navigation-secondary/">Navigation (secondary)</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/pagination/">Pagination</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/popover/">Popover</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/progress-steps/">Progress steps</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/spinner/">Spinner</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/statistic/">Statistic</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/subnavigation/">Subnavigation</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/surface/">Surface</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/table/">Table</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/tabs/">Tabs</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/tag/">Tag</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/tile/">Tile</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/timestamp/">Timestamp</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/tooltip/">Tooltip</a>
+                  </li>
+                </ul>
+          </details>
+        </li>
+
+        <!-- Patterns -->
+
+        <li class="item">
+          <details>
+            <summary class="heading">Patterns</summary>
+            <ul class="sub-menu">
+              <li class="item">
+                <a class="link " href="/patterns/">All patterns</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/announcement/">Announcement</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/card/">Card</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/disclosure/">Disclosure</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/filter/">Filter</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/form/">Form</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/link-with-icon/">Link with icon</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/link/">Link</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/search-bar/">Search bar</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/skip-navigation/">Skip navigation</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/sticky-banner/">Sticky banner</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/sticky-card/">Sticky card</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/video-thumbnail/">Video thumbnail</a>
+              </li></ul>
+          </details>
+        </li>
+        <!-- Accessibility -->
+
+        <li class="item">
+          <details open="">
+            <summary class="heading">Accessibility</summary>
+            <ul class="sub-menu"><li class="item">
+                  <a class="link " href="/accessibility/">Fundamentals</a>
+                </li><li class="item">
+                  <a class="link " href="/accessibility/q-a-testing/">QA Testing</a>
+                </li><li class="item">
+                  <a class="link " href="/accessibility/content/">Content</a>
+                </li><li class="item">
+                  <a class="link " href="/accessibility/design/">Design</a>
+                </li><li class="item">
+                  <a class="link active" href="/accessibility/development/">Development</a>
+                </li><li class="item">
+                  <a class="link " href="/accessibility/contributors/">Contributors</a>
+                </li></ul>
+          </details>
+        </li>
+
+        <li class="item">
+          <a class="link " href="/design-code-status/">Design/code status</a>
+        </li>
+
+        <li class="item">
+          <a class="link " href="/release-notes/">Release notes</a>
+        </li></ul>
+    </nav>
+  </div>
+</header>
+
+<script type="module">
+  window.onUsersnapCXLoad = function(api) {
+    api.init();
+  }
+  var script = document.createElement('script');
+  script.async = 1;
+  script.src = 'https://widget.usersnap.com/load/64471a95-72fe-4239-b16d-ebcf8b1219f7?onload=onUsersnapCXLoad';
+  document.head.appendChild(script);
+</script>
+
+
+
+<main class="l-main">
+  <article class="l-main__inner">
+    <header class="l-main__header l-main__header--palette-lighter">
+      <div class="container header">
+        <h1 id="development" class="page-title">Development</h1>
+      </div>
+    </header>
+    <div class="l-main__content">
+      <div class="container">
+        
+        <copy-permalink class="h2">
+  <h2 id="overview" tabindex="-1">
+    <a class="heading-anchor" href="#overview">Overview</a>
+      </h2>
+    </copy-permalink>
+<rh-alert state="info">
+  <h3 slot="header">Note</h3>
+<p>This section covers development accessibility. Developers should also be familiar with accessibility <a href="../">fundamentals</a>, <a href="../content">content</a>, and <a href="../design">design</a>.</p>
+</rh-alert>
+<p>While our elements themselves were developed and tested with accessibility in mind, components can still be rendered inaccessible in how they are used. The HTML slotted within a component could be inaccessible, or CSS variables and part selectors could be used in a way that renders the component inaccessible. Therefore, you should always consider how your particular use of a component may impact its accessibility.</p>
+<copy-permalink class="h2">
+  <h2 id="icons-and-svgs" tabindex="-1">
+    <a class="heading-anchor" href="#icons-and-svgs">Icons and SVGs</a>
+      </h2>
+    </copy-permalink>
+<copy-permalink class="h3">
+  <h3 id="meaningful-icons" tabindex="-1">
+    <a class="heading-anchor" href="#meaningful-icons">Meaningful icons</a>
+      </h3>
+    </copy-permalink>
+<p>Icons must adhere to the same accessibility rules as other images. When icons are used for interactivity (e.g., as buttons or links), they are considered meaningful, unless they are either accompanied by sufficient text within that interactive element, or the interactive element itself is already labeled (e.g., via <code>aria-label</code>).
+Visit our <a href="https://deploy-preview-1340--red-hat-design-system.netlify.app/accessibility/content">Content section</a> for more information on image accessibility.</p>
+<copy-permalink class="h3">
+  <h3 id="avoiding-icon-fonts" tabindex="-1">
+    <a class="heading-anchor" href="#avoiding-icon-fonts">Avoiding icon fonts</a>
+      </h3>
+    </copy-permalink>
+<p>Icon fonts are a nifty visual hack that you shouldn’t use.</p>
+<ul>
+<li>They put your site at risk of failing <a href="https://www.w3.org/WAI/WCAG21/Techniques/failures/F3.html">WCAG Success Criterion 1.1.1</a>.</li>
+<li>Because assistive tech can’t reliably interpret them, the icons may be rendered “<a href="https://www.w3.org/WAI/GL/wiki/Icon_Font_with_an_On-Screen_Text_Alternative">inaccurate, nonsensical, redundant, or unpredictable</a>.”</li>
+<li>And if the font file doesn’t load (or is overridden by the user), the icons may not display properly for visual users.</li>
+</ul>
+<p>To make icon fonts accessible, you often have to re-hack what’s already a hack. So best just to avoid them altogether.</p>
+<copy-permalink class="h3">
+  <h3 id="svg-accessibility" tabindex="-1">
+    <a class="heading-anchor" href="#svg-accessibility">SVG accessibility</a>
+      </h3>
+    </copy-permalink>
+<copy-permalink class="h4">
+  <h4 id="describing-svgs" tabindex="-1">
+    <a class="heading-anchor" href="#describing-svgs">Describing SVGs</a>
+      </h4>
+    </copy-permalink>
+<p>As with any other image, SVGs that are loaded into your page via an <code>&lt;img&gt;</code> tag should include alt attributes. This attribute should be descriptive for meaningful SVGs and null for decorative SVGs. In addition, we recommend adding a role="img" attribute to the <code>&lt;img&gt;</code> element for SVGs:</p>
+<pre><code>&lt;img src="logo.svg" alt="Image description" role="img"&gt;
+</code></pre>
+<p>Inline <code>&lt;svg&gt;</code> elements (i.e., SVGs that are coded directly into the page source) cannot use the alt attribute. You must use some other means to describe or hide these images.
+Instead of an alt attribute, an <code>&lt;svg&gt;</code> element comprising a simple image can include the role="img" attribute and contain a descriptive <code>&lt;title&gt;</code> element as its first child, like in the following example:</p>
+<pre><code>&lt;svg xmlns="http://www.w3.org/2000/svg" role="img"&gt;
+  &lt;title&gt;Image description&lt;/title&gt;
+  ...
+&lt;/svg&gt;
+</code></pre>
+<p>More complex <code>&lt;svg&gt;</code> elements may require additional descriptive information. One way of including this      information is via the <code>&lt;desc&gt;</code> element:</p>
+<pre><code>&lt;svg xmlns="http://www.w3.org/2000/svg" role="img"&gt;
+  &lt;title&gt;Basic image description&lt;/title&gt;
+  &lt;desc&gt;More info on the image&lt;/desc&gt;
+  …
+&lt;/svg&gt;
+
+</code></pre>
+<copy-permalink class="h4">
+  <h4 id="hiding-svgs" tabindex="-1">
+    <a class="heading-anchor" href="#hiding-svgs">Hiding SVGs</a>
+      </h4>
+    </copy-permalink>
+<p>You can hide inline <code>&lt;svg&gt;</code> elements with an <code>aria-hidden="true"</code> attribute.</p>
+<pre><code>&lt;svg aria-hidden="true"&gt;
+  …
+&lt;/svg&gt;
+</code></pre>
+<p>Carie Fisher explores several patterns (including the above) for embedding accessible SVGs in her 2021 <a href="https://www.smashingmagazine.com/2021/05/accessible-svg-patterns-comparison/">Smashing Magazine article</a>.</p>
+<copy-permalink class="h2">
+  <h2 id="web-standards-and-semantics" tabindex="-1">
+    <a class="heading-anchor" href="#web-standards-and-semantics">Web standards and semantics</a>
+      </h2>
+    </copy-permalink>
+<p>The W3C establishes standards for the web. Browsers work according to these standards. And assistive technologies, like screen readers, are designed to work with this standard as well. When everything follows the same standard, it’s easy to be accessible. It’s what we do outside of the standards that has potential to make the web inaccessible.</p>
+<p>Semantic HTML, using the standard HTML tags based on their meaning, is how we can communicate our intent to both the browser and assistive tech. For example, <code>&lt;a&gt;</code> and <code>&lt;h1&gt;</code> indicate meaning while <code>&lt;div&gt;</code> and <code>&lt;span&gt;</code> do not. For interactive components that aren’t covered by semantic HTML, refer to the Accessible Rich Internet Applications (ARIA) W3C specification. ARIA also allows us to specify certain regions of a page as <a href="https://www.w3.org/WAI/ARIA/apg/practices/landmark-regions/">landmarks</a> that screen reader users can skip to.</p>
+<p>To help ensure your work is accessible:</p>
+<ul>
+<li><strong>Start by using semantic HTML as it was intended.</strong> For example, use <code>&lt;a&gt;</code> for links and <code>&lt;button&gt;</code> for buttons, as they are already built to work the way they should work.</li>
+<li><strong>Markup order, visual order, and focus order should match.</strong> Ensure that the assistive tech read order and keyboard focus order follow what is presented visually.</li>
+<li><strong>When there is no standard HTML for a UI component, use ARIA.</strong> For example, there is no semantic HTML for a <a href="https://www.w3.org/WAI/ARIA/apg/patterns/tabs/#wai-ariaroles,states,andproperties">tabs component</a>, so you’ll need to include some ARIA roles, states and properties to supply additional meaning to assistive technology.</li>
+<li><strong>Use ARIA landmarks, but in a limited number.</strong> Think of landmarks as shortcuts on a page, if there are too many of them, they cease to be shortcuts.</li>
+</ul>
+<copy-permalink class="h2">
+  <h2 id="accessible-patterns" tabindex="-1">
+    <a class="heading-anchor" href="#accessible-patterns">Accessible patterns</a>
+      </h2>
+    </copy-permalink>
+<p>The best approach for making a component accessible is to refer to an existing HTML element or an established pattern. You can find examples of existing patterns via the following resources:</p>
+<copy-permalink class="h3">
+  <h3 id="wai-aria-authoring-practices-guide" tabindex="-1">
+    <a class="heading-anchor" href="#wai-aria-authoring-practices-guide">WAI ARIA authoring practices guide</a>
+      </h3>
+    </copy-permalink>
+<p>The <a href="https://www.w3.org/WAI/ARIA/apg">WAI ARIA Authoring Practices Guide (APG)</a> includes <a href="https://www.w3.org/WAI/ARIA/apg/patterns/">patterns</a> and <a href="https://www.w3.org/WAI/ARIA/apg/practices/">practices</a> for making components accessible. Contributors should refer to the pattern that best matches the component they are building when considering the following:</p>
+<ul>
+<li>Keyboard navigation.</li>
+<li>WAI-ARIA roles, states and properties.</li>
+</ul>
+<copy-permalink class="h3">
+  <h3 id="deque-university-code-library" tabindex="-1">
+    <a class="heading-anchor" href="#deque-university-code-library">Deque University Code Library</a>
+      </h3>
+    </copy-permalink>
+<p>Accessibility solutions provider Deque Solutions offers training via its educational arm, Deque University. <a href="https://dequeuniversity.com/library/">Deque University's Code Library</a> is a beta project that includes the Cauldron Pattern Library and ARIA examples. Contributors may also refer to examples in this code library. Each example includes all applicable HTML, CSS and JavaScript.</p>
+<copy-permalink class="h3">
+  <h3 id="inclusive-components" tabindex="-1">
+    <a class="heading-anchor" href="#inclusive-components">Inclusive Components</a>
+      </h3>
+    </copy-permalink>
+<p>Heydon Pickering describes his <a href="https://inclusive-components.design/">Inclusive Components</a> as "a blog trying to be a pattern library, with a focus on inclusive design." Each post covers a specific type of component—like a card or a data table—and provides a step-by-step explanation of how to make it more accessible. A more comprehensive list of components can be found in the <a href="http://book.inclusive-components.design/">Inclusive Components book</a>.</p>
+<copy-permalink class="h2">
+  <h2 id="interactivity" tabindex="-1">
+    <a class="heading-anchor" href="#interactivity">Interactivity</a>
+      </h2>
+    </copy-permalink>
+<p>The following World Wide Web Consortium (W3C) Web Content Accessibility Guidelines (WCAG) 2.1 A and AA apply to developing interactive elements:</p>
+<ul>
+<li>Ensure that content that appears on hover or focus is dismissable, hoverable, and persistent for keyboard and mouse users. (<a href="https://www.w3.org/WAI/WCAG22/Understanding/content-on-hover-or-focus.html">1.4.13 Content on Hover or Focus - Level AA</a>)</li>
+<li>Ensure that all interactive elements can be accessed via keyboard. (<a href="https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html">2.1.1 Keyboard - Level A</a>)</li>
+<li>Allow keyboard users to navigate away from a component. (<a href="https://www.w3.org/WAI/WCAG22/Understanding/no-keyboard-trap.html">2.1.2 No Keyboard Trap - Level A</a>)</li>
+<li>Align focus order with visual order and DOM order. (<a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html">2.4.3 Focus Order - Level AA</a>)</li>
+<li>Ensure that the keyboard focus indicator is visible. (<a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html">2.4.7 Focus Visible - Level AA</a>)</li>
+</ul>
+<rh-alert state="info">
+  <h3 slot="header">Tip</h3>
+<p>For more on keyboard navigation, see the WAI ARIA Authoring Practices Guide's  (APG) <a href="https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/">Developing a Keyboard Interface</a>.</p>
+</rh-alert>
+<copy-permalink class="h3">
+  <h3 id="hiding-elements" tabindex="-1">
+    <a class="heading-anchor" href="#hiding-elements">Hiding elements</a>
+      </h3>
+    </copy-permalink>
+<p>The following World Wide Web Consortium (W3C) Web Content Accessibility Guidelines (WCAG) 2.1 A and AA apply to dyanmic content:</p>
+<ul>
+<li>Ensure content that appears or disappears on changes to mouse hover or keyboard focus is dismissable, hoverable, and persistent. (<a href="https://www.w3.org/WAI/WCAG21/Understanding/content-on-hover-or-focus.html">1.4.13 Content on Hover or Focus - Level AA</a>)</li>
+</ul>
+<rh-alert state="info">
+  <h3 slot="header">Tip</h3>
+<p>For more on dynamic content, see the Mozilla Developer Network's (MDN) <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions">ARIA live regions</a>.</p>
+</rh-alert>
+<copy-permalink class="h3">
+  <h3 id="disabled-elements" tabindex="-1">
+    <a class="heading-anchor" href="#disabled-elements">Disabled elements</a>
+      </h3>
+    </copy-permalink>
+<p>For disabled composite components, such as fieldsets, radio groups, menus, and listboxes, <a href="https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#focusabilityofdisabledcontrols">WAI-ARIA recommends</a>] that elements of these components remain focusable.</p>
+<p>Users should still be able to read options within the composite group even if they cannot activate or trigger them. For example, a disabled dropdown menu should allow users to toggle it open via keyboard and focus on options even when activating the options is disabled.</p>
+<copy-permalink class="h3">
+  <h3 id="keyboard-navigation-and-focus-events" tabindex="-1">
+    <a class="heading-anchor" href="#keyboard-navigation-and-focus-events">Keyboard navigation and focus events</a>
+      </h3>
+    </copy-permalink>
+<p>When handling focus consider the following:</p>
+<ul>
+<li>The focus indicator should be visible.</li>
+<li>Some element must be in focus at all times.</li>
+<li>Focus is consistent and predictable.</li>
+</ul>
+<p>For more information see the WAI-ARIA APG's <a href="https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_generalnav">Fundamental Keyboard Navigation Conventions</a> and <a href="https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#discernibleandpredictablekeyboardfocus">Discernible and Predictable Keyboard Focus</a>.</p>
+<copy-permalink class="h3">
+  <h3 id="focus-order-and-roving-tabindex" tabindex="-1">
+    <a class="heading-anchor" href="#focus-order-and-roving-tabindex">Focus order and roving tabindex</a>
+      </h3>
+    </copy-permalink>
+<p>Between components, the default method of navigating via keyboard is with the <kbd>Tab</kbd> to move to the next focusable component and <kbd>Shift+Tab</kbd> to move to the previous focusable component. Complex components can have multiple focusable items, so rather than force keyboard users to tab through every focusable item within each component, a <a href="(https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#keyboardnavigationbetweencomponents(thetabsequence))">roving tabindex</a> should be used to allow keyboard users to <kbd>Tab</kbd>/<kbd>Shift+Tab</kbd> into the complex component, arrow keys to navigate within the component, and <kbd>Tab</kbd>/<kbd>Shift+Tab</kbd> back out of the complex component.  (See the WAI-ARIA APG's <a href="https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_roving_tabindex">Managing Focus Within Components Using a Roving tabindex</a>)</p>
+<p>Our complex components, like accordion, secondary navigation, subnavigation, tabs, and tile, use this roving tabindex method via a reactive controller. (Refer to <a href="../contributors/#accessibility-controllers">Contributors: Accessibility controllers</a>)</p>
+<copy-permalink class="h3">
+  <h3 id="keyboard-traps" tabindex="-1">
+    <a class="heading-anchor" href="#keyboard-traps">Keyboard traps</a>
+      </h3>
+    </copy-permalink>
+<p>If the focus cannot be moved away from a focusable element by keyboard alone, a keyboard user can be "trapped" on the element, unable to focus on and interact with other focusable elements. See the following on avoiding keyboard traps:</p>
+<ul>
+<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/no-keyboard-trap.html">WCAG 2.1.2: No keyboard trap</a></li>
+<li><a href="https://www.w3.org/WAI/WCAG21/Techniques/general/G21">WCAG 2.1, Technique G21: Ensuring that users are not trapped in content</a></li>
+<li><a href="https://www.csun.edu/universal-design-center/web-accessibility-criteria-keyboard-traps#:~:text=Keyboard%20traps%20occur%20when%20a,menus%2C%20or%20even%20on%20hyperlinks.">CSUN: Web Accessibility Criteria - Keyboard Traps</a></li>
+</ul>
+<copy-permalink class="h2">
+  <h2 id="error-handling" tabindex="-1">
+    <a class="heading-anchor" href="#error-handling">Error Handling</a>
+      </h2>
+    </copy-permalink>
+<p>The following World Wide Web Consortium (W3C) Web Content Accessibility Guidelines (WCAG) 2.1 A and AA apply to error handling:</p>
+<ul>
+<li>Use text to identify and describe errors that are automatically detected. (<a href="https://www.w3.org/WAI/WCAG22/Understanding/error-identification.html">3.3.1 Error Identification - Level A</a>)</li>
+<li>Use text labels and instructions for user input. (<a href="https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html">3.3.2 Labels or Instructions - Level A</a>)</li>
+<li>Provide text suggestions for user errors that are automatically detected. (<a href="https://www.w3.org/WAI/WCAG22/Understanding/error-suggestion.html">3.3.3 Error Suggestion - Level AA</a>)</li>
+<li>Ensure that submissions are reversible, checked, or confirmed. (<a href="https://www.w3.org/WAI/WCAG22/Understanding/error-prevention-legal-financial-data.html">3.3.4 Error Prevention (Legal, Financial, Data) - Level AA</a>)</li>
+</ul>
+<copy-permalink class="h2">
+  <h2 id="scaling-and-rotation" tabindex="-1">
+    <a class="heading-anchor" href="#scaling-and-rotation">Scaling and rotation</a>
+      </h2>
+    </copy-permalink>
+<copy-permalink class="h3">
+  <h3 id="accounting-for-text-scaling-and-spacing" tabindex="-1">
+    <a class="heading-anchor" href="#accounting-for-text-scaling-and-spacing">Accounting for text scaling and spacing</a>
+      </h3>
+    </copy-permalink>
+<p>Your pages should permit users without assistive tech to scale text to at least 200% of its original size in the browser (e.g., via command-plus or control-plus on desktop, and pinch to zoom on touchscreens). Scaled text must all still be functional and visible after such scaling. That means no overlapping, clipping, or unexpected separation of content. (<a href="https://www.w3.org/WAI/WCAG21/Understanding/resize-text">1.4.4: Resize Text</a>)</p>
+<p>To give users more control over scaling, font sizes specified in CSS should be set via relative measurements (e.g., em, rem, etc.) rather than absolute sizes (e.g., px, pt, etc.). This applies not only to body copy, but also to form element text. (<a href="https://www.w3.org/WAI/WCAG21/Understanding/resize-text">1.4.4: Resize Text</a>)</p>
+<p>Content and functionality must also be maintained if users override the following text styles: line-height (up to 1.5× the font size), paragraph spacing (up to 2× the font size), letter spacing (up to .12× the font size), and word spacing (up to .16× the font size). (<a href="https://www.w3.org/WAI/WCAG21/Understanding/text-spacing">1.4.12: Text Spacing</a>)</p>
+<copy-permalink class="h3">
+  <h3 id="screen-rotation" tabindex="-1">
+    <a class="heading-anchor" href="#screen-rotation">Screen rotation</a>
+      </h3>
+    </copy-permalink>
+<p>Mobile users must be permitted to reorient their screen at will between landscape/portrait, without any messages requesting that they select a particular orientation. (<a href="https://www.w3.org/WAI/WCAG21/Understanding/orientation.html">1.3.4: Orientation</a>)</p>
+
+      </div>
+    </div>
+  </article>
+  <rh-footer-universal>
+  <h3 slot="links-primary" data-analytics-text="Red Hat legal and privacy links" hidden="">Red Hat legal and privacy links</h3>
+  <ul slot="links-primary" data-analytics-region="page-footer-bottom-primary">
+    <li><a href="https://redhat.com/en/about/company" data-analytics-category="Footer|Corporate" data-analytics-text="About Red Hat">About Red Hat</a></li>
+    <li><a href="https://redhat.com/en/jobs" data-analytics-category="Footer|Corporate" data-analytics-text="Jobs">Jobs</a></li>
+    <li><a href="https://redhat.com/en/events" data-analytics-category="Footer|Corporate" data-analytics-text="Events">Events</a></li>
+    <li><a href="https://redhat.com/en/about/office-locations" data-analytics-category="Footer|Corporate" data-analytics-text="Locations">Locations</a></li>
+    <li><a href="https://redhat.com/en/contact" data-analytics-category="Footer|Corporate" data-analytics-text="Contact Red Hat">Contact Red Hat</a></li>
+    <li><a href="https://redhat.com/en/blog" data-analytics-category="Footer|Corporate" data-analytics-text="Red Hat Blog">Red Hat Blog</a></li>
+    <li><a href="https://redhat.com/en/about/our-culture/diversity-equity-inclusion" data-analytics-category="Footer|Corporate" data-analytics-text="Diversity equity and inclusion">Diversity, equity, and inclusion</a></li>
+    <li><a href="https://coolstuff.redhat.com/" data-analytics-category="Footer|Corporate" data-analytics-text="Cool Stuff Store">Cool Stuff Store</a></li>
+    <li><a href="https://www.redhat.com/en/summit" data-analytics-category="Footer|Corporate" data-analytics-text="Red Hat Summit">Red Hat Summit</a></li>
+  </ul>
+  <rh-footer-copyright slot="links-secondary">© 2021-2024 Red Hat, Inc.</rh-footer-copyright>
+  <h3 slot="links-secondary" data-analytics-text="Red Hat legal and privacy links" hidden="">Red Hat legal and privacy links</h3>
+  <ul slot="links-secondary" data-analytics-region="page-footer-bottom-secondary">
+    <li><a href="https://redhat.com/en/about/privacy-policy" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Privacy statement">Privacy statement</a></li>
+    <li><a href="https://redhat.com/en/about/terms-use" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Terms of use">Terms of use</a></li>
+    <li><a href="https://redhat.com/en/about/all-policies-guidelines" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="All policies and guidelines">All policies and guidelines</a></li>
+    <li><a href="https://redhat.com/en/about/digital-accessibility" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Digital accessibility" class="active">Digital accessibility</a></li>
+    <!-- If your website supports trustarc include this item to add Cookie Preferences to your site. -->
+    <!-- <li><span id="teconsent"> </span></li> -->
+  </ul>
+  <a slot="tertiary" id="netlify-badge" href="https://www.netlify.com" target="_blank" rel="noreferrer noopener">
+    <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify">
+  </a>
+</rh-footer-universal>
+
+<div class="back-to-top">
+    <a href="#top" class="back-to-top-link">
+        <img src="/assets/back-to-top.svg" alt="Scroll back to the top">
+    </a>
+</div>
+
+</main>
+
+  </div>
+
+
+</body></html>

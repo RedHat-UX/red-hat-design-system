@@ -1,0 +1,652 @@
+<!DOCTYPE html><html class="no-js" lang=""><head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Design | Red Hat design system</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/svg+xml" sizes="any" href="/assets/logo-red-hat.svg">
+
+  <meta property="og:title" content="Red Hat design system">
+  <meta property="og:site_name" content="Red Hat design system">
+  <meta property="og:url" content="ux.redhat.com">
+  <meta property="og:description" content="This is Red Hat's design system. Using Red Hat brand standards and PatternFly as our foundational design language, we enable designers and developers to concurrently build branded experiences across redhat.com, Red Hat Customer Portal, and beyond.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://ux.redhat.com/assets/opengraph.png">
+
+  <meta name="pfe-auto-reveal" content="true">
+
+  <link rel="stylesheet" href="/assets/redhat/redhat-theme/4/advanced-theme.css">
+  <link rel="stylesheet" href="/assets/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all">
+
+  <link rel="stylesheet" href="/assets/prism.css">
+  <link rel="stylesheet" href="/assets/rhds.min.css">
+  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-footer/rh-footer-lightdom.css">
+  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-cta/rh-cta-lightdom.css">
+  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-subnav/rh-subnav-lightdom.css">
+
+  <link rel="stylesheet" href="/assets/css/style.css" id="">
+
+  
+
+  <noscript>
+    <link type="text/css" href="/assets/pfe--noscript.min.css">
+  </noscript>
+
+  <script type="importmap">{"imports":{"@patternfly/pfe-core":"/assets/packages/@patternfly/pfe-core/core.js","lit-html":"/assets/packages/lit-html/lit-html.js","@floating-ui/core":"/assets/packages/@floating-ui/core/dist/floating-ui.core.browser.min.mjs","tslib":"/assets/packages/tslib/tslib.es6.js","@lit/reactive-element":"/assets/packages/@lit/reactive-element/reactive-element.js","@floating-ui/dom":"/assets/packages/@floating-ui/dom/dist/floating-ui.dom.browser.min.mjs","lit-element":"/assets/packages/lit-element/index.js","lit/directives/if-defined.js":"/assets/packages/lit/directives/if-defined.js","lit":"/assets/packages/lit/index.js","@patternfly/elements":"/assets/packages/@patternfly/elements/pfe.min.js","@rhds/tokens/media.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js","@rhds/tokens/meta.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js","@rhds/tokens":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/tokens.js","element-internals-polyfill":"/assets/packages/element-internals-polyfill/dist/index.js","fuse.js":"/assets/packages/fuse.js/dist/fuse.esm.js","@rhds/tokens/":"/assets/packages/@rhds/tokens/js/","@rhds/elements/":"/assets/packages/@rhds/elements/elements/","@rhds/elements/lib/":"/assets/packages/@rhds/elements/lib/","@patternfly/elements/":"/assets/packages/@patternfly/elements/","@patternfly/icons/":"/assets/packages/@patternfly/icons/","@patternfly/pfe-core/":"/assets/packages/@patternfly/pfe-core/"},"scopes":{"/assets/packages/":{"@lit/reactive-element/decorators/":"/assets/packages/@lit/reactive-element/decorators/","lit":"/assets/packages/@patternfly/elements/node_modules/lit/index.js","lit-element/lit-element.js":"/assets/packages/lit-element/lit-element.js","lit-html/":"/assets/packages/lit-html/","lit/":"/assets/packages/@patternfly/elements/node_modules/lit/"}}}</script>
+  <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js"></script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-cta/rh-cta.js';
+  </script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-footer/rh-footer.js';
+  </script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-alert/rh-alert.js';
+  </script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-alert/rh-alert.js';
+  </script>
+  
+  <script type="module">
+    // As soon as the DOM is ready, toggle JS class
+    document.documentElement.classList.remove('no-js');
+    document.documentElement.classList.add('js');
+  </script>
+  <script type="module" src="/assets/copy-permalink.js"></script>
+  <script type="module">
+    import { PfIcon } from '@patternfly/elements/pf-icon/pf-icon.js';
+    PfIcon.getIconUrl = (set, icon) =>
+      new URL(`/assets/packages/@patternfly/elements/pf-icon/icons/${set}/${icon}.js`, location.origin);
+  </script>
+  <script type="module">
+  if (!('shadowRootMode' in HTMLTemplateElement.prototype)) { import('/assets/dsd-polyfill.js'); }
+  </script>
+</head>
+<body id="top" class="page element-docs page-design" unresolved="">
+  <div class="body-inner">
+    
+<header id="main-header">
+  <div class="logo-bar">
+    <a href="/">
+      <img class="logo" alt="Red Hat design system logo" src="/assets/red-hat-design-system.svg" style="max-width: 188px; min-width: 42px;">
+    </a>
+  </div>
+
+  <input id="mobile-menu-toggle" class="menu-toggle element-invisible" type="checkbox" aria-controls="mobile-menu-menu-container">
+
+  <label class="menu-toggle-button mobile-menu-toggle" for="mobile-menu-toggle" data-controls="mobile-menu-menu-container">
+    <span class="burger-icon"></span>
+    <span class="menu-toggle-assistive-text element-invisible">Toggle menu visibility</span>
+  </label>
+
+  <div class="menu-toggle-toggleable site-navigation-outer-wrapper">
+    <nav class="site-navigation site-navigation menu-toggle-toggleable-content-wrapper">
+      <ul class="wrapper">
+        <li class="item">
+          <a class="link " href="/">Home</a>
+        </li>
+
+        <!-- About -->
+
+        <li class="item">
+          <details>
+            <summary class="heading">About</summary>
+            <ul class="sub-menu">
+              <li class="item">
+                <a class="link " href="/about/">About this website</a>
+              </li><li class="item">
+                <a class="link " href="/about/how-we-build/">How we build</a>
+              </li><li class="item">
+                <a class="link " href="/about/roadmap/">Roadmap</a>
+              </li></ul>
+          </details>
+        </li>
+
+        <!-- Get started -->
+
+        <li class="item">
+          <details>
+            <summary class="heading">Get started</summary>
+            <ul class="sub-menu">
+              <li class="item">
+                <a class="link " href="/get-started/">Overview</a>
+              </li><li class="item">
+                <a class="link " href="/get-started/designers/">Designers</a>
+              </li></ul>
+          </details>
+        </li>
+
+        <!-- Foundations -->
+
+        <li class="item">
+          <details>
+            <summary class="heading">Foundations</summary>
+            <ul class="sub-menu">
+              <li class="item">
+                    <a class="link " href="/foundations/">Overview</a>
+                  
+                    <a class="link " href="/foundations/color/">Color</a>
+                  
+                    <a class="link " href="/foundations/grid/">Grid</a>
+                  
+                    <a class="link " href="/foundations/personalization/">Personalization patterns</a>
+                  
+                    <a class="link " href="/foundations/spacing/">Spacing</a>
+                  
+                    <a class="link " href="/foundations/typography/">Typography</a>
+                  </li>
+            </ul>
+          </details>
+        </li>
+
+        <!-- Tokens -->
+
+        <li class="item">
+          <details>
+            <summary class="heading">Tokens</summary>
+            <ul class="sub-menu">
+              <li class="item">
+                <a class="link " href="/tokens/">Overview</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/color/">Global color</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/box-shadow/">Box shadow</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/font/">Typography</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/border/">Border</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/opacity/">Opacity</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/space/">Space</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/length/">Length</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/icon/">Icon</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/breakpoint/">Breakpoints</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/media/">Media queries</a>
+              </li></ul>
+          </details>
+        </li>
+
+        <!-- Elements -->
+
+        <li class="item">
+          <details>
+            <summary class="heading">Elements</summary>
+            <ul class="sub-menu">
+              <li class="item">
+                <a class="link " href="/elements/">All elements</a>
+              </li>
+                  <li class="item">
+                    <a class="link " href="/elements/accordion/">Accordion</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/alert/">Alert</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/audio-player/">Audio player</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/avatar/">Avatar</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/badge/">Badge</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/blockquote/">Blockquote</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/button/">Button</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/call-to-action/">Call to action</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/card/">Card</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/code-block/">Code block</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/dialog/">Dialog</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/footer/">Footer</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/jump-links/">Jump links</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/navigation-primary/">Navigation (primary)</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/navigation-secondary/">Navigation (secondary)</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/pagination/">Pagination</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/popover/">Popover</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/progress-steps/">Progress steps</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/spinner/">Spinner</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/statistic/">Statistic</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/subnavigation/">Subnavigation</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/surface/">Surface</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/table/">Table</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/tabs/">Tabs</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/tag/">Tag</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/tile/">Tile</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/timestamp/">Timestamp</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/tooltip/">Tooltip</a>
+                  </li>
+                </ul>
+          </details>
+        </li>
+
+        <!-- Patterns -->
+
+        <li class="item">
+          <details>
+            <summary class="heading">Patterns</summary>
+            <ul class="sub-menu">
+              <li class="item">
+                <a class="link " href="/patterns/">All patterns</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/announcement/">Announcement</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/card/">Card</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/disclosure/">Disclosure</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/filter/">Filter</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/form/">Form</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/link-with-icon/">Link with icon</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/link/">Link</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/search-bar/">Search bar</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/skip-navigation/">Skip navigation</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/sticky-banner/">Sticky banner</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/sticky-card/">Sticky card</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/video-thumbnail/">Video thumbnail</a>
+              </li></ul>
+          </details>
+        </li>
+        <!-- Accessibility -->
+
+        <li class="item">
+          <details open="">
+            <summary class="heading">Accessibility</summary>
+            <ul class="sub-menu"><li class="item">
+                  <a class="link " href="/accessibility/">Fundamentals</a>
+                </li><li class="item">
+                  <a class="link " href="/accessibility/q-a-testing/">QA Testing</a>
+                </li><li class="item">
+                  <a class="link " href="/accessibility/content/">Content</a>
+                </li><li class="item">
+                  <a class="link active" href="/accessibility/design/">Design</a>
+                </li><li class="item">
+                  <a class="link " href="/accessibility/development/">Development</a>
+                </li><li class="item">
+                  <a class="link " href="/accessibility/contributors/">Contributors</a>
+                </li></ul>
+          </details>
+        </li>
+
+        <li class="item">
+          <a class="link " href="/design-code-status/">Design/code status</a>
+        </li>
+
+        <li class="item">
+          <a class="link " href="/release-notes/">Release notes</a>
+        </li></ul>
+    </nav>
+  </div>
+</header>
+
+<script type="module">
+  window.onUsersnapCXLoad = function(api) {
+    api.init();
+  }
+  var script = document.createElement('script');
+  script.async = 1;
+  script.src = 'https://widget.usersnap.com/load/64471a95-72fe-4239-b16d-ebcf8b1219f7?onload=onUsersnapCXLoad';
+  document.head.appendChild(script);
+</script>
+
+
+
+<main class="l-main">
+  <article class="l-main__inner">
+    <header class="l-main__header l-main__header--palette-lighter">
+      <div class="container header">
+        <h1 id="design" class="page-title">Design</h1>
+      </div>
+    </header>
+    <div class="l-main__content">
+      <div class="container">
+        
+        <copy-permalink class="h2">
+  <h2 id="overview" tabindex="-1">
+    <a class="heading-anchor" href="#overview">Overview</a>
+      </h2>
+    </copy-permalink>
+<rh-alert state="info">
+  <h3 slot="header">Note</h3>
+<p>This section covers design accessibility. Designers should also be familiar with accessibility <a href="../">fundamentals</a>, <a href="../content">content</a>, and <a href="../development">development</a>.</p>
+</rh-alert>
+<copy-permalink class="h2">
+  <h2 id="layout-and-hierarchy" tabindex="-1">
+    <a class="heading-anchor" href="#layout-and-hierarchy">Layout and hierarchy</a>
+      </h2>
+    </copy-permalink>
+<copy-permalink class="h3">
+  <h3 id="order" tabindex="-1">
+    <a class="heading-anchor" href="#order">Order</a>
+      </h3>
+    </copy-permalink>
+<p>The contents of a page should be arranged in a meaningful order. Here are some things to keep in mind:</p>
+<ul>
+<li>Heading levels should help users distinguish between different sections and understand how content is grouped hierarchically.</li>
+<li>Items should be placed in a clear, logical visual order, so that developers can easily match this order in the DOM, allowing users of all sorts (with and without assistive technologies) to have similar experiences when engaging with content.</li>
+</ul>
+<copy-permalink class="h3">
+  <h3 id="repeated-content" tabindex="-1">
+    <a class="heading-anchor" href="#repeated-content">Repeated content</a>
+      </h3>
+    </copy-permalink>
+<p>Elements that repeat across a site (e.g., navigation and site search) should appear in consistent locations and with consistent ordering. That said, it’s okay if some elements within repeating sections (e.g., individual items in a navigation menu) change and shift by necessity, depending on context.</p>
+<p>For repeating sections that come before a page’s main content (e.g., a navigation menu at the top of the site), there must be a means for keyboard users to bypass them and get to the unique content. Such "<a href="https://webaim.org/techniques/skipnav/">skip links</a>" may be hidden by default, but you will want to design how they appear onscreen upon receiving keyboard focus.</p>
+<p>If one element has the same function as another, both should be labeled the same way. For example, a call to action for the Contact page should have consistent text labels.</p>
+<copy-permalink class="h2">
+  <h2 id="color" tabindex="-1">
+    <a class="heading-anchor" href="#color">Color</a>
+      </h2>
+    </copy-permalink>
+<copy-permalink class="h3">
+  <h3 id="using-color-alone" tabindex="-1">
+    <a class="heading-anchor" href="#using-color-alone">Using color alone</a>
+      </h3>
+    </copy-permalink>
+<p>When considering methods of communication or feedback, do not use color alone. Ensure there is a text label, icon, underline, or other visual cue to communicate meaning. Consider how the following elements would look to a color blind user.</p>
+<div style="" class="example example--palette-light ">
+          <img alt="Dialog with a red-orange Leave button, a form field with a red bottom border, and progress steps without labels" style="width:872px;height:auto" loading="lazy" decoding="async" src="/assets/color/using-color-alone-872w.png" width="1744" height="1074" srcset="/assets/color/using-color-alone-872w.png 872w, /assets/color/using-color-alone.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
+        </div>
+<copy-permalink class="h3">
+  <h3 id="contrast" tabindex="-1">
+    <a class="heading-anchor" href="#contrast">Contrast</a>
+      </h3>
+    </copy-permalink>
+<p>We strive to adhere to <a href="https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum">WCAG 2.1 AA contrast ratio standards</a>. Our text, links, interface elements, etc. are designed with sufficient contrast when used on top of surfaces, image backgrounds with low contrast, and near adjacent colors.</p>
+<copy-permalink class="h4">
+  <h4 id="text" tabindex="-1">
+    <a class="heading-anchor" href="#text">Text</a>
+      </h4>
+    </copy-permalink>
+<p>Small foreground text (non-bold text under 24px and bold text under 19px) must have a contrast ratio of 4.5:1 and large foreground text (non-bold text of at least 24px and bold text of at least 19px) must have a contrast ratio of 3:1.</p>
+<div style="" class="example example--palette-light ">
+          <img alt="Contrast ratios for dark gray sections with black text that uses different weights and fonts" style="width:872px;height:auto" loading="lazy" decoding="async" src="/assets/color/contrast-text-872w.png" width="1744" height="1152" srcset="/assets/color/contrast-text-872w.png 872w, /assets/color/contrast-text.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
+        </div>
+<copy-permalink class="h4">
+  <h4 id="links" tabindex="-1">
+    <a class="heading-anchor" href="#links">Links</a>
+      </h4>
+    </copy-permalink>
+<p>If color is the only way to distinguish between links and surrounding text (e.g., if link underlines are removed within a paragraph), the contrast ratio between the link and surrounding text must be at least 3:1.</p>
+<p>Non-color cues should be used to signify when a link receives hover and focus (e.g., an underline).</p>
+<div style="" class="example example--palette-light ">
+          <img alt="Contrast ratio of a blue link next to black text and an example of a link's darker blue, underlined hover state" style="width:692px;height:auto" loading="lazy" decoding="async" src="/assets/color/contrast-links-692w.png" width="1384" height="328" srcset="/assets/color/contrast-links-692w.png 692w, /assets/color/contrast-links.png 1384w" sizes="(max-width: 692px) 692px, 1384px">
+        </div>
+<copy-permalink class="h4">
+  <h4 id="graphical-objects-and-ui-components" tabindex="-1">
+    <a class="heading-anchor" href="#graphical-objects-and-ui-components">Graphical objects and UI components</a>
+      </h4>
+    </copy-permalink>
+<p>Graphical objects and UI components (including those within charts and infographics) should have a contrast ratio of at least 3:1 . If color is the only way to distinguish between inline controls and their surrounding text (e.g., no outline or underline), the contrast ratio between the control and surrounding text must be at least 3:1.</p>
+<p>Non-color cues must be also used to signify when an object or component receives focus (e.g., a border).</p>
+<copy-permalink class="h4">
+  <h4 id="layering" tabindex="-1">
+    <a class="heading-anchor" href="#layering">Layering</a>
+      </h4>
+    </copy-permalink>
+<p>It is acceptable to layer colors with the same hue, saturation, or lightness on white, black, or gray. However, layering them near or on top of each other might cause vibration. If you need to layer colors, follow <a href="https://www.w3.org/WAI/WCAG21/Understanding/">WCAG 2.1 AA</a> requirements.</p>
+<div style="" class="example example--palette-light ">
+          <img alt="Red CTA against a white background, blue button against a light gray background, and a light red-orange button against a black background" style="width:872px;height:auto" loading="lazy" decoding="async" src="/assets/color/contrast-layering-872w.png" width="1744" height="500" srcset="/assets/color/contrast-layering-872w.png 872w, /assets/color/contrast-layering.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
+        </div>
+<copy-permalink class="h4">
+  <h4 id="further-help" tabindex="-1">
+    <a class="heading-anchor" href="#further-help">Further help</a>
+      </h4>
+    </copy-permalink>
+<p>TPGi’s <a href="https://www.tpgi.com/color-contrast-checker/">Colour Contrast Analyzer</a> for Windows and Mac computers can help you identify colors and gauge their contrast from one another.</p>
+<copy-permalink class="h2">
+  <h2 id="imagery" tabindex="-1">
+    <a class="heading-anchor" href="#imagery">Imagery</a>
+      </h2>
+    </copy-permalink>
+<copy-permalink class="h3">
+  <h3 id="text-in-images" tabindex="-1">
+    <a class="heading-anchor" href="#text-in-images">Text in images</a>
+      </h3>
+    </copy-permalink>
+<p>Avoid using images of text, except for logotypes or text in decorative images. Many effects can be applied to text via CSS, and designers can work with developers or engineers to determine the best approach. In addition to making reading more difficult for screen reader users, images of text usually can’t be resized or manipulated by assistive tech well.</p>
+<copy-permalink class="h3">
+  <h3 id="charts-and-diagrams" tabindex="-1">
+    <a class="heading-anchor" href="#charts-and-diagrams">Charts and diagrams</a>
+      </h3>
+    </copy-permalink>
+<p>Any charts, diagrams, or complex images should have a description placed immediately before or after. Explaining these types of visuals is typically too long for alt text. So, this accompanying text can be a caption or integrated into the adjacent body copy.</p>
+<copy-permalink class="h3">
+  <h3 id="decorative-images" tabindex="-1">
+    <a class="heading-anchor" href="#decorative-images">Decorative images</a>
+      </h3>
+    </copy-permalink>
+<p>Any decorative images that add no meaningful information to an experience should be identified as such for anyone writing alt text or developing the interface. These decorative images can then be hidden from assistive technology by developers, and content writers will know they don’t need to provide text alternatives for them.</p>
+<p>An image used as a link or button is always meaningful (i.e., not decorative) and must be both labeled properly and exposed to assistive tech, except in the following cases:</p>
+<ul>
+<li>The image is accompanied by sufficient descriptive text that is also within the containing link or button, <em>or</em></li>
+<li>The containing link or button has an aria-label or aria-labelledby value applied to it.</li>
+</ul>
+<copy-permalink class="h2">
+  <h2 id="motion-and-audiovisual-content" tabindex="-1">
+    <a class="heading-anchor" href="#motion-and-audiovisual-content">Motion and audiovisual content</a>
+      </h2>
+    </copy-permalink>
+<copy-permalink class="h3">
+  <h3 id="animations" tabindex="-1">
+    <a class="heading-anchor" href="#animations">Animations</a>
+      </h3>
+    </copy-permalink>
+<p>The following guidelines should be followed to make animated content accessible to users that may have motion sensitivity or who experience seizures:</p>
+<ul>
+<li>Any animations lasting five seconds or more require mechanisms for stopping or hiding it.</li>
+<li>Any text that’s animated or that automatically changes needs a way to be viewed statically.</li>
+<li>Any flashing or blinking content should do so fewer than three times per second.</li>
+</ul>
+<copy-permalink class="h3">
+  <h3 id="videos" tabindex="-1">
+    <a class="heading-anchor" href="#videos">Videos</a>
+      </h3>
+    </copy-permalink>
+<p>Designers must provide ways to pause and/or mute video content if the video:</p>
+<ul>
+<li>Has no audio and lasts longer than five seconds, <em>or</em></li>
+<li>Has audio and lasts longer than three seconds.</li>
+</ul>
+<p>These guidelines apply whether or not the video autoplays.</p>
+<p>Most video players have caption controls built in, and designers will not typically be responsible for creating captions. However, designers will have to show text or audio descriptions for any embedded videos if essential information isn’t also conveyed through audio.</p>
+<copy-permalink class="h3">
+  <h3 id="audio" tabindex="-1">
+    <a class="heading-anchor" href="#audio">Audio</a>
+      </h3>
+    </copy-permalink>
+<p>Similarly to video, an audio file that lasts longer than three seconds must have controls for muting or pausing. An audio-only file should also come with a way to view a transcript.</p>
+<p>Essential information should not be conveyed by sound alone. For example, if a timer dings at the end of a timed test, provide a corresponding visual indication.</p>
+<copy-permalink class="h2">
+  <h2 id="interactions" tabindex="-1">
+    <a class="heading-anchor" href="#interactions">Interactions</a>
+      </h2>
+    </copy-permalink>
+<copy-permalink class="h3">
+  <h3 id="links-1" tabindex="-1">
+    <a class="heading-anchor" href="#links-1">Links</a>
+      </h3>
+    </copy-permalink>
+<p>Links should appear clickable and focusable. And, when possible, links and buttons should appear different from one another to give users cues as to their purpose.</p>
+<p>If a link opens in a new window, this will have to be indicated both visually and non-visually. Text is preferred, but an icon (with text alternative for assistive tech users) can be used to announce that a new window will open.</p>
+<copy-permalink class="h3">
+  <h3 id="target-size" tabindex="-1">
+    <a class="heading-anchor" href="#target-size">Target size</a>
+      </h3>
+    </copy-permalink>
+<p>A click or touch target, like a button or link, should be large enough for all users to activate easily on all devices. The minimum size is 24 × 24 pixels for level AA compliance and 44 × 44 pixels for level AAA. Proper target sizes ensure that a user with dexterity impairments can still select a link with a mouse, that a user in a moving vehicle can tap the correct button in an app, etc.</p>
+<p>If a target must be smaller than 24 pixels in either direction, it must be spaced from any other targets as if it were centered within its own 24 pixel diameter (or larger) circle.</p>
+<copy-permalink class="h3">
+  <h3 id="keyboard-interactions" tabindex="-1">
+    <a class="heading-anchor" href="#keyboard-interactions">Keyboard interactions</a>
+      </h3>
+    </copy-permalink>
+<p>Mouse and keyboard users must be able to interact with interfaces in functionally equivalent ways. For example, if a mouse user can scroll through a page and click to expand and collapse accordions in a group, a keyboard user must also be able to use the <kbd>tab</kbd> key to navigate through this accordion group and expand and collapse focused accordions by pressing enter.</p>
+<p>Though much of the work of incorporating such functionality happens in the development stage, designers should consider how their designs will be approached by keyboard users. In the preceding example, a large accordion group may be more difficult for keyboard users to use because they may have to tab through many accordion panels before arriving at the one they want to read. In this case, it may be a better experience for both keyboard and mouse users to have those accordions broken into smaller groups.</p>
+<p>Keyboard and assistive tech users must also have the ability to perform path- and gesture-based tasks typically done via mouse or touchscreen. If users are expected to interact with an image gallery by swiping, the designer should include buttons to allow all users to cycle through these images. And clicking and holding down a slider marker with a mouse pointer shouldn’t be the only means of increasing/decreasing values for that element. (e.g., You could add up/down arrows to the interface, or a developer could ensure that arrow keys update the value when the slider has focus.)</p>
+<copy-permalink class="h3">
+  <h3 id="focus" tabindex="-1">
+    <a class="heading-anchor" href="#focus">Focus</a>
+      </h3>
+    </copy-permalink>
+<p>The act of focusing on an element should not cause the element to change the interface’s context. For example, if a user places keyboard focus on a link, that action shouldn’t automatically send them to a new page.</p>
+<rh-alert state="info">
+  <h3 slot="header">Note</h3>
+<p>A change in a page’s content does not always mean that the context has changed. Learn more about what constitutes a <a href="https://www.w3.org/WAI/WCAG21/Understanding/on-focus#dfn-changes-of-context">change in context</a>.</p>
+</rh-alert>
+<p>If keyboard focus appears to be trapped in a subsection, instructions for exiting this section via keyboard will need to be available. For example, if pressing the tab key does not allow the user to exit an embedded video or learning module on a page, another method (e.g., pressing the <kbd>escape</kbd> key or some key combo) must exist, and instructions must be presented to all users.</p>
+<copy-permalink class="h2">
+  <h2 id="typography" tabindex="-1">
+    <a class="heading-anchor" href="#typography">Typography</a>
+      </h2>
+    </copy-permalink>
+<copy-permalink class="h3">
+  <h3 id="spacing" tabindex="-1">
+    <a class="heading-anchor" href="#spacing">Spacing</a>
+      </h3>
+    </copy-permalink>
+<p>Line heights for body copy should be at least 1.5× regular single-spacing. And paragraph spacing should be 1.5× of that line height. In other words, if your line height is 1.5, your paragraph spacing should be at least 2.25× (or 1.5×1.5) the original single-spaced height. (W3C rounds to 2.5× in their <a href="https://www.w3.org/WAI/WCAG21/Understanding/visual-presentation.html">paragraph-spacing recommendation</a>.) Such spacing helps people who find it difficult to read when lines are too close together.</p>
+<copy-permalink class="h3">
+  <h3 id="character-counts" tabindex="-1">
+    <a class="heading-anchor" href="#character-counts">Character counts</a>
+      </h3>
+    </copy-permalink>
+<p>Long lines of text can be difficult to read. Character counts for one line of text should not exceed 80 characters (40 if content is in Chinese, Japanese, or Korean). This can be done by setting a maximum width for content areas.</p>
+<copy-permalink class="h3">
+  <h3 id="alignment" tabindex="-1">
+    <a class="heading-anchor" href="#alignment">Alignment</a>
+      </h3>
+    </copy-permalink>
+<p>For left-to-right languages, left-aligned text is the easiest to read and skim. The same is true of right-aligned text for right-to-left languages.</p>
+<p>Center-aligned text can be used sparingly, but it should be avoided for paragraphs.</p>
+<p>Text should never be justified. Justified text is aligned to the left and right edges of a content area, and spacing between words is adjusted to make this happen. Depending on how the content flows on various screen sizes and whether the user is manipulating the text for improved readability, justified text can create spaces between words that are too large or narrow to be read comfortably.</p>
+
+      </div>
+    </div>
+  </article>
+  <rh-footer-universal>
+  <h3 slot="links-primary" data-analytics-text="Red Hat legal and privacy links" hidden="">Red Hat legal and privacy links</h3>
+  <ul slot="links-primary" data-analytics-region="page-footer-bottom-primary">
+    <li><a href="https://redhat.com/en/about/company" data-analytics-category="Footer|Corporate" data-analytics-text="About Red Hat">About Red Hat</a></li>
+    <li><a href="https://redhat.com/en/jobs" data-analytics-category="Footer|Corporate" data-analytics-text="Jobs">Jobs</a></li>
+    <li><a href="https://redhat.com/en/events" data-analytics-category="Footer|Corporate" data-analytics-text="Events">Events</a></li>
+    <li><a href="https://redhat.com/en/about/office-locations" data-analytics-category="Footer|Corporate" data-analytics-text="Locations">Locations</a></li>
+    <li><a href="https://redhat.com/en/contact" data-analytics-category="Footer|Corporate" data-analytics-text="Contact Red Hat">Contact Red Hat</a></li>
+    <li><a href="https://redhat.com/en/blog" data-analytics-category="Footer|Corporate" data-analytics-text="Red Hat Blog">Red Hat Blog</a></li>
+    <li><a href="https://redhat.com/en/about/our-culture/diversity-equity-inclusion" data-analytics-category="Footer|Corporate" data-analytics-text="Diversity equity and inclusion">Diversity, equity, and inclusion</a></li>
+    <li><a href="https://coolstuff.redhat.com/" data-analytics-category="Footer|Corporate" data-analytics-text="Cool Stuff Store">Cool Stuff Store</a></li>
+    <li><a href="https://www.redhat.com/en/summit" data-analytics-category="Footer|Corporate" data-analytics-text="Red Hat Summit">Red Hat Summit</a></li>
+  </ul>
+  <rh-footer-copyright slot="links-secondary">© 2021-2024 Red Hat, Inc.</rh-footer-copyright>
+  <h3 slot="links-secondary" data-analytics-text="Red Hat legal and privacy links" hidden="">Red Hat legal and privacy links</h3>
+  <ul slot="links-secondary" data-analytics-region="page-footer-bottom-secondary">
+    <li><a href="https://redhat.com/en/about/privacy-policy" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Privacy statement">Privacy statement</a></li>
+    <li><a href="https://redhat.com/en/about/terms-use" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Terms of use">Terms of use</a></li>
+    <li><a href="https://redhat.com/en/about/all-policies-guidelines" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="All policies and guidelines">All policies and guidelines</a></li>
+    <li><a href="https://redhat.com/en/about/digital-accessibility" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Digital accessibility" class="active">Digital accessibility</a></li>
+    <!-- If your website supports trustarc include this item to add Cookie Preferences to your site. -->
+    <!-- <li><span id="teconsent"> </span></li> -->
+  </ul>
+  <a slot="tertiary" id="netlify-badge" href="https://www.netlify.com" target="_blank" rel="noreferrer noopener">
+    <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify">
+  </a>
+</rh-footer-universal>
+
+<div class="back-to-top">
+    <a href="#top" class="back-to-top-link">
+        <img src="/assets/back-to-top.svg" alt="Scroll back to the top">
+    </a>
+</div>
+
+</main>
+
+  </div>
+
+
+</body></html>

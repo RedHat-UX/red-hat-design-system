@@ -1,0 +1,564 @@
+<!DOCTYPE html><html class="no-js" lang=""><head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>QA and Testing | Red Hat design system</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/svg+xml" sizes="any" href="/assets/logo-red-hat.svg">
+
+  <meta property="og:title" content="Red Hat design system">
+  <meta property="og:site_name" content="Red Hat design system">
+  <meta property="og:url" content="ux.redhat.com">
+  <meta property="og:description" content="This is Red Hat's design system. Using Red Hat brand standards and PatternFly as our foundational design language, we enable designers and developers to concurrently build branded experiences across redhat.com, Red Hat Customer Portal, and beyond.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://ux.redhat.com/assets/opengraph.png">
+
+  <meta name="pfe-auto-reveal" content="true">
+
+  <link rel="stylesheet" href="/assets/redhat/redhat-theme/4/advanced-theme.css">
+  <link rel="stylesheet" href="/assets/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all">
+
+  <link rel="stylesheet" href="/assets/prism.css">
+  <link rel="stylesheet" href="/assets/rhds.min.css">
+  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-footer/rh-footer-lightdom.css">
+  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-cta/rh-cta-lightdom.css">
+  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-subnav/rh-subnav-lightdom.css">
+
+  <link rel="stylesheet" href="/assets/css/style.css" id="">
+
+  
+
+  <noscript>
+    <link type="text/css" href="/assets/pfe--noscript.min.css">
+  </noscript>
+
+  <script type="importmap">{"imports":{"@patternfly/pfe-core":"/assets/packages/@patternfly/pfe-core/core.js","lit-html":"/assets/packages/lit-html/lit-html.js","@floating-ui/core":"/assets/packages/@floating-ui/core/dist/floating-ui.core.browser.min.mjs","tslib":"/assets/packages/tslib/tslib.es6.js","@lit/reactive-element":"/assets/packages/@lit/reactive-element/reactive-element.js","@floating-ui/dom":"/assets/packages/@floating-ui/dom/dist/floating-ui.dom.browser.min.mjs","lit-element":"/assets/packages/lit-element/index.js","lit/directives/if-defined.js":"/assets/packages/lit/directives/if-defined.js","lit":"/assets/packages/lit/index.js","@patternfly/elements":"/assets/packages/@patternfly/elements/pfe.min.js","@rhds/tokens/media.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js","@rhds/tokens/meta.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js","@rhds/tokens":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/tokens.js","element-internals-polyfill":"/assets/packages/element-internals-polyfill/dist/index.js","fuse.js":"/assets/packages/fuse.js/dist/fuse.esm.js","@rhds/tokens/":"/assets/packages/@rhds/tokens/js/","@rhds/elements/":"/assets/packages/@rhds/elements/elements/","@rhds/elements/lib/":"/assets/packages/@rhds/elements/lib/","@patternfly/elements/":"/assets/packages/@patternfly/elements/","@patternfly/icons/":"/assets/packages/@patternfly/icons/","@patternfly/pfe-core/":"/assets/packages/@patternfly/pfe-core/"},"scopes":{"/assets/packages/":{"@lit/reactive-element/decorators/":"/assets/packages/@lit/reactive-element/decorators/","lit":"/assets/packages/@patternfly/elements/node_modules/lit/index.js","lit-element/lit-element.js":"/assets/packages/lit-element/lit-element.js","lit-html/":"/assets/packages/lit-html/","lit/":"/assets/packages/@patternfly/elements/node_modules/lit/"}}}</script>
+  <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js"></script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-cta/rh-cta.js';
+  </script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-footer/rh-footer.js';
+  </script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-alert/rh-alert.js';
+  </script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-alert/rh-alert.js';
+  </script>
+  
+  <script type="module">
+    // As soon as the DOM is ready, toggle JS class
+    document.documentElement.classList.remove('no-js');
+    document.documentElement.classList.add('js');
+  </script>
+  <script type="module" src="/assets/copy-permalink.js"></script>
+  <script type="module">
+    import { PfIcon } from '@patternfly/elements/pf-icon/pf-icon.js';
+    PfIcon.getIconUrl = (set, icon) =>
+      new URL(`/assets/packages/@patternfly/elements/pf-icon/icons/${set}/${icon}.js`, location.origin);
+  </script>
+  <script type="module">
+  if (!('shadowRootMode' in HTMLTemplateElement.prototype)) { import('/assets/dsd-polyfill.js'); }
+  </script>
+</head>
+<body id="top" class="page element-docs page-qa-and-testing" unresolved="">
+  <div class="body-inner">
+    
+<header id="main-header">
+  <div class="logo-bar">
+    <a href="/">
+      <img class="logo" alt="Red Hat design system logo" src="/assets/red-hat-design-system.svg" style="max-width: 188px; min-width: 42px;">
+    </a>
+  </div>
+
+  <input id="mobile-menu-toggle" class="menu-toggle element-invisible" type="checkbox" aria-controls="mobile-menu-menu-container">
+
+  <label class="menu-toggle-button mobile-menu-toggle" for="mobile-menu-toggle" data-controls="mobile-menu-menu-container">
+    <span class="burger-icon"></span>
+    <span class="menu-toggle-assistive-text element-invisible">Toggle menu visibility</span>
+  </label>
+
+  <div class="menu-toggle-toggleable site-navigation-outer-wrapper">
+    <nav class="site-navigation site-navigation menu-toggle-toggleable-content-wrapper">
+      <ul class="wrapper">
+        <li class="item">
+          <a class="link " href="/">Home</a>
+        </li>
+
+        <!-- About -->
+
+        <li class="item">
+          <details>
+            <summary class="heading">About</summary>
+            <ul class="sub-menu">
+              <li class="item">
+                <a class="link " href="/about/">About this website</a>
+              </li><li class="item">
+                <a class="link " href="/about/how-we-build/">How we build</a>
+              </li><li class="item">
+                <a class="link " href="/about/roadmap/">Roadmap</a>
+              </li></ul>
+          </details>
+        </li>
+
+        <!-- Get started -->
+
+        <li class="item">
+          <details>
+            <summary class="heading">Get started</summary>
+            <ul class="sub-menu">
+              <li class="item">
+                <a class="link " href="/get-started/">Overview</a>
+              </li><li class="item">
+                <a class="link " href="/get-started/designers/">Designers</a>
+              </li></ul>
+          </details>
+        </li>
+
+        <!-- Foundations -->
+
+        <li class="item">
+          <details>
+            <summary class="heading">Foundations</summary>
+            <ul class="sub-menu">
+              <li class="item">
+                    <a class="link " href="/foundations/">Overview</a>
+                  
+                    <a class="link " href="/foundations/color/">Color</a>
+                  
+                    <a class="link " href="/foundations/grid/">Grid</a>
+                  
+                    <a class="link " href="/foundations/personalization/">Personalization patterns</a>
+                  
+                    <a class="link " href="/foundations/spacing/">Spacing</a>
+                  
+                    <a class="link " href="/foundations/typography/">Typography</a>
+                  </li>
+            </ul>
+          </details>
+        </li>
+
+        <!-- Tokens -->
+
+        <li class="item">
+          <details>
+            <summary class="heading">Tokens</summary>
+            <ul class="sub-menu">
+              <li class="item">
+                <a class="link " href="/tokens/">Overview</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/color/">Global color</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/box-shadow/">Box shadow</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/font/">Typography</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/border/">Border</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/opacity/">Opacity</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/space/">Space</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/length/">Length</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/icon/">Icon</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/breakpoint/">Breakpoints</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/media/">Media queries</a>
+              </li></ul>
+          </details>
+        </li>
+
+        <!-- Elements -->
+
+        <li class="item">
+          <details>
+            <summary class="heading">Elements</summary>
+            <ul class="sub-menu">
+              <li class="item">
+                <a class="link " href="/elements/">All elements</a>
+              </li>
+                  <li class="item">
+                    <a class="link " href="/elements/accordion/">Accordion</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/alert/">Alert</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/audio-player/">Audio player</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/avatar/">Avatar</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/badge/">Badge</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/blockquote/">Blockquote</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/button/">Button</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/call-to-action/">Call to action</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/card/">Card</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/code-block/">Code block</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/dialog/">Dialog</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/footer/">Footer</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/jump-links/">Jump links</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/navigation-primary/">Navigation (primary)</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/navigation-secondary/">Navigation (secondary)</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/pagination/">Pagination</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/popover/">Popover</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/progress-steps/">Progress steps</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/spinner/">Spinner</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/statistic/">Statistic</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/subnavigation/">Subnavigation</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/surface/">Surface</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/table/">Table</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/tabs/">Tabs</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/tag/">Tag</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/tile/">Tile</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/timestamp/">Timestamp</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/tooltip/">Tooltip</a>
+                  </li>
+                </ul>
+          </details>
+        </li>
+
+        <!-- Patterns -->
+
+        <li class="item">
+          <details>
+            <summary class="heading">Patterns</summary>
+            <ul class="sub-menu">
+              <li class="item">
+                <a class="link " href="/patterns/">All patterns</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/announcement/">Announcement</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/card/">Card</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/disclosure/">Disclosure</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/filter/">Filter</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/form/">Form</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/link-with-icon/">Link with icon</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/link/">Link</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/search-bar/">Search bar</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/skip-navigation/">Skip navigation</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/sticky-banner/">Sticky banner</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/sticky-card/">Sticky card</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/video-thumbnail/">Video thumbnail</a>
+              </li></ul>
+          </details>
+        </li>
+        <!-- Accessibility -->
+
+        <li class="item">
+          <details open="">
+            <summary class="heading">Accessibility</summary>
+            <ul class="sub-menu"><li class="item">
+                  <a class="link " href="/accessibility/">Fundamentals</a>
+                </li><li class="item">
+                  <a class="link active" href="/accessibility/q-a-testing/">QA Testing</a>
+                </li><li class="item">
+                  <a class="link " href="/accessibility/content/">Content</a>
+                </li><li class="item">
+                  <a class="link " href="/accessibility/design/">Design</a>
+                </li><li class="item">
+                  <a class="link " href="/accessibility/development/">Development</a>
+                </li><li class="item">
+                  <a class="link " href="/accessibility/contributors/">Contributors</a>
+                </li></ul>
+          </details>
+        </li>
+
+        <li class="item">
+          <a class="link " href="/design-code-status/">Design/code status</a>
+        </li>
+
+        <li class="item">
+          <a class="link " href="/release-notes/">Release notes</a>
+        </li></ul>
+    </nav>
+  </div>
+</header>
+
+<script type="module">
+  window.onUsersnapCXLoad = function(api) {
+    api.init();
+  }
+  var script = document.createElement('script');
+  script.async = 1;
+  script.src = 'https://widget.usersnap.com/load/64471a95-72fe-4239-b16d-ebcf8b1219f7?onload=onUsersnapCXLoad';
+  document.head.appendChild(script);
+</script>
+
+
+
+<main class="l-main">
+  <article class="l-main__inner">
+    <header class="l-main__header l-main__header--palette-lighter">
+      <div class="container header">
+        <h1 id="qa-and-testing" class="page-title">QA and Testing</h1>
+      </div>
+    </header>
+    <div class="l-main__content">
+      <div class="container">
+        
+        <copy-permalink class="h2">
+  <h2 id="accessibility-tools" tabindex="-1">
+    <a class="heading-anchor" href="#accessibility-tools">Accessibility tools</a>
+      </h2>
+    </copy-permalink>
+<p>Automated tools can help you quickly identify many potential high-impact accessibility issues. Among such tools are free browser extensions like WebAIM’s WAVE, Deque’s axe DevTools, and IBM's Equal Access Checker.</p>
+<copy-permalink class="h3">
+  <h3 id="webaim-wave" tabindex="-1">
+    <a class="heading-anchor" href="#webaim-wave">WebAIM WAVE</a>
+      </h3>
+    </copy-permalink>
+<p>WAVE is an accessibility checker that’s particularly useful for visual users who prefer to see issues and alerts in context: kind of an augmented reality for the browser window. It may return some false positive results on color contrast, but such issues should always be manually confirmed, anyway. (And sometimes, what looks to be a false positive is a legitimate error, once you start digging into the CSS!)</p>
+<p>Getting started with WAVE is simple. Just go to a page, click the extension button, and it annotates your screen with icons, based on topic (e.g., headings, color contrast issues, etc.). But it’s more than just a visual tool. Clicking on annotations often gives you the option to view relevant in-page code and WCAG criteria.
+The <a href="https://wave.webaim.org/">WAVE browser extension</a> is available for Chrome, Firefox, and Edge.</p>
+<copy-permalink class="h3">
+  <h3 id="deque-axe-devtools" tabindex="-1">
+    <a class="heading-anchor" href="#deque-axe-devtools">Deque axe DevTools</a>
+      </h3>
+    </copy-permalink>
+<p>Tucked away in your browser’s DevTools panel after installation, Deque’s axe DevTools extension scans your page for accessibility issues and best practices, and then returns a text list of results and code callouts. With its ability to export results, axe DevTools is also useful for documentation, reports, and issue tracking.</p>
+<p>Different WCAG versions (2.0 through 2.2) and conformance levels (A through AAA) can be specified in the extension’s settings. (At Red Hat, we target WCAG 2.1 AA.) And you can toggle best practices results on and off, depending on whether you’re interested solely in strict WCAG conformance. You can read the full list of rules being tested at the <a href="https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md">axe-core GitHub repository</a>.</p>
+<p>The <a href="https://www.deque.com/axe/devtools/">axe DevTools extension</a> is available for Chrome, Firefox, and Edge. The free version allows you to test entire pages. The paid Pro version adds the capability to specify page sections for testing, provides additional export options, and also includes some guided walkthroughs for further testing.</p>
+<copy-permalink class="h3">
+  <h3 id="ibm-equal-access-checker" tabindex="-1">
+    <a class="heading-anchor" href="#ibm-equal-access-checker">IBM Equal Access Checker</a>
+      </h3>
+    </copy-permalink>
+<p>Like axe DevTools, IBM’s free Equal Access Checker resides in your browser’s DevTools panel after installation. When run, Equal Access Checker returns a text list of detected violations, warnings, and/or recommendations, depending on your preferences.</p>
+<p>Running Equal Access Checker in conjunction with a tool like axe DevTools can be useful for detecting a wider array of violations than either tool alone. And surfacing violations common to both tools may help you identify higher-risk issues.</p>
+<p>In addition to WCAG versions 2.0, 2.1, and 2.2, Equal Access Checker can run scans based on IBM’s internal accessibility target. Currently, this target includes all of WCAG 2.1 AA, plus some additional U.S. (Section 508) and European (EN 301 549) standards not covered by WCAG. IBM has posted the <a href="https://www.ibm.com/able/requirements/checker-rule-sets">Equal Access testing ruleset</a> at their accessibility site.</p>
+<p><a href="https://www.ibm.com/able/toolkit/tools/#develop">Equal Access Checker</a> can be installed as a browser extension in Chrome, Firefox, and Edge. It’s also available as CI/CD Node packages.</p>
+<copy-permalink class="h2">
+  <h2 id="testing" tabindex="-1">
+    <a class="heading-anchor" href="#testing">Testing</a>
+      </h2>
+    </copy-permalink>
+<p>If you're getting started with accessibility after you already have web properties out in the wild, your first experiences with accessibility testing will likely be in an effort to remediate these experiences. But learning to shift left on accessibility—incorporating it earlier in your processes—can ultimately save time and help ensure your projects are inclusive at launch.</p>
+<blockquote>
+<p>"When you call something an edge case, you're really just defining the limits of what you care about."
+— Eric Meyer</p>
+</blockquote>
+<p>Making accessibility testing part of your pre-launch QA allows designers, developers, and content writers to revisit their work before they’ve moved on to the next project. Better still, you can incorporate role-based testing in each phase of your project, so issues can be avoided before handoffs between creators.</p>
+<p>Designers can evaluate their designs for things like color contrast, honest affordance of interactive items, visually-meaningful reading/focus order of elements, etc. Writers can check their source documentation for a logical content outline, clearly-written labels and instructions for forms, appropriate alternative text for images, and so on. And developers can test their work (and the content that was handed off to them) right in the browser.</p>
+<p>Keep in mind that testing isn’t easy. With many accessibility checks being judgment calls (what constitutes good alt text or clear form instructions?), even <a href="https://www.w3.org/TR/accessibility-conformance-challenges/#themes-from-research">experts disagree on accessibility</a>. Seek perfection, but accept progress along the way. Fix obvious errors, and use your best judgment with other potential issues—asking other subject matter experts as you go, if you have access to them.</p>
+<copy-permalink class="h3">
+  <h3 id="testing-technologies" tabindex="-1">
+    <a class="heading-anchor" href="#testing-technologies">Testing technologies</a>
+      </h3>
+    </copy-permalink>
+<p>When manually testing web pages for accessibility, the following four tools are invaluable:</p>
+<ul>
+<li>Your keyboard</li>
+<li>A screen reader</li>
+<li>A color contrast checker</li>
+<li>The browser inspector</li>
+</ul>
+<copy-permalink class="h4">
+  <h4 id="keyboard-testing" tabindex="-1">
+    <a class="heading-anchor" href="#keyboard-testing">Keyboard testing</a>
+      </h4>
+    </copy-permalink>
+<p>If you do nothing else to test your projects, try navigating the entire experience with your keyboard, via the following keys:</p>
+<ul>
+<li><em><kbd>Tab</kbd> and <kbd>shift+tab</kbd></em> to move forward and backward between focusable items (e.g., links, form controls, and scrollable windows).</li>
+<li><em>Arrow keys (<kbd>↑ → ↓ ←</kbd>)</em> to scroll windows, to operate form controls and tab interfaces, and to navigate through groups of focusable items (like sections of an accordion or options in a menu).</li>
+<li><em><kbd>Enter</kbd> and/or <kbd>Space</kbd></em> to follow links, activate buttons, select list items, and trigger other interactive items, as appropriate.</li>
+</ul>
+<copy-permalink class="h4">
+  <h4 id="screen-readers" tabindex="-1">
+    <a class="heading-anchor" href="#screen-readers">Screen readers</a>
+      </h4>
+    </copy-permalink>
+<p>If you’re feeling ambitious and want to combine testing tasks, perform your keyboard testing with a screen reader turned on.  The screen reader you use for testing depends on the operating system and browser you wish to test.</p>
+<table>
+<thead>
+<tr>
+<th>Operating system</th>
+<th>Browser</th>
+<th>Screen reader</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MacOS</td>
+<td>Safari</td>
+<td><a href="https://support.apple.com/guide/voiceover/turn-voiceover-on-or-off-vo2682/mac">VoiceOver for Mac</a> (included with MacOS)</td>
+</tr>
+<tr>
+<td>Windows</td>
+<td>Firefox</td>
+<td><a href="https://www.nvaccess.org/download/">NVDA</a> (free download)</td>
+</tr>
+<tr>
+<td>Windows</td>
+<td>Chrome</td>
+<td><a href="https://www.freedomscientific.com/products/software/jaws/">JAWS</a> (paid)</td>
+</tr>
+<tr>
+<td>Linux</td>
+<td>Firefox</td>
+<td><a href="https://help.gnome.org/users/orca/stable/index.html.en">Orca</a>  (included with GNOME desktop environment)</td>
+</tr>
+<tr>
+<td>Android</td>
+<td>Chrome</td>
+<td><a href="https://support.google.com/accessibility/android/answer/6283677?hl=en&amp;ref_topic=10601571&amp;sjid=4695144848639410734-NC">Talkback</a> (included with Android)</td>
+</tr>
+<tr>
+<td>iOS</td>
+<td>Safari</td>
+<td><a href="https://support.apple.com/en-sa/guide/iphone/iph3e2e415f/ios">VoiceOver for iOS</a> (included with iOS)</td>
+</tr>
+</tbody>
+</table>
+<p>Deque offers a collection of <a href="https://dequeuniversity.com/screenreaders/">screen reader shortcuts</a> for all of the above listed technologies.</p>
+<copy-permalink class="h4">
+  <h4 id="color-contrast-checkers" tabindex="-1">
+    <a class="heading-anchor" href="#color-contrast-checkers">Color contrast checkers</a>
+      </h4>
+    </copy-permalink>
+<p>A <a href="https://webaim.org/projects/million/#contrast">plurality of web accessibility issues</a> stem from insufficient color contrast. But unless you’re a math genius who can calculate the <a href="https://www.w3.org/TR/WCAG21/#dfn-relative-luminance">relative luminance of RGB colors</a> in your head, contrast is difficult to test without the help of tools.</p>
+<p>TPGi’s <a href="https://www.tpgi.com/color-contrast-checker/">Colour Contrast Analyzer</a> is a free Mac and Windows application that helps you measure contrast between colors via an eyedropper tool (which lets you test the color of any pixel on your screen) or by typing in color values.</p>
+<p>If you’re either not on a device where you can install TPGi’s tool or just want a quick gut check, WebAIM has an <a href="https://webaim.org/resources/contrastchecker/">online contrast checker</a> that allows you to type in foreground and background color values.</p>
+<copy-permalink class="h4">
+  <h4 id="browser-inspector" tabindex="-1">
+    <a class="heading-anchor" href="#browser-inspector">Browser inspector</a>
+      </h4>
+    </copy-permalink>
+<p>You can’t just view a page’s source and trust that the code you’re seeing there reflects what the browser is interpreting. Inspecting elements shows what’s really going on with them—after they’ve been inserted, modified, or deleted by JavaScript.</p>
+<p>With or without any other browser extensions or bookmarklets, using the inspector is often the surest way to verify the status of HTML elements and attributes like heading levels, alt text, ARIA attributes and so on. You can use the inspector to view and edit the CSS values of properties like color, line-height, text-decoration, etc. And the browser’s console can alert you to JavaScript issues.</p>
+<p>Many modern desktop browsers now have accessibility-specific tools incorporated into their inspectors, like <a href="https://firefox-source-docs.mozilla.org/devtools-user/accessibility_inspector/">Firefox’s accessibility inspector</a> and the <a href="https://developer.chrome.com/docs/devtools/accessibility/reference/">accessibility features within Chrome DevTools</a>.</p>
+
+      </div>
+    </div>
+  </article>
+  <rh-footer-universal>
+  <h3 slot="links-primary" data-analytics-text="Red Hat legal and privacy links" hidden="">Red Hat legal and privacy links</h3>
+  <ul slot="links-primary" data-analytics-region="page-footer-bottom-primary">
+    <li><a href="https://redhat.com/en/about/company" data-analytics-category="Footer|Corporate" data-analytics-text="About Red Hat">About Red Hat</a></li>
+    <li><a href="https://redhat.com/en/jobs" data-analytics-category="Footer|Corporate" data-analytics-text="Jobs">Jobs</a></li>
+    <li><a href="https://redhat.com/en/events" data-analytics-category="Footer|Corporate" data-analytics-text="Events">Events</a></li>
+    <li><a href="https://redhat.com/en/about/office-locations" data-analytics-category="Footer|Corporate" data-analytics-text="Locations">Locations</a></li>
+    <li><a href="https://redhat.com/en/contact" data-analytics-category="Footer|Corporate" data-analytics-text="Contact Red Hat">Contact Red Hat</a></li>
+    <li><a href="https://redhat.com/en/blog" data-analytics-category="Footer|Corporate" data-analytics-text="Red Hat Blog">Red Hat Blog</a></li>
+    <li><a href="https://redhat.com/en/about/our-culture/diversity-equity-inclusion" data-analytics-category="Footer|Corporate" data-analytics-text="Diversity equity and inclusion">Diversity, equity, and inclusion</a></li>
+    <li><a href="https://coolstuff.redhat.com/" data-analytics-category="Footer|Corporate" data-analytics-text="Cool Stuff Store">Cool Stuff Store</a></li>
+    <li><a href="https://www.redhat.com/en/summit" data-analytics-category="Footer|Corporate" data-analytics-text="Red Hat Summit">Red Hat Summit</a></li>
+  </ul>
+  <rh-footer-copyright slot="links-secondary">© 2021-2024 Red Hat, Inc.</rh-footer-copyright>
+  <h3 slot="links-secondary" data-analytics-text="Red Hat legal and privacy links" hidden="">Red Hat legal and privacy links</h3>
+  <ul slot="links-secondary" data-analytics-region="page-footer-bottom-secondary">
+    <li><a href="https://redhat.com/en/about/privacy-policy" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Privacy statement">Privacy statement</a></li>
+    <li><a href="https://redhat.com/en/about/terms-use" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Terms of use">Terms of use</a></li>
+    <li><a href="https://redhat.com/en/about/all-policies-guidelines" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="All policies and guidelines">All policies and guidelines</a></li>
+    <li><a href="https://redhat.com/en/about/digital-accessibility" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Digital accessibility" class="active">Digital accessibility</a></li>
+    <!-- If your website supports trustarc include this item to add Cookie Preferences to your site. -->
+    <!-- <li><span id="teconsent"> </span></li> -->
+  </ul>
+  <a slot="tertiary" id="netlify-badge" href="https://www.netlify.com" target="_blank" rel="noreferrer noopener">
+    <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify">
+  </a>
+</rh-footer-universal>
+
+<div class="back-to-top">
+    <a href="#top" class="back-to-top-link">
+        <img src="/assets/back-to-top.svg" alt="Scroll back to the top">
+    </a>
+</div>
+
+</main>
+
+  </div>
+
+
+</body></html>

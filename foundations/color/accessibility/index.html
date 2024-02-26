@@ -31,7 +31,7 @@
     <link type="text/css" href="/assets/pfe--noscript.min.css">
   </noscript>
 
-  <script type="importmap">{"imports":{"@patternfly/pfe-core":"/assets/packages/@patternfly/pfe-core/core.js","lit-html":"/assets/packages/lit-html/lit-html.js","@floating-ui/core":"/assets/packages/@floating-ui/core/dist/floating-ui.core.browser.min.mjs","tslib":"/assets/packages/tslib/tslib.es6.js","@lit/reactive-element":"/assets/packages/@lit/reactive-element/reactive-element.js","@floating-ui/dom":"/assets/packages/@floating-ui/dom/dist/floating-ui.dom.browser.min.mjs","lit-element":"/assets/packages/lit-element/index.js","lit/directives/if-defined.js":"/assets/packages/lit/directives/if-defined.js","lit":"/assets/packages/lit/index.js","@patternfly/elements":"/assets/packages/@patternfly/elements/pfe.min.js","@rhds/tokens":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/tokens.js","@rhds/tokens/meta.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js","@rhds/tokens/media.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js","element-internals-polyfill":"/assets/packages/element-internals-polyfill/dist/index.js","fuse.js":"/assets/packages/fuse.js/dist/fuse.esm.js","@rhds/tokens/":"/assets/packages/@rhds/tokens/js/","@rhds/elements/":"/assets/packages/@rhds/elements/elements/","@rhds/elements/lib/":"/assets/packages/@rhds/elements/lib/","@patternfly/elements/":"/assets/packages/@patternfly/elements/","@patternfly/icons/":"/assets/packages/@patternfly/icons/","@patternfly/pfe-core/":"/assets/packages/@patternfly/pfe-core/"},"scopes":{"/assets/packages/":{"@lit/reactive-element/decorators/":"/assets/packages/@lit/reactive-element/decorators/","lit":"/assets/packages/@patternfly/elements/node_modules/lit/index.js","lit-element/lit-element.js":"/assets/packages/lit-element/lit-element.js","lit-html/":"/assets/packages/lit-html/","lit/":"/assets/packages/@patternfly/elements/node_modules/lit/"}}}</script>
+  <script type="importmap">{"imports":{"@patternfly/pfe-core":"/assets/packages/@patternfly/pfe-core/core.js","lit-html":"/assets/packages/lit-html/lit-html.js","@floating-ui/core":"/assets/packages/@floating-ui/core/dist/floating-ui.core.browser.min.mjs","tslib":"/assets/packages/tslib/tslib.es6.js","@lit/reactive-element":"/assets/packages/@lit/reactive-element/reactive-element.js","@floating-ui/dom":"/assets/packages/@floating-ui/dom/dist/floating-ui.dom.browser.min.mjs","lit-element":"/assets/packages/lit-element/index.js","lit/directives/if-defined.js":"/assets/packages/lit/directives/if-defined.js","lit":"/assets/packages/lit/index.js","@patternfly/elements":"/assets/packages/@patternfly/elements/pfe.min.js","@rhds/tokens/media.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js","@rhds/tokens/meta.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js","@rhds/tokens":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/tokens.js","element-internals-polyfill":"/assets/packages/element-internals-polyfill/dist/index.js","fuse.js":"/assets/packages/fuse.js/dist/fuse.esm.js","@rhds/tokens/":"/assets/packages/@rhds/tokens/js/","@rhds/elements/":"/assets/packages/@rhds/elements/elements/","@rhds/elements/lib/":"/assets/packages/@rhds/elements/lib/","@patternfly/elements/":"/assets/packages/@patternfly/elements/","@patternfly/icons/":"/assets/packages/@patternfly/icons/","@patternfly/pfe-core/":"/assets/packages/@patternfly/pfe-core/"},"scopes":{"/assets/packages/":{"@lit/reactive-element/decorators/":"/assets/packages/@lit/reactive-element/decorators/","lit":"/assets/packages/@patternfly/elements/node_modules/lit/index.js","lit-element/lit-element.js":"/assets/packages/lit-element/lit-element.js","lit-html/":"/assets/packages/lit-html/","lit/":"/assets/packages/@patternfly/elements/node_modules/lit/"}}}</script>
   <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js"></script>
   
   <script type="module">
@@ -341,6 +341,26 @@
               </li></ul>
           </details>
         </li>
+        <!-- Accessibility -->
+
+        <li class="item">
+          <details open="">
+            <summary class="heading">Accessibility</summary>
+            <ul class="sub-menu"><li class="item">
+                  <a class="link " href="/accessibility/">Fundamentals</a>
+                </li><li class="item">
+                  <a class="link " href="/accessibility/q-a-testing/">QA Testing</a>
+                </li><li class="item">
+                  <a class="link " href="/accessibility/content/">Content</a>
+                </li><li class="item">
+                  <a class="link " href="/accessibility/design/">Design</a>
+                </li><li class="item">
+                  <a class="link " href="/accessibility/development/">Development</a>
+                </li><li class="item">
+                  <a class="link " href="/accessibility/contributors/">Contributors</a>
+                </li></ul>
+          </details>
+        </li>
 
         <li class="item">
           <a class="link " href="/design-code-status/">Design/code status</a>
@@ -411,10 +431,8 @@ color blind user.</p>
     <a class="heading-anchor" href="#contrast">Contrast</a>
       </h2>
     </copy-permalink>
-<p>We strive to adhere to <a href="https://www.w3.org/WAI/WCAG21/Understanding/">WCAG 2.1 AA</a> requirements. Our text, links,
-interface elements, etc. are designed with sufficient contrast when used on top
-of a canvas, surfaces, image backgrounds with low contrast, and near adjacent
-colors.</p>
+<p>We strive to adhere to <a href="https://www.w3.org/WAI/WCAG21/Understanding/">WCAG 2.1 AA</a> requirements. Our text, links, interface elements, etc. are designed with sufficient contrast when used on top
+of a canvas, surfaces, image backgrounds with low contrast, and near adjacent colors.</p>
 <copy-permalink class="h3">
   <h3 id="text" tabindex="-1">
     <a class="heading-anchor" href="#text">Text</a>
@@ -431,11 +449,9 @@ least 24px and bold text of at least 19px) must have a contrast ratio of 3:1.</p
     <a class="heading-anchor" href="#links">Links</a>
       </h3>
     </copy-permalink>
-<p>If color is the only way to distinguish between links and surrounding text (for
-example, if link underlines are removed), the contrast ratio between the link
-and surrounding text must be at least 3:1.</p>
+<p>If color is the only way to distinguish between links and surrounding text (e.g., if link underlines are removed), the contrast ratio between the link and surrounding text must be at least 3:1.</p>
 <ul>
-<li>Non-color cues must be used to signify when the link receives hover or focus (for example, an underline)</li>
+<li>Non-color cues must be used to signify when the link receives hover or focus (e.g., an underline)</li>
 </ul>
 <div style="" class="example example--palette-light ">
           <img alt="Contrast ratio of a blue link next to black text and an example of a link's darker blue, underlined hover state" style="width:692px;height:auto" loading="lazy" decoding="async" src="/assets/color/contrast-links-692w.png" width="1384" height="328" srcset="/assets/color/contrast-links-692w.png 692w, /assets/color/contrast-links.png 1384w" sizes="(max-width: 692px) 692px, 1384px">
@@ -446,11 +462,11 @@ and surrounding text must be at least 3:1.</p>
       </h3>
     </copy-permalink>
 <p>Graphical objects and UI components should have a contrast ratio of at least 3:1
-(for example, within charts and infographics). If color is the only way to
+(e.g., within charts and infographics). If color is the only way to
 distinguish between inline controls and their surrounding text, the contrast
 ratio between the control and text must be at least 3:1.</p>
 <ul>
-<li>Non-color cues (for example, a border) must be used to signify when the element receives focus</li>
+<li>Non-color cues (e.g., a border) must be used to signify when the element receives focus</li>
 </ul>
 <copy-permalink class="h3">
   <h3 id="layering" tabindex="-1">
@@ -468,8 +484,7 @@ requirements.</p>
     <a class="heading-anchor" href="#tools">Tools</a>
       </h3>
     </copy-permalink>
-<p>TPGi’s <a href="https://www.tpgi.com/color-contrast-checker/">Colour Contrast Analyzer</a> can help you identify colors and
-gauge their contrast from one another.</p>
+<p>TPGi’s <a href="https://www.tpgi.com/color-contrast-checker/">Colour Contrast Analyzer</a> can help you identify colors and gauge their contrast from one another.</p>
 <div class="multi-column--min-300-wide section section--palette-default container feedback">
   <section class="section section--palette-default  container">
   <h2 id="foundations">Foundations</h2>
