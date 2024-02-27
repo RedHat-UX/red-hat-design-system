@@ -106,9 +106,9 @@
   }
 
   /* this follows the @media queries so that it can override the aside */
-  @container main (min-width: 1532px) {
+  @container main (min-width: 1440px) {
     article {
-      grid-template-columns: minmax(var(--container-max-width), var(--container-max-width)) minmax(300px, 1fr);
+      grid-template-columns: minmax(var(--container-min-width), var(--container-max-width)) minmax(14rem, 1fr);
       grid-template-areas:
         "header header"
         "content toc";
