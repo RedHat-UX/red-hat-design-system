@@ -75,8 +75,6 @@ class UxdotExample extends LitElement {
   `;
 
   static properties = {
-    headline: { type: String },
-    headingLevel: { type: Number, attribute: 'heading-level' },
     colorPalette: { type: String, reflect: true, attribute: 'color-palette' },
     transparent: { type: Boolean },
     variant: { type: String, reflect: true },
@@ -100,23 +98,9 @@ class UxdotExample extends LitElement {
     const { on = '' } = this;
     return html`
       <div id="container" part="container" class="${classMap({ [on]: !!on })}" style="--_width: ${this.width}; --_alignment: ${this.alignment}">
-        ${!this.headline ? html``
-          : html`
-            <${unsafeStatic(this.#setHeading())} id="${this.#slugify(this.headline)}">
-              ${this.headline}
-            </${unsafeStatic(this.#setHeading())}>
-          `}
         <slot></slot>
       </div>
     `;
-  }
-
-  #setHeading() {
-    return `h${this.headingLevel}`;
-  }
-
-  #slugify(text) {
-    return text.toLowerCase().replace(/\s/g, '-');
   }
 }
 
