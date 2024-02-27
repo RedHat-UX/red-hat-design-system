@@ -177,6 +177,52 @@
    * Patterns layer for defining component and site patterns
    **/
 
+  :where(code) {
+    padding-inline: var(--rh-space-xs, 4px);
+    background: var(--rh-color-surface-light, #e0e0e0);
+    border-radius: var(--rh-border-radius-default, 3px);
+    font-size: var(--rh-font-size-code-md, 1rem);
+    font-weight: var(--rh-font-weight-code-regular, 400);
+  }
+
+  :where(kbd) {
+    --_uxdot-kbd-color-border: var(--rh-color-border-subtle-on-light, #c7c7c7);
+
+    background-color: var(--rh-color-surface-lightest, #fff);
+    border-radius: var(--rh-border-radius-default, 3px);
+    border: var(--rh-border-width-sm, 1px) solid var(--_uxdot-kbd-color-border);
+    box-shadow: 0 2px 0 1px var(--_uxdot-kbd-color-border);
+    cursor: default;
+    font-size: var(--rh-font-size-body-text-md, 1rem);
+    line-height: 1;
+    min-width: 0.75rem;
+    display: inline-block;
+    text-align: center;
+    padding: 2px var(--rh-space-sm, 6px);
+    margin-inline: var(--rh-space-xs, 4px); 
+    position: relative;
+    top: -1px;
+  }
+
+  :where(kbd):hover {
+    box-shadow: 0 1px 0 0.5px var(--_uxdot-kbd-color-border);
+    top: 1px;
+  }
+
+  :where(kbd):has(kbd),
+  :where(kbd):has(kbd):hover {
+    background-color: unset;
+    border-radius: unset;
+    border: unset;
+    box-shadow: unset;
+    min-width: unset;
+    padding: unset;
+    position: unset;
+    top: unset;
+  }
+
+
+
   /**
    * Sticky header pattern
    * progressive enhancement sticky, using :has()

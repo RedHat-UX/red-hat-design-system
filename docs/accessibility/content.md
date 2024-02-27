@@ -8,21 +8,29 @@ importElements:
 ---
 
 <style>
-    .docs-figure {
+    #func-img {
         width: 50%;
         margin: 0 auto;
-        margin-block-start: var(--rh-space-4xl, 64px) !important;
-        margin-block-end: var(--rh-space-4xl, 64px) !important;
+        margin-block-start: 0;
+        margin-block-end: var(--rh-space-2xl, 32px);
         text-align: center;
     }
 
-    .docs-figure img {
+    #func-img img {
+        max-width: 500px;
         margin: 0 auto;
     }
+    
+    @container container (min-width: 567px) {
+      #func-img {
+        padding: var(--rh-space-3xl, 48px);
+      }
+    }
 
-    .docs-figure figcaption {
-        margin: 1rem 0;
-        font-size: 0.875rem;
+    @container container (min-width: 768px) {
+      #func-img {
+        padding: var(--rh-space-4xl, 64px);
+      }
     }
 </style>
 
@@ -32,6 +40,8 @@ importElements:
   <h3 slot="header">Note</h3>
   <p>This section covers content accessibility. Content authors should also be familiar with accessibility <a href="../fundamentals">fundamentals</a>.</p>
 </rh-alert>
+
+
 ## Alt text
 
 Wherever meaningful images or other non-text elements are used on a page, you must also provide alternative text (aka “alt text”) to briefly describe these elements. Alt text makes this content machine-readable for assistive technologies (e.g, screen readers) and search engines. And browsers can substitute alt text on-screen when images don’t load.
@@ -85,11 +95,9 @@ Note that background images inserted into a page via CSS are always considered d
 
 When writing alternative text, it’s important to first consider the image’s context. An image’s meaning or function may be more relevant than its literal depiction. So, the same image may need very different alt text in different contexts.
 
-<figure class="docs-figure">
-
-![Red Hat homepage](/assets/accessibility/Its_A_Wonderful_Life.jpg "George Bailey hugs his wife, Mary, and holds his daughter, Zuzu, in the movie It's a Wonderful Life")
-
-</figure>
+<uxdot-example width-adjustment="500px" no-border>
+  <img src="/assets/accessibility/Its_A_Wonderful_Life.jpg" alt="George Bailey hugs his wife, Mary, and holds his daughter, Zuzu, in the movie It's a Wonderful Life">
+</uxdot-example>
 
 Depending on whether a web page is about the plot of the 1946 movie It’s a Wonderful Life or about the actor Jimmy Stewart, the above image could have very different alt text. For the first case, the image’s alt text could be `“George Bailey hugs his wife, Mary, and holds his daughter, Zuzu.”` For the second, the alt text could be `“Jimmy Stewart returned to acting after the war with It’s a Wonderful Life.”`
 
@@ -97,14 +105,8 @@ Depending on whether a web page is about the plot of the 1946 movie It’s a Won
 
 Images acting as buttons or links are functional, and thus serve different purposes than images supporting the surrounding text.
 
-<figure class="docs-figure">
-
-<a href="https://www.redhat.com/">
-
-![Red Hat homepage](/assets/logo-redhat.png "Red Hat homepage")
-
-</a>
-
+<figure id="func-img">
+  <a href="https://www.redhat.com/"><img src="/assets/logo-redhat.png" alt="Red Hat homepage"></a>
 </figure>
 
 If the above image supplements the text of an article about Red Hat or our products, the appropriate alt text could be something like `"Red Hat, Inc. logo."` But if that image is a link pointing to the corporate homepage, you might want something along the lines of `"Red Hat homepage"` for your alt text:
