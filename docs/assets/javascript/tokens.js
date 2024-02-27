@@ -5,7 +5,7 @@ import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 import '@rhds/elements/rh-footer/rh-footer-universal.js';
 
 // search bar
-import '/assets/elements/uxdot-search.js';
+import '/assets/javascript/elements/uxdot-search.js';
 
 document
   .getElementById('search-input')

@@ -1,8 +1,8 @@
 @layer skip-navigation, masthead, header, sidenav, permalink, footer;
 
-@import url('../assets/elements/uxdot-skip-navigation-lightdom.css') layer(skip-navigation);
-@import url('../assets/elements/uxdot-masthead-lightdom.css') layer(masthead);
-@import url('../assets/elements/uxdot-header-lightdom.css') layer(header);
-@import url('../assets/elements/uxdot-sidenav-lightdom.css') layer(sidenav);
-@import url('../assets/elements/uxdot-copy-permalink-lightdom.css') layer(permalink);
+@import url('../assets/javascript/elements/uxdot-skip-navigation-lightdom.css') layer(skip-navigation);
+@import url('../assets/javascript/elements/uxdot-masthead-lightdom.css') layer(masthead);
+@import url('../assets/javascript/elements/uxdot-header-lightdom.css') layer(header);
+@import url('../assets/javascript/elements/uxdot-sidenav-lightdom.css') layer(sidenav);
+@import url('../assets/javascript/elements/uxdot-copy-permalink-lightdom.css') layer(permalink);
 @import url('../assets/packages/@rhds/elements/elements/rh-footer/rh-footer-lightdom.css') layer(footer);
