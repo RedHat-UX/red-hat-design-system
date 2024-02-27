@@ -11,7 +11,7 @@ importElements:
 <section>
   <h2>Beta release notes</h2>
 
-  <p><a href="/release-notes">Return to Release notes</a></p>
+  <a href="{{ '/release-notes' | url }}">Return to Release notes</a>
 </section>
 
 <section>
@@ -30,7 +30,7 @@ importElements:
       <tbody>
         <tr>
           <td data-label="Page name">Icon libraries<br />Product logo library</td>
-          <td data-label="Notes">Rewrote the content of the <a href="../get-started/icon-libraries">Icon libraries</a> and <a href="../get-started/product-logo-library">Product logo library</a> pages to better explain the updated process for accessing brand assets directly from Adobe Creative Cloud apps.</td>
+          <td data-label="Notes">Rewrote the content of the Icon libraries and Product logo library pages to better explain the updated process for accessing brand assets directly from Adobe Creative Cloud apps.</td>
         </tr>
       </tbody>
     </table>
@@ -72,35 +72,35 @@ importElements:
       <tbody>
         <tr>
           <td data-label"Component name">Alert</td>
-          <td data-label"Notes">Added <a href="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-alert#readme">README</a> to GitHub and <a href="https://ux.redhat.com/elements/alert/demo/">demo</a> to website</td>
+          <td data-label"Notes">Added <a href="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-alert#readme">README</a> to GitHub and demo to website</td>
         </tr>
         <tr>
           <td data-label"Component name">Blockquote</td>
-          <td data-label"Notes">Added <a href="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-blockquote#readme">README</a> to GitHub and <a href="https://ux.redhat.com/elements/blockquote/demo/">demo</a> to website</td>
+          <td data-label"Notes">Added <a href="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-blockquote#readme">README</a> to GitHub and demo to website</td>
         </tr>
         <tr>
           <td data-label"Component name">Footer</td>
-          <td data-label"Notes">Added <a href="https://github.com/RedHat-UX/red-hat-design-system/blob/main/elements/rh-footer/README.md">README</a> to GitHub and <a href="https://ux.redhat.com/elements/footer/demo/">demo</a> to website</td>
+          <td data-label"Notes">Added <a href="https://github.com/RedHat-UX/red-hat-design-system/blob/main/elements/rh-footer/README.md">README</a> to GitHub and demo to website</td>
         </tr>
         <tr>
           <td data-label"Component name">Pagination</td>
-          <td data-label"Notes">Added <a href="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-pagination#readme">README</a> to GitHub and <a href="https://ux.redhat.com/elements/pagination/demo/">demo</a> to website</td>
+          <td data-label"Notes">Added <a href="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-pagination#readme">README</a> to GitHub and demo to website</td>
         </tr>
         <tr>
           <td data-label"Component name">Secondary navigation</td>
-          <td data-label"Notes">Added <a href="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-secondary-nav#readme">README</a> to GitHub and <a href="https://ux.redhat.com/elements/secondary-nav/demo/">demo</a> to website</td>
+          <td data-label"Notes">Added <a href="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-secondary-nav#readme">README</a> to GitHub and demo to website</td>
         </tr>
         <tr>
           <td data-label"Component name">Spinner</td>
-          <td data-label"Notes">Added <a href="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-spinner#readme">README</a> to GitHub and <a href="https://ux.redhat.com/elements/spinner/demo/">demo</a> to website</td>
+          <td data-label"Notes">Added <a href="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-spinner#readme">README</a> to GitHub and demo to website</td>
         </tr>
         <tr>
           <td data-label"Component name">Statistic</td>
-          <td data-label"Notes">Added <a href="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-stat#readme">README</a> to GitHub and <a href="https://ux.redhat.com/elements/statistic/demo/">demo</a> to website</td>
+          <td data-label"Notes">Added <a href="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-stat#readme">README</a> to GitHub and demo to website</td>
         </tr>
         <tr>
           <td data-label"Component name">Tag</td>
-          <td data-label"Notes">Added <a href="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-tag#readme">README</a> to GitHub and <a href="https://ux.redhat.com/elements/tag/demo/">demo</a> to website</td>
+          <td data-label"Notes">Added <a href="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-tag#readme">README</a> to GitHub and demo to website</td>
         </tr>
       </tbody>
     </table>
@@ -127,15 +127,15 @@ importElements:
         </tr>
         <tr>
           <td data-label"Component name">Footer</td>
-          <td data-label"Notes">Added component to <a href="https://xd.adobe.com/view/d20a1c17-375c-4c7f-6827-5fe2f8c2d92f-a43b/screen/28560f95-47ec-4519-a35a-0430a1a8305a/">library</a> and <a href="https://ux.redhat.com/elements/footer/">website</a></td>
+          <td data-label"Notes">Added component to <a href="https://xd.adobe.com/view/d20a1c17-375c-4c7f-6827-5fe2f8c2d92f-a43b/screen/28560f95-47ec-4519-a35a-0430a1a8305a/">library</a> and website</td>
         </tr>
         <tr>
           <td data-label"Component name">Secondary navigation</td>
-          <td data-label"Notes">Added component to <a href="https://xd.adobe.com/view/d20a1c17-375c-4c7f-6827-5fe2f8c2d92f-a43b/screen/f299cd25-fb04-482f-bd7c-95f8eb064fb4/">library</a> and <a href="https://ux.redhat.com/elements/navigation-secondary/">website</a></td>
+          <td data-label"Notes">Added component to <a href="https://xd.adobe.com/view/d20a1c17-375c-4c7f-6827-5fe2f8c2d92f-a43b/screen/f299cd25-fb04-482f-bd7c-95f8eb064fb4/">library</a> and website</td>
         </tr>
         <tr>
           <td data-label"Component name">Statistic</td>
-          <td data-label"Notes">Added component to <a href="https://xd.adobe.com/view/d20a1c17-375c-4c7f-6827-5fe2f8c2d92f-a43b/screen/bd052e4c-7be0-4066-a0f1-cf21ceb2d974/">library</a> and <a href="https://ux.redhat.com/elements/statistic/">website</a></td>
+          <td data-label"Notes">Added component to <a href="https://xd.adobe.com/view/d20a1c17-375c-4c7f-6827-5fe2f8c2d92f-a43b/screen/bd052e4c-7be0-4066-a0f1-cf21ceb2d974/">library</a> and website</td>
         </tr>
       </tbody>
     </table>
@@ -182,23 +182,23 @@ importElements:
       <tbody>
         <tr>
           <td data-label"Component name">How we build</td>
-          <td data-label"Notes">Added a <a href="../about/how-we-build">How we build</a> page to the About section, it includes details about how to build branded experiences using the various repos.</td>
+          <td data-label"Notes">Added a <a href="{{ '../about/how-we-build' | url }}">How we build</a> page to the About section, it includes details about how to build branded experiences using the various repos.</td>
         </tr>
         <tr>
           <td data-label"Component name">Overview</td>
-          <td data-label"Notes">Added an <a href="../get-started">Overview</a> page to the Get started section, it includes details about available libraries, how to access libraries, and includes a video of how to use libraries.</td>
+          <td data-label"Notes">Added an <a href="{{ '../get-started' | url }}">Overview</a> page to the Get started section, it includes details about available libraries, how to access libraries, and includes a video of how to use libraries.</td>
         </tr>
         <tr>
           <td data-label"Component name">Design system kit</td>
-          <td data-label"Notes">Added a <a href="../get-started/design-system-kit">Design system kit</a> page to the Get started section, it includes details about how to get started, how to access the library, working in XD, best practices, contributing, and frequently asked questions.</td>
+          <td data-label"Notes">Added a Design system kit page to the Get started section, it includes details about how to get started, how to access the library, working in XD, best practices, contributing, and frequently asked questions.</td>
         </tr>
         <tr>
           <td data-label"Component name">FTS starter kit</td>
-          <td data-label"Notes">Added an <a href="../get-started/fts-starter-kit">FTS starter kit</a> page to the Get started section, it includes details about what FTS/Drupal is, how get started, how to access the library, working in XD/Drupal, best practices, contributing, and frequently asked questions.</td>
+          <td data-label"Notes">Added an FTS starter kit page to the Get started section, it includes details about what FTS/Drupal is, how get started, how to access the library, working in XD/Drupal, best practices, contributing, and frequently asked questions.</td>
         </tr>
         <tr>
           <td data-label"Component name">Icon libraries<br />Product logo library</td>
-          <td data-label"Notes">Added <a href="../get-started/icon-libraries">Icon libraries</a> and <a href="../get-started/product-logo-library">Product logo library</a> pages to the Get started section, they include details about how to access the libraries, types of icons/logos, colors/sizing, best practices, and frequently asked questions.</td>
+          <td data-label"Notes">Added Icon libraries and Product logo library pages to the Get started section, they include details about how to access the libraries, types of icons/logos, colors/sizing, best practices, and frequently asked questions.</td>
         </tr>
       </tbody>
     </table>
@@ -230,11 +230,11 @@ importElements:
         </tr>
         <tr>
           <td data-label"Component name">Link</td>
-          <td data-label"Notes">Added component to <a href="https://ux.redhat.com/pattern/link/">website</a></td>
+          <td data-label"Notes">Added component to website</td>
         </tr>
         <tr>
           <td data-label"Component name">Popover</td>
-          <td data-label"Notes">Added component to <a href="https://ux.redhat.com/elements/popover/">website</a></td>
+          <td data-label"Notes">Added component to website</td>
         </tr>
       </tbody>
     </table>
@@ -300,7 +300,7 @@ importElements:
         </tr>
         <tr>
           <td data-label="Component name">Progress steps</td>
-          <td data-label="Notes">Added component to <a href="https://ux.redhat.com/elements/progress-steps/">website</a></td>
+          <td data-label="Notes">Added component to website</td>
         </tr>
       </tbody>
     </table>
@@ -389,7 +389,7 @@ importElements:
         </tr>
         <tr>
           <td data-label="Component name">Sticky card</td>
-          <td data-label="Notes">Added <a href="https://xd.adobe.com/view/d20a1c17-375c-4c7f-6827-5fe2f8c2d92f-a43b/screen/ab37d0fd-94c5-423a-ac5e-fe69951d492c/">light theme</a> and <a href="https://xd.adobe.com/view/d20a1c17-375c-4c7f-6827-5fe2f8c2d92f-a43b/screen/49d8b24d-de69-46ca-b099-d8a62b4ef7bd/">dark theme</a> components to <a href="https://ux.redhat.com/foundations/personalization/">Personalization patterns</a> page</td>
+          <td data-label="Notes">Added <a href="https://xd.adobe.com/view/d20a1c17-375c-4c7f-6827-5fe2f8c2d92f-a43b/screen/ab37d0fd-94c5-423a-ac5e-fe69951d492c/">light theme</a> and <a href="https://xd.adobe.com/view/d20a1c17-375c-4c7f-6827-5fe2f8c2d92f-a43b/screen/49d8b24d-de69-46ca-b099-d8a62b4ef7bd/">dark theme</a> components to Personalization patterns page</td>
         </tr>
         <tr>
           <td data-label="Component name">Tooltip</td>
