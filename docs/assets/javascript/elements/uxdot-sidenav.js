@@ -35,7 +35,8 @@ class UxdotSideNav extends LitElement {
     }
 
     #close-button-container {
-      padding: var(--rh-space-lg, 16px);
+      padding-inline: var(--rh-space-md, 8px);
+      padding-block: var(--rh-space-lg, 16px);
       max-height: var(--uxdot-masthead-max-height, 72px);
     }
 
@@ -63,6 +64,12 @@ class UxdotSideNav extends LitElement {
     @media (min-width: 320px) {
       #container {
         width: var(--uxdot-sidenav-width, 320px);
+      }
+    }
+
+    @media (min-width: 567px) {
+      #close-button-container {
+        padding: var(--rh-space-lg, 16px);
       }
     }
 

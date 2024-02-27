@@ -5,7 +5,7 @@ class UxdotMasthead extends LitElement {
 
     #container {
       display: grid;
-      gap: var(--rh-space-lg, 8px);
+      gap: var(--rh-space-lg, 16px);
       grid-template-columns: max-content 1fr max-content;
       max-height: var(--uxdot-masthead-max-height, 72px);
       margin-inline: var(--rh-space-md, 8px);
