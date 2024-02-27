@@ -270,19 +270,15 @@ using elements and patterns from the desaturated theme instead.
 
 <uxdot-best-practice do>
   <uxdot-example slot="image" no-border variant="full" alignment="left">
-    <figure>
-      <img slot="header" src="/assets/color/best-practices-sufficient-contrast-correct.svg" alt="Examples of a blue button against a light gray background and a red CTA against a black background">
-      <figcaption>Use a surface color token for background to ensure accessibility, or use a <a href="../accessibility/#tools">tool</a> to check proper contrast.</figcaption>
-    </figure>
+    <img src="/assets/color/best-practices-sufficient-contrast-correct.svg" alt="Examples of a blue button against a light gray background and a red CTA against a black background">
   </uxdot-example>
+  <p>Use a surface color token for background to ensure accessibility, or use a <a href="{{ '../accessibility/#tools' | url }}">tool</a> to check proper contrast.</p>
 </uxdot-best-practice>
 <uxdot-best-practice dont>
   <uxdot-example slot="image" no-border variant="full" alignment="left">
-    <figure>
-      <img slot="header" src="/assets/color/best-practices-sufficient-contrast-wrong.svg" alt="Examples of a blue button against a red background and a red CTA against a blue background">
-      <figcaption>Do not use a background color that has a similar hue, saturation, or lightness to foreground elements.</figcaption>
-    </figure>
+    <img src="{{ '/assets/color/best-practices-sufficient-contrast-wrong.svg' | url }}" alt="Examples of a blue button against a red background and a red CTA against a blue background">
   </uxdot-example>
+  <p>Do not use a background color that has a similar hue, saturation, or lightness to foreground elements.</p>
 </uxdot-best-practice>
 
 
