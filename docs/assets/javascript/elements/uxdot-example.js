@@ -88,7 +88,6 @@ class UxdotExample extends LitElement {
     super();
     new ColorContextProvider(this);
     new ColorContextConsumer(this);
-    this.headingLevel = 3;
     this.width = '100%';
     this.alignment = 'center';
     this.transparent = false;
