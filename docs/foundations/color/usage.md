@@ -268,14 +268,16 @@ vibration resulting in a poor user experience. If you have a large
 section of color or an image background with low contrast, consider
 using elements and patterns from the desaturated theme instead.
 
-<uxdot-best-practice>
-  <uxdot-example slot="do" no-border variant="full" alignment="left">
+<uxdot-best-practice do>
+  <uxdot-example slot="image" no-border variant="full" alignment="left">
     <figure>
       <img slot="header" src="/assets/color/best-practices-sufficient-contrast-correct.svg" alt="Examples of a blue button against a light gray background and a red CTA against a black background">
       <figcaption>Use a surface color token for background to ensure accessibility, or use a <a href="../accessibility/#tools">tool</a> to check proper contrast.</figcaption>
     </figure>
   </uxdot-example>
-  <uxdot-example slot="dont" no-border variant="full" alignment="left">
+</uxdot-best-practice>
+<uxdot-best-practice dont>
+  <uxdot-example slot="image" no-border variant="full" alignment="left">
     <figure>
       <img slot="header" src="/assets/color/best-practices-sufficient-contrast-wrong.svg" alt="Examples of a blue button against a red background and a red CTA against a blue background">
       <figcaption>Do not use a background color that has a similar hue, saturation, or lightness to foreground elements.</figcaption>
