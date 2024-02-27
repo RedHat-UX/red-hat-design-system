@@ -10,7 +10,7 @@ import '/assets/elements/uxdot-search.js';
 document
   .getElementById('search-input')
   .addEventListener('focus', async function() {
-    const { init } = await import('/assets/search-tokens.js');
+    const { init } = await import('/assets/javascript/search-tokens.js');
     init(document.getElementById('search-tokens'));
   }, { once: true });
 

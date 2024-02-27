@@ -1,5 +1,5 @@
 import { html, render } from 'lit';
-import { fuse } from '/assets/search-tokens.js';
+import { fuse } from '/assets/javascript/search-tokens.js';
 import { tokens } from '@rhds/tokens/meta.js';
 import '@rhds/elements/rh-badge/rh-badge.js';
 

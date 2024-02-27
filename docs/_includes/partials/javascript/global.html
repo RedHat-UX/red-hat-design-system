@@ -8,12 +8,12 @@
   </script>
   {% endfor %}
 
-  <script type="module" src="{{ '/assets/elements/uxdot-skip-navigation.js' | url }}"></script>
-  <script type="module" src="{{ '/assets/elements/uxdot-copy-permalink.js' | url }}"></script>
-  <script type="module" src="{{ '/assets/elements/uxdot-masthead.js' | url }}"></script>
-  <script type="module" src="{{ '/assets/elements/uxdot-sidenav.js' | url }}"></script>
-  <script type="module" src="{{ '/assets/elements/uxdot-header.js' | url }}"></script>
-  <script type="module" src="{{ '/assets/elements/uxdot-example.js' | url }}"></script>
+  <script type="module" src="{{ '/assets/javascript/elements/uxdot-skip-navigation.js' | url }}"></script>
+  <script type="module" src="{{ '/assets/javascript/elements/uxdot-copy-permalink.js' | url }}"></script>
+  <script type="module" src="{{ '/assets/javascript/elements/uxdot-masthead.js' | url }}"></script>
+  <script type="module" src="{{ '/assets/javascript/elements/uxdot-sidenav.js' | url }}"></script>
+  <script type="module" src="{{ '/assets/javascript/elements/uxdot-header.js' | url }}"></script>
+  <script type="module" src="{{ '/assets/javascript/elements/uxdot-example.js' | url }}"></script>
 
   <script type="module">
     import { PfButton } from '@patternfly/elements/pf-button/pf-button.js';
@@ -23,5 +23,5 @@
   </script>
 
   <script type="module">
-  if (!('shadowRootMode' in HTMLTemplateElement.prototype)) { import('/assets/dsd-polyfill.js'); }
+  if (!('shadowRootMode' in HTMLTemplateElement.prototype)) { import('/assets/javascript/dsd-polyfill.js'); }
   </script>

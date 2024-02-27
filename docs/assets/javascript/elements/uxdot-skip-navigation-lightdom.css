@@ -1,0 +1,32 @@
+uxdot-skip-navigation > a {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: var(--rh-space-sm, 6px);
+  color: var(--rh-color-text-primary-on-light, #151515);
+  border-inline:
+    var(--rh-border-width-sm, 1px)
+    solid
+    var(--rh-color-border-strong-on-light, #151515);
+  border-block-end:
+    var(--rh-border-width-sm, 1px)
+    solid
+    var(--rh-color-border-strong-on-light, #151515);
+  border-radius: var(--rh-border-radius-default, 3px);
+  background: var(--rh-color-surface-light, #e0e0e0);
+  transition: top 0.5s ease-out;
+  z-index: var(--uxdot-skip-navigation-z-index, 5);
+}
+
+uxdot-skip-navigation > a:focus {
+  top: 0;
+  outline-color: transparent;
+  transition: top 0.05s ease-in;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  uxdot-skip-navigation > a {
+    transition-duration: 0.001ms !important;
+  }
+}

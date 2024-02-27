@@ -121,7 +121,7 @@ tags:
 
 </style>
 
-<script type="module" src="{{ '/assets/elements/uxdot-hero.js' | url }}"></script>
+<script type="module" src="{{ '/assets/javascript/elements/uxdot-hero.js' | url }}"></script>
 
 <uxdot-hero compact>
   <h2 slot="header">We create Red&nbsp;Hat digital experiences</h2>

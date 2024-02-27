@@ -15,7 +15,7 @@ importElements:
   - rh-table
 ---
 
-<script type="module" src="{{ '/assets/elements/uxdot-best-practice.js' | url }}"></script>
+<script type="module" src="{{ '/assets/javascript/elements/uxdot-best-practice.js' | url }}"></script>
 
 <link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
 
