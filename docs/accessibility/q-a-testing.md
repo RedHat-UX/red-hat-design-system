@@ -1,5 +1,7 @@
 ---
 title: QA and Testing
+heading: QA and Testing
+permalink: /accessibility/qa-testing/index.html
 tags: 
  - accessibility
 order: 10
