@@ -2,7 +2,11 @@
 
 ## Usage
 
-{% alert state="warning", title="Warning" %} Ensure that the table follows the recommendations on the [accessibility tab](../accessibility) so that the table works with assistive technology. {% endalert %}
+<rh-alert state="warning">
+  <h3 slot="header">Warning</h3>
+  <p>Ensure that the table follows the recommendations on the <a href="{{ '../tab' | url }}">accessibility tab</a> so that the table works with assistive technology.</p>
+</rh-alert>
+
 
 ### Title
 

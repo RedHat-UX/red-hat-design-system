@@ -17,11 +17,13 @@ Menus will trigger an expandable tray when selected and include content or
 tasks that are specific to the website in which it is used. Use the expandable 
 tray to organize a large amount of content in two, three, or four columns.
 
-{% alert state="warning", title="Warning" %}
-  Do not use more than 4 columns in a full-width expandable tray, consider 
+<rh-alert state="warning">
+  <h4 slot="header">Warning</h4>
+  <p>Do not use more than 4 columns in a full-width expandable tray, consider 
   using a component like [Tabs]({{ '/elements/tabs/' | url }}) instead for 
-  more organization options.
-{% endalert %}
+  more organization options.</p>
+</rh-alert>
+
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
   <img src="{{ '../full-width-tray-4-columns.png' | url }}" alt="Primary navigation - full-width expandable tray (four columns)">

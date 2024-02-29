@@ -170,9 +170,11 @@ Keyboard and assistive tech users must also have the ability to perform path- an
 
 The act of focusing on an element should not cause the element to change the interface’s context. For example, if a user places keyboard focus on a link, that action shouldn’t automatically send them to a new page.
 
-{% alert title="Note" %}
-A change in a page’s content does not always mean that the context has changed. Learn more about what constitutes a [change in context](https://www.w3.org/WAI/WCAG21/Understanding/on-focus#dfn-changes-of-context).
-{% endalert %}
+<rh-alert state="info">
+  <h2 slot="header">Note</h2>
+  <p>A change in a page’s content does not always mean that the context has changed. Learn more about what constitutes a <a href="https://www.w3.org/WAI/WCAG21/Understanding/on-focus#dfn-changes-of-context">change in context</a>.</p>
+</rh-alert>
+
 
 If keyboard focus appears to be trapped in a subsection, instructions for exiting this section via keyboard will need to be available. For example, if pressing the tab key does not allow the user to exit an embedded video or learning module on a page, another method (e.g., pressing the <kbd>escape</kbd> key or some key combo) must exist, and instructions must be presented to all users.
 

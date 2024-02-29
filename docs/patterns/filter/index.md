@@ -217,6 +217,11 @@ When the Tab key is pressed repeatedly, the focus indicator moves from top to bo
 A filter uses [space tokens](/tokens/space/) to define spacing 
 values between elements.
 
+
+<uxdot-example width-adjustment="664px">
+  <img src="{{ './filter-spacing-1.svg' | url }}" alt="A filter with spacers">
+</uxdot-example>
+
 <rh-table>
 {% spacerTokensTable 
   headline="",
@@ -226,8 +231,5 @@ values between elements.
 {% endspacerTokensTable %}
 </rh-table>
 
-{% example palette="light",
-            alt="A filter with spacers",
-            src="./filter-spacing-1.svg" %}
 
 {% include 'partials/component/feedback.html' %}
