@@ -51,7 +51,7 @@ importElements:
 Patterns compose elements and tokens with content and validation rules to 
 create uniform, accessible experiences.
 
-<nav class="grid">
+<nav class="grid" aria-label="Patterns">
 {%- for pattern in collections.pattern -%}
 
   {% if pattern.data.title !== 'Patterns' %}
