@@ -1,12 +1,23 @@
-/* stylelint-disable-next-line stylistic/max-line-length */
-@layer reset, fonts, typography, base, layout, thirdparty, not-defined, lightdom, flow, patterns, page, overrides;
+@layer
+  reset,
+  fonts,
+  typography,
+  base,
+  layout,
+  third-party,
+  not-defined,
+  lightdom,
+  flow,
+  patterns,
+  page,
+  overrides;
 
 @import url("not-defined.css") layer(not-defined);
 @import url("reset.css") layer(reset);
 @import url("fonts.css") layer(fonts);
 @import url("typography.css") layer(typography);
 @import url("lightdom.css") layer(lightdom);
-@import url("prism.css") layer(thirdparty);
+@import url("third-party/prism-rhds.css") layer(third-party);
 
 @layer base {
   :is(p, ul, ol, dl) {
@@ -177,6 +188,10 @@
    * Patterns layer for defining component and site patterns
    **/
 
+  /**
+   * KBD and code pattern
+  **/
+
   :where(code) {
     padding-inline: var(--rh-space-xs, 4px);
     background: var(--rh-color-surface-light, #e0e0e0);
@@ -185,10 +200,15 @@
     font-weight: var(--rh-font-weight-code-regular, 400);
   }
 
+  /* prism js, when a code is used in a pre remove the background color */
+  pre:has(code) :where(code) {
+    background: none;
+  }
+
   :where(kbd) {
     --_uxdot-kbd-color-border: var(--rh-color-border-subtle-on-light, #c7c7c7);
 
-    background-color: var(--rh-color-surface-lightest, #fff);
+    background-color: var(--rh-color-surface-lightest, #ffffff);
     border-radius: var(--rh-border-radius-default, 3px);
     border: var(--rh-border-width-sm, 1px) solid var(--_uxdot-kbd-color-border);
     box-shadow: 0 2px 0 1px var(--_uxdot-kbd-color-border);
@@ -199,7 +219,7 @@
     display: inline-block;
     text-align: center;
     padding: 2px var(--rh-space-sm, 6px);
-    margin-inline: var(--rh-space-xs, 4px); 
+    margin-inline: var(--rh-space-xs, 4px);
     position: relative;
     top: -1px;
   }
@@ -220,8 +240,6 @@
     position: unset;
     top: unset;
   }
-
-
 
   /**
    * Sticky header pattern

@@ -5,11 +5,15 @@
  * @see https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript+bash+jsx&plugins=toolbar+copy-to-clipboard
  */
 
+/**
+ * RHDS Theme
+ * Based off prism.css
+ **/
+
 :is(code, pre)[class*="language-"] {
   color: black;
   background: none;
   text-shadow: 0 1px white;
-  font-family: var(--rh-font-family-code);
   font-size: 1em;
   text-align: left;
   white-space: pre;
@@ -196,5 +200,3 @@ div.code-toolbar > .toolbar span:focus {
   color: inherit;
   text-decoration: none;
 }
-
-
