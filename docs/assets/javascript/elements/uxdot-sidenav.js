@@ -1,5 +1,7 @@
 import { LitElement, html, css } from 'lit';
 
+import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
+
 import '@patternfly/elements/pf-icon/pf-icon.js';
 
 /* ************* */
@@ -92,6 +94,11 @@ class UxdotSideNav extends LitElement {
 
   #closeButton = null;
 
+  #tabindex = new RovingTabindexController(this);
+
+  #nav = [];
+  #navItems = [];
+
   async connectedCallback() {
     super.connectedCallback();
 
@@ -119,7 +126,7 @@ class UxdotSideNav extends LitElement {
           </button>
         </div>
         <nav part="nav" aria-label="Main menu">
-          <slot></slot>
+          <slot @slotchange="${this.#onSlotChange}"></slot>
         </nav>
       </div>
       <div id="overlay" part="overlay" ?hidden=${!this.open}></div>
@@ -128,6 +135,18 @@ class UxdotSideNav extends LitElement {
 
   updated() {
     this.#closeButton = this.shadowRoot?.getElementById('close-button');
+  }
+
+  async #onSlotChange() {
+    await this.updateComplete;
+    const slot = this.shadowRoot?.querySelector('slot');
+    this.#nav = Array.from(slot.assignedElements({ flatten: true }));
+    this.#nav?.forEach(nav => {
+      this.#navItems = Array.from(
+        nav.querySelectorAll('uxdot-sidenav-dropdown > details > summary, uxdot-sidenav-item > a')
+      );
+    });
+    this.#tabindex.initItems(this.#navItems ?? []);
   }
 
   async toggle() {
