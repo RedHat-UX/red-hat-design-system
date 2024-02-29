@@ -1,6 +1,5 @@
 ---
 title: Disclosure
-heading: Disclosure
 hasToc: true
 order: 30
 tags:

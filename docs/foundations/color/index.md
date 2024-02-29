@@ -1,7 +1,7 @@
 ---
 layout: layouts/pages/basic.njk
 title: Overview
-heading: Color
+sidenavTitle: Color
 order: 10
 hasToc: true
 tags:

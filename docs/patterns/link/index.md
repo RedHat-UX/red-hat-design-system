@@ -1,6 +1,5 @@
 ---
 title: Link
-heading: Link
 order: 70
 layout: layouts/pages/basic.njk
 hasToc: true

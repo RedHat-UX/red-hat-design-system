@@ -1,7 +1,7 @@
 ---
 layout: layouts/pages/basic.njk
 title: Foundations
-heading: Overview
+sidenavTitle: Overview
 order: 0
 tags:
   - foundations

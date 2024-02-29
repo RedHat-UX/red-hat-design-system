@@ -1,6 +1,5 @@
 ---
 title: Video thumbnail
-heading: Video thumbnail
 order: 120
 hasToc: true
 tags:

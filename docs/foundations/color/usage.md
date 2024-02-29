@@ -1,7 +1,6 @@
 ---
 layout: layouts/pages/basic.njk
 title: Usage
-heading: Color
 hasToc: true
 tags:
   - color

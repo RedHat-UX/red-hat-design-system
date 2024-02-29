@@ -1,6 +1,5 @@
 ---
 title: Sticky banner
-heading: Sticky banner
 order: 100
 hasToc: true
 tags:

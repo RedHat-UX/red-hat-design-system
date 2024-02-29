@@ -1,6 +1,5 @@
 ---
 title: Search bar
-heading: Search bar
 order: 80
 layout: layouts/pages/basic.njk
 hasToc: true

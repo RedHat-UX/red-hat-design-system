@@ -1,6 +1,6 @@
 ---
 title: QA and Testing
-heading: QA and Testing
+sidenavTitle: QA and Testing
 permalink: /accessibility/qa-testing/index.html
 tags: 
  - accessibility
