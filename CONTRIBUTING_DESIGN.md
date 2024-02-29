@@ -129,7 +129,7 @@ Here's a two simple examples:
 
 ```jinja
 ---
-layout: blayouts/pages/basic.njk
+layout: layouts/pages/basic.njk
 title: Example page
 ---
 ```
