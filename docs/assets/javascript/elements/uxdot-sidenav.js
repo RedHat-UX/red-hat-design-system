@@ -118,7 +118,7 @@ class UxdotSideNav extends LitElement {
             <pf-icon set="patternfly" icon="close" size="lg"></pf-icon>
           </button>
         </div>
-        <nav part="nav">
+        <nav part="nav" aria-label="Main menu">
           <slot></slot>
         </nav>
       </div>
