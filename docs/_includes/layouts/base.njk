@@ -1,0 +1,20 @@
+{%- set extraPageClasses = bodyClasses or "" -%}
+{%- if title -%}
+  {% set extraPageClasses = extraPageClasses + ' page-' + title | slug -%}
+{%- endif -%}
+
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    {% include "../partials/meta.html" %}
+
+    <link rel="stylesheet" href="{{ '/styles/styles.css' | url }}">
+
+    {% include "../partials/javascript/global.html" %}
+  </head>
+
+  <body class="{{ extraPageClasses }}">
+    <uxdot-skip-navigation><a href="#main">Skip to main content</a></uxdot-skip-navigation>
+    {{ content | safe }}
+  </body>
+</html>

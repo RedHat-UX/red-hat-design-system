@@ -1,5 +1,3 @@
-
-
 ## Usage
 
 Use a dialog to communicate critical information that requires input or action. 
@@ -12,7 +10,6 @@ effective when used correctly, but it should be used sparingly to limit
 disruption.
 
 
-
 ### When to use a dialog
 
 A dialog is commonly used for short tasks. If users need to perform a task 
@@ -21,30 +18,30 @@ not use a dialog unless the information or task within is vital to user success
 and worth disrupting their workflow.
 
 
-
 ## Sizes
 
 There are two dialog container sizes. Choose a size that works best for the 
 amount of available content.
+
 
 ### Fixed-width
 
 The fixed-width dialog container works well for environments with a fixed grid, 
 like marketing pages.
 
-{% example palette="none",
-           alt="A dialog container spanning a 12-column grid that is fixed in the center of the page",
-           src="../dialog-width-fixed.png" %}
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../dialog-width-fixed.png' | url }}" alt="A dialog container spanning a 12-column grid that is fixed in the center of the page">
+</uxdot-example>
+
 
 ### Full-width
 
 The full-width dialog container works well for environments with a more fluid 
 grid like apps or dashboards.
 
-{% example palette="none",
-           alt="A dialog container spanning a 6-column fluid grid that takes up the whole screen",
-           src="../dialog-width-full.png" %}
-
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../dialog-width-full.png' | url }}" alt="A dialog container spanning a 6-column fluid grid that takes up the whole screen">
+</uxdot-example>
 
 
 ## Variants
@@ -61,18 +58,20 @@ actions. When confirming a non-destructive action, do the following:
   non-destructive action
 - Be specific about what will happen when an action is confirmed
 
-{% example palette="none",
-           alt="Non-destructive confirmation dialog example with a blue primary button",
-           src="../dialog-confirmation-non-destructive.png" %}
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../dialog-confirmation-non-destructive.png' | url }}" alt="Non-destructive confirmation dialog example with a blue primary button">
+</uxdot-example>
+
 
 When confirming a destructive action, do the following.
 
 - Use a primary button again or if the action carries serious consequences, use 
   a [danger button](https://ux.redhat.com/elements/button/) instead
 
-{% example palette="none",
-           alt="Destructive confirmation dialog example with a red primary button",
-           src="../dialog-confirmation-destructive.png" %}
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../dialog-confirmation-destructive.png' | url }}" alt="Destructive confirmation dialog example with a red primary button">
+</uxdot-example>
+
 
 ### Error
 
@@ -80,9 +79,9 @@ Use an error dialog to inform users of problems that interrupt normal or
 expected behavior. Briefly contextualize the problem, explain why it happened, 
 and then provide actionable steps toward a solution.
 
-{% example palette="none",
-           alt="Error dialog example with a blue primary button",
-           src="../dialog-error.png" %}
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../dialog-error.png' | url }}" alt="Error dialog example with a blue primary button">
+</uxdot-example>
 
 ### Passive
 
@@ -97,19 +96,19 @@ using a passive dialog, consider the following:
   alert](https://ux.redhat.com/elements/alert/) or [toast 
   alert](https://ux.redhat.com/elements/alert/) instead
 
-{% example palette="none",
-           alt="Passive dialog example with a blue primary button",
-           src="../dialog-passive.png" %}
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../dialog-passive.png' | url }}" alt="Passive dialog example with a blue primary button">
+</uxdot-example>
+
 
 ### Video player dialog
 
 A video can replace a fixed-width dialog container, it should have the same 
 width and include a close button.
 
-{% example palette="none",
-           alt="A dialog video player spanning a 12-column grid with a white close button",
-           src="../dialog-video-player.png" %}
-
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../dialog-video-player.png' | url }}" alt="A dialog video player spanning a 12-column grid with a white close button">
+</uxdot-example>
 
 
 ## Writing content
@@ -142,11 +141,35 @@ from the headline for better scannability.
 
 The recommended maximum character and line counts for the elements of a dialog are listed below and include spaces.
 
-| Element {style="width: 50%" } | Character count | Line count |
-| ----------------------------- | --------------- | ---------- |
-| Title text                    |       40        |     1      |
-| Body text                     |       175       |     2      |
-| Button text                   |       30        |     1      |
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Element" style="width: 50%">Element</th>
+        <th scope="col" data-label="Character count">Character count</th>
+        <th scope="col" data-label="Line count">Line count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Element">Title text</td>
+        <td data-label="Character count">40</td>
+        <td data-label="Line count">1</td>
+      </tr>
+      <tr>
+        <td data-label="Element">Body text</td>
+        <td data-label="Character count">175</td>
+        <td data-label="Line count">2</td>
+      </tr>
+      <tr>
+        <td data-label="Element">Button text</td>
+        <td data-label="Character count">30</td>
+        <td data-label="Line count">1</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
+
 
 ### Overflow content
 
@@ -156,10 +179,9 @@ The content should visibly fade at the end of the dialog body section to
 indicate there is additional content out of view. Dialog content should never 
 scroll horizontally.
 
-{% example palette="none",
-           alt="Dialog with a long amount of content showing visible gradient at the bottom of the body text section",
-           src="../dialog-overflow.png" %}
-
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../dialog-overflow.png' | url }}" alt="Dialog with a long amount of content showing visible gradient at the bottom of the body text section">
+</uxdot-example>
 
 
 ## Layout
@@ -169,17 +191,16 @@ scroll horizontally.
 By default, a dialog container is horizontally and vertically centered on top of 
 the backdrop and viewport.
 
-{% example palette="none",
-           alt="Dialog with container horizontally and vertically centered",
-           src="../dialog-placement-center.png" %}
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../dialog-placement-center.png' | url }}" alt="Dialog with container horizontally and vertically centered">
+</uxdot-example>
 
 By default, a dialog container is horizontally and vertically centered on top of 
 the backdrop and viewport.
 
-{% example palette="none",
-           alt="Dialog with container horizontally centered, but positioned at the top of the page",
-           src="../dialog-placement-top.png" %}
-
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../dialog-placement-top.png' | url }}" alt="Dialog with container horizontally centered, but positioned at the top of the page">
+</uxdot-example>
 
 
 ## Responsive design
@@ -189,19 +210,18 @@ the backdrop and viewport.
 Both the fixed-width and full-width dialog containers can be used on large 
 breakpoints.
 
-{% example palette="none",
-           alt="A dialog container on a large breakpoint",
-           src="../dialog-breakpoint-large.png" %}
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../dialog-breakpoint-large.png' | url }}" alt="A dialog container on a large breakpoint">
+</uxdot-example>
 
 ### Small breakpoints
 
 As breakpoints get smaller, the fixed-width dialog container will change to 
 full-width and become taller.
 
-{% example palette="none",
-           alt="Two dialog containers on small breakpoints, one tablet size and one mobile size",
-           src="../dialog-breakpoint-small.png" %}
-
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../dialog-breakpoint-small.png' | url }}" alt="Two dialog containers on small breakpoints, one tablet size and one mobile size">
+</uxdot-example>
 
 
 ## Best practices
@@ -212,25 +232,26 @@ Do not add elements that will make users spend more time reading a dialog, move
 them to the main page instead. A dialog is disruptive, so it is important to 
 bring users back to their original workflow as quickly as possible.
 
-{% example palette="wrong",
-           alt="A dialog container with a three-panel accordion which is incorrect usage",
-           src="../dialog-best-practice-1.png" %}
+<uxdot-example width-adjustment="872px" danger>
+  <img src="{{ '../dialog-best-practice-1.png' | url }}" alt="A dialog container with a three-panel accordion which is incorrect usage">
+</uxdot-example>
+
 
 ### Unclear context
 
 Make sure to write clearly about what will happen when users confirm a specific 
 action.
 
-{% example palette="wrong",
-           alt="A dialog container with vague text which is incorrect usage",
-           src="../dialog-best-practice-2.png" %}
+<uxdot-example width-adjustment="872px" danger>
+  <img src="{{ '../dialog-best-practice-2.png' | url }}" alt="A dialog container with vague text which is incorrect usage">
+</uxdot-example>
+
 
 ### Two many buttons
 
 Do not use more than two buttons in a dialog and do not add or change button 
 variants.
 
-{% example palette="wrong",
-           alt="A dialog container with three buttons which is incorrect usage",
-           src="../dialog-best-practice-3.png" %}
-
+<uxdot-example width-adjustment="872px" danger>
+  <img src="{{ '../dialog-best-practice-3.png' | url }}" alt="A dialog container with three buttons which is incorrect usage">
+</uxdot-example>

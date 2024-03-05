@@ -1,6 +1,7 @@
 {% renderInstall %}{% endrenderInstall %}
 
 {% band header="Usage" %}
+
 ```html
 <rh-stat>
   <span slot="statistic">Statistic Placeholder</span>

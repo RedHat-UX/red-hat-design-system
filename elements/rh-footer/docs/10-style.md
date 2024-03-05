@@ -9,22 +9,26 @@ websites.
 
 ### Anatomy
 
-{% example palette="none",
-          alt="Image of a footer showing lots of annotation numbers next to various styles and other elements",
-          src="../footer-anatomy.png" %}
-
-1) Website logo
-2) Social media links
-3) Divider line
-4) Navigation title
-5) Navigation link
-6) Body text
-7) Call to action
-8) Language selector
-9) Website-specific footer
-10) redhat.com link
-11) Universal footer
-  {.example-notes}
+<figure>
+  <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
+    <img src="{{ '../footer-anatomy.png' | url }}" alt="Image of a footer showing lots of annotation numbers next to various styles and other elements">
+  </uxdot-example>
+  <figcaption>
+    <ol>
+      <li>Website logo</li>
+      <li>Social media links</li>
+      <li>Divider line</li>
+      <li>Navigation title</li>
+      <li>Navigation link</li>
+      <li>Body text</li>
+      <li>Call to action</li>
+      <li>Language selector</li>
+      <li>Website-specific footer</li>
+      <li>redhat.com link</li>
+      <li>Universal footer</li>
+    </ol>
+  </figcaption>
+</figure>
 
 ### Grays
 
@@ -32,65 +36,136 @@ The website-specific footer background color is a slightly lighter gray than the
 universal footer background color. This variant creates separation and helps 
 distinguish both footers from each other.
 
-{% example palette="none",
-          alt="Image of a footer with no elements except for backgrounds; the top background is dark gray and the bottom is black",
-          src="../footer-grays.png" %}
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../footer-grays.png' | url }}" alt="Image of a footer with no elements except for backgrounds; the top background is dark gray and the bottom is black">
+</uxdot-example>
+
 
 ## Theme
 
 A footer only has one theme, but visually it could be considered in the dark 
 theme.
 
-{% example palette="none",
-          alt="Image of a large footer",
-          src="../footer-theme.png" %}
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../footer-theme.png' | url }}" alt="Image of a large footer">
+</uxdot-example>
 
-{% tokensTable %}
 
 ### Website-specific footer 
 
-| Property {style="width: 50%" }           | Current value        |
-| ---------------------------------------- | -------------------- |
-| Color - social media icons               | `#A3A3A3`            |
-| Color - divider lines                    | `#707070`            |
-| Border width - divider lines             | `1px`<br>`0.0625rem` |
-| Color - titles and link text             | `#FFFFFF`            |
-| Color - body text                        | `#C7C7C7`            |
-| Color - call to action                   | `#73BCF7`            |
-| Color - language selector icons and text | `#C7C7C7`            |
-| Color - background                       | `#292929`            |
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Property">Property</th>
+        <th scope="col" data-label="Current value">Current value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Property">Color - social media icons</td>
+        <td data-label="Current value">#A3A3A3</td>
+      </tr>
+      <tr>
+        <td data-label="Property">Color - divider lines</td>
+        <td data-label="Current value">#707070</td>
+      </tr>
+      <tr>
+        <td data-label="Property">Border width - divider lines</td>
+        <td data-label="Current value">1px<br>0.0625rem</td>
+      </tr>
+      <tr>
+        <td data-label="Property">Color - titles and link text</td>
+        <td data-label="Current value">#FFFFFF</td>
+      </tr>
+      <tr>
+        <td data-label="Property">Color - body text</td>
+        <td data-label="Current value">#C7C7C7</td>
+      </tr>
+      <tr>
+        <td data-label="Property">Color - call to action</td>
+        <td data-label="Current value">#73BCF7</td>
+      </tr>
+      <tr>
+        <td data-label="Property">Color - language selector icons and text</td>
+        <td data-label="Current value">#C7C7C7</td>
+      </tr>
+      <tr>
+        <td data-label="Property">Color - background</td>
+        <td data-label="Current value">#292929</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
 
-{% endtokensTable %}
 
-
-{% tokensTable %}
 ### Universal footer 
 
-| Property {style="width: 50%" } | Current value |
-| ----------------------------- | -------------- |
-| Color - Red Hat fedora         | `#A3A3A3`     |
-| Color - link text              | `#FFFFFF`     |
-| Color - body text              | `#C7C7C7`     |
-| Color - background             | `#151515`     |
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Property">Property</th>
+        <th scope="col" data-label="Current value">Current value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Property">Color - social media icons</td>
+        <td data-label="Current value">#A3A3A3</td>
+      </tr>
+      <tr>
+        <td data-label="Property">Color - link text</td>
+        <td data-label="Current value">#FFFFFF</td>
+      </tr>
+      <tr>
+        <td data-label="Property">Color - body text</td>
+        <td data-label="Current value">#C7C7C7</td>
+      </tr>
+      <tr>
+        <td data-label="Property">Color - background</td>
+        <td data-label="Current value">#151515</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
 
-{% endtokensTable %}
 
 ### Language selector 
 
-{% example palette="none",
-          alt="Image of a footer with the language selector menu open",
-          src="../footer-language-selector.png" %}
+<uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
+  <img src="{{ '../footer-language-selector.png' | url }}" alt="Image of a footer with the language selector menu open">
+</uxdot-example>
 
-{% tokensTable %}          
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Property">Property</th>
+        <th scope="col" data-label="Current value">Current value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Property">Color - link text</td>
+        <td data-label="Current value">#FFFFFF</td>
+      </tr>
+      <tr>
+        <td data-label="Property">Color - menu border</td>
+        <td data-label="Current value">#707070</td>
+      </tr>
+      <tr>
+        <td data-label="Property">Color - menu surface</td>
+        <td data-label="Current value">#151515</td>
+      </tr>
+      <tr>
+        <td data-label="Property">Border radius - menu surface</td>
+        <td data-label="Current value">8px<br>0.5rem</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
 
-| Property {style="width: 50%" } | Current value     |
-| ------------------------------ | ----------------- |
-| Color - link text              | `#FFFFFF`         |
-| Color - menu border            | `#707070`         |
-| Color - menu surface           | `#151515`         |
-| Border radius - menu surface   | `8px`<br>`0.5rem` |
-
-{% endtokensTable %}
 
 ## Configuration
 
@@ -98,138 +173,213 @@ A footer is a group of regions where various types of content can be organized.
 Within these regions, position and alignment are somewhat rigid in order to 
 maintain consistency.
 
-{% example palette="none",
-          alt="Image of how a footer is architected showing lots of alignment examples",
-          src="../footer-configuration.png" %}
+<uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
+  <img src="{{ '../footer-configuration.png' | url }}" alt="Image of how a footer is architected showing lots of alignment examples">
+</uxdot-example>
+
 
 ## Space 
 
-{% example palette="none",
-          alt="Image of a desktop footer showing space values in between elements",
-          src="../footer-space-desktop.png" %}
+<uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
+  <img src="{{ '../footer-space-desktop.png' | url }}" alt="Image of a desktop footer showing space values in between elements">
+</uxdot-example>
 
-{% example palette="none",
-          alt="Image of a tablet footer showing space values in between elements",
-          src="../footer-space-tablet.png" %}
+<uxdot-example width-adjustment="768px" variant="full" alignment="left" no-border>
+  <img src="{{ '../footer-space-tablet.png' | url }}" alt="Image of a tablet footer showing space values in between elements">
+</uxdot-example>
 
-{% example palette="none",
-          alt="Image of a mobile footer showing space values in between elements",
-          src="../footer-space-mobile.png" %}
+<uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border>
+  <img src="{{ '../footer-space-mobile.png' | url }}" alt="Image of a mobile footer showing space values in between elements">
+</uxdot-example>
 
-{% example palette="none",
-          alt="Image of a footer showing space values in the language selector menu",
-          src="../footer-space-language-selector.png" %}
+<uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
+  <img src="{{ '../footer-space-language-selector.png' | url }}" alt="Image of a footer showing space values in the language selector menu">
+</uxdot-example>
 
+<rh-table>
 {% spacerTokensTable 
   headline="Spacing tokens",
   caption='',
   headingLevel="4",
   tokens="--rh-space-md, --rh-space-lg, --rh-space-xl, --rh-space-2xl, --rh-space-3xl" %}
 {% endspacerTokensTable %}
+</rh-table>
 
 ## Interaction states 
 
 ### Hover 
 
-{% example palette="none",
-          alt="Hover state examples within a footer",
-          src="../footer-interaction-state-hover.png" %}
+<uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
+  <img src="{{ '../footer-interaction-state-hover.png' | url }}" alt="Hover state examples within a footer">
+</uxdot-example>
 
-{% tokensTable %}
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Property">Property</th>
+        <th scope="col" data-label="Light theme">Light theme</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Property">Color - social media icons</td>
+        <td data-label="Light theme">#C7C7C7</td>
+      </tr>
+      <tr>
+        <td data-label="Property">Text decoration - link text</td>
+        <td data-label="Light theme">Underline</td>
+      </tr>
+      <tr>
+        <td data-label="Property">Color - call to action</td>
+        <td data-label="Light theme">#BEE1F4</td>
+      </tr>
+      <tr>
+        <td data-label="Property">Color - language selector icons and text</td>
+        <td data-label="Light theme">#FFFFFF</td>
+      </tr>
+      <tr>
+        <td data-label="Property">Color - Red Hat fedora</td>
+        <td data-label="Light theme">#C7C7C7</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
 
-| Property {style="width: 50%" }           | Light theme |
-| ---------------------------------------- | ----------- |
-| Color - social media icons               | `#C7C7C7`   |
-| Text decoration - link text              | `Underline` |
-| Color - call to action                   | `#BEE1F4`   |
-| Color - language selector icons and text | `#FFFFFF`   |
-| Color - Red Hat fedora                   | `#C7C7C7`   |
-
-{% endtokensTable %}
 
 ### Hover - language selector 
 
-{% example palette="none",
-          alt="Hover state example within the language selector menu",
-          src="../footer-ls-interaction-state-hover.png" %}
+<uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
+  <img src="{{ '../footer-ls-interaction-state-hover.png' | url }}" alt="Hover state example within the language selector menu">
+</uxdot-example>
 
-{% tokensTable %}
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Property">Property</th>
+        <th scope="col" data-label="Light theme">Light theme</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Property">Text decoration - link text</td>
+        <td data-label="Light theme">Underline</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
 
-| Property {style="width: 50%" } | Light theme |
-| ------------------------------ | ----------- |
-| Text decoration - link text    | `Underline` |
-
-{% endtokensTable %}
 
 ### Focus 
 
-{% alert title="Helpful tip" %}
-The Focus state has the same styles as the Hover state.
-{% endalert %}
+<rh-alert state="info">
+  <h4 slot="header">Helpful tip</h4>
+  <p>The Focus state has the same styles as the Hover state.</p>
+</rh-alert>
 
-{% example palette="none",
-          alt="Focus state examples within a footer",
-          src="../footer-interaction-state-focus.png" %}
+<uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
+  <img src="{{ '../footer-interaction-state-focus.png' | url }}" alt="Focus state examples within a footer">
+</uxdot-example>
 
-{% tokensTable %}
-
-| Property {style="width: 50%" } | Light theme |
-| ------------------------------ | ----------- |
-| Color - focus ring             | `#73BCF7`   |
-
-{% endtokensTable %}
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Property">Property</th>
+        <th scope="col" data-label="Light theme">Light theme</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Property">Color - focus ring</td>
+        <td data-label="Light theme">#73BCF7</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
 
 ### Focus - language selector 
 
-{% alert title="Helpful tip" %}
-The Focus state has the same styles as the Hover state.
-{% endalert %}
+<rh-alert state="info">
+  <h4 slot="header">Helpful tip</h4>
+  <p>The Focus state has the same styles as the Hover state.</p>
+</rh-alert>
 
-{% example palette="none",
-          alt="Focus state example within the language selector menu",
-          src="../footer-ls-interaction-state-focus.png" %}
+<uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
+  <img src="{{ '../footer-ls-interaction-state-focus.png' | url }}" alt="Focus state example within the language selector menu">
+</uxdot-example>
 
-{% tokensTable %}
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Property">Property</th>
+        <th scope="col" data-label="Light theme">Light theme</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Property">Color - focus ring</td>
+        <td data-label="Light theme">#73BCF7</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
 
-| Property {style="width: 50%" } | Light theme |
-| ------------------------------ | ----------- |
-| Color - focus ring             | `#73BCF7`   |
-
-{% endtokensTable %}
 
 ### Active 
 
-{% alert title="Helpful tip" %}
-The Active state has the same styles as the Hover state.
-{% endalert %}
+<rh-alert state="info">
+  <h4 slot="header">Helpful tip</h4>
+  <p>The Active state has the same styles as the Hover state.</p>
+</rh-alert>
 
-{% example palette="none",
-          alt="Active state examples within a footer",
-          src="../footer-interaction-state-active.png" %}
+<uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
+  <img src="{{ '../footer-interaction-state-active.png' | url }}" alt="Active state examples within a footer">
+</uxdot-example>
 
-
-{% tokensTable %}
-
-| Property {style="width: 50%" } | Light theme |
-| ------------------------------ | ----------- |
-| Color - focus ring             | `#73BCF7`   |
-
-{% endtokensTable %}
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Property">Property</th>
+        <th scope="col" data-label="Light theme">Light theme</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Property">Color - focus ring</td>
+        <td data-label="Light theme">#73BCF7</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
 
 ### Active - language selector 
 
-{% alert title="Helpful tip" %}
-The Active state has the same styles as the Hover state.
-{% endalert %}
+<rh-alert state="info">
+  <h4 slot="header">Helpful tip</h4>
+  <p>The Active state has the same styles as the Hover state.</p>
+</rh-alert>
 
-{% example palette="none",
-          alt="Active state example within the language selector menu",
-          src="../footer-ls-interaction-state-active.png" %}
+<uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
+  <img src="{{ '../footer-ls-interaction-state-active.png' | url }}" alt="Active state example within the language selector menu">
+</uxdot-example>
 
-{% tokensTable %}
-
-| Property {style="width: 50%" } | Light theme |
-| ------------------------------ | ----------- |
-| Color - focus ring             | `#73BCF7`   |
-
-{% endtokensTable %}
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Property">Property</th>
+        <th scope="col" data-label="Light theme">Light theme</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Property">Color - focus ring</td>
+        <td data-label="Light theme">#73BCF7</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>

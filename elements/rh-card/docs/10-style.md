@@ -1,161 +1,162 @@
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--rh-space-4xl, 64px);
+  }
+
+  @container container (min-width: 567px) {
+    .grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>
+
 
 ## Style
-  Cards can be used in light and dark themes. They act as a blank canvas where
-  elements and styles can be placed inside.
 
-  {% example palette="light",
-             class="inline-flex centered",
-             width=599,
-             style="margin-block:var(--rh-space-2xl);",
-             alt="A breakdown of the parts of a card",
-             src="../card-style.svg" %}
+Cards can be used in light and dark themes. They act as a blank canvas where
+elements and styles can be placed inside.
 
+<uxdot-example width-adjustment="600px">
+  <img src="{{ '../card-style.svg' | url }}" alt="A breakdown of the parts of a card">
+</uxdot-example>
 
 ## Theme
 
-  {% example palette="light",
-             class="inline-flex centered",
-             width=784,
-             alt="Card in light theme",
-             src="../card-theme-light.svg" %}
+<uxdot-example width-adjustment="784px">
+  <img src="{{ '../card-theme-light.svg' | url }}" alt="Card in light theme">
+</uxdot-example>
 
-  {% example palette="darkest",
-             class="inline-flex centered",
-             width=784,
-             alt="Card in dark theme",
-             src="../card-theme-dark.svg" %}
+<uxdot-example color-palette="darkest" width-adjustment="784px">
+  <img src="{{ '../card-theme-dark.svg' | url }}" alt="Card in dark theme">
+</uxdot-example>
 
 ### Color
-  Cards are secondary layouts that shouldn’t command too much attention and
-  blend in with whatever background they’re placed on. The card container is the
-  only required element and it consists of a background color and rounded
-  corners. A thin border is required if the card background is the same color as
-  the background it's placed on.
 
-  <div class="multi-column--min-400-wide margin-top--4">
-    <figure>
-      {% example palette="light",
-                 class="centered",
-                 width=242,
-                 alt="White card colors",
-                 src="../card-color-light-white.svg" %}
-      <figcaption class="footnote">
-        A white card with a light gray border is the most common use case in the
-        light theme
-      </figcaption>
-    </figure>
-    <figure>
-      {% example palette="light",
-                 class="centered",
-                 width=242,
-                 alt="Gray card colors",
-                 src="../card-color-light-gray.svg" %}
-      <figcaption class="footnote">
-        A light gray card without a border can also be used as an alternate
-        option
-      </figcaption>
-    </figure>
-    <figure>
-      {% example palette="darkest",
-                 class="centered",
-                 width=242,
-                 alt="Black card colors",
-                 src="../card-color-dark-black.svg" %}
-      <figcaption class="footnote">
-        A black card with a dark gray border is the most common use case in the
-        dark theme
-      </figcaption>
-    </figure>
-    <figure>
-      {% example palette="darkest",
-                 class="centered",
-                 width=242,
-                 alt="Dark theme gray card colors",
-                 src="../card-color-dark-gray.svg" %}
-     <figcaption class="footnote">
-       A dark gray card without a border can also be used as an alternate option
-     </figcaption>
-    </figure>
-  </div>
+Cards are secondary layouts that shouldn’t command too much attention and
+blend in with whatever background they’re placed on. The card container is the
+only required element and it consists of a background color and rounded
+corners. A thin border is required if the card background is the same color as
+the background it's placed on.
+
+
+<div class="grid">
+  <figure>
+    <uxdot-example width-adjustment="242px">
+      <img src="{{ '../card-color-light-white.svg' | url }}" alt="White card colors">
+    </uxdot-example>
+    <figcaption>
+      A white card with a light gray border is the most common use case in the
+      light theme
+    </figcaption>
+  </figure>
+  <figure>
+    <uxdot-example width-adjustment="242px">
+      <img src="{{ '../card-color-light-gray.svg' | url }}" alt="Gray card colors">
+    </uxdot-example>
+    <figcaption>
+      A light gray card without a border can also be used as an alternate option
+    </figcaption>
+  </figure>
+  <figure>
+    <uxdot-example color-palette="darkest" width-adjustment="242px">
+      <img src="{{ '../card-color-dark-black.svg' | url }}" alt="Black card colors">
+    </uxdot-example>
+    <figcaption>
+      A black card with a dark gray border is the most common use case in the
+      dark theme
+    </figcaption>
+  </figure>
+  <figure>
+    <uxdot-example color-palette="darkest" width-adjustment="242px">
+      <img src="{{ '../card-color-dark-gray.svg' | url }}" alt="Dark theme gray card colors">
+    </uxdot-example>
+    <figcaption>
+      A dark gray card without a border can also be used as an alternate option
+    </figcaption>
+  </figure>
+</div>
+
 
 ### Layout
-  A card features header, body, and footer sections. Those sections should
-  include a limited amount of content to ensure that the card doesn’t become too
-  tall.
 
-  <div class="multi-column--min-400-wide">
-    {% example palette="light",
-               class="centered",
-               width=360,
-               alt="Example of a card layout",
-               src="../card-layout-1.svg" %}
-    {% example palette="light",
-               class="centered",
-               width=360,
-               alt="Anatomy of a card layout",
-               src="../card-layout-2.svg" %}
-  </div>
+A card features header, body, and footer sections. Those sections should
+include a limited amount of content to ensure that the card doesn’t become too
+tall.
+
+<div class="grid">
+  <uxdot-example width-adjustment="360px">
+    <img src="{{ '../card-layout-1.svg' | url }}" alt="Example of a card layout">
+  </uxdot-example>
+
+  <uxdot-example width-adjustment="360px">
+    <img src="{{ '../card-layout-2.svg' | url }}" alt="Anatomy of a card layout">
+  </uxdot-example>
+
+</div>
 
 ### Header
-  The header section is required, it introduces what the content is and
-  shouldn’t be hidden.
+
+The header section is required, it introduces what the content is and
+shouldn’t be hidden.
 
 ### Body
-  The body section can include a headline, text, an icon, or sometimes an image.
-  The body section describes the content in more detail and shouldn’t be hidden.
+
+The body section can include a headline, text, an icon, or sometimes an image.
+The body section describes the content in more detail and shouldn’t be hidden.
 
 ### Footer
-  The footer section can include normal links or a call to action. It can be
-  hidden if necessary if there’s content included where a user can take an
-  action.
+
+The footer section can include normal links or a call to action. It can be
+hidden if necessary if there’s content included where a user can take an
+action.
 
 
 ## Responsive design
 
 ### Breakpoints
-  Cards will get thinner or move below each other on smaller screens.
+
+Cards will get thinner or move below each other on smaller screens.
 
 ### Large screens
-  {% example
-      palette="light",
-      width=784,
-      alt="Card layout on desktop",
-      src="../card-layout-desktop.svg"
-  %}
+
+<uxdot-example width-adjustment="784px" variant="full" no-border alignment="left">
+  <img src="{{ '../card-layout-desktop.svg' | url }}" alt="Card layout on desktop">
+</uxdot-example>
 
 ### Small screens
-  {% example
-      palette="light",
-      width=360,
-      alt="Card layout on mobile",
-      src="../card-layout-mobile.svg"
-  %}
 
+<uxdot-example width-adjustment="360px" variant="full" no-border alignment="left">
+  <img src="{{ '../card-layout-mobile.svg' | url }}" alt="Card layout on mobile">
+</uxdot-example>
 
 ## Spacing
 
+<rh-table>
 {% spacerTokensTable
    caption='',
    headingLevel="3",
    tokens="--rh-space-lg, --rh-space-xl, --rh-space-2xl, --rh-space-3xl" %}
 {% endspacerTokensTable %}
+</rh-table>
 
 ### Container padding
-  Container padding defines how far away content is from the edges of the
-  component. When cards become wider, the container padding increases. When they
-  become thinner, the container padding decreases. <a
-  href="https://xd.adobe.com/view/a337ad48-4c5a-4e75-aec1-cc0cfe52098d-f664/">See more examples</a>.
+
+Container padding defines how far away content is from the edges of the
+component. When cards become wider, the container padding increases. When they
+become thinner, the container padding decreases. <a
+href="https://xd.adobe.com/view/a337ad48-4c5a-4e75-aec1-cc0cfe52098d-f664/">See more examples</a>.
 
 ### Desktop
-  {% example palette="light",
-             class="centered",
-             width=360,
-             alt="Card spacing on desktop",
-             src="../card-spacing-desktop.svg" %}
+
+<uxdot-example width-adjustment="360px">
+  <img src="{{ '../card-spacing-desktop.svg' | url }}" alt="Card spacing on desktop">
+</uxdot-example>
+
 
 ### Mobile
-  {% example palette="light",
-             class="inline-flex centered",
-             width=360,
-             alt="Card spacing on mobile",
-             src="../card-spacing-mobile.svg" %}
+
+<uxdot-example width-adjustment="360px">
+  <img src="{{ '../card-spacing-mobile.svg' | url }}" alt="Card spacing on mobile">
+</uxdot-example>

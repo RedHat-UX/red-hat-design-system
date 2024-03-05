@@ -3,20 +3,25 @@
 A button is clickable text or an icon that triggers an action on the page or in 
 the background. Depending on the action, content, and hierarchy, a button can be 
 used on its own or grouped with other buttons.
+
 ### Anatomy
 
-{% example palette="light",
-          alt=" Anatomy image of buttons with numbered annotations",
-          src="../button-anatomy.png" %}
-
-1) Text
-2) Container
-3) Border
-4) Text only
-5) Icon
-6) Icon background
-7) Icon only
-{.example-notes}
+<figure>
+  <uxdot-example width-adjustment="428px">
+    <img src="{{ '../button-anatomy.png' | url }}" alt="Anatomy image of buttons with numbered annotations">
+  </uxdot-example>
+  <figcaption>
+    <ol>
+      <li>Text</li>
+      <li>Container</li>
+      <li>Border</li>
+      <li>Text only</li>
+      <li>Icon</li>
+      <li>Icon background</li>
+      <li>Icon only</li>
+    </ol>
+  </figcaption>
+</figure>
 
 ## Theme
 
@@ -24,33 +29,88 @@ Buttons are available in both light and dark themes.
 
 ### Light and dark themes
 
-{% example palette="light",
-      alt=" Image of light theme Danger, Primary, Secondary, Tertiary, Link, Play, and Close buttons",
-      src="../button-theme-light.png" %}
+<uxdot-example width-adjustment="494px">
+  <img src="{{ '../button-theme-light.png' | url }}" alt="Image of light theme Danger, Primary, Secondary, Tertiary, Link, Play, and Close buttons">
+</uxdot-example>
 
-{% example palette="darkest",
-      alt=" Image of dark theme Danger, Primary, Secondary, Tertiary, Link, Play, and Close buttons",
-      src="../button-theme-dark.png" %}
+<uxdot-example color-palette="darkest" width-adjustment="494px">
+  <img src="{{ '../button-theme-dark.png' | url }}" alt="Image of dark theme Danger, Primary, Secondary, Tertiary, Link, Play, and Close buttons">
+</uxdot-example>
 
-{% tokensTable %}
-
-| Property {style="width: 50%" }           | Light theme {style="width: 25%" } | Dark theme |
-| ---------------------------------------- | --------------------------------- | ---------- |
-| Color - Danger button text               | `#FFFFFF`                         | `#151515`  |
-| Color - Danger button surface            | `#C9190B`                         | `#FF542E`  |
-| Color - Primary button text              | `#FFFFFF`                         | `#FFFFFF`  |
-| Color - Primary button surface           | `#0066CC`                         | `#0066CC`  |
-| Color - Secondary button text and border | `#0066CC`                         | `#2B9AF3`  |
-| Border width - Secondary button          | `1px`                             | `1px`      |
-| Color - Tertiary button text and border  | `#151515`                         | `#FFFFFF`  |
-| Border width - Tertiary button           | `1px`                             | `1px`      |
-| Color - Link button tex                  | `#0066CC`                         | `#2B9AF3`  |
-| Color - Play button background           | `#151515`                         | `#FFFFFF`  |
-| Opacity - Play button background         | `50%`                             | `25%`      |
-| Color - Close button                     | `#4D4D4D`                         | `#C7C7C7`  |
-
-{% endtokensTable %}
-
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Property">Property</th>
+        <th scope="col" data-label="Light theme">Light theme</th>
+        <th scope="col" data-label="Dark theme">Dark theme</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Property">Color - Danger button text</td>
+        <td data-label="Light theme"><code>#FFFFFF</code></td>
+        <td data-label="Dark theme"><code>#151515</code></td>
+      </tr>
+      <tr>
+        <td data-label="Property">Color - Danger button surface</td>
+        <td data-label="Light theme"><code>#C9190B</code></td>
+        <td data-label="Dark theme"><code>#FF542E</code></td>
+      </tr>
+      <tr>
+        <td data-label="Property">Color - Primary button text</td>
+        <td data-label="Light theme"><code>#FFFFFF</code></td>
+        <td data-label="Dark theme"><code>#FFFFFF</code></td>
+      </tr>
+      <tr>
+        <td data-label="Property">Color - Primary button surface</td>
+        <td data-label="Light theme"><code>#0066CC</code></td>
+        <td data-label="Dark theme"><code>#0066CC</code></td>
+      </tr>
+      <tr>
+        <td data-label="Property">Color - Secondary button text and border</td>
+        <td data-label="Light theme"><code>#0066CC</code></td>
+        <td data-label="Dark theme"><code>#2B9AF3</code></td>
+      </tr>
+      <tr>
+        <td data-label="Property">Border width - Secondary button</td>
+        <td data-label="Light theme"><code>1px</code></td>
+        <td data-label="Dark theme"><code>1px</code></td>
+      </tr>
+      <tr>
+        <td data-label="Property">Color - Tertiary button text and border</td>
+        <td data-label="Light theme"><code>#151515</code></td>
+        <td data-label="Dark theme"><code>#FFFFFF</code></td>
+      </tr>
+      <tr>
+        <td data-label="Property">Border width - Tertiary button</td>
+        <td data-label="Light theme"><code>1px</code></td>
+        <td data-label="Dark theme"><code>1px</code></td>
+      </tr>
+      <tr>
+        <td data-label="Property">Color - Link button text</td>
+        <td data-label="Light theme"><code>#0066CC</code></td>
+        <td data-label="Dark theme"><code>#2B9AF3</code></td>
+      </tr>
+      <tr>
+        <td data-label="Property">Color - Play button background</td>
+        <td data-label="Light theme"><code>#151515</code></td>
+        <td data-label="Dark theme"><code>#FFFFFF</code></td>
+      </tr>
+      <tr>
+        <td data-label="Property">Opacity - Play button background</td>
+        <td data-label="Light theme"><code>50%</code></td>
+        <td data-label="Dark theme"><code>25%</code></td>
+      </tr>
+      <tr>
+        <td data-label="Property">Color - Close button</td>
+        <td data-label="Light theme"><code>#4D4D4D</code></td>
+        <td data-label="Dark theme"><code>#C7C7C7</code></td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
+    
 ## Configuration
 
 All buttons with a container have the same height and border radius, but the 
@@ -59,29 +119,32 @@ horizontally centered. When a Play button is placed on an image, it is both
 horizontally and vertically centered and stays the same size no matter how big 
 or small the image gets.
 
-{% example palette="light",
-          alt=" Image of buttons and various specs like border radius, height, icon size, width, alignment, placement, and more",
-          src="../button-configuration.png" %}
+<uxdot-example width-adjustment="818px">
+  <img src="{{ '../button-configuration.png' | url }}" alt="Image of buttons and various specs like border radius, height, icon size, width, alignment, placement, and more">
+</uxdot-example>
 
 ## Space
 
 Space values are the same on all breakpoints for the following buttons. To see 
 space values when buttons are grouped, go to the [Guidelines](./guidelines) page.
 
-{% alert title="Helpful tip" %}
-Buttons include a custom `6px` spacer, do not use it anywhere else.
-{% endalert %}
+<rh-alert state="info">
+  <h3 slot="header">Helpful tip</h3>
+  <p>Buttons include a custom <code>6px</code> spacer, do not use it anywhere else.</p>
+</rh-alert>
 
-{% example palette="light",
-          alt=" Image of Danger, Primary, Secondary, Tertiary, Link, and Close buttons with spacing values in between",
-          src="../button-space.png" %}
+<uxdot-example width-adjustment="721px">
+  <img src="{{ '../button-space.png' | url }}" alt="Image of Danger, Primary, Secondary, Tertiary, Link, and Close buttons with spacing values in between">
+</uxdot-example>
 
+<rh-table>
 {% spacerTokensTable 
   headline="",
   caption='',
   headingLevel="4",
   tokens="--rh-space-sm, --rh-space-md, --rh-space-lg" %}
 {% endspacerTokensTable %}
+</rh-table>
 
 ## Interaction states
 
@@ -90,69 +153,133 @@ an element or pattern.
 
 ### Hover
 
-{% example palette="light",
-          alt=" Image of light theme button hover states",
-          src="../button-interaction-state-hover-theme-light.png" %}
+<uxdot-example width-adjustment="495px">
+  <img src="{{ '../button-interaction-state-hover-theme-light.png' | url }}" alt="Image of light theme button hover states">
+</uxdot-example>
 
-{% example palette="darkest",
-          alt=" Image of dark theme button hover states",
-          src="../button-interaction-state-hover-theme-dark.png" %}
+<uxdot-example color-palette="darkest" width-adjustment="495px">
+  <img src="{{ '../button-interaction-state-hover-theme-dark.png' | url }}" alt="Image of dark theme button hover states">
+</uxdot-example>
 
-{% tokensTable %}
-
-| Property {style="width: 50%" }     | Light theme {style="width: 25%" } | Dark theme  |
-| ---------------------------------- | --------------------------------- | ----------- |
-| Color - Danger button surface      | `#A30000`                         | `#FF8266`   |
-| Color - Primary button surface     | `#004080`                         | `#004080`   |
-| Border width - Secondary button    | `2px`                             | `2px`       |
-| Border width - Tertiary button     | `2px`                             | `2px`       |
-| Color - Link button text           | `#004080`                         | `#73BCF7`   |
-| Text decoration - Link button text | `Underline`                       | `Underline` |
-| Opacity - Play button background   | `75%`                             | `50%`       |
-| Color - Close button               | `#151515`                         | `#FFFFFF`   |
-
-{% endtokensTable %}
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Property">Property</th>
+        <th scope="col" data-label="Light theme">Light theme</th>
+        <th scope="col" data-label="Dark theme">Dark theme</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Property">Color - Danger button surface</td>
+        <td data-label="Light theme"><code>#A30000</code></td>
+        <td data-label="Dark theme"><code>#FF8266</code></td>
+      </tr>
+      <tr>
+        <td data-label="Property">Color - Primary button surface</td>
+        <td data-label="Light theme"><code>#004080</code></td>
+        <td data-label="Dark theme"><code>#004080</code></td>
+      </tr>
+      <tr>
+        <td data-label="Property">Border width - Secondary button</td>
+        <td data-label="Light theme"><code>2px</code></td>
+        <td data-label="Dark theme"><code>2px</code></td>
+      </tr>
+      <tr>
+        <td data-label="Property">Border width - Tertiary button</td>
+        <td data-label="Light theme"><code>2px</code></td>
+        <td data-label="Dark theme"><code>2px</code></td>
+      </tr>
+      <tr>
+        <td data-label="Property">Color - Link button text</td>
+        <td data-label="Light theme"><code>#004080</code></td>
+        <td data-label="Dark theme"><code>#73BCF7</code></td>
+      </tr>
+      <tr>
+        <td data-label="Property">Text decoration - Link button text</td>
+        <td data-label="Light theme"><code>Underline</code></td>
+        <td data-label="Dark theme"><code>Underline</code></td>
+      </tr>
+      <tr>
+        <td data-label="Property">Opacity - Play button background</td>
+        <td data-label="Light theme"><code>75%</code></td>
+        <td data-label="Dark theme"><code>50%</code></td>
+      </tr>
+      <tr>
+        <td data-label="Property">Color - Close button</td>
+        <td data-label="Light theme"><code>#151515</code></td>
+        <td data-label="Dark theme"><code>#FFFFFF</code></td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
 
 ### Focus
 
-{% alert title="Helpful tip" %}
-The Focus state has the same styles as the Hover state.
-{% endalert %}
+<rh-alert state="info">
+  <h3 slot="header">Helpful tip</h3>
+  <p>The Focus state has the same styles as the Hover state.</p>
+</rh-alert>
 
-{% example palette="light",
-          alt=" Image of light theme button focus states",
-          src="../button-interaction-state-focus-theme-light.png" %}
+<uxdot-example width-adjustment="530px">
+  <img src="{{ '../button-interaction-state-focus-theme-light.png' | url }}" alt="Image of light theme button focus states">
+</uxdot-example>
 
-{% example palette="darkest",
-          alt=" Image of dark theme button focus states",
-          src="../button-interaction-state-focus-theme-dark.png" %}
+<uxdot-example color-palette="darkest" width-adjustment="530px">
+  <img src="{{ '../button-interaction-state-focus-theme-dark.png' | url }}" alt="Image of dark theme button focus states">
+</uxdot-example>
 
-{% tokensTable %}
 
-| Property {style="width: 50%" } | Light theme {style="width: 25%" } | Dark theme |
-| ------------------------------ | --------------------------------- | ---------- |
-| Color - focus ring             | `#0066CC`                         | `#73BCF7`  |
-
-{% endtokensTable %}
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Property">Property</th>
+        <th scope="col" data-label="Light theme">Light theme</th>
+        <th scope="col" data-label="Dark theme">Dark theme</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Property">Color - focus ring</td>
+        <td data-label="Light theme"><code>#0066CC</code></td>
+        <td data-label="Dark theme"><code>#73BCF7</code></td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
 
 ### Active
 
-{% alert title="Helpful tip" %}
-The Active state has the same styles as the Hover state.
-{% endalert %}
+<rh-alert state="info">
+  <h3 slot="header">Helpful tip</h3>
+  <p>The Active state has the same styles as the Hover state.</p>
+</rh-alert>
 
-{% example palette="light",
-          alt=" Image of light theme button active states",
-          src="../button-interaction-state-active-theme-light.png" %}
+<uxdot-example width-adjustment="530px">
+  <img src="{{ '../button-interaction-state-active-theme-light.png' | url }}" alt="Image of light theme button active states">
+</uxdot-example>
 
-{% example palette="light",
-          alt=" Image of dark theme button active states",
-          src="../button-interaction-state-active-theme-dark.png" %}
+<uxdot-example color-palette="darkest" width-adjustment="530px">
+  <img src="{{ '../button-interaction-state-active-theme-dark.png' | url }}" alt="Image of dark theme button active states">
+</uxdot-example>
 
-{% tokensTable %}
-
-| Property {style="width: 50%" } | Light theme {style="width: 25%" } | Dark theme |
-| ------------------------------ | --------------------------------- | ---------- |
-| Color - focus ring             | `#0066CC`                         | `#73BCF7`  |
-
-{% endtokensTable %}
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Property">Property</th>
+        <th scope="col" data-label="Light theme">Light theme</th>
+        <th scope="col" data-label="Dark theme">Dark theme</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Property"> Color - focus ring </td>
+        <td data-label="Light theme"><code>#0066CC</code></td>
+        <td data-label="Dark theme"><code>#73BCF7</code></td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>

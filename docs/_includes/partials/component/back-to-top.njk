@@ -1,0 +1,47 @@
+<style>
+  /* TODO: Replace back-to-top with RHDS component */
+  #back-to-top {
+    display: none;
+    pointer-events: none;
+    position: sticky;
+    float: right;
+    bottom: 32px;
+    margin-block-start: -64px;
+    padding-inline-end: 32px;
+  }
+
+  #back-to-top .link {
+    pointer-events: all;
+  }
+</style>
+
+<!-- Replace with <pf-back-to-top></pf-back-to-top> -->
+<div id="back-to-top">
+  <a href="#top" class="link" aria-hidden="true">
+    <img src="{{ '/assets/back-to-top.svg' | url }}" alt="Scroll back to the top">
+  </a>
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  var section = document.querySelectorAll("main");
+  var sections = {};
+  var i = 0;
+
+  Array.prototype.forEach.call(section, function(e) {
+    sections[e.id] = e.offsetTop;
+  });
+
+  window.onscroll = function() {
+    var scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
+
+    if (scrollPosition > (window.innerWidth / 2)) {
+      document.getElementById("back-to-top").style.display = "flex";
+    } else {
+      document.getElementById("back-to-top").style.display = "none";
+    }
+  };
+})();
+</script>

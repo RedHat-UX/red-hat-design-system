@@ -1,9 +1,9 @@
 {% renderInstall %}{% endrenderInstall %}
 
 ## Usage
-  {% playground tagName=button %}{% endplayground %}
-  {% cta href="./demo/", target="_blank" %}
-View the demo in a new tab
-  {% endcta %}
+
+{% playground tagName=button %}{% endplayground %}
+
+<rh-cta><a href="{{ './demo/' | url }}">Full screen demo</a></rh-cta>
 
 {% renderCodeDocs hideDescription=true %}{% endrenderCodeDocs %}

@@ -1,4 +1,5 @@
 bodyClasses: element-docs
-layout: layout-basic.njk
+layout: layouts/pages/basic.njk
+hasToc: true
 importElements:
     - rh-alert

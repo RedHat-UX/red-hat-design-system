@@ -1,33 +1,58 @@
 ## Keyboard interactions
 Each panel is a focus stop where `Enter` or `Space` expands or collapses each panel.
 
-{% example palette="light",
-          alt="Accordion keyboard interactions; pressing Tab will focus the top panel, pressing Tab again will move focus to the next panel underneath, and pressing Enter or Space will expand the panel",
-          src="../accordion-keyboard-interactions.png" %}
+<uxdot-example>
+  <img src="{{ '../accordion-keyboard-interactions.png' | url }}" alt="Accordion keyboard interactions; pressing Tab will focus the top panel, pressing Tab again will move focus to the next panel underneath, and pressing Enter or Space will expand the panel">
+</uxdot-example>
 
-| Key  {style="width: 50%" }        | Result                            |
-| --------------------------------- | --------------------------------- |
-| <kbd>Tab</kbd>                    | Moves focus to the next panel     |
-| <kbd>Shift</kbd>+<kbd>Tab</kbd>   | Moves focus to the previous panel |
-| <kbd>Enter</kbd>/<kbd>Space</kbd> | Expands or collapses a panel      |
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Key">Key</th>
+        <th scope="col" data-label="Result">Result</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Key"><kbd>Tab</kbd></td>
+        <td data-label="Result">Moves focus to the next panel</td>
+      </tr>
+      <tr>
+        <td data-label="Key"><kbd>Shift</kbd>+<kbd>Tab</kbd></td>
+        <td data-label="Result">Moves focus to the previous panel</td>
+      </tr>
+      <tr>
+        <td data-label="Key"><kbd>Enter</kbd>/<kbd>Space</kbd></td>
+        <td data-label="Result">Expands or collapses a panel</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
 
 ## Focus order
-{% include 'accessibility/focusorder.md' %}
 
-{% example palette="light",
-          alt="Accordion showing the order how focus moves through the element when pressing Tab continuously",
-          src="../accordion-focus-order.png" %}
+{% include 'partials/accessibility/focusorder.md' %}
+
+<uxdot-example>
+  <img src="{{ '../accordion-focus-order.png' | url }}" alt="Accordion showing the order how focus moves through the element when pressing Tab continuously">
+</uxdot-example>
 
 ## Touch targets
 Each panel is selectable instead of only title text or the chevrons.
 
-{% example palette="light",
-          alt="Accordion showing touch target size examples for large and small sizes",
-          src="../accordion-touch-targets.png" %}
+<uxdot-example>
+  <img src="{{ '../accordion-touch-targets.png' | url }}" alt="Accordion showing touch target size examples for large and small sizes">
+</uxdot-example>
 
-{% include 'accessibility/ariaguide.md' %}
-{% include 'accessibility/wcag.md' %}
-{% include 'accessibility/2.1.1-A.md' %}
-{% include 'accessibility/2.1.3-AAA.md' %}
-{% include 'accessibility/2.4.3-A.md' %}
-{% include 'accessibility/2.5.5-AAA.md' %}
+{% include 'partials/accessibility/ariaguide.md' %}
+
+{% include 'partials/accessibility/wcag.md' %}
+
+{% include 'partials/accessibility/2.1.1-A.md' %}
+
+{% include 'partials/accessibility/2.1.3-AAA.md' %}
+
+{% include 'partials/accessibility/2.4.3-A.md' %}
+
+{% include 'partials/accessibility/2.5.5-AAA.md' %}

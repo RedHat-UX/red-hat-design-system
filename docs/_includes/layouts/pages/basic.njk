@@ -1,0 +1,37 @@
+---
+layout: layouts/base.njk
+importElements:
+  - rh-cta
+  - rh-footer
+  - rh-alert
+  - rh-subnav
+---
+
+<link rel="stylesheet" href="{{ '/styles/pages/backpage.css' | url }}">
+
+<script type="module" src="{{ '/assets/javascript/elements/uxdot-feedback.js' | url }}"></script>
+{% if tokenSearch %}
+<script type="module" src="{{ '/assets/javascript/elements/uxdot-search.js' | url }}"></script>
+<script type="module" src="{{ '/assets/javascript/tokens.js' | url }}"></script>
+{% endif %}
+
+{% include 'partials/component/masthead.njk' %}
+{% include 'partials/component/sidenav.njk' %}
+<main id="main">
+  <article>
+    {% include 'partials/component/header.njk' %}
+    
+    {% if hasToc %}
+      <aside>
+        {{ content | toc | safe }}
+      </aside>
+    {% endif %}
+    
+    <div class="container">
+      {{ content | safe }}
+    </div>
+
+  </article>
+  {% include "partials/component/back-to-top.njk" %}
+</main>
+{% include 'partials/component/footer.njk' %}

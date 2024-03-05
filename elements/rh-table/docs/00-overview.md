@@ -2,9 +2,10 @@
 
 {{ tagName | getElementDescription }}
 
-{% example palette="light",
-           alt="Image of table with four columns and three rows",
-           src="./table-sample-element.png" %}
+<uxdot-example width-adjustment="872px">
+  <img src="{{ './table-sample-element.png' | url }}" alt="Image of table with four columns and three row">
+</uxdot-example>
+
 
 ## Sample element
 
@@ -50,15 +51,17 @@
 ## Demos
 
 View a live version of this element and see how it can be customized.
+
 {% playground tagName=tagName %}{% endplayground %}
-{% cta href="./demo/", target="_blank" %}
-View the `<rh-table>` demo in a new tab
-{% endcta %}
+
+<rh-cta><a href="{{ './demo/' | url }}">Full screen demo</a></rh-cta>
+
 
 ## When to use
 
 - To organize and display structured data
 - If a user needs to scan, examine, and compare data
 - If a user must navigate to a specific piece of data to complete a task
+
 
 {% repoStatus type="Element" %}

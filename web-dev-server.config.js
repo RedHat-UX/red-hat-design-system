@@ -22,9 +22,9 @@ export default pfeDevServerConfig({
       }
       return next();
     },
-    /** redirect requests for /assets/* css to /docs/assets/prism.css */
+    /** redirect requests for /styles/* css to /docs/styles/* */
     function(ctx, next) {
-      if (ctx.path.startsWith('/assets/')) {
+      if (ctx.path.startsWith('/styles/')) {
         ctx.redirect(`/docs${ctx.path}`);
       }
       return next();

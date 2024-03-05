@@ -11,40 +11,100 @@ A footer is divided into two parts, the **Website-specific** footer and the
 **Universal** footer.
 
 ### Website-specific footer 
+
 Most of the content in the website-specific footer can be customized.
 
-{% example palette="none",
-          alt="Image of the website-specific footer showing regions that can and cannot be customized",
-          src="../footer-variant-website-specific.png" %}
+<uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
+  <img src="{{ '../footer-variant-website-specific.png' | url }}" alt="Image of the website-specific footer showing regions that can and cannot be customized">
+</uxdot-example>
 
-| Region {style="width: 25%" } | Customizable {style="width: 25%" } | Use case                                                    |
-| ---------------------------- | ---------------------------------- | ----------------------------------------------------------- |
-| Website logo                 | Yes                                | Custom logo of the website where the footer is used         |
-| Social media links           | Yes                                | Links to specific social media pages                        |
-| Navigation links             | Yes                                | Navigation links based on specific information architecture |
-| Custom message               | Yes                                | Custom message to introduce or describe the website         |
-| Red Hat message              | No                                 | Message about Red Hat that is the same across all websites  |
-| Extra content                | Yes                                | Extra content, top task, or call to action (optional)       |
-| Language switcher            | No                                 | Menu that allows users to switch the language               |
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Region">Region</th>
+        <th scope="col" data-label="Customizable">Customizable</th>
+        <th scope="col" data-label="Use case">Use case</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Region">Website logo</td>
+        <td data-label="Customizable">Yes</td>
+        <td data-label="Use case">Custom logo of the website where the footer is used</td>
+      </tr>
+      <tr>
+        <td data-label="Region">Social media links</td>
+        <td data-label="Customizable">Yes</td>
+        <td data-label="Use case">Links to specific social media pages</td>
+      </tr>
+      <tr>
+        <td data-label="Region">Navigation links</td>
+        <td data-label="Customizable">Yes</td>
+        <td data-label="Use case">Navigation links based on specific information architecture</td>
+      </tr>
+      <tr>
+        <td data-label="Region">Custom message</td>
+        <td data-label="Customizable">Yes</td>
+        <td data-label="Use case">Custom message to introduce or describe the website</td>
+      </tr>
+      <tr>
+        <td data-label="Region">Red Hat message</td>
+        <td data-label="Customizable">No</td>
+        <td data-label="Use case">Message about Red Hat that is the same across all websites</td>
+      </tr>
+      <tr>
+        <td data-label="Region">Extra content</td>
+        <td data-label="Customizable">Yes</td>
+        <td data-label="Use case">Extra content, top task, or call to action (optional)</td>
+      </tr>
+      <tr>
+        <td data-label="Region">Language switcher</td>
+        <td data-label="Customizable">No</td>
+        <td data-label="Use case">Menu that allows users to switch the language</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
 
-### Universal footer 
+
+### Universal footer
+
 Content in the universal footer is always the same across all websites.
 
-{% example palette="none",
-          alt=" Image of the universal footer showing only one region that cannot be customized",
-          src="../footer-variant-universal.png" %}
+<uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
+  <img src="{{ '../footer-variant-universal.png' | url }}" alt="Image of the universal footer showing only one region that cannot be customized">
+</uxdot-example>
 
-| Region {style="width: 25%" } | Customizable {style="width: 25%" } | Use case                                              |
-| ---------------------------- | ---------------------------------- | ----------------------------------------------------- |
-| Navigation links             | No                                 | Links for global pages, Summit, and legal information |
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Region">Region</th>
+        <th scope="col" data-label="Customizable">Customizable</th>
+        <th scope="col" data-label="Use case">Use case</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Region">Navigation links</td>
+        <td data-label="Customizable">No</td>
+        <td data-label="Use case">Links for global pages, Summit, and legal information</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
 
 ## Layout
+
 ### Browser window
+
 A footer spans the entire width of the browser window at all breakpoints.
 
-{% example palette="none",
-          alt=" Image of a footer in a layout spanning the width of the browser window",
-          src="../footer-layout-browser-window.png" %}
+<uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
+  <img src="{{ '../footer-layout-browser-window.png' | url }}" alt="Image of a footer in a layout spanning the width of the browser window">
+</uxdot-example>
+
 
 ### Universal footer
 
@@ -52,31 +112,36 @@ The universal footer can be used by itself on orphan pages or pages that do not
 fit a specific information architecture like landing pages, minisites, etc. The 
 Red Hat fedora always links to redhat.com.
 
-{% alert state="warning", title="Warning" %}
-Using the universal footer by itself is acceptable, but never use the 
-website-specific footer by itself.
-{% endalert %}
+<rh-alert state="warning">
+  <h4 slot="header">Warning</h4>
+  <p>Using the universal footer by itself is acceptable, but never use the website-specific footer by itself.</p>
+</rh-alert>
 
-{% example palette="none",
-          alt=" Image of the universal footer by itself",
-          src="../footer-layout-universal-footer.png" %}
+<uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
+  <img src="{{ '../footer-layout-universal-footer.png' | url }}" alt="Image of the universal footer by itself">
+</uxdot-example>
 
 ### Other web properties
 
 The footer was designed to be applied to all Red Hat web properties. The layout 
 is flexible enough to accommodate grids, elements, text, and more.
 
-{% example palette="none",
-          alt=" Image of a footer on a Customer Portal website",
-          src="../footer-layout-customer-portal.png" %}
+<uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
+  <img src="{{ '../footer-layout-other-web-properties.png' | url }}" alt="Image of the footer on a Customer Portal website">
+</uxdot-example>
 
-{% example palette="none",
-          alt=" Image of a footer on a Developer website",
-          src="../footer-layout-developer.png" %}
+<uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
+  <img src="{{ '../footer-layout-customer-portal.png' | url }}" alt="Image of a footer on a Customer Portal website">
+</uxdot-example>
 
-{% example palette="none",
-          alt=" Image of a footer on a Partner Connect website",
-          src="../footer-layout-partner-connect.png" %}
+<uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
+  <img src="{{ '../footer-layout-developer.png' | url }}" alt="Image of a footer on a Developer website">
+</uxdot-example>
+
+<uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
+  <img src="{{ '../footer-layout-partner-connect.png' | url }}" alt="Image of a footer on a Partner Connect website">
+</uxdot-example>
+
 
 ## Behavior
 
@@ -85,91 +150,136 @@ is flexible enough to accommodate grids, elements, text, and more.
 If the website-specific footer includes a lot of content, columns can be added 
 below the first row of columns.
 
-{% example palette="none",
-          alt=" Image of a footer with four columns of links in one row and two columns in the second row",
-          src="../footer-behavior-columns-two-rows.png" %}
+<uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
+  <img src="{{ '../footer-behavior-columns-two-rows.png' | url }}" alt="Image of a footer with four columns of links in one row and two columns in the second row">
+</uxdot-example>
 
 If the website-specific footer includes less content, columns will stretch to 
 fill the empty space.
 
-{% example palette="none",
-          alt=" Image of a footer with only two columns of links in one row",
-          src="../footer-behavior-columns-less-content.png" %}
+<uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
+  <img src="{{ '../footer-behavior-columns-less-content.png' | url }}" alt="Image of a footer with only two columns of links in one row">
+</uxdot-example>
+
 
 If the number of columns changes, social media links will shift position to 
 remain aligned to the left edge of the last column.
 
-{% example palette="none",
-          alt=" Image of a footer with three columns of links showing an example of social media icons shifting",
-          src="../footer-behavior-columns-social-media-icons.png" %}
+<uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
+  <img src="{{ '../footer-behavior-columns-social-media-icons.png' | url }}" alt="Image of a footer with three columns of links showing an example of social media icons shifting">
+</uxdot-example>
 
 ## Responsive design
 
 ### Large breakpoints
 
-{% example palette="none",
-          alt=" Image of a large breakpoint footer",
-          src="../footer-responsive-large-breakpoints.png" %}
+<uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
+  <img src="{{ '../footer-responsive-large-breakpoints.png' | url }}" alt="Image of a large breakpoint footer">
+</uxdot-example>
+
 
 ### Small breakpoints
 
 Columns will collapse to an accordion as breakpoints get smaller and other 
 content will also get rearranged.
 
-{% alert title="Helpful tip" %}
-At small breakpoints, the horizontal rule between the logo, icons, and columns 
-is no longer visible.
-{% endalert %}
+<rh-alert state="info">
+  <h4 slot="header">Helpful tip</h4>
+  <p>At small breakpoints, the horizontal rule between the logo, icons, and columns is no longer visible.</p>
+</rh-alert>
 
-{% example palette="none",
-          alt=" Image of a tablet breakpoint footer",
-          src="../footer-responsive-small-breakpoints-a.png" %}
+<uxdot-example width-adjustment="768px" variant="full" alignment="left" no-border>
+  <img src="{{ '../footer-responsive-small-breakpoints-a.png' | url }}" alt="Image of a tablet breakpoint footer">
+</uxdot-example>
 
-{% example palette="none",
-          alt=" Image of a mobile breakpoint footer",
-          src="../footer-responsive-small-breakpoints-b.png" %}
+<uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border>
+  <img src="{{ '../footer-responsive-small-breakpoints-b.png' | url }}" alt="Image of a mobile breakpoint footer">
+</uxdot-example>
 
-| Breakpoint {style="width: 33%" } | Range {style="width: 33%" } | Content layout |
-| -------------------------------- | --------------------------- | -------------- |
-| Desktop, large                   | > 1680px                    | Columns        |
-| Desktop, medium                  | 1440px - 1679px             | Columns        |
-| Desktop, small                   | 1200px - 1439px             | Columns        |
-| Tablet, large                    | 992px - 1199px              | Columns        |
-| Tablet, small                    | 768px - 991px               | Accordion      |
-| Mobile, large                    | 576px - 767px               | Accordion      |
-| Mobile, small                    | < 575px                     | Accordion      |
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Breakpoint">Breakpoint</th>
+        <th scope="col" data-label="Range">Range</th>
+        <th scope="col" data-label="Content layout">Content layout</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Breakpoint">Desktop, large</td>
+        <td data-label="Range">> 1680px</td>
+        <td data-label="Content layout">Columns</td>
+      </tr>
+      <tr>
+        <td data-label="Breakpoint">Desktop, medium</td>
+        <td data-label="Range">1440px - 1679px</td>
+        <td data-label="Content layout">Columns</td>
+      </tr>
+      <tr>
+        <td data-label="Breakpoint">Desktop, small</td>
+        <td data-label="Range">1200px - 1439px</td>
+        <td data-label="Content layout">Columns</td>
+      </tr>
+      <tr>
+        <td data-label="Breakpoint">Tablet, large</td>
+        <td data-label="Range">992px - 1199px</td>
+        <td data-label="Content layout">Columns</td>
+      </tr>
+      <tr>
+        <td data-label="Breakpoint">Tablet, small</td>
+        <td data-label="Range">768px - 991px</td>
+        <td data-label="Content layout">Accordion</td>
+      </tr>
+      <tr>
+        <td data-label="Breakpoint">Mobile, large</td>
+        <td data-label="Range">576px - 767px</td>
+        <td data-label="Content layout">Accordion</td>
+      </tr>
+      <tr>
+        <td data-label="Breakpoint">Mobile, small</td>
+        <td data-label="Range">< 575px</td>
+        <td data-label="Content layout">Accordion</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
 
 ## Best practices
+
 ### Reversing the order
 
 Do not reverse the order of footers, the website-specific footer should always 
 be on top.
 
-{% example palette="none",
-          alt=" Image of the global footer on top of the website-specific footer which is incorrect usage",
-          src="../footer-best-practice-1.png" %}
+<uxdot-example width-adjustment="968px" danger>
+  <img src="{{ '../footer-best-practice-1.png' | url }}" alt="Image of the global footer on top of the website-specific footer which is incorrect usage">
+</uxdot-example>
+
 
 ### Replacing columns
 
 Do not replace columns with an accordion if there is still adequate space.
 
-{% example palette="none",
-          alt=" Image of a desktop footer with an accordion replacing four columns of links which is incorrect usage",
-          src="../footer-best-practice-2.png" %}
+<uxdot-example width-adjustment="968px" danger>
+  <img src="{{ '../footer-best-practice-2.png' | url }}" alt="Image of a desktop footer with an accordion replacing four columns of links which is incorrect usage">
+</uxdot-example>
+
 
 ### Website-specific footer
 
 Do not use the website-specific footer without the universal footer.
 
-{% example palette="none",
-          alt=" Image of a footer missing the universal footer which is incorrect usage",
-          src="../footer-best-practice-3.png" %}
+<uxdot-example width-adjustment="968px" danger>
+  <img src="{{ '../footer-best-practice-3.png' | url }}" alt="Image of a footer missing the universal footer which is incorrect usage">
+</uxdot-example>
+
 
 ### Custom universal footer
 
 Do not create your own custom universal footer by changing, deleting, or 
 rearranging any elements.
 
-{% example palette="none",
-          alt=" Image of a universal footer with a new design which is incorrect usage",
-          src="../footer-best-practice-4.png" %}
+<uxdot-example width-adjustment="968px" danger>
+  <img src="{{ '../footer-best-practice-4.png' | url }}" alt="Image of a universal footer with a new design which is incorrect usage">
+</uxdot-example>

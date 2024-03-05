@@ -3,19 +3,40 @@
 All links within a subnavigation are focus stops. Pressing Enter when a link has 
 focus will directed users to a new page.
 
-{% alert title="Helpful tip" %}
-Overflow buttons do not have focus so there are no keyboard interactions.
-{% endalert %}
+<rh-alert state="info">
+  <h3 slot="header">Helpful tip</h3>
+  <p>Overflow buttons do not have focus so there are no keyboard interactions.</p>
+</rh-alert>
 
-{% example palette="lightest",
-           alt="Image of desktop and mobile subnavigations with diagrams of what happens when Tab keys are pressed",
-           src="../subnav-a11y-keyboard-interactions.png" %}
+<uxdot-example width-adjustment="872px">
+  <img src="{{ '../subnav-a11y-keyboard-interactions.png' | url }}" alt="Image of desktop and mobile subnavigations with diagrams of what happens when Tab keys are pressed">
+</uxdot-example>
 
-| Key                             | Result                                                  |
-| ------------------------------- | ------------------------------------------------------- |
-| <kbd>Tab</kbd>                  | Moves focus to the next link or interactive element     |
-| <kbd>Shift</kbd>+<kbd>Tab</kbd> | Moves focus to the previous link or interactive element |
-| <kbd>Enter</kbd>                | Navigates user to another page                          |
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Key">Key</th>
+        <th scope="col" data-label="Result">Result</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Key"><kbd>Tab</kbd></td>
+        <td data-label="Result">Moves focus to the next link or interactive element</td>
+      </tr>
+      <tr>
+        <td data-label="Key"><kbd>Shift</kbd>+<kbd>Tab</kbd></td>
+        <td data-label="Result">Moves focus to the previous link or interactive element</td>
+      </tr>
+      <tr>
+        <td data-label="Key"><kbd>Enter</kbd></td>
+        <td data-label="Result">Navigates user to another page</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
+
 
 ## Focus order
 
@@ -25,23 +46,24 @@ should make sense and not jump around randomly. When a link has focus, it can
 move horizontally within the list of links or be moved to another interactive 
 element.
 
-{% example palette="lightest",
-           alt="Image of desktop and mobile subnavigations showing the focus order from left to right",
-           src="../subnav-a11y-focus-order.png" %}
+<uxdot-example width-adjustment="872px">
+  <img src="{{ '../subnav-a11y-focus-order.png' | url }}" alt="Image of desktop and mobile subnavigations showing the focus order from left to right">
+</uxdot-example>
+
 
 ## Touch targets
 
 Links are adequately spaced for optimal touch targets.
 
-{% example palette="lightest",
-           alt="Image of desktop and mobile subnavigations showing adequate touch target spacing",
-           src="../subnav-a11y-touch-targets.png" %}
+<uxdot-example width-adjustment="872px">
+  <img src="{{ '../subnav-a11y-touch-targets.png' | url }}" alt="Image of desktop and mobile subnavigations showing adequate touch target spacing">
+</uxdot-example>
 
-{% include 'accessibility/ariaguide.md' %}
+{% include 'partials/accessibility/ariaguide.md' %}
 
-{% include 'accessibility/wcag.md' %}
-{% include 'accessibility/2.1.1-A.md' %}
-{% include 'accessibility/2.1.3-AAA.md' %}
-{% include 'accessibility/2.4.3-A.md' %}
-{% include 'accessibility/2.5.5-AAA.md' %}
+{% include 'partials/accessibility/wcag.md' %}
+{% include 'partials/accessibility/2.1.1-A.md' %}
+{% include 'partials/accessibility/2.1.3-AAA.md' %}
+{% include 'partials/accessibility/2.4.3-A.md' %}
+{% include 'partials/accessibility/2.5.5-AAA.md' %}
 

@@ -1,0 +1,288 @@
+@layer
+  reset,
+  fonts,
+  typography,
+  base,
+  layout,
+  third-party,
+  not-defined,
+  lightdom,
+  flow,
+  patterns,
+  page,
+  overrides;
+
+@import url("not-defined.css") layer(not-defined);
+@import url("reset.css") layer(reset);
+@import url("fonts.css") layer(fonts);
+@import url("typography.css") layer(typography);
+@import url("lightdom.css") layer(lightdom);
+@import url("third-party/prism-rhds.css") layer(third-party);
+
+@layer base {
+  :is(p, ul, ol, dl) {
+    font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+    margin-block: 1em;
+  }
+
+  a {
+    color: var(--rh-color-interactive-blue-darker, #0066cc);
+  }
+
+  a:hover {
+    color: var(--rh-color-interactive-blue-darkest, #003366);
+  }
+
+  a:visited {
+    color: var(--rh-color-interactive-purple-darkest, #21134d);
+  }
+
+  hr {
+    border-block-start:
+      var(--rh-border-width-sm, 1px)
+      solid
+      var(--rh-color-border-subtle-on-light, #c7c7c7);
+    border-inline: none;
+    border-block-end: none;
+    margin-block-end: var(--rh-space-2xl, 32px);
+  }
+
+  figcaption {
+    color: var(--rh-color-text-secondary-on-light, #4d4d4d);
+  }
+}
+
+@layer layout {
+  :root {
+    --uxdot-masthead-max-height: 72px;
+    --container-min-width: 992px;
+    --container-max-width: 1332px;
+  }
+
+  :target {
+    /* Set padding for #hash links */
+    scroll-margin-top: calc(var(--uxdot-masthead-max-height) + var(--rh-space-5xl, 80px));
+  }
+
+  body {
+    display: grid;
+    grid-template-rows: max-content 1fr max-content;
+    grid-template-areas: "header" "main" "footer";
+    position: relative;
+    min-height: 100dvh;
+  }
+
+  body:has(uxdot-sidenav:not(:defined)) {
+    grid-template-rows: max-content max-content 1fr max-content;
+    grid-template-areas: "header" "nav" "main" "footer";
+  }
+
+  main {
+    grid-area: main;
+    border-inline-start:
+      var(--rh-border-width-sm, 1px)
+      solid
+      var(--rh-color-border-subtle-on-light, #c7c7c7);
+    container-type: inline-size;
+    container-name: main;
+    padding-block-start: var(--uxdot-masthead-max-height);
+  }
+
+  .container {
+    padding-inline: var(--rh-space-lg, 16px);
+    padding-block-end: var(--rh-space-lg, 16px);
+  }
+
+  uxdot-masthead {
+    grid-area: header;
+  }
+
+  uxdot-sidenav {
+    grid-area: nav;
+  }
+
+  rh-footer-universal {
+    grid-area: footer;
+  }
+
+  @media (min-width: 992px) {
+    body {
+      grid-template-rows: max-content 1fr max-content;
+      grid-template-columns: minmax(300px, 320px) max-content 1fr;
+      grid-template-areas:
+        "header header header"
+        "nav main main"
+        "nav footer footer";
+    }
+
+    body:has(uxdot-sidenav:not(:defined)) {
+      grid-template-rows: max-content 1fr max-content;
+      grid-template-areas:
+        "header header header"
+        "nav main main"
+        "nav footer footer";
+    }
+  }
+
+  @container main (min-width: 567px) {
+    .container {
+      padding-inline: var(--rh-space-2xl, 32px);
+      padding-block-end: var(--rh-space-2xl, 32px);
+    }
+  }
+
+  @container main (min-width: 768px) {
+    .container {
+      padding-inline: var(--rh-space-3xl, 48px);
+      padding-block-end: var(--rh-space-3xl, 48px);
+    }
+  }
+
+  @container main (min-width: 992px) {
+    .container {
+      max-width: var(--container-max-width);
+      padding-inline: var(--rh-space-6xl, 96px);
+      padding-block-start: 0;
+      padding-block-end: var(--rh-space-6xl, 96px);
+    }
+  }
+}
+
+@layer flow {
+  :where(p, h1, h2, h3, h4, h5, h6, li) {
+    max-width: 56rem;
+  }
+
+  figure uxdot-example {
+    margin-block-end: 0;
+  }
+
+  rh-alert + uxdot-example {
+    margin-block-start: var(--rh-space-2xl, 32px);
+  }
+
+  rh-table {
+    margin-block: var(--rh-space-3xl, 48px);
+  }
+
+  rh-accordion + uxdot-copy-permalink {
+    margin-block-start: var(--rh-space-4xl, 64px);
+  }
+
+  uxdot-copy-permalink.h2 + uxdot-copy-permalink.h3 {
+    --uxdot-copy-permalink-margin-block-start: 0;
+  }
+
+  rh-alert + rh-alert {
+    margin-block-start: var(--rh-space-xl, 24px);
+  }
+
+  uxdot-example + figcaption,
+  figcaption + uxdot-example {
+    margin-block: var(--rh-space-xl, 24px);
+  }
+}
+
+@layer patterns {
+  /**
+   * Patterns layer for defining component and site patterns
+   **/
+
+  /**
+   * KBD and code pattern
+  **/
+
+  :where(code) {
+    padding-inline: var(--rh-space-xs, 4px);
+    background: var(--rh-color-surface-light, #e0e0e0);
+    border-radius: var(--rh-border-radius-default, 3px);
+    font-size: var(--rh-font-size-code-md, 1rem);
+    font-weight: var(--rh-font-weight-code-regular, 400);
+  }
+
+  /* prism js, when a code is used in a pre remove the background color */
+  pre:has(code) :where(code) {
+    background: none;
+  }
+
+  :where(kbd) {
+    --_uxdot-kbd-color-border: var(--rh-color-border-subtle-on-light, #c7c7c7);
+
+    background-color: var(--rh-color-surface-lightest, #ffffff);
+    border-radius: var(--rh-border-radius-default, 3px);
+    border: var(--rh-border-width-sm, 1px) solid var(--_uxdot-kbd-color-border);
+    box-shadow: 0 2px 0 1px var(--_uxdot-kbd-color-border);
+    cursor: default;
+    font-size: var(--rh-font-size-body-text-md, 1rem);
+    line-height: 1;
+    min-width: 0.75rem;
+    display: inline-block;
+    text-align: center;
+    padding: 2px var(--rh-space-sm, 6px);
+    margin-inline: var(--rh-space-xs, 4px);
+    position: relative;
+    top: -1px;
+  }
+
+  :where(kbd):hover {
+    box-shadow: 0 1px 0 0.5px var(--_uxdot-kbd-color-border);
+    top: 1px;
+  }
+
+  :where(kbd):has(kbd),
+  :where(kbd):has(kbd):hover {
+    background-color: unset;
+    border-radius: unset;
+    border: unset;
+    box-shadow: unset;
+    min-width: unset;
+    padding: unset;
+    position: unset;
+    top: unset;
+  }
+
+  /**
+   * Sticky header pattern
+   * progressive enhancement sticky, using :has()
+   **/
+  uxdot-header:has(rh-subnav) {
+    position: sticky;
+    top: -54px;
+    z-index: 2;
+  }
+
+  @container main (min-width: 992px) {
+    uxdot-header:has(rh-subnav) {
+      top: -118px;
+    }
+  }
+}
+
+@layer overrides {
+  /**
+   * Overrides layer for overriding component and site styles
+   */
+
+  /* TODO: Document this bug table overflows vertically causing a scrollbar when it shouldn't */
+  rh-table {
+    overflow: unset;
+  }
+
+  /* Compact tile + Uxdot Example reduce overall spacing */
+  rh-tile[compact] uxdot-example::part(container) {
+    margin-block-end: 0;
+  }
+
+  /* TODO: Remove this hack once https://github.com/RedHat-UX/red-hat-design-system/pull/1464
+  merges and can update to latest */
+  rh-tile [slot="headline"] a:after,
+  rh-tile a[slot="headline"]:after {
+    z-index: 3;
+  }
+
+  rh-alert p {
+    /* TODO: Document this bug shouldn't have to force the font size
+    the component is trying to set internally on #description */
+    font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
+  }
+}
