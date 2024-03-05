@@ -61,6 +61,10 @@
     margin-inline-end: var(--rh-space-lg, 16px);
   }
 
+  aside nav a {
+    text-decoration: none;
+  }
+
   uxdot-header:has(rh-subnav) + aside nav {
     /* calculate in the height of the sticky subnav */
     top: calc(var(--uxdot-masthead-max-height, 72px) + 56px + var(--rh-space-2xl, 32px));
@@ -95,7 +99,7 @@
 
   @container main (min-width: 768px) {
     aside {
-      padding-inline: var(--rh-space-3xl, 48px); 
+      padding-inline: var(--rh-space-3xl, 48px);
     }
   }
 
