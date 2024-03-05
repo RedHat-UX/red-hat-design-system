@@ -24,8 +24,6 @@ class UxdotCopyPermalink extends LitElement {
       border: none;
       display: flex;
       align-items: center;
-      margin-block-start: var(--uxdot-copy-permalink-margin-block-start, 1em) !important;
-      margin-block-end: var(--uxdot-copy-permalink-margin-block-end, 1em) !important;
     }
 
     #button:is(:hover, :focus) {
@@ -35,8 +33,6 @@ class UxdotCopyPermalink extends LitElement {
     ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
       display: flex;
       align-items: center;
-      margin-block-start: var(--uxdot-copy-permalink-margin-block-start, 1em) !important;
-      margin-block-end: var(--uxdot-copy-permalink-margin-block-end, 1em) !important;
     }
   `;
 

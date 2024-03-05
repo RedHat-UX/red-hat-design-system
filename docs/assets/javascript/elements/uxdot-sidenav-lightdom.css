@@ -65,6 +65,10 @@ uxdot-sidenav-dropdown-menu > ul {
   padding-inline-start: var(--rh-space-2xl, 32px);
 }
 
+uxdot-sidenav-dropdown-menu > ul > li {
+  margin-block: 0;
+}
+
 uxdot-sidenav:not(:defined) > ul {
   height: auto;
 }

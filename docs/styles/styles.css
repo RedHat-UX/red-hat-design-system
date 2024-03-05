@@ -37,6 +37,10 @@
     color: var(--rh-color-interactive-purple-darkest, #21134d);
   }
 
+  li {
+    margin-block: var(--rh-space-md, 8px);
+  }
+
   hr {
     border-block-start:
       var(--rh-border-width-sm, 1px)
