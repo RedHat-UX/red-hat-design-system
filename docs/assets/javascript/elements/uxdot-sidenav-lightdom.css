@@ -59,6 +59,10 @@ uxdot-sidenav-dropdown-menu-item > a {
     transparent;
 }
 
+uxdot-sidenav-dropdown-menu-item > a {
+  font-size: var(--rh-font-size-body-text-md, 1rem);
+}
+
 uxdot-sidenav-dropdown-menu > ul {
   margin: 0;
   list-style: none;
