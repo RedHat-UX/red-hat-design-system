@@ -30,7 +30,6 @@ importElements:
   @container container (min-width: 567px) {
     .page-overview .container .grid {
       grid-template-columns: 1fr 1fr;
-      gap: var(--rh-space--3xl, 48px);
     }
   }
 
