@@ -1,6 +1,6 @@
 @font-face {
   font-family: RedHatDisplay;
-  src: url("/assets/fonts/RedHatDisplay/RedHatDisplay-Regular.woff");
+  src: url("../assets/fonts/RedHatDisplay/RedHatDisplay-Regular.woff");
 
   /* Modern Browsers */
   font-style: normal;
@@ -10,7 +10,7 @@
 
 @font-face {
   font-family: RedHatDisplay;
-  src: url("/assets/fonts/RedHatDisplay/RedHatDisplay-Medium.woff");
+  src: url("../assets/fonts/RedHatDisplay/RedHatDisplay-Medium.woff");
 
   /* Modern Browsers */
   font-style: normal;
@@ -20,7 +20,7 @@
 
 @font-face {
   font-family: RedHatDisplay;
-  src: url("/assets/fonts/RedHatDisplay/RedHatDisplay-Bold.woff");
+  src: url("../assets/fonts/RedHatDisplay/RedHatDisplay-Bold.woff");
 
   /* Modern Browsers */
   font-style: normal;
@@ -30,7 +30,7 @@
 
 @font-face {
   font-family: RedHatText;
-  src: url("/assets/fonts/RedHatText/RedHatText-Regular.woff");
+  src: url("../assets/fonts/RedHatText/RedHatText-Regular.woff");
 
   /* Modern Browsers */
   font-style: normal;
