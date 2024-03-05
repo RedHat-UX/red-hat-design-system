@@ -261,7 +261,9 @@ module.exports = function RHDSPlugin(eleventyConfig, pluginOptions = { }) {
         ` : /* html */`
           <section id="${name}" class="token-category level-${level - 1}">
         `}
-          <h${level} id="${slug}">${heading}<a href="#${slug}">#</a></h${level}>
+          <uxdot-copy-permalink class="h${level}">
+            <h${level} id="${slug}"><a href="#${slug}">${heading}</a></h${level}>
+          </uxdot-copy-permalink> 
             <div class="description">
 
             ${(dedent(await getDescription(collection, pluginOptions)))}
