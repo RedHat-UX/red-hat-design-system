@@ -140,9 +140,7 @@ values or if you have an idea for an output format or tool integration.
     have context-agnostic names. These can be used and are inherited by other
     token types.</p>
 
-    <rh-code-block>
-      <script type="text/css">--rh-brand-red-500</script>
-    </rh-code-block>
+    <code>--rh-brand-red-500</code>
   </div>
 
   <div>
@@ -151,20 +149,16 @@ values or if you have an idea for an output format or tool integration.
     of a token and are effective when a value with a single intent is used
     multiple times.</p>
 
-    <rh-code-block>
-      <script type="text/css">--rh-color-surface-lightest</script>
-    </rh-code-block>
+    <code>--rh-color-surface-lightest</code>
   </div>
 
   <div>
     <h3>Element tokens</h3>
     <p>Element tokens link semantic tokens to specific elements. They are
-    prefixed with the element name and ship in the x@xxxxxxxxxxxxxx package,
-    rather than `@rhds/tokens`.</p>
+    prefixed with the element name and ship in the @rhds/elements package,
+    rather than @rhds/tokens.</p>
 
-    <rh-code-block>
-      <script type="text/css">--rh-cta-color-primary</script>
-    </rh-code-block>
+    <code>--rh-cta-color-primary</code>
   </div>
 </div>
 
