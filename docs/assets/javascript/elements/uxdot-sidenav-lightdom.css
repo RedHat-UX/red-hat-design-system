@@ -34,6 +34,10 @@ uxdot-sidenav > ul {
   background-color: var(--rh-color-surface-lightest, #ffffff);
 }
 
+uxdot-sidenav > ul > li {
+  margin-block: 0;
+}
+
 uxdot-sidenav-item {
   display: block;
 }
