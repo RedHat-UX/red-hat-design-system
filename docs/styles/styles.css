@@ -20,6 +20,10 @@
 @import url("third-party/prism-rhds.css") layer(third-party);
 
 @layer base {
+  body {
+    color: var(--rh-color-text-primary-on-light, #151515);
+  }
+
   :is(p, ul, ol, dl) {
     font-size: var(--rh-font-size-body-text-lg, 1.125rem);
     margin-block: 1em;
