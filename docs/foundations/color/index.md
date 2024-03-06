@@ -1,11 +1,12 @@
 ---
-layout: layout-foundations.njk
+layout: layout-with-subnav.njk
 title: Overview
 heading: Color
 tags:
   - foundations
   - color
 permalink: /foundations/color/index.html
+subNavCollection: sortedColor
 order: 00
 bodyClasses: element-docs
 ---

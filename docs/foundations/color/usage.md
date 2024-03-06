@@ -1,10 +1,11 @@
 ---
-layout: layout-foundations.njk
+layout: layout-with-subnav.njk
 title: Usage
 heading: Color
 tags:
   - color
 permalink: /foundations/color/usage/index.html
+subNavCollection: sortedColor
 order: 10
 bodyClasses: element-docs
 ---

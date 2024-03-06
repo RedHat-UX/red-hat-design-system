@@ -1,6 +1,7 @@
 ---
 layout: layout-basic.njk
 title: Designers
+heading: Designers
 order: 2
 tags:
   - getstarted
