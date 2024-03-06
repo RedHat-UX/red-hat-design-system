@@ -38,7 +38,7 @@
   }
 
   a:visited {
-    color: var(--rh-color-interactive-purple-darkest, #21134d);
+    color: var(--rh-color-interactive-purple-darker, #5e40be);
   }
 
   li {
