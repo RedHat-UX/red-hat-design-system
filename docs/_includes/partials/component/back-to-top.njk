@@ -22,20 +22,17 @@
   </a>
 </div>
 
-<script>
-(function() {
-  'use strict';
+<script type="module">
+  const section = document.querySelectorAll("main");
+  const sections = {};
+  const i = 0;
 
-  var section = document.querySelectorAll("main");
-  var sections = {};
-  var i = 0;
+  section.forEach( e => {
+    sections[e.id] = e.offsetTop; 
+  })
 
-  Array.prototype.forEach.call(section, function(e) {
-    sections[e.id] = e.offsetTop;
-  });
-
-  window.onscroll = function() {
-    var scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
+  window.addEventListener('scroll', function() {
+    const scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
 
     if (scrollPosition > (window.innerWidth / 2)) {
       document.getElementById("back-to-top").style.display = "flex";
@@ -43,5 +40,4 @@
       document.getElementById("back-to-top").style.display = "none";
     }
   };
-})();
 </script>
