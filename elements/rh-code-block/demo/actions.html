@@ -1,0 +1,40 @@
+<rh-code-block>
+  <rh-code-action slot="actions" action="copy">Copy to Clipboard</rh-code-action>
+  <rh-code-action slot="actions" action="wrap">Toggle line wrap</rh-code-action>
+<script type="text/css">:host {
+  position: relative;
+  display: block;
+}
+
+#content {
+  display: block;
+  background-color: var(--rh-color-surface-lighter, #f2f2f2);
+  border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle-on-light, #c7c7c7);
+  border-block-start-width:
+    var(
+        --rh-code-block-border-block-start-width,
+        var(--rh-border-width-sm, 1px)
+      );
+  padding: var(--rh-space-xl, 24px);
+  font-family: var(--rh-font-family-code, RedHatMono, "Red Hat Mono", "Courier New", Courier, monospace);
+  color: var(--rh-color-text-primary-on-light, #151515);
+  max-width: 1000px;
+  max-height: 640px;
+  height: calc(100% - 2 * var(--rh-space-xl, 24px));
+  overflow-y: auto;
+  border-radius: var(--rh-border-radius-default, 3px);
+}</script>
+</rh-code-block>
+
+
+<script type="module">
+  import '@rhds/elements/rh-button/rh-button.js';
+  import '@rhds/elements/rh-code-block/rh-code-block.js';
+  import '@rhds/elements/rh-tooltip/rh-tooltip.js';
+</script>
+
+<style>
+  rh-code-block {
+    margin-block-end: var(--rh-space-lg, 16px);
+  }
+</style>
