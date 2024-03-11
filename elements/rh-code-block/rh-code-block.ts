@@ -12,6 +12,9 @@ import style from './rh-code-block.css';
 
 const lineNumberStyleMap = new WeakMap<HTMLElement, CSSStyleDeclaration>();
 
+/**
+ * Tell me how many lines-of-text an element is in height.
+ */
 function computeLineNumber(el?: HTMLElement | null): number {
   if (!el) {
     return 0;
@@ -21,7 +24,7 @@ function computeLineNumber(el?: HTMLElement | null): number {
     }
     const divHeight = el.offsetHeight;
     const lineHeight = parseInt(lineNumberStyleMap.get(el)!.getPropertyValue('line-height'));
-    return Math.floor(divHeight / lineHeight);
+    return Math.floor(divHeight / lineHeight) || 0;
   }
 }
 
@@ -48,18 +51,15 @@ export class RhCodeBlock extends LitElement {
 
   @colorContextConsumer() private on?: ColorTheme;
 
-  #wrap = false;
+  @property({ type: Boolean }) wrap = false;
 
   #slots = new SlotController(this, null, 'actions');
-
-  #lines = 0;
 
   #linesMax = 0;
 
   render() {
-    const { on = '', fullHeight } = this;
+    const { on = '', fullHeight, wrap } = this;
     const expandable = this.#linesMax > 5;
-    const wrap = this.#wrap;
     const truncated = expandable && !fullHeight;
     return html`
       <div id="container"
@@ -84,35 +84,18 @@ export class RhCodeBlock extends LitElement {
     this.#computeSnippetLines();
   }
 
+  protected override updated(changed: PropertyValues<this>): void {
+    if (changed.has('wrap')) {
+      this.#computeSnippetLines();
+    }
+  }
+
   /**
    * Clone the text content and connect it to the document, in order to calculate the number of lines
    */
   #computeSnippetLines() {
     const slot = this.shadowRoot?.getElementById('content') as HTMLSlotElement;
-    const container = document.createElement('div');
-    const root = container.attachShadow({ mode: 'open' });
-    const sheet = new CSSStyleSheet();
-    sheet.replaceSync(/* css */`
-      :host {
-        opacity: 0;
-        pointer-events: none;
-        position: fixed:
-      }
-      script, pre {
-        display: inline;
-        white-space: pre;
-        color: inherit; ${!this.#wrap ? '' : /* css */`
-        white-space: pre-wrap;
-        word-wrap: break-word;
-    `}}`);
-    root.adoptedStyleSheets = [sheet];
-    for (const el of slot.assignedElements()) {
-      const node = el.cloneNode(true) as HTMLElement;
-      root.append(node);
-    }
-    document.body.append(container);
-    this.#linesMax = computeLineNumber(container);
-    container.remove();
+    this.#linesMax = computeLineNumber(slot);
     this.requestUpdate('#linesMax', 0);
   }
 
@@ -121,7 +104,7 @@ export class RhCodeBlock extends LitElement {
       case 'copy':
         return this.#copy();
       case 'wrap':
-        this.#wrap = !this.#wrap;
+        this.wrap = !this.wrap;
         this.requestUpdate();
         return;
     }
