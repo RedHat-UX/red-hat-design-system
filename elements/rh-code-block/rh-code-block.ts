@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, type PropertyValues } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { property } from 'lit/decorators/property.js';
@@ -37,47 +37,57 @@ export class RhCodeBlock extends LitElement {
 
   #slots = new SlotController(this, null, 'actions');
 
-  get #lines() {
-    const el = this.shadowRoot?.getElementById('content');
-    if (el) {
-      console.log(el.offsetHeight);
-      const divHeight = el.offsetHeight;
-      const lineHeight = parseInt(this.#slotStyle!.getPropertyValue('line-height'));
-      return divHeight / lineHeight;
-    } else {
-      return 0;
-    }
-  }
+  #lines = 0;
 
   #slotStyle?: CSSStyleDeclaration;
 
-  protected override firstUpdated() {
-    const el = this.shadowRoot?.getElementById('content');
-    this.#slotStyle = getComputedStyle(el!);
+  get #isShort() {
+    return this.#lines <= 7;
   }
 
   render() {
-    const { on = '' } = this;
-    const isShort = this.#lines <= 5;
+    const { on = '', fullHeight } = this;
+    const isShort = this.#isShort;
+    const wrap = this.#wrap;
+    const truncated = !isShort && !fullHeight;
+    const expandable = truncated || fullHeight;
     return html`
       <div id="container"
-           class="${classMap({ [on]: !!on,
-                               wrap: this.#wrap,
-                               truncated: !isShort && !this.fullHeight, })}"
+           class="${classMap({ [on]: !!on, wrap, truncated, expandable, fullHeight })}"
            @code-action="${this.#onCodeAction}">
         <slot id="content"></slot>
         <slot id="actions"
               name="actions"
               ?hidden="${!this.#slots.hasSlotted('actions')}"></slot>
         <button id="expand"
-                ?hidden="${isShort}"
-                @click="${() => this.fullHeight = !this.fullHeight}">
+                ?hidden="${!expandable}"
+                @click="${this.#onClickExpand}">
           <span>^</span>
-          <slot name="show-more" ?hidden="${!this.fullHeight}">Show more</slot>
-          <slot name="show-less" ?hidden="${this.fullHeight}">Show less</slot>
+          <slot name="show-more" ?hidden="${this.fullHeight}">Show more</slot>
+          <slot name="show-less" ?hidden="${!this.fullHeight}">Show less</slot>
         </button>
       </div>
     `;
+  }
+
+  protected override updated(changed: PropertyValues<this>) {
+    if (changed.has('fullHeight')) {
+      const old = this.#isShort;
+      const el = this.shadowRoot?.getElementById('content');
+      if (el) {
+        const divHeight = el.offsetHeight;
+        const lineHeight = parseInt(this.#slotStyle!.getPropertyValue('line-height'));
+        this.#lines = Math.floor(divHeight / lineHeight);
+      }
+      if (this.#isShort !== old) {
+        this.requestUpdate();
+      }
+    }
+  }
+
+  protected override firstUpdated() {
+    const el = this.shadowRoot!.getElementById('content')!;
+    this.#slotStyle = getComputedStyle(el);
   }
 
   #onCodeAction(event: RhCodeActionEvent) {
@@ -89,6 +99,10 @@ export class RhCodeBlock extends LitElement {
         this.requestUpdate();
         return;
     }
+  }
+
+  #onClickExpand() {
+    this.fullHeight = !this.fullHeight;
   }
 
   async #copy() {
