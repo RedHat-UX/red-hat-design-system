@@ -10,6 +10,21 @@ import { RhCodeActionEvent } from './rh-code-action.js';
 
 import style from './rh-code-block.css';
 
+const lineNumberStyleMap = new WeakMap<HTMLElement, CSSStyleDeclaration>();
+
+function computeLineNumber(el?: HTMLElement | null): number {
+  if (!el) {
+    return 0;
+  } else {
+    if (!lineNumberStyleMap.get(el)) {
+      lineNumberStyleMap.set(el, getComputedStyle(el));
+    }
+    const divHeight = el.offsetHeight;
+    const lineHeight = parseInt(lineNumberStyleMap.get(el)!.getPropertyValue('line-height'));
+    return Math.floor(divHeight / lineHeight);
+  }
+}
+
 /**
  * A code block is formatted text within a container.
  * @summary Formats code strings within a container
@@ -39,23 +54,18 @@ export class RhCodeBlock extends LitElement {
 
   #lines = 0;
 
-  #slotStyle?: CSSStyleDeclaration;
-
-  get #isShort() {
-    return this.#lines <= 7;
-  }
+  #linesMax = 0;
 
   render() {
     const { on = '', fullHeight } = this;
-    const isShort = this.#isShort;
+    const expandable = this.#linesMax > 5;
     const wrap = this.#wrap;
-    const truncated = !isShort && !fullHeight;
-    const expandable = truncated || fullHeight;
+    const truncated = expandable && !fullHeight;
     return html`
       <div id="container"
            class="${classMap({ [on]: !!on, wrap, truncated, expandable, fullHeight })}"
            @code-action="${this.#onCodeAction}">
-        <slot id="content"></slot>
+        <slot id="content" @slotchange="${this.#computeSnippetLines}"></slot>
         <slot id="actions"
               name="actions"
               ?hidden="${!this.#slots.hasSlotted('actions')}"></slot>
@@ -70,24 +80,40 @@ export class RhCodeBlock extends LitElement {
     `;
   }
 
-  protected override updated(changed: PropertyValues<this>) {
-    if (changed.has('fullHeight')) {
-      const old = this.#isShort;
-      const el = this.shadowRoot?.getElementById('content');
-      if (el) {
-        const divHeight = el.offsetHeight;
-        const lineHeight = parseInt(this.#slotStyle!.getPropertyValue('line-height'));
-        this.#lines = Math.floor(divHeight / lineHeight);
-      }
-      if (this.#isShort !== old) {
-        this.requestUpdate();
-      }
-    }
+  protected override firstUpdated(): void {
+    this.#computeSnippetLines();
   }
 
-  protected override firstUpdated() {
-    const el = this.shadowRoot!.getElementById('content')!;
-    this.#slotStyle = getComputedStyle(el);
+  /**
+   * Clone the text content and connect it to the document, in order to calculate the number of lines
+   */
+  #computeSnippetLines() {
+    const slot = this.shadowRoot?.getElementById('content') as HTMLSlotElement;
+    const container = document.createElement('div');
+    const root = container.attachShadow({ mode: 'open' });
+    const sheet = new CSSStyleSheet();
+    sheet.replaceSync(/* css */`
+      :host {
+        opacity: 0;
+        pointer-events: none;
+        position: fixed:
+      }
+      script, pre {
+        display: inline;
+        white-space: pre;
+        color: inherit; ${!this.#wrap ? '' : /* css */`
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    `}}`);
+    root.adoptedStyleSheets = [sheet];
+    for (const el of slot.assignedElements()) {
+      const node = el.cloneNode(true) as HTMLElement;
+      root.append(node);
+    }
+    document.body.append(container);
+    this.#linesMax = computeLineNumber(container);
+    container.remove();
+    this.requestUpdate('#linesMax', 0);
   }
 
   #onCodeAction(event: RhCodeActionEvent) {
