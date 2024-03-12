@@ -1,13 +1,9 @@
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { state } from 'lit/decorators/state.js';
 import { classMap } from 'lit/directives/class-map.js';
-// import { consume } from '@lit/context';
 
 import { type ColorTheme, colorContextConsumer } from '../../lib/context/color/consumer.js';
-
-// import { wrapContext } from './context.js';
 
 import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 
@@ -31,16 +27,26 @@ export class RhCodeAction extends LitElement {
 
   @colorContextConsumer() private on?: ColorTheme;
 
-  /* @consume({ context: wrapContext })*/ @state() private wrap = false;
+  @property({ type: Boolean }) active = false;
 
   render() {
     const { on = '' } = this;
     switch (this.action) {
       case 'copy':
+        return html`
+          <rh-tooltip>
+            <slot id="content" slot="content"></slot>
+            <button class="${classMap({ [on]: !!on })}"
+                    aria-labelledby="content"
+                    @click="${this.#onClick}">${this.#getIcon()}</button>
+          </rh-tooltip>
+          `;
       case 'wrap':
         return html`
           <rh-tooltip>
             <slot id="content" slot="content"></slot>
+            <slot name="active" ?hidden="${!this.active}" slot="content"></slot>
+            <slot name="inactive" ?hidden="${this.active}" slot="content"></slot>
             <button class="${classMap({ [on]: !!on })}"
                     aria-labelledby="content"
                     @click="${this.#onClick}">${this.#getIcon()}</button>
@@ -64,7 +70,7 @@ export class RhCodeAction extends LitElement {
           </svg>
         `;
       case 'wrap':
-        return this.wrap ? html`
+        return this.active ? html`
           <svg xmlns="http://www.w3.org/2000/svg"
                fill="none"
                viewBox="0 0 21 20">

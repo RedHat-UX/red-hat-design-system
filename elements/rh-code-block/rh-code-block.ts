@@ -3,13 +3,10 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
 import { property } from 'lit/decorators/property.js';
-// import { provide } from '@lit/context';
 
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
 import { type ColorTheme, colorContextConsumer } from '../../lib/context/color/consumer.js';
-
-// import { wrapContext } from './context.js';
 
 import { RhCodeActionEvent } from './rh-code-action.js';
 
@@ -45,13 +42,11 @@ export class RhCodeBlock extends LitElement {
 
   @colorContextConsumer() private on?: ColorTheme;
 
-  /* @provide({ context: wrapContext })*/ @property({ type: Boolean }) wrap = false;
+  @property({ type: Boolean }) wrap = false;
 
   #slots = new SlotController(this, null, 'actions');
 
   #ro = new ResizeObserver(() => this.#computeLineNumbers());
-
-  #linesMax = 0;
 
   #lineHeights: `${string}px`[] = [];
 
@@ -104,8 +99,12 @@ export class RhCodeBlock extends LitElement {
 
   protected override updated(changed: PropertyValues<this>): void {
     if (changed.has('wrap')) {
-      // this.#computeSnippetLines();
       this.#computeLineNumbers();
+      for (const action of this.querySelectorAll('rh-code-action')) {
+        if (action.action === 'wrap') {
+          action.active = this.wrap;
+        }
+      }
     }
   }
 

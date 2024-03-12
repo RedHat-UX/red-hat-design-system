@@ -1,6 +1,10 @@
 <rh-code-block>
   <rh-code-action slot="actions" action="copy">Copy to Clipboard</rh-code-action>
-  <rh-code-action slot="actions" action="wrap">Toggle line wrap</rh-code-action>
+  <rh-code-action slot="actions" action="wrap">
+    Toggle
+    <span slot="inactive">line wrap</span>
+    <span slot="active">overflow</span>
+  </rh-code-action>
 <script type="text/css">#content {
   display: block;
   background-color: var(--rh-color-surface-lighter, #f2f2f2);
