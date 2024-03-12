@@ -7,17 +7,21 @@ button {
   border: none;
   padding: var(--rh-space-md, 8px);
   border-radius: var(--rh-border-radius-default, 3px);
-  background: transparent
+  background: transparent;
+  color: var(--rh-color-text-primary-on-light, #151515);
 }
 
 button:is(:hover, :focus, :active) {
-  background: var(--rh-color-surface-light, #e0e0e0)
+  background: var(--rh-color-surface-light, #e0e0e0);
+}
+
+.dark {
+  color: var(--rh-color-text-primary-on-light, #151515);
 }
 
 .dark button:is(:hover, :focus, :active) {
   background: var(--rh-color-surface-dark, #383838);
 }
-
 
 svg {
   width: var(--rh-size-icon-02, 24px);

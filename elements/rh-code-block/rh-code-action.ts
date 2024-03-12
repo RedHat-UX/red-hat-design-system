@@ -1,13 +1,17 @@
-import { LitElement, html, svg } from 'lit';
+import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+import { state } from 'lit/decorators/state.js';
+import { classMap } from 'lit/directives/class-map.js';
+// import { consume } from '@lit/context';
 
 import { type ColorTheme, colorContextConsumer } from '../../lib/context/color/consumer.js';
+
+// import { wrapContext } from './context.js';
 
 import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 
 import style from './rh-code-action.css';
-import { classMap } from 'lit/directives/class-map.js';
 
 export class RhCodeActionEvent extends Event {
   action: 'copy' | 'wrap';
@@ -27,6 +31,8 @@ export class RhCodeAction extends LitElement {
 
   @colorContextConsumer() private on?: ColorTheme;
 
+  /* @consume({ context: wrapContext })*/ @state() private wrap = false;
+
   render() {
     const { on = '' } = this;
     switch (this.action) {
@@ -36,12 +42,8 @@ export class RhCodeAction extends LitElement {
           <rh-tooltip>
             <slot id="content" slot="content"></slot>
             <button class="${classMap({ [on]: !!on })}"
-              aria-labelledby="content"
-              @click="${this.#onClick}">
-              <svg>
-                ${this.#getIcon()}
-              </svg>
-            </button>
+                    aria-labelledby="content"
+                    @click="${this.#onClick}">${this.#getIcon()}</button>
           </rh-tooltip>
           `;
       default:
@@ -52,9 +54,33 @@ export class RhCodeAction extends LitElement {
   #getIcon() {
     switch (this.action) {
       case 'copy':
-        return svg`<text y="20" font-size="40px">c</text>`;
+        return html`
+          <svg xmlns="http://www.w3.org/2000/svg"
+               version="1.1"
+               viewBox="0 0 20 20"
+               fill="currentColor">
+            <path d="M12 0H2C.9 0 0 .9 0 2v10h1V2c0-.6.4-1 1-1h10V0z"/>
+            <path d="M18 20H8c-1.1 0-2-.9-2-2V8c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2zM8 7c-.6 0-1 .4-1 1v10c0 .6.4 1 1 1h10c.6 0 1-.4 1-1V8c0-.6-.4-1-1-1H8z"/>
+          </svg>
+        `;
       case 'wrap':
-        return svg`<text y="20" font-size="40px">w</text>`;
+        return this.wrap ? html`
+          <svg xmlns="http://www.w3.org/2000/svg"
+               fill="none"
+               viewBox="0 0 21 20">
+            <path fill="currentColor" d="M12 13h1v7h-1zM12 0h1v7h-1z"/>
+            <path stroke="currentColor" d="M16.465 6.464 20 10l-3.535 3.536"/>
+            <path fill="currentColor" d="M3 9.5h17v1H3zM0 0h1v20H0z"/>
+          </svg>
+        ` : html`
+          <svg xmlns="http://www.w3.org/2000/svg"
+               version="1.1"
+               viewBox="0 0 20 20"
+               fill="currentColor">
+            <path d="M19 0h1v20h-1zM11 5H4v1h7c2.2 0 4 1.8 4 4s-1.8 4-4 4H5.2l2.7-2.7-.7-.7-3.9 3.9 3.9 3.9.7-.7L5.2 15H11c2.8 0 5-2.2 5-5s-2.2-5-5-5zM0 0h1v20H0z" class="st0"/>
+          </svg>
+        `;
+      default: return '';
     }
   }
 
