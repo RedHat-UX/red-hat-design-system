@@ -1,0 +1,53 @@
+:host {
+  display: block;
+}
+
+#video,
+#consent {
+  display: inline-flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#video {
+  position: relative;
+  justify-content: stretch;
+}
+
+#consent,
+#watermark,
+::slotted([slot="thumbnail"]) {
+  position: absolute;
+  inset: 0;
+}
+
+#consent {
+  justify-content: center;
+}
+
+#consent-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#consent-body > * {
+  display: inline-block;
+}
+
+#consent-body > p {
+  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  font-size: var(--rh-font-size-heading-sm, 1.5rem);
+  line-height: var(--rh-line-height-heading, 1.3);
+  margin-bottom: var(--rh-space-3xl, 48px);
+}
+
+#play {
+  position: absolute;
+  inset: calc(50% - 32px);
+}
+
+#thumbnail,
+#play {
+  pointer-events: none;
+}
