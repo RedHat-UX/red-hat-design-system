@@ -22,6 +22,7 @@
     "expand expand";
   column-gap: var(--rh-space-xl, 24px);
   padding-inline-start: var(--rh-space-xl, 24px);
+  padding-block-end: var(--rh-space-xl, 24px);
   border-radius: var(--rh-border-radius-default, 3px);
   background-color: var(--_code_bg);
   border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle-on-light, #c7c7c7);
@@ -69,22 +70,26 @@
   inset-block-end: var(--rh-border-width-sm, 1px);
   inset-inline: calc(-1 * var(--rh-border-width-sm, 1px));
   height: calc(2 * var(--rh-font-size-code-md, 1rem));
-  background: linear-gradient(0deg, var(--_code_bg), transparent);
+
+  /* background: linear-gradient(0deg, var(--_code_bg), transparent); */
+  background: linear-gradient(0deg, #f2f2f2 0%, rgba(242, 242, 242, 0) 100%);
   pointer-events: none;
 }
 
 #expand {
+  display: inline-flex;
+  gap: var(--rh-space-md, 8px);
+  align-items: center;
   border: 0;
   background: transparent;
   inset-block-end: var(--rh-space-md, 8px);
   grid-area: expand;
   margin-block: var(--rh-space-md, 8px);
-}
-
-#expand:is(:focus, :hover, :active) {
-  /* background: var(--rh-color-surface-light, #e0e0e0); */
-
-  /* color: var(--rh-color-text-primary-on-light, #151515); */
+  color: var(--rh-color-text-primary-on-light, #151515);
+  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+  font-weight: var(--rh-font-weight-body-text-regular, 400);
+  line-height: var(--rh-line-height-body-text, 1.5);
 }
 
 #expand svg {
@@ -92,6 +97,7 @@
   height: 7px;
   rotate: 180deg;
   transform: rotate 0.2s ease-in-out;
+  color: var(--rh-color-icon-secondary-on-light, #151515);
 }
 
 .fullHeight #expand svg {
@@ -126,6 +132,10 @@
 .dark #expand {
   background: var(--rh-color-surface-darkest, #151515);
   color: var(--rh-color-text-primary-on-dark, #ffffff);
+}
+
+.dark #expand svg {
+  color: var(--rh-color-icon-secondary-on-dark, #ffffff);
 }
 
 :host([compact]) #sizers,

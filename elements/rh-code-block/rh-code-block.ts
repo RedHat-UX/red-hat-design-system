@@ -81,13 +81,13 @@ export class RhCodeBlock extends LitElement {
         <button id="expand"
                 ?hidden="${!expandable}"
                 @click="${this.#onClickExpand}">
+          <slot name="show-more" ?hidden="${this.fullHeight}">Show more</slot>
+          <slot name="show-less" ?hidden="${!this.fullHeight}">Show less</slot>
           <svg xmlns="http://www.w3.org/2000/svg"
                fill="currentColor"
                viewBox="0 0 11 7">
             <path d="M4.919.239.242 4.847a.801.801 0 0 0 0 1.148l.778.766a.83.83 0 0 0 1.165 0L5.5 3.495 8.815 6.76a.83.83 0 0 0 1.165 0l.778-.766a.802.802 0 0 0 0-1.148L6.08.239a.826.826 0 0 0-1.162 0Z"/>
           </svg>
-          <slot name="show-more" ?hidden="${this.fullHeight}">Show more</slot>
-          <slot name="show-less" ?hidden="${!this.fullHeight}">Show less</slot>
         </button>
       </div>
     `;

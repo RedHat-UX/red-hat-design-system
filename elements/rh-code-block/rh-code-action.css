@@ -3,12 +3,16 @@
 }
 
 button {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: none;
   padding: var(--rh-space-md, 8px);
   border-radius: var(--rh-border-radius-default, 3px);
   background: transparent;
   color: var(--rh-color-text-primary-on-light, #151515);
+  width: var(--rh-length-3xl, 48px);
+  height: var(--rh-length-3xl, 48px);
 }
 
 button:is(:hover, :focus, :active) {
