@@ -18,18 +18,22 @@ export class RhCodeActionEvent extends Event {
 }
 
 /**
+ * Action buttons for code-block elements. Users can copy the text of the code
+ * snippet or toggle line-wrap.
  */
 @customElement('rh-code-action')
 export class RhCodeAction extends LitElement {
   static styles = [style];
 
+  /** The action to perform on the code block. */
   @property() action?: 'copy' | 'wrap';
+
+  /** Whether the action is currently active; e.g. if line-wrap is enabled. */
+  @property({ type: Boolean }) active = false;
 
   @colorContextConsumer() private on?: ColorTheme;
 
-  @property({ type: Boolean }) active = false;
-
-  render() {
+  override render() {
     const { on = '' } = this;
     switch (this.action) {
       case 'copy':

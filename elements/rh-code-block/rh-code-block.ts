@@ -24,8 +24,13 @@ interface CodeLineHeightsInfo {
  * @summary Formats code strings within a container
  * @slot - A non-executable script tag containing the sample content. JavaScript
  *         samples should use the type `text/sample-javascript`. HTML samples
- *         containing script tags must escape the closing `</script>` tag.
+ *         containing script tags must escape the closing `</script>` tag. Can
+ *         also be a `<pre>` tag.
  * @slot {RhCodeActionEvent} actions - `<rh-code-action>` buttons
+ * @slot show-more - text content for the expandable toggle button when the code
+ *                   block is collapsed.
+ * @slot show-less - text content for the expandable toggle button when the code
+ *                   block is expanded.
  */
 @customElement('rh-code-block')
 export class RhCodeBlock extends LitElement {
@@ -40,9 +45,10 @@ export class RhCodeBlock extends LitElement {
   /** When set, the code block occupies it's full height, without scrolling */
   @property({ type: Boolean, reflect: true, attribute: 'full-height' }) fullHeight = false;
 
-  @colorContextConsumer() private on?: ColorTheme;
-
+  /** When set, lines in the code snippet wrap */
   @property({ type: Boolean }) wrap = false;
+
+  @colorContextConsumer() private on?: ColorTheme;
 
   #slots = new SlotController(this, null, 'actions');
 
@@ -125,7 +131,7 @@ export class RhCodeBlock extends LitElement {
       sizer.className = 'sizer';
       sizer.innerText = '0';
       sizer.style.display = 'block';
-      this.shadowRoot?.querySelector('#sizers')?.appendChild(sizer);
+      this.shadowRoot?.getElementById('sizers')?.appendChild(sizer);
       return {
         lines: element.textContent?.split(/\n(?!$)/g) ?? [],
         lineHeights: [],
