@@ -4,6 +4,10 @@
   max-height: 640px;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 #container,
 #content-lines,
 #content,
