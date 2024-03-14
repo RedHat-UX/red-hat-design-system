@@ -67,10 +67,9 @@ export class RhCodeAction extends LitElement {
         return html`
           <svg xmlns="http://www.w3.org/2000/svg"
                version="1.1"
-               viewBox="0 0 20 20"
-               fill="currentColor">
-            <path d="M12 0H2C.9 0 0 .9 0 2v10h1V2c0-.6.4-1 1-1h10V0z"/>
-            <path d="M18 20H8c-1.1 0-2-.9-2-2V8c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2zM8 7c-.6 0-1 .4-1 1v10c0 .6.4 1 1 1h10c.6 0 1-.4 1-1V8c0-.6-.4-1-1-1H8z"/>
+               viewBox="0 0 20 20">
+            <path fill="currentColor" d="M12 0H2C.9 0 0 .9 0 2v10h1V2c0-.6.4-1 1-1h10V0z"/>
+            <path fill="currentColor" d="M18 20H8c-1.1 0-2-.9-2-2V8c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2zM8 7c-.6 0-1 .4-1 1v10c0 .6.4 1 1 1h10c.6 0 1-.4 1-1V8c0-.6-.4-1-1-1H8z"/>
           </svg>
         `;
       case 'wrap':
@@ -85,9 +84,8 @@ export class RhCodeAction extends LitElement {
         ` : html`
           <svg xmlns="http://www.w3.org/2000/svg"
                version="1.1"
-               viewBox="0 0 20 20"
-               fill="currentColor">
-            <path d="M19 0h1v20h-1zM11 5H4v1h7c2.2 0 4 1.8 4 4s-1.8 4-4 4H5.2l2.7-2.7-.7-.7-3.9 3.9 3.9 3.9.7-.7L5.2 15H11c2.8 0 5-2.2 5-5s-2.2-5-5-5zM0 0h1v20H0z" class="st0"/>
+               viewBox="0 0 20 20">
+            <path fill="currentColor" d="M19 0h1v20h-1zM11 5H4v1h7c2.2 0 4 1.8 4 4s-1.8 4-4 4H5.2l2.7-2.7-.7-.7-3.9 3.9 3.9 3.9.7-.7L5.2 15H11c2.8 0 5-2.2 5-5s-2.2-5-5-5zM0 0h1v20H0z" class="st0"/>
           </svg>
         `;
       default: return '';

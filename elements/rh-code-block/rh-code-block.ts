@@ -67,12 +67,22 @@ export class RhCodeBlock extends LitElement {
   }
 
   render() {
-    const { on = '', fullHeight, wrap } = this;
+    const { on = '', fullHeight, wrap, resizable, compact } = this;
     const expandable = this.#lineHeights.length > 5;
     const truncated = expandable && !fullHeight;
+    const actions = this.#slots.hasSlotted('actions');
     return html`
       <div id="container"
-           class="${classMap({ [on]: !!on, wrap, truncated, expandable, fullHeight })}"
+           class="${classMap({
+              [on]: !!on,
+              actions,
+              compact,
+              expandable,
+              fullHeight,
+              resizable,
+              truncated,
+              wrap,
+           })}"
            @code-action="${this.#onCodeAction}">
         <div id="content-lines">
           <div id="sizers" aria-hidden="true"></div>
@@ -81,9 +91,7 @@ export class RhCodeBlock extends LitElement {
           </ol>
           <slot id="content" @slotchange="${this.#computeLineNumbers}"></slot>
         </div>
-        <slot id="actions"
-              name="actions"
-              ?hidden="${!this.#slots.hasSlotted('actions')}"></slot>
+        <slot id="actions" name="actions"></slot>
         <button id="expand"
                 ?hidden="${!expandable}"
                 @click="${this.#onClickExpand}">

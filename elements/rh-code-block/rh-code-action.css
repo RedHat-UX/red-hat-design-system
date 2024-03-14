@@ -7,27 +7,28 @@ button {
   align-items: center;
   justify-content: center;
   border: none;
+  background: transparent;
   padding: var(--rh-space-md, 8px);
   border-radius: var(--rh-border-radius-default, 3px);
-  background: transparent;
-  color: var(--rh-color-text-primary-on-light, #151515);
   width: var(--rh-length-3xl, 48px);
   height: var(--rh-length-3xl, 48px);
 }
 
 button:is(:hover, :focus, :active) {
-  background: var(--rh-color-surface-light, #e0e0e0);
-}
-
-.dark {
-  color: var(--rh-color-text-primary-on-light, #151515);
-}
-
-.dark button:is(:hover, :focus, :active) {
-  background: var(--rh-color-surface-dark, #383838);
+  background:
+    var(
+        --_code-action-hover-focus-active-background,
+        var(--rh-color-surface-light, #e0e0e0)
+      );
 }
 
 svg {
   width: var(--rh-size-icon-02, 24px);
   height: var(--rh-size-icon-02, 24px);
+  color: var(--_code-action-color, var(--rh-color-text-primary-on-light, #151515));
+}
+
+.dark {
+  --_code-action-color: var(--rh-color-text-primary-on-dark, #ffffff);
+  --_code-action-hover-focus-active-background: var(--rh-color-surface-dark, #383838);
 }
