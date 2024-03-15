@@ -1,0 +1,25 @@
+name: Validate PRs
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - edited
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm i semantic-release @changesets/read --prefer-offline
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const { validate } = await import('${{ github.workspace }}/scripts/validate-prs.js');
+            await validate({ context });
