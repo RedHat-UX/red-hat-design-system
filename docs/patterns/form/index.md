@@ -13,8 +13,6 @@ A Form is a group of elements used to collect information from a user. It can in
            alt="Form component samples",
            src="./form-samples.svg" %}
 
-{% repoStatus %}
-
 ## Style
 
 {% example palette="lightest",
