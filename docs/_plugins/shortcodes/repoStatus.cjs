@@ -83,6 +83,10 @@ const STATUS_CHECKLIST = {
   }
 }
 
+/**
+ * Reads repo status data from global data and outputs an array with component keys
+ * @this {EleventyContext}
+ */
 function getRepoData () {
   const docsPage = this.ctx._;
   const allStatuses = this.ctx.repoStatus ?? docsPage?.repoStatus ?? {};
@@ -91,11 +95,14 @@ function getRepoData () {
 }
 
 /**
- * Reads component status data from global data (see above) and outputs a definition list for each component
+ * Calls getRepoData function and outputs a definition list for each component
  * @this {EleventyContext}
  */
  function repoStatusList({ heading = 'Status', level = 2 } = {}) {
+
+  // Removing Documentation status from the repoStatusList
   const statusList = getRepoData.call(this).filter(repo => repo.name !== 'Documentation');
+
   if (!Array.isArray(statusList) || !statusList.length) {
     return '';
   } else {
@@ -135,7 +142,7 @@ ${listItem.status}${STATUS_LEGEND[listItem.status].icon}
  function repoStatusTable() {
   const docsPage = this.ctx._;
   const allStatuses = this.ctx.repoStatus ?? docsPage?.repoStatus ?? {};
-
+  // Filtering  Responsive status from all the component keys
   const elementsList = Object.keys(allStatuses).reduce((obj, key) => Object.assign(obj, {[key]: allStatuses[key].filter(item => item.name !== 'Responsive')}), {});
   
   if (!Object.keys(elementsList).length) {
@@ -188,7 +195,7 @@ ${elementsList[listKey].map(listItem => {
 }
 
 /**
- * Reads component status data from global data (see above) and outputs a status checklist table for each component
+ * Calls getRepoData function and outputs a status checklist table for each component
  * @this {EleventyContext}
  */
  function repoStatusChecklist({ heading = 'Status checklist', level = 2 } = {}) {
