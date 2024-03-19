@@ -1,5 +1,5 @@
 const Playground = require('./shortcodes/playground.cjs');
-const {RepoStatusList, RepoStatusChecklist, RepoStatusTable } = require('./shortcodes/repoStatus.cjs');
+const { RepoStatusList, RepoStatusChecklist, RepoStatusTable } = require('./shortcodes/repoStatus.cjs');
 const RenderInstallation = require('./shortcodes/renderInstallation.cjs');
 const ExampleImage = require('./shortcodes/example.cjs');
 const Cta = require('./shortcodes/cta.cjs');

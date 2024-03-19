@@ -1,8 +1,8 @@
 const STATUS_LEGEND = {
-  "Planned": {
-    description: "Ready to be worked on or ready to be released",
-    color: "gray",
-    variant: "filled",
+  'Planned': {
+    description: 'Ready to be worked on or ready to be released',
+    color: 'gray',
+    variant: 'filled',
     icon: /* html*/`
 <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 15" fill="none" role="img">
   <path d="M6 11.5C6.6 11.5 7 11.9 7 12.5C7 13.1 6.6 13.5 6 13.5C5.4 13.5 5 13.1 5 12.5C5 11.9 5.4 11.5 6 11.5ZM6 10.5C4.9 10.5 4 11.4 4 12.5C4 13.6 4.9 14.5 6 14.5C7.1 14.5 8 13.6 8 12.5C8 11.4 7.1 10.5 6 10.5Z" fill="#707070"/>
@@ -10,10 +10,10 @@ const STATUS_LEGEND = {
   <path d="M6 1.5C6.3 1.5 6.5 1.7 6.5 2C6.5 2.3 6.3 2.5 6 2.5C5.7 2.5 5.5 2.3 5.5 2C5.5 1.7 5.7 1.5 6 1.5ZM6 0.5C5.2 0.5 4.5 1.2 4.5 2C4.5 2.8 5.2 3.5 6 3.5C6.8 3.5 7.5 2.8 7.5 2C7.5 1.2 6.8 0.5 6 0.5Z" fill="#707070"/>
 </svg>`
   },
-  "In progress": {
-    description: "In the design or development process",
-    color: "green",
-    variant: "outline",
+  'In progress': {
+    description: 'In the design or development process',
+    color: 'green',
+    variant: 'outline',
     icon: /* html*/`
 <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 15" fill="none" role="img">
   <path d="M13.5 7.5C13.5 11.0899 10.5899 14 7 14C3.41015 14 0.5 11.0899 0.5 7.5C0.5 3.91015 3.41015 1 7 1C10.5899 1 13.5 3.91015 13.5 7.5Z" stroke="#63993D"/>
@@ -22,20 +22,20 @@ const STATUS_LEGEND = {
   <path d="M4 7.5L6 9.5L10 5.5" stroke="#63993D" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>`
   },
-  "Ready": {
-    description: "Ready to use and approved by all team members",
-    color: "green",
-    variant: "filled",
+  'Ready': {
+    description: 'Ready to use and approved by all team members',
+    color: 'green',
+    variant: 'filled',
     icon: /* html*/`
 <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 15" fill="none" role="img">
   <path d="M7 14.5C10.866 14.5 14 11.366 14 7.5C14 3.63401 10.866 0.5 7 0.5C3.13401 0.5 0 3.63401 0 7.5C0 11.366 3.13401 14.5 7 14.5Z" fill="#63993D"/>
   <path d="M4 7.5L6 9.5L10 5.5" stroke="#E9F7DF" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>`
   },
-  "Deprecated": {
-    description: "No longer supported by RHDS",
-    color: "orange",
-    variant: "filled",
+  'Deprecated': {
+    description: 'No longer supported by RHDS',
+    color: 'orange',
+    variant: 'filled',
     icon: /* html*/`
 <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 15" fill="none" role="img">
   <path d="M7 14.5C10.866 14.5 14 11.366 14 7.5C14 3.63401 10.866 0.5 7 0.5C3.13401 0.5 0 3.63401 0 7.5C0 11.366 3.13401 14.5 7 14.5Z" fill="#F0561D"/>
@@ -43,51 +43,51 @@ const STATUS_LEGEND = {
   <path d="M9 9.5L5 5.5" stroke="#FFE3D9" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>`
   },
-  "N/A": {
-    description: "Not planned, not available, or does not apply",
-    color: "gray",
-    variant: "outline",
+  'N/A': {
+    description: 'Not planned, not available, or does not apply',
+    color: 'gray',
+    variant: 'outline',
     icon: /* html*/`
 <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 15" fill="none" role="img">
   <path d="M13.5 7.5C13.5 11.0899 10.5899 14 7 14C3.41015 14 0.5 11.0899 0.5 7.5C0.5 3.91015 3.41015 1 7 1C10.5899 1 13.5 3.91015 13.5 7.5Z" stroke="#707070"/>
   <path d="M2.5 3L11.5 12" stroke="#707070" stroke-miterlimit="10"/>
 </svg>`
   }
-}
+};
 
 const STATUS_CHECKLIST = {
-  "Figma library": {
-    "Ready": "Component is available in the Figma library",
-    "In progress" : "Component will be added to the Figma library when ready",
-    "Planned": "Component is scheduled to be worked on",
-    "Deprecated": "Component has been removed from the current Figma library ",
-    "N/A": "Component not available in the Figma library"
+  'Figma library': {
+    'Ready': 'Component is available in the Figma library',
+    'In progress': 'Component will be added to the Figma library when ready',
+    'Planned': 'Component is scheduled to be worked on',
+    'Deprecated': 'Component has been removed from the current Figma library ',
+    'N/A': 'Component not available in the Figma library'
   },
-  "Responsive": {
-    "Ready": "Component responds to changing viewport sizes in Figma and the browser",
-    "N/A": "Responsiveness does not apply to this component"
+  'Responsive': {
+    'Ready': 'Component responds to changing viewport sizes in Figma and the browser',
+    'N/A': 'Responsiveness does not apply to this component'
   },
-  "RH Elements": {
-    "Ready": "Component is available as a web component",
-    "In progress" : "Component will be added to the RH Elements repo when ready",
-    "Planned" : "Component is scheduled to become a web component",
-    "Deprecated" : "Component is no longer a web component",
-    "N/A" : "Component not available as a web component"
+  'RH Elements': {
+    'Ready': 'Component is available as a web component',
+    'In progress': 'Component will be added to the RH Elements repo when ready',
+    'Planned': 'Component is scheduled to become a web component',
+    'Deprecated': 'Component is no longer a web component',
+    'N/A': 'Component not available as a web component'
   },
-  "webRH": {
-    "Ready": "Component is available as a web component",
-    "In progress" : "Component will be added to the webRH repo when ready",
-    "Planned" : "Component is scheduled to become a web component",
-    "Deprecated" : "Component is no longer a web component",
-    "N/A" : "Component not available as a web component"
+  'webRH': {
+    'Ready': 'Component is available as a web component',
+    'In progress': 'Component will be added to the webRH repo when ready',
+    'Planned': 'Component is scheduled to become a web component',
+    'Deprecated': 'Component is no longer a web component',
+    'N/A': 'Component not available as a web component'
   }
-}
+};
 
 /**
  * Reads repo status data from global data and outputs an array with component keys
  * @this {EleventyContext}
  */
-function getRepoData () {
+function getRepoData() {
   const docsPage = this.ctx._;
   const allStatuses = this.ctx.repoStatus ?? docsPage?.repoStatus ?? {};
   const title = this.ctx.title ?? docsPage?.title;
@@ -98,8 +98,7 @@ function getRepoData () {
  * Calls getRepoData function and outputs a definition list for each component
  * @this {EleventyContext}
  */
- function repoStatusList({ heading = 'Status', level = 2 } = {}) {
-
+function repoStatusList({ heading = 'Status', level = 2 } = {}) {
   // Removing Documentation status from the repoStatusList
   const statusList = getRepoData.call(this).filter(repo => repo.name !== 'Documentation');
 
@@ -120,31 +119,32 @@ function getRepoData () {
   <div class="component-status-list-container">
     <dl>
         ${statusList.map(listItem => {
-          return /* html */`
-<div>
+    return /* html */`
+  <div>
 <dt>${listItem.name}</dt>
 <dd>
 <rh-tag color=${STATUS_LEGEND[listItem.status].color} variant=${STATUS_LEGEND[listItem.status].variant}>
 ${listItem.status}${STATUS_LEGEND[listItem.status].icon}
 </rh-tag>
 </dd>
-</div>`
-        }).join('\n').trim()}
+</div>`;
+  }).join('\n').trim()}
     </dl>
   </div>
-</section>`;}
+</section>`;
+  }
 }
 
 /**
  * Reads component status data from global data (see above) and outputs a table for Design/Code status page
  * @this {EleventyContext}
  */
- function repoStatusTable() {
+function repoStatusTable() {
   const docsPage = this.ctx._;
   const allStatuses = this.ctx.repoStatus ?? docsPage?.repoStatus ?? {};
-  // Filtering  Responsive status from all the component keys
-  const elementsList = Object.keys(allStatuses).reduce((obj, key) => Object.assign(obj, {[key]: allStatuses[key].filter(item => item.name !== 'Responsive')}), {});
-  
+  // Filtering out 'Responsive' status from all the component keys
+  const elementsList = Object.fromEntries(Object.entries(allStatuses).map(([key, val]) => [key, val.filter(item => item.name !== 'Responsive')]), {});
+
   if (!Object.keys(elementsList).length) {
     return '';
   } else {
@@ -176,7 +176,7 @@ ${listItem.status}${STATUS_LEGEND[listItem.status].icon}
   <a href="/elements/${listKey}">${listKey}</a>
 </td>
 ${elementsList[listKey].map(listItem => {
-  return /* html */`
+    return /* html */`
     <td data-label="${listItem.name}">
     <span>
     <rh-tag color=${STATUS_LEGEND[listItem.status].color} variant=${STATUS_LEGEND[listItem.status].variant}>
@@ -184,21 +184,23 @@ ${elementsList[listKey].map(listItem => {
     </rh-tag>
     </span>
     </td>
-  `
-}).join('\n').trim()}
-</tr>`}).join('\n').trim()}
+  `;
+  }).join('\n').trim()}
+</tr>`;
+  }).join('\n').trim()}
 </tbody>
 </table>
 </rh-table>
   </div>
-  </section>`;}
+  </section>`;
+  }
 }
 
 /**
  * Calls getRepoData function and outputs a status checklist table for each component
  * @this {EleventyContext}
  */
- function repoStatusChecklist({ heading = 'Status checklist', level = 2 } = {}) {
+function repoStatusChecklist({ heading = 'Status checklist', level = 2 } = {}) {
   const headingLevel = Array.from({ length: level }, () => '#').join('');
   const statusList = getRepoData.call(this).filter(repo => repo.name !== 'Documentation');
   if (!Array.isArray(statusList) || !statusList.length) {
@@ -237,12 +239,14 @@ ${listItem.status}${STATUS_LEGEND[listItem.status].icon}
 </span>
 </td>
 <td data-label="Meaning">${STATUS_CHECKLIST[listItem.name][listItem.status]}</td>
-</tr>`}).join('\n').trim()}
+</tr>`;
+  }).join('\n').trim()}
 </tbody>
 </table>
 </rh-table>
   </div>
-</section>`;}
+</section>`;
+  }
 }
 
 function RepoStatusList(eleventyConfig) {
