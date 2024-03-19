@@ -8,6 +8,7 @@ import { state } from 'lit/decorators/state.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
+import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import '@patternfly/elements/pf-icon/pf-icon.js';
@@ -145,6 +146,9 @@ export class RhTile extends LitElement {
 
   #logger = new Logger(this);
 
+  #slots = new SlotController(this, { slots: ['icon'] });
+  #hasSlottedIcon = false;
+
   get #isCheckable() {
     return !!this.radioGroup || this.checkable;
   }
@@ -158,6 +162,11 @@ export class RhTile extends LitElement {
     this.addEventListener('keydown', this.#onKeydown);
     this.addEventListener('keyup', this.#onKeyup);
     this.addEventListener('click', this.#onClick);
+  }
+
+  connectedCallback(): void {
+    super.connectedCallback();
+    this.#hasSlottedIcon = this.#slots.getSlotted('icon').length > 0 ?? false;
   }
 
   /** Update the internal accessible representation of the element's state */
@@ -195,8 +204,10 @@ export class RhTile extends LitElement {
               ?hidden="${this.checkable}"
         ></slot>
         <div id="inner">
-          <slot id="icon" name="icon">
-            ${this.icon !== undefined ? html`<pf-icon icon="${ifDefined(this.icon)}" size="md" set="far"></pf-icon>` : html``}
+          <slot id="icon" name="icon" ?hidden="${this.icon === undefined && !this.#hasSlottedIcon}">
+            ${this.icon !== undefined ?
+              html`<pf-icon icon="${ifDefined(this.icon)}" size="md" set="far"></pf-icon>`
+              : html``}
           </slot>
           <div id="content">
             <div id="header">
