@@ -195,13 +195,8 @@ export class RhTile extends LitElement {
               ?hidden="${this.checkable}"
         ></slot>
         <div id="inner">
-          <slot id="icon"
-                name="icon"
-                ?hidden="${!this.icon}">
-            <pf-icon icon="${ifDefined(this.icon)}"
-                     size="md"
-                     set="far"
-            ></pf-icon>
+          <slot id="icon" name="icon">
+            ${this.icon !== undefined ? html`<pf-icon icon="${this.icon}" size="md" set="far"></pf-icon>` : html``}
           </slot>
           <div id="content">
             <div id="header">
