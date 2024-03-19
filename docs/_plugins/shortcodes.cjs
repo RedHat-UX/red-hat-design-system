@@ -1,5 +1,5 @@
 const Playground = require('./shortcodes/playground.cjs');
-const RepoStatus = require('./shortcodes/repoStatus.cjs');
+const {RepoStatusList, RepoStatusChecklist, RepoStatusTable } = require('./shortcodes/repoStatus.cjs');
 const RenderInstallation = require('./shortcodes/renderInstallation.cjs');
 const ExampleImage = require('./shortcodes/example.cjs');
 const Cta = require('./shortcodes/cta.cjs');
@@ -23,7 +23,9 @@ const renderCodeDocs = require('./shortcodes/renderCodeDocs.cjs');
  */
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(Section);
-  eleventyConfig.addPlugin(RepoStatus);
+  eleventyConfig.addPlugin(RepoStatusList);
+  eleventyConfig.addPlugin(RepoStatusChecklist);
+  eleventyConfig.addPlugin(RepoStatusTable);
   eleventyConfig.addPlugin(Playground);
   eleventyConfig.addPlugin(RenderInstallation);
   eleventyConfig.addPlugin(ExampleImage);
