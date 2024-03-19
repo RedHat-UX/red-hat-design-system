@@ -5,6 +5,7 @@
               alt=" Image of an avatar group with a photo of a woman and text",
               src="./avatar-sample.png" %}
 
+{% repoStatusList %}
 
 ## Sample element
 
@@ -25,6 +26,4 @@
 
   - When you need to represent a user who has not provided a photo or image
 
-
-  {% repoStatus %}
-
+{% repoStatusChecklist %}
