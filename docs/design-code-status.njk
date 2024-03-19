@@ -1,6 +1,11 @@
 ---
 layout: layout-basic.njk
 title: Design/code status
+stylesheets:
+  - /assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css
+importElements:
+  - rh-tag
+  - rh-table
 ---
 
 
@@ -8,295 +13,104 @@ title: Design/code status
 
 {% call components.section("Overview") -%}
 
-  <p>Our team is building a robust library of foundations and components. When we add new foundations and components or make significant updates, this table will be updated so you know what is currently available to use.</p>
+  <p>A detailed synopsis of our web components and their implementation status.</p>
+  <rh-table class="component-status-table">
+    <table>
+      <colgroup>
+        <col />
+        <col />
+      </colgroup>
+      <thead>
+        <tr>
+          <th scope="col" data-label="Sample tag">Sample tag</th>
+          <th scope="col" data-label="Meaning">Meaning</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Sample tag">
+            <span>
+              <rh-tag variant="filled" color="gray">
+                Planned
+                <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 15" fill="none" role="img">
+                  <path d="M6 11.5C6.6 11.5 7 11.9 7 12.5C7 13.1 6.6 13.5 6 13.5C5.4 13.5 5 13.1 5 12.5C5 11.9 5.4 11.5 6 11.5ZM6 10.5C4.9 10.5 4 11.4 4 12.5C4 13.6 4.9 14.5 6 14.5C7.1 14.5 8 13.6 8 12.5C8 11.4 7.1 10.5 6 10.5Z" fill="#707070"/>
+                  <path d="M10.5 8.5V7C10.5 4.5 8.5 2.5 6 2.5C3.5 2.5 1.5 4.5 1.5 7V8.5C1.5 9.1 1.1 9.5 0.5 9.5C0.2 9.5 0 9.7 0 10V12C0 12.3 0.2 12.5 0.5 12.5H11.5C11.8 12.5 12 12.3 12 12V10C12 9.7 11.8 9.5 11.5 9.5C10.9 9.5 10.5 9.1 10.5 8.5Z" fill="#707070"/>
+                  <path d="M6 1.5C6.3 1.5 6.5 1.7 6.5 2C6.5 2.3 6.3 2.5 6 2.5C5.7 2.5 5.5 2.3 5.5 2C5.5 1.7 5.7 1.5 6 1.5ZM6 0.5C5.2 0.5 4.5 1.2 4.5 2C4.5 2.8 5.2 3.5 6 3.5C6.8 3.5 7.5 2.8 7.5 2C7.5 1.2 6.8 0.5 6 0.5Z" fill="#707070"/>
+                </svg>
+              </rh-tag>
+            </span>
+          </td>
+          <td data-label="Meaning">Ready to be worked on or ready to be released</td>
+        </tr>
+        <tr>
+          <td data-label="Sample tag">
+            <span>
+              <rh-tag variant="outline" color="green">
+                In progress
+                <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 15" fill="none" role="img">
+                  <path d="M13.5 7.5C13.5 11.0899 10.5899 14 7 14C3.41015 14 0.5 11.0899 0.5 7.5C0.5 3.91015 3.41015 1 7 1C10.5899 1 13.5 3.91015 13.5 7.5Z" stroke="#63993D"/>
+                  <rect y="0.5" width="7" height="14" fill="white"/>
+                  <path d="M7 14C6.71181 14 6.42825 13.9813 6.15041 13.945L6.08574 14.4408C5.46842 14.3603 4.87638 14.1994 4.32049 13.9688L4.51201 13.507C3.98385 13.288 3.49061 13.0012 3.04317 12.6573L2.73851 13.0538C2.25358 12.6811 1.81885 12.2464 1.4462 11.7615L1.84266 11.4568C1.49883 11.0094 1.21205 10.5161 0.993026 9.98799L0.531163 10.1795C0.300642 9.62362 0.139689 9.03158 0.0591659 8.41426L0.554966 8.34959C0.518724 8.07175 0.5 7.78819 0.5 7.5C0.5 7.21181 0.518724 6.92825 0.554966 6.65041L0.059166 6.58574C0.13969 5.96842 0.300642 5.37638 0.531164 4.82049L0.993027 5.01201C1.21205 4.48385 1.49883 3.99061 1.84266 3.54317L1.4462 3.23851C1.81885 2.75358 2.25358 2.31885 2.73851 1.9462L3.04317 2.34266C3.49061 1.99883 3.98385 1.71205 4.51201 1.49303L4.32049 1.03116C4.87638 0.800642 5.46842 0.639689 6.08574 0.559166L6.15041 1.05497C6.42825 1.01872 6.71181 1 7 1C7.28819 1 7.57175 1.01872 7.84959 1.05497L7.91427 0.559166C8.53158 0.63969 9.12362 0.800642 9.67951 1.03116L9.48799 1.49303C10.0162 1.71205 10.5094 1.99883 10.9568 2.34266L11.2615 1.9462C11.7464 2.31885 12.1811 2.75358 12.5538 3.23851L12.1573 3.54317C12.5012 3.99061 12.788 4.48385 13.007 5.01201L13.4688 4.82049C13.6994 5.37638 13.8603 5.96842 13.9408 6.58574L13.445 6.65041C13.4813 6.92825 13.5 7.21181 13.5 7.5C13.5 7.78819 13.4813 8.07175 13.445 8.34959L13.9408 8.41426C13.8603 9.03158 13.6994 9.62362 13.4688 10.1795L13.007 9.98799C12.788 10.5162 12.5012 11.0094 12.1573 11.4568L12.5538 11.7615C12.1811 12.2464 11.7464 12.6811 11.2615 13.0538L10.9568 12.6573C10.5094 13.0012 10.0161 13.288 9.48799 13.507L9.67951 13.9688C9.12362 14.1994 8.53158 14.3603 7.91426 14.4408L7.84959 13.945C7.57175 13.9813 7.28819 14 7 14Z" stroke="#63993D" stroke-dasharray="2 2"/>
+                  <path d="M4 7.5L6 9.5L10 5.5" stroke="#63993D" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </rh-tag>
+            </span>
+          </td>
+          <td data-label="Meaning">In the design or development process</td>
+        </tr>
+        <tr>
+          <td data-label="Sample tag">
+            <span>
+              <rh-tag variant="filled" color="green">
+                Ready
+                <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 15" fill="none" role="img">
+                  <path d="M7 14.5C10.866 14.5 14 11.366 14 7.5C14 3.63401 10.866 0.5 7 0.5C3.13401 0.5 0 3.63401 0 7.5C0 11.366 3.13401 14.5 7 14.5Z" fill="#63993D"/>
+                  <path d="M4 7.5L6 9.5L10 5.5" stroke="#E9F7DF" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </rh-tag>
+            </span>
+          </td>
+          <td data-label="Meaning">Ready to use and approved by all team members</td>
+        </tr>
+        <tr>
+          <td data-label="Sample tag">
+            <span>
+              <rh-tag variant="filled" color="orange">
+                Deprecated
+                <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 15" fill="none" role="img">
+                  <path d="M7 14.5C10.866 14.5 14 11.366 14 7.5C14 3.63401 10.866 0.5 7 0.5C3.13401 0.5 0 3.63401 0 7.5C0 11.366 3.13401 14.5 7 14.5Z" fill="#F0561D"/>
+                  <path d="M5 9.5L9 5.5" stroke="#FFE3D9" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M9 9.5L5 5.5" stroke="#FFE3D9" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </rh-tag>
+            </span>
+          </td>
+          <td data-label="Meaning">No longer supported by RHDS</td>
+        </tr>
+        <tr>
+          <td data-label="Sample tag">
+            <span>
+              <rh-tag variant="outline" color="gray">
+                N/A
+                <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 15" fill="none" role="img">
+                  <path d="M13.5 7.5C13.5 11.0899 10.5899 14 7 14C3.41015 14 0.5 11.0899 0.5 7.5C0.5 3.91015 3.41015 1 7 1C10.5899 1 13.5 3.91015 13.5 7.5Z" stroke="#707070"/>
+                  <path d="M2.5 3L11.5 12" stroke="#707070" stroke-miterlimit="10"/>
+                </svg>
+              </rh-tag>
+            </span>
+          </td>
+          <td data-label="Meaning">Not planned, not available, or does not apply</td>
+        </tr>
+      </tbody>
+    </table>
+  </rh-table>
 
 {%- endcall %}
 
-{% call components.section("Design/code status") -%}
 
-  <p>Last updated on October 5, 2022.</p>
+{% call components.section("Web component status") -%}
 
-  <section class="section">
-    <div>
-      <table width="100%" style="overflow:auto;" class="status-table">
-        <thead style="overflow:auto;">
-          <tr>
-            <th>Foundation or component name</th>
-            <th>Design status</th>
-            <th>Code status</th>
-            <th>Documentation</th>
-          </tr>
-        </thead>
-        <tbody style="overflow:auto;">
-          <tr>
-            <td>Accordion</td>
-            <td><span class="deemphasized">Refresh in progress</span></td>
-            <td><div>PFE</div><div>Studio</div><div>WebRH</div></td>
-            <td><div><a href="../elements/accordion">ux.redhat.com</a></div><div><a href="https://patternflyelements.com/components/accordion/" target="_blank">PFE</a></div></td>
-          </tr>
-          <tr>
-            <td>Alert</td>
-            <td><span class="success">Complete</span></td>
-            <td><div>Adobe Target</div><div>PFE</div><div>RHDS</div></td>
-            <td><div><a href="../elements/alert">ux.redhat.com</a></div><div><span class="deemphasized">PFE (backlog)</span></div></td>
-          </tr>
-            <tr>
-            <td>Announcement</td>
-            <td><span class="success">Complete</span></td>
-            <td><div>Studio</div></td>
-            <td><div><a href="../patterns/announcement">ux.redhat.com</a></div></td>
-          </tr>
-
-          <tr>
-            <td>Audio player (redesign)</td>
-            <td><span class="success">Complete</span></td>
-            <td><span class="deemphasized">Backlog</span></td>
-            <td><div><span class="deemphasized">ux.redhat.com (backlog)</span></div></td>
-          </tr>
-          <tr>
-            <td>Avatar</td>
-            <td><span class="success">Complete</span></td>
-            <td><div>PFE</div><div>Studio</div></td>
-            <td><div><a href="../elements/avatar">ux.redhat.com</a></div><div><a href="https://patternflyelements.com/components/avatar/" target="_blank">PFE</a></div></td>
-          </tr>
-          <tr>
-            <td>Blockquote</td>
-            <td><span class="success">Complete</span></td>
-            <td><div>RHDS</div><div>Studio</div><div>WebRH</div></td>
-            <td><a href="../elements/blockquote">ux.redhat.com</a></td>
-          </tr>
-          <tr>
-            <td>Breadcrumb</td>
-            <td><span class="success">Complete</span></td>
-            <td><div>WebRH</div></td>
-            <td><div><span class="deemphasized">ux.redhat.com (backlog)</span></div></td>
-          </tr>
-          <tr>
-            <td>Button</td>
-            <td><span class="success">Complete</span></td>
-            <td><div>PFE</div><div>Custom</div></td>
-            <td><div><a href="../elements/button">ux.redhat.com</a></div><div><a href="https://patternflyelements.com/components/button/" target="_blank">PFE</a></div></td>
-          </tr>
-          <tr>
-            <td>Button (Stateful)</td>
-            <td><span class="success">Complete</span></td>
-            <td><div>PFE</div></td>
-            <td><div><span class="deemphasized">ux.redhat.com (backlog)</span></div><div><a href="https://patternflyelements.com/components/clipboard-copy/" target="_blank">PFE</a></div></td>
-          </tr>
-          <tr>
-            <td>Call to action</td>
-            <td><span class="success">Complete</span></td>
-            <td><div>PFE</div><div>RHDS</div><div>Custom</div></td>
-            <td><div><a href="../elements/call-to-action">ux.redhat.com</a></div><div><a href="https://patternflyelements.com/components/button/" target="_blank">PFE</a></div></td>
-          </tr>
-          <tr>
-            <td>Card</td>
-            <td><span class="success">Complete</span></td>
-            <td><div>PFE</div><div>Custom</div></td>
-            <td><div><a href="../elements/card">ux.redhat.com</a></div><div><a href="https://patternflyelements.com/components/card/" target="_blank">PFE</a></div></td>
-          </tr>
-          <tr>
-            <td>Code block</td>
-            <td><span class="deemphasized">In progress</span></td>
-            <td><div>PFE</div></td>
-            <td><div><span class="deemphasized">ux.redhat.com (backlog)</span></div><div><span class="deemphasized">PFE (backlog)</span></div></td>
-          </tr>
-          <tr>
-            <td>Cookie alert</td>
-            <td><span class="success">Complete</span></td>
-            <td><div>WebRH</div></td>
-            <td><span class="deemphasized">ux.redhat.com (backlog)</span></td>
-          </tr>
-          <tr>
-            <td>Disclosure</td>
-            <td><span class="success">Complete</span></td>
-            <td><div>PFE</div><div>WebRH</div></td>
-            <td><div><a href="../patterns/disclosure">ux.redhat.com</a></div><div><a href="https://patternflyelements.com/components/accordion/" target="_blank">PFE</a></div></td>
-          </tr>
-          <tr>
-            <td>Dialog (content)</td>
-            <td><span class="success">Complete</span></td>
-            <td><div>PFE</div><div>RHDS</div></td>
-            <td><div><a href="../elements/dialog">ux.redhat.com</a></div><div><a href="https://patternflyelements.com/components/modal/" target="_blank">PFE</div></td>
-          </tr>
-          <tr>
-            <td>Dialog (video)</td>
-            <td><span class="success">Complete</span></td>
-            <td><div>RHDS</div></td>
-            <td><div><a href="../elements/dialog">ux.redhat.com</a></div></td>
-          </tr>
-          <tr>
-            <td>Dropdown</td>
-            <td><span class="success">Complete</span></td>
-            <td><div>PFE</div></td>
-            <td><div><span class="deemphasized">ux.redhat.com (backlog)</span></div><div><a href="https://patternflyelements.com/components/dropdown/" target="_blank">PFE</a></div></td>
-          </tr>
-          <tr>
-            <td>Filter</td>
-            <td><span class="success">Complete</span></td>
-            <td><div>WebRH</div></td>
-            <td><a href="../patterns/filter">ux.redhat.com</a></td>
-          </tr>
-          <tr>
-            <td>Footer</td>
-            <td><span class="success">Complete</span></td>
-            <td><div>RHDS</div></td>
-            <td><div><a href="../elements/footer">ux.redhat.com</a></div>
-          </tr>
-          <tr>
-            <td>Form</td>
-            <td><span class="success">Complete</span></td>
-            <td><div>WebRH</div></td>
-            <td><div><a href="../patterns/form">ux.redhat.com</a></div><div><a href="https://www.patternfly.org/components/forms/form">PatternFly</a></div></td>
-          </tr>
-          <tr>
-            <td>Grid</td>
-            <td><span class="success">Complete</span></td>
-            <td><div>Studio</div><div>WebRH</div></td>
-            <td><div><a href="../foundations/grid">ux.redhat.com</a></div></td>
-          </tr>
-          <tr>
-            <td>Hero</td>
-            <td><span class="deemphasized">Backlog</span></td>
-            <td><span class="deemphasized">Not coded yet</span></td>
-            <td><span class="deemphasized">ux.redhat.com (backlog)</span></td>
-          </tr>
-          <tr>
-            <td>Jump links</td>
-            <td><span class="success">Complete</span></td>
-            <td><div>PFE</div><div>Custom</div></td>
-            <td><div><a href="../elements/jump-links">ux.redhat.com</a></div><div><a href="https://patternflyelements.com/components/jump-links/" target="_blank">PFE</a></div></td>
-          </tr>
-          <tr>
-            <td>Label</td>
-            <td><span class="success">Complete</span></td>
-            <td><span class="deemphasized">In progress</span></td>
-            <td><div><span class="deemphasized">ux.redhat.com (in progress)</span></div><div><a href="https://patternflyelements.org/components/label" target="_blank">PFE</a></div></td>
-          </tr>
-          <tr>
-            <td>Link</td>
-            <td><span class="success">Complete</span></td>
-            <td><div>Studio</div><div>WebRH</div></td>
-            <td><div><a href="../patterns/link">ux.redhat.com</a></div></td>
-          </tr>
-          <tr>
-            <td>Link with icon</td>
-            <td><span class="success">Complete</span></td>
-            <td><div>Custom</div></td>
-            <td><a href="../patterns/link-with-icon">ux.redhat.com</a></td>
-          </tr>
-          <tr>
-            <td>Navigation (primary)</td>
-            <td><span class="success">Complete</span></td>
-            <td><div>PFE</div><div>WebRH</div></td>
-            <td><div><a href="../elements/navigation-primary">ux.redhat.com</a></div></td>
-          </tr>
-          <tr>
-            <td>Navigation (secondary)</td>
-            <td><span class="success">Complete</span></td>
-            <td><div>RHDS</div></td>
-            <td><div><a href="../elements/navigation-secondary">ux.redhat.com</a></div></td>
-          </tr>
-          <tr>
-            <td>Navigation (universal)</td>
-            <td><span class="success">Complete</span></td>
-            <td><div>Custom</div></td>
-            <td><span class="deemphasized">ux.redhat.com (backlog)</span></td>
-          </tr>
-          <tr>
-            <td>Pagination</td>
-            <td><span class="success">Complete</span></td>
-            <td><span class="deemphasized">In progress</span></td>
-            <td><div><span class="deemphasized">ux.redhat.com (backlog)</span></div><div><span class="deemphasized">PFE (backlog)</span></div></td>
-          </tr>
-          <tr>
-            <td>Popover</td>
-            <td><span class="success">Complete</span></td>
-            <td><div>Studio</div><div>WebRH</div></td>
-            <td><div><a href="../elements/popover">ux.redhat.com</a></div></td>
-          </tr>
-          <tr>
-            <td>Progress steps</td>
-            <td><span class="success">Complete</span></td>
-            <td><div>PFE</div></td>
-            <td><div><a href="../elements/progress-steps">ux.redhat.com</a></div><div><a href="https://patternflyelements.com/components/progress-stepper/" target="_blank">PFE</div></td>
-          </tr>
-          <tr>
-            <td>Search bar</td>
-            <td><span class="success">Complete</span></td>
-            <td><div>Custom</div></td>
-            <td><a href="../patterns/search-bar">ux.redhat.com</a></td>
-          </tr>
-          <tr>
-            <td>Skip navigation</td>
-            <td><span class="success">Complete</span></td>
-            <td><div>PFE</div></td>
-            <td><div><a href="../patterns/skip-navigation">ux.redhat.com</a></div></td>
-          </tr>
-          <tr>
-            <td>Spacer</td>
-            <td><span class="success">Complete</span></td>
-            <td><div>Custom</div></td>
-            <td><a href="../foundations/spacing">ux.redhat.com</a></td>
-          </tr>
-          <tr>
-            <td>Statistic</td>
-            <td><span class="success">Complete</span></td>
-            <td><div>RHDS</div></td>
-            <td><a href="../elements/statistic">ux.redhat.com</a></td>
-          </tr>
-          <tr>
-            <td>Sticky banner</td>
-            <td><span class="success">Complete</span></td>
-            <td><div>Adobe Target</div><div>Studio</div></td>
-            <td><a href="../patterns/sticky-banner">ux.redhat.com</a></td>
-          </tr>
-          <tr>
-            <td>Sticky card</td>
-            <td><span class="success">Complete</span></td>
-            <td><div>Adobe Target</div><div>Studio</div></td>
-            <td><a href="../patterns/sticky-card">ux.redhat.com</a></td>
-          </tr>
-          <tr>
-            <td>Switch</td>
-            <td><span class="success">Complete</span></td>
-            <td><span class="deemphasized">In progress</span></td>
-            <td><span class="deemphasized">ux.redhat.com (backlog)</span></td>
-          </tr>
-          <tr>
-            <td>Table</td>
-            <td><span class="success">Complete</span></td>
-            <td><span class="deemphasized">In progress</span></td>
-            <td><div><span class="deemphasized">ux.redhat.com (backlog)</span></div><div><span class="deemphasized">PFE (backlog)</span></div></td>
-          </tr>
-          <tr>
-            <td>Tabs</td>
-            <td><span class="success">Complete</span></td>
-            <td><div>PFE</div><div>Studio</div><div>WebRH</div></td>
-            <td><div><a href="../elements/tabs">ux.redhat.com</a></div><div><a href="https://patternflyelements.com/components/tabs/" target="_blank">PFE</div></td>
-          </tr>
-          <tr>
-            <td>Tooltip</td>
-            <td><span class="success">Complete</span></td>
-            <td><div>RHDS</div><div>Custom</div></td>
-            <td><a href="../elements/tooltip">ux.redhat.com</a></td>
-          </tr>
-          <tr>
-            <td>Typography</td>
-            <td><span class="success">Complete</span></td>
-            <td><div>PFE</div><div>Studio</div><div>WebRH</div></td>
-            <td><div><a href="../foundations/typography">ux.redhat.com</a></div></td>
-          </tr>
-          <tr>
-            <td>Video thumbnail</td>
-            <td><span class="success">Complete</span></td>
-            <td><div>Studio</div></td>
-            <td><a href="../patterns/video-thumbnail">ux.redhat.com</a></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
+  {% repoStatusTable %}
 
 {%- endcall %}
 
