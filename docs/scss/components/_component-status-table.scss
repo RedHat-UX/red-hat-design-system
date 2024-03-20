@@ -5,20 +5,20 @@
 }
 
 .component-status-list-container {
-  border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle-on-light, #c7c7c7);
+  border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle-on-light);
   border-radius: 8px;
 
   dl {
     display: flex;
     align-items: flex-start;
-    column-gap: var(--rh-space-2xl, 32px);
-    margin-block: var(--rh-space-lg, 16px) var(--rh-space-lg, 16px);
-    margin-inline: var(--rh-space-xl, 24px) var(--rh-space-xl, 24px);
+    column-gap: var(--rh-space-2xl);
+    margin-block: var(--rh-space-lg) var(--rh-space-lg);
+    margin-inline: var(--rh-space-xl) var(--rh-space-xl);
   }
 
   dl div {
     display: flex;
-    column-gap: var(--rh-space-md, 8px);
+    column-gap: var(--rh-space-md);
     align-items: center;
   }
 
