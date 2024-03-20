@@ -147,7 +147,6 @@ export class RhTile extends LitElement {
   #logger = new Logger(this);
 
   #slots = new SlotController(this, { slots: ['icon'] });
-  #hasSlottedIcon = false;
 
   get #isCheckable() {
     return !!this.radioGroup || this.checkable;
@@ -162,11 +161,6 @@ export class RhTile extends LitElement {
     this.addEventListener('keydown', this.#onKeydown);
     this.addEventListener('keyup', this.#onKeyup);
     this.addEventListener('click', this.#onClick);
-  }
-
-  connectedCallback(): void {
-    super.connectedCallback();
-    this.#hasSlottedIcon = this.#slots.getSlotted('icon').length > 0 ?? false;
   }
 
   /** Update the internal accessible representation of the element's state */
@@ -189,6 +183,7 @@ export class RhTile extends LitElement {
   render() {
     const { bleed, compact, checkable, checked, desaturated, on = '' } = this;
     const disabled = this.disabledGroup || this.disabled || this.#internals.formDisabled;
+    const hasSlottedIcon = this.#slots.getSlotted('icon').length > 0 ?? false;
     return html`
       <div id="outer" class="${classMap({
             bleed,
@@ -204,7 +199,7 @@ export class RhTile extends LitElement {
               ?hidden="${this.checkable}"
         ></slot>
         <div id="inner">
-          <slot id="icon" name="icon" ?hidden="${this.icon === undefined && !this.#hasSlottedIcon}">
+          <slot id="icon" name="icon" ?hidden="${this.icon === undefined && !hasSlottedIcon}">
             ${this.icon !== undefined ?
               html`<pf-icon icon="${ifDefined(this.icon)}" size="md" set="far"></pf-icon>`
               : html``}
