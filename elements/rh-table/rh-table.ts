@@ -7,7 +7,6 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import { RequestSortEvent, RhSortButton } from './rh-sort-button.js';
 
-import { colorContextProvider, type ColorPalette } from '@rhds/elements/lib/context/color/provider.js';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-table.css';
@@ -19,15 +18,18 @@ import styles from './rh-table.css';
  *
  * @slot               - an HTML table
  * @slot    summary    - a brief description of the data
+ *
+ * @cssprop {<color>} --rh-table-row-background-color - deprecated use --rh-table-row-background-hover-color {@default `224 224 224 / 40%`}
+ * @cssprop {<color>} --rh-table-column-background-color - deprecated use --rh-table-column-background-hover-color {@default `0 102 204 / 10%`}
+ * @cssprop {<color>} --rh-table-row-background-hover-color - row hover background color {@default `224 224 224 / 40%`}
+ * @cssprop {<color>} --rh-table-column-background-hover-color - column hover background color {@default `0 102 204 / 10%`}
+ * @cssprop --rh-table-row-border - row border {@default `1px solid #c7c7c7`}
  */
 @customElement('rh-table')
 export class RhTable extends LitElement {
   static readonly styles = [styles];
 
   @colorContextConsumer() private on?: ColorTheme;
-
-  @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   private static getNodeContentForSort(
     columnIndexToSort: number,
@@ -68,6 +70,8 @@ export class RhTable extends LitElement {
     return this.querySelector('[slot="summary"]') as HTMLElement | undefined;
   }
 
+  #internalColorPalette?: string | null;
+
   #logger = new Logger(this);
 
   connectedCallback() {
@@ -75,10 +79,22 @@ export class RhTable extends LitElement {
     this.#init();
   }
 
+  protected willUpdate(): void {
+    /**
+     * TEMPORARY: this fixes the need to access the parents color-palette in order to get the `lightest`
+     * value.  This fix will only update the component when switching between light and dark themes as
+     * thats when the consumer requests an update.  Switching between lighter -> light for example will
+     * not trigger the component to update at this time.
+     **/
+    this.#internalColorPalette = this.closest('[color-palette]')?.getAttribute('color-palette');
+  }
+
   render() {
     const { on = '' } = this;
     return html`
-      <div id="container" class="${classMap({ [on]: !!on })}" part="container">
+      <div id="container" 
+        class="${classMap({ [on]: !!on, [`color-palette-${this.#internalColorPalette}`]: !!this.#internalColorPalette })}" 
+        part="container">
         <slot @pointerleave="${this.#onPointerleave}"
               @pointerover="${this.#onPointerover}"
               @request-sort="${this.#onRequestSort}" 

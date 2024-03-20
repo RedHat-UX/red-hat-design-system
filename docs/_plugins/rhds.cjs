@@ -45,27 +45,6 @@ const LIGHTDOM_HREF_RE = /href="\.(?<pathname>.*-lightdom\.css)"/g;
 const LIGHTDOM_PATH_RE = /href="\.(.*)"/;
 
 /**
- * @this {{outputPath: string, inputPath: string}}
- * @param {string} content
- */
-function lightdomCss(content) {
-  const { outputPath, inputPath } = this;
-  if (inputPath === './docs/elements/demos.html' ) {
-    const matches = content.match(LIGHTDOM_HREF_RE);
-    if (matches) {
-      for (const match of matches) {
-        const [, path] = match.match(LIGHTDOM_PATH_RE) ?? [];
-        const { pathname } = new URL(path, `file:///${outputPath}`);
-        content = content.replace(`.${path}`, pathname
-          .replace('/_site/elements/', '/assets/packages/@rhds/elements/elements/rh-')
-          .replace('/demo/', '/'));
-      }
-    }
-  }
-  return content;
-}
-
-/**
  * @param {string | number | Date} dateStr
  */
 function prettyDate(dateStr, options = {}) {
@@ -154,7 +133,38 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
 
   eleventyConfig.addTransform('demo-subresources', demoPaths);
 
-  eleventyConfig.addTransform('demo-lightdom-css', lightdomCss);
+  eleventyConfig.addTransform('demo-lightdom-css', async function(content) {
+    const { outputPath, inputPath } = this;
+    const { pfeconfig } = eleventyConfig?.globalData ?? {};
+    const { aliases } = pfeconfig;
+
+    if (inputPath === './docs/elements/demos.html' ) {
+      const tagNameMatch = outputPath.match(/\/elements\/(?<tagName>[-\w]+)\/demo\//);
+      if (tagNameMatch) {
+        const { tagName } = tagNameMatch.groups;
+
+        // slugify the value of each key in aliases creating a new cloned copy
+        const modifiedAliases = Object.fromEntries(Object.entries(aliases).map(([key, value]) => [slugify(key, { strict: true, lower: true }), value]));
+
+        // does the tagName exist in the aliases object?
+        const key = Object.keys(modifiedAliases).find(key => modifiedAliases[key] === tagName);
+
+        const prefixedTagName = `${pfeconfig?.tagPrefix}-${tagName}`;
+        const redirect = { new: key ?? prefixedTagName, old: tagName };
+        const matches = content.match(LIGHTDOM_HREF_RE);
+        if (matches) {
+          for (const match of matches) {
+            const [, path] = match.match(LIGHTDOM_PATH_RE) ?? [];
+            const { pathname } = new URL(path, `file:///${outputPath}`);
+            content = content.replace(`.${path}`, pathname
+              .replace(`/_site/elements/${redirect.old}/`, `/assets/packages/@rhds/elements/elements/${redirect.new}/`)
+              .replace('/demo/', '/'));
+          }
+        }
+      }
+    }
+    return content;
+  });
 
   eleventyConfig.addFilter('getTitleFromDocs', function(docs) {
     return docs.find(x => x.docsPage?.title)?.alias ??
