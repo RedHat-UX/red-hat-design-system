@@ -52,7 +52,35 @@ const STATUS_LEGEND = {
   <path d="M13.5 7.5C13.5 11.0899 10.5899 14 7 14C3.41015 14 0.5 11.0899 0.5 7.5C0.5 3.91015 3.41015 1 7 1C10.5899 1 13.5 3.91015 13.5 7.5Z" stroke="#707070"/>
   <path d="M2.5 3L11.5 12" stroke="#707070" stroke-miterlimit="10"/>
 </svg>`
-  }
+  },
+  'Beta': {
+    color: 'purple',
+    variant: 'outline',
+    icon: /* html*/`
+<svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 15" fill="none" role="img">
+  <path d="M13.5 7.5C13.5 11.0899 10.5899 14 7 14C3.41015 14 0.5 11.0899 0.5 7.5C0.5 3.91015 3.41015 1 7 1C10.5899 1 13.5 3.91015 13.5 7.5Z" stroke="#707070"/>
+  <path d="M2.5 3L11.5 12" stroke="#707070" stroke-miterlimit="10"/>
+</svg>`
+  },
+  'Experimental': {
+    color: 'orange',
+    variant: 'outline',
+    icon: /* html*/`
+<svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 15" fill="none" role="img">
+  <path d="M13.5 7.5C13.5 11.0899 10.5899 14 7 14C3.41015 14 0.5 11.0899 0.5 7.5C0.5 3.91015 3.41015 1 7 1C10.5899 1 13.5 3.91015 13.5 7.5Z" stroke="#707070"/>
+  <path d="M2.5 3L11.5 12" stroke="#707070" stroke-miterlimit="10"/>
+</svg>`
+  },
+  'New': {
+    color: 'cyan',
+    variant: 'outline',
+    icon: /* html*/`
+<svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 15" fill="none" role="img">
+  <path d="M13.5 7.5C13.5 11.0899 10.5899 14 7 14C3.41015 14 0.5 11.0899 0.5 7.5C0.5 3.91015 3.41015 1 7 1C10.5899 1 13.5 3.91015 13.5 7.5Z" stroke="#707070"/>
+  <path d="M2.5 3L11.5 12" stroke="#707070" stroke-miterlimit="10"/>
+</svg>`
+  },
+
 };
 
 const STATUS_CHECKLIST = {
@@ -89,9 +117,9 @@ const STATUS_CHECKLIST = {
  */
 function getRepoData() {
   const docsPage = this.ctx._;
-  const allStatuses = this.ctx.repoStatus ?? docsPage?.repoStatus ?? {};
+  const allStatuses = this.ctx.repoStatus ?? docsPage?.repoStatus ?? [];
   const title = this.ctx.title ?? docsPage?.title;
-  return allStatuses[title];
+  return allStatuses.find(component => component.name === title && component.type === 'Element').libraries;
 }
 
 /**
@@ -141,11 +169,11 @@ ${listItem.status}${STATUS_LEGEND[listItem.status].icon}
  */
 function repoStatusTable() {
   const docsPage = this.ctx._;
-  const allStatuses = this.ctx.repoStatus ?? docsPage?.repoStatus ?? {};
-  // Filtering out 'Responsive' status from all the component keys
-  const elementsList = Object.fromEntries(Object.entries(allStatuses).map(([key, val]) => [key, val.filter(item => item.name !== 'Responsive')]), {});
+  const allStatuses = this.ctx.repoStatus ?? docsPage?.repoStatus ?? [];
+  // Filtering out 'Responsive' status from all the libraries
+  const elementsList = allStatuses.map(item => ({...item, libraries: item.libraries.filter(lib => lib.name !== 'Responsive')}));
 
-  if (!Object.keys(elementsList).length) {
+  if (!Array.isArray(elementsList) || !elementsList.length) {
     return '';
   } else {
     return /* html */`
@@ -169,18 +197,19 @@ function repoStatusTable() {
 </tr>
 </thead>
 <tbody>
-  ${Object.keys(elementsList).map(listKey => {
+  ${elementsList.map(listItem => {
     return /* html */`
 <tr>
 <td data-label="Name">
-  <a href="/elements/${listKey}">${listKey}</a>
+  <a href="/elements/${listItem.name}">${listItem.name}</a>
+  ${listItem.overallStatus !== 'Released' ? `<rh-tag color="${STATUS_LEGEND[listItem.overallStatus].color}" variant="${STATUS_LEGEND[listItem.overallStatus].variant}">${listItem.overallStatus}</rh-tag>` : ''}
 </td>
-${elementsList[listKey].map(listItem => {
+${listItem.libraries.map(lib => {
     return /* html */`
-    <td data-label="${listItem.name}">
+    <td data-label="${lib.name}">
     <span>
-    <rh-tag color=${STATUS_LEGEND[listItem.status].color} variant=${STATUS_LEGEND[listItem.status].variant}>
-    ${listItem.status}${STATUS_LEGEND[listItem.status].icon}
+    <rh-tag color=${STATUS_LEGEND[lib.status].color} variant=${STATUS_LEGEND[lib.status].variant}>
+    ${lib.status}${STATUS_LEGEND[lib.status].icon}
     </rh-tag>
     </span>
     </td>
