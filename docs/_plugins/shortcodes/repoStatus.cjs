@@ -171,7 +171,7 @@ function repoStatusTable() {
   const docsPage = this.ctx._;
   const allStatuses = this.ctx.repoStatus ?? docsPage?.repoStatus ?? [];
   // Filtering out 'Responsive' status from all the libraries
-  const elementsList = allStatuses.map(item => ({...item, libraries: item.libraries.filter(lib => lib.name !== 'Responsive')}));
+  const elementsList = allStatuses.map(item => ({ ...item, libraries: item.libraries.filter(lib => lib.name !== 'Responsive') }));
 
   if (!Array.isArray(elementsList) || !elementsList.length) {
     return '';
