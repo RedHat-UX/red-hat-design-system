@@ -1,5 +1,12 @@
 # @rhds/elements
 
+## 1.3.2
+
+### Patch Changes
+
+- 1d1640705: `<rh-tile>`: corrected icon slot visibility with a slotted icon
+- d61b8dc71: `<rh-dialog>`: ensure that `cancel`, `open`, and `closed` events fire
+
 ## 1.3.1
 
 ### Patch Changes
