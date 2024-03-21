@@ -3,6 +3,8 @@
 
   {% example palette="light", alt="Image of open tabs, box tabs, and tabs with overflow buttons", src="./tabs-sample.png" %}
 
+{% repoStatusList %}
+
 ## Sample element
   <rh-tabs>
     <rh-tab slot="tab">Connected clouds</rh-tab>
@@ -23,5 +25,5 @@
   - When users need to read sections of content in the same view without leaving the page
   - When you need to group other types of content in the same view like forms, settings, dashboards, etc.
 
-  {% repoStatus type="Element" %}
+  {% repoStatusChecklist %}
 

@@ -7,6 +7,8 @@
            alt="Image of a code block with black code text within a light gray container",
            src="./code-block-sample.png" %}
 
+{% repoStatusList %}
+
 ## Sample element
 
 <rh-code-block>
@@ -29,9 +31,8 @@
     View the `<rh-code-block>` demo in a new tab
   {% endcta %}
 
-
 ## When to use
 
 - When you need to highlight a block of code while maintaining the formatting
 
-{% repoStatus type="Element" %}
+{% repoStatusChecklist %}

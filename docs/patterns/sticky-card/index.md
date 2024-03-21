@@ -13,8 +13,6 @@ Sticky cards slide into view at a certain scroll position and then anchor themse
           alt="Sticky card",
           src="./sticky-card.svg" %}
 
-{% repoStatus %}
-
 ## Style
 
 A sticky card acts as a small container for a limited amount of content.

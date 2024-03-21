@@ -15,8 +15,6 @@ Links are navigational elements that allow a user to move between content, pages
            alt="Link component examples",
            src="./example-links.svg" %}
 
-{% repoStatus %}
-
 ## Demo
 
 View a live version of the Call to action link and see how it can be customized.

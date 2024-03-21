@@ -2,6 +2,8 @@
   <rh-menu></rh-menu>
 {% endrenderOverview %}
 
+{% repoStatusList %}
+
 {% band header="Usage" %}{% endband %}
 
 {% renderSlots %}{% endrenderSlots %}
@@ -15,3 +17,5 @@
 {% renderCssCustomProperties %}{% endrenderCssCustomProperties %}
 
 {% renderCssParts %}{% endrenderCssParts %}
+
+{% repoStatusChecklist %}

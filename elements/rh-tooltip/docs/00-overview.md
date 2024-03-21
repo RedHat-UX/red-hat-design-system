@@ -7,6 +7,8 @@
           alt=" A black tooltip on top of a gray disabled button",
           src="./tooltip-sample-element.png" %}
 
+{% repoStatusList %}
+
 ## Sample element
   <p>
     <rh-tooltip position="top">
@@ -44,5 +46,4 @@
 - When you need to provide more information for icons or icon buttons without labels
 - When you need to define new or unfamiliar UI elements that are not described directly in the user interface
 
-{% repoStatus type="Element" %}
-
+{% repoStatusChecklist %}

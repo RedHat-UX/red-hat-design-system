@@ -6,6 +6,8 @@
            alt="Image of table with four columns and three rows",
            src="./table-sample-element.png" %}
 
+{% repoStatusList %}
+
 ## Sample element
 
 <rh-table>
@@ -61,4 +63,4 @@ View the `<rh-table>` demo in a new tab
 - If a user needs to scan, examine, and compare data
 - If a user must navigate to a specific piece of data to complete a task
 
-{% repoStatus type="Element" %}
+{% repoStatusChecklist %}

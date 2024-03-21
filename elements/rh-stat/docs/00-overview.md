@@ -6,6 +6,7 @@
            alt="A vertically aligned stack of elements; includes a small red icon, large red data text showing 80% percent, and two lines of black body text",
            src="stat-sample-element.png" %}
 
+{% repoStatusList %}
 
 ## Sample element
   <rh-stat>
@@ -30,4 +31,4 @@
 - When you need to pair a data point with supporting text to add more context
 - When you need to display several statistics together in a group
 
-{% repoStatus %} 
+{% repoStatusChecklist %}

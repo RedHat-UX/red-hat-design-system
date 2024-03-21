@@ -16,8 +16,6 @@ a button. It allows a user to input text and then perform a search.
     alt="Search bar component sample",
     src="./search-bar-sample.svg" %}
 
-{% repoStatus %}
-
 ## Style
 
 A search bar includes a narrow but wide form field with placeholder text and a 
