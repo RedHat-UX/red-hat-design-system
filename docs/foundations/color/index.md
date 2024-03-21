@@ -6,7 +6,7 @@ tags:
   - foundations
   - color
 permalink: /foundations/color/index.html
-order: 00
+order: 1
 bodyClasses: element-docs
 ---
 

@@ -96,6 +96,21 @@
           </details>
         </li>
 
+        <!-- Theming -->
+
+        <li class="item">
+          <details {{ 'open' if 'theming/' in page.url }}>
+            <summary class="heading">Theming</summary>
+            <ul class="sub-menu">
+              {%- for link in collections.theming -%}
+              <li class="item">
+                <a class="link {{ 'active' if page.url === link.url }}"
+                   href="{{ link.url | url }}">{{ link.data.title }}</a>
+              </li>
+              {%- endfor -%}
+            </ul>
+          </details>
+        </li>
         <!-- Tokens -->
 
         <li class="item">

@@ -120,6 +120,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   eleventyConfig.addPlugin(RHDSShortcodesPlugin);
 
   eleventyConfig.addPassthroughCopy('docs/demo.{js,map,ts}');
+  eleventyConfig.addPassthroughCopy('elements/*/*-lightdom.css');
 
   eleventyConfig.addPassthroughCopy({
     'node_modules/element-internals-polyfill': '/assets/packages/element-internals-polyfill',
@@ -210,13 +211,6 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
 
   eleventyConfig.addFilter('makeSentenceCase', function(value) {
     return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
-  });
-
-  eleventyConfig.addCollection('sortedColor', async function(collectionApi) {
-    const colorCollection = collectionApi.getFilteredByTags('color');
-    return colorCollection.sort((a, b) => {
-      if (a.data.order > b.data.order) { return 1; } else if (a.data.order < b.data.order) { return -1; } else { return 0; }
-    });
   });
 
   eleventyConfig.addCollection('elementDocs', async function(collectionApi) {
