@@ -1,4 +1,4 @@
-var _RhTile_instances, _RhTile_internals, _RhTile_logger, _RhTile_isCheckable_get, _RhTile_input_get, _RhTile_setValidityFromInput, _RhTile_onClick, _RhTile_requestSelect, _RhTile_onKeydown, _RhTile_onKeyup;
+var _RhTile_instances, _RhTile_internals, _RhTile_logger, _RhTile_slots, _RhTile_isCheckable_get, _RhTile_input_get, _RhTile_setValidityFromInput, _RhTile_onClick, _RhTile_requestSelect, _RhTile_onKeydown, _RhTile_onKeyup;
 import { __classPrivateFieldGet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
@@ -7,6 +7,7 @@ import { property } from 'lit/decorators/property.js';
 import { state } from 'lit/decorators/state.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
+import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import '@patternfly/elements/pf-icon/pf-icon.js';
 import { colorContextConsumer } from '../../lib/context/color/consumer.js';
@@ -77,6 +78,7 @@ let RhTile = class RhTile extends LitElement {
         this.radioGroup = false;
         _RhTile_internals.set(this, new InternalsController(this));
         _RhTile_logger.set(this, new Logger(this));
+        _RhTile_slots.set(this, new SlotController(this, { slots: ['icon'] }));
         this.addEventListener('keydown', __classPrivateFieldGet(this, _RhTile_instances, "m", _RhTile_onKeydown));
         this.addEventListener('keyup', __classPrivateFieldGet(this, _RhTile_instances, "m", _RhTile_onKeyup));
         this.addEventListener('click', __classPrivateFieldGet(this, _RhTile_instances, "m", _RhTile_onClick));
@@ -101,6 +103,7 @@ let RhTile = class RhTile extends LitElement {
     render() {
         const { bleed, compact, checkable, checked, desaturated, on = '' } = this;
         const disabled = this.disabledGroup || this.disabled || __classPrivateFieldGet(this, _RhTile_internals, "f").formDisabled;
+        const hasSlottedIcon = __classPrivateFieldGet(this, _RhTile_slots, "f").getSlotted('icon').length > 0 ?? false;
         return html `
       <div id="outer" class="${classMap({
             bleed,
@@ -116,13 +119,10 @@ let RhTile = class RhTile extends LitElement {
               ?hidden="${this.checkable}"
         ></slot>
         <div id="inner">
-          <slot id="icon"
-                name="icon"
-                ?hidden="${!this.icon}">
-            <pf-icon icon="${ifDefined(this.icon)}"
-                     size="md"
-                     set="far"
-            ></pf-icon>
+          <slot id="icon" name="icon" ?hidden="${this.icon === undefined && !hasSlottedIcon}">
+            ${this.icon !== undefined ?
+            html `<pf-icon icon="${ifDefined(this.icon)}" size="md" set="far"></pf-icon>`
+            : html ``}
           </slot>
           <div id="content">
             <div id="header">
@@ -173,7 +173,7 @@ let RhTile = class RhTile extends LitElement {
         return __classPrivateFieldGet(this, _RhTile_internals, "f").reportValidity();
     }
 };
-_RhTile_internals = new WeakMap(), _RhTile_logger = new WeakMap(), _RhTile_instances = new WeakSet(), _RhTile_isCheckable_get = function _RhTile_isCheckable_get() {
+_RhTile_internals = new WeakMap(), _RhTile_logger = new WeakMap(), _RhTile_slots = new WeakMap(), _RhTile_instances = new WeakSet(), _RhTile_isCheckable_get = function _RhTile_isCheckable_get() {
     return !!this.radioGroup || this.checkable;
 }, _RhTile_input_get = function _RhTile_input_get() {
     return this.shadowRoot.getElementById('input');

@@ -113,6 +113,17 @@ export const config = {
       "content": "<rh-tile bleed=\"\">\n  <img slot=\"image\" src=\"https://fakeimg.pl/300x200\" alt=\"300 X 200 placeholder image\">\n  <div slot=\"title\">Title</div>\n  <h2 slot=\"headline\"><a href=\"#top\">Link</a></h2>\n  Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n  <div slot=\"footer\">Suspendisse eu turpis elementum</div>\n</rh-tile>\n\n<rh-tile bleed=\"\">\n  <img slot=\"image\" src=\"https://fakeimg.pl/300x170\" alt=\"300 X 170 placeholder image\">\n  <pf-icon slot=\"icon\" icon=\"aws\" set=\"fab\" size=\"xl\"></pf-icon>\n  <h2 slot=\"headline\"><a href=\"#top\">Link</a></h2>\n  Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n  <div slot=\"footer\">Suspendisse eu turpis elementum</div>\n</rh-tile>\n\n<link rel=\"stylesheet\" href=\"../rh-tile-lightdom.css\">\n\n<script type=\"module\">\n  import '@rhds/elements/rh-tile/rh-tile.js';\n  import '@patternfly/elements/pf-icon/pf-icon.js';\n</script>\n<!--playground-fold--><link rel=\"stylesheet\" href=\"https://static.redhat.com/libs/redhat/redhat-font/4/webfonts/red-hat-font.min.css\"><link rel=\"stylesheet\" href=\"https://static.redhat.com/libs/redhat/redhat-theme/6/advanced-theme.css\"><link rel=\"stylesheet\" href=\"../rhds-demo-base.css\">\n\n<!--playground-fold-end--><!--playground-hide--><script type=\"module\" src=\"./../rh-tile-full-width-images-inline-script-0.js\"></script>\n\n<!--playground-hide-end-->",
       "label": "Full Width Images"
     },
+    "demo/rh-tile-icon-inline-script-0.js": {
+      "contentType": "application/javascript",
+      "content": "\n  import '@rhds/elements/rh-tile/rh-tile.js';\n",
+      "hidden": true
+    },
+    "demo/icon/index.html": {
+      "contentType": "text/html",
+      "selected": false,
+      "content": "<!-- Slotted Icon -->\n<rh-tile>\n  <img slot=\"icon\" src=\"https://fakeimg.pl/24x24\" alt=\"\">\n  <div slot=\"title\">Title</div>\n  <h2 slot=\"headline\"><a href=\"#top\">Link</a></h2>\n  Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n  <div slot=\"footer\">Suspendisse eu turpis elementum</div>\n</rh-tile>\n\n<!-- PFE icon -->\n<rh-tile icon=\"check-circle\">\n  <div slot=\"title\">Title</div>\n  <h2 slot=\"headline\"><a href=\"#top\">Link</a></h2>\n  Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n  <div slot=\"footer\">Suspendisse eu turpis elementum</div>\n</rh-tile>\n\n<!-- No icon -->\n<rh-tile>\n  <div slot=\"title\">Title</div>\n  <h2 slot=\"headline\"><a href=\"#top\">Link</a></h2>\n  Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n  <div slot=\"footer\">Suspendisse eu turpis elementum</div>\n</rh-tile>\n\n<script type=\"module\">\n  import '@rhds/elements/rh-tile/rh-tile.js';\n</script>\n\n<link rel=\"stylesheet\" href=\"../rh-tile-lightdom.css\">\n\n<style>\n  rh-tile {\n    margin-inline-end: var(--rh-space-md, 8px);\n  }\n</style>\n<!--playground-fold--><link rel=\"stylesheet\" href=\"https://static.redhat.com/libs/redhat/redhat-font/4/webfonts/red-hat-font.min.css\"><link rel=\"stylesheet\" href=\"https://static.redhat.com/libs/redhat/redhat-theme/6/advanced-theme.css\"><link rel=\"stylesheet\" href=\"../rhds-demo-base.css\">\n\n<!--playground-fold-end--><!--playground-hide--><script type=\"module\" src=\"./../rh-tile-icon-inline-script-0.js\"></script>\n\n<!--playground-hide-end-->",
+      "label": "Icon"
+    },
     "demo/rh-tile-in-flex-container-inline-script-0.js": {
       "contentType": "application/javascript",
       "content": "\n  import '@rhds/elements/rh-tile/rh-tile.js';\n",
