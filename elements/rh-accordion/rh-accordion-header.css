@@ -107,6 +107,12 @@ span {
   text-align: start;
 }
 
+[part="container"] {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rh-space-xs, 4px);
+}
+
 #button[aria-expanded="true"] #icon {
   rotate: calc(var(--_isRTL, -1) * 180deg);
 }
@@ -144,4 +150,10 @@ span {
   position: absolute;
   inset-block: 0;
   inset-inline-start: 0;
+}
+
+@media screen and (min-width: 576px) {
+  [part="container"] {
+    flex-direction: row;
+  }
 }
