@@ -103,8 +103,13 @@ span {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  max-width: calc(100% - var(--rh-space-xl, 24px));
   text-align: start;
+}
+
+[part="container"] {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rh-space-xs, 4px);
 }
 
 #button[aria-expanded="true"] #icon {
@@ -144,4 +149,10 @@ span {
   position: absolute;
   inset-block: 0;
   inset-inline-start: 0;
+}
+
+@media screen and (min-width: 576px) {
+  [part="container"] {
+    flex-direction: row;
+  }
 }
