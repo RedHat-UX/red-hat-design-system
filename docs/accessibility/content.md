@@ -3,9 +3,17 @@ title: Content
 tags: accessibility
 importElements:
   - rh-code-block
+  - rh-blockquote
+  - rh-table
 ---
 
 <style>
+    rh-blockquote, rh-table {
+        display: block;
+        margin-block: 2em !important;
+        max-width: 36em;
+    }
+
     .docs-figure {
         width: 50%;
         margin: 0 auto;
