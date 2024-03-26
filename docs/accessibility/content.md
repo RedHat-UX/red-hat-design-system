@@ -400,8 +400,8 @@ Your content order can impact not only how a page is read, but also how it’s o
 ### Avoiding autoplay
 
 <rh-blockquote>
-    <p>If any audio on a Web page plays automatically for more than 3 seconds, either a mechanism is available to pause or stop the audio, or a mechanism is available to control audio volume independently from the overall system volume level.</p>
-    <span slot="author">[WCAG 2.1 Success Criterion 1.4.2: Audio Control (Level A)](https://www.w3.org/WAI/WCAG21/Understanding/audio-control)</span>
+  <p>If any audio on a Web page plays automatically for more than 3 seconds, either a mechanism is available to pause or stop the audio, or a mechanism is available to control audio volume independently from the overall system volume level.</p>
+  <a slot="author" href="https://www.w3.org/WAI/WCAG21/Understanding/audio-control">WCAG 2.1 Success Criterion 1.4.2: Audio Control (Level A)</a>
 </rh-blockquote>
 
 Enabling autoplay on audio or video can create several accessibility barriers:
