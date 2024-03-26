@@ -386,6 +386,128 @@ Because people and assistive technologies read linearly, your content must also 
 
 Your content order can impact not only how a page is read, but also how it’s operated. Users navigating via keyboard move sequentially (both forward and backward) among interactive elements on a page via the <kbd>tab</kbd> and arrow keys. Consider how the order in which you arrange your content could make such navigation easier or more difficult for both visual and non-visual keyboard users.
 
+
+## Audio/video
+
+### Avoiding autoplay
+
+<rh-blockquote>
+    <p>If any audio on a Web page plays automatically for more than 3 seconds, either a mechanism is available to pause or stop the audio, or a mechanism is available to control audio volume independently from the overall system volume level.</p>
+    <span slot="author">[WCAG 2.1 Success Criterion 1.4.2: Audio Control (Level A)](https://www.w3.org/WAI/WCAG21/Understanding/audio-control)</span>
+</rh-blockquote>
+
+Enabling autoplay on audio or video can create several accessibility barriers:
+- It can distract users with cognitive disabilities.
+- It can cause seizures or trigger motion sickness.
+- It can prevent users from hearing a screen reader.
+- It can interfere with text-to-speech.
+
+Use one or more of the following techniques to help ensure accessibility:
+- Avoid autoplay altogether. (Honestly, just do this, and you don’t have to worry about anything else!)
+- Ensure that audio-only or video-with-audio media autoplays for less than three seconds.
+- Ensure that video-only media (including any animated, blinking, or scrolling content) autoplays for less than five seconds.
+- Ensure that the media has no audio.
+- Mute audio or set its volume to zero by default.
+- Provide a control near the top of the page to mute sounds.
+- Provide controls to pause the media itself.
+
+### Media solutions
+To be accessible, each media type must include _**all** of the following_ unless otherwise noted as recommended or optional.
+
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">
+          Media
+        </th>
+        <th scope="col">
+          Live
+        </th>
+        <th scope="col">
+          Prerecorded
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row">
+        Video-only
+      </th>
+      <td>
+        <ul>
+          <li>Live text or audio descriptions (optional)</li>
+        </ul>
+        </td>
+        <td>
+          <ul>
+            <li>Transcript or audio descriptions</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">
+          Audio-only
+        </th>
+        <td>
+          <ul>
+            <li>Captions (recommended for dialog or narration)
+    Sign language (optional)</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li>Captions</li>
+            <li>Transcript</li>
+            <li>Sign language (optional)</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">
+          Multimedia (video + audio)
+        </th>
+        <td>
+          <ul>
+            <li>Captions</li>
+            <li>Audio descriptions (optional)</li>
+            <li>Sign language (optional)</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li>Captions</li>
+            <li>Audio descriptions</li>
+            <li>Transcript (recommended)</li>
+            <li>Sign language (optional)</li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
+
+#### Captions
+
+Captions are text synchronized with media. Captions should include all scripted content, plus relevant background sounds and music. If more than one speaker exists, each should be identified. Captioners may make edits to the material if these edits assist with reading comprehension.
+
+Captions benefit people who have difficulty hearing or processing audio clearly, including cases where they are deaf, are hard of hearing, have auditory processing issues, are non-native speakers, are in noisy environments, or do not have audio playback capabilities.
+
+#### Transcripts
+
+Transcripts are used as a replacement for media, and as such, are not synchronized with the media. They include full text of the media, plus any visual descriptions, relevant background sounds, and music. If more than one speaker exists, each should be identified. Transcript authors may make edits to the material if these edits assist with reading comprehension.
+
+Transcripts benefit people who have difficulty seeing, hearing, processing, or playing content.
+
+#### Audio descriptions
+
+Descriptive audio, where relevant visual information is described by a narrator,  can be added to media files to benefit people who have difficulty seeing or processing visual information.
+
+#### Sign Language
+
+Include synchronized video of sign language interpreters to your videos, for people who have difficulty hearing or processing the spoken language in media.
+
+
 ## Internationalization
 
 ### Language attribute: `lang`
