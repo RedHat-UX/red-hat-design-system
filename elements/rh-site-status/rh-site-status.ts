@@ -28,7 +28,7 @@ const textMap: Record<string, string> = {
   'Partially Degraded Service': 'Partial service',
 };
 
-// map statuspage.io's statuses to colorful css keys for icon svg
+// map statuspage.io's statuses to icon map keys
 const statusMap: Record<string, string> = {
   'maintenance': 'warn',
   'critical': 'danger',
