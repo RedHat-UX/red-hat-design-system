@@ -10,8 +10,6 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import '../rh-spinner/rh-spinner.js';
 
-import '../rh-tabs/rh-tabs.js';
-
 import styles from './rh-site-status.css';
 
 const statusIconsMap: Record<string, TemplateResult> = {
