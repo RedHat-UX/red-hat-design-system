@@ -13,5 +13,5 @@ describe('<rh-site-status>', function() {
         .and
         .to.be.an.instanceOf(RhSiteStatus);
     });
-  })
+  });
 });
