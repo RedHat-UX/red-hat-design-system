@@ -51,7 +51,7 @@ interface Summary {
  * @slot - Place element content here
  */
 @customElement('rh-site-status')
-class RhSiteStatus extends LitElement {
+export class RhSiteStatus extends LitElement {
   static readonly styles = [styles];
 
   #logger = new Logger(this);
