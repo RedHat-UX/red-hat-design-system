@@ -18,7 +18,7 @@ describe('<rh-site-status>', function() {
 
   // TODO: We can't rely on default endpoint to always return a status 200
   // Figure out how to mock the fetch call, should we store a json file locally that
-  // contains the different state status responses? 
+  // contains the different state status responses?
   // describe('when api call is successful', function() {
   //   let element: RhSiteStatus;
 
