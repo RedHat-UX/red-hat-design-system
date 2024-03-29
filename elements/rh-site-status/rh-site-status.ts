@@ -1,4 +1,4 @@
-import { LitElement, type TemplateResult, html, svg } from 'lit';
+import { type TemplateResult, LitElement, html, svg } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -42,13 +42,11 @@ const statusMap: Record<string, string> = {
   'none': 'ok',
 };
 
-interface Summary {
+interface ApiStatus {
   status: {
     description: string;
     indicator: string;
   };
-  indicator: string;
-  statusIconClassName: string;
 }
 
 /**
@@ -69,6 +67,8 @@ export class RhSiteStatus extends LitElement {
    * Sets color theme based on parent context
    */
   @colorContextConsumer() private on?: ColorTheme;
+
+  @property() endpoint = 'https://status.redhat.com/index.json';
 
   #logger = new Logger(this);
 
@@ -98,12 +98,21 @@ export class RhSiteStatus extends LitElement {
   }
 
   async #getStatus() {
-    await fetch('https://status.redhat.com/index.json', {
+    await fetch(this.endpoint, {
       mode: 'cors',
       cache: 'no-cache',
+      headers: {
+        Accept: 'application/json',
+      }
     })
-      .then(response => response.json())
-      .then((data: Summary) => {
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error(`${response.status} ${response.statusText}`);
+        }
+      })
+      .then((data: ApiStatus) => {
         const statusText = data.status.description;
         this.#text = textMap[statusText] || statusText.charAt(0).toUpperCase() + statusText.substring(1).toLowerCase();
         this.#icon = statusIconsMap[statusMap[data.status.indicator]];
