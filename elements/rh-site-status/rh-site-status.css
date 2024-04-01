@@ -2,9 +2,10 @@
   display: contents;
 }
 
-#container {
+[part="container"] {
   display: inline-flex;
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+  text-decoration: none;
   padding: var(--rh-space-lg, 16px);
   align-items: center;
   gap: var(--rh-space-md, 8px);

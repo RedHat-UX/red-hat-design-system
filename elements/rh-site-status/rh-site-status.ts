@@ -68,8 +68,6 @@ export class RhSiteStatus extends LitElement {
    */
   @colorContextConsumer() private on?: ColorTheme;
 
-  @property() endpoint = 'https://status.redhat.com/index.json';
-
   #logger = new Logger(this);
 
   #text = 'Loading';
@@ -86,19 +84,19 @@ export class RhSiteStatus extends LitElement {
   render() {
     const { on = '' } = this;
     return html`
-      <div id="container" part="container" class="${classMap({ [on]: !!on })}">
+      <a href="https://status.redhat.com/" part="container" class="${classMap({ [on]: !!on })}">
         ${this.#isLoading ? html`<rh-spinner size="sm"></rh-spinner>` : html`
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
             ${this.#icon}
           </svg>
         `}
         ${this.#text}
-      </div>
+      </a>
     `;
   }
 
   async #getStatus() {
-    await fetch(this.endpoint, {
+    await fetch('https://status.redhat.com/index.json', {
       mode: 'cors',
       cache: 'no-cache',
       headers: {
