@@ -1,0 +1,15 @@
+<script type="module">
+  import { overrideFetch } from '../fetch-override.js';
+  overrideFetch(
+    true,
+    200,
+    'Major Outage',
+    () => Promise.resolve({ status: { indicator: 'major', description: 'Major Outage' } })
+  );
+</script>
+
+<rh-site-status></rh-site-status>
+
+<script type="module">
+  import '@rhds/elements/rh-site-status/rh-site-status.js';
+</script>
