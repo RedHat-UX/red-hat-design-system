@@ -61,7 +61,7 @@ export class RhMenu extends LitElement {
   }
 
   activateItem(item: HTMLElement) {
-    this.#tabindex.updateActiveItem(item);
+    this.#tabindex.setActiveItem(item);
     this.#tabindex.focusOnItem(item);
   }
 }
