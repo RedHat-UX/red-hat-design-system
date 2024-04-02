@@ -119,7 +119,7 @@
       ]
     },
     "compile": {
-      "command": "ttsc",
+      "command": "tspc",
       "files": [
         "elements/**/*.ts",
         "lib/**/*.css",
@@ -196,7 +196,7 @@
     },
     "watch:compile": {
       "service": true,
-      "command": "ttsc --watch"
+      "command": "tspc --watch"
     },
     "watch:docs": {
       "service": true,
@@ -222,8 +222,8 @@
     "@patternfly/elements": "^3.0.0",
     "@patternfly/icons": "^1.0.2",
     "@rhds/tokens": "^2.0.1",
-    "lit": "^2.7.3",
-    "tslib": "^2.5.0"
+    "lit": "^3.1.2",
+    "tslib": "^2.6.2"
   },
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
@@ -269,8 +269,8 @@
     "stylelint-config-standard": "^31.0.0",
     "stylelint-config-standard-scss": "^7.0.1",
     "stylelint-stylistic": "^0.4.3",
-    "ttypescript": "^1.5.15",
-    "typescript": "^4.9.5",
+    "ts-patch": "^3.1.2",
+    "typescript": "^5.4.3",
     "wireit": "^0.9.5"
   }
 }
