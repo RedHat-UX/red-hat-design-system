@@ -50,8 +50,8 @@ interface ApiStatus {
 }
 
 /**
- * Site Status
- * @slot - Place element content here
+ * The Site Status is a styled link that displays the current status of the <a href="https://status.redhat.com">Red Hat status page</a>.
+ * @summary Displays current Site Status
  */
 @customElement('rh-site-status')
 export class RhSiteStatus extends LitElement {
