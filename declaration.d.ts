@@ -1,8 +1,5 @@
 declare module '*.css' {
-  import type { CSSResult } from 'lit';
-
-  // import style from './some-styles.css';
-  const style: CSSResult;
+  const style: CSSStyleSheet
   export default style;
 }
 
