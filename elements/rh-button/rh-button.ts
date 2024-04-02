@@ -69,7 +69,7 @@ export class RhButton extends LitElement {
 
   get #hasIcon() { return !!this.icon; }
 
-  #internals = new InternalsController(this);
+  #internals = InternalsController.of(this);
 
   override willUpdate() {
     const variant = this.variant.toLowerCase();
