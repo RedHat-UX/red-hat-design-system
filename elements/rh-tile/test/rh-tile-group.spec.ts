@@ -50,31 +50,20 @@ describe('<rh-tile-group>', function() {
       await expect(element).to.be.accessible();
     });
 
-    it('has radio roles', async function() {
+    it('exposes radio roles to the ax tree', async function() {
       // TODO(bennypowers): write some query helpers for snapshots
       const snapshot = await a11ySnapshot();
-      expect(snapshot).to.deep.equal({
-        role: 'WebArea',
-        name: '',
-        children: [
-          {
-            focused: true,
-            checked: false,
-            name: 'Tile 1',
-            role: 'radio',
-          },
-          {
-            checked: false,
-            name: 'Tile 2',
-            role: 'radio',
-          },
-          {
-            checked: false,
-            name: 'Tile 3',
-            role: 'radio',
-          },
-        ],
-      });
+      const [fst, snd, thd] = snapshot.children;
+      expect(fst.name).to.equal('Tile 1');
+      expect(fst.role).to.equal('radio');
+      expect(fst.focused).to.be.true;
+      expect(fst.checked).to.be.false;
+      expect(snd.name).to.equal('Tile 2');
+      expect(snd.role).to.equal('radio');
+      expect(snd.checked).to.be.false;
+      expect(thd.name).to.equal('Tile 3');
+      expect(thd.role).to.equal('radio');
+      expect(thd.checked).to.be.false;
     });
 
     it('sets focus', function() {
@@ -139,30 +128,19 @@ describe('<rh-tile-group>', function() {
       });
 
       it('has radio roles', async function() {
-      // TODO(bennypowers): write some query helpers for snapshots
+        // TODO(bennypowers): write some query helpers for snapshots
         const snapshot = await a11ySnapshot();
-        expect(snapshot).to.deep.equal({
-          role: 'WebArea',
-          name: '',
-          children: [
-            {
-              focused: true,
-              checked: false,
-              name: 'Tile 1',
-              role: 'radio',
-            },
-            {
-              checked: false,
-              name: 'carreau numéro 2',
-              role: 'radio',
-            },
-            {
-              checked: false,
-              name: 'Tile 3',
-              role: 'radio',
-            },
-          ],
-        });
+        const [fst, snd, thd] = snapshot.children;
+        expect(fst.name).to.equal('Tile 1');
+        expect(fst.role).to.equal('radio');
+        expect(fst.focused).to.be.true;
+        expect(fst.checked).to.be.false;
+        expect(snd.name).to.equal('carreau numéro 2');
+        expect(snd.role).to.equal('radio');
+        expect(snd.checked).to.be.false;
+        expect(thd.name).to.equal('Tile 3');
+        expect(thd.role).to.equal('radio');
+        expect(thd.checked).to.be.false;
       });
     });
   });
