@@ -2,7 +2,7 @@
   <rh-menu></rh-menu>
 {% endrenderOverview %}
 
-{% band header="Usage" %}{% endband %}
+## Usage
 
 {% renderSlots %}{% endrenderSlots %}
 

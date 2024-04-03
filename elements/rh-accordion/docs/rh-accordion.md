@@ -2,7 +2,7 @@
   <rh-accordion></rh-accordion>
 {% endrenderOverview %}
 
-{% band header="Usage" %}{% endband %}
+## Usage
 
 {% renderSlots %}{% endrenderSlots %}
 
