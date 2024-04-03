@@ -27,7 +27,7 @@ export class RhButton extends LitElement {
 
   static readonly formAssociated = true;
 
-  static readonly shadowRootOptions: ShadowRootInit = { ...LitElement.shadowRootOptions, delegatesFocus: true };
+  static override readonly shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
 
   /** Disables the button */
   @property({ reflect: true, type: Boolean }) disabled = false;
@@ -92,8 +92,10 @@ export class RhButton extends LitElement {
               value="${ifDefined(this.value)}"
               @click="${this.#onClick}"
               ?disabled="${this.disabled || this.#internals.formDisabled}">
-        <slot id="icon" part="icon" aria-hidden="true" name="icon">${this.#renderDefaultIcon()}</slot>
-        <slot id="text" aria-hidden=${String(!!this.label) as 'true' | 'false'}></slot>
+        <span aria-hidden="true">
+          <slot id="icon" part="icon" name="icon">${this.#renderDefaultIcon()}</slot>
+        </span>
+        <span aria-hidden=${String(!!this.label) as 'true' | 'false'}><slot id="text" ></slot></span>
       </button>
     `;
   }
