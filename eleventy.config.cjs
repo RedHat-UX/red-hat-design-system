@@ -5,6 +5,7 @@ const SyntaxHighlightPlugin = require('@11ty/eleventy-plugin-syntaxhighlight');
 const DirectoryOutputPlugin = require('@11ty/eleventy-plugin-directory-output');
 const AnchorsPlugin = require('@patternfly/pfe-tools/11ty/plugins/anchors.cjs');
 const CustomElementsManifestPlugin = require('@patternfly/pfe-tools/11ty/plugins/custom-elements-manifest.cjs');
+const CEMShortcodesPlugin = require('./docs/_plugins/cem-shortcodes.cjs');
 const OrderTagsPlugin = require('@patternfly/pfe-tools/11ty/plugins/order-tags.cjs');
 const TodosPlugin = require('@patternfly/pfe-tools/11ty/plugins/todos.cjs');
 const TOCPlugin = require('@patternfly/pfe-tools/11ty/plugins/table-of-contents.cjs');
@@ -110,6 +111,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(CustomElementsManifestPlugin, {
     renderTitleInOverview: false,
   });
+  eleventyConfig.addPlugin(CEMShortcodesPlugin);
 
   /** Collections to organize by order instead of date */
   eleventyConfig.addPlugin(OrderTagsPlugin, { tags: ['develop'] });
