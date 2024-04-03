@@ -347,7 +347,7 @@ class Renderers {
       [bare module specifier][inst-bms]:
 
       ~~~js
-      import '@patternfly/elements/${tagName}/${tagName}.js';
+      import '@rhds/elements/${tagName}/${tagName}.js';
       ~~~
 
       **Please Note** You should either load elements via a CDN or
