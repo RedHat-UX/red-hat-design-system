@@ -96,6 +96,8 @@ class UxdotSearch extends LitElement {
 
   #internals = this.attachInternals();
 
+  #ariaLabel = '';
+
   get form() { return this.#internals.form; }
 
   get value() { return this.#input.value; }
@@ -116,12 +118,14 @@ class UxdotSearch extends LitElement {
     this.addEventListener('blur', this.#onBlur);
   }
 
-  firstUpdated() {
-    if (this.hasAttribute('aria-label')) {
-      this.#input.setAttribute('aria-label', this.getAttribute('aria-label'));
-      this.setAttribute('original-aria-label', this.getAttribute('aria-label'));
-      this.removeAttribute('aria-label');
+  connectedCallback() {
+    super.connectedCallback();
+    this.#ariaLabel = this.getAttribute('aria-label') || undefined;
+    this.removeAttribute('aria-label');
+    if (this.#ariaLabel) {
+      this.setAttribute('original-aria-label', this.#ariaLabel);
     }
+    this.requestUpdate();
   }
 
   render() {
@@ -129,12 +133,13 @@ class UxdotSearch extends LitElement {
       <input id="input"
              placeholder="${ifDefined(this.placeholder)}"
              role="combobox"
+             aria-label="${ifDefined(this.#ariaLabel)}"
              aria-autocomplete="list"
              aria-controls="listbox"
              aria-expanded="${String(this.expanded)}"
              @input="${this.#onInput}">
       <div id="container" tabindex="-1" ?hidden="${!this.expanded}">
-        <ol id="listbox" role="listbox">
+        <ol id="listbox" role="listbox" aria-labelledby="input">
           ${(this.items ?? []).map((item, i) => !item ? '' : html`
           <li role="option"
               data-i="${i}"
