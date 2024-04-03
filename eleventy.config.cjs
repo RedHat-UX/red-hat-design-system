@@ -94,6 +94,7 @@ module.exports = function(eleventyConfig) {
       'lit-html',
       'lit-element',
       '@lit/reactive-element',
+      '@lit/context',
       'tslib',
       '@floating-ui/dom',
       '@floating-ui/core',
