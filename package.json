@@ -219,6 +219,7 @@
     }
   },
   "dependencies": {
+    "@lit/context": "^1.1.0",
     "@patternfly/icons": "^1.0.2",
     "@patternfly/pfe-core": "^3.0.0",
     "@rhds/tokens": "^2.0.1",

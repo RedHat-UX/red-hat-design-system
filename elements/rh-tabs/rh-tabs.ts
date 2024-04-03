@@ -1,11 +1,13 @@
-import { html, LitElement } from 'lit';
+import { html, LitElement, type PropertyValues } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { query } from 'lit/decorators/query.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
+import { provide } from '@lit/context';
 
-import { cascades, deprecation } from '@patternfly/pfe-core/decorators.js';
+import { deprecation } from '@patternfly/pfe-core/decorators.js';
+
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 import { OverflowController } from '@patternfly/pfe-core/controllers/overflow-controller.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
@@ -19,6 +21,8 @@ import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/c
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import styles from './rh-tabs.css';
+
+import { context, type RhTabsContext } from './context.js';
 
 export { RhTab };
 
@@ -133,11 +137,12 @@ export class RhTabs extends LitElement {
    */
   @property({ reflect: true, type: Boolean }) centered? = false;
 
+  @provide({ context }) private ctx?: RhTabsContext;
+
   /**
    * Sets the theme for the tabs and panels
    * @deprecated attribute will be removed in future release, please use the `--rh-tabs-active-border-color` css property directly.
    */
-  @cascades('rh-tab')
   @deprecation({
     alias: 'css property --rh-tabs-active-border-color',
     reflect: true,
@@ -147,13 +152,11 @@ export class RhTabs extends LitElement {
   /**
    * Sets tabs to a boxed style with or without an inset
    */
-  @cascades('rh-tab', 'rh-tab-panel')
   @property({ reflect: true }) box?: 'box' | 'inset' | null = null;
 
   /**
    * Sets the alignment of the tabs vertical
    */
-  @cascades('rh-tab', 'rh-tab-panel')
   @property({ reflect: true, type: Boolean }) vertical = false;
 
   protected get canShowScrollButtons(): boolean {
@@ -192,7 +195,9 @@ export class RhTabs extends LitElement {
 
   @query('[part="tabs"]') private tabList!: HTMLElement;
 
-  #tabindex = new RovingTabindexController<RhTab>(this);
+  #tabindex = new RovingTabindexController<RhTab>(this, {
+    getItems: () => this.#allTabs,
+  });
 
   #overflow = new OverflowController(this);
 
@@ -235,7 +240,7 @@ export class RhTabs extends LitElement {
     RhTabs.instances.delete(this);
   }
 
-  override willUpdate(): void {
+  override willUpdate(changed: PropertyValues<this>): void {
     const { activeItem } = this.#tabindex;
     // If RTI has an activeItem, update the roving tabindex controller
     if (!this.manual &&
@@ -244,6 +249,12 @@ export class RhTabs extends LitElement {
         activeItem.ariaDisabled !== 'true') {
       activeItem.active = true;
     }
+    // RTIC will kick the update cycle whenever the tabs contents change,
+    // so let's just update the context on every cycle
+    const { box = null, vertical } = this;
+    const firstTab = this.#allTabs.at(0);
+    const lastTab = this.#allTabs.at(-1);
+    this.ctx = { box, vertical, firstTab, lastTab };
   }
 
   async firstUpdated() {
@@ -263,10 +274,11 @@ export class RhTabs extends LitElement {
                 @click="${this.#scrollLeft}">
               <pf-icon icon="${scrollIconLeft}" set="${scrollIconSet}" loading="eager"></pf-icon>
             </button>`}
-            <slot name="tab"
-                  part="tabs"
-                  role="tablist"
-                  @slotchange="${this.#onSlotchange}"></slot> ${!this.#overflow.showScrollButtons ? '' : html`
+            <div style="display: contents;" role="tablist">
+              <slot name="tab"
+                    part="tabs"
+                    @slotchange="${this.#onSlotchange}"></slot>
+            </div>${!this.#overflow.showScrollButtons ? '' : html`
             <button id="nextTab" tabindex="-1"
                 aria-label="${this.getAttribute('label-scroll-right') ?? 'Scroll right'}"
                 ?disabled="${!this.#overflow.overflowRight}"
@@ -291,7 +303,6 @@ export class RhTabs extends LitElement {
       (this.#allTabs.length !== 0 || this.#allPanels.length !== 0)) {
       this.#updateAccessibility();
       this.#firstLastClasses();
-      this.#tabindex.initItems(this.#allTabs);
       this.activeIndex = this.#allTabs.findIndex(tab => tab.active);
       this.#tabindex.setActiveItem(this.#activeTab);
       this.#overflow.init(this.tabList, this.#allTabs);
