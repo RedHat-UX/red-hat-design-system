@@ -96,6 +96,10 @@
       );
 }
 
+.c {
+  display: contents;
+}
+
 .open #tooltip {
   opacity: 1;
 }

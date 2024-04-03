@@ -76,10 +76,12 @@ export class RhTooltip extends LitElement {
                                [on]: !!on,
                                [anchor]: !!anchor,
                                [alignment]: !!alignment })}">
-        <slot id="invoker" role="tooltip" aria-labelledby="tooltip"></slot>
-        <slot id="tooltip"
-              name="content"
-              aria-hidden="${ariaHidden}">${this.content}</slot>
+        <div class="c" role="tooltip" aria-labelledby="tooltip">
+          <slot id="invoker"></slot>
+        </div>
+        <div class="c" aria-hidden="${ariaHidden}">
+          <slot id="tooltip" name="content">${this.content}</slot>
+        </div>
       </div>
     `;
   }
