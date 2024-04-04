@@ -15,8 +15,7 @@
 }
 
 #consent,
-#watermark,
-::slotted([slot="thumbnail"]) {
+#watermark {
   position: absolute;
   inset: 0;
 }
@@ -44,10 +43,31 @@
 
 #play {
   position: absolute;
+  inset: 0;
+  display: block;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+}
+
+:is(.video, .consent) #play[aria-hidden="true"],
+:is(.video, .consent) ::slotted([slot="thumbnail"]) {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#icon {
+  position: absolute;
   inset: calc(50% - 32px);
 }
 
-#thumbnail,
-#play {
-  pointer-events: none;
+#autoplay {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 200ms ease-in;
+}
+
+.video #autoplay {
+  opacity: 1;
 }

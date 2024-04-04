@@ -2,9 +2,9 @@ import { LitElement, html } from 'lit';
 import { property } from 'lit/decorators/property.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { state } from 'lit/decorators/state.js';
-import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
+import { classMap } from 'lit/directives/class-map.js';
+import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import '../rh-cta/rh-cta.js';
-import '../rh-surface/rh-surface.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
@@ -28,11 +28,13 @@ export class VideoClickEvent extends Event {
  * Video
  * @fires {ConsentClickEvent} select - when "Update preferences" concent button is clicked
  * @fires {VideoClickEvent} select - when video thumbnail is clicked
- * @slot - Place video embed code here
- * @slot thumbnail - optional thumbnail image on top of video embed
+ * @slot - Place video embed code here; iframe should include a title attribute with video title
+ * @slot play-button-text - text for play button that appears infront of thumbnail; recommended value "Video title (video)""
+ * @slot thumbnail - optional thumbnail image on top of video embed; should include alt text
  * @slot consent-message - text explaining opt-in to cookies is required, e.g. `<p>View this video by opting in to “Advertising Cookies.”</p>`
  * @slot consent-button-text - text for CTA button to update preferences, e.g. `Update preferences`
  * @slot caption - optional caption below video
+ * @slot autoplay - DO NOT USE! (Used by `rh-video`.)
  */
 @customElement('rh-video')
 export class RhVideo extends LitElement {
@@ -41,16 +43,12 @@ export class RhVideo extends LitElement {
   /**
    * Whether video requires consent consent for cookies
    */
-  @property({ type: Boolean }) requireConsent = false;
+  @property({ type: Boolean, attribute: 'require-consent' }) requireConsent = false;
 
   /**
    * Whether consent consent for cookies
    */
   @property({ type: Boolean }) hasConsent = false;
-
-
-  @queryAssignedElements({ slot: '' })
-  private _embed?: HTMLElement[];
 
   /**
    * Sets color theme based on parent context
@@ -60,8 +58,24 @@ export class RhVideo extends LitElement {
   // TODO(bennyp): https://lit.dev/docs/data/context/#content
   @state() private videoClicked = false;
 
+  #slots = new SlotController(this, 'caption', 'thumbnail', null);
+
   get #showConsent() {
     return this.requireConsent && !this.hasConsent;
+  }
+
+  get iframe() {
+    const template = this.querySelector('template');
+    const node = template ? document.importNode(template.content, true) : undefined;
+    const iframe = node ? node.querySelector('iframe')?.cloneNode(true) as HTMLIFrameElement : undefined;
+    if (iframe) {
+      const url = new URL(iframe.getAttribute('src') || '');
+      url.searchParams.append('autoplay', '1');
+      iframe.src = url.href;
+      iframe.allow = 'autoplay';
+      iframe.slot = 'autoplay';
+    }
+    return iframe;
   }
 
   constructor() {
@@ -75,11 +89,15 @@ export class RhVideo extends LitElement {
     const dark = on === 'dark';
     const svgFill = dark ? 'white' : '#151515';
     const svgOpacity = dark ? '0.25' : '0.5';
+    const hasCaption = this.#slots.hasSlotted('caption');
+    const hasThumbnail = this.#slots.hasSlotted('thumbnail');
+    const playLabel = this.iframe && this.iframe.title ? `${this.iframe.title} (play video)` : 'Play video';
+    const show = this.#showConsent ? 'consent' : !!videoClicked || !hasThumbnail ? 'video' : 'thumbnail';
     return html`
-      <figure>
+      <figure class="${classMap({ [show]: !!show })}">
         <div id="video">
           ${this.#showConsent ? html`
-            <rh-surface id="consent" color-palette="darker">
+            <div id="consent" color-palette="darker">
               <div id="consent-body">
                 <slot name="consent-message">
                   <p>View this video by opting in to “Advertising Cookies.”</p>
@@ -105,17 +123,21 @@ export class RhVideo extends LitElement {
                   </g>
                 </g>
               </svg>
-            </rh-surface>
-          ` : html`
-              <slot id="thumbnail" name="thumbnail" ?hidden="${videoClicked}"></slot>
-              <svg id="play" ?hidden="${videoClicked}" width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="32" cy="32" r="32" fill="${svgFill}" fill-opacity="${svgOpacity}"/>
-                <path d="M44 32L26 40.6603V23.3397L44 32Z" fill="white"/>
-              </svg>
-              <slot name="source"></slot>
-            `}
+            </div>
+          ` : hasThumbnail ? html`
+              <button id="play" ?hidden="${show !== 'thumbnail'}" @click="${this.#handleClick}" @keyup="${this.#handleClick}">
+                <slot id="play-button-text">${playLabel}</slot>
+                <svg id="icon" aria-hidden="true" width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="32" cy="32" r="32" fill="${svgFill}" fill-opacity="${svgOpacity}"/>
+                  <path d="M44 32L26 40.6603V23.3397L44 32Z" fill="white"/>
+                </svg>
+              </button>
+            ` : ''}
+            <slot id="thumbnail" name="thumbnail" aria-hidden="${show !== 'thumbnail'}"></slot>
+            <slot></slot>
+            <div id="autoplay"><slot name="autoplay"></slot></div>
         </div>
-        <figcaption><slot name="caption"></slot></figcaption>
+        <figcaption ?hidden="${!hasCaption}"><slot name="caption"></slot></figcaption>
       </figure>
     `;
   }
@@ -125,9 +147,9 @@ export class RhVideo extends LitElement {
   }
 
   #handleClick() {
-    if (!this.#showConsent && !this.videoClicked) {
-      console.log('click');
+    if (!this.#showConsent && !this.videoClicked && this.iframe) {
       this.videoClicked = true;
+      this.appendChild(this.iframe);
       this.dispatchEvent(new VideoClickEvent());
     }
   }
