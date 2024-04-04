@@ -1,0 +1,50 @@
+<rh-context-demo>
+  <form>
+    <fieldset>
+      <legend>Checked with label</legend>
+      <rh-switch id="checked" checked show-check-icon></rh-switch>
+      <label for="checked">
+        <span data-state="on">Message when on</span>
+        <span data-state="off" hidden>Message when off</span>
+      </label>
+    </fieldset>
+  </form>
+</rh-context-demo>
+
+<script type="module">
+  import '@rhds/elements/rh-switch/rh-switch.js';
+  import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
+</script>
+
+<style>
+  rh-context-demo::part(demo) {
+    display: flex;
+    align-items: start;
+    flex-wrap: wrap;
+    gap: var(--rh-space-lg, 16px);
+  }
+
+  fieldset {
+    display: grid;
+    grid-template-columns: min-content max-content;
+    gap: var(--rh-space-lg, 16px);
+  }
+
+  fieldset:has(#reversed) {
+    grid-template-columns: max-content min-content;
+  }
+
+  [color-palette^="light"] label {
+    color: var(--rh-color-text-primary-on-light, #151515);
+  }
+
+  [color-palette^="dark"] label {
+    color: var(--rh-color-text-primary-on-dark, #ffffff);
+  }
+
+  rh-switch:not([checked]) ~ label,
+  label:has(~ rh-switch:not([checked])) {
+    color:  #6a6e73;
+  }
+</style>
+
