@@ -1,4 +1,5 @@
-/* TODO(bennypowers): remove vertical, box, and theme attributes, as well as the `first` and `last` lightdom classes in next major */
+/* TODO(bennypowers): remove vertical, box, and theme attributes, as well as the `first` and `last`
+ * lightdom classes in next major */
 
 :host {
   display: flex;
@@ -175,11 +176,6 @@ button:after {
 }
 
 /* [box][active]) */
-:host([active][box]) button:before,
-#container.active.box button:before {
-  border-inline-color: var(--_border-color);
-  border-inline-start-width: var(--rh-border-width-sm, 1px);
-}
 :host([active][box]) button:before,
 #container.active.box button:before {
   border-inline-color: var(--_border-color);
