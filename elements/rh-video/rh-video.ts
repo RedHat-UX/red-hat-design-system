@@ -5,6 +5,7 @@ import { state } from 'lit/decorators/state.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import '../rh-cta/rh-cta.js';
+import '../rh-surface/rh-surface.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
@@ -100,7 +101,7 @@ export class RhVideo extends LitElement {
           <slot></slot>
           <div id="autoplay"><slot name="autoplay"></slot></div>
           ${this.#showConsent ? html`
-            <div id="consent" color-palette="darker">
+            <rh-surface id="consent" color-palette="darker">
               <svg id="watermark" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1136 639">
                 <defs>
                   <clipPath id="clip-path">
@@ -120,13 +121,13 @@ export class RhVideo extends LitElement {
               </svg>
               <div id="consent-body">
                 <slot name="consent-message">
-                  <p>View this video by opting in to “Advertising Cookies.”</p>
+                  <p id="consent-message">View this video by opting in to “Advertising Cookies.”</p>
                 </slot>
                 <rh-cta variant="secondary" @click="${this.#handleConsentClick}">
                   <slot name="consent-button-text">Update preferences</slot>
                 </rh-cta>
               </div>
-            </div>
+            </rh-surface>
           ` : ''}
           <button id="play" ?hidden="${show !== 'thumbnail'}" @click="${this.#handleClick}" @keyup="${this.#handleClick}">
             <span class="visually-hidden"><slot name="play-button-text">${playLabel}</slot></span>
