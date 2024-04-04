@@ -31,7 +31,6 @@
   height: 14px;
   background-color: var(--rh-color-surface-lightest, #ffffff);
   border-radius: var(--rh-border-radius-pill, 64px);
-  box-shadow: var(--rh-box-shadow-lg, 0 6px 8px 2px rgba(21, 21, 21, 0.3));
   transition: translate 0.25s ease 0s;
 }
 
