@@ -1,4 +1,4 @@
-<rh-video require-consent>
+<rh-video id="video" require-consent>
   <img slot="thumbnail" src="https://fakeimg.pl/1139x641" alt="Image description"/>
   <template>
     <iframe title="Title of video" width="1139" height="641" frameborder="0" allowfullscreen src="https://www.youtube.com/embed/9gYLKxJ9NbY"></iframe>
@@ -8,4 +8,16 @@
 
 <script type="module">
   import '@rhds/elements/rh-video/rh-video.js';
+
+  const video = document.getElementById('video');
+  video.addEventListener('consent-click', consentWindow);
+
+
+  function consentWindow() {
+    // replace with custom consent logic
+    if (confirm('Allow cookies?')) {
+      // enables video after consent
+      video.hasConsent = true;
+    }
+  }
 </script>

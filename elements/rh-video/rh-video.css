@@ -50,10 +50,20 @@
   background-color: transparent;
 }
 
-:is(.video, .consent) #play[aria-hidden="true"],
+#play[hidden],
 :is(.video, .consent) ::slotted([slot="thumbnail"]) {
   opacity: 0;
   pointer-events: none;
+}
+
+.visually-hidden {
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 #icon {

@@ -96,16 +96,11 @@ export class RhVideo extends LitElement {
     return html`
       <figure class="${classMap({ [show]: !!show })}">
         <div id="video">
+          <slot id="thumbnail" name="thumbnail" aria-hidden="${show !== 'thumbnail'}"></slot>
+          <slot></slot>
+          <div id="autoplay"><slot name="autoplay"></slot></div>
           ${this.#showConsent ? html`
             <div id="consent" color-palette="darker">
-              <div id="consent-body">
-                <slot name="consent-message">
-                  <p>View this video by opting in to “Advertising Cookies.”</p>
-                </slot>
-                <rh-cta variant="secondary" @click="${this.#handleConsentClick}">
-                  <slot name="consent-button-text">Update preferences</slot>
-                </rh-cta>
-              </div>
               <svg id="watermark" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1136 639">
                 <defs>
                   <clipPath id="clip-path">
@@ -123,27 +118,33 @@ export class RhVideo extends LitElement {
                   </g>
                 </g>
               </svg>
+              <div id="consent-body">
+                <slot name="consent-message">
+                  <p>View this video by opting in to “Advertising Cookies.”</p>
+                </slot>
+                <rh-cta variant="secondary" @click="${this.#handleConsentClick}">
+                  <slot name="consent-button-text">Update preferences</slot>
+                </rh-cta>
+              </div>
             </div>
-          ` : hasThumbnail ? html`
-              <button id="play" ?hidden="${show !== 'thumbnail'}" @click="${this.#handleClick}" @keyup="${this.#handleClick}">
-                <slot id="play-button-text">${playLabel}</slot>
-                <svg id="icon" aria-hidden="true" width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="32" cy="32" r="32" fill="${svgFill}" fill-opacity="${svgOpacity}"/>
-                  <path d="M44 32L26 40.6603V23.3397L44 32Z" fill="white"/>
-                </svg>
-              </button>
-            ` : ''}
-            <slot id="thumbnail" name="thumbnail" aria-hidden="${show !== 'thumbnail'}"></slot>
-            <slot></slot>
-            <div id="autoplay"><slot name="autoplay"></slot></div>
+          ` : ''}
+          <button id="play" ?hidden="${show !== 'thumbnail'}" @click="${this.#handleClick}" @keyup="${this.#handleClick}">
+            <span class="visually-hidden"><slot name="play-button-text">${playLabel}</slot></span>
+            <svg id="icon" aria-hidden="true" width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="32" r="32" fill="${svgFill}" fill-opacity="${svgOpacity}"/>
+              <path d="M44 32L26 40.6603V23.3397L44 32Z" fill="white"/>
+            </svg>
+          </button>
         </div>
         <figcaption ?hidden="${!hasCaption}"><slot name="caption"></slot></figcaption>
       </figure>
     `;
   }
 
-  #handleConsentClick() {
+  #handleConsentClick(event: Event) {
+    console.log('handle consent');
     this.dispatchEvent(new ConsentClickEvent());
+    event.stopPropagation();
   }
 
   #handleClick() {
