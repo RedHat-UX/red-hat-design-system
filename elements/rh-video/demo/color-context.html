@@ -1,8 +1,17 @@
 <rh-context-demo>
+  <rh-video require-consent>
+    <img slot="thumbnail" src="https://fakeimg.pl/1139x641" alt="Image description"/>
+    <template>
+      <iframe title="Title of video" width="1139" height="641" frameborder="0" allowfullscreen src="https://www.youtube.com/embed/9gYLKxJ9NbY"></iframe>
+    </template>
+    <p slot="caption"><a class="rh-video-embed-caption-link" href="//www.redhat.com">View the infographic</a></p>
+  </rh-video>
   <rh-video>
-    <img slot="thumbnail" src="https://fakeimg.pl/1139x641"/>
-    <iframe slot="source" width="1139" height="641" frameborder="0" allowfullscreen="" src="https://www.youtube.com/embed/9gYLKxJ9NbY"></iframe>
-    <p slot="caption">This is a caption.</p>
+    <img slot="thumbnail" src="https://fakeimg.pl/1139x641" alt="Image description"/>
+    <template>
+      <iframe title="Title of video" width="1139" height="641" frameborder="0" allowfullscreen src="https://www.youtube.com/embed/9gYLKxJ9NbY"></iframe>
+    </template>
+    <p slot="caption"><a class="rh-video-embed-caption-link" href="//www.redhat.com">View the infographic</a></p>
   </rh-video>
 </rh-context-demo>
 
