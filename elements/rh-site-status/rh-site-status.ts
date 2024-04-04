@@ -76,6 +76,17 @@ export class RhSiteStatus extends LitElement {
 
   #isLoading = true;
 
+  #isApiStatus = (data: ApiStatus): data is ApiStatus => {
+    return (
+      typeof data === 'object' &&
+      data !== null &&
+      'status' in data &&
+      data.status !== null &&
+      'description' in data.status &&
+      'indicator' in data.status
+    );
+  };
+
   async connectedCallback() {
     super.connectedCallback();
     await this.#getStatus();
@@ -111,6 +122,9 @@ export class RhSiteStatus extends LitElement {
         }
       })
       .then((data: ApiStatus) => {
+        if (!this.#isApiStatus(data)) {
+          throw new Error('Invalid status data');
+        }
         const statusText = data.status.description;
         this.#text = textMap[statusText] || statusText.charAt(0).toUpperCase() + statusText.substring(1).toLowerCase();
         this.#icon = statusIconsMap[statusMap[data.status.indicator]];
