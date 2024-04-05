@@ -88,8 +88,8 @@ export class RhVideo extends LitElement {
   render() {
     const { videoClicked, on } = this;
     const dark = on === 'dark';
-    const svgFill = dark ? 'white' : '#151515';
-    const svgOpacity = dark ? '0.25' : '0.5';
+    const svgFill = dark ? '#151515' : 'white';
+    const svgOpacity = dark ? '0.5' : '0.25';
     const hasCaption = this.#slots.hasSlotted('caption');
     const hasThumbnail = this.#slots.hasSlotted('thumbnail');
     const playLabel = this.iframe && this.iframe.title ? `${this.iframe.title} (play video)` : 'Play video';
@@ -143,7 +143,6 @@ export class RhVideo extends LitElement {
   }
 
   #handleConsentClick(event: Event) {
-    console.log('handle consent');
     this.dispatchEvent(new ConsentClickEvent());
     event.stopPropagation();
   }

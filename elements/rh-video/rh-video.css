@@ -17,6 +17,7 @@
 figure {
   display: inline-flex;
   flex-direction: column;
+  margin: 0;
 }
 
 #consent,
@@ -42,7 +43,7 @@ figure {
   line-height: var(--rh-line-height-heading, 1.3);
 }
 
-#figure,
+figure,
 #consent-message,
 ::slotted([slot="consent-message"]:last-of-type) {
   margin-bottom: var(--rh-space-xl, 24px);
