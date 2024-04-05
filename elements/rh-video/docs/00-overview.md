@@ -9,9 +9,9 @@
 
 ## Sample element
 <rh-video>
-  <img slot="thumbnail" src="https://fakeimg.pl/150x75" alt="Image description"/>
+  <img slot="thumbnail" src="https://fakeimg.pl/300x150/282828/eae0d0" alt="Image description"/>
   <template>
-    <iframe title="Title of video" width="150" height="75" frameborder="0" allowfullscreen src="https://www.youtube.com/embed/9gYLKxJ9NbY"></iframe>
+    <iframe title="Title of video" width="300" height="150" frameborder="0" allowfullscreen src="https://www.youtube.com/embed/9gYLKxJ9NbY"></iframe>
   </template>
   <p slot="caption">Video caption here</p>
 </rh-video>
