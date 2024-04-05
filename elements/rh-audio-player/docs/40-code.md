@@ -2,7 +2,7 @@
 
 ## Usage
 {% playground tagName=tagName %}{% endplayground %}
-{% cta href="./demo/", target="_blank" %}
+{% cta href="../demo/", target="_blank" %}
 View the demo in a new tab
 {% endcta %}
 
