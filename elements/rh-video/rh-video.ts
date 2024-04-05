@@ -26,14 +26,15 @@ export class VideoClickEvent extends Event {
 }
 
 /**
- * Video
- * @fires {ConsentClickEvent} select - when "Update preferences" concent button is clicked
- * @fires {VideoClickEvent} select - when video thumbnail is clicked
- * @slot - Place video embed code here; iframe should include a title attribute with video title
- * @slot play-button-text - text for play button that appears infront of thumbnail; recommended value "Video title (video)""
- * @slot thumbnail - optional thumbnail image on top of video embed; should include alt text
+ * A Video is a graphical preview of a video overlayed with a play button. When clicked, the video will begin playing.
+ *
+ * @fires {ConsentClickEvent} consent-click - when "Update preferences" concent button is clicked
+ * @fires {VideoClickEvent} play-click - when play button is clicked
+ * @slot - Place video embed code here; iframe should include a `title` attribute with the video title
+ * @slot play-button-text - text for play button; recommended value "Video title (video)"
+ * @slot thumbnail - optional thumbnail image on top of video embed; should include `alt` text
  * @slot consent-message - text explaining opt-in to cookies is required, e.g. `<p>View this video by opting in to “Advertising Cookies.”</p>`
- * @slot consent-button-text - text for CTA button to update preferences, e.g. `Update preferences`
+ * @slot consent-button-text - text for CTA button to update preferences, e.g. "Update preferences"
  * @slot caption - optional caption below video
  * @slot autoplay - DO NOT USE! (Used by `rh-video`.)
  */

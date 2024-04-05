@@ -37,7 +37,7 @@ All badges have the same height and border radius.
   headline="",
   caption='',
   headingLevel="4",
-  tokens="--rh-space-md, --rh-space-lg" %}
+  tokens="--rh-space-xl" %}
 {% endspacerTokensTable %}
 
 ## Animation 
