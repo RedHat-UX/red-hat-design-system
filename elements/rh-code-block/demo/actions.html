@@ -1,10 +1,25 @@
-<rh-code-block>
-  <rh-code-action slot="actions" action="copy">Copy to Clipboard</rh-code-action>
-  <rh-code-action slot="actions" action="wrap">
-    Toggle
-    <span slot="inactive">line wrap</span>
-    <span slot="active">overflow</span>
-  </rh-code-action>
+<rh-code-block actions="wrap copy">
+    <span slot="action-label-copy">Copy to Clipboard</span>
+    <span slot="action-label-copy"
+          hidden
+          data-code-block-state="active">Copied!</span>
+  <rh-tooltip slot="actions">
+    <span slot="content">Copy to Clipboard</span>
+    <span slot="content"
+          hidden
+          data-code-block-state="active">Copied!</span>
+    <rh-fab icon="copy"
+            data-code-block-action="copy"></rh-fab>
+  </rh-tooltip>
+
+  <rh-tooltip slot="actions">
+    <span slot="content">Toggle linewrap</span>
+    <span slot="content"
+          hidden
+          data-code-block-state="active">Toggle linewrap</span>
+    <rh-fab icon="copy"
+            data-code-block-action="copy"></rh-fab>
+  </rh-tooltip>
 <script type="text/css">#content {
   display: block;
   background-color: var(--rh-color-surface-lighter, #f2f2f2);

@@ -8,15 +8,23 @@ import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller
 
 import { type ColorTheme, colorContextConsumer } from '../../lib/context/color/consumer.js';
 
-import { RhCodeActionEvent } from './rh-code-action.js';
-
 import style from './rh-code-block.css';
+
+/* TODO
+ * - style slotted and shadow fake-fabs
+ * - manage state of copy and wrap, including if they are slotted. see actions.html
+ */
 
 interface CodeLineHeightsInfo {
   lines: string[];
   lineHeights: (number | undefined)[];
   sizer: HTMLElement;
   oneLinerHeight: number;
+}
+
+function capitalize(x: string) {
+  const [f = '', ...rst] = x;
+  return `${f.toUpperCase()}${rst.join('')}`;
 }
 
 /**
@@ -34,7 +42,39 @@ interface CodeLineHeightsInfo {
  */
 @customElement('rh-code-block')
 export class RhCodeBlock extends LitElement {
+  private static actions = new Map([
+    ['wrap', html`
+      <svg xmlns="http://www.w3.org/2000/svg"
+           fill="none"
+           viewBox="0 0 21 20">
+        <path fill="currentColor" d="M12 13h1v7h-1zM12 0h1v7h-1z"/>
+        <path stroke="currentColor" d="M16.465 6.464 20 10l-3.535 3.536"/>
+        <path fill="currentColor" d="M3 9.5h17v1H3zM0 0h1v20H0z"/>
+      </svg>
+    `],
+    ['copy', html`
+      <svg xmlns="http://www.w3.org/2000/svg"
+           version="1.1"
+           viewBox="0 0 20 20">
+        <path fill="currentColor" d="M12 0H2C.9 0 0 .9 0 2v10h1V2c0-.6.4-1 1-1h10V0z"/>
+        <path fill="currentColor" d="M18 20H8c-1.1 0-2-.9-2-2V8c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2zM8 7c-.6 0-1 .4-1 1v10c0 .6.4 1 1 1h10c.6 0 1-.4 1-1V8c0-.6-.4-1-1-1H8z"/>
+      </svg>
+    `],
+  ]);
+
   static styles = [style];
+
+  @property({
+    reflect: true,
+    converter: {
+      fromAttribute(value) {
+        return ((value ?? '').split(/\s+/) ?? []).map(x => x.trim()).filter(Boolean);
+      },
+      toAttribute(value) {
+        return Array.isArray(value) ? value.join(' ') : '';
+      },
+    }
+  }) actions: ('copy' | 'wrap')[] = [];
 
   /** When set, the code block displays with compact spacing */
   @property({ type: Boolean, reflect: true }) compact = false;
@@ -91,7 +131,20 @@ export class RhCodeBlock extends LitElement {
           </ol>
           <slot id="content" @slotchange="${this.#computeLineNumbers}"></slot>
         </div>
-        <slot id="actions" name="actions"></slot>
+
+        <div id="actions"
+             @click="${this.#onActionsClick}"
+             @keyup="${this.#onActionsKeyup}">
+        <!-- <slot name="actions"> -->${this.actions.map(x => html`
+          <rh-tooltip>
+            <slot slot="content" name="action-label-${x}"></slot>
+            <button id="action-${x}"
+                    class="shadow-fab"
+                    data-code-block-action="${x}">${RhCodeBlock.actions.get(x) ?? ''}</button>
+          </rh-tooltip>`)}
+        <!-- </slot> -->
+        </div>
+
         <button id="expand"
                 ?hidden="${!expandable}"
                 @click="${this.#onClickExpand}">
@@ -178,14 +231,31 @@ export class RhCodeBlock extends LitElement {
     this.requestUpdate('#linesNumbers', 0);
   }
 
-  #onCodeAction(event: RhCodeActionEvent) {
-    switch (event.action) {
-      case 'copy':
-        return this.#copy();
-      case 'wrap':
-        this.wrap = !this.wrap;
-        this.requestUpdate();
-        return;
+  #onActionsClick(event: Event) {
+    this.#onCodeAction(event);
+  }
+
+  #onActionsKeyup(event: KeyboardEvent) {
+    switch (event.key) {
+      case 'Enter':
+      case ' ':
+        event.preventDefault();
+        this.#onCodeAction(event);
+    }
+  }
+
+  #onCodeAction(event: Event) {
+    const el = event.composedPath().find((x: EventTarget): x is HTMLElement =>
+      x instanceof HTMLElement && !!x.dataset.codeBlockAction);
+    if (el) {
+      switch (el.dataset.codeBlockAction) {
+        case 'copy':
+          return this.#copy();
+        case 'wrap':
+          this.wrap = !this.wrap;
+          this.requestUpdate();
+          return;
+      }
     }
   }
 
