@@ -1,7 +1,7 @@
 <a id="top" href="#bottom">Go to bottom</a>
 <p>Scroll down (50px) or press tab to see the back to top button</p>
 <a id="bottom" href="#top">Go to top</a>
-<rh-back-to-top scrollable-selector="main" scroll-distance="50" href="#top">Back to top</rh-back-to-top>
+<rh-back-to-top scroll-distance="50" href="#top">Back to top</rh-back-to-top>
 <script type="module">
   import '@rhds/elements/rh-back-to-top/rh-back-to-top.js';
   import '@patternfly/elements/pf-icon/pf-icon.js';
@@ -46,3 +46,14 @@
     }
   }
 </style>
+
+
+<script type="module">
+  /* add support for demo/fullscreen and dev server */
+  const b2t = document.querySelector('rh-back-to-top');
+  const main = document.querySelector('main');
+  // if main isn't scrollable use window
+  if (window.getComputedStyle(main).overflow === 'scroll') {
+    b2t.scrollableSelector = 'main';
+  }
+</script>
