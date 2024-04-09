@@ -10,9 +10,10 @@ import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
 import styles from './rh-dialog.css';
 
-import '@rhds/elements/rh-surface/rh-surface.js';
 import { query } from 'lit/decorators/query.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
+
+import '@rhds/elements/rh-surface/rh-surface.js';
 
 export class DialogCancelEvent extends Event {
   constructor() {
@@ -38,16 +39,6 @@ export class DialogOpenEvent extends Event {
 async function pauseYoutube(iframe: HTMLIFrameElement) {
   const { pauseVideo } = await import('./yt-api.js');
   await pauseVideo(iframe);
-}
-
-function openChanged(this: RhDialog, oldValue: unknown) {
-  if (this.type === 'video' && oldValue === true && this.open === false) {
-    this.querySelector('video')?.pause?.();
-    const iframe = this.querySelector('iframe');
-    if (iframe?.src.match(/youtube/)) {
-      pauseYoutube(iframe);
-    }
-  }
 }
 
 /**
@@ -94,7 +85,7 @@ export class RhDialog extends LitElement {
    */
   @property({ reflect: true }) position?: 'top';
 
-  @observed(openChanged)
+  @observed
   @property({ type: Boolean, reflect: true }) open = false;
 
   /** Optional ID of the trigger element */
@@ -204,9 +195,19 @@ export class RhDialog extends LitElement {
   }
 
   protected async _openChanged(oldValue?: boolean, newValue?: boolean) {
-    // loosening types to prevent running these effects in unexpected circumstances
-    // eslint-disable-next-line eqeqeq
-    if (oldValue == null || newValue == null || oldValue == newValue) {
+    if (this.type === 'video') {
+      if (oldValue === true && this.open === false) {
+        this.querySelector('video')?.pause?.();
+        const iframe = this.querySelector('iframe');
+        if (iframe?.src.match(/youtube/)) {
+          pauseYoutube(iframe);
+        }
+      }
+    } else if (oldValue == null ||
+               newValue == null ||
+               // loosening types to prevent running these effects in unexpected circumstances
+               // eslint-disable-next-line eqeqeq
+               oldValue == newValue) {
       return;
     } else if (this.open) {
       // This prevents background scroll
