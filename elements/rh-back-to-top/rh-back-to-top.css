@@ -24,10 +24,13 @@
   border-radius: var(--rh-border-radius-pill, 64px);
   gap: var(--rh-space-xs, 4px);
   line-height: var(--rh-line-height-body-text, 1.5);
+  outline: var(--rh-border-width-md, 2px) solid transparent;
+  border: var(--rh-border-width-md, 2px) solid transparent;
 }
 
 [part="trigger"]:is(:hover, :focus) {
   outline: var(--rh-border-width-md, 2px) solid var(--rh-color-interactive-blue-darkest, #003366);
+  border: var(--rh-border-width-md, 2px) solid var(--rh-color-border-strong-on-dark, #ffffff);
   background-color: var(--rh-color-interactive-blue-darkest, #003366);
 }
 
