@@ -46,7 +46,7 @@
     color: var(--_code-action-color, var(--rh-color-text-primary-on-light, #151515));
   }
 
-  & .dark {
+  .dark & {
     --_code-action-color: var(--rh-color-text-primary-on-dark, #ffffff);
     --_code-action-hover-focus-active-background: var(--rh-color-surface-dark, #383838);
   }
@@ -159,6 +159,10 @@
   place-self: start center;
   height: 100%;
   position: relative;
+
+  & rh-tooltip {
+    display: block;
+  }
 }
 
 #expand {

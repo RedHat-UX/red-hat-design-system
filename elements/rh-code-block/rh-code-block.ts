@@ -22,11 +22,6 @@ interface CodeLineHeightsInfo {
   oneLinerHeight: number;
 }
 
-function capitalize(x: string) {
-  const [f = '', ...rst] = x;
-  return `${f.toUpperCase()}${rst.join('')}`;
-}
-
 /**
  * A code block is formatted text within a container.
  * @summary Formats code strings within a container
@@ -45,6 +40,15 @@ export class RhCodeBlock extends LitElement {
   private static actions = new Map([
     ['wrap', html`
       <svg xmlns="http://www.w3.org/2000/svg"
+           fill="none"
+           viewBox="0 0 21 20">
+        <path fill="currentColor" d="M12 13h1v7h-1zM12 0h1v7h-1z"/>
+        <path stroke="currentColor" d="M16.465 6.464 20 10l-3.535 3.536"/>
+        <path fill="currentColor" d="M3 9.5h17v1H3zM0 0h1v20H0z"/>
+      </svg>
+    `],
+    ['wrap-active', html`
+     <svg xmlns="http://www.w3.org/2000/svg"
            fill="none"
            viewBox="0 0 21 20">
         <path fill="currentColor" d="M12 13h1v7h-1zM12 0h1v7h-1z"/>
@@ -110,7 +114,7 @@ export class RhCodeBlock extends LitElement {
     const { on = '', fullHeight, wrap, resizable, compact } = this;
     const expandable = this.#lineHeights.length > 5;
     const truncated = expandable && !fullHeight;
-    const actions = this.#slots.hasSlotted('actions');
+    const actions = !!this.actions.length;
     return html`
       <div id="container"
            class="${classMap({
@@ -140,7 +144,9 @@ export class RhCodeBlock extends LitElement {
             <slot slot="content" name="action-label-${x}"></slot>
             <button id="action-${x}"
                     class="shadow-fab"
-                    data-code-block-action="${x}">${RhCodeBlock.actions.get(x) ?? ''}</button>
+                    data-code-block-action="${x}">
+              ${RhCodeBlock.actions.get(this.wrap && x === 'wrap' ? 'wrap-active' : x) ?? ''}
+            </button>
           </rh-tooltip>`)}
         <!-- </slot> -->
         </div>
@@ -167,12 +173,8 @@ export class RhCodeBlock extends LitElement {
   protected override updated(changed: PropertyValues<this>): void {
     if (changed.has('wrap')) {
       this.#computeLineNumbers();
-      for (const action of this.querySelectorAll('rh-code-action')) {
-        if (action.action === 'wrap') {
-          action.active = this.wrap;
-        }
-      }
     }
+    // TODO: handle slotted fabs
   }
 
   /**
@@ -270,6 +272,22 @@ export class RhCodeBlock extends LitElement {
         x => x.textContent,
       ).join('')
     );
+    const tooltip = this.shadowRoot?.getElementById('action-copy')?.closest('rh-tooltip');
+    // TODO: handle slotted fabs
+    const slot = this.shadowRoot?.querySelector<HTMLSlotElement>('slot[name="action-label-copy"]');
+    tooltip?.hide();
+    for (const el of slot?.assignedElements() ?? []) {
+      if (el instanceof HTMLElement) { el.hidden = el.dataset.codeBlockState !== 'active'; }
+    }
+    this.requestUpdate();
+    tooltip?.show();
+    await new Promise(r => setTimeout(r, 5_000));
+    tooltip?.hide();
+    for (const el of slot?.assignedElements() ?? []) {
+      if (el instanceof HTMLElement) { el.hidden = el.dataset.codeBlockState === 'active'; }
+    }
+    this.requestUpdate();
+    tooltip?.show();
   }
 }
 
@@ -278,3 +296,28 @@ declare global {
     'rh-code-block': RhCodeBlock;
   }
 }
+
+/**
+ * TODO: slotted fabs like this:
+ *
+ *```html
+  <rh-tooltip slot="actions">
+    <span slot="content">Copy to Clipboard</span>
+    <span slot="content"
+          hidden
+          data-code-block-state="active">Copied!</span>
+    <rh-fab icon="copy"
+            data-code-block-action="copy"></rh-fab>
+  </rh-tooltip>
+
+  <rh-tooltip slot="actions">
+    <span slot="content">Toggle linewrap</span>
+    <span slot="content"
+          hidden
+          data-code-block-state="active">Toggle linewrap</span>
+    <rh-fab icon="copy"
+            data-code-block-action="copy"></rh-fab>
+  </rh-tooltip>
+  ````
+ *
+ */
