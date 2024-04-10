@@ -1,5 +1,21 @@
 # @rhds/elements
 
+## 1.3.2
+
+### Patch Changes
+
+- 1d1640705: `<rh-tile>`: corrected icon slot visibility with a slotted icon
+- d61b8dc71: `<rh-dialog>`: ensure that `cancel`, `open`, and `closed` events fire
+
+## 1.3.1
+
+### Patch Changes
+
+- d87dfb94a: `<rh-tabs>`: fixed issue that stop tabs from correctly resizing on mobile
+- 01f100cf8: `<rh-tile>`: fixed issue with click target area of tile
+- 08722dd71: `<rh-table>`: corrected custom background hover color tokens.
+- 4259ba0ed: `<rh-tabs>`: improved documentation
+
 ## 1.3.0
 
 ### Minor Changes

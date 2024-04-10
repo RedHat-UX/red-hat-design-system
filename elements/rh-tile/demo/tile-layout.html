@@ -1,0 +1,79 @@
+<h2>Tile Layout</h2>
+<h3>Grid layout</h3>
+<div id="grid">
+  <rh-tile compact>
+    <img slot="image" src="https://fakeimg.pl/300x200" alt="300 X 200 placeholder image">
+    <div slot="title">Lorem</div>
+    <h2 slot="headline"><a href="#top">Link</a></h2>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    <div slot="footer">Suspendisse eu turpis elementum</div>
+  </rh-tile>
+
+  <rh-tile compact>
+    <img slot="image" src="https://fakeimg.pl/300x200" alt="300 X 200 placeholder image">
+    <div slot="title">Suspendisse eu</div>
+    <h2 slot="headline"><a href="#top">Link</a></h2>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    <div slot="footer">Suspendisse eu turpis elementum</div>
+  </rh-tile>
+
+  <rh-tile compact>
+    <img slot="image" src="https://fakeimg.pl/300x200" alt="300 X 200 placeholder image">
+    <div slot="title">Ut enim</div>
+    <h2 slot="headline"><a href="#top">Link</a></h2>
+    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    <div slot="footer">Suspendisse eu turpis elementum</div>
+  </rh-tile>
+</div>
+
+<h3>Flex layout</h3>
+<div id="flex">
+  <rh-tile bleed>
+    <img slot="image" src="https://fakeimg.pl/300x200" alt="300 X 200 placeholder image">
+    <div slot="title">Lorem</div>
+    <h2 slot="headline"><a href="#top">Link</a></h2>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    <div slot="footer">Suspendisse eu turpis elementum</div>
+  </rh-tile>
+
+  <rh-tile bleed>
+    <img slot="image" src="https://fakeimg.pl/300x200" alt="300 X 200 placeholder image">
+    <div slot="title">Suspendisse eu</div>
+    <h2 slot="headline"><a href="#top">Link</a></h2>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    <div slot="footer">Suspendisse eu turpis elementum</div>
+  </rh-tile>
+
+  <rh-tile bleed>
+    <img slot="image" src="https://fakeimg.pl/300x200" alt="300 X 200 placeholder image">
+    <div slot="title">Ut enim</div>
+    <h2 slot="headline"><a href="#top">Link</a></h2>
+    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    <div slot="footer">Suspendisse eu turpis elementum</div>
+  </rh-tile>
+</div>
+
+<script type="module">
+  import '@rhds/elements/rh-tile/rh-tile.js';
+</script>
+
+<link rel="stylesheet" href="../rh-tile-lightdom.css">
+
+<style>
+  #flex {
+    display: flex;
+    align-items: top;
+    flex-wrap: wrap;
+    gap: var(--rh-space-2xl, 32px);
+  }
+
+  #flex rh-tile {
+    flex: 0 0 300px;
+  }
+
+  #grid {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(3, 300px);
+  }
+</style>
