@@ -45,13 +45,15 @@ Reset a component's styles (preventing inheritance) by adding resetStyles to its
 
 <rh-code-block>
   <script type="text/sample-javascript">
-import { resetStyles } from '@rhds/tokens/css/reset.css.js';
-import style from './rh-jazz-hands.css';
+  import { resetStyles } from '@rhds/tokens/css/reset.css.js';
+  import style from './rh-jazz-hands.css';
+  </script>
 
-@customElement('rh-jazz-hands')
-export class RhJazzHands extends LitElement {
-  static readonly styles = [...resetStyles, style];
-}
+  <script type="text/sample-javascript">
+  @customElement('rh-jazz-hands')
+  export class RhJazzHands extends LitElement {
+    static readonly styles = [...resetStyles, style];
+  }
   </script>
 </rh-code-block>
 
@@ -65,9 +67,11 @@ Import tokens as JavaScript objects:
 
 <rh-code-block>
   <script type="text/sample-javascript">
-import { tokens } from '@rhds/tokens';
+  import { tokens } from '@rhds/tokens';
+  </script>
 
-html`<span style="color: ${tokens.get('--rh-color-blue-300')}">I'm blue</span>`;
+  <script type="text/sample-javascript">
+  html`<span style="color: ${tokens.get('--rh-color-blue-300')}">I'm blue</span>`;
   </script>
 </rh-code-block>
 
@@ -75,9 +79,11 @@ or for tree-shakable imports:
 
 <rh-code-block>
   <script type="text/sample-javascript">
-import { ColorBlue300 } from '@rhds/tokens/values.js';
+  import { ColorBlue300 } from '@rhds/tokens/values.js';
+  </script>
 
-html`<span style="color: ${ColorBlue300}">I'm blue</span>`;
+  <script type="text/sample-javascript">
+  html`<span style="color: ${ColorBlue300}">I'm blue</span>`;
   </script>
 </rh-code-block>
 
@@ -89,7 +95,7 @@ Editor snippets complete prefixes like `--rh-color-brand` to their CSS custom pr
 
 <rh-code-block>
   <script type="text/css">
-color: var(--rh-color-brand, #ee0000);
+  color: var(--rh-color-brand, #ee0000);
   </script>
 </rh-code-block>
 
@@ -136,12 +142,16 @@ Use the following config (lua syntax, for Neovim users) to configure hexokinase 
     'hsl', 'hsla',
     'colour_names',
   }
+  </script>
 
+  <script type="text/sample-javascript">
   vim.g.Hexokinase_ftOptOutPatterns = {
     json = { 'colour_names' },
     yaml = { 'colour_names' },
   }
+  </script>
 
+  <script type="text/sample-javascript">
   vim.g.Hexokinase_palettes = {
     -- replace with path to the built tokens package on your drive
     vim.fn.expand'~/Developer/redhat-ux/red-hat-design-tokens/editor/neovim/hexokinase.json'

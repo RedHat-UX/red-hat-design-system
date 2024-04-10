@@ -47,7 +47,9 @@ After installing the `@lit/react` library, you can import elements and patterns 
 <rh-code-block>
   <script type="text/sample-javascript">
   import { useState } from "react";
+  </script>
 
+  <script type="text/sample-javascript">
   import { Button } from "@rhds/elements/react/rh-cta/rh-cta.js";
   import { Card } from "@rhds/elements/react/rh-card/rh-card.js";
   </script>
@@ -81,7 +83,7 @@ Add the import statements to the top of the `<script>` tag in the file in which 
   props: {
   msg: String
   }
-  };
+    };
   <</script><script type="text/sample-javascript">/script>
   </script>
 </rh-code-block>
