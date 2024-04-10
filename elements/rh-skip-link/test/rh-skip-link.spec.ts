@@ -1,6 +1,6 @@
 import { expect, html } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
-import { a11ySnapshot, type A11yTreeSnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
+import { a11ySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
 import { RhSkipLink } from '@rhds/elements/rh-skip-link/rh-skip-link.js';
 
 describe('<rh-skip-link>', function() {
@@ -34,7 +34,7 @@ describe('<rh-skip-link>', function() {
       expect(snapshot).to.deep.equal({
         role: 'WebArea',
         name: '',
-        children: [ { role: 'link', name: 'Skip to main content' } ]
+        children: [{ role: 'link', name: 'Skip to main content' }]
       });
     });
 
