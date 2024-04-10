@@ -12,83 +12,94 @@ bodyClasses: element-docs
 
 ## How to install
 
-To develop components or design system documentation, you must first install some required software, namely node.js. We use [nvm](https://github.com/nvm-sh/nvm) to ensure a uniform development environment.
+There are three ways you can install the Red Hat Design System's web components: CDN, NPM, or JSPM. Each element's "Code" page includes the same installation information with code snippets that are specific to that element.
 
-### Step 1: Install node
+### Red Hat CDN
 
-**Fedora/RHEL users** should install [nvm](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating) for bash directly from GitHub.
+{% alert title="CDN Prerelease",
+          state="warning" %}
+<p>We are currently working on our CDN, which will be soon moving into beta. This will be the preferred method of installation in the near future. If you are a Red Hat associate and have questions or comments about the CDN or installation process please connect with us on Slack.</p>
+{% endalert %}
 
-**Mac users** should install [Homebrew](https://brew.sh/). Then use that to install `nvm`.
+The recommended way to load RHDS is via the Red Hat Digital Experience CDN, and using an [import map](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap).
 
-### Step 2: Clone the repository
-
-Clone the repository and change the directory to it:
-
-<rh-code-block>
-  <script type="text/sample-javascript">
-  git clone git@github.com:redhat-ux/red-hat-design-system
-  cd red-hat-design-system
-  </script>
-</rh-code-block>
-
-### Step 3: Install dependencies
-
-Install the right node version using `nvm`, then install the `node_modules` dependencies:
+If you have full control over the page you are using, add an import map to the `<head>`, pointing to the CDN, or update any existing import map. If you are not responsible for the page's `<head>`, request that the page owner makes the change on your behalf. 
 
 <rh-code-block>
   <script type="text/sample-javascript">
-  nvm use
-  npm ci
+  <script type="importmap">
+    {
+      "imports": {
+        "@rhds/elements/": "https://www.redhatstatic.com/dx/v1-alpha/@rhds/elements@1.1.0/elements/",
+        "@patternfly/elements/": "https://www.redhatstatic.com/dx/v1-alpha/@patternfly/elements@2.2.2/"
+      }
+    }
+  <</script><script type="text/sample-javascript">/script>
   </script>
 </rh-code-block>
 
-## How to generate an element
-
-Run the following command to begin the scaffolding process:
+Once the import map is established, you can load the element with the following module, containing a [bare module specifier](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules). The example below shows how you'd load in <`rh-button>`.
 
 <rh-code-block>
   <script type="text/sample-javascript">
-  npm run new
+  <script type="module">
+    import '@rhds/elements/rh-button/rh-button.js';
+  <</script><script type="text/sample-javascript">/script>
   </script>
 </rh-code-block>
 
-The generator will prompt you for the following:
+Note that modules may be placed in the `<head>`. Since they are deferred by default, they will not block rendering.
 
-What is the element tag name?
+### NPM
 
-- Your element should be lower case and needs to contain at least one hyphen to adhere to the [Custom Elements](https://html.spec.whatwg.org/multipage/custom-elements.html) standard naming convention.
-- Red Hat Design System elements should begin prefixed by `rh-`.  However if you are creating an element for use outside this project prefix your element as you see fit.
-
-After answering the script will generate a bootstrapped element in the `elements/your-element` directory complete with a`demo` and `test` directory.
-
-## Run the dev server
-
-Run the dev server to develop components:
+Install RHDS using your team's preferred NPM package manager.
 
 <rh-code-block>
   <script type="text/sample-javascript">
-  npm start
+  npm install @rhds/elements
   </script>
 </rh-code-block>
 
-This starts a local dev server at http://localhost:8000 and the 11ty dev server for the docs site at http://localhost:8080. Your changes will automatically refresh the browser window.
+Once that's been accomplished, you will need to use a bundler to resolve the bare module specifiers and optionally optimize the package for your site's particular use case and needs. Comprehensive guides to bundling are beyond the scope of this page; read more about bundlers on their websites:
 
-To run only the components dev server, first run the build, and then run the dev server:
+- [Rollup](https://rollupjs.org/)
+- [esbuild](https://esbuild.github.io/)
+- [Parcel](https://parceljs.org/)
+- [Webpack](https://webpack.js.org/)
+
+### JSPM
+
+{% alert title="Public CDNs",
+          state="warning" %}
+<p>JSPM and other public CDNs should not be used on corporate domains. Use them for <strong>development purposes only</strong>!</p>
+{% endalert %}
+
+Add an [import map](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap) to the `<head>`, pointing to the CDN, or update any existing import map.
 
 <rh-code-block>
   <script type="text/sample-javascript">
-  npm-run-dev
+  <script type="importmap">
+    {
+    "imports": {
+      "@rhds/elements/": "https://jspm.dev/@rhds/elements/",
+      "@patternfly/elements/": "https://jspm.dev/@patternfly/elements/"
+      }
+    }
+  <</script><script type="text/sample-javascript">/script>
   </script>
 </rh-code-block>
 
-To run only the docs dev server, first run the build, then 11ty:
+Once the import map is established, you can load the element with the following module, containing a [bare module specifier](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules). The example below shows how you'd load in <`rh-button>`.
 
 <rh-code-block>
   <script type="text/sample-javascript">
-  npm run build
-  npx eleventy --serve --incremental
+  <script type="module">
+    import '@rhds/elements/rh-button/rh-button.js';
+  <</script><script type="text/sample-javascript">/script>
   </script>
 </rh-code-block>
+
+Note that Modules may be placed in the `<head>`. Since they are deferred by default, they will not block rendering.
 
 {% feedback %}
   <h2>Designers</h2>

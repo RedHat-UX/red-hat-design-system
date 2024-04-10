@@ -13,8 +13,9 @@ bodyClasses: element-docs
 
 ## Introduction
 
-<!-- ADD CONTENT -->
+Welcome to the **Red Hat Design System** (RHDS) for digital experiences. If you need to develop something using our design system, you have come to the right place.
 
+Read this section to get started and e-mail [design-system@redhat.com](mailto:design-system@redhat.com) or connect with us on Slack if you have any questions along the way.
 
 ## Learn about our design system
 
@@ -39,9 +40,11 @@ Our design system libraries and the documentation website offer assets and guida
     </div>
 </div>
 
-## About Web Components
+## About web components
 
-<!-- ADD CONTENT -->
+Web components are based on a set of web platform APIs that help to create reusable and encapsulated UI elements. Those standards consist of custom elements, shadow DOM, and HTML Templates.
+
+Because they're able to work with any framework that supports HTML, web components can be used without having to rework all of your code and are less likely to be affected by changes in preferred web stacks. Encapsulation within the shadow DOM prevents a page's code from breaking a component's style and allows for a scalable design system.
 
 {% feedback %}
   <h2>Designers</h2>
