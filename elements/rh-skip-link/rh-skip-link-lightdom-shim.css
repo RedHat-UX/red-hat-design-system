@@ -1,9 +1,9 @@
-rh-skip-link {
+rh-skip-link:not(:defined) {
   display: block;
   position: relative;
 }
 
-rh-skip-link > a {
+rh-skip-link:not(:defined) > a {
   background-color: var(--rh-color-surface-lightest, #ffffff);
   border-block-start-width: 0;
   border-block-end:
@@ -39,7 +39,7 @@ rh-skip-link > a {
   width: 1px;
 }
 
-rh-skip-link > a:is(:active, :focus) {
+rh-skip-link:not(:defined) > a:is(:active, :focus) {
   border-width: var(--rh-border-width-md, 2px);
   clip: auto;
   height: auto;
@@ -51,12 +51,12 @@ rh-skip-link > a:is(:active, :focus) {
   width: auto;
 }
 
-rh-skip-link > a:is(:active, :hover) {
+rh-skip-link:not(:defined) > a:is(:active, :hover) {
   text-decoration: underline;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  rh-skip-link > a {
+  rh-skip-link:not(:defined) > a {
     transition-duration: 0.001ms;
   }
 }
