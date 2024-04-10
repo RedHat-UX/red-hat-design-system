@@ -11,6 +11,7 @@
     "./*": "./elements/*"
   },
   "contributors": [
+    "Adam Johnson <adjohnso@redhat.com>",
     "Benny Powers <bennyp@redhat.com>",
     "Brian Ferry <bferry@redhat.com>",
     "Corey Vickery <cvickery@redhat.com>",
