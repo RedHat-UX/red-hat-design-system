@@ -1,7 +1,9 @@
 <rh-context-demo>
-  <a id="top" href="#bottom">Go to bottom</a>
-  <p>Scroll down or press tab to see the back to top button</p>
-  <a id="bottom" href="#top">Go to top</a>
+  <div id="overflow">
+    <a id="top" href="#bottom">Go to bottom</a>
+    <p>Scroll down or press tab to see the back to top button</p>
+    <a id="bottom" href="#top">Go to top</a>
+  <div>
 </rh-context-demo>
 
 <rh-back-to-top href="#top">Back to top</rh-back-to-top>
@@ -13,12 +15,6 @@
 </script>
 
 <style>
-  [data-demo] {
-    /* scroll distance defaults to 400px */
-    min-height: calc(100dvh + 401px);
-    position: relative
-  }
-
   a {
     color: var(--rh-color-interactive-blue-darker, #0066cc);
   }
@@ -36,8 +32,18 @@
   }
 
   main {
+    display: block;
     scroll-behavior: smooth;
     max-height: calc(100dvh - var(--pf-demo-header-height)) !important;
+  }
+
+  #nav {
+    height: calc(100dvh - var(--pf-demo-header-height, 4.375rem)) !important;
+  }
+
+  #overflow {
+    min-height: calc(100dvh + 401px);
+    position: relative;
   }
 
   #bottom {
@@ -45,8 +51,8 @@
     bottom: 0;
   }
 
-  #nav {
-    height: calc(100dvh - var(--pf-demo-header-height, 4.375rem)); !important;
+  rh-context-demo {
+    height: auto;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -54,7 +60,6 @@
       scroll-behavior: auto;
     }
   }
-
 </style>
 
 

@@ -1,22 +1,29 @@
-<a id="top" href="#bottom">Go to bottom</a>
-<p>Scroll down (50px) or press tab to see the back to top button</p>
-<a id="bottom" href="#top">Go to top</a>
-<rh-back-to-top scroll-distance="50" href="#top">Back to top</rh-back-to-top>
+<div id="overflow">
+  <a id="top" href="#bottom">Go to bottom</a>
+  <p>Scroll down (50px) or press tab to see the back to top button</p>
+  <a id="bottom" href="#top">Go to top</a>
+  <rh-back-to-top scroll-distance="50" href="#top">Back to top</rh-back-to-top>
+</div>
 <script type="module">
   import '@rhds/elements/rh-back-to-top/rh-back-to-top.js';
   import '@patternfly/elements/pf-icon/pf-icon.js';
 </script>
 
 <style>
-  [data-demo] {
-    /* scroll distance 50px */
-    min-height: calc(100dvh + 51px);
-    position: relative
-  }
-
   main {
+    display: block;
     scroll-behavior: smooth;
     max-height: calc(100dvh - var(--pf-demo-header-height)) !important;
+  }
+
+  #nav {
+    height: calc(100dvh - var(--pf-demo-header-height, 4.375rem)) !important;
+  }
+
+  #overflow {
+    /* scroll distance set to 50px */
+    min-height: calc(100dvh + 51px);
+    position: relative;
   }
 
   #bottom {
@@ -24,25 +31,9 @@
     bottom: 0;
   }
 
-  #nav {
-    height: calc(100dvh - var(--pf-demo-header-height, 4.375rem)); !important;
-  }
   @media (prefers-reduced-motion: reduce) {
     main {
       scroll-behavior: auto;
-    }
-  }
-
-  /* override of position for demo purpose */
-  rh-back-to-top {
-    position: fixed;
-    bottom: var(--rh-spacer-xl, 24px);
-    right: var(--rh-spacer-xl, 24px);
-  }
-  @media (min-width: 768px) {
-    rh-back-to-top {
-      bottom: var(--rh-spacer-3xl, 48px);
-      right: var(--rh-spacer-3xl, 48px);
     }
   }
 </style>
