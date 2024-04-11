@@ -14,6 +14,7 @@ import styles from './rh-skip-link.css';
  */
 @customElement('rh-skip-link')
 export class RhSkipLink extends LitElement {
+  static shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
   static readonly styles = [styles];
 
   render() {

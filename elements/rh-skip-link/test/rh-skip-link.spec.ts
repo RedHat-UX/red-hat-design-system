@@ -3,6 +3,19 @@ import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 import { a11ySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
 import { RhSkipLink } from '@rhds/elements/rh-skip-link/rh-skip-link.js';
 
+const parseTransitionDuration = function(input) {
+  let value = parseFloat(input);
+  const unit = input.match(/[a-zA-Z]+/)[0].toLowerCase();
+
+  if (unit === 's') {
+    // If the unit is 's' (seconds), convert to milliseconds
+    value = value * 1000;
+  }
+  // Adding 50ms to complete transition:
+  value = value + 50;
+  return value;
+};
+
 describe('<rh-skip-link>', function() {
   describe('simply instantiating', function() {
     let element: RhSkipLink;
@@ -40,8 +53,11 @@ describe('<rh-skip-link>', function() {
 
     describe('when element receives focus', function() {
       it('should be visible', async function() {
+        const elStyles = getComputedStyle(element.querySelector('a'));
+        // Calculate transition duration. Focus applies after the transition finishes.
+        const transitionValue = parseTransitionDuration(elStyles.getPropertyValue('transition-duration'));
         element.focus();
-        const elStyles = getComputedStyle(element);
+        await new Promise(r => setTimeout(r, transitionValue));
         expect(elStyles.getPropertyValue('clip')).to.equal('auto');
         expect(elStyles.getPropertyValue('text-decoration')).to.not.equal('underline');
         expect(elStyles.getPropertyValue('top')).to.equal('0px');
