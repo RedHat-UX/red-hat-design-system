@@ -17,7 +17,7 @@
   align-items: center;
   width: 40px;
   height: 24px;
-  background-color: var(--rh-switch-state-unchecked, var(--rh-color-gray-60, #4d4d4d));
+  background-color: var(--rh-switch-unchecked, var(--rh-color-gray-60, #4d4d4d));
   border-radius: var(--rh-border-radius-pill, 64px);
 }
 
@@ -43,7 +43,7 @@
 }
 
 :host([checked]) #container {
-  background-color: var(--rh-switch-state-checked, var(--rh-color-accent-base-on-light, #0066cc));
+  background-color: var(--rh-switch-checked, var(--rh-color-accent-base-on-light, #0066cc));
 }
 
 :host([checked]) #container:before {
@@ -55,7 +55,7 @@
   cursor: not-allowed;
 
   /* TODO: replace with semantic disabled token */
-  background-color: var(--rh-switch-state-disabled, var(--rh-color-gray-30, #c7c7c7));
+  background-color: var(--rh-switch-disabled, var(--rh-color-gray-30, #c7c7c7));
 }
 
 svg {
