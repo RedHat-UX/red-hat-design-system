@@ -117,10 +117,11 @@ export class RhAlert extends LitElement {
     const hasActions = this.#slots.hasSlotted('actions');
     const hasBody = this.#slots.hasSlotted(SlotController.anonymous as unknown as string);
     return html`
-      <div id="container"
+      <rh-surface id="container"
            class="${classMap({ hasBody })}"
            role="alert"
-           aria-hidden="false">
+           aria-hidden="false"
+           color-palette="lightest">
         <div id="left-column">
           <div id="icon">${this.icon}</div>
         </div>
@@ -143,7 +144,7 @@ export class RhAlert extends LitElement {
             <slot name="actions"></slot>
           </footer>
         </div>
-      </div>
+      </rh-surface>
     `;
   }
 }

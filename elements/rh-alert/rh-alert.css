@@ -93,7 +93,6 @@ header ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
 
 #description {
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
-  color: var(--rh-color-text-primary-on-light, #151515);
 }
 
 #description > ::slotted(*) {
