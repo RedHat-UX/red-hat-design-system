@@ -1,5 +1,271 @@
 - name: "Accordion"
   type: "Element"
+  overallStatus: "Available"
+  libraries:
+    - name: Figma library
+      status: Ready
+    - name: Responsive
+      status: Ready
+    - name: RH Elements
+      status: Ready
+    - name: webRH
+      status: Ready
+    - name: Documentation
+      status: Ready
+- name: "Alert"
+  type: "Element"
+  overallStatus: "Available"
+  libraries:
+    - name: Figma library
+      status: Ready
+    - name: Responsive
+      status: Ready
+    - name: RH Elements
+      status: Ready
+    - name: webRH
+      status: Ready
+    - name: Documentation
+      status: Ready
+- name: "Audio Player"
+  type: "Element"
+  overallStatus: "Available"
+  libraries:
+    - name: Figma library
+      status: Ready
+    - name: Responsive
+      status: Ready
+    - name: RH Elements
+      status: Ready
+    - name: webRH
+      status: Ready
+    - name: Documentation
+      status: Ready
+- name: "Avatar"
+  type: "Element"
+  overallStatus: "Available"
+  libraries:
+    - name: Figma library
+      status: Ready
+    - name: Responsive
+      status: Ready
+    - name: RH Elements
+      status: Ready
+    - name: webRH
+      status: Ready
+    - name: Documentation
+      status: Ready
+- name: "Badge"
+  type: "Element"
+  overallStatus: "Available"
+  libraries:
+    - name: Figma library
+      status: Ready
+    - name: Responsive
+      status: Ready
+    - name: RH Elements
+      status: Ready
+    - name: webRH
+      status: Ready
+    - name: Documentation
+      status: Ready
+- name: "Blockquote"
+  type: "Element"
+  overallStatus: "Available"
+  libraries:
+    - name: Figma library
+      status: Ready
+    - name: Responsive
+      status: Ready
+    - name: RH Elements
+      status: Ready
+    - name: webRH
+      status: Ready
+    - name: Documentation
+      status: Ready
+- name: "Button"
+  type: "Element"
+  overallStatus: "Available"
+  libraries:
+    - name: Figma library
+      status: Ready
+    - name: Responsive
+      status: Ready
+    - name: RH Elements
+      status: Ready
+    - name: webRH
+      status: Ready
+    - name: Documentation
+      status: Ready
+- name: "Cta"
+  type: "Element"
+  overallStatus: "Available"
+  libraries:
+    - name: Figma library
+      status: Ready
+    - name: Responsive
+      status: Ready
+    - name: RH Elements
+      status: Ready
+    - name: webRH
+      status: Ready
+    - name: Documentation
+      status: Ready
+- name: "Card"
+  type: "Element"
+  overallStatus: "Available"
+  libraries:
+    - name: Figma library
+      status: Ready
+    - name: Responsive
+      status: Ready
+    - name: RH Elements
+      status: Ready
+    - name: webRH
+      status: Ready
+    - name: Documentation
+      status: Ready
+- name: "Code Block"
+  type: "Element"
+  overallStatus: "Available"
+  libraries:
+    - name: Figma library
+      status: Ready
+    - name: Responsive
+      status: Ready
+    - name: RH Elements
+      status: Ready
+    - name: webRH
+      status: Ready
+    - name: Documentation
+      status: Ready
+- name: "Dialog"
+  type: "Element"
+  overallStatus: "Available"
+  libraries:
+    - name: Figma library
+      status: Ready
+    - name: Responsive
+      status: Ready
+    - name: RH Elements
+      status: Ready
+    - name: webRH
+      status: Ready
+    - name: Documentation
+      status: Ready
+- name: "Footer"
+  type: "Element"
+  overallStatus: "Available"
+  libraries:
+    - name: Figma library
+      status: Ready
+    - name: Responsive
+      status: Ready
+    - name: RH Elements
+      status: Ready
+    - name: webRH
+      status: Ready
+    - name: Documentation
+      status: Ready
+- name: "Jumplinks"
+  type: "Element"
+  overallStatus: "Available"
+  libraries:
+    - name: Figma library
+      status: N/A
+    - name: Responsive
+      status: N/A
+    - name: RH Elements
+      status: N/A
+    - name: webRH
+      status: N/A
+    - name: Documentation
+      status: Ready
+- name: "Navigation Secondary"
+  type: "Element"
+  overallStatus: "Available"
+  libraries:
+    - name: Figma library
+      status: Ready
+    - name: Responsive
+      status: Ready
+    - name: RH Elements
+      status: Ready
+    - name: webRH
+      status: Ready
+    - name: Documentation
+      status: Ready
+- name: "Pagination"
+  type: "Element"
+  overallStatus: "Available"
+  libraries:
+    - name: Figma library
+      status: Ready
+    - name: Responsive
+      status: Ready
+    - name: RH Elements
+      status: Ready
+    - name: webRH
+      status: Ready
+    - name: Documentation
+      status: Ready
+- name: "Popover"
+  type: "Element"
+  overallStatus: "Available"
+  libraries:
+    - name: Figma library
+      status: Ready
+    - name: Responsive
+      status: Ready
+    - name: RH Elements
+      status: Ready
+    - name: webRH
+      status: Ready
+    - name: Documentation
+      status: Ready
+- name: "Spinner"
+  type: "Element"
+  overallStatus: "Available"
+  libraries:
+    - name: Figma library
+      status: Ready
+    - name: Responsive
+      status: Ready
+    - name: RH Elements
+      status: Ready
+    - name: webRH
+      status: Ready
+    - name: Documentation
+      status: Ready
+- name: "Stat"
+  type: "Element"
+  overallStatus: "Available"
+  libraries:
+    - name: Figma library
+      status: Ready
+    - name: Responsive
+      status: Ready
+    - name: RH Elements
+      status: Ready
+    - name: webRH
+      status: Ready
+    - name: Documentation
+      status: Ready
+- name: "Subnav"
+  type: "Element"
+  overallStatus: "Available"
+  libraries:
+    - name: Figma library
+      status: Ready
+    - name: Responsive
+      status: Ready
+    - name: RH Elements
+      status: Ready
+    - name: webRH
+      status: Ready
+    - name: Documentation
+      status: Ready
+- name: "Surface"
+  type: "Element"
   overallStatus: "New"
   libraries:
     - name: Figma library
@@ -7,358 +273,92 @@
     - name: Responsive
       status: Ready
     - name: RH Elements
-      status: Deprecated
+      status: Ready
     - name: webRH
-      status: In progress
-    - name: Documentation
       status: Ready
-- name: "Alert"
-  type: "Element"
-  overallStatus: "Experimental"
-  libraries:
-    - name: Figma library
-      status: Ready
-    - name: Responsive
-      status: Ready
-    - name: RH Elements
-      status: Deprecated
-    - name: webRH
-      status: In progress
-    - name: Documentation
-      status: Ready
-- name: "Audio Player"
-  type: "Element"
-  overallStatus: "Beta"
-  libraries:
-    - name: Figma library
-      status: Ready
-    - name: Responsive
-      status: Ready
-    - name: RH Elements
-      status: Deprecated
-    - name: webRH
-      status: In progress
-    - name: Documentation
-      status: Ready
-- name: "Avatar"
-  type: "Element"
-  overallStatus: "Released"
-  libraries:
-    - name: Figma library
-      status: Ready
-    - name: Responsive
-      status: Ready
-    - name: RH Elements
-      status: Deprecated
-    - name: webRH
-      status: In progress
-    - name: Documentation
-      status: Ready
-- name: "Badge"
-  type: "Element"
-  overallStatus: "Released"
-  libraries:
-    - name: Figma library
-      status: Ready
-    - name: Responsive
-      status: Ready
-    - name: RH Elements
-      status: Deprecated
-    - name: webRH
-      status: In progress
-    - name: Documentation
-      status: Ready
-- name: "Blockquote"
-  type: "Element"
-  overallStatus: "Released"
-  libraries:
-    - name: Figma library
-      status: Ready
-    - name: Responsive
-      status: Ready
-    - name: RH Elements
-      status: Deprecated
-    - name: webRH
-      status: In progress
-    - name: Documentation
-      status: Ready
-- name: "Button"
-  type: "Element"
-  overallStatus: "Released"
-  libraries:
-    - name: Figma library
-      status: Ready
-    - name: Responsive
-      status: Ready
-    - name: RH Elements
-      status: Deprecated
-    - name: webRH
-      status: In progress
-    - name: Documentation
-      status: Ready
-- name: "Card"
-  type: "Element"
-  overallStatus: "Released"
-  libraries:
-    - name: Figma library
-      status: Ready
-    - name: Responsive
-      status: Ready
-    - name: RH Elements
-      status: Deprecated
-    - name: webRH
-      status: In progress
-    - name: Documentation
-      status: Ready
-- name: "Code Block"
-  type: "Element"
-  overallStatus: "Released"
-  libraries:
-    - name: Figma library
-      status: Ready
-    - name: Responsive
-      status: Ready
-    - name: RH Elements
-      status: Deprecated
-    - name: webRH
-      status: In progress
-    - name: Documentation
-      status: Ready
-- name: "Cta"
-  type: "Element"
-  overallStatus: "Released"
-  libraries:
-    - name: Figma library
-      status: Ready
-    - name: Responsive
-      status: Ready
-    - name: RH Elements
-      status: Deprecated
-    - name: webRH
-      status: In progress
-    - name: Documentation
-      status: Ready
-- name: "Dialog"
-  type: "Element"
-  overallStatus: "Released"
-  libraries:
-    - name: Figma library
-      status: Ready
-    - name: Responsive
-      status: Ready
-    - name: RH Elements
-      status: Deprecated
-    - name: webRH
-      status: In progress
-    - name: Documentation
-      status: Ready
-- name: "Footer"
-  type: "Element"
-  overallStatus: "Released"
-  libraries:
-    - name: Figma library
-      status: Ready
-    - name: Responsive
-      status: Ready
-    - name: RH Elements
-      status: Deprecated
-    - name: webRH
-      status: In progress
-    - name: Documentation
-      status: Ready
-- name: "Jumplinks"
-  type: "Element"
-  overallStatus: "Released"
-  libraries:
-    - name: Figma library
-      status: Ready
-    - name: Responsive
-      status: Ready
-    - name: RH Elements
-      status: Deprecated
-    - name: webRH
-      status: In progress
-    - name: Documentation
-      status: Ready
-- name: "Navigation Secondary"
-  type: "Element"
-  overallStatus: "Released"
-  libraries:
-    - name: Figma library
-      status: Ready
-    - name: Responsive
-      status: Ready
-    - name: RH Elements
-      status: Deprecated
-    - name: webRH
-      status: In progress
-    - name: Documentation
-      status: Ready
-- name: "Pagination"
-  type: "Element"
-  overallStatus: "Released"
-  libraries:
-    - name: Figma library
-      status: Ready
-    - name: Responsive
-      status: Ready
-    - name: RH Elements
-      status: Deprecated
-    - name: webRH
-      status: In progress
-    - name: Documentation
-      status: Ready
-- name: "Popover"
-  type: "Element"
-  overallStatus: "Released"
-  libraries:
-    - name: Figma library
-      status: Ready
-    - name: Responsive
-      status: Ready
-    - name: RH Elements
-      status: Deprecated
-    - name: webRH
-      status: In progress
-    - name: Documentation
-      status: Ready
-- name: "Spinner"
-  type: "Element"
-  overallStatus: "Released"
-  libraries:
-    - name: Figma library
-      status: Ready
-    - name: Responsive
-      status: Ready
-    - name: RH Elements
-      status: Deprecated
-    - name: webRH
-      status: In progress
-    - name: Documentation
-      status: Ready
-- name: "Stat"
-  type: "Element"
-  overallStatus: "Released"
-  libraries:
-    - name: Figma library
-      status: Ready
-    - name: Responsive
-      status: Ready
-    - name: RH Elements
-      status: Deprecated
-    - name: webRH
-      status: In progress
-    - name: Documentation
-      status: Ready
-- name: "Subnav"
-  type: "Element"
-  overallStatus: "Released"
-  libraries:
-    - name: Figma library
-      status: Ready
-    - name: Responsive
-      status: Ready
-    - name: RH Elements
-      status: Deprecated
-    - name: webRH
-      status: In progress
-    - name: Documentation
-      status: Ready
-- name: "Surface"
-  type: "Element"
-  overallStatus: "Experimental"
-  libraries:
-    - name: Figma library
-      status: Ready
-    - name: Responsive
-      status: Ready
-    - name: RH Elements
-      status: Deprecated
-    - name: webRH
-      status: In progress
     - name: Documentation
       status: Ready
 - name: "Table"
   type: "Element"
-  overallStatus: "Released"
+  overallStatus: "New"
   libraries:
     - name: Figma library
       status: Ready
     - name: Responsive
       status: Ready
     - name: RH Elements
-      status: Deprecated
+      status: Ready
     - name: webRH
-      status: In progress
+      status: Ready
     - name: Documentation
       status: Ready
 - name: "Tabs"
   type: "Element"
-  overallStatus: "Released"
+  overallStatus: "Available"
   libraries:
     - name: Figma library
       status: Ready
     - name: Responsive
       status: Ready
     - name: RH Elements
-      status: Deprecated
+      status: Ready
     - name: webRH
-      status: In progress
+      status: Ready
     - name: Documentation
       status: Ready
 - name: "Tag"
   type: "Element"
-  overallStatus: "Released"
+  overallStatus: "Available"
   libraries:
     - name: Figma library
       status: Ready
     - name: Responsive
       status: Ready
     - name: RH Elements
-      status: Deprecated
+      status: Ready
     - name: webRH
-      status: In progress
+      status: Ready
     - name: Documentation
       status: Ready
 - name: "Tile"
   type: "Element"
-  overallStatus: "Released"
+  overallStatus: "New"
   libraries:
     - name: Figma library
       status: Ready
     - name: Responsive
       status: Ready
     - name: RH Elements
-      status: Deprecated
+      status: Ready
     - name: webRH
-      status: In progress
+      status: Ready
     - name: Documentation
       status: Ready
 - name: "Timestamp"
   type: "Element"
-  overallStatus: "Released"
+  overallStatus: "Available"
   libraries:
     - name: Figma library
       status: Ready
     - name: Responsive
       status: Ready
     - name: RH Elements
-      status: Deprecated
+      status: Ready
     - name: webRH
-      status: In progress
+      status: Ready
     - name: Documentation
       status: Ready
 - name: "Tooltip"
   type: "Element"
-  overallStatus: "Released"
+  overallStatus: "Available"
   libraries:
     - name: Figma library
       status: Ready
     - name: Responsive
       status: Ready
     - name: RH Elements
-      status: Deprecated
+      status: Ready
     - name: webRH
-      status: In progress
+      status: Ready
     - name: Documentation
       status: Ready
