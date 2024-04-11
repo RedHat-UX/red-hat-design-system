@@ -50,8 +50,9 @@ interface ApiStatus {
 }
 
 /**
- * The Site Status is a styled link that displays the current status of the <a href="https://status.redhat.com">Red Hat status page</a>.
- * @summary Displays current Site Status
+ * Website status communicates the operational status of a website or domain using a status icon and link. It is usually located in the Footer component.
+ *
+ * @summary Communicates operational status of a website or domain
  */
 @customElement('rh-site-status')
 export class RhSiteStatus extends LitElement {
