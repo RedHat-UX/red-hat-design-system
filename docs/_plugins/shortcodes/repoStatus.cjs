@@ -211,9 +211,9 @@ function repoStatusTable() {
   if (!Array.isArray(elementsList) || !elementsList.length) {
     return '';
   } else {
+    // This table renders the current state of all the components on the Design/Code status page
     return /* html */`
-<div class="component-status-table">
-<rh-table>
+<rh-table class="component-status-table">
 <table>
 <colgroup>
 <col />
@@ -257,7 +257,6 @@ ${listItem.libraries.map(lib => {
 </tbody>
 </table>
 </rh-table>
-  </div>
   </section>`;
   }
 }
@@ -272,11 +271,11 @@ function repoStatusChecklist({ heading = 'Status checklist', level = 2 } = {}) {
   if (!Array.isArray(statusList) || !statusList.length) {
     return '';
   } else {
+    // This is the checklist table to be used on all the "Overview" tab in docs and is different from the table used in Design/Code Status page
     return /* html */`
 <section class="section section--palette-default container">
 
   ${`${headingLevel} ${heading} {.section-title .pfe-jump-links-panel__section}`}
-
   <div class="component-status-table">
 <rh-table>
 <table>
