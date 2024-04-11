@@ -29,7 +29,6 @@ interface CodeLineHeightsInfo {
  *         samples should use the type `text/sample-javascript`. HTML samples
  *         containing script tags must escape the closing `</script>` tag. Can
  *         also be a `<pre>` tag.
- * @slot {RhCodeActionEvent} actions - `<rh-code-action>` buttons
  * @slot action-label-copy - tooltip content for the copy action button
  * @slot action-label-wrap - tooltip content for the wrap action button
  * @slot show-more - text content for the expandable toggle button when the code
@@ -97,7 +96,15 @@ export class RhCodeBlock extends LitElement {
 
   @colorContextConsumer() private on?: ColorTheme;
 
-  #slots = new SlotController(this, null, 'actions', 'legend');
+  #slots = new SlotController(
+    this,
+    null,
+    'action-label-copy',
+    'action-label-wrap',
+    'show-more',
+    'show-less',
+    'legend',
+  );
 
   #ro = new ResizeObserver(() => this.#computeLineNumbers());
 
