@@ -1,4 +1,8 @@
 :host {
+  --rh-code-block-callout-size: var(--rh-size-icon-02, 24px);
+  --_aspect-ratio: 1;
+  --_badge-size: var(--rh-code-block-callout-size);
+
   display: block;
   max-width: 1000px;
   max-height: calc(10 * var(--rh-space-4xl, 64px));
@@ -267,4 +271,11 @@
   --_expand-toggle-icon-color: var(--rh-color-icon-secondary-on-dark, #ffffff);
   --_inline-end-overflow-gradient: linear-gradient(270deg, #292929 0%, rgba(41, 41, 41, 0) 100%);
   --_block-end-overflow-gradient: linear-gradient(0deg, #292929 0%, rgba(41, 41, 41, 0) 100%);
+}
+
+[name="legend"]::slotted(dl) {
+  display: grid;
+  grid-template-columns: max-content auto;
+  margin-block: var(--rh-space-lg, 16px);
+  gap: var(--rh-space-md, 8px);
 }

@@ -30,10 +30,14 @@ interface CodeLineHeightsInfo {
  *         containing script tags must escape the closing `</script>` tag. Can
  *         also be a `<pre>` tag.
  * @slot {RhCodeActionEvent} actions - `<rh-code-action>` buttons
+ * @slot action-label-copy - tooltip content for the copy action button
+ * @slot action-label-wrap - tooltip content for the wrap action button
  * @slot show-more - text content for the expandable toggle button when the code
  *                   block is collapsed.
  * @slot show-less - text content for the expandable toggle button when the code
  *                   block is expanded.
+ * @slot legend - `<dl>` element containing rh-badges in the `<dt>`
+ *                and legend text in the `<dd>` elements
  */
 @customElement('rh-code-block')
 export class RhCodeBlock extends LitElement {
@@ -93,7 +97,7 @@ export class RhCodeBlock extends LitElement {
 
   @colorContextConsumer() private on?: ColorTheme;
 
-  #slots = new SlotController(this, null, 'actions');
+  #slots = new SlotController(this, null, 'actions', 'legend');
 
   #ro = new ResizeObserver(() => this.#computeLineNumbers());
 
@@ -162,6 +166,7 @@ export class RhCodeBlock extends LitElement {
           </svg>
         </button>
       </div>
+      <slot name="legend"></slot>
     `;
   }
 
