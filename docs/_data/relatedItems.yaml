@@ -66,6 +66,7 @@ rh-progress-steps:
  - rh-pagination
  - rh-tabs
 rh-site-status:
+ - rh-card
  - rh-footer
 rh-spinner: 
  - form
