@@ -191,15 +191,12 @@ export class RhCodeBlock extends LitElement {
     this.#computeLineNumbers();
     // TODO: handle slotted fabs
     const slot = this.shadowRoot?.querySelector<HTMLSlotElement>('slot[name="action-label-wrap"]');
-    const tooltip = slot?.closest('rh-tooltip');
-    tooltip?.hide();
     for (const el of slot?.assignedElements() ?? []) {
       if (el instanceof HTMLElement) {
         el.hidden = (el.dataset.codeBlockState !== 'active') === this.wrap;
       }
     }
     this.requestUpdate();
-    tooltip?.show();
   }
 
   /**
