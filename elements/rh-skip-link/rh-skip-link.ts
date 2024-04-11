@@ -18,7 +18,9 @@ export class RhSkipLink extends LitElement {
 
   render() {
     return html`
-      <slot></slot>
+      <div id="rhds-skip-link-container">
+        <slot></slot>
+      </div>
     `;
   }
 }
