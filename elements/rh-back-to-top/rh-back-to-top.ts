@@ -26,7 +26,7 @@ export class RhBackToTop extends LitElement {
   static readonly styles = [styles];
 
   /** Flag to always show back to top button, defaults to false. */
-  @property({ reflect: true, type: Boolean, attribute: 'always-visible' }) alwaysVisible = false;
+  @property({ reflect: true, attribute: 'visible' }) visible?: 'always' | undefined;
 
   /** Element selector to spy on for scrolling. Not passing a selector defaults to spying on window scroll events */
   @property({ reflect: true, attribute: 'scrollable-selector' }) scrollableSelector?: string;
@@ -78,7 +78,7 @@ export class RhBackToTop extends LitElement {
     if (changed.has('scrollableSelector')) {
       this.#addScrollListener();
     }
-    if (changed.has('alwaysVisible')) {
+    if (changed.has('visible')) {
       this.#toggleVisibility();
     }
   }
@@ -121,7 +121,7 @@ export class RhBackToTop extends LitElement {
   }
 
   #toggleVisibility = () => {
-    if (this.alwaysVisible) {
+    if (this.visible && this.visible === 'always') {
       this.#visible = true;
       this.requestUpdate();
       return;

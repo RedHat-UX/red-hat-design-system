@@ -84,7 +84,7 @@ describe('<rh-back-to-top>', function() {
       beforeEach(async function() {
         window.scrollTo({ top: 0, behavior: 'instant' });
         await nextFrame();
-        element.alwaysVisible = true;
+        element.visible = 'always';
         await allUpdates(element);
         snapshot = await a11ySnapshot();
       });
