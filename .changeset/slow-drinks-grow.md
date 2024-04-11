@@ -2,4 +2,4 @@
 "@rhds/elements": minor
 ---
 
-Added the `<rh-skip-link>` element.
+`<rh-skip-link>`: Added the `<rh-skip-link>` element.
