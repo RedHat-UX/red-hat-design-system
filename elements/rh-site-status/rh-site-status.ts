@@ -58,6 +58,17 @@ const statusMap: Record<string, string> = {
 export class RhSiteStatus extends LitElement {
   static readonly styles = [styles];
 
+  static #isApiStatus = (data: ApiStatus): data is ApiStatus => {
+    return (
+      typeof data === 'object' &&
+      data !== null &&
+      'status' in data &&
+      data.status !== null &&
+      'description' in data.status &&
+      'indicator' in data.status
+    );
+  };
+
   /**
    * Sets color context for child components, overrides parent context
    */
@@ -76,17 +87,6 @@ export class RhSiteStatus extends LitElement {
   #icon: TemplateResult = html``;
 
   #isLoading = true;
-
-  #isApiStatus = (data: ApiStatus): data is ApiStatus => {
-    return (
-      typeof data === 'object' &&
-      data !== null &&
-      'status' in data &&
-      data.status !== null &&
-      'description' in data.status &&
-      'indicator' in data.status
-    );
-  };
 
   async connectedCallback() {
     super.connectedCallback();
@@ -123,7 +123,7 @@ export class RhSiteStatus extends LitElement {
         }
       })
       .then((data: ApiStatus) => {
-        if (!this.#isApiStatus(data)) {
+        if (!RhSiteStatus.#isApiStatus(data)) {
           throw new Error('Invalid status data');
         }
         const statusText = data.status.description;
