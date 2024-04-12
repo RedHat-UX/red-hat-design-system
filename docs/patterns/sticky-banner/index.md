@@ -13,8 +13,6 @@ A Sticky banner slides into view at a certain scroll position and then anchors i
            alt="Sticky banner",
            src="./sticky-banner.svg" %}
 
-{% repoStatus %}
-
 ## Style
 
 A sticky banner can be used in the light theme only. The large size can include a thumbnail image on large screens, but both sizes can include a headline, text, a call to action, and a background container with a subtle drop shadow. A close button also needs to be included in both sizes.

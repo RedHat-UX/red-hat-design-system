@@ -263,7 +263,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
       const elements = await eleventyConfig.globalData?.elements();
       const filePaths = (await glob(`elements/*/docs/*.md`, { cwd: process.cwd() }))
         .filter(x => x.match(/\d{1,3}-[\w-]+\.md$/)); // only include new style docs
-      const { repoStatus } = collectionApi.items.find(item => item.data?.repoStatus)?.data || {};
+      const { repoStatus } = collectionApi.items.find(item => item.data?.repoStatus)?.data || [];
       return filePaths
         .map(filePath => {
           const props = getProps(filePath);
