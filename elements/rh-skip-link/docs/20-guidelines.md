@@ -22,9 +22,9 @@ The recommended maximum character count is listed below and includes spaces.
 
 ## Best practices
 
-### Too many skip links
+### Number of skip links
 
-The purpose of a skip link is to help users navigate a page more quickly and easily. Adding too many skip links detracts from this goal, and the vast majority of pages will need only one skip link. If you’d like users to be able to jump from one section to the other, consider using <a href="/elements/jump-links/">jump links</a> instead.
+The vast majority of pages will need only one skip link, unless it is a very complex page with many repeated elements. The purpose of a skip link is to help users navigate a page more quickly and easily. Adding too many skip links detracts from this goal. If you’d like users to be able to jump from one section to the other, consider using <a href="/elements/jump-links/">jump links</a> instead.
 
 <!--NOTE: ADD IMAGES
 <div class="best-practices-grid">
@@ -43,7 +43,7 @@ The purpose of a skip link is to help users navigate a page more quickly and eas
 
 ### Main content
 
-“Main content” in a skip link’s text label refers to the content that appears immediately after the navigation. A skip link should not send users past additional content without any indication.
+“Main content” in a skip link’s text label refers to the content that appears immediately after the navigation. Ensure that users skip only the navigation, or adjust the element's text to give a more accurate description of what will be skipped.
 
 <!-- Note: Add images
 <div class="best-practices-grid">
@@ -63,6 +63,7 @@ The purpose of a skip link is to help users navigate a page more quickly and eas
 ### Visibility 
 
 To prevent the skip link from being visually distracting, hide a skip link until users navigate to it. The most accessible way to hide it is to position the skip link outside of the viewport, rather than using `display: none` or the `hidden` attribute in CSS.
+
 <!-- Note: Add images
 <div class="best-practices-grid">
     <div>
