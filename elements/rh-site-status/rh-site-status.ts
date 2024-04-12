@@ -58,7 +58,7 @@ const statusMap: Record<string, string> = {
 export class RhSiteStatus extends LitElement {
   static readonly styles = [styles];
 
-  static #isApiStatus = (data: ApiStatus): data is ApiStatus => {
+  private static isApiStatus = (data: ApiStatus): data is ApiStatus => {
     return (
       typeof data === 'object' &&
       data !== null &&
@@ -123,7 +123,7 @@ export class RhSiteStatus extends LitElement {
         }
       })
       .then((data: ApiStatus) => {
-        if (!RhSiteStatus.#isApiStatus(data)) {
+        if (!RhSiteStatus.isApiStatus(data)) {
           throw new Error('Invalid status data');
         }
         const statusText = data.status.description;
