@@ -1,8 +1,12 @@
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+import { classMap } from 'lit/directives/class-map.js';
 
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
+
+import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+
 
 import styles from './rh-switch.css';
 /**
@@ -35,6 +39,11 @@ export class RhSwitch extends LitElement {
 
   @property({ reflect: true, type: Boolean }) disabled = false;
 
+  /**
+   * Sets color theme based on parent context
+   */
+  @colorContextConsumer() private on?: ColorTheme;
+
   get labels(): NodeListOf<HTMLLabelElement> {
     return this.#internals.labels as NodeListOf<HTMLLabelElement>;
   }
@@ -62,8 +71,9 @@ export class RhSwitch extends LitElement {
   }
 
   render() {
+    const { on = '' } = this;
     return html`
-      <div id="container">
+      <div id="container" class="${classMap({ [on]: !!on })}">
         <svg id="toggle"
              role="presentation"
              fill="currentColor"
