@@ -119,7 +119,7 @@ export class RhSiteStatus extends LitElement {
         if (response.ok) {
           return response.json();
         } else {
-          throw new Error(`${response.status} ${response.statusText}`);
+          throw new Error(`${response.statusText}`);
         }
       })
       .then((data: ApiStatus) => {
