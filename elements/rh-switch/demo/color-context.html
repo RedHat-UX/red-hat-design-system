@@ -7,6 +7,11 @@
         <span data-state="on">Message when on</span>
         <span data-state="off" hidden>Message when off</span>
       </label>
+      <rh-switch id="disabled" disabled></rh-switch>
+      <label for="disabled">
+        <span data-state="on">Message when on</span>
+        <span data-state="off" hidden>Message when off</span>
+      </label>
     </fieldset>
   </form>
 </rh-context-demo>
@@ -25,11 +30,15 @@
   }
 
   label {
-    color: var(--rh-color-interactive-blue-darker, #0066cc);
+    color: var(--rh-color-text-primary-on-light, #151515);
+  }
+
+  rh-switch:is(:disabled) ~ label {
+    color: var(--rh-color-gray-50, #707070);
   }
 
   [color-palette^="dark"] label {
-    color: var(--rh-color-accent-base-on-dark, #92c5f9);
+   color:  var(--rh-color-text-primary-on-dark, #ffffff)
   }
 
   fieldset {
@@ -42,17 +51,5 @@
     grid-template-columns: max-content min-content;
   }
 
-  [color-palette^="light"] label {
-    color: var(--rh-color-text-primary-on-light, #151515);
-  }
-
-  [color-palette^="dark"] label {
-    color: var(--rh-color-text-primary-on-dark, #ffffff);
-  }
-
-  rh-switch:not([checked]) ~ label,
-  label:has(~ rh-switch:not([checked])) {
-    color:  #6a6e73;
-  }
 </style>
 

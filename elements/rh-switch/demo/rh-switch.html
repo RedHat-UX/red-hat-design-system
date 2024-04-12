@@ -72,8 +72,7 @@
     color: var(--rh-color-text-primary-on-light, #151515);
   }
 
-  rh-switch:not([checked]) ~ label,
-  label:has(~ rh-switch:not([checked])) {
-    color:  #6a6e73;
+  rh-switch:is(:disabled) ~ label {
+    color: var(--rh-color-gray-50, #707070);
   }
 </style>

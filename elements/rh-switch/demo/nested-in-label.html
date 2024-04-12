@@ -36,14 +36,12 @@
   }
 
   label {
-    color: var(--rh-c-switch__label--Color, var(--rh-global--Color--dark-100, #151515));
+    color: var(--rh-color-text-primary-on-light, #151515);
   }
 
-  rh-switch:not([checked]) ~ label,
-  label:has(~ rh-switch:not([checked])) {
-    color: var(--rh-c-switch__input--not-checked__label--Color, var(--rh-global--disabled-color--100, #6a6e73));
+  rh-switch:is(:disabled) ~ label {
+    color: var(--rh-color-gray-50, #707070);
   }
-
   #nested-label fieldset {
     display: flex;
     flex-wrap: wrap;
