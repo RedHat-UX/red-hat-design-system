@@ -5,174 +5,28 @@ tags:
   - pattern
 ---
 
-## Overview
+<script type="module">
+import '@rhds/elements/rh-card/rh-card.js';
+import '@rhds/elements/rh-cta/rh-cta.js';
+import '@rhds/elements/rh-surface/rh-surface.js';
+</script>
 
-A card formats content in a small, contained space. It can be used to display a 
-preview of information or provide secondary content in relation to the content 
-it's near. Several cards can be used together to group related information.
-
-## Sample pattern
-
-<rh-card>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend 
-    elit sed est egestas, a sollicitudin mauris tincidunt. Pellentesque vel 
-    dapibus risus. Nullam aliquam felis orci, eget cursus mi lacinia quis. 
-    Vivamus at felis sem.</p>
-  <rh-cta priority="primary" slot="footer">
-    <a href="#">Call to action</a>
-  </rh-cta>
-</rh-card>
-
-## Sample - Slotted Title
-
-<rh-card>
-  <h2 slot="header">Headline, sm</h2>
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend 
-    elit sed est egestas, a sollicitudin mauris tincidunt. Pellentesque vel 
-    dapibus risus. Nullam aliquam felis orci, eget cursus milacinia quis. 
-    Vivamus at felis sem.
-  </p>
-  <rh-cta priority="primary" slot="footer">
-    <a href="#">Call to action</a>
-  </rh-cta>
-</rh-card>
-
-## Sample - alternative color scheme
-
-<rh-card class="alt">
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend 
-    elit sed est egestas, a
-    sollicitudin mauris tincidunt. Pellentesque vel dapibus risus. Nullam 
-    aliquam felis orci, eget cursus mi
-    lacinia quis. Vivamus at felis sem.
-  </p>
-  <rh-cta priority="primary" slot="footer">
-    <a href="#">Call to action</a>
-  </rh-cta>
-</rh-card>
-
-## Sample - title bar
-
-<rh-card class="bar">
-  <h2 slot="header">Headline, sm</h2>
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend 
-    elit sed est egestas, a
-    sollicitudin mauris tincidunt. Pellentesque vel dapibus risus. Nullam 
-    aliquam felis orci, eget cursus mi
-    lacinia quis. Vivamus at felis sem.
-  </p>
-  <rh-cta priority="primary" slot="footer">
-    <a href="#">Call to action</a>
-  </rh-cta>
-</rh-card>
-
-## Title bar
-
-<rh-card class="bar">
-  <h2 slot="header">Card title</h2>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
-    libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
-    elit. Donec id elit non mi porta gravida at eget metus.</p>
-  <rh-cta priority="primary" slot="footer"><a href="#">Footer</a></rh-cta>
-</rh-card>
-
-## Image title bar
-
-<rh-card class="bar full">
-  <img src="./kitten-900x300.jpeg" slot="header">
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
-    libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
-    elit. Donec id elit non mi porta gravida at eget metus.</p>
-  <rh-cta slot="footer"><a href="#">Footer</a></rh-cta>
-</rh-card>
-
-## Style
-
-A card can be used in light and dark themes.
-
-### Theme
-
-<rh-context-provider color-palette="light">
-  <rh-card>
-    <h2 slot="header">Card title</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
-      libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
-      elit. Donec id elit non mi porta gravida at eget metus.</p>
-    <rh-cta slot="footer"><a href="#">Footer</a></rh-cta>
-  </rh-card>
-</rh-context-provider>
-
-<rh-context-provider color-palette="dark">
-  <rh-card>
-    <h2 slot="header">Card title</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
-      libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
-      elit. Donec id elit non mi porta gravida at eget metus.</p>
-    <rh-cta slot="footer"><a href="#">Footer</a></rh-cta>
-  </rh-card>
-</rh-context-provider>
-
-### Custom Theming
-
-To customize a card the design tokens must be altered.  These design tokens are different depending on the context for the card (light or dark theme).
-
-Examples include:
-
-- [`--rh-color-surface-lightest`](https://ux.redhat.com/tokens/color/#rh-color-surface-lightest)
-- [`--rh-color-border-subtle-on-light`](https://ux.redhat.com/tokens/border/#rh-color-border-subtle-on-light)
-- [`--rh-color-text-primary-on-light`](https://ux.redhat.com/tokens/font/#rh-color-text-primary-on-light)
-
-For more information, please see the [card css custom properties](/elements/card/code/#css-custom-properties).
-
-
-#### Custom Light Theme
-
-<rh-context-provider color-palette="light">
-  <rh-card class="custom-light-theme">
-    <h2 slot="header">Card title</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
-      libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
-      elit. Donec id elit non mi porta gravida at eget metus.</p>
-    <rh-cta slot="footer"><a href="#">Footer</a></rh-cta>
-  </rh-card>
-</rh-context-provider>
-
-#### Custom Dark Theme
-
-<rh-context-provider color-palette="dark">
-  <rh-card class="custom-dark-theme">
-    <h2 slot="header">Card title</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
-      libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
-      elit. Donec id elit non mi porta gravida at eget metus.</p>
-    <rh-cta slot="footer"><a href="#">Footer</a></rh-cta>
-  </rh-card>
-</rh-context-provider>
-
-{% repoStatus %}
-
-{% include 'feedback.html' %}
-
-<script src="/elements/card/demo/rh-card.js" type="module"></script>
 <style>
   rh-card {
     display: grid;
     max-width: 360px;
   }
 
-  rh-context-provider {
+  rh-surface {
     width: fit-content;
   }
 
   rh-card.alt,
-  rh-context-provider[color-palette^="light"] rh-card.alt {
+  rh-surface[color-palette^="light"] rh-card.alt {
     --rh-card-background-color: #f0f0f0;
   }
 
-  rh-context-provider[color-palette^="dark"] rh-card.alt {
+  rh-surface[color-palette^="dark"] rh-card.alt {
     --rh-card-background-color: #3c3f42;
   }
 
@@ -214,6 +68,155 @@ For more information, please see the [card css custom properties](/elements/card
     --rh-color-text-primary-on-dark: #e8e4f5;
   }
 </style>
+## Overview
+
+A card formats content in a small, contained space. It can be used to display a 
+preview of information or provide secondary content in relation to the content 
+it's near. Several cards can be used together to group related information.
+
+## Sample pattern
+
+<rh-card>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend 
+    elit sed est egestas, a sollicitudin mauris tincidunt. Pellentesque vel 
+    dapibus risus. Nullam aliquam felis orci, eget cursus mi lacinia quis. 
+    Vivamus at felis sem.</p>
+  <rh-cta variant="primary" slot="footer">
+    <a href="#">Call to action</a>
+  </rh-cta>
+</rh-card>
+
+## Sample - Slotted Title
+
+<rh-card>
+  <h2 slot="header">Headline, sm</h2>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend 
+    elit sed est egestas, a sollicitudin mauris tincidunt. Pellentesque vel 
+    dapibus risus. Nullam aliquam felis orci, eget cursus milacinia quis. 
+    Vivamus at felis sem.
+  </p>
+  <rh-cta variant="primary" slot="footer">
+    <a href="#">Call to action</a>
+  </rh-cta>
+</rh-card>
+
+## Sample - alternative color scheme
+
+<rh-card class="alt">
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend 
+    elit sed est egestas, a
+    sollicitudin mauris tincidunt. Pellentesque vel dapibus risus. Nullam 
+    aliquam felis orci, eget cursus mi
+    lacinia quis. Vivamus at felis sem.
+  </p>
+  <rh-cta variant="primary" slot="footer">
+    <a href="#">Call to action</a>
+  </rh-cta>
+</rh-card>
+
+## Sample - title bar
+
+<rh-card class="bar">
+  <h2 slot="header">Headline, sm</h2>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend 
+    elit sed est egestas, a
+    sollicitudin mauris tincidunt. Pellentesque vel dapibus risus. Nullam 
+    aliquam felis orci, eget cursus mi
+    lacinia quis. Vivamus at felis sem.
+  </p>
+  <rh-cta variant="primary" slot="footer">
+    <a href="#">Call to action</a>
+  </rh-cta>
+</rh-card>
+
+## Title bar
+
+<rh-card class="bar">
+  <h2 slot="header">Card title</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
+    libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
+    elit. Donec id elit non mi porta gravida at eget metus.</p>
+  <rh-cta variant="primary" slot="footer"><a href="#">Footer</a></rh-cta>
+</rh-card>
+
+## Image title bar
+
+<rh-card class="bar full">
+  <img src="./kitten-900x300.jpeg" slot="header">
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
+    libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
+    elit. Donec id elit non mi porta gravida at eget metus.</p>
+  <rh-cta slot="footer"><a href="#">Footer</a></rh-cta>
+</rh-card>
+
+## Style
+
+A card can be used in light and dark themes.
+
+### Theme
+
+<rh-surface color-palette="light">
+  <rh-card>
+    <h2 slot="header">Card title</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
+      libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
+      elit. Donec id elit non mi porta gravida at eget metus.</p>
+    <rh-cta slot="footer"><a href="#">Footer</a></rh-cta>
+  </rh-card>
+</rh-surface>
+
+<rh-surface color-palette="dark">
+  <rh-card>
+    <h2 slot="header">Card title</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
+      libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
+      elit. Donec id elit non mi porta gravida at eget metus.</p>
+    <rh-cta slot="footer"><a href="#">Footer</a></rh-cta>
+  </rh-card>
+</rh-surface>
+
+### Custom Theming
+
+To customize a card the design tokens must be altered.  These design tokens are different depending on the context for the card (light or dark theme).
+
+Examples include:
+
+- [`--rh-color-surface-lightest`](https://ux.redhat.com/tokens/color/#rh-color-surface-lightest)
+- [`--rh-color-border-subtle-on-light`](https://ux.redhat.com/tokens/border/#rh-color-border-subtle-on-light)
+- [`--rh-color-text-primary-on-light`](https://ux.redhat.com/tokens/font/#rh-color-text-primary-on-light)
+
+For more information, please see the [card css custom properties](/elements/card/code/#css-custom-properties).
+
+
+#### Custom Light Theme
+
+<rh-surface color-palette="light">
+  <rh-card class="custom-light-theme">
+    <h2 slot="header">Card title</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
+      libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
+      elit. Donec id elit non mi porta gravida at eget metus.</p>
+    <rh-cta slot="footer"><a href="#">Footer</a></rh-cta>
+  </rh-card>
+</rh-surface>
+
+#### Custom Dark Theme
+
+<rh-surface color-palette="dark">
+  <rh-card class="custom-dark-theme">
+    <h2 slot="header">Card title</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
+      libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
+      elit. Donec id elit non mi porta gravida at eget metus.</p>
+    <rh-cta slot="footer"><a href="#">Footer</a></rh-cta>
+  </rh-card>
+</rh-surface>
+
+{% include 'feedback.html' %}
+
 
 ## Usage
 

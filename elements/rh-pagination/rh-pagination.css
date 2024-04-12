@@ -52,7 +52,7 @@ svg {
 
 .stepper[inert] {
   pointer-events: none;
-  color: var(--rh-pagination-background-focused, var(--rh-color-gray-20, #c7c7c7));
+  color: var(--rh-pagination-background-focused, var(--rh-color-gray-30, #c7c7c7));
 }
 
 /* MOBILE styles */
@@ -76,23 +76,26 @@ input {
   font-size: var(--rh-font-size-body-text-md, 1rem);
   background: var(--rh-color-surface-lightest, #ffffff);
   border: 1px solid var(--rh-color-border-subtle-on-light, #c7c7c7);
-  border-block-end: 1px solid var(--rh-color-gray-40, #707070);
+  border-block-end: 1px solid var(--rh-color-gray-40, #a3a3a3);
   box-sizing: border-box;
   padding: 2px;
 }
 
 input:focus {
   outline: none;
-  border: 2px solid var(--rh-pagination-accent-color, var(--rh-color-interactive-blue, #0066cc));
+  border:
+    2px
+    solid
+    var(--rh-pagination-accent-color, var(--rh-color-interactive-blue-darker, #0066cc));
   padding: 1px;
 }
 
 input:invalid {
-  border-block-end: 1px solid var(--rh-color-red-700, #8f0000);
+  border-block-end: 1px solid var(--rh-color-red-60, #a60000);
 }
 
 :host([on="dark"]) input:invalid {
-  border-block-end: 1px solid var(--rh-color-red-300, #f56d6d);
+  border-block-end: 1px solid var(--rh-color-red-40, #f56e6e);
 }
 
 #numeric a {
@@ -101,15 +104,15 @@ input:invalid {
 }
 
 #numeric a:hover {
-  color: var(--rh-color-interactive-blue-darkest, #004080);
+  color: var(--rh-color-interactive-blue-darkest, #003366);
 }
 
 #numeric a:visited {
-  color: var(--rh-color-interactive-purple-darker, #6753ac);
+  color: var(--rh-color-interactive-purple-darker, #5e40be);
 }
 
 #numeric a:visited:hover {
-  color: var(--rh-color-interactive-purple-darkest, #1f0066);
+  color: var(--rh-color-interactive-purple-darkest, #21134d);
 }
 
 @media (min-width: 700px) {

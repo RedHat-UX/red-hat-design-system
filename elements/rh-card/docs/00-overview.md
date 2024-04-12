@@ -1,6 +1,7 @@
 ## Overview
   {{ tagName | getElementDescription }}
 
+{% repoStatusList %}
 
 ## Sample element
   {% example palette="light",
@@ -16,6 +17,4 @@
     View the `<rh-card>` demo in a new tab
   {% endcta %}
 
-
-  {% repoStatus type="Element" %}
-
+{% repoStatusChecklist %}

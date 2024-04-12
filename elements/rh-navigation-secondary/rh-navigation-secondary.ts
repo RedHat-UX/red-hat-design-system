@@ -9,7 +9,7 @@ import { ComposedEvent } from '@patternfly/pfe-core';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
-import '@rhds/elements/lib/elements/rh-context-provider/rh-context-provider.js';
+import '@rhds/elements/rh-surface/rh-surface.js';
 
 import './rh-navigation-secondary-menu-section.js';
 import './rh-navigation-secondary-overlay.js';
@@ -154,12 +154,12 @@ export class RhNavigationSecondary extends LitElement {
           <button aria-controls="container"
                   aria-expanded="${String(expanded) as 'true' | 'false'}"
                   @click="${this.#toggleMobileMenu}"><slot name="mobile-menu">Menu</slot></button>
-          <rh-context-provider color-palette="${dropdownPalette}">
+          <rh-surface color-palette="${dropdownPalette}">
             <slot name="nav" @slotchange="${this.#onSlotchange}"></slot>
             <div id="cta" part="cta">
               <slot name="cta"></slot>
             </div>
-          </rh-context-provider>
+          </rh-surface>
         </div>
       </nav>
       <rh-navigation-secondary-overlay

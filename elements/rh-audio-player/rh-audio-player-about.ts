@@ -6,7 +6,7 @@ import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js
 import './rh-audio-player-scrolling-text-overflow.js';
 import '@rhds/elements/rh-avatar/rh-avatar.js';
 
-import panelStyles from './rh-audio-player-panel-styles.css';
+import panelStyles from './rh-audio-player-panel.css';
 import styles from './rh-audio-player-about.css';
 
 import { HeadingLevelContextConsumer } from '../../lib/context/headings/consumer.js';

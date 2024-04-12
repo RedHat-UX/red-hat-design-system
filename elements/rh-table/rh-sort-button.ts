@@ -1,8 +1,13 @@
 import { LitElement, html, svg } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import styles from './rh-sort-button.css';
+import { classMap } from 'lit/directives/class-map.js';
+
 import { ComposedEvent } from '@patternfly/pfe-core';
+
+import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+
+import styles from './rh-sort-button.css';
 
 const DIRECTIONS_OPPOSITES = { asc: 'desc', desc: 'asc' } as const;
 
@@ -32,6 +37,8 @@ const paths = new Map(Object.entries({
 export class RhSortButton extends LitElement {
   static readonly styles = [styles];
 
+  @colorContextConsumer() private on?: ColorTheme;
+
   /** The button's sorting order */
   @property({
     reflect: true,
@@ -42,8 +49,9 @@ export class RhSortButton extends LitElement {
   @property() column?: string;
 
   render() {
+    const { on = '' } = this;
     return html`
-      <button id="sort-button" part="sort-button" @click="${this.sort}" aria-label="Sort">
+      <button id="sort-button" part="sort-button" @click="${this.sort}" aria-label="Sort" class="${classMap({ [on]: !!on })}">
         <span class="visually-hidden">${!this.sortDirection ? '' : `(sort${!this.column ? '' : ` by ${this.column}`} in ${this.sortDirection === 'asc' ? 'ascending' : 'descending'} order)`}</span>
         <span id="sort-indicator" part="sort-indicator">
           <svg fill="currentColor" 

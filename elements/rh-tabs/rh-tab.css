@@ -1,3 +1,84 @@
+:host {
+  display: flex;
+  flex: none;
+}
+
+:host([vertical]) [part="text"] {
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+slot[name="icon"] {
+  display: block;
+}
+
+button {
+  margin: 0;
+  font-family: inherit;
+  font-size: 100%;
+  border: 0;
+  position: relative;
+  display: flex;
+  flex: 1;
+  text-decoration: none;
+  cursor: pointer;
+  align-items: center;
+  background-color: inherit;
+  color: var(--_button-text-color);
+  padding-block-start: var(--rh-tabs-link-padding-block-start, var(--rh-space-lg, 16px));
+  padding-inline-start: var(--rh-tabs-link-padding-inline-start, var(--rh-space-2xl, 32px));
+  padding-block-end: var(--rh-tabs-link-padding-block-end, var(--rh-space-lg, 16px));
+  padding-inline-end: var(--rh-tabs-link-padding-inline-end, var(--rh-space-2xl, 32px));
+  max-width: 200px;
+  max-height: 100%;
+}
+
+button:before,
+button:after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  border-style: solid;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+}
+
+button:before {
+  pointer-events: none;
+  border: 0 solid transparent;
+}
+
+button:focus-visible {
+  outline: var(--rh-border-width-md, 2px) solid var(--_button-focus-outline-color);
+  outline-offset: -8px;
+  border-radius: 10px;
+}
+
+button:after {
+  background-color: transparent;
+  border-inline: 0 solid transparent;
+  border-block-start: var(--rh-border-width-lg, 3px) solid transparent;
+  border-block-end: var(--rh-border-width-sm, 1px) solid transparent;
+}
+
+:host([fill]) button {
+  flex-basis: 100%;
+  justify-content: center;
+}
+
+:host(:disabled) button {
+  pointer-events: none;
+}
+
+:host([aria-disabled="true"]) button {
+  cursor: default;
+}
+
 #rhds-container {
   display: flex;
   width: 100%;
@@ -16,7 +97,7 @@
         --rh-tabs-link-color,
         var(--rh-color-text-secondary-on-dark, #c7c7c7)
       );
-  --_button-focus-outline-color: var(--rh-color-border-interactive-on-dark, #73bcf7);
+  --_button-focus-outline-color: var(--rh-color-border-interactive-on-dark, #92c5f9);
 }
 
 /* Context switch on attributes */
@@ -42,7 +123,7 @@
   --_active-tab-border-color:
     var(
         --rh-tabs-active-border-color,
-        var(--rh-color-accent-brand-on-dark, #ff442b)
+        var(--rh-color-accent-brand-on-dark, #ee0000)
       );
 }
 
@@ -68,39 +149,8 @@
   --_active-tab-border-color:
     var(
         --rh-tabs-active-border-color,
-        var(--rh-color-border-interactive-on-dark, #73bcf7)
+        var(--rh-color-border-interactive-on-dark, #92c5f9)
       );
-}
-
-/* Button Resets */
-button {
-  display: flex;
-  align-items: center;
-  background-color: inherit;
-  color: var(--_button-text-color);
-  padding-block-start: var(--rh-tabs-link-padding-block-start, var(--rh-space-lg, 16px));
-  padding-inline-start: var(--rh-tabs-link-padding-inline-start, var(--rh-space-2xl, 32px));
-  padding-block-end: var(--rh-tabs-link-padding-block-end, var(--rh-space-lg, 16px));
-  padding-inline-end: var(--rh-tabs-link-padding-inline-end, var(--rh-space-2xl, 32px));
-  max-width: 200px;
-  max-height: 100%;
-}
-
-button:focus-visible {
-  outline: var(--rh-border-width-md, 2px) solid var(--_button-focus-outline-color);
-  outline-offset: -8px;
-  border-radius: 10px;
-}
-
-button:before {
-  border: 0 solid transparent;
-}
-
-button:after {
-  background-color: transparent;
-  border-inline: 0 solid transparent;
-  border-block-start: var(--rh-border-width-lg, 3px) solid transparent;
-  border-block-end: var(--rh-border-width-sm, 1px) solid transparent;
 }
 
 :host([vertical]) button {
