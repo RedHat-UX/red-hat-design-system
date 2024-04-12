@@ -2,7 +2,7 @@
   display: contents;
 }
 
-[part="container"] {
+a {
   display: inline-flex;
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
   text-decoration: none;
@@ -13,4 +13,5 @@
   border-radius: var(--rh-border-radius-default, 3px);
   color: var(--_context-text, var(--rh-color-text-primary-on-dark, #ffffff));
   min-width: 150px;
+  text-transform: capitalize;
 }

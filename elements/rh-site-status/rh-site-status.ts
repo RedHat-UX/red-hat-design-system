@@ -124,7 +124,7 @@ export class RhSiteStatus extends LitElement {
           throw new Error('Invalid status data');
         }
         const statusText = data.status.description;
-        this.#text = textMap[statusText] || statusText.charAt(0).toUpperCase() + statusText.substring(1).toLowerCase();
+        this.#text = textMap[statusText] || statusText;
         this.#icon = statusIconsMap[statusMap[data.status.indicator]];
         this.#isLoading = false;
         this.requestUpdate();
