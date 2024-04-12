@@ -4,18 +4,27 @@ const STATUS_LEGEND = {
     color: 'gray',
     variant: 'filled',
     icon: /* html*/`
-<svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 15" fill="none" role="img">
-  <path d="M6 11.5C6.6 11.5 7 11.9 7 12.5C7 13.1 6.6 13.5 6 13.5C5.4 13.5 5 13.1 5 12.5C5 11.9 5.4 11.5 6 11.5ZM6 10.5C4.9 10.5 4 11.4 4 12.5C4 13.6 4.9 14.5 6 14.5C7.1 14.5 8 13.6 8 12.5C8 11.4 7.1 10.5 6 10.5Z" fill="#707070"/>
-  <path d="M10.5 8.5V7C10.5 4.5 8.5 2.5 6 2.5C3.5 2.5 1.5 4.5 1.5 7V8.5C1.5 9.1 1.1 9.5 0.5 9.5C0.2 9.5 0 9.7 0 10V12C0 12.3 0.2 12.5 0.5 12.5H11.5C11.8 12.5 12 12.3 12 12V10C12 9.7 11.8 9.5 11.5 9.5C10.9 9.5 10.5 9.1 10.5 8.5Z" fill="#707070"/>
-  <path d="M6 1.5C6.3 1.5 6.5 1.7 6.5 2C6.5 2.3 6.3 2.5 6 2.5C5.7 2.5 5.5 2.3 5.5 2C5.5 1.7 5.7 1.5 6 1.5ZM6 0.5C5.2 0.5 4.5 1.2 4.5 2C4.5 2.8 5.2 3.5 6 3.5C6.8 3.5 7.5 2.8 7.5 2C7.5 1.2 6.8 0.5 6 0.5Z" fill="#707070"/>
-</svg>`
+<svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" role="img">
+  <style type="text/css">
+    .planned{fill:#707070;}
+  </style>
+  <g>
+    <path class="planned" d="M8,12c0.6,0,1,0.4,1,1s-0.4,1-1,1s-1-0.4-1-1S7.4,12,8,12z M8,11c-1.1,0-2,0.9-2,2s0.9,2,2,2s2-0.9,2-2
+      S9.1,11,8,11z"/>
+    <path class="planned" d="M12.5,9V7.5C12.5,5,10.5,3,8,3S3.5,5,3.5,7.5V9c0,0.6-0.4,1-1,1C2.2,10,2,10.2,2,10.5v2C2,12.8,2.2,13,2.5,13
+      h11c0.3,0,0.5-0.2,0.5-0.5v-2c0-0.3-0.2-0.5-0.5-0.5C12.9,10,12.5,9.6,12.5,9z"/>
+    <path class="planned" d="M8,2c0.3,0,0.5,0.2,0.5,0.5S8.3,3,8,3S7.5,2.8,7.5,2.5S7.7,2,8,2z M8,1C7.2,1,6.5,1.7,6.5,2.5S7.2,4,8,4
+      s1.5-0.7,1.5-1.5S8.8,1,8,1z"/>
+  </g>
+</svg>
+ `
   },
   'In progress': {
     description: 'In the design or development process',
     color: 'green',
     variant: 'outline',
     icon: /* html*/`
-<svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 15" fill="none" role="img">
+<svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" fill="none" role="img">
   <style type="text/css">
     .inprogress{fill:#63993D;}
   </style>
@@ -49,9 +58,12 @@ const STATUS_LEGEND = {
     color: 'gray',
     variant: 'outline',
     icon: /* html*/`
-<svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 15" fill="none" role="img">
-  <path d="M13.5 7.5C13.5 11.0899 10.5899 14 7 14C3.41015 14 0.5 11.0899 0.5 7.5C0.5 3.91015 3.41015 1 7 1C10.5899 1 13.5 3.91015 13.5 7.5Z" stroke="#707070"/>
-  <path d="M2.5 3L11.5 12" stroke="#707070" stroke-miterlimit="10"/>
+<svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" role="img">
+  <style type="text/css">
+    .na{fill:#707070;}
+  </style>
+  <path class="na" d="M8,1C4.1,1,1,4.1,1,8c0,3.9,3.1,7,7,7c3.9,0,7-3.1,7-7C15,4.1,11.9,1,8,1z M2,8c0-1.5,0.5-2.8,1.4-3.9l8.4,8.4
+    C10.8,13.5,9.5,14,8,14C4.7,14,2,11.3,2,8z M12.6,11.9L4.1,3.4C5.2,2.5,6.5,2,8,2c3.3,0,6,2.7,6,6C14,9.5,13.5,10.8,12.6,11.9z"/>
 </svg>`
   },
   'Beta': {
