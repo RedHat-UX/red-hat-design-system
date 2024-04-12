@@ -2,7 +2,10 @@
 
 Users will interact with the skip link using a keyboard primarily.
 
-<!--Note: Add image-->
+{% example palette="light",
+           class="centered",
+           alt="Screenshots of navigation with and without skip link showing and keyboard navigation text",
+           src="../skip-link-keyboard-navigation.png" %}
 
 | Key {style="width: 33%" } | Result                                                                                         |
 | ------------------------- | ---------------------------------------------------------------------------------------------- |
@@ -14,7 +17,10 @@ Users will interact with the skip link using a keyboard primarily.
 
 The skip link should be the first item on a page to receive focus. After the skip link is activated, the first interactive element in the main content area will receive focus next.
 
-<!--Note: Add image-->
+{% example palette="light",
+           class="centered",
+           alt="Screenshot of navigation and hero of redhat.com with a skip link and arrows showing focus order",
+           src="../skip-link-focus-order.png" %}
 
 ## Hiding a skip link
 
