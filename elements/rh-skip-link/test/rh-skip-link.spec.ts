@@ -1,4 +1,4 @@
-import { expect, html } from '@open-wc/testing';
+import { expect, html, aTimeout } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 import { a11ySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
 import { RhSkipLink } from '@rhds/elements/rh-skip-link/rh-skip-link.js';
@@ -57,7 +57,7 @@ describe('<rh-skip-link>', function() {
         // Calculate transition duration. Focus applies after the transition finishes.
         const transitionValue = parseTransitionDuration(elStyles.getPropertyValue('transition-duration'));
         element.focus();
-        await new Promise(r => setTimeout(r, transitionValue));
+        await aTimeout(transitionValue);
         expect(elStyles.getPropertyValue('clip')).to.equal('auto');
         expect(elStyles.getPropertyValue('text-decoration')).to.not.equal('underline');
         expect(elStyles.getPropertyValue('top')).to.equal('0px');
