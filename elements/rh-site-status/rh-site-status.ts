@@ -88,7 +88,8 @@ export class RhSiteStatus extends LitElement {
 
   #isLoading = true;
 
-  async firstUpdated() {
+  async connectedCallback() {
+    super.connectedCallback();
     await this.#getStatus();
   }
 
@@ -117,6 +118,8 @@ export class RhSiteStatus extends LitElement {
       .then(response => {
         if (response.ok) {
           return response.json();
+        } else {
+          throw new Error(`${response.status} ${response.statusText}`);
         }
       })
       .then((data: ApiStatus) => {
