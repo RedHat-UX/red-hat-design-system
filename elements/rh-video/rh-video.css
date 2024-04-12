@@ -2,6 +2,11 @@
   display: block;
 }
 
+:host([hidden]),
+*[hidden] {
+  display: none !important;
+}
+
 #video,
 #consent {
   display: inline-flex;

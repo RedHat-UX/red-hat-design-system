@@ -4,7 +4,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { state } from 'lit/decorators/state.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
-import '../rh-cta/rh-cta.js';
+import '../rh-button/rh-button.js';
 import '../rh-surface/rh-surface.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
@@ -21,15 +21,23 @@ export class ConsentClickEvent extends Event {
 export class VideoClickEvent extends Event {
   declare target: RhVideo;
   constructor() {
-    super('play-click', { bubbles: true, cancelable: true });
+    super('play-button-click', { bubbles: true, cancelable: true });
+  }
+}
+
+export class VideoPlayEvent extends Event {
+  declare target: RhVideo;
+  constructor() {
+    super('play', { bubbles: true, cancelable: true });
   }
 }
 
 /**
  * A Video is a graphical preview of a video overlayed with a play button. When clicked, the video will begin playing.
  *
- * @fires {ConsentClickEvent} consent-click - when "Update preferences" concent button is clicked
- * @fires {VideoClickEvent} play-click - when play button is clicked
+ * @fires {ConsentClickEvent} consent-click - "Update preferences" consent button is clicked
+ * @fires {VideoClickEvent} play-button-click - play button is clicked
+ * @fires {VideoPlayEvent} play - video is about to be played
  * @slot - Place video embed code here; iframe should include a `title` attribute with the video title
  * @slot play-button-text - text for play button; recommended value "Video title (video)"
  * @slot thumbnail - optional thumbnail image on top of video embed; should include `alt` text
@@ -41,6 +49,8 @@ export class VideoClickEvent extends Event {
 @customElement('rh-video')
 export class RhVideo extends LitElement {
   static readonly styles = [styles];
+
+  static readonly shadowRootOptions: ShadowRootInit = { ...LitElement.shadowRootOptions, delegatesFocus: true };
 
   /**
    * Whether video requires consent consent for cookies
@@ -58,48 +68,67 @@ export class RhVideo extends LitElement {
   @colorContextConsumer() private on?: ColorTheme;
 
   // TODO(bennyp): https://lit.dev/docs/data/context/#content
-  @state() private videoClicked = false;
+  @state() private _consentClicked = false;
+  @state() private _playClicked = false;
+  @state() private _playStarted = false;
 
   #slots = new SlotController(this, 'caption', 'thumbnail', null);
+  #iframe: HTMLIFrameElement | undefined;
 
   get #showConsent() {
     return this.requireConsent && !this.hasConsent;
   }
 
-  get iframe() {
-    const template = this.querySelector('template');
-    const node = template ? document.importNode(template.content, true) : undefined;
-    const iframe = node ? node.querySelector('iframe')?.cloneNode(true) as HTMLIFrameElement : undefined;
-    if (iframe) {
-      const url = new URL(iframe.getAttribute('src') || '');
-      url.searchParams.append('autoplay', '1');
-      iframe.src = url.href;
-      iframe.allow = 'autoplay';
-      iframe.slot = 'autoplay';
-    }
-    return iframe;
+  get consentButton() {
+    return this.shadowRoot?.querySelector('#consent-button');
   }
 
-  constructor() {
-    super();
-    this.addEventListener('keyup', this.#handleClick);
-    this.addEventListener('click', this.#handleClick);
+  get consentClicked() {
+    return this._consentClicked;
+  }
+
+  get focusableElement() {
+    let el: HTMLElement | undefined;
+    if (this.#showConsent ) {
+      el = this.consentButton as HTMLElement;
+    } else if (this.playClicked) {
+      el = this.iframeElement as HTMLElement;
+    } else {
+      el = this.playButton as HTMLElement;
+    }
+    return el;
+  }
+
+  get iframeElement() {
+    return this.#iframe;
+  }
+
+  get playButton() {
+    return this.shadowRoot?.querySelector('#play');
+  }
+
+  get playClicked() {
+    return this._playClicked;
+  }
+
+  get playStarted() {
+    return this._playStarted;
   }
 
   render() {
-    const { videoClicked, on } = this;
+    const { playClicked, on } = this;
     const dark = on === 'dark';
     const svgFill = dark ? '#151515' : 'white';
     const svgOpacity = dark ? '0.5' : '0.25';
     const hasCaption = this.#slots.hasSlotted('caption');
     const hasThumbnail = this.#slots.hasSlotted('thumbnail');
-    const playLabel = this.iframe && this.iframe.title ? `${this.iframe.title} (play video)` : 'Play video';
-    const show = this.#showConsent ? 'consent' : !!videoClicked || !hasThumbnail ? 'video' : 'thumbnail';
+    const playLabel = this.iframeElement && this.iframeElement.title ? `${this.iframeElement.title} (play video)` : 'Play video';
+    const show = this.#showConsent ? 'consent' : !!playClicked || !hasThumbnail ? 'video' : 'thumbnail';
     return html`
       <figure class="${classMap({ [show]: !!show })}">
         <div id="video">
           <slot id="thumbnail" name="thumbnail" aria-hidden="${show !== 'thumbnail'}"></slot>
-          <slot></slot>
+          <slot @slotchange="${this.#copyIframe}"></slot>
           <div id="autoplay"><slot name="autoplay"></slot></div>
           ${this.#showConsent ? html`
             <rh-surface id="consent" color-palette="darker">
@@ -124,13 +153,18 @@ export class RhVideo extends LitElement {
                 <slot name="consent-message">
                   <p id="consent-message">View this video by opting in to “Advertising Cookies.”</p>
                 </slot>
-                <rh-cta variant="secondary" @click="${this.#handleConsentClick}">
-                  <slot name="consent-button-text">Update preferences</slot>
-                </rh-cta>
+                <rh-button
+                  id="consent-button"
+                  variant="tertiary"
+                  @click="${this.#handleConsentClick}" 
+                  @keyup="${this.#handleConsentKeyup}"><slot name="consent-button-text">Update preferences</slot></rh-button>
               </div>
             </rh-surface>
           ` : ''}
-          <button id="play" ?hidden="${show !== 'thumbnail'}" @click="${this.#handleClick}" @keyup="${this.#handleClick}">
+          <button id="play" 
+            ?hidden="${show !== 'thumbnail'}" 
+            @click="${this.#handlePlayClick}" 
+            @keyup="${this.#handlePlayKeyup}">
             <span class="visually-hidden"><slot name="play-button-text">${playLabel}</slot></span>
             <svg id="icon" aria-hidden="true" width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="32" cy="32" r="32" fill="${svgFill}" fill-opacity="${svgOpacity}"/>
@@ -143,16 +177,63 @@ export class RhVideo extends LitElement {
     `;
   }
 
-  #handleConsentClick(event: Event) {
-    this.dispatchEvent(new ConsentClickEvent());
-    event.stopPropagation();
+  #copyIframe() {
+    const template = this.querySelector('template');
+    const node = template ? document.importNode(template.content, true) : undefined;
+    const iframe = node ? node.querySelector('iframe')?.cloneNode(true) as HTMLIFrameElement : undefined;
+    if (iframe) {
+      const url = new URL(iframe.getAttribute('src') || '');
+      url.searchParams.append('autoplay', '1');
+      iframe.src = url.href;
+      iframe.allow = 'autoplay';
+      iframe.slot = 'autoplay';
+    }
+    this.#iframe = iframe;
+    this.#playVideo();
   }
 
-  #handleClick() {
-    if (!this.#showConsent && !this.videoClicked && this.iframe) {
-      this.videoClicked = true;
-      this.appendChild(this.iframe);
+  #handleConsentClick() {
+    this._consentClicked = true;
+    this.dispatchEvent(new ConsentClickEvent());
+  }
+
+  #handleConsentKeyup(event: KeyboardEvent) {
+    switch (event.key) {
+      case ' ':
+      case 'Enter':
+        this._consentClicked = true;
+        this.dispatchEvent(new ConsentClickEvent());
+        break;
+    }
+  }
+
+  #handlePlayClick() {
+    if (!this.playClicked) {
+      this._playClicked = true;
       this.dispatchEvent(new VideoClickEvent());
+      this.#playVideo();
+    }
+  }
+
+  #handlePlayKeyup(event: KeyboardEvent) {
+    switch (event.key) {
+      case ' ':
+      case 'Enter':
+        if (!this.playClicked) {
+          this._playClicked = true;
+          this.dispatchEvent(new VideoClickEvent());
+          this.#playVideo();
+        }
+        break;
+    }
+  }
+
+  #playVideo() {
+    if (!this.#showConsent && this.playClicked && this.iframeElement) {
+      this.appendChild(this.iframeElement);
+      this.iframeElement?.focus();
+      this._playStarted = true;
+      this.dispatchEvent(new VideoPlayEvent());
     }
   }
 }
