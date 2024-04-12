@@ -405,10 +405,10 @@ Your content order can impact not only how a page is read, but also how it’s o
 </rh-blockquote>
 
 Enabling autoplay on audio or video can create several accessibility barriers:
-- It can distract users with cognitive disabilities.
-- It can cause seizures or trigger motion sickness.
-- It can prevent users from hearing a screen reader.
-- It can interfere with text-to-speech.
+- Distracting users with cognitive disabilities.
+- Causing seizures or triggering motion sickness.
+- Preventing users from hearing screen readers.
+- Interfering with text-to-speech.
 
 Use one or more of the following techniques to help ensure accessibility:
 - Avoid autoplay altogether. (Honestly, just do this, and you don’t have to worry about anything else!)
@@ -420,7 +420,7 @@ Use one or more of the following techniques to help ensure accessibility:
 - Provide controls to pause the media itself.
 
 ### Media solutions
-To be accessible, each media type must include _**all** of the following_ unless otherwise noted as recommended or optional.
+To be accessible, each media type must include _**all** of the following_, unless otherwise noted as recommended or optional.
 
 <rh-table>
   <table>
@@ -459,8 +459,8 @@ To be accessible, each media type must include _**all** of the following_ unless
         </th>
         <td>
           <ul>
-            <li>Captions (recommended for dialog or narration)
-    Sign language (optional)</li>
+            <li>Captions (recommended for dialog or narration)</li>
+            <li>Sign language (optional)</li>
           </ul>
         </td>
         <td>
@@ -503,13 +503,13 @@ Captions benefit people who have difficulty hearing or processing audio clearly,
 
 #### Transcripts
 
-Transcripts are used as a replacement for media, and as such, are not synchronized with the media. They include full text of the media, plus any visual descriptions, relevant background sounds, and music. If more than one speaker exists, each should be identified. Transcript authors may make edits to the material if these edits assist with reading comprehension.
+Transcripts are used as a media replacement, and as such, are not synchronized with the media. They include full text of the media, plus any visual descriptions, relevant background sounds, and music. If more than one speaker exists, each should be identified. Transcript authors may make edits to the material if these edits assist with reading comprehension.
 
 Transcripts benefit people who have difficulty seeing, hearing, processing, or playing content.
 
 #### Audio descriptions
 
-Descriptive audio, where relevant visual information is described by a narrator,  can be added to media files to benefit people who have difficulty seeing or processing visual information.
+Descriptive audio is a track of relevant visual information described by a narrator. It can be added to media files to benefit people who have difficulty seeing or processing visual information.
 
 #### Sign Language
 

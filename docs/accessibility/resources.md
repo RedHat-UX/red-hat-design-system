@@ -19,26 +19,26 @@ tags: accessibility
 
 ### General accessibility testing
 
-- [Web Accessibility Evaluation Tool (WAVE) — browser extension for accessibility evaluation](https://wave.webaim.org/extension/)
-- [axe DevTools — browser extension for accessibility testing](https://www.deque.com/axe/devtools/)
-- [IBM’s Equal Access Checker — browser extensions and CI/CD node packages for accessibility testing](https://www.ibm.com/able/toolkit/tools/#develop)
+- [Web Accessibility Evaluation Tool (WAVE)](https://wave.webaim.org/extension/): browser extension for accessibility evaluation
+- [axe DevTools](https://www.deque.com/axe/devtools/): browser extension for accessibility testing
+- [IBM’s Equal Access Checker](https://www.ibm.com/able/toolkit/tools/#develop): browser extensions and CI/CD node packages for accessibility testing
 
 ### Color accessibility checkers
 
-- [Let’s get color blind — browser extension that adds color blindness filters to web sites](https://chromewebstore.google.com/detail/lets-get-color-blind/bkdgdianpkfahpkmphgehigalpighjck)
-- [WebAIM Contrast Checker —  website for checking color contrast](https://webaim.org/resources/contrastchecker/)
-- [Colour Contrast Checker —  website for checking color contrast](https://colourcontrast.cc/)
-- [Sim Daltonism app — macOS application “window” for viewing color blindness](https://apps.apple.com/us/app/sim-daltonism/id693112260?mt=12)
+- [Let’s get color blind](https://chromewebstore.google.com/detail/lets-get-color-blind/bkdgdianpkfahpkmphgehigalpighjck): browser extension that adds color blindness filters to web sites
+- [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/):  website for checking color contrast
+- [Colour Contrast Checker](https://colourcontrast.cc/): website for checking color contrast
+- [Sim Daltonism app](https://apps.apple.com/us/app/sim-daltonism/id693112260?mt=12): macOS application “window” for viewing color blindness
 
 ### Other testing
 
-- [HeadingsMap — browser extension that displays the page’s heading structure in a compact outline](https://rumoroso.bitbucket.io/)
-- [Chartability — methodology for ensuring that data visualizations, systems, and interfaces are accessible](https://chartability.fizz.studio/)
+- [HeadingsMap](https://rumoroso.bitbucket.io/): browser extension that displays the page’s heading structure in a compact outline
+- [Chartability](https://chartability.fizz.studio/): methodology for ensuring that data visualizations, systems, and interfaces are accessible
 
 ## Tools
 
-- [IBM’s Accessibility Design Kit — design kit extensions for Figma and Sketch that provide checklists, guidance, and handoff assets](https://www.ibm.com/able/toolkit/tools/#design)
-- [Poet image description tool — provides assistance and advice for describing images](http://diagramcenter.org/making-images-accessible.html)
+- [IBM’s Accessibility Design Kit](https://www.ibm.com/able/toolkit/tools/#design): design kit extensions for Figma and Sketch that provide checklists, guidance, and handoff assets
+- [Poet image description tool](http://diagramcenter.org/making-images-accessible.html): provides assistance and advice for describing images
 
 ## Training
 
@@ -46,6 +46,6 @@ tags: accessibility
 - [Deque University ](https://dequeuniversity.com/)
 - [EdX Accessibility Courses](https://www.edx.org/learn/accessibility)
 - [WebAIM Training](https://webaim.org/services/training/)
-- [How A Screen Reader User Accesses The Web: A Smashing Video (with Léonie Watson) — Highly recommended!](https://www.smashingmagazine.com/2019/02/accessibility-webinar/)
+- [How A Screen Reader User Accesses The Web: A Smashing Video (with Léonie Watson)](https://www.smashingmagazine.com/2019/02/accessibility-webinar/) — Highly recommended!
 - [Google Chrome Developers #A11ycast on YouTube](https://www.youtube.com/user/ChromeDevelopers/search?query=%23a11ycast)
 - [Google Developers: Progressive Web Apps Training](https://developers.google.com/web/ilt/pwa/)
