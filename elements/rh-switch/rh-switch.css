@@ -55,7 +55,7 @@
   cursor: not-allowed;
 
   /* TODO: replace with semantic disabled token */
-  background-color: var(--rh-switch-disabled, var(--rh-color-gray-30, #c7c7c7));
+  background-color: var(--rh-switch-disabled, var(--rh-color-gray-50, #707070));
 }
 
 svg {
