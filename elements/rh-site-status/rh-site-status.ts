@@ -101,7 +101,7 @@ export class RhSiteStatus extends LitElement {
             ${this.#icon}
           </svg>
         `}
-        ${this.#text}
+        <span>${this.#text}</span>
       </a>
     `;
   }

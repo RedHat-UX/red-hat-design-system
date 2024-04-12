@@ -13,5 +13,9 @@ a {
   border-radius: var(--rh-border-radius-default, 3px);
   color: var(--_context-text, var(--rh-color-text-primary-on-dark, #ffffff));
   min-width: 150px;
-  text-transform: capitalize;
+  text-transform: lowercase;
+}
+
+span:first-letter {
+  text-transform: uppercase;
 }
