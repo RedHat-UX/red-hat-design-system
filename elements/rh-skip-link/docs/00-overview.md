@@ -1,6 +1,11 @@
 ## Overview
 {{ tagName | getElementDescription }}
 
+{% example palette="light",
+           class="centered",
+           alt="Image of a skip link",
+           src="skip-link.svg" %}
+
 ## Sample element
 <!--Note: Need to find a way to demo skip link-->
 
