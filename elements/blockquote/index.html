@@ -40,11 +40,15 @@
     <link type="text/css" href="/assets/pfe--noscript.min.css">
   </noscript>
 
-  <script type="importmap">{"imports":{"@patternfly/pfe-core":"/assets/packages/@patternfly/pfe-core/core.js","lit-html":"/assets/packages/lit-html/lit-html.js","@floating-ui/core":"/assets/packages/@floating-ui/core/dist/floating-ui.core.browser.min.mjs","tslib":"/assets/packages/tslib/tslib.es6.js","@lit/reactive-element":"/assets/packages/@lit/reactive-element/reactive-element.js","@floating-ui/dom":"/assets/packages/@floating-ui/dom/dist/floating-ui.dom.browser.min.mjs","lit-element":"/assets/packages/lit-element/index.js","lit/directives/if-defined.js":"/assets/packages/lit/directives/if-defined.js","lit":"/assets/packages/lit/index.js","@patternfly/elements":"/assets/packages/@patternfly/elements/pfe.min.js","@rhds/tokens/media.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js","@rhds/tokens":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/tokens.js","@rhds/tokens/meta.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js","element-internals-polyfill":"/assets/packages/element-internals-polyfill/dist/index.js","fuse.js":"/assets/packages/fuse.js/dist/fuse.esm.js","@rhds/tokens/":"/assets/packages/@rhds/tokens/js/","@rhds/elements/":"/assets/packages/@rhds/elements/elements/","@rhds/elements/lib/":"/assets/packages/@rhds/elements/lib/","@patternfly/elements/":"/assets/packages/@patternfly/elements/","@patternfly/icons/":"/assets/packages/@patternfly/icons/","@patternfly/pfe-core/":"/assets/packages/@patternfly/pfe-core/"},"scopes":{"/assets/packages/":{"@lit/reactive-element/decorators/":"/assets/packages/@lit/reactive-element/decorators/","lit":"/assets/packages/@patternfly/elements/node_modules/lit/index.js","lit-element/lit-element.js":"/assets/packages/lit-element/lit-element.js","lit-html/":"/assets/packages/lit-html/","lit/":"/assets/packages/@patternfly/elements/node_modules/lit/"}}}</script>
+  <script type="importmap">{"imports":{"@patternfly/pfe-core":"/assets/packages/@patternfly/pfe-core/core.js","lit-html":"/assets/packages/lit-html/lit-html.js","@floating-ui/core":"/assets/packages/@floating-ui/core/dist/floating-ui.core.browser.min.mjs","tslib":"/assets/packages/tslib/tslib.es6.js","@lit/reactive-element":"/assets/packages/@lit/reactive-element/reactive-element.js","@floating-ui/dom":"/assets/packages/@floating-ui/dom/dist/floating-ui.dom.browser.min.mjs","lit-element":"/assets/packages/lit-element/index.js","lit/directives/if-defined.js":"/assets/packages/lit/directives/if-defined.js","lit":"/assets/packages/lit/index.js","@patternfly/elements":"/assets/packages/@patternfly/elements/pfe.min.js","@rhds/tokens":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/tokens.js","@rhds/tokens/media.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js","@rhds/tokens/meta.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js","element-internals-polyfill":"/assets/packages/element-internals-polyfill/dist/index.js","fuse.js":"/assets/packages/fuse.js/dist/fuse.esm.js","@rhds/tokens/":"/assets/packages/@rhds/tokens/js/","@rhds/elements/":"/assets/packages/@rhds/elements/elements/","@rhds/elements/lib/":"/assets/packages/@rhds/elements/lib/","@patternfly/elements/":"/assets/packages/@patternfly/elements/","@patternfly/icons/":"/assets/packages/@patternfly/icons/","@patternfly/pfe-core/":"/assets/packages/@patternfly/pfe-core/"},"scopes":{"/assets/packages/":{"@lit/reactive-element/decorators/":"/assets/packages/@lit/reactive-element/decorators/","lit":"/assets/packages/@patternfly/elements/node_modules/lit/index.js","lit-element/lit-element.js":"/assets/packages/lit-element/lit-element.js","lit-html/":"/assets/packages/lit-html/","lit/":"/assets/packages/@patternfly/elements/node_modules/lit/"}}}</script>
   <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js"></script>
   
   <script type="module">
     import '@rhds/elements/rh-alert/rh-alert.js';
+  </script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-tag/rh-tag.js';
   </script>
   
   <script type="module">
@@ -436,6 +440,68 @@
       </h2>
     </copy-permalink>
 <p>A blockquote is a styled quotation and citation offset from other text styles on the page.</p>
+<section class="section section--palette-default container">
+  <div class="component-status-list-heading">
+    <copy-permalink class="h2">
+      <h2 id="status" tabindex="-1">
+        <a class="heading-anchor" href="#status">Status</a>
+      </h2>
+    </copy-permalink>
+    <p><a href="#status-checklist">What do these mean?</a></p>
+  </div>
+  <div class="component-status-list-container">
+    <dl>
+        <div>
+<dt>Figma library</dt>
+<dd>
+<rh-tag color="green" variant="filled">
+Ready
+<svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 15" fill="none" role="img">
+  <path d="M7 14.5C10.866 14.5 14 11.366 14 7.5C14 3.63401 10.866 0.5 7 0.5C3.13401 0.5 0 3.63401 0 7.5C0 11.366 3.13401 14.5 7 14.5Z" fill="#63993D"></path>
+  <path d="M4 7.5L6 9.5L10 5.5" stroke="#E9F7DF" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</rh-tag>
+</dd>
+</div>
+  <div>
+<dt>Responsive</dt>
+<dd>
+<rh-tag color="green" variant="filled">
+Ready
+<svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 15" fill="none" role="img">
+  <path d="M7 14.5C10.866 14.5 14 11.366 14 7.5C14 3.63401 10.866 0.5 7 0.5C3.13401 0.5 0 3.63401 0 7.5C0 11.366 3.13401 14.5 7 14.5Z" fill="#63993D"></path>
+  <path d="M4 7.5L6 9.5L10 5.5" stroke="#E9F7DF" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</rh-tag>
+</dd>
+</div>
+  <div>
+<dt>RH Elements</dt>
+<dd>
+<rh-tag color="green" variant="filled">
+Ready
+<svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 15" fill="none" role="img">
+  <path d="M7 14.5C10.866 14.5 14 11.366 14 7.5C14 3.63401 10.866 0.5 7 0.5C3.13401 0.5 0 3.63401 0 7.5C0 11.366 3.13401 14.5 7 14.5Z" fill="#63993D"></path>
+  <path d="M4 7.5L6 9.5L10 5.5" stroke="#E9F7DF" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</rh-tag>
+</dd>
+</div>
+  <div>
+<dt>webRH</dt>
+<dd>
+<rh-tag color="green" variant="filled">
+Ready
+<svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 15" fill="none" role="img">
+  <path d="M7 14.5C10.866 14.5 14 11.366 14 7.5C14 3.63401 10.866 0.5 7 0.5C3.13401 0.5 0 3.63401 0 7.5C0 11.366 3.13401 14.5 7 14.5Z" fill="#63993D"></path>
+  <path d="M4 7.5L6 9.5L10 5.5" stroke="#E9F7DF" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</rh-tag>
+</dd>
+</div>
+    </dl>
+  </div>
+</section>
 <copy-permalink class="h2">
   <h2 id="sample-element" tabindex="-1">
     <a class="heading-anchor" href="#sample-element">Sample element</a>
@@ -466,6 +532,93 @@
 <li>When you need to highlight positive feedback or reviews from customers</li>
 <li>When you need to break up large portions of text</li>
 </ul>
+<section class="section section--palette-default container">
+<copy-permalink class="h2">
+  <h2 class="section-title pfe-jump-links-panel__section" id="status-checklist" tabindex="-1">
+    <a class="heading-anchor" href="#status-checklist">Status checklist</a>
+      </h2>
+    </copy-permalink>
+  <div class="component-status-table">
+<rh-table>
+<table>
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th scope="col" data-label="Property">Property</th>
+<th scope="col" data-label="Status">Status</th>
+<th scope="col" data-label="Meaning">Meaning</th>
+</tr>
+</thead>
+<tbody>
+  <tr>
+<td data-label="Property">Figma library</td>
+<td data-label="Status">
+<span>
+<rh-tag color="green" variant="filled">
+Ready
+<svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 15" fill="none" role="img">
+  <path d="M7 14.5C10.866 14.5 14 11.366 14 7.5C14 3.63401 10.866 0.5 7 0.5C3.13401 0.5 0 3.63401 0 7.5C0 11.366 3.13401 14.5 7 14.5Z" fill="#63993D"></path>
+  <path d="M4 7.5L6 9.5L10 5.5" stroke="#E9F7DF" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</rh-tag>
+</span>
+</td>
+<td data-label="Meaning">Component is available in the Figma library</td>
+</tr>
+<tr>
+<td data-label="Property">Responsive</td>
+<td data-label="Status">
+<span>
+<rh-tag color="green" variant="filled">
+Ready
+<svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 15" fill="none" role="img">
+  <path d="M7 14.5C10.866 14.5 14 11.366 14 7.5C14 3.63401 10.866 0.5 7 0.5C3.13401 0.5 0 3.63401 0 7.5C0 11.366 3.13401 14.5 7 14.5Z" fill="#63993D"></path>
+  <path d="M4 7.5L6 9.5L10 5.5" stroke="#E9F7DF" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</rh-tag>
+</span>
+</td>
+<td data-label="Meaning">Component responds to changing viewport sizes in Figma and the browser</td>
+</tr>
+<tr>
+<td data-label="Property">RH Elements</td>
+<td data-label="Status">
+<span>
+<rh-tag color="green" variant="filled">
+Ready
+<svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 15" fill="none" role="img">
+  <path d="M7 14.5C10.866 14.5 14 11.366 14 7.5C14 3.63401 10.866 0.5 7 0.5C3.13401 0.5 0 3.63401 0 7.5C0 11.366 3.13401 14.5 7 14.5Z" fill="#63993D"></path>
+  <path d="M4 7.5L6 9.5L10 5.5" stroke="#E9F7DF" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</rh-tag>
+</span>
+</td>
+<td data-label="Meaning">Component is available as a web component</td>
+</tr>
+<tr>
+<td data-label="Property">webRH</td>
+<td data-label="Status">
+<span>
+<rh-tag color="green" variant="filled">
+Ready
+<svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 15" fill="none" role="img">
+  <path d="M7 14.5C10.866 14.5 14 11.366 14 7.5C14 3.63401 10.866 0.5 7 0.5C3.13401 0.5 0 3.63401 0 7.5C0 11.366 3.13401 14.5 7 14.5Z" fill="#63993D"></path>
+  <path d="M4 7.5L6 9.5L10 5.5" stroke="#E9F7DF" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</rh-tag>
+</span>
+</td>
+<td data-label="Meaning">Component is available as a web component</td>
+</tr>
+</tbody>
+</table>
+</rh-table>
+  </div>
+</section>
 
         
 
