@@ -12,6 +12,13 @@ import '../rh-spinner/rh-spinner.js';
 
 import styles from './rh-site-status.css';
 
+interface ApiStatus {
+  status: {
+    description: string;
+    indicator: string;
+  };
+}
+
 const statusIconsMap: Record<string, TemplateResult> = {
   'ok': svg`    
     <path d="M8 16.5C12.4183 16.5 16 12.9183 16 8.5C16 4.08172 12.4183 0.5 8 0.5C3.58172 0.5 0 4.08172 0 8.5C0 12.9183 3.58172 16.5 8 16.5Z" fill="#63993D"/>
@@ -41,13 +48,6 @@ const statusMap: Record<string, string> = {
   'minor': 'warn',
   'none': 'ok',
 };
-
-interface ApiStatus {
-  status: {
-    description: string;
-    indicator: string;
-  };
-}
 
 /**
  * Website status communicates the operational status of a website or domain using a status icon and link. It is usually located in the Footer component.
