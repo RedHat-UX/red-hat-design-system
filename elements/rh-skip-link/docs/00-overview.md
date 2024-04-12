@@ -7,13 +7,12 @@
            src="skip-link.svg" %}
 
 ## Sample element
-<!--Note: Need to find a way to demo skip link-->
 
-```html
+To show the skip link, click this paragraph and hit the "Tab" key on your keyboard to show the skip link.
+
 <rh-skip-link>
-  <a href="#main-content">Skip to main content</a>
+  <a href="#demo">Skip to demo</a>
 </rh-skip-link>
-```
 
 ## Demo
 
