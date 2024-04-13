@@ -81,5 +81,3 @@ The Active state has the same styles as the Hover state.
 {% example palette="light",
           alt="A skip link's text is underlined when it's active",
           src="../skip-link-hover-and-active.svg" %}
-
-{% repoStatus type="Element" %}

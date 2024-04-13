@@ -78,5 +78,3 @@ To prevent the skip link from being visually distracting, hide a skip link until
     </div>
 </div>
 -->
-
-{% repoStatus type="Element" %}
