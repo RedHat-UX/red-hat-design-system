@@ -1,6 +1,8 @@
 ## Overview
 A blockquote is a styled quotation and citation offset from other text styles on the page.
 
+{% repoStatusList %}
+
 ## Sample element
 
 {% example palette="light",
@@ -27,5 +29,4 @@ A blockquote is a styled quotation and citation offset from other text styles on
 - When you need to highlight positive feedback or reviews from customers
 - When you need to break up large portions of text
 
-{% repoStatus type=Element %}
-
+{% repoStatusChecklist %}

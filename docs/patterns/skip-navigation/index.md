@@ -18,8 +18,6 @@ Skip navigation is a styled link that appears at the top of a page when the Tab 
            alt="Skip navigation",
            src="./skip-nav.svg" %}
 
-{% repoStatus %}
-
   ## Style
 
 Skip to main content is a styled link that consists of a text label and a background container. Even though it looks like a Button, it functions more like a jump link.
