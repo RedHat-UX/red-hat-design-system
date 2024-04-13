@@ -2,6 +2,7 @@
 
 {{ tagName | getElementDescription }}
 
+{% repoStatusList %}
 
 ## Sample element
 
@@ -20,4 +21,4 @@
 
 - When you need to provide a more explicit, visible representation on a setting
 
-{% repoStatus type="Element" %}
+{% repoStatusChecklist %}
