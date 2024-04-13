@@ -34,11 +34,15 @@
   }
 
   rh-switch:is(:disabled) ~ label {
-    color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
+    color: var(--rh-color-text-secondary-on-light, #4d4d4d);
   }
 
   [color-palette^="dark"] label {
    color:  var(--rh-color-text-primary-on-dark, #ffffff)
+  }
+
+  [color-palette^="dark"] rh-switch:is(:disabled) ~ label {
+    color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
   }
 
   fieldset {
