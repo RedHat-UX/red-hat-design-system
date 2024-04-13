@@ -5,6 +5,8 @@
           alt="An accordion with four collapsed panels and one expanded panel",
           src="./accordion-sample-element.png" %}
 
+{% repoStatusList %}
+
 ## Sample element
 
 <rh-accordion>
@@ -73,4 +75,4 @@
   - When you need to condense a large amount of related information into sections
   - When you need a way for users to read or compare sections of content simultaneously
 
-{% repoStatus type="Element" %} 
+{% repoStatusChecklist %}
