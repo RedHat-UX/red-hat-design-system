@@ -1,7 +1,8 @@
 ## Overview
+
 {{ tagName | getElementDescription }}
 
-
+{% repoStatusList %}
 
 ## Demos
   View a live version of this component and see how it can be customized.
@@ -14,7 +15,7 @@
 ## When to use
   - 
 
-{% repoStatus type="Element" %}
+{% repoStatusChecklist %}
 
 
 
