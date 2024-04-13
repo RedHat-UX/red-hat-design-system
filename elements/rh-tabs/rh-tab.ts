@@ -1,5 +1,4 @@
 import type { PropertyValues } from 'lit';
-import type { RhTabsContext } from './context.js';
 
 import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
@@ -7,16 +6,12 @@ import { property } from 'lit/decorators/property.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 import { query } from 'lit/decorators/query.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { state } from 'lit/decorators/state.js';
-import { consume } from '@lit/context';
 
 import { observed } from '@patternfly/pfe-core/decorators.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
-
-import { context } from './context.js';
 
 import styles from './rh-tab.css';
 
@@ -69,8 +64,6 @@ export class RhTab extends LitElement {
    */
   @colorContextConsumer() private on?: ColorTheme;
 
-  @consume({ context, subscribe: true }) @state() private ctx?: RhTabsContext;
-
   @queryAssignedElements({ slot: 'icon', flatten: true })
   private icons!: Array<HTMLElement>;
 
@@ -86,13 +79,9 @@ export class RhTab extends LitElement {
   }
 
   render() {
-    const { active, on = '' } = this;
-    const { vertical = false, firstTab, lastTab } = this.ctx ?? {};
-    const box = this.ctx?.box ?? false;
-    const first = firstTab === this;
-    const last = lastTab === this;
+    const { on = '' } = this;
     return html`
-      <div id="container" class="${classMap({ active, box, vertical, first, last, [on]: !!on })}">
+      <div id="rhds-container" class="${classMap({ [on]: !!on })}">
         <button part="button" ?disabled="${this.disabled}">
           <slot name="icon"
                 part="icon"
