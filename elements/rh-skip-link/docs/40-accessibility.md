@@ -38,5 +38,3 @@ Learn more about <a href="https://webaim.org/techniques/css/invisiblecontent/">m
 {% include 'accessibility/2.1.3-AAA.md' %}
 {% include 'accessibility/2.4.3-A.md' %}
 {% include 'accessibility/2.5.5-AAA.md' %}
-
-{% repoStatus type="Element" %}

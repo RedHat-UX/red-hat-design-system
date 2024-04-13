@@ -6,6 +6,8 @@
            alt="Image of a skip link",
            src="skip-link.svg" %}
 
+{% repoStatusList %}           
+
 ## Sample element
 
 To show the skip link, click this paragraph and hit the "Tab" key on your keyboard to show the skip link.
@@ -25,4 +27,4 @@ View a live version of this component and see how it can be customized.
   - When there are many navigation items preceding main content
   - When there are blocks of content that are repeated on multiple pages
 
-{% repoStatus type="Element" %}
+{% repoStatusChecklist %}
