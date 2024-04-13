@@ -69,6 +69,14 @@ svg {
   background-color: var(--rh-switch-unchecked, #707070); /* no disabled token yet */
 }
 
+#container.dark {
+  background-color: var(--rh-switch-unchecked, var(--rh-color-gray-40, #a3a3a3));
+}
+
+:host(:is(:focus, :focus-within)) #container.dark {
+  outline-color: var(--rh-color-border-interactive-on-dark, #92c5f9);
+}
+
 :host([checked]) #container.dark {
   background-color: var(--rh-switch-checked, var(--rh-color-accent-base-on-dark, #92c5f9));
 }
