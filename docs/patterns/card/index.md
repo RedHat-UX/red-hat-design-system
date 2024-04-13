@@ -215,8 +215,6 @@ For more information, please see the [card css custom properties](/elements/card
   </rh-card>
 </rh-surface>
 
-{% repoStatus %}
-
 {% include 'feedback.html' %}
 
 
