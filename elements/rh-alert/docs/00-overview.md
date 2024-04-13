@@ -1,6 +1,7 @@
 ## Overview
 {{ tagName | getElementDescription }}
 
+{% repoStatusList %}
 
 ## Sample element
 {% example palette="light",
@@ -15,15 +16,13 @@
     View the `<rh-alert>` demo in a new tab
   {% endcta %}
 
-
 ## When to use
   - When additional information needs to be emphasized 
   - When a user needs to be notified after performing an action
   - When the severity of a message needs to be indicated
 
 
-{% repoStatus type="Element" %}
-
-
 [img-sample]: {{ './alert-sample.svg' | url }}
 
+
+{% repoStatusChecklist %}

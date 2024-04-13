@@ -6,6 +6,8 @@
            alt="Image of a subnavigation; a horizontal row of links placed on a light gray bar",
            src="subnav-sample.png" %}
 
+{% repoStatusList %}
+
 ## Sample element
 
 <rh-subnav>
@@ -28,4 +30,4 @@
 - When you want to allow users to browse high-level and low-level pages in the 
   same experience
 
-{% repoStatus type="Element" %}
+{% repoStatusChecklist %}
