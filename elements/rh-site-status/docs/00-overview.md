@@ -1,4 +1,5 @@
 ## Overview
+
 {{ tagName | getElementDescription }}
 
 {% example palette="darkest", 
@@ -6,7 +7,10 @@
   src="./site-status-sample.svg"
 %}
 
+{% repoStatusList %}
+
 ## Sample element
+
 <rh-site-status></rh-site-status>
 
 ## Demo
@@ -18,4 +22,4 @@
 - When you need to communicate the operational status of a website or domain
 - When you need to provide users with a link to a status page where they can learn more
 
-{% repoStatus type="Element" %}
+{% repoStatusChecklist %}
