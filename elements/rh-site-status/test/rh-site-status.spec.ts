@@ -1,28 +1,35 @@
-import { expect, html } from '@open-wc/testing';
+import { expect, html, aTimeout } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 import { RhSiteStatus } from '@rhds/elements/rh-site-status/rh-site-status.js';
 
-
-function overrideFetch(ok: boolean, status: number, statusText: string, json?: () => Promise<unknown>) {
-  window.fetch = new Proxy(window.fetch, {
-    apply: (target, thisArg, args) => {
-      if (args[0] === 'https://status.redhat.com/index.json') {
-        return Promise.resolve({
-          ok,
-          status,
-          statusText,
-          json
-        });
-      }
-      return target.apply(thisArg, args);
-    }
-  });
-}
-
+import { stub, type SinonStub } from 'sinon';
 
 describe('<rh-site-status>', function() {
+  let element: RhSiteStatus;
+  let fetchStub: SinonStub;
+
   describe('simply instantiating', function() {
-    let element: RhSiteStatus;
+    beforeEach(async function() {
+      fetchStub = stub(window, 'fetch');
+      fetchStub.resolves({
+        ok: true,
+        status: 200,
+        statusText: 'OK',
+        json: () => Promise.resolve({
+          status: {
+            indicator: 'none',
+            description: 'All systems operational'
+          }
+        })
+      });
+      element = await createFixture<RhSiteStatus>(html`<rh-site-status></rh-site-status>`);
+      await element.updateComplete;
+    });
+
+    afterEach(function() {
+      fetchStub.restore();
+    });
+
     it('should upgrade', async function() {
       element = await createFixture<RhSiteStatus>(html`<rh-site-status></rh-site-status>`);
       const klass = customElements.get('rh-site-status');
@@ -34,56 +41,79 @@ describe('<rh-site-status>', function() {
   });
 
   describe('when endpoint returns an All systems operational', function() {
-    let element: RhSiteStatus;
-
     beforeEach(async function() {
-      overrideFetch(true, 200, 'All systems operational', () => Promise.resolve({ status: { indicator: 'none', description: 'All systems operational' } }));
-
+      fetchStub = stub(window, 'fetch');
+      fetchStub.resolves({
+        ok: true,
+        status: 200,
+        statusText: 'OK',
+        json: () => Promise.resolve({
+          status: {
+            indicator: 'none',
+            description: 'All Systems Operational'
+          }
+        })
+      });
       element = await createFixture<RhSiteStatus>(html`<rh-site-status></rh-site-status>`);
       await element.updateComplete;
     });
 
+    afterEach(function() {
+      fetchStub.restore();
+    });
+
+
     it('should show all systems operational message', async function() {
-      // delaying 100ms to allow the fetch to complete
-      setTimeout(() => {
-        expect(element.shadowRoot!.textContent).to.include('All systems operational');
-      }, 1000);
+      // we moved the text capitalization styling to a CSS concern, so can't test for the text capitalization here.
+      expect(element.shadowRoot!.textContent).to.include('All Systems Operational');
     });
   });
 
   describe('when endpoint returns a 404', function() {
-    let element: RhSiteStatus;
-
     beforeEach(async function() {
-      overrideFetch(false, 404, 'Not Found');
-
+      fetchStub = stub(window, 'fetch');
+      fetchStub.resolves({
+        ok: false,
+        status: 404,
+        statusText: '404 Not Found',
+      });
       element = await createFixture<RhSiteStatus>(html`<rh-site-status></rh-site-status>`);
       await element.updateComplete;
     });
 
+    afterEach(function() {
+      fetchStub.restore();
+    });
+
     it('should show an error message', async function() {
-      // delaying 100ms to allow the fetch to complete
-      setTimeout(() => {
-        expect(element.shadowRoot!.textContent).to.include('Error: 404 Not Found');
-      }, 100);
+      expect(element.shadowRoot!.textContent).to.include('Error loading status');
     });
   });
-});
 
-describe('when endpoint returns a partial minor outage ', function() {
-  let element: RhSiteStatus;
+  describe('when endpoint returns a partial minor outage ', function() {
+    beforeEach(async function() {
+      fetchStub = stub(window, 'fetch');
+      fetchStub.resolves({
+        ok: true,
+        status: 200,
+        statusText: 'OK',
+        json: () => Promise.resolve({
+          status: {
+            indicator: 'minor',
+            description: 'Partially Degraded Service'
+          }
+        })
+      });
+      element = await createFixture<RhSiteStatus>(html`<rh-site-status></rh-site-status>`);
+      await element.updateComplete;
+    });
 
-  beforeEach(async function() {
-    overrideFetch(true, 200, 'Partially Degraded Service', () => Promise.resolve({ status: { indicator: 'minor', description: 'Partially Degraded Service' } }));
+    afterEach(function() {
+      fetchStub.restore();
+    });
 
-    element = await createFixture<RhSiteStatus>(html`<rh-site-status></rh-site-status>`);
-    await element.updateComplete;
-  });
-
-  it('should show partial outage message', async function() {
-    // delaying 100ms to allow the fetch to complete
-    setTimeout(() => {
+    it('should show partial outage message', async function() {
       expect(element.shadowRoot!.textContent).to.include('Partial service');
-    }, 100);
+    });
   });
 });
