@@ -65,6 +65,10 @@ rh-progress-steps:
  - rh-jump-links
  - rh-pagination
  - rh-tabs
+rh-skip-link:
+ - rh-navigation
+ - rh-navigation-secondary
+ - rh-subnav
 rh-site-status:
  - rh-card
  - rh-footer

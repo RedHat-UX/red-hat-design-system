@@ -54,6 +54,20 @@
       status: Ready
     - name: Documentation
       status: Ready
+- name: "Back To Top"
+  type: "Element"
+  overallStatus: "Available"
+  libraries:
+    - name: Figma library
+      status: Ready
+    - name: Responsive
+      status: Ready
+    - name: RH Elements
+      status: Ready
+    - name: webRH
+      status: Planned
+    - name: Documentation
+      status: In Progress
 - name: "Badge"
   type: "Element"
   overallStatus: "Available"
@@ -222,6 +236,20 @@
       status: Ready
     - name: Documentation
       status: Ready
+- name: "Skip Link"
+  type: "Element"
+  overallStatus: "New"
+  libraries:
+    - name: Figma library
+      status: Ready
+    - name: Responsive
+      status: Ready
+    - name: RH Elements
+      status: Ready
+    - name: webRH
+      status: Planned
+    - name: Documentation
+      status: Ready
 - name: "Site Status"
   type: "Element"
   overallStatus: "New"
@@ -235,7 +263,7 @@
     - name: webRH
       status: Planned
     - name: Documentation
-      status: Ready  
+      status: Ready
 - name: "Spinner"
   type: "Element"
   overallStatus: "Available"
