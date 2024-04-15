@@ -19,7 +19,7 @@ const STATUS_LEGEND = {
 </svg>
  `
   },
-  'In progress': {
+  'In Progress': {
     description: 'In the design or development process',
     color: 'green',
     variant: 'outline',
@@ -166,7 +166,7 @@ function getRepoData() {
   const docsPage = this.ctx._;
   const allStatuses = this.ctx.repoStatus ?? docsPage?.repoStatus ?? [];
   const title = this.ctx.title ?? docsPage?.title;
-  return allStatuses.find(component => component.name === title && component.type === 'Element').libraries;
+  return allStatuses.find(component => component.name === title && component.type === 'Element')?.libraries;
 }
 
 /**
@@ -175,7 +175,7 @@ function getRepoData() {
  */
 function repoStatusList({ heading = 'Status', level = 2 } = {}) {
   // Removing Documentation status from the repoStatusList
-  const statusList = getRepoData.call(this).filter(repo => repo.name !== 'Documentation');
+  const statusList = getRepoData.call(this)?.filter(repo => repo.name !== 'Documentation');
 
   if (!Array.isArray(statusList) || !statusList.length) {
     return '';
@@ -279,7 +279,7 @@ ${listItem.libraries.map(lib => {
  */
 function repoStatusChecklist({ heading = 'Status checklist', level = 2 } = {}) {
   const headingLevel = Array.from({ length: level }, () => '#').join('');
-  const statusList = getRepoData.call(this).filter(repo => repo.name !== 'Documentation');
+  const statusList = getRepoData.call(this)?.filter(repo => repo.name !== 'Documentation');
   if (!Array.isArray(statusList) || !statusList.length) {
     return '';
   } else {
