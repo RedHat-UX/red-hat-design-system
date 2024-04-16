@@ -4,7 +4,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 import {
   createContext,
-  type ContextEvent,
+  type ContextRequestEvent,
   type UnknownContext,
 } from '../event.js';
 
@@ -41,23 +41,21 @@ export interface HeadingLevelContextOptions {
  *          ```html
  *          <early-provider>
  *            <late-provider>
- *              <eager-consumer>
+ *              <eager-consumer></eager-consumer>
  *            </late-provider>
  *          </early-provider>
  *          ```
  */
-export const contextEvents = new Map<ReactiveElement, ContextEvent<UnknownContext>>();
+export const contextEvents = new Map<ReactiveElement, ContextRequestEvent<UnknownContext>>();
 
 /**
  * Determines which heading level immediately precedes the host element,
  * and provides templates for shadow headings.
  */
 export class HeadingLevelController implements ReactiveController {
-  static get CONTEXT() { return 'rh-heading-levels'; }
+  public static readonly context = createContext<number>(Symbol('rh-heading-level-context'));
 
   public offset: number;
-
-  protected context = createContext<number>(HeadingLevelController.CONTEXT);
 
   #level = 1;
 
