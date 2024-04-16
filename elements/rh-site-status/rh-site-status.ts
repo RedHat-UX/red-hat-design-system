@@ -48,6 +48,8 @@ const statusMap: Record<string, string> = {
  * Website status communicates the operational status of a website or domain using a status icon and link. It is usually located in the Footer component.
  *
  * @summary Communicates operational status of a website or domain
+ *
+ * @slot loading-text - Text to display while loading the status defaults to "Loading"
  */
 @customElement('rh-site-status')
 export class RhSiteStatus extends LitElement {
@@ -66,7 +68,7 @@ export class RhSiteStatus extends LitElement {
 
   #logger = new Logger(this);
 
-  #text = 'Loading';
+  #text = '';
 
   #icon: TemplateResult = html``;
 
@@ -79,8 +81,8 @@ export class RhSiteStatus extends LitElement {
 
   render() {
     return html`
-      <a href="https://status.redhat.com/">
-        ${this.#isLoading ? html`<rh-spinner size="sm"></rh-spinner>` : html`
+      <a href="https://status.redhat.com/" aria-busy="${this.#isLoading ? 'true' : 'false'}" aria-live="polite">
+        ${this.#isLoading ? html`<rh-spinner size="sm" color-palette="dark"></rh-spinner><span><slot name="loading-text">Loading</slot></span>` : html`
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewbox="0 0 16 17" fill="none">
             ${this.#icon}
           </svg>
