@@ -1,6 +1,6 @@
 {
   "name": "@rhds/elements",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "Red Hat Design System Elements",
   "type": "module",
   "license": "MIT",
@@ -11,6 +11,7 @@
     "./*": "./elements/*"
   },
   "contributors": [
+    "Adam Johnson <adjohnso@redhat.com>",
     "Benny Powers <bennyp@redhat.com>",
     "Brian Ferry <bferry@redhat.com>",
     "Corey Vickery <cvickery@redhat.com>",
@@ -33,6 +34,7 @@
     "!*.{spec,e2e}.ts",
     "elements/*/*.{js,md,map,txt,d.ts}",
     "elements/*/*-lightdom.css",
+    "elements/*/*-lightdom-shim.css",
     "elements/rh-audio-player/i18n/*.json",
     "!elements/*/docs/**/*.{js,html,css,md}",
     "!elements/*/demo/**/*.{js,html,css,md}",
