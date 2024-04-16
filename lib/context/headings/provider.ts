@@ -1,8 +1,7 @@
 import { contextEvents, HeadingLevelController } from './controller.js';
 
 import {
-  ContextEvent,
-  type Context,
+  ContextRequestEvent,
   type UnknownContext,
   type ContextCallback,
 } from '../event.js';
@@ -36,8 +35,7 @@ export class HeadingLevelContextProvider extends HeadingLevelController {
   #callbacks = new Set<ContextCallback<number>>();
 
   hostConnected() {
-    this.host.addEventListener('context-request', e =>
-      this.#onChildContextEvent(e as ContextEvent<UnknownContext>));
+    this.host.addEventListener('context-request', e => this.#onChildContextRequestEvent(e));
     for (const [host, fired] of contextEvents) {
       host.dispatchEvent(fired);
     }
@@ -63,18 +61,15 @@ export class HeadingLevelContextProvider extends HeadingLevelController {
   }
 
   /** Was the context event fired requesting our colour-context context? */
-  #isHeadingContextEvent(
-    event: ContextEvent<UnknownContext>
-  ): event is ContextEvent<Context<number>> {
-    return (
-      event.target !== this.host &&
-        event.context.name === this.context.name
-    );
+  #isHeadingContextRequestEvent(
+    event: ContextRequestEvent<UnknownContext>
+  ): event is ContextRequestEvent<typeof HeadingLevelController.context> {
+    return event.target !== this.host && event.context === HeadingLevelController.context;
   }
 
-  async #onChildContextEvent(event: ContextEvent<UnknownContext>) {
-    // only handle ContextEvents relevant to colour context
-    if (this.#isHeadingContextEvent(event)) {
+  async #onChildContextRequestEvent(event: ContextRequestEvent<UnknownContext>) {
+    // only handle ContextRequestEvents relevant to colour context
+    if (this.#isHeadingContextRequestEvent(event)) {
       // claim the context-request event for ourselves (required by context protocol)
       event.stopPropagation();
 
@@ -82,7 +77,7 @@ export class HeadingLevelContextProvider extends HeadingLevelController {
       event.callback(this.level);
 
       // Cache the callback for future updates, if requested
-      if (event.multiple) {
+      if (event.subscribe) {
         this.#callbacks.add(event.callback);
       }
     }
