@@ -1,6 +1,7 @@
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
+import { consume } from '@lit/context';
 
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
