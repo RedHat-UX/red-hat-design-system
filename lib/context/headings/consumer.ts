@@ -1,12 +1,6 @@
-import {
-  ContextEvent,
-  type Context,
-} from '../event.js';
+import { ContextRequestEvent } from '../event.js';
 
-import {
-  contextEvents,
-  HeadingLevelController,
-} from './controller.js';
+import { contextEvents, HeadingLevelController } from './controller.js';
 
 export interface HeadingTemplateOptions {
   id?: string;
@@ -23,8 +17,12 @@ export class HeadingLevelContextConsumer extends HeadingLevelController {
 
   /** When a consumer connects, it requests context from the closest provider. */
   hostConnected() {
-    const event = new ContextEvent<Context<number>>(this.context, e =>
-      this.#contextCallback(e), true);
+    const { context } = HeadingLevelController;
+    const event = new ContextRequestEvent<typeof context>(
+      context,
+      e => this.#contextCallback(e),
+      true,
+    );
     this.host.dispatchEvent(event);
     contextEvents.set(this.host, event);
   }
