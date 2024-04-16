@@ -4,7 +4,7 @@
     true,
     200,
     'OK',
-    () => new Promise((resolve) => {
+    () => new Promise(resolve => {
       setTimeout(() => resolve({ status: { indicator: 'none', description: 'All Systems Operational' } }), 100000);
     })
   );
