@@ -15,6 +15,7 @@ Website status should communicate the following to users.
 - What the text says
 - That the text is also a link
 - Where the link will take them if selected
+- If the status is still loading
 
 
 {% include 'accessibility/ariaguide.md' %}
