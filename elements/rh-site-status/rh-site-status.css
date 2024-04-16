@@ -9,9 +9,9 @@ a {
   padding: var(--rh-space-lg, 16px);
   align-items: center;
   gap: var(--rh-space-md, 8px);
-  background: var(--_context-background-color, var(--rh-color-surface-dark, #383838));
+  background: var(--rh-color-surface-dark, #383838);
   border-radius: var(--rh-border-radius-default, 3px);
-  color: var(--_context-text, var(--rh-color-text-primary-on-dark, #ffffff));
+  color: var(--rh-color-text-primary-on-dark, #ffffff);
   min-width: 150px;
   text-transform: lowercase;
 }
