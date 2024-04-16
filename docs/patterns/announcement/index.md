@@ -16,8 +16,6 @@ audience.
            alt="Example of an announcement banner",
            src="./announcement-sample-1.svg" %}
 
-{% repoStatus %}
-
 ## Style
 
 An announcement banner can be used in light, dark, and saturated themes. It can 
