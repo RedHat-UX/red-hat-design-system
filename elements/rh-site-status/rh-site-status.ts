@@ -108,37 +108,36 @@ export class RhSiteStatus extends LitElement {
   }
 
   async #getStatus() {
-    await fetch('https://status.redhat.com/index.json', {
-      mode: 'cors',
-      cache: 'no-cache',
-      headers: {
-        Accept: 'application/json',
+    try {
+      const data: ApiStatus = await fetch('https://status.redhat.com/index.json', {
+        mode: 'cors',
+        cache: 'no-cache',
+        headers: {
+          Accept: 'application/json',
+        }
+      })
+        .then(response => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error(`${response.statusText}`);
+          }
+        });
+      if (!RhSiteStatus.isApiStatus(data)) {
+        throw new Error('Invalid status data');
       }
-    })
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error(`${response.statusText}`);
-        }
-      })
-      .then((data: ApiStatus) => {
-        if (!RhSiteStatus.isApiStatus(data)) {
-          throw new Error('Invalid status data');
-        }
-        const statusText = data.status.description;
-        this.#text = textMap[statusText] || statusText;
-        this.#icon = statusIconsMap[statusMap[data.status.indicator]];
-        this.#isLoading = false;
-        this.requestUpdate();
-      })
-      .catch( error => {
-        this.#logger.warn('Error loading site status:', error);
-        this.#text = 'Error loading status';
-        this.#icon = statusIconsMap['danger'];
-        this.#isLoading = false;
-        this.requestUpdate();
-      });
+      const statusText = data.status.description;
+      this.#text = textMap[statusText] || statusText;
+      this.#icon = statusIconsMap[statusMap[data.status.indicator]];
+      this.#isLoading = false;
+      this.requestUpdate();
+    } catch (error) {
+      this.#logger.warn('Error loading site status:', error);
+      this.#text = 'Error loading status';
+      this.#icon = statusIconsMap['danger'];
+      this.#isLoading = false;
+      this.requestUpdate();
+    }
   }
 }
 
