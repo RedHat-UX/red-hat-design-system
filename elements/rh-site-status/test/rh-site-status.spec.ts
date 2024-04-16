@@ -8,6 +8,10 @@ describe('<rh-site-status>', function() {
   let element: RhSiteStatus;
   let fetchStub: SinonStub;
 
+  afterEach(function() {
+    fetchStub?.restore?.();
+  });
+
   describe('simply instantiating', function() {
     beforeEach(async function() {
       fetchStub = stub(window, 'fetch');
@@ -24,10 +28,6 @@ describe('<rh-site-status>', function() {
       });
       element = await createFixture<RhSiteStatus>(html`<rh-site-status></rh-site-status>`);
       await element.updateComplete;
-    });
-
-    afterEach(function() {
-      fetchStub.restore();
     });
 
     it('should upgrade', async function() {
@@ -57,11 +57,6 @@ describe('<rh-site-status>', function() {
       element = await createFixture<RhSiteStatus>(html`<rh-site-status></rh-site-status>`);
       await element.updateComplete;
     });
-
-    afterEach(function() {
-      fetchStub.restore();
-    });
-
 
     it('should show all systems operational message', async function() {
       // we moved the text capitalization styling to a CSS concern, so can't test for the text capitalization here.
@@ -106,10 +101,6 @@ describe('<rh-site-status>', function() {
       });
       element = await createFixture<RhSiteStatus>(html`<rh-site-status></rh-site-status>`);
       await element.updateComplete;
-    });
-
-    afterEach(function() {
-      fetchStub.restore();
     });
 
     it('should show partial outage message', async function() {
