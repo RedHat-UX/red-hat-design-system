@@ -1,6 +1,7 @@
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
+import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
@@ -28,17 +29,28 @@ export class RhMenu extends LitElement {
 
   @colorContextConsumer() private on?: ColorTheme;
 
-  #tabindex = new RovingTabindexController(this);
+  #tabindex = new RovingTabindexController<HTMLElement>(this, {
+    getItems: () => this.#menuItems ?? [],
+  });
+
+  get #menuItems() {
+    const items = this._menuItems.filter((x): x is HTMLElement => x instanceof HTMLElement);
+    items.forEach(item => {
+      item.setAttribute('role', 'menuitem');
+    });
+    return items;
+  }
 
   get activeItem() {
     return this.#tabindex.activeItem;
   }
 
+  @queryAssignedElements() private _menuItems!: HTMLElement[];
+
   connectedCallback() {
     super.connectedCallback();
     this.id ||= getRandomId('menu');
     this.setAttribute('role', 'menu'); // TODO: use InternalsController.role when support/polyfill is better
-    this.#initItems();
   }
 
   render() {
@@ -48,21 +60,8 @@ export class RhMenu extends LitElement {
     `;
   }
 
-  /**
-   * finds menu items and sets attributes accordingly
-   */
-  #initItems() {
-    const items = Array.from(this.children)
-      .map(getItemElement)
-      .filter((x): x is HTMLElement => x instanceof HTMLElement);
-    items.forEach(item => item?.setAttribute('role', 'menuitem'));
-    this.#tabindex.initItems(items);
-    this.requestUpdate();
-  }
-
   activateItem(item: HTMLElement) {
     this.#tabindex.setActiveItem(item);
-    this.#tabindex.focusOnItem(item);
   }
 }
 
