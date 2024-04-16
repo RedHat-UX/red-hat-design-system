@@ -1,5 +1,5 @@
 import type { ReactiveController, ReactiveElement } from 'lit';
-import type { Context, ContextCallback, ContextEvent, UnknownContext } from '../event.js';
+import type { ContextCallback, ContextRequestEvent, UnknownContext } from '../event.js';
 
 import {
   contextEvents,
@@ -85,9 +85,11 @@ export class ColorContextProvider<
   }
 
   constructor(host: T, options?: ColorContextProviderOptions<T>) {
-    const { attribute = 'color-palette', ...rest } = options ?? {};
-    super(host, rest);
-    this.#consumer = new ColorContextConsumer(host, { callback: value => this.update(value) });
+    const { attribute = 'color-palette' } = options ?? {};
+    super(host);
+    this.#consumer = new ColorContextConsumer(host, {
+      callback: value => this.update(value),
+    });
     this.#logger = new Logger(host);
     this.#style = window.getComputedStyle(host);
     this.#attribute = attribute;
@@ -102,7 +104,7 @@ export class ColorContextProvider<
      * in case this context provider upgraded after and is closer to a given consumer.
      */
   async hostConnected() {
-    this.host.addEventListener('context-request', e => this.#onChildContextEvent(e));
+    this.host.addEventListener('context-request', e => this.#onChildContextRequestEvent(e));
     this.#mo.observe(this.host, { attributes: true, attributeFilter: [this.#attribute] });
     for (const [host, fired] of contextEvents) {
       host.dispatchEvent(fired);
@@ -129,12 +131,9 @@ export class ColorContextProvider<
 
   /** Was the context event fired requesting our colour-context context? */
   #isColorContextEvent(
-    event: ContextEvent<UnknownContext>
-  ): event is ContextEvent<Context<ColorTheme | null>> {
-    return (
-      event.target !== this.host &&
-        event.context.name === this.context.name
-    );
+    event: ContextRequestEvent<UnknownContext>
+  ): event is ContextRequestEvent<typeof ColorContextController.context> {
+    return event.target !== this.host && event.context === ColorContextController.context;
   }
 
   /**
@@ -142,7 +141,7 @@ export class ColorContextProvider<
    * When a child connects, claim its context-request event
    * and add its callback to the Set of children if it requests multiple updates
    */
-  async #onChildContextEvent(event: ContextEvent<UnknownContext>) {
+  async #onChildContextRequestEvent(event: ContextRequestEvent<UnknownContext>) {
     // only handle ContextEvents relevant to colour context
     if (this.#isColorContextEvent(event)) {
       // claim the context-request event for ourselves (required by context protocol)
@@ -152,7 +151,7 @@ export class ColorContextProvider<
       event.callback(this.value);
 
       // Cache the callback for future updates, if requested
-      if (event.multiple) {
+      if (event.subscribe) {
         this.#callbacks.add(event.callback);
       }
     }
