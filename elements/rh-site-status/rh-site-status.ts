@@ -86,8 +86,8 @@ export class RhSiteStatus extends LitElement {
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewbox="0 0 16 17" fill="none">
             ${this.#icon}
           </svg>
+          <span>${this.#text}</span>
         `}
-        <span>${this.#text}</span>
       </a>
     `;
   }
