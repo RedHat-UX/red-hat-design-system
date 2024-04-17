@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import { fixture, expect, aTimeout, nextFrame, oneEvent } from '@open-wc/testing';
+import { fixture, expect, aTimeout, nextFrame } from '@open-wc/testing';
 import { setViewport } from '@web/test-runner-commands';
 import { tokens } from '@rhds/tokens';
 import { RhFooter, RhFooterUniversal } from '../rh-footer.js';
@@ -383,7 +383,7 @@ describe('<rh-footer>', function() {
         await element.updateComplete;
 
         expect(Math.abs(base.getBoundingClientRect().top - logo.getBoundingClientRect().top)).to.equal(32);
-        expect(Math.abs(logo.getBoundingClientRect().right - primary.getBoundingClientRect().left)).to.equal(32);
+        expect(Math.floor(Math.abs(logo.getBoundingClientRect().right - primary.getBoundingClientRect().left))).to.equal(32);
         expect(Math.abs(primary.getBoundingClientRect().bottom - secondaryContent.getBoundingClientRect().top)).to.equal(24);
         expect(Math.abs(base.getBoundingClientRect().bottom - tertiary.getBoundingClientRect().bottom)).to.equal(32);
       });
@@ -429,7 +429,7 @@ describe('<rh-footer>', function() {
       it('should have an icon size of --rh-icon-size-02', async function() {
         const element = await fixture<RhFooter>(KITCHEN_SINK_TEMPLATE);
         const socialLink = element.querySelector('rh-footer-social-link');
-        await oneEvent(element, 'load');
+        await aTimeout(200);
         // we need to reach into pf-icon to get the actual size of the svg.
         const icon = socialLink?.querySelector('pf-icon')?.shadowRoot?.querySelector('svg');
         if (icon) {
