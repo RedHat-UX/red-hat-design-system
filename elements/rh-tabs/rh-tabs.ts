@@ -123,7 +123,8 @@ export class RhTabs extends LitElement {
   @query('[part="tabs"]') private tabList!: HTMLElement;
 
   get #ctx(): RhTabsContext {
-    const { activeTab, box, manual, vertical } = this;
+    const { activeTab, manual, vertical } = this;
+    const box = this.box === null || this.box === '' as 'box' ? 'box' : this.box;
     const firstTab = this.#firstTab;
     const lastTab = this.#lastTab;
     return { activeTab, box, firstTab, lastTab, manual, vertical };
