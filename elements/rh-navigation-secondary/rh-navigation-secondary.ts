@@ -276,7 +276,7 @@ export class RhNavigationSecondary extends LitElement {
       event.preventDefault();
       this.close();
       this.overlayOpen = false;
-      this.#tabindex.updateActiveItem(this.#tabindex.nextItem);
+      this.#tabindex.setActiveItem(this.#tabindex.nextItem);
       this.#tabindex.activeItem?.focus();
     }
   }
@@ -338,7 +338,7 @@ export class RhNavigationSecondary extends LitElement {
     if (dropdown && RhNavigationSecondary.isDropdown(dropdown)) {
       const link = dropdown.querySelector('a');
       if (link) {
-        this.#tabindex.updateActiveItem(link);
+        this.#tabindex.setActiveItem(link);
       }
       this.#openDropdown(dropdown);
     }

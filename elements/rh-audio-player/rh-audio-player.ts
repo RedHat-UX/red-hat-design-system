@@ -1,3 +1,5 @@
+import type { RhTooltip } from '../rh-tooltip/rh-tooltip.js';
+
 import { LitElement, html, type PropertyValues } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
@@ -25,7 +27,9 @@ import { RhAudioPlayerScrollingTextOverflow } from './rh-audio-player-scrolling-
 import buttonStyles from './rh-audio-player-button.css';
 import rangeStyles from './rh-audio-player-range-styles.css';
 import styles from './rh-audio-player.css';
-import { RhTooltip } from '../rh-tooltip/rh-tooltip.js';
+
+import '../rh-surface/rh-surface.js';
+import '../rh-tooltip/rh-tooltip.js';
 
 /**
  * An audio player plays audio clips in the browser and includes other features.
@@ -305,8 +309,16 @@ export class RhAudioPlayer extends LitElement {
     return !!this.layout?.startsWith('compact');
   }
 
-  get #panels() {
-    return [this.#about, this.#subscribe, this.#transcript].filter(panel => !!panel);
+  get #panels(): (
+    | { id: 'about'; panel: RhAudioPlayerAbout}
+    | { id: 'subscribe'; panel: RhAudioPlayerSubscribe }
+    | { id: 'transcript'; panel: RhTranscript }
+  )[] {
+    return [
+      { id: 'about', panel: this.#about! } as const,
+      { id: 'subscribe', panel: this.#subscribe! } as const,
+      { id: 'transcript', panel: this.#transcript! } as const,
+    ].filter(x => !!x.panel);
   }
 
   get #hasMenu() {
@@ -607,11 +619,12 @@ export class RhAudioPlayer extends LitElement {
                    style="${styleMap(styles)}"
                    class="${classMap({ open })}"
                    @keydown="${this.#onMenuKeydown}"
-                   @focusout="${this.#onMenuFocusout}">${this.#panels.map(panel => !panel ? '' : html`
-            <button aria-label="${panel.menuLabel}"
+                   @focusout="${this.#onMenuFocusout}">${this.#panels.map(x => !x.panel ? '' : html`
+            <button id="${x.id}-menu-item"
+                    aria-label="${x.panel.menuLabel}"
                     aria-controls="panel"
-                    @click="${() => this.#selectOpenPanel(panel)}">
-              ${panel.menuLabel}
+                    @click="${() => this.#selectOpenPanel(x.panel)}">
+              ${x.panel.menuLabel}
             </button>`)}
           </rh-menu>`}
           <rh-tooltip id="close-tooltip">
@@ -632,18 +645,22 @@ export class RhAudioPlayer extends LitElement {
         <div id="panel"
              role="dialog"
              aria-live="polite"
+             aria-labelledby="about-menu-item"
              part="panel"
              ?hidden=${!this.expanded || !this.#hasMenu}>
-          <slot name="about"
+          <slot id="about-slot"
+                name="about"
                 part="about"
                 @slotchange=${this.#onPanelChange}>
             <rh-audio-player-about></rh-audio-player-about>
           </slot>
-          <slot name="subscribe"
+          <slot id="subscribe-slot"
+                name="subscribe"
                 part="subscribe"
                 @slotchange=${this.#onPanelChange}>
           </slot>
-          <slot name="transcript"
+          <slot id="transcribe-slot"
+                name="transcript"
                 part="transcript"
                 @slotchange=${this.#onPanelChange}
                 @transcriptdownload=${this.#onTranscriptDownload}>

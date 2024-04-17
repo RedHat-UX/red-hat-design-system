@@ -43,6 +43,10 @@ button:after {
   border-radius: var(--rh-border-radius-default, 3px);
 }
 
+button > span {
+  display: contents;
+}
+
 :host(:is(:disabled, [aria-disabled="true"])),
 :host(:is(:disabled, [aria-disabled="true"])) #container,
 :host(:is(:disabled, [aria-disabled="true"])) button,

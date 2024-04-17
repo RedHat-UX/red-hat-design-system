@@ -185,7 +185,7 @@ export class RhAccordion extends LitElement {
 
   #updateActiveHeader() {
     if (this.#activeHeader) {
-      this.#headerIndex.updateActiveItem(this.#activeHeader);
+      this.#headerIndex.setActiveItem(this.#activeHeader);
     }
   }
 
