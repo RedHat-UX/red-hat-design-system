@@ -6,7 +6,6 @@ import { classMap } from 'lit/directives/class-map.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import '../rh-spinner/rh-spinner.js';
 
@@ -80,14 +79,8 @@ export class RhSiteStatus extends LitElement {
   #isLoading = true;
 
   /**
-   * Sets color context for child components, overrides parent context
-   */
-  @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette = 'dark';
-
-  /**
-   * Sets color theme based on parent context
-   */
+  * Sets color theme based on parent context
+  */
   @colorContextConsumer() private on?: ColorTheme;
 
   async connectedCallback() {
@@ -98,14 +91,16 @@ export class RhSiteStatus extends LitElement {
   render() {
     const { on = '' } = this;
     return html`
-      <a href="https://status.redhat.com/" aria-busy="${this.#isLoading ? 'true' : 'false'}" aria-live="polite" class="${classMap({ [on]: !!on })}">
-        ${this.#isLoading ? html`<rh-spinner size="sm"></rh-spinner><span><slot name="loading-text">Loading</slot></span>` : html`
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewbox="0 0 16 17" fill="none">
-            ${this.#icon}
-          </svg>
-          <span>${this.#text}</span>
-        `}
-      </a>
+      <div id="container" class="${classMap({ [on]: !!on })}">
+        <a href="https://status.redhat.com/" aria-busy="${this.#isLoading ? 'true' : 'false'}" aria-live="polite">
+          ${this.#isLoading ? html`<rh-spinner size="sm"></rh-spinner><span><slot name="loading-text">Loading</slot></span>` : html`
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewbox="0 0 16 17" fill="none">
+              ${this.#icon}
+            </svg>
+            <span>${this.#text}</span>
+          `}
+        </a>
+      </div>
     `;
   }
 
