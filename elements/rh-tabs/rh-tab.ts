@@ -64,24 +64,25 @@ export class RhTab extends LitElement {
   @observed
   @property({ reflect: true, type: Boolean }) disabled = false;
 
+  @consume({ context, subscribe: true })
+  @state()
+  private ctx?: RhTabsContext;
+
   /**
    * Sets color theme based on parent context
    */
   @colorContextConsumer() private on?: ColorTheme;
 
-  @consume({ context, subscribe: true }) @state() private ctx?: RhTabsContext;
-
-  @queryAssignedElements({ slot: 'icon', flatten: true })
-  private icons!: Array<HTMLElement>;
+  @queryAssignedElements({ slot: 'icon', flatten: true }) private icons!: Array<HTMLElement>;
 
   @query('button') private button!: HTMLButtonElement;
 
   #internals = this.attachInternals();
 
-  connectedCallback() {
+  override connectedCallback() {
     super.connectedCallback();
     this.id ||= getRandomId(this.localName);
-    this.addEventListener('click', this.#clickHandler);
+    this.addEventListener('click', this.#onClick);
     this.#internals.role = 'tab';
   }
 
@@ -105,28 +106,22 @@ export class RhTab extends LitElement {
   }
 
   updated(changed: PropertyValues<this>) {
-    this.#internals.ariaSelected = String(this.ariaSelected);
-    if (changed.has('active')) {
-      this.#activeChanged();
+    if (changed.has('active') && this.active && !changed.get('active')) {
+      this.#activate();
     }
     if (changed.has('disabled')) {
       this.#disabledChanged();
     }
   }
 
-  #clickHandler() {
+  #onClick() {
     if (!this.disabled && this.#internals.ariaDisabled !== 'true' && this.ariaDisabled !== 'true') {
-      this.active = true;
+      this.#activate();
       this.focus(); // safari fix
     }
   }
 
-  #activeChanged() {
-    if (this.active && !this.disabled) {
-      this.#internals.ariaSelected = 'true';
-    } else {
-      this.#internals.ariaSelected = 'false';
-    }
+  #activate() {
     this.dispatchEvent(new TabExpandEvent(this.active, this));
   }
 

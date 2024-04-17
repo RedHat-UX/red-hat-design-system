@@ -51,15 +51,15 @@ export { RhTab };
 export class RhTabs extends LitElement {
   static readonly styles = [styles];
 
+  /** @deprecated */
   static isTab(element: HTMLElement): element is RhTab {
     return element instanceof RhTab;
   }
 
+  /** @deprecated */
   static isPanel(element: HTMLElement): element is RhTabPanel {
     return element instanceof RhTabPanel;
   }
-
-  private static instances = new Set<RhTabs>();
 
   /**
    * Label for the scroll left button
@@ -123,6 +123,7 @@ export class RhTabs extends LitElement {
   @colorContextConsumer() private on?: ColorTheme;
 
   @query('[part="tabs"]') private tabList!: HTMLElement;
+
   protected get canShowScrollButtons(): boolean {
     return !this.vertical;
   }
@@ -132,13 +133,13 @@ export class RhTabs extends LitElement {
   #logger = new Logger(this);
 
   #tabs = new TabsAriaController<RhTab, RhTabPanel>(this, {
-    isTab: (x): x is RhTab => (x as HTMLElement).localName === 'rh-tab',
-    isPanel: (x): x is RhTabPanel => (x as HTMLElement).localName === 'rh-tab-panel',
+    isTab: (x): x is RhTab => x instanceof RhTab,
+    isPanel: (x): x is RhTabPanel => x instanceof RhTabPanel,
     isActiveTab: x => x.active,
   });
 
   #tabindex = new RovingTabindexController(this, {
-    getHTMLElement: () => this.shadowRoot?.getElementById('tabs') ?? null,
+    getHTMLElement: () => this.tabList,
     getItems: () => this.tabs ?? [],
   });
 
@@ -163,12 +164,6 @@ export class RhTabs extends LitElement {
     super.connectedCallback();
     this.id ||= getRandomId(this.localName);
     this.addEventListener('expand', this.#onExpand);
-    RhTabs.instances.add(this);
-  }
-
-  override disconnectedCallback(): void {
-    super.disconnectedCallback();
-    RhTabs.instances.delete(this);
   }
 
   override willUpdate(changed: PropertyValues<this>): void {
@@ -179,14 +174,13 @@ export class RhTabs extends LitElement {
     } else if (changed.has('activeTab') && this.activeTab) {
       this.select(this.activeTab);
     } else {
-      this.#updateActive();
+      // this.#updateActive();
     }
-    this.#overflow.update();
   }
 
   async firstUpdated() {
     this.tabList.addEventListener('scroll', this.#overflow.onScroll.bind(this));
-    this.#onSlotchange();
+    // this.#onSlotchange();
   }
 
   override render() {
@@ -196,9 +190,9 @@ export class RhTabs extends LitElement {
         <div part="container" class="${classMap({ overflow: this.#overflow.showScrollButtons })}">
           <div part="tabs-container">${!this.#overflow.showScrollButtons ? '' : html`
             <button id="previousTab" tabindex="-1"
-                aria-label="${this.getAttribute('label-scroll-left') ?? 'Scroll left'}"
-                ?disabled="${!this.#overflow.overflowLeft}"
-                @click="${() => this.#overflow.scrollLeft()}">
+                    aria-label="${this.getAttribute('label-scroll-left') ?? 'Scroll left'}"
+                    ?disabled="${!this.#overflow.overflowLeft}"
+                    @click="${() => this.#overflow.scrollLeft()}">
               <pf-icon icon="angle-left" set="fas" loading="eager"></pf-icon>
             </button>`}
             <div style="display: contents;" role="tablist">
@@ -206,10 +200,11 @@ export class RhTabs extends LitElement {
                     part="tabs"
                     @slotchange="${this.#onSlotchange}"></slot>
             </div>${!this.#overflow.showScrollButtons ? '' : html`
-            <button id="nextTab" tabindex="-1"
-                aria-label="${this.getAttribute('label-scroll-right') ?? 'Scroll right'}"
-                ?disabled="${!this.#overflow.overflowRight}"
-                @click="${() => this.#overflow.scrollRight()}">
+            <button id="nextTab"
+                    tabindex="-1"
+                    aria-label="${this.getAttribute('label-scroll-right') ?? 'Scroll right'}"
+                    ?disabled="${!this.#overflow.overflowRight}"
+                    @click="${() => this.#overflow.scrollRight()}">
               <pf-icon icon="angle-right" set="fas" loading="eager"></pf-icon>
             </button>`}
           </div>
@@ -220,7 +215,6 @@ export class RhTabs extends LitElement {
   }
 
   #onSlotchange() {
-    this.#firstLastClasses();
     this.#overflow.init(this.tabList, this.tabs);
   }
 
@@ -229,11 +223,6 @@ export class RhTabs extends LitElement {
       !event.defaultPrevented && this.tabs.includes(event.tab)) {
       this.select(event.tab);
     }
-  }
-
-  #firstLastClasses() {
-    this.#firstTab?.classList.add('first');
-    this.#lastTab?.classList.add('last');
   }
 
   #updateActive({ force = false } = {}) {
@@ -254,6 +243,7 @@ export class RhTabs extends LitElement {
     const firstTab = this.#firstTab;
     const lastTab = this.#lastTab;
     this.ctx = { activeTab, box, vertical, firstTab, lastTab };
+    this.#overflow.update();
   }
 
   select(option: RhTab | number) {

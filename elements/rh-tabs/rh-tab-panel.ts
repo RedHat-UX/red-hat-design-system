@@ -1,7 +1,6 @@
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { consume } from '@lit/context';
 
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
@@ -30,7 +29,7 @@ export class RhTabPanel extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.id ||= getRandomId('pf-tab-panel');
+    this.id ||= getRandomId('rh-tab-panel');
     this.hidden ??= true;
     this.#internals.role = 'tabpanel';
 
