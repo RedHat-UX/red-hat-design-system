@@ -4,6 +4,7 @@ import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
+import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
@@ -28,6 +29,8 @@ export class RhSwitch extends LitElement {
 
   #internals = InternalsController.of(this, { role: 'switch' });
 
+  #slots = new SlotController(this);
+  
   @property({ reflect: true }) label?: string;
 
   @property({ reflect: true, type: Boolean, attribute: 'show-check-icon' }) showCheckIcon = false;
@@ -35,6 +38,8 @@ export class RhSwitch extends LitElement {
   @property({ reflect: true, type: Boolean }) checked = false;
 
   @property({ reflect: true, type: Boolean }) disabled = false;
+
+  @property({ reflect: true, attribute: 'accessible-label' }) accessibleLabel?: string;
 
   /**
    * Sets color theme based on parent context
@@ -52,9 +57,6 @@ export class RhSwitch extends LitElement {
   override connectedCallback(): void {
     super.connectedCallback();
 
-    // remove this line after pfe3.0 merge
-    this.#internals.role = 'switch';
-
     this.tabIndex = 0;
     this.addEventListener('click', this.#onClick);
     this.addEventListener('keyup', this.#onKeyup);
@@ -65,6 +67,7 @@ export class RhSwitch extends LitElement {
   willUpdate() {
     this.#internals.ariaChecked = String(!!this.checked);
     this.#internals.ariaDisabled = String(!!this.disabled);
+    this.#internals.ariaLabel = this.accessibleLabel ?? '';
   }
 
   render() {
@@ -81,6 +84,7 @@ export class RhSwitch extends LitElement {
           <path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z" />
         </svg>
       </div>
+      <slot></slot>
     `;
   }
 
@@ -127,13 +131,12 @@ export class RhSwitch extends LitElement {
 
   #updateLabels() {
     const labelState = this.checked ? 'on' : 'off';
-    this.labels.forEach(label => {
-      const states = label.querySelectorAll<HTMLElement>('[data-state]');
-      states.forEach(state => {
-        if (state) {
-          state.hidden = state.dataset.state !== labelState;
-        }
-      });
+    const [messages] = this.#slots.getSlotted() as HTMLElement[];
+    const states = messages.querySelectorAll('[data-state]') as NodeListOf<HTMLElement>;
+    states.forEach((state) => {
+      if (state) {
+        state.hidden = state.dataset.state !== labelState;
+      }
     });
   }
 }
