@@ -3,12 +3,12 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { query } from 'lit/decorators/query.js';
-import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 import { provide } from '@lit/context';
 
 import { deprecation } from '@patternfly/pfe-core/decorators.js';
 
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
+import { TabsAriaController } from '@patternfly/pfe-core/controllers/tabs-aria-controller.js';
 import { OverflowController } from '@patternfly/pfe-core/controllers/overflow-controller.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
@@ -59,18 +59,6 @@ export class RhTabs extends LitElement {
     return element instanceof RhTabPanel;
   }
 
-  /** Time in milliseconds to debounce between scroll events and updating scroll button state */
-  protected static readonly scrollTimeoutDelay: number = 0;
-
-  /** Icon name to use for the scroll left button */
-  protected static readonly scrollIconLeft: string = 'angle-left';
-
-  /** Icon name to use for the scroll right button */
-  protected static readonly scrollIconRight: string = 'angle-right';
-
-  /** Icon set to use for the scroll buttons */
-  protected static readonly scrollIconSet: string = 'fas';
-
   private static instances = new Set<RhTabs>();
 
   /**
@@ -92,39 +80,9 @@ export class RhTabs extends LitElement {
   /**
    * Index of the active tab
    */
-  @property({ attribute: false })
-  get activeIndex() {
-    return this.#activeIndex;
-  }
+  @property({ type: Number, attribute: 'active-index' }) activeIndex = -1;
 
-  set activeIndex(index: number) {
-    const oldIndex = this.activeIndex;
-    const tab = this.#allTabs[index];
-    if (tab) {
-      if (tab.disabled) {
-        this.#logger.warn(`Disabled tabs can not be active, setting first focusable tab to active`);
-        this.#tabindex.setActiveItem(this.#firstFocusable);
-        index = this.#activeItemIndex;
-      } else if (!tab.active) {
-        // if the activeIndex was set through the CLI e.g.`$0.activeIndex = 2`
-        tab.active = true;
-        return;
-      }
-    }
-
-    if (index === -1) {
-      this.#logger.warn(`No active tab found, setting first focusable tab to active`);
-      const first = this.#tabindex.firstItem;
-      this.#tabindex.setActiveItem(first);
-      index = this.#activeItemIndex;
-    }
-    this.#activeIndex = index;
-    this.requestUpdate('activeIndex', oldIndex);
-
-    this.#allPanels[this.#activeIndex].hidden = false;
-    // close all tabs that are not the activeIndex
-    this.#deactivateExcept(this.#activeIndex);
-  }
+  @property({ attribute: false }) activeTab?: RhTab;
 
   /**
    * Sets color context for child components, overrides parent context
@@ -140,6 +98,16 @@ export class RhTabs extends LitElement {
   @provide({ context }) private ctx?: RhTabsContext;
 
   /**
+   * Sets tabs to a boxed style with or without an inset
+   */
+  @property({ reflect: true }) box?: 'box' | 'inset' | null = null;
+
+  /**
+   * Sets the alignment of the tabs vertical
+   */
+  @property({ reflect: true, type: Boolean }) vertical = false;
+
+  /**
    * Sets the theme for the tabs and panels
    * @deprecated attribute will be removed in future release, please use the `--rh-tabs-active-border-color` css property directly.
    */
@@ -150,88 +118,51 @@ export class RhTabs extends LitElement {
   }) theme?: 'base' | null = null;
 
   /**
-   * Sets tabs to a boxed style with or without an inset
-   */
-  @property({ reflect: true }) box?: 'box' | 'inset' | null = null;
-
-  /**
-   * Sets the alignment of the tabs vertical
-   */
-  @property({ reflect: true, type: Boolean }) vertical = false;
-
-  protected get canShowScrollButtons(): boolean {
-    return !this.vertical;
-  }
-
-  /**
    * Sets color theme based on parent context
    */
   @colorContextConsumer() private on?: ColorTheme;
 
-  get #activeTab() {
-    const [tab] = this.#_allTabs.filter(tab => tab.active);
-    return tab;
-  }
-
-  get #allTabs() {
-    return this.#_allTabs;
-  }
-
-  set #allTabs(tabs: RhTab[]) {
-    this.#_allTabs = tabs.filter(tab => (this.constructor as typeof RhTabs).isTab(tab));
-  }
-
-  get #allPanels() {
-    return this.#_allPanels;
-  }
-
-  set #allPanels(panels: RhTabPanel[]) {
-    this.#_allPanels = panels.filter(panel => (this.constructor as typeof RhTabs).isPanel(panel));
-  }
-
-  @queryAssignedElements({ slot: 'tab' }) private tabs!: RhTab[];
-
-  @queryAssignedElements() private panels!: RhTabPanel[];
-
   @query('[part="tabs"]') private tabList!: HTMLElement;
-
-  #tabindex = new RovingTabindexController<RhTab>(this, {
-    getItems: () => this.#allTabs,
-  });
+  protected get canShowScrollButtons(): boolean {
+    return !this.vertical;
+  }
 
   #overflow = new OverflowController(this);
 
   #logger = new Logger(this);
 
-  #_allTabs: RhTab[] = [];
+  #tabs = new TabsAriaController<RhTab, RhTabPanel>(this, {
+    isTab: (x): x is RhTab => (x as HTMLElement).localName === 'rh-tab',
+    isPanel: (x): x is RhTabPanel => (x as HTMLElement).localName === 'rh-tab-panel',
+    isActiveTab: x => x.active,
+  });
 
-  #_allPanels: RhTabPanel[] = [];
+  #tabindex = new RovingTabindexController(this, {
+    getHTMLElement: () => this.shadowRoot?.getElementById('tabs') ?? null,
+    getItems: () => this.tabs ?? [],
+  });
 
-  #activeIndex = 0;
+  get tabs() {
+    return this.#tabs.tabs;
+  }
 
-  get #firstFocusable(): RhTab | undefined {
-    return this.#tabindex.firstItem;
+  get panels() {
+    return this.tabs.map(tab => this.#tabs.panelFor(tab));
   }
 
   get #firstTab(): RhTab | undefined {
-    const [tab] = this.#allTabs;
+    const [tab] = this.tabs;
     return tab;
   }
 
   get #lastTab(): RhTab | undefined {
-    return this.#allTabs.at(-1);
+    return this.tabs.at(-1);
   }
-
-  get #activeItemIndex() {
-    const { activeItem } = this.#tabindex;
-    return this.#allTabs.findIndex(t => t === activeItem);
-  }
-
 
   override connectedCallback() {
     super.connectedCallback();
     this.id ||= getRandomId(this.localName);
-    this.addEventListener('expand', this.#onTabExpand);
+    this.addEventListener('expand', this.#onExpand);
     RhTabs.instances.add(this);
   }
 
@@ -241,29 +172,25 @@ export class RhTabs extends LitElement {
   }
 
   override willUpdate(changed: PropertyValues<this>): void {
-    const { activeItem } = this.#tabindex;
-    // If RTI has an activeItem, update the roving tabindex controller
-    if (!this.manual &&
-        activeItem &&
-        activeItem !== this.#activeTab &&
-        activeItem.ariaDisabled !== 'true') {
-      activeItem.active = true;
-    }
     // RTIC will kick the update cycle whenever the tabs contents change,
     // so let's just update the context on every cycle
-    const { box = null, vertical } = this;
-    const firstTab = this.#allTabs.at(0);
-    const lastTab = this.#allTabs.at(-1);
-    this.ctx = { box, vertical, firstTab, lastTab };
+    if (changed.has('activeIndex')) {
+      this.select(this.activeIndex);
+    } else if (changed.has('activeTab') && this.activeTab) {
+      this.select(this.activeTab);
+    } else {
+      this.#updateActive();
+    }
+    this.#overflow.update();
   }
 
   async firstUpdated() {
     this.tabList.addEventListener('scroll', this.#overflow.onScroll.bind(this));
+    this.#onSlotchange();
   }
 
   override render() {
     const { on = '' } = this;
-    const { scrollIconSet, scrollIconLeft, scrollIconRight } = this.constructor as typeof RhTabs;
     return html`
       <div id="rhds-container" class="${classMap({ [on]: !!on })}">
         <div part="container" class="${classMap({ overflow: this.#overflow.showScrollButtons })}">
@@ -271,8 +198,8 @@ export class RhTabs extends LitElement {
             <button id="previousTab" tabindex="-1"
                 aria-label="${this.getAttribute('label-scroll-left') ?? 'Scroll left'}"
                 ?disabled="${!this.#overflow.overflowLeft}"
-                @click="${this.#scrollLeft}">
-              <pf-icon icon="${scrollIconLeft}" set="${scrollIconSet}" loading="eager"></pf-icon>
+                @click="${() => this.#overflow.scrollLeft()}">
+              <pf-icon icon="angle-left" set="fas" loading="eager"></pf-icon>
             </button>`}
             <div style="display: contents;" role="tablist">
               <slot name="tab"
@@ -282,8 +209,8 @@ export class RhTabs extends LitElement {
             <button id="nextTab" tabindex="-1"
                 aria-label="${this.getAttribute('label-scroll-right') ?? 'Scroll right'}"
                 ?disabled="${!this.#overflow.overflowRight}"
-                @click="${this.#scrollRight}">
-              <pf-icon icon="${scrollIconRight}" set="${scrollIconSet}" loading="eager"></pf-icon>
+                @click="${() => this.#overflow.scrollRight()}">
+              <pf-icon icon="angle-right" set="fas" loading="eager"></pf-icon>
             </button>`}
           </div>
           <slot part="panels" @slotchange="${this.#onSlotchange}"></slot>
@@ -292,51 +219,16 @@ export class RhTabs extends LitElement {
     `;
   }
 
-  #onSlotchange(event: { target: { name: string } }) {
-    if (event.target.name === 'tab') {
-      this.#allTabs = this.tabs;
-    } else {
-      this.#allPanels = this.panels;
-    }
-
-    if ((this.#allTabs.length === this.#allPanels.length) &&
-      (this.#allTabs.length !== 0 || this.#allPanels.length !== 0)) {
-      this.#updateAccessibility();
-      this.#firstLastClasses();
-      this.activeIndex = this.#allTabs.findIndex(tab => tab.active);
-      this.#tabindex.setActiveItem(this.#activeTab);
-      this.#overflow.init(this.tabList, this.#allTabs);
-    }
+  #onSlotchange() {
+    this.#firstLastClasses();
+    this.#overflow.init(this.tabList, this.tabs);
   }
 
-  #updateAccessibility(): void {
-    this.#allTabs.forEach((tab, index) => {
-      const panel = this.#allPanels[index];
-      if (!panel.hasAttribute('aria-labelledby')) {
-        panel.setAttribute('aria-labelledby', tab.id);
-      }
-      tab.setAttribute('aria-controls', panel.id);
-    });
-  }
-
-  #onTabExpand = (event: Event): void => {
-    if (!(event instanceof TabExpandEvent) ||
-        !this.#allTabs.length ||
-        !this.#allPanels.length) {
-      return;
+  #onExpand(event: Event) {
+    if (event instanceof TabExpandEvent &&
+      !event.defaultPrevented && this.tabs.includes(event.tab)) {
+      this.select(event.tab);
     }
-
-    if (event.active) {
-      if (event.tab !== this.#tabindex.activeItem) {
-        this.#tabindex.setActiveItem(event.tab);
-      }
-      this.activeIndex = this.#allTabs.findIndex(tab => tab === event.tab);
-    }
-  };
-
-  #deactivateExcept(index: number) {
-    this.#allTabs.forEach((tab, i) => tab.active = i === index);
-    this.#allPanels.forEach((panel, i) => panel.hidden = i !== index);
   }
 
   #firstLastClasses() {
@@ -344,24 +236,34 @@ export class RhTabs extends LitElement {
     this.#lastTab?.classList.add('last');
   }
 
-  #scrollLeft() {
-    this.#overflow.scrollLeft();
+  #updateActive({ force = false } = {}) {
+    if (!this.#tabindex.activeItem?.disabled) {
+      this.tabs?.forEach((tab, i) => {
+        if (force || !this.manual) {
+          const active = tab === this.#tabindex.activeItem;
+          tab.active = active;
+          if (active) {
+            this.activeIndex = i;
+            this.activeTab = tab;
+          }
+        }
+        this.#tabs.panelFor(tab)?.toggleAttribute('hidden', !tab.active);
+      });
+    }
+    const { activeTab, box = null, vertical } = this;
+    const firstTab = this.#firstTab;
+    const lastTab = this.#lastTab;
+    this.ctx = { activeTab, box, vertical, firstTab, lastTab };
   }
 
-  #scrollRight() {
-    this.#overflow.scrollRight();
-  }
-
-  // Moved to bottom of file to avoid Custom Element Manifest from incorrectly
-  // parsing the file due to the static block. This block will be removed from
-  // rh-tab.ts after PFE 3.0 is released and we migrate to the TabsController.
-  static {
-    // on resize check for overflows to add or remove scroll buttons
-    window.addEventListener('resize', () => {
-      for (const instance of RhTabs.instances) {
-        instance.#overflow.onScroll();
-      }
-    }, { capture: false });
+  select(option: RhTab | number) {
+    if (typeof option === 'number') {
+      const item = this.tabs[option];
+      this.#tabindex.setActiveItem(item);
+    } else {
+      this.#tabindex.setActiveItem(option);
+    }
+    this.#updateActive({ force: true });
   }
 }
 
