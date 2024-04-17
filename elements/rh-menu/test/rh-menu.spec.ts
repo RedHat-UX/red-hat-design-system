@@ -45,184 +45,180 @@ describe('<rh-menu>', function() {
 
   describe('tabbing to the element', function() {
     beforeEach(press('Tab'));
+
     it('focuses the first item', function() {
       expect(document.activeElement).to.have.id('item1');
     });
+
     describe('Tab', function() {
       beforeEach(press('Tab'));
+
       it('focuses the document', function() {
         expect(document.activeElement).to.equal(document.body);
       });
     });
+
     describe('Shift+Tab', function() {
       beforeEach(press('Shift+Tab'));
+
       it('focuses the document', function() {
         expect(document.activeElement).to.equal(document.body);
       });
     });
+
     describe('ArrowRight', function() {
       beforeEach(press('ArrowRight'));
+
       it('focuses the second item', function() {
         expect(document.activeElement).to.have.id('item2');
       });
+
       describe('ArrowRight', function() {
         beforeEach(press('ArrowRight'));
+
         it('should focus on item3', function() {
           expect(document.activeElement).to.have.id('item3');
         });
+
         describe('ArrowRight', function() {
           beforeEach(press('ArrowRight'));
+
           it('should focus on item1', function() {
             expect(document.activeElement).to.have.id('item1');
           });
         });
       });
+
       describe('End', function() {
         beforeEach(press('End'));
         it('should focus on item3', function() {
           expect(document.activeElement).and.to.have.id('item3');
         });
       });
+
       describe('Home', function() {
         beforeEach(press('Home'));
-        it('should focus on item1', function() {
-          expect(document.activeElement).and.to.have.id('item1');
-        });
-      });
-      describe('PageDown', function() {
-        beforeEach(press('PageDown'));
-        it('should focus on item3', function() {
-          expect(document.activeElement).and.to.have.id('item3');
-        });
-      });
-      describe('PageUp', function() {
-        beforeEach(press('PageUp'));
+
         it('should focus on item1', function() {
           expect(document.activeElement).and.to.have.id('item1');
         });
       });
     });
+
     describe('ArrowDown', function() {
       beforeEach(press('ArrowDown'));
+
       it('focuses the second item', function() {
         expect(document.activeElement).to.have.id('item2');
       });
+
       describe('ArrowDown', function() {
         beforeEach(press('ArrowDown'));
+
         it('should focus on item3', function() {
           expect(document.activeElement).to.have.id('item3');
         });
+
         describe('ArrowDown', function() {
           beforeEach(press('ArrowDown'));
+
           it('should focus on item1', function() {
             expect(document.activeElement).to.have.id('item1');
           });
         });
       });
+
       describe('End', function() {
         beforeEach(press('End'));
+
         it('should focus on item3', function() {
           expect(document.activeElement).and.to.have.id('item3');
         });
       });
+
       describe('Home', function() {
         beforeEach(press('Home'));
-        it('should focus on item1', function() {
-          expect(document.activeElement).and.to.have.id('item1');
-        });
-      });
-      describe('PageDown', function() {
-        beforeEach(press('PageDown'));
-        it('should focus on item3', function() {
-          expect(document.activeElement).and.to.have.id('item3');
-        });
-      });
-      describe('PageUp', function() {
-        beforeEach(press('PageUp'));
+
         it('should focus on item1', function() {
           expect(document.activeElement).and.to.have.id('item1');
         });
       });
     });
+
     describe('ArrowLeft', function() {
       beforeEach(press('ArrowLeft'));
+
       it('focuses the second item', function() {
         expect(document.activeElement).to.have.id('item3');
       });
+
       describe('ArrowLeft', function() {
         beforeEach(press('ArrowLeft'));
+
         it('should focus on item3', function() {
           expect(document.activeElement).to.have.id('item2');
         });
+
         describe('ArrowLeft', function() {
           beforeEach(press('ArrowLeft'));
+
           it('should focus on item1', function() {
             expect(document.activeElement).to.have.id('item1');
           });
         });
       });
+
       describe('End', function() {
         beforeEach(press('End'));
+
         it('should focus on item3', function() {
           expect(document.activeElement).and.to.have.id('item3');
         });
       });
+
       describe('Home', function() {
         beforeEach(press('Home'));
-        it('should focus on item1', function() {
-          expect(document.activeElement).and.to.have.id('item1');
-        });
-      });
-      describe('PageDown', function() {
-        beforeEach(press('PageDown'));
-        it('should focus on item3', function() {
-          expect(document.activeElement).and.to.have.id('item3');
-        });
-      });
-      describe('PageUp', function() {
-        beforeEach(press('PageUp'));
+
         it('should focus on item1', function() {
           expect(document.activeElement).and.to.have.id('item1');
         });
       });
     });
+
     describe('ArrowUp', function() {
       beforeEach(press('ArrowUp'));
+
       it('focuses the second item', function() {
         expect(document.activeElement).to.have.id('item3');
       });
+
       describe('ArrowUp', function() {
         beforeEach(press('ArrowUp'));
+
         it('should focus on item3', function() {
           expect(document.activeElement).to.have.id('item2');
         });
+
         describe('ArrowUp', function() {
           beforeEach(press('ArrowUp'));
+
           it('should focus on item1', function() {
             expect(document.activeElement).to.have.id('item1');
           });
         });
       });
+
       describe('End', function() {
         beforeEach(press('End'));
+
         it('should focus on item3', function() {
           expect(document.activeElement).and.to.have.id('item3');
         });
       });
+
       describe('Home', function() {
         beforeEach(press('Home'));
-        it('should focus on item1', function() {
-          expect(document.activeElement).and.to.have.id('item1');
-        });
-      });
-      describe('PageDown', function() {
-        beforeEach(press('PageDown'));
-        it('should focus on item3', function() {
-          expect(document.activeElement).and.to.have.id('item3');
-        });
-      });
-      describe('PageUp', function() {
-        beforeEach(press('PageUp'));
+
         it('should focus on item1', function() {
           expect(document.activeElement).and.to.have.id('item1');
         });

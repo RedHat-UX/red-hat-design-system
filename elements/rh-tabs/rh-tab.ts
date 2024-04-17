@@ -1,4 +1,5 @@
 import type { PropertyValues } from 'lit';
+import type { RhTabsContext } from './context.js';
 
 import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
@@ -6,12 +7,15 @@ import { property } from 'lit/decorators/property.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 import { query } from 'lit/decorators/query.js';
 import { classMap } from 'lit/directives/class-map.js';
+import { consume } from '@lit/context';
 
 import { observed } from '@patternfly/pfe-core/decorators.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
+
+import { context } from './context.js';
 
 import styles from './rh-tab.css';
 
@@ -59,29 +63,35 @@ export class RhTab extends LitElement {
   @observed
   @property({ reflect: true, type: Boolean }) disabled = false;
 
+  @consume({ context, subscribe: true })
+  @property({ attribute: false })
+  private ctx?: RhTabsContext;
+
   /**
    * Sets color theme based on parent context
    */
   @colorContextConsumer() private on?: ColorTheme;
 
-  @queryAssignedElements({ slot: 'icon', flatten: true })
-  private icons!: Array<HTMLElement>;
+  @queryAssignedElements({ slot: 'icon', flatten: true }) private icons!: Array<HTMLElement>;
 
   @query('button') private button!: HTMLButtonElement;
 
   #internals = this.attachInternals();
 
-  connectedCallback() {
+  override connectedCallback() {
     super.connectedCallback();
     this.id ||= getRandomId(this.localName);
-    this.addEventListener('click', this.#clickHandler);
+    this.addEventListener('click', this.#onClick);
     this.#internals.role = 'tab';
   }
 
   render() {
-    const { on = '' } = this;
+    const { active, on = '' } = this;
+    const { box = false, vertical = false, firstTab, lastTab } = this.ctx ?? {};
+    const first = firstTab === this;
+    const last = lastTab === this;
     return html`
-      <div id="rhds-container" class="${classMap({ [on]: !!on })}">
+      <div id="container" class="${classMap({ active, box, vertical, first, last, [on]: !!on })}">
         <button part="button" ?disabled="${this.disabled}">
           <slot name="icon"
                 part="icon"
@@ -94,28 +104,22 @@ export class RhTab extends LitElement {
   }
 
   updated(changed: PropertyValues<this>) {
-    this.#internals.ariaSelected = String(this.ariaSelected);
-    if (changed.has('active')) {
-      this.#activeChanged();
+    if (changed.has('active') && this.active && !changed.get('active')) {
+      this.#activate();
     }
     if (changed.has('disabled')) {
       this.#disabledChanged();
     }
   }
 
-  #clickHandler() {
+  #onClick() {
     if (!this.disabled && this.#internals.ariaDisabled !== 'true' && this.ariaDisabled !== 'true') {
-      this.active = true;
+      this.#activate();
       this.focus(); // safari fix
     }
   }
 
-  #activeChanged() {
-    if (this.active && !this.disabled) {
-      this.#internals.ariaSelected = 'true';
-    } else {
-      this.#internals.ariaSelected = 'false';
-    }
+  #activate() {
     this.dispatchEvent(new TabExpandEvent(this.active, this));
   }
 

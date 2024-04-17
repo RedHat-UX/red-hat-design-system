@@ -142,7 +142,7 @@ export class RhTile extends LitElement {
   // TODO(bennyp): https://lit.dev/docs/data/context/#content
   @state() private radioGroup = false;
 
-  #internals = new InternalsController(this);
+  #internals = InternalsController.of(this);
 
   #logger = new Logger(this);
 

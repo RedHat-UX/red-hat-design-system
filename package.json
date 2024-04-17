@@ -11,6 +11,7 @@
     "./*": "./elements/*"
   },
   "contributors": [
+    "Adam Johnson <adjohnso@redhat.com>",
     "Benny Powers <bennyp@redhat.com>",
     "Brian Ferry <bferry@redhat.com>",
     "Corey Vickery <cvickery@redhat.com>",
@@ -33,6 +34,7 @@
     "!*.{spec,e2e}.ts",
     "elements/*/*.{js,md,map,txt,d.ts}",
     "elements/*/*-lightdom.css",
+    "elements/*/*-lightdom-shim.css",
     "elements/rh-audio-player/i18n/*.json",
     "!elements/*/docs/**/*.{js,html,css,md}",
     "!elements/*/demo/**/*.{js,html,css,md}",
@@ -119,7 +121,7 @@
       ]
     },
     "compile": {
-      "command": "ttsc",
+      "command": "tspc",
       "files": [
         "elements/**/*.ts",
         "lib/**/*.css",
@@ -196,7 +198,7 @@
     },
     "watch:compile": {
       "service": true,
-      "command": "ttsc --watch"
+      "command": "tspc --watch"
     },
     "watch:docs": {
       "service": true,
@@ -219,11 +221,12 @@
     }
   },
   "dependencies": {
-    "@patternfly/elements": "^2.4.0",
+    "@lit/context": "^1.1.1",
     "@patternfly/icons": "^1.0.2",
+    "@patternfly/pfe-core": "^3.0.0",
     "@rhds/tokens": "^2.0.1",
-    "lit": "^2.7.3",
-    "tslib": "^2.5.0"
+    "lit": "^3.1.2",
+    "tslib": "^2.6.2"
   },
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
@@ -234,10 +237,11 @@
     "@jspm/generator": "^1.1.7",
     "@lit/reactive-element": "^1.6.1",
     "@parse5/tools": "^0.3.0",
-    "@patternfly/create-element": "^1.0.1",
-    "@patternfly/eslint-config-elements": "^2.0.1",
+    "@patternfly/create-element": "^1.0.2",
+    "@patternfly/elements": "^3.0.0",
+    "@patternfly/eslint-config-elements": "^2.0.2",
     "@patternfly/eslint-plugin-elements": "^1.1.0",
-    "@patternfly/pfe-tools": "^1.5.0",
+    "@patternfly/pfe-tools": "^2.0.0",
     "@playwright/test": "^1.31.1",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-typescript": "^11.1.5",
@@ -269,8 +273,8 @@
     "stylelint-config-standard": "^31.0.0",
     "stylelint-config-standard-scss": "^7.0.1",
     "stylelint-stylistic": "^0.4.3",
-    "ttypescript": "^1.5.15",
-    "typescript": "^4.9.5",
+    "ts-patch": "^3.1.2",
+    "typescript": "^5.4.3",
     "wireit": "^0.9.5"
   }
 }
