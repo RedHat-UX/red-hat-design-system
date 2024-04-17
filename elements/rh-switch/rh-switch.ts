@@ -26,10 +26,7 @@ export class RhSwitch extends LitElement {
 
   declare shadowRoot: ShadowRoot;
 
-  #internals = new InternalsController(this);
-
-  // wont work till pfe3.0 merge
-  // #internals = InternalsController.of(this, { role: 'switch' });
+  #internals = InternalsController.of(this, { role: 'switch' });
 
   @property({ reflect: true }) label?: string;
 
