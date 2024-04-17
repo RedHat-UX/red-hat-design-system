@@ -27,52 +27,43 @@ export class MenuToggleEvent extends Event {
 export class RhMenu extends LitElement {
   static readonly styles = [styles];
 
+  @queryAssignedElements() private _menuItems!: HTMLElement[];
+
   @colorContextConsumer() private on?: ColorTheme;
 
   #tabindex = new RovingTabindexController<HTMLElement>(this, {
-    getItems: () => this.#menuItems ?? [],
+    getItems: () => this._menuItems ?? [],
   });
-
-  get #menuItems() {
-    const items = this._menuItems.filter((x): x is HTMLElement => x instanceof HTMLElement);
-    items.forEach(item => {
-      item.setAttribute('role', 'menuitem');
-    });
-    return items;
-  }
 
   get activeItem() {
     return this.#tabindex.activeItem;
   }
 
-  @queryAssignedElements() private _menuItems!: HTMLElement[];
-
   connectedCallback() {
     super.connectedCallback();
     this.id ||= getRandomId('menu');
     this.setAttribute('role', 'menu'); // TODO: use InternalsController.role when support/polyfill is better
+    this.#onSlotchange();
   }
 
   render() {
     const { on = '' } = this;
     return html`
-      <slot part="menu" class="${classMap({ [on]: !!on })}"></slot>
+      <slot part="menu"
+            class="${classMap({ [on]: !!on })}"
+            @slotchange="${this.#onSlotchange}"></slot>
     `;
+  }
+
+  #onSlotchange() {
+    for (const item of this._menuItems ?? []) {
+      item.setAttribute('role', 'menuitem');
+    }
   }
 
   activateItem(item: HTMLElement) {
     this.#tabindex.setActiveItem(item);
   }
-}
-
-/**
- * Given an element, returns self, or child that is not an rh-tooltip
- */
-function getItemElement(element: Element) {
-  return (
-      element.localName !== 'rh-tooltip' ? element
-    : element.querySelector(':not([slot=content])')
-  );
 }
 
 declare global {
