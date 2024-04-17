@@ -30,6 +30,8 @@ export default tseslint.config(
       '!core/*/demo/*.js',
       '!elements/*/demo/*.js',
 
+      '.cache/*',
+
     ],
   },
 );
