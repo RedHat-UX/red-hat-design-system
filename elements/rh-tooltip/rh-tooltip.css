@@ -21,7 +21,7 @@
 }
 
 #tooltip {
-  display: block;
+  display: none;
   opacity: 0;
   pointer-events: none;
   z-index: 10000;
@@ -76,8 +76,8 @@
       );
 }
 
-:not(.initialized) #tooltip {
-  display: none;
+.initialized #tooltip {
+  display: block;
 }
 
 #tooltip:after {
