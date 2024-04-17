@@ -168,7 +168,7 @@ export class RhTile extends LitElement {
     this.#internals.role = this.radioGroup ? 'radio' : this.checkable ? 'checkbox' : null;
     this.#internals.ariaChecked = !this.#isCheckable ? null : String(!!this.checked);
     this.#internals.ariaDisabled = !this.#isCheckable ? null : String(!!this.disabled);
-    this.#internals.ariaLabel = !(this.#isCheckable && this.accessibleLabel) ? null : this.accessibleLabel;
+    this.#internals.ariaLabel =
     if (changed.has('value') || changed.has('checked')) {
       const formValue = this.#isCheckable && this.checked ? this.value ?? null : null;
       this.#internals.setFormValue(formValue);
