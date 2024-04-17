@@ -54,9 +54,13 @@ export class RhNavigationSecondaryMenuSection extends LitElement {
 
     for (const list of lists) {
       if (!list.hasAttribute('aria-labelledby')) {
-        const header = isHeadingElement(list.previousElementSibling) ? list.previousElementSibling : null;
+        const header = isHeadingElement(list.previousElementSibling) ?
+          list.previousElementSibling
+          : null;
         if (!header) {
-          return this.#logger.warn('This links set doesn\'t have a valid header associated with it.');
+          return this.#logger.warn(
+            'This links set doesn\'t have a valid header associated with it.'
+          );
         } else {
           // add an ID to the header if we need it
           header.id ||= getRandomId('rh-navigation-secondary-menu-section');
@@ -74,7 +78,10 @@ class RhSecondaryNavMenuSection extends RhNavigationSecondaryMenuSection {
 
   constructor() {
     super();
-    this.#logger.warn('rh-secondary-nav-menu-section is deprecated. Use rh-navigation-secondary-menu-section instead.');
+    this.#logger.warn(
+      // eslint-disable-next-line @stylistic/max-len
+      'rh-secondary-nav-menu-section is deprecated. Use rh-navigation-secondary-menu-section instead.'
+    );
   }
 }
 

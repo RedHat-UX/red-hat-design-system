@@ -27,7 +27,10 @@ export class RhButton extends LitElement {
 
   static readonly formAssociated = true;
 
-  static override readonly shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
+  static override readonly shadowRootOptions = {
+    ...LitElement.shadowRootOptions,
+    delegatesFocus: true,
+  };
 
   /** Disables the button */
   @property({ reflect: true, type: Boolean }) disabled = false;
@@ -56,7 +59,11 @@ export class RhButton extends LitElement {
    *   toolbars or data lists.
    * - Tertiary: Tertiary buttons are flexible and can be used as needed.
    */
-  @property({ reflect: true }) variant: 'primary' | 'secondary' | 'tertiary' | 'close' | 'play' = 'primary';
+  @property({ reflect: true }) variant: 'primary'
+    | 'secondary'
+    | 'tertiary'
+    | 'close'
+    | 'play' = 'primary';
 
   /**
    * Use danger buttons for actions a user can take that are potentially

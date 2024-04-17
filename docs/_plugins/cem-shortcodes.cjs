@@ -212,8 +212,13 @@ class Renderers {
   }
 
   /** Render a table of element CSS Custom Properties */
-  renderCssCustomProperties(content, { header = 'CSS Custom Properties', level = 2, ...kwargs } = {}) {
-    const allCssProperties = this.manifest.getCssCustomProperties(this.packageTagName(kwargs)) ?? [];
+  renderCssCustomProperties(content, {
+    header = 'CSS Custom Properties',
+    level = 2,
+    ...kwargs
+  } = {}) {
+    const allCssProperties =
+      this.manifest.getCssCustomProperties(this.packageTagName(kwargs)) ?? [];
     const cssProperties = allCssProperties.filter(x => !x.deprecated);
     const deprecated = allCssProperties.filter(x => x.deprecated);
     return html`
@@ -326,7 +331,11 @@ class Renderers {
   }
 
   /** Render the installation instructions for the element */
-  renderInstallation(content, { header = 'Installation', level = 2, tagName = this.docsPage.tagName } = {}) {
+  renderInstallation(content, {
+    header = 'Installation',
+    level = 2,
+    tagName = this.docsPage.tagName,
+  } = {}) {
     return html`
       <section class="band">
         <h2>Installation</h2>

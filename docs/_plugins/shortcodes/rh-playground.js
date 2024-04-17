@@ -78,7 +78,11 @@ class RhPlayground extends LitElement {
     this.config = config;
     this.demos = Object.entries(config.files ?? {})
         .filter(([, { contentType }]) => contentType?.startsWith('text/html'))
-        .map(([filename, { label }]) => ({ filename, label, active: filename === 'demo/index.html' }));
+        .map(([filename, { label }]) => ({
+          filename,
+          label,
+          active: filename === 'demo/index.html',
+        }));
     await import('playground-elements');
     this.requestUpdate();
     this.show();

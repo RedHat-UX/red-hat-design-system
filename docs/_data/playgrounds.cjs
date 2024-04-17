@@ -26,7 +26,8 @@ function getDemoFilename(x) {
  * > One of `.`, or **WORD** (_>= 1x_)
  * `"`
  */
-const DEMO_SUBRESOURCE_RE = /(?<attr>href|src)="\/elements\/rh-(?<unprefixed>.*)\/(?<filename>.*)\.(?<extension>[.\w]+)"/g;
+const DEMO_SUBRESOURCE_RE =
+  /(?<attr>href|src)="\/elements\/rh-(?<unprefixed>.*)\/(?<filename>.*)\.(?<extension>[.\w]+)"/g;
 
 /**
  * `/elements/`
@@ -147,7 +148,12 @@ module.exports = async function(data) {
       const filename = getDemoFilename(demo);
 
       /** @see docs/_plugins/rhds.cjs demoPaths transform */
-      const base = url.pathToFileURL(path.join(process.cwd(), 'elements', primaryElementName, 'demo/'));
+      const base =
+        url.pathToFileURL(
+          path.join(process.cwd(),
+                    'elements',
+                    primaryElementName, 'demo/')
+        );
       const docsDir = url.pathToFileURL(path.join(process.cwd(), 'docs/'));
       const isMainDemo = filename === 'demo/index.html';
       const demoSlug = filename.split('/').at(1);

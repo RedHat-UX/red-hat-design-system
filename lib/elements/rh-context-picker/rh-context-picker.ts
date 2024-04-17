@@ -91,7 +91,8 @@ export class RhContextPicker extends LitElement {
 
   render() {
     const { on = 'dark', value = 'darkest' } = this;
-    const derivedLabel = this.#internals.ariaLabel ?? Array.from(this.#internals.labels, x => x.textContent).join();
+    const derivedLabel = this.#internals.ariaLabel
+      ?? Array.from(this.#internals.labels, x => x.textContent).join();
     return html`
       <div id="container" class="${classMap({ [on]: true })}">
           <input id="context-range"

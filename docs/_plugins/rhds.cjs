@@ -145,7 +145,12 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
         const { tagName } = tagNameMatch.groups;
 
         // slugify the value of each key in aliases creating a new cloned copy
-        const modifiedAliases = Object.fromEntries(Object.entries(aliases).map(([key, value]) => [slugify(key, { strict: true, lower: true }), value]));
+        const modifiedAliases =
+          Object.fromEntries(
+            Object.entries(aliases).map(
+              ([key, value]) => [slugify(key, { strict: true, lower: true }), value]
+            )
+          );
 
         // does the tagName exist in the aliases object?
         const key = Object.keys(modifiedAliases).find(key => modifiedAliases[key] === tagName);

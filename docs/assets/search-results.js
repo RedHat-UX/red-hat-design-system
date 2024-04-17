@@ -64,6 +64,6 @@ if (searchResults.length) {
 for (const cta of categoryCtas) {
   // mark category cards which contain tokens in the search results
   const categoryHasTokenResults = !!searchResults?.find(({ label }) =>
-    label.includes(cta.dataset.category)) ?? [];
+    label.includes(cta.dataset.category));
   cta.variant = categoryHasTokenResults ? 'secondary' : 'brick';
 }

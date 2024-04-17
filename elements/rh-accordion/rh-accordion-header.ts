@@ -50,7 +50,10 @@ export class RhAccordionHeader extends LitElement {
 
   static readonly styles = [styles];
 
-  static override readonly shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
+  static override readonly shadowRootOptions = {
+    ...LitElement.shadowRootOptions,
+    delegatesFocus: true,
+  };
 
   @property({ type: Boolean, reflect: true }) expanded = false;
 
@@ -169,7 +172,8 @@ export class RhAccordionHeader extends LitElement {
 
   #onClick(event: MouseEvent) {
     const expanded = !this.expanded;
-    const acc = event.composedPath().find((x): x is RhAccordion => x instanceof HTMLElement && x.localName === 'rh-accordion');
+    const acc = event.composedPath().find((x): x is RhAccordion =>
+      x instanceof HTMLElement && x.localName === 'rh-accordion');
     if (acc) {
       this.dispatchEvent(new AccordionHeaderChangeEvent(expanded, this, acc));
     }

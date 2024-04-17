@@ -62,11 +62,16 @@ export class RhNavigationSecondaryDropdown extends LitElement {
     const [link] = this.#slots.getSlotted<HTMLElement>('link');
     const [menu] = this.#slots.getSlotted<HTMLElement>('menu');
     if (link === undefined) {
-      this.#logger.warn('[rh-navigation-secondary-dropdown][slot="link"] expects a slotted <a> tag');
+      this.#logger.warn(
+        '[rh-navigation-secondary-dropdown][slot="link"] expects a slotted <a> tag'
+      );
       return;
     }
     if (menu === undefined) {
-      this.#logger.warn('[rh-navigation-secondary-dropdown][slot="menu"] expects a slotted <rh-navigation-secondary-menu> tag');
+      this.#logger.warn(
+        // eslint-disable-next-line @stylistic/max-len
+        '[rh-navigation-secondary-dropdown][slot="menu"] expects a slotted <rh-navigation-secondary-menu> tag'
+      );
       return;
     }
 
@@ -127,7 +132,9 @@ export class RhNavigationSecondaryDropdown extends LitElement {
     // menu as a RhNavigationSecondaryMenu in the slotted child is specific to rh-navigation-secondary.
     // If this component is abstracted to a standalone component. The RhNavigationSecondaryMenu
     // could possibly become a sub component of the abstraction instead.
-    const menu = this.#slots.getSlotted('menu').find(child => child instanceof RhNavigationSecondaryMenu) as RhNavigationSecondaryMenu;
+    const menu = this.#slots.getSlotted('menu').find(child =>
+      child instanceof RhNavigationSecondaryMenu
+    ) as RhNavigationSecondaryMenu;
     menu.visible = true;
   }
 
@@ -140,7 +147,9 @@ export class RhNavigationSecondaryDropdown extends LitElement {
     link?.setAttribute('aria-expanded', 'false');
     // Same as comment in #open()
     // The RhNavigationSecondaryMenu could possibly become a sub component of the abstraction instead.
-    const menu = this.#slots.getSlotted('menu').find(child => child instanceof RhNavigationSecondaryMenu) as RhNavigationSecondaryMenu;
+    const menu = this.#slots.getSlotted('menu').find(child =>
+      child instanceof RhNavigationSecondaryMenu
+    ) as RhNavigationSecondaryMenu;
     menu.visible = false;
   }
 
@@ -157,7 +166,9 @@ class RhSecondaryNavDropdown extends RhNavigationSecondaryDropdown {
 
   constructor() {
     super();
-    this.#logger.warn('rh-secondary-nav-dropdown is deprecated. Use rh-navigation-secondary-dropdown instead.');
+    this.#logger.warn(
+      'rh-secondary-nav-dropdown is deprecated. Use rh-navigation-secondary-dropdown instead.'
+    );
   }
 }
 

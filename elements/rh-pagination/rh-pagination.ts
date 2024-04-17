@@ -178,7 +178,9 @@ export class RhPagination extends LitElement {
     }
     for (const link of this.#links ?? []) {
       const url = new URL(link.href);
-      if (url.pathname === location.pathname && url.search === location.search && url.hash === location.hash) {
+      if (url.pathname === location.pathname
+        && url.search === location.search
+        && url.hash === location.hash) {
         return link;
       }
     }

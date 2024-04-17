@@ -122,8 +122,12 @@ export class RhTranscript extends LitElement {
         }
       }
       if (currentTime) {
-        const started = !!cue.startTime && Math.round(cue.startTime) < Math.round(currentTime) ? true : false;
-        const ended = !!cue.endTime && Math.round(cue.endTime) < Math.round(currentTime) ? true : false;
+        const started = !!cue.startTime
+          && Math.round(cue.startTime) < Math.round(currentTime) ?
+          true : false;
+        const ended = !!cue.endTime
+          && Math.round(cue.endTime) < Math.round(currentTime) ?
+          true : false;
         const active = started && !ended;
         cue.active = active;
         if (active) {

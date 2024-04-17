@@ -15,7 +15,10 @@ const cleanCSS = new CleanCSS({
   returnPromise: true,
 });
 
-export async function bundle({ outfile = 'rhds.min.js', external = [], additionalPackages = [] } = {}) {
+export async function bundle({
+  outfile = 'rhds.min.js',
+  external = [], additionalPackages = [],
+} = {}) {
   const resolveDir = join(fileURLToPath(import.meta.url), '../elements');
 
   const elementSources = await glob('./*/*-*.ts', { cwd: join(process.cwd(), 'elements') });

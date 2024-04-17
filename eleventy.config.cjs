@@ -4,7 +4,8 @@ Error.stackTraceLimit = 50;
 const SyntaxHighlightPlugin = require('@11ty/eleventy-plugin-syntaxhighlight');
 const DirectoryOutputPlugin = require('@11ty/eleventy-plugin-directory-output');
 const AnchorsPlugin = require('@patternfly/pfe-tools/11ty/plugins/anchors.cjs');
-const CustomElementsManifestPlugin = require('@patternfly/pfe-tools/11ty/plugins/custom-elements-manifest.cjs');
+const CustomElementsManifestPlugin =
+  require('@patternfly/pfe-tools/11ty/plugins/custom-elements-manifest.cjs');
 const CEMShortcodesPlugin = require('./docs/_plugins/cem-shortcodes.cjs');
 const OrderTagsPlugin = require('@patternfly/pfe-tools/11ty/plugins/order-tags.cjs');
 const TodosPlugin = require('@patternfly/pfe-tools/11ty/plugins/todos.cjs');
@@ -24,12 +25,12 @@ const isWatch =
 module.exports = function(eleventyConfig) {
   eleventyConfig.setQuietMode(true);
 
-  eleventyConfig.watchIgnores.add('docs/assets/redhat/');
-  eleventyConfig.watchIgnores.add('**/*.spec.ts');
-  eleventyConfig.watchIgnores.add('**/*.d.ts');
-  eleventyConfig.watchIgnores.add('**/*.js.map');
-  eleventyConfig.watchIgnores.add('elements/*/test/');
-  eleventyConfig.watchIgnores.add('lib/elements/*/test/');
+  eleventyConfig.watchIgnores?.add('docs/assets/redhat/');
+  eleventyConfig.watchIgnores?.add('**/*.spec.ts');
+  eleventyConfig.watchIgnores?.add('**/*.d.ts');
+  eleventyConfig.watchIgnores?.add('**/*.js.map');
+  eleventyConfig.watchIgnores?.add('elements/*/test/');
+  eleventyConfig.watchIgnores?.add('lib/elements/*/test/');
   eleventyConfig.addPassthroughCopy('docs/public/red-hat-outfit.css');
   eleventyConfig.addPassthroughCopy('docs/patterns/**/*.{svg,jpg,jpeg,png}');
   eleventyConfig.addPassthroughCopy('docs/CNAME');
@@ -59,8 +60,12 @@ module.exports = function(eleventyConfig) {
   });
 
   /** Bespoke import map for ux-dot pages and demos */
-  eleventyConfig.addPassthroughCopy({ 'node_modules/@lit/reactive-element': '/assets/packages/@lit/reactive-element' });
-  eleventyConfig.addPassthroughCopy({ 'elements': 'assets/packages/@rhds/elements/elements/' });
+  eleventyConfig.addPassthroughCopy({
+    'node_modules/@lit/reactive-element': '/assets/packages/@lit/reactive-element',
+  });
+  eleventyConfig.addPassthroughCopy({
+    'elements': 'assets/packages/@rhds/elements/elements/',
+  });
   eleventyConfig.addPassthroughCopy({ 'lib': 'assets/packages/@rhds/elements/lib/' });
   eleventyConfig.addPlugin(ImportMapPlugin, {
     nodemodulesPublicPath: '/assets/packages',
@@ -104,9 +109,13 @@ module.exports = function(eleventyConfig) {
   // RHDS Tokens docs
   eleventyConfig.addPlugin(DesignTokensPlugin);
 
-  eleventyConfig.addPassthroughCopy({ 'node_modules/@rhds/tokens/css/global.css': '/assets/rhds.css' });
+  eleventyConfig.addPassthroughCopy({
+    'node_modules/@rhds/tokens/css/global.css': '/assets/rhds.css',
+  });
 
-  eleventyConfig.addPassthroughCopy({ 'node_modules/@lit/reactive-element': '/assets/packages/@lit/reactive-element' });
+  eleventyConfig.addPassthroughCopy({
+    'node_modules/@lit/reactive-element': '/assets/packages/@lit/reactive-element',
+  });
 
   /** Generate and consume custom elements manifests */
   eleventyConfig.addPlugin(CustomElementsManifestPlugin, {

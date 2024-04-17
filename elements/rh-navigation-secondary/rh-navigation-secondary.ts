@@ -14,7 +14,10 @@ import '@rhds/elements/rh-surface/rh-surface.js';
 import './rh-navigation-secondary-menu-section.js';
 import './rh-navigation-secondary-overlay.js';
 
-import { RhNavigationSecondaryDropdown, SecondaryNavDropdownExpandEvent } from './rh-navigation-secondary-dropdown.js';
+import {
+  RhNavigationSecondaryDropdown,
+  SecondaryNavDropdownExpandEvent,
+} from './rh-navigation-secondary-dropdown.js';
 
 import { DirController } from '../../lib/DirController.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
@@ -284,7 +287,10 @@ export class RhNavigationSecondary extends LitElement {
   #onSlotchange() {
     this._nav?.forEach(nav => {
       this.#navItems = Array.from(
-        nav.querySelectorAll(':is(rh-navigation-secondary-dropdown, rh-secondary-nav-dropdown) > a, [slot="nav"] > li > a')
+        nav.querySelectorAll(
+          // eslint-disable-next-line @stylistic/max-len
+          ':is(rh-navigation-secondary-dropdown, rh-secondary-nav-dropdown) > a, [slot="nav"] > li > a'
+        )
       );
     });
     if (this.#rtiInit) {
@@ -298,6 +304,7 @@ export class RhNavigationSecondary extends LitElement {
   /* TODO: Abstract this out to a shareable function, should RTI handle something similar? */
   #focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
     return parent.querySelectorAll(
+      // eslint-disable-next-line @stylistic/max-len
       'a, button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"]):not([disabled]), details:not([disabled]), summary:not(:disabled)'
     );
   }
@@ -348,7 +355,9 @@ export class RhNavigationSecondary extends LitElement {
    * Gets all dropdowns
    */
   #allDropdowns(): RhNavigationSecondaryDropdown[] {
-    return Array.from(this.querySelectorAll('rh-navigation-secondary-dropdown, rh-secondary-nav-dropdown'));
+    return Array.from(
+      this.querySelectorAll('rh-navigation-secondary-dropdown, rh-secondary-nav-dropdown')
+    );
   }
 
   /**

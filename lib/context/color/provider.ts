@@ -30,7 +30,8 @@ export type ColorPalette = (
   | 'darkest'
 );
 
-export interface ColorContextProviderOptions<T extends ReactiveElement> extends ColorContextOptions<T> {
+export interface ColorContextProviderOptions<T extends ReactiveElement>
+  extends ColorContextOptions<T> {
   /** Attribute to set context. Providers only */
   attribute?: string;
 }
@@ -63,8 +64,10 @@ export class ColorContextProvider<
    * Cached (live) computed style declaration
    * @see https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle
    */
+  // eslint-disable-next-line no-unused-private-class-members
   #style: CSSStyleDeclaration;
 
+  // eslint-disable-next-line no-unused-private-class-members
   #initialized = false;
 
   #logger: Logger;
@@ -175,7 +178,11 @@ export function colorContextProvider<T extends ReactiveElement>(options?: ColorC
     const propOpts = klass.getPropertyOptions(_propertyName);
     const attribute = typeof propOpts.attribute === 'boolean' ? undefined : propOpts.attribute;
     klass.addInitializer(instance => {
-      const controller = new ColorContextProvider(instance as T, { propertyName, attribute, ...options });
+      const controller = new ColorContextProvider(instance as T, {
+        propertyName,
+        attribute,
+        ...options,
+      });
       // @ts-expect-error: this assignment is strictly for debugging purposes
       instance.__DEBUG_colorContextProvider = controller;
     });

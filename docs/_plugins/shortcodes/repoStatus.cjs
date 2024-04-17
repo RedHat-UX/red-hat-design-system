@@ -160,18 +160,18 @@ const STATUS_CHECKLIST = {
 
 /**
  * Reads repo status data from global data and outputs an array with component keys
- * @this {EleventyContext}
  */
 function getRepoData() {
   const docsPage = this.ctx._;
   const allStatuses = this.ctx.repoStatus ?? docsPage?.repoStatus ?? [];
   const title = this.ctx.title ?? docsPage?.title;
-  return allStatuses.find(component => component.name === title && component.type === 'Element')?.libraries;
+  return allStatuses.find(
+    component => component.name === title && component.type === 'Element'
+  )?.libraries;
 }
 
 /**
  * Calls getRepoData function and outputs a definition list for each component
- * @this {EleventyContext}
  */
 function repoStatusList({ heading = 'Status', level = 2 } = {}) {
   // Removing Documentation status from the repoStatusList
@@ -212,13 +212,15 @@ ${listItem.status}${STATUS_LEGEND[listItem.status].icon}
 
 /**
  * Reads component status data from global data (see above) and outputs a table for Design/Code status page
- * @this {EleventyContext}
  */
 function repoStatusTable() {
   const docsPage = this.ctx._;
   const allStatuses = this.ctx.repoStatus ?? docsPage?.repoStatus ?? [];
   // Filtering out 'Responsive' status from all the libraries
-  const elementsList = allStatuses.map(item => ({ ...item, libraries: item.libraries.filter(lib => lib.name !== 'Responsive') }));
+  const elementsList = allStatuses.map(item => ({
+    ...item,
+    libraries: item.libraries.filter(lib => lib.name !== 'Responsive'),
+  }));
 
   if (!Array.isArray(elementsList) || !elementsList.length) {
     return '';
@@ -275,7 +277,6 @@ ${listItem.libraries.map(lib => {
 
 /**
  * Calls getRepoData function and outputs a status checklist table for each component
- * @this {EleventyContext}
  */
 function repoStatusChecklist({ heading = 'Status checklist', level = 2 } = {}) {
   const headingLevel = Array.from({ length: level }, () => '#').join('');

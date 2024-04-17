@@ -232,7 +232,8 @@ export class RhDialog extends LitElement {
 
   protected _triggerChanged() {
     if (this.trigger) {
-      this.#triggerElement = (this.getRootNode() as Document | ShadowRoot).getElementById(this.trigger);
+      this.#triggerElement =
+        (this.getRootNode() as Document | ShadowRoot).getElementById(this.trigger);
       this.#triggerElement?.addEventListener('click', this.onTriggerClick);
     }
   }

@@ -249,6 +249,7 @@ export class RhAudioPlayer extends LitElement {
 
   #styles?: CSSStyleDeclaration;
 
+  // eslint-disable-next-line no-unused-private-class-members
   #headings = new HeadingLevelContextProvider(this);
 
   #mediaElement?: HTMLAudioElement;
@@ -349,7 +350,10 @@ export class RhAudioPlayer extends LitElement {
    * gets list of allowable playback rates
    */
   get #playbackRates() {
-    return [...Array(Math.round(this.#pbrMax / this.#pbrStep)).keys()].map(k=>k * this.#pbrStep + this.#pbrMin);
+    return [
+      ...Array(Math.round(this.#pbrMax / this.#pbrStep)).keys()].map(k =>
+      k * this.#pbrStep + this.#pbrMin
+    );
   }
 
   /**
@@ -715,7 +719,9 @@ export class RhAudioPlayer extends LitElement {
   }
 
   updated(changedProperties: PropertyValues<this>) {
-    if (changedProperties.has('volume') && !!this.#mediaElement && this.volume !== this.#mediaElement.volume) {
+    if (changedProperties.has('volume')
+      && !!this.#mediaElement
+      && this.volume !== this.#mediaElement.volume) {
       this.#mediaElement.volume = this.volume;
     }
     if (changedProperties.has('lang')) {
@@ -1027,7 +1033,9 @@ export class RhAudioPlayer extends LitElement {
     const panels = [this.#about, this.#subscribe, this.#transcript];
     panels.forEach(item => item?.toggleAttribute('hidden', panel !== item));
     this.expanded = !!panel && panels.includes(panel);
-    const focusElement = this.expanded ? this.shadowRoot?.getElementById('close') : this.shadowRoot?.getElementById('menu-button');
+    const focusElement = this.expanded ?
+      this.shadowRoot?.getElementById('close')
+      : this.shadowRoot?.getElementById('menu-button');
 
     setTimeout(() => {
       setTimeout(() => {
@@ -1119,7 +1127,12 @@ export class RhAudioPlayer extends LitElement {
     const label = this.#transcript?.label;
     const a = document.createElement('a');
     const title = [this.mediaseries, this.mediatitle, label].join(' ');
-    const filename = (this.mediatitle || this.mediaseries || label || 'transcript').replace(/[^\w^\d^-]/g, '');
+    const filename = (
+      this.mediatitle
+      || this.mediaseries
+      || label
+      || 'transcript'
+    ).replace(/[^\w^\d^-]/g, '');
     const contents = `${title}\n${transcript}`;
     a.setAttribute('href', `data:text/plain;charset=UTF-8,${encodeURIComponent(contents)}`);
     a.setAttribute('download', `${filename}.txt`);
@@ -1160,7 +1173,9 @@ export class RhAudioPlayer extends LitElement {
    */
   incrementPlaybackrate() {
     if (this.#mediaElement) {
-      this.#mediaElement.playbackRate = this.playbackRate = this.#validPlaybackRate(this.#mediaElement.playbackRate + this.#pbrStep);
+      this.#mediaElement.playbackRate =
+        this.playbackRate =
+        this.#validPlaybackRate(this.#mediaElement.playbackRate + this.#pbrStep);
     }
   }
 
@@ -1169,7 +1184,9 @@ export class RhAudioPlayer extends LitElement {
    */
   decrementPlaybackrate() {
     if (this.#mediaElement) {
-      this.#mediaElement.playbackRate = this.playbackRate = this.#validPlaybackRate(this.#mediaElement.playbackRate - this.#pbrStep);
+      this.#mediaElement.playbackRate =
+        this.playbackRate =
+        this.#validPlaybackRate(this.#mediaElement.playbackRate - this.#pbrStep);
     }
   }
 
@@ -1193,7 +1210,9 @@ export class RhAudioPlayer extends LitElement {
   seek(seconds: number) {
     this.#mediaElement?.setAttribute('seekable', 'seekable');
     if (this.#mediaElement) {
-      const time = this.#mediaEnd ? Math.max(this.#mediaStart, Math.min(seconds, this.#mediaEnd)) : -1;
+      const time = this.#mediaEnd ?
+        Math.max(this.#mediaStart, Math.min(seconds, this.#mediaEnd))
+        : -1;
       if (time >= 0) {
         this.#mediaElement.currentTime = time;
         this.requestUpdate();
