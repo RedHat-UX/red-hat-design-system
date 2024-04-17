@@ -5,17 +5,17 @@ const { copyCell, getTokenHref } = require('../tokensHelpers.cjs');
 /** quick and dirty dedent, also provides in-editor syntax highlighting */
 const html = (...args) =>
   String.raw(...args)
-    .split('\n')
-    .map(x => x.replace(/^ {6}/, ''))
-    .join('\n');
+      .split('\n')
+      .map(x => x.replace(/^ {6}/, ''))
+      .join('\n');
 
 /** @typedef {import('@patternfly/pfe-tools/11ty/DocsPage').DocsPage} DocsPage */
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPairedShortcode('renderCodeDocs',
-    function renderCodeDocs(content, kwargs = {}) {
-      const renderers = new Renderers(this, kwargs);
-      return renderers.renderAll(content);
-    }
+                                    function renderCodeDocs(content, kwargs = {}) {
+                                      const renderers = new Renderers(this, kwargs);
+                                      return renderers.renderAll(content);
+                                    }
   );
 };
 

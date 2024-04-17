@@ -55,7 +55,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(TOCPlugin, {
     tags: ['h2', 'h3', 'h4', 'h5', 'h6'],
     wrapperClass: 'table-of-contents',
-    headingText: 'Table of Contents'
+    headingText: 'Table of Contents',
   });
 
   /** Bespoke import map for ux-dot pages and demos */
@@ -72,7 +72,7 @@ module.exports = function(eleventyConfig) {
         '@patternfly/elements/': '/assets/packages/@patternfly/elements/',
         '@patternfly/icons/': '/assets/packages/@patternfly/icons/',
         '@patternfly/pfe-core/': '/assets/packages/@patternfly/pfe-core/',
-      }
+      },
     },
     localPackages: [
       // ux-dot dependencies
@@ -128,14 +128,14 @@ module.exports = function(eleventyConfig) {
     exclude: /\/elements\/.*\/demo\//,
     formatter($, existingids) {
       if (
-        !existingids.includes($.attr('id')) &&
-        $.attr('slot') &&
-        $.closest('pf-card')
+        !existingids.includes($.attr('id'))
+        && $.attr('slot')
+        && $.closest('pf-card')
       ) {
         return null;
       } else {
         return eleventyConfig.getFilter('slug')($.text())
-          .replace(/[&,+()$~%.'":*?!<>{}]/g, '');
+            .replace(/[&,+()$~%.'":*?!<>{}]/g, '');
       }
     },
   });
@@ -160,7 +160,7 @@ module.exports = function(eleventyConfig) {
       'component',
       'foundations',
       'getstarted',
-    ]
+    ],
   });
 
   return {

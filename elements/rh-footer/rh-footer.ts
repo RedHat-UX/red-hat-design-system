@@ -94,7 +94,7 @@ export class RhFooter extends LitElement {
   protected screenSize = new ScreenSizeController(this, 'md', {
     onChange: matches => {
       this.#compact = !matches;
-    }
+    },
   });
 
   override connectedCallback() {

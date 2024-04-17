@@ -79,7 +79,7 @@ export class RhCodeBlock extends LitElement {
       toAttribute(value) {
         return Array.isArray(value) ? value.join(' ') : '';
       },
-    }
+    },
   }) actions: ('copy' | 'wrap')[] = [];
 
   /** When set, the code block displays with compact spacing */
@@ -207,8 +207,8 @@ export class RhCodeBlock extends LitElement {
     const slot = this.shadowRoot?.getElementById('content') as HTMLSlotElement;
 
     const codes: HTMLElement[] = slot.assignedElements().flatMap(x =>
-        x instanceof HTMLScriptElement ||
-        x instanceof HTMLPreElement ? [x]
+        x instanceof HTMLScriptElement
+        || x instanceof HTMLPreElement ? [x]
       : []);
 
     const infos: CodeLineHeightsInfo[] = codes.map(element => {
@@ -299,14 +299,18 @@ export class RhCodeBlock extends LitElement {
     const tooltip = slot?.closest('rh-tooltip');
     tooltip?.hide();
     for (const el of slot?.assignedElements() ?? []) {
-      if (el instanceof HTMLElement) { el.hidden = el.dataset.codeBlockState !== 'active'; }
+      if (el instanceof HTMLElement) {
+        el.hidden = el.dataset.codeBlockState !== 'active';
+      }
     }
     this.requestUpdate();
     tooltip?.show();
     await new Promise(r => setTimeout(r, 5_000));
     tooltip?.hide();
     for (const el of slot?.assignedElements() ?? []) {
-      if (el instanceof HTMLElement) { el.hidden = el.dataset.codeBlockState === 'active'; }
+      if (el instanceof HTMLElement) {
+        el.hidden = el.dataset.codeBlockState === 'active';
+      }
     }
     this.requestUpdate();
     tooltip?.show();

@@ -70,8 +70,8 @@ export class RhContextPicker extends LitElement {
     converter: {
       fromAttribute(list: string) {
         return list?.split(',')
-          ?.map(x => x.trim())
-          ?.filter(x => RhContextPicker.paletteNames.includes(x as ColorPalette)) ?? [];
+            ?.map(x => x.trim())
+            ?.filter(x => RhContextPicker.paletteNames.includes(x as ColorPalette)) ?? [];
       },
       toAttribute(list: ColorPalette[]) {
         return list.join(',');
@@ -138,7 +138,9 @@ export class RhContextPicker extends LitElement {
   }
 
   #onChange(event: Event) {
-    if (event instanceof ContextChangeEvent) { event.stopPropagation(); }
+    if (event instanceof ContextChangeEvent) {
+      event.stopPropagation();
+    }
   }
 
   #onInput(event: Event) {

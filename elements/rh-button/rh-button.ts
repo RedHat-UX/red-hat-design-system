@@ -67,7 +67,9 @@ export class RhButton extends LitElement {
 
   @colorContextConsumer() private on?: ColorTheme;
 
-  get #hasIcon() { return !!this.icon; }
+  get #hasIcon() {
+    return !!this.icon;
+  }
 
   #internals = InternalsController.of(this);
 

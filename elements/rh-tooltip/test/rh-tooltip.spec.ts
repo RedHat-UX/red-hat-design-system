@@ -21,9 +21,9 @@ describe('<rh-tooltip>', function() {
     it('should upgrade', function() {
       const klass = customElements.get('rh-tooltip');
       expect(element)
-        .to.be.an.instanceOf(klass)
-        .and
-        .to.be.an.instanceOf(RhTooltip);
+          .to.be.an.instanceOf(klass)
+          .and
+          .to.be.an.instanceOf(RhTooltip);
     });
 
     it('passes the a11y audit', async function() {

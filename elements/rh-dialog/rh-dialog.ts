@@ -203,11 +203,11 @@ export class RhDialog extends LitElement {
           pauseYoutube(iframe);
         }
       }
-    } else if (oldValue == null ||
-               newValue == null ||
+    } else if (oldValue == null
+               || newValue == null
                // loosening types to prevent running these effects in unexpected circumstances
                // eslint-disable-next-line eqeqeq
-               oldValue == newValue) {
+               || oldValue == newValue) {
       return;
     } else if (this.open) {
       // This prevents background scroll

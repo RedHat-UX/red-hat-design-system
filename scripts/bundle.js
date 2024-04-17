@@ -23,7 +23,7 @@ export async function bundle({ outfile = 'rhds.min.js', external = [], additiona
   const elementFiles = Array.from(elementDirs, x => join(process.cwd(), `elements/${x}/${x}.js`));
 
   const contents = [...additionalPackages, ...elementFiles]
-    .map(x => `export * from '${x.replace('.ts', '.js')}';`).join('\n');
+      .map(x => `export * from '${x.replace('.ts', '.js')}';`).join('\n');
 
   await build({
     stdin: {
@@ -53,7 +53,7 @@ export async function bundle({ outfile = 'rhds.min.js', external = [], additiona
       minifyHTMLLiteralsPlugin(),
       litCssPlugin({
         include: /elements\/rh-(.*)\/(.*)\.css$/,
-        transform: source => cleanCSS.minify(source).then(x => x.styles)
+        transform: source => cleanCSS.minify(source).then(x => x.styles),
       }),
     ],
   });

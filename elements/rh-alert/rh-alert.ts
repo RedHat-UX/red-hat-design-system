@@ -27,7 +27,7 @@ const ICONS = {
           viewBox="${viewBox}">
         <path d="${path}"/>
       </svg>`;
-  }
+  },
 };
 
 export class AlertCloseEvent extends Event {

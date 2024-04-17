@@ -114,7 +114,7 @@ export class RhNavigationSecondary extends LitElement {
       const dropdownsOpen = this.#allDropdowns().some(x => x.expanded);
       this.mobileMenuExpanded = this.#compact && dropdownsOpen;
       this.overlayOpen = dropdownsOpen;
-    }
+    },
   });
 
   /**
@@ -427,8 +427,8 @@ export class RhNavigationSecondary extends LitElement {
    */
   public close(): void {
     this.#allDropdowns()
-      .forEach(dropdown =>
-        this.#closeDropdown(dropdown));
+        .forEach(dropdown =>
+          this.#closeDropdown(dropdown));
   }
 }
 

@@ -8,8 +8,8 @@ function groupBy(prop, xs) {
 
 function getDemoFilename(x) {
   return `demo/${(x.url.split('/demo/').pop() || `${x.primaryElementName}.html`).replace(/\/$/, '.html')}`
-    .replace('.html', '/index.html')
-    .replace(`${x.primaryElementName}/index.html`, 'index.html');
+      .replace('.html', '/index.html')
+      .replace(`${x.primaryElementName}/index.html`, 'index.html');
 }
 
 /**
@@ -63,16 +63,16 @@ function demoPaths(content, pathname) {
 
 function isModuleScript(node) {
   return (
-    node.tagName === 'script' &&
-    node.attrs.some(x => x.name === 'type' && x.value === 'module')
+    node.tagName === 'script'
+    && node.attrs.some(x => x.name === 'type' && x.value === 'module')
   );
 }
 
 function isStyleLink(node) {
   return (
-    node.tagName === 'link' &&
-    node.attrs.some(x => x.name === 'rel' && x.value === 'stylesheet') &&
-    node.attrs.some(x => x.name === 'href')
+    node.tagName === 'link'
+    && node.attrs.some(x => x.name === 'rel' && x.value === 'stylesheet')
+    && node.attrs.some(x => x.name === 'href')
   );
 }
 
@@ -130,11 +130,11 @@ module.exports = async function(data) {
         Tools.createCommentNode('playground-fold'),
         Tools.createElement('link', {
           rel: 'stylesheet',
-          href: 'https://static.redhat.com/libs/redhat/redhat-font/4/webfonts/red-hat-font.min.css'
+          href: 'https://static.redhat.com/libs/redhat/redhat-font/4/webfonts/red-hat-font.min.css',
         }),
         Tools.createElement('link', {
           rel: 'stylesheet',
-          href: 'https://static.redhat.com/libs/redhat/redhat-theme/6/advanced-theme.css'
+          href: 'https://static.redhat.com/libs/redhat/redhat-theme/6/advanced-theme.css',
         }),
         Tools.createElement('link', {
           rel: 'stylesheet',
@@ -154,10 +154,10 @@ module.exports = async function(data) {
 
       const addSubresourceURL = async subresourceURL => {
         if (subresourceURL && !subresourceURL.startsWith('http')) {
-          const subresourceFileURL = !subresourceURL.startsWith('/')
+          const subresourceFileURL = !subresourceURL.startsWith('/') ?
             // non-tabular ternary
             // eslint-disable-next-line operator-linebreak
-            ? new URL(subresourceURL, base)
+            new URL(subresourceURL, base)
             : new URL(subresourceURL.replace('/', './'), docsDir);
           try {
             const resourceName =
@@ -183,13 +183,13 @@ module.exports = async function(data) {
       });
 
       const hrefSubresourceElements = Tools.queryAll(fragment, node =>
-        Tools.isElementNode(node) &&
-          isStyleLink(node));
+        Tools.isElementNode(node)
+          && isStyleLink(node));
 
       const srcSubresourceElements = Tools.queryAll(fragment, node =>
-        Tools.isElementNode(node) &&
-        SRC_SUBRESOURCE_TAGNAMES.has(node.tagName) &&
-        hasLocalSrcAttr(node));
+        Tools.isElementNode(node)
+        && SRC_SUBRESOURCE_TAGNAMES.has(node.tagName)
+        && hasLocalSrcAttr(node));
 
       // register demo css resources
       for (const el of hrefSubresourceElements) {
@@ -219,9 +219,9 @@ module.exports = async function(data) {
       // HACK: https://github.com/google/playground-elements/issues/93#issuecomment-1775247123
       const inlineModules =
         Tools.queryAll(fragment, node =>
-          Tools.isElementNode(node) &&
-          isModuleScript(node) &&
-          !node.attrs.some(({ name }) => name === 'src'));
+          Tools.isElementNode(node)
+          && isModuleScript(node)
+          && !node.attrs.some(({ name }) => name === 'src'));
 
       Array.from(inlineModules).forEach((el, i) => {
         const moduleName = `${primaryElementName}-${demoSlug.replace('.html', '')}-inline-script-${i++}.js`;

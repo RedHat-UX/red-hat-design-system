@@ -23,9 +23,9 @@ describe('<rh-skip-link>', function() {
       element = await createFixture<RhSkipLink>(html`<rh-skip-link></rh-skip-link>`);
       const klass = customElements.get('rh-skip-link');
       expect(element)
-        .to.be.an.instanceOf(klass)
-        .and
-        .to.be.an.instanceOf(RhSkipLink);
+          .to.be.an.instanceOf(klass)
+          .and
+          .to.be.an.instanceOf(RhSkipLink);
     });
   });
 
@@ -47,7 +47,7 @@ describe('<rh-skip-link>', function() {
       expect(snapshot).to.deep.equal({
         role: 'WebArea',
         name: '',
-        children: [{ role: 'link', name: 'Skip to main content' }]
+        children: [{ role: 'link', name: 'Skip to main content' }],
       });
     });
 

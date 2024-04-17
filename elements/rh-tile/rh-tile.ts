@@ -279,9 +279,9 @@ export class RhTile extends LitElement {
   }
 
   #requestSelect(force?: boolean) {
-    if (this.checkable &&
-        !this.disabled &&
-        !this.disabledGroup) {
+    if (this.checkable
+        && !this.disabled
+        && !this.disabledGroup) {
       if (this.radioGroup) {
         this.dispatchEvent(new TileSelectEvent(force));
       } else {

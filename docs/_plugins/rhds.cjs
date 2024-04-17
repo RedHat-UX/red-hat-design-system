@@ -28,7 +28,9 @@ function demoPaths(content) {
       const el = $(this);
       const attr = el.attr('href') ? 'href' : 'src';
       const val = el.attr(attr);
-      if (!val) { return; }
+      if (!val) {
+        return;
+      }
       if (!val.startsWith('http') && !val.startsWith('/') && !val.startsWith('#')) {
         el.attr(attr, `${isNested ? '../' : ''}${val}`);
       } else if (val.startsWith('/elements/rh-')) {
@@ -50,7 +52,7 @@ const LIGHTDOM_PATH_RE = /href="\.(.*)"/;
 function prettyDate(dateStr, options = {}) {
   const { dateStyle = 'medium' } = options;
   return new Intl.DateTimeFormat('en-US', { dateStyle })
-    .format(new Date(dateStr));
+      .format(new Date(dateStr));
 }
 
 function getTagNameSlug(tagName, config) {
@@ -156,8 +158,8 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
             const [, path] = match.match(LIGHTDOM_PATH_RE) ?? [];
             const { pathname } = new URL(path, `file:///${outputPath}`);
             content = content.replace(`.${path}`, pathname
-              .replace(`/_site/elements/${redirect.old}/`, `/assets/packages/@rhds/elements/elements/${redirect.new}/`)
-              .replace('/demo/', '/'));
+                .replace(`/_site/elements/${redirect.old}/`, `/assets/packages/@rhds/elements/elements/${redirect.new}/`)
+                .replace('/demo/', '/'));
           }
         }
       }
@@ -166,10 +168,10 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   });
 
   eleventyConfig.addFilter('getTitleFromDocs', function(docs) {
-    return docs.find(x => x.docsPage?.title)?.alias ??
-      docs[0]?.alias ??
-      docs[0]?.docsPage?.title ??
-      eleventyConfig.getFilter('deslugify')(docs[0]?.slug);
+    return docs.find(x => x.docsPage?.title)?.alias
+      ?? docs[0]?.alias
+      ?? docs[0]?.docsPage?.title
+      ?? eleventyConfig.getFilter('deslugify')(docs[0]?.slug);
   });
 
   /** get the element overview from the manifest */
@@ -202,7 +204,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
       return {
         name: x,
         url: slug === x ? `/patterns/${slug}` : `/elements/${slug}`,
-        text: pfeconfig.aliases[x] || deslugify(slug)
+        text: pfeconfig.aliases[x] || deslugify(slug),
       };
     }).sort((a, b) => a.text < b.text ? -1 : a.text > b.text ? 1 : 0);
     return related;
@@ -215,7 +217,13 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   eleventyConfig.addCollection('sortedColor', async function(collectionApi) {
     const colorCollection = collectionApi.getFilteredByTags('color');
     return colorCollection.sort((a, b) => {
-      if (a.data.order > b.data.order) { return 1; } else if (a.data.order < b.data.order) { return -1; } else { return 0; }
+      if (a.data.order > b.data.order) {
+        return 1;
+      } else if (a.data.order < b.data.order) {
+        return -1;
+      } else {
+        return 0;
+      }
     });
   });
 
@@ -254,7 +262,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
         screenshotPath,
         permalink,
         href,
-        overviewHref
+        overviewHref,
       };
     }
 
@@ -262,20 +270,22 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
       /** @type {(import('@patternfly/pfe-tools/11ty/DocsPage').DocsPage & { repoStatus?: any[] })[]} */
       const elements = await eleventyConfig.globalData?.elements();
       const filePaths = (await glob(`elements/*/docs/*.md`, { cwd: process.cwd() }))
-        .filter(x => x.match(/\d{1,3}-[\w-]+\.md$/)); // only include new style docs
+          .filter(x => x.match(/\d{1,3}-[\w-]+\.md$/)); // only include new style docs
       const { repoStatus } = collectionApi.items.find(item => item.data?.repoStatus)?.data || [];
       return filePaths
-        .map(filePath => {
-          const props = getProps(filePath);
-          const docsPage = elements.find(x => x.tagName === props.tagName);
-          if (docsPage) { docsPage.repoStatus = repoStatus; }
-          const tabs = filePaths
-            .filter(x => x.split('/docs/').at(0) === (`elements/${props.tagName}`))
-            .sort()
-            .map(x => getProps(x));
-          return { docsPage, tabs, ...props };
-        })
-        .sort(alphabeticallyBySlug);
+          .map(filePath => {
+            const props = getProps(filePath);
+            const docsPage = elements.find(x => x.tagName === props.tagName);
+            if (docsPage) {
+              docsPage.repoStatus = repoStatus;
+            }
+            const tabs = filePaths
+                .filter(x => x.split('/docs/').at(0) === (`elements/${props.tagName}`))
+                .sort()
+                .map(x => getProps(x));
+            return { docsPage, tabs, ...props };
+          })
+          .sort(alphabeticallyBySlug);
     } catch (e) {
       // it's important to surface this
       // eslint-disable-next-line no-console

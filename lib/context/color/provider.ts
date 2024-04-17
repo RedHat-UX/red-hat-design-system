@@ -77,7 +77,7 @@ export class ColorContextProvider<
 
   get #local() {
     return ColorContextProvider
-      .contexts.get(this.host.getAttribute(this.#attribute) ?? '');
+        .contexts.get(this.host.getAttribute(this.#attribute) ?? '');
   }
 
   get value(): ColorTheme {

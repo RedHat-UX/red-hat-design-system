@@ -23,7 +23,7 @@ function getCategories(token) {
       'line-height': 'font',
     }[category] ?? category;
     const label = {
-      font: 'typography'
+      font: 'typography',
     }[category] ?? category;
     return { slug, category, label };
   });

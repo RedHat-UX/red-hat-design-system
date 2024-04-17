@@ -171,7 +171,7 @@ export class RhAudioPlayer extends LitElement {
     'subscribe': 'Subscribe',
     'transcript': 'Transcript',
     'autoscroll': 'Autoscroll',
-    'download': 'Download'
+    'download': 'Download',
   };
 
   /**  Audio's series name, e.g. Podcast series. */
@@ -267,11 +267,11 @@ export class RhAudioPlayer extends LitElement {
 
   #translation = new I18nController(this, {
     'en': {
-      ...RhAudioPlayer.enUS
+      ...RhAudioPlayer.enUS,
     },
     'en-US': {
-      ...RhAudioPlayer.enUS
-    }, ...this.microcopy ?? {}
+      ...RhAudioPlayer.enUS,
+    }, ...this.microcopy ?? {},
   });
 
   #menufloat = new FloatingDOMController(this, {
@@ -310,7 +310,7 @@ export class RhAudioPlayer extends LitElement {
   }
 
   get #panels(): (
-    | { id: 'about'; panel: RhAudioPlayerAbout}
+    | { id: 'about'; panel: RhAudioPlayerAbout }
     | { id: 'subscribe'; panel: RhAudioPlayerSubscribe }
     | { id: 'transcript'; panel: RhTranscript }
   )[] {
@@ -323,10 +323,10 @@ export class RhAudioPlayer extends LitElement {
 
   get #hasMenu() {
     return (
-      this.#panels.length > 1 ||
-      !!this.mediaseries ||
-      !!this.mediatitle ||
-      (this._abouts?.length ?? 0) > 0
+      this.#panels.length > 1
+      || !!this.mediaseries
+      || !!this.mediatitle
+      || (this._abouts?.length ?? 0) > 0
     );
   }
 
@@ -356,8 +356,8 @@ export class RhAudioPlayer extends LitElement {
    * gets media media time if set
    */
   get #mediaEnd() {
-    return (this.#mediaElement?.seekable?.end?.length || -1) > 0 &&
-    this.#mediaElement?.seekable?.end(0) ?
+    return (this.#mediaElement?.seekable?.end?.length || -1) > 0
+    && this.#mediaElement?.seekable?.end(0) ?
       this.#mediaElement?.seekable?.end(0)
       : false;
   }
@@ -450,15 +450,15 @@ export class RhAudioPlayer extends LitElement {
     const muteicon = !this.muted ? RhAudioPlayer.icons.volumeMax : RhAudioPlayer.icons.volumeMuted;
     const mutelabel = !this.muted ? this.#translation.get('mute') : this.#translation.get('unmute');
     const rewinddisabled =
-      !this.#mediaElement ||
-      this.#readyState < 1 ||
-      this.currentTime === 0 ||
-      !this.#mediaEnd;
+      !this.#mediaElement
+      || this.#readyState < 1
+      || this.currentTime === 0
+      || !this.#mediaEnd;
     const forwarddisabled =
-      !this.#mediaElement ||
-      this.#readyState < 1 ||
-      this.currentTime === this.duration ||
-      !this.#mediaEnd;
+      !this.#mediaElement
+      || this.#readyState < 1
+      || this.currentTime === this.duration
+      || !this.#mediaEnd;
     const playlabel =
         !this.paused ? this.#translation.get('pause')
       : this.#translation.get('play');
@@ -731,14 +731,24 @@ export class RhAudioPlayer extends LitElement {
   }
 
   #updateMenuLabels() {
-    if (this.#about?.menuLabel) { this.#about.menuLabel = this.#translation.get('about'); }
-    if (this.#subscribe?.menuLabel) { this.#subscribe.menuLabel = this.#translation.get('subscribe'); }
-    if (this.#transcript?.menuLabel) { this.#transcript.menuLabel = this.#translation.get('transcript'); }
+    if (this.#about?.menuLabel) {
+      this.#about.menuLabel = this.#translation.get('about');
+    }
+    if (this.#subscribe?.menuLabel) {
+      this.#subscribe.menuLabel = this.#translation.get('subscribe');
+    }
+    if (this.#transcript?.menuLabel) {
+      this.#transcript.menuLabel = this.#translation.get('transcript');
+    }
   }
 
   #updateTranscriptLabels() {
-    if (this.#transcript?.autoscrollLabel) { this.#transcript.autoscrollLabel = this.#translation.get('autoscroll'); }
-    if (this.#transcript?.downloadLabel) { this.#transcript.downloadLabel = this.#translation.get('download'); }
+    if (this.#transcript?.autoscrollLabel) {
+      this.#transcript.autoscrollLabel = this.#translation.get('autoscroll');
+    }
+    if (this.#transcript?.downloadLabel) {
+      this.#transcript.downloadLabel = this.#translation.get('download');
+    }
   }
 
   #cleanUpListeners() {
@@ -1061,8 +1071,8 @@ export class RhAudioPlayer extends LitElement {
   #onMenuFocusout(event: FocusEvent) {
     const { relatedTarget } = event;
     if (
-      relatedTarget instanceof HTMLElement &&
-      relatedTarget.closest('rh-menu') !== this.shadowRoot?.getElementById('menu')
+      relatedTarget instanceof HTMLElement
+      && relatedTarget.closest('rh-menu') !== this.shadowRoot?.getElementById('menu')
     ) {
       setTimeout(() => this.#hideMenu(), 300);
     }
@@ -1079,7 +1089,9 @@ export class RhAudioPlayer extends LitElement {
   async #showMenu() {
     const menu = this.shadowRoot?.getElementById('menu') as RhMenu;
     const button = this.shadowRoot?.getElementById('menu-button') as HTMLElement;
-    if (!menu || !button) { return; }
+    if (!menu || !button) {
+      return;
+    }
     await this.#positionMenu();
     await this.updateComplete;
     if (this.#lastActiveMenuItem) {

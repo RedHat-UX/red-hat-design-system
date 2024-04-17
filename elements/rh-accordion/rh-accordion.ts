@@ -82,7 +82,7 @@ export class RhAccordion extends LitElement {
    */
   @property({
     attribute: 'expanded-index',
-    converter: NumberListConverter
+    converter: NumberListConverter,
   })
   get expandedIndex() {
     return this.#expandedIndex;
@@ -302,7 +302,7 @@ export class RhAccordion extends LitElement {
    * Accepts an optional parent accordion to search for headers and panels.
    */
   public async expand(index: number, parentAccordion?: RhAccordion) {
-    const allHeaders: Array<RhAccordionHeader> = this.#allHeaders(parentAccordion);
+    const allHeaders: RhAccordionHeader[] = this.#allHeaders(parentAccordion);
 
     const header = allHeaders[index];
     if (!header) {

@@ -33,7 +33,13 @@ const syntaxes = new Map(Object.entries({
 /** @return {decl is import('custom-elements-manifest').CustomElementDeclaration} */
 const isCustomElementDeclaration = decl => decl.customElement;
 
-const exists = async path => { try { return !!await stat(path); } catch { return false; } };
+const exists = async path => {
+  try {
+    return !!await stat(path);
+  } catch {
+    return false;
+  }
+};
 
 const byLocaleName = (a, b) => a.name.localeCompare(b.name);
 

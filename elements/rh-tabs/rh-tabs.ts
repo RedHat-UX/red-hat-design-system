@@ -228,8 +228,8 @@ export class RhTabs extends LitElement {
   }
 
   #onExpand(event: Event) {
-    if (event instanceof TabExpandEvent &&
-      !event.defaultPrevented && this.tabs.includes(event.tab)) {
+    if (event instanceof TabExpandEvent
+      && !event.defaultPrevented && this.tabs.includes(event.tab)) {
       this.select(event.tab);
     }
   }

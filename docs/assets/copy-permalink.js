@@ -47,7 +47,7 @@ customElements.define('copy-permalink', class CopyPermalink extends HTMLElement 
   constructor() {
     super();
     this.attachShadow({ mode: 'open' })
-      .append(hPermalinkTpl.content.cloneNode(true));
+        .append(hPermalinkTpl.content.cloneNode(true));
     this.shadowRoot.adoptedStyleSheets = [hPermalinkStyle];
     const button = this.shadowRoot.getElementById('button');
     button.setAttribute('aria-label', this.getAttribute('copy-button-label') ?? 'Copy link to clipboard');
