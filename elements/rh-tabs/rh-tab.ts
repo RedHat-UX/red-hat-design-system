@@ -7,7 +7,6 @@ import { property } from 'lit/decorators/property.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 import { query } from 'lit/decorators/query.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { state } from 'lit/decorators/state.js';
 import { consume } from '@lit/context';
 
 import { observed } from '@patternfly/pfe-core/decorators.js';
@@ -65,7 +64,7 @@ export class RhTab extends LitElement {
   @property({ reflect: true, type: Boolean }) disabled = false;
 
   @consume({ context, subscribe: true })
-  @state()
+  @property({ attribute: false })
   private ctx?: RhTabsContext;
 
   /**
@@ -88,8 +87,7 @@ export class RhTab extends LitElement {
 
   render() {
     const { active, on = '' } = this;
-    const { vertical = false, firstTab, lastTab } = this.ctx ?? {};
-    const box = this.ctx?.box ?? false;
+    const { box = false, vertical = false, firstTab, lastTab } = this.ctx ?? {};
     const first = firstTab === this;
     const last = lastTab === this;
     return html`

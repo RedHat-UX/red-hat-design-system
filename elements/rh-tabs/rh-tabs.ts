@@ -95,12 +95,10 @@ export class RhTabs extends LitElement {
    */
   @property({ reflect: true, type: Boolean }) centered? = false;
 
-  @provide({ context }) private ctx?: RhTabsContext;
-
   /**
    * Sets tabs to a boxed style with or without an inset
    */
-  @property({ reflect: true }) box?: 'box' | 'inset' | null = null;
+  @property({ reflect: true }) box?: 'box' | 'inset';
 
   /**
    * Sets the alignment of the tabs vertical
@@ -123,6 +121,13 @@ export class RhTabs extends LitElement {
   @colorContextConsumer() private on?: ColorTheme;
 
   @query('[part="tabs"]') private tabList!: HTMLElement;
+
+  get #ctx(): RhTabsContext {
+    const { activeTab, box, manual, vertical } = this;
+    const firstTab = this.#firstTab;
+    const lastTab = this.#lastTab;
+    return { activeTab, box, firstTab, lastTab, manual, vertical };
+  }
 
   protected get canShowScrollButtons(): boolean {
     return !this.vertical;
@@ -160,6 +165,8 @@ export class RhTabs extends LitElement {
     return this.tabs.at(-1);
   }
 
+  @provide({ context }) private ctx = this.#ctx;
+
   override connectedCallback() {
     super.connectedCallback();
     this.id ||= getRandomId(this.localName);
@@ -174,13 +181,14 @@ export class RhTabs extends LitElement {
     } else if (changed.has('activeTab') && this.activeTab) {
       this.select(this.activeTab);
     } else {
-      // this.#updateActive();
+      this.#updateActive();
     }
+    this.ctx = this.#ctx;
   }
 
   async firstUpdated() {
     this.tabList.addEventListener('scroll', this.#overflow.onScroll.bind(this));
-    // this.#onSlotchange();
+    this.#onSlotchange();
   }
 
   override render() {
@@ -239,10 +247,6 @@ export class RhTabs extends LitElement {
         this.#tabs.panelFor(tab)?.toggleAttribute('hidden', !tab.active);
       });
     }
-    const { activeTab, box = null, vertical } = this;
-    const firstTab = this.#firstTab;
-    const lastTab = this.#lastTab;
-    this.ctx = { activeTab, box, vertical, firstTab, lastTab };
     this.#overflow.update();
   }
 
