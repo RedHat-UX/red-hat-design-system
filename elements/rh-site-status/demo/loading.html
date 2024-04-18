@@ -1,0 +1,32 @@
+<script type="module">
+  import { overrideFetch } from '../fetch-override.js';
+  overrideFetch(
+    true,
+    200,
+    'OK',
+    () => new Promise(resolve => {
+      setTimeout(() => resolve({ status: { indicator: 'none', description: 'All Systems Operational' } }), 100000);
+    })
+  );
+</script>
+
+<rh-site-status></rh-site-status>
+
+<p>Example of translated loading text</p>
+<rh-context-demo lang="fr">
+  <rh-site-status>
+    <span slot="loading-text">Chargement</span>
+  </rh-site-status>
+</rh-context-demo>
+
+<script type="module">
+  import '@rhds/elements/rh-site-status/rh-site-status.js';
+  import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
+</script>
+
+<style>
+  rh-context-demo {
+    height: unset;
+    margin: unset;
+  }
+</style>
