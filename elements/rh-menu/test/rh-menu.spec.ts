@@ -27,9 +27,9 @@ describe('<rh-menu>', function() {
   it('should upgrade', function() {
     const klass = customElements.get('rh-menu');
     expect(element)
-      .to.be.an.instanceOf(klass)
-      .and
-      .to.be.an.instanceOf(RhMenu);
+        .to.be.an.instanceOf(klass)
+        .and
+        .to.be.an.instanceOf(RhMenu);
   });
 
   it('instantiates imperatively', function() {

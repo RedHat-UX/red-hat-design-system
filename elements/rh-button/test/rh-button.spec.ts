@@ -11,8 +11,8 @@ describe('<rh-button>', function() {
     const element = await createFixture<RhButton>(template);
     const klass = customElements.get('rh-button');
     expect(element)
-      .to.be.an.instanceOf(klass)
-      .and
-      .to.be.an.instanceOf(RhButton);
+        .to.be.an.instanceOf(klass)
+        .and
+        .to.be.an.instanceOf(RhButton);
   });
 });

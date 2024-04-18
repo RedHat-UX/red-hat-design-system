@@ -40,8 +40,8 @@ export class HeadingLevelContextProvider extends HeadingLevelController {
       host.dispatchEvent(fired);
     }
     this.level =
-      this.host.getAttribute(this.options?.attribute ?? '') ??
-      this.#computeLevelFromChildren();
+      this.host.getAttribute(this.options?.attribute ?? '')
+      ?? this.#computeLevelFromChildren();
   }
 
   #computeLevelFromChildren() {

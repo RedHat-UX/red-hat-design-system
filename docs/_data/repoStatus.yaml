@@ -249,7 +249,21 @@
     - name: webRH
       status: Planned
     - name: Documentation
-      status: Ready  
+      status: Ready
+- name: "Site Status"
+  type: "Element"
+  overallStatus: "New"
+  libraries:
+    - name: Figma library
+      status: Ready
+    - name: Responsive
+      status: Ready
+    - name: RH Elements
+      status: Ready
+    - name: webRH
+      status: Planned
+    - name: Documentation
+      status: Ready
 - name: "Spinner"
   type: "Element"
   overallStatus: "Available"

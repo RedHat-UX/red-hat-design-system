@@ -11,8 +11,8 @@ describe('<rh-subnav>', function() {
     const el = await createFixture <RhSubnav>(element);
     const klass = customElements.get('rh-subnav');
     expect(el)
-      .to.be.an.instanceOf(klass)
-      .and
-      .to.be.an.instanceOf(RhSubnav);
+        .to.be.an.instanceOf(klass)
+        .and
+        .to.be.an.instanceOf(RhSubnav);
   });
 });

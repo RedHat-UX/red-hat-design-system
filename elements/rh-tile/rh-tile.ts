@@ -163,12 +163,16 @@ export class RhTile extends LitElement {
     this.addEventListener('click', this.#onClick);
   }
 
-  /** Update the internal accessible representation of the element's state */
+  /**
+   * Update the internal accessible representation of the element's state
+   * @param changed - the reactive properties which changed this cycle, and their old values
+   */
   override async willUpdate(changed: PropertyValues<this>) {
     this.#internals.role = this.radioGroup ? 'radio' : this.checkable ? 'checkbox' : null;
     this.#internals.ariaChecked = !this.#isCheckable ? null : String(!!this.checked);
     this.#internals.ariaDisabled = !this.#isCheckable ? null : String(!!this.disabled);
-    this.#internals.ariaLabel = !(this.#isCheckable && this.accessibleLabel) ? null : this.accessibleLabel;
+    this.#internals.ariaLabel =
+      !(this.#isCheckable && this.accessibleLabel) ? null : this.accessibleLabel;
     if (changed.has('value') || changed.has('checked')) {
       const formValue = this.#isCheckable && this.checked ? this.value ?? null : null;
       this.#internals.setFormValue(formValue);
@@ -183,7 +187,7 @@ export class RhTile extends LitElement {
   render() {
     const { bleed, compact, checkable, checked, desaturated, on = '' } = this;
     const disabled = this.disabledGroup || this.disabled || this.#internals.formDisabled;
-    const hasSlottedIcon = this.#slots.getSlotted('icon').length > 0 ?? false;
+    const hasSlottedIcon = this.#slots.hasSlotted('icon');
     return html`
       <div id="outer" class="${classMap({
             bleed,
@@ -239,7 +243,7 @@ export class RhTile extends LitElement {
     if (this.checkable && mode === 'restore') {
       const [maybeControlMode, maybeValue] = state.split('/');
       if (maybeValue ?? maybeControlMode === this.value) {
-        this.#requestSelect(!!this.radioGroup ?? true);
+        this.#requestSelect(!!this.radioGroup);
       }
     }
   }
@@ -271,6 +275,7 @@ export class RhTile extends LitElement {
 
   /**
    * handles tile click
+   * @param event click event
    */
   #onClick(event: Event) {
     if (event.target === this) {
@@ -279,9 +284,9 @@ export class RhTile extends LitElement {
   }
 
   #requestSelect(force?: boolean) {
-    if (this.checkable &&
-        !this.disabled &&
-        !this.disabledGroup) {
+    if (this.checkable
+        && !this.disabled
+        && !this.disabledGroup) {
       if (this.radioGroup) {
         this.dispatchEvent(new TileSelectEvent(force));
       } else {
@@ -292,6 +297,7 @@ export class RhTile extends LitElement {
 
   /**
    * Prevent scrolling when spacebar is pressed down
+   * @param event keydown
    */
   #onKeydown(event: KeyboardEvent) {
     switch (event.key) {
@@ -306,6 +312,7 @@ export class RhTile extends LitElement {
 
   /**
    * handles key up and toggles input
+   * @param event keyup
    */
   #onKeyup(event: KeyboardEvent) {
     switch (event.key) {

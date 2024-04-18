@@ -158,9 +158,9 @@ describe('<rh-footer>', function() {
     it('should upgrade', async function() {
       const klass = customElements.get('rh-footer');
       expect(element)
-        .to.be.an.instanceOf(klass)
-        .and
-        .to.be.an.instanceOf(RhFooter);
+          .to.be.an.instanceOf(klass)
+          .and
+          .to.be.an.instanceOf(RhFooter);
     });
 
     it('passes the a11y audit', function() {
@@ -177,9 +177,9 @@ describe('<rh-footer>', function() {
     it('universal should upgrade', async function() {
       const klass = customElements.get('rh-footer-universal');
       expect(universalFooter)
-        .to.be.an.instanceOf(klass)
-        .and
-        .to.be.an.instanceOf(RhFooterUniversal);
+          .to.be.an.instanceOf(klass)
+          .and
+          .to.be.an.instanceOf(RhFooterUniversal);
     });
 
     it('universal passes the a11y audit', async function() {

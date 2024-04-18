@@ -72,7 +72,7 @@ export class RhTab extends LitElement {
    */
   @colorContextConsumer() private on?: ColorTheme;
 
-  @queryAssignedElements({ slot: 'icon', flatten: true }) private icons!: Array<HTMLElement>;
+  @queryAssignedElements({ slot: 'icon', flatten: true }) private icons!: HTMLElement[];
 
   @query('button') private button!: HTMLButtonElement;
 
