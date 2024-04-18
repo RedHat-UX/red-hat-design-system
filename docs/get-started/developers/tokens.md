@@ -107,7 +107,7 @@ Download the VSIX bundle that’s linked at the bottom of our [“Release v1.0.0
 
 #### Load snippets in Neovim
 
-Use LunaSnip to load snippets in Neovim:
+Use LuaSnip to load snippets in Neovim:
 
 <rh-code-block>
   <script type="text/sample-javascript">
