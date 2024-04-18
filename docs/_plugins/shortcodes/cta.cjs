@@ -1,11 +1,14 @@
 const { attrMap } = require('./helpers.cjs');
 
 module.exports = function(eleventyConfig) {
-  eleventyConfig.addPairedShortcode('cta',
+  eleventyConfig.addPairedShortcode(
+    'cta',
     /**
      * Render a Call to Action
-     * @param {string} content
-     * @param {Record<string, unknown>} attrs
+     * @param {string} content shortcode content
+     * @param {object} [attrs] cta link attrs
+     * @param {object} [attrs.href] cta link href
+     * @param {object} [attrs.target] optional cta link target
      */
     async function cta(content, {
       href = '#',

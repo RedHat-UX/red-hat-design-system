@@ -50,7 +50,10 @@ export class RhAccordionHeader extends LitElement {
 
   static readonly styles = [styles];
 
-  static override readonly shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
+  static override readonly shadowRootOptions = {
+    ...LitElement.shadowRootOptions,
+    delegatesFocus: true,
+  };
 
   @property({ type: Boolean, reflect: true }) expanded = false;
 
@@ -144,7 +147,7 @@ export class RhAccordionHeader extends LitElement {
       return void this.#logger.warn('No header content provided');
     } else if (this.firstElementChild) {
       const [heading, ...otherContent] = Array.from(this.children)
-        .filter((x): x is HTMLElement => !x.hasAttribute('slot') && isPorHeader(x));
+          .filter((x): x is HTMLElement => !x.hasAttribute('slot') && isPorHeader(x));
 
       // If there is no content inside the slot, return empty with a warning
       // else, if there is more than 1 element in the slot, capture the first h-tag
@@ -174,7 +177,8 @@ export class RhAccordionHeader extends LitElement {
 
   #onClick(event: MouseEvent) {
     const expanded = !this.expanded;
-    const acc = event.composedPath().find((x): x is RhAccordion => x instanceof HTMLElement && x.localName === 'rh-accordion');
+    const acc = event.composedPath().find((x): x is RhAccordion =>
+      x instanceof HTMLElement && x.localName === 'rh-accordion');
     if (acc) {
       this.dispatchEvent(new AccordionHeaderChangeEvent(expanded, this, acc));
     }
