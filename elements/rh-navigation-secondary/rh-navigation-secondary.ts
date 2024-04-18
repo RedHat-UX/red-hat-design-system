@@ -152,8 +152,8 @@ export class RhNavigationSecondary extends LitElement {
     const dropdownPalette = this.#compact ? 'lightest' : this.colorPalette;
     return html`
       <nav part="nav"
-          class="${classMap({ compact: this.#compact, rtl })}"
-          aria-label="${this.#label}">
+           class="${classMap({ compact: this.#compact, rtl })}"
+           aria-label="${this.#label}">
         ${this.#logoCopy}
         <div id="container" part="container" class="${classMap({ expanded })}">
           <slot name="logo" id="logo"></slot>
@@ -161,7 +161,7 @@ export class RhNavigationSecondary extends LitElement {
                   aria-expanded="${String(expanded) as 'true' | 'false'}"
                   @click="${this.#toggleMobileMenu}"><slot name="mobile-menu">Menu</slot></button>
           <rh-surface color-palette="${dropdownPalette}">
-            <slot name="nav"></slot>
+            <slot name="nav" @slotchange="${() => this.#tabindex.updateItems()}"></slot>
             <div id="cta" part="cta">
               <slot name="cta"></slot>
             </div>
