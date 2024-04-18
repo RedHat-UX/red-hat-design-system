@@ -8,6 +8,7 @@
   "exports": {
     ".": "./rhds.min.js",
     "./lib/*": "./lib/*",
+    "./react/*": "./react/elements/*",
     "./*": "./elements/*"
   },
   "contributors": [
@@ -109,6 +110,7 @@
       "dependencies": [
         "patch",
         "analyze",
+        "react-wrappers",
         "compile",
         "bundle",
         "docs"
@@ -133,6 +135,19 @@
         "lib/**/*.{d.ts,js,map}",
         "elements/rh-secondary-nav/test/fixtures.js",
         "!elements/*/{demo,test}/**/*.js"
+      ]
+    },
+    "react-wrappers": {
+      "command": "npx tsx scripts/generate-react-wrappers.ts",
+      "dependencies": [
+        "analyze"
+      ],
+      "files": [
+        "custom-elements.json",
+        "scripts/generate-react-wrappers.ts"
+      ],
+      "output": [
+        "react/**/*"
       ]
     },
     "bundle": {
