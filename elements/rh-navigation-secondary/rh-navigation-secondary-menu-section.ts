@@ -11,15 +11,11 @@ import styles from './rh-navigation-secondary-menu-section.css';
 /**
  * A menu section which auto upgrades accessibility for headers and sibling list
  * @summary 'A menu section which auto upgrades accessibility for headers and sibling list'
- *
  * @slot header     - Adds a header tag to section, expects `<h1> | <h2> | <h3> | <h4> | <h5> | <h6>` element
  * @slot links      - Adds a ul tag to section, expects `<ul> | <ol>` element
  * @slot cta        - Adds a section level CTA, expects `<rh-cta>` element
- *
  * @csspart container    - container, <section> element
- *
- *
-**/
+ */
 @customElement('rh-navigation-secondary-menu-section')
 export class RhNavigationSecondaryMenuSection extends LitElement {
   static readonly styles = [styles];
@@ -47,9 +43,8 @@ export class RhNavigationSecondaryMenuSection extends LitElement {
    * `aria-labelledby` attribute finds the previousElementSibling header
    * `<h1-6>` tags if available assigns an id or uses preexisting id
    * to that header, then uses that id to the list on the `aria-labelledby`.
-   * @returns {void}
    */
-  #updateAccessibility(): void {
+  #updateAccessibility() {
     const lists = this.querySelectorAll(':is([slot="links"]):is(ul, ol)');
 
     for (const list of lists) {
@@ -72,6 +67,7 @@ export class RhNavigationSecondaryMenuSection extends LitElement {
   }
 }
 
+/** @deprecated use rh-navigation-secondary-menu-section */
 @customElement('rh-secondary-nav-menu-section')
 class RhSecondaryNavMenuSection extends RhNavigationSecondaryMenuSection {
   #logger = new Logger(this);
@@ -79,8 +75,7 @@ class RhSecondaryNavMenuSection extends RhNavigationSecondaryMenuSection {
   constructor() {
     super();
     this.#logger.warn(
-      // eslint-disable-next-line @stylistic/max-len
-      'rh-secondary-nav-menu-section is deprecated. Use rh-navigation-secondary-menu-section instead.'
+      `rh-secondary-nav-menu-section is deprecated. Use rh-navigation-secondary-menu-section instead.`
     );
   }
 }

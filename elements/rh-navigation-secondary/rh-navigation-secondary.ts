@@ -39,28 +39,35 @@ export type NavPalette = Extract<ColorPalette, (
 
 import styles from './rh-navigation-secondary.css';
 
+/* TODO: Abstract this out to a shareable function, should RTI handle something similar? */
+function focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
+  return parent.querySelectorAll(`a,
+                                  button:not([disabled]),
+                                  input:not([disabled]),
+                                  select:not([disabled]),
+                                  textarea:not([disabled]),
+                                  [tabindex]:not([tabindex="-1"]):not([disabled]),
+                                  details:not([disabled]),
+                                  summary:not(:disabled)`);
+}
+
 /**
  * The Secondary navigation is used to connect a series of pages together. It displays wayfinding content and links relevant to the page it is placed on. It should be used in conjunction with the [primary navigation](../navigation-primary).
  *
  * @summary Propagates related content across a series of pages
- *
  * @slot logo           - Logo added to the main nav bar, expects `<a>Text</a> | <a><svg/></a> | <a><img/></a>` element
  * @slot nav            - Navigation list added to the main nav bar, expects `<ul>` element
  * @slot cta            - Nav bar level CTA, expects `<rh-cta>` element
  * @slot mobile-menu    - Text label for the mobile menu button, for l10n. Defaults to "Menu"
- *
  * @csspart nav         - container, `<nav>` element
  * @csspart container   - container, `<div>` element
  * @csspart cta         - container, `<div>` element
- *
  * @fires {SecondaryNavOverlayChangeEvent} overlay-change -
  *                                         Fires when an dropdown is opened or closed in desktop
  *                                         view or when the mobile menu button is toggled in mobile
  *                                         view.
- *
  * @cssprop {<integer>} --rh-navigation-secondary-z-index - z-index of the navigation-secondary {@default `102`}
  * @cssprop {<integer>} --rh-navigation-secondary-overlay-z-index - z-index of the navigation-secondary-overlay {@default `-1`}
- *
  */
 @customElement('rh-navigation-secondary')
 export class RhNavigationSecondary extends LitElement {
@@ -89,12 +96,12 @@ export class RhNavigationSecondary extends LitElement {
   /** Compact mode  */
   #compact = false;
 
-  #tabindex = new RovingTabindexController(this);
-
-  #rtiInit = false;
-
-  /** Navigation Items that should be initialized by Roving Tabindex */
-  #navItems: HTMLElement[] | undefined;
+  #tabindex = new RovingTabindexController(this, {
+    getItems: () => this._nav?.flatMap(slotted =>
+      Array.from(slotted.querySelectorAll<HTMLAnchorElement>(`:is(rh-navigation-secondary-dropdown,
+                                                                  rh-secondary-nav-dropdown) > a,
+                                                              [slot="nav"] > li > a`))) ?? [],
+  });
 
   /**
    * `mobileMenuExpanded` property is toggled when the mobile menu button is clicked,
@@ -122,8 +129,7 @@ export class RhNavigationSecondary extends LitElement {
 
   /**
    * Checks if passed in element is a RhNavigationSecondaryDropdown
-   * @param element:
-   * @returns {boolean}
+   * @param element possibly an rh-navigation-secondary-dropdown
    */
   static isDropdown(element: Element | null): element is RhNavigationSecondaryDropdown {
     return element instanceof RhNavigationSecondaryDropdown;
@@ -155,7 +161,7 @@ export class RhNavigationSecondary extends LitElement {
                   aria-expanded="${String(expanded) as 'true' | 'false'}"
                   @click="${this.#toggleMobileMenu}"><slot name="mobile-menu">Menu</slot></button>
           <rh-surface color-palette="${dropdownPalette}">
-            <slot name="nav" @slotchange="${this.#onSlotchange}"></slot>
+            <slot name="nav"></slot>
             <div id="cta" part="cta">
               <slot name="cta"></slot>
             </div>
@@ -175,8 +181,9 @@ export class RhNavigationSecondary extends LitElement {
    * If the event is to open a dropdown, run #expand(index)
    * If isMobile is set dispatch an SecondaryNavOverlayChangeEvent event
    * to open the overlay
+   * @param event when a dropdown tries to expand
    */
-  #onExpandRequest(event: Event): void {
+  #onExpandRequest(event: Event) {
     if (event instanceof SecondaryNavDropdownExpandEvent) {
       const index = this.#getDropdownIndex(event.target as Element);
       if (index === null || index === undefined) {
@@ -196,6 +203,7 @@ export class RhNavigationSecondary extends LitElement {
    * Handles when focus changes outside of the navigation
    * If _compact is set, close the mobileMenu
    * Closes all dropdowns and toggles overlay to closed
+   * @param event focus
    */
   #onFocusout(event: FocusEvent) {
     const target = event.relatedTarget as HTMLElement;
@@ -227,6 +235,7 @@ export class RhNavigationSecondary extends LitElement {
   /**
    * Closes dropdown menu on keydown, then places
    * focus on last button clicked
+   * @param event keydown
    */
   #onKeydown(event: KeyboardEvent) {
     switch (event.key) {
@@ -258,7 +267,7 @@ export class RhNavigationSecondary extends LitElement {
     if (!dropdownParent) {
       return;
     }
-    const focusableChildren = this.#focusableChildElements(dropdownParent);
+    const focusableChildren = focusableChildElements(dropdownParent);
     if (!focusableChildren) {
       return;
     }
@@ -284,33 +293,9 @@ export class RhNavigationSecondary extends LitElement {
     }
   }
 
-  #onSlotchange() {
-    this._nav?.forEach(nav => {
-      this.#navItems = Array.from(
-        nav.querySelectorAll(
-          // eslint-disable-next-line @stylistic/max-len
-          ':is(rh-navigation-secondary-dropdown, rh-secondary-nav-dropdown) > a, [slot="nav"] > li > a'
-        )
-      );
-    });
-    if (this.#rtiInit) {
-      this.#tabindex.updateItems(this.#navItems ?? []);
-    } else {
-      this.#tabindex.initItems(this.#navItems ?? []);
-      this.#rtiInit = true;
-    }
-  }
-
-  /* TODO: Abstract this out to a shareable function, should RTI handle something similar? */
-  #focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
-    return parent.querySelectorAll(
-      // eslint-disable-next-line @stylistic/max-len
-      'a, button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"]):not([disabled]), details:not([disabled]), summary:not(:disabled)'
-    );
-  }
-
   /**
    * Gets all dropdowns and finds the element given and returns its index
+   * @param element dropdown element
    */
   #getDropdownIndex(element: Element | null): void | number {
     if (!RhNavigationSecondary.isDropdown(element)) {
@@ -324,6 +309,7 @@ export class RhNavigationSecondary extends LitElement {
 
   /**
    * Gets all dropdowns and returns the dropdown given an index
+   * @param index of the dropdown
    */
   #dropdownByIndex(index: number): void | RhNavigationSecondaryDropdown {
     const dropdowns = this.#allDropdowns();
@@ -336,6 +322,7 @@ export class RhNavigationSecondary extends LitElement {
 
   /**
    * Opens a dropdown given an index
+   * @param index to expand
    */
   #expand(index: number): void {
     if (index == null) {
@@ -362,6 +349,7 @@ export class RhNavigationSecondary extends LitElement {
 
   /**
    * Sets property expanded=false on dropdown given
+   * @param dropdown to close
    */
   #closeDropdown(dropdown: RhNavigationSecondaryDropdown): void {
     if (dropdown.expanded === false) {
@@ -372,6 +360,7 @@ export class RhNavigationSecondary extends LitElement {
 
   /**
    * Sets property expanded=true on dropdown given
+   * @param dropdown to open
    */
   #openDropdown(dropdown: RhNavigationSecondaryDropdown): void {
     if (dropdown.expanded === true) {
@@ -382,6 +371,7 @@ export class RhNavigationSecondary extends LitElement {
 
   /**
    * Toggles the overlay triggered by eventListener
+   * @param event secondary nav overlay change event
    */
   #onOverlayChange(event: Event) {
     if (event instanceof SecondaryNavOverlayChangeEvent) {
@@ -418,6 +408,7 @@ export class RhNavigationSecondary extends LitElement {
    * Opens a specific dropdown based on index.
    * Closes all open dropdowns before opening specified.
    * Toggles overlay to open
+   * @param index - index of the dropdown to open
    */
   public open(index: number): void {
     if (index != null) {
