@@ -1,6 +1,7 @@
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
+import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
@@ -26,9 +27,13 @@ export class MenuToggleEvent extends Event {
 export class RhMenu extends LitElement {
   static readonly styles = [styles];
 
+  @queryAssignedElements() private _menuItems!: HTMLElement[];
+
   @colorContextConsumer() private on?: ColorTheme;
 
-  #tabindex = new RovingTabindexController(this);
+  #tabindex = new RovingTabindexController<HTMLElement>(this, {
+    getItems: () => this._menuItems ?? [],
+  });
 
   get activeItem() {
     return this.#tabindex.activeItem;
@@ -38,42 +43,27 @@ export class RhMenu extends LitElement {
     super.connectedCallback();
     this.id ||= getRandomId('menu');
     this.setAttribute('role', 'menu'); // TODO: use InternalsController.role when support/polyfill is better
-    this.#initItems();
+    this.#onSlotchange();
   }
 
   render() {
     const { on = '' } = this;
     return html`
-      <slot part="menu" class="${classMap({ [on]: !!on })}"></slot>
+      <slot part="menu"
+            class="${classMap({ [on]: !!on })}"
+            @slotchange="${this.#onSlotchange}"></slot>
     `;
   }
 
-  /**
-   * finds menu items and sets attributes accordingly
-   */
-  #initItems() {
-    const items = Array.from(this.children)
-      .map(getItemElement)
-      .filter((x): x is HTMLElement => x instanceof HTMLElement);
-    items.forEach(item => item?.setAttribute('role', 'menuitem'));
-    this.#tabindex.initItems(items);
-    this.requestUpdate();
+  #onSlotchange() {
+    for (const item of this._menuItems ?? []) {
+      item.setAttribute('role', 'menuitem');
+    }
   }
 
   activateItem(item: HTMLElement) {
-    this.#tabindex.updateActiveItem(item);
-    this.#tabindex.focusOnItem(item);
+    this.#tabindex.setActiveItem(item);
   }
-}
-
-/**
- * Given an element, returns self, or child that is not an rh-tooltip
- */
-function getItemElement(element: Element) {
-  return (
-      element.localName !== 'rh-tooltip' ? element
-    : element.querySelector(':not([slot=content])')
-  );
 }
 
 declare global {

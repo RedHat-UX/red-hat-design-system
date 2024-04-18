@@ -11,8 +11,8 @@ describe('<rh-blockquote>', function() {
     const el = await createFixture<RhBlockquote>(element);
     const klass = customElements.get('rh-blockquote');
     expect(el)
-      .to.be.an.instanceOf(klass)
-      .and
-      .to.be.an.instanceOf(RhBlockquote);
+        .to.be.an.instanceOf(klass)
+        .and
+        .to.be.an.instanceOf(RhBlockquote);
   });
 });

@@ -4,10 +4,16 @@
   color: var(--_context-text);
 }
 
+[part="container"] {
+  container-type: inline-size;
+}
+
 [part="tabs-container"] {
   position: relative;
   display: flex;
   overflow: hidden;
+
+  --_tab-max-width: 200px;
 }
 
 [part="tabs-container"]:before {
@@ -46,6 +52,12 @@ button:before {
   left: 0;
   content: "";
   border-style: solid;
+}
+
+@container (min-width: 567px) {
+  [part="tabs-container"] {
+    --_tab-max-width: none;
+  }
 }
 
 [part="tabs"]:before,

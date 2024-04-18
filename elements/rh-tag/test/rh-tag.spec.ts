@@ -36,9 +36,9 @@ describe('<rh-tag>', async function() {
     it('should upgrade', async function() {
       const klass = customElements.get('rh-tag');
       expect(element)
-        .to.be.an.instanceOf(klass)
-        .and
-        .to.be.an.instanceOf(RhTag);
+          .to.be.an.instanceOf(klass)
+          .and
+          .to.be.an.instanceOf(RhTag);
     });
 
     it('passes the a11y audit', async function() {
@@ -47,17 +47,17 @@ describe('<rh-tag>', async function() {
 
     it('should have correct background color', function() {
       expect(normalizeColor(styles.getPropertyValue('background-color')))
-        .to.equal(normalizeColor(tokens.get('--rh-color-surface-lighter')));
+          .to.equal(normalizeColor(tokens.get('--rh-color-surface-lighter')));
     });
 
     it('should have correct border color', function() {
       expect(normalizeColor(beforeStyles.getPropertyValue('border-color')))
-        .to.equal(normalizeColor(tokens.get('--rh-color-border-subtle-on-light')));
+          .to.equal(normalizeColor(tokens.get('--rh-color-border-subtle-on-light')));
     });
 
     it('should have correct text color', function() {
       expect(normalizeColor(styles.getPropertyValue('color')))
-        .to.equal(normalizeColor(tokens.get('--rh-color-text-primary-on-light')));
+          .to.equal(normalizeColor(tokens.get('--rh-color-text-primary-on-light')));
     });
   });
 
@@ -73,17 +73,17 @@ describe('<rh-tag>', async function() {
 
     it('should have correct background color', function() {
       expect(normalizeColor(styles.getPropertyValue('background-color')))
-        .to.equal(normalizeColor(tokens.get('--rh-color-red-10')));
+          .to.equal(normalizeColor(tokens.get('--rh-color-red-10')));
     });
 
     it('should have correct border color', function() {
       expect(normalizeColor(beforeStyles.getPropertyValue('border-color')))
-        .to.equal(normalizeColor(tokens.get('--rh-color-red-60')));
+          .to.equal(normalizeColor(tokens.get('--rh-color-red-60')));
     });
 
     it('should have correct text color', function() {
       expect(normalizeColor(styles.getPropertyValue('color')))
-        .to.equal(normalizeColor(tokens.get('--rh-color-red-70')));
+          .to.equal(normalizeColor(tokens.get('--rh-color-red-70')));
     });
   });
 
@@ -101,8 +101,8 @@ describe('<rh-tag>', async function() {
 
     it('should display the icon', function() {
       expect(containerWithIcon.getBoundingClientRect().width)
-        .to.be
-        .greaterThan(container.getBoundingClientRect().width);
+          .to.be
+          .greaterThan(container.getBoundingClientRect().width);
     });
   });
 
@@ -123,8 +123,8 @@ describe('<rh-tag>', async function() {
 
     it('should display the icon', function() {
       expect(containerWithIcon.getBoundingClientRect().width)
-        .to.be
-        .greaterThan(container.getBoundingClientRect().width);
+          .to.be
+          .greaterThan(container.getBoundingClientRect().width);
     });
   });
 
@@ -147,8 +147,8 @@ describe('<rh-tag>', async function() {
 
     it('should display the icon', function() {
       expect(containerWithIcon.getBoundingClientRect().width)
-        .to.be
-        .greaterThan(container.getBoundingClientRect().width);
+          .to.be
+          .greaterThan(container.getBoundingClientRect().width);
     });
   });
 });
