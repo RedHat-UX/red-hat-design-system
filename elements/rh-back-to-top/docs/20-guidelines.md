@@ -32,12 +32,12 @@ Having only one persistent back to top button ensures that users are able to scr
 
 <div class="best-practices-grid">
     <div>
-        <img slot="header" src="one-back-to-top-do.svg" alt="Image of wireframe with one back to top button">
+        <img slot="header" src="../one-back-to-top-do.svg" alt="Image of wireframe with one back to top button">
         <h4 class="correct">Do</h4>
         <p>Have one back to top button in the bottom right corner of the page.</p>
     </div>
     <div>
-        <img slot="header" src="one-back-to-top-dont.svg" alt="Image of wireframe with back to top buttons below each content section">
+        <img slot="header" src="../one-back-to-top-dont.svg" alt="Image of wireframe with back to top buttons below each content section">
         <h4 class="wrong">Don't</h4>
         <p>Do not use multiple back to top buttons.</p>
     </div>
@@ -49,12 +49,12 @@ We recommend retaining the “Back to top” text to ensure that users understan
 
 <div class="best-practices-grid">
     <div>
-        <img slot="header" src="back-to-top.svg" alt="Image of back to top button with “back to top” text and icon">
+        <img slot="header" src="../back-to-top.svg" alt="Image of back to top button with “back to top” text and icon">
         <h4 class="correct">Do</h4>
         <p>Keep the descriptive “Back to top” text in the button.</p>
     </div>
     <div>
-        <img slot="header" src="back-to-top-icon-only.svg" alt="Image of back to top button with icon only">
+        <img slot="header" src="../back-to-top-icon-only.svg" alt="Image of back to top button with icon only">
         <h4 class="wrong">Don't</h4>
         <p>Do  not use only an up arrow icon.</p>
     </div>
@@ -66,12 +66,12 @@ Ensure that there is enough space between the button and the edges of the page f
 
 <div class="best-practices-grid">
     <div>
-        <img slot="header" src="back-to-top-spacing-do.svg" alt="Image of back to top button enough spacing from scroll bars">
+        <img slot="header" src="../back-to-top-spacing-do.svg" alt="Image of back to top button enough spacing from scroll bars">
         <h4 class="correct">Do</h4>
         <p>Add ample space between the right and bottom edges.</p>
     </div>
     <div>
-        <img slot="header" src="back-to-top-spacing-dont.svg" alt="Image of back to top button with very little spacing next to scrollbars">
+        <img slot="header" src="../back-to-top-spacing-dont.svg" alt="Image of back to top button with very little spacing next to scrollbars">
         <h4 class="wrong">Don't</h4>
         <p>Do not place the button too close to the edges of the screen.</p>
     </div>
