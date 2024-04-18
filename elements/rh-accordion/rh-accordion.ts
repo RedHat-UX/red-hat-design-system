@@ -82,7 +82,7 @@ export class RhAccordion extends LitElement {
    */
   @property({
     attribute: 'expanded-index',
-    converter: NumberListConverter
+    converter: NumberListConverter,
   })
   get expandedIndex() {
     return this.#expandedIndex;
@@ -121,6 +121,7 @@ export class RhAccordion extends LitElement {
   #headerIndex = new RovingTabindexController<RhAccordionHeader>(this);
 
   // actually is read in #init, by the `||=` operator
+  // eslint-disable-next-line no-unused-private-class-members
   #initialized = false;
 
   #logger = new Logger(this);
@@ -185,7 +186,7 @@ export class RhAccordion extends LitElement {
 
   #updateActiveHeader() {
     if (this.#activeHeader) {
-      this.#headerIndex.updateActiveItem(this.#activeHeader);
+      this.#headerIndex.setActiveItem(this.#activeHeader);
     }
   }
 
@@ -241,11 +242,15 @@ export class RhAccordion extends LitElement {
   }
 
   #allHeaders(accordion: RhAccordion = this): RhAccordionHeader[] {
-    return Array.from(accordion.children).filter((x): x is RhAccordionHeader => x instanceof RhAccordionHeader);
+    return Array.from(accordion.children).filter((x): x is RhAccordionHeader =>
+      x instanceof RhAccordionHeader
+    );
   }
 
   #allPanels(accordion: RhAccordion = this): RhAccordionPanel[] {
-    return Array.from(accordion.children).filter((x => RhAccordion.isPanel(x)) as typeof RhAccordion.isPanel);
+    return Array.from(accordion.children).filter((x =>
+      RhAccordion.isPanel(x)) as typeof RhAccordion.isPanel
+    );
   }
 
   #getIndex(el: Element | null) {
@@ -302,7 +307,7 @@ export class RhAccordion extends LitElement {
    * Accepts an optional parent accordion to search for headers and panels.
    */
   public async expand(index: number, parentAccordion?: RhAccordion) {
-    const allHeaders: Array<RhAccordionHeader> = this.#allHeaders(parentAccordion);
+    const allHeaders: RhAccordionHeader[] = this.#allHeaders(parentAccordion);
 
     const header = allHeaders[index];
     if (!header) {

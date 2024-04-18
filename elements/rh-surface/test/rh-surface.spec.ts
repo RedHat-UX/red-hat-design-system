@@ -46,9 +46,9 @@ describe('<rh-surface>', function() {
     it('should upgrade', async function() {
       const klass = customElements.get('rh-surface');
       expect(element)
-        .to.be.an.instanceOf(klass)
-        .and
-        .to.be.an.instanceOf(RhSurface);
+          .to.be.an.instanceOf(klass)
+          .and
+          .to.be.an.instanceOf(RhSurface);
     });
     describe('setting darkest color palette', function() {
       beforeEach(async function() {

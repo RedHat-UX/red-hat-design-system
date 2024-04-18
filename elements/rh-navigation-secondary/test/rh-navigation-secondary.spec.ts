@@ -1,7 +1,7 @@
 import type { RhNavigationSecondaryOverlay } from '@rhds/elements/rh-navigation-secondary/rh-navigation-secondary-overlay.js';
 import type {
   RhNavigationSecondaryDropdown,
-  SecondaryNavDropdownExpandEvent
+  SecondaryNavDropdownExpandEvent,
 } from '@rhds/elements/rh-navigation-secondary/rh-navigation-secondary-dropdown.js';
 
 import { expect, assert, fixture, aTimeout, oneEvent } from '@open-wc/testing';
@@ -34,9 +34,9 @@ describe('<rh-navigation-secondary>', async function() {
   it('should upgrade', async function() {
     const klass = customElements.get('rh-navigation-secondary');
     expect(element)
-      .to.be.an.instanceOf(klass)
-      .and
-      .to.be.an.instanceOf(RhNavigationSecondary);
+        .to.be.an.instanceOf(klass)
+        .and
+        .to.be.an.instanceOf(RhNavigationSecondary);
   });
 
   it('should remove role="navigation" after upgrade', async function() {

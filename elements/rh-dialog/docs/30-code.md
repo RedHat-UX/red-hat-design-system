@@ -1,6 +1,7 @@
 {% renderInstall %}{% endrenderInstall %}
 
-{% band header="Usage" %}
+## Usage
+
 ```html
 <rh-dialog trigger="standard-trigger">
   <h2 slot="header">Leave page</h2>
@@ -10,6 +11,5 @@
 </rh-dialog>
 <rh-button id="standard-trigger">Open modal dialog</rh-button>
 ```
-{% endband %}
 
 {% renderCodeDocs hideDescription=true %}{% endrenderCodeDocs %}

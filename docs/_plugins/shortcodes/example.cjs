@@ -1,24 +1,27 @@
 // @ts-check
 
 const { attrMap } = require('./helpers.cjs');
-
-/** @typedef {import('../shortcodes.cjs').EleventyContext} EleventyContext */
-
 const { promisify } = require('node:util');
-const Image = require('@11ty/eleventy-img');
-const sizeOf = promisify(/** @type{import('image-size').default}*/(/** @type{unknown}*/(require('image-size') )));
+const EleventyImage = require('@11ty/eleventy-img');
+const sizeOf = promisify(
+  /** @type{import('image-size').default}*/(
+    /** @type{unknown}*/(
+      require('image-size')
+    )
+  )
+);
 const path = require('path');
 
 /**
  * generate images and return metadata
- * @param {Image.ImageSource} url
+ * @param {EleventyImage.ImageSource} url
  * @param {'auto' | number | null} width1x
  * @param {'auto' | number | null} width2x
  * @param {string} outputDir
  * @param {string} urlPath
  */
 async function getImg(url, width1x, width2x, outputDir, urlPath) {
-  return await Image(url, {
+  return await EleventyImage(url, {
     urlPath,
     outputDir,
     formats: ['auto'],
@@ -50,7 +53,7 @@ async function getImageHTML(opts) {
     const styles = [`width:${width1x}px`, `height:auto`].join(';');
     const img = await getImg(srcHref, width1x, width2x, outputDir, urlPath);
     const sizes = `(max-width: ${width1x}px) ${width1x}px, ${width2x}px`;
-    return `${!img ? '' : Image.generateHTML(img, { alt, sizes, style: styles, loading, decoding })}`;
+    return `${!img ? '' : EleventyImage.generateHTML(img, { alt, sizes, style: styles, loading, decoding })}`;
   } else {
     return `<img src="${src}" alt="${alt}" style="${style}" loading="${loading}" decoding="${decoding}" />`;
   }
@@ -58,11 +61,11 @@ async function getImageHTML(opts) {
 
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function(eleventyConfig) {
-  eleventyConfig.addShortcode('example',
+  eleventyConfig.addShortcode(
+    'example',
     /**
      * Example
      * An example image or component
-     *
      * @param {object}    options
      * @param {string}    [options.alt]               Image alt text
      * @param {string}    [options.src]               Image url
@@ -70,10 +73,9 @@ module.exports = function(eleventyConfig) {
      * @param {string}    [options.style]             styles for the wrapper
      * @param {string}    [options.wrapperClass]      class names for container element
      * @param {string}    [options.headline]          Text to go in the heading
-     * @param {string}    [options.palette='light']   Palette to apply, e.g. lightest, light see components/_section.scss
-     * @param {2|3|4|5|6} [options.headingLevel=3]    The heading level
-     * @param {boolean}   [options.srcAbsolute=false] If true, doesn't include the page url in the img src
-     * @this {EleventyContext}
+     * @param {string}    [options.palette]   Palette to apply, e.g. lightest, light see components/_section.scss
+     * @param {2|3|4|5|6} [options.headingLevel]    The heading level
+     * @param {boolean}   [options.srcAbsolute] If true, doesn't include the page url in the img src
      */
     async function example({
       alt = '',
@@ -95,7 +97,17 @@ module.exports = function(eleventyConfig) {
       const loading = 'lazy';
       const decoding = 'async';
       const classes = `example example--palette-${palette} ${wrapperClass ?? ''}`;
-      const imageHTML = src && await getImageHTML({ alt, decoding, imageFile, loading, outputDir, src, srcHref, style, urlPath });
+      const imageHTML = src && await getImageHTML({
+        alt,
+        decoding,
+        imageFile,
+        loading,
+        outputDir,
+        src,
+        srcHref,
+        style,
+        urlPath,
+      });
       return /* html */`
         <div ${attrMap({ style, class: classes })}>${!headline ? '' : `
           <a id="${encodeURIComponent(headline)}"></a>
