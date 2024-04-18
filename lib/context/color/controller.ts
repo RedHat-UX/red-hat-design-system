@@ -54,7 +54,7 @@ export abstract class ColorContextController<
   /** The last-known color context on the host */
   protected last: ColorTheme | null = null;
 
-  hostUpdate?(): void
+  hostUpdate?(): void;
 
   /** callback which updates the context value on consumers */
   abstract update(next?: ColorTheme | null): void;

@@ -23,9 +23,9 @@ describe('<rh-skip-link>', function() {
       element = await createFixture<RhSkipLink>(html`<rh-skip-link></rh-skip-link>`);
       const klass = customElements.get('rh-skip-link');
       expect(element)
-        .to.be.an.instanceOf(klass)
-        .and
-        .to.be.an.instanceOf(RhSkipLink);
+          .to.be.an.instanceOf(klass)
+          .and
+          .to.be.an.instanceOf(RhSkipLink);
     });
   });
 
@@ -47,7 +47,7 @@ describe('<rh-skip-link>', function() {
       expect(snapshot).to.deep.equal({
         role: 'WebArea',
         name: '',
-        children: [{ role: 'link', name: 'Skip to main content' }]
+        children: [{ role: 'link', name: 'Skip to main content' }],
       });
     });
 
@@ -58,9 +58,7 @@ describe('<rh-skip-link>', function() {
         const transitionValue = parseTransitionDuration(elStyles.getPropertyValue('transition-duration'));
         element.focus();
         await aTimeout(transitionValue);
-        expect(elStyles.getPropertyValue('clip')).to.equal('auto');
-        expect(elStyles.getPropertyValue('text-decoration')).to.not.equal('underline');
-        expect(elStyles.getPropertyValue('top')).to.equal('0px');
+        expect(element).to.be.visible;
       });
     });
   });

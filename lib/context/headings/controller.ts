@@ -59,7 +59,10 @@ export class HeadingLevelController implements ReactiveController {
 
   #level = 1;
 
-  get level(): number { return this.#level; }
+  get level(): number {
+    return this.#level;
+  }
+
   set level(level: string | number | undefined | null) {
     const val = typeof level === 'string' ? parseInt(level) : level;
     if (typeof val === 'number' && !Number.isNaN(val)) {
@@ -81,7 +84,7 @@ export class HeadingLevelController implements ReactiveController {
     }
   }
 
-  hostConnected?(): void
+  hostConnected?(): void;
 
   /**
    * Wraps any renderable content in a heading, based on heading level

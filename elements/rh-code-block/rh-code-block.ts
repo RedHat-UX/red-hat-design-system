@@ -79,7 +79,7 @@ export class RhCodeBlock extends LitElement {
       toAttribute(value) {
         return Array.isArray(value) ? value.join(' ') : '';
       },
-    }
+    },
   }) actions: ('copy' | 'wrap')[] = [];
 
   /** When set, the code block displays with compact spacing */
@@ -99,6 +99,7 @@ export class RhCodeBlock extends LitElement {
   #slots = new SlotController(
     this,
     null,
+    // 'actions',
     'action-label-copy',
     'action-label-wrap',
     'show-more',
@@ -127,16 +128,14 @@ export class RhCodeBlock extends LitElement {
     const actions = !!this.actions.length;
     return html`
       <div id="container"
-           class="${classMap({
-              [on]: !!on,
-              actions,
-              compact,
-              expandable,
-              fullHeight,
-              resizable,
-              truncated,
-              wrap,
-           })}"
+           class="${classMap({ [on]: !!on,
+                                actions,
+                                compact,
+                                expandable,
+                                fullHeight,
+                                resizable,
+                                truncated,
+                                wrap })}"
            @code-action="${this.#onCodeAction}">
         <div id="content-lines">
           <div id="sizers" aria-hidden="true"></div>
@@ -173,7 +172,7 @@ export class RhCodeBlock extends LitElement {
           </svg>
         </button>
       </div>
-      <slot name="legend"></slot>
+      <slot name="legend" ?hidden="${this.#slots.isEmpty('legend')}"></slot>
     `;
   }
 
@@ -201,14 +200,15 @@ export class RhCodeBlock extends LitElement {
 
   /**
    * Clone the text content and connect it to the document, in order to calculate the number of lines
-   * @license portions copyright prism.js authors (MIT license)
+   * @license MIT
+   * Portions copyright prism.js authors (MIT license)
    */
   #computeLineNumbers() {
     const slot = this.shadowRoot?.getElementById('content') as HTMLSlotElement;
 
     const codes: HTMLElement[] = slot.assignedElements().flatMap(x =>
-        x instanceof HTMLScriptElement ||
-        x instanceof HTMLPreElement ? [x]
+        x instanceof HTMLScriptElement
+        || x instanceof HTMLPreElement ? [x]
       : []);
 
     const infos: CodeLineHeightsInfo[] = codes.map(element => {
@@ -299,14 +299,18 @@ export class RhCodeBlock extends LitElement {
     const tooltip = slot?.closest('rh-tooltip');
     tooltip?.hide();
     for (const el of slot?.assignedElements() ?? []) {
-      if (el instanceof HTMLElement) { el.hidden = el.dataset.codeBlockState !== 'active'; }
+      if (el instanceof HTMLElement) {
+        el.hidden = el.dataset.codeBlockState !== 'active';
+      }
     }
     this.requestUpdate();
     tooltip?.show();
     await new Promise(r => setTimeout(r, 5_000));
     tooltip?.hide();
     for (const el of slot?.assignedElements() ?? []) {
-      if (el instanceof HTMLElement) { el.hidden = el.dataset.codeBlockState === 'active'; }
+      if (el instanceof HTMLElement) {
+        el.hidden = el.dataset.codeBlockState === 'active';
+      }
     }
     this.requestUpdate();
     tooltip?.show();

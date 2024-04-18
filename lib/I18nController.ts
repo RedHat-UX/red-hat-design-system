@@ -59,7 +59,9 @@ export class I18nController implements ReactiveController {
 
   #updateMicrocopy() {
     this.#updateLanguage();
-    const lightLangs = this.host.querySelectorAll<HTMLScriptElement>('script[type="application/json"][data-language]');
+    const lightLangs = this.host.querySelectorAll<HTMLScriptElement>(
+      'script[type="application/json"][data-language]'
+    );
     for (const script of lightLangs) {
       const { language } = script.dataset;
       if (language) {
@@ -138,6 +140,8 @@ export class I18nController implements ReactiveController {
   }
 
   toJSON() {
-    return Object.fromEntries([...this.#microcopy.entries()].map(([k, v]) => [k, Object.fromEntries(v)]));
+    return Object.fromEntries(
+      [...this.#microcopy.entries()].map(([k, v]) => [k, Object.fromEntries(v)])
+    );
   }
 }

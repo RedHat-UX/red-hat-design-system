@@ -7,13 +7,13 @@ module.exports = function(eleventyConfig) {
      * @param {string} content
      * @param {Record<string, unknown>} attrs
      */
-    function alert(content, {
-      state = 'info',
-      title = 'Note:',
-      style = null,
-      level = 3,
-    } = {}) {
-      return /* html */`
+                                    function alert(content, {
+                                      state = 'info',
+                                      title = 'Note:',
+                                      style = null,
+                                      level = 3,
+                                    } = {}) {
+                                      return /* html */`
 
 <rh-alert ${attrMap({ state, style })}>
   <h${level} slot="header">${title}</h${level}>
@@ -23,5 +23,5 @@ module.exports = function(eleventyConfig) {
 </rh-alert>
 
 `;
-    });
+                                    });
 };

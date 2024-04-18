@@ -3,7 +3,7 @@ import type { ReactiveController, ReactiveElement } from 'lit';
 import {
   contextEvents,
   ColorContextController,
-  type ColorContextOptions
+  type ColorContextOptions,
 } from './controller.js';
 
 import { ContextRequestEvent } from '../event.js';

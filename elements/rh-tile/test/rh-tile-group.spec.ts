@@ -27,9 +27,9 @@ describe('<rh-tile-group>', function() {
       element = await createFixture<RhTileGroup>(html`<rh-tile-group></rh-tile-group>`);
       const klass = customElements.get('rh-tile-group');
       expect(element)
-        .to.be.an.instanceOf(klass)
-        .and
-        .to.be.an.instanceOf(RhTileGroup);
+          .to.be.an.instanceOf(klass)
+          .and
+          .to.be.an.instanceOf(RhTileGroup);
     });
   });
 
@@ -72,7 +72,7 @@ describe('<rh-tile-group>', function() {
 
     it('has no selected element', function() {
       expect(element.selected)
-        .to.be.undefined;
+          .to.be.undefined;
     });
 
     describe('space on first tile', async function() {
@@ -80,7 +80,7 @@ describe('<rh-tile-group>', function() {
       beforeEach(() => element.updateComplete);
       it('selects the first tile', function() {
         expect(element.selected)
-          .to.equal(tile1);
+            .to.equal(tile1);
       });
     });
 
@@ -88,7 +88,7 @@ describe('<rh-tile-group>', function() {
       beforeEach(press('ArrowDown'));
       it('sets focus on second tile', function() {
         expect(document.activeElement)
-          .to.equal(tile2);
+            .to.equal(tile2);
       });
 
       describe('clicking second tile', async function() {
@@ -96,15 +96,15 @@ describe('<rh-tile-group>', function() {
         beforeEach(() => element.updateComplete);
         it('selects the second tile only', function() {
           expect(element.selected)
-            .to.equal(tile2);
+              .to.equal(tile2);
         });
         it('has only one checked radio button', async function() {
           // TODO(bennypowers): write snapshot query helpers
           const snapshot = await a11ySnapshot();
           function reduceRadios(count: number, node: typeof snapshot): number {
-            return count +
-                   ((node.role === 'radio' && node.checked) ? 1 : 0) +
-                    (node.children?.reduce(reduceRadios, 0) ?? 0);
+            return count
+                   + ((node.role === 'radio' && node.checked) ? 1 : 0)
+                    + (node.children?.reduce(reduceRadios, 0) ?? 0);
           }
           const checkedRadios = snapshot.children.reduce(reduceRadios, 0);
 
@@ -117,7 +117,7 @@ describe('<rh-tile-group>', function() {
       beforeEach(press('ArrowUp'));
       it('sets focus on last tile', function() {
         expect(document.activeElement)
-          .to.equal(tile3);
+            .to.equal(tile3);
       });
     });
 
