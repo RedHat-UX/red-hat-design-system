@@ -1,10 +1,11 @@
 ---
-layout: layout-foundations.njk
+layout: layout-with-subnav.njk
 title: Accessibility
 heading: Color
 tags:
   - color
 permalink: /foundations/color/accessibility/index.html
+subNavCollection: sortedColor
 order: 20
 bodyClasses: element-docs
 ---
