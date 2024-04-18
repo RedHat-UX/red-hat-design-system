@@ -6,10 +6,10 @@ export function overrideFetch(ok, status, statusText, json) {
           ok,
           status,
           statusText,
-          json
+          json,
         });
       }
       return target.apply(thisArg, args);
-    }
+    },
   });
 }
