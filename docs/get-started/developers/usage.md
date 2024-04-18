@@ -55,7 +55,7 @@ After installing the `@lit/react` library, you can import elements and patterns 
   </script>
 </rh-code-block>
 
-### Using Vue wrappers
+### Using RHDS elements with Vue
 
 To get web components to work with Vue, it’s pretty easy and straightforward. Follow the steps below to use web components in a Vue app.
 
