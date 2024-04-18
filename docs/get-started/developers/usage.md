@@ -42,16 +42,31 @@ Use the following command:
 
 #### 3. Import elements and patterns
 
-After installing the `@lit/react` library, you can import elements and patterns to your file. Below is an example of importing `<rh-cta>` and `<rh-card>`.
+After installing the `@lit/react` library, you can import elements and patterns 
+to your file. Below is an example of importing `<rh-button>` and `<rh-card>`, and
+managing app state between them using react.
 
 <rh-code-block>
   <script type="text/sample-javascript">
-  import { useState } from "react";
-  </script>
+  import { useState } from 'react';
 
-  <script type="text/sample-javascript">
-  import { Button } from "@rhds/elements/react/rh-cta/rh-cta.js";
-  import { Card } from "@rhds/elements/react/rh-card/rh-card.js";
+  import { Button } from '@rhds/elements/react/rh-button/rh-button.js';
+  import { Badge } from '@rhds/elements/react/rh-badge/rh-badge.js';
+  import { Card } from '@rhds/elements/react/rh-card/rh-card.js';
+
+  export function App() {
+    const [clicks, setClicks] = useState(0);
+
+    return (
+      <Card>
+        <h2 slot="header">Click Me</h2>
+        <Badge slot="header" number={clicks}></Badge>
+        <Button slot="footer" onClick={() => setClicks(clicks + 1)}>
+          Increment!
+        </Button>
+      </Card>
+    )
+  }
   </script>
 </rh-code-block>
 
