@@ -148,12 +148,10 @@ module.exports = async function(data) {
       const filename = getDemoFilename(demo);
 
       /** @see docs/_plugins/rhds.cjs demoPaths transform */
-      const base =
-        url.pathToFileURL(
-          path.join(process.cwd(),
-                    'elements',
-                    primaryElementName, 'demo/')
-        );
+      const base = url.pathToFileURL(path.join(process.cwd(),
+                                               'elements',
+                                               primaryElementName,
+                                               'demo/'));
       const docsDir = url.pathToFileURL(path.join(process.cwd(), 'docs/'));
       const isMainDemo = filename === 'demo/index.html';
       const demoSlug = filename.split('/').at(1);
@@ -162,8 +160,7 @@ module.exports = async function(data) {
         if (subresourceURL && !subresourceURL.startsWith('http')) {
           const subresourceFileURL = !subresourceURL.startsWith('/') ?
             // non-tabular ternary
-            // eslint-disable-next-line operator-linebreak
-            new URL(subresourceURL, base)
+              new URL(subresourceURL, base)
             : new URL(subresourceURL.replace('/', './'), docsDir);
           try {
             const resourceName =
@@ -177,7 +174,11 @@ module.exports = async function(data) {
               fileMap.set(resourceName, { content, hidden: true });
             }
           } catch (e) {
-            throw new SubresourceError(`Error generating playground for ${demo.slug}.\nCould not find subresource ${subresourceURL} at ${subresourceFileURL?.href ?? 'unknown'}`, e, subresourceFileURL);
+            throw new SubresourceError(
+              `Error generating playground for ${demo.slug}.\nCould not find subresource ${subresourceURL} at ${subresourceFileURL?.href ?? 'unknown'}`,
+              e,
+              subresourceFileURL,
+            );
           }
         }
       };

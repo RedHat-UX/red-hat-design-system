@@ -136,8 +136,6 @@ export class RhTabs extends LitElement {
 
   #overflow = new OverflowController(this);
 
-  #logger = new Logger(this);
-
   #tabs = new TabsAriaController<RhTab, RhTabPanel>(this, {
     isTab: (x): x is RhTab => x instanceof RhTab,
     isPanel: (x): x is RhTabPanel => x instanceof RhTabPanel,

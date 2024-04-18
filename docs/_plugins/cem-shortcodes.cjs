@@ -104,7 +104,10 @@ class Renderers {
     }
   }
 
-  /** Render the overview of a component page */
+  /**
+   * Render the overview of a component page
+   * @param {string} content - shortcode content
+   */
   renderOverview(content) {
     return html`
       <section class="band overview">
@@ -124,7 +127,13 @@ class Renderers {
       </section>`;
   }
 
-  /** Render the list of element attributes */
+  /**
+   * Render the list of element attributes
+   * @param {string} content section content
+   * @param {object} kwargs shortcode keyword args
+   * @param {string} [kwargs.header] heading text
+   * @param {number} [kwargs.level] heading level (e.g. `3` for `<h3>`)
+   */
   renderAttributes(content, { header = 'Attributes', level = 2, ...kwargs } = {}) {
     const _attrs = this.manifest.getAttributes(this.packageTagName(kwargs)) ?? [];
     const deprecated = _attrs.filter(x => x.deprecated);
@@ -211,7 +220,13 @@ class Renderers {
       </section>`;
   }
 
-  /** Render a table of element CSS Custom Properties */
+  /**
+   * Render a table of element CSS Custom Properties
+   * @param {string} content shortcode content
+   * @param {object} [kwargs] shortcode keyword args
+   * @param {string} [kwargs.header] heading text
+   * @param {number} [kwargs.level] heading level (e.g. `3` for `<h3>`)
+   */
   renderCssCustomProperties(content, {
     header = 'CSS Custom Properties',
     level = 2,
@@ -330,7 +345,14 @@ class Renderers {
       </section>`;
   }
 
-  /** Render the installation instructions for the element */
+  /**
+   * Render the installation instructions for the element
+   * @param {string} content shortcode content
+   * @param {object} [kwargs] shortcode keyword args
+   * @param {string} [kwargs.header] heading text
+   * @param {number} [kwargs.level] heading level (e.g. `3` for `<h3>`)
+   * @param {string} [kwargs.tagName] tag name to print instructions for
+   */
   renderInstallation(content, {
     header = 'Installation',
     level = 2,
@@ -338,7 +360,7 @@ class Renderers {
   } = {}) {
     return html`
       <section class="band">
-        <h2>Installation</h2>
+        <h${level}>${header}</h${level}>
 
       We recommend loading elements via a CDN such as [JSPM][inst-jspm] and
       using an import map to manage your dependencies.
@@ -361,6 +383,8 @@ class Renderers {
 
       **Please Note** You should either load elements via a CDN or
       install them locally through NPM. *Do not do both.*
+
+      ${content}
 
       </section>
 

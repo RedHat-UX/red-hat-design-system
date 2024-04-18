@@ -1,3 +1,4 @@
+import globals from 'globals';
 import tseslint from 'typescript-eslint';
 import pfe from '@patternfly/eslint-config-elements';
 
@@ -33,6 +34,15 @@ export default tseslint.config(
       '.cache/*',
 
     ],
+  },
+  {
+    name: 'local/scripts',
+    files: ['scripts/*.js'],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
+    },
   },
 );
 

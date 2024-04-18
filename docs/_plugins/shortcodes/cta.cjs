@@ -1,13 +1,21 @@
 const { attrMap } = require('./helpers.cjs');
 
 module.exports = function(eleventyConfig) {
-  eleventyConfig.addPairedShortcode('cta', async function cta(
-    content, {
+  eleventyConfig.addPairedShortcode(
+    'cta',
+    /**
+     * Render a Call to Action
+     * @param {string} content shortcode content
+     * @param {object} [attrs] cta link attrs
+     * @param {object} [attrs.href] cta link href
+     * @param {object} [attrs.target] optional cta link target
+     */
+    async function cta(content, {
       href = '#',
       target = null,
     } = {}) {
-    const innerHTML = await eleventyConfig.javascriptFunctions?.renderTemplate(content, 'md');
-    const linkText = innerHTML.replace(/^<p>(.*)<\/p>$/m, '$1').trim();
-    return /* html */`<rh-cta><a ${attrMap({ href, target })}>${linkText}</a></rh-cta>`;
-  });
+      const innerHTML = await eleventyConfig.javascriptFunctions?.renderTemplate(content, 'md');
+      const linkText = innerHTML.replace(/^<p>(.*)<\/p>$/m, '$1').trim();
+      return /* html */`<rh-cta><a ${attrMap({ href, target })}>${linkText}</a></rh-cta>`;
+    });
 };

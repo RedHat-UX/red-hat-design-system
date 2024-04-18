@@ -249,6 +249,8 @@ export class RhAudioPlayer extends LitElement {
 
   #styles?: CSSStyleDeclaration;
 
+  // this is used inasmuch as children receive the context,
+  // but it doesn't need to be accessed outside the class
   // eslint-disable-next-line no-unused-private-class-members
   #headings = new HeadingLevelContextProvider(this);
 

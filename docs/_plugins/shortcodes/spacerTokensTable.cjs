@@ -2,8 +2,8 @@ const { tokens: metaTokens } = require('@rhds/tokens/meta.js');
 
 /**
  * Reads token data from @rhds/tokens and outputs a table for specified tokens
+ * @param {import('@11ty/eleventy').UserConfig} eleventyConfig  computed config
  */
-
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPairedShortcode(
     'spacerTokensTable',
