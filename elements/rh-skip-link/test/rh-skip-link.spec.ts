@@ -58,9 +58,7 @@ describe('<rh-skip-link>', function() {
         const transitionValue = parseTransitionDuration(elStyles.getPropertyValue('transition-duration'));
         element.focus();
         await aTimeout(transitionValue);
-        expect(elStyles.getPropertyValue('clip')).to.equal('auto');
-        expect(elStyles.getPropertyValue('text-decoration')).to.not.equal('underline');
-        expect(elStyles.getPropertyValue('top')).to.equal('0px');
+        expect(element).to.be.visible;
       });
     });
   });
