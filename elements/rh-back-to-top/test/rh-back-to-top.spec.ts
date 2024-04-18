@@ -17,9 +17,9 @@ describe('<rh-back-to-top>', function() {
       element = await createFixture<RhBackToTop>(html`<rh-back-to-top></rh-back-to-top>`);
       const klass = customElements.get('rh-back-to-top');
       expect(element)
-        .to.be.an.instanceOf(klass)
-        .and
-        .to.be.an.instanceOf(RhBackToTop);
+          .to.be.an.instanceOf(klass)
+          .and
+          .to.be.an.instanceOf(RhBackToTop);
     });
   });
 

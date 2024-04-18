@@ -136,8 +136,6 @@ export class RhTabs extends LitElement {
 
   #overflow = new OverflowController(this);
 
-  #logger = new Logger(this);
-
   #tabs = new TabsAriaController<RhTab, RhTabPanel>(this, {
     isTab: (x): x is RhTab => x instanceof RhTab,
     isPanel: (x): x is RhTabPanel => x instanceof RhTabPanel,
@@ -228,8 +226,8 @@ export class RhTabs extends LitElement {
   }
 
   #onExpand(event: Event) {
-    if (event instanceof TabExpandEvent &&
-      !event.defaultPrevented && this.tabs.includes(event.tab)) {
+    if (event instanceof TabExpandEvent
+      && !event.defaultPrevented && this.tabs.includes(event.tab)) {
       this.select(event.tab);
     }
   }

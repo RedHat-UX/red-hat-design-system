@@ -5,7 +5,7 @@ declare class Player {
     };
   });
 
-  pauseVideo(): void
+  pauseVideo(): void;
 }
 
 declare global {
@@ -28,8 +28,8 @@ async function getPlayer(iframe: HTMLIFrameElement): Promise<Player | void> {
           onReady() {
             player = players.get(iframe);
             r(player);
-          }
-        }
+          },
+        },
       }));
     } else {
       requestAnimationFrame(() => r(player));

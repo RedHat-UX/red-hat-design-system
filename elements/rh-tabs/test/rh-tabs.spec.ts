@@ -42,9 +42,9 @@ describe('<rh-tabs>', function() {
   it('should upgrade', async function() {
     const klass = customElements.get('rh-tabs');
     expect(element)
-      .to.be.an.instanceOf(klass)
-      .and
-      .to.be.an.instanceOf(RhTabs);
+        .to.be.an.instanceOf(klass)
+        .and
+        .to.be.an.instanceOf(RhTabs);
   });
 
   describe('vertical tabs', function() {

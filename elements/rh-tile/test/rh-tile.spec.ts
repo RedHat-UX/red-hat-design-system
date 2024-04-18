@@ -27,9 +27,9 @@ describe('<rh-tile>', function() {
       element = await createFixture<RhTile>(html`<rh-tile></rh-tile>`);
       const klass = customElements.get('rh-tile');
       expect(element)
-        .to.be.an.instanceOf(klass)
-        .and
-        .to.be.an.instanceOf(RhTile);
+          .to.be.an.instanceOf(klass)
+          .and
+          .to.be.an.instanceOf(RhTile);
     });
   });
 
@@ -48,7 +48,7 @@ describe('<rh-tile>', function() {
 
     it('is accessible', async function() {
       await expect(element)
-        .to.be.accessible();
+          .to.be.accessible();
     });
   });
 
@@ -68,7 +68,7 @@ describe('<rh-tile>', function() {
 
     it('is accessible', async function() {
       await expect(element)
-        .to.be.accessible();
+          .to.be.accessible();
     });
 
     it('has a checkbox', async function() {
@@ -83,14 +83,14 @@ describe('<rh-tile>', function() {
 
       it('is checked', function() {
         expect(element.checked)
-          .to.equal(true);
+            .to.equal(true);
       });
 
       describe('clicking', async function() {
         beforeEach(() => clickElementAtCenter(element));
         it('is unchecked', function() {
           expect(element.checked)
-            .to.equal(false);
+              .to.equal(false);
         });
       });
     });

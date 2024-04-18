@@ -98,14 +98,29 @@ class UxdotSearch extends LitElement {
 
   #ariaLabel = '';
 
-  get form() { return this.#internals.form; }
+  get form() {
+    return this.#internals.form;
+  }
 
-  get value() { return this.#input.value; }
-  set value(value) { this.#input.value = value ?? ''; }
+  get value() {
+    return this.#input.value;
+  }
 
-  get #input() { return this.shadowRoot.getElementById('input'); }
-  get #firstLink() { return this.shadowRoot.querySelector('li a'); }
-  get #lastLink() { return this.shadowRoot.querySelector('li:last-of-type a'); }
+  set value(value) {
+    this.#input.value = value ?? '';
+  }
+
+  get #input() {
+    return this.shadowRoot.getElementById('input');
+  }
+
+  get #firstLink() {
+    return this.shadowRoot.querySelector('li a');
+  }
+
+  get #lastLink() {
+    return this.shadowRoot.querySelector('li:last-of-type a');
+  }
 
   get selectedItem() {
     return this.shadowRoot.querySelector('[aria-selected="true"]');

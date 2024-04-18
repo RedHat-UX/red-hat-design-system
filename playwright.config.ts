@@ -22,7 +22,7 @@ const config: PlaywrightTestConfig = {
       animations: 'disabled',
       scale: 'device',
       threshold: 0.5,
-    }
+    },
   },
 };
 

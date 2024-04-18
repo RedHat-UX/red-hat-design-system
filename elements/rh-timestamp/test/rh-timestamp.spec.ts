@@ -10,9 +10,9 @@ describe('<rh-timestamp>', function() {
   it('should upgrade', async function() {
     const element = await createFixture<RhTimestamp>(html`<rh-timestamp></rh-timestamp>`);
     expect(element, 'the <rh-timestamp> should be an instance of RhTimestamp')
-      .to.be.an.instanceof(customElements.get('rh-timestamp'))
-      .and
-      .to.be.an.instanceof(RhTimestamp);
+        .to.be.an.instanceof(customElements.get('rh-timestamp'))
+        .and
+        .to.be.an.instanceof(RhTimestamp);
   });
 
   it('should show the current date by default with default formatting', async function() {
@@ -82,7 +82,7 @@ describe('<rh-timestamp>', function() {
       month: 'short',
       weekday: 'short',
       day: 'numeric',
-      hour: 'numeric'
+      hour: 'numeric',
     };
     const expected = new Date(dateString).toLocaleString('en-US', options);
     const element = await createFixture<RhTimestamp>(html`

@@ -11,8 +11,8 @@ module.exports = function(eleventyConfig) {
      * @param {string} options.palette        Palette to apply, e.g. lightest, light see components/_section.scss
      * @param {string} options.headingLevel   The heading level, defaults to 3
      */
-    function demoShortcode(content) {
-      return /* html*/`
+                                    function demoShortcode(content) {
+                                      return /* html*/`
 
 <div class="multi-column--min-300-wide section section--palette-default container feedback">
   ${section.call(this, content)?.trim() || /* html */`
@@ -29,5 +29,5 @@ module.exports = function(eleventyConfig) {
 </div>
 
 `;
-    });
+                                    });
 };

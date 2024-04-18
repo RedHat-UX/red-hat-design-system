@@ -171,7 +171,7 @@ export class RhAudioPlayer extends LitElement {
     'subscribe': 'Subscribe',
     'transcript': 'Transcript',
     'autoscroll': 'Autoscroll',
-    'download': 'Download'
+    'download': 'Download',
   };
 
   /**  Audio's series name, e.g. Podcast series. */
@@ -249,6 +249,9 @@ export class RhAudioPlayer extends LitElement {
 
   #styles?: CSSStyleDeclaration;
 
+  // this is used inasmuch as children receive the context,
+  // but it doesn't need to be accessed outside the class
+  // eslint-disable-next-line no-unused-private-class-members
   #headings = new HeadingLevelContextProvider(this);
 
   #mediaElement?: HTMLAudioElement;
@@ -267,11 +270,11 @@ export class RhAudioPlayer extends LitElement {
 
   #translation = new I18nController(this, {
     'en': {
-      ...RhAudioPlayer.enUS
+      ...RhAudioPlayer.enUS,
     },
     'en-US': {
-      ...RhAudioPlayer.enUS
-    }, ...this.microcopy ?? {}
+      ...RhAudioPlayer.enUS,
+    }, ...this.microcopy ?? {},
   });
 
   #menufloat = new FloatingDOMController(this, {
@@ -310,7 +313,7 @@ export class RhAudioPlayer extends LitElement {
   }
 
   get #panels(): (
-    | { id: 'about'; panel: RhAudioPlayerAbout}
+    | { id: 'about'; panel: RhAudioPlayerAbout }
     | { id: 'subscribe'; panel: RhAudioPlayerSubscribe }
     | { id: 'transcript'; panel: RhTranscript }
   )[] {
@@ -323,10 +326,10 @@ export class RhAudioPlayer extends LitElement {
 
   get #hasMenu() {
     return (
-      this.#panels.length > 1 ||
-      !!this.mediaseries ||
-      !!this.mediatitle ||
-      (this._abouts?.length ?? 0) > 0
+      this.#panels.length > 1
+      || !!this.mediaseries
+      || !!this.mediatitle
+      || (this._abouts?.length ?? 0) > 0
     );
   }
 
@@ -349,15 +352,18 @@ export class RhAudioPlayer extends LitElement {
    * gets list of allowable playback rates
    */
   get #playbackRates() {
-    return [...Array(Math.round(this.#pbrMax / this.#pbrStep)).keys()].map(k=>k * this.#pbrStep + this.#pbrMin);
+    return [
+      ...Array(Math.round(this.#pbrMax / this.#pbrStep)).keys()].map(k =>
+      k * this.#pbrStep + this.#pbrMin
+    );
   }
 
   /**
    * gets media media time if set
    */
   get #mediaEnd() {
-    return (this.#mediaElement?.seekable?.end?.length || -1) > 0 &&
-    this.#mediaElement?.seekable?.end(0) ?
+    return (this.#mediaElement?.seekable?.end?.length || -1) > 0
+    && this.#mediaElement?.seekable?.end(0) ?
       this.#mediaElement?.seekable?.end(0)
       : false;
   }
@@ -450,15 +456,15 @@ export class RhAudioPlayer extends LitElement {
     const muteicon = !this.muted ? RhAudioPlayer.icons.volumeMax : RhAudioPlayer.icons.volumeMuted;
     const mutelabel = !this.muted ? this.#translation.get('mute') : this.#translation.get('unmute');
     const rewinddisabled =
-      !this.#mediaElement ||
-      this.#readyState < 1 ||
-      this.currentTime === 0 ||
-      !this.#mediaEnd;
+      !this.#mediaElement
+      || this.#readyState < 1
+      || this.currentTime === 0
+      || !this.#mediaEnd;
     const forwarddisabled =
-      !this.#mediaElement ||
-      this.#readyState < 1 ||
-      this.currentTime === this.duration ||
-      !this.#mediaEnd;
+      !this.#mediaElement
+      || this.#readyState < 1
+      || this.currentTime === this.duration
+      || !this.#mediaEnd;
     const playlabel =
         !this.paused ? this.#translation.get('pause')
       : this.#translation.get('play');
@@ -715,7 +721,9 @@ export class RhAudioPlayer extends LitElement {
   }
 
   updated(changedProperties: PropertyValues<this>) {
-    if (changedProperties.has('volume') && !!this.#mediaElement && this.volume !== this.#mediaElement.volume) {
+    if (changedProperties.has('volume')
+      && !!this.#mediaElement
+      && this.volume !== this.#mediaElement.volume) {
       this.#mediaElement.volume = this.volume;
     }
     if (changedProperties.has('lang')) {
@@ -731,14 +739,24 @@ export class RhAudioPlayer extends LitElement {
   }
 
   #updateMenuLabels() {
-    if (this.#about?.menuLabel) { this.#about.menuLabel = this.#translation.get('about'); }
-    if (this.#subscribe?.menuLabel) { this.#subscribe.menuLabel = this.#translation.get('subscribe'); }
-    if (this.#transcript?.menuLabel) { this.#transcript.menuLabel = this.#translation.get('transcript'); }
+    if (this.#about?.menuLabel) {
+      this.#about.menuLabel = this.#translation.get('about');
+    }
+    if (this.#subscribe?.menuLabel) {
+      this.#subscribe.menuLabel = this.#translation.get('subscribe');
+    }
+    if (this.#transcript?.menuLabel) {
+      this.#transcript.menuLabel = this.#translation.get('transcript');
+    }
   }
 
   #updateTranscriptLabels() {
-    if (this.#transcript?.autoscrollLabel) { this.#transcript.autoscrollLabel = this.#translation.get('autoscroll'); }
-    if (this.#transcript?.downloadLabel) { this.#transcript.downloadLabel = this.#translation.get('download'); }
+    if (this.#transcript?.autoscrollLabel) {
+      this.#transcript.autoscrollLabel = this.#translation.get('autoscroll');
+    }
+    if (this.#transcript?.downloadLabel) {
+      this.#transcript.downloadLabel = this.#translation.get('download');
+    }
   }
 
   #cleanUpListeners() {
@@ -1017,7 +1035,9 @@ export class RhAudioPlayer extends LitElement {
     const panels = [this.#about, this.#subscribe, this.#transcript];
     panels.forEach(item => item?.toggleAttribute('hidden', panel !== item));
     this.expanded = !!panel && panels.includes(panel);
-    const focusElement = this.expanded ? this.shadowRoot?.getElementById('close') : this.shadowRoot?.getElementById('menu-button');
+    const focusElement = this.expanded ?
+      this.shadowRoot?.getElementById('close')
+      : this.shadowRoot?.getElementById('menu-button');
 
     setTimeout(() => {
       setTimeout(() => {
@@ -1061,8 +1081,8 @@ export class RhAudioPlayer extends LitElement {
   #onMenuFocusout(event: FocusEvent) {
     const { relatedTarget } = event;
     if (
-      relatedTarget instanceof HTMLElement &&
-      relatedTarget.closest('rh-menu') !== this.shadowRoot?.getElementById('menu')
+      relatedTarget instanceof HTMLElement
+      && relatedTarget.closest('rh-menu') !== this.shadowRoot?.getElementById('menu')
     ) {
       setTimeout(() => this.#hideMenu(), 300);
     }
@@ -1079,7 +1099,9 @@ export class RhAudioPlayer extends LitElement {
   async #showMenu() {
     const menu = this.shadowRoot?.getElementById('menu') as RhMenu;
     const button = this.shadowRoot?.getElementById('menu-button') as HTMLElement;
-    if (!menu || !button) { return; }
+    if (!menu || !button) {
+      return;
+    }
     await this.#positionMenu();
     await this.updateComplete;
     if (this.#lastActiveMenuItem) {
@@ -1107,7 +1129,12 @@ export class RhAudioPlayer extends LitElement {
     const label = this.#transcript?.label;
     const a = document.createElement('a');
     const title = [this.mediaseries, this.mediatitle, label].join(' ');
-    const filename = (this.mediatitle || this.mediaseries || label || 'transcript').replace(/[^\w^\d^-]/g, '');
+    const filename = (
+      this.mediatitle
+      || this.mediaseries
+      || label
+      || 'transcript'
+    ).replace(/[^\w^\d^-]/g, '');
     const contents = `${title}\n${transcript}`;
     a.setAttribute('href', `data:text/plain;charset=UTF-8,${encodeURIComponent(contents)}`);
     a.setAttribute('download', `${filename}.txt`);
@@ -1148,7 +1175,9 @@ export class RhAudioPlayer extends LitElement {
    */
   incrementPlaybackrate() {
     if (this.#mediaElement) {
-      this.#mediaElement.playbackRate = this.playbackRate = this.#validPlaybackRate(this.#mediaElement.playbackRate + this.#pbrStep);
+      this.#mediaElement.playbackRate =
+        this.playbackRate =
+        this.#validPlaybackRate(this.#mediaElement.playbackRate + this.#pbrStep);
     }
   }
 
@@ -1157,7 +1186,9 @@ export class RhAudioPlayer extends LitElement {
    */
   decrementPlaybackrate() {
     if (this.#mediaElement) {
-      this.#mediaElement.playbackRate = this.playbackRate = this.#validPlaybackRate(this.#mediaElement.playbackRate - this.#pbrStep);
+      this.#mediaElement.playbackRate =
+        this.playbackRate =
+        this.#validPlaybackRate(this.#mediaElement.playbackRate - this.#pbrStep);
     }
   }
 
@@ -1181,7 +1212,9 @@ export class RhAudioPlayer extends LitElement {
   seek(seconds: number) {
     this.#mediaElement?.setAttribute('seekable', 'seekable');
     if (this.#mediaElement) {
-      const time = this.#mediaEnd ? Math.max(this.#mediaStart, Math.min(seconds, this.#mediaEnd)) : -1;
+      const time = this.#mediaEnd ?
+        Math.max(this.#mediaStart, Math.min(seconds, this.#mediaEnd))
+        : -1;
       if (time >= 0) {
         this.#mediaElement.currentTime = time;
         this.requestUpdate();

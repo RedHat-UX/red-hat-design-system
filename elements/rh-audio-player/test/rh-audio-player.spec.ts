@@ -192,9 +192,9 @@ describe('<rh-audio-player>', function() {
     it('should upgrade', function() {
       const klass = customElements.get('rh-audio-player');
       expect(element)
-        .to.be.an.instanceOf(klass)
-        .and
-        .to.be.an.instanceOf(RhAudioPlayer);
+          .to.be.an.instanceOf(klass)
+          .and
+          .to.be.an.instanceOf(RhAudioPlayer);
     });
   });
 
@@ -360,8 +360,8 @@ describe('<rh-audio-player>', function() {
         beforeEach(seekViaSlider(60));
         it('sets the currentTime to approximately 60%', function() {
           expect(element.currentTime)
-            .to.be.greaterThanOrEqual(element.duration / 2)
-            .and.to.be.lessThan(element.duration);
+              .to.be.greaterThanOrEqual(element.duration / 2)
+              .and.to.be.lessThan(element.duration);
         });
       });
 
