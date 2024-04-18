@@ -2,7 +2,15 @@
 
 {{ tagName | getElementDescription }}
 
+{% example palette="light",
+           alt="Example of a back to top button",
+           src="back-to-top.svg" %}
+
 {% repoStatusList %}
+
+## Sample
+
+View a demo below.
 
 ## Demos
   View a live version of this component and see how it can be customized.
