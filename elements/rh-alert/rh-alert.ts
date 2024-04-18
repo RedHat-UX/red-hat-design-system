@@ -5,6 +5,8 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 
+import '@rhds/elements/rh-surface/rh-surface.js';
+
 import styles from './rh-alert.css';
 
 // TODO: replace with rh-icon
