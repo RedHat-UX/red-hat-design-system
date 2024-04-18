@@ -16,6 +16,7 @@ export default tseslint.config(
 
       '**/*.d.ts',
       '**/*.(spec|e2e).js',
+      'react',
       'elements/**/*.js',
       'lib/**/*.js',
 
