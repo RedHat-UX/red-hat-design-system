@@ -25,7 +25,3 @@
   {% endcta %}
 
 ## When to use 
-
-
-{% repoStatus type="Element" %}
-
