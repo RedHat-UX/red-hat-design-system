@@ -118,8 +118,7 @@ export class RhAccordion extends LitElement {
   }
 
   get #ctx(): RhAccordionContext {
-    const accents = this.accents === null
-                    || this.accents === '' as 'inline' ? 'inline' : this.accents;
+    const accents = this.accents ? this.accents : 'inline';
     return { accents };
   }
 
