@@ -27,6 +27,8 @@ export class MenuToggleEvent extends Event {
 export class RhMenu extends LitElement {
   static readonly styles = [styles];
 
+  static shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
+
   @queryAssignedElements() private _menuItems!: HTMLElement[];
 
   @colorContextConsumer() private on?: ColorTheme;
@@ -63,6 +65,10 @@ export class RhMenu extends LitElement {
 
   activateItem(item: HTMLElement) {
     this.#tabindex.setActiveItem(item);
+  }
+
+  focus() {
+    this.#tabindex.activeItem?.focus();
   }
 }
 
