@@ -84,7 +84,7 @@ export class RhAccordion extends LitElement {
    */
   @property({
     attribute: true,
-    reflect: true
+    reflect: true,
   }) accents?: 'inline' | 'bottom';
 
   /**
@@ -118,7 +118,8 @@ export class RhAccordion extends LitElement {
   }
 
   get #ctx(): RhAccordionContext {
-    const accents = this.accents === null || this.accents === '' as 'inline' ? 'inline' : this.accents;
+    const accents = this.accents === null
+                    || this.accents === '' as 'inline' ? 'inline' : this.accents;
     return { accents };
   }
 

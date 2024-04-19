@@ -113,7 +113,7 @@ span {
 
 [part="container"] .bottom {
   flex-direction: column;
-  gap: var(--rh-space-md, 8px)
+  gap: var(--rh-space-md, 8px);
 }
 
 #button[aria-expanded="true"] #icon {
@@ -158,6 +158,6 @@ span {
 @media only screen and (max-width: 576px) {
   [part="container"] {
     flex-direction: column;
-    gap: var(--rh-space-md, 8px)
+    gap: var(--rh-space-md, 8px);
   }
 }
