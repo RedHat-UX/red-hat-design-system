@@ -1,6 +1,7 @@
 import { LitElement, html, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+import { query } from 'lit/decorators/query.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
@@ -47,6 +48,8 @@ export class RhButton extends LitElement {
 
   /** Shorthand for the `icon` slot, the value is icon name */
   @property() icon?: string;
+
+  @query('button') private _button!: HTMLButtonElement;
 
   /**
    * Changes the style of the button.
@@ -149,6 +152,10 @@ export class RhButton extends LitElement {
       default:
         return '';
     }
+  }
+
+  focus() {
+    this._button?.focus();
   }
 }
 
