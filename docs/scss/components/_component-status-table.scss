@@ -2,6 +2,9 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  p {
+    font-size: var(--rh-font-size-body-text-sm);
+  }
 }
 
 .component-status-list-container {
