@@ -1,4 +1,5 @@
 import type { RhAccordion } from './rh-accordion.js';
+import type { RhAccordionContext } from './context.js';
 
 import { html, LitElement } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
@@ -10,6 +11,10 @@ import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import { DirController } from '../../lib/DirController.js';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+
+import { consume } from '@lit/context';
+
+import { context } from './context.js';
 
 import styles from './rh-accordion-header.css';
 
@@ -38,8 +43,8 @@ export class AccordionHeaderChangeEvent extends Event {
  * @slot
  *       We expect the light DOM of the rh-accordion-header to be a heading level tag (h1, h2, h3, h4, h5, h6)
  * @slot accents
- *       These elements will appear inline with the accordion header, between the header and the chevron
- *       (or after the chevron and header in disclosure mode).
+ *       These elements will appear inline by default with the header title, between the header and the chevron
+ *       (or after the chevron and header in disclosure mode). There is an option to set the accents placement to bottom
  *
  * @fires {AccordionHeaderChangeEvent} change - when the open panels change
  *
@@ -61,9 +66,14 @@ export class RhAccordionHeader extends LitElement {
 
   @property({ reflect: true, attribute: 'heading-tag' }) headingTag?: string;
 
+  /** @deprecated */
   @property({ reflect: true }) icon = 'angle-down';
 
   @colorContextConsumer() private on?: ColorTheme;
+
+  @consume({ context, subscribe: true })
+  @property({ attribute: false })
+  private ctx?: RhAccordionContext;
 
   #generatedHtag?: HTMLHeadingElement;
 
@@ -121,12 +131,14 @@ export class RhAccordionHeader extends LitElement {
   }
 
   #renderHeaderContent() {
+    const { accents } = this.ctx ?? {};
     const headingText = this.headingText?.trim() ?? this.#header?.textContent?.trim();
+
     return html`
       <button id="button"
               class="toggle"
               aria-expanded="${String(!!this.expanded) as 'true' | 'false'}">
-        <span part="container">
+        <span part="container" class="${accents}">
           <span part="text">${headingText ?? html`
           <slot></slot>`}
           </span>
