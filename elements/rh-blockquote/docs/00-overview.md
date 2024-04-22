@@ -1,11 +1,16 @@
 ## Overview
+
 A blockquote is a styled quotation and citation offset from other text styles on the page.
+
+{% repoStatusList %}
+
 
 ## Sample element
 
 <uxdot-example width-adjustment="593px">
   <img src="{{ './blockquote-sample.png' | url }}" alt="Image of a blockquote including a quote icon, quotation text, and citation text">
 </uxdot-example>
+
 
 ## Demo
 
@@ -21,11 +26,13 @@ View a live version of this component and see how it can be customized.
 
 <rh-cta><a href="{{ './demo/' | url }}">Full screen demo</a></rh-cta>
   
+
 ## When to use
 
 - When you need to feature direct a quotation from an external source
 - When you need to highlight positive feedback or reviews from customers
 - When you need to break up large portions of text
 
-{% repoStatus type="Element" %}
+
+{% repoStatusChecklist %}
 

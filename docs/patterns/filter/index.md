@@ -40,8 +40,6 @@ A Filter gives users the ability to sort a results listing by turning on and off
 
 </div>
 
-{% repoStatus %}
-
 ## Style
     
 A filter can be used in the light theme only. It features a list of checkboxes and text that are wrapped in an [Accordion](../accordion) or a [Disclosure](../disclosure). Content categories can be represented by accordion panels that users can expand to view the checkboxes inside. When one or more checkboxes are selected, a button will appear that gives users the option to reset their selections.

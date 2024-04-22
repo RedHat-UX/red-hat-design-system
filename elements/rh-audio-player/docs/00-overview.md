@@ -2,6 +2,8 @@
 
 {{ tagName | getElementDescription }}
 
+{% repoStatusList %}
+
 ## Sample element
 
 <rh-audio-player lang="en-US"
@@ -2643,4 +2645,4 @@ View a live version of this component and see how it can be customized.
 - When you want to feature audio content without directing users to other pages
 - When you want to offer users with reduced hearing abilities a listening alternative using a transcript
 
-{% repoStatus type="Element" %}
+{% repoStatusChecklist %}

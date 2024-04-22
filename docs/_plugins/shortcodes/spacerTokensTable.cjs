@@ -2,11 +2,11 @@ const { tokens: metaTokens } = require('@rhds/tokens/meta.js');
 
 /**
  * Reads token data from @rhds/tokens and outputs a table for specified tokens
- * @this {EleventyContext}
+ * @param {import('@11ty/eleventy').UserConfig} eleventyConfig  computed config
  */
-
 module.exports = function(eleventyConfig) {
-  eleventyConfig.addPairedShortcode('spacerTokensTable',
+  eleventyConfig.addPairedShortcode(
+    'spacerTokensTable',
     function(content, {
       tokens = '',
       style,
@@ -14,11 +14,11 @@ module.exports = function(eleventyConfig) {
       headingLevel = '3',
       caption = '',
       wrapperClass,
-      palette = 'light'
+      palette = 'light',
     } = {}) {
       const slugify = eleventyConfig.getFilter('slugify');
       const tokenList = (Array.isArray(tokens) ? tokens : tokens.split(','))
-        .map(token => token.trim()).filter(Boolean);
+          .map(token => token.trim()).filter(Boolean);
       const metaData = [];
 
       if (tokenList.length === 0) {

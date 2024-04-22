@@ -94,7 +94,7 @@ export class RhFooter extends LitElement {
   protected screenSize = new ScreenSizeController(this, 'md', {
     onChange: matches => {
       this.#compact = !matches;
-    }
+    },
   });
 
   override connectedCallback() {
@@ -191,15 +191,21 @@ export class RhFooter extends LitElement {
    * and synchronously update each list and header if we need to.
    */
   public updateAccessibility(): void {
-    const listsSelector = ':is([slot^=links],[slot=footer-links-primary],[slot=footer-links-secondary]):is(ul)';
+    const listsSelector =
+      ':is([slot^=links],[slot=footer-links-primary],[slot=footer-links-secondary]):is(ul)';
     for (const list of this.querySelectorAll(listsSelector)) {
       // if we already have a label then we assume that the user
       // has wired this up themselves.
       if (!list.hasAttribute('aria-labelledby')) {
         // get the corresponding header that should be the previous sibling
-        const header = isHeaderTagName(list.previousElementSibling?.tagName ?? '') ? list.previousElementSibling : null;
+        const header =
+          isHeaderTagName(list.previousElementSibling?.tagName ?? '') ?
+            list.previousElementSibling
+            : null;
         if (!header) {
-          return this.#logger.warn('This links set doesn\'t have a valid header associated with it.');
+          return this.#logger.warn(
+            'This links set doesn\'t have a valid header associated with it.'
+          );
         } else {
           // add an ID to the header if we need it
           header.id ||= getRandomId('rh-footer');

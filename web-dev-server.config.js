@@ -28,6 +28,6 @@ export default pfeDevServerConfig({
         ctx.redirect(`/docs${ctx.path}`);
       }
       return next();
-    }
-  ]
+    },
+  ],
 });

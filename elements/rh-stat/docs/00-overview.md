@@ -6,6 +6,8 @@
   <img src="{{ './stat-sample-element.png' | url }}" alt="A vertically aligned stack of elements; includes a small red icon, large red data text showing 80% percent, and two lines of black body text">
 </uxdot-example>
 
+{% repoStatusList %}
+
 
 ## Sample element
 
@@ -30,4 +32,5 @@ View a live version of this element and see how it can be customized.
 - When you need to pair a data point with supporting text to add more context
 - When you need to display several statistics together in a group
 
-{% repoStatus type="Element" %} 
+{% repoStatusChecklist %}
+

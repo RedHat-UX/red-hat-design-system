@@ -2,6 +2,8 @@
 
 {{ tagName | getElementDescription }}
 
+{% repoStatusList %}
+
 ## Sample element
 
 <uxdot-example width-adjustment="872px">
@@ -22,5 +24,4 @@
 - When you need to provide a more granular navigation that is specific to a topic
 - When you need to prevent other navigations from getting overloaded
 
-{% repoStatus type="Element" %}
-
+{% repoStatusChecklist %}

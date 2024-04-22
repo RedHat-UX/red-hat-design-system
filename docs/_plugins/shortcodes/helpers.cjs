@@ -16,7 +16,7 @@ function getAttrMapValue(k, v) {
  */
 exports.attrMap = function attrMap(attrObj) {
   return Object.entries(attrObj)
-    .filter(([, v]) => v != null)
-    .map(([k, v]) => `${k}="${getAttrMapValue(k, v)}"`)
-    .join(' ');
+      .filter(([, v]) => v != null)
+      .map(([k, v]) => `${k}="${getAttrMapValue(k, v)}"`)
+      .join(' ');
 };

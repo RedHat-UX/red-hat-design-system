@@ -1,10 +1,10 @@
 {% renderInstall %}{% endrenderInstall %}
 
-{% band header="Usage" %}
+## Usage
+
 ```html
 <rh-timestamp></rh-timestamp>
 ```
-{% endband %}
 
 {% renderCodeDocs hideDescription=true %}{% endrenderCodeDocs %}
 

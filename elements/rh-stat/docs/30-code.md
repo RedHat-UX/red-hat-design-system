@@ -1,6 +1,7 @@
 {% renderInstall %}{% endrenderInstall %}
 
-{% band header="Usage" %}
+
+## Usage
 
 ```html
 <rh-stat>
@@ -8,6 +9,5 @@
   <span>Description Placeholder</span>
 </rh-stat>
 ```
-{% endband %}
 
 {% renderCodeDocs hideDescription=true %}{% endrenderCodeDocs %}

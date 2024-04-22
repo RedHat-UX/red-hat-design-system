@@ -30,13 +30,10 @@ import styles from './rh-navigation-secondary-dropdown.css';
 /**
  * Upgrades a top level nav link to include dropdown functionality
  * @summary Upgrades a top level nav link to include dropdown functionality
- *
  * @slot link   - Link for dropdown, expects `<a>` element
  * @slot menu   - Menu for dropdown, expects `<rh-navigation-secondary-menu>` element
- *
  * @fires { SecondaryNavDropdownExpandEvent } change - Fires when a dropdown is clicked
- *
-**/
+ */
 @customElement('rh-navigation-secondary-dropdown')
 export class RhNavigationSecondaryDropdown extends LitElement {
   static readonly styles = [styles];
@@ -62,11 +59,13 @@ export class RhNavigationSecondaryDropdown extends LitElement {
     const [link] = this.#slots.getSlotted<HTMLElement>('link');
     const [menu] = this.#slots.getSlotted<HTMLElement>('menu');
     if (link === undefined) {
-      this.#logger.warn('[rh-navigation-secondary-dropdown][slot="link"] expects a slotted <a> tag');
+      this.#logger.warn(
+        '[rh-navigation-secondary-dropdown][slot="link"] expects a slotted <a> tag'
+      );
       return;
     }
     if (menu === undefined) {
-      this.#logger.warn('[rh-navigation-secondary-dropdown][slot="menu"] expects a slotted <rh-navigation-secondary-menu> tag');
+      this.#logger.warn(`[rh-navigation-secondary-dropdown][slot="menu"] expects a slotted <rh-navigation-secondary-menu> tag`);
       return;
     }
 
@@ -95,7 +94,7 @@ export class RhNavigationSecondaryDropdown extends LitElement {
    * run the `#open()` method, if false run the `#close()` method.
    * @param oldVal {string} - Boolean value in string form
    * @param newVal {string} - Boolean value in string form
-   * @returns {void}
+   * @returns
    */
   protected _expandedChanged(oldVal?: 'false' | 'true', newVal?: 'false' | 'true'): void {
     if (newVal === oldVal) {
@@ -119,7 +118,7 @@ export class RhNavigationSecondaryDropdown extends LitElement {
 
   /**
    * Sets or removes attributes needed to open a dropdown menu
-   * @returns {void}
+   * @returns
    */
   #open(): void {
     const link = this.#slots.getSlotted('link').find(child => child instanceof HTMLAnchorElement);
@@ -127,21 +126,24 @@ export class RhNavigationSecondaryDropdown extends LitElement {
     // menu as a RhNavigationSecondaryMenu in the slotted child is specific to rh-navigation-secondary.
     // If this component is abstracted to a standalone component. The RhNavigationSecondaryMenu
     // could possibly become a sub component of the abstraction instead.
-    const menu = this.#slots.getSlotted('menu').find(child => child instanceof RhNavigationSecondaryMenu) as RhNavigationSecondaryMenu;
+    const menu = this.#slots.getSlotted('menu').find(child =>
+      child instanceof RhNavigationSecondaryMenu
+    ) as RhNavigationSecondaryMenu;
     menu.visible = true;
   }
 
-  /**
-   * Sets or removes attributes needed to close a dropdown menu
-   * @returns {void}
-   */
-  #close(): void {
+  /** Sets or removes attributes needed to close a dropdown menu */
+  #close() {
     const link = this.#slots.getSlotted('link').find(child => child instanceof HTMLAnchorElement);
     link?.setAttribute('aria-expanded', 'false');
     // Same as comment in #open()
     // The RhNavigationSecondaryMenu could possibly become a sub component of the abstraction instead.
-    const menu = this.#slots.getSlotted('menu').find(child => child instanceof RhNavigationSecondaryMenu) as RhNavigationSecondaryMenu;
-    menu.visible = false;
+    const menu = this.#slots.getSlotted('menu').find(
+      (child: Node): child is RhNavigationSecondaryMenu =>
+        child instanceof RhNavigationSecondaryMenu);
+    if (menu) {
+      menu.visible = false;
+    }
   }
 
   async #mutationsCallback(): Promise<void> {
@@ -151,13 +153,16 @@ export class RhNavigationSecondaryDropdown extends LitElement {
   }
 }
 
+/** @deprecated use rh-navigation-secondary-dropdown */
 @customElement('rh-secondary-nav-dropdown')
 class RhSecondaryNavDropdown extends RhNavigationSecondaryDropdown {
   #logger = new Logger(this);
 
   constructor() {
     super();
-    this.#logger.warn('rh-secondary-nav-dropdown is deprecated. Use rh-navigation-secondary-dropdown instead.');
+    this.#logger.warn(
+      'rh-secondary-nav-dropdown is deprecated. Use rh-navigation-secondary-dropdown instead.'
+    );
   }
 }
 

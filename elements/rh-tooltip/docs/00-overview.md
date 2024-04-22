@@ -6,6 +6,8 @@
   <img src="{{ './tooltip-sample-element.png' | url }}" alt="A black tooltip on top of a gray disabled button">
 </uxdot-example>
 
+{% repoStatusList %}
+
 ## Sample element
 
 <rh-tooltip position="top">
@@ -43,5 +45,4 @@ View a live version of this component and see how it can be customized.
 - When you need to provide more information for icons or icon buttons without labels
 - When you need to define new or unfamiliar UI elements that are not described directly in the user interface
 
-{% repoStatus type="Element" %}
-
+{% repoStatusChecklist %}

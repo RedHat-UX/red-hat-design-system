@@ -7,6 +7,8 @@
 </uxdot-example>
 
 
+{% repoStatusList %}
+
 ## Sample element
 
 <rh-subnav>
@@ -31,4 +33,4 @@
 - When you want to allow users to browse high-level and low-level pages in the 
   same experience
 
-{% repoStatus type="Element" %}
+{% repoStatusChecklist %}

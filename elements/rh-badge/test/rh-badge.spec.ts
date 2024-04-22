@@ -9,9 +9,9 @@ describe('<rh-badge>', function() {
     const el = await createFixture <RhBadge>(html`<rh-badge></rh-badge>`);
     const klass = customElements.get('rh-badge');
     expect(el)
-      .to.be.an.instanceOf(klass)
-      .and
-      .to.be.an.instanceOf(RhBadge);
+        .to.be.an.instanceOf(klass)
+        .and
+        .to.be.an.instanceOf(RhBadge);
   });
 });
 

@@ -14,5 +14,3 @@ is visible in the browser window.
 
 
 {% repoStatus type="Element" %}
-
-

@@ -8,6 +8,3 @@ information or provides resources via text and links.
 <uxdot-example width-adjustment="424px">
   <img src="{{ './popover-sample-component.svg' | url }}" alt="Popover component sample">
 </uxdot-example>
-
-
-{% repoStatus type="Element" %}

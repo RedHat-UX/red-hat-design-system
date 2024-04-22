@@ -7,6 +7,8 @@
 </uxdot-example>
 
 
+{% repoStatusList %}
+
 ## Sample element
 
 <rh-table>
@@ -63,5 +65,4 @@ View a live version of this element and see how it can be customized.
 - If a user needs to scan, examine, and compare data
 - If a user must navigate to a specific piece of data to complete a task
 
-
-{% repoStatus type="Element" %}
+{% repoStatusChecklist %}

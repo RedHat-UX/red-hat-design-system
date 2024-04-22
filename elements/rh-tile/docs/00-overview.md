@@ -7,6 +7,8 @@
 </uxdot-example>
 
 
+{% repoStatusList %}
+
 ## Sample element
 
 <rh-tile>
@@ -32,5 +34,5 @@ View a live version of this element and see how it can be customized.
 - When you need an alternative to a group of cards with the same calls to action
 - When you need to group content for a radio button or checkbox in a form
 
-{% repoStatus type="Element" %}
+{% repoStatusChecklist %}
 
