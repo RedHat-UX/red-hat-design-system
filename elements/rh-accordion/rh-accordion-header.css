@@ -107,9 +107,11 @@ span {
 [part="container"] {
   display: flex;
   gap: var(--rh-space-xl, 24px);
+  container-type: inline-size;
 }
 
-[part="container"] .bottom {
+#header-container {
+  display: flex;
   flex-direction: column;
   gap: var(--rh-space-md, 8px);
 }
@@ -159,9 +161,8 @@ span {
   inset-inline-start: 0;
 }
 
-@media only screen and (max-width: 576px) {
-  [part="container"] {
-    flex-direction: column;
-    gap: var(--rh-space-md, 8px);
+@container (min-width: 576px) {
+  #header-container:not(.bottom) {
+    flex-direction: row;
   }
 }

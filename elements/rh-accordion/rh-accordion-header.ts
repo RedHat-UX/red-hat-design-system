@@ -5,6 +5,7 @@ import { html, LitElement } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
@@ -138,7 +139,7 @@ export class RhAccordionHeader extends LitElement {
       <button id="button"
               class="toggle"
               aria-expanded="${String(!!this.expanded) as 'true' | 'false'}">
-        <span part="container" class="${accents}">
+        <span id="header-container" class="${ifDefined(accents)}">
           <span part="text">${headingText ?? html`
           <slot></slot>`}
           </span>
