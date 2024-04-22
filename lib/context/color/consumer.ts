@@ -3,10 +3,10 @@ import type { ReactiveController, ReactiveElement } from 'lit';
 import {
   contextEvents,
   ColorContextController,
-  type ColorContextOptions
+  type ColorContextOptions,
 } from './controller.js';
 
-import { ContextEvent } from '../event.js';
+import { ContextRequestEvent } from '../event.js';
 
 /**
    * A Color theme is a context-specific restriction on the available color palettes
@@ -52,13 +52,14 @@ export class ColorContextConsumer<
   #override: ColorTheme | null = null;
 
   constructor(host: T, private options?: ColorContextConsumerOptions<T>) {
-    super(host, options);
+    super(host);
     this.#propertyName = options?.propertyName ?? 'on' as keyof T;
   }
 
   /** When a consumer connects, it requests colour context from the closest provider. */
   async hostConnected() {
-    const event = new ContextEvent(this.context, e => this.#contextCallback(e), true);
+    const { context } = ColorContextController;
+    const event = new ContextRequestEvent(context, e => this.#contextCallback(e), true);
     this.#override = this.#propertyValue;
     contextEvents.set(this.host, event);
     await this.host.updateComplete;

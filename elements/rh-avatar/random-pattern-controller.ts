@@ -203,7 +203,7 @@ export class RandomPatternController implements ReactiveController {
     this.render();
   }
 
-  hostConnected?(): void
+  hostConnected?(): void;
 
   render(options?: Options) {
     this.#name = options?.name ?? this.#name;
@@ -211,7 +211,9 @@ export class RandomPatternController implements ReactiveController {
     this.#pattern = options?.pattern ?? this.#pattern;
     this.#canvas.width = options?.size ?? 0;
     this.#canvas.height = options?.size ?? 0;
-    if (options?.colors) { this.#colorTuples = this.#initColorTuples(); }
+    if (options?.colors) {
+      this.#colorTuples = this.#initColorTuples();
+    }
     const bitPattern = hash(this.#name ?? '').toString(2);
     const arrPattern = bitPattern.split('').map(n => Number(n)) as Vector2D;
     const index = Math.floor((this.#colorTuples.length * parseInt(bitPattern, 2)) / (2 ** 32));

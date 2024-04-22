@@ -17,9 +17,9 @@ const STATUS_LEGEND = {
       s1.5-0.7,1.5-1.5S8.8,1,8,1z"/>
   </g>
 </svg>
- `
+ `,
   },
-  'In progress': {
+  'In Progress': {
     description: 'In the design or development process',
     color: 'green',
     variant: 'outline',
@@ -30,7 +30,7 @@ const STATUS_LEGEND = {
   </style>
   <path class="inprogress" d="M15,8c0,3.9-3.1,7-7,7s-7-3.1-7-7H15z"/>
   <path class="inprogress" d="M8,2c3.3,0,6,2.7,6,6s-2.7,6-6,6s-6-2.7-6-6S4.7,2,8,2z M8,1C4.1,1,1,4.1,1,8s3.1,7,7,7s7-3.1,7-7S11.9,1,8,1z"/>
-</svg>`
+</svg>`,
   },
   'Ready': {
     description: 'Ready to use and approved by all team members',
@@ -40,7 +40,7 @@ const STATUS_LEGEND = {
 <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 15" fill="none" role="img">
   <path d="M7 14.5C10.866 14.5 14 11.366 14 7.5C14 3.63401 10.866 0.5 7 0.5C3.13401 0.5 0 3.63401 0 7.5C0 11.366 3.13401 14.5 7 14.5Z" fill="#63993D"/>
   <path d="M4 7.5L6 9.5L10 5.5" stroke="#E9F7DF" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>`
+</svg>`,
   },
   'Deprecated': {
     description: 'No longer supported by RHDS',
@@ -51,7 +51,7 @@ const STATUS_LEGEND = {
   <path d="M7 14.5C10.866 14.5 14 11.366 14 7.5C14 3.63401 10.866 0.5 7 0.5C3.13401 0.5 0 3.63401 0 7.5C0 11.366 3.13401 14.5 7 14.5Z" fill="#F0561D"/>
   <path d="M5 9.5L9 5.5" stroke="#FFE3D9" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="M9 9.5L5 5.5" stroke="#FFE3D9" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>`
+</svg>`,
   },
   'N/A': {
     description: 'Not planned, not available, or does not apply',
@@ -64,7 +64,7 @@ const STATUS_LEGEND = {
   </style>
   <path class="na" d="M8,1C4.1,1,1,4.1,1,8c0,3.9,3.1,7,7,7c3.9,0,7-3.1,7-7C15,4.1,11.9,1,8,1z M2,8c0-1.5,0.5-2.8,1.4-3.9l8.4,8.4
     C10.8,13.5,9.5,14,8,14C4.7,14,2,11.3,2,8z M12.6,11.9L4.1,3.4C5.2,2.5,6.5,2,8,2c3.3,0,6,2.7,6,6C14,9.5,13.5,10.8,12.6,11.9z"/>
-</svg>`
+</svg>`,
   },
   'Beta': {
     color: 'purple',
@@ -78,7 +78,7 @@ const STATUS_LEGEND = {
   <path class="beta" d="M14.8,3.2l-2.3,2.3l-2-2l2.3-2.3C12.4,1.1,11.9,1,11.5,1C9.6,1,8,2.6,8,4.5c0,0.4,0.1,0.9,0.2,1.3L1,13l2,2
     l7.2-7.2C10.6,7.9,11.1,8,11.5,8C13.4,8,15,6.4,15,4.5C15,4.1,14.9,3.6,14.8,3.2z"/>
  </svg>
- `
+ `,
   },
   'Experimental': {
     color: 'orange',
@@ -110,7 +110,7 @@ const STATUS_LEGEND = {
     c0.659-0.5036,1.31714-1.07642,1.95532-1.7146c0.63739-0.63739,1.20898-1.29462,1.7121-1.9527
     C13.97107,11.15002,14.26593,13.04779,13.65686,13.65686z"/>
   <circle class="experimental" cx="8" cy="8" r="1.5"/>
-</svg>`
+</svg>`,
   },
   'New': {
     color: 'cyan',
@@ -125,7 +125,7 @@ const STATUS_LEGEND = {
     <path class="new" d="M13.2,2.8L12.5,1l-0.7,1.8L10,3.5l1.8,0.7L12.5,6l0.7-1.8L15,3.5L13.2,2.8z"/>
     <path class="new" d="M8,6.5l-1.5-4L5,6.5L1,8l4,1.5l1.5,4l1.5-4L12,8L8,6.5z"/>
   </g>
- </svg>`
+ </svg>`,
   },
 
 };
@@ -136,46 +136,46 @@ const STATUS_CHECKLIST = {
     'In progress': 'Component will be added to the Figma library when ready',
     'Planned': 'Component is scheduled to be worked on',
     'Deprecated': 'Component has been removed from the current Figma library ',
-    'N/A': 'Component not available in the Figma library'
+    'N/A': 'Component not available in the Figma library',
   },
   'Responsive': {
     'Ready': 'Component responds to changing viewport sizes in Figma and the browser',
-    'N/A': 'Responsiveness does not apply to this component'
+    'N/A': 'Responsiveness does not apply to this component',
   },
   'RH Elements': {
     'Ready': 'Component is available as a web component',
     'In progress': 'Component will be added to the RH Elements repo when ready',
     'Planned': 'Component is scheduled to become a web component',
     'Deprecated': 'Component is no longer a web component',
-    'N/A': 'Component not available as a web component'
+    'N/A': 'Component not available as a web component',
   },
   'webRH': {
     'Ready': 'Component is available as a web component',
     'In progress': 'Component will be added to the webRH repo when ready',
     'Planned': 'Component is scheduled to become a web component',
     'Deprecated': 'Component is no longer a web component',
-    'N/A': 'Component not available as a web component'
-  }
+    'N/A': 'Component not available as a web component',
+  },
 };
 
 /**
  * Reads repo status data from global data and outputs an array with component keys
- * @this {EleventyContext}
  */
 function getRepoData() {
   const docsPage = this.ctx._;
   const allStatuses = this.ctx.repoStatus ?? docsPage?.repoStatus ?? [];
   const title = this.ctx.title ?? docsPage?.title;
-  return allStatuses.find(component => component.name === title && component.type === 'Element').libraries;
+  return allStatuses.find(
+    component => component.name === title && component.type === 'Element'
+  )?.libraries;
 }
 
 /**
  * Calls getRepoData function and outputs a definition list for each component
- * @this {EleventyContext}
  */
 function repoStatusList({ heading = 'Status', level = 2 } = {}) {
   // Removing Documentation status from the repoStatusList
-  const statusList = getRepoData.call(this).filter(repo => repo.name !== 'Documentation');
+  const statusList = getRepoData.call(this)?.filter(repo => repo.name !== 'Documentation');
 
   if (!Array.isArray(statusList) || !statusList.length) {
     return '';
@@ -212,13 +212,15 @@ ${listItem.status}${STATUS_LEGEND[listItem.status].icon}
 
 /**
  * Reads component status data from global data (see above) and outputs a table for Design/Code status page
- * @this {EleventyContext}
  */
 function repoStatusTable() {
   const docsPage = this.ctx._;
   const allStatuses = this.ctx.repoStatus ?? docsPage?.repoStatus ?? [];
   // Filtering out 'Responsive' status from all the libraries
-  const elementsList = allStatuses.map(item => ({ ...item, libraries: item.libraries.filter(lib => lib.name !== 'Responsive') }));
+  const elementsList = allStatuses.map(item => ({
+    ...item,
+    libraries: item.libraries.filter(lib => lib.name !== 'Responsive'),
+  }));
 
   if (!Array.isArray(elementsList) || !elementsList.length) {
     return '';
@@ -275,11 +277,10 @@ ${listItem.libraries.map(lib => {
 
 /**
  * Calls getRepoData function and outputs a status checklist table for each component
- * @this {EleventyContext}
  */
 function repoStatusChecklist({ heading = 'Status checklist', level = 2 } = {}) {
   const headingLevel = Array.from({ length: level }, () => '#').join('');
-  const statusList = getRepoData.call(this).filter(repo => repo.name !== 'Documentation');
+  const statusList = getRepoData.call(this)?.filter(repo => repo.name !== 'Documentation');
   if (!Array.isArray(statusList) || !statusList.length) {
     return '';
   } else {

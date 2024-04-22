@@ -171,7 +171,9 @@ export class RhCta extends LitElement {
   }
 
   #onMutation() {
-    this.#logger.warn('The color-palette attribute is deprecated and will be removed in a future release.');
+    this.#logger.warn(
+      'The color-palette attribute is deprecated and will be removed in a future release.'
+    );
   }
   // END DEPRECATION WARNING
 

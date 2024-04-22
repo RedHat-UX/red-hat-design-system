@@ -4,6 +4,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
 import { observed } from '@patternfly/pfe-core/decorators/observed.js';
+import { provide } from '@lit/context';
 
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 
@@ -16,7 +17,10 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { RhAccordionHeader, AccordionHeaderChangeEvent } from './rh-accordion-header.js';
 import { RhAccordionPanel } from './rh-accordion-panel.js';
 
+import { context, type RhAccordionContext } from './context.js';
+
 import styles from './rh-accordion.css';
+
 
 export class AccordionExpandEvent extends ComposedEvent {
   constructor(
@@ -48,6 +52,10 @@ export class AccordionCollapseEvent extends ComposedEvent {
  * @slot
  *       Place the `rh-accordion-header` and `rh-accordion-panel` elements here.
  *
+ * @attr  accents
+ *        Position accents in the header either inline or bottom
+ *        {@default inline}
+ *
  */
 @customElement('rh-accordion')
 export class RhAccordion extends LitElement {
@@ -72,6 +80,14 @@ export class RhAccordion extends LitElement {
   }
 
   /**
+   * Sets accordion header's accents position to inline or bottom
+   */
+  @property({
+    attribute: true,
+    reflect: true,
+  }) accents?: 'inline' | 'bottom';
+
+  /**
    * Sets and reflects the currently expanded accordion 0-based indexes.
    * Use commas to separate multiple indexes.
    * ```html
@@ -82,7 +98,7 @@ export class RhAccordion extends LitElement {
    */
   @property({
     attribute: 'expanded-index',
-    converter: NumberListConverter
+    converter: NumberListConverter,
   })
   get expandedIndex() {
     return this.#expandedIndex;
@@ -100,6 +116,12 @@ export class RhAccordion extends LitElement {
       });
     }
   }
+
+  get #ctx(): RhAccordionContext {
+    const accents = this.accents ? this.accents : 'inline';
+    return { accents };
+  }
+
 
   @observed(function largeChanged(this: RhAccordion) {
     [...this.headers, ...this.panels].forEach(el => el.toggleAttribute('large', this.large));
@@ -121,11 +143,14 @@ export class RhAccordion extends LitElement {
   #headerIndex = new RovingTabindexController<RhAccordionHeader>(this);
 
   // actually is read in #init, by the `||=` operator
+  // eslint-disable-next-line no-unused-private-class-members
   #initialized = false;
 
   #logger = new Logger(this);
 
   #mo = new MutationObserver(() => this.#init());
+
+  @provide({ context }) private ctx = this.#ctx;
 
   connectedCallback() {
     super.connectedCallback();
@@ -152,6 +177,7 @@ export class RhAccordion extends LitElement {
         }
       }
     });
+    this.ctx = this.#ctx;
   }
 
   /**
@@ -185,7 +211,7 @@ export class RhAccordion extends LitElement {
 
   #updateActiveHeader() {
     if (this.#activeHeader) {
-      this.#headerIndex.updateActiveItem(this.#activeHeader);
+      this.#headerIndex.setActiveItem(this.#activeHeader);
     }
   }
 
@@ -241,11 +267,15 @@ export class RhAccordion extends LitElement {
   }
 
   #allHeaders(accordion: RhAccordion = this): RhAccordionHeader[] {
-    return Array.from(accordion.children).filter((x): x is RhAccordionHeader => x instanceof RhAccordionHeader);
+    return Array.from(accordion.children).filter((x): x is RhAccordionHeader =>
+      x instanceof RhAccordionHeader
+    );
   }
 
   #allPanels(accordion: RhAccordion = this): RhAccordionPanel[] {
-    return Array.from(accordion.children).filter((x => RhAccordion.isPanel(x)) as typeof RhAccordion.isPanel);
+    return Array.from(accordion.children).filter((x =>
+      RhAccordion.isPanel(x)) as typeof RhAccordion.isPanel
+    );
   }
 
   #getIndex(el: Element | null) {
@@ -302,7 +332,7 @@ export class RhAccordion extends LitElement {
    * Accepts an optional parent accordion to search for headers and panels.
    */
   public async expand(index: number, parentAccordion?: RhAccordion) {
-    const allHeaders: Array<RhAccordionHeader> = this.#allHeaders(parentAccordion);
+    const allHeaders: RhAccordionHeader[] = this.#allHeaders(parentAccordion);
 
     const header = allHeaders[index];
     if (!header) {

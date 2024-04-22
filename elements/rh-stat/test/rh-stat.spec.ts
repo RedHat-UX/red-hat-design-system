@@ -18,9 +18,9 @@ describe('<rh-stat>', function() {
     it('should upgrade', function() {
       const klass = customElements.get('rh-stat');
       expect(element)
-        .to.be.an.instanceof(klass)
-        .and
-        .to.be.an.instanceOf(RhStat);
+          .to.be.an.instanceof(klass)
+          .and
+          .to.be.an.instanceOf(RhStat);
     });
 
     it('passes the a11y audit', async function() {

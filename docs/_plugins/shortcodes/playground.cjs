@@ -23,8 +23,8 @@ async function playground(_, {
   const options = getPfeConfig();
   const { filePath } =
         docsPage.manifest
-          .getDemoMetadata(tagName, options)
-          ?.find(x => x.url === `https://ux.redhat.com/elements/${x.slug}/demo/`) ?? {};
+            .getDemoMetadata(tagName, options)
+            ?.find(x => x.url === `https://ux.redhat.com/elements/${x.slug}/demo/`) ?? {};
   const content = filePath && await readFile(filePath, 'utf8');
   return /* html*/`
 
