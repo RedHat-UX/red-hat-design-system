@@ -20,7 +20,7 @@ We are continually making changes in order to improve and grow the Red Hat Desig
 <section class="section release-version">
 
 ## Version 1.4.0
-Release April 22, 2024
+Released April 22, 2024
 
 ### Highlights
 
