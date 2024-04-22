@@ -1,5 +1,103 @@
 # @rhds/elements
 
+## 1.4.0
+
+### Minor Changes
+
+- fecdcbf: `<rh-codeblock>`: added line numbers
+- fecdcbf: ✨ Added `<rh-site-status>`
+
+  Website status communicates the operational status of a website or domain using a status icon and link. It is usually located in the Footer component.
+
+  ```html
+  <rh-site-status></rh-site-status>
+  ```
+
+- fecdcbf: ✨ Added `<rh-back-to-top>`.
+
+  Back to top component is a fragment link that allows users to quickly navigate to the top of a lengthy content.
+
+  ```html
+  <rh-back-to-top href="#top">Back to top</rh-back-to-top>
+  ```
+
+- fecdcbf: ✨ Added `<rh-skip-link>`.
+
+  A skip link is used to skip repetitive content on a page. It is hidden by default and can be activated by hitting the "Tab" key after loading/refreshing a page.
+
+  ```html
+  <rh-skip-link>
+    <a href="#main-content">Skip to main content</a>
+  </rh-skip-link>
+  ```
+
+- fecdcbf: ⚛️ Added React wrapper components
+
+  You can now more easily integrate RHDS elements into your React apps by importing our wrapper components
+
+  First, make sure that you list `@lit/react` as a dependency in your project
+
+  ```sh
+  npm install --save @lit/react
+  ```
+
+  Then import the element components you need and treat them like any other react component
+
+  ```js
+  import { Tabs } from '@rhds/elements/react/rh-tabs/rh-tabs.js';
+  import { Tab } from '@rhds/elements/react/rh-tabs/rh-tab.js';
+  import { TabPanel } from '@rhds/elements/react/rh-tabs/rh-tab-panel.js';
+
+  import { useState } from 'react';
+
+  const tabs = [
+    { heading: 'Hello Red Hat', content: 'Let\'s break down silos' },
+    { heading: 'Web components', content: 'They work everywhere' }
+  ];
+
+  function App() {
+    const [index, setExpanded] = useState(-1);
+    return (
+      <span>expanded {expanded}</span>
+      <Tabs>{tabs.map(({ heading, content }, i) => (
+        <Tab slot="tab" onExpand={() => setExpanded(i)}>{heading}</Tab>
+        <TabPanel>{content}</TabPanel>))}
+      </Tabs>
+    );
+  }
+  ```
+
+- fecdcbf: `<rh-codeblock>`: added `Show more` toggle
+- fecdcbf: `<rh-codeblock>`: added copy and wrap actions, with localizable slots for the button labels
+
+  ```html
+  <rh-code-block actions="wrap copy">
+    <span slot="action-label-copy">Copy to Clipboard</span>
+    <span slot="action-label-copy" hidden data-code-block-state="active"
+      >Copied!</span
+    >
+    <span slot="action-label-wrap">Toggle word wrap</span>
+    <span slot="action-label-wrap" hidden data-code-block-state="active"
+      >Toggle overflow</span
+    >
+    <script type="text/css">
+      :host {
+        display: block;
+      }
+    </script>
+  </rh-code-block>
+  ```
+
+### Patch Changes
+
+- fecdcbf: `<rh-menu>`: improved focus accessibility for keyboard navigation users on firefox
+  `<rh-button>`: improved focus accessibility on firefox
+- fecdcbf: `<rh-accordion>`: added a accents slot with placement options as inline and bottom
+- fecdcbf: Context: aligned context implementation with updated [protocol defintions](https://github.com/webcomponents-cg/community-protocols/blob/main/proposals/context.md#definitions)
+- fecdcbf: Update dependencies, including Lit version 3
+- fecdcbf: `<rh-alert>`: make sure alerts always have to correct (lightest) colour palette
+- fecdcbf: `<rh-tabs>`: allow tabs with long text content to fit into different-sized containers
+
 ## 1.3.2
 
 ### Patch Changes
