@@ -49,8 +49,11 @@ the js that runs and adds these casuses the nav to break
 
   ## Overview
 
-  UX personalization patterns are a way for you to introduce targeting into your projects. They are ready-made and contain all the details you need to plug-and-play your concept into an personalization opportunity.
+  Personalization is a digital marketing tactic where priority audiences are intercepted through targeting. Those audiences can be account-, demographic-, behavioral-, lifecycle-, or intent-based. Our goal is to provide visitors with the best next action when browsing our websites as well as meet their specific needs and progress them through the customer lifecycle.
+  
+  For more information about how personalization works, the team, and our vision for the future, read the [source deck](https://docs.google.com/presentation/d/1rRLFRJLsbspINGu5r2zXBUITRkwzVVH8T3CveA1Z_bM/edit#slide=id.g24f5d8f664e_0_1100).
 
+=
   <nav class="grid">
     <rh-tile compact bleed>
       <uxdot-example color-palette="dark" slot="image" no-border>

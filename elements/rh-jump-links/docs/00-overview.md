@@ -12,5 +12,3 @@ is visible in the browser window.
   <img src="{{ './jump-links-sample.svg' | url }}" alt="Jump links sample component" />
 </uxdot-example>
 
-
-{% repoStatus type="Element" %}

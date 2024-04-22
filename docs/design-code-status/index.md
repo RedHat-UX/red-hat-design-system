@@ -4,6 +4,7 @@ title: Design/code status
 hasToc: true
 importElements: 
   - rh-table
+  - rh-tag
 ---
 
 <link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
@@ -12,295 +13,118 @@ importElements:
 
   ## Overview
   
-  Our team is building a robust library of foundations and components. When we add new foundations and components or make significant updates, this table will be updated so you know what is currently available to use.
+  A detailed synopsis of our web components and their implementation status.
 
-</section>
-
-<section>
-
-  ## Design/code status
-
-  Last updated on October 5, 2022.
-
-  <rh-table>
+  <rh-table class="component-status-table">
     <table>
+      <colgroup>
+        <col />
+        <col />
+      </colgroup>
       <thead>
         <tr>
-          <th scope="col" data-label="Foundation or component name">Foundation or component name</th>
-          <th scope="col" data-label="Design status">Design status</th>
-          <th scope="col" data-label="Code status">Code status</th>
-          <th scope="col" data-label="Documentation">Documentation</th>
+          <th scope="col" data-label="Sample tag">Sample tag</th>
+          <th scope="col" data-label="Meaning">Meaning</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td data-label="Foundation or component name">Accordion</td>
-          <td data-label="Design status">Refresh in progress</span></td>
-          <td data-label="Code status"><div>PFE</div><div>Studio</div><div>WebRH</div></td>
-          <td data-label="Documentation"><div><a href="../elements/accordion">ux.redhat.com</a></div><div><a href="https://patternflyelements.com/patterns/accordion/" target="_blank">PFE</a></div></td>
+          <td data-label="Sample tag">
+            <span>
+              <rh-tag variant="filled" color="gray">
+                Planned
+                <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" role="img">
+                  <style type="text/css">
+                    .planned{fill:#707070;}
+                  </style>
+                  <g>
+                    <path class="planned" d="M8,12c0.6,0,1,0.4,1,1s-0.4,1-1,1s-1-0.4-1-1S7.4,12,8,12z M8,11c-1.1,0-2,0.9-2,2s0.9,2,2,2s2-0.9,2-2
+                      S9.1,11,8,11z"/>
+                    <path class="planned" d="M12.5,9V7.5C12.5,5,10.5,3,8,3S3.5,5,3.5,7.5V9c0,0.6-0.4,1-1,1C2.2,10,2,10.2,2,10.5v2C2,12.8,2.2,13,2.5,13
+                      h11c0.3,0,0.5-0.2,0.5-0.5v-2c0-0.3-0.2-0.5-0.5-0.5C12.9,10,12.5,9.6,12.5,9z"/>
+                    <path class="planned" d="M8,2c0.3,0,0.5,0.2,0.5,0.5S8.3,3,8,3S7.5,2.8,7.5,2.5S7.7,2,8,2z M8,1C7.2,1,6.5,1.7,6.5,2.5S7.2,4,8,4
+                      s1.5-0.7,1.5-1.5S8.8,1,8,1z"/>
+                  </g>
+                </svg>
+              </rh-tag>
+            </span>
+          </td>
+          <td data-label="Meaning">Ready to be worked on or ready to be released</td>
         </tr>
         <tr>
-          <td data-label="Foundation or component name">Alert</td>
-          <td data-label="Design status">Complete</span></td>
-          <td data-label="Code status"><div>Adobe Target</div><div>PFE</div><div>RHDS</div></td>
-          <td data-label="Documentation"><div><a href="../elements/alert">ux.redhat.com</a></div><div>PFE (backlog)</span></div></td>
-        </tr>
-          <tr>
-          <td data-label="Foundation or component name">Announcement</td>
-          <td data-label="Design status">Complete</span></td>
-          <td data-label="Code status"><div>Studio</div></td>
-          <td data-label="Documentation"><div><a href="../patterns/announcement">ux.redhat.com</a></div></td>
-        </tr>
-
-        <tr>
-          <td data-label="Foundation or component name">Audio player (redesign)</td>
-          <td data-label="Design status">Complete</span></td>
-          <td data-label="Code status">Backlog</span></td>
-          <td data-label="Documentation" data-label="Code status"><div>ux.redhat.com (backlog)</span></div></td>
+          <td data-label="Sample tag">
+            <span>
+              <rh-tag variant="outline" color="green">
+                In progress
+                <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" fill="none" role="img">
+                  <style type="text/css">
+                    .inprogress{fill:#63993D;}
+                  </style>
+                  <path class="inprogress" d="M15,8c0,3.9-3.1,7-7,7s-7-3.1-7-7H15z"/>
+                  <path class="inprogress" d="M8,2c3.3,0,6,2.7,6,6s-2.7,6-6,6s-6-2.7-6-6S4.7,2,8,2z M8,1C4.1,1,1,4.1,1,8s3.1,7,7,7s7-3.1,7-7S11.9,1,8,1z"/>
+                </svg>
+              </rh-tag>
+            </span>
+          </td>
+          <td data-label="Meaning">In the design or development process</td>
         </tr>
         <tr>
-          <td data-label="Foundation or component name">Avatar</td>
-          <td data-label="Design status">Complete</span></td>
-          <td data-label="Code status"><div>PFE</div><div>Studio</div></td>
-          <td data-label="Documentation"><div><a href="../elements/avatar">ux.redhat.com</a></div><div><a href="https://patternflyelements.com/patterns/avatar/" target="_blank">PFE</a></div></td>
+          <td data-label="Sample tag">
+            <span>
+              <rh-tag variant="filled" color="green">
+                Ready
+                <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 15" fill="none" role="img">
+                  <path d="M7 14.5C10.866 14.5 14 11.366 14 7.5C14 3.63401 10.866 0.5 7 0.5C3.13401 0.5 0 3.63401 0 7.5C0 11.366 3.13401 14.5 7 14.5Z" fill="#63993D"/>
+                  <path d="M4 7.5L6 9.5L10 5.5" stroke="#E9F7DF" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </rh-tag>
+            </span>
+          </td>
+          <td data-label="Meaning">Ready to use and approved by all team members</td>
         </tr>
         <tr>
-          <td data-label="Foundation or component name">Blockquote</td>
-          <td data-label="Design status">Complete</span></td>
-          <td data-label="Code status"><div>RHDS</div><div>Studio</div><div>WebRH</div></td>
-          <td data-label="Documentation"><a href="../elements/blockquote">ux.redhat.com</a></td>
+          <td data-label="Sample tag">
+            <span>
+              <rh-tag variant="filled" color="orange">
+                Deprecated
+                <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 15" fill="none" role="img">
+                  <path d="M7 14.5C10.866 14.5 14 11.366 14 7.5C14 3.63401 10.866 0.5 7 0.5C3.13401 0.5 0 3.63401 0 7.5C0 11.366 3.13401 14.5 7 14.5Z" fill="#F0561D"/>
+                  <path d="M5 9.5L9 5.5" stroke="#FFE3D9" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M9 9.5L5 5.5" stroke="#FFE3D9" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </rh-tag>
+            </span>
+          </td>
+          <td data-label="Meaning">No longer supported by RHDS</td>
         </tr>
         <tr>
-          <td data-label="Foundation or component name">Breadcrumb</td>
-          <td data-label="Design status">Complete</span></td>
-          <td data-label="Code status"><div>WebRH</div></td>
-          <td data-label="Documentation"><div>ux.redhat.com (backlog)</span></div></td>
-        </tr>
-        <tr>
-          <td data-label="Foundation or component name">Button</td>
-          <td data-label="Design status">Complete</span></td>
-          <td data-label="Code status"><div>PFE</div><div>Custom</div></td>
-          <td data-label="Documentation"><div><a href="../elements/button">ux.redhat.com</a></div><div><a href="https://patternflyelements.com/patterns/button/" target="_blank">PFE</a></div></td>
-        </tr>
-        <tr>
-          <td data-label="Foundation or component name">Button (Stateful)</td>
-          <td data-label="Design status">Complete</span></td>
-          <td data-label="Code status"><div>PFE</div></td>
-          <td data-label="Documentation"><div>ux.redhat.com (backlog)</span></div><div><a href="https://patternflyelements.com/patterns/clipboard/" target="_blank">PFE</a></div></td>
-        </tr>
-        <tr>
-          <td data-label="Foundation or component name">Call to action</td>
-          <td data-label="Design status">Complete</span></td>
-          <td data-label="Code status"><div>PFE</div><div>RHDS</div><div>Custom</div></td>
-          <td data-label="Documentation"><div><a href="../elements/call-to-action">ux.redhat.com</a></div><div><a href="https://patternflyelements.com/patterns/call-to-action/" target="_blank">PFE</a></div></td>
-        </tr>
-        <tr>
-          <td data-label="Foundation or component name">Card</td>
-          <td data-label="Design status">Complete</span></td>
-          <td data-label="Code status"><div>PFE</div><div>Custom</div></td>
-          <td data-label="Documentation"><div><a href="../elements/card">ux.redhat.com</a></div><div><a href="https://patternflyelements.com/patterns/card/" target="_blank">PFE</a></div></td>
-        </tr>
-        <tr>
-          <td data-label="Foundation or component name">Code block</td>
-          <td data-label="Design status">In progress</span></td>
-          <td data-label="Code status"><div>PFE</div></td>
-          <td data-label="Documentation"><div>ux.redhat.com (backlog)</span></div><div>PFE (backlog)</span></div></td>
-        </tr>
-        <tr>
-          <td data-label="Foundation or component name">Cookie alert</td>
-          <td data-label="Design status">Complete</span></td>
-          <td data-label="Code status"><div>WebRH</div></td>
-          <td data-label="Documentation">ux.redhat.com (backlog)</span></td>
-        </tr>
-        <tr>
-          <td data-label="Foundation or component name">Disclosure</td>
-          <td data-label="Design status">Complete</span></td>
-          <td data-label="Code status"><div>PFE</div><div>WebRH</div></td>
-          <td data-label="Documentation"><div><a href="../patterns/disclosure">ux.redhat.com</a></div><div><a href="https://patternflyelements.com/patterns/accordion/" target="_blank">PFE</a></div></td>
-        </tr>
-        <tr>
-          <td data-label="Foundation or component name">Dialog (content)</td>
-          <td data-label="Design status">Complete</span></td>
-          <td data-label="Code status"><div>PFE</div><div>RHDS</div></td>
-          <td data-label="Documentation"><div><a href="../elements/dialog">ux.redhat.com</a></div><div><a href="https://patternflyelements.com/patterns/modal/" target="_blank">PFE</div></td>
-        </tr>
-        <tr>
-          <td data-label="Foundation or component name">Dialog (video)</td>
-          <td data-label="Design status">Complete</span></td>
-          <td data-label="Code status"><div>RHDS</div></td>
-          <td data-label="Documentation"><div><a href="../elements/dialog">ux.redhat.com</a></div></td>
-        </tr>
-        <tr>
-          <td data-label="Foundation or component name">Dropdown</td>
-          <td data-label="Design status">Complete</span></td>
-          <td data-label="Code status"><div>PFE</div></td>
-          <td data-label="Documentation"><div>ux.redhat.com (backlog)</span></div><div><a href="https://patternflyelements.com/patterns/dropdown/" target="_blank">PFE</a></div></td>
-        </tr>
-        <tr>
-          <td data-label="Foundation or component name">Filter</td>
-          <td data-label="Design status">Complete</span></td>
-          <td data-label="Code status"><div>WebRH</div></td>
-          <td data-label="Documentation"><a href="../patterns/filter">ux.redhat.com</a></td>
-        </tr>
-        <tr>
-          <td data-label="Foundation or component name">Footer</td>
-          <td data-label="Design status">Complete</span></td>
-          <td data-label="Design status"><div>RHDS</div></td>
-          <td data-label="Code status"><div><a href="../elements/footer">ux.redhat.com</a></div>
-        </tr>
-        <tr>
-          <td data-label="Foundation or component name">Form</td>
-          <td data-label="Design status">Complete</span></td>
-          <td data-label="Code status"><div>WebRH</div></td>
-          <td data-label="Documentation"><div><a href="../patterns/form">ux.redhat.com</a></div><div><a href="https://www.patternfly.org/v4/patterns/form" target="_blank">PatternFly</a></div></td>
-        </tr>
-        <tr>
-          <td data-label="Foundation or component name">Grid</td>
-          <td data-label="Design status">Complete</span></td>
-          <td data-label="Code status"><div>Studio</div><div>WebRH</div></td>
-          <td data-label="Documentation"><div><a href="../foundations/grid">ux.redhat.com</a></div></td>
-        </tr>
-        <tr>
-          <td data-label="Foundation or component name">Hero</td>
-          <td data-label="Design status">Backlog</span></td>
-          <td data-label="Code status">Not coded yet</span></td>
-          <td data-label="Documentation">ux.redhat.com (backlog)</span></td>
-        </tr>
-        <tr>
-          <td data-label="Foundation or component name">Jump links</td>
-          <td data-label="Design status">Complete</span></td>
-          <td data-label="Code status"><div>PFE</div><div>Custom</div></td>
-          <td data-label="Documentation"><div><a href="../elements/jump-links">ux.redhat.com</a></div><div><a href="https://patternflyelements.com/patterns/jump-links/" target="_blank">PFE</a></div></td>
-        </tr>
-        <tr>
-          <td data-label="Foundation or component name">Label</td>
-          <td data-label="Design status">Complete</span></td>
-          <td data-label="Code status">In progress</span></td>
-          <td data-label="Documentation"><div>ux.redhat.com (in progress)</span></div><div><a href="https://patternflyelements.org/patterns/label/demo/" target="_blank">PFE</a></div></td>
-        </tr>
-        <tr>
-          <td data-label="Foundation or component name">Link</td>
-          <td data-label="Design status">Complete</span></td>
-          <td data-label="Code status"><div>Studio</div><div>WebRH</div></td>
-          <td data-label="Documentation"><div><a href="../patterns/link">ux.redhat.com</a></div></td>
-        </tr>
-        <tr>
-          <td data-label="Foundation or component name">Link with icon</td>
-          <td data-label="Design status">Complete</span></td>
-          <td data-label="Code status"><div>Custom</div></td>
-          <td data-label="Documentation"><a href="../patterns/link-with-icon">ux.redhat.com</a></td>
-        </tr>
-        <tr>
-          <td data-label="Foundation or component name">Navigation (primary)</td>
-          <td data-label="Design status">Complete</span></td>
-          <td data-label="Code status"><div>PFE</div><div>WebRH</div></td>
-          <td data-label="Documentation"><div><a href="../elements/navigation-primary">ux.redhat.com</a></div></td>
-        </tr>
-        <tr>
-          <td data-label="Foundation or component name">Navigation (secondary)</td>
-          <td data-label="Design status">Complete</span></td>
-          <td data-label="Code status"><div>RHDS</div></td>
-          <td data-label="Documentation"><div><a href="../elements/navigation-secondary">ux.redhat.com</a></div></td>
-        </tr>
-        <tr>
-          <td data-label="Foundation or component name">Navigation (universal)</td>
-          <td data-label="Design status">Complete</span></td>
-          <td data-label="Code status"><div>Custom</div></td>
-          <td data-label="Documentation">ux.redhat.com (backlog)</span></td>
-        </tr>
-        <tr>
-          <td data-label="Foundation or component name">Pagination</td>
-          <td data-label="Design status">Complete</span></td>
-          <td data-label="Code status">In progress</span></td>
-          <td data-label="Documentation"><div>ux.redhat.com (backlog)</span></div><div>PFE (backlog)</span></div></td>
-        </tr>
-        <tr>
-          <td data-label="Foundation or component name">Popover</td>
-          <td data-label="Design status">Complete</span></td>
-          <td data-label="Code status"><div>Studio</div><div>WebRH</div></td>
-          <td data-label="Documentation"><div><a href="../elements/popover">ux.redhat.com</a></div></td>
-        </tr>
-        <tr>
-          <td data-label="Foundation or component name">Progress steps</td>
-          <td data-label="Design status">Complete</span></td>
-          <td data-label="Code status"><div>PFE</div></td>
-          <td data-label="Documentation"><div><a href="../elements/progress-steps">ux.redhat.com</a></div><div><a href="https://patternflyelements.com/patterns/progress-stepper/" target="_blank">PFE</div></td>
-        </tr>
-        <tr>
-          <td data-label="Foundation or component name">Search bar</td>
-          <td data-label="Design status">Complete</span></td>
-          <td data-label="Code status"><div>Custom</div></td>
-          <td data-label="Documentation"><a href="../patterns/search-bar">ux.redhat.com</a></td>
-        </tr>
-        <tr>
-          <td data-label="Foundation or component name">Skip navigation</td>
-          <td data-label="Design status">Complete</span></td>
-          <td data-label="Code status"><div>PFE</div></td>
-          <td data-label="Documentation" data-label="Code status"><div><a href="../patterns/skip-navigation">ux.redhat.com</a></div></td>
-        </tr>
-        <tr>
-          <td data-label="Foundation or component name">Spacer</td>
-          <td data-label="Design status">Complete</span></td>
-          <td data-label="Code status"><div>Custom</div></td>
-          <td data-label="Documentation"><a href="../foundations/spacing">ux.redhat.com</a></td>
-        </tr>
-        <tr>
-          <td data-label="Foundation or component name">Statistic</td>
-          <td data-label="Design status">Complete</span></td>
-          <td data-label="Code status"><div>RHDS</div></td>
-          <td data-label="Documentation"><a href="../elements/statistic">ux.redhat.com</a></td>
-        </tr>
-        <tr>
-          <td data-label="Foundation or component name">Sticky banner</td>
-          <td data-label="Design status">Complete</span></td>
-          <td data-label="Code status"><div>Adobe Target</div><div>Studio</div></td>
-          <td data-label="Documentation"><a href="../patterns/sticky-banner">ux.redhat.com</a></td>
-        </tr>
-        <tr>
-          <td data-label="Foundation or component name">Sticky card</td>
-          <td data-label="Design status">Complete</span></td>
-          <td data-label="Code status"><div>Adobe Target</div><div>Studio</div></td>
-          <td data-label="Documentation"><a href="../patterns/sticky-card">ux.redhat.com</a></td>
-        </tr>
-        <tr>
-          <td data-label="Foundation or component name">Switch</td>
-          <td data-label="Design status">Complete</span></td>
-          <td data-label="Code status">In progress</span></td>
-          <td data-label="Documentation">ux.redhat.com (backlog)</span></td>
-        </tr>
-        <tr>
-          <td data-label="Foundation or component name">Table</td>
-          <td data-label="Design status">Complete</span></td>
-          <td data-label="Code status">In progress</span></td>
-          <td data-label="Documentation"><div>ux.redhat.com (backlog)</span></div><div>PFE (backlog)</span></div></td>
-        </tr>
-        <tr>
-          <td data-label="Foundation or component name">Tabs</td>
-          <td data-label="Design status">Complete</span></td>
-          <td data-label="Code status"><div>PFE</div><div>Studio</div><div>WebRH</div></td>
-          <td data-label="Documentation"><div><a href="../elements/tabs">ux.redhat.com</a></div><div><a href="https://patternflyelements.com/patterns/tabs/" target="_blank">PFE</div></td>
-        </tr>
-        <tr>
-          <td data-label="Foundation or component name">Tooltip</td>
-          <td data-label="Design status">Complete</span></td>
-          <td data-label="Code status"><div>RHDS</div><div>Custom</div></td>
-          <td data-label="Documentation"><a href="../elements/tooltip">ux.redhat.com</a></td>
-        </tr>
-        <tr>
-          <td data-label="Foundation or component name">Typography</td>
-          <td data-label="Design status">Complete</span></td>
-          <td data-label="Code status"><div>PFE</div><div>Studio</div><div>WebRH</div></td>
-          <td data-label="Documentation"><div><a href="../foundations/typography">ux.redhat.com</a></div><div><a href="https://patternflyelements.com/theming/typography/" target="_blank">PFE</div></td>
-        </tr>
-        <tr>
-          <td data-label="Foundation or component name">Video thumbnail</td>
-          <td data-label="Design status">Complete</span></td>
-          <td data-label="Code status"><div>Studio</div></td>
-          <td data-label="Documentation"><a href="../patterns/video-thumbnail">ux.redhat.com</a></td>
+          <td data-label="Sample tag">
+            <span>
+              <rh-tag variant="outline" color="gray">
+                N/A
+                <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" role="img">
+                  <style type="text/css">
+                    .na{fill:#707070;}
+                  </style>
+                  <path class="na" d="M8,1C4.1,1,1,4.1,1,8c0,3.9,3.1,7,7,7c3.9,0,7-3.1,7-7C15,4.1,11.9,1,8,1z M2,8c0-1.5,0.5-2.8,1.4-3.9l8.4,8.4
+                    C10.8,13.5,9.5,14,8,14C4.7,14,2,11.3,2,8z M12.6,11.9L4.1,3.4C5.2,2.5,6.5,2,8,2c3.3,0,6,2.7,6,6C14,9.5,13.5,10.8,12.6,11.9z"/>
+                </svg>
+              </rh-tag>
+            </span>
+          </td>
+          <td data-label="Meaning">Not planned, not available, or does not apply</td>
         </tr>
       </tbody>
     </table>
   </rh-table>
+</section>
+
+<section>
+
+  ## Web component status
+
+  {% repoStatusTable %}
+
 </section>   
 
 <uxdot-feedback>

@@ -44,7 +44,7 @@ The Red Hat Design System for digital experiences gives designers and developers
     <uxdot-example>
       <img alt="Card overlapping code editor user interface" src="/assets/get-started/developers.png">
     </uxdot-example>
-    <figcaption>Developers (Coming soon)</figcaption>
+    <figcaption>Developers</figcaption>
   </figure>
 </nav>
 
