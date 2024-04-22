@@ -10,7 +10,7 @@ import '../rh-tooltip/rh-tooltip.js';
  */
 export declare class RhTranscript extends LitElement {
     #private;
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     heading?: string;
     label?: string;
     lang: string;
@@ -18,7 +18,7 @@ export declare class RhTranscript extends LitElement {
     private _autoscroll;
     private _download;
     private _cues;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
     set autoscrollLabel(label: string);
     get autoscrollLabel(): string;
     set downloadLabel(label: string);

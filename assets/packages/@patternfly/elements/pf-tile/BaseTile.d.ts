@@ -9,5 +9,5 @@ import { LitElement } from 'lit';
  * @csspart body        - container for the body content
  */
 export declare abstract class BaseTile extends LitElement {
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
 }

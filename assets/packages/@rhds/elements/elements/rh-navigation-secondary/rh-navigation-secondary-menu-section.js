@@ -10,15 +10,11 @@ const styles = css `:host{display:block}::slotted([slot=header]){padding:0}::slo
 /**
  * A menu section which auto upgrades accessibility for headers and sibling list
  * @summary 'A menu section which auto upgrades accessibility for headers and sibling list'
- *
  * @slot header     - Adds a header tag to section, expects `<h1> | <h2> | <h3> | <h4> | <h5> | <h6>` element
  * @slot links      - Adds a ul tag to section, expects `<ul> | <ol>` element
  * @slot cta        - Adds a section level CTA, expects `<rh-cta>` element
- *
  * @csspart container    - container, <section> element
- *
- *
-**/
+ */
 let RhNavigationSecondaryMenuSection = class RhNavigationSecondaryMenuSection extends LitElement {
     constructor() {
         super(...arguments);
@@ -39,11 +35,15 @@ let RhNavigationSecondaryMenuSection = class RhNavigationSecondaryMenuSection ex
     `;
     }
 };
-_RhNavigationSecondaryMenuSection_logger = new WeakMap(), _RhNavigationSecondaryMenuSection_instances = new WeakSet(), _RhNavigationSecondaryMenuSection_updateAccessibility = function _RhNavigationSecondaryMenuSection_updateAccessibility() {
+_RhNavigationSecondaryMenuSection_logger = new WeakMap();
+_RhNavigationSecondaryMenuSection_instances = new WeakSet();
+_RhNavigationSecondaryMenuSection_updateAccessibility = function _RhNavigationSecondaryMenuSection_updateAccessibility() {
     const lists = this.querySelectorAll(':is([slot="links"]):is(ul, ol)');
     for (const list of lists) {
         if (!list.hasAttribute('aria-labelledby')) {
-            const header = isHeadingElement(list.previousElementSibling) ? list.previousElementSibling : null;
+            const header = isHeadingElement(list.previousElementSibling) ?
+                list.previousElementSibling
+                : null;
             if (!header) {
                 return __classPrivateFieldGet(this, _RhNavigationSecondaryMenuSection_logger, "f").warn('This links set doesn\'t have a valid header associated with it.');
             }
@@ -61,11 +61,12 @@ RhNavigationSecondaryMenuSection = __decorate([
     customElement('rh-navigation-secondary-menu-section')
 ], RhNavigationSecondaryMenuSection);
 export { RhNavigationSecondaryMenuSection };
+/** @deprecated use rh-navigation-secondary-menu-section */
 let RhSecondaryNavMenuSection = class RhSecondaryNavMenuSection extends RhNavigationSecondaryMenuSection {
     constructor() {
         super();
         _RhSecondaryNavMenuSection_logger.set(this, new Logger(this));
-        __classPrivateFieldGet(this, _RhSecondaryNavMenuSection_logger, "f").warn('rh-secondary-nav-menu-section is deprecated. Use rh-navigation-secondary-menu-section instead.');
+        __classPrivateFieldGet(this, _RhSecondaryNavMenuSection_logger, "f").warn(`rh-secondary-nav-menu-section is deprecated. Use rh-navigation-secondary-menu-section instead.`);
     }
 };
 _RhSecondaryNavMenuSection_logger = new WeakMap();

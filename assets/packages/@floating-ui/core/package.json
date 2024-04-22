@@ -1,13 +1,6 @@
 {
   "name": "@floating-ui/core",
-  "version": "1.2.6",
-  "@rollingversions": {
-    "baseVersion": [
-      0,
-      1,
-      0
-    ]
-  },
+  "version": "1.6.0",
   "description": "Positioning library for floating elements: tooltips, popovers, dropdowns, and more",
   "publishConfig": {
     "access": "public"
@@ -15,33 +8,23 @@
   "main": "./dist/floating-ui.core.umd.js",
   "module": "./dist/floating-ui.core.esm.js",
   "unpkg": "./dist/floating-ui.core.umd.min.js",
-  "types": "./index.d.ts",
+  "types": "./dist/floating-ui.core.d.ts",
   "exports": {
+    "./package.json": "./package.json",
     ".": {
-      "types": "./index.d.ts",
       "import": {
-        "browser": {
-          "development": "./dist/floating-ui.core.browser.mjs",
-          "default": "./dist/floating-ui.core.browser.min.mjs"
-        },
+        "types": "./dist/floating-ui.core.d.mts",
         "default": "./dist/floating-ui.core.mjs"
       },
+      "types": "./dist/floating-ui.core.d.ts",
       "module": "./dist/floating-ui.core.esm.js",
       "default": "./dist/floating-ui.core.umd.js"
-    },
-    "./package.json": "./package.json"
+    }
   },
   "sideEffects": false,
   "files": [
-    "dist/",
-    "index.d.ts",
-    "src/**/*.d.ts"
+    "dist"
   ],
-  "scripts": {
-    "test": "jest test",
-    "dev": "rollup -c -w",
-    "build": "NODE_ENV=build rollup -c"
-  },
   "author": "atomiks",
   "license": "MIT",
   "bugs": "https://github.com/floating-ui/floating-ui",
@@ -58,5 +41,22 @@
     "menu",
     "popup",
     "positioning"
-  ]
+  ],
+  "dependencies": {
+    "@floating-ui/utils": "^0.2.1"
+  },
+  "devDependencies": {
+    "config": "0.0.0"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "lint": "biome lint .",
+    "clean": "rimraf dist out-tsc",
+    "dev": "rollup -c -w",
+    "build": "rollup -c",
+    "build:api": "build-api --tsc tsconfig.lib.json",
+    "publint": "publint",
+    "typecheck": "tsc -b"
+  }
 }

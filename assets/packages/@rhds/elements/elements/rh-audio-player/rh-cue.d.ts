@@ -16,7 +16,7 @@ export declare const getSeconds: (str: TimeString) => Seconds;
  */
 export declare class RhCue extends LitElement {
     #private;
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     /** Start time, in mm:ss.ms */
     start?: string;
     /** End time, in mm:ss.ms */
@@ -30,7 +30,7 @@ export declare class RhCue extends LitElement {
     get startTime(): Seconds;
     get endTime(): Seconds;
     get downloadText(): string | undefined;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

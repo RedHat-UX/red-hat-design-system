@@ -3,8 +3,8 @@ import { __classPrivateFieldGet, __classPrivateFieldSet } from "tslib";
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 export class I18nController {
     constructor(host, defaults) {
-        this.host = host;
         _I18nController_instances.add(this);
+        this.host = host;
         _I18nController_defaultLanguage.set(this, 'en-US');
         this.language = __classPrivateFieldGet(this, _I18nController_defaultLanguage, "f");
         _I18nController_logger.set(this, void 0);

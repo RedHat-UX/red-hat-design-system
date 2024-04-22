@@ -13,13 +13,13 @@ export declare class RequestSortEvent extends ComposedEvent {
  * @fires {RequestSortEvent} request-sort - when the button is clicked
  */
 export declare class RhSortButton extends LitElement {
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     private on?;
     /** The button's sorting order */
     sortDirection?: 'asc' | 'desc';
     /** The column name associated with this button (for screen readers) */
     column?: string;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
     /**
      * Dispatch a request-sort event in ascending (asc) or descending (desc) order
      */

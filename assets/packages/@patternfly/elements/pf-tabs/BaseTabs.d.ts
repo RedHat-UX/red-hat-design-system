@@ -10,7 +10,7 @@ import { BaseTabPanel } from './BaseTabPanel.js';
  */
 export declare abstract class BaseTabs extends LitElement {
     #private;
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     static isTab(element: BaseTab): element is BaseTab;
     static isPanel(element: BaseTabPanel): element is BaseTabPanel;
     /** Time in milliseconds to debounce between scroll events and updating scroll button state */
@@ -36,5 +36,5 @@ export declare abstract class BaseTabs extends LitElement {
     disconnectedCallback(): void;
     willUpdate(): void;
     firstUpdated(): Promise<void>;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
 }

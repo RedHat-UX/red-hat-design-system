@@ -8,7 +8,7 @@ import { type DateTimeFormat } from '@patternfly/pfe-core/controllers/timestamp-
  */
 export declare class RhTimestamp extends LitElement {
     #private;
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     /**
      * Custom date formatting style. See [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#datestyle) for options.
      */
@@ -50,7 +50,7 @@ export declare class RhTimestamp extends LitElement {
     get time(): string;
     connectedCallback(): void;
     willUpdate(changedProperties: PropertyValues<this>): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

@@ -3,7 +3,7 @@
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-import { decorateProperty } from './base.js';
+import { desc } from './base.js';
 // Note, in the future, we may extend this decorator to support the use case
 // where the queried element may need to do work to become ready to interact
 // with (e.g. load some implementation code). If so, we might elect to
@@ -42,16 +42,13 @@ import { decorateProperty } from './base.js';
  * @category Decorator
  */
 export function queryAsync(selector) {
-    return decorateProperty({
-        descriptor: (_name) => ({
+    return ((obj, name) => {
+        return desc(obj, name, {
             async get() {
-                var _a;
                 await this.updateComplete;
-                return (_a = this.renderRoot) === null || _a === void 0 ? void 0 : _a.querySelector(selector);
+                return this.renderRoot?.querySelector(selector) ?? null;
             },
-            enumerable: true,
-            configurable: true,
-        }),
+        });
     });
 }
 //# sourceMappingURL=query-async.js.map

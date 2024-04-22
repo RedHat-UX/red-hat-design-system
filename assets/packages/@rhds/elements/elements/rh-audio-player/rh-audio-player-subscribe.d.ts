@@ -11,11 +11,11 @@ import './rh-audio-player-scrolling-text-overflow.js';
  */
 export declare class RhAudioPlayerSubscribe extends LitElement {
     #private;
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     heading?: string;
     label?: string;
     private body?;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
     set menuLabel(label: string);
     get menuLabel(): string;
     scrollText(): void;

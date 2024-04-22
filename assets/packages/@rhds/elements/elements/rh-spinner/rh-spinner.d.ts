@@ -11,7 +11,7 @@ export type SpinnerSize = RhSpinner['size'];
  *
  */
 export declare class RhSpinner extends LitElement {
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     /**
      * Preset sizes for the spinner
      */
@@ -20,7 +20,7 @@ export declare class RhSpinner extends LitElement {
      * Sets color theme based on parent context
      */
     private on?;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
     /**
      * @deprecated Use Color context instead. See https://ux.redhat.com/foundations/color/context/
      */

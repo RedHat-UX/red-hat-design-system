@@ -1,3 +1,4 @@
+import { ValidityState } from './ValidityState.js';
 import { IElementInternals, ICustomElement, LabelsList } from './types.js';
 import { CustomStateSet } from './CustomStateSet.js';
 export declare class ElementInternals implements IElementInternals {
@@ -10,6 +11,7 @@ export declare class ElementInternals implements IElementInternals {
     ariaColIndexText: string;
     ariaColSpan: string;
     ariaCurrent: string;
+    ariaDescription: string;
     ariaDisabled: string;
     ariaExpanded: string;
     ariaHasPopup: string;
@@ -64,12 +66,12 @@ export declare class ElementInternals implements IElementInternals {
      *
      * If the field is valid and a message is specified, the method will throw a TypeError.
      */
-    setValidity(validityChanges: Partial<globalThis.ValidityState>, validationMessage?: string, anchor?: HTMLElement): void;
+    setValidity(validityChanges: Partial<ValidityState>, validationMessage?: string, anchor?: HTMLElement): void;
     get shadowRoot(): ShadowRoot | null;
     /** The element's validation message set during a call to ElementInternals.setValidity */
     get validationMessage(): string;
     /** The current validity state of the object */
-    get validity(): globalThis.ValidityState;
+    get validity(): ValidityState;
     /** If true the element will participate in a form's constraint validation. */
     get willValidate(): boolean;
 }
@@ -82,3 +84,21 @@ declare global {
     }
 }
 export declare function isElementInternalsSupported(): boolean;
+/**
+ * Forcibly applies the polyfill for CustomStateSet.
+ *
+ * https://developer.mozilla.org/en-US/docs/Web/API/CustomStateSet
+ */
+export declare function forceCustomStateSetPolyfill(attachInternals?: HTMLElement['attachInternals']): void;
+/**
+ * Forcibly applies the polyfill for ElementInternals. Useful for situations
+ * like Chrome extensions where Chrome supports ElementInternals, but the
+ * CustomElements polyfill is required.
+ *
+ * https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals
+ *
+ * @param forceCustomStateSet Optional: when true, forces the
+ * [CustomStateSet](https://developer.mozilla.org/en-US/docs/Web/API/CustomStateSet)
+ * polyfill as well.
+ */
+export declare function forceElementInternalsPolyfill(forceCustomStateSet?: boolean): void;

@@ -11,7 +11,7 @@ export type URLGetter = (set: string, icon: string) => URL | string;
  */
 export declare abstract class BaseIcon extends LitElement {
     #private;
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     static addIconSet(setName: string, getter: typeof BaseIcon['getIconUrl']): void;
     static getIconUrl: URLGetter;
     private static onIntersect;
@@ -37,6 +37,6 @@ export declare abstract class BaseIcon extends LitElement {
     connectedCallback(): void;
     willUpdate(changed: PropertyValues<this>): void;
     disconnectedCallback(): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
     protected load(): Promise<void>;
 }

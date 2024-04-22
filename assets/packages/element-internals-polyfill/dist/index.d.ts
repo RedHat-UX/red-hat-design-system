@@ -3,6 +3,7 @@ import { CustomStateSet } from './CustomStateSet.js';
 import './element-internals.js';
 import { IElementInternals } from './types.js';
 export * from './types.js';
+export { forceCustomStateSetPolyfill, forceElementInternalsPolyfill, } from './element-internals.js';
 declare global {
     interface Window {
         CustomStateSet: typeof CustomStateSet;

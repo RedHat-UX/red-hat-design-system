@@ -1,10 +1,13 @@
-import { decorateProperty } from './base.js';
+import { desc } from './base.js';
 
 /**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
+// Shared fragment used to generate empty NodeLists when a render root is
+// undefined
+let fragment;
 /**
  * A property decorator that converts a class property into a getter
  * that executes a querySelectorAll on the element's renderRoot.
@@ -30,15 +33,13 @@ import { decorateProperty } from './base.js';
  * @category Decorator
  */
 function queryAll(selector) {
-    return decorateProperty({
-        descriptor: (_name) => ({
+    return ((obj, name) => {
+        return desc(obj, name, {
             get() {
-                var _a, _b;
-                return (_b = (_a = this.renderRoot) === null || _a === void 0 ? void 0 : _a.querySelectorAll(selector)) !== null && _b !== void 0 ? _b : [];
+                const container = this.renderRoot ?? (fragment ??= document.createDocumentFragment());
+                return container.querySelectorAll(selector);
             },
-            enumerable: true,
-            configurable: true,
-        }),
+        });
     });
 }
 

@@ -5,7 +5,7 @@
  */
 import { noChange, _$LH } from './lit-html.js';
 import { PartType } from './directive.js';
-import { isPrimitive, isSingleExpression, isTemplateResult, } from './directive-helpers.js';
+import { isPrimitive, isSingleExpression, isTemplateResult, isCompiledTemplateResult, } from './directive-helpers.js';
 // In the Node build, this import will be injected by Rollup:
 // import {Buffer} from 'buffer';
 const NODE_MODE = false;
@@ -190,6 +190,9 @@ const openChildPart = (rootValue, marker, stack, options) => {
         // }
     }
     else if (isTemplateResult(value)) {
+        if (isCompiledTemplateResult(value)) {
+            throw new Error('compiled templates are not supported');
+        }
         // Check for a template result digest
         const markerWithDigest = `lit-part ${digestForTemplateResult(value)}`;
         if (marker.data === markerWithDigest) {

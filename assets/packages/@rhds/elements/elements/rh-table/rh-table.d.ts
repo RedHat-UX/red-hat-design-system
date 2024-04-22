@@ -15,13 +15,13 @@ import { LitElement } from 'lit';
  */
 export declare class RhTable extends LitElement {
     #private;
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     private on?;
     private static getNodeContentForSort;
     private static sortByContent;
     connectedCallback(): void;
     protected willUpdate(): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

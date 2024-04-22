@@ -38,7 +38,7 @@ import { BaseSwitch } from './BaseSwitch.js';
  * @cssprop {<length>} --pf-c-switch__toggle--Width {@default `calc(calc(1rem * 1.5) + 0.125rem + calc(1rem - 0.125rem))`}
  */
 export declare class PfSwitch extends BaseSwitch {
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
 }
 declare global {
     interface HTMLElementTagNameMap {

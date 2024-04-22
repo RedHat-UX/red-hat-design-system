@@ -1,4 +1,4 @@
-var _RhNavigationSecondary_instances, _RhNavigationSecondary_logger, _RhNavigationSecondary_logoCopy, _RhNavigationSecondary_label, _RhNavigationSecondary_dir, _RhNavigationSecondary_compact, _RhNavigationSecondary_tabindex, _RhNavigationSecondary_rtiInit, _RhNavigationSecondary_navItems, _RhNavigationSecondary_screenSize, _RhNavigationSecondary_onExpandRequest, _RhNavigationSecondary_onFocusout, _RhNavigationSecondary_onOverlayClick, _RhNavigationSecondary_onKeydown, _RhNavigationSecondary_onTabEvent, _RhNavigationSecondary_onSlotchange, _RhNavigationSecondary_focusableChildElements, _RhNavigationSecondary_getDropdownIndex, _RhNavigationSecondary_dropdownByIndex, _RhNavigationSecondary_expand, _RhNavigationSecondary_allDropdowns, _RhNavigationSecondary_closeDropdown, _RhNavigationSecondary_openDropdown, _RhNavigationSecondary_onOverlayChange, _RhNavigationSecondary_upgradeAccessibility, _RhNavigationSecondary_toggleMobileMenu, _RhSecondaryNav_logger;
+var _RhNavigationSecondary_instances, _a, _RhNavigationSecondary_logger, _RhNavigationSecondary_logoCopy, _RhNavigationSecondary_label, _RhNavigationSecondary_dir, _RhNavigationSecondary_compact, _RhNavigationSecondary_tabindex, _RhNavigationSecondary_screenSize, _RhNavigationSecondary_onExpandRequest, _RhNavigationSecondary_onFocusout, _RhNavigationSecondary_onOverlayClick, _RhNavigationSecondary_onKeydown, _RhNavigationSecondary_onTabEvent, _RhNavigationSecondary_getDropdownIndex, _RhNavigationSecondary_dropdownByIndex, _RhNavigationSecondary_expand, _RhNavigationSecondary_allDropdowns, _RhNavigationSecondary_closeDropdown, _RhNavigationSecondary_openDropdown, _RhNavigationSecondary_onOverlayChange, _RhNavigationSecondary_upgradeAccessibility, _RhNavigationSecondary_toggleMobileMenu, _RhSecondaryNav_logger;
 var RhNavigationSecondary_1;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
@@ -13,7 +13,7 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import '@rhds/elements/rh-surface/rh-surface.js';
 import './rh-navigation-secondary-menu-section.js';
 import './rh-navigation-secondary-overlay.js';
-import { RhNavigationSecondaryDropdown, SecondaryNavDropdownExpandEvent } from './rh-navigation-secondary-dropdown.js';
+import { RhNavigationSecondaryDropdown, SecondaryNavDropdownExpandEvent, } from './rh-navigation-secondary-dropdown.js';
 import { DirController } from '../../lib/DirController.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 import { colorContextProvider } from '../../lib/context/color/provider.js';
@@ -26,30 +26,36 @@ export class SecondaryNavOverlayChangeEvent extends ComposedEvent {
 }
 import { css } from "lit";
 const styles = css `:host{--_chevron-size:calc(var(--rh-font-size-body-text-md, 1rem) * 0.35);--_chevron-thickness:calc(var(--rh-font-size-body-text-md, 1rem) * 0.125);--_chevron-up:45deg;--_chevron-down:-135deg;--_chevron-correction-x:calc(-1 * var(--rh-font-size-body-text-md, 1rem) / 16);--_chevron-correction-y:calc(-1 * var(--rh-font-size-body-text-md, 1rem) / 16);--_chevron-color:var(--_context-text);--_chevron-transform-collapsed:rotate(var(--_chevron-up)) translate(var(--_chevron-correction-x), var(--_chevron-correction-x));--_chevron-transform-expanded:rotate(var(--_chevron-down)) translate(var(--_chevron-correction-y), var(--_chevron-correction-y));--_button-font-color:var(--_context-text);--_nav-max-height:var(--_max-height, max-content);--_nav-min-height:var(--_min-height, 80px);--_current-active-child-border-color:var(--rh-color-brand-red-on-light, #ee0000);z-index:var(--rh-navigation-secondary-z-index,102)}:host([color-palette=dark]){--_current-active-child-border-color:var(--rh-color-brand-red-on-dark, #ee0000)}nav{z-index:var(--rh-navigation-secondary-z-index,102)}nav.rtl{--_chevron-transform-collapsed:rotate(calc(-1 * var(--_chevron-up))) translate(calc(1 * var(--_chevron-correction-y)), var(--_chevron-correction-y));--_chevron-transform-expanded:rotate(calc(-1 * var(--_chevron-down))) translate(calc(1 * var(--_chevron-correction-x)), var(--_chevron-correction-x))}#container{display:grid;position:relative;z-index:var(--rh-navigation-secondary-z-index,102);background-color:var(--_context-background-color);gap:0 var(--rh-space-lg,16px);grid-template-rows:minmax(var(--_nav-min-height),var(--_nav-max-height)) max-content max-content;grid-template-columns:1fr max-content;grid-template-areas:"logo menu" "main main";height:fit-content;min-height:var(--_min-height);max-height:100vh;overflow-y:auto}rh-surface{grid-area:main;display:flex;flex-direction:column;height:100%;width:100%}::slotted([slot=cta]),::slotted([slot=nav]){grid-area:unset!important}#container.expanded ::slotted([slot=cta]),#container.expanded ::slotted([slot=nav]){display:flex!important}#container.expanded ::slotted([slot=nav]){list-style:none;flex-direction:column;padding:2rem 1rem 0;padding:var(--rh-space-2xl,32px) var(--rh-space-lg,16px) 0 var(--rh-space-lg,16px);margin:0!important}#container.expanded ::slotted([slot=cta]){padding:2rem 1rem}button{grid-area:menu;border:none;display:flex;height:100%;align-items:center;font-family:var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-md, 1rem);padding:var(--rh-space-lg,16px);border-block-start:var(--rh-border-width-lg,3px) solid transparent;margin-inline-end:var(--rh-space-lg,16px);color:var(--_button-font-color);background-color:var(--rh-color-surface-lighter,#f2f2f2);gap:var(--rh-space-md,8px)}button:hover{border-block-start-color:var(--rh-color-text-brand-on-light,#ee0000)}button:after{box-sizing:content-box!important;content:"";display:block;width:var(--_chevron-size);height:var(--_chevron-size);border-inline-end:var(--_chevron-thickness) solid var(--_chevron-color);border-block-end:var(--_chevron-thickness) solid var(--_chevron-color);transform:var(--_chevron-transform-collapsed)}button[aria-expanded=true]:after{transform:var(--_chevron-transform-expanded)}button:focus{border-block-start-color:var(--rh-color-text-brand-on-light,#ee0000)}:host([color-palette=dark]) button{background-color:var(--_context-background-color)}:host([color-palette=dark]) button[aria-expanded=true],button:active,button[aria-expanded=true]{--_chevron-color:var(--rh-color-text-primary-on-light, #151515);color:var(--rh-color-text-primary-on-light,#151515);background-color:var(--rh-color-surface-lightest,#fff);border-block-start-color:var(--rh-color-text-brand-on-light,#ee0000);border-block-end:none}:host([color-palette=dark]) button:active{color:var(--rh-color-text-primary-on-dark,#fff)}:host([color-palette=dark]) button[aria-expanded=true]:active{color:var(--rh-color-text-primary-on-light,#151515)}@media screen and (min-width:768px){button{margin-inline-end:var(--rh-space-2xl,32px)}#container.expanded ::slotted([slot=nav]){padding:var(--rh-space-2xl,32px) var(--rh-space-2xl,32px) 0!important}#container.expanded ::slotted([slot=cta]){padding:var(--rh-space-2xl,32px)!important}}@media screen and (min-width:992px){:host{--_min-height:86px}#container{grid-template-areas:"logo main";grid-template-rows:auto;grid-template-columns:max-content 1fr;height:100%;max-height:initial;overflow-y:initial}rh-surface{flex-direction:row;justify-content:space-between}#container.expanded ::slotted([slot=nav]){max-height:calc(100vh - var(--_nav-min-height))}button{display:none}}`;
+/* TODO: Abstract this out to a shareable function, should RTI handle something similar? */
+function focusableChildElements(parent) {
+    return parent.querySelectorAll(`a,
+                                  button:not([disabled]),
+                                  input:not([disabled]),
+                                  select:not([disabled]),
+                                  textarea:not([disabled]),
+                                  [tabindex]:not([tabindex="-1"]):not([disabled]),
+                                  details:not([disabled]),
+                                  summary:not(:disabled)`);
+}
 /**
  * The Secondary navigation is used to connect a series of pages together. It displays wayfinding content and links relevant to the page it is placed on. It should be used in conjunction with the [primary navigation](../navigation-primary).
  *
  * @summary Propagates related content across a series of pages
- *
  * @slot logo           - Logo added to the main nav bar, expects `<a>Text</a> | <a><svg/></a> | <a><img/></a>` element
  * @slot nav            - Navigation list added to the main nav bar, expects `<ul>` element
  * @slot cta            - Nav bar level CTA, expects `<rh-cta>` element
  * @slot mobile-menu    - Text label for the mobile menu button, for l10n. Defaults to "Menu"
- *
  * @csspart nav         - container, `<nav>` element
  * @csspart container   - container, `<div>` element
  * @csspart cta         - container, `<div>` element
- *
  * @fires {SecondaryNavOverlayChangeEvent} overlay-change -
  *                                         Fires when an dropdown is opened or closed in desktop
  *                                         view or when the mobile menu button is toggled in mobile
  *                                         view.
- *
  * @cssprop {<integer>} --rh-navigation-secondary-z-index - z-index of the navigation-secondary {@default `102`}
  * @cssprop {<integer>} --rh-navigation-secondary-overlay-z-index - z-index of the navigation-secondary-overlay {@default `-1`}
- *
  */
-let RhNavigationSecondary = RhNavigationSecondary_1 = class RhNavigationSecondary extends LitElement {
+let RhNavigationSecondary = RhNavigationSecondary_1 = _a = class RhNavigationSecondary extends LitElement {
     constructor() {
         super(...arguments);
         _RhNavigationSecondary_instances.add(this);
@@ -67,10 +73,11 @@ let RhNavigationSecondary = RhNavigationSecondary_1 = class RhNavigationSecondar
         _RhNavigationSecondary_dir.set(this, new DirController(this));
         /** Compact mode  */
         _RhNavigationSecondary_compact.set(this, false);
-        _RhNavigationSecondary_tabindex.set(this, new RovingTabindexController(this));
-        _RhNavigationSecondary_rtiInit.set(this, false);
-        /** Navigation Items that should be initialized by Roving Tabindex */
-        _RhNavigationSecondary_navItems.set(this, void 0);
+        _RhNavigationSecondary_tabindex.set(this, new RovingTabindexController(this, {
+            getItems: () => this._nav?.flatMap(slotted => Array.from(slotted.querySelectorAll(`:is(rh-navigation-secondary-dropdown,
+                                                                  rh-secondary-nav-dropdown) > a,
+                                                              [slot="nav"] > li > a`))) ?? [],
+        }));
         /**
          * `mobileMenuExpanded` property is toggled when the mobile menu button is clicked,
          * a focusout event occurs, or on an overlay click event.  It also switches state
@@ -90,13 +97,12 @@ let RhNavigationSecondary = RhNavigationSecondary_1 = class RhNavigationSecondar
                 const dropdownsOpen = __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_allDropdowns).call(this).some(x => x.expanded);
                 this.mobileMenuExpanded = __classPrivateFieldGet(this, _RhNavigationSecondary_compact, "f") && dropdownsOpen;
                 this.overlayOpen = dropdownsOpen;
-            }
+            },
         }));
     }
     /**
      * Checks if passed in element is a RhNavigationSecondaryDropdown
-     * @param element:
-     * @returns {boolean}
+     * @param element possibly an rh-navigation-secondary-dropdown
      */
     static isDropdown(element) {
         return element instanceof RhNavigationSecondaryDropdown;
@@ -117,8 +123,8 @@ let RhNavigationSecondary = RhNavigationSecondary_1 = class RhNavigationSecondar
         const dropdownPalette = __classPrivateFieldGet(this, _RhNavigationSecondary_compact, "f") ? 'lightest' : this.colorPalette;
         return html `
       <nav part="nav"
-          class="${classMap({ compact: __classPrivateFieldGet(this, _RhNavigationSecondary_compact, "f"), rtl })}"
-          aria-label="${__classPrivateFieldGet(this, _RhNavigationSecondary_label, "f")}">
+           class="${classMap({ compact: __classPrivateFieldGet(this, _RhNavigationSecondary_compact, "f"), rtl })}"
+           aria-label="${__classPrivateFieldGet(this, _RhNavigationSecondary_label, "f")}">
         ${__classPrivateFieldGet(this, _RhNavigationSecondary_logoCopy, "f")}
         <div id="container" part="container" class="${classMap({ expanded })}">
           <slot name="logo" id="logo"></slot>
@@ -126,7 +132,7 @@ let RhNavigationSecondary = RhNavigationSecondary_1 = class RhNavigationSecondar
                   aria-expanded="${String(expanded)}"
                   @click="${__classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_toggleMobileMenu)}"><slot name="mobile-menu">Menu</slot></button>
           <rh-surface color-palette="${dropdownPalette}">
-            <slot name="nav" @slotchange="${__classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_onSlotchange)}"></slot>
+            <slot name="nav" @slotchange="${() => __classPrivateFieldGet(this, _RhNavigationSecondary_tabindex, "f").updateItems()}"></slot>
             <div id="cta" part="cta">
               <slot name="cta"></slot>
             </div>
@@ -143,6 +149,7 @@ let RhNavigationSecondary = RhNavigationSecondary_1 = class RhNavigationSecondar
      * Opens a specific dropdown based on index.
      * Closes all open dropdowns before opening specified.
      * Toggles overlay to open
+     * @param index - index of the dropdown to open
      */
     open(index) {
         if (index != null) {
@@ -163,7 +170,15 @@ let RhNavigationSecondary = RhNavigationSecondary_1 = class RhNavigationSecondar
             .forEach(dropdown => __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_closeDropdown).call(this, dropdown));
     }
 };
-_RhNavigationSecondary_logger = new WeakMap(), _RhNavigationSecondary_logoCopy = new WeakMap(), _RhNavigationSecondary_label = new WeakMap(), _RhNavigationSecondary_dir = new WeakMap(), _RhNavigationSecondary_compact = new WeakMap(), _RhNavigationSecondary_tabindex = new WeakMap(), _RhNavigationSecondary_rtiInit = new WeakMap(), _RhNavigationSecondary_navItems = new WeakMap(), _RhNavigationSecondary_screenSize = new WeakMap(), _RhNavigationSecondary_instances = new WeakSet(), _RhNavigationSecondary_onExpandRequest = function _RhNavigationSecondary_onExpandRequest(event) {
+_RhNavigationSecondary_logger = new WeakMap();
+_RhNavigationSecondary_logoCopy = new WeakMap();
+_RhNavigationSecondary_label = new WeakMap();
+_RhNavigationSecondary_dir = new WeakMap();
+_RhNavigationSecondary_compact = new WeakMap();
+_RhNavigationSecondary_tabindex = new WeakMap();
+_RhNavigationSecondary_screenSize = new WeakMap();
+_RhNavigationSecondary_instances = new WeakSet();
+_RhNavigationSecondary_onExpandRequest = function _RhNavigationSecondary_onExpandRequest(event) {
     if (event instanceof SecondaryNavDropdownExpandEvent) {
         const index = __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_getDropdownIndex).call(this, event.target);
         if (index === null || index === undefined) {
@@ -177,7 +192,8 @@ _RhNavigationSecondary_logger = new WeakMap(), _RhNavigationSecondary_logoCopy =
             this.dispatchEvent(new SecondaryNavOverlayChangeEvent(event.expanded, event.toggle));
         }
     }
-}, _RhNavigationSecondary_onFocusout = function _RhNavigationSecondary_onFocusout(event) {
+};
+_RhNavigationSecondary_onFocusout = function _RhNavigationSecondary_onFocusout(event) {
     const target = event.relatedTarget;
     if (target?.closest('rh-navigation-secondary, rh-secondary-nav') === this || target === null) {
         // if the focus is still inside the rh-navigation-secondary exit
@@ -190,13 +206,15 @@ _RhNavigationSecondary_logger = new WeakMap(), _RhNavigationSecondary_logoCopy =
         this.close();
         this.overlayOpen = false;
     }
-}, _RhNavigationSecondary_onOverlayClick = function _RhNavigationSecondary_onOverlayClick() {
+};
+_RhNavigationSecondary_onOverlayClick = function _RhNavigationSecondary_onOverlayClick() {
     this.close();
     this.overlayOpen = false;
     if (!__classPrivateFieldGet(this, _RhNavigationSecondary_screenSize, "f").matches.has('md')) {
         this.mobileMenuExpanded = false;
     }
-}, _RhNavigationSecondary_onKeydown = function _RhNavigationSecondary_onKeydown(event) {
+};
+_RhNavigationSecondary_onKeydown = function _RhNavigationSecondary_onKeydown(event) {
     switch (event.key) {
         case 'Escape': {
             if (!__classPrivateFieldGet(this, _RhNavigationSecondary_screenSize, "f").matches.has('md')) {
@@ -216,7 +234,8 @@ _RhNavigationSecondary_logger = new WeakMap(), _RhNavigationSecondary_logoCopy =
         default:
             break;
     }
-}, _RhNavigationSecondary_onTabEvent = function _RhNavigationSecondary_onTabEvent(event) {
+};
+_RhNavigationSecondary_onTabEvent = function _RhNavigationSecondary_onTabEvent(event) {
     // target is the element we are leaving with tab press
     const target = event.target;
     // get target parent dropdown
@@ -225,7 +244,7 @@ _RhNavigationSecondary_logger = new WeakMap(), _RhNavigationSecondary_logoCopy =
     if (!dropdownParent) {
         return;
     }
-    const focusableChildren = __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_focusableChildElements).call(this, dropdownParent);
+    const focusableChildren = focusableChildElements(dropdownParent);
     if (!focusableChildren) {
         return;
     }
@@ -248,23 +267,11 @@ _RhNavigationSecondary_logger = new WeakMap(), _RhNavigationSecondary_logoCopy =
         event.preventDefault();
         this.close();
         this.overlayOpen = false;
-        __classPrivateFieldGet(this, _RhNavigationSecondary_tabindex, "f").updateActiveItem(__classPrivateFieldGet(this, _RhNavigationSecondary_tabindex, "f").nextItem);
+        __classPrivateFieldGet(this, _RhNavigationSecondary_tabindex, "f").setActiveItem(__classPrivateFieldGet(this, _RhNavigationSecondary_tabindex, "f").nextItem);
         __classPrivateFieldGet(this, _RhNavigationSecondary_tabindex, "f").activeItem?.focus();
     }
-}, _RhNavigationSecondary_onSlotchange = function _RhNavigationSecondary_onSlotchange() {
-    this._nav?.forEach(nav => {
-        __classPrivateFieldSet(this, _RhNavigationSecondary_navItems, Array.from(nav.querySelectorAll(':is(rh-navigation-secondary-dropdown, rh-secondary-nav-dropdown) > a, [slot="nav"] > li > a')), "f");
-    });
-    if (__classPrivateFieldGet(this, _RhNavigationSecondary_rtiInit, "f")) {
-        __classPrivateFieldGet(this, _RhNavigationSecondary_tabindex, "f").updateItems(__classPrivateFieldGet(this, _RhNavigationSecondary_navItems, "f") ?? []);
-    }
-    else {
-        __classPrivateFieldGet(this, _RhNavigationSecondary_tabindex, "f").initItems(__classPrivateFieldGet(this, _RhNavigationSecondary_navItems, "f") ?? []);
-        __classPrivateFieldSet(this, _RhNavigationSecondary_rtiInit, true, "f");
-    }
-}, _RhNavigationSecondary_focusableChildElements = function _RhNavigationSecondary_focusableChildElements(parent) {
-    return parent.querySelectorAll('a, button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"]):not([disabled]), details:not([disabled]), summary:not(:disabled)');
-}, _RhNavigationSecondary_getDropdownIndex = function _RhNavigationSecondary_getDropdownIndex(element) {
+};
+_RhNavigationSecondary_getDropdownIndex = function _RhNavigationSecondary_getDropdownIndex(element) {
     if (!RhNavigationSecondary_1.isDropdown(element)) {
         __classPrivateFieldGet(this, _RhNavigationSecondary_logger, "f").warn('The getDropdownIndex method expects to receive a dropdown element.');
         return;
@@ -272,14 +279,16 @@ _RhNavigationSecondary_logger = new WeakMap(), _RhNavigationSecondary_logoCopy =
     const dropdowns = __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_allDropdowns).call(this);
     const index = dropdowns.findIndex(dropdown => dropdown.id === element.id);
     return index;
-}, _RhNavigationSecondary_dropdownByIndex = function _RhNavigationSecondary_dropdownByIndex(index) {
+};
+_RhNavigationSecondary_dropdownByIndex = function _RhNavigationSecondary_dropdownByIndex(index) {
     const dropdowns = __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_allDropdowns).call(this);
     if (dropdowns[index] === undefined) {
         __classPrivateFieldGet(this, _RhNavigationSecondary_logger, "f").error('This dropdown index does not exist.');
         return;
     }
     return dropdowns[index];
-}, _RhNavigationSecondary_expand = function _RhNavigationSecondary_expand(index) {
+};
+_RhNavigationSecondary_expand = function _RhNavigationSecondary_expand(index) {
     if (index == null) {
         return;
     }
@@ -287,29 +296,34 @@ _RhNavigationSecondary_logger = new WeakMap(), _RhNavigationSecondary_logoCopy =
     if (dropdown && RhNavigationSecondary_1.isDropdown(dropdown)) {
         const link = dropdown.querySelector('a');
         if (link) {
-            __classPrivateFieldGet(this, _RhNavigationSecondary_tabindex, "f").updateActiveItem(link);
+            __classPrivateFieldGet(this, _RhNavigationSecondary_tabindex, "f").setActiveItem(link);
         }
         __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_openDropdown).call(this, dropdown);
     }
-}, _RhNavigationSecondary_allDropdowns = function _RhNavigationSecondary_allDropdowns() {
+};
+_RhNavigationSecondary_allDropdowns = function _RhNavigationSecondary_allDropdowns() {
     return Array.from(this.querySelectorAll('rh-navigation-secondary-dropdown, rh-secondary-nav-dropdown'));
-}, _RhNavigationSecondary_closeDropdown = function _RhNavigationSecondary_closeDropdown(dropdown) {
+};
+_RhNavigationSecondary_closeDropdown = function _RhNavigationSecondary_closeDropdown(dropdown) {
     if (dropdown.expanded === false) {
         return;
     }
     dropdown.expanded = false;
-}, _RhNavigationSecondary_openDropdown = function _RhNavigationSecondary_openDropdown(dropdown) {
+};
+_RhNavigationSecondary_openDropdown = function _RhNavigationSecondary_openDropdown(dropdown) {
     if (dropdown.expanded === true) {
         return;
     }
     dropdown.expanded = true;
-}, _RhNavigationSecondary_onOverlayChange = function _RhNavigationSecondary_onOverlayChange(event) {
+};
+_RhNavigationSecondary_onOverlayChange = function _RhNavigationSecondary_onOverlayChange(event) {
     if (event instanceof SecondaryNavOverlayChangeEvent) {
         if (this.contains(event.toggle)) {
             this.overlayOpen = event.open;
         }
     }
-}, _RhNavigationSecondary_upgradeAccessibility = function _RhNavigationSecondary_upgradeAccessibility() {
+};
+_RhNavigationSecondary_upgradeAccessibility = function _RhNavigationSecondary_upgradeAccessibility() {
     // remove role="navigation" from host on upgrade
     this.removeAttribute('role');
     // remove aria-labelledby from slotted `<ul>` on upgrade
@@ -319,7 +333,8 @@ _RhNavigationSecondary_logger = new WeakMap(), _RhNavigationSecondary_logoCopy =
         __classPrivateFieldSet(this, _RhNavigationSecondary_label, this.getAttribute('aria-label') ?? 'secondary', "f");
         this.removeAttribute('aria-label');
     }
-}, _RhNavigationSecondary_toggleMobileMenu = function _RhNavigationSecondary_toggleMobileMenu() {
+};
+_RhNavigationSecondary_toggleMobileMenu = function _RhNavigationSecondary_toggleMobileMenu() {
     this.mobileMenuExpanded = !this.mobileMenuExpanded;
     this.dispatchEvent(new SecondaryNavOverlayChangeEvent(this.mobileMenuExpanded, this));
 };

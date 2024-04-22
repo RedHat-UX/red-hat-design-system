@@ -1,8 +1,14 @@
 import type { ReactiveController, ReactiveElement } from 'lit';
+/**
+ * @deprecated: use context, especially via `@patternfly/pfe-core/functions/context.js`;
+ */
 export interface Options<E extends ReactiveElement> {
     properties: Partial<Record<keyof E, string | string[]>>;
     prefix?: string;
 }
+/**
+ * @deprecated: use context, especially via `@patternfly/pfe-core/functions/context.js`;
+ */
 export declare class CascadeController<E extends ReactiveElement> implements ReactiveController {
     host: E;
     options?: Options<E> | undefined;

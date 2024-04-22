@@ -5,7 +5,7 @@ import { property } from 'lit/decorators/property.js';
 import { state } from 'lit/decorators/state.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { css } from "lit";
-const style = css `:host{position:relative;display:inline-block;line-height:0;height:fit-content!important;width:fit-content!important}#container{display:grid;grid-template:1fr/1fr;place-content:center}#container.content ::slotted(*){display:none}svg{fill:currentcolor}`;
+const style = css `:host {\n  position: relative;\n  display:  inline-block;\n  line-height:  0;\n  height: fit-content !important;\n  width: fit-content !important;\n}\n\n#container {\n  display: grid;\n  grid-template: 1fr / 1fr;\n  place-content: center;\n}\n\n#container.content ::slotted(*) {\n  display: none;\n}\n\nsvg {\n  fill: currentcolor;\n}\n\n`;
 /** requestIdleCallback when available, requestAnimationFrame when not */
 const ric = window.requestIdleCallback ?? window.requestAnimationFrame;
 /** Fired when an icon fails to load */
@@ -25,7 +25,7 @@ class IconLoadError extends ErrorEvent {
  * @fires error - Fired when an icon fails to load
  * @csspart fallback - Container for the fallback (i.e. slotted) content
  */
-class BaseIcon extends LitElement {
+export class BaseIcon extends LitElement {
     constructor() {
         super(...arguments);
         _BaseIcon_instances.add(this);
@@ -117,7 +117,7 @@ _a = BaseIcon, _BaseIcon_intersecting = new WeakMap(), _BaseIcon_logger = new We
     }
 };
 BaseIcon.styles = [style];
-BaseIcon.getIconUrl = (set, icon) => new URL(`./icons/${set}/${icon}.js`, import.meta.url);
+BaseIcon.getIconUrl = (set, icon) => `@patternfly/icons/${set}/${icon}.js`;
 BaseIcon.onIntersect = records => records.forEach(({ isIntersecting, target }) => {
     const icon = target;
     __classPrivateFieldSet(icon, _BaseIcon_intersecting, isIntersecting, "f");
@@ -142,5 +142,4 @@ __decorate([
 __decorate([
     state()
 ], BaseIcon.prototype, "content", void 0);
-export { BaseIcon };
 //# sourceMappingURL=BaseIcon.js.map

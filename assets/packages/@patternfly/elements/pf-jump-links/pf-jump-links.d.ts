@@ -1,6 +1,5 @@
 import { LitElement } from 'lit';
 import '@patternfly/elements/pf-icon/pf-icon.js';
-import './pf-jump-links-item.js';
 /**
  * **Jump links** allow users to navigate to sections within a page.
  *
@@ -51,7 +50,7 @@ import './pf-jump-links-item.js';
  */
 export declare class PfJumpLinks extends LitElement {
     #private;
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     /** Whether the element features a disclosure widget around the nav items */
     expandable: boolean;
     /** Whether the expandable element's disclosure widget is expanded */
@@ -64,9 +63,11 @@ export declare class PfJumpLinks extends LitElement {
     offset: number;
     /** Label to add to nav element. */
     label?: string;
+    protected getUpdateComplete(): Promise<boolean>;
     connectedCallback(): void;
+    firstUpdated(): void;
     updated(changed: Map<string, unknown>): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

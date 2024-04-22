@@ -1,7 +1,7 @@
 import { LitElement } from 'lit';
 export declare class BaseAccordionPanel extends LitElement {
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     expanded: boolean;
     connectedCallback(): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
 }

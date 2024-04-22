@@ -1,5 +1,5 @@
 /** Emulate the browser's default ValidityState object */
-export declare class ValidityState implements globalThis.ValidityState {
+export declare class ValidityState implements ValidityState {
     badInput: boolean;
     customError: boolean;
     patternMismatch: boolean;

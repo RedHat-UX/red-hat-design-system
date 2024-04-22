@@ -8,13 +8,13 @@ import { LitElement } from 'lit';
 export declare class RhTabPanel extends LitElement {
     #private;
     static readonly version = "{{version}}";
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     /**
      * Sets color theme based on parent context
      */
     private on?;
     connectedCallback(): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

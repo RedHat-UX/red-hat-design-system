@@ -1,7 +1,7 @@
 import { LitElement } from 'lit';
 import { css } from "lit";
-const styles = css `:host{display:block}[hidden]{display:none!important}`;
-class BaseCodeBlock extends LitElement {
+const styles = css `:host {\n  display: block;\n}\n\n[hidden] {\n  display: none !important;\n}\n`;
+export class BaseCodeBlock extends LitElement {
     get content() {
         const script = this.querySelector('script[type]');
         if (script?.type !== 'text/javascript-sample' &&
@@ -19,5 +19,4 @@ class BaseCodeBlock extends LitElement {
     }
 }
 BaseCodeBlock.styles = [styles];
-export { BaseCodeBlock };
 //# sourceMappingURL=BaseCodeBlock.js.map

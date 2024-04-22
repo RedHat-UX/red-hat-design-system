@@ -2,7 +2,7 @@ import { LitElement, html } from 'lit';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { css } from "lit";
-const style = css `:host{display:flex;flex-direction:column}article{position:relative;height:100%;display:flex;flex-direction:column}[part=header]{display:flex;flex-direction:row;align-items:center}[part=body] ::slotted(:not([slot]):first-of-type){margin-block-start:0!important}[part=body] ::slotted(:not([slot]):last-of-type){margin-block-end:0!important}[part=footer]{display:flex;gap:.5em;inset-block-end:0}.empty{display:none}`;
+const style = css `:host {\n  display: flex;\n  flex-direction: column;\n}\n\narticle {\n  position: relative;\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n}\n\n[part=header] {\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n}\n\n[part=body] ::slotted(:not([slot]):first-of-type) {\n  margin-block-start: 0 !important;\n}\n\n[part=body] ::slotted(:not([slot]):last-of-type) {\n  margin-block-end: 0 !important;\n}\n\n[part=footer] {\n  display: flex;\n  gap: 0.5em;\n  inset-block-end: 0;\n}\n\n.empty {\n  display: none;\n}\n\n`;
 /**
  * This element creates a header, body, and footer region in which to place
  * content or other components.
@@ -20,7 +20,7 @@ const style = css `:host{display:flex;flex-direction:column}article{position:rel
  * @csspart body - The container for *body* content
  * @csspart footer - The container for *footer* content
  */
-class BaseCard extends LitElement {
+export class BaseCard extends LitElement {
     constructor() {
         super(...arguments);
         this.slots = new SlotController(this, 'header', null, 'footer');
@@ -48,5 +48,4 @@ class BaseCard extends LitElement {
     }
 }
 BaseCard.styles = [style];
-export { BaseCard };
 //# sourceMappingURL=BaseCard.js.map

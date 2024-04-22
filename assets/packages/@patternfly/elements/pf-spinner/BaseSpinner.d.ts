@@ -19,10 +19,10 @@ export type SpinnerSize = ('sm' | 'md' | 'lg' | 'xl');
  * @cssprop {<string>} --pf-c-spinner__path--AnimationTimingFunction {@default `ease-in-out`}
  */
 export declare abstract class BaseSpinner extends LitElement {
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     /** Preset sizes for the spinner */
     size: SpinnerSize;
     /** Custom diameter of spinner set as CSS variable */
     diameter?: `${string}${'px' | '%' | 'rem' | 'em' | 'fr' | 'pt'}`;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
 }

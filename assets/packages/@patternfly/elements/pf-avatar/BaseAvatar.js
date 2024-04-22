@@ -2,7 +2,7 @@ import { __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { property } from 'lit/decorators/property.js';
 import { css } from "lit";
-const style = css `:host{display:contents}:host([src]) img,svg{display:inline;object-fit:cover}:host([hidden]){display:none}`;
+const style = css `:host {\n  display: contents;\n}\n\nsvg,\n:host([src]) img {\n  display: inline;\n  object-fit: cover;\n}\n\n:host([hidden]) {\n  display: none;\n}\n`;
 export class AvatarLoadEvent extends Event {
     constructor(originalEvent) {
         super('load', { bubbles: true, composed: true });
@@ -15,7 +15,7 @@ export class AvatarLoadEvent extends Event {
  *
  * @summary For displaying a user's avatar image
  */
-class BaseAvatar extends LitElement {
+export class BaseAvatar extends LitElement {
     constructor() {
         super(...arguments);
         /** The alt text for the avatar image. */
@@ -59,5 +59,4 @@ __decorate([
 __decorate([
     property({ type: Boolean, reflect: true })
 ], BaseAvatar.prototype, "dark", void 0);
-export { BaseAvatar };
 //# sourceMappingURL=BaseAvatar.js.map

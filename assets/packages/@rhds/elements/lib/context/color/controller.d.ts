@@ -1,7 +1,7 @@
 import type { ColorTheme } from './consumer.js';
 import type { ReactiveController, ReactiveElement } from 'lit';
 import { StyleController } from '@patternfly/pfe-core/controllers/style-controller.js';
-import { ContextEvent, type Context, type UnknownContext } from '../event.js';
+import { type ContextRequestEvent } from '../event.js';
 export interface ColorContextOptions<T extends ReactiveElement> {
     prefix?: string;
     propertyName?: keyof T;
@@ -17,12 +17,14 @@ export interface ColorContextOptions<T extends ReactiveElement> {
 *          ```html
 *          <early-provider>
 *            <late-provider>
-*              <eager-consumer>
+*              <eager-consumer></eager-consumer>
 *            </late-provider>
 *          </early-provider>
 *          ```
 */
-export declare const contextEvents: Map<ReactiveElement, ContextEvent<UnknownContext>>;
+export declare const contextEvents: Map<ReactiveElement, ContextRequestEvent<Readonly<{
+    __context__: ColorTheme | null;
+}>>>;
 /**
  * Color context is derived from the `--context` css custom property,
  * which *must* be set by the `color-palette` attribute
@@ -34,15 +36,16 @@ export declare const contextEvents: Map<ReactiveElement, ContextEvent<UnknownCon
  */
 export declare abstract class ColorContextController<T extends ReactiveElement> implements ReactiveController {
     protected host: T;
-    abstract update(next?: ColorTheme | null): void;
-    /** The context object which describes the host's colour context */
-    protected context: Context<ColorTheme | null>;
+    /** The context object which acts as the key for providers and consumers */
+    static readonly context: Readonly<{
+        __context__: ColorTheme | null;
+    }>;
     /** The style controller which provides the necessary CSS. */
     protected styleController: StyleController;
-    /** Prefix for colour context. Set this in Options to create a separate context */
-    protected prefix: string;
     /** The last-known color context on the host */
     protected last: ColorTheme | null;
     hostUpdate?(): void;
-    constructor(host: T, options?: ColorContextOptions<T>);
+    /** callback which updates the context value on consumers */
+    abstract update(next?: ColorTheme | null): void;
+    constructor(host: T);
 }

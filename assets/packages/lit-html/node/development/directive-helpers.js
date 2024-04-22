@@ -18,12 +18,19 @@ const TemplateResultType = {
     SVG: 2,
 };
 /**
- * Tests if a value is a TemplateResult.
+ * Tests if a value is a TemplateResult or a CompiledTemplateResult.
  */
 const isTemplateResult = (value, type) => type === undefined
     ? // This property needs to remain unminified.
         (value === null || value === void 0 ? void 0 : value['_$litType$']) !== undefined
     : (value === null || value === void 0 ? void 0 : value['_$litType$']) === type;
+/**
+ * Tests if a value is a CompiledTemplateResult.
+ */
+const isCompiledTemplateResult = (value) => {
+    var _a;
+    return ((_a = value === null || value === void 0 ? void 0 : value['_$litType$']) === null || _a === void 0 ? void 0 : _a.h) != null;
+};
 /**
  * Tests if a value is a DirectiveResult.
  */
@@ -169,5 +176,5 @@ const clearPart = (part) => {
     part._$clear();
 };
 
-export { TemplateResultType, clearPart, getCommittedValue, getDirectiveClass, insertPart, isDirectiveResult, isPrimitive, isSingleExpression, isTemplateResult, removePart, setChildPartValue, setCommittedValue };
+export { TemplateResultType, clearPart, getCommittedValue, getDirectiveClass, insertPart, isCompiledTemplateResult, isDirectiveResult, isPrimitive, isSingleExpression, isTemplateResult, removePart, setChildPartValue, setCommittedValue };
 //# sourceMappingURL=directive-helpers.js.map

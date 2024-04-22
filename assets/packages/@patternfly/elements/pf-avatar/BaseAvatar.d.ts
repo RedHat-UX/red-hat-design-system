@@ -10,7 +10,7 @@ export declare class AvatarLoadEvent extends Event {
  * @summary For displaying a user's avatar image
  */
 export declare class BaseAvatar extends LitElement {
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     /** The URL to the user's custom avatar image. */
     src?: string;
     /** The alt text for the avatar image. */
@@ -19,5 +19,5 @@ export declare class BaseAvatar extends LitElement {
     size: 'sm' | 'md' | 'lg' | 'xl';
     /** Whether or not the Avatar image is dark */
     dark: boolean;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
 }

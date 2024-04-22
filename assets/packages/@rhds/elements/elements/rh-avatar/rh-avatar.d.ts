@@ -11,7 +11,7 @@ import { LitElement, type PropertyValues } from 'lit';
  */
 export declare class RhAvatar extends LitElement {
     #private;
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     /**
      * The URL to the user's custom avatar image.
      *
@@ -34,7 +34,7 @@ export declare class RhAvatar extends LitElement {
     plain: boolean;
     private on?;
     connectedCallback(): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
     updated(changed: PropertyValues<this>): Promise<void>;
     updatePattern(): Promise<void>;
 }

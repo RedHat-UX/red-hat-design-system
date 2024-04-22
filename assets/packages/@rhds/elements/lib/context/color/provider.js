@@ -1,4 +1,4 @@
-var _ColorContextProvider_instances, _ColorContextProvider_attribute, _ColorContextProvider_callbacks, _ColorContextProvider_mo, _ColorContextProvider_style, _ColorContextProvider_initialized, _ColorContextProvider_logger, _ColorContextProvider_consumer, _ColorContextProvider_local_get, _ColorContextProvider_isColorContextEvent, _ColorContextProvider_onChildContextEvent;
+var _ColorContextProvider_instances, _a, _ColorContextProvider_attribute, _ColorContextProvider_callbacks, _ColorContextProvider_mo, _ColorContextProvider_style, _ColorContextProvider_initialized, _ColorContextProvider_logger, _ColorContextProvider_consumer, _ColorContextProvider_local_get, _ColorContextProvider_isColorContextEvent, _ColorContextProvider_onChildContextRequestEvent;
 import { __classPrivateFieldGet, __classPrivateFieldSet } from "tslib";
 import { contextEvents, ColorContextController, } from './controller.js';
 import { ColorContextConsumer } from './consumer.js';
@@ -15,8 +15,8 @@ export class ColorContextProvider extends ColorContextController {
         return __classPrivateFieldGet(this, _ColorContextProvider_instances, "a", _ColorContextProvider_local_get) ?? __classPrivateFieldGet(this, _ColorContextProvider_consumer, "f").value;
     }
     constructor(host, options) {
-        const { attribute = 'color-palette', ...rest } = options ?? {};
-        super(host, rest);
+        const { attribute = 'color-palette' } = options ?? {};
+        super(host);
         _ColorContextProvider_instances.add(this);
         _ColorContextProvider_attribute.set(this, void 0);
         /** Cache of context callbacks. Call each to update consumers */
@@ -27,11 +27,15 @@ export class ColorContextProvider extends ColorContextController {
          * Cached (live) computed style declaration
          * @see https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle
          */
+        // eslint-disable-next-line no-unused-private-class-members
         _ColorContextProvider_style.set(this, void 0);
+        // eslint-disable-next-line no-unused-private-class-members
         _ColorContextProvider_initialized.set(this, false);
         _ColorContextProvider_logger.set(this, void 0);
         _ColorContextProvider_consumer.set(this, void 0);
-        __classPrivateFieldSet(this, _ColorContextProvider_consumer, new ColorContextConsumer(host, { callback: value => this.update(value) }), "f");
+        __classPrivateFieldSet(this, _ColorContextProvider_consumer, new ColorContextConsumer(host, {
+            callback: value => this.update(value),
+        }), "f");
         __classPrivateFieldSet(this, _ColorContextProvider_logger, new Logger(host), "f");
         __classPrivateFieldSet(this, _ColorContextProvider_style, window.getComputedStyle(host), "f");
         __classPrivateFieldSet(this, _ColorContextProvider_attribute, attribute, "f");
@@ -45,7 +49,7 @@ export class ColorContextProvider extends ColorContextController {
        * in case this context provider upgraded after and is closer to a given consumer.
        */
     async hostConnected() {
-        this.host.addEventListener('context-request', e => __classPrivateFieldGet(this, _ColorContextProvider_instances, "m", _ColorContextProvider_onChildContextEvent).call(this, e));
+        this.host.addEventListener('context-request', e => __classPrivateFieldGet(this, _ColorContextProvider_instances, "m", _ColorContextProvider_onChildContextRequestEvent).call(this, e));
         __classPrivateFieldGet(this, _ColorContextProvider_mo, "f").observe(this.host, { attributes: true, attributeFilter: [__classPrivateFieldGet(this, _ColorContextProvider_attribute, "f")] });
         for (const [host, fired] of contextEvents) {
             host.dispatchEvent(fired);
@@ -75,19 +79,18 @@ export class ColorContextProvider extends ColorContextController {
         }
     }
 }
-_ColorContextProvider_attribute = new WeakMap(), _ColorContextProvider_callbacks = new WeakMap(), _ColorContextProvider_mo = new WeakMap(), _ColorContextProvider_style = new WeakMap(), _ColorContextProvider_initialized = new WeakMap(), _ColorContextProvider_logger = new WeakMap(), _ColorContextProvider_consumer = new WeakMap(), _ColorContextProvider_instances = new WeakSet(), _ColorContextProvider_local_get = function _ColorContextProvider_local_get() {
-    return ColorContextProvider
+_a = ColorContextProvider, _ColorContextProvider_attribute = new WeakMap(), _ColorContextProvider_callbacks = new WeakMap(), _ColorContextProvider_mo = new WeakMap(), _ColorContextProvider_style = new WeakMap(), _ColorContextProvider_initialized = new WeakMap(), _ColorContextProvider_logger = new WeakMap(), _ColorContextProvider_consumer = new WeakMap(), _ColorContextProvider_instances = new WeakSet(), _ColorContextProvider_local_get = function _ColorContextProvider_local_get() {
+    return _a
         .contexts.get(this.host.getAttribute(__classPrivateFieldGet(this, _ColorContextProvider_attribute, "f")) ?? '');
 }, _ColorContextProvider_isColorContextEvent = function _ColorContextProvider_isColorContextEvent(event) {
-    return (event.target !== this.host &&
-        event.context.name === this.context.name);
-}, _ColorContextProvider_onChildContextEvent = 
+    return event.target !== this.host && event.context === ColorContextController.context;
+}, _ColorContextProvider_onChildContextRequestEvent = 
 /**
  * Provider part of context API
  * When a child connects, claim its context-request event
  * and add its callback to the Set of children if it requests multiple updates
  */
-async function _ColorContextProvider_onChildContextEvent(event) {
+async function _ColorContextProvider_onChildContextRequestEvent(event) {
     // only handle ContextEvents relevant to colour context
     if (__classPrivateFieldGet(this, _ColorContextProvider_instances, "m", _ColorContextProvider_isColorContextEvent).call(this, event)) {
         // claim the context-request event for ourselves (required by context protocol)
@@ -95,7 +98,7 @@ async function _ColorContextProvider_onChildContextEvent(event) {
         // Run the callback to initialize the child's colour-context
         event.callback(this.value);
         // Cache the callback for future updates, if requested
-        if (event.multiple) {
+        if (event.subscribe) {
             __classPrivateFieldGet(this, _ColorContextProvider_callbacks, "f").add(event.callback);
         }
     }
@@ -116,7 +119,11 @@ export function colorContextProvider(options) {
         const propOpts = klass.getPropertyOptions(_propertyName);
         const attribute = typeof propOpts.attribute === 'boolean' ? undefined : propOpts.attribute;
         klass.addInitializer(instance => {
-            const controller = new ColorContextProvider(instance, { propertyName, attribute, ...options });
+            const controller = new ColorContextProvider(instance, {
+                propertyName,
+                attribute,
+                ...options,
+            });
             // @ts-expect-error: this assignment is strictly for debugging purposes
             instance.__DEBUG_colorContextProvider = controller;
         });

@@ -15,7 +15,6 @@ export declare class AccordionCollapseEvent extends ComposedEvent {
 }
 export declare abstract class BaseAccordion extends LitElement {
     #private;
-    static readonly styles: import("lit").CSSResult[];
     static isAccordion(target: EventTarget | null): target is BaseAccordion;
     static isHeader(target: EventTarget | null): target is BaseAccordionHeader;
     static isPanel(target: EventTarget | null): target is BaseAccordionPanel;

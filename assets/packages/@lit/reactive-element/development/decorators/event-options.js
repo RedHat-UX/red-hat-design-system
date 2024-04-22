@@ -3,7 +3,6 @@
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-import { decorateProperty } from './base.js';
 /**
  * Adds event listener options to a method used as an event listener in a
  * lit-html template.
@@ -35,12 +34,12 @@ import { decorateProperty } from './base.js';
  * @category Decorator
  */
 export function eventOptions(options) {
-    return decorateProperty({
-        finisher: (ctor, name) => {
-            Object.assign(
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            ctor.prototype[name], options);
-        },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return ((protoOrValue, nameOrContext) => {
+        const method = typeof protoOrValue === 'function'
+            ? protoOrValue
+            : protoOrValue[nameOrContext];
+        Object.assign(method, options);
     });
 }
 //# sourceMappingURL=event-options.js.map

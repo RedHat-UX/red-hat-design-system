@@ -127,15 +127,17 @@ import { LitElement } from 'lit';
  * @cssprop --pf-c-form-control--m-icon-sprite__select--success--BackgroundPosition - {@default calc(100% - var(--pf-global--spacer--md, 1rem) + 1px - var(--pf-global--spacer--lg, 1.5rem))}
  * @cssprop --pf-c-form-control--m-icon-sprite__select--m-warning--BackgroundPosition - {@default calc(100% - var(--pf-global--spacer--md, 1rem) - var(--pf-global--spacer--lg, 1.5rem) + 0.0625rem)}
  * @cssprop --pf-c-form-control--m-icon-sprite__select--invalid--BackgroundPosition - {@default calc(100% - var(--pf-global--spacer--md, 1rem) - var(--pf-global--spacer--lg, 1.5rem))}
+ * @cssprop --pf-c-form-control__error-text--m-status--Color - {@default var(--pf-global--danger-color--100, #c9190b)}
  */
 export declare class PfTextInput extends LitElement {
     #private;
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     static readonly formAssociated = true;
     static shadowRootOptions: ShadowRootInit;
     /** Trim text on left */
     leftTruncated: boolean;
-    /** Value to indicate if the input is modified to show that validation state.
+    /**
+     * Value to indicate if the input is modified to show that validation state.
      * If set to success, input will be modified to indicate valid state.
      * If set to warning,  input will be modified to indicate warning state.
      * Invalid inputs will display an error state
@@ -156,12 +158,23 @@ export declare class PfTextInput extends LitElement {
     disabled: boolean;
     /** Flag to show if the input is required. */
     required: boolean;
+    /** Validation pattern, like `<input>` */
+    pattern?: string;
     /** Flag to show if the input is read only. */
     readonly: boolean;
+    /** Helper text is text below a form field that helps a user provide the right information, like "Enter a unique name". */
+    helperText?: string;
+    /** If set to 'blur', will validate when focus leaves the input */
+    validateOn?: 'blur';
+    /** Displayed when validation fails */
+    errorText?: string;
+    /** Input placeholder. */
+    placeholder?: string;
     /** Value of the input. */
     value: string;
     willUpdate(): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
+    formStateRestoreCallback(state: string, mode: string): Promise<void>;
     formDisabledCallback(): Promise<void>;
     setCustomValidity(message: string): void;
     checkValidity(): boolean;

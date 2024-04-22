@@ -279,6 +279,35 @@ export const nothing = Symbol.for('lit-nothing');
 const templateCache = new WeakMap();
 const walker = d.createTreeWalker(d, 129 /* NodeFilter.SHOW_{ELEMENT|COMMENT} */, null, false);
 let sanitizerFactoryInternal = noopSanitizer;
+function trustFromTemplateString(tsa, stringFromTSA) {
+    // A security check to prevent spoofing of Lit template results.
+    // In the future, we may be able to replace this with Array.isTemplateObject,
+    // though we might need to make that check inside of the html and svg
+    // functions, because precompiled templates don't come in as
+    // TemplateStringArray objects.
+    if (!Array.isArray(tsa) || !tsa.hasOwnProperty('raw')) {
+        let message = 'invalid template strings array';
+        if (DEV_MODE) {
+            message = `
+          Internal Error: expected template strings to be an array
+          with a 'raw' field. Faking a template strings array by
+          calling html or svg like an ordinary function is effectively
+          the same as calling unsafeHtml and can lead to major security
+          issues, e.g. opening your code up to XSS attacks.
+          If you're using the html or svg tagged template functions normally
+          and still seeing this error, please file a bug at
+          https://github.com/lit/lit/issues/new?template=bug_report.md
+          and include information about your build tooling, if any.
+        `
+                .trim()
+                .replace(/\n */g, '\n');
+        }
+        throw new Error(message);
+    }
+    return policy !== undefined
+        ? policy.createHTML(stringFromTSA)
+        : stringFromTSA;
+}
 /**
  * Returns an HTML string for the given TemplateStringsArray and result type
  * (HTML or SVG), along with the case-sensitive bound attribute names in
@@ -431,38 +460,8 @@ const getTemplateHtml = (strings, type) => {
                         (attrNameEndIndex === -2 ? (attrNames.push(undefined), i) : end);
     }
     const htmlResult = html + (strings[l] || '<?>') + (type === SVG_RESULT ? '</svg>' : '');
-    // A security check to prevent spoofing of Lit template results.
-    // In the future, we may be able to replace this with Array.isTemplateObject,
-    // though we might need to make that check inside of the html and svg
-    // functions, because precompiled templates don't come in as
-    // TemplateStringArray objects.
-    if (!Array.isArray(strings) || !strings.hasOwnProperty('raw')) {
-        let message = 'invalid template strings array';
-        if (DEV_MODE) {
-            message = `
-          Internal Error: expected template strings to be an array
-          with a 'raw' field. Faking a template strings array by
-          calling html or svg like an ordinary function is effectively
-          the same as calling unsafeHtml and can lead to major security
-          issues, e.g. opening your code up to XSS attacks.
-
-          If you're using the html or svg tagged template functions normally
-          and still seeing this error, please file a bug at
-          https://github.com/lit/lit/issues/new?template=bug_report.md
-          and include information about your build tooling, if any.
-        `
-                .trim()
-                .replace(/\n */g, '\n');
-        }
-        throw new Error(message);
-    }
     // Returned as an array for terseness
-    return [
-        policy !== undefined
-            ? policy.createHTML(htmlResult)
-            : htmlResult,
-        attrNames,
-    ];
+    return [trustFromTemplateString(strings, htmlResult), attrNames];
 };
 class Template {
     constructor(
@@ -975,7 +974,7 @@ class ChildPart {
         const template = typeof type === 'number'
             ? this._$getTemplate(result)
             : (type.el === undefined &&
-                (type.el = Template.createElement(type.h, this.options)),
+                (type.el = Template.createElement(trustFromTemplateString(type.h, type.h[0]), this.options)),
                 type);
         if (((_a = this._$committedValue) === null || _a === void 0 ? void 0 : _a._$template) === template) {
             debugLogEvent === null || debugLogEvent === void 0 ? void 0 : debugLogEvent({
@@ -1402,7 +1401,7 @@ const polyfillSupport = DEV_MODE
 polyfillSupport === null || polyfillSupport === void 0 ? void 0 : polyfillSupport(Template, ChildPart);
 // IMPORTANT: do not change the property name or the assignment expression.
 // This line will be used in regexes to search for lit-html usage.
-((_d = global.litHtmlVersions) !== null && _d !== void 0 ? _d : (global.litHtmlVersions = [])).push('2.7.4');
+((_d = global.litHtmlVersions) !== null && _d !== void 0 ? _d : (global.litHtmlVersions = [])).push('2.8.0');
 if (DEV_MODE && global.litHtmlVersions.length > 1) {
     issueWarning('multiple-versions', `Multiple versions of Lit loaded. ` +
         `Loading multiple versions is not recommended.`);

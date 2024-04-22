@@ -9,7 +9,7 @@ import { BaseIcon } from './BaseIcon.js';
  * @csspart fallback - Container for the fallback (i.e. slotted) content
  */
 export declare class PfIcon extends BaseIcon {
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     static defaultIconSet: string;
     /** Size of the icon */
     size: 'sm' | 'md' | 'lg' | 'xl';

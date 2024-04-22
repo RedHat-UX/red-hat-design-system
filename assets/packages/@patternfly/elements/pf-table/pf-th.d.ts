@@ -11,13 +11,13 @@ export declare class RequestSortEvent extends Event {
  */
 export declare class PfTh extends LitElement {
     #private;
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     sortable?: boolean;
     selected?: boolean;
     sortDirection?: 'asc' | 'desc';
     key: string;
     connectedCallback(): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
     sort(): void;
 }
 declare global {

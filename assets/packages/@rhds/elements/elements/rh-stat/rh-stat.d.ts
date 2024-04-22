@@ -17,7 +17,7 @@ import { LitElement } from 'lit';
 export declare class RhStat extends LitElement {
     #private;
     static readonly version = "{{version}}";
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     private on?;
     /** The icon to display in the statistic */
     icon?: string;
@@ -28,7 +28,7 @@ export declare class RhStat extends LitElement {
     /** Whether the statistic is in a mobile view or not for styling */
     isMobile: boolean;
     connectedCallback(): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

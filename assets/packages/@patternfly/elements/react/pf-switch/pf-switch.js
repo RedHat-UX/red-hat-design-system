@@ -1,5 +1,5 @@
 // pf-switch/pf-switch.js
-import { createComponent } from '@lit-labs/react';
+import { createComponent } from '@lit/react';
 import react from 'react';
 import { PfSwitch as elementClass } from '@patternfly/elements/pf-switch/pf-switch.js';
 export const Switch = createComponent({

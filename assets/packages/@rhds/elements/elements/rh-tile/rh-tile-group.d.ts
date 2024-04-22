@@ -7,7 +7,7 @@ import { RhTile } from './rh-tile.js';
  */
 export declare class RhTileGroup extends LitElement {
     #private;
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     /**
      * Whether tile group interaction is disabled
      */
@@ -40,7 +40,7 @@ export declare class RhTileGroup extends LitElement {
     constructor();
     firstUpdated(): void;
     willUpdate(changed: PropertyValues<this>): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
     /** Sets focus on active tile */
     focus(): void;
     /**

@@ -41,7 +41,7 @@ export declare class DialogOpenEvent extends Event {
 export declare class RhDialog extends LitElement {
     #private;
     static readonly version = "{{version}}";
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     protected static closeOnOutsideClick: boolean;
     /**
      * The `variant` controls the width of the dialog.
@@ -62,7 +62,7 @@ export declare class RhDialog extends LitElement {
     private dialog?;
     private closeButton?;
     connectedCallback(): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
     disconnectedCallback(): void;
     protected _init(): Promise<void>;
     protected _openChanged(oldValue?: boolean, newValue?: boolean): Promise<void>;

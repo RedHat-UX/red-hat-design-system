@@ -1,5 +1,7 @@
 import { LitElement, type PropertyValues } from 'lit';
 import { type ColorPalette } from '../../lib/context/color/provider.js';
+import '../rh-surface/rh-surface.js';
+import '../rh-tooltip/rh-tooltip.js';
 /**
  * An audio player plays audio clips in the browser and includes other features.
  * @summary Plays audio clips and includes other features
@@ -27,7 +29,7 @@ import { type ColorPalette } from '../../lib/context/color/provider.js';
  */
 export declare class RhAudioPlayer extends LitElement {
     #private;
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     private static instances;
     private static icons;
     static enUS: {
@@ -91,7 +93,7 @@ export declare class RhAudioPlayer extends LitElement {
     protected getUpdateComplete(): Promise<boolean>;
     connectedCallback(): void;
     disconnectedCallback(): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
     firstUpdated(): Promise<void>;
     updated(changedProperties: PropertyValues<this>): void;
     /**

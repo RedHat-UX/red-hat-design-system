@@ -6,7 +6,7 @@ import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { css } from "lit";
-const styles = css `:host{display:inline-block;height:max-content}:host([hidden]){display:none!important}[hidden]{display:none!important}button{cursor:pointer;position:relative;font-family:inherit}button{border-width:0;border-style:solid}button::after{position:absolute;inset:0 0 0 0;content:"";border-style:solid}:host(:is(:disabled,[aria-disabled=true])),:host(:is(:disabled,[aria-disabled=true])) #container,:host(:is(:disabled,[aria-disabled=true])) button,:host(:is(:disabled,[aria-disabled=true])[danger]) button,:host(:is(:disabled,[aria-disabled=true])[variant=link]) button{pointer-events:none;cursor:default}[part=icon]{display:none;pointer-events:none}.hasIcon{position:relative;display:flex;align-items:center}.hasIcon [part=icon]{display:inline-flex;align-items:center;position:absolute;width:16px}:host(:not([disabled])) .hasIcon [part=icon]{cursor:pointer}[part=icon] ::slotted(*){width:16px;max-width:16px;height:16px;max-height:16px}.hasIcon button{position:absolute;inset:0}`;
+const styles = css `:host([hidden]) {\n  display: none !important;\n}\n\n[hidden] {\n  display: none !important;\n}\n\n.pf-button {\n  cursor: pointer;\n  position: relative;\n  font-family: inherit;\n}\n\n.pf-button {\n  border-width: 0;\n  border-style: solid;\n}\n\n.pf-button::after {\n  position: absolute;\n  inset: 0 0 0 0;\n  content: "";\n  border-style: solid;\n}\n\n:host(:is(:disabled, [aria-disabled=true])),\n:host(:is(:disabled, [aria-disabled=true])) #container,\n:host(:is(:disabled, [aria-disabled=true])) .pf-button,\n:host(:is(:disabled, [aria-disabled=true])[danger]) .pf-button,\n:host(:is(:disabled, [aria-disabled=true])[variant=link]) .pf-button {\n  pointer-events: none;\n  cursor: default;\n}\n\n[part=icon] {\n  display: none;\n  pointer-events: none;\n}\n\n.pf-button.hasIcon {\n  position: relative;\n  display: flex;\n  align-items: center;\n}\n\n.pf-button.hasIcon [part=icon] {\n  display: inline-flex;\n  align-items: center;\n  position: absolute;\n  width: 16px;\n}\n\n:host(:not([disabled])) .hasIcon [part=icon] {\n  cursor: pointer;\n}\n\n[part=icon] ::slotted(*) {\n  width: 16px;\n  max-width: 16px;\n  height: 16px;\n  max-height: 16px;\n}\n\n.hasIcon button {\n  position: absolute;\n  inset: 0;\n}\n`;
 /**
  * Base button class
  * @csspart button - Internal button element
@@ -16,22 +16,24 @@ const styles = css `:host{display:inline-block;height:max-content}:host([hidden]
  * @slot
  *       Must contain exactly one `<button>` element as the only content not assigned to a named slot.
  */
-class BaseButton extends LitElement {
+export class BaseButton extends LitElement {
     constructor() {
         super(...arguments);
         _BaseButton_instances.add(this);
         /** Disables the button */
         this.disabled = false;
-        _BaseButton_internals.set(this, new InternalsController(this));
+        _BaseButton_internals.set(this, InternalsController.of(this));
     }
     get hasIcon() {
         return !!this.icon;
     }
     render() {
-        const { hasIcon } = this;
+        const { disabled, hasIcon, 
+        // @ts-expect-error: will no longer be a problem after closing issue #2616
+        plain, } = this;
         return html `
       <button aria-label="${ifDefined(this.label)}"
-              class="${classMap({ hasIcon })}"
+              class="pf-button ${classMap({ disabled, hasIcon, plain })}"
               part="button"
               type="${ifDefined(this.type)}"
               value="${ifDefined(this.value)}"
@@ -76,5 +78,4 @@ __decorate([
 __decorate([
     property()
 ], BaseButton.prototype, "icon", void 0);
-export { BaseButton };
 //# sourceMappingURL=BaseButton.js.map

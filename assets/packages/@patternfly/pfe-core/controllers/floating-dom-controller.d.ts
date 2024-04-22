@@ -1,5 +1,5 @@
 import type { Placement } from '@floating-ui/dom';
-import type { ReactiveController, ReactiveElement } from 'lit';
+import type { ReactiveController, ReactiveControllerHost } from 'lit';
 import type { StyleInfo } from 'lit/directives/style-map.js';
 import type { OffsetOptions as Offset } from '@floating-ui/core';
 export type { Placement };
@@ -42,7 +42,7 @@ export declare class FloatingDOMController implements ReactiveController {
      * - `--_floating-content-translate`: translate to apply to floating content.
      */
     get styles(): StyleInfo;
-    constructor(host: ReactiveElement, options: FloatingDOMControllerOptions);
+    constructor(host: ReactiveControllerHost, options: FloatingDOMControllerOptions);
     hostDisconnected(): void;
     /** Show the floating DOM */
     show({ offset, placement, flip, fallbackPlacements }?: ShowOptions): Promise<void>;

@@ -72,11 +72,11 @@ import '@patternfly/elements/pf-icon/pf-icon.js';
  */
 export declare class PfAccordionHeader extends BaseAccordionHeader {
     #private;
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     bordered?: 'true' | 'false';
     icon?: string;
     iconSet?: string;
-    renderAfterButton(): import("lit-html").TemplateResult<1>;
+    renderAfterButton(): import("lit").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

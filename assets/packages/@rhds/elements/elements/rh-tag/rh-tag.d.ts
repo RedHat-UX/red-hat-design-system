@@ -35,7 +35,7 @@ import '@patternfly/elements/pf-icon/pf-icon.js';
  */
 export declare class RhTag extends LitElement {
     #private;
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     /** The icon to display in the label. */
     icon?: string;
     /** The variant of the label. */
@@ -43,7 +43,7 @@ export declare class RhTag extends LitElement {
     /** The color of the label. */
     color?: 'blue' | 'cyan' | 'green' | 'orange' | 'purple' | 'red' | 'grey';
     private on?;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
 }
 export type TagColor = RhTag['color'];
 declare global {

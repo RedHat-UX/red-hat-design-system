@@ -7,8 +7,8 @@ import { __classPrivateFieldGet } from "tslib";
  */
 export class DirController {
     constructor(host) {
-        this.host = host;
         _DirController_instances.add(this);
+        this.host = host;
         /** The element's current `dir` */
         this.dir = 'auto';
         this.update();

@@ -1,5 +1,5 @@
 // pf-tabs/pf-tabs.js
-import { createComponent } from '@lit-labs/react';
+import { createComponent } from '@lit/react';
 import react from 'react';
 import { PfTabs as elementClass } from '@patternfly/elements/pf-tabs/pf-tabs.js';
 export const Tabs = createComponent({

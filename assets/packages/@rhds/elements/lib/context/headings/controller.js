@@ -14,7 +14,7 @@ import { createContext, } from '../event.js';
  *          ```html
  *          <early-provider>
  *            <late-provider>
- *              <eager-consumer>
+ *              <eager-consumer></eager-consumer>
  *            </late-provider>
  *          </early-provider>
  *          ```
@@ -25,8 +25,9 @@ export const contextEvents = new Map();
  * and provides templates for shadow headings.
  */
 export class HeadingLevelController {
-    static get CONTEXT() { return 'rh-heading-levels'; }
-    get level() { return __classPrivateFieldGet(this, _HeadingLevelController_level, "f"); }
+    get level() {
+        return __classPrivateFieldGet(this, _HeadingLevelController_level, "f");
+    }
     set level(level) {
         const val = typeof level === 'string' ? parseInt(level) : level;
         if (typeof val === 'number' && !Number.isNaN(val)) {
@@ -38,7 +39,6 @@ export class HeadingLevelController {
     options) {
         this.host = host;
         this.options = options;
-        this.context = createContext(HeadingLevelController.CONTEXT);
         _HeadingLevelController_level.set(this, 1);
         host.addController(this);
         this.offset = options?.offset ?? 1;
@@ -67,4 +67,5 @@ export class HeadingLevelController {
     }
 }
 _HeadingLevelController_level = new WeakMap();
+HeadingLevelController.context = createContext(Symbol('rh-heading-level-context'));
 //# sourceMappingURL=controller.js.map

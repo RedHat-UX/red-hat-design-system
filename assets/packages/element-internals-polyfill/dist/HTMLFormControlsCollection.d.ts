@@ -1,4 +1,4 @@
-export declare class HTMLFormControlsCollection implements globalThis.HTMLFormControlsCollection {
+export declare class HTMLFormControlsCollection implements HTMLFormControlsCollection {
     #private;
     constructor(elements: any);
     [index: number]: Element;

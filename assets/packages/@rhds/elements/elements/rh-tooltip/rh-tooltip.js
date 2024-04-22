@@ -8,7 +8,7 @@ import { styleMap } from 'lit/directives/style-map.js';
 import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 import { FloatingDOMController, } from '@patternfly/pfe-core/controllers/floating-dom-controller.js';
 import { css } from "lit";
-const styles = css `:host{display:inline}#container{display:inline-flex;position:relative;max-width:100%;--_floating-arrow-size:var(\n        --rh-tooltip-arrow-size,\n        var(--rh-tooltip__arrow--Width, 11px)\n      )}#tooltip,#tooltip:after{position:absolute}#tooltip{display:block;opacity:0;pointer-events:none;z-index:10000;transition:opacity .3s cubic-bezier(.54, 1.5, .38, 1.11) 0s;text-align:var(--_text-alignment,center);word-break:break-word;translate:var(--_floating-content-translate);width:max-content;top:0;left:0;will-change:opacity;line-height:var(--rh-line-height-body-text, 1.5);box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 rgba(21,21,21,.2));max-width:var(--rh-tooltip-max-width,var(--rh-tooltip--MaxWidth,18.75rem));padding:var(--rh-tooltip-content-padding-block-start,var(--rh-tooltip__content--PaddingTop,var(--rh-space-lg,16px))) var(--rh-tooltip-content-padding-inline-end,var(--rh-tooltip__content--PaddingRight,var(--rh-space-lg,16px))) var(--rh-tooltip-content-padding-block-end,var(--rh-tooltip__content--PaddingBottom,var(--rh-space-lg,16px))) var(--rh-tooltip-content-padding-inline-start,var(--rh-tooltip__content--PaddingLeft,var(--rh-space-lg,16px)));font-size:var(\n        --rh-tooltip-content-font-size,\n        var(--rh-tooltip__content--FontSize, var(--rh-font-size-body-text-sm, .875rem))\n      );color:var(--rh-tooltip-content-color,var(--rh-tooltip__content--Color,var(--rh-color-text-primary-on-dark,#fff)));background-color:var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-darkest,#151515)))}:not(.initialized) #tooltip{display:none}#tooltip:after{display:block;content:"";rotate:45deg;width:var(--_floating-arrow-size);height:var(--_floating-arrow-size);will-change:left top right bottom;background-color:var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-darkest,#151515)))}.open #tooltip{opacity:1}.left #tooltip:after{right:calc(-.5 * var(--_floating-arrow-size))}.top #tooltip:after{top:calc(100% - .5 * var(--_floating-arrow-size))}.right #tooltip:after{right:calc(100% - .5 * var(--_floating-arrow-size))}.bottom #tooltip:after{bottom:calc(100% - .5 * var(--_floating-arrow-size))}.left.center #tooltip:after{top:calc(50% - .5 * var(--_floating-arrow-size))}.top.center #tooltip:after{right:calc(50% - .5 * var(--_floating-arrow-size))}.right.center #tooltip:after{top:calc(50% - .5 * var(--_floating-arrow-size))}.bottom.center #tooltip:after{right:calc(50% - .5 * var(--_floating-arrow-size))}.left.start #tooltip:after{top:var(--_floating-arrow-size)}.top.start #tooltip:after{left:var(--_floating-arrow-size)}.right.start #tooltip:after{top:var(--_floating-arrow-size)}.bottom.start #tooltip:after{left:var(--_floating-arrow-size)}.left.end #tooltip:after{bottom:var(--_floating-arrow-size)}.top.end #tooltip:after{right:var(--_floating-arrow-size)}.right.end #tooltip:after{bottom:var(--_floating-arrow-size)}.bottom.end #tooltip:after{right:var(--_floating-arrow-size)}:host([position=left]),:host([position=right]){--_text-alignment:"start"}.dark{--rh-tooltip-content-background-color:var(--rh-color-surface-lightest, #ffffff);--rh-tooltip-content-color:var(--rh-color-text-primary-on-light, #151515)}`;
+const styles = css `:host{display:inline}#container{display:inline-flex;position:relative;max-width:100%;--_floating-arrow-size:var(\n        --rh-tooltip-arrow-size,\n        var(--rh-tooltip__arrow--Width, 11px)\n      )}#tooltip,#tooltip:after{position:absolute}#tooltip{display:none;opacity:0;pointer-events:none;z-index:10000;transition:opacity .3s cubic-bezier(.54, 1.5, .38, 1.11) 0s;text-align:var(--_text-alignment,center);word-break:break-word;translate:var(--_floating-content-translate);width:max-content;top:0;left:0;will-change:opacity;line-height:var(--rh-line-height-body-text, 1.5);box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 rgba(21,21,21,.2));max-width:var(--rh-tooltip-max-width,var(--rh-tooltip--MaxWidth,18.75rem));padding:var(--rh-tooltip-content-padding-block-start,var(--rh-tooltip__content--PaddingTop,var(--rh-space-lg,16px))) var(--rh-tooltip-content-padding-inline-end,var(--rh-tooltip__content--PaddingRight,var(--rh-space-lg,16px))) var(--rh-tooltip-content-padding-block-end,var(--rh-tooltip__content--PaddingBottom,var(--rh-space-lg,16px))) var(--rh-tooltip-content-padding-inline-start,var(--rh-tooltip__content--PaddingLeft,var(--rh-space-lg,16px)));font-size:var(\n        --rh-tooltip-content-font-size,\n        var(--rh-tooltip__content--FontSize, var(--rh-font-size-body-text-sm, .875rem))\n      );color:var(--rh-tooltip-content-color,var(--rh-tooltip__content--Color,var(--rh-color-text-primary-on-dark,#fff)));background-color:var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-darkest,#151515)))}.initialized #tooltip{display:block}#tooltip:after{display:block;content:"";rotate:45deg;width:var(--_floating-arrow-size);height:var(--_floating-arrow-size);will-change:left top right bottom;background-color:var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-darkest,#151515)))}.c{display:contents}.open #tooltip{opacity:1}.left #tooltip:after{right:calc(-.5 * var(--_floating-arrow-size))}.top #tooltip:after{top:calc(100% - .5 * var(--_floating-arrow-size))}.right #tooltip:after{right:calc(100% - .5 * var(--_floating-arrow-size))}.bottom #tooltip:after{bottom:calc(100% - .5 * var(--_floating-arrow-size))}.left.center #tooltip:after{top:calc(50% - .5 * var(--_floating-arrow-size))}.top.center #tooltip:after{right:calc(50% - .5 * var(--_floating-arrow-size))}.right.center #tooltip:after{top:calc(50% - .5 * var(--_floating-arrow-size))}.bottom.center #tooltip:after{right:calc(50% - .5 * var(--_floating-arrow-size))}.left.start #tooltip:after{top:var(--_floating-arrow-size)}.top.start #tooltip:after{left:var(--_floating-arrow-size)}.right.start #tooltip:after{top:var(--_floating-arrow-size)}.bottom.start #tooltip:after{left:var(--_floating-arrow-size)}.left.end #tooltip:after{bottom:var(--_floating-arrow-size)}.top.end #tooltip:after{right:var(--_floating-arrow-size)}.right.end #tooltip:after{bottom:var(--_floating-arrow-size)}.bottom.end #tooltip:after{right:var(--_floating-arrow-size)}:host([position=left]),:host([position=right]){--_text-alignment:"start"}.dark{--rh-tooltip-content-background-color:var(--rh-color-surface-lightest, #ffffff);--rh-tooltip-content-color:var(--rh-color-text-primary-on-light, #151515)}`;
 const ENTER_EVENTS = ['focusin', 'tap', 'click', 'mouseenter'];
 const EXIT_EVENTS = ['focusout', 'blur', 'mouseleave'];
 /**
@@ -50,7 +50,6 @@ let RhTooltip = class RhTooltip extends LitElement {
     render() {
         const { on = '' } = this;
         const { alignment, anchor, open, styles } = __classPrivateFieldGet(this, _RhTooltip_float, "f");
-        const ariaHidden = String(!open);
         return html `
       <div id="container"
            style="${styleMap(styles)}"
@@ -59,10 +58,12 @@ let RhTooltip = class RhTooltip extends LitElement {
             [on]: !!on,
             [anchor]: !!anchor,
             [alignment]: !!alignment })}">
-        <slot id="invoker" role="tooltip" aria-labelledby="tooltip"></slot>
-        <slot id="tooltip"
-              name="content"
-              aria-hidden="${ariaHidden}">${this.content}</slot>
+        <div class="c" role="tooltip" aria-labelledby="tooltip">
+          <slot id="invoker"></slot>
+        </div>
+        <div class="c" aria-hidden="${String(!open)}">
+          <slot id="tooltip" name="content">${this.content}</slot>
+        </div>
       </div>
     `;
     }
@@ -73,14 +74,15 @@ let RhTooltip = class RhTooltip extends LitElement {
         const offset = !placement?.match(/top|bottom/) ? 15
             : { mainAxis: 15, alignmentAxis: -4 };
         await __classPrivateFieldGet(this, _RhTooltip_float, "f").show({ offset, placement });
-        __classPrivateFieldSet(this, _RhTooltip_initialized, true, "f");
+        __classPrivateFieldSet(this, _RhTooltip_initialized, __classPrivateFieldGet(this, _RhTooltip_initialized, "f") || true, "f");
     }
     /** Hide the tooltip */
     async hide() {
         await __classPrivateFieldGet(this, _RhTooltip_float, "f").hide();
     }
 };
-_RhTooltip_float = new WeakMap(), _RhTooltip_initialized = new WeakMap();
+_RhTooltip_float = new WeakMap();
+_RhTooltip_initialized = new WeakMap();
 RhTooltip.version = '{{version}}';
 RhTooltip.styles = [styles];
 __decorate([

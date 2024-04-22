@@ -39,7 +39,7 @@ import { BaseAccordionPanel } from './BaseAccordionPanel.js';
  *              {@default `var(--pf-global--BorderWidth--lg, 3px)`}
  */
 export declare class PfAccordionPanel extends BaseAccordionPanel {
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     bordered?: 'true' | 'false';
 }
 declare global {

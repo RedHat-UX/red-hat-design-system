@@ -51,7 +51,10 @@ let RhAudioPlayerScrollingTextOverflow = class RhAudioPlayerScrollingTextOverflo
         }
     }
 };
-_RhAudioPlayerScrollingTextOverflow_scrolling = new WeakMap(), _RhAudioPlayerScrollingTextOverflow_style = new WeakMap(), _RhAudioPlayerScrollingTextOverflow_instances = new WeakSet(), _RhAudioPlayerScrollingTextOverflow_isScrollable_get = function _RhAudioPlayerScrollingTextOverflow_isScrollable_get() {
+_RhAudioPlayerScrollingTextOverflow_scrolling = new WeakMap();
+_RhAudioPlayerScrollingTextOverflow_style = new WeakMap();
+_RhAudioPlayerScrollingTextOverflow_instances = new WeakSet();
+_RhAudioPlayerScrollingTextOverflow_isScrollable_get = function _RhAudioPlayerScrollingTextOverflow_isScrollable_get() {
     const outer = this.shadowRoot?.getElementById('outer');
     return (outer?.scrollWidth ?? 0) > (outer?.clientWidth ?? 0);
 };

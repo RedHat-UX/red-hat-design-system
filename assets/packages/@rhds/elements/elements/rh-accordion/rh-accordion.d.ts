@@ -25,15 +25,23 @@ export declare class AccordionCollapseEvent extends ComposedEvent {
  * @slot
  *       Place the `rh-accordion-header` and `rh-accordion-panel` elements here.
  *
+ * @attr  accents
+ *        Position accents in the header either inline or bottom
+ *        {@default inline}
+ *
  */
 export declare class RhAccordion extends LitElement {
     #private;
     static readonly version = "{{version}}";
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     static isAccordion(target: EventTarget | null): target is RhAccordion;
     static isHeader(target: EventTarget | null): target is RhAccordionHeader;
     static isPanel(target: EventTarget | null): target is RhAccordionPanel;
     static isAccordionChangeEvent(event: Event): event is AccordionHeaderChangeEvent;
+    /**
+     * Sets accordion header's accents position to inline or bottom
+     */
+    accents?: 'inline' | 'bottom';
     /**
      * Sets and reflects the currently expanded accordion 0-based indexes.
      * Use commas to separate multiple indexes.
@@ -50,6 +58,7 @@ export declare class RhAccordion extends LitElement {
     colorPalette?: ColorPalette;
     private on?;
     protected expandedSets: Set<number>;
+    private ctx;
     connectedCallback(): void;
     render(): TemplateResult;
     firstUpdated(): Promise<void>;

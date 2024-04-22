@@ -51,5 +51,7 @@ export class UxdotCopyButton extends LitElement {
     toast({ heading: 'Copied', message });
   }
 
-  static { customElements.define(this.is, this); }
+  static {
+    customElements.define(this.is, this);
+  }
 }

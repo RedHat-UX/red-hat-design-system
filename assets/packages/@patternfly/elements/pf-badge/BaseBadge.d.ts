@@ -1,6 +1,6 @@
 import { LitElement } from 'lit';
 export declare abstract class BaseBadge extends LitElement {
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     abstract state?: string;
     /**
      * Sets a numeric value for a badge.
@@ -14,5 +14,5 @@ export declare abstract class BaseBadge extends LitElement {
      * the numeric value exceeds the threshold value.
      */
     abstract threshold?: number;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
 }

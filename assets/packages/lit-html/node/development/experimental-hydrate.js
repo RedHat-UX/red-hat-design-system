@@ -1,7 +1,7 @@
 import { Buffer } from 'buffer';
 import { noChange, _$LH } from './lit-html.js';
 import { PartType } from './directive.js';
-import { isPrimitive, isTemplateResult, isSingleExpression } from './directive-helpers.js';
+import { isPrimitive, isTemplateResult, isCompiledTemplateResult, isSingleExpression } from './directive-helpers.js';
 
 const { _TemplateInstance: TemplateInstance, _isIterable: isIterable, _resolveDirective: resolveDirective, _ChildPart: ChildPart, _ElementPart: ElementPart, } = _$LH;
 /**
@@ -184,6 +184,9 @@ const openChildPart = (rootValue, marker, stack, options) => {
         // }
     }
     else if (isTemplateResult(value)) {
+        if (isCompiledTemplateResult(value)) {
+            throw new Error('compiled templates are not supported');
+        }
         // Check for a template result digest
         const markerWithDigest = `lit-part ${digestForTemplateResult(value)}`;
         if (marker.data === markerWithDigest) {

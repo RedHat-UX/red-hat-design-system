@@ -35,7 +35,7 @@ export type BannerVariant = ('default' | 'info' | 'warning' | 'danger' | 'succes
  */
 export declare class PfBanner extends LitElement {
     #private;
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     /** Changes the visual appearance of the banner. */
     variant?: BannerVariant;
     /** Shorthand for the `icon` slot, the value is icon name */
@@ -43,7 +43,7 @@ export declare class PfBanner extends LitElement {
     /** Shorthand for the `icon` slot, the value is icon name */
     sticky: boolean;
     willUpdate(changed: PropertyValues<this>): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

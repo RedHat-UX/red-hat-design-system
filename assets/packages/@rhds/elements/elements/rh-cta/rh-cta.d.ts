@@ -84,7 +84,7 @@ export interface CtaData {
 export declare class RhCta extends LitElement {
     #private;
     static readonly version = "{{version}}";
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     /**
      * Indicates the importance of this call-to-action in the context of the page.
      * Will also influence how the call-to-action is styled.
@@ -111,7 +111,7 @@ export declare class RhCta extends LitElement {
     colorPalette?: ColorPalette;
     connectedCallback(): void;
     disconnectedCallback(): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
     firstUpdated(): void;
 }
 declare global {

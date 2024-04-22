@@ -76,19 +76,23 @@ let RhTile = class RhTile extends LitElement {
         this.disabledGroup = false;
         // TODO(bennyp): https://lit.dev/docs/data/context/#content
         this.radioGroup = false;
-        _RhTile_internals.set(this, new InternalsController(this));
+        _RhTile_internals.set(this, InternalsController.of(this));
         _RhTile_logger.set(this, new Logger(this));
         _RhTile_slots.set(this, new SlotController(this, { slots: ['icon'] }));
         this.addEventListener('keydown', __classPrivateFieldGet(this, _RhTile_instances, "m", _RhTile_onKeydown));
         this.addEventListener('keyup', __classPrivateFieldGet(this, _RhTile_instances, "m", _RhTile_onKeyup));
         this.addEventListener('click', __classPrivateFieldGet(this, _RhTile_instances, "m", _RhTile_onClick));
     }
-    /** Update the internal accessible representation of the element's state */
+    /**
+     * Update the internal accessible representation of the element's state
+     * @param changed - the reactive properties which changed this cycle, and their old values
+     */
     async willUpdate(changed) {
         __classPrivateFieldGet(this, _RhTile_internals, "f").role = this.radioGroup ? 'radio' : this.checkable ? 'checkbox' : null;
         __classPrivateFieldGet(this, _RhTile_internals, "f").ariaChecked = !__classPrivateFieldGet(this, _RhTile_instances, "a", _RhTile_isCheckable_get) ? null : String(!!this.checked);
         __classPrivateFieldGet(this, _RhTile_internals, "f").ariaDisabled = !__classPrivateFieldGet(this, _RhTile_instances, "a", _RhTile_isCheckable_get) ? null : String(!!this.disabled);
-        __classPrivateFieldGet(this, _RhTile_internals, "f").ariaLabel = !(__classPrivateFieldGet(this, _RhTile_instances, "a", _RhTile_isCheckable_get) && this.accessibleLabel) ? null : this.accessibleLabel;
+        __classPrivateFieldGet(this, _RhTile_internals, "f").ariaLabel =
+            !(__classPrivateFieldGet(this, _RhTile_instances, "a", _RhTile_isCheckable_get) && this.accessibleLabel) ? null : this.accessibleLabel;
         if (changed.has('value') || changed.has('checked')) {
             const formValue = __classPrivateFieldGet(this, _RhTile_instances, "a", _RhTile_isCheckable_get) && this.checked ? this.value ?? null : null;
             __classPrivateFieldGet(this, _RhTile_internals, "f").setFormValue(formValue);
@@ -103,7 +107,7 @@ let RhTile = class RhTile extends LitElement {
     render() {
         const { bleed, compact, checkable, checked, desaturated, on = '' } = this;
         const disabled = this.disabledGroup || this.disabled || __classPrivateFieldGet(this, _RhTile_internals, "f").formDisabled;
-        const hasSlottedIcon = __classPrivateFieldGet(this, _RhTile_slots, "f").getSlotted('icon').length > 0 ?? false;
+        const hasSlottedIcon = __classPrivateFieldGet(this, _RhTile_slots, "f").hasSlotted('icon');
         return html `
       <div id="outer" class="${classMap({
             bleed,
@@ -157,7 +161,7 @@ let RhTile = class RhTile extends LitElement {
         if (this.checkable && mode === 'restore') {
             const [maybeControlMode, maybeValue] = state.split('/');
             if (maybeValue ?? maybeControlMode === this.value) {
-                __classPrivateFieldGet(this, _RhTile_instances, "m", _RhTile_requestSelect).call(this, !!this.radioGroup ?? true);
+                __classPrivateFieldGet(this, _RhTile_instances, "m", _RhTile_requestSelect).call(this, !!this.radioGroup);
             }
         }
     }
@@ -173,25 +177,33 @@ let RhTile = class RhTile extends LitElement {
         return __classPrivateFieldGet(this, _RhTile_internals, "f").reportValidity();
     }
 };
-_RhTile_internals = new WeakMap(), _RhTile_logger = new WeakMap(), _RhTile_slots = new WeakMap(), _RhTile_instances = new WeakSet(), _RhTile_isCheckable_get = function _RhTile_isCheckable_get() {
+_RhTile_internals = new WeakMap();
+_RhTile_logger = new WeakMap();
+_RhTile_slots = new WeakMap();
+_RhTile_instances = new WeakSet();
+_RhTile_isCheckable_get = function _RhTile_isCheckable_get() {
     return !!this.radioGroup || this.checkable;
-}, _RhTile_input_get = function _RhTile_input_get() {
+};
+_RhTile_input_get = function _RhTile_input_get() {
     return this.shadowRoot.getElementById('input');
-}, _RhTile_setValidityFromInput = function _RhTile_setValidityFromInput() {
+};
+_RhTile_setValidityFromInput = function _RhTile_setValidityFromInput() {
     if (!__classPrivateFieldGet(this, _RhTile_instances, "a", _RhTile_input_get)) {
         __classPrivateFieldGet(this, _RhTile_logger, "f").warn('await updateComplete before validating');
     }
     else {
         __classPrivateFieldGet(this, _RhTile_internals, "f").setValidity(__classPrivateFieldGet(this, _RhTile_instances, "a", _RhTile_input_get).validity, __classPrivateFieldGet(this, _RhTile_instances, "a", _RhTile_input_get).validationMessage);
     }
-}, _RhTile_onClick = function _RhTile_onClick(event) {
+};
+_RhTile_onClick = function _RhTile_onClick(event) {
     if (event.target === this) {
         __classPrivateFieldGet(this, _RhTile_instances, "m", _RhTile_requestSelect).call(this);
     }
-}, _RhTile_requestSelect = function _RhTile_requestSelect(force) {
-    if (this.checkable &&
-        !this.disabled &&
-        !this.disabledGroup) {
+};
+_RhTile_requestSelect = function _RhTile_requestSelect(force) {
+    if (this.checkable
+        && !this.disabled
+        && !this.disabledGroup) {
         if (this.radioGroup) {
             this.dispatchEvent(new TileSelectEvent(force));
         }
@@ -199,7 +211,8 @@ _RhTile_internals = new WeakMap(), _RhTile_logger = new WeakMap(), _RhTile_slots
             this.checked = !this.checked;
         }
     }
-}, _RhTile_onKeydown = function _RhTile_onKeydown(event) {
+};
+_RhTile_onKeydown = function _RhTile_onKeydown(event) {
     switch (event.key) {
         case ' ':
             if (event.target === this && this.checkable) {
@@ -208,7 +221,8 @@ _RhTile_internals = new WeakMap(), _RhTile_logger = new WeakMap(), _RhTile_slots
             }
             break;
     }
-}, _RhTile_onKeyup = function _RhTile_onKeyup(event) {
+};
+_RhTile_onKeyup = function _RhTile_onKeyup(event) {
     switch (event.key) {
         case 'Enter':
         case ' ':

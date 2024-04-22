@@ -1,4 +1,4 @@
-var _PfPopover_instances, _PfPopover_referenceTrigger, _PfPopover_float, _PfPopover_slots, _PfPopover_getReferenceTrigger, _PfPopover_triggerChanged, _PfPopover_outsideClick;
+var _PfPopover_instances, _PfPopover_hideDialog, _PfPopover_referenceTrigger, _PfPopover_float, _PfPopover_slots, _PfPopover_getReferenceTrigger, _PfPopover_triggerChanged, _PfPopover_onKeydown, _PfPopover_outsideClick;
 var PfPopover_1;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, nothing, html } from 'lit';
@@ -14,7 +14,8 @@ import { bound } from '@patternfly/pfe-core/decorators/bound.js';
 import { ComposedEvent, StringListConverter } from '@patternfly/pfe-core/core.js';
 import '@patternfly/elements/pf-button/pf-button.js';
 import { css } from "lit";
-const styles = css `:host{display:inline;--_floating-arrow-size:var(--pf-c-popover__arrow--Width, var(--pf-global--arrow--width-lg, 1.5625rem));--_header-text-color:var(--pf-c-popover__title-text--Color, inherit);--_header-icon-color:var(--pf-c-popover__title-icon--Color, var(--pf-global--Color--100, #151515));--_animation-speed:var(--pf-popover--animation-speed, 300ms);--_z-index:var(--pf-popover--z-index, 9999)}.visually-hidden{position:fixed;top:0;left:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}[hidden]{display:none!important}#container{display:inline-flex;position:relative}#trigger{display:inline-block;position:relative}#arrow{display:block;position:absolute;background-color:var(--pf-c-popover__arrow--BackgroundColor,var(--pf-global--BackgroundColor--100,#fff));box-shadow:var(--pf-c-popover__arrow--BoxShadow,var(--pf-global--BoxShadow--lg,0 .5rem 1rem 0 rgba(3,3,3,.16),0 0 .375rem 0 rgba(3,3,3,.08)));content:'';height:var(--pf-c-popover__arrow--Height,var(--pf-global--arrow--width-lg,1.5625rem));width:var(--pf-c-popover__arrow--Width,var(--pf-global--arrow--width-lg,1.5625rem));rotate:45deg;z-index:-1;pointer-events:none}#popover{display:block;position:absolute;opacity:0;z-index:-1;transition:visibility 0s,opacity var(--_animation-speed) cubic-bezier(.54, 1.5, .38, 1.11) 0s;left:0;top:0;translate:var(--_floating-content-translate);box-shadow:var(--pf-c-popover--BoxShadow,var(--pf-global--BoxShadow--lg,0 .5rem 1rem 0 rgba(3,3,3,.16),0 0 .375rem 0 rgba(3,3,3,.08)));border:0;padding:0;visibility:hidden}#popover[open]{opacity:1;z-index:var(--_z-index);visibility:visible}[part=content]{position:relative;padding:var(--pf-c-popover__content--PaddingTop,var(--pf-global--spacer--md,1rem)) var(--pf-c-popover__content--PaddingRight,var(--pf-global--spacer--md,1rem)) var(--pf-c-popover__content--PaddingBottom,var(--pf-global--spacer--md,1rem)) var(--pf-c-popover__content--PaddingLeft,var(--pf-global--spacer--md,1rem));word-break:break-word;line-height:var(--pf-c-popover--line-height, 1.5);font-size:var(--pf-c-popover__content--FontSize, var(--pf-global--FontSize--sm, .875rem));color:var(--pf-c-popover__content--Color,var(--pf-global--Color--100,#151515));background-color:var(--pf-c-popover__content--BackgroundColor,var(--pf-global--BackgroundColor--100,#fff));max-width:var(--pf-c-popover--MaxWidth,calc(var(--pf-c-popover__content--PaddingLeft,1rem) + var(--pf-c-popover__content--PaddingRight,1rem) + 18.75rem));min-width:var(--pf-c-popover--MinWidth,calc(var(--pf-c-popover__content--PaddingLeft,1rem) + var(--pf-c-popover__content--PaddingRight,1rem) + 18.75rem));width:max-content}[part=close-button]{cursor:pointer;position:absolute;right:var(--pf-c-popover--c-button--Right,calc(var(--pf-c-popover__content--PaddingRight,1rem) - var(--pf-global--spacer--md,1rem)));top:var(--pf-c-popover--c-button--Top,calc(var(--pf-c-popover__content--PaddingTop,1rem) - var(--pf-global--spacer--form-element,.375rem)))}[part=content]>[part=close-button]:not([hidden])~:not([hidden]){padding-right:var(--pf-c-popover--c-button--sibling--PaddingRight,var(--pf-global--spacer--2xl,3rem))}[part=header]{display:flex;align-items:baseline}[part=icon]{color:var(--_header-icon-color);margin-right:var(--pf-c-popover__title-icon--MarginRight,var(--pf-global--spacer--sm,.5rem))}[part=icon] *,[part=icon] ::slotted(*){vertical-align:-.125em}[part=heading] :is(h2,h3,h4,h5,h6),[part=heading]::slotted(:is(h2,h3,h4,h5,h6)),[part=icon]{font-size:var(--pf-c-popover__title--FontSize, var(--pf-global--FontSize--md, 1rem));font-weight:var(--pf-global--FontWeight--normal,400);--pf-icon--size:var(\n    --pf-c-popover__title--FontSize,\n    var(--pf-global--FontSize--md, var(--pf-global--icon--FontSize--md, 1em))\n  )}[part=heading] :is(h2,h3,h4,h5,h6),[part=heading]::slotted(:is(h2,h3,h4,h5,h6)){color:var(--_header-text-color);margin-top:0;margin-bottom:var(--pf-c-popover__title--MarginBottom,var(--pf-global--spacer--sm,.5rem));line-height:var(--pf-c-popover__title--LineHeight, var(--pf-global--LineHeight--md, 1.5));font-family:var(\n    --pf-c-popover__title--FontFamily,\n    var(\n      --pf-global--FontFamily--heading--sans-serif,\n      'RedHatDisplay',\n      'Overpass',\n      overpass,\n      helvetica,\n      arial,\n      sans-serif\n    )\n  )}[part=body]{display:block;word-wrap:break-word}[part=footer]{margin-top:var(--pf-c-popover__footer--MarginTop,var(--pf-global--spacer--md,1rem))}:host([alert-severity=default]){--_header-text-color:var(--pf-c-popover--m-default__title-text--Color, var(--pf-global--default-color--300, #003737));--_header-icon-color:var(--pf-c-popover--m-default__title-icon--Color, var(--pf-global--default-color--200, #009596))}:host([alert-severity=info]){--_header-text-color:var(--pf-c-popover--m-info__title-text--Color, var(--pf-global--info-color--200, #002952));--_header-icon-color:var(--pf-c-popover--m-info__title-icon--Color, var(--pf-global--info-color--100, #2b9af3))}:host([alert-severity=warning]){--_header-icon-color:var(--pf-c-popover--m-warning__title-icon--Color, var(--pf-global--warning-color--100, #f0ab00));--_header-text-color:var(--pf-c-popover--m-warning__title-text--Color, var(--pf-global--warning-color--200, #795600))}:host([alert-severity=success]){--_header-icon-color:var(--pf-c-popover--m-success__title-icon--Color, var(--pf-global--success-color--100, #3e8635));--_header-text-color:var(--pf-c-popover--m-success__title-text--Color, var(--pf-global--success-color--200, #1e4f18))}:host([alert-severity=danger]){--_header-icon-color:var(--pf-c-popover--m-danger__title-icon--Color, var(--pf-global--danger-color--100, #c9190b));--_header-text-color:var(--pf-c-popover--m-danger__title-text--Color, var(--pf-global--danger-color--200, #a30000))}`;
+const styles = css `:host {\n  display: inline;\n  --_floating-arrow-size: var(--pf-c-popover__arrow--Width, var(--pf-global--arrow--width-lg, 1.5625rem));\n  --_header-text-color: var(--pf-c-popover__title-text--Color, inherit);\n  --_header-icon-color: var(--pf-c-popover__title-icon--Color, var(--pf-global--Color--100, #151515));\n  --_animation-speed: var(--pf-popover--animation-speed, 300ms);\n  --_z-index: var(--pf-popover--z-index, 9999);\n}\n\n.visually-hidden {\n  position: fixed;\n  top: 0;\n  left: 0;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  white-space: nowrap;\n  border: 0;\n}\n\n[hidden] {\n  display: none !important;\n}\n\n#container {\n  display: inline-flex;\n  position: relative;\n}\n\n#trigger {\n  display: inline-block;\n  position: relative;\n}\n\n#arrow {\n  display: block;\n  position: absolute;\n  background-color: var(--pf-c-popover__arrow--BackgroundColor, var(--pf-global--BackgroundColor--100, #fff));\n  box-shadow: var(\n    --pf-c-popover__arrow--BoxShadow,\n    var(--pf-global--BoxShadow--lg, 0 0.5rem 1rem 0 rgba(3, 3, 3, 0.16), 0 0 0.375rem 0 rgba(3, 3, 3, 0.08))\n  );\n  content: '';\n  height: var(--pf-c-popover__arrow--Height, var(--pf-global--arrow--width-lg, 1.5625rem));\n  width: var(--pf-c-popover__arrow--Width, var(--pf-global--arrow--width-lg, 1.5625rem));\n  rotate: 45deg;\n  z-index: -1;\n  pointer-events: none;\n}\n\n#popover {\n  display: block;\n  position: absolute;\n  opacity: 0;\n  z-index: -1;\n  transition: visibility 0s, opacity var(--_animation-speed) cubic-bezier(0.54, 1.5, 0.38, 1.11) 0s;\n  left: 0;\n  top: 0;\n  translate: var(--_floating-content-translate);\n  box-shadow: var(\n    --pf-c-popover--BoxShadow,\n    var(--pf-global--BoxShadow--lg, 0 0.5rem 1rem 0 rgba(3, 3, 3, 0.16), 0 0 0.375rem 0 rgba(3, 3, 3, 0.08))\n  );\n  border: 0;\n  padding: 0;\n  visibility: hidden;\n}\n\n#popover[open] {\n  opacity: 1;\n  z-index: var(--_z-index);\n  visibility: visible;\n}\n\n[part='content'] {\n  position: relative;\n  padding: var(--pf-c-popover__content--PaddingTop, var(--pf-global--spacer--md, 1rem))\n    var(--pf-c-popover__content--PaddingRight, var(--pf-global--spacer--md, 1rem))\n    var(--pf-c-popover__content--PaddingBottom, var(--pf-global--spacer--md, 1rem))\n    var(--pf-c-popover__content--PaddingLeft, var(--pf-global--spacer--md, 1rem));\n  word-break: break-word;\n  line-height: var(--pf-c-popover--line-height, 1.5);\n  font-size: var(--pf-c-popover__content--FontSize, var(--pf-global--FontSize--sm, 0.875rem));\n  color: var(--pf-c-popover__content--Color, var(--pf-global--Color--100, #151515));\n  background-color: var(--pf-c-popover__content--BackgroundColor, var(--pf-global--BackgroundColor--100, #fff));\n  max-width: var(\n    --pf-c-popover--MaxWidth,\n    calc(var(--pf-c-popover__content--PaddingLeft, 1rem) + var(--pf-c-popover__content--PaddingRight, 1rem) + 18.75rem)\n  );\n  min-width: var(\n    --pf-c-popover--MinWidth,\n    calc(var(--pf-c-popover__content--PaddingLeft, 1rem) + var(--pf-c-popover__content--PaddingRight, 1rem) + 18.75rem)\n  );\n  width: max-content;\n}\n\n[part='close-button'] {\n  cursor: pointer;\n  position: absolute;\n  right: var(\n    --pf-c-popover--c-button--Right,\n    calc(var(--pf-c-popover__content--PaddingRight, 1rem) - var(--pf-global--spacer--md, 1rem))\n  );\n  top: var(\n    --pf-c-popover--c-button--Top,\n    calc(var(--pf-c-popover__content--PaddingTop, 1rem) - var(--pf-global--spacer--form-element, 0.375rem))\n  );\n}\n\n[part='content'] > [part='close-button']:not([hidden]) ~ *:not([hidden]) {\n  padding-right: var(--pf-c-popover--c-button--sibling--PaddingRight, var(--pf-global--spacer--2xl, 3rem));\n}\n\n[part='header'] {\n  display: flex;\n  align-items: baseline;\n}\n\n[part='icon'] {\n  color: var(--_header-icon-color);\n  margin-right: var(--pf-c-popover__title-icon--MarginRight, var(--pf-global--spacer--sm, 0.5rem));\n}\n\n[part='icon'] ::slotted(*),\n[part='icon'] * {\n  vertical-align: -0.125em;\n}\n\n[part='icon'],\n[part='heading']::slotted(:is(h2, h3, h4, h5, h6)),\n[part='heading'] :is(h2, h3, h4, h5, h6) {\n  font-size: var(--pf-c-popover__title--FontSize, var(--pf-global--FontSize--md, 1rem));\n  font-weight: var(--pf-global--FontWeight--normal, 400);\n  --pf-icon--size: var(\n    --pf-c-popover__title--FontSize,\n    var(--pf-global--FontSize--md, var(--pf-global--icon--FontSize--md, 1em))\n  );\n}\n\n[part='heading']::slotted(:is(h2, h3, h4, h5, h6)),\n[part='heading'] :is(h2, h3, h4, h5, h6) {\n  color: var(--_header-text-color);\n  margin-top: 0;\n  margin-bottom: var(--pf-c-popover__title--MarginBottom, var(--pf-global--spacer--sm, 0.5rem));\n  line-height: var(--pf-c-popover__title--LineHeight, var(--pf-global--LineHeight--md, 1.5));\n  font-family: var(\n    --pf-c-popover__title--FontFamily,\n    var(\n      --pf-global--FontFamily--heading--sans-serif,\n      'RedHatDisplay',\n      'Overpass',\n      overpass,\n      helvetica,\n      arial,\n      sans-serif\n    )\n  );\n}\n\n[part='body'] {\n  display: block;\n  word-wrap: break-word;\n}\n\n[part='footer'] {\n  margin-top: var(--pf-c-popover__footer--MarginTop, var(--pf-global--spacer--md, 1rem));\n}\n\n:host([alert-severity='default']) {\n  --_header-text-color: var(--pf-c-popover--m-default__title-text--Color, var(--pf-global--default-color--300, #003737));\n  --_header-icon-color: var(--pf-c-popover--m-default__title-icon--Color, var(--pf-global--default-color--200, #009596));\n}\n\n:host([alert-severity='info']) {\n  --_header-text-color: var(--pf-c-popover--m-info__title-text--Color, var(--pf-global--info-color--200, #002952));\n  --_header-icon-color: var(--pf-c-popover--m-info__title-icon--Color, var(--pf-global--info-color--100, #2b9af3));\n}\n\n:host([alert-severity='warning']) {\n  --_header-icon-color: var(--pf-c-popover--m-warning__title-icon--Color, var(--pf-global--warning-color--100, #f0ab00));\n  --_header-text-color: var(--pf-c-popover--m-warning__title-text--Color, var(--pf-global--warning-color--200, #795600));\n}\n\n:host([alert-severity='success']) {\n  --_header-icon-color: var(--pf-c-popover--m-success__title-icon--Color, var(--pf-global--success-color--100, #3e8635));\n  --_header-text-color: var(--pf-c-popover--m-success__title-text--Color, var(--pf-global--success-color--200, #1e4f18));\n}\n\n:host([alert-severity='danger']) {\n  --_header-icon-color: var(--pf-c-popover--m-danger__title-icon--Color, var(--pf-global--danger-color--100, #c9190b));\n  --_header-text-color: var(--pf-c-popover--m-danger__title-text--Color, var(--pf-global--danger-color--200, #a30000));\n}\n`;
+import { deprecation } from '@patternfly/pfe-core/decorators/deprecation.js';
 const headingLevels = [2, 3, 4, 5, 6];
 export class PopoverHideEvent extends ComposedEvent {
     constructor() {
@@ -172,7 +173,7 @@ export class PopoverShownEvent extends ComposedEvent {
  */
 let PfPopover = PfPopover_1 = class PfPopover extends LitElement {
     constructor() {
-        super(...arguments);
+        super();
         _PfPopover_instances.add(this);
         /**
          * Indicates the initial popover position.
@@ -185,6 +186,8 @@ let PfPopover = PfPopover_1 = class PfPopover extends LitElement {
          * Disable the flip behavior. The default is `false`.
          */
         this.noFlip = false;
+        /** True before the show animation begins and after the hide animation ends */
+        _PfPopover_hideDialog.set(this, true);
         _PfPopover_referenceTrigger.set(this, null);
         _PfPopover_float.set(this, new FloatingDOMController(this, {
             content: () => this._popover,
@@ -192,10 +195,22 @@ let PfPopover = PfPopover_1 = class PfPopover extends LitElement {
             invoker: () => __classPrivateFieldGet(this, _PfPopover_referenceTrigger, "f") || this._slottedTrigger,
         }));
         _PfPopover_slots.set(this, new SlotController(this, null, 'icon', 'heading', 'body', 'footer'));
-    }
-    connectedCallback() {
-        super.connectedCallback();
-        this.addEventListener('keydown', this.onKeydown);
+        _PfPopover_onKeydown.set(this, (event) => {
+            switch (event.key) {
+                case 'Escape':
+                case 'Esc':
+                    event.preventDefault();
+                    this.hide();
+                    return;
+                case 'Enter':
+                    if (event.target === __classPrivateFieldGet(this, _PfPopover_referenceTrigger, "f") || event.target === this._slottedTrigger) {
+                        event.preventDefault();
+                        this.show();
+                    }
+                    return;
+            }
+        });
+        this.addEventListener('keydown', __classPrivateFieldGet(this, _PfPopover_onKeydown, "f"));
     }
     render() {
         const { alignment, anchor, styles } = __classPrivateFieldGet(this, _PfPopover_float, "f");
@@ -221,42 +236,45 @@ let PfPopover = PfPopover_1 = class PfPopover extends LitElement {
         const headingSlotWithFallback = html `
       <slot id="heading" name="heading" part="heading" ?hidden=${!hasHeading}>${headingContent}</slot>
     `;
-        const header = !(hasHeading && hasIcon) ? headingSlotWithFallback : html `
-      <header part="header">
-        <span part="icon">
-          <slot name="icon">
-            <pf-icon icon="${this.icon ?? PfPopover_1.alertIcons.get(this.alertSeverity) ?? ''}"
-                     set="${ifDefined(this.iconSet)}"
-                     size="md"></pf-icon>
-          </slot>
-        </span>${!this.alertSeverity ? nothing : html `
-        <span class="visually-hidden">${this.alertSeverityText ?? `${this.alertSeverity} alert:`}</span>`}
-        ${headingSlotWithFallback}
-      </header>
-    `;
+        const headerIcon = this.icon ?? PfPopover_1.alertIcons.get(this.alertSeverity) ?? '';
         return html `
       <div id="container"
            style="${styleMap(styles)}"
            class="${classMap({ [anchor]: !!anchor, [alignment]: !!alignment })}">
         <slot id="trigger"
               @slotchange="${__classPrivateFieldGet(this, _PfPopover_instances, "m", _PfPopover_triggerChanged)}"
-              @keydown=${this.onKeydown}
-              @click=${this.toggle}></slot>
-        <dialog id="popover" aria-labelledby="heading" aria-describedby="body" aria-label=${ifDefined(this.label)}>
+              @keydown="${__classPrivateFieldGet(this, _PfPopover_onKeydown, "f")}"
+              @click="${this.toggle}"></slot>
+        <dialog id="popover"
+                ?hidden="${__classPrivateFieldGet(this, _PfPopover_hideDialog, "f")}"
+                aria-labelledby="heading"
+                aria-describedby="body"
+                aria-label=${ifDefined(this.label)}>
           <div id="arrow"></div>
           <div id="content" part="content">
             <pf-button id="close-button"
                        part="close-button"
                        plain
-                       label="${this.closeButtonLabel ?? 'Close popover'}"
+                       label="${this.accessibleCloseLabel ?? this.closeButtonLabel ?? 'Close popover'}"
                        @click="${this.hide}"
-                       @keydown="${this.onKeydown}"
+                       @keydown="${__classPrivateFieldGet(this, _PfPopover_onKeydown, "f")}"
                        ?hidden="${this.hideClose}">
               <svg fill="currentColor" height="1em" width="1em" viewBox="0 0 352 512">
                 <path d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"/>
               </svg>
             </pf-button>
-            ${header}
+            ${!(hasHeading && hasIcon) ? headingSlotWithFallback : html `
+            <header part="header">
+              <span part="icon">
+                <slot name="icon">
+                  <pf-icon icon="${headerIcon}"
+                           set="${ifDefined(this.iconSet)}"
+                           size="md"></pf-icon>
+                </slot>
+              </span>${!this.alertSeverity ? nothing : html `
+              <span class="visually-hidden">${this.alertSeverityText ?? `${this.alertSeverity} alert:`}</span>`}
+              ${headingSlotWithFallback}
+            </header>`}
             <slot id="body" part="body" name="body">${this.body ?? ''}</slot>
             <footer part="footer" ?hidden=${!hasFooter}>
               <slot name="footer">${this.footer}</slot>
@@ -270,22 +288,7 @@ let PfPopover = PfPopover_1 = class PfPopover extends LitElement {
         super.disconnectedCallback();
         PfPopover_1.instances.delete(this);
         __classPrivateFieldGet(this, _PfPopover_referenceTrigger, "f")?.removeEventListener('click', this.toggle);
-        __classPrivateFieldGet(this, _PfPopover_referenceTrigger, "f")?.removeEventListener('keydown', this.onKeydown);
-    }
-    onKeydown(event) {
-        switch (event.key) {
-            case 'Escape':
-            case 'Esc':
-                event.preventDefault();
-                this.hide();
-                return;
-            case 'Enter':
-                if (event.target === __classPrivateFieldGet(this, _PfPopover_referenceTrigger, "f") || event.target === this._slottedTrigger) {
-                    event.preventDefault();
-                    this.show();
-                }
-                return;
-        }
+        __classPrivateFieldGet(this, _PfPopover_referenceTrigger, "f")?.removeEventListener('keydown', __classPrivateFieldGet(this, _PfPopover_onKeydown, "f"));
     }
     /**
      * Removes event listeners from the old trigger element and attaches
@@ -306,6 +309,8 @@ let PfPopover = PfPopover_1 = class PfPopover extends LitElement {
      * Opens the popover
      */
     async show() {
+        __classPrivateFieldSet(this, _PfPopover_hideDialog, false, "f");
+        this.requestUpdate();
         this.dispatchEvent(new PopoverShowEvent());
         await this.updateComplete;
         await __classPrivateFieldGet(this, _PfPopover_float, "f").show({
@@ -327,11 +332,15 @@ let PfPopover = PfPopover_1 = class PfPopover extends LitElement {
         this._popover?.close();
         this.dispatchEvent(new PopoverHiddenEvent());
         PfPopover_1.instances.delete(this);
+        __classPrivateFieldSet(this, _PfPopover_hideDialog, true, "f");
+        this.requestUpdate();
     }
 };
+_PfPopover_hideDialog = new WeakMap();
 _PfPopover_referenceTrigger = new WeakMap();
 _PfPopover_float = new WeakMap();
 _PfPopover_slots = new WeakMap();
+_PfPopover_onKeydown = new WeakMap();
 _PfPopover_instances = new WeakSet();
 _PfPopover_getReferenceTrigger = function _PfPopover_getReferenceTrigger() {
     const root = this.getRootNode();
@@ -342,9 +351,9 @@ _PfPopover_triggerChanged = function _PfPopover_triggerChanged() {
     __classPrivateFieldSet(this, _PfPopover_referenceTrigger, __classPrivateFieldGet(this, _PfPopover_instances, "m", _PfPopover_getReferenceTrigger).call(this), "f");
     if (oldReferenceTrigger !== __classPrivateFieldGet(this, _PfPopover_referenceTrigger, "f")) {
         oldReferenceTrigger?.removeEventListener('click', this.toggle);
-        oldReferenceTrigger?.removeEventListener('keydown', this.onKeydown);
+        oldReferenceTrigger?.removeEventListener('keydown', __classPrivateFieldGet(this, _PfPopover_onKeydown, "f"));
         __classPrivateFieldGet(this, _PfPopover_referenceTrigger, "f")?.addEventListener('click', this.toggle);
-        __classPrivateFieldGet(this, _PfPopover_referenceTrigger, "f")?.addEventListener('keydown', this.onKeydown);
+        __classPrivateFieldGet(this, _PfPopover_referenceTrigger, "f")?.addEventListener('keydown', __classPrivateFieldGet(this, _PfPopover_onKeydown, "f"));
     }
 };
 _PfPopover_outsideClick = function _PfPopover_outsideClick(event) {
@@ -414,7 +423,10 @@ __decorate([
     property({ reflect: true, attribute: 'alert-severity' })
 ], PfPopover.prototype, "alertSeverity", void 0);
 __decorate([
-    property({ reflect: true, attribute: 'close-label' })
+    property({ reflect: true, attribute: 'accessible-close-label' })
+], PfPopover.prototype, "accessibleCloseLabel", void 0);
+__decorate([
+    deprecation({ alias: 'accessible-close-label', attribute: 'close-label' })
 ], PfPopover.prototype, "closeButtonLabel", void 0);
 __decorate([
     property({ reflect: true, attribute: 'alert-severity-text' })
@@ -438,9 +450,6 @@ __decorate([
 __decorate([
     query('#arrow')
 ], PfPopover.prototype, "_arrow", void 0);
-__decorate([
-    bound
-], PfPopover.prototype, "onKeydown", null);
 __decorate([
     bound
 ], PfPopover.prototype, "toggle", null);

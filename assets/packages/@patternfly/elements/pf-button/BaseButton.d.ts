@@ -11,7 +11,7 @@ import { LitElement } from 'lit';
  */
 export declare abstract class BaseButton extends LitElement {
     #private;
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     static readonly formAssociated = true;
     static readonly shadowRootOptions: ShadowRootInit;
     /** Disables the button */
@@ -33,7 +33,7 @@ export declare abstract class BaseButton extends LitElement {
     abstract danger: unknown;
     protected get hasIcon(): boolean;
     render(): TemplateResult<1>;
-    protected formDisabledCallback(): Promise<void>;
+    formDisabledCallback(): Promise<void>;
     /**
      * Fallback content for the icon slot. When the `icon` attribute is set, it
      * should render an icon corresponding to the value.

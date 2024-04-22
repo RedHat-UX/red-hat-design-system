@@ -1,5 +1,5 @@
 // pf-spinner/pf-spinner.js
-import { createComponent } from '@lit-labs/react';
+import { createComponent } from '@lit/react';
 import react from 'react';
 import { PfSpinner as elementClass } from '@patternfly/elements/pf-spinner/pf-spinner.js';
 export const Spinner = createComponent({

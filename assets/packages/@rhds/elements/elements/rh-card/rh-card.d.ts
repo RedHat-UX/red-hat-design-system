@@ -23,7 +23,7 @@ import { LitElement } from 'lit';
 export declare class RhCard extends LitElement {
     #private;
     static readonly version = "{{version}}";
-    static styles: import("lit").CSSResult[];
+    static styles: CSSStyleSheet[];
     /**
      * Sets color theme based on parent context
      */
@@ -37,7 +37,7 @@ export declare class RhCard extends LitElement {
      * Card always resets its context to `base`, unless explicitly provided with a `color-palette`.
      */
     colorPalette?: 'darkest' | 'lightest' | 'lighter';
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

@@ -153,7 +153,7 @@ export declare class PopoverShownEvent extends ComposedEvent {
  */
 export declare class PfPopover extends LitElement {
     #private;
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     private static instances;
     private static alertIcons;
     /**
@@ -219,6 +219,10 @@ export declare class PfPopover extends LitElement {
     /**
      * The accessible label for the popover's close button. The default is `Close popover`.
      */
+    accessibleCloseLabel?: string;
+    /**
+     * @deprecated do not use the color-palette attribute, which was added by mistake. use context-providing containers (e.g. rh-card) instead
+     */
     closeButtonLabel?: string;
     /**
      * The text announced by the screen reader to indicate the popover's severity.
@@ -236,10 +240,9 @@ export declare class PfPopover extends LitElement {
     private _popover;
     private _slottedTrigger?;
     private _arrow;
-    connectedCallback(): void;
-    render(): import("lit-html").TemplateResult<1>;
+    constructor();
+    render(): import("lit").TemplateResult<1>;
     disconnectedCallback(): void;
-    private onKeydown;
     /**
      * Removes event listeners from the old trigger element and attaches
      * them to the new trigger element.

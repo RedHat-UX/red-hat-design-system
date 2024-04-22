@@ -1,4 +1,4 @@
-import { BaseButton } from './BaseButton.js';
+import { LitElement } from 'lit';
 import '@patternfly/elements/pf-icon/pf-icon.js';
 import '@patternfly/elements/pf-spinner/pf-spinner.js';
 export type ButtonVariant = ('primary' | 'secondary' | 'tertiary' | 'control' | 'link');
@@ -134,17 +134,25 @@ export type ButtonVariant = ('primary' | 'secondary' | 'tertiary' | 'control' | 
  * @attr {string} loading-label - ARIA label for the loading indicator {@default `'loading'`}
  *
  */
-export declare class PfButton extends BaseButton {
-    static readonly styles: import("lit").CSSResult[];
+export declare class PfButton extends LitElement {
+    #private;
+    static readonly formAssociated = true;
+    static readonly styles: CSSStyleSheet[];
     /** Represents the state of a stateful button */
     loading: boolean;
     /** Applies plain styles */
     plain: boolean;
     /** Not as urgent as danger */
     warning: boolean;
+    /** Changes the size of the button. */
     size?: 'small' | 'large';
     /** Icon set for the `icon` property */
     iconSet?: string;
+    /**
+     * Use danger buttons for actions a user can take that are potentially
+     * destructive or difficult/impossible to undo, like deleting or removing
+     * user data.
+     */
     danger: boolean;
     /**
      * Changes the style of the button.
@@ -157,8 +165,21 @@ export declare class PfButton extends BaseButton {
      * - Tertiary: Tertiary buttons are flexible and can be used as needed.
      */
     variant: ButtonVariant;
-    protected get hasIcon(): boolean;
-    protected renderDefaultIcon(): import("lit-html").TemplateResult<1>;
+    inline: boolean;
+    block: boolean;
+    /** Disables the button */
+    disabled: boolean;
+    type?: 'button' | 'submit' | 'reset';
+    /** Accessible name for the button, use when the button does not have slotted text */
+    label?: string;
+    value?: string;
+    name?: string;
+    /** Shorthand for the `icon` slot, the value is icon name */
+    icon?: string;
+    connectedCallback(): void;
+    protected willUpdate(): void;
+    protected render(): import("lit").TemplateResult<1>;
+    formDisabledCallback(): Promise<void>;
 }
 declare global {
     interface HTMLElementTagNameMap {

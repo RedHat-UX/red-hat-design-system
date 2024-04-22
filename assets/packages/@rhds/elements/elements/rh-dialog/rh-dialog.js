@@ -161,11 +161,11 @@ let RhDialog = RhDialog_1 = class RhDialog extends LitElement {
                 }
             }
         }
-        else if (oldValue == null ||
-            newValue == null ||
+        else if (oldValue == null
+            || newValue == null
             // loosening types to prevent running these effects in unexpected circumstances
             // eslint-disable-next-line eqeqeq
-            oldValue == newValue) {
+            || oldValue == newValue) {
             return;
         }
         else if (this.open) {
@@ -274,7 +274,14 @@ let RhDialog = RhDialog_1 = class RhDialog extends LitElement {
         this.open = false;
     }
 };
-_RhDialog_screenSize = new WeakMap(), _RhDialog_headerId = new WeakMap(), _RhDialog_triggerElement = new WeakMap(), _RhDialog_header = new WeakMap(), _RhDialog_body = new WeakMap(), _RhDialog_headings = new WeakMap(), _RhDialog_cancelling = new WeakMap(), _RhDialog_slots = new WeakMap();
+_RhDialog_screenSize = new WeakMap();
+_RhDialog_headerId = new WeakMap();
+_RhDialog_triggerElement = new WeakMap();
+_RhDialog_header = new WeakMap();
+_RhDialog_body = new WeakMap();
+_RhDialog_headings = new WeakMap();
+_RhDialog_cancelling = new WeakMap();
+_RhDialog_slots = new WeakMap();
 RhDialog.version = '{{version}}';
 RhDialog.styles = [styles];
 RhDialog.closeOnOutsideClick = true;

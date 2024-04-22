@@ -1,5 +1,5 @@
 // pf-accordion/pf-accordion-panel.js
-import { createComponent } from '@lit-labs/react';
+import { createComponent } from '@lit/react';
 import react from 'react';
 import { PfAccordionPanel as elementClass } from '@patternfly/elements/pf-accordion/pf-accordion-panel.js';
 export const AccordionPanel = createComponent({

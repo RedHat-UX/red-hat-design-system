@@ -4,20 +4,126 @@
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.FloatingUICore = {}));
 })(this, (function (exports) { 'use strict';
 
-  function getAlignment(placement) {
-    return placement.split('-')[1];
-  }
+  /**
+   * Custom positioning reference element.
+   * @see https://floating-ui.com/docs/virtual-elements
+   */
 
-  function getLengthFromAxis(axis) {
-    return axis === 'y' ? 'height' : 'width';
+  const sides = ['top', 'right', 'bottom', 'left'];
+  const alignments = ['start', 'end'];
+  const placements = /*#__PURE__*/sides.reduce((acc, side) => acc.concat(side, side + "-" + alignments[0], side + "-" + alignments[1]), []);
+  const min = Math.min;
+  const max = Math.max;
+  const oppositeSideMap = {
+    left: 'right',
+    right: 'left',
+    bottom: 'top',
+    top: 'bottom'
+  };
+  const oppositeAlignmentMap = {
+    start: 'end',
+    end: 'start'
+  };
+  function clamp(start, value, end) {
+    return max(start, min(value, end));
   }
-
+  function evaluate(value, param) {
+    return typeof value === 'function' ? value(param) : value;
+  }
   function getSide(placement) {
     return placement.split('-')[0];
   }
-
-  function getMainAxisFromPlacement(placement) {
-    return ['top', 'bottom'].includes(getSide(placement)) ? 'x' : 'y';
+  function getAlignment(placement) {
+    return placement.split('-')[1];
+  }
+  function getOppositeAxis(axis) {
+    return axis === 'x' ? 'y' : 'x';
+  }
+  function getAxisLength(axis) {
+    return axis === 'y' ? 'height' : 'width';
+  }
+  function getSideAxis(placement) {
+    return ['top', 'bottom'].includes(getSide(placement)) ? 'y' : 'x';
+  }
+  function getAlignmentAxis(placement) {
+    return getOppositeAxis(getSideAxis(placement));
+  }
+  function getAlignmentSides(placement, rects, rtl) {
+    if (rtl === void 0) {
+      rtl = false;
+    }
+    const alignment = getAlignment(placement);
+    const alignmentAxis = getAlignmentAxis(placement);
+    const length = getAxisLength(alignmentAxis);
+    let mainAlignmentSide = alignmentAxis === 'x' ? alignment === (rtl ? 'end' : 'start') ? 'right' : 'left' : alignment === 'start' ? 'bottom' : 'top';
+    if (rects.reference[length] > rects.floating[length]) {
+      mainAlignmentSide = getOppositePlacement(mainAlignmentSide);
+    }
+    return [mainAlignmentSide, getOppositePlacement(mainAlignmentSide)];
+  }
+  function getExpandedPlacements(placement) {
+    const oppositePlacement = getOppositePlacement(placement);
+    return [getOppositeAlignmentPlacement(placement), oppositePlacement, getOppositeAlignmentPlacement(oppositePlacement)];
+  }
+  function getOppositeAlignmentPlacement(placement) {
+    return placement.replace(/start|end/g, alignment => oppositeAlignmentMap[alignment]);
+  }
+  function getSideList(side, isStart, rtl) {
+    const lr = ['left', 'right'];
+    const rl = ['right', 'left'];
+    const tb = ['top', 'bottom'];
+    const bt = ['bottom', 'top'];
+    switch (side) {
+      case 'top':
+      case 'bottom':
+        if (rtl) return isStart ? rl : lr;
+        return isStart ? lr : rl;
+      case 'left':
+      case 'right':
+        return isStart ? tb : bt;
+      default:
+        return [];
+    }
+  }
+  function getOppositeAxisPlacements(placement, flipAlignment, direction, rtl) {
+    const alignment = getAlignment(placement);
+    let list = getSideList(getSide(placement), direction === 'start', rtl);
+    if (alignment) {
+      list = list.map(side => side + "-" + alignment);
+      if (flipAlignment) {
+        list = list.concat(list.map(getOppositeAlignmentPlacement));
+      }
+    }
+    return list;
+  }
+  function getOppositePlacement(placement) {
+    return placement.replace(/left|right|bottom|top/g, side => oppositeSideMap[side]);
+  }
+  function expandPaddingObject(padding) {
+    return {
+      top: 0,
+      right: 0,
+      bottom: 0,
+      left: 0,
+      ...padding
+    };
+  }
+  function getPaddingObject(padding) {
+    return typeof padding !== 'number' ? expandPaddingObject(padding) : {
+      top: padding,
+      right: padding,
+      bottom: padding,
+      left: padding
+    };
+  }
+  function rectToClientRect(rect) {
+    return {
+      ...rect,
+      top: rect.y,
+      left: rect.x,
+      right: rect.x + rect.width,
+      bottom: rect.y + rect.height
+    };
   }
 
   function computeCoordsFromPlacement(_ref, placement, rtl) {
@@ -25,13 +131,14 @@
       reference,
       floating
     } = _ref;
+    const sideAxis = getSideAxis(placement);
+    const alignmentAxis = getAlignmentAxis(placement);
+    const alignLength = getAxisLength(alignmentAxis);
+    const side = getSide(placement);
+    const isVertical = sideAxis === 'y';
     const commonX = reference.x + reference.width / 2 - floating.width / 2;
     const commonY = reference.y + reference.height / 2 - floating.height / 2;
-    const mainAxis = getMainAxisFromPlacement(placement);
-    const length = getLengthFromAxis(mainAxis);
-    const commonAlign = reference[length] / 2 - floating[length] / 2;
-    const side = getSide(placement);
-    const isVertical = mainAxis === 'x';
+    const commonAlign = reference[alignLength] / 2 - floating[alignLength] / 2;
     let coords;
     switch (side) {
       case 'top':
@@ -66,10 +173,10 @@
     }
     switch (getAlignment(placement)) {
       case 'start':
-        coords[mainAxis] -= commonAlign * (rtl && isVertical ? -1 : 1);
+        coords[alignmentAxis] -= commonAlign * (rtl && isVertical ? -1 : 1);
         break;
       case 'end':
-        coords[mainAxis] += commonAlign * (rtl && isVertical ? -1 : 1);
+        coords[alignmentAxis] += commonAlign * (rtl && isVertical ? -1 : 1);
         break;
     }
     return coords;
@@ -77,7 +184,7 @@
 
   /**
    * Computes the `x` and `y` coordinates that will place the floating element
-   * next to a reference element when it is given a certain positioning strategy.
+   * next to a given reference element.
    *
    * This export does not have any `platform` interface logic. You will need to
    * write one for the platform you are using Floating UI with.
@@ -155,7 +262,6 @@
           } = computeCoordsFromPlacement(rects, statefulPlacement, rtl));
         }
         i = -1;
-        continue;
       }
     }
     return {
@@ -166,35 +272,6 @@
       middlewareData
     };
   };
-
-  function expandPaddingObject(padding) {
-    return {
-      top: 0,
-      right: 0,
-      bottom: 0,
-      left: 0,
-      ...padding
-    };
-  }
-
-  function getSideObjectFromPadding(padding) {
-    return typeof padding !== 'number' ? expandPaddingObject(padding) : {
-      top: padding,
-      right: padding,
-      bottom: padding,
-      left: padding
-    };
-  }
-
-  function rectToClientRect(rect) {
-    return {
-      ...rect,
-      top: rect.y,
-      left: rect.x,
-      right: rect.x + rect.width,
-      bottom: rect.y + rect.height
-    };
-  }
 
   /**
    * Resolves with an object of overflow side offsets that determine how much the
@@ -223,8 +300,8 @@
       elementContext = 'floating',
       altBoundary = false,
       padding = 0
-    } = options;
-    const paddingObject = getSideObjectFromPadding(padding);
+    } = evaluate(options, state);
+    const paddingObject = getPaddingObject(padding);
     const altContext = elementContext === 'floating' ? 'reference' : 'floating';
     const element = elements[altBoundary ? altContext : elementContext];
     const clippingClientRect = rectToClientRect(await platform.getClippingRect({
@@ -247,6 +324,7 @@
       y: 1
     };
     const elementClientRect = rectToClientRect(platform.convertOffsetParentRelativeRectToViewportRelativeRect ? await platform.convertOffsetParentRelativeRectToViewportRelativeRect({
+      elements,
       rect,
       offsetParent,
       strategy
@@ -259,13 +337,6 @@
     };
   }
 
-  const min = Math.min;
-  const max = Math.max;
-
-  function within(min$1, value, max$1) {
-    return max(min$1, min(value, max$1));
-  }
-
   /**
    * Provides data to position an inner element of the floating element so that it
    * appears centered to the reference element.
@@ -275,29 +346,30 @@
     name: 'arrow',
     options,
     async fn(state) {
-      // Since `element` is required, we don't Partial<> the type.
-      const {
-        element,
-        padding = 0
-      } = options || {};
       const {
         x,
         y,
         placement,
         rects,
         platform,
-        elements
+        elements,
+        middlewareData
       } = state;
+      // Since `element` is required, we don't Partial<> the type.
+      const {
+        element,
+        padding = 0
+      } = evaluate(options, state) || {};
       if (element == null) {
         return {};
       }
-      const paddingObject = getSideObjectFromPadding(padding);
+      const paddingObject = getPaddingObject(padding);
       const coords = {
         x,
         y
       };
-      const axis = getMainAxisFromPlacement(placement);
-      const length = getLengthFromAxis(axis);
+      const axis = getAlignmentAxis(placement);
+      const length = getAxisLength(axis);
       const arrowDimensions = await platform.getDimensions(element);
       const isYAxis = axis === 'y';
       const minProp = isYAxis ? 'top' : 'left';
@@ -314,66 +386,38 @@
       }
       const centerToReference = endDiff / 2 - startDiff / 2;
 
+      // If the padding is large enough that it causes the arrow to no longer be
+      // centered, modify the padding so that it is centered.
+      const largestPossiblePadding = clientSize / 2 - arrowDimensions[length] / 2 - 1;
+      const minPadding = min(paddingObject[minProp], largestPossiblePadding);
+      const maxPadding = min(paddingObject[maxProp], largestPossiblePadding);
+
       // Make sure the arrow doesn't overflow the floating element if the center
       // point is outside the floating element's bounds.
-      const min = paddingObject[minProp];
-      const max = clientSize - arrowDimensions[length] - paddingObject[maxProp];
+      const min$1 = minPadding;
+      const max = clientSize - arrowDimensions[length] - maxPadding;
       const center = clientSize / 2 - arrowDimensions[length] / 2 + centerToReference;
-      const offset = within(min, center, max);
+      const offset = clamp(min$1, center, max);
 
       // If the reference is small enough that the arrow's padding causes it to
       // to point to nothing for an aligned placement, adjust the offset of the
-      // floating element itself. This stops `shift()` from taking action, but can
-      // be worked around by calling it again after the `arrow()` if desired.
-      const shouldAddOffset = getAlignment(placement) != null && center != offset && rects.reference[length] / 2 - (center < min ? paddingObject[minProp] : paddingObject[maxProp]) - arrowDimensions[length] / 2 < 0;
-      const alignmentOffset = shouldAddOffset ? center < min ? min - center : max - center : 0;
+      // floating element itself. To ensure `shift()` continues to take action,
+      // a single reset is performed when this is true.
+      const shouldAddOffset = !middlewareData.arrow && getAlignment(placement) != null && center !== offset && rects.reference[length] / 2 - (center < min$1 ? minPadding : maxPadding) - arrowDimensions[length] / 2 < 0;
+      const alignmentOffset = shouldAddOffset ? center < min$1 ? center - min$1 : center - max : 0;
       return {
-        [axis]: coords[axis] - alignmentOffset,
+        [axis]: coords[axis] + alignmentOffset,
         data: {
           [axis]: offset,
-          centerOffset: center - offset
-        }
+          centerOffset: center - offset - alignmentOffset,
+          ...(shouldAddOffset && {
+            alignmentOffset
+          })
+        },
+        reset: shouldAddOffset
       };
     }
   });
-
-  const sides = ['top', 'right', 'bottom', 'left'];
-  const allPlacements = /*#__PURE__*/sides.reduce((acc, side) => acc.concat(side, side + "-start", side + "-end"), []);
-
-  const oppositeSideMap = {
-    left: 'right',
-    right: 'left',
-    bottom: 'top',
-    top: 'bottom'
-  };
-  function getOppositePlacement(placement) {
-    return placement.replace(/left|right|bottom|top/g, side => oppositeSideMap[side]);
-  }
-
-  function getAlignmentSides(placement, rects, rtl) {
-    if (rtl === void 0) {
-      rtl = false;
-    }
-    const alignment = getAlignment(placement);
-    const mainAxis = getMainAxisFromPlacement(placement);
-    const length = getLengthFromAxis(mainAxis);
-    let mainAlignmentSide = mainAxis === 'x' ? alignment === (rtl ? 'end' : 'start') ? 'right' : 'left' : alignment === 'start' ? 'bottom' : 'top';
-    if (rects.reference[length] > rects.floating[length]) {
-      mainAlignmentSide = getOppositePlacement(mainAlignmentSide);
-    }
-    return {
-      main: mainAlignmentSide,
-      cross: getOppositePlacement(mainAlignmentSide)
-    };
-  }
-
-  const oppositeAlignmentMap = {
-    start: 'end',
-    end: 'start'
-  };
-  function getOppositeAlignmentPlacement(placement) {
-    return placement.replace(/start|end/g, alignment => oppositeAlignmentMap[alignment]);
-  }
 
   function getPlacementList(alignment, autoAlignment, allowedPlacements) {
     const allowedPlacementsSortedByAlignment = alignment ? [...allowedPlacements.filter(placement => getAlignment(placement) === alignment), ...allowedPlacements.filter(placement => getAlignment(placement) !== alignment)] : allowedPlacements.filter(placement => getSide(placement) === placement);
@@ -409,36 +453,33 @@
         const {
           crossAxis = false,
           alignment,
-          allowedPlacements = allPlacements,
+          allowedPlacements = placements,
           autoAlignment = true,
           ...detectOverflowOptions
-        } = options;
-        const placements = alignment !== undefined || allowedPlacements === allPlacements ? getPlacementList(alignment || null, autoAlignment, allowedPlacements) : allowedPlacements;
+        } = evaluate(options, state);
+        const placements$1 = alignment !== undefined || allowedPlacements === placements ? getPlacementList(alignment || null, autoAlignment, allowedPlacements) : allowedPlacements;
         const overflow = await detectOverflow(state, detectOverflowOptions);
         const currentIndex = ((_middlewareData$autoP = middlewareData.autoPlacement) == null ? void 0 : _middlewareData$autoP.index) || 0;
-        const currentPlacement = placements[currentIndex];
+        const currentPlacement = placements$1[currentIndex];
         if (currentPlacement == null) {
           return {};
         }
-        const {
-          main,
-          cross
-        } = getAlignmentSides(currentPlacement, rects, await (platform.isRTL == null ? void 0 : platform.isRTL(elements.floating)));
+        const alignmentSides = getAlignmentSides(currentPlacement, rects, await (platform.isRTL == null ? void 0 : platform.isRTL(elements.floating)));
 
         // Make `computeCoords` start from the right place.
         if (placement !== currentPlacement) {
           return {
             reset: {
-              placement: placements[0]
+              placement: placements$1[0]
             }
           };
         }
-        const currentOverflows = [overflow[getSide(currentPlacement)], overflow[main], overflow[cross]];
+        const currentOverflows = [overflow[getSide(currentPlacement)], overflow[alignmentSides[0]], overflow[alignmentSides[1]]];
         const allOverflows = [...(((_middlewareData$autoP2 = middlewareData.autoPlacement) == null ? void 0 : _middlewareData$autoP2.overflows) || []), {
           placement: currentPlacement,
           overflows: currentOverflows
         }];
-        const nextPlacement = placements[currentIndex + 1];
+        const nextPlacement = placements$1[currentIndex + 1];
 
         // There are more placements to check.
         if (nextPlacement) {
@@ -481,40 +522,6 @@
     };
   };
 
-  function getExpandedPlacements(placement) {
-    const oppositePlacement = getOppositePlacement(placement);
-    return [getOppositeAlignmentPlacement(placement), oppositePlacement, getOppositeAlignmentPlacement(oppositePlacement)];
-  }
-
-  function getSideList(side, isStart, rtl) {
-    const lr = ['left', 'right'];
-    const rl = ['right', 'left'];
-    const tb = ['top', 'bottom'];
-    const bt = ['bottom', 'top'];
-    switch (side) {
-      case 'top':
-      case 'bottom':
-        if (rtl) return isStart ? rl : lr;
-        return isStart ? lr : rl;
-      case 'left':
-      case 'right':
-        return isStart ? tb : bt;
-      default:
-        return [];
-    }
-  }
-  function getOppositeAxisPlacements(placement, flipAlignment, direction, rtl) {
-    const alignment = getAlignment(placement);
-    let list = getSideList(getSide(placement), direction === 'start', rtl);
-    if (alignment) {
-      list = list.map(side => side + "-" + alignment);
-      if (flipAlignment) {
-        list = list.concat(list.map(getOppositeAlignmentPlacement));
-      }
-    }
-    return list;
-  }
-
   /**
    * Optimizes the visibility of the floating element by flipping the `placement`
    * in order to keep it in view when the preferred placement(s) will overflow the
@@ -529,7 +536,7 @@
       name: 'flip',
       options,
       async fn(state) {
-        var _middlewareData$flip;
+        var _middlewareData$arrow, _middlewareData$flip;
         const {
           placement,
           middlewareData,
@@ -546,7 +553,15 @@
           fallbackAxisSideDirection = 'none',
           flipAlignment = true,
           ...detectOverflowOptions
-        } = options;
+        } = evaluate(options, state);
+
+        // If a reset by the arrow was caused due to an alignment offset being
+        // added, we should skip any logic now since `flip()` has already done its
+        // work.
+        // https://github.com/floating-ui/floating-ui/issues/2549#issuecomment-1719601643
+        if ((_middlewareData$arrow = middlewareData.arrow) != null && _middlewareData$arrow.alignmentOffset) {
+          return {};
+        }
         const side = getSide(placement);
         const isBasePlacement = getSide(initialPlacement) === initialPlacement;
         const rtl = await (platform.isRTL == null ? void 0 : platform.isRTL(elements.floating));
@@ -562,11 +577,8 @@
           overflows.push(overflow[side]);
         }
         if (checkCrossAxis) {
-          const {
-            main,
-            cross
-          } = getAlignmentSides(placement, rects, rtl);
-          overflows.push(overflow[main], overflow[cross]);
+          const sides = getAlignmentSides(placement, rects, rtl);
+          overflows.push(overflow[sides[0]], overflow[sides[1]]);
         }
         overflowsData = [...overflowsData, {
           placement,
@@ -650,12 +662,12 @@
       options,
       async fn(state) {
         const {
-          strategy = 'referenceHidden',
-          ...detectOverflowOptions
-        } = options;
-        const {
           rects
         } = state;
+        const {
+          strategy = 'referenceHidden',
+          ...detectOverflowOptions
+        } = evaluate(options, state);
         switch (strategy) {
           case 'referenceHidden':
             {
@@ -748,11 +760,11 @@
           padding = 2,
           x,
           y
-        } = options;
+        } = evaluate(options, state);
         const nativeClientRects = Array.from((await (platform.getClientRects == null ? void 0 : platform.getClientRects(elements.reference))) || []);
         const clientRects = getRectsByLine(nativeClientRects);
         const fallback = rectToClientRect(getBoundingRect(nativeClientRects));
-        const paddingObject = getSideObjectFromPadding(padding);
+        const paddingObject = getPaddingObject(padding);
         function getBoundingClientRect() {
           // There are two rects and they are disjoined.
           if (clientRects.length === 2 && clientRects[0].left > clientRects[1].right && x != null && y != null) {
@@ -762,7 +774,7 @@
 
           // There are 2 or more connected rects.
           if (clientRects.length >= 2) {
-            if (getMainAxisFromPlacement(placement) === 'x') {
+            if (getSideAxis(placement) === 'y') {
               const firstRect = clientRects[0];
               const lastRect = clientRects[clientRects.length - 1];
               const isTop = getSide(placement) === 'top';
@@ -825,7 +837,10 @@
     };
   };
 
-  async function convertValueToCoords(state, value) {
+  // For type backwards-compatibility, the `OffsetOptions` type was also
+  // Derivable.
+
+  async function convertValueToCoords(state, options) {
     const {
       placement,
       platform,
@@ -834,12 +849,10 @@
     const rtl = await (platform.isRTL == null ? void 0 : platform.isRTL(elements.floating));
     const side = getSide(placement);
     const alignment = getAlignment(placement);
-    const isVertical = getMainAxisFromPlacement(placement) === 'x';
+    const isVertical = getSideAxis(placement) === 'y';
     const mainAxisMulti = ['left', 'top'].includes(side) ? -1 : 1;
     const crossAxisMulti = rtl && isVertical ? -1 : 1;
-    const rawValue = typeof value === 'function' ? value(state) : value;
-
-    // eslint-disable-next-line prefer-const
+    const rawValue = evaluate(options, state);
     let {
       mainAxis,
       crossAxis,
@@ -873,31 +886,39 @@
    * object may be passed.
    * @see https://floating-ui.com/docs/offset
    */
-  const offset = function (value) {
-    if (value === void 0) {
-      value = 0;
+  const offset = function (options) {
+    if (options === void 0) {
+      options = 0;
     }
     return {
       name: 'offset',
-      options: value,
+      options,
       async fn(state) {
+        var _middlewareData$offse, _middlewareData$arrow;
         const {
           x,
-          y
+          y,
+          placement,
+          middlewareData
         } = state;
-        const diffCoords = await convertValueToCoords(state, value);
+        const diffCoords = await convertValueToCoords(state, options);
+
+        // If the placement is the same and the arrow caused an alignment offset
+        // then we don't need to change the positioning coordinates.
+        if (placement === ((_middlewareData$offse = middlewareData.offset) == null ? void 0 : _middlewareData$offse.placement) && (_middlewareData$arrow = middlewareData.arrow) != null && _middlewareData$arrow.alignmentOffset) {
+          return {};
+        }
         return {
           x: x + diffCoords.x,
           y: y + diffCoords.y,
-          data: diffCoords
+          data: {
+            ...diffCoords,
+            placement
+          }
         };
       }
     };
   };
-
-  function getCrossAxis(axis) {
-    return axis === 'x' ? 'y' : 'x';
-  }
 
   /**
    * Optimizes the visibility of the floating element by shifting it in order to
@@ -933,14 +954,14 @@
             }
           },
           ...detectOverflowOptions
-        } = options;
+        } = evaluate(options, state);
         const coords = {
           x,
           y
         };
         const overflow = await detectOverflow(state, detectOverflowOptions);
-        const mainAxis = getMainAxisFromPlacement(getSide(placement));
-        const crossAxis = getCrossAxis(mainAxis);
+        const crossAxis = getSideAxis(getSide(placement));
+        const mainAxis = getOppositeAxis(crossAxis);
         let mainAxisCoord = coords[mainAxis];
         let crossAxisCoord = coords[crossAxis];
         if (checkMainAxis) {
@@ -948,14 +969,14 @@
           const maxSide = mainAxis === 'y' ? 'bottom' : 'right';
           const min = mainAxisCoord + overflow[minSide];
           const max = mainAxisCoord - overflow[maxSide];
-          mainAxisCoord = within(min, mainAxisCoord, max);
+          mainAxisCoord = clamp(min, mainAxisCoord, max);
         }
         if (checkCrossAxis) {
           const minSide = crossAxis === 'y' ? 'top' : 'left';
           const maxSide = crossAxis === 'y' ? 'bottom' : 'right';
           const min = crossAxisCoord + overflow[minSide];
           const max = crossAxisCoord - overflow[maxSide];
-          crossAxisCoord = within(min, crossAxisCoord, max);
+          crossAxisCoord = clamp(min, crossAxisCoord, max);
         }
         const limitedCoords = limiter.fn({
           ...state,
@@ -993,16 +1014,16 @@
           offset = 0,
           mainAxis: checkMainAxis = true,
           crossAxis: checkCrossAxis = true
-        } = options;
+        } = evaluate(options, state);
         const coords = {
           x,
           y
         };
-        const mainAxis = getMainAxisFromPlacement(placement);
-        const crossAxis = getCrossAxis(mainAxis);
+        const crossAxis = getSideAxis(placement);
+        const mainAxis = getOppositeAxis(crossAxis);
         let mainAxisCoord = coords[mainAxis];
         let crossAxisCoord = coords[crossAxis];
-        const rawOffset = typeof offset === 'function' ? offset(state) : offset;
+        const rawOffset = evaluate(offset, state);
         const computedOffset = typeof rawOffset === 'number' ? {
           mainAxis: rawOffset,
           crossAxis: 0
@@ -1064,12 +1085,11 @@
         const {
           apply = () => {},
           ...detectOverflowOptions
-        } = options;
+        } = evaluate(options, state);
         const overflow = await detectOverflow(state, detectOverflowOptions);
         const side = getSide(placement);
         const alignment = getAlignment(placement);
-        const axis = getMainAxisFromPlacement(placement);
-        const isXAxis = axis === 'x';
+        const isYAxis = getSideAxis(placement) === 'y';
         const {
           width,
           height
@@ -1088,7 +1108,7 @@
         const noShift = !state.middlewareData.shift;
         let availableHeight = overflowAvailableHeight;
         let availableWidth = overflowAvailableWidth;
-        if (isXAxis) {
+        if (isYAxis) {
           const maximumClippingWidth = width - overflow.left - overflow.right;
           availableWidth = alignment || noShift ? min(overflowAvailableWidth, maximumClippingWidth) : maximumClippingWidth;
         } else {
@@ -1100,7 +1120,7 @@
           const xMax = max(overflow.right, 0);
           const yMin = max(overflow.top, 0);
           const yMax = max(overflow.bottom, 0);
-          if (isXAxis) {
+          if (isYAxis) {
             availableWidth = width - 2 * (xMin !== 0 || xMax !== 0 ? xMin + xMax : max(overflow.left, overflow.right));
           } else {
             availableHeight = height - 2 * (yMin !== 0 || yMax !== 0 ? yMin + yMax : max(overflow.top, overflow.bottom));
@@ -1136,7 +1156,5 @@
   exports.rectToClientRect = rectToClientRect;
   exports.shift = shift;
   exports.size = size;
-
-  Object.defineProperty(exports, '__esModule', { value: true });
 
 }));

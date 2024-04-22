@@ -23,13 +23,10 @@ const styles = css `:host{display:block}#container{border-inline-start:var(--rh-
 /**
  * Upgrades a top level nav link to include dropdown functionality
  * @summary Upgrades a top level nav link to include dropdown functionality
- *
  * @slot link   - Link for dropdown, expects `<a>` element
  * @slot menu   - Menu for dropdown, expects `<rh-navigation-secondary-menu>` element
- *
  * @fires { SecondaryNavDropdownExpandEvent } change - Fires when a dropdown is clicked
- *
-**/
+ */
 let RhNavigationSecondaryDropdown = class RhNavigationSecondaryDropdown extends LitElement {
     constructor() {
         super(...arguments);
@@ -50,7 +47,7 @@ let RhNavigationSecondaryDropdown = class RhNavigationSecondaryDropdown extends 
             return;
         }
         if (menu === undefined) {
-            __classPrivateFieldGet(this, _RhNavigationSecondaryDropdown_logger, "f").warn('[rh-navigation-secondary-dropdown][slot="menu"] expects a slotted <rh-navigation-secondary-menu> tag');
+            __classPrivateFieldGet(this, _RhNavigationSecondaryDropdown_logger, "f").warn(`[rh-navigation-secondary-dropdown][slot="menu"] expects a slotted <rh-navigation-secondary-menu> tag`);
             return;
         }
         link.setAttribute('role', 'button');
@@ -74,7 +71,7 @@ let RhNavigationSecondaryDropdown = class RhNavigationSecondaryDropdown extends 
      * run the `#open()` method, if false run the `#close()` method.
      * @param oldVal {string} - Boolean value in string form
      * @param newVal {string} - Boolean value in string form
-     * @returns {void}
+     * @returns
      */
     _expandedChanged(oldVal, newVal) {
         if (newVal === oldVal) {
@@ -94,7 +91,12 @@ let RhNavigationSecondaryDropdown = class RhNavigationSecondaryDropdown extends 
         this.dispatchEvent(new SecondaryNavDropdownExpandEvent(this.expanded, this));
     }
 };
-_RhNavigationSecondaryDropdown_slots = new WeakMap(), _RhNavigationSecondaryDropdown_logger = new WeakMap(), _RhNavigationSecondaryDropdown_highlight = new WeakMap(), _RhNavigationSecondaryDropdown_mo = new WeakMap(), _RhNavigationSecondaryDropdown_instances = new WeakSet(), _RhNavigationSecondaryDropdown_open = function _RhNavigationSecondaryDropdown_open() {
+_RhNavigationSecondaryDropdown_slots = new WeakMap();
+_RhNavigationSecondaryDropdown_logger = new WeakMap();
+_RhNavigationSecondaryDropdown_highlight = new WeakMap();
+_RhNavigationSecondaryDropdown_mo = new WeakMap();
+_RhNavigationSecondaryDropdown_instances = new WeakSet();
+_RhNavigationSecondaryDropdown_open = function _RhNavigationSecondaryDropdown_open() {
     const link = __classPrivateFieldGet(this, _RhNavigationSecondaryDropdown_slots, "f").getSlotted('link').find(child => child instanceof HTMLAnchorElement);
     link?.setAttribute('aria-expanded', 'true');
     // menu as a RhNavigationSecondaryMenu in the slotted child is specific to rh-navigation-secondary.
@@ -102,14 +104,18 @@ _RhNavigationSecondaryDropdown_slots = new WeakMap(), _RhNavigationSecondaryDrop
     // could possibly become a sub component of the abstraction instead.
     const menu = __classPrivateFieldGet(this, _RhNavigationSecondaryDropdown_slots, "f").getSlotted('menu').find(child => child instanceof RhNavigationSecondaryMenu);
     menu.visible = true;
-}, _RhNavigationSecondaryDropdown_close = function _RhNavigationSecondaryDropdown_close() {
+};
+_RhNavigationSecondaryDropdown_close = function _RhNavigationSecondaryDropdown_close() {
     const link = __classPrivateFieldGet(this, _RhNavigationSecondaryDropdown_slots, "f").getSlotted('link').find(child => child instanceof HTMLAnchorElement);
     link?.setAttribute('aria-expanded', 'false');
     // Same as comment in #open()
     // The RhNavigationSecondaryMenu could possibly become a sub component of the abstraction instead.
-    const menu = __classPrivateFieldGet(this, _RhNavigationSecondaryDropdown_slots, "f").getSlotted('menu').find(child => child instanceof RhNavigationSecondaryMenu);
-    menu.visible = false;
-}, _RhNavigationSecondaryDropdown_mutationsCallback = async function _RhNavigationSecondaryDropdown_mutationsCallback() {
+    const menu = __classPrivateFieldGet(this, _RhNavigationSecondaryDropdown_slots, "f").getSlotted('menu').find((child) => child instanceof RhNavigationSecondaryMenu);
+    if (menu) {
+        menu.visible = false;
+    }
+};
+_RhNavigationSecondaryDropdown_mutationsCallback = async function _RhNavigationSecondaryDropdown_mutationsCallback() {
     const [menu] = __classPrivateFieldGet(this, _RhNavigationSecondaryDropdown_slots, "f").getSlotted('menu');
     __classPrivateFieldSet(this, _RhNavigationSecondaryDropdown_highlight, menu.querySelector('[aria-current="page"]') ? true : false, "f");
     this.requestUpdate();
@@ -129,6 +135,7 @@ RhNavigationSecondaryDropdown = __decorate([
     customElement('rh-navigation-secondary-dropdown')
 ], RhNavigationSecondaryDropdown);
 export { RhNavigationSecondaryDropdown };
+/** @deprecated use rh-navigation-secondary-dropdown */
 let RhSecondaryNavDropdown = class RhSecondaryNavDropdown extends RhNavigationSecondaryDropdown {
     constructor() {
         super();

@@ -5,12 +5,12 @@ import { LitElement } from 'lit';
  */
 export declare abstract class BaseTooltip extends LitElement {
     #private;
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     abstract content?: string;
     /** The position of the tooltip, relative to the invoking content */
     abstract position?: Placement;
     connectedCallback(): void;
     show(): Promise<void>;
     hide(): Promise<void>;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
 }

@@ -1,4 +1,4 @@
-var _BaseAccordion_instances, _a, _BaseAccordion_isAccordionChangeEvent, _BaseAccordion_headerIndex, _BaseAccordion_expandedIndex, _BaseAccordion_activeHeader_get, _BaseAccordion_logger, _BaseAccordion_styles, _BaseAccordion_transitionDuration, _BaseAccordion_initialized, _BaseAccordion_mo, _BaseAccordion_init, _BaseAccordion_updateActiveHeader, _BaseAccordion_panelForHeader, _BaseAccordion_expandHeader, _BaseAccordion_expandPanel, _BaseAccordion_collapseHeader, _BaseAccordion_collapsePanel, _BaseAccordion_getAnimationDuration, _BaseAccordion_animate, _BaseAccordion_onChange, _BaseAccordion_allHeaders, _BaseAccordion_allPanels, _BaseAccordion_getIndex;
+var _BaseAccordion_instances, _a, _BaseAccordion_isAccordionChangeEvent, _BaseAccordion_headerIndex, _BaseAccordion_expandedIndex, _BaseAccordion_activeHeader_get, _BaseAccordion_logger, _BaseAccordion_initialized, _BaseAccordion_mo, _BaseAccordion_init, _BaseAccordion_updateActiveHeader, _BaseAccordion_panelForHeader, _BaseAccordion_expandHeader, _BaseAccordion_expandPanel, _BaseAccordion_collapseHeader, _BaseAccordion_collapsePanel, _BaseAccordion_onChange, _BaseAccordion_allHeaders, _BaseAccordion_allPanels, _BaseAccordion_getIndex;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { property } from 'lit/decorators/property.js';
@@ -7,9 +7,6 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { AccordionHeaderChangeEvent, BaseAccordionHeader } from './BaseAccordionHeader.js';
 import { BaseAccordionPanel } from './BaseAccordionPanel.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
-import { css } from "lit";
-const style = css `:host{transition-property:box-shadow,border;transition-timing-function:ease-out;transition-duration:1ms}`;
-const CSS_TIMING_UNITS_RE = /^[0-9.]+(?<unit>[a-zA-Z]+)/g;
 export class AccordionExpandEvent extends ComposedEvent {
     constructor(toggle, panel) {
         super('expand');
@@ -24,22 +21,22 @@ export class AccordionCollapseEvent extends ComposedEvent {
         this.panel = panel;
     }
 }
-class BaseAccordion extends LitElement {
+export class BaseAccordion extends LitElement {
     constructor() {
         super(...arguments);
         _BaseAccordion_instances.add(this);
-        _BaseAccordion_headerIndex.set(this, new RovingTabindexController(this));
+        _BaseAccordion_headerIndex.set(this, new RovingTabindexController(this, {
+            getItems: () => this.headers,
+        }));
         _BaseAccordion_expandedIndex.set(this, []);
         this.expandedSets = new Set();
         _BaseAccordion_logger.set(this, new Logger(this));
-        _BaseAccordion_styles.set(this, getComputedStyle(this));
-        _BaseAccordion_transitionDuration.set(this, __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_getAnimationDuration).call(this));
         // actually is read in #init, by the `||=` operator
         _BaseAccordion_initialized.set(this, false);
         _BaseAccordion_mo.set(this, new MutationObserver(() => __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_init).call(this)));
     }
     static isAccordion(target) {
-        return target instanceof BaseAccordion;
+        return target instanceof _a;
     }
     static isHeader(target) {
         return target instanceof BaseAccordionHeader;
@@ -109,6 +106,7 @@ class BaseAccordion extends LitElement {
         });
     }
     updateAccessibility() {
+        __classPrivateFieldGet(this, _BaseAccordion_headerIndex, "f").updateItems();
         const { headers } = this;
         // For each header in the accordion, attach the aria connections
         headers.forEach(header => {
@@ -185,7 +183,7 @@ class BaseAccordion extends LitElement {
         await this.updateComplete;
     }
 }
-_a = BaseAccordion, _BaseAccordion_headerIndex = new WeakMap(), _BaseAccordion_expandedIndex = new WeakMap(), _BaseAccordion_logger = new WeakMap(), _BaseAccordion_styles = new WeakMap(), _BaseAccordion_transitionDuration = new WeakMap(), _BaseAccordion_initialized = new WeakMap(), _BaseAccordion_mo = new WeakMap(), _BaseAccordion_instances = new WeakSet(), _BaseAccordion_isAccordionChangeEvent = function _BaseAccordion_isAccordionChangeEvent(event) {
+_a = BaseAccordion, _BaseAccordion_headerIndex = new WeakMap(), _BaseAccordion_expandedIndex = new WeakMap(), _BaseAccordion_logger = new WeakMap(), _BaseAccordion_initialized = new WeakMap(), _BaseAccordion_mo = new WeakMap(), _BaseAccordion_instances = new WeakSet(), _BaseAccordion_isAccordionChangeEvent = function _BaseAccordion_isAccordionChangeEvent(event) {
     return event instanceof AccordionHeaderChangeEvent;
 }, _BaseAccordion_activeHeader_get = function _BaseAccordion_activeHeader_get() {
     const { headers } = this;
@@ -200,17 +198,16 @@ _a = BaseAccordion, _BaseAccordion_headerIndex = new WeakMap(), _BaseAccordion_e
  */
 async function _BaseAccordion_init() {
     __classPrivateFieldSet(this, _BaseAccordion_initialized, __classPrivateFieldGet(this, _BaseAccordion_initialized, "f") || !!await this.updateComplete, "f");
-    __classPrivateFieldGet(this, _BaseAccordion_headerIndex, "f").initItems(this.headers);
     // Event listener to the accordion header after the accordion has been initialized to add the roving tabindex
     this.addEventListener('focusin', __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_updateActiveHeader));
     this.updateAccessibility();
-}, _BaseAccordion_updateActiveHeader = function _BaseAccordion_updateActiveHeader(event) {
-    if (__classPrivateFieldGet(this, _BaseAccordion_instances, "a", _BaseAccordion_activeHeader_get)) {
-        __classPrivateFieldGet(this, _BaseAccordion_headerIndex, "f").updateActiveItem(__classPrivateFieldGet(this, _BaseAccordion_instances, "a", _BaseAccordion_activeHeader_get));
+}, _BaseAccordion_updateActiveHeader = function _BaseAccordion_updateActiveHeader() {
+    if (__classPrivateFieldGet(this, _BaseAccordion_instances, "a", _BaseAccordion_activeHeader_get) !== __classPrivateFieldGet(this, _BaseAccordion_headerIndex, "f").activeItem) {
+        __classPrivateFieldGet(this, _BaseAccordion_headerIndex, "f").setActiveItem(__classPrivateFieldGet(this, _BaseAccordion_instances, "a", _BaseAccordion_activeHeader_get));
     }
 }, _BaseAccordion_panelForHeader = function _BaseAccordion_panelForHeader(header) {
     const next = header.nextElementSibling;
-    if (!BaseAccordion.isPanel(next)) {
+    if (!_a.isPanel(next)) {
         return void __classPrivateFieldGet(this, _BaseAccordion_logger, "f").error('Sibling element to a header needs to be a panel');
     }
     else {
@@ -221,12 +218,9 @@ async function _BaseAccordion_init() {
     this.expandedSets.add(index);
     __classPrivateFieldSet(this, _BaseAccordion_expandedIndex, [...this.expandedSets], "f");
     header.expanded = true;
-}, _BaseAccordion_expandPanel = async function _BaseAccordion_expandPanel(panel) {
+}, _BaseAccordion_expandPanel = function _BaseAccordion_expandPanel(panel) {
     panel.expanded = true;
     panel.hidden = false;
-    await panel.updateComplete;
-    const rect = panel.getBoundingClientRect();
-    __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_animate).call(this, panel, 0, rect.height);
 }, _BaseAccordion_collapseHeader = async function _BaseAccordion_collapseHeader(header, index = __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_getIndex).call(this, header)) {
     if (!this.expandedSets) {
         await this.updateComplete;
@@ -239,50 +233,10 @@ async function _BaseAccordion_init() {
     if (!panel.expanded) {
         return;
     }
-    const rect = panel.getBoundingClientRect();
     panel.expanded = false;
     panel.hidden = true;
-    __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_animate).call(this, panel, rect.height, 0);
-    await panel.updateComplete;
-}, _BaseAccordion_getAnimationDuration = function _BaseAccordion_getAnimationDuration() {
-    if ('computedStyleMap' in this) {
-        // @ts-expect-error: https://caniuse.com/?search=computedStyleMap
-        return this.computedStyleMap().get('transition-duration')?.to('ms').value;
-    }
-    else {
-        const { transitionDuration } = __classPrivateFieldGet(this, _BaseAccordion_styles, "f");
-        const groups = CSS_TIMING_UNITS_RE.exec(transitionDuration)?.groups;
-        if (!groups) {
-            return 0;
-        }
-        const parsed = parseFloat(transitionDuration);
-        if (groups.unit === 's') {
-            return parsed * 1000;
-        }
-        else {
-            return parsed;
-        }
-    }
-}, _BaseAccordion_animate = async function _BaseAccordion_animate(panel, start, end) {
-    if (panel) {
-        const header = panel.previousElementSibling;
-        const transitionDuration = __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_getAnimationDuration).call(this);
-        if (transitionDuration) {
-            __classPrivateFieldSet(this, _BaseAccordion_transitionDuration, transitionDuration, "f");
-        }
-        const duration = __classPrivateFieldGet(this, _BaseAccordion_transitionDuration, "f") ?? 0;
-        header?.classList.add('animating');
-        panel.classList.add('animating');
-        const animation = panel.animate({ height: [`${start}px`, `${end}px`] }, { duration });
-        animation.play();
-        await animation.finished;
-        header?.classList.remove('animating');
-        panel.classList.remove('animating');
-        panel.style.removeProperty('height');
-        panel.hidden = !panel.expanded;
-    }
 }, _BaseAccordion_onChange = function _BaseAccordion_onChange(event) {
-    if (__classPrivateFieldGet(BaseAccordion, _a, "m", _BaseAccordion_isAccordionChangeEvent).call(BaseAccordion, event) && !this.classList.contains('animating')) {
+    if (__classPrivateFieldGet(_a, _a, "m", _BaseAccordion_isAccordionChangeEvent).call(_a, event)) {
         const index = __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_getIndex).call(this, event.target);
         if (event.expanded) {
             this.expand(index, event.accordion);
@@ -292,25 +246,23 @@ async function _BaseAccordion_init() {
         }
     }
 }, _BaseAccordion_allHeaders = function _BaseAccordion_allHeaders(accordion = this) {
-    return Array.from(accordion.children).filter(BaseAccordion.isHeader);
+    return Array.from(accordion.children).filter(_a.isHeader);
 }, _BaseAccordion_allPanels = function _BaseAccordion_allPanels(accordion = this) {
-    return Array.from(accordion.children).filter(BaseAccordion.isPanel);
+    return Array.from(accordion.children).filter(_a.isPanel);
 }, _BaseAccordion_getIndex = function _BaseAccordion_getIndex(el) {
-    if (BaseAccordion.isHeader(el)) {
+    if (_a.isHeader(el)) {
         return this.headers.findIndex(header => header.id === el.id);
     }
-    if (BaseAccordion.isPanel(el)) {
+    if (_a.isPanel(el)) {
         return this.panels.findIndex(panel => panel.id === el.id);
     }
     __classPrivateFieldGet(this, _BaseAccordion_logger, "f").warn('The #getIndex method expects to receive a header or panel element.');
     return -1;
 };
-BaseAccordion.styles = [style];
 __decorate([
     property({
         attribute: 'expanded-index',
         converter: NumberListConverter
     })
 ], BaseAccordion.prototype, "expandedIndex", null);
-export { BaseAccordion };
 //# sourceMappingURL=BaseAccordion.js.map

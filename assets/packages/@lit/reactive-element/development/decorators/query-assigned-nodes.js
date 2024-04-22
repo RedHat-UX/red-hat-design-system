@@ -3,45 +3,44 @@
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-/*
- * IMPORTANT: For compatibility with tsickle and the Closure JS compiler, all
- * property decorators (but not class decorators) in this file that have
- * an @ExportDecoratedItems annotation must be defined as a regular function,
- * not an arrow function.
+import { desc } from './base.js';
+/**
+ * A property decorator that converts a class property into a getter that
+ * returns the `assignedNodes` of the given `slot`.
+ *
+ * Can be passed an optional {@linkcode QueryAssignedNodesOptions} object.
+ *
+ * Example usage:
+ * ```ts
+ * class MyElement {
+ *   @queryAssignedNodes({slot: 'list', flatten: true})
+ *   listItems!: Array<Node>;
+ *
+ *   render() {
+ *     return html`
+ *       <slot name="list"></slot>
+ *     `;
+ *   }
+ * }
+ * ```
+ *
+ * Note the type of this property should be annotated as `Array<Node>`. Use the
+ * queryAssignedElements decorator to list only elements, and optionally filter
+ * the element list using a CSS selector.
+ *
+ * @category Decorator
  */
-import { decorateProperty } from './base.js';
-import { queryAssignedElements } from './query-assigned-elements.js';
-export function queryAssignedNodes(slotOrOptions, flatten, selector) {
-    // Normalize the overloaded arguments.
-    let slot = slotOrOptions;
-    let assignedNodesOptions;
-    if (typeof slotOrOptions === 'object') {
-        slot = slotOrOptions.slot;
-        assignedNodesOptions = slotOrOptions;
-    }
-    else {
-        assignedNodesOptions = { flatten };
-    }
-    // For backwards compatibility, queryAssignedNodes with a selector behaves
-    // exactly like queryAssignedElements with a selector.
-    if (selector) {
-        return queryAssignedElements({
-            slot: slot,
-            flatten,
-            selector,
-        });
-    }
-    return decorateProperty({
-        descriptor: (_name) => ({
+export function queryAssignedNodes(options) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return ((obj, name) => {
+        const { slot } = options ?? {};
+        const slotSelector = `slot${slot ? `[name=${slot}]` : ':not([name])'}`;
+        return desc(obj, name, {
             get() {
-                var _a, _b;
-                const slotSelector = `slot${slot ? `[name=${slot}]` : ':not([name])'}`;
-                const slotEl = (_a = this.renderRoot) === null || _a === void 0 ? void 0 : _a.querySelector(slotSelector);
-                return (_b = slotEl === null || slotEl === void 0 ? void 0 : slotEl.assignedNodes(assignedNodesOptions)) !== null && _b !== void 0 ? _b : [];
+                const slotEl = this.renderRoot?.querySelector(slotSelector);
+                return (slotEl?.assignedNodes(options) ?? []);
             },
-            enumerable: true,
-            configurable: true,
-        }),
+        });
     });
 }
 //# sourceMappingURL=query-assigned-nodes.js.map

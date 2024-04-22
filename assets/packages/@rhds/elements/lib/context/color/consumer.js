@@ -1,7 +1,7 @@
 var _ColorContextConsumer_instances, _ColorContextConsumer_propertyName, _ColorContextConsumer_propertyValue_get, _ColorContextConsumer_propertyValue_set, _ColorContextConsumer_dispose, _ColorContextConsumer_override, _ColorContextConsumer_contextCallback;
 import { __classPrivateFieldGet, __classPrivateFieldSet } from "tslib";
-import { contextEvents, ColorContextController } from './controller.js';
-import { ContextEvent } from '../event.js';
+import { contextEvents, ColorContextController, } from './controller.js';
+import { ContextRequestEvent } from '../event.js';
 /**
  * A color context consumer receives sets it's context property based on the context provided
  * by the closest color context provider.
@@ -12,9 +12,9 @@ export class ColorContextConsumer extends ColorContextController {
         return __classPrivateFieldGet(this, _ColorContextConsumer_instances, "a", _ColorContextConsumer_propertyValue_get);
     }
     constructor(host, options) {
-        super(host, options);
-        this.options = options;
+        super(host);
         _ColorContextConsumer_instances.add(this);
+        this.options = options;
         _ColorContextConsumer_propertyName.set(this, void 0);
         _ColorContextConsumer_dispose.set(this, void 0);
         _ColorContextConsumer_override.set(this, null);
@@ -22,7 +22,8 @@ export class ColorContextConsumer extends ColorContextController {
     }
     /** When a consumer connects, it requests colour context from the closest provider. */
     async hostConnected() {
-        const event = new ContextEvent(this.context, e => __classPrivateFieldGet(this, _ColorContextConsumer_instances, "m", _ColorContextConsumer_contextCallback).call(this, e), true);
+        const { context } = ColorContextController;
+        const event = new ContextRequestEvent(context, e => __classPrivateFieldGet(this, _ColorContextConsumer_instances, "m", _ColorContextConsumer_contextCallback).call(this, e), true);
         __classPrivateFieldSet(this, _ColorContextConsumer_override, __classPrivateFieldGet(this, _ColorContextConsumer_instances, "a", _ColorContextConsumer_propertyValue_get), "f");
         contextEvents.set(this.host, event);
         await this.host.updateComplete;

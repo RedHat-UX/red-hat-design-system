@@ -8,8 +8,8 @@ async function getPlayer(iframe) {
                     onReady() {
                         player = players.get(iframe);
                         r(player);
-                    }
-                }
+                    },
+                },
             }));
         }
         else {

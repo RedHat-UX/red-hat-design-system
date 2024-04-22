@@ -13,7 +13,7 @@ import { LitElement } from 'lit';
  */
 export declare class RhBadge extends LitElement {
     static readonly version = "{{version}}";
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     /**
      * Denotes the state-of-affairs this badge represents
      */
@@ -30,7 +30,7 @@ export declare class RhBadge extends LitElement {
      * the numeric value exceeds the threshold value.
      */
     threshold?: number;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

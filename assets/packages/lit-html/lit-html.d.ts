@@ -208,7 +208,7 @@ export interface CompiledTemplateResult {
 }
 export interface CompiledTemplate extends Omit<Template, 'el'> {
     el?: HTMLTemplateElement;
-    h: TrustedHTML;
+    h: TemplateStringsArray;
 }
 /**
  * Interprets a template literal as an HTML template that can efficiently
@@ -348,7 +348,7 @@ declare type AttributeTemplatePart = {
     readonly ctor: typeof AttributePart;
     readonly strings: ReadonlyArray<string>;
 };
-declare type NodeTemplatePart = {
+declare type ChildTemplatePart = {
     readonly type: typeof CHILD_PART;
     readonly index: number;
 };
@@ -365,7 +365,7 @@ declare type CommentTemplatePart = {
  * is instantiated. When a template is instantiated Parts are created from
  * TemplateParts.
  */
-declare type TemplatePart = NodeTemplatePart | AttributeTemplatePart | ElementTemplatePart | CommentTemplatePart;
+declare type TemplatePart = ChildTemplatePart | AttributeTemplatePart | ElementTemplatePart | CommentTemplatePart;
 export declare type Part = ChildPart | AttributePart | PropertyPart | BooleanAttributePart | ElementPart | EventPart;
 export type { ChildPart };
 declare class ChildPart implements Disconnectable {

@@ -1,4 +1,5 @@
 import { LitElement, type PropertyValues } from 'lit';
+import '@rhds/elements/rh-surface/rh-surface.js';
 export declare class AlertCloseEvent extends Event {
     constructor();
 }
@@ -19,7 +20,7 @@ export declare class AlertCloseEvent extends Event {
 export declare class RhAlert extends LitElement {
     #private;
     static readonly version = "{{version}}";
-    static readonly styles: import("lit").CSSResult;
+    static readonly styles: CSSStyleSheet;
     private get icon();
     /**
      * Communicates the urgency of a message and is denoted by various styling configurations.
@@ -50,7 +51,7 @@ export declare class RhAlert extends LitElement {
      */
     dismissable: boolean;
     willUpdate(changed: PropertyValues<this>): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

@@ -1,7 +1,6 @@
 import { StyleController } from '@patternfly/pfe-core/controllers/style-controller.js';
-import { createContext, ContextEvent, } from '../event.js';
-import { css } from "lit";
-const CONTEXT_BASE_STYLES = css `:host(:is([color-palette^=dark])){--context:dark;--_context-text:var(--rh-color-text-primary-on-dark, #ffffff)}:host(:is([color-palette^=light],[color-palette=base])){--context:light;--_context-text:var(--rh-color-text-primary-on-light, #151515)}:host(:is([color-palette=lightest])){--_context-background-color:var(--rh-color-surface-lightest, #ffffff)}:host(:is([color-palette=lighter])){--_context-background-color:var(--rh-color-surface-lighter, #f2f2f2)}:host(:is([color-palette=light])){--_context-background-color:var(--rh-color-surface-light, #e0e0e0)}:host(:is([color-palette=base])){--_context-background-color:var(--rh-color-surface-lightest, #ffffff)}:host(:is([color-palette=dark])){--_context-background-color:var(--rh-color-surface-dark, #383838)}:host(:is([color-palette=darker])){--_context-background-color:var(--rh-color-surface-darker, #1f1f1f)}:host(:is([color-palette=darkest])){--_context-background-color:var(--rh-color-surface-darkest, #151515)}`;
+import { createContext } from '../event.js';
+import COLOR_CONTEXT_BASE_STYLES from "./context-color.css.js";
 /**
 * Maps from consumer host elements to already-fired request events
 * We hold these in memory in order to re-fire the events every time a new provider connects.
@@ -13,7 +12,7 @@ const CONTEXT_BASE_STYLES = css `:host(:is([color-palette^=dark])){--context:dar
 *          ```html
 *          <early-provider>
 *            <late-provider>
-*              <eager-consumer>
+*              <eager-consumer></eager-consumer>
 *            </late-provider>
 *          </early-provider>
 *          ```
@@ -29,16 +28,14 @@ export const contextEvents = new Map();
  * `ColorPalette` to a given `ColorTheme`, since those relationships are specified in CSS.
  */
 export class ColorContextController {
-    constructor(host, options) {
+    constructor(host) {
         this.host = host;
-        /** Prefix for colour context. Set this in Options to create a separate context */
-        this.prefix = 'rh-';
         /** The last-known color context on the host */
         this.last = null;
-        this.prefix = options?.prefix ?? 'rh';
-        this.context = createContext(`${this.prefix}-color-context`);
-        this.styleController = new StyleController(host, CONTEXT_BASE_STYLES);
+        this.styleController = new StyleController(host, COLOR_CONTEXT_BASE_STYLES);
         host.addController(this);
     }
 }
+/** The context object which acts as the key for providers and consumers */
+ColorContextController.context = createContext(Symbol('rh-color-context'));
 //# sourceMappingURL=controller.js.map

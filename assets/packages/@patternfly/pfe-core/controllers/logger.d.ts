@@ -1,4 +1,4 @@
-import type { ReactiveController, ReactiveElement } from 'lit';
+import type { ReactiveController, ReactiveControllerHost } from 'lit';
 export declare class Logger implements ReactiveController {
     private host;
     private static logDebug;
@@ -14,7 +14,19 @@ export declare class Logger implements ReactiveController {
     /**
      * A logging wrapper which checks the debugLog boolean and prints to the console if true.
      *
-     * @example Logger.log("Hello");
+     * @example Logger.debug("Hello");
+     */
+    static debug(...msgs: unknown[]): void;
+    /**
+     * A logging wrapper which checks the debugLog boolean and prints to the console if true.
+     *
+     * @example Logger.info("Hello");
+     */
+    static info(...msgs: unknown[]): void;
+    /**
+     * A logging wrapper which checks the debugLog boolean and prints to the console if true.
+     *
+       * @example Logger.log("Hello");
      */
     static log(...msgs: unknown[]): void;
     /**
@@ -29,6 +41,18 @@ export declare class Logger implements ReactiveController {
      * @example Logger.error("Hello");
      */
     static error(...msgs: unknown[]): void;
+    /**
+     * Debug logging that outputs the tag name as a prefix automatically
+     *
+     * @example this.logger.log("Hello");
+     */
+    debug(...msgs: unknown[]): void;
+    /**
+     * Info logging that outputs the tag name as a prefix automatically
+     *
+     * @example this.logger.log("Hello");
+     */
+    info(...msgs: unknown[]): void;
     /**
      * Local logging that outputs the tag name as a prefix automatically
      *
@@ -47,6 +71,6 @@ export declare class Logger implements ReactiveController {
      * @example this.logger.error("Hello");
      */
     error(...msgs: unknown[]): void;
-    constructor(host: ReactiveElement);
+    constructor(host: ReactiveControllerHost);
     hostConnected(): void;
 }

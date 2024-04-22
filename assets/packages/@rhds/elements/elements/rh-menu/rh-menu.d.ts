@@ -10,12 +10,21 @@ export declare class MenuToggleEvent extends Event {
  */
 export declare class RhMenu extends LitElement {
     #private;
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
+    static shadowRootOptions: {
+        delegatesFocus: boolean;
+        mode: ShadowRootMode;
+        slotAssignment?: SlotAssignmentMode | undefined;
+        customElements?: CustomElementRegistry | undefined;
+        registry?: CustomElementRegistry | undefined;
+    };
+    private _menuItems;
     private on?;
     get activeItem(): HTMLElement | undefined;
     connectedCallback(): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
     activateItem(item: HTMLElement): void;
+    focus(): void;
 }
 declare global {
     interface HTMLElementTagNameMap {

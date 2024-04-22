@@ -84,7 +84,7 @@ import { LitElement } from 'lit';
  */
 export declare class PfProgress extends LitElement {
     #private;
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     /** Represents the value of the progress bar */
     value: number;
     /** Description (title) above the progress bar */
@@ -102,7 +102,7 @@ export declare class PfProgress extends LitElement {
     /** Variant of the progress bar */
     variant?: 'success' | 'danger' | 'warning';
     willUpdate(changed: PropertyValues<this>): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

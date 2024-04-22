@@ -4,6 +4,7 @@ import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
+import {} from '../../context/color/provider.js';
 import { ContextChangeEvent } from '../rh-context-picker/rh-context-picker.js';
 import '@rhds/elements/rh-surface/rh-surface.js';
 import { css } from "lit";
@@ -47,11 +48,14 @@ let RhContextDemo = class RhContextDemo extends LitElement {
         __classPrivateFieldGet(this, _RhContextDemo_instances, "m", _RhContextDemo_setValue).call(this, state);
     }
 };
-_RhContextDemo_internals = new WeakMap(), _RhContextDemo_instances = new WeakSet(), _RhContextDemo_onChange = function _RhContextDemo_onChange(event) {
+_RhContextDemo_internals = new WeakMap();
+_RhContextDemo_instances = new WeakSet();
+_RhContextDemo_onChange = function _RhContextDemo_onChange(event) {
     if (event instanceof ContextChangeEvent) {
         __classPrivateFieldGet(this, _RhContextDemo_instances, "m", _RhContextDemo_setValue).call(this, event.colorPalette);
     }
-}, _RhContextDemo_setValue = function _RhContextDemo_setValue(value) {
+};
+_RhContextDemo_setValue = function _RhContextDemo_setValue(value) {
     if (value) {
         __classPrivateFieldGet(this, _RhContextDemo_internals, "f").setFormValue(value);
         this.value = value;

@@ -6,7 +6,7 @@ import '@patternfly/elements/pf-icon/pf-icon.js';
 export declare class PfProgressStepper extends LitElement {
     #private;
     protected static childTagName: string;
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     static formAssociated: boolean;
     /** Whether to use the vertical layout */
     vertical: boolean;
@@ -16,7 +16,7 @@ export declare class PfProgressStepper extends LitElement {
     compact: boolean;
     get value(): number;
     constructor();
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

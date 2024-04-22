@@ -20,12 +20,12 @@ export declare class RequestExpandEvent extends Event {
  */
 export declare class PfTr extends LitElement {
     #private;
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     expandable: boolean | 'compound';
     expanded: boolean | string;
     connectedCallback(): void;
     willUpdate(changed: PropertyValues<this>): void;
-    render(): (false | "" | import("lit-html").TemplateResult<1>)[];
+    render(): (false | "" | import("lit").TemplateResult<1>)[];
 }
 declare global {
     interface HTMLElementTagNameMap {

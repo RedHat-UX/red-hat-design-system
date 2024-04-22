@@ -3,8 +3,8 @@ import { LitElement, html } from 'lit';
 import { property } from 'lit/decorators/property.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { css } from "lit";
-const style = css `:host{display:none;overflow:hidden;will-change:height}:host([expanded]){display:block;position:relative}:host(.animating){display:block;transition:height .3s ease-in-out}:host([fixed]){overflow-y:auto}.body{position:relative;overflow:hidden}.body:after{content:"";position:absolute;top:0;bottom:0;left:0}`;
-class BaseAccordionPanel extends LitElement {
+const style = css `:host {\n  display: none;\n  overflow: hidden;\n  will-change: height;\n}\n\n:host([expanded]) {\n  display: block;\n  position: relative;\n}\n\n:host([fixed]) {\n  overflow-y: auto;\n}\n\n.body {\n  position: relative;\n  overflow: hidden;\n}\n\n.body:after {\n  content: "";\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n}\n`;
+export class BaseAccordionPanel extends LitElement {
     constructor() {
         super(...arguments);
         this.expanded = false;
@@ -30,5 +30,4 @@ BaseAccordionPanel.styles = [style];
 __decorate([
     property({ type: Boolean, reflect: true })
 ], BaseAccordionPanel.prototype, "expanded", void 0);
-export { BaseAccordionPanel };
 //# sourceMappingURL=BaseAccordionPanel.js.map

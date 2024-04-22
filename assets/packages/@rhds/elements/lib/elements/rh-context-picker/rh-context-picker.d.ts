@@ -9,7 +9,7 @@ export declare class ContextChangeEvent extends Event {
 export declare class RhContextPicker extends LitElement {
     #private;
     static formAssociated: boolean;
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     static readonly palettes: Map<ColorPalette, Color>;
     private static offsets;
     private static paletteNames;
@@ -21,7 +21,7 @@ export declare class RhContextPicker extends LitElement {
     private on?;
     allow: ColorPalette[];
     willUpdate(): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
     formStateRestoreCallback(state: string): void;
     firstUpdated(): void;
     sync(): void;

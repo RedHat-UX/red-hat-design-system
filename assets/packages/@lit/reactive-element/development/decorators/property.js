@@ -3,57 +3,100 @@
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-const standardProperty = (options, element) => {
-    // When decorating an accessor, pass it through and add property metadata.
-    // Note, the `hasOwnProperty` check in `createProperty` ensures we don't
-    // stomp over the user's accessor.
-    if (element.kind === 'method' &&
-        element.descriptor &&
-        !('value' in element.descriptor)) {
-        return {
-            ...element,
-            finisher(clazz) {
-                clazz.createProperty(element.key, options);
-            },
-        };
-    }
-    else {
-        // createProperty() takes care of defining the property, but we still
-        // must return some kind of descriptor, so return a descriptor for an
-        // unused prototype field. The finisher calls createProperty().
-        return {
-            kind: 'field',
-            key: Symbol(),
-            placement: 'own',
-            descriptor: {},
-            // store the original key so subsequent decorators have access to it.
-            originalKey: element.key,
-            // When @babel/plugin-proposal-decorators implements initializers,
-            // do this instead of the initializer below. See:
-            // https://github.com/babel/babel/issues/9260 extras: [
-            //   {
-            //     kind: 'initializer',
-            //     placement: 'own',
-            //     initializer: descriptor.initializer,
-            //   }
-            // ],
-            initializer() {
-                if (typeof element.initializer === 'function') {
-                    this[element.key] = element.initializer.call(this);
-                }
-            },
-            finisher(clazz) {
-                clazz.createProperty(element.key, options);
-            },
-        };
-    }
-};
+/*
+ * IMPORTANT: For compatibility with tsickle and the Closure JS compiler, all
+ * property decorators (but not class decorators) in this file that have
+ * an @ExportDecoratedItems annotation must be defined as a regular function,
+ * not an arrow function.
+ */
+import { defaultConverter, notEqual, } from '../reactive-element.js';
+const DEV_MODE = true;
+let issueWarning;
+if (DEV_MODE) {
+    // Ensure warnings are issued only 1x, even if multiple versions of Lit
+    // are loaded.
+    const issuedWarnings = (globalThis.litIssuedWarnings ??= new Set());
+    // Issue a warning, if we haven't already.
+    issueWarning = (code, warning) => {
+        warning += ` See https://lit.dev/msg/${code} for more information.`;
+        if (!issuedWarnings.has(warning)) {
+            console.warn(warning);
+            issuedWarnings.add(warning);
+        }
+    };
+}
 const legacyProperty = (options, proto, name) => {
-    proto.constructor.createProperty(name, options);
+    const hasOwnProperty = proto.hasOwnProperty(name);
+    proto.constructor.createProperty(name, hasOwnProperty ? { ...options, wrapped: true } : options);
+    // For accessors (which have a descriptor on the prototype) we need to
+    // return a descriptor, otherwise TypeScript overwrites the descriptor we
+    // define in createProperty() with the original descriptor. We don't do this
+    // for fields, which don't have a descriptor, because this could overwrite
+    // descriptor defined by other decorators.
+    return hasOwnProperty
+        ? Object.getOwnPropertyDescriptor(proto, name)
+        : undefined;
+};
+// This is duplicated from a similar variable in reactive-element.ts, but
+// actually makes sense to have this default defined with the decorator, so
+// that different decorators could have different defaults.
+const defaultPropertyDeclaration = {
+    attribute: true,
+    type: String,
+    converter: defaultConverter,
+    reflect: false,
+    hasChanged: notEqual,
 };
 /**
- * A property decorator which creates a reactive property that reflects a
- * corresponding attribute value. When a decorated property is set
+ * Wraps a class accessor or setter so that `requestUpdate()` is called with the
+ * property name and old value when the accessor is set.
+ */
+export const standardProperty = (options = defaultPropertyDeclaration, target, context) => {
+    const { kind, metadata } = context;
+    if (DEV_MODE && metadata == null) {
+        issueWarning('missing-class-metadata', `The class ${target} is missing decorator metadata. This ` +
+            `could mean that you're using a compiler that supports decorators ` +
+            `but doesn't support decorator metadata, such as TypeScript 5.1. ` +
+            `Please update your compiler.`);
+    }
+    // Store the property options
+    let properties = globalThis.litPropertyMetadata.get(metadata);
+    if (properties === undefined) {
+        globalThis.litPropertyMetadata.set(metadata, (properties = new Map()));
+    }
+    properties.set(context.name, options);
+    if (kind === 'accessor') {
+        // Standard decorators cannot dynamically modify the class, so we can't
+        // replace a field with accessors. The user must use the new `accessor`
+        // keyword instead.
+        const { name } = context;
+        return {
+            set(v) {
+                const oldValue = target.get.call(this);
+                target.set.call(this, v);
+                this.requestUpdate(name, oldValue, options);
+            },
+            init(v) {
+                if (v !== undefined) {
+                    this._$changeProperty(name, undefined, options);
+                }
+                return v;
+            },
+        };
+    }
+    else if (kind === 'setter') {
+        const { name } = context;
+        return function (value) {
+            const oldValue = this[name];
+            target.call(this, value);
+            this.requestUpdate(name, oldValue, options);
+        };
+    }
+    throw new Error(`Unsupported decorator location: ${kind}`);
+};
+/**
+ * A class field or accessor decorator which creates a reactive property that
+ * reflects a corresponding attribute value. When a decorated property is set
  * the element will update and render. A {@linkcode PropertyDeclaration} may
  * optionally be supplied to configure property features.
  *
@@ -84,9 +127,12 @@ const legacyProperty = (options, proto, name) => {
  * @ExportDecoratedItems
  */
 export function property(options) {
+    return (protoOrTarget, nameOrContext
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return (protoOrDescriptor, name) => name !== undefined
-        ? legacyProperty(options, protoOrDescriptor, name)
-        : standardProperty(options, protoOrDescriptor);
+    ) => {
+        return (typeof nameOrContext === 'object'
+            ? standardProperty(options, protoOrTarget, nameOrContext)
+            : legacyProperty(options, protoOrTarget, nameOrContext));
+    };
 }
 //# sourceMappingURL=property.js.map

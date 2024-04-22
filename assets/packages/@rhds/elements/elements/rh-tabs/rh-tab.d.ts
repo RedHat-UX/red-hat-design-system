@@ -31,13 +31,15 @@ export declare class RhTab extends LitElement {
         mode: ShadowRootMode;
         slotAssignment?: SlotAssignmentMode | undefined;
         customElements?: CustomElementRegistry | undefined;
+        registry?: CustomElementRegistry | undefined;
     };
     static readonly version = "{{version}}";
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     /** `active` should be observed, and true when the tab is selected */
     active: boolean;
     /** `disabled` should be observed, and true when the tab is disabled */
     disabled: boolean;
+    private ctx?;
     /**
      * Sets color theme based on parent context
      */
@@ -45,7 +47,7 @@ export declare class RhTab extends LitElement {
     private icons;
     private button;
     connectedCallback(): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
     updated(changed: PropertyValues<this>): void;
     focus(): void;
 }

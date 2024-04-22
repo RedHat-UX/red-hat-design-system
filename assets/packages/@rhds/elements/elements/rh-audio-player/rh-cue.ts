@@ -43,7 +43,9 @@ const SECONDS_RE = /(?:(?<hh>\d{2}):)?(?:(?<mm>\d{2}):)(?<ss>\d{2})(?:\.(?<ms>\d
  * gets seconds from a string formatted as `mm:ss.mss` or `hh:mm:ss.mss`
  */
 export const getSeconds = (str: TimeString): Seconds => {
-  if (!str) { return undefined; }
+  if (!str) {
+    return undefined;
+  }
   const match = str.match(SECONDS_RE);
   if (!match) {
     return undefined;
@@ -114,7 +116,7 @@ export class RhCue extends LitElement {
       this.id,
       this.startTime && `t${this.startTime}-`,
       this.endTime,
-      heading ? 'heading' : 'text'
+      heading ? 'heading' : 'text',
     ].filter(Boolean).join('');
     return html`
       <a id="${id}"

@@ -8,6 +8,9 @@ export interface PfeConfig {
     /** Set to false to disable automatically removing `unresolved` attr from body */
     autoReveal?: boolean;
 }
+export type RequireProps<T, Ps extends keyof T> = T & {
+    [P in Ps]-?: T[P];
+};
 declare const noPref: unique symbol;
 /**
  * A boolean value that indicates if the performance should be tracked.

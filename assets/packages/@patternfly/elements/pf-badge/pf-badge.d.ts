@@ -23,7 +23,7 @@ import { BaseBadge } from './BaseBadge.js';
  * @cssprop {<color>} --pf-c-badge--m-unread--BackgroundColor   {@default `#06c`}
  */
 export declare class PfBadge extends BaseBadge {
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     /**
      * Denotes the state-of-affairs this badge represents
      * Options include read and unread

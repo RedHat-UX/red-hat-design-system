@@ -1,20 +1,25 @@
 import { LitElement, type TemplateResult } from 'lit';
 /**
- * A button is clickable text or an icon that triggers an action on the page or in the background. Depending on the action, content, and hierarchy, a button can be used on its own or grouped with other buttons.
- *
+ * A button is clickable text or an icon that triggers an action on the page or in the background.
+ * Depending on the action, content, and hierarchy, a button can be used on its own or grouped with
+ * other buttons.
  * @summary Triggers actions on the page or in the background
- *
  * @csspart button - Internal button element
  * @csspart icon - Container for the icon slot
- *
  * @slot icon - Contains the button's icon or state indicator, e.g. a spinner.
  * @slot - Contains button text
  */
 export declare class RhButton extends LitElement {
     #private;
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     static readonly formAssociated = true;
-    static readonly shadowRootOptions: ShadowRootInit;
+    static readonly shadowRootOptions: {
+        delegatesFocus: boolean;
+        mode: ShadowRootMode;
+        slotAssignment?: SlotAssignmentMode | undefined;
+        customElements?: CustomElementRegistry | undefined;
+        registry?: CustomElementRegistry | undefined;
+    };
     /** Disables the button */
     disabled: boolean;
     type?: 'button' | 'submit' | 'reset';
@@ -26,6 +31,7 @@ export declare class RhButton extends LitElement {
     name?: string;
     /** Shorthand for the `icon` slot, the value is icon name */
     icon?: string;
+    private _button;
     /**
      * Changes the style of the button.
      * - Primary: Used for the most important call to action on a page. Try to
@@ -47,6 +53,7 @@ export declare class RhButton extends LitElement {
     willUpdate(): void;
     render(): TemplateResult<1>;
     protected formDisabledCallback(): Promise<void>;
+    focus(): void;
 }
 declare global {
     interface HTMLElementTagNameMap {

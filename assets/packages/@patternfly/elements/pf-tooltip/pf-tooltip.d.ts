@@ -90,7 +90,7 @@ import { type Placement } from '@patternfly/pfe-core/controllers/floating-dom-co
  */
 export declare class PfTooltip extends LitElement {
     #private;
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     /** The position of the tooltip, relative to the invoking content */
     position: Placement;
     /** Tooltip content. Overridden by the content slot */
@@ -111,7 +111,7 @@ export declare class PfTooltip extends LitElement {
      * them to the new trigger element.
      */
     willUpdate(changed: PropertyValues<this>): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
     show(): Promise<void>;
     hide(): Promise<void>;
 }

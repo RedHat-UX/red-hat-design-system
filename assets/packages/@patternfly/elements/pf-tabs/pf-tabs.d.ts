@@ -1,11 +1,9 @@
-import { BaseTabs } from './BaseTabs.js';
-import { TabExpandEvent } from './BaseTab.js';
+import { LitElement, type PropertyValues } from 'lit';
 import { PfTab } from './pf-tab.js';
-import { PfTabPanel } from './pf-tab-panel.js';
+import { TabExpandEvent } from './context.js';
+import '@patternfly/elements/pf-icon/pf-icon.js';
 /**
  * **Tabs** allow users to navigate between views within the same page or context.
- *
- * @attr {number} active-key - DOM Property: `activeKey` {@default `0`}
  *
  * @csspart container - outer container
  * @csspart tabs-container - tabs container
@@ -52,17 +50,56 @@ import { PfTabPanel } from './pf-tab-panel.js';
  *
  * @cssprop     {<color>} --pf-c-tabs__scroll-button--disabled--Color                 {@default `#d2d2d2`}
  */
-export declare class PfTabs extends BaseTabs {
-    static readonly styles: import("lit").CSSResult[];
+export declare class PfTabs extends LitElement {
+    #private;
+    static readonly styles: CSSStyleSheet[];
     protected static readonly scrollTimeoutDelay = 150;
-    static isTab(element: HTMLElement): element is PfTab;
-    static isPanel(element: HTMLElement): element is PfTabPanel;
-    static isExpandEvent(event: Event): event is TabExpandEvent;
+    static isExpandEvent(event: Event): event is TabExpandEvent<PfTab>;
+    /**
+     * Aria Label for the left scroll button
+     */
+    labelScrollLeft: string;
+    /**
+     * Aria Label for the right scroll button
+     */
+    labelScrollRight: string;
+    /**
+     * Box styling on tabs. Defaults to null
+     */
     box: 'light' | 'dark' | null;
+    /**
+     * Set to true to enable vertical tab styling.
+     */
     vertical: boolean;
+    /**
+     * Set to true to enable filled tab styling.
+     */
     fill: boolean;
+    /**
+     * Border bottom tab styling on tabs. To remove the bottom border, set this prop to false.
+     */
     borderBottom: 'true' | 'false';
-    protected get canShowScrollButtons(): boolean;
+    /**
+     * Set's the tabs to be manually activated. This means that the tabs will not automatically select
+     * unless a user clicks on them or uses the keyboard space or enter key to select them.  Roving
+     * tabindex will still update allowing user to keyboard navigate through the tabs with arrow keys.
+     */
+    manual: boolean;
+    /**
+     * The index of the active tab
+     */
+    activeIndex: number;
+    activeTab?: PfTab;
+    get tabs(): PfTab[];
+    private tabsContainer;
+    private ctx;
+    connectedCallback(): void;
+    protected getUpdateComplete(): Promise<boolean>;
+    willUpdate(changed: PropertyValues<this>): void;
+    protected updated(changed: PropertyValues<this>): void;
+    protected firstUpdated(): void;
+    render(): import("lit").TemplateResult<1>;
+    select(option: PfTab | number): void;
 }
 declare global {
     interface HTMLElementTagNameMap {

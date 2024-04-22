@@ -22,7 +22,7 @@ import { LitElement } from 'lit';
 export declare class RhPagination extends LitElement {
     #private;
     static readonly version = "{{version}}";
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     /**
      * Override `overflow` values set from HTML or JS.
      * `overflow` should ideally be private, but because
@@ -45,7 +45,7 @@ export declare class RhPagination extends LitElement {
     connectedCallback(): void;
     disconnectedCallback(): void;
     update(changed: PropertyValues<this>): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
     /** Navigate to the first page */
     first(): Promise<number>;
     /** Navigate to the previous page */

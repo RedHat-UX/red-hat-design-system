@@ -5,7 +5,7 @@ import { BaseAvatar } from './BaseAvatar.js';
  * @summary For displaying a user's avatar image
  */
 export declare class PfAvatar extends BaseAvatar {
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     /** Size of the Avatar */
     size: 'sm' | 'md' | 'lg' | 'xl';
     /** Whether to display a border around the avatar */

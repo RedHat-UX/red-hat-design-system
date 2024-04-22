@@ -51,7 +51,7 @@ import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 export declare class RhFooter extends LitElement {
     #private;
     static readonly version = "{{version}}";
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     /**
      * Isomorphic import.meta.url function
      * Requires a node.js dom shim that sets window.location
@@ -64,7 +64,7 @@ export declare class RhFooter extends LitElement {
      */
     protected screenSize: ScreenSizeController;
     connectedCallback(): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
     /**
      * Get any `<ul>`s that are in the designated link slots
      * and synchronously update each list and header if we need to.

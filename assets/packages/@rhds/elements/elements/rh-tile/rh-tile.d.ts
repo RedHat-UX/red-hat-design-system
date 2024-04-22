@@ -30,7 +30,7 @@ export declare class TileSelectEvent extends Event {
  */
 export declare class RhTile extends LitElement {
     #private;
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     static readonly formAssociated = true;
     shadowRoot: ShadowRoot;
     /**
@@ -104,9 +104,12 @@ export declare class RhTile extends LitElement {
     private disabledGroup;
     private radioGroup;
     constructor();
-    /** Update the internal accessible representation of the element's state */
+    /**
+     * Update the internal accessible representation of the element's state
+     * @param changed - the reactive properties which changed this cycle, and their old values
+     */
     willUpdate(changed: PropertyValues<this>): Promise<void>;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
     formDisabledCallback(): Promise<void>;
     formStateRestoreCallback(state: string, mode: string): Promise<void>;
     setCustomValidity(message: string): void;

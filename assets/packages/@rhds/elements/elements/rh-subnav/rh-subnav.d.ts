@@ -12,7 +12,7 @@ import '@patternfly/elements/pf-icon/pf-icon.js';
  */
 export declare class RhSubnav extends LitElement {
     #private;
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     /** Icon name to use for the scroll left button */
     protected static readonly scrollIconLeft: string;
     /** Icon name to use for the scroll right button */
@@ -35,7 +35,7 @@ export declare class RhSubnav extends LitElement {
     private linkList;
     connectedCallback(): void;
     disconnectedCallback(): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
     firstUpdated(): void;
 }
 declare global {

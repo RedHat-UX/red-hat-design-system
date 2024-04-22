@@ -71,10 +71,16 @@ let RhStat = class RhStat extends LitElement {
     `;
     }
 };
-_RhStat_screenSize = new WeakMap(), _RhStat_slots = new WeakMap(), _RhStat_mo = new WeakMap(), _RhStat_logger = new WeakMap(), _RhStat_instances = new WeakSet(), _RhStat_updateIcons = function _RhStat_updateIcons() {
+_RhStat_screenSize = new WeakMap();
+_RhStat_slots = new WeakMap();
+_RhStat_mo = new WeakMap();
+_RhStat_logger = new WeakMap();
+_RhStat_instances = new WeakSet();
+_RhStat_updateIcons = function _RhStat_updateIcons() {
     this.querySelector('pf-icon[slot="icon"]')
         ?.setAttribute?.('size', this.size === 'default' ? 'md' : 'lg');
-}, _RhStat_onMutation = function _RhStat_onMutation() {
+};
+_RhStat_onMutation = function _RhStat_onMutation() {
     if (!__classPrivateFieldGet(this, _RhStat_slots, "f").hasSlotted('stat')) {
         __classPrivateFieldGet(this, _RhStat_logger, "f").warn('Must contain stat content');
     }

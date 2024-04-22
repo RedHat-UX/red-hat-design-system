@@ -1,7 +1,7 @@
 import { LitElement, html } from 'lit';
 import { css } from "lit";
-const style = css `:host{position:relative;white-space:nowrap;text-align:center;display:inline-block}`;
-class BaseBadge extends LitElement {
+const style = css `:host {\n  position: relative;\n  white-space: nowrap;\n  text-align: center;\n  display: inline-block;\n}`;
+export class BaseBadge extends LitElement {
     render() {
         const { threshold, number, textContent } = this;
         const displayText = (threshold && number && (threshold < number)) ? `${threshold.toString()}+`
@@ -13,5 +13,4 @@ class BaseBadge extends LitElement {
     }
 }
 BaseBadge.styles = [style];
-export { BaseBadge };
 //# sourceMappingURL=BaseBadge.js.map

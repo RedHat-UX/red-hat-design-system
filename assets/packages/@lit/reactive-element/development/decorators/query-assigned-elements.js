@@ -3,24 +3,7 @@
  * Copyright 2021 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-var _a;
-/*
- * IMPORTANT: For compatibility with tsickle and the Closure JS compiler, all
- * property decorators (but not class decorators) in this file that have
- * an @ExportDecoratedItems annotation must be defined as a regular function,
- * not an arrow function.
- */
-import { decorateProperty } from './base.js';
-const NODE_MODE = false;
-const global = NODE_MODE ? globalThis : window;
-/**
- * A tiny module scoped polyfill for HTMLSlotElement.assignedElements.
- */
-const slotAssignedElements = ((_a = global.HTMLSlotElement) === null || _a === void 0 ? void 0 : _a.prototype.assignedElements) != null
-    ? (slot, opts) => slot.assignedElements(opts)
-    : (slot, opts) => slot
-        .assignedNodes(opts)
-        .filter((node) => node.nodeType === Node.ELEMENT_NODE);
+import { desc } from './base.js';
 /**
  * A property decorator that converts a class property into a getter that
  * returns the `assignedElements` of the given `slot`. Provides a declarative
@@ -51,22 +34,18 @@ const slotAssignedElements = ((_a = global.HTMLSlotElement) === null || _a === v
  * @category Decorator
  */
 export function queryAssignedElements(options) {
-    const { slot, selector } = options !== null && options !== void 0 ? options : {};
-    return decorateProperty({
-        descriptor: (_name) => ({
+    return ((obj, name) => {
+        const { slot, selector } = options ?? {};
+        const slotSelector = `slot${slot ? `[name=${slot}]` : ':not([name])'}`;
+        return desc(obj, name, {
             get() {
-                var _a;
-                const slotSelector = `slot${slot ? `[name=${slot}]` : ':not([name])'}`;
-                const slotEl = (_a = this.renderRoot) === null || _a === void 0 ? void 0 : _a.querySelector(slotSelector);
-                const elements = slotEl != null ? slotAssignedElements(slotEl, options) : [];
-                if (selector) {
-                    return elements.filter((node) => node.matches(selector));
-                }
-                return elements;
+                const slotEl = this.renderRoot?.querySelector(slotSelector);
+                const elements = slotEl?.assignedElements(options) ?? [];
+                return (selector === undefined
+                    ? elements
+                    : elements.filter((node) => node.matches(selector)));
             },
-            enumerable: true,
-            configurable: true,
-        }),
+        });
     });
 }
 //# sourceMappingURL=query-assigned-elements.js.map

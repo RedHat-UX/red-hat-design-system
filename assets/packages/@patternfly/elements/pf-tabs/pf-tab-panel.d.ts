@@ -1,4 +1,4 @@
-import { BaseTabPanel } from './BaseTabPanel.js';
+import { LitElement } from 'lit';
 /**
  * @slot - Tab panel content
  *
@@ -6,8 +6,12 @@ import { BaseTabPanel } from './BaseTabPanel.js';
  *
  * @csspart container - container for the panel content
  */
-export declare class PfTabPanel extends BaseTabPanel {
-    static readonly styles: import("lit").CSSResult[];
+export declare class PfTabPanel extends LitElement {
+    static readonly styles: CSSStyleSheet[];
+    private ctx?;
+    render(): import("lit").TemplateResult<1>;
+    connectedCallback(): void;
+    willUpdate(): void;
 }
 declare global {
     interface HTMLElementTagNameMap {

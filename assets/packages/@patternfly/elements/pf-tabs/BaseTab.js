@@ -6,7 +6,7 @@ import { query } from 'lit/decorators/query.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { ComposedEvent } from '@patternfly/pfe-core';
 import { css } from "lit";
-const style = css `:host{display:flex;flex:none}:host([vertical]) [part=text]{max-width:100%;overflow-wrap:break-word}[hidden]{display:none!important}slot[name=icon]{display:block}button{margin:0;font-family:inherit;font-size:100%;border:0;position:relative;display:flex;flex:1;text-decoration:none;cursor:pointer}button::after,button::before{position:absolute;top:0;right:0;bottom:0;left:0;content:"";border-style:solid;padding:0;margin:0;background-color:transparent}button::before{pointer-events:none}:host([fill]) button{flex-basis:100%;justify-content:center}:host(:disabled) button{pointer-events:none}:host([aria-disabled=true]) button{cursor:default}`;
+const style = css `:host {\n  display: flex;\n  flex: none;\n}\n\n:host([vertical]) [part="text"] {\n  max-width: 100%;\n  overflow-wrap: break-word;\n}\n\n[hidden] {\n  display: none !important;\n}\n\nslot[name="icon"] {\n  display: block;\n}\n\nbutton {\n  margin: 0;\n  font-family: inherit;\n  font-size: 100%;\n  border: 0;\n  position: relative;\n  display: flex;\n  flex: 1;\n  text-decoration: none;\n  cursor: pointer;\n}\n\nbutton::before,\nbutton::after {\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  content: "";\n  border-style: solid;\n  padding: 0;\n  margin: 0;\n  background-color: transparent;\n}\n\nbutton::before {\n  pointer-events: none;\n}\n\n:host([fill]) button {\n  flex-basis: 100%;\n  justify-content: center;\n}\n\n:host(:disabled) button {\n  pointer-events: none;\n}\n\n:host([aria-disabled="true"]) button {\n  cursor: default;\n}\n`;
 export class TabExpandEvent extends ComposedEvent {
     constructor(active, tab) {
         super('expand');
@@ -17,7 +17,7 @@ export class TabExpandEvent extends ComposedEvent {
 /**
  * @fires {TabExpandEvent} expand - when a tab is selected
  */
-class BaseTab extends LitElement {
+export class BaseTab extends LitElement {
     constructor() {
         super(...arguments);
         _BaseTab_instances.add(this);
@@ -77,5 +77,4 @@ __decorate([
 __decorate([
     query('button')
 ], BaseTab.prototype, "button", void 0);
-export { BaseTab };
 //# sourceMappingURL=BaseTab.js.map

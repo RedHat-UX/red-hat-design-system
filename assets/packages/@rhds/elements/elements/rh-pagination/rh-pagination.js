@@ -144,14 +144,29 @@ let RhPagination = class RhPagination extends LitElement {
         return __classPrivateFieldGet(this, _RhPagination_instances, "m", _RhPagination_go).call(this, page);
     }
 };
-_RhPagination_dir = new WeakMap(), _RhPagination_mo = new WeakMap(), _RhPagination_screen = new WeakMap(), _RhPagination_logger = new WeakMap(), _RhPagination_ol = new WeakMap(), _RhPagination_links = new WeakMap(), _RhPagination_firstLink = new WeakMap(), _RhPagination_lastLink = new WeakMap(), _RhPagination_nextLink = new WeakMap(), _RhPagination_prevLink = new WeakMap(), _RhPagination_currentLink = new WeakMap(), _RhPagination_currentIndex = new WeakMap(), _RhPagination_instances = new WeakSet(), _RhPagination_currentPage_get = function _RhPagination_currentPage_get() {
+_RhPagination_dir = new WeakMap();
+_RhPagination_mo = new WeakMap();
+_RhPagination_screen = new WeakMap();
+_RhPagination_logger = new WeakMap();
+_RhPagination_ol = new WeakMap();
+_RhPagination_links = new WeakMap();
+_RhPagination_firstLink = new WeakMap();
+_RhPagination_lastLink = new WeakMap();
+_RhPagination_nextLink = new WeakMap();
+_RhPagination_prevLink = new WeakMap();
+_RhPagination_currentLink = new WeakMap();
+_RhPagination_currentIndex = new WeakMap();
+_RhPagination_instances = new WeakSet();
+_RhPagination_currentPage_get = function _RhPagination_currentPage_get() {
     return __classPrivateFieldGet(this, _RhPagination_currentIndex, "f") + 1;
-}, _RhPagination_update = function _RhPagination_update() {
+};
+_RhPagination_update = function _RhPagination_update() {
     this.querySelector('[aria-current="page"]')?.removeAttribute('aria-current');
     __classPrivateFieldGet(this, _RhPagination_instances, "m", _RhPagination_updateLightDOMRefs).call(this);
     this.overflow = __classPrivateFieldGet(this, _RhPagination_instances, "m", _RhPagination_getOverflow).call(this);
     __classPrivateFieldGet(this, _RhPagination_instances, "m", _RhPagination_checkValidity).call(this);
-}, _RhPagination_getOverflow = function _RhPagination_getOverflow() {
+};
+_RhPagination_getOverflow = function _RhPagination_getOverflow() {
     const overflowAt = 9;
     const length = __classPrivateFieldGet(this, _RhPagination_links, "f")?.length ?? 0;
     if (length <= overflowAt) {
@@ -167,20 +182,24 @@ _RhPagination_dir = new WeakMap(), _RhPagination_mo = new WeakMap(), _RhPaginati
     else {
         return 'start';
     }
-}, _RhPagination_getCurrentLink = function _RhPagination_getCurrentLink() {
+};
+_RhPagination_getCurrentLink = function _RhPagination_getCurrentLink() {
     const ariaCurrent = this.querySelector('li a[aria-current="page"]');
     if (ariaCurrent) {
         return ariaCurrent;
     }
     for (const link of __classPrivateFieldGet(this, _RhPagination_links, "f") ?? []) {
         const url = new URL(link.href);
-        if (url.pathname === location.pathname && url.search === location.search && url.hash === location.hash) {
+        if (url.pathname === location.pathname
+            && url.search === location.search
+            && url.hash === location.hash) {
             return link;
         }
     }
     __classPrivateFieldGet(this, _RhPagination_logger, "f").warn('could not determine current link');
     return null;
-}, _RhPagination_updateLightDOMRefs = function _RhPagination_updateLightDOMRefs() {
+};
+_RhPagination_updateLightDOMRefs = function _RhPagination_updateLightDOMRefs() {
     // NB: order of operations! must set up state
     __classPrivateFieldSet(this, _RhPagination_ol, this.querySelector('ol'), "f");
     __classPrivateFieldSet(this, _RhPagination_links, this.querySelectorAll('li a'), "f");
@@ -202,7 +221,8 @@ _RhPagination_dir = new WeakMap(), _RhPagination_mo = new WeakMap(), _RhPaginati
             __classPrivateFieldGet(this, _RhPagination_currentLink, "f")?.setAttribute('aria-current', 'page');
         }
     }
-}, _RhPagination_checkValidity = function _RhPagination_checkValidity() {
+};
+_RhPagination_checkValidity = function _RhPagination_checkValidity() {
     let message = '';
     // Validate DOM
     if (!__classPrivateFieldGet(this, _RhPagination_ol, "f") || [...this.children].filter(x => !x.slot).length > 1) {
@@ -223,7 +243,8 @@ _RhPagination_dir = new WeakMap(), _RhPagination_mo = new WeakMap(), _RhPaginati
     }
     this.input?.reportValidity();
     return !message;
-}, _RhPagination_go = 
+};
+_RhPagination_go = 
 /**
  * 1. Normalize the element state
  * 2. validate and act on the input
@@ -241,7 +262,8 @@ async function _RhPagination_go(id) {
     this.requestUpdate();
     await this.updateComplete;
     return __classPrivateFieldGet(this, _RhPagination_currentIndex, "f");
-}, _RhPagination_onKeyup = function _RhPagination_onKeyup(event) {
+};
+_RhPagination_onKeyup = function _RhPagination_onKeyup(event) {
     if (!(event.target instanceof HTMLInputElement) || !__classPrivateFieldGet(this, _RhPagination_links, "f")) {
         return;
     }
@@ -250,7 +272,8 @@ async function _RhPagination_go(id) {
     if (parseInt(input.value) > parseInt(max)) {
         input.value = max;
     }
-}, _RhPagination_onChange = function _RhPagination_onChange() {
+};
+_RhPagination_onChange = function _RhPagination_onChange() {
     if (!this.input || !__classPrivateFieldGet(this, _RhPagination_links, "f")) {
         return;
     }

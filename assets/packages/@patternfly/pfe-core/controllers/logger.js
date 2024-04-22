@@ -1,7 +1,11 @@
-class Logger {
-    static { this.instances = new WeakMap(); }
+export class Logger {
     get prefix() {
-        return `[${this.host.localName}${this.host.id ? `#${this.host.id}` : ''}]`;
+        if (this.host instanceof HTMLElement) {
+            return `[${this.host.localName}${this.host.id ? `#${this.host.id}` : ''}]`;
+        }
+        else {
+            return `[${this.host.constructor.name}]`;
+        }
     }
     /**
      * A boolean value that indicates if the logging should be printed to the console; used for debugging.
@@ -23,14 +27,34 @@ class Logger {
             return Logger.logDebug;
         }
     }
+    /* eslint-disable no-console */
     /**
      * A logging wrapper which checks the debugLog boolean and prints to the console if true.
      *
-     * @example Logger.log("Hello");
+     * @example Logger.debug("Hello");
+     */
+    static debug(...msgs) {
+        if (Logger.debugLog()) {
+            console.debug(...msgs);
+        }
+    }
+    /**
+     * A logging wrapper which checks the debugLog boolean and prints to the console if true.
+     *
+     * @example Logger.info("Hello");
+     */
+    static info(...msgs) {
+        if (Logger.debugLog()) {
+            console.info(...msgs);
+        }
+    }
+    /**
+     * A logging wrapper which checks the debugLog boolean and prints to the console if true.
+     *
+       * @example Logger.log("Hello");
      */
     static log(...msgs) {
         if (Logger.debugLog()) {
-            // eslint-disable-next-line no-console
             console.log(...msgs);
         }
     }
@@ -40,7 +64,7 @@ class Logger {
      * @example Logger.warn("Hello");
      */
     static warn(...msgs) {
-        console.warn(...msgs); // eslint-disable-line no-console
+        console.warn(...msgs);
     }
     /**
      * A console error wrapper which formats your output with useful debugging information.
@@ -48,7 +72,24 @@ class Logger {
      * @example Logger.error("Hello");
      */
     static error(...msgs) {
-        console.error([...msgs].join(' ')); // eslint-disable-line no-console
+        console.error([...msgs].join(' '));
+    }
+    /* eslint-enable no-console */
+    /**
+     * Debug logging that outputs the tag name as a prefix automatically
+     *
+     * @example this.logger.log("Hello");
+     */
+    debug(...msgs) {
+        Logger.debug(this.prefix, ...msgs);
+    }
+    /**
+     * Info logging that outputs the tag name as a prefix automatically
+     *
+     * @example this.logger.log("Hello");
+     */
+    info(...msgs) {
+        Logger.info(this.prefix, ...msgs);
     }
     /**
      * Local logging that outputs the tag name as a prefix automatically
@@ -84,8 +125,8 @@ class Logger {
         Logger.instances.set(host, this);
     }
     hostConnected() {
-        this.log('connected');
+        this.debug('connected');
     }
 }
-export { Logger };
+Logger.instances = new WeakMap();
 //# sourceMappingURL=logger.js.map

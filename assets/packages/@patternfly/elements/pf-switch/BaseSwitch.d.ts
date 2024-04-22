@@ -4,13 +4,7 @@ import { LitElement } from 'lit';
  */
 export declare abstract class BaseSwitch extends LitElement {
     #private;
-    static readonly styles: import("lit").CSSResult[];
-    static readonly shadowRootOptions: {
-        delegatesFocus: boolean;
-        mode: ShadowRootMode;
-        slotAssignment?: SlotAssignmentMode | undefined;
-        customElements?: CustomElementRegistry | undefined;
-    };
+    static readonly styles: CSSStyleSheet[];
     static readonly formAssociated = true;
     shadowRoot: ShadowRoot;
     label?: string;
@@ -20,6 +14,6 @@ export declare abstract class BaseSwitch extends LitElement {
     get labels(): NodeListOf<HTMLLabelElement>;
     connectedCallback(): void;
     formDisabledCallback(disabled: boolean): void;
-    render(): import("lit-html").TemplateResult<1>;
-    updated(): void;
+    render(): import("lit").TemplateResult<1>;
+    willUpdate(): void;
 }

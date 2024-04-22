@@ -2,9 +2,9 @@ var _BaseTabPanel_internals;
 import { __classPrivateFieldGet } from "tslib";
 import { LitElement, html } from 'lit';
 import { css } from "lit";
-const style = css `:host{display:block}:host([hidden]){display:none}`;
+const style = css `:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n`;
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
-class BaseTabPanel extends LitElement {
+export class BaseTabPanel extends LitElement {
     constructor() {
         super(...arguments);
         _BaseTabPanel_internals.set(this, this.attachInternals());
@@ -33,5 +33,4 @@ class BaseTabPanel extends LitElement {
 }
 _BaseTabPanel_internals = new WeakMap();
 BaseTabPanel.styles = [style];
-export { BaseTabPanel };
 //# sourceMappingURL=BaseTabPanel.js.map

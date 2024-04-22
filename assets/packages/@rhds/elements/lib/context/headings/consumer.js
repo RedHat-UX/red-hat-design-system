@@ -1,7 +1,7 @@
 var _HeadingLevelContextConsumer_instances, _HeadingLevelContextConsumer_dispose, _HeadingLevelContextConsumer_contextCallback;
 import { __classPrivateFieldGet, __classPrivateFieldSet } from "tslib";
-import { ContextEvent, } from '../event.js';
-import { contextEvents, HeadingLevelController, } from './controller.js';
+import { ContextRequestEvent } from '../event.js';
+import { contextEvents, HeadingLevelController } from './controller.js';
 /**
  * Determines which heading level immediately precedes the host element,
  * and provides templates for shadow headings.
@@ -14,7 +14,8 @@ export class HeadingLevelContextConsumer extends HeadingLevelController {
     }
     /** When a consumer connects, it requests context from the closest provider. */
     hostConnected() {
-        const event = new ContextEvent(this.context, e => __classPrivateFieldGet(this, _HeadingLevelContextConsumer_instances, "m", _HeadingLevelContextConsumer_contextCallback).call(this, e), true);
+        const { context } = HeadingLevelController;
+        const event = new ContextRequestEvent(context, e => __classPrivateFieldGet(this, _HeadingLevelContextConsumer_instances, "m", _HeadingLevelContextConsumer_contextCallback).call(this, e), true);
         this.host.dispatchEvent(event);
         contextEvents.set(this.host, event);
     }

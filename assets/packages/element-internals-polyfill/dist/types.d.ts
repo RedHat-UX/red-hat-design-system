@@ -10,6 +10,7 @@ export interface IAom {
     ariaColIndexText: string;
     ariaColSpan: string;
     ariaCurrent: string;
+    ariaDescription: string;
     ariaDisabled: string;
     ariaExpanded: string;
     ariaHasPopup: string;
@@ -49,11 +50,11 @@ export interface IElementInternals extends IAom {
     labels: LabelsList;
     reportValidity: () => boolean;
     setFormValue: (value: string | FormData | null) => void;
-    setValidity: (validityChanges: Partial<globalThis.ValidityState>, validationMessage?: string, anchor?: HTMLElement) => void;
+    setValidity: (validityChanges: Partial<ValidityState>, validationMessage?: string, anchor?: HTMLElement) => void;
     shadowRoot: ShadowRoot | null;
     states: CustomStateSet;
     validationMessage: string;
-    validity: globalThis.ValidityState;
+    validity: ValidityState;
     willValidate: boolean;
 }
 export interface ICustomElement extends HTMLElement {

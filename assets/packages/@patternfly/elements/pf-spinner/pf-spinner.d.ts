@@ -19,8 +19,8 @@ import { BaseSpinner } from './BaseSpinner.js';
  * @cssprop {<string>} --pf-c-spinner__path--AnimationTimingFunction {@default `ease-in-out`}
  */
 export declare class PfSpinner extends BaseSpinner {
-    static readonly styles: import("lit").CSSResult[];
-    render(): import("lit-html").TemplateResult<1>;
+    static readonly styles: CSSStyleSheet[];
+    render(): import("lit").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

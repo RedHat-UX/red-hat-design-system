@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 var _a, _b;
-import { _$LH } from './lit-html.js';
+import { _$LH, } from './lit-html.js';
 const { _ChildPart: ChildPart } = _$LH;
 const ENABLE_SHADYDOM_NOPATCH = true;
 const wrap = ENABLE_SHADYDOM_NOPATCH &&
@@ -23,12 +23,19 @@ export const TemplateResultType = {
     SVG: 2,
 };
 /**
- * Tests if a value is a TemplateResult.
+ * Tests if a value is a TemplateResult or a CompiledTemplateResult.
  */
 export const isTemplateResult = (value, type) => type === undefined
     ? // This property needs to remain unminified.
         (value === null || value === void 0 ? void 0 : value['_$litType$']) !== undefined
     : (value === null || value === void 0 ? void 0 : value['_$litType$']) === type;
+/**
+ * Tests if a value is a CompiledTemplateResult.
+ */
+export const isCompiledTemplateResult = (value) => {
+    var _a;
+    return ((_a = value === null || value === void 0 ? void 0 : value['_$litType$']) === null || _a === void 0 ? void 0 : _a.h) != null;
+};
 /**
  * Tests if a value is a DirectiveResult.
  */

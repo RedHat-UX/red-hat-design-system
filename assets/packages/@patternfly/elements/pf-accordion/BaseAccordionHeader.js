@@ -7,7 +7,7 @@ import { ComposedEvent } from '@patternfly/pfe-core';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { css } from "lit";
-const style = css `#heading{font-size:100%;padding:0;margin:0}a,button{cursor:pointer}.toggle,.toggle:after,.toggle:before{padding:0;margin:0}.toggle{position:relative;display:flex;align-items:center;justify-content:space-between;width:100%;border:0}.toggle:after{content:"";position:absolute;bottom:0;left:0}span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}`;
+const style = css `#heading {\n  font-size: 100%;\n  padding: 0;\n  margin: 0;\n}\n\nbutton,\na {\n  cursor: pointer;\n}\n\n.toggle,\n.toggle:before,\n.toggle:after {\n  padding: 0;\n  margin: 0;\n}\n\n.toggle {\n  position: relative;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  width: 100%;\n  border: 0;\n}\n\n.toggle:after {\n  content: "";\n  position: absolute;\n  bottom: 0;\n  left: 0;\n}\n\nspan {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n`;
 const isPorHeader = (el) => el instanceof HTMLElement && !!el.tagName.match(/P|^H[1-6]/);
 export class AccordionHeaderChangeEvent extends ComposedEvent {
     constructor(expanded, toggle, accordion) {
@@ -17,7 +17,7 @@ export class AccordionHeaderChangeEvent extends ComposedEvent {
         this.accordion = accordion;
     }
 }
-class BaseAccordionHeader extends LitElement {
+export class BaseAccordionHeader extends LitElement {
     constructor() {
         super(...arguments);
         _BaseAccordionHeader_instances.add(this);
@@ -122,5 +122,4 @@ __decorate([
 __decorate([
     property({ reflect: true, attribute: 'heading-tag' })
 ], BaseAccordionHeader.prototype, "headingTag", void 0);
-export { BaseAccordionHeader };
 //# sourceMappingURL=BaseAccordionHeader.js.map

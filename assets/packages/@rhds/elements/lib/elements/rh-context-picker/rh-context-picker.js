@@ -1,10 +1,11 @@
-var _RhContextPicker_instances, _RhContextPicker_offset, _RhContextPicker_internals, _RhContextPicker_target, _RhContextPicker_onChange, _RhContextPicker_onInput, _RhContextPicker_setValue;
+var _RhContextPicker_instances, _a, _RhContextPicker_offset, _RhContextPicker_internals, _RhContextPicker_target, _RhContextPicker_onChange, _RhContextPicker_onInput, _RhContextPicker_setValue;
 var RhContextPicker_1;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { query } from 'lit/decorators/query.js';
+import {} from '../../context/color/provider.js';
 import { colorContextConsumer } from '../../context/color/consumer.js';
 import { ColorSurfaceDarkest as darkest, ColorSurfaceDarker as darker, ColorSurfaceDark as dark, ColorSurfaceLight as light, ColorSurfaceLighter as lighter, ColorSurfaceLightest as lightest, } from '@rhds/tokens/color.js';
 import { styleMap } from 'lit/directives/style-map.js';
@@ -18,7 +19,7 @@ export class ContextChangeEvent extends Event {
         this.colorPalette = colorPalette;
     }
 }
-let RhContextPicker = RhContextPicker_1 = class RhContextPicker extends LitElement {
+let RhContextPicker = RhContextPicker_1 = _a = class RhContextPicker extends LitElement {
     constructor() {
         super(...arguments);
         _RhContextPicker_instances.add(this);
@@ -33,7 +34,8 @@ let RhContextPicker = RhContextPicker_1 = class RhContextPicker extends LitEleme
     }
     render() {
         const { on = 'dark', value = 'darkest' } = this;
-        const derivedLabel = __classPrivateFieldGet(this, _RhContextPicker_internals, "f").ariaLabel ?? Array.from(__classPrivateFieldGet(this, _RhContextPicker_internals, "f").labels, x => x.textContent).join();
+        const derivedLabel = __classPrivateFieldGet(this, _RhContextPicker_internals, "f").ariaLabel
+            ?? Array.from(__classPrivateFieldGet(this, _RhContextPicker_internals, "f").labels, x => x.textContent).join();
         return html `
       <div id="container" class="${classMap({ [on]: true })}">
           <input id="context-range"
@@ -83,11 +85,16 @@ let RhContextPicker = RhContextPicker_1 = class RhContextPicker extends LitEleme
         }
     }
 };
-_RhContextPicker_offset = new WeakMap(), _RhContextPicker_internals = new WeakMap(), _RhContextPicker_target = new WeakMap(), _RhContextPicker_instances = new WeakSet(), _RhContextPicker_onChange = function _RhContextPicker_onChange(event) {
+_RhContextPicker_offset = new WeakMap();
+_RhContextPicker_internals = new WeakMap();
+_RhContextPicker_target = new WeakMap();
+_RhContextPicker_instances = new WeakSet();
+_RhContextPicker_onChange = function _RhContextPicker_onChange(event) {
     if (event instanceof ContextChangeEvent) {
         event.stopPropagation();
     }
-}, _RhContextPicker_onInput = function _RhContextPicker_onInput(event) {
+};
+_RhContextPicker_onInput = function _RhContextPicker_onInput(event) {
     if (event.target instanceof HTMLInputElement) {
         event.stopPropagation();
         const value = this.allow.at(+event.target.value);
@@ -95,7 +102,8 @@ _RhContextPicker_offset = new WeakMap(), _RhContextPicker_internals = new WeakMa
             __classPrivateFieldGet(this, _RhContextPicker_instances, "m", _RhContextPicker_setValue).call(this, value);
         }
     }
-}, _RhContextPicker_setValue = function _RhContextPicker_setValue(value) {
+};
+_RhContextPicker_setValue = function _RhContextPicker_setValue(value) {
     __classPrivateFieldGet(this, _RhContextPicker_internals, "f").setFormValue(value);
     if (value !== this.value && this.dispatchEvent(new ContextChangeEvent(value))) {
         this.value = value;
@@ -139,7 +147,7 @@ __decorate([
             fromAttribute(list) {
                 return list?.split(',')
                     ?.map(x => x.trim())
-                    ?.filter(x => RhContextPicker_1.paletteNames.includes(x)) ?? [];
+                    ?.filter(x => RhContextPicker.paletteNames.includes(x)) ?? [];
             },
             toAttribute(list) {
                 return list.join(',');

@@ -20,7 +20,7 @@ let RhTabPanel = class RhTabPanel extends LitElement {
     }
     connectedCallback() {
         super.connectedCallback();
-        this.id || (this.id = getRandomId('pf-tab-panel'));
+        this.id || (this.id = getRandomId('rh-tab-panel'));
         this.hidden ?? (this.hidden = true);
         __classPrivateFieldGet(this, _RhTabPanel_internals, "f").role = 'tabpanel';
         /*

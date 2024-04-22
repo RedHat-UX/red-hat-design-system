@@ -1,0 +1,24 @@
+export const config = {
+  "files": {
+    "demo/rhds-demo-base.css": {
+      "contentType": "text/css",
+      "content": "html,\nbody {\n  margin: 0;\n}\n\nhtml {\n  font-family: var(--rh-font-family-body-text, RedHatText, \"Red Hat Text\", \"Noto Sans Arabic\", \"Noto Sans Hebrew\", \"Noto Sans JP\", \"Noto Sans KR\", \"Noto Sans Malayalam\", \"Noto Sans SC\", \"Noto Sans TC\", \"Noto Sans Thai\", Helvetica, Arial, sans-serif, \"Red Hat Text\", \"Noto Sans Arabic\", \"Noto Sans Hebrew\", \"Noto Sans JP\", \"Noto Sans KR\", \"Noto Sans Malayalam\", \"Noto Sans SC\", \"Noto Sans TC\", \"Noto Sans Thai\", Overpass, Helvetica, Arial, sans-serif, \"Overpass\", Overpass, Helvetica, Arial, sans-serif);\n  line-height: var(--rh-line-height-body-text, 1.5);\n  font-size: 16px;\n}\n\n*,\n*:before,\n*:after {\n  box-sizing: border-box;\n}\n\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  font-weight: var(--rh-font-weight-heading-medium, 500);\n  font-family: var(--rh-font-family-heading, RedHatDisplay, \"Red Hat Display\", \"Noto Sans Arabic\", \"Noto Sans Hebrew\", \"Noto Sans JP\", \"Noto Sans KR\", \"Noto Sans Malayalam\", \"Noto Sans SC\", \"Noto Sans TC\", \"Noto Sans Thai\", Helvetica, Arial, sans-serif, \"Red Hat Display\", \"Noto Sans Arabic\", \"Noto Sans Hebrew\", \"Noto Sans JP\", \"Noto Sans KR\", \"Noto Sans Malayalam\", \"Noto Sans SC\", \"Noto Sans TC\", \"Noto Sans Thai\", Overpass, Helvetica, Arial, sans-serif, \"Overpass\", Overpass, Helvetica, Arial, sans-serif);\n}\n",
+      "hidden": true
+    },
+    "rh-skip-link-lightdom-shim.css": {
+      "content": "rh-skip-link:not(:defined) {\n  display: block;\n  position: relative;\n}\n\nrh-skip-link:not(:defined) > a {\n  background-color: var(--rh-color-surface-lightest, #ffffff);\n  border-block-start-width: 0;\n  border-block-end:\n    var(--rh-border-width-sm, 1px)\n    solid\n    var(--rh-color-border-interactive-on-light, #0066cc);\n  border-inline-start:\n    var(--rh-border-width-sm, 1px)\n    solid\n    var(--rh-color-border-interactive-on-light, #0066cc);\n  border-inline-end:\n    var(--rh-border-width-sm, 1px)\n    solid\n    var(--rh-color-border-interactive-on-light, #0066cc);\n  border-end-start-radius: var(--rh-border-radius-default, 3px);\n  border-end-end-radius: var(--rh-border-radius-default, 3px);\n  clip: rect(0, 0, 0, 0);\n  color: var(--rh-color-interactive-blue-darker, #0066cc);\n  font-family: var(--rh-font-family-heading, RedHatDisplay, \"Red Hat Display\", \"Noto Sans Arabic\", \"Noto Sans Hebrew\", \"Noto Sans JP\", \"Noto Sans KR\", \"Noto Sans Malayalam\", \"Noto Sans SC\", \"Noto Sans TC\", \"Noto Sans Thai\", Helvetica, Arial, sans-serif);\n  font-size: var(--rh-font-size-body-text-md, 1rem);\n  font-weight: var(--rh-font-weight-heading-bold, 700);\n  height: 1px;\n  left: 50%;\n  margin: -1px;\n  outline: 0;\n  overflow: hidden;\n  padding: 0;\n  position: absolute;\n  text-decoration: none;\n  top: -40px;\n  transform: translateX(-50%);\n  transition: top 0.05s ease-in;\n  white-space: nowrap;\n  width: 1px;\n}\n\nrh-skip-link:not(:defined) > a:is(:active, :focus) {\n  border-width: var(--rh-border-width-md, 2px);\n  clip: auto;\n  height: auto;\n  margin: 0;\n  overflow: visible;\n  padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);\n  top: 0;\n  white-space: inherit;\n  width: auto;\n}\n\nrh-skip-link:not(:defined) > a:is(:active, :hover) {\n  text-decoration: underline;\n}\n\n@media (prefers-reduced-motion: reduce) {\n  rh-skip-link:not(:defined) > a {\n    transition-duration: 0.001ms;\n  }\n}\n",
+      "hidden": true
+    },
+    "demo/rh-skip-link-index-inline-script-0.js": {
+      "contentType": "application/javascript",
+      "content": "\n  import '@rhds/elements/rh-skip-link/rh-skip-link.js';\n",
+      "hidden": true
+    },
+    "demo/index.html": {
+      "contentType": "text/html",
+      "selected": true,
+      "content": "<rh-skip-link>\n  <a href=\"#main-content\">Skip to main content</a>\n</rh-skip-link>\n\n<h1>Skip link</h1>\n<p>To show the skip link, click the white background and press your tab key.</p>\n\n<link rel=\"stylesheet\" href=\"../rh-skip-link-lightdom-shim.css\">\n<script type=\"module\">\n  import '@rhds/elements/rh-skip-link/rh-skip-link.js';\n</script>\n<!--playground-fold--><link rel=\"stylesheet\" href=\"https://static.redhat.com/libs/redhat/redhat-font/4/webfonts/red-hat-font.min.css\"><link rel=\"stylesheet\" href=\"https://static.redhat.com/libs/redhat/redhat-theme/6/advanced-theme.css\"><link rel=\"stylesheet\" href=\"rhds-demo-base.css\">\n\n<!--playground-fold-end--><!--playground-hide--><script type=\"module\" src=\"./rh-skip-link-index-inline-script-0.js\"></script>\n\n<!--playground-hide-end-->",
+      "label": "Skip Link"
+    }
+  }
+};

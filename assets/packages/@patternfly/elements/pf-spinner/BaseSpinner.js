@@ -1,8 +1,10 @@
 import { __decorate } from "tslib";
+// will remove file in 2627
+/* eslint-disable lit-a11y/accessible-name */
 import { LitElement, html } from 'lit';
 import { property } from 'lit/decorators/property.js';
 import { css } from "lit";
-const styles = css `:host{display:inline-block;width:min-content;min-height:0;aspect-ratio:1/1}svg{overflow:hidden}circle{width:100%;height:100%;transform-origin:50% 50%;stroke-linecap:round;stroke-dasharray:283;stroke-dashoffset:280}`;
+const styles = css `:host {\n  display: inline-block;\n  width: min-content;\n  min-height: 0;\n  aspect-ratio: 1 / 1;\n}\n\nsvg {\n  overflow: hidden;\n}\n\ncircle {\n  width: 100%;\n  height: 100%;\n  transform-origin: 50% 50%;\n  stroke-linecap: round;\n  stroke-dasharray: 283;\n  stroke-dashoffset: 280;\n}\n\n`;
 /**
  * Base spinner class
  *
@@ -21,7 +23,7 @@ const styles = css `:host{display:inline-block;width:min-content;min-height:0;as
  * @cssprop {<number>} --pf-c-spinner__path--StrokeWidth             {@default `10`}
  * @cssprop {<string>} --pf-c-spinner__path--AnimationTimingFunction {@default `ease-in-out`}
  */
-class BaseSpinner extends LitElement {
+export class BaseSpinner extends LitElement {
     constructor() {
         super(...arguments);
         /** Preset sizes for the spinner */
@@ -42,5 +44,4 @@ __decorate([
 __decorate([
     property({ reflect: true })
 ], BaseSpinner.prototype, "diameter", void 0);
-export { BaseSpinner };
 //# sourceMappingURL=BaseSpinner.js.map

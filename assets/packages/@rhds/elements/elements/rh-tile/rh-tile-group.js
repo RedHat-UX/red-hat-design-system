@@ -45,7 +45,7 @@ let RhTileGroup = class RhTileGroup extends LitElement {
         _RhTileGroup_tiles.set(this, []);
         _RhTileGroup_initTiles.set(this, false);
         _RhTileGroup_tabindex.set(this, new RovingTabindexController(this));
-        _RhTileGroup_internals.set(this, new InternalsController(this));
+        _RhTileGroup_internals.set(this, InternalsController.of(this));
         this.addEventListener('slotchange', __classPrivateFieldGet(this, _RhTileGroup_instances, "m", _RhTileGroup_onSlotchange));
         this.addEventListener('select', __classPrivateFieldGet(this, _RhTileGroup_instances, "m", _RhTileGroup_onSelect));
     }
@@ -126,7 +126,12 @@ let RhTileGroup = class RhTileGroup extends LitElement {
         }
     }
 };
-_RhTileGroup_tiles = new WeakMap(), _RhTileGroup_initTiles = new WeakMap(), _RhTileGroup_tabindex = new WeakMap(), _RhTileGroup_internals = new WeakMap(), _RhTileGroup_instances = new WeakSet(), _RhTileGroup_selectTile = function _RhTileGroup_selectTile(tileToSelect, force) {
+_RhTileGroup_tiles = new WeakMap();
+_RhTileGroup_initTiles = new WeakMap();
+_RhTileGroup_tabindex = new WeakMap();
+_RhTileGroup_internals = new WeakMap();
+_RhTileGroup_instances = new WeakSet();
+_RhTileGroup_selectTile = function _RhTileGroup_selectTile(tileToSelect, force) {
     if (this.radio) {
         for (const tile of __classPrivateFieldGet(this, _RhTileGroup_tiles, "f")) {
             tile.checked = tile === tileToSelect;
@@ -135,7 +140,8 @@ _RhTileGroup_tiles = new WeakMap(), _RhTileGroup_initTiles = new WeakMap(), _RhT
     else {
         tileToSelect.checked = force ?? !tileToSelect.checked;
     }
-}, _RhTileGroup_onSelect = function _RhTileGroup_onSelect(event) {
+};
+_RhTileGroup_onSelect = function _RhTileGroup_onSelect(event) {
     if (event instanceof TileSelectEvent) {
         if (this.disabled) {
             event.preventDefault();
@@ -145,7 +151,8 @@ _RhTileGroup_tiles = new WeakMap(), _RhTileGroup_initTiles = new WeakMap(), _RhT
             __classPrivateFieldGet(this, _RhTileGroup_instances, "m", _RhTileGroup_selectTile).call(this, event.target, event.force);
         }
     }
-}, _RhTileGroup_onSlotchange = function _RhTileGroup_onSlotchange() {
+};
+_RhTileGroup_onSlotchange = function _RhTileGroup_onSlotchange() {
     this.updateItems();
 };
 RhTileGroup.styles = [styles];

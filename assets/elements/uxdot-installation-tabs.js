@@ -12,7 +12,9 @@ export class InstallationTabs extends RhTabs {
 
   static is = 'uxdot-installation-tabs';
 
-  static { customElements.define(this.is, this); }
+  static {
+    customElements.define(this.is, this);
+  }
 
   #onExpand(event) {
     // TODO: when tabs is decoupled from PFE, update the event type here
@@ -35,9 +37,9 @@ export class InstallationTabs extends RhTabs {
     ));
     if (InstallationTabs.stored !== null) {
       const index = parseInt(InstallationTabs.stored);
-      if (!Number.isNaN(index) &&
-          index !== this.activeIndex &&
-          this.panels[index]) {
+      if (!Number.isNaN(index)
+          && index !== this.activeIndex
+          && this.panels[index]) {
         this.activeIndex = index;
       }
     }
@@ -55,5 +57,7 @@ export class InstallationTabPanel extends RhTabPanel {
     }
   `];
 
-  static { customElements.define(this.is, this); }
+  static {
+    customElements.define(this.is, this);
+  }
 }

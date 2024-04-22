@@ -1,7 +1,7 @@
-var _HeadingLevelContextProvider_instances, _HeadingLevelContextProvider_callbacks, _HeadingLevelContextProvider_computeLevelFromChildren, _HeadingLevelContextProvider_isHeadingContextEvent, _HeadingLevelContextProvider_onChildContextEvent;
+var _HeadingLevelContextProvider_instances, _HeadingLevelContextProvider_callbacks, _HeadingLevelContextProvider_computeLevelFromChildren, _HeadingLevelContextProvider_isHeadingContextRequestEvent, _HeadingLevelContextProvider_onChildContextRequestEvent;
 import { __classPrivateFieldGet } from "tslib";
 import { contextEvents, HeadingLevelController } from './controller.js';
-import { ContextEvent, } from '../event.js';
+import { ContextRequestEvent, } from '../event.js';
 const SELECTORS = `H1,H2,H3,H4,H5,H6`;
 /**
  * **START**
@@ -30,13 +30,13 @@ export class HeadingLevelContextProvider extends HeadingLevelController {
         _HeadingLevelContextProvider_callbacks.set(this, new Set());
     }
     hostConnected() {
-        this.host.addEventListener('context-request', e => __classPrivateFieldGet(this, _HeadingLevelContextProvider_instances, "m", _HeadingLevelContextProvider_onChildContextEvent).call(this, e));
+        this.host.addEventListener('context-request', e => __classPrivateFieldGet(this, _HeadingLevelContextProvider_instances, "m", _HeadingLevelContextProvider_onChildContextRequestEvent).call(this, e));
         for (const [host, fired] of contextEvents) {
             host.dispatchEvent(fired);
         }
         this.level =
-            this.host.getAttribute(this.options?.attribute ?? '') ??
-                __classPrivateFieldGet(this, _HeadingLevelContextProvider_instances, "m", _HeadingLevelContextProvider_computeLevelFromChildren).call(this);
+            this.host.getAttribute(this.options?.attribute ?? '')
+                ?? __classPrivateFieldGet(this, _HeadingLevelContextProvider_instances, "m", _HeadingLevelContextProvider_computeLevelFromChildren).call(this);
     }
 }
 _HeadingLevelContextProvider_callbacks = new WeakMap(), _HeadingLevelContextProvider_instances = new WeakSet(), _HeadingLevelContextProvider_computeLevelFromChildren = function _HeadingLevelContextProvider_computeLevelFromChildren() {
@@ -54,18 +54,17 @@ _HeadingLevelContextProvider_callbacks = new WeakMap(), _HeadingLevelContextProv
             return getLevel(lastHeadingBeforeHost);
         }
     }
-}, _HeadingLevelContextProvider_isHeadingContextEvent = function _HeadingLevelContextProvider_isHeadingContextEvent(event) {
-    return (event.target !== this.host &&
-        event.context.name === this.context.name);
-}, _HeadingLevelContextProvider_onChildContextEvent = async function _HeadingLevelContextProvider_onChildContextEvent(event) {
-    // only handle ContextEvents relevant to colour context
-    if (__classPrivateFieldGet(this, _HeadingLevelContextProvider_instances, "m", _HeadingLevelContextProvider_isHeadingContextEvent).call(this, event)) {
+}, _HeadingLevelContextProvider_isHeadingContextRequestEvent = function _HeadingLevelContextProvider_isHeadingContextRequestEvent(event) {
+    return event.target !== this.host && event.context === HeadingLevelController.context;
+}, _HeadingLevelContextProvider_onChildContextRequestEvent = async function _HeadingLevelContextProvider_onChildContextRequestEvent(event) {
+    // only handle ContextRequestEvents relevant to colour context
+    if (__classPrivateFieldGet(this, _HeadingLevelContextProvider_instances, "m", _HeadingLevelContextProvider_isHeadingContextRequestEvent).call(this, event)) {
         // claim the context-request event for ourselves (required by context protocol)
         event.stopPropagation();
         // Run the callback to initialize the child's value
         event.callback(this.level);
         // Cache the callback for future updates, if requested
-        if (event.multiple) {
+        if (event.subscribe) {
             __classPrivateFieldGet(this, _HeadingLevelContextProvider_callbacks, "f").add(event.callback);
         }
     }

@@ -12,7 +12,7 @@ import { LitElement } from 'lit';
 export declare class PfProgressStep extends LitElement {
     #private;
     protected static parentTagName: string;
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     /** Optional extended description of the step */
     description?: string;
     /** Step Icon */
@@ -23,7 +23,7 @@ export declare class PfProgressStep extends LitElement {
     variant?: 'pending' | 'info' | 'success' | 'warning' | 'danger';
     /** Indicates if this item is the current active item. */
     current: boolean;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
     updated(changed: PropertyValues<this>): void;
 }
 declare global {

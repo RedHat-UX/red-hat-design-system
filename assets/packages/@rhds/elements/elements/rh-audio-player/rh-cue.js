@@ -83,21 +83,25 @@ let RhCue = class RhCue extends LitElement {
     `)}`;
     }
 };
-_RhCue_headings = new WeakMap(), _RhCue_instances = new WeakSet(), _RhCue_hasVoice_get = function _RhCue_hasVoice_get() {
+_RhCue_headings = new WeakMap();
+_RhCue_instances = new WeakSet();
+_RhCue_hasVoice_get = function _RhCue_hasVoice_get() {
     return !!this.voice && this.voice.trim()?.length > 0;
-}, _RhCue_linkTemplate = function _RhCue_linkTemplate(content = nothing, heading = false) {
+};
+_RhCue_linkTemplate = function _RhCue_linkTemplate(content = nothing, heading = false) {
     const id = [
         this.id,
         this.startTime && `t${this.startTime}-`,
         this.endTime,
-        heading ? 'heading' : 'text'
+        heading ? 'heading' : 'text',
     ].filter(Boolean).join('');
     return html `
       <a id="${id}"
          href="#${id}"
          ?active="${this.active && !heading}"
          @click=${__classPrivateFieldGet(this, _RhCue_instances, "m", _RhCue_onClick)}>${content}</a>`;
-}, _RhCue_onClick = function _RhCue_onClick() {
+};
+_RhCue_onClick = function _RhCue_onClick() {
     this.dispatchEvent(new Event('cueseek', { bubbles: true }));
 };
 RhCue.styles = [styles];

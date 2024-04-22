@@ -50,7 +50,8 @@ let RhFooterLinks = class RhFooterLinks extends LitElement {
     `;
     }
 };
-_RhFooterLinks_logger = new WeakMap(), _RhFooterLinks_mo = new WeakMap();
+_RhFooterLinks_logger = new WeakMap();
+_RhFooterLinks_mo = new WeakMap();
 RhFooterLinks.styles = style;
 __decorate([
     property({

@@ -8,26 +8,23 @@ export declare class SecondaryNavDropdownExpandEvent extends ComposedEvent {
 /**
  * Upgrades a top level nav link to include dropdown functionality
  * @summary Upgrades a top level nav link to include dropdown functionality
- *
  * @slot link   - Link for dropdown, expects `<a>` element
  * @slot menu   - Menu for dropdown, expects `<rh-navigation-secondary-menu>` element
- *
  * @fires { SecondaryNavDropdownExpandEvent } change - Fires when a dropdown is clicked
- *
-**/
+ */
 export declare class RhNavigationSecondaryDropdown extends LitElement {
     #private;
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     _container?: HTMLElement;
     expanded: boolean;
     connectedCallback(): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
     /**
      * When expanded property changes, check the new value, if true
      * run the `#open()` method, if false run the `#close()` method.
      * @param oldVal {string} - Boolean value in string form
      * @param newVal {string} - Boolean value in string form
-     * @returns {void}
+     * @returns
      */
     protected _expandedChanged(oldVal?: 'false' | 'true', newVal?: 'false' | 'true'): void;
     /**
@@ -37,6 +34,7 @@ export declare class RhNavigationSecondaryDropdown extends LitElement {
      */
     private _clickHandler;
 }
+/** @deprecated use rh-navigation-secondary-dropdown */
 declare class RhSecondaryNavDropdown extends RhNavigationSecondaryDropdown {
     #private;
     constructor();

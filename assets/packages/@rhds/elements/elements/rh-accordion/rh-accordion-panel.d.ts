@@ -8,12 +8,12 @@ import { type ColorPalette } from '../../lib/context/color/provider.js';
  */
 export declare class RhAccordionPanel extends LitElement {
     static readonly version = "{{version}}";
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     expanded: boolean;
     colorPalette?: ColorPalette;
     private on?;
     connectedCallback(): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

@@ -1,51 +1,57 @@
-var _BaseSwitch_instances, _BaseSwitch_internals, _BaseSwitch_initiallyDisabled, _BaseSwitch_onClick, _BaseSwitch_onKeyup, _BaseSwitch_toggle, _BaseSwitch_updateLabels;
+var _BaseSwitch_instances, _BaseSwitch_internals, _BaseSwitch_onClick, _BaseSwitch_onKeyup, _BaseSwitch_onKeyDown, _BaseSwitch_toggle, _BaseSwitch_updateLabels;
 import { __classPrivateFieldGet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { property } from 'lit/decorators/property.js';
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { css } from "lit";
-const styles = css `:host{display:inline-block}svg{fill:currentcolor}[hidden]{display:none!important}:host(:disabled){pointer-events:none;cursor:not-allowed}:host(:disabled) #container{cursor:not-allowed}:host(:disabled:focus-within) #container{outline:0}#container{position:relative;display:inline-flex;align-items:center}#container::before{position:absolute;display:block;content:""}`;
+const styles = css `:host {\n  display: inline-block;\n}\n\nsvg {\n  fill: currentcolor;\n}\n\n[hidden] {\n  display: none !important;\n}\n\n:host(:disabled) {\n  pointer-events: none;\n  cursor: not-allowed;\n}\n\n:host(:disabled) #container {\n  cursor: not-allowed;\n}\n\n:host(:disabled:is(:focus,:focus-within)) {\n  outline: none;\n}\n\n#container {\n  position: relative;\n  display: inline-flex;\n  align-items: center;\n}\n\n#container::before {\n  position: absolute;\n  display: block;\n  content: "";\n}\n`;
 /**
  * Switch
  */
-class BaseSwitch extends LitElement {
+export class BaseSwitch extends LitElement {
     constructor() {
         super(...arguments);
         _BaseSwitch_instances.add(this);
-        _BaseSwitch_internals.set(this, this.attachInternals());
-        _BaseSwitch_initiallyDisabled.set(this, this.hasAttribute('disabled'));
+        _BaseSwitch_internals.set(this, InternalsController.of(this, { role: 'switch' }));
         this.showCheckIcon = false;
         this.checked = false;
-        this.disabled = __classPrivateFieldGet(this, _BaseSwitch_initiallyDisabled, "f");
+        this.disabled = false;
     }
     get labels() {
         return __classPrivateFieldGet(this, _BaseSwitch_internals, "f").labels;
     }
     connectedCallback() {
         super.connectedCallback();
-        this.setAttribute('role', 'checkbox');
+        this.tabIndex = 0;
         this.addEventListener('click', __classPrivateFieldGet(this, _BaseSwitch_instances, "m", _BaseSwitch_onClick));
         this.addEventListener('keyup', __classPrivateFieldGet(this, _BaseSwitch_instances, "m", _BaseSwitch_onKeyup));
+        this.addEventListener('keydown', __classPrivateFieldGet(this, _BaseSwitch_instances, "m", _BaseSwitch_onKeyDown));
         __classPrivateFieldGet(this, _BaseSwitch_instances, "m", _BaseSwitch_updateLabels).call(this);
     }
     formDisabledCallback(disabled) {
         this.disabled = disabled;
-        this.requestUpdate();
     }
     render() {
         return html `
-      <div id="container" tabindex="0">
-        <svg id="toggle" fill="currentColor" height="1em" width="1em" viewBox="0 0 512 512">
-          <path ?hidden=${!this.showCheckIcon} d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z" />
+      <div id="container">
+        <svg id="toggle"
+             role="presentation"
+             fill="currentColor"
+             height="1em"
+             width="1em"
+             viewBox="0 0 512 512"
+             ?hidden=${!this.showCheckIcon}>
+          <path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z" />
         </svg>
       </div>
     `;
     }
-    updated() {
-        __classPrivateFieldGet(this, _BaseSwitch_internals, "f").ariaChecked = String(this.checked);
-        __classPrivateFieldGet(this, _BaseSwitch_internals, "f").ariaDisabled = String(this.disabled);
+    willUpdate() {
+        __classPrivateFieldGet(this, _BaseSwitch_internals, "f").ariaChecked = String(!!this.checked);
+        __classPrivateFieldGet(this, _BaseSwitch_internals, "f").ariaDisabled = String(!!this.disabled);
     }
 }
-_BaseSwitch_internals = new WeakMap(), _BaseSwitch_initiallyDisabled = new WeakMap(), _BaseSwitch_instances = new WeakSet(), _BaseSwitch_onClick = function _BaseSwitch_onClick(event) {
+_BaseSwitch_internals = new WeakMap(), _BaseSwitch_instances = new WeakSet(), _BaseSwitch_onClick = function _BaseSwitch_onClick(event) {
     // @ts-expect-error: firefox workarounds for double-firing in the case of switch nested in label
     const { originalTarget, explicitOriginalTarget } = event;
     if (explicitOriginalTarget) {
@@ -58,11 +64,15 @@ _BaseSwitch_internals = new WeakMap(), _BaseSwitch_initiallyDisabled = new WeakM
     }
     __classPrivateFieldGet(this, _BaseSwitch_instances, "m", _BaseSwitch_toggle).call(this);
 }, _BaseSwitch_onKeyup = function _BaseSwitch_onKeyup(event) {
-    switch (event.key) {
-        case ' ':
-        case 'Enter':
-            event.preventDefault();
-            __classPrivateFieldGet(this, _BaseSwitch_instances, "m", _BaseSwitch_toggle).call(this);
+    if (event.key === ' ' || event.key === 'Enter') {
+        event.preventDefault();
+        event.stopPropagation();
+        __classPrivateFieldGet(this, _BaseSwitch_instances, "m", _BaseSwitch_toggle).call(this);
+    }
+}, _BaseSwitch_onKeyDown = function _BaseSwitch_onKeyDown(event) {
+    if (event.key === ' ') {
+        event.preventDefault();
+        event.stopPropagation();
     }
 }, _BaseSwitch_toggle = function _BaseSwitch_toggle() {
     if (this.disabled) {
@@ -73,14 +83,16 @@ _BaseSwitch_internals = new WeakMap(), _BaseSwitch_initiallyDisabled = new WeakM
     this.dispatchEvent(new Event('change', { bubbles: true }));
 }, _BaseSwitch_updateLabels = function _BaseSwitch_updateLabels() {
     const labelState = this.checked ? 'on' : 'off';
-    if (this.labels.length > 1) {
-        for (const label of this.labels) {
-            label.hidden = label.dataset.state !== labelState;
-        }
-    }
+    this.labels.forEach(label => {
+        const states = label.querySelectorAll('[data-state]');
+        states.forEach(state => {
+            if (state) {
+                state.hidden = state.dataset.state !== labelState;
+            }
+        });
+    });
 };
 BaseSwitch.styles = [styles];
-BaseSwitch.shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true, };
 BaseSwitch.formAssociated = true;
 __decorate([
     property({ reflect: true })
@@ -91,5 +103,7 @@ __decorate([
 __decorate([
     property({ reflect: true, type: Boolean })
 ], BaseSwitch.prototype, "checked", void 0);
-export { BaseSwitch };
+__decorate([
+    property({ reflect: true, type: Boolean })
+], BaseSwitch.prototype, "disabled", void 0);
 //# sourceMappingURL=BaseSwitch.js.map

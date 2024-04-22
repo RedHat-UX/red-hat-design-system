@@ -648,11 +648,11 @@ export * from './pf-td.js';
  */
 export declare class PfTable extends LitElement {
     #private;
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     get rows(): NodeListOf<PfTr>;
     private columns;
     connectedCallback(): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
     private static getNodeContentForSort;
     private static sortByContent;
 }

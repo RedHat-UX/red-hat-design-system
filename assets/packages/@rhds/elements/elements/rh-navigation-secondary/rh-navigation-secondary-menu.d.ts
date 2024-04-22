@@ -17,7 +17,7 @@ import { type ColorPalette } from '../../lib/context/color/provider.js';
  */
 export declare class RhNavigationSecondaryMenu extends LitElement {
     #private;
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     /**
      * Color palette (default: lightest)
      * Secondary nav menus are always represented on the lightest color palette.
@@ -33,7 +33,7 @@ export declare class RhNavigationSecondaryMenu extends LitElement {
      */
     visible: boolean;
     connectedCallback(): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
 }
 declare class RhSecondaryNavMenu extends RhNavigationSecondaryMenu {
     #private;

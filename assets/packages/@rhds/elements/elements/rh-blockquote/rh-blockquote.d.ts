@@ -11,7 +11,7 @@ import { type ColorPalette } from '../../lib/context/color/provider.js';
  *
  */
 export declare class RhBlockquote extends LitElement {
-    static readonly styles: import("lit").CSSResult;
+    static readonly styles: CSSStyleSheet;
     title: string;
     /**
      * Set the colorPalette of the blockquote. Possible values are:
@@ -34,5 +34,5 @@ export declare class RhBlockquote extends LitElement {
      * - `large`
      */
     size: 'default' | 'large';
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
 }

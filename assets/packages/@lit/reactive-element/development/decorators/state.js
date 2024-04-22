@@ -23,7 +23,11 @@ import { property } from './property.js';
 export function state(options) {
     return property({
         ...options,
+        // Add both `state` and `attribute` because we found a third party
+        // controller that is keying off of PropertyOptions.state to determine
+        // whether a field is a private internal property or not.
         state: true,
+        attribute: false,
     });
 }
 //# sourceMappingURL=state.js.map

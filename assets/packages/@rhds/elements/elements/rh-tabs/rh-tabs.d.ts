@@ -1,4 +1,4 @@
-import { LitElement } from 'lit';
+import { LitElement, type PropertyValues } from 'lit';
 import { RhTab } from './rh-tab.js';
 import { RhTabPanel } from './rh-tab-panel.js';
 import { type ColorPalette } from '../../lib/context/color/provider.js';
@@ -24,18 +24,11 @@ export { RhTab };
  */
 export declare class RhTabs extends LitElement {
     #private;
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
+    /** @deprecated */
     static isTab(element: HTMLElement): element is RhTab;
+    /** @deprecated */
     static isPanel(element: HTMLElement): element is RhTabPanel;
-    /** Time in milliseconds to debounce between scroll events and updating scroll button state */
-    protected static readonly scrollTimeoutDelay: number;
-    /** Icon name to use for the scroll left button */
-    protected static readonly scrollIconLeft: string;
-    /** Icon name to use for the scroll right button */
-    protected static readonly scrollIconRight: string;
-    /** Icon set to use for the scroll buttons */
-    protected static readonly scrollIconSet: string;
-    private static instances;
     /**
      * Label for the scroll left button
      */
@@ -52,8 +45,8 @@ export declare class RhTabs extends LitElement {
     /**
      * Index of the active tab
      */
-    get activeIndex(): number;
-    set activeIndex(index: number);
+    activeIndex: number;
+    activeTab?: RhTab;
     /**
      * Sets color context for child components, overrides parent context
      */
@@ -63,31 +56,32 @@ export declare class RhTabs extends LitElement {
      */
     centered?: boolean | undefined;
     /**
+     * Sets tabs to a boxed style with or without an inset
+     */
+    box?: 'box' | 'inset';
+    /**
+     * Sets the alignment of the tabs vertical
+     */
+    vertical: boolean;
+    /**
      * Sets the theme for the tabs and panels
      * @deprecated attribute will be removed in future release, please use the `--rh-tabs-active-border-color` css property directly.
      */
     theme?: 'base' | null;
     /**
-     * Sets tabs to a boxed style with or without an inset
-     */
-    box?: 'box' | 'inset' | null;
-    /**
-     * Sets the alignment of the tabs vertical
-     */
-    vertical: boolean;
-    protected get canShowScrollButtons(): boolean;
-    /**
      * Sets color theme based on parent context
      */
     private on?;
-    private tabs;
-    private panels;
     private tabList;
+    protected get canShowScrollButtons(): boolean;
+    get tabs(): RhTab[];
+    get panels(): (RhTabPanel | undefined)[];
+    private ctx;
     connectedCallback(): void;
-    disconnectedCallback(): void;
-    willUpdate(): void;
+    willUpdate(changed: PropertyValues<this>): void;
     firstUpdated(): Promise<void>;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
+    select(option: RhTab | number): void;
 }
 declare global {
     interface HTMLElementTagNameMap {

@@ -4,12 +4,15 @@ import { html, LitElement } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { DirController } from '../../lib/DirController.js';
 import { colorContextConsumer } from '../../lib/context/color/consumer.js';
+import { consume } from '@lit/context';
+import { context } from './context.js';
 import { css } from "lit";
-const styles = css `:host{--_padding-block-start:var(--rh-space-lg, 16px);--_padding-inline-end:var(--rh-space-xl, 24px);--_padding-block-end:var(--rh-space-lg, 16px);--_padding-inline-start:var(--rh-space-xl, 24px);--_text-color:var(--rh-color-text-primary-on-light, #151515);--_active-text-color:var(--rh-color-text-primary-on-light, #151515);--_background-color:var(--rh-color-surface-lightest, #ffffff);--_active-background-color:var(--_rhds-background-color, #f2f2f2);--_font-size:var(--rh-font-size-body-text-md, 1rem);--_after-background-color:transparent;--_expanded-background-color:var(--rh-color-accent-brand-on-light, #ee0000);--_isRTL:-1}#heading{font-size:100%;padding:0;margin:0;color:var(--rh-color-text-primary-on-light,#151515);background-color:var(--_rhds-background-color,var(--rh-color-surface-lightest,#fff));font-weight:var(--rh-font-weight-heading-medium,500)}a,button{cursor:pointer}.dark{--_text-color:var(--rh-color-text-primary-on-dark, #ffffff);--_background-color:var(--rh-color-surface-darkest, #151515);--_active-background-color:var(--rh-color-surface-darkest, #151515);--_active-text-color:var(--rh-color-text-primary-on-dark, #ffffff);--_expanded-background-color:var(--rh-color-accent-brand-on-dark, #ee0000)}.rtl{--_isRTL:1}:host([large]){--_font-size:var(--rh-font-size-body-text-lg, 1.125rem);--_padding-block-start:var(--rh-space-lg, 16px);--_padding-inline-end:var(--rh-space-xl, 24px);--_padding-block-end:var(--rh-space-lg, 16px);--_padding-inline-start:var(--rh-space-xl, 24px)}:host([expanded]){border-inline-end:var(--rh-border-width-sm,1px) solid var(--_border-color,var(--rh-color-border-subtle-on-dark,#707070))}:host(.animating) #button,:host([expanded]) #button{border-inline-end-color:var(--rh-color-border-subtle-on-light,#c7c7c7);border-inline-start-color:var(--rh-color-border-subtle-on-light,#c7c7c7)}#button,#button:after,#button:before{background-color:var(--_background-color,transparent)}#icon{width:16px;height:16px;will-change:rotate;transition:rotate .2s ease-in 0s}#button{padding:var(--_padding-block-start) var(--_padding-inline-end) var(--_padding-block-end) var(--_padding-inline-start);font-family:var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);font-size:var(--_font-size, var(--rh-font-size-body-text-md, 1rem));font-weight:var(--rh-font-weight-heading-medium,500);color:var(--_text-color)}#button #icon{fill:var(--_text-color)}#button[aria-expanded=true]{--_after-background-color:var(--_expanded-background-color)}#button:after{inset-block-start:-1px;width:var(--rh-border-width-lg,3px);background-color:var(--_after-background-color)}span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:calc(100% - var(--rh-space-xl,24px));text-align:start}#button[aria-expanded=true] #icon{rotate:calc(var(--_isRTL,-1) * 180deg)}#button:active,#button:focus,#button:hover{background-color:var(--_active-background-color)}#button:active span,#button:focus span,#button:hover span{color:var(--_active-text-color)}.toggle,.toggle:after,.toggle:before{padding:0;margin:0}.toggle{position:relative;display:flex;align-items:center;justify-content:space-between;width:100%;border:0}.toggle:after{content:"";position:absolute;inset-block:0;inset-inline-start:0}`;
+const styles = css `:host{--_padding-block-start:var(--rh-space-lg, 16px);--_padding-inline-end:var(--rh-space-xl, 24px);--_padding-block-end:var(--rh-space-lg, 16px);--_padding-inline-start:var(--rh-space-xl, 24px);--_text-color:var(--rh-color-text-primary-on-light, #151515);--_active-text-color:var(--rh-color-text-primary-on-light, #151515);--_background-color:var(--rh-color-surface-lightest, #ffffff);--_active-background-color:var(--_rhds-background-color, #f2f2f2);--_font-size:var(--rh-font-size-body-text-md, 1rem);--_after-background-color:transparent;--_expanded-background-color:var(--rh-color-accent-brand-on-light, #ee0000);--_isRTL:-1}#heading{font-size:100%;padding:0;margin:0;color:var(--rh-color-text-primary-on-light,#151515);background-color:var(--_rhds-background-color,var(--rh-color-surface-lightest,#fff));font-weight:var(--rh-font-weight-heading-medium,500)}a,button{cursor:pointer}.dark{--_text-color:var(--rh-color-text-primary-on-dark, #ffffff);--_background-color:var(--rh-color-surface-darkest, #151515);--_active-background-color:var(--rh-color-surface-darkest, #151515);--_active-text-color:var(--rh-color-text-primary-on-dark, #ffffff);--_expanded-background-color:var(--rh-color-accent-brand-on-dark, #ee0000)}.rtl{--_isRTL:1}:host([large]){--_font-size:var(--rh-font-size-body-text-lg, 1.125rem);--_padding-block-start:var(--rh-space-lg, 16px);--_padding-inline-end:var(--rh-space-xl, 24px);--_padding-block-end:var(--rh-space-lg, 16px);--_padding-inline-start:var(--rh-space-xl, 24px)}:host([expanded]){border-inline-end:var(--rh-border-width-sm,1px) solid var(--_border-color,var(--rh-color-border-subtle-on-dark,#707070))}:host(.animating) #button,:host([expanded]) #button{border-inline-end-color:var(--rh-color-border-subtle-on-light,#c7c7c7);border-inline-start-color:var(--rh-color-border-subtle-on-light,#c7c7c7)}#button,#button:after,#button:before{background-color:var(--_background-color,transparent)}#icon{width:16px;height:16px;will-change:rotate;transition:rotate .2s ease-in 0s}#button{padding:var(--_padding-block-start) var(--_padding-inline-end) var(--_padding-block-end) var(--_padding-inline-start);font-family:var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);font-size:var(--_font-size, var(--rh-font-size-body-text-md, 1rem));font-weight:var(--rh-font-weight-heading-medium,500);color:var(--_text-color)}#button #icon{fill:var(--_text-color)}#button[aria-expanded=true]{--_after-background-color:var(--_expanded-background-color)}#button:after{inset-block-start:-1px;width:var(--rh-border-width-lg,3px);background-color:var(--_after-background-color)}span{overflow:hidden;text-align:start}[part=container]{display:flex;gap:var(--rh-space-xl,24px);container-type:inline-size}#header-container{display:flex;flex-direction:column;gap:var(--rh-space-md,8px)}[part=accents]{display:flex;flex-wrap:wrap;gap:var(--rh-space-md,8px)}#button[aria-expanded=true] #icon{rotate:calc(var(--_isRTL,-1) * 180deg)}#button:active,#button:focus,#button:hover{background-color:var(--_active-background-color)}#button:active span,#button:focus span,#button:hover span{color:var(--_active-text-color)}.toggle,.toggle:after,.toggle:before{padding:0;margin:0}.toggle{position:relative;display:flex;align-items:center;justify-content:space-between;width:100%;border:0}.toggle:after{content:"";position:absolute;inset-block:0;inset-inline-start:0}@container (min-width:576px){#header-container:not(.bottom){flex-direction:row}}`;
 const isPorHeader = (el) => el instanceof HTMLElement && !!el.tagName.match(/P|^H[1-6]/);
 export class AccordionHeaderChangeEvent extends Event {
     constructor(expanded, toggle, accordion) {
@@ -29,8 +32,8 @@ export class AccordionHeaderChangeEvent extends Event {
  * @slot
  *       We expect the light DOM of the rh-accordion-header to be a heading level tag (h1, h2, h3, h4, h5, h6)
  * @slot accents
- *       These elements will appear inline with the accordion header, between the header and the chevron
- *       (or after the chevron and header in disclosure mode).
+ *       These elements will appear inline by default with the header title, between the header and the chevron
+ *       (or after the chevron and header in disclosure mode). There is an option to set the accents placement to bottom
  *
  * @fires {AccordionHeaderChangeEvent} change - when the open panels change
  *
@@ -40,6 +43,7 @@ let RhAccordionHeader = class RhAccordionHeader extends LitElement {
         super(...arguments);
         _RhAccordionHeader_instances.add(this);
         this.expanded = false;
+        /** @deprecated */
         this.icon = 'angle-down';
         _RhAccordionHeader_generatedHtag.set(this, void 0);
         _RhAccordionHeader_logger.set(this, new Logger(this));
@@ -73,7 +77,12 @@ let RhAccordionHeader = class RhAccordionHeader extends LitElement {
     `;
     }
 };
-_RhAccordionHeader_generatedHtag = new WeakMap(), _RhAccordionHeader_logger = new WeakMap(), _RhAccordionHeader_header = new WeakMap(), _RhAccordionHeader_dir = new WeakMap(), _RhAccordionHeader_instances = new WeakSet(), _RhAccordionHeader_initHeader = async function _RhAccordionHeader_initHeader() {
+_RhAccordionHeader_generatedHtag = new WeakMap();
+_RhAccordionHeader_logger = new WeakMap();
+_RhAccordionHeader_header = new WeakMap();
+_RhAccordionHeader_dir = new WeakMap();
+_RhAccordionHeader_instances = new WeakSet();
+_RhAccordionHeader_initHeader = async function _RhAccordionHeader_initHeader() {
     if (this.headingText && !this.headingTag) {
         this.headingTag = 'h3';
     }
@@ -87,21 +96,29 @@ _RhAccordionHeader_generatedHtag = new WeakMap(), _RhAccordionHeader_logger = ne
     } while (!await this.updateComplete);
     // Remove the hidden attribute after upgrade
     this.hidden = false;
-}, _RhAccordionHeader_renderHeaderContent = function _RhAccordionHeader_renderHeaderContent() {
+};
+_RhAccordionHeader_renderHeaderContent = function _RhAccordionHeader_renderHeaderContent() {
+    const { accents } = this.ctx ?? {};
     const headingText = this.headingText?.trim() ?? __classPrivateFieldGet(this, _RhAccordionHeader_header, "f")?.textContent?.trim();
     return html `
       <button id="button"
               class="toggle"
               aria-expanded="${String(!!this.expanded)}">
-        <span part="text">${headingText ?? html `
+        <span id="header-container" class="${ifDefined(accents)}">
+          <span part="text">${headingText ?? html `
           <slot></slot>`}
+          </span>
+          <span part="accents">
+            <slot name="accents"></slot>
+          </span>
         </span>
         <svg id="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
           <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
         </svg>
       </button>
     `;
-}, _RhAccordionHeader_getOrCreateHeader = function _RhAccordionHeader_getOrCreateHeader() {
+};
+_RhAccordionHeader_getOrCreateHeader = function _RhAccordionHeader_getOrCreateHeader() {
     // Check if there is no nested element or nested textNodes
     if (!this.firstElementChild && !this.firstChild) {
         return void __classPrivateFieldGet(this, _RhAccordionHeader_logger, "f").warn('No header content provided');
@@ -134,7 +151,8 @@ _RhAccordionHeader_generatedHtag = new WeakMap(), _RhAccordionHeader_logger = ne
         }
         return __classPrivateFieldGet(this, _RhAccordionHeader_generatedHtag, "f");
     }
-}, _RhAccordionHeader_onClick = function _RhAccordionHeader_onClick(event) {
+};
+_RhAccordionHeader_onClick = function _RhAccordionHeader_onClick(event) {
     const expanded = !this.expanded;
     const acc = event.composedPath().find((x) => x instanceof HTMLElement && x.localName === 'rh-accordion');
     if (acc) {
@@ -143,7 +161,10 @@ _RhAccordionHeader_generatedHtag = new WeakMap(), _RhAccordionHeader_logger = ne
 };
 RhAccordionHeader.version = '{{version}}';
 RhAccordionHeader.styles = [styles];
-RhAccordionHeader.shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
+RhAccordionHeader.shadowRootOptions = {
+    ...LitElement.shadowRootOptions,
+    delegatesFocus: true,
+};
 __decorate([
     property({ type: Boolean, reflect: true })
 ], RhAccordionHeader.prototype, "expanded", void 0);
@@ -159,6 +180,10 @@ __decorate([
 __decorate([
     colorContextConsumer()
 ], RhAccordionHeader.prototype, "on", void 0);
+__decorate([
+    consume({ context, subscribe: true }),
+    property({ attribute: false })
+], RhAccordionHeader.prototype, "ctx", void 0);
 RhAccordionHeader = __decorate([
     customElement('rh-accordion-header')
 ], RhAccordionHeader);

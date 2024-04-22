@@ -1,5 +1,5 @@
 // pf-label/pf-label.js
-import { createComponent } from '@lit-labs/react';
+import { createComponent } from '@lit/react';
 import react from 'react';
 import { PfLabel as elementClass } from '@patternfly/elements/pf-label/pf-label.js';
 export const Label = createComponent({

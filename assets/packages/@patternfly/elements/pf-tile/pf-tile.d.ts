@@ -46,7 +46,7 @@ export type StackedSize = ('md' | 'lg');
  * @cssprop   {<lenght>} --pf-c-tile__header--m-stacked__icon--MarginBottom {@default `0.25rem`}
  */
 export declare class PfTile extends BaseTile {
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     selected: boolean;
     stacked?: StackedSize;
 }

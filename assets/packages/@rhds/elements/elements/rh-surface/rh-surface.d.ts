@@ -17,7 +17,7 @@ import { type ColorPalette } from '../../lib/context/color/provider.js';
  */
 export declare class RhSurface extends LitElement {
     #private;
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     /**
      * Sets color palette, which affects the element's styles as well as descendants' color theme.
      * Overrides parent color context.
@@ -25,7 +25,7 @@ export declare class RhSurface extends LitElement {
      * See [CSS Custom Properties](#css-custom-properties) for default values
      */
     colorPalette?: ColorPalette;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

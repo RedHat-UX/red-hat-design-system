@@ -1,0 +1,617 @@
+<!DOCTYPE html><html class="no-js" lang=""><head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Guidelines | Back to top | Red Hat design system</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/svg+xml" sizes="any" href="/assets/logo-red-hat.svg">
+
+  <meta property="og:title" content="Red Hat design system">
+  <meta property="og:site_name" content="Red Hat design system">
+  <meta property="og:url" content="ux.redhat.com">
+  <meta property="og:description" content="This is Red Hat's design system. Using Red Hat brand standards and PatternFly as our foundational design language, we enable designers and developers to concurrently build branded experiences across redhat.com, Red Hat Customer Portal, and beyond.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://ux.redhat.com/assets/opengraph.png">
+
+  <meta name="pfe-auto-reveal" content="true">
+
+  <link rel="stylesheet" href="/assets/redhat/redhat-theme/4/advanced-theme.css">
+  <link rel="stylesheet" href="/assets/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all">
+
+  <link rel="stylesheet" href="/assets/prism.css">
+  <link rel="stylesheet" href="/assets/rhds.min.css">
+  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-footer/rh-footer-lightdom.css">
+  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-subnav/rh-subnav-lightdom.css">
+
+  <link rel="stylesheet" href="/assets/css/style.css" id="">
+
+  
+  <link rel="stylesheet" href="/assets/cem.css">
+  
+  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-subnav/rh-subnav-lightdom.css">
+  
+  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-pagination/rh-pagination-lightdom.css">
+  
+  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
+  
+  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
+  
+
+  <noscript>
+    <link type="text/css" href="/assets/pfe--noscript.min.css">
+  </noscript>
+
+  <script type="importmap">{"imports":{"lit-html":"/assets/packages/lit-html/lit-html.js","@patternfly/pfe-core":"/assets/packages/@patternfly/pfe-core/core.js","tslib":"/assets/packages/tslib/tslib.es6.mjs","@lit/reactive-element":"/assets/packages/@lit/reactive-element/reactive-element.js","@lit/context":"/assets/packages/@lit/context/index.js","lit-element":"/assets/packages/lit-element/index.js","lit/directives/if-defined.js":"/assets/packages/lit/directives/if-defined.js","lit":"/assets/packages/lit/index.js","@floating-ui/core":"/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs","@floating-ui/dom":"/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs","@rhds/tokens":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/tokens.js","@rhds/tokens/meta.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js","@rhds/tokens/media.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js","@patternfly/elements":"/assets/packages/@patternfly/elements/pfe.min.js","element-internals-polyfill":"/assets/packages/element-internals-polyfill/dist/index.js","fuse.js":"/assets/packages/fuse.js/dist/fuse.esm.js","@rhds/tokens/":"/assets/packages/@rhds/tokens/js/","@rhds/elements/":"/assets/packages/@rhds/elements/elements/","@rhds/elements/lib/":"/assets/packages/@rhds/elements/lib/","@patternfly/elements/":"/assets/packages/@patternfly/elements/","@patternfly/icons/":"/assets/packages/@patternfly/icons/","@patternfly/pfe-core/":"/assets/packages/@patternfly/pfe-core/"},"scopes":{"/assets/packages/lit/":{"lit-html":"/assets/packages/lit/node_modules/lit-html/lit-html.js"},"/assets/packages/":{"@floating-ui/utils":"https://ga.jspm.io/npm:@floating-ui/utils@0.2.1/dist/floating-ui.utils.mjs","@floating-ui/utils/dom":"https://ga.jspm.io/npm:@floating-ui/utils@0.2.1/dist/floating-ui.utils.dom.mjs","@lit/reactive-element/decorators/":"/assets/packages/@lit/reactive-element/decorators/","lit-element/lit-element.js":"/assets/packages/lit-element/lit-element.js","lit-html":"/assets/packages/lit-element/node_modules/lit-html/lit-html.js","lit-html/":"/assets/packages/lit/node_modules/lit-html/","lit/":"/assets/packages/lit/"}}}</script>
+  <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js"></script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-alert/rh-alert.js';
+  </script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-tag/rh-tag.js';
+  </script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-cta/rh-cta.js';
+  </script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-footer/rh-footer.js';
+  </script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-subnav/rh-subnav.js';
+  </script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-code-block/rh-code-block.js';
+  </script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-table/rh-table.js';
+  </script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-back-to-top/rh-back-to-top.js';
+  </script>
+  
+  <script type="module">
+    // As soon as the DOM is ready, toggle JS class
+    document.documentElement.classList.remove('no-js');
+    document.documentElement.classList.add('js');
+  </script>
+  <script type="module" src="/assets/copy-permalink.js"></script>
+  <script type="module">
+    import { PfIcon } from '@patternfly/elements/pf-icon/pf-icon.js';
+    PfIcon.getIconUrl = (set, icon) =>
+      new URL(`/assets/packages/@patternfly/elements/pf-icon/icons/${set}/${icon}.js`, location.origin);
+  </script>
+  <script type="module">
+  if (!('shadowRootMode' in HTMLTemplateElement.prototype)) { import('/assets/dsd-polyfill.js'); }
+  </script>
+</head>
+<body id="top" class="page element-docs page-guidelines-or-back-to-top" unresolved="">
+  <div class="body-inner">
+    
+<script type="module" src="/assets/elements/uxdot-copy-button.js"></script>
+
+<header id="main-header">
+  <div class="logo-bar">
+    <a href="/">
+      <img class="logo" alt="Red Hat design system logo" src="/assets/red-hat-design-system.svg" style="max-width: 188px; min-width: 42px;">
+    </a>
+  </div>
+
+  <input id="mobile-menu-toggle" class="menu-toggle element-invisible" type="checkbox" aria-controls="mobile-menu-menu-container">
+
+  <label class="menu-toggle-button mobile-menu-toggle" for="mobile-menu-toggle" data-controls="mobile-menu-menu-container">
+    <span class="burger-icon"></span>
+    <span class="menu-toggle-assistive-text element-invisible">Toggle menu visibility</span>
+  </label>
+
+  <div class="menu-toggle-toggleable site-navigation-outer-wrapper">
+    <nav class="site-navigation site-navigation menu-toggle-toggleable-content-wrapper">
+      <ul class="wrapper">
+        <li class="item">
+          <a class="link " href="/">Home</a>
+        </li>
+
+        <!-- About -->
+
+        <li class="item">
+          <details>
+            <summary class="heading">About</summary>
+            <ul class="sub-menu">
+              <li class="item">
+                <a class="link " href="/about/">About this website</a>
+              </li><li class="item">
+                <a class="link " href="/about/how-we-build/">How we build</a>
+              </li><li class="item">
+                <a class="link " href="/about/roadmap/">Roadmap</a>
+              </li></ul>
+          </details>
+        </li>
+
+        <!-- Get started (Subitems here use the heading in the frontmatter for the link text.) -->
+
+        <li class="item">
+          <details>
+            <summary class="heading">Get started</summary>
+            <ul class="sub-menu">
+              <li class="item">
+                <a class="link " href="/get-started/">Overview</a>
+              </li><li class="item">
+                <a class="link " href="/get-started/designers/">Designers</a>
+              </li><li class="item">
+                <a class="link " href="/get-started/developers/">Developers</a>
+              </li></ul>
+          </details>
+        </li>
+
+        <!-- Foundations -->
+
+        <li class="item">
+          <details>
+            <summary class="heading">Foundations</summary>
+            <ul class="sub-menu">
+              <li class="item">
+                    <a class="link " href="/foundations/">Overview</a>
+                  
+                    <a class="link " href="/foundations/color/">Color</a>
+                  
+                    <a class="link " href="/foundations/grid/">Grid</a>
+                  
+                    <a class="link " href="/foundations/personalization/">Personalization patterns</a>
+                  
+                    <a class="link " href="/foundations/spacing/">Spacing</a>
+                  
+                    <a class="link " href="/foundations/typography/">Typography</a>
+                  </li>
+            </ul>
+          </details>
+        </li>
+
+        <!-- Tokens -->
+
+        <li class="item">
+          <details>
+            <summary class="heading">Tokens</summary>
+            <ul class="sub-menu">
+              <li class="item">
+                <a class="link " href="/tokens/">Overview</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/color/">Global color</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/box-shadow/">Box shadow</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/font/">Typography</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/border/">Border</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/opacity/">Opacity</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/space/">Space</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/length/">Length</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/icon/">Icon</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/breakpoint/">Breakpoints</a>
+              </li><li class="item">
+                <a class="link " href="/tokens/media/">Media queries</a>
+              </li></ul>
+          </details>
+        </li>
+
+        <!-- Elements -->
+
+        <li class="item">
+          <details open="">
+            <summary class="heading">Elements</summary>
+            <ul class="sub-menu">
+              <li class="item">
+                <a class="link " href="/elements/">All elements</a>
+              </li>
+                  <li class="item">
+                    <a class="link " href="/elements/accordion/">Accordion</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/alert/">Alert</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/audio-player/">Audio player</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/avatar/">Avatar</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link active" href="/elements/back-to-top/">Back to top</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/badge/">Badge</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/blockquote/">Blockquote</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/button/">Button</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/call-to-action/">Call to action</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/card/">Card</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/code-block/">Code block</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/dialog/">Dialog</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/footer/">Footer</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/jump-links/">Jump links</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/navigation-primary/">Navigation (primary)</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/navigation-secondary/">Navigation (secondary)</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/pagination/">Pagination</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/popover/">Popover</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/progress-steps/">Progress steps</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/site-status/">Site status</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/skip-link/">Skip link</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/spinner/">Spinner</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/statistic/">Statistic</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/subnavigation/">Subnavigation</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/surface/">Surface</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/table/">Table</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/tabs/">Tabs</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/tag/">Tag</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/tile/">Tile</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/timestamp/">Timestamp</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/tooltip/">Tooltip</a>
+                  </li>
+                </ul>
+          </details>
+        </li>
+
+        <!-- Patterns -->
+
+        <li class="item">
+          <details>
+            <summary class="heading">Patterns</summary>
+            <ul class="sub-menu">
+              <li class="item">
+                <a class="link " href="/patterns/">All patterns</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/announcement/">Announcement</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/card/">Card</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/disclosure/">Disclosure</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/filter/">Filter</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/form/">Form</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/link-with-icon/">Link with icon</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/link/">Link</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/search-bar/">Search bar</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/skip-navigation/">Skip navigation</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/sticky-banner/">Sticky banner</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/sticky-card/">Sticky card</a>
+              </li><li class="item">
+                <a class="link " href="/patterns/video-thumbnail/">Video thumbnail</a>
+              </li></ul>
+          </details>
+        </li>
+        <!-- Accessibility -->
+
+        <li class="item">
+          <details>
+            <summary class="heading">Accessibility</summary>
+            <ul class="sub-menu"><li class="item">
+                  <a class="link " href="/accessibility/">Fundamentals</a>
+                </li><li class="item">
+                  <a class="link " href="/accessibility/q-a-testing/">QA Testing</a>
+                </li><li class="item">
+                  <a class="link " href="/accessibility/content/">Content</a>
+                </li><li class="item">
+                  <a class="link " href="/accessibility/design/">Design</a>
+                </li><li class="item">
+                  <a class="link " href="/accessibility/development/">Development</a>
+                </li><li class="item">
+                  <a class="link " href="/accessibility/contributors/">Contributors</a>
+                </li><li class="item">
+                  <a class="link " href="/accessibility/resources/">Resources</a>
+                </li></ul>
+          </details>
+        </li>
+
+        <li class="item">
+          <a class="link " href="/design-code-status/">Design/code status</a>
+        </li>
+
+        <li class="item">
+          <a class="link " href="/release-notes/">Release notes</a>
+        </li></ul>
+    </nav>
+  </div>
+</header>
+
+<script type="module">
+  window.onUsersnapCXLoad = function(api) {
+    api.init();
+  }
+  var script = document.createElement('script');
+  script.async = 1;
+  script.src = 'https://widget.usersnap.com/load/64471a95-72fe-4239-b16d-ebcf8b1219f7?onload=onUsersnapCXLoad';
+  document.head.appendChild(script);
+</script>
+
+
+
+
+
+<main class="l-main">
+  <article class="l-main__inner">
+    <header class="l-main__header l-main__header--palette-lighter">
+      <div class="container header has-subnav">
+        <h1 id="back-to-top" class="page-title">Back to top</h1>
+        <rh-subnav>
+          <a href="/elements/back-to-top/">
+            Overview
+          </a>
+          <a href="/elements/back-to-top/style/">
+            Style
+          </a>
+          <a active="" href="/elements/back-to-top/guidelines/">
+            Guidelines
+          </a>
+          <a href="/elements/back-to-top/code/">
+            Code
+          </a>
+          <a href="/elements/back-to-top/accessibility/">
+            Accessibility
+          </a>
+        </rh-subnav>
+      </div>
+    </header>
+    <section class="l-main__content">
+      <div class="container">
+        <copy-permalink class="h2">
+  <h2 id="usage" tabindex="-1">
+    <a class="heading-anchor" href="#usage">Usage</a>
+      </h2>
+    </copy-permalink>
+<p>A back to top button helps users get back to the top of the page quickly. It should be used on pages where a user would have to scroll through two screens worth of content on medium and large screens and four screens worth of content on small screens. If a page is very short and doesn’t require scrolling, a back to top button doesn’t have to be added.</p>
+<copy-permalink class="h2">
+  <h2 id="layout" tabindex="-1">
+    <a class="heading-anchor" href="#layout">Layout</a>
+      </h2>
+    </copy-permalink>
+<copy-permalink class="h3">
+  <h3 id="placement" tabindex="-1">
+    <a class="heading-anchor" href="#placement">Placement</a>
+      </h3>
+    </copy-permalink>
+<p>Users expect to see the back to top button in the bottom right corner. It will overlap any page content in that small area. This placement keeps it out of the way of page content but still discoverable.</p>
+<p>On mobile, the element should be positioned 24px from the bottom and from the right of the screen. On screens wider than 768px, it should appear 48px from the bottom and from the right.</p>
+<div style="" class="example example--palette-none ">
+          <img alt="Back to top buttons in the bottom right corner of a desktop-sized screen" style="width:1000px;height:auto" loading="lazy" decoding="async" src="/elements/back-to-top/back-to-top-placement-desktop-1000w.jpeg" width="2000" height="770" srcset="/elements/back-to-top/back-to-top-placement-desktop-1000w.jpeg 1000w, /elements/back-to-top/back-to-top-placement-desktop.jpeg 2000w" sizes="(max-width: 1000px) 1000px, 2000px">
+        </div>
+<div style="" class="example example--palette-none ">
+          <img alt="Back to top buttons in the bottom right corner of a phone-sized screen" style="width:360px;height:auto" loading="lazy" decoding="async" src="/elements/back-to-top/back-to-top-placement-phone-360w.jpeg" width="720" height="640" srcset="/elements/back-to-top/back-to-top-placement-phone-360w.jpeg 360w, /elements/back-to-top/back-to-top-placement-phone.jpeg 720w" sizes="(max-width: 360px) 360px, 720px">
+        </div>
+<copy-permalink class="h2">
+  <h2 id="behavior" tabindex="-1">
+    <a class="heading-anchor" href="#behavior">Behavior</a>
+      </h2>
+    </copy-permalink>
+<p>When a user scrolls down the page, the back to top element appears in the bottom right corner. As the user continues to scroll, the element should remain stationary, unless the user has scrolled to the top of the page.</p>
+<p>Once the user clicks the back to top button, they will be taken to the top of the page.</p>
+<copy-permalink class="h2">
+  <h2 id="best-practices" tabindex="-1">
+    <a class="heading-anchor" href="#best-practices">Best practices</a>
+      </h2>
+    </copy-permalink>
+<copy-permalink class="h3">
+  <h3 id="one-back-to-top-element-per-page" tabindex="-1">
+    <a class="heading-anchor" href="#one-back-to-top-element-per-page">One back to top element per page</a>
+      </h3>
+    </copy-permalink>
+<p>Having only one persistent back to top button ensures that users are able to scroll up to the top easily. Having “Back to top” buttons at the bottom of multiple sections adds to visual clutter and may lead to users ignoring the button.</p>
+<div class="best-practices-grid">
+    <div>
+        <img slot="header" src="../one-back-to-top-do.svg" alt="Image of wireframe with one back to top button">
+        <h4 class="correct" id="do">Do</h4>
+        <p>Have one back to top button in the bottom right corner of the page.</p>
+    </div>
+    <div>
+        <img slot="header" src="../one-back-to-top-dont.svg" alt="Image of wireframe with back to top buttons below each content section">
+        <h4 class="wrong" id="dont">Don't</h4>
+        <p>Do not use multiple back to top buttons.</p>
+    </div>
+</div>
+<copy-permalink class="h3">
+  <h3 id="%E2%80%9Cback-to-top%E2%80%9D-text" tabindex="-1">
+    <a class="heading-anchor" href="#%E2%80%9Cback-to-top%E2%80%9D-text">“Back to top” text</a>
+      </h3>
+    </copy-permalink>
+<p>We recommend retaining the “Back to top” text to ensure that users understand the button’s purpose.</p>
+<div class="best-practices-grid">
+    <div>
+        <img slot="header" src="../back-to-top.svg" alt="Image of back to top button with “back to top” text and icon">
+        <h4 class="correct" id="do">Do</h4>
+        <p>Keep the descriptive “Back to top” text in the button.</p>
+    </div>
+    <div>
+        <img slot="header" src="../back-to-top-icon-only.svg" alt="Image of back to top button with icon only">
+        <h4 class="wrong" id="dont">Don't</h4>
+        <p>Do&nbsp; not use only an up arrow icon.</p>
+    </div>
+</div>
+<copy-permalink class="h3">
+  <h3 id="spacing" tabindex="-1">
+    <a class="heading-anchor" href="#spacing">Spacing</a>
+      </h3>
+    </copy-permalink>
+<p>Ensure that there is enough space between the button and the edges of the page for users to click it easily at any screen size. In addition to making it easier for users to click, this will also prevent the scrollbars from overlapping the button.</p>
+<div class="best-practices-grid">
+    <div>
+        <img slot="header" src="../back-to-top-spacing-do.svg" alt="Image of back to top button enough spacing from scroll bars">
+        <h4 class="correct" id="do">Do</h4>
+        <p>Add ample space between the right and bottom edges.</p>
+    </div>
+    <div>
+        <img slot="header" src="../back-to-top-spacing-dont.svg" alt="Image of back to top button with very little spacing next to scrollbars">
+        <h4 class="wrong" id="dont">Don't</h4>
+        <p>Do not place the button too close to the edges of the screen.</p>
+    </div>
+</div>
+
+        
+
+
+
+<div class="multi-column--min-300-wide section section--palette-default container feedback">
+  <section class="section section--palette-default  container">
+
+
+  
+    <h2 id="other-libraries">Other libraries</h2>
+    <p>To learn more about our other libraries, visit <a href="/get-started/">this page</a>.</p>
+  
+
+
+</section>
+  
+<section class="section section--palette-default  container">
+
+
+    <h2 id="feedback">Feedback</h2>
+    <p>
+      To give feedback about anything on this page,
+      <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions" class="feedback-contact-link">contact us</a>.
+    </p>
+  
+
+</section>
+
+
+</div>
+
+
+
+      </div>
+    </section>
+    <rh-footer-universal>
+  <h3 slot="links-primary" data-analytics-text="Red Hat legal and privacy links" hidden="">Red Hat legal and privacy links</h3>
+  <ul slot="links-primary" data-analytics-region="page-footer-bottom-primary">
+    <li><a href="https://redhat.com/en/about/company" data-analytics-category="Footer|Corporate" data-analytics-text="About Red Hat">About Red Hat</a></li>
+    <li><a href="https://redhat.com/en/jobs" data-analytics-category="Footer|Corporate" data-analytics-text="Jobs">Jobs</a></li>
+    <li><a href="https://redhat.com/en/events" data-analytics-category="Footer|Corporate" data-analytics-text="Events">Events</a></li>
+    <li><a href="https://redhat.com/en/about/office-locations" data-analytics-category="Footer|Corporate" data-analytics-text="Locations">Locations</a></li>
+    <li><a href="https://redhat.com/en/contact" data-analytics-category="Footer|Corporate" data-analytics-text="Contact Red Hat">Contact Red Hat</a></li>
+    <li><a href="https://redhat.com/en/blog" data-analytics-category="Footer|Corporate" data-analytics-text="Red Hat Blog">Red Hat Blog</a></li>
+    <li><a href="https://redhat.com/en/about/our-culture/diversity-equity-inclusion" data-analytics-category="Footer|Corporate" data-analytics-text="Diversity equity and inclusion">Diversity, equity, and inclusion</a></li>
+    <li><a href="https://coolstuff.redhat.com/" data-analytics-category="Footer|Corporate" data-analytics-text="Cool Stuff Store">Cool Stuff Store</a></li>
+    <li><a href="https://www.redhat.com/en/summit" data-analytics-category="Footer|Corporate" data-analytics-text="Red Hat Summit">Red Hat Summit</a></li>
+  </ul>
+  <rh-footer-copyright slot="links-secondary">© 2021-2024 Red Hat, Inc.</rh-footer-copyright>
+  <h3 slot="links-secondary" data-analytics-text="Red Hat legal and privacy links" hidden="">Red Hat legal and privacy links</h3>
+  <ul slot="links-secondary" data-analytics-region="page-footer-bottom-secondary">
+    <li><a href="https://redhat.com/en/about/privacy-policy" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Privacy statement">Privacy statement</a></li>
+    <li><a href="https://redhat.com/en/about/terms-use" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Terms of use">Terms of use</a></li>
+    <li><a href="https://redhat.com/en/about/all-policies-guidelines" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="All policies and guidelines">All policies and guidelines</a></li>
+    <li><a href="https://redhat.com/en/about/digital-accessibility" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Digital accessibility" class="active">Digital accessibility</a></li>
+    <!-- If your website supports trustarc include this item to add Cookie Preferences to your site. -->
+    <!-- <li><span id="teconsent"> </span></li> -->
+  </ul>
+  <a slot="tertiary" id="netlify-badge" href="https://www.netlify.com" target="_blank" rel="noreferrer noopener">
+    <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify">
+  </a>
+</rh-footer-universal>
+
+<div class="back-to-top">
+    <a href="#top" class="back-to-top-link">
+        <img src="/assets/back-to-top.svg" alt="Scroll back to the top">
+    </a>
+</div>
+
+  </article>
+</main>
+
+  </div>
+
+
+</body></html>

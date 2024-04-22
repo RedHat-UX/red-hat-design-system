@@ -1,4 +1,4 @@
-(function () {
+(function (exports) {
     'use strict';
 
     const refMap = new WeakMap();
@@ -27,6 +27,7 @@
         ariaColIndexText: 'aria-colindextext',
         ariaColSpan: 'aria-colspan',
         ariaCurrent: 'aria-current',
+        ariaDescription: 'aria-description',
         ariaDisabled: 'aria-disabled',
         ariaExpanded: 'aria-expanded',
         ariaHasPopup: 'aria-haspopup',
@@ -131,6 +132,7 @@
             const added = Array.from(addedNodes);
             const removed = Array.from(removedNodes);
             added.forEach(node => {
+                var _a;
                 if (internalsMap.has(node) && node.constructor['formAssociated']) {
                     initNode(node);
                 }
@@ -155,8 +157,7 @@
                     const formElements = formElementsMap.get(node);
                     const walker = document.createTreeWalker(node, NodeFilter.SHOW_ELEMENT, {
                         acceptNode(node) {
-                            return internalsMap.has(node) && !(formElements && formElements.has(node)) ?
-                                NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+                            return (internalsMap.has(node) && node.constructor['formAssociated'] && !(formElements && formElements.has(node))) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
                         }
                     });
                     let current = walker.nextNode();
@@ -166,7 +167,7 @@
                     }
                 }
                 if (node.localName === 'fieldset') {
-                    disabledOrNameObserver.observe?.(node, disabledOrNameObserverConfig);
+                    (_a = disabledOrNameObserver.observe) === null || _a === void 0 ? void 0 : _a.call(disabledOrNameObserver, node, disabledOrNameObserverConfig);
                     walkFieldset(node, true);
                 }
             });
@@ -195,8 +196,14 @@
         });
     }
     const deferUpgrade = (fragment) => {
+        var _a, _b;
         const observer = new MutationObserver(fragmentObserverCallback);
-        observer.observe?.(fragment, { childList: true });
+        if (((_a = window === null || window === void 0 ? void 0 : window.ShadyDOM) === null || _a === void 0 ? void 0 : _a.inUse) &&
+            fragment.mode &&
+            fragment.host) {
+            fragment = fragment.host;
+        }
+        (_b = observer.observe) === null || _b === void 0 ? void 0 : _b.call(observer, fragment, { childList: true });
         documentFragmentMap.set(fragment, observer);
     };
     mutationObserverExists() ? new MutationObserver(observerCallback) : {};
@@ -233,8 +240,9 @@
         return input;
     };
     const initRef = (ref, internals) => {
+        var _a;
         hiddenInputMap.set(internals, []);
-        disabledOrNameObserver.observe?.(ref, disabledOrNameObserverConfig);
+        (_a = disabledOrNameObserver.observe) === null || _a === void 0 ? void 0 : _a.call(disabledOrNameObserver, ref, disabledOrNameObserverConfig);
     };
     const initLabels = (ref, labels) => {
         if (labels.length) {
@@ -266,11 +274,10 @@
         setFormValidity(findParentForm(event.target));
     };
     const wireSubmitLogic = (form) => {
-        const SUBMIT_BUTTON_SELECTOR = ':is(button[type=submit], input[type=submit], button:not([type])):not([disabled])';
-        let submitButtonSelector = `${SUBMIT_BUTTON_SELECTOR}:not([form])`;
-        if (form.id) {
-            submitButtonSelector += `,${SUBMIT_BUTTON_SELECTOR}[form='${form.id}']`;
-        }
+        const submitButtonSelector = ['button[type=submit]', 'input[type=submit]', 'button:not([type])']
+            .map(sel => `${sel}:not([disabled])`)
+            .map(sel => `${sel}:not([form])${form.id ? `,${sel}[form='${form.id}']` : ''}`)
+            .join(',');
         form.addEventListener('click', event => {
             const target = event.target;
             if (target.closest(submitButtonSelector)) {
@@ -656,7 +663,7 @@
             if (Object.keys(validityChangesObj).length === 0) {
                 setValid(validity);
             }
-            const check = { ...validity, ...validityChangesObj };
+            const check = Object.assign(Object.assign({}, validity), validityChangesObj);
             delete check.valid;
             const { valid } = reconcileValidity(validity, check, this.form);
             if (!valid && !validationMessage) {
@@ -727,7 +734,27 @@
             'reportValidity'
         ].every(prop => prop in featureDetectionElement.internals);
     }
-    if (!isElementInternalsSupported()) {
+    let hasElementInternalsPolyfillBeenApplied = false;
+    let hasCustomStateSetPolyfillBeenApplied = false;
+    function forceCustomStateSetPolyfill(attachInternals) {
+        if (hasCustomStateSetPolyfillBeenApplied) {
+            return;
+        }
+        hasCustomStateSetPolyfillBeenApplied = true;
+        window.CustomStateSet = CustomStateSet;
+        if (attachInternals) {
+            HTMLElement.prototype.attachInternals = function (...args) {
+                const internals = attachInternals.call(this, args);
+                internals.states = new CustomStateSet(this);
+                return internals;
+            };
+        }
+    }
+    function forceElementInternalsPolyfill(forceCustomStateSet = true) {
+        if (hasElementInternalsPolyfillBeenApplied) {
+            return;
+        }
+        hasElementInternalsPolyfillBeenApplied = true;
         if (typeof window !== 'undefined') {
             window.ElementInternals = ElementInternals;
         }
@@ -785,25 +812,34 @@
             const attachShadow = Element.prototype.attachShadow;
             Element.prototype.attachShadow = attachShadowObserver;
         }
-        if (mutationObserverExists()) {
+        if (mutationObserverExists() && typeof document !== 'undefined') {
             const documentObserver = new MutationObserver(observerCallback);
             documentObserver.observe(document.documentElement, observerConfig);
         }
         if (typeof HTMLFormElement !== 'undefined') {
             patchFormPrototype();
         }
-        if (typeof window !== 'undefined' && !window.CustomStateSet) {
-            window.CustomStateSet = CustomStateSet;
+        if (forceCustomStateSet ||
+            (typeof window !== "undefined" && !window.CustomStateSet)) {
+            forceCustomStateSetPolyfill();
         }
     }
-    else if (typeof window !== 'undefined' && !window.CustomStateSet) {
-        window.CustomStateSet = CustomStateSet;
-        const attachInternals = HTMLElement.prototype.attachInternals;
-        HTMLElement.prototype.attachInternals = function (...args) {
-            const internals = attachInternals.call(this, args);
-            internals.states = new CustomStateSet(this);
-            return internals;
-        };
+
+    const isCePolyfill = !!customElements.polyfillWrapFlushCallback;
+    if (!isCePolyfill) {
+        if (!isElementInternalsSupported()) {
+            forceElementInternalsPolyfill(false);
+        }
+        else if (typeof window !== "undefined" && !window.CustomStateSet) {
+            forceCustomStateSetPolyfill(HTMLElement.prototype.attachInternals);
+        }
     }
 
-})();
+    exports.forceCustomStateSetPolyfill = forceCustomStateSetPolyfill;
+    exports.forceElementInternalsPolyfill = forceElementInternalsPolyfill;
+
+    Object.defineProperty(exports, '__esModule', { value: true });
+
+    return exports;
+
+})({});

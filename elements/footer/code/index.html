@@ -40,7 +40,7 @@
     <link type="text/css" href="/assets/pfe--noscript.min.css">
   </noscript>
 
-  <script type="importmap">{"imports":{"@patternfly/pfe-core":"/assets/packages/@patternfly/pfe-core/core.js","lit-html":"/assets/packages/lit-html/lit-html.js","@floating-ui/core":"/assets/packages/@floating-ui/core/dist/floating-ui.core.browser.min.mjs","tslib":"/assets/packages/tslib/tslib.es6.js","@lit/reactive-element":"/assets/packages/@lit/reactive-element/reactive-element.js","@floating-ui/dom":"/assets/packages/@floating-ui/dom/dist/floating-ui.dom.browser.min.mjs","lit-element":"/assets/packages/lit-element/index.js","lit/directives/if-defined.js":"/assets/packages/lit/directives/if-defined.js","lit":"/assets/packages/lit/index.js","@patternfly/elements":"/assets/packages/@patternfly/elements/pfe.min.js","@rhds/tokens":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/tokens.js","@rhds/tokens/media.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js","@rhds/tokens/meta.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js","element-internals-polyfill":"/assets/packages/element-internals-polyfill/dist/index.js","fuse.js":"/assets/packages/fuse.js/dist/fuse.esm.js","@rhds/tokens/":"/assets/packages/@rhds/tokens/js/","@rhds/elements/":"/assets/packages/@rhds/elements/elements/","@rhds/elements/lib/":"/assets/packages/@rhds/elements/lib/","@patternfly/elements/":"/assets/packages/@patternfly/elements/","@patternfly/icons/":"/assets/packages/@patternfly/icons/","@patternfly/pfe-core/":"/assets/packages/@patternfly/pfe-core/"},"scopes":{"/assets/packages/":{"@lit/reactive-element/decorators/":"/assets/packages/@lit/reactive-element/decorators/","lit":"/assets/packages/@patternfly/elements/node_modules/lit/index.js","lit-element/lit-element.js":"/assets/packages/lit-element/lit-element.js","lit-html/":"/assets/packages/lit-html/","lit/":"/assets/packages/@patternfly/elements/node_modules/lit/"}}}</script>
+  <script type="importmap">{"imports":{"lit-html":"/assets/packages/lit-html/lit-html.js","@patternfly/pfe-core":"/assets/packages/@patternfly/pfe-core/core.js","tslib":"/assets/packages/tslib/tslib.es6.mjs","@lit/reactive-element":"/assets/packages/@lit/reactive-element/reactive-element.js","@lit/context":"/assets/packages/@lit/context/index.js","lit-element":"/assets/packages/lit-element/index.js","lit/directives/if-defined.js":"/assets/packages/lit/directives/if-defined.js","lit":"/assets/packages/lit/index.js","@floating-ui/core":"/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs","@floating-ui/dom":"/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs","@rhds/tokens":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/tokens.js","@rhds/tokens/meta.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js","@rhds/tokens/media.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js","@patternfly/elements":"/assets/packages/@patternfly/elements/pfe.min.js","element-internals-polyfill":"/assets/packages/element-internals-polyfill/dist/index.js","fuse.js":"/assets/packages/fuse.js/dist/fuse.esm.js","@rhds/tokens/":"/assets/packages/@rhds/tokens/js/","@rhds/elements/":"/assets/packages/@rhds/elements/elements/","@rhds/elements/lib/":"/assets/packages/@rhds/elements/lib/","@patternfly/elements/":"/assets/packages/@patternfly/elements/","@patternfly/icons/":"/assets/packages/@patternfly/icons/","@patternfly/pfe-core/":"/assets/packages/@patternfly/pfe-core/"},"scopes":{"/assets/packages/lit/":{"lit-html":"/assets/packages/lit/node_modules/lit-html/lit-html.js"},"/assets/packages/":{"@floating-ui/utils":"https://ga.jspm.io/npm:@floating-ui/utils@0.2.1/dist/floating-ui.utils.mjs","@floating-ui/utils/dom":"https://ga.jspm.io/npm:@floating-ui/utils@0.2.1/dist/floating-ui.utils.dom.mjs","@lit/reactive-element/decorators/":"/assets/packages/@lit/reactive-element/decorators/","lit-element/lit-element.js":"/assets/packages/lit-element/lit-element.js","lit-html":"/assets/packages/lit-element/node_modules/lit-html/lit-html.js","lit-html/":"/assets/packages/lit/node_modules/lit-html/","lit/":"/assets/packages/lit/"}}}</script>
   <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js"></script>
   
   <script type="module">
@@ -132,7 +132,7 @@
           </details>
         </li>
 
-        <!-- Get started -->
+        <!-- Get started (Subitems here use the heading in the frontmatter for the link text.) -->
 
         <li class="item">
           <details>
@@ -142,6 +142,8 @@
                 <a class="link " href="/get-started/">Overview</a>
               </li><li class="item">
                 <a class="link " href="/get-started/designers/">Designers</a>
+              </li><li class="item">
+                <a class="link " href="/get-started/developers/">Developers</a>
               </li></ul>
           </details>
         </li>
@@ -227,6 +229,10 @@
                   </li>
                 
                   <li class="item">
+                    <a class="link " href="/elements/back-to-top/">Back to top</a>
+                  </li>
+                
+                  <li class="item">
                     <a class="link " href="/elements/badge/">Badge</a>
                   </li>
                 
@@ -280,6 +286,14 @@
                 
                   <li class="item">
                     <a class="link " href="/elements/progress-steps/">Progress steps</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/site-status/">Site status</a>
+                  </li>
+                
+                  <li class="item">
+                    <a class="link " href="/elements/skip-link/">Skip link</a>
                   </li>
                 
                   <li class="item">
@@ -1947,6 +1961,9 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p>
       </li>
       <li>
         <a href="/elements/popover">Popover</a>
+      </li>
+      <li>
+        <a href="/elements/site-status">Site status</a>
       </li>
       <li>
         <a href="/elements/tooltip">Tooltip</a>

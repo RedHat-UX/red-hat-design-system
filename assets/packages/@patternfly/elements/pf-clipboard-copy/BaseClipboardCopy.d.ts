@@ -9,7 +9,7 @@ export declare class ClipboardCopyCopiedEvent extends ComposedEvent {
  * @slot - Place element content here
  */
 export declare abstract class BaseClipboardCopy extends LitElement {
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     abstract value: string;
     /**
      * Copy the current value to the clipboard.

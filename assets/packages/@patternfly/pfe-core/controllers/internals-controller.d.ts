@@ -1,53 +1,97 @@
 import type { ReactiveController, ReactiveControllerHost } from 'lit';
+interface InternalsControllerOptions extends Partial<ARIAMixin> {
+    getHTMLElement?(): HTMLElement;
+}
 export declare class InternalsController implements ReactiveController, ARIAMixin {
     #private;
-    host: ReactiveControllerHost & HTMLElement;
-    role: ARIAMixin['role'];
-    ariaAtomic: ARIAMixin['ariaAtomic'];
-    ariaAutoComplete: ARIAMixin['ariaAutoComplete'];
-    ariaBusy: ARIAMixin['ariaBusy'];
-    ariaChecked: ARIAMixin['ariaChecked'];
-    ariaColCount: ARIAMixin['ariaColCount'];
-    ariaColIndex: ARIAMixin['ariaColIndex'];
+    host: ReactiveControllerHost;
+    private options?;
+    private static instances;
+    readonly form: ElementInternals['form'];
+    readonly shadowRoot: ElementInternals['shadowRoot'];
+    readonly states: unknown;
+    readonly willValidate: ElementInternals['willValidate'];
+    readonly validationMessage: ElementInternals['validationMessage'];
+    static of(host: ReactiveControllerHost, options?: InternalsControllerOptions): InternalsController;
+    role: string | null;
+    ariaActivedescendant: string | null;
+    ariaAtomic: string | null;
+    ariaAutoComplete: string | null;
+    ariaBusy: string | null;
+    ariaChecked: string | null;
+    ariaColCount: string | null;
+    ariaColIndex: string | null;
     ariaColIndexText: string | null;
-    ariaColSpan: ARIAMixin['ariaColSpan'];
-    ariaCurrent: ARIAMixin['ariaCurrent'];
-    ariaDisabled: ARIAMixin['ariaDisabled'];
-    ariaExpanded: ARIAMixin['ariaExpanded'];
-    ariaHasPopup: ARIAMixin['ariaHasPopup'];
-    ariaHidden: ARIAMixin['ariaHidden'];
-    ariaInvalid: ARIAMixin['ariaInvalid'];
-    ariaKeyShortcuts: ARIAMixin['ariaKeyShortcuts'];
-    ariaLabel: ARIAMixin['ariaLabel'];
-    ariaLevel: ARIAMixin['ariaLevel'];
-    ariaLive: ARIAMixin['ariaLive'];
-    ariaModal: ARIAMixin['ariaModal'];
-    ariaMultiLine: ARIAMixin['ariaMultiLine'];
-    ariaMultiSelectable: ARIAMixin['ariaMultiSelectable'];
-    ariaOrientation: ARIAMixin['ariaOrientation'];
-    ariaPlaceholder: ARIAMixin['ariaPlaceholder'];
-    ariaPosInSet: ARIAMixin['ariaPosInSet'];
-    ariaPressed: ARIAMixin['ariaPressed'];
-    ariaReadOnly: ARIAMixin['ariaReadOnly'];
-    ariaRequired: ARIAMixin['ariaRequired'];
-    ariaRoleDescription: ARIAMixin['ariaRoleDescription'];
-    ariaRowCount: ARIAMixin['ariaRowCount'];
-    ariaRowIndex: ARIAMixin['ariaRowIndex'];
+    ariaColSpan: string | null;
+    ariaCurrent: string | null;
+    ariaDescription: string | null;
+    ariaDisabled: string | null;
+    ariaExpanded: string | null;
+    ariaHasPopup: string | null;
+    ariaHidden: string | null;
+    ariaInvalid: string | null;
+    ariaKeyShortcuts: string | null;
+    ariaLabel: string | null;
+    ariaLevel: string | null;
+    ariaLive: string | null;
+    ariaModal: string | null;
+    ariaMultiLine: string | null;
+    ariaMultiSelectable: string | null;
+    ariaOrientation: string | null;
+    ariaPlaceholder: string | null;
+    ariaPosInSet: string | null;
+    ariaPressed: string | null;
+    ariaReadOnly: string | null;
+    ariaRequired: string | null;
+    ariaRoleDescription: string | null;
+    ariaRowCount: string | null;
+    ariaRowIndex: string | null;
     ariaRowIndexText: string | null;
-    ariaRowSpan: ARIAMixin['ariaRowSpan'];
-    ariaSelected: ARIAMixin['ariaSelected'];
-    ariaSetSize: ARIAMixin['ariaSetSize'];
-    ariaSort: ARIAMixin['ariaSort'];
-    ariaValueMax: ARIAMixin['ariaValueMax'];
-    ariaValueMin: ARIAMixin['ariaValueMin'];
-    ariaValueNow: ARIAMixin['ariaValueNow'];
-    ariaValueText: ARIAMixin['ariaValueText'];
+    ariaRowSpan: string | null;
+    ariaSelected: string | null;
+    ariaSetSize: string | null;
+    ariaSort: string | null;
+    ariaValueMax: string | null;
+    ariaValueMin: string | null;
+    ariaValueNow: string | null;
+    ariaValueText: string | null;
+    /** WARNING: be careful of cross-root ARIA browser support */
+    ariaActiveDescendantElement: Element | null;
+    /** WARNING: be careful of cross-root ARIA browser support */
+    ariaControlsElements: Element | null;
+    /** WARNING: be careful of cross-root ARIA browser support */
+    ariaDescribedByElements: Element | null;
+    /** WARNING: be careful of cross-root ARIA browser support */
+    ariaDetailsElements: Element | null;
+    /** WARNING: be careful of cross-root ARIA browser support */
+    ariaErrorMessageElements: Element | null;
+    /** WARNING: be careful of cross-root ARIA browser support */
+    ariaFlowToElements: Element | null;
+    /** WARNING: be careful of cross-root ARIA browser support */
+    ariaLabelledByElements: Element | null;
+    /** WARNING: be careful of cross-root ARIA browser support */
+    ariaOwnsElements: Element | null;
     /** True when the control is disabled via it's containing fieldset element */
     get formDisabled(): boolean;
-    static protos: WeakMap<object, any>;
     get labels(): NodeList;
     get validity(): ValidityState;
-    constructor(host: ReactiveControllerHost & HTMLElement, options?: Partial<ARIAMixin>);
+    /** A best-attempt based on observed behaviour in FireFox 115 on fedora 38 */
+    get computedLabelText(): string;
+    private get element();
+    private internals;
+    private _formDisabled;
+    private constructor();
+    /**
+     * Typescript (with experimental decorators) will compile the class
+     * such that the order of operations is:
+     * 1. set up constructor parameter fields
+     * 2. run decorated field setters with initializers as the value
+     * 3. run the rest of the constructor
+     * Because of that, `this.internals` may not be available in the decorator setter
+     * so we cheat here with nullish coalescing assignment operator `??=`;
+     */
+    private attach;
+    private initializeOptions;
     hostConnected?(): void;
     setFormValue(...args: Parameters<ElementInternals['setFormValue']>): void;
     setValidity(...args: Parameters<ElementInternals['setValidity']>): void;
@@ -56,3 +100,4 @@ export declare class InternalsController implements ReactiveController, ARIAMixi
     submit(): void;
     reset(): void;
 }
+export {};

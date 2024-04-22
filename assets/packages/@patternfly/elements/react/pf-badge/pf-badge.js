@@ -1,5 +1,5 @@
 // pf-badge/pf-badge.js
-import { createComponent } from '@lit-labs/react';
+import { createComponent } from '@lit/react';
 import react from 'react';
 import { PfBadge as elementClass } from '@patternfly/elements/pf-badge/pf-badge.js';
 export const Badge = createComponent({

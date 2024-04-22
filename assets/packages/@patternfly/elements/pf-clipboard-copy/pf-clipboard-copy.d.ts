@@ -10,7 +10,7 @@ import '@patternfly/elements/pf-tooltip/pf-tooltip.js';
  */
 export declare class PfClipboardCopy extends BaseClipboardCopy {
     #private;
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     static shadowRootOptions: ShadowRootInit;
     clickTip: string;
     hoverTip: string;
@@ -38,7 +38,7 @@ export declare class PfClipboardCopy extends BaseClipboardCopy {
      * This demonstrates the collapsed whitespace issue.
      * The extra space between the closing slot tag and the closing template literal results in a collapsed whitespace.
      */
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
     copy(): Promise<void>;
 }
 declare global {

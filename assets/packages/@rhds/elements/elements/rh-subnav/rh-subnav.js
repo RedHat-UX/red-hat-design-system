@@ -70,32 +70,46 @@ let RhSubnav = RhSubnav_1 = class RhSubnav extends LitElement {
         this.linkList.addEventListener('scroll', __classPrivateFieldGet(this, _RhSubnav_overflow, "f").onScroll.bind(this));
     }
 };
-_RhSubnav_allLinkElements = new WeakMap(), _RhSubnav_tabindex = new WeakMap(), _RhSubnav_overflow = new WeakMap(), _RhSubnav_mo = new WeakMap(), _RhSubnav_instances = new WeakSet(), _RhSubnav_allLinks_get = function _RhSubnav_allLinks_get() {
+_RhSubnav_allLinkElements = new WeakMap();
+_RhSubnav_tabindex = new WeakMap();
+_RhSubnav_overflow = new WeakMap();
+_RhSubnav_mo = new WeakMap();
+_RhSubnav_instances = new WeakSet();
+_RhSubnav_allLinks_get = function _RhSubnav_allLinks_get() {
     return __classPrivateFieldGet(this, _RhSubnav_allLinkElements, "f");
-}, _RhSubnav_allLinks_set = function _RhSubnav_allLinks_set(links) {
+};
+_RhSubnav_allLinks_set = function _RhSubnav_allLinks_set(links) {
     __classPrivateFieldSet(this, _RhSubnav_allLinkElements, links.filter(link => link instanceof HTMLAnchorElement), "f");
-}, _RhSubnav_firstLink_get = function _RhSubnav_firstLink_get() {
+};
+_RhSubnav_firstLink_get = function _RhSubnav_firstLink_get() {
     const [link] = __classPrivateFieldGet(this, _RhSubnav_instances, "a", _RhSubnav_allLinks_get);
     return link;
-}, _RhSubnav_lastLink_get = function _RhSubnav_lastLink_get() {
+};
+_RhSubnav_lastLink_get = function _RhSubnav_lastLink_get() {
     return __classPrivateFieldGet(this, _RhSubnav_instances, "a", _RhSubnav_allLinks_get).at(-1);
-}, _RhSubnav_activeItem_get = function _RhSubnav_activeItem_get() {
+};
+_RhSubnav_activeItem_get = function _RhSubnav_activeItem_get() {
     const activeLink = __classPrivateFieldGet(this, _RhSubnav_instances, "a", _RhSubnav_allLinks_get).find(link => link.matches('[active]'));
     return activeLink ?? __classPrivateFieldGet(this, _RhSubnav_instances, "a", _RhSubnav_firstLink_get);
-}, _RhSubnav_update = function _RhSubnav_update() {
-    __classPrivateFieldGet(this, _RhSubnav_tabindex, "f").updateActiveItem(__classPrivateFieldGet(this, _RhSubnav_instances, "a", _RhSubnav_activeItem_get));
-}, _RhSubnav_onSlotchange = function _RhSubnav_onSlotchange() {
+};
+_RhSubnav_update = function _RhSubnav_update() {
+    __classPrivateFieldGet(this, _RhSubnav_tabindex, "f").setActiveItem(__classPrivateFieldGet(this, _RhSubnav_instances, "a", _RhSubnav_activeItem_get));
+};
+_RhSubnav_onSlotchange = function _RhSubnav_onSlotchange() {
     __classPrivateFieldSet(this, _RhSubnav_instances, this.links, "a", _RhSubnav_allLinks_set);
     __classPrivateFieldGet(this, _RhSubnav_tabindex, "f").initItems(__classPrivateFieldGet(this, _RhSubnav_instances, "a", _RhSubnav_allLinks_get));
     __classPrivateFieldGet(this, _RhSubnav_overflow, "f").init(this.linkList, __classPrivateFieldGet(this, _RhSubnav_instances, "a", _RhSubnav_allLinks_get));
     __classPrivateFieldGet(this, _RhSubnav_instances, "m", _RhSubnav_firstLastClasses).call(this);
     __classPrivateFieldGet(this, _RhSubnav_instances, "m", _RhSubnav_update).call(this);
-}, _RhSubnav_firstLastClasses = function _RhSubnav_firstLastClasses() {
+};
+_RhSubnav_firstLastClasses = function _RhSubnav_firstLastClasses() {
     __classPrivateFieldGet(this, _RhSubnav_instances, "a", _RhSubnav_firstLink_get).classList.add('first');
     __classPrivateFieldGet(this, _RhSubnav_instances, "a", _RhSubnav_lastLink_get).classList.add('last');
-}, _RhSubnav_scrollLeft = function _RhSubnav_scrollLeft() {
+};
+_RhSubnav_scrollLeft = function _RhSubnav_scrollLeft() {
     __classPrivateFieldGet(this, _RhSubnav_overflow, "f").scrollLeft();
-}, _RhSubnav_scrollRight = function _RhSubnav_scrollRight() {
+};
+_RhSubnav_scrollRight = function _RhSubnav_scrollRight() {
     __classPrivateFieldGet(this, _RhSubnav_overflow, "f").scrollRight();
 };
 RhSubnav.styles = [styles];

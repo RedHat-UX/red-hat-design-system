@@ -11,12 +11,13 @@ export declare class AccordionHeaderChangeEvent extends ComposedEvent {
 }
 export declare abstract class BaseAccordionHeader extends LitElement {
     #private;
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     static readonly shadowRootOptions: {
         delegatesFocus: boolean;
         mode: ShadowRootMode;
         slotAssignment?: SlotAssignmentMode | undefined;
         customElements?: CustomElementRegistry | undefined;
+        registry?: CustomElementRegistry | undefined;
     };
     expanded: boolean;
     headingText?: string;

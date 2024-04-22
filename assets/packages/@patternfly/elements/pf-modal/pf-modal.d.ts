@@ -56,8 +56,9 @@ export declare class PfModal extends LitElement implements HTMLDialogElement {
         mode: ShadowRootMode;
         slotAssignment?: SlotAssignmentMode | undefined;
         customElements?: CustomElementRegistry | undefined;
+        registry?: CustomElementRegistry | undefined;
     };
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     /** Should the dialog close when user clicks outside the dialog? */
     protected static closeOnOutsideClick: boolean;
     /**
@@ -65,7 +66,6 @@ export declare class PfModal extends LitElement implements HTMLDialogElement {
      * There are three options: `small`, `medium` and `large`. The default is `large`.
      */
     variant?: 'small' | 'medium' | 'large';
-    width?: 'small' | 'medium' | 'large';
     /**
      * `position="top"` aligns the dialog with the top of the page
      */
@@ -79,7 +79,7 @@ export declare class PfModal extends LitElement implements HTMLDialogElement {
     private dialog?;
     private closeButton?;
     connectedCallback(): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
     disconnectedCallback(): void;
     protected _init(): Promise<void>;
     protected _openChanged(oldValue?: boolean, newValue?: boolean): Promise<void>;

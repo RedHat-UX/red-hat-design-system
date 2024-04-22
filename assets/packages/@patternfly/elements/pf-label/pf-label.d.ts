@@ -87,7 +87,7 @@ export type LabelColor = ('blue' | 'cyan' | 'green' | 'orange' | 'purple' | 'red
  * @cssprop {<length>} --pf-c-label--m-compact--PaddingLeft    {@default `0.5rem`}
  */
 export declare class PfLabel extends BaseLabel {
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     static readonly shadowRootOptions: ShadowRootInit;
     /**
      * Changes the style of the label.
@@ -109,9 +109,9 @@ export declare class PfLabel extends BaseLabel {
     removable: boolean;
     /** Text label for a removable label's close button */
     closeButtonLabel?: string;
-    render(): import("lit-html").TemplateResult<1>;
-    protected renderDefaultIcon(): import("lit-html").TemplateResult<1> | "";
-    protected renderSuffix(): import("lit-html").TemplateResult<1> | "";
+    render(): import("lit").TemplateResult<1>;
+    protected renderDefaultIcon(): import("lit").TemplateResult<1> | "";
+    protected renderSuffix(): import("lit").TemplateResult<1> | "";
 }
 declare global {
     interface HTMLElementTagNameMap {

@@ -24,14 +24,14 @@ import { type Placement } from '@patternfly/pfe-core/controllers/floating-dom-co
 export declare class RhTooltip extends LitElement {
     #private;
     static readonly version = "{{version}}";
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     /** The position of the tooltip, relative to the invoking content */
     position: Placement;
     /** Tooltip content. Overridden by the content slot */
     content?: string;
     private on?;
     connectedCallback(): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
     /** Show the tooltip */
     show(): Promise<void>;
     /** Hide the tooltip */

@@ -3,7 +3,6 @@
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-var _a, _b, _c;
 /**
  * The main LitElement module, which defines the {@linkcode LitElement} base
  * class and related APIs.
@@ -50,15 +49,20 @@ import { ReactiveElement } from '@lit/reactive-element';
 import { render, noChange } from 'lit-html';
 export * from '@lit/reactive-element';
 export * from 'lit-html';
-// For backwards compatibility export ReactiveElement as UpdatingElement. Note,
-// IE transpilation requires exporting like this.
-export const UpdatingElement = ReactiveElement;
+/*
+ * When using Closure Compiler, JSCompiler_renameProperty(property, object) is
+ * replaced at compile time by the munged name for object[property]. We cannot
+ * alias this function, so we have to use a small shim that has the same
+ * behavior when not compiling.
+ */
+/*@__INLINE__*/
+const JSCompiler_renameProperty = (prop, _obj) => prop;
 const DEV_MODE = true;
 let issueWarning;
 if (DEV_MODE) {
     // Ensure warnings are issued only 1x, even if multiple versions of Lit
     // are loaded.
-    const issuedWarnings = ((_a = globalThis.litIssuedWarnings) !== null && _a !== void 0 ? _a : (globalThis.litIssuedWarnings = new Set()));
+    const issuedWarnings = (globalThis.litIssuedWarnings ??= new Set());
     // Issue a warning, if we haven't already.
     issueWarning = (code, warning) => {
         warning += ` See https://lit.dev/msg/${code} for more information.`;
@@ -90,15 +94,13 @@ export class LitElement extends ReactiveElement {
      * @category rendering
      */
     createRenderRoot() {
-        var _a;
-        var _b;
         const renderRoot = super.createRenderRoot();
         // When adoptedStyleSheets are shimmed, they are inserted into the
         // shadowRoot by createRenderRoot. Adjust the renderBefore node so that
         // any styles in Lit content render before adoptedStyleSheets. This is
         // important so that adoptedStyleSheets have precedence over styles in
         // the shadowRoot.
-        (_a = (_b = this.renderOptions).renderBefore) !== null && _a !== void 0 ? _a : (_b.renderBefore = renderRoot.firstChild);
+        this.renderOptions.renderBefore ??= renderRoot.firstChild;
         return renderRoot;
     }
     /**
@@ -140,9 +142,8 @@ export class LitElement extends ReactiveElement {
      * @category lifecycle
      */
     connectedCallback() {
-        var _a;
         super.connectedCallback();
-        (_a = this.__childPart) === null || _a === void 0 ? void 0 : _a.setConnected(true);
+        this.__childPart?.setConnected(true);
     }
     /**
      * Invoked when the component is removed from the document's DOM.
@@ -164,9 +165,8 @@ export class LitElement extends ReactiveElement {
      * @category lifecycle
      */
     disconnectedCallback() {
-        var _a;
         super.disconnectedCallback();
-        (_a = this.__childPart) === null || _a === void 0 ? void 0 : _a.setConnected(false);
+        this.__childPart?.setConnected(false);
     }
     /**
      * Invoked on each update to perform rendering tasks. This method may return
@@ -179,6 +179,8 @@ export class LitElement extends ReactiveElement {
         return noChange;
     }
 }
+// This property needs to remain unminified.
+LitElement['_$litElement$'] = true;
 /**
  * Ensure this class is marked as `finalized` as an optimization ensuring
  * it will not needlessly try to `finalize`.
@@ -186,42 +188,14 @@ export class LitElement extends ReactiveElement {
  * Note this property name is a string to prevent breaking Closure JS Compiler
  * optimizations. See @lit/reactive-element for more information.
  */
-LitElement['finalized'] = true;
-// This property needs to remain unminified.
-LitElement['_$litElement$'] = true;
+LitElement[JSCompiler_renameProperty('finalized', LitElement)] = true;
 // Install hydration if available
-(_b = globalThis.litElementHydrateSupport) === null || _b === void 0 ? void 0 : _b.call(globalThis, { LitElement });
+globalThis.litElementHydrateSupport?.({ LitElement });
 // Apply polyfills if available
 const polyfillSupport = DEV_MODE
     ? globalThis.litElementPolyfillSupportDevMode
     : globalThis.litElementPolyfillSupport;
-polyfillSupport === null || polyfillSupport === void 0 ? void 0 : polyfillSupport({ LitElement });
-// DEV mode warnings
-if (DEV_MODE) {
-    /* eslint-disable @typescript-eslint/no-explicit-any */
-    // Note, for compatibility with closure compilation, this access
-    // needs to be as a string property index.
-    LitElement['finalize'] = function () {
-        const finalized = ReactiveElement.finalize.call(this);
-        if (!finalized) {
-            return false;
-        }
-        const warnRemovedOrRenamed = (obj, name, renamed = false) => {
-            if (obj.hasOwnProperty(name)) {
-                const ctorName = (typeof obj === 'function' ? obj : obj.constructor)
-                    .name;
-                issueWarning(renamed ? 'renamed-api' : 'removed-api', `\`${name}\` is implemented on class ${ctorName}. It ` +
-                    `has been ${renamed ? 'renamed' : 'removed'} ` +
-                    `in this version of LitElement.`);
-            }
-        };
-        warnRemovedOrRenamed(this, 'render');
-        warnRemovedOrRenamed(this, 'getStyles', true);
-        warnRemovedOrRenamed(this.prototype, 'adoptStyles');
-        return true;
-    };
-    /* eslint-enable @typescript-eslint/no-explicit-any */
-}
+polyfillSupport?.({ LitElement });
 /**
  * END USERS SHOULD NOT RELY ON THIS OBJECT.
  *
@@ -250,7 +224,7 @@ export const _$LE = {
 };
 // IMPORTANT: do not change the property name or the assignment expression.
 // This line will be used in regexes to search for LitElement usage.
-((_c = globalThis.litElementVersions) !== null && _c !== void 0 ? _c : (globalThis.litElementVersions = [])).push('3.3.2');
+(globalThis.litElementVersions ??= []).push('4.0.4');
 if (DEV_MODE && globalThis.litElementVersions.length > 1) {
     issueWarning('multiple-versions', `Multiple versions of Lit loaded. Loading multiple versions ` +
         `is not recommended.`);

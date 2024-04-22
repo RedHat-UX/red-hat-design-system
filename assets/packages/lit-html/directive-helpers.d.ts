@@ -3,7 +3,7 @@
  * Copyright 2020 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-import { Part, DirectiveParent, TemplateResult } from './lit-html.js';
+import { Part, DirectiveParent, TemplateResult, CompiledTemplateResult } from './lit-html.js';
 import { DirectiveResult, DirectiveClass, PartInfo } from './directive.js';
 declare type Primitive = null | undefined | boolean | number | string | symbol | bigint;
 /**
@@ -17,10 +17,18 @@ export declare const TemplateResultType: {
     readonly SVG: 2;
 };
 export declare type TemplateResultType = (typeof TemplateResultType)[keyof typeof TemplateResultType];
+declare type IsTemplateResult = {
+    (val: unknown): val is TemplateResult | CompiledTemplateResult;
+    <T extends TemplateResultType>(val: unknown, type: T): val is TemplateResult<T>;
+};
 /**
- * Tests if a value is a TemplateResult.
+ * Tests if a value is a TemplateResult or a CompiledTemplateResult.
  */
-export declare const isTemplateResult: (value: unknown, type?: TemplateResultType) => value is TemplateResult<1 | 2>;
+export declare const isTemplateResult: IsTemplateResult;
+/**
+ * Tests if a value is a CompiledTemplateResult.
+ */
+export declare const isCompiledTemplateResult: (value: unknown) => value is CompiledTemplateResult;
 /**
  * Tests if a value is a DirectiveResult.
  */

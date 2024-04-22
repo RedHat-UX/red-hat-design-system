@@ -6,10 +6,10 @@ import { LitElement } from 'lit';
  */
 export declare class RhAudioPlayerScrollingTextOverflow extends LitElement {
     #private;
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     private on?;
     firstUpdated(): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
     stopScrolling(): void;
     startScrolling(): void;
 }

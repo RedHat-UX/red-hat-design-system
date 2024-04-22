@@ -9,14 +9,14 @@ import { LitElement } from 'lit';
  */
 export declare class PfJumpLinksItem extends LitElement {
     #private;
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     static readonly shadowRootOptions: ShadowRootInit;
     /** Whether this item is active. */
     active: boolean;
     /** hypertext reference for this link */
     href?: string;
     connectedCallback(): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
     private activeChanged;
 }
 declare global {

@@ -11,10 +11,10 @@ import { LitElement } from 'lit';
  */
 export declare class PfPanel extends LitElement {
     #private;
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     scrollable: boolean;
     variant?: 'raised' | 'bordered';
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

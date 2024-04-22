@@ -1,4 +1,4 @@
-import { decorateProperty } from './base.js';
+import { desc } from './base.js';
 
 /**
  * @license
@@ -43,16 +43,13 @@ import { decorateProperty } from './base.js';
  * @category Decorator
  */
 function queryAsync(selector) {
-    return decorateProperty({
-        descriptor: (_name) => ({
+    return ((obj, name) => {
+        return desc(obj, name, {
             async get() {
-                var _a;
                 await this.updateComplete;
-                return (_a = this.renderRoot) === null || _a === void 0 ? void 0 : _a.querySelector(selector);
+                return this.renderRoot?.querySelector(selector) ?? null;
             },
-            enumerable: true,
-            configurable: true,
-        }),
+        });
     });
 }
 

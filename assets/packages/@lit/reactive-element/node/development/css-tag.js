@@ -3,7 +3,8 @@
  * Copyright 2019 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-const global = globalThis ;
+// Allows minifiers to rename references to globalThis
+const global = globalThis;
 /**
  * Whether the current browser supports `adoptedStyleSheets`.
  */
@@ -105,7 +106,7 @@ const adoptStyles = (renderRoot, styles) => {
         renderRoot.adoptedStyleSheets = styles.map((s) => s instanceof CSSStyleSheet ? s : s.styleSheet);
     }
     else {
-        styles.forEach((s) => {
+        for (const s of styles) {
             const style = document.createElement('style');
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const nonce = global['litNonce'];
@@ -114,7 +115,7 @@ const adoptStyles = (renderRoot, styles) => {
             }
             style.textContent = s.cssText;
             renderRoot.appendChild(style);
-        });
+        }
     }
 };
 const cssResultFromStyleSheet = (sheet) => {

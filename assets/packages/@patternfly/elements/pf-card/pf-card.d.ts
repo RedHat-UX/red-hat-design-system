@@ -45,7 +45,7 @@ import { BaseCard } from './BaseCard.js';
  * @cssproperty {<color>} --pf-c-card__title--FontWeight {@default `700`}
  */
 export declare class PfCard extends BaseCard {
-    static readonly styles: import("lit").CSSResult[];
+    static readonly styles: CSSStyleSheet[];
     /**
      * Optionally provide a size for the card and the card contents.
      * The default is set to `undefined` and provides default styles.

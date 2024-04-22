@@ -1,4 +1,4 @@
-import { BaseTab } from './BaseTab.js';
+import { LitElement } from 'lit';
 /**
  * Tab
  *
@@ -57,12 +57,20 @@ import { BaseTab } from './BaseTab.js';
  *
  * @cssprop     {<length>} --pf-c-tabs__link--child--MarginRight  {@default `1rem`}
  *
- * @fires { TabExpandEvent } expand - when a tab expands
+ * @fires {TabExpandEvent} expand - when a tab expands
  */
-export declare class PfTab extends BaseTab {
-    static readonly styles: import("lit").CSSResult[];
+export declare class PfTab extends LitElement {
+    #private;
+    static readonly styles: CSSStyleSheet[];
+    private icons;
     active: boolean;
     disabled: boolean;
+    private ctx?;
+    connectedCallback(): void;
+    willUpdate(): void;
+    render(): import("lit").TemplateResult<1>;
+    private _activeChanged;
+    private _disabledChanged;
 }
 declare global {
     interface HTMLElementTagNameMap {

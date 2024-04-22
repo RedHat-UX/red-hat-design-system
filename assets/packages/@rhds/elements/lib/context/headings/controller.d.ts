@@ -1,5 +1,5 @@
 import type { ReactiveController, ReactiveElement, TemplateResult } from 'lit';
-import { type ContextEvent, type UnknownContext } from '../event.js';
+import { type ContextRequestEvent } from '../event.js';
 import type { HeadingLevelContextConsumer } from './consumer.js';
 export interface HeadingLevelTemplateOptions {
     id?: string;
@@ -30,12 +30,14 @@ export interface HeadingLevelContextOptions {
  *          ```html
  *          <early-provider>
  *            <late-provider>
- *              <eager-consumer>
+ *              <eager-consumer></eager-consumer>
  *            </late-provider>
  *          </early-provider>
  *          ```
  */
-export declare const contextEvents: Map<ReactiveElement, ContextEvent<UnknownContext>>;
+export declare const contextEvents: Map<ReactiveElement, ContextRequestEvent<{
+    __context__: unknown;
+}>>;
 /**
  * Determines which heading level immediately precedes the host element,
  * and provides templates for shadow headings.
@@ -45,9 +47,10 @@ export declare class HeadingLevelController implements ReactiveController {
     protected host: ReactiveElement;
     /** Heading level preceding component document, as in 1 for <h1>, 2 for <h2> etc. */
     protected options?: HeadingLevelContextOptions | undefined;
-    static get CONTEXT(): string;
+    static readonly context: Readonly<{
+        __context__: number;
+    }>;
     offset: number;
-    protected context: Readonly<import("../event.js").Context<number>>;
     get level(): number;
     set level(level: string | number | undefined | null);
     constructor(host: ReactiveElement, 

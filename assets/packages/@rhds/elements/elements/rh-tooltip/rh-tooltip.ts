@@ -66,7 +66,6 @@ export class RhTooltip extends LitElement {
   override render() {
     const { on = '' } = this;
     const { alignment, anchor, open, styles } = this.#float;
-    const ariaHidden = String(!open) as 'true' | 'false';
 
     return html`
       <div id="container"
@@ -76,10 +75,12 @@ export class RhTooltip extends LitElement {
                                [on]: !!on,
                                [anchor]: !!anchor,
                                [alignment]: !!alignment })}">
-        <slot id="invoker" role="tooltip" aria-labelledby="tooltip"></slot>
-        <slot id="tooltip"
-              name="content"
-              aria-hidden="${ariaHidden}">${this.content}</slot>
+        <div class="c" role="tooltip" aria-labelledby="tooltip">
+          <slot id="invoker"></slot>
+        </div>
+        <div class="c" aria-hidden="${String(!open) as 'true' | 'false'}">
+          <slot id="tooltip" name="content">${this.content}</slot>
+        </div>
       </div>
     `;
   }
@@ -92,7 +93,7 @@ export class RhTooltip extends LitElement {
         !placement?.match(/top|bottom/) ? 15
       : { mainAxis: 15, alignmentAxis: -4 };
     await this.#float.show({ offset, placement });
-    this.#initialized = true;
+    this.#initialized ||= true;
   }
 
   /** Hide the tooltip */
