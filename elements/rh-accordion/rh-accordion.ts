@@ -4,6 +4,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
 import { observed } from '@patternfly/pfe-core/decorators/observed.js';
+import { provide } from '@lit/context';
 
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 
@@ -16,7 +17,10 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { RhAccordionHeader, AccordionHeaderChangeEvent } from './rh-accordion-header.js';
 import { RhAccordionPanel } from './rh-accordion-panel.js';
 
+import { context, type RhAccordionContext } from './context.js';
+
 import styles from './rh-accordion.css';
+
 
 export class AccordionExpandEvent extends ComposedEvent {
   constructor(
@@ -48,6 +52,10 @@ export class AccordionCollapseEvent extends ComposedEvent {
  * @slot
  *       Place the `rh-accordion-header` and `rh-accordion-panel` elements here.
  *
+ * @attr  accents
+ *        Position accents in the header either inline or bottom
+ *        {@default inline}
+ *
  */
 @customElement('rh-accordion')
 export class RhAccordion extends LitElement {
@@ -70,6 +78,14 @@ export class RhAccordion extends LitElement {
   static isAccordionChangeEvent(event: Event): event is AccordionHeaderChangeEvent {
     return event instanceof AccordionHeaderChangeEvent;
   }
+
+  /**
+   * Sets accordion header's accents position to inline or bottom
+   */
+  @property({
+    attribute: true,
+    reflect: true,
+  }) accents?: 'inline' | 'bottom';
 
   /**
    * Sets and reflects the currently expanded accordion 0-based indexes.
@@ -101,6 +117,12 @@ export class RhAccordion extends LitElement {
     }
   }
 
+  get #ctx(): RhAccordionContext {
+    const accents = this.accents ? this.accents : 'inline';
+    return { accents };
+  }
+
+
   @observed(function largeChanged(this: RhAccordion) {
     [...this.headers, ...this.panels].forEach(el => el.toggleAttribute('large', this.large));
   })
@@ -128,6 +150,8 @@ export class RhAccordion extends LitElement {
 
   #mo = new MutationObserver(() => this.#init());
 
+  @provide({ context }) private ctx = this.#ctx;
+
   connectedCallback() {
     super.connectedCallback();
     this.addEventListener('change', this.#onChange as EventListener);
@@ -153,6 +177,7 @@ export class RhAccordion extends LitElement {
         }
       }
     });
+    this.ctx = this.#ctx;
   }
 
   /**
