@@ -116,6 +116,12 @@ span {
   gap: var(--rh-space-md, 8px);
 }
 
+[part="accents"] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--rh-space-md, 8px);
+}
+
 #button[aria-expanded="true"] #icon {
   rotate: calc(var(--_isRTL, -1) * 180deg);
 }
