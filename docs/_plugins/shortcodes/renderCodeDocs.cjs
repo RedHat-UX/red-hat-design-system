@@ -71,15 +71,18 @@ class Renderers {
     const component = this.kwargs.for ?? this.docsPage.tagName;
     const description = this.manifest.getDescription(component);
 
-    const allSlots = this.docsPage.manifest.getSlots(this.packageTagName({ level, for: component })) ?? [];
+    const allSlots =
+      this.docsPage.manifest.getSlots(this.packageTagName({ level, for: component })) ?? [];
     const slotCount = allSlots.filter(x => !x.deprecated).length;
     const deprecatedSlotCount = allSlots.filter(x => x.deprecated).length;
 
-    const allAttr = this.manifest.getAttributes(this.packageTagName({ level, for: component })) ?? [];
+    const allAttr =
+      this.manifest.getAttributes(this.packageTagName({ level, for: component })) ?? [];
     const attrCount = allAttr.filter(x => !x.deprecated).length;
     const deprecatedAttrCount = allAttr.filter(x => x.deprecated).length;
 
-    const allMethods = this.manifest.getMethods(this.packageTagName({ level, for: component })) ?? [];
+    const allMethods =
+      this.manifest.getMethods(this.packageTagName({ level, for: component })) ?? [];
     const methodsCount = allMethods.filter(x => !x.deprecated).length;
     const deprecatedMethodsCount = allMethods.filter(x => x.deprecated).length;
 
@@ -87,15 +90,20 @@ class Renderers {
     const eventsCount = allEvents.filter(x => !x.deprecated).length;
     const deprecatedEventsCount = allEvents.filter(x => x.deprecated).length;
 
-    const allCssParts = this.manifest.getCssParts(this.packageTagName({ level, for: component })) ?? [];
+    const allCssParts =
+      this.manifest.getCssParts(this.packageTagName({ level, for: component })) ?? [];
     const cssPartsCount = allCssParts.filter(x => !x.deprecated).length;
     const deprecatedCssPartsCount = allCssParts.filter(x => x.deprecated).length;
 
-    const allCssProperties = this.manifest.getCssCustomProperties(this.packageTagName({ level, for: component })) ?? [];
-    const cssPropertiesCount = allCssProperties.filter(x => !x.deprecated && !tokens.has(x.name)).length;
-    const deprecatedCssPropertiesCount = allCssProperties.filter(x => x.deprecated && !tokens.has(x.name)).length;
+    const allCssProperties =
+      this.manifest.getCssCustomProperties(this.packageTagName({ level, for: component })) ?? [];
+    const cssPropertiesCount =
+      allCssProperties.filter(x => !x.deprecated && !tokens.has(x.name)).length;
+    const deprecatedCssPropertiesCount =
+      allCssProperties.filter(x => x.deprecated && !tokens.has(x.name)).length;
 
-    const allDesignTokens = this.manifest.getCssCustomProperties(this.packageTagName({ level, for: component })) ?? [];
+    const allDesignTokens =
+      this.manifest.getCssCustomProperties(this.packageTagName({ level, for: component })) ?? [];
     const designTokensCount = allDesignTokens.filter(x => tokens.has(x.name)).length;
 
 

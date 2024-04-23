@@ -8,8 +8,8 @@ function groupBy(prop, xs) {
 
 function getDemoFilename(x) {
   return `demo/${(x.url.split('/demo/').pop() || `${x.primaryElementName}.html`).replace(/\/$/, '.html')}`
-    .replace('.html', '/index.html')
-    .replace(`${x.primaryElementName}/index.html`, 'index.html');
+      .replace('.html', '/index.html')
+      .replace(`${x.primaryElementName}/index.html`, 'index.html');
 }
 
 /**
@@ -26,7 +26,8 @@ function getDemoFilename(x) {
  * > One of `.`, or **WORD** (_>= 1x_)
  * `"`
  */
-const DEMO_SUBRESOURCE_RE = /(?<attr>href|src)="\/elements\/rh-(?<unprefixed>.*)\/(?<filename>.*)\.(?<extension>[.\w]+)"/g;
+const DEMO_SUBRESOURCE_RE =
+  /(?<attr>href|src)="\/elements\/rh-(?<unprefixed>.*)\/(?<filename>.*)\.(?<extension>[.\w]+)"/g;
 
 /**
  * `/elements/`
@@ -63,16 +64,16 @@ function demoPaths(content, pathname) {
 
 function isModuleScript(node) {
   return (
-    node.tagName === 'script' &&
-    node.attrs.some(x => x.name === 'type' && x.value === 'module')
+    node.tagName === 'script'
+    && node.attrs.some(x => x.name === 'type' && x.value === 'module')
   );
 }
 
 function isStyleLink(node) {
   return (
-    node.tagName === 'link' &&
-    node.attrs.some(x => x.name === 'rel' && x.value === 'stylesheet') &&
-    node.attrs.some(x => x.name === 'href')
+    node.tagName === 'link'
+    && node.attrs.some(x => x.name === 'rel' && x.value === 'stylesheet')
+    && node.attrs.some(x => x.name === 'href')
   );
 }
 
@@ -150,17 +151,18 @@ module.exports = async function(data) {
       const filename = getDemoFilename(demo);
 
       /** @see docs/_plugins/rhds.cjs demoPaths transform */
-      const base = url.pathToFileURL(path.join(process.cwd(), 'elements', primaryElementName, 'demo/'));
+      const base =
+        url.pathToFileURL(path.join(process.cwd(), 'elements', primaryElementName, 'demo/'));
       const docsDir = url.pathToFileURL(path.join(process.cwd(), 'docs/'));
       const isMainDemo = filename === 'demo/index.html';
       const demoSlug = filename.split('/').at(1);
 
       const addSubresourceURL = async subresourceURL => {
         if (subresourceURL && !subresourceURL.startsWith('http')) {
-          const subresourceFileURL = !subresourceURL.startsWith('/')
+          const subresourceFileURL = !subresourceURL.startsWith('/') ?
             // non-tabular ternary
-            // eslint-disable-next-line operator-linebreak
-            ? new URL(subresourceURL, base)
+
+            new URL(subresourceURL, base)
             : new URL(subresourceURL.replace('/', './'), docsDir);
           try {
             const resourceName =
@@ -198,13 +200,13 @@ module.exports = async function(data) {
       });
 
       const hrefSubresourceElements = Tools.queryAll(fragment, node =>
-        Tools.isElementNode(node) &&
-          isStyleLink(node));
+        Tools.isElementNode(node)
+          && isStyleLink(node));
 
       const srcSubresourceElements = Tools.queryAll(fragment, node =>
-        Tools.isElementNode(node) &&
-        SRC_SUBRESOURCE_TAGNAMES.has(node.tagName) &&
-        hasLocalSrcAttr(node));
+        Tools.isElementNode(node)
+        && SRC_SUBRESOURCE_TAGNAMES.has(node.tagName)
+        && hasLocalSrcAttr(node));
 
       // register demo css resources
       for (const el of hrefSubresourceElements) {
@@ -214,7 +216,8 @@ module.exports = async function(data) {
         } catch (e) {
           // we can swallow the error for the demo typography and font file because we wrote it ourselves above.
           // maybe not the most elegant solution, but it works
-          if (e.subresourceFileURL?.href?.endsWith('typography.css') || e.subresourceFileURL?.href?.endsWith('fonts.css')) {
+          if (e.subresourceFileURL?.href?.endsWith('typography.css')
+            || e.subresourceFileURL?.href?.endsWith('fonts.css')) {
             continue;
           } else {
             // In order to surface the error to the user, let's enable console logging
@@ -234,9 +237,9 @@ module.exports = async function(data) {
       // HACK: https://github.com/google/playground-elements/issues/93#issuecomment-1775247123
       const inlineModules =
         Tools.queryAll(fragment, node =>
-          Tools.isElementNode(node) &&
-          isModuleScript(node) &&
-          !node.attrs.some(({ name }) => name === 'src'));
+          Tools.isElementNode(node)
+          && isModuleScript(node)
+          && !node.attrs.some(({ name }) => name === 'src'));
 
       Array.from(inlineModules).forEach((el, i) => {
         const moduleName = `${primaryElementName}-${demoSlug.replace('.html', '')}-inline-script-${i++}.js`;

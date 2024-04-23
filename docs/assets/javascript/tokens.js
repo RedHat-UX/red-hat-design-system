@@ -8,11 +8,11 @@ import '@rhds/elements/rh-footer/rh-footer-universal.js';
 import '/assets/javascript/elements/uxdot-search.js';
 
 document
-  .getElementById('search-input')
-  .addEventListener('focus', async function() {
-    const { init } = await import('/assets/javascript/search-tokens.js');
-    init(document.getElementById('search-tokens'));
-  }, { once: true });
+    .getElementById('search-input')
+    .addEventListener('focus', async function() {
+      const { init } = await import('/assets/javascript/search-tokens.js');
+      init(document.getElementById('search-tokens'));
+    }, { once: true });
 
 // colour variants
 for (const details of document.querySelectorAll('.variants details')) {

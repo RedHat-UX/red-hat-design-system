@@ -2,11 +2,10 @@
 
   <script async src="https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js"></script>
 
-
+  {% for tag in importElements %}
+    <script type="module">import '@rhds/elements/{{tag}}/{{tag}}.js';</script>
+  {% endfor %}
   <script type="module">
-    {% for tag in importElements %}import '@rhds/elements/{{tag}}/{{tag}}.js';
-    {% endfor %}
-
     import '/assets/javascript/elements/uxdot-skip-navigation.js';
     import '/assets/javascript/elements/uxdot-copy-permalink.js';
     import '/assets/javascript/elements/uxdot-masthead.js';
@@ -15,7 +14,6 @@
     import '/assets/javascript/elements/uxdot-example.js';
     import '/assets/javascript/elements/uxdot-repo-status-list.js';
 
-    import { PfButton } from '@patternfly/elements/pf-button/pf-button.js';
     import { PfIcon } from '@patternfly/elements/pf-icon/pf-icon.js';
     PfIcon.getIconUrl = (set, icon) =>
       new URL(`/assets/packages/@patternfly/icons/${set}/${icon}.js`, location.origin);

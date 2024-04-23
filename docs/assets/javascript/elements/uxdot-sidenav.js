@@ -120,7 +120,7 @@ class UxdotSideNav extends LitElement {
           <button id="close-button"
               part="close-button"
               aria-label="Close dialog"
-              @keydown=${this.onKeydownCloseButton}
+              @keydown=${this.#onKeydownCloseButton}
               @click=${this.toggle}>
             <pf-icon set="patternfly" icon="close" size="lg"></pf-icon>
           </button>

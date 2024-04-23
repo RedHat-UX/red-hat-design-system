@@ -22,21 +22,21 @@ const rhdsPermalink = makePermalink((slug, opts, anchorOpts, state, idx) => {
     content: /* html */`
 <uxdot-copy-permalink class="${headerOpen.tag}">
   <${headerOpen.tag} ${headerOpen.attrs.map(([key, value]) => `${key}="${value}"`).join(' ')}>
-    <a href="#${id}">`.trim()
+    <a href="#${id}">`.trim(),
   }),
-  inline,
-  Object.assign(new state.Token('html_block', '', 0), { content: /* html */`
+                      inline,
+                      Object.assign(new state.Token('html_block', '', 0), { content: /* html */`
     </a>
       </${headerOpen.tag}>
     </uxdot-copy-permalink>`.trim(),
-  })
+                      })
   );
 });
 
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function(eleventyConfig) {
   eleventyConfig.amendLibrary('md', /** @param {import('markdown-it')} md*/md => md
-    .set({ html: true, breaks: false })
-    .use(markdownItAnchor, { permalink: rhdsPermalink() })
-    .use(markdownItAttrs));
+      .set({ html: true, breaks: false })
+      .use(markdownItAnchor, { permalink: rhdsPermalink() })
+      .use(markdownItAttrs));
 };

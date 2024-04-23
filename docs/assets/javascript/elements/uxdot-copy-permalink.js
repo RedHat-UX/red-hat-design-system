@@ -38,7 +38,7 @@ class UxdotCopyPermalink extends LitElement {
 
   static properties = {
     copyButtonLabel: { type: String, attribute: 'copy-button-label' },
-    copiedText: { type: String, attribute: 'copied-text' }
+    copiedText: { type: String, attribute: 'copied-text' },
   };
 
   constructor() {
