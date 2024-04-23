@@ -174,6 +174,7 @@ function getRepoData() {
  * Calls getRepoData function and outputs a definition list for each component
  */
 function repoStatusList({ heading = 'Status', level = 2 } = {}) {
+  const docsPage = this.ctx._;
   // Removing Documentation status from the repoStatusList
   const statusList = getRepoData.call(this)?.filter(repo => repo.name !== 'Documentation');
 
@@ -181,30 +182,18 @@ function repoStatusList({ heading = 'Status', level = 2 } = {}) {
     return '';
   } else {
     return /* html */`
-  <div class="component-status-list-heading">
-    <uxdot-copy-permalink class="h${level}">
-      <h${level} id=${heading.toLowerCase()} tabindex="-1">
-        <a class="heading-anchor" href="#${heading.toLowerCase()}">${heading}</a>
-      </h${level}>
-    </uxdot-copy-permalink>
-    <p><a href="#status-checklist">What do these mean?</a></p>
-  </div>
-
-  <div class="component-status-list-container">
-    <dl>
-        ${statusList.map(listItem => {
-    return /* html */`
-  <div>
-<dt>${listItem.name}</dt>
-<dd>
-<rh-tag color=${STATUS_LEGEND[listItem.status].color} variant=${STATUS_LEGEND[listItem.status].variant}>
-${listItem.status}${STATUS_LEGEND[listItem.status].icon}
-</rh-tag>
-</dd>
-</div>`;
+<uxdot-repo-status-list>
+  <uxdot-copy-permalink slot="header">
+    <h${level} id=${heading.toLowerCase()} tabindex="-1" >
+      <a href="#${heading.toLowerCase()}">${heading}</a>
+    </h${level}>
+  </uxdot-copy-permalink>
+  <a href="#status-checklist" slot="checklist">What do these mean?</a>
+<dl>
+  ${statusList.map(listItem => {
+    return /* html */`<div><dt>${listItem.name}:</dt><dd><rh-tag color="${STATUS_LEGEND[listItem.status].color}" variant="${STATUS_LEGEND[listItem.status].variant}">${listItem.status}${STATUS_LEGEND[listItem.status].icon.trim()}</rh-tag></dd></div>`.trim();
   }).join('\n').trim()}
-    </dl>
-  </div>`;
+  </dl></uxdot-repo-status-list>`.trim();
   }
 }
 
