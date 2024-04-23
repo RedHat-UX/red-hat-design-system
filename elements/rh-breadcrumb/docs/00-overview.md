@@ -1,3 +1,5 @@
+<link rel="stylesheet" type="text/css" href="/assets/packages/@rhds/elements/elements/rh-breadcrumb/rh-breadcrumb-lightdom.css">
+
 ## Overview
 
 {{ tagName | getElementDescription }}
