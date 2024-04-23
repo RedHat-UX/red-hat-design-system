@@ -48,7 +48,6 @@ expands to reveal more information.
   </rh-accordion-panel>
 </rh-accordion>
 
-{% repoStatus type="Pattern" %}
 
 ## Style
 

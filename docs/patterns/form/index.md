@@ -19,7 +19,6 @@ A Form is a group of elements used to collect information from a user. It can in
   <img src="{{ './form-samples.svg' | url }}" alt="Form component samples">
 </uxdot-example>
 
-{% repoStatus type="Pattern" %}
 
 ## Style
 

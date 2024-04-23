@@ -23,9 +23,6 @@ Link with icon features an icon that adds context to the link itself. It’s pos
 </uxdot-example>
 
 
-{% repoStatus type="Pattern" %}
-
-
 ## Style
 
 Link with icon is available in light and dark themes. It’s a grouping of a small icon near a link, similar to how a list item is a grouping of a bullet point near text. The icon chosen should represent what a user will get when they click on or tap the link. It acts as a functional addition instead of only visual.

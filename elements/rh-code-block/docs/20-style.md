@@ -6,7 +6,7 @@ container.
 ### Anatomy
 
 <figure>
-  <uxdot-example width-adjustment="360px">
+  <uxdot-example width-adjustment="870px">
     <img src="{{ '../code-block-anatomy.png' | url }}" alt="Image of code block anatomy showing two annotations">
   </uxdot-example>
   <figcaption>

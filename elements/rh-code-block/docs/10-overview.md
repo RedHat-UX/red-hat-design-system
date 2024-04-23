@@ -31,11 +31,13 @@ View a live version of this element to see how it can be customized.
 
 {% playground tagName=tagName %}{% endplayground %}
 
-<rh-cta><a href="{{ './demo/' | url }}">Full screen demo</a></rh-cta>
+<rh-cta>
+<a href="{{ './demo/' | url }}">Full screen demo</a>
+</rh-cta>
 
 
 ## When to use
 
-- When you need to highlight a block of code while maintaining the formatting
+  - When you need to highlight a block of code while maintaining the formatting
 
 {% repoStatusChecklist %}

@@ -19,8 +19,6 @@ Skip navigation is a styled link that appears at the top of a page when the Tab 
   <img src="{{ './skip-nav.svg' | url }}" alt="Skip navigation">
 </uxdot-example>
 
-{% repoStatus type="Pattern" %}
-
 
 ## Style
 

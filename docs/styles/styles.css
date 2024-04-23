@@ -208,6 +208,10 @@
     font-weight: var(--rh-font-weight-code-regular, 400);
   }
 
+  :where(code:empty) {
+    display: none;
+  }
+
   /* prism js, when a code is used in a pre remove the background color */
   pre:has(code) :where(code) {
     background: none;

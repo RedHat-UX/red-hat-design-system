@@ -22,8 +22,6 @@ a button. It allows a user to input text and then perform a search.
   <img src="{{ './search-bar-sample.svg' | url }}" alt="Search bar component sample">
 </uxdot-example>
 
-{% repoStatus type="Pattern" %}
-
 
 ## Style
 

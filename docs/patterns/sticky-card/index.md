@@ -20,8 +20,6 @@ Sticky cards slide into view at a certain scroll position and then anchor themse
   <img src="{{ './sticky-card.svg' | url }}" alt="Sticky card">
 </uxdot-example>
 
-{% repoStatus type="Pattern" %}
-
 
 ## Style
 

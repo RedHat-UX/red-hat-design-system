@@ -1,5 +1,5 @@
 <uxdot-header>
-  <h1 id="{{ title | slug }}" class="page-title">{{ title }}</h1>
+  <h1 id="{{ (heading if heading else title) | lower | slug }}" class="page-title">{{ heading if heading else title }}</h1>
 
   {% if tokenSearch %}
     <form slot="search" id="search-tokens" action="/tokens/search">

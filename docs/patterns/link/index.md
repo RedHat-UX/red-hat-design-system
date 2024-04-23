@@ -22,8 +22,6 @@ Links are navigational elements that allow a user to move between content, pages
   <img src="{{ './example-links.svg' | url }}" alt="Link component examples">
 </uxdot-example>
 
-{% repoStatus type="Pattern" %}
-
 
 ## Demo
 

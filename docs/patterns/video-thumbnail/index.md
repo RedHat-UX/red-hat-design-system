@@ -33,8 +33,6 @@ A Video thumbnail is a graphical preview of a video overlayed with a play button
   <img src="{{ './video-thumbnail.svg' | url }}" alt="Video thumbnail">
 </uxdot-example>
 
-{% repoStatus type="Pattern" %}
-
 
 ## Style
 

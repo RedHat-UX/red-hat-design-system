@@ -257,9 +257,4 @@ The recommended maximum character count for the elements of a card are listed be
 </rh-table>
 
 
-{% repoStatus type="Pattern" %}
-
 {% include 'partials/component/feedback.html' %}
-
-
-

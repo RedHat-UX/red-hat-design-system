@@ -4,7 +4,7 @@ Error.stackTraceLimit = 50;
 const SyntaxHighlightPlugin = require('@11ty/eleventy-plugin-syntaxhighlight');
 const DirectoryOutputPlugin = require('@11ty/eleventy-plugin-directory-output');
 const AnchorsPlugin = require('@patternfly/pfe-tools/11ty/plugins/anchors.cjs');
-const CustomElementsManifestPlugin = 
+const CustomElementsManifestPlugin =
   require('@patternfly/pfe-tools/11ty/plugins/custom-elements-manifest.cjs');
 const TodosPlugin = require('@patternfly/pfe-tools/11ty/plugins/todos.cjs');
 const TOCPlugin = require('@patternfly/pfe-tools/11ty/plugins/table-of-contents.cjs');
@@ -55,11 +55,13 @@ module.exports = function(eleventyConfig) {
   /** Table of Contents Shortcode */
   eleventyConfig.addPlugin(TOCPlugin, {
     tags: ['h2'],
-    headingText: 'On this page'
+    headingText: 'On this page',
   });
 
   /** Bespoke import map for ux-dot pages and demos */
-  eleventyConfig.addPassthroughCopy({ 'node_modules/@lit/reactive-element': '/assets/packages/@lit/reactive-element' });
+  eleventyConfig.addPassthroughCopy({
+    'node_modules/@lit/reactive-element': '/assets/packages/@lit/reactive-element',
+  });
   eleventyConfig.addPassthroughCopy({ 'elements': 'assets/packages/@rhds/elements/elements/' });
   eleventyConfig.addPassthroughCopy({ 'lib': 'assets/packages/@rhds/elements/lib/' });
   eleventyConfig.addPlugin(ImportMapPlugin, {
@@ -72,7 +74,7 @@ module.exports = function(eleventyConfig) {
         '@patternfly/elements/': '/assets/packages/@patternfly/elements/',
         '@patternfly/icons/': '/assets/packages/@patternfly/icons/',
         '@patternfly/pfe-core/': '/assets/packages/@patternfly/pfe-core/',
-      }
+      },
     },
     localPackages: [
       // ux-dot dependencies
@@ -96,6 +98,7 @@ module.exports = function(eleventyConfig) {
       'lit-html',
       'lit-element',
       '@lit/reactive-element',
+      '@lit/context',
       'tslib',
       '@floating-ui/dom',
       '@floating-ui/core',
@@ -105,9 +108,13 @@ module.exports = function(eleventyConfig) {
   // RHDS Tokens docs
   eleventyConfig.addPlugin(DesignTokensPlugin);
 
-  eleventyConfig.addPassthroughCopy({ 'node_modules/@rhds/tokens/css/global.css': '/assets/rhds.css' });
+  eleventyConfig.addPassthroughCopy({
+    'node_modules/@rhds/tokens/css/global.css': '/assets/rhds.css',
+  });
 
-  eleventyConfig.addPassthroughCopy({ 'node_modules/@lit/reactive-element': '/assets/packages/@lit/reactive-element' });
+  eleventyConfig.addPassthroughCopy({
+    'node_modules/@lit/reactive-element': '/assets/packages/@lit/reactive-element',
+  });
 
   /** Generate and consume custom elements manifests */
   eleventyConfig.addPlugin(CustomElementsManifestPlugin, {
@@ -125,14 +132,14 @@ module.exports = function(eleventyConfig) {
     exclude: /\/elements\/.*\/demo\//,
     formatter($, existingids) {
       if (
-        !existingids.includes($.attr('id')) &&
-        $.attr('slot') &&
-        $.closest('pf-card')
+        !existingids.includes($.attr('id'))
+          && $.attr('slot')
+          && $.closest('pf-card')
       ) {
         return null;
       } else {
         return eleventyConfig.getFilter('slug')($.text())
-          .replace(/[&,+()$~%.'":*?!<>{}]/g, '');
+            .replace(/[&,+()$~%.'":*?!<>{}]/g, '');
       }
     },
   });
@@ -157,7 +164,7 @@ module.exports = function(eleventyConfig) {
       'component',
       'foundations',
       'getstarted',
-    ]
+    ],
   });
 
   return {

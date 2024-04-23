@@ -2,15 +2,16 @@
 
 ## Usage
 
-{% alert state="warning", title="Warning" %}
-  Tiles require light DOM CSS to be included on the page in order to style links properly.
-{% endalert %}
+<rh-alert state="warning">
+  <h3 slot="header">Warning</h3>
+  <p>Tiles require light DOM CSS to be included on the page in order to style links properly.</p>
+</rh-alert>
 
 {% playground tagName=tile %}{% endplayground %}
 
-{% cta href="../demo/", target="_blank" %}
-View the demo in a new tab
-{% endcta %}
+<rh-cta>
+  <a href="../demo/">Full screen demo</a>
+</rh-cta>
 
 {% renderCodeDocs hideDescription=true %}{% endrenderCodeDocs %}
 

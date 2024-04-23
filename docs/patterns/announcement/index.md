@@ -22,8 +22,6 @@ audience.
   <img src="{{ './announcement-sample-1.svg' | url }}" alt="Example of an announcement banner">
 </uxdot-example>
 
-{% repoStatus type="Pattern" %}
-
 
 ## Style
 

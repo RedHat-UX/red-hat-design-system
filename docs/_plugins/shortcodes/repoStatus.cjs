@@ -181,13 +181,12 @@ function repoStatusList({ heading = 'Status', level = 2 } = {}) {
     return '';
   } else {
     return /* html */`
-<section class="section section--palette-default container">
   <div class="component-status-list-heading">
-    <copy-permalink class="h${level}">
+    <uxdot-copy-permalink class="h${level}">
       <h${level} id=${heading.toLowerCase()} tabindex="-1">
         <a class="heading-anchor" href="#${heading.toLowerCase()}">${heading}</a>
       </h${level}>
-    </copy-permalink>
+    </uxdot-copy-permalink>
     <p><a href="#status-checklist">What do these mean?</a></p>
   </div>
 
@@ -205,8 +204,7 @@ ${listItem.status}${STATUS_LEGEND[listItem.status].icon}
 </div>`;
   }).join('\n').trim()}
     </dl>
-  </div>
-</section>`;
+  </div>`;
   }
 }
 
@@ -286,8 +284,6 @@ function repoStatusChecklist({ heading = 'Status checklist', level = 2 } = {}) {
   } else {
     // This is the checklist table to be used on all the "Overview" tab in docs and is different from the table used in Design/Code Status page
     return /* html */`
-<section class="section section--palette-default container">
-
   ${`${headingLevel} ${heading} {.section-title .pfe-jump-links-panel__section}`}
   <div class="component-status-table">
 <rh-table>
@@ -323,7 +319,7 @@ ${listItem.status}${STATUS_LEGEND[listItem.status].icon}
 </table>
 </rh-table>
   </div>
-</section>`;
+`;
   }
 }
 
