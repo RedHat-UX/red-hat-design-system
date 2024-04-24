@@ -250,6 +250,7 @@
     "@commitlint/cli": "^19.2.2",
     "@commitlint/config-conventional": "^19.2.2",
     "@jspm/generator": "^1.1.7",
+    "@lit-labs/eleventy-plugin-lit": "^1.0.3",
     "@lit/reactive-element": "^2.0.4",
     "@parse5/tools": "^0.3.0",
     "@patternfly/create-element": "^1.0.2",

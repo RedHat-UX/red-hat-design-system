@@ -12,6 +12,7 @@ const RHDSPlugin = require('./docs/_plugins/rhds.cjs');
 const DesignTokensPlugin = require('./docs/_plugins/tokens.cjs');
 const RHDSMarkdownItPlugin = require('./docs/_plugins/markdown-it.cjs');
 const ImportMapPlugin = require('./docs/_plugins/importMap.cjs');
+const litPlugin = require('@lit-labs/eleventy-plugin-lit');
 
 const isWatch =
   process.argv.includes('--serve') || process.argv.includes('--watch');
@@ -95,9 +96,10 @@ module.exports = function(eleventyConfig) {
       'lit/directives/if-defined.js',
       'lit/directives/class-map.js',
       'lit/static-html.js',
-      'lit-html',
       'lit-element',
       '@lit/reactive-element',
+      '@lit-labs/ssr-client/',
+      '@lit-labs/ssr-client/lit-element-hydrate-support.js',
       '@lit/context',
       'tslib',
       '@floating-ui/dom',
@@ -142,6 +144,16 @@ module.exports = function(eleventyConfig) {
             .replace(/[&,+()$~%.'":*?!<>{}]/g, '');
       }
     },
+  });
+
+  eleventyConfig.addPlugin(litPlugin, {
+    mode: 'worker',
+    componentModules: [
+      'docs/assets/javascript/elements/uxdot-skip-navigation.js',
+      'docs/assets/javascript/elements/uxdot-masthead.js',
+      'docs/assets/javascript/elements/uxdot-header.js',
+      'docs/assets/javascript/elements/uxdot-sidenav.js',
+    ],
   });
 
   !isWatch && eleventyConfig.addPlugin(DirectoryOutputPlugin, {

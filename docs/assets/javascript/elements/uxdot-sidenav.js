@@ -1,8 +1,10 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css, isServer } from 'lit';
 
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 
-import '@patternfly/elements/pf-icon/pf-icon.js';
+if (!isServer) {
+  import('@patternfly/elements/pf-icon/pf-icon.js');
+}
 
 /* ************* */
 /* UXDOT-SIDENAV */
@@ -103,9 +105,11 @@ class UxdotSideNav extends LitElement {
     super.connectedCallback();
 
     this.#triggerElement = (this.getRootNode()).getElementById(this.trigger);
-    this.#triggerElement.addEventListener('click', this.#onTriggerClick.bind(this));
-    this.addEventListener('click', this.#onClick.bind(this));
-    this.addEventListener('keydown', this.#onKeydown.bind(this));
+    if (!isServer) {
+      this.#triggerElement.addEventListener('click', this.#onTriggerClick.bind(this));
+      this.addEventListener('click', this.#onClick.bind(this));
+      this.addEventListener('keydown', this.#onKeydown.bind(this));
+    }
   }
 
   disconnectedCallback() {
