@@ -17,6 +17,18 @@ class UxdotSideNav extends LitElement {
   };
 
   static styles = css`
+
+    :host {
+      --_padding-start: var(--uxdot-sidenav-padding-start, var(--rh-space-2xl, 32px));
+      --_padding-end: var(--uxdot-sidenav-padding-end, var(--rh-space-2xl, 32px));
+      --_max-height: 100dvh;
+
+      width: 100%;
+      height: var(--_max-height);
+      top: 0;
+      z-index: var(--uxdot-sidenav-z-index, 2);
+    }
+
     :host([open]) {
       display: block !important;
       top: var(--_max-height);
@@ -61,11 +73,30 @@ class UxdotSideNav extends LitElement {
       z-index: -1;
     }
 
+    ::slotted(ul) {
+      padding-inline: 0;
+      padding-block-start: var(--_padding-start);
+      padding-block-end: var(--_padding-end);
+      list-style: none;
+      margin-block: 0;
+      height: var(--_max-height);
+      overflow-y: scroll;
+      background-color: var(--rh-color-surface-lightest, #ffffff);
+    }
+
     :host([open]) [part="overlay"] {
       display: block;
     }
 
     @media (min-width: 320px) {
+
+      :host {
+        --uxdot-sidenav-width: 320px;
+
+        width: var(--uxdot-sidenav-width);
+        box-shadow: var(--rh-box-shadow-lg, 0 6px 8px 2px rgba(21, 21, 21, 0.3));
+      }
+
       #container {
         width: var(--uxdot-sidenav-width, 320px);
       }
@@ -78,6 +109,15 @@ class UxdotSideNav extends LitElement {
     }
 
     @media (min-width: 992px) {
+      :host {
+        --uxdot-siznav-z-index: 1;
+
+        position: fixed;
+        top: var(--uxdot-masthead-max-height, 72px);
+        height: calc(var(--_max-height) - var(--uxdot-masthead-max-height, 72px));
+        box-shadow: unset;
+      }
+
       :host(:not([open])) {
         display: block;
       }
@@ -206,7 +246,34 @@ class UxdotSideNav extends LitElement {
 class UxdotSideNavItem extends LitElement {
   static styles = css`
     :host {
-      /* styles here */
+      display: block;
+      border-inline-start:
+        var(--rh-border-width-lg, 3px)
+        solid
+        transparent;
+    }
+
+    :host:hover {
+      background: var(--rh-color-surface-lighter, #f2f2f2);
+      border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
+    }
+
+    :host([active]) {
+      background: var(--rh-color-surface-lighter, #f2f2f2);
+      border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
+    }
+
+    ::slotted(a) {
+      display: block;
+      text-decoration: none;
+      color: var(--rh-color-text-primary-on-light, #151515);
+      font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+      padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
+    }
+
+    ::slotted(a:hover) {
+      background: var(--rh-color-surface-lighter, #f2f2f2);
+      border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
   `;
 
@@ -250,8 +317,10 @@ class UxdotSideNavDropdown extends LitElement {
 /* *************************** */
 class UxdotSideNavDropdownMenu extends LitElement {
   static styles = css`
-    :host {
-      /* styles here */
+    ::slotted(ul) {
+      margin: 0;
+      list-style: none;
+      padding-inline-start: var(--rh-space-2xl, 32px);
     }
   `;
 
@@ -267,10 +336,34 @@ class UxdotSideNavDropdownMenu extends LitElement {
 /* ******************************** */
 class UxdotSideNavDropdownMenuItem extends LitElement {
   static styles = css`
-    ::slotted(ul) {
+    ::slotted(a) {
+      display: inline-block;
+      padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
+      width: 100%;
+      border-inline-start:
+        var(--rh-border-width-lg, 3px)
+        solid
+        transparent;
+      font-size: var(--rh-font-size-body-text-md, 1rem);
+      text-decoration: none;
+      color: var(--rh-color-text-primary-on-light, #151515);
+    }
+
+    :host([active]) ::slotted(a) {
+      background: var(--rh-color-surface-lighter, #f2f2f2);
+      border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
+    }
+
+    ::slotted(a:hover) {
+      background: var(--rh-color-surface-lighter, #f2f2f2);
+      border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
+    }
+
+    /* TODO: Remove i believe this is misplaced */
+    /* ::slotted(ul) {
       list-style: none;
       padding-inline: var(--rh-space-2xl, 32px);
-    }
+    } */
   `;
 
   static properties = {
