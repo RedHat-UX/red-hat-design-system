@@ -266,7 +266,7 @@ class UxdotSideNavItem extends LitElement {
     ::slotted(a) {
       display: block;
       text-decoration: none;
-      color: var(--rh-color-text-primary-on-light, #151515);
+      color: var(--rh-color-text-primary-on-light, #151515) !important;
       font-size: var(--rh-font-size-body-text-lg, 1.125rem);
       padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
     }
@@ -346,7 +346,7 @@ class UxdotSideNavDropdownMenuItem extends LitElement {
         transparent;
       font-size: var(--rh-font-size-body-text-md, 1rem);
       text-decoration: none;
-      color: var(--rh-color-text-primary-on-light, #151515);
+      color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
     :host([active]) ::slotted(a) {
