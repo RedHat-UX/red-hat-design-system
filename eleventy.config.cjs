@@ -153,6 +153,9 @@ module.exports = function(eleventyConfig) {
       'docs/assets/javascript/elements/uxdot-masthead.js',
       'docs/assets/javascript/elements/uxdot-header.js',
       'docs/assets/javascript/elements/uxdot-sidenav.js',
+      'docs/assets/javascript/elements/uxdot-hero.js',
+      'docs/assets/javascript/elements/uxdot-feedback.js',
+      'docs/assets/javascript/elements/uxdot-copy-permalink.js',
     ],
   });
 

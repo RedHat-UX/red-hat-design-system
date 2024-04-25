@@ -1,8 +1,7 @@
 
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css, isServer } from 'lit';
 
 import { toast } from '../toast.js';
-
 class UxdotCopyPermalink extends LitElement {
   static styles = css`
     :host {
@@ -48,6 +47,14 @@ class UxdotCopyPermalink extends LitElement {
     this.allAnchors = null;
   }
 
+  connectedCallback() {
+    super.connectedCallback();
+    if (!isServer) {
+      const children = this.shadowRoot.querySelector('slot').assignedElements({ flatten: true });
+      this.allAnchors = this.#getLinks(children);
+    }
+  }
+
   render() {
     return html`
       <slot @slotchange=${this.#handleSlotchange}></slot>
@@ -63,10 +70,29 @@ class UxdotCopyPermalink extends LitElement {
 
   #handleSlotchange(e) {
     const children = e.target.assignedElements({ flatten: true });
-    this.allAnchors = children.map(child => {
+    this.allAnchors = this.#getLinks(children);
+  }
+
+  #getLinks(slottedChildren) {
+    return slottedChildren.map(child => {
       return child.querySelector('a');
     });
   }
+
+  // async #copyLink() {
+  //   if (this.allAnchors === null) {
+  //     return;
+  //   }
+  //   const [href] = this.allAnchors;
+  //   if (href) {
+  //     await navigator.clipboard.writeText(href);
+  //     if (!isServer) {
+  //       const module = await import('../toast.js');
+  //       await navigator.clipboard.writeText(href);
+  //       module.toast({ heading: this.copiedText });
+  //     }
+  //   }
+  // }
 
   async #copyLink() {
     const [href] = this.allAnchors;
