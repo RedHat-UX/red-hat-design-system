@@ -47,4 +47,4 @@ class UxdotSkipNavigation extends LitElement {
   }
 }
 
-customElements.define('uxdot-navigation', UxdotSkipNavigation);
+customElements.define('uxdot-skip-navigation', UxdotSkipNavigation);
