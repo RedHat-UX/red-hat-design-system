@@ -39,6 +39,20 @@ describe('<rh-breadcrumb>', function() {
           .to.be.accessible();
     });
 
+    it('should contain an ordered list, list items, and anchor tags', function() {
+      const olElement = element.querySelector('ol');
+      expect(olElement).to.exist;
+
+      const listItemElements = element.querySelectorAll('li');
+      expect(listItemElements).to.have.lengthOf.at.least(1);
+
+      listItemElements.forEach(function(li) {
+        const anchorElement = li.querySelector('a');
+        expect(anchorElement).to.exist;
+        expect(anchorElement.getAttribute('href')).to.not.be.empty;
+      });
+    });
+
     describe('pressing the tab key', function() {
       beforeEach(async function() {
         await sendKeys({ press: 'Tab' });
@@ -49,6 +63,12 @@ describe('<rh-breadcrumb>', function() {
       it('should focus the first link', function() {
         const firstBreadcrumb = element.querySelector('a');
         expect(document.activeElement).to.equal(firstBreadcrumb);
+      });
+
+      it('should underline the first link when focused', function() {
+        const firstBreadcrumb = element.querySelector('a');
+        const computedStyle = getComputedStyle(firstBreadcrumb);
+        expect(computedStyle.textDecorationLine).to.equal('underline');
       });
     });
   });
