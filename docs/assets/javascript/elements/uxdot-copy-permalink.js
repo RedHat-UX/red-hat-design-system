@@ -2,6 +2,7 @@
 import { LitElement, html, css, isServer } from 'lit';
 
 import { toast } from '../toast.js';
+
 class UxdotCopyPermalink extends LitElement {
   static styles = css`
     :host {
@@ -78,21 +79,6 @@ class UxdotCopyPermalink extends LitElement {
       return child.querySelector('a');
     });
   }
-
-  // async #copyLink() {
-  //   if (this.allAnchors === null) {
-  //     return;
-  //   }
-  //   const [href] = this.allAnchors;
-  //   if (href) {
-  //     await navigator.clipboard.writeText(href);
-  //     if (!isServer) {
-  //       const module = await import('../toast.js');
-  //       await navigator.clipboard.writeText(href);
-  //       module.toast({ heading: this.copiedText });
-  //     }
-  //   }
-  // }
 
   async #copyLink() {
     const [href] = this.allAnchors;
