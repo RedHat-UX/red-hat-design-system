@@ -2,6 +2,17 @@ import { LitElement, html, css } from 'lit';
 
 class UxdotMasthead extends LitElement {
   static styles = css`
+    :host {
+      display: block
+      background-color: var(--rh-color-surface-darkest, #151515);
+      color: var(--rh-color-text-primary-on-dark, #ffffff);
+      position: fixed;
+      inset: 0;
+      height: max-content;
+      z-index: var(--uxdot-masthead-z-index, 2);
+      container-type: inline-size;
+      container-name: host;
+    }
 
     #container {
       display: grid;
@@ -63,14 +74,24 @@ class UxdotMasthead extends LitElement {
       color: var(--rh-color-icon-subtle-hover, #a3a3a3) !important;
     }
 
-    @media (min-width: 567px) {
+    @container (min-width: 567px) {
       #container {
         gap: var(--rh-space-lg, 16px);
         margin: var(--rh-space-lg, 16px);
       }
+
+      slot[name="links"]::slotted(span) {
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        height: 1px;
+        overflow: hidden;
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
+      }
     }
 
-    @media (min-width: 992px) {
+    @container (min-width: 992px) {
       #container {
         grid-template-columns: 1fr max-content max-content;
       }

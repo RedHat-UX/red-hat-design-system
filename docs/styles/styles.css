@@ -285,7 +285,6 @@
     margin-block-end: 0;
   }
 
-
   rh-alert p {
     /* TODO: Document this bug shouldn't have to force the font size
     the component is trying to set internally on #description */
