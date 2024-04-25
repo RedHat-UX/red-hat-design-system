@@ -1,6 +1,6 @@
 import { LitElement, css } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
-import { html, unsafeStatic } from 'lit/static-html.js';
+import { html } from 'lit/static-html.js';
 
 import { ColorContextProvider } from '@rhds/elements/lib/context/color/provider.js';
 import { ColorContextConsumer } from '@rhds/elements/lib/context/color/consumer.js';
