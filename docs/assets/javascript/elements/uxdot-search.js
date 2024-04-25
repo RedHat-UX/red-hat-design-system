@@ -1,6 +1,6 @@
 import '@rhds/elements/rh-button/rh-button.js';
 
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css, isServer } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 class UxdotSearch extends LitElement {
@@ -87,19 +87,23 @@ class UxdotSearch extends LitElement {
   static #instances = new Set();
 
   static {
-    window.addEventListener('click', event => {
-      for (const instance of this.#instances) {
-        instance.#onOutsideClick(event);
-      }
-    });
+    if (!isServer) {
+      window.addEventListener('click', event => {
+        for (const instance of this.#instances) {
+          instance.#onOutsideClick(event);
+        }
+      });
+    }
   }
 
-  #internals = this.attachInternals();
+  #internals = !isServer ? this.attachInternals() : null;
 
   #ariaLabel = '';
 
   get form() {
-    return this.#internals.form;
+    if (!isServer) {
+      return this.#internals.form;
+    }
   }
 
   get value() {
@@ -129,8 +133,10 @@ class UxdotSearch extends LitElement {
   constructor() {
     super();
     this.items = [];
-    this.addEventListener('keydown', this.#onKeydown);
-    this.addEventListener('blur', this.#onBlur);
+    if (!isServer) {
+      this.addEventListener('keydown', this.#onKeydown);
+      this.addEventListener('blur', this.#onBlur);
+    }
   }
 
   connectedCallback() {
@@ -182,7 +188,7 @@ class UxdotSearch extends LitElement {
 
   #onClickSearch() {
     this.expanded = true;
-    if (this.value) {
+    if (this.value && !isServer) {
       this.form?.requestSubmit();
     }
   }

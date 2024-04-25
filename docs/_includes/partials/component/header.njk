@@ -1,4 +1,4 @@
-<uxdot-header>
+<uxdot-header {% if subnav.collection %}has-subnav{% endif %} {% if tokenSearch %}has-search {% endif %}>
   <h1 id="{{ (heading if heading else title) | lower | slug }}" class="page-title">{{ heading if heading else title }}</h1>
 
   {% if tokenSearch %}

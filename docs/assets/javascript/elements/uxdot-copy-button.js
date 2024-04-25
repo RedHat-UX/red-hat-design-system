@@ -1,8 +1,11 @@
-import { html, css, LitElement } from 'lit';
+import { html, css, LitElement, isServer } from 'lit';
 
 import { toast } from '../toast.js';
 
-import '@rhds/elements/rh-tooltip/rh-tooltip.js';
+if (!isServer) {
+  import('@rhds/elements/rh-tooltip/rh-tooltip.js');
+}
+
 
 export class UxdotCopyButton extends LitElement {
   static is = 'uxdot-copy-button';

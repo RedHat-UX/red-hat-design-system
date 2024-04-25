@@ -74,24 +74,10 @@ class UxdotHeader extends LitElement {
   `;
 
   static properties = {
-    hasSubNav: { type: Boolean },
-    hasSearch: { type: Boolean },
+    hasSubNav: { type: Boolean, attribute: 'has-subnav' },
+    hasSearch: { type: Boolean, attribute: 'has-search' },
   };
 
-  constructor() {
-    super();
-    this.hasSubNav = false;
-    this.hasSearch = false;
-  }
-
-  firstUpdated() {
-    const searchSlot = this.shadowRoot.querySelector('slot[name="search"]');
-    const subNavSlot = this.shadowRoot.querySelector('slot[name="subnav"]');
-    const subNavNodes = subNavSlot.assignedNodes();
-    const searchNodes = searchSlot.assignedNodes();
-    this.hasSearch = searchNodes.length > 0;
-    this.hasSubNav = subNavNodes.length > 0;
-  }
 
   render() {
     const classes = classMap({ 'has-subnav': this.hasSubNav, 'has-search': this.hasSearch });
