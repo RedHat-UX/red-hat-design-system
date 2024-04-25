@@ -17,7 +17,6 @@ class UxdotSideNav extends LitElement {
   };
 
   static styles = css`
-
     :host {
       --_padding-start: var(--uxdot-sidenav-padding-start, var(--rh-space-2xl, 32px));
       --_padding-end: var(--uxdot-sidenav-padding-end, var(--rh-space-2xl, 32px));
@@ -31,8 +30,11 @@ class UxdotSideNav extends LitElement {
 
     :host([open]) {
       display: block !important;
-      top: var(--_max-height);
       position: fixed !important;
+    }
+
+    :host(:not([open])) {
+      display: none;
     }
 
     [part="close-button"] {
