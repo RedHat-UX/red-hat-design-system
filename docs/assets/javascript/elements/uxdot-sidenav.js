@@ -80,7 +80,7 @@ class UxdotSideNav extends LitElement {
       padding-block-start: var(--_padding-start);
       padding-block-end: var(--_padding-end);
       list-style: none;
-      margin-block: 0;
+      margin-block: 0 !important;
       height: var(--_max-height);
       overflow-y: scroll;
       background-color: var(--rh-color-surface-lightest, #ffffff);
@@ -320,7 +320,7 @@ class UxdotSideNavDropdown extends LitElement {
 class UxdotSideNavDropdownMenu extends LitElement {
   static styles = css`
     ::slotted(ul) {
-      margin: 0;
+      margin: 0 !important;
       list-style: none;
       padding-inline-start: var(--rh-space-2xl, 32px);
     }
