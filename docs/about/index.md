@@ -1,6 +1,6 @@
 ---
 layout: layouts/pages/basic.njk
-title: About this website
+title: About the Design System
 order: 0
 tags:
   - about
