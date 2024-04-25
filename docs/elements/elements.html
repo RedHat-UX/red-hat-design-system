@@ -54,7 +54,7 @@ eleventyComputed:
 {% include 'partials/component/sidenav.njk' %}
 <main id="main">
   <article>
-    <uxdot-header>
+    <uxdot-header has-subnav>
       <h1 id="{{ doc.slug }}" class="page-title">{{ doc.alias or (doc.slug | deslugify) }}</h1>
       <rh-subnav slot="subnav">{% for tab in doc.tabs %}
         <a {{ 'active' if tab.href == page.url }} href="{{ tab.href }}">

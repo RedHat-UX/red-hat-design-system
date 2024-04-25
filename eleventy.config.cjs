@@ -160,7 +160,8 @@ module.exports = function(eleventyConfig) {
       'docs/assets/javascript/elements/uxdot-copy-button.js',
       'docs/assets/javascript/elements/uxdot-repo-status-list.js',
       'docs/assets/javascript/elements/uxdot-best-practice.js',
-      // 'docs/assets/javascript/elements/uxdot-search.js',
+      'docs/assets/javascript/elements/uxdot-search.js',
+      // 'docs/assets/javascript/elements/uxdot-example.js', // Uses context API need to work around issues
       // 'docs/assets/javascript/elements/uxdot-installation-tabs.js', // extends RhTabs so cant DSD yet
     ],
   });

@@ -1,7 +1,10 @@
-import '@rhds/elements/rh-button/rh-button.js';
-
 import { LitElement, html, css, isServer } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
+
+
+if (!isServer) {
+  import('@rhds/elements/rh-button/rh-button.js');
+}
 
 class UxdotSearch extends LitElement {
   static formAssociated = true;
