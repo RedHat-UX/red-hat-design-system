@@ -3,7 +3,7 @@ import { LitElement, html, css } from 'lit';
 class UxdotMasthead extends LitElement {
   static styles = css`
     :host {
-      display: block
+      display: block;
       background-color: var(--rh-color-surface-darkest, #151515);
       color: var(--rh-color-text-primary-on-dark, #ffffff);
       position: fixed;
