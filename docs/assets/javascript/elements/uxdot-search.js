@@ -104,9 +104,10 @@ class UxdotSearch extends LitElement {
   #ariaLabel = '';
 
   get form() {
-    if (!isServer) {
-      return this.#internals.form;
+    if (isServer) {
+      return null;
     }
+    return this.#internals.form;
   }
 
   get value() {
