@@ -1,15 +1,21 @@
 import type { RhAccordion } from './rh-accordion.js';
+import type { RhAccordionContext } from './context.js';
 
 import { html, LitElement } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import { DirController } from '../../lib/DirController.js';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+
+import { consume } from '@lit/context';
+
+import { context } from './context.js';
 
 import styles from './rh-accordion-header.css';
 
@@ -38,8 +44,8 @@ export class AccordionHeaderChangeEvent extends Event {
  * @slot
  *       We expect the light DOM of the rh-accordion-header to be a heading level tag (h1, h2, h3, h4, h5, h6)
  * @slot accents
- *       These elements will appear inline with the accordion header, between the header and the chevron
- *       (or after the chevron and header in disclosure mode).
+ *       These elements will appear inline by default with the header title, between the header and the chevron
+ *       (or after the chevron and header in disclosure mode). There is an option to set the accents placement to bottom
  *
  * @fires {AccordionHeaderChangeEvent} change - when the open panels change
  *
@@ -50,7 +56,10 @@ export class RhAccordionHeader extends LitElement {
 
   static readonly styles = [styles];
 
-  static override readonly shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
+  static override readonly shadowRootOptions = {
+    ...LitElement.shadowRootOptions,
+    delegatesFocus: true,
+  };
 
   @property({ type: Boolean, reflect: true }) expanded = false;
 
@@ -58,9 +67,14 @@ export class RhAccordionHeader extends LitElement {
 
   @property({ reflect: true, attribute: 'heading-tag' }) headingTag?: string;
 
+  /** @deprecated */
   @property({ reflect: true }) icon = 'angle-down';
 
   @colorContextConsumer() private on?: ColorTheme;
+
+  @consume({ context, subscribe: true })
+  @property({ attribute: false })
+  private ctx?: RhAccordionContext;
 
   #generatedHtag?: HTMLHeadingElement;
 
@@ -118,13 +132,20 @@ export class RhAccordionHeader extends LitElement {
   }
 
   #renderHeaderContent() {
+    const { accents } = this.ctx ?? {};
     const headingText = this.headingText?.trim() ?? this.#header?.textContent?.trim();
+
     return html`
       <button id="button"
               class="toggle"
               aria-expanded="${String(!!this.expanded) as 'true' | 'false'}">
-        <span part="text">${headingText ?? html`
+        <span id="header-container" class="${ifDefined(accents)}">
+          <span part="text">${headingText ?? html`
           <slot></slot>`}
+          </span>
+          <span part="accents">
+            <slot name="accents"></slot>
+          </span>
         </span>
         <svg id="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
           <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
@@ -139,7 +160,7 @@ export class RhAccordionHeader extends LitElement {
       return void this.#logger.warn('No header content provided');
     } else if (this.firstElementChild) {
       const [heading, ...otherContent] = Array.from(this.children)
-        .filter((x): x is HTMLElement => !x.hasAttribute('slot') && isPorHeader(x));
+          .filter((x): x is HTMLElement => !x.hasAttribute('slot') && isPorHeader(x));
 
       // If there is no content inside the slot, return empty with a warning
       // else, if there is more than 1 element in the slot, capture the first h-tag
@@ -169,7 +190,8 @@ export class RhAccordionHeader extends LitElement {
 
   #onClick(event: MouseEvent) {
     const expanded = !this.expanded;
-    const acc = event.composedPath().find((x): x is RhAccordion => x instanceof HTMLElement && x.localName === 'rh-accordion');
+    const acc = event.composedPath().find((x): x is RhAccordion =>
+      x instanceof HTMLElement && x.localName === 'rh-accordion');
     if (acc) {
       this.dispatchEvent(new AccordionHeaderChangeEvent(expanded, this, acc));
     }

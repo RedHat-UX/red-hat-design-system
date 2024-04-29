@@ -48,7 +48,7 @@
           </details>
         </li>
 
-        <!-- Get started -->
+        <!-- Get started (Subitems here use the heading in the frontmatter for the link text.) -->
 
         <li class="item">
           <details {{ 'open' if 'get-started/' in page.url }}>
@@ -61,7 +61,7 @@
               {%- for link in collections.getstarted -%}
               <li class="item">
                 <a class="link {{ 'active' if page.url === link.url }}"
-                   href="{{ link.url | url }}">{{ link.data.title }}</a>
+                   href="{{ link.url | url }}">{{ link.data.heading }}</a>
               </li>
               {%- endfor -%}
             </ul>
@@ -172,7 +172,8 @@
                 [ 'Content', '/accessibility/content/' ],
                 [ 'Design', '/accessibility/design/' ],
                 [ 'Development', '/accessibility/development/' ],
-                [ 'Contributors', '/accessibility/contributors/' ]
+                [ 'Contributors', '/accessibility/contributors/' ],
+                [ 'Resources', '/accessibility/resources/' ]
               ] -%}
               {%- for text, link in a11yLinks -%}
                 <li class="item">

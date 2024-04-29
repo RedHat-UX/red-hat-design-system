@@ -6,6 +6,8 @@
            alt="Example of a default link tile and a selectable tile",
            src="./tile-sample.png" %}
 
+{% repoStatusList %}
+
 ## Sample element
 
 <rh-tile>
@@ -30,5 +32,5 @@
 - When you need an alternative to a group of cards with the same calls to action
 - When you need to group content for a radio button or checkbox in a form
 
-{% repoStatus type="Element" %}
+{% repoStatusChecklist %}
 

@@ -12,6 +12,7 @@ docs/assets/playgrounds/
 # Build artifacts
 elements/*/*.js
 elements/*/test/*.js
+react
 lib/**/*.js
 !elements/**/demo/*.css
 *.map

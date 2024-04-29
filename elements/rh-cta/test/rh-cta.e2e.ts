@@ -16,7 +16,9 @@ test.describe(tagName, () => {
 
       // hover
       await element.hover();
-      await element.evaluate(e => Promise.all(e.getAnimations({ subtree: true }).map(animation => animation.finished)));
+      await element.evaluate(e =>
+        Promise.all(e.getAnimations({ subtree: true }).map(animation => animation.finished))
+      );
       await componentPage.updateComplete(selector);
       await expect(locator).toHaveScreenshot(`${variant} 1 hover.png`);
       await page.mouse.click(0, 0);

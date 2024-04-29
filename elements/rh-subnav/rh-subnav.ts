@@ -141,7 +141,7 @@ export class RhSubnav extends LitElement {
   }
 
   #update() {
-    this.#tabindex.updateActiveItem(this.#activeItem);
+    this.#tabindex.setActiveItem(this.#activeItem);
   }
 
   #onSlotchange() {
