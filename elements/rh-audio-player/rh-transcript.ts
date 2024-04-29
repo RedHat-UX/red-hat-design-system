@@ -109,20 +109,30 @@ export class RhTranscript extends LitElement {
       if (!cue.start) {
         const prevCue = this._cues[index - 1];
         const prevEnd = prevCue?.end;
-        if (prevEnd) { cue.start = prevEnd || '0:00'; }
+        if (prevEnd) {
+          cue.start = prevEnd || '0:00';
+        }
       }
       if (!cue.end) {
         const nextCue = this._cues[index + 1];
         const nextStart = nextCue?.start;
         const duration = getFormattedTime(this.#duration);
-        if (!!nextStart || !!duration) { cue.end = nextStart || duration; }
+        if (!!nextStart || !!duration) {
+          cue.end = nextStart || duration;
+        }
       }
       if (currentTime) {
-        const started = !!cue.startTime && Math.round(cue.startTime) < Math.round(currentTime) ? true : false;
-        const ended = !!cue.endTime && Math.round(cue.endTime) < Math.round(currentTime) ? true : false;
+        const started = !!cue.startTime
+          && Math.round(cue.startTime) < Math.round(currentTime) ?
+          true : false;
+        const ended = !!cue.endTime
+          && Math.round(cue.endTime) < Math.round(currentTime) ?
+          true : false;
         const active = started && !ended;
         cue.active = active;
-        if (active) { activeCue = cue; }
+        if (active) {
+          activeCue = cue;
+        }
       }
 
       const cuesContainer = this.shadowRoot?.getElementById('cues');

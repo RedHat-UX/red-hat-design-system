@@ -4,36 +4,35 @@
  */
 
 /**
- * A Context object defines an optional initial value for a Context, as well as a name identifier for debugging purposes.
+ * A context key.
+ *
+ * A context key can be any type of object, including strings and symbols. The
+ *  Context type brands the key type with the `__context__` property that
+ * carries the type of the value the context references.
  */
-export type Context<T> = {
-  name: string;
-  initialValue?: T;
+export type Context<KeyType, ValueType> = KeyType & {
+  __context__: ValueType;
 };
 
 /**
- * An unknown context typeU
+ * An unknown context type
  */
-export type UnknownContext = Context<unknown>;
+export type UnknownContext = Context<unknown, unknown>;
 
 /**
  * A helper type which can extract a Context value type from a Context type
  */
-export type ContextType<T extends UnknownContext> = T extends Context<infer Y>
-  ? Y
+export type ContextType<T extends UnknownContext> = T extends Context<infer _, infer V>
+  ? V
   : never;
 
 /**
  * A function which creates a Context value object
  */
-export function createContext<T>(
-  name: string,
-  initialValue?: T
-): Readonly<Context<T>> {
-  return {
-    name,
-    initialValue,
-  };
+export function createContext<ValueType>(
+  key: unknown,
+): Readonly<Context<typeof key, ValueType>> {
+  return key as Context<typeof key, ValueType>;
 }
 
 /**
@@ -42,7 +41,7 @@ export function createContext<T>(
  */
 export type ContextCallback<ValueType> = (
   value: ValueType,
-  dispose?: () => void
+  unsubscribe?: () => void
 ) => void;
 
 /**
@@ -51,15 +50,15 @@ export type ContextCallback<ValueType> = (
  * A provider should inspect the `context` property of the event to determine if it has a value that can
  * satisfy the request, calling the `callback` with the requested value if so.
  *
- * If the requested context event contains a truthy `multiple` value, then a provider can call the callback
- * multiple times if the value is changed, if this is the case the provider should pass a `dispose`
- * method to the callback which requesters can invoke to indicate they no longer wish to receive these updates.
+ * If the requested context event contains a truthy `subscribe` value, then a provider can call the callback
+ * multiple times if the value is changed, if this is the case the provider should pass an `unsubscribe`
+ * function to the callback which requesters can invoke to indicate they no longer wish to receive these updates.
  */
-export class ContextEvent<T extends UnknownContext> extends Event {
+export class ContextRequestEvent<T extends UnknownContext> extends Event {
   public constructor(
     public readonly context: T,
     public readonly callback: ContextCallback<ContextType<T>>,
-    public readonly multiple?: boolean
+    public readonly subscribe?: boolean
   ) {
     super('context-request', { bubbles: true, composed: true });
   }
@@ -71,7 +70,6 @@ declare global {
      * A 'context-request' event can be emitted by any element which desires
      * a context value to be injected by an external provider.
      */
-    'context-request': ContextEvent<UnknownContext>;
+    'context-request': ContextRequestEvent<Context<unknown, unknown>>;
   }
 }
-

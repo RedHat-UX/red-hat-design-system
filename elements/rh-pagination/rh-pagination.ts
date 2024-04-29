@@ -178,7 +178,9 @@ export class RhPagination extends LitElement {
     }
     for (const link of this.#links ?? []) {
       const url = new URL(link.href);
-      if (url.pathname === location.pathname && url.search === location.search && url.hash === location.hash) {
+      if (url.pathname === location.pathname
+        && url.search === location.search
+        && url.hash === location.hash) {
         return link;
       }
     }
@@ -251,7 +253,9 @@ export class RhPagination extends LitElement {
   }
 
   #onKeyup(event: Event) {
-    if (!(event.target instanceof HTMLInputElement) || !this.#links) { return; }
+    if (!(event.target instanceof HTMLInputElement) || !this.#links) {
+      return;
+    }
     const max = this.#links.length.toString();
     const input = event.target;
     if (parseInt(input.value) > parseInt(max)) {
@@ -260,7 +264,9 @@ export class RhPagination extends LitElement {
   }
 
   #onChange() {
-    if (!this.input || !this.#links) { return; }
+    if (!this.input || !this.#links) {
+      return;
+    }
     const inputNum = parseInt(this.input.value);
     this.#currentIndex = inputNum - 1;
     if (this.#checkValidity()) {
