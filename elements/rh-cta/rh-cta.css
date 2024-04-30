@@ -118,24 +118,24 @@ svg {
   --rh-cta-background-color: var(--rh-cta-focus-background-color);
 }
 
-:host(:is(:focus, :focus-within)) [id]#container {
+:host(:is(:focus, :focus-within)) #container {
   border-color: var(--rh-cta-focus-border-color);
   background-color:
     var(
         --rh-cta-focus-container-background-color,
         var(--rh-cta-focus-background-color)
       );
+  color: var(--rh-cta-focus-color);
   outline:
     var(--rh-border-width-md, 2px)
     solid
     var(--rh-cta-focus-container-outline-color, var(--rh-cta-focus-outline-color));
   outline-offset: 2px;
 
-  --rh-cta-color: var(--rh-cta-focus-color);
   --rh-cta-text-decoration: var(--rh-cta-focus-text-decoration);
 }
 
-:host(:is(:focus, :focus-within)) [id]#container:after {
+:host(:is(:focus, :focus-within)) #container:after {
   border-style: solid;
   border-color: var(--rh-cta-focus-inner-border-color);
 }
