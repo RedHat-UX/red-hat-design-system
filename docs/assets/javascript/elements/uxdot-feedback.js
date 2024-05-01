@@ -13,7 +13,6 @@ class UxdotFeedback extends LitElement {
       display: grid;
       grid-template-columns: 1fr;
       grid-gap: var(--rh-space-3xl, 48px);
-      margin-block-start: var(--rh-space-5xl, 80px);
       margin-block-end: var(--rh-space-3xl, 48px);
     }
 

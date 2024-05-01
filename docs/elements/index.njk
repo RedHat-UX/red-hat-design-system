@@ -51,7 +51,7 @@ importElements:
   specific UI and accessibility need. Elements should be used harmoniously 
   together in the same space to create more intuitive user interfaces and 
   experiences.</p>
-</section>
+
 
 <nav class="grid" aria-label="Elements">
   {%- for tagName, docs in collections.elementDocs | groupby('tagName') -%}
@@ -71,6 +71,7 @@ importElements:
     </rh-tile>
   {% endfor %}
 </nav>
+</section>
 
 <section>
   <h2>Make a request</h2>
