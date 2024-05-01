@@ -25,7 +25,7 @@ export declare class PfCodeBlock extends BaseCodeBlock {
     #private;
     static readonly styles: CSSStyleSheet[];
     expanded: boolean;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

@@ -4,8 +4,8 @@ const styles = css `:host {\n  display: block;\n}\n\n[hidden] {\n  display: none
 export class BaseCodeBlock extends LitElement {
     get content() {
         const script = this.querySelector('script[type]');
-        if (script?.type !== 'text/javascript-sample' &&
-            !!script?.type.match(/(j(ava)?|ecma|live)script/)) {
+        if (script?.type !== 'text/javascript-sample'
+            && !!script?.type.match(/(j(ava)?|ecma|live)script/)) {
             return '';
         }
         else {

@@ -56,9 +56,9 @@ _BaseSwitch_internals = new WeakMap(), _BaseSwitch_instances = new WeakSet(), _B
     const { originalTarget, explicitOriginalTarget } = event;
     if (explicitOriginalTarget) {
         let labels;
-        if (originalTarget === event.target &&
-            !(labels = Array.from(this.labels)).includes(explicitOriginalTarget) &&
-            labels.includes(this.closest('label'))) {
+        if (originalTarget === event.target
+            && !(labels = Array.from(this.labels)).includes(explicitOriginalTarget)
+            && labels.includes(this.closest('label'))) {
             return;
         }
     }

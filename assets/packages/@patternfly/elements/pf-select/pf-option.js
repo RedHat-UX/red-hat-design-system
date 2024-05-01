@@ -11,7 +11,6 @@ import { css } from "lit";
 const styles = css `:host {\n  display: block;\n}\n\n:host([hidden]),\n*[hidden] {\n  display: none !important;\n}\n\n:host([disabled]) {\n  pointer-events: none !important;\n  cursor: not-allowed !important;\n}\n\n:host(:focus) #outer,\n:host(:hover) #outer,\n:host([aria-selected="true"]) {\n  background-color: #e0e0e0;\n}\n\n#outer {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  justify-content: flex-start;\n  padding: var(--pf-global--spacer--sm, 0.5rem) var(--pf-global--spacer--md, 1rem);\n  min-height: calc(44px - 2 * var(--pf-global--spacer--sm, 0.5rem));\n  min-width: calc(44px - 2 * var(--pf-global--spacer--md, 1rem));\n}\n\n#outer.active {\n  background-color: var(--_active-descendant-color, var(--pf-theme--color--surface--lighter, #f0f0f0));\n}\n\n:host([disabled]) #outer {\n  color: var(--pf-global--Color--dark-200, #6a6e73) !important;\n}\n\ninput[type="checkbox"] {\n  margin-inline-end: 1em;\n  display: var(--_pf-option-checkboxes-display, none);\n  pointer-events: none;\n  flex: 0 0 auto;\n}\n\nspan {\n  flex: 1 1 auto;\n}\n\nsvg {\n  font-size: var(--pf-c-select__menu-item-icon--FontSize, var(--pf-global--icon--FontSize--sm, 0.675rem));\n  color: var(--_svg-color, var(--pf-theme--color--accent, #0066cc));\n  width: 1em;\n  height: 1em;\n  margin-inline-start: 1em;\n  text-align: right;\n  flex: 0 0 auto;\n  display: var(--_pf-option-svg-display, block);\n}\n\n#description {\n  display: block;\n  flex: 1 0 100%;\n}\n\nslot[name="description"] {\n  font-size: var(--pf-global--FontSize--xs, 0.75rem);\n  color: var(--pf-global--Color--dark-200, #6a6e73);\n}\n\n::slotted([slot="icon"]) {\n  margin-inline-end: 0.5em;\n}\n\n`;
 /**
  * Option within a listbox
- *
  * @slot -
  *        option text
  * @slot icon
@@ -35,7 +34,7 @@ let PfOption = class PfOption extends LitElement {
     }
     /** form value for this option */
     get value() {
-        return __classPrivateFieldGet(this, _PfOption_value, "f") ?? this.textContent ?? '';
+        return (__classPrivateFieldGet(this, _PfOption_value, "f") ?? this.textContent ?? '').trim();
     }
     set value(v) {
         __classPrivateFieldSet(this, _PfOption_value, v, "f");
@@ -100,9 +99,9 @@ let PfOption = class PfOption extends LitElement {
     `;
     }
     willUpdate(changed) {
-        if (changed.has('selected') &&
+        if (changed.has('selected')
             // don't fire on initialization
-            !(changed.get('selected') === undefined) && this.selected === false) {
+            && !(changed.get('selected') === undefined) && this.selected === false) {
             __classPrivateFieldGet(this, _PfOption_internals, "f").ariaSelected = this.selected ? 'true' : 'false';
         }
         if (changed.has('disabled')) {

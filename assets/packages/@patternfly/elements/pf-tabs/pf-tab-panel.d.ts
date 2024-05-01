@@ -9,7 +9,7 @@ import { LitElement } from 'lit';
 export declare class PfTabPanel extends LitElement {
     static readonly styles: CSSStyleSheet[];
     private ctx?;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
     connectedCallback(): void;
     willUpdate(): void;
 }

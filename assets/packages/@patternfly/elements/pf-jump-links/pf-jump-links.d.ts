@@ -2,10 +2,8 @@ import { LitElement } from 'lit';
 import '@patternfly/elements/pf-icon/pf-icon.js';
 /**
  * **Jump links** allow users to navigate to sections within a page.
- *
  * @fires toggle - when the `expanded` disclosure widget is toggled
  * @slot - Place pf-jump-links-items here
- *
  * @cssprop --pf-c-jump-links__list--Display
  * @cssprop --pf-c-jump-links__list--FlexDirection
  * @cssprop --pf-c-jump-links__list--PaddingTop -- padding around the list of links
@@ -19,7 +17,6 @@ import '@patternfly/elements/pf-icon/pf-icon.js';
  * @cssprop --pf-c-jump-links__list--before--BorderBottomWidth
  * @cssprop --pf-c-jump-links__list--before--BorderLeftWidth
  * @cssprop --pf-c-jump-links__toggle--MarginBottom--base
- *
  * @cssprop --pf-c-jump-links__toggle--MarginTop -- padding around the expandable jump links disclosure widget.
  * @cssprop --pf-c-jump-links__toggle--MarginBottom
  * @cssprop --pf-c-jump-links__toggle--MarginBottom--base
@@ -29,15 +26,12 @@ import '@patternfly/elements/pf-icon/pf-icon.js';
  * @cssprop --pf-c-button--PaddingRight
  * @cssprop --pf-c-button--PaddingBottom
  * @cssprop --pf-c-button--PaddingLeft
- *
  * @cssprop --pf-c-jump-links__toggle-icon--Rotate
  * @cssprop --pf-c-jump-links__toggle-icon--Transition
  * @cssprop --pf-c-jump-links__toggle-text--MarginLeft
- *
  * @cssprop --pf-c-jump-links--m-expanded__toggle--MarginBottom
  * @cssprop --pf-c-jump-links--m-expanded__toggle-icon--Rotate
  * @cssprop --pf-c-jump-links--m-expanded__toggle-icon--Color
- *
  * @cssprop --pf-c-jump-links--m-vertical__list--PaddingTop
  * @cssprop --pf-c-jump-links--m-vertical__list--PaddingRight
  * @cssprop --pf-c-jump-links--m-vertical__list--PaddingBottom
@@ -67,7 +61,7 @@ export declare class PfJumpLinks extends LitElement {
     connectedCallback(): void;
     firstUpdated(): void;
     updated(changed: Map<string, unknown>): void;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

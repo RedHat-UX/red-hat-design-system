@@ -72,7 +72,11 @@ __decorate([
     property({ reflect: true, type: Boolean })
 ], PfTimestamp.prototype, "utc", void 0);
 __decorate([
-    property({ reflect: true, attribute: 'hour-12', converter: BooleanStringConverter })
+    property({
+        reflect: true,
+        attribute: 'hour-12',
+        converter: BooleanStringConverter,
+    })
 ], PfTimestamp.prototype, "hour12", void 0);
 __decorate([
     property({ reflect: true })

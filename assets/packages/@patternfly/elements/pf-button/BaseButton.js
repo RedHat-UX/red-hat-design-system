@@ -59,7 +59,10 @@ _BaseButton_internals = new WeakMap(), _BaseButton_instances = new WeakSet(), _B
 };
 BaseButton.styles = [styles];
 BaseButton.formAssociated = true;
-BaseButton.shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
+BaseButton.shadowRootOptions = {
+    ...LitElement.shadowRootOptions,
+    delegatesFocus: true,
+};
 __decorate([
     property({ reflect: true, type: Boolean })
 ], BaseButton.prototype, "disabled", void 0);

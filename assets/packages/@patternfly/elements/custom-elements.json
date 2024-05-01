@@ -193,7 +193,7 @@
                 "text": "object"
               },
               "static": true,
-              "default": "{ ...LitElement.shadowRootOptions, delegatesFocus: true }",
+              "default": "{\n    ...LitElement.shadowRootOptions,\n    delegatesFocus: true,\n  }",
               "readonly": true,
               "inheritedFrom": {
                 "name": "BaseAccordionHeader",
@@ -1576,6 +1576,205 @@
     },
     {
       "kind": "javascript-module",
+      "path": "pf-avatar/pf-avatar.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "An **avatar** is a visual used to represent a user. It may contain an image or a placeholder graphic.",
+          "name": "PfAvatar",
+          "members": [
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg' | 'xl'"
+              },
+              "default": "'sm'",
+              "description": "Size of the Avatar",
+              "attribute": "size",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "BaseAvatar",
+                "module": "pf-avatar/BaseAvatar.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "border",
+              "type": {
+                "text": "'light' | 'dark' | undefined"
+              },
+              "description": "Whether to display a border around the avatar",
+              "attribute": "border",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "src",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "The URL to the user's custom avatar image.",
+              "attribute": "src",
+              "inheritedFrom": {
+                "name": "BaseAvatar",
+                "module": "pf-avatar/BaseAvatar.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "alt",
+              "type": {
+                "text": "string | undefined"
+              },
+              "default": "'Avatar image'",
+              "description": "The alt text for the avatar image.",
+              "attribute": "alt",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "BaseAvatar",
+                "module": "pf-avatar/BaseAvatar.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "dark",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether or not the Avatar image is dark",
+              "attribute": "dark",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "BaseAvatar",
+                "module": "pf-avatar/BaseAvatar.js"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg' | 'xl'"
+              },
+              "default": "'sm'",
+              "description": "Size of the Avatar",
+              "fieldName": "size",
+              "inheritedFrom": {
+                "name": "BaseAvatar",
+                "module": "pf-avatar/BaseAvatar.ts"
+              }
+            },
+            {
+              "name": "border",
+              "type": {
+                "text": "'light' | 'dark' | undefined"
+              },
+              "description": "Whether to display a border around the avatar",
+              "fieldName": "border"
+            },
+            {
+              "name": "src",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "The URL to the user's custom avatar image.",
+              "fieldName": "src",
+              "inheritedFrom": {
+                "name": "BaseAvatar",
+                "module": "pf-avatar/BaseAvatar.ts"
+              }
+            },
+            {
+              "name": "alt",
+              "type": {
+                "text": "string | undefined"
+              },
+              "default": "'Avatar image'",
+              "description": "The alt text for the avatar image.",
+              "fieldName": "alt",
+              "inheritedFrom": {
+                "name": "BaseAvatar",
+                "module": "pf-avatar/BaseAvatar.ts"
+              }
+            },
+            {
+              "name": "dark",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether or not the Avatar image is dark",
+              "fieldName": "dark",
+              "inheritedFrom": {
+                "name": "BaseAvatar",
+                "module": "pf-avatar/BaseAvatar.ts"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "BaseAvatar",
+            "module": "/pf-avatar/BaseAvatar.js"
+          },
+          "summary": "For displaying a user's avatar image",
+          "tagName": "pf-avatar",
+          "customElement": true,
+          "demos": [
+            {
+              "url": "https://patternflyelements.org/components/avatar/demo/",
+              "source": {
+                "href": "https://github.com/patternfly/patternfly-elements/tree/main/elements/pf-avatar/demo/pf-avatar.html"
+              }
+            },
+            {
+              "url": "https://patternflyelements.org/components/avatar/demo/bordered/",
+              "source": {
+                "href": "https://github.com/patternfly/patternfly-elements/tree/main/elements/pf-avatar/demo/bordered.html"
+              }
+            },
+            {
+              "url": "https://patternflyelements.org/components/avatar/demo/dark-border/",
+              "source": {
+                "href": "https://github.com/patternfly/patternfly-elements/tree/main/elements/pf-avatar/demo/dark-border.html"
+              }
+            },
+            {
+              "url": "https://patternflyelements.org/components/avatar/demo/dark-variant/",
+              "source": {
+                "href": "https://github.com/patternfly/patternfly-elements/tree/main/elements/pf-avatar/demo/dark-variant.html"
+              }
+            },
+            {
+              "url": "https://patternflyelements.org/components/avatar/demo/sizes/",
+              "source": {
+                "href": "https://github.com/patternfly/patternfly-elements/tree/main/elements/pf-avatar/demo/sizes.html"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PfAvatar",
+          "declaration": {
+            "name": "PfAvatar",
+            "module": "pf-avatar/pf-avatar.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "pf-avatar",
+          "declaration": {
+            "name": "PfAvatar",
+            "module": "pf-avatar/pf-avatar.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "pf-back-to-top/pf-back-to-top.js",
       "declarations": [
         {
@@ -1954,205 +2153,6 @@
           "declaration": {
             "name": "PfBackToTop",
             "module": "pf-back-to-top/pf-back-to-top.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "pf-avatar/pf-avatar.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "An **avatar** is a visual used to represent a user. It may contain an image or a placeholder graphic.",
-          "name": "PfAvatar",
-          "members": [
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "'sm' | 'md' | 'lg' | 'xl'"
-              },
-              "default": "'sm'",
-              "description": "Size of the Avatar",
-              "attribute": "size",
-              "reflects": true,
-              "inheritedFrom": {
-                "name": "BaseAvatar",
-                "module": "pf-avatar/BaseAvatar.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "border",
-              "type": {
-                "text": "'light' | 'dark' | undefined"
-              },
-              "description": "Whether to display a border around the avatar",
-              "attribute": "border",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "src",
-              "type": {
-                "text": "string | undefined"
-              },
-              "description": "The URL to the user's custom avatar image.",
-              "attribute": "src",
-              "inheritedFrom": {
-                "name": "BaseAvatar",
-                "module": "pf-avatar/BaseAvatar.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "alt",
-              "type": {
-                "text": "string | undefined"
-              },
-              "default": "'Avatar image'",
-              "description": "The alt text for the avatar image.",
-              "attribute": "alt",
-              "reflects": true,
-              "inheritedFrom": {
-                "name": "BaseAvatar",
-                "module": "pf-avatar/BaseAvatar.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "dark",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether or not the Avatar image is dark",
-              "attribute": "dark",
-              "reflects": true,
-              "inheritedFrom": {
-                "name": "BaseAvatar",
-                "module": "pf-avatar/BaseAvatar.js"
-              }
-            }
-          ],
-          "attributes": [
-            {
-              "name": "size",
-              "type": {
-                "text": "'sm' | 'md' | 'lg' | 'xl'"
-              },
-              "default": "'sm'",
-              "description": "Size of the Avatar",
-              "fieldName": "size",
-              "inheritedFrom": {
-                "name": "BaseAvatar",
-                "module": "pf-avatar/BaseAvatar.ts"
-              }
-            },
-            {
-              "name": "border",
-              "type": {
-                "text": "'light' | 'dark' | undefined"
-              },
-              "description": "Whether to display a border around the avatar",
-              "fieldName": "border"
-            },
-            {
-              "name": "src",
-              "type": {
-                "text": "string | undefined"
-              },
-              "description": "The URL to the user's custom avatar image.",
-              "fieldName": "src",
-              "inheritedFrom": {
-                "name": "BaseAvatar",
-                "module": "pf-avatar/BaseAvatar.ts"
-              }
-            },
-            {
-              "name": "alt",
-              "type": {
-                "text": "string | undefined"
-              },
-              "default": "'Avatar image'",
-              "description": "The alt text for the avatar image.",
-              "fieldName": "alt",
-              "inheritedFrom": {
-                "name": "BaseAvatar",
-                "module": "pf-avatar/BaseAvatar.ts"
-              }
-            },
-            {
-              "name": "dark",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether or not the Avatar image is dark",
-              "fieldName": "dark",
-              "inheritedFrom": {
-                "name": "BaseAvatar",
-                "module": "pf-avatar/BaseAvatar.ts"
-              }
-            }
-          ],
-          "superclass": {
-            "name": "BaseAvatar",
-            "module": "/pf-avatar/BaseAvatar.js"
-          },
-          "summary": "For displaying a user's avatar image",
-          "tagName": "pf-avatar",
-          "customElement": true,
-          "demos": [
-            {
-              "url": "https://patternflyelements.org/components/avatar/demo/",
-              "source": {
-                "href": "https://github.com/patternfly/patternfly-elements/tree/main/elements/pf-avatar/demo/pf-avatar.html"
-              }
-            },
-            {
-              "url": "https://patternflyelements.org/components/avatar/demo/bordered/",
-              "source": {
-                "href": "https://github.com/patternfly/patternfly-elements/tree/main/elements/pf-avatar/demo/bordered.html"
-              }
-            },
-            {
-              "url": "https://patternflyelements.org/components/avatar/demo/dark-border/",
-              "source": {
-                "href": "https://github.com/patternfly/patternfly-elements/tree/main/elements/pf-avatar/demo/dark-border.html"
-              }
-            },
-            {
-              "url": "https://patternflyelements.org/components/avatar/demo/dark-variant/",
-              "source": {
-                "href": "https://github.com/patternfly/patternfly-elements/tree/main/elements/pf-avatar/demo/dark-variant.html"
-              }
-            },
-            {
-              "url": "https://patternflyelements.org/components/avatar/demo/sizes/",
-              "source": {
-                "href": "https://github.com/patternfly/patternfly-elements/tree/main/elements/pf-avatar/demo/sizes.html"
-              }
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "PfAvatar",
-          "declaration": {
-            "name": "PfAvatar",
-            "module": "pf-avatar/pf-avatar.js"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "pf-avatar",
-          "declaration": {
-            "name": "PfAvatar",
-            "module": "pf-avatar/pf-avatar.js"
           }
         }
       ]
@@ -4221,10 +4221,10 @@
               "kind": "field",
               "name": "shadowRootOptions",
               "type": {
-                "text": "ShadowRootInit"
+                "text": "object"
               },
               "static": true,
-              "default": "{ ...LitElement.shadowRootOptions, delegatesFocus: true }",
+              "default": "{\n    ...LitElement.shadowRootOptions,\n    delegatesFocus: true,\n  }",
               "readonly": true
             },
             {
@@ -4596,10 +4596,10 @@
               "kind": "field",
               "name": "shadowRootOptions",
               "type": {
-                "text": "ShadowRootInit"
+                "text": "object"
               },
               "static": true,
-              "default": "{ ...LitElement.shadowRootOptions, delegatesFocus: true }",
+              "default": "{\n    ...LitElement.shadowRootOptions,\n    delegatesFocus: true,\n  }",
               "readonly": true
             },
             {
@@ -4811,10 +4811,11 @@
               "kind": "field",
               "name": "shadowRootOptions",
               "type": {
-                "text": "ShadowRootInit"
+                "text": "object"
               },
               "static": true,
-              "default": "{ ...BaseClipboardCopy.shadowRootOptions, delegatesFocus: true }"
+              "default": "{\n    ...BaseClipboardCopy.shadowRootOptions,\n    delegatesFocus: true,\n  }",
+              "readonly": true
             },
             {
               "kind": "field",
@@ -5441,7 +5442,7 @@
                 "text": "object"
               },
               "static": true,
-              "default": "{ ...LitElement.shadowRootOptions, delegatesFocus: true }",
+              "default": "{\n    ...LitElement.shadowRootOptions,\n    delegatesFocus: true,\n  }",
               "readonly": true
             },
             {
@@ -5587,7 +5588,7 @@
                 "text": "object"
               },
               "static": true,
-              "default": "{ ...LitElement.shadowRootOptions, delegatesFocus: true }",
+              "default": "{\n    ...LitElement.shadowRootOptions,\n    delegatesFocus: true,\n  }",
               "readonly": true
             },
             {
@@ -5750,7 +5751,7 @@
                 "text": "object"
               },
               "static": true,
-              "default": "{ ...LitElement.shadowRootOptions, delegatesFocus: true }",
+              "default": "{\n    ...LitElement.shadowRootOptions,\n    delegatesFocus: true,\n  }",
               "readonly": true
             },
             {
@@ -5980,10 +5981,10 @@
               "kind": "field",
               "name": "shadowRootOptions",
               "type": {
-                "text": "ShadowRootInit"
+                "text": "object"
               },
               "static": true,
-              "default": "{ ...LitElement.shadowRootOptions, delegatesFocus: true }",
+              "default": "{\n    ...LitElement.shadowRootOptions,\n    delegatesFocus: true,\n  }",
               "readonly": true
             },
             {
@@ -6655,10 +6656,10 @@
               "kind": "field",
               "name": "shadowRootOptions",
               "type": {
-                "text": "ShadowRootInit"
+                "text": "object"
               },
               "static": true,
-              "default": "{ ...LitElement.shadowRootOptions, delegatesFocus: true }",
+              "default": "{\n    ...LitElement.shadowRootOptions,\n    delegatesFocus: true,\n  }",
               "readonly": true
             },
             {
@@ -6858,7 +6859,6 @@
               "name": "--pf-c-jump-links__list--before--BorderLeftWidth"
             },
             {
-              "description": "",
               "name": "--pf-c-jump-links__toggle--MarginBottom--base"
             },
             {
@@ -6888,7 +6888,6 @@
               "name": "--pf-c-button--PaddingBottom"
             },
             {
-              "description": "",
               "name": "--pf-c-button--PaddingLeft"
             },
             {
@@ -6898,7 +6897,6 @@
               "name": "--pf-c-jump-links__toggle-icon--Transition"
             },
             {
-              "description": "",
               "name": "--pf-c-jump-links__toggle-text--MarginLeft"
             },
             {
@@ -6908,7 +6906,6 @@
               "name": "--pf-c-jump-links--m-expanded__toggle-icon--Rotate"
             },
             {
-              "description": "",
               "name": "--pf-c-jump-links--m-expanded__toggle-icon--Color"
             },
             {
@@ -7564,10 +7561,10 @@
               "kind": "field",
               "name": "shadowRootOptions",
               "type": {
-                "text": "ShadowRootInit"
+                "text": "object"
               },
               "static": true,
-              "default": "{ ...BaseLabel.shadowRootOptions, delegatesFocus: true }",
+              "default": "{\n    ...BaseLabel.shadowRootOptions,\n    delegatesFocus: true,\n  }",
               "readonly": true
             },
             {
@@ -8009,7 +8006,7 @@
                 "text": "object"
               },
               "static": true,
-              "default": "{ ...LitElement.shadowRootOptions, delegatesFocus: true }",
+              "default": "{\n    ...LitElement.shadowRootOptions,\n    delegatesFocus: true,\n  }",
               "readonly": true
             },
             {
@@ -9995,10 +9992,10 @@
               "kind": "field",
               "name": "shadowRootOptions",
               "type": {
-                "text": "ShadowRootInit"
+                "text": "object"
               },
               "static": true,
-              "default": "{ ...LitElement.shadowRootOptions, delegatesFocus: true }",
+              "default": "{\n    ...LitElement.shadowRootOptions,\n    delegatesFocus: true,\n  }",
               "readonly": true
             },
             {
@@ -10021,6 +10018,12 @@
               "name": "#float",
               "privacy": "private",
               "default": "new FloatingDOMController(this, {\n    content: () => this.shadowRoot?.getElementById('listbox-container') ?? null,\n  })"
+            },
+            {
+              "kind": "field",
+              "name": "#slots",
+              "privacy": "private",
+              "default": "new SlotController(this, null, 'placeholder')"
             },
             {
               "kind": "field",
@@ -10185,9 +10188,8 @@
             },
             {
               "kind": "field",
-              "name": "#valueTextArray",
+              "name": "#buttonLabel",
               "privacy": "private",
-              "description": "array of text content from listbox's array of selected options",
               "readonly": true
             },
             {
@@ -10274,6 +10276,11 @@
               "kind": "method",
               "name": "#onTypeaheadInput",
               "description": "handles typeahead combobox input event",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "#computePlaceholderText",
               "privacy": "private"
             },
             {
@@ -10574,6 +10581,11 @@
             }
           ],
           "members": [
+            {
+              "kind": "field",
+              "name": "#internals",
+              "privacy": "private"
+            },
             {
               "kind": "field",
               "name": "size",
@@ -13489,7 +13501,7 @@
               "kind": "field",
               "name": "icons",
               "type": {
-                "text": "Array<HTMLElement>"
+                "text": "HTMLElement[]"
               },
               "privacy": "private"
             },
@@ -14914,7 +14926,7 @@
                 "text": "object"
               },
               "static": true,
-              "default": "{ ...LitElement.shadowRootOptions, delegatesFocus: true }",
+              "default": "{\n    ...LitElement.shadowRootOptions,\n    delegatesFocus: true,\n  }",
               "readonly": true
             },
             {
@@ -15007,14 +15019,6 @@
               "default": "false",
               "description": "Flag to modify height based on contents.",
               "attribute": "auto-resize"
-            },
-            {
-              "kind": "field",
-              "name": "#style",
-              "privacy": "private",
-              "type": {
-                "text": "CSSStyleDeclaration | undefined"
-              }
             },
             {
               "kind": "field",
@@ -15901,10 +15905,11 @@
               "kind": "field",
               "name": "shadowRootOptions",
               "type": {
-                "text": "ShadowRootInit"
+                "text": "object"
               },
               "static": true,
-              "default": "{ ...LitElement.shadowRootOptions, delegatesFocus: true }"
+              "default": "{\n    ...LitElement.shadowRootOptions,\n    delegatesFocus: true,\n  }",
+              "readonly": true
             },
             {
               "kind": "field",
@@ -15981,7 +15986,7 @@
               "kind": "field",
               "name": "type",
               "type": {
-                "text": "'text' | 'date' | 'datetime-local' | 'email' | 'month' | 'number' | 'password' | 'search' | 'tel' | 'time' | 'url' | undefined"
+                "text": "| 'text'\n    | 'date'\n    | 'datetime-local'\n    | 'email'\n    | 'month'\n    | 'number'\n    | 'password'\n    | 'search'\n    | 'tel'\n    | 'time'\n    | 'url' | undefined"
               },
               "description": "Type that the input accepts.",
               "attribute": "type",
@@ -16244,7 +16249,7 @@
             {
               "name": "type",
               "type": {
-                "text": "'text' | 'date' | 'datetime-local' | 'email' | 'month' | 'number' | 'password' | 'search' | 'tel' | 'time' | 'url' | undefined"
+                "text": "| 'text'\n    | 'date'\n    | 'datetime-local'\n    | 'email'\n    | 'month'\n    | 'number'\n    | 'password'\n    | 'search'\n    | 'tel'\n    | 'time'\n    | 'url' | undefined"
               },
               "description": "Type that the input accepts.",
               "fieldName": "type"
@@ -16586,7 +16591,7 @@
               "type": {
                 "text": "StackedSize | undefined"
               },
-              "description": "stacked variant\n",
+              "description": "stacked variant",
               "name": "stacked",
               "fieldName": "stacked"
             }
@@ -17116,7 +17121,7 @@
               "kind": "field",
               "name": "#float",
               "privacy": "private",
-              "default": "new FloatingDOMController(this, {\n    content: (): HTMLElement | null | undefined => this.#content,\n    invoker: (): HTMLElement | null | undefined => {\n      if (this.#referenceTrigger) {\n        return this.#referenceTrigger;\n      } else if (this.#invoker instanceof HTMLSlotElement && this.#invoker.assignedElements().length > 0) {\n        return this.#invoker.assignedElements().at(0) as HTMLElement;\n      } else {\n        return this.#invoker;\n      }\n    },\n  })"
+              "default": "new FloatingDOMController(this, {\n    content: (): HTMLElement | null | undefined => this.#content,\n    invoker: (): HTMLElement | null | undefined => {\n      if (this.#referenceTrigger) {\n        return this.#referenceTrigger;\n      } else if (this.#invoker instanceof HTMLSlotElement\n              && this.#invoker.assignedElements().length > 0) {\n        return this.#invoker.assignedElements().at(0) as HTMLElement;\n      } else {\n        return this.#invoker;\n      }\n    },\n  })"
             },
             {
               "kind": "method",
@@ -17260,6 +17265,142 @@
           "declaration": {
             "name": "PfTooltip",
             "module": "pf-tooltip/pf-tooltip.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "pf-avatar/BaseAvatar.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "AvatarLoadEvent",
+          "members": [
+            {
+              "kind": "field",
+              "type": {
+                "text": "Event",
+                "name": "Event"
+              },
+              "name": "originalEvent",
+              "privacy": "public"
+            }
+          ],
+          "superclass": {
+            "name": "Event",
+            "module": "global:"
+          }
+        },
+        {
+          "kind": "class",
+          "description": "Avatar is an element for displaying a user's avatar image.",
+          "name": "BaseAvatar",
+          "members": [
+            {
+              "kind": "field",
+              "name": "src",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "The URL to the user's custom avatar image.",
+              "attribute": "src"
+            },
+            {
+              "kind": "field",
+              "name": "alt",
+              "type": {
+                "text": "string | undefined"
+              },
+              "default": "'Avatar image'",
+              "description": "The alt text for the avatar image.",
+              "attribute": "alt",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg' | 'xl'"
+              },
+              "default": "'sm'",
+              "description": "Size of the Avatar",
+              "attribute": "size",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "dark",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether or not the Avatar image is dark",
+              "attribute": "dark",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "src",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "The URL to the user's custom avatar image.",
+              "fieldName": "src"
+            },
+            {
+              "name": "alt",
+              "type": {
+                "text": "string | undefined"
+              },
+              "default": "'Avatar image'",
+              "description": "The alt text for the avatar image.",
+              "fieldName": "alt"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg' | 'xl'"
+              },
+              "default": "'sm'",
+              "description": "Size of the Avatar",
+              "fieldName": "size"
+            },
+            {
+              "name": "dark",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether or not the Avatar image is dark",
+              "fieldName": "dark"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "summary": "For displaying a user's avatar image",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "AvatarLoadEvent",
+          "declaration": {
+            "name": "AvatarLoadEvent",
+            "module": "pf-avatar/BaseAvatar.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "BaseAvatar",
+          "declaration": {
+            "name": "BaseAvatar",
+            "module": "pf-avatar/BaseAvatar.js"
           }
         }
       ]
@@ -17800,7 +17941,7 @@
                 "text": "object"
               },
               "static": true,
-              "default": "{ ...LitElement.shadowRootOptions, delegatesFocus: true }",
+              "default": "{\n    ...LitElement.shadowRootOptions,\n    delegatesFocus: true,\n  }",
               "readonly": true
             },
             {
@@ -17997,142 +18138,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "pf-avatar/BaseAvatar.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "AvatarLoadEvent",
-          "members": [
-            {
-              "kind": "field",
-              "type": {
-                "text": "Event",
-                "name": "Event"
-              },
-              "name": "originalEvent",
-              "privacy": "public"
-            }
-          ],
-          "superclass": {
-            "name": "Event",
-            "module": "global:"
-          }
-        },
-        {
-          "kind": "class",
-          "description": "Avatar is an element for displaying a user's avatar image.",
-          "name": "BaseAvatar",
-          "members": [
-            {
-              "kind": "field",
-              "name": "src",
-              "type": {
-                "text": "string | undefined"
-              },
-              "description": "The URL to the user's custom avatar image.",
-              "attribute": "src"
-            },
-            {
-              "kind": "field",
-              "name": "alt",
-              "type": {
-                "text": "string | undefined"
-              },
-              "default": "'Avatar image'",
-              "description": "The alt text for the avatar image.",
-              "attribute": "alt",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "'sm' | 'md' | 'lg' | 'xl'"
-              },
-              "default": "'sm'",
-              "description": "Size of the Avatar",
-              "attribute": "size",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "dark",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether or not the Avatar image is dark",
-              "attribute": "dark",
-              "reflects": true
-            }
-          ],
-          "attributes": [
-            {
-              "name": "src",
-              "type": {
-                "text": "string | undefined"
-              },
-              "description": "The URL to the user's custom avatar image.",
-              "fieldName": "src"
-            },
-            {
-              "name": "alt",
-              "type": {
-                "text": "string | undefined"
-              },
-              "default": "'Avatar image'",
-              "description": "The alt text for the avatar image.",
-              "fieldName": "alt"
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "'sm' | 'md' | 'lg' | 'xl'"
-              },
-              "default": "'sm'",
-              "description": "Size of the Avatar",
-              "fieldName": "size"
-            },
-            {
-              "name": "dark",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether or not the Avatar image is dark",
-              "fieldName": "dark"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "summary": "For displaying a user's avatar image",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "AvatarLoadEvent",
-          "declaration": {
-            "name": "AvatarLoadEvent",
-            "module": "pf-avatar/BaseAvatar.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "BaseAvatar",
-          "declaration": {
-            "name": "BaseAvatar",
-            "module": "pf-avatar/BaseAvatar.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "pf-badge/BaseBadge.js",
       "declarations": [
         {
@@ -18224,10 +18229,10 @@
               "kind": "field",
               "name": "shadowRootOptions",
               "type": {
-                "text": "ShadowRootInit"
+                "text": "object"
               },
               "static": true,
-              "default": "{ ...LitElement.shadowRootOptions, delegatesFocus: true }",
+              "default": "{\n    ...LitElement.shadowRootOptions,\n    delegatesFocus: true,\n  }",
               "readonly": true
             },
             {
@@ -19292,13 +19297,14 @@
                 "text": "object"
               },
               "static": true,
-              "default": "{ ...LitElement.shadowRootOptions, delegatesFocus: true }"
+              "default": "{\n    ...LitElement.shadowRootOptions,\n    delegatesFocus: true,\n  }",
+              "readonly": true
             },
             {
               "kind": "field",
               "name": "icons",
               "type": {
-                "text": "Array<HTMLElement>"
+                "text": "HTMLElement[]"
               },
               "privacy": "private"
             },
@@ -19533,7 +19539,7 @@
               "default": "\"Scroll left\""
             },
             {
-              "description": "accessible label for the tab panel's scroll right button.\n",
+              "description": "accessible label for the tab panel's scroll right button.",
               "name": "label-scroll-right",
               "default": "\"Scroll right\""
             }

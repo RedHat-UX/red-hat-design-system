@@ -19,9 +19,7 @@ export declare class PopoverShownEvent extends ComposedEvent {
 }
 /**
  * A **Popover** displays content in a non-modal dialog and adds contextual information or provides resources via text and links.
- *
  * @summary Toggle the visibility of helpful or contextual information.
- *
  * @slot -
  *         The default slot holds invoking element.
  *         Typically this would be an icon, button, or other small sized element.
@@ -35,7 +33,6 @@ export declare class PopoverShownEvent extends ComposedEvent {
  *       This slot renders the content that will be displayed inside of the body of the popover.
  * @slot footer
  *       This slot renders the content that will be displayed inside of the footer of the popover.
- *
  * @csspart container - The component wrapper
  * @csspart content - The content wrapper
  * @csspart header - The header element; only visible if both an icon annd heading are provided.
@@ -44,7 +41,6 @@ export declare class PopoverShownEvent extends ComposedEvent {
  * @csspart close-button - The close button
  * @csspart body - The container for the body content
  * @csspart footer - The container for the footer content
- *
  * @cssprop {<length>} --pf-c-popover__arrow--Height
  *          Height of the arrow
  *          {@default `1.5625rem`}
@@ -241,7 +237,7 @@ export declare class PfPopover extends LitElement {
     private _slottedTrigger?;
     private _arrow;
     constructor();
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
     disconnectedCallback(): void;
     /**
      * Removes event listeners from the old trigger element and attaches

@@ -8,13 +8,10 @@ export declare class PfDropdownSelectEvent extends Event {
 /**
  * A **dropdown** presents a menu of actions or links in a constrained space that
  * will trigger a process or navigate to a new location.
- *
  * @slot - Must contain one or more `<pf-dropdown-item>` or `<pf-dropdown-group>`
  * @slot toggle - Custom toggle button
  * @slot menu - when using a custom toggle, you must slot a `<pf-dropdown-menu>` in alongside it
- *
  * @csspart menu - The dropdown menu wrapper
- *
  * @cssprop {<length>} --pf-c-dropdown__menu--PaddingTop
  *          Dropdown top padding
  *          {@default `0.5rem`}
@@ -30,7 +27,6 @@ export declare class PfDropdownSelectEvent extends Event {
  * @cssprop {<length>} --pf-c-dropdown__menu--Top
  *          Dropdown top
  *          {@default `100% + 0.25rem`}
- *
  * @fires {PfDropdownSelectEvent} select - when a user select dropdown value
  * @fires open - when the dropdown toggles open
  * @fires close - when the dropdown toggles closed
@@ -38,7 +34,13 @@ export declare class PfDropdownSelectEvent extends Event {
 export declare class PfDropdown extends LitElement {
     #private;
     static readonly styles: CSSStyleSheet[];
-    static readonly shadowRootOptions: ShadowRootInit;
+    static readonly shadowRootOptions: {
+        delegatesFocus: boolean;
+        mode: ShadowRootMode;
+        slotAssignment?: SlotAssignmentMode | undefined;
+        customElements?: CustomElementRegistry | undefined;
+        registry?: CustomElementRegistry | undefined;
+    };
     /**
      * When disabled, the dropdown can still be toggled open and closed via keyboard, but menu items cannot be activated.
      */
@@ -52,7 +54,7 @@ export declare class PfDropdown extends LitElement {
     private ctx;
     protected getUpdateComplete(): Promise<boolean>;
     willUpdate(changed: PropertyValues): void;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
     firstUpdated(): void;
     updated(changed: PropertyValues<this>): void;
     /**

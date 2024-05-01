@@ -14,6 +14,6 @@ export declare abstract class BaseSwitch extends LitElement {
     get labels(): NodeListOf<HTMLLabelElement>;
     connectedCallback(): void;
     formDisabledCallback(disabled: boolean): void;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
     willUpdate(): void;
 }

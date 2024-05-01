@@ -21,7 +21,7 @@ export declare class PfTimestamp extends LitElement {
     get time(): string;
     connectedCallback(): void;
     willUpdate(changedProperties: PropertyValues<this>): void;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

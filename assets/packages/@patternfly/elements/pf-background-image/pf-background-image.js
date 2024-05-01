@@ -10,9 +10,7 @@ const styles = css `:host {\n  display: flex;\n\n  --_background-image: var(--pf
 /**
  * A **background image** allows you to place an image in the background of your page or area of a page.
  * @summary Allows users to place an image in the background of your page or area of a page.
- *
  * @slot filter - Overrides the default svg filter for the background image.
- *
  * @cssprop {<color>} --pf-c-background-image--BackgroundColor {@default `#151515`}
  * @cssprop --pf-c-background-image--BackgroundImage
  * @cssprop --pf-c-background-image--BackgroundImage-2x
@@ -20,7 +18,6 @@ const styles = css `:host {\n  display: flex;\n\n  --_background-image: var(--pf
  * @cssprop --pf-c-background-image--BackgroundImage--sm-2x
  * @cssprop --pf-c-background-image--BackgroundImage--lg
  * @cssprop --pf-c-background-image--Filter {@default `url("#image_overlay")`}
- *
  */
 let PfBackgroundImage = class PfBackgroundImage extends LitElement {
     constructor() {
@@ -39,7 +36,7 @@ let PfBackgroundImage = class PfBackgroundImage extends LitElement {
             '--_background-image-2x': this.src2x,
             '--_background-image-sm': this.srcSm,
             '--_background-image-sm-2x': this.srcSm2x,
-            '--_background-image-lg': this.srcLg
+            '--_background-image-lg': this.srcLg,
         };
         Object.entries(cssProps).forEach(([key, value]) => {
             // if the value is undefined, remove the css property

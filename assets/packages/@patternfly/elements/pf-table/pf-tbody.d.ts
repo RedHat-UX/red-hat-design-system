@@ -6,7 +6,7 @@ import { LitElement } from 'lit';
 export declare class PfTbody extends LitElement {
     static readonly styles: CSSStyleSheet[];
     connectedCallback(): void;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

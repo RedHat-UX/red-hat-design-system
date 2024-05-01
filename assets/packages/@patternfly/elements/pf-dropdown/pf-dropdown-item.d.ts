@@ -10,7 +10,6 @@ export declare class DropdownItemChange extends Event {
  *      Optional slot for item description
  * @slot -
  *      Content for the dropdown item
- *
  * @cssprop {<length>} --pf-c-dropdown__menu-item--FontSize
  *          Dropdown item font size
  *          {@default `1rem`}
@@ -72,7 +71,7 @@ export declare class PfDropdownItem extends LitElement {
     /** @internal */
     menuItem: HTMLElement;
     protected updated(changed: PropertyValues<this>): void;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

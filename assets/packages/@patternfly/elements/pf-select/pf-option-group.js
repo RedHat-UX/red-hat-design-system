@@ -17,6 +17,8 @@ let PfOptionGroup = class PfOptionGroup extends LitElement {
         super(...arguments);
         /** whether group is disabled */
         this.disabled = false;
+        // for the role
+        // eslint-disable-next-line no-unused-private-class-members
         _PfOptionGroup_internals.set(this, InternalsController.of(this, { role: 'group' }));
     }
     render() {

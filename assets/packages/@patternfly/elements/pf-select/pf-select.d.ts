@@ -14,7 +14,6 @@ export declare class PfSelectChangeEvent extends Event {
  * A select component consists of a toggle control to open and close a menu of actions or links.
  * Selects differ from dropdowns in that they persist selection,
  * whereas dropdowns are typically used to present a list of actions or links.
- *
  * @slot - insert `pf-option` and/or `pf-option-groups` here
  * @slot placeholder - placeholder text for the select. Overrides the `placeholder` attribute.
  * @fires open - when the menu toggles open
@@ -23,7 +22,13 @@ export declare class PfSelectChangeEvent extends Event {
 export declare class PfSelect extends LitElement {
     #private;
     static readonly styles: CSSStyleSheet[];
-    static readonly shadowRootOptions: ShadowRootInit;
+    static readonly shadowRootOptions: {
+        delegatesFocus: boolean;
+        mode: ShadowRootMode;
+        slotAssignment?: SlotAssignmentMode | undefined;
+        customElements?: CustomElementRegistry | undefined;
+        registry?: CustomElementRegistry | undefined;
+    };
     static readonly formAssociated = true;
     /** Variant of rendered Select */
     variant: 'single' | 'checkbox';
@@ -75,7 +80,7 @@ export declare class PfSelect extends LitElement {
     get options(): PfOption[];
     private _toggle?;
     willUpdate(changed: PropertyValues<this>): void;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
     updated(changed: PropertyValues<this>): void;
     firstUpdated(): void;
     /**

@@ -13,7 +13,13 @@ export declare abstract class BaseButton extends LitElement {
     #private;
     static readonly styles: CSSStyleSheet[];
     static readonly formAssociated = true;
-    static readonly shadowRootOptions: ShadowRootInit;
+    static readonly shadowRootOptions: {
+        delegatesFocus: boolean;
+        mode: ShadowRootMode;
+        slotAssignment?: SlotAssignmentMode | undefined;
+        customElements?: CustomElementRegistry | undefined;
+        registry?: CustomElementRegistry | undefined;
+    };
     /** Disables the button */
     disabled: boolean;
     type?: 'button' | 'submit' | 'reset';
@@ -37,7 +43,6 @@ export declare abstract class BaseButton extends LitElement {
     /**
      * Fallback content for the icon slot. When the `icon` attribute is set, it
      * should render an icon corresponding to the value.
-     *
      * @example ```html
      *          <base-icon icon=${this.icon}></base-icon>
      *          ```

@@ -17,10 +17,8 @@ import { css } from "lit";
 const styles = css `:host {\n  display: block;\n}\n\n[part="tabs-container"] {\n  position: relative;\n  display: flex;\n  overflow: hidden;\n}\n\n[part="tabs-container"]::before {\n  position: absolute;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  border-style: solid;\n}\n\n:host button {\n  opacity: 1;\n}\n\n:host button:nth-of-type(1) {\n  margin-inline-end: 0;\n  translate: 0 0;\n}\n\n:host button:nth-of-type(2) {\n  margin-inline-start: 0;\n  translate: 0 0;\n}\n\n[part="tabs"],\n[part="panels"] {\n  display: block;\n}\n\n[part="tabs"] {\n  scrollbar-width: none;\n  position: relative;\n  max-width: 100%;\n  overflow-x: auto;\n}\n\n[part="tabs-container"]::before,\n[part="tabs"]::before,\nbutton::before {\n  position: absolute;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  content: "";\n  border-style: solid;\n}\n\n[part="tabs"]::before,\nbutton::before {\n  top: 0;\n}\n\nbutton,\n[part="tabs"]::before {\n  border: 0;\n}\n\nbutton {\n  flex: none;\n  line-height: 1;\n  opacity: 0;\n}\n\nbutton::before {\n  border-block-start-width: 0;\n}\n\nbutton:nth-of-type(1) {\n  translate: -100% 0;\n}\n\nbutton:nth-of-type(2) {\n  translate: 100% 0;\n}\n\nbutton:disabled {\n  pointer-events: none;\n}\n`;
 /**
  * BaseTabs
- *
  * @attr [label-scroll-left="Scroll left"] - accessible label for the tab panel's scroll left button.
  * @attr [label-scroll-right="Scroll right"] - accessible label for the tab panel's scroll right button.
- *
  */
 export class BaseTabs extends LitElement {
     constructor() {
@@ -41,9 +39,9 @@ export class BaseTabs extends LitElement {
          */
         this.manual = false;
         _BaseTabs_onTabExpand.set(this, (event) => {
-            if (!(event instanceof TabExpandEvent) ||
-                !__classPrivateFieldGet(this, _BaseTabs_allTabs, "f").length ||
-                !__classPrivateFieldGet(this, _BaseTabs_allPanels, "f").length) {
+            if (!(event instanceof TabExpandEvent)
+                || !__classPrivateFieldGet(this, _BaseTabs_allTabs, "f").length
+                || !__classPrivateFieldGet(this, _BaseTabs_allPanels, "f").length) {
                 return;
             }
             if (event.active) {
@@ -101,10 +99,10 @@ export class BaseTabs extends LitElement {
     willUpdate() {
         const { activeItem } = __classPrivateFieldGet(this, _BaseTabs_tabindex, "f");
         // If RTI has an activeItem, update the roving tabindex controller
-        if (!this.manual &&
-            activeItem &&
-            activeItem !== __classPrivateFieldGet(this, _BaseTabs_instances, "a", _BaseTabs_activeTab_get) &&
-            activeItem.ariaDisabled !== 'true') {
+        if (!this.manual
+            && activeItem
+            && activeItem !== __classPrivateFieldGet(this, _BaseTabs_instances, "a", _BaseTabs_activeTab_get)
+            && activeItem.ariaDisabled !== 'true') {
             activeItem.active = true;
         }
     }
@@ -146,11 +144,12 @@ _a = BaseTabs, _BaseTabs_tabindex = new WeakMap(), _BaseTabs_overflow = new Weak
         __classPrivateFieldSet(this, _BaseTabs_allTabs, this.tabs.filter(tab => this.constructor.isTab(tab)), "f");
     }
     else {
-        __classPrivateFieldSet(this, _BaseTabs_allPanels, this.panels.filter(panel => this.constructor.isPanel(panel)), "f");
+        __classPrivateFieldSet(this, _BaseTabs_allPanels, this.panels
+            .filter(panel => this.constructor.isPanel(panel)), "f");
     }
     __classPrivateFieldGet(this, _BaseTabs_tabindex, "f").updateItems();
-    if ((__classPrivateFieldGet(this, _BaseTabs_allTabs, "f").length === __classPrivateFieldGet(this, _BaseTabs_allPanels, "f").length) &&
-        (__classPrivateFieldGet(this, _BaseTabs_allTabs, "f").length !== 0 || __classPrivateFieldGet(this, _BaseTabs_allPanels, "f").length !== 0)) {
+    if ((__classPrivateFieldGet(this, _BaseTabs_allTabs, "f").length === __classPrivateFieldGet(this, _BaseTabs_allPanels, "f").length)
+        && (__classPrivateFieldGet(this, _BaseTabs_allTabs, "f").length !== 0 || __classPrivateFieldGet(this, _BaseTabs_allPanels, "f").length !== 0)) {
         __classPrivateFieldGet(this, _BaseTabs_instances, "m", _BaseTabs_updateAccessibility).call(this);
         __classPrivateFieldGet(this, _BaseTabs_instances, "m", _BaseTabs_firstLastClasses).call(this);
         this.activeIndex = __classPrivateFieldGet(this, _BaseTabs_allTabs, "f").findIndex(tab => tab.active);

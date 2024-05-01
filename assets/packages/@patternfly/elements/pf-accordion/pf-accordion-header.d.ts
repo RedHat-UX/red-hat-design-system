@@ -76,7 +76,7 @@ export declare class PfAccordionHeader extends BaseAccordionHeader {
     bordered?: 'true' | 'false';
     icon?: string;
     iconSet?: string;
-    renderAfterButton(): import("lit").TemplateResult<1>;
+    renderAfterButton(): import("lit-html").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

@@ -4,14 +4,19 @@ import '@patternfly/elements/pf-icon/pf-icon.js';
 import '@patternfly/elements/pf-tooltip/pf-tooltip.js';
 /**
  * The **clipboard copy** component allows users to quickly and easily copy content to their clipboard.
- *
  * @slot - Place content to copy here, or use the `value` attribute
  * @slot actions - Place additional action buttons here
  */
 export declare class PfClipboardCopy extends BaseClipboardCopy {
     #private;
     static readonly styles: CSSStyleSheet[];
-    static shadowRootOptions: ShadowRootInit;
+    static readonly shadowRootOptions: {
+        delegatesFocus: boolean;
+        mode: ShadowRootMode;
+        slotAssignment?: SlotAssignmentMode | undefined;
+        customElements?: CustomElementRegistry | undefined;
+        registry?: CustomElementRegistry | undefined;
+    };
     clickTip: string;
     hoverTip: string;
     textAriaLabel: string;
@@ -38,7 +43,7 @@ export declare class PfClipboardCopy extends BaseClipboardCopy {
      * This demonstrates the collapsed whitespace issue.
      * The extra space between the closing slot tag and the closing template literal results in a collapsed whitespace.
      */
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
     copy(): Promise<void>;
 }
 declare global {

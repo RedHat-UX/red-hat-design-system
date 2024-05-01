@@ -31,13 +31,10 @@ export class PfChipGroupRemoveEvent extends Event {
 const REMAINING_RE = /\$\{\s*remaining\s*\}/g;
 /**
  * A **chip group** is a collection of chips that can be grouped by category and used to represent one or more values assigned to a single attribute. When value of numChips is exceeded, additional chips will be hidden using an overflow chip.
- *
  * @fires expand - Fires when chip group is expanded to show all chips
  * @fires remove - Fires when chip group is closed/removed
- *
  * @slot category-name
  *      Category name text for chip group category. If this prop is supplied chip group with have a label and category styling applied
- *
  * @slot
  *      Should be <Chip> elements.
  */
@@ -116,10 +113,10 @@ let PfChipGroup = class PfChipGroup extends LitElement {
     `;
     }
     updated(changed) {
-        if (changed.has('accessibleCloseLabel') ||
-            changed.has('numChips') ||
-            changed.has('closeable') ||
-            changed.has('open')) {
+        if (changed.has('accessibleCloseLabel')
+            || changed.has('numChips')
+            || changed.has('closeable')
+            || changed.has('open')) {
             __classPrivateFieldGet(this, _PfChipGroup_instances, "m", _PfChipGroup_handleChipsChanged).call(this);
         }
     }
@@ -164,8 +161,8 @@ _PfChipGroup_handleChipsChanged = function _PfChipGroup_handleChipsChanged() {
             this._overflowChip,
             this._button,
         ].filter((x) => !!x), "f");
-        if (oldButtons.length !== __classPrivateFieldGet(this, _PfChipGroup_buttons, "f").length ||
-            !oldButtons.every((element, index) => element === __classPrivateFieldGet(this, _PfChipGroup_buttons, "f")[index])) {
+        if (oldButtons.length !== __classPrivateFieldGet(this, _PfChipGroup_buttons, "f").length
+            || !oldButtons.every((element, index) => element === __classPrivateFieldGet(this, _PfChipGroup_buttons, "f")[index])) {
             __classPrivateFieldGet(this, _PfChipGroup_tabindex, "f").updateItems();
         }
         __classPrivateFieldGet(this, _PfChipGroup_instances, "m", _PfChipGroup_updateOverflow).call(this);
@@ -225,7 +222,10 @@ _PfChipGroup_updateOverflow = function _PfChipGroup_updateOverflow() {
     });
 };
 PfChipGroup.styles = [shared, styles];
-PfChipGroup.shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
+PfChipGroup.shadowRootOptions = {
+    ...LitElement.shadowRootOptions,
+    delegatesFocus: true,
+};
 __decorate([
     property({ attribute: 'accessible-label', type: String })
 ], PfChipGroup.prototype, "accessibleLabel", void 0);

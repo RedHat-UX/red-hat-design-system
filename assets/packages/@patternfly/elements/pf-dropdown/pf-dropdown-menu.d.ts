@@ -3,7 +3,6 @@ import { PfDropdownItem } from './pf-dropdown-item.js';
 /**
  * A **dropdown** presents a menu of actions or links in a constrained space that will trigger a
  * process or navigate to a new location.
- *
  * @slot - Must contain one or more `<pf-dropdown-item>` or `<pf-dropdown-group>`
  */
 export declare class PfDropdownMenu extends LitElement {
@@ -28,7 +27,7 @@ export declare class PfDropdownMenu extends LitElement {
     get items(): PfDropdownItem[];
     connectedCallback(): void;
     protected willUpdate(): void;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

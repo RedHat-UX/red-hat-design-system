@@ -10,13 +10,19 @@ import { LitElement } from 'lit';
 export declare class PfJumpLinksItem extends LitElement {
     #private;
     static readonly styles: CSSStyleSheet[];
-    static readonly shadowRootOptions: ShadowRootInit;
+    static readonly shadowRootOptions: {
+        delegatesFocus: boolean;
+        mode: ShadowRootMode;
+        slotAssignment?: SlotAssignmentMode | undefined;
+        customElements?: CustomElementRegistry | undefined;
+        registry?: CustomElementRegistry | undefined;
+    };
     /** Whether this item is active. */
     active: boolean;
     /** hypertext reference for this link */
     href?: string;
     connectedCallback(): void;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
     private activeChanged;
 }
 declare global {

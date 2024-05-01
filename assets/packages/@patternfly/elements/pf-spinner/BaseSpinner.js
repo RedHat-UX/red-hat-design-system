@@ -1,13 +1,11 @@
-import { __decorate } from "tslib";
 // will remove file in 2627
-/* eslint-disable lit-a11y/accessible-name */
+import { __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { property } from 'lit/decorators/property.js';
 import { css } from "lit";
 const styles = css `:host {\n  display: inline-block;\n  width: min-content;\n  min-height: 0;\n  aspect-ratio: 1 / 1;\n}\n\nsvg {\n  overflow: hidden;\n}\n\ncircle {\n  width: 100%;\n  height: 100%;\n  transform-origin: 50% 50%;\n  stroke-linecap: round;\n  stroke-dasharray: 283;\n  stroke-dashoffset: 280;\n}\n\n`;
 /**
  * Base spinner class
- *
  * @cssprop {<length>} --pf-c-spinner--diameter                      {@default `3.375rem`}
  * @cssprop {<length>} --pf-c-spinner--Width                         {@default `3.375rem`}
  * @cssprop {<length>} --pf-c-spinner--Height                        {@default `3.375rem`}
@@ -31,7 +29,7 @@ export class BaseSpinner extends LitElement {
     }
     render() {
         return html `
-      <svg role="progressbar" viewBox="0 0 100 100">
+      <svg viewBox="0 0 100 100">
         <circle cx="50" cy="50" r="45" fill="none" />
       </svg>
     `;

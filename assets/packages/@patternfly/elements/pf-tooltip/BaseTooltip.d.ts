@@ -12,5 +12,5 @@ export declare abstract class BaseTooltip extends LitElement {
     connectedCallback(): void;
     show(): Promise<void>;
     hide(): Promise<void>;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
 }

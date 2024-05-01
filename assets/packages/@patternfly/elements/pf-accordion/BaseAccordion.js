@@ -32,6 +32,7 @@ export class BaseAccordion extends LitElement {
         this.expandedSets = new Set();
         _BaseAccordion_logger.set(this, new Logger(this));
         // actually is read in #init, by the `||=` operator
+        // eslint-disable-next-line no-unused-private-class-members
         _BaseAccordion_initialized.set(this, false);
         _BaseAccordion_mo.set(this, new MutationObserver(() => __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_init).call(this)));
     }
@@ -262,7 +263,7 @@ async function _BaseAccordion_init() {
 __decorate([
     property({
         attribute: 'expanded-index',
-        converter: NumberListConverter
+        converter: NumberListConverter,
     })
 ], BaseAccordion.prototype, "expandedIndex", null);
 //# sourceMappingURL=BaseAccordion.js.map

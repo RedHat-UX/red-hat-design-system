@@ -1,4 +1,4 @@
-var _PfTextArea_instances, _PfTextArea_style, _PfTextArea_logger, _PfTextArea_internals, _PfTextArea_derivedLabel, _PfTextArea_input_get, _PfTextArea_onInput, _PfTextArea_autoSetHeight, _PfTextArea_setValidityFromInput;
+var _PfTextArea_instances, _PfTextArea_logger, _PfTextArea_internals, _PfTextArea_derivedLabel, _PfTextArea_input_get, _PfTextArea_onInput, _PfTextArea_autoSetHeight, _PfTextArea_setValidityFromInput;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
@@ -11,7 +11,6 @@ const styles = css `:host {\n  display: block;\n\n  /* .pf-c-form-control */\n  
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 /**
  * A **text area** component is used for entering a paragraph of text that is longer than one line.
- *
  * @cssprop --pf-c-form-control--Color - {@default var(--pf-global--Color--100, #151515)}
  * @cssprop --pf-c-form-control--FontSize - {@default var(--pf-global--FontSize--md, 1rem)}
  * @cssprop --pf-c-form-control--LineHeight - {@default var(--pf-global--LineHeight--md, 1.5)}
@@ -152,7 +151,6 @@ let PfTextArea = class PfTextArea extends LitElement {
         this.value = '';
         /** Flag to modify height based on contents. */
         this.autoResize = false;
-        _PfTextArea_style.set(this, void 0);
         _PfTextArea_logger.set(this, new Logger(this));
         _PfTextArea_internals.set(this, InternalsController.of(this));
         _PfTextArea_derivedLabel.set(this, '');
@@ -196,7 +194,6 @@ let PfTextArea = class PfTextArea extends LitElement {
         return __classPrivateFieldGet(this, _PfTextArea_internals, "f").reportValidity();
     }
 };
-_PfTextArea_style = new WeakMap();
 _PfTextArea_logger = new WeakMap();
 _PfTextArea_internals = new WeakMap();
 _PfTextArea_derivedLabel = new WeakMap();
@@ -228,7 +225,10 @@ _PfTextArea_setValidityFromInput = function _PfTextArea_setValidityFromInput() {
 };
 PfTextArea.styles = [styles];
 PfTextArea.formAssociated = true;
-PfTextArea.shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
+PfTextArea.shadowRootOptions = {
+    ...LitElement.shadowRootOptions,
+    delegatesFocus: true,
+};
 __decorate([
     property({ reflect: true, attribute: 'accessible-label' })
 ], PfTextArea.prototype, "accessibleLabel", void 0);

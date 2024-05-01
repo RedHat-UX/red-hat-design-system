@@ -14,5 +14,5 @@ export declare abstract class BaseBadge extends LitElement {
      * the numeric value exceeds the threshold value.
      */
     abstract threshold?: number;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
 }

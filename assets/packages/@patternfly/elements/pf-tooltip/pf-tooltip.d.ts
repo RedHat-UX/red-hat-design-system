@@ -4,9 +4,7 @@ import { type Placement } from '@patternfly/pfe-core/controllers/floating-dom-co
 /**
  * A **tooltip** is in-app messaging used to identify elements on a page with short,
  * clarifying text.
- *
  * @summary Toggle the visibility of helpful or contextual information.
- *
  * @slot
  *       This slot wraps around the element that should be used to invoke the tooltip content to display.
  *       Typically this would be an icon, button, or other small sized element.
@@ -14,7 +12,6 @@ import { type Placement } from '@patternfly/pfe-core/controllers/floating-dom-co
  *       This slot renders the content that will be displayed inside of the tooltip.
  *       Typically this would include a string of text without any additional elements.
  *       This element is wrapped with a div inside of the component to give it the stylings and background colors.
- *
  * @cssprop     {<color>} --pf-c-tooltip__content--BackgroundColor
  *              Sets the background color for the tooltip content.
  *              {@default `#1b1d21`}
@@ -111,7 +108,7 @@ export declare class PfTooltip extends LitElement {
      * them to the new trigger element.
      */
     willUpdate(changed: PropertyValues<this>): void;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
     show(): Promise<void>;
     hide(): Promise<void>;
 }

@@ -3,5 +3,5 @@ export declare class BaseAccordionPanel extends LitElement {
     static readonly styles: CSSStyleSheet[];
     expanded: boolean;
     connectedCallback(): void;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
 }

@@ -1,7 +1,6 @@
 import { LitElement } from 'lit';
 /**
  * A **text area** component is used for entering a paragraph of text that is longer than one line.
- *
  * @cssprop --pf-c-form-control--Color - {@default var(--pf-global--Color--100, #151515)}
  * @cssprop --pf-c-form-control--FontSize - {@default var(--pf-global--FontSize--md, 1rem)}
  * @cssprop --pf-c-form-control--LineHeight - {@default var(--pf-global--LineHeight--md, 1.5)}
@@ -163,7 +162,7 @@ export declare class PfTextArea extends LitElement {
     /** Flag to modify height based on contents. */
     autoResize: boolean;
     willUpdate(): void;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
     firstUpdated(): void;
     formDisabledCallback(): Promise<void>;
     setCustomValidity(message: string): void;

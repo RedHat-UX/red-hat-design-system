@@ -39,9 +39,7 @@ export class PopoverShownEvent extends ComposedEvent {
 }
 /**
  * A **Popover** displays content in a non-modal dialog and adds contextual information or provides resources via text and links.
- *
  * @summary Toggle the visibility of helpful or contextual information.
- *
  * @slot -
  *         The default slot holds invoking element.
  *         Typically this would be an icon, button, or other small sized element.
@@ -55,7 +53,6 @@ export class PopoverShownEvent extends ComposedEvent {
  *       This slot renders the content that will be displayed inside of the body of the popover.
  * @slot footer
  *       This slot renders the content that will be displayed inside of the footer of the popover.
- *
  * @csspart container - The component wrapper
  * @csspart content - The content wrapper
  * @csspart header - The header element; only visible if both an icon annd heading are provided.
@@ -64,7 +61,6 @@ export class PopoverShownEvent extends ComposedEvent {
  * @csspart close-button - The close button
  * @csspart body - The container for the body content
  * @csspart footer - The container for the footer content
- *
  * @cssprop {<length>} --pf-c-popover__arrow--Height
  *          Height of the arrow
  *          {@default `1.5625rem`}
@@ -236,7 +232,9 @@ let PfPopover = PfPopover_1 = class PfPopover extends LitElement {
         const headingSlotWithFallback = html `
       <slot id="heading" name="heading" part="heading" ?hidden=${!hasHeading}>${headingContent}</slot>
     `;
-        const headerIcon = this.icon ?? PfPopover_1.alertIcons.get(this.alertSeverity) ?? '';
+        const headerIcon = this.icon
+            ?? PfPopover_1.alertIcons.get(this.alertSeverity)
+            ?? '';
         return html `
       <div id="container"
            style="${styleMap(styles)}"
@@ -411,7 +409,11 @@ __decorate([
     property({ type: Boolean, reflect: true, attribute: 'no-flip' })
 ], PfPopover.prototype, "noFlip", void 0);
 __decorate([
-    property({ type: Number, reflect: true, attribute: 'heading-level' })
+    property({
+        type: Number,
+        reflect: true,
+        attribute: 'heading-level',
+    })
 ], PfPopover.prototype, "headingLevel", void 0);
 __decorate([
     property({ reflect: true, attribute: 'icon-set' })
@@ -426,7 +428,10 @@ __decorate([
     property({ reflect: true, attribute: 'accessible-close-label' })
 ], PfPopover.prototype, "accessibleCloseLabel", void 0);
 __decorate([
-    deprecation({ alias: 'accessible-close-label', attribute: 'close-label' })
+    deprecation({
+        alias: 'accessible-close-label',
+        attribute: 'close-label',
+    })
 ], PfPopover.prototype, "closeButtonLabel", void 0);
 __decorate([
     property({ reflect: true, attribute: 'alert-severity-text' })

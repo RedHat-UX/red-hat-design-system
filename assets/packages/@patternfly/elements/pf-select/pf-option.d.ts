@@ -1,7 +1,6 @@
 import { LitElement, type PropertyValues } from 'lit';
 /**
  * Option within a listbox
- *
  * @slot -
  *        option text
  * @slot icon
@@ -35,7 +34,7 @@ export declare class PfOption extends LitElement {
     set setSize(setSize: number | null);
     get setSize(): number | null;
     connectedCallback(): void;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
     willUpdate(changed: PropertyValues<this>): void;
     /**
      * text content within option (used for filtering)

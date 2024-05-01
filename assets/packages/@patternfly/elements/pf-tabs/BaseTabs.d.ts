@@ -3,10 +3,8 @@ import { BaseTab } from './BaseTab.js';
 import { BaseTabPanel } from './BaseTabPanel.js';
 /**
  * BaseTabs
- *
  * @attr [label-scroll-left="Scroll left"] - accessible label for the tab panel's scroll left button.
  * @attr [label-scroll-right="Scroll right"] - accessible label for the tab panel's scroll right button.
- *
  */
 export declare abstract class BaseTabs extends LitElement {
     #private;
@@ -36,5 +34,5 @@ export declare abstract class BaseTabs extends LitElement {
     disconnectedCallback(): void;
     willUpdate(): void;
     firstUpdated(): Promise<void>;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
 }

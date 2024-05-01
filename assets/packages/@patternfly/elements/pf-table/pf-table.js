@@ -24,10 +24,8 @@ const rowQuery = [
 ].join();
 /**
  * A **table** is used to display large data sets that can be easily laid out in a simple grid with column headers.
- *
  * @slot
  *       The default slot can hold an optional `pf-caption` element and a combination of `pf-tr`, `pf-thead`, or `pf-tbody` elements.
- *
  * @cssprop {<color>} --pf-c-table--BackgroundColor
  *          Table background color
  *          {@default `#fff`}
@@ -708,8 +706,8 @@ let PfTable = PfTable_1 = _a = class PfTable extends LitElement {
 };
 _PfTable_instances = new WeakSet();
 _PfTable_onRequestExpand = function _PfTable_onRequestExpand(event) {
-    if (event instanceof RequestExpandEvent &&
-        !event.defaultPrevented) {
+    if (event instanceof RequestExpandEvent
+        && !event.defaultPrevented) {
         event.stopPropagation();
         if (event.target instanceof PfTr) {
             event.target.expanded = !!event.target.expandable && !event.target.expanded;

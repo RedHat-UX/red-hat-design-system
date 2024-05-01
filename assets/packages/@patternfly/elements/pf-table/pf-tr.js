@@ -45,7 +45,7 @@ function BooleanEnumConverter(...allowedAttributes) {
             else {
                 return '';
             }
-        }
+        },
     };
 }
 const StringOrBooleanConverter = {
@@ -62,7 +62,7 @@ const StringOrBooleanConverter = {
         else {
             return '';
         }
-    }
+    },
 };
 /**
  * Table row
@@ -114,7 +114,7 @@ let PfTr = class PfTr extends LitElement {
         <div id="expansion">${!this.expanded ? '' : html `
           <slot name="${this.expanded}"></slot>`}
         </div>
-      `
+      `,
         ].filter(Boolean);
     }
 };
@@ -151,7 +151,7 @@ __decorate([
 __decorate([
     property({
         reflect: true,
-        converter: StringOrBooleanConverter
+        converter: StringOrBooleanConverter,
     })
 ], PfTr.prototype, "expanded", void 0);
 PfTr = __decorate([

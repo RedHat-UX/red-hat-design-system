@@ -7,20 +7,23 @@ export declare class PfChipGroupRemoveEvent extends Event {
 }
 /**
  * A **chip group** is a collection of chips that can be grouped by category and used to represent one or more values assigned to a single attribute. When value of numChips is exceeded, additional chips will be hidden using an overflow chip.
- *
  * @fires expand - Fires when chip group is expanded to show all chips
  * @fires remove - Fires when chip group is closed/removed
- *
  * @slot category-name
  *      Category name text for chip group category. If this prop is supplied chip group with have a label and category styling applied
- *
  * @slot
  *      Should be <Chip> elements.
  */
 export declare class PfChipGroup extends LitElement {
     #private;
     static readonly styles: CSSStyleSheet[];
-    static readonly shadowRootOptions: ShadowRootInit;
+    static readonly shadowRootOptions: {
+        delegatesFocus: boolean;
+        mode: ShadowRootMode;
+        slotAssignment?: SlotAssignmentMode | undefined;
+        customElements?: CustomElementRegistry | undefined;
+        registry?: CustomElementRegistry | undefined;
+    };
     /**
      * Accessible label for chip group that does not have a category name
      */
@@ -53,7 +56,7 @@ export declare class PfChipGroup extends LitElement {
     private _button?;
     private _categorySlotted?;
     constructor();
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
     updated(changed: PropertyValues<this>): void;
     /**
      * active chip that receives focus when group receives focus

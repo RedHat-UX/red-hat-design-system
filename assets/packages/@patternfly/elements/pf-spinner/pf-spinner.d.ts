@@ -2,7 +2,6 @@ import { BaseSpinner } from './BaseSpinner.js';
 /**
  * A **spinner** is used to indicate to users that an action is in progress. For actions
  * that may take a long time, use a progress bar instead.
- *
  * @cssprop {<length>} --pf-c-spinner--diameter                      {@default `3.375rem`}
  * @cssprop {<length>} --pf-c-spinner--Width                         {@default `3.375rem`}
  * @cssprop {<length>} --pf-c-spinner--Height                        {@default `3.375rem`}
@@ -19,8 +18,9 @@ import { BaseSpinner } from './BaseSpinner.js';
  * @cssprop {<string>} --pf-c-spinner__path--AnimationTimingFunction {@default `ease-in-out`}
  */
 export declare class PfSpinner extends BaseSpinner {
+    #private;
     static readonly styles: CSSStyleSheet[];
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

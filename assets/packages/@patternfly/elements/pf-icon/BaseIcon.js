@@ -19,7 +19,6 @@ class IconLoadError extends ErrorEvent {
 }
 /**
  * Icon component lazy-loads icons and allows custom icon sets
- *
  * @slot - Slotted content is used as a fallback in case the icon doesn't load
  * @fires load - Fired when an icon is loaded and rendered
  * @fires error - Fired when an icon fails to load
@@ -68,16 +67,16 @@ export class BaseIcon extends LitElement {
         __classPrivateFieldGet(this, _BaseIcon_instances, "a", _BaseIcon_class_get).instances.delete(this);
     }
     render() {
-        const content = this.content ?? ''; /* eslint-disable indent */
+        const content = this.content ?? '';
         return html `
       <div id="container" aria-hidden="true">${content}<span part="fallback" ?hidden=${!!content}>
           <slot></slot>
         </span>
       </div>
-    `; /* eslint-enable indent */
+    `;
     }
     async load() {
-        const { set, icon, } = this;
+        const { set, icon } = this;
         const getter = __classPrivateFieldGet(this, _BaseIcon_instances, "a", _BaseIcon_class_get).getters.get(set) ?? __classPrivateFieldGet(this, _BaseIcon_instances, "a", _BaseIcon_class_get).getIconUrl;
         let spec = 'UNKNOWN ICON';
         if (set && icon) {

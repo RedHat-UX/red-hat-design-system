@@ -26,13 +26,10 @@ export class PfDropdownSelectEvent extends Event {
 /**
  * A **dropdown** presents a menu of actions or links in a constrained space that
  * will trigger a process or navigate to a new location.
- *
  * @slot - Must contain one or more `<pf-dropdown-item>` or `<pf-dropdown-group>`
  * @slot toggle - Custom toggle button
  * @slot menu - when using a custom toggle, you must slot a `<pf-dropdown-menu>` in alongside it
- *
  * @csspart menu - The dropdown menu wrapper
- *
  * @cssprop {<length>} --pf-c-dropdown__menu--PaddingTop
  *          Dropdown top padding
  *          {@default `0.5rem`}
@@ -48,7 +45,6 @@ export class PfDropdownSelectEvent extends Event {
  * @cssprop {<length>} --pf-c-dropdown__menu--Top
  *          Dropdown top
  *          {@default `100% + 0.25rem`}
- *
  * @fires {PfDropdownSelectEvent} select - when a user select dropdown value
  * @fires open - when the dropdown toggles open
  * @fires close - when the dropdown toggles closed
@@ -158,7 +154,8 @@ _PfDropdown_validateDOM = function _PfDropdown_validateDOM() {
         __classPrivateFieldGet(this, _PfDropdown_logger, "f").warn('no menu found');
         return false;
     }
-    else if (![toggle, menu].map(x => this.shadowRoot?.contains(x)).every((p, _, a) => p === a[0])) {
+    else if (![toggle, menu].map(x => this.shadowRoot?.contains(x))
+        .every((p, _, a) => p === a[0])) {
         __classPrivateFieldGet(this, _PfDropdown_logger, "f").warn('toggle and menu must be located in the same root');
         return false;
     }
@@ -217,11 +214,11 @@ _PfDropdown_onMenuFocusout = function _PfDropdown_onMenuFocusout(event) {
     if (this.expanded) {
         const root = this.getRootNode();
         const [menu] = this._menuElements;
-        if (root instanceof ShadowRoot ||
-            root instanceof Document &&
-                event.relatedTarget instanceof PfDropdownItem &&
-                menu instanceof PfDropdownMenu &&
-                !menu.items.includes(event.relatedTarget)) {
+        if (root instanceof ShadowRoot
+            || root instanceof Document
+                && event.relatedTarget instanceof PfDropdownItem
+                && menu instanceof PfDropdownMenu
+                && !menu.items.includes(event.relatedTarget)) {
             this.hide();
         }
     }
@@ -239,7 +236,10 @@ _PfDropdown_onMenuKeydown = function _PfDropdown_onMenuKeydown(event) {
     }
 };
 PfDropdown.styles = [styles];
-PfDropdown.shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
+PfDropdown.shadowRootOptions = {
+    ...LitElement.shadowRootOptions,
+    delegatesFocus: true,
+};
 __decorate([
     property({ type: Boolean, reflect: true })
 ], PfDropdown.prototype, "disabled", void 0);

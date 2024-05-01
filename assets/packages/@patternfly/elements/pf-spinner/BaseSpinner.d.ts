@@ -2,7 +2,6 @@ import { LitElement } from 'lit';
 export type SpinnerSize = ('sm' | 'md' | 'lg' | 'xl');
 /**
  * Base spinner class
- *
  * @cssprop {<length>} --pf-c-spinner--diameter                      {@default `3.375rem`}
  * @cssprop {<length>} --pf-c-spinner--Width                         {@default `3.375rem`}
  * @cssprop {<length>} --pf-c-spinner--Height                        {@default `3.375rem`}
@@ -24,5 +23,5 @@ export declare abstract class BaseSpinner extends LitElement {
     size: SpinnerSize;
     /** Custom diameter of spinner set as CSS variable */
     diameter?: `${string}${'px' | '%' | 'rem' | 'em' | 'fr' | 'pt'}`;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
 }

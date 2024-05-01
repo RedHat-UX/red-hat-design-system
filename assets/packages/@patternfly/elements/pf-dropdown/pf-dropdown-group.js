@@ -18,7 +18,10 @@ let PfDropdownGroup = class PfDropdownGroup extends LitElement {
     }
 };
 PfDropdownGroup.styles = [styles];
-PfDropdownGroup.shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
+PfDropdownGroup.shadowRootOptions = {
+    ...LitElement.shadowRootOptions,
+    delegatesFocus: true,
+};
 __decorate([
     property({ reflect: true })
 ], PfDropdownGroup.prototype, "label", void 0);

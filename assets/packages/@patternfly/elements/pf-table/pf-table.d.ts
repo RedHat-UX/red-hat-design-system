@@ -8,10 +8,8 @@ export * from './pf-th.js';
 export * from './pf-td.js';
 /**
  * A **table** is used to display large data sets that can be easily laid out in a simple grid with column headers.
- *
  * @slot
  *       The default slot can hold an optional `pf-caption` element and a combination of `pf-tr`, `pf-thead`, or `pf-tbody` elements.
- *
  * @cssprop {<color>} --pf-c-table--BackgroundColor
  *          Table background color
  *          {@default `#fff`}
@@ -652,7 +650,7 @@ export declare class PfTable extends LitElement {
     get rows(): NodeListOf<PfTr>;
     private columns;
     connectedCallback(): void;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
     private static getNodeContentForSort;
     private static sortByContent;
 }

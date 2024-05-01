@@ -46,7 +46,7 @@ export declare class PfBackToTop extends LitElement {
     connectedCallback(): void;
     disconnectedCallback(): void;
     willUpdate(changed: PropertyValues<this>): void;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

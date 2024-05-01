@@ -11,7 +11,7 @@ export declare class PfOptionGroup extends LitElement {
     label?: string;
     /** whether group is disabled */
     disabled: boolean;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

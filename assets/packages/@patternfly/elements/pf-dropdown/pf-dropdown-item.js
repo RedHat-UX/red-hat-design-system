@@ -22,7 +22,6 @@ export class DropdownItemChange extends Event {
  *      Optional slot for item description
  * @slot -
  *      Content for the dropdown item
- *
  * @cssprop {<length>} --pf-c-dropdown__menu-item--FontSize
  *          Dropdown item font size
  *          {@default `1rem`}
@@ -88,7 +87,10 @@ let PfDropdownItem = class PfDropdownItem extends LitElement {
     }
 };
 PfDropdownItem.styles = [styles];
-PfDropdownItem.shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
+PfDropdownItem.shadowRootOptions = {
+    ...LitElement.shadowRootOptions,
+    delegatesFocus: true,
+};
 __decorate([
     property({ reflect: true })
 ], PfDropdownItem.prototype, "value", void 0);

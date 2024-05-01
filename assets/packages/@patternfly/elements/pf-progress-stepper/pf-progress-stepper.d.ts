@@ -16,7 +16,7 @@ export declare class PfProgressStepper extends LitElement {
     compact: boolean;
     get value(): number;
     constructor();
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

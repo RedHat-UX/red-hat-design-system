@@ -19,7 +19,6 @@ function isDisabledItemClick(event) {
 /**
  * A **dropdown** presents a menu of actions or links in a constrained space that will trigger a
  * process or navigate to a new location.
- *
  * @slot - Must contain one or more `<pf-dropdown-item>` or `<pf-dropdown-group>`
  */
 let PfDropdownMenu = class PfDropdownMenu extends LitElement {
@@ -84,8 +83,8 @@ _PfDropdownMenu_onMenuitemFocusin = function _PfDropdownMenu_onMenuitemFocusin(e
         event.preventDefault();
         event.stopPropagation();
     }
-    else if (event.target instanceof PfDropdownItem &&
-        event.target.menuItem !== __classPrivateFieldGet(this, _PfDropdownMenu_tabindex, "f").activeItem) {
+    else if (event.target instanceof PfDropdownItem
+        && event.target.menuItem !== __classPrivateFieldGet(this, _PfDropdownMenu_tabindex, "f").activeItem) {
         __classPrivateFieldGet(this, _PfDropdownMenu_tabindex, "f").setActiveItem(event.target.menuItem);
     }
 };
@@ -94,8 +93,8 @@ _PfDropdownMenu_onMenuitemClick = function _PfDropdownMenu_onMenuitemClick(event
         event.preventDefault();
         event.stopPropagation();
     }
-    else if (event.target instanceof PfDropdownItem &&
-        event.target.menuItem !== __classPrivateFieldGet(this, _PfDropdownMenu_tabindex, "f").activeItem) {
+    else if (event.target instanceof PfDropdownItem
+        && event.target.menuItem !== __classPrivateFieldGet(this, _PfDropdownMenu_tabindex, "f").activeItem) {
         __classPrivateFieldGet(this, _PfDropdownMenu_tabindex, "f").setActiveItem(event.target.menuItem);
     }
 };
@@ -118,7 +117,10 @@ _PfDropdownMenu_getSlottedItems = function _PfDropdownMenu_getSlottedItems(slot)
     }) ?? [];
 };
 PfDropdownMenu.styles = [styles];
-PfDropdownMenu.shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
+PfDropdownMenu.shadowRootOptions = {
+    ...LitElement.shadowRootOptions,
+    delegatesFocus: true,
+};
 __decorate([
     consume({ context, subscribe: true }),
     state()

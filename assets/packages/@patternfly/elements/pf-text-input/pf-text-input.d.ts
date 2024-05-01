@@ -1,7 +1,6 @@
 import { LitElement } from 'lit';
 /**
  * A **text input** is used to gather free-form text from a user.
- *
  * @cssprop --pf-c-form-control--Color - {@default var(--pf-global--Color--100, #151515)}
  * @cssprop --pf-c-form-control--FontSize - {@default var(--pf-global--FontSize--md, 1rem)}
  * @cssprop --pf-c-form-control--LineHeight - {@default var(--pf-global--LineHeight--md, 1.5)}
@@ -133,7 +132,13 @@ export declare class PfTextInput extends LitElement {
     #private;
     static readonly styles: CSSStyleSheet[];
     static readonly formAssociated = true;
-    static shadowRootOptions: ShadowRootInit;
+    static readonly shadowRootOptions: {
+        delegatesFocus: boolean;
+        mode: ShadowRootMode;
+        slotAssignment?: SlotAssignmentMode | undefined;
+        customElements?: CustomElementRegistry | undefined;
+        registry?: CustomElementRegistry | undefined;
+    };
     /** Trim text on left */
     leftTruncated: boolean;
     /**
@@ -173,7 +178,7 @@ export declare class PfTextInput extends LitElement {
     /** Value of the input. */
     value: string;
     willUpdate(): void;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
     formStateRestoreCallback(state: string, mode: string): Promise<void>;
     formDisabledCallback(): Promise<void>;
     setCustomValidity(message: string): void;

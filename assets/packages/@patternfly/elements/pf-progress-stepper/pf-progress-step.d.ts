@@ -23,7 +23,7 @@ export declare class PfProgressStep extends LitElement {
     variant?: 'pending' | 'info' | 'success' | 'warning' | 'danger';
     /** Indicates if this item is the current active item. */
     current: boolean;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
     updated(changed: PropertyValues<this>): void;
 }
 declare global {

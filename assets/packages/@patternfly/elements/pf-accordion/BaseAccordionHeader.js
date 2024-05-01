@@ -112,7 +112,10 @@ _BaseAccordionHeader_generatedHtag = new WeakMap(), _BaseAccordionHeader_logger 
     }
 };
 BaseAccordionHeader.styles = [style];
-BaseAccordionHeader.shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
+BaseAccordionHeader.shadowRootOptions = {
+    ...LitElement.shadowRootOptions,
+    delegatesFocus: true,
+};
 __decorate([
     property({ type: Boolean, reflect: true })
 ], BaseAccordionHeader.prototype, "expanded", void 0);

@@ -3,7 +3,6 @@ import { LitElement } from 'lit';
 export type URLGetter = (set: string, icon: string) => URL | string;
 /**
  * Icon component lazy-loads icons and allows custom icon sets
- *
  * @slot - Slotted content is used as a fallback in case the icon doesn't load
  * @fires load - Fired when an icon is loaded and rendered
  * @fires error - Fired when an icon fails to load
@@ -37,6 +36,6 @@ export declare abstract class BaseIcon extends LitElement {
     connectedCallback(): void;
     willUpdate(changed: PropertyValues<this>): void;
     disconnectedCallback(): void;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
     protected load(): Promise<void>;
 }

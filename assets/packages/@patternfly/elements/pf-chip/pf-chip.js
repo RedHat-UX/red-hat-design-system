@@ -15,13 +15,10 @@ export class PfChipRemoveEvent extends Event {
 }
 /**
  * A **chip** is used to communicate a value or a set of attribute-value pairs within workflows that involve filtering a set of objects.
- *
  * @fires {ChipRemoveEvent} remove - Fires when chip is removed
  * @fires {Event} click - when close button is clicked
- *
  * @slot
  *      chip text
- *
  * @csspart text - container for chip text
  */
 let PfChip = class PfChip extends LitElement {
@@ -71,7 +68,10 @@ _PfChip_onClick = function _PfChip_onClick() {
     }
 };
 PfChip.styles = [shared, styles];
-PfChip.shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
+PfChip.shadowRootOptions = {
+    ...LitElement.shadowRootOptions,
+    delegatesFocus: true,
+};
 __decorate([
     property({ attribute: 'accessible-close-label', type: String })
 ], PfChip.prototype, "accessibleCloseLabel", void 0);

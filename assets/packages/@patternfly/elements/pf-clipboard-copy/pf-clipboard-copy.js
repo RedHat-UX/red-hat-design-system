@@ -14,7 +14,6 @@ import '@patternfly/elements/pf-tooltip/pf-tooltip.js';
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 /**
  * The **clipboard copy** component allows users to quickly and easily copy content to their clipboard.
- *
  * @slot - Place content to copy here, or use the `value` attribute
  * @slot actions - Place additional action buttons here
  */
@@ -58,7 +57,7 @@ let PfClipboardCopy = class PfClipboardCopy extends BaseClipboardCopy {
     render() {
         const { expanded, expandable, inline, compact, code, block, readonly } = this;
         return html `
-      <div class="container ${classMap({ code, expanded, inline, compact, block, })}">
+      <div class="container ${classMap({ code, expanded, inline, compact, block })}">
         <div id="input-group">
           <div id="wrapper">
             <pf-button id="expand-button"
@@ -130,7 +129,10 @@ _PfClipboardCopy_dedent = function _PfClipboardCopy_dedent(str) {
     return match ? stripped.replace(new RegExp(`^${match[0]}`, 'gm'), '') : str;
 };
 PfClipboardCopy.styles = [...BaseClipboardCopy.styles, styles];
-PfClipboardCopy.shadowRootOptions = { ...BaseClipboardCopy.shadowRootOptions, delegatesFocus: true };
+PfClipboardCopy.shadowRootOptions = {
+    ...BaseClipboardCopy.shadowRootOptions,
+    delegatesFocus: true,
+};
 __decorate([
     property({ attribute: 'click-tip' })
 ], PfClipboardCopy.prototype, "clickTip", void 0);

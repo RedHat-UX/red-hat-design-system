@@ -70,7 +70,10 @@ _BaseTab_internals = new WeakMap(), _BaseTab_instances = new WeakSet(), _BaseTab
     __classPrivateFieldGet(this, _BaseTab_internals, "f").ariaDisabled = String(!!this.disabled);
 };
 BaseTab.styles = [style];
-BaseTab.shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
+BaseTab.shadowRootOptions = {
+    ...LitElement.shadowRootOptions,
+    delegatesFocus: true,
+};
 __decorate([
     queryAssignedElements({ slot: 'icon', flatten: true })
 ], BaseTab.prototype, "icons", void 0);

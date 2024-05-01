@@ -20,5 +20,5 @@ import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller
 export declare abstract class BaseCard extends LitElement {
     static readonly styles: CSSStyleSheet[];
     protected slots: SlotController;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
 }

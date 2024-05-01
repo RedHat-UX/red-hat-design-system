@@ -49,7 +49,10 @@ _PfJumpLinksItem_onFocus = function _PfJumpLinksItem_onFocus() {
     this.dispatchEvent(new Event('focus', { bubbles: true }));
 };
 PfJumpLinksItem.styles = [style];
-PfJumpLinksItem.shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
+PfJumpLinksItem.shadowRootOptions = {
+    ...LitElement.shadowRootOptions,
+    delegatesFocus: true,
+};
 __decorate([
     observed('activeChanged'),
     property({ type: Boolean, reflect: true })

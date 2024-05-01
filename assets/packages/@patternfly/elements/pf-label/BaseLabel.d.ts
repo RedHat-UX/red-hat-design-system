@@ -10,7 +10,7 @@ export declare abstract class BaseLabel extends LitElement {
     abstract icon?: string;
     /** Represents the state of the anonymous and icon slots */
     protected slots: SlotController;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
     /**
      * Fallback content for the icon slot. When the `icon` attribute is set, it
      * should render an icon corresponding to the value.

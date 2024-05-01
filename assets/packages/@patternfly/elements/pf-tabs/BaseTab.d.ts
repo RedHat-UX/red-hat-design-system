@@ -12,7 +12,7 @@ export declare class TabExpandEvent extends ComposedEvent {
 export declare abstract class BaseTab extends LitElement {
     #private;
     static readonly styles: CSSStyleSheet[];
-    static shadowRootOptions: {
+    static readonly shadowRootOptions: {
         delegatesFocus: boolean;
         mode: ShadowRootMode;
         slotAssignment?: SlotAssignmentMode | undefined;
@@ -26,7 +26,7 @@ export declare abstract class BaseTab extends LitElement {
     /** `active` should be observed, and true when the tab is disabled */
     abstract disabled: boolean;
     connectedCallback(): void;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
     updated(changed: PropertyValues<this>): void;
     focus(): void;
 }
