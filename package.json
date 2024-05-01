@@ -1,6 +1,6 @@
 {
   "name": "@rhds/elements",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Red Hat Design System Elements",
   "type": "module",
   "license": "MIT",
@@ -237,6 +237,7 @@
   },
   "dependencies": {
     "@lit/context": "^1.1.1",
+    "@patternfly/elements": "^3.0.1",
     "@patternfly/icons": "^1.0.2",
     "@patternfly/pfe-core": "^3.0.0",
     "@rhds/tokens": "^2.0.1",
@@ -254,7 +255,6 @@
     "@lit/reactive-element": "^2.0.4",
     "@parse5/tools": "^0.3.0",
     "@patternfly/create-element": "^1.0.2",
-    "@patternfly/elements": "^3.0.0",
     "@patternfly/eslint-config-elements": "^3.0.0",
     "@patternfly/eslint-plugin-elements": "^2.0.0",
     "@patternfly/pfe-tools": "^2.0.1",
