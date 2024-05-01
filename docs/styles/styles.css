@@ -4,10 +4,10 @@
   typography,
   base,
   layout,
+  flow,
   third-party,
   not-defined,
   lightdom,
-  flow,
   patterns,
   page,
   overrides;
@@ -24,9 +24,12 @@
     color: var(--rh-color-text-primary-on-light, #151515);
   }
 
-  :is(p, ul, ol, dl) {
+  :where(p, ul, ol, dl) {
     font-size: var(--rh-font-size-body-text-lg, 1.125rem);
-    margin-block: 1em;
+  }
+
+  :where(h1, h2, h3, h4, h5, h6) {
+    font-weight: var(--rh-font-weight-heading-medium, 500);
   }
 
   a {
@@ -39,10 +42,6 @@
 
   a:visited {
     color: var(--rh-color-interactive-purple-darker, #5e40be);
-  }
-
-  li {
-    margin-block: var(--rh-space-md, 8px);
   }
 
   hr {
@@ -157,8 +156,41 @@
 }
 
 @layer flow {
+
   :where(p, h1, h2, h3, h4, h5, h6, li) {
     max-width: 56rem;
+  }
+
+  :where(p, ul, ol, dl) {
+    margin-block-start: var(--rh-space-lg, 16px);
+    margin-block-end: var(--rh-space-2xl, 32px);
+  }
+
+  :where(li) {
+    margin-block: var(--rh-space-md, 8px);
+  }
+
+  :where(h1, h2, h3, h4, h5, h6) + :where(h2, h3, h4, h5, h6) {
+    margin-block-start: var(--rh-space-2xl, 32px);
+  }
+
+  :where(uxdot-copy-permalink.h1, 
+    uxdot-copy-permalink.h2, 
+    uxdot-copy-permalink.h3, 
+    uxdot-copy-permalink.h4, 
+    uxdot-copy-permalink.h5, 
+    uxdot-copy-permalink.h6) + 
+    :where(uxdot-copy-permalink.h2, 
+    uxdot-copy-permalink.h3, 
+    uxdot-copy-permalink.h4, 
+    uxdot-copy-permalink.h5, 
+    uxdot-copy-permalink.h6) {
+    margin-block-start: var(--rh-space-2xl, 32px);
+  }
+
+
+  section {
+    margin-block-end: var(--rh-space-6xl, 96px);
   }
 
   figure uxdot-example {

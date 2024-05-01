@@ -44,12 +44,6 @@
     font-size: 1rem;  /* Not a RHDS token */
   }
 
-  aside :is(h2, h3, h3, h4, h5, h6),
-  .container :is(h2, h3, h3, h4, h5, h6) {
-    font-weight: var(--rh-font-weight-heading-medium, 500);
-    margin-block: 1em;
-  }
-
   aside {
     grid-area: toc;
     padding-inline: var(--rh-space-lg, 16px);

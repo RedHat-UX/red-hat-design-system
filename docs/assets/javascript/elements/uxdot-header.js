@@ -7,7 +7,7 @@ class UxdotHeader extends LitElement {
       display: block;
       background-color: var(--rh-color-surface-lighter, #f2f2f2);
       color: var(--rh-color-text-primary-on-light, #151515);
-      margin-block-end: var(--rh-space-5xl, 80px);
+      margin-block-end: var(--rh-space-6xl, 96px);
       container-type: inline-size;
       container-name: header;
     }
