@@ -76,6 +76,6 @@ export class RhHealthIndex extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'rh-health-index': Rhgrade;
+    'rh-health-index': RhHealthIndex;
   }
 }
