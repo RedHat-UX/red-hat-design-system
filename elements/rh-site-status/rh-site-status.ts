@@ -1,6 +1,5 @@
 import { LitElement, html, svg } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
-import { state } from 'lit/decorators/state.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
@@ -93,9 +92,6 @@ const TEXT_MAP = Object.freeze({
 const STATUS_MAP = Object.freeze({
   'none': 'ok',
   'operational': 'ok',
-  // where does the 'maintenance' member come from? accd to https://metastatuspage.com/api,
-  // it doesn't exist on `Incident`
-  // 'maintenance': 'warn',
   'degraded_performance': 'warn',
   'partial_outage': 'warn',
   'major_outage': 'warn',
