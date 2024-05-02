@@ -9,9 +9,9 @@ import styles from './rh-health-index.css';
 
 /**
  * Health index displays a health grade (A–F) for a particular item or package.
- * 
+ *
  * @summary     Displays a health grade for a particular item or package
- * 
+ *
  */
 @customElement('rh-health-index')
 export class Rhgrade extends LitElement {
@@ -29,9 +29,9 @@ export class Rhgrade extends LitElement {
    */
   @property({
     reflect: true,
-    attribute: 'grade'
+    attribute: 'grade',
   })
-  grade: 'A' | 'B' | 'C' | 'D' | 'E' | 'F' = 'A';
+    grade: 'A' | 'B' | 'C' | 'D' | 'E' | 'F' = 'A';
 
 
   /**
@@ -41,8 +41,8 @@ export class Rhgrade extends LitElement {
 
   render() {
     const classes = {
-      [this.grade.toLowerCase()]: !!this.grade
-    }
+      [this.grade.toLowerCase()]: !!this.grade,
+    };
     const boxes = ['A', 'B', 'C', 'D', 'E', 'F'];
 
     if (this.size === 'sm') {
@@ -52,24 +52,22 @@ export class Rhgrade extends LitElement {
         </div>
       </div>`;
     } else {
-
       return html`${
         (this.size === 'md') ? html`<div id="grade">${this.grade}</div>` : html``
       }
       <div id="container" class="${this.on}">
-        ${boxes.map((box) => {
-          console.log('hello');
+        ${boxes.map(box => {
           const active = box === this.grade;
           const boxLowercase = box.toLowerCase();
           const boxClasses = {
             'box': true,
             'active': active,
-            [boxLowercase]: !!boxLowercase
-          }
+            [boxLowercase]: !!boxLowercase,
+          };
           return html`
           <div class="${classMap(boxClasses)}">
             ${(this.size === 'lg' || this.size === 'xl') ? html`<div class="grade">${box}</div><div class="bottom"></div>` : html``}
-          </div>`
+          </div>`;
         })}
       </div>`;
     }

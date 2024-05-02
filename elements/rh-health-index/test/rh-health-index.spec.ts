@@ -13,9 +13,9 @@ describe('<rh-health-index>', function() {
       element = await createFixture<RhHealthIndex>(html`<rh-health-index></rh-health-index>`);
       const klass = customElements.get('rh-health-index');
       expect(element)
-        .to.be.an.instanceOf(klass)
-        .and
-        .to.be.an.instanceOf(RhHealthIndex);
+          .to.be.an.instanceOf(klass)
+          .and
+          .to.be.an.instanceOf(RhHealthIndex);
     });
-  })
+  });
 });
