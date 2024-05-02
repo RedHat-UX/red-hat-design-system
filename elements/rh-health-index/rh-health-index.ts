@@ -14,7 +14,7 @@ import styles from './rh-health-index.css';
  * 
  */
 @customElement('rh-health-index')
-export class RhHealthIndex extends LitElement {
+export class Rhgrade extends LitElement {
   static readonly styles = [styles];
 
   /**
@@ -29,9 +29,9 @@ export class RhHealthIndex extends LitElement {
    */
   @property({
     reflect: true,
-    attribute: 'health-index'
+    attribute: 'grade'
   })
-  healthIndex: 'A' | 'B' | 'C' | 'D' | 'E' | 'F' = 'A';
+  grade: 'A' | 'B' | 'C' | 'D' | 'E' | 'F' = 'A';
 
 
   /**
@@ -41,25 +41,25 @@ export class RhHealthIndex extends LitElement {
 
   render() {
     const classes = {
-      [this.healthIndex.toLowerCase()]: !!this.healthIndex
+      [this.grade.toLowerCase()]: !!this.grade
     }
     const boxes = ['A', 'B', 'C', 'D', 'E', 'F'];
 
     if (this.size === 'sm') {
       return html`<div id="container" class="${this.on}">
         <div class="box ${classMap(classes)}">
-          <div class="grade" id="healthIndex">${this.healthIndex}</div>
+          <div class="grade" id="grade">${this.grade}</div>
         </div>
       </div>`;
     } else {
 
       return html`${
-        (this.size === 'md') ? html`<div id="healthIndex">${this.healthIndex}</div>` : html``
+        (this.size === 'md') ? html`<div id="grade">${this.grade}</div>` : html``
       }
       <div id="container" class="${this.on}">
         ${boxes.map((box) => {
           console.log('hello');
-          const active = box === this.healthIndex;
+          const active = box === this.grade;
           const boxLowercase = box.toLowerCase();
           const boxClasses = {
             'box': true,
@@ -78,6 +78,6 @@ export class RhHealthIndex extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'rh-health-index': RhHealthIndex;
+    'rh-health-index': Rhgrade;
   }
 }

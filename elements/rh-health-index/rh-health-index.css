@@ -1,43 +1,37 @@
 :host {
+  /* sizing */
+  --_ui-size: var(--rh-space-xl, 24px);
+  --_ui-size-xl: calc(var(--rh-space-2xl, 32px) - 2px);
+
   display: inline-flex;
   align-items: center;
   font-family: var(--rh-font-family-code, RedHatMono, "Red Hat Mono", "Courier New", Courier, monospace);
-  font-size: var(--rh-font-size-body-text-md, 16px);
-
-  /* sizing */
-  --_ui-size:         var(--rh-space-xl, 24px);
-  --_ui-size-xl:      calc(var(--rh-space-2xl, 32px) - 2px);
-  line-height:        var(--_ui-size);
+  font-size: var(--rh-font-size-body-text-md, 1rem);
+  line-height: var(--_ui-size);
 
   /* colors */
-  --_color-text-active:   var(--rh-color-gray-95, #151515);
-  --_color-text-inactive: var(--rh-color-gray-70, #383838); 
-  --_color-fill-default:  var(--rh-color-surface-lightest, #ffffff);
-  --_color-border-default:var(--rh-color-border-subtle-on-light, #C7C7C7);
-
-  --_color-a-fill:      var(--rh-color-green-20, #D1F1BB);
-  --_color-a-stroke:    var(--rh-color-green-60, #3D7317);
-  --_color-a-text:      var(--rh-color-green-70, #204D00);
-
-  --_color-b-fill:      var(--rh-color-green-10, #E9F7DF);
-  --_color-b-stroke:    var(--rh-color-green-40, #87BB62);
-  --_color-b-text:      var(--rh-color-green-70, #204D00);
-
-  --_color-c-fill:      var(--rh-color-yellow-10, #FFF4CC);
-  --_color-c-stroke:    var(--rh-color-yellow-30, #FFCC17);
-  --_color-c-text:      var(--rh-color-yellow-70, #73480B);
-
-  --_color-d-fill:      var(--rh-color-orange-10, #FFE8CC);
-  --_color-d-stroke:    var(--rh-color-orange-40, #F5921B);
-  --_color-d-text:      var(--rh-color-orange-70, #732E00);
-
-  --_color-e-fill:      var(--rh-color-red-orange-10, #FFE3D9);
-  --_color-e-stroke:    var(--rh-color-red-orange-60, #B1380B);
-  --_color-e-text:      var(--rh-color-red-orange-70, #731F00);
-
-  --_color-f-fill:      var(--rh-color-red-orange-20, #FBBEA8);
-  --_color-f-stroke:    var(--rh-color-red-orange-70, #731F00);
-  --_color-f-text:      var(--rh-color-red-orange-70, #731F00);
+  --_color-text-active: var(--rh-color-gray-95, #151515);
+  --_color-text-inactive: var(--rh-color-gray-70, #383838);
+  --_color-fill-default: var(--rh-color-surface-lightest, #ffffff);
+  --_color-border-default: var(--rh-color-border-subtle-on-light, #c7c7c7);
+  --_color-a-fill: var(--rh-color-green-20, #d1f1bb);
+  --_color-a-stroke: var(--rh-color-green-60, #3d7317);
+  --_color-a-text: var(--rh-color-green-70, #204d00);
+  --_color-b-fill: var(--rh-color-green-10, #e9f7df);
+  --_color-b-stroke: var(--rh-color-green-40, #87bb62);
+  --_color-b-text: var(--rh-color-green-70, #204d00);
+  --_color-c-fill: var(--rh-color-yellow-10, #fff4cc);
+  --_color-c-stroke: var(--rh-color-yellow-30, #ffcc17);
+  --_color-c-text: var(--rh-color-yellow-70, #73480b);
+  --_color-d-fill: var(--rh-color-orange-10, #ffe8cc);
+  --_color-d-stroke: var(--rh-color-orange-40, #f5921b);
+  --_color-d-text: var(--rh-color-orange-70, #732e00);
+  --_color-e-fill: var(--rh-color-red-orange-10, #ffe3d9);
+  --_color-e-stroke: var(--rh-color-red-orange-60, #b1380b);
+  --_color-e-text: var(--rh-color-red-orange-70, #731f00);
+  --_color-f-fill: var(--rh-color-red-orange-20, #fbbea8);
+  --_color-f-stroke: var(--rh-color-red-orange-70, #731f00);
+  --_color-f-text: var(--rh-color-red-orange-70, #731f00);
 }
 
 :host([hidden]) {
@@ -58,6 +52,17 @@
   width: var(--_ui-size);
   height: var(--_ui-size);
   background: var(--_color-fill-default);
+}
+
+:host([size="sm"]) .box {
+  display: flex;
+  width: var(--_ui-size);
+  height: var(--_ui-size);
+  justify-content: center;
+  align-items: center;
+  font-size: 1em;
+  border-style: solid;
+  border-width: var(--rh-border-width-sm, 1px);
 }
 
 :host([size="md"]) .box:not(.active) {
@@ -114,17 +119,6 @@
   display: inline-block;
   margin: 0;
   border: none;
-}
-
-:host([size="sm"]) .box {
-  display: flex;
-  width: var(--_ui-size);
-  height: var(--_ui-size);
-  justify-content: center;
-  align-items: center;
-  font-size: 1em;
-  border-style: solid;
-  border-width: var(--rh-border-width-sm, 1px);
 }
 
 :host([size="sm"]) .a {
@@ -244,7 +238,7 @@
 :host([size="xl"]) .grade {
   line-height: var(--_ui-size-xl);
   width: var(--_ui-size-xl);
-  font-size: var(--rh-font-size-body-text-xl, 20px);
+  font-size: var(--rh-font-size-body-text-xl, 1.25rem);
 }
 
 :host([size="lg"]) .active .grade,
@@ -294,40 +288,34 @@
  *****************************************************************************/
 
 #container.dark {
-  --_color-text-active:   var(--rh-color-white, #ffffff);
+  --_color-text-active: var(--rh-color-white, #ffffff);
   --_color-text-inactive: var(--rh-color-gray-70, #383838);
-  --_color-fill-default:  var(--rh-color-surface-darkest, #151515); /* var(--rh-color-surface-dark-alt, #292929) */
-  --_color-border-default:var(--rh-color-border-subtle-on-dark, #707070);
-
-  --_color-a-fill:      var(--rh-color-surface-darkest, #151515);
-  --_color-a-stroke:    var(--rh-color-green-60, #3D7317);
-  --_color-a-text:      var(--rh-color-green-40, #87BB62);
-  --_color-a-text-subtle:var(--rh-color-green-10, #E9F7DF);
-
-  --_color-b-fill:      var(--rh-color-surface-darkest, #151515);
-  --_color-b-stroke:    var(--rh-color-green-40, #87BB62);
-  --_color-b-text:      var(--rh-color-green-20, #D1F1BB);
-  --_color-b-text-subtle:var(--rh-color-green-10, #E9F7DF);
-
-  --_color-c-fill:      var(--rh-color-surface-darkest, #151515);
-  --_color-c-stroke:    var(--rh-color-yellow-30, #FFCC17);
-  --_color-c-text:      var(--rh-color-yellow-10, #FFF4CC);
-  --_color-c-text-subtle:var(--rh-color-yellow-10, #FFF4CC);
-
-  --_color-d-fill:      var(--rh-color-surface-darkest, #151515);
-  --_color-d-stroke:    var(--rh-color-orange-40, #F5921B);
-  --_color-d-text:      var(--rh-color-orange-20, #FCCB8F);
-  --_color-d-text-subtle:var(--rh-color-orange-10, #FFE8CC);
-
-  --_color-e-fill:      var(--rh-color-surface-darkest, #151515);
-  --_color-e-stroke:    var(--rh-color-red-orange-50, #F4784A);
-  --_color-e-text:      var(--rh-color-red-orange-30, #F89B78);
-  --_color-e-text-subtle:var(--rh-color-red-orange-10, #FFE3D9);
-
-  --_color-f-fill:      var(--rh-color-surface-darkest, #151515);
-  --_color-f-stroke:    var(--rh-color-red-60, #A60000);
-  --_color-f-text:      var(--rh-color-red-40, #F56E6E);
-  --_color-f-text-subtle:var(--rh-color-red-10, #FCE3E3);
+  --_color-fill-default: var(--rh-color-surface-darkest, #151515);
+  --_color-border-default: var(--rh-color-border-subtle-on-dark, #707070);
+  --_color-a-fill: var(--rh-color-surface-darkest, #151515);
+  --_color-a-stroke: var(--rh-color-green-60, #3d7317);
+  --_color-a-text: var(--rh-color-green-40, #87bb62);
+  --_color-a-text-subtle: var(--rh-color-green-10, #e9f7df);
+  --_color-b-fill: var(--rh-color-surface-darkest, #151515);
+  --_color-b-stroke: var(--rh-color-green-40, #87bb62);
+  --_color-b-text: var(--rh-color-green-20, #d1f1bb);
+  --_color-b-text-subtle: var(--rh-color-green-10, #e9f7df);
+  --_color-c-fill: var(--rh-color-surface-darkest, #151515);
+  --_color-c-stroke: var(--rh-color-yellow-30, #ffcc17);
+  --_color-c-text: var(--rh-color-yellow-10, #fff4cc);
+  --_color-c-text-subtle: var(--rh-color-yellow-10, #fff4cc);
+  --_color-d-fill: var(--rh-color-surface-darkest, #151515);
+  --_color-d-stroke: var(--rh-color-orange-40, #f5921b);
+  --_color-d-text: var(--rh-color-orange-20, #fccb8f);
+  --_color-d-text-subtle: var(--rh-color-orange-10, #ffe8cc);
+  --_color-e-fill: var(--rh-color-surface-darkest, #151515);
+  --_color-e-stroke: var(--rh-color-red-orange-50, #f4784a);
+  --_color-e-text: var(--rh-color-red-orange-30, #f89b78);
+  --_color-e-text-subtle: var(--rh-color-red-orange-10, #ffe3d9);
+  --_color-f-fill: var(--rh-color-surface-darkest, #151515);
+  --_color-f-stroke: var(--rh-color-red-60, #a60000);
+  --_color-f-text: var(--rh-color-red-40, #f56e6e);
+  --_color-f-text-subtle: var(--rh-color-red-10, #fce3e3);
 }
 
 :host([size="sm"]) .dark .box {
