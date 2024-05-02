@@ -14,7 +14,7 @@ import styles from './rh-health-index.css';
  *
  */
 @customElement('rh-health-index')
-export class Rhgrade extends LitElement {
+export class RhHealthIndex extends LitElement {
   static readonly styles = [styles];
 
   /**
