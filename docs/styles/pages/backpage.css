@@ -7,6 +7,7 @@
       "header"
       "aside"
       "content";
+    row-gap: var(--rh-space-4xl, 64px);
   }
 
   uxdot-header {
@@ -63,6 +64,10 @@
   }
 
   @container main (min-width: 992px) {
+    article {
+      row-gap: var(--rh-space-6xl, 96px);
+    }
+
     aside {
       padding-inline: var(--rh-space-6xl, 96px);
     }
@@ -83,7 +88,8 @@
     }
 
     aside {
-      padding-inline: 0;
+      padding-inline-start: 0;
+      padding-inline-end: var(--rh-space-2xl, 32px);
       max-width: 320px;
     }
   }

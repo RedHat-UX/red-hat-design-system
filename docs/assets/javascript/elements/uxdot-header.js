@@ -7,15 +7,12 @@ class UxdotHeader extends LitElement {
       display: block;
       background-color: var(--rh-color-surface-lighter, #f2f2f2);
       color: var(--rh-color-text-primary-on-light, #151515);
-      margin-block-end: var(--rh-space-6xl, 96px);
       container-type: inline-size;
       container-name: header;
     }
 
     #container {
       display: block;
-      position: sticky;
-      top: -56px;
       z-index: 2;
       max-width: 1140px;
       padding-block-start: var(--rh-space-2xl, 32px);
@@ -55,7 +52,22 @@ class UxdotHeader extends LitElement {
       margin-block-start: var(--rh-space-2xl, 32px);
     }
 
+    @container header (min-width: 768px) {
+      #container {
+        padding-block-start: var(--rh-space-3xl, 48px);
+        padding-inline: var(--rh-space-3xl, 48px);
+      }
+
+      #container:not(.has-subnav) {
+        padding-block-end: var(--rh-space-3xl, 48px);
+      }
+    }
+
     @container header (min-width: 992px) {
+      :host {
+        margin-block-end: var(--rh-space-6xl, 96px);
+      }
+
       #container {
         top: 100px;
         padding-inline: var(--rh-space-6xl, 96px);

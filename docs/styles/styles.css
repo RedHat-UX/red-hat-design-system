@@ -290,7 +290,7 @@
    **/
   uxdot-header:has(rh-subnav) {
     position: sticky;
-    top: -54px;
+    top: -54px; /* masthead height (72px) + subnav height (56px) - header mobile height (182px) */
     z-index: 2;
   }
 
@@ -300,17 +300,25 @@
     **/
   uxdot-header + aside > uxdot-toc {
     position: sticky;
+
+    /* masthead height (72px) + padding (32px) */
     top: calc(var(--uxdot-masthead-max-height, 72px) + var(--rh-space-2xl, 32px));
   }
 
   uxdot-header:has(rh-subnav) + aside > uxdot-toc {
-    /* calculate in the height of the sticky subnav roughly 56px */
+    /* masthead height (72px) + subnav height 56px  + padding (32px) */
     top: calc(var(--uxdot-masthead-max-height, 72px) + 56px + var(--rh-space-2xl, 32px));
+  }
+
+  @container main (min-width: 768px) {
+    uxdot-header:has(rh-subnav) {
+      top: -70px; /* masthead (72px) + subnav (56px) - header tablet (198px) */
+    }
   }
 
   @container main (min-width: 992px) {
     uxdot-header:has(rh-subnav) {
-      top: -118px;
+      top: -118px; /* masthead (72px) + subnav (56px) - header desktop (246px) */
     }
   }
 }

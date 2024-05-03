@@ -9,7 +9,6 @@ class UxdotToc extends LitElement {
       display: block;
       container-type: inline-size;
       container-name: host;
-      margin-block-end: var(--rh-space-4xl, 64px);
     }
 
     details {
