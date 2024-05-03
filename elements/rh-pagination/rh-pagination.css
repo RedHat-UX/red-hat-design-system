@@ -24,8 +24,16 @@
   --_list-anchor-border-color-hover: var(--rh-color-border-subtle-on-light, #c7c7c7);
   --_list-anchor-current-page-bg-color: var(--rh-color-canvas-black, #151515);
   --_list-anchor-current-page-border-color: var(--rh-color-border-subtle-on-dark, #707070);
-  --_list-anchor-current-page-border-color-accent: var(--rh-color-border-interactive-on-dark, #92c5f9);
-  --_list-anchor-current-page-border-color-focus: var(--rh-color-interactive-blue-lightest, #b9dafc);
+  --_list-anchor-current-page-border-color-accent:
+    var(
+        --rh-color-border-interactive-on-dark,
+        #92c5f9
+      );
+  --_list-anchor-current-page-border-color-focus:
+    var(
+        --rh-color-interactive-blue-lightest,
+        #b9dafc
+      );
   --_numeric-link: var(--rh-color-interactive-blue-lighter, #92c5f9);
   --_numeric-link-hover: var(--rh-color-interactive-blue-lightest, #b9dafc);
   --_numeric-link-visited: var(--rh-color-interactive-purple-lighter, #b6a6e9);
@@ -54,7 +62,12 @@ svg {
 }
 
 .stepper:focus {
-  border: 2px solid var(--_stepper-color-focus, var(--rh-color-border-interactive-on-light, #0066cc));
+  border:
+    2px solid
+    var(
+        --_stepper-color-focus,
+        var(--rh-color-border-interactive-on-light, #0066cc)
+      );
   border-radius: var(--rh-border-radius-default, 3px);
 }
 
@@ -133,13 +146,13 @@ input:invalid {
   color: var(--_numeric-link-visited, var(--rh-color-interactive-purple-darker, #5e40be));
 }
 
-#numeric a:visited:hover {
-  color: var(--_numeric-link-visited-hover, var(--rh-color-interactive-purple-darkest, #21134d));
-}
-
 #numeric a:focus {
   text-decoration: underline;
   outline-color: var(--rh-color-border-interactive-on-light, #0066cc);
+}
+
+#numeric a:visited:hover {
+  color: var(--_numeric-link-visited-hover, var(--rh-color-interactive-purple-darkest, #21134d));
 }
 
 @media (min-width: 700px) {
