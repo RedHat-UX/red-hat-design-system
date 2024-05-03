@@ -53,7 +53,7 @@ class UxdotToc extends LitElement {
       background-size: contain;
       transition: 0.2s;
     }
-
+    summary::-webkit-details-marker,
     summary::marker {
       display: none;
     }
