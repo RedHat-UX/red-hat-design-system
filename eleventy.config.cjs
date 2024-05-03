@@ -7,7 +7,7 @@ const AnchorsPlugin = require('@patternfly/pfe-tools/11ty/plugins/anchors.cjs');
 const CustomElementsManifestPlugin =
   require('@patternfly/pfe-tools/11ty/plugins/custom-elements-manifest.cjs');
 const TodosPlugin = require('@patternfly/pfe-tools/11ty/plugins/todos.cjs');
-const TOCPlugin = require('@patternfly/pfe-tools/11ty/plugins/table-of-contents.cjs');
+const TOCPlugin = require('./docs/_plugins/table-of-contents.cjs');
 const RHDSPlugin = require('./docs/_plugins/rhds.cjs');
 const DesignTokensPlugin = require('./docs/_plugins/tokens.cjs');
 const RHDSMarkdownItPlugin = require('./docs/_plugins/markdown-it.cjs');
@@ -55,6 +55,8 @@ module.exports = function(eleventyConfig) {
   /** Table of Contents Shortcode */
   /** Table of Contents Shortcode */
   eleventyConfig.addPlugin(TOCPlugin, {
+    wrapper: '',
+    wrapperClass: '',
     tags: ['h2'],
     headingText: 'On this page',
   });

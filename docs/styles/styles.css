@@ -156,7 +156,6 @@
 }
 
 @layer flow {
-
   :where(p, h1, h2, h3, h4, h5, h6, li) {
     max-width: 56rem;
   }
@@ -293,6 +292,20 @@
     position: sticky;
     top: -54px;
     z-index: 2;
+  }
+
+  /**
+    * Sticky table of contents pattern w/o subnav
+    * progressive enhancement sticky, using :has()
+    **/
+  uxdot-header + aside > uxdot-toc {
+    position: sticky;
+    top: calc(var(--uxdot-masthead-max-height, 72px) + var(--rh-space-2xl, 32px));
+  }
+
+  uxdot-header:has(rh-subnav) + aside > uxdot-toc {
+    /* calculate in the height of the sticky subnav roughly 56px */
+    top: calc(var(--uxdot-masthead-max-height, 72px) + 56px + var(--rh-space-2xl, 32px));
   }
 
   @container main (min-width: 992px) {
