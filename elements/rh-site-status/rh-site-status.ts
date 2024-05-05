@@ -60,7 +60,8 @@ interface Incident {
   incident_updates: unknown[];
 }
 
-interface SummaryResponse {
+/** @internal */
+export interface SummaryResponse {
   page: Page;
   status: Status;
   components: Component[];
