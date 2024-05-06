@@ -14,11 +14,11 @@
 }
 
 #container.dark {
-  --_stepper-bg-color: var(--rh-color-surface-dark-alt, #292929);
   --rh-pagination-accent-color: var(--rh-color-interactive-blue-lightest, #b9dafc);
-  --rh-pagination-stepper-color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
-  --_stepper-color-focus: var(--rh-color-interactive-blue-lightest, #b9dafc);
   --rh-pagination-background-focused: var(--rh-color-gray-50, #707070);
+  --rh-pagination-stepper-color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
+  --_stepper-bg-color: var(--rh-color-surface-dark-alt, #292929);
+  --_stepper-color-focus: var(--rh-color-interactive-blue-lightest, #b9dafc);
   --_list-anchor-text-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_list-anchor-bg-color: var(--rh-color-surface-dark-alt, #292929);
   --_list-anchor-border-color-hover: var(--rh-color-border-subtle-on-light, #c7c7c7);
