@@ -2,4 +2,4 @@
 "@rhds/elements": minor
 ---
 
-`<rh-pagination>`: Added dark mode support
+`<rh-pagination>`: Added dark color palette
