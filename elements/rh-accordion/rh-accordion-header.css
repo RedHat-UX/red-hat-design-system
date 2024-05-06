@@ -116,6 +116,10 @@ span {
   gap: var(--rh-space-md, 8px);
 }
 
+#header-container .inline {
+  flex-direction: row;
+}
+
 [part="accents"] {
   display: flex;
   flex-wrap: wrap;
