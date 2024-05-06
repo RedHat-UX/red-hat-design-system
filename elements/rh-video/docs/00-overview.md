@@ -11,7 +11,7 @@
 <rh-video>
   <img slot="thumbnail" src="https://fakeimg.pl/300x150/282828/eae0d0" alt="Image description"/>
   <template>
-    <iframe title="Title of video" width="300" height="150" frameborder="0" allowfullscreen src="https://www.youtube.com/embed/9gYLKxJ9NbY"></iframe>
+    <iframe title="Title of video" width="300" height="150" src="https://www.youtube.com/embed/Hc8emNr2igU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   </template>
   <p slot="caption">Video caption here</p>
 </rh-video>
