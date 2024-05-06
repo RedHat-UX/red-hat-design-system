@@ -53,7 +53,7 @@ function getDescription(collection, options) {
   const {
     filePath = getFilePathGuess(collection),
     description = '',
-    descriptionFile
+    descriptionFile,
   } = getDocs(collection, options) ?? {};
 
   if (description) {

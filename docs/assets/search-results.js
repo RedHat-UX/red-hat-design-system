@@ -23,7 +23,7 @@ function getCategories(token) {
       'line-height': 'font',
     }[category] ?? category;
     const label = {
-      font: 'typography'
+      font: 'typography',
     }[category] ?? category;
     return { slug, category, label };
   });
@@ -64,6 +64,6 @@ if (searchResults.length) {
 for (const cta of categoryCtas) {
   // mark category cards which contain tokens in the search results
   const categoryHasTokenResults = !!searchResults?.find(({ label }) =>
-    label.includes(cta.dataset.category)) ?? [];
+    label.includes(cta.dataset.category));
   cta.variant = categoryHasTokenResults ? 'secondary' : 'brick';
 }

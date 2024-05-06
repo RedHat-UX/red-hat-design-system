@@ -18,9 +18,9 @@ describe('<rh-dialog>', function() {
     `);
     const klass = customElements.get('rh-dialog');
     expect(el)
-      .to.be.an.instanceOf(klass)
-      .and
-      .to.be.an.instanceOf(RhDialog);
+        .to.be.an.instanceOf(klass)
+        .and
+        .to.be.an.instanceOf(RhDialog);
   });
   describe('with a trigger', function() {
     let element: RhDialog;

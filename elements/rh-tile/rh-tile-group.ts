@@ -54,7 +54,7 @@ export class RhTileGroup extends LitElement {
 
   #tabindex = new RovingTabindexController<HTMLElement>(this);
 
-  #internals = new InternalsController(this);
+  #internals = InternalsController.of(this);
 
   /**
    * All slotted tiles
