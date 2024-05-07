@@ -1,6 +1,7 @@
 :host {
   outline: none;
-  display: inline-block;
+  display: inline-flex;
+  gap: var(--rh-space-lg, 16px);
 }
 
 [hidden] {

@@ -2,13 +2,26 @@
   <form>
     <fieldset>
       <legend>Reversed Label</legend>
-      <rh-switch id="switch" aria-describedby="messages" checked>
-        <div id="messages">
-          <span data-state="on">Message when on</span>
-          <span data-state="off" hidden>Message when off</span>
-        </div>
-      </rh-switch>
-      <label for="switch">Mode</label>
+      <div>
+        <rh-switch id="switch-a" aria-describedby="messages-a" checked>
+          <div id="messages-a">
+            <span data-state="on">Message when on</span>
+            <span data-state="off" hidden>Message when off</span>
+          </div>
+        </rh-switch>
+        <label for="switch-a">Mode A</label>
+      </div>
+      <div>
+        <label>
+          <rh-switch id="switch-b" aria-describedby="messages-b" checked>
+            <div id="messages-b">
+              <span data-state="on">Message when on</span>
+              <span data-state="off" hidden>Message when off</span>
+            </div>
+          </rh-switch>
+          Mode B
+        </label>
+      </div>
     </fieldset>
   </form>
 </section>
@@ -24,8 +37,12 @@
 
   fieldset {
     display: grid;
-    grid-template-columns: max-content max-content;
-    gap: var(--rh-space-lg, 16px);
+    gap: 1rem;
+    grid-template-columns: 1fr;
+  }
+
+  rh-switch {
+    flex-direction: row-reverse;
   }
 
   label {
