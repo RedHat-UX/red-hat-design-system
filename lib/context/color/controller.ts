@@ -3,14 +3,9 @@ import type { ReactiveController, ReactiveElement } from 'lit';
 
 import { StyleController } from '@patternfly/pfe-core/controllers/style-controller.js';
 
-import {
-  createContext,
-  ContextEvent,
-  type Context,
-  type UnknownContext,
-} from '../event.js';
+import { createContext, type ContextRequestEvent } from '../event.js';
 
-import CONTEXT_BASE_STYLES from './context-color.css';
+import COLOR_CONTEXT_BASE_STYLES from './context-color.css';
 
 export interface ColorContextOptions<T extends ReactiveElement> {
   prefix?: string;
@@ -28,12 +23,15 @@ export interface ColorContextOptions<T extends ReactiveElement> {
 *          ```html
 *          <early-provider>
 *            <late-provider>
-*              <eager-consumer>
+*              <eager-consumer></eager-consumer>
 *            </late-provider>
 *          </early-provider>
 *          ```
 */
-export const contextEvents = new Map<ReactiveElement, ContextEvent<UnknownContext>>();
+export const contextEvents = new Map<
+  ReactiveElement,
+  ContextRequestEvent<typeof ColorContextController.context>
+>();
 
 /**
  * Color context is derived from the `--context` css custom property,
@@ -47,26 +45,22 @@ export const contextEvents = new Map<ReactiveElement, ContextEvent<UnknownContex
 export abstract class ColorContextController<
   T extends ReactiveElement
 > implements ReactiveController {
-    abstract update(next?: ColorTheme | null): void;
+  /** The context object which acts as the key for providers and consumers */
+  public static readonly context = createContext<ColorTheme | null>(Symbol('rh-color-context'));
 
-    /** The context object which describes the host's colour context */
-    protected context: Context<ColorTheme | null>;
+  /** The style controller which provides the necessary CSS. */
+  protected styleController: StyleController;
 
-    /** The style controller which provides the necessary CSS. */
-    protected styleController: StyleController;
+  /** The last-known color context on the host */
+  protected last: ColorTheme | null = null;
 
-    /** Prefix for colour context. Set this in Options to create a separate context */
-    protected prefix = 'rh-';
+  hostUpdate?(): void;
 
-    /** The last-known color context on the host */
-    protected last: ColorTheme | null = null;
+  /** callback which updates the context value on consumers */
+  abstract update(next?: ColorTheme | null): void;
 
-    hostUpdate?(): void
-
-    constructor(protected host: T, options?: ColorContextOptions<T>) {
-      this.prefix = options?.prefix ?? 'rh';
-      this.context = createContext(`${this.prefix}-color-context`);
-      this.styleController = new StyleController(host, CONTEXT_BASE_STYLES);
-      host.addController(this);
-    }
+  constructor(protected host: T) {
+    this.styleController = new StyleController(host, COLOR_CONTEXT_BASE_STYLES);
+    host.addController(this);
+  }
 }

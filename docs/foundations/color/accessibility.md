@@ -1,10 +1,11 @@
 ---
-layout: layout-foundations.njk
+layout: layout-with-subnav.njk
 title: Accessibility
 heading: Color
 tags:
   - color
 permalink: /foundations/color/accessibility/index.html
+subNavCollection: sortedColor
 order: 20
 bodyClasses: element-docs
 ---
@@ -27,10 +28,8 @@ color blind user.
           src="/assets/color/using-color-alone.png" %}
 
 ## Contrast
-We strive to adhere to [WCAG 2.1 AA](https://www.w3.org/WAI/WCAG21/Understanding/) requirements. Our text, links, 
-interface elements, etc. are designed with sufficient contrast when used on top 
-of a canvas, surfaces, image backgrounds with low contrast, and near adjacent 
-colors.
+We strive to adhere to [WCAG 2.1 AA](https://www.w3.org/WAI/WCAG21/Understanding/) requirements. Our text, links, interface elements, etc. are designed with sufficient contrast when used on top 
+of a canvas, surfaces, image backgrounds with low contrast, and near adjacent colors.
 
 ### Text
 
@@ -44,12 +43,9 @@ least 24px and bold text of at least 19px) must have a contrast ratio of 3:1.
 
 ### Links
 
-If color is the only way to distinguish between links and surrounding text (for 
-example, if link underlines are removed), the contrast ratio between the link 
-and surrounding text must be at least 3:1.
+If color is the only way to distinguish between links and surrounding text (e.g., if link underlines are removed), the contrast ratio between the link and surrounding text must be at least 3:1.
 
-
-- Non-color cues must be used to signify when the link receives hover or focus (for example, an underline)
+- Non-color cues must be used to signify when the link receives hover or focus (e.g., an underline)
 
 {% example palette="light",
           alt="Contrast ratio of a blue link next to black text and an example of a link's darker blue, underlined hover state",
@@ -58,11 +54,11 @@ and surrounding text must be at least 3:1.
 ### Graphical objects and UI components
 
 Graphical objects and UI components should have a contrast ratio of at least 3:1 
-(for example, within charts and infographics). If color is the only way to 
+(e.g., within charts and infographics). If color is the only way to 
 distinguish between inline controls and their surrounding text, the contrast 
 ratio between the control and text must be at least 3:1.
 
-- Non-color cues (for example, a border) must be used to signify when the element receives focus
+- Non-color cues (e.g., a border) must be used to signify when the element receives focus
 
 ### Layering
 
@@ -76,8 +72,7 @@ requirements.
 
 ### Tools
 
-TPGi’s [Colour Contrast Analyzer](https://www.tpgi.com/color-contrast-checker/) can help you identify colors and 
-gauge their contrast from one another.
+TPGi’s [Colour Contrast Analyzer](https://www.tpgi.com/color-contrast-checker/) can help you identify colors and gauge their contrast from one another.
 
 {% feedback %}
   <h2>Foundations</h2>

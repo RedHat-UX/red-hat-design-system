@@ -46,6 +46,6 @@ export default pfeDevServerConfig({
       } else {
         return next();
       }
-    }
+    },
   ]
 });

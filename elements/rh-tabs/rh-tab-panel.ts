@@ -29,7 +29,7 @@ export class RhTabPanel extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.id ||= getRandomId('pf-tab-panel');
+    this.id ||= getRandomId('rh-tab-panel');
     this.hidden ??= true;
     this.#internals.role = 'tabpanel';
 

@@ -8,7 +8,7 @@ module.exports = class Playground {
       pagination: {
         data: 'elements',
         size: 1,
-      }
+      },
     };
   }
 

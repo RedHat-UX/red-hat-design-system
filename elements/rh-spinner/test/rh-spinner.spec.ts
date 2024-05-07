@@ -12,9 +12,9 @@ describe('<rh-spinner>', function() {
     const el = await createFixture <RhSpinner>(element);
     const klass = customElements.get('rh-spinner');
     expect(el)
-      .to.be.an.instanceOf(klass)
-      .and
-      .to.be.an.instanceOf(RhSpinner);
+        .to.be.an.instanceOf(klass)
+        .and
+        .to.be.an.instanceOf(RhSpinner);
   });
 });
 

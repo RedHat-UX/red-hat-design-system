@@ -2,7 +2,10 @@
   --_color: var(--rh-color-text-primary-on-light, #151515);
   --_background-color: var(--rh-color-surface-lighter, #f2f2f2);
 
-  display: inline-block;
+  aspect-ratio: var(--_aspect-ratio);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
   white-space: nowrap;
   text-align: center;
@@ -12,7 +15,7 @@
   font-size: var(--rh-font-size-body-text-xs, 0.75rem);
   font-weight: 700;
   line-height: var(--rh-line-height-body-text, 1.5);
-  min-width: var(--rh-length-2xl, 32px);
+  min-width: var(--_badge-size, var(--rh-length-2xl, 32px));
   padding-left: var(--rh-space-md, 8px);
   padding-right: var(--rh-space-md, 8px);
 }

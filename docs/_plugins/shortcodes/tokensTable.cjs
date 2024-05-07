@@ -4,8 +4,8 @@ module.exports = function(eleventyConfig) {
      * Tokens Table
      * Display a table rows with token usage
      */
-    function(content) {
-      const show = process.env.SHOW_TOKENS_TABLE;
-      return show !== 'false' ? `${content}` : ``;
-    });
+                                    function(content) {
+                                      const show = process.env.SHOW_TOKENS_TABLE;
+                                      return show !== 'false' ? `${content}` : ``;
+                                    });
 };

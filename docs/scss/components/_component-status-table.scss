@@ -1,75 +1,80 @@
-.component-status-table {
-  width: 100%;
-  border: 0;
-  border-collapse: collapse;
-  font-size: 0.9em;
-  line-height: 1.4;
-  text-align: center;
-
-  :is(td, th) {
-    padding: 12px 16px;
-    text-align: center !important;
-  }
-
-  th {
-    font-size: 14px;
-  }
-
-  tbody th {
-    font-size: var(--rh-font-size-body-text-md, 1rem) !important;
-    font-weight: var(--rh-font-weight-heading-medium, 500);
-  }
-
-  :is(th, td):first-child {
-    text-align: left !important;
-  }
-
-  :is(th, td):nth-child(n + 8) {
-    display: none;
-  }
-
-  td {
-    border: 1px solid #d2d2d2;
-    border-left: 0;
-    border-right: 0;
-
-    &:last-child {
-      border-right: 0;
-    }
-
-    svg {
-      height: var(--rh-size-icon-01, 16px);
-      width: var(--rh-size-icon-01, 16px);
-      fill: var(--rh-color-text-primary-on-light, #151515);
-    }
-  }
-
-  @media (max-width: 1000px) {
-    :is(td, th) {
-      padding: 12px 8px;
-    }
-  }
-
-  + small {
-    align-self: end;
+.component-status-list-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  p {
+    font-size: var(--rh-font-size-body-text-sm);
   }
 }
 
-.component-status-table-container {
-  display: flex;
-  flex-flow: column nowrap;
+.component-status-list-container {
+  border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle-on-light);
+  border-radius: 8px;
+
+  dl {
+    display: flex;
+    align-items: flex-start;
+    column-gap: var(--rh-space-2xl);
+    margin-block: var(--rh-space-lg) var(--rh-space-lg);
+    margin-inline: var(--rh-space-xl) var(--rh-space-xl);
+  }
+
+  dl div {
+    display: flex;
+    column-gap: var(--rh-space-md);
+    align-items: center;
+  }
+
+  dl dd {
+    text-transform: capitalize;
+  }
+
+  dl dt {
+    font-size: var(--rh-font-size-body-text-md);
+    &:after {
+      content: ": ";
+    }
+  }
+
+  dl dt,
+  dl dd {
+    margin: 0;
+    padding: 0;
+  }
+
+}
+
+.component-status-table {
+  table tbody td:first-child {
+    text-transform:  capitalize;
+  }
 }
 
 @media only screen and (max-width: 991px) {
-  .component-status-table-container {
-    overflow-x: scroll;
+  .component-status-list-container {
+    dl {
+      flex-direction: column;
+      row-gap: 16px;
+    }
+  }
+
+  .component-status-list-heading {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .component-status-table {
-    width: 912px;
-
-    + small {
-      align-self: start;
+    table thead ~ tbody tr:nth-child(even) {
+      background: none;
+    }
+    table thead ~ tbody tr:first-child {
+      border-top: none;
+    }
+    table thead ~ tbody tr:last-child {
+      border-bottom: none;
+    }
+    table tr td {
+      border: none;
     }
   }
 }

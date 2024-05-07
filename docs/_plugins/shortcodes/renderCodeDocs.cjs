@@ -5,24 +5,18 @@ const { copyCell, getTokenHref } = require('../tokensHelpers.cjs');
 /** quick and dirty dedent, also provides in-editor syntax highlighting */
 const html = (...args) =>
   String.raw(...args)
-    .split('\n')
-    .map(x => x.replace(/^ {6}/, ''))
-    .join('\n');
+      .split('\n')
+      .map(x => x.replace(/^ {6}/, ''))
+      .join('\n');
 
 /** @typedef {import('@patternfly/pfe-tools/11ty/DocsPage').DocsPage} DocsPage */
 module.exports = function(eleventyConfig) {
-  for (const member of Object.getOwnPropertyNames(Renderers.prototype)) {
-    if (member.startsWith('render')) {
-      const name =
-          member === 'renderBand' ? 'band'
-        : member === 'renderAll' ? 'renderCodeDocs'
-        : member;
-      eleventyConfig.addPairedShortcode(name, function(content, kwargs = {}) {
-        const renderers = new Renderers(this, kwargs);
-        return renderers[member](content, kwargs);
-      });
-    }
-  }
+  eleventyConfig.addPairedShortcode('renderCodeDocs',
+                                    function renderCodeDocs(content, kwargs = {}) {
+                                      const renderers = new Renderers(this, kwargs);
+                                      return renderers.renderAll(content);
+                                    }
+  );
 };
 
 function innerMD(content = '') {
@@ -220,8 +214,12 @@ class Renderers {
   }
 
   /** Render a table of element Design Tokens */
-  renderTokens(content, { header = 'Design Tokens', level = 2, ...kwargs } = {}) {
-    const allCssProperties = this.manifest.getCssCustomProperties(this.packageTagName(kwargs)) ?? [];
+  renderTokens(content, {
+    header = 'Design Tokens',
+    ...kwargs
+  } = {}) {
+    const allCssProperties =
+      this.manifest.getCssCustomProperties(this.packageTagName(kwargs)) ?? [];
     const elTokens = allCssProperties.filter(x => tokens.has(x.name));
     return html`
       <section class="api band design-tokens api-properties">
@@ -248,8 +246,12 @@ class Renderers {
   }
 
   /** Render a table of element CSS Custom Properties */
-  renderCssCustomProperties(content, { header = 'CSS Custom Properties', level = 2, ...kwargs } = {}) {
-    const allCssProperties = this.manifest.getCssCustomProperties(this.packageTagName(kwargs)) ?? [];
+  renderCssCustomProperties(content, {
+    header = 'CSS Custom Properties',
+    level = 2, ...kwargs
+  } = {}) {
+    const allCssProperties =
+      this.manifest.getCssCustomProperties(this.packageTagName(kwargs)) ?? [];
     const cssProperties = allCssProperties.filter(x => !x.deprecated && !tokens.has(x.name));
     const deprecated = allCssProperties.filter(x => x.deprecated && !tokens.has(x.name));
     return html`

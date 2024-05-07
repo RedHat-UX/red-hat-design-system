@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-/* eslint-env node */
 import { build } from 'esbuild';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -15,7 +14,10 @@ const cleanCSS = new CleanCSS({
   returnPromise: true,
 });
 
-export async function bundle({ outfile = 'rhds.min.js', external = [], additionalPackages = [] } = {}) {
+export async function bundle({
+  outfile = 'rhds.min.js',
+  external = [], additionalPackages = [],
+} = {}) {
   const resolveDir = join(fileURLToPath(import.meta.url), '../elements');
 
   const elementSources = await glob('./*/*-*.ts', { cwd: join(process.cwd(), 'elements') });
@@ -23,7 +25,7 @@ export async function bundle({ outfile = 'rhds.min.js', external = [], additiona
   const elementFiles = Array.from(elementDirs, x => join(process.cwd(), `elements/${x}/${x}.js`));
 
   const contents = [...additionalPackages, ...elementFiles]
-    .map(x => `export * from '${x.replace('.ts', '.js')}';`).join('\n');
+      .map(x => `export * from '${x.replace('.ts', '.js')}';`).join('\n');
 
   await build({
     stdin: {
@@ -53,7 +55,7 @@ export async function bundle({ outfile = 'rhds.min.js', external = [], additiona
       minifyHTMLLiteralsPlugin(),
       litCssPlugin({
         include: /elements\/rh-(.*)\/(.*)\.css$/,
-        transform: source => cleanCSS.minify(source).then(x => x.styles)
+        transform: source => cleanCSS.minify(source).then(x => x.styles),
       }),
     ],
   });

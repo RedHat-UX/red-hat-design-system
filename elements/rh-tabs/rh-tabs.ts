@@ -1,12 +1,14 @@
-import { html, LitElement } from 'lit';
+import { html, LitElement, type PropertyValues } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { query } from 'lit/decorators/query.js';
-import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
+import { provide } from '@lit/context';
 
-import { cascades, deprecation } from '@patternfly/pfe-core/decorators.js';
+import { deprecation } from '@patternfly/pfe-core/decorators.js';
+
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
+import { TabsAriaController } from '@patternfly/pfe-core/controllers/tabs-aria-controller.js';
 import { OverflowController } from '@patternfly/pfe-core/controllers/overflow-controller.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
@@ -20,7 +22,11 @@ import { colorContextProvider, type ColorPalette } from '../../lib/context/color
 
 import styles from './rh-tabs.css';
 
+import { context, type RhTabsContext } from './context.js';
+
 export { RhTab };
+
+/* TODO: Remove attrs in JSDoc below when updated use TabsController after PFE 3.0 release */
 
 /**
  * Tabs are used to organize and navigate between sections of content.
@@ -28,9 +34,6 @@ export { RhTab };
  * with a content panel below or to the right of the component.
  *
  * @summary Arranges content in a contained view on the same page
- *
- * @attr [label-scroll-left="Scroll left"] - accessible label for the tab panel's scroll left button.
- * @attr [label-scroll-right="Scroll right"] - accessible label for the tab panel's scroll right button.
  *
  * @csspart container - outer container
  * @csspart tabs-container - tabs container
@@ -48,77 +51,38 @@ export { RhTab };
 export class RhTabs extends LitElement {
   static readonly styles = [styles];
 
+  /** @deprecated */
   static isTab(element: HTMLElement): element is RhTab {
     return element instanceof RhTab;
   }
 
+  /** @deprecated */
   static isPanel(element: HTMLElement): element is RhTabPanel {
     return element instanceof RhTabPanel;
   }
 
-  /** Time in milliseconds to debounce between scroll events and updating scroll button state */
-  protected static readonly scrollTimeoutDelay: number = 0;
-
-  /** Icon name to use for the scroll left button */
-  protected static readonly scrollIconLeft: string = 'angle-left';
-
-  /** Icon name to use for the scroll right button */
-  protected static readonly scrollIconRight: string = 'angle-right';
-
-  /** Icon set to use for the scroll buttons */
-  protected static readonly scrollIconSet: string = 'fas';
-
-  private static instances = new Set<RhTabs>();
-
-  static {
-    // on resize check for overflows to add or remove scroll buttons
-    window.addEventListener('resize', () => {
-      for (const instance of this.instances) {
-        instance.#overflow.onScroll();
-      }
-    }, { capture: false });
-  }
+  /**
+   * Label for the scroll left button
+   */
+  @property({ reflect: true, attribute: 'label-scroll-left' }) labelScrollLeft = 'Scroll left';
 
   /**
-   * Tab activation
+   * Label for the scroll right button
+   */
+  @property({ reflect: true, attribute: 'label-scroll-right' }) labelScrollRight = 'Scroll right';
+
+  /**
    * Tabs can be either [automatic](https://w3c.github.io/aria-practices/examples/tabs/tabs-automatic.html) activated
    * or [manual](https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html)
    */
   @property({ reflect: true, type: Boolean }) manual = false;
 
-  @property({ attribute: false })
-  get activeIndex() {
-    return this.#activeIndex;
-  }
+  /**
+   * Index of the active tab
+   */
+  @property({ type: Number, attribute: 'active-index' }) activeIndex = -1;
 
-  set activeIndex(index: number) {
-    const oldIndex = this.activeIndex;
-    const tab = this.#allTabs[index];
-    if (tab) {
-      if (tab.disabled) {
-        this.#logger.warn(`Disabled tabs can not be active, setting first focusable tab to active`);
-        this.#tabindex.updateActiveItem(this.#firstFocusable);
-        index = this.#activeItemIndex;
-      } else if (!tab.active) {
-        // if the activeIndex was set through the CLI e.g.`$0.activeIndex = 2`
-        tab.active = true;
-        return;
-      }
-    }
-
-    if (index === -1) {
-      this.#logger.warn(`No active tab found, setting first focusable tab to active`);
-      const first = this.#tabindex.firstItem;
-      this.#tabindex.updateActiveItem(first);
-      index = this.#activeItemIndex;
-    }
-    this.#activeIndex = index;
-    this.requestUpdate('activeIndex', oldIndex);
-
-    this.#allPanels[this.#activeIndex].hidden = false;
-    // close all tabs that are not the activeIndex
-    this.#deactivateExcept(this.#activeIndex);
-  }
+  @property({ attribute: false }) activeTab?: RhTab;
 
   /**
    * Sets color context for child components, overrides parent context
@@ -126,141 +90,129 @@ export class RhTabs extends LitElement {
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
+  /**
+   * Aligns tabs to the center
+   */
   @property({ reflect: true, type: Boolean }) centered? = false;
+
+  /**
+   * Sets tabs to a boxed style with or without an inset
+   */
+  @property({ reflect: true }) box?: 'box' | 'inset';
+
+  /**
+   * Sets the alignment of the tabs vertical
+   */
+  @property({ reflect: true, type: Boolean }) vertical = false;
 
   /**
    * Sets the theme for the tabs and panels
    * @deprecated attribute will be removed in future release, please use the `--rh-tabs-active-border-color` css property directly.
    */
-  @cascades('rh-tab')
   @deprecation({
     alias: 'css property --rh-tabs-active-border-color',
     reflect: true,
     attribute: 'theme',
   }) theme?: 'base' | null = null;
 
-  @cascades('rh-tab', 'rh-tab-panel')
-  @property({ reflect: true }) box?: 'box' | 'inset' | null = null;
-
-  @cascades('rh-tab', 'rh-tab-panel')
-  @property({ reflect: true, type: Boolean }) vertical = false;
-
-  protected get canShowScrollButtons(): boolean {
-    return !this.vertical;
-  }
-
   /**
    * Sets color theme based on parent context
    */
   @colorContextConsumer() private on?: ColorTheme;
 
-  get #activeTab() {
-    const [tab] = this.#_allTabs.filter(tab => tab.active);
-    return tab;
-  }
-
-  get #allTabs() {
-    return this.#_allTabs;
-  }
-
-  set #allTabs(tabs: RhTab[]) {
-    this.#_allTabs = tabs.filter(tab => (this.constructor as typeof RhTabs).isTab(tab));
-  }
-
-  get #allPanels() {
-    return this.#_allPanels;
-  }
-
-  set #allPanels(panels: RhTabPanel[]) {
-    this.#_allPanels = panels.filter(panel => (this.constructor as typeof RhTabs).isPanel(panel));
-  }
-
-  @queryAssignedElements({ slot: 'tab' }) private tabs!: RhTab[];
-
-  @queryAssignedElements() private panels!: RhTabPanel[];
-
   @query('[part="tabs"]') private tabList!: HTMLElement;
 
-  #tabindex = new RovingTabindexController<RhTab>(this);
+  get #ctx(): RhTabsContext {
+    const { activeTab, manual, vertical } = this;
+    const box = this.box === null || this.box === '' as 'box' ? 'box' : this.box;
+    const firstTab = this.#firstTab;
+    const lastTab = this.#lastTab;
+    return { activeTab, box, firstTab, lastTab, manual, vertical };
+  }
+
+  protected get canShowScrollButtons(): boolean {
+    return !this.vertical;
+  }
 
   #overflow = new OverflowController(this);
 
-  #logger = new Logger(this);
+  #tabs = new TabsAriaController<RhTab, RhTabPanel>(this, {
+    isTab: (x): x is RhTab => x instanceof RhTab,
+    isPanel: (x): x is RhTabPanel => x instanceof RhTabPanel,
+    isActiveTab: x => x.active,
+  });
 
-  #_allTabs: RhTab[] = [];
+  #tabindex = new RovingTabindexController(this, {
+    getHTMLElement: () => this.tabList,
+    getItems: () => this.tabs ?? [],
+  });
 
-  #_allPanels: RhTabPanel[] = [];
+  get tabs() {
+    return this.#tabs.tabs;
+  }
 
-  #activeIndex = 0;
-
-  get #firstFocusable(): RhTab | undefined {
-    return this.#tabindex.firstItem;
+  get panels() {
+    return this.tabs.map(tab => this.#tabs.panelFor(tab));
   }
 
   get #firstTab(): RhTab | undefined {
-    const [tab] = this.#allTabs;
+    const [tab] = this.tabs;
     return tab;
   }
 
   get #lastTab(): RhTab | undefined {
-    return this.#allTabs.at(-1);
+    return this.tabs.at(-1);
   }
 
-  get #activeItemIndex() {
-    const { activeItem } = this.#tabindex;
-    return this.#allTabs.findIndex(t => t === activeItem);
-  }
-
+  @provide({ context }) private ctx = this.#ctx;
 
   override connectedCallback() {
     super.connectedCallback();
     this.id ||= getRandomId(this.localName);
-    this.addEventListener('expand', this.#onTabExpand);
-    RhTabs.instances.add(this);
+    this.addEventListener('expand', this.#onExpand);
   }
 
-  override disconnectedCallback(): void {
-    super.disconnectedCallback();
-    RhTabs.instances.delete(this);
-  }
-
-  override willUpdate(): void {
-    const { activeItem } = this.#tabindex;
-    // If RTI has an activeItem, update the roving tabindex controller
-    if (!this.manual &&
-        activeItem &&
-        activeItem !== this.#activeTab &&
-        activeItem.ariaDisabled !== 'true') {
-      activeItem.active = true;
+  override willUpdate(changed: PropertyValues<this>): void {
+    // RTIC will kick the update cycle whenever the tabs contents change,
+    // so let's just update the context on every cycle
+    if (changed.has('activeIndex')) {
+      this.select(this.activeIndex);
+    } else if (changed.has('activeTab') && this.activeTab) {
+      this.select(this.activeTab);
+    } else {
+      this.#updateActive();
     }
+    this.ctx = this.#ctx;
   }
 
   async firstUpdated() {
     this.tabList.addEventListener('scroll', this.#overflow.onScroll.bind(this));
+    this.#onSlotchange();
   }
 
   override render() {
     const { on = '' } = this;
-    const { scrollIconSet, scrollIconLeft, scrollIconRight } = this.constructor as typeof RhTabs;
     return html`
       <div id="rhds-container" class="${classMap({ [on]: !!on })}">
         <div part="container" class="${classMap({ overflow: this.#overflow.showScrollButtons })}">
           <div part="tabs-container">${!this.#overflow.showScrollButtons ? '' : html`
             <button id="previousTab" tabindex="-1"
-                aria-label="${this.getAttribute('label-scroll-left') ?? 'Scroll left'}"
-                ?disabled="${!this.#overflow.overflowLeft}"
-                @click="${this.#scrollLeft}">
-              <pf-icon icon="${scrollIconLeft}" set="${scrollIconSet}" loading="eager"></pf-icon>
+                    aria-label="${this.getAttribute('label-scroll-left') ?? 'Scroll left'}"
+                    ?disabled="${!this.#overflow.overflowLeft}"
+                    @click="${() => this.#overflow.scrollLeft()}">
+              <pf-icon icon="angle-left" set="fas" loading="eager"></pf-icon>
             </button>`}
-            <slot name="tab"
-                  part="tabs"
-                  role="tablist"
-                  @slotchange="${this.#onSlotchange}"></slot> ${!this.#overflow.showScrollButtons ? '' : html`
-            <button id="nextTab" tabindex="-1"
-                aria-label="${this.getAttribute('label-scroll-right') ?? 'Scroll right'}"
-                ?disabled="${!this.#overflow.overflowRight}"
-                @click="${this.#scrollRight}">
-              <pf-icon icon="${scrollIconRight}" set="${scrollIconSet}" loading="eager"></pf-icon>
+            <div style="display: contents;" role="tablist">
+              <slot name="tab"
+                    part="tabs"
+                    @slotchange="${this.#onSlotchange}"></slot>
+            </div>${!this.#overflow.showScrollButtons ? '' : html`
+            <button id="nextTab"
+                    tabindex="-1"
+                    aria-label="${this.getAttribute('label-scroll-right') ?? 'Scroll right'}"
+                    ?disabled="${!this.#overflow.overflowRight}"
+                    @click="${() => this.#overflow.scrollRight()}">
+              <pf-icon icon="angle-right" set="fas" loading="eager"></pf-icon>
             </button>`}
           </div>
           <slot part="panels" @slotchange="${this.#onSlotchange}"></slot>
@@ -269,65 +221,42 @@ export class RhTabs extends LitElement {
     `;
   }
 
-  #onSlotchange(event: { target: { name: string } }) {
-    if (event.target.name === 'tab') {
-      this.#allTabs = this.tabs;
+  #onSlotchange() {
+    this.#overflow.init(this.tabList, this.tabs);
+  }
+
+  #onExpand(event: Event) {
+    if (event instanceof TabExpandEvent
+      && !event.defaultPrevented && this.tabs.includes(event.tab)) {
+      this.select(event.tab);
+    }
+  }
+
+  #updateActive({ force = false } = {}) {
+    if (!this.#tabindex.activeItem?.disabled) {
+      this.tabs?.forEach((tab, i) => {
+        if (force || !this.manual) {
+          const active = tab === this.#tabindex.activeItem;
+          tab.active = active;
+          if (active) {
+            this.activeIndex = i;
+            this.activeTab = tab;
+          }
+        }
+        this.#tabs.panelFor(tab)?.toggleAttribute('hidden', !tab.active);
+      });
+    }
+    this.#overflow.update();
+  }
+
+  select(option: RhTab | number) {
+    if (typeof option === 'number') {
+      const item = this.tabs[option];
+      this.#tabindex.setActiveItem(item);
     } else {
-      this.#allPanels = this.panels;
+      this.#tabindex.setActiveItem(option);
     }
-
-    if ((this.#allTabs.length === this.#allPanels.length) &&
-      (this.#allTabs.length !== 0 || this.#allPanels.length !== 0)) {
-      this.#updateAccessibility();
-      this.#firstLastClasses();
-      this.#tabindex.initItems(this.#allTabs);
-      this.activeIndex = this.#allTabs.findIndex(tab => tab.active);
-      this.#tabindex.updateActiveItem(this.#activeTab);
-      this.#overflow.init(this.tabList, this.#allTabs);
-    }
-  }
-
-  #updateAccessibility(): void {
-    this.#allTabs.forEach((tab, index) => {
-      const panel = this.#allPanels[index];
-      if (!panel.hasAttribute('aria-labelledby')) {
-        panel.setAttribute('aria-labelledby', tab.id);
-      }
-      tab.setAttribute('aria-controls', panel.id);
-    });
-  }
-
-  #onTabExpand = (event: Event): void => {
-    if (!(event instanceof TabExpandEvent) ||
-        !this.#allTabs.length ||
-        !this.#allPanels.length) {
-      return;
-    }
-
-    if (event.active) {
-      if (event.tab !== this.#tabindex.activeItem) {
-        this.#tabindex.updateActiveItem(event.tab);
-      }
-      this.activeIndex = this.#allTabs.findIndex(tab => tab === event.tab);
-    }
-  };
-
-  #deactivateExcept(index: number) {
-    this.#allTabs.forEach((tab, i) => tab.active = i === index);
-    this.#allPanels.forEach((panel, i) => panel.hidden = i !== index);
-  }
-
-  #firstLastClasses() {
-    this.#firstTab?.classList.add('first');
-    this.#lastTab?.classList.add('last');
-  }
-
-  #scrollLeft() {
-    this.#overflow.scrollLeft();
-  }
-
-  #scrollRight() {
-    this.#overflow.scrollRight();
+    this.#updateActive({ force: true });
   }
 }
 
