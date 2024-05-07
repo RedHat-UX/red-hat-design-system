@@ -132,6 +132,9 @@ export class RhSwitch extends LitElement {
   #updateLabels() {
     const labelState = this.checked ? 'on' : 'off';
     const [messages] = this.#slots.getSlotted<HTMLElement>();
+    if (!messages) {
+      return;
+    }
     const states = messages.querySelectorAll<HTMLElement>('[data-state]');
     states.forEach(state => {
       if (state) {

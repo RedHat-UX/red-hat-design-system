@@ -178,8 +178,51 @@ describe('<rh-switch>', function() {
       label = container.querySelector('label')!;
       element = container.querySelector('rh-switch')!;
     });
-    it('does not hide label', function() {
-      expect(label.hidden).to.be.false;
+    it('has an accessible name', async function() {
+      snapshot = await a11ySnapshot({ selector: 'rh-switch' });
+      expect(snapshot.name).to.equal('Dark Mode');
+    });
+    describe('clicking the label', function() {
+      beforeEach(async function() {
+        label.click();
+        await element.updateComplete;
+        await nextFrame();
+      });
+      it('toggles the state', function() {
+        expect(element.checked).to.be.true;
+      });
+    });
+    describe('clicking the switch', function() {
+      beforeEach(async function() {
+        element.click();
+        await element.updateComplete;
+        await nextFrame();
+      });
+      it('toggles the state', function() {
+        expect(element.checked).to.be.true;
+      });
+    });
+  });
+
+  describe('when used with a wrapping label element', function() {
+    let label: HTMLLabelElement;
+    let element: RhSwitch;
+    let snapshot: A11yTreeSnapshot;
+    beforeEach(async function() {
+      const container = await createFixture<HTMLLabelElement>(html`
+        <fieldset>
+          <label>Dark Mode
+            <rh-switch aria-describedby="switch-messages">
+              <div id="switch-messages">
+                <span data-state="on">Message when on</span>
+                <span data-state="off" hidden>Message when off</span>
+              </div>
+            </rh-switch>
+          </label>
+        </fieldset>
+      `);
+      label = container.querySelector('label')!;
+      element = container.querySelector('rh-switch')!;
     });
     it('has an accessible name', async function() {
       snapshot = await a11ySnapshot({ selector: 'rh-switch' });
