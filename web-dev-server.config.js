@@ -9,8 +9,8 @@ import { glob } from 'glob';
  */
 async function resolveLocal(pattern, fn) {
   return glob(pattern, { ignore: ['**/test/**'] })
-    .then(files => files.map(fn))
-    .then(Object.fromEntries);
+      .then(files => files.map(fn))
+      .then(Object.fromEntries);
 }
 
 export const litcssOptions = {
@@ -47,5 +47,5 @@ export default pfeDevServerConfig({
         return next();
       }
     },
-  ]
+  ],
 });
