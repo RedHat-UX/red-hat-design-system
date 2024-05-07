@@ -32,7 +32,7 @@ rh-pagination li a[aria-current="page"] {
   background: var(--_list-anchor-current-page-bg-color, var(--rh-color-surface-lightest, #ffffff));
   position: relative;
 
-  --_border-color: var(--_list-anchor-current-page-border-color, #b8bbbe);
+  --_border-color: var(--_list-anchor-current-page-border-color, var(--rh-color-border-subtle-on-dark, #707070));
   --_border-width: 1px;
   --_border-accent-color:
     var(
