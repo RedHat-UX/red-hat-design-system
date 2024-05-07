@@ -14,13 +14,14 @@ describe('<rh-switch>', function() {
     let element: RhSwitch;
     let snapshot: A11yTreeSnapshot;
     beforeEach(async function() {
-      const container = await createFixture<RhSwitch>(html`
-        <div>
-          <rh-switch></rh-switch>
-        </div>
+      element = await createFixture<RhSwitch>(html`
+        <rh-switch aria-describedby="switch-message" accessible-label="Dark Mode" checked>
+          <div id="switch-message">
+            <span data-state="on">Message when on</span>
+            <span data-state="off" hidden>Message when off</span>
+          </div>
+        </rh-switch>
       `);
-      element = container.querySelector('rh-switch')!;
-      snapshot = await a11ySnapshot({ selector: 'rh-switch' });
     });
     it('should upgrade', async function() {
       const klass = customElements.get('rh-switch');
@@ -29,45 +30,45 @@ describe('<rh-switch>', function() {
           .and
           .to.be.an.instanceOf(RhSwitch);
     });
-    it('has accessible role', function() {
+    it('has accessible role', async function() {
+      snapshot = await a11ySnapshot({ selector: 'rh-switch' });
       expect(snapshot.role).to.equal('switch');
     });
-    it('has accessible checked field', function() {
+    it('has accessible checked field', async function() {
+      snapshot = await a11ySnapshot({ selector: 'rh-switch' });
       expect(snapshot.role).to.equal('switch');
     });
-    it('requires accessible name', function() {
-      // Double negative - this would fail an accessibility audit,
-      // but that failure would be correct, because the template instantiated
-      // in this test's beforeeach hook does not have an accessible name
-      expect(snapshot.name).to.not.be.ok;
+    it('requires accessible name', async function() {
+      snapshot = await a11ySnapshot({ selector: 'rh-switch' });
+      expect(snapshot.name).to.not.be.empty.and.to.not.be.null;
+      expect(snapshot.name).to.equal('Dark Mode');
     });
   });
 
-  describe('with labels for on and off state', function() {
+  describe('with slotted data-state messages for on and off state announcement', function() {
     let element: RhSwitch;
     let snapshot: A11yTreeSnapshot;
     beforeEach(async function() {
-      const container = await createFixture<RhSwitch>(html`
-        <div>
-          <rh-switch id="switch"></rh-switch>
-          <label for="switch">
+      element = await createFixture<RhSwitch>(html`
+        <rh-switch aria-describedby="switch-message" accessible-label="Dark Mode">
+          <div id="switch-message">
             <span data-state="on">Message when on</span>
             <span data-state="off" hidden>Message when off</span>
-          </label>
-        </div>
-        `);
-      element = container.querySelector('rh-switch')!;
-      snapshot = await a11ySnapshot({ selector: '#switch' });
+          </div>
+        </rh-switch>
+      `);
     });
 
-    it('is accessible', function() {
+    it('is accessible', async function() {
+      snapshot = await a11ySnapshot({ selector: 'rh-switch' });
       expect(snapshot.role).to.equal('switch');
       expect(snapshot.name).to.be.ok;
       expect(snapshot.checked).to.be.false;
     });
 
-    it('should show the label for the unchecked state', function() {
-      expect(snapshot.name).to.equal('Message when off');
+    it('should show the message for the unchecked state', async function() {
+      snapshot = await a11ySnapshot({ selector: 'rh-switch' });
+      expect(snapshot.description).to.equal('Message when off');
     });
 
     describe('clicking the switch', function() {
@@ -75,14 +76,15 @@ describe('<rh-switch>', function() {
         element.click();
         await element.updateComplete;
         await nextFrame();
-        snapshot = await a11ySnapshot({ selector: '#switch' });
       });
-      it('should be checked', function() {
+      it('should be checked', async function() {
+        snapshot = await a11ySnapshot({ selector: 'rh-switch' });
         expect(element.checked).to.be.true;
         expect(snapshot.checked).to.be.true;
       });
-      it('should show the label for the checked state', function() {
-        expect(snapshot.name).to.equal('Message when on');
+      it('should show the label for the checked state', async function() {
+        snapshot = await a11ySnapshot({ selector: 'rh-switch' });
+        expect(snapshot.description).to.equal('Message when on');
       });
     });
   });
@@ -92,15 +94,20 @@ describe('<rh-switch>', function() {
     let snapshot: A11yTreeSnapshot;
     beforeEach(async function() {
       element = await createFixture<RhSwitch>(html`
-        <rh-switch id="switch" checked></rh-switch>
+        <rh-switch checked aria-describedby="switch-message" accessible-label="Change Message">
+          <div id="switch-message">
+            <span data-state="on">Message when on</span>
+            <span data-state="off" hidden>Message when off</span>
+          </div>
+        </rh-switch>
       `);
 
       await element.updateComplete;
       await nextFrame();
-      snapshot = await a11ySnapshot({ selector: '#switch' });
     });
 
-    it('should be checked', function() {
+    it('should be checked', async function() {
+      snapshot = await a11ySnapshot({ selector: 'rh-switch' });
       expect(element.checked).to.be.true;
       expect(snapshot.checked).to.be.true;
     });
@@ -111,15 +118,20 @@ describe('<rh-switch>', function() {
     let snapshot: A11yTreeSnapshot;
     beforeEach(async function() {
       element = await createFixture<RhSwitch>(html`
-        <rh-switch id="switch"></rh-switch>
+        <rh-switch aria-describedby="switch-message" accessible-label="Change Message">
+          <div id="switch-message">
+            <span data-state="on">Message when on</span>
+            <span data-state="off" hidden>Message when off</span>
+          </div>
+        </rh-switch>
       `);
 
       await element.updateComplete;
       await nextFrame();
-      snapshot = await a11ySnapshot({ selector: '#switch' });
     });
 
-    it('should be checked', function() {
+    it('should be checked', async function() {
+      snapshot = await a11ySnapshot({ selector: 'rh-switch' });
       expect(element.checked).to.be.false;
       expect(snapshot.checked).to.be.false;
     });
@@ -129,34 +141,13 @@ describe('<rh-switch>', function() {
   describe('when checked and show-check-icon attrs are present', function() {
     let element: RhSwitch;
     beforeEach(async function() {
-      const container = await createFixture<RhSwitch>(html`
-        <div>
-          <rh-switch id="switch" show-check-icon checked></rh-switch>
-          <label for="switch">
+      element = await createFixture<RhSwitch>(html`
+        <rh-switch checked show-check-icon aria-describedby="switch-message" accessible-label="Change Message" >
+          <div id="switch-message">
             <span data-state="on">Message when on</span>
             <span data-state="off" hidden>Message when off</span>
-          </label>
-        </div>
-      `);
-      element = container.querySelector('rh-switch')!;
-    });
-    it('should display a check icon', async function() {
-      // TODO: can we test this without inspecting the private shadowRoot?
-      const svg = element.shadowRoot.querySelector('svg');
-      expect(svg).to.be.ok;
-      expect(svg?.hasAttribute('hidden')).to.be.false;
-    });
-  });
-
-  describe('when checked and show-check-icon attrs are present', function() {
-    let element: RhSwitch;
-    beforeEach(async function() {
-      element = await createFixture<RhSwitch>(html`
-        <rh-switch id="switch" show-check-icon checked></rh-switch>
-        <label for="switch">
-          <span data-state="on">Message when on</span>
-          <span data-state="off" hidden>Message when off</span>
-        </label>
+          </div>
+        </rh-switch>
       `);
     });
     it('should display a check icon', async function() {
@@ -167,37 +158,48 @@ describe('<rh-switch>', function() {
     });
   });
 
-  describe('when nested inside a label element', function() {
+
+  describe('when used with a sibling label element', function() {
     let label: HTMLLabelElement;
     let element: RhSwitch;
     let snapshot: A11yTreeSnapshot;
     beforeEach(async function() {
-      label = await createFixture<HTMLLabelElement>(html`
-        <label>
-          <span>Dark Mode</span>
-          <rh-switch id="switch"></rh-switch>
-        </label>
+      const container = await createFixture<HTMLLabelElement>(html`
+        <fieldset>
+          <label for="with-label">Dark Mode</label>
+          <rh-switch id="with-label" aria-describedby="switch-messages">
+            <div id="switch-messages">
+              <span data-state="on">Message when on</span>
+              <span data-state="off" hidden>Message when off</span>
+            </div>
+          </rh-switch>
+        </fieldset>
       `);
-      element = label.querySelector('rh-switch')!;
-      snapshot = await a11ySnapshot({ selector: 'rh-switch' });
+      label = container.querySelector('label')!;
+      element = container.querySelector('rh-switch')!;
     });
     it('does not hide label', function() {
       expect(label.hidden).to.be.false;
     });
-    it('has an accessible name', function() {
+    it('has an accessible name', async function() {
+      snapshot = await a11ySnapshot({ selector: 'rh-switch' });
       expect(snapshot.name).to.equal('Dark Mode');
     });
     describe('clicking the label', function() {
-      beforeEach(function() {
+      beforeEach(async function() {
         label.click();
+        await element.updateComplete;
+        await nextFrame();
       });
       it('toggles the state', function() {
         expect(element.checked).to.be.true;
       });
     });
     describe('clicking the switch', function() {
-      beforeEach(function() {
+      beforeEach(async function() {
         element.click();
+        await element.updateComplete;
+        await nextFrame();
       });
       it('toggles the state', function() {
         expect(element.checked).to.be.true;
