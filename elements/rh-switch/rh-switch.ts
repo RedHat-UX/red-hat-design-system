@@ -30,7 +30,7 @@ export class RhSwitch extends LitElement {
   #internals = InternalsController.of(this, { role: 'switch' });
 
   #slots = new SlotController(this);
-  
+
   @property({ reflect: true }) label?: string;
 
   @property({ reflect: true, type: Boolean, attribute: 'show-check-icon' }) showCheckIcon = false;
@@ -94,9 +94,9 @@ export class RhSwitch extends LitElement {
     if (explicitOriginalTarget) {
       let labels: HTMLLabelElement[];
       if (
-        originalTarget === event.target &&
-        !(labels = Array.from(this.labels)).includes(explicitOriginalTarget) &&
-        labels.includes(this.closest('label') as HTMLLabelElement)
+        originalTarget === event.target
+        && !(labels = Array.from(this.labels)).includes(explicitOriginalTarget)
+        && labels.includes(this.closest('label') as HTMLLabelElement)
       ) {
         return;
       }

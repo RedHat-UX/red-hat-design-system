@@ -25,9 +25,9 @@ describe('<rh-switch>', function() {
     it('should upgrade', async function() {
       const klass = customElements.get('rh-switch');
       expect(element)
-        .to.be.an.instanceOf(klass)
-        .and
-        .to.be.an.instanceOf(RhSwitch);
+          .to.be.an.instanceOf(klass)
+          .and
+          .to.be.an.instanceOf(RhSwitch);
     });
     it('has accessible role', function() {
       expect(snapshot.role).to.equal('switch');
