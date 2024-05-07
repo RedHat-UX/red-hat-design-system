@@ -218,7 +218,7 @@ describe('<rh-video>', function() {
 
     it('shows play button and thumbnail', function() {
       expect(children).to.deep.equal([
-        { role: 'img', name: 'fakethumb' },
+        { role: 'image', name: 'fakethumb' },
         { role: 'button', name: 'videotitle (play video)' }
       ]);
     });
@@ -246,7 +246,7 @@ describe('<rh-video>', function() {
 
     it('shows play button and thumbnail', function() {
       expect(children).to.deep.equal([
-        { role: 'img', name: 'fakethumb' },
+        { role: 'image', name: 'fakethumb' },
         { role: 'button', name: 'videotitle (play video)' }
       ]);
     });
