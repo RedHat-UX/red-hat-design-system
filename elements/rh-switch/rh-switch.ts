@@ -6,6 +6,8 @@ import { classMap } from 'lit/directives/class-map.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
+import { observed } from '@patternfly/pfe-core/decorators/observed.js';
+
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
 
@@ -35,6 +37,7 @@ export class RhSwitch extends LitElement {
 
   @property({ reflect: true, type: Boolean, attribute: 'show-check-icon' }) showCheckIcon = false;
 
+  @observed
   @property({ reflect: true, type: Boolean }) checked = false;
 
   @property({ reflect: true, type: Boolean }) disabled = false;
@@ -119,13 +122,19 @@ export class RhSwitch extends LitElement {
     }
   }
 
+  private _checkedChanged(newValue: boolean, oldValue: boolean) {
+    if ((newValue === oldValue) || (oldValue === undefined)) {
+      return;
+    }
+    this.#updateLabels();
+  }
+
   #toggle() {
     if (this.disabled) {
       return;
     }
 
     this.checked = !this.checked;
-    this.#updateLabels();
     this.dispatchEvent(new Event('change', { bubbles: true }));
   }
 
