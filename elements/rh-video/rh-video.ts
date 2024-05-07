@@ -119,7 +119,7 @@ export class RhVideo extends LitElement {
   }
 
   render() {
-    const { playClicked, on } = this;
+    const { playClicked, on = '' } = this;
     const dark = on === 'dark';
     const svgFill = dark ? '#151515' : 'white';
     const svgOpacity = dark ? '0.5' : '0.25';
