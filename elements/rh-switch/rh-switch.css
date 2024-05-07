@@ -17,7 +17,7 @@
   align-items: center;
   width: 40px;
   height: 24px;
-  background-color: var(--rh-switch-unchecked, var(--rh-color-gray-60, #4d4d4d));
+  background-color: var(--_switch-unchecked, var(--rh-color-gray-60, #4d4d4d));
   border-radius: var(--rh-border-radius-pill, 64px);
 }
 
@@ -43,7 +43,7 @@
 }
 
 :host([checked]) #container {
-  background-color: var(--rh-switch-checked, var(--rh-color-accent-base-on-light, #0066cc));
+  background-color: var(--_switch-checked, var(--rh-color-accent-base-on-light, #0066cc));
 }
 
 :host([checked]) #container:before {
@@ -66,11 +66,11 @@ svg {
 }
 
 .dark {
-  background-color: var(--rh-switch-unchecked, #707070); /* no disabled token yet */
+  background-color: var(--_switch-unchecked, #707070); /* no disabled token yet */
 }
 
 #container.dark {
-  background-color: var(--rh-switch-unchecked, var(--rh-color-gray-40, #a3a3a3));
+  background-color: var(--_switch-unchecked, var(--rh-color-gray-40, #a3a3a3));
 }
 
 :host(:is(:focus, :focus-within)) #container.dark {
@@ -78,7 +78,7 @@ svg {
 }
 
 :host([checked]) #container.dark {
-  background-color: var(--rh-switch-checked, var(--rh-color-accent-base-on-dark, #92c5f9));
+  background-color: var(--_switch-checked, var(--rh-color-accent-base-on-dark, #92c5f9));
 }
 
 :host(:disabled) #container.dark {
