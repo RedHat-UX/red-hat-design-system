@@ -226,7 +226,8 @@ describe('<rh-switch>', function() {
     });
     it('has an accessible name', async function() {
       snapshot = await a11ySnapshot({ selector: 'rh-switch' });
-      expect(snapshot.name).to.equal('Dark Mode');
+      /* name will have a extra space due to the label text being sibling to the switch */
+      expect(snapshot.name).to.equal('Dark Mode ');
     });
     describe('clicking the label', function() {
       beforeEach(async function() {
