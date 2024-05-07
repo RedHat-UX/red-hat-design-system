@@ -2,8 +2,13 @@
   <form id="nested-label">
     <fieldset>
       <legend>Nested in a label</legend>
-      <label> Status
-        <rh-switch name="status"></rh-switch>
+      <label> Dark Mode
+        <rh-switch name="status" aria-describedby="switch-message" checked>
+          <div id="switch-message">
+            <span data-state="on">On</span>
+            <span data-state="off" hidden>Off</span>
+          </div>
+        </rh-switch>
       </label>
       <rh-button type="submit">Submit</rh-button>
       <output>Submit to read status</output>
@@ -17,7 +22,7 @@
 
   document.getElementById('nested-label').addEventListener('submit', /** @this {HTMLFormElement} */function(event) {
     event.preventDefault();
-    this.querySelector('output').textContent = `Dark mode ${this.elements.status.checked ? 'on' : 'off'}`;
+    this.querySelector('output').textContent = `Dark mode ${this.elements.status.checked ? 'On' : 'Off'}`;
   });
 </script>
 

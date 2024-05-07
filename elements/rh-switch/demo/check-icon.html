@@ -2,11 +2,12 @@
   <form>
     <fieldset>
       <legend>Checked with label</legend>
-      <rh-switch id="checked" checked show-check-icon></rh-switch>
-      <label for="checked">
-        <span data-state="on">Message when on</span>
-        <span data-state="off" hidden>Message when off</span>
-      </label>
+      <rh-switch id="switch-a" aria-describedby="messages-a" accessible-label="Switch A" checked show-check-icon>
+        <div id="messages-a">
+          <span data-state="on">Message when on</span>
+          <span data-state="off" hidden>Message when off</span>
+        </div>
+      </rh-switch>
     </fieldset>
   </form>
 </section>
@@ -22,12 +23,8 @@
 
   fieldset {
     display: grid;
-    grid-template-columns: min-content max-content;
+    grid-template-columns: max-content max-content;
     gap: var(--rh-space-lg, 16px);
-  }
-
-  fieldset:has(#reversed) {
-    grid-template-columns: max-content min-content;
   }
 
   label {

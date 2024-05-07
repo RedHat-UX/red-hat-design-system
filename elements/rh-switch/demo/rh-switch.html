@@ -3,43 +3,58 @@
   <form>
     <fieldset id="fieldset-a">
       <legend>Option A</legend>
-      <rh-switch id="a" checked></rh-switch>
-      <label for="a">
-        <span data-state="on">Message when on</span>
-        <span data-state="off" hidden>Message when off</span>
-      </label>
+      <rh-switch id="switch-a" aria-describedby="messages-a" accessible-label="Switch A" checked>
+        <div id="messages-a">
+          <span data-state="on">Message when on</span>
+          <span data-state="off" hidden>Message when off</span>
+        </div>
+      </rh-switch>
     </fieldset>
 
     <fieldset id="fieldset-b">
-      <legend>Option B (no explicit label)</legend>
-      <rh-switch id="b" checked></rh-switch>
+      <legend>Option B (Explicit label)</legend>
+      <label for="switch-b">Switch B</label>
+      <rh-switch id="switch-b" aria-describedby="messages-b" checked>
+        <div id="messages-b">
+          <span data-state="on">Message when on</span>
+          <span data-state="off" hidden>Message when off</span>
+        </div>
+      </rh-switch>
     </fieldset>
 
     <fieldset id="form-disabled">
       <legend>Form Disabled State</legend>
-      <rh-switch id="disable-a" aria-controls="fieldset-a"></rh-switch>
-      <label for="disable-a">
-        <span data-state="on">Fieldset A is disabled</span>
-        <span data-state="off" hidden>Fieldset A is enabled</span>
-      </label>
+      <label for="disable-fieldset-a">Disable Fieldset A</label>
+      <rh-switch id="disable-fieldset-a" aria-describedby="disable-fieldset-a-messages" aria-controls="fieldset-a">
+        <div id="disable-fieldset-a-messages">
+          <span data-state="on">Fieldset A is disabled</span>
+          <span data-state="off" hidden>Fieldset A is enabled</span>
+        </div>
+      </rh-switch>
 
-      <rh-switch id="disable-a-switch" aria-controls="a"></rh-switch>
-      <label for="disable-a-switch">
-        <span data-state="on">Switch A is disabled</span>
-        <span data-state="off" hidden>Switch A is enabled</span>
-      </label>
+      <label for="disable-switch-a">Disable Switch A</label>
+      <rh-switch id="disable-switch-a" aria-describedby="disable-switch-a-messages" aria-controls="switch-a">
+        <div id="disable-switch-a-messages">
+          <span data-state="on">Switch A is disabled</span>
+          <span data-state="off" hidden>Switch A is enabled</span>
+        </div>
+      </rh-switch>
 
-      <rh-switch id="disable-b" aria-controls="fieldset-b"></rh-switch>
-      <label for="disable-b">
-        <span data-state="on">Fieldset B is disabled</span>
-        <span data-state="off" hidden>Fieldset B is enabled</span>
-      </label>
+      <label for="disable-fieldset-b">Disable Fieldset B</label>
+      <rh-switch id="disable-fieldset-b" aria-describedby="disabled-fieldset-b-messages" aria-controls="fieldset-b">
+        <div id="disabled-fieldset-b-messages">
+          <span data-state="on">Fieldset A is disabled</span>
+          <span data-state="off" hidden>Fieldset A is enabled</span>
+        </div>
+      </rh-switch>
 
-      <rh-switch id="disable-b-switch" aria-controls="b"></rh-switch>
-      <label for="disable-b-switch">
-        <span data-state="on">Switch B is disabled</span>
-        <span data-state="off" hidden>Switch B is enabled</span>
-      </label>
+      <label for="disable-switch-b">Disable Switch B</label>
+      <rh-switch id="disable-switch-b" aria-describedby="disable-switch-b-messages" aria-controls="switch-b">
+        <div id="disable-switch-b-messages">
+          <span data-state="on">Switch A is disabled</span>
+          <span data-state="off" hidden>Switch A is enabled</span>
+        </div>
+      </rh-switch>
     </fieldset>
   </form>
 </section>
@@ -48,8 +63,14 @@
   import '@rhds/elements/rh-switch/rh-switch.js';
 
   document.getElementById('form-disabled').addEventListener('change', /** @this{HTMLFieldsetElement}*/function(event) {
-    const controls = document.getElementById(event.target.getAttribute('aria-controls'));
+    const controlsId = event.target.getAttribute('aria-controls');
+    const controls = document.getElementById(controlsId);
     controls.toggleAttribute('disabled', event.target.checked);
+    if (controlsId.includes('fieldset') && event.target.checked === true) {
+      // eg update disable-switch-a state
+      const suffix = [...controlsId].pop();
+      document.getElementById(`disable-switch-${suffix}`).checked = event.target.checked;
+    }
   });
 </script>
 
@@ -60,7 +81,7 @@
 
   fieldset {
     display: grid;
-    grid-template-columns: min-content max-content;
+    grid-template-columns: max-content max-content;
     gap: var(--rh-space-lg, 16px);
   }
 
@@ -70,6 +91,7 @@
 
   label {
     color: var(--rh-color-text-primary-on-light, #151515);
+    font-weight: var(--rh-font-weight-heading-medium, 500);
   }
 
   rh-switch:is(:disabled) ~ label {
