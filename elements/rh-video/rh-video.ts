@@ -130,7 +130,7 @@ export class RhVideo extends LitElement {
       'video' : 'thumbnail';
 
     return html`
-      <figure class="${classMap({ [show]: !!show })}">
+      <figure class="${classMap({ [show]: !!show, [on]: !!on })}">
         <div id="video">
           <div aria-hidden="${show !== 'thumbnail'}">
             <slot id="thumbnail" name="thumbnail"></slot>

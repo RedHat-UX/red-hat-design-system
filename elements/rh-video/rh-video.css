@@ -25,6 +25,10 @@ figure {
   margin: 0;
 }
 
+figure.dark {
+  --_caption-text-color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
+}
+
 #consent,
 #watermark {
   position: absolute;
@@ -51,7 +55,7 @@ figure {
 figure,
 #consent-message,
 ::slotted([slot="consent-message"]:last-of-type) {
-  margin-bottom: var(--rh-space-xl, 24px);
+  margin-block-end: var(--rh-space-xl, 24px);
 }
 
 #play {
@@ -95,6 +99,11 @@ figure,
   opacity: 1;
 }
 
+::slotted([slot="caption"]) {
+  color: var(--_caption-text-color, var(--rh-color-text-secondary-on-light, #4d4d4d));
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+}
+
 ::slotted([slot="caption"]:first-of-type) {
-  margin-top: var(--rh-space-xl, 24px);
+  margin-block-start: var(--rh-space-lg, 16px);
 }
