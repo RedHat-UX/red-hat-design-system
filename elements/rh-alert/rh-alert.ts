@@ -5,6 +5,8 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 
+import '@rhds/elements/rh-surface/rh-surface.js';
+
 import styles from './rh-alert.css';
 
 // TODO: replace with rh-icon
@@ -118,10 +120,11 @@ export class RhAlert extends LitElement {
     const hasActions = this.#slots.hasSlotted('actions');
     const hasBody = this.#slots.hasSlotted(SlotController.anonymous as unknown as string);
     return html`
-      <div id="container"
+      <rh-surface id="container"
            class="${classMap({ hasBody })}"
            role="alert"
-           aria-hidden="false">
+           aria-hidden="false"
+           color-palette="lightest">
         <div id="left-column">
           <div id="icon">${this.icon}</div>
         </div>
@@ -144,7 +147,7 @@ export class RhAlert extends LitElement {
             <slot name="actions"></slot>
           </footer>
         </div>
-      </div>
+      </rh-surface>
     `;
   }
 }

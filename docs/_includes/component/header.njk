@@ -48,7 +48,7 @@
           </details>
         </li>
 
-        <!-- Get started -->
+        <!-- Get started (Subitems here use the heading in the frontmatter for the link text.) -->
 
         <li class="item">
           <details {{ 'open' if 'get-started/' in page.url }}>
@@ -61,7 +61,7 @@
               {%- for link in collections.getstarted -%}
               <li class="item">
                 <a class="link {{ 'active' if page.url === link.url }}"
-                   href="{{ link.url | url }}">{{ link.data.title }}</a>
+                   href="{{ link.url | url }}">{{ link.data.heading }}</a>
               </li>
               {%- endfor -%}
             </ul>
@@ -204,14 +204,3 @@
     </nav>
   </div>
 </header>
-
-<script type="module">
-  window.onUsersnapCXLoad = function(api) {
-    api.init();
-  }
-  var script = document.createElement('script');
-  script.async = 1;
-  script.src = 'https://widget.usersnap.com/load/64471a95-72fe-4239-b16d-ebcf8b1219f7?onload=onUsersnapCXLoad';
-  document.head.appendChild(script);
-</script>
-

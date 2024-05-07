@@ -22,9 +22,9 @@ describe('<rh-site-status>', function() {
         json: () => Promise.resolve({
           status: {
             indicator: 'none',
-            description: 'All systems operational'
-          }
-        })
+            description: 'All systems operational',
+          },
+        }),
       });
       element = await createFixture<RhSiteStatus>(html`<rh-site-status></rh-site-status>`);
       await element.updateComplete;
@@ -34,9 +34,9 @@ describe('<rh-site-status>', function() {
       element = await createFixture<RhSiteStatus>(html`<rh-site-status></rh-site-status>`);
       const klass = customElements.get('rh-site-status');
       expect(element)
-        .to.be.an.instanceOf(klass)
-        .and
-        .to.be.an.instanceOf(RhSiteStatus);
+          .to.be.an.instanceOf(klass)
+          .and
+          .to.be.an.instanceOf(RhSiteStatus);
     });
   });
 
@@ -50,9 +50,9 @@ describe('<rh-site-status>', function() {
         json: () => Promise.resolve({
           status: {
             indicator: 'none',
-            description: 'All Systems Operational'
-          }
-        })
+            description: 'All Systems Operational',
+          },
+        }),
       });
       element = await createFixture<RhSiteStatus>(html`<rh-site-status></rh-site-status>`);
       await element.updateComplete;
@@ -95,9 +95,9 @@ describe('<rh-site-status>', function() {
         json: () => Promise.resolve({
           status: {
             indicator: 'minor',
-            description: 'Partially Degraded Service'
-          }
-        })
+            description: 'Partially Degraded Service',
+          },
+        }),
       });
       element = await createFixture<RhSiteStatus>(html`<rh-site-status></rh-site-status>`);
       await element.updateComplete;

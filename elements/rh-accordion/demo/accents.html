@@ -1,0 +1,71 @@
+<section id="inline">
+  <h3>Inline</h3>
+  <rh-accordion>
+    <rh-accordion-header>
+      <h4>Item One</h4>
+      <rh-tag slot="accents" color="green" variant="filled" icon="info" icon-set="fas">Green</rh-tag>
+      <rh-tag slot="accents" color="red" variant="filled" icon="info" icon-set="fas">Red</rh-tag>
+      <rh-tag slot="accents" color="orange" variant="filled" icon="bell" icon-set="fas">Orange</rh-tag>
+      <rh-tag slot="accents" color="purple" variant="filled" icon="ban" icon-set="fas">Purple</rh-tag>
+    </rh-accordion-header>
+    <rh-accordion-panel>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </rh-accordion-panel>
+    <rh-accordion-header>
+      <h4>Item Two</h4>
+      <rh-tag slot="accents" color="green" variant="filled" icon="info" icon-set="fas">Green</rh-tag>
+    </rh-accordion-header>
+    <rh-accordion-panel>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </rh-accordion-panel>
+    <rh-accordion-header>
+      <h4>Item Three</h4>
+      <rh-tag slot="accents" color="red" variant="filled" icon="info" icon-set="fas">Red</rh-tag>
+    </rh-accordion-header>
+    <rh-accordion-panel>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </rh-accordion-panel>
+  </rh-accordion>
+</section>
+
+
+<section id="bottom">
+  <h3>Bottom</h3>
+  <rh-accordion accents="bottom">
+    <rh-accordion-header>
+      <h4>Item One</h4>
+      <rh-tag slot="accents" color="green" variant="filled" icon="info" icon-set="fas">Green</rh-tag>
+      <rh-tag slot="accents" color="red" variant="filled" icon="info" icon-set="fas">Red</rh-tag>
+      <rh-tag slot="accents" color="orange" variant="filled" icon="bell" icon-set="fas">Orange</rh-tag>
+      <rh-tag slot="accents" color="purple" variant="filled" icon="ban" icon-set="fas">Purple</rh-tag>
+    </rh-accordion-header>
+    <rh-accordion-panel>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </rh-accordion-panel>
+    <rh-accordion-header>
+      <h4>Item Two</h4>
+      <rh-tag slot="accents" color="green" variant="filled" icon="info" icon-set="fas">Green</rh-tag>
+    </rh-accordion-header>
+    <rh-accordion-panel>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </rh-accordion-panel>
+    <rh-accordion-header>
+      <h4>Item Three</h4>
+      <rh-tag slot="accents" color="red" variant="filled" icon="info" icon-set="fas">Red</rh-tag>
+    </rh-accordion-header>
+    <rh-accordion-panel>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </rh-accordion-panel>
+  </rh-accordion>
+</section>
+
+<style>
+  #inline, #bottom {
+    margin-block-end: var(--rh-space-3xl, 48px);
+  }
+</style>
+
+<script type="module">
+    import '@rhds/elements/rh-accordion/rh-accordion.js';
+    import '@rhds/elements/rh-tag/rh-tag.js';
+</script>

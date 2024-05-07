@@ -230,6 +230,19 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     });
   });
 
+  eleventyConfig.addCollection('sortedDevelopers', async function(collectionApi) {
+    const developersCollection = collectionApi.getFilteredByTags('developers');
+    return developersCollection.sort((a, b) => {
+      if (a.data.order > b.data.order) {
+        return 1;
+      } else if (a.data.order < b.data.order) {
+        return -1;
+      } else {
+        return 0;
+      }
+    });
+  });
+
   eleventyConfig.addCollection('elementDocs', async function(collectionApi) {
     const { pfeconfig } = eleventyConfig?.globalData ?? {};
     /**

@@ -30,7 +30,7 @@ const statusIconsMap: Record<string, TemplateResult> = {
   'danger': svg`
     <path d="M8 16.5C12.4183 16.5 16 12.9183 16 8.5C16 4.08172 12.4183 0.5 8 0.5C3.58172 0.5 0 4.08172 0 8.5C0 12.9183 3.58172 16.5 8 16.5Z" fill="#F4784A"/>
     <path d="M8.0001 9.80005C7.6001 9.80005 7.3001 9.50005 7.3001 9.10005V4.50005C7.3001 4.10005 7.6001 3.80005 8.0001 3.80005C8.4001 3.80005 8.7001 4.10005 8.7001 4.50005V9.10005C8.7001 9.50005 8.4001 9.80005 8.0001 9.80005ZM8.2001 12.8C8.3001 12.8 8.3001 12.8 8.4001 12.7C8.5001 12.7 8.5001 12.7 8.5001 12.6C8.6001 12.6 8.6001 12.5 8.6001 12.5C8.8001 12.3 8.9001 12.1 8.9001 11.9C8.9001 11.7 8.8001 11.5 8.6001 11.3L8.5001 11.2L8.4001 11.1C8.3001 11.1 8.3001 11.1 8.2001 11.1C7.9001 11 7.6001 11.1 7.4001 11.3L7.3001 11.4L7.2001 11.5C7.2001 11.6 7.2001 11.6 7.1001 11.7C7.1001 11.8 7.1001 11.8 7.1001 11.9C7.1001 12.1 7.2001 12.3 7.4001 12.5C7.6001 12.7 7.8001 12.8 8.0001 12.8C8.1001 12.8 8.1001 12.8 8.2001 12.8Z" fill="white"/>
-  `
+  `,
 };
 
 // map statuspage.io's text to our text; at least one of their status
@@ -61,12 +61,12 @@ export class RhSiteStatus extends LitElement {
 
   private static isApiStatus = (data: ApiStatus): data is ApiStatus => {
     return (
-      typeof data === 'object' &&
-      data !== null &&
-      'status' in data &&
-      data.status !== null &&
-      'description' in data.status &&
-      'indicator' in data.status
+      typeof data === 'object'
+      && data !== null
+      && 'status' in data
+      && data.status !== null
+      && 'description' in data.status
+      && 'indicator' in data.status
     );
   };
 
@@ -111,15 +111,15 @@ export class RhSiteStatus extends LitElement {
         cache: 'no-cache',
         headers: {
           Accept: 'application/json',
-        }
+        },
       })
-        .then(response => {
-          if (response.ok) {
-            return response.json();
-          } else {
-            throw new Error(`${response.statusText}`);
-          }
-        });
+          .then(response => {
+            if (response.ok) {
+              return response.json();
+            } else {
+              throw new Error(`${response.statusText}`);
+            }
+          });
       if (!RhSiteStatus.isApiStatus(data)) {
         throw new Error('Invalid status data');
       }
