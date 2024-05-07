@@ -50,7 +50,10 @@ export class VideoPlayEvent extends Event {
 export class RhVideo extends LitElement {
   static readonly styles = [styles];
 
-  static readonly shadowRootOptions: ShadowRootInit = { ...LitElement.shadowRootOptions, delegatesFocus: true };
+  static readonly shadowRootOptions: ShadowRootInit = {
+    ...LitElement.shadowRootOptions,
+    delegatesFocus: true,
+  };
 
   /**
    * Whether video requires consent consent for cookies
@@ -123,11 +126,15 @@ export class RhVideo extends LitElement {
     const hasCaption = this.#slots.hasSlotted('caption');
     const hasThumbnail = this.#slots.hasSlotted('thumbnail');
     const playLabel = this.iframeElement && this.iframeElement.title ? `${this.iframeElement.title} (play video)` : 'Play video';
-    const show = this.#showConsent ? 'consent' : !!playClicked || !hasThumbnail ? 'video' : 'thumbnail';
+    const show = this.#showConsent ? 'consent' : !!playClicked || !hasThumbnail ?
+      'video' : 'thumbnail';
+
     return html`
       <figure class="${classMap({ [show]: !!show })}">
         <div id="video">
-          <slot id="thumbnail" name="thumbnail" aria-hidden="${show !== 'thumbnail'}"></slot>
+          <div aria-hidden="${show !== 'thumbnail'}">
+            <slot id="thumbnail" name="thumbnail"></slot>
+          </div>
           <slot @slotchange="${this.#copyIframe}"></slot>
           <div id="autoplay"><slot name="autoplay"></slot></div>
           ${this.#showConsent ? html`
@@ -156,14 +163,14 @@ export class RhVideo extends LitElement {
                 <rh-button
                   id="consent-button"
                   variant="tertiary"
-                  @click="${this.#handleConsentClick}" 
+                  @click="${this.#handleConsentClick}"
                   @keyup="${this.#handleConsentKeyup}"><slot name="consent-button-text">Update preferences</slot></rh-button>
               </div>
             </rh-surface>
           ` : ''}
-          <button id="play" 
-            ?hidden="${show !== 'thumbnail'}" 
-            @click="${this.#handlePlayClick}" 
+          <button id="play"
+            ?hidden="${show !== 'thumbnail'}"
+            @click="${this.#handlePlayClick}"
             @keyup="${this.#handlePlayKeyup}">
             <span class="visually-hidden"><slot name="play-button-text">${playLabel}</slot></span>
             <svg id="icon" aria-hidden="true" width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -180,7 +187,8 @@ export class RhVideo extends LitElement {
   #copyIframe() {
     const template = this.querySelector('template');
     const node = template ? document.importNode(template.content, true) : undefined;
-    const iframe = node ? node.querySelector('iframe')?.cloneNode(true) as HTMLIFrameElement : undefined;
+    const iframe = node ?
+      node.querySelector('iframe')?.cloneNode(true) as HTMLIFrameElement : undefined;
     if (iframe) {
       const url = new URL(iframe.getAttribute('src') || '');
       url.searchParams.append('autoplay', '1');

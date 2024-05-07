@@ -43,9 +43,9 @@ describe('<rh-video>', function() {
       element = await createFixture<RhVideo>(html`<rh-video></rh-video>`);
       const klass = customElements.get('rh-video');
       expect(element)
-        .to.be.an.instanceOf(klass)
-        .and
-        .to.be.an.instanceOf(RhVideo);
+          .to.be.an.instanceOf(klass)
+          .and
+          .to.be.an.instanceOf(RhVideo);
     });
   });
 
@@ -65,7 +65,7 @@ describe('<rh-video>', function() {
 
     it('is accessible', async function() {
       await expect(element)
-        .to.be.accessible();
+          .to.be.accessible();
     });
 
     it('does not have video', function() {
@@ -162,7 +162,7 @@ describe('<rh-video>', function() {
 
     it('is accessible', async function() {
       await expect(element)
-        .to.be.accessible();
+          .to.be.accessible();
     });
 
     it('has consent button', function() {
@@ -219,7 +219,7 @@ describe('<rh-video>', function() {
     it('shows play button and thumbnail', function() {
       expect(children).to.deep.equal([
         { role: 'image', name: 'fakethumb' },
-        { role: 'button', name: 'videotitle (play video)' }
+        { role: 'button', name: 'videotitle (play video)' },
       ]);
     });
   });
@@ -247,7 +247,7 @@ describe('<rh-video>', function() {
     it('shows play button and thumbnail', function() {
       expect(children).to.deep.equal([
         { role: 'image', name: 'fakethumb' },
-        { role: 'button', name: 'videotitle (play video)' }
+        { role: 'button', name: 'videotitle (play video)' },
       ]);
     });
   });
