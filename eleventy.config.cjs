@@ -92,6 +92,10 @@ module.exports = function(eleventyConfig) {
       '@rhds/tokens/media.js',
       '@rhds/tokens/meta.js',
       '@patternfly/elements',
+      '@patternfly/icons/far/',
+      '@patternfly/icons/fas/',
+      '@patternfly/icons/fab/',
+      '@patternfly/icons/patternfly/',
       '@patternfly/pfe-core',
       // Vendor
       'lit',
