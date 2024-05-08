@@ -6,7 +6,7 @@ article {
 }
 
 .empty {
-  display: none;
+  display: none !important;
 }
 
 ::slotted(*) {
