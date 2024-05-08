@@ -1,8 +1,16 @@
-/* eslint-env node */
 import { default as read } from '@changesets/read';
 import semanticRelease from 'semantic-release';
 
 /** @typedef {'major'|'minor'|'patch'} ReleaseType */
+
+/**
+ * named capture group 1 `commitType`:
+ * > Either `feat`, `fix`, `chore`, `docs`, or `style`
+ * **ANY** (_>= 0x_)
+ * named capture group 2 `bang`:
+ * > `!`
+ */
+const COMMIT_TYPE_RE = /(?<commitType>feat|fix|chore|docs|style).*(?<bang>!)/;
 
 async function getReleaseType(title, mergeType) {
   if (mergeType === 'rebase') {
@@ -14,7 +22,7 @@ async function getReleaseType(title, mergeType) {
     const type = result?.nextRelease?.type;
     return type;
   } else {
-    const { commitType, bang } = title.match(/(?<commitType>feat|fix|chore|docs|style).*(?<bang>!)/)?.groups ?? {};
+    const { commitType, bang } = title.match(COMMIT_TYPE_RE)?.groups ?? {};
     if (bang) {
       return 'major';
     } else {
