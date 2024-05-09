@@ -158,7 +158,14 @@
       ]
     },
     "bundle": {
-      "command": "node scripts/bundle.js"
+      "command": "node scripts/bundle.js",
+      "files": [
+        "elements/**/*.{ts,js,map}",
+        "elements/**/*.css"
+      ],
+      "output": [
+        "rhds.min.js"
+      ]
     },
     "analyze": {
       "command": "cem analyze && node scripts/cem-tokens.js && node scripts/system-tokens.js",
