@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/assets/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all">
     <link rel="stylesheet" href="/assets/base.css">
 
-    <script type="importmap">{"imports":{"lit-html":"/assets/packages/lit-html/lit-html.js","@patternfly/pfe-core":"/assets/packages/@patternfly/pfe-core/core.js","tslib":"/assets/packages/tslib/tslib.es6.mjs","@lit/reactive-element":"/assets/packages/@lit/reactive-element/reactive-element.js","@lit/context":"/assets/packages/@lit/context/index.js","lit-element":"/assets/packages/lit-element/index.js","lit/directives/if-defined.js":"/assets/packages/lit/directives/if-defined.js","lit":"/assets/packages/lit/index.js","@rhds/tokens/media.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js","@rhds/tokens":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/tokens.js","@rhds/tokens/meta.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js","@floating-ui/core":"/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs","@floating-ui/dom":"/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs","@patternfly/elements":"/assets/packages/@patternfly/elements/pfe.min.js","element-internals-polyfill":"/assets/packages/element-internals-polyfill/dist/index.js","fuse.js":"/assets/packages/fuse.js/dist/fuse.esm.js","@rhds/tokens/":"/assets/packages/@rhds/tokens/js/","@rhds/elements/":"/assets/packages/@rhds/elements/elements/","@rhds/elements/lib/":"/assets/packages/@rhds/elements/lib/","@patternfly/elements/":"/assets/packages/@patternfly/elements/","@patternfly/icons/":"/assets/packages/@patternfly/icons/","@patternfly/pfe-core/":"/assets/packages/@patternfly/pfe-core/"},"scopes":{"/assets/packages/lit/":{"lit-html":"/assets/packages/lit/node_modules/lit-html/lit-html.js"},"/assets/packages/":{"@floating-ui/utils":"https://ga.jspm.io/npm:@floating-ui/utils@0.2.2/dist/floating-ui.utils.mjs","@floating-ui/utils/dom":"https://ga.jspm.io/npm:@floating-ui/utils@0.2.2/dist/floating-ui.utils.dom.mjs","@lit/reactive-element/decorators/":"/assets/packages/@lit/reactive-element/decorators/","lit-element/lit-element.js":"/assets/packages/lit-element/lit-element.js","lit-html":"/assets/packages/lit-element/node_modules/lit-html/lit-html.js","lit-html/":"/assets/packages/lit/node_modules/lit-html/","lit/":"/assets/packages/lit/"}}}</script>
+    <script type="importmap">{"imports":{"lit-html":"/assets/packages/lit-html/lit-html.js","@patternfly/pfe-core":"/assets/packages/@patternfly/pfe-core/core.js","tslib":"/assets/packages/tslib/tslib.es6.mjs","@lit/reactive-element":"/assets/packages/@lit/reactive-element/reactive-element.js","@lit/context":"/assets/packages/@lit/context/index.js","lit-element":"/assets/packages/lit-element/index.js","lit/directives/if-defined.js":"/assets/packages/lit/directives/if-defined.js","lit":"/assets/packages/lit/index.js","@rhds/tokens":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/tokens.js","@rhds/tokens/media.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js","@floating-ui/core":"/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs","@rhds/tokens/meta.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js","@floating-ui/dom":"/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs","@patternfly/elements":"/assets/packages/@patternfly/elements/pfe.min.js","element-internals-polyfill":"/assets/packages/element-internals-polyfill/dist/index.js","fuse.js":"/assets/packages/fuse.js/dist/fuse.esm.js","@rhds/tokens/":"/assets/packages/@rhds/tokens/js/","@rhds/elements/":"/assets/packages/@rhds/elements/elements/","@rhds/elements/lib/":"/assets/packages/@rhds/elements/lib/","@patternfly/elements/":"/assets/packages/@patternfly/elements/","@patternfly/icons/":"/assets/packages/@patternfly/icons/","@patternfly/pfe-core/":"/assets/packages/@patternfly/pfe-core/"},"scopes":{"/assets/packages/lit/":{"lit-html":"/assets/packages/lit/node_modules/lit-html/lit-html.js"},"/assets/packages/":{"@floating-ui/utils":"https://ga.jspm.io/npm:@floating-ui/utils@0.2.2/dist/floating-ui.utils.mjs","@floating-ui/utils/dom":"https://ga.jspm.io/npm:@floating-ui/utils@0.2.2/dist/floating-ui.utils.dom.mjs","@lit/reactive-element/decorators/":"/assets/packages/@lit/reactive-element/decorators/","lit-element/lit-element.js":"/assets/packages/lit-element/lit-element.js","lit-html":"/assets/packages/lit-element/node_modules/lit-html/lit-html.js","lit-html/":"/assets/packages/lit/node_modules/lit-html/","lit/":"/assets/packages/lit/"}}}</script>
     <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
     <script type="module">
       import 'element-internals-polyfill';
@@ -22,131 +22,133 @@
   </head>
   <body unresolved="">
     <main>
-      <div data-demo="rh-card"><rh-card>
-  <h2 slot="header">Default card, slotted content and footer</h2>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Nullam eleifend elit sed est egestas, a sollicitudin mauris
-    tincidunt. Pellentesque vel dapibus risus. Nullam aliquam
-    felis orci, eget cursus mi lacinia quis. Vivamus at felis sem.</p>
-  <rh-cta variant="primary" slot="footer">
-    <a href="#">Call to action</a>
-  </rh-cta>
-</rh-card>
+      <div data-demo="rh-card"><section id="card-variants">
+  <rh-card>
+    <h2 slot="header">Default card, slotted content and footer</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Nullam eleifend elit sed est egestas, a sollicitudin mauris
+      tincidunt. Pellentesque vel dapibus risus. Nullam aliquam
+      felis orci, eget cursus mi lacinia quis. Vivamus at felis sem.</p>
+    <rh-cta variant="primary" slot="footer">
+      <a href="#">Call to action</a>
+    </rh-cta>
+  </rh-card>
 
-<rh-card>
-  <h2 slot="header">Slotted title, content, and footer</h2>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Nullam eleifend elit sed est egestas, a sollicitudin mauris
-    tincidunt. Pellentesque vel dapibus risus. Nullam aliquam
-    felis orci, eget cursus mi lacinia quis. Vivamus at felis sem.</p>
-  <rh-cta variant="primary" slot="footer">
-    <a href="#">Call to action</a>
-  </rh-cta>
-</rh-card>
+  <rh-card>
+    <h2 slot="header">Slotted title, content, and footer</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Nullam eleifend elit sed est egestas, a sollicitudin mauris
+      tincidunt. Pellentesque vel dapibus risus. Nullam aliquam
+      felis orci, eget cursus mi lacinia quis. Vivamus at felis sem.</p>
+    <rh-cta variant="primary" slot="footer">
+      <a href="#">Call to action</a>
+    </rh-cta>
+  </rh-card>
 
-<rh-card color-palette="lighter">
-  <h2 slot="header">Lighter color palette</h2>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Nullam eleifend elit sed est egestas, a sollicitudin mauris
-    tincidunt. Pellentesque vel dapibus risus. Nullam aliquam
-    felis orci, eget cursus mi lacinia quis. Vivamus at felis sem.</p>
-  <rh-cta variant="primary" slot="footer">
-    <a href="#">Call to action</a>
-  </rh-cta>
-</rh-card>
+  <rh-card color-palette="lighter">
+    <h2 slot="header">Lighter color palette</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Nullam eleifend elit sed est egestas, a sollicitudin mauris
+      tincidunt. Pellentesque vel dapibus risus. Nullam aliquam
+      felis orci, eget cursus mi lacinia quis. Vivamus at felis sem.</p>
+    <rh-cta variant="primary" slot="footer">
+      <a href="#">Call to action</a>
+    </rh-cta>
+  </rh-card>
 
-<rh-card color-palette="lighter" class="bar">
-  <h2 slot="header">Lighter color palette and custom header</h2>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Nullam eleifend elit sed est egestas, a sollicitudin mauris
-    tincidunt. Pellentesque vel dapibus risus. Nullam aliquam
-    felis orci, eget cursus mi lacinia quis. Vivamus at felis sem.</p>
-  <rh-cta variant="primary" slot="footer">
-    <a href="#">Call to action</a>
-  </rh-cta>
-</rh-card>
+  <rh-card color-palette="lighter" class="bar">
+    <h2 slot="header">Lighter color palette and custom header</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Nullam eleifend elit sed est egestas, a sollicitudin mauris
+      tincidunt. Pellentesque vel dapibus risus. Nullam aliquam
+      felis orci, eget cursus mi lacinia quis. Vivamus at felis sem.</p>
+    <rh-cta variant="primary" slot="footer">
+      <a href="#">Call to action</a>
+    </rh-cta>
+  </rh-card>
 
-<rh-card class="bar">
-  <h2 slot="header">Custom header</h2>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Nullam eleifend elit sed est egestas, a sollicitudin mauris
-    tincidunt. Pellentesque vel dapibus risus. Nullam aliquam
-    felis orci, eget cursus mi lacinia quis. Vivamus at felis sem.</p>
-  <rh-cta variant="primary" slot="footer">
-    <a href="#">Call to action</a>
-  </rh-cta>
-</rh-card>
+  <rh-card class="bar">
+    <h2 slot="header">Custom header</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Nullam eleifend elit sed est egestas, a sollicitudin mauris
+      tincidunt. Pellentesque vel dapibus risus. Nullam aliquam
+      felis orci, eget cursus mi lacinia quis. Vivamus at felis sem.</p>
+    <rh-cta variant="primary" slot="footer">
+      <a href="#">Call to action</a>
+    </rh-cta>
+  </rh-card>
 
-<rh-card class="center">
-  <h2 slot="header">Center aligned content, footer</h2>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Nullam eleifend elit sed est egestas, a sollicitudin mauris
-    tincidunt. Pellentesque vel dapibus risus. Nullam aliquam
-    felis orci, eget cursus mi lacinia quis. Vivamus at felis sem.</p>
-  <rh-cta variant="primary" slot="footer">
-    <a href="#">Call to action</a>
-  </rh-cta>
-</rh-card>
+  <rh-card class="center">
+    <h2 slot="header">Center aligned content, footer</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Nullam eleifend elit sed est egestas, a sollicitudin mauris
+      tincidunt. Pellentesque vel dapibus risus. Nullam aliquam
+      felis orci, eget cursus mi lacinia quis. Vivamus at felis sem.</p>
+    <rh-cta variant="primary" slot="footer">
+      <a href="#">Call to action</a>
+    </rh-cta>
+  </rh-card>
 
-<rh-card class="end">
-  <h2 slot="header">End aligned content, footer</h2>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Nullam eleifend elit sed est egestas, a sollicitudin mauris
-    tincidunt. Pellentesque vel dapibus risus. Nullam aliquam
-    felis orci, eget cursus mi lacinia quis. Vivamus at felis sem.</p>
-  <rh-cta variant="primary" slot="footer">
-    <a href="#">Call to action</a>
-  </rh-cta>
-</rh-card>
+  <rh-card class="end">
+    <h2 slot="header">End aligned content, footer</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Nullam eleifend elit sed est egestas, a sollicitudin mauris
+      tincidunt. Pellentesque vel dapibus risus. Nullam aliquam
+      felis orci, eget cursus mi lacinia quis. Vivamus at felis sem.</p>
+    <rh-cta variant="primary" slot="footer">
+      <a href="#">Call to action</a>
+    </rh-cta>
+  </rh-card>
 
-<rh-card class="full">
-  <svg slot="header" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 120">
+  <rh-card class="image">
+    <svg slot="header" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 120">
+        <title>A placeholder image in a card header slot</title>
+        <rect x="0" y="0" width="320" height="120" fill="#e0e0e0"></rect>
+        <line x1="0" y1="0" x2="320" y2="120" stroke="#d0d0d0"></line>
+        <line x1="320" y1="0" x2="0" y2="120" stroke="#d0d0d0"></line>
+      </svg>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Nullam eleifend elit sed est egestas, a sollicitudin mauris
+      tincidunt. Pellentesque vel dapibus risus. Nullam aliquam
+      felis orci, eget cursus mi lacinia quis. Vivamus at felis sem.</p>
+    <rh-cta variant="primary" slot="footer">
+      <a href="#">Call to action</a>
+    </rh-cta>
+  </rh-card>
+
+  <rh-card class="image">
+    <svg slot="header" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 120">
+        <title>A placeholder image in a card header slot</title>
+        <rect x="0" y="0" width="320" height="120" fill="#e0e0e0"></rect>
+        <line x1="0" y1="0" x2="320" y2="120" stroke="#d0d0d0"></line>
+        <line x1="320" y1="0" x2="0" y2="120" stroke="#d0d0d0"></line>
+      </svg>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Nullam eleifend elit sed est egestas, a sollicitudin mauris
+      tincidunt. Pellentesque vel dapibus risus. Nullam aliquam
+      felis orci, eget cursus mi lacinia quis. Vivamus at felis sem.</p>
+    <rh-cta variant="primary" slot="footer">
+      <a href="#">Call to action</a>
+    </rh-cta>
+  </rh-card>
+
+  <rh-card class="image heading">
+    <svg slot="header" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 120">
       <title>A placeholder image in a card header slot</title>
       <rect x="0" y="0" width="320" height="120" fill="#e0e0e0"></rect>
       <line x1="0" y1="0" x2="320" y2="120" stroke="#d0d0d0"></line>
       <line x1="320" y1="0" x2="0" y2="120" stroke="#d0d0d0"></line>
-    </svg> 
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Nullam eleifend elit sed est egestas, a sollicitudin mauris
-    tincidunt. Pellentesque vel dapibus risus. Nullam aliquam
-    felis orci, eget cursus mi lacinia quis. Vivamus at felis sem.</p>
-  <rh-cta variant="primary" slot="footer">
-    <a href="#">Call to action</a>
-  </rh-cta>
-</rh-card>
-
-<rh-card class="full">
-  <svg slot="header" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 120">
-      <title>A placeholder image in a card header slot</title>
-      <rect x="0" y="0" width="320" height="120" fill="#e0e0e0"></rect>
-      <line x1="0" y1="0" x2="320" y2="120" stroke="#d0d0d0"></line>
-      <line x1="320" y1="0" x2="0" y2="120" stroke="#d0d0d0"></line>
-    </svg> 
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Nullam eleifend elit sed est egestas, a sollicitudin mauris
-    tincidunt. Pellentesque vel dapibus risus. Nullam aliquam
-    felis orci, eget cursus mi lacinia quis. Vivamus at felis sem.</p>
-  <rh-cta variant="primary" slot="footer">
-    <a href="#">Call to action</a>
-  </rh-cta>
-</rh-card>
-
-<rh-card class="full">
-  <svg slot="header" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 120">
-      <title>A placeholder image in a card header slot</title>
-      <rect x="0" y="0" width="320" height="120" fill="#e0e0e0"></rect>
-      <line x1="0" y1="0" x2="320" y2="120" stroke="#d0d0d0"></line>
-      <line x1="320" y1="0" x2="0" y2="120" stroke="#d0d0d0"></line>
-    </svg> 
-  <h2 slot="header">Card with slotted image header. Full width image.</h2>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Nullam eleifend elit sed est egestas, a sollicitudin mauris
-    tincidunt. Pellentesque vel dapibus risus. Nullam aliquam
-    felis orci, eget cursus mi lacinia quis. Vivamus at felis sem.</p>
-  <rh-cta variant="primary" slot="footer">
-    <a href="#">Call to action</a>
-  </rh-cta>
-</rh-card>
+    </svg>
+    <h2>Card with slotted image header. Full width image.</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Nullam eleifend elit sed est egestas, a sollicitudin mauris
+      tincidunt. Pellentesque vel dapibus risus. Nullam aliquam
+      felis orci, eget cursus mi lacinia quis. Vivamus at felis sem.</p>
+    <rh-cta variant="primary" slot="footer">
+      <a href="#">Call to action</a>
+    </rh-cta>
+  </rh-card>
+</section>
 
 <script type="module">
   import '@rhds/elements/rh-card/rh-card.js';
@@ -154,7 +156,7 @@
 </script>
 
 <style>
-  [data-demo="rh-card"] {
+  #card-variants {
     padding: 0.5em;
     display: grid;
     gap: 1em;
@@ -175,24 +177,26 @@
       font-weight: var(--rh-font-weight-heading-regular, 300);
       font-size: var(--rh-font-size-body-text-md, 1rem);
     }
-    &::part(body) {
-      /* margin: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px); */
-    }
   }
 
-  rh-card.full {
+  rh-card.image {
     &::part(header) {
       margin: 0;
-    }
-
-    & :is(h1, h2, h3, h4, h5, h6)[slot="header"] {
-      padding-inline: var(--rh-space-xl, 24px);
     }
 
     & img {
       display: block;
       min-width: 100%;
       height: auto;
+    }
+
+    &.heading {
+      & h2 {
+        font-weight: var(--rh-font-weight-heading-medium, 500);
+        font-size: var(--rh-font-size-heading-md, 1.75rem);
+        margin-block-start: 0;
+        margin-block-end: var(--rh-space-lg, 16px);
+      }
     }
   }
 
