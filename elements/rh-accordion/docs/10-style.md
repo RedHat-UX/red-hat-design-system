@@ -36,12 +36,21 @@ An accordion is available in both light and dark themes. The light theme expande
           alt="Dark theme accordion with an expanded panel",
           src="../accordion-theme-dark.png" %}
 
-## Configuration 
+## Configuration
+
 An expanded panel does not have a maximum height, but it may scroll if constrained by vertical space. The width of an accordion varies based on content and page layout. Title text and icons are horizontally aligned.
 
 {% example palette="light",
           alt="How an accordion is constructed showing alignment, space, scrolling, and width details",
           src="../accordion-configuration.png" %}
+
+### Accent slot
+
+The accent slot can be positioned inline or below the panel's title. This can contain tags, badges, or other small elements with secondary information.
+
+{% example palette="light",
+          alt="Accordion panel with two tags in inline accent slot and an accordion with two tags below the title",
+          src="../accordion-accent-slot.png" %}
 
 ### Nested panels 
 Panels can be nested to help organize complex or granular sections of content.

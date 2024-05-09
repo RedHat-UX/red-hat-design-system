@@ -59,14 +59,6 @@ The width of an accordion can be adjusted on large breakpoints to fit fewer colu
           alt="A thinner accordion placed on a 12-column grid and occupying eight grid columns",
           src="../accordion-layout.png" %}
 
-### Accent slot
-
-The accent slot can be positioned inline or below the panel's title. This can contain tags, badges, or other small elements with secondary information.
-
-{% example palette="light",
-          alt="Accordion panel with two tags in inline accent slot and an accordion with two tags below the title",
-          src="../accordion-accent-slot.png" %}
-
 ## Behavior
 
 ### Expanding and collapsing panels 
