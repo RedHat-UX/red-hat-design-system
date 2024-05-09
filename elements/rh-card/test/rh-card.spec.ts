@@ -1,76 +1,86 @@
 import { expect, html, fixture } from '@open-wc/testing';
 import { RhCard } from '../rh-card.js';
 
-const defaultTemplate = html`
-  <rh-card>
-    <h3 slot="header">Default</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est</p>
-    <a href="#" slot="footer">Link</a>
-  </rh-card>
-`;
-
-const noSlottedHeaderTemplate = html`
-  <rh-card>
-    <h3>Default</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est</p>
-    <a href="#" slot="footer">Link</a>
-  </rh-card>
-`;
+import { tokens } from '@rhds/tokens/meta.js';
 
 const shouldUpgrade = (element: unknown) => {
   const klass = customElements.get('rh-card');
   expect(element).to.be.an.instanceOf(klass).and.to.be.an.instanceOf(RhCard);
 };
 
-const checkFontSize = (element: HTMLElement, fontSize: string) => {
-  const styles = getComputedStyle(element);
-  expect(styles.getPropertyValue('font-size')).to.equal(fontSize);
-};
+const remToPx = remOrPx => {
+  if (remOrPx.endsWith('px')) {
+    return remOrPx;
+  } else {
+    return parseFloat(remOrPx) * 16 + 'px';
+  }
+}
 
 describe('<rh-card>', function() {
   describe('default element', function() {
     let element: RhCard;
     beforeEach(async function() {
-      element = await fixture<RhCard>(defaultTemplate);
+      element = await fixture<RhCard>(html`
+        <rh-card>
+          <h3 slot="header">Default</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est</p>
+          <a href="#" slot="footer">Link</a>
+        </rh-card>
+      `);
     });
 
     it('should upgrade', async function() {
       shouldUpgrade(element);
     });
 
-    describe('header', function() {
-      it('should default to a font-size of 24px', async function() {
-        checkFontSize(element.querySelector('h3') as HTMLElement, '24px');
+    describe('heading', function() {
+      it('should have font-size --rh-font-size-heading-sm', async function() {
+        expect(getComputedStyle(element.querySelector('h3')!).getPropertyValue('font-size'))
+          .to.equal(remToPx(tokens.get('--rh-font-size-heading-sm').$value))
       });
     });
 
     describe('body', function() {
-      it('should default to a font-size of 16px', async function() {
-        checkFontSize(element.querySelector('p') as HTMLElement, '16px');
+      it('should have font-size --rh-font-size-body-text-md', async function() {
+        expect(getComputedStyle(element.querySelector('p')!).getPropertyValue('font-size'))
+          .to.equal(remToPx(tokens.get('--rh-font-size-body-text-md').$value))
       });
     });
   });
 
   describe('no slotted header element', function() {
-    let noSlottedHeaderElement: RhCard;
+    let element: RhCard;
 
     beforeEach(async function() {
-      noSlottedHeaderElement = await fixture<RhCard>(noSlottedHeaderTemplate);
+      element = await fixture<RhCard>(html`
+        <rh-card>
+          <h3>Default</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est</p>
+          <a href="#" slot="footer">Link</a>
+        </rh-card>
+      `);
     });
 
     it('should upgrade', async function() {
-      shouldUpgrade(noSlottedHeaderElement);
+      shouldUpgrade(element);
     });
 
-    describe('header', function() {
-      it('should default to a font-size of 16', async function() {
-        checkFontSize(noSlottedHeaderElement.querySelector('h3') as HTMLElement, '16px');
+    describe('heading in body', function() {
+      it('should have initial font-size', function() {
+        const expectedEl = document.createElement('h3');
+        expectedEl.textContent = 'a';
+        document.body.append(expectedEl)
+        const expected = getComputedStyle(expectedEl).getPropertyValue('font-size')
+        expectedEl.remove();
+        expect(getComputedStyle(element.querySelector('h3')!).getPropertyValue('font-size'))
+          .to.equal(expected);
       });
     });
 
     describe('body', function() {
-      it('should default to a font-size of 16px', async function() {
-        checkFontSize(noSlottedHeaderElement.querySelector('p') as HTMLElement, '16px');
+      it('should have font-size --rh-font-size-body-text-md', function() {
+        expect(getComputedStyle(element.querySelector('p')!).getPropertyValue('font-size'))
+          .to.equal(remToPx(tokens.get('--rh-font-size-body-text-md').$value))
       });
     });
   });
