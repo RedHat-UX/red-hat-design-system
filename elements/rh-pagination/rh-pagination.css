@@ -38,6 +38,7 @@
   --_numeric-link-hover: var(--rh-color-interactive-blue-lightest, #b9dafc);
   --_numeric-link-visited: var(--rh-color-interactive-purple-lighter, #b6a6e9);
   --_numeric-link-visited-hover: var(--rh-color-interactive-purple-lightest, #ece6ff);
+  --_numeric-link-focus-outline-color: var(--rh-color-interactive-blue-lighter, #92c5f9);
 }
 
 nav {
@@ -146,13 +147,16 @@ input:invalid {
   color: var(--_numeric-link-visited, var(--rh-color-interactive-purple-darker, #5e40be));
 }
 
-#numeric a:focus {
-  text-decoration: underline;
-  outline-color: var(--rh-color-border-interactive-on-light, #0066cc);
-}
-
 #numeric a:visited:hover {
   color: var(--_numeric-link-visited-hover, var(--rh-color-interactive-purple-darkest, #21134d));
+}
+
+#numeric a:focus {
+  border-radius: var(--rh-border-radius-default, 3px);
+  outline-color: var(--_numeric-link-focus-outline-color, var(--rh-color-border-interactive-on-light, #0066cc));
+  outline-style: solid;
+  outline-width: var(--rh-border-width-md, 2px);
+  text-decoration: underline;
 }
 
 @media (min-width: 700px) {
