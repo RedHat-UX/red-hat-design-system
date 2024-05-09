@@ -1,5 +1,11 @@
 # @rhds/elements
 
+## 1.4.1
+
+### Patch Changes
+
+- 862380b: corrected `@patternfly/elements` dependency to be included with the package
+
 ## 1.4.0
 
 ### Minor Changes

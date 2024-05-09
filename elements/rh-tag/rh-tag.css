@@ -75,7 +75,7 @@
 .green {
   --_content-color: var(--rh-color-green-70, #204d00);
   --_background-color: var(--rh-color-green-10, #e9f7df);
-  --_before-border-color: var(--rh-color-green-20, #d1f1bb);
+  --_before-border-color: var(--rh-color-green-30, #afdc8f);
   --_icon-color: var(--rh-color-green-60, #3d7317);
 }
 
