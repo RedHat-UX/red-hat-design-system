@@ -38,6 +38,7 @@
   --_numeric-link-color-hover: var(--rh-color-interactive-blue-lightest, #b9dafc);
   --_numeric-link-color-visited: var(--rh-color-interactive-purple-lighter, #b6a6e9);
   --_numeric-link-color-visited-hover: var(--rh-color-interactive-purple-lightest, #ece6ff);
+  --_numeric-link-focus-color: var(--rh-color-interactive-blue-lighter, #92c5f9);
   --_numeric-link-focus-outline-color: var(--rh-color-interactive-blue-lighter, #92c5f9);
 }
 
@@ -153,6 +154,7 @@ input:invalid {
 
 #numeric a:focus {
   border-radius: var(--rh-border-radius-default, 3px);
+  color: var(--_numeric-link-focus-color, var(--rh-color-interactive-blue-darker, #0066cc));
   outline-color: var(--_numeric-link-focus-outline-color, var(--rh-color-border-interactive-on-light, #0066cc));
   outline-style: solid;
   outline-width: var(--rh-border-width-md, 2px);
