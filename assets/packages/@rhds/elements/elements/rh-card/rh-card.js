@@ -38,23 +38,25 @@ let RhCard = class RhCard extends LitElement {
     render() {
         const { on = '', colorPalette = '' } = this;
         return html `
-     <article part="container" id="container" class="${classMap({ [on]: !!on, [colorPalette]: !!colorPalette })}">
-        <header id="header"
-                part="header"
-                class="${classMap({ empty: !__classPrivateFieldGet(this, _RhCard_slots, "f").hasSlotted('header') })}">
+     <div id="container"
+          part="container"
+          class="${classMap({ [on]: !!on, [colorPalette]: !!colorPalette })}">
+        <div id="header"
+             part="header"
+             class="${classMap({ empty: !__classPrivateFieldGet(this, _RhCard_slots, "f").hasSlotted('header') })}">
           <slot name="header"></slot>
-        </header>
+        </div>
         <div id="body"
              part="body"
              class="${classMap({ empty: !this.querySelector(':not([slot])') })}">
           <slot></slot>
         </div>
-        <footer id="footer"
-                part="footer"
-                class="${classMap({ empty: !__classPrivateFieldGet(this, _RhCard_slots, "f").hasSlotted('footer') })}">
+        <div id="footer"
+             part="footer"
+             class="${classMap({ empty: !__classPrivateFieldGet(this, _RhCard_slots, "f").hasSlotted('footer') })}">
           <slot name="footer"></slot>
-        </footer>
-      </article>
+        </div>
+      </div>
     `;
     }
 };
