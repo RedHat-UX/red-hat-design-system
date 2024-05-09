@@ -19,6 +19,8 @@ rh-pagination li > a {
   text-decoration: none;
   color: var(--_list-anchor-text-color, var(--rh-color-text-primary-on-light, #151515));
   font-weight: var(--rh-font-weight-body-text-medium, 500);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  font-size: var(--rh-font-size-heading-xs, 1.25rem);
   outline: none;
   width: var(--_link-size);
   height: var(--_link-size);
