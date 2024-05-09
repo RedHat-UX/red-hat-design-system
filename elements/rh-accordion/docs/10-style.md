@@ -14,7 +14,8 @@ Accordion panels include title text, a chevron icon, body text, and other conten
 6) Emphasis
 7) Content
 8) Panel body region
-   {.example-notes}
+9) Accent slot
+{.example-notes}
 
 ### Sizes 
 There are two available sizes and the only difference is the title text size. You can use the Small size on large breakpoints, but not the Large size on small breakpoints due to the potential of long title text wrapping to more than two lines.
