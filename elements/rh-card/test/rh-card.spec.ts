@@ -12,9 +12,9 @@ const remToPx = remOrPx => {
   if (remOrPx.endsWith('px')) {
     return remOrPx;
   } else {
-    return parseFloat(remOrPx) * 16 + 'px';
+    return `${parseFloat(remOrPx) * 16}px`;
   }
-}
+};
 
 describe('<rh-card>', function() {
   describe('default element', function() {
@@ -36,14 +36,14 @@ describe('<rh-card>', function() {
     describe('heading', function() {
       it('should have font-size --rh-font-size-heading-sm', async function() {
         expect(getComputedStyle(element.querySelector('h3')!).getPropertyValue('font-size'))
-          .to.equal(remToPx(tokens.get('--rh-font-size-heading-sm').$value))
+            .to.equal(remToPx(tokens.get('--rh-font-size-heading-sm').$value));
       });
     });
 
     describe('body', function() {
       it('should have font-size --rh-font-size-body-text-md', async function() {
         expect(getComputedStyle(element.querySelector('p')!).getPropertyValue('font-size'))
-          .to.equal(remToPx(tokens.get('--rh-font-size-body-text-md').$value))
+            .to.equal(remToPx(tokens.get('--rh-font-size-body-text-md').$value));
       });
     });
   });
@@ -69,18 +69,18 @@ describe('<rh-card>', function() {
       it('should have initial font-size', function() {
         const expectedEl = document.createElement('h3');
         expectedEl.textContent = 'a';
-        document.body.append(expectedEl)
-        const expected = getComputedStyle(expectedEl).getPropertyValue('font-size')
+        document.body.append(expectedEl);
+        const expected = getComputedStyle(expectedEl).getPropertyValue('font-size');
         expectedEl.remove();
         expect(getComputedStyle(element.querySelector('h3')!).getPropertyValue('font-size'))
-          .to.equal(expected);
+            .to.equal(expected);
       });
     });
 
     describe('body', function() {
       it('should have font-size --rh-font-size-body-text-md', function() {
         expect(getComputedStyle(element.querySelector('p')!).getPropertyValue('font-size'))
-          .to.equal(remToPx(tokens.get('--rh-font-size-body-text-md').$value))
+            .to.equal(remToPx(tokens.get('--rh-font-size-body-text-md').$value));
       });
     });
   });
