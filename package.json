@@ -116,10 +116,17 @@
         "docs"
       ]
     },
+    "build:test": {
+      "dependencies": [
+        "patch",
+        "analyze",
+        "compile"
+      ]
+    },
     "test": {
       "command": "wtr --group default",
       "dependencies": [
-        "build"
+        "build:test"
       ]
     },
     "compile": {
