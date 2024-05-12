@@ -40,6 +40,7 @@
     "!elements/*/docs/**/*.{js,html,css,md}",
     "!elements/*/demo/**/*.{js,html,css,md}",
     "!elements/*/test/*.{spec,e2e}.{ts,d.ts}",
+    "react/**/*",
     "lib/**/*.{js,md,map,css,svg,md,html,txt,d.ts}",
     "custom-elements.json",
     "rhds.min*"
@@ -158,7 +159,14 @@
       ]
     },
     "bundle": {
-      "command": "node scripts/bundle.js"
+      "command": "node scripts/bundle.js",
+      "files": [
+        "elements/**/*.{ts,js,map}",
+        "elements/**/*.css"
+      ],
+      "output": [
+        "rhds.min.js"
+      ]
     },
     "analyze": {
       "command": "cem analyze && node scripts/cem-tokens.js && node scripts/system-tokens.js",
