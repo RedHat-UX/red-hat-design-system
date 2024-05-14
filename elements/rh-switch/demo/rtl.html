@@ -117,11 +117,6 @@
     color: var(--rh-color-text-primary-on-light, #151515);
   }
 
-  fieldset div {
-    display: flex;
-    gap: 1rem;
-  }
-
   rh-switch:is(:disabled) ~ label {
     color: var(--rh-color-text-secondary-on-light, #4d4d4d);
   }
@@ -138,6 +133,11 @@
     display: grid;
     gap: 1rem;
     grid-template-columns: 1fr;
+  }
+
+  fieldset div {
+    display: flex;
+    gap: 1rem;
   }
 
 </style>
