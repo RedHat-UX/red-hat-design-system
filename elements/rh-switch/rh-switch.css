@@ -112,3 +112,11 @@ svg {
 :host(:is(:focus, :focus-within)) .dark {
   outline-color: var(--rh-color-border-interactive-on-dark, #92c5f9);
 }
+
+:host([checked]:not(:disabled)) .dark {
+  --_switch-track-background-color:
+    var(
+        --_switch-checked,
+        var(--rh-color-accent-base-on-dark, #92c5f9)
+      );
+}
