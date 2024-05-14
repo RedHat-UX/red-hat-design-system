@@ -5,7 +5,10 @@ article {
   flex-direction: column;
 }
 
-.empty {
+.empty,
+#header.empty,
+#body.empty,
+#footer.empty {
   display: none;
 }
 
