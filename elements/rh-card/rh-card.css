@@ -75,6 +75,10 @@ article {
   margin-block: var(--rh-space-2xl, 32px) var(--rh-space-xl, 24px);
 }
 
+#body:has(+ .empty) {
+  margin-block-end: var(--rh-space-2xl, 32px);
+}
+
 #footer {
   display: flex;
   gap: 0.5em;
