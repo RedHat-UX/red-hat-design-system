@@ -40,7 +40,7 @@
   outline:
     var(--rh-border-width-md, 2px)
     solid
-    var(--rh-color-border-interactive-on-light, #0066cc);
+    var(--_switch-focus-outline-color, var(--rh-color-border-interactive-on-light, #0066cc));
   outline-offset: var(--rh-space-sm, 6px);
 }
 
@@ -110,7 +110,7 @@ svg {
 }
 
 :host(:is(:focus, :focus-within)) .dark {
-  outline-color: var(--rh-color-border-interactive-on-dark, #92c5f9);
+  --_switch-focus-outline-color: var(--rh-color-border-interactive-on-dark, #92c5f9);
 }
 
 :host([checked]:not(:disabled)) .dark {
