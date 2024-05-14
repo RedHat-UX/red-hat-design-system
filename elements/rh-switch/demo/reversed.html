@@ -1,27 +1,23 @@
 <section>
   <form>
     <fieldset>
-      <legend>Reversed Label</legend>
-      <div>
-        <rh-switch id="switch-a" aria-describedby="messages-a" checked>
+      <legend>Reversed Message</legend>
+        <rh-switch id="switch-a" aria-describedby="messages-a" accessible-label="Switch A" checked reversed>
           <div id="messages-a">
             <span data-state="on">Message when on</span>
             <span data-state="off" hidden>Message when off</span>
           </div>
         </rh-switch>
-        <label for="switch-a">Mode A</label>
-      </div>
-      <div>
-        <label>
-          <rh-switch id="switch-b" aria-describedby="messages-b" checked>
+        <div>
+          <label for="switch-b">Switch B</label>
+          <rh-switch id="switch-b" aria-describedby="messages-b" checked reversed>
             <div id="messages-b">
               <span data-state="on">Message when on</span>
               <span data-state="off" hidden>Message when off</span>
             </div>
           </rh-switch>
-          Mode B
-        </label>
-      </div>
+        </div>
+
     </fieldset>
   </form>
 </section>

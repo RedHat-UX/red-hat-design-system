@@ -1,0 +1,143 @@
+<form dir="rtl">
+  <fieldset>
+    <legend>Right To Left - No Label</legend>
+    <div>
+      <rh-switch accessible-label="RTL Switch No Messages"></rh-switch>
+    </div>
+    <div>
+      <rh-switch accessible-label="RTL Switch No Messages, Checked" checked></rh-switch>
+    </div>
+    <div>
+      <rh-switch id="switch-a" aria-describedby="messages-a" accessible-label="RTL Switch with Messages, Checked" checked>
+        <div id="messages-a">
+          <span data-state="on">Message when on</span>
+          <span data-state="off" hidden>Message when off</span>
+        </div>
+      </rh-switch>
+    </div>
+    <div>
+      <rh-switch id="switch-b" aria-describedby="messages-b" accessible-label="RTL Switch with Messages, Show Checked Icon" show-check-icon>
+        <div id="messages-b">
+          <span data-state="on">Message when on</span>
+          <span data-state="off" hidden>Message when off</span>
+        </div>
+      </rh-switch>
+    </div>
+
+    <div>
+      <rh-switch id="switch-c" aria-describedby="messages-c" accessible-label="RTL with Reversed Messages, Show Checked Icon" show-check-icon reversed>
+        <div id="messages-c">
+          <span data-state="on">Reversed Message when on</span>
+          <span data-state="off" hidden>Reversed Message when off</span>
+        </div>
+      </rh-switch>
+    </div>
+  </fieldset>
+
+  <fieldset disabled>
+    <legend>Right to Left - Disabled</legend>
+    <div>
+      <rh-switch id="switch-w" accessible-label="Disabled RTL Switch No Label"></rh-switch>
+    </div>
+    <div>
+      <rh-switch id="switch-x" accessible-label="Disabled RTL Switch No Label, Checked" checked></rh-switch>
+    </div>
+    <div>
+      <rh-switch id="switch-y" accessible-label="Disabled RTL Switch No Label, Checked, Show Checked Icon" checked show-check-icon></rh-switch>
+    </div>
+    <div>
+      <label for="switch-z">Disabled RTL Switch with Label and Messages</label>
+      <rh-switch id="switch-z" aria-describedby="messages-z">
+        <div id="messages-z">
+          <span data-state="on">Disabled Message when on</span>
+          <span data-state="off" hidden>Disabled Message when off</span>
+        </div>
+      </rh-switch>
+    </div>
+    <div>
+      <label for="switch-z">Disabled RTL Switch with Label and with Messages, Show Checked Icon</label>
+      <rh-switch id="switch-1" aria-describedby="messages-1" checked show-check-icon>
+        <div id="messages-1">
+          <span data-state="on">Disabled Message when on</span>
+          <span data-state="off" hidden>Disabled Message when off</span>
+        </div>
+      </rh-switch>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Right to Left - With Sibling Label</legend>
+    <div>
+      <label for="switch-e">RTL Switch</label>
+      <rh-switch id="switch-e" aria-describedby="messages-e" checked>
+        <div id="messages-e">
+          <span data-state="on">Message when on</span>
+          <span data-state="off" hidden>Message when off</span>
+        </div>
+      </rh-switch>
+    </div>
+    <div>
+      <label for="switch-f">RTL Switch</label>
+      <rh-switch id="switch-f" aria-describedby="messages-f">
+        <div id="messages-f">
+          <span data-state="on">Message when on</span>
+          <span data-state="off" hidden>Message when off</span>
+        </div>
+      </rh-switch>
+    </div>
+    <div>
+      <label for="switch-g">RTL Switch, Show Checked Icon</label>
+      <rh-switch id="switch-g" aria-describedby="messages-g" checked show-check-icon>
+        <div id="messages-g">
+          <span data-state="on">Message when on</span>
+          <span data-state="off" hidden>Message when off</span>
+        </div>
+      </rh-switch>
+    </div>
+    <div>
+      <rh-switch id="switch-h" aria-describedby="messages-h" checked show-check-icon reversed>
+        <div id="messages-h">
+          <span data-state="on">Reversed Message when on</span>
+          <span data-state="off" hidden>Reversed Message when off</span>
+        </div>
+      </rh-switch>
+      <label for="switch-h">Switch with Reversed Messages, Show Checked Icon</label>
+    </div>
+  </fieldset>
+
+</form>
+
+<script type="module">
+  import '@rhds/elements/rh-switch/rh-switch.js';
+</script>
+
+<style>
+
+  label {
+    color: var(--rh-color-text-primary-on-light, #151515);
+  }
+
+  fieldset div {
+    display: flex;
+    gap: 1rem;
+  }
+
+  rh-switch:is(:disabled) ~ label {
+    color: var(--rh-color-text-secondary-on-light, #4d4d4d);
+  }
+
+  [color-palette^="dark"] label {
+   color:  var(--rh-color-text-primary-on-dark, #ffffff)
+  }
+
+  [color-palette^="dark"] rh-switch:is(:disabled) ~ label {
+    color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
+  }
+
+  fieldset {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+  }
+
+</style>

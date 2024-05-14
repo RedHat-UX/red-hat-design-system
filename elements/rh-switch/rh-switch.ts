@@ -8,10 +8,12 @@ import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller
 
 import { observed } from '@patternfly/pfe-core/decorators/observed.js';
 
+import { DirController } from '../../lib/DirController.js';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
 
 import styles from './rh-switch.css';
+
 /**
  * A switch toggles the state of a setting (between on and off). Switches and checkboxes can often be used interchangeably, but the switch provides a more explicit, visible representation on a setting.
  *
@@ -27,12 +29,6 @@ export class RhSwitch extends LitElement {
 
   static readonly formAssociated = true;
 
-  declare shadowRoot: ShadowRoot;
-
-  #internals = InternalsController.of(this, { role: 'switch' });
-
-  #slots = new SlotController(this);
-
   @property({ reflect: true }) label?: string;
 
   @property({ reflect: true, type: Boolean, attribute: 'show-check-icon' }) showCheckIcon = false;
@@ -44,10 +40,18 @@ export class RhSwitch extends LitElement {
 
   @property({ reflect: true, attribute: 'accessible-label' }) accessibleLabel?: string;
 
+  @property({ reflect: true, type: Boolean }) reversed = false;
+
   /**
    * Sets color theme based on parent context
    */
   @colorContextConsumer() private on?: ColorTheme;
+
+  #internals = InternalsController.of(this, { role: 'switch' });
+
+  #slots = new SlotController(this);
+
+  #dir = new DirController(this);
 
   get labels(): NodeListOf<HTMLLabelElement> {
     return this.#internals.labels as NodeListOf<HTMLLabelElement>;
@@ -74,20 +78,40 @@ export class RhSwitch extends LitElement {
   }
 
   render() {
+    const rtl = this.#dir.dir === 'rtl';
     const { on = '' } = this;
     return html`
-      <div id="container" class="${classMap({ [on]: !!on })}">
-        <svg id="toggle"
-             role="presentation"
-             fill="currentColor"
-             height="1em"
-             width="1em"
-             viewBox="0 0 512 512"
-             ?hidden=${!this.showCheckIcon}>
-          <path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z" />
-        </svg>
+    <div id="container" part="container" class="${classMap({ [on]: !!on, rtl })}">
+      ${this.reversed ? html`
+        <slot></slot>
+        ${this.#switchTemplate()}
+      ` : html`
+        ${this.#switchTemplate()}
+        <slot></slot>
+      `}
+    </div>
+    `;
+  }
+
+  #switchTemplate() {
+    return html`
+      <div id="switch" part="switch">
+        ${this.showCheckIcon ? html`
+          <svg id="toggle"
+              role="presentation"
+              fill="currentColor"
+              height="1em"
+              width="1em"
+              viewBox="0 0 512 512">
+            <path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z" />
+          </svg>
+        ` : ``}
+        <div id="track">
+          <div id="handle-container">
+            <div id="handle"></div>
+          </div>
+        </div>
       </div>
-      <slot></slot>
     `;
   }
 

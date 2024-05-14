@@ -1,41 +1,42 @@
 :host {
-  outline: none;
   display: inline-flex;
+  outline: none;
+  vertical-align: top;
+  cursor: pointer;
+
+  --_switch-width: 40px;
+  --_switch-height: 24px;
+  --_switch-handle-size: 14px;
+}
+
+#container {
+  display: inline-flex;
+  align-items: center;
   gap: var(--rh-space-lg, 16px);
+}
+
+:host(:disabled) {
+  pointer-events: none;
+  cursor: not-allowed;
+
+  --_switch-track-background-color: var(--rh-color-gray-30, #c7c7c7);
 }
 
 [hidden] {
   display: none !important;
 }
 
-:host(:disabled:is(:focus,:focus-within)) {
-  outline: none;
-}
-
-#container {
-  position: relative;
-  display: inline-flex;
+#switch {
   align-items: center;
-  width: 40px;
-  height: 24px;
-  background-color: var(--_switch-unchecked, var(--rh-color-gray-60, #4d4d4d));
+  display: inline-flex;
+  flex-shrink: 0;
+  position: relative;
+  width: var(--_switch-width);
+  height: var(--_switch-height);
   border-radius: var(--rh-border-radius-pill, 64px);
 }
 
-#container:before {
-  display: block;
-  position: absolute;
-  content: "";
-  top: 5px;
-  left: 5px;
-  width: 14px;
-  height: 14px;
-  background-color: var(--rh-color-surface-lightest, #ffffff);
-  border-radius: var(--rh-border-radius-pill, 64px);
-  transition: translate 0.25s ease 0s;
-}
-
-:host(:is(:focus, :focus-within)) #container {
+:host(:is(:focus, :focus-within)) #switch {
   outline:
     var(--rh-border-width-md, 2px)
     solid
@@ -43,55 +44,71 @@
   outline-offset: var(--rh-space-sm, 6px);
 }
 
-:host([checked]) #container {
-  background-color: var(--_switch-checked, var(--rh-color-accent-base-on-light, #0066cc));
+#track {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--_switch-track-background-color, var(--rh-color-gray-60, #4d4d4d));
 }
 
-:host([checked]) #container:before {
-  translate: calc(100% + calc(var(--rh-space-xs, 4px) / 2));
+#handle-container {
+  display: flex;
+  place-content: center;
+  place-items: center;
+  position: relative;
+  transition: margin 0.25s ease 0s;
+  margin-inline-end: calc(var(--_switch-width) - var(--_switch-height));
 }
 
-:host(:disabled) #container {
-  pointer-events: none;
-  cursor: not-allowed;
+#handle {
+  height: var(--_switch-handle-size);
+  width: var(--_switch-handle-size);
+  border-radius: var(--rh-border-radius-pill, 64px);
+  transform-origin: center;
+  transition-property: height, width;
+  z-index: 0;
+  background-color: var(--_switch-handle-color, var(--rh-color-surface-lightest, #ffffff));
+}
 
-  /* TODO: replace with semantic disabled token */
-  background-color: var(--rh-switch-disabled, var(--rh-color-gray-30, #c7c7c7));
+:host([checked]:not(:disabled)) {
+  --_switch-track-background-color:
+    var(
+        --_switch-checked,
+        var(--rh-color-accent-base-on-light, #0066cc)
+      );
+}
+
+:host([checked]) #handle-container {
+  margin-inline-start: calc(var(--_switch-width) - var(--_switch-height));
+  margin-inline-end: 0;
 }
 
 svg {
   fill: currentcolor;
   margin-inline: var(--rh-space-sm, 6px);
   font-size: var(--rh-font-size-body-text-xs, 0.75rem);
-  color: var(--rh-color-icon-secondary-on-dark, #ffffff);
+  color: var(--_switch-handle-color, var(--rh-color-icon-secondary-on-dark, #ffffff));
+  position: relative;
+  z-index: 1;
 }
 
 .dark {
-  background-color: var(--_switch-unchecked, #707070); /* no disabled token yet */
+  --_switch-track-background-color: var(--rh-color-gray-40, #a3a3a3); /* no disabled token yet */
+  --_switch-handle-color: var(--rh-color-surface-dark-alt, #292929);
 }
 
-#container.dark {
-  background-color: var(--_switch-unchecked, var(--rh-color-gray-40, #a3a3a3));
-}
-
-:host(:is(:focus, :focus-within)) #container.dark {
-  outline-color: var(--rh-color-border-interactive-on-dark, #92c5f9);
-}
-
-:host([checked]) #container.dark {
-  background-color: var(--_switch-checked, var(--rh-color-accent-base-on-dark, #92c5f9));
-}
-
-:host(:disabled) #container.dark {
-  /* TODO: replace with semantic disabled token */
-  background-color: var(--rh-switch-disabled, var(--rh-color-gray-60, #4d4d4d));
-}
-
-#container.dark:before {
-  background-color: #292929; /* --rh-color-surface-status-default-on-dark */
+.dark #handle {
   box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
 }
 
-#container.dark svg {
-  color: var(--rh-color-surface-dark-alt, #292929);
+:host(:disabled) .dark {
+  --_switch-track-background-color: var(--rh-color-gray-60, #4d4d4d);
+}
+
+:host(:is(:focus, :focus-within)) .dark {
+  outline-color: var(--rh-color-border-interactive-on-dark, #92c5f9);
 }
