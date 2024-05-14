@@ -4,7 +4,7 @@
       <legend>Checked with sibling label</legend>
       <div>
         <label for="switch-a">Switch A</label>
-        <rh-switch id="switch-a" checked>
+        <rh-switch id="switch-a" aria-describedby="messages-a" checked>
           <div id="messages-a">
             <span data-state="on">Message when on</span>
             <span data-state="off" hidden>Message when off</span>
@@ -25,8 +25,8 @@
     <fieldset>
       <legend>Checked without sibling label</legend>
       <div>
-        <rh-switch id="switch-c" accessible-label="Switch C" checked>
-          <div id="messages-a">
+        <rh-switch id="switch-c" accessible-label="Switch C" aria-describedby="messages-c" checked>
+          <div id="messages-c">
             <span data-state="on">Message when on</span>
             <span data-state="off" hidden>Message when off</span>
           </div>
