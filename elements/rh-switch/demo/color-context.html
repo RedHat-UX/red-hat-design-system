@@ -1,20 +1,46 @@
 <rh-context-demo>
   <form>
     <fieldset>
-      <legend>Checked with label</legend>
-      <rh-switch id="switch-a" aria-describedby="messages-a" accessible-label="Switch A" checked>
-        <div id="messages-a">
-          <span data-state="on">Message when on</span>
-          <span data-state="off" hidden>Message when off</span>
-        </div>
-      </rh-switch>
-      <label for="switch-b">Switch B</label>
-      <rh-switch id="switch-b" aria-describedby="messages-b" checked>
-        <div id="messages-b">
-          <span data-state="on">Message when on</span>
-          <span data-state="off" hidden>Message when off</span>
-        </div>
-      </rh-switch>
+      <legend>Checked with sibling label</legend>
+      <div>
+        <label for="switch-a">Switch A</label>
+        <rh-switch id="switch-a" checked>
+          <div id="messages-a">
+            <span data-state="on">Message when on</span>
+            <span data-state="off" hidden>Message when off</span>
+          </div>
+        </rh-switch>
+      </div>
+      <div>
+        <label for="switch-b">Switch B</label>
+        <rh-switch id="switch-b" aria-describedby="messages-b" checked show-check-icon>
+          <div id="messages-b">
+            <span data-state="on">Message when on</span>
+            <span data-state="off" hidden>Message when off</span>
+          </div>
+        </rh-switch>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Checked without sibling label</legend>
+      <div>
+        <rh-switch id="switch-c" accessible-label="Switch C" checked>
+          <div id="messages-a">
+            <span data-state="on">Message when on</span>
+            <span data-state="off" hidden>Message when off</span>
+          </div>
+        </rh-switch>
+      </div>
+      <div>
+        <label for="switch-d">Switch D</label>
+        <rh-switch id="switch-d" aria-describedby="messages-d" checked show-check-icon>
+          <div id="messages-d">
+            <span data-state="on">Message when on</span>
+            <span data-state="off" hidden>Message when off</span>
+          </div>
+        </rh-switch>
+      </div>
     </fieldset>
   </form>
 </rh-context-demo>
