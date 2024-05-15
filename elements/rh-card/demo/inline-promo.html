@@ -1,0 +1,243 @@
+<rh-card class="inline-promo">
+  <div class="container">
+    <div class="grid">
+      <div class="content">
+        <h2>Left aligned with image</h2>
+        <p>You can customize the <code>#body</code> by using the <code>::part</code> selector. Using this technique, you can have padding on the top, bottom, left, right, or none at all.</p>
+        <rh-cta slot="footer">
+          <a href="#">Call to action</a>
+        </rh-cta>
+      </div>
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 120">
+          <title>A placeholder image in a card header slot</title>
+          <rect x="0" y="0" width="320" height="120" fill="#e0e0e0"/>
+          <line x1="0" y1="0" x2="320" y2="120" stroke="#d0d0d0"/>
+          <line x1="320" y1="0" x2="0" y2="120" stroke="#d0d0d0"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</rh-card>
+
+<rh-card class="inline-promo right-aligned-with-image">
+  <div class="container">
+    <div class="grid">
+      <div class="content">
+        <h2>Right aligned with image</h2>
+        <p>This variant uses the same markup in the same order with one additional class: <code>.right-aligned-with-image</code>. Using CSS, we then change the order on larger viewports.</p>
+        <rh-cta slot="footer">
+          <a href="#">Call to action</a>
+        </rh-cta>
+      </div>
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 120">
+          <title>A placeholder image in a card header slot</title>
+          <rect x="0" y="0" width="320" height="120" fill="#e0e0e0"/>
+          <line x1="0" y1="0" x2="320" y2="120" stroke="#d0d0d0"/>
+          <line x1="320" y1="0" x2="0" y2="120" stroke="#d0d0d0"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</rh-card>
+
+<rh-card class="inline-promo no-image">
+  <div class="container">
+    <div class="grid">
+      <div class="content">
+        <h2>No image is okay too</h2>
+        <p>Sometimes, you may not have an image to go with your card. This variant shows how that might look.</p>
+        <rh-cta slot="footer">
+          <a href="#">Call to action</a>
+        </rh-cta>
+      </div>
+    </div>
+  </div>
+</rh-card>
+
+<div class="bg-off-white">
+  <rh-card class="inline-promo full-bleed">
+    <div class="container">
+      <div class="grid">
+        <div class="content">
+          <h2>Full Bleed</h2>
+          <p>This version doesn't have a border or padding on the sides and will expand to the width of the container you put it in. These customizations are done via the <code>::part()</code> selector.</p>
+          <rh-cta slot="footer">
+            <a href="#">Call to action</a>
+          </rh-cta>
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 120">
+            <title>A placeholder image in a card header slot</title>
+            <rect x="0" y="0" width="320" height="120" fill="#e0e0e0"/>
+            <line x1="0" y1="0" x2="320" y2="120" stroke="#d0d0d0"/>
+            <line x1="320" y1="0" x2="0" y2="120" stroke="#d0d0d0"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </rh-card>
+</div>
+
+
+<rh-card class="inline-promo standard">
+  <div class="container">
+    <div class="grid">
+      <div class="content">
+        <p>This is the standard inline promo. It has a paragraph and a call to action.</p>
+      </div>
+      <div class="cta">
+        <rh-cta slot="footer">
+          <a href="#">Call to action</a>
+        </rh-cta>
+      </div>
+    </div>
+  </div>
+</rh-card>
+
+<rh-card color-palette="darker" class="inline-promo standard">
+  <div class="container">
+    <div class="grid">
+      <div class="content">
+        <p>This is the standard inline promo with a dark theme, styled via <code>::part()</code>.</p>
+      </div>
+      <div class="cta">
+        <rh-cta slot="footer">
+          <a href="#">Call to action</a>
+        </rh-cta>
+      </div>
+    </div>
+  </div>
+</rh-card>
+
+<script type="module">
+  import '@rhds/elements/rh-cta/rh-cta.js';
+  import '@rhds/elements/rh-card/rh-card.js';
+</script>
+
+<style>
+  /*****************************************************************************
+   * SHARED
+   *****************************************************************************/
+  rh-card {
+    container: inline-promo / inline-size;
+    display: block;
+    margin-block-end: var(--rh-space-2xl, 32px);
+  }
+
+  rh-card img {
+    max-width: 100%;
+    display: block;
+  }
+
+  rh-card .content {
+    margin-block-end: var(--rh-space-xl, 24px);
+    order: 10;
+  }
+
+  rh-card .content h2 {
+    margin-block-start: 0;
+  }
+
+  @container inline-promo (min-width: 768px) {
+    rh-card .grid {
+      align-items: center;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    rh-card .content {
+      max-width: 75ch;
+      padding-inline: var(--rh-space-2xl, 32px);
+    }
+
+    rh-card .content h2 {
+      font-size: var(--rh-font-size-body-text-2xl, 1.5rem);
+    }
+
+    rh-card .content p {
+      font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+    }
+  }
+
+  /*****************************************************************************
+   * RIGHT ALIGNED WITH IMAGE
+   *****************************************************************************/
+  @container inline-promo (min-width: 768px) {
+    rh-card.right-aligned-with-image .content {
+      order: 0;
+    }
+  }
+
+  /*****************************************************************************
+   * NO IMAGE
+   *****************************************************************************/
+  rh-card.no-image .content {
+    order: 0;
+  }
+
+  /*****************************************************************************
+   * FULL BLEED
+   *****************************************************************************/
+  rh-card.full-bleed {
+    margin-block-end: 0;
+  }
+
+  rh-card.full-bleed::part(container) {
+    border: 0;
+  }
+
+  rh-card.full-bleed::part(body) {
+    margin: 0;
+    padding-block: var(--rh-space-3xl, 48px);
+    padding-inline: var(--rh-space-lg, 16px);
+  }
+
+  @container inline-promo (min-width: 768px) {
+    rh-card.full-bleed::part(body) {
+      margin: 0;
+      padding-block: var(--rh-space-4xl, 64px);
+      padding-inline: 0;
+    }
+  }
+
+  /*****************************************************************************
+   * STANDARD
+   *****************************************************************************/
+  rh-card.standard .content {
+    margin-block-end: 0;
+  }
+
+  rh-card.standard::part(container) {
+    background-color: var(--rh-color-surface-lighter, #f2f2f2);
+  }
+
+  rh-card.standard[color-palette="darker"]::part(container) {
+    background-color: var(--rh-color-surface-darker, #1f1f1f);
+  }
+
+  @container inline-promo (min-width: 768px) {
+    rh-card.standard .grid {
+      grid-template-columns: 3fr 1fr;
+    }
+
+    rh-card.standard .content {
+      order: 0;
+    }
+
+    rh-card.standard .cta {
+      margin-inline-start: auto;
+      margin-inline-end: var(--rh-space-2xl, 32px);
+    }
+  }
+
+  /*****************************************************************************
+   * FOR DEMO ONLY
+   *****************************************************************************/
+  .bg-off-white {
+    background-color: #f2f2f2;
+    padding: var(--rh-space-xl, 24px);
+    margin-block-end: var(--rh-space-xl, 24px);
+  }
+</style>
