@@ -117,6 +117,10 @@ svg {
   --_switch-track-background-color: var(--rh-color-gray-70, #383838);
 }
 
+:host(:disabled) .color-palette-dark {
+  --_switch-track-background-color: var(--rh-color-gray-60, #4d4d4d);
+}
+
 :host(:not([checked])) .dark ::slotted(*) {
   color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
 }

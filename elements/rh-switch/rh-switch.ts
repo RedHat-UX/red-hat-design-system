@@ -53,6 +53,8 @@ export class RhSwitch extends LitElement {
 
   #dir = new DirController(this);
 
+  #internalColorPalette?: string | null;
+
   get labels(): NodeListOf<HTMLLabelElement> {
     return this.#internals.labels as NodeListOf<HTMLLabelElement>;
   }
@@ -72,6 +74,14 @@ export class RhSwitch extends LitElement {
   }
 
   willUpdate() {
+    /*
+     * TEMPORARY: this fixes the need to access the parents color-palette in order to get the `lightest`
+     * value.  This fix will only update the component when switching between light and dark themes as
+     * thats when the consumer requests an update.  Switching between lighter -> light for example will
+     * not trigger the component to update at this time.
+     */
+    this.#internalColorPalette = this.closest('[color-palette]')?.getAttribute('color-palette');
+
     this.#internals.ariaChecked = String(!!this.checked);
     this.#internals.ariaDisabled = String(!!this.disabled);
     this.#internals.ariaLabel = this.accessibleLabel ?? '';
@@ -81,7 +91,7 @@ export class RhSwitch extends LitElement {
     const rtl = this.#dir.dir === 'rtl';
     const { on = '' } = this;
     return html`
-    <div id="container" part="container" class="${classMap({ [on]: !!on, rtl })}">
+    <div id="container" part="container" class="${classMap({ [on]: !!on, rtl, [`color-palette-${this.#internalColorPalette}`]: !!this.#internalColorPalette })}">
       ${this.reversed ? html`
         <slot></slot>
         ${this.#switchTemplate()}
