@@ -96,6 +96,14 @@ svg {
   z-index: 1;
 }
 
+:host(:not([checked])) ::slotted(*) {
+  color: var(--rh-color-text-secondary-on-light, #4d4d4d);
+}
+
+:host(:disabled) ::slotted(*) {
+  color: var(--rh-color-gray-50, #707070);
+}
+
 .dark {
   --_switch-track-background-color: var(--rh-color-gray-40, #a3a3a3); /* no disabled token yet */
   --_switch-handle-color: var(--rh-color-surface-dark-alt, #292929);
@@ -106,7 +114,11 @@ svg {
 }
 
 :host(:disabled) .dark {
-  --_switch-track-background-color: var(--rh-color-gray-60, #4d4d4d);
+  --_switch-track-background-color: var(--rh-color-gray-70, #383838);
+}
+
+:host(:not([checked])) .dark ::slotted(*) {
+  color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
 }
 
 :host(:is(:focus, :focus-within)) .dark {
