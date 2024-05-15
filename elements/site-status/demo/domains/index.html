@@ -2,7 +2,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
-    <title>Status Maintenance | Red Hat Design System</title>
+    <title>Domains | Red Hat Design System</title>
     <link rel="preconnect" href="https://ga.jspm.io">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="/assets/redhat/redhat-theme/4/advanced-theme.css">
@@ -22,21 +22,39 @@
   </head>
   <body unresolved="">
     <main>
-      <div data-demo="rh-site-status"><script type="module">
-  import { overrideFetch } from '../fetch-override.js';
-  overrideFetch(
-    true,
-    200,
-    'Maintenance',
-    () => Promise.resolve({ status: { indicator: 'maintenance', description: 'Status Maintenance' } })
-  );
-</script>
-
-<rh-site-status></rh-site-status>
+      <div data-demo="rh-site-status"><form id="demo-form">
+  <rh-site-status id="status"></rh-site-status>
+  <label for="domain"></label>
+  <pf-select id="domain">
+    <pf-option>redhat.com</pf-option>
+    <pf-option>access.redhat.com</pf-option>
+    <pf-option>bugzilla.redhat.com</pf-option>
+    <pf-option>cloud.redhat.com</pf-option>
+    <pf-option>connect.redhat.com</pf-option>
+    <pf-option>console.redhat.com</pf-option>
+    <pf-option>developers.redhat.com</pf-option>
+    <pf-option>docs.redhat.com</pf-option>
+    <pf-option>intelligence.redhat.com</pf-option>
+  </pf-select>
+</form>
 
 <script type="module">
   import '@rhds/elements/rh-site-status/rh-site-status.js';
+  import '@patternfly/elements/pf-select/pf-select.js';
+  document.getElementById('domain').addEventListener('change', function(event) {
+    document.getElementById('status').__TESTING_ONLY_DONT_USE_OR_WELL_TELL_YOUR_BOSS__domain__ = event.target.value;
+  })
 </script>
+
+<style>
+#demo-form {
+  display: flex;
+  gap: var(--rh-space-md, 8px);
+  & #domain {
+    flex: 1;
+  }
+}
+</style>
 </div>
     </main>
 

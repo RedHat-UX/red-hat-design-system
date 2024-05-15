@@ -1,17 +1,9 @@
-{% renderOverview %}
-  <rh-site-status></rh-site-status>
-{% endrenderOverview %}
+{% renderInstall %}{% endrenderInstall %}
 
-{% band header="Usage" %}{% endband %}
+## Usage
 
-{% renderSlots %}{% endrenderSlots %}
+```html
+<rh-site-status></rh-site-status>
+```
 
-{% renderAttributes %}{% endrenderAttributes %}
-
-{% renderMethods %}{% endrenderMethods %}
-
-{% renderEvents %}{% endrenderEvents %}
-
-{% renderCssCustomProperties %}{% endrenderCssCustomProperties %}
-
-{% renderCssParts %}{% endrenderCssParts %}
+{% renderCodeDocs hideDescription=true %}{% endrenderCodeDocs %}

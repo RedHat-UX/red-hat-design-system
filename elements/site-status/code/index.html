@@ -437,19 +437,98 @@
     </header>
     <section class="l-main__content">
       <div class="container">
-        <section class="band overview">
-  <h2 id="overview">Overview</h2>
-  <div class="example-preview">
-<p><rh-site-status></rh-site-status></p>
-  </div>
-</section>
+        <script type="module" src="/assets/elements/uxdot-installation-tabs.js"></script>
 <section class="band">
-  <h2 id="installation">Installation</h2>
+<copy-permalink class="h2">
+  <h2 id="installation" tabindex="-1">
+    <a class="heading-anchor" href="#installation">Installation</a>
+      </h2>
+    </copy-permalink>
+<uxdot-installation-tabs>
+<rh-tab slot="tab">Red Hat CDN</rh-tab>
+<uxdot-installation-tab-panel>
+  <rh-alert state="warning">
+    <h3 slot="header">CDN Prerelease</h3>
+    <p>We are currently working on our CDN, which will be soon moving
+       into beta. This will be the preferred method of installation in
+       the near future. If you are a Red Hat associate and have questions
+       or comments about the CDN or installation process please join us
+       in our <a href="https://red.ht/43bBaB0">Red Hat Design System Google chat</a>.</p>
+    <p>In the meantime, install this component using npm</p>
+  </rh-alert>
+<p>The recommended way to load RHDS is via the Red Hat Digital Experience CDN,
+and using an <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap">import map</a>.</p>
+<p>If you have full control over the page you are using, add an import map
+to the <code>&lt;head&gt;</code>, pointing to the CDN, or update any existing import map.
+If you are not responsible for the page's <code>&lt;head&gt;</code>, request that the
+page owner makes the change on your behalf.</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>importmap<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript"><br>  <span class="token punctuation">{</span><br>    <span class="token string-property property">"imports"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>      <span class="token string-property property">"@rhds/elements/"</span><span class="token operator">:</span> <span class="token string">"https://www.redhatstatic.com/dx/v1-alpha/@rhds/elements@1.1.0/elements/"</span><span class="token punctuation">,</span><br>      <span class="token string-property property">"@patternfly/elements/"</span><span class="token operator">:</span> <span class="token string">"https://www.redhatstatic.com/dx/v1-alpha/@patternfly/elements@2.2.2/"</span><br>    <span class="token punctuation">}</span><br>  <span class="token punctuation">}</span><br></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span></code></pre>
+<p>Once the import map is established, you can load the element with the following
+module, containing a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules">bare module specifier</a>:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript"><br>  <span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-site-status/rh-site-status.js'</span><span class="token punctuation">;</span><br></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span></code></pre>
+<p>Note that Modules may be placed in the <code>&lt;head&gt;</code>: since they are deferred by default,
+they will not block rendering.</p>
+</uxdot-installation-tab-panel>
+<rh-tab slot="tab">NPM</rh-tab>
+<uxdot-installation-tab-panel>
+<p>Install RHDS using your team's preferred NPM package manager, e.g.</p>
 <pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span> @rhds/elements</code></pre>
+<p>Once that's been accomplished, you will need to use a bundler to resolve
+the bare module specifiers and optionally optimize the package for your
+site's particular use case and needs. Comprehensive guides to bundling are
+beyond the scope of this page; read more about bundlers on their websites:</p>
+<ul>
+<li><a href="https://rollupjs.org/">Rollup</a></li>
+<li><a href="https://esbuild.github.io/">esbuild</a></li>
+<li><a href="https://parceljs.org/">Parcel</a></li>
+<li><a href="https://webpack.js.org/">Webpack</a></li>
+</ul>
+</uxdot-installation-tab-panel>
+<rh-tab slot="tab">JSPM</rh-tab>
+<uxdot-installation-tab-panel>
+  <rh-alert state="warning">
+    <h3 slot="header">Public CDNs</h3>
+    <p>JSPM and other public CDNs should not be used on corporate domains.
+       Use them for <strong>development purposes only</strong>!</p>
+  </rh-alert>
+<p>Add an <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap">import map</a> to the <code>&lt;head&gt;</code>, pointing to the CDN,
+or update any existing import map.</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>importmap<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript"><br>  <span class="token punctuation">{</span><br>    <span class="token string-property property">"imports"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>      <span class="token string-property property">"@rhds/elements/"</span><span class="token operator">:</span> <span class="token string">"https://jspm.dev/@rhds/elements/"</span><span class="token punctuation">,</span><br>      <span class="token string-property property">"@patternfly/elements/"</span><span class="token operator">:</span> <span class="token string">"https://jspm.dev/@patternfly/elements/"</span><br>    <span class="token punctuation">}</span><br>  <span class="token punctuation">}</span><br></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span></code></pre>
+<p>Once the import map is established, you can load the element with the following
+module, containing a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules">bare module specifier</a>:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript"><br>  <span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-site-status/rh-site-status.js'</span><span class="token punctuation">;</span><br></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span></code></pre>
+<p>Note that Modules may be placed in the <code>&lt;head&gt;</code>: since they are deferred by default,
+they will not block rendering.</p>
+  </uxdot-installation-tab-panel>
+</uxdot-installation-tabs>
 </section>
-<section class="band">
-<p>Usage</p>
-</section>
+<copy-permalink class="h2">
+  <h2 id="usage" tabindex="-1">
+    <a class="heading-anchor" href="#usage">Usage</a>
+      </h2>
+    </copy-permalink>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-site-status</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-site-status</span><span class="token punctuation">&gt;</span></span></code></pre>
+<style>
+  table.css-custom-properties code[data-color] {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  table.css-custom-properties code[data-color]:after {
+    content: '';
+    background: var(--color);
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 1rem;
+    inset-inline-end: -1rem;
+  }
+</style>
+<copy-permalink class="h2">
+  <h2 id="rh-site-status" tabindex="-1">
+    <a class="heading-anchor" href="#rh-site-status">rh-site-status</a>
+      </h2>
+    </copy-permalink>
 <section class="api band slots api-properties">
 <copy-permalink class="h2">
   <h2 id="slots" tabindex="-1">
@@ -489,145 +568,6 @@
     </copy-permalink>
 <p><em>None</em></p>
 </section>
-<section class="api band css-custom-properties api-properties">
-<copy-permalink class="h2">
-  <h2 id="css-custom-properties" tabindex="-1">
-    <a class="heading-anchor" href="#css-custom-properties">CSS Custom Properties</a>
-      </h2>
-    </copy-permalink>
-  <table class="css-custom-properties">
-    <thead>
-<tr>
-  <th style="text-align:left">CSS Property</th>
-  <th style="text-align:left">Description</th>
-  <th style="text-align:left">Default</th>
-</tr>
-    </thead>
-    <tbody>
-<tr>
-  <td style="text-align:left"><code>--rh-border-radius-default</code></td>
-  <td style="text-align:left">
-<p>3px border radius; Example: Card</p>
-</td>
-  <td style="text-align:left">
-    <code>
-3px
-    </code>
-  </td>
-</tr>
-<tr>
-  <td style="text-align:left"><code>--rh-border-width-md</code></td>
-  <td style="text-align:left">
-<p>2px border width: Example: Alert</p>
-</td>
-  <td style="text-align:left">
-    <code>
-2px
-    </code>
-  </td>
-</tr>
-<tr>
-  <td style="text-align:left"><code>--rh-color-border-interactive-on-dark</code></td>
-  <td style="text-align:left">
-<p>Interactive border color (dark theme)</p>
-</td>
-  <td style="text-align:left">
-    <code data-color="#92c5f9" style="--color:#92c5f9">
-#92c5f9
-    </code>
-  </td>
-</tr>
-<tr>
-  <td style="text-align:left"><code>--rh-color-border-interactive-on-light</code></td>
-  <td style="text-align:left">
-<p>Interactive border color (light theme)</p>
-</td>
-  <td style="text-align:left">
-    <code data-color="#0066cc" style="--color:#0066cc">
-#0066cc
-    </code>
-  </td>
-</tr>
-<tr>
-  <td style="text-align:left"><code>--rh-color-surface-dark</code></td>
-  <td style="text-align:left">
-<p>Tertiary surface (dark theme)</p>
-</td>
-  <td style="text-align:left">
-    <code data-color="#383838" style="--color:#383838">
-#383838
-    </code>
-  </td>
-</tr>
-<tr>
-  <td style="text-align:left"><code>--rh-color-surface-light</code></td>
-  <td style="text-align:left">
-<p>Secondary surface (light theme)</p>
-</td>
-  <td style="text-align:left">
-    <code data-color="#e0e0e0" style="--color:#e0e0e0">
-#e0e0e0
-    </code>
-  </td>
-</tr>
-<tr>
-  <td style="text-align:left"><code>--rh-color-text-primary-on-dark</code></td>
-  <td style="text-align:left">
-<p>Primary text color for dark theme</p>
-</td>
-  <td style="text-align:left">
-    <code data-color="#ffffff" style="--color:#ffffff">
-#ffffff
-    </code>
-  </td>
-</tr>
-<tr>
-  <td style="text-align:left"><code>--rh-color-text-primary-on-light</code></td>
-  <td style="text-align:left">
-<p>Primary text color for light theme</p>
-</td>
-  <td style="text-align:left">
-    <code data-color="#151515" style="--color:#151515">
-#151515
-    </code>
-  </td>
-</tr>
-<tr>
-  <td style="text-align:left"><code>--rh-font-size-body-text-sm</code></td>
-  <td style="text-align:left">
-<p>14px font size</p>
-</td>
-  <td style="text-align:left">
-    <code>
-0.875rem
-    </code>
-  </td>
-</tr>
-<tr>
-  <td style="text-align:left"><code>--rh-space-lg</code></td>
-  <td style="text-align:left">
-<p>16px spacer</p>
-</td>
-  <td style="text-align:left">
-    <code>
-16px
-    </code>
-  </td>
-</tr>
-<tr>
-  <td style="text-align:left"><code>--rh-space-md</code></td>
-  <td style="text-align:left">
-<p>8px spacer</p>
-</td>
-  <td style="text-align:left">
-    <code>
-8px
-    </code>
-  </td>
-</tr>
-    </tbody>
-  </table>
-</section>
 <section class="api band css-shadow-parts api-properties">
 <copy-permalink class="h2">
   <h2 id="css-shadow-parts" tabindex="-1">
@@ -636,6 +576,175 @@
     </copy-permalink>
 <p><em>None</em></p>
 </section>
+<section class="api band css-custom-properties api-properties">
+<copy-permalink class="h2">
+  <h2 id="css-custom-properties" tabindex="-1">
+    <a class="heading-anchor" href="#css-custom-properties">CSS Custom Properties</a>
+      </h2>
+    </copy-permalink>
+<p><em>None</em></p>
+</section>
+<section class="api band design-tokens api-properties">
+<copy-permalink class="h2">
+  <h2 id="design-tokens" tabindex="-1">
+    <a class="heading-anchor" href="#design-tokens">Design Tokens</a>
+      </h2>
+    </copy-permalink>
+  <p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><table class="design-tokens">
+    <thead>
+<tr>
+  <th style="text-align:left">Token</th>
+  <th style="text-align:left">Copy</th>
+</tr>
+    </thead>
+    <tbody>
+<tr>
+  <td style="text-align:left">
+    <a href="https://ux.redhat.com/tokens/border/#--rh-border-radius-default"><code>--rh-border-radius-default</code></a>
+  </td>
+<td class="copy-cell">
+<uxdot-copy-button copy="var(----rh-border-radius-default, 3px)"></uxdot-copy-button>
+<uxdot-copy-button copy="https://ux.redhat.com/tokens/border/#--rh-border-radius-default">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+<path d="M172.5 131.1C228.1 75.51 320.5 75.51 376.1 131.1C426.1 181.1 433.5 260.8 392.4 318.3L391.3 319.9C381 334.2 361 337.6 346.7 327.3C332.3 317 328.9 297 339.2 282.7L340.3 281.1C363.2 249 359.6 205.1 331.7 177.2C300.3 145.8 249.2 145.8 217.7 177.2L105.5 289.5C73.99 320.1 73.99 372 105.5 403.5C133.3 431.4 177.3 435 209.3 412.1L210.9 410.1C225.3 400.7 245.3 404 255.5 418.4C265.8 432.8 262.5 452.8 248.1 463.1L246.5 464.2C188.1 505.3 110.2 498.7 60.21 448.8C3.741 392.3 3.741 300.7 60.21 244.3L172.5 131.1zM467.5 380C411 436.5 319.5 436.5 263 380C213 330 206.5 251.2 247.6 193.7L248.7 192.1C258.1 177.8 278.1 174.4 293.3 184.7C307.7 194.1 311.1 214.1 300.8 229.3L299.7 230.9C276.8 262.1 280.4 306.9 308.3 334.8C339.7 366.2 390.8 366.2 422.3 334.8L534.5 222.5C566 191 566 139.1 534.5 108.5C506.7 80.63 462.7 76.99 430.7 99.9L429.1 101C414.7 111.3 394.7 107.1 384.5 93.58C374.2 79.2 377.5 59.21 391.9 48.94L393.5 47.82C451 6.731 529.8 13.25 579.8 63.24C636.3 119.7 636.3 211.3 579.8 267.7L467.5 380z"></path>
+</svg>
+</uxdot-copy-button>
+</td>
+</tr>
+<tr>
+  <td style="text-align:left">
+    <a href="https://ux.redhat.com/tokens/border/#--rh-border-width-md"><code>--rh-border-width-md</code></a>
+  </td>
+<td class="copy-cell">
+<uxdot-copy-button copy="var(----rh-border-width-md, 2px)"></uxdot-copy-button>
+<uxdot-copy-button copy="https://ux.redhat.com/tokens/border/#--rh-border-width-md">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+<path d="M172.5 131.1C228.1 75.51 320.5 75.51 376.1 131.1C426.1 181.1 433.5 260.8 392.4 318.3L391.3 319.9C381 334.2 361 337.6 346.7 327.3C332.3 317 328.9 297 339.2 282.7L340.3 281.1C363.2 249 359.6 205.1 331.7 177.2C300.3 145.8 249.2 145.8 217.7 177.2L105.5 289.5C73.99 320.1 73.99 372 105.5 403.5C133.3 431.4 177.3 435 209.3 412.1L210.9 410.1C225.3 400.7 245.3 404 255.5 418.4C265.8 432.8 262.5 452.8 248.1 463.1L246.5 464.2C188.1 505.3 110.2 498.7 60.21 448.8C3.741 392.3 3.741 300.7 60.21 244.3L172.5 131.1zM467.5 380C411 436.5 319.5 436.5 263 380C213 330 206.5 251.2 247.6 193.7L248.7 192.1C258.1 177.8 278.1 174.4 293.3 184.7C307.7 194.1 311.1 214.1 300.8 229.3L299.7 230.9C276.8 262.1 280.4 306.9 308.3 334.8C339.7 366.2 390.8 366.2 422.3 334.8L534.5 222.5C566 191 566 139.1 534.5 108.5C506.7 80.63 462.7 76.99 430.7 99.9L429.1 101C414.7 111.3 394.7 107.1 384.5 93.58C374.2 79.2 377.5 59.21 391.9 48.94L393.5 47.82C451 6.731 529.8 13.25 579.8 63.24C636.3 119.7 636.3 211.3 579.8 267.7L467.5 380z"></path>
+</svg>
+</uxdot-copy-button>
+</td>
+</tr>
+<tr>
+  <td style="text-align:left">
+    <a href="https://ux.redhat.com/tokens/border/#--rh-color-border-interactive-on-dark"><code>--rh-color-border-interactive-on-dark</code></a>
+  </td>
+<td class="copy-cell">
+<uxdot-copy-button copy="var(----rh-color-border-interactive-on-dark, #92c5f9)"></uxdot-copy-button>
+<uxdot-copy-button copy="https://ux.redhat.com/tokens/border/#--rh-color-border-interactive-on-dark">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+<path d="M172.5 131.1C228.1 75.51 320.5 75.51 376.1 131.1C426.1 181.1 433.5 260.8 392.4 318.3L391.3 319.9C381 334.2 361 337.6 346.7 327.3C332.3 317 328.9 297 339.2 282.7L340.3 281.1C363.2 249 359.6 205.1 331.7 177.2C300.3 145.8 249.2 145.8 217.7 177.2L105.5 289.5C73.99 320.1 73.99 372 105.5 403.5C133.3 431.4 177.3 435 209.3 412.1L210.9 410.1C225.3 400.7 245.3 404 255.5 418.4C265.8 432.8 262.5 452.8 248.1 463.1L246.5 464.2C188.1 505.3 110.2 498.7 60.21 448.8C3.741 392.3 3.741 300.7 60.21 244.3L172.5 131.1zM467.5 380C411 436.5 319.5 436.5 263 380C213 330 206.5 251.2 247.6 193.7L248.7 192.1C258.1 177.8 278.1 174.4 293.3 184.7C307.7 194.1 311.1 214.1 300.8 229.3L299.7 230.9C276.8 262.1 280.4 306.9 308.3 334.8C339.7 366.2 390.8 366.2 422.3 334.8L534.5 222.5C566 191 566 139.1 534.5 108.5C506.7 80.63 462.7 76.99 430.7 99.9L429.1 101C414.7 111.3 394.7 107.1 384.5 93.58C374.2 79.2 377.5 59.21 391.9 48.94L393.5 47.82C451 6.731 529.8 13.25 579.8 63.24C636.3 119.7 636.3 211.3 579.8 267.7L467.5 380z"></path>
+</svg>
+</uxdot-copy-button>
+</td>
+</tr>
+<tr>
+  <td style="text-align:left">
+    <a href="https://ux.redhat.com/tokens/border/#--rh-color-border-interactive-on-light"><code>--rh-color-border-interactive-on-light</code></a>
+  </td>
+<td class="copy-cell">
+<uxdot-copy-button copy="var(----rh-color-border-interactive-on-light, #0066cc)"></uxdot-copy-button>
+<uxdot-copy-button copy="https://ux.redhat.com/tokens/border/#--rh-color-border-interactive-on-light">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+<path d="M172.5 131.1C228.1 75.51 320.5 75.51 376.1 131.1C426.1 181.1 433.5 260.8 392.4 318.3L391.3 319.9C381 334.2 361 337.6 346.7 327.3C332.3 317 328.9 297 339.2 282.7L340.3 281.1C363.2 249 359.6 205.1 331.7 177.2C300.3 145.8 249.2 145.8 217.7 177.2L105.5 289.5C73.99 320.1 73.99 372 105.5 403.5C133.3 431.4 177.3 435 209.3 412.1L210.9 410.1C225.3 400.7 245.3 404 255.5 418.4C265.8 432.8 262.5 452.8 248.1 463.1L246.5 464.2C188.1 505.3 110.2 498.7 60.21 448.8C3.741 392.3 3.741 300.7 60.21 244.3L172.5 131.1zM467.5 380C411 436.5 319.5 436.5 263 380C213 330 206.5 251.2 247.6 193.7L248.7 192.1C258.1 177.8 278.1 174.4 293.3 184.7C307.7 194.1 311.1 214.1 300.8 229.3L299.7 230.9C276.8 262.1 280.4 306.9 308.3 334.8C339.7 366.2 390.8 366.2 422.3 334.8L534.5 222.5C566 191 566 139.1 534.5 108.5C506.7 80.63 462.7 76.99 430.7 99.9L429.1 101C414.7 111.3 394.7 107.1 384.5 93.58C374.2 79.2 377.5 59.21 391.9 48.94L393.5 47.82C451 6.731 529.8 13.25 579.8 63.24C636.3 119.7 636.3 211.3 579.8 267.7L467.5 380z"></path>
+</svg>
+</uxdot-copy-button>
+</td>
+</tr>
+<tr>
+  <td style="text-align:left">
+    <a href="https://ux.redhat.com/tokens/color/#--rh-color-surface-dark"><code>--rh-color-surface-dark</code></a>
+  </td>
+<td class="copy-cell">
+<uxdot-copy-button copy="var(----rh-color-surface-dark, #383838)"></uxdot-copy-button>
+<uxdot-copy-button copy="https://ux.redhat.com/tokens/color/#--rh-color-surface-dark">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+<path d="M172.5 131.1C228.1 75.51 320.5 75.51 376.1 131.1C426.1 181.1 433.5 260.8 392.4 318.3L391.3 319.9C381 334.2 361 337.6 346.7 327.3C332.3 317 328.9 297 339.2 282.7L340.3 281.1C363.2 249 359.6 205.1 331.7 177.2C300.3 145.8 249.2 145.8 217.7 177.2L105.5 289.5C73.99 320.1 73.99 372 105.5 403.5C133.3 431.4 177.3 435 209.3 412.1L210.9 410.1C225.3 400.7 245.3 404 255.5 418.4C265.8 432.8 262.5 452.8 248.1 463.1L246.5 464.2C188.1 505.3 110.2 498.7 60.21 448.8C3.741 392.3 3.741 300.7 60.21 244.3L172.5 131.1zM467.5 380C411 436.5 319.5 436.5 263 380C213 330 206.5 251.2 247.6 193.7L248.7 192.1C258.1 177.8 278.1 174.4 293.3 184.7C307.7 194.1 311.1 214.1 300.8 229.3L299.7 230.9C276.8 262.1 280.4 306.9 308.3 334.8C339.7 366.2 390.8 366.2 422.3 334.8L534.5 222.5C566 191 566 139.1 534.5 108.5C506.7 80.63 462.7 76.99 430.7 99.9L429.1 101C414.7 111.3 394.7 107.1 384.5 93.58C374.2 79.2 377.5 59.21 391.9 48.94L393.5 47.82C451 6.731 529.8 13.25 579.8 63.24C636.3 119.7 636.3 211.3 579.8 267.7L467.5 380z"></path>
+</svg>
+</uxdot-copy-button>
+</td>
+</tr>
+<tr>
+  <td style="text-align:left">
+    <a href="https://ux.redhat.com/tokens/color/#--rh-color-surface-light"><code>--rh-color-surface-light</code></a>
+  </td>
+<td class="copy-cell">
+<uxdot-copy-button copy="var(----rh-color-surface-light, #e0e0e0)"></uxdot-copy-button>
+<uxdot-copy-button copy="https://ux.redhat.com/tokens/color/#--rh-color-surface-light">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+<path d="M172.5 131.1C228.1 75.51 320.5 75.51 376.1 131.1C426.1 181.1 433.5 260.8 392.4 318.3L391.3 319.9C381 334.2 361 337.6 346.7 327.3C332.3 317 328.9 297 339.2 282.7L340.3 281.1C363.2 249 359.6 205.1 331.7 177.2C300.3 145.8 249.2 145.8 217.7 177.2L105.5 289.5C73.99 320.1 73.99 372 105.5 403.5C133.3 431.4 177.3 435 209.3 412.1L210.9 410.1C225.3 400.7 245.3 404 255.5 418.4C265.8 432.8 262.5 452.8 248.1 463.1L246.5 464.2C188.1 505.3 110.2 498.7 60.21 448.8C3.741 392.3 3.741 300.7 60.21 244.3L172.5 131.1zM467.5 380C411 436.5 319.5 436.5 263 380C213 330 206.5 251.2 247.6 193.7L248.7 192.1C258.1 177.8 278.1 174.4 293.3 184.7C307.7 194.1 311.1 214.1 300.8 229.3L299.7 230.9C276.8 262.1 280.4 306.9 308.3 334.8C339.7 366.2 390.8 366.2 422.3 334.8L534.5 222.5C566 191 566 139.1 534.5 108.5C506.7 80.63 462.7 76.99 430.7 99.9L429.1 101C414.7 111.3 394.7 107.1 384.5 93.58C374.2 79.2 377.5 59.21 391.9 48.94L393.5 47.82C451 6.731 529.8 13.25 579.8 63.24C636.3 119.7 636.3 211.3 579.8 267.7L467.5 380z"></path>
+</svg>
+</uxdot-copy-button>
+</td>
+</tr>
+<tr>
+  <td style="text-align:left">
+    <a href="https://ux.redhat.com/tokens/typography/#--rh-color-text-primary-on-dark"><code>--rh-color-text-primary-on-dark</code></a>
+  </td>
+<td class="copy-cell">
+<uxdot-copy-button copy="var(----rh-color-text-primary-on-dark, #ffffff)"></uxdot-copy-button>
+<uxdot-copy-button copy="https://ux.redhat.com/tokens/typography/#--rh-color-text-primary-on-dark">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+<path d="M172.5 131.1C228.1 75.51 320.5 75.51 376.1 131.1C426.1 181.1 433.5 260.8 392.4 318.3L391.3 319.9C381 334.2 361 337.6 346.7 327.3C332.3 317 328.9 297 339.2 282.7L340.3 281.1C363.2 249 359.6 205.1 331.7 177.2C300.3 145.8 249.2 145.8 217.7 177.2L105.5 289.5C73.99 320.1 73.99 372 105.5 403.5C133.3 431.4 177.3 435 209.3 412.1L210.9 410.1C225.3 400.7 245.3 404 255.5 418.4C265.8 432.8 262.5 452.8 248.1 463.1L246.5 464.2C188.1 505.3 110.2 498.7 60.21 448.8C3.741 392.3 3.741 300.7 60.21 244.3L172.5 131.1zM467.5 380C411 436.5 319.5 436.5 263 380C213 330 206.5 251.2 247.6 193.7L248.7 192.1C258.1 177.8 278.1 174.4 293.3 184.7C307.7 194.1 311.1 214.1 300.8 229.3L299.7 230.9C276.8 262.1 280.4 306.9 308.3 334.8C339.7 366.2 390.8 366.2 422.3 334.8L534.5 222.5C566 191 566 139.1 534.5 108.5C506.7 80.63 462.7 76.99 430.7 99.9L429.1 101C414.7 111.3 394.7 107.1 384.5 93.58C374.2 79.2 377.5 59.21 391.9 48.94L393.5 47.82C451 6.731 529.8 13.25 579.8 63.24C636.3 119.7 636.3 211.3 579.8 267.7L467.5 380z"></path>
+</svg>
+</uxdot-copy-button>
+</td>
+</tr>
+<tr>
+  <td style="text-align:left">
+    <a href="https://ux.redhat.com/tokens/typography/#--rh-color-text-primary-on-light"><code>--rh-color-text-primary-on-light</code></a>
+  </td>
+<td class="copy-cell">
+<uxdot-copy-button copy="var(----rh-color-text-primary-on-light, #151515)"></uxdot-copy-button>
+<uxdot-copy-button copy="https://ux.redhat.com/tokens/typography/#--rh-color-text-primary-on-light">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+<path d="M172.5 131.1C228.1 75.51 320.5 75.51 376.1 131.1C426.1 181.1 433.5 260.8 392.4 318.3L391.3 319.9C381 334.2 361 337.6 346.7 327.3C332.3 317 328.9 297 339.2 282.7L340.3 281.1C363.2 249 359.6 205.1 331.7 177.2C300.3 145.8 249.2 145.8 217.7 177.2L105.5 289.5C73.99 320.1 73.99 372 105.5 403.5C133.3 431.4 177.3 435 209.3 412.1L210.9 410.1C225.3 400.7 245.3 404 255.5 418.4C265.8 432.8 262.5 452.8 248.1 463.1L246.5 464.2C188.1 505.3 110.2 498.7 60.21 448.8C3.741 392.3 3.741 300.7 60.21 244.3L172.5 131.1zM467.5 380C411 436.5 319.5 436.5 263 380C213 330 206.5 251.2 247.6 193.7L248.7 192.1C258.1 177.8 278.1 174.4 293.3 184.7C307.7 194.1 311.1 214.1 300.8 229.3L299.7 230.9C276.8 262.1 280.4 306.9 308.3 334.8C339.7 366.2 390.8 366.2 422.3 334.8L534.5 222.5C566 191 566 139.1 534.5 108.5C506.7 80.63 462.7 76.99 430.7 99.9L429.1 101C414.7 111.3 394.7 107.1 384.5 93.58C374.2 79.2 377.5 59.21 391.9 48.94L393.5 47.82C451 6.731 529.8 13.25 579.8 63.24C636.3 119.7 636.3 211.3 579.8 267.7L467.5 380z"></path>
+</svg>
+</uxdot-copy-button>
+</td>
+</tr>
+<tr>
+  <td style="text-align:left">
+    <a href="https://ux.redhat.com/tokens/typography/#--rh-font-size-body-text-sm"><code>--rh-font-size-body-text-sm</code></a>
+  </td>
+<td class="copy-cell">
+<uxdot-copy-button copy="var(----rh-font-size-body-text-sm, 0.875rem)"></uxdot-copy-button>
+<uxdot-copy-button copy="https://ux.redhat.com/tokens/typography/#--rh-font-size-body-text-sm">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+<path d="M172.5 131.1C228.1 75.51 320.5 75.51 376.1 131.1C426.1 181.1 433.5 260.8 392.4 318.3L391.3 319.9C381 334.2 361 337.6 346.7 327.3C332.3 317 328.9 297 339.2 282.7L340.3 281.1C363.2 249 359.6 205.1 331.7 177.2C300.3 145.8 249.2 145.8 217.7 177.2L105.5 289.5C73.99 320.1 73.99 372 105.5 403.5C133.3 431.4 177.3 435 209.3 412.1L210.9 410.1C225.3 400.7 245.3 404 255.5 418.4C265.8 432.8 262.5 452.8 248.1 463.1L246.5 464.2C188.1 505.3 110.2 498.7 60.21 448.8C3.741 392.3 3.741 300.7 60.21 244.3L172.5 131.1zM467.5 380C411 436.5 319.5 436.5 263 380C213 330 206.5 251.2 247.6 193.7L248.7 192.1C258.1 177.8 278.1 174.4 293.3 184.7C307.7 194.1 311.1 214.1 300.8 229.3L299.7 230.9C276.8 262.1 280.4 306.9 308.3 334.8C339.7 366.2 390.8 366.2 422.3 334.8L534.5 222.5C566 191 566 139.1 534.5 108.5C506.7 80.63 462.7 76.99 430.7 99.9L429.1 101C414.7 111.3 394.7 107.1 384.5 93.58C374.2 79.2 377.5 59.21 391.9 48.94L393.5 47.82C451 6.731 529.8 13.25 579.8 63.24C636.3 119.7 636.3 211.3 579.8 267.7L467.5 380z"></path>
+</svg>
+</uxdot-copy-button>
+</td>
+</tr>
+<tr>
+  <td style="text-align:left">
+    <a href="https://ux.redhat.com/tokens/space/#--rh-space-lg"><code>--rh-space-lg</code></a>
+  </td>
+<td class="copy-cell">
+<uxdot-copy-button copy="var(----rh-space-lg, 16px)"></uxdot-copy-button>
+<uxdot-copy-button copy="https://ux.redhat.com/tokens/space/#--rh-space-lg">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+<path d="M172.5 131.1C228.1 75.51 320.5 75.51 376.1 131.1C426.1 181.1 433.5 260.8 392.4 318.3L391.3 319.9C381 334.2 361 337.6 346.7 327.3C332.3 317 328.9 297 339.2 282.7L340.3 281.1C363.2 249 359.6 205.1 331.7 177.2C300.3 145.8 249.2 145.8 217.7 177.2L105.5 289.5C73.99 320.1 73.99 372 105.5 403.5C133.3 431.4 177.3 435 209.3 412.1L210.9 410.1C225.3 400.7 245.3 404 255.5 418.4C265.8 432.8 262.5 452.8 248.1 463.1L246.5 464.2C188.1 505.3 110.2 498.7 60.21 448.8C3.741 392.3 3.741 300.7 60.21 244.3L172.5 131.1zM467.5 380C411 436.5 319.5 436.5 263 380C213 330 206.5 251.2 247.6 193.7L248.7 192.1C258.1 177.8 278.1 174.4 293.3 184.7C307.7 194.1 311.1 214.1 300.8 229.3L299.7 230.9C276.8 262.1 280.4 306.9 308.3 334.8C339.7 366.2 390.8 366.2 422.3 334.8L534.5 222.5C566 191 566 139.1 534.5 108.5C506.7 80.63 462.7 76.99 430.7 99.9L429.1 101C414.7 111.3 394.7 107.1 384.5 93.58C374.2 79.2 377.5 59.21 391.9 48.94L393.5 47.82C451 6.731 529.8 13.25 579.8 63.24C636.3 119.7 636.3 211.3 579.8 267.7L467.5 380z"></path>
+</svg>
+</uxdot-copy-button>
+</td>
+</tr>
+<tr>
+  <td style="text-align:left">
+    <a href="https://ux.redhat.com/tokens/space/#--rh-space-md"><code>--rh-space-md</code></a>
+  </td>
+<td class="copy-cell">
+<uxdot-copy-button copy="var(----rh-space-md, 8px)"></uxdot-copy-button>
+<uxdot-copy-button copy="https://ux.redhat.com/tokens/space/#--rh-space-md">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+<path d="M172.5 131.1C228.1 75.51 320.5 75.51 376.1 131.1C426.1 181.1 433.5 260.8 392.4 318.3L391.3 319.9C381 334.2 361 337.6 346.7 327.3C332.3 317 328.9 297 339.2 282.7L340.3 281.1C363.2 249 359.6 205.1 331.7 177.2C300.3 145.8 249.2 145.8 217.7 177.2L105.5 289.5C73.99 320.1 73.99 372 105.5 403.5C133.3 431.4 177.3 435 209.3 412.1L210.9 410.1C225.3 400.7 245.3 404 255.5 418.4C265.8 432.8 262.5 452.8 248.1 463.1L246.5 464.2C188.1 505.3 110.2 498.7 60.21 448.8C3.741 392.3 3.741 300.7 60.21 244.3L172.5 131.1zM467.5 380C411 436.5 319.5 436.5 263 380C213 330 206.5 251.2 247.6 193.7L248.7 192.1C258.1 177.8 278.1 174.4 293.3 184.7C307.7 194.1 311.1 214.1 300.8 229.3L299.7 230.9C276.8 262.1 280.4 306.9 308.3 334.8C339.7 366.2 390.8 366.2 422.3 334.8L534.5 222.5C566 191 566 139.1 534.5 108.5C506.7 80.63 462.7 76.99 430.7 99.9L429.1 101C414.7 111.3 394.7 107.1 384.5 93.58C374.2 79.2 377.5 59.21 391.9 48.94L393.5 47.82C451 6.731 529.8 13.25 579.8 63.24C636.3 119.7 636.3 211.3 579.8 267.7L467.5 380z"></path>
+</svg>
+</uxdot-copy-button>
+</td>
+</tr>
+    </tbody>
+  </table>
+</section>
+
         
 
 
