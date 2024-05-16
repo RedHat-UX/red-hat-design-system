@@ -1,7 +1,4 @@
-import { css, html } from 'lit';
-
 import { RhTabs } from '@rhds/elements/rh-tabs/rh-tabs.js';
-import { RhTabPanel } from '@rhds/elements/rh-tabs/rh-tab-panel.js';
 
 import '@rhds/elements/rh-alert/rh-alert.js';
 
@@ -44,17 +41,5 @@ export class InstallationTabs extends RhTabs {
       }
     }
     this.addEventListener('expand', this.#onExpand);
-  }
-
-  render() {
-    return html`
-      <style>
-        ::slotted(rh-tab-panel) {
-          max-width: 100%;
-          overflow-x: scroll;
-        }
-      </style>
-      ${super.render()}
-    `;
   }
 }
