@@ -5,7 +5,6 @@ const path = require('node:path');
 const _slugify = require('slugify');
 const slugify = typeof _slugify === 'function' ? _slugify : _slugify.default;
 const capitalize = require('capitalize');
-const { glob } = require('glob');
 const exec = require('node:util').promisify(require('node:child_process').exec);
 const cheerio = require('cheerio');
 const RHDSAlphabetizeTagsPlugin = require('./alphabetize-tags.cjs');
@@ -283,6 +282,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     }
 
     try {
+      const { glob } = await import('glob');
       /** @type {(import('@patternfly/pfe-tools/11ty/DocsPage').DocsPage & { repoStatus?: any[] })[]} */
       const elements = await eleventyConfig.globalData?.elements();
       const filePaths = (await glob(`elements/*/docs/*.md`, { cwd: process.cwd() }))
