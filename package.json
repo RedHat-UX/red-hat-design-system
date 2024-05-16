@@ -265,6 +265,7 @@
     "@11ty/eleventy-plugin-rss": "^1.2.0",
     "@commitlint/cli": "^19.2.2",
     "@commitlint/config-conventional": "^19.2.2",
+    "@esbuild/linux-x64": "^0.21.3",
     "@jspm/generator": "^1.1.7",
     "@lit/reactive-element": "^2.0.4",
     "@parse5/tools": "^0.3.0",
