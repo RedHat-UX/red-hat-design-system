@@ -2,6 +2,8 @@
 
 {{ tagName | getElementDescription }}
 
+<!-- add image -->
+
 {% repoStatusList %}
 
 ## Sample element
@@ -14,11 +16,16 @@
 
 ## Demo
 
+View a live version of this component and see how it can be customized.
+
 {% playground tagName=tagName %}{% endplayground %}
-{% cta href="./demo/", target="_blank" %}View the `<rh-switch>` demo{% endcta %}
+{% cta href="./demo/", target="_blank" %}View the `<rh-switch>` demo in a new tab{% endcta %}
 
 ## When to use
 
-- When you need to provide a more explicit, visible representation on a setting
+- When users need to choose between two binary actions
+- When users need to immediately activate or deactivate something
+- When users need to toggle an item on or off
+
 
 {% repoStatusChecklist %}
