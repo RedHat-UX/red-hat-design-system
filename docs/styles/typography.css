@@ -47,3 +47,7 @@ body {
 :where(p) {
   font-size: var(--rh-font-size-body-text-md, 1rem);
 }
+
+:where(p, h1, h2, h3, h4, h5, h6, li) {
+  max-width: 56rem;
+}

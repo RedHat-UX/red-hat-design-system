@@ -56,6 +56,10 @@
     margin-block-end: var(--rh-space-2xl, 32px);
   }
 
+  figure > img {
+    max-width: 100%;
+  }
+
   figcaption {
     color: var(--rh-color-text-secondary-on-light, #4d4d4d);
   }
@@ -158,10 +162,6 @@
 }
 
 @layer flow {
-  :where(p, h1, h2, h3, h4, h5, h6, li) {
-    max-width: 56rem;
-  }
-
   :where(p, ul, ol, dl) {
     margin-block-start: var(--rh-space-lg, 16px);
     margin-block-end: var(--rh-space-2xl, 32px);
