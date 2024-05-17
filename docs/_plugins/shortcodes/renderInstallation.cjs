@@ -26,13 +26,25 @@ fully initialized.
   return /* md */`
 <script type="module" src="/assets/javascript/elements/uxdot-installation-tabs.js"></script>
 
-<section>
+<style>
+  /* progressively enhanced rh-tab-panel width */
+  rh-tab-panel {
+    container-type: inline-size;
+  }
+
+  rh-tab-panel > pre {
+    max-width: 800px;
+    max-width: 100cqw;
+  }
+</style>
+
+<section class="band">
 
   ## Installation ${!docsPage.manifest?.packageJson ? '' : /* md */`
 
 <uxdot-installation-tabs>
 <rh-tab slot="tab">Red Hat CDN</rh-tab>
-<uxdot-installation-tab-panel>
+<rh-tab-panel>
   <rh-alert state="warning">
     <h3 slot="header">CDN Prerelease</h3>
     <p>We are currently working on our CDN, which will be soon moving
@@ -81,9 +93,9 @@ ${!lightdomcss ? '' : /* md */`${lightdomcssblock}
 ~~~
 
 `}
-</uxdot-installation-tab-panel>
+</rh-tab-panel>
 <rh-tab slot="tab">NPM</rh-tab>
-<uxdot-installation-tab-panel>
+<rh-tab-panel>
 
 Install RHDS using your team's preferred NPM package manager, e.g.
 
@@ -111,9 +123,9 @@ Replace \`/path/to\` in the \`href\` attribute with the installation path
 to the \`${docsPage.tagName}\` directory in your project.
 
   `}
-</uxdot-installation-tab-panel>
+</rh-tab-panel>
 <rh-tab slot="tab">JSPM</rh-tab>
-<uxdot-installation-tab-panel>
+<rh-tab-panel>
   <rh-alert state="warning">
     <h3 slot="header">Public CDNs</h3>
     <p>JSPM and other public CDNs should not be used on corporate domains.
@@ -153,7 +165,7 @@ ${!lightdomcss ? '' : /* md */ `${lightdomcssblock}
 ~~~
 
 `}
-  </uxdot-installation-tab-panel>
+  </rh-tab-panel>
 </uxdot-installation-tabs>
 
 ${content ?? ''}`}

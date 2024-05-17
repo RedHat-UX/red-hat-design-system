@@ -49,7 +49,7 @@ Our design system libraries and the documentation website offer assets and guida
   </div>
   <div>
     <h3>Documentation</h3>
-    <p>This website offers guidance about how to use our <a href="elements">elements</a> and <a href="patterns">patterns</a> correctly.</p>
+    <p>This website offers guidance about how to use our <a href="elements">elements</a> and <a href="patterns">patterns</a>. Learn how to apply them accessibily with <a href="/accessibility/development/">developer-specific guidelines</a>.</p>
   </div>
   <div>
     <h3>GitHub repositories</h3>

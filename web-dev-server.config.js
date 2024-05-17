@@ -1,5 +1,17 @@
 // @ts-check
 import { pfeDevServerConfig } from '@patternfly/pfe-tools/dev-server/config.js';
+import { glob } from 'glob';
+
+/**
+ * Find all modules in a glob pattern, relative to the repo root, and resolve them as package paths
+ * @param {string} pattern
+ * @param {(spec: string) => [string, string]} fn
+ */
+async function resolveLocal(pattern, fn) {
+  return glob(pattern, { ignore: ['**/test/**'] })
+      .then(files => files.map(fn))
+      .then(Object.fromEntries);
+}
 
 export const litcssOptions = {
   include: (/** @type{string[]}*/(/** @type{unknown}*/([
@@ -10,24 +22,30 @@ export const litcssOptions = {
 };
 
 export default pfeDevServerConfig({
-  litcssOptions,
   tsconfig: 'tsconfig.json',
-  middleware: [
-    /** redirect requests for lightdom css to /elements */
-    function(ctx, next) {
-      const match = ctx.path.match(/^\/components\/(?<slug>[-\w]+)\/(?<path>.*)\.css$/);
-      if (match) {
-        const { slug, path } = /** @type{{ slug: string; path: string }} */ (match.groups);
-        ctx.redirect(`/elements/rh-${slug}/${path}.css`);
-      }
-      return next();
+  litcssOptions,
+  importMapOptions: {
+    providers: {
+      '@patternfly/icons': 'nodemodules',
+      '@patternfly/elements': 'nodemodules',
+      '@patternfly/pfe-tools': 'nodemodules',
+      '@patternfly/pfe-core': 'nodemodules',
     },
-    /** redirect requests for /styles/* css to /docs/styles/* */
+    inputMap: {
+      imports: {
+        ...await resolveLocal('./lib/**/*.js', spec => [`@rhds/elements/${spec}`, `./${spec}`]),
+        ...await resolveLocal('./elements/**/*.js', x => [`@rhds/elements/${x.replace('elements/', '')}`, `./${x}`]),
+      },
+    },
+  },
+  middleware: [
+    /** redirect requests for /assets/ css to /docs/assets/ */
     function(ctx, next) {
       if (ctx.path.startsWith('/styles/')) {
         ctx.redirect(`/docs${ctx.path}`);
+      } else {
+        return next();
       }
-      return next();
     },
   ],
 });
