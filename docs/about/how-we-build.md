@@ -12,12 +12,6 @@ importElements:
 <link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
 
 <style>
-
-
-  figcaption {
-    color: var(--rh-color-text-secondary-on-light, #4d4d4d);
-  }
-
   :is(#webrh-section, #flexible-template-system-section, .grid, figure) img {
     max-width: 100%;
     margin-block-start: var(--rh-space-2xl, 32px);
@@ -28,7 +22,6 @@ importElements:
     flex-direction: column;
     justify-content: center;
   }
-
 </style>
 
 
