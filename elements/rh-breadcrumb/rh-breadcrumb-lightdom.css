@@ -50,10 +50,6 @@ rh-breadcrumb > ol > li:first-child {
 
 rh-breadcrumb > ol > li:last-child {
   background-image: none;
-  max-width: 27ch;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 rh-breadcrumb > ol > li,
