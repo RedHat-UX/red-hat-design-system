@@ -26,6 +26,18 @@ fully initialized.
   return /* md */`
 <script type="module" src="/assets/elements/uxdot-installation-tabs.js"></script>
 
+<style>
+  /* progressively enhanced rh-tab-panel width */
+  rh-tab-panel {
+    container-type: inline-size;
+  }
+
+  rh-tab-panel > pre {
+    max-width: 800px;
+    max-width: 100cqw;
+  }
+</style>
+
 <section class="band">
 
   ## Installation ${!docsPage.manifest?.packageJson ? '' : /* md */`
