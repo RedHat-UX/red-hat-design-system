@@ -11,19 +11,6 @@ importElements:
 
 <link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
 
-<style>
-  :is(#webrh-section, #flexible-template-system-section, .grid, figure) img {
-    max-width: 100%;
-    margin-block-start: var(--rh-space-2xl, 32px);
-  }
-
-  :is(#webrh-section, #flexible-template-system-section) div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-</style>
-
 
 ## Building experiences for the web
 
@@ -49,10 +36,13 @@ By sharing ideas between the PatternFly and RHDDS teams, we create a design lang
 <rh-cta>
   <a href="https://www.patternfly.org/v4/" target="_blank">Visit PatternFly</a>
 </rh-cta>
-<figure>
-  <img src="{{ '/assets/about/how-we-build/patternfly.svg' | url }}" alt="Example PatternFly components">
-  <figcaption>Examples of PatternFly components</figcaption>
-</figure>
+
+<uxdot-example variant="full" no-border alignment="left">
+  <figure>
+    <img src="{{ '/assets/about/how-we-build/patternfly.svg' | url }}" alt="Example PatternFly components">
+    <figcaption>Examples of PatternFly components</figcaption>
+  </figure>
+</uxdot-example>
 
 
 ## PatternFly Elements
@@ -65,14 +55,18 @@ PFE components not only work in any application framework, they are <strong>ever
   <a href="https://patternflyelements.com/" target="_blank">Visit PatternFly Elements</a>
 </rh-cta>
 <div class="grid sm-two-columns">
-  <figure>
-    <img src="{{ '/assets/about/how-we-build/patternfly-elements.svg' | url }}" alt="Example PFE components">
-    <figcaption>Examples of PFE components that are not themed</figcaption>
-  </figure>
-  <figure>
-    <img src="{{ '/assets/about/how-we-build/patternfly-elements-rh-themed.svg' | url }}" alt="Example PFE components">
-    <figcaption>Examples of PFE components themed with Red Hat CSS variables</figcaption>
-  </figure>
+  <uxdot-example variant="full" no-border alignment="left">
+    <figure>
+      <img src="{{ '/assets/about/how-we-build/patternfly-elements.svg' | url }}" alt="Example PFE components">
+      <figcaption>Examples of PFE components that are not themed</figcaption>
+    </figure>
+  </uxdot-example>
+  <uxdot-example variant="full" no-border alignment="left">
+    <figure>
+      <img src="{{ '/assets/about/how-we-build/patternfly-elements-rh-themed.svg' | url }}" alt="Example PFE components">
+      <figcaption>Examples of PFE components themed with Red Hat CSS variables</figcaption>
+    </figure>
+  </uxdot-example>
 </div>
 
 
@@ -128,10 +122,12 @@ PFE components not only work in any application framework, they are <strong>ever
     </rh-cta>
   </div>
   <div>
-    <figure>
-      <img src="{{ '/assets/about/how-we-build/webrh.png' | url }}" alt="WebRH screenshot">
-      <figcaption>Example of a WebRH pattern being customized in the Schema Editor (formerly Patternkit)</figcaption>
-    </figure>
+    <uxdot-example variant="full" no-border alignment="left">
+      <figure>
+        <img src="{{ '/assets/about/how-we-build/webrh.png' | url }}" alt="WebRH screenshot">
+        <figcaption>Example of a WebRH pattern being customized in the Schema Editor (formerly Patternkit)</figcaption>
+      </figure>
+    </uxdot-example>
   </div>
 </div>
 
@@ -144,10 +140,12 @@ PFE components not only work in any application framework, they are <strong>ever
     </rh-cta>
   </div>
   <div>
-    <figure>
-      <img src="/assets/about/how-we-build/flexible-template-system.png" alt="FTS screenshot">
-      <figcaption>Example of an FTS pattern being customized in Drupal</figcaption>
-    </figure>
+    <uxdot-example variant="full" no-border alignment="left">
+      <figure>
+        <img src="/assets/about/how-we-build/flexible-template-system.png" alt="FTS screenshot">
+        <figcaption>Example of an FTS pattern being customized in Drupal</figcaption>
+      </figure>
+    </uxdot-example>
   </div>
 </div>
 
@@ -167,11 +165,13 @@ PFE components not only work in any application framework, they are <strong>ever
 
 <strong>WebDMS</strong> is a custom Bootstrap 4 implementation that allows for rapid development, a very short learning curve, and immense flexibility. It is custom development for projects with outside-of-the-box design, interactivity, engagement, and motion needs. Because of the flexibility and fast iteration speed, we are able to test new designs and then solidify them into FTS patterns if we find that they are used across multiple pages.
 
-<figure class="grid sm-two-columns">
-  <img src="{{ '/assets/about/how-we-build/webdms-1.png' | url }}" alt="Example of WebDMS patterns showing hybrid cloud">
-  <img src="{{ '/assets/about/how-we-build/webdms-2.png' | url }}" alt="Example of WebDMS patterns showing implementation of jumplinks">
-  <figcaption>Examples of WebDMS applied on top of the Red Hat Design System</figcaption>
-</figure>
+<uxdot-example variant="full" no-border alignment="left">
+  <figure class="grid sm-two-columns">
+    <img src="{{ '/assets/about/how-we-build/webdms-1.png' | url }}" alt="Example of WebDMS patterns showing hybrid cloud">
+    <img src="{{ '/assets/about/how-we-build/webdms-2.png' | url }}" alt="Example of WebDMS patterns showing implementation of jumplinks">
+    <figcaption>Examples of WebDMS applied on top of the Red Hat Design System</figcaption>
+  </figure>
+</uxdot-example>
 
 
 <uxdot-feedback>
