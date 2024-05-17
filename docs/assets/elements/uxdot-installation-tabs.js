@@ -1,7 +1,4 @@
-import { css } from 'lit';
-
 import { RhTabs } from '@rhds/elements/rh-tabs/rh-tabs.js';
-import { RhTabPanel } from '@rhds/elements/rh-tabs/rh-tab-panel.js';
 
 import '@rhds/elements/rh-alert/rh-alert.js';
 
@@ -44,20 +41,5 @@ export class InstallationTabs extends RhTabs {
       }
     }
     this.addEventListener('expand', this.#onExpand);
-  }
-}
-
-export class InstallationTabPanel extends RhTabPanel {
-  static is = 'uxdot-installation-tab-panel';
-
-  static styles = [...RhTabPanel.styles, css`
-    ::slotted(pre) {
-      max-width: 800px !important;
-      overflow-x: scroll;
-    }
-  `];
-
-  static {
-    customElements.define(this.is, this);
   }
 }
