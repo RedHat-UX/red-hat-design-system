@@ -28,9 +28,10 @@ View a live version of this element and see how it can be customized.
 
 
 ## When to use
-- When you need to add visual emphasis to a statistic
-- When you need to pair a data point with supporting text to add more context
-- When you need to display several statistics together in a group
+
+  - When you need to add visual emphasis to a statistic
+  - When you need to pair a data point with supporting text to add more context
+  - When you need to display several statistics together in a group
 
 {% repoStatusChecklist %}
 

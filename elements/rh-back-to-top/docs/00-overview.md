@@ -26,6 +26,7 @@ View a live version of this component and see how it can be customized.
 
 
 ## When to use
+
   - When content fills up more than two screens in length at medium and large breakpoints
   - When content fills up more than four screens in length at small breakpoints
 

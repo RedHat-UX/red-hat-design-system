@@ -24,8 +24,9 @@ View a live version of this component and see how it can be customized.
 
 
 ## When to use
-- When you need to allow users to interact with pages in a variety of ways
-- When you need to communicate actions users can take
-- When you need to draw attention to the highest priority action
+
+  - When you need to allow users to interact with pages in a variety of ways
+  - When you need to communicate actions users can take
+  - When you need to draw attention to the highest priority action
 
 {% repoStatusChecklist %}

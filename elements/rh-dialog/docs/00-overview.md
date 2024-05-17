@@ -32,8 +32,8 @@ View a live version of this element to see how it can be customized.
 
 ## When to use
 
-- When you need to confirm user decisions
-- When you need an immediate response from users
-- When you need to notify users of urgent information concerning their current workflow
+  - When you need to confirm user decisions
+  - When you need an immediate response from users
+  - When you need to notify users of urgent information concerning their current workflow
 
 {% repoStatusChecklist %}

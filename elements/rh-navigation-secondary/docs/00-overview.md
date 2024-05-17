@@ -20,8 +20,9 @@
 
 ## When to use
   
-- When you need to better organize a content structure
-- When you need to provide a more granular navigation that is specific to a topic
-- When you need to prevent other navigations from getting overloaded
+  - When you need to better organize a content structure
+  - When you need to provide a more granular navigation that is specific to a topic
+  - When you need to prevent other navigations from getting overloaded
+
 
 {% repoStatusChecklist %}

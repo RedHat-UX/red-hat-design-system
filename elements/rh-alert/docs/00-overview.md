@@ -24,6 +24,7 @@ View a live version of this component and see how it can be customized.
 
 
 ## When to use
+
   - When additional information needs to be emphasized 
   - When a user needs to be notified after performing an action
   - When the severity of a message needs to be indicated

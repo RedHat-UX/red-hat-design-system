@@ -25,8 +25,8 @@ View a live version of this element to see how it can be customized.
 
 ## When to use
 
-- When you need users to navigate to a different page or domain
-- When you need to arrange links in different arrangements like in a row or grid
-- When you need to hide or reveal content
+  - When you need users to navigate to a different page or domain
+  - When you need to arrange links in different arrangements like in a row or grid
+  - When you need to hide or reveal content
 
 {% repoStatusChecklist %}

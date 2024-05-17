@@ -30,6 +30,7 @@ View a live version of this component and see how it can be customized.
 
 ## When to use
 
-- When you need to reflect counts like number of objects, events, or unread items
+  - When you need to reflect counts like number of objects, events, or unread items
+
 
 {% repoStatusChecklist %}

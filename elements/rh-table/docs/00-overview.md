@@ -61,8 +61,8 @@ View a live version of this element and see how it can be customized.
 
 ## When to use
 
-- To organize and display structured data
-- If a user needs to scan, examine, and compare data
-- If a user must navigate to a specific piece of data to complete a task
+  - To organize and display structured data
+  - If a user needs to scan, examine, and compare data
+  - If a user must navigate to a specific piece of data to complete a task
 
 {% repoStatusChecklist %}
