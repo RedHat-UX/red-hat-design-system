@@ -40,7 +40,7 @@
     <link type="text/css" href="/assets/pfe--noscript.min.css">
   </noscript>
 
-  <script type="importmap">{"imports":{"lit-html":"/assets/packages/lit-html/lit-html.js","@patternfly/pfe-core":"/assets/packages/@patternfly/pfe-core/core.js","tslib":"/assets/packages/tslib/tslib.es6.mjs","@lit/reactive-element":"/assets/packages/@lit/reactive-element/reactive-element.js","@lit/context":"/assets/packages/@lit/context/index.js","lit-element":"/assets/packages/lit-element/index.js","lit/directives/if-defined.js":"/assets/packages/lit/directives/if-defined.js","lit":"/assets/packages/lit/index.js","@floating-ui/core":"/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs","@floating-ui/dom":"/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs","@patternfly/elements":"/assets/packages/@patternfly/elements/pfe.min.js","@rhds/tokens":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/tokens.js","@rhds/tokens/media.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js","@rhds/tokens/meta.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js","element-internals-polyfill":"/assets/packages/element-internals-polyfill/dist/index.js","fuse.js":"/assets/packages/fuse.js/dist/fuse.esm.js","@rhds/tokens/":"/assets/packages/@rhds/tokens/js/","@rhds/elements/":"/assets/packages/@rhds/elements/elements/","@rhds/elements/lib/":"/assets/packages/@rhds/elements/lib/","@patternfly/elements/":"/assets/packages/@patternfly/elements/","@patternfly/icons/":"/assets/packages/@patternfly/icons/","@patternfly/pfe-core/":"/assets/packages/@patternfly/pfe-core/"},"scopes":{"/assets/packages/lit/":{"lit-html":"/assets/packages/lit/node_modules/lit-html/lit-html.js"},"/assets/packages/":{"@floating-ui/utils":"https://ga.jspm.io/npm:@floating-ui/utils@0.2.2/dist/floating-ui.utils.mjs","@floating-ui/utils/dom":"https://ga.jspm.io/npm:@floating-ui/utils@0.2.2/dist/floating-ui.utils.dom.mjs","@lit/reactive-element/decorators/":"/assets/packages/@lit/reactive-element/decorators/","lit-element/lit-element.js":"/assets/packages/lit-element/lit-element.js","lit-html":"/assets/packages/lit-element/node_modules/lit-html/lit-html.js","lit-html/":"/assets/packages/lit/node_modules/lit-html/","lit/":"/assets/packages/lit/"}}}</script>
+  <script type="importmap">{"imports":{"lit-html":"/assets/packages/lit-html/lit-html.js","@patternfly/pfe-core":"/assets/packages/@patternfly/pfe-core/core.js","tslib":"/assets/packages/tslib/tslib.es6.mjs","@lit/reactive-element":"/assets/packages/@lit/reactive-element/reactive-element.js","@lit/context":"/assets/packages/@lit/context/index.js","lit-element":"/assets/packages/lit-element/index.js","lit/directives/if-defined.js":"/assets/packages/lit/directives/if-defined.js","lit":"/assets/packages/lit/index.js","@floating-ui/dom":"/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs","@floating-ui/core":"/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs","@patternfly/elements":"/assets/packages/@patternfly/elements/pfe.min.js","@rhds/tokens":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/tokens.js","@rhds/tokens/meta.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js","@rhds/tokens/media.js":"https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js","element-internals-polyfill":"/assets/packages/element-internals-polyfill/dist/index.js","fuse.js":"/assets/packages/fuse.js/dist/fuse.esm.js","@rhds/tokens/":"/assets/packages/@rhds/tokens/js/","@rhds/elements/":"/assets/packages/@rhds/elements/elements/","@rhds/elements/lib/":"/assets/packages/@rhds/elements/lib/","@patternfly/elements/":"/assets/packages/@patternfly/elements/","@patternfly/icons/":"/assets/packages/@patternfly/icons/","@patternfly/pfe-core/":"/assets/packages/@patternfly/pfe-core/"},"scopes":{"/assets/packages/lit/":{"lit-html":"/assets/packages/lit/node_modules/lit-html/lit-html.js"},"/assets/packages/":{"@floating-ui/utils":"https://ga.jspm.io/npm:@floating-ui/utils@0.2.2/dist/floating-ui.utils.mjs","@floating-ui/utils/dom":"https://ga.jspm.io/npm:@floating-ui/utils@0.2.2/dist/floating-ui.utils.dom.mjs","@lit/reactive-element/decorators/":"/assets/packages/@lit/reactive-element/decorators/","lit-element/lit-element.js":"/assets/packages/lit-element/lit-element.js","lit-html":"/assets/packages/lit-element/node_modules/lit-html/lit-html.js","lit-html/":"/assets/packages/lit/node_modules/lit-html/","lit/":"/assets/packages/lit/"}}}</script>
   <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js"></script>
   
   <script type="module">
@@ -438,6 +438,17 @@
     <section class="l-main__content">
       <div class="container">
         <script type="module" src="/assets/elements/uxdot-installation-tabs.js"></script>
+<style>
+  /* progressively enhanced rh-tab-panel width */
+  rh-tab-panel {
+    container-type: inline-size;
+  }
+
+  rh-tab-panel > pre {
+    max-width: 800px;
+    max-width: 100cqw;
+  }
+</style>
 <section class="band">
 <copy-permalink class="h2">
   <h2 id="installation" tabindex="-1">
@@ -446,7 +457,7 @@
     </copy-permalink>
 <uxdot-installation-tabs>
 <rh-tab slot="tab">Red Hat CDN</rh-tab>
-<uxdot-installation-tab-panel>
+<rh-tab-panel>
   <rh-alert state="warning">
     <h3 slot="header">CDN Prerelease</h3>
     <p>We are currently working on our CDN, which will be soon moving
@@ -468,9 +479,9 @@ module, containing a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaS
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript"><br>  <span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-avatar/rh-avatar.js'</span><span class="token punctuation">;</span><br></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span></code></pre>
 <p>Note that Modules may be placed in the <code>&lt;head&gt;</code>: since they are deferred by default,
 they will not block rendering.</p>
-</uxdot-installation-tab-panel>
+</rh-tab-panel>
 <rh-tab slot="tab">NPM</rh-tab>
-<uxdot-installation-tab-panel>
+<rh-tab-panel>
 <p>Install RHDS using your team's preferred NPM package manager, e.g.</p>
 <pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span> @rhds/elements</code></pre>
 <p>Once that's been accomplished, you will need to use a bundler to resolve
@@ -483,9 +494,9 @@ beyond the scope of this page; read more about bundlers on their websites:</p>
 <li><a href="https://parceljs.org/">Parcel</a></li>
 <li><a href="https://webpack.js.org/">Webpack</a></li>
 </ul>
-</uxdot-installation-tab-panel>
+</rh-tab-panel>
 <rh-tab slot="tab">JSPM</rh-tab>
-<uxdot-installation-tab-panel>
+<rh-tab-panel>
   <rh-alert state="warning">
     <h3 slot="header">Public CDNs</h3>
     <p>JSPM and other public CDNs should not be used on corporate domains.
@@ -499,7 +510,7 @@ module, containing a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaS
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript"><br>  <span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-avatar/rh-avatar.js'</span><span class="token punctuation">;</span><br></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span></code></pre>
 <p>Note that Modules may be placed in the <code>&lt;head&gt;</code>: since they are deferred by default,
 they will not block rendering.</p>
-  </uxdot-installation-tab-panel>
+  </rh-tab-panel>
 </uxdot-installation-tabs>
 </section>
 <copy-permalink class="h2">
