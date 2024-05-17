@@ -16,6 +16,7 @@ tags:
     margin-block-start: var(--rh-space-2xl, 32px);
     margin-block-end: var(--rh-space-4xl, 64px);
     font-size: var(--rh-font-size-heading-lg, 2.25rem);
+    max-width: 100%;
   }
 
   :is(#approach, #fundamentals) :is(h2, h3) {
