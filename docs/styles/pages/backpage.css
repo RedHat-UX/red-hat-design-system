@@ -64,9 +64,15 @@
     margin-block-start: var(--rh-space-6xl, 96px);
   }
 
-  /* TODO: this wont work cause <link> or <style> tags are currently injected and claim first-child */
-  /* if a section, h2 or uxdot-copy-permalink is the first child of an article container */
-  .container > :where(uxdot-copy-permalink.h2, h2, section):first-child {
+  /* TODO: get rid of inline style/link/script tags inside of container
+  if a section, h2 or uxdot-copy-permalink is the first child of an article container */
+  .container :where(uxdot-copy-permalink.h2, h2, section):first-child,
+  .container :where(style, link, script):first-child + :where(uxdot-copy-permalink.h2, h2, section),
+  .container :where(style, link, script):first-child + :where(
+      style, link) + :where(uxdot-copy-permalink.h2, h2, section),
+  .container :where(style, link, script):first-child + :where(
+        style, link, script) + :where(style, link, script) + :where(
+          uxdot-copy-permalink.h2, h2, section) {
     margin-block-start: 0;
   }
 
