@@ -103,9 +103,6 @@ tags:
       order: unset;
     }
   }
-
-
-
 </style>
 
 <script type="module" src="{{ '/assets/javascript/elements/uxdot-hero.js' | url }}"></script>
