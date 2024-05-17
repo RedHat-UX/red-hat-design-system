@@ -3,6 +3,7 @@
   fonts,
   typography,
   base,
+  grid,
   layout,
   flow,
   third-party,
@@ -16,6 +17,7 @@
 @import url("reset.css") layer(reset);
 @import url("fonts.css") layer(fonts);
 @import url("typography.css") layer(typography);
+@import url("grid.css") layer(grid);
 @import url("lightdom.css") layer(lightdom);
 @import url("third-party/prism-rhds.css") layer(third-party);
 
@@ -169,27 +171,10 @@
     margin-block: var(--rh-space-md, 8px);
   }
 
-  :where(h1, h2, h3, h4, h5, h6) + :where(h2, h3, h4, h5, h6) {
+  :where(h1, h2, h3, h4, h5, h6) + :where(h2, h3, h4, h5, h6),
+  /* any where copy-permalink is used as a sibling to another */
+  :where(uxdot-copy-permalink + uxdot-copy-permalink) {
     margin-block-start: var(--rh-space-2xl, 32px);
-  }
-
-  :where(uxdot-copy-permalink.h1, 
-    uxdot-copy-permalink.h2, 
-    uxdot-copy-permalink.h3, 
-    uxdot-copy-permalink.h4, 
-    uxdot-copy-permalink.h5, 
-    uxdot-copy-permalink.h6) + 
-    :where(uxdot-copy-permalink.h2, 
-    uxdot-copy-permalink.h3, 
-    uxdot-copy-permalink.h4, 
-    uxdot-copy-permalink.h5, 
-    uxdot-copy-permalink.h6) {
-    margin-block-start: var(--rh-space-2xl, 32px);
-  }
-
-
-  section {
-    margin-block-end: var(--rh-space-6xl, 96px);
   }
 
   figure uxdot-example {
@@ -204,10 +189,7 @@
     margin-block: var(--rh-space-3xl, 48px);
   }
 
-  rh-accordion + uxdot-copy-permalink {
-    margin-block-start: var(--rh-space-4xl, 64px);
-  }
-
+  /* TODO: look into this do we need this rule? */
   uxdot-copy-permalink.h2 + uxdot-copy-permalink.h3 {
     --uxdot-copy-permalink-margin-block-start: 0;
   }

@@ -39,21 +39,12 @@ importElements:
   }
 
   #learn-about-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--rh-space-2xl, 32px);
     margin-block-start: var(--rh-space-2xl, 32px);
   }
 
   #learn-about-grid h3 {
     font-size: var(--rh-font-size-heading-sm, 1.5rem);
     font-weight: var(--rh-font-weight-heading-medium, 500);
-  }
-
-  @container container (min-width: 567px) {
-    #learn-about-grid {
-      grid-template-columns: 1fr 1fr;
-    }
   }
 
 </style>
@@ -77,7 +68,7 @@ Our [Brand standards](https://www.redhat.com/en/about/brand/standards) are the s
 
 Our design system libraries and the documentation website offer assets and guidance needed to create digital experiences. Please read through each section to have a better understanding of how to use our design system.
 
-<div id="learn-about-grid">
+<div id="learn-about-grid" class="grid sm-two-columns">
   <div>
     <h3>Foundations</h3> 
     <p><a href="/foundations">Foundations</a> are how we express our brand through color, space, typography, etc.</p>

@@ -9,19 +9,6 @@ tags:
 <link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
 <link rel="stylesheet" href="{{ '/styles/samp.css' | url }}">
 
-<style>
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--rh-space-2xl, 32px);
-  }
-
-  @container container (min-width: 567px) {
-    .grid {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-</style>
 
 ## Overview
 
@@ -58,7 +45,7 @@ A filter helps users narrow down pages of data into customized results. Accordio
   
 A filter has several selection methods that enable users to narrow down what they’re looking for. This improves usability and efficiency by reducing the amount of time that users spend searching for something.
 
-<div class="grid">
+<div class="grid sm-two-columns">
   <figure>
     <uxdot-example width-adjustment="300px">
       <img src="{{ './filter-usage-1.svg' | url }}" alt="Expanded disclosure panel with one checkbox">

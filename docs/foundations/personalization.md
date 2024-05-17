@@ -11,39 +11,6 @@ importElements:
 
 <link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css' | url }}">
 
-{# 
-TODO: document the need for each nav item to have an id on the header or 
-the js that runs and adds these casuses the nav to break 
-#}
-
-<style>
-
-  .page-personalization-patterns .container .grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--rh-space-2xl, 32px);
-    margin-block: var(--rh-space-3xl, 48px);
-  }
-
-  rh-tile [slot="headline"] h3,
-  rh-tile [slot="image"] {
-     margin-block: 0 !important;
-  }
-
-  @container container (min-width: 567px) {
-    .page-personalization-patterns .container .grid {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-
-  @container container (min-width: 768px) {
-    .page-personalization-patterns .container .grid {
-      grid-template-columns: 1fr 1fr 1fr;
-    }
-  }  
-
-</style>
-
 
 <section>
 
@@ -53,8 +20,8 @@ the js that runs and adds these casuses the nav to break
   
   For more information about how personalization works, the team, and our vision for the future, read the [source deck](https://docs.google.com/presentation/d/1rRLFRJLsbspINGu5r2zXBUITRkwzVVH8T3CveA1Z_bM/edit#slide=id.g24f5d8f664e_0_1100).
 
-=
-  <nav class="grid">
+
+  <nav class="grid xs-two-columns sm-three-columns">
     <rh-tile compact bleed>
       <uxdot-example color-palette="dark" slot="image" no-border>
         <img src="{{ '/elements/dialog/screenshot.png' | url }}" alt="Dialog">
@@ -99,7 +66,8 @@ the js that runs and adds these casuses the nav to break
     </rh-tile>
     <rh-tile compact bleed>
       <uxdot-example slot="image" transparent no-border>
-        {# TODO: Add a custom pattern image #}
+        <!-- TODO: Add custom patterns image -->
+        <!-- <img src="" alt="Custom Patterns"> -->
       </uxdot-example>
       <h3 slot="headline"><a href="#custom-patterns">Custom patterns</a></h3>
     </rh-tile>

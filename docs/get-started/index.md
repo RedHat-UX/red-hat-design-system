@@ -4,13 +4,14 @@ title: Overview
 order: 00
 tags:
   - getstarted
+importElements:
+  - rh-tile
 ---
+
+<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css' | url }}">
 
 <style>
   #get-started-nav {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--rh-space-2xl, 32px);
     margin-block-start: var(--rh-space-2xl, 32px);
   }
 
@@ -18,34 +19,25 @@ tags:
     font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
     font-size: var(--rh-font-size-heading-sm, 1.5rem);
   }
-
-  @container container (min-width: 567px) {
-    #get-started-nav {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-
 </style>
 
 ## Get started
 
 The Red Hat Design System for digital experiences gives designers and developers the tools to create accessible and on-brand user interfaces quickly. The role-specific pages linked below will guide you through using the design system.
 
-<nav id="get-started-nav" aria-label="Get Started">
-  <a href="/get-started/designers">
-    <figure>
-      <uxdot-example>
-        <img alt="Row of two cards being resized with a mouse pointer" src="/assets/get-started/designers.png">
-      </uxdot-example>
-      <figcaption>Designers</figcaption>
-    </figure>
-  </a>
-  <figure>
-    <uxdot-example>
+<nav id="get-started-nav" aria-label="Get Started" class="grid sm-two-columns">
+  <rh-tile>
+    <uxdot-example slot="image" no-border variant="full">
+      <img alt="Row of two cards being resized with a mouse pointer" src="/assets/get-started/designers.png">
+    </uxdot-example>
+    <h3 slot="headline"><a href="{{ '/designers' | url }}">Designers</a></h3>
+  </rh-tile>
+  <rh-tile>
+    <uxdot-example slot="image" no-border variant="full">
       <img alt="Card overlapping code editor user interface" src="/assets/get-started/developers.png">
     </uxdot-example>
-    <figcaption>Developers</figcaption>
-  </figure>
+    <h3 slot="headline"><a href="{{ '/developers' | url }}">Developers</a></h3>
+  </rh-tile>
 </nav>
 
 <uxdot-feedback>

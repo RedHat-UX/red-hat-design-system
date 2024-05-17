@@ -63,22 +63,7 @@ importElements:
   }
 
   .page-typography .container .grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--rh-space-2xl, 32px);
     margin-block-end: var(--rh-space-2xl, 32px);
-  }
-
-  @container container (min-width: 567px) {
-    .page-typography .container .grid {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-
-  @container container (min-width: 992px) {
-    .page-typography .container .grid {
-      grid-template-columns: 1fr 1fr 1fr;
-    }
   }
 
 </style>
@@ -110,7 +95,7 @@ importElements:
     <img src="https://www.redhat.com/cms/managed-files/BrandStandards-Visual_System-Typography-ASSETS_Hero.svg?itok=QnUDviH1"/>
   </uxdot-example>
 
-  <div class="grid">
+  <div class="grid xs-two-columns md-three-columns">
     <div>
       <h4 id="red-hat-display">Red&nbsp;Hat Display</h4>
       <p>The Display typeface is low contrast and spaced tightly with a large x-height and open counters.</p>
@@ -400,7 +385,7 @@ for (i = (numElementsReturned - 1); i >= 0; i--) {
 
   Each text style has its own unique hierarchy and application. Text styles can be used in layouts and in components to communicate messages or entice users to take an action.
 
-  <div class="grid">
+  <div class="grid xs-two-columns md-three-columns">
     <div>
       <h3>Headline, 2xl</h3>
       <p>The largest headline available. Use in big hero layouts, like Summit or campaign pages. <strong>Reserved for marketing use cases only.</strong></p>

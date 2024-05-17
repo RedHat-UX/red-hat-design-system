@@ -9,19 +9,6 @@ tags:
 <link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
 <link rel="stylesheet" href="{{ '/styles/samp.css' | url }}">
 
-<style>
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: var(--rh-space-2xl, 32px);
-  }
-
-  @container container (min-width: 567px) {
-    .grid {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-</style>
 
 ## Overview
 
@@ -58,7 +45,7 @@ A video thumbnail is a combination of a graphic with a slightly transparent play
 
 A video thumbnail can include either a light or a dark play button, depending on the image underneath. If an image is lighter, use a dark play button for accessibility and vice versa.
 
-<div class="grid">
+<div class="grid sm-two-columns">
   <uxdot-example width-adjustment="172px">
     <img src="{{ './video-button-light.svg' | url }}" alt="Play button on light theme">
   </uxdot-example>

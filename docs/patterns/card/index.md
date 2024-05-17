@@ -16,7 +16,7 @@ importElements:
 
 <style>
   rh-card {
-    display: grid;
+    display: block;
     max-width: 360px;
   }
 

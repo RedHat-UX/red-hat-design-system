@@ -11,33 +11,13 @@ importElements:
 
 <script type="module" src="/assets/javascript/search-results.js"></script>
 
-<style>
-  nav {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--rh-space-2xl, 32px);
-  }
-
-  @container container (min-width: 567px) {
-    nav {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-
-  @container container (min-width: 768px) {
-    nav {
-      grid-template-columns: 1fr 1fr 1fr;
-    }
-  }
-</style>
-
 <section class="results-section">
   <div id="results" hidden></div>
   <ol id="results-list" hidden></ol>
 </section>
 
 <h2>Token Categories</h2>
-<nav>
+<nav class="grid xs-two-columns sm-three-columns">
   {% for category in collections.token %}
   <rh-tile>
     <a slot="headline" href="{{ category.url }}"><h3>{{category.title | capitalize }}</h3></a>

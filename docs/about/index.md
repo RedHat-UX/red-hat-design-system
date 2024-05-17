@@ -26,11 +26,6 @@ tags:
     margin-block: var(--rh-space-2xl, 32px);
   }
 
-  :is(#approach, #fundamentals) .grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--rh-space-2xl, 32px);
-  }
 
   :is(#approach, #fundamentals) .item {
     display: flex;
@@ -104,20 +99,12 @@ tags:
   }
 
   @container container (min-width: 567px) {
-    :is(#approach, #fundamentals) .grid {
-      grid-template-columns: 1fr 1fr;
-    }
-
     #approach .item:nth-child(n) {
       order: unset;
     }
   }
 
-  @container container (min-width: 768px) {
-    :is(#approach, #fundamentals) .grid {
-      gap: var(--rh-space-4xl, 64px);
-    }
-  }
+
 
 </style>
 
@@ -133,7 +120,7 @@ tags:
 <section id="approach">
   <h2>Our approach</h2>
   
-  <div class="grid">
+  <div class="grid sm-two-columns">
     <div class="item">
       <h3>Brand standards</h3>
       <p><a href="https://www.redhat.com/en/about/brand/standards">Red Hat brand standards</a> are the source code for our identity. They govern how we look and sound in all types of media. We follow brand standards to unify Red&nbsp;Hat digital experiences and stay up-to-date with our brand as it grows, improves, and adapts to meet new challenges.</p>
@@ -169,7 +156,7 @@ tags:
 
 <section id="fundamentals">
   <h2>Fundamentals</h2>
-  <div class="grid">
+  <div class="grid sm-two-columns">
     <div class="item">
       <img src="{{ '/assets/about/icon-flexible.svg' | url }}" alt="Flexibility">
       <h3>Flexible</h3>

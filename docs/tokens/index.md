@@ -12,9 +12,6 @@ importElements:
 
 <style>
   .page-overview .container .grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--rh-space--2xl, 32px);
     margin-block: var(--rh-space--2xl, 32px);
   }
 
@@ -25,19 +22,7 @@ importElements:
   rh-tile [slot="headline"] h3,
   rh-tile [slot="image"] {
      margin-block: 0 !important;
-  }
-
-  @container container (min-width: 567px) {
-    .page-overview .container .grid {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-
-  @container container (min-width: 768px) {
-    .page-overview .container .grid {
-      grid-template-columns: 1fr 1fr 1fr;
-    }
-  }  
+  } 
 </style>
 
 ## Introduction
@@ -67,7 +52,7 @@ To install design tokens, please visit our dedicated repo for instructions.
 We want your feedback on our tokens. [Contact us][contact] if there are missing 
 values or if you have an idea for an output format or tool integration.
 
-<nav class="grid">
+<nav class="grid xs-two-columns sm-three-columns">
   <rh-tile compact bleed>
     <uxdot-example slot="image" no-border>
       <img alt="Tokens for border radius, width, color, and more" src="{{ '/tokens/images/design-tokens-category-border.png' | url }}">

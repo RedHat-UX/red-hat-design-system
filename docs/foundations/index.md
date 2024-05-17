@@ -11,29 +11,13 @@ importElements:
 
 <link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css' | url }}">
 
-<style>
-  #grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--rh-space-2xl, 32px);
-    margin-block-start: var(--rh-space-2xl, 32px);
-    margin-block-end: var(--rh-space-5xl, 80px);
-  }
-
-  @container container (min-width: 567px) {
-    #grid {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-</style>
-
 <section>
 
   ## Overview
 
   Foundations are the visual and structural elements of our design system. Foundations were created as the building blocks of all user interface elements. Foundations should be used as blueprints that all components and layouts are created from.
 
-  <div id="grid">
+  <div class="grid sm-two-columns">
     <rh-tile>
       <uxdot-example variant="full" no-border slot="image">
         <img src="{{ '/assets/foundations/color.svg' | url }}" alt="Color">

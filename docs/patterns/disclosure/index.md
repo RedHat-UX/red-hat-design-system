@@ -9,20 +9,6 @@ tags:
 <link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
 <link rel="stylesheet" href="{{ '/styles/samp.css' | url }}">
 
-<style>
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--rh-space-2xl, 32px);
-  }
-
-  @container (min-width: 567px) {
-    .grid {
-      grid-template-columns: 1fr 1fr;
-    } 
-  }
-</style>
-
 ## Overview
 
 A Disclosure toggles the visibility of sections of content. It features one 
@@ -102,7 +88,7 @@ has the caret icon positioned on the left before the section text label
 whereas accordions have the caret icon placed on the right after the section 
 text label.
 
-<div class="grid">
+<div class="grid sm-two-columns">
   <uxdot-example width-adjustment="340px">
     <h4>Disclosure</h4>
     <img src="{{ './disclosure-usage-2.svg' | url }}" alt="Example of a disclosure">

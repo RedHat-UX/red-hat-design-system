@@ -24,24 +24,9 @@ importElements:
 <link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css' | url }}">
 
 <style>
-  .page-patterns .container .grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--rh-space--2xl, 32px);
+  #patterns-nav {
     margin-block: var(--rh-space--2xl, 32px);
   }
-
-  @container container (min-width: 567px) {
-    .page-patterns .container .grid {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-
-  @container container (min-width: 768px) {
-    .page-patterns .container .grid {
-      grid-template-columns: 1fr 1fr 1fr;
-    }
-  }   
 </style>
 
 {# NOTE: all images in this view need to be 340 by 200 px in order to maintain same ratio. #}
@@ -50,7 +35,7 @@ importElements:
 Patterns compose elements and tokens with content and validation rules to 
 create uniform, accessible experiences.
 
-<nav class="grid" aria-label="Patterns">
+<nav id="patterns-nav" class="grid xs-two-columns sm-three-columns" aria-label="Patterns">
 {%- for pattern in collections.pattern -%}
 
   {% if pattern.data.title !== 'Patterns' %}

@@ -51,6 +51,25 @@
     position: relative;
   }
 
+  /*
+  when in a article container
+  where a h2 or uxdot-copy-permalink is used
+  as a section break (no landmark)
+  */
+  .container > :where(uxdot-copy-permalink.h2, h2),
+  /* not when the h2 is a child of a section */
+  .container > :not(section, uxdot-copy-permalink) > :where(uxdot-copy-permalink.h2, h2),
+  /* if a section landmark is used */
+  .container > section {
+    margin-block-start: var(--rh-space-6xl, 96px);
+  }
+
+  /* TODO: this wont work cause <link> or <style> tags are currently injected and claim first-child */
+  /* if a section, h2 or uxdot-copy-permalink is the first child of an article container */
+  .container > :where(uxdot-copy-permalink.h2, h2, section):first-child {
+    margin-block-start: 0;
+  }
+
   @container main (min-width: 567px) {
     aside {
       padding-inline: var(--rh-space-2xl, 32px);

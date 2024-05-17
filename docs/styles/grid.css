@@ -1,0 +1,29 @@
+/* possible need for variant of gap */
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--rh-space-2xl, 32px);
+}
+
+@container container (min-width: 567px) {
+  .grid.xs-two-columns {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@container container (min-width: 768px) {
+  .grid.sm-two-columns {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .grid.sm-three-columns {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@container container (min-width: 992px) {
+  .grid.md-three-columns {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}

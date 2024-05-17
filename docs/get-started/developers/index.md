@@ -13,19 +13,6 @@ subnav:
 order: 20
 ---
 
-<style>
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--rh-space-2xl, 32px)
-  }
-
-  @container (min-width: 567px) {
-    .grid {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-</style>
 
 ## Introduction
 
@@ -38,7 +25,7 @@ Read this section to get started and e-mail [design-system@redhat.com](mailto:de
 
 Our design system libraries and the documentation website offer assets and guidance needed to create digital experiences. Please use these resources to have a better understanding of how to use our design system.
 
-<div class="grid">
+<div class="grid sm-two-columns">
   <div>
     <h3>Foundations</h3>
     <p><a href="foundations">Foundations</a> are how we express our brand through color, space, typography, etc.</p>

@@ -18,19 +18,6 @@ importElements:
 
 <link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
 
-<style>
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--rh-space-2xl, 32px);
-  }
-
-  @container container (min-width: 768px) {
-    .grid {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-</style>
 
 ## Using color
 
@@ -243,7 +230,7 @@ you need a custom theme for a campaign or special project, contact the
 Brand team first. If you need one or more custom design tokens, contact
 the [Design system](https://github.com/RedHat-UX/red-hat-design-system/discussions) team first. 
 
-<div class="grid">
+<div class="grid sm-two-columns">
   <uxdot-best-practice do>
     <uxdot-example slot="image" no-border variant="full" alignment="left">
       <img src="/assets/color/best-practices-custom-themes-correct.svg" alt="Blue submit button, blue default call to action, black tooltip, and blue switch">
@@ -267,7 +254,7 @@ vibration resulting in a poor user experience. If you have a large
 section of color or an image background with low contrast, consider
 using elements and patterns from the desaturated theme instead.
 
-<div class="grid">
+<div class="grid sm-two-columns">
   <uxdot-best-practice do>
     <uxdot-example slot="image" no-border variant="full" alignment="left">
       <img src="/assets/color/best-practices-sufficient-contrast-correct.svg" alt="Examples of a blue button against a light gray background and a red CTA against a black background">

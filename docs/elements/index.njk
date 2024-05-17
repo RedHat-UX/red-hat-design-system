@@ -18,27 +18,8 @@ importElements:
 <link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css' | url }}">
 
 <style>
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--rh-space--2xl, 32px);
-    margin-block: var(--rh-space--2xl, 32px);
-  }
-
   rh-tile h3 {
     margin: 0 !important;
-  }
-
-  @container container (min-width: 567px) {
-    .grid {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-
-  @container container (min-width: 768px) {
-    .grid {
-      grid-template-columns: 1fr 1fr 1fr;
-    }
   }
 </style>
 
@@ -53,7 +34,7 @@ importElements:
   experiences.</p>
 
 
-<nav class="grid" aria-label="Elements">
+<nav class="grid xs-two-columns sm-three-columns" aria-label="Elements">
   {%- for tagName, docs in collections.elementDocs | groupby('tagName') -%}
     {%- set doc = docs[0] -%}
     {%- set slug = doc.slug -%}
