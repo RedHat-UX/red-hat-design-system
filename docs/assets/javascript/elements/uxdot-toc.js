@@ -1,7 +1,5 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css, isServer } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
-
-import { ScreenSizeController } from '@rhds/elements/lib/ScreenSizeController.js';
 
 class UxdotToc extends LitElement {
   static styles = css`
@@ -64,32 +62,73 @@ class UxdotToc extends LitElement {
     nav {
       margin-block-end: var(--rh-space-lg, 16px);
     }
+
+    #expanded {
+      display: none;
+    }
+
+    @media (min-width: 568px) {
+      details {
+        display: none;
+      }
+
+      #expanded {
+        display: block;
+      }
+    }
   `;
 
   static properties = {
     summary: { type: String, attribute: 'summary' },
   };
 
-  #screen = new ScreenSizeController(this);
+  #screen;
+
+  constructor() {
+    super();
+    if (!isServer) {
+      import('@rhds/elements/lib/ScreenSizeController.js').then(screen => {
+        this.#screen = new screen.default(this);
+      });
+    }
+  }
 
   render() {
-    const classes = classMap({ });
-    const { matches } = this.#screen;
-    const sm = matches.has('sm');
+    const classes = classMap({ 'hydrate': isServer });
+    let sm;
+    if (!isServer) {
+      const { matches } = this.#screen;
+      sm = matches.has('sm');
+    }
     return html`
       <div id="container" class=${classes} part="container">
-        ${!sm ? html`
-        <details>
-          <summary id="summary">${this.summary}</summary>
-          <nav aria-describedby="summary">
-            <slot></slot>
-          </nav>
-        </details>
+        ${isServer ? html`
+          <details>
+            <summary id="summary">${this.summary}</summary>
+            <nav aria-describedby="summary">
+              <slot name="details"></slot>
+            </nav>
+          </details>
+          <div id="expanded">
+            <div id="summary">${this.summary}</div>
+            <nav>
+              <slot name="expanded"></slot>
+            </nav>
+          </div>
         ` : html`
-          <div id="summary">${this.summary}</div>
-          <nav>
-            <slot></slot>
-          </nav>
+          ${(!sm && !isServer) ? html`
+            <details>
+              <summary id="summary">${this.summary}</summary>
+              <nav aria-describedby="summary">
+                <slot></slot>
+              </nav>
+            </details>
+          ` : html`
+            <div id="summary">${this.summary}</div>
+            <nav>
+              <slot></slot>
+            </nav>
+          `}
         `}
       </div>
     `;

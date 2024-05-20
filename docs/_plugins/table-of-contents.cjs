@@ -43,7 +43,10 @@ class Item {
     }
     if (this.children.length > 0) {
       markup += `
-                <ol>
+                <ol slot="details">
+                    ${this.children.map(item => item.html()).join('\n')}
+                </ol>
+                <ol slot="expanded">
                     ${this.children.map(item => item.html()).join('\n')}
                 </ol>
             `;
