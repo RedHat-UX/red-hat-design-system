@@ -57,6 +57,7 @@ rh-breadcrumb > ol > li {
   background-repeat: no-repeat;
   background-size: 10px;
   display: inline-block;
+  margin-block-end: var(--rh-space-md, 8px);
   padding-inline-end: var(--rh-breadcrumb-li-padding-inline-end, 42px);
   vertical-align: bottom;
 }
