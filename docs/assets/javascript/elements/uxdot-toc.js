@@ -1,5 +1,4 @@
-import { LitElement, html, css, isServer } from 'lit';
-import { classMap } from 'lit/directives/class-map.js';
+import { LitElement, html, css } from 'lit';
 
 class UxdotToc extends LitElement {
   static styles = css`
@@ -82,54 +81,21 @@ class UxdotToc extends LitElement {
     summary: { type: String, attribute: 'summary' },
   };
 
-  #screen;
-
-  constructor() {
-    super();
-    if (!isServer) {
-      import('@rhds/elements/lib/ScreenSizeController.js').then(screen => {
-        this.#screen = new screen.default(this);
-      });
-    }
-  }
-
   render() {
-    const classes = classMap({ 'hydrate': isServer });
-    let sm;
-    if (!isServer) {
-      const { matches } = this.#screen;
-      sm = matches.has('sm');
-    }
     return html`
-      <div id="container" class=${classes} part="container">
-        ${isServer ? html`
-          <details>
-            <summary id="summary">${this.summary}</summary>
-            <nav aria-describedby="summary">
-              <slot name="details"></slot>
-            </nav>
-          </details>
-          <div id="expanded">
-            <div id="summary">${this.summary}</div>
-            <nav>
-              <slot name="expanded"></slot>
-            </nav>
-          </div>
-        ` : html`
-          ${(!sm && !isServer) ? html`
-            <details>
-              <summary id="summary">${this.summary}</summary>
-              <nav aria-describedby="summary">
-                <slot></slot>
-              </nav>
-            </details>
-          ` : html`
-            <div id="summary">${this.summary}</div>
-            <nav>
-              <slot></slot>
-            </nav>
-          `}
-        `}
+      <div id="container" part="container">
+        <details>
+          <summary id="summary">${this.summary}</summary>
+          <nav aria-describedby="summary">
+            <slot name="details"></slot>
+          </nav>
+        </details>
+        <div id="expanded">
+          <div id="summary">${this.summary}</div>
+          <nav>
+            <slot name="expanded"></slot>
+          </nav>
+        </div>
       </div>
     `;
   }
