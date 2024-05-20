@@ -1,6 +1,8 @@
 rh-breadcrumb {
   /* stylelint-disable-next-line max-line-length */
-  --_breadcrumb-caret-image: var(--rh-breadcrumb-caret-image, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='15' viewBox='0 0 10 15' fill='none'%3E%3Cg clip-path='url(%23clip0_232_19576)'%3E%3Cpath d='M2.5 14.5L0.5 12.5L5.5 7.5L0.5 2.5L2.5 0.5L9.5 7.5L2.5 14.5Z' fill='%23707070'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_232_19576'%3E%3Crect width='10' height='14' fill='white' transform='matrix(-1 0 0 1 10 0.5)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E"));
+  --_breadcrumb-caret-image-default: var(--rh-breadcrumb-caret-image, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='15' viewBox='0 0 10 15' fill='none'%3E%3Cg clip-path='url(%23clip0_232_19576)'%3E%3Cpath d='M2.5 14.5L0.5 12.5L5.5 7.5L0.5 2.5L2.5 0.5L9.5 7.5L2.5 14.5Z' fill='%23000000'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_232_19576'%3E%3Crect width='10' height='14' fill='white' transform='matrix(-1 0 0 1 10 0.5)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E"));
+  /* stylelint-disable-next-line max-line-length */
+  --_breadcrumb-caret-image-subtle: var(--rh-breadcrumb-caret-image-subtle, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='15' viewBox='0 0 10 15' fill='none'%3E%3Cg clip-path='url(%23clip0_232_19576)'%3E%3Cpath d='M2.5 14.5L0.5 12.5L5.5 7.5L0.5 2.5L2.5 0.5L9.5 7.5L2.5 14.5Z' fill='%23707070'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_232_19576'%3E%3Crect width='10' height='14' fill='white' transform='matrix(-1 0 0 1 10 0.5)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E"));
   --_breadcrumb-link-color:
     var(
         --rh-breadcrumb-link-color,
@@ -9,7 +11,12 @@ rh-breadcrumb {
   --_breadcrumb-link-current-page:
     var(
         --rh-breadcrumb-link-current-page,
-        var(--rh-color-gray-60, #4d4d4d)
+        var(--rh-color-text-primary-on-light, #151515)
+      );
+  --_breadcrumb-link-current-page-subtle:
+    var(
+        --rh-breadcrumb-link-current-page-subtle,
+        var(--rh-color-text-secondary-on-light, #4d4d4d)
       );
   --_breadcrumb-link-color-visited:
     var(
@@ -20,6 +27,16 @@ rh-breadcrumb {
     var(
         --rh-breadcrumb-link-color-visited-hover,
         var(--rh-color-interactive-purple-darkest, #21134d)
+      );
+  --_breadcrumb-link-color-focus:
+    var(
+        --rh-breadcrumb-link-color-focus,
+        var(--rh-color-border-interactive-on-light, #0066cc)
+      );
+  --_breadcrumb-link-color-focus-outline-color:
+    var(
+        --rh-breadcrumb-link-color-focus-outline-color,
+        var(--rh-color-border-interactive-on-light, #0066cc)
       );
 
   display: block;
@@ -35,13 +52,17 @@ rh-breadcrumb ol {
 }
 
 rh-breadcrumb > ol > li {
-  background-image: var(--_breadcrumb-caret-image);
+  background-image: var(--_breadcrumb-caret-image-default);
   background-position: calc(100% - 14px) center;
   background-repeat: no-repeat;
-  background-size: 12px;
+  background-size: 10px;
   display: inline-block;
   padding-inline-end: var(--rh-breadcrumb-li-padding-inline-end, 42px);
   vertical-align: bottom;
+}
+
+rh-breadcrumb[variant="subtle"] > ol > li {
+  background-image: var(--_breadcrumb-caret-image-subtle);
 }
 
 rh-breadcrumb > ol > li:first-child {
@@ -65,6 +86,11 @@ rh-breadcrumb > ol > li > a:is(:hover, :focus) {
   text-decoration: underline;
 }
 
+rh-breadcrumb > ol > li > a:is(:focus, :focus-visible) {
+  outline: 2px solid var(--_breadcrumb-link-color-focus-outline-color);
+  border-radius: var(--rh-border-radius-default, 3px);
+}
+
 rh-breadcrumb > ol > li:first-child > a {
   margin-inline-start: 0;
 }
@@ -80,6 +106,11 @@ rh-breadcrumb > ol > li > a:visited:hover {
 rh-breadcrumb > ol > li:last-child,
 rh-breadcrumb > ol > li > a[aria-current="page"] {
   color: var(--_breadcrumb-link-current-page);
+}
+
+rh-breadcrumb[variant="subtle"] > ol > li:last-child,
+rh-breadcrumb[variant="subtle"] > ol > li > a[aria-current="page"] {
+  color: var(--_breadcrumb-link-current-page-subtle);
 }
 
 @container breadcrumbs-list (min-width: 992px) {

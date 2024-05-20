@@ -28,6 +28,8 @@ import styles from './rh-breadcrumb.css';
 export class RhBreadcrumb extends LitElement {
   @property({ type: Array }) items: string[] = [];
 
+  @property({ reflect: true }) variant?: 'subtle';
+
   /**
    * Sets color theme based on parent context
    */
