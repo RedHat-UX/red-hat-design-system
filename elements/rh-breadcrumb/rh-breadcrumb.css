@@ -12,19 +12,19 @@
         --rh-breadcrumb-link-color,
         var(--rh-color-interactive-blue-lighter, #92c5f9)
       );
-  --_breadcrumb-link-current-page:
+  --_breadcrumb-link-color-current-page:
     var(
-        --rh-breadcrumb-link-current-page,
+        --rh-breadcrumb-link-color-current-page,
         var(--rh-color-text-primary-on-dark, #ffffff)
       );
-  --_breadcrumb-link-current-page-subtle:
+  --_breadcrumb-link-color-current-page-subtle:
     var(
-        --rh-breadcrumb-link-current-page-subtle,
+        --rh-breadcrumb-link-color-current-page-subtle,
         var(--rh-color-text-secondary-on-dark, #c7c7c7)
       );
   --_breadcrumb-link-color-visited:
     var(
-        --rh-breadcrumb-link-color,
+        --rh-breadcrumb-link-color-visited,
         var(--rh-color-interactive-purple-lighter, #b6a6e9)
       );
   --_breadcrumb-link-color-visited-hover:
@@ -32,9 +32,9 @@
         --rh-breadcrumb-link-color-visited-hover,
         var(--rh-color-interactive-purple-lightest, #ece6ff)
       );
-  --_breadcrumb-link-color-focus-outline-color:
+  --_breadcrumb-link-focus-outline-color:
     var(
-        --rh-breadcrumb-link-color-focus-outline-color,
+        --rh-breadcrumb-link-focus-outline-color,
         var(--rh-color-border-interactive-on-dark, #92c5f9)
       );
 }

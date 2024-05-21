@@ -8,19 +8,19 @@ rh-breadcrumb {
         --rh-breadcrumb-link-color,
         var(--rh-color-interactive-blue-darker, #0066cc)
       );
-  --_breadcrumb-link-current-page:
+  --_breadcrumb-link-color-current-page:
     var(
-        --rh-breadcrumb-link-current-page,
+        --rh-breadcrumb-link-color-current-page,
         var(--rh-color-text-primary-on-light, #151515)
       );
-  --_breadcrumb-link-current-page-subtle:
+  --_breadcrumb-link-color-current-page-subtle:
     var(
-        --rh-breadcrumb-link-current-page-subtle,
+        --rh-breadcrumb-link-color-current-page-subtle,
         var(--rh-color-text-secondary-on-light, #4d4d4d)
       );
   --_breadcrumb-link-color-visited:
     var(
-        --rh-breadcrumb-link-color,
+        --rh-breadcrumb-link-color-visited,
         var(--rh-color-interactive-purple-darker, #5e40be)
       );
   --_breadcrumb-link-color-visited-hover:
@@ -33,9 +33,9 @@ rh-breadcrumb {
         --rh-breadcrumb-link-color-focus,
         var(--rh-color-border-interactive-on-light, #0066cc)
       );
-  --_breadcrumb-link-color-focus-outline-color:
+  --_breadcrumb-link-focus-outline-color:
     var(
-        --rh-breadcrumb-link-color-focus-outline-color,
+        --rh-breadcrumb-link-focus-outline-color,
         var(--rh-color-border-interactive-on-light, #0066cc)
       );
 
@@ -88,7 +88,7 @@ rh-breadcrumb > ol > li > a:is(:hover, :focus) {
 }
 
 rh-breadcrumb > ol > li > a:is(:focus, :focus-visible) {
-  outline: 2px solid var(--_breadcrumb-link-color-focus-outline-color);
+  outline: 2px solid var(--_breadcrumb-link-focus-outline-color);
   border-radius: var(--rh-border-radius-default, 3px);
 }
 
@@ -106,11 +106,10 @@ rh-breadcrumb > ol > li > a:visited:hover {
 
 rh-breadcrumb > ol > li:last-child,
 rh-breadcrumb > ol > li > a[aria-current="page"] {
-  color: var(--_breadcrumb-link-current-page);
+  color: var(--_breadcrumb-link-color-current-page);
 }
 
 rh-breadcrumb[variant="subtle"] > ol > li:last-child,
 rh-breadcrumb[variant="subtle"] > ol > li > a[aria-current="page"] {
-  color: var(--_breadcrumb-link-current-page-subtle);
-}
+  color: var(--_breadcrumb-link-color-current-page-subtle);
 }
