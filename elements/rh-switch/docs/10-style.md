@@ -1,6 +1,6 @@
 ## Style
 
-A Switch resembles a slider and includes a text label. When activated, the track background changes color and the handle changes position. If a user needs to toggle multiple Switches, they can be stacked on top of each other.
+A Switch resembles a slider and includes a status message. When activated, the track background changes color and the handle changes position. If a user needs to toggle multiple Switches, they can be stacked on top of each other.
 
 ### Anatomy
 
@@ -11,7 +11,7 @@ A Switch resembles a slider and includes a text label. When activated, the track
 
 1. Track
 2. Handle
-3. Text label
+3. Status message
 {.example-notes}
 
 ## Theme
@@ -31,16 +31,16 @@ A Switch is available in both light and dark themes.
 
 ## Configuration
 
-A Switch is the same height as the text label and both are horizontally aligned as well.
+A Switch is the same height as the status message and both are horizontally aligned as well.
 
 <!-- add image -->
 {% example palette="light",
             alt="",
             src="../" %}
 
-### Text labels
+### Status messages
 
-A text label can be positioned to the right or left of a Switch.
+A status message can be positioned to the right or left of a Switch.
 
 <!-- add image -->
 {% example palette="light",
@@ -58,7 +58,7 @@ Space values remain the same at all viewport sizes.
 
 ## States
 
-A Switch and the text label count as the same selectable object.
+A Switch and the status message cx count as the same selectable object.
 
 {% alert title="Helpful tip", state="info" %}
 The visual appearance of a Switch does not change unless toggled.

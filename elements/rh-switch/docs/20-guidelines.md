@@ -61,10 +61,10 @@ Deciding whether to use a Switch vs. other selection controls can be confusing. 
 
 A Switch displays a state through different methods and locations.
 
-- The Switch text label indicates if the Switch is on or off
-- The form text label indicates what the Switch turns on or off
-- The check icon is used in place of the Switch text label if space is limited
-- The Switch text label is used with a check icon to add clarity if necessary
+- The Switch status message indicates if the Switch is on or off
+- The form status message indicates what the Switch turns on or off
+- The check icon is used in place of the Switch status message if space is limited
+- The Switch status message is used with a check icon to add clarity if necessary
 
 <!-- add image -->
 {% example palette="light",
@@ -98,11 +98,11 @@ The recommended maximum character count is listed below and includes spaces.
     </thead>
     <tbody>
       <tr>
-        <td scope="col" data-label="Element">Switch text label</td>
+        <td scope="col" data-label="Element">Switch status message</td>
         <td scope="col" data-label="Character count">20</td>
       </tr>
       <tr>
-        <td scope="col" data-label="Element">Form text label</td>
+        <td scope="col" data-label="Element">Form status message</td>
         <td scope="col" data-label="Character count">30</td>
       </tr>
     </tbody>
@@ -122,7 +122,7 @@ Use a stack of Switches for situations where multiple independent options need t
 
 ## Behavior
 
-A Switch is successfully toggled when the handle slides to the other side of the track and the text label changes. When a user toggles a Switch, the effects should start immediately without needing to save. If immediate results are not achievable, another element should be used instead (see table above in Usage section).
+A Switch is successfully toggled when the handle slides to the other side of the track and the status message changes. When a user toggles a Switch, the effects should start immediately without needing to save. If immediate results are not achievable, another element should be used instead (see table above in Usage section).
 
 <!-- add image -->
 {% example palette="light",
@@ -131,9 +131,9 @@ A Switch is successfully toggled when the handle slides to the other side of the
 
 ## Best practices
 
-### No text labels
+### No status messages
 
-To avoid confusion as to what a Switch will do, always include some kind of text label.
+To avoid confusion as to what a Switch will do, always include some kind of status message.
 
 <div class="best-practices-grid">
     <div>

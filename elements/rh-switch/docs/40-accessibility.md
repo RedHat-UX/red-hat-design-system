@@ -51,7 +51,7 @@ Grouped Switches are adequately spaced for optimal touch targets.
 A Switch should communicate the following to users.
 
 - If a Switch is on or off
-- What the text labels say
+- What the status messages say
 - What happens when a Switch is toggled
 
 {% include 'accessibility/ariaguide.md' %}
