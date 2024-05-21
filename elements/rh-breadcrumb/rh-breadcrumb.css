@@ -15,7 +15,7 @@
   --_breadcrumb-link-current-page:
     var(
         --rh-breadcrumb-link-current-page,
-        var(--rh-color-text-secondary-on-dark, #c7c7c7)
+        var(--rh-color-text-primary-on-dark, #ffffff)
       );
   --_breadcrumb-link-current-page-subtle:
     var(
