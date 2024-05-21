@@ -4,10 +4,11 @@ A Switch resembles a slider and includes a status message. When activated, the t
 
 ### Anatomy
 
-<!-- add image -->
+<!-- add image 
 {% example palette="light",
             alt="",
             src="../" %}
+            -->
 
 1. Track
 2. Handle
@@ -18,7 +19,7 @@ A Switch resembles a slider and includes a status message. When activated, the t
 
 A Switch is available in both light and dark themes.
 
-<!-- add image -->
+<!-- add image 
 <div class="multi-column--min-400-wide">
 {% example palette="light",
             alt="",
@@ -28,6 +29,7 @@ A Switch is available in both light and dark themes.
             alt="",
             src="../" %}
 </div>
+-->
 
 ## Configuration
 
