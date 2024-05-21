@@ -66,10 +66,11 @@ A Switch displays a state through different methods and locations.
 - The check icon is used in place of the Switch status message if space is limited
 - The Switch status message is used with a check icon to add clarity if necessary
 
-<!-- add image -->
+<!-- add image 
 {% example palette="light",
             alt="",
             src="../" %}
+            -->
 
 ## Writing content
 
@@ -79,10 +80,11 @@ In general, users scan and do not read everything, so use keywords and avoid lon
 
 Text labels describe what a Switch does when turned on or off, so they should be short and direct, not neutral or ambiguous. Ensure the message is clear when a Switch is toggled to the On or Off position.
 
-<!-- add image -->
+<!-- add image 
 {% example palette="light",
             alt="",
             src="../" %}
+            -->
 
 ### Character count
 
@@ -115,19 +117,21 @@ The recommended maximum character count is listed below and includes spaces.
 
 Use a stack of Switches for situations where multiple independent options need to be turned on or off.
 
-<!-- add image -->
+<!-- add image 
 {% example palette="light",
             alt="",
             src="../" %}
+            -->
 
 ## Behavior
 
 A Switch is successfully toggled when the handle slides to the other side of the track and the status message changes. When a user toggles a Switch, the effects should start immediately without needing to save. If immediate results are not achievable, another element should be used instead (see table above in Usage section).
 
-<!-- add image -->
+<!-- add image 
 {% example palette="light",
             alt="",
             src="../" %}
+            -->
 
 ## Best practices
 
@@ -137,16 +141,18 @@ To avoid confusion as to what a Switch will do, always include some kind of stat
 
 <div class="best-practices-grid">
     <div>
-        <!-- add image -->
+        <!-- add image 
         <img slot="header" src="" alt="">
         <h4 class="correct">Do</h4>
         <p>Use the color variants already available for elements and patterns.</p>
+        -->
     </div>
     <div>
-        <!-- add image -->
+        <!-- add image 
         <img slot="header" src="" alt="">
         <h4 class="wrong">Don't</h4>
         <p>Do not make it unknown to users what a Switch will do when toggled.</p>
+        -->
     </div>
 </div>
 
@@ -157,16 +163,18 @@ A Switch controls binary options, not opposing ones. A binary option represents 
 
 <div class="best-practices-grid">
     <div>
-        <!-- add image -->
+        <!-- add image 
         <img slot="header" src="" alt="">
         <h4 class="correct">Do</h4>
         <p>Use a Toggle group to choose between opposing options.</p>
+        -->
     </div>
     <div>
-        <!-- add image -->
+        <!-- add image 
         <img slot="header" src="" alt="">
         <h4 class="wrong">Don't</h4>
         <p>Do not use a Switch to control opposing options.</p>
+        -->
     </div>
 </div>
 
@@ -176,15 +184,17 @@ Switches can be used in a list to toggle multiple independent options.
 
 <div class="best-practices-grid">
     <div>
-        <!-- add image -->
+        <!-- add image 
         <img slot="header" src="" alt="">
         <h4 class="correct">Do</h4>
         <p>Use Switches in a list only if the effects from toggling each Switch are immediate.</p>
+        -->
     </div>
     <div>
-        <!-- add image -->
+        <!-- add image 
         <img slot="header" src="" alt="">
         <h4 class="wrong">Don't</h4>
         <p>Do not use Switches in a list if a user has to save to see the effects.</p>
+        -->
     </div>
 </div>

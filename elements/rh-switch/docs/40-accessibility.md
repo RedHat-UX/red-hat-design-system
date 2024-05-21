@@ -2,10 +2,11 @@
 
 Users should have the ability to move focus to a Switch and toggle it on or off using their keyboard.
 
-<!-- add image -->
+<!-- add image 
 {% example palette="light",
             alt="",
             src="../" %}
+            -->
 
 <rh-table>
   <table>
@@ -32,19 +33,21 @@ Users should have the ability to move focus to a Switch and toggle it on or off 
 
 A logical focus order helps keyboard users operate our websites. Elements need to receive focus in an order that preserves meaning, therefore the focus order should make sense and not jump around randomly. If Switches are stacked, focus lands on each as it moves from top to bottom. Each Switch should have the ability to be toggled.
 
-<!-- add image -->
+<!-- add image 
 {% example palette="light",
             alt="",
             src="../" %}
+            -->
 
 ## Touch targets
 
 Grouped Switches are adequately spaced for optimal touch targets.
 
-<!-- add image -->
+<!-- add image 
 {% example palette="light",
             alt="",
             src="../" %}
+            -->
 
 ## Screen reader guidelines
 

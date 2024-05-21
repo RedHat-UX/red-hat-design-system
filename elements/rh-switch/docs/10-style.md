@@ -33,28 +33,31 @@ A Switch is available in both light and dark themes.
 
 A Switch is the same height as the status message and both are horizontally aligned as well.
 
-<!-- add image -->
+<!-- add image 
 {% example palette="light",
             alt="",
             src="../" %}
+-->
 
 ### Status messages
 
 A status message can be positioned to the right or left of a Switch.
 
-<!-- add image -->
+<!-- add image
 {% example palette="light",
             alt="",
             src="../" %}
+-->
 
 ## Space
 
 Space values remain the same at all viewport sizes.
 
-<!-- add image -->
+<!-- add image
 {% example palette="light",
             alt="",
             src="../" %}
+ -->
 
 ## States
 
@@ -64,10 +67,11 @@ A Switch and the status message cx count as the same selectable object.
 The visual appearance of a Switch does not change unless toggled.
 {% endalert %}
 
-<!-- add image -->
+<!-- add image 
 {% example palette="light",
             alt="",
             src="../" %}
+-->
 
 1. On
 2. On with check
