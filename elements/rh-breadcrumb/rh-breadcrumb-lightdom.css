@@ -113,9 +113,4 @@ rh-breadcrumb[variant="subtle"] > ol > li:last-child,
 rh-breadcrumb[variant="subtle"] > ol > li > a[aria-current="page"] {
   color: var(--_breadcrumb-link-current-page-subtle);
 }
-
-@container breadcrumbs-list (min-width: 992px) {
-  rh-breadcrumb > ol > li:last-child {
-    max-width: none;
-  }
 }
