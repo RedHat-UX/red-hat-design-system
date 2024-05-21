@@ -1,4 +1,4 @@
 ---
 "@rhds/elements": patch
 ---
-`<rh-card>`: hide header container when there is no header content
+`<rh-card>`: hide header, body, or footer regions when they have no content
