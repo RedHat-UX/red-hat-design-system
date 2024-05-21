@@ -8,14 +8,14 @@ importElements:
 
 <link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
 
-<section>
-  <h2>Beta release notes</h2>
+<section aria-labelledby="aria__heading-beta-release-notes">
+  <h2 id="aria__heading-beta-release-notes">Beta release notes</h2>
 
   <a href="{{ '/release-notes' | url }}">Return to Release notes</a>
 </section>
 
-<section>
-  <h2>January 2023</h2>
+<section aria-labelledby="aria__heading-jan-2023">
+  <h2 id="aria__heading-jan-2023">January 2023</h2>
 
   <h3>Changed</h3>
 
@@ -56,8 +56,8 @@ importElements:
   </rh-table>
 </section>
 
-<section>
-  <h2>December 2022</h2>
+<section aria-labelledby="aria__heading-dec-2022">
+  <h2 id="aria__heading-dec-2022">December 2022</h2>
 
   <h3>Added</h3>
 
@@ -107,8 +107,8 @@ importElements:
   </rh-table>
 </section>
 
-<section>
-  <h2>September 2022</h2>
+<section aria-labelledby="aria__heading-sept-2022">
+  <h2 id="aria__heading-sept-2022">September 2022</h2>
 
   <h3>Added</h3>
 
@@ -166,8 +166,8 @@ importElements:
 
 </section>
 
-<section>
-  <h2>May 2022</h2>
+<section aria-labelledby="aria__heading-may-2022">
+  <h2 id="aria__heading-may-2022">May 2022</h2>
 
   <h3>Added</h3>
 
@@ -206,8 +206,8 @@ importElements:
 
 </section>
 
-<section>
-  <h2>February 2022</h2>
+<section aria-labelledby="aria__heading-feb-2022">
+  <h2 id="aria__heading-feb-2022">February 2022</h2>
 
   <h3>Added</h3>
 
@@ -280,8 +280,8 @@ importElements:
   </rh-table>
 </section>
 
-<section>
-  <h2>June 2021</h2>
+<section aria-labelledby="aria__heading-june-2021">
+  <h2 id="aria__heading-june-2021">June 2021</h2>
 
   <h3>Added</h3>
 
@@ -307,9 +307,9 @@ importElements:
   </rh-table>
 
 </section>
-<section>
+<section aria-labelledby="aria__heading-mar-2021">
   
-  <h2>March 2021</h2>
+  <h2 id="aria__heading-mar-2021">March 2021</h2>
 
   <h3>Added</h3>
 
@@ -364,9 +364,9 @@ importElements:
   </rh-table>
 
 </section>
-<section>
+<section aria-labelledby="aria__heading-oct-2020">
   
-  <h2>October 2020</h2>
+  <h2 id="aria__heading-oct-2020">October 2020</h2>
 
   <h3>Added</h3>
 

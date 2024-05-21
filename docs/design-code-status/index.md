@@ -9,7 +9,7 @@ importElements:
 
 <link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
 
-<section>
+<section aria-labelledby="overview">
 
   ## Overview
   
@@ -119,7 +119,7 @@ importElements:
   </rh-table>
 </section>
 
-<section>
+<section aria-labelledby="web-component-status">
 
   ## Web component status
 

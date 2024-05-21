@@ -17,7 +17,7 @@ importElements:
   }
 </style>  
 
-<section>
+<section aria-labelledby="overview">
 
   ## Overview
 
@@ -25,7 +25,7 @@ importElements:
 
 </section>
 
-<section>
+<section aria-labelledby="style">
 
   ## Style
 
@@ -56,7 +56,7 @@ importElements:
 
 </section>
 
-<section>
+<section aria-labelledby="typography">
 
   ## Typography
   
@@ -337,7 +337,7 @@ importElements:
 </section>
 
 
-<section>
+<section aria-labelledby="components-and-patterns">
 
   ## Components and patterns
 
@@ -458,7 +458,7 @@ importElements:
 </section>
 
 
-<section>
+<section aria-labelledby="layout">
 
   ## Layout
 
@@ -514,7 +514,7 @@ importElements:
 </section>
 
 
-<section>
+<section aria-labelledby="best-practices">
 
   ## Best practices
   
@@ -532,7 +532,7 @@ importElements:
 
 </section>
 
-<section>
+<section aria-labelledby="spacers-in-xd">
 
   ## Spacers in XD
 

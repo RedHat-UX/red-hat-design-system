@@ -12,7 +12,7 @@ importElements:
 <link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css' | url }}">
 
 
-<section>
+<section aria-labelledby="overview">
 
   ## Overview
 
@@ -75,7 +75,7 @@ importElements:
 </section>
 
 
-<section>
+<section aria-labelledby="getting-started-with-personalization">
 
   ## Getting started with personalization
   
@@ -95,7 +95,7 @@ importElements:
 </section>
 
 
-<section>
+<section aria-labelledby="pattern-1-dialog">
   
   ## Pattern 1: Dialog { id="pattern-1-dialog" }
 
@@ -132,7 +132,7 @@ importElements:
 </section>
 
 
-<section>
+<section aria-labelledby="pattern-2-sticky-banner">
 
   ## Pattern 2: Sticky banner { id="pattern-2-sticky-banner" }
 
@@ -171,7 +171,7 @@ importElements:
 </section>
 
 
-<section>
+<section aria-labelledby="pattern-3-sticky-card">
   
   ## Pattern 3: Sticky card { id="pattern-3-sticky-card" }
 
@@ -220,7 +220,7 @@ importElements:
 
 <hr>
 
-<section>
+<section aria-labelledby="pattern-4-announcement">
 
   ## Pattern 4: Announcement { id="pattern-4-announcement" }
 
@@ -254,7 +254,7 @@ importElements:
 </section>
 
 
-<section>
+<section aria-labelledby="pattern-5-in-page-card">
 
   ## Pattern 5: In-page card { id="pattern-5-in-page-card" }
 
@@ -296,7 +296,7 @@ importElements:
 
 <hr>
 
-<section>
+<section aria-labelledby="pattern-6-active-tab">
 
   ## Pattern 6: Active tab { id="pattern-6-active-tab" }
 
@@ -331,7 +331,7 @@ importElements:
 </section>
 
 
-<section>
+<section aria-labelledby="pattern-7-inline-alert">
 
   ## Pattern 7: Inline alert { id="pattern-7-inline-alert" }
   
@@ -360,7 +360,7 @@ importElements:
 </section>
 
 
-<section>
+<section aria-labelledby="custom-patterns">
   <h2 id="custom-patterns">Custom patterns</h2>
   <p>Custom patterns are not pre-established targeting opportunities. If you are interested in creating a custom targeting experience, please reach out to the <a href="mailto:digital-design-system@redhat.com ">design system team</a> or <a href="https://docs.google.com/forms/d/e/1FAIpQLSft-6oHhI5d2wO-oEeBuT23wiYPpxOH2UKLH9ZkRswjby2CSg/viewform?usp=sf_link">via this form</a> with the details of your request and they will help you to establish the framework for the new design.</p>
 </section>

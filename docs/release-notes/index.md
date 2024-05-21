@@ -34,7 +34,7 @@ We are continually making changes in order to improve and grow the Red Hat Desig
   <a slot="headline" href="https://github.com/RedHat-UX/red-hat-design-system/releases">Changelog</a>
 </rh-tile>
 
-<section>
+<section aria-labelledby="version-1.4.0">
 
 ## Version 1.4.0
 Released April 22, 2024
@@ -58,7 +58,7 @@ Released April 22, 2024
 
 </section>
 
-<section>
+<section aria-labelledby="version-1.3.0">
 
 ## Version 1.3.0
 Released January 11, 2024
@@ -106,7 +106,7 @@ Released January 11, 2024
 
 </section>
 
-<section>
+<section aria-labelledby="version-1.2.0">
 
 ## Version 1.2.0
 Released October 16, 2023
@@ -158,7 +158,7 @@ Released October 16, 2023
 
 </section>
 
-<section>
+<section aria-labelledby="version-1.1.0">
 
 ## Version 1.1.0
 Released July 5, 2023
@@ -202,7 +202,7 @@ Released July 5, 2023
 
 </section>
 
-<section>
+<section aria-labelledby="version-1.0.0">
 
 ## Version 1.0.0
 Released April 3, 2023
@@ -303,7 +303,7 @@ Released April 3, 2023
 
 </section>
 
-<section>
+<section aria-labelledby="older-versions">
 
 ## Older versions
 

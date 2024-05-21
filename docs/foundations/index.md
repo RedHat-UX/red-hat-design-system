@@ -11,7 +11,7 @@ importElements:
 
 <link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css' | url }}">
 
-<section>
+<section aria-labelledby="overview">
 
   ## Overview
 
@@ -49,10 +49,8 @@ importElements:
   </div>
 </section>
 
-<section>
-  <h2>Make a request</h2>
-   <p>To request a new foundation or if updates need to be made to an existing foundation, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
-</section>
+## Make a request
 
+To request a new foundation or if updates need to be made to an existing foundation, [contact us](mailto:digital-design-system@redhat.com).
 
 {% include 'partials/component/feedback.html' %}

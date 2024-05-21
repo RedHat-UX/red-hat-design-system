@@ -115,8 +115,8 @@ tags:
 
 <hr>
 
-<section id="approach">
-  <h2>Our approach</h2>
+<section id="approach" aria-labelledby="aria__heading-our-approach">
+  <h2 id="aria__heading-our-approach">Our approach</h2>
   
   <div class="grid sm-two-columns">
     <div class="item">
@@ -152,8 +152,8 @@ tags:
 
 <hr>
 
-<section id="fundamentals">
-  <h2>Fundamentals</h2>
+<section id="fundamentals" aria-labelledby="aria__heading-fundamentals">
+  <h2 id="aria__heading-fundamentals">Fundamentals</h2>
   <div class="grid sm-two-columns">
     <div class="item">
       <img src="{{ '/assets/about/icon-flexible.svg' | url }}" alt="Flexibility">

@@ -69,7 +69,7 @@ importElements:
 </style>
 
 
-<section>
+<section aria-labelledby="overview">
   
   ## Overview
 
@@ -77,7 +77,7 @@ importElements:
 
 </section>
 
-<section>
+<section aria-labelledby="get-started">
 
   ## Get started
 
@@ -85,7 +85,7 @@ importElements:
 
 </section>
 
-<section>
+<section aria-labelledby="style">
 
   ## Style
   
@@ -111,7 +111,7 @@ importElements:
   </div>
 </section>
 
-<section>
+<section aria-labelledby="text-options">
 
   ## Text options
 
@@ -177,7 +177,7 @@ for (i = (numElementsReturned - 1); i >= 0; i--) {
 
 </section>
 
-<section>
+<section aria-labelledby="scale">
 
   ## Scale
   
@@ -379,7 +379,7 @@ for (i = (numElementsReturned - 1); i >= 0; i--) {
 </section>
 
 
-<section>
+<section aria-labelledby="usage">
 
   ## Usage
 
@@ -454,7 +454,7 @@ for (i = (numElementsReturned - 1); i >= 0; i--) {
 
 </section>
 
-<section>
+<section aria-labelledby="best-practices">
 
   ## Best practices
   
@@ -490,7 +490,7 @@ for (i = (numElementsReturned - 1); i >= 0; i--) {
 
 </section>
 
-<section>
+<section aria-labelledby="behavior">
 
   ## Behavior
   
@@ -511,7 +511,7 @@ for (i = (numElementsReturned - 1); i >= 0; i--) {
   </uxdot-example>
 </section>
 
-<section>
+<section aria-labelledby="interaction-states">
   
   ## Interaction states
 

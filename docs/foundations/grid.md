@@ -11,7 +11,7 @@ importElements:
 
 <link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
 
-<section>
+<section aria-labelledby="overview">
 
   ## Overview
 
@@ -38,7 +38,7 @@ importElements:
 </section>
 
 
-<section>
+<section aria-labelledby="usage">
 
   ## Usage
 
@@ -98,7 +98,7 @@ importElements:
 </section>
 
 
-<section>
+<section aria-labelledby="best-practices">
 
   ## Best practices
   
@@ -119,7 +119,7 @@ importElements:
 
 
 
-<section>
+<section aria-labelledby="responsive-design">
 
   ## Responsive design
   
@@ -152,7 +152,7 @@ importElements:
 </section>
 
 
-<section>
+<section aria-labelledby="breakpoints">
 
   ## Breakpoints
 
@@ -212,5 +212,3 @@ importElements:
   <h2>Foundations</h2>
   <p>To learn how to use our other foundations in your designs, visit the <a href="/foundations">foundations</a> section.</p>
 </uxdot-feedback>
-
-
