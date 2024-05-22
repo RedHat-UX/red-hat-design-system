@@ -154,22 +154,18 @@ describe('<rh-tabs>', function() {
       beforeEach(async function() {
         body = document.querySelector('body')!;
         body.setAttribute('dir', 'rtl');
-        /* TODO: find a better way then this nasty hack to get the
-        element to re-render after adding dir attr to body */
-        clone = element.cloneNode(true) as RhTabs;
-        element.remove();
-        document.body.appendChild(clone);
+        element.connectedCallback();
         await allUpdates(element);
       });
 
       it('previousTab should be disabled', async function() {
-        const previousTab: HTMLButtonElement = clone.shadowRoot!.querySelector('#previousTab')!;
+        const previousTab: HTMLButtonElement = element.shadowRoot!.querySelector('#previousTab')!;
         expect(previousTab.disabled).to.be.equal(true);
       });
 
       it('click on nextTab should scroll Left', async function() {
-        const nextTab: HTMLButtonElement = clone.shadowRoot!.querySelector('#nextTab')!;
-        const firstTab = clone.querySelector('rh-tab')!;
+        const nextTab: HTMLButtonElement = element.shadowRoot!.querySelector('#nextTab')!;
+        const firstTab = element.querySelector('rh-tab')!;
         const preClickPosition = firstTab.getBoundingClientRect().x;
         nextTab?.click();
         await aTimeout(50);
