@@ -89,8 +89,8 @@ rh-breadcrumb > ol > li > a:is(:hover, :focus, :active) {
 }
 
 rh-breadcrumb > ol > li > a:is(:focus, :focus-visible) {
-  outline: 2px solid var(--_breadcrumb-link-focus-outline-color);
   border-radius: var(--rh-border-radius-default, 3px);
+  outline: 2px solid var(--_breadcrumb-link-focus-outline-color);
 }
 
 rh-breadcrumb > ol > li:first-child > a {
