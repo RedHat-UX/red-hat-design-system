@@ -66,11 +66,9 @@ A Switch displays a state through different methods and locations.
 - The check icon is used in place of the Switch status message if space is limited
 - The Switch status message is used with a check icon to add clarity if necessary
 
-<!-- add image 
 {% example palette="light",
-            alt="",
-            src="../" %}
-            -->
+            alt="four variants of switch",
+            src="../switch-variants.svg" %}
 
 ## Writing content
 
@@ -78,13 +76,20 @@ In general, users scan and do not read everything, so use keywords and avoid lon
 
 ### Clarity of language
 
-Text labels describe what a Switch does when turned on or off, so they should be short and direct, not neutral or ambiguous. Ensure the message is clear when a Switch is toggled to the On or Off position.
+Status messages describe what a Switch does when turned on or off, so they should be short and direct, not neutral or ambiguous.
 
-<!-- add image 
-{% example palette="light",
-            alt="",
-            src="../" %}
-            -->
+<div class="best-practices-grid">
+    <div>
+        <img slot="header" src="/switch-language-clarity-do.svg" alt="">
+        <h4 class="correct">Do</h4>
+        <p>Ensure the message is clear when a Switch is toggled to the On or Off position..</p>
+    </div>
+    <div>
+        <img slot="header" src="switch-language-clarity-do-not.svg" alt="">
+        <h4 class="wrong">Don't</h4>
+        <p>Do not use a status message that does not make the switch state clear.</p>
+    </div>
+</div>
 
 ### Character count
 
@@ -117,42 +122,35 @@ The recommended maximum character count is listed below and includes spaces.
 
 Use a stack of Switches for situations where multiple independent options need to be turned on or off.
 
-<!-- add image 
 {% example palette="light",
-            alt="",
-            src="../" %}
-            -->
+            alt="four switches, half of which are on, stacked in a column",
+            src="../switch-layout-stacking.svg" %}
 
 ## Behavior
 
 A Switch is successfully toggled when the handle slides to the other side of the track and the status message changes. When a user toggles a Switch, the effects should start immediately without needing to save. If immediate results are not achievable, another element should be used instead (see table above in Usage section).
 
-<!-- add image 
 {% example palette="light",
-            alt="",
-            src="../" %}
-            -->
+            alt="One switch that is on, next to one that is off",
+            src="../switch-behavior.svg" %}
 
 ## Best practices
 
-### No status messages
+### No status message or form label
 
-To avoid confusion as to what a Switch will do, always include some kind of status message.
+To avoid confusion as to what a Switch will do, always include some kind of status message or a form label.
 
 <div class="best-practices-grid">
     <div>
-        <!-- add image 
-        <img slot="header" src="" alt="">
+        <img slot="header" src="../switch-best-practice-no-status-message-do.svg" alt="Switches with Bluetooth as a form label and/or a status message">
         <h4 class="correct">Do</h4>
-        <p>Use the color variants already available for elements and patterns.</p>
-        -->
+        <p>Include a form label or status message to indicate to a user what will happen when a Switch is toggled.</p>
     </div>
     <div>
-        <!-- add image 
-        <img slot="header" src="" alt="">
+    <div>
+        <img slot="header" src="../switch-best-practice-no-status-message-do-not.svg" alt="Two switches without a form label or status message">
         <h4 class="wrong">Don't</h4>
         <p>Do not make it unknown to users what a Switch will do when toggled.</p>
-        -->
     </div>
 </div>
 
@@ -161,22 +159,22 @@ To avoid confusion as to what a Switch will do, always include some kind of stat
 
 A Switch controls binary options, not opposing ones. A binary option represents a single selection that is either on or off.
 
+<!-- add images
 <div class="best-practices-grid">
     <div>
-        <!-- add image 
         <img slot="header" src="" alt="">
         <h4 class="correct">Do</h4>
         <p>Use a Toggle group to choose between opposing options.</p>
-        -->
+        
     </div>
     <div>
-        <!-- add image 
         <img slot="header" src="" alt="">
         <h4 class="wrong">Don't</h4>
         <p>Do not use a Switch to control opposing options.</p>
-        -->
+        
     </div>
 </div>
+-->
 
 ### Controlling multiple options
 
@@ -184,17 +182,13 @@ Switches can be used in a list to toggle multiple independent options.
 
 <div class="best-practices-grid">
     <div>
-        <!-- add image 
-        <img slot="header" src="" alt="">
+        <img slot="header" src="../switch-best-practice-multiple-options-do.svg" alt="Four switches stacked vertically with half of them turned on">
         <h4 class="correct">Do</h4>
         <p>Use Switches in a list only if the effects from toggling each Switch are immediate.</p>
-        -->
     </div>
     <div>
-        <!-- add image 
-        <img slot="header" src="" alt="">
+        <img slot="header" src="../switch-best-practice-multiple-options-do-not.svg" alt="Four switches stacked vertically with a save button below them>
         <h4 class="wrong">Don't</h4>
         <p>Do not use Switches in a list if a user has to save to see the effects.</p>
-        -->
     </div>
 </div>

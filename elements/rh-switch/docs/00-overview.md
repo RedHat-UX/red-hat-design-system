@@ -2,7 +2,9 @@
 
 {{ tagName | getElementDescription }}
 
-<!-- add image -->
+{% example palette="light",
+            alt="example of switch that's on",
+            src="../switch-overview.svg" %}
 
 {% repoStatusList %}
 
