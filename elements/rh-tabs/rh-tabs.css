@@ -186,6 +186,10 @@ button:disabled {
   color: var(--_overflow-button-disabled-text-color);
 }
 
+.rtl :is(#previousTab, #nextTab) pf-icon {
+  rotate: 180deg;
+}
+
 @media screen and (min-width: 768px) {
   /* VERTICAL TABS */
   :host([vertical]) [part="container"] {
