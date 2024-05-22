@@ -29,6 +29,10 @@ import styles from './rh-breadcrumb.css';
  *         The current page's color for the `subtle` variant
  *         {@default `var(--rh-color-text-secondary-on-light, #4d4d4d)`}
  *
+ * @cssprop --rh-breadcrumb-link-color-hover
+ *         The link color on hover/focus/active for each anchor in the list
+ *         {@default `var(--rh-color-interactive-blue-darkest, #003366)`}
+ *
  * @cssprop --rh-breadcrumb-link-color-visited
  *         The visited color for each breadcrumb link
  *         {@default `var(--rh-color-interactive-purple-darker, #5e40be)`}
@@ -36,10 +40,6 @@ import styles from './rh-breadcrumb.css';
  * @cssprop --rh-breadcrumb-link-color-visited-hover
  *         The visited color on hover for each breadcrumb link
  *         {@default `var(--rh-color-interactive-purple-darkest, #21134d)`}
- *
- * @cssprop --rh-breadcrumb-link-color-focus
- *         The link color on focus for each anchor in the list
- *         {@default `var(--rh-color-border-interactive-on-light, #0066cc)`}
  *
  * @cssprop --rh-breadcrumb-link-focus-outline-color
  *         The link focus outline color

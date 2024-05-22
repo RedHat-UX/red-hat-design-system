@@ -22,6 +22,11 @@
         --rh-breadcrumb-link-color-current-page-subtle,
         var(--rh-color-text-secondary-on-dark, #c7c7c7)
       );
+  --_breadcrumb-link-color-hover:
+    var(
+        --rh-breadcrumb-link-color-hover,
+        var(--rh-color-interactive-blue-lightest, #b9dafc)
+      );
   --_breadcrumb-link-color-visited:
     var(
         --rh-breadcrumb-link-color-visited,

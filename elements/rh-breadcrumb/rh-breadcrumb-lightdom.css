@@ -18,6 +18,11 @@ rh-breadcrumb {
         --rh-breadcrumb-link-color-current-page-subtle,
         var(--rh-color-text-secondary-on-light, #4d4d4d)
       );
+  --_breadcrumb-link-color-hover:
+    var(
+        --rh-breadcrumb-link-color-hover,
+        var(--rh-color-interactive-blue-darkest, #003366)
+      );
   --_breadcrumb-link-color-visited:
     var(
         --rh-breadcrumb-link-color-visited,
@@ -27,11 +32,6 @@ rh-breadcrumb {
     var(
         --rh-breadcrumb-link-color-visited-hover,
         var(--rh-color-interactive-purple-darkest, #21134d)
-      );
-  --_breadcrumb-link-color-focus:
-    var(
-        --rh-breadcrumb-link-color-focus,
-        var(--rh-color-border-interactive-on-light, #0066cc)
       );
   --_breadcrumb-link-focus-outline-color:
     var(
@@ -83,7 +83,8 @@ rh-breadcrumb > ol > li > a {
   text-decoration: none;
 }
 
-rh-breadcrumb > ol > li > a:is(:hover, :focus) {
+rh-breadcrumb > ol > li > a:is(:hover, :focus, :active) {
+  color: var(--_breadcrumb-link-color-hover);
   text-decoration: underline;
 }
 
