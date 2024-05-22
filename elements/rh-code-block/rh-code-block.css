@@ -163,10 +163,10 @@
   place-self: start center;
   height: 100%;
   position: relative;
+}
 
-  & rh-tooltip {
-    display: block;
-  }
+#actions rh-tooltip {
+  display: block;
 }
 
 #expand {
