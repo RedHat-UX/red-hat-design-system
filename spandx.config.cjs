@@ -25,7 +25,7 @@ async function injectLocalSources(_req, res, next) {
         '@rhds/elements': 'http://localhost:8000/rhds.min.js',
         ...Object.fromEntries(elements.map(dir => [
           `@rhds/elements/${dir}/${dir}.js`,
-          `http://localhost:8000/elements/${dir}/${dir}.ts`
+          `http://localhost:8000/elements/${dir}/${dir}.ts`,
         ])),
       },
     });
@@ -39,8 +39,8 @@ async function injectLocalSources(_req, res, next) {
         }
 
         chunk = chunk
-          .replace('</head>', `<script type="importmap">${importMapJson}</script><script async src="https://ga.jspm.io/npm:es-module-shims@1.5.1/dist/es-module-shims.js" crossorigin="anonymous"></script>\n</head>`)
-          .replace('</body>', `${proxyContents}\n\n</body>`);
+            .replace('</head>', `<script type="importmap">${importMapJson}</script><script async src="https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js" crossorigin="anonymous"></script>\n</head>`)
+            .replace('</body>', `${proxyContents}\n\n</body>`);
 
         // res.setHeader('Content-Length', chunk.length);
       }
@@ -68,27 +68,27 @@ module.exports = {
 
     '/node_modules/': {
       host: 'http://localhost:8000',
-      path: '/node_modules/'
+      path: '/node_modules/',
     },
     '/en/node_modules/': {
       host: 'http://localhost:8000',
-      path: '/node_modules/'
+      path: '/node_modules/',
     },
 
     '@rhds/elements/': {
       host: 'http://localhost:8000',
       path: '/elements/',
-      watch: './elements/'
+      watch: './elements/',
     },
     '/en/elements/': {
       host: 'http://localhost:8000',
       path: '/elements/',
-      watch: './elements/'
+      watch: './elements/',
     },
     '/elements/': {
       host: 'http://localhost:8000',
       path: '/elements/',
-      watch: './elements/'
+      watch: './elements/',
     },
     '/lib/': {
       host: 'http://localhost:8000',
@@ -100,7 +100,7 @@ module.exports = {
     },
     '/': {
       host: 'https://www.redhat.com',
-      watch: './'
+      watch: './',
     },
   },
   bs: {

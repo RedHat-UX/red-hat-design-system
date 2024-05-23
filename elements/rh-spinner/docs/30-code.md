@@ -1,6 +1,7 @@
-{% renderInstallation %}{% endrenderInstallation %}
+{% renderInstall %}{% endrenderInstall %}
 
-{% band header="Usage" %}
+## Usage
+
 ### Default/Large Spinner
 ```html
 <rh-spinner></rh-spinner>
@@ -15,6 +16,5 @@
 ```html
 <rh-spinner size="sm"></rh-spinner>
 ```
-{% endband %}
 
 {% renderCodeDocs hideDescription=true %}{% endrenderCodeDocs %}

@@ -1,16 +1,16 @@
 ## Overview
 {{ tagName | getElementDescription }}
 
+{% repoStatusList %}
+
 {% example palette="light",
            alt="Example of a spinner",
            src="spinner-sample.png" %}
 
 
 
-## Sample component
+## Sample element
 <rh-spinner>Loading...</rh-spinner>
-
-
 
 ## When to use
   - When loading a section is expected to take fewer than ten seconds
@@ -24,6 +24,4 @@
     View the `<rh-spinner>` demo in a new tab
   {% endcta %}
 
-
-{% repoStatus type="Element" %}
-
+{% repoStatusChecklist %}

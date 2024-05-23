@@ -2151,8 +2151,17 @@
 </rh-audio-player>
 
 <h2>Even with more headings</h2>
+
 <p>This last heading is allowed to go back up to h2, but the player should still take h3 as its root heading level.</p>
 
-<link rel="stylesheet" href="demo.css">
 <link rel="stylesheet" href="../rh-audio-player-lightdom.css">
-<script type="module" src="customization.js"></script>
+
+<script type="module">
+  import '@rhds/elements/rh-audio-player/rh-audio-player.js';
+</script>
+
+<style>
+  [data-demo="rh-audio-player"] {
+    padding: var(--rh-space-xl, 24px);
+  }
+</style>

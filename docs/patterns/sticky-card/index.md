@@ -8,12 +8,10 @@ tags:
 
 Sticky cards slide into view at a certain scroll position and then anchor themselves to the edge of a browser window. They stay in one place as content scrolls underneath until a user dismisses them.
 
-## Sample component
+## Sample pattern
 {% example palette="none",
           alt="Sticky card",
           src="./sticky-card.svg" %}
-
-{% repoStatus %}
 
 ## Style
 
@@ -21,7 +19,7 @@ A sticky card acts as a small container for a limited amount of content.
 
 {% example palette="lightest",
            alt="Sticky card naming",
-           src="./sticky-card-style.svg" %}
+           src="./sticky-card-style.png" %}
 
 ### Theme
 
@@ -77,7 +75,19 @@ A sticky card has limited vertical height, so keep content short and only includ
 
 {% example palette="lightest",
         alt="Sticky card content sections",
-        src="./sticky-card-content.svg" %}
+        src="./sticky-card-content.png" %}
+
+
+### Character count
+  The recommended maximum character count for the elements of a sticky card are listed below and include spaces.
+
+  | Element {style="width: 50%" } | Character count |
+  |-------------------------------|-----------------|
+  | Title                         | 20              |
+  | Headline                      | 50              | 
+  | Body text                     | 120             | 
+  | Footer                        | 55              |
+
 
 ### Alignment
 

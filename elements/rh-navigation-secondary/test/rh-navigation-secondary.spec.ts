@@ -1,7 +1,7 @@
 import type { RhNavigationSecondaryOverlay } from '@rhds/elements/rh-navigation-secondary/rh-navigation-secondary-overlay.js';
 import type {
   RhNavigationSecondaryDropdown,
-  SecondaryNavDropdownExpandEvent
+  SecondaryNavDropdownExpandEvent,
 } from '@rhds/elements/rh-navigation-secondary/rh-navigation-secondary-dropdown.js';
 
 import { expect, assert, fixture, aTimeout, oneEvent } from '@open-wc/testing';
@@ -34,9 +34,9 @@ describe('<rh-navigation-secondary>', async function() {
   it('should upgrade', async function() {
     const klass = customElements.get('rh-navigation-secondary');
     expect(element)
-      .to.be.an.instanceOf(klass)
-      .and
-      .to.be.an.instanceOf(RhNavigationSecondary);
+        .to.be.an.instanceOf(klass)
+        .and
+        .to.be.an.instanceOf(RhNavigationSecondary);
   });
 
   it('should remove role="navigation" after upgrade', async function() {
@@ -225,6 +225,25 @@ describe('<rh-navigation-secondary>', async function() {
       } else {
         assert.fail('container', 'null', 'No container found, did element upgrade?');
       }
+    });
+  });
+
+  describe('current page indicator', function() {
+    let dropdown: RhNavigationSecondaryDropdown;
+
+    beforeEach(async function() {
+      element = await fixture<RhNavigationSecondary>(NAV);
+      await element.updateComplete;
+      dropdown = element.querySelector('rh-navigation-secondary-dropdown') as RhNavigationSecondaryDropdown;
+    });
+
+    it('should have a current page indicator on a dropdown that contains a link set to current page', async function() {
+      const link = dropdown.querySelector('[slot="menu"] a');
+      const container = dropdown.shadowRoot?.querySelector('#container');
+      link.setAttribute('aria-current', 'page');
+      await dropdown.updateComplete;
+      await aTimeout(50);
+      expect(container.classList.contains('highlight')).to.be.true;
     });
   });
 });

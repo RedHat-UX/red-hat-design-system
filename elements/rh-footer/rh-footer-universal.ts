@@ -64,8 +64,13 @@ export class RhFooterUniversal extends LitElement {
     let footer: HTMLElement | null | undefined = node?.closest('footer');
     let h2: HTMLElement | null | undefined = null;
     while (!!node && !footer) {
-      h2 = h2 || node?.closest('h2') || node?.querySelector('h2') || node?.shadowRoot?.querySelector('h2');
-      footer = node?.closest('footer') || node?.querySelector('footer') || node?.shadowRoot?.querySelector('footer');
+      h2 = h2
+        || node?.closest('h2')
+        || node?.querySelector('h2')
+        || node?.shadowRoot?.querySelector('h2');
+      footer = node?.closest('footer')
+        || node?.querySelector('footer')
+        || node?.shadowRoot?.querySelector('footer');
       node = node.parentElement;
     }
 

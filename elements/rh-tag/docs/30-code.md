@@ -1,9 +1,9 @@
-{% renderInstallation %}{% endrenderInstallation %}
+{% renderInstall %}{% endrenderInstall %}
 
-{% band header="Usage" %}
+## Usage
+
 ```html
 <rh-tag color="red">Red Hat</rh-tag>
 ```
-{% endband %}
 
 {% renderCodeDocs hideDescription=true %}{% endrenderCodeDocs %}

@@ -24,9 +24,9 @@ describe('<rh-transcript>', function() {
     it('should upgrade', function() {
       const klass = customElements.get('rh-transcript');
       expect(transcript)
-        .to.be.an.instanceOf(klass)
-        .and
-        .to.be.an.instanceOf(RhTranscript);
+          .to.be.an.instanceOf(klass)
+          .and
+          .to.be.an.instanceOf(RhTranscript);
     });
   });
 

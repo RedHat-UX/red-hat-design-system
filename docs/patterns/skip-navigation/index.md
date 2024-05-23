@@ -6,15 +6,17 @@ tags:
 
 ## Overview
 
+  {% alert title="Warning", state="warning" %}
+  The skip navigation pattern is being deprecated. Please use the <a href="../elements/skip-link/">Skip link</a> element instead.
+  {% endalert %}
+  
 Skip navigation is a styled link that appears at the top of a page when the Tab key is pressed. It bypasses the navigation and jumps users down to the main content when selected.
 
-## Sample component
+## Sample pattern
 
 {% example palette="none",
            alt="Skip navigation",
            src="./skip-nav.svg" %}
-
-{% repoStatus %}
 
   ## Style
 

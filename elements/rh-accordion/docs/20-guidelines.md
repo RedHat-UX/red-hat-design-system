@@ -1,7 +1,9 @@
 ## Usage 
 Use an accordion to organize a large amount of content into sections. This allows users to scan through critical information first and then access additional information when needed. Users can also compare information by expanding multiple panels simultaneously.
+
 ### When to use an accordion 
 Using an accordion provides an easy way to organize content while reducing page scrolling, but at the expense of hiding information or burdening users with more clicks. There is a chance that important information will be missed or not immediately noticed by users. Therefore, if reading important information is critical to the user experience or if important information requires more focus and less clicking, it is advised to not use an accordion.
+
 ### Accordion vs. disclosure 
 An accordion is used to organize important information whereas a [Disclosure](/patterns/dislosure) can be used to organize secondary information that might not be critical to read or impact the experience. An accordion can also accommodate multiple sections of content, whereas a disclosure can only accommodate one.
 
@@ -34,7 +36,7 @@ Title text should have fewer characters to help users make sense of what the con
 
 | Element {style="width: 50%" } | Character count |
 | ----------------------------- | --------------- |
-| Title text                    | 45              |
+| Title text                    | 65              |
 
 ### Panel content 
 When a panel is expanded, some content must appear below the title text and chevron icon. Content can include text, cards, images, etc. Text blocks should not exceed `750px` to maintain optimal readability.
@@ -51,7 +53,7 @@ Title text can be two lines on small breakpoints, but no more.
           src="../accordion-long-title-text.png" %}
 
 ## Layout 
-The width of an accordion can be adjusted on large breakpoints to fit less columns if necessary.
+The width of an accordion can be adjusted on large breakpoints to fit fewer columns if necessary.
 
 {% example palette="light",
           alt="A thinner accordion placed on a 12-column grid and occupying eight grid columns",

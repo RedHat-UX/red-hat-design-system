@@ -3,12 +3,10 @@
   visitors to orient themselves and move through a website. It is persistent on 
   every page to ensure a consistent user experience across websites.
 
-
-## Sample component
+## Sample element
   ![Primary navigation component sample]({{ './primary-nav-example.png' | url 
   }}){style="--inline-img-max-width:1000px;"}
 
-{% repoStatus %}
 
 {#
 
@@ -58,4 +56,3 @@
     triggered or function as links. They can be unique to one website or global 
     across many websites.
   {.multi-column--min-400-wide style="padding:0;list-style-type:none;"}
-

@@ -2,13 +2,11 @@
   Progress steps guide a user through a task with multiple sequential steps 
   toward the completion of a linear process.
 
-
-## Sample component
+## Sample element
   ![Progress steps component sample]({{ 
   './progress-steps-sample.svg' | url 
   }}){style="--inline-img-max-width:687px;"}
 
-{% repoStatus %}
 
 {#
 
@@ -20,4 +18,3 @@
   {% endcta %}
 
 #}
-

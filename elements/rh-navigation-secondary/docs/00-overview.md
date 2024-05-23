@@ -1,7 +1,9 @@
 ## Overview
 {{ tagName | getElementDescription }}
 
-## Sample component
+{% repoStatusList %}
+
+## Sample element
 
   {% example palette="light",
       alt="Image of two stacked secondary navigations; one for large breakpoints and the other for small breakpoints",
@@ -18,5 +20,4 @@
   - When you need to provide a more granular navigation that is specific to a topic
   - When you need to prevent other navigations from getting overloaded
 
-  {% repoStatus type="Element" %}
-
+{% repoStatusChecklist %}

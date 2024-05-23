@@ -1,9 +1,9 @@
-{% renderInstallation %}{% endrenderInstallation %}
+{% renderInstall %}{% endrenderInstall %}
 
-{% band header="Usage" %}
-  ```html
-    <rh-avatar></rh-avatar>
-  ```
-{% endband %}
+## Usage
+
+```html
+  <rh-avatar></rh-avatar>
+```
 
 {% renderCodeDocs hideDescription=true %}{% endrenderCodeDocs %}

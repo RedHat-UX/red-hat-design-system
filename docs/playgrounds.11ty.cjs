@@ -8,12 +8,12 @@ module.exports = class Playground {
       pagination: {
         data: 'elements',
         size: 1,
-      }
+      },
     };
   }
 
   render({ pagination, playgrounds }) {
     const [{ tagName }] = pagination.items;
-    return `export const configure = project => project.config = ${JSON.stringify(playgrounds[tagName], null, 2)};`;
+    return `export const config = ${JSON.stringify(playgrounds[tagName], null, 2)};`;
   }
 };

@@ -9,13 +9,11 @@ tags:
 
 Links are navigational elements that allow a user to move between content, pages, and websites.
 
-## Sample component
+## Sample pattern
 
 {% example palette="none",
            alt="Link component examples",
            src="./example-links.svg" %}
-
-{% repoStatus %}
 
 ## Demo
 
@@ -104,6 +102,10 @@ Link content needs to be written clearly in order to be understood, therefore wr
 {% example palette="lightest",
            alt="Link component usage, content",
            src="./usage-content.svg" %}
+
+### Character count
+
+There is no maximum character count for a link. The link text should be long enough to be descriptive and no longer.
 
 ### Images
 

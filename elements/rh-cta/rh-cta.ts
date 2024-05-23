@@ -7,8 +7,8 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import { DirController } from '../../lib/DirController.js';
 
+import { type ColorPalette } from '../../lib/context/color/provider.js';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import style from './rh-cta.css';
 
@@ -41,7 +41,15 @@ function isButton(element: Element): element is HTMLButtonElement {
  *
  * @summary     Directs users to other pages or displays extra content
  * @slot
- *              We expect an anchor tag, `<a>` with an `href`, to be the first child inside `rh-cta` element. Less preferred but allowed for specific use-cases include: `<button>` (note however that the `button` tag is not supported for the default CTA styles).
+ *              We expect an anchor tag, `<a>` with an `href`, to be the first child inside `rh-cta` element. Less preferred but
+ *              allowed for specific use-cases include: `<button>` (note however that the `button` tag is not supported for the
+ *              default CTA styles).
+ * @attr        color-palette
+ *              [**Deprecated**] intended for use in elements that have slotted descendants, will be removed in a future release.
+ *              - Sets color palette, which affects the element's styles as well as descendants' color theme. Overrides
+ *              parent color context. Your theme will influence these colors so check there first if you are seeing inconsistencies.
+ *              See [CSS Custom Properties](#css-custom-properties) for default values.
+ *              {@deprecated color-palette intended for usage in elements that have slotted descendants}
  * @csspart     container - container element for slotted CTA
  * @cssprop     {<color>} --rh-cta-color
  *              Sets the cta color
@@ -124,15 +132,6 @@ export class RhCta extends LitElement {
   @property({ reflect: true }) icon?: string;
 
   /**
-   * Sets color palette, which affects the element's styles as well as descendants' color theme.
-   * Overrides parent color context.
-   * Your theme will influence these colors so check there first if you are seeing inconsistencies.
-   * See [CSS Custom Properties](#css-custom-properties) for default values
-   */
-  @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
-
-  /**
    * Sets color theme based on parent context
    */
   @colorContextConsumer() private on?: ColorTheme;
@@ -152,16 +151,48 @@ export class RhCta extends LitElement {
     return !this.hasAttribute('variant');
   }
 
+  // START DEPRECATION WARNING
+  // note: remove ColorPalette type, and property decorator import above
+  /**
+   * @deprecated do not use the color-palette attribute: Use themable containers (e.g. rh-surface or rh-card) instead
+   */
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
+
+  #mo = new MutationObserver(() => this.#onMutation());
+
+  connectedCallback(): void {
+    super.connectedCallback();
+    this.#mo.observe(this, { attributes: true, attributeFilter: ['color-palette'] });
+  }
+
+  disconnectedCallback(): void {
+    super.disconnectedCallback();
+    this.#mo.disconnect();
+  }
+
+  #onMutation() {
+    this.#logger.warn(
+      'The color-palette attribute is deprecated and will be removed in a future release.'
+    );
+  }
+  // END DEPRECATION WARNING
+
   render() {
     const rtl = this.#dir.dir === 'rtl';
-    const { on = '' } = this;
+    // START DEPRECATION WARNING
+    // note: remove on from classMap below
+    const dark = this.colorPalette?.includes('dark') ? 'dark' : '';
+    const on = this.on ?? dark;
+    // END DEPRECATION WARNING
     const svg = !!this.#isDefault;
     const icon = !!this.icon;
     const iconOrSvg = !!this.#isDefault || !!this.icon;
     return html`
-      <span id="container" part="container" class="${classMap({ rtl, [on]: !!on, icon, svg })}">
-        <slot @slotchange=${this.firstUpdated}></slot>${!iconOrSvg ? '' : this.icon ? html`
-        <pf-icon icon=${this.icon} size="md" set="far"></pf-icon>` : html`<svg xmlns="http://www.w3.org/2000/svg"
+      <span id="container" part="container" class="${classMap({ rtl, [on]: !!on, icon, svg })}">${this.variant === 'brick' && this.icon ? html`
+        <pf-icon icon=${this.icon} size="md" set="far"></pf-icon>` : ''}
+        <slot @slotchange=${this.firstUpdated}></slot>${!iconOrSvg ? '' : this.variant !== 'brick' && this.icon ? html`
+        <pf-icon icon=${this.icon} size="md" set="far"></pf-icon>` : this.variant ? '' : html`
+        <svg xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 31.56 31.56" focusable="false" width="1em" aria-hidden="true">
           <path d="M15.78 0l-3.1 3.1 10.5 10.49H0v4.38h23.18l-10.5 10.49 3.1 3.1 15.78-15.78L15.78 0z" />
         </svg>`}
@@ -169,7 +200,7 @@ export class RhCta extends LitElement {
     `;
   }
 
-  firstUpdated() {
+  override firstUpdated() {
     let [cta] = this.shadowRoot?.querySelector('slot')?.assignedElements() ?? [];
 
     while (cta instanceof HTMLSlotElement) {

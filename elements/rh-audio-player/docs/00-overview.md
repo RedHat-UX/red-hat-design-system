@@ -1,7 +1,9 @@
 ## Overview
 {{ tagName | getElementDescription }}
 
-## Sample component
+{% repoStatusList %}
+
+## Sample element
 <h3 hidden></h3>
 
 <rh-audio-player lang="en-US"
@@ -2641,4 +2643,4 @@
 - When you want to feature audio content without directing users to other pages
 - When you want to offer users with reduced hearing abilities a listening alternative using a transcript
 
-{% repoStatus type="Element" %}
+{% repoStatusChecklist %}

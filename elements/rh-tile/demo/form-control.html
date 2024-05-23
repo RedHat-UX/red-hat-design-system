@@ -1,0 +1,27 @@
+<form id="form">
+  <rh-tile-group radio>
+    <rh-tile name="radio" value="1">Radio 1</rh-tile>
+    <rh-tile name="radio" value="2">Radio 2</rh-tile>
+  </rh-tile-group>
+  <rh-tile-group checkable>
+    <rh-tile name="check" value="1">Check 1</rh-tile>
+    <rh-tile name="check" value="2">Check 2</rh-tile>
+  </rh-tile-group>
+  <rh-button type="submit">Submit</rh-button>
+  <output name="output"></output>
+</form>
+
+<script type="module">
+  import '@rhds/elements/rh-button/rh-button.js';
+  import '@rhds/elements/rh-tile/rh-tile-group.js';
+  const form = document.getElementById('form');
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const data = new FormData(form);
+    form.output.value = JSON.stringify(Array.from(data.entries()).reduce((acc, [k, v]) => ({
+      ...acc, [k]: k in acc ? [acc[k], v].flat() : v,
+    }), {}), null, 2);
+  });
+</script>
+
+<link rel="stylesheet" href="../rh-tile-lightdom.css">

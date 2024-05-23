@@ -8,12 +8,10 @@ tags:
 
 A Sticky banner slides into view at a certain scroll position and then anchors itself to the bottom edge of a browser window. It stays in one place as content scrolls underneath until a user dismisses them.
 
-## Sample component
+## Sample pattern
 {% example palette="none",
            alt="Sticky banner",
            src="./sticky-banner.svg" %}
-
-{% repoStatus %}
 
 ## Style
 

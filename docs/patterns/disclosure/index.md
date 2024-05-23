@@ -10,7 +10,7 @@ A Disclosure toggles the visibility of sections of content. It features one
 panel that consists of a caret icon and a section text label that collapses or 
 expands to reveal more information.
 
-## Sample component
+## Sample pattern
 
 <rh-accordion>
   <rh-accordion-header>
@@ -29,7 +29,6 @@ expands to reveal more information.
   </rh-accordion-panel>
 </rh-accordion>
 
-{% repoStatus %}
 
 ## Style
 
@@ -108,6 +107,13 @@ When the panel is expanded, it contains a content area under the caret icon and
 section text label. It may contain the same elements that can also be used in 
 other sections of a page, like text, cards, images, etc. To maintain optimal 
 readability, text shouldn’t exceed eight grid columns.
+
+### Character count
+The label should have fewer characters to help users make sense of what the content will be when they expand a content area.
+
+| Element {style="width: 50%" } | Character count |
+| ----------------------------- | --------------- |
+| Label                         | 65              |
 
 ### Jump links
 
@@ -218,7 +224,7 @@ content is included.
 {% example palette="light",
            class="centered",
            alt="Example of a disclosure on mobile",
-           src="./disclosure-responsive-3.svg" %}
+           src="./disclosure-responsive-3.png" %}
 
 ## Interaction states
 

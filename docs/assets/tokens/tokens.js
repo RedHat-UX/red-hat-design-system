@@ -4,26 +4,15 @@ import '@rhds/elements/rh-cta/rh-cta.js';
 import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 import '@rhds/elements/rh-footer/rh-footer-universal.js';
 
-import { toast } from '../toast.js';
-
 // search bar
-import '/assets/uxdot-search.js';
-document
-  .getElementById('search-input')
-  .addEventListener('focus', async function() {
-    const { init } = await import('/assets/search-tokens.js');
-    init(document.getElementById('search-tokens'));
-  }, { once: true });
+import '/assets/elements/uxdot-search.js';
 
-// copy buttons
-for (const button of document.querySelectorAll('.copy-button')) {
-  button.addEventListener('click', async function(event) {
-    const text = event.target.closest('[data-copy]')?.dataset?.copy ?? button.textContent;
-    const message = text.trim();
-    await navigator.clipboard.writeText(message);
-    toast({ heading: 'Copied', message });
-  });
-}
+document
+    .getElementById('search-input')
+    .addEventListener('focus', async function() {
+      const { init } = await import('/assets/search-tokens.js');
+      init(document.getElementById('search-tokens'));
+    }, { once: true });
 
 // colour variants
 for (const details of document.querySelectorAll('.variants details')) {
@@ -31,5 +20,3 @@ for (const details of document.querySelectorAll('.variants details')) {
     event.target.closest('tr.variants')?.classList.toggle('open', event.target.open);
   });
 }
-
-

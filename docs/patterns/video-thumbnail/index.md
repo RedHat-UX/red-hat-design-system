@@ -8,12 +8,10 @@ tags:
 
 A Video thumbnail is a graphical preview of a video overlayed with a play button. When it’s selected, a video player modal will be displayed so a user can watch the video at a larger size.
 
-## Sample component
+## Sample pattern
 {% example palette="none",
            alt="Video thumbnail",
            src="./video-thumbnail.svg" %}
-
-{% repoStatus %}
 
 ## Style
 
@@ -61,6 +59,11 @@ A video thumbnail can be used in most layouts that have enough space to accommod
 ### Caption
 
 An optional descriptor caption can be placed underneath the video thumbnail, it can be left- or center-aligned, depending on how the video is oriented.
+
+### Character counts
+
+A caption should be limited to 150 characters.
+
 
 ## Best practices
 

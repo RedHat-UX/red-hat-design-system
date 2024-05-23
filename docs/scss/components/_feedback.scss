@@ -1,4 +1,4 @@
-@use '../__core/variables' as *;
+@use "../__core/variables" as *;
 
 .feedback:is(.section) {
   margin-block-start: var(--rh-space-5xl, 80px);

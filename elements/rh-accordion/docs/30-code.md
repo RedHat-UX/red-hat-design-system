@@ -1,6 +1,7 @@
-{% renderInstallation %}{% endrenderInstallation %}
+{% renderInstall %}{% endrenderInstall %}
 
-{% band header="Usage" %}
+## Usage
+
 ```html
 <rh-accordion>
   <rh-accordion-header>
@@ -23,7 +24,6 @@
   </rh-accordion-panel>
 </rh-accordion>
 ```
-{% endband %}
  
 {% renderCodeDocs hideDescription=true %}{% endrenderCodeDocs %}
 

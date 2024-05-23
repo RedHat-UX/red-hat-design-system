@@ -3,16 +3,12 @@
 }
 
 #container {
-  border-inline-start: 3px solid transparent;
-  border-inline-end: 1px solid transparent;
+  border-inline-start: var(--rh-border-width-lg, 3px) solid transparent;
+  border-inline-end: var(--rh-border-width-sm, 1px) solid transparent;
   display: block;
   height: 100%;
 }
 
-/*
- * Move expanded back to an attribute if we decide
- * that we are going to abstract this component
- */
 #container.expanded {
   border-inline-start-color: var(--rh-color-text-brand-on-light, #ee0000);
   border-inline-end-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
@@ -26,6 +22,11 @@
   position: relative;
   gap: calc(var(--rh-font-size-body-text-md, 1rem) / 2);
   background-color: var(--_context-background-color);
+}
+
+#container.highlight ::slotted([slot="link"]),
+::slotted([slot="link"][aria-current="page"]) {
+  border-block-start-color: var(--_current-active-child-border-color, #ee0000) !important;
 }
 
 ::slotted([slot="link"]):after {
@@ -60,5 +61,5 @@
 
   ::slotted([slot="link"][aria-expanded="true"]):after {
     --_chevron-color: var(--rh-color-text-primary-on-light, #151515) !important;
-  } 
+  }
 }

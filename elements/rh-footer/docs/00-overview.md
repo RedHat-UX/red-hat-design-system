@@ -1,7 +1,9 @@
 ## Overview
 {{ tagName | getElementDescription }}
 
-## Sample component
+{% repoStatusList %}
+
+## Sample element
 <rh-footer data-analytics-region="page-footer">
   <a slot="logo" href="https://redhat.com/en" data-analytics-category="Footer" data-analytics-text="Logo">
     <img alt="Red Hat logo" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" loading="lazy" />
@@ -92,4 +94,4 @@
  - When you want to give users persistent access to secondary content outside of the navigation
  - When you need a place to put copyright or legal information
 
-{% repoStatus type="Element" %}
+ {% repoStatusChecklist %}

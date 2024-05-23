@@ -5,7 +5,6 @@ const path = require('node:path');
 const _slugify = require('slugify');
 const slugify = typeof _slugify === 'function' ? _slugify : _slugify.default;
 const capitalize = require('capitalize');
-const { glob } = require('glob');
 const exec = require('node:util').promisify(require('node:child_process').exec);
 const cheerio = require('cheerio');
 const RHDSAlphabetizeTagsPlugin = require('./alphabetize-tags.cjs');
@@ -28,7 +27,9 @@ function demoPaths(content) {
       const el = $(this);
       const attr = el.attr('href') ? 'href' : 'src';
       const val = el.attr(attr);
-      if (!val) { return; }
+      if (!val) {
+        return;
+      }
       if (!val.startsWith('http') && !val.startsWith('/') && !val.startsWith('#')) {
         el.attr(attr, `${isNested ? '../' : ''}${val}`);
       } else if (val.startsWith('/elements/rh-')) {
@@ -45,33 +46,12 @@ const LIGHTDOM_HREF_RE = /href="\.(?<pathname>.*-lightdom\.css)"/g;
 const LIGHTDOM_PATH_RE = /href="\.(.*)"/;
 
 /**
- * @this {{outputPath: string, inputPath: string}}
- * @param {string} content
- */
-function lightdomCss(content) {
-  const { outputPath, inputPath } = this;
-  if (inputPath === './docs/elements/demos.html' ) {
-    const matches = content.match(LIGHTDOM_HREF_RE);
-    if (matches) {
-      for (const match of matches) {
-        const [, path] = match.match(LIGHTDOM_PATH_RE) ?? [];
-        const { pathname } = new URL(path, `file:///${outputPath}`);
-        content = content.replace(`.${path}`, pathname
-          .replace('/_site/elements/', '/assets/packages/@rhds/elements/elements/rh-')
-          .replace('/demo/', '/'));
-      }
-    }
-  }
-  return content;
-}
-
-/**
  * @param {string | number | Date} dateStr
  */
 function prettyDate(dateStr, options = {}) {
   const { dateStyle = 'medium' } = options;
   return new Intl.DateTimeFormat('en-US', { dateStyle })
-    .format(new Date(dateStr));
+      .format(new Date(dateStr));
 }
 
 function getTagNameSlug(tagName, config) {
@@ -148,18 +128,52 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
 
   const filesToCopy = getFilesToCopy();
   eleventyConfig.addPassthroughCopy(filesToCopy, {
-    filter: /** @param {string} path */path => !path.endsWith('.html'),
+    filter: /** @param {string} path pathname */path => !path.endsWith('.html'),
   });
 
   eleventyConfig.addTransform('demo-subresources', demoPaths);
 
-  eleventyConfig.addTransform('demo-lightdom-css', lightdomCss);
+  eleventyConfig.addTransform('demo-lightdom-css', async function(content) {
+    const { outputPath, inputPath } = this;
+    const { pfeconfig } = eleventyConfig?.globalData ?? {};
+    const { aliases } = pfeconfig;
+
+    if (inputPath === './docs/elements/demos.html' ) {
+      const tagNameMatch = outputPath.match(/\/elements\/(?<tagName>[-\w]+)\/demo\//);
+      if (tagNameMatch) {
+        const { tagName } = tagNameMatch.groups;
+
+        // slugify the value of each key in aliases creating a new cloned copy
+        const modifiedAliases = Object.fromEntries(Object.entries(aliases).map(([key, value]) => [
+          slugify(key, { strict: true, lower: true }),
+          value,
+        ]));
+
+        // does the tagName exist in the aliases object?
+        const key = Object.keys(modifiedAliases).find(key => modifiedAliases[key] === tagName);
+
+        const prefixedTagName = `${pfeconfig?.tagPrefix}-${tagName}`;
+        const redirect = { new: key ?? prefixedTagName, old: tagName };
+        const matches = content.match(LIGHTDOM_HREF_RE);
+        if (matches) {
+          for (const match of matches) {
+            const [, path] = match.match(LIGHTDOM_PATH_RE) ?? [];
+            const { pathname } = new URL(path, `file:///${outputPath}`);
+            content = content.replace(`.${path}`, pathname
+                .replace(`/_site/elements/${redirect.old}/`, `/assets/packages/@rhds/elements/elements/${redirect.new}/`)
+                .replace('/demo/', '/'));
+          }
+        }
+      }
+    }
+    return content;
+  });
 
   eleventyConfig.addFilter('getTitleFromDocs', function(docs) {
-    return docs.find(x => x.docsPage?.title)?.alias ??
-      docs[0]?.alias ??
-      docs[0]?.docsPage?.title ??
-      eleventyConfig.getFilter('deslugify')(docs[0]?.slug);
+    return docs.find(x => x.docsPage?.title)?.alias
+      ?? docs[0]?.alias
+      ?? docs[0]?.docsPage?.title
+      ?? eleventyConfig.getFilter('deslugify')(docs[0]?.slug);
   });
 
   /** get the element overview from the manifest */
@@ -192,10 +206,40 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
       return {
         name: x,
         url: slug === x ? `/patterns/${slug}` : `/elements/${slug}`,
-        text: pfeconfig.aliases[x] || deslugify(slug)
+        text: pfeconfig.aliases[x] || deslugify(slug),
       };
     }).sort((a, b) => a.text < b.text ? -1 : a.text > b.text ? 1 : 0);
     return related;
+  });
+
+  eleventyConfig.addFilter('makeSentenceCase', function(value) {
+    return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
+  });
+
+  eleventyConfig.addCollection('sortedColor', async function(collectionApi) {
+    const colorCollection = collectionApi.getFilteredByTags('color');
+    return colorCollection.sort((a, b) => {
+      if (a.data.order > b.data.order) {
+        return 1;
+      } else if (a.data.order < b.data.order) {
+        return -1;
+      } else {
+        return 0;
+      }
+    });
+  });
+
+  eleventyConfig.addCollection('sortedDevelopers', async function(collectionApi) {
+    const developersCollection = collectionApi.getFilteredByTags('developers');
+    return developersCollection.sort((a, b) => {
+      if (a.data.order > b.data.order) {
+        return 1;
+      } else if (a.data.order < b.data.order) {
+        return -1;
+      } else {
+        return 0;
+      }
+    });
   });
 
   eleventyConfig.addCollection('elementDocs', async function(collectionApi) {
@@ -215,6 +259,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
         capitalize(filePath.split(path.sep).pop()?.split('.').shift()?.replace(/^\d+-/, '') ?? '');
       const pageSlug = slugify(pageTitle, { strict: true, lower: true });
       /** e.g. `/elements/call-to-action/code/index.html` */
+      const overviewHref = `/elements/${slug}/`;
       const permalink =
           pageSlug === 'overview' ? `/elements/${slug}/index.html`
         : `/elements/${slug}/${pageSlug}/index.html`;
@@ -232,27 +277,31 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
         screenshotPath,
         permalink,
         href,
+        overviewHref,
       };
     }
 
     try {
+      const { glob } = await import('glob');
       /** @type {(import('@patternfly/pfe-tools/11ty/DocsPage').DocsPage & { repoStatus?: any[] })[]} */
       const elements = await eleventyConfig.globalData?.elements();
       const filePaths = (await glob(`elements/*/docs/*.md`, { cwd: process.cwd() }))
-        .filter(x => x.match(/\d{1,3}-[\w-]+\.md$/)); // only include new style docs
-      const { repoStatus } = collectionApi.items.find(item => item.data?.repoStatus)?.data || {};
+          .filter(x => x.match(/\d{1,3}-[\w-]+\.md$/)); // only include new style docs
+      const { repoStatus } = collectionApi.items.find(item => item.data?.repoStatus)?.data || [];
       return filePaths
-        .map(filePath => {
-          const props = getProps(filePath);
-          const docsPage = elements.find(x => x.tagName === props.tagName);
-          if (docsPage) { docsPage.repoStatus = repoStatus; }
-          const tabs = filePaths
-            .filter(x => x.split('/docs/').at(0) === (`elements/${props.tagName}`))
-            .sort()
-            .map(x => getProps(x));
-          return { docsPage, tabs, ...props };
-        })
-        .sort(alphabeticallyBySlug);
+          .map(filePath => {
+            const props = getProps(filePath);
+            const docsPage = elements.find(x => x.tagName === props.tagName);
+            if (docsPage) {
+              docsPage.repoStatus = repoStatus;
+            }
+            const tabs = filePaths
+                .filter(x => x.split('/docs/').at(0) === (`elements/${props.tagName}`))
+                .sort()
+                .map(x => getProps(x));
+            return { docsPage, tabs, ...props };
+          })
+          .sort(alphabeticallyBySlug);
     } catch (e) {
       // it's important to surface this
       // eslint-disable-next-line no-console

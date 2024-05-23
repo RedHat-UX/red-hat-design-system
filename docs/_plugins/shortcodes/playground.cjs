@@ -1,4 +1,5 @@
 const { readFile } = require('node:fs/promises');
+const { join } = require('node:path');
 
 /** @typedef {import('@patternfly/pfe-tools/11ty/DocsPage').DocsPage} DocsPage */
 
@@ -22,8 +23,8 @@ async function playground(_, {
   const options = getPfeConfig();
   const { filePath } =
         docsPage.manifest
-          .getDemoMetadata(tagName, options)
-          ?.find(x => x.url === `https://ux.redhat.com/elements/${x.slug}/demo/`) ?? {};
+            .getDemoMetadata(tagName, options)
+            ?.find(x => x.url === `https://ux.redhat.com/elements/${x.slug}/demo/`) ?? {};
   const content = filePath && await readFile(filePath, 'utf8');
   return /* html*/`
 
@@ -40,4 +41,19 @@ ${content}
 
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPairedShortcode('playground', playground);
+  eleventyConfig.on('eleventy.before', async function() {
+    const { rollup } = await import('rollup');
+    const { importMetaAssets } = await import('@web/rollup-plugin-import-meta-assets');
+    const { nodeResolve } = await import('@rollup/plugin-node-resolve');
+    const outdir = join(__dirname, `../../assets/playgrounds/`);
+    const bundle = await rollup({
+      input: join(__dirname, 'rh-playground.js'),
+      external: [/^@rhds/],
+      plugins: [
+        nodeResolve(),
+        importMetaAssets(),
+      ],
+    });
+    await bundle.write({ dir: outdir });
+  });
 };

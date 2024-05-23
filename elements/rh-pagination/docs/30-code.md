@@ -1,6 +1,7 @@
-{% renderInstallation lightdomcss=true %}{% endrenderInstallation %}
+{% renderInstall lightdomcss=true %}{% endrenderInstall %}
 
-{% band header="Usage" %}
+## Usage
+
 ```html
 <rh-pagination>
   <ol>
@@ -12,6 +13,5 @@
   </ol>
 </rh-pagination>
 ```
-{% endband %}
 
 {% renderCodeDocs hideDescription=true %}{% endrenderCodeDocs %}

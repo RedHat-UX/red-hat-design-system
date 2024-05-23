@@ -1,14 +1,18 @@
 # Dependencies
 node_modules
 .wireit
+.rollup.cache
+.cache
 
 # Ignore compiled files in webroot
 _site
 docs/pfe.min*
+docs/assets/playgrounds/
 
 # Build artifacts
 elements/*/*.js
 elements/*/test/*.js
+react
 lib/**/*.js
 !elements/**/demo/*.css
 *.map
@@ -92,3 +96,4 @@ $RECYCLE.BIN/
 *.lnk
 
 !declaration.d.ts
+docs/assets/playgrounds/rh-playground.js

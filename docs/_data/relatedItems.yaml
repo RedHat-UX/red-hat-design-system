@@ -40,6 +40,7 @@ rh-footer:
  - rh-accordion
  - rh-popover
  - rh-tooltip
+ - rh-site-status
 rh-jump-links: 
  - rh-pagination
  - rh-progress-steps
@@ -64,6 +65,13 @@ rh-progress-steps:
  - rh-jump-links
  - rh-pagination
  - rh-tabs
+rh-skip-link:
+ - rh-navigation
+ - rh-navigation-secondary
+ - rh-subnav
+rh-site-status:
+ - rh-card
+ - rh-footer
 rh-spinner: 
  - form
  - search-bar
@@ -74,6 +82,8 @@ rh-subnav:
  - rh-navigation
  - rh-navigation-secondary
  - skip-navigation
+rh-table:
+ - rh-code-block
 rh-tabs: 
  - rh-jump-links
  - rh-pagination
@@ -82,6 +92,13 @@ rh-tag:
  - rh-avatar
  - rh-badge
  - rh-button
+rh-tile:
+ - rh-cta
+ - rh-card
+ - form
+rh-timestamp:
+ - rh-blockquote
+ - rh-statistic
 rh-tooltip: 
  - rh-footer
  - form
@@ -93,7 +110,7 @@ announcement:
 disclosure: 
  - rh-accordion
  - filter
- - form
+ - rh-form
 filter: 
  - rh-accordion
  - disclosure

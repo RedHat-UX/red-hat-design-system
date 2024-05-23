@@ -1,5 +1,401 @@
 # @rhds/elements
 
+## 1.4.1
+
+### Patch Changes
+
+- 862380b: corrected `@patternfly/elements` dependency to be included with the package
+
+## 1.4.0
+
+### Minor Changes
+
+- fecdcbf: `<rh-codeblock>`: added line numbers
+- fecdcbf: ✨ Added `<rh-site-status>`
+
+  Website status communicates the operational status of a website or domain using a status icon and link. It is usually located in the Footer component.
+
+  ```html
+  <rh-site-status></rh-site-status>
+  ```
+
+- fecdcbf: ✨ Added `<rh-back-to-top>`.
+
+  Back to top component is a fragment link that allows users to quickly navigate to the top of a lengthy content.
+
+  ```html
+  <rh-back-to-top href="#top">Back to top</rh-back-to-top>
+  ```
+
+- fecdcbf: ✨ Added `<rh-skip-link>`.
+
+  A skip link is used to skip repetitive content on a page. It is hidden by default and can be activated by hitting the "Tab" key after loading/refreshing a page.
+
+  ```html
+  <rh-skip-link>
+    <a href="#main-content">Skip to main content</a>
+  </rh-skip-link>
+  ```
+
+- fecdcbf: ⚛️ Added React wrapper components
+
+  You can now more easily integrate RHDS elements into your React apps by importing our wrapper components
+
+  First, make sure that you list `@lit/react` as a dependency in your project
+
+  ```sh
+  npm install --save @lit/react
+  ```
+
+  Then import the element components you need and treat them like any other react component
+
+  ```js
+  import { Tabs } from '@rhds/elements/react/rh-tabs/rh-tabs.js';
+  import { Tab } from '@rhds/elements/react/rh-tabs/rh-tab.js';
+  import { TabPanel } from '@rhds/elements/react/rh-tabs/rh-tab-panel.js';
+
+  import { useState } from 'react';
+
+  const tabs = [
+    { heading: 'Hello Red Hat', content: 'Let\'s break down silos' },
+    { heading: 'Web components', content: 'They work everywhere' }
+  ];
+
+  function App() {
+    const [index, setExpanded] = useState(-1);
+    return (
+      <span>expanded {expanded}</span>
+      <Tabs>{tabs.map(({ heading, content }, i) => (
+        <Tab slot="tab" onExpand={() => setExpanded(i)}>{heading}</Tab>
+        <TabPanel>{content}</TabPanel>))}
+      </Tabs>
+    );
+  }
+  ```
+
+- fecdcbf: `<rh-codeblock>`: added `Show more` toggle
+- fecdcbf: `<rh-codeblock>`: added copy and wrap actions, with localizable slots for the button labels
+
+  ```html
+  <rh-code-block actions="wrap copy">
+    <span slot="action-label-copy">Copy to Clipboard</span>
+    <span slot="action-label-copy" hidden data-code-block-state="active"
+      >Copied!</span
+    >
+    <span slot="action-label-wrap">Toggle word wrap</span>
+    <span slot="action-label-wrap" hidden data-code-block-state="active"
+      >Toggle overflow</span
+    >
+    <script type="text/css">
+      :host {
+        display: block;
+      }
+    </script>
+  </rh-code-block>
+  ```
+
+### Patch Changes
+
+- fecdcbf: `<rh-menu>`: improved focus accessibility for keyboard navigation users on firefox
+  `<rh-button>`: improved focus accessibility on firefox
+- fecdcbf: `<rh-accordion>`: added a accents slot with placement options as inline and bottom
+- fecdcbf: Context: aligned context implementation with updated [protocol defintions](https://github.com/webcomponents-cg/community-protocols/blob/main/proposals/context.md#definitions)
+- fecdcbf: Update dependencies, including Lit version 3
+- fecdcbf: `<rh-alert>`: make sure alerts always have to correct (lightest) colour palette
+- fecdcbf: `<rh-tabs>`: allow tabs with long text content to fit into different-sized containers
+
+## 1.3.2
+
+### Patch Changes
+
+- 1d1640705: `<rh-tile>`: corrected icon slot visibility with a slotted icon
+- d61b8dc71: `<rh-dialog>`: ensure that `cancel`, `open`, and `closed` events fire
+
+## 1.3.1
+
+### Patch Changes
+
+- d87dfb94a: `<rh-tabs>`: fixed issue that stop tabs from correctly resizing on mobile
+- 01f100cf8: `<rh-tile>`: fixed issue with click target area of tile
+- 08722dd71: `<rh-table>`: corrected custom background hover color tokens.
+- 4259ba0ed: `<rh-tabs>`: improved documentation
+
+## 1.3.0
+
+### Minor Changes
+
+- 5e64235d5: `<rh-audio-player>`: added Hebrew translations
+- 0829fa2c4: ✨ Added `<rh-surface>`.
+
+  Surface is a container which sets background color and text color and provides that theme context to its child elements. Surface supports `darkest`, `darker`, `dark`, `light`, `lighter`, `lightest` color palettes.
+
+  ```html
+  <rh-surface color-palette="darker">
+    <rh-cta><a href="#">Call to Action</a>
+  </rh-surface>
+  ```
+
+- c9b81875e: `<rh-tabs-panel>`: adds ability to override panel margin and padding
+- 31b28dcc6: `<rh-pagination>`: add `numeric` CSS shadow part, corresponding to the numeric page input
+
+  Example: hiding the numeric paginator
+
+  ```css
+  rh-pagination::part(numeric) {
+    display: none;
+  }
+  ```
+
+- 05fbc275a: `<rh-tile>`: add `accessible-label` attribute to override form control label
+
+  Accessible labels are visually hidden labels for form controls. In the case of
+  `<rh-tile>`, they are optional, so long as the text content of the tile is
+  already an accessible label for the control.
+
+  Use `accessible-label` when you would like to label the form control with
+  something other than the tile's text content, or when the tile has no text
+  content.
+
+  ```html
+  <form>
+    <rh-tile-group radio>
+      <rh-tile name="radio" value="1">Tile 1</rh-tile>
+      <rh-tile name="radio" value="2">Tile 2</rh-tile>
+      <rh-tile name="radio" value="3" accessible-label="Tile 3">
+        <img slot="image" role="presentation" src="tile-3.webp" />
+      </rh-tile>
+    </rh-tile-group>
+  </form>
+  ```
+
+- 58ab8e60b: Uses `@rhds/tokens` - Red Hat Design Tokens - version 2!
+
+  ⚠️ if your pages directly override "crayon" colour values, (e.g. `--rh-color-red-50`)
+  then this is a breaking change, since the token names have changed.
+
+  However, if your project follows the theming guidelines and only overrides the
+  semantic tokens, then you should automatically receive the new colour values.
+
+- 05fbc275a: `<rh-tile>`: radio and checkbox tiles now submit their values in `<form>` elements
+
+### Patch Changes
+
+- b123092da: `<rh-tabs>`: removed dependency on `@patternfly/elements` package.
+- 5e64235d5: `<rh-alert>`: fix `<rh-button variant="link">` as slotted action
+- 976981b0d: `<rh-alert>`: fix inline variant's styles
+- 6a87885e8: `<rh-badge>`: remove dependency on `@patternfly/elements`
+- 719873947: `<rh-blockquote>`: remove user-agent margin from blockquote, in accordance with [design guidelines][design]
+
+  [design]: https://ux.redhat.com/elements/blockquote/style/
+
+- fcf22f028: `<rh-button>`: remove dependency on `@patternfly/elements`
+- 18f802f7f: `<rh-table>`: added color palette and theme support
+- c0af10745: `<rh-card>`: improved styles for first body paragraph when there is other content displayed first
+- 4f6ff65e7: `<rh-card>`: ensure footer is always on the bottom of the card
+- 6e8fad64b: `<rh-card>`: adjust whitespace of card parts to suit design
+- bf7c96ca4: `<rh-code-block>`: allow for pre-rendered (via prism.js) code blocks
+- f969ff1f2: `<rh-tabs>`: fixed layout of non-vertical box variant tabs
+- 54264f37c: `<rh-spinner>`: deprecates the `color-palette` attribute.
+- 8cb9790e2: `<rh-tile>`: fixed cursor when arrow is hovered
+- 976981b0d: `<rh-alert>`: remove padding for alerts which have only header content
+- 976981b0d: `<rh-alert>`: make variants case-insensitive
+- a6510e224: `<rh-tabs>`: adds default value for tab font-size
+- eefc04cb9: `<rh-tooltip>`: fixes issue where content would take up unwanted space before the element fully upgraded
+- 2137702b3: `<rh-footer-social-link>`: updated twitter logo with X
+- 0254749cb: `<rh-tab-panel>`: removed unused color-palette attribute
+- 8c5559cee: `<rh-dialog>`: remove the dependency on `@patternfly/elements`.
+  _NOTE_: The `open`, `close`, and `cancel` events are no longer the same object constructor type as `<pf-modal>`, so `instanceof` checks may fail.
+- 2eb82a822: `<rh-avatar>`: removed non-existent `name` slot from the element manifest.
+  This doesn't change the element, only the documentation. Instead of `name`, use
+  the anonymous slot:
+
+  ```html
+  <rh-avatar>
+    <span>Title</span>
+    <span slot="subtitle">Subtitle</span>
+  </rh-avatar>
+  ```
+
+- 5e64235d5: `<rh-menu>`: support color context
+- 6a134b5f4: `<rh-tag>`: remove dependency on `@patternfly/elements`
+- 369d5b7cf: `<rh-card>`: collapses margins between header, body, and footer
+
+  NOTE that this changes the default styling of the `header`, `body`, and `footer`
+  CSS Shadow Parts. They previously used `padding` for layout, and now use `margin`.
+  If you modified their padding via the `::part` selector, you will need to update your CSS
+
+  Before:
+
+  ```css
+  .special-card::part(header) {
+    padding: var(--rh-space-sm);
+  }
+  ```
+
+  After:
+
+  ```css
+  .special-card::part(header) {
+    margin-block-start: var(--rh-space-sm);
+    margin-inline: var(--rh-space-sm);
+  }
+  ```
+
+- 5e64235d5: `<rh-dialog>`: ensure dialog content is always on light theme
+- 42c167f9e: `<rh-table>`: improved color palette styles
+- 0d2d349d7: `rh-table`: corrected table height
+- a1c587d1b: `<rh-navigation-secondary>`: adds current page indicator to logo slot
+- c68165b4e: `<rh-tabs>`: adds deprecation notice on `theme` attribute
+- 54264f37c: `<rh-spinner>`: remove dependency on `@patternfly/elements`
+- baa382063: `<rh-accordion>`: fixed border color for dark color palettes
+- fb9e3eac0: `<rh-accordion>`: remove dependency on `@patternfly/elements`
+- d4e1ebd4b: `<rh-tag>`: while tag should not be used on dark contexts unless it has the
+  `white` colour, this change ensures that tags that are used on dark context will
+  be legible.
+- 422d6279b: `<rh-tile>`: ensure that tiles in a flex container grow along the cross axis
+- 61ca7202d: `<rh-tooltip>`: remove dependency on `@patternfly/elements`
+- b3f7b1877: `<rh-tile>`: added arrow animation on hover
+- 9f1249474: `<rh-navigation-secondary>`: fixed initialization of current page indicator
+
+## 1.2.0
+
+### Minor Changes
+
+- 35c28e72: Added `<rh-tile>`.
+
+  Tile creates a component that can be used in place of a link, checkbox, or radio button selection.
+
+  ```html
+  <rh-tile-group radio>
+    <rh-tile checked>
+      <div slot="title">Title</div>
+      <h2 slot="headline"><a href="#top">Link</a></h2>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      <div slot="footer">Suspendisse eu turpis elementum</div>
+    </rh-tile>
+
+    <rh-tile>
+      <div slot="title">Title</div>
+      <h2 slot="headline"><a href="#top">Link</a></h2>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      <div slot="footer">Suspendisse eu turpis elementum</div>
+    </rh-tile>
+
+    <rh-tile>
+      <div slot="title">Title</div>
+      <h2 slot="headline"><a href="#top">Link</a></h2>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      <div slot="footer">Suspendisse eu turpis elementum</div>
+    </rh-tile>
+  </rh-tile-group>
+  ```
+
+- 9d3c7b09: ✨ Added `<rh-table>`.
+
+  A table is a container for displaying information. It allows a user to scan, examine, and compare large amounts of data.
+
+  ```html
+  <rh-table>
+    <table>
+      <caption>
+        Concerts
+      </caption>
+      <colgroup>
+        <col />
+        <col />
+        <col />
+      </colgroup>
+      <thead>
+        <tr>
+          <th scope="col" data-label="Date">Date</th>
+          <th scope="col" data-label="Event">
+            Event<rh-sort-button></rh-sort-button>
+          </th>
+          <th scope="col" data-label="Venue">
+            Venue<rh-sort-button></rh-sort-button>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Date">12 February</td>
+          <td data-label="Event">Waltz with Strauss</td>
+          <td data-label="Venue">Main Hall</td>
+        </tr>
+        <tr>
+          <td data-label="Date">24 March</td>
+          <td data-label="Event">The Obelisks</td>
+          <td data-label="Venue">West Wing</td>
+        </tr>
+        <tr>
+          <td data-label="Date">14 April</td>
+          <td data-label="Event">The What</td>
+          <td data-label="Venue">Main Hall</td>
+        </tr>
+      </tbody>
+    </table>
+    <small slot="summary">Dates and venues subject to change.</small>
+  </rh-table>
+  ```
+
+- 39e76fc6: `rh-card`: `header` slot now displays items vertically instead of stacked, allowing for more than one item to display in the header.
+
+  Example:
+
+  ```html
+  <rh-card>
+    <img slot="header" src="kitten-400x250.jpeg"></img>
+    <h2 slot="header">Headline, sm</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+       Nullam eleifend elit sed est egestas, a sollicitudin mauris
+       tincidunt. Pellentesque vel dapibus risus. Nullam aliquam
+       felis orci, eget cursus mi lacinia quis. Vivamus at felis sem.</p>
+    <rh-cta priority="primary" slot="footer">
+      <a href="#">Call to action</a>
+    </rh-cta>
+  </rh-card>
+  ```
+
+- c9780fc2: ✨ Added `<rh-timestamp>`.
+
+  Provides consistent formats for displaying date and time values.
+
+  ```html
+  <rh-timestamp date="Tue Aug 09 2006 14:57:00 GMT-0400"
+    >Tue Aug 09 2006 14:57:00 GMT-0400</rh-timestamp
+  >
+  ```
+
+### Patch Changes
+
+- f4fcb1f3: `<rh-navigation-secondary>`: improved keyboard navigation
+- 681519b5: `<rh-avatar>`:
+  `<rh-code-block>`:
+  `<rh-navigation-secondary>`: Updated custom elements manifest summaries
+- ed6ff92e: `<rh-navigation-secondary>`: corrected and updated support for current page indicator
+- a6ca3987: `<rh-cta>`: `brick` variants are now full width.
+
+  `<rh-cta variant="brick">` should only be used within grids. Check your layouts to make sure they adhere to the guidelines.
+
+- 0c2d42b1: `<rh-tabs>`: corrects the custom element manifest's event name for the `expand` event
+- 7e2c9bb6: `<rh-cta>`: adds `color-palette` attribute back with deprecation notice
+
+## 1.1.1
+
+### Patch Changes
+
+- ab339ac6: `<rh-tag>`: outline variant should now get the correct background styles added.
+- f79543b7: `<rh-avatar>`: uses SVG for default images instead of much larger base-64 PNG images
+- 77fa329a: `<rh-audio-player>`: Added @csspart docs.
+- f0f66ec2: `<rh-tabs>`: fixed vertical tabs text alignment
+- 716b52d1: `<rh-cta>` and other elements: color context support
+- cf8ee6cb: `<rh-audio-player>`: corrected subscribe slot documentation.
+- d709896f: `<rh-cta>`: corrected layout of icon brick variant
+- d709896f: `<rh-cta>`: ensured entire CTA is clickable
+- d709896f: `<rh-cta>`: fix a style bug which affects CTA links at narrow widths
+- ff90f4d6: `<rh-footer>`: prevent an error when using footer and react in certain chrome versions
+- 44a444a5: `<rh-navigation-secondary>`: corrected navigation bar height for small and large viewports'
+
 ## 1.1.0
 
 ### Minor Changes
