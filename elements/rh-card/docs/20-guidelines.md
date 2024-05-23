@@ -1,6 +1,11 @@
 ## Usage
 ### Variants
+
 There are several card variants that can be used for a variety of use cases.
+
+{% alert %}
+  For examples of how to implement these patterns, see the [card patterns page](/patterns/card).
+{% endalert %}
 
 - #### Basic
   Use to display basic content or long paragraphs of text. Secondary and 
