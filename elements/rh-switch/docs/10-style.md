@@ -44,9 +44,10 @@ A Switch is the same height as the status message and both are horizontally alig
 
 A status message can be positioned to the right or left of a Switch.
 
+
 {% example palette="light",
             alt="One switch with status message on the left and another with status message on the right",
-            src="../switch-status-message" %}
+            src="../switch-status-message.svg" %}
 
 ## Space
 
@@ -70,7 +71,7 @@ The visual appearance of a Switch does not change unless toggled.
 
 {% example palette="light",
             alt="Switches that are on, off, disabled, hovered, active, and in focus",
-            src="../switch-states" %}
+            src="../switch-states.svg" %}
 
 1. On
 2. On with check

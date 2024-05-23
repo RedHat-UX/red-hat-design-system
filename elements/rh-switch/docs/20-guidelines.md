@@ -70,24 +70,62 @@ A Switch displays a state through different methods and locations.
             alt="four variants of switch",
             src="../switch-variants.svg" %}
 
+## Using status messages
+
+Adding a custom status message is *not* a requirement. By default, switches already indicate their state both graphically and to assistive tech (e.g., announcing “on” and “off” to screen readers when receiving focus or being toggled).
+
+If you would like to add a status message, you can do so via following method:
+
+1. Add a `<div>` with an id value within `<rh-switch>`.
+2. Within the `<div>`, add two `<span>` elements—one for each state of the switch.
+3. For the “on” `<span>`, add a `data-state="on"` attribute and add your desired status text within the `<span>`.
+4. For the “off” `<span>`, add a `data-state="off"` attribute and add your desired status text within the `<span>`.
+5. Add an `aria-describedby` attribute to `<rh-switch>` pointing to the status `<div>`’s id.
+
+Here's an example of a status message from a <a href="../demo/rh-switch.html">Switch demo</a>:
+
+<rh-code-block>
+  <script type="text/sample-html">
+    <rh-switch id="switch-a" aria-describedby="messages-a" accessible-label="Switch A" checked>
+      <div id="messages-a">
+        <span data-state="on">Message when on</span>
+        <span data-state="off" hidden>Message when off</span>
+      </div>
+    </rh-switch>
+  </script>
+</rh-code-block>
+
+### Implementation notes:
+- If you are not adding a custom status message `<div>`, do not include an `aria-describedby` attribute, as it will have no `id` to which it can point.
+- You can also add static messages by placing text directly in the status `<div>`, rather than within the dynamic “on” and “off” `<span>` elements.
+- You may need to style the status `<div>` to place it where you want in relation to the switch.
+
+### Status messages vs. form labels
+
+Unlike a status message, a form label is required whenever Switch is used. A form label describes a Switch's purpose. There is no slot for a form label within the web component and has to be added separately.
+
+<rh-cta>
+  <a href="../accessibility/#using-form-labels">Learn how to use form labels with Switch</a>
+</rh-cta>
+
 ## Writing content
 
 In general, users scan and do not read everything, so use keywords and avoid long phrases and questions.
 
 ### Clarity of language
 
-Status messages describe what a Switch does when turned on or off, so they should be short and direct, not neutral or ambiguous.
+The status message and form label should be short and direct, not neutral or ambiguous.
 
 <div class="best-practices-grid">
     <div>
         <img slot="header" src="/switch-language-clarity-do.svg" alt="">
         <h4 class="correct">Do</h4>
-        <p>Ensure the message is clear when a Switch is toggled to the On or Off position..</p>
+        <p>Ensure the message is clear when a Switch is toggled to the On or Off position and that the form label explains the switch's purpose.</p>
     </div>
     <div>
         <img slot="header" src="switch-language-clarity-do-not.svg" alt="">
         <h4 class="wrong">Don't</h4>
-        <p>Do not use a status message that does not make the switch state clear.</p>
+        <p>Do not use a status message that does not make the switch state clear, especially if the form label is hidden.</p>
     </div>
 </div>
 
@@ -109,7 +147,7 @@ The recommended maximum character count is listed below and includes spaces.
         <td scope="col" data-label="Character count">20</td>
       </tr>
       <tr>
-        <td scope="col" data-label="Element">Form status message</td>
+        <td scope="col" data-label="Element">Form label</td>
         <td scope="col" data-label="Character count">30</td>
       </tr>
     </tbody>

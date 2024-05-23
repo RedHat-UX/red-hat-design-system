@@ -43,6 +43,33 @@ Grouped Switches are adequately spaced for optimal touch targets.
             alt="group of four switches and red circles with low opacity over each switch",
             src="../switch-touch-targets.svg" %}
 
+## Using form labels
+
+Like other form elements, switches require labels that are available to assistive tech. These labels may be visible or visually hidden. A label captions its associated switch, offering an indication of its purpose (e.g., “Dark mode”). It’s important to note that a label is not the same as a status message (e.g., “On” and “Off”), and though it's associated with the switch and can control it, the label is not part of the Switch web component.
+
+### Visible labels
+
+If you’re using a visible label, associate it with your switch:
+1. Ensure your `<rh-switch>` element has an id value.
+2. Add a `<label>` element before `<rh-switch>` with a `for` attribute pointing to the switch’s `id`.
+
+<rh-code-block>
+  <script type="text/sample-html">
+    <label for="my-switch">Switcheroo</label>
+    <rh-switch id="my-switch"></rh-switch>
+  </script>
+</rh-code-block>
+
+### Visually-hidden labels
+
+If your label will not be visible, caption your switch via the `accessible-label` attribute.
+
+<rh-code-block>
+  <script type="text/sample-html">
+    <rh-switch accessible-label="Switcheroo"></rh-switch>
+  </script>
+</rh-code-block>
+
 ## Screen reader guidelines
 
 A Switch should communicate the following to users.

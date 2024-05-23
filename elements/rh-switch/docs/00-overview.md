@@ -10,11 +10,12 @@
 
 ## Sample element
 
-<rh-switch id="sample" checked show-check-icon></rh-switch>
-<label for="sample">
-  <span data-state="on">Message when on</span>
-  <span data-state="off" hidden>Message when off</span>
-</label>
+<rh-switch id="sample-switch" aria-describedby="sample-message" accessible-label="Sample switch" checked>
+  <div id="sample-message">
+    <span data-state="on">Message when on</span>
+    <span data-state="off" hidden>Message when off</span>
+  </div>
+</rh-switch>
 
 ## Demo
 
