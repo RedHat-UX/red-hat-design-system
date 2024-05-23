@@ -181,19 +181,19 @@ export class RhTable extends LitElement {
       }
 
       Array
-        .from(this.#rows, node => RhTable.getNodeContentForSort(columnIndexToSort, node))
-        .sort((a, b) => RhTable.sortByContent(direction, a, b))
-        .forEach(({ node }, index) => {
-          if (!this.#rows) {
-            return;
-          }
-          const target = this.#rows[index];
-          if (this.#rows[index] !== node) {
-            const position: InsertPosition =
+          .from(this.#rows, node => RhTable.getNodeContentForSort(columnIndexToSort, node))
+          .sort((a, b) => RhTable.sortByContent(direction, a, b))
+          .forEach(({ node }, index) => {
+            if (!this.#rows) {
+              return;
+            }
+            const target = this.#rows[index];
+            if (this.#rows[index] !== node) {
+              const position: InsertPosition =
                 direction === 'desc' ? 'afterend' : 'beforebegin';
-            target.insertAdjacentElement(position, node);
-          }
-        });
+              target.insertAdjacentElement(position, node);
+            }
+          });
     }
   }
 }

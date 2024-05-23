@@ -64,7 +64,11 @@ export class RhTimestamp extends LitElement {
   /**
    * Whether to use 12-hour time (as opposed to 24-hour time)
    */
-  @property({ reflect: true, attribute: 'hour-12', converter: BooleanStringConverter }) hour12?: boolean;
+  @property({
+    reflect: true,
+    attribute: 'hour-12',
+    converter: BooleanStringConverter,
+  }) hour12?: boolean;
 
   /**
    * A string value representing a date

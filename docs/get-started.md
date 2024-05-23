@@ -37,13 +37,15 @@ The Red Hat Design System for digital experiences gives designers and developers
       <figcaption>Designers</figcaption>
     </figure>
   </a>
-  <figure>
-    {% example
-      palette="descriptive",
-      alt="Card overlapping code editor user interface",
-      src="/assets/get-started/developers.png" %}
-    <figcaption>Developers (Coming soon)</figcaption>
-  </figure>
+  <a href="/get-started/developers">
+    <figure>
+      {% example
+        palette="descriptive",
+        alt="Card overlapping code editor user interface",
+        src="/assets/get-started/developers.png" %}
+      <figcaption>Developers</figcaption>
+    </figure>
+  </a>
 </nav>
 
 {% feedback %}

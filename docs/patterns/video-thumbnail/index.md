@@ -13,8 +13,6 @@ A Video thumbnail is a graphical preview of a video overlayed with a play button
            alt="Video thumbnail",
            src="./video-thumbnail.svg" %}
 
-{% repoStatus %}
-
 ## Style
 
 A video thumbnail is a combination of a graphic with a slightly transparent play button on top. A video thumbnail can also include an optional caption underneath that explains what the video is.

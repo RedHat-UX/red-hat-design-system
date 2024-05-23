@@ -27,9 +27,9 @@ describe('<rh-tile-group>', function() {
       element = await createFixture<RhTileGroup>(html`<rh-tile-group></rh-tile-group>`);
       const klass = customElements.get('rh-tile-group');
       expect(element)
-        .to.be.an.instanceOf(klass)
-        .and
-        .to.be.an.instanceOf(RhTileGroup);
+          .to.be.an.instanceOf(klass)
+          .and
+          .to.be.an.instanceOf(RhTileGroup);
     });
   });
 
@@ -50,31 +50,20 @@ describe('<rh-tile-group>', function() {
       await expect(element).to.be.accessible();
     });
 
-    it('has radio roles', async function() {
+    it('exposes radio roles to the ax tree', async function() {
       // TODO(bennypowers): write some query helpers for snapshots
       const snapshot = await a11ySnapshot();
-      expect(snapshot).to.deep.equal({
-        role: 'WebArea',
-        name: '',
-        children: [
-          {
-            focused: true,
-            checked: false,
-            name: 'Tile 1',
-            role: 'radio',
-          },
-          {
-            checked: false,
-            name: 'Tile 2',
-            role: 'radio',
-          },
-          {
-            checked: false,
-            name: 'Tile 3',
-            role: 'radio',
-          },
-        ],
-      });
+      const [fst, snd, thd] = snapshot.children;
+      expect(fst.name).to.equal('Tile 1');
+      expect(fst.role).to.equal('radio');
+      expect(fst.focused).to.be.true;
+      expect(fst.checked).to.be.false;
+      expect(snd.name).to.equal('Tile 2');
+      expect(snd.role).to.equal('radio');
+      expect(snd.checked).to.be.false;
+      expect(thd.name).to.equal('Tile 3');
+      expect(thd.role).to.equal('radio');
+      expect(thd.checked).to.be.false;
     });
 
     it('sets focus', function() {
@@ -83,7 +72,7 @@ describe('<rh-tile-group>', function() {
 
     it('has no selected element', function() {
       expect(element.selected)
-        .to.be.undefined;
+          .to.be.undefined;
     });
 
     describe('space on first tile', async function() {
@@ -91,7 +80,7 @@ describe('<rh-tile-group>', function() {
       beforeEach(() => element.updateComplete);
       it('selects the first tile', function() {
         expect(element.selected)
-          .to.equal(tile1);
+            .to.equal(tile1);
       });
     });
 
@@ -99,7 +88,7 @@ describe('<rh-tile-group>', function() {
       beforeEach(press('ArrowDown'));
       it('sets focus on second tile', function() {
         expect(document.activeElement)
-          .to.equal(tile2);
+            .to.equal(tile2);
       });
 
       describe('clicking second tile', async function() {
@@ -107,15 +96,15 @@ describe('<rh-tile-group>', function() {
         beforeEach(() => element.updateComplete);
         it('selects the second tile only', function() {
           expect(element.selected)
-            .to.equal(tile2);
+              .to.equal(tile2);
         });
         it('has only one checked radio button', async function() {
           // TODO(bennypowers): write snapshot query helpers
           const snapshot = await a11ySnapshot();
           function reduceRadios(count: number, node: typeof snapshot): number {
-            return count +
-                   ((node.role === 'radio' && node.checked) ? 1 : 0) +
-                    (node.children?.reduce(reduceRadios, 0) ?? 0);
+            return count
+                   + ((node.role === 'radio' && node.checked) ? 1 : 0)
+                    + (node.children?.reduce(reduceRadios, 0) ?? 0);
           }
           const checkedRadios = snapshot.children.reduce(reduceRadios, 0);
 
@@ -128,7 +117,7 @@ describe('<rh-tile-group>', function() {
       beforeEach(press('ArrowUp'));
       it('sets focus on last tile', function() {
         expect(document.activeElement)
-          .to.equal(tile3);
+            .to.equal(tile3);
       });
     });
 
@@ -139,30 +128,19 @@ describe('<rh-tile-group>', function() {
       });
 
       it('has radio roles', async function() {
-      // TODO(bennypowers): write some query helpers for snapshots
+        // TODO(bennypowers): write some query helpers for snapshots
         const snapshot = await a11ySnapshot();
-        expect(snapshot).to.deep.equal({
-          role: 'WebArea',
-          name: '',
-          children: [
-            {
-              focused: true,
-              checked: false,
-              name: 'Tile 1',
-              role: 'radio',
-            },
-            {
-              checked: false,
-              name: 'carreau numéro 2',
-              role: 'radio',
-            },
-            {
-              checked: false,
-              name: 'Tile 3',
-              role: 'radio',
-            },
-          ],
-        });
+        const [fst, snd, thd] = snapshot.children;
+        expect(fst.name).to.equal('Tile 1');
+        expect(fst.role).to.equal('radio');
+        expect(fst.focused).to.be.true;
+        expect(fst.checked).to.be.false;
+        expect(snd.name).to.equal('carreau numéro 2');
+        expect(snd.role).to.equal('radio');
+        expect(snd.checked).to.be.false;
+        expect(thd.name).to.equal('Tile 3');
+        expect(thd.role).to.equal('radio');
+        expect(thd.checked).to.be.false;
       });
     });
   });

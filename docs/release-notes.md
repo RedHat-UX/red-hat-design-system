@@ -19,6 +19,29 @@ We are continually making changes in order to improve and grow the Red Hat Desig
 <section class="release-versions">
 <section class="section release-version">
 
+## Version 1.4.0
+Released April 22, 2024
+
+### Highlights
+
+| Change                         | Notes {style="width: 70%" } |
+| ------------------------------ | --------------------------------- |
+| Added `<rh-site-status>`       | Website status communicates the operational status of a website or domain using a status icon and link. It is usually located in the Footer component. |
+| Added `<rh-back-to-top>`       | Back to top component is a fragment link that allows users to quickly navigate to the top of a lengthy content. | A skip link is used to skip repetitive content on a page. It is hidden by default and can be activated by hitting the "Tab" key after loading/refreshing a page. |
+| Added `<rh-skip-link>`         | A skip link is used to skip repetitive content on a page. It is hidden by default and can be activated by hitting the "Tab" key after loading/refreshing a page. |
+| Updated `<rh-codeblock>`       | Added line numbers option, `Show more` toggle, copy and wrap actions, to `<rh-codeblock>` |
+| Updated `<rh-menu>`            | Improved focus accessibility for keyboard navigation users on firefox. |
+| Updated `<rh-button>`          | Improved focus accessibility on firefox. |
+| Updated `<rh-accordion>`       | Added an accents slot with placement options as inline and bottom. |
+| Updated `<rh-alert>`           | Make sure alerts always have to correct (lightest) colour palette. |
+| Updated `<rh-tabs>`            | Allow tabs with long text content to fit into different-sized containers. |
+| Updated PatternFly Elements tooling | [Patch update to dependencies](https://github.com/patternfly/patternfly-elements/releases/tag/%40patternfly%2Fpfe-core%403.0.0), including Lit version 3. |
+
+<rh-cta><a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.4.0">View version 1.4 release notes</a></rh-cta>
+
+</section>
+<section class="section release-version">
+
 ## Version 1.3.0
 Released January 11, 2024
 

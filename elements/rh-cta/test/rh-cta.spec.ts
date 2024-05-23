@@ -13,14 +13,14 @@ describe('<rh-cta>', function() {
     const element = await createFixture<RhCta>(html`<rh-cta></rh-cta>`);
     const klass = customElements.get('rh-cta');
     expect(element)
-      .to.be.an.instanceOf(klass)
-      .and
-      .to.be.an.instanceOf(RhCta);
+        .to.be.an.instanceOf(klass)
+        .and
+        .to.be.an.instanceOf(RhCta);
   });
 
   it('instanciates imperatively', function() {
     expect(document.createElement('rh-cta'))
-      .to.be.an.instanceof(RhCta);
+        .to.be.an.instanceof(RhCta);
   });
 
   describe('on default context', function() {

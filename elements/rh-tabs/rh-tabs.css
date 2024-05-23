@@ -4,10 +4,16 @@
   color: var(--_context-text);
 }
 
+[part="container"] {
+  container-type: inline-size;
+}
+
 [part="tabs-container"] {
   position: relative;
   display: flex;
   overflow: hidden;
+
+  --_tab-max-width: 200px;
 }
 
 [part="tabs-container"]:before {
@@ -46,6 +52,12 @@ button:before {
   left: 0;
   content: "";
   border-style: solid;
+}
+
+@container (min-width: 567px) {
+  [part="tabs-container"] {
+    --_tab-max-width: none;
+  }
 }
 
 [part="tabs"]:before,
@@ -172,6 +184,10 @@ button:disabled {
 #previousTab:disabled,
 #nextTab:disabled {
   color: var(--_overflow-button-disabled-text-color);
+}
+
+.rtl :is(#previousTab, #nextTab) pf-icon {
+  rotate: 180deg;
 }
 
 @media screen and (min-width: 768px) {

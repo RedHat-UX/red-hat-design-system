@@ -35,9 +35,9 @@ describe('<rh-alert>', function() {
   it('should upgrade', async function() {
     const klass = customElements.get('rh-alert');
     expect(element)
-      .to.be.an.instanceOf(klass)
-      .and
-      .to.be.an.instanceOf(RhAlert);
+        .to.be.an.instanceOf(klass)
+        .and
+        .to.be.an.instanceOf(RhAlert);
   });
 
   describe('dismissable <rh-alert>', async () => {

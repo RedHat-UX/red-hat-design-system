@@ -18,9 +18,9 @@ describe('<rh-pagination>', function() {
     const element = await createFixture<RhPagination>(html`<rh-pagination></rh-pagination>`);
     const klass = customElements.get('rh-pagination');
     expect(element)
-      .to.be.an.instanceOf(klass)
-      .and
-      .to.be.an.instanceOf(RhPagination);
+        .to.be.an.instanceOf(klass)
+        .and
+        .to.be.an.instanceOf(RhPagination);
   });
 
   describe('with slotted i18n content', function() {

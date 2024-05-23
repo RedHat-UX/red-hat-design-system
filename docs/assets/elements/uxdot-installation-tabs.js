@@ -1,7 +1,4 @@
-import { css } from 'lit';
-
 import { RhTabs } from '@rhds/elements/rh-tabs/rh-tabs.js';
-import { RhTabPanel } from '@rhds/elements/rh-tabs/rh-tab-panel.js';
 
 import '@rhds/elements/rh-alert/rh-alert.js';
 
@@ -12,7 +9,9 @@ export class InstallationTabs extends RhTabs {
 
   static is = 'uxdot-installation-tabs';
 
-  static { customElements.define(this.is, this); }
+  static {
+    customElements.define(this.is, this);
+  }
 
   #onExpand(event) {
     // TODO: when tabs is decoupled from PFE, update the event type here
@@ -35,25 +34,12 @@ export class InstallationTabs extends RhTabs {
     ));
     if (InstallationTabs.stored !== null) {
       const index = parseInt(InstallationTabs.stored);
-      if (!Number.isNaN(index) &&
-          index !== this.activeIndex &&
-          this.panels[index]) {
+      if (!Number.isNaN(index)
+          && index !== this.activeIndex
+          && this.panels[index]) {
         this.activeIndex = index;
       }
     }
     this.addEventListener('expand', this.#onExpand);
   }
-}
-
-export class InstallationTabPanel extends RhTabPanel {
-  static is = 'uxdot-installation-tab-panel';
-
-  static styles = [...RhTabPanel.styles, css`
-    ::slotted(pre) {
-      max-width: 800px !important;
-      overflow-x: scroll;
-    }
-  `];
-
-  static { customElements.define(this.is, this); }
 }

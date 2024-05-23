@@ -70,8 +70,8 @@ export class RhContextPicker extends LitElement {
     converter: {
       fromAttribute(list: string) {
         return list?.split(',')
-          ?.map(x => x.trim())
-          ?.filter(x => RhContextPicker.paletteNames.includes(x as ColorPalette)) ?? [];
+            ?.map(x => x.trim())
+            ?.filter(x => RhContextPicker.paletteNames.includes(x as ColorPalette)) ?? [];
       },
       toAttribute(list: ColorPalette[]) {
         return list.join(',');
@@ -91,7 +91,8 @@ export class RhContextPicker extends LitElement {
 
   render() {
     const { on = 'dark', value = 'darkest' } = this;
-    const derivedLabel = this.#internals.ariaLabel ?? Array.from(this.#internals.labels, x => x.textContent).join();
+    const derivedLabel = this.#internals.ariaLabel
+      ?? Array.from(this.#internals.labels, x => x.textContent).join();
     return html`
       <div id="container" class="${classMap({ [on]: true })}">
           <input id="context-range"
@@ -138,7 +139,9 @@ export class RhContextPicker extends LitElement {
   }
 
   #onChange(event: Event) {
-    if (event instanceof ContextChangeEvent) { event.stopPropagation(); }
+    if (event instanceof ContextChangeEvent) {
+      event.stopPropagation();
+    }
   }
 
   #onInput(event: Event) {

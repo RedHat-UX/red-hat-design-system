@@ -1,6 +1,7 @@
 ---
 layout: layout-basic.njk
 title: Designers
+heading: Designers
 order: 2
 tags:
   - getstarted
@@ -38,6 +39,10 @@ Our design system libraries and the documentation website offer assets and guida
     <div>
         <h3>Elements and patterns</h3>
         <p>Our libraries include <a href="/elements">elements</a> and <a href="/patterns">patterns</a> you can use to create digital experiences.</p>
+    </div>
+    <div>
+        <h3>Accessibility</h3>
+        <p><a href="/accessibility/design/">Designer-specific guidelines</a> equip you with the information to create inclusive digital experiences.</p>
     </div>
 </div>
 

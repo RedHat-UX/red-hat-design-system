@@ -25,7 +25,7 @@ type MediaToken =
   | typeof MediaMd
   | typeof MediaSm
   | typeof MediaXl
-  | typeof MediaXs
+  | typeof MediaXs;
 
 function getMediaQueryListForToken(token: MediaToken | string) {
   const media =
@@ -59,7 +59,7 @@ export class ScreenSizeController implements ReactiveController {
 
   public matches = new Set<BreakpointKey>();
 
-  private onChange?(matches: boolean): void
+  private onChange?(matches: boolean): void;
 
   constructor(
     /** reference to the host element using this controller */
