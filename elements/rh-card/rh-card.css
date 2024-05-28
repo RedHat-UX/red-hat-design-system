@@ -6,6 +6,7 @@ article {
 }
 
 #header.empty,
+#inline-promo.empty,
 #footer.empty,
 #body.empty {
   display: none;
@@ -112,5 +113,176 @@ article {
 
   #footer {
     margin-block-end: var(--rh-space-2xl, 32px);
+  }
+}
+
+/*****************************************************************************
+ * INLINE PROMO SHARED
+ *****************************************************************************/
+:host([variant^="inline-promo"]) {
+  container: inline-promo / inline-size;
+  display: block;
+  margin-block-end: var(--rh-space-2xl, 32px);
+}
+
+::slotted([slot="inline-promo"]:is(img, svg)) {
+  display: block;
+  max-width: 100%;
+}
+
+:host([variant^="inline-promo"]) #inline-promo {
+  order: 10;
+  width: 100%;
+}
+
+:host([variant^="inline-promo"]) #body ::slotted(h2) {
+  margin-block-start: 0;
+}
+
+@container inline-promo (min-width: 768px) {
+  :host([variant^="inline-promo"]) #container {
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    min-height: 250px;
+  }
+
+  :host([variant^="inline-promo"]) #inline-promo {
+    order: 0;
+  }
+
+  :host([variant^="inline-promo"]) #body {
+    max-width: 75ch;
+  }
+
+  :host([variant^="inline-promo"]) #body ::slotted(h2) {
+    font-size: var(--rh-font-size-body-text-2xl, 1.5rem);
+  }
+
+  :host([variant^="inline-promo"]) #body ::slotted(p) {
+    font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+  }
+}
+
+/*****************************************************************************
+ * INLINE PROMO RIGHT ALIGNED WITH IMAGE (Reverse)
+ *****************************************************************************/
+@container inline-promo (min-width: 768px) {
+  :host([variant^="inline-promo"][reverse]) #container {
+    grid-template-columns: 2fr 1fr;
+  }
+
+  :host([reverse]) #inline-promo {
+    order: 10;
+  }
+}
+
+/*****************************************************************************
+ * INLINE PROMO NO IMAGE
+ *****************************************************************************/
+@container inline-promo (min-width: 768px) {
+  :host([variant^="inline-promo"][one-col]) #container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*****************************************************************************
+ * INLINE PROMO STANDARD
+ *****************************************************************************/
+:host([variant^="inline-promo"][standard]) #container {
+  background-color:
+    var(
+        --rh-card-inline-promo-standard-bg-color,
+        var(--rh-color-surface-lighter, #f2f2f2)
+      );
+  padding: var(--rh-space-2xl, 32px);
+  min-height: auto;
+}
+
+:host([variant^="inline-promo"][standard]) #container.dark {
+  background-color:
+    var(
+        --rh-card-inline-promo-standard-bg-color,
+        var(--rh-color-surface-darker, #1f1f1f)
+      );
+}
+
+:host([variant^="inline-promo"][standard]) #body {
+  margin-inline: 0;
+  margin-block-start: 0;
+  margin-block-end: var(--rh-space-xl, 24px);
+}
+
+:host([variant^="inline-promo"][standard]) #body ::slotted(p) {
+  font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+  margin-block: 0;
+}
+
+@container inline-promo (min-width: 768px) {
+  :host([variant^="inline-promo"][standard]) #container {
+    grid-template-columns: 3fr 1fr;
+    padding: var(--rh-space-3xl, 48px);
+  }
+
+  :host([variant^="inline-promo"][standard]) #body {
+    margin-block-end: 0;
+  }
+
+  :host([variant^="inline-promo"][standard]) #inline-promo {
+    text-align: end;
+    order: 10;
+  }
+
+  :host([variant^="inline-promo"][standard][reverse]) #container {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  :host([variant^="inline-promo"][standard][reverse]) #inline-promo {
+    text-align: start;
+    order: 0;
+  }
+}
+
+/*****************************************************************************
+ * INLINE PROMO FULL WIDTH
+ *****************************************************************************/
+:host([variant^="inline-promo"][full-width]) {
+  margin-block-end: 0;
+}
+
+:host([variant^="inline-promo"][full-width]) #container {
+  border: 0;
+  padding-block: var(--rh-space-4xl, 64px);
+  padding-inline: var(--rh-space-lg, 16px);
+}
+
+:host([variant^="inline-promo"][full-width]) #body {
+  margin: 0;
+}
+
+:host([variant^="inline-promo"][full-width]) #inline-promo:not(.empty) ~ #body {
+  margin-block-end: var(--rh-space-3xl, 48px);
+}
+
+@container inline-promo (min-width: 768px) {
+  :host([variant^="inline-promo"][full-width]) #container {
+    padding-inline: 0;
+  }
+
+  :host([variant^="inline-promo"][full-width]) #body {
+    margin-block-end: 0;
+    padding-inline: var(--rh-space-2xl, 32px);
+  }
+
+  :host([variant^="inline-promo"][full-width]) #inline-promo:not(.empty) ~ #body {
+    margin-block-end: 0;
+  }
+
+  :host([variant^="inline-promo"][full-width]) #inline-promo.empty ~ #body {
+    grid-column-start: span 2;
+  }
+
+  :host([variant^="inline-promo"][full-width]) #container:has(#inline-promo.empty) {
+    min-height: auto;
   }
 }

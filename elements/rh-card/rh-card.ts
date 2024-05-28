@@ -13,6 +13,8 @@ import styles from './rh-card.css';
  * @slot        header
  *              If this slot is used, we expect a heading level tag (h1, h2, h3, h4, h5, h6).
  *              An icon, svg, or use of the icon component are also valid in this region.
+ * @slot        inline-promo
+ *              Use this slot for the inline promo variant of the card. Images & CTA's are most often slotted here.
  * @slot        Any content that is not designated for the header or footer slot, will go to this slot.
  * @slot        footer
  *              Use this slot for anything that you want to be stuck to the base of the card.
@@ -20,6 +22,8 @@ import styles from './rh-card.css';
  *              The container for the card. Contains the header, body, and footer.
  * @csspart     header
  *              The header for the card. Contains the header slot.
+ * @csspart     inline-promo
+ *              The inline-promo variation for the card. Contains the inline-promo slot.
  * @csspart     body
  *              The body for the card. Contains the default slot.
  * @csspart     footer
@@ -27,6 +31,9 @@ import styles from './rh-card.css';
  * @cssprop     {<length>} --rh-card-header-font-size
  *              Font size for header on card
  *              {@default `1.5rem`}
+ * @cssprop     {<color>} --rh-card-inline-promo-standard-bg-color
+ *              Background color for the Standard Inline Promo variant
+ *              {@default `var(--rh-color-surface-lighter, #f2f2f2)`}
  */
 @customElement('rh-card')
 export class RhCard extends LitElement {
@@ -51,7 +58,15 @@ export class RhCard extends LitElement {
   @property({ reflect: true, attribute: 'color-palette' })
     colorPalette?: 'darkest' | 'lightest' | 'lighter';
 
-  #slots = new SlotController(this, 'header', null, 'footer');
+  @property({ reflect: true }) variant?: 'inline-promo';
+
+  @property({ reflect: true, type: Boolean }) reverse = false;
+
+  @property({ reflect: true, type: Boolean }) 'one-col' = false;
+
+  @property({ reflect: true, type: Boolean }) 'full-width' = false;
+
+  #slots = new SlotController(this, 'header', 'inline-promo', null, 'footer');
 
   override render() {
     const { on = '', colorPalette = '' } = this;
@@ -63,6 +78,11 @@ export class RhCard extends LitElement {
              part="header"
              class="${classMap({ empty: !this.#slots.hasSlotted('header') })}">
           <slot name="header"></slot>
+        </div>
+        <div id="inline-promo"
+             part="inline-promo"
+             class="${classMap({ empty: !this.#slots.hasSlotted('inline-promo') })}">
+          <slot name="inline-promo"></slot>
         </div>
         <div id="body"
              part="body"
