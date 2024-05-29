@@ -78,6 +78,9 @@ export class RhPagination extends LitElement {
   /** Accessible label for the 'last page' button */
   @property({ attribute: 'label-last' }) labelLast = 'last page';
 
+  /** Change pagination size to small */
+  @property({ reflect: true }) size: 'sm' | null = null;
+
   @query('input') private input?: HTMLInputElement;
 
   #dir = new DirController(this);

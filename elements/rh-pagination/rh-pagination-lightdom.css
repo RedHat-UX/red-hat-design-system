@@ -2,6 +2,10 @@ rh-pagination {
   --_link-size: 50px;
 }
 
+rh-pagination[size="sm"] {
+  --_link-size: 36px;
+}
+
 rh-pagination > ol {
   list-style-type: none;
   display: contents;

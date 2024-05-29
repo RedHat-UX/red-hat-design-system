@@ -1,6 +1,12 @@
 :host {
+  --_stepper-size: 48px;
+
   display: block;
   min-height: 4em;
+}
+
+:host([size="sm"]) {
+  --_stepper-size: 34px;
 }
 
 [hidden] {
@@ -51,11 +57,11 @@ svg {
   display: grid;
   font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-heading-xs, 1.25rem);
-  height: 48px;
+  height: var(--_stepper-size);
   place-content: center;
   position: relative;
   text-decoration: none;
-  width: 48px;
+  width: var(--_stepper-size);
 }
 
 .stepper:is(:hover, :focus) {
