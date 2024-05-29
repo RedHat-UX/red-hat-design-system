@@ -47,21 +47,21 @@ it's near. Several cards can be used together to group related information.
     }
   </style>
 
-  <rh-card class="alt">
+<rh-card class="alt">
 
-  Card's color scheme can be modified using the `--rh-color-surface-*`
-  Tokens. However, before modifying design tokens, first determine if one of
-  card's [existing color palettes](/elements/card/code/#attributes) should be used instead.
+Card's color scheme can be modified using the `--rh-color-surface-*`
+Tokens. However, before modifying design tokens, first determine if one of
+card's [existing color palettes](/elements/card/code/#attributes) should be used instead.
 
-  {#
-  Read more about color palettes and themes in the
-  [getting started](/get-started/color/) section.
-  #}
+{#
+Read more about color palettes and themes in the
+[getting started](/get-started/color/) section.
+#}
 
-    <rh-cta variant="primary" slot="footer">
-      <a href="#">Call to action</a>
-    </rh-cta>
-  </rh-card>
+  <rh-cta variant="primary" slot="footer">
+    <a href="#">Call to action</a>
+  </rh-cta>
+</rh-card>
 
 </div><div>
 
@@ -118,23 +118,23 @@ it's near. Several cards can be used together to group related information.
     }
   </style>
 
-  <rh-card class="bar">
-    {# <rh-icon slot="header" set="ui" icon="information"></rh-icon> #}
-    <svg slot="header" width="var(--rh-size-icon-02)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-      <path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm1.25 23a1.25 1.25 0 1 1-2.5 0v-8a1.25 1.25 0 1 1 2.5 0v8ZM16 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z"></path>
-    </svg>
-    <h2 slot="header">Card title</h2>
+<rh-card class="bar">
+  <svg slot="header" width="var(--rh-size-icon-02)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm1.25 23a1.25 1.25 0 1 1-2.5 0v-8a1.25 1.25 0 1 1 2.5 0v8ZM16 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z"></path>
+  </svg>
+  <rh-icon hidden slot="header" set="ui" icon="information"></rh-icon>
+  <h2 slot="header">Card title</h2>
 
-  Use to add a small icon and a label group to the header section. A larger 
-  icon or a logo may be used.
+Use to add a small icon and a label group to the header section. A larger 
+icon or a logo may be used.
 
-  Alternative title bar styles can be achieved by selecting [card's `header` CSS
-  Shadow Part](/elements/card/code/#parts).
+Alternative title bar styles can be achieved by selecting [card's `header` CSS
+Shadow Part](/elements/card/code/#parts).
 
-    <rh-cta variant="primary" slot="footer">
-      <a href="#">Footer</a>
-    </rh-cta>
-  </rh-card>
+  <rh-cta variant="primary" slot="footer">
+    <a href="#">Footer</a>
+  </rh-cta>
+</rh-card>
 
 </div><div>
 
