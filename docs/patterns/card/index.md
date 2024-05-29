@@ -6,13 +6,23 @@ tags:
 ---
 
 <script type="module">
+  import '@rhds/elements/rh-avatar/rh-avatar.js';
   import '@rhds/elements/rh-card/rh-card.js';
   import '@rhds/elements/rh-cta/rh-cta.js';
+
+  import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
 </script>
 
 <style>
 .element-docs .card-patterns copy-permalink.h3 {
   margin-block-start: 0;
+}
+
+rh-card {
+  display: block;
+  &, &::part(container) {
+    height: 100%;
+  }
 }
 </style>
 
@@ -67,6 +77,9 @@ Read more about color palettes and themes in the
 
   ### Image title bar
 
+  Use to add an image to the basic style above the text.
+  Secondary and Default calls to action may be used.
+
   <style>
     rh-card.image::part(header) {
       padding: 0;
@@ -76,8 +89,7 @@ Read more about color palettes and themes in the
 
   <rh-card class="image">
     <img src="./kitten-900x300.jpeg" slot="header">
-    <p>Use to add an image to the basic style above the text.
-       Secondary and Default calls to action may be used.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.</p>
     <rh-cta slot="footer" variant="secondary">
       <a href="#">Footer</a>
     </rh-cta>
@@ -123,7 +135,7 @@ Read more about color palettes and themes in the
     <path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm1.25 23a1.25 1.25 0 1 1-2.5 0v-8a1.25 1.25 0 1 1 2.5 0v8ZM16 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z"></path>
   </svg>
   <rh-icon hidden slot="header" set="ui" icon="information"></rh-icon>
-  <h2 slot="header">Card title</h2>
+  <h4 slot="header">Card title</h4>
 
 Use to add a small icon and a label group to the header section. A larger 
 icon or a logo may be used.
@@ -157,9 +169,44 @@ Shadow Part](/elements/card/code/#parts).
 </div><div>
 
   ### Avatars
-  Use to highlight a group of people who engage in an event. A label should be 
-  included, but including text is optional.
 
+  Use to highlight a group of people who engage in an event. A label
+  should be included, but including text is optional.
+
+  Use the [`<rh-avatar>`](/elements/avatar/) element to element to present
+  the list of users.
+
+  <style>
+    rh-card.avatar {
+      &::part(body) { margin-block-start: var(--rh-space-lg); }
+      & p { margin-block-start: 0; }
+      & h4 {
+        font-family: var(--rh-font-family-body-text);
+        font-size: var(--rh-font-size-body-text-md);
+        font-weight: var(--rh-font-weight-body-text-regular);
+        line-height: var(--rh-line-height-body-text);
+        text-transform: uppercase;
+      }
+      & rh-avatar {
+        width: 100%;
+      }
+    }
+  </style>
+  <rh-card id="avatar-pattern" class="avatar">
+    <h4 slot="header">Title LG</h4>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
+      libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
+      elit. Donec id elit non mi porta gravida at eget metus.</p>
+    <rh-avatar name="First name Last name"
+               subtitle="Job title, Company name"></rh-avatar>
+    <rh-avatar name="First name Last name"
+               subtitle="Job title, Company name"></rh-avatar>
+    <rh-avatar name="First name Last name"
+               subtitle="Job title, Company name"></rh-avatar>
+  </rh-card>
+  <label>Color Palette
+    <rh-context-picker target="avatar-pattern"></rh-context-picker>
+  </label>
 </div><div>
 
   ### Video
@@ -245,6 +292,8 @@ For more information, please see the [card css custom properties](/elements/card
 </section>
 
 {% include 'feedback.html' %}
+
+element to present the list of users
 
 
 [element]: /elements/card
