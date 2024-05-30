@@ -10,7 +10,8 @@
 
 #container {
   display: contents;
-  --thumb-color: var(--rh-color-interactive-blue-darker, #0066cc)
+
+  --thumb-color: var(--rh-color-interactive-blue-darker, #0066cc);
 }
 
 #container.on-dark {
@@ -34,10 +35,6 @@
 
 :is(:focus,:hover) {
   --alt-color: var(--thumb-color);
-}
-
-input:focus {
-  outline: var(--thumb-color) solid 4px;
 }
 
 input {
@@ -70,3 +67,6 @@ input:checked:after {
   inset: 6px;
 }
 
+input:focus {
+  outline: var(--thumb-color) solid 4px;
+}
