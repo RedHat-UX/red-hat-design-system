@@ -1,0 +1,26 @@
+<style>
+  rh-card.custom-theme {
+    --rh-color-border-subtle-on-light: #EF6461;
+    --rh-color-surface-lightest: #feeded; /* 🍽️ */
+    --rh-color-text-primary-on-light: #30292F;
+    --rh-color-border-subtle-on-dark: #5e40be;
+    --rh-color-surface-darkest: #261a4c;
+    --rh-color-text-primary-on-dark: #e8e4f5;
+  }
+</style>
+
+<label>Color Palette
+  <rh-context-picker target="custom-theme-pattern"
+                     allow="lightest, darkest"></rh-context-picker>
+</label>
+
+<rh-card id="custom-theme-pattern" color-palette="light" class="custom-theme">
+  <h2 slot="header">Card title</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit
+    libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id
+    elit. Donec id elit non mi porta gravida at eget metus.</p>
+  <rh-cta slot="footer"><a href="#">Footer</a></rh-cta>
+</rh-card>
+
+
+

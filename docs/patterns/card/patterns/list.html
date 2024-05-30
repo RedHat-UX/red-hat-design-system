@@ -1,0 +1,75 @@
+<style>
+  .list-patterns {
+    display: flex;
+    flex-flow: row wrap;
+    gap: var(--rh-space-2xl);
+    & rh-card {
+      max-width: 400px;
+      & :is(ol, ul) {
+        display: flex;
+        flex-flow: column;
+        gap: var(--rh-space-lg);
+      }
+      &.plain :is(ol, ul) {
+        padding: 0;
+        list-style-type: none;
+      }
+      &.dividers :is(ol, ul) {
+        & li {
+          padding-block-end: var(--rh-space-lg);
+          border-block-end: 1px solid var(--rh-color-border-subtle-on-light);
+          &:last-child {
+            padding-block-end: 0;
+            border-block-end: none;
+          }
+        }
+      }
+    }
+  }
+</style>
+
+<div class="list-patterns">
+  <rh-card class="list plain">
+    <ul>
+      <li>List text</li>
+      <li><a href="#">Linked list text</a></li>
+      <li>List text two lines Lorem ipsum dolor sit amet, consectetur adipiscing elit nulla vitae elit</li>
+    </ul>
+    <rh-cta slot="footer">
+      <a href="#">Call to Action</a>
+    </rh-cta>
+  </rh-card>
+
+  <rh-card class="list plain dividers">
+    <ul>
+      <li>List text</li>
+      <li><a href="#">Linked list text</a></li>
+      <li>List text two lines Lorem ipsum dolor sit amet, consectetur adipiscing elit nulla vitae elit</li>
+    </ul>
+    <rh-cta slot="footer">
+      <a href="#">Call to Action</a>
+    </rh-cta>
+  </rh-card>
+
+  <rh-card class="list">
+    <ol>
+      <li>Ordered list text</li>
+      <li><a href="#">Linked ordered list text</a></li>
+      <li>Ordered List text two lines Lorem ipsum dolor sit amet, consectetur adipiscing elit nulla vitae elit</li>
+    </ol>
+    <rh-cta slot="footer">
+      <a href="#">Call to Action</a>
+    </rh-cta>
+  </rh-card>
+
+  <rh-card class="list">
+    <ul>
+      <li>Unordered list text</li>
+      <li><a href="#">Linked unordered list text</a></li>
+      <li>Unordered list text two lines Lorem ipsum dolor sit amet, consectetur adipiscing elit nulla vitae elit</li>
+    </ul>
+    <rh-cta slot="footer">
+      <a href="#">Call to Action</a>
+    </rh-cta>
+  </rh-card>
+</div>
