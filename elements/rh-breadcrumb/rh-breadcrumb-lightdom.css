@@ -110,6 +110,11 @@ rh-breadcrumb > ol > li > a[aria-current="page"] {
   color: var(--_breadcrumb-link-color-current-page);
 }
 
+rh-breadcrumb > ol > li > a[aria-current="page"] {
+  cursor: default;
+  pointer-events: none;
+}
+
 rh-breadcrumb[variant="subtle"] > ol > li:last-child,
 rh-breadcrumb[variant="subtle"] > ol > li > a[aria-current="page"] {
   color: var(--_breadcrumb-link-color-current-page-subtle);
