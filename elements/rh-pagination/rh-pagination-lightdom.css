@@ -46,21 +46,21 @@ rh-pagination li > a:focus:after,
 rh-pagination li > a[aria-current]:after {
   border-block-start-style: solid;
   content: "";
-  left: -1px;
+  inset-inline-start: -1px;
   position: absolute;
-  top: -1px;
+  inset-block-start: -1px;
   width: 104%;
 }
 
 rh-pagination li > a:hover:after,
 rh-pagination li > a:focus:before,
 rh-pagination li > a[aria-current]:after {
-  border-block-start-width: var(--rh-border-width-lg, 3px);
+  border-block-width: var(--rh-border-width-lg, 3px);
 }
 
 rh-pagination li > a:focus:before,
 rh-pagination li > a:hover:after {
-  border-block-start-color:
+  border-block-color:
     var(
         --_rh-pagination-border-top-hover-color,
         var(--rh-color-gray-60, #4d4d4d)
@@ -68,7 +68,7 @@ rh-pagination li > a:hover:after {
 }
 
 rh-pagination li > a:focus:after {
-  border-block-start-width: var(--rh-border-width-md, 2px);
+  border-block-width: var(--rh-border-width-md, 2px);
 }
 
 rh-pagination li > a[aria-current] {
@@ -82,12 +82,12 @@ rh-pagination li > a[aria-current] {
         --_rh-pagination-list-a-current-page-border-color,
         var(--rh-color-border-subtle-on-light, #c7c7c7)
       );
-  border-top: 0;
+  border-block-start: 0;
 }
 
 rh-pagination li > a:focus:after,
 rh-pagination li > a[aria-current]:after {
-  border-block-start-color:
+  border-block-color:
     var(
         --rh-pagination-accent-color,
         var(--rh-color-border-interactive-on-light, #0066cc)
@@ -129,4 +129,25 @@ rh-pagination:is([overflow="start"], [overflow="both"]) li:first-child:after {
   justify-content: center;
   background: var(--rh-color-surface-lightest, #ffffff);
   align-self: start;
+}
+
+/*****************************************************************************
+ * OPEN VARIANT
+ *****************************************************************************/
+
+rh-pagination[variant="open"] li > a {
+  --_rh-pagination-list-a-bg-color: transparent;
+}
+
+rh-pagination[variant="open"] li > a:hover:after,
+rh-pagination[variant="open"] li > a:focus:before,
+rh-pagination[variant="open"] li > a:focus:after,
+rh-pagination[variant="open"] li > a[aria-current]:after {
+  border-block-start-style: none;
+  border-block-end-style: solid;
+  inset-block-end: -1px;
+}
+
+rh-pagination[variant="open"] li > a[aria-current] {
+  border-color: transparent; /* NOTE: Keep active/hover borders in-line */
 }

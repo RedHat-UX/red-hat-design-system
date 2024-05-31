@@ -81,6 +81,8 @@ export class RhPagination extends LitElement {
   /** Change pagination size to small */
   @property({ reflect: true }) size: 'sm' | null = null;
 
+  @property({ reflect: true }) variant?: 'open' | null = null;
+
   @query('input') private input?: HTMLInputElement;
 
   #dir = new DirController(this);
