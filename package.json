@@ -37,6 +37,7 @@
     "elements/*/*-lightdom.css",
     "elements/*/*-lightdom-shim.css",
     "elements/rh-audio-player/i18n/*.json",
+    "rh-*/*.css",
     "!elements/*/docs/**/*.{js,html,css,md}",
     "!elements/*/demo/**/*.{js,html,css,md}",
     "!elements/*/test/*.{spec,e2e}.{ts,d.ts}",
@@ -156,6 +157,16 @@
       ],
       "output": [
         "react/**/*"
+      ]
+    },
+    "copy-css": {
+      "command": "npx tsx scripts/copy-assets.ts",
+      "files": [
+        "elements/*/*.css",
+        "scripts/copy-assets.ts"
+      ],
+      "output": [
+        "./*/*.css"
       ]
     },
     "bundle": {

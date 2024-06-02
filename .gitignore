@@ -24,6 +24,8 @@ test-results.xml
 rhds.min.js
 *LEGAL.txt
 *.tgz
+# copied lightdom shims
+rh-*
 
 # e2e
 test-results
