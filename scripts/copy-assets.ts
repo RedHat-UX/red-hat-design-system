@@ -1,7 +1,8 @@
+/* eslint-disable no-console */
 import { cp, mkdir } from 'node:fs/promises';
 import { dirname } from 'node:path';
 import { glob } from 'glob';
-import chalk from 'chalk'
+import chalk from 'chalk';
 
 for (const srcFile of await glob([
   'elements/*/*-lightdom.css',
