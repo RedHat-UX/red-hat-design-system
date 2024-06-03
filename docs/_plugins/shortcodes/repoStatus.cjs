@@ -133,28 +133,24 @@ const STATUS_LEGEND = {
 const STATUS_CHECKLIST = {
   'Figma library': {
     'Ready': 'Component is available in the Figma library',
-    'In progress': 'Component will be added to the Figma library when ready',
-    'Planned': 'Component is scheduled to be worked on',
-    'Deprecated': 'Component has been removed from the current Figma library ',
-    'N/A': 'Component not available in the Figma library',
-  },
-  'Responsive': {
-    'Ready': 'Component responds to changing viewport sizes in Figma and the browser',
-    'N/A': 'Responsiveness does not apply to this component',
+    'In progress': 'Component will be added to the Figma library when finished',
+    'Planned': 'Component should be added to the Figma library at a later date',
+    'Deprecated': 'Component was removed from the Figma library',
+    'N/A': 'Not planned, not available, or does not apply',
   },
   'RH Elements': {
-    'Ready': 'Component is available as a web component',
-    'In progress': 'Component will be added to the RH Elements repo when ready',
-    'Planned': 'Component is scheduled to become a web component',
-    'Deprecated': 'Component is no longer a web component',
-    'N/A': 'Component not available as a web component',
+    'Ready': 'Component is available in the RH Elements repo',
+    'In progress': 'Component will be added to the RH Elements repo when finished',
+    'Planned': 'Component should be added to the RH Elements repo at a later date',
+    'Deprecated': 'Component is no longer available in the RH Elements repo',
+    'N/A': 'Not planned, not available, or does not apply',
   },
-  'webRH': {
-    'Ready': 'Component is available as a web component',
-    'In progress': 'Component will be added to the webRH repo when ready',
-    'Planned': 'Component is scheduled to become a web component',
-    'Deprecated': 'Component is no longer a web component',
-    'N/A': 'Component not available as a web component',
+  'WebRH': {
+    'Ready': 'Component is available in the WebRH repo',
+    'In progress': 'Component will be added to the WebRH repo when finished',
+    'Planned': 'Component should be added to the WebRH repo at a later date',
+    'Deprecated': 'Component is no longer available in the WebRH repo',
+    'N/A': 'Not planned, not available, or does not apply',
   },
 };
 
@@ -302,9 +298,9 @@ function repoStatusChecklist({ heading = 'Status checklist', level = 2 } = {}) {
 </colgroup>
 <thead>
 <tr>
-<th scope="col" data-label="Property">Property</th>
-<th scope="col" data-label="Status">Status</th>
-<th scope="col" data-label="Meaning">Meaning</th>
+<th scope="col" data-label="Property" width="20%">Property</th>
+<th scope="col" data-label="Status" width="20%">Status</th>
+<th scope="col" data-label="Meaning" width="60%">Meaning</th>
 </tr>
 </thead>
 <tbody>
