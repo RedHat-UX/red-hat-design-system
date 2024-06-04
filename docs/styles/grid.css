@@ -6,7 +6,7 @@
   gap: var(--rh-space-2xl, 32px);
 }
 
-@container container (min-width: 567px) {
+@container container (min-width: 576px) {
   .grid.xs-two-columns {
     grid-template-columns: 1fr 1fr;
   }

@@ -134,7 +134,7 @@
     }
   }
 
-  @container main (min-width: 567px) {
+  @container main (min-width: 576px) {
     .container {
       padding-block-start: var(--rh-space-6xl, 96px);
     }

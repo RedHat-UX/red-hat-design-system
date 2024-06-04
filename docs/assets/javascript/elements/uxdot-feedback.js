@@ -29,7 +29,7 @@ class UxdotFeedback extends LitElement {
       font-size: var(--rh-font-size-body-text-lg, 1.125rem)
     }
 
-    @container host (min-width: 567px) {
+    @container host (min-width: 576px) {
       #container {
         grid-template-columns: 1fr 1fr;
       }

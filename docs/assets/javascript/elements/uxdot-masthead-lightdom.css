@@ -16,7 +16,7 @@ uxdot-masthead [slot="links"] span {
   white-space: nowrap !important;
 }
 
-@container uxdot-masthead (min-width: 567px) {
+@container uxdot-masthead (min-width: 576px) {
   uxdot-masthead [slot="links"] span {
     clip: unset !important;
     clip-path: unset !important;

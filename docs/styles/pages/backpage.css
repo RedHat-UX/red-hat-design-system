@@ -117,7 +117,7 @@
     margin-block-start: var(--rh-space-3xl, 48px);
   }
 
-  @container main (min-width: 567px) {
+  @container main (min-width: 576px) {
     aside {
       padding-inline: var(--rh-space-2xl, 32px);
     }

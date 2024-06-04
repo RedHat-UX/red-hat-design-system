@@ -74,7 +74,7 @@ class UxdotMasthead extends LitElement {
       color: var(--rh-color-icon-subtle-hover, #a3a3a3) !important;
     }
 
-    @container (min-width: 567px) {
+    @container (min-width: 576px) {
       #container {
         gap: var(--rh-space-lg, 16px);
         margin: var(--rh-space-lg, 16px);
