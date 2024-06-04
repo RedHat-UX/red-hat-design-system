@@ -53,7 +53,7 @@ eleventyComputed:
 {% include 'partials/component/masthead.njk' %}
 {% include 'partials/component/sidenav.njk' %}
 <main id="main">
-  <article>
+  <article {% if hasToc and (content | toc).length > 0 %}class="has-toc"{% endif %}>
     <uxdot-header has-subnav>
       <h1 id="{{ doc.slug }}" class="page-title">{{ doc.alias or (doc.slug | deslugify) }}</h1>
       <rh-subnav slot="subnav">{% for tab in doc.tabs %}
@@ -63,7 +63,7 @@ eleventyComputed:
       </rh-subnav>
     </uxdot-header>
 
-    {% if hasToc %}
+    {% if hasToc  and (content | toc).length > 0 %}
       <aside>
         {{ content | toc | safe }}
       </aside>

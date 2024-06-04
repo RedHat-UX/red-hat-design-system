@@ -23,16 +23,14 @@ importElements:
 {% include 'partials/component/sidenav.njk' %}
 <main id="main">
 
-  <article {% if hasToc %}class="has-toc"{% endif %}>
+  <article {% if hasToc and (content | toc).length > 0 %}class="has-toc"{% endif %}>
 
   {% include 'partials/component/header.njk' %}
-  {% if hasToc %}
+  {% if hasToc and (content | toc).length > 0 %}
     <aside>
-      {% if (content | toc).length > 0 %} 
-        <uxdot-toc summary="On this page">
-          {{ content | toc | safe }}
-        </uxdot-toc>
-      {% endif %}
+      <uxdot-toc summary="On this page">
+        {{ content | toc | safe }}
+      </uxdot-toc>
     </aside>
   {% endif %}
 
