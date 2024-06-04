@@ -114,8 +114,8 @@
           )
         minmax(14rem, 1fr);
       grid-template-areas:
-        "header"
-        "content";
+        "header header"
+        "content content";
     }
 
     article.has-toc {
