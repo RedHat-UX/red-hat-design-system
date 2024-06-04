@@ -67,7 +67,7 @@ Title text can be two lines on small breakpoints, but no more.
 </uxdot-example>
 
 ## Layout 
-The width of an accordion can be adjusted on large breakpoints to fit less columns if necessary.
+The width of an accordion can be adjusted on large breakpoints to fit fewer columns if necessary.
 
 <uxdot-example width-adjustment="872px">
   <img src="{{ '../accordion-layout.png' | url }}" alt="A wider accordion placed on a 12-column grid and occupying four grid columns">

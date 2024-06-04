@@ -15,7 +15,8 @@ Accordion panels include title text, a chevron icon, body text, and other conten
 6) Emphasis
 7) Content
 8) Panel body region
-   {.example-notes}
+9) Accent slot
+{.example-notes}
 
 ### Sizes 
 There are two available sizes and the only difference is the title text size. You can use the Small size on large breakpoints, but not the Large size on small breakpoints due to the potential of long title text wrapping to more than two lines.
@@ -38,11 +39,20 @@ An accordion is available in both light and dark themes. The light theme expande
   <img src="{{ '../accordion-theme-dark.png' | url }}" alt="Dark theme accordion with an expanded panel">
 </uxdot-example>
 
-## Configuration 
+## Configuration
+
 An expanded panel does not have a maximum height, but it may scroll if constrained by vertical space. The width of an accordion varies based on content and page layout. Title text and icons are horizontally aligned.
 
 <uxdot-example>
   <img src="{{ '../accordion-configuration.png' | url }}" alt="How an accordion is constructed showing alignment, space, scrolling, and width details">
+</uxdot-example>
+
+### Accent slot
+
+The accent slot can be positioned inline or below the panel's title. This can contain tags, badges, or other small elements with secondary information.
+
+<uxdot-example>
+  <img src="{{ '../accordion-accent-slot.png' | url }}" alt="Accordion panel with two tags in inline accent slot and an accordion with two tags below the title">
 </uxdot-example>
 
 ### Nested panels 

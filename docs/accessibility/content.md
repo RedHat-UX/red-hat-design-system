@@ -366,6 +366,8 @@ Instead, a list would be simpler, easier to understand, and easier to code:
 
 In other words, if it doesn’t *need* to be a table, then it probably shouldn’t be a table.
 
+For more information on developing accessible tables, please read our [Table element accessibility guidance](/elements/table/accessibility/).
+
 ### Captions and headings
 
 The purpose of, and data relationships within, tables should be made apparent to all users: visual and non-visual, and both with and without assistive tech. To ensure tables are understandable by all, we need to pay special attention to their captions and row/column headings.

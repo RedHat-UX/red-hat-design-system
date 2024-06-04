@@ -6,7 +6,6 @@ const DirectoryOutputPlugin = require('@11ty/eleventy-plugin-directory-output');
 const AnchorsPlugin = require('@patternfly/pfe-tools/11ty/plugins/anchors.cjs');
 const CustomElementsManifestPlugin =
   require('@patternfly/pfe-tools/11ty/plugins/custom-elements-manifest.cjs');
-const TodosPlugin = require('@patternfly/pfe-tools/11ty/plugins/todos.cjs');
 const TOCPlugin = require('./docs/_plugins/table-of-contents.cjs');
 const RHDSPlugin = require('./docs/_plugins/rhds.cjs');
 const DesignTokensPlugin = require('./docs/_plugins/tokens.cjs');
@@ -52,7 +51,6 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addPlugin(RHDSMarkdownItPlugin);
 
-  /** Table of Contents Shortcode */
   /** Table of Contents Shortcode */
   eleventyConfig.addPlugin(TOCPlugin, {
     wrapper: '',
@@ -128,9 +126,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(CustomElementsManifestPlugin, {
     renderTitleInOverview: false,
   });
-
-  /** list todos */
-  eleventyConfig.addPlugin(TodosPlugin);
 
   /** fancy syntax highlighting with diff support */
   eleventyConfig.addPlugin(SyntaxHighlightPlugin);

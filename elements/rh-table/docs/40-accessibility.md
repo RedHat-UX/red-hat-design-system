@@ -10,13 +10,13 @@ Since tables are inherently complex HTML structures, they can create barriers fo
 
 ### Minimum requirements
 
-- Column titles (or headers) must use `<th>` elements with `scope="col"` attributes
-- Row titles (or headers) must use `<th>` elements with `scope="row"` attributes
-- Use `id` and `headers` attributes to associate data cells with their table headers
-- Add a `<caption>` element to title a table and help users identify its purpose
+- Column titles (or headers) must use `<th>` elements with `scope="col"` attributes ([WCAG technique H63](https://www.w3.org/WAI/WCAG21/Techniques/html/H63))
+- Row titles (or headers) must use `<th>` elements with `scope="row"` attributes ([WCAG technique H63](https://www.w3.org/WAI/WCAG21/Techniques/html/H63))
+- Add a `<caption>` element to title a table and help users identify its purpose ([WCAG technique H39](https://www.w3.org/WAI/WCAG21/Techniques/html/H39))
 
 ### Further guidance
 
+- Use `id` and `headers` attributes to associate data cells with their table headers in complex tables ([WCAG technique H43](https://www.w3.org/WAI/WCAG21/Techniques/html/H43))
 - Define sections with `<thead>` and `<tbody>` (and optionally `<tfoot>` for larger tables)
 
 ### Example markup
@@ -132,7 +132,7 @@ Each cell includes enough spacing for selecting interactive elements.
 
 ## Additional guidelines
 
-- No column title cells should be blank
+- No column title (or header) cells should be blank
 - Each cell should only have one piece of data
 - Avoid merged cells. When possible consider breaking a complex table into a series of simpler tables
 - Do not place multiple inactive elements in a single cell
