@@ -148,7 +148,7 @@ class UxdotSideNav extends LitElement {
     return items;
   }
 
-  // TODO: figure out why getItems()s does appear to function js/ssr vs ts.
+  // TODO: figure out why getItems() doesn't appear to function in js/ssr vs ts examples.
   // Shouldn't have to use the depreciated instantiation initItems
   // #tabindex = new RovingTabindexController(this, {
   //   getItems: () => {
