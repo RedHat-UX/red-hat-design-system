@@ -104,7 +104,7 @@ class UxdotSideNav extends LitElement {
       }
     }
 
-    @media (min-width: 567px) {
+    @media (min-width: 576px) {
       #close-button-container {
         padding: var(--rh-space-lg, 16px);
       }
