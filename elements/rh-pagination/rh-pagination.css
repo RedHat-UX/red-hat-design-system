@@ -13,6 +13,18 @@
   display: none !important;
 }
 
+.visually-hidden {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
 #container {
   display: flex;
   gap: calc(var(--rh-space-xs, 4px) / 2);
@@ -220,14 +232,34 @@ input:invalid {
  * OPEN VARIANT
  *****************************************************************************/
 
-:host([variant="open"]) .stepper {
+:host([variant~="open"]) .stepper {
   --_rh-pagination-stepper-bg-color: transparent;
 }
 
-:host([variant="open"]) .stepper:hover:after,
-:host([variant="open"]) .stepper:focus:before,
-:host([variant="open"]) .stepper:focus:after {
+:host([variant~="open"]) .stepper:hover:after,
+:host([variant~="open"]) .stepper:focus:before,
+:host([variant~="open"]) .stepper:focus:after {
   border-block-start-style: none;
   border-block-end-style: solid;
   inset-block-end: -1px;
+}
+
+/*****************************************************************************
+ * COMPACT VARIANT
+ *****************************************************************************/
+
+:host([variant~="compact"]) #prev {
+  margin-inline-end: var(--rh-space-lg, 16px);
+}
+
+:host([variant~="compact"]) #numeric {
+  flex: 0;
+  margin-block: 0;
+  margin-inline-end: var(--rh-space-lg, 16px);
+  margin-inline-start: 0;
+}
+
+:host([variant~="compact"]) #numeric input {
+  align-self: stretch;
+  height: auto;
 }

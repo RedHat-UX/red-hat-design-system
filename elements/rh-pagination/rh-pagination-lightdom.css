@@ -135,19 +135,19 @@ rh-pagination:is([overflow="start"], [overflow="both"]) li:first-child:after {
  * OPEN VARIANT
  *****************************************************************************/
 
-rh-pagination[variant="open"] li > a {
+rh-pagination[variant~="open"] li > a {
   --_rh-pagination-list-a-bg-color: transparent;
 }
 
-rh-pagination[variant="open"] li > a:hover:after,
-rh-pagination[variant="open"] li > a:focus:before,
-rh-pagination[variant="open"] li > a:focus:after,
-rh-pagination[variant="open"] li > a[aria-current]:after {
+rh-pagination[variant~="open"] li > a:hover:after,
+rh-pagination[variant~="open"] li > a:focus:before,
+rh-pagination[variant~="open"] li > a:focus:after,
+rh-pagination[variant~="open"] li > a[aria-current]:after {
   border-block-start-style: none;
   border-block-end-style: solid;
   inset-block-end: -1px;
 }
 
-rh-pagination[variant="open"] li > a[aria-current] {
+rh-pagination[variant~="open"] li > a[aria-current] {
   border-color: transparent; /* NOTE: Keep active/hover borders in-line */
 }
