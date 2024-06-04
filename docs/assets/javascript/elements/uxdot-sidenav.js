@@ -140,8 +140,24 @@ class UxdotSideNav extends LitElement {
 
   #tabindex = new RovingTabindexController(this);
 
-  #nav = [];
-  #navItems = [];
+  get _navItems() {
+    const slot = this.shadowRoot?.querySelector('slot').assignedElements({ flatten: true }) ?? [];
+    const items = slot?.flatMap(slotted => {
+      return Array.from(slotted.querySelectorAll(`uxdot-sidenav-dropdown > details > summary, uxdot-sidenav-item > a`)) ?? [];
+    });
+    return items;
+  }
+
+  // TODO: figure out why getItems()s does appear to function js/ssr vs ts.
+  // Shouldn't have to use the depreciated instantiation initItems
+  // #tabindex = new RovingTabindexController(this, {
+  //   getItems: () => {
+  //     const slot = this.shadowRoot?.querySelector('slot').assignedElements({ flatten: true }) ?? [];
+  //     return slot?.flatMap(slotted => {
+  //       Array.from(slotted.querySelectorAll(`uxdot-sidenav-dropdown > details > summary, uxdot-sidenav-item > a`)) ?? [];
+  //     });
+  //   },
+  // });
 
   async connectedCallback() {
     super.connectedCallback();
@@ -151,6 +167,7 @@ class UxdotSideNav extends LitElement {
       this.#triggerElement.addEventListener('click', this.#onTriggerClick.bind(this));
       this.addEventListener('click', this.#onClick.bind(this));
       this.addEventListener('keydown', this.#onKeydown.bind(this));
+      this.#tabindex.initItems(this._navItems);
     }
   }
 
@@ -172,27 +189,19 @@ class UxdotSideNav extends LitElement {
           </button>
         </div>
         <nav part="nav" aria-label="Main menu">
-          <slot @slotchange="${this.#onSlotChange}"></slot>
+          <slot @slotchange="${() => this.#rtiUpdate()}"></slot>
         </nav>
       </div>
       <div id="overlay" part="overlay" ?hidden=${!this.open}></div>
     `;
   }
 
-  updated() {
-    this.#closeButton = this.shadowRoot?.getElementById('close-button');
+  #rtiUpdate() {
+    this.#tabindex.updateItems(this._navItems);
   }
 
-  async #onSlotChange() {
-    await this.updateComplete;
-    const slot = this.shadowRoot?.querySelector('slot');
-    this.#nav = Array.from(slot.assignedElements({ flatten: true }));
-    this.#nav?.forEach(nav => {
-      this.#navItems = Array.from(
-        nav.querySelectorAll('uxdot-sidenav-dropdown > details > summary, uxdot-sidenav-item > a')
-      );
-    });
-    this.#tabindex.initItems(this.#navItems ?? []);
+  updated() {
+    this.#closeButton = this.shadowRoot?.getElementById('close-button');
   }
 
   async toggle() {
