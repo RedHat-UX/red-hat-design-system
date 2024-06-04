@@ -5,9 +5,15 @@
     grid-template-columns: 1fr;
     grid-template-areas:
       "header"
-      "aside"
       "content";
     row-gap: var(--rh-space-4xl, 64px);
+  }
+
+  article.has-toc {
+    grid-template-areas:
+      "header"
+      "aside"
+      "content";
   }
 
   uxdot-header {
@@ -107,6 +113,12 @@
             var(--container-max-width)
           )
         minmax(14rem, 1fr);
+      grid-template-areas:
+        "header"
+        "content";
+    }
+
+    article.has-toc {
       grid-template-areas:
         "header header"
         "content aside";

@@ -22,22 +22,24 @@ importElements:
 {% include 'partials/component/masthead.njk' %}
 {% include 'partials/component/sidenav.njk' %}
 <main id="main">
-  <article>
-    {% include 'partials/component/header.njk' %}
+
+  <article {% if hasToc %}class="has-toc"{% endif %}>
+
+  {% include 'partials/component/header.njk' %}
+  {% if hasToc %}
     <aside>
-    {% if hasToc %}
-       {% if (content | toc).length > 0 %} 
+      {% if (content | toc).length > 0 %} 
         <uxdot-toc summary="On this page">
           {{ content | toc | safe }}
         </uxdot-toc>
       {% endif %}
-    {% endif %}
-     </aside>
-    <div class="container">
-      {{ content | safe }}
-    </div>
+    </aside>
+  {% endif %}
 
-  </article>
+  <div class="container">
+    {{ content | safe }}
+  </div>
+
   {% include "partials/component/back-to-top.njk" %}
 </main>
 {% include 'partials/component/footer.njk' %}
