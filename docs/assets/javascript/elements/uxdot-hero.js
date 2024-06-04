@@ -14,6 +14,7 @@ class UxdotHero extends LitElement {
       display: flex;
       flex-direction: column;
       align-items: center;
+      width: 100%;
     }
 
     slot[name="header"]::slotted(*) {
