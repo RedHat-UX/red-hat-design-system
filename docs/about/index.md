@@ -99,7 +99,7 @@ tags:
     margin-block: var(--rh-space-5xl, 80px);
   }
 
-  @container container (min-width: 567px) {
+  @container container (min-width: 576px) {
     #approach .item:nth-child(n) {
       order: unset;
     }

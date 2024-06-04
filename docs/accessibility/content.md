@@ -29,7 +29,7 @@ importElements:
       max-width: 36em;
     }
     
-    @container container (min-width: 567px) {
+    @container container (min-width: 576px) {
       #func-img {
         padding: var(--rh-space-3xl, 48px);
       }

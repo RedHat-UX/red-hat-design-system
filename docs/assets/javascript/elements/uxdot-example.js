@@ -61,7 +61,7 @@ class UxdotExample extends LitElement {
       border: none;
     }
 
-    @container host (min-width: 567px) {
+    @container host (min-width: 576px) {
       #container {
         padding: var(--rh-space-3xl, 48px);
       }
