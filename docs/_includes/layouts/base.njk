@@ -22,6 +22,14 @@
         display: none;
       }
     </style>
+    {# if javascript is turned off we want to ensure the page renders #}
+    <noscript>
+      <style type="text/css">
+        body[dsd-pending] {
+          display: grid;
+        }
+      </style>
+    </noscript>
 
     {% include "../partials/javascript/global.html" %}
   </head>
