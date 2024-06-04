@@ -8,8 +8,8 @@ The Inline Promo card variant allows users to easily display text and optionally
 
 ```html
 <rh-card variant="inline-promo">
-  <svg slot="inline-promo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 190">
-    <title>A placeholder image in a card inline-promo slot</title>
+  <svg slot="image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 190">
+    <title>A placeholder image in rh-card in the "image" slot</title>
     <rect x="0" y="0" width="320" height="190" fill="#e7f0f9"/>
     <line x1="0" y1="0" x2="320" y2="190" stroke="#d6e7f5"/>
     <line x1="320" y1="0" x2="0" y2="190" stroke="#d6e7f5"/>
