@@ -265,6 +265,7 @@ article {
 
 @container inline-promo (min-width: 768px) {
   :host([variant^="inline-promo"][full-width]) #container {
+    padding-block: var(--rh-space-lg, 16px);
     padding-inline: 0;
   }
 
@@ -280,8 +281,10 @@ article {
   :host([variant^="inline-promo"][full-width]) #inline-promo.empty ~ #body {
     grid-column-start: span 2;
   }
+}
 
-  :host([variant^="inline-promo"][full-width]) #container:has(#inline-promo.empty) {
-    min-height: auto;
+@container inline-promo (min-width: 992px) {
+  :host([variant^="inline-promo"][full-width]) #container {
+    padding-block: 0;
   }
 }
