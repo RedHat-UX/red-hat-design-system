@@ -122,7 +122,6 @@ article {
 :host([variant^="inline-promo"]) {
   container: inline-promo / inline-size;
   display: block;
-  margin-block-end: var(--rh-space-2xl, 32px);
 }
 
 ::slotted([slot="inline-promo"]:is(img, svg)) {
