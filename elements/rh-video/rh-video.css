@@ -19,6 +19,21 @@
   justify-content: stretch;
 }
 
+figure,
+::slotted([slot="thumbnail"]),
+::slotted(iframe) {
+  max-width: 100%;
+}
+
+::slotted(iframe) {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 0;
+}
+
 figure {
   display: inline-flex;
   flex-direction: column;
@@ -37,6 +52,7 @@ figure.dark {
 
 #consent {
   justify-content: center;
+  container: consent / inline-size;
 }
 
 #consent-body {
@@ -44,14 +60,21 @@ figure.dark {
   flex-direction: column;
   align-items: center;
   position: relative;
+  text-align: center;
   z-index: 5;
 }
 
 #consent-message,
 ::slotted([slot="consent-message"]) {
   font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-  font-size: var(--rh-font-size-heading-sm, 1.5rem);
+  font-size: var(--rh-font-size-heading-xs, 1.25rem);
   line-height: var(--rh-line-height-heading, 1.3);
+}
+
+@container consent (min-width: 576px) {
+  #consent-message {
+    font-size: var(--rh-font-size-heading-sm, 1.5rem);
+  }
 }
 
 figure,
