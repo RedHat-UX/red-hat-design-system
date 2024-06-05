@@ -45,6 +45,11 @@ export class VideoPlayEvent extends Event {
  * @slot consent-button-text - text for CTA button to update preferences, e.g. "Update preferences"
  * @slot caption - optional caption below video
  * @slot autoplay - DO NOT USE! (Used by `rh-video`.)
+ * @csspart figure - The outer container for rh-video
+ * @csspart video - The container for the video, thumbnail, and play button
+ * @csspart consent-body - The container for the consent message and consent button
+ * @csspart play - The play button on top of the thumbnail
+ * @csspart caption - The container for the caption
  */
 @customElement('rh-video')
 export class RhVideo extends LitElement {
@@ -130,8 +135,8 @@ export class RhVideo extends LitElement {
       'video' : 'thumbnail';
 
     return html`
-      <figure class="${classMap({ [show]: !!show, [on]: !!on })}">
-        <div id="video">
+      <figure part="figure" class="${classMap({ [show]: !!show, [on]: !!on })}">
+        <div part="video" id="video">
           <div aria-hidden="${show !== 'thumbnail'}">
             <slot id="thumbnail" name="thumbnail"></slot>
           </div>
@@ -156,7 +161,7 @@ export class RhVideo extends LitElement {
                   </g>
                 </g>
               </svg>
-              <div id="consent-body">
+              <div part="consent-body" id="consent-body">
                 <slot name="consent-message">
                   <p id="consent-message">View this video by opting in to “Advertising Cookies.”</p>
                 </slot>
@@ -168,7 +173,7 @@ export class RhVideo extends LitElement {
               </div>
             </rh-surface>
           ` : ''}
-          <button id="play"
+          <button part="play" id="play"
             ?hidden="${show !== 'thumbnail'}"
             @click="${this.#handlePlayClick}"
             @keyup="${this.#handlePlayKeyup}">
@@ -179,7 +184,7 @@ export class RhVideo extends LitElement {
             </svg>
           </button>
         </div>
-        <figcaption ?hidden="${!hasCaption}"><slot name="caption"></slot></figcaption>
+        <figcaption part="caption" ?hidden="${!hasCaption}"><slot name="caption"></slot></figcaption>
       </figure>
     `;
   }
