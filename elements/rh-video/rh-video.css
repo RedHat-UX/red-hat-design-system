@@ -71,14 +71,12 @@ figure.dark {
   line-height: var(--rh-line-height-heading, 1.3);
 }
 
-figure,
 #consent-message,
 ::slotted([slot="consent-message"]:last-of-type) {
   margin-block-end: var(--rh-space-lg, 16px);
 }
 
 @container consent (min-width: 576px) {
-  figure,
   #consent-message,
   ::slotted([slot="consent-message"]:last-of-type) {
     margin-block-end: var(--rh-space-xl, 24px);
