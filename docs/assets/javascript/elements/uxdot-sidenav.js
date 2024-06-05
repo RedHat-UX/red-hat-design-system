@@ -140,12 +140,19 @@ class UxdotSideNav extends LitElement {
 
   #tabindex = new RovingTabindexController(this);
 
-  get _navItems() {
+  get #navItems() {
     const slot = this.shadowRoot?.querySelector('slot').assignedElements({ flatten: true }) ?? [];
     const items = slot?.flatMap(slotted => {
       return Array.from(slotted.querySelectorAll(`uxdot-sidenav-dropdown > details > summary, uxdot-sidenav-item > a`)) ?? [];
     });
     return items;
+  }
+
+
+  get #allDropdowns() {
+    return Array.from(
+      this.querySelectorAll('uxdot-sidenav-dropdown')
+    );
   }
 
   // TODO: figure out why getItems() doesn't appear to function in js/ssr vs ts examples.
@@ -167,13 +174,15 @@ class UxdotSideNav extends LitElement {
       this.#triggerElement.addEventListener('click', this.#onTriggerClick.bind(this));
       this.addEventListener('click', this.#onClick.bind(this));
       this.addEventListener('keydown', this.#onKeydown.bind(this));
-      this.#tabindex.initItems(this._navItems);
+      window.addEventListener('keyup', this.#onKeyup.bind(this));
+      this.#tabindex.initItems(this.#navItems);
     }
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
     this.#triggerElement.removeEventListener('click', this.#onTriggerClick.bind(this));
+    window.removeEventListener('keyup', this.#onKeyup);
   }
 
   render() {
@@ -197,21 +206,23 @@ class UxdotSideNav extends LitElement {
   }
 
   #rtiUpdate() {
-    this.#tabindex.updateItems(this._navItems);
+    this.#tabindex.updateItems(this.#navItems);
   }
 
   updated() {
     this.#closeButton = this.shadowRoot?.getElementById('close-button');
   }
 
-  async toggle() {
+  async toggle(trapFocus = true) {
     this.open = !this.open;
     await this.updateComplete;
 
-    if (this.open) {
-      this.#closeButton?.focus();
-    } else {
-      this.#triggerElement?.focus();
+    if (trapFocus) {
+      if (this.open) {
+        this.#closeButton?.focus();
+      } else {
+        this.#triggerElement?.focus();
+      }
     }
   }
 
@@ -247,6 +258,66 @@ class UxdotSideNav extends LitElement {
       }
       default:
         break;
+    }
+  }
+
+  #onKeyup(event) {
+    switch (event.key) {
+      case 'Tab':
+        this.#onTab(event);
+        break;
+      default:
+        break;
+    }
+  }
+
+
+  #focusableChildMenuElements(parent) {
+    return parent.querySelectorAll(`uxdot-sidenav-dropdown-menu :is(a, button:not([disabled]),
+                                    input:not([disabled]), select:not([disabled]),
+                                    textarea:not([disabled]), [tabindex]:not([tabindex="-1"]):not([disabled]),
+                                    details:not([disabled]), summary:not(:disabled))`);
+  }
+
+  close(trapFocus = true) {
+    if (!this.open) {
+      return;
+    }
+    this.toggle(trapFocus);
+  }
+
+  #onTab(event) {
+    const { target } = event;
+    if (!this.contains(target)) {
+      this.close(false);
+    }
+
+    const dropdowns = this.#allDropdowns;
+    const dropdownParent = dropdowns.find(dropdown => dropdown.contains(target));
+    if (!dropdownParent) {
+      return;
+    }
+    const focusableChildren = this.#focusableChildMenuElements(dropdownParent);
+    if (!focusableChildren) {
+      return;
+    }
+    if (event.shiftKey) {
+      const firstFocusable = focusableChildren[0].contains(target);
+      if (!firstFocusable) {
+        return;
+      }
+      const dropdownSummary = dropdownParent.querySelector('summary');
+      event.preventDefault();
+      this.#tabindex.setActiveItem(dropdownSummary);
+      dropdownSummary?.focus();
+    } else {
+      const lastFocusable = focusableChildren[focusableChildren.length - 1].contains(target);
+      if (!lastFocusable) {
+        return;
+      }
+      event.preventDefault();
+      this.#tabindex.setActiveItem(this.#tabindex.nextItem);
+      this.#tabindex.activeItem?.focus();
     }
   }
 }
