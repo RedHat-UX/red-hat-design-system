@@ -53,7 +53,7 @@ describe('<rh-video>', function() {
     beforeEach(async function() {
       element = await createFixture<RhVideo>(html`
       <rh-video>
-        <img slot="thumbnail" src="https://fakeimg.pl//300x150/282828/eae0d0" alt="fakethumb"/>
+        <img slot="thumbnail" src="https://fakeimg.pl/300x150/282828/eae0d0" alt="fakethumb"/>
         <template>
           <iframe title="videotitle" width="300" height="150" src="https://www.youtube.com/embed/Hc8emNr2igU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </template>
@@ -107,7 +107,7 @@ describe('<rh-video>', function() {
     beforeEach(async function() {
       element = await createFixture<RhVideo>(html`
       <rh-video>
-        <img slot="thumbnail" src="https://fakeimg.pl//300x150/282828/eae0d0" alt="fakethumb"/>
+        <img slot="thumbnail" src="https://fakeimg.pl/300x150/282828/eae0d0" alt="fakethumb"/>
         <template>
           <iframe title="videotitle" width="300" height="150" src="https://www.youtube.com/embed/Hc8emNr2igU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </template>
@@ -129,7 +129,7 @@ describe('<rh-video>', function() {
     beforeEach(async function() {
       element = await createFixture<RhVideo>(html`
       <rh-video>
-        <img slot="thumbnail" src="https://fakeimg.pl//300x150/282828/eae0d0" alt="fakethumb"/>
+        <img slot="thumbnail" src="https://fakeimg.pl/300x150/282828/eae0d0" alt="fakethumb"/>
         <template>
           <iframe title="videotitle" width="300" height="150" src="https://www.youtube.com/embed/Hc8emNr2igU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </template>
@@ -150,7 +150,7 @@ describe('<rh-video>', function() {
     beforeEach(async function() {
       element = await createFixture<RhVideo>(html`
       <rh-video require-consent>
-        <img slot="thumbnail" src="https://fakeimg.pl//300x150/282828/eae0d0" alt="fakethumb"/>
+        <img slot="thumbnail" src="https://fakeimg.pl/300x150/282828/eae0d0" alt="fakethumb"/>
         <template>
           <iframe title="videotitle" width="300" height="150" src="https://www.youtube.com/embed/Hc8emNr2igU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </template>
@@ -199,7 +199,7 @@ describe('<rh-video>', function() {
     beforeEach(async function() {
       element = await createFixture<RhVideo>(html`
       <rh-video require-consent>
-        <img slot="thumbnail" src="https://fakeimg.pl//300x150/282828/eae0d0" alt="fakethumb"/>
+        <img slot="thumbnail" src="https://fakeimg.pl/300x150/282828/eae0d0" alt="fakethumb"/>
         <template>
           <iframe title="videotitle" width="300" height="150" src="https://www.youtube.com/embed/Hc8emNr2igU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </template>
@@ -228,7 +228,7 @@ describe('<rh-video>', function() {
     beforeEach(async function() {
       element = await createFixture<RhVideo>(html`
       <rh-video require-consent>
-        <img slot="thumbnail" src="https://fakeimg.pl//300x150/282828/eae0d0" alt="fakethumb"/>
+        <img slot="thumbnail" src="https://fakeimg.pl/300x150/282828/eae0d0" alt="fakethumb"/>
         <template>
           <iframe title="videotitle" width="300" height="150" src="https://www.youtube.com/embed/Hc8emNr2igU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </template>
