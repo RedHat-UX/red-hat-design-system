@@ -138,15 +138,6 @@ class UxdotSideNav extends LitElement {
 
   #closeButton = null;
 
-  get #navItems() {
-    const slot = this.shadowRoot?.querySelector('slot').assignedElements({ flatten: true }) ?? [];
-    const items = slot?.flatMap(slotted => {
-      return Array.from(slotted.querySelectorAll(`uxdot-sidenav-dropdown > details > summary, uxdot-sidenav-dropdown-menu-item > a, uxdot-sidenav-item > a`)) ?? [];
-    });
-    return items;
-  }
-
-
   get #allDropdowns() {
     return Array.from(
       this.querySelectorAll('uxdot-sidenav-dropdown')
@@ -311,7 +302,7 @@ class UxdotSideNav extends LitElement {
         return;
       }
       event.preventDefault();
-      const summary = dropdownParent.querySelector('summary');
+      const summary = dropdownParent.closet('summary');
       this.#tabindex.setActiveItem(summary);
       this.#tabindex.activeItem?.focus();
     } else {
