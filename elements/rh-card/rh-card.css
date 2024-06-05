@@ -9,7 +9,7 @@ article {
 #image.empty,
 #footer.empty,
 #body.empty {
-  display: none;
+  display: none !important;
 }
 
 ::slotted(*) {
@@ -114,6 +114,10 @@ article {
   #footer {
     margin-block-end: var(--rh-space-2xl, 32px);
   }
+}
+
+.has-image.has-header #image {
+  order: -1;
 }
 
 /*****************************************************************************

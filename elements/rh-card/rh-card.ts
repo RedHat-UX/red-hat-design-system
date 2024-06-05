@@ -38,6 +38,8 @@ export class RhCard extends LitElement {
 
   static styles = [styles];
 
+  private static slots = ['header', 'image', null, 'footer'];
+
   /**
    * Sets color theme based on parent context
    */
@@ -57,22 +59,39 @@ export class RhCard extends LitElement {
 
   @property({ reflect: true }) variant?: 'inline-promo';
 
-  #slots = new SlotController(this, 'header', 'image', null, 'footer');
+  @property({ reflect: true, type: Boolean }) reverse = false;
+
+  @property({ reflect: true, type: Boolean }) 'one-col' = false;
+
+  @property({ reflect: true, type: Boolean }) 'full-width' = false;
+
+  #slots = new SlotController(this, ...RhCard.slots);
 
   override render() {
     const { on = '', colorPalette = '' } = this;
+    const hasImage = this.#slots.hasSlotted('image');
+    const hasHeader = this.#slots.hasSlotted('header');
     return html`
      <div id="container"
           part="container"
-          class="${classMap({ [on]: !!on, [colorPalette]: !!colorPalette })}">
+          class="${classMap({
+            [on]: !!on,
+            [colorPalette]: !!colorPalette,
+            ...Object.fromEntries(RhCard.slots
+                .filter(slot => slot !== null)
+                .map(slot => [
+                  `has-${slot}`,
+                  this.#slots.hasSlotted(slot),
+                ])),
+          })}">
         <div id="header"
              part="header"
-             class="${classMap({ empty: !this.#slots.hasSlotted('header') })}">
+             class="${classMap({ empty: !hasHeader })}">
           <slot name="header"></slot>
         </div>
         <div id="image"
              part="image"
-             class="${classMap({ empty: !this.#slots.hasSlotted('image') })}">
+             class="${classMap({ empty: !hasImage })}">
           <slot name="image"></slot>
         </div>
         <div id="body"
