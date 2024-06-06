@@ -8,7 +8,6 @@ const CustomElementsManifestPlugin =
   require('@patternfly/pfe-tools/11ty/plugins/custom-elements-manifest.cjs');
 const CEMShortcodesPlugin = require('./docs/_plugins/cem-shortcodes.cjs');
 const OrderTagsPlugin = require('@patternfly/pfe-tools/11ty/plugins/order-tags.cjs');
-const TodosPlugin = require('@patternfly/pfe-tools/11ty/plugins/todos.cjs');
 const TOCPlugin = require('@patternfly/pfe-tools/11ty/plugins/table-of-contents.cjs');
 const SassPlugin = require('eleventy-plugin-dart-sass');
 const RHDSPlugin = require('./docs/_plugins/rhds.cjs');
@@ -129,9 +128,6 @@ module.exports = function(eleventyConfig) {
 
   /** Collections to organize by order instead of date */
   eleventyConfig.addPlugin(OrderTagsPlugin, { tags: ['develop'] });
-
-  /** list todos */
-  eleventyConfig.addPlugin(TodosPlugin);
 
   /** fancy syntax highlighting with diff support */
   eleventyConfig.addPlugin(SyntaxHighlightPlugin);
