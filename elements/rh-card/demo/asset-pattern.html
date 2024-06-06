@@ -1,6 +1,6 @@
 <section id="card-pattern-asset">
   <rh-card>
-    <svg class="sample" slot="image" viewBox="0 0 296 171" ><rect width="296" height="171"/></svg>
+    <svg class="sample" slot="image" width="296" height="171"><rect/></svg>
     <pf-icon icon="info-circle"
         size="md"
         slot="header"></pf-icon>
@@ -9,7 +9,7 @@
   </rh-card>
 
   <rh-card>
-    <svg class="sample" slot="image" viewBox="0 0 296 171" ><rect width="296" height="171"/></svg>
+    <svg class="sample" slot="image" width="296" height="171"><rect/></svg>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit
       libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id
       elit. Donec id elit non mi porta gravida at eget metus.</p>
@@ -21,11 +21,11 @@
   <rh-card class="footer-asset">
     <h2 slot="header">Title, lg</h2>
     <a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a>
-    <svg class="sample" slot="footer" viewBox="0 0 296 171" ><rect width="296" height="171"/></svg>
+    <svg class="sample" slot="footer" width="296" height="171"><rect/></svg>
   </rh-card>
 
   <rh-card color-palette="lighter">
-    <svg class="sample" slot="image" viewBox="0 0 296 171" ><rect width="296" height="171"/></svg>
+    <svg class="sample" slot="image" width="296" height="171"><rect/></svg>
     <pf-icon icon="info-circle"
         size="md"
         slot="header"></pf-icon>
@@ -34,7 +34,7 @@
   </rh-card>
 
   <rh-card color-palette="lighter">
-    <svg class="sample" slot="image" viewBox="0 0 296 171" ><rect width="296" height="171"/></svg>
+    <svg class="sample" slot="image" width="296" height="171"><rect/></svg>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit
       libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id
       elit. Donec id elit non mi porta gravida at eget metus.</p>
@@ -46,14 +46,14 @@
   <rh-card color-palette="lighter" class="footer-asset">
     <h2 slot="header">Title, lg</h2>
     <a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a>
-    <svg class="sample" slot="footer" viewBox="0 0 296 171" ><rect width="296" height="171"/></svg>
+    <svg class="sample" slot="footer" width="296" height="171"><rect/></svg>
   </rh-card>
 </section>
 
 <style>
   svg.sample {
     border: 1px dashed var(--rh-color-border-interactive-on-light, #0066cc);
-    & rect { fill: rgba(0 102 204 / 0.10) }
+    & rect { width: 100%; height: 100%; fill: rgba(0 102 204 / 0.10) }
   }
   #card-pattern-asset {
     display: grid;
