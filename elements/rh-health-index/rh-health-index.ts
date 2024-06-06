@@ -51,7 +51,7 @@ export class RhHealthIndex extends LitElement {
             <div class="grade">${grade}</div>
           </div>
         ` : [...'abcdef'].map(box => html`
-          <div class="box ${classMap({ [box]:true, active:box === grade })}">
+          <div class="box ${classMap({ [box]: true, active: box === grade })}">
             ${!(size === 'lg' || size === 'xl') ? '' : html`
             <div class="grade">${box}</div>
             <div class="bottom"></div>
