@@ -32,7 +32,7 @@ export class RhHealthIndex extends LitElement {
     attribute: 'grade',
   })
     grade: 'A' | 'B' | 'C' | 'D' | 'E' | 'F' = 'A';
-    
+
   /**
    * Sets color theme based on parent context
    */
@@ -43,7 +43,7 @@ export class RhHealthIndex extends LitElement {
     const grade = this.grade.toLowerCase();
     return html`
       <div id="container" role="img" aria-label="Health: grade ${this.grade} out of A through F">
-        <div id="grade" class="grade" ?hidden="${size!='md'}">${grade}</div>
+        <div id="grade" class="grade" ?hidden="${size !== 'md'}">${grade}</div>
         <div id="boxes"
             class="${classMap({ [size ?? '']: !!size,
                                 [on ?? '']: !!on })}">${size === 'sm' ? html`
@@ -51,7 +51,7 @@ export class RhHealthIndex extends LitElement {
             <div class="grade">${grade}</div>
           </div>
         ` : [...'abcdef'].map(box => html`
-          <div class="box ${classMap({[box]:true, active:box===grade})}">
+          <div class="box ${classMap({ [box]:true, active:box === grade })}">
             ${!(size === 'lg' || size === 'xl') ? '' : html`
             <div class="grade">${box}</div>
             <div class="bottom"></div>

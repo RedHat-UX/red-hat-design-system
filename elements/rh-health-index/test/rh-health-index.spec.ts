@@ -40,12 +40,10 @@ describe('<rh-health-index>', function() {
       // const snapshot = await a11ySnapshot();
       // expect(snapshot)
       //   .to.deep.equal({
-          
       //   });
       /* Testing shadowRoot instead */
-      let ariaLabel = element.shadowRoot?.querySelector('#container')?.getAttribute('aria-label');
-      expect(ariaLabel)
-        .to.equal("Health: grade C out of A through F");
+      const ariaLabel = element.shadowRoot?.querySelector('#container')?.getAttribute('aria-label');
+      expect(ariaLabel).to.equal('Health: grade C out of A through F');
     });
   });
 });
