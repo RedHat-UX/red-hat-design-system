@@ -164,28 +164,6 @@ article {
 }
 
 /*****************************************************************************
- * INLINE PROMO RIGHT ALIGNED WITH IMAGE (Reverse)
- *****************************************************************************/
-@container inline-promo (min-width: 768px) {
-  :host([variant^="inline-promo"][reverse]) #container {
-    grid-template-columns: 2fr 1fr;
-  }
-
-  :host([reverse]) #image {
-    order: 10;
-  }
-}
-
-/*****************************************************************************
- * INLINE PROMO NO IMAGE
- *****************************************************************************/
-@container inline-promo (min-width: 768px) {
-  :host([variant^="inline-promo"][one-col]) #container {
-    grid-template-columns: 1fr;
-  }
-}
-
-/*****************************************************************************
  * INLINE PROMO STANDARD
  *****************************************************************************/
 :host([variant^="inline-promo"][standard]) #container {

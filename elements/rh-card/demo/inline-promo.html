@@ -13,7 +13,7 @@
   </rh-cta>
 </rh-card>
 
-<rh-card variant="inline-promo" reverse>
+<rh-card variant="inline-promo" class="reverse">
   <svg slot="image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 190">
     <title>A placeholder image in rh-card in the "image" slot</title>
     <rect x="0" y="0" width="320" height="190" fill="#e7f0f9"/>
@@ -27,7 +27,7 @@
   </rh-cta>
 </rh-card>
 
-<rh-card variant="inline-promo" one-col>
+<rh-card variant="inline-promo" class="one-col">
   <h2>Featured: no image is okay too</h2>
   <p>Sometimes, you may not have an image to go with your card. Add the <code>one-col</code> attribute/property on the custom element.</p>
   <rh-cta>
@@ -79,7 +79,34 @@
     padding: var(--rh-space-xl, 24px);
     margin-block-end: var(--rh-space-xl, 24px);
   }
+
+  rh-card[variant="inline-promo"] {
+    container: inline-promo / inline-size; /* NOTE: container name must be `inline-promo` */
+  }
+
   rh-card[variant="inline-promo"]:not([full-width]) {
     margin-block-end: var(--rh-space-2xl, 32px);
+  }
+
+  /*****************************************************************************
+   * INLINE PROMO RIGHT ALIGNED WITH IMAGE (Reverse)
+   *****************************************************************************/
+  @container inline-promo (min-width: 768px) {
+    rh-card[variant="inline-promo"].reverse::part(container) {
+      grid-template-columns: 2fr 1fr;
+    }
+
+    rh-card[variant="inline-promo"].reverse::part(image) {
+      order: 10;
+    }
+  }
+
+  /*****************************************************************************
+   * INLINE PROMO NO IMAGE
+   *****************************************************************************/
+  @container inline-promo (min-width: 768px) {
+    rh-card[variant="inline-promo"].one-col::part(container) {
+      grid-template-columns: 1fr;
+    }
   }
 </style>

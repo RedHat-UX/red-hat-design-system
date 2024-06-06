@@ -60,10 +60,6 @@ export class RhCard extends LitElement {
 
   @property({ reflect: true }) variant?: 'inline-promo';
 
-  @property({ reflect: true, type: Boolean }) reverse = false;
-
-  @property({ reflect: true, type: Boolean }) 'one-col' = false;
-
   @property({ reflect: true, type: Boolean }) 'full-width' = false;
 
   #slots = new SlotController(this, 'header', 'image', null, 'footer');
