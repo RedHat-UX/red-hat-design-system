@@ -142,7 +142,12 @@ export class RhNavigationSecondary extends LitElement {
     this.addEventListener('overlay-change', this.#onOverlayChange);
     this.addEventListener('focusout', this.#onFocusout);
     this.addEventListener('keydown', this.#onKeydown);
+    window.addEventListener('keyup', this.#onKeyup.bind(this));
     this.#upgradeAccessibility();
+  }
+
+  disconnectedCallback(): void {
+    window.removeEventListener('keyup', this.#onKeyup);
   }
 
   render() {
@@ -251,14 +256,35 @@ export class RhNavigationSecondary extends LitElement {
         break;
       }
       case 'Tab':
-        this.#onTabEvent(event);
+        this.#onTabKeydown(event);
         break;
       default:
         break;
     }
   }
 
-  #onTabEvent(event: KeyboardEvent) {
+  #onKeyup(event: KeyboardEvent) {
+    switch (event.key) {
+      case 'Tab':
+        this.#onTabKeyup(event);
+        break;
+      default:
+        break;
+    }
+  }
+
+  #onTabKeyup(event: KeyboardEvent) {
+    if (!this.mobileMenuExpanded) {
+      return;
+    }
+    const { target } = event;
+    if (!this.contains(target as HTMLElement)) {
+      this.#toggleMobileMenu();
+      this.overlayOpen = false;
+    }
+  }
+
+  #onTabKeydown(event: KeyboardEvent) {
     // target is the element we are leaving with tab press
     const target = event.target as HTMLElement;
     // get target parent dropdown
