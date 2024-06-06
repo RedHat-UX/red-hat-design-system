@@ -32,45 +32,35 @@ export class RhHealthIndex extends LitElement {
     attribute: 'grade',
   })
     grade: 'A' | 'B' | 'C' | 'D' | 'E' | 'F' = 'A';
-
-
+    
   /**
    * Sets color theme based on parent context
    */
   @colorContextConsumer() private on?: ColorTheme;
 
   render() {
-    const classes = {
-      [this.grade.toLowerCase()]: !!this.grade,
-    };
-    const boxes = ['A', 'B', 'C', 'D', 'E', 'F'];
-
-    if (this.size === 'sm') {
-      return html`<div id="container" class="${this.on}">
-        <div class="box ${classMap(classes)}">
-          <div class="grade" id="grade">${this.grade}</div>
+    const { on, size } = this;
+    const grade = this.grade.toLowerCase();
+    return html`
+      <div id="container" role="img" aria-label="Health: grade ${this.grade} out of A-F">
+        <div id="grade" class="grade" ?hidden="${size!='md'}">${grade}</div>
+        <div id="boxes"
+            class="${classMap({ [size ?? '']: !!size,
+                                [on ?? '']: !!on })}">${size === 'sm' ? html`
+          <div class="box ${grade}">
+            <div class="grade">${grade}</div>
+          </div>
+        ` : [...'abcdef'].map(box => html`
+          <div class="box ${classMap({[box]:true, active:box===grade})}">
+            ${!(size === 'lg' || size === 'xl') ? '' : html`
+            <div class="grade">${box}</div>
+            <div class="bottom"></div>
+            `}
+          </div>
+        `)}
         </div>
-      </div>`;
-    } else {
-      return html`${
-        (this.size === 'md') ? html`<div id="grade">${this.grade}</div>` : html``
-      }
-      <div id="container" class="${this.on}">
-        ${boxes.map(box => {
-          const active = box === this.grade;
-          const boxLowercase = box.toLowerCase();
-          const boxClasses = {
-            'box': true,
-            'active': active,
-            [boxLowercase]: !!boxLowercase,
-          };
-          return html`
-          <div class="${classMap(boxClasses)}">
-            ${(this.size === 'lg' || this.size === 'xl') ? html`<div class="grade">${box}</div><div class="bottom"></div>` : html``}
-          </div>`;
-        })}
-      </div>`;
-    }
+      </div>
+    `;
   }
 }
 

@@ -3,11 +3,10 @@
   --_ui-size: var(--rh-space-xl, 24px);
   --_ui-size-xl: calc(var(--rh-space-2xl, 32px) - 2px);
 
-  display: inline-flex;
-  align-items: center;
   font-family: var(--rh-font-family-code, RedHatMono, "Red Hat Mono", "Courier New", Courier, monospace);
   font-size: var(--rh-font-size-body-text-md, 1rem);
   line-height: var(--_ui-size);
+  text-transform: uppercase;
 
   /* colors */
   --_color-text-active: var(--rh-color-gray-95, #151515);
@@ -34,11 +33,16 @@
   --_color-f-text: var(--rh-color-red-orange-70, #731f00);
 }
 
-:host([hidden]) {
-  display: none;
+#container {
+  display: inline-flex;
+  align-items: center;
 }
 
-#container {
+[hidden] {
+  display: none !important;
+}
+
+#boxes {
   display: flex;
   border: var(--rh-border-width-sm, 1px) solid var(--_color-border-default);
   margin-inline-start: var(--rh-space-lg, 16px);
@@ -48,13 +52,13 @@
  * Default / Medium Variant
  *****************************************************************************/
 
-:host([size="md"]) .box {
+.md .box {
   width: var(--_ui-size);
   height: var(--_ui-size);
   background: var(--_color-fill-default);
 }
 
-:host([size="sm"]) .box {
+.sm .box {
   display: flex;
   width: var(--_ui-size);
   height: var(--_ui-size);
@@ -65,15 +69,15 @@
   border-width: var(--rh-border-width-sm, 1px);
 }
 
-:host([size="md"]) .box:not(.active) {
+.md .box:not(.active) {
   border-inline-end: var(--rh-border-width-sm, 1px) solid var(--_color-border-default);
 }
 
-:host([size="md"]) .box:last-child {
+.md .box:last-child {
   border-inline-end: 0;
 }
 
-:host([size="md"]) .box.active {
+.md .box.active {
   position: relative;
   margin: -1px;
   z-index: 10;
@@ -81,32 +85,32 @@
   border-style: solid;
 }
 
-:host([size="md"]) .active.a {
+.md .active.a {
   background-color: var(--_color-a-stroke);
   border-color: var(--_color-a-text);
 }
 
-:host([size="md"]) .active.b {
+.md .active.b {
   background-color: var(--_color-b-stroke);
   border-color: var(--_color-b-text);
 }
 
-:host([size="md"]) .active.c {
+.md .active.c {
   background-color: var(--_color-c-stroke);
   border-color: var(--_color-c-text);
 }
 
-:host([size="md"]) .active.d {
+.md .active.d {
   background-color: var(--_color-d-stroke);
   border-color: var(--_color-d-text);
 }
 
-:host([size="md"]) .active.e {
+.md .active.e {
   background-color: var(--_color-e-stroke);
   border-color: var(--_color-e-text);
 }
 
-:host([size="md"]) .active.f {
+.md .active.f {
   background-color: var(--_color-f-stroke);
   border-color: var(--_color-f-text);
 }
@@ -115,43 +119,47 @@
  * Small Variant
  *****************************************************************************/
 
-:host([size="sm"]) #container {
+#boxes.sm {
+  border: none;
+}
+
+.sm {
   display: inline-block;
   margin: 0;
   border: none;
 }
 
-:host([size="sm"]) .a {
+.sm .a {
   background-color: var(--_color-a-fill);
   border-color: var(--_color-a-stroke);
   color: var(--_color-a-text);
 }
 
-:host([size="sm"]) .b {
+.sm .b {
   background-color: var(--_color-b-fill);
   border-color: var(--_color-b-stroke);
   color: var(--_color-b-text);
 }
 
-:host([size="sm"]) .c {
+.sm .c {
   background-color: var(--_color-c-fill);
   border-color: var(--_color-c-stroke);
   color: var(--_color-c-text);
 }
 
-:host([size="sm"]) .d {
+.sm .d {
   background-color: var(--_color-d-fill);
   border-color: var(--_color-d-stroke);
   color: var(--_color-d-text);
 }
 
-:host([size="sm"]) .e {
+.sm .e {
   background-color: var(--_color-e-fill);
   border-color: var(--_color-e-stroke);
   color: var(--_color-e-text);
 }
 
-:host([size="sm"]) .f {
+.sm .f {
   background-color: var(--_color-f-fill);
   border-color: var(--_color-f-stroke);
   color: var(--_color-f-text);
@@ -161,73 +169,73 @@
  * Large and XL Variants
  *****************************************************************************/
 
-:host([size="lg"]) #container,
-:host([size="xl"]) #container {
+.lg,
+.xl {
   display: flex;
   margin: 0;
   border: var(--rh-border-width-sm, 1px) solid var(--_color-border-default);
 }
 
-:host([size="lg"]) .box,
-:host([size="xl"]) .box {
+.lg .box,
+.xl .box {
   padding: 1px;
   border-inline: calc(var(--rh-border-width-sm, 1px)) solid transparent;
   background-color: var(--_color-fill-default);
   color: var(--rh-color-text-secondary-on-light, #4d4d4d);
 }
 
-:host([size="lg"]) .box.active,
-:host([size="xl"]) .box.active {
+.lg .box.active,
+.xl .box.active {
   position: relative;
   margin: -1px;
   border-block-width: var(--rh-border-width-sm, 1px);
   border-block-style: solid;
 }
 
-:host([size="lg"]) .a.active,
-:host([size="xl"]) .a.active {
+.lg .a.active,
+.xl .a.active {
   background-color: var(--_color-a-fill);
   border-color: var(--_color-a-text);
   color: var(--_color-a-text);
 }
 
-:host([size="lg"]) .b.active,
-:host([size="xl"]) .b.active {
+.lg .b.active,
+.xl .b.active {
   background-color: var(--_color-b-fill);
   border-color: var(--_color-b-text);
   color: var(--_color-b-text);
 }
 
-:host([size="lg"]) .c.active,
-:host([size="xl"]) .c.active {
+.lg .c.active,
+.xl .c.active {
   background-color: var(--_color-c-fill);
   border-color: var(--_color-c-text);
   color: var(--_color-c-text);
 }
 
-:host([size="lg"]) .d.active,
-:host([size="xl"]) .d.active {
+.lg .d.active,
+.xl .d.active {
   background-color: var(--_color-d-fill);
   border-color: var(--_color-d-text);
   color: var(--_color-d-text);
 }
 
-:host([size="lg"]) .e.active,
-:host([size="xl"]) .e.active {
+.lg .e.active,
+.xl .e.active {
   background-color: var(--_color-e-fill);
   border-color: var(--_color-e-text);
   color: var(--_color-e-text);
 }
 
-:host([size="lg"]) .f.active,
-:host([size="xl"]) .f.active {
+.lg .f.active,
+.xl .f.active {
   background-color: var(--_color-f-fill);
   border-color: var(--_color-f-text);
   color: var(--_color-f-text);
 }
 
-:host([size="lg"]) .grade,
-:host([size="xl"]) .grade {
+.lg .grade,
+.xl .grade {
   display: inline-block;
   line-height: var(--_ui-size);
   width: var(--_ui-size);
@@ -235,51 +243,51 @@
   color: var(--_color-text-inactive);
 }
 
-:host([size="xl"]) .grade {
+.xl .grade {
   line-height: var(--_ui-size-xl);
   width: var(--_ui-size-xl);
   font-size: var(--rh-font-size-body-text-xl, 1.25rem);
 }
 
-:host([size="lg"]) .active .grade,
-:host([size="xl"]) .active .grade {
+.lg .active .grade,
+.xl .active .grade {
   background: none;
   color: var(--_color-text-active);
   font-weight: var(--rh-font-weight-code-medium, 500);
 }
 
-:host([size="lg"]) .bottom,
-:host([size="xl"]) .bottom {
+.lg .bottom,
+.xl .bottom {
   height: var(--rh-space-xs, 4px);
 }
 
-:host([size="lg"]) .a .bottom,
-:host([size="xl"]) .a .bottom {
+.lg .a .bottom,
+.xl .a .bottom {
   background-color: var(--_color-a-stroke);
 }
 
-:host([size="lg"]) .b .bottom,
-:host([size="xl"]) .b .bottom {
+.lg .b .bottom,
+.xl .b .bottom {
   background-color: var(--_color-b-stroke);
 }
 
-:host([size="lg"]) .c .bottom,
-:host([size="xl"]) .c .bottom {
+.lg .c .bottom,
+.xl .c .bottom {
   background-color: var(--_color-c-stroke);
 }
 
-:host([size="lg"]) .d .bottom,
-:host([size="xl"]) .d .bottom {
+.lg .d .bottom,
+.xl .d .bottom {
   background-color: var(--_color-d-stroke);
 }
 
-:host([size="lg"]) .e .bottom,
-:host([size="xl"]) .e .bottom {
+.lg .e .bottom,
+.xl .e .bottom {
   background-color: var(--_color-e-stroke);
 }
 
-:host([size="lg"]) .f .bottom,
-:host([size="xl"]) .f .bottom {
+.lg .f .bottom,
+.xl .f .bottom {
   background-color: var(--_color-f-stroke);
 }
 
@@ -287,7 +295,7 @@
  * Dark Color Theme
  *****************************************************************************/
 
-#container.dark {
+.dark {
   --_color-text-active: var(--rh-color-white, #ffffff);
   --_color-text-inactive: var(--rh-color-gray-70, #383838);
   --_color-fill-default: var(--rh-color-surface-darkest, #151515);
@@ -318,46 +326,46 @@
   --_color-f-text-subtle: var(--rh-color-red-10, #fce3e3);
 }
 
-:host([size="sm"]) .dark .box {
+.sm.dark .box {
   color: var(--_color-text-active);
 }
 
-:host([size="lg"]) .dark .box:not(.active),
-:host([size="xl"]) .dark .box:not(.active) {
+.lg.dark .box:not(.active),
+.xl.dark .box:not(.active) {
   background-color: var(--rh-color-surface-dark-alt, #292929);
 }
 
-:host([size="lg"]) .dark .a .grade,
-:host([size="xl"]) .dark .a .grade {
+.lg.dark .a .grade,
+.xl.dark .a .grade {
   color: var(--_color-a-text-subtle);
 }
 
-:host([size="lg"]) .dark .b .grade,
-:host([size="xl"]) .dark .b .grade {
+.lg.dark .b .grade,
+.xl.dark .b .grade {
   color: var(--_color-b-text-subtle);
 }
 
-:host([size="lg"]) .dark .c .grade,
-:host([size="xl"]) .dark .c .grade {
+.lg.dark .c .grade,
+.xl.dark .c .grade {
   color: var(--_color-c-text-subtle);
 }
 
-:host([size="lg"]) .dark .d .grade,
-:host([size="xl"]) .dark .d .grade {
+.lg.dark .d .grade,
+.xl.dark .d .grade {
   color: var(--_color-d-text-subtle);
 }
 
-:host([size="lg"]) .dark .e .grade,
-:host([size="xl"]) .dark .e .grade {
+.lg.dark .e .grade,
+.xl.dark .e .grade {
   color: var(--_color-e-text-subtle);
 }
 
-:host([size="lg"]) .dark .f .grade,
-:host([size="xl"]) .dark .f .grade {
+.lg.dark .f .grade,
+.xl.dark .f .grade {
   color: var(--_color-f-text-subtle);
 }
 
-:host([size="lg"]) .dark .active .grade,
-:host([size="xl"]) .dark .active .grade {
+.lg.dark .active .grade,
+.xl.dark .active .grade {
   color: var(--_color-text-active);
 }
