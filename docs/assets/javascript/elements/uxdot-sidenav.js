@@ -302,7 +302,7 @@ class UxdotSideNav extends LitElement {
         return;
       }
       event.preventDefault();
-      const summary = dropdownParent.closet('summary');
+      const summary = dropdownParent.querySelector('summary');
       this.#tabindex.setActiveItem(summary);
       this.#tabindex.activeItem?.focus();
     } else {
