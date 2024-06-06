@@ -42,7 +42,7 @@ export class RhHealthIndex extends LitElement {
     const { on, size } = this;
     const grade = this.grade.toLowerCase();
     return html`
-      <div id="container" role="img" aria-label="Health: grade ${this.grade} out of A-F">
+      <div id="container" role="img" aria-label="Health: grade ${this.grade} out of A through F">
         <div id="grade" class="grade" ?hidden="${size!='md'}">${grade}</div>
         <div id="boxes"
             class="${classMap({ [size ?? '']: !!size,
