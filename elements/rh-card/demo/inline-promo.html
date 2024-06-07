@@ -61,11 +61,25 @@
   </rh-card>
 </div>
 
-<rh-card variant="inline-promo" standard>
+<rh-card variant="inline-promo" class="standard">
   <rh-cta slot="image">
     <a href="#">Call to action</a>
   </rh-cta>
   <p>This is the "standard" inline promo. It has a paragraph and a CTA in the "image" slot.</p>
+</rh-card>
+
+<rh-card variant="inline-promo" class="standard reverse">
+  <rh-cta slot="image">
+    <a href="#">Call to action</a>
+  </rh-cta>
+  <p>Another "standard" inline promo. The slots get reversed using a class. Style lightdom as necessary.</p>
+</rh-card>
+
+<rh-card variant="inline-promo" class="standard" color-palette="darkest">
+  <rh-cta slot="image">
+    <a href="#">Call to action</a>
+  </rh-cta>
+  <p>A "standard" inline promo with a <code>color-palette</code> attribute added to the web component tag.</p>
 </rh-card>
 
 <script type="module">
@@ -151,6 +165,59 @@
   @container inline-promo (min-width: 992px) {
     rh-card[variant="inline-promo"].full-width::part(container) {
       padding-block: 0;
+    }
+  }
+
+  /*****************************************************************************
+   * INLINE PROMO STANDARD
+   *****************************************************************************/
+  rh-card[variant="inline-promo"].standard::part(container) {
+    background-color: var(--rh-color-surface-lighter, #f2f2f2);
+    padding: var(--rh-space-2xl, 32px);
+    min-height: auto;
+  }
+
+  rh-card[variant="inline-promo"][color-palette="darkest"].standard::part(container) {
+    background-color: var(--rh-color-surface-darker, #1f1f1f);
+  }
+
+  rh-card[variant="inline-promo"].standard::part(body) {
+    margin-inline: 0;
+    margin-block-start: 0;
+    margin-block-end: var(--rh-space-xl, 24px);
+  }
+
+  rh-card[variant="inline-promo"].standard p {
+    font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+    margin-block: 0;
+  }
+
+  @container inline-promo (min-width: 768px) {
+    rh-card[variant="inline-promo"].standard::part(container) {
+      grid-template-columns: 3fr 1fr;
+      padding: var(--rh-space-3xl, 48px);
+    }
+
+    rh-card[variant="inline-promo"].standard::part(body) {
+      margin-block-end: 0;
+    }
+
+    rh-card[variant="inline-promo"].standard::part(image) {
+      text-align: end;
+      order: 10;
+    }
+
+    rh-card[variant="inline-promo"].standard.reverse::part(container) {
+      grid-template-columns: 1fr 2fr;
+    }
+
+    rh-card[variant="inline-promo"].standard.reverse::part(image) {
+      text-align: start;
+      order: 0;
+    }
+
+    rh-card[variant="inline-promo"].standard.reverse::part(body) {
+      margin-inline-start: auto;
     }
   }
 </style>
