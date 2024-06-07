@@ -119,7 +119,7 @@ article {
 /*****************************************************************************
  * INLINE PROMO
  *****************************************************************************/
-:host([variant^="inline-promo"]) {
+:host([variant~="inline-promo"]) {
   container: inline-promo / inline-size;
   display: block;
 }
@@ -129,36 +129,36 @@ article {
   max-width: 100%;
 }
 
-:host([variant^="inline-promo"]) #image {
+:host([variant~="inline-promo"]) #image {
   order: 10;
   width: 100%;
 }
 
-:host([variant^="inline-promo"]) #body ::slotted(h2) {
+:host([variant~="inline-promo"]) #body ::slotted(h2) {
   margin-block-start: 0;
 }
 
 @container inline-promo (min-width: 768px) {
-  :host([variant^="inline-promo"]) #container {
+  :host([variant~="inline-promo"]) #container {
     align-items: center;
     display: grid;
     grid-template-columns: 1fr 2fr;
     min-height: 250px;
   }
 
-  :host([variant^="inline-promo"]) #image {
+  :host([variant~="inline-promo"]) #image {
     order: 0;
   }
 
-  :host([variant^="inline-promo"]) #body {
+  :host([variant~="inline-promo"]) #body {
     max-width: 75ch;
   }
 
-  :host([variant^="inline-promo"]) #body ::slotted(h2) {
+  :host([variant~="inline-promo"]) #body ::slotted(h2) {
     font-size: var(--rh-font-size-body-text-2xl, 1.5rem);
   }
 
-  :host([variant^="inline-promo"]) #body ::slotted(p) {
+  :host([variant~="inline-promo"]) #body ::slotted(p) {
     font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   }
 }
