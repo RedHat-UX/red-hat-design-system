@@ -29,7 +29,7 @@ class UxdotRepoStatusList extends LitElement {
       align-items: flex-start;
       column-gap: var(--rh-space-2xl, 32px);
       row-gap: var(--rh-space-lg, 16px);
-      margin-block: var(--rh-space-lg, 16px);
+      margin-block: var(--rh-space-lg, 16px) !important;
       margin-inline: var(--rh-space-xl, 24px) !important;
     }
 
