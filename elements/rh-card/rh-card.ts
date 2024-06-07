@@ -31,9 +31,6 @@ import styles from './rh-card.css';
  * @cssprop     {<length>} --rh-card-header-font-size
  *              Font size for header on card
  *              {@default `1.5rem`}
- * @cssprop     {<color>} --rh-card-inline-promo-standard-bg-color
- *              Background color for the Standard Inline Promo variant
- *              {@default `var(--rh-color-surface-lighter, #f2f2f2)`}
  */
 @customElement('rh-card')
 export class RhCard extends LitElement {
@@ -59,8 +56,6 @@ export class RhCard extends LitElement {
     colorPalette?: 'darkest' | 'lightest' | 'lighter';
 
   @property({ reflect: true }) variant?: 'inline-promo';
-
-  @property({ reflect: true, type: Boolean }) 'full-width' = false;
 
   #slots = new SlotController(this, 'header', 'image', null, 'footer');
 
