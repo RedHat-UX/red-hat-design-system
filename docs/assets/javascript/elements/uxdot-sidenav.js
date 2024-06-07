@@ -367,6 +367,10 @@ class UxdotSideNavDropdown extends LitElement {
   }
 
   async #onClick(event) {
+    const { target } = event;
+    if (target instanceof HTMLAnchorElement) {
+      return;
+    }
     event.preventDefault();
     this.expanded = !this.expanded;
     this.querySelector('details').toggleAttribute('open', this.expanded);
