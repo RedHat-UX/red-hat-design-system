@@ -143,12 +143,6 @@ class UxdotSideNav extends LitElement {
 
   #closeButton = null;
 
-  // get #allDropdowns() {
-  //   return Array.from(
-  //     this.querySelectorAll('uxdot-sidenav-dropdown')
-  //   );
-  // }
-
   #tabindex = new RovingTabindexController(this, {
     getItems: () => {
       if (isServer) {
