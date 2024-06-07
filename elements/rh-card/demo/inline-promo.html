@@ -36,7 +36,7 @@
 </rh-card>
 
 <div class="bg-off-white">
-  <rh-card variant="inline-promo" full-width>
+  <rh-card variant="inline-promo" class="full-width">
     <svg slot="image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 190">
       <title>A placeholder image in rh-card in the "image" slot</title>
       <rect x="0" y="0" width="320" height="190" fill="#e7f0f9"/>
@@ -52,7 +52,7 @@
 </div>
 
 <div class="bg-off-white">
-  <rh-card variant="inline-promo" full-width>
+  <rh-card variant="inline-promo" class="full-width full-width--no-image">
     <h2>Full Width Inline Promo - No Image</h2>
     <p>Just like the last version, except this version doesn't have an image.</p>
     <rh-cta>
@@ -84,7 +84,7 @@
     container: inline-promo / inline-size; /* NOTE: container name must be `inline-promo` */
   }
 
-  rh-card[variant="inline-promo"]:not([full-width]) {
+  rh-card[variant="inline-promo"]:not(.full-width) {
     margin-block-end: var(--rh-space-2xl, 32px);
   }
 
@@ -107,6 +107,50 @@
   @container inline-promo (min-width: 768px) {
     rh-card[variant="inline-promo"].one-col::part(container) {
       grid-template-columns: 1fr;
+    }
+  }
+
+  /*****************************************************************************
+   * INLINE PROMO FULL WIDTH
+   *****************************************************************************/
+  rh-card[variant="inline-promo"].full-width] {
+    margin-block-end: 0;
+  }
+
+  rh-card[variant="inline-promo"].full-width::part(container) {
+    border: 0;
+    padding-block: var(--rh-space-4xl, 64px);
+    padding-inline: var(--rh-space-lg, 16px);
+  }
+
+  rh-card[variant="inline-promo"].full-width::part(body) {
+    margin: 0;
+    margin-block-end: var(--rh-space-3xl, 48px);
+  }
+
+  rh-card[variant="inline-promo"].full-width.full-width--no-image::part(body) {
+    margin-block-end: 0;
+  }
+
+  @container inline-promo (min-width: 768px) {
+    rh-card[variant="inline-promo"].full-width::part(container) {
+      padding-block: var(--rh-space-lg, 16px);
+      padding-inline: 0;
+    }
+
+    rh-card[variant="inline-promo"].full-width::part(body) {
+      margin-block-end: 0;
+      padding-inline: var(--rh-space-2xl, 32px);
+    }
+
+    rh-card[variant="inline-promo"].full-width.full-width--no-image::part(body) {
+      grid-column-start: span 2;
+    }
+  }
+
+  @container inline-promo (min-width: 992px) {
+    rh-card[variant="inline-promo"].full-width::part(container) {
+      padding-block: 0;
     }
   }
 </style>

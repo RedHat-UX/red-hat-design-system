@@ -117,7 +117,7 @@ article {
 }
 
 /*****************************************************************************
- * INLINE PROMO SHARED
+ * INLINE PROMO
  *****************************************************************************/
 :host([variant^="inline-promo"]) {
   container: inline-promo / inline-size;
@@ -217,52 +217,5 @@ article {
   :host([variant^="inline-promo"][standard][reverse]) #image {
     text-align: start;
     order: 0;
-  }
-}
-
-/*****************************************************************************
- * INLINE PROMO FULL WIDTH
- *****************************************************************************/
-:host([variant^="inline-promo"][full-width]) {
-  margin-block-end: 0;
-}
-
-:host([variant^="inline-promo"][full-width]) #container {
-  border: 0;
-  padding-block: var(--rh-space-4xl, 64px);
-  padding-inline: var(--rh-space-lg, 16px);
-}
-
-:host([variant^="inline-promo"][full-width]) #body {
-  margin: 0;
-}
-
-:host([variant^="inline-promo"][full-width]) #image:not(.empty) ~ #body {
-  margin-block-end: var(--rh-space-3xl, 48px);
-}
-
-@container inline-promo (min-width: 768px) {
-  :host([variant^="inline-promo"][full-width]) #container {
-    padding-block: var(--rh-space-lg, 16px);
-    padding-inline: 0;
-  }
-
-  :host([variant^="inline-promo"][full-width]) #body {
-    margin-block-end: 0;
-    padding-inline: var(--rh-space-2xl, 32px);
-  }
-
-  :host([variant^="inline-promo"][full-width]) #image:not(.empty) ~ #body {
-    margin-block-end: 0;
-  }
-
-  :host([variant^="inline-promo"][full-width]) #image.empty ~ #body {
-    grid-column-start: span 2;
-  }
-}
-
-@container inline-promo (min-width: 992px) {
-  :host([variant^="inline-promo"][full-width]) #container {
-    padding-block: 0;
   }
 }
