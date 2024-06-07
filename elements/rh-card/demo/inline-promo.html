@@ -1,3 +1,9 @@
+<h1>Inline Promo</h1>
+
+<p>A generic but flexible pattern to feature an image, heading, content and a call to action with <code>&lt;rh-card&gt;</code>.</p>
+
+<h2>Default Inline Promo:</h2>
+
 <rh-card variant="inline-promo">
   <svg slot="image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 190">
     <title>A placeholder image in rh-card in the "image" slot</title>
@@ -7,11 +13,15 @@
   </svg>
 
   <h2>Featured: left aligned with image</h2>
-  <p>You can customize the <code>#body</code> by using the <code>::part</code> selector. Using this technique, you can have padding on the top, bottom, left, right, or none at all.</p>
+  <p>This is the default Inline Promo card. If you want, you can customize the shadow DOM by using the <code>::part</code> selector. Using this technique, you can have padding on any side, or none at all.</p>
   <rh-cta>
     <a href="#">Call to action</a>
   </rh-cta>
 </rh-card>
+
+<h2 class="customizations">Customizations to Inline Promo:</h2>
+
+<p>Using your own CSS, you can customize the look and feel of Inline Promo.</p>
 
 <rh-card variant="inline-promo" class="reverse">
   <svg slot="image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 190">
@@ -54,7 +64,7 @@
 <div class="bg-off-white">
   <rh-card variant="inline-promo" class="full-width full-width--no-image">
     <h2>Full Width Inline Promo - No Image</h2>
-    <p>Just like the last version, except this version doesn't have an image—denoted by the <code>.full-width--no-image</code> class.</p>
+    <p>This Inline Promo is just like the last version, except this version doesn't have an image—denoted by the <code>.full-width--no-image</code> class.</p>
     <rh-cta>
       <a href="#">Call to action</a>
     </rh-cta>
@@ -65,21 +75,21 @@
   <rh-cta slot="image">
     <a href="#">Call to action</a>
   </rh-cta>
-  <p>This is the "standard" inline promo. It has a paragraph and a CTA in the "image" slot.</p>
+  <p>This is the "standard" Inline Promo. It has a paragraph and a CTA in the "image" slot.</p>
 </rh-card>
 
 <rh-card variant="inline-promo" class="standard reverse">
   <rh-cta slot="image">
     <a href="#">Call to action</a>
   </rh-cta>
-  <p>Another "standard" inline promo. The slots get reversed using a class. Style lightdom as necessary.</p>
+  <p>In this "standard" Inline Promo, the slots get reversed using a class.</p>
 </rh-card>
 
 <rh-card variant="inline-promo" class="standard" color-palette="darkest">
   <rh-cta slot="image">
     <a href="#">Call to action</a>
   </rh-cta>
-  <p>A "standard" inline promo with a <code>color-palette</code> attribute added to the web component tag.</p>
+  <p>A "standard" Inline Promo with a <code>color-palette</code> attribute added to the <code>&lt;rh-card&gt;</code> tag.</p>
 </rh-card>
 
 <script type="module">
@@ -88,18 +98,12 @@
 </script>
 
 <style>
-  .bg-off-white {
-    background-color: var(--rh-color-surface-lighter, #f2f2f2);
-    padding: var(--rh-space-xl, 24px);
-    margin-block-end: var(--rh-space-xl, 24px);
-  }
+  /*****************************************************************************
+   * INLINE PROMO SHARED
+   *****************************************************************************/
 
   rh-card[variant="inline-promo"] {
     container: inline-promo / inline-size; /* NOTE: container name must be `inline-promo` */
-  }
-
-  rh-card[variant="inline-promo"]:not(.full-width) {
-    margin-block-end: var(--rh-space-2xl, 32px);
   }
 
   /*****************************************************************************
@@ -219,5 +223,22 @@
     rh-card[variant="inline-promo"].standard.reverse::part(body) {
       margin-inline-start: auto;
     }
+  }
+
+  /*****************************************************************************
+   * MISC DEMO STYLES
+   *****************************************************************************/
+  .bg-off-white {
+    background-color: var(--rh-color-surface-lighter, #f2f2f2);
+    padding: var(--rh-space-xl, 24px);
+    margin-block-end: var(--rh-space-xl, 24px);
+  }
+
+  .customizations {
+    margin-block-start: var(--rh-space-4xl, 64px);
+  }
+
+  rh-card[variant="inline-promo"]:not(.full-width) {
+    margin-block-end: var(--rh-space-2xl, 32px);
   }
 </style>
