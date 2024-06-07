@@ -234,11 +234,13 @@ function repoStatusTable() {
 </thead>
 <tbody>
   ${elementsList.map(listItem => {
+    const listItemURL = listItem.name.toLowerCase().trim().split(' ').join('-');
     return /* html */`
 <tr>
 <td data-label="Name">
   <span>
-    <a href="/elements/${listItem.name}">${listItem.name}</a>
+
+    <a href="/elements/${listItemURL}">${listItem.name}</a>
     ${listItem.overallStatus !== 'Available' ?
       `<rh-tag color="${STATUS_LEGEND[listItem.overallStatus].color}" variant="${STATUS_LEGEND[listItem.overallStatus].variant}">
         ${listItem.overallStatus}${STATUS_LEGEND[listItem.overallStatus].icon}
