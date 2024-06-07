@@ -134,15 +134,20 @@ class UxdotSideNav extends LitElement {
     }
   `;
 
+
+  static isDropdown(element) {
+    return element instanceof UxdotSideNavDropdown;
+  }
+
   #triggerElement = null;
 
   #closeButton = null;
 
-  get #allDropdowns() {
-    return Array.from(
-      this.querySelectorAll('uxdot-sidenav-dropdown')
-    );
-  }
+  // get #allDropdowns() {
+  //   return Array.from(
+  //     this.querySelectorAll('uxdot-sidenav-dropdown')
+  //   );
+  // }
 
   #tabindex = new RovingTabindexController(this, {
     getItems: () => {
@@ -151,7 +156,7 @@ class UxdotSideNav extends LitElement {
       }
       const slot = this.shadowRoot?.querySelector('slot').assignedElements({ flatten: true }) ?? [];
       return slot?.flatMap(slotted => {
-        return Array.from(slotted.querySelectorAll(`uxdot-sidenav-dropdown > details > summary, uxdot-sidenav-item > a`)) ?? [];
+        return Array.from(slotted.querySelectorAll(`uxdot-sidenav-dropdown > details > summary, uxdot-sidenav-item > a, details[open] uxdot-sidenav-dropdown-menu-item > a`)) ?? [];
       });
     },
   });
@@ -163,6 +168,7 @@ class UxdotSideNav extends LitElement {
     if (!isServer) {
       this.#triggerElement.addEventListener('click', this.#onTriggerClick.bind(this));
       this.addEventListener('click', this.#onClick.bind(this));
+      this.addEventListener('expand', this.#onExpandRequest);
       this.addEventListener('keydown', this.#onKeydown.bind(this));
       window.addEventListener('keyup', this.#onKeyup.bind(this));
       this.#tabindex.updateItems();
@@ -188,15 +194,11 @@ class UxdotSideNav extends LitElement {
           </button>
         </div>
         <nav part="nav" aria-label="Main menu">
-          <slot @slotchange="${() => this.#rtiUpdate()}"></slot>
+          <slot @slotchange="${() => this.#tabindex.updateItems()}"></slot>
         </nav>
       </div>
       <div id="overlay" part="overlay" ?hidden=${!this.open}></div>
     `;
-  }
-
-  #rtiUpdate() {
-    this.#tabindex.updateItems();
   }
 
   updated() {
@@ -228,6 +230,14 @@ class UxdotSideNav extends LitElement {
     }
   }
 
+  async #onExpandRequest(event) {
+    if (UxdotSideNav.isDropdown(event.target)) {
+      const detailsOpen = event.target.querySelector('details').hasAttribute('open');
+      this.#tabindex.updateItems();
+      this.#tabindex.setActiveItem(event.target.querySelector('summary'));
+    }
+  }
+
   #onKeydownCloseButton(event) {
     switch (event.key) {
       case 'Enter':
@@ -246,9 +256,6 @@ class UxdotSideNav extends LitElement {
         this.toggle();
         break;
       }
-      case 'Tab':
-        this.#onTab(event);
-        break;
       default:
         break;
     }
@@ -264,13 +271,6 @@ class UxdotSideNav extends LitElement {
     }
   }
 
-  #focusableChildMenuElements(parent) {
-    return parent.querySelectorAll(`uxdot-sidenav-dropdown-menu :is(a, button:not([disabled]),
-                                    input:not([disabled]), select:not([disabled]),
-                                    textarea:not([disabled]), [tabindex]:not([tabindex="-1"]):not([disabled]),
-                                    details:not([disabled]), summary:not(:disabled))`);
-  }
-
   close(trapFocus = true) {
     if (!this.open) {
       return;
@@ -282,37 +282,6 @@ class UxdotSideNav extends LitElement {
     const { target } = event;
     if (!this.contains(target)) {
       this.close(false);
-    }
-  }
-
-  #onTab(event) {
-    const { target } = event;
-    const dropdowns = this.#allDropdowns;
-    const dropdownParent = dropdowns.find(dropdown => dropdown.contains(target));
-    if (!dropdownParent) {
-      return;
-    }
-    const focusableChildren = this.#focusableChildMenuElements(dropdownParent);
-    if (!focusableChildren) {
-      return;
-    }
-    if (event.shiftKey) {
-      const firstFocusable = focusableChildren[0].contains(target);
-      if (!firstFocusable) {
-        return;
-      }
-      event.preventDefault();
-      const summary = dropdownParent.querySelector('summary');
-      this.#tabindex.setActiveItem(summary);
-      this.#tabindex.activeItem?.focus();
-    } else {
-      const lastFocusable = focusableChildren[focusableChildren.length - 1].contains(target);
-      if (!lastFocusable) {
-        return;
-      }
-      event.preventDefault();
-      this.#tabindex.setActiveItem(this.#tabindex.nextItem);
-      this.#tabindex.activeItem?.focus();
     }
   }
 }
@@ -381,10 +350,41 @@ class UxdotSideNavDropdown extends LitElement {
     }
   `;
 
+  static properties = {
+    expanded: { state: true },
+  };
+
+  constructor() {
+    super();
+    this.expanded = false;
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    if (!isServer) {
+      this.addEventListener('click', this.#onClick);
+    }
+  }
+
   render() {
     return html`
       <slot></slot>
     `;
+  }
+
+  async #onClick(event) {
+    event.preventDefault();
+    this.expanded = !this.expanded;
+    this.querySelector('details').toggleAttribute('open', this.expanded);
+    // trigger change event which evokes the mutation on this.expanded
+    this.dispatchEvent(new CustomEvent('expand', {
+      bubbles: true,
+      composed: true,
+      detail: {
+        expanded: this.expanded,
+        toggle: this,
+      },
+    }));
   }
 }
 
