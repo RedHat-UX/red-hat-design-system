@@ -62,7 +62,7 @@ describe('<rh-tabs>', function() {
       element.setAttribute('box', '');
       await nextFrame();
       const tab = element.querySelector('rh-tab');
-      const button = tab.shadowRoot!.querySelector('button')!;
+      const button = tab.shadowRoot!.querySelector('#button')!;
       const buttonBeforeStyles = getComputedStyle(button, '::before').borderInlineStartWidth;
       expect(buttonBeforeStyles).to.be.equal(tokens.get('--rh-border-width-sm'));
     });
