@@ -36,6 +36,8 @@ export class RhAnnouncement extends LitElement {
 
   #slots = new SlotController(this, 'header', null, 'actions');
 
+
+// TODO: update to be specific to announcement
   #closeHandler() {
     const event = new AlertCloseEvent();
     if (this.dispatchEvent(event)) {
@@ -51,6 +53,7 @@ export class RhAnnouncement extends LitElement {
     const hasActions = this.#slots.hasSlotted('actions');
     const hasBody = this.#slots.hasSlotted(SlotController.anonymous as unknown as string);
     return html`
+    // TODO: change from rh-surface
     <rh-surface id="container"
       class="${classMap({ hasBody })}"
       role="alert"
@@ -61,9 +64,7 @@ export class RhAnnouncement extends LitElement {
         <div id="description">
           <slot></slot>
         </div>
-        
         <slot name="cta"></slot>
-        
       </div>
     </rh-surface> 
     `;
