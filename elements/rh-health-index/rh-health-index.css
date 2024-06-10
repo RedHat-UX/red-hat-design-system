@@ -11,26 +11,30 @@
   /* colors */
   --_color-text-active: var(--rh-color-gray-95, #151515);
   --_color-text-inactive: var(--rh-color-gray-70, #383838);
-  --_color-fill-default: var(--rh-color-surface-lightest, #ffffff);
-  --_color-border-default: var(--rh-color-border-subtle-on-light, #c7c7c7);
-  --_color-a-fill: var(--rh-color-green-20, #d1f1bb);
-  --_color-a-stroke: var(--rh-color-green-60, #3d7317);
-  --_color-a-text: var(--rh-color-green-70, #204d00);
-  --_color-b-fill: var(--rh-color-green-10, #e9f7df);
-  --_color-b-stroke: var(--rh-color-green-40, #87bb62);
-  --_color-b-text: var(--rh-color-green-70, #204d00);
-  --_color-c-fill: var(--rh-color-yellow-10, #fff4cc);
-  --_color-c-stroke: var(--rh-color-yellow-30, #ffcc17);
-  --_color-c-text: var(--rh-color-yellow-70, #73480b);
-  --_color-d-fill: var(--rh-color-orange-10, #ffe8cc);
-  --_color-d-stroke: var(--rh-color-orange-40, #f5921b);
-  --_color-d-text: var(--rh-color-orange-70, #732e00);
-  --_color-e-fill: var(--rh-color-red-orange-10, #ffe3d9);
-  --_color-e-stroke: var(--rh-color-red-orange-60, #b1380b);
-  --_color-e-text: var(--rh-color-red-orange-70, #731f00);
-  --_color-f-fill: var(--rh-color-red-orange-20, #fbbea8);
-  --_color-f-stroke: var(--rh-color-red-orange-70, #731f00);
-  --_color-f-text: var(--rh-color-red-orange-70, #731f00);
+  --_color-text: var(--_color-text-inactive);
+  --_color-fill: var(--rh-color-surface-lightest, #ffffff);
+  --_color-border: var(--rh-color-border-subtle-on-light, #c7c7c7);
+  --_color-a-10: var(--rh-color-green-20, #d1f1bb);
+  --_color-a-20: var(--rh-color-green-60, #3d7317);
+  --_color-a-30: var(--rh-color-green-70, #204d00);
+  --_color-b-10: var(--rh-color-green-10, #e9f7df);
+  --_color-b-20: var(--rh-color-green-40, #87bb62);
+  --_color-b-25: var(--rh-color-green-60, #3d7317); /* alt */
+  --_color-b-30: var(--rh-color-green-70, #204d00);
+  --_color-c-10: var(--rh-color-yellow-10, #fff4cc);
+  --_color-c-20: var(--rh-color-yellow-30, #ffcc17);
+  --_color-c-25: var(--rh-color-yellow-50, #b98412); /* alt */
+  --_color-c-30: var(--rh-color-yellow-70, #73480b);
+  --_color-d-10: var(--rh-color-orange-10, #ffe8cc);
+  --_color-d-20: var(--rh-color-orange-40, #f5921b);
+  --_color-d-25: var(--rh-color-orange-60, #9e4a06); /* alt */
+  --_color-d-30: var(--rh-color-orange-70, #732e00);
+  --_color-e-10: var(--rh-color-red-orange-10, #ffe3d9);
+  --_color-e-20: var(--rh-color-red-orange-60, #b1380b);
+  --_color-e-30: var(--rh-color-red-orange-70, #731f00);
+  --_color-f-10: var(--rh-color-red-orange-20, #fbbea8);
+  --_color-f-20: var(--rh-color-red-orange-70, #731f00);
+  --_color-f-30: var(--rh-color-red-orange-70, #731f00);
 }
 
 #container {
@@ -44,7 +48,7 @@
 
 #boxes {
   display: flex;
-  border: var(--rh-border-width-sm, 1px) solid var(--_color-border-default);
+  border: var(--rh-border-width-sm, 1px) solid var(--_color-border);
   margin-inline-start: var(--rh-space-lg, 16px);
 }
 
@@ -52,10 +56,15 @@
  * Default / Medium Variant
  *****************************************************************************/
 
+.box {
+  background-color: var(--_color-fill);
+  border-color: var(--_color-border);
+  color: var(--_color-text);
+}
+
 .md .box {
   width: var(--_ui-size);
   height: var(--_ui-size);
-  background: var(--_color-fill-default);
 }
 
 .sm .box {
@@ -70,7 +79,7 @@
 }
 
 .md .box:not(.active) {
-  border-inline-end: var(--rh-border-width-sm, 1px) solid var(--_color-border-default);
+  border-inline-end: var(--rh-border-width-sm, 1px) solid var(--_color-border);
 }
 
 .md .box:last-child {
@@ -83,36 +92,37 @@
   z-index: 10;
   border-width: var(--rh-border-width-sm, 1px);
   border-style: solid;
+  border-inline-end-color: var(--_color-border);
 }
 
 .md .active.a {
-  background-color: var(--_color-a-stroke);
-  border-color: var(--_color-a-text);
+  --_color-fill: var(--_color-a-20);
+  --_color-border: var(--_color-a-30);
 }
 
 .md .active.b {
-  background-color: var(--_color-b-stroke);
-  border-color: var(--_color-b-text);
+  --_color-fill: var(--_color-b-20);
+  --_color-border: var(--_color-b-25);
 }
 
 .md .active.c {
-  background-color: var(--_color-c-stroke);
-  border-color: var(--_color-c-text);
+  --_color-fill: var(--_color-c-20);
+  --_color-border: var(--_color-c-25);
 }
 
 .md .active.d {
-  background-color: var(--_color-d-stroke);
-  border-color: var(--_color-d-text);
+  --_color-fill: var(--_color-d-20);
+  --_color-border: var(--_color-d-25);
 }
 
 .md .active.e {
-  background-color: var(--_color-e-stroke);
-  border-color: var(--_color-e-text);
+  --_color-fill: var(--_color-e-20);
+  --_color-border: var(--_color-e-30);
 }
 
 .md .active.f {
-  background-color: var(--_color-f-stroke);
-  border-color: var(--_color-f-text);
+  --_color-fill: var(--_color-f-20);
+  --_color-border: var(--_color-f-30);
 }
 
 /*****************************************************************************
@@ -130,39 +140,39 @@
 }
 
 .sm .a {
-  background-color: var(--_color-a-fill);
-  border-color: var(--_color-a-stroke);
-  color: var(--_color-a-text);
+  --_color-fill: var(--_color-a-10);
+  --_color-border: var(--_color-a-20);
+  --_color-text: var(--_color-a-30);
 }
 
 .sm .b {
-  background-color: var(--_color-b-fill);
-  border-color: var(--_color-b-stroke);
-  color: var(--_color-b-text);
+  --_color-fill: var(--_color-b-10);
+  --_color-border: var(--_color-b-20);
+  --_color-text: var(--_color-b-30);
 }
 
 .sm .c {
-  background-color: var(--_color-c-fill);
-  border-color: var(--_color-c-stroke);
-  color: var(--_color-c-text);
+  --_color-fill: var(--_color-c-10);
+  --_color-border: var(--_color-c-20);
+  --_color-text: var(--_color-c-30);
 }
 
 .sm .d {
-  background-color: var(--_color-d-fill);
-  border-color: var(--_color-d-stroke);
-  color: var(--_color-d-text);
+  --_color-fill: var(--_color-d-10);
+  --_color-border: var(--_color-d-20);
+  --_color-text: var(--_color-d-30);
 }
 
 .sm .e {
-  background-color: var(--_color-e-fill);
-  border-color: var(--_color-e-stroke);
-  color: var(--_color-e-text);
+  --_color-fill: var(--_color-e-10);
+  --_color-border: var(--_color-e-20);
+  --_color-text: var(--_color-e-30);
 }
 
 .sm .f {
-  background-color: var(--_color-f-fill);
-  border-color: var(--_color-f-stroke);
-  color: var(--_color-f-text);
+  --_color-fill: var(--_color-f-10);
+  --_color-border: var(--_color-f-20);
+  --_color-text: var(--_color-f-30);
 }
 
 /*****************************************************************************
@@ -173,65 +183,93 @@
 .xl {
   display: flex;
   margin: 0;
-  border: var(--rh-border-width-sm, 1px) solid var(--_color-border-default);
+  border: var(--rh-border-width-sm, 1px) solid var(--_color-border);
 }
 
 .lg .box,
 .xl .box {
   padding: 1px;
-  border-inline: calc(var(--rh-border-width-sm, 1px)) solid transparent;
-  background-color: var(--_color-fill-default);
-  color: var(--rh-color-text-secondary-on-light, #4d4d4d);
+  border-inline-width: calc(var(--rh-border-width-sm, 1px));
+  border-inline-style: solid;
+  border-inline-color: transparent;
+  background-color: var(--_color-fill);
+}
+
+.lg .a,
+.xl .a {
+  --_color-text: var(--_color-a-30);
+}
+
+.lg .b,
+.xl .b {
+  --_color-text: var(--_color-b-30);
+}
+
+.lg .c,
+.xl .c {
+  --_color-text: var(--_color-c-30);
+}
+
+.lg .d,
+.xl .d {
+  --_color-text: var(--_color-d-30);
+}
+
+.lg .e,
+.xl .e {
+  --_color-text: var(--_color-e-30);
+}
+
+.lg .f,
+.xl .f {
+  --_color-text: var(--_color-f-30);
 }
 
 .lg .box.active,
 .xl .box.active {
+  --_color-text: var(--_color-text-active);
+
   position: relative;
   margin: -1px;
   border-block-width: var(--rh-border-width-sm, 1px);
   border-block-style: solid;
+  border-inline-color: var(--_color-border);
 }
 
 .lg .a.active,
 .xl .a.active {
-  background-color: var(--_color-a-fill);
-  border-color: var(--_color-a-text);
-  color: var(--_color-a-text);
+  --_color-fill: var(--_color-a-10);
+  --_color-border: var(--_color-a-30);
 }
 
 .lg .b.active,
 .xl .b.active {
-  background-color: var(--_color-b-fill);
-  border-color: var(--_color-b-text);
-  color: var(--_color-b-text);
+  --_color-fill: var(--_color-b-10);
+  --_color-border: var(--_color-b-30);
 }
 
 .lg .c.active,
 .xl .c.active {
-  background-color: var(--_color-c-fill);
-  border-color: var(--_color-c-text);
-  color: var(--_color-c-text);
+  --_color-fill: var(--_color-c-10);
+  --_color-border: var(--_color-c-30);
 }
 
 .lg .d.active,
 .xl .d.active {
-  background-color: var(--_color-d-fill);
-  border-color: var(--_color-d-text);
-  color: var(--_color-d-text);
+  --_color-fill: var(--_color-d-10);
+  --_color-border: var(--_color-d-30);
 }
 
 .lg .e.active,
 .xl .e.active {
-  background-color: var(--_color-e-fill);
-  border-color: var(--_color-e-text);
-  color: var(--_color-e-text);
+  --_color-fill: var(--_color-e-10);
+  --_color-border: var(--_color-e-30);
 }
 
 .lg .f.active,
 .xl .f.active {
-  background-color: var(--_color-f-fill);
-  border-color: var(--_color-f-text);
-  color: var(--_color-f-text);
+  --_color-fill: var(--_color-f-10);
+  --_color-border: var(--_color-f-30);
 }
 
 .lg .grade,
@@ -240,7 +278,6 @@
   line-height: var(--_ui-size);
   width: var(--_ui-size);
   text-align: center;
-  color: var(--_color-text-inactive);
 }
 
 .xl .grade {
@@ -252,43 +289,43 @@
 .lg .active .grade,
 .xl .active .grade {
   background: none;
-  color: var(--_color-text-active);
   font-weight: var(--rh-font-weight-code-medium, 500);
 }
 
 .lg .bottom,
 .xl .bottom {
+  background-color: var(--_color-fill);
   height: var(--rh-space-xs, 4px);
 }
 
 .lg .a .bottom,
 .xl .a .bottom {
-  background-color: var(--_color-a-stroke);
+  --_color-fill: var(--_color-a-20);
 }
 
 .lg .b .bottom,
 .xl .b .bottom {
-  background-color: var(--_color-b-stroke);
+  --_color-fill: var(--_color-b-20);
 }
 
 .lg .c .bottom,
 .xl .c .bottom {
-  background-color: var(--_color-c-stroke);
+  --_color-fill: var(--_color-c-20);
 }
 
 .lg .d .bottom,
 .xl .d .bottom {
-  background-color: var(--_color-d-stroke);
+  --_color-fill: var(--_color-d-20);
 }
 
 .lg .e .bottom,
 .xl .e .bottom {
-  background-color: var(--_color-e-stroke);
+  --_color-fill: var(--_color-e-20);
 }
 
 .lg .f .bottom,
 .xl .f .bottom {
-  background-color: var(--_color-f-stroke);
+  --_color-fill: var(--_color-f-20);
 }
 
 /*****************************************************************************
@@ -297,72 +334,73 @@
 
 .dark {
   --_color-text-active: var(--rh-color-white, #ffffff);
-  --_color-text-inactive: var(--rh-color-gray-70, #383838);
-  --_color-fill-default: var(--rh-color-surface-darkest, #151515);
-  --_color-border-default: var(--rh-color-border-subtle-on-dark, #707070);
-  --_color-a-fill: var(--rh-color-surface-darkest, #151515);
-  --_color-a-stroke: var(--rh-color-green-60, #3d7317);
-  --_color-a-text: var(--rh-color-green-40, #87bb62);
-  --_color-a-text-subtle: var(--rh-color-green-10, #e9f7df);
-  --_color-b-fill: var(--rh-color-surface-darkest, #151515);
-  --_color-b-stroke: var(--rh-color-green-40, #87bb62);
-  --_color-b-text: var(--rh-color-green-20, #d1f1bb);
-  --_color-b-text-subtle: var(--rh-color-green-10, #e9f7df);
-  --_color-c-fill: var(--rh-color-surface-darkest, #151515);
-  --_color-c-stroke: var(--rh-color-yellow-30, #ffcc17);
-  --_color-c-text: var(--rh-color-yellow-10, #fff4cc);
-  --_color-c-text-subtle: var(--rh-color-yellow-10, #fff4cc);
-  --_color-d-fill: var(--rh-color-surface-darkest, #151515);
-  --_color-d-stroke: var(--rh-color-orange-40, #f5921b);
-  --_color-d-text: var(--rh-color-orange-20, #fccb8f);
-  --_color-d-text-subtle: var(--rh-color-orange-10, #ffe8cc);
-  --_color-e-fill: var(--rh-color-surface-darkest, #151515);
-  --_color-e-stroke: var(--rh-color-red-orange-50, #f4784a);
-  --_color-e-text: var(--rh-color-red-orange-30, #f89b78);
-  --_color-e-text-subtle: var(--rh-color-red-orange-10, #ffe3d9);
-  --_color-f-fill: var(--rh-color-surface-darkest, #151515);
-  --_color-f-stroke: var(--rh-color-red-60, #a60000);
-  --_color-f-text: var(--rh-color-red-40, #f56e6e);
-  --_color-f-text-subtle: var(--rh-color-red-10, #fce3e3);
+  --_color-fill-alt: var(--rh-color-surface-dark-alt, #292929);
+  --_color-border: var(--rh-color-border-subtle-on-dark, #707070);
+  --_color-text: var(--_color-text-inactive);
+  --_color-a-10: var(--rh-color-green-60, #3d7317);
+  --_color-a-25: var(--rh-color-green-10, #e9f7df);
+  --_color-a-30: var(--rh-color-green-40, #87bb62);
+  --_color-b-10: var(--rh-color-green-40, #87bb62);
+  --_color-b-25: var(--rh-color-green-10, #e9f7df);
+  --_color-b-30: var(--rh-color-green-20, #d1f1bb);
+  --_color-c-10: var(--rh-color-yellow-30, #ffcc17);
+  --_color-c-25: var(--rh-color-yellow-10, #fff4cc);
+  --_color-c-30: var(--rh-color-yellow-10, #fff4cc);
+  --_color-d-10: var(--rh-color-orange-40, #f5921b);
+  --_color-d-25: var(--rh-color-orange-10, #ffe8cc);
+  --_color-d-30: var(--rh-color-orange-20, #fccb8f);
+  --_color-e-10: var(--rh-color-red-orange-50, #f4784a);
+  --_color-e-25: var(--rh-color-red-orange-10, #ffe3d9);
+  --_color-e-30: var(--rh-color-red-orange-30, #f89b78);
+  --_color-f-10: var(--rh-color-red-60, #a60000);
+  --_color-f-25: var(--rh-color-red-10, #fce3e3);
+  --_color-f-30: var(--rh-color-red-40, #f56e6e);
+}
+
+.dark .box,
+.lg.dark .box.active,
+.xl.dark .box.active {
+  --_color-fill: var(--rh-color-surface-darkest, #151515);
 }
 
 .sm.dark .box {
   color: var(--_color-text-active);
+  background-color: var(--_color-fill);
 }
 
 .lg.dark .box:not(.active),
 .xl.dark .box:not(.active) {
-  background-color: var(--rh-color-surface-dark-alt, #292929);
+  background-color: var(--_color-fill-alt);
 }
 
 .lg.dark .a .grade,
 .xl.dark .a .grade {
-  color: var(--_color-a-text-subtle);
+  --_color-text: var(--_color-a-25);
 }
 
 .lg.dark .b .grade,
 .xl.dark .b .grade {
-  color: var(--_color-b-text-subtle);
+  --_color-text: var(--_color-b-25);
 }
 
 .lg.dark .c .grade,
 .xl.dark .c .grade {
-  color: var(--_color-c-text-subtle);
+  --_color-text: var(--_color-c-25);
 }
 
 .lg.dark .d .grade,
 .xl.dark .d .grade {
-  color: var(--_color-d-text-subtle);
+  --_color-text: var(--_color-d-25);
 }
 
 .lg.dark .e .grade,
 .xl.dark .e .grade {
-  color: var(--_color-e-text-subtle);
+  --_color-text: var(--_color-e-25);
 }
 
 .lg.dark .f .grade,
 .xl.dark .f .grade {
-  color: var(--_color-f-text-subtle);
+  --_color-text: var(--_color-f-25);
 }
 
 .lg.dark .active .grade,
