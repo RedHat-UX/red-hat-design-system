@@ -10,10 +10,10 @@ import { classMap } from 'lit/directives/class-map.js';
 import { consume } from '@lit/context';
 
 import { observed } from '@patternfly/pfe-core/decorators.js';
+import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-
-import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import { context } from './context.js';
 
@@ -34,7 +34,7 @@ export class TabExpandEvent extends Event {
  * @slot icon - Can contain an `<svg>` or `<pf-icon>`
  * @slot - Tab title text
  *
- * @csspart button - `<button>` element
+ * @csspart button - `<div>` element
  * @csspart icon - icon `<span>` element
  * @csspart text - tile text `<span>` element
  *
@@ -49,8 +49,6 @@ export class TabExpandEvent extends Event {
  */
 @customElement('rh-tab')
 export class RhTab extends LitElement {
-  static shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
-
   static readonly version = '{{version}}';
 
   static readonly styles = [styles];
@@ -74,15 +72,14 @@ export class RhTab extends LitElement {
 
   @queryAssignedElements({ slot: 'icon', flatten: true }) private icons!: HTMLElement[];
 
-  @query('button') private button!: HTMLButtonElement;
+  @query('#button') private button!: HTMLButtonElement;
 
-  #internals = this.attachInternals();
+  #internals = InternalsController.of(this, { role: 'tab' });
 
   override connectedCallback() {
     super.connectedCallback();
     this.id ||= getRandomId(this.localName);
     this.addEventListener('click', this.#onClick);
-    this.#internals.role = 'tab';
   }
 
   render() {
@@ -92,13 +89,13 @@ export class RhTab extends LitElement {
     const last = lastTab === this;
     return html`
       <div id="container" class="${classMap({ active, box, vertical, first, last, [on]: !!on })}">
-        <button part="button" ?disabled="${this.disabled}">
+        <div id="button" part="button" ?disabled="${this.disabled}">
           <slot name="icon"
                 part="icon"
                 ?hidden="${!this.icons.length}"
                 @slotchange="${() => this.requestUpdate()}"></slot>
           <slot part="text"></slot>
-        </button>
+        </div>
       </div>
     `;
   }
@@ -130,10 +127,6 @@ export class RhTab extends LitElement {
    */
   #disabledChanged() {
     this.#internals.ariaDisabled = String(!!this.disabled);
-  }
-
-  focus() {
-    this.button.focus();
   }
 }
 

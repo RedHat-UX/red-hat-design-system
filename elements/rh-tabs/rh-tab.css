@@ -19,7 +19,7 @@ slot[name="icon"] {
   display: block;
 }
 
-button {
+#button {
   margin: 0;
   font-family: inherit;
   font-size: 100%;
@@ -40,8 +40,8 @@ button {
   max-height: 100%;
 }
 
-button:before,
-button:after {
+#button:before,
+#button:after {
   position: absolute;
   inset: 0;
   content: "";
@@ -51,35 +51,44 @@ button:after {
   background-color: transparent;
 }
 
-button:before {
+#button:before {
   pointer-events: none;
   border: 0 solid transparent;
 }
 
-button:focus-visible {
+#button:focus-visible {
   outline: var(--rh-border-width-md, 2px) solid var(--_button-focus-outline-color);
   outline-offset: -8px;
   border-radius: 10px;
 }
 
-button:after {
+#button:after {
   background-color: transparent;
   border-inline: 0 solid transparent;
   border-block-start: var(--rh-border-width-lg, 3px) solid transparent;
   border-block-end: var(--rh-border-width-sm, 1px) solid transparent;
 }
 
-:host([fill]) button {
+:host([fill]) #button {
   flex-basis: 100%;
   justify-content: center;
 }
 
-:host(:disabled) button {
+:host(:disabled) #button {
   pointer-events: none;
 }
 
-:host([aria-disabled="true"]) button {
+:host([aria-disabled="true"]) #button {
   cursor: default;
+}
+
+:host(:focus-visible) {
+  outline: none;
+}
+
+:host(:is(:focus, :focus-visible)) #button {
+  outline: 1px auto var(--rh-color-interactive-blue-darker, #0066cc);
+  outline-offset: calc(var(--rh-space-md, 8px) * -1);
 }
 
 #container {
@@ -160,8 +169,8 @@ button:after {
       );
 }
 
-:host([vertical]) button,
-.vertical button {
+:host([vertical]) #button,
+.vertical #button {
   text-align: start;
 }
 
@@ -170,20 +179,20 @@ button:after {
 }
 
 /* [active]:not([box]) */
-:host([active]:not([box])) button:after,
-#container.active:not(.box) button:after {
+:host([active]:not([box])) #button:after,
+#container.active:not(.box) #button:after {
   border-block-end: var(--rh-border-width-lg, 3px) solid var(--_active-tab-border-color);
 }
 
 /* [box][active]) */
-:host([active][box]) button:before,
-#container.active.box button:before {
+:host([active][box]) #button:before,
+#container.active.box #button:before {
   border-inline-color: var(--_border-color);
   border-inline-start-width: var(--rh-border-width-sm, 1px);
 }
 
-:host([active][box]) button:after,
-#container.active.box button:after {
+:host([active][box]) #button:after,
+#container.active.box #button:after {
   border-block-start: var(--rh-border-width-lg, 3px) solid var(--_active-tab-border-color);
   border-block-end:
     var(--rh-border-width-sm, 1px)
@@ -197,62 +206,62 @@ button:after {
   background-color: var(--_inactive-tab-background-color);
 }
 
-:host([box]:not([active])) button:before,
-#container.box:not(.active) button:before {
+:host([box]:not([active])) #button:before,
+#container.box:not(.active) #button:before {
   border-inline-color: var(--_border-color);
   border-inline-start-width: var(--rh-border-width-sm, 1px);
 }
 
-:host([box]:not([active])) button:after,
-#container.box:not(.active) button:after {
+:host([box]:not([active])) #button:after,
+#container.box:not(.active) #button:after {
   border-block-end-color: var(--_border-color);
 }
 
 /* .first[box][active]) */
-:host([box][active]) button:before,
-#container.box.active.first button:before {
+:host([box][active]) #button:before,
+#container.box.active.first #button:before {
   border-inline-start-color: var(--_border-color);
   border-inline-start-width: var(--rh-border-width-sm, 1px);
 }
 
 /* .first[box]:not([active]) */
-:host(.first[box]:not([active])) button:before,
-#container.first.box:not(.active) button:before {
+:host(.first[box]:not([active])) #button:before,
+#container.first.box:not(.active) #button:before {
   border-inline-color: transparent;
 }
 
 /* .last[box][active] */
-:host(.last[box][active]) button:before,
-#container.last.box.active button:before {
+:host(.last[box][active]) #button:before,
+#container.last.box.active #button:before {
   border-inline-end-color: var(--_border-color);
   border-inline-end-width: var(--rh-border-width-sm, 1px);
 }
 
 @media screen and (min-width: 768px) {
   /* [vertical]:not([box]) */
-  :host([vertical]:not([box])) button,
-  #container.vertical:not(.box) button {
+  :host([vertical]:not([box])) #button,
+  #container.vertical:not(.box) #button {
     padding-block:
       var(--rh-tabs-link-padding-block-start, var(--rh-space-md, 8px))
       var(--rh-tabs-link-padding-block-start, var(--rh-space-md, 8px));
   }
 
   /* [vertical][active] */
-  :host([vertical][active]) button:after,
-  #container.vertical.active button:after {
+  :host([vertical][active]) #button:after,
+  #container.vertical.active #button:after {
     border-block-end: transparent;
   }
 
   /* [box]:not([vertical], [active]) */
-  :host([box]:not([vertical], [active])) button:before,
-  #container.box:not(.vertical, .active) button:before {
+  :host([box]:not([vertical], [active])) #button:before,
+  #container.box:not(.vertical, .active) #button:before {
     border-inline-color: var(--_border-color);
     border-inline-start-width: var(--rh-border-width-sm, 1px);
   }
 
   /* [box][vertical]:not([active]) */
-  :host([box][vertical]:not([active])) button:before,
-  #container.box.vertical:not(.active) button:before {
+  :host([box][vertical]:not([active])) #button:before,
+  #container.box.vertical:not(.active) #button:before {
     border-inline-start-color: transparent;
     border-inline-end:
       var(--rh-border-width-sm, 1px)
@@ -265,22 +274,22 @@ button:after {
   }
 
   /* [box]:not([active], [vertical]) */
-  :host([box]:not([active], [vertical])) button:after,
-  #container.box:not(.active, .vertical) button:after {
+  :host([box]:not([active], [vertical])) #button:after,
+  #container.box:not(.active, .vertical) #button:after {
     border-block-end-color: var(--_border-color);
   }
 
   /* [active][box][vertical] */
-  :host([active][box][vertical]) button:after,
-  #container.active.box.vertical button:after {
+  :host([active][box][vertical]) #button:after,
+  #container.active.box.vertical #button:after {
     border-block-start:
       var(--rh-border-width-sm, 1px)
       solid
       var(--_border-color);
   }
 
-  :host([box][vertical]:not([active])) button:after,
-  #container.box.vertical:not(.active) button:after {
+  :host([box][vertical]:not([active])) #button:after,
+  #container.box.vertical:not(.active) #button:after {
     border-block-end-color: transparent;
   }
 
@@ -309,8 +318,8 @@ button:after {
   }
 
   /* [box][active]:not([vertical]) */
-  :host([active][box]:not([vertical])) button:after,
-  #container.active.box:not(.vertical) button:after {
+  :host([active][box]:not([vertical])) #button:after,
+  #container.active.box:not(.vertical) #button:after {
     border-block-start: var(--rh-border-width-lg, 3px) solid var(--_active-tab-border-color);
     border-block-end:
       var(--rh-border-width-sm, 1px)
@@ -319,15 +328,15 @@ button:after {
   }
 
   /* .first[box][vertical][active] */
-  :host(.first[box][vertical][active]) button:after,
-  #container.first.box.vertical.active button:after {
+  :host(.first[box][vertical][active]) #button:after,
+  #container.first.box.vertical.active #button:after {
     border-block-start-color: var(--_border-color);
     border-block-start-width: var(--rh-border-width-sm, 1px);
   }
 
   /* [box][vertical][active] */
-  :host([box][vertical][active]) button:before,
-  #container.box.vertical.active button:before {
+  :host([box][vertical][active]) #button:before,
+  #container.box.vertical.active #button:before {
     border-inline-start:
       var(--rh-border-width-lg, 3px)
       solid
@@ -339,41 +348,41 @@ button:after {
   }
 
   /* [active][vertical]:not([box]) */
-  :host([vertical][active]:not([box])) button:before,
-  #container.vertical.active:not(.box) button:before {
+  :host([vertical][active]:not([box])) #button:before,
+  #container.vertical.active:not(.box) #button:before {
     border-inline-start: var(--rh-border-width-lg, 3px) solid var(--_active-tab-border-color);
   }
 
   /* .first[vertical][box]:not([active]) */
-  :host(.first[vertical][box]:not([active])) button:before,
-  #container.first.vertical.box:not(.active) button:before {
+  :host(.first[vertical][box]:not([active])) #button:before,
+  #container.first.vertical.box:not(.active) #button:before {
     border-block-start-color: transparent;
   }
 
   /* .first[box][active]:not([vertical]) */
-  :host(.first[box][active]:not([vertical])) button:before,
-  #container.first.box.active:not(.vertical) button:before {
+  :host(.first[box][active]:not([vertical])) #button:before,
+  #container.first.box.active:not(.vertical) #button:before {
     border-inline-start-color: var(--_border-color);
     border-inline-start-width: var(--rh-border-width-sm, 1px);
   }
 
   /* .last[box][active]:not[vertical] */
-  :host(.last[box][active]:not([vertical])) button:before,
-  #container.last.box.active:not(.vertical) button:before {
+  :host(.last[box][active]:not([vertical])) #button:before,
+  #container.last.box.active:not(.vertical) #button:before {
     border-inline-end-color: var(--_border-color);
     border-inline-end-width: var(--rh-border-width-sm, 1px);
   }
 
   /* .last[box][vertical][active] */
-  :host(.last[box][vertical][active]) button:before,
-  #container.last.box.vertical.active button:before {
+  :host(.last[box][vertical][active]) #button:before,
+  #container.last.box.vertical.active #button:before {
     border-block-end-color: var(--_border-color);
     border-block-end-width: var(--rh-border-width-sm, 1px);
   }
 
   /* .last[box][vertical]:not([active]) */
-  :host(.last[box][vertical]:not([active])) button:after,
-  #container.last.box.vertical:not(.active) button:after {
+  :host(.last[box][vertical]:not([active])) #button:after,
+  #container.last.box.vertical:not(.active) #button:after {
     border-block-end: none;
   }
 }
