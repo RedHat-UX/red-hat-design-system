@@ -20,6 +20,7 @@ import { classMap } from 'lit/directives/class-map.js';
 import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 
 import style from './rh-context-picker.css';
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
 export class ContextChangeEvent extends Event {
   constructor(public colorPalette: ColorPalette) {
@@ -68,25 +69,29 @@ export class RhContextPicker extends LitElement {
     },
   }) allow = RhContextPicker.paletteNames;
 
-  #internals = this.attachInternals();
+  #internals = InternalsController.of(this);
 
   #target: HTMLElement | null = null;
 
   render() {
     const { allow, on = 'dark', value = 'darkest' } = this;
     return html`
+      <div id="host-label"
+           class="visually-hidden">${this.#internals.computedLabelText}</div>
       <div id="container"
            @input="${this.#onInput}"
            class="${classMap({ [`on-${on}`]: true })}">
         ${allow.map(palette => html`
-        <input class="${classMap({ [palette]: true })}"
-               name="palette"
-               title="${capitalize(palette)}"
-               type="radio"
-               value="${palette}"
-               checked="${value === palette}"
-               aria-label="${palette}">
-          `)}
+        <rh-tooltip>
+          <label for="radio-${palette}" slot="content">${palette}</label>
+          <input id="radio-${palette}" class="${classMap({ [palette]: true })}"
+                 name="palette"
+                 title="${capitalize(palette)}"
+                 type="radio"
+                 value="${palette}"
+                 aria-describedby="host-label"
+                 ?checked="${value === palette}">`)}
+        </rh-tooltip>
       </div>
     `;
   }
@@ -96,6 +101,9 @@ export class RhContextPicker extends LitElement {
   }
 
   firstUpdated() {
+    for (const label of this.#internals.labels) {
+      label.addEventListener('click', () => this.focus());
+    }
     const oldTarget = this.#target;
     if (this.target) {
       const root = this.getRootNode() as Document | ShadowRoot;
@@ -130,6 +138,13 @@ export class RhContextPicker extends LitElement {
       this.value = value;
       this.sync();
     }
+  }
+
+  override focus() {
+    const input: HTMLInputElement | null =
+         this.shadowRoot.querySelector('input[checked]')
+      ?? this.shadowRoot.querySelector('input');
+    input?.focus();
   }
 
   sync() {
