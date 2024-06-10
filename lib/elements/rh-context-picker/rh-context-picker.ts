@@ -28,8 +28,6 @@ export class ContextChangeEvent extends Event {
   }
 }
 
-const capitalize = (x: string) => `${x.at(0)?.toUpperCase()}${x.slice(1)}`;
-
 @customElement('rh-context-picker')
 export class RhContextPicker extends LitElement {
   static formAssociated = true;
@@ -86,7 +84,6 @@ export class RhContextPicker extends LitElement {
           <label for="radio-${palette}" slot="content">${palette}</label>
           <input id="radio-${palette}" class="${classMap({ [palette]: true })}"
                  name="palette"
-                 title="${capitalize(palette)}"
                  type="radio"
                  value="${palette}"
                  aria-describedby="host-label"
