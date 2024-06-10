@@ -20,7 +20,6 @@ export default tseslint.config(
       'elements/**/*.js',
       'lib/**/*.js',
 
-      'docs/_data/todos.json',
       'docs/demo.js',
       'docs/pfe.min.js',
       'docs/bundle.js',
