@@ -1,2 +1,2 @@
-{% include 'accessibility/ariaguide.md' %}
-{% include 'accessibility/wcag.md' %}
+{% include 'partials/accessibility/ariaguide.md' %}
+{% include 'partials/accessibility/wcag.md' %}

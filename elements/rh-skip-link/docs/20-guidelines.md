@@ -16,9 +16,23 @@ The recommended text label for a skip link is “Skip to main content” because
 
 The recommended maximum character count is listed below and includes spaces.
 
-| Element {style="width: 50%" } | Character count |
-| ----------------------------- | --------------- |
-| Text label                    | 20              |
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Element">Element</th>
+        <th scope="col" data-label="Character count">Character count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Element">Text label</td>
+        <td data-label="Character count">20</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
+
 
 ## Best practices
 

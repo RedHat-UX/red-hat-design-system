@@ -41,7 +41,7 @@ export default pfeDevServerConfig({
   middleware: [
     /** redirect requests for /assets/ css to /docs/assets/ */
     function(ctx, next) {
-      if (ctx.path.startsWith('/assets/')) {
+      if (ctx.path.startsWith('/styles/')) {
         ctx.redirect(`/docs${ctx.path}`);
       } else {
         return next();

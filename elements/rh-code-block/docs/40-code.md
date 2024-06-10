@@ -22,10 +22,10 @@ use the correct mime type for your content, e.g. `text/html` for HTML content.
 </rh-code-block>
 ```
 
-{% alert state="warning", title="Warning" %}
-When slotting HTML content into the code-block, if that HTML content contains 
-a `</script>` end tag, you must escape it.
-{% endalert %}
+<rh-alert state="warning">
+ <h3 slot="header">Warning</h3>
+  <p>When slotting HTML content into the code-block, if that HTML content contains a `</script>` end tag, you must escape it.</p>
+</rh-alert>
 
 One approach to escaping script tags that is to close the containing `<script 
 type="text/html">` within the sample's closing script tag, then immediately open 
@@ -53,17 +53,8 @@ To add javascript content, use the `text/sample-javascript` type.
 </rh-code-block>
 ```
 
-{% renderSlots %}{% endrenderSlots %}
 
-{% renderAttributes %}{% endrenderAttributes %}
-
-{% renderMethods %}{% endrenderMethods %}
-
-{% renderEvents %}{% endrenderEvents %}
-
-{% renderCssParts for='rh-code-block', level=3 %}{% endrenderCssParts %}
-
-{% renderCssCustomProperties for='rh-code-block', level=3 %}{% endrenderCssCustomProperties %}
+{% renderCodeDocs hideDescription=true %}{% endrenderCodeDocs %}
 
 [mime]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types#textjavascript
 [zwj]: https://www.wikiwand.com/en/Zero-width_joiner
