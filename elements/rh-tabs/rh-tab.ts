@@ -102,9 +102,13 @@ export class RhTab extends LitElement {
   }
 
   updated(changed: PropertyValues<this>) {
-    if (changed.has('active') && this.active && !changed.get('active')) {
-      this.#activate();
+    if (changed.has('active')) {
+      this.#internals.ariaSelected = String(!!this.active);
+      if (this.active && !changed.get('active')) {
+        this.#activate();
+      }
     }
+
     if (changed.has('disabled')) {
       this.#disabledChanged();
     }
