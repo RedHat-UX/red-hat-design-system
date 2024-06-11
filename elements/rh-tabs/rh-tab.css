@@ -4,6 +4,19 @@
 :host {
   display: flex;
   flex: none;
+
+  --_active-tab-border:
+    var(--rh-border-width-lg, 3px) solid var(
+        --_active-tab-border-color,
+        var(
+          --rh-tabs-active-border-color,
+          var(--rh-color-accent-brand-on-light, #ee0000)
+        )
+      );
+  --_active-tab-border-open:
+    var(--rh-border-width-sm, 1px)
+    solid
+    var(--_context-background-color, var(--rh-color-white, #ffffff));
 }
 
 :host([vertical]) [part="text"] {
@@ -20,6 +33,13 @@ slot[name="icon"] {
 }
 
 #button {
+  --_button-text-color:
+    var(
+        --rh-tabs-link-color,
+        var(--rh-color-text-secondary-on-light, #4d4d4d)
+      );
+  --_button-focus-outline-color: var(--rh-color-border-interactive-on-light, #0066cc);
+
   margin: 0;
   font-family: inherit;
   font-size: 100%;
@@ -32,12 +52,13 @@ slot[name="icon"] {
   align-items: center;
   background-color: inherit;
   color: var(--_button-text-color);
+  width: 100%;
+  max-width: var(--_tab-max-width, 200px);
+  max-height: 100%;
   padding-block-start: var(--rh-tabs-link-padding-block-start, var(--rh-space-lg, 16px));
   padding-inline-start: var(--rh-tabs-link-padding-inline-start, var(--rh-space-2xl, 32px));
   padding-block-end: var(--rh-tabs-link-padding-block-end, var(--rh-space-lg, 16px));
   padding-inline-end: var(--rh-tabs-link-padding-inline-end, var(--rh-space-2xl, 32px));
-  max-width: var(--_tab-max-width, 200px);
-  max-height: 100%;
 }
 
 #button:before,
@@ -91,19 +112,7 @@ slot[name="icon"] {
   outline-offset: calc(var(--rh-space-md, 8px) * -1);
 }
 
-#container {
-  display: flex;
-  width: 100%;
-
-  --_button-text-color:
-    var(
-        --rh-tabs-link-color,
-        var(--rh-color-text-secondary-on-light, #4d4d4d)
-      );
-  --_button-focus-outline-color: var(--rh-color-border-interactive-on-light, #0066cc);
-}
-
-#container.dark {
+#button.dark {
   --_button-text-color:
     var(
         --rh-tabs-link-color,
@@ -113,64 +122,32 @@ slot[name="icon"] {
 }
 
 /* Context switch on attributes */
-:host([active]) #container,
-#container.active {
+#button.active {
   --_button-text-color:
     var(
         --rh-tabs-link-color,
         var(--rh-color-text-primary-on-light, #151515)
       );
-  --_active-tab-border-color:
-    var(
-        --rh-tabs-active-border-color,
-        var(--rh-color-accent-brand-on-light, #ee0000)
-      );
 }
 
-:host([active]) #container.dark,
-#container.active.dark {
+#button.active.dark {
   --_button-text-color:
     var(
         --rh-tabs-link-color,
         var(--rh-color-text-primary-on-dark, #ffffff)
       );
-  --_active-tab-border-color:
-    var(
-        --rh-tabs-active-border-color,
-        var(--rh-color-accent-brand-on-dark, #ee0000)
-      );
 }
 
 /* Box context */
-:host([box]) #container,
-#container.box {
+#button.box {
   --_inactive-tab-background-color: var(--rh-color-surface-lighter, #f2f2f2);
 }
 
-:host([box]) #container.dark,
-#container.dark.box {
+#button.dark.box {
   --_inactive-tab-background-color: var(--rh-color-surface-dark, #383838);
 }
 
-/* Theme base context */
-#container.active {
-  --_active-tab-border-color:
-    var(
-        --rh-tabs-active-border-color,
-        var(--rh-color-border-interactive-on-light, #0066cc)
-      );
-}
-
-#container.active.dark {
-  --_active-tab-border-color:
-    var(
-        --rh-tabs-active-border-color,
-        var(--rh-color-border-interactive-on-dark, #92c5f9)
-      );
-}
-
-:host([vertical]) #button,
-.vertical #button {
+#button.vertical {
   text-align: start;
 }
 
@@ -179,89 +156,73 @@ slot[name="icon"] {
 }
 
 /* [active]:not([box]) */
-:host([active]:not([box])) #button:after,
-#container.active:not(.box) #button:after {
-  border-block-end: var(--rh-border-width-lg, 3px) solid var(--_active-tab-border-color);
+#button.active:not(.box, .vertical):after {
+  border-block-end: var(--_active-tab-border);
 }
 
 /* [box][active]) */
-:host([active][box]) #button:before,
-#container.active.box #button:before {
+#button.active.box:before {
   border-inline-color: var(--_border-color);
   border-inline-start-width: var(--rh-border-width-sm, 1px);
 }
 
-:host([active][box]) #button:after,
-#container.active.box #button:after {
-  border-block-start: var(--rh-border-width-lg, 3px) solid var(--_active-tab-border-color);
-  border-block-end:
-    var(--rh-border-width-sm, 1px)
-    solid
-    var(--_context-background-color, var(--rh-color-white, #ffffff));
+#button.active.box:after {
+  border-block-start: var(--_active-tab-border);
+  border-block-end: var(--_active-tab-border-open);
 }
 
 /* [box]:not([active]) */
-:host([box]:not([active])) #container,
-#container.box:not(.active) {
+#button.box:not(.active) {
   background-color: var(--_inactive-tab-background-color);
 }
 
-:host([box]:not([active])) #button:before,
-#container.box:not(.active) #button:before {
+#button.box:not(.active):before {
   border-inline-color: var(--_border-color);
   border-inline-start-width: var(--rh-border-width-sm, 1px);
 }
 
-:host([box]:not([active])) #button:after,
-#container.box:not(.active) #button:after {
+#button.box:not(.active):after {
   border-block-end-color: var(--_border-color);
 }
 
 /* .first[box][active]) */
-:host([box][active]) #button:before,
-#container.box.active.first #button:before {
+#button.box.active.first:before {
   border-inline-start-color: var(--_border-color);
   border-inline-start-width: var(--rh-border-width-sm, 1px);
 }
 
 /* .first[box]:not([active]) */
-:host(.first[box]:not([active])) #button:before,
-#container.first.box:not(.active) #button:before {
+#button.first.box:not(.active):before {
   border-inline-color: transparent;
 }
 
 /* .last[box][active] */
-:host(.last[box][active]) #button:before,
-#container.last.box.active #button:before {
+#button.last.box.active:before {
   border-inline-end-color: var(--_border-color);
   border-inline-end-width: var(--rh-border-width-sm, 1px);
 }
 
 @media screen and (min-width: 768px) {
   /* [vertical]:not([box]) */
-  :host([vertical]:not([box])) #button,
-  #container.vertical:not(.box) #button {
+  #button.vertical:not(.box) {
     padding-block:
       var(--rh-tabs-link-padding-block-start, var(--rh-space-md, 8px))
       var(--rh-tabs-link-padding-block-start, var(--rh-space-md, 8px));
   }
 
   /* [vertical][active] */
-  :host([vertical][active]) #button:after,
-  #container.vertical.active #button:after {
+  #button.vertical.active:after {
     border-block-end: transparent;
   }
 
   /* [box]:not([vertical], [active]) */
-  :host([box]:not([vertical], [active])) #button:before,
-  #container.box:not(.vertical, .active) #button:before {
+  #button.box:not(.vertical, .active):before {
     border-inline-color: var(--_border-color);
     border-inline-start-width: var(--rh-border-width-sm, 1px);
   }
 
   /* [box][vertical]:not([active]) */
-  :host([box][vertical]:not([active])) #button:before,
-  #container.box.vertical:not(.active) #button:before {
+  #button.box.vertical:not(.active):before {
     border-inline-start-color: transparent;
     border-inline-end:
       var(--rh-border-width-sm, 1px)
@@ -274,115 +235,90 @@ slot[name="icon"] {
   }
 
   /* [box]:not([active], [vertical]) */
-  :host([box]:not([active], [vertical])) #button:after,
-  #container.box:not(.active, .vertical) #button:after {
+  #button.box:not(.active, .vertical):after {
     border-block-end-color: var(--_border-color);
   }
 
   /* [active][box][vertical] */
-  :host([active][box][vertical]) #button:after,
-  #container.active.box.vertical #button:after {
+  #button.active.box.vertical:after {
     border-block-start:
       var(--rh-border-width-sm, 1px)
       solid
       var(--_border-color);
   }
 
-  :host([box][vertical]:not([active])) #button:after,
-  #container.box.vertical:not(.active) #button:after {
+  #button.box.vertical:not(.active):after {
     border-block-end-color: transparent;
   }
 
   /* .first[vertical][box] */
-  :host(.first[vertical][box]),
-  #container.vertical.box.first {
+  #button.vertical.box.first {
     margin-block-start: var(--rh-space-2xl, 32px);
   }
 
   /* .last[vertical][box]  */
-  :host(.last[vertical][box]),
-  #container.vertical.box.last {
+  #button.vertical.box.last {
     margin-block-end: var(--rh-space-2xl, 32px);
   }
 
   /* .first[vertical]:not([box]) */
-  :host(.first[vertical]:not([box])),
-  #container.first.vertical:not(.box) {
+  #button.first.vertical:not(.box) {
     margin-block-start: var(--rh-space-xl, 24px);
   }
 
   /* .last[vertical]:not([box]) */
-  :host(.last[vertical]:not([box])),
-  #container.last.vertical:not(.box) {
+  #button.last.vertical:not(.box) {
     margin-block-end: var(--rh-space-xl, 24px);
   }
 
   /* [box][active]:not([vertical]) */
-  :host([active][box]:not([vertical])) #button:after,
-  #container.active.box:not(.vertical) #button:after {
-    border-block-start: var(--rh-border-width-lg, 3px) solid var(--_active-tab-border-color);
-    border-block-end:
-      var(--rh-border-width-sm, 1px)
-      solid
-      var(--_context-background-color, var(--rh-color-white, #ffffff));
+  #button.active.box:not(.vertical):after {
+    border-block-start: var(--_active-tab-border);
+    border-block-end: var(--_active-tab-border-open);
   }
 
   /* .first[box][vertical][active] */
-  :host(.first[box][vertical][active]) #button:after,
-  #container.first.box.vertical.active #button:after {
+  #button.first.box.vertical.active:after {
     border-block-start-color: var(--_border-color);
     border-block-start-width: var(--rh-border-width-sm, 1px);
   }
 
   /* [box][vertical][active] */
-  :host([box][vertical][active]) #button:before,
-  #container.box.vertical.active #button:before {
-    border-inline-start:
-      var(--rh-border-width-lg, 3px)
-      solid
-      var(--_active-tab-border-color);
-    border-inline-end:
-      var(--rh-border-width-sm, 1px)
-      solid
-      var(--_context-background-color, var(--rh-color-white, #ffffff));
+  #button.box.vertical.active:before {
+    border-inline-start: var(--_active-tab-border);
+    border-inline-end: var(--_active-tab-border-open);
   }
 
   /* [active][vertical]:not([box]) */
-  :host([vertical][active]:not([box])) #button:before,
-  #container.vertical.active:not(.box) #button:before {
-    border-inline-start: var(--rh-border-width-lg, 3px) solid var(--_active-tab-border-color);
+  #button.vertical.active:not(.box):before {
+    border-inline-start: var(--_active-tab-border);
   }
 
   /* .first[vertical][box]:not([active]) */
-  :host(.first[vertical][box]:not([active])) #button:before,
-  #container.first.vertical.box:not(.active) #button:before {
+  #button.first.vertical.box:not(.active):before {
     border-block-start-color: transparent;
   }
 
   /* .first[box][active]:not([vertical]) */
-  :host(.first[box][active]:not([vertical])) #button:before,
-  #container.first.box.active:not(.vertical) #button:before {
+  #button.first.box.active:not(.vertical):before {
     border-inline-start-color: var(--_border-color);
     border-inline-start-width: var(--rh-border-width-sm, 1px);
   }
 
   /* .last[box][active]:not[vertical] */
-  :host(.last[box][active]:not([vertical])) #button:before,
-  #container.last.box.active:not(.vertical) #button:before {
+  #button.last.box.active:not(.vertical):before {
     border-inline-end-color: var(--_border-color);
     border-inline-end-width: var(--rh-border-width-sm, 1px);
   }
 
   /* .last[box][vertical][active] */
-  :host(.last[box][vertical][active]) #button:before,
-  #container.last.box.vertical.active #button:before {
+  #button.last.box.vertical.active:before {
     border-block-end-color: var(--_border-color);
     border-block-end-width: var(--rh-border-width-sm, 1px);
   }
 
   /* .last[box][vertical]:not([active]) */
-  :host(.last[box][vertical]:not([active])) #button:after,
-  #container.last.box.vertical:not(.active) #button:after {
+  #button.last.box.vertical:not(.active):after {
     border-block-end: none;
   }
 }

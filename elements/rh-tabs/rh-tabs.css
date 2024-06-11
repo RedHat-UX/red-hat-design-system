@@ -18,9 +18,9 @@
 
 [part="tabs-container"]:before {
   position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  inset-inline-end: 0;
+  inset-block-end: 0;
+  inset-inline-start: 0;
   border-width: 0 0 var(--rh-border-width-sm, 1px);
   border-color: var(--_border-color);
   border-style: solid;
@@ -47,9 +47,9 @@
 [part="tabs"]:before,
 button:before {
   position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  inset-inline-end: 0;
+  inset-block-end: 0;
+  inset-inline-start: 0;
   content: "";
   border-style: solid;
 }
@@ -114,6 +114,23 @@ button:disabled {
   --_overflow-button-text-color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
   --_overflow-button-disabled-text-color: var(--rh-color-gray-50, #707070);
   --_overflow-button-hover-text-color: var(--rh-color-text-primary-on-dark, #ffffff);
+}
+
+:host([theme="base"]) #rhds-container {
+  /* Theme base context */
+  --_active-tab-border-color:
+    var(
+        --rh-tabs-active-border-color,
+        var(--rh-color-border-interactive-on-light, #0066cc)
+      );
+}
+
+:host([theme="base"]) #rhds-container.dark {
+  --_active-tab-border-color:
+    var(
+        --rh-tabs-active-border-color,
+        var(--rh-color-border-interactive-on-dark, #92c5f9)
+      );
 }
 
 :host(:is([centered], [box="inset"])) [part="tabs"] {

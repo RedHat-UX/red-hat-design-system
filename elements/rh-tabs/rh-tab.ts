@@ -34,7 +34,7 @@ export class TabExpandEvent extends Event {
  * @slot icon - Can contain an `<svg>` or `<pf-icon>`
  * @slot - Tab title text
  *
- * @csspart button - element that contains the interactive part of a tab 
+ * @csspart button - element that contains the interactive part of a tab
  * @csspart icon - icon `<span>` element
  * @csspart text - tile text `<span>` element
  *
@@ -88,14 +88,15 @@ export class RhTab extends LitElement {
     const first = firstTab === this;
     const last = lastTab === this;
     return html`
-      <div id="container" class="${classMap({ active, box, vertical, first, last, [on]: !!on })}">
-        <div id="button" part="button" ?disabled="${this.disabled}">
-          <slot name="icon"
-                part="icon"
-                ?hidden="${!this.icons.length}"
-                @slotchange="${() => this.requestUpdate()}"></slot>
-          <slot part="text"></slot>
-        </div>
+      <div id="button" 
+          part="button"
+          ?disabled="${this.disabled}"
+          class="${classMap({ active, box, vertical, first, last, [on]: !!on })}">
+        <slot name="icon"
+              part="icon"
+              ?hidden="${!this.icons.length}"
+              @slotchange="${() => this.requestUpdate()}"></slot>
+        <slot part="text"></slot>
       </div>
     `;
   }
