@@ -3,54 +3,114 @@
   support for analytics internally, <code>&lt;rh-cta></code> users must implement their own
   analytics code, taking this demo as an example.</p>
 
-<pre class="language-javascript"><code class="language-javascript">
-function deepClosest(event, selector) {
-  for (const node of event.composedPath().reverse()) {
-    if (node.matches?.(selector)) {
-      return node;
-    }
-  }
-  return event.target.closest(selector);
-}
-
-document.addEventListener('click', function(event) {
-  const cta = deepClosest(event, 'rh-cta');
-  if (cta) {
-    const { href, text, title } = cta.cta;
-    const color = cta.colorPalette;
-    const type = cta.variant;
-    console.log('CTA ANALYTICS EVENT', { href, text, title, color, type });
-  }
-});
-</code></pre>
-
-<section>
+<section data-analytics-category="simple">
   <h2>Simple Case: Light DOM Analytics</h2>
-  <rh-cta><a href="#default">Default</a></rh-cta>
-  <rh-cta variant="primary"><a href="#primary">Primary</a></rh-cta>
-  <rh-cta variant="secondary"><a href="#secondary">Secondary</a></rh-cta>
-  <rh-cta variant="brick"><a href="#brick">Brick</a></rh-cta>
+  <rh-cta data-analytics-linktype="cta"
+          data-analytics-text="Default">
+    <a href="#default">Default</a>
+  </rh-cta>
+  <rh-cta variant="primary"
+          data-analytics-linktype="cta"
+          data-analytics-text="Primary">
+    <a href="#primary">Primary</a>
+  </rh-cta>
+  <rh-cta variant="secondary"
+          data-analytics-linktype="cta"
+          data-analytics-text="Secondary">
+    <a href="#secondary">Secondary</a>
+  </rh-cta>
+  <rh-cta variant="brick"
+          data-analytics-linktype="cta"
+          data-analytics-text="Brick">
+    <a href="#brick">Brick</a>
+  </rh-cta>
+
+  <section data-analytics-category="href-attr">
+    <h3>Using <code>href</code> attribute</h3>
+    <rh-cta href="#default"
+            data-analytics-linktype="cta"
+            data-analytics-text="Default">Default</rh-cta>
+    <rh-cta href="#primary"
+            variant="primary"
+            data-analytics-linktype="cta"
+            data-analytics-text="Primary">Primary</rh-cta>
+    <rh-cta href="#secondary"
+            variant="secondary"
+            data-analytics-linktype="cta"
+            data-analytics-text="Secondary">Secondary</rh-cta>
+    <rh-cta href="#brick"
+            variant="brick"
+            data-analytics-linktype="cta"
+            data-analytics-text="Brick">Brick</rh-cta>
+  </section>
 </section>
 
-<section>
+<section data-analytics-category="shadow">
   <h2>Advanced Case: Deep Shadow Analytics</h2>
   <shadow-root>
-    <template shadowroot="open" shadowrootmode="open">
-      <rh-cta><a href="#default">Default</a></rh-cta>
-      <rh-cta variant="primary"><a href="#primary">Primary</a></rh-cta>
-      <rh-cta variant="secondary"><a href="#secondary">Secondary</a></rh-cta>
-      <rh-cta variant="brick"><a href="#brick">Brick</a></rh-cta>
+    <template shadowrootmode="open">
+      <rh-cta data-analytics-linktype="cta"
+              data-analytics-text="Default">
+        <a href="#default">Default</a>
+      </rh-cta>
+      <rh-cta variant="primary"
+              data-analytics-linktype="cta"
+              data-analytics-text="Primary">
+        <a href="#primary">Primary</a>
+      </rh-cta>
+      <rh-cta variant="secondary"
+              data-analytics-linktype="cta"
+              data-analytics-text="Secondary">
+        <a href="#secondary">Secondary</a>
+      </rh-cta>
+      <rh-cta variant="brick"
+              data-analytics-linktype="cta"
+              data-analytics-text="Brick">
+        <a href="#brick">Brick</a>
+      </rh-cta>
+    </template>
+  </shadow-root>
+  <h3>Using <code>href</code> attribute</h3>
+  <shadow-root data-analytics-category="href-attr">
+    <template shadowrootmode="open">
+      <rh-cta href="#default"
+              data-analytics-linktype="cta"
+              data-analytics-text="Default">Default</rh-cta>
+      <rh-cta href="#primary"
+              data-analytics-linktype="cta"
+              data-analytics-text="Primary"
+              variant="primary">Primary</rh-cta>
+      <rh-cta href="#secondary"
+              data-analytics-linktype="cta"
+              data-analytics-text="Secondary"
+              variant="secondary">Secondary</rh-cta>
+      <rh-cta href="#brick"
+              variant="brick"
+              data-analytics-linktype="cta"
+              data-analytics-text="Brick">Brick</rh-cta>
     </template>
   </shadow-root>
 </section>
 
-<section>
+<section data-analytics-category="slotted">
   <h2>Complex Case: Slotted Link, Deep CTA Analytics</h2>
   <slotted-link>
-    <a slot="default" href="#default">Default</a>
-    <a slot="primary" href="#primary">Primary</a>
-    <a slot="secondary" href="#secondary">Secondary</a>
-    <a slot="brick" href="#brick">Brick</a>
+    <a slot="default"
+       data-analytics-linktype="cta"
+       data-analytics-text="Default"
+       href="#default">Default</a>
+    <a slot="primary"
+       data-analytics-linktype="cta"
+       data-analytics-text="Primary"
+       href="#primary">Primary</a>
+    <a slot="secondary"
+       data-analytics-linktype="cta"
+       data-analytics-text="Secondary"
+       href="#secondary">Secondary</a>
+    <a slot="brick"
+       data-analytics-linktype="cta"
+       data-analytics-text="Brick"
+       href="#brick">Brick</a>
   </slotted-link>
 </section>
 
@@ -90,25 +150,19 @@ customElements.define('slotted-link', class SlottedLinkElement extends HTMLEleme
   }
 });
 
-function deepClosest(event, selector) {
-  for (const node of event.composedPath().reverse()) {
-    if (node.matches?.(selector)) {
-      return node;
-    }
-  }
-  return event.target.closest(selector);
-}
-
 document.addEventListener('click', function(event) {
-  const cta = deepClosest(event, 'rh-cta');
-  if (cta) {
-    const { href, text, title } = cta.cta;
-    const color = cta.colorPalette;
-    const type = cta.variant ?? 'default';
-    const data = { href, text, title, color, type };
-    // for the purposes of the demo, let's enable console logging here
-    // eslint-disable-next-line no-console
-    console.log('CTA ANALYTICS EVENT', data);
+  const data = event.composedPath().reduceRight((acc, node) => {
+    if (node instanceof HTMLElement) {
+      for (const [datakey, value] of Object.entries(node.dataset)) {
+        if (datakey.startsWith('analytics')) {
+          const key = datakey.replace(/^analytics(.)/, (_, m) => m.toLowerCase());
+          acc[key] = `${acc[key] ?? ''}|${value}`.replace(/^\|/,'');
+        }
+      }
+    }
+    return acc;
+  }, {});
+  if (Object.keys(data).length) {
     document.querySelector('json-viewer').object = data;
   }
 });
