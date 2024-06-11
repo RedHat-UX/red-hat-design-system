@@ -34,7 +34,7 @@ export class TabExpandEvent extends Event {
  * @slot icon - Can contain an `<svg>` or `<pf-icon>`
  * @slot - Tab title text
  *
- * @csspart button - `<div>` element
+ * @csspart button - element that contains the interactive part of a tab 
  * @csspart icon - icon `<span>` element
  * @csspart text - tile text `<span>` element
  *
