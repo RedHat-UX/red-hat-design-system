@@ -98,7 +98,6 @@
     padding-block-start: var(--rh-space-xl, 24px);
   }
 
-
   @container main (min-width: 576px) {
     .container {
       padding-block-start: var(--rh-space-6xl, 96px);
