@@ -80,8 +80,9 @@ export class RhContextPicker extends LitElement {
            @input="${this.#onInput}"
            class="${classMap({ [`on-${on}`]: true })}">
         ${allow.map(palette => html`
+        <label for="radio-${palette}" class="visually-hidden">${palette}</label>
         <rh-tooltip>
-          <label for="radio-${palette}" slot="content">${palette}</label>
+          <span slot="content">${palette}</span>
           <input id="radio-${palette}" class="${classMap({ [palette]: true })}"
                  name="palette"
                  type="radio"

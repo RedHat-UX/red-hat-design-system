@@ -70,7 +70,8 @@ input:focus {
   outline: var(--thumb-color) solid 4px;
 }
 
-label {
+label,
+rh-tooltip span {
   text-transform: capitalize;
 }
 
