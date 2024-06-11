@@ -11,8 +11,8 @@ describe('<rh-accordion>', function() {
     const el = await createFixture <RhAccordion>(element);
     const klass = customElements.get('rh-accordion');
     expect(el)
-      .to.be.an.instanceOf(klass)
-      .and
-      .to.be.an.instanceOf(RhAccordion);
+        .to.be.an.instanceOf(klass)
+        .and
+        .to.be.an.instanceOf(RhAccordion);
   });
 });

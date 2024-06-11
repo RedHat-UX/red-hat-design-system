@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit';
+import { LitElement, type PropertyValues, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -6,7 +6,7 @@ import { classMap } from 'lit/directives/class-map.js';
 import { type ColorPalette } from '../../context/color/provider.js';
 import { ContextChangeEvent } from '../rh-context-picker/rh-context-picker.js';
 
-import '@rhds/elements/lib/elements/rh-context-provider/rh-context-provider.js';
+import '@rhds/elements/rh-surface/rh-surface.js';
 
 import style from './rh-context-demo.css';
 
@@ -20,13 +20,15 @@ export class RhContextDemo extends LitElement {
 
   @property() label = 'Color Palette';
 
+  @property({ attribute: 'color-palette', reflect: true }) colorPalette = this.value;
+
   #internals = this.attachInternals();
 
   render() {
     const { value = 'darkest' } = this;
     const [on = 'dark'] = value.match(/dark|light/) ?? [];
     return html`
-      <rh-context-provider id="provider"
+      <rh-surface id="provider"
                            color-palette="${value}"
                            class="${classMap({ [on]: true })}"
                            @change="${this.#onChange}">
@@ -37,8 +39,17 @@ export class RhContextDemo extends LitElement {
             <label for="picker">${this.label}</label>
           </div>
         <slot part="demo"></slot>
-      </rh-context-provider>
+      </rh-surface>
     `;
+  }
+
+  willUpdate(changed: PropertyValues<this>) {
+    if (changed.has('colorPalette')) {
+      this.value = this.colorPalette;
+    }
+    if (changed.has('value')) {
+      this.colorPalette = this.value;
+    }
   }
 
   formStateRestoreCallback(state: string) {

@@ -16,6 +16,7 @@ browse through lower-level pages.
 [navpri]: {{ '/elements/navigation-primary/' | url }}
 [navsec]: {{ '/elements/navigation-secondary/' | url }}
 
+
 ### Subnavigation vs. other navigations
 
 A subnavigation is a flat hierarchy whereas other navigations have deeper 
@@ -23,78 +24,88 @@ hierarchies with levels. Therefore, a subnavigation cannot include menus, only
 links. If your content requires a structure with more levels, use another 
 navigation.
 
-{% example palette="lightest",
-           alt="Image of the primary navigation, secondary navigation, and subnavigation being compared",
-           src="../subnav-vs-other-navs.png" %}
+<uxdot-example width-adjustment="872px">
+  <img src="{{ '../subnav-vs-other-navs.png' | url }}" alt="Image of the primary navigation, secondary navigation, and subnavigation being compared">
+</uxdot-example>
+
 
 ### Number of links
 
 To reduce cognitive load and a cluttered user interface, avoid using more than 
 four or five links.
 
-{% example palette="lightest",
-           alt="Image of a subnavigation with five short link text labels",
-           src="../subnav-number-of-links.png" %}
+<uxdot-example width-adjustment="872px">
+  <img src="{{ '../subnav-number-of-links.png' | url }}" alt="Image of a subnavigation with five short link text labels">
+</uxdot-example>
+
 
 ### Inset
 
 An inset is used to ensure consistent alignment and padding between headings, 
 text labels, and overflow buttons.
 
-{% example palette="lightest",
-           alt="Image of three desktop and one mobile subnavigations with various inset values",
-           src="../subnav-inset.png" %}
+<uxdot-example width-adjustment="872px">
+  <img src="{{ '../subnav-inset.png' | url }}" alt="Image of three desktop and one mobile subnavigations with various inset values">
+</uxdot-example>
 
-<hgroup>
 
-  ## Writing content
-  ### Link text labels
+## Writing content
 
-</hgroup>
+### Link text labels
 
 Link text labels should be concise, scannable, and descriptive. They should not 
 exceed more than two or three short words. If they do, work with a content 
 strategist to shorten them.
 
-{% example palette="lightest",
-           alt="Image of two subnavigations; one with short text labels and one with long text labels",
-           src="../subnav-link-text-labels.png" %}
+<uxdot-example width-adjustment="872px">
+  <img src="{{ '../subnav-link-text-labels.png' | url }}" alt="Image of two subnavigations; one with short text labels and one with long text labels">
+</uxdot-example>
+
 
 ### Character count
 
-A subnavigation should have four or five links maximum. However, if text labels 
-are very short, more can be added.
+A subnavigation should have four or five links maximum. Text labels should be short but descriptive. The recommended maximum character count for the elements of a subnavigation are listed below and include spaces.
 
-| Link count | Character count |
-| ---------- | --------------- |
-| 6          | < 13            |
-| 5          | 14 - 17         |
-| 4          | 18 - 23         |
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Element">Element</th>
+        <th scope="col" data-label="Character count">Character count</th>
+        <th scope="col" data-label="Word count">Word count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Element">Link</td>
+        <td data-label="Character count">20</td>
+        <td data-label="Word count">2 to 3</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
 
-{.full-width}
 
 ## Layout
 
 A subnavigation can be placed below the primary navigation or a heading.
 
-{% example palette="none",
-           alt="Image of subnavigations positioned below the primary navigation and a heading",
-           src="../subnav-layout.png" %}
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../subnav-layout.png' | url }}" alt="Image of subnavigations positioned below the primary navigation and a heading">
+</uxdot-example>
 
-<hgroup>
 
-  ## Behavior
+## Behavior
 
-  ### Current page indicator
-
-</hgroup>
+### Current page indicator
 
 When a user is viewing a page, a red bottom border is visible. It will move as a 
 user moves from page to page.
 
-{% example palette="lightest",
-           alt="Image of a desktip and mobile subnavigation showing with the current page indicator visible",
-           src="../subnav-current-page-indicator.png" %}
+<uxdot-example width-adjustment="872px">
+  <img src="{{ '../subnav-current-page-indicator.png' | url }}" alt="Image of a desktip and mobile subnavigation showing with the current page indicator visible">
+</uxdot-example>
+
 
 ### Scrolling
 
@@ -106,15 +117,17 @@ positioned under the primary navigation or heading again.
 
 ### With primary navigation
 
-{% example palette="none",
-           alt="Image of a subnavigation and how it behaves when scrolling under the primary navigation",
-           src="../subnav-scrolling-primary-nav.png" %}
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../subnav-scrolling-primary-nav.png' | url }}" alt="Image of a subnavigation and how it behaves when scrolling under the primary navigation">
+</uxdot-example>
+
 
 ### With heading
 
-{% example palette="none",
-           alt="Image of a subnavigation and how it behaves when scrolling under a heading",
-           src="../subnav-scrolling-heading.png" %}
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../subnav-scrolling-heading.png' | url }}" alt="Image of a subnavigation and how it behaves when scrolling under a heading">
+</uxdot-example>
+
 
 ### Overflow
 
@@ -122,9 +135,10 @@ If the number of links exceeds the container width or breakpoint, overflow
 buttons with chevron icons are added to each side so users can horizontally 
 scroll to reveal hidden links.
 
-{% example palette="lightest",
-           alt="Image of a desktop subnavigation with no overflow buttons and two mobile subnavigations with overflow buttons visible",
-           src="../subnav-overflow.png" %}
+<uxdot-example width-adjustment="872px">
+  <img src="{{ '../subnav-overflow.png' | url }}" alt="Image of a desktop subnavigation with no overflow buttons and two mobile subnavigations with overflow buttons visible">
+</uxdot-example>
+
 
 ### Navigating overflow links
 
@@ -133,9 +147,10 @@ last link is active, the right overflow button is disabled. When a link that is
 cut off is selected, the list of links shifts so the selected link is in full 
 view.
 
-{% example palette="lightest",
-           alt="Image of selecting a cut off link and the list of links shifting to reveal the selected link in full view",
-           src="../subnav-navigating-overflow-links.png" %}
+<uxdot-example width-adjustment="544px">
+  <img src="{{ '../subnav-navigating-overflow-links.png' | url }}" alt="Image of selecting a cut off link and the list of links shifting to reveal the selected link in full view">
+</uxdot-example>
+
 
 ## Responsive design
 
@@ -146,59 +161,60 @@ labels.
 
 ### Large breakpoints
 
-{% example palette="none",
-           alt="Image of subnavigations on large breakpoints",
-           src="../subnav-responsive-breakpoints-large.png" %}
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../subnav-responsive-breakpoints-large.png' | url }}" alt="Image of subnavigations on large breakpoints">
+</uxdot-example>
 
 ### Small breakpoints
 
-{% example palette="none",
-           alt="Image of subnavigations on small breakpoints",
-           src="../subnav-responsive-breakpoints-small.png" %}
+<uxdot-example width-adjustment="576px" variant="full" alignment="left" no-border>
+  <img src="{{ '../subnav-responsive-breakpoints-small.png' | url }}" alt="Image of subnavigations on small breakpoints">
+</uxdot-example>
 
-<hgroup>
 
-  ## Best practices
-  ### Incorrect ordering
+## Best practices
 
-</hgroup>
+### Incorrect ordering
 
 Do not position the subnavigation above the primary navigation.
 
-{% example palette="wrong",
-           alt="Image of a subnavigation above the primary navigation, which is incorrect usage",
-           src="../subnav-best-practice-1.png" %}
+<uxdot-example width-adjustment="872px" danger>
+  <img src="{{ '../subnav-best-practice-1.png' | url }}" alt="Image of a subnavigation above the primary navigation, which is incorrect usage">
+</uxdot-example>
+
 
 ### Not enough links
 
 There should be at least two links minimum.
 
-{% example palette="wrong",
-           alt="Image of a subnavigation with only one link, which is incorrect usage",
-           src="../subnav-best-practice-2.png" %}
+<uxdot-example width-adjustment="872px" danger>
+  <img src="{{ '../subnav-best-practice-2.png' | url }}" alt="Image of a subnavigation with only one link, which is incorrect usage">
+</uxdot-example>
+
 
 ### Too many links
 
 Be careful about displaying too many links, some of them will become hidden even 
 at large breakpoints.
 
-{% example palette="wrong",
-           alt="Image of a subnavigation with seven links and overflow buttons, which is incorrect usage",
-           src="../subnav-best-practice-3.png" %}
+<uxdot-example width-adjustment="872px" danger>
+  <img src="{{ '../subnav-best-practice-3.png' | url }}" alt="Image of a subnavigation with seven links and overflow buttons, which is incorrect usage">
+</uxdot-example>
+
 
 ### Extra spacing
 
 Do not add extra spacing or stretch the width of links.
 
-{% example palette="wrong",
-           alt="Image of a subnavigation with stretched links, which is incorrect usage",
-           src="../subnav-best-practice-4.png" %}
+<uxdot-example width-adjustment="872px" danger>
+  <img src="{{ '../subnav-best-practice-4.png' | url }}" alt="Image of a subnavigation with stretched links, which is incorrect usage">
+</uxdot-example>
+
 
 ### Overflow buttons
 
 Overflow buttons should not be visible if all links are visible.
 
-{% example palette="wrong",
-           alt="Image of a subnavigation with only two links and overflow buttons, which is incorrect usage",
-           src="../subnav-best-practice-5.png" %}
-
+<uxdot-example width-adjustment="872px" danger>
+  <img src="{{ '../subnav-best-practice-5.png' | url }}" alt="Image of a subnavigation with only two links and overflow buttons, which is incorrect usage">
+</uxdot-example>

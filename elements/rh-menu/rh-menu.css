@@ -9,19 +9,22 @@ slot {
   width: max-content;
 }
 
-.dark::slotted(a) {
-  color: var(--rh-color-interactive-blue-lightest, #bee1f4) !important;
+::slotted(a) {
   padding: 5px !important; /* WARNING: not a token value */
 }
 
+.dark::slotted(a) {
+  color: var(--rh-color-interactive-blue-lightest, #b9dafc) !important;
+}
+
 .dark::slotted(a:hover) {
-  color: var(--rh-color-interactive-blue-lighter, #73bcf7);
+  color: var(--rh-color-interactive-blue-lighter, #92c5f9);
 }
 
 .dark::slotted(a:visited) {
-  color: var(--rh-color-interactive-purple-lighter, #a18fff) !important;
+  color: var(--rh-color-interactive-purple-lighter, #b6a6e9) !important;
 }
 
 .dark::slotted(a:visited:hover) {
-  color: var(--rh-color-interactive-purple-lighter, #a18fff) !important;
+  color: var(--rh-color-interactive-purple-lighter, #b6a6e9) !important;
 }

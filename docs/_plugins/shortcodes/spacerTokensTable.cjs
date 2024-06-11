@@ -2,11 +2,11 @@ const { tokens: metaTokens } = require('@rhds/tokens/meta.js');
 
 /**
  * Reads token data from @rhds/tokens and outputs a table for specified tokens
- * @this {EleventyContext}
+ * @param {import('@11ty/eleventy').UserConfig} eleventyConfig  computed config
  */
-
 module.exports = function(eleventyConfig) {
-  eleventyConfig.addPairedShortcode('spacerTokensTable',
+  eleventyConfig.addPairedShortcode(
+    'spacerTokensTable',
     function(content, {
       tokens = '',
       style,
@@ -14,11 +14,11 @@ module.exports = function(eleventyConfig) {
       headingLevel = '3',
       caption = '',
       wrapperClass,
-      palette = 'light'
+      palette = 'light',
     } = {}) {
       const slugify = eleventyConfig.getFilter('slugify');
       const tokenList = (Array.isArray(tokens) ? tokens : tokens.split(','))
-        .map(token => token.trim()).filter(Boolean);
+          .map(token => token.trim()).filter(Boolean);
       const metaData = [];
 
       if (tokenList.length === 0) {
@@ -34,25 +34,31 @@ module.exports = function(eleventyConfig) {
         const body = metaData.map(prop => {
           const px = prop['$value'];
           const size = px.substring(0, px.length - 2);
-          const klass = parseInt(size) < 16 ? `offset size-${size}` : '';
+          const offset = parseInt(size) < 16;
+          const sampClass = offset ? `size-${size}` : '';
+          const offsetClass = offset ? 'offset' : '';
           const { color } = prop['$extensions']['com.redhat.ux'];
           return /* html */`
             <tr>
-              <td><samp class="${klass}" style="--samp-width: ${px}; --samp-color: ${color};"><span>${size}</span></samp></td>
-              <td>--${prop.name}</td>
-              <td>${prop['$description']}</td>
+              <td data-label="Example">
+                <samp class="space ${sampClass}" style="--samp-space-size: ${px}; --samp-space-color: ${color};">
+                  <span class="${offsetClass}">${size}</span>
+                </samp>
+              </td>
+              <td data-label="Token">--${prop.name}</td>
+              <td data-label="Description">${prop['$description']}</td>
             </tr>
           `.trim();
         }).join('\n');
 
         table = /* html */`
-          <table width="100%" class="spacer-tokens-table">
+          <table>
           <caption>${caption}</caption>
           <thead>
             <tr>
-              <th>Example</th>
-              <th>Token</th>
-              <th>Description</th>
+              <th scope="col" data-label="Example">Example</th>
+              <th scope="col" data-label="Token">Token</th>
+              <th scope="col" data-label="Description">Description</th>
             </tr>
           </thead>
             <tbody>
@@ -62,10 +68,10 @@ module.exports = function(eleventyConfig) {
         `.trim();
       }
       return `
+        ${table}
         <div class="token-props-table palette-${palette} ${wrapperClass ?? ''}" ${!style ? ''
-          : `style="${style}"}`.trim()}>${!headline ? ''
-          : `<h${headingLevel} id="${slugify(headline)}" class="image-title">${headline}</h${headingLevel}>`.trim()}
-          ${table}
+        : `style="${style}"}`.trim()}>${!headline ? ''
+        : `<h${headingLevel} id="${slugify(headline)}" class="image-title">${headline}</h${headingLevel}>`.trim()}          
           ${content}
         </div>
       `.trim();

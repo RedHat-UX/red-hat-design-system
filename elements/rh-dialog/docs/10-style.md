@@ -6,35 +6,39 @@ helps users focus on the dialog content.
 
 ### Anatomy
 
-{% example palette="light",
-           alt="Anatomy of a dialog with lots of annotations pointing to various parts",
-           src="../dialog-anatomy.png" %}
-
-1. Backdrop
-2. Container
-3. Close button
-4. Header section
-5. Body text section
-6. Footer section
-7. Container shadow
-   {.example-notes}
+<figure>
+  <uxdot-example width-adjustment="872px">
+    <img src="{{ '../dialog-anatomy.png' | url }}" alt="Anatomy of a dialog with lots of annotations pointing to various parts">
+  </uxdot-example>
+  <figcaption>
+    <ol>
+      <li>Backdrop</li>
+      <li>Container</li>
+      <li>Close button</li>
+      <li>Header section</li>
+      <li>Body text section</li>
+      <li>Footer section</li>
+      <li>Container shadow</li>
+    </ol>
+  </figcaption>
+</figure>
 
 ## Theme
 
 A dialog is available in the light theme only.
 
-{% example palette="none",
-           alt="Light theme dialog",
-           src="../dialog-theme-light.png" %}
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../dialog-theme-light.png' | url }}" alt="Light theme dialog">
+</uxdot-example>
 
 ## Configuration
 
 The dialog container does not have a maximum height, but too much content in the 
 body text section will cause scrolling.
 
-{% example palette="none",
-           alt="How a dialog container is constructed showing border radius, region, and scrolling details",
-           src="../dialog-configuration.png" %}
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../dialog-configuration.png' | url }}" alt="How a dialog container is constructed showing border radius, region, and scrolling details">
+</uxdot-example>
 
 ## Space
 
@@ -42,20 +46,22 @@ The amount of space in a dialog reduces as breakpoints get smaller.
 
 ### Large breakpoints
 
-{% example palette="none",
-           alt="A dialog container on a large breakpoint with spacing between all elements",
-           src="../dialog-space-breakpoint-large.png" %}
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../dialog-space-breakpoint-large.png' | url }}" alt="A dialog container on a large breakpoint with spacing between all elements">
+</uxdot-example>
 
 ### Small breakpoints
 
-{% example palette="none",
-           alt="A dialog container on a small breakpoint with spacing between all elements",
-           src="../dialog-space-breakpoint-small.png" %}
+<uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border>
+  <img src="{{ '../dialog-space-breakpoint-small.png' | url }}" alt="A dialog container on a small breakpoint with spacing between all elements">
+</uxdot-example>
 
+<rh-table>
 {% spacerTokensTable 
     headingLevel="4",
     tokens="--rh-space-md, --rh-space-lg,  --rh-space-xl, --rh-space-2xl",
     style="margin-block-start:var(--rh-space-xl);" %}{% endspacerTokensTable %}
+</rh-table>
 
 ## Interaction states
 
@@ -68,45 +74,81 @@ interaction states.
 Control and inactive page number buttons have the same hover state. Truncation 
 is not interactive so it has no hover state.
 
-{% example palette="none",
-           alt="Light theme dialog hover state example",
-           src="../dialog-interaction-state-hover.png" %}
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../dialog-interaction-state-hover.png' | url }}" alt="Light theme dialog hover state example">
+</uxdot-example>
 
-{% tokensTable %}
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Property">Property</th>
+        <th scope="col" data-label="Light theme">Light theme</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Property">Color - close button</td>
+        <td data-label="Light theme">#151515</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
 
-| Property             | Light theme |
-| -------------------- | :---------: |
-| Color - close button |#151515   |
-
-{% endtokensTable %}
 
 ### Focus
 
-{% example palette="none",
-           alt="Light theme dialog focus state example",
-           src="../dialog-interaction-state-focus.png" %}
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../dialog-interaction-state-focus.png' | url }}" alt="Light theme dialog focus state example">
+</uxdot-example>
 
-{% tokensTable %}           
-
-| Property             | Light theme |
-| -------------------- | :---------: |
-| Color - close button |#151515   |
-| Color - focus ring   |#0066cc   |
-
-{% endtokensTable %}
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Property">Property</th>
+        <th scope="col" data-label="Light theme">Light theme</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Property">Color - close button</td>
+        <td data-label="Light theme">#151515</td>
+      </tr>
+      <tr>
+        <td data-label="Property">Color - focus ring</td>
+        <td data-label="Light theme">#0066cc</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
 
 ### Active
 
-{% example palette="none",
-           alt="Light theme dialog active state example",
-           src="../dialog-interaction-state-active.png" %}
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../dialog-interaction-state-active.png' | url }}" alt="Light theme dialog active state example">
+</uxdot-example>
 
-{% tokensTable %}           
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Property">Property</th>
+        <th scope="col" data-label="Light theme">Light theme</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Property">Color - close button</td>
+        <td data-label="Light theme">#151515</td>
+      </tr>
+      <tr>
+        <td data-label="Property">Color - focus ring</td>
+        <td data-label="Light theme">#0066cc</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
 
-| Property             | Light theme |
-| -------------------- | :---------: |
-| Color - close button |#151515   |
-| Color - focus ring   |#0066cc   |
 
-{% endtokensTable %}
 

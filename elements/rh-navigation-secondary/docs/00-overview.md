@@ -1,16 +1,22 @@
 ## Overview
+
 {{ tagName | getElementDescription }}
+
+{% repoStatusList %}
 
 ## Sample element
 
-  {% example palette="light",
-      alt="Image of two stacked secondary navigations; one for large breakpoints and the other for small breakpoints",
-      src="./nav-secondary-sample.png" %}
+<uxdot-example width-adjustment="872px">
+  <img src="{{ './nav-secondary-sample.png' | url }}" alt="Image of two stacked secondary navigations; one for large breakpoints and the other for small breakpoints">
+</uxdot-example>
+
 
 ## Demo
 
-  {% playground tagName=tagName %}{% endplayground %}
-  {% cta href="./demo/", target="_blank" %}View the  demo{% endcta %}
+{% playground tagName=tagName %}{% endplayground %}
+
+<rh-cta><a href="{{ './demo/' | url }}">Full screen demo</a></rh-cta>
+
 
 ## When to use
   
@@ -18,5 +24,5 @@
   - When you need to provide a more granular navigation that is specific to a topic
   - When you need to prevent other navigations from getting overloaded
 
-  {% repoStatus type="Element" %}
 
+{% repoStatusChecklist %}

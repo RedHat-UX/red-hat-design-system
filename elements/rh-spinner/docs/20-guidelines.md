@@ -12,6 +12,33 @@ a few seconds, a spinner should be used. For experiences that need longer than a
 few seconds to load, use a Progress bar instead. Lastly, when the result of an 
 experience has no data or the screen is empty, use an Empty state instead.
 
+### Character count
+
+The text label should be as brief and general as possible in order to give users 
+enough time to read it.
+
+<uxdot-example width-adjustment="721px">
+  <img src="{{ '../spinner-text-label.png' | url }}" alt="Two spinners; one with a short text label, which is acceptable, and one with a very long text label which is not acceptable">
+</uxdot-example>
+
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Element">Element</th>
+        <th scope="col" data-label="Character count">Character count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Element">Text label</td>
+        <td data-label="Character count">30</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
+
+
 ## Sizes
 
 Depending on what data is being retrieved and loaded and how much space it 
@@ -22,27 +49,20 @@ occupies, use a spinner size that matches.
 - If you use the small size with a text label, it can be used in very small containers like a card
 - If you use the small size without a text label, it should only be used in buttons or other containers of equal size
 
-{% example palette="none",
-          alt="Spinner usage examples; from top to bottom, an app, a dialog, a card, and a 
-button showing spinners of various sizes with and without text labels",
-          src="../spinner-examples.png" %}
+<uxdot-example width-adjustment="992px" variant="full" alignment="left" no-border>
+  <img src="{{ '../spinner-examples.png' | url }}" alt="Spinner usage examples; from top to bottom, an app, a dialog, a card, and a 
+button showing spinners of various sizes with and without text labels">
+</uxdot-example>
+
 
 ## Orientation
 
 A spinner is always oriented above the optional text label, if visible.
 
-{% example palette="light",
-          alt=" Two spinners; one showing the correct orientation and the other showing an incorrect orientation",
-          src="../spinner-orientation.png" %}
+<uxdot-example width-adjustment="583px">
+  <img src="{{ '../spinner-orientation.png' | url }}" alt="Two spinners; one showing the correct orientation and the other showing an incorrect orientation">
+</uxdot-example>
 
-## Text label
-
-The text label should be as brief and general as possible in order to give users 
-enough time to read it.
-
-{% example palette="light",
-          alt=" Two spinners; one with a short text label, which is acceptable, and one with a very long text label which is not acceptable",
-          src="../spinner-text-label.png" %}
 
 ## Animation
 
@@ -57,25 +77,26 @@ Do not align a spinner away from the horizontal and vertical center. Keeping it
 centered helps users understand that the whole area is loading instead of one 
 specific part.
 
-{% example palette="wrong",
-          alt=" A spinner not horizontally or vertically centered in a container which is incorrect usage",
-          src="../spinner-best-practice-1.png" %}
+<uxdot-example width-adjustment="360px" danger>
+  <img src="{{ '../spinner-best-practice-1.png' | url }}" alt="A spinner not horizontally or vertically centered in a container which is incorrect usage">
+</uxdot-example>
+
 
 ### Cut off by browser window
 
 A tooltip should not be cut off by the browser window. Change the orientation if 
 it does.
 
-{% example palette="wrong",
-          alt=" A small spinner used in a large container which is incorrect usage",
-          src="../spinner-best-practice-2.png" %}
+<uxdot-example width-adjustment="768px" danger>
+  <img src="{{ '../spinner-best-practice-2.png' | url }}" alt="A small spinner used in a large container which is incorrect usage">
+</uxdot-example>
+
 
 ### Wrong orientation
 
 Do not change the orientation, the spinner is always positioned on top of the 
 text label.
 
-{% example palette="wrong",
-          alt=" Two spinners with different orientations which is incorrect usage",
-          src="../spinner-best-practice-3.png" %}
-
+<uxdot-example width-adjustment="583px" danger>
+  <img src="{{ '../spinner-best-practice-3.png' | url }}" alt="Two spinners with different orientations which is incorrect usage">
+</uxdot-example>

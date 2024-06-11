@@ -85,7 +85,9 @@ class RhSecondaryNavMenu extends RhNavigationSecondaryMenu {
 
   constructor() {
     super();
-    this.#logger.warn('rh-secondary-nav-menu is deprecated. Use rh-navigation-secondary-menu instead.');
+    this.#logger.warn(
+      'rh-secondary-nav-menu is deprecated. Use rh-navigation-secondary-menu instead.'
+    );
   }
 }
 

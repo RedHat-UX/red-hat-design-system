@@ -8,8 +8,8 @@ import { RhCue, getFormattedTime } from './rh-cue.js';
 import './rh-audio-player-scrolling-text-overflow.js';
 import '../rh-tooltip/rh-tooltip.js';
 
-import buttonStyles from './rh-audio-player-button-styles.css';
-import panelStyles from './rh-audio-player-panel-styles.css';
+import buttonStyles from './rh-audio-player-button.css';
+import panelStyles from './rh-audio-player-panel.css';
 import styles from './rh-transcript.css';
 import { state } from 'lit/decorators/state.js';
 
@@ -109,20 +109,30 @@ export class RhTranscript extends LitElement {
       if (!cue.start) {
         const prevCue = this._cues[index - 1];
         const prevEnd = prevCue?.end;
-        if (prevEnd) { cue.start = prevEnd || '0:00'; }
+        if (prevEnd) {
+          cue.start = prevEnd || '0:00';
+        }
       }
       if (!cue.end) {
         const nextCue = this._cues[index + 1];
         const nextStart = nextCue?.start;
         const duration = getFormattedTime(this.#duration);
-        if (!!nextStart || !!duration) { cue.end = nextStart || duration; }
+        if (!!nextStart || !!duration) {
+          cue.end = nextStart || duration;
+        }
       }
       if (currentTime) {
-        const started = !!cue.startTime && Math.round(cue.startTime) < Math.round(currentTime) ? true : false;
-        const ended = !!cue.endTime && Math.round(cue.endTime) < Math.round(currentTime) ? true : false;
+        const started = !!cue.startTime
+          && Math.round(cue.startTime) < Math.round(currentTime) ?
+          true : false;
+        const ended = !!cue.endTime
+          && Math.round(cue.endTime) < Math.round(currentTime) ?
+          true : false;
         const active = started && !ended;
         cue.active = active;
-        if (active) { activeCue = cue; }
+        if (active) {
+          activeCue = cue;
+        }
       }
 
       const cuesContainer = this.shadowRoot?.getElementById('cues');

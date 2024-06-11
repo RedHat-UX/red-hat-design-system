@@ -3,7 +3,7 @@ rh-tile a {
   text-decoration: var(--rh-tile-link-text-decoration, none) !important;
 }
 
-rh-tile:focus-within a, 
+rh-tile:focus-within a,
 rh-tile a:is(:focus, :hover, :active) {
   --rh-tile-link-text-decoration: underline;
 }
@@ -14,9 +14,11 @@ rh-tile a:not([slot="image"], [slot="headline"]) {
 }
 
 rh-tile[aria-disabled="true"] a {
-  color: var(--rh-tile-text-color-secondary, 
-    var(--rh-color-text-secondary-on-light, #4d4d4d)
-  ) !important;
+  color:
+    var(
+        --rh-tile-text-color-secondary,
+        var(--rh-color-text-secondary-on-light, #4d4d4d)
+      ) !important;
 }
 
 rh-tile *:is([slot="image"], [slot="headline"]) a,
@@ -32,6 +34,11 @@ rh-tile a:is([slot="image"], [slot="headline"]):after {
   position: absolute;
   inset: 0;
   display: var(--rh-tile-link-after-display);
+}
+
+rh-tile [slot="headline"] a:after,
+rh-tile a[slot="headline"]:after {
+  z-index: 3;
 }
 
 rh-tile a[slot="image"] > :is(img, svg),

@@ -1,21 +1,27 @@
-import { LitElement, html, type PropertyValueMap } from 'lit';
+import type { RhTileGroup } from './rh-tile-group.js';
+
+import { LitElement, html, type PropertyValues } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+import { state } from 'lit/decorators/state.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
+
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
-import { ComposedEvent } from '@patternfly/pfe-core';
+import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
+import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import '@patternfly/elements/pf-icon/pf-icon.js';
 
-import styles from './rh-tile.css';
-import { state } from 'lit/decorators/state.js';
+import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
-export class TileSelectEvent extends ComposedEvent {
+import styles from './rh-tile.css';
+
+export class TileSelectEvent extends Event {
   declare target: RhTile;
-  constructor() {
-    super('select');
+  constructor(public force?: boolean) {
+    super('select', { bubbles: true, cancelable: true });
   }
 }
 
@@ -45,57 +51,74 @@ export class TileSelectEvent extends ComposedEvent {
 export class RhTile extends LitElement {
   static readonly styles = [styles];
 
-  private static readonly _disabledIcon = html`<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><g id="uuid-0fd9e805-a455-40ef-9171-f2f334832bf2"><rect width="48" height="48" fill="none"/></g><g id="uuid-48f9e284-0601-4fcd-bbe7-8b444234ac6c"><path d="m24,7c-9.37,0-17,7.63-17,17s7.63,17,17,17,17-7.63,17-17S33.37,7,24,7Zm15,17c0,3.52-1.23,6.76-3.27,9.32L14.68,12.27c2.56-2.04,5.8-3.27,9.32-3.27,8.27,0,15,6.73,15,15Zm-30,0c0-4.03,1.61-7.69,4.2-10.38l21.18,21.18c-2.7,2.6-6.35,4.2-10.38,4.2-8.27,0-15-6.73-15-15Z"/></g></svg>`;
+  static readonly formAssociated = true;
+
+  declare shadowRoot: ShadowRoot;
 
   /**
-   * whether tile interaction is disabled
+   * Whether image is full-width (i.e. bleeds into the padding)
    */
-  @property({ reflect: true, attribute: 'disabled', type: Boolean }) disabled = false;
-
-  // TODO(bennyp): https://lit.dev/docs/data/context/#content
-  @state() private disabledGroup = false;
-
-  // TODO(bennyp): https://lit.dev/docs/data/context/#content
-  @state() private radioGroup = false;
+  @property({ type: Boolean }) bleed = false;
 
   /**
-   * whether image is full-width (i.e. bleeds into the padding)
-   */
-  @property({ attribute: 'bleed', type: Boolean }) bleed = false;
-
-  /**
-   * whether headline link text is a desaturated color instead of blue;
+   * Whether headline link text is a desaturated color instead of blue;
    * `true` sets headline color to white on dark tiles or black on light tiles
    */
-  @property({ attribute: 'desaturated', type: Boolean }) desaturated = false;
+  @property({ type: Boolean }) desaturated = false;
 
   /**
-   * reduces tile padding for more compact spaces
+   * Reduces tile padding for more compact spaces
    */
-  @property({ attribute: 'compact', type: Boolean }) compact = false;
+  @property({ type: Boolean }) compact = false;
 
   /**
-   * namespace of icon
+   * Icon (must be a member of the fontawesome "far" icon set)
    */
-  @property({ attribute: 'icon', type: String }) icon = false;
+  @property() icon?: string;
 
   /**
-   * whether tile can be checked like a radio or checkbox:
-   * `false` (default) - tile behaves like a link;
-   * `true` - tile behaves like a checkbox unless it is part of an
-   * `rh-tile-group` with a `radio` type and more than one tile
+   * When checkable, the accessible (visually hidden) label for the form control
+   * If not set, the text content of the tile element will be used instead.
+   * @example Setting an accessible label when there is no text content
+   *          ```html
+   *          <form>
+   *            <rh-tile-group radio>
+   *              <rh-tile name="radio" value="1">Tile 1</rh-tile>
+   *              <rh-tile name="radio" value="2">Tile 2</rh-tile>
+   *              <rh-tile name="radio"
+   *                       value="3"
+   *                       accessible-label="Tile 3">
+   *                <img slot="image"
+   *                     role="presentation"
+   *                     src="tile-3.webp">
+   *              </rh-tile>
+   *            </rh-tile-group>
+   *          </form>
+   *          ```
+   */
+  @property({ attribute: 'accessible-label' }) accessibleLabel?: string;
+
+  /** Form name */
+  @property() name?: string;
+
+  /** Form value */
+  @property() value?: string;
+
+  /**
+   * When true, tile behaves like a checkbox unless it is part of an
+   * `<rh-tile-group radio>`, in which case it behaves like a radio button
    */
   @property({ type: Boolean }) checkable = false;
 
   /**
-   * if tile is checkable, whether it is currently checked
+   * If tile is checkable, whether it is currently checked
    */
-  @property({ attribute: 'checked', type: Boolean }) checked = false;
+  @property({ type: Boolean, reflect: true }) checked = false;
 
   /**
-   * Sets color theme based on parent context
+   * Whether tile interaction is disabled
    */
-  @colorContextConsumer() private on?: ColorTheme;
+  @property({ type: Boolean, reflect: true }) disabled = false;
 
   /**
    * Sets color palette, which affects the element's styles as well as descendants' color theme.
@@ -108,50 +131,63 @@ export class RhTile extends LitElement {
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
-  #internals = new InternalsController(this, { });
+  /**
+   * Sets color theme based on parent context
+   */
+  @colorContextConsumer() private on?: ColorTheme;
 
-  connectedCallback(): void {
-    super.connectedCallback();
-    this.#internals.ariaChecked = this.checkable && this.checked ? 'true' : 'false';
-    this.#internals.role = this.checkable && this.radioGroup ? 'radio' : this.checkable ? 'checkbox' : null;
-    if (this.checkable && !this.radioGroup) {
-      this.setAttribute('tabindex', '0');
-    } else if (!this.radioGroup) {
-      this.removeAttribute('tabindex');
-    }
+  // TODO(bennyp): https://lit.dev/docs/data/context/#content
+  @state() private disabledGroup = false;
+
+  // TODO(bennyp): https://lit.dev/docs/data/context/#content
+  @state() private radioGroup = false;
+
+  #internals = InternalsController.of(this);
+
+  #logger = new Logger(this);
+
+  #slots = new SlotController(this, { slots: ['icon'] });
+
+  get #isCheckable() {
+    return !!this.radioGroup || this.checkable;
+  }
+
+  get #input(): HTMLInputElement | null {
+    return this.shadowRoot.getElementById('input') as HTMLInputElement;
+  }
+
+  constructor() {
+    super();
     this.addEventListener('keydown', this.#onKeydown);
     this.addEventListener('keyup', this.#onKeyup);
     this.addEventListener('click', this.#onClick);
   }
 
-  protected async updated(_changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>) {
-    if (_changedProperties.has('checked') || _changedProperties.has('checkable')) {
-      this.#internals.ariaChecked = this.checkable && this.checked ? 'true' : 'false';
-      await this.updateComplete;
-      if (!this.checked) {
-        this.shadowRoot?.querySelector('form')?.reset();
-      }
-      this.dispatchEvent(new TileSelectEvent());
-      return;
+  /**
+   * Update the internal accessible representation of the element's state
+   * @param changed - the reactive properties which changed this cycle, and their old values
+   */
+  override async willUpdate(changed: PropertyValues<this>) {
+    this.#internals.role = this.radioGroup ? 'radio' : this.checkable ? 'checkbox' : null;
+    this.#internals.ariaChecked = !this.#isCheckable ? null : String(!!this.checked);
+    this.#internals.ariaDisabled = !this.#isCheckable ? null : String(!!this.disabled);
+    this.#internals.ariaLabel =
+      !(this.#isCheckable && this.accessibleLabel) ? null : this.accessibleLabel;
+    if (changed.has('value') || changed.has('checked')) {
+      const formValue = this.#isCheckable && this.checked ? this.value ?? null : null;
+      this.#internals.setFormValue(formValue);
     }
-
-    if (_changedProperties.has('radio') || _changedProperties.has('checkable')) {
-      this.#internals.role = this.checkable && this.radioGroup ? 'radio' : this.checkable ? 'checkbox' : null;
-      if (this.checkable && !this.radioGroup) {
-        this.setAttribute('tabindex', '0');
-      } else if (!this.radioGroup) {
-        this.removeAttribute('tabindex');
-      }
-    }
-
-    if (_changedProperties.has('disabled')) {
-      this.#internals.ariaDisabled = this.disabled ? 'true' : 'false';
+    if (this.checkable && !this.radioGroup) {
+      this.setAttribute('tabindex', '0');
+    } else if (!this.radioGroup) {
+      this.removeAttribute('tabindex');
     }
   }
 
   render() {
     const { bleed, compact, checkable, checked, desaturated, on = '' } = this;
-    const disabled = this.disabledGroup || this.disabled;
+    const disabled = this.disabledGroup || this.disabled || this.#internals.formDisabled;
+    const hasSlottedIcon = this.#slots.hasSlotted('icon');
     return html`
       <div id="outer" class="${classMap({
             bleed,
@@ -162,39 +198,35 @@ export class RhTile extends LitElement {
             disabled,
             [on]: !!on,
           })}">
-        ${this.checkable ? '' : html`<div id="image"><slot name="image"></slot></div>`}
+        <slot id="image"
+              name="image"
+              ?hidden="${this.checkable}"
+        ></slot>
         <div id="inner">
-          ${!this.checkable ?
-            html`
-              <div id="icon">
-                <slot name="icon">
-                  ${!this.icon ? '' : html`<pf-icon icon="${this.icon}" size="md" set="far"></pf-icon>`}
-                </slot>
-              </div>` : ''}
+          <slot id="icon" name="icon" ?hidden="${this.icon === undefined && !hasSlottedIcon}">
+            ${this.icon !== undefined ?
+              html`<pf-icon icon="${ifDefined(this.icon)}" size="md" set="far"></pf-icon>`
+              : html``}
+          </slot>
           <div id="content">
             <div id="header">
-              ${(!this.checkable && !this.compact) ?
-                 html`
-                   <div id="title">
-                    <slot name="title"></slot>
-                   </div>` : ''}
-              <div id="headline"><slot name="headline"></slot></div>
-              ${!this.checkable ? '' : html`
-                <form id="form" aria-hidden="true">
-                    <input 
-                      type="${this.radioGroup ? 'radio' : 'checkbox'}" 
-                      tabindex="-1"
-                      ?checked=${this.checked}
-                      ?disabled=${this.disabled}>
-                </form>
-              `}
+              <slot id="title"
+                    name="title"
+                    ?hidden="${this.checkable || this.compact}"></slot>
+              <slot id="headline" name="headline"></slot>
+              <div id="input-outer" aria-hidden="true" ?hidden="${!this.#isCheckable}" ?inert="${!this.#isCheckable}">
+                <input id="input"
+                       type="${this.radioGroup ? 'radio' : 'checkbox'}"
+                       tabindex="-1"
+                       ?checked="${checked}"
+                       ?disabled="${disabled}"></input>
+              </div>
             </div>
-            <div id="body"><slot></slot></div>
+            <slot id="body"></slot>
             <div id="footer">
-              <div id="footer-text"><slot name="footer"></slot></div>
-              ${!this.checkable && !this.disabled ?
-                html`<pf-icon icon="arrow-right" size="md" set="fas"></pf-icon>` : !this.checkable ?
-                RhTile._disabledIcon : ''}
+              <slot id="footer-text" name="footer"></slot>${!this.checkable && !this.disabled ? html`
+              <pf-icon icon="arrow-right" size="md" set="fas"></pf-icon>` : !this.checkable ? html`
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><g id="uuid-0fd9e805-a455-40ef-9171-f2f334832bf2"><rect width="48" height="48" fill="none"/></g><g id="uuid-48f9e284-0601-4fcd-bbe7-8b444234ac6c"><path d="m24,7c-9.37,0-17,7.63-17,17s7.63,17,17,17,17-7.63,17-17S33.37,7,24,7Zm15,17c0,3.52-1.23,6.76-3.27,9.32L14.68,12.27c2.56-2.04,5.8-3.27,9.32-3.27,8.27,0,15,6.73,15,15Zm-30,0c0-4.03,1.61-7.69,4.2-10.38l21.18,21.18c-2.7,2.6-6.35,4.2-10.38,4.2-8.27,0-15-6.73-15-15Z"/></g></svg>` : ''}
             </div>
           </div>
         </div>
@@ -202,43 +234,94 @@ export class RhTile extends LitElement {
     `;
   }
 
-  disconnectedCallback(): void {
-    this.removeEventListener('keydown', this.#onKeydown);
-    this.removeEventListener('keyup', this.#onKeyup);
-    this.removeEventListener('click', this.#onClick);
-    super.disconnectedCallback();
+  async formDisabledCallback() {
+    await this.updateComplete;
+    this.requestUpdate();
+  }
+
+  async formStateRestoreCallback(state: string, mode: string) {
+    if (this.checkable && mode === 'restore') {
+      const [maybeControlMode, maybeValue] = state.split('/');
+      if (maybeValue ?? maybeControlMode === this.value) {
+        this.#requestSelect(!!this.radioGroup);
+      }
+    }
+  }
+
+  #setValidityFromInput() {
+    if (!this.#input) {
+      this.#logger.warn('await updateComplete before validating');
+    } else {
+      this.#internals.setValidity(
+        this.#input.validity,
+        this.#input.validationMessage,
+      );
+    }
+  }
+
+  setCustomValidity(message: string) {
+    this.#internals.setValidity({}, message);
+  }
+
+  checkValidity() {
+    this.#setValidityFromInput();
+    return this.#internals.checkValidity();
+  }
+
+  reportValidity() {
+    this.#setValidityFromInput();
+    return this.#internals.reportValidity();
   }
 
   /**
    * handles tile click
+   * @param event click event
    */
   #onClick(event: Event) {
-    const { target } = event;
-    if (target === this && this.checkable) {
-      this.checked = !this.checked;
+    if (event.target === this) {
+      this.#requestSelect();
+    }
+  }
+
+  #requestSelect(force?: boolean) {
+    if (this.checkable
+        && !this.disabled
+        && !this.disabledGroup) {
+      if (this.radioGroup) {
+        this.dispatchEvent(new TileSelectEvent(force));
+      } else {
+        this.checked = !this.checked;
+      }
     }
   }
 
   /**
-   * handles keydown and prevents scrolling when spacebar is clicked
-   * @param event {KeyboardEvent}
+   * Prevent scrolling when spacebar is pressed down
+   * @param event keydown
    */
   #onKeydown(event: KeyboardEvent) {
-    const { target, key } = event;
-    if (key === ' ' && target === this && this.checkable) {
-      event.preventDefault();
-      event.stopImmediatePropagation();
+    switch (event.key) {
+      case ' ':
+        if (event.target === this && this.checkable) {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+        }
+        break;
     }
   }
 
   /**
    * handles key up and toggles input
-   * @param event {KeyboardEvent}
+   * @param event keyup
    */
   #onKeyup(event: KeyboardEvent) {
-    const { target, key } = event;
-    if (['Enter', ' '].includes(key) && target === this && this.checkable && !this.disabled && !this.disabledGroup) {
-      this.checked = !this.checked;
+    switch (event.key) {
+      case 'Enter':
+      case ' ':
+        if (event.target === this) {
+          this.#requestSelect();
+        }
+        break;
     }
   }
 }
