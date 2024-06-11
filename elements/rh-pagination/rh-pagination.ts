@@ -10,6 +10,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 import { DirController } from '../../lib/DirController.js';
+import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-pagination.css';
 
@@ -45,6 +46,11 @@ const L2 = html`
 @customElement('rh-pagination')
 export class RhPagination extends LitElement {
   static readonly version = '{{version}}';
+
+  /**
+   * Sets color theme based on parent context
+   */
+  @colorContextConsumer() private on?: ColorTheme;
 
   static readonly styles = [styles];
 
@@ -108,6 +114,7 @@ export class RhPagination extends LitElement {
   }
 
   render() {
+    const { on = '' } = this;
     const { mobile, size } = this.#screen;
     const { dir } = this.#dir;
     const { label, labelFirst, labelPrevious, labelNext, labelLast } = this;
@@ -117,7 +124,7 @@ export class RhPagination extends LitElement {
     const lastHref = this.#currentLink === this.#lastLink ? undefined : this.#lastLink?.href;
     const currentPage = this.#currentPage.toString();
     return html`
-      <div id="container" class=${classMap({ mobile, [size as string]: true, [dir]: true })}>
+      <div id="container" class=${classMap({ mobile, [size as string]: true, [dir]: true, [on]: !!on })}>
         <a id="first" class="stepper" href=${ifDefined(firstHref)} ?inert=${!firstHref} aria-label=${labelFirst}>${L2}</a>
         <a id="prev" class="stepper" href=${ifDefined(prevHref)} ?inert=${!prevHref} aria-label=${labelPrevious}>${L1}</a>
 
