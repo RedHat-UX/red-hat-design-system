@@ -106,7 +106,7 @@
   border: var(--rh-border-width-sm, 1px) solid var(--_color-border);
 }
 
-:is(.lg, .xl) .box {
+#container:is(.lg, .xl) .box {
   border: none;
   margin: 1px;
   display: inline-block;
@@ -116,9 +116,9 @@
   padding-inline: 2px;
 }
 
-:is(.lg, .xl) .box::after {
+:is(.lg, .xl) .box:after {
   display: block;
-  content: '';
+  content: "";
   min-height: var(--rh-length-xs, 4px);
   z-index: 10;
   background-color: var(--_color-20);
@@ -130,9 +130,9 @@
   font-weight: var(--rh-font-weight-code-medium, 500);
 }
 
-:is(.lg, .xl) .box.active::before {
+:is(.lg, .xl) .box.active:before {
   display: block;
-  content: '';
+  content: "";
   inset-inline: -1px;
   inset-block: -2px;
   z-index: -1;
@@ -189,9 +189,9 @@
 }
 
 .f {
-  --_color-10: var(--rh-color-red-10, #fbbea8);
-  --_color-20: var(--rh-color-red-70, #731f00);
-  --_color-30: var(--rh-color-red-70, #731f00);
+  --_color-10: var(--rh-color-red-10, #fce3e3);
+  --_color-20: var(--rh-color-red-70, #5f0000);
+  --_color-30: var(--rh-color-red-70, #5f0000);
 }
 
 /*****************************************************************************
@@ -228,7 +228,6 @@
   --_color-10: var(--rh-color-green-40, #87bb62);
   --_color-25: var(--rh-color-green-10, #e9f7df);
   --_color-30: var(--rh-color-green-20, #d1f1bb);
-
 }
 
 .dark .c {
