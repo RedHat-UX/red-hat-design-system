@@ -42,23 +42,19 @@ export class RhHealthIndex extends LitElement {
     const { on, size } = this;
     const grade = this.grade.toLowerCase();
     return html`
-      <div id="container" role="img" aria-label="Health: grade ${this.grade} out of A through F">
-        <div id="grade" class="grade" ?hidden="${size !== 'md'}">${grade}</div>
-        <div id="boxes"
-            class="${classMap({ [size ?? '']: !!size,
-                                [on ?? '']: !!on })}">${size === 'sm' ? html`
-          <div class="box ${grade}">
-            <div class="grade">${grade}</div>
-          </div>
+      <div id="container"
+           role="img"
+           class="${classMap({ [size ?? '']: !!size, [on ?? '']: !!on })}"
+           aria-label="Health: grade ${grade.toUpperCase()} out of A through F">
+        <div id="grade" ?hidden="${size !== 'md'}">${grade}</div>
+        ${size === 'sm' ? html`
+        <div class="box active ${grade}">${grade}</div>
         ` : [...'abcdef'].map(box => html`
-          <div class="box ${classMap({ [box]: true, active: box === grade })}">
-            ${!(size === 'lg' || size === 'xl') ? '' : html`
-            <div class="grade">${box}</div>
-            <div class="bottom"></div>
-            `}
-          </div>
-        `)}
+        <div class="box ${classMap({ [box]: true, active: box === grade })}">
+          ${!(size === 'lg' || size === 'xl') ? '' : box}
         </div>
+        `)}
+
       </div>
     `;
   }
