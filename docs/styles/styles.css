@@ -303,6 +303,32 @@
       top: -118px; /* masthead (72px) + subnav (56px) - header desktop (246px) */
     }
   }
+
+  /**
+   * Elements > Code > Table customizations
+   **/
+  .code-accordion rh-accordion-panel[expanded]::part(container) {
+    background-color: var(--rh-color-surface-lighter, #f2f2f2);
+  }
+
+  .code-accordion rh-accordion-panel[expanded] rh-table {
+    --rh-table-row-background-hover-color: #fafafa;
+
+    background-color: var(--rh-color-surface-lightest, #ffffff);
+    margin: 0;
+  }
+
+  .code-accordion rh-accordion-panel[expanded] rh-table thead tr {
+    border-block-end: 1px solid var(--rh-color-border-strong-on-light, #151515) !important;
+  }
+
+  .code-accordion rh-accordion-panel[expanded] rh-table tbody tr:last-child {
+    border-block-end: 0 !important;
+  }
+
+  .code-accordion rh-accordion-panel[expanded] rh-table :is(th, td) p {
+    margin-block: 0;
+  }
 }
 
 @layer overrides {
