@@ -19,6 +19,12 @@ importElements:
 
 <script type="module" src="{{ '/assets/javascript/elements/uxdot-copy-button.js' | url }}"></script>
 
+<style>
+  uxdot-copy-permalink ~ .token-category > uxdot-copy-permalink {
+    margin-block-start: var(--rh-space-lg, 16px);
+  }
+</style>
+
 {% category path = cat.path or cat.slug,
             name = cat.path and cat.slug,
             exclude = cat.exclude,
