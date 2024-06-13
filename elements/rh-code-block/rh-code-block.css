@@ -35,25 +35,25 @@
   border-radius: var(--rh-border-radius-default, 3px);
   width: var(--rh-length-3xl, 48px);
   height: var(--rh-length-3xl, 48px);
+}
 
-  &:is(:hover, :focus, :active) {
-    background:
-      var(
-          --_code-action-hover-focus-active-background,
-          var(--rh-color-surface-light, #e0e0e0)
-        );
-  }
+.shadow-fab:is(:hover, :focus, :active) {
+  background:
+    var(
+        --_code-action-hover-focus-active-background,
+        var(--rh-color-surface-light, #e0e0e0)
+      );
+}
 
-  & svg {
-    width: var(--rh-size-icon-02, 24px);
-    height: var(--rh-size-icon-02, 24px);
-    color: var(--_code-action-color, var(--rh-color-text-primary-on-light, #151515));
-  }
+.shadow-fab svg {
+  width: var(--rh-size-icon-02, 24px);
+  height: var(--rh-size-icon-02, 24px);
+  color: var(--_code-action-color, var(--rh-color-text-primary-on-light, #151515));
+}
 
-  .dark & {
-    --_code-action-color: var(--rh-color-text-primary-on-dark, #ffffff);
-    --_code-action-hover-focus-active-background: var(--rh-color-surface-dark, #383838);
-  }
+.dark .shadow-fab {
+  --_code-action-color: var(--rh-color-text-primary-on-dark, #ffffff);
+  --_code-action-hover-focus-active-background: var(--rh-color-surface-dark, #383838);
 }
 
 #container,
@@ -163,10 +163,10 @@
   place-self: start center;
   height: 100%;
   position: relative;
+}
 
-  & rh-tooltip {
-    display: block;
-  }
+#actions rh-tooltip {
+  display: block;
 }
 
 #expand {
@@ -185,14 +185,14 @@
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
   font-weight: var(--rh-font-weight-body-text-regular, 400);
   line-height: var(--rh-line-height-body-text, 1.5);
+}
 
-  & svg {
-    width: 11px;
-    height: 7px;
-    rotate: var(--_expand-toggle-rotate, 180deg);
-    transform: rotate 0.2s ease-in-out;
-    color: var(--_expand-toggle-icon-color, var(--rh-color-icon-secondary-on-light, #151515));
-  }
+#expand svg {
+  width: 11px;
+  height: 7px;
+  rotate: var(--_expand-toggle-rotate, 180deg);
+  transform: rotate 0.2s ease-in-out;
+  color: var(--_expand-toggle-icon-color, var(--rh-color-icon-secondary-on-light, #151515));
 }
 
 #container.compact {

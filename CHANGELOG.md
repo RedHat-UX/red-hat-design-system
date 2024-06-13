@@ -1,5 +1,18 @@
 # @rhds/elements
 
+## 1.4.2
+
+### Patch Changes
+
+- 69e2cd9: `<rh-tabs>`: added support for rtl language overflow scroll buttons
+- 1b20464: React: add generated react wrappers to NPM package
+- 971214d: `<rh-site-status>`: automatically fetch status for the current domain
+- 835a008: `<rh-card>`: hide header, body, or footer regions when they have no content
+- 727c799: `<rh-card>`: applied heading font to card headings
+- b443fe2: `<rh-code-block>`: corrected 'show more' button styles
+- 8365fac: `<rh-tag>`: ensure correct font-family is used
+- 2f1324e: `<rh-card>`: removes landmark semantics from card, simplifying page navigation for screen reader users
+
 ## 1.4.1
 
 ### Patch Changes

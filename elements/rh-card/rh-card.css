@@ -5,10 +5,6 @@ article {
   flex-direction: column;
 }
 
-.empty {
-  display: none;
-}
-
 ::slotted(*) {
   line-height: inherit !important;
 }
@@ -51,6 +47,12 @@ article {
 #body,
 #footer {
   margin-inline: var(--rh-space-xl, 24px);
+}
+
+#header.empty,
+#footer.empty,
+#body.empty {
+  display: none;
 }
 
 #header ::slotted(:is(h1, h2, h3, h4, h5, h6)),
