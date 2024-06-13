@@ -1,6 +1,10 @@
 ---
 title: QA and Testing
-tags: accessibility
+sidenavTitle: QA and Testing
+permalink: /accessibility/qa-testing/index.html
+tags: 
+ - accessibility
+order: 10
 importElements:
   - rh-blockquote
 ---
@@ -17,12 +21,14 @@ importElements:
 
 Automated tools can help you quickly identify many potential high-impact accessibility issues. Among such tools are free browser extensions like WebAIM’s WAVE, Deque’s axe DevTools, and IBM's Equal Access Checker.
 
+
 ### WebAIM WAVE
 
 WAVE is an accessibility checker that’s particularly useful for visual users who prefer to see issues and alerts in context: kind of an augmented reality for the browser window. It may return some false positive results on color contrast, but such issues should always be manually confirmed, anyway. (And sometimes, what looks to be a false positive is a legitimate error, once you start digging into the CSS!)
 
 Getting started with WAVE is simple. Just go to a page, click the extension button, and it annotates your screen with icons, based on topic (e.g., headings, color contrast issues, etc.). But it’s more than just a visual tool. Clicking on annotations often gives you the option to view relevant in-page code and WCAG criteria.
 The [WAVE browser extension](https://wave.webaim.org/) is available for Chrome, Firefox, and Edge.
+
 
 ### Deque axe DevTools
 
@@ -31,6 +37,7 @@ Tucked away in your browser’s DevTools panel after installation, Deque’s axe
 Different WCAG versions (2.0 through 2.2) and conformance levels (A through AAA) can be specified in the extension’s settings. (At Red Hat, we target WCAG 2.1 AA.) And you can toggle best practices results on and off, depending on whether you’re interested solely in strict WCAG conformance. You can read the full list of rules being tested at the [axe-core GitHub repository](https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md).
 
 The [axe DevTools extension](https://www.deque.com/axe/devtools/) is available for Chrome, Firefox, and Edge. The free version allows you to test entire pages. The paid Pro version adds the capability to specify page sections for testing, provides additional export options, and also includes some guided walkthroughs for further testing.
+
 
 ### IBM Equal Access Checker
 
@@ -41,6 +48,7 @@ Running Equal Access Checker in conjunction with a tool like axe DevTools can be
 In addition to WCAG versions 2.0, 2.1, and 2.2, Equal Access Checker can run scans based on IBM’s internal accessibility target. Currently, this target includes all of WCAG 2.1 AA, plus some additional U.S. (Section 508) and European (EN 301 549) standards not covered by WCAG. IBM has posted the [Equal Access testing ruleset](https://www.ibm.com/able/requirements/checker-rule-sets) at their accessibility site.
 
 [Equal Access Checker](https://www.ibm.com/able/toolkit/tools/#develop) can be installed as a browser extension in Chrome, Firefox, and Edge. It’s also available as CI/CD Node packages.
+
 
 ## Testing
 
@@ -57,6 +65,7 @@ Designers can evaluate their designs for things like color contrast, honest affo
 
 Keep in mind that testing isn’t easy. With many accessibility checks being judgment calls (what constitutes good alt text or clear form instructions?), even [experts disagree on accessibility](https://www.w3.org/TR/accessibility-conformance-challenges/#themes-from-research). Seek perfection, but accept progress along the way. Fix obvious errors, and use your best judgment with other potential issues—asking other subject matter experts as you go, if you have access to them.
 
+
 ### Testing technologies
 
 When manually testing web pages for accessibility, the following four tools are invaluable:
@@ -65,12 +74,14 @@ When manually testing web pages for accessibility, the following four tools are 
 - A color contrast checker
 - The browser inspector
 
+
 #### Keyboard testing
 
 If you do nothing else to test your projects, try navigating the entire experience with your keyboard, via the following keys:
 - *<kbd>Tab</kbd> and <kbd>shift+tab</kbd>* to move forward and backward between focusable items (e.g., links, form controls, and scrollable windows).
 - *Arrow keys (<kbd>↑ → ↓ ←</kbd>)* to scroll windows, to operate form controls and tab interfaces, and to navigate through groups of focusable items (like sections of an accordion or options in a menu).
 - *<kbd>Enter</kbd> and/or <kbd>Space</kbd>* to follow links, activate buttons, select list items, and trigger other interactive items, as appropriate.
+
 
 #### Screen readers
 
@@ -87,6 +98,7 @@ If you’re feeling ambitious and want to combine testing tasks, perform your ke
 
 Deque offers a collection of [screen reader shortcuts](https://dequeuniversity.com/screenreaders/) for all of the above listed technologies.
 
+
 #### Color contrast checkers
 
 A [plurality of web accessibility issues](https://webaim.org/projects/million/#contrast) stem from insufficient color contrast. But unless you’re a math genius who can calculate the [relative luminance of RGB colors](https://www.w3.org/TR/WCAG21/#dfn-relative-luminance) in your head, contrast is difficult to test without the help of tools.
@@ -94,6 +106,7 @@ A [plurality of web accessibility issues](https://webaim.org/projects/million/#c
 TPGi’s [Colour Contrast Analyzer](https://www.tpgi.com/color-contrast-checker/) is a free Mac and Windows application that helps you measure contrast between colors via an eyedropper tool (which lets you test the color of any pixel on your screen) or by typing in color values.
 
 If you’re either not on a device where you can install TPGi’s tool or just want a quick gut check, WebAIM has an [online contrast checker](https://webaim.org/resources/contrastchecker/) that allows you to type in foreground and background color values.
+
 
 #### Browser inspector
 
