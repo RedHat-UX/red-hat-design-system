@@ -24,7 +24,6 @@ function isButton(element: Element | null): element is HTMLButtonElement {
 
 /**
  * A call to action is a styled link that entices users to make a selection.
- *
  * @summary     Directs users to other pages or displays extra content
  * @slot
  *              We expect an anchor tag, `<a>` with an `href`, to be the first child inside `rh-cta` element. Less preferred but
@@ -160,7 +159,7 @@ export class RhCta extends LitElement {
   #logger = new Logger(this);
 
   #getAttr(name: string) {
-    return isServer ? undefined : this.getAttribute(name) ?? undefined
+    return isServer ? undefined : this.getAttribute(name) ?? undefined;
   }
 
   override render() {
@@ -187,12 +186,11 @@ export class RhCta extends LitElement {
             @slotchange=${this.firstUpdated}>${variant === 'brick' && icon ? html`
         <pf-icon size="md"
                  icon=${icon}
-                 set=${iconSet ?? 'far'}></pf-icon>` : ''}${href ? html`
+                 set="${iconSet ?? 'far'}"></pf-icon>` : ''}${href ? html`
         <a href=${href}
-           download=${ifDefined(this.#getAttr('download'))}
-           target=${ifDefined(this.#getAttr('target'))}><!--
-       --><slot></slot>${follower}</a>` : html`
-        <slot></slot>${follower}`}
+           download="${ifDefined(this.#getAttr('download'))}"
+           target="${ifDefined(this.#getAttr('target'))}"><slot></slot>${follower}</a>`
+   : html`<slot></slot>${follower}`}
       </span>
     `;
   }
