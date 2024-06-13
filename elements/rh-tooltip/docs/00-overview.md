@@ -1,45 +1,44 @@
 ## Overview
+
 {{ tagName | getElementDescription }}
 
-{% example palette="light",
-          class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);width:auto",
-          alt=" A black tooltip on top of a gray disabled button",
-          src="./tooltip-sample-element.png" %}
+<uxdot-example width-adjustment="230px">
+  <img src="{{ './tooltip-sample-element.png' | url }}" alt="A black tooltip on top of a gray disabled button">
+</uxdot-example>
 
 {% repoStatusList %}
 
 ## Sample element
-  <p>
-    <rh-tooltip position="top">
-      <rh-button>Top Tooltip</rh-button>
-      <span slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-        labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>
-    </rh-tooltip>
-    <rh-tooltip position="left">
-      <rh-button>Left Tooltip</rh-button>
-      <span slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-        labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>
-    </rh-tooltip>
-    <rh-tooltip position="right">
-      <rh-button>Right Tooltip</rh-button>
-      <span slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-        labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>
-    </rh-tooltip>
-    <rh-tooltip position="bottom">
-      <rh-button>Bottom Tooltip</rh-button>
-      <span slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-        labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>
-    </rh-tooltip>
-  </p>
+
+<rh-tooltip position="top">
+  <rh-button>Top Tooltip</rh-button>
+  <span slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+    labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>
+</rh-tooltip>
+<rh-tooltip position="left">
+  <rh-button>Left Tooltip</rh-button>
+  <span slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+    labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>
+</rh-tooltip>
+<rh-tooltip position="right">
+  <rh-button>Right Tooltip</rh-button>
+  <span slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+    labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>
+</rh-tooltip>
+<rh-tooltip position="bottom">
+  <rh-button>Bottom Tooltip</rh-button>
+  <span slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+    labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>
+</rh-tooltip>
 
 
 ## Demos
-  View a live version of this component and see how it can be customized.
-  {% playground tagName=tagName %}{% endplayground %}
-  {% cta href="./demo/", target="_blank" %}
-    View the `<rh-tooltip>` demo in a new tab
-  {% endcta %}
+View a live version of this component and see how it can be customized.
+
+{% playground tagName=tagName %}{% endplayground %}
+
+<rh-cta><a href="{{ './demo/' | url }}">Full screen demo</a></rh-cta>
+
 
 ## When to use 
 - When users need help making a decision
