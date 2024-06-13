@@ -318,12 +318,12 @@
     margin: 0;
   }
 
-  .code-accordion rh-accordion-panel[expanded] rh-table thead tr {
-    border-block-end: 1px solid var(--rh-color-border-strong-on-light, #151515) !important;
-  }
-
   .code-accordion rh-accordion-panel[expanded] rh-table tbody tr:last-child {
     border-block-end: 0 !important;
+  }
+
+  .code-accordion rh-accordion-panel[expanded] rh-table th {
+    font-size: var(--rh-font-size-body-text-sm, 0.875rem);
   }
 
   .code-accordion rh-accordion-panel[expanded] rh-table :is(th, td) p {
