@@ -1,0 +1,168 @@
+@layer page {
+  article {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "content";
+    row-gap: var(--rh-space-4xl, 64px);
+  }
+
+  article.has-toc {
+    grid-template-areas:
+      "header"
+      "aside"
+      "content";
+  }
+
+  uxdot-header {
+    grid-area: header;
+  }
+
+  .container {
+    grid-area: content;
+    container-type: inline-size;
+    container-name: container;
+  }
+
+  .container h2,
+  uxdot-copy-permalink h2 {
+    font-size: var(--rh-font-size-heading-md, 1.75rem);  /* RHDS h4 heading font size */
+  }
+
+  .container h3,
+  uxdot-copy-permalink h3 {
+    font-size: var(--rh-font-size-heading-sm, 1.5rem);  /* RHDS h5 heading font size */
+  }
+
+  .container h4,
+  uxdot-copy-permalink h4 {
+    font-size: var(--rh-font-size-heading-xs, 1.25rem);  /* RHDS h6 heading font size */
+  }
+
+  .container h5,
+  uxdot-copy-permalink h5 {
+    font-size: 1.125rem;  /* Not a RHDS token */
+  }
+
+  .container h6,
+  uxdot-copy-permalink h6 {
+    font-size: 1rem;  /* Not a RHDS token */
+  }
+
+  aside {
+    grid-area: aside;
+    padding-inline: var(--rh-space-lg, 16px);
+    position: relative;
+  }
+
+  /* when a section is used */
+  .container > section {
+    margin-block-start: var(--rh-space-6xl, 96px);
+  }
+
+  .container > section:first-of-type {
+    margin-block-start: 0;
+  }
+
+  /*
+  when in a article container
+  where a h2 or uxdot-copy-permalink is used
+  as a section break (no landmark)
+  */
+  .container > :where(uxdot-copy-permalink.h2, h2),
+  /* not when the h2 is a child of a section */
+  .container > :not(section, uxdot-copy-permalink) > :where(uxdot-copy-permalink.h2, h2),
+  /* if a section landmark is used */
+  .container > section > :where(uxdot-copy-permalink.h2, h2) {
+    margin-block-start: var(--rh-space-6xl, 96px);
+  }
+
+  /* TODO: get rid of inline style/link/script tags inside of container
+  if a section, h2 or uxdot-copy-permalink is the first child of an article container */
+  .container :where(uxdot-copy-permalink.h2, h2, section):first-child,
+  .container :where(style, link, script):first-child + :where(uxdot-copy-permalink.h2, h2, section),
+  .container :where(style, link, script):first-child + :where(
+      style, link) + :where(uxdot-copy-permalink.h2, h2, section),
+  .container :where(style, link, script):first-child + :where(
+        style, link, script) + :where(style, link, script) + :where(
+          uxdot-copy-permalink.h2, h2, section) {
+    margin-block-start: 0;
+  }
+
+  /*
+  when in a article container
+  where a h3 or uxdot-copy-permalink is used
+  as a section break (no landmark)
+  */
+  .container > :where(uxdot-copy-permalink.h3, h3),
+  /* not when the h2 is a child of a section */
+  .container > :not(section, uxdot-copy-permalink) > :where(uxdot-copy-permalink.h3, h3),
+  /* if a section landmark is used */
+  .container > section > :where(uxdot-copy-permalink.h3, h3){
+    margin-block-start: var(--rh-space-4xl, 64px);
+  }
+
+  /*
+  when in a article container
+  where a h4 or uxdot-copy-permalink is used
+  as a section break (no landmark)
+  */
+  .container > :where(uxdot-copy-permalink.h4, h4),
+  /* not when the h2 is a child of a section */
+  .container > :not(section, uxdot-copy-permalink) > :where(uxdot-copy-permalink.h4, h4),
+  /* if a section landmark is used */
+  .container > section > :where(uxdot-copy-permalink.h4, h4) {
+    margin-block-start: var(--rh-space-3xl, 48px);
+  }
+
+  @container main (min-width: 576px) {
+    aside {
+      padding-inline: var(--rh-space-2xl, 32px);
+    }
+  }
+
+  @container main (min-width: 768px) {
+    aside {
+      padding-inline: var(--rh-space-3xl, 48px);
+    }
+  }
+
+  @container main (min-width: 992px) {
+    article {
+      row-gap: var(--rh-space-6xl, 96px);
+    }
+
+    aside {
+      padding-inline: var(--rh-space-6xl, 96px);
+    }
+  }
+
+  /* this follows the @media queries so that it can override the aside */
+  @container main (min-width: 1440px) {
+    article {
+      grid-template-columns:
+        minmax(
+            var(--container-min-width),
+            var(--container-max-width)
+          )
+        minmax(14rem, 1fr);
+      grid-template-areas:
+        "header header"
+        "content content";
+    }
+
+    article.has-toc {
+      grid-template-areas:
+        "header header"
+        "content aside";
+    }
+
+    aside {
+      padding-inline-start: 0;
+      padding-inline-end: var(--rh-space-2xl, 32px);
+      max-width: 320px;
+    }
+  }
+}

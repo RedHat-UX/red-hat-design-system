@@ -1,0 +1,49 @@
+@font-face {
+  font-family: RedHatDisplay;
+  src: url("../assets/fonts/RedHatDisplay/RedHatDisplay-Regular.woff");
+
+  /* Modern Browsers */
+  font-style: normal;
+  font-weight: 300;
+  text-rendering: optimizelegibility;
+}
+
+@font-face {
+  font-family: RedHatDisplay;
+  src: url("../assets/fonts/RedHatDisplay/RedHatDisplay-Medium.woff");
+
+  /* Modern Browsers */
+  font-style: normal;
+  font-weight: 400;
+  text-rendering: optimizelegibility;
+}
+
+@font-face {
+  font-family: RedHatDisplay;
+  src: url("../assets/fonts/RedHatDisplay/RedHatDisplay-Bold.woff");
+
+  /* Modern Browsers */
+  font-style: normal;
+  font-weight: 700;
+  text-rendering: optimizelegibility;
+}
+
+@font-face {
+  font-family: RedHatText;
+  src: url("../assets/fonts/RedHatText/RedHatText-Regular.woff");
+
+  /* Modern Browsers */
+  font-style: normal;
+  font-weight: 400;
+  text-rendering: optimizelegibility;
+}
+
+@font-face {
+  font-family: RedHatText;
+  src: url("../assets/fonts/RedHatText/RedHatText-Medium.woff");
+
+  /* Modern Browsers */
+  font-style: normal;
+  font-weight: 700;
+  text-rendering: optimizelegibility;
+}
