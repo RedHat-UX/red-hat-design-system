@@ -11,7 +11,7 @@ export declare class TabExpandEvent extends Event {
  * @slot icon - Can contain an `<svg>` or `<pf-icon>`
  * @slot - Tab title text
  *
- * @csspart button - `<button>` element
+ * @csspart button - element that contains the interactive part of a tab
  * @csspart icon - icon `<span>` element
  * @csspart text - tile text `<span>` element
  *
@@ -26,13 +26,6 @@ export declare class TabExpandEvent extends Event {
  */
 export declare class RhTab extends LitElement {
     #private;
-    static shadowRootOptions: {
-        delegatesFocus: boolean;
-        mode: ShadowRootMode;
-        slotAssignment?: SlotAssignmentMode | undefined;
-        customElements?: CustomElementRegistry | undefined;
-        registry?: CustomElementRegistry | undefined;
-    };
     static readonly version = "{{version}}";
     static readonly styles: CSSStyleSheet[];
     /** `active` should be observed, and true when the tab is selected */
@@ -49,7 +42,6 @@ export declare class RhTab extends LitElement {
     connectedCallback(): void;
     render(): import("lit").TemplateResult<1>;
     updated(changed: PropertyValues<this>): void;
-    focus(): void;
 }
 declare global {
     interface HTMLElementTagNameMap {

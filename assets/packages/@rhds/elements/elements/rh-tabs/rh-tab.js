@@ -8,11 +8,12 @@ import { query } from 'lit/decorators/query.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { consume } from '@lit/context';
 import { observed } from '@patternfly/pfe-core/decorators.js';
-import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 import { context } from './context.js';
 import { css } from "lit";
-const styles = css `:host{display:flex;flex:none}:host([vertical]) [part=text]{max-width:100%;overflow-wrap:break-word}[hidden]{display:none!important}slot[name=icon]{display:block}button{margin:0;font-family:inherit;font-size:100%;border:0;position:relative;display:flex;flex:1;text-decoration:none;cursor:pointer;align-items:center;background-color:inherit;color:var(--_button-text-color);padding-block-start:var(--rh-tabs-link-padding-block-start,var(--rh-space-lg,16px));padding-inline-start:var(--rh-tabs-link-padding-inline-start,var(--rh-space-2xl,32px));padding-block-end:var(--rh-tabs-link-padding-block-end,var(--rh-space-lg,16px));padding-inline-end:var(--rh-tabs-link-padding-inline-end,var(--rh-space-2xl,32px));max-width:var(--_tab-max-width,200px);max-height:100%}button:after,button:before{position:absolute;inset:0;content:"";border-style:solid;padding:0;margin:0;background-color:transparent}button:before{pointer-events:none;border:0 solid transparent}button:focus-visible{outline:var(--rh-border-width-md,2px) solid var(--_button-focus-outline-color);outline-offset:-8px;border-radius:10px}button:after{background-color:transparent;border-inline:0 solid transparent;border-block-start:var(--rh-border-width-lg,3px) solid transparent;border-block-end:var(--rh-border-width-sm,1px) solid transparent}:host([fill]) button{flex-basis:100%;justify-content:center}:host(:disabled) button{pointer-events:none}:host([aria-disabled=true]) button{cursor:default}#container{display:flex;width:100%;--_button-text-color:var(\n        --rh-tabs-link-color,\n        var(--rh-color-text-secondary-on-light, #4d4d4d)\n      );--_button-focus-outline-color:var(--rh-color-border-interactive-on-light, #0066cc)}#container.dark{--_button-text-color:var(\n        --rh-tabs-link-color,\n        var(--rh-color-text-secondary-on-dark, #c7c7c7)\n      );--_button-focus-outline-color:var(--rh-color-border-interactive-on-dark, #92c5f9)}#container.active,:host([active]) #container{--_button-text-color:var(\n        --rh-tabs-link-color,\n        var(--rh-color-text-primary-on-light, #151515)\n      );--_active-tab-border-color:var(\n        --rh-tabs-active-border-color,\n        var(--rh-color-accent-brand-on-light, #ee0000)\n      )}#container.active.dark,:host([active]) #container.dark{--_button-text-color:var(\n        --rh-tabs-link-color,\n        var(--rh-color-text-primary-on-dark, #ffffff)\n      );--_active-tab-border-color:var(\n        --rh-tabs-active-border-color,\n        var(--rh-color-accent-brand-on-dark, #ee0000)\n      )}#container.box,:host([box]) #container{--_inactive-tab-background-color:var(--rh-color-surface-lighter, #f2f2f2)}#container.dark.box,:host([box]) #container.dark{--_inactive-tab-background-color:var(--rh-color-surface-dark, #383838)}#container.active{--_active-tab-border-color:var(\n        --rh-tabs-active-border-color,\n        var(--rh-color-border-interactive-on-light, #0066cc)\n      )}#container.active.dark{--_active-tab-border-color:var(\n        --rh-tabs-active-border-color,\n        var(--rh-color-border-interactive-on-dark, #92c5f9)\n      )}.vertical button,:host([vertical]) button{text-align:start}[part=icon]{margin-inline-end:var(--rh-space-md,8px)}#container.active:not(.box) button:after,:host([active]:not([box])) button:after{border-block-end:var(--rh-border-width-lg,3px) solid var(--_active-tab-border-color)}#container.active.box button:before,:host([active][box]) button:before{border-inline-color:var(--_border-color);border-inline-start-width:var(--rh-border-width-sm,1px)}#container.active.box button:after,:host([active][box]) button:after{border-block-start:var(--rh-border-width-lg,3px) solid var(--_active-tab-border-color);border-block-end:var(--rh-border-width-sm,1px) solid var(--_context-background-color,var(--rh-color-white,#ffffff))}#container.box:not(.active),:host([box]:not([active])) #container{background-color:var(--_inactive-tab-background-color)}#container.box:not(.active) button:before,:host([box]:not([active])) button:before{border-inline-color:var(--_border-color);border-inline-start-width:var(--rh-border-width-sm,1px)}#container.box:not(.active) button:after,:host([box]:not([active])) button:after{border-block-end-color:var(--_border-color)}#container.box.active.first button:before,:host([box][active]) button:before{border-inline-start-color:var(--_border-color);border-inline-start-width:var(--rh-border-width-sm,1px)}#container.first.box:not(.active) button:before,:host(.first[box]:not([active])) button:before{border-inline-color:transparent}#container.last.box.active button:before,:host(.last[box][active]) button:before{border-inline-end-color:var(--_border-color);border-inline-end-width:var(--rh-border-width-sm,1px)}@media screen and (min-width:768px){#container.vertical:not(.box) button,:host([vertical]:not([box])) button{padding-block:var(--rh-tabs-link-padding-block-start,var(--rh-space-md,8px)) var(--rh-tabs-link-padding-block-start,var(--rh-space-md,8px))}#container.vertical.active button:after,:host([vertical][active]) button:after{border-block-end:transparent}#container.box:not(.vertical,.active) button:before,:host([box]:not([vertical],[active])) button:before{border-inline-color:var(--_border-color);border-inline-start-width:var(--rh-border-width-sm,1px)}#container.box.vertical:not(.active) button:before,:host([box][vertical]:not([active])) button:before{border-inline-start-color:transparent;border-inline-end:var(--rh-border-width-sm,1px) solid var(--_border-color);border-block-start:var(--rh-border-width-sm,1px) solid var(--_border-color)}#container.box:not(.active,.vertical) button:after,:host([box]:not([active],[vertical])) button:after{border-block-end-color:var(--_border-color)}#container.active.box.vertical button:after,:host([active][box][vertical]) button:after{border-block-start:var(--rh-border-width-sm,1px) solid var(--_border-color)}#container.box.vertical:not(.active) button:after,:host([box][vertical]:not([active])) button:after{border-block-end-color:transparent}#container.vertical.box.first,:host(.first[vertical][box]){margin-block-start:var(--rh-space-2xl,32px)}#container.vertical.box.last,:host(.last[vertical][box]){margin-block-end:var(--rh-space-2xl,32px)}#container.first.vertical:not(.box),:host(.first[vertical]:not([box])){margin-block-start:var(--rh-space-xl,24px)}#container.last.vertical:not(.box),:host(.last[vertical]:not([box])){margin-block-end:var(--rh-space-xl,24px)}#container.active.box:not(.vertical) button:after,:host([active][box]:not([vertical])) button:after{border-block-start:var(--rh-border-width-lg,3px) solid var(--_active-tab-border-color);border-block-end:var(--rh-border-width-sm,1px) solid var(--_context-background-color,var(--rh-color-white,#ffffff))}#container.first.box.vertical.active button:after,:host(.first[box][vertical][active]) button:after{border-block-start-color:var(--_border-color);border-block-start-width:var(--rh-border-width-sm,1px)}#container.box.vertical.active button:before,:host([box][vertical][active]) button:before{border-inline-start:var(--rh-border-width-lg,3px) solid var(--_active-tab-border-color);border-inline-end:var(--rh-border-width-sm,1px) solid var(--_context-background-color,var(--rh-color-white,#ffffff))}#container.vertical.active:not(.box) button:before,:host([vertical][active]:not([box])) button:before{border-inline-start:var(--rh-border-width-lg,3px) solid var(--_active-tab-border-color)}#container.first.vertical.box:not(.active) button:before,:host(.first[vertical][box]:not([active])) button:before{border-block-start-color:transparent}#container.first.box.active:not(.vertical) button:before,:host(.first[box][active]:not([vertical])) button:before{border-inline-start-color:var(--_border-color);border-inline-start-width:var(--rh-border-width-sm,1px)}#container.last.box.active:not(.vertical) button:before,:host(.last[box][active]:not([vertical])) button:before{border-inline-end-color:var(--_border-color);border-inline-end-width:var(--rh-border-width-sm,1px)}#container.last.box.vertical.active button:before,:host(.last[box][vertical][active]) button:before{border-block-end-color:var(--_border-color);border-block-end-width:var(--rh-border-width-sm,1px)}#container.last.box.vertical:not(.active) button:after,:host(.last[box][vertical]:not([active])) button:after{border-block-end:none}}`;
+const styles = css `:host{display:flex;flex:none;--_active-tab-border:var(--rh-border-width-lg, 3px) solid var(\n        --_active-tab-border-color,\n        var(\n          --rh-tabs-active-border-color,\n          var(--rh-color-accent-brand-on-light, #ee0000)\n        )\n      );--_active-tab-border-open:var(--rh-border-width-sm, 1px) solid var(--_context-background-color, var(--rh-color-white, #ffffff))}:host([vertical]) [part=text]{max-width:100%;overflow-wrap:break-word}[hidden]{display:none!important}slot[name=icon]{display:block}#button{--_button-text-color:var(\n        --rh-tabs-link-color,\n        var(--rh-color-text-secondary-on-light, #4d4d4d)\n      );--_button-focus-outline-color:var(--rh-color-border-interactive-on-light, #0066cc);margin:0;font-family:inherit;font-size:100%;border:0;position:relative;display:flex;flex:1;text-decoration:none;cursor:pointer;align-items:center;background-color:inherit;color:var(--_button-text-color);width:100%;max-width:var(--_tab-max-width,200px);max-height:100%;padding-block-start:var(--rh-tabs-link-padding-block-start,var(--rh-space-lg,16px));padding-inline-start:var(--rh-tabs-link-padding-inline-start,var(--rh-space-2xl,32px));padding-block-end:var(--rh-tabs-link-padding-block-end,var(--rh-space-lg,16px));padding-inline-end:var(--rh-tabs-link-padding-inline-end,var(--rh-space-2xl,32px))}#button:after,#button:before{position:absolute;inset:0;content:"";border-style:solid;padding:0;margin:0;background-color:transparent}#button:before{pointer-events:none;border:0 solid transparent}#button:focus-visible{outline:var(--rh-border-width-md,2px) solid var(--_button-focus-outline-color);outline-offset:-8px;border-radius:10px}#button:after{background-color:transparent;border-inline:0 solid transparent;border-block-start:var(--rh-border-width-lg,3px) solid transparent;border-block-end:var(--rh-border-width-sm,1px) solid transparent}:host([fill]) #button{flex-basis:100%;justify-content:center}:host(:disabled) #button{pointer-events:none}:host([aria-disabled=true]) #button{cursor:default}:host(:focus-visible){outline:0}:host(:is(:focus,:focus-visible)) #button{outline:1px auto var(--rh-color-interactive-blue-darker,#0066cc);outline-offset:calc(var(--rh-space-md,8px) * -1)}#button.dark{--_button-text-color:var(\n        --rh-tabs-link-color,\n        var(--rh-color-text-secondary-on-dark, #c7c7c7)\n      );--_button-focus-outline-color:var(--rh-color-border-interactive-on-dark, #92c5f9)}#button.active{--_button-text-color:var(\n        --rh-tabs-link-color,\n        var(--rh-color-text-primary-on-light, #151515)\n      )}#button.active.dark{--_button-text-color:var(\n        --rh-tabs-link-color,\n        var(--rh-color-text-primary-on-dark, #ffffff)\n      )}#button.box{--_inactive-tab-background-color:var(--rh-color-surface-lighter, #f2f2f2)}#button.dark.box{--_inactive-tab-background-color:var(--rh-color-surface-dark, #383838)}#button.vertical{text-align:start}[part=icon]{margin-inline-end:var(--rh-space-md,8px)}#button.active:not(.box,.vertical):after{border-block-end:var(--_active-tab-border)}#button.active.box:before{border-inline-color:var(--_border-color);border-inline-start-width:var(--rh-border-width-sm,1px)}#button.active.box:after{border-block-start:var(--_active-tab-border);border-block-end:var(--_active-tab-border-open)}#button.box:not(.active){background-color:var(--_inactive-tab-background-color)}#button.box:not(.active):before{border-inline-color:var(--_border-color);border-inline-start-width:var(--rh-border-width-sm,1px)}#button.box:not(.active):after{border-block-end-color:var(--_border-color)}#button.box.active.first:before{border-inline-start-color:var(--_border-color);border-inline-start-width:var(--rh-border-width-sm,1px)}#button.first.box:not(.active):before{border-inline-color:transparent}#button.last.box.active:before{border-inline-end-color:var(--_border-color);border-inline-end-width:var(--rh-border-width-sm,1px)}@media screen and (min-width:768px){#button.vertical:not(.box){padding-block:var(--rh-tabs-link-padding-block-start,var(--rh-space-md,8px)) var(--rh-tabs-link-padding-block-start,var(--rh-space-md,8px))}#button.vertical.active:after{border-block-end:transparent}#button.box:not(.vertical,.active):before{border-inline-color:var(--_border-color);border-inline-start-width:var(--rh-border-width-sm,1px)}#button.box.vertical:not(.active):before{border-inline-start-color:transparent;border-inline-end:var(--rh-border-width-sm,1px) solid var(--_border-color);border-block-start:var(--rh-border-width-sm,1px) solid var(--_border-color)}#button.box:not(.active,.vertical):after{border-block-end-color:var(--_border-color)}#button.active.box.vertical:after{border-block-start:var(--rh-border-width-sm,1px) solid var(--_border-color)}#button.box.vertical:not(.active):after{border-block-end-color:transparent}#button.vertical.box.first{margin-block-start:var(--rh-space-2xl,32px)}#button.vertical.box.last{margin-block-end:var(--rh-space-2xl,32px)}#button.first.vertical:not(.box){margin-block-start:var(--rh-space-xl,24px)}#button.last.vertical:not(.box){margin-block-end:var(--rh-space-xl,24px)}#button.active.box:not(.vertical):after{border-block-start:var(--_active-tab-border);border-block-end:var(--_active-tab-border-open)}#button.first.box.vertical.active:after{border-block-start-color:var(--_border-color);border-block-start-width:var(--rh-border-width-sm,1px)}#button.box.vertical.active:before{border-inline-start:var(--_active-tab-border);border-inline-end:var(--_active-tab-border-open)}#button.vertical.active:not(.box):before{border-inline-start:var(--_active-tab-border)}#button.first.vertical.box:not(.active):before{border-block-start-color:transparent}#button.first.box.active:not(.vertical):before{border-inline-start-color:var(--_border-color);border-inline-start-width:var(--rh-border-width-sm,1px)}#button.last.box.active:not(.vertical):before{border-inline-end-color:var(--_border-color);border-inline-end-width:var(--rh-border-width-sm,1px)}#button.last.box.vertical.active:before{border-block-end-color:var(--_border-color);border-block-end-width:var(--rh-border-width-sm,1px)}#button.last.box.vertical:not(.active):after{border-block-end:none}}`;
 export class TabExpandEvent extends Event {
     constructor(active, tab) {
         super('expand', { bubbles: true, cancelable: true });
@@ -26,7 +27,7 @@ export class TabExpandEvent extends Event {
  * @slot icon - Can contain an `<svg>` or `<pf-icon>`
  * @slot - Tab title text
  *
- * @csspart button - `<button>` element
+ * @csspart button - element that contains the interactive part of a tab
  * @csspart icon - icon `<span>` element
  * @csspart text - tile text `<span>` element
  *
@@ -47,13 +48,12 @@ let RhTab = class RhTab extends LitElement {
         this.active = false;
         /** `disabled` should be observed, and true when the tab is disabled */
         this.disabled = false;
-        _RhTab_internals.set(this, this.attachInternals());
+        _RhTab_internals.set(this, InternalsController.of(this, { role: 'tab' }));
     }
     connectedCallback() {
         super.connectedCallback();
         this.id || (this.id = getRandomId(this.localName));
         this.addEventListener('click', __classPrivateFieldGet(this, _RhTab_instances, "m", _RhTab_onClick));
-        __classPrivateFieldGet(this, _RhTab_internals, "f").role = 'tab';
     }
     render() {
         const { active, on = '' } = this;
@@ -61,27 +61,28 @@ let RhTab = class RhTab extends LitElement {
         const first = firstTab === this;
         const last = lastTab === this;
         return html `
-      <div id="container" class="${classMap({ active, box, vertical, first, last, [on]: !!on })}">
-        <button part="button" ?disabled="${this.disabled}">
-          <slot name="icon"
-                part="icon"
-                ?hidden="${!this.icons.length}"
-                @slotchange="${() => this.requestUpdate()}"></slot>
-          <slot part="text"></slot>
-        </button>
+      <div id="button" 
+          part="button"
+          ?disabled="${this.disabled}"
+          class="${classMap({ active, box, vertical, first, last, [on]: !!on })}">
+        <slot name="icon"
+              part="icon"
+              ?hidden="${!this.icons.length}"
+              @slotchange="${() => this.requestUpdate()}"></slot>
+        <slot part="text"></slot>
       </div>
     `;
     }
     updated(changed) {
-        if (changed.has('active') && this.active && !changed.get('active')) {
-            __classPrivateFieldGet(this, _RhTab_instances, "m", _RhTab_activate).call(this);
+        if (changed.has('active')) {
+            __classPrivateFieldGet(this, _RhTab_internals, "f").ariaSelected = String(!!this.active);
+            if (this.active && !changed.get('active')) {
+                __classPrivateFieldGet(this, _RhTab_instances, "m", _RhTab_activate).call(this);
+            }
         }
         if (changed.has('disabled')) {
             __classPrivateFieldGet(this, _RhTab_instances, "m", _RhTab_disabledChanged).call(this);
         }
-    }
-    focus() {
-        this.button.focus();
     }
 };
 _RhTab_internals = new WeakMap();
@@ -98,7 +99,6 @@ _RhTab_activate = function _RhTab_activate() {
 _RhTab_disabledChanged = function _RhTab_disabledChanged() {
     __classPrivateFieldGet(this, _RhTab_internals, "f").ariaDisabled = String(!!this.disabled);
 };
-RhTab.shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
 RhTab.version = '{{version}}';
 RhTab.styles = [styles];
 __decorate([
@@ -120,7 +120,7 @@ __decorate([
     queryAssignedElements({ slot: 'icon', flatten: true })
 ], RhTab.prototype, "icons", void 0);
 __decorate([
-    query('button')
+    query('#button')
 ], RhTab.prototype, "button", void 0);
 RhTab = __decorate([
     customElement('rh-tab')
