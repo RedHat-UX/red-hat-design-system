@@ -1,7 +1,9 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, type PropertyValues } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
+
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
@@ -9,13 +11,13 @@ import styles from './rh-health-index.css';
 
 /**
  * Health index displays a health grade (A–F) for a particular item or package.
- *
  * @summary     Displays a health grade for a particular item or package
- *
  */
 @customElement('rh-health-index')
 export class RhHealthIndex extends LitElement {
   static readonly styles = [styles];
+
+  private static grades = 'ABCDEF';
 
   /**
    * Sets the size of the health index
@@ -27,34 +29,43 @@ export class RhHealthIndex extends LitElement {
    * Sets the health grade
    * Defaults to `A`
    */
-  @property({
-    reflect: true,
-    attribute: 'grade',
-  })
-    grade: 'A' | 'B' | 'C' | 'D' | 'E' | 'F' = 'A';
+  @property({ reflect: true, attribute: 'grade' }) grade: 'A' | 'B' | 'C' | 'D' | 'E' | 'F' = 'A';
 
   /**
    * Sets color theme based on parent context
    */
   @colorContextConsumer() private on?: ColorTheme;
 
-  render() {
+  #internals = InternalsController.of(this, {
+    role: 'meter',
+    ariaValueMin: '1',
+    ariaValueMax: '5',
+  });
+
+  protected override willUpdate(changed: PropertyValues<this>): void {
+    this.grade = this.grade.toUpperCase() as this['grade'];
+    if (changed.has('grade')) {
+      const { grade } = this;
+      this.#internals.ariaValueNow = (RhHealthIndex.grades.indexOf(grade) + 1).toString();
+      this.#internals.ariaValueText = grade;
+      // TODO: I18nController
+      this.#internals.ariaLabel = `Health: grade ${grade} out of A through F`;
+    }
+  }
+
+  override render() {
     const { on, size } = this;
+    const grades = [...RhHealthIndex.grades].map(x => x.toLowerCase());
     const grade = this.grade.toLowerCase();
     return html`
       <div id="container"
-           role="img"
-           class="${classMap({ [size ?? '']: !!size, [on ?? '']: !!on })}"
-           aria-label="Health: grade ${grade.toUpperCase()} out of A through F">
-        <div id="grade" ?hidden="${size !== 'md'}">${grade}</div>
-        ${size === 'sm' ? html`
-        <div class="box active ${grade}">${grade}</div>
-        ` : [...'abcdef'].map(box => html`
-        <div class="box ${classMap({ [box]: true, active: box === grade })}">
-          ${!(size === 'lg' || size === 'xl') ? '' : box}
-        </div>
-        `)}
-
+           aria-hidden="true"
+           class="${classMap({ [size ?? '']: !!size, [on ?? '']: !!on })}">
+        <div id="grade" ?hidden="${size !== 'md'}">${grade}</div>${size === 'sm' ? html`
+        <div class="box active ${grade}">${grade}</div>` : grades.map(letter => html`
+        <div class="box ${classMap({ [letter]: true, active: letter === grade })}">
+          ${!(size === 'lg' || size === 'xl') ? '' : letter}
+        </div>`)}
       </div>
     `;
   }
