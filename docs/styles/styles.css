@@ -312,7 +312,7 @@
   }
 
   .code-accordion rh-accordion-panel[expanded] rh-table {
-    --rh-table-row-background-hover-color: #fafafa;
+    --rh-table-row-background-hover-color: #f8f8f8;
 
     background-color: var(--rh-color-surface-lightest, #ffffff);
     margin: 0;
