@@ -2,7 +2,7 @@ import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { html, LitElement } from 'lit';
+import { html, isServer, LitElement } from 'lit';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 import { colorContextProvider } from '../../lib/context/color/provider.js';
 
@@ -59,30 +59,27 @@ export class RhCard extends LitElement {
 
   @property({ reflect: true }) variant?: 'inline-promo';
 
-  @property({ reflect: true, type: Boolean }) reverse = false;
-
-  @property({ reflect: true, type: Boolean }) 'one-col' = false;
-
-  @property({ reflect: true, type: Boolean }) 'full-width' = false;
-
   #slots = new SlotController(this, ...RhCard.slots);
 
   override render() {
     const { on = '', colorPalette = '' } = this;
     const hasImage = this.#slots.hasSlotted('image');
     const hasHeader = this.#slots.hasSlotted('header');
+    const hasBody = !isServer && this.querySelector(':not([slot])');
+    const hasFooter = this.#slots.hasSlotted('footer');
+    const hasSlotClasses = Object.fromEntries(RhCard.slots
+        .filter(slot => slot !== null)
+        .map(slot => [
+          `has-${slot}`,
+          this.#slots.hasSlotted(slot),
+        ]));
     return html`
      <div id="container"
           part="container"
           class="${classMap({
             [on]: !!on,
             [colorPalette]: !!colorPalette,
-            ...Object.fromEntries(RhCard.slots
-                .filter(slot => slot !== null)
-                .map(slot => [
-                  `has-${slot}`,
-                  this.#slots.hasSlotted(slot),
-                ])),
+            ...hasSlotClasses,
           })}">
         <div id="header"
              part="header"
@@ -96,12 +93,12 @@ export class RhCard extends LitElement {
         </div>
         <div id="body"
              part="body"
-             class="${classMap({ empty: !this.querySelector(':not([slot])') })}">
+             class="${classMap({ empty: !hasBody })}">
           <slot></slot>
         </div>
         <div id="footer"
              part="footer"
-             class="${classMap({ empty: !this.#slots.hasSlotted('footer') })}">
+             class="${classMap({ empty: !hasFooter })}">
           <slot name="footer"></slot>
         </div>
       </div>
