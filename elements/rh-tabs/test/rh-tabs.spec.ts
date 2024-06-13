@@ -2,6 +2,8 @@ import type { ReactiveElement } from 'lit';
 
 import { expect, html, nextFrame, aTimeout } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
+import { a11ySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
+
 import { setViewport, sendKeys } from '@web/test-runner-commands';
 
 import { RhTabs, RhTab } from '@rhds/elements/rh-tabs/rh-tabs.js';
@@ -106,6 +108,11 @@ describe('<rh-tabs>', function() {
         expect(document.activeElement).to.be.an.instanceof(RhTab);
       });
 
+      it('should specify the selected tab to assistive technology', async function() {
+        const snapshot = await a11ySnapshot();
+        expect(snapshot.children?.find(x => x.selected)?.name).to.equal(secondItem.textContent);
+      });
+
       it('should change focus when keyboard navigation is used', function() {
         expect(document.activeElement).to.not.equal(initialActiveElement);
       });
@@ -132,6 +139,11 @@ describe('<rh-tabs>', function() {
 
       it('should focus the last rh-tab item', function() {
         expect(document.activeElement).to.equal(lastItem);
+      });
+
+      it('should specify the selected tab to assistive technology', async function() {
+        const snapshot = await a11ySnapshot();
+        expect(snapshot.children?.find(x => x.selected)?.name).to.equal(lastItem.textContent);
       });
     });
   });
