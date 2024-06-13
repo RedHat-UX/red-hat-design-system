@@ -17,6 +17,8 @@ import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { RhTab, TabExpandEvent } from './rh-tab.js';
 import { RhTabPanel } from './rh-tab-panel.js';
 
+import { DirController } from '../../lib/DirController.js';
+
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
@@ -147,6 +149,8 @@ export class RhTabs extends LitElement {
     getItems: () => this.tabs ?? [],
   });
 
+  #dir = new DirController(this);
+
   get tabs() {
     return this.#tabs.tabs;
   }
@@ -192,14 +196,15 @@ export class RhTabs extends LitElement {
 
   override render() {
     const { on = '' } = this;
+    const rtl = this.#dir.dir === 'rtl';
     return html`
-      <div id="rhds-container" class="${classMap({ [on]: !!on })}">
+      <div id="rhds-container" class="${classMap({ [on]: !!on, rtl })}">
         <div part="container" class="${classMap({ overflow: this.#overflow.showScrollButtons })}">
           <div part="tabs-container">${!this.#overflow.showScrollButtons ? '' : html`
             <button id="previousTab" tabindex="-1"
                     aria-label="${this.getAttribute('label-scroll-left') ?? 'Scroll left'}"
                     ?disabled="${!this.#overflow.overflowLeft}"
-                    @click="${() => this.#overflow.scrollLeft()}">
+                    @click="${() => !rtl ? this.#overflow.scrollLeft() : this.#overflow.scrollRight()}">
               <pf-icon icon="angle-left" set="fas" loading="eager"></pf-icon>
             </button>`}
             <div style="display: contents;" role="tablist">
@@ -211,7 +216,7 @@ export class RhTabs extends LitElement {
                     tabindex="-1"
                     aria-label="${this.getAttribute('label-scroll-right') ?? 'Scroll right'}"
                     ?disabled="${!this.#overflow.overflowRight}"
-                    @click="${() => this.#overflow.scrollRight()}">
+                    @click="${() => !rtl ? this.#overflow.scrollRight() : this.#overflow.scrollLeft()}">
               <pf-icon icon="angle-right" set="fas" loading="eager"></pf-icon>
             </button>`}
           </div>
