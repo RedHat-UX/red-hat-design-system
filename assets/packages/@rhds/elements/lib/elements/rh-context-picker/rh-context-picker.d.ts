@@ -11,18 +11,16 @@ export declare class RhContextPicker extends LitElement {
     static formAssociated: boolean;
     static readonly styles: CSSStyleSheet[];
     static readonly palettes: Map<ColorPalette, Color>;
-    private static offsets;
     private static paletteNames;
     shadowRoot: ShadowRoot;
     /** ID of context element to toggle (same root) */
     target?: string;
     value: ColorPalette;
-    private range?;
     private on?;
     allow: ColorPalette[];
-    willUpdate(): void;
     render(): import("lit").TemplateResult<1>;
     formStateRestoreCallback(state: string): void;
     firstUpdated(): void;
+    focus(): void;
     sync(): void;
 }
