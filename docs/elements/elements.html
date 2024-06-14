@@ -22,6 +22,9 @@ eleventyComputed:
 
 ---
 <link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
+{% if doc.pageTitle == 'Code' %}
+  <link rel="stylesheet" href="{{ '/styles/pages/code.css' | url }}">
+{% endif %}
 {% if doc.slug == 'audio-player' %}
   <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-audio-player/rh-audio-player-lightdom.css">
   <noscript>

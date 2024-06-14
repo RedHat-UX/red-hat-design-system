@@ -112,7 +112,7 @@ class Renderers {
       ${Array.from({ length }, () => '#').join('')} ${component}
       ${this.kwargs.hideDescription ?? false ? `` : html`<p>${description}</p>`}
 
-      <rh-accordion box class="code-accordion">
+      <rh-accordion box>
         <rh-accordion-header id="${component}-slots" expanded>Slots
           <rh-badge>${slotCount}</rh-badge>
           ${deprecatedSlotCount > 0 ? html`<rh-badge state="moderate">${deprecatedSlotCount}</rh-badge>` : ``}
