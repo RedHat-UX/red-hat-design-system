@@ -1,5 +1,11 @@
 # @rhds/elements
 
+## 1.4.3
+
+### Patch Changes
+
+- 8eebce6: `<rh-tabs>`: improved focus accessibility for keyboard navigation and assistive technology users.'
+
 ## 1.4.2
 
 ### Patch Changes
