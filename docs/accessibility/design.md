@@ -1,13 +1,17 @@
 ---
 title: Design
-tags: accessibility
+tags: 
+ - accessibility
+order: 40
 ---
 
 ## Overview
 
-{% alert title="Note" %}
-This section covers design accessibility. Designers should also be familiar with accessibility [fundamentals](../), [content](../content), and [development](../development).
-{% endalert %}
+<rh-alert state="info">
+  <h3 slot="header">Note</h3>
+  <p>This section covers design accessibility. Designers should also be familiar with accessibility <a href="../">fundamentals</a>, <a href="../content">content</a>, and <a href="../development">development</a>.</p>
+</rh-alert>
+
 
 ## Layout and hierarchy
 
@@ -18,6 +22,7 @@ The contents of a page should be arranged in a meaningful order. Here are some t
 - Heading levels should help users distinguish between different sections and understand how content is grouped hierarchically.
 - Items should be placed in a clear, logical visual order, so that developers can easily match this order in the DOM, allowing users of all sorts (with and without assistive technologies) to have similar experiences when engaging with content.
 
+
 ### Repeated content
 
 Elements that repeat across a site (e.g., navigation and site search) should appear in consistent locations and with consistent ordering. That said, it’s okay if some elements within repeating sections (e.g., individual items in a navigation menu) change and shift by necessity, depending on context.
@@ -26,27 +31,31 @@ For repeating sections that come before a page’s main content (e.g., a navigat
 
 If one element has the same function as another, both should be labeled the same way. For example, a call to action for the Contact page should have consistent text labels.
 
+
 ## Color
 
 ### Using color alone
 
 When considering methods of communication or feedback, do not use color alone. Ensure there is a text label, icon, underline, or other visual cue to communicate meaning. Consider how the following elements would look to a color blind user.
 
-{% example palette="light",
-          alt="Dialog with a red-orange Leave button, a form field with a red bottom border, and progress steps without labels",
-          src="/assets/color/using-color-alone.png" %}
+<uxdot-example width-adjustment="872px" no-border>
+  <img src="{{ '/assets/color/using-color-alone.png' | url }}" alt="Dialog with a red-orange Leave button, a form field with a red bottom border, and progress steps without labels">
+</uxdot-example>
+
 
 ### Contrast
 
 We strive to adhere to [WCAG 2.1 AA contrast ratio standards](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum). Our text, links, interface elements, etc. are designed with sufficient contrast when used on top of surfaces, image backgrounds with low contrast, and near adjacent colors.
 
+
 #### Text
 
 Small foreground text (non-bold text under 24px and bold text under 19px) must have a contrast ratio of 4.5:1 and large foreground text (non-bold text of at least 24px and bold text of at least 19px) must have a contrast ratio of 3:1.
 
-{% example palette="light",
-          alt="Contrast ratios for dark gray sections with black text that uses different weights and fonts",
-          src="/assets/color/contrast-text.png" %}
+<uxdot-example width-adjustment="872px" no-border>
+  <img src="{{ '/assets/color/contrast-text.png' | url }}" alt="Contrast ratios for dark gray sections with black text that uses different weights and fonts">
+</uxdot-example>
+
 
 #### Links
 
@@ -54,9 +63,10 @@ If color is the only way to distinguish between links and surrounding text (e.g.
 
 Non-color cues should be used to signify when a link receives hover and focus (e.g., an underline).
 
-{% example palette="light",
-          alt="Contrast ratio of a blue link next to black text and an example of a link's darker blue, underlined hover state",
-          src="/assets/color/contrast-links.png" %}
+<uxdot-example width-adjustment="692px" no-border>
+  <img src="{{ '/assets/color/contrast-links.png' | url }}" alt="Contrast ratio of a blue link next to black text and an example of a link's darker blue, underlined hover state">
+</uxdot-example>
+
 
 #### Graphical objects and UI components
 
@@ -64,17 +74,20 @@ Graphical objects and UI components (including those within charts and infograph
 
 Non-color cues must be also used to signify when an object or component receives focus (e.g., a border).
 
+
 #### Layering
 
 It is acceptable to layer colors with the same hue, saturation, or lightness on white, black, or gray. However, layering them near or on top of each other might cause vibration. If you need to layer colors, follow [WCAG 2.1 AA](https://www.w3.org/WAI/WCAG21/Understanding/) requirements.
 
-{% example palette="light",
-          alt="Red CTA against a white background, blue button against a light gray background, and a light red-orange button against a black background",
-          src="/assets/color/contrast-layering.png" %}
+<uxdot-example width-adjustment="872px" no-border>
+  <img src="{{ '/assets/color/contrast-layering.png' | url }}" alt="Red CTA against a white background, blue button against a light gray background, and a light red-orange button against a black background">
+</uxdot-example>
+
 
 #### Further help
 
 TPGi’s [Colour Contrast Analyzer](https://www.tpgi.com/color-contrast-checker/) for Windows and Mac computers can help you identify colors and gauge their contrast from one another.
+
 
 ## Imagery
 
@@ -82,9 +95,11 @@ TPGi’s [Colour Contrast Analyzer](https://www.tpgi.com/color-contrast-checker/
 
 Avoid using images of text, except for logotypes or text in decorative images. Many effects can be applied to text via CSS, and designers can work with developers or engineers to determine the best approach. In addition to making reading more difficult for screen reader users, images of text usually can’t be resized or manipulated by assistive tech well.
 
+
 ### Charts and diagrams
 
 Any charts, diagrams, or complex images should have a description placed immediately before or after. Explaining these types of visuals is typically too long for alt text. So, this accompanying text can be a caption or integrated into the adjacent body copy.
+
 
 ### Decorative images
 
@@ -95,6 +110,7 @@ An image used as a link or button is always meaningful (i.e., not decorative) an
 - The image is accompanied by sufficient descriptive text that is also within the containing link or button, *or*
 - The containing link or button has an aria-label or aria-labelledby value applied to it.
 
+
 ## Motion and audiovisual content
 
 ### Animations
@@ -104,6 +120,7 @@ The following guidelines should be followed to make animated content accessible 
 - Any animations lasting five seconds or more require mechanisms for stopping or hiding it. 
 - Any text that’s animated or that automatically changes needs a way to be viewed statically.
 - Any flashing or blinking content should do so fewer than three times per second.
+
 
 ### Videos
 
@@ -116,11 +133,13 @@ These guidelines apply whether or not the video autoplays.
 
 Most video players have caption controls built in, and designers will not typically be responsible for creating captions. However, designers will have to show text or audio descriptions for any embedded videos if essential information isn’t also conveyed through audio.
 
+
 ### Audio
 
 Similarly to video, an audio file that lasts longer than three seconds must have controls for muting or pausing. An audio-only file should also come with a way to view a transcript.
 
 Essential information should not be conveyed by sound alone. For example, if a timer dings at the end of a timed test, provide a corresponding visual indication.
+
 
 ## Interactions
 
@@ -130,11 +149,13 @@ Links should appear clickable and focusable. And, when possible, links and butto
 
 If a link opens in a new window, this will have to be indicated both visually and non-visually. Text is preferred, but an icon (with text alternative for assistive tech users) can be used to announce that a new window will open.
 
+
 ### Target size
 
 A click or touch target, like a button or link, should be large enough for all users to activate easily on all devices. The minimum size is 24 × 24 pixels for level AA compliance and 44 × 44 pixels for level AAA. Proper target sizes ensure that a user with dexterity impairments can still select a link with a mouse, that a user in a moving vehicle can tap the correct button in an app, etc.
 
 If a target must be smaller than 24 pixels in either direction, it must be spaced from any other targets as if it were centered within its own 24 pixel diameter (or larger) circle.
+
 
 ### Keyboard interactions
 
@@ -144,15 +165,19 @@ Though much of the work of incorporating such functionality happens in the devel
 
 Keyboard and assistive tech users must also have the ability to perform path- and gesture-based tasks typically done via mouse or touchscreen. If users are expected to interact with an image gallery by swiping, the designer should include buttons to allow all users to cycle through these images. And clicking and holding down a slider marker with a mouse pointer shouldn’t be the only means of increasing/decreasing values for that element. (e.g., You could add up/down arrows to the interface, or a developer could ensure that arrow keys update the value when the slider has focus.)
 
+
 ### Focus
 
 The act of focusing on an element should not cause the element to change the interface’s context. For example, if a user places keyboard focus on a link, that action shouldn’t automatically send them to a new page.
 
-{% alert title="Note" %}
-A change in a page’s content does not always mean that the context has changed. Learn more about what constitutes a [change in context](https://www.w3.org/WAI/WCAG21/Understanding/on-focus#dfn-changes-of-context).
-{% endalert %}
+<rh-alert state="info">
+  <h2 slot="header">Note</h2>
+  <p>A change in a page’s content does not always mean that the context has changed. Learn more about what constitutes a <a href="https://www.w3.org/WAI/WCAG21/Understanding/on-focus#dfn-changes-of-context">change in context</a>.</p>
+</rh-alert>
+
 
 If keyboard focus appears to be trapped in a subsection, instructions for exiting this section via keyboard will need to be available. For example, if pressing the tab key does not allow the user to exit an embedded video or learning module on a page, another method (e.g., pressing the <kbd>escape</kbd> key or some key combo) must exist, and instructions must be presented to all users.
+
 
 ## Typography
 
@@ -160,9 +185,11 @@ If keyboard focus appears to be trapped in a subsection, instructions for exitin
 
 Line heights for body copy should be at least 1.5× regular single-spacing. And paragraph spacing should be 1.5× of that line height. In other words, if your line height is 1.5, your paragraph spacing should be at least 2.25× (or 1.5×1.5) the original single-spaced height. (W3C rounds to 2.5× in their [paragraph-spacing recommendation](https://www.w3.org/WAI/WCAG21/Understanding/visual-presentation.html).) Such spacing helps people who find it difficult to read when lines are too close together.
 
+
 ### Character counts
 
 Long lines of text can be difficult to read. Character counts for one line of text should not exceed 80 characters (40 if content is in Chinese, Japanese, or Korean). This can be done by setting a maximum width for content areas.
+
 
 ### Alignment
 

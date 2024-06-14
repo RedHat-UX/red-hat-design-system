@@ -41,8 +41,16 @@ export default pfeDevServerConfig({
   middleware: [
     /** redirect requests for /assets/ css to /docs/assets/ */
     function(ctx, next) {
-      if (ctx.path.startsWith('/assets/')) {
+      if (ctx.path.startsWith('/styles/')) {
         ctx.redirect(`/docs${ctx.path}`);
+      } else {
+        return next();
+      }
+    },
+    /** redirect requests for /(lib|elements)/*.js to *.ts */
+    function(ctx, next) {
+      if (!ctx.path.includes('node_modules') && ctx.path.match(/.*\/(lib|elements)\/.*\.js/)) {
+        ctx.redirect(ctx.path.replace('.js', '.ts'));
       } else {
         return next();
       }
