@@ -312,7 +312,7 @@
 
   /* TODO: Document this bug table overflows vertically causing a scrollbar when it shouldn't */
   rh-table {
-    overflow: unset;
+    overflow-y: unset;
   }
 
   /* Compact tile + Uxdot Example reduce overall spacing */
