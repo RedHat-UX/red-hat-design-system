@@ -16,7 +16,7 @@ The Inline Promo card variant allows users to easily display text and optionally
   </svg>
 
   <h2>Featured: left aligned with image</h2>
-  <p>You can customize the <code>#body</code> by using the <code>::part</code> selector. Using this technique, you can have padding on the top, bottom, left, right, or none at all.</p>
+  <p>This is the default Inline Promo card. If you want, you can customize the shadow DOM by using the <code>::part</code> selector. Using this technique, you can have padding on any side, or none at all.</p>
   <rh-cta>
     <a href="#">Call to action</a>
   </rh-cta>
