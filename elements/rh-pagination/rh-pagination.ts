@@ -129,7 +129,30 @@ export class RhPagination extends LitElement {
     const nextHref = this.#nextLink?.href;
     const lastHref = this.#currentLink === this.#lastLink ? undefined : this.#lastLink?.href;
     const currentPage = this.#currentPage.toString();
-    const numericContent = html`
+
+    return html`
+      <div id="container" class=${classMap({ mobile, [size as string]: true, [dir]: true, [on]: !!on })}>
+        <a id="first" class="stepper" href=${ifDefined(firstHref)} ?inert=${!firstHref} aria-label=${labelFirst}>${L2}</a>
+        <a id="prev" class="stepper" href=${ifDefined(prevHref)} ?inert=${!prevHref} aria-label=${labelPrevious}>${L1}</a>
+
+        ${!this.variant?.includes('compact') ?
+          html`
+            <nav ?hidden=${mobile} ?inert=${mobile} aria-label=${label}>
+              <slot></slot>
+            </nav>
+          `
+          : html`
+            ${this.#numericContent(currentPage, lastHref)}
+          `}
+        <a id="next" class="stepper" href=${ifDefined(nextHref)} ?inert=${!nextHref} aria-label=${labelNext}>${L1}</a>
+        <a id="last" class="stepper" href=${ifDefined(lastHref)} ?inert=${!lastHref} aria-label=${labelLast}>${L2}</a>
+        ${!this.variant?.includes('compact') ? html`${this.#numericContent(currentPage, lastHref)}` : html``}
+      </div>
+    `;
+  }
+
+  #numericContent(currentPage: string, lastHref?: string, ) {
+    return html`
       <div id="numeric" part="numeric">
         <span id="go-to-page" class="${this.variant?.includes('compact') ? 'visually-hidden' : ''}">
           <slot name="go-to-page">
@@ -145,28 +168,6 @@ export class RhPagination extends LitElement {
             .value=${currentPage}>
         <slot name="out-of">of</slot>
         <a href=${ifDefined(lastHref)}>${this.#links?.length}</a>
-      </div>
-    `;
-
-    return html`
-      <div id="container" class=${classMap({ mobile, [size as string]: true, [dir]: true, [on]: !!on })}>
-        <a id="first" class="stepper" href=${ifDefined(firstHref)} ?inert=${!firstHref} aria-label=${labelFirst}>${L2}</a>
-        <a id="prev" class="stepper" href=${ifDefined(prevHref)} ?inert=${!prevHref} aria-label=${labelPrevious}>${L1}</a>
-
-        ${!this.variant?.includes('compact') ?
-          html`
-            <nav ?hidden=${mobile} ?inert=${mobile} aria-label=${label}>
-              <slot></slot>
-            </nav>
-          `
-          : html``}
-
-        ${this.variant?.includes('compact') ? html`${numericContent}` : ''}
-
-        <a id="next" class="stepper" href=${ifDefined(nextHref)} ?inert=${!nextHref} aria-label=${labelNext}>${L1}</a>
-        <a id="last" class="stepper" href=${ifDefined(lastHref)} ?inert=${!lastHref} aria-label=${labelLast}>${L2}</a>
-
-        ${!this.variant?.includes('compact') ? html`${numericContent}` : ''}
       </div>
     `;
   }
