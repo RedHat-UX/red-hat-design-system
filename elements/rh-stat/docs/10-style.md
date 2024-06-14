@@ -1,44 +1,61 @@
-
 ## Style
+
 A statistic is a stacked combination of elements used to visualize a data point. 
 By default, a statistic includes data text and body text **at a minimum**. 
 Optional elements include an icon, title text, and a call to action for 
 additional emphasis or context.
 
 
-
 ### Anatomy
-{% example palette="light",
-           alt="Anatomy of a statistic with annotations; number 1 is pointing to an optional icon, number 2 is pointing to optional title text, number 3 is pointing to data text, number 4 is pointing to body text, and number 5 is pointing to an optional call to action",
-           src="../stat-anatomy.png" %}
 
-1. Optional icon
-2. Optional title text
-3. Data text
-4. Body text
-5. Optional call to action
-{.example-notes}
+<figure>
+  <uxdot-example width-adjustment="388px">
+    <img src="{{ '../stat-anatomy.png' | url }}" alt="Anatomy of a statistic with annotations; number 1 is pointing to an optional icon, number 2 is pointing to optional title text, number 3 is pointing to data text, number 4 is pointing to body text, and number 5 is pointing to an optional call to action">
+  </uxdot-example>
+  <figcaption>
+    <ol>
+      <li>Icon</li>
+      <li>Title text</li>
+      <li>Data text</li>
+      <li>Body text</li>
+      <li>Call to action</li>
+    </ol>
+  </figcaption>
+</figure>
+
 
 ## Sizes
 There are two available sizes and the only difference is the size of some 
 elements.
 
-{% example palette="light",
-           alt="Default size and Large size statistics both with icons and body text; text under the default size says ‘Default size’ and text under the large size says ‘Large size’",
-           src="../stat-sizes.png" %}
+<uxdot-example width-adjustment="772px">
+  <img src="{{ '../stat-sizes.png' | url }}" alt="Default size and Large size statistics both with icons and body text; text under the default size says ‘Default size’ and text under the large size says ‘Large size’">
+</uxdot-example>
 
-{% tokensTable %}
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Size">Size</th>
+        <th scope="col" data-label="Element">Element</th>
+        <th scope="col" data-label="Current value">Current value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Size">Default</td>
+        <td data-label="Icon size">40px</td>
+        <td data-label="Data text size">36px<br>2.25rem</td>
+      </tr>
+      <tr>
+        <td data-label="Large">Large</td>
+        <td data-label="Icon size">64px</td>
+        <td data-label="Data text size">48px<br>3.0rem</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
 
-| Size    | Element        | Current Value |
-| ------- | -------------- | ------------- |
-| Default | Icon size      | 40px          |
-| Default | Data text size | 36px  2.25rem |
-| Large   | Icon size      | 64px          |
-| Large   | Data text size | 48px  3.0rem  |
-
-{.full-width}
-
-{% endtokensTable %}
 
 ## Theme
 
@@ -47,21 +64,23 @@ and data text for light theme are red whereas elements and text for dark theme
 (not including the call to action) are white to meet accessibility contrast 
 requirements.
 
+
 ### Light theme
 
-{% example
-   palette="light",
-   alt="Light theme statistic with a red icon, red data text, and black body text",
-   src="../stat-theme-light.png" %}
+<uxdot-example width-adjustment="346px">
+  <img src="{{ '../stat-theme-light.png' | url }}" alt="Light theme statistic with a red icon, red data text, and black body text">
+</uxdot-example>
+
 
 ### Dark theme
 
-{% example
-   palette="darkest",
-   alt="Dark theme statistic with a white icon and white text styles to meet accessibility contrast requirements",
-   src="../stat-theme-dark.png" %}
+<uxdot-example color-palette="darkest" width-adjustment="346px">
+  <img src="{{ '../stat-theme-dark.png' | url }}" alt="Dark theme statistic with a white icon and white text styles to meet accessibility contrast requirements">
+</uxdot-example>
+
 
 ## Configuration
+
 ### Container
 
 By default, all elements in a statistic, no matter how many, are all stacked and 
@@ -69,43 +88,51 @@ vertically aligned. In some situations, it is acceptable to align elements to
 the left, for example if grouped statistics are used in several rows or if 
 surrounding content is all left aligned.
 
-{% example
-  palette="light",
-  alt="Statistic with a dotted vertical line through it",
-  src="../stat-configuration.png" %}
+<uxdot-example width-adjustment="346px">
+  <img src="{{ '../stat-configuration.png' | url }}" alt="Statistic with a dotted vertical line through it">
+</uxdot-example>
+
 
 ### Order
 A statistic was designed to be read from top to bottom. If certain optional 
 elements are included, the order will change.
 
-{% example
-  palette="light",
-  alt="Statistic with boxes around each element slot, there are also numbers next to each box arranged 1 to 4 from top to bottom",
-  src="../stat-configuration-order.png" %}
+<figure>
+  <uxdot-example width-adjustment="346px">
+    <img src="{{ '../stat-configuration-order.png' | url }}" alt="Statistic with boxes around each element slot, there are also numbers next to each box arranged 1 to 4 from top to bottom">
+  </uxdot-example>
+  <figcaption>
+  <ol>
+      <li> Icon (always ordered first if included)</li>
+      <li> Title text and data text (ordered first if there is no icon)</li>
+      <li> Body text (ordered last if there is no call to action)</li>
+      <li> Call to action (always ordered last if included)</li>
+    </ol>
+  </figcaption>
+</figure>
 
-1. Icon (always ordered first if included)
-2. Title text and data text (ordered first if there is no icon)
-3. Body text (ordered last if there is no call to action)
-4. Call to action (always ordered last if included)
-{.example-notes}
 
 ## Space
+
 Space values are the same for both Default and Large sizes and on all
 breakpoints. To see space values when statistics are used in a layout,
 go to the [Guidelines](../guidelines) page.
 
-{% example 
-  palette="light",
-  alt="Default and Large size spacing between all elements",
-  src="../stat-space.png" %}
+<uxdot-example width-adjustment="800px">
+  <img src="{{ '../stat-space.png' | url }}" alt="Default and Large size spacing between all elements">
+</uxdot-example>
 
+<rh-table>
 {% spacerTokensTable 
     headline='',
     caption='',
     tokens="--rh-space-md, --rh-space-xl" %}
 {% endspacerTokensTable %}
+</rh-table>
+
 
 ## Interaction states
+
 The optional call to action is the only interactive element. Go to the
 [Call to action](../../call-to-action) page to view the interaction
 states.

@@ -1,19 +1,35 @@
-
-
 ## Keyboard interaction
 
 A dialog can be opened by pressing `Enter` when the dialog trigger has focus. When a dialog is open, moving focus using a keyboard is constrained or trapped within the dialog container. Keyboard navigation by pressing `Tab` will cycle focus through the interactive elements until the dialog is closed.
 
-{% example palette="none",
-           alt="Flowchart of a dialog container outlining several keyboard interactions",
-           src="../dialog-a11y-keyboard-interactions.png" %}
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../dialog-a11y-keyboard-interactions.png' | url }}" alt="Flowchart of a dialog container outlining several keyboard interactions">
+</uxdot-example>
 
-| Key   | Result                                                   |
-| ----- | -------------------------------------------------------- |
-| Tab   | Moves focus to the next interactive element in the cycle |
-| Enter | Activates an interactive element or a button             |
-| Esc   | Dismisses a dialog                                       |
-
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Key">Key</th>
+        <th scope="col" data-label="Result">Result</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Key"><kbd>Tab</kbd></td>
+        <td data-label="Result">Moves focus to the next interactive element in the cycle</td>
+      </tr>
+      <tr>
+        <td data-label="Key"><kbd>Enter</kbd></td>
+        <td data-label="Result">Activates an interactive element or a button</td>
+      </tr>
+      <tr>
+        <td data-label="Key"><kbd>Esc</kbd></td>
+        <td data-label="Result">Dismisses a dialog</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
 
 
 ## Focus order
@@ -34,9 +50,10 @@ When a dialog opens, the element that should receive focus depends on the conten
 
 Only the close button and any interactive elements are selectable.
 
-{% example palette="none",
-           alt="A dialog container with three touch targets; one on the close button and one on each button",
-           src="../dialog-a11y-touch-targets.png" %}
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../dialog-a11y-touch-targets.png' | url }}" alt="A dialog container with three touch targets; one on the close button and one on each button">
+</uxdot-example>
+
 
 ### Backdrop
 
@@ -53,11 +70,11 @@ A dialog will not close by users clicking or tapping the backdrop or outside of 
 - When a dialog closes, focus should return to the last focused item before the dialog was opened
 
 
-{% include 'accessibility/ariaguide.md' %}
+{% include 'partials/accessibility/ariaguide.md' %}
 
-{% include 'accessibility/wcag.md' %}
-{% include 'accessibility/2.1.1-A.md' %}
-{% include 'accessibility/2.1.3-AAA.md' %}
-{% include 'accessibility/2.4.3-A.md' %}
-{% include 'accessibility/2.5.5-AAA.md' %}
+{% include 'partials/accessibility/wcag.md' %}
+{% include 'partials/accessibility/2.1.1-A.md' %}
+{% include 'partials/accessibility/2.1.3-AAA.md' %}
+{% include 'partials/accessibility/2.4.3-A.md' %}
+{% include 'partials/accessibility/2.5.5-AAA.md' %}
 
