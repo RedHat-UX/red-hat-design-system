@@ -1,5 +1,11 @@
 # @rhds/elements
 
+## 1.4.5
+
+### Patch Changes
+
+- 45ab120: **React**: resolve another syntax error in generated modules
+
 ## 1.4.4
 
 ### Patch Changes
