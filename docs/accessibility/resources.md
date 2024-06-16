@@ -1,6 +1,5 @@
 ---
 title: Resources
-tags: accessibility
 ---
 
 ## Fundamentals

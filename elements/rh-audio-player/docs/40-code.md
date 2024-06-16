@@ -1,10 +1,12 @@
 {% renderInstall lightdomcss=true %}{% endrenderInstall %}
 
 ## Usage
+
 {% playground tagName=tagName %}{% endplayground %}
-{% cta href="../demo/", target="_blank" %}
-View the demo in a new tab
-{% endcta %}
+
+<rh-cta>
+  <a href="{{ './demo/' | url }}">Full screen demo</a>
+</rh-cta>
 
 {% renderCodeDocs hideDescription=true %}{% endrenderCodeDocs %}
 
