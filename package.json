@@ -263,7 +263,7 @@
   },
   "dependencies": {
     "@lit/context": "^1.1.1",
-    "@patternfly/elements": "^3.0.1",
+    "@patternfly/elements": "^3.0.2",
     "@patternfly/icons": "^1.0.2",
     "@patternfly/pfe-core": "^3.0.0",
     "@rhds/tokens": "^2.0.1",
@@ -283,7 +283,7 @@
     "@patternfly/create-element": "^1.0.2",
     "@patternfly/eslint-config-elements": "^3.0.0",
     "@patternfly/eslint-plugin-elements": "^2.0.0",
-    "@patternfly/pfe-tools": "^2.0.1",
+    "@patternfly/pfe-tools": "^2.0.2",
     "@playwright/test": "^1.31.1",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-typescript": "^11.1.6",
