@@ -1,6 +1,6 @@
 <section id="card-pattern-image">
   <rh-card>
-    <svg class="sample" slot="image" width="296" height="171"><rect/></svg>
+    <svg class="sample" slot="image"><rect></svg>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit
       libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id
       elit. Donec id elit non mi porta gravida at eget metus.</p>
@@ -10,7 +10,7 @@
   </rh-card>
 
   <rh-card>
-    <svg class="sample" slot="image" width="296" height="171"><rect/></svg>
+    <svg class="sample" slot="image"><rect></svg>
     <h2 slot="header">Heading, sm</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit
       libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id
@@ -21,7 +21,7 @@
   </rh-card>
 
   <rh-card color-palette="lighter">
-    <svg class="sample" slot="image" width="296" height="171"><rect/></svg>
+    <svg class="sample" slot="image"><rect></svg>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit
       libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id
       elit. Donec id elit non mi porta gravida at eget metus.</p>
@@ -31,7 +31,7 @@
   </rh-card>
 
   <rh-card color-palette="lighter">
-    <svg class="sample" slot="image" width="296" height="171"><rect/></svg>
+    <svg class="sample" slot="image"><rect/></svg>
     <h2 slot="header">Heading, sm</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit
       libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id
@@ -42,7 +42,7 @@
   </rh-card>
 
   <rh-card color-palette="dark">
-    <svg class="sample" slot="image" width="296" height="171"><rect/></svg>
+    <svg class="sample" slot="image"><rect></svg>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit
       libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id
       elit. Donec id elit non mi porta gravida at eget metus.</p>
@@ -52,7 +52,7 @@
   </rh-card>
 
   <rh-card color-palette="dark">
-    <svg class="sample" slot="image" width="296" height="171"><rect/></svg>
+    <svg class="sample" slot="image"><rect></svg>
     <h2 slot="header">Heading, sm</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit
       libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id
@@ -63,7 +63,7 @@
   </rh-card>
 
   <rh-card color-palette="darker">
-    <svg class="sample" slot="image" width="296" height="171"><rect/></svg>
+    <svg class="sample" slot="image"><rect></svg>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit
       libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id
       elit. Donec id elit non mi porta gravida at eget metus.</p>
@@ -73,7 +73,7 @@
   </rh-card>
 
   <rh-card color-palette="darker">
-    <svg class="sample" slot="image" width="296" height="171"><rect/></svg>
+    <svg class="sample" slot="image"><rect></svg>
     <h2 slot="header">Heading, sm</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit
       libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id
@@ -87,6 +87,8 @@
 <style>
   svg.sample {
     border: 1px dashed var(--rh-color-border-interactive-on-light, #0066cc);
+    width: 100%;
+    aspect-ratio: 296/171;
     & rect { width: 100%; height: 100%; fill: rgba(0 102 204 / 0.10) }
   }
   #card-pattern-image {
