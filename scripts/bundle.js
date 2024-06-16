@@ -14,25 +14,9 @@ const cleanCSS = new CleanCSS({
   returnPromise: true,
 });
 
-export async function bundle({
-  outfile = 'rhds.min.js',
-  external = [], additionalPackages = [],
-} = {}) {
-  const resolveDir = join(fileURLToPath(import.meta.url), '../elements');
-
-  const elementSources = await glob('./*/*-*.ts', { cwd: join(process.cwd(), 'elements') });
-  const elementDirs = new Set(elementSources.map(x => dirname(x)));
-  const elementFiles = Array.from(elementDirs, x => join(process.cwd(), `elements/${x}/${x}.js`));
-
-  const contents = [...additionalPackages, ...elementFiles]
-      .map(x => `export * from '${x.replace('.ts', '.js')}';`).join('\n');
-
+export async function bundle({ outfile = 'rhds.min.js', external = [] } = {}) {
   await build({
-    stdin: {
-      contents,
-      loader: 'ts',
-      resolveDir,
-    },
+    entryPoints: ['./elements.js'],
     format: 'esm',
     outfile,
     allowOverwrite: true,
