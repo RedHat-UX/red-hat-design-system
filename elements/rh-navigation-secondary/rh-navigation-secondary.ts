@@ -73,13 +73,16 @@ function focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
 export class RhNavigationSecondary extends LitElement {
   static readonly styles = [styles];
 
-  /**
-   * Color palette darker | lighter (default: lighter)
-   */
-  @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette: NavPalette = 'lighter';
+  private static instances = new Set<RhNavigationSecondary>();
 
-  @queryAssignedElements({ slot: 'nav' }) private _nav?: HTMLElement[];
+  static {
+    window.addEventListener('keyup', (event: KeyboardEvent) => {
+      const { instances } = RhNavigationSecondary;
+      for (const instance of instances) {
+        instance.#onKeyup(event);
+      }
+    }, { capture: false });
+  }
 
   #logger = new Logger(this);
 
@@ -102,6 +105,14 @@ export class RhNavigationSecondary extends LitElement {
                                                                   rh-secondary-nav-dropdown) > a,
                                                               [slot="nav"] > li > a`))) ?? [],
   });
+
+  /**
+   * Color palette darker | lighter (default: lighter)
+   */
+  @colorContextProvider()
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette: NavPalette = 'lighter';
+
+  @queryAssignedElements({ slot: 'nav' }) private _nav?: HTMLElement[];
 
   /**
    * `mobileMenuExpanded` property is toggled when the mobile menu button is clicked,
@@ -137,17 +148,18 @@ export class RhNavigationSecondary extends LitElement {
 
   async connectedCallback() {
     super.connectedCallback();
+    RhNavigationSecondary.instances.add(this);
     this.#compact = !this.#screenSize.matches.has('md');
     this.addEventListener('expand-request', this.#onExpandRequest);
     this.addEventListener('overlay-change', this.#onOverlayChange);
     this.addEventListener('focusout', this.#onFocusout);
     this.addEventListener('keydown', this.#onKeydown);
-    window.addEventListener('keyup', this.#onKeyup.bind(this));
     this.#upgradeAccessibility();
   }
 
   disconnectedCallback(): void {
-    window.removeEventListener('keyup', this.#onKeyup);
+    super.disconnectedCallback();
+    RhNavigationSecondary.instances.delete(this);
   }
 
   render() {
@@ -266,6 +278,7 @@ export class RhNavigationSecondary extends LitElement {
   #onKeyup(event: KeyboardEvent) {
     switch (event.key) {
       case 'Tab':
+        console.log('hello world');
         this.#onTabKeyup(event);
         break;
       default:
