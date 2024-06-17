@@ -1,9 +1,10 @@
 import { expect, html } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
-import { a11ySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
 import { allUpdates } from '@patternfly/pfe-tools/test/utils.js';
 import { RhHealthIndex } from '@rhds/elements/rh-health-index/rh-health-index.js';
+// import { a11ySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
 
+import 'element-internals-polyfill';
 
 describe('<rh-health-index>', function() {
   it('imperatively instantiates', function() {

@@ -47,7 +47,6 @@ export class RhHealthIndex extends LitElement {
   });
 
   protected override willUpdate(changed: PropertyValues<this>): void {
-    this.role = 'meter';
     this.grade = this.grade.toUpperCase() as this['grade'];
     if (changed.has('grade')) {
       const { grade } = this;
