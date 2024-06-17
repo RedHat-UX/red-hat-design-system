@@ -1,4 +1,4 @@
-import { LitElement, html, isServer } from 'lit';
+import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -119,6 +119,18 @@ export class RhCta extends LitElement {
    */
   @property({ reflect: true }) href?: string;
 
+  /** when `href` is set, the link's `download` attribute */
+  @property() download?: string;
+
+  /** when `href` is set, the link's `referrerpolicy` attribute */
+  @property() referrerpolicy?: string;
+
+  /** when `href` is set, the link's `rel` attribute */
+  @property() rel?: string;
+
+  /** when `href` is set, the link's `target` attribute */
+  @property() target?: string;
+
   /**
    * Icon name
    */
@@ -155,12 +167,12 @@ export class RhCta extends LitElement {
 
   #logger = new Logger(this);
 
-  #getAttr(name: string) {
-    return isServer ? undefined : this.getAttribute(name) ?? undefined;
-  }
-
   override render() {
-    const { href, variant, icon, iconSet, on = '' } = this;
+    const {
+      download, href, referrerpolicy, rel, target,
+      icon, iconSet,
+      on = '', variant,
+    } = this;
     const rtl = this.#dir.dir === 'rtl';
     const isDefault = !variant;
     const svg = isDefault;
@@ -185,8 +197,10 @@ export class RhCta extends LitElement {
                  icon=${icon}
                  set="${iconSet ?? 'far'}"></pf-icon>` : ''}${href ? html`
         <a href=${href}
-           download="${ifDefined(this.#getAttr('download'))}"
-           target="${ifDefined(this.#getAttr('target'))}"><slot></slot>${follower}</a>`
+           download="${ifDefined(download)}"
+           rel="${ifDefined(rel)}"
+           referrerpolicy="${ifDefined(referrerpolicy)}"
+           target="${ifDefined(target)}"><slot></slot>${follower}</a>`
    : html`<slot></slot>${follower}`}
       </span>
     `;
