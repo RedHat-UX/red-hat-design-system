@@ -6,17 +6,19 @@ A table is a set of data that can be easily scanned and compared. Each row in a 
 
 There is no maximum number of columns or rows. To reduce cognitive load and a cluttered user interface, set a `max-width` or `max-height` after five or six of each.
 
-{% example palette="light",
-           alt="Image of table with a section of columns and rows highlighted",
-           src="../table-usage-columns-and-rows.png" %}
+<uxdot-example width-adjustment="872px">
+  <img src="{{ '../table-usage-columns-and-rows.png' | url }}" alt="Image of table with a section of columns and rows highlighted">
+</uxdot-example>
+
 
 ### Padding
 
 In some edge cases, table rows can have double padding if there are more element types than just text.
 
-{% example palette="light",
-           alt="Image of two tables, one with default vertical padding and the other one with double vertical padding",
-           src="../table-usage-padding.png" %}
+<uxdot-example width-adjustment="872px">
+  <img src="{{ '../table-usage-padding.png' | url }}" alt="Image of two tables, one with default vertical padding and the other one with double vertical padding">
+</uxdot-example>
+
 
 ## Writing content
 
@@ -24,9 +26,10 @@ In some edge cases, table rows can have double padding if there are more element
 
 Titles should be concise, scannable, and descriptive of content in the column or row. Header labels should have two or three words maximum. If more words are included, the label might break to a second line.
 
-{% example palette="light",
-           alt="Image of two tables with examples of short and long column and row titles",
-           src="../table-content-column-row-titles.png" %}
+<uxdot-example width-adjustment="872px">
+  <img src="{{ '../table-content-column-row-titles.png' | url }}" alt="Image of two tables with examples of short and long column and row titles">
+</uxdot-example>
+
 
 ## Character count
 
@@ -61,11 +64,6 @@ In general, header labels should be as short as possible. However, if columns ha
   </table>
 </rh-table>
 
-<!-- | Column count {style="width: 50%" } | Character count |
-| ---------------------------------- | --------------- |
-| Two                                | 40 - 50         |
-| Four                               | 20 - 30         |
-| More than four                     | 10 - 20         | -->
 
 ## Layout
 
@@ -73,25 +71,27 @@ In general, header labels should be as short as possible. However, if columns ha
 
 A table should be the same width as nearby blocks of content on the page.
 
-{% example palette="none",
-           alt="Image of examples of placeholder content and a table having the same width, one is wide and one is narrow",
-           src="../table-layout-placement.png" %}
+<uxdot-example width-adjustment="872px">
+  <img src="{{ '../table-layout-placement.png' | url }}" alt="Image of examples of placeholder content and a table having the same width, one is wide and one is narrow">
+</uxdot-example>
 
 ### Scrolling
 
 A table will scroll horizontally or vertically if content exceeds the max-width or max-height.
 
-{% example palette="light",
-           alt="Image of two tables, one with no scrolling and the other with scrolling columns and rows",
-           src="../table-layout-scrolling.png" %}
+<uxdot-example width-adjustment="872px">
+  <img src="{{ '../table-layout-scrolling.png' | url }}" alt="Image of two tables, one with no scrolling and the other with scrolling columns and rows">
+</uxdot-example>
+
 
 ### Logos
 
 Logos can be used in cells along with text if necessary.
 
-{% example palette="light",
-           alt="Image of table with logos and links among text",
-           src="../table-layout-logos.png" %}
+<uxdot-example width-adjustment="872px">
+  <img src="{{ '../table-layout-logos.png' | url }}" alt="Image of table with logos and links among text">
+</uxdot-example>
+
 
 ## Behavior
 
@@ -103,24 +103,26 @@ Columns can be sorted in ascending or descending order. Sorting controls are loc
 - Sorted up (arrow pointing up)
 - Sorted down (arrow pointing down)
 
+<uxdot-example width-adjustment="872px">
+  <img src="{{ '../table-behavior-sorting.png' | url }}" alt="Image of tables with various sorting options">
+</uxdot-example>
 
-{% example palette="light",
-           alt="Image of tables with various sorting options",
-           src="../table-behavior-sorting.png" %}
 
 ## Responsive design 
 
 ### Large viewport sizes 
 
-{% example palette="none",
-           alt="Image of table on large viewport sizes",
-           src="../table-viewport-sizes-large.png" %}
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../table-viewport-sizes-large.png' | url }}" alt="Image of table on large viewport sizes">
+</uxdot-example>
+
 
 ### Small viewport sizes 
 
-{% example palette="none",
-           alt="Image of table on small viewport sizes",
-           src="../table-viewport-sizes-small.png" %}
+<uxdot-example width-adjustment="576px" variant="full" alignment="left" no-border>
+  <img src="{{ '../table-viewport-sizes-small.png' | url }}" alt="Image of table on small viewport sizes">
+</uxdot-example>
+
 
 ## Best practices
 
@@ -128,22 +130,24 @@ Columns can be sorted in ascending or descending order. Sorting controls are loc
 
 A table should display at least two columns.
 
-{% example palette="wrong",
-           alt="Image of table with one column which is incorrect usage",
-           src="../table-best-practices-1.png" %}
+<uxdot-example width-adjustment="872px" danger>
+  <img src="{{ '../table-best-practices-1.png' | url }}" alt="Image of table with one column which is incorrect usage">
+</uxdot-example>
+
 
 ### Large cell height
 
 In some edge cases, a table can have large cell height if there are more element types than just text.
 
-{% example palette="wrong",
-           alt="Image of table with lots of vertical padding which is incorrect usage",
-           src="../table-best-practices-2.png" %}
+<uxdot-example width-adjustment="872px" danger>
+  <img src="{{ '../table-best-practices-2.png' | url }}" alt="Image of table with lots of vertical padding which is incorrect usage">
+</uxdot-example>
+
 
 ### Wrong size
 
 Do not use the small viewport size table on large viewports.
 
-{% example palette="wrong",
-           alt="Image of small viewport table used on a large viewport which is incorrect usage",
-           src="../table-best-practices-3.png" %}
+<uxdot-example width-adjustment="872px" danger>
+  <img src="{{ '../table-best-practices-3.png' | url }}" alt="Image of small viewport table used on a large viewport which is incorrect usage">
+</uxdot-example>

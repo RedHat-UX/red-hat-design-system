@@ -1,170 +1,237 @@
-
 ## Style
 
-  Elements in the primary navigation are high in contrast so they stand out to 
-  visitors and meet accessibility guidelines. The primary navigation looks 
-  similar in style to the [Footer]({{ '/elements/footer' | url }}) for a 
-  consistent user experience across websites.
+Elements in the primary navigation are high in contrast so they stand out to 
+visitors and meet accessibility guidelines. The primary navigation looks 
+similar in style to the [Footer]({{ '/elements/footer' | url }}) for a 
+consistent user experience across websites.
 
-  ![Primary navigation - style]({{ '../primary-nav-style-intro.png' | url 
-  }}){style="--inline-img-max-width:1000px;"}
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../primary-nav-style-intro.png' | url }}" alt="Primary navigation - style">
+</uxdot-example>
+
+
+### Anatomy
+
+The primary navigation is divided into **three zones** where content can be 
+placed. Each zone may include custom content and elements in certain zones 
+will collapse or become hidden completely as breakpoints get smaller. 
+**It is required to use all three zones.**
+
+- **Zone 1** - Website logo
+- **Zone 2** - Menus
+- **Zone 3** - Utilities
+
+<rh-alert state="info">
+  <h4 slot="header">Helpful tip</h4>
+  <p>The website logo in Zone 1 should direct visitors to a home page when selected.</p>
+</rh-alert>
+
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../primary-nav-anatomy.png' | url }}" alt="Primary navigation - anatomy">
+</uxdot-example>
+
+
+#### Website logo
+
+A branded logo corresponding to the website in which the primary navigation 
+is used. It will direct a visitor to the website home page when selected.
+
+#### Menus
+
+Text that triggers an expandable tray when selected. The content within is 
+specific to one website and does not appear d in the same format on other 
+websites.
+
+#### Utilities
+
+Actions or tools that display content within an expandable tray when 
+triggered or function as links. They can be unique to one website or global 
+across many websites.
+
 
 ### Expandable tray
 
-  When menu text in Zone 2 is selected, an **expandable tray** will appear. 
-  It is divided into three parts and is styled the same across all primary 
-  navigation instances.
+When menu text in Zone 2 is selected, an **expandable tray** will appear. 
+It is divided into three parts and is styled the same across all primary 
+navigation instances.
 
-  1. **Tab** - visually informs a visitor of what menu they selected
-  1. **Tray** - the area to place content, links, etc.
-  1. **Overlay** - separates tray content from website content underneath
+1. **Tab** - visually informs a visitor of what menu they selected
+1. **Tray** - the area to place content, links, etc.
+1. **Overlay** - separates tray content from website content underneath
 
-  ![Primary navigation - expandable tray]({{ '../expandable-tray.png' | url 
-  }}){style="--inline-img-max-width:1000px;"}
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../expandable-tray.png' | url }}" alt="Primary navigation - expandable tray">
+</uxdot-example>
+
 
 ### Expandable tray tab
 
-  When the expandable tray tab appears, text and icon colors are reversed. A tab 
-  with a white background and red bar will also appear behind content.
+When the expandable tray tab appears, text and icon colors are reversed. A tab 
+with a white background and red bar will also appear behind content.
 
-  {% alert title="Helpful tip" %}
-  Menu text displays a gray arrow on hover to indicate that an expandable tray 
-  will appear when triggered.
-  {% endalert %}
+<rh-alert state="info">
+  <h4 slot="header">Helpful tip</h4>
+  <p>Menu text displays a gray arrow on hover to indicate that an expandable tray will appear when triggered.</p>
+</rh-alert>
 
-  ![Primary navigation - expandable tray tab]({{ '../expandable-tray-tab.png' | 
-  url }}){style="--inline-img-max-width:1000px;"}
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../expandable-tray-tab.png' | url }}" alt="Primary navigation - expandable tray tab">
+</uxdot-example>
+
 
 ### Layout
 
-  The primary navigation spans the entire width of the browser window on all 
-  breakpoints.
+The primary navigation spans the entire width of the browser window on all 
+breakpoints.
 
-  ![Primary navigation - layout (desktop)]({{ '../layout-desktop.png' | url 
-  }}){style="--inline-img-max-width:1000px;"}
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../layout-desktop.png' | url }}" alt="Primary navigation - layout (desktop)">
+</uxdot-example>
 
-  ![Primary navigation - layout (mobile)]({{ '../layout-mobile.png' | url 
-  }}){style="--inline-img-max-width:360px;"}
+<uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border>
+  <img src="{{ '../layout-mobile.png' | url }}" alt="Primary navigation - layout (mobile)">
+</uxdot-example>
+
 
 ### Left-to-right languages
 
-  When content is translated to other left-to-right languages, the primary 
-  navigation maintains the same layout and text size.
+When content is translated to other left-to-right languages, the primary 
+navigation maintains the same layout and text size.
 
-  ![Primary navigation - left-to-right languages]({{ 
-  '../languages-left-to-right.png' | url 
-  }}){style="--inline-img-max-width:1000px;"}
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../languages-left-to-right.png' | url }}" alt="Primary navigation - left-to-right languages">
+</uxdot-example>
+
 
 ### Right-to-left languages
 
-  When content is translated to a right-to-left language like Hebrew, the text 
-  size increases so visual subtleties of unique characters are easier to notice.
+When content is translated to a right-to-left language like Hebrew, the text 
+size increases so visual subtleties of unique characters are easier to notice.
 
-  ![Primary navigation - right-to-left languages]({{ 
-  '../languages-right-to-left.png' | url 
-  }}){style="--inline-img-max-width:1000px;"}
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../languages-right-to-left.png' | url }}" alt="Primary navigation - right-to-left languages">
+</uxdot-example>
 
 
 ## Responsive design
 
 ### Large breakpoints
 
-  Both menus and utilities are visible in the primary navigation on large 
-  breakpoints.
+Both menus and utilities are visible in the primary navigation on large 
+breakpoints.
 
-  ![Primary navigation - large breakpoints]({{ '../breakpoints-large.png' | url 
-  }}){style="--inline-img-max-width:1000px;"}
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../breakpoints-large.png' | url }}" alt="Primary navigation - large breakpoints">
+</uxdot-example>
+
 
 ### Medium breakpoints
 
-  As breakpoints become smaller, menus will collapse into a utility and 
-  accordion. **This includes full-width and fixed-width expandable 
-  trays.** On tablet breakpoints, a menu utility replaces the horizontal 
-  list of menus and maintains the same position for a smoother transition from 
-  large to small breakpoints.
+As breakpoints become smaller, menus will collapse into a utility and 
+accordion. **This includes full-width and fixed-width expandable 
+trays.** On tablet breakpoints, a menu utility replaces the horizontal 
+list of menus and maintains the same position for a smoother transition from 
+large to small breakpoints.
 
-  ![Primary navigation - medium breakpoints]({{ '../breakpoints-medium.png' | url 
-  }}){style=}
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../breakpoints-medium.png' | url }}" alt="Primary navigation - medium breakpoints">
+</uxdot-example>
+
 
 ### Small breakpoints
 
-  On small breakpoints, the menus and most of the utilities collapse into a menu 
-  and accordion.
+On small breakpoints, the menus and most of the utilities collapse into a menu 
+and accordion.
 
-  ![Primary navigation - small breakpoints]({{ '../breakpoints-small.png' | url 
-  }}){style="--inline-img-max-width:576px;"}
+<uxdot-example width-adjustment="576px" variant="full" alignment="left" no-border>
+  <img src="{{ '../breakpoints-small.png' | url }}" alt="Primary navigation - small breakpoints">
+</uxdot-example>
 
 
 ## Best practices
 
 ### Content overload
 
-  Do not overload the primary navigation with too many menus and utilities.
+Do not overload the primary navigation with too many menus and utilities.
 
-  ![Primary navigation - best practice 1]({{ '../best-practice-1.png' | url 
-  }}){style="--inline-img-max-width:1000px;"}
+<uxdot-example width-adjustment="1000px" danger >
+  <img src="{{ '../best-practice-1.png' | url }}" alt="Primary navigation - best practice 1">
+</uxdot-example>
+
 
 ### Using icons alone
 
-  Do not rely on icons alone to accurately represent content or actions, 
-  ambiguity will not help visitors find what they need.
+Do not rely on icons alone to accurately represent content or actions, 
+ambiguity will not help visitors find what they need.
 
-  ![Primary navigation - best practice 2]({{ '../best-practice-2.png' | url 
-  }}){style="--inline-img-max-width:1000px;"}
+<uxdot-example width-adjustment="1000px" danger >
+  <img src="{{ '../best-practice-2.png' | url }}" alt="Primary navigation - best practice 2">
+</uxdot-example>
+
 
 ### Change spacing
 
-  Do not change the spacing between menus and utilities.
+Do not change the spacing between menus and utilities.
 
-  ![{{ '../best-practice-3.png' | url }}](Primary navigation - best practice 
-  3){style="--inline-img-max-width:1000px;"}
+<uxdot-example width-adjustment="1000px" danger >
+  <img src="{{ '../best-practice-3.png' | url }}" alt="Primary navigation - best practice 3">
+</uxdot-example>
+
 
 ### Hiding menus and utilities
 
-  Do not hide menus and utilities on large breakpoints.
+Do not hide menus and utilities on large breakpoints.
 
-  ![Primary navigation - best practice 4]({{ '../best-practice-4.png' | url 
-  }}){style="--inline-img-max-width:1000px;"}
+<uxdot-example width-adjustment="1000px" danger >
+  <img src="{{ '../best-practice-4.png' | url }}" alt="Primary navigation - best practice 4">
+</uxdot-example>
+
 
 ### Mixing expandable trays
 
-  Do not mix the full-width and fixed-width expandable trays within the same 
-  menu group.
+Do not mix the full-width and fixed-width expandable trays within the same 
+menu group.
 
-  ![Primary navigation - best practice 5]({{ '../best-practice-5.png' | url 
-  }}){style="--inline-img-max-width:1000px;"}
-
+<uxdot-example width-adjustment="1000px" danger >
+  <img src="{{ '../best-practice-5.png' | url }}" alt="Primary navigation - best practice 5">
+</uxdot-example>
 
 
 ## Spacing
 
-  The primary navigation uses [spacers]({{'/foundations/spacing'|url}}) to define space values 
-  between elements.
+The primary navigation uses [spacers]({{'/foundations/spacing'|url}}) to define space values 
+between elements.
 
 ### Extra large breakpoints
 
-  ![Primary navigation - Spacing for extra large breakpoints]({{ 
-  '../spacing-extra-large.png' | url }}){style="--inline-img-max-width:1000px;"}
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../spacing-extra-large.png' | url }}" alt="Primary navigation - Spacing for extra large breakpoints">
+</uxdot-example>
+
 
 ### Large breakpoints
 
-  ![Primary navigation - Spacing for large breakpoints]({{ '../spacing-large.png' 
-  | url }}){style="--inline-img-max-width:1000px;"}
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../spacing-large.png' | url }}" alt="Primary navigation - Spacing for large breakpoints">
+</uxdot-example>
+
 
 ### Medium breakpoints
 
-  ![Primary navigation - Spacing for medium breakpoints]({{ 
-  '../spacing-medium.png' | url }}){style="--inline-img-max-width:768px;"}
+<uxdot-example width-adjustment="768px" variant="full" alignment="left" no-border>
+  <img src="{{ '../spacing-medium.png' | url }}" alt="Primary navigation - Spacing for medium breakpoints">
+</uxdot-example>
+
 
 ### Small breakpoints
 
-  ![Primary navigation - Spacing for small breakpoints]({{ '../spacing-small.png' 
-  | url }}){style="--inline-img-max-width:360px;"}
+<uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border>
+  <img src="{{ '../spacing-small.png' | url }}" alt="Primary navigation - Spacing for small breakpoints">
+</uxdot-example>
+
 
 ### Fixed-width expandable tray
 
-  ![Primary navigation - Spacing for the fixed-width expandable tray]({{ 
-  '../spacing-fixed-width-tray.png' | url 
-  }}){style="--inline-img-max-width:1000px;"}
-
-
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../spacing-fixed-width-tray.png' | url }}" alt="Primary navigation - Spacing for the fixed-width expandable tray">
+</uxdot-example>
