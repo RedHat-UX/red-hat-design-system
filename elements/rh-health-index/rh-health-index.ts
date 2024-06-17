@@ -47,9 +47,7 @@ export class RhHealthIndex extends LitElement {
     if (changed.has('grade')) {
       const { grade } = this;
       this.#internals.ariaValueNow = (RhHealthIndex.grades.indexOf(grade) + 1).toString();
-      this.#internals.ariaValueText = grade;
-      // TODO: I18nController
-      this.#internals.ariaLabel = `Health: grade ${grade} out of A through F`;
+      this.#internals.ariaValueText = `Health: grade ${grade} out of A through F`;
     }
   }
 
