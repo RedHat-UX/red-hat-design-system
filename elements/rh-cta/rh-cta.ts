@@ -77,13 +77,16 @@ function isButton(element: Element): element is HTMLButtonElement {
  *              {@default `var(--rh-color-brand-red-on-light, #ee0000)`}
  * @cssprop     --rh-cta-focus-container-background-color
  *              Sets the cta container background color on focus
- *              {@default #0066cc1a}
+ *              {@default transparent}
+ * @cssprop     --rh-cta-focus-container-outline-color
+ *              Sets the cta container outline color on focus
+ *              {@default #0066cc}
  * @cssprop     --rh-cta-focus-border-color
  *              Sets the cta border color on focus
- *              {@default `var(--rh-color-brand-red-on-light, #ee0000)`}
+ *              {@default transparent}
  * @cssprop     --rh-cta-focus-inner-border-color
  *              Sets the cta inner border color on focus
- *              {@default `var(--rh-color-text-primary-on-dark, #ffffff)`}
+ *              {@default transparent}
  * @cssprop     --rh-cta-active-color
  *              Sets the cta color on active. Applicable only for secondary variant
  *              {@default `var(--rh-color-text-primary-on-dark, #ffffff)`}

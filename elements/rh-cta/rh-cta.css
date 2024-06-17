@@ -125,6 +125,12 @@ svg {
         --_focus-container-background-color,
         var(--_focus-background-color)
       );
+  color: var(--rh-cta-focus-color);
+  outline:
+    var(--rh-border-width-md, 2px)
+    solid
+    var(--rh-cta-focus-container-outline-color, var(--rh-cta-focus-outline-color));
+  outline-offset: 2px;
 
   --_color: var(--_focus-color);
   --_text-decoration: var(--_focus-text-decoration);
