@@ -38,7 +38,7 @@ export class RhCard extends LitElement {
 
   static styles = [styles];
 
-  private static slots = ['header', 'image', null, 'footer'];
+  private static slots = ['header', 'image', null, 'footer'] as const;
 
   /**
    * Sets color theme based on parent context
@@ -63,42 +63,39 @@ export class RhCard extends LitElement {
 
   override render() {
     const { on = '', colorPalette = '' } = this;
-    const hasImage = this.#slots.hasSlotted('image');
-    const hasHeader = this.#slots.hasSlotted('header');
-    const hasBody = !isServer && this.querySelector(':not([slot])');
-    const hasFooter = this.#slots.hasSlotted('footer');
-    const hasSlotClasses = Object.fromEntries(RhCard.slots
-        .filter(slot => slot !== null)
-        .map(slot => [
-          `has-${slot}`,
-          this.#slots.hasSlotted(slot),
-        ]));
+    const slots =
+      Object.fromEntries(RhCard.slots.map(slot =>
+        [slot ?? 'body', this.#slots.hasSlotted(slot)])) as Record<
+          | 'header'
+          | 'image'
+          | 'body'
+          | 'footer', boolean>;
     return html`
      <div id="container"
           part="container"
           class="${classMap({
             [on]: !!on,
             [colorPalette]: !!colorPalette,
-            ...hasSlotClasses,
+            ...Object.fromEntries(Object.entries(slots).map(([k, v]) => [`has-${k}`, v])),
           })}">
         <div id="header"
              part="header"
-             class="${classMap({ empty: !hasHeader })}">
+             class="${classMap({ empty: !slots.header })}">
           <slot name="header"></slot>
         </div>
         <div id="image"
              part="image"
-             class="${classMap({ empty: !hasImage })}">
+             class="${classMap({ empty: !slots.image })}">
           <slot name="image"></slot>
         </div>
         <div id="body"
              part="body"
-             class="${classMap({ empty: !hasBody })}">
+             class="${classMap({ empty: !slots.body })}">
           <slot></slot>
         </div>
         <div id="footer"
              part="footer"
-             class="${classMap({ empty: !hasFooter })}">
+             class="${classMap({ empty: !slots.footer })}">
           <slot name="footer"></slot>
         </div>
       </div>
