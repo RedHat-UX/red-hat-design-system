@@ -36,18 +36,24 @@ export class RhHealthIndex extends LitElement {
    */
   @colorContextConsumer() private on?: ColorTheme;
 
+  // TODO: use I18nController to support officially supported languages.
   #internals = InternalsController.of(this, {
     role: 'meter',
     ariaValueMin: '1',
-    ariaValueMax: '5',
+    ariaValueMax: '6',
+    ariaValueText: 'Grade A',
+    ariaLabel: 'Health graded A through F',
+    ariaRoleDescription: 'Level indicator',
   });
 
   protected override willUpdate(changed: PropertyValues<this>): void {
+    this.role = 'meter';
     this.grade = this.grade.toUpperCase() as this['grade'];
     if (changed.has('grade')) {
       const { grade } = this;
-      this.#internals.ariaValueNow = (RhHealthIndex.grades.indexOf(grade) + 1).toString();
-      this.#internals.ariaValueText = `Health: grade ${grade} out of A through F`;
+      const gradeNumeral = (RhHealthIndex.grades.indexOf(grade) + 1);
+      this.#internals.ariaValueNow = gradeNumeral.toString();
+      this.#internals.ariaValueText = `Grade ${grade}`;
     }
   }
 
