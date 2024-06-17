@@ -22,7 +22,7 @@ async function injectLocalSources(_req, res, next) {
 
     const importMapJson = JSON.stringify({
       imports: {
-        '@rhds/elements': 'http://localhost:8000/rhds.min.js',
+        '@rhds/elements': 'http://localhost:8000/elements.js',
         ...Object.fromEntries(elements.map(dir => [
           `@rhds/elements/${dir}/${dir}.js`,
           `http://localhost:8000/elements/${dir}/${dir}.ts`,
