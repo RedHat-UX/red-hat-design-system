@@ -1,5 +1,8 @@
 ---
 title: Resources
+tags:
+  - accessibility
+order: 60
 ---
 
 ## Fundamentals
@@ -25,7 +28,7 @@ title: Resources
 ### Color accessibility checkers
 
 - [Let’s get color blind](https://chromewebstore.google.com/detail/lets-get-color-blind/bkdgdianpkfahpkmphgehigalpighjck): browser extension that adds color blindness filters to web sites
-- [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/):  website for checking color contrast
+- [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/): website for checking color contrast
 - [Colour Contrast Checker](https://colourcontrast.cc/): website for checking color contrast
 - [Sim Daltonism app](https://apps.apple.com/us/app/sim-daltonism/id693112260?mt=12): macOS application “window” for viewing color blindness
 
