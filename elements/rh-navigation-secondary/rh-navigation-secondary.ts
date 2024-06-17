@@ -278,7 +278,6 @@ export class RhNavigationSecondary extends LitElement {
   #onKeyup(event: KeyboardEvent) {
     switch (event.key) {
       case 'Tab':
-        console.log('hello world');
         this.#onTabKeyup(event);
         break;
       default:
