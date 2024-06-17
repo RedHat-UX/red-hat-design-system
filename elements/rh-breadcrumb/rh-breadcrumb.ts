@@ -60,6 +60,15 @@ import styles from './rh-breadcrumb.css';
 export class RhBreadcrumb extends LitElement {
   @property({ type: Array }) items: string[] = [];
 
+  /**
+   * Customize the default `aria-label` on the `<nav>` container.
+   * Defaults to "Breadcrumb" if no attribute/property is set.
+   */
+  @property({ attribute: 'accessible-label' }) accessibleLabel?: string;
+
+  /**
+   * Sets variants to breadcrumbs
+   */
   @property({ reflect: true }) variant?: 'subtle';
 
   /**
@@ -71,8 +80,9 @@ export class RhBreadcrumb extends LitElement {
 
   render() {
     const { on = '' } = this;
+    const label = this.accessibleLabel ? this.accessibleLabel : 'Breadcrumb';
     return html`
-      <nav aria-label="Breadcrumb" part="container" id="container" class="${classMap({ [on]: !!on })}">
+      <nav aria-label="${label}" part="container" id="container" class="${classMap({ [on]: !!on })}">
         <slot></slot>
       </nav>
     `;

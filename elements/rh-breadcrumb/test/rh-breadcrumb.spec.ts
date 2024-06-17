@@ -41,6 +41,13 @@ describe('<rh-breadcrumb>', function() {
           .to.be.accessible();
     });
 
+    it('should have nav element with aria-label "Breadcrumb"', async function() {
+      const { shadowRoot } = element;
+      const navElement = shadowRoot.querySelector('nav');
+      expect(navElement).to.exist;
+      expect(navElement.getAttribute('aria-label')).to.equal('Breadcrumb');
+    });
+
     it('should contain an ordered list, list items, and anchor tags', function() {
       const olElement = element.querySelector('ol');
       expect(olElement).to.exist;
@@ -72,6 +79,33 @@ describe('<rh-breadcrumb>', function() {
         const computedStyle = getComputedStyle(firstBreadcrumb);
         expect(computedStyle.textDecorationLine).to.equal('underline');
       });
+    });
+  });
+
+  describe('when the element has an accessible label property', function() {
+    let element: RhBreadcrumb;
+    const customAccessibleLabel = 'Custom Breadcrumb Label';
+    beforeEach(async function() {
+      element = await createFixture<RhBreadcrumb>(html`
+        <rh-breadcrumb accessible-label="${customAccessibleLabel}">
+          <ol>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">Red Hat OpenShift on AWS</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">Introduction to ROSA</a></li>
+            <li><a href="#" aria-current="page">Chapter 1. Understanding ROSA</a></li>
+          </ol>
+        </rh-breadcrumb>
+      `);
+      await element.updateComplete;
+    });
+
+    it('should output the custom accessible label', async function() {
+      const { shadowRoot } = element;
+      const navElement = shadowRoot.querySelector('nav');
+      expect(navElement).to.exist;
+      expect(navElement.getAttribute('aria-label')).to.equal(customAccessibleLabel);
     });
   });
 });
