@@ -134,9 +134,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
 
   const filesToCopy = getFilesToCopy();
   eleventyConfig.addPassthroughCopy(filesToCopy, {
-    filter: /** @param {string} path pathname */path => {
-      return !path.endsWith('.html');
-    },
+    filter: /** @param {string} path pathname */path => !path.endsWith('.html'),
   });
 
   eleventyConfig.addTransform('demo-subresources', demoPaths);
