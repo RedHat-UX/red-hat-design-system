@@ -1,7 +1,8 @@
 ## Usage 
 Use an accordion to organize a large amount of content into sections. This allows users to scan through critical information first and then access additional information when needed. Users can also compare information by expanding multiple panels simultaneously.
 
-### When to use an accordion 
+TEST!
+
 Using an accordion provides an easy way to organize content while reducing page scrolling, but at the expense of hiding information or burdening users with more clicks. There is a chance that important information will be missed or not immediately noticed by users. Therefore, if reading important information is critical to the user experience or if important information requires more focus and less clicking, it is advised to not use an accordion.
 
 ### Accordion vs. disclosure 
