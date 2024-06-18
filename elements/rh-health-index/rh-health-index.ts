@@ -29,7 +29,7 @@ export class RhHealthIndex extends LitElement {
    * Sets the health grade
    * Defaults to `A`
    */
-  @property({ reflect: true, attribute: 'grade' }) grade: 'A' | 'B' | 'C' | 'D' | 'E' | 'F' = 'A';
+  @property({ reflect: true }) grade: 'A' | 'B' | 'C' | 'D' | 'E' | 'F' = 'A';
 
   /**
    * Sets color theme based on parent context
