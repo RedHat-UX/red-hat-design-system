@@ -1,6 +1,6 @@
 ---
 title: Tabs
-layout: layout-basic.njk
+layout: layouts/pages/basic.njk
 tags:
   - pattern
 ---
@@ -17,14 +17,17 @@ tags:
 Use to activate a particular tab when the page's URL hash refers to an element
 within the tab panel, or to the tab itself.
 
-{% alert state="warning" %}
+<rh-alert state="warning">
+
 Use this pattern sparingly. If your tabs serve only as page navigation,
 use the [Subnav](/elements/subnavigation) element instead.
-{% endalert %}
+
+</rh-alert>
 
 {% include './patterns/link-to-tab.html' %}
 
 <nav id="simulate-nav">
+  <h3>Navigate to tab</h3>
   <ul>
     <a href="#north">North tab</a>
     <a href="#south">South tab</a>
