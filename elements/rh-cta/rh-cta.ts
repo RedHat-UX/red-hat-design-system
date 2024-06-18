@@ -12,14 +12,8 @@ import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/c
 
 import style from './rh-cta.css';
 
-import '@patternfly/elements/pf-icon/pf-icon.js';
-
 function isSupportedContent(el: Element | null): el is HTMLAnchorElement | HTMLButtonElement {
   return el instanceof HTMLAnchorElement || el instanceof HTMLButtonElement;
-}
-
-function isButton(element: Element | null): element is HTMLButtonElement {
-  return element?.tagName.toLowerCase() === 'button';
 }
 
 /**
@@ -211,9 +205,9 @@ export class RhCta extends LitElement {
     const cta = this.#cta;
     if (href && cta !== this.shadowRoot?.querySelector('a')) {
       return this.#logger.warn(`When the href attribute is used, slotted content must not be a link`);
-    } else if (!href && !isSupportedContent(cta) && !href) {
+    } else if (!href && !cta) {
       return this.#logger.warn(`The first child in the light DOM must be a supported call-to-action tag (<a>, <button>)`);
-    } else if (!href && isButton(cta) && !variant) {
+    } else if (!href && cta instanceof HTMLButtonElement && !variant) {
       return this.#logger.warn(`Button tag is not supported semantically by the default link styles`);
     }
   }
