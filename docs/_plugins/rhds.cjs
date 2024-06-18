@@ -90,8 +90,6 @@ function getFilesToCopy() {
       .filter(ent => ent.isDirectory())
       .map(ent => ent.name);
 
-  console.log(tagNames);
-
   /** @type{import('@patternfly/pfe-tools/config.js').PfeConfig}*/
   const config = require('../../.pfe.config.json');
 
