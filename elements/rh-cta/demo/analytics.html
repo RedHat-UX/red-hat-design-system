@@ -4,7 +4,7 @@
   analytics code, taking this demo as an example.</p>
 
 <section data-analytics-category="simple">
-  <h2>Simple Case: Light DOM Analytics</h2>
+  <h2>Simple Case: Light DOM</h2>
   <rh-cta data-analytics-linktype="cta"
           data-analytics-text="Default">
     <a href="#default">Default</a>
@@ -46,7 +46,7 @@
 </section>
 
 <section data-analytics-category="shadow">
-  <h2>Advanced Case: Deep Shadow Analytics</h2>
+  <h2>Advanced Case: Deep Shadow</h2>
   <shadow-root>
     <template shadowrootmode="open">
       <rh-cta data-analytics-linktype="cta"
@@ -64,6 +64,7 @@
         <a href="#secondary">Secondary</a>
       </rh-cta>
       <rh-cta variant="brick"
+              style="width:auto;"
               data-analytics-linktype="cta"
               data-analytics-text="Brick">
         <a href="#brick">Brick</a>
@@ -85,6 +86,7 @@
               data-analytics-text="Secondary"
               variant="secondary">Secondary</rh-cta>
       <rh-cta href="#brick"
+              style="width:auto;"
               variant="brick"
               data-analytics-linktype="cta"
               data-analytics-text="Brick">Brick</rh-cta>
@@ -93,7 +95,7 @@
 </section>
 
 <section data-analytics-category="slotted">
-  <h2>Complex Case: Slotted Link, Deep CTA Analytics</h2>
+  <h2>Complex Case: Slotted Link, Deep CTA</h2>
   <slotted-link>
     <a slot="default"
        data-analytics-linktype="cta"
@@ -118,6 +120,10 @@
 <json-viewer>{}</json-viewer>
 
 <style>
+rh-cta[variant="brick"] {
+  /* for demo reviewer ergonomics, even though this is against style guidelines */
+  width: auto;
+}
 json-viewer {
   --json-viewer-background: white;
   --json-viewer-boolean-color: #f76707;
@@ -130,37 +136,35 @@ json-viewer {
 </style>
 
 <script type="module">
-import '@rhds/elements/rh-cta/rh-cta.js';
-import 'https://ga.jspm.io/npm:prismjs@1.29.0/prism.js';
-import 'https://ga.jspm.io/npm:prismjs@1.29.0/plugins/autoloader/prism-autoloader.js';
-import 'https://ga.jspm.io/npm:@power-elements/json-viewer@2.1.1/json-viewer.js';
+  import '@rhds/elements/rh-cta/rh-cta.js';
+  import 'https://ga.jspm.io/npm:@power-elements/json-viewer@2.1.1/json-viewer.js';
 
-customElements.define('slotted-link', class SlottedLinkElement extends HTMLElement {
-  constructor() {
-    super();
-    this.attachShadow({ mode: 'open' }).innerHTML = /* html */`
-      <rh-cta><slot name="default"></slot></rh-cta>
-      <rh-cta variant="primary"><slot name="primary"></slot></rh-cta>
-      <rh-cta variant="secondary"><slot name="secondary"></slot></rh-cta>
-      <rh-cta variant="brick"><slot name="brick"></slot></rh-cta>
-    `;
-  }
-});
+  customElements.define('slotted-link', class SlottedLinkElement extends HTMLElement {
+    constructor() {
+      super();
+      this.attachShadow({ mode: 'open' }).innerHTML = /* html */`
+        <rh-cta><slot name="default"></slot></rh-cta>
+        <rh-cta variant="primary"><slot name="primary"></slot></rh-cta>
+        <rh-cta variant="secondary"><slot name="secondary"></slot></rh-cta>
+        <rh-cta variant="brick" style="width:auto;"><slot name="brick"></slot></rh-cta>
+      `;
+    }
+  });
 
-document.addEventListener('click', function(event) {
-  const data = event.composedPath().reduceRight((acc, node) => {
-    if (node instanceof HTMLElement) {
-      for (const [datakey, value] of Object.entries(node.dataset)) {
-        if (datakey.startsWith('analytics')) {
-          const key = datakey.replace(/^analytics(.)/, (_, m) => m.toLowerCase());
-          acc[key] = `${acc[key] ?? ''}|${value}`.replace(/^\|/,'');
+  document.addEventListener('click', function(event) {
+    const data = event.composedPath().reduceRight((acc, node) => {
+      if (node instanceof HTMLElement) {
+        for (const [datakey, value] of Object.entries(node.dataset)) {
+          if (datakey.startsWith('analytics')) {
+            const key = datakey.replace(/^analytics(.)/, (_, m) => m.toLowerCase());
+            acc[key] = `${acc[key] ?? ''}|${value}`.replace(/^\|/,'');
+          }
         }
       }
+      return acc;
+    }, {});
+    if (data.linktype === 'cta') {
+      document.querySelector('json-viewer').object = data;
     }
-    return acc;
-  }, {});
-  if (Object.keys(data).length) {
-    document.querySelector('json-viewer').object = data;
-  }
-});
+  });
 </script>
