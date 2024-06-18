@@ -41,6 +41,10 @@ rh-footer:
  - rh-popover
  - rh-tooltip
  - rh-site-status
+rh-health-index:
+ - rh-avatar
+ - rh-badge
+ - rh-tag
 rh-jump-links: 
  - rh-pagination
  - rh-progress-steps
