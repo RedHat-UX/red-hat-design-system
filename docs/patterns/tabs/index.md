@@ -24,6 +24,17 @@ use the [Subnav](/elements/subnavigation) element instead.
 
 </rh-alert>
 
+<nav id="simulate-nav" aria-labelledby="simulate-nav-heading">
+  <h3 id="simulate-nav-heading">Navigate to tab</h3>
+  <ul>
+    <li><a href="#north">North tab</a></li>
+    <li><a href="#south">South tab</a></li>
+    <li><a href="#east">East tab</a></li>
+    <li><a href="#west">West tab</a></li>
+    <li><a href="#best">Content inside the West tab</a></li>
+  </ul>
+</nav>
+
 {% include './patterns/link-to-tab.html' %}
 
 [element]: /elements/tabs
