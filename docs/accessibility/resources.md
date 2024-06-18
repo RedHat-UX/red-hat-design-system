@@ -24,6 +24,7 @@ order: 60
 - [Web Accessibility Evaluation Tool (WAVE)](https://wave.webaim.org/extension/): browser extension for accessibility evaluation
 - [axe DevTools](https://www.deque.com/axe/devtools/): browser extension for accessibility testing
 - [IBM’s Equal Access Checker](https://www.ibm.com/able/toolkit/tools/#develop): browser extensions and CI/CD node packages for accessibility testing
+- [TetraLogical A11y Quick Tests](https://www.youtube.com/playlist?list=PLTqm2yVMMUKWTr9XWdW5hJ9tk512Ow0SE): series of very short videos on accessibility testing methods
 
 ### Color accessibility checkers
 
@@ -51,3 +52,6 @@ order: 60
 - [How A Screen Reader User Accesses The Web: A Smashing Video (with Léonie Watson)](https://www.smashingmagazine.com/2019/02/accessibility-webinar/) — Highly recommended!
 - [Google Chrome Developers #A11ycast on YouTube](https://www.youtube.com/user/ChromeDevelopers/search?query=%23a11ycast)
 - [Google Developers: Progressive Web Apps Training](https://developers.google.com/web/ilt/pwa/)
+- [Google A11ycasts](https://www.youtube.com/watch?v=HtTyRajRuyY&index=1)
+- [Web Accessibility Perspective Videos](https://www.w3.org/WAI/perspective-videos/)
+- [US Department of Education OCR Video Series](https://adata.org/ocr-videos)
