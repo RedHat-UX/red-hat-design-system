@@ -86,7 +86,8 @@ const COPY_CONTENT_EXTENSIONS = [
 function getFilesToCopy() {
   // Copy element demo files
   const repoRoot = process.cwd();
-  const tagNames = fs.readdirSync(path.join(repoRoot, 'elements'));
+  const tagNames = fs.readdirSync(path.join(repoRoot, 'elements'))
+      .filter(item => item !== '.DS_Store');
 
   /** @type{import('@patternfly/pfe-tools/config.js').PfeConfig}*/
   const config = require('../../.pfe.config.json');
@@ -133,7 +134,9 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
 
   const filesToCopy = getFilesToCopy();
   eleventyConfig.addPassthroughCopy(filesToCopy, {
-    filter: /** @param {string} path pathname */path => !path.endsWith('.html'),
+    filter: /** @param {string} path pathname */path => {
+      return !path.endsWith('.html');
+    },
   });
 
   eleventyConfig.addTransform('demo-subresources', demoPaths);
