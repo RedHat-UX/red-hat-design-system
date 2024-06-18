@@ -7,14 +7,22 @@ tags:
 order: 50
 importElements:
   - rh-blockquote
+  - rh-table
 ---
 
+<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
+<link rel="stylesheet" href="{{ '/styles/samp.css' | url }}">
+
 <style>
-    rh-blockquote {
-        display: block;
-        margin-block: 2em !important;
-        max-width: 36em;
-    }
+  .page-spacing .container rh-table {
+    margin-block-end: var(--rh-space-3xl, 48px);
+  }
+
+  rh-blockquote {
+    display: block;
+    margin-block: 2em !important;
+    max-width: 36em;
+  }
 </style>
 
 ## Accessibility tools
