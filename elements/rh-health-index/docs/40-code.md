@@ -1,17 +1,3 @@
-{% renderOverview %}
-  <rh-health-index></rh-health-index>
-{% endrenderOverview %}
+{% renderInstall %}{% endrenderInstall %}
 
-{% band header="Usage" %}{% endband %}
-
-{% renderSlots %}{% endrenderSlots %}
-
-{% renderAttributes %}{% endrenderAttributes %}
-
-{% renderMethods %}{% endrenderMethods %}
-
-{% renderEvents %}{% endrenderEvents %}
-
-{% renderCssCustomProperties %}{% endrenderCssCustomProperties %}
-
-{% renderCssParts %}{% endrenderCssParts %}
+{% renderCodeDocs hideDescription=true %}{% endrenderCodeDocs %}
