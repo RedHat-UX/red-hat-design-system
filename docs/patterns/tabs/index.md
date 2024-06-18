@@ -26,17 +26,6 @@ use the [Subnav](/elements/subnavigation) element instead.
 
 {% include './patterns/link-to-tab.html' %}
 
-<nav id="simulate-nav">
-  <h3>Navigate to tab</h3>
-  <ul>
-    <a href="#north">North tab</a>
-    <a href="#south">South tab</a>
-    <a href="#east">East tab</a>
-    <a href="#west">West tab</a>
-    <a href="#best">West tab content element</a>
-  </ul>
-</nav>
-
 [element]: /elements/tabs
 [css-props]: /elements/tabs/code/#css-custom-properties
 
