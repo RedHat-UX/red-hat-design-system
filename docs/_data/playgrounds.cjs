@@ -128,26 +128,26 @@ module.exports = async function(data) {
       const demoSource = await fs.readFile(demo.filePath, 'utf8');
       const fragment = parseFragment(demoSource);
 
-      // const cssPrefix = demo.filePath.match(DEMO_FILEPATH_IS_MAIN_DEMO_RE) ? '' : '../';
+      const cssPrefix = demo.filePath.match(DEMO_FILEPATH_IS_MAIN_DEMO_RE) ? '' : '../';
 
-      // append(
-      //  fragment,
-      //  Tools.createCommentNode('playground-fold'),
-      //  Tools.createElement('link', {
-      //    rel: 'stylesheet',
-      //    href: `${cssPrefix}reset.css`,
-      //  }),
-      //  Tools.createElement('link', {
-      //    rel: 'stylesheet',
-      //    href: `${cssPrefix}fonts.css`,
-      //  }),
-      //  Tools.createElement('link', {
-      //    rel: 'stylesheet',
-      //    href: `${cssPrefix}typography.css`,
-      //  }),
-      //  Tools.createTextNode('\n\n'),
-      //  Tools.createCommentNode('playground-fold-end'),
-      // );
+      append(
+        fragment,
+        Tools.createCommentNode('playground-fold'),
+        Tools.createElement('link', {
+          rel: 'stylesheet',
+          href: `${cssPrefix}reset.css`,
+        }),
+        Tools.createElement('link', {
+          rel: 'stylesheet',
+          href: `${cssPrefix}fonts.css`,
+        }),
+        Tools.createElement('link', {
+          rel: 'stylesheet',
+          href: `${cssPrefix}typography.css`,
+        }),
+        Tools.createTextNode('\n\n'),
+        Tools.createCommentNode('playground-fold-end'),
+      );
 
       const filename = getDemoFilename(demo);
 
@@ -244,6 +244,34 @@ module.exports = async function(data) {
         const attrs = getAttrMap(el);
         await addSubresourceURL(attrs.src);
       }
+
+      // HACK: https://github.com/google/playground-elements/issues/93#issuecomment-1775247123
+      const inlineModules =
+        Tools.queryAll(fragment, node =>
+          Tools.isElementNode(node)
+          && isModuleScript(node)
+          && !node.attrs.some(({ name }) => name === 'src'));
+
+      Array.from(inlineModules).forEach((el, i) => {
+        const moduleName = `${primaryElementName}-${demoSlug.replace('.html', '')}-inline-script-${i++}.js`;
+        append(
+          fragment,
+          Tools.createCommentNode('playground-hide'),
+          Tools.createElement('script', {
+            type: 'module',
+            src: `./${demoSlug === 'index.html' ? '' : '../'}${moduleName}`,
+          }),
+          Tools.createTextNode('\n\n'),
+          Tools.createCommentNode('playground-hide-end'),
+        );
+
+        fileMap.set(`demo/${moduleName}`, {
+          contentType: 'text/javascript',
+          content: el.childNodes.map(x => x.value).join('\n'),
+          hidden: true,
+        });
+      });
+      // ENDHACK
 
       fileMap.set(filename, {
         contentType: 'text/html',
