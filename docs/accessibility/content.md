@@ -1,6 +1,6 @@
 ---
 title: Content
-tags: 
+tags:
  - accessibility
 order: 30
 importElements:
@@ -42,7 +42,7 @@ importElements:
     }
 </style>
 
-## Overview 
+## Overview
 
 <rh-alert state="info">
   <h3 slot="header">Note</h3>
