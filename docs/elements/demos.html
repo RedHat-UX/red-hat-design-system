@@ -40,8 +40,8 @@ playground-project section {
   {% if config.contentType %}
   {% set filetype = 'sample/' + config.contentType.split('/').pop() %}
   {% endif %}
-  <script type="{{ filetype | replace('javascript', 'js') }}"
-          filename="{{ filename or 'sample/js' }}" {{ 'hidden' if config.hidden }}>{{ config.content | safe | replace('</' + 'script>', '&lt;/script>') }}</script>
+  <script type="{{ filetype or 'sample/js' }}"
+          filename="{{ filename }}" {{ 'hidden' if config.hidden }}>{{ config.content | safe | replace('</' + 'script>', '&lt;/script>') }}</script>
   {% if config.label %}
   <section>
     <h2 id="demo-{{ config.label | slugify }}">{{ config.label }}</h2>
