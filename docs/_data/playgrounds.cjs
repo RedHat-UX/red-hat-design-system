@@ -266,7 +266,6 @@ module.exports = async function(data) {
         );
 
         fileMap.set(`demo/${moduleName}`, {
-          contentType: 'application/javascript',
           content: el.childNodes.map(x => x.value).join('\n'),
           hidden: true,
         });
