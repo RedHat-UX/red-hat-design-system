@@ -17,8 +17,6 @@ pagination:
   }
 </script>
 
-  <pre><code>{{ playground | dump(2) }}</code></pre>
-
 <playground-project id="playground-{{ element.tagName }}">
   {# see https://github.com/google/playground-elements/issues/166
   <script type="sample/importmap">{ "imports": {{ importMap.imports | dump(2) | safe | replace('"/assets', '"' + baseUrl + '/assets') }} }</script>
@@ -33,4 +31,6 @@ pagination:
   {% endif %}
 {% endfor %}
 </playground-project>
+
+{#<pre><code>{{ playground | dump(2) }}</code></pre>#}
 

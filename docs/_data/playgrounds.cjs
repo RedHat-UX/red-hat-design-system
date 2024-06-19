@@ -245,33 +245,6 @@ module.exports = async function(data) {
         await addSubresourceURL(attrs.src);
       }
 
-      // HACK: https://github.com/google/playground-elements/issues/93#issuecomment-1775247123
-      const inlineModules =
-        Tools.queryAll(fragment, node =>
-          Tools.isElementNode(node)
-          && isModuleScript(node)
-          && !node.attrs.some(({ name }) => name === 'src'));
-
-      Array.from(inlineModules).forEach((el, i) => {
-        const moduleName = `${primaryElementName}-${demoSlug.replace('.html', '')}-inline-script-${i++}.js`;
-        append(
-          fragment,
-          Tools.createCommentNode('playground-hide'),
-          Tools.createElement('script', {
-            type: 'module',
-            src: `./${demoSlug === 'index.html' ? '' : '../'}${moduleName}`,
-          }),
-          Tools.createTextNode('\n\n'),
-          Tools.createCommentNode('playground-hide-end'),
-        );
-
-        fileMap.set(`demo/${moduleName}`, {
-          content: el.childNodes.map(x => x.value).join('\n'),
-          hidden: true,
-        });
-      });
-      // ENDHACK
-
       fileMap.set(filename, {
         contentType: 'text/html',
         selected: isMainDemo,
