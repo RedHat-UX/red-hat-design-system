@@ -76,6 +76,7 @@ module.exports = function(eleventyConfig) {
         '@patternfly/elements/': '/assets/packages/@patternfly/elements/',
         '@patternfly/icons/': '/assets/packages/@patternfly/icons/',
         '@patternfly/pfe-core/': '/assets/packages/@patternfly/pfe-core/',
+        'playground-elements': 'https://cdn.jsdelivr.net/npm/playground-elements@0.18.1/+esm',
       },
     },
     localPackages: [

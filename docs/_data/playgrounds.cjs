@@ -128,9 +128,9 @@ module.exports = async function(data) {
       const demoSource = await fs.readFile(demo.filePath, 'utf8');
       const fragment = parseFragment(demoSource);
 
-      //const cssPrefix = demo.filePath.match(DEMO_FILEPATH_IS_MAIN_DEMO_RE) ? '' : '../';
+      // const cssPrefix = demo.filePath.match(DEMO_FILEPATH_IS_MAIN_DEMO_RE) ? '' : '../';
 
-      //append(
+      // append(
       //  fragment,
       //  Tools.createCommentNode('playground-fold'),
       //  Tools.createElement('link', {
@@ -147,7 +147,7 @@ module.exports = async function(data) {
       //  }),
       //  Tools.createTextNode('\n\n'),
       //  Tools.createCommentNode('playground-fold-end'),
-      //);
+      // );
 
       const filename = getDemoFilename(demo);
 

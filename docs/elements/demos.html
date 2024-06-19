@@ -25,7 +25,11 @@ playground-project section {
 </style>
 
 <script type="module">
-  import "/assets/javascript/elements/playground-elements.js";
+  import 'playground-elements';
+
+  for (const preview of document.querySelectorAll('playground-preview')) {
+    preview.htmlFile = preview.getAttribute('htmlfile');
+  }
 </script>
 
 <playground-project id="playground-{{ element.tagName }}">
