@@ -56,9 +56,10 @@ eleventyComputed:
   <article {% if hasToc and (content | toc).length > 0 %}class="has-toc"{% endif %}>
     <uxdot-header has-subnav>
       <h1 id="{{ doc.slug }}" class="page-title">{{ doc.alias or (doc.slug | deslugify) }}</h1>
-      <rh-subnav slot="subnav">{% for tab in doc.tabs %}
+      <rh-subnav slot="subnav">{% for tab in doc.tabs %}{% if loop.last %}
+        <a {{ 'active' if tab.href == page.url }} href="/elements/{{ doc.slug }}/demos/">Demos</a>{% endif %}
         <a {{ 'active' if tab.href == page.url }} href="{{ tab.href }}">
-          {{ tab.pageTitle | capitalize }}
+          {{- tab.pageTitle | capitalize -}}
         </a>{% endfor %}
       </rh-subnav>
     </uxdot-header>

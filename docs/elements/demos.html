@@ -1,11 +1,33 @@
 ---
 templateEngineOverride: njk
-layout: layouts/demo.njk
-permalink: '{{ demo.permalink }}'
+layout: layouts/pages/basic.njk
+permalink: '/elements/{{ element.slug }}/demos/'
+eleventyComputed:
+  title: '{{ element.tagName }} Demos'
 pagination:
-  data: demos
-  alias: demo
+  data: elements
+  alias: element
   size: 1
-tags:
-  - demo
 ---
+<script type="module">
+  import "/assets/javascript/elements/playground-elements.js";
+  for (const preview of document.querySelectorAll('playground-preview')) {
+    preview.htmlFile = preview.getAttribute('htmlfile');
+  }
+</script>
+
+{% set playground = playgrounds[element.tagName] %}
+{% set baseUrl = process.env.DEPLOY_PRIME_URL or 'http://localhost:8080' %}
+<playground-project id="playground-{{ element.tagName }}">
+  <script type="sample/importmap">{ "imports": {{ importMap.imports | dump(2) | safe | replace('"/assets', '"' + baseUrl + '/assets') }} }</script>
+  {% for filename, config in playground.files %}
+  <script type="sample/{{ config.contentType.split('/').pop() }}"
+          filename="{{ filename }}">{{ config.content | safe | replace('</' + 'script>', '&lt;/script>') }}</script>
+  {% if config.label %}
+  <h2>{{ config.label }}</h2>
+  <playground-preview project="playground-{{ element.tagName }}" htmlfile="{{ filename }}"></playground-preview>
+  <playground-file-editor project="playground-{{ element.tagName }}" filename="{{ filename }}"></playground-file-editor>
+  {% endif %}
+{% endfor %}
+</playground-project>
+

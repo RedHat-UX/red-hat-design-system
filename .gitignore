@@ -100,4 +100,5 @@ $RECYCLE.BIN/
 *.lnk
 
 !declaration.d.ts
-docs/assets/playgrounds/rh-playground.js
+docs/assets/javascript/elements/playground-elements.js
+docs/assets/javascript/elements/assets/playground-typescript-worker-*.js

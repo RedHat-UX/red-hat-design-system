@@ -49,7 +49,8 @@ const SRC_SUBRESOURCE_TAGNAMES = new Set([
 
 /**
  * Replace paths in demo files from the dev SPA's format to 11ty's format
- * @param {string} content
+ * @param {string} content content
+ * @param {string} pathname pathname
  */
 function demoPaths(content, pathname) {
   if (pathname.match(/elements\/.*\/demo\/index\.html$/)) {
@@ -173,7 +174,17 @@ module.exports = async function(data) {
                   await fs.readFile(subresourceFileURL, 'utf8'),
                   subresourceFileURL.pathname,
                 );
-              fileMap.set(resourceName, { content, hidden: true });
+              let contentType = 'text/plain';
+              switch (subresourceURL.split('.').pop()) {
+                case 'html': contentType = 'text/html'; break;
+                case 'css': contentType = 'text/css'; break;
+                case 'js': contentType = 'text/javascript'; break;
+              }
+              fileMap.set(resourceName, {
+                content,
+                contentType,
+                hidden: true,
+              });
             }
           } catch (e) {
             throw new SubresourceError(`Error generating playground for ${demo.slug}.\nCould not find subresource ${subresourceURL} at ${subresourceFileURL?.href ?? 'unknown'}`, e, subresourceFileURL);
