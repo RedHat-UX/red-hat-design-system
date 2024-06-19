@@ -1,0 +1,81 @@
+---
+layout: layouts/base.njk
+eleventyComputed:
+  slug: '{{ doc.slug or element.slug }}'
+  title: "{{ doc.pageTitle }} | {{ slug | deslugify }}"
+  importElements:
+    - rh-alert
+    - rh-tag
+    - rh-cta
+    - rh-footer
+    - rh-subnav
+    - rh-code-block
+    - rh-table
+    - rh-accordion
+    - rh-badge
+    - "{{ doc.tagName or element.tagName }}"
+---
+{%- if hasToc %}
+<link rel="stylesheet" href="/assets/javascript/elements/uxdot-toc-lightdom.css">
+{%- endif %}
+<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
+{%- if slug == 'audio-player' %}
+<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-audio-player/rh-audio-player-lightdom.css">
+<noscript>
+  <style>
+  rh-audio-player:not([expanded]) rh-transcript:not(:defined) {
+    display: block;
+  }
+  </style>
+</noscript>
+{%- endif %}
+{%- if slug == 'pagination' %}
+<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-pagination/rh-pagination-lightdom.css">
+{%- endif %}
+{%- if slug == 'tile' %}
+<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
+{%- endif %}
+<link rel="stylesheet" href="/styles/pages/backpage.css">
+<link rel="stylesheet" href="/styles/samp.css">
+
+<style>
+  rh-accordion details summary {
+    font-weight: var(--rh-font-weight-heading-medium, 500);
+  }
+</style>
+
+<script type="module" src="/assets/javascript/elements/uxdot-feedback.js"></script>
+<script type="module" src="/assets/javascript/elements/uxdot-copy-button.js"></script>
+
+{% include 'partials/component/masthead.njk' %}
+{% include 'partials/component/sidenav.njk' %}
+<main id="main">
+  <article {% if hasToc and (content | toc).length > 0 %}class="has-toc"{% endif %}>
+    <uxdot-header has-subnav>
+      <h1 id="{{ slug }}" class="page-title">{{ doc.alias or (slug | deslugify) }}</h1>
+      <rh-subnav slot="subnav">{% for tab in doc.tabs %}{% if loop.last %}
+        {%- set demosUrl = ("/elements/" + slug + "/demos/") -%}
+        <a {{ 'active' if page.url === demosUrl }} href="{{ demosUrl }}">Demos</a>{% endif %}
+        <a {{ 'active' if tab.href == page.url }} href="{{ tab.href }}">
+          {{- tab.pageTitle | capitalize -}}
+        </a>{% endfor %}
+      </rh-subnav>
+    </uxdot-header>
+
+    {% if hasToc and (content | toc).length > 0 %}
+    <aside>
+      <uxdot-toc summary="On this page">
+        {{ content | toc | safe }}
+      </uxdot-toc>
+    </aside>
+    {% endif %}
+
+    <div class="container">
+      {{ content | safe }}
+      {% include 'partials/component/feedback.html' %}
+    </div>
+
+  </article>
+  {% include "partials/component/back-to-top.njk" %}
+</main>
+{% include 'partials/component/footer.njk' %}
