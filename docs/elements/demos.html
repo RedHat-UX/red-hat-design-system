@@ -3,8 +3,6 @@ templateEngineOverride: njk
 hasToc: true
 layout: 'layouts/pages/elements.njk'
 permalink: '/elements/{{ element.slug }}/demos/'
-mimes:
-  js: javascript
 pagination:
   data: elements
   alias: element
@@ -50,5 +48,3 @@ playground-project section {
   {% endif %}
 {% endfor %}
 </playground-project>
-
-{#<pre><code>{{ playground | dump(2) }}</code></pre>#}
