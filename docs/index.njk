@@ -1,15 +1,15 @@
 ---
 layout: layouts/pages/home.njk
 title: Home
-
-importElements:
-  - rh-card
-  - rh-tile
 ---
 <link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css' | url }}">
 <link rel="stylesheet" href="{{ '/styles/pages/home.css' | url }}">
 
-
+<script type="module">
+  import '@rhds/elements/rh-card/rh-card.js';
+  import '@rhds/elements/rh-cta/rh-cta.js';
+  import '@rhds/elements/rh-tile/rh-tile.js';
+</script>
 
 <div class="container">
   <uxdot-hero>
@@ -39,7 +39,7 @@ importElements:
         <h2 slot="headline"><a href="/foundations">Foundations</a></h2>
         <p>Design principles to help you create engaging layouts</p>
       </rh-tile>
-        
+
       <rh-tile>
         <img src="{{ '/assets/home/elements.svg' | url }}" alt="Elements" slot="image">
         <h2 slot="headline"><a href="/elements">Elements</a></h2>
