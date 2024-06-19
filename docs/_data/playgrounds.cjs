@@ -270,7 +270,6 @@ module.exports = async function(data) {
         );
 
         fileMap.set(`demo/${moduleName}`, {
-          contentType: 'text/javascript',
           content: el.childNodes.map(x => x.value).join('\n').trim(),
           hidden: true,
         });
@@ -289,8 +288,6 @@ module.exports = async function(data) {
     }
   }
   const config = Object.fromEntries(playgroundConfigsMap.entries());
-
-  console.log(JSON.stringify(config, null, 2));
 
   performance.mark('playgrounds-end');
 
