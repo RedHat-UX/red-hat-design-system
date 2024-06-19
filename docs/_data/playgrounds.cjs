@@ -102,6 +102,10 @@ module.exports = async function(data) {
   const { parseFragment, serialize } = await import('parse5');
   const Tools = await import('@parse5/tools');
 
+  function prepend(node, ...nodes) {
+    Tools.spliceChildren(node, 0, 0, ...nodes);
+  }
+
   function append(node, ...nodes) {
     Tools.spliceChildren(node, Infinity, 0, ...nodes);
   }
@@ -266,8 +270,8 @@ module.exports = async function(data) {
         );
 
         fileMap.set(`demo/${moduleName}`, {
-          contentType: 'text/javascript; charset=utf-8',
-          content: el.childNodes.map(x => x.value).join('\n'),
+          contentType: 'text/javascript',
+          content: el.childNodes.map(x => x.value).join('\n').trim(),
           hidden: true,
         });
       });
