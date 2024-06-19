@@ -10,11 +10,22 @@ pagination:
   alias: element
   size: 1
 ---
+<style>
+playground-project section {
+  display: flex;
+  flex-flow: row wrap;
+  & playground-preview,
+  & playground-file-editor {
+    width: 100%;
+  }
+  & rh-cta {
+    margin-inline-start: auto;
+  }
+}
+</style>
+
 <script type="module">
   import "/assets/javascript/elements/playground-elements.js";
-  for (const preview of document.querySelectorAll('playground-preview')) {
-    preview.htmlFile = preview.getAttribute('htmlfile');
-  }
 </script>
 
 <playground-project id="playground-{{ element.tagName }}">
@@ -25,12 +36,15 @@ pagination:
   <script type="sample/{{ config.contentType.split('/').pop() if config.contentType else mimes[filename.split('.').pop()] }}"
           filename="{{ filename }}">{{ config.content | safe | replace('</' + 'script>', '&lt;/script>') }}</script>
   {% if config.label %}
-  <h2 id="demo-{{ config.label | slugify }}">{{ config.label }}</h2>
-  <playground-preview project="playground-{{ element.tagName }}" htmlfile="{{ filename }}"></playground-preview>
-  <playground-file-editor project="playground-{{ element.tagName }}" filename="{{ filename }}"></playground-file-editor>
+  <section>
+    <h2 id="demo-{{ config.label | slugify }}">{{ config.label }}</h2>
+    {#<rh-cta href="/elements/{{ slug }}/demo/{{ config.label | slugify}}/">View Fullscreen Demo</rh-cta>#}
+    <rh-cta><a href="/elements/{{ slug }}/demo/{{ config.label | slugify}}/">View Fullscreen Demo</a></rh-cta>
+    <playground-preview project="playground-{{ element.tagName }}" htmlfile="{{ filename }}"></playground-preview>
+    <playground-file-editor project="playground-{{ element.tagName }}" filename="{{ filename }}"></playground-file-editor>
+  </section>
   {% endif %}
 {% endfor %}
 </playground-project>
 
 {#<pre><code>{{ playground | dump(2) }}</code></pre>#}
-
