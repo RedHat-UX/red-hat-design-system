@@ -8,13 +8,5 @@ module.exports = {
     title(data) {
       return `Demos | ${this.deslugify(data.element.slug)}`;
     },
-    computedToc(data) {
-      const playground = data.playground ?? getPlayground(data);
-      const labels = Object.entries(playground?.files ?? {})
-          .filter(([, v]) => v.label)
-          .map(([filename, config]) => `<h2 id="demo-${filename.split('/').pop().split('.').shift()}">${config.label}</h2>`)
-          .join('\n');
-      return this.toc(labels);
-    },
   },
 };

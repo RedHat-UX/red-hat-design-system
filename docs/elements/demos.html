@@ -23,7 +23,7 @@ pagination:
   <script type="sample/{{ config.contentType.split('/').pop() }}"
           filename="{{ filename }}">{{ config.content | safe | replace('</' + 'script>', '&lt;/script>') }}</script>
   {% if config.label %}
-  <h2 id="demo-{{ filename.split('/').pop().split('.').shift() }}">{{ config.label }}</h2>
+  <h2 id="demo-{{ config.label | slugify }}">{{ config.label }}</h2>
   <playground-preview project="playground-{{ element.tagName }}" htmlfile="{{ filename }}"></playground-preview>
   <playground-file-editor project="playground-{{ element.tagName }}" filename="{{ filename }}"></playground-file-editor>
   {% endif %}
