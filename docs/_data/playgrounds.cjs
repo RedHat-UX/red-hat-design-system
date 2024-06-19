@@ -266,7 +266,7 @@ module.exports = async function(data) {
         );
 
         fileMap.set(`demo/${moduleName}`, {
-          contentType: 'text/javascript',
+          contentType: 'text/javascript; charset=utf-8',
           content: el.childNodes.map(x => x.value).join('\n'),
           hidden: true,
         });
@@ -285,6 +285,8 @@ module.exports = async function(data) {
     }
   }
   const config = Object.fromEntries(playgroundConfigsMap.entries());
+
+  console.log(JSON.stringify(config, null, 2));
 
   performance.mark('playgrounds-end');
 
