@@ -69,6 +69,7 @@ module.exports = function(eleventyConfig) {
     nodemodulesPublicPath: '/assets/packages',
     manualImportMap: {
       imports: {
+        '@rhds/tokens': '/assets/packages/@rhds/tokens/js/tokens.js',
         '@rhds/tokens/': '/assets/packages/@rhds/tokens/js/',
         '@rhds/elements/': '/assets/packages/@rhds/elements/elements/',
         '@rhds/elements/lib/': '/assets/packages/@rhds/elements/lib/',
