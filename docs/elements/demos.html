@@ -37,10 +37,7 @@ playground-project section {
   <script type="sample/importmap">{ "imports": {{ importMap.imports | dump(2) | safe | replace('"/assets', '"' + baseUrl + '/assets') }} }</script>
   #}
   {% for filename, config in playground.files %}
-  {% if config.contentType %}
-  {% set filetype = 'sample/' + config.contentType.split('/').pop() %}
-  {% endif %}
-  <script type="{{ filetype or 'sample/js' }}"
+  <script type="sample/{{ filename.split('.').pop() }}"
           filename="{{ filename }}" {{ 'hidden' if config.hidden }}>{{ config.content | safe | replace('</' + 'script>', '&lt;/script>') }}</script>
   {% if config.label %}
   <section>
