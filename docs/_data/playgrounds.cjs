@@ -128,26 +128,26 @@ module.exports = async function(data) {
       const demoSource = await fs.readFile(demo.filePath, 'utf8');
       const fragment = parseFragment(demoSource);
 
-      const cssPrefix = demo.filePath.match(DEMO_FILEPATH_IS_MAIN_DEMO_RE) ? '' : '../';
+      //const cssPrefix = demo.filePath.match(DEMO_FILEPATH_IS_MAIN_DEMO_RE) ? '' : '../';
 
-      append(
-        fragment,
-        Tools.createCommentNode('playground-fold'),
-        Tools.createElement('link', {
-          rel: 'stylesheet',
-          href: `${cssPrefix}reset.css`,
-        }),
-        Tools.createElement('link', {
-          rel: 'stylesheet',
-          href: `${cssPrefix}fonts.css`,
-        }),
-        Tools.createElement('link', {
-          rel: 'stylesheet',
-          href: `${cssPrefix}typography.css`,
-        }),
-        Tools.createTextNode('\n\n'),
-        Tools.createCommentNode('playground-fold-end'),
-      );
+      //append(
+      //  fragment,
+      //  Tools.createCommentNode('playground-fold'),
+      //  Tools.createElement('link', {
+      //    rel: 'stylesheet',
+      //    href: `${cssPrefix}reset.css`,
+      //  }),
+      //  Tools.createElement('link', {
+      //    rel: 'stylesheet',
+      //    href: `${cssPrefix}fonts.css`,
+      //  }),
+      //  Tools.createElement('link', {
+      //    rel: 'stylesheet',
+      //    href: `${cssPrefix}typography.css`,
+      //  }),
+      //  Tools.createTextNode('\n\n'),
+      //  Tools.createCommentNode('playground-fold-end'),
+      //);
 
       const filename = getDemoFilename(demo);
 
