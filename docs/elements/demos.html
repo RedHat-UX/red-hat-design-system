@@ -24,27 +24,64 @@ playground-project section {
 
 <script type="module">
   import 'playground-elements';
-
-  for (const preview of document.querySelectorAll('playground-preview')) {
-    preview.htmlFile = preview.getAttribute('htmlfile');
-  }
 </script>
 
-<playground-project id="playground-{{ element.tagName }}">
-  {# see https://github.com/google/playground-elements/issues/166
-  <script type="sample/importmap">{ "imports": {{ importMap.imports | dump(2) | safe | replace('"/assets', '"' + baseUrl + '/assets') }} }</script>
-  #}
-  {% for filename, config in playground.files %}
-  <script type="sample/{{ filename.split('.').pop() }}"
-          filename="{{ filename }}" {{ 'hidden' if config.hidden }}>{{ config.content | safe | replace('</' + 'script>', '&lt;/script>') }}</script>
-  {% if config.label %}
+{% set commonFiles %}
+{% if isLocal %}
+<script type="sample/importmap">
+{
+  "imports": {{
+    importMap.imports
+    | dump(2)
+    | safe
+    | replace('"/assets', '"' + baseUrl + '/assets')
+  }}
+}
+</script>
+{% endif %}
+{% for filename, config in playground.files %}
+{% if not config.label %}
+{% set extension = filename.split('.').pop() %}
+<script type="sample/{{ extension }}"
+        filename="{{ filename }}" {% if config.hidden %}
+        hidden
+        {%- endif -%}>
+  {{-
+    config.content
+      | safe
+      | replace('</' + 'script>', '&lt;/script>')
+  -}}
+</script>
+{% endif %}
+{% endfor %}
+{% endset %}
+
+{% for filename, config in playground.files %}
+{% if config.label %}
+{% set extension = filename.split('.').pop() %}
+{% set projectId = 'playground-' + element.tagName + '-' + filename.split('.').shift().replace('demo/', '').replaceAll('/', '-') %}
+<playground-project id="{{ projectId }}" {% if isLocal %}
+                    sandbox-base-url="http://localhost:8080"
+                    {%- endif -%}>
+  {{ commonFiles | safe }}
+  <script type="sample/{{ extension }}"
+          filename="{{ filename }}">
+    {{-
+      config.content
+      | safe
+      | replace('</' + 'script>', '&lt;/script>')
+    -}}
+  </script>
   <section>
     <h2 id="demo-{{ config.label | slugify }}">{{ config.label }}</h2>
     {#<rh-cta href="/elements/{{ slug }}/demo/{{ config.label | slugify}}/">View Fullscreen Demo</rh-cta>#}
     <rh-cta><a href="/elements/{{ slug }}/demo/{{ config.label | slugify}}/">View Fullscreen Demo</a></rh-cta>
-    <playground-preview project="playground-{{ element.tagName }}" htmlfile="{{ filename }}"></playground-preview>
-    <playground-file-editor project="playground-{{ element.tagName }}" filename="{{ filename }}"></playground-file-editor>
+    <playground-preview project="{{ projectId }}"
+                        html-file="{{ filename }}"></playground-preview>
+    <playground-file-editor project="{{ projectId }}"
+                            filename="{{ filename }}"
+                            line-numbers></playground-file-editor>
   </section>
-  {% endif %}
-{% endfor %}
 </playground-project>
+{% endif %}
+{% endfor %}
