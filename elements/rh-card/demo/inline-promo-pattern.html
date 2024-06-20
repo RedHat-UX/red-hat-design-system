@@ -1,8 +1,9 @@
-<h1>Inline Promo</h1>
+<div class="mb-2xl">
+  <h1>Inline Promo</h1>
+  <p>A generic but flexible pattern to feature an image, heading, content and a call to action with <code>&lt;rh-card&gt;</code>.</p>
+</div>
 
-<p>A generic but flexible pattern to feature an image, heading, content and a call to action with <code>&lt;rh-card&gt;</code>.</p>
-
-<h2>Default Inline Promo:</h2>
+<h2 class="mb-2xl">Default Inline Promo:</h2>
 
 <rh-card variant="inline-promo">
   <svg slot="image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 190">
@@ -12,17 +13,18 @@
     <line x1="320" y1="0" x2="0" y2="190" stroke="#d6e7f5"/>
   </svg>
 
-  <h2>Featured: left aligned with image</h2>
+  <!-- <h2>Featured: left aligned with image</h2> -->
+  <h2>Heading</h2>
   <p>This is the default Inline Promo card. If you want, you can customize the shadow DOM by using the <code>::part</code> selector. Using this technique, you can have padding on any side, or none at all.</p>
   <rh-cta>
     <a href="#">Call to action</a>
   </rh-cta>
 </rh-card>
 
-<h2 class="customizations">Customizations to Inline Promo:</h2>
-
+<div class="customizations mb-2xl">
+<h2>Customizations to Inline Promo:</h2>
 <p>Using your own CSS, you can customize the look and feel of Inline Promo.</p>
-
+</div>
 <rh-card variant="inline-promo" class="reverse">
   <svg slot="image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 190">
     <title>A placeholder image in rh-card in the "image" slot</title>
@@ -75,21 +77,21 @@
   <rh-cta slot="image">
     <a href="#">Call to action</a>
   </rh-cta>
-  <p>This is the "standard" Inline Promo. It has a paragraph and a CTA in the "image" slot.</p>
+  <p>The &rdquo;standard&ldquo; Inline Promo. It has a paragraph and a CTA in the &rdquo;image&ldquo; slot.</p>
 </rh-card>
 
 <rh-card variant="inline-promo" class="standard reverse">
   <rh-cta slot="image">
     <a href="#">Call to action</a>
   </rh-cta>
-  <p>In this "standard" Inline Promo, the slots get reversed using a class.</p>
+  <p>In this &rdquo;standard&ldquo; Inline Promo, the slots get reversed using a class.</p>
 </rh-card>
 
 <rh-card variant="inline-promo" class="standard" color-palette="darkest">
   <rh-cta slot="image">
     <a href="#">Call to action</a>
   </rh-cta>
-  <p>A "standard" Inline Promo with a <code>color-palette</code> attribute added to the <code>&lt;rh-card&gt;</code> tag.</p>
+  <p>A &rdquo;standard&ldquo; Inline Promo with a <code>color-palette</code> attribute added to the <code>&lt;rh-card&gt;</code> tag.</p>
 </rh-card>
 
 <script type="module">
@@ -175,6 +177,8 @@
   /*****************************************************************************
    * INLINE PROMO STANDARD
    *****************************************************************************/
+
+  /* NOTE: class name must be `.standard` */
   rh-card[variant="inline-promo"].standard::part(container) {
     background-color: var(--rh-color-surface-lighter, #f2f2f2);
     padding: var(--rh-space-2xl, 32px);
@@ -228,6 +232,15 @@
   /*****************************************************************************
    * MISC DEMO STYLES
    *****************************************************************************/
+  h1, h2 {
+    font-weight: var(--rh-font-weight-heading-medium, 500) !important;
+    margin-block-end: var(--rh-space-md, 8px);
+  }
+
+  h2 {
+    font-size: var(--rh-font-size-heading-md, 1.75rem);
+  }
+
   .bg-off-white {
     background-color: var(--rh-color-surface-lighter, #f2f2f2);
     padding: var(--rh-space-xl, 24px);
@@ -236,6 +249,10 @@
 
   .customizations {
     margin-block-start: var(--rh-space-4xl, 64px);
+  }
+
+  .mb-2xl {
+    margin-block-end: var(--rh-space-2xl, 32px);
   }
 
   rh-card[variant="inline-promo"]:not(.full-width) {

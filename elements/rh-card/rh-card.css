@@ -128,6 +128,12 @@ article {
  * INLINE PROMO
  *****************************************************************************/
 :host([variant~="inline-promo"]) {
+  --rh-card-inline-promo-heading-size: var(--rh-font-size-heading-xs, 1.25rem);
+  --rh-card-inline-promo-heading-font-weight: var(--rh-font-weight-heading-medium, 500);
+  --rh-card-inline-promo-heading-margin-block-end: var(--rh-space-lg, 16px);
+  --rh-card-inline-promo-paragraph-size: var(--rh-font-size-body-text-lg, 1.125rem);
+  --rh-card-inline-promo-paragraph-margin-block-end: var(--rh-space-xl, 24px);
+
   container: inline-promo / inline-size;
   display: block;
 }
@@ -143,7 +149,15 @@ article {
 }
 
 :host([variant~="inline-promo"]) #body ::slotted(h2) {
+  font-size: var(--rh-card-inline-promo-heading-size) !important;
+  font-weight: var(--rh-card-inline-promo-heading-font-weight) !important;
   margin-block-start: 0;
+  margin-block-end: var(--rh-card-inline-promo-heading-margin-block-end) !important;
+}
+
+:host([variant~="inline-promo"]:not(.standard)) #body ::slotted(p) {
+  font-size: var(--rh-card-inline-promo-paragraph-size) !important;
+  margin-block-end: var(--rh-card-inline-promo-paragraph-margin-block-end) !important;
 }
 
 @container inline-promo (min-width: 768px) {
@@ -163,10 +177,6 @@ article {
   }
 
   :host([variant~="inline-promo"]) #body ::slotted(h2) {
-    font-size: var(--rh-font-size-body-text-2xl, 1.5rem);
-  }
-
-  :host([variant~="inline-promo"]) #body ::slotted(p) {
-    font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+    --rh-card-inline-promo-heading-size: var(--rh-font-size-body-text-2xl, 1.5rem);
   }
 }

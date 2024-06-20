@@ -31,7 +31,22 @@ import styles from './rh-card.css';
  * @cssprop     {<length>} --rh-card-header-font-size
  *              Font size for header on card
  *              {@default `1.5rem`}
- */
+ * @cssprop     --rh-card-inline-promo-heading-size
+                Size of inline promo heading
+                {@default `var(--rh-font-size-heading-xs, 1.25rem)`}
+ * @cssprop     {<number>} --rh-card-inline-promo-heading-font-weight
+                Font weight of inline promo heading
+                {@default `var(--rh-font-weight-heading-medium, 500)`}
+ * @cssprop     {<length>} --rh-card-inline-promo-heading-margin-block-end
+                Bottom margin on inline promo heading
+                {@default `var(--rh-space-lg, 16px)`}
+ * @cssprop     --rh-card-inline-promo-paragraph-size
+                Inline promo paragraph size
+                {@default `var(--rh-font-size-body-text-lg, 1.125rem)`}
+ * @cssprop     {<length>} --rh-card-inline-promo-paragraph-margin-block-end
+                Bottom margin on inline promo paragraph
+                {@default `var(--rh-space-xl, 24px)`}
+*/
 @customElement('rh-card')
 export class RhCard extends LitElement {
   static readonly version = '{{version}}';
