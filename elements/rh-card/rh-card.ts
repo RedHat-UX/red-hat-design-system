@@ -2,7 +2,7 @@ import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { html, isServer, LitElement } from 'lit';
+import { html, LitElement } from 'lit';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 import { colorContextProvider } from '../../lib/context/color/provider.js';
 
