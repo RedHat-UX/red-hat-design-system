@@ -1,3 +1,15 @@
+<style>
+  .list-flat {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  rh-table caption {
+    font-weight: var(--rh-font-weight-body-text-regular, 400);
+    font-size: var(--rh-font-size-code-sm, 0.875rem);
+  }
+</style>
+
 ## Style
 
 Health index is a combination of letter grades and severity colors. Severity colors communicate a positive or negative status. For example, green has a positive status and red has a negative status. To meet accessibility standards, letter grades are also used so that color is not the only element communicating the health of something. Health index does not include any interactive elements.
@@ -19,7 +31,7 @@ Health index is a combination of letter grades and severity colors. Severity col
 
 ### Variants
 
-There are four available variants: `Mini`, `Default`, `Large`, and `Extra large`. The only difference between the Large and Extra large variants is the size.
+There are four available variants: `Small`, `Default`, `Large`, and `Extra large`. The only difference between the Large and Extra large variants is the size.
 
 <uxdot-example width-adjustment="752px">
   <img src="{{ '../style-variants.png' | url }}" alt="4 columns of health index components. Each column is a different size. Under each column, there is every letter grade and severity color.">
@@ -65,7 +77,7 @@ Health index is available in both light and dark themes.
 Squares in the Default, Large, and Extra large variants are aligned horizontally.
 
 <uxdot-example width-adjustment="752px">
-  <img src="{{ '../style-configuration.png' | url }}" alt="3 examples of health index component configurations. The mini size is just 1 square, so it’s horizontally and vertically centered. The default, large, and extra large sizes are rows of squares, so they’re horizontally centered only.">
+  <img src="{{ '../style-configuration.png' | url }}" alt="3 examples of health index component configurations. The small size is just 1 square, so it’s horizontally and vertically centered. The default, large, and extra large sizes are rows of squares, so they’re horizontally centered only.">
 </uxdot-example>
 
 
@@ -80,26 +92,13 @@ The spacer in the Default variant is the same for all viewport sizes.
 
 ## States
 
-## Severity level
+### Severity level
 
 Depending on the theme and chosen variant, each severity level can have different colors and font styling.
 
 <uxdot-example width-adjustment="752px">
   <img src="{{ '../style-severity-level-light.png' | url }}" alt="Multiple light theme health index components at different sizes. Annotations 1 through 4 are pointing to various styling details as well as letter grades that have been enlarged.">
 </uxdot-example>
-
-<style>
-  .list-flat {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  rh-table caption {
-    font-weight: var(--rh-font-weight-body-text-regular, 400);
-    font-size: var(--rh-font-size-code-sm, 0.875rem);
-  }
-</style>
 
 <rh-table>
   <table>
@@ -117,7 +116,7 @@ Depending on the theme and chosen variant, each severity level can have differen
     <tbody>
       <tr>
         <td data-label="#">1</td>
-        <td data-label="Variant">Mini</td>
+        <td data-label="Variant">Small</td>
         <td data-label="Font weight">Regular</td>
         <td data-label="Text color"><code>green-70</code></td>
         <td data-label="Fill color"><code>green-20</code></td>
