@@ -70,7 +70,7 @@ A quick start guide for installing the local development tools needed for contri
 
 
     <rh-code-block>
-      <script type="text/x-shellscript">npm run docs</script>
+      <script type="text/x-shellscript">npm run serve</script>
     </rh-code-block>
 
 ## Creating a new element
