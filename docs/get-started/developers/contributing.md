@@ -62,7 +62,7 @@ A quick start guide for installing the local development tools needed for contri
     </rh-code-block>
 
     Two servers will start, if no other processes are using port `:8000` or `:8080` the element development server will load on `:8000` and the documentation server will load on `:8080`. The element server will auto open a browser window, the documentation server however will not.  
-2. To run these servers independently you can use the commands `npm run dev` and `npm run docs`.
+2. To run these servers independently you can use the commands `npm run dev` and `npm run serve`.
 
     <rh-code-block>
       <script type="text/x-shellscript">npm run dev</script>
