@@ -114,8 +114,8 @@ A quick start guide for installing the local development tools needed for contri
     </rh-code-block>
 
 3. The project uses [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/) and are run via [Web Test Runner](https://modern-web.dev/docs/test-runner/overview/)
-4. For more detailed information about testing and how we write tests please see our [Wiki page](https://github.com/RedHat-UX/red-hat-design-system/wiki/Testing)
-
+4. For more detailed information about testing and how we write tests please see our [Testing](https://github.com/RedHat-UX/red-hat-design-system/wiki/Testing)
+ Wiki page.
 ## Writing Code
 
 1.  Please Developer Guidelines section of our Wiki
