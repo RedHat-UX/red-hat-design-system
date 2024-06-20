@@ -115,6 +115,7 @@
         "react-wrappers",
         "compile",
         "bundle",
+        "copy-css",
         "docs"
       ]
     },

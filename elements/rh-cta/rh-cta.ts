@@ -12,8 +12,6 @@ import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/c
 
 import style from './rh-cta.css';
 
-import '@patternfly/elements/pf-icon/pf-icon.js';
-
 export interface CtaData {
   href?: string;
   text?: string;
@@ -149,6 +147,13 @@ export class RhCta extends LitElement {
   #dir = new DirController(this);
 
   #logger = new Logger(this);
+
+  protected override async getUpdateComplete(): Promise<boolean> {
+    if (this.icon) {
+      await import('@patternfly/elements/pf-icon/pf-icon.js');
+    }
+    return super.getUpdateComplete();
+  }
 
   get #isDefault(): boolean {
     return !this.hasAttribute('variant');
