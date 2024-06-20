@@ -97,7 +97,7 @@ A quick start guide for installing the local development tools needed for contri
     - `./elements/rh-element-name/rh-element-name.css`
     - `./elements/rh-element-name/README.md`
 
-4. For more information please read our Wiki page on [adding new components](https://github.com/RedHat-UX/red-hat-design-system/wiki/Adding-New-Components) 
+4. For more information please read our [Wiki](https://github.com/RedHat-UX/red-hat-design-system/wiki) page on [adding new components](https://github.com/RedHat-UX/red-hat-design-system/wiki/Adding-New-Components) 
 
 ## Testing
 
@@ -115,10 +115,10 @@ A quick start guide for installing the local development tools needed for contri
 
 3. The project uses [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/) and are run via [Web Test Runner](https://modern-web.dev/docs/test-runner/overview/)
 4. For more detailed information about testing and how we write tests please see our [Testing](https://github.com/RedHat-UX/red-hat-design-system/wiki/Testing)
- Wiki page.
+ [Wiki](https://github.com/RedHat-UX/red-hat-design-system/wiki) page.
 ## Writing Code
 
-1.  Please Developer Guidelines section of our Wiki
+1.  Please read our Developer Guidelines section of our [Wiki](https://github.com/RedHat-UX/red-hat-design-system/wiki)
     - [Custom Element API Style Guide](https://github.com/RedHat-UX/red-hat-design-system/wiki/Custom-Elements-API-Style-Guide)
     - [Shadow DOM](https://github.com/RedHat-UX/red-hat-design-system/wiki/Shadow-DOM-Style-Guide)
     - [HTML Formatting](https://github.com/RedHat-UX/red-hat-design-system/wiki/HTML-Formatting)
@@ -128,7 +128,7 @@ A quick start guide for installing the local development tools needed for contri
 ## Contributing 
 
 1. When your code is ready to push to our repository, please open a Pull Request/Merge Request. You may first need to request access.  Please reach out to us on Slack `#red-hat-design-system` <rh-tag color="red" variant="outline">Internal Red Hat only</rh-tag> or [open an issue](https://github.com/RedHat-UX/red-hat-design-system/issues/new/choose).
-2. Before pushing your code please read our [Pull Request Review Guide on our Wiki](https://github.com/RedHat-UX/red-hat-design-system/wiki/Pull-Request-Review-Guide)
+2. Before pushing your code please read our [Pull Request Review Guide](https://github.com/RedHat-UX/red-hat-design-system/wiki/Pull-Request-Review-Guide) on our [Wiki](https://github.com/RedHat-UX/red-hat-design-system/wiki)
 
 <uxdot-feedback>
   <h2>Designers</h2>
