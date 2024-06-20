@@ -129,3 +129,8 @@ A quick start guide for installing the local development tools needed for contri
 
 1. When your code is ready to push to our repository, please open a Pull Request/Merge Request. You may first need to request access.  Please reach out to us on Slack `#red-hat-design-system` <rh-tag color="red" variant="outline">Internal Red Hat only</rh-tag> or [open an issue](https://github.com/RedHat-UX/red-hat-design-system/issues/new/choose).
 2. Before pushing your code please read our [Pull Request Review Guide on our Wiki](https://github.com/RedHat-UX/red-hat-design-system/wiki/Pull-Request-Review-Guide)
+
+<uxdot-feedback>
+  <h2>Designers</h2>
+  <p>To get started using our design system as a designer, go to the <a href="get-started/designers">Designers</a> page.</p>
+</uxdot-feedback>
