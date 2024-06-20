@@ -2,82 +2,96 @@
 
 A Switch resembles a slider and includes a status message. When activated, the track background changes color and the handle changes position. If a user needs to toggle multiple Switches, they can be stacked on top of each other.
 
+
 ### Anatomy
 
-{% example palette="light",
-            alt="with numbers labeling the track, handle, and status message",
-            src="../switch-anatomy.svg" %}
+<figure>
+  <uxdot-example width-adjustment="40px">
+    <img src="{{ '../switch-anatomy.svg' | url }}" alt="with numbers labeling the track, handle, and status message">
+  </uxdot-example>
+  <figcaption>
+    <ol>
+      <li>Track</li>
+      <li>Handle</li>
+      <li>Status message</li>
+    </ol>
+  </figcaption>
+</figure>
 
-1. Track
-2. Handle
-3. Status message
-{.example-notes}
 
 ## Theme
 
 A Switch is available in both light and dark themes.
 
-<div class="multi-column--min-400-wide">
-{% example palette="light",
-            alt="Light theme switch with blue track, white handle, and black text",
-            src="../switch-theme-light.svg" %}
+<div class="grid xs-two-columns">
+  <uxdot-example width-adjustment="40px">
+    <img src="{{ '../switch-theme-light.svg'  | url }}" alt="Light theme switch with blue track, white handle, and black text">
+  </uxdot-example>
 
-{% example palette="darkest",
-            alt="Dark theme switch with light blue track, black handle, and white text",
-            src="../switch-theme-dark.svg" %}
+  <uxdot-example width-adjustment="40px">
+    <img src="{{ '../switch-theme-dark.svg'  | url }}" alt="Dark theme switch with light blue track, black handle, and white text">
+  </uxdot-example>
 </div>
-
 
 ## Configuration
 
 A Switch is the same height as the status message and both are horizontally aligned as well.
 
-{% example palette="light",
-            alt="Switch and status message are 24px tall. Switch is 40px wide.",
-            src="../switch-configuration-height.svg" %}
+<div class="grid xs-two-columns">
+  <uxdot-example width-adjustment="250px">
+    <img src="{{ '../switch-configuration-height.svg' | url }}" alt="Switch and status message are 24px tall. Switch is 40px wide.">
+  </uxdot-example>
 
-{% example palette="light",
-            alt="Horizontally aligned switch and status message",
-            src="../switch-configuration-alignment.svg" %}
+  <uxdot-example width-adjustment="250px">
+    <img src="{{ '../switch-configuration-alignment.svg'  | url }}" alt="Horizontally aligned switch and status message">
+  </uxdot-example>
+</div>
+
 
 ### Status messages
 
 A status message can be positioned to the right or left of a Switch.
 
+<uxdot-example width-adjustment="500px">
+  <img src="{{ '../switch-status-message.svg'  | url }}" alt="One switch with status message on the left and another with status message on the right">
+</uxdot-example>
 
-{% example palette="light",
-            alt="One switch with status message on the left and another with status message on the right",
-            src="../switch-status-message.svg" %}
 
 ## Space
 
 Space values remain the same at all viewport sizes.
 
-{% example palette="light",
-            alt="16px spacer between the switch and status message",
-            src="../switch-space-individual.svg" %}
+<uxdot-example width-adjustment="170px">
+  <img src="{{ '../switch-space-individual.svg'  | url }}" alt="16px spacer between the switch and status message">
+</uxdot-example>
 
-{% example palette="light",
-            alt="24px spacer between stacked switches with status messages",
-            src="../switch-space-stack.svg" %}
+<uxdot-example width-adjustment="170px">
+  <img src="{{ '../switch-space-stack.svg'  | url }}" alt="24px spacer between stacked switches with status messages">
+</uxdot-example>
+
 
 ## States
 
 A Switch and the status message cx count as the same selectable object.
 
-{% alert title="Helpful tip", state="info" %}
-The visual appearance of a Switch does not change unless toggled.
-{% endalert %}
+<rh-alert state="info">
+ <p>The visual appearance of a Switch does not change unless toggled.</p>
+</rh-alert>
 
-{% example palette="light",
-            alt="Switches that are on, off, disabled, hovered, active, and in focus",
-            src="../switch-states.svg" %}
 
-1. On
-2. On with check
-3. Off
-4. Disabled
-5. Hover
-6. Focus
-7. Active
-{.example-notes}
+<figure>
+  <uxdot-example width-adjustment="872px">
+    <img src="{{ '../switch-states.svg'  | url }}" alt="Switches that are on, off, disabled, hovered, active, and in focus">
+  </uxdot-example>
+  <figcaption>
+    <ol>
+      <li>On</li>
+      <li>On with check</li>
+      <li>Off</li>
+      <li>Disabled</li>
+      <li>Hover</li>
+      <li>Focus</li>
+      <li>Active</li>
+    </ol>
+  </figcaption>
+</figure>

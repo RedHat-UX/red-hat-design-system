@@ -2,6 +2,7 @@
 
 Use a Switch to adjust settings or make a binary selection like on or off and true or false.
 
+
 ### Switch vs. other selection controls
 
 Deciding whether to use a Switch vs. other selection controls can be confusing. The table below summarizes questions and answers about these frequently used elements.
@@ -57,6 +58,7 @@ Deciding whether to use a Switch vs. other selection controls can be confusing. 
   </table>
 </rh-table>
 
+
 ## Variants
 
 A Switch displays a state through different methods and locations.
@@ -66,9 +68,10 @@ A Switch displays a state through different methods and locations.
 - The check icon is used in place of the Switch status message if space is limited
 - The Switch status message is used with a check icon to add clarity if necessary
 
-{% example palette="light",
-            alt="four variants of switch",
-            src="../switch-variants.svg" %}
+<uxdot-example width-adjustment="783px">
+  <img src="{{ '../switch-variants.svg' | url }}" alt="four variants of switch">
+</uxdot-example>
+
 
 ## Using status messages
 
@@ -95,10 +98,12 @@ Here's an example of a status message from a <a href="../demo/rh-switch.html">Sw
   </script>
 </rh-code-block>
 
+
 ### Implementation notes:
 - If you are not adding a custom status message `<div>`, do not include an `aria-describedby` attribute, as it will have no `id` to which it can point.
 - You can also add static messages by placing text directly in the status `<div>`, rather than within the dynamic “on” and “off” `<span>` elements.
 - You may need to style the status `<div>` to place it where you want in relation to the switch.
+
 
 ### Status messages vs. form labels
 
@@ -108,26 +113,33 @@ Unlike a status message, a form label is required whenever Switch is used. A for
   <a href="../accessibility/#using-form-labels">Learn how to use form labels with Switch</a>
 </rh-cta>
 
+
 ## Writing content
 
 In general, users scan and do not read everything, so use keywords and avoid long phrases and questions.
+
 
 ### Clarity of language
 
 The status message and form label should be short and direct, not neutral or ambiguous.
 
-<div class="best-practices-grid">
-    <div>
-        <img slot="header" src="/switch-language-clarity-do.svg" alt="">
-        <h4 class="correct">Do</h4>
-        <p>Ensure the message is clear when a Switch is toggled to the On or Off position and that the form label explains the switch's purpose.</p>
-    </div>
-    <div>
-        <img slot="header" src="switch-language-clarity-do-not.svg" alt="">
-        <h4 class="wrong">Don't</h4>
-        <p>Do not use a status message that does not make the switch state clear, especially if the form label is hidden.</p>
-    </div>
+
+<div class="grid sm-two-columns">
+  <uxdot-best-practice do>
+    <uxdot-example slot="image" no-border variant="full" alignment="left" width-adjustment="241px">
+      <img src="{{ '../switch-language-clarity-do.svg' | url }}" alt="Magenta button, brand red default call to action, green tooltip, and dark orange switch">
+    </uxdot-example>
+    <p>Ensure the message is clear when a Switch is toggled to the On or Off position and that the form label explains the switch's purpose.</p>
+  </uxdot-best-practice>
+
+  <uxdot-best-practice dont>
+    <uxdot-example slot="image" no-border variant="full" alignment="left"  width-adjustment="254px">
+      <img src="{{ '../switch-language-clarity-do-not.svg' | url }}" alt="Magenta button, brand red default call to action, green tooltip, and dark orange switch">
+    </uxdot-example>
+    <p>Do not use a status message that does not make the switch state clear, especially if the form label is hidden.</p>
+  </uxdot-best-practice>
 </div>
+
 
 ### Character count
 
@@ -154,23 +166,26 @@ The recommended maximum character count is listed below and includes spaces.
   </table>
 </rh-table>
 
+
 ## Layout
 
 ### Stacking
 
 Use a stack of Switches for situations where multiple independent options need to be turned on or off.
 
-{% example palette="light",
-            alt="four switches, half of which are on, stacked in a column",
-            src="../switch-layout-stacking.svg" %}
+<uxdot-example width-adjustment="40px">
+  <img src="{{ '../switch-layout-stacking.svg' | url }}" alt="four switches, half of which are on, stacked in a column">
+</uxdot-example>
+
 
 ## Behavior
 
 A Switch is successfully toggled when the handle slides to the other side of the track and the status message changes. When a user toggles a Switch, the effects should start immediately without needing to save. If immediate results are not achievable, another element should be used instead (see table above in Usage section).
 
-{% example palette="light",
-            alt="One switch that is on, next to one that is off",
-            src="../switch-behavior.svg" %}
+<uxdot-example width-adjustment="40px">
+  <img src="{{ '../switch-behavior.svg' | url }}" alt="One switch that is on, next to one that is off">
+</uxdot-example>
+
 
 ## Best practices
 
@@ -178,19 +193,22 @@ A Switch is successfully toggled when the handle slides to the other side of the
 
 To avoid confusion as to what a Switch will do, always include some kind of status message or a form label.
 
-<div class="best-practices-grid">
-    <div>
-        <img slot="header" src="../switch-best-practice-no-status-message-do.svg" alt="Switches with Bluetooth as a form label and/or a status message">
-        <h4 class="correct">Do</h4>
-        <p>Include a form label or status message to indicate to a user what will happen when a Switch is toggled.</p>
-    </div>
-    <div>
-    <div>
-        <img slot="header" src="../switch-best-practice-no-status-message-do-not.svg" alt="Two switches without a form label or status message">
-        <h4 class="wrong">Don't</h4>
-        <p>Do not make it unknown to users what a Switch will do when toggled.</p>
-    </div>
+<div class="grid sm-two-columns">
+  <uxdot-best-practice do>
+    <uxdot-example slot="image" no-border variant="full" alignment="left" width-adjustment="40px">
+      <img src="{{ '../switch-best-practice-no-status-message-do.svg' | url }}" alt="Switches with Bluetooth as a form label and/or a status message">
+    </uxdot-example>
+    <p>Ensure the message is clear when a Switch is toggled to the On or Off position and that the form label explains the switch's purpose.</p>
+  </uxdot-best-practice>
+
+  <uxdot-best-practice dont>
+    <uxdot-example slot="image" no-border variant="full" alignment="left" width-adjustment="40px">
+      <img src="{{ '../switch-best-practice-no-status-message-do-not.svg' | url }}" alt="Two switches without a form label or status message">
+    </uxdot-example>
+    <p>Do not make it unknown to users what a Switch will do when toggled.</p>
+  </uxdot-best-practice>
 </div>
+
 
 <!-- Should this be added once we have toggle group available? -->
 ### Binary vs. opposing options
@@ -218,15 +236,18 @@ A Switch controls binary options, not opposing ones. A binary option represents 
 
 Switches can be used in a list to toggle multiple independent options.
 
-<div class="best-practices-grid">
-    <div>
-        <img slot="header" src="../switch-best-practice-multiple-options-do.svg" alt="Four switches stacked vertically with half of them turned on">
-        <h4 class="correct">Do</h4>
-        <p>Use Switches in a list only if the effects from toggling each Switch are immediate.</p>
-    </div>
-    <div>
-        <img slot="header" src="../switch-best-practice-multiple-options-do-not.svg" alt="Four switches stacked vertically with a save button below them>
-        <h4 class="wrong">Don't</h4>
-        <p>Do not use Switches in a list if a user has to save to see the effects.</p>
-    </div>
+<div class="grid sm-two-columns">
+  <uxdot-best-practice do>
+    <uxdot-example slot="image" no-border variant="full" alignment="left" width-adjustment="160px">
+      <img src="{{ '../switch-best-practice-multiple-options-do.svg' | url }}" alt="Four switches stacked vertically with half of them turned on">
+    </uxdot-example>
+    <p>Use Switches in a list only if the effects from toggling each Switch are immediate.</p>
+  </uxdot-best-practice>
+
+  <uxdot-best-practice dont>
+    <uxdot-example slot="image" no-border variant="full" alignment="left" width-adjustment="160px">
+      <img src="{{ '../switch-best-practice-multiple-options-do-not.svg' | url }}" alt="Four switches stacked vertically with a save button below them">
+    </uxdot-example>
+    <p>Do not use Switches in a list if a user has to save to see the effects</p>
+  </uxdot-best-practice>
 </div>

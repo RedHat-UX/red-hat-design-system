@@ -2,9 +2,9 @@
 
 {{ tagName | getElementDescription }}
 
-{% example palette="light",
-            alt="example of switch that's on",
-            src="../switch-overview.svg" %}
+<uxdot-example width-adjustment="222px">
+  <img src="{{ './switch-overview.svg' | url }}" alt="example of switch that's on">
+</uxdot-example>
 
 {% repoStatusList %}
 
@@ -19,10 +19,12 @@
 
 ## Demo
 
-View a live version of this component and see how it can be customized.
+View a live version of this element to see how it can be customized.
 
 {% playground tagName=tagName %}{% endplayground %}
-{% cta href="./demo/", target="_blank" %}View the `<rh-switch>` demo in a new tab{% endcta %}
+
+<rh-cta><a href="{{ './demo/' | url }}">Full screen demo</a></rh-cta>
+
 
 ## When to use
 

@@ -2,9 +2,9 @@
 
 Users should have the ability to move focus to a Switch and toggle it on or off using their keyboard.
 
-{% example palette="light",
-            alt="Diagram of switch with text and arrows that show what can be controlled by keyboard",
-            src="../switch-keyboard-nav.svg" %}
+<uxdot-example width-adjustment="240px">
+  <img src="{{ '../switch-keyboard-nav.svg' | url }}"  alt="Diagram of switch with text and arrows that show what can be controlled by keyboard">
+</uxdot-example>
 
 <rh-table>
   <table>
@@ -31,17 +31,17 @@ Users should have the ability to move focus to a Switch and toggle it on or off 
 
 A logical focus order helps keyboard users operate our websites. Elements need to receive focus in an order that preserves meaning, therefore the focus order should make sense and not jump around randomly. If Switches are stacked, focus lands on each as it moves from top to bottom. Each Switch should have the ability to be toggled.
 
-{% example palette="light",
-            alt="Diagram with four switches and numbers 1 to 4 indicating focus order",
-            src="../switch-focus-order.svg" %}
+<uxdot-example width-adjustment="193px">
+  <img src="{{ '../switch-focus-order.svg' | url }}" alt="Diagram with four switches and numbers 1 to 4 indicating focus order">
+</uxdot-example>
 
 ## Touch targets
 
 Grouped Switches are adequately spaced for optimal touch targets.
 
-{% example palette="light",
-            alt="group of four switches and red circles with low opacity over each switch",
-            src="../switch-touch-targets.svg" %}
+<uxdot-example width-adjustment="192px">
+  <img src="{{ '../switch-touch-targets.svg' | url }}"  alt="group of four switches and red circles with low opacity over each switch">
+</uxdot-example>
 
 ## Using form labels
 
@@ -78,10 +78,9 @@ A Switch should communicate the following to users.
 - What the status messages say
 - What happens when a Switch is toggled
 
-{% include 'accessibility/ariaguide.md' %}
-
-{% include 'accessibility/wcag.md' %}
-{% include 'accessibility/2.1.1-A.md' %}
-{% include 'accessibility/2.1.3-AAA.md' %}
-{% include 'accessibility/2.4.3-A.md' %}
-{% include 'accessibility/2.5.5-AAA.md' %}
+{% include 'partials/accessibility/ariaguide.md' %}
+{% include 'partials/accessibility/wcag.md' %}
+{% include 'partials/accessibility/2.1.1-A.md' %}
+{% include 'partials/accessibility/2.1.3-AAA.md' %}
+{% include 'partials/accessibility/2.4.3-A.md' %}
+{% include 'partials/accessibility/2.5.5-AAA.md' %}
