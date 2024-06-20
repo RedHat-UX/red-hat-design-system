@@ -1,6 +1,6 @@
 {
   "name": "@rhds/elements",
-  "version": "1.4.2",
+  "version": "1.4.5",
   "description": "Red Hat Design System Elements",
   "type": "module",
   "license": "MIT",
@@ -8,7 +8,7 @@
   "exports": {
     ".": "./rhds.min.js",
     "./lib/*": "./lib/*",
-    "./react/*": "./react/elements/*",
+    "./react/*": "./react/*",
     "./*": "./elements/*"
   },
   "contributors": [
@@ -37,6 +37,7 @@
     "elements/*/*-lightdom.css",
     "elements/*/*-lightdom-shim.css",
     "elements/rh-audio-player/i18n/*.json",
+    "rh-*/*.css",
     "!elements/*/docs/**/*.{js,html,css,md}",
     "!elements/*/demo/**/*.{js,html,css,md}",
     "!elements/*/test/*.{spec,e2e}.{ts,d.ts}",
@@ -114,6 +115,7 @@
         "react-wrappers",
         "compile",
         "bundle",
+        "copy-css",
         "docs"
       ]
     },
@@ -156,6 +158,16 @@
       ],
       "output": [
         "react/**/*"
+      ]
+    },
+    "copy-css": {
+      "command": "npx tsx scripts/copy-assets.ts",
+      "files": [
+        "elements/*/*.css",
+        "scripts/copy-assets.ts"
+      ],
+      "output": [
+        "./*/*.css"
       ]
     },
     "bundle": {
@@ -252,7 +264,7 @@
   },
   "dependencies": {
     "@lit/context": "^1.1.1",
-    "@patternfly/elements": "^3.0.1",
+    "@patternfly/elements": "^3.0.2",
     "@patternfly/icons": "^1.0.2",
     "@patternfly/pfe-core": "^3.0.0",
     "@rhds/tokens": "^2.0.1",
@@ -272,7 +284,7 @@
     "@patternfly/create-element": "^1.0.2",
     "@patternfly/eslint-config-elements": "^3.0.0",
     "@patternfly/eslint-plugin-elements": "^2.0.0",
-    "@patternfly/pfe-tools": "^2.0.1",
+    "@patternfly/pfe-tools": "^2.0.3",
     "@playwright/test": "^1.31.1",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-typescript": "^11.1.6",
