@@ -4,11 +4,9 @@
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: WebRH
       status: Ready
     - name: Documentation
       status: Ready
@@ -18,11 +16,9 @@
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: WebRH
       status: Ready
     - name: Documentation
       status: Ready
@@ -32,11 +28,9 @@
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: WebRH
       status: Ready
     - name: Documentation
       status: Ready
@@ -46,11 +40,9 @@
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: WebRH
       status: Ready
     - name: Documentation
       status: Ready
@@ -60,11 +52,9 @@
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: WebRH
       status: Planned
     - name: Documentation
       status: In Progress
@@ -74,11 +64,9 @@
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: WebRH
       status: Ready
     - name: Documentation
       status: Ready
@@ -88,11 +76,9 @@
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: WebRH
       status: Ready
     - name: Documentation
       status: Ready
@@ -102,11 +88,9 @@
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: WebRH
       status: Ready
     - name: Documentation
       status: Ready
@@ -116,11 +100,9 @@
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: WebRH
       status: Ready
     - name: Documentation
       status: Ready
@@ -130,11 +112,9 @@
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: WebRH
       status: Ready
     - name: Documentation
       status: Ready
@@ -144,11 +124,9 @@
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: WebRH
       status: Ready
     - name: Documentation
       status: Ready
@@ -158,11 +136,9 @@
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: WebRH
       status: Ready
     - name: Documentation
       status: Ready
@@ -172,11 +148,10 @@
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
+
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: WebRH
       status: Ready
     - name: Documentation
       status: Ready
@@ -186,11 +161,9 @@
   libraries:
     - name: Figma library
       status: N/A
-    - name: Responsive
-      status: N/A
     - name: RH Elements
       status: N/A
-    - name: webRH
+    - name: WebRH
       status: N/A
     - name: Documentation
       status: Ready
@@ -200,11 +173,9 @@
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: WebRH
       status: Ready
     - name: Documentation
       status: Ready
@@ -214,11 +185,9 @@
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: WebRH
       status: Ready
     - name: Documentation
       status: Ready
@@ -228,11 +197,9 @@
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: WebRH
       status: Ready
     - name: Documentation
       status: Ready
@@ -242,11 +209,9 @@
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: WebRH
       status: Planned
     - name: Documentation
       status: Ready
@@ -256,11 +221,9 @@
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: WebRH
       status: Planned
     - name: Documentation
       status: Ready
@@ -270,11 +233,9 @@
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: WebRH
       status: Ready
     - name: Documentation
       status: Ready
@@ -284,11 +245,9 @@
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: WebRH
       status: Ready
     - name: Documentation
       status: Ready
@@ -298,11 +257,9 @@
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: WebRH
       status: Ready
     - name: Documentation
       status: Ready
@@ -312,11 +269,9 @@
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: WebRH
       status: Ready
     - name: Documentation
       status: Ready
@@ -326,11 +281,9 @@
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: WebRH
       status: Ready
     - name: Documentation
       status: Ready
@@ -340,11 +293,9 @@
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: WebRH
       status: Ready
     - name: Documentation
       status: Ready
@@ -354,11 +305,9 @@
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: WebRH
       status: Ready
     - name: Documentation
       status: Ready
@@ -368,11 +317,9 @@
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: WebRH
       status: Ready
     - name: Documentation
       status: Ready
@@ -382,11 +329,9 @@
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: WebRH
       status: Ready
     - name: Documentation
       status: Ready
@@ -396,11 +341,9 @@
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: WebRH
       status: Ready
     - name: Documentation
       status: Ready

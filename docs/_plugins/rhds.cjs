@@ -86,7 +86,9 @@ const COPY_CONTENT_EXTENSIONS = [
 function getFilesToCopy() {
   // Copy element demo files
   const repoRoot = process.cwd();
-  const tagNames = fs.readdirSync(path.join(repoRoot, 'elements'));
+  const tagNames = fs.readdirSync(path.join(repoRoot, 'elements'), { withFileTypes: true })
+      .filter(ent => ent.isDirectory())
+      .map(ent => ent.name);
 
   /** @type{import('@patternfly/pfe-tools/config.js').PfeConfig}*/
   const config = require('../../.pfe.config.json');
