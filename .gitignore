@@ -8,6 +8,7 @@ node_modules
 _site
 docs/pfe.min*
 docs/assets/playgrounds/
+docs/_data/playgrounds.json
 
 # Build artifacts
 !elements

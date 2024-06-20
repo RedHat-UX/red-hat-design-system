@@ -16,6 +16,8 @@ const litPlugin = require('@lit-labs/eleventy-plugin-lit');
 const isWatch =
   process.argv.includes('--serve') || process.argv.includes('--watch');
 
+const isLocal = !(process.env.CI || process.env.DEPLOY_URL);
+
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function(eleventyConfig) {
   eleventyConfig.setQuietMode(true);
@@ -33,7 +35,15 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('docs/assets/**/*');
   eleventyConfig.addPassthroughCopy('docs/styles/**/*');
 
+  if (isLocal) {
+    eleventyConfig.addPassthroughCopy({
+      'node_modules/playground-elements/playground-*worker*': '.',
+    });
+  }
+
   eleventyConfig.addWatchTarget('docs/styles/');
+
+  eleventyConfig.addGlobalData('isLocal', isLocal);
 
   eleventyConfig.on('eleventy.before', function({ runMode }) {
     eleventyConfig.addGlobalData('runMode', runMode);
@@ -71,8 +81,8 @@ module.exports = function(eleventyConfig) {
       imports: {
         '@rhds/tokens': '/assets/packages/@rhds/tokens/js/tokens.js',
         '@rhds/tokens/': '/assets/packages/@rhds/tokens/js/',
-        '@rhds/elements/': '/assets/packages/@rhds/elements/elements/',
         '@rhds/elements/lib/': '/assets/packages/@rhds/elements/lib/',
+        '@rhds/elements/': '/assets/packages/@rhds/elements/elements/',
         '@patternfly/elements/': '/assets/packages/@patternfly/elements/',
         '@patternfly/icons/': '/assets/packages/@patternfly/icons/',
         '@patternfly/pfe-core/': '/assets/packages/@patternfly/pfe-core/',

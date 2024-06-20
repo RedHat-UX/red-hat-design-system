@@ -1,12 +1,25 @@
-const fs = require('node:fs/promises');
-const path = require('node:path');
-const url = require('node:url');
+import * as fs from 'node:fs/promises';
+import * as path from 'node:path';
+import { pathToFileURL } from 'node:url';
+import chalk from 'chalk';
 
-function groupBy(prop, xs) {
-  return xs.reduce((acc, x) => Object.assign(acc, { [x[prop]]: [...acc[x[prop]] ?? [], x] }), {});
+import { getPfeConfig } from '@patternfly/pfe-tools/config.js';
+import {
+  type DemoRecord,
+  Manifest,
+} from '@patternfly/pfe-tools/custom-elements-manifest/lib/Manifest.js';
+
+import { parseFragment, serialize } from 'parse5';
+import * as Tools from '@parse5/tools';
+
+function groupBy<T extends object>(prop: keyof T, xs: T[]): Record<string, T[]> {
+  return xs.reduce((acc, x) =>
+    Object.assign(acc, {
+      [x[prop as string]]: [...acc[x[prop as string]] ?? [], x],
+    }), {});
 }
 
-function getDemoFilename(x) {
+function getDemoFilename(x: DemoRecord) {
   return `demo/${(x.url.split('/demo/').pop() || `${x.primaryElementName}.html`).replace(/\/$/, '.html')}`
       .replace('.html', '/index.html')
       .replace(`${x.primaryElementName}/index.html`, 'index.html');
@@ -49,10 +62,10 @@ const SRC_SUBRESOURCE_TAGNAMES = new Set([
 
 /**
  * Replace paths in demo files from the dev SPA's format to 11ty's format
- * @param {string} content content
- * @param {string} pathname pathname
+ * @param content content
+ * @param pathname pathname
  */
-function demoPaths(content, pathname) {
+function demoPaths(content: string, pathname: string) {
   if (pathname.match(/elements\/.*\/demo\/index\.html$/)) {
     return content.replace(DEMO_SUBRESOURCE_RE, (...args) => {
       const [{ attr, unprefixed, filename, extension }] = args.reverse();
@@ -63,14 +76,14 @@ function demoPaths(content, pathname) {
   }
 }
 
-function isModuleScript(node) {
+function isModuleScript(node: Tools.Element) {
   return (
     node.tagName === 'script'
     && node.attrs.some(x => x.name === 'type' && x.value === 'module')
   );
 }
 
-function isStyleLink(node) {
+function isStyleLink(node: Tools.Element) {
   return (
     node.tagName === 'link'
     && node.attrs.some(x => x.name === 'rel' && x.value === 'stylesheet')
@@ -78,54 +91,53 @@ function isStyleLink(node) {
   );
 }
 
-function hasLocalSrcAttr(node) {
+function hasLocalSrcAttr(node: Tools.Element) {
   return (
     node.attrs.some(({ name, value }) => name === 'src' && !value.startsWith('http'))
   );
 }
 
-function getAttrMap(node) {
+function getAttrMap(node: Tools.Element) {
   return Object.fromEntries(node.attrs.map(({ name, value }) =>
     [name, value]));
 }
 
 class SubresourceError extends Error {
-  constructor(message, originalError, subresourceFileURL) {
+  constructor(
+    message: string,
+    public originalError: Error,
+    public subresourceFileURL: URL,
+  ) {
     super(message);
-    this.originalError = originalError;
-    this.subresourceFileURL = subresourceFileURL;
   }
 }
 
-module.exports = async function(data) {
-  performance.mark('playgrounds-start');
-  const { parseFragment, serialize } = await import('parse5');
-  const Tools = await import('@parse5/tools');
+function append(node: Tools.Node, ...nodes: Tools.ChildNode[]) {
+  Tools.spliceChildren(node, Infinity, 0, ...nodes);
+}
 
-  function prepend(node, ...nodes) {
-    Tools.spliceChildren(node, 0, 0, ...nodes);
-  }
+async function getConfig() {
+  const pfeConfig = getPfeConfig();
+  const demos = Manifest.getAll(new URL('../', import.meta.url).pathname)
+      .flatMap(manifest => manifest.getTagNames()
+          .flatMap(tagName => manifest.getDemoMetadata(tagName, pfeConfig)));
 
-  function append(node, ...nodes) {
-    Tools.spliceChildren(node, Infinity, 0, ...nodes);
-  }
-
-  const demoManifests = groupBy('primaryElementName', data.demos);
+  const demoManifests = groupBy('primaryElementName', demos);
 
   const playgroundConfigsMap = new Map();
 
-  const resetCSS = url.pathToFileURL(path.join(process.cwd(), 'docs/styles/reset.css'));
+  const resetCSS = pathToFileURL(path.join(process.cwd(), 'docs/styles/reset.css'));
   const resetCSSSource = await fs.readFile(resetCSS.pathname, 'utf8');
-  const fontsCSS = url.pathToFileURL(path.join(process.cwd(), 'docs/styles/fonts.css'));
+  const fontsCSS = pathToFileURL(path.join(process.cwd(), 'docs/styles/fonts.css'));
   const fontsCSSSource = await fs.readFile(fontsCSS.pathname, 'utf8');
-  const typographyCSS = url.pathToFileURL(path.join(process.cwd(), 'docs/styles/typography.css'));
+  const typographyCSS = pathToFileURL(path.join(process.cwd(), 'docs/styles/typography.css'));
   const typographyCSSSource = await fs.readFile(typographyCSS.pathname, 'utf8');
 
   for (const [primaryElementName, demos] of Object.entries(demoManifests)) {
     const fileMap = new Map();
 
     for (const demo of demos) {
-      if (demo.filePath.endsWith('proxy.html')) {
+      if (!demo.filePath || demo.filePath.endsWith('proxy.html')) {
         continue;
       }
 
@@ -157,12 +169,16 @@ module.exports = async function(data) {
 
       /** @see docs/_plugins/rhds.cjs demoPaths transform */
       const base =
-        url.pathToFileURL(path.join(process.cwd(), 'elements', primaryElementName, 'demo/'));
-      const docsDir = url.pathToFileURL(path.join(process.cwd(), 'docs/'));
+        pathToFileURL(path.join(process.cwd(), 'elements', primaryElementName, 'demo/'));
+      const docsDir = pathToFileURL(path.join(process.cwd(), 'docs/'));
       const isMainDemo = filename === 'demo/index.html';
       const demoSlug = filename.split('/').at(1);
 
-      const addSubresourceURL = async subresourceURL => {
+      if (!demoSlug) {
+        throw new Error(`No slug for ${filename}`);
+      }
+
+      const addSubresourceURL = async (subresourceURL: string) => {
         if (subresourceURL && !subresourceURL.startsWith('http')) {
           const subresourceFileURL = !subresourceURL.startsWith('/') ?
             // non-tabular ternary
@@ -191,7 +207,11 @@ module.exports = async function(data) {
               });
             }
           } catch (e) {
-            throw new SubresourceError(`Error generating playground for ${demo.slug}.\nCould not find subresource ${subresourceURL} at ${subresourceFileURL?.href ?? 'unknown'}`, e, subresourceFileURL);
+            throw new SubresourceError(
+              `Error generating playground for ${demo.slug}.\nCould not find subresource ${subresourceURL} at ${subresourceFileURL?.href ?? 'unknown'}`,
+              e,
+              subresourceFileURL,
+            );
           }
         }
       };
@@ -214,14 +234,16 @@ module.exports = async function(data) {
         hidden: true,
       });
 
-      const hrefSubresourceElements = Tools.queryAll(fragment, node =>
-        Tools.isElementNode(node)
-          && isStyleLink(node));
+      const hrefSubresourceElements: IterableIterator<Tools.Element> =
+        Tools.queryAll(fragment, node =>
+          Tools.isElementNode(node)
+            && isStyleLink(node));
 
-      const srcSubresourceElements = Tools.queryAll(fragment, node =>
-        Tools.isElementNode(node)
-        && SRC_SUBRESOURCE_TAGNAMES.has(node.tagName)
-        && hasLocalSrcAttr(node));
+      const srcSubresourceElements: IterableIterator<Tools.Element> =
+        Tools.queryAll(fragment, node =>
+          Tools.isElementNode(node)
+          && SRC_SUBRESOURCE_TAGNAMES.has(node.tagName)
+          && hasLocalSrcAttr(node));
 
       // register demo css resources
       for (const el of hrefSubresourceElements) {
@@ -250,7 +272,7 @@ module.exports = async function(data) {
       }
 
       // HACK: https://github.com/google/playground-elements/issues/93#issuecomment-1775247123
-      const inlineModules =
+      const inlineModules: IterableIterator<Tools.Element> =
         Tools.queryAll(fragment, node =>
           Tools.isElementNode(node)
           && isModuleScript(node)
@@ -270,7 +292,7 @@ module.exports = async function(data) {
         );
 
         fileMap.set(`demo/${moduleName}`, {
-          content: el.childNodes.map(x => x.value).join('\n').trim(),
+          content: el.childNodes.map(x => (x as Tools.TextNode).value ?? '').join('\n').trim(),
           hidden: true,
         });
       });
@@ -287,32 +309,32 @@ module.exports = async function(data) {
       playgroundConfigsMap.set(primaryElementName, { files });
     }
   }
-  const config = Object.fromEntries(playgroundConfigsMap.entries());
 
-  performance.mark('playgrounds-end');
-
-  logPerf();
-
-  return config;
+  return Object.fromEntries(playgroundConfigsMap.entries());
 };
 
-function logPerf() {
-  // We should log performance regressions
-  /* eslint-disable no-console */
-  const chalk = require('chalk');
-  const TOTAL = performance.measure('playgrounds-total', 'playgrounds-start', 'playgrounds-end');
-  if (TOTAL.duration > 2000) {
-    console.log(
-      `🦥 Playgrounds config generator done in ${chalk.red(TOTAL.duration)}ms\n`,
-    );
-  } else if (TOTAL.duration > 1000) {
-    console.log(
-      `🐢 Playgrounds config generator done in ${chalk.yellow(TOTAL.duration)}ms\n`,
-    );
-  } else {
-    console.log(
-      `⚡ Playgrounds config generator done in ${chalk.blue(TOTAL.duration)}ms\n`,
-    );
-  }
-  /* eslint-enable no-console */
+performance.mark('playgrounds-start');
+const config = await getConfig();
+const content = JSON.stringify(config, null, 2);
+const [,,outputRelative] = process.argv;
+const outputUrl = new URL(`../${outputRelative}`, import.meta.url);
+await fs.writeFile(outputUrl, content, 'utf8');
+performance.mark('playgrounds-end');
+
+// We should log performance regressions
+/* eslint-disable no-console */
+const TOTAL = performance.measure('playgrounds-total', 'playgrounds-start', 'playgrounds-end');
+if (TOTAL.duration > 2000) {
+  console.log(
+    `🦥 Playgrounds config generator done in ${chalk.red(TOTAL.duration)}ms\n`,
+  );
+} else if (TOTAL.duration > 1000) {
+  console.log(
+    `🐢 Playgrounds config generator done in ${chalk.yellow(TOTAL.duration)}ms\n`,
+  );
+} else {
+  console.log(
+    `⚡ Playgrounds config generator done in ${chalk.blue(TOTAL.duration)}ms\n`,
+  );
 }
+/* eslint-enable no-console */
