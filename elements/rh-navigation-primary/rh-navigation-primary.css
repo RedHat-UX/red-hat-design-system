@@ -17,7 +17,7 @@
   --_nav-min-height: var(--_min-height, 80px);
   --_current-active-child-border-color: var(--rh-color-brand-red-on-light, #ee0000);
 
-  z-index: var(--rh-navigation-secondary-z-index, 102);
+  z-index: var(--rh-navigation-primary-z-index, 102);
 }
 
 :host([color-palette="dark"]) {
@@ -25,7 +25,7 @@
 }
 
 nav {
-  z-index: var(--rh-navigation-secondary-z-index, 102);
+  z-index: var(--rh-navigation-primary-z-index, 102);
 }
 
 nav.rtl {
@@ -41,7 +41,7 @@ nav.rtl {
   display: grid;
   position: absolute;
   width: 100%;
-  z-index: var(--rh-navigation-secondary-z-index, 102);
+  z-index: var(--rh-navigation-primary-z-index, 102);
   background-color: var(--_context-background-color);
   gap: 0 var(--rh-space-lg, 16px);
   grid-template-rows:

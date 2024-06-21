@@ -11,38 +11,38 @@ import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
-import styles from './rh-primary-navigation-menu.css';
+import styles from './rh-navigation-primary-menu.css';
 
 
 /**
- * Dropdown menu for secondary nav, available in full-width and fixed-with sizes
- * @summary 'Dropdown menu for secondary nav, available in full-width and fixed-with sizes'
+ * Dropdown menu for primary nav, available in full-width and fixed-with sizes
+ * @summary 'Dropdown menu for primary nav, available in full-width and fixed-with sizes'
  *
- * @slot                  - Optional `<rh-primary-navigation-menu-section>` elements or content following [design guidelines](../guidelines/#expandable-tray)
+ * @slot                  - Optional `<rh-navigation-primary-menu-section>` elements or content following [design guidelines](../guidelines/#expandable-tray)
  * @csspart container     - container - `<div>` element, wrapper for menus
  * @csspart full-width    - container - `<div>` element, wrapper for full-width menus
  * @csspart fixed-width   - container - `<div>` element, wrapper for fixed-width menus
  * @csspart sections      - container - `<div>` element, wrapper for menu sections
  *
- * @cssprop  --rh-primary-navigation-menu-section-grid - grid-template-columns for menu sections {@default `repeat(auto-fit, minmax(15.5rem, 1fr))`}
- * @cssprop  {<length>} --rh-primary-navigation-menu-section-grid-gap - grid-gap for menu sections {@default `32px`}
- * @cssprop  {<length>} --rh-primary-navigation-menu-content-max-width - max-width for menu content {@default `1136px`}
+ * @cssprop  --rh-navigation-primary-menu-section-grid - grid-template-columns for menu sections {@default `repeat(auto-fit, minmax(15.5rem, 1fr))`}
+ * @cssprop  {<length>} --rh-navigation-primary-menu-section-grid-gap - grid-gap for menu sections {@default `32px`}
+ * @cssprop  {<length>} --rh-navigation-primary-menu-content-max-width - max-width for menu content {@default `1136px`}
  *
  */
-@customElement('rh-primary-navigation-menu')
+@customElement('rh-navigation-primary-menu')
 export class RhNavigationPrimaryMenu extends LitElement {
   static readonly styles = [styles];
 
   /**
    * Color palette (default: lightest)
-   * Secondary nav menus are always represented on the lightest color palette.
+   * primary nav menus are always represented on the lightest color palette.
    */
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'lightest';
 
   /**
    * Layout (default: full-width)
-   * Secondary nav menus by default are always full-width, but can be set to fixed-width for special cases.
+   * primary nav menus by default are always full-width, but can be set to fixed-width for special cases.
    */
   @property({ reflect: true }) layout: 'fixed-width' | 'full-width' = 'full-width';
 
@@ -55,7 +55,7 @@ export class RhNavigationPrimaryMenu extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.id ||= getRandomId('rh-primary-navigation-menu');
+    this.id ||= getRandomId('rh-navigation-primary-menu');
   }
 
   render() {
@@ -81,6 +81,6 @@ export class RhNavigationPrimaryMenu extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'rh-primary-navigation-menu': RhNavigationPrimaryMenu;
+    'rh-navigation-primary-menu': RhNavigationPrimaryMenu;
   }
 }

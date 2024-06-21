@@ -135,6 +135,10 @@ Released October 16, 2023
         <td data-label="Notes">Provides consistent formats for displaying date and time values.</td>
       </tr>
       <tr>
+        <td data-label="Change">Added <code>&lt;rh-navigation-primary&gt;</code></td>
+        <td data-label="Notes">Added RHDS based Primary Nav.</td>
+      </tr>
+      <tr>
         <td data-label="Change">Added <code>&lt;rh-navigation-secondary&gt;</code> current page indicator support</td>
         <td data-label="Notes">Updated support for a current page indicator using <code>aria-current="page"</code>.</td>
       </tr>

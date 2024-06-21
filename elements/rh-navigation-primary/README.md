@@ -1,8 +1,8 @@
-## `<rh-navigation-primary>` Red Hat Main Navigation
+## `<rh-navigation-primary>` Red Hat Navigation Primary
 
 A primary navigation for product navigation.
 
-- Demo: https://ux.redhat.com/elements/main-navigation/demo/
+- Demo: https://ux.redhat.com/elements/primary-navigation/demo/
 
 ## Installation
 If using npm/bundlers:
@@ -16,7 +16,7 @@ import '@rhds/elements/rh-navigation-primary/rh-navigation-primary.js';
 ```
 
 ```html
-<link rel="stylesheet" href="node_modules/@rhds/elements/elements/rh-navigation-primary/rh-navigation-primary-lightdom.css" />
+<link rel="stylesheet" href="node_modules/@rhds/elements/rh-navigation-primary/rh-navigation-primary-lightdom.css" />
 ```
 
 ## Questions and Feedback

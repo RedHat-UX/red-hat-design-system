@@ -1,393 +1,237 @@
 ## Style
 
-A secondary navigation is a group of links and menus placed in a bar container that spans the width of the browser window.
-  
+Elements in the primary navigation are high in contrast so they stand out to 
+visitors and meet accessibility guidelines. The primary navigation looks 
+similar in style to the [Footer]({{ '/elements/footer' | url }}) for a 
+consistent user experience across websites.
+
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../primary-nav-style-intro.png' | url }}" alt="Primary navigation - style">
+</uxdot-example>
+
+
 ### Anatomy
 
-A secondary navigation is divided into three slots, it is not required to use all three slots.
+The primary navigation is divided into **three zones** where content can be 
+placed. Each zone may include custom content and elements in certain zones 
+will collapse or become hidden completely as breakpoints get smaller. 
+**It is required to use all three zones.**
 
-- Slot 1 - includes primary elements like product logo text
-- Slot 2 - includes secondary elements like links and menus
-- Slot 3 - includes tertiary elements like a call to action (optional)
-
-<uxdot-example width-adjustment="872px">
-  <img src="{{ '../nav-secondary-style-slots.png' | url }}" alt="Image of a gray secondary navigation background with dotted line boxes that say slot 1, slot 2, and slot 3 from left to right">
-</uxdot-example>
-
-
-### Using slots
-
-Slots are defined areas where content can be inserted, each slot includes a specific type of content.
-
-<rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Slot number">Slot number</th>
-        <th scope="col" data-label="Use case">Use case</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Slot number">Slot 1</td>
-        <td data-label="Use case">Includes a linked logo or text that directs users to a main page or home page</td>
-      </tr>
-      <tr>
-        <td data-label="Slot number">Slot 2</td>
-        <td data-label="Use case">Includes navigation elements like inline links, menus, and external links</td>
-      </tr>
-      <tr>
-        <td data-label="Slot number">Slot 3</td>
-        <td data-label="Use case">May include interactive elements like a call to action</td>
-      </tr>
-    </tbody>
-  </table>
-</rh-table>
-
-
-### Slots and breakpoints
-
-On small breakpoints, navigation elements in Slot 2 will collapse into an accordion within a menu. Optional elements in Slot 3 will be placed below the accordion or hidden completely.
-
-<uxdot-example width-adjustment="872px">
-  <img src="{{ '../nav-secondary-style-slots-and-breakpoints.png' | url }}" alt="Image of four secondary navigations; two large ones and two small ones with dotted line boxes around each slot and labels that say slot 1, slot 2, and slot 3">
-</uxdot-example>
-
-### Using the expandable menu
-
-The expandable menu is an area where content can be placed like text, links, calls to action, and more. The menu requires a backdrop so it can separate itself from the page underneath, this helps users focus on the menu content.
-
-<rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Property">Property</th>
-        <th scope="col" data-label="Current value">Current value</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Property">Color - backdrop</td>
-        <td data-label="Current value">#151515</td>
-      </tr>
-      <tr>
-        <td data-label="Property">Opacity - background</td>
-        <td data-label="Current value">50%</td>
-      </tr>
-    </tbody>
-  </table>
-</rh-table>
-
-
-## Theme
-
-A secondary navigation is available in both light and dark themes. The light theme background includes a box shadow whereas the dark theme background includes a gray bottom border.
-
-### Light theme
-
-The light theme secondary navigation should be used in environments with a lighter look and feel. The box shadow is always visible unless covered by an expanded menu.
-
-<uxdot-example width-adjustment="872px">
-  <img src="{{ '../nav-secondary-style-theme-light.png' | url }}" alt="Image of a light theme secondary navigation">
-</uxdot-example>
-
-<rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Property">Property</th>
-        <th scope="col" data-label="Light theme">Light theme</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Property">Color - all text and chevron icons</td>
-        <td data-label="Light theme">#151515</td>
-      </tr>
-      <tr>
-        <td data-label="Property">Color - bar background</td>
-        <td data-label="Light theme">#F2F2F2</td>
-      </tr>
-      <tr>
-        <td data-label="Property">Box shadow - bar background</td>
-        <td data-label="Light theme">0 2px 4px 0 rgba(21, 21, 21, 0.2)</td>
-      </tr>
-    </tbody>
-  </table>
-</rh-table>
-
-
-### Dark theme
-
-The dark theme secondary navigation should be used in environments with a darker look and feel. The gray bottom border is always visible unless covered by an expanded menu.
-
-<uxdot-example color-palette="darkest" width-adjustment="872px">
-  <img src="{{ '../nav-secondary-style-theme-dark.png' | url }}" alt="Image of a dark theme secondary navigation">
-</uxdot-example>
-
-<rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Property">Property</th>
-        <th scope="col" data-label="Dark theme">Dark theme</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Property">Color - all text and chevron icons</td>
-        <td data-label="Dark theme">#FFFFFF</td>
-      </tr>
-      <tr>
-        <td data-label="Property">Color - bar background</td>
-        <td data-label="Dark theme">#383838</td>
-      </tr>
-      <tr>
-        <td data-label="Property">Box shadow - bar background</td>
-        <td data-label="Dark theme">#4D4D4D</td>
-      </tr>
-    </tbody>
-  </table>
-</rh-table>
-
-
-## Configuration
-
-A secondary navigation spans the entire width of a browser window on all breakpoints. It has a fixed height of <code>86px</code> on large breakpoints and a fixed height of <code>80px</code> on small breakpoints even if Slot 1 text is only one line. Content in all slots is horizontally centered with the background.
-
-<uxdot-example width-adjustment="872px">
-  <img src="{{ '../nav-secondary-style-configuration.png' | url }}" alt="Image of a secondary navigation construction; several examples showing details like spacing, alignment, height, width, and more">
-</uxdot-example>
-
-### Expandable menu styles
-
-An expandable menu includes content like text, links, calls to action, and more. The menu tab, panel, and backdrop have the same styles on all breakpoints.
-
-<uxdot-example width-adjustment="872px">
-  <img src="{{ '../nav-secondary-style-expandable-menu-styles.png' | url }}" alt="Image of two stacked secondary navigations with menus expanded; one for large breakpoints and the other for small breakpoints">
-</uxdot-example>
-
-### Slot text labels
-
-Slot 1 and Slot 2 text elements have specific styles applied to them.
+- **Zone 1** - Website logo
+- **Zone 2** - Menus
+- **Zone 3** - Utilities
 
 <rh-alert state="info">
-  <h4 slot="header">Helpful Tip</h4>
-  <p>Slot 3 usually includes a Call to action. To see Call to action styles, visit the <a href="{{ '/elements/call-to-action' | url }}">Call to action</a> page.</p>
+  <h4 slot="header">Helpful tip</h4>
+  <p>The website logo in Zone 1 should direct visitors to a home page when selected.</p>
 </rh-alert>
 
-<uxdot-example width-adjustment="872px">
-  <img src="{{ '../nav-secondary-style-text-labels.png' | url }}" alt="Image of four stacked secondary navigations; two are light theme and two are dark theme, both with dotted line boxes and labels that say slot 1 and slot 2">
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../primary-nav-anatomy.png' | url }}" alt="Primary navigation - anatomy">
 </uxdot-example>
 
-<rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Property">Property</th>
-        <th scope="col" data-label="Large breakpoints">Large breakpoints</th>
-        <th scope="col" data-label="Small breakpoints">Small breakpoints</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Property">Slot 1 - font family</td>
-        <td data-label="Large breakpoints">Red Hat Display</td>
-        <td data-label="Small breakpoints">Red Hat Display</td>
-      </tr>
-      <tr>
-        <td data-label="Property">Slot 1 - font size</td>
-        <td data-label="Large breakpoints">18px <br> 1.125rem</td>
-        <td data-label="Small breakpoints">16px <br> 1.0rem</td>
-      </tr>
-      <tr>
-        <td data-label="Property">Slot 1 - font weight</td>
-        <td data-label="Large breakpoints">Medium</td>
-        <td data-label="Small breakpoints">Medium</td>
-      </tr>
-      <tr>
-        <td data-label="Property">Slot 1 - line height</td>
-        <td data-label="Large breakpoints">1.5 (27)</td>
-        <td data-label="Small breakpoints">1.5 (24)</td>
-      </tr>
-      <tr>
-        <td data-label="Property">Slot 1 - letter spacing</td>
-        <td data-label="Large breakpoints">0.4px <br> 0.025rem</td>
-        <td data-label="Small breakpoints">0.4px <br> 0.025rem</td>
-      </tr>
-      <tr>
-        <td data-label="Property">Slot 2 - font family</td>
-        <td data-label="Large breakpoints">Red Hat Text</td>
-        <td data-label="Small breakpoints">Red Hat Text</td>
-      </tr>
-      <tr>
-        <td data-label="Property">Slot 2 - font size</td>
-        <td data-label="Large breakpoints">16px <br> 1.0rem</td>
-        <td data-label="Small breakpoints">16px <br> 1.0rem</td>
-      </tr>
-      <tr>
-        <td data-label="Property">Slot 2 - font weight</td>
-        <td data-label="Large breakpoints">Regular</td>
-        <td data-label="Small breakpoints">Regular</td>
-      </tr>
-      <tr>
-        <td data-label="Property">Slot 2 - line height</td>
-        <td data-label="Large breakpoints">1.5 (24)</td>
-        <td data-label="Small breakpoints">1.5 (24)</td>
-      </tr>
-    </tbody>
-  </table>
-</rh-table>
+
+#### Website logo
+
+A branded logo corresponding to the website in which the primary navigation 
+is used. It will direct a visitor to the website home page when selected.
+
+#### Menus
+
+Text that triggers an expandable tray when selected. The content within is 
+specific to one website and does not appear d in the same format on other 
+websites.
+
+#### Utilities
+
+Actions or tools that display content within an expandable tray when 
+triggered or function as links. They can be unique to one website or global 
+across many websites.
 
 
-## Space
+### Expandable tray
 
-The amount of space in a secondary navigation remains about the same on all breakpoints.
+When menu text in Zone 2 is selected, an **expandable tray** will appear. 
+It is divided into three parts and is styled the same across all primary 
+navigation instances.
+
+1. **Tab** - visually informs a visitor of what menu they selected
+1. **Tray** - the area to place content, links, etc.
+1. **Overlay** - separates tray content from website content underneath
+
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../expandable-tray.png' | url }}" alt="Primary navigation - expandable tray">
+</uxdot-example>
+
+
+### Expandable tray tab
+
+When the expandable tray tab appears, text and icon colors are reversed. A tab 
+with a white background and red bar will also appear behind content.
+
+<rh-alert state="info">
+  <h4 slot="header">Helpful tip</h4>
+  <p>Menu text displays a gray arrow on hover to indicate that an expandable tray will appear when triggered.</p>
+</rh-alert>
+
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../expandable-tray-tab.png' | url }}" alt="Primary navigation - expandable tray tab">
+</uxdot-example>
+
+
+### Layout
+
+The primary navigation spans the entire width of the browser window on all 
+breakpoints.
+
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../layout-desktop.png' | url }}" alt="Primary navigation - layout (desktop)">
+</uxdot-example>
+
+<uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border>
+  <img src="{{ '../layout-mobile.png' | url }}" alt="Primary navigation - layout (mobile)">
+</uxdot-example>
+
+
+### Left-to-right languages
+
+When content is translated to other left-to-right languages, the primary 
+navigation maintains the same layout and text size.
+
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../languages-left-to-right.png' | url }}" alt="Primary navigation - left-to-right languages">
+</uxdot-example>
+
+
+### Right-to-left languages
+
+When content is translated to a right-to-left language like Hebrew, the text 
+size increases so visual subtleties of unique characters are easier to notice.
+
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../languages-right-to-left.png' | url }}" alt="Primary navigation - right-to-left languages">
+</uxdot-example>
+
+
+## Responsive design
 
 ### Large breakpoints
 
-<uxdot-example width-adjustment="872px">
-  <img src="{{ '../nav-secondary-space-breakpoints-large.png' | url }}" alt="Image of secondary navigation spacing values on large breakpoints">
+Both menus and utilities are visible in the primary navigation on large 
+breakpoints.
+
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../breakpoints-large.png' | url }}" alt="Primary navigation - large breakpoints">
 </uxdot-example>
 
 
-### Small breakpoints  
+### Medium breakpoints
 
-<uxdot-example width-adjustment="872px">
-  <img src="{{ '../nav-secondary-space-breakpoints-small.png' | url }}" alt="Image of secondary navigation spacing values on small breakpoints">
-</uxdot-example>
+As breakpoints become smaller, menus will collapse into a utility and 
+accordion. **This includes full-width and fixed-width expandable 
+trays.** On tablet breakpoints, a menu utility replaces the horizontal 
+list of menus and maintains the same position for a smoother transition from 
+large to small breakpoints.
 
-<rh-table>
-  {% spacerTokensTable 
-    headline="",
-    caption='',
-    headingLevel="4",
-    tokens="--rh-space-md, --rh-space-lg,  --rh-space-2xl" %}
-  {% endspacerTokensTable %}
-</rh-table>
-
-
-## Interaction states
-
-Interaction states are visual representations used to communicate the status of an element or pattern.
-
-### Hover
-
-<uxdot-example width-adjustment="872px">
-  <img src="{{ '../nav-secondary-interaction-state-hover-theme-light.png' | url }}" alt="Image of light theme secondary navigation hover states">
-</uxdot-example>
-
-<uxdot-example color-palette="darkest" width-adjustment="872px">
-  <img src="{{ '../nav-secondary-interaction-state-hover-theme-dark.png' | url }}" alt="Image of dark theme secondary navigation hover states">
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../breakpoints-medium.png' | url }}" alt="Primary navigation - medium breakpoints">
 </uxdot-example>
 
 
+### Small breakpoints
 
-<rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Property">Property</th>
-        <th scope="col" data-label="Light theme">Light theme</th>
-        <th scope="col" data-label="Dark theme">Dark theme</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Property">Color - Slot 1 text</td>
-        <td data-label="Light theme">#4D4D4D</td>
-        <td data-label="Dark theme">#C7C7C7</td>
-      </tr>
-      <tr>
-        <td data-label="Property">Color - Slot 2 top border</td>
-        <td data-label="Light theme">#EE0000</td>
-        <td data-label="Dark theme">#FF542E</td>
-      </tr>
-      <tr>
-        <td data-label="Property">Border width - Slot 2 top border</td>
-        <td data-label="Light theme">4px</td>
-        <td data-label="Dark theme">4px</td>
-      </tr>
-      <tr>
-        <td data-label="Property">Color - call to action text</td>
-        <td data-label="Light theme">#004080</td>
-        <td data-label="Dark theme">#BEE1F4</td>
-      </tr>
-      <tr>
-        <td data-label="Property">Color - menu tab background</td>
-        <td data-label="Light theme">#FFFFFF</td>
-        <td data-label="Dark theme">#151515</td>
-      </tr>
-    </tbody>
-  </table>
-</rh-table>
+On small breakpoints, the menus and most of the utilities collapse into a menu 
+and accordion.
 
-
-### Focus
-
-<rh-alert state="info">
-  <h4 slot="header">Helpful Tip</h4>
-  <p>The Focus state has the same styles as the Hover state.</p> 
-</rh-alert>
-
-<uxdot-example width-adjustment="872px">
-  <img src="{{ '../nav-secondary-interaction-state-focus-theme-light.png' | url }}" alt="Image of light theme secondary navigation focus states">
+<uxdot-example width-adjustment="576px" variant="full" alignment="left" no-border>
+  <img src="{{ '../breakpoints-small.png' | url }}" alt="Primary navigation - small breakpoints">
 </uxdot-example>
 
-<uxdot-example color-palette="darkest" width-adjustment="872px">
-  <img src="{{ '../nav-secondary-interaction-state-focus-theme-dark.png' | url }}" alt="Image of dark theme secondary navigation focus states">
-</uxdot-example>
-  
-<rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Property">Property</th>
-        <th scope="col" data-label="Light theme">Light theme</th>
-        <th scope="col" data-label="Dark theme">Dark theme</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Property">Color - focus ring</td>
-        <td data-label="Light theme">#0066CC</td>
-        <td data-label="Dark theme">#73BCF7</td>
-      </tr>
-    </tbody>
-  </table>
-</rh-table>
 
+## Best practices
 
-### Active
+### Content overload
 
-<rh-alert state="info">
-  <h4 slot="header">Helpful Tip</h4>
-  <p>The Active state has the same styles as the Hover state.</p>
-</rh-alert>
+Do not overload the primary navigation with too many menus and utilities.
 
-<uxdot-example width-adjustment="872px">
-  <img src="{{ '../nav-secondary-interaction-state-active-theme-light.png' | url }}" alt="Image of light theme secondary navigation active states">
+<uxdot-example width-adjustment="1000px" danger >
+  <img src="{{ '../best-practice-1.png' | url }}" alt="Primary navigation - best practice 1">
 </uxdot-example>
 
-<uxdot-example color-palette="darkest" width-adjustment="872px">
-  <img src="{{ '../nav-secondary-interaction-state-active-theme-dark.png' | url }}" alt="Image of dark theme secondary navigation active states">
+
+### Using icons alone
+
+Do not rely on icons alone to accurately represent content or actions, 
+ambiguity will not help visitors find what they need.
+
+<uxdot-example width-adjustment="1000px" danger >
+  <img src="{{ '../best-practice-2.png' | url }}" alt="Primary navigation - best practice 2">
 </uxdot-example>
 
-<rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Property">Property</th>
-        <th scope="col" data-label="Light theme">Light theme</th>
-        <th scope="col" data-label="Dark theme">Dark theme</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Property">Color - focus ring</td>
-        <td data-label="Light theme">#0066CC</td>
-        <td data-label="Dark theme">#73BCF7</td>
-      </tr>
-    </tbody>
-  </table>
-</rh-table>
+
+### Change spacing
+
+Do not change the spacing between menus and utilities.
+
+<uxdot-example width-adjustment="1000px" danger >
+  <img src="{{ '../best-practice-3.png' | url }}" alt="Primary navigation - best practice 3">
+</uxdot-example>
+
+
+### Hiding menus and utilities
+
+Do not hide menus and utilities on large breakpoints.
+
+<uxdot-example width-adjustment="1000px" danger >
+  <img src="{{ '../best-practice-4.png' | url }}" alt="Primary navigation - best practice 4">
+</uxdot-example>
+
+
+### Mixing expandable trays
+
+Do not mix the full-width and fixed-width expandable trays within the same 
+menu group.
+
+<uxdot-example width-adjustment="1000px" danger >
+  <img src="{{ '../best-practice-5.png' | url }}" alt="Primary navigation - best practice 5">
+</uxdot-example>
+
+
+## Spacing
+
+The primary navigation uses [spacers]({{'/foundations/spacing'|url}}) to define space values 
+between elements.
+
+### Extra large breakpoints
+
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../spacing-extra-large.png' | url }}" alt="Primary navigation - Spacing for extra large breakpoints">
+</uxdot-example>
+
+
+### Large breakpoints
+
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../spacing-large.png' | url }}" alt="Primary navigation - Spacing for large breakpoints">
+</uxdot-example>
+
+
+### Medium breakpoints
+
+<uxdot-example width-adjustment="768px" variant="full" alignment="left" no-border>
+  <img src="{{ '../spacing-medium.png' | url }}" alt="Primary navigation - Spacing for medium breakpoints">
+</uxdot-example>
+
+
+### Small breakpoints
+
+<uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border>
+  <img src="{{ '../spacing-small.png' | url }}" alt="Primary navigation - Spacing for small breakpoints">
+</uxdot-example>
+
+
+### Fixed-width expandable tray
+
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../spacing-fixed-width-tray.png' | url }}" alt="Primary navigation - Spacing for the fixed-width expandable tray">
+</uxdot-example>

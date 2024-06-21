@@ -1,28 +1,17 @@
 ## Overview
 
-{{ tagName | getElementDescription }}
-
-{% repoStatusList %}
+The Primary navigation is a container of menus and utilities, it allows 
+visitors to orient themselves and move through a website. It is persistent on 
+every page to ensure a consistent user experience across websites.
 
 ## Sample element
 
-<uxdot-example width-adjustment="872px">
-  <img src="{{ './nav-secondary-sample.png' | url }}" alt="Image of two stacked secondary navigations; one for large breakpoints and the other for small breakpoints">
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ './primary-nav-example.png' | url }}" alt="Primary navigation component sample">
 </uxdot-example>
 
+## Demos
+View a live version of this component to see how it can be customized.
 
-## Demo
-
-{% playground tagName=tagName %}{% endplayground %}
-
-<rh-cta><a href="{{ './demo/' | url }}">Full screen demo</a></rh-cta>
-
-
-## When to use
-  
-  - When you need to better organize a content structure
-  - When you need to provide a more granular navigation that is specific to a topic
-  - When you need to prevent other navigations from getting overloaded
-
-
-{% repoStatusChecklist %}
+<!-- @todo: KS - update the following link to demo RHDS based Primary Nav-->
+<rh-cta><a href="https://codepen.io/heyMP/pen/gOoYXov">View this component in action</rh-cta>

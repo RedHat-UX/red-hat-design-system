@@ -6,7 +6,7 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import { isHeadingElement } from '../../lib/functions.js';
 
-import styles from './rh-primary-navigation-menu-section.css';
+import styles from './rh-navigation-primary-menu-section.css';
 
 /**
  * A menu section which auto upgrades accessibility for headers and sibling list
@@ -16,7 +16,7 @@ import styles from './rh-primary-navigation-menu-section.css';
  * @slot cta        - Adds a section level CTA, expects `<rh-cta>` element
  * @csspart container    - container, <section> element
  */
-@customElement('rh-primary-navigation-menu-section')
+@customElement('rh-navigation-primary-menu-section')
 export class RhPrimaryNavigationMenuSection extends LitElement {
   static readonly styles = [styles];
 
@@ -58,7 +58,7 @@ export class RhPrimaryNavigationMenuSection extends LitElement {
           );
         } else {
           // add an ID to the header if we need it
-          header.id ||= getRandomId('rh-primary-navigation-menu-section');
+          header.id ||= getRandomId('rh-navigation-primary-menu-section');
           // add that header id to the aria-labelledby tag
           list.setAttribute('aria-labelledby', header.id);
         }

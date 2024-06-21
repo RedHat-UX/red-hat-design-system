@@ -45,6 +45,8 @@ rh-jump-links:
  - rh-pagination
  - rh-progress-steps
  - rh-tabs
+rh-navigation-primary:
+ - skip-navigation
 rh-navigation: 
  - rh-navigation-secondary
  - skip-navigation
