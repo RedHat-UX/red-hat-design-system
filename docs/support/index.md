@@ -1,6 +1,6 @@
 ---
 layout: layouts/pages/basic.njk
-title: Get Support
+title: Get support
 hasToc: false
 tags:
   - support
@@ -52,12 +52,12 @@ The best way to get help or feedback is through GitHub. This allows us to pull y
 
 <div id="docs-help-grid" class="grid sm-three-columns">
   <rh-tile>
-    <h4 slot="headline"><a href="https://github.com/orgs/RedHat-UX/discussions/new?category=documentation-feedback">Send documentation feedback</a></h4>
-    If you have general feedback about content on ux.redhat.com, start a discussion.
-  </rh-tile>
-  <rh-tile>
     <h4 slot="headline"><a href="https://github.com/RedHat-UX/red-hat-design-system/issues/new?assignees=&labels=bug,docs&projects=&template=3-bug-report.yml&title=%5Bbug%5D+%3Ctitle%3E">Report a bug on ux.redhat.com</a></h4>
     Submit an issue to fix bugs, like 404s, on ux.redhat.com.
+  </rh-tile>
+  <rh-tile>
+    <h4 slot="headline"><a href="https://github.com/orgs/RedHat-UX/discussions/new?category=documentation-feedback">Send documentation feedback</a></h4>
+    If you have general feedback about content on ux.redhat.com, start a discussion.
   </rh-tile>
   <rh-tile>
     <h4 slot="headline"><a href="https://github.com/orgs/RedHat-UX/discussions/new?category=design-library-feedback">Submit design library feedback</a></h4>
@@ -78,13 +78,11 @@ The best way to get help or feedback is through GitHub. This allows us to pull y
     <h3>Join office hours <rh-tag color="red" variant="outline">Internal Red Hat users only</rh-tag></h3>
     <p>The Red Hat Design System team holds office hours weekly. The meeting time and link are in our <strong>#red-hat-design-system</strong> Slack channel bookmarks.</p>
   </div>
+  <div>
+    <h3>Email us</h3>
+    <p>Send a message to <a href="mailto:design-system@redhat.com">design-system@redhat.com</a>.</p>
+  </div>
 </div>
-
-
-### Email us
-
-Send a message to <a href="mailto:design-system@redhat.com">design-system@redhat.com</a>.
-
 
 <div id="support-footer-grid" class="grid sm-two-columns">
   <div>
