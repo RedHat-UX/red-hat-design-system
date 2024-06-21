@@ -11,26 +11,26 @@ import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
-import styles from './rh-main-navigation-menu.css';
+import styles from './rh-primary-navigation-menu.css';
 
 
 /**
  * Dropdown menu for secondary nav, available in full-width and fixed-with sizes
  * @summary 'Dropdown menu for secondary nav, available in full-width and fixed-with sizes'
  *
- * @slot                  - Optional `<rh-main-navigation-menu-section>` elements or content following [design guidelines](../guidelines/#expandable-tray)
+ * @slot                  - Optional `<rh-primary-navigation-menu-section>` elements or content following [design guidelines](../guidelines/#expandable-tray)
  * @csspart container     - container - `<div>` element, wrapper for menus
  * @csspart full-width    - container - `<div>` element, wrapper for full-width menus
  * @csspart fixed-width   - container - `<div>` element, wrapper for fixed-width menus
  * @csspart sections      - container - `<div>` element, wrapper for menu sections
  *
- * @cssprop  --rh-main-navigation-menu-section-grid - grid-template-columns for menu sections {@default `repeat(auto-fit, minmax(15.5rem, 1fr))`}
- * @cssprop  {<length>} --rh-main-navigation-menu-section-grid-gap - grid-gap for menu sections {@default `32px`}
- * @cssprop  {<length>} --rh-main-navigation-menu-content-max-width - max-width for menu content {@default `1136px`}
+ * @cssprop  --rh-primary-navigation-menu-section-grid - grid-template-columns for menu sections {@default `repeat(auto-fit, minmax(15.5rem, 1fr))`}
+ * @cssprop  {<length>} --rh-primary-navigation-menu-section-grid-gap - grid-gap for menu sections {@default `32px`}
+ * @cssprop  {<length>} --rh-primary-navigation-menu-content-max-width - max-width for menu content {@default `1136px`}
  *
  */
-@customElement('rh-main-navigation-menu')
-export class RhNavigationSecondaryMenu extends LitElement {
+@customElement('rh-primary-navigation-menu')
+export class RhNavigationPrimaryMenu extends LitElement {
   static readonly styles = [styles];
 
   /**
@@ -55,7 +55,7 @@ export class RhNavigationSecondaryMenu extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.id ||= getRandomId('rh-main-navigation-menu');
+    this.id ||= getRandomId('rh-primary-navigation-menu');
   }
 
   render() {
@@ -79,21 +79,8 @@ export class RhNavigationSecondaryMenu extends LitElement {
   }
 }
 
-@customElement('rh-navigation-main-menu')
-class RhNavigationMainMenu extends RhNavigationSecondaryMenu {
-  #logger = new Logger(this);
-
-  constructor() {
-    super();
-    this.#logger.warn(
-      'rh-navigation-main-menu is deprecated. Use rh-main-navigation-menu instead.'
-    );
-  }
-}
-
 declare global {
   interface HTMLElementTagNameMap {
-    'rh-main-navigation-menu': RhNavigationSecondaryMenu;
-    'rh-navigation-main-menu': RhNavigationMainMenu;
+    'rh-primary-navigation-menu': RhNavigationPrimaryMenu;
   }
 }

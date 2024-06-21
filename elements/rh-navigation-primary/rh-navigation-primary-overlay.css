@@ -10,7 +10,7 @@
 
   /* TODO remove --rh-navigation-main-overlay-z-index for v2 */
   /* stylelint-disable-next-line */
-  z-index: var(--rh-main-navigation-overlay-z-index, var(--rh-navigation-main-overlay-z-index, -1));
+  z-index: var(--rh-navigation-primary-overlay-z-index, var(--rh-navigation-main-overlay-z-index, -1));
 }
 
 :host([open]) {

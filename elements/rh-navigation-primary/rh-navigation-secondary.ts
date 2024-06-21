@@ -11,19 +11,19 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import '@rhds/elements/rh-surface/rh-surface.js';
 
-import './rh-main-navigation-menu-section.js';
-import './rh-main-navigation-overlay.js';
+import './rh-navigation-primary-menu-section.js';
+import './rh-navigation-primary-overlay.js';
 
 import {
-  RhMainNavigationDropdown,
-  NavigationMainDropdownExpandEvent,
-} from './rh-main-navigation-dropdown.js';
+  RhNavigationPrimaryDropdown,
+  NavigationPrimaryDropdownExpandEvent,
+} from './rh-navigation-primary-dropdown.js';
 
 import { DirController } from '../../lib/DirController.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
-export class NavigationMainOverlayChangeEvent extends ComposedEvent {
+export class NavigationPrimaryOverlayChangeEvent extends ComposedEvent {
   constructor(
     public open: boolean,
     public toggle: HTMLElement
@@ -37,7 +37,7 @@ export type NavPalette = Extract<ColorPalette, (
   | 'dark'
 )>;
 
-import styles from './rh-main-navigation.css';
+import styles from './rh-navigation-primary.css';
 
 /* TODO: Abstract this out to a shareable function, should RTI handle something similar? */
 function focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
@@ -52,25 +52,25 @@ function focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
 }
 
 /**
- * The Main navigation is used to connect a series of pages together. It displays wayfinding content and links relevant to the page it is placed on. It should be used in conjunction with the [primary navigation](../navigation-primary).
+ * The Primary navigation is used to connect a series of pages together. It displays wayfinding content and links relevant to the page it is placed on. It should be used in conjunction with the [primary navigation](../navigation-primary).
  *
  * @summary Propagates related content across a series of pages
- * @slot logo           - Logo added to the main nav bar, expects `<a>Text</a> | <a><svg/></a> | <a><img/></a>` element
- * @slot nav            - Navigation list added to the main nav bar, expects `<ul>` element
+ * @slot logo           - Logo added to the primary nav bar, expects `<a>Text</a> | <a><svg/></a> | <a><img/></a>` element
+ * @slot nav            - Navigation list added to the primary nav bar, expects `<ul>` element
  * @slot cta            - Nav bar level CTA, expects `<rh-cta>` element
  * @slot mobile-menu    - Text label for the mobile menu button, for l10n. Defaults to "Menu"
  * @csspart nav         - container, `<nav>` element
  * @csspart container   - container, `<div>` element
  * @csspart cta         - container, `<div>` element
- * @fires {NavigationMainOverlayChangeEvent} overlay-change -
+ * @fires {NavigationPrimaryOverlayChangeEvent} overlay-change -
  *                                         Fires when an dropdown is opened or closed in desktop
  *                                         view or when the mobile menu button is toggled in mobile
  *                                         view.
- * @cssprop {<integer>} --rh-main-navigation-z-index - z-index of the main-navigation {@default `102`}
- * @cssprop {<integer>} --rh-main-navigation-overlay-z-index - z-index of the main-navigation-overlay {@default `-1`}
+ * @cssprop {<integer>} --rh-navigation-primary-z-index - z-index of the main-navigation {@default `102`}
+ * @cssprop {<integer>} --rh-navigation-primary-overlay-z-index - z-index of the main-navigation-overlay {@default `-1`}
  */
-@customElement('rh-main-navigation')
-export class RhMainNavigation extends LitElement {
+@customElement('rh-navigation-primary')
+export class RhNavigationPrimary extends LitElement {
   static readonly styles = [styles];
 
   /**
@@ -98,8 +98,7 @@ export class RhMainNavigation extends LitElement {
 
   // #tabindex = new RovingTabindexController(this, {
   //   getItems: () => this._nav?.flatMap(slotted =>
-  //     Array.from(slotted.querySelectorAll<HTMLAnchorElement>(`:is(rh-main-navigation-dropdown,
-  //                                                                 rh-navigation-main-dropdown) > a,
+  //     Array.from(slotted.querySelectorAll<HTMLAnchorElement>(`:is(rh-navigation-primary-dropdown) > a,
   //                                                             [slot="nav"] > li > a`))) ?? [],
   // });
 
@@ -128,11 +127,11 @@ export class RhMainNavigation extends LitElement {
   });
 
   /**
-   * Checks if passed in element is a RhMainNavigationDropdown
-   * @param element possibly an rh-main-navigation-dropdown
+   * Checks if passed in element is a RhNavigationPrimaryDropdown
+   * @param element possibly an rh-navigation-primary-dropdown
    */
-  static isDropdown(element: Element | null): element is RhMainNavigationDropdown {
-    return element instanceof RhMainNavigationDropdown;
+  static isDropdown(element: Element | null): element is RhNavigationPrimaryDropdown {
+    return element instanceof RhNavigationPrimaryDropdown;
   }
 
   async connectedCallback() {
@@ -168,10 +167,10 @@ export class RhMainNavigation extends LitElement {
           </rh-surface>
         </div>
       </nav>
-      <rh-main-navigation-overlay
+      <rh-navigation-primary-overlay
           .open="${this.overlayOpen}"
           @click="${this.#onOverlayClick}"
-      ></rh-main-navigation-overlay>
+      ></rh-navigation-primary-overlay>
     `;
   }
 
@@ -179,12 +178,12 @@ export class RhMainNavigation extends LitElement {
    * When dropdown event is triggered gets dropdown index that triggered
    * event then closes all dropdowns.
    * If the event is to open a dropdown, run #expand(index)
-   * If isMobile is set dispatch an NavigationMainOverlayChangeEvent event
+   * If isMobile is set dispatch an NavigationPrimaryOverlayChangeEvent event
    * to open the overlay
    * @param event when a dropdown tries to expand
    */
   #onExpandRequest(event: Event) {
-    if (event instanceof NavigationMainDropdownExpandEvent) {
+    if (event instanceof NavigationPrimaryDropdownExpandEvent) {
       const index = this.#getDropdownIndex(event.target as Element);
       if (index === null || index === undefined) {
         return;
@@ -194,7 +193,7 @@ export class RhMainNavigation extends LitElement {
         this.#expand(index);
       }
       if (this.#screenSize.matches.has('md')) {
-        this.dispatchEvent(new NavigationMainOverlayChangeEvent(event.expanded, event.toggle));
+        this.dispatchEvent(new NavigationPrimaryOverlayChangeEvent(event.expanded, event.toggle));
       }
     }
   }
@@ -207,8 +206,8 @@ export class RhMainNavigation extends LitElement {
    */
   #onFocusout(event: FocusEvent) {
     const target = event.relatedTarget as HTMLElement;
-    if (target?.closest('rh-main-navigation, rh-navigation-main') === this || target === null) {
-      // if the focus is still inside the rh-main-navigation exit
+    if (target?.closest('rh-navigation-primary, rh-navigation-primary') === this || target === null) {
+      // if the focus is still inside the rh-navigation-primary exit
       return;
     } else {
       if (this.#screenSize.matches.has('md')) {
@@ -298,7 +297,7 @@ export class RhMainNavigation extends LitElement {
    * @param element dropdown element
    */
   #getDropdownIndex(element: Element | null): void | number {
-    if (!RhMainNavigation.isDropdown(element)) {
+    if (!RhNavigationPrimary.isDropdown(element)) {
       this.#logger.warn('The getDropdownIndex method expects to receive a dropdown element.');
       return;
     }
@@ -311,7 +310,7 @@ export class RhMainNavigation extends LitElement {
    * Gets all dropdowns and returns the dropdown given an index
    * @param index of the dropdown
    */
-  #dropdownByIndex(index: number): void | RhMainNavigationDropdown {
+  #dropdownByIndex(index: number): void | RhNavigationPrimaryDropdown {
     const dropdowns = this.#allDropdowns();
     if (dropdowns[index] === undefined) {
       this.#logger.error('This dropdown index does not exist.');
@@ -329,7 +328,7 @@ export class RhMainNavigation extends LitElement {
       return;
     }
     const dropdown = this.#dropdownByIndex(index);
-    if (dropdown && RhMainNavigation.isDropdown(dropdown)) {
+    if (dropdown && RhNavigationPrimary.isDropdown(dropdown)) {
       const link = dropdown.querySelector('a');
       if (link) {
         this.#tabindex.setActiveItem(link);
@@ -341,9 +340,9 @@ export class RhMainNavigation extends LitElement {
   /**
    * Gets all dropdowns
    */
-  #allDropdowns(): RhMainNavigationDropdown[] {
+  #allDropdowns(): RhNavigationPrimaryDropdown[] {
     return Array.from(
-      this.querySelectorAll('rh-main-navigation-dropdown, rh-navigation-main-dropdown')
+      this.querySelectorAll('rh-navigation-primary-dropdown, rh-navigation-primary-dropdown')
     );
   }
 
@@ -351,7 +350,7 @@ export class RhMainNavigation extends LitElement {
    * Sets property expanded=false on dropdown given
    * @param dropdown to close
    */
-  #closeDropdown(dropdown: RhMainNavigationDropdown): void {
+  #closeDropdown(dropdown: RhNavigationPrimaryDropdown): void {
     if (dropdown.expanded === false) {
       return;
     }
@@ -362,7 +361,7 @@ export class RhMainNavigation extends LitElement {
    * Sets property expanded=true on dropdown given
    * @param dropdown to open
    */
-  #openDropdown(dropdown: RhMainNavigationDropdown): void {
+  #openDropdown(dropdown: RhNavigationPrimaryDropdown): void {
     if (dropdown.expanded === true) {
       return;
     }
@@ -374,7 +373,7 @@ export class RhMainNavigation extends LitElement {
    * @param event secondary nav overlay change event
    */
   #onOverlayChange(event: Event) {
-    if (event instanceof NavigationMainOverlayChangeEvent) {
+    if (event instanceof NavigationPrimaryOverlayChangeEvent) {
       if (this.contains(event.toggle)) {
         this.overlayOpen = event.open;
       }
@@ -401,7 +400,7 @@ export class RhMainNavigation extends LitElement {
    */
   #toggleMobileMenu() {
     this.mobileMenuExpanded = !this.mobileMenuExpanded;
-    this.dispatchEvent(new NavigationMainOverlayChangeEvent(this.mobileMenuExpanded, this));
+    this.dispatchEvent(new NavigationPrimaryOverlayChangeEvent(this.mobileMenuExpanded, this));
   }
 
   /**
@@ -413,7 +412,7 @@ export class RhMainNavigation extends LitElement {
   public open(index: number): void {
     if (index != null) {
       const dropdown = this.#dropdownByIndex(index);
-      if (dropdown && RhMainNavigation.isDropdown(dropdown)) {
+      if (dropdown && RhNavigationPrimary.isDropdown(dropdown)) {
         this.close();
         this.#expand(index);
         dropdown?.querySelector('a')?.focus();
@@ -432,19 +431,8 @@ export class RhMainNavigation extends LitElement {
   }
 }
 
-@customElement('rh-navigation-main')
-class RhNavigationMain extends RhMainNavigation {
-  #logger = new Logger(this);
-
-  constructor() {
-    super();
-    this.#logger.warn('rh-navigation-main is deprecated. Use rh-main-navigation instead.');
-  }
-}
-
 declare global {
   interface HTMLElementTagNameMap {
-    'rh-main-navigation': RhMainNavigation;
-    'rh-navigation-main': RhNavigationMain;
+    'rh-navigation-primary': RhNavigationPrimary;
   }
 }

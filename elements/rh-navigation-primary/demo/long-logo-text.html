@@ -1,13 +1,13 @@
-<rh-main-navigation role="navigation">
+<rh-navigation-primary role="navigation">
   <a href="#" slot="logo" id="logo-id" aria-current="page">
     Red Hat Ansible Automation Platform
   </a>
   <ul slot="nav" aria-labelledby="logo-id">
     <li>
-      <rh-main-navigation-dropdown>
+      <rh-navigation-primary-dropdown>
         <a href="#dropdown-fallback-url" slot="link">Dropdown</a>
-        <rh-main-navigation-menu slot="menu">
-          <rh-main-navigation-menu-section>
+        <rh-navigation-primary-menu slot="menu">
+          <rh-navigation-primary-menu-section>
             <h3 slot="header">Section</h3>
             <ul slot="links">
               <li><a href="#">Link</a></li>
@@ -17,8 +17,8 @@
             <rh-cta slot="cta">
               <a href="#">Section CTA</a>
             </rh-cta>
-          </rh-main-navigation-menu-section>
-          <rh-main-navigation-menu-section>
+          </rh-navigation-primary-menu-section>
+          <rh-navigation-primary-menu-section>
             <h3 slot="header">Section</h3>
             <ul slot="links">
               <li><a href="#">Link</a></li>
@@ -28,14 +28,14 @@
             <rh-cta slot="cta">
               <a href="#">Section CTA</a>
             </rh-cta>
-          </rh-main-navigation-menu-section>
-        </rh-main-navigation-menu>
-      </rh-main-navigation-dropdown>
+          </rh-navigation-primary-menu-section>
+        </rh-navigation-primary-menu>
+      </rh-navigation-primary-dropdown>
     </li>
     <li>
-      <rh-main-navigation-dropdown>
+      <rh-navigation-primary-dropdown>
         <a href="#dropdown-fallback-url" slot="link">Dropdown</a>
-        <rh-main-navigation-menu slot="menu">
+        <rh-navigation-primary-menu slot="menu">
           <ul>
             <li><a href="#">Link</a></li>
             <li><a href="#">Link</a></li>
@@ -44,8 +44,8 @@
             <li><a href="#">Link</a></li>
             <li><a href="#">Link</a></li>
           </ul>
-        </rh-main-navigation-menu>
-      </rh-main-navigation-dropdown>
+        </rh-navigation-primary-menu>
+      </rh-navigation-primary-dropdown>
     </li>
     <li><a href="#">Link</a></li>
     <li><a href="#">Link</a></li>
@@ -53,7 +53,7 @@
   <rh-cta slot="cta">
     <a href="#">Call to Action</a>
   </rh-cta>
-</rh-main-navigation>
+</rh-navigation-primary>
 
 <div id="space-holder">
   <h2>Content Placeholder</h2>
@@ -130,7 +130,7 @@
   </p>
 </div>
 
-<link rel="stylesheet" href="../rh-main-navigation-lightdom.css" />
+<link rel="stylesheet" href="../rh-navigation-primary-lightdom.css" />
 
 <style>
   /* fixes demo for overflow and display of sticky nav */
@@ -138,7 +138,7 @@
     display: contents;
   }
 
-  [data-demo="rh-main-navigation"] {
+  [data-demo="rh-navigation-primary"] {
     padding: 0;
   }
 
@@ -162,6 +162,6 @@
 </style>
 
 <script type="module">
-  import "@rhds/elements/rh-main-navigation/rh-main-navigation.js";
+  import "@rhds/elements/rh-navigation-primary/rh-navigation-primary.js";
   import "@rhds/elements/rh-cta/rh-cta.js";
 </script>

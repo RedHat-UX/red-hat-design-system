@@ -6,7 +6,7 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import { isHeadingElement } from '../../lib/functions.js';
 
-import styles from './rh-navigation-main-menu-section.css';
+import styles from './rh-primary-navigation-menu-section.css';
 
 /**
  * A menu section which auto upgrades accessibility for headers and sibling list
@@ -16,8 +16,8 @@ import styles from './rh-navigation-main-menu-section.css';
  * @slot cta        - Adds a section level CTA, expects `<rh-cta>` element
  * @csspart container    - container, <section> element
  */
-@customElement('rh-navigation-main-menu-section')
-export class RhMainNavigationMenuSection extends LitElement {
+@customElement('rh-primary-navigation-menu-section')
+export class RhPrimaryNavigationMenuSection extends LitElement {
   static readonly styles = [styles];
 
   #logger = new Logger(this);
@@ -58,7 +58,7 @@ export class RhMainNavigationMenuSection extends LitElement {
           );
         } else {
           // add an ID to the header if we need it
-          header.id ||= getRandomId('rh-navigation-main-menu-section');
+          header.id ||= getRandomId('rh-primary-navigation-menu-section');
           // add that header id to the aria-labelledby tag
           list.setAttribute('aria-labelledby', header.id);
         }
@@ -67,22 +67,8 @@ export class RhMainNavigationMenuSection extends LitElement {
   }
 }
 
-/** @deprecated use rh-navigation-main-menu-section */
-@customElement('rh-navigation-main-menu-section')
-class RhNavigationMainMenuSection extends RhMainNavigationMenuSection {
-  #logger = new Logger(this);
-
-  constructor() {
-    super();
-    this.#logger.warn(
-      `rh-navigation-main-menu-section is deprecated. Use rh-navigation-main-menu-section instead.`
-    );
-  }
-}
-
 declare global {
   interface HTMLElementTagNameMap {
-    'rh-main-navigation-menu-section': RhMainNavigationMenuSection;
-    'rh-navigation-main-menu-section': RhNavigationMainMenuSection;
+    'rh-main-navigation-menu-section': RhPrimaryNavigationMenuSection;
   }
 }

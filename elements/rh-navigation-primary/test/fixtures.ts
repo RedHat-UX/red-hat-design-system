@@ -1,14 +1,14 @@
 import { html } from '@open-wc/testing';
 
 export const NAV = html`
-<rh-main-navigation role="navigation">
+<rh-navigation-primary role="navigation">
   <a href="#" slot="logo">Red Hat Ansible Automation Platform</a>
   <ul slot="nav">
     <li>
-      <rh-main-navigation-dropdown>
+      <rh-navigation-primary-dropdown>
         <a href="#" slot="link">Explore</a>
-        <rh-main-navigation-menu slot="menu">
-          <rh-main-navigation-menu-section slot="section">
+        <rh-navigation-primary-menu slot="menu">
+          <rh-navigation-primary-menu-section slot="section">
             <h3 slot="header" id="ansible-platform"><a href="#">Why Red Hat Ansible Automation Platforms</a></h3>
             <ul slot="links">
               <li><a href="#">Integrations <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a></li>
@@ -18,8 +18,8 @@ export const NAV = html`
               <li><a href="#">Edge automation with Red Hat Ansible Automation Platform</a></li>
             </ul>
             <rh-cta slot="cta"><a href="#">Section Level CTA</a></rh-cta>
-          </rh-main-navigation-menu-section>
-          <rh-main-navigation-menu-section slot="section">
+          </rh-navigation-primary-menu-section>
+          <rh-navigation-primary-menu-section slot="section">
             <h3 slot="header"><a href="#">Additional Features</a></h3>
             <ul slot="links">
               <li><a href="#">Automation execution environments</a></li>
@@ -32,8 +32,8 @@ export const NAV = html`
               <li><a href="#">Ansible content tools <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a></li>
             </ul>
             <rh-cta slot="cta"><a href="#">Section Level CTA</a></rh-cta>
-          </rh-main-navigation-menu-section>
-          <rh-main-navigation-menu-section slot="section">
+          </rh-navigation-primary-menu-section>
+          <rh-navigation-primary-menu-section slot="section">
             <h3 slot="header"><a href="#">Additional Features</a></h3>
             <ul slot="links">
               <li><a href="#">Automation execution environments</a></li>
@@ -46,15 +46,15 @@ export const NAV = html`
               <li><a href="#">Ansible content tools <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a></li>
             </ul>
             <rh-cta slot="cta"><a href="#">Section Level CTA</a></rh-cta>
-          </rh-main-navigation-menu-section>
+          </rh-navigation-primary-menu-section>
           <rh-cta slot="cta"><a href="#">Menu Level CTA</a></rh-cta>
-        </rh-main-navigation-menu>
-      </rh-main-navigation-dropdown>
+        </rh-navigation-primary-menu>
+      </rh-navigation-primary-dropdown>
     </li>
     <li>
-      <rh-main-navigation-dropdown>
+      <rh-navigation-primary-dropdown>
         <a href="#" slot="link">Use cases</a>
-        <rh-main-navigation-menu slot="menu">
+        <rh-navigation-primary-menu slot="menu">
           <ul slot="section">
             <li><a href="#">Infrastructure <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a></li>
             <li><a href="#">Applications <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a></li>
@@ -65,36 +65,36 @@ export const NAV = html`
             <li><a href="#">Security <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a></li>
             <li><a href="#">Cloud <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a></li>
           </ul>
-        </rh-main-navigation-menu>
-      </rh-main-navigation-dropdown>
+        </rh-navigation-primary-menu>
+      </rh-navigation-primary-dropdown>
     </li>
     <li>
-      <rh-main-navigation-dropdown>
+      <rh-navigation-primary-dropdown>
         <a href="#" slot="link">Fixed Width</a>
-        <rh-main-navigation-menu slot="menu" type="fixed-width">
+        <rh-navigation-primary-menu slot="menu" type="fixed-width">
           <ul slot="links">
             <li><a href="#">Containers <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a></li>
             <li><a href="#">Security <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a></li>
             <li><a href="#">Cloud <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a></li>
           </ul>
-        </rh-main-navigation-menu>
-      </rh-main-navigation-dropdown>
+        </rh-navigation-primary-menu>
+      </rh-navigation-primary-dropdown>
     </li>
     <li><a href="#">Extra Placeholder</a></li>
   </ul>
   <rh-cta slot="cta"><a href="#">Get started</a></rh-cta>
-</rh-main-navigation>
+</rh-navigation-primary>
 `;
 
 export const DARKVARIANT = html`
-<rh-main-navigation role="navigation" color-palette="dark">
+<rh-navigation-primary role="navigation" color-palette="dark">
   <a href="#" slot="logo">Red Hat Ansible Automation Platform</a>
   <ul slot="nav">
     <li>
-      <rh-main-navigation-dropdown>
+      <rh-navigation-primary-dropdown>
         <a href="#" slot="link">Explore</a>
-        <rh-main-navigation-menu slot="menu">
-          <rh-main-navigation-menu-section slot="section">
+        <rh-navigation-primary-menu slot="menu">
+          <rh-navigation-primary-menu-section slot="section">
             <h3 slot="header" id="ansible-platform"><a href="#">Why Red Hat Ansible Automation Platforms</a></h3>
             <ul slot="links">
               <li><a href="#">Integrations <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a></li>
@@ -104,8 +104,8 @@ export const DARKVARIANT = html`
               <li><a href="#">Edge automation with Red Hat Ansible Automation Platform</a></li>
             </ul>
             <rh-cta slot="cta"><a href="#">Section Level CTA</a></rh-cta>
-          </rh-main-navigation-menu-section>
-          <rh-main-navigation-menu-section slot="section">
+          </rh-navigation-primary-menu-section>
+          <rh-navigation-primary-menu-section slot="section">
             <h3 slot="header"><a href="#">Additional Features</a></h3>
             <ul slot="links">
               <li><a href="#">Automation execution environments</a></li>
@@ -118,8 +118,8 @@ export const DARKVARIANT = html`
               <li><a href="#">Ansible content tools <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a></li>
             </ul>
             <rh-cta slot="cta"><a href="#">Section Level CTA</a></rh-cta>
-          </rh-main-navigation-menu-section>
-          <rh-main-navigation-menu-section slot="section">
+          </rh-navigation-primary-menu-section>
+          <rh-navigation-primary-menu-section slot="section">
             <h3 slot="header"><a href="#">Additional Features</a></h3>
             <ul slot="links">
               <li><a href="#">Automation execution environments</a></li>
@@ -132,15 +132,15 @@ export const DARKVARIANT = html`
               <li><a href="#">Ansible content tools <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a></li>
             </ul>
             <rh-cta slot="cta"><a href="#">Section Level CTA</a></rh-cta>
-          </rh-main-navigation-menu-section>
+          </rh-navigation-primary-menu-section>
           <rh-cta slot="cta"><a href="#">Menu Level CTA</a></rh-cta>
-        </rh-main-navigation-menu>
-      </rh-main-navigation-dropdown>
+        </rh-navigation-primary-menu>
+      </rh-navigation-primary-dropdown>
     </li>
     <li>
-      <rh-main-navigation-dropdown>
+      <rh-navigation-primary-dropdown>
         <a href="#" slot="link">Use cases</a>
-        <rh-main-navigation-menu slot="menu">
+        <rh-navigation-primary-menu slot="menu">
           <ul slot="section">
             <li><a href="#">Infrastructure <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a></li>
             <li><a href="#">Applications <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a></li>
@@ -151,23 +151,23 @@ export const DARKVARIANT = html`
             <li><a href="#">Security <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a></li>
             <li><a href="#">Cloud <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a></li>
           </ul>
-        </rh-main-navigation-menu>
-      </rh-main-navigation-dropdown>
+        </rh-navigation-primary-menu>
+      </rh-navigation-primary-dropdown>
     </li>
     <li>
-      <rh-main-navigation-dropdown>
+      <rh-navigation-primary-dropdown>
         <a href="#" slot="link">Fixed Width</a>
-        <rh-main-navigation-menu slot="menu" type="fixed-width">
+        <rh-navigation-primary-menu slot="menu" type="fixed-width">
           <ul slot="links">
             <li><a href="#">Containers <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a></li>
             <li><a href="#">Security <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a></li>
             <li><a href="#">Cloud <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a></li>
           </ul>
-        </rh-main-navigation-menu>
-      </rh-main-navigation-dropdown>
+        </rh-navigation-primary-menu>
+      </rh-navigation-primary-dropdown>
     </li>
     <li><a href="#">Extra Placeholder</a></li>
   </ul>
   <rh-cta slot="cta"><a href="#">Get started</a></rh-cta>
-</rh-main-navigation>
+</rh-navigation-primary>
 `;

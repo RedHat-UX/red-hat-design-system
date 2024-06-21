@@ -1,19 +1,32 @@
-<rh-main-navigation role="navigation">
+<rh-navigation-primary
+  role="navigation"
+  data-analytics-region="main-navigation-Ansible"
+>
   <a href="#" slot="logo" id="logo-id" aria-current="page">
     Red Hat Ansible Automation Platform
   </a>
   <ul slot="nav" aria-labelledby="logo-id">
     <li>
-      <rh-main-navigation-dropdown>
-        <a href="#" slot="link">Explore</a>
-        <rh-main-navigation-menu slot="menu">
-          <rh-main-navigation-menu-section>
+      <rh-navigation-primary-dropdown>
+        <a href="#" data-analytics-text="Explore" slot="link">Explore</a>
+        <rh-navigation-primary-menu slot="menu">
+          <rh-navigation-primary-menu-section>
             <h2 slot="header" id="ansible-platform">
-              <a href="#">Why Red Hat Ansible Automation Platforms</a>
+              <a
+                href="#"
+                data-analytics-text="Why Red Hat Ansible Automation Platforms"
+                data-analytics-category="Explore|Why Red Hat Ansible Automation Platforms"
+              >
+                Why Red Hat Ansible Automation Platforms
+              </a>
             </h2>
             <ul slot="links" aria-labelledby="ansible-platform">
               <li>
-                <a href="#">
+                <a
+                  href="#"
+                  data-analytics-text="Integrations"
+                  data-analytics-category="Explore|Why Red Hat Ansible Automation Platforms"
+                >
                   Integrations
                   <pf-icon
                     set="patternfly"
@@ -23,37 +36,95 @@
                   ></pf-icon>
                 </a>
               </li>
-              <li><a href="#">Custom success stories</a></li>
               <li>
-                <a href="#">
+                <a
+                  href="#"
+                  data-analytics-text="Custom success stories"
+                  data-analytics-category="Explore|Why Red Hat Ansible Automation Platforms"
+                >
+                  Custom success stories
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  data-analytics-text="What is ansible"
+                  data-analytics-category="Explore|Why Red Hat Ansible Automation Platforms"
+                >
                   What is ansible
                   <pf-icon
-                    icon="icon-new-window"
-                    color="info"
+                    set="patternfly"
+                    icon="arrow"
                     size="sm"
+                    loading="idle"
                   ></pf-icon>
                 </a>
               </li>
-              <li><a href="#">Why choose Red Hat for automation?</a></li>
               <li>
-                <a href="#"
-                  >Edge automation with Red Hat Ansible Automation Platform</a
+                <a
+                  href="#"
+                  data-analytics-text="Why choose Red Hat for automation?"
+                  data-analytics-category="Explore|Why Red Hat Ansible Automation Platforms"
                 >
+                  Why choose Red Hat for automation?
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  data-analytics-text="Edge automation with Red Hat Ansible Automation Platform"
+                  data-analytics-category="Explore|Why Red Hat Ansible Automation Platforms"
+                >
+                  Edge automation with Red Hat Ansible Automation Platform
+                </a>
               </li>
             </ul>
             <rh-cta slot="cta">
-              <a href="#">Section Level CTA</a>
+              <a
+                href="#"
+                data-analytics-linktype="cta"
+                data-analytics-text="Section Level CTA"
+                data-analytics-category="Explore|Why Red Hat Ansible Automation Platforms"
+              >
+                Section Level CTA
+              </a>
             </rh-cta>
-          </rh-main-navigation-menu-section>
-          <rh-main-navigation-menu-section>
+          </rh-navigation-primary-menu-section>
+          <rh-navigation-primary-menu-section>
             <h2 slot="header">
-              <a href="#">Additional Features</a>
+              <a
+                href="#"
+                data-analytics-text="Additional Features"
+                data-analytics-category="Explore|Additional Features"
+              >
+                Additional Features
+              </a>
             </h2>
             <ul slot="links">
-              <li><a href="#">Automation execution environments</a></li>
-              <li><a href="#">Automation controller</a></li>
               <li>
-                <a href="#">
+                <a
+                  href="#"
+                  data-analytics-text="Automation execution environments"
+                  data-analytics-category="Explore|Additional Features"
+                >
+                  Automation execution environments
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  data-analytics-text="Automation controller"
+                  data-analytics-category="Explore|Additional Features"
+                >
+                  Automation controller
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  data-analytics-text="Automation mesh"
+                  data-analytics-category="Explore|Additional Features"
+                >
                   Automation mesh
                   <pf-icon
                     set="patternfly"
@@ -63,9 +134,21 @@
                   ></pf-icon>
                 </a>
               </li>
-              <li><a href="#">Ansible Content Collections</a></li>
               <li>
-                <a href="#">
+                <a
+                  href="#"
+                  data-analytics-text="Automation Content Collections"
+                  data-analytics-category="Explore|Additional Features"
+                >
+                  Ansible Content Collections
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  data-analytics-text="Automation Hub"
+                  data-analytics-category="Explore|Additional Features"
+                >
                   Automation Hub
                   <pf-icon
                     set="patternfly"
@@ -76,7 +159,11 @@
                 </a>
               </li>
               <li>
-                <a href="#">
+                <a
+                  href="#"
+                  data-analytics-text="Red Hat Insights for Red Hat Ansible Automation Platform"
+                  data-analytics-category="Explore|Additional Features"
+                >
                   Red Hat Insights for Red Hat Ansible Automation Platform
                   <pf-icon
                     set="patternfly"
@@ -87,7 +174,11 @@
                 </a>
               </li>
               <li>
-                <a href="#">
+                <a
+                  href="#"
+                  data-analytics-text="Automation services catalog"
+                  data-analytics-category="Explore|Additional Features"
+                >
                   Automation services catalog
                   <pf-icon
                     set="patternfly"
@@ -98,7 +189,11 @@
                 </a>
               </li>
               <li>
-                <a href="#">
+                <a
+                  href="#"
+                  data-analytics-text="Ansible content tools"
+                  data-analytics-category="Explore|Additional Features"
+                >
                   Ansible content tools
                   <pf-icon
                     set="patternfly"
@@ -110,87 +205,30 @@
               </li>
             </ul>
             <rh-cta slot="cta">
-              <a href="#">Section Level CTA</a>
+              <a
+                href="#"
+                data-analytics-linktype="cta"
+                data-analytics-text="Section Level CTA"
+                data-analytics-category="Explore|Additional Features"
+              >
+                Section Level CTA
+              </a>
             </rh-cta>
-          </rh-main-navigation-menu-section>
-          <rh-main-navigation-menu-section>
-            <h2 slot="header">
-              <a href="#">Additional Features</a>
-            </h2>
-            <ul slot="links">
-              <li><a href="#">Automation execution environments</a></li>
-              <li><a href="#">Automation controller</a></li>
-              <li>
-                <a href="#">
-                  Automation mesh
-                  <pf-icon
-                    set="patternfly"
-                    icon="arrow"
-                    size="sm"
-                    loading="idle"
-                  ></pf-icon>
-                </a>
-              </li>
-              <li><a href="#">Ansible Content Collections</a></li>
-              <li>
-                <a href="#">
-                  Automation Hub
-                  <pf-icon
-                    set="patternfly"
-                    icon="arrow"
-                    size="sm"
-                    loading="idle"
-                  ></pf-icon>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  Red Hat Insights for Red Hat Ansible Automation Platform
-                  <pf-icon
-                    set="patternfly"
-                    icon="arrow"
-                    size="sm"
-                    loading="idle"
-                  ></pf-icon>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  Automation services catalog
-                  <pf-icon
-                    set="patternfly"
-                    icon="arrow"
-                    size="sm"
-                    loading="idle"
-                  ></pf-icon>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  Ansible content tools
-                  <pf-icon
-                    set="patternfly"
-                    icon="arrow"
-                    size="sm"
-                    loading="idle"
-                  ></pf-icon>
-                </a>
-              </li>
-            </ul>
-            <rh-cta slot="cta">
-              <a href="#">Section Level CTA</a>
-            </rh-cta>
-          </rh-main-navigation-menu-section>
-        </rh-main-navigation-menu>
-      </rh-main-navigation-dropdown>
+          </rh-navigation-primary-menu-section>
+        </rh-navigation-primary-menu>
+      </rh-navigation-primary-dropdown>
     </li>
     <li>
-      <rh-main-navigation-dropdown>
-        <a href="#" slot="link">Use cases</a>
-        <rh-main-navigation-menu slot="menu">
+      <rh-navigation-primary-dropdown>
+        <a href="#" slot="link" data-analytics-text="Use cases">Use cases</a>
+        <rh-navigation-primary-menu slot="menu">
           <ul>
             <li>
-              <a href="#">
+              <a
+                href="#"
+                data-analytics-text="Infrastructure"
+                data-analytics-category="Use cases"
+              >
                 Infrastructure
                 <pf-icon
                   set="patternfly"
@@ -201,7 +239,11 @@
               </a>
             </li>
             <li>
-              <a href="#">
+              <a
+                href="#"
+                data-analytics-text="Applications"
+                data-analytics-category="Use cases"
+              >
                 Applications
                 <pf-icon
                   set="patternfly"
@@ -212,7 +254,11 @@
               </a>
             </li>
             <li>
-              <a href="#">
+              <a
+                href="#"
+                data-analytics-text="Networks"
+                data-analytics-category="Use cases"
+              >
                 Networks
                 <pf-icon
                   set="patternfly"
@@ -225,7 +271,11 @@
           </ul>
           <ul>
             <li>
-              <a href="#">
+              <a
+                href="#"
+                data-analytics-text="Containers"
+                data-analytics-category="Use cases"
+              >
                 Containers
                 <pf-icon
                   set="patternfly"
@@ -236,7 +286,11 @@
               </a>
             </li>
             <li>
-              <a href="#">
+              <a
+                href="#"
+                data-analytics-text="Security"
+                data-analytics-category="Use cases"
+              >
                 Security
                 <pf-icon
                   set="patternfly"
@@ -247,7 +301,11 @@
               </a>
             </li>
             <li>
-              <a href="#">
+              <a
+                href="#"
+                data-analytics-text="Cloud"
+                data-analytics-category="Use cases"
+              >
                 Cloud
                 <pf-icon
                   set="patternfly"
@@ -258,16 +316,20 @@
               </a>
             </li>
           </ul>
-        </rh-main-navigation-menu>
-      </rh-main-navigation-dropdown>
+        </rh-navigation-primary-menu>
+      </rh-navigation-primary-dropdown>
     </li>
-    <li><a href="#">Documentation</a></li>
-    <li><a href="#">Extra Placeholder</a></li>
+    <li><a href="#" data-analytics-text="Documentation">Documentation</a></li>
+    <li>
+      <a href="#" data-analytics-text="Extra Placeholder">Extra Placeholder</a>
+    </li>
   </ul>
   <rh-cta slot="cta">
-    <a href="#">Get started</a>
+    <a href="#" data-analytics-text="Get started" data-analytics-linktype="cta"
+      >Get started</a
+    >
   </rh-cta>
-</rh-main-navigation>
+</rh-navigation-primary>
 
 <div id="space-holder">
   <h2>Content Placeholder</h2>
@@ -344,7 +406,7 @@
   </p>
 </div>
 
-<link rel="stylesheet" href="../rh-main-navigation-lightdom.css" />
+<link rel="stylesheet" href="../rh-navigation-primary-lightdom.css" />
 
 <style>
   /* fixes demo for overflow and display of sticky nav */
@@ -352,7 +414,7 @@
     display: contents;
   }
 
-  [data-demo="rh-main-navigation"] {
+  [data-demo="rh-navigation-primary"] {
     padding: 0;
   }
 
@@ -376,6 +438,7 @@
 </style>
 
 <script type="module">
-  import "@rhds/elements/rh-main-navigation/rh-main-navigation.js";
+  import "@rhds/elements/rh-navigation-primary/rh-navigation-primary.js";
   import "@rhds/elements/rh-cta/rh-cta.js";
+  import "@rhds/elements/rh-card/rh-card.js";
 </script>

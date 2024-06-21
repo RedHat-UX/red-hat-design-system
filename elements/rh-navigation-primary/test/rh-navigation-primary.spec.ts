@@ -1,13 +1,13 @@
-import type { RhNavigationSecondaryOverlay } from '@rhds/elements/rh-main-navigation/rh-main-navigation-overlay.js';
+import type { RhNavigationPrimaryOverlay } from '@rhds/elements/rh-navigation-primary/rh-navigation-primary-overlay.js';
 import type {
-  RhNavigationSecondaryDropdown,
-  SecondaryNavDropdownExpandEvent,
-} from '@rhds/elements/rh-main-navigation/rh-main-navigation-dropdown.js';
+  RhNavigationPrimaryDropdown,
+  NavigationPrimaryDropdownExpandEvent,
+} from '@rhds/elements/rh-navigation-primary/rh-navigation-primary-dropdown.js';
 
 import { expect, assert, fixture, aTimeout, oneEvent } from '@open-wc/testing';
 import { setViewport } from '@web/test-runner-commands';
 
-import { RhNavigationSecondary } from '@rhds/elements/rh-main-navigation/rh-main-navigation.js';
+import { RhNavigationPrimary } from '@rhds/elements/rh-navigation-primary/rh-navigation-primary.js';
 
 import { DARKVARIANT, NAV } from './fixtures';
 
@@ -16,27 +16,27 @@ function isDesktop() {
   return matches;
 }
 
-let element: RhNavigationSecondary;
+let element: RhNavigationPrimary;
 let mobileButton: HTMLButtonElement | null | undefined;
-let overlay: RhNavigationSecondaryOverlay | null | undefined;
-let dropdown: RhNavigationSecondaryDropdown | null;
+let overlay: RhNavigationPrimaryOverlay | null | undefined;
+let dropdown: RhNavigationPrimaryDropdown | null;
 
 import '@patternfly/pfe-tools/test/stub-logger.js';
 
-describe('<rh-main-navigation>', async function() {
+describe('<rh-navigation-primary>', async function() {
   beforeEach(async function() {
-    element = await fixture<RhNavigationSecondary>(NAV);
+    element = await fixture<RhNavigationPrimary>(NAV);
     mobileButton = element.shadowRoot?.querySelector('button');
-    overlay = element.shadowRoot?.querySelector('rh-main-navigation-overlay');
-    dropdown = element.querySelector('rh-main-navigation-dropdown a');
+    overlay = element.shadowRoot?.querySelector('rh-navigation-primary-overlay');
+    dropdown = element.querySelector('rh-navigation-primary-dropdown a');
   });
 
   it('should upgrade', async function() {
-    const klass = customElements.get('rh-main-navigation');
+    const klass = customElements.get('rh-navigation-primary');
     expect(element)
         .to.be.an.instanceOf(klass)
         .and
-        .to.be.an.instanceOf(RhNavigationSecondary);
+        .to.be.an.instanceOf(RhNavigationPrimary);
   });
 
   it('should remove role="navigation" after upgrade', async function() {
@@ -48,7 +48,7 @@ describe('<rh-main-navigation>', async function() {
   });
 
   it('should have an overlay set to hidden after upgrade', async function() {
-    const overlay: RhNavigationSecondaryOverlay | null | undefined = element.shadowRoot?.querySelector('rh-main-navigation-overlay');
+    const overlay: RhNavigationPrimaryOverlay | null | undefined = element.shadowRoot?.querySelector('rh-navigation-primary-overlay');
     expect(overlay?.hasAttribute('open')).to.be.false;
   });
 
@@ -57,7 +57,7 @@ describe('<rh-main-navigation>', async function() {
   });
 
   describe('dropdown is clicked', function() {
-    let event: SecondaryNavDropdownExpandEvent;
+    let event: NavigationPrimaryDropdownExpandEvent;
     beforeEach(async function() {
       setTimeout(function() {
         dropdown?.click();
@@ -104,7 +104,7 @@ describe('<rh-main-navigation>', async function() {
           setTimeout(function() {
             dropdown?.click();
           });
-          await oneEvent(element, 'expand-request') as SecondaryNavDropdownExpandEvent;
+          await oneEvent(element, 'expand-request') as NavigationPrimaryDropdownExpandEvent;
         });
 
         it('overlay should remove hidden attribute after a dropdown is clicked', async function() {
@@ -174,7 +174,7 @@ describe('<rh-main-navigation>', async function() {
             setTimeout(function() {
               dropdown?.click();
             });
-            await oneEvent(element, 'expand-request') as SecondaryNavDropdownExpandEvent;
+            await oneEvent(element, 'expand-request') as NavigationPrimaryDropdownExpandEvent;
           });
 
           it('overlay should not remove hidden attribute after dropdown is clicked with mobile menu open', async function() {
@@ -185,7 +185,7 @@ describe('<rh-main-navigation>', async function() {
             setTimeout(function() {
               dropdown?.click();
             });
-            await oneEvent(element, 'expand-request') as SecondaryNavDropdownExpandEvent;
+            await oneEvent(element, 'expand-request') as NavigationPrimaryDropdownExpandEvent;
             expect(overlay?.hasAttribute('hidden')).to.be.false;
           });
 
@@ -212,7 +212,7 @@ describe('<rh-main-navigation>', async function() {
 
   describe('color-palette dark', function() {
     beforeEach(async function() {
-      element = await fixture<RhNavigationSecondary>(DARKVARIANT);
+      element = await fixture<RhNavigationPrimary>(DARKVARIANT);
       await element.updateComplete;
       await aTimeout(150);
     });
@@ -229,12 +229,12 @@ describe('<rh-main-navigation>', async function() {
   });
 
   describe('current page indicator', function() {
-    let dropdown: RhNavigationSecondaryDropdown;
+    let dropdown: RhNavigationPrimaryDropdown;
 
     beforeEach(async function() {
-      element = await fixture<RhNavigationSecondary>(NAV);
+      element = await fixture<RhNavigationPrimary>(NAV);
       await element.updateComplete;
-      dropdown = element.querySelector('rh-main-navigation-dropdown') as RhNavigationSecondaryDropdown;
+      dropdown = element.querySelector('rh-navigation-primary-dropdown') as RhNavigationPrimaryDropdown;
     });
 
     it('should have a current page indicator on a dropdown that contains a link set to current page', async function() {

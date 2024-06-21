@@ -1,14 +1,14 @@
 <div lang="he" dir="rtl">
-  <rh-main-navigation role="navigation">
+  <rh-navigation-primary role="navigation">
     <a href="#" slot="logo" id="logo-id" aria-current="page">
       Red Hat Ansible Automation Platform
     </a>
     <ul slot="nav" aria-labelledby="logo-id">
       <li>
-        <rh-main-navigation-dropdown>
+        <rh-navigation-primary-dropdown>
           <a href="#" slot="link">לַחקוֹר</a>
-          <rh-main-navigation-menu slot="menu">
-            <rh-main-navigation-menu-section>
+          <rh-navigation-primary-menu slot="menu">
+            <rh-navigation-primary-menu-section>
               <h2 slot="header" id="ansible-platform">
                 <a href="#">למה Red Hat Ansible Automation Platforms</a>
               </h2>
@@ -46,8 +46,8 @@
               <rh-cta slot="cta">
                 <a href="#">CTA ברמת המדור</a>
               </rh-cta>
-            </rh-main-navigation-menu-section>
-            <rh-main-navigation-menu-section>
+            </rh-navigation-primary-menu-section>
+            <rh-navigation-primary-menu-section>
               <h2 slot="header">
                 <a href="#">תכונות נוספות</a>
               </h2>
@@ -114,14 +114,14 @@
               <rh-cta slot="cta">
                 <a href="#">CTA ברמת המדור</a>
               </rh-cta>
-            </rh-main-navigation-menu-section>
-          </rh-main-navigation-menu>
-        </rh-main-navigation-dropdown>
+            </rh-navigation-primary-menu-section>
+          </rh-navigation-primary-menu>
+        </rh-navigation-primary-dropdown>
       </li>
       <li>
-        <rh-main-navigation-dropdown>
+        <rh-navigation-primary-dropdown>
           <a href="#" slot="link">מקרי שימוש</a>
-          <rh-main-navigation-menu slot="menu">
+          <rh-navigation-primary-menu slot="menu">
             <ul>
               <li>
                 <a href="#">
@@ -192,8 +192,8 @@
                 </a>
               </li>
             </ul>
-          </rh-main-navigation-menu>
-        </rh-main-navigation-dropdown>
+          </rh-navigation-primary-menu>
+        </rh-navigation-primary-dropdown>
       </li>
       <li><a href="#">תיעוד</a></li>
       <li><a href="#">מציין מיקום נוסף</a></li>
@@ -202,7 +202,7 @@
     <rh-cta slot="cta">
       <a href="#">להתחיל</a>
     </rh-cta>
-  </rh-main-navigation>
+  </rh-navigation-primary>
 
   <div id="space-holder">
     <h2>מציין מיקום של תוכן</h2>
@@ -235,7 +235,7 @@
     display: contents;
   }
 
-  [data-demo="rh-main-navigation"] {
+  [data-demo="rh-navigation-primary"] {
     padding: 0;
   }
 
@@ -258,9 +258,9 @@
   }
 </style>
 
-<link rel="stylesheet" href="../rh-main-navigation-lightdom.css" />
+<link rel="stylesheet" href="../rh-navigation-primary-lightdom.css" />
 
 <script type="module">
-  import "@rhds/elements/rh-main-navigation/rh-main-navigation.js";
+  import "@rhds/elements/rh-navigation-primary/rh-navigation-primary.js";
   import "@rhds/elements/rh-cta/rh-cta.js";
 </script>

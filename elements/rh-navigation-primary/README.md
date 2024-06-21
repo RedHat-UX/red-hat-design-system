@@ -1,4 +1,4 @@
-## `<rh-main-navigation>` Red Hat Main Navigation
+## `<rh-navigation-primary>` Red Hat Main Navigation
 
 A primary navigation for product navigation.
 
@@ -12,11 +12,11 @@ npm install @rhds/elements
 ```
 
 ```js
-import '@rhds/elements/rh-main-navigation/rh-main-navigation.js';
+import '@rhds/elements/rh-navigation-primary/rh-navigation-primary.js';
 ```
 
 ```html
-<link rel="stylesheet" href="node_modules/@rhds/elements/elements/rh-main-navigation/rh-main-navigation-lightdom.css" />
+<link rel="stylesheet" href="node_modules/@rhds/elements/elements/rh-navigation-primary/rh-navigation-primary-lightdom.css" />
 ```
 
 ## Questions and Feedback
@@ -26,16 +26,16 @@ Please [open a discussion thread](https://github.com/orgs/RedHat-UX/discussions/
 ## Example
 
 ```html
-<rh-main-navigation role="navigation">
+<rh-navigation-primary role="navigation">
   <a href="#" slot="logo">
     Red Hat Ansible Automation Platform
   </a>
   <ul slot="nav">
     <li>
-      <rh-main-navigation-dropdown>
+      <rh-navigation-primary-dropdown>
         <a href="#" slot="link">Explore</a>
-        <rh-main-navigation-menu slot="menu">
-          <rh-main-navigation-menu-section>
+        <rh-navigation-primary-menu slot="menu">
+          <rh-navigation-primary-menu-section>
             <h3 slot="header" id="ansible-platform">
               <a href="#">Why Red Hat Ansible Automation Platforms</a>
             </h3>
@@ -60,8 +60,8 @@ Please [open a discussion thread](https://github.com/orgs/RedHat-UX/discussions/
             <rh-cta slot="cta">
               <a href="#">Section Level CTA</a>
             </rh-cta>
-          </rh-main-navigation-menu-section>
-          <rh-main-navigation-menu-section>
+          </rh-navigation-primary-menu-section>
+          <rh-navigation-primary-menu-section>
             <h3 slot="header">
               <a href="#">Additional Features</a>
             </h3>
@@ -94,14 +94,14 @@ Please [open a discussion thread](https://github.com/orgs/RedHat-UX/discussions/
             <rh-cta slot="cta">
               <a href="#">Section Level CTA</a>
             </rh-cta>
-          </rh-main-navigation-menu-section>
-        </rh-main-navigation-menu>
-      </rh-main-navigation-dropdown>
+          </rh-navigation-primary-menu-section>
+        </rh-navigation-primary-menu>
+      </rh-navigation-primary-dropdown>
     </li>
      <li>
-      <rh-main-navigation-dropdown>
+      <rh-navigation-primary-dropdown>
         <a href="#" slot="link">Use cases</a>
-        <rh-main-navigation-menu slot="menu">
+        <rh-navigation-primary-menu slot="menu">
           <ul>
             <li>
               <a href="https://www.ansible.com/integrations/cloud">Cloud Automation <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a>
@@ -116,18 +116,18 @@ Please [open a discussion thread](https://github.com/orgs/RedHat-UX/discussions/
               <a href="https://www.ansible.com/use-cases">See all <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a>
             </li>
           </ul>
-        </rh-main-navigation-menu>
-      </rh-main-navigation-dropdown>
+        </rh-navigation-primary-menu>
+      </rh-navigation-primary-dropdown>
      </li>
     <li><a href="https://docs.ansible.com/">Documentation</a></li>
   </ul>
   <rh-cta slot="cta">
     <a href="https://www.redhat.com/en/technologies/management/ansible/get-started">Get started</a>
   </rh-cta>
-</rh-main-navigation>
+</rh-navigation-primary>
 ```
 
-## `<rh-main-navigation>` 
+## `<rh-navigation-primary>` 
 
 ### Slots
 
@@ -140,8 +140,8 @@ Please [open a discussion thread](https://github.com/orgs/RedHat-UX/discussions/
 ### Attributes
 | Name | Value | Description | Required | Example |
 |------|-------|-------------|----------|---------| 
-| **role** | navigation | Ensures an accessible experience before or on failed upgrade | Yes |  `<rh-main-navigation role="navigation">` |
-| **color-palette** | "light" (default),  "dark" | Sets the color theme for the navigation | No | `<rh-main-navigation color-palette="dark">` |
+| **role** | navigation | Ensures an accessible experience before or on failed upgrade | Yes |  `<rh-navigation-primary role="navigation">` |
+| **color-palette** | "light" (default),  "dark" | Sets the color theme for the navigation | No | `<rh-navigation-primary color-palette="dark">` |
 
 ### CSS Parts
 | Name | Description |
@@ -154,33 +154,33 @@ Please [open a discussion thread](https://github.com/orgs/RedHat-UX/discussions/
 
 | Name | Default Value |
 |------|-------------|
-| `--rh-main-navigation-logo-max-width` | `10em` |
-| `--rh-main-navigation-z-index` | `102` | 
-| `--rh-main-navigation-overlay-z-index` | `-1` |
+| `--rh-navigation-primary-logo-max-width` | `10em` |
+| `--rh-navigation-primary-z-index` | `102` | 
+| `--rh-navigation-primary-overlay-z-index` | `-1` |
 
 
 ### Minimum example
 
 ```html
-<rh-main-navigation role="navigation">
+<rh-navigation-primary role="navigation">
   <a href="#" slot="logo">Logo</a>
   <ul slot="nav">
     <li><a href="#">Link 1</a></li>
     <li><a href="#">Link 2</a></li>
     <li><a href="#">Link 3</a></li>
   </ul>
-</rh-main-navigation>
+</rh-navigation-primary>
 ```
 
-## `<rh-main-navigation-dropdown>`
+## `<rh-navigation-primary-dropdown>`
 
-An `optional` component which replaces an href in the unordered list in the nav slot of the parent `rh-main-navigation` and is used with it's companion component `<rh-main-navigation-menu>`
+An `optional` component which replaces an href in the unordered list in the nav slot of the parent `rh-navigation-primary` and is used with it's companion component `<rh-navigation-primary-menu>`
 
 ### Slots
 | Name | Description | Required | Example |
 |------|-------------|----------|---------|
 | **link** | Link to upgrade to a dropdown | Yes | `<a slot="link" href="#">Dropdown</a>` |
-| **menu** | rh-main-navigation-menu component | Yes | `<rh-main-navigation-menu slot="menu">...</rh-main-navigation-menu>` |
+| **menu** | rh-navigation-primary-menu component | Yes | `<rh-navigation-primary-menu slot="menu">...</rh-navigation-primary-menu>` |
 
 
 ### CSS Parts
@@ -188,20 +188,20 @@ An `optional` component which replaces an href in the unordered list in the nav 
 |------|-------------|
 | **container** | Override wrapper container styles |
 
-## `<rh-main-navigation-menu>` 
+## `<rh-navigation-primary-menu>` 
 
 ### Slots
 | Name | Description | Required | Example |
 |------|-------------|----------|---------|
-| **default** | Default slot | Yes | `<rh-main-navigation-menu><ul>...</ul></rh-main-navigation-menu>` |
--  The default slot should be used with either a `<rh-main-navigation-menu-section>` or an `<ul>` or `<ol>` list of links
+| **default** | Default slot | Yes | `<rh-navigation-primary-menu><ul>...</ul></rh-navigation-primary-menu>` |
+-  The default slot should be used with either a `<rh-navigation-primary-menu-section>` or an `<ul>` or `<ol>` list of links
 
 
 ### Attributes
 
 | Name | Value | Required | Example |
 |------|-------------|----------|---------|
-| **layout** | `fixed-width`, `full-width` (default) | No | `<rh-main-navigation-menu>Content</rh-main-navigation-menu>` |
+| **layout** | `fixed-width`, `full-width` (default) | No | `<rh-navigation-primary-menu>Content</rh-navigation-primary-menu>` |
 
 -  The `fixed-width` menu layout only uses the horizontal space in which it's content needs.
 - The `full-width` layout style menu spans the entire horizontal space of the viewport.
@@ -210,9 +210,9 @@ An `optional` component which replaces an href in the unordered list in the nav 
 
 | Name | Default Value |
 |------|-------------|
-| `--rh-main-navigation-menu-section-grid` | `repeat(auto-fit, minmax(15.5em, 1fr))` | 
-| `--rh-main-navigation-menu-section-grid-gap` | `2em` |
-| `--rh-main-navigation-menu-content-max-width` | `1136px` |
+| `--rh-navigation-primary-menu-section-grid` | `repeat(auto-fit, minmax(15.5em, 1fr))` | 
+| `--rh-navigation-primary-menu-section-grid-gap` | `2em` |
+| `--rh-navigation-primary-menu-content-max-width` | `1136px` |
 
 ### CSS Parts
 | Name | Description |
@@ -223,27 +223,27 @@ An `optional` component which replaces an href in the unordered list in the nav 
 
 ### Minimum example
 ```html
-<rh-main-navigation role="navigation">
+<rh-navigation-primary role="navigation">
   <a href="#" slot="logo">Logo</a>
   <ul slot="nav">
     <li><a href="#">Link 1</a></li>
     <li>
-      <rh-main-navigation-dropdown>
+      <rh-navigation-primary-dropdown>
         <a slot="link">Link 2</a>
-        <rh-main-navigation-menu slot="menu" layout="fixed-width"> <!-- layout attribute optional -->
+        <rh-navigation-primary-menu slot="menu" layout="fixed-width"> <!-- layout attribute optional -->
           <ul>
             <li><a href="#">Link 2.1</a></li>
             <li><a href="#">Link 2.2</a></li>
           </ul>
-        </rh-main-navigation-menu>
-      </rh-main-navigation-dropdown>
+        </rh-navigation-primary-menu>
+      </rh-navigation-primary-dropdown>
     </li>
     <li><a href="#">Link 3</a></li>
   </ul>
-</rh-main-navigation>
+</rh-navigation-primary>
 ```
 
-## `<rh-main-navigation-menu-section>` 
+## `<rh-navigation-primary-menu-section>` 
 
 ### Slots
 | Name | Description | Required | Example |
@@ -260,25 +260,25 @@ An `optional` component which replaces an href in the unordered list in the nav 
 
 ### Minimum example
 ```html
-<rh-main-navigation role="navigation">
+<rh-navigation-primary role="navigation">
   <a href="#" slot="logo">Logo</a>
   <ul slot="nav">
     <li><a href="#">Link 1</a></li>
     <li>
-      <rh-main-navigation-dropdown>
+      <rh-navigation-primary-dropdown>
         <a slot="link">Link 2</a>
-        <rh-main-navigation-menu slot="menu" layout="fixed-width"> <!-- layout attribute optional -->
-          <rh-main-navigation-menu-section>
+        <rh-navigation-primary-menu slot="menu" layout="fixed-width"> <!-- layout attribute optional -->
+          <rh-navigation-primary-menu-section>
             <h3 slot="header">Title of Links</h3>
             <ul slot="links">
               <li><a href="#">Link 2.1</a></li>
               <li><a href="#">Link 2.2</a></li>
             </ul>
-          </rh-main-navigation-menu>
-        <rh-main-navigation-menu-section>
-      </rh-main-navigation-dropdown>
+          </rh-navigation-primary-menu>
+        <rh-navigation-primary-menu-section>
+      </rh-navigation-primary-dropdown>
     </li>
     <li><a href="#">Link 3</a></li>
   </ul>
-</rh-main-navigation>
+</rh-navigation-primary>
 ```

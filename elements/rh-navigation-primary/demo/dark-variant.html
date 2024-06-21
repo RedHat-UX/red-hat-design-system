@@ -1,12 +1,12 @@
-<rh-main-navigation color-palette="dark" role="navigation" aria-label="main">
+<rh-navigation-primary color-palette="dark" role="navigation" aria-label="main">
   <a href="#" slot="logo" id="logo-id" aria-current="page">
     Red Hat Advanced Cluster Management for Kubernetes
   </a>
   <ul slot="nav" aria-labelledby="logo-id">
     <li>
-      <rh-main-navigation-dropdown>
+      <rh-navigation-primary-dropdown>
         <a href="#" slot="link">Explore</a>
-        <rh-main-navigation-menu slot="menu" layout="fixed-width">
+        <rh-navigation-primary-menu slot="menu" layout="fixed-width">
           <ul>
             <li>
               <a href="#">
@@ -38,14 +38,14 @@
               >
             </li>
           </ul>
-        </rh-main-navigation-menu>
-      </rh-main-navigation-dropdown>
+        </rh-navigation-primary-menu>
+      </rh-navigation-primary-dropdown>
     </li>
     <li>
-      <rh-main-navigation-dropdown>
+      <rh-navigation-primary-dropdown>
         <a href="#" slot="link">w/ Sections</a>
-        <rh-main-navigation-menu slot="menu" layout="fixed-width">
-          <rh-main-navigation-menu-section>
+        <rh-navigation-primary-menu slot="menu" layout="fixed-width">
+          <rh-navigation-primary-menu-section>
             <h3 slot="header">
               <a href="#">Why Red Hat Ansible Automation Platforms</a>
             </h3>
@@ -83,14 +83,14 @@
             <rh-cta slot="cta">
               <a href="#">Section Level CTA</a>
             </rh-cta>
-          </rh-main-navigation-menu-section>
-        </rh-main-navigation-menu>
-      </rh-main-navigation-dropdown>
+          </rh-navigation-primary-menu-section>
+        </rh-navigation-primary-menu>
+      </rh-navigation-primary-dropdown>
     </li>
     <li>
-      <rh-main-navigation-dropdown>
+      <rh-navigation-primary-dropdown>
         <a href="#" slot="link">Other examples</a>
-        <rh-main-navigation-menu slot="menu">
+        <rh-navigation-primary-menu slot="menu">
           <rh-card>
             <h2 slot="header">Hello world</h2>
             <p>First Card</p>
@@ -139,13 +139,13 @@
             <h2 slot="header">Hello world</h2>
             <p>Last Card</p>
           </rh-card>
-        </rh-main-navigation-menu>
-      </rh-main-navigation-dropdown>
+        </rh-navigation-primary-menu>
+      </rh-navigation-primary-dropdown>
     </li>
     <li>
-      <rh-main-navigation-dropdown>
+      <rh-navigation-primary-dropdown>
         <a href="#" slot="link">Override Grid</a>
-        <rh-main-navigation-menu slot="menu" id="custom-grid">
+        <rh-navigation-primary-menu slot="menu" id="custom-grid">
           <div><h3>Grid</h3></div>
           <div class="pfe-l-grid pfe-m-gutters pfe-m-all-4-col">
             <div><a href="#">Item</a></div>
@@ -187,14 +187,14 @@
               <code>pfe-m-6-col pfe-m-3-col-on-md</code>
             </div>
           </div>
-        </rh-main-navigation-menu>
-      </rh-main-navigation-dropdown>
+        </rh-navigation-primary-menu>
+      </rh-navigation-primary-dropdown>
     </li>
   </ul>
   <rh-cta slot="cta">
     <a href="#">Get started</a>
   </rh-cta>
-</rh-main-navigation>
+</rh-navigation-primary>
 
 <div id="space-holder">
   <h2>Content Placeholder</h2>
@@ -271,7 +271,7 @@
   </p>
 </div>
 
-<link rel="stylesheet" href="../rh-main-navigation-lightdom.css" />
+<link rel="stylesheet" href="../rh-navigation-primary-lightdom.css" />
 
 <style>
   /* Dark demo overriding the grid of dropdowns */
@@ -282,8 +282,8 @@
 
   /* Dark demo with long logo text */
   @media screen and (min-width: 358px) {
-    rh-main-navigation[color-palette="dark"] {
-      --rh-main-navigation-logo-max-width: 13.4em;
+    rh-navigation-primary[color-palette="dark"] {
+      --rh-navigation-primary-logo-max-width: 13.4em;
     }
   }
 
@@ -293,7 +293,7 @@
   }
 
   /* dark variant must be on a dark background as per design spec */
-  [data-demo="rh-main-navigation"] {
+  [data-demo="rh-navigation-primary"] {
     padding: 0;
   }
 
@@ -323,7 +323,7 @@
 </style>
 
 <script type="module">
-  import "@rhds/elements/rh-main-navigation/rh-main-navigation.js";
+  import "@rhds/elements/rh-navigation-primary/rh-navigation-primary.js";
   import "@rhds/elements/rh-cta/rh-cta.js";
   import "@rhds/elements/rh-card/rh-card.js";
 </script>

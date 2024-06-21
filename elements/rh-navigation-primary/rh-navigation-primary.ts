@@ -10,32 +10,32 @@ import { bound, observed } from '@patternfly/pfe-core/decorators.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
-import { RhMainNavigation } from './rh-main-navigation-menu.js';
+import { RhNavigationPrimary } from './rh-navigation-primary-menu.js';
 
-export class MainNavigationDropdownExpandEvent extends ComposedEvent {
+export class NavigationPrimaryDropdownExpandEvent extends ComposedEvent {
   constructor(
     public expanded: boolean,
-    public toggle: RhNavigationSecondaryDropdown,
+    public toggle: RhNavigationPrimaryDropdown,
   ) {
     super('expand-request');
   }
 }
 
 // There is possibility of abstracting this component to a more 'generic' standalone component
-// in the future. Styles or functionality that are specific to rh-main-navigation are commented
+// in the future. Styles or functionality that are specific to rh-navigation-primary are commented
 // on as such for any future abstraction.
 
-import styles from './rh-main-navigation-dropdown.css';
+import styles from './rh-navigation-primary-dropdown.css';
 
 /**
  * Upgrades a top level nav link to include dropdown functionality
  * @summary Upgrades a top level nav link to include dropdown functionality
  * @slot link   - Link for dropdown, expects `<a>` element
- * @slot menu   - Menu for dropdown, expects `<rh-main-navigation-menu>` element
- * @fires { MainNavigationDropdownExpandEvent } change - Fires when a dropdown is clicked
+ * @slot menu   - Menu for dropdown, expects `<rh-navigation-primary-menu>` element
+ * @fires { NavigationPrimaryDropdownExpandEvent } change - Fires when a dropdown is clicked
  */
-@customElement('rh-main-navigation-dropdown')
-export class RhNavigationSecondaryDropdown extends LitElement {
+@customElement('rh-navigation-primary-dropdown')
+export class RhNavigationPrimaryDropdown extends LitElement {
   static readonly styles = [styles];
 
   #slots = new SlotController(this, { slots: ['link', 'menu'] });
@@ -54,18 +54,18 @@ export class RhNavigationSecondaryDropdown extends LitElement {
   connectedCallback(): void {
     super.connectedCallback();
 
-    this.id ||= getRandomId('rh-main-navigation-dropdown');
+    this.id ||= getRandomId('rh-navigation-primary-dropdown');
 
     const [link] = this.#slots.getSlotted<HTMLElement>('link');
     const [menu] = this.#slots.getSlotted<HTMLElement>('menu');
     if (link === undefined) {
       this.#logger.warn(
-        '[rh-main-navigation-dropdown][slot="link"] expects a slotted <a> tag'
+        '[rh-navigation-primary-dropdown][slot="link"] expects a slotted <a> tag'
       );
       return;
     }
     if (menu === undefined) {
-      this.#logger.warn(`[rh-main-navigation-dropdown][slot="menu"] expects a slotted <rh-main-navigation-menu> tag`);
+      this.#logger.warn(`[rh-navigation-primary-dropdown][slot="menu"] expects a slotted <rh-navigation-primary-menu> tag`);
       return;
     }
 
@@ -105,7 +105,7 @@ export class RhNavigationSecondaryDropdown extends LitElement {
 
   /**
    * When a dropdown is clicked set expanded to the opposite of the expanded property
-   * and then dispatch that value in a MainNavigationDropdownExpandEvent
+   * and then dispatch that value in a NavigationPrimaryDropdownExpandEvent
    * @param event {MouseEvent}
    */
   @bound
@@ -113,7 +113,7 @@ export class RhNavigationSecondaryDropdown extends LitElement {
     event.preventDefault();
     this.expanded = !this.expanded;
     // trigger change event which evokes the mutation on this.expanded
-    this.dispatchEvent(new MainNavigationDropdownExpandEvent(this.expanded, this));
+    this.dispatchEvent(new NavigationPrimaryDropdownExpandEvent(this.expanded, this));
   }
 
   /**
@@ -123,12 +123,12 @@ export class RhNavigationSecondaryDropdown extends LitElement {
   #open(): void {
     const link = this.#slots.getSlotted('link').find(child => child instanceof HTMLAnchorElement);
     link?.setAttribute('aria-expanded', 'true');
-    // menu as a RhMainNavigation in the slotted child is specific to rh-main-navigation.
-    // If this component is abstracted to a standalone component. The RhMainNavigation
+    // menu as a RhNavigationPrimary in the slotted child is specific to rh-navigation-primary.
+    // If this component is abstracted to a standalone component. The RhNavigationPrimary
     // could possibly become a sub component of the abstraction instead.
     const menu = this.#slots.getSlotted('menu').find(child =>
-      child instanceof RhMainNavigation
-    ) as RhMainNavigation;
+      child instanceof RhNavigationPrimary
+    ) as RhNavigationPrimary;
     menu.visible = true;
   }
 
@@ -137,10 +137,10 @@ export class RhNavigationSecondaryDropdown extends LitElement {
     const link = this.#slots.getSlotted('link').find(child => child instanceof HTMLAnchorElement);
     link?.setAttribute('aria-expanded', 'false');
     // Same as comment in #open()
-    // The RhMainNavigation could possibly become a sub component of the abstraction instead.
+    // The RhNavigationPrimary could possibly become a sub component of the abstraction instead.
     const menu = this.#slots.getSlotted('menu').find(
-      (child: Node): child is RhMainNavigation =>
-        child instanceof RhMainNavigation);
+      (child: Node): child is RhNavigationPrimary =>
+        child instanceof RhNavigationPrimary);
     if (menu) {
       menu.visible = false;
     }
@@ -153,22 +153,8 @@ export class RhNavigationSecondaryDropdown extends LitElement {
   }
 }
 
-/** @deprecated use rh-main-navigation-dropdown */
-@customElement('rh-main-navigation-dropdown')
-class RhMainNavigationDropdown extends RhNavigationSecondaryDropdown {
-  #logger = new Logger(this);
-
-  constructor() {
-    super();
-    this.#logger.warn(
-      'rh-main-navigation-dropdown is deprecated. Use rh-main-navigation-dropdown instead.'
-    );
-  }
-}
-
 declare global {
   interface HTMLElementTagNameMap {
-    'rh-main-navigation-dropdown': RhNavigationSecondaryDropdown;
-    'rh-main-navigation-dropdown': RhMainNavigationDropdown;
+    'rh-navigation-primary-dropdown': RhNavigationPrimaryDropdown;
   }
 }
