@@ -140,6 +140,13 @@ export class RhCta extends LitElement {
    */
   @colorContextConsumer() private on?: ColorTheme;
 
+  protected override async getUpdateComplete(): Promise<boolean> {
+    if (this.icon) {
+      await import('@patternfly/elements/pf-icon/pf-icon.js');
+    }
+    return super.getUpdateComplete();
+  }
+
   /**
    * The slotted `<a>` or `<button>` element
    * @deprecated use `data-analytics-` attributes instead
