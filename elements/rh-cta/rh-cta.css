@@ -6,7 +6,8 @@
   max-width: max-content;
 }
 
-::slotted(*) {
+a,
+::slotted(:is(a, button, input)) {
   vertical-align: middle !important;
   white-space: break-spaces !important;
   word-break: break-word !important;
@@ -20,6 +21,7 @@
   z-index: 2 !important;
 }
 
+a:after,
 ::slotted(a):after {
   display: block;
   content: "";
@@ -109,7 +111,9 @@ svg {
  *****************************************************************************/
 
 :host(:is(:focus, :focus-within)),
-:host(:is(:focus, :focus-within)) ::slotted(*),
+:host(:is(:focus, :focus-within)) ::slotted(:is(a, button, input)),
+a:focus,
+a:focus-within,
 ::slotted(:focus) {
   outline: none !important;
 }
@@ -193,20 +197,24 @@ svg {
   padding-block: var(--rh-space-lg, 16px);
 }
 
-:host([variant]) #container ::slotted(*) {
+:host([variant]) #container a,
+:host([variant]) #container ::slotted(:is(a, button, input)) {
   display: inline-flex !important;
   text-align: center !important;
 }
 
-:host([variant$="ary"]) #container ::slotted(*) {
+:host([variant$="ary"]) #container a,
+:host([variant$="ary"]) #container ::slotted(:is(a, button, input)) {
   font-size: var(--rh-cta-font-size-priority, var(--rh-font-size-body-text-md, 1rem));
 }
 
-:host([variant]) #container.icon ::slotted(*) {
+:host([variant]) #container.icon a,
+:host([variant]) #container.icon ::slotted(:is(a, button, input)) {
   display: inline !important;
 }
 
-:host([variant]) #container.svg ::slotted(*) {
+:host([variant]) #container.svg a,
+:host([variant]) #container.svg ::slotted(:is(a, button, input)) {
   padding-inline-end: calc(var(--_arrow-plus-padding) + var(--rh-space-xl, 24px)) !important;
 }
 
