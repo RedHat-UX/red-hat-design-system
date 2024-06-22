@@ -161,7 +161,7 @@ export class RhNavigationPrimary extends LitElement {
                   aria-expanded="${String(expanded) as 'true' | 'false'}"
                   @click="${this.#toggleMobileMenu}"><slot name="mobile-menu">Menu</slot></button>
           <rh-surface color-palette="${dropdownPalette}">
-            <slot name="nav" @slotchange="${() => this.#tabindex.updateItems()}"></slot>
+            <slot name="nav"></slot>
             <div id="cta" part="cta">
               <slot name="cta"></slot>
             </div>
@@ -196,6 +196,17 @@ export class RhNavigationPrimary extends LitElement {
       if (this.#screenSize.matches.has('md')) {
         this.dispatchEvent(new PrimaryNavOverlayChangeEvent(event.expanded, event.toggle));
       }
+    }
+  }
+
+  // @note: bandaid fix for tabindex=-1 issue when using rti
+  // @todo: once the rti is fixed to account for main navs
+  #unsetTabindexFromMenuItems() {
+    const menu = this.querySelector('[slot="nav"]');
+
+    for (const item of menu?.querySelectorAll<HTMLElement>('[tabindex]') ?? []) {
+      item.tabIndex = 0;
+      console.log(item.tabIndex);
     }
   }
 
@@ -261,6 +272,8 @@ export class RhNavigationPrimary extends LitElement {
   #onTabEvent(event: KeyboardEvent) {
     // target is the element we are leaving with tab press
     const target = event.target as HTMLElement;
+
+    this.#unsetTabindexFromMenuItems();
     // get target parent dropdown
     const dropdowns = this.#allDropdowns();
     const dropdownParent = dropdowns.find(dropdown => dropdown.contains(target));
@@ -289,7 +302,7 @@ export class RhNavigationPrimary extends LitElement {
       this.close();
       this.overlayOpen = false;
       this.#tabindex.setActiveItem(this.#tabindex.nextItem);
-      this.#tabindex.activeItem?.focus();
+      this.#tabindex.activeItem?.focus(); 
     }
   }
 
