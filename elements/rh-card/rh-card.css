@@ -20,7 +20,7 @@
   flex-direction: column;
   justify-items: flex-start;
   overflow: hidden;
-  border-radius: var(--_border-radius, var(--rh-border-width-lg, 3px));
+  border-radius: var(--rh-border-width-lg, 3px);
   font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
   line-height: var(--rh-line-height-body-text, 1.5);
   border-style: solid;
