@@ -1,13 +1,15 @@
 ---
 title: Content
-tags: 
- - accessibility
+tags:
+  - accessibility
 order: 30
 importElements:
   - rh-code-block
   - rh-blockquote
   - rh-table
 ---
+
+<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
 
 <style>
     #func-img {
@@ -42,19 +44,19 @@ importElements:
     }
 </style>
 
-## Overview 
+## Overview
 
 <rh-alert state="info">
   <h3 slot="header">Note</h3>
   <p>This section covers content accessibility. Content authors should also be familiar with accessibility <a href="../fundamentals">fundamentals</a>.</p>
 </rh-alert>
 
-
 ## Alt text
 
 Wherever meaningful images or other non-text elements are used on a page, you must also provide alternative text (aka “alt text”) to briefly describe these elements. Alt text makes this content machine-readable for assistive technologies (e.g, screen readers) and search engines. And browsers can substitute alt text on-screen when images don’t load.
 
 ### Types of alt text
+
 Images loaded via the `<img>` element typically use the alt attribute for their alternative text:
 
 <rh-code-block>
@@ -156,7 +158,7 @@ A common technique is labeling objects with ARIA attributes:
 
 ## Writing microcopy
 
-Microcopy comprises short words, phrases, or chunks of text used on the web or in user interfaces. 
+Microcopy comprises short words, phrases, or chunks of text used on the web or in user interfaces.
 
 Best practices for all microcopy:
 
@@ -233,23 +235,23 @@ At Red Hat, we use sentence case for our headings:
 
 #### Heading levels
 
-Ensure that heading levels increment and decrement to match the page outline. At the top level of each page’s outline is its `<h1>` heading. This heading reflects the main topic of the page, and is often similar to content within the page’s `<title>` tag. After the `<h1>`, the next level down is `<h2>`, then `<h3>`, and so on. 
+Ensure that heading levels increment and decrement to match the page outline. At the top level of each page’s outline is its `<h1>` heading. This heading reflects the main topic of the page, and is often similar to content within the page’s `<title>` tag. After the `<h1>`, the next level down is `<h2>`, then `<h3>`, and so on.
 Always increment by only one heading at a time. Don’t skip levels when incrementing, like going from an `<h3>` straight to an `<h5>`. And only decrement headings (by one or more levels) when starting a new, higher-level section in your page’s outline.
 
 Here’s an example of a page outline:
 
 - Midwestern Recipes
-    - Sides
-        - Cheese
-            - Fried cheese curds
-            - Beer cheese dip
+  - Sides
+    - Cheese
+      - Fried cheese curds
+      - Beer cheese dip
 - Desserts
-    - Bars
-        - Scotch-a-roos
-        - Dream bars
-    - Pastries
-        - Kringle
-        - Dutch letters
+  - Bars
+    - Scotch-a-roos
+    - Dream bars
+  - Pastries
+    - Kringle
+    - Dutch letters
 
 And here’s how that outline would be reflected in a page’s heading structure:
 
@@ -303,7 +305,7 @@ As mentioned in the Headings section, page titles and `<h1>` elements often rela
 
 ### iframe titles
 
-Non-hidden, non-empty `<iframe>` elements are required to have titles describing their meaning or purpose, similar to alternative text for images. 
+Non-hidden, non-empty `<iframe>` elements are required to have titles describing their meaning or purpose, similar to alternative text for images.
 
 <rh-code-block>
   <script type="text/html"><iframe src="video.html" title="Video: Network automation with Ansible"></iframe></script>
@@ -364,7 +366,7 @@ Instead, a list would be simpler, easier to understand, and easier to code:
 </ul></script>
 </rh-code-block>
 
-In other words, if it doesn’t *need* to be a table, then it probably shouldn’t be a table.
+In other words, if it doesn’t _need_ to be a table, then it probably shouldn’t be a table.
 
 For more information on developing accessible tables, please read our [Table element accessibility guidance](/elements/table/accessibility/).
 
@@ -390,7 +392,7 @@ When creating tables, assume the burden of simplifying and clarifying, so it doe
 
 Best practices for error messages:
 
-- Ensure the user knows the location of the error. Preferably this is indicated both visually and for assistive technology.  Otherwise, additional text may be required explaining the label or section where the error occurred.
+- Ensure the user knows the location of the error. Preferably this is indicated both visually and for assistive technology. Otherwise, additional text may be required explaining the label or section where the error occurred.
 - Tell the user what they did wrong.
 - Recommend how they can fix it.
 
@@ -399,7 +401,6 @@ Best practices for error messages:
 Because people and assistive technologies read linearly, your content must also be written with a clear logical order that follows the same linear flow of HTML code. That’s not to say people can’t and won’t jump around. But each section should have a logical start and end, and the logical ordering of these sections themselves should be considered.
 
 Your content order can impact not only how a page is read, but also how it’s operated. Users navigating via keyboard move sequentially (both forward and backward) among interactive elements on a page via the <kbd>tab</kbd> and arrow keys. Consider how the order in which you arrange your content could make such navigation easier or more difficult for both visual and non-visual keyboard users.
-
 
 ## Audio/video
 
@@ -411,12 +412,14 @@ Your content order can impact not only how a page is read, but also how it’s o
 </rh-blockquote>
 
 Enabling autoplay on audio or video can create several accessibility barriers:
+
 - Distracting users with cognitive disabilities.
 - Causing seizures or triggering motion sickness.
 - Preventing users from hearing screen readers.
 - Interfering with text-to-speech.
 
 Use one or more of the following techniques to help ensure accessibility:
+
 - Avoid autoplay altogether. (Honestly, just do this, and you don’t have to worry about anything else!)
 - Ensure that audio-only or video-with-audio media autoplays for less than three seconds.
 - Ensure that video-only media (including any animated, blinking, or scrolling content) autoplays for less than five seconds.
@@ -426,6 +429,7 @@ Use one or more of the following techniques to help ensure accessibility:
 - Provide controls to pause the media itself.
 
 ### Media solutions
+
 To be accessible, each media type must include _**all** of the following_, unless otherwise noted as recommended or optional.
 
 <rh-table>
@@ -520,7 +524,6 @@ Descriptive audio is a track of relevant visual information described by a narra
 #### Sign Language
 
 Include synchronized video of sign language interpreters to your videos, for people who have difficulty hearing or processing the spoken language in media.
-
 
 ## Internationalization
 
