@@ -387,7 +387,7 @@ export class RhNavigationSecondary extends LitElement {
     // remove aria-labelledby from slotted `<ul>` on upgrade
     this.querySelector(':is([slot="nav"]):is(ul)')?.removeAttribute('aria-labelledby');
     // if the accessibleLabel attr is undefined, check aria-label if undefined use default
-    this.#internals.ariaLabel = this.getAttribute('aria-label') ?? 'secondary';
+    this.#internals.ariaLabel = 'secondary';
   }
 
   /**
