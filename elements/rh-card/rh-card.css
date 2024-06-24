@@ -104,6 +104,23 @@
   margin-block-end: 0;
 }
 
+@container card (min-width: 768px) {
+  #header,
+  #body,
+  #footer {
+    margin-inline: var(--rh-space-2xl, 32px);
+  }
+
+  #header,
+  #body {
+    margin-block-start: var(--rh-space-2xl, 32px);
+  }
+
+  #footer {
+    margin-block-end: var(--rh-space-2xl, 32px);
+  }
+}
+
 .has-image.has-header #image {
   order: -1;
 }
@@ -118,12 +135,7 @@
 #container.inline-promo {
   display: grid;
   align-items: center;
-}
-
-@container card (max-width: 767px) {
-  #container.inline-promo #body {
-    width: calc(100% - 2 * var(--rh-space-lg, 16px));
-  }
+  --_standard-inline-padding: var(--rh-space-2xl, 32px);
 }
 
 #container.inline-promo #image {
@@ -158,8 +170,9 @@
 /* "standard" inline promo */
 #container.inline-promo.standard {
   grid-template: auto auto / auto;
-  padding: var(--rh-space-2xl, 32px);
+  padding: var(--_standard-inline-padding);
   gap: var(--rh-space-xl, 24px);
+  width: calc(100% - 2 * var(--_standard-inline-padding));
 }
 
 #container.inline-promo.standard #body {
@@ -171,19 +184,9 @@
 }
 
 @container card (min-width: 768px) {
-  #header,
-  #body,
-  #footer {
-    margin-inline: var(--rh-space-2xl, 32px);
-  }
-
-  #header,
-  #body {
-    margin-block-start: var(--rh-space-2xl, 32px);
-  }
-
-  #footer {
-    margin-block-end: var(--rh-space-2xl, 32px);
+  #container.inline-promo {
+    width: 100%;
+    --_standard-inline-padding: var(--rh-space-2xl, 32px);
   }
 
   #container.inline-promo.has-image {
@@ -209,7 +212,6 @@
 
   #container.inline-promo.standard {
     grid-template: auto / auto auto;
-    padding: var(--rh-space-3xl, 48px);
   }
 
   #container.inline-promo.standard #footer {
