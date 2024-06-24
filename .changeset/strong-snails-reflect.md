@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-`<rh-navigation-secondary>`: improved accessibility'
+`<rh-navigation-secondary>`: improved accessibility
