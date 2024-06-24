@@ -32,4 +32,3 @@ View a live version of this component and see how it can be customized.
 
 
 {% repoStatusChecklist %}
-
