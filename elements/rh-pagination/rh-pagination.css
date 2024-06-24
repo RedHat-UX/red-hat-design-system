@@ -274,6 +274,7 @@ input:invalid {
 
 :host([variant~="compact"]) #numeric {
   flex: 0;
+  font-size: var(--rh-font-size-body-text-md, 1rem);
   margin-block: 0;
   margin-inline-end: var(--rh-space-lg, 16px);
   margin-inline-start: 0;
