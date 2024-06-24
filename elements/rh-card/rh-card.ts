@@ -85,8 +85,8 @@ export class RhCard extends LitElement {
           | 'image'
           | 'body'
           | 'footer', boolean>;
-    const isInlinePromo = this.variant === 'inline-promo';
-    const standard = isInlinePromo && slots.body && !slots.image && !slots.header;
+    const promo = this.variant === 'inline-promo';
+    const standard = promo && slots.body && !slots.image && !slots.header;
     const computedPalette =
         !standard ? colorPalette
       : (colorPalette || 'lightest').replace('est', 'er');
@@ -108,10 +108,10 @@ export class RhCard extends LitElement {
           class="${classMap({
             [on]: !!on,
             [computedPalette]: !!computedPalette,
-            'inline-promo': isInlinePromo,
+            promo,
             standard,
             ...Object.fromEntries(Object.entries(slots).map(([k, v]) => [`has-${k}`, v])),
-          })}">${isInlinePromo ? '' : header}
+          })}">${promo ? '' : header}
         <div id="image"
              part="image"
              class="${classMap({ empty: !slots.image })}">
@@ -120,11 +120,11 @@ export class RhCard extends LitElement {
         <div id="body"
              part="body"
              class="${classMap({ empty: !slots.body })}">
-          ${!isInlinePromo ? '' : header}
+          ${!promo ? '' : header}
           <slot></slot>
-          ${!isInlinePromo ? '' : footer}
+          ${!promo ? '' : footer}
         </div>
-        ${isInlinePromo ? '' : footer}
+        ${promo ? '' : footer}
       </div>
     `;
   }
