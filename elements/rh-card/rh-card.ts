@@ -14,7 +14,7 @@ import styles from './rh-card.css';
  *              If this slot is used, we expect a heading level tag (h1, h2, h3, h4, h5, h6).
  *              An icon, svg, or use of the icon component are also valid in this region.
  * @slot        image
- *              Use this slot for the inline promo variant of the card. Images & CTA's are most often slotted here.
+ *              Use this slot for the promo variant of the card. Images & CTA's are most often slotted here.
  * @slot        Any content that is not designated for the header or footer slot, will go to this slot.
  * @slot        footer
  *              Use this slot for anything that you want to be stuck to the base of the card.
@@ -23,7 +23,7 @@ import styles from './rh-card.css';
  * @csspart     header
  *              The header for the card. Contains the header slot.
  * @csspart     image
- *              The image part for the inline-promo variation for the card. Contains the image slot.
+ *              The image part for the promo variation for the card. Contains the image slot.
  * @csspart     body
  *              The body for the card. Contains the default slot.
  * @csspart     footer
@@ -31,21 +31,6 @@ import styles from './rh-card.css';
  * @cssprop     {<length>} --rh-card-header-font-size
  *              Font size for header on card
  *              {@default `1.5rem`}
- * @cssprop     --rh-card-inline-promo-heading-size
-                Size of inline promo heading
-                {@default `var(--rh-font-size-heading-xs, 1.25rem)`}
- * @cssprop     {<number>} --rh-card-inline-promo-heading-font-weight
-                Font weight of inline promo heading
-                {@default `var(--rh-font-weight-heading-medium, 500)`}
- * @cssprop     {<length>} --rh-card-inline-promo-heading-margin-block-end
-                Bottom margin on inline promo heading
-                {@default `var(--rh-space-lg, 16px)`}
- * @cssprop     --rh-card-inline-promo-paragraph-size
-                Inline promo paragraph size
-                {@default `var(--rh-font-size-body-text-lg, 1.125rem)`}
- * @cssprop     {<length>} --rh-card-inline-promo-paragraph-margin-block-end
-                Bottom margin on inline promo paragraph
-                {@default `var(--rh-space-xl, 24px)`}
 */
 @customElement('rh-card')
 export class RhCard extends LitElement {
@@ -72,12 +57,12 @@ export class RhCard extends LitElement {
   @property({ reflect: true, attribute: 'color-palette' })
     colorPalette?: 'darkest' | 'lightest' | 'lighter';
 
-  @property({ reflect: true }) variant?: 'inline-promo';
+  @property({ reflect: true }) variant?: 'promo';
 
   #slots = new SlotController(this, ...RhCard.slots);
 
   override render() {
-    const { on = '', colorPalette = '' } = this;
+    const { on = '', colorPalette = '', variant = '' } = this;
     const slots =
       Object.fromEntries(RhCard.slots.map(slot =>
         [slot ?? 'body', this.#slots.hasSlotted(slot)])) as Record<
@@ -85,7 +70,7 @@ export class RhCard extends LitElement {
           | 'image'
           | 'body'
           | 'footer', boolean>;
-    const promo = this.variant === 'inline-promo';
+    const promo = this.variant === 'promo';
     const standard = promo && slots.body && !slots.image && !slots.header;
     const computedPalette =
         !standard ? colorPalette
@@ -108,7 +93,7 @@ export class RhCard extends LitElement {
           class="${classMap({
             [on]: !!on,
             [computedPalette]: !!computedPalette,
-            promo,
+            [variant]: !!variant,
             standard,
             ...Object.fromEntries(Object.entries(slots).map(([k, v]) => [`has-${k}`, v])),
           })}">${promo ? '' : header}
