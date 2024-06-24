@@ -32,7 +32,6 @@ export class RhTileGroup extends LitElement {
    */
   @property({ type: Boolean, reflect: true }) radio = false;
 
-
   /**
    * Sets color palette, which affects the element's styles as well as descendants' color theme.
    * Overrides parent color context.
@@ -48,6 +47,7 @@ export class RhTileGroup extends LitElement {
    * Sets color theme based on parent context
    */
   @colorContextConsumer() private on?: ColorPalette;
+
 
   #tiles: RhTile[] = [];
 

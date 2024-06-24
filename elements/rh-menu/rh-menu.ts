@@ -34,7 +34,6 @@ export class RhMenu extends LitElement {
 
   @colorContextConsumer() private on?: ColorPalette;
 
-
   #tabindex = new RovingTabindexController<HTMLElement>(this, {
     getItems: () => this._menuItems ?? [],
   });

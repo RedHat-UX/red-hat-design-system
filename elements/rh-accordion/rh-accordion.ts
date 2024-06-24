@@ -122,6 +122,7 @@ export class RhAccordion extends LitElement {
     return { accents };
   }
 
+
   @observed(function largeChanged(this: RhAccordion) {
     [...this.headers, ...this.panels].forEach(el => el.toggleAttribute('large', this.large));
   })

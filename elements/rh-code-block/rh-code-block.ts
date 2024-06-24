@@ -4,7 +4,7 @@ import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
 import { property } from 'lit/decorators/property.js';
 
-import { type ColorPalette } from '@rhds/elements/lib/context/color/provider.js';
+import { type ColorPalette } from '../../lib/context/color/provider.js';
 import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';

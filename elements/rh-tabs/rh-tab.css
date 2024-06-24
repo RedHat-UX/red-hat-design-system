@@ -90,7 +90,7 @@ slot[name="icon"] {
   border-block-end: var(--rh-border-width-sm, 1px) solid transparent;
 }
 
-#button:is(.dark, .darker, .darkest) {
+#button:is(.dark,.darker,.darkest) {
   --_button-text-color:
     var(
         --rh-tabs-link-color,
@@ -130,7 +130,7 @@ slot[name="icon"] {
       );
 }
 
-#button.active:is(.dark, .darker, .darkest) {
+#button.active:is(.dark,.darker,.darkest) {
   --_button-text-color:
     var(
         --rh-tabs-link-color,
@@ -143,7 +143,7 @@ slot[name="icon"] {
   --_inactive-tab-background-color: var(--rh-color-surface-lighter, #f2f2f2);
 }
 
-#button.box:is(.dark, .darker, .darkest) {
+#button.box:is(.dark,.darker,.darkest) {
   --_inactive-tab-background-color: var(--rh-color-surface-dark, #383838);
 }
 

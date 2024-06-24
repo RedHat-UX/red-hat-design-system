@@ -43,6 +43,7 @@ export abstract class ColorContextController<
   T extends ReactiveElement
 > implements ReactiveController {
   /** The context object which acts as the key for providers and consumers */
+
   public static readonly context = createContext<ColorPalette | null>(Symbol('rh-color-context'));
 
   /** The style controller which provides the necessary CSS. */

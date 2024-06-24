@@ -8,12 +8,6 @@
   max-height: calc(10 * var(--rh-space-4xl, 64px));
 }
 
-#content:is(.dark, .darker, .darkest) {
-  background-color: var(--rh-color-surface-darker, #1f1f1f);
-  border-color: var(--rh-color-border-subtle-on-dark, #707070);
-  color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
-}
-
 :host([full-height]) {
   --_expand-toggle-rotate: 0deg;
 

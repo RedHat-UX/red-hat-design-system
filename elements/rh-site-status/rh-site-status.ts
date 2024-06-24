@@ -163,6 +163,7 @@ export class RhSiteStatus extends LitElement {
    */
   @colorContextConsumer() private on?: ColorPalette;
 
+
   #status: Status | null = null;
 
   #component: Component | null = null;
