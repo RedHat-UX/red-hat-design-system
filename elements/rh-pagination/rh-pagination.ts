@@ -119,6 +119,18 @@ export class RhPagination extends LitElement {
     super.update(changed);
   }
 
+  #internalColorPalette?: string | null;
+
+  protected willUpdate(): void {
+    /**
+     * TEMPORARY: this fixes the need to access the parents color-palette in order to get the `lightest`
+     * value. This fix will only update the component when switching between light and dark themes as
+     * thats when the consumer requests an update. Switching between lighter -> light for example will
+     * not trigger the component to update at this time. Related: #1395.
+     */
+    this.#internalColorPalette = this.closest('[color-palette]')?.getAttribute('color-palette');
+  }
+
   render() {
     const { on = '' } = this;
     const { mobile, size } = this.#screen;
@@ -131,7 +143,8 @@ export class RhPagination extends LitElement {
     const currentPage = this.#currentPage.toString();
 
     return html`
-      <div id="container" class=${classMap({ mobile, [size as string]: true, [dir]: true, [on]: !!on })}>
+      <div id="container"
+           class=${classMap({ mobile, [size as string]: true, [dir]: true, [on]: !!on, [`color-palette-${this.#internalColorPalette}`]: !!this.#internalColorPalette })}>
         <a id="first" class="stepper" href=${ifDefined(firstHref)} ?inert=${!firstHref} aria-label=${labelFirst}>${L2}</a>
         <a id="prev" class="stepper" href=${ifDefined(prevHref)} ?inert=${!prevHref} aria-label=${labelPrevious}>${L1}</a>
 

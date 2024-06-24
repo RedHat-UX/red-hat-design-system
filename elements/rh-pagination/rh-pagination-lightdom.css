@@ -149,5 +149,6 @@ rh-pagination[variant~="open"] li > a[aria-current]:after {
 }
 
 rh-pagination[variant~="open"] li > a[aria-current] {
+  background-color: var(--_rh-pagination-list-a-bg-color);
   border-color: transparent; /* NOTE: Keep active/hover borders in-line */
 }
