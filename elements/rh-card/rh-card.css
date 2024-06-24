@@ -132,7 +132,14 @@
 #container.promo {
   display: grid;
   align-items: center;
-  --_standard-inline-padding: var(--rh-space-2xl, 32px);
+  --_promo-standard-inline-padding: var(--rh-space-2xl, 32px);
+  --_promo-image-width: 360px;
+  --_promo-body-width: 750px;
+  --_promo-heading-size: var(--rh-font-size-heading-xs, 1.25rem);
+  --_promo-heading-font-weight: var(--rh-font-weight-heading-medium, 500);
+  --_promo-heading-margin-block-end: var(--rh-space-lg, 16px);
+  --_promo-paragraph-font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+  --_promo-paragraph-margin-block-end: var(--rh-space-xl, 24px);
 }
 
 #container.promo #image {
@@ -149,15 +156,15 @@
 }
 
 #container.promo #header ::slotted(*) {
-  font-size: var(--rh-card-promo-heading-size, var(--rh-font-size-heading-xs, 1.25rem)) !important;
-  font-weight: var(--rh-card-promo-heading-font-weight, var(--rh-font-weight-heading-medium, 500)) !important;
+  font-size: var(--_promo-heading-size) !important;
+  font-weight: var(--_promo-heading-font-weight) !important;
   margin-block-start: 0;
-  margin-block-end: var(--rh-card-promo-heading-margin-block-end, var(--rh-space-lg, 16px)) !important;
+  margin-block-end: var(--_promo-heading-margin-block-end) !important;
 }
 
 #container.promo:is(.has-image, .has-header) #body ::slotted(p) {
-  font-size: var(--rh-card-promo-paragraph-size, var(--rh-font-size-body-text-lg, 1.125rem)) !important;
-  margin-block-end: var(--rh-card-promo-paragraph-margin-block-end, var(--rh-space-xl, 24px)) !important;
+  font-size: var(--_promo-paragraph-font-size) !important;
+  margin-block-end: var(--_promo-paragraph-margin-block-end) !important;
 }
 
 #container.promo.has-header.has-body.has-footer:not(.has-image) {
@@ -166,9 +173,9 @@
 
 #container.promo.standard {
   grid-template: auto auto / auto;
-  padding: var(--_standard-inline-padding);
+  padding: var(--_promo-standard-inline-padding);
   gap: var(--rh-space-xl, 24px);
-  width: calc(100% - 2 * var(--_standard-inline-padding));
+  width: calc(100% - 2 * var(--_promo-standard-inline-padding));
 }
 
 #container.promo.standard #body {
@@ -182,7 +189,7 @@
 @container card (min-width: 768px) {
   #container.promo {
     width: 100%;
-    --_standard-inline-padding: var(--rh-space-2xl, 32px);
+    --_promo-standard-inline-padding: var(--rh-space-2xl, 32px);
   }
 
   #container.promo.has-image {
@@ -191,11 +198,11 @@
 
   #container.promo #image {
     order: 0;
-    max-width: 360px;
+    max-width: var(--_promo-image-width);
   }
 
   #container.promo #body {
-    max-width: 750px;
+    max-width: var(--_promo-body-width);
   }
 
   #container.promo:not(.has-image) #body {
@@ -203,7 +210,7 @@
   }
 
   #container.promo #header ::slotted(*) {
-    --rh-card-promo-heading-size: var(--rh-font-size-body-text-2xl, 1.5rem);
+    --_promo-heading-size: var(--rh-font-size-body-text-2xl, 1.5rem);
   }
 
   #container.promo.standard {
@@ -225,6 +232,15 @@
   }
 }
 
+@container card (min-width: 1093px) {
+  #container.promo:not(.has-image) #image.empty {
+    display: block !important;
+    order: 1;
+    grid-column: 2/3;
+    width: var(--_promo-image-width);
+  }
+}
+
 /* full width promo */
 @container card (min-width: 1093px) or (min-width: 100vw) {
   #container.promo {
@@ -239,14 +255,5 @@
   #container.promo #body,
   #container.promo #footer {
     margin-inline: 0;
-  }
-}
-
-@container card (min-width: 1093px) {
-  #container.promo:not(.has-image) #image.empty {
-    display: block !important;
-    order: 1;
-    grid-column: 2/3;
-    width: 25cw;
   }
 }
