@@ -1,0 +1,30 @@
+<section id="standard">
+  <rh-card variant="inline-promo">
+    <p>The &rdquo;standard&ldquo; Inline Promo. It has a paragraph and a CTA in the &rdquo;image&ldquo; slot.</p>
+    <rh-cta slot="footer" href="#">Call to action</rh-cta>
+  </rh-card>
+
+  <rh-card variant="inline-promo">
+    <p>In this &rdquo;standard&ldquo; Inline Promo, the slots get reversed using a class.</p>
+    <rh-cta slot="footer" href="#">Call to action</rh-cta>
+  </rh-card>
+
+  <rh-card variant="inline-promo" color-palette="darkest">
+    <p>A &rdquo;standard&ldquo; Inline Promo with a <code>color-palette</code> attribute added to the <code>&lt;rh-card&gt;</code> tag.</p>
+    <rh-cta slot="footer" href="#">Call to action</rh-cta>
+  </rh-card>
+</section>
+
+<script type="module">
+  import '@rhds/elements/rh-cta/rh-cta.js';
+  import '@rhds/elements/rh-card/rh-card.js';
+</script>
+
+<style>
+  #standard {
+    width: 1092px;
+    display: flex;
+    flex-flow: column;
+    gap: var(--rh-space-xl, 24px);
+  }
+</style>

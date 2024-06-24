@@ -1,0 +1,68 @@
+<rh-surface color-palette="lighter" id="full-width">
+  <rh-card variant="inline-promo">
+    <svg slot="image"
+        role="image"
+        aria-label="sample image"
+        width="360" height="158">
+      <rect fill="var(--rh-color-border-interactive-on-light, #0066cc)"
+            fill-opacity="0.1"
+            stroke="var(--rh-color-border-interactive-on-light, #0066cc)"
+            stroke-width="2px"
+            width="100%"
+            height="100%"
+            stroke-dasharray="1 1">
+    </svg>
+    <h2 slot="header">Full Width Inline Promo</h2>
+    <p>Promos wider than 1300px do not have a border.</p>
+    <rh-cta slot="footer" href="#">Call to action</rh-cta>
+  </rh-card>
+
+  <rh-card variant="inline-promo" class="reverse">
+    <svg slot="image"
+        role="image"
+        aria-label="sample image"
+        width="360" height="158">
+      <rect fill="var(--rh-color-border-interactive-on-light, #0066cc)"
+            fill-opacity="0.1"
+            stroke="var(--rh-color-border-interactive-on-light, #0066cc)"
+            stroke-width="2px"
+            width="100%"
+            height="100%"
+            stroke-dasharray="1 1">
+    </svg>
+    <h2 slot="header">Full Width Inline Promo</h2>
+    <p>Using the <code>image</code> part to end-align the image</p>
+    <rh-cta slot="footer" href="#">Call to action</rh-cta>
+  </rh-card>
+
+  <rh-card variant="inline-promo">
+    <h2 slot="header">Full Width Inline Promo - No Image</h2>
+    <p>This Inline Promo is just like the last version, except this version doesn't have an
+       image in the <code>image</code> slot. Content flows around the empty image slot.</p>
+    <rh-cta slot="footer" href="#">Call to action</rh-cta>
+  </rh-card>
+</rh-surface>
+
+<script type="module">
+  import '@rhds/elements/rh-cta/rh-cta.js';
+  import '@rhds/elements/rh-card/rh-card.js';
+  import '@rhds/elements/rh-surface/rh-surface.js';
+</script>
+
+<style>
+  .reverse::part(image) {
+    order: 1;
+  }
+
+  #full-width {
+    container: full-width / inline-size;
+    width: 100%;
+    display: grid;
+    gap: var(--rh-space-lg, 16px);
+    grid-auto-rows: max-content;
+  }
+
+  [data-demo] {
+    display: contents;
+  }
+</style>

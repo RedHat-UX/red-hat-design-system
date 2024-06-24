@@ -1,8 +1,6 @@
-article {
-  position: relative;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+:host {
+  container-name: card;
+  container-type: inline-size;
 }
 
 #header.empty,
@@ -27,6 +25,8 @@ article {
   line-height: var(--rh-line-height-body-text, 1.5);
   border-style: solid;
   border-width: var(--rh-border-width-sm, 1px);
+  width: 100%;
+  height: 100%;
 }
 
 #container,
@@ -59,6 +59,11 @@ article {
 #header ::slotted(:is(h1, h2, h3, h4, h5, h6)),
 #body ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
   font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+}
+
+#image ::slotted(*) {
+  display: block;
+  max-width: 100%;
 }
 
 #header {
@@ -99,7 +104,74 @@ article {
   margin-block-end: 0;
 }
 
-@media (min-width: 768px) {
+.has-image.has-header #image {
+  order: -1;
+}
+
+.has-header.has-body #body {
+  margin-block-start: var(--rh-space-lg, 16px);
+}
+
+/*****************************************************************************
+ * INLINE PROMO
+ *****************************************************************************/
+#container.inline-promo {
+  display: grid;
+  align-items: center;
+}
+
+@container card (max-width: 767px) {
+  #container.inline-promo #image,
+  #container.inline-promo #body {
+    width: calc(100% - 2 * var(--rh-space-lg, 16px));
+  }
+}
+
+#container.inline-promo #image {
+  order: 10;
+}
+
+#container.inline-promo #image ::slotted(*) {
+  object-fit: cover;
+  width: 100%;
+}
+
+#container.inline-promo #header {
+  margin-inline: 0;
+}
+
+#container.inline-promo #header ::slotted(*) {
+  font-size: var(--rh-card-inline-promo-heading-size, var(--rh-font-size-heading-xs, 1.25rem)) !important;
+  font-weight: var(--rh-card-inline-promo-heading-font-weight, var(--rh-font-weight-heading-medium, 500)) !important;
+  margin-block-start: 0;
+  margin-block-end: var(--rh-card-inline-promo-heading-margin-block-end, var(--rh-space-lg, 16px)) !important;
+}
+
+#container.inline-promo:is(.has-image, .has-header) #body ::slotted(p) {
+  font-size: var(--rh-card-inline-promo-paragraph-size, var(--rh-font-size-body-text-lg, 1.125rem)) !important;
+  margin-block-end: var(--rh-card-inline-promo-paragraph-margin-block-end, var(--rh-space-xl, 24px)) !important;
+}
+
+#container.inline-promo.has-header.has-body.has-footer:not(.has-image) {
+  grid-template-columns: auto;
+}
+
+/* "standard" inline promo */
+#container.inline-promo.standard {
+  grid-template: auto auto / auto;
+  padding: var(--rh-space-2xl, 32px);
+  gap: var(--rh-space-xl, 24px);
+}
+
+#container.inline-promo.standard #body {
+  display: contents;
+}
+
+#container.inline-promo #footer {
+  margin: 0;
+}
+
+@container card (min-width: 768px) {
   #header,
   #body,
   #footer {
@@ -114,69 +186,65 @@ article {
   #footer {
     margin-block-end: var(--rh-space-2xl, 32px);
   }
-}
 
-.has-image.has-header #image {
-  order: -1;
-}
-
-.has-header.has-body #body {
-  margin-block-start: var(--rh-space-lg, 16px);
-}
-
-/*****************************************************************************
- * INLINE PROMO
- *****************************************************************************/
-:host([variant~="inline-promo"]) {
-  --rh-card-inline-promo-heading-size: var(--rh-font-size-heading-xs, 1.25rem);
-  --rh-card-inline-promo-heading-font-weight: var(--rh-font-weight-heading-medium, 500);
-  --rh-card-inline-promo-heading-margin-block-end: var(--rh-space-lg, 16px);
-  --rh-card-inline-promo-paragraph-size: var(--rh-font-size-body-text-lg, 1.125rem);
-  --rh-card-inline-promo-paragraph-margin-block-end: var(--rh-space-xl, 24px);
-
-  container: inline-promo / inline-size;
-  display: block;
-}
-
-::slotted([slot="image"]:is(img, svg)) {
-  display: block;
-  max-width: 100%;
-}
-
-:host([variant~="inline-promo"]) #image {
-  order: 10;
-  width: 100%;
-}
-
-:host([variant~="inline-promo"]) #body ::slotted(h2) {
-  font-size: var(--rh-card-inline-promo-heading-size) !important;
-  font-weight: var(--rh-card-inline-promo-heading-font-weight) !important;
-  margin-block-start: 0;
-  margin-block-end: var(--rh-card-inline-promo-heading-margin-block-end) !important;
-}
-
-:host([variant~="inline-promo"]:not(.standard)) #body ::slotted(p) {
-  font-size: var(--rh-card-inline-promo-paragraph-size) !important;
-  margin-block-end: var(--rh-card-inline-promo-paragraph-margin-block-end) !important;
-}
-
-@container inline-promo (min-width: 768px) {
-  :host([variant~="inline-promo"]) #container {
-    align-items: center;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    min-height: 250px;
+  #container.inline-promo.has-image {
+    grid-template-columns: auto auto;
   }
 
-  :host([variant~="inline-promo"]) #image {
+  #container.inline-promo #image {
     order: 0;
+    max-width: 25cw;
   }
 
-  :host([variant~="inline-promo"]) #body {
-    max-width: 75ch;
+  #container.inline-promo #body {
+    max-width: min(75ch, calc(75cw + var(--rh-space-xl, 24px) + 2 * var(--rh-space-lg, 16px)));
   }
 
-  :host([variant~="inline-promo"]) #body ::slotted(h2) {
+  #container.inline-promo #header ::slotted(*) {
     --rh-card-inline-promo-heading-size: var(--rh-font-size-body-text-2xl, 1.5rem);
+  }
+
+    /* "standard" inline promo */
+  #container.inline-promo.standard {
+    grid-template: auto / auto auto;
+    padding: var(--rh-space-3xl, 48px);
+  }
+
+  #container.inline-promo.standard #footer {
+    justify-self: end;
+  }
+}
+
+@container card (max-width: 767px) and (width: 100vw) {
+  #container.inline-promo #body {
+    margin-block-start: var(--rh-space-4xl, 64px);
+  }
+  #container.inline-promo #image {
+    margin-block-end: var(--rh-space-4xl, 64px);
+  }
+}
+
+@container card (min-width: 1093px) or (min-width: 100vw) {
+  #container.inline-promo {
+    border-color: transparent;
+    gap: var(--rh-space-2xl, 32px);
+    padding-inline: var(--rh-space-lg, 16px);
+    place-items: center;
+    width: calc(100% - 2 * var(--rh-space-lg, 16px));
+  }
+
+  #container.inline-promo #header,
+  #container.inline-promo #body,
+  #container.inline-promo #footer {
+    margin-inline: 0;
+  }
+}
+
+@container card (min-width: 1093px) {
+  #container.inline-promo:not(.has-image) #image.empty {
+    display: block !important;
+    order: 1;
+    grid-column: 2/3;
+    width: 360px;
   }
 }

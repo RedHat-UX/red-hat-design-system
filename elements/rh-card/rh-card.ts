@@ -85,19 +85,33 @@ export class RhCard extends LitElement {
           | 'image'
           | 'body'
           | 'footer', boolean>;
+    const isInlinePromo = this.variant === 'inline-promo';
+    const standard = isInlinePromo && slots.body && !slots.image && !slots.header;
+    const computedPalette =
+        !standard ? colorPalette
+      : (colorPalette || 'lightest').replace('est', 'er');
+    const header = html`
+      <div id="header"
+           part="header"
+           class="${classMap({ empty: !slots.header })}">
+        <slot name="header"></slot>
+      </div>`;
+    const footer = html`
+      <div id="footer"
+           part="footer"
+           class="${classMap({ empty: !slots.footer })}">
+        <slot name="footer"></slot>
+      </div>`;
     return html`
      <div id="container"
           part="container"
           class="${classMap({
             [on]: !!on,
-            [colorPalette]: !!colorPalette,
+            [computedPalette]: !!computedPalette,
+            'inline-promo': isInlinePromo,
+            standard,
             ...Object.fromEntries(Object.entries(slots).map(([k, v]) => [`has-${k}`, v])),
-          })}">
-        <div id="header"
-             part="header"
-             class="${classMap({ empty: !slots.header })}">
-          <slot name="header"></slot>
-        </div>
+          })}">${isInlinePromo ? '' : header}
         <div id="image"
              part="image"
              class="${classMap({ empty: !slots.image })}">
@@ -106,13 +120,11 @@ export class RhCard extends LitElement {
         <div id="body"
              part="body"
              class="${classMap({ empty: !slots.body })}">
+          ${!isInlinePromo ? '' : header}
           <slot></slot>
+          ${!isInlinePromo ? '' : footer}
         </div>
-        <div id="footer"
-             part="footer"
-             class="${classMap({ empty: !slots.footer })}">
-          <slot name="footer"></slot>
-        </div>
+        ${isInlinePromo ? '' : footer}
       </div>
     `;
   }
