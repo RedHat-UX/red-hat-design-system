@@ -5,17 +5,8 @@ article {
   flex-direction: column;
 }
 
-.empty {
-  display: none;
-}
-
 ::slotted(*) {
-  font-family: inherit !important;
   line-height: inherit !important;
-}
-
-::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-  font-size: inherit !important;
 }
 
 #container {
@@ -58,11 +49,23 @@ article {
   margin-inline: var(--rh-space-xl, 24px);
 }
 
+#header.empty,
+#footer.empty,
+#body.empty {
+  display: none;
+}
+
+#header ::slotted(:is(h1, h2, h3, h4, h5, h6)),
+#body ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+}
+
 #header {
   display: flex;
   flex-direction: column;
   gap: var(--rh-space-lg, 16px);
   box-sizing: border-box;
+  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
   font-size: var(--rh-card-header-font-size, var(--rh-font-size-heading-sm, 1.5rem));
   margin-block-start: var(--rh-space-lg, 16px);
 }
@@ -80,6 +83,7 @@ article {
 #header ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
   margin: unset;
   font-weight: var(--rh-font-weight-body-text-medium, 500);
+  font-size: inherit;
 }
 
 #body ::slotted(:not([slot]):first-child) {

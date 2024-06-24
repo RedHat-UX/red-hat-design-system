@@ -39,7 +39,8 @@ nav.rtl {
 
 #container {
   display: grid;
-  position: relative;
+  position: absolute;
+  width: 100%;
   z-index: var(--rh-navigation-secondary-z-index, 102);
   background-color: var(--_context-background-color);
   gap: 0 var(--rh-space-lg, 16px);
@@ -57,7 +58,7 @@ nav.rtl {
   overflow-y: auto;
 }
 
-rh-context-provider {
+rh-surface {
   grid-area: main;
   display: flex;
   flex-direction: column;
@@ -184,7 +185,7 @@ button[aria-expanded="true"],
     overflow-y: initial;
   }
 
-  rh-context-provider {
+  rh-surface {
     flex-direction: row;
     justify-content: space-between;
   }

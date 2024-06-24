@@ -1,16 +1,19 @@
 ---
-layout: layout-foundations.njk
+layout: layouts/pages/basic.njk
 title: Overview
 heading: Color
+sidenavTitle: Color
+order: 10
+hasToc: true
 tags:
   - foundations
   - color
+subnav:
+  collection: sortedColor
+  order: 1
 permalink: /foundations/color/index.html
-order: 00
-bodyClasses: element-docs
----
 
-{% import 'component/foundations.njk' as foundations %}
+---
 
 ## Introduction
 
@@ -34,9 +37,10 @@ for our users.
 When colors are used together, they form relationships that communicate brand, 
 hierarchy, state, and more.
 
-{% example palette="light",
-          alt="Variants of several elements",
-          src="/assets/color/color-relationships.png" %}
+<uxdot-example width-adjustment="840px">
+  <img src="/assets/color/color-relationships.png" alt="Variants of several elements">
+</uxdot-example>
+
 
 ### Color design tokens
 
@@ -50,11 +54,13 @@ To learn more about our color design tokens, go to the [Tokens](/tokens) section
 
 Our design system includes multiple sets of colors known as **"crayon" colors**. Crayon colors reference hard-coded values, but offer no information about usage. **Semantic** colors reference crayon colors and define how a color is used. Semantic naming is essential not just for color, but for all foundational styles.
 
-{% example palette="light",
-          alt="Example of how crayon color tokens are aliased to semantic tokens, which are used to style a button",
-          src="/assets/color/primitive-and-semantic-colors.png" %}
+<uxdot-example width-adjustment="626px">
+  <img src="/assets/color/primitive-and-semantic-colors.png" alt="Example of how crayon color tokens are aliased to semantic tokens, which are used to style a button">
+</uxdot-example>
 
-{% feedback %}
+
+
+<uxdot-feedback>
   <h2>Foundations</h2>
   <p>To learn how to use our other foundations in your designs, visit the <a href="/foundations">foundations</a> section.</p>
-{% endfeedback %}
+</uxdot-feedback>

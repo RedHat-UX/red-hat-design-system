@@ -5,17 +5,17 @@ const { copyCell, getTokenHref } = require('../tokensHelpers.cjs');
 /** quick and dirty dedent, also provides in-editor syntax highlighting */
 const html = (...args) =>
   String.raw(...args)
-    .split('\n')
-    .map(x => x.replace(/^ {6}/, ''))
-    .join('\n');
+      .split('\n')
+      .map(x => x.replace(/^ {6}/, ''))
+      .join('\n');
 
 /** @typedef {import('@patternfly/pfe-tools/11ty/DocsPage').DocsPage} DocsPage */
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPairedShortcode('renderCodeDocs',
-    function renderCodeDocs(content, kwargs = {}) {
-      const renderers = new Renderers(this, kwargs);
-      return renderers.renderAll(content);
-    }
+                                    function renderCodeDocs(content, kwargs = {}) {
+                                      const renderers = new Renderers(this, kwargs);
+                                      return renderers.renderAll(content);
+                                    }
   );
 };
 
@@ -24,9 +24,14 @@ function innerMD(content = '') {
   return trimmed && `\n\n\n${trimmed}\n\n\n`;
 }
 
-function mdHeading(content, length = 2) {
-  const hashes = Array.from({ length }, () => '#').join('');
-  return innerMD(`${hashes} ${content}`);
+function mdHeading(content, { level = 2 }) {
+  // Following code does not work the 2nd line fixes, however I don't think
+  // this is what we want any more as we are only using this on depreciated
+  // summary headings.  This should be just plain text not a formatted heading.
+  // would be better just to apply styling to that text.
+  // const hashes = Array.from({ length }, () => '#').join('');
+  // const hashes = Array(level).fill('#').join('');
+  return content;
 }
 
 function type(content = '', { lang = 'ts' } = {}) {
@@ -65,42 +70,91 @@ class Renderers {
     const level = length + 1;
     const component = this.kwargs.for ?? this.docsPage.tagName;
     const description = this.manifest.getDescription(component);
+
+    const allSlots =
+      this.docsPage.manifest.getSlots(this.packageTagName({ level, for: component })) ?? [];
+    const slotCount = allSlots.filter(x => !x.deprecated).length;
+    const deprecatedSlotCount = allSlots.filter(x => x.deprecated).length;
+
+    const allAttr =
+      this.manifest.getAttributes(this.packageTagName({ level, for: component })) ?? [];
+    const attrCount = allAttr.filter(x => !x.deprecated).length;
+    const deprecatedAttrCount = allAttr.filter(x => x.deprecated).length;
+
+    const allMethods =
+      this.manifest.getMethods(this.packageTagName({ level, for: component })) ?? [];
+    const methodsCount = allMethods.filter(x => !x.deprecated).length;
+    const deprecatedMethodsCount = allMethods.filter(x => x.deprecated).length;
+
+    const allEvents = this.manifest.getEvents(this.packageTagName({ level, for: component })) ?? [];
+    const eventsCount = allEvents.filter(x => !x.deprecated).length;
+    const deprecatedEventsCount = allEvents.filter(x => x.deprecated).length;
+
+    const allCssParts =
+      this.manifest.getCssParts(this.packageTagName({ level, for: component })) ?? [];
+    const cssPartsCount = allCssParts.filter(x => !x.deprecated).length;
+    const deprecatedCssPartsCount = allCssParts.filter(x => x.deprecated).length;
+
+    const allCssProperties =
+      this.manifest.getCssCustomProperties(this.packageTagName({ level, for: component })) ?? [];
+    const cssPropertiesCount =
+      allCssProperties.filter(x => !x.deprecated && !tokens.has(x.name)).length;
+    const deprecatedCssPropertiesCount =
+      allCssProperties.filter(x => x.deprecated && !tokens.has(x.name)).length;
+
+    const allDesignTokens =
+      this.manifest.getCssCustomProperties(this.packageTagName({ level, for: component })) ?? [];
+    const designTokensCount = allDesignTokens.filter(x => tokens.has(x.name)).length;
+
+
     // TODO: dsd
     return html`
-      <style>
-        table.css-custom-properties code[data-color] {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-        }
-        table.css-custom-properties code[data-color]:after {
-          content: '';
-          background: var(--color);
-          display: inline-block;
-          width: 1rem;
-          height: 1rem;
-          border-radius: 1rem;
-          inset-inline-end: -1rem;
-        }
-      </style>
-
       ${Array.from({ length }, () => '#').join('')} ${component}
-
       ${this.kwargs.hideDescription ?? false ? `` : html`<p>${description}</p>`}
-      ${this.renderSlots('', { level, for: component })}
-      ${this.renderAttributes('', { level, for: component })}
-      ${this.renderMethods('', { level, for: component })}
-      ${this.renderEvents('', { level, for: component })}
-      ${this.renderCssParts('', { level, for: component })}
-      ${this.renderCssCustomProperties('', { level, for: component })}
-      ${this.renderTokens('', { level, for: component })}
+
+      <rh-accordion box>
+        <rh-accordion-header id="${component}-slots" expanded>Slots
+          <rh-badge>${slotCount}</rh-badge>
+          ${deprecatedSlotCount > 0 ? html`<rh-badge state="moderate">${deprecatedSlotCount}</rh-badge>` : ``}
+        </rh-accordion-header>
+        <rh-accordion-panel>${this.renderSlots('', { level, for: component })}</rh-accordion-panel>
+        <rh-accordion-header id="${component}-attributes">Attributes
+          <rh-badge>${attrCount}</rh-badge>
+          ${deprecatedAttrCount > 0 ? html`<rh-badge state="moderate">${deprecatedAttrCount}</rh-badge>` : ``}
+        </rh-accordion-header>
+        <rh-accordion-panel>${this.renderAttributes('', { level, for: component })}</rh-accordion-panel>
+        <rh-accordion-header id="${component}-methods">Methods
+          <rh-badge>${methodsCount}</rh-badge>
+          ${deprecatedMethodsCount > 0 ? html`<rh-badge state="moderate">${deprecatedMethodsCount}</rh-badge>` : ``}
+        </rh-accordion-header>
+        <rh-accordion-panel>${this.renderMethods('', { level, for: component })}</rh-accordion-panel>
+        <rh-accordion-header id="${component}-events">Events
+          <rh-badge>${eventsCount}</rh-badge>
+          ${deprecatedEventsCount > 0 ? html`<rh-badge state="moderate">${deprecatedEventsCount}</rh-badge>` : ``}
+        </rh-accordion-header>
+        <rh-accordion-panel>${this.renderEvents('', { level, for: component })}</rh-accordion-panel>
+        <rh-accordion-header id="${component}-css-parts">CSS Shadow Parts
+          <rh-badge>${cssPartsCount}</rh-badge>
+          ${deprecatedCssPartsCount > 0 ? html`<rh-badge state="moderate">${deprecatedCssPartsCount}</rh-badge>` : ``}
+        </rh-accordion-header>
+        <rh-accordion-panel>${this.renderCssParts('', { level, for: component })}</rh-accordion-panel>
+        <rh-accordion-header id="${component}-css-properties">CSS Custom Properties
+          <rh-badge>${cssPropertiesCount}</rh-badge>
+          ${deprecatedCssPropertiesCount > 0 ? html`<rh-badge state="moderate">${deprecatedCssPropertiesCount}</rh-badge>` : ``}
+        </rh-accordion-header>
+        <rh-accordion-panel>${this.renderCssCustomProperties('', { level, for: component })}</rh-accordion-panel>
+        <rh-accordion-header id="${component}-design-tokens">Design Tokens
+          <rh-badge>${designTokensCount}</rh-badge>
+        </rh-accordion-header>
+        <rh-accordion-panel>${this.renderTokens('', { level, for: component })}</rh-tab-panel>
+      </rh-accordion>
       ${content}
     `.trim();
   }
 
   renderBand(content, { level } = {}) {
     return html`
-      <section class="band">
+      <section>
         ${mdHeading(content, { level })}
         ${innerMD(content)}
       </section>`;
@@ -109,14 +163,14 @@ class Renderers {
   /** Render the overview of a component page */
   renderOverview(content) {
     return html`
-      <section class="band overview">
+      <section class="overview">
         <h2>Overview</h2>
         <div class="example-preview">
           ${content}
         </div>
       </section>
 
-      <section class="band">
+      <section>
         <h2>Installation</h2>
 
       ~~~shell
@@ -132,165 +186,149 @@ class Renderers {
     const deprecated = _attrs.filter(x => x.deprecated);
     const attributes = _attrs.filter(x => !x.deprecated);
     return html`
-      <section class="band api attributes api-properties">
-        ${mdHeading(header)}${!content && !attributes.length ? html`
+      <section class="attributes">
+        ${!content && !attributes.length ? html`
         <em>None</em>` : html`
         ${innerMD(content)}
-        <dl>${attributes?.map(attribute => html`
-          <dt><strong><code>${attribute.name}</code></strong></dt>
-          <dd>
-            ${innerMD(attribute.description)}
-            <dl class="member">${!attribute.fieldName ? '' : html`
-              <dt>DOM Property</dt>
-              <dd><code>${attribute.fieldName}</code></dd>`}
-              <dt>Type</dt>
-              <dd class="inline-type">${type(attribute.type?.text ?? 'unknown')}</dd>
-              <dt>Default</dt>
-              <dd class="inline-type">${type(attribute.default ?? 'unknown')}</dd>
-            </dl>
-          </dd>`).join('\n') ?? ''}
-        </dl>`}${!deprecated.length ? '' : html`
+        <rh-table>
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" data-label="DOM Property">DOM Property</th>
+                <th scope="col" data-label="Description">Description</th>
+                <th scope="col" data-label="Type">Type</th>
+                <th scope="col" data-label="Default">Default</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${attributes.map(attribute => html`
+              <tr>
+                <td data-label="DOM Property"><code>${attribute.fieldName}</code></td>
+                <td data-label="Description">${innerMD(attribute.description)}</td>
+                <td data-label="Type">${type(attribute.type?.text ?? 'unknown')}</td>
+                <td data-label="Default">${type(attribute.default ?? 'unknown')}</td>
+              </tr>`).join('\n')}
+            </tbody>
+          </table>
+        </rh-table>`}
+        ${!deprecated.length ? '' : html`  
         <details>
           <summary>${mdHeading(`Deprecated ${header}`, { level: level + 1 })}</summary>
-          <dl>${deprecated.map(attribute => html`
-            <dt><strong><code>${attribute.name}</code></strong></dt>
-            <dd>
-              ${innerMD(attribute.description)}
-              <em>Note: ${attribute.name} is deprecated. ${innerMD(attribute.deprecated)}</em>
-              <dl class="member">${!attribute.fieldName ? '' : html`
-                <dt>DOM Property</dt>
-                <dd><code>${attribute.fieldName}</code></dd>`}
-                <dt>Type</dt>
-                <dd class="inline-type">${innerMD(attribute.type?.text ?? 'unknown')}</dd>
-                <dt>Default</dt>
-                <dd class="inline-type">${innerMD(attribute.default ?? 'unknown')}</dd>
-              </dl>
-            </dd>`).join('\n')}
-          </dl>
-        </details>`}
-      </section>`;
-  }
-
-  /** Render the list of element DOM properties */
-  renderProperties(content, { header = 'DOM Properties', level = 2, ...kwargs } = {}) {
-    const allProperties = this.manifest.getProperties(this.packageTagName(kwargs)) ?? [];
-    const deprecated = allProperties.filter(x => x.deprecated);
-    const properties = allProperties.filter(x => !x.deprecated);
-    // TODO: inline code highlighting for type and default: render the markdown to html and extract the `<code>` from the `<pre>`
-    return html`
-      <section class="api band properties api-properties">
-        ${mdHeading(header)}${!content && !properties.length ? html`
-        <em>None</em>` : html`
-        ${innerMD(content)}
-        <dl>${properties.map(property => html`
-          <dt><strong><code>${property.name}</code></strong></dt>
-          <dd>
-            ${innerMD(property.description)}
-            <dl class="member">
-              <dt>Type</dt>
-              <dd class="inline-type">${type(property.type.text ?? 'unknown')} </dd>
-              <dt>Default</dt>
-              <dd class="inline-type">${type(property.default ?? 'unknown')} </dd>
-            </dl>
-          </dd>`).join('\n')}
-        </dl>`}${!deprecated.length ? '' : html`
-        <details>
-          <summary>${mdHeading(`Deprecated ${header}`, { level: level + 1 })}</summary>
-          <dl>${deprecated.map(property => html`
-            <dt><strong><code>${property.name}</code></strong></dt>
-            <dd>
-              ${innerMD(property.description)}
-              <em>Note: ${property.name} is deprecated. ${innerMD(property.deprecated)}</em>
-              <dl class="member">
-                <dt>Type</dt>
-                <dd class="inline-type">${type(property.type?.text ?? 'unknown')}</dd>
-                <dt>Default</dt>
-                <dd class="inline-type">${type(property.default ?? 'unknown')}</dd>
-              </dl>
-            </dd>`).join('\n')}
-          </dl>
+          <rh-table>
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col" data-label="DOM Property">DOM Property</th>
+                  <th scope="col" data-label="Description">Description</th>
+                  <th scope="col" data-label="Type">Type</th>
+                  <th scope="col" data-label="Default">Default</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${deprecated.map(attribute => html`
+                <tr>
+                  <td data-label="DOM Property"><code>${attribute.fieldName}</code></td>
+                  <td data-label="Description">${innerMD(attribute.description)}</td>
+                  <td data-label="Type">${type(attribute.type?.text ?? 'unknown')}</td>
+                  <td data-label="Default">${type(attribute.default ?? 'unknown')}</td>
+                </tr>`).join('\n')}
+              </tbody>
+            </table>
+          </rh-table>
         </details>`}
       </section>`;
   }
 
   /** Render a table of element Design Tokens */
-  renderTokens(content, { header = 'Design Tokens', level = 2, ...kwargs } = {}) {
-    const allCssProperties = this.manifest.getCssCustomProperties(this.packageTagName(kwargs)) ?? [];
+  renderTokens(content, {
+    header = 'Design Tokens',
+    ...kwargs
+  } = {}) {
+    const allCssProperties =
+      this.manifest.getCssCustomProperties(this.packageTagName(kwargs)) ?? [];
     const elTokens = allCssProperties.filter(x => tokens.has(x.name));
     return html`
-      <section class="api band design-tokens api-properties">
-        ${mdHeading(header)}${!content && !elTokens.length ? html`
+      <section class="design-tokens">
+        ${!content && !elTokens.length ? html`
         <em>None</em>` : html`
         ${innerMD(content)}
-        <table class="design-tokens">
-          <thead>
-            <tr>
-              <th style="text-align:left">Token</th>
-              <th style="text-align:left">Copy</th>
-            </tr>
-          </thead>
-          <tbody>${elTokens.map(token => html`
-            <tr>
-              <td style="text-align:left">
-                <a href="${getTokenHref(token)}"><code>${token.name}</code></a>
-              </td>
-            ${copyCell(token)}
-            </tr>`).join('\n')}
-          </tbody>
-        </table>`}
+        <rh-table>
+          <table>
+            <thead>
+              <tr>
+                <th data-label="Token">Token</th>
+                <th data-label="Copy">Copy</th>
+              </tr>
+            </thead>
+            <tbody>${elTokens.map(token => html`
+              <tr>
+                <td data-label="Token">
+                  <a href="${getTokenHref(token)}"><code>${token.name}</code></a>
+                </td>
+              ${copyCell(token)}
+              </tr>`).join('\n')}
+            </tbody>
+          </table>
+      </rh-table>`}
       </section>`;
   }
 
   /** Render a table of element CSS Custom Properties */
-  renderCssCustomProperties(content, { header = 'CSS Custom Properties', level = 2, ...kwargs } = {}) {
-    const allCssProperties = this.manifest.getCssCustomProperties(this.packageTagName(kwargs)) ?? [];
+  renderCssCustomProperties(content, {
+    header = 'CSS Custom Properties',
+    level = 2, ...kwargs
+  } = {}) {
+    const allCssProperties =
+      this.manifest.getCssCustomProperties(this.packageTagName(kwargs)) ?? [];
     const cssProperties = allCssProperties.filter(x => !x.deprecated && !tokens.has(x.name));
     const deprecated = allCssProperties.filter(x => x.deprecated && !tokens.has(x.name));
     return html`
-      <section class="api band css-custom-properties api-properties">
-        ${mdHeading(header)}${!content && !cssProperties.length ? html`
+      <section class="css-custom-properties">
+        ${!content && !cssProperties.length ? html`
         <em>None</em>` : html`
         ${innerMD(content)}
-        <table class=css-custom-properties>
-          <thead>
-            <tr>
-              <th style="text-align:left">CSS Property</th>
-              <th style="text-align:left">Description</th>
-              <th style="text-align:left">Default</th>
-            </tr>
-          </thead>
-          <tbody>${cssProperties.map(prop => html`
-            <tr>
-              <td style="text-align:left"><code>${prop.name}</code></td>
-              <td style="text-align:left">${innerMD(prop.description ?? '')}</td>
-              <td style="text-align:left">${!prop.default?.startsWith('#') ? html`
-                <code>` : html`
-                <code data-color="${prop.default}"
-                      style="--color:${prop.default}">`}
-                  ${prop.default ?? '—'}
-                </code>
-              </td>
-            </tr>`).join('\n')}
-          </tbody>
-        </table>`}${!deprecated.length ? '' : html`
-        <details>
-          <summary>${mdHeading(`Deprecated ${header}`, { level: level + 1 })}</summary>
-          <table>
+        <rh-table>
+          <table class=css-custom-properties>
             <thead>
               <tr>
-                <th style="text-align:left">CSS Property</th>
-                <th style="text-align:left">Description</th>
-                <th style="text-align:left">Default</th>
+                <th scope="col" data-label="CSS Property">CSS Property</th>
+                <th scope="col" data-label="Description">Description</th>
+                <th scope="col" data-label="Default">Default</th>
               </tr>
             </thead>
-            <tbody>${deprecated.map(prop => html`
+            <tbody>${cssProperties.map(prop => html`
               <tr>
-                <td style="text-align:left"><code>${prop.name}</code></td>
-                <td style="text-align:left">${innerMD(prop.description)}</td>
-                <td style="text-align:left">${innerMD(prop.default ?? '—')}</td>
+                <td data-label="CSS Property"><code>${prop.name}</code></td>
+                <td data-label="Description">${innerMD(prop.description ?? '')}</td>
+                <td data-label="Default">${!prop.default?.startsWith('#') ? html`
+                  <code>` : html`
+                  <code data-color="${prop.default}"
+                        style="--color:${prop.default}">`}
+                    ${prop.default ?? '—'}
+                  </code>
+                </td>
               </tr>`).join('\n')}
             </tbody>
-          </table>
+          </table>`}${!deprecated.length ? '' : html`
+          <details>
+            <summary>${mdHeading(`Deprecated ${header}`, { level: level + 1 })}</summary>
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col" data-label="CSS Property">CSS Property</th>
+                  <th scope="col" data-label="Description">Description</th>
+                  <th data-label="">Default</th>
+                </tr>
+              </thead>
+              <tbody>${deprecated.map(prop => html`
+                <tr>
+                  <td data-label="CSS Property"><code>${prop.name}</code></td>
+                  <td data-label="Description">${innerMD(prop.description)}</td>
+                  <td data-label="Default">${innerMD(prop.default ?? '—')}</td>
+                </tr>`).join('\n')}
+              </tbody>
+            </table>
+          </rh-table>
         </details>`}
       </section>`;
   }
@@ -301,23 +339,49 @@ class Renderers {
     const parts = allParts.filter(x => !x.deprecated);
     const deprecated = allParts.filter(x => x.deprecated);
     return html`
-      <section class="api band css-shadow-parts api-properties">
-        ${mdHeading(header)}${!content && !parts.length ? html`
+      <section class="css-shadow-parts">
+        ${!content && !parts.length ? html`
         <em>None</em>` : html`
         ${innerMD(content)}
-        <dl>${parts.map(part => html`
-          <dt><strong><code>${part.name}</code></strong></dt>
-          <dd>${innerMD(part.description)}</dd>`).join('\n')}
-        </dl>`}${!deprecated.length ? '' : html`
+        <rh-table>
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" data-label="Part Name">Part Name</th>
+                <th scope="col" data-label="Description">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${parts.map(part => html`
+              <tr>
+                <td data-label="Part Name"><code>${part.name}</code></td>
+                <td data-label="Description">${innerMD(part.description)}</td>
+              </tr>`).join('\n')}
+            </tbody>
+          </table>
+        </rh-table>`}${!deprecated.length ? '' : html`
         <details>
           <summary>${mdHeading(`Deprecated ${header}`, { level: level + 1 })}</summary>
-          <dl>${deprecated.map(part => html`
-            <dt><strong><code>${part.name}</code></strong></dt>
-            <dd>
-              ${innerMD(part.description)}
-              <em>Note: ${part.name} is deprecated. ${innerMD(part.deprecated)}</em>
-            </dd>`).join('\n')}
-          </dl>
+          <rh-table>
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col" data-label="Part Name">Part Name</th>
+                  <th scope="col" data-label="Description">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${deprecated.map(part => html`
+                <tr>
+                  <td data-label="Part Name"><code>${part.name}</code></td>
+                  <td data-label="Description">
+                    ${innerMD(part.description)}
+                    <em>Note: ${part.name} is deprecated. ${innerMD(part.deprecated)}</em>
+                  </td>
+                </tr>`).join('\n')}
+              </tbody>
+            </table>
+          </rh-table>
         </details>`}
       </section>`;
   }
@@ -328,29 +392,49 @@ class Renderers {
     const deprecated = _events.filter(x => x.deprecated);
     const events = _events.filter(x => !x.deprecated);
     return html`
-      <section class="api band events api-properties">
-        ${mdHeading(header)}${!content && !events.length ? html`
+      <section class="events">
+        ${!content && !events.length ? html`
         <em>None</em>` : html`
         ${innerMD(content)}
-        <dl>${events.map(event => html`
-          <dt><strong><code>${event.name}</code></strong></dt>
-          <dd>
-            ${innerMD(event.description)}
-            <span>
-              <em>Event Type</em>: <span class="inline-type">${type(event.type?.text ?? 'unknown')}</span>
-            </span>
-          </dd>`).join('\n')}
-        </dl>`}${!deprecated.length ? '' : html`
+        <rh-table>
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" data-label="Event Name">Event Name</th>
+                <th scope="col" data-label="Description">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${events.map(event => html`
+              <tr>
+                <td data-label="Event Name"><code>${event.name}</code></td>
+                <td data-label="Description">${innerMD(event.description)}</td>
+              </tr>`).join('\n')}
+            </tbody>
+          </table>
+        </rh-table>`}${!deprecated.length ? '' : html`
         <details>
           <summary>${mdHeading(`Deprecated ${header}`, { level: level + 1 })}</summary>
-          <dl>${deprecated.map(event => html`
-            <dt><strong><code>${event.name}</code></strong></dt>
-            <dd>
-              ${innerMD(event.description)}
-              <em>Note: ${event.name} is deprecated. ${innerMD(event.deprecated)}</em>
-              <em>Event Type</em>: <span class="inline-type">${type(event.type?.text ?? 'unknown')}</span>
-            </dd>`).join('\n')}
-          </dl>
+          <rh-table>
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col" data-label="Event Name">Event Name</th>
+                  <th scope="col" data-label="Description">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${deprecated.map(event => html`
+                <tr>
+                  <td data-label="Event Name"><code>${event.name}</code></td>
+                  <td data-label="Description">
+                    ${innerMD(event.description)}
+                    <em>Note: ${event.name} is deprecated. ${innerMD(event.deprecated)}</em>
+                  </td>
+                </tr>`).join('\n')}
+              </tbody>
+            </table>
+          </rh-table>
         </details>`}
       </section>`;
   }
@@ -358,7 +442,7 @@ class Renderers {
   /** Render the installation instructions for the element */
   renderInstallation(content, { header = 'Installation', level = 2, tagName } = {}) {
     return html`
-      <section class="band">
+      <section>
         <h2>Installation</h2>
 
       We recommend loading elements via a CDN such as [JSPM][inst-jspm] and
@@ -397,23 +481,50 @@ class Renderers {
     const methods = allMethods.filter(x => !x.deprecated);
     // TODO: inline code highlighting for type and default: render the markdown to html and extract the `<code>` from the `<pre>`
     return html`
-      <section class="api band methods api-properties">
-        ${mdHeading(header)}${!content && !methods.length ? html`
+      <section class="methods">
+        ${!content && !methods.length ? html`
         <em>None</em>` : html`
         ${innerMD(content)}
-        <dl>${methods.map(method => html`
-          <dt><strong><code>${method.name}(${stringifyParams(method)})</code></strong></dt>
-          <dd>${innerMD(method.description)}</dd>`).join('\n')}
-        </dl>`}${!deprecated.length ? '' : html`
+
+        <rh-table>
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" data-label="Method Name">Method Name</th>
+                <th scope="col" data-label="Description">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${methods.map(method => html`
+              <tr>
+                <td data-label="Method Name"><code>${method.name}(${stringifyParams(method)})</code></td>
+                <td data-label="Description">${innerMD(method.description)}</td>
+              </tr>`).join('\n')}
+            </tbody>
+          </table>
+        </rh-table>`}${!deprecated.length ? '' : html`
         <details>
           <summary>${mdHeading(`Deprecated ${header}`, { level: level + 1 })}</summary>
-          <dl>${deprecated.map(method => html`
-            <dt><strong><code>${method.name}(${stringifyParams(method)})</code></strong></dt>
-            <dd>
-              ${innerMD(method.description)}
-              <em>Note: ${method.name} is deprecated. ${innerMD(method.deprecated)}</em>
-            </dd>`).join('\n')}
-          </dl>
+          <rh-table>
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col" data-label="Method Name">Method Name</th>
+                  <th scope="col" data-label="Description">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${deprecated.map(method => html`
+                <tr>
+                  <td data-label="Method Name"><code>${method.name}(${stringifyParams(method)})</code></td>
+                  <td data-label="Description">
+                    ${innerMD(method.description)}
+                    <em>Note: ${method.name} is deprecated. ${innerMD(method.deprecated)}</em>
+                  </td>
+                </tr>`).join('\n')}
+              </tbody>
+            </table>
+          </rh-table>
         </details>`}
       </section>`;
   }
@@ -424,29 +535,50 @@ class Renderers {
     const slots = allSlots.filter(x => !x.deprecated);
     const deprecated = allSlots.filter(x => x.deprecated);
     return html`
-      <section class="api band slots api-properties">
-        ${mdHeading(header)}${!content && !slots.length ? html`
+      <section class="slots">
+        ${!content && !slots.length ? html`
         <em>None</em>` : html`
         ${innerMD(content)}
-        <dl>${slots.map(slot => html`
-          <dt>${slot.name ? html`
-            <strong><code>${slot.name}</code></strong>` : html`
-            <strong>Default Slot</strong>`}
-          </dt>
-          <dd>${innerMD(slot.description)}</dd>`).join('\n')}
-        </dl>`}${!deprecated.length ? '' : html`
+
+        <rh-table>
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" data-label="Slot Name">Slot Name</th>
+                <th scope="col" data-label="Description">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${slots.map(slot => html`
+              <tr>
+                <td data-label="Slot Name"><code>${slot.name}</code></td>
+                <td data-label="Description">${innerMD(slot.description)}</td>
+              </tr>`).join('\n')}
+            </tbody>
+          </table>
+        </rh-table>`}${!deprecated.length ? '' : html`
         <details>
           <summary>${mdHeading(`Deprecated ${header}`, { level: level + 1 })}</summary>
-          <dl>${deprecated.map(slot => html`
-            <dt>${slot.name ? html`
-              <strong><code>${slot.name}</code></strong>` : html`
-              <strong>Default Slot</strong>`}
-            </dt>
-            <dd>
-              ${innerMD(slot.description)}
-              <em>Note: ${slot.name} is deprecated. ${innerMD(slot.deprecated)}</em>
-            </dd>`).join('\n')}
-          </dl>
+          <rh-table>
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col" data-label="Slot Name">Slot Name</th>
+                  <th scope="col" data-label="Description">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${deprecated.map(slot => html`
+                <tr>
+                  <td data-label="Slot Name"><code>${slot.name}</code></td>
+                  <td data-label="Description">
+                    ${innerMD(slot.description)}
+                    <em>Note: ${slot.name} is deprecated. ${innerMD(slot.deprecated)}</em>
+                  </td>
+                </tr>`).join('\n')}
+              </tbody>
+            </table>
+          </rh-table>
         </details>`}
       </section>`;
   }

@@ -2,13 +2,16 @@ import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
+
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
-import styles from './rh-table.css';
 import { RequestSortEvent, RhSortButton } from './rh-sort-button.js';
 
-import { type ColorPalette } from '@rhds/elements/lib/context/color/provider';
+import { type ColorPalette } from '../../lib/context/color/provider.js';
 import { colorContextConsumer } from '../../lib/context/color/consumer.js';
+
+import styles from './rh-table.css';
+
 
 /**
  * A table is a container for displaying information. It allows a user to scan, examine, and compare large amounts of data.
@@ -17,6 +20,12 @@ import { colorContextConsumer } from '../../lib/context/color/consumer.js';
  *
  * @slot               - an HTML table
  * @slot    summary    - a brief description of the data
+ *
+ * @cssprop {<color>} --rh-table-row-background-color - deprecated use --rh-table-row-background-hover-color {@default `224 224 224 / 40%`}
+ * @cssprop {<color>} --rh-table-column-background-color - deprecated use --rh-table-column-background-hover-color {@default `0 102 204 / 10%`}
+ * @cssprop {<color>} --rh-table-row-background-hover-color - row hover background color {@default `224 224 224 / 40%`}
+ * @cssprop {<color>} --rh-table-column-background-hover-color - column hover background color {@default `0 102 204 / 10%`}
+ * @cssprop --rh-table-row-border - row border {@default `1px solid #c7c7c7`}
  */
 @customElement('rh-table')
 export class RhTable extends LitElement {
@@ -73,7 +82,7 @@ export class RhTable extends LitElement {
   render() {
     const { on = '' } = this;
     return html`
-      <div id="container" class="${classMap({ [on]: !!on })}">
+      <div id="container" class="${classMap({ [on]: !!on })}" part="container">
         <slot @pointerleave="${this.#onPointerleave}"
               @pointerover="${this.#onPointerover}"
               @request-sort="${this.#onRequestSort}" 
@@ -160,19 +169,19 @@ export class RhTable extends LitElement {
       }
 
       Array
-        .from(this.#rows, node => RhTable.getNodeContentForSort(columnIndexToSort, node))
-        .sort((a, b) => RhTable.sortByContent(direction, a, b))
-        .forEach(({ node }, index) => {
-          if (!this.#rows) {
-            return;
-          }
-          const target = this.#rows[index];
-          if (this.#rows[index] !== node) {
-            const position: InsertPosition =
+          .from(this.#rows, node => RhTable.getNodeContentForSort(columnIndexToSort, node))
+          .sort((a, b) => RhTable.sortByContent(direction, a, b))
+          .forEach(({ node }, index) => {
+            if (!this.#rows) {
+              return;
+            }
+            const target = this.#rows[index];
+            if (this.#rows[index] !== node) {
+              const position: InsertPosition =
                 direction === 'desc' ? 'afterend' : 'beforebegin';
-            target.insertAdjacentElement(position, node);
-          }
-        });
+              target.insertAdjacentElement(position, node);
+            }
+          });
     }
   }
 }

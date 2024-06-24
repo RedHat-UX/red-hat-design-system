@@ -9,9 +9,12 @@ slot {
   width: max-content;
 }
 
+::slotted(a) {
+  padding: 5px !important; /* WARNING: not a token value */
+}
+
 :is(.dark, .darker, .darkest) ::slotted(a) {
   color: var(--rh-color-interactive-blue-lightest, #b9dafc) !important;
-  padding: 5px !important; /* WARNING: not a token value */
 }
 
 :is(.dark, .darker, .darkest) ::slotted(a:hover) {

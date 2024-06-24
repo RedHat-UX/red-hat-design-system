@@ -8,7 +8,11 @@ function logPerf() {
   /* eslint-disable no-console */
   const chalk = require('chalk');
   const TOTAL = performance.measure('importMap-total', 'importMap-start', 'importMap-end');
-  const RESOLVE = performance.measure('importMap-resolve', 'importMap-start', 'importMap-afterLocalPackages');
+  const RESOLVE = performance.measure(
+    'importMap-resolve',
+    'importMap-start',
+    'importMap-afterLocalPackages'
+  );
   if (TOTAL.duration > 2000) {
     console.log(
       `🦥 Import map generator done in ${chalk.red(TOTAL.duration)}ms\n`,
@@ -59,9 +63,11 @@ async function getCachedImportMap({
 
       const nothing = Symbol();
       const providers = {
-        '@patternfly': 'nodemodules',
+        '@patternfly/elements': 'nodemodules',
         ...Object.fromEntries(localPackages?.map(packageName =>
-          packageName.match(/@(rhds|patternfly)/) ? [nothing] : [packageName, 'nodemodules']) ?? []),
+          packageName.match(/@(rhds|patternfly)/) ?
+            [nothing]
+            : [packageName, 'nodemodules']) ?? []),
       };
 
       delete providers[nothing];
@@ -132,7 +138,7 @@ module.exports = function(eleventyConfig, {
       inputMap,
       localPackages,
       cwd,
-      assetCache
+      assetCache,
     });
   });
 

@@ -27,7 +27,6 @@ const DEFAULT_AVATARS = {
   darkest: darkSVG,
 };
 
-
 /**
  * An avatar is a small thumbnail representation of a user.
  *
@@ -110,8 +109,8 @@ export class RhAvatar extends LitElement {
   }
 
   async updated(changed: PropertyValues<this>) {
-    if ((changed.has('pattern') && this.pattern) ||
-        (this.#pattern && changed.has('name') || changed.has('on' as keyof RhAvatar))) {
+    if ((changed.has('pattern') && this.pattern)
+        || (this.#pattern && changed.has('name') || changed.has('on' as keyof RhAvatar))) {
       this.updatePattern();
     }
   }

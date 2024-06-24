@@ -10,8 +10,10 @@ docs/pfe.min*
 docs/assets/playgrounds/
 
 # Build artifacts
+!elements
 elements/*/*.js
 elements/*/test/*.js
+react
 lib/**/*.js
 !elements/**/demo/*.css
 *.map
@@ -23,6 +25,9 @@ test-results.xml
 rhds.min.js
 *LEGAL.txt
 *.tgz
+# copied lightdom shims
+rh-*/rh-*lightdom.css
+rh-*/rh-*lightdom-shim.css
 
 # e2e
 test-results

@@ -152,9 +152,9 @@ export class RhCta extends LitElement {
   }
 
   // START DEPRECATION WARNING
-  /* note: remove ColorPalette type, and property decorator import above */
+  // note: remove ColorPalette type, and property decorator import above
   /**
-   * @deprecated do not use the color-palette attribute, which was added by mistake. use context-providing containers (e.g. rh-card) instead
+   * @deprecated do not use the color-palette attribute: Use themable containers (e.g. rh-surface or rh-card) instead
    */
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
@@ -171,14 +171,16 @@ export class RhCta extends LitElement {
   }
 
   #onMutation() {
-    this.#logger.warn('The color-palette attribute is deprecated and will be removed in a future release.');
+    this.#logger.warn(
+      'The color-palette attribute is deprecated and will be removed in a future release.'
+    );
   }
   // END DEPRECATION WARNING
 
   render() {
     const rtl = this.#dir.dir === 'rtl';
     // START DEPRECATION WARNING
-    /* note: remove on from classMap below */
+    // note: remove on from classMap below
     const dark = this.colorPalette?.includes('dark') ? 'dark' : '';
     const on = this.on ?? dark;
     // END DEPRECATION WARNING

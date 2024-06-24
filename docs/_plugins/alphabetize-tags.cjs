@@ -1,9 +1,14 @@
 module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   // Iterate over tags to sort
+
+  if (!tagsToAlphabetize || tagsToAlphabetize?.length <= 0) {
+    return;
+  }
+
   for (const tag of tagsToAlphabetize) {
     eleventyConfig.addCollection(tag, function(collection) {
       const currentCollection = [...collection.getFilteredByTag(tag)]
-        .sort((a, b) => (a.data.order ?? Infinity) - (b.data.order ?? Infinity));
+          .sort((a, b) => (a.data.order ?? Infinity) - (b.data.order ?? Infinity));
 
       // Final sorted array of collection items
       const sorted = new Set();

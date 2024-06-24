@@ -1,4 +1,39 @@
-/* stylelint-disable max-line-length */
+rh-table {
+  --_row-border:
+    var(
+        --rh-table-row-border,
+        var(--rh-border-width-sm, 1px)
+        solid
+        var(--rh-color-border-subtle-on-light, #c7c7c7)
+      );
+  --_row-background-hover-color:
+    var(
+        --rh-table-row-background-hover-color,
+        var(
+          /* rh-table-row-background-color is deprecated
+          please use --rh-table-row-background-hover-color*/
+          --rh-table-row-background-color,
+          rgb(
+            var(--rh-color-gray-20-rgb, 224 224 224)
+            / var(--rh-opacity-40, 40%)
+          )
+        )
+      );
+  --_column-background-hover-color:
+    var(
+        --rh-table-column-background-hover-color,
+        var(
+          /* rh-table-column-background-color is deprecated
+          please use --rh-table-column-background-hover-color */
+          --rh-table-column-background-color,
+          rgb(
+            var(--rh-color-blue-50-rgb, 0 102 204)
+            / var(--rh-opacity-10, 10%)
+          )
+        )
+      );
+}
+
 rh-table table {
   min-width: 100%;
   margin: 0 auto;
@@ -16,11 +51,11 @@ rh-table thead th {
 }
 
 rh-table tr {
-  border-bottom: var(--rh-table-row-border);
+  border-bottom: var(--_row-border);
 }
 
 rh-table tr:hover {
-  background: var(--rh-table-row-background-color);
+  background: var(--_row-background-hover-color);
 }
 
 rh-table tr > * {
@@ -62,7 +97,7 @@ rh-table td {
 }
 
 rh-table :is(col.active) {
-  background: var(--rh-table-column-background-color);
+  background: var(--_column-background-hover-color);
 }
 
 @media (max-width: 768px) {
@@ -95,19 +130,19 @@ rh-table :is(col.active) {
   }
 
   rh-table thead ~ tbody tr:first-child {
-    border-top: var(--rh-table-row-border);
+    border-top: var(--_row-border);
   }
 
   rh-table thead ~ tbody tr:last-child {
-    border-bottom: var(--rh-table-row-border);
+    border-bottom: var(--_row-border);
   }
 
   rh-table thead ~ tbody tr:nth-child(even) {
-    background: var(--rh-table-row-background-color);
+    background: var(--_row-background-hover-color);
   }
 
   rh-table thead ~ tbody tr:hover {
-    background: var(--rh-table-column-background-color);
+    background: var(---_column-background-hover-color);
   }
 
   rh-table thead ~ tbody tr > * {
@@ -118,7 +153,7 @@ rh-table :is(col.active) {
     text-align: center;
   }
 
-  rh-table thead ~ tbody tr td {
+  rh-table thead ~ tbody tr :is(th, td) {
     padding-top: calc(var(--rh-space-md, 8px) + var(--rh-space-xs, 4px));
     padding-bottom: calc(var(--rh-space-md, 8px) + var(--rh-space-xs, 4px));
     display: grid;
@@ -127,9 +162,10 @@ rh-table :is(col.active) {
     align-items: start;
     white-space: normal;
     word-wrap: break-word;
+    text-align: left;
   }
 
-  rh-table thead ~ tbody tr td:before {
+  rh-table thead ~ tbody tr :is(td,th):before {
     font-weight: var(--rh-font-weight-heading-bold, 700);
     text-align: left;
     content: attr(data-label);

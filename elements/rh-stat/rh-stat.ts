@@ -89,7 +89,7 @@ export class RhStat extends LitElement {
 
   #updateIcons(): void {
     this.querySelector('pf-icon[slot="icon"]')
-      ?.setAttribute?.('size', this.size === 'default' ? 'md' : 'lg');
+        ?.setAttribute?.('size', this.size === 'default' ? 'md' : 'lg');
   }
 
   #onMutation() {

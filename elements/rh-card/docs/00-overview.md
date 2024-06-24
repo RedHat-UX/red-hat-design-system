@@ -1,21 +1,23 @@
 ## Overview
-  {{ tagName | getElementDescription }}
+
+{{ tagName | getElementDescription }}
+
+{% repoStatusList %}
 
 
 ## Sample element
-  {% example palette="light",
-             width=360,
-             alt="Example of a card element",
-             src="card.svg" %}
+
+<uxdot-example width-adjustment="442px">
+  <img src="{{ 'card.svg' | url }}" alt="Image of a card element">
+</uxdot-example>
 
 
 ## Demos
-  View a live version of this component and see how it can be customized.
-  {% playground tagName=tagName %}{% endplayground %}
-  {% cta href="./demo/", target="_blank" %}
-    View the `<rh-card>` demo in a new tab
-  {% endcta %}
 
+View a live version of this component and see how it can be customized.
 
-  {% repoStatus type="Element" %}
+{% playground tagName=tagName %}{% endplayground %}
 
+<rh-cta><a href="{{ './demo/' | url }}">Full screen demo</a></rh-cta>
+
+{% repoStatusChecklist %}

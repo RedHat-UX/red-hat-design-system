@@ -4,12 +4,15 @@
 Use a tag to highlight an element on a page to draw attention to it or make it 
 more searchable.
 
+
 ### Tag vs. badge
 
 If you need to reflect counts like number of objects, events, or unread items, 
 use a Badge instead.
 
+
 ## Variants
+
 Both variants come in `red`, `orange`, `green`, `cyan`, `blue`, `purple`, and 
 `gray` colors. The white variants is for the dark theme only. A filled tag can 
 be used to add more visual prominence whereas an unfilled tag can be used for 
@@ -17,30 +20,31 @@ grouping. You can use both variants in the same layout or user interface, just
 not in the same area or container. Whatever you choose, be sure to maintain 
 consistency as best as possible.
 
-{% alert state='warning', title='Warning' %}
-Relying on color alone to communicate information causes barriers to access for 
-many users. Learn more in the [Accessibility](/accessibility) section.
-{% endalert %}
+<rh-alert state="warning">
+  <h4 slot="header">Warning</h4>
+  <p>Relying on color alone to communicate information causes barriers to access for many users. Learn more in the <a href="/accessibility">Accessibility</a> section.</p>
+</rh-alert>
 
-{% example palette="light",
-        width=404,
-        alt="A row of filled tags with text ‘Filled tags’ underneath and a row 
-        of unfilled tags with text ‘Unfilled tags’ underneath",
-        src="../tag-variants-colors.png" %}
+<uxdot-example width-adjustment="404px">
+  <img src="{{ '../tag-variants-colors.png' | url }}" alt="A row of filled tags with text ‘Filled tags’ underneath and a row 
+        of unfilled tags with text ‘Unfilled tags’ underneath">
+</uxdot-example>
+
 
 ## Icons
 
 Add an icon when additional visual information is helpful or to distinguish tags 
 of the same color.
 
-{% alert title="Helpful tip" %}
-Add an icon when additional visual information is helpful or to distinguish 
-tags of the same color.
-{% endalert %}
+<rh-alert state="info">
+  <h4 slot="header">Helpful tip</h4>
+  <p>Add an icon when additional visual information is helpful or to distinguish tags of the same color.</p>
+</rh-alert>
 
-{% example palette="light",
-        alt="A row of tags showing examples of optional icons",
-        src="../tag-icons.png" %}
+<uxdot-example width-adjustment="475px">
+  <img src="{{ '../tag-icons.png' | url }}" alt="A row of tags showing examples of optional icons">
+</uxdot-example>
+
 
 ## White tag
 
@@ -49,34 +53,37 @@ It should also be used on its own and not be grouped. The text should not
 indicate a status, it should be written to be a descriptive caption to elements 
 nearby.
 
-![A white tag used on top of two blocks of various text styles](../tag-white-tag.png){style="--inline-img-max-width:1000px;"}
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="{{ '../tag-white-tag.png' | url }}" alt="A white tag used on top of two blocks of various text styles">
+</uxdot-example>
+
 
 ## Status
+
 ### Color
 
 Colors may be used to indicate status if desired. Regardless of what the text 
 says, it is recommended **not** to use a red tag unless it is 
 communicating a danger or error state.
 
-{% alert title="Helpful tip" %}
-Filled tags may communicate a status or message more effectively than unfilled 
-tags because they are more visually prominent.
-{% endalert %}
+<rh-alert state="info">
+  <h4 slot="header">Helpful tip</h4>
+  <p>Filled tags may communicate a status or message more effectively than unfilled tags because they are more visually prominent.</p>
+</rh-alert>
 
-{% example palette="light",
-        alt="A row of filled tags with examples of unique status text labels per each color",
-        src="../tag-status-color.png" %}
+<uxdot-example width-adjustment="503px">
+  <img src="{{ '../tag-status-color.png' | url }}" alt="A row of filled tags with examples of unique status text labels per each color">
+</uxdot-example>
+
 
 ### Text
 
 The text you write can communicate a status as well, so choose a corresponding 
 color that makes sense.
 
-{% example palette="light",
-        alt="Two groups of two tags with examples of correct status text labels",
-        src="../tag-status-text.png" %}
-
-
+<uxdot-example width-adjustment="566px">
+  <img src="{{ '../tag-status-text.png' | url }}" alt="Two groups of two tags with examples of correct status text labels">
+</uxdot-example>
 
 
 ## Writing content
@@ -87,25 +94,40 @@ Text labels should be written to add context or clarity using as few words as
 possible. If text needs to be longer, use a caption or another text style 
 instead.
 
-{% example palette="light",
-        alt="Two groups of two tags with examples of correct and incorrect text labels",
-        src="../tag-text-labels.png" %}
+<uxdot-example width-adjustment="500px">
+  <img src="{{ '../tag-text-labels.png' | url }}" alt="Two groups of two tags with examples of correct and incorrect text labels">
+</uxdot-example>
 
 
 The recommended maximum character count for the elements of a tag are listed below and include spaces.
 
-| Element {style="width: 50%" } | Character count |
-| ----------------------------- | --------------- |
-| Text label                    | 20              |
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Element">Element</th>
+        <th scope="col" data-label="Character count">Character count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Element">Text label</td>
+        <td data-label="Character count">20</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
+
 
 ## Grouping
 
 A tag can be used on its own or grouped in a row. When there are too many tags 
 in one row, a new row will appear.
 
-{% example palette="light",
-        alt="Two groups of two tags, one group is three tags in one row and the other group is two tags in one row and one tag in a second row",
-        src="../tag-grouping.png" %}
+<uxdot-example width-adjustment="698px">
+  <img src="{{ '../tag-grouping.png' | url }}" alt="Two groups of two tags, one group is three tags in one row and the other group is two tags in one row and one tag in a second row">
+</uxdot-example>
+
 
 ## Best practices
 
@@ -114,28 +136,29 @@ in one row, a new row will appear.
 Do not mix variants or tags with and without icons in the same area or 
 container.
 
-{% example palette="wrong",
-        alt="Two rows of tags; the first row shows a mix of variants and the second row shows a mix of tags with and without icons, both are incorrect usage",
-        src="../tag-best-practice-1.png" %}
+<uxdot-example width-adjustment="458px" danger>
+  <img src="{{ '../tag-best-practice-1.png' | url }}" alt="Two rows of tags; the first row shows a mix of variants and the second row shows a mix of tags with and without icons, both are incorrect usage">
+</uxdot-example>
+
 
 ### Dark theme tags
 
 Do not use light theme tags in the dark theme, [contact us][contact] if you need 
 dark theme tags.
 
-{% example palette="wrong",
-        alt="Light theme tags used on a dark background which is incorrect usage",
-        src="../tag-best-practice-2.png" %}
+<uxdot-example width-adjustment="522px" danger>
+  <img src="{{ '../tag-best-practice-2.png' | url }}" alt="Light theme tags used on a dark background which is incorrect usage">
+</uxdot-example>
+
 
 ### Custom tags
 
 Do not make your own custom tags. If you need a custom set of tags designed, 
 [contact us][contact].
 
-{% example palette="wrong",
-        alt="Three tags with custom colors which is incorrect usage",
-        src="../tag-best-practice-3.png" %}
-
+<uxdot-example width-adjustment="232px" danger>
+  <img src="{{ '../tag-best-practice-3.png' | url }}" alt="Three tags with custom colors which is incorrect usage">
+</uxdot-example>
 
 
 [contact]: https://github.com/RedHat-UX/red-hat-design-system/discussions

@@ -1,7 +1,9 @@
 import type { ReactiveElement } from 'lit';
 
-import { expect, html, nextFrame } from '@open-wc/testing';
+import { expect, html, nextFrame, aTimeout } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
+import { a11ySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
+
 import { setViewport, sendKeys } from '@web/test-runner-commands';
 
 import { RhTabs, RhTab } from '@rhds/elements/rh-tabs/rh-tabs.js';
@@ -42,9 +44,9 @@ describe('<rh-tabs>', function() {
   it('should upgrade', async function() {
     const klass = customElements.get('rh-tabs');
     expect(element)
-      .to.be.an.instanceOf(klass)
-      .and
-      .to.be.an.instanceOf(RhTabs);
+        .to.be.an.instanceOf(klass)
+        .and
+        .to.be.an.instanceOf(RhTabs);
   });
 
   describe('vertical tabs', function() {
@@ -62,7 +64,7 @@ describe('<rh-tabs>', function() {
       element.setAttribute('box', '');
       await nextFrame();
       const tab = element.querySelector('rh-tab');
-      const button = tab.shadowRoot!.querySelector('button')!;
+      const button = tab.shadowRoot!.querySelector('#button')!;
       const buttonBeforeStyles = getComputedStyle(button, '::before').borderInlineStartWidth;
       expect(buttonBeforeStyles).to.be.equal(tokens.get('--rh-border-width-sm'));
     });
@@ -106,6 +108,11 @@ describe('<rh-tabs>', function() {
         expect(document.activeElement).to.be.an.instanceof(RhTab);
       });
 
+      it('should specify the selected tab to assistive technology', async function() {
+        const snapshot = await a11ySnapshot();
+        expect(snapshot.children?.find(x => x.selected)?.name).to.equal(secondItem.textContent);
+      });
+
       it('should change focus when keyboard navigation is used', function() {
         expect(document.activeElement).to.not.equal(initialActiveElement);
       });
@@ -133,6 +140,11 @@ describe('<rh-tabs>', function() {
       it('should focus the last rh-tab item', function() {
         expect(document.activeElement).to.equal(lastItem);
       });
+
+      it('should specify the selected tab to assistive technology', async function() {
+        const snapshot = await a11ySnapshot();
+        expect(snapshot.children?.find(x => x.selected)?.name).to.equal(lastItem.textContent);
+      });
     });
   });
 
@@ -146,6 +158,33 @@ describe('<rh-tabs>', function() {
       const tabs = element.shadowRoot!.querySelector('[part="tabs"]')!;
       const tabsOverflow = getComputedStyle(tabs).overflowX === 'auto';
       expect(tabsOverflow).to.be.equal(true);
+    });
+
+    describe('reversed right to left language overflow actions', function() {
+      let body: HTMLElement;
+      let clone: RhTabs;
+      beforeEach(async function() {
+        body = document.querySelector('body')!;
+        body.setAttribute('dir', 'rtl');
+        element.connectedCallback();
+        await allUpdates(element);
+      });
+
+      it('previousTab should be disabled', async function() {
+        const previousTab: HTMLButtonElement = element.shadowRoot!.querySelector('#previousTab')!;
+        expect(previousTab.disabled).to.be.equal(true);
+      });
+
+      it('click on nextTab should scroll Left', async function() {
+        const nextTab: HTMLButtonElement = element.shadowRoot!.querySelector('#nextTab')!;
+        const firstTab = element.querySelector('rh-tab')!;
+        const preClickPosition = firstTab.getBoundingClientRect().x;
+        nextTab?.click();
+        await aTimeout(50);
+        // get first tab and check its x position
+        const afterClickPosition = firstTab.getBoundingClientRect().x;
+        expect(afterClickPosition).to.be.greaterThan(preClickPosition);
+      });
     });
   });
 });

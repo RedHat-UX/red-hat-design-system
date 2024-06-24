@@ -21,7 +21,7 @@
 }
 
 #tooltip {
-  display: block;
+  display: none;
   opacity: 0;
   pointer-events: none;
   z-index: 10000;
@@ -76,8 +76,8 @@
       );
 }
 
-:not(.initialized) #tooltip {
-  display: none;
+.initialized #tooltip {
+  display: block;
 }
 
 #tooltip:after {
@@ -94,6 +94,10 @@
         --rh-tooltip-content-background-color,
         var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515))
       );
+}
+
+.c {
+  display: contents;
 }
 
 .open #tooltip {

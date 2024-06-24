@@ -4,17 +4,14 @@ Error.stackTraceLimit = 50;
 const SyntaxHighlightPlugin = require('@11ty/eleventy-plugin-syntaxhighlight');
 const DirectoryOutputPlugin = require('@11ty/eleventy-plugin-directory-output');
 const AnchorsPlugin = require('@patternfly/pfe-tools/11ty/plugins/anchors.cjs');
-const CustomElementsManifestPlugin = require('@patternfly/pfe-tools/11ty/plugins/custom-elements-manifest.cjs');
-const OrderTagsPlugin = require('@patternfly/pfe-tools/11ty/plugins/order-tags.cjs');
-const TodosPlugin = require('@patternfly/pfe-tools/11ty/plugins/todos.cjs');
-const TOCPlugin = require('@patternfly/pfe-tools/11ty/plugins/table-of-contents.cjs');
-const SassPlugin = require('eleventy-plugin-dart-sass');
+const CustomElementsManifestPlugin =
+  require('@patternfly/pfe-tools/11ty/plugins/custom-elements-manifest.cjs');
+const TOCPlugin = require('./docs/_plugins/table-of-contents.cjs');
 const RHDSPlugin = require('./docs/_plugins/rhds.cjs');
 const DesignTokensPlugin = require('./docs/_plugins/tokens.cjs');
 const RHDSMarkdownItPlugin = require('./docs/_plugins/markdown-it.cjs');
 const ImportMapPlugin = require('./docs/_plugins/importMap.cjs');
-
-const path = require('node:path');
+const litPlugin = require('@lit-labs/eleventy-plugin-lit');
 
 const isWatch =
   process.argv.includes('--serve') || process.argv.includes('--watch');
@@ -23,42 +20,49 @@ const isWatch =
 module.exports = function(eleventyConfig) {
   eleventyConfig.setQuietMode(true);
 
-  eleventyConfig.watchIgnores.add('docs/assets/redhat/');
-  eleventyConfig.watchIgnores.add('**/*.spec.ts');
-  eleventyConfig.watchIgnores.add('**/*.d.ts');
-  eleventyConfig.watchIgnores.add('**/*.js.map');
-  eleventyConfig.watchIgnores.add('elements/*/test/');
-  eleventyConfig.watchIgnores.add('lib/elements/*/test/');
-  eleventyConfig.addPassthroughCopy('docs/public/red-hat-outfit.css');
+  eleventyConfig.watchIgnores?.add('docs/assets/redhat/');
+  eleventyConfig.watchIgnores?.add('**/*.spec.ts');
+  eleventyConfig.watchIgnores?.add('**/*.d.ts');
+  eleventyConfig.watchIgnores?.add('**/*.js.map');
+  eleventyConfig.watchIgnores?.add('elements/*/test/');
+  eleventyConfig.watchIgnores?.add('lib/elements/*/test/');
   eleventyConfig.addPassthroughCopy('docs/patterns/**/*.{svg,jpg,jpeg,png}');
   eleventyConfig.addPassthroughCopy('docs/CNAME');
   eleventyConfig.addPassthroughCopy('docs/.nojekyll');
   eleventyConfig.addPassthroughCopy('docs/robots.txt');
   eleventyConfig.addPassthroughCopy('docs/assets/**/*');
+  eleventyConfig.addPassthroughCopy('docs/styles/**/*');
+
+  eleventyConfig.addWatchTarget('docs/styles/');
 
   eleventyConfig.on('eleventy.before', function({ runMode }) {
     eleventyConfig.addGlobalData('runMode', runMode);
   });
 
-  eleventyConfig.addPlugin(RHDSMarkdownItPlugin);
+  eleventyConfig.addGlobalData('sideNavDropdowns', [
+    { 'title': 'About', 'url': '/about', 'collection': 'about' },
+    { 'title': 'Get started', 'url': '/get-started', 'collection': 'getstarted' },
+    { 'title': 'Foundations', 'url': '/foundations', 'collection': 'foundations' },
+    { 'title': 'Tokens', 'url': '/tokens', 'collection': 'token' },
+    { 'title': 'Elements', 'url': '/elements', 'collection': 'elementDocs' },
+    { 'title': 'Patterns', 'url': '/patterns', 'collection': 'pattern' },
+    { 'title': 'Accessibility', 'url': '/accessibility', 'collection': 'accessibility' },
+  ]);
 
-  eleventyConfig.addPlugin(SassPlugin, {
-    sassLocation: `${path.join(__dirname, 'docs', 'scss')}/`,
-    sassIndexFile: 'styles.scss',
-    includePaths: ['node_modules', '**/*.{scss,sass}'],
-    domainName: '',
-    outDir: path.join(__dirname, '_site'),
-  });
+  eleventyConfig.addPlugin(RHDSMarkdownItPlugin);
 
   /** Table of Contents Shortcode */
   eleventyConfig.addPlugin(TOCPlugin, {
-    tags: ['h2', 'h3', 'h4', 'h5', 'h6'],
-    wrapperClass: 'table-of-contents',
-    headingText: 'Table of Contents'
+    wrapper: '',
+    wrapperClass: '',
+    tags: ['h2'],
+    headingText: 'On this page',
   });
 
   /** Bespoke import map for ux-dot pages and demos */
-  eleventyConfig.addPassthroughCopy({ 'node_modules/@lit/reactive-element': '/assets/packages/@lit/reactive-element' });
+  eleventyConfig.addPassthroughCopy({
+    'node_modules/@lit/reactive-element': '/assets/packages/@lit/reactive-element',
+  });
   eleventyConfig.addPassthroughCopy({ 'elements': 'assets/packages/@rhds/elements/elements/' });
   eleventyConfig.addPassthroughCopy({ 'lib': 'assets/packages/@rhds/elements/lib/' });
   eleventyConfig.addPlugin(ImportMapPlugin, {
@@ -71,7 +75,7 @@ module.exports = function(eleventyConfig) {
         '@patternfly/elements/': '/assets/packages/@patternfly/elements/',
         '@patternfly/icons/': '/assets/packages/@patternfly/icons/',
         '@patternfly/pfe-core/': '/assets/packages/@patternfly/pfe-core/',
-      }
+      },
     },
     localPackages: [
       // ux-dot dependencies
@@ -86,13 +90,21 @@ module.exports = function(eleventyConfig) {
       '@rhds/tokens/media.js',
       '@rhds/tokens/meta.js',
       '@patternfly/elements',
+      '@patternfly/icons/far/',
+      '@patternfly/icons/fas/',
+      '@patternfly/icons/fab/',
+      '@patternfly/icons/patternfly/',
       '@patternfly/pfe-core',
       // Vendor
       'lit',
       'lit/directives/if-defined.js',
-      'lit-html',
+      'lit/directives/class-map.js',
+      'lit/static-html.js',
       'lit-element',
       '@lit/reactive-element',
+      '@lit-labs/ssr-client/',
+      '@lit-labs/ssr-client/lit-element-hydrate-support.js',
+      '@lit/context',
       'tslib',
       '@floating-ui/dom',
       '@floating-ui/core',
@@ -102,20 +114,18 @@ module.exports = function(eleventyConfig) {
   // RHDS Tokens docs
   eleventyConfig.addPlugin(DesignTokensPlugin);
 
-  eleventyConfig.addPassthroughCopy({ 'node_modules/@rhds/tokens/css/global.css': '/assets/rhds.css' });
+  eleventyConfig.addPassthroughCopy({
+    'node_modules/@rhds/tokens/css/global.css': '/assets/rhds.css',
+  });
 
-  eleventyConfig.addPassthroughCopy({ 'node_modules/@lit/reactive-element': '/assets/packages/@lit/reactive-element' });
+  eleventyConfig.addPassthroughCopy({
+    'node_modules/@lit/reactive-element': '/assets/packages/@lit/reactive-element',
+  });
 
   /** Generate and consume custom elements manifests */
   eleventyConfig.addPlugin(CustomElementsManifestPlugin, {
     renderTitleInOverview: false,
   });
-
-  /** Collections to organize by order instead of date */
-  eleventyConfig.addPlugin(OrderTagsPlugin, { tags: ['develop'] });
-
-  /** list todos */
-  eleventyConfig.addPlugin(TodosPlugin);
 
   /** fancy syntax highlighting with diff support */
   eleventyConfig.addPlugin(SyntaxHighlightPlugin);
@@ -125,16 +135,37 @@ module.exports = function(eleventyConfig) {
     exclude: /\/elements\/.*\/demo\//,
     formatter($, existingids) {
       if (
-        !existingids.includes($.attr('id')) &&
-        $.attr('slot') &&
-        $.closest('pf-card')
+        !existingids.includes($.attr('id'))
+          && $.attr('slot')
+          && $.closest('pf-card')
       ) {
         return null;
       } else {
         return eleventyConfig.getFilter('slug')($.text())
-          .replace(/[&,+()$~%.'":*?!<>{}]/g, '');
+            .replace(/[&,+()$~%.'":*?!<>{}]/g, '');
       }
     },
+  });
+
+  eleventyConfig.addPlugin(litPlugin, {
+    mode: 'worker',
+    componentModules: [
+      'docs/assets/javascript/elements/uxdot-skip-navigation.js',
+      'docs/assets/javascript/elements/uxdot-masthead.js',
+      'docs/assets/javascript/elements/uxdot-header.js',
+      'docs/assets/javascript/elements/uxdot-sidenav.js',
+      'docs/assets/javascript/elements/uxdot-hero.js',
+      'docs/assets/javascript/elements/uxdot-feedback.js',
+      'docs/assets/javascript/elements/uxdot-feedback.js',
+      'docs/assets/javascript/elements/uxdot-copy-permalink.js',
+      'docs/assets/javascript/elements/uxdot-copy-button.js',
+      'docs/assets/javascript/elements/uxdot-repo-status-list.js',
+      'docs/assets/javascript/elements/uxdot-best-practice.js',
+      'docs/assets/javascript/elements/uxdot-search.js',
+      'docs/assets/javascript/elements/uxdot-toc.js',
+      // 'docs/assets/javascript/elements/uxdot-example.js', // Uses context API need to work around issues
+      // 'docs/assets/javascript/elements/uxdot-installation-tabs.js', // extends RhTabs so cant DSD yet
+    ],
   });
 
   !isWatch && eleventyConfig.addPlugin(DirectoryOutputPlugin, {
@@ -157,7 +188,7 @@ module.exports = function(eleventyConfig) {
       'component',
       'foundations',
       'getstarted',
-    ]
+    ],
   });
 
   return {

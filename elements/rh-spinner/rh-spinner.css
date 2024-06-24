@@ -76,14 +76,22 @@ circle.track {
   stroke-width: var(--rh-length-2xs, 3px);
 }
 
+:host([size="sm"]) ::slotted(p) {
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+}
+
+circle.dash:is(.dark, .darker, .darkest) {
+  stroke: var(--rh-color-accent-base-on-dark, #92c5f9);
+}
+
+circle.track:is(.dark, .darker, .darkest) {
+  stroke: var(--rh-color-gray-70, #383838);
+}
+
 :host([size="sm"]) circle.dash {
   animation-name: rh-spinner-small-animation-dash;
   stroke-dasharray: 71;
   stroke-dashoffset: 71;
-}
-
-:host([size="sm"]) ::slotted(p) {
-  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
 }
 
 @keyframes rh-spinner-animation-dash {
