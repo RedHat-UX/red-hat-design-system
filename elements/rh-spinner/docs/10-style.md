@@ -1,21 +1,22 @@
-
-
 ## Style
 
 A spinner is an animated line segment that follows a track and may include an 
 optional text label.
 
 ### Anatomy
-{% example palette="light",
-          alt=" Anatomy of a spinner with annotations; number 1 is pointing to the track, number 2 is pointing to the indicator, and number 3 is pointing to the optional text label",
-          src="../spinner-anatomy.png" %}
 
-1) Track
-2) Indicator
-3) Optional text label
-
-{.example-notes}
-
+<figure>
+  <uxdot-example width-adjustment="299px">
+    <img src="{{ '../spinner-anatomy.png' | url }}" alt="Anatomy of a spinner with annotations; number 1 is pointing to the track, number 2 is pointing to the indicator, and number 3 is pointing to the optional text label">
+  </uxdot-example>
+  <figcaption>
+    <ol>
+      <li>Track</li>
+      <li>Indicator</li>
+      <li>Optional text label</li>
+    </ol>
+  </figcaption>
+</figure>
 
 
 ## Sizes
@@ -23,20 +24,40 @@ optional text label.
 A spinner comes in large, medium, and small sizes. Each size includes an 
 optional text label on the bottom.
 
-{% example palette="light",
-          alt=" Small size, medium size, and large size spinners with their text labels below",
-          src="../spinner-sizes.png" %}
+<uxdot-example width-adjustment="472px">
+  <img src="{{ '../spinner-sizes.png' | url }}" alt="Small size, medium size, and large size spinners with their text labels below">
+</uxdot-example>
 
-{% tokensTable %}
 
-| Size   | Element         | Current value        |
-| ------ | --------------- | -------------------- |
-| Small  | Text label size | `14px`<br>`0.875rem` |
-| Medium | Text label size | `16px`<br>`1.0rem`   |
-| Large  | Text label size | `18px`<br>`1.125rem` |
 
-{% endtokensTable %}
-
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Size">Size</th>
+        <th scope="col" data-label="Element">Element</th>
+        <th scope="col" data-label="Current value">Current value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Size">Small</td>
+        <td data-label="Element">Text label size</td>
+        <td data-label="Current value"><code>14px</code><br><code>0.875rem</code></td>
+      </tr>
+      <tr>
+        <td data-label="Size">Medium</td>
+        <td data-label="Element">Text label size</td>
+        <td data-label="Current value"><code>16px</code><br><code>1.0rem</code></td>
+      </tr>
+      <tr>
+        <td data-label="Size">Large</td>
+        <td data-label="Element">Text label size</td>
+        <td data-label="Current value"><code>18px</code><br><code>1.125rem</code></td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
 
 
 ## Theme
@@ -45,55 +66,58 @@ A spinner is available in both light and dark themes.
 
 ### Light theme
 
-{% example palette="light",
-          alt=" Light theme spinner",
-          src="../spinner-theme-light.png" %}
+<uxdot-example width-adjustment="251px">
+  <img src="{{ '../spinner-theme-light.png' | url }}" alt="Light theme spinner">
+</uxdot-example>
+
 
 ### Dark theme
 
-{% example palette="darkest",
-          alt=" Dark theme spinner",
-          src="../spinner-theme-dark.png" %}
-
+<uxdot-example color-palette="darkest" width-adjustment="251px">
+  <img src="{{ '../spinner-theme-dark.png' | url }}" alt="Dark theme spinner">
+</uxdot-example>
 
 
 ## Configuration
+
 ### Container
 
 A spinner is centered horizontally and vertically within a container and the 
 viewport by default. This demonstrates that the whole container is loading 
 rather than one specific area.
 
-{% example palette="light",
-          alt=" Diagram of how a spinner should be horizontally and vertically centered within a container no matter its size or if a text label is included or not",
-          src="../spinner-configuration-container.png" %}
+<uxdot-example width-adjustment="872px">
+  <img src="{{ '../spinner-configuration-container.png' | url }}" alt="Diagram of how a spinner should be horizontally and vertically centered within a container no matter its size or if a text label is included or not">
+</uxdot-example>
+
 
 ### Button
 
 If a small size spinner is used within a button, it can be positioned to the 
 left of the text as if it were an icon.
 
-{% example palette="light",
-          alt=" Button with a small size spinner icon to the left as if it were an icon",
-          src="../spinner-configuration-button.png" %}
+<uxdot-example width-adjustment="107px">
+  <img src="{{ '../spinner-configuration-button.png' | url }}" alt="Button with a small size spinner icon to the left as if it were an icon">
+</uxdot-example>
+
 
 ## Space
 
-{% example palette="light",
-          alt=" Spacing between all spinner sizes and their text labels",
-          src="../spinner-space.png" %}
+<uxdot-example width-adjustment="632px">
+  <img src="{{ '../spinner-space.png' | url }}" alt="Spacing between all spinner sizes and their text labels">  
+</uxdot-example>
 
-{% tokensTable %}
+<rh-table>
+  {% spacerTokensTable 
+    headline="",
+    caption='',
+    headingLevel="3",
+    tokens="--rh-space-lg" %}
+  {% endspacerTokensTable %}
+</rh-table>
 
-| Spacer                         | Current value |
-| ------------------------------ | ------------- |
-| ![16px spacer][16px]{width=16} | `16px`        |
-
-{% endtokensTable %}
 
 ## Interaction states
 
 A spinner is intentionally not operable or navigable and has no interaction 
 states.
-
-[16px]: {{ '../spinner-16px-spacer.png' | url }}

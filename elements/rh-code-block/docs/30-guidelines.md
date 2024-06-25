@@ -12,55 +12,51 @@ other elements, use a code block.
 A code block container can adhere to the width of content within or be fixed 
 width.
 
-{% example palette="lightest",
-           alt="Image of fluid width and fixed width code block sizes with text labels below",
-           src="../code-block-sizes.png" %}
+<uxdot-example width-adjustment="872px">
+  <img src="{{ '../code-block-sizes.png' | url }}" alt="Image of fluid width and fixed width code block sizes with text labels below">
+</uxdot-example>
 
 ## Content
 
 The length of code text and the number of lines can change the width and height 
 of a code block.
 
-{% example palette="lightest",
-           alt="Image of two code blocks; one code block is fluid width showing only one line and the other code block is fixed width showing 10 lines",
-           src="../code-block-content.png" %}
+<uxdot-example width-adjustment="872px">
+  <img src="{{ '../code-block-content.png' | url }}" alt="Image of two code blocks; one code block is fluid width showing only one line and the other code block is fixed width showing 10 lines">
+</uxdot-example>
 
-<hgroup>
 
-  ## Responsive design
-  ### Large breakpoints
+## Responsive design
 
-</hgroup>
+### Large breakpoints
 
-{% example palette="none",
-           alt="Image of code blocks on desktop and tablet breakpoints",
-           src="../code-block-breakpoints-large.png" %}
+<uxdot-example width-adjustment="1000px" variant="full" no-border alignment="left">
+  <img src="{{ '../code-block-breakpoints-large.png' | url }}" alt="Image of code blocks on desktop and tablet breakpoints">
+</uxdot-example>
 
 ### Small breakpoints
 
 Container spacing and code text size reduces as breakpoints get smaller.
 
-{% example palette="none",
-           alt="Image of code blocks on large and small mobile breakpoints",
-           src="../code-block-breakpoints-small.png" %}
+<uxdot-example width-adjustment="576px" variant="full" no-border alignment="left">
+  <img src="{{ '../code-block-breakpoints-small.png' | url }}" alt="Image of code blocks on large and small mobile breakpoints">
+</uxdot-example>
 
-<hgroup>
 
-  ## Best practices
-  ### Different font
+## Best practices
 
-</hgroup>
+### Different font
 
 Do not use a different font than `--rh-font-family-code`.
 
-{% example palette="wrong",
-           alt="Image of a code block showing the Red Hat Text font used for code text which is incorrect usage",
-           src="../code-block-best-practice-1.png" %}
+<uxdot-example width-adjustment="872px" danger>
+  <img src="{{ '../code-block-best-practice-1.png' | url }}" alt="Image of a code block showing the Red Hat Text font used for code text which is incorrect usage">
+</uxdot-example>
 
 ### Different styling
 
 Do not change any of the code block styling.
 
-{% example palette="wrong",
-           alt="Image of a code block showing different styles which is incorrect usage",
-           src="../code-block-best-practice-2.png" %}
+<uxdot-example width-adjustment="872px" danger>
+  <img src="{{ '../code-block-best-practice-2.png' | url }}" alt="Image of a code block showing different styles which is incorrect usage">
+</uxdot-example>

@@ -1,0 +1,44 @@
+---
+layout: layouts/base.njk
+importElements:
+  - rh-cta
+  - rh-footer
+  - rh-alert
+  - rh-subnav
+---
+{% if hasToc %}
+  <link rel="stylesheet" href="{{ '/assets/javascript/elements/uxdot-toc-lightdom.css' | url }}">
+{% endif %}
+<link rel="stylesheet" href="{{ '/styles/pages/backpage.css' | url }}">
+
+<script type="module" src="{{ '/assets/javascript/elements/uxdot-feedback.js' | url }}"></script>
+{% if hasToc %}
+<script type="module" src="{{ '/assets/javascript/elements/uxdot-toc.js' | url }}"></script>
+{% endif %}
+{% if tokenSearch %}
+<script type="module" src="{{ '/assets/javascript/elements/uxdot-search.js' | url }}"></script>
+<script type="module" src="{{ '/assets/javascript/tokens.js' | url }}"></script>
+{% endif %}
+{% include 'partials/component/masthead.njk' %}
+{% include 'partials/component/sidenav.njk' %}
+
+<main id="main">
+  <article {% if hasToc and (content | toc).length > 0 %}class="has-toc"{% endif %}>
+
+  {% include 'partials/component/header.njk' %}
+  {% if hasToc and (content | toc).length > 0 %}
+    <aside>
+      <uxdot-toc summary="On this page">
+        {{ content | toc | safe }}
+      </uxdot-toc>
+    </aside>
+  {% endif %}
+
+  <div class="container">
+    {{ content | safe }}
+  </div>
+  
+  </article>
+  {% include "partials/component/back-to-top.njk" %}
+</main>
+{% include 'partials/component/footer.njk' %}

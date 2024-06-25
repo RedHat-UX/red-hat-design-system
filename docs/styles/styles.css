@@ -1,0 +1,332 @@
+@layer
+  reset,
+  fonts,
+  typography,
+  base,
+  grid,
+  layout,
+  flow,
+  third-party,
+  not-defined,
+  lightdom,
+  patterns,
+  page,
+  overrides;
+
+@import url("not-defined.css") layer(not-defined);
+@import url("reset.css") layer(reset);
+@import url("fonts.css") layer(fonts);
+@import url("typography.css") layer(typography);
+@import url("grid.css") layer(grid);
+@import url("lightdom.css") layer(lightdom);
+@import url("third-party/prism-rhds.css") layer(third-party);
+
+@layer base {
+  body {
+    color: var(--rh-color-text-primary-on-light, #151515);
+  }
+
+  :where(p, ul, ol, dl) {
+    font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+  }
+
+  :where(h1, h2, h3, h4, h5, h6) {
+    font-weight: var(--rh-font-weight-heading-medium, 500);
+  }
+
+  a {
+    color: var(--rh-color-interactive-blue-darker, #0066cc);
+  }
+
+  a:hover {
+    color: var(--rh-color-interactive-blue-darkest, #003366);
+  }
+
+  a:visited {
+    color: var(--rh-color-interactive-purple-darker, #5e40be);
+  }
+
+  hr {
+    border-block-start:
+      var(--rh-border-width-sm, 1px)
+      solid
+      var(--rh-color-border-subtle-on-light, #c7c7c7);
+    border-inline: none;
+    border-block-end: none;
+    margin-block-end: var(--rh-space-2xl, 32px);
+  }
+
+  figure > img {
+    max-width: 100%;
+  }
+
+  figcaption {
+    color: var(--rh-color-text-secondary-on-light, #4d4d4d);
+  }
+}
+
+@layer layout {
+  :root {
+    --uxdot-masthead-max-height: 72px;
+    --container-min-width: 992px;
+    --container-max-width: 1332px;
+  }
+
+  :target {
+    /* Set padding for #hash links */
+    scroll-margin-top: calc(var(--uxdot-masthead-max-height) + var(--rh-space-5xl, 80px));
+  }
+
+  body {
+    display: grid;
+    grid-template-rows: max-content 1fr max-content;
+    grid-template-areas: "header" "main" "footer";
+    position: relative;
+    min-height: 100dvh;
+  }
+
+  body:has(uxdot-sidenav:not(:defined)) {
+    grid-template-rows: max-content max-content 1fr max-content;
+    grid-template-areas: "header" "nav" "main" "footer";
+  }
+
+  main {
+    grid-area: main;
+    border-inline-start:
+      var(--rh-border-width-sm, 1px)
+      solid
+      var(--rh-color-border-subtle-on-light, #c7c7c7);
+    container-type: inline-size;
+    container-name: main;
+    padding-block-start: var(--uxdot-masthead-max-height);
+  }
+
+  .container {
+    padding-inline: var(--rh-space-lg, 16px);
+    padding-block-end: var(--rh-space-lg, 16px);
+  }
+
+  uxdot-masthead {
+    grid-area: header;
+  }
+
+  uxdot-sidenav {
+    grid-area: nav;
+  }
+
+  rh-footer-universal {
+    grid-area: footer;
+  }
+
+  @media (min-width: 992px) {
+    body {
+      grid-template-rows: max-content 1fr max-content;
+      grid-template-columns: minmax(300px, 320px) max-content 1fr;
+      grid-template-areas:
+        "header header header"
+        "nav main main"
+        "nav footer footer";
+    }
+
+    body:has(uxdot-sidenav:not(:defined)) {
+      grid-template-rows: max-content 1fr max-content;
+      grid-template-areas:
+        "header header header"
+        "nav main main"
+        "nav footer footer";
+    }
+  }
+
+  @container main (min-width: 576px) {
+    .container {
+      padding-inline: var(--rh-space-2xl, 32px);
+      padding-block-end: var(--rh-space-2xl, 32px);
+    }
+  }
+
+  @container main (min-width: 768px) {
+    .container {
+      padding-inline: var(--rh-space-3xl, 48px);
+      padding-block-end: var(--rh-space-3xl, 48px);
+    }
+  }
+
+  @container main (min-width: 992px) {
+    .container {
+      max-width: var(--container-max-width);
+      padding-inline: var(--rh-space-6xl, 96px);
+      padding-block-start: 0;
+      padding-block-end: var(--rh-space-6xl, 96px);
+    }
+  }
+}
+
+@layer flow {
+  :where(p, ul, ol, dl) {
+    margin-block-start: var(--rh-space-lg, 16px);
+    margin-block-end: var(--rh-space-2xl, 32px);
+  }
+
+  :where(li) {
+    margin-block: var(--rh-space-md, 8px);
+  }
+
+  :where(h1, h2, h3, h4, h5, h6) {
+    margin-block-end: var(--rh-space-lg, 16px);
+  }
+
+  :where(h1, h2, h3, h4, h5, h6) + :where(h2, h3, h4, h5, h6),
+  /* any where copy-permalink is used as a sibling to another */
+  :where(uxdot-copy-permalink + uxdot-copy-permalink) {
+    margin-block-start: var(--rh-space-2xl, 32px);
+  }
+
+  figure uxdot-example {
+    margin-block-end: 0;
+  }
+
+  rh-alert + uxdot-example {
+    margin-block-start: var(--rh-space-2xl, 32px);
+  }
+
+  rh-table {
+    margin-block: var(--rh-space-3xl, 48px);
+  }
+
+  /* TODO: look into this do we need this rule? */
+  uxdot-copy-permalink.h2 + uxdot-copy-permalink.h3 {
+    --uxdot-copy-permalink-margin-block-start: 0;
+  }
+
+  rh-alert + rh-alert {
+    margin-block-start: var(--rh-space-xl, 24px);
+  }
+
+  uxdot-example + figcaption,
+  figcaption + uxdot-example {
+    margin-block: var(--rh-space-xl, 24px);
+  }
+}
+
+@layer patterns {
+  /**
+   * Patterns layer for defining component and site patterns
+   **/
+
+  /**
+   * KBD and code pattern
+  **/
+
+  :where(code) {
+    padding-inline: var(--rh-space-xs, 4px);
+    background: var(--rh-color-surface-light, #e0e0e0);
+    border-radius: var(--rh-border-radius-default, 3px);
+    font-size: var(--rh-font-size-code-md, 1rem);
+    font-weight: var(--rh-font-weight-code-regular, 400);
+  }
+
+  :where(code:empty) {
+    display: none;
+  }
+
+  /* prism js, when a code is used in a pre remove the background color */
+  pre:has(code) :where(code) {
+    background: none;
+  }
+
+  :where(kbd) {
+    --_uxdot-kbd-color-border: var(--rh-color-border-subtle-on-light, #c7c7c7);
+
+    background-color: var(--rh-color-surface-lightest, #ffffff);
+    border-radius: var(--rh-border-radius-default, 3px);
+    border: var(--rh-border-width-sm, 1px) solid var(--_uxdot-kbd-color-border);
+    box-shadow: 0 2px 0 1px var(--_uxdot-kbd-color-border);
+    cursor: default;
+    font-size: var(--rh-font-size-body-text-md, 1rem);
+    line-height: 1;
+    min-width: 0.75rem;
+    display: inline-block;
+    text-align: center;
+    padding: 2px var(--rh-space-sm, 6px);
+    margin-inline: var(--rh-space-xs, 4px);
+    position: relative;
+    top: -1px;
+  }
+
+  :where(kbd):hover {
+    box-shadow: 0 1px 0 0.5px var(--_uxdot-kbd-color-border);
+    top: 1px;
+  }
+
+  :where(kbd):has(kbd),
+  :where(kbd):has(kbd):hover {
+    background-color: unset;
+    border-radius: unset;
+    border: unset;
+    box-shadow: unset;
+    min-width: unset;
+    padding: unset;
+    position: unset;
+    top: unset;
+  }
+
+  /**
+   * Sticky header pattern
+   * progressive enhancement sticky, using :has()
+   **/
+  uxdot-header:has(rh-subnav) {
+    position: sticky;
+    top: -54px; /* masthead height (72px) + subnav height (56px) - header mobile height (182px) */
+    z-index: 2;
+  }
+
+  /**
+    * Sticky table of contents pattern w/o subnav
+    * progressive enhancement sticky, using :has()
+    **/
+  uxdot-header + aside > uxdot-toc {
+    position: sticky;
+
+    /* masthead height (72px) + padding (32px) */
+    top: calc(var(--uxdot-masthead-max-height, 72px) + var(--rh-space-2xl, 32px));
+  }
+
+  uxdot-header:has(rh-subnav) + aside > uxdot-toc {
+    /* masthead height (72px) + subnav height 56px  + padding (32px) */
+    top: calc(var(--uxdot-masthead-max-height, 72px) + 56px + var(--rh-space-2xl, 32px));
+  }
+
+  @container main (min-width: 768px) {
+    uxdot-header:has(rh-subnav) {
+      top: -70px; /* masthead (72px) + subnav (56px) - header tablet (198px) */
+    }
+  }
+
+  @container main (min-width: 992px) {
+    uxdot-header:has(rh-subnav) {
+      top: -118px; /* masthead (72px) + subnav (56px) - header desktop (246px) */
+    }
+  }
+}
+
+@layer overrides {
+  /**
+   * Overrides layer for overriding component and site styles
+   */
+
+  /* TODO: Document this bug table overflows vertically causing a scrollbar when it shouldn't */
+  rh-table {
+    overflow: unset;
+  }
+
+  /* Compact tile + Uxdot Example reduce overall spacing */
+  rh-tile[compact] uxdot-example::part(container) {
+    margin-block-end: 0;
+  }
+
+  rh-alert p {
+    /* TODO: Document this bug shouldn't have to force the font size
+    the component is trying to set internally on #description */
+    font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
+  }
+}
