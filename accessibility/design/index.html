@@ -36,16 +36,16 @@
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
     "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
     "@lit/context": "/assets/packages/@lit/context/index.js",
-    "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
-    "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "lit-element": "/assets/packages/lit-element/index.js",
+    "@rhds/tokens/meta.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js",
     "lit": "/assets/packages/lit/index.js",
     "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
     "lit/static-html.js": "/assets/packages/lit/static-html.js",
-    "@rhds/tokens/meta.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@3.0.0/core.js",
     "@rhds/tokens/media.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js",
     "@rhds/tokens": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/tokens.js",
+    "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@3.0.0/core.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
     "@lit-labs/ssr-client/lit-element-hydrate-support.js": "https://ga.jspm.io/npm:@lit-labs/ssr-client@1.1.7/lit-element-hydrate-support.js",
@@ -64,8 +64,8 @@
       "lit-html/": "https://ga.jspm.io/npm:lit-html@3.1.4/"
     },
     "/assets/packages/": {
-      "@floating-ui/utils": "https://ga.jspm.io/npm:@floating-ui/utils@0.2.2/dist/floating-ui.utils.mjs",
-      "@floating-ui/utils/dom": "https://ga.jspm.io/npm:@floating-ui/utils@0.2.2/dist/floating-ui.utils.dom.mjs",
+      "@floating-ui/utils": "https://ga.jspm.io/npm:@floating-ui/utils@0.2.3/dist/floating-ui.utils.mjs",
+      "@floating-ui/utils/dom": "https://ga.jspm.io/npm:@floating-ui/utils@0.2.3/dist/floating-ui.utils.dom.mjs",
       "@lit/reactive-element/decorators/": "/assets/packages/@lit/reactive-element/decorators/",
       "lit-element/lit-element.js": "/assets/packages/lit-element/lit-element.js",
       "lit-html": "https://ga.jspm.io/npm:lit-html@3.1.4/lit-html.js",
@@ -3448,6 +3448,45 @@
     <!--/lit-part--></template>
         <a href="/release-notes/">Release notes</a>
       </uxdot-sidenav-item>
+    </li>
+
+    <li>
+      <uxdot-sidenav-item><template shadowroot="open" shadowrootmode="open"><style>
+    :host {
+      display: block;
+      border-inline-start:
+        var(--rh-border-width-lg, 3px)
+        solid
+        transparent;
+    }
+
+    :host:hover {
+      background: var(--rh-color-surface-lighter, #f2f2f2);
+      border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
+    }
+
+    :host([active]) {
+      background: var(--rh-color-surface-lighter, #f2f2f2);
+      border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
+    }
+
+    ::slotted(a) {
+      display: block;
+      text-decoration: none;
+      color: var(--rh-color-text-primary-on-light, #151515) !important;
+      font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+      padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
+    }
+
+    ::slotted(a:hover) {
+      background: var(--rh-color-surface-lighter, #f2f2f2);
+      border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
+    }
+  </style><!--lit-part kHJJur9OVoU=-->
+      <slot></slot>
+    <!--/lit-part--></template>
+        <a href="/support/">Get support</a>
+      </uxdot-sidenav-item>
     </li></ul>
 </uxdot-sidenav>
 
@@ -3697,6 +3736,7 @@
     <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: flex;
+      margin-block-end: var(--rh-space-lg, 16px);
       align-items: center;
     }
 
@@ -3722,6 +3762,7 @@
 
     ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
       display: flex;
+      margin-block-end: 0 !important;
       align-items: center;
       color: inherit;
       text-decoration: inherit;
@@ -3747,6 +3788,7 @@
 <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: flex;
+      margin-block-end: var(--rh-space-lg, 16px);
       align-items: center;
     }
 
@@ -3772,6 +3814,7 @@
 
     ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
       display: flex;
+      margin-block-end: 0 !important;
       align-items: center;
       color: inherit;
       text-decoration: inherit;
@@ -3793,6 +3836,7 @@
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: flex;
+      margin-block-end: var(--rh-space-lg, 16px);
       align-items: center;
     }
 
@@ -3818,6 +3862,7 @@
 
     ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
       display: flex;
+      margin-block-end: 0 !important;
       align-items: center;
       color: inherit;
       text-decoration: inherit;
@@ -3844,6 +3889,7 @@
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: flex;
+      margin-block-end: var(--rh-space-lg, 16px);
       align-items: center;
     }
 
@@ -3869,6 +3915,7 @@
 
     ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
       display: flex;
+      margin-block-end: 0 !important;
       align-items: center;
       color: inherit;
       text-decoration: inherit;
@@ -3893,6 +3940,7 @@
 <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: flex;
+      margin-block-end: var(--rh-space-lg, 16px);
       align-items: center;
     }
 
@@ -3918,6 +3966,7 @@
 
     ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
       display: flex;
+      margin-block-end: 0 !important;
       align-items: center;
       color: inherit;
       text-decoration: inherit;
@@ -3939,6 +3988,7 @@
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: flex;
+      margin-block-end: var(--rh-space-lg, 16px);
       align-items: center;
     }
 
@@ -3964,6 +4014,7 @@
 
     ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
       display: flex;
+      margin-block-end: 0 !important;
       align-items: center;
       color: inherit;
       text-decoration: inherit;
@@ -3989,6 +4040,7 @@
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: flex;
+      margin-block-end: var(--rh-space-lg, 16px);
       align-items: center;
     }
 
@@ -4014,6 +4066,7 @@
 
     ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
       display: flex;
+      margin-block-end: 0 !important;
       align-items: center;
       color: inherit;
       text-decoration: inherit;
@@ -4036,6 +4089,7 @@
 <uxdot-copy-permalink  class="h4"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: flex;
+      margin-block-end: var(--rh-space-lg, 16px);
       align-items: center;
     }
 
@@ -4061,6 +4115,7 @@
 
     ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
       display: flex;
+      margin-block-end: 0 !important;
       align-items: center;
       color: inherit;
       text-decoration: inherit;
@@ -4086,6 +4141,7 @@
 <uxdot-copy-permalink  class="h4"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: flex;
+      margin-block-end: var(--rh-space-lg, 16px);
       align-items: center;
     }
 
@@ -4111,6 +4167,7 @@
 
     ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
       display: flex;
+      margin-block-end: 0 !important;
       align-items: center;
       color: inherit;
       text-decoration: inherit;
@@ -4137,6 +4194,7 @@
 <uxdot-copy-permalink  class="h4"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: flex;
+      margin-block-end: var(--rh-space-lg, 16px);
       align-items: center;
     }
 
@@ -4162,6 +4220,7 @@
 
     ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
       display: flex;
+      margin-block-end: 0 !important;
       align-items: center;
       color: inherit;
       text-decoration: inherit;
@@ -4185,6 +4244,7 @@
 <uxdot-copy-permalink  class="h4"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: flex;
+      margin-block-end: var(--rh-space-lg, 16px);
       align-items: center;
     }
 
@@ -4210,6 +4270,7 @@
 
     ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
       display: flex;
+      margin-block-end: 0 !important;
       align-items: center;
       color: inherit;
       text-decoration: inherit;
@@ -4235,6 +4296,7 @@
 <uxdot-copy-permalink  class="h4"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: flex;
+      margin-block-end: var(--rh-space-lg, 16px);
       align-items: center;
     }
 
@@ -4260,6 +4322,7 @@
 
     ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
       display: flex;
+      margin-block-end: 0 !important;
       align-items: center;
       color: inherit;
       text-decoration: inherit;
@@ -4282,6 +4345,7 @@
 <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: flex;
+      margin-block-end: var(--rh-space-lg, 16px);
       align-items: center;
     }
 
@@ -4307,6 +4371,7 @@
 
     ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
       display: flex;
+      margin-block-end: 0 !important;
       align-items: center;
       color: inherit;
       text-decoration: inherit;
@@ -4328,6 +4393,7 @@
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: flex;
+      margin-block-end: var(--rh-space-lg, 16px);
       align-items: center;
     }
 
@@ -4353,6 +4419,7 @@
 
     ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
       display: flex;
+      margin-block-end: 0 !important;
       align-items: center;
       color: inherit;
       text-decoration: inherit;
@@ -4375,6 +4442,7 @@
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: flex;
+      margin-block-end: var(--rh-space-lg, 16px);
       align-items: center;
     }
 
@@ -4400,6 +4468,7 @@
 
     ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
       display: flex;
+      margin-block-end: 0 !important;
       align-items: center;
       color: inherit;
       text-decoration: inherit;
@@ -4422,6 +4491,7 @@
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: flex;
+      margin-block-end: var(--rh-space-lg, 16px);
       align-items: center;
     }
 
@@ -4447,6 +4517,7 @@
 
     ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
       display: flex;
+      margin-block-end: 0 !important;
       align-items: center;
       color: inherit;
       text-decoration: inherit;
@@ -4474,6 +4545,7 @@
 <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: flex;
+      margin-block-end: var(--rh-space-lg, 16px);
       align-items: center;
     }
 
@@ -4499,6 +4571,7 @@
 
     ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
       display: flex;
+      margin-block-end: 0 !important;
       align-items: center;
       color: inherit;
       text-decoration: inherit;
@@ -4520,6 +4593,7 @@
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: flex;
+      margin-block-end: var(--rh-space-lg, 16px);
       align-items: center;
     }
 
@@ -4545,6 +4619,7 @@
 
     ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
       display: flex;
+      margin-block-end: 0 !important;
       align-items: center;
       color: inherit;
       text-decoration: inherit;
@@ -4572,6 +4647,7 @@
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: flex;
+      margin-block-end: var(--rh-space-lg, 16px);
       align-items: center;
     }
 
@@ -4597,6 +4673,7 @@
 
     ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
       display: flex;
+      margin-block-end: 0 !important;
       align-items: center;
       color: inherit;
       text-decoration: inherit;
@@ -4625,6 +4702,7 @@
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: flex;
+      margin-block-end: var(--rh-space-lg, 16px);
       align-items: center;
     }
 
@@ -4650,6 +4728,7 @@
 
     ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
       display: flex;
+      margin-block-end: 0 !important;
       align-items: center;
       color: inherit;
       text-decoration: inherit;
@@ -4673,6 +4752,7 @@
 <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: flex;
+      margin-block-end: var(--rh-space-lg, 16px);
       align-items: center;
     }
 
@@ -4698,6 +4778,7 @@
 
     ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
       display: flex;
+      margin-block-end: 0 !important;
       align-items: center;
       color: inherit;
       text-decoration: inherit;
@@ -4719,6 +4800,7 @@
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: flex;
+      margin-block-end: var(--rh-space-lg, 16px);
       align-items: center;
     }
 
@@ -4744,6 +4826,7 @@
 
     ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
       display: flex;
+      margin-block-end: 0 !important;
       align-items: center;
       color: inherit;
       text-decoration: inherit;
@@ -4767,6 +4850,7 @@
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: flex;
+      margin-block-end: var(--rh-space-lg, 16px);
       align-items: center;
     }
 
@@ -4792,6 +4876,7 @@
 
     ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
       display: flex;
+      margin-block-end: 0 !important;
       align-items: center;
       color: inherit;
       text-decoration: inherit;
@@ -4815,6 +4900,7 @@
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: flex;
+      margin-block-end: var(--rh-space-lg, 16px);
       align-items: center;
     }
 
@@ -4840,6 +4926,7 @@
 
     ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
       display: flex;
+      margin-block-end: 0 !important;
       align-items: center;
       color: inherit;
       text-decoration: inherit;
@@ -4864,6 +4951,7 @@
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: flex;
+      margin-block-end: var(--rh-space-lg, 16px);
       align-items: center;
     }
 
@@ -4889,6 +4977,7 @@
 
     ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
       display: flex;
+      margin-block-end: 0 !important;
       align-items: center;
       color: inherit;
       text-decoration: inherit;
@@ -4916,6 +5005,7 @@
 <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: flex;
+      margin-block-end: var(--rh-space-lg, 16px);
       align-items: center;
     }
 
@@ -4941,6 +5031,7 @@
 
     ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
       display: flex;
+      margin-block-end: 0 !important;
       align-items: center;
       color: inherit;
       text-decoration: inherit;
@@ -4962,6 +5053,7 @@
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: flex;
+      margin-block-end: var(--rh-space-lg, 16px);
       align-items: center;
     }
 
@@ -4987,6 +5079,7 @@
 
     ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
       display: flex;
+      margin-block-end: 0 !important;
       align-items: center;
       color: inherit;
       text-decoration: inherit;
@@ -5009,6 +5102,7 @@
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: flex;
+      margin-block-end: var(--rh-space-lg, 16px);
       align-items: center;
     }
 
@@ -5034,6 +5128,7 @@
 
     ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
       display: flex;
+      margin-block-end: 0 !important;
       align-items: center;
       color: inherit;
       text-decoration: inherit;
@@ -5056,6 +5151,7 @@
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: flex;
+      margin-block-end: var(--rh-space-lg, 16px);
       align-items: center;
     }
 
@@ -5081,6 +5177,7 @@
 
     ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
       display: flex;
+      margin-block-end: 0 !important;
       align-items: center;
       color: inherit;
       text-decoration: inherit;
