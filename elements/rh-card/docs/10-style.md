@@ -43,39 +43,43 @@ the background it's placed on.
 
 <div class="grid">
   <figure>
-    <uxdot-example width-adjustment="242px">
-      <img src="{{ '../card-color-light-white.svg' | url }}" alt="White card colors">
-    </uxdot-example>
+    <rh-card>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas, a sollicitudin mauris tincidunt.</p>
+      <rh-cta href="#">Call to action</rh-cta>
+    </rh-card>
     <figcaption>
-      A white card with a light gray border is the most common use case in the
-      light theme
+      A light gray card without a border can also be used as an alternate option.
     </figcaption>
   </figure>
   <figure>
-    <uxdot-example width-adjustment="242px">
-      <img src="{{ '../card-color-light-gray.svg' | url }}" alt="Gray card colors">
-    </uxdot-example>
+    <rh-card color-palette="lighter">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas, a sollicitudin mauris tincidunt.</p>
+      <rh-cta href="#">Call to action</rh-cta>
+    </rh-card>
     <figcaption>
-      A light gray card without a border can also be used as an alternate option
+      A light gray card with a light gray border can also be used as an alternate option.
     </figcaption>
   </figure>
   <figure>
-    <uxdot-example color-palette="darkest" width-adjustment="242px">
-      <img src="{{ '../card-color-dark-black.svg' | url }}" alt="Black card colors">
-    </uxdot-example>
+    <rh-card color-palette="dark">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas, a sollicitudin mauris tincidunt.</p>
+      <rh-cta href="#">Call to action</rh-cta>
+    </rh-card>
     <figcaption>
-      A black card with a dark gray border is the most common use case in the
-      dark theme
+      A black card with a dark gray border is the most common use case in the dark theme.
     </figcaption>
   </figure>
+
   <figure>
-    <uxdot-example color-palette="darkest" width-adjustment="242px">
-      <img src="{{ '../card-color-dark-gray.svg' | url }}" alt="Dark theme gray card colors">
-    </uxdot-example>
+    <rh-card color-palette="darker">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas, a sollicitudin mauris tincidunt.</p>
+      <rh-cta href="#">Call to action</rh-cta>
+    </rh-card>
     <figcaption>
-      A dark gray card without a border can also be used as an alternate option
+      A dark gray card with a dark gray border can also be used as an alternate option.
     </figcaption>
   </figure>
+
 </div>
 
 
