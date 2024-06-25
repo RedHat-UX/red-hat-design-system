@@ -4,7 +4,9 @@
 
 {{ tagName | getElementDescription }}
 
-{% example palette="light", alt="Three placeholder breadcrumb links and a current page breadcrumb", src="breadcrumb-sample-element.svg" %}
+<uxdot-example width-adjustment="296px">
+  <img src="{{  'breadcrumb-sample-element.svg' | url }}" alt="Three placeholder breadcrumb links and a current page breadcrumb">
+</uxdot-example>
 
 {% repoStatusList %}
 
@@ -24,7 +26,7 @@
 ## Demo
 
 {% playground tagName=tagName %}{% endplayground %}
-{% cta href="./demo/", target="_blank" %}View the `<rh-breadcrumb>` demo in a new tab{% endcta %}
+<rh-cta><a href="{{ './demo/' | url }}">Full screen demo</a></rh-cta>
 
 ## When to use
 

@@ -4,9 +4,9 @@ Breadcrumb navigation is composed of links, text, and caret icons as separators.
 
 ### Anatomy
 
-<uxdot-example width-adjustment="295x">
-    <img src="{{ '../breadcrumbs-anatomy.svg'  | url }}" alt="Anatomy of breadcrumbs with numbered annotations pointing to various parts">
-  </uxdot-example>
+<uxdot-example width-adjustment="295px">
+  <img src="{{ '../breadcrumbs-anatomy.svg'  | url }}" alt="Anatomy of breadcrumbs with numbered annotations pointing to various parts">
+</uxdot-example>
 
 1) Parent page
 2) Separator
@@ -37,9 +37,9 @@ Breadcrumbs typically appear above the title of a page and below primary and/or 
 
 The space between parent pages or current pages and the separators is 16px. If a row of breadcrumbs has to wrap, the space between the lines is 8px. This remains the same across all breakpoints.
 
-{% example palette="light",
-           alt="Diagram of spacing for breadcrumbs",
-           src="../breadcrumb-space.svg" %}
+<uxdot-example width-adjustment="162px">
+ <img  src="{{ '../breadcrumb-space.svg' | url }}" alt="Diagram of spacing for breadcrumbs"  />
+</uxdot-example>
 
 ## Interaction States
 
@@ -75,9 +75,10 @@ The focus state of a breadcrumb link looks similar to the hover state, but it ad
 
 ### Active
 
-{% alert title="Helpful tip", state="info" %}
-The Active state has the same styles as the Focus state.
-{% endalert %}
+<rh-alert state="info">
+  <h4 slot="header">Helpful tip</h4>
+  <p>The Active state has the same styles as the Focus state.</p>
+</rh-alert>
 
 <div class="grid xs-two-columns">
   <uxdot-example width-adjustment="40px">
