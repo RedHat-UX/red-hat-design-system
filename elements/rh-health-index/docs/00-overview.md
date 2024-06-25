@@ -3,7 +3,7 @@
 {{ tagName | getElementDescription }}
 
 <uxdot-example width-adjustment="752px">
-  <img src="{{ './overview.png' | url }}" alt="Four health index components. One is green with letter grade A, one is yellow with letter grade C, one is orange with letter grade D, and one is red with letter grade F.">
+  <img src="{{ './overview.svg' | url }}" alt="Four health index components. One is green with letter grade A, one is yellow with letter grade C, one is orange with letter grade D, and one is red with letter grade F.">
 </uxdot-example>
 
 
@@ -32,4 +32,3 @@ View a live version of this component and see how it can be customized.
 
 
 {% repoStatusChecklist %}
-
