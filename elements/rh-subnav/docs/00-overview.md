@@ -2,9 +2,10 @@
 
 {{ tagName | getElementDescription }}
 
-{% example palette="lightest",
-           alt="Image of a subnavigation; a horizontal row of links placed on a light gray bar",
-           src="subnav-sample.png" %}
+<uxdot-example width-adjustment="872px">
+  <img src="{{ './subnav-sample.png' | url }}" alt="Image of a subnavigation; a horizontal row of links placed on a light gray bar">
+</uxdot-example>
+
 
 {% repoStatusList %}
 
@@ -21,13 +22,15 @@
 ## Demo
 
 {% playground tagName=tagName %}{% endplayground %}
-{% cta href="./demo/", target="_blank" %}View the `<rh-subnav>` demo{% endcta %}
+
+<rh-cta><a href="{{ './demo/' | url }}">Full screen demo</a></rh-cta>
+
 
 ## When to use
 
-- When you need to connect a group of related pages together
-- When you need to offer users a more granular navigation
-- When you want to allow users to browse high-level and low-level pages in the 
-  same experience
+  - When you need to connect a group of related pages together
+  - When you need to offer users a more granular navigation
+  - When you want to allow users to browse high-level and low-level pages in the 
+    same experience
 
 {% repoStatusChecklist %}

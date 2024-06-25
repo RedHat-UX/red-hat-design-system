@@ -1,0 +1,34 @@
+  <script type="importmap">{{ importMap | dump(2) | safe }}</script>
+
+  {# dsd polyfill needs to happen before hydration attempts #}
+  <script type="module">
+    import '/assets/javascript/dsd-polyfill.js';
+  </script>
+
+  {# lit-element-hydrate-support needs to be included before lit is loaded #}
+  <script type="module">
+    import '@lit-labs/ssr-client/lit-element-hydrate-support.js';
+  </script>
+
+  {# load all components #}
+  {% for tag in importElements %}
+    <script type="module">import '@rhds/elements/{{tag}}/{{tag}}.js';</script>
+  {% endfor %}
+
+  {# only load components that need hydrated (aka interactivity) #}
+  <script type="module">
+    import '/assets/javascript/elements/uxdot-copy-permalink.js';
+    import '/assets/javascript/elements/uxdot-sidenav.js';
+    import '/assets/javascript/elements/uxdot-example.js';
+  </script>
+
+  {# pficon configuration #}
+  <script type="module">
+    import { PfIcon } from '@patternfly/elements/pf-icon/pf-icon.js';
+    PfIcon.getIconUrl = (set, icon) =>
+      new URL(`/assets/packages/@patternfly/icons/${set}/${icon}.js`, location.origin);
+  </script>
+
+  <script async src="https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js"></script>
+
+

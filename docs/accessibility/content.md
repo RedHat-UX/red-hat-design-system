@@ -1,48 +1,62 @@
 ---
 title: Content
-tags: accessibility
+tags:
+  - accessibility
+order: 30
 importElements:
   - rh-code-block
   - rh-blockquote
   - rh-table
 ---
 
+<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
+
 <style>
+    #func-img {
+      width: 50%;
+      margin: 0 auto;
+      margin-block-start: 0;
+      margin-block-end: var(--rh-space-2xl, 32px);
+      text-align: center;
+    }
+
+    #func-img img {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
     rh-blockquote, rh-table {
-        display: block;
-        margin-block: 2em !important;
-        max-width: 36em;
+      display: block;
+      margin-block: 2em !important;
+      max-width: 36em;
+    }
+    
+    @container container (min-width: 576px) {
+      #func-img {
+        padding: var(--rh-space-3xl, 48px);
+      }
     }
 
-    .docs-figure {
-        width: 50%;
-        margin: 0 auto;
-        margin-block-start: var(--rh-space-4xl, 64px) !important;
-        margin-block-end: var(--rh-space-4xl, 64px) !important;
-        text-align: center;
-    }
-
-    .docs-figure img {
-        margin: 0 auto;
-    }
-
-    .docs-figure figcaption {
-        margin: 1rem 0;
-        font-size: 0.875rem;
+    @container container (min-width: 768px) {
+      #func-img {
+        padding: var(--rh-space-4xl, 64px);
+      }
     }
 </style>
 
-## Overview 
+## Overview
 
-{% alert title="Note" %}
-This section covers content accessibility. Content authors should also be familiar with accessibility [fundamentals](../fundamentals).
-{% endalert %}
+<rh-alert state="info">
+  <h3 slot="header">Note</h3>
+  <p>This section covers content accessibility. Content authors should also be familiar with accessibility <a href="../fundamentals">fundamentals</a>.</p>
+</rh-alert>
 
 ## Alt text
 
 Wherever meaningful images or other non-text elements are used on a page, you must also provide alternative text (aka “alt text”) to briefly describe these elements. Alt text makes this content machine-readable for assistive technologies (e.g, screen readers) and search engines. And browsers can substitute alt text on-screen when images don’t load.
 
 ### Types of alt text
+
 Images loaded via the `<img>` element typically use the alt attribute for their alternative text:
 
 <rh-code-block>
@@ -91,11 +105,9 @@ Note that background images inserted into a page via CSS are always considered d
 
 When writing alternative text, it’s important to first consider the image’s context. An image’s meaning or function may be more relevant than its literal depiction. So, the same image may need very different alt text in different contexts.
 
-<figure class="docs-figure">
-
-![Red Hat homepage](/assets/accessibility/Its_A_Wonderful_Life.jpg "George Bailey hugs his wife, Mary, and holds his daughter, Zuzu, in the movie It's a Wonderful Life")
-
-</figure>
+<uxdot-example width-adjustment="500px" no-border>
+  <img src="/assets/accessibility/Its_A_Wonderful_Life.jpg" alt="George Bailey hugs his wife, Mary, and holds his daughter, Zuzu, in the movie It's a Wonderful Life">
+</uxdot-example>
 
 Depending on whether a web page is about the plot of the 1946 movie It’s a Wonderful Life or about the actor Jimmy Stewart, the above image could have very different alt text. For the first case, the image’s alt text could be `“George Bailey hugs his wife, Mary, and holds his daughter, Zuzu.”` For the second, the alt text could be `“Jimmy Stewart returned to acting after the war with It’s a Wonderful Life.”`
 
@@ -103,14 +115,8 @@ Depending on whether a web page is about the plot of the 1946 movie It’s a Won
 
 Images acting as buttons or links are functional, and thus serve different purposes than images supporting the surrounding text.
 
-<figure class="docs-figure">
-
-<a href="https://www.redhat.com/">
-
-![Red Hat homepage](/assets/logo-redhat.png "Red Hat homepage")
-
-</a>
-
+<figure id="func-img">
+  <a href="https://www.redhat.com/"><img src="/assets/logo-redhat.png" alt="Red Hat homepage"></a>
 </figure>
 
 If the above image supplements the text of an article about Red Hat or our products, the appropriate alt text could be something like `"Red Hat, Inc. logo."` But if that image is a link pointing to the corporate homepage, you might want something along the lines of `"Red Hat homepage"` for your alt text:
@@ -152,7 +158,7 @@ A common technique is labeling objects with ARIA attributes:
 
 ## Writing microcopy
 
-Microcopy comprises short words, phrases, or chunks of text used on the web or in user interfaces. 
+Microcopy comprises short words, phrases, or chunks of text used on the web or in user interfaces.
 
 Best practices for all microcopy:
 
@@ -229,23 +235,23 @@ At Red Hat, we use sentence case for our headings:
 
 #### Heading levels
 
-Ensure that heading levels increment and decrement to match the page outline. At the top level of each page’s outline is its `<h1>` heading. This heading reflects the main topic of the page, and is often similar to content within the page’s `<title>` tag. After the `<h1>`, the next level down is `<h2>`, then `<h3>`, and so on. 
+Ensure that heading levels increment and decrement to match the page outline. At the top level of each page’s outline is its `<h1>` heading. This heading reflects the main topic of the page, and is often similar to content within the page’s `<title>` tag. After the `<h1>`, the next level down is `<h2>`, then `<h3>`, and so on.
 Always increment by only one heading at a time. Don’t skip levels when incrementing, like going from an `<h3>` straight to an `<h5>`. And only decrement headings (by one or more levels) when starting a new, higher-level section in your page’s outline.
 
 Here’s an example of a page outline:
 
 - Midwestern Recipes
-    - Sides
-        - Cheese
-            - Fried cheese curds
-            - Beer cheese dip
+  - Sides
+    - Cheese
+      - Fried cheese curds
+      - Beer cheese dip
 - Desserts
-    - Bars
-        - Scotch-a-roos
-        - Dream bars
-    - Pastries
-        - Kringle
-        - Dutch letters
+  - Bars
+    - Scotch-a-roos
+    - Dream bars
+  - Pastries
+    - Kringle
+    - Dutch letters
 
 And here’s how that outline would be reflected in a page’s heading structure:
 
@@ -299,7 +305,7 @@ As mentioned in the Headings section, page titles and `<h1>` elements often rela
 
 ### iframe titles
 
-Non-hidden, non-empty `<iframe>` elements are required to have titles describing their meaning or purpose, similar to alternative text for images. 
+Non-hidden, non-empty `<iframe>` elements are required to have titles describing their meaning or purpose, similar to alternative text for images.
 
 <rh-code-block>
   <script type="text/html"><iframe src="video.html" title="Video: Network automation with Ansible"></iframe></script>
@@ -360,7 +366,9 @@ Instead, a list would be simpler, easier to understand, and easier to code:
 </ul></script>
 </rh-code-block>
 
-In other words, if it doesn’t *need* to be a table, then it probably shouldn’t be a table.
+In other words, if it doesn’t _need_ to be a table, then it probably shouldn’t be a table.
+
+For more information on developing accessible tables, please read our [Table element accessibility guidance](/elements/table/accessibility/).
 
 ### Captions and headings
 
@@ -384,7 +392,7 @@ When creating tables, assume the burden of simplifying and clarifying, so it doe
 
 Best practices for error messages:
 
-- Ensure the user knows the location of the error. Preferably this is indicated both visually and for assistive technology.  Otherwise, additional text may be required explaining the label or section where the error occurred.
+- Ensure the user knows the location of the error. Preferably this is indicated both visually and for assistive technology. Otherwise, additional text may be required explaining the label or section where the error occurred.
 - Tell the user what they did wrong.
 - Recommend how they can fix it.
 
@@ -393,7 +401,6 @@ Best practices for error messages:
 Because people and assistive technologies read linearly, your content must also be written with a clear logical order that follows the same linear flow of HTML code. That’s not to say people can’t and won’t jump around. But each section should have a logical start and end, and the logical ordering of these sections themselves should be considered.
 
 Your content order can impact not only how a page is read, but also how it’s operated. Users navigating via keyboard move sequentially (both forward and backward) among interactive elements on a page via the <kbd>tab</kbd> and arrow keys. Consider how the order in which you arrange your content could make such navigation easier or more difficult for both visual and non-visual keyboard users.
-
 
 ## Audio/video
 
@@ -405,12 +412,14 @@ Your content order can impact not only how a page is read, but also how it’s o
 </rh-blockquote>
 
 Enabling autoplay on audio or video can create several accessibility barriers:
+
 - Distracting users with cognitive disabilities.
 - Causing seizures or triggering motion sickness.
 - Preventing users from hearing screen readers.
 - Interfering with text-to-speech.
 
 Use one or more of the following techniques to help ensure accessibility:
+
 - Avoid autoplay altogether. (Honestly, just do this, and you don’t have to worry about anything else!)
 - Ensure that audio-only or video-with-audio media autoplays for less than three seconds.
 - Ensure that video-only media (including any animated, blinking, or scrolling content) autoplays for less than five seconds.
@@ -420,6 +429,7 @@ Use one or more of the following techniques to help ensure accessibility:
 - Provide controls to pause the media itself.
 
 ### Media solutions
+
 To be accessible, each media type must include _**all** of the following_, unless otherwise noted as recommended or optional.
 
 <rh-table>
@@ -514,7 +524,6 @@ Descriptive audio is a track of relevant visual information described by a narra
 #### Sign Language
 
 Include synchronized video of sign language interpreters to your videos, for people who have difficulty hearing or processing the spoken language in media.
-
 
 ## Internationalization
 
