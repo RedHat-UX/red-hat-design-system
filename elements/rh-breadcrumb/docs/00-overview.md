@@ -4,6 +4,10 @@
 
 {{ tagName | getElementDescription }}
 
+{% example palette="light", alt="Three placeholder breadcrumb links and a current page breadcrumb", src="breadcrumb-sample-element.svg" %}
+
+{% repoStatusList %}
+
 ## Sample element
 
 <rh-breadcrumb>
@@ -20,8 +24,11 @@
 ## Demo
 
 {% playground tagName=tagName %}{% endplayground %}
-{% cta href="./demo/", target="_blank" %}View the demo{% endcta %}
+{% cta href="./demo/", target="_blank" %}View the `<rh-breadcrumb>` demo in a new tab{% endcta %}
 
 ## When to use
 
-- When a user needs to know where they are within a site
+- When you want to help orient a user and and show where they are in the page hierarchy
+- When you want to provide a secondary method for navigating to parent pages of the current page
+
+{% repoStatusChecklist %}
