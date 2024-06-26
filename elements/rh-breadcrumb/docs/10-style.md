@@ -18,11 +18,11 @@ Breadcrumb navigation is composed of links, text, and caret icons as separators.
 Breadcrumbs are available in both light and dark themes.
 
 <div class="grid xs-two-columns">
-  <uxdot-example width-adjustment="40px">
+  <uxdot-example width-adjustment="295px">
     <img src="{{ '../breadcrumb-theme-light.svg'  | url }}" alt="Light theme breadcrumb with blue links and black text and separators">
   </uxdot-example>
 
-  <uxdot-example width-adjustment="40px">
+  <uxdot-example width-adjustment="295px" color-palette="darkest">
     <img src="{{ '../breadcrumb-theme-dark.svg'  | url }}" alt="Dark theme breadcrumb with light blue links and white text and separators">
   </uxdot-example>
 </div>
@@ -31,7 +31,9 @@ Breadcrumbs are available in both light and dark themes.
 
 Breadcrumbs typically appear above the title of a page and below primary and/or secondary navigation.
 
-<!--ADD IMAGE-->
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+    <img src="{{ '../breadcrumb-placement.svg' | url }}" alt="partial view of Red Hat's homepage with primary and secondary navigation above breadcrumb navigation">
+  </uxdot-example>
 
 ## Space
 
@@ -50,11 +52,11 @@ Interaction states are visual representations used to communicate the status of 
 A breadcrumb link turns a darker or lighter shade of the default state’s blue and becomes underlined on hover.
 
 <div class="grid xs-two-columns">
-  <uxdot-example width-adjustment="40px">
+  <uxdot-example width-adjustment="295px">
     <img src="{{ '../breadcrumb-hover-light.svg'  | url }}" alt="Light theme breadcrumbs with dark blue, underlined links on hover and black text and separators">
   </uxdot-example>
 
-  <uxdot-example width-adjustment="40px">
+  <uxdot-example width-adjustment="295px" color-palette="darkest">
     <img src="{{ '../breadcrumb-hover-dark.svg'  | url }}" alt="Dark theme breadcrumbs with light blue, underlined links on hover and white text and separators">
   </uxdot-example>
 </div>
@@ -64,11 +66,11 @@ A breadcrumb link turns a darker or lighter shade of the default state’s blue 
 The focus state of a breadcrumb link looks similar to the hover state, but it adds a focus ring around the link.
 
 <div class="grid xs-two-columns">
-  <uxdot-example width-adjustment="40px">
+  <uxdot-example width-adjustment="295px">
     <img src="{{ '../breadcrumb-focus-light.svg'  | url }}" alt="Light theme breadcrumbs with one dark blue, underlined link in a focus ring">
   </uxdot-example>
 
-  <uxdot-example width-adjustment="40px">
+  <uxdot-example width-adjustment="295px" color-palette="darkest">
     <img src="{{ '../breadcrumb-focus-dark.svg'  | url }}" alt="Dark theme breadcrumbs with one light blue, underlined link in a focus ring">
   </uxdot-example>
 </div>
@@ -81,11 +83,11 @@ The focus state of a breadcrumb link looks similar to the hover state, but it ad
 </rh-alert>
 
 <div class="grid xs-two-columns">
-  <uxdot-example width-adjustment="40px">
+  <uxdot-example width-adjustment="295px">
     <img src="{{ '../breadcrumb-active-light.svg'  | url }}" alt="Light theme breadcrumbs with one dark blue, underlined link in a focus ring">
   </uxdot-example>
 
-  <uxdot-example width-adjustment="40px">
+  <uxdot-example width-adjustment="295px" color-palette="darkest">
     <img src="{{ '../breadcrumb-active-dark.svg'  | url }}" alt="Dark theme breadcrumbs with one light blue, underlined link in a focus ring">
   </uxdot-example>
 </div>
