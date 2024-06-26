@@ -13,7 +13,6 @@ export declare class SecondaryNavOverlayChangeEvent extends ComposedEvent {
 export type NavPalette = Extract<ColorPalette, ('lighter' | 'dark')>;
 /**
  * The Secondary navigation is used to connect a series of pages together. It displays wayfinding content and links relevant to the page it is placed on. It should be used in conjunction with the [primary navigation](../navigation-primary).
- *
  * @summary Propagates related content across a series of pages
  * @slot logo           - Logo added to the main nav bar, expects `<a>Text</a> | <a><svg/></a> | <a><img/></a>` element
  * @slot nav            - Navigation list added to the main nav bar, expects `<ul>` element

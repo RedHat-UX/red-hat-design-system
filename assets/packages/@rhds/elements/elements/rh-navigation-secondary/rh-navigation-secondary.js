@@ -1,4 +1,4 @@
-var _RhNavigationSecondary_instances, _a, _RhNavigationSecondary_logger, _RhNavigationSecondary_logoCopy, _RhNavigationSecondary_label, _RhNavigationSecondary_dir, _RhNavigationSecondary_compact, _RhNavigationSecondary_tabindex, _RhNavigationSecondary_screenSize, _RhNavigationSecondary_onExpandRequest, _RhNavigationSecondary_onFocusout, _RhNavigationSecondary_onOverlayClick, _RhNavigationSecondary_onKeydown, _RhNavigationSecondary_onTabEvent, _RhNavigationSecondary_getDropdownIndex, _RhNavigationSecondary_dropdownByIndex, _RhNavigationSecondary_expand, _RhNavigationSecondary_allDropdowns, _RhNavigationSecondary_closeDropdown, _RhNavigationSecondary_openDropdown, _RhNavigationSecondary_onOverlayChange, _RhNavigationSecondary_upgradeAccessibility, _RhNavigationSecondary_toggleMobileMenu, _RhSecondaryNav_logger;
+var _RhNavigationSecondary_instances, _a, _RhNavigationSecondary_logger, _RhNavigationSecondary_logoCopy, _RhNavigationSecondary_dir, _RhNavigationSecondary_compact, _RhNavigationSecondary_tabindex, _RhNavigationSecondary_internals, _RhNavigationSecondary_screenSize, _RhNavigationSecondary_onExpandRequest, _RhNavigationSecondary_onFocusout, _RhNavigationSecondary_onOverlayClick, _RhNavigationSecondary_onKeydown, _RhNavigationSecondary_onTabEvent, _RhNavigationSecondary_getDropdownIndex, _RhNavigationSecondary_dropdownByIndex, _RhNavigationSecondary_expand, _RhNavigationSecondary_allDropdowns, _RhNavigationSecondary_closeDropdown, _RhNavigationSecondary_openDropdown, _RhNavigationSecondary_onOverlayChange, _RhNavigationSecondary_upgradeAccessibility, _RhNavigationSecondary_toggleMobileMenu, _RhSecondaryNav_logger;
 var RhNavigationSecondary_1;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
@@ -9,6 +9,7 @@ import { state } from 'lit/decorators/state.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 import { ComposedEvent } from '@patternfly/pfe-core';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import '@rhds/elements/rh-surface/rh-surface.js';
 import './rh-navigation-secondary-menu-section.js';
@@ -39,7 +40,6 @@ function focusableChildElements(parent) {
 }
 /**
  * The Secondary navigation is used to connect a series of pages together. It displays wayfinding content and links relevant to the page it is placed on. It should be used in conjunction with the [primary navigation](../navigation-primary).
- *
  * @summary Propagates related content across a series of pages
  * @slot logo           - Logo added to the main nav bar, expects `<a>Text</a> | <a><svg/></a> | <a><img/></a>` element
  * @slot nav            - Navigation list added to the main nav bar, expects `<ul>` element
@@ -59,16 +59,8 @@ let RhNavigationSecondary = RhNavigationSecondary_1 = _a = class RhNavigationSec
     constructor() {
         super(...arguments);
         _RhNavigationSecondary_instances.add(this);
-        /**
-         * Color palette darker | lighter (default: lighter)
-         */
-        this.colorPalette = 'lighter';
         _RhNavigationSecondary_logger.set(this, new Logger(this));
         _RhNavigationSecondary_logoCopy.set(this, null);
-        /**
-         * The accessible label for the <nav> element
-         */
-        _RhNavigationSecondary_label.set(this, 'secondary');
         /** Is the element in an RTL context? */
         _RhNavigationSecondary_dir.set(this, new DirController(this));
         /** Compact mode  */
@@ -78,6 +70,11 @@ let RhNavigationSecondary = RhNavigationSecondary_1 = _a = class RhNavigationSec
                                                                   rh-secondary-nav-dropdown) > a,
                                                               [slot="nav"] > li > a`))) ?? [],
         }));
+        _RhNavigationSecondary_internals.set(this, InternalsController.of(this, { role: 'navigation' }));
+        /**
+         * Color palette darker | lighter (default: lighter)
+         */
+        this.colorPalette = 'lighter';
         /**
          * `mobileMenuExpanded` property is toggled when the mobile menu button is clicked,
          * a focusout event occurs, or on an overlay click event.  It also switches state
@@ -122,9 +119,8 @@ let RhNavigationSecondary = RhNavigationSecondary_1 = _a = class RhNavigationSec
         // CTA must always be 'lightest' on mobile screens
         const dropdownPalette = __classPrivateFieldGet(this, _RhNavigationSecondary_compact, "f") ? 'lightest' : this.colorPalette;
         return html `
-      <nav part="nav"
-           class="${classMap({ compact: __classPrivateFieldGet(this, _RhNavigationSecondary_compact, "f"), rtl })}"
-           aria-label="${__classPrivateFieldGet(this, _RhNavigationSecondary_label, "f")}">
+      <div part="nav"
+           class="${classMap({ compact: __classPrivateFieldGet(this, _RhNavigationSecondary_compact, "f"), rtl })}">
         ${__classPrivateFieldGet(this, _RhNavigationSecondary_logoCopy, "f")}
         <div id="container" part="container" class="${classMap({ expanded })}">
           <slot name="logo" id="logo"></slot>
@@ -138,7 +134,7 @@ let RhNavigationSecondary = RhNavigationSecondary_1 = _a = class RhNavigationSec
             </div>
           </rh-surface>
         </div>
-      </nav>
+      </div>
       <rh-navigation-secondary-overlay
           .open="${this.overlayOpen}"
           @click="${__classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_onOverlayClick)}"
@@ -172,10 +168,10 @@ let RhNavigationSecondary = RhNavigationSecondary_1 = _a = class RhNavigationSec
 };
 _RhNavigationSecondary_logger = new WeakMap();
 _RhNavigationSecondary_logoCopy = new WeakMap();
-_RhNavigationSecondary_label = new WeakMap();
 _RhNavigationSecondary_dir = new WeakMap();
 _RhNavigationSecondary_compact = new WeakMap();
 _RhNavigationSecondary_tabindex = new WeakMap();
+_RhNavigationSecondary_internals = new WeakMap();
 _RhNavigationSecondary_screenSize = new WeakMap();
 _RhNavigationSecondary_instances = new WeakSet();
 _RhNavigationSecondary_onExpandRequest = function _RhNavigationSecondary_onExpandRequest(event) {
@@ -328,11 +324,8 @@ _RhNavigationSecondary_upgradeAccessibility = function _RhNavigationSecondary_up
     this.removeAttribute('role');
     // remove aria-labelledby from slotted `<ul>` on upgrade
     this.querySelector(':is([slot="nav"]):is(ul)')?.removeAttribute('aria-labelledby');
-    // transfer the aria-label to the shadow <nav>
-    if (this.hasAttribute('aria-label')) {
-        __classPrivateFieldSet(this, _RhNavigationSecondary_label, this.getAttribute('aria-label') ?? 'secondary', "f");
-        this.removeAttribute('aria-label');
-    }
+    // if the accessibleLabel attr is undefined, check aria-label if undefined use default
+    __classPrivateFieldGet(this, _RhNavigationSecondary_internals, "f").ariaLabel = 'secondary';
 };
 _RhNavigationSecondary_toggleMobileMenu = function _RhNavigationSecondary_toggleMobileMenu() {
     this.mobileMenuExpanded = !this.mobileMenuExpanded;
