@@ -1,4 +1,4 @@
-var _RhNavigationSecondary_instances, _a, _RhNavigationSecondary_logger, _RhNavigationSecondary_logoCopy, _RhNavigationSecondary_dir, _RhNavigationSecondary_compact, _RhNavigationSecondary_tabindex, _RhNavigationSecondary_internals, _RhNavigationSecondary_screenSize, _RhNavigationSecondary_onExpandRequest, _RhNavigationSecondary_onFocusout, _RhNavigationSecondary_onOverlayClick, _RhNavigationSecondary_onKeydown, _RhNavigationSecondary_onTabEvent, _RhNavigationSecondary_getDropdownIndex, _RhNavigationSecondary_dropdownByIndex, _RhNavigationSecondary_expand, _RhNavigationSecondary_allDropdowns, _RhNavigationSecondary_closeDropdown, _RhNavigationSecondary_openDropdown, _RhNavigationSecondary_onOverlayChange, _RhNavigationSecondary_upgradeAccessibility, _RhNavigationSecondary_toggleMobileMenu, _RhSecondaryNav_logger;
+var _RhNavigationSecondary_instances, _a, _RhNavigationSecondary_logger, _RhNavigationSecondary_logoCopy, _RhNavigationSecondary_dir, _RhNavigationSecondary_compact, _RhNavigationSecondary_tabindex, _RhNavigationSecondary_internals, _RhNavigationSecondary_screenSize, _RhNavigationSecondary_onExpandRequest, _RhNavigationSecondary_onFocusout, _RhNavigationSecondary_onOverlayClick, _RhNavigationSecondary_onKeydown, _RhNavigationSecondary_onKeyup, _RhNavigationSecondary_onTabKeyup, _RhNavigationSecondary_onTabKeydown, _RhNavigationSecondary_getDropdownIndex, _RhNavigationSecondary_dropdownByIndex, _RhNavigationSecondary_expand, _RhNavigationSecondary_allDropdowns, _RhNavigationSecondary_closeDropdown, _RhNavigationSecondary_openDropdown, _RhNavigationSecondary_onOverlayChange, _RhNavigationSecondary_upgradeAccessibility, _RhNavigationSecondary_toggleMobileMenu, _RhSecondaryNav_logger;
 var RhNavigationSecondary_1;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
@@ -106,12 +106,17 @@ let RhNavigationSecondary = RhNavigationSecondary_1 = _a = class RhNavigationSec
     }
     async connectedCallback() {
         super.connectedCallback();
+        RhNavigationSecondary_1.instances.add(this);
         __classPrivateFieldSet(this, _RhNavigationSecondary_compact, !__classPrivateFieldGet(this, _RhNavigationSecondary_screenSize, "f").matches.has('md'), "f");
         this.addEventListener('expand-request', __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_onExpandRequest));
         this.addEventListener('overlay-change', __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_onOverlayChange));
         this.addEventListener('focusout', __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_onFocusout));
         this.addEventListener('keydown', __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_onKeydown));
         __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_upgradeAccessibility).call(this);
+    }
+    disconnectedCallback() {
+        super.disconnectedCallback();
+        RhNavigationSecondary_1.instances.delete(this);
     }
     render() {
         const expanded = this.mobileMenuExpanded;
@@ -225,13 +230,32 @@ _RhNavigationSecondary_onKeydown = function _RhNavigationSecondary_onKeydown(eve
             break;
         }
         case 'Tab':
-            __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_onTabEvent).call(this, event);
+            __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_onTabKeydown).call(this, event);
             break;
         default:
             break;
     }
 };
-_RhNavigationSecondary_onTabEvent = function _RhNavigationSecondary_onTabEvent(event) {
+_RhNavigationSecondary_onKeyup = function _RhNavigationSecondary_onKeyup(event) {
+    switch (event.key) {
+        case 'Tab':
+            __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_onTabKeyup).call(this, event);
+            break;
+        default:
+            break;
+    }
+};
+_RhNavigationSecondary_onTabKeyup = function _RhNavigationSecondary_onTabKeyup(event) {
+    if (!this.mobileMenuExpanded) {
+        return;
+    }
+    const { target } = event;
+    if (!this.contains(target)) {
+        __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_toggleMobileMenu).call(this);
+        this.overlayOpen = false;
+    }
+};
+_RhNavigationSecondary_onTabKeydown = function _RhNavigationSecondary_onTabKeydown(event) {
     // target is the element we are leaving with tab press
     const target = event.target;
     // get target parent dropdown
@@ -251,7 +275,9 @@ _RhNavigationSecondary_onTabEvent = function _RhNavigationSecondary_onTabEvent(e
         }
         else {
             this.close();
-            this.overlayOpen = false;
+            if (!this.mobileMenuExpanded) {
+                this.overlayOpen = false;
+            }
         }
     }
     else {
@@ -262,7 +288,9 @@ _RhNavigationSecondary_onTabEvent = function _RhNavigationSecondary_onTabEvent(e
         }
         event.preventDefault();
         this.close();
-        this.overlayOpen = false;
+        if (!this.mobileMenuExpanded) {
+            this.overlayOpen = false;
+        }
         __classPrivateFieldGet(this, _RhNavigationSecondary_tabindex, "f").setActiveItem(__classPrivateFieldGet(this, _RhNavigationSecondary_tabindex, "f").nextItem);
         __classPrivateFieldGet(this, _RhNavigationSecondary_tabindex, "f").activeItem?.focus();
     }
@@ -332,6 +360,15 @@ _RhNavigationSecondary_toggleMobileMenu = function _RhNavigationSecondary_toggle
     this.dispatchEvent(new SecondaryNavOverlayChangeEvent(this.mobileMenuExpanded, this));
 };
 RhNavigationSecondary.styles = [styles];
+RhNavigationSecondary.instances = new Set();
+(() => {
+    globalThis.addEventListener('keyup', (event) => {
+        const { instances } = RhNavigationSecondary_1;
+        for (const instance of instances) {
+            __classPrivateFieldGet(instance, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_onKeyup).call(instance, event);
+        }
+    }, { capture: false });
+})();
 __decorate([
     colorContextProvider(),
     property({ reflect: true, attribute: 'color-palette' })

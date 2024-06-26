@@ -73,8 +73,19 @@ function focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
 export class RhNavigationSecondary extends LitElement {
   static readonly styles = [styles];
 
-  #logger = new Logger(this);
+  private static instances = new Set<RhNavigationSecondary>();
 
+  static {
+    globalThis.addEventListener('keyup', (event: KeyboardEvent) => {
+      const { instances } = RhNavigationSecondary;
+      for (const instance of instances) {
+        instance.#onKeyup(event);
+      }
+    }, { capture: false });
+  }
+
+
+  #logger = new Logger(this);
   #logoCopy: HTMLElement | null = null;
 
   /** Is the element in an RTL context? */
@@ -135,12 +146,18 @@ export class RhNavigationSecondary extends LitElement {
 
   async connectedCallback() {
     super.connectedCallback();
+    RhNavigationSecondary.instances.add(this);
     this.#compact = !this.#screenSize.matches.has('md');
     this.addEventListener('expand-request', this.#onExpandRequest);
     this.addEventListener('overlay-change', this.#onOverlayChange);
     this.addEventListener('focusout', this.#onFocusout);
     this.addEventListener('keydown', this.#onKeydown);
     this.#upgradeAccessibility();
+  }
+
+  disconnectedCallback(): void {
+    super.disconnectedCallback();
+    RhNavigationSecondary.instances.delete(this);
   }
 
   render() {
@@ -248,14 +265,35 @@ export class RhNavigationSecondary extends LitElement {
         break;
       }
       case 'Tab':
-        this.#onTabEvent(event);
+        this.#onTabKeydown(event);
         break;
       default:
         break;
     }
   }
 
-  #onTabEvent(event: KeyboardEvent) {
+  #onKeyup(event: KeyboardEvent) {
+    switch (event.key) {
+      case 'Tab':
+        this.#onTabKeyup(event);
+        break;
+      default:
+        break;
+    }
+  }
+
+  #onTabKeyup(event: KeyboardEvent) {
+    if (!this.mobileMenuExpanded) {
+      return;
+    }
+    const { target } = event;
+    if (!this.contains(target as HTMLElement)) {
+      this.#toggleMobileMenu();
+      this.overlayOpen = false;
+    }
+  }
+
+  #onTabKeydown(event: KeyboardEvent) {
     // target is the element we are leaving with tab press
     const target = event.target as HTMLElement;
     // get target parent dropdown
@@ -274,7 +312,9 @@ export class RhNavigationSecondary extends LitElement {
         return;
       } else {
         this.close();
-        this.overlayOpen = false;
+        if (!this.mobileMenuExpanded) {
+          this.overlayOpen = false;
+        }
       }
     } else {
       // is the target the last focusableChildren element in the dropdown
@@ -284,7 +324,9 @@ export class RhNavigationSecondary extends LitElement {
       }
       event.preventDefault();
       this.close();
-      this.overlayOpen = false;
+      if (!this.mobileMenuExpanded) {
+        this.overlayOpen = false;
+      }
       this.#tabindex.setActiveItem(this.#tabindex.nextItem);
       this.#tabindex.activeItem?.focus();
     }

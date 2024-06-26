@@ -31,6 +31,7 @@ export type NavPalette = Extract<ColorPalette, ('lighter' | 'dark')>;
 export declare class RhNavigationSecondary extends LitElement {
     #private;
     static readonly styles: CSSStyleSheet[];
+    private static instances;
     /**
      * Color palette darker | lighter (default: lighter)
      */
@@ -49,6 +50,7 @@ export declare class RhNavigationSecondary extends LitElement {
      */
     static isDropdown(element: Element | null): element is RhNavigationSecondaryDropdown;
     connectedCallback(): Promise<void>;
+    disconnectedCallback(): void;
     render(): import("lit").TemplateResult<1>;
     /**
      * Opens a specific dropdown based on index.
