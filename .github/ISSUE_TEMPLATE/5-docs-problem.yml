@@ -1,0 +1,109 @@
+name: 🫠 Docs problem
+description: Something wrong with our docs? Let us know!
+title: "[docs][bug] ..."
+labels:
+  - docs
+  - bug
+
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: >-
+        A clear and concise description of the issue
+      placeholder: >-
+        The Get Started link on the Support page is broken
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: >-
+        If applicable, add screenshots to help explain
+      placeholder: >-
+        Copy/paste or drag screenshots into this textarea 
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        ## Debugging Info
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: >-
+        Steps to reproduce the behaviour. If possible, please provide URLs as well.
+      placeholder: |-
+        1. Go to the [the support page](https://ux.redhat.com/support/)
+        2. (Desktop) Find the 2nd link on the page
+        3. See broken link
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+      description: >-
+        A clear and concise description of what you expected to happen
+      placeholder: >-
+        The link should go to [get started](https://ux.redhat.com/get-started/) instead
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value:  |
+        ---
+        ## Browser and System Info
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating System (OS)
+      description: >-
+        Which operating system was the bug observed on?
+      multiple: true
+      options:
+        - iOS
+        - macOS
+        - Linux
+        - Windows
+    validations:
+      required: true
+
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Browser
+      description: >-
+        In which browsers was this bug observed?
+      multiple: true
+      options:
+        - Chrome
+        - Safari
+        - Safari iOS
+        - Microsoft Edge
+        - Firefox
+
+  - type: textarea
+    id: browser-more
+    attributes:
+      label: Additional browser or assistive technology info
+      description: >-
+        If applicable, please provide additional browser, screen reader, or other assistive tech info.
+
+        Please include the versions of each browser in which the bug was observed, or in the case of Safari iOS, the **device name**, and **OS version**
+      placeholder: |-
+        - Firefox 101
+        - Chrome 100
+        - Safari iOS 15.1, iPhone 12
+    validations:
+      required: false

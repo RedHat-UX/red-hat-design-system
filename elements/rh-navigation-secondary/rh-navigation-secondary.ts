@@ -7,6 +7,7 @@ import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js
 
 import { ComposedEvent } from '@patternfly/pfe-core';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import '@rhds/elements/rh-surface/rh-surface.js';
@@ -53,7 +54,6 @@ function focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
 
 /**
  * The Secondary navigation is used to connect a series of pages together. It displays wayfinding content and links relevant to the page it is placed on. It should be used in conjunction with the [primary navigation](../navigation-primary).
- *
  * @summary Propagates related content across a series of pages
  * @slot logo           - Logo added to the main nav bar, expects `<a>Text</a> | <a><svg/></a> | <a><img/></a>` element
  * @slot nav            - Navigation list added to the main nav bar, expects `<ul>` element
@@ -73,22 +73,20 @@ function focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
 export class RhNavigationSecondary extends LitElement {
   static readonly styles = [styles];
 
-  /**
-   * Color palette darker | lighter (default: lighter)
-   */
-  @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette: NavPalette = 'lighter';
+  private static instances = new Set<RhNavigationSecondary>();
 
-  @queryAssignedElements({ slot: 'nav' }) private _nav?: HTMLElement[];
+  static {
+    globalThis.addEventListener('keyup', (event: KeyboardEvent) => {
+      const { instances } = RhNavigationSecondary;
+      for (const instance of instances) {
+        instance.#onKeyup(event);
+      }
+    }, { capture: false });
+  }
+
 
   #logger = new Logger(this);
-
   #logoCopy: HTMLElement | null = null;
-
-  /**
-   * The accessible label for the <nav> element
-   */
-  #label = 'secondary';
 
   /** Is the element in an RTL context? */
   #dir = new DirController(this);
@@ -102,6 +100,17 @@ export class RhNavigationSecondary extends LitElement {
                                                                   rh-secondary-nav-dropdown) > a,
                                                               [slot="nav"] > li > a`))) ?? [],
   });
+
+  #internals = InternalsController.of(this, { role: 'navigation' });
+
+  /**
+   * Color palette darker | lighter (default: lighter)
+   */
+  @colorContextProvider()
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette: NavPalette = 'lighter';
+
+  @queryAssignedElements({ slot: 'nav' }) private _nav?: HTMLElement[];
+
 
   /**
    * `mobileMenuExpanded` property is toggled when the mobile menu button is clicked,
@@ -137,6 +146,7 @@ export class RhNavigationSecondary extends LitElement {
 
   async connectedCallback() {
     super.connectedCallback();
+    RhNavigationSecondary.instances.add(this);
     this.#compact = !this.#screenSize.matches.has('md');
     this.addEventListener('expand-request', this.#onExpandRequest);
     this.addEventListener('overlay-change', this.#onOverlayChange);
@@ -145,15 +155,19 @@ export class RhNavigationSecondary extends LitElement {
     this.#upgradeAccessibility();
   }
 
+  disconnectedCallback(): void {
+    super.disconnectedCallback();
+    RhNavigationSecondary.instances.delete(this);
+  }
+
   render() {
     const expanded = this.mobileMenuExpanded;
     const rtl = this.#dir.dir === 'rtl';
     // CTA must always be 'lightest' on mobile screens
     const dropdownPalette = this.#compact ? 'lightest' : this.colorPalette;
     return html`
-      <nav part="nav"
-           class="${classMap({ compact: this.#compact, rtl })}"
-           aria-label="${this.#label}">
+      <div part="nav"
+           class="${classMap({ compact: this.#compact, rtl })}">
         ${this.#logoCopy}
         <div id="container" part="container" class="${classMap({ expanded })}">
           <slot name="logo" id="logo"></slot>
@@ -167,7 +181,7 @@ export class RhNavigationSecondary extends LitElement {
             </div>
           </rh-surface>
         </div>
-      </nav>
+      </div>
       <rh-navigation-secondary-overlay
           .open="${this.overlayOpen}"
           @click="${this.#onOverlayClick}"
@@ -251,14 +265,35 @@ export class RhNavigationSecondary extends LitElement {
         break;
       }
       case 'Tab':
-        this.#onTabEvent(event);
+        this.#onTabKeydown(event);
         break;
       default:
         break;
     }
   }
 
-  #onTabEvent(event: KeyboardEvent) {
+  #onKeyup(event: KeyboardEvent) {
+    switch (event.key) {
+      case 'Tab':
+        this.#onTabKeyup(event);
+        break;
+      default:
+        break;
+    }
+  }
+
+  #onTabKeyup(event: KeyboardEvent) {
+    if (!this.mobileMenuExpanded) {
+      return;
+    }
+    const { target } = event;
+    if (!this.contains(target as HTMLElement)) {
+      this.#toggleMobileMenu();
+      this.overlayOpen = false;
+    }
+  }
+
+  #onTabKeydown(event: KeyboardEvent) {
     // target is the element we are leaving with tab press
     const target = event.target as HTMLElement;
     // get target parent dropdown
@@ -277,7 +312,9 @@ export class RhNavigationSecondary extends LitElement {
         return;
       } else {
         this.close();
-        this.overlayOpen = false;
+        if (!this.mobileMenuExpanded) {
+          this.overlayOpen = false;
+        }
       }
     } else {
       // is the target the last focusableChildren element in the dropdown
@@ -287,7 +324,9 @@ export class RhNavigationSecondary extends LitElement {
       }
       event.preventDefault();
       this.close();
-      this.overlayOpen = false;
+      if (!this.mobileMenuExpanded) {
+        this.overlayOpen = false;
+      }
       this.#tabindex.setActiveItem(this.#tabindex.nextItem);
       this.#tabindex.activeItem?.focus();
     }
@@ -389,11 +428,8 @@ export class RhNavigationSecondary extends LitElement {
     this.removeAttribute('role');
     // remove aria-labelledby from slotted `<ul>` on upgrade
     this.querySelector(':is([slot="nav"]):is(ul)')?.removeAttribute('aria-labelledby');
-    // transfer the aria-label to the shadow <nav>
-    if (this.hasAttribute('aria-label')) {
-      this.#label = this.getAttribute('aria-label') ?? 'secondary';
-      this.removeAttribute('aria-label');
-    }
+    // if the accessibleLabel attr is undefined, check aria-label if undefined use default
+    this.#internals.ariaLabel = 'secondary';
   }
 
   /**

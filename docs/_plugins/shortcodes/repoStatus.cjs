@@ -167,9 +167,7 @@ function repoStatusTable() {
           <span>
             <a href="/elements/${listItem.name.toLowerCase().trim().split(' ').join('-')}">${listItem.name}</a>
             ${listItem.overallStatus !== 'Available' ?
-            `<rh-tag color="${STATUS_LEGEND[listItem.overallStatus].color}" variant="${STATUS_LEGEND[listItem.overallStatus].variant}">
-              ${listItem.overallStatus}${STATUS_LEGEND[listItem.overallStatus].icon}
-            </rh-tag>` : ''}
+            `<rh-tag color="${STATUS_LEGEND[listItem.overallStatus].color}" variant="${STATUS_LEGEND[listItem.overallStatus].variant}">${listItem.overallStatus}${STATUS_LEGEND[listItem.overallStatus].icon}</rh-tag>` : ''}
           </span>
         </td>${listItem.libraries.map(lib => html`
         <td data-label="${lib.name}">
