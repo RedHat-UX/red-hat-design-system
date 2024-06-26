@@ -76,7 +76,7 @@ export class RhNavigationSecondary extends LitElement {
   private static instances = new Set<RhNavigationSecondary>();
 
   static {
-    window.addEventListener('keyup', (event: KeyboardEvent) => {
+    globalThis.addEventListener('keyup', (event: KeyboardEvent) => {
       const { instances } = RhNavigationSecondary;
       for (const instance of instances) {
         instance.#onKeyup(event);
