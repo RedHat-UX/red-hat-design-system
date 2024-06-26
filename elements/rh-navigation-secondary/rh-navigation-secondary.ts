@@ -7,6 +7,7 @@ import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js
 
 import { ComposedEvent } from '@patternfly/pfe-core';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import '@rhds/elements/rh-surface/rh-surface.js';
@@ -53,7 +54,6 @@ function focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
 
 /**
  * The Secondary navigation is used to connect a series of pages together. It displays wayfinding content and links relevant to the page it is placed on. It should be used in conjunction with the [primary navigation](../navigation-primary).
- *
  * @summary Propagates related content across a series of pages
  * @slot logo           - Logo added to the main nav bar, expects `<a>Text</a> | <a><svg/></a> | <a><img/></a>` element
  * @slot nav            - Navigation list added to the main nav bar, expects `<ul>` element
@@ -84,14 +84,10 @@ export class RhNavigationSecondary extends LitElement {
     }, { capture: false });
   }
 
+
   #logger = new Logger(this);
 
   #logoCopy: HTMLElement | null = null;
-
-  /**
-   * The accessible label for the <nav> element
-   */
-  #label = 'secondary';
 
   /** Is the element in an RTL context? */
   #dir = new DirController(this);
@@ -105,6 +101,17 @@ export class RhNavigationSecondary extends LitElement {
                                                                   rh-secondary-nav-dropdown) > a,
                                                               [slot="nav"] > li > a`))) ?? [],
   });
+
+  #internals = InternalsController.of(this, { role: 'navigation' });
+
+  /**
+   * Color palette darker | lighter (default: lighter)
+   */
+  @colorContextProvider()
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette: NavPalette = 'lighter';
+
+  @queryAssignedElements({ slot: 'nav' }) private _nav?: HTMLElement[];
+
 
   /**
    * Color palette darker | lighter (default: lighter)
@@ -168,9 +175,8 @@ export class RhNavigationSecondary extends LitElement {
     // CTA must always be 'lightest' on mobile screens
     const dropdownPalette = this.#compact ? 'lightest' : this.colorPalette;
     return html`
-      <nav part="nav"
-           class="${classMap({ compact: this.#compact, rtl })}"
-           aria-label="${this.#label}">
+      <div part="nav"
+           class="${classMap({ compact: this.#compact, rtl })}">
         ${this.#logoCopy}
         <div id="container" part="container" class="${classMap({ expanded })}">
           <slot name="logo" id="logo"></slot>
@@ -184,7 +190,7 @@ export class RhNavigationSecondary extends LitElement {
             </div>
           </rh-surface>
         </div>
-      </nav>
+      </div>
       <rh-navigation-secondary-overlay
           .open="${this.overlayOpen}"
           @click="${this.#onOverlayClick}"
@@ -431,11 +437,8 @@ export class RhNavigationSecondary extends LitElement {
     this.removeAttribute('role');
     // remove aria-labelledby from slotted `<ul>` on upgrade
     this.querySelector(':is([slot="nav"]):is(ul)')?.removeAttribute('aria-labelledby');
-    // transfer the aria-label to the shadow <nav>
-    if (this.hasAttribute('aria-label')) {
-      this.#label = this.getAttribute('aria-label') ?? 'secondary';
-      this.removeAttribute('aria-label');
-    }
+    // if the accessibleLabel attr is undefined, check aria-label if undefined use default
+    this.#internals.ariaLabel = 'secondary';
   }
 
   /**
