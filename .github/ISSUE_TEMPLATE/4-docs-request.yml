@@ -41,8 +41,8 @@ body:
       required: false
 
   - type: textarea
-  id: additional-info
-  attributes:
-    label: Additional context
-    description: >-
-      Add any other context or screenshots about the request here.
+    id: additional-info
+    attributes:
+      label: Additional context
+      description: >-
+        Add any other context or screenshots about the request here.
