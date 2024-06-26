@@ -23,10 +23,15 @@ elements and styles can be placed inside.
 </uxdot-example>
 
 ## Theme
+All card variants are available in light and dark theme.
+
+### Light theme
 
 <uxdot-example width-adjustment="784px">
   <img src="{{ '../card-theme-light.svg' | url }}" alt="Card in light theme">
 </uxdot-example>
+
+### Dark theme
 
 <uxdot-example color-palette="darkest" width-adjustment="784px">
   <img src="{{ '../card-theme-dark.svg' | url }}" alt="Card in dark theme">
@@ -34,12 +39,7 @@ elements and styles can be placed inside.
 
 ### Color
 
-Cards are secondary layouts that shouldn’t command too much attention and
-blend in with whatever background they’re placed on. The card container is the
-only required element and it consists of a background color and rounded
-corners. A thin border is required if the card background is the same color as
-the background it's placed on.
-
+Cards are secondary layouts that shouldn’t command too much attention and blend in with whatever background they’re placed on. The card container is the only required element and it consists of a background color, rounded corners, and a thin border.
 
 <div class="grid">
   <figure>
