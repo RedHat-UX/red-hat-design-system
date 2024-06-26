@@ -1,8 +1,9 @@
-name: 🤖 Feature request
-description: Request a new feature in an existing component
-title: "[feat] <title>"
+name: 🪄 Feature request
+description: Request a new feature in an existing component or pattern
+title: "[feat] `<rh-component-name>` ..."
 labels:
-  - enhancement
+  - feature
+  - discovery needed
 
 body:
 
@@ -26,12 +27,23 @@ body:
   validations:
     required: true
 
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: >-
+        If applicable, add screenshots of examples in the wild
+      placeholder: >-
+        Copy/paste or drag screenshots into this textarea 
+    validations:
+      required: false
+
 - type: textarea
   id: example
   attributes:
     label: Example API
     description: >-
-      Provide and example HTML snippet of how you expect the new feature might work
+     If possible, provide and example HTML snippet of how you expect the new feature might work
     placeholder: >-
       <rh-jazz-hands era="ragtime"></rh-jazz-hands>
     render: HTML

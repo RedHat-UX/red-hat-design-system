@@ -1,0 +1,48 @@
+name: 📖 Docs edit or update request
+description: Would you like to see something added or updated on our documentation? Let us know!
+title: "[docs] ..."
+labels:
+  - docs
+  - discovery needed
+
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: >-
+        A clear and concise description of your request
+      placeholder: >-
+        It'd be nice to have a page that explains how to make mountains out of mole hills
+    validations:
+      required: true
+
+  - type: textarea
+    id: url
+    attributes:
+      label: Links
+      description: >-
+        If applicable, please provide links to the existing page (or pages) where you'd like to see the edit or update
+      placeholder: >-
+        - [Developers Get Started](https://ux.redhat.com/get-started/developers/)
+        - [Designers Get Started](https://ux.redhat.com/get-started/designers/)
+    validations:
+      required: false
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: >-
+        If applicable, add screenshots of examples in the wild or to help explain
+      placeholder: >-
+        Copy/paste or drag screenshots into this textarea 
+    validations:
+      required: false
+
+  - type: textarea
+  id: additional-info
+  attributes:
+    label: Additional context
+    description: >-
+      Add any other context or screenshots about the request here.
