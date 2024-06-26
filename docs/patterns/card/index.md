@@ -9,7 +9,12 @@ importElements:
   - rh-card
   - rh-cta
   - rh-surface
+  - rh-avatar
 ---
+
+<script type="module">
+  import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+</script>
 
 <link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
 <link rel="stylesheet" href="{{ '/styles/samp.css' | url }}">
@@ -71,95 +76,66 @@ importElements:
     --rh-color-text-primary-on-dark: #e8e4f5;
   }
 </style>
+
+
 ## Overview
 
 A card formats content in a small, contained space. It can be used to display a 
 preview of information or provide secondary content in relation to the content 
 it's near. Several cards can be used together to group related information.
 
-## Sample pattern
+<rh-alert state="info">
 
-<rh-card>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend 
-    elit sed est egestas, a sollicitudin mauris tincidunt. Pellentesque vel 
-    dapibus risus. Nullam aliquam felis orci, eget cursus mi lacinia quis. 
-    Vivamus at felis sem.</p>
-  <rh-cta variant="primary" slot="footer">
-    <a href="#">Call to action</a>
-  </rh-cta>
-</rh-card>
+  These Card patterns document different design-approved uses of the `<rh-card>`
+  element. [Consult the `<rh-card>` element documentation][element] for more
+  information on how to use the card element.
 
-## Sample - Slotted Title
+</rh-alert>
 
-<rh-card>
-  <h2 slot="header">Headline, sm</h2>
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend 
-    elit sed est egestas, a sollicitudin mauris tincidunt. Pellentesque vel 
-    dapibus risus. Nullam aliquam felis orci, eget cursus milacinia quis. 
-    Vivamus at felis sem.
-  </p>
-  <rh-cta variant="primary" slot="footer">
-    <a href="#">Call to action</a>
-  </rh-cta>
-</rh-card>
+## Asset
+Use to display that an asset can be downloaded. An icon and label group or 
+text may be used to describe the asset.
 
-## Sample - alternative color scheme
+{% include './patterns/asset.html' %}
 
-<rh-card class="alt">
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend 
-    elit sed est egestas, a
-    sollicitudin mauris tincidunt. Pellentesque vel dapibus risus. Nullam 
-    aliquam felis orci, eget cursus mi
-    lacinia quis. Vivamus at felis sem.
-  </p>
-  <rh-cta variant="primary" slot="footer">
-    <a href="#">Call to action</a>
-  </rh-cta>
-</rh-card>
+## Image
 
-## Sample - title bar
+Use to add an image to the basic style above the text.
+Secondary and Default calls to action may be used.
 
-<rh-card class="bar">
-  <h2 slot="header">Headline, sm</h2>
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend 
-    elit sed est egestas, a
-    sollicitudin mauris tincidunt. Pellentesque vel dapibus risus. Nullam 
-    aliquam felis orci, eget cursus mi
-    lacinia quis. Vivamus at felis sem.
-  </p>
-  <rh-cta variant="primary" slot="footer">
-    <a href="#">Call to action</a>
-  </rh-cta>
-</rh-card>
+{% include './patterns/image.html' %}
 
-## Title bar
+## List
+Use to display a short amount of content using various list styles. 
+Secondary and Default calls to action may be used.
 
-<rh-card class="bar">
-  <h2 slot="header">Card title</h2>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
-    libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
-    elit. Donec id elit non mi porta gravida at eget metus.</p>
-  <rh-cta variant="primary" slot="footer"><a href="#">Footer</a></rh-cta>
-</rh-card>
 
-## Image title bar
+{% include './patterns/list.html' %}
 
-<rh-card class="bar full">
-  <img src="./kitten-900x300.jpeg" slot="header">
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
-    libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
-    elit. Donec id elit non mi porta gravida at eget metus.</p>
-  <rh-cta slot="footer"><a href="#">Footer</a></rh-cta>
-</rh-card>
+## Data
+Use to display quick facts or short data points under a label. A Secondary 
+call to action may be used or not.
 
-## Style
+## Logo
+Use to display a customer logo in a variety of arrangements. A call to 
+action is required, otherwise use a logo wall.
 
-A card can be used in light and dark themes.
+## Bar
 
-### Theme
+Use to add a small icon and a label group to the header section. A larger icon
+or a logo may be used.
+
+Alternative title bar styles can be achieved by selecting [card's `header` CSS
+Shadow Part](/elements/card/code/#parts).
+
+{% include './patterns/bar.html' %}
+
+
+## Icon
+
+Use to add an icon to the basic style above the text. Secondary and Default 
+calls to action may be used.
+
 
 #### Light Theme
 
@@ -185,42 +161,60 @@ A card can be used in light and dark themes.
   </rh-card>
 </rh-surface>
 
-### Custom Theming
+## Quote
 
-To customize a card the design tokens must be altered.  These design tokens are different depending on the context for the card (light or dark theme).
+Use to display a short quote with attribution text. Logos, images, and a 
+Secondary call to action may be used or not.
+
+## Avatars
+
+Use to highlight a group of people who engage in an event. A label
+should be included, but including text is optional.
+
+Use the [`<rh-avatar>`](/elements/avatar/) element to element to present
+the list of users.
+
+{% include './patterns/avatars.html' %}
+
+## Video
+
+Use to trigger a video that will play in a [Modal dialog](/elements/dialog).
+Different layout configurations may be used.
+
+## Pricing
+
+Use to outline the pricing and benefits of something. Elements may be 
+removed or rearranged depending on content needs.
+
+## Logo slider
+
+Use to display more content about a company when expanded on hover or tap. A 
+title and text should be included.
+
+## Name slider
+
+Use to display more content about a person when the tray expands. A title 
+and text should be included.
+
+## Custom Theming
+
+To customize a card the design tokens must be altered. These design tokens are 
+different depending on the context for the card (light or dark theme).
 
 Examples include:
 
-- [`--rh-color-surface-lightest`](https://ux.redhat.com/tokens/color/#rh-color-surface-lightest)
-- [`--rh-color-border-subtle-on-light`](https://ux.redhat.com/tokens/border/#rh-color-border-subtle-on-light)
-- [`--rh-color-text-primary-on-light`](https://ux.redhat.com/tokens/font/#rh-color-text-primary-on-light)
+- [`--rh-color-surface-lightest`](/tokens/color/#rh-color-surface-lightest)
+- [`--rh-color-border-subtle-on-light`](/tokens/border/#rh-color-border-subtle-on-light)
+- [`--rh-color-text-primary-on-light`](/tokens/font/#rh-color-text-primary-on-light)
 
-For more information, please see the [card css custom properties](/elements/card/code/#css-custom-properties).
+For more information, please see the [card css custom properties][css-props].
 
+### Custom themes
 
-#### Custom Light Theme
+Themes are expressed in terms of color palettes.
 
-<rh-surface color-palette="light">
-  <rh-card class="custom-light-theme">
-    <h2 slot="header">Card title</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
-      libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
-      elit. Donec id elit non mi porta gravida at eget metus.</p>
-    <rh-cta slot="footer"><a href="#">Footer</a></rh-cta>
-  </rh-card>
-</rh-surface>
+{% include './patterns/themes.html' %}
 
-#### Custom Dark Theme
-
-<rh-surface color-palette="dark">
-  <rh-card class="custom-dark-theme">
-    <h2 slot="header">Card title</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
-      libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
-      elit. Donec id elit non mi porta gravida at eget metus.</p>
-    <rh-cta slot="footer"><a href="#">Footer</a></rh-cta>
-  </rh-card>
-</rh-surface>
 
 ## Usage
 
@@ -258,3 +252,6 @@ The recommended maximum character count for the elements of a card are listed be
 
 
 {% include 'partials/component/feedback.html' %}
+
+[element]: /elements/card
+[css-props]: /elements/card/code/#css-custom-properties

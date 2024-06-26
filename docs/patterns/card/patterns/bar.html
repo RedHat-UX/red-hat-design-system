@@ -1,0 +1,36 @@
+<style>
+  rh-card.bar {
+    &::part(header) {
+      margin: 0;
+      text-transform: uppercase;
+      padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
+      background-color: var(--_header-bg, var(--rh-color-surface-light, #e0e0e0));
+      font-weight: var(--rh-font-weight-heading-regular, 300);
+      font-size: var(--rh-font-size-body-text-md, 1rem);
+      font-family: var(--rh-font-family-body-text);
+      flex-direction: row;
+      gap: var(--rh-space-lg);
+    }
+    & svg {
+      width: var(--rh-size-icon-02, 24px);
+    }
+  }
+</style>
+
+<rh-card class="bar">
+  <svg slot="header" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm1.25 23a1.25 1.25 0 1 1-2.5 0v-8a1.25 1.25 0 1 1 2.5 0v8ZM16 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z"></path>
+  </svg>
+  <!--<rh-icon slot="header"-->
+  <!--         set="ui"-->
+  <!--         icon="information"></rh-icon>-->
+  <h4 slot="header">Card title</h4>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit
+    libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id
+    elit. Donec id elit non mi porta gravida at eget metus.</p>
+  <rh-cta variant="primary" slot="footer">
+    <a href="#">Footer</a>
+  </rh-cta>
+</rh-card>
+
+

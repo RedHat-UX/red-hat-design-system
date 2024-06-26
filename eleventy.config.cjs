@@ -16,10 +16,11 @@ const litPlugin = require('@lit-labs/eleventy-plugin-lit');
 const isWatch =
   process.argv.includes('--serve') || process.argv.includes('--watch');
 
-/** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
+/** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig config api */
 module.exports = function(eleventyConfig) {
   eleventyConfig.setQuietMode(true);
 
+  eleventyConfig.addWatchTarget('docs/patterns/**/*.html');
   eleventyConfig.watchIgnores?.add('docs/assets/redhat/');
   eleventyConfig.watchIgnores?.add('**/*.spec.ts');
   eleventyConfig.watchIgnores?.add('**/*.d.ts');

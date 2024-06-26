@@ -1,0 +1,82 @@
+<style>
+  #asset-patterns {
+    display: flex;
+    flex-flow: row wrap;
+    gap: var(--rh-space-2xl);
+    & rh-context-picker { width: 100%; }
+    & rh-card {
+      max-width: 400px;
+      &::part(header) {
+        --rh-color-surface-lightest: var(--rh-color-surface-lighter);
+        --rh-color-surface-darkest: var(--rh-color-surface-darker);
+      }
+      & h3 {
+        margin-block: 0 var(--rh-space-lg);
+        text-transform: uppercase;
+        display: flex;
+        gap: var(--rh-space-lg);
+        font-weight: var(--rh-font-weight-heading-regular, 300);
+        font-size: var(--rh-font-size-body-text-md, 1rem);
+        font-family: var(--rh-font-family-body-text);
+        & svg {
+          width: 1em;
+        }
+      }
+      & svg[slot] {
+        border: 1px dashed var(--rh-color-border-interactive-on-light);
+      }
+      &.footer-asset::part(footer) {
+        margin-block-end: 0;
+      }
+    }
+  }
+</style>
+
+<div id="asset-patterns">
+  <rh-context-picker target="asset-patterns"
+                     allow="lightest,lighter,darker,darkest"></rh-context-picker>
+  <rh-card>
+    <svg slot="header" viewBox="0 0 296 171">
+      <rect fill="rgba(0 102 204 / 0.10)" width="296" height="171"/>
+    </svg>
+    <h3>
+      <!--<rh-icon set="ui" icon="information"></rh-icon>-->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+        <path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm1.25 23a1.25 1.25 0 1 1-2.5 0v-8a1.25 1.25 0 1 1 2.5 0v8ZM16 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z"></path>
+      </svg>
+      <span>Title, Lg</span>
+    </h3>
+    <a href="#">Lorem ipsum dolor sit amet consectetur adipiscing elit</a>
+  </rh-card>
+
+  <rh-card>
+    <svg slot="header" viewBox="0 0 296 171">
+      <rect fill="rgba(0 102 204 / 0.10)" width="296" height="171"/>
+    </svg>
+    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.
+       Nullam elifend elit sed est egestast, a solicitudin mauris
+       tincidunt</p>
+    <rh-cta slot="footer">
+      <a href="#">Call to action</a>
+    </rh-cta>
+  </rh-card>
+
+  <rh-card class="footer-asset">
+    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.
+       Nullam elifend elit sed est egestast, a solicitudin mauris
+       tincidunt</p>
+    <svg slot="footer" viewBox="0 0 296 171">
+      <rect fill="rgba(0 102 204 / 0.10)" width="296" height="171"/>
+    </svg>
+  </rh-card>
+</div>
+
+
+<script type="module">
+  document.querySelector('#asset-patterns rh-context-picker')
+    .addEventListener('change', function(event) {
+      for (const card of event.target.closest('div').querySelectorAll('rh-card')) {
+        card.colorPalette = event.colorPalette;
+      }
+    })
+</script>

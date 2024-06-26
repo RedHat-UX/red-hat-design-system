@@ -1,0 +1,36 @@
+<style>
+
+  rh-card.avatar {
+    &::part(body) { margin-block-start: var(--rh-space-lg); }
+    & p { margin-block-start: 0; }
+    & h4 {
+      font-family: var(--rh-font-family-body-text);
+      font-size: var(--rh-font-size-body-text-md);
+      font-weight: var(--rh-font-weight-body-text-regular);
+      line-height: var(--rh-line-height-body-text);
+      text-transform: uppercase;
+    }
+    & rh-avatar {
+      width: 100%;
+    }
+  }
+</style>
+
+<label>Color Palette
+  <rh-context-picker target="avatar-pattern"
+                     allow="darkest,darker,lighter,lightest"></rh-context-picker>
+</label>
+
+<rh-card id="avatar-pattern" class="avatar">
+  <h4 slot="header">Title LG</h4>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit
+    libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id
+    elit. Donec id elit non mi porta gravida at eget metus.</p>
+  <rh-avatar name="First name Last name"
+    subtitle="Job title, Company name"></rh-avatar>
+  <rh-avatar name="First name Last name"
+    subtitle="Job title, Company name"></rh-avatar>
+  <rh-avatar name="First name Last name"
+    subtitle="Job title, Company name"></rh-avatar>
+</rh-card>
+
