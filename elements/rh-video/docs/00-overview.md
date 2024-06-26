@@ -1,13 +1,15 @@
 ## Overview
+
 {{ tagName | getElementDescription }}
 
-{% example palette="light",
-          class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);width:auto",
-          alt="Placeholder for example image",
-          src="" %}
+{# <uxdot-example>
+  <img src="" alt="Placeholder for example image">
+</uxdot-example> #}
+
+{% repoStatusList %}
 
 ## Sample element
+
 <rh-video>
   <img slot="thumbnail" src="https://fakeimg.pl/900x499/282828/eae0d0" alt="Image description"/>
   <template>
@@ -17,11 +19,14 @@
 </rh-video>
 
 
-## Demos
-  View a live version of this component and see how it can be customized.
-  {% playground tagName=tagName %}{% endplayground %}
-  {% cta href="./demo/", target="_blank" %}
-    View the `<rh-video>` demo in a new tab
-  {% endcta %}
+## Demo
+
+{% playground tagName=tagName %}{% endplayground %}
+
+<rh-cta><a href="{{ './demo/' | url }}">Full screen demo</a></rh-cta>
+
 
 ## When to use 
+  - 
+
+{% repoStatusChecklist %}
