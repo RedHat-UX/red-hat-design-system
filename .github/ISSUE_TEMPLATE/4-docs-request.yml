@@ -34,7 +34,7 @@ body:
     attributes:
       label: Screenshots
       description: >-
-        If applicable, add screenshots of examples in the wild or to help explain
+        If applicable, add screenshots of examples in the wild to help explain
       placeholder: >-
         Copy/paste or drag screenshots into this textarea 
     validations:

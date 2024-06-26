@@ -43,7 +43,7 @@ body:
   attributes:
     label: Example API
     description: >-
-     If possible, provide and example HTML snippet of how you expect the new feature might work
+     If possible, provide an example HTML snippet of how you expect the new feature might work
     placeholder: >-
       <rh-jazz-hands era="ragtime"></rh-jazz-hands>
     render: HTML

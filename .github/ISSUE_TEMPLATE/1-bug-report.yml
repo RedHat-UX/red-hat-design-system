@@ -13,7 +13,7 @@ body:
         A clear and concise description of the bug
       placeholder: >-
         The arrow icon in the call-to-action button should animate when
-        the user hovers the CTA, but it doesn't
+        the user hovers over the CTA, but it doesn't
     validations:
       required: true
 
