@@ -20,6 +20,7 @@ Users should have the ability to move focus to a breadcrumb and activate a bread
         <td data-label="Result">Moves focus to the previous linked breadcrumb or interactive element</td>
       </tr>
       <tr>
+        <td data-label="Key">Enter</td>
         <td data-label="Result">Activates a link</td>
       </tr>
     </tbody>
