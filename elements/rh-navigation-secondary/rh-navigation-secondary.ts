@@ -86,7 +86,6 @@ export class RhNavigationSecondary extends LitElement {
 
 
   #logger = new Logger(this);
-
   #logoCopy: HTMLElement | null = null;
 
   /** Is the element in an RTL context? */
@@ -112,14 +111,6 @@ export class RhNavigationSecondary extends LitElement {
 
   @queryAssignedElements({ slot: 'nav' }) private _nav?: HTMLElement[];
 
-
-  /**
-   * Color palette darker | lighter (default: lighter)
-   */
-  @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette: NavPalette = 'lighter';
-
-  @queryAssignedElements({ slot: 'nav' }) private _nav?: HTMLElement[];
 
   /**
    * `mobileMenuExpanded` property is toggled when the mobile menu button is clicked,
