@@ -315,7 +315,9 @@ export class RhNavigationSecondary extends LitElement {
         return;
       } else {
         this.close();
-        this.overlayOpen = false;
+        if (!this.mobileMenuExpanded) {
+          this.overlayOpen = false;
+        }
       }
     } else {
       // is the target the last focusableChildren element in the dropdown
@@ -325,7 +327,9 @@ export class RhNavigationSecondary extends LitElement {
       }
       event.preventDefault();
       this.close();
-      this.overlayOpen = false;
+      if (!this.mobileMenuExpanded) {
+        this.overlayOpen = false;
+      }
       this.#tabindex.setActiveItem(this.#tabindex.nextItem);
       this.#tabindex.activeItem?.focus();
     }
