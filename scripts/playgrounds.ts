@@ -102,8 +102,8 @@ function isInlineModule(node: Tools.Node): node is Tools.Element {
           && !node.attrs.some(({ name }) => name === 'src');
 }
 
-function isStyleElement(node: Tools.Element) {
-  return node.tagName === 'style';
+function isInlineStyle(node: Tools.Node): node is Tools.Element {
+  return Tools.isElementNode(node) && node.tagName === 'style';
 }
 
 function isStyleLink(node: Tools.Element) {
@@ -165,25 +165,15 @@ class PlaygroundDemo {
     private demoSlug: string,
     private fragment: Tools.DocumentFragment,
   ) {
+  }
+
+  private addCommonCss() {
     const cssPrefix = this.demo.filePath.match(DEMO_FILEPATH_IS_MAIN_DEMO_RE) ? '' : '../';
-    this.append(Tools.createTextNode('\n'),
-                Tools.createCommentNode('playground-fold'),
+    this.append(this.createStyleLink(`${cssPrefix}reset.css`),
                 Tools.createTextNode('\n'),
-                Tools.createElement('link', {
-                  rel: 'stylesheet',
-                  href: `${cssPrefix}reset.css`,
-                }),
+                this.createStyleLink(`${cssPrefix}fonts.css`),
                 Tools.createTextNode('\n'),
-                Tools.createElement('link', {
-                  rel: 'stylesheet',
-                  href: `${cssPrefix}fonts.css`,
-                }),
-                Tools.createTextNode('\n'),
-                Tools.createElement('link', {
-                  rel: 'stylesheet',
-                  href: `${cssPrefix}typography.css`,
-                }),
-                Tools.createCommentNode('playground-fold-end'));
+                this.createStyleLink(`${cssPrefix}typography.css`));
   }
 
   private getFinalContent() {
@@ -195,17 +185,12 @@ class PlaygroundDemo {
     return demoPaths(serialize(this.fragment), this.demo.filePath);
   }
 
-  public async addFiles(fileMap: PlaygroundFileMap) {
-    this.splitOutInlineStyles(fileMap);
-    this.splitOutInlineModules(fileMap);
-    await this.addAllSubresources(fileMap);
-    const content = this.getFinalContent();
-    fileMap.set(this.filename, {
-      contentType: 'text/html',
-      selected: this.isMainDemo,
-      content,
-      label: this.demo.title,
-    });
+  private createStyleLink(href: string) {
+    return Tools.createElement('link', { rel: 'stylesheet', href });
+  }
+
+  private createModuleLink(src: string) {
+    return Tools.createElement('script', { type: 'module', src });
   }
 
   private append(...nodes: Tools.ChildNode[]) {
@@ -301,48 +286,53 @@ class PlaygroundDemo {
       // @ts-expect-error: this is a hint to our njk template
       inline: this.filename,
     });
+    for (const sibling of Tools.previousSiblings(node)) {
+      if (Tools.isTextNode(sibling) && !sibling.value.trim()) {
+        Tools.removeNode(sibling);
+      } else {
+        break;
+      }
+    }
     for (const sibling of Tools.nextSiblings(node)) {
       if (Tools.isTextNode(sibling) && !sibling.value.trim()) {
         Tools.removeNode(sibling);
+      } else {
+        break;
       }
     }
     Tools.removeNode(node);
   }
 
-  /** @see https://github.com/google/playground-elements/issues/93#issuecomment-1775247123 */
-  private async splitOutInlineModules(fileMap: PlaygroundFileMap) {
-    Array.from(Tools.queryAll<Tools.Element>(this.fragment, isInlineModule)).forEach((node, i) => {
-      const moduleName = `${this.demo.primaryElementName}-${this.demoSlug.replace('.html', '')}-inline-script-${i++}.js`;
-      this.append(Tools.createTextNode('\n'),
-                  Tools.createCommentNode('playground-fold'),
-                  Tools.createTextNode('\n'),
-                  Tools.createElement('script', {
-                    type: 'module',
-                    src: `./${this.demoSlug === 'index.html' ? '' : '../'}${moduleName}`,
-                  }),
-                  Tools.createTextNode('\n'),
-                  Tools.createCommentNode('playground-fold-end'),
-      );
-      this.replaceInlineNode(fileMap, node, moduleName);
-    });
+  private async splitOutInlineSubresources(fileMap: PlaygroundFileMap) {
+    const { demoSlug, demo: { primaryElementName } } = this;
+    const dir = demoSlug === 'index.html' ? '.' : '..';
+    const resourcePrefix = `${primaryElementName}-${demoSlug.replace('.html', '')}-inline`;
+    let count = 0;
+    for (const node of Tools.queryAll<Tools.Element>(this.fragment, Tools.isElementNode)) {
+      if (isInlineModule(node)) {
+        const moduleName = `${resourcePrefix}-${count++}.js`;
+        this.replaceInlineNode(fileMap, node, moduleName);
+        this.append(this.createModuleLink(`${dir}/${moduleName}`), Tools.createTextNode('\n'));
+      } else if (isInlineStyle(node)) {
+        const stylesheetName = `${resourcePrefix}-${count++}.css`;
+        this.replaceInlineNode(fileMap, node, stylesheetName);
+        this.append(this.createStyleLink(`${dir}/${stylesheetName}`), Tools.createTextNode('\n'));
+      }
+    }
   }
 
-  private async splitOutInlineStyles(fileMap: PlaygroundFileMap) {
-    const inlineStyles: IterableIterator<Tools.Element> =
-      Tools.queryAll(this.fragment, node => Tools.isElementNode(node) && isStyleElement(node));
-
-    Array.from(inlineStyles).forEach((node, i) => {
-      const stylesheetName = `${this.demo.primaryElementName}-${this.demoSlug.replace('.html', '')}-inline-style-${i++}.css`;
-      this.append(Tools.createTextNode('\n'),
-                  Tools.createCommentNode('playground-fold'),
-                  Tools.createElement('link', {
-                    rel: 'stylesheet',
-                    href: `./${this.demoSlug === 'index.html' ? '' : '../'}${stylesheetName}`,
-                  }),
-                  Tools.createTextNode('\n'),
-                  Tools.createCommentNode('playground-fold-end'),
-      );
-      this.replaceInlineNode(fileMap, node, stylesheetName);
+  public async addFiles(fileMap: PlaygroundFileMap) {
+    this.append(Tools.createCommentNode('playground-hide'));
+    this.splitOutInlineSubresources(fileMap);
+    await this.addAllSubresources(fileMap);
+    this.addCommonCss();
+    this.append(Tools.createCommentNode('playground-hide-end'));
+    const content = this.getFinalContent();
+    fileMap.set(this.filename, {
+      contentType: 'text/html',
+      selected: this.isMainDemo,
+      content,
+      label: this.demo.title,
     });
   }
 }

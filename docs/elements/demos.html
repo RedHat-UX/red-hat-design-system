@@ -12,6 +12,8 @@ pagination:
 ---
 <style>
 playground-project {
+  height: 825px;
+  &:not(:defined) { opacity: 0; }
   display: flex;
   flex-flow: column;
   gap: var(--rh-space-sm);
@@ -95,7 +97,10 @@ playground-project {
 {%- for filename, config in playground.files -%}
   {%- if config.label -%}
     {% set extension = filename.split('.').pop() %}
-    {% set projectId = 'playground-' + element.tagName + '-' + filename.split('.').shift().replace('demo/', '').replaceAll('/', '-') %}
+    {% set demoSlug  = filename.split('.').shift().replace('demo/', '').replaceAll('/', '-') %}
+    {% set projectId       %}playground-{{ element.tagName }}-{{ demoSlug }}{% endset %}
+    {% set githubSourceUrl %}https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/{{ element.tagName }}/demo/{{ filename }}.html{% endset %}
+    {% set demoPageUrl     %}/elements/{{ slug }}/demo/{{ config.label | slugify }}/{% endset %}
     <h2 id="demo-{{ config.label | slugify }}">{{ config.label }}</h2>
     <playground-project id="{{ projectId }}" {% if isLocal %}
                         sandbox-base-url="http://localhost:8080"
@@ -126,9 +131,9 @@ playground-project {
                                 filename="{{ filename }}"
                                 line-numbers></playground-file-editor>
         <rh-cta slot="footer"
-                href="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/{{ element.tagName }}/demo/{{ config.label | slugify }}.html">View source on GitHub</rh-cta>
+            ><a href="{{ githubSourceUrl }}">View source on GitHub</a></rh-cta>
         <rh-cta slot="footer"
-                href="/elements/{{ slug }}/demo/{{ config.label | slugify}}/">View Fullscreen</rh-cta>
+            ><a href="{{ demoPageUrl }}">View Fullscreen</a></rh-cta>
       </rh-card>
     </playground-project>
   {%- endif -%}
