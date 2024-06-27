@@ -186,14 +186,24 @@ class PlaygroundDemo {
                 Tools.createCommentNode('playground-fold-end'));
   }
 
+  private getFinalContent() {
+    let lastNode: Tools.Node | undefined;
+    while ((lastNode = this.fragment.childNodes.at(-1))
+            && Tools.isTextNode(lastNode) && !lastNode.value.trim()) {
+      Tools.removeNode(lastNode);
+    }
+    return demoPaths(serialize(this.fragment), this.demo.filePath);
+  }
+
   public async addFiles(fileMap: PlaygroundFileMap) {
     this.splitOutInlineStyles(fileMap);
     this.splitOutInlineModules(fileMap);
     await this.addAllSubresources(fileMap);
+    const content = this.getFinalContent();
     fileMap.set(this.filename, {
       contentType: 'text/html',
       selected: this.isMainDemo,
-      content: demoPaths(serialize(this.fragment), this.demo.filePath),
+      content,
       label: this.demo.title,
     });
   }
@@ -285,11 +295,9 @@ class PlaygroundDemo {
   }
 
   private replaceInlineNode(fileMap: PlaygroundFileMap, node: Tools.Element, name: string) {
-    const source = node.childNodes.map(x =>
-      (x as Tools.TextNode).value ?? '').join('\n');
-    const content = dedent(source);
+    const source = node.childNodes.map(x => Tools.isTextNode(x) ? x.value : '').join('\n');
     fileMap.set(`demo/${name}`, {
-      content,
+      content: dedent(source),
       // @ts-expect-error: this is a hint to our njk template
       inline: this.filename,
     });
@@ -320,7 +328,7 @@ class PlaygroundDemo {
 
     Array.from(inlineStyles).forEach((node, i) => {
       const stylesheetName = `${this.demo.primaryElementName}-${this.demoSlug.replace('.html', '')}-inline-style-${i++}.css`;
-      this.append(Tools.createTextNode('\n\n'),
+      this.append(Tools.createTextNode('\n'),
                   Tools.createCommentNode('playground-fold'),
                   Tools.createElement('link', {
                     rel: 'stylesheet',

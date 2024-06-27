@@ -11,16 +11,21 @@ pagination:
   size: 1
 ---
 <style>
-playground-project section {
+playground-project {
   display: flex;
-  flex-flow: row wrap;
-  & rh-tabs,
-  & playground-preview,
-  & playground-file-editor {
-    width: 100%;
+  flex-flow: column;
+  gap: var(--rh-space-sm);
+  --playground-code-background: var(--rh-color-surface-lighter);
+  & playground-preview {
+    border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle-on-light);
   }
-  & rh-cta {
-    margin-inline-start: auto;
+  & rh-card {
+    &::part(header),
+    &::part(body) { margin: 0; }
+    &::part(footer) { margin-block: var(--rh-space-lg); }
+    &::part(body) {
+      border-block-end: var(--rh-border-width-sm) solid var(--rh-color-border-subtle-on-light);
+    }
   }
   & rh-tab-panel {
     display: none !important;
@@ -30,6 +35,7 @@ playground-project section {
 
 <script type="module">
   import 'playground-elements';
+  import '@rhds/elements/rh-card/rh-card.js';
   import '@rhds/elements/rh-tabs/rh-tabs.js';
   import {TabExpandEvent} from '@rhds/elements/rh-tabs/rh-tab.js';
   for (const tabs of document.querySelectorAll('.demo-fileswitcher')) {
@@ -87,6 +93,7 @@ playground-project section {
   {%- if config.label -%}
     {% set extension = filename.split('.').pop() %}
     {% set projectId = 'playground-' + element.tagName + '-' + filename.split('.').shift().replace('demo/', '').replaceAll('/', '-') %}
+    <h2 id="demo-{{ config.label | slugify }}">{{ config.label }}</h2>
     <playground-project id="{{ projectId }}" {% if isLocal %}
                         sandbox-base-url="http://localhost:8080"
                         {%- endif -%}>
@@ -99,26 +106,27 @@ playground-project section {
           | replace('</' + 'script>', '&lt;/script>')
         -}}
       </script>
-      <section>
-        <h2 id="demo-{{ config.label | slugify }}">{{ config.label }}</h2>
-        {#<rh-cta href="/elements/{{ slug }}/demo/{{ config.label | slugify}}/">View Fullscreen Demo</rh-cta>#}
-        <rh-cta><a href="/elements/{{ slug }}/demo/{{ config.label | slugify}}/">View Fullscreen Demo</a></rh-cta>
-        <playground-preview project="{{ projectId }}"
-                            html-file="{{ filename }}"></playground-preview>
-        <rh-tabs class="demo-fileswitcher">
+      <playground-preview project="{{ projectId }}"
+                          html-file="{{ filename }}"></playground-preview>
+      <rh-card>
+        <rh-tabs slot="header" class="demo-fileswitcher">
           <rh-tab slot="tab" data-filename="{{ filename }}">HTML</rh-tab>
-          <rh-tab-panel></rh-tab-panel>
+          <rh-tab-panel hidden></rh-tab-panel>
           {%- for subresourcename, config in playground.files -%}
-            {%- if config.inline === filename -%}
+          {%- if config.inline === filename -%}
           <rh-tab slot="tab" data-filename="{{ subresourcename }}">{{ subresourcename.split('.').pop().toUpperCase() }}</rh-tab>
-          <rh-tab-panel></rh-tab-panel>
-            {%- endif -%}
+          <rh-tab-panel hidden></rh-tab-panel>
+          {%- endif -%}
           {%- endfor -%}
         </rh-tabs>
         <playground-file-editor project="{{ projectId }}"
                                 filename="{{ filename }}"
                                 line-numbers></playground-file-editor>
-      </section>
+        <rh-cta slot="footer"
+                href="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/{{ element.tagName }}/demo/{{ config.label | slugify }}.html">View source on GitHub</rh-cta>
+        <rh-cta slot="footer"
+                href="/elements/{{ slug }}/demo/{{ config.label | slugify}}/">View Fullscreen</rh-cta>
+      </rh-card>
     </playground-project>
   {%- endif -%}
 {%- endfor -%}
