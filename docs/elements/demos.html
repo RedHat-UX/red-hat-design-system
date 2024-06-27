@@ -99,8 +99,14 @@ playground-project {
     {% set extension = filename.split('.').pop() %}
     {% set demoSlug  = filename.split('.').shift().replace('demo/', '').replaceAll('/', '-') %}
     {% set projectId       %}playground-{{ element.tagName }}-{{ demoSlug }}{% endset %}
-    {% set githubSourceUrl %}https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/{{ element.tagName }}/demo/{{ filename }}.html{% endset %}
     {% set demoPageUrl     %}/elements/{{ slug }}/demo/{{ config.label | slugify }}/{% endset %}
+    {% set githubSourcePrefix %}https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements{% endset %}
+    {% set githubSourceUrl %}{{ githubSourcePrefix }}/{{ element.tagName }}/demo/{{ filename
+        | replace('demo/', '')
+        | replace('/index.html', '')
+        | replace('.html', '')
+        | replace('index', element.tagName)
+    }}.html{% endset %}
     <h2 id="demo-{{ config.label | slugify }}">{{ config.label }}</h2>
     <playground-project id="{{ projectId }}" {% if isLocal %}
                         sandbox-base-url="http://localhost:8080"
