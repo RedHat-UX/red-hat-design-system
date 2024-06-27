@@ -7,6 +7,7 @@ class UxdotCopyPermalink extends LitElement {
   static styles = css`
     :host {
       display: flex;
+      margin-block-end: var(--rh-space-lg, 16px);
       align-items: center;
     }
 
@@ -32,6 +33,7 @@ class UxdotCopyPermalink extends LitElement {
 
     ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
       display: flex;
+      margin-block-end: 0 !important;
       align-items: center;
       color: inherit;
       text-decoration: inherit;
