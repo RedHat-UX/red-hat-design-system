@@ -20,6 +20,9 @@ playground-project {
   --playground-code-background: var(--rh-color-surface-lighter);
   & playground-preview {
     border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle-on-light);
+    &::part(preview-toolbar) {
+      display: none;
+    }
   }
   & rh-card {
     &::part(header),
