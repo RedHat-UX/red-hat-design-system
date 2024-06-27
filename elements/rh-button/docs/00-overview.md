@@ -13,16 +13,6 @@
 
 <rh-button>Primary</rh-button>
 
-
-## Demos
-
-View a live version of this component and see how it can be customized.
-
-{% playground tagName=tagName %}{% endplayground %}
-
-<rh-cta><a href="{{ './demo/' | url }}">Full screen demo</a></rh-cta>
-
-
 ## When to use
 
   - When you need to allow users to interact with pages in a variety of ways

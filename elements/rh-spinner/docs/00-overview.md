@@ -13,14 +13,6 @@
 
 <rh-spinner>Loading...</rh-spinner>
 
-
-## Demos
-View a live version of this component and see how it can be customized.
-
-{% playground tagName=tagName %}{% endplayground %}
-
-<rh-cta><a href="{{ './demo/' | url }}">Full screen demo</a></rh-cta>
-
 ## When to use
 
   - When loading a section is expected to take fewer than ten seconds

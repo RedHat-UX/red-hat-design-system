@@ -6,19 +6,13 @@ importElements:
   - rh-alert
   - rh-subnav
 ---
-{% if hasToc %}
-  <link rel="stylesheet" href="{{ '/assets/javascript/elements/uxdot-toc-lightdom.css' | url }}">
-{% endif %}
-<link rel="stylesheet" href="{{ '/styles/pages/backpage.css' | url }}">
+<link rel="stylesheet" href="/styles/pages/backpage.css">
 
-<script type="module" src="{{ '/assets/javascript/elements/uxdot-feedback.js' | url }}"></script>
-{% if hasToc %}
-<script type="module" src="{{ '/assets/javascript/elements/uxdot-toc.js' | url }}"></script>
-{% endif %}
-{% if tokenSearch %}
-<script type="module" src="{{ '/assets/javascript/elements/uxdot-search.js' | url }}"></script>
-<script type="module" src="{{ '/assets/javascript/tokens.js' | url }}"></script>
-{% endif %}
+<script type="module" src="/assets/javascript/elements/uxdot-feedback.js"></script>
+{%- if tokenSearch %}
+<script type="module" src="/assets/javascript/elements/uxdot-search.js"></script>
+<script type="module" src="/assets/javascript/tokens.js"></script>
+{%- endif %}
 {% include 'partials/component/masthead.njk' %}
 {% include 'partials/component/sidenav.njk' %}
 
