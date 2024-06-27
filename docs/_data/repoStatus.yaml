@@ -292,14 +292,12 @@
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: WebRH
       status: Planned
     - name: Documentation
-      status: Ready    
+      status: Ready  
 - name: "Table"
   type: "Element"
   overallStatus: "New"
