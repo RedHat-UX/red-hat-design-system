@@ -149,14 +149,17 @@ async function getConfig() {
       append(
         fragment,
         Tools.createCommentNode('playground-fold'),
+        Tools.createTextNode('\n\n'),
         Tools.createElement('link', {
           rel: 'stylesheet',
           href: `${cssPrefix}reset.css`,
         }),
+        Tools.createTextNode('\n'),
         Tools.createElement('link', {
           rel: 'stylesheet',
           href: `${cssPrefix}fonts.css`,
         }),
+        Tools.createTextNode('\n'),
         Tools.createElement('link', {
           rel: 'stylesheet',
           href: `${cssPrefix}typography.css`,
