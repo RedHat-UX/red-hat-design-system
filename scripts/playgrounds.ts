@@ -286,20 +286,6 @@ class PlaygroundDemo {
       // @ts-expect-error: this is a hint to our njk template
       inline: this.filename,
     });
-    for (const sibling of Tools.previousSiblings(node)) {
-      if (Tools.isTextNode(sibling) && !sibling.value.trim()) {
-        Tools.removeNode(sibling);
-      } else {
-        break;
-      }
-    }
-    for (const sibling of Tools.nextSiblings(node)) {
-      if (Tools.isTextNode(sibling) && !sibling.value.trim()) {
-        Tools.removeNode(sibling);
-      } else {
-        break;
-      }
-    }
     Tools.removeNode(node);
   }
 
@@ -321,12 +307,24 @@ class PlaygroundDemo {
     }
   }
 
-  public async addFiles(fileMap: PlaygroundFileMap) {
+  public async replaceInlineSubresourcesWithHiddenFileLinks(fileMap: PlaygroundFileMap) {
+    // remove inline subresources and replace them with links to hidden project files
     this.append(Tools.createCommentNode('playground-hide'));
     this.splitOutInlineSubresources(fileMap);
     await this.addAllSubresources(fileMap);
     this.addCommonCss();
     this.append(Tools.createCommentNode('playground-hide-end'));
+    // trim whitespace before the hidden nodes
+    let node: Tools.Node | undefined;
+    let index = this.fragment.childNodes.findIndex(node =>
+      Tools.isCommentNode(node) && node.data === 'playground-hide');
+    while (Tools.isTextNode(node = this.fragment.childNodes.at(--index)!)) {
+      if (!node.value.trim()) {
+        Tools.removeNode(node);
+      } else {
+        break;
+      }
+    }
     const content = this.getFinalContent();
     fileMap.set(this.filename, {
       contentType: 'text/html',
@@ -353,7 +351,7 @@ class PlaygroundFileMap extends Map<FilePath, FileOptions> {
     const map = new PlaygroundFileMap();
     for (const demo of demos) {
       const playgroundDemo = await PlaygroundDemo.of(demo);
-      await playgroundDemo?.addFiles(map);
+      await playgroundDemo?.replaceInlineSubresourcesWithHiddenFileLinks(map);
     }
     return map;
   }
