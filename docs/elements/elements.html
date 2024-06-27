@@ -1,80 +1,11 @@
 ---
-layout: layouts/base.njk
+templateEngineOverride: njk
+hasToc: true
+layout: layouts/pages/elements.njk
+permalink: "{{ doc.permalink }}"
 pagination:
   data: collections.elementDocs
-  size: 1
   alias: doc
-hasToc: true
-permalink: "{{ doc.permalink }}"
-eleventyComputed:
-  title: "{{ doc.pageTitle }} | {{ doc.slug | deslugify }}"
-  importElements:
-    - rh-alert
-    - rh-tag
-    - rh-cta
-    - rh-footer
-    - rh-subnav
-    - rh-code-block
-    - rh-table
-    - rh-accordion
-    - rh-badge
-    - "{{ doc.tagName }}"
-
+  size: 1
 ---
-<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
-{% if doc.slug == 'audio-player' %}
-  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-audio-player/rh-audio-player-lightdom.css">
-  <noscript>
-    <style>
-    rh-audio-player:not([expanded]) rh-transcript:not(:defined) {
-      display: block;
-    }
-    </style>
-  </noscript>
-{% endif %}
-{% if doc.slug == 'pagination' %}
-  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-pagination/rh-pagination-lightdom.css">
-{% endif %}
-{% if doc.slug == 'tile' %}
-  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
-{% endif %}
-<link rel="stylesheet" href="{{ '/styles/pages/backpage.css' | url }}">
-<link rel="stylesheet" href="{{ '/styles/samp.css' | url }}">
-
-<style>
-  rh-accordion details summary {
-    font-weight: var(--rh-font-weight-heading-medium, 500);
-  }
-</style>
-
-<script type="module" src="{{ '/assets/javascript/elements/uxdot-feedback.js' | url }}"></script>
-<script type="module" src="{{ '/assets/javascript/elements/uxdot-copy-button.js' | url }}"></script>
-
-{% include 'partials/component/masthead.njk' %}
-{% include 'partials/component/sidenav.njk' %}
-<main id="main">
-  <article {% if hasToc and (content | toc).length > 0 %}class="has-toc"{% endif %}>
-    <uxdot-header has-subnav>
-      <h1 id="{{ doc.slug }}" class="page-title">{{ doc.alias or (doc.slug | deslugify) }}</h1>
-      <rh-subnav slot="subnav">{% for tab in doc.tabs %}
-        <a {{ 'active' if tab.href == page.url }} href="{{ tab.href }}">
-          {{ tab.pageTitle | capitalize }}
-        </a>{% endfor %}
-      </rh-subnav>
-    </uxdot-header>
-
-    {% if hasToc  and (content | toc).length > 0 %}
-      <aside>
-        {{ content | toc | safe }}
-      </aside>
-    {% endif %}
-
-    <div class="container">
-      {% renderFile doc.filePath, doc.docsPage %}
-      {% include 'partials/component/feedback.html' %}
-    </div>
-
-  </article>
-  {% include "partials/component/back-to-top.njk" %}
-</main>
-{% include 'partials/component/footer.njk' %}
+{% renderFile doc.filePath, doc.docsPage %}
