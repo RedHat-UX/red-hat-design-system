@@ -53,6 +53,13 @@ const SRC_SUBRESOURCE_TAGNAMES = new Set([
   'rh-avatar',
 ]);
 
+/** Returns a string with common indent stripped from each line. Useful for templating HTML */
+function dedent(str: string) {
+  const stripped = str.replace(/^\n/, '');
+  const match = stripped.match(/^\s+/);
+  return match ? stripped.replace(new RegExp(`^${match[0]}`, 'gm'), '') : str;
+}
+
 function groupBy<T extends object>(prop: keyof T, xs: T[]): Record<string, T[]> {
   return xs.reduce((acc, x) =>
     Object.assign(acc, {
@@ -277,6 +284,17 @@ class PlaygroundDemo {
     }
   }
 
+  private replaceInlineNode(fileMap: PlaygroundFileMap, node: Tools.Element, name: string) {
+    const source = node.childNodes.map(x =>
+      (x as Tools.TextNode).value ?? '').join('\n');
+    const content = dedent(source);
+    fileMap.set(`demo/${name}`, {
+      content,
+      // @ts-expect-error: this is a hint to our njk template
+      inline: this.filename,
+    });
+    Tools.removeNode(node);
+  }
 
   /** @see https://github.com/google/playground-elements/issues/93#issuecomment-1775247123 */
   private async splitOutInlineModules(fileMap: PlaygroundFileMap) {
@@ -292,14 +310,7 @@ class PlaygroundDemo {
                   Tools.createTextNode('\n'),
                   Tools.createCommentNode('playground-fold-end'),
       );
-
-      fileMap.set(`demo/${moduleName}`, {
-        content: node.childNodes.map(x => (x as Tools.TextNode).value ?? '').join('\n').trim(),
-        // @ts-expect-error: this is a hint to our njk template
-        inline: this.filename,
-      });
-
-      Tools.removeNode(node);
+      this.replaceInlineNode(fileMap, node, moduleName);
     });
   }
 
@@ -318,14 +329,7 @@ class PlaygroundDemo {
                   Tools.createTextNode('\n'),
                   Tools.createCommentNode('playground-fold-end'),
       );
-
-      fileMap.set(`demo/${stylesheetName}`, {
-        content: node.childNodes.map(x => (x as Tools.TextNode).value ?? '').join('\n').trim(),
-        // @ts-expect-error: this is a hint to our njk template
-        inline: this.filename,
-      });
-
-      Tools.removeNode(node);
+      this.replaceInlineNode(fileMap, node, stylesheetName);
     });
   }
 }
