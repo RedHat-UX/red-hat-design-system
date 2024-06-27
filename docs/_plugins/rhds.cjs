@@ -11,12 +11,16 @@ const RHDSAlphabetizeTagsPlugin = require('./alphabetize-tags.cjs');
 const RHDSShortcodesPlugin = require('./shortcodes.cjs');
 const { parse } = require('async-csv');
 
-/** @typedef {object} EleventyTransformContext */
+/**
+ * @typedef {object} EleventyTransformContext the `this` binding for transform functions
+ * @property {string} outputPath the path the page will be written to
+ * @property {string} inputPath the path to the page's input file (e.g. template or paginator)
+ */
 
 /**
  * Replace paths in demo files from the dev SPA's format to 11ty's format
  * @this {EleventyTransformContext}
- * @param {string} content
+ * @param {string} content the HTML content to replace
  */
 function demoPaths(content) {
   const { outputPath, inputPath } = this;
@@ -42,11 +46,12 @@ function demoPaths(content) {
 }
 
 // Rewrite DEMO lightdom css relative URLs
-const LIGHTDOM_HREF_RE = /href="\.(?<pathname>.*-lightdom\.css)"/g;
+const LIGHTDOM_HREF_RE = /href="\.(?<pathname>.*-lightdom.*\.css)"/g;
 const LIGHTDOM_PATH_RE = /href="\.(.*)"/;
 
 /**
- * @param {string | number | Date} dateStr
+ * @param {string | number | Date} dateStr iso date string
+ * @param {Intl.DateTimeFormatOptions} options date format options
  */
 function prettyDate(dateStr, options = {}) {
   const { dateStyle = 'medium' } = options;
@@ -54,6 +59,10 @@ function prettyDate(dateStr, options = {}) {
       .format(new Date(dateStr));
 }
 
+/**
+ * @param {string} tagName e.g. pf-jazz-hands
+ * @param {import("@patternfly/pfe-tools/config.js").PfeConfig} config pfe tools repo config
+ */
 function getTagNameSlug(tagName, config) {
   const name = config?.aliases?.[tagName] ?? tagName.replace(`${config?.tagPrefix ?? 'rh'}-`, '');
   return slugify(name, {
@@ -90,7 +99,7 @@ function getFilesToCopy() {
       .filter(ent => ent.isDirectory())
       .map(ent => ent.name);
 
-  /** @type{import('@patternfly/pfe-tools/config.js').PfeConfig}*/
+  /** @type {import('@patternfly/pfe-tools/config.js').PfeConfig} */
   const config = require('../../.pfe.config.json');
 
   // Copy all component and core files to _site
@@ -103,6 +112,10 @@ function getFilesToCopy() {
   }));
 }
 
+/**
+ * @param {{ slug: number; }} a first
+ * @param {{ slug: number; }} b next
+ */
 function alphabeticallyBySlug(a, b) {
   return (
       a.slug < b.slug ? -1
@@ -111,7 +124,7 @@ function alphabeticallyBySlug(a, b) {
   );
 }
 
-/** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
+/** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig user config */
 module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   eleventyConfig.addDataExtension('yml, yaml', contents => yaml.load(contents));
 
@@ -158,8 +171,8 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
 
         // does the tagName exist in the aliases object?
         const key = Object.keys(modifiedAliases).find(key => modifiedAliases[key] === tagName);
-
-        const prefixedTagName = `${pfeconfig?.tagPrefix}-${tagName}`;
+        const { deslugify } = await import('@patternfly/pfe-tools/config.js');
+        const prefixedTagName = deslugify(tagName, path.join(__dirname, '../..'));
         const redirect = { new: key ?? prefixedTagName, old: tagName };
         const matches = content.match(LIGHTDOM_HREF_RE);
         if (matches) {
@@ -189,7 +202,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
      * NB: since the data for this shortcode is no a POJO,
      * but a DocsPage instance, 11ty assigns it to this.ctx._
      * @see https://github.com/11ty/eleventy/blob/bf7c0c0cce1b2cb01561f57fdd33db001df4cb7e/src/Plugins/RenderPlugin.js#L89-L93
-     * @type {import('@patternfly/pfe-tools/11ty/DocsPage').DocsPage}
+     * @type {import('@patternfly/pfe-tools/11ty/DocsPage.js').DocsPage}
      */
     const docsPage = this.ctx._;
     return docsPage.description;
