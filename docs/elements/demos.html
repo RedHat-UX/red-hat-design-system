@@ -14,6 +14,7 @@ pagination:
 playground-project section {
   display: flex;
   flex-flow: row wrap;
+  & rh-tabs,
   & playground-preview,
   & playground-file-editor {
     width: 100%;
@@ -21,11 +22,30 @@ playground-project section {
   & rh-cta {
     margin-inline-start: auto;
   }
+  & rh-tab-panel {
+    display: none !important;
+  }
 }
 </style>
 
 <script type="module">
   import 'playground-elements';
+  import '@rhds/elements/rh-tabs/rh-tabs.js';
+  import {TabExpandEvent} from '@rhds/elements/rh-tabs/rh-tab.js';
+  for (const tabs of document.querySelectorAll('.demo-fileswitcher')) {
+    tabs.addEventListener('expand', function(event) {
+      if (event instanceof TabExpandEvent && event.active) {
+        const { filename } = event.tab.dataset;
+        if (filename) {
+          const project = tabs.closest('playground-project');
+          const fileEditor = project.querySelector('playground-file-editor');
+          if (fileEditor) {
+            fileEditor.filename = filename;
+          }
+        }
+      }
+    })
+  }
 </script>
 
 {# START COMMON
@@ -85,6 +105,16 @@ playground-project section {
         <rh-cta><a href="/elements/{{ slug }}/demo/{{ config.label | slugify}}/">View Fullscreen Demo</a></rh-cta>
         <playground-preview project="{{ projectId }}"
                             html-file="{{ filename }}"></playground-preview>
+        <rh-tabs class="demo-fileswitcher">
+          <rh-tab slot="tab" data-filename="{{ filename }}">HTML</rh-tab>
+          <rh-tab-panel></rh-tab-panel>
+          {%- for subresourcename, config in playground.files -%}
+            {%- if config.inline === filename -%}
+          <rh-tab slot="tab" data-filename="{{ subresourcename }}">{{ subresourcename.split('.').pop().toUpperCase() }}</rh-tab>
+          <rh-tab-panel></rh-tab-panel>
+            {%- endif -%}
+          {%- endfor -%}
+        </rh-tabs>
         <playground-file-editor project="{{ projectId }}"
                                 filename="{{ filename }}"
                                 line-numbers></playground-file-editor>

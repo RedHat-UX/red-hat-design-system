@@ -3,13 +3,16 @@ import * as path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import chalk from 'chalk';
 
-import { getPfeConfig } from '@patternfly/pfe-tools/config.js';
+import type { FileOptions, ProjectManifest } from 'playground-elements/shared/worker-api.js';
+
+import { getPfeConfig, type PfeConfig } from '@patternfly/pfe-tools/config.js';
 import {
   type DemoRecord,
   Manifest,
 } from '@patternfly/pfe-tools/custom-elements-manifest/lib/Manifest.js';
 
 import { parseFragment, serialize } from 'parse5';
+
 import * as Tools from '@parse5/tools';
 
 function groupBy<T extends object>(prop: keyof T, xs: T[]): Record<string, T[]> {
@@ -83,6 +86,10 @@ function isModuleScript(node: Tools.Element) {
   );
 }
 
+function isStyleElement(node: Tools.Element) {
+  return node.tagName === 'style';
+}
+
 function isStyleLink(node: Tools.Element) {
   return (
     node.tagName === 'link'
@@ -112,212 +119,288 @@ class SubresourceError extends Error {
   }
 }
 
-function append(node: Tools.Node, ...nodes: Tools.ChildNode[]) {
-  Tools.spliceChildren(node, Infinity, 0, ...nodes);
-}
+class PlaygroundDemo {
+  private static isValidDemo(demo: DemoRecord): demo is Required<DemoRecord> {
+    return !!demo.filePath && !demo.filePath.endsWith('proxy.html');
+  }
 
-async function getConfig() {
-  const pfeConfig = getPfeConfig();
-  const demos = Manifest.getAll(new URL('../', import.meta.url).pathname)
-      .flatMap(manifest => manifest.getTagNames()
-          .flatMap(tagName => manifest.getDemoMetadata(tagName, pfeConfig)));
-
-  const demoManifests = groupBy('primaryElementName', demos);
-
-  const playgroundConfigsMap = new Map();
-
-  const resetCSS = pathToFileURL(path.join(process.cwd(), 'docs/styles/reset.css'));
-  const resetCSSSource = await fs.readFile(resetCSS.pathname, 'utf8');
-  const fontsCSS = pathToFileURL(path.join(process.cwd(), 'docs/styles/fonts.css'));
-  const fontsCSSSource = await fs.readFile(fontsCSS.pathname, 'utf8');
-  const typographyCSS = pathToFileURL(path.join(process.cwd(), 'docs/styles/typography.css'));
-  const typographyCSSSource = await fs.readFile(typographyCSS.pathname, 'utf8');
-
-  for (const [primaryElementName, demos] of Object.entries(demoManifests)) {
-    const fileMap = new Map();
-
-    for (const demo of demos) {
-      if (!demo.filePath || demo.filePath.endsWith('proxy.html')) {
-        continue;
-      }
-
-      const demoSource = await fs.readFile(demo.filePath, 'utf8');
-      const fragment = parseFragment(demoSource);
-
-      const cssPrefix = demo.filePath.match(DEMO_FILEPATH_IS_MAIN_DEMO_RE) ? '' : '../';
-
-      append(
-        fragment,
-        Tools.createCommentNode('playground-fold'),
-        Tools.createTextNode('\n\n'),
-        Tools.createElement('link', {
-          rel: 'stylesheet',
-          href: `${cssPrefix}reset.css`,
-        }),
-        Tools.createTextNode('\n'),
-        Tools.createElement('link', {
-          rel: 'stylesheet',
-          href: `${cssPrefix}fonts.css`,
-        }),
-        Tools.createTextNode('\n'),
-        Tools.createElement('link', {
-          rel: 'stylesheet',
-          href: `${cssPrefix}typography.css`,
-        }),
-        Tools.createTextNode('\n\n'),
-        Tools.createCommentNode('playground-fold-end'),
-      );
-
+  static async of(demo: DemoRecord) {
+    if (this.isValidDemo(demo)) {
       const filename = getDemoFilename(demo);
-
-      /** @see docs/_plugins/rhds.cjs demoPaths transform */
-      const base =
-        pathToFileURL(path.join(process.cwd(), 'elements', primaryElementName, 'demo/'));
-      const docsDir = pathToFileURL(path.join(process.cwd(), 'docs/'));
       const isMainDemo = filename === 'demo/index.html';
       const demoSlug = filename.split('/').at(1);
-
       if (!demoSlug) {
         throw new Error(`No slug for ${filename}`);
       }
-
-      const addSubresourceURL = async (subresourceURL: string) => {
-        if (subresourceURL && !subresourceURL.startsWith('http')) {
-          const subresourceFileURL = !subresourceURL.startsWith('/') ?
-            // non-tabular ternary
-
-            new URL(subresourceURL, base)
-            : new URL(subresourceURL.replace('/', './'), docsDir);
-          try {
-            const resourceName =
-              path.normalize(`demo${isMainDemo ? '' : `/${demoSlug}`}/${subresourceURL}`);
-            if (!fileMap.has(resourceName)) {
-              const content =
-                demoPaths(
-                  await fs.readFile(subresourceFileURL, 'utf8'),
-                  subresourceFileURL.pathname,
-                );
-              let contentType = 'text/plain';
-              switch (subresourceURL.split('.').pop()) {
-                case 'html': contentType = 'text/html'; break;
-                case 'css': contentType = 'text/css'; break;
-                case 'js': contentType = 'text/javascript'; break;
-              }
-              fileMap.set(resourceName, {
-                content,
-                contentType,
-                hidden: true,
-              });
-            }
-          } catch (e) {
-            throw new SubresourceError(
-              `Error generating playground for ${demo.slug}.\nCould not find subresource ${subresourceURL} at ${subresourceFileURL?.href ?? 'unknown'}`,
-              e,
-              subresourceFileURL,
-            );
-          }
-        }
-      };
-
-      fileMap.set('demo/reset.css', {
-        contentType: 'text/css',
-        content: resetCSSSource,
-        hidden: true,
-      });
-
-      fileMap.set('demo/fonts.css', {
-        contentType: 'text/css',
-        content: fontsCSSSource,
-        hidden: true,
-      });
-
-      fileMap.set('demo/typography.css', {
-        contentType: 'text/css',
-        content: typographyCSSSource,
-        hidden: true,
-      });
-
-      const hrefSubresourceElements: IterableIterator<Tools.Element> =
-        Tools.queryAll(fragment, node =>
-          Tools.isElementNode(node)
-            && isStyleLink(node));
-
-      const srcSubresourceElements: IterableIterator<Tools.Element> =
-        Tools.queryAll(fragment, node =>
-          Tools.isElementNode(node)
-          && SRC_SUBRESOURCE_TAGNAMES.has(node.tagName)
-          && hasLocalSrcAttr(node));
-
-      // register demo css resources
-      for (const el of hrefSubresourceElements) {
-        try {
-          const attrs = getAttrMap(el);
-          await addSubresourceURL(attrs.href);
-        } catch (e) {
-          // we can swallow the error for the demo typography and font file because we wrote it ourselves above.
-          // maybe not the most elegant solution, but it works
-          if (e.subresourceFileURL?.href?.endsWith('typography.css')
-            || e.subresourceFileURL?.href?.endsWith('fonts.css')) {
-            continue;
-          } else {
-            // In order to surface the error to the user, let's enable console logging
-            // eslint-disable-next-line no-console
-            console.log(e.message);
-            throw e;
-          }
-        }
-      }
-
-      // register demo script and image resources
-      for (const el of srcSubresourceElements) {
-        const attrs = getAttrMap(el);
-        await addSubresourceURL(attrs.src);
-      }
-
-      // HACK: https://github.com/google/playground-elements/issues/93#issuecomment-1775247123
-      const inlineModules: IterableIterator<Tools.Element> =
-        Tools.queryAll(fragment, node =>
-          Tools.isElementNode(node)
-          && isModuleScript(node)
-          && !node.attrs.some(({ name }) => name === 'src'));
-
-      Array.from(inlineModules).forEach((el, i) => {
-        const moduleName = `${primaryElementName}-${demoSlug.replace('.html', '')}-inline-script-${i++}.js`;
-        append(
-          fragment,
-          Tools.createCommentNode('playground-hide'),
-          Tools.createElement('script', {
-            type: 'module',
-            src: `./${demoSlug === 'index.html' ? '' : '../'}${moduleName}`,
-          }),
-          Tools.createTextNode('\n\n'),
-          Tools.createCommentNode('playground-hide-end'),
-        );
-
-        fileMap.set(`demo/${moduleName}`, {
-          content: el.childNodes.map(x => (x as Tools.TextNode).value ?? '').join('\n').trim(),
-          hidden: true,
-        });
-      });
-      // ENDHACK
-
-      fileMap.set(filename, {
-        contentType: 'text/html',
-        selected: isMainDemo,
-        content: demoPaths(serialize(fragment), demo.filePath),
-        label: demo.title,
-      });
-
-      const files = Object.fromEntries(fileMap.entries());
-      playgroundConfigsMap.set(primaryElementName, { files });
+      return new PlaygroundDemo(
+        demo,
+        filename,
+        isMainDemo,
+        demoSlug,
+        parseFragment(await fs.readFile(demo.filePath, 'utf8')),
+      );
     }
   }
 
-  return Object.fromEntries(playgroundConfigsMap.entries());
-};
+  private constructor(
+    private demo: Required<DemoRecord>,
+    private filename: string,
+    private isMainDemo: boolean,
+    private demoSlug: string,
+    private fragment: Tools.DocumentFragment,
+  ) {
+    const cssPrefix = this.demo.filePath.match(DEMO_FILEPATH_IS_MAIN_DEMO_RE) ? '' : '../';
+    this.append(Tools.createCommentNode('playground-fold'),
+                Tools.createTextNode('\n\n'),
+                Tools.createElement('link', {
+                  rel: 'stylesheet',
+                  href: `${cssPrefix}reset.css`,
+                }),
+                Tools.createTextNode('\n'),
+                Tools.createElement('link', {
+                  rel: 'stylesheet',
+                  href: `${cssPrefix}fonts.css`,
+                }),
+                Tools.createTextNode('\n'),
+                Tools.createElement('link', {
+                  rel: 'stylesheet',
+                  href: `${cssPrefix}typography.css`,
+                }),
+                Tools.createCommentNode('playground-fold-end'));
+  }
+
+  public async addFiles(fileMap: PlaygroundFileMap) {
+    this.splitOutInlineStyles(fileMap);
+    this.splitOutInlineModules(fileMap);
+    await this.addAllSubresources(fileMap);
+    fileMap.set(this.filename, {
+      contentType: 'text/html',
+      selected: this.isMainDemo,
+      content: demoPaths(serialize(this.fragment), this.demo.filePath),
+      label: this.demo.title,
+    });
+  }
+
+  private append(...nodes: Tools.ChildNode[]) {
+    Tools.spliceChildren(this.fragment, Infinity, 0, ...nodes);
+  }
+
+  private async addSubresourceURL(fileMap: PlaygroundFileMap, subresourceURL: string) {
+    const { isMainDemo, demoSlug } = this;
+    /** @see docs/_plugins/rhds.cjs demoPaths transform */
+    const base = pathToFileURL(path.join(
+      process.cwd(),
+      'elements',
+      this.demo.primaryElementName,
+      'demo/',
+    ));
+    const docsDir = pathToFileURL(path.join(process.cwd(), 'docs/'));
+    if (subresourceURL && !subresourceURL.startsWith('http')) {
+      const subresourceFileURL =
+        !subresourceURL.startsWith('/') ? new URL(subresourceURL, base)
+      : new URL(subresourceURL.replace('/', './'), docsDir);
+      try {
+        const resourceName =
+          path.normalize(`demo${isMainDemo ? '' : `/${demoSlug}`}/${subresourceURL}`);
+        if (!fileMap.has(resourceName)) {
+          const content =
+            demoPaths(await fs.readFile(subresourceFileURL, 'utf8'), subresourceFileURL.pathname);
+          let contentType = 'text/plain';
+          switch (subresourceURL.split('.').pop()) {
+            case 'html': contentType = 'text/html'; break;
+            case 'css': contentType = 'text/css'; break;
+            case 'js': contentType = 'text/javascript'; break;
+          }
+          fileMap.set(resourceName, {
+            content,
+            contentType,
+            hidden: true,
+          });
+        }
+      } catch (e) {
+        throw new SubresourceError(
+          `Could not find subresource ${subresourceURL} at ${subresourceFileURL?.href ?? 'unknown'}`,
+          e,
+          subresourceFileURL,
+        );
+      }
+    }
+  }
+
+  private async addAllSubresources(fileMap: PlaygroundFileMap) {
+    const hrefSubresourceElements: IterableIterator<Tools.Element> =
+          Tools.queryAll(this.fragment, node =>
+            Tools.isElementNode(node)
+              && isStyleLink(node));
+
+    const srcSubresourceElements: IterableIterator<Tools.Element> =
+          Tools.queryAll(this.fragment, node =>
+            Tools.isElementNode(node)
+            && SRC_SUBRESOURCE_TAGNAMES.has(node.tagName)
+            && hasLocalSrcAttr(node));
+
+    // register demo css resources
+    for (const el of hrefSubresourceElements) {
+      try {
+        const attrs = getAttrMap(el);
+        await this.addSubresourceURL(fileMap, attrs.href);
+      } catch (e) {
+        // we can swallow the error for the demo typography and font file because we wrote it ourselves above.
+        // maybe not the most elegant solution, but it works
+        if (e.subresourceFileURL?.href?.endsWith('typography.css')
+            || e.subresourceFileURL?.href?.endsWith('reset.css')
+            || e.subresourceFileURL?.href?.endsWith('fonts.css')) {
+          continue;
+        } else {
+          // In order to surface the error to the user, let's enable console logging
+          // eslint-disable-next-line no-console
+          console.log(e.message);
+          throw e;
+        }
+      }
+    }
+
+    // register demo script and image resources
+    for (const el of srcSubresourceElements) {
+      const attrs = getAttrMap(el);
+      await this.addSubresourceURL(fileMap, attrs.src);
+    }
+  }
+
+
+  /** @see https://github.com/google/playground-elements/issues/93#issuecomment-1775247123 */
+  private async splitOutInlineModules(fileMap: PlaygroundFileMap) {
+    const inlineModules: IterableIterator<Tools.Element> =
+      Tools.queryAll(this.fragment, node =>
+        Tools.isElementNode(node)
+        && isModuleScript(node)
+        && !node.attrs.some(({ name }) => name === 'src'));
+
+    Array.from(inlineModules).forEach((node, i) => {
+      const moduleName = `${this.demo.primaryElementName}-${this.demoSlug.replace('.html', '')}-inline-script-${i++}.js`;
+      this.append(Tools.createTextNode('\n'),
+                  Tools.createCommentNode('playground-fold'),
+                  Tools.createElement('script', {
+                    type: 'module',
+                    src: `./${this.demoSlug === 'index.html' ? '' : '../'}${moduleName}`,
+                  }),
+                  Tools.createTextNode('\n'),
+                  Tools.createCommentNode('playground-fold-end'),
+      );
+
+      fileMap.set(`demo/${moduleName}`, {
+        content: node.childNodes.map(x => (x as Tools.TextNode).value ?? '').join('\n').trim(),
+        // @ts-expect-error: this is a hint to our njk template
+        inline: this.filename,
+      });
+
+      Tools.removeNode(node);
+    });
+  }
+
+  private async splitOutInlineStyles(fileMap: PlaygroundFileMap) {
+    const inlineStyles: IterableIterator<Tools.Element> =
+      Tools.queryAll(this.fragment, node => Tools.isElementNode(node) && isStyleElement(node));
+
+    Array.from(inlineStyles).forEach((node, i) => {
+      const stylesheetName = `${this.demo.primaryElementName}-${this.demoSlug.replace('.html', '')}-inline-style-${i++}.css`;
+      this.append(Tools.createTextNode('\n'),
+                  Tools.createCommentNode('playground-fold'),
+                  Tools.createElement('script', {
+                    type: 'module',
+                    src: `./${this.demoSlug === 'index.html' ? '' : '../'}${stylesheetName}`,
+                  }),
+                  Tools.createTextNode('\n'),
+                  Tools.createCommentNode('playground-fold-end'),
+      );
+
+      fileMap.set(`demo/${stylesheetName}`, {
+        content: node.childNodes.map(x => (x as Tools.TextNode).value ?? '').join('\n').trim(),
+        // @ts-expect-error: this is a hint to our njk template
+        inline: this.filename,
+      });
+
+      Tools.removeNode(node);
+    });
+  }
+}
+
+class PlaygroundFileMap extends Map<string, FileOptions> {
+  private static urls = {
+    reset: pathToFileURL(path.join(process.cwd(), 'docs/styles/reset.css')),
+    fonts: pathToFileURL(path.join(process.cwd(), 'docs/styles/fonts.css')),
+    typography: pathToFileURL(path.join(process.cwd(), 'docs/styles/typography.css')),
+  };
+
+  private static sources: Partial<Record<keyof typeof PlaygroundFileMap.urls, string>> = {};
+
+  static async of(demos: DemoRecord[]) {
+    this.sources.reset ??= await fs.readFile(this.urls.reset.pathname, 'utf8');
+    this.sources.fonts ??= await fs.readFile(this.urls.fonts.pathname, 'utf8');
+    this.sources.typography ??= await fs.readFile(this.urls.typography.pathname, 'utf8');
+    const map = new PlaygroundFileMap();
+    for (const demo of demos) {
+      const playgroundDemo = await PlaygroundDemo.of(demo);
+      await playgroundDemo?.addFiles(map);
+    }
+    return map;
+  }
+
+  private constructor() {
+    super();
+  }
+
+  print() {
+    this.set('demo/reset.css', {
+      contentType: 'text/css',
+      content: PlaygroundFileMap.sources.reset,
+      hidden: true,
+    });
+
+    this.set('demo/fonts.css', {
+      contentType: 'text/css',
+      content: PlaygroundFileMap.sources.fonts,
+      hidden: true,
+    });
+
+    this.set('demo/typography.css', {
+      contentType: 'text/css',
+      content: PlaygroundFileMap.sources.typography,
+      hidden: true,
+    });
+
+    return Object.fromEntries(this.entries());
+  }
+}
+
+class PlaygroundConfigMap extends Map<string, Pick<ProjectManifest, 'files'>> {
+  static async of(pfeConfig: Required<PfeConfig>) {
+    const demos = Manifest.getAll(new URL('../', import.meta.url).pathname)
+        .flatMap(manifest => manifest.getTagNames()
+            .flatMap(tagName => manifest.getDemoMetadata(tagName, pfeConfig)));
+    const demoManifests = groupBy('primaryElementName', demos);
+    const map = new this();
+    for (const [primaryElementName, demos] of Object.entries(demoManifests)) {
+      const fileMap = await PlaygroundFileMap.of(demos);
+      const files = fileMap.print();
+      map.set(primaryElementName, { files });
+    }
+    return map;
+  }
+
+  private constructor() {
+    super();
+  }
+
+  print() {
+    return Object.fromEntries(this.entries());
+  }
+}
 
 performance.mark('playgrounds-start');
-const config = await getConfig();
+const pfeConfig = getPfeConfig();
+const playgroundConfigsMap = await PlaygroundConfigMap.of(pfeConfig);
+const config = playgroundConfigsMap.print();
 const content = JSON.stringify(config, null, 2);
 const [,,outputRelative] = process.argv;
 const outputUrl = new URL(`../${outputRelative}`, import.meta.url);

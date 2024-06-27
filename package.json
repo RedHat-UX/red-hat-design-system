@@ -246,6 +246,7 @@
         "analyze"
       ],
       "files": [
+        "scripts/playgrounds.ts",
         "elements/*/demo/*.*",
         "custom-elements.json"
       ],
