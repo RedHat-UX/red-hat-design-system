@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en" dir="ltr"><head>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
@@ -14,26 +16,28 @@
     "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit-element": "/assets/packages/lit-element/index.js",
-    "lit": "/assets/packages/lit/index.js",
     "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
+    "lit": "/assets/packages/lit/index.js",
     "@rhds/tokens/meta.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js",
-    "lit/static-html.js": "/assets/packages/lit/static-html.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
-    "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@3.0.0/core.js",
-    "@rhds/tokens": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/tokens.js",
     "@rhds/tokens/media.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@3.0.0/core.js",
+    "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "lit/static-html.js": "/assets/packages/lit/static-html.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
-    "@lit-labs/ssr-client/lit-element-hydrate-support.js": "https://ga.jspm.io/npm:@lit-labs/ssr-client@1.1.7/lit-element-hydrate-support.js",
+    "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
+    "@lit-labs/ssr-client/lit-element-hydrate-support.js": "https://ga.jspm.io/npm:@lit-labs/ssr-client@1.1.7/lit-element-hydrate-support.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.esm.js",
     "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
-    "@rhds/elements/": "/assets/packages/@rhds/elements/elements/",
     "@rhds/elements/lib/": "/assets/packages/@rhds/elements/lib/",
+    "@rhds/elements/": "/assets/packages/@rhds/elements/elements/",
     "@patternfly/elements/": "/assets/packages/@patternfly/elements/",
     "@patternfly/icons/": "/assets/packages/@patternfly/icons/",
-    "@patternfly/pfe-core/": "/assets/packages/@patternfly/pfe-core/"
+    "@patternfly/pfe-core/": "/assets/packages/@patternfly/pfe-core/",
+    "playground-elements": "https://cdn.jsdelivr.net/npm/playground-elements@0.18.1/+esm"
   },
   "scopes": {
     "https://ga.jspm.io/": {
@@ -51,7 +55,7 @@
     }
   }
 }</script>
-    <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
+    <script async src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
     <script type="module">
       import 'element-internals-polyfill';
     </script>
@@ -61,11 +65,11 @@
       main { display: grid; }
     </style>
   </head>
-  <body unresolved="">
+  <body unresolved>
     <main>
       <div data-demo="rh-footer"><rh-footer data-analytics-region="page-footer">
   <a slot="logo" href="https://redhat.com/en" data-analytics-category="Footer" data-analytics-text="Logo">
-    <img alt="Red Hat logo" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" loading="lazy">
+    <img alt="Red Hat logo" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" loading="lazy" />
   </a>
   <rh-footer-social-link slot="social-links" icon="linkedin"><a href="https://www.linkedin.com/company/red-hat" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="LinkedIn">LinkedIn</a></rh-footer-social-link>
   <rh-footer-social-link slot="social-links" icon="youtube"><a href="https://www.youtube.com/user/RedHatVideos" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="YouTube">YouTube</a></rh-footer-social-link>
@@ -89,7 +93,7 @@
     <li><a href="https://connect.redhat.com/" data-analytics-category="Footer|Tools" data-analytics-text="Partner resources">Partner resources</a></li>
     <li><a href="https://redhat.com/en/resources" data-analytics-category="Footer|Tools" data-analytics-text="Resource library">Resource library</a></li>
   </ul>
-  <h3 slot="links" data-analytics-text="Try buy sell">Try, buy &amp; sell</h3>
+  <h3 slot="links" data-analytics-text="Try buy sell">Try, buy & sell</h3>
   <ul slot="links">
     <li><a href="https://redhat.com/en/products/trials" data-analytics-category="Footer|Try buy sell" data-analytics-text="Product trial center">Product trial center</a></li>
     <li><a href="https://marketplace.redhat.com" data-analytics-category="Footer|Try buy sell" data-analytics-text="Red Hat Marketplace">Red Hat Marketplace</a></li>
@@ -111,12 +115,12 @@
   </rh-footer-block>
   <rh-footer-block slot="main-secondary">
     <h3 slot="header" data-analytics-text="Subscribe to our newsletter Red Hat Shares">Subscribe to our newsletter, Red Hat Shares</h3>
-    <rh-cta><a href="https://www.redhat.com/en/email-preferences?newsletter=RH-Shares&amp;intcmp=7016000000154xCAAQ" data-analytics-category="Footer|About Red Hat" data-analytics-text="Sign up now">Sign up now</a></rh-cta>
+    <rh-cta><a href="https://www.redhat.com/en/email-preferences?newsletter=RH-Shares&intcmp=7016000000154xCAAQ" data-analytics-category="Footer|About Red Hat" data-analytics-text="Sign up now">Sign up now</a></rh-cta>
   </rh-footer-block>
 
   <!-- Universal Footer -->
   <rh-footer-universal slot="universal">
-    <h3 slot="links-primary" data-analytics-text="Red Hat legal and privacy links" hidden="">Red Hat legal and privacy links</h3>
+    <h3 slot="links-primary" data-analytics-text="Red Hat legal and privacy links" hidden>Red Hat legal and privacy links</h3>
     <ul slot="links-primary" data-analytics-region="page-footer-bottom-primary">
       <li><a href="https://redhat.com/en/about/company" data-analytics-category="Footer|Corporate" data-analytics-text="About Red Hat">About Red Hat</a></li>
       <li><a href="https://redhat.com/en/jobs" data-analytics-category="Footer|Corporate" data-analytics-text="Jobs">Jobs</a></li>
@@ -129,7 +133,7 @@
       <li><a href="https://www.redhat.com/en/summit" data-analytics-category="Footer|Corporate" data-analytics-text="Red Hat Summit">Red Hat Summit</a></li>
     </ul>
     <rh-footer-copyright slot="links-secondary">© 2022 Red Hat, Inc.</rh-footer-copyright>
-    <h3 slot="links-secondary" data-analytics-text="Red Hat legal and privacy links" hidden="">Red Hat legal and privacy links</h3>
+    <h3 slot="links-secondary" data-analytics-text="Red Hat legal and privacy links" hidden>Red Hat legal and privacy links</h3>
     <ul slot="links-secondary" data-analytics-region="page-footer-bottom-secondary">
       <li><a href="https://redhat.com/en/about/privacy-policy" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Privacy statement">Privacy statement</a></li>
       <li><a href="https://redhat.com/en/about/terms-use" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Terms of use">Terms of use</a></li>
@@ -141,7 +145,7 @@
   </rh-footer-universal>
 </rh-footer>
 
-<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-footer/rh-footer-lightdom.css">
+<link rel="stylesheet" href="../rh-footer-lightdom.css">
 
 <script type="module">
   import '@rhds/elements/rh-cta/rh-cta.js';
@@ -163,5 +167,5 @@
 
 
 </div>
-    </main>
-</body></html>
+    </main></body>
+</html>

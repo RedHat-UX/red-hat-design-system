@@ -37,26 +37,28 @@
     "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit-element": "/assets/packages/lit-element/index.js",
-    "lit": "/assets/packages/lit/index.js",
     "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
+    "lit": "/assets/packages/lit/index.js",
     "@rhds/tokens/meta.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js",
-    "lit/static-html.js": "/assets/packages/lit/static-html.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
-    "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@3.0.0/core.js",
-    "@rhds/tokens": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/tokens.js",
     "@rhds/tokens/media.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@3.0.0/core.js",
+    "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "lit/static-html.js": "/assets/packages/lit/static-html.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
-    "@lit-labs/ssr-client/lit-element-hydrate-support.js": "https://ga.jspm.io/npm:@lit-labs/ssr-client@1.1.7/lit-element-hydrate-support.js",
+    "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
+    "@lit-labs/ssr-client/lit-element-hydrate-support.js": "https://ga.jspm.io/npm:@lit-labs/ssr-client@1.1.7/lit-element-hydrate-support.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.esm.js",
     "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
-    "@rhds/elements/": "/assets/packages/@rhds/elements/elements/",
     "@rhds/elements/lib/": "/assets/packages/@rhds/elements/lib/",
+    "@rhds/elements/": "/assets/packages/@rhds/elements/elements/",
     "@patternfly/elements/": "/assets/packages/@patternfly/elements/",
     "@patternfly/icons/": "/assets/packages/@patternfly/icons/",
-    "@patternfly/pfe-core/": "/assets/packages/@patternfly/pfe-core/"
+    "@patternfly/pfe-core/": "/assets/packages/@patternfly/pfe-core/",
+    "playground-elements": "https://cdn.jsdelivr.net/npm/playground-elements@0.18.1/+esm"
   },
   "scopes": {
     "https://ga.jspm.io/": {
@@ -118,6 +120,8 @@
 
 
 
+    <link rel="stylesheet" href="/assets/javascript/elements/uxdot-toc-lightdom.css">
+    <script type="module" src="/assets/javascript/elements/uxdot-toc.js"></script>
   </head>
 
   <body dsd-pending="" class=" page-designcode-status">
@@ -161,16 +165,9 @@
   </style><!--lit-part kHJJur9OVoU=-->
       <slot></slot>
     <!--/lit-part--></template><a href="#main">Skip to main content</a></uxdot-skip-navigation>
-    
-  <link rel="stylesheet" href="/assets/javascript/elements/uxdot-toc-lightdom.css">
-
-<link rel="stylesheet" href="/styles/pages/backpage.css">
+    <link rel="stylesheet" href="/styles/pages/backpage.css">
 
 <script type="module" src="/assets/javascript/elements/uxdot-feedback.js"></script>
-
-<script type="module" src="/assets/javascript/elements/uxdot-toc.js"></script>
-
-
 <uxdot-masthead  role="banner"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: block;
@@ -496,8 +493,6 @@
               <ul>
                 
                   
-                  
-                  
                   <li>
                       <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
     ::slotted(a) {
@@ -531,7 +526,7 @@
   </style><!--lit-part kHJJur9OVoU=-->
       <slot></slot>
     <!--/lit-part--></template>
-                        <a href="/about/">About the design system</a>
+                        <a href="/about/">About the Design System</a>
                       </uxdot-sidenav-dropdown-menu-item>
                     </li><li>
                       <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
@@ -631,8 +626,6 @@
     <!--/lit-part--></template>
               <ul>
                 
-                  
-                  
                   
                   <li>
                       <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
@@ -767,8 +760,6 @@
     <!--/lit-part--></template>
               <ul>
                 
-                  
-                  
                   
                   <li>
                       <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
@@ -1045,9 +1036,6 @@
                         <a href="/tokens/">Overview</a>
                       </uxdot-sidenav-dropdown-menu-item>
                     </li>
-                  
-                  
-                  
                   <li>
                       <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
     ::slotted(a) {
@@ -1116,7 +1104,7 @@
   </style><!--lit-part kHJJur9OVoU=-->
       <slot></slot>
     <!--/lit-part--></template>
-                        <a href="/tokens/box-shadow/">Box shadow</a>
+                        <a href="/tokens/box-shadow/">box shadow</a>
                       </uxdot-sidenav-dropdown-menu-item>
                     </li><li>
                       <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
@@ -1186,7 +1174,7 @@
   </style><!--lit-part kHJJur9OVoU=-->
       <slot></slot>
     <!--/lit-part--></template>
-                        <a href="/tokens/border/">Border</a>
+                        <a href="/tokens/border/">border</a>
                       </uxdot-sidenav-dropdown-menu-item>
                     </li><li>
                       <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
@@ -1221,7 +1209,7 @@
   </style><!--lit-part kHJJur9OVoU=-->
       <slot></slot>
     <!--/lit-part--></template>
-                        <a href="/tokens/opacity/">Opacity</a>
+                        <a href="/tokens/opacity/">opacity</a>
                       </uxdot-sidenav-dropdown-menu-item>
                     </li><li>
                       <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
@@ -1256,7 +1244,7 @@
   </style><!--lit-part kHJJur9OVoU=-->
       <slot></slot>
     <!--/lit-part--></template>
-                        <a href="/tokens/space/">Space</a>
+                        <a href="/tokens/space/">space</a>
                       </uxdot-sidenav-dropdown-menu-item>
                     </li><li>
                       <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
@@ -1291,7 +1279,7 @@
   </style><!--lit-part kHJJur9OVoU=-->
       <slot></slot>
     <!--/lit-part--></template>
-                        <a href="/tokens/length/">Length</a>
+                        <a href="/tokens/length/">length</a>
                       </uxdot-sidenav-dropdown-menu-item>
                     </li><li>
                       <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
@@ -1396,7 +1384,7 @@
   </style><!--lit-part kHJJur9OVoU=-->
       <slot></slot>
     <!--/lit-part--></template>
-                        <a href="/tokens/media/">Media queries</a>
+                        <a href="/tokens/media/">Media Queries</a>
                       </uxdot-sidenav-dropdown-menu-item>
                     </li>
               </ul>
@@ -2599,8 +2587,6 @@
               <ul>
                 
                   
-                  
-                  
                   <li>
                       <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
     ::slotted(a) {
@@ -3084,8 +3070,6 @@
     <!--/lit-part--></template>
               <ul>
                 
-                  
-                  
                   
                   <li>
                       <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
@@ -5370,50 +5354,20 @@ Ready<svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em
   
   </article>
   <style>
-  /* TODO: Replace back-to-top with RHDS component */
-  /* unique id placed due to javascript converting headers to ids */
-  #back-to-top-q3x4zkd {
-    display: none;
-    pointer-events: none;
+  rh-back-to-top {
+    display: flex;
+    pointer-events: all;
     position: sticky;
     justify-content: flex-end;
     width: 100%;
     bottom: 32px;
     margin-block-start: -64px;
     padding-inline-end: 32px;
-  }
-
-  #back-to-top-q3x4zkd .link {
-    pointer-events: all;
-  }
+   }
 </style>
+<script type="module">import '@rhds/elements/rh-back-to-top/rh-back-to-top.js';</script>
+<rh-back-to-top href="#"></rh-back-to-top>
 
-<!-- Replace with <rh-back-to-top></rh-back-to-top> -->
-<div id="back-to-top-q3x4zkd">
-  <a href="#top" class="link" aria-hidden="true">
-    <img src="/assets/back-to-top.svg" alt="Scroll back to the top">
-  </a>
-</div>
-
-<script type="module">
-  const section = document.querySelectorAll("main");
-  const sections = {};
-  const i = 0;
-
-  section.forEach( e => {
-    sections[e.id] = e.offsetTop; 
-  })
-
-  window.addEventListener('scroll', function() {
-    const scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
-
-    if (scrollPosition > (window.innerHeight / 2)) {
-      document.getElementById("back-to-top-q3x4zkd").style.display = "flex";
-    } else {
-      document.getElementById("back-to-top-q3x4zkd").style.display = "none";
-    }
-  }, { passive: true });
-</script>
 </main>
 <rh-footer-universal>
   <h3 slot="links-primary" data-analytics-text="Red Hat legal and privacy links" hidden="">Red Hat legal and privacy links</h3>

@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en" dir="ltr"><head>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
@@ -14,26 +16,28 @@
     "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit-element": "/assets/packages/lit-element/index.js",
-    "lit": "/assets/packages/lit/index.js",
     "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
+    "lit": "/assets/packages/lit/index.js",
     "@rhds/tokens/meta.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js",
-    "lit/static-html.js": "/assets/packages/lit/static-html.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
-    "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@3.0.0/core.js",
-    "@rhds/tokens": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/tokens.js",
     "@rhds/tokens/media.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@3.0.0/core.js",
+    "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "lit/static-html.js": "/assets/packages/lit/static-html.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
-    "@lit-labs/ssr-client/lit-element-hydrate-support.js": "https://ga.jspm.io/npm:@lit-labs/ssr-client@1.1.7/lit-element-hydrate-support.js",
+    "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
+    "@lit-labs/ssr-client/lit-element-hydrate-support.js": "https://ga.jspm.io/npm:@lit-labs/ssr-client@1.1.7/lit-element-hydrate-support.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.esm.js",
     "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
-    "@rhds/elements/": "/assets/packages/@rhds/elements/elements/",
     "@rhds/elements/lib/": "/assets/packages/@rhds/elements/lib/",
+    "@rhds/elements/": "/assets/packages/@rhds/elements/elements/",
     "@patternfly/elements/": "/assets/packages/@patternfly/elements/",
     "@patternfly/icons/": "/assets/packages/@patternfly/icons/",
-    "@patternfly/pfe-core/": "/assets/packages/@patternfly/pfe-core/"
+    "@patternfly/pfe-core/": "/assets/packages/@patternfly/pfe-core/",
+    "playground-elements": "https://cdn.jsdelivr.net/npm/playground-elements@0.18.1/+esm"
   },
   "scopes": {
     "https://ga.jspm.io/": {
@@ -51,7 +55,7 @@
     }
   }
 }</script>
-    <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
+    <script async src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
     <script type="module">
       import 'element-internals-polyfill';
     </script>
@@ -61,7 +65,7 @@
       main { display: grid; }
     </style>
   </head>
-  <body unresolved="">
+  <body unresolved>
     <main>
       <div data-demo="rh-stat"><rh-stat size="large">
   <span slot="statistic">Statistic Placeholder</span>
@@ -73,5 +77,5 @@
   import '@rhds/elements/rh-stat/rh-stat.js';
 </script>
 </div>
-    </main>
-</body></html>
+    </main></body>
+</html>
