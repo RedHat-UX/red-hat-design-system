@@ -15,18 +15,8 @@ import { parseFragment, serialize } from 'parse5';
 
 import * as Tools from '@parse5/tools';
 
-function groupBy<T extends object>(prop: keyof T, xs: T[]): Record<string, T[]> {
-  return xs.reduce((acc, x) =>
-    Object.assign(acc, {
-      [x[prop as string]]: [...acc[x[prop as string]] ?? [], x],
-    }), {});
-}
-
-function getDemoFilename(x: DemoRecord) {
-  return `demo/${(x.url.split('/demo/').pop() || `${x.primaryElementName}.html`).replace(/\/$/, '.html')}`
-      .replace('.html', '/index.html')
-      .replace(`${x.primaryElementName}/index.html`, 'index.html');
-}
+type CustomElementName = `${string}-${string}`;
+type FilePath = string;
 
 /**
  * named capture group 1 `attr`:
@@ -63,6 +53,19 @@ const SRC_SUBRESOURCE_TAGNAMES = new Set([
   'rh-avatar',
 ]);
 
+function groupBy<T extends object>(prop: keyof T, xs: T[]): Record<string, T[]> {
+  return xs.reduce((acc, x) =>
+    Object.assign(acc, {
+      [x[prop as string]]: [...acc[x[prop as string]] ?? [], x],
+    }), {});
+}
+
+function getDemoFilename(x: DemoRecord) {
+  return `demo/${(x.url.split('/demo/').pop() || `${x.primaryElementName}.html`).replace(/\/$/, '.html')}`
+      .replace('.html', '/index.html')
+      .replace(`${x.primaryElementName}/index.html`, 'index.html');
+}
+
 /**
  * Replace paths in demo files from the dev SPA's format to 11ty's format
  * @param content content
@@ -84,6 +87,12 @@ function isModuleScript(node: Tools.Element) {
     node.tagName === 'script'
     && node.attrs.some(x => x.name === 'type' && x.value === 'module')
   );
+}
+
+function isInlineModule(node: Tools.Node): node is Tools.Element {
+  return Tools.isElementNode(node)
+          && isModuleScript(node)
+          && !node.attrs.some(({ name }) => name === 'src');
 }
 
 function isStyleElement(node: Tools.Element) {
@@ -150,8 +159,9 @@ class PlaygroundDemo {
     private fragment: Tools.DocumentFragment,
   ) {
     const cssPrefix = this.demo.filePath.match(DEMO_FILEPATH_IS_MAIN_DEMO_RE) ? '' : '../';
-    this.append(Tools.createCommentNode('playground-fold'),
-                Tools.createTextNode('\n\n'),
+    this.append(Tools.createTextNode('\n'),
+                Tools.createCommentNode('playground-fold'),
+                Tools.createTextNode('\n'),
                 Tools.createElement('link', {
                   rel: 'stylesheet',
                   href: `${cssPrefix}reset.css`,
@@ -270,16 +280,11 @@ class PlaygroundDemo {
 
   /** @see https://github.com/google/playground-elements/issues/93#issuecomment-1775247123 */
   private async splitOutInlineModules(fileMap: PlaygroundFileMap) {
-    const inlineModules: IterableIterator<Tools.Element> =
-      Tools.queryAll(this.fragment, node =>
-        Tools.isElementNode(node)
-        && isModuleScript(node)
-        && !node.attrs.some(({ name }) => name === 'src'));
-
-    Array.from(inlineModules).forEach((node, i) => {
+    Array.from(Tools.queryAll<Tools.Element>(this.fragment, isInlineModule)).forEach((node, i) => {
       const moduleName = `${this.demo.primaryElementName}-${this.demoSlug.replace('.html', '')}-inline-script-${i++}.js`;
       this.append(Tools.createTextNode('\n'),
                   Tools.createCommentNode('playground-fold'),
+                  Tools.createTextNode('\n'),
                   Tools.createElement('script', {
                     type: 'module',
                     src: `./${this.demoSlug === 'index.html' ? '' : '../'}${moduleName}`,
@@ -304,11 +309,11 @@ class PlaygroundDemo {
 
     Array.from(inlineStyles).forEach((node, i) => {
       const stylesheetName = `${this.demo.primaryElementName}-${this.demoSlug.replace('.html', '')}-inline-style-${i++}.css`;
-      this.append(Tools.createTextNode('\n'),
+      this.append(Tools.createTextNode('\n\n'),
                   Tools.createCommentNode('playground-fold'),
-                  Tools.createElement('script', {
-                    type: 'module',
-                    src: `./${this.demoSlug === 'index.html' ? '' : '../'}${stylesheetName}`,
+                  Tools.createElement('link', {
+                    rel: 'stylesheet',
+                    href: `./${this.demoSlug === 'index.html' ? '' : '../'}${stylesheetName}`,
                   }),
                   Tools.createTextNode('\n'),
                   Tools.createCommentNode('playground-fold-end'),
@@ -325,7 +330,7 @@ class PlaygroundDemo {
   }
 }
 
-class PlaygroundFileMap extends Map<string, FileOptions> {
+class PlaygroundFileMap extends Map<FilePath, FileOptions> {
   private static urls = {
     reset: pathToFileURL(path.join(process.cwd(), 'docs/styles/reset.css')),
     fonts: pathToFileURL(path.join(process.cwd(), 'docs/styles/fonts.css')),
@@ -373,7 +378,7 @@ class PlaygroundFileMap extends Map<string, FileOptions> {
   }
 }
 
-class PlaygroundConfigMap extends Map<string, Pick<ProjectManifest, 'files'>> {
+class PlaygroundConfigMap extends Map<CustomElementName, Pick<ProjectManifest, 'files'>> {
   static async of(pfeConfig: Required<PfeConfig>) {
     const demos = Manifest.getAll(new URL('../', import.meta.url).pathname)
         .flatMap(manifest => manifest.getTagNames()
@@ -383,7 +388,7 @@ class PlaygroundConfigMap extends Map<string, Pick<ProjectManifest, 'files'>> {
     for (const [primaryElementName, demos] of Object.entries(demoManifests)) {
       const fileMap = await PlaygroundFileMap.of(demos);
       const files = fileMap.print();
-      map.set(primaryElementName, { files });
+      map.set(primaryElementName as CustomElementName, { files });
     }
     return map;
   }
