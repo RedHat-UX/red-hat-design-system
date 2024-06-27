@@ -22,7 +22,10 @@ playground-project {
   & rh-card {
     &::part(header),
     &::part(body) { margin: 0; }
-    &::part(footer) { margin-block: var(--rh-space-lg); }
+    &::part(footer) {
+      margin-block: var(--rh-space-lg);
+      justify-content: end;
+    }
     &::part(body) {
       border-block-end: var(--rh-border-width-sm) solid var(--rh-color-border-subtle-on-light);
     }

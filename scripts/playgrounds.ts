@@ -301,6 +301,11 @@ class PlaygroundDemo {
       // @ts-expect-error: this is a hint to our njk template
       inline: this.filename,
     });
+    for (const sibling of Tools.nextSiblings(node)) {
+      if (Tools.isTextNode(sibling) && !sibling.value.trim()) {
+        Tools.removeNode(sibling);
+      }
+    }
     Tools.removeNode(node);
   }
 
@@ -427,17 +432,14 @@ performance.mark('playgrounds-end');
 // We should log performance regressions
 /* eslint-disable no-console */
 const TOTAL = performance.measure('playgrounds-total', 'playgrounds-start', 'playgrounds-end');
+let emoji = '⚡';
+let color = chalk.blue;
 if (TOTAL.duration > 2000) {
-  console.log(
-    `🦥 Playgrounds config generator done in ${chalk.red(TOTAL.duration)}ms\n`,
-  );
+  emoji = '🦥';
+  color = chalk.red;
 } else if (TOTAL.duration > 1000) {
-  console.log(
-    `🐢 Playgrounds config generator done in ${chalk.yellow(TOTAL.duration)}ms\n`,
-  );
-} else {
-  console.log(
-    `⚡ Playgrounds config generator done in ${chalk.blue(TOTAL.duration)}ms\n`,
-  );
+  emoji = '🐢';
+  color = chalk.yellow;
 }
+console.log(`${emoji} Playgrounds config generator done in ${color(TOTAL.duration)}ms`);
 /* eslint-enable no-console */
