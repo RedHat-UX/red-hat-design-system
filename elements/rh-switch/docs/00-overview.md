@@ -2,7 +2,7 @@
 
 {{ tagName | getElementDescription }}
 
-<uxdot-example width-adjustment="222px">
+<uxdot-example width-adjustment="78px">
   <img src="{{ './switch-overview.svg' | url }}" alt="example of switch that's on">
 </uxdot-example>
 

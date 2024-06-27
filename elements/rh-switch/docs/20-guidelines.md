@@ -126,14 +126,14 @@ The status message and form label should be short and direct, not neutral or amb
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice do>
-    <uxdot-example slot="image" no-border variant="full" alignment="left" width-adjustment="241px">
+    <uxdot-example slot="image" alignment="left" width-adjustment="241px">
       <img src="{{ '../switch-language-clarity-do.svg' | url }}" alt="Magenta button, brand red default call to action, green tooltip, and dark orange switch">
     </uxdot-example>
     <p>Ensure the message is clear when a Switch is toggled to the On or Off position and that the form label explains the switch's purpose.</p>
   </uxdot-best-practice>
 
   <uxdot-best-practice dont>
-    <uxdot-example slot="image" no-border variant="full" alignment="left"  width-adjustment="254px">
+    <uxdot-example slot="image" alignment="left"  width-adjustment="254px">
       <img src="{{ '../switch-language-clarity-do-not.svg' | url }}" alt="Magenta button, brand red default call to action, green tooltip, and dark orange switch">
     </uxdot-example>
     <p>Do not use a status message that does not make the switch state clear, especially if the form label is hidden.</p>
@@ -173,7 +173,7 @@ The recommended maximum character count is listed below and includes spaces.
 
 Use a stack of Switches for situations where multiple independent options need to be turned on or off.
 
-<uxdot-example width-adjustment="40px">
+<uxdot-example width-adjustment="193px">
   <img src="{{ '../switch-layout-stacking.svg' | url }}" alt="four switches, half of which are on, stacked in a column">
 </uxdot-example>
 
@@ -182,7 +182,7 @@ Use a stack of Switches for situations where multiple independent options need t
 
 A Switch is successfully toggled when the handle slides to the other side of the track and the status message changes. When a user toggles a Switch, the effects should start immediately without needing to save. If immediate results are not achievable, another element should be used instead (see table above in Usage section).
 
-<uxdot-example width-adjustment="40px">
+<uxdot-example width-adjustment="319px">
   <img src="{{ '../switch-behavior.svg' | url }}" alt="One switch that is on, next to one that is off">
 </uxdot-example>
 
@@ -195,14 +195,14 @@ To avoid confusion as to what a Switch will do, always include some kind of stat
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice do>
-    <uxdot-example slot="image" no-border variant="full" alignment="left" width-adjustment="40px">
+    <uxdot-example slot="image" alignment="left" width-adjustment="160px">
       <img src="{{ '../switch-best-practice-no-status-message-do.svg' | url }}" alt="Switches with Bluetooth as a form label and/or a status message">
     </uxdot-example>
     <p>Ensure the message is clear when a Switch is toggled to the On or Off position and that the form label explains the switch's purpose.</p>
   </uxdot-best-practice>
 
   <uxdot-best-practice dont>
-    <uxdot-example slot="image" no-border variant="full" alignment="left" width-adjustment="40px">
+    <uxdot-example slot="image" alignment="left" width-adjustment="160px">
       <img src="{{ '../switch-best-practice-no-status-message-do-not.svg' | url }}" alt="Two switches without a form label or status message">
     </uxdot-example>
     <p>Do not make it unknown to users what a Switch will do when toggled.</p>
@@ -238,14 +238,14 @@ Switches can be used in a list to toggle multiple independent options.
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice do>
-    <uxdot-example slot="image" no-border variant="full" alignment="left" width-adjustment="160px">
+    <uxdot-example slot="image" alignment="left" width-adjustment="160px">
       <img src="{{ '../switch-best-practice-multiple-options-do.svg' | url }}" alt="Four switches stacked vertically with half of them turned on">
     </uxdot-example>
     <p>Use Switches in a list only if the effects from toggling each Switch are immediate.</p>
   </uxdot-best-practice>
 
   <uxdot-best-practice dont>
-    <uxdot-example slot="image" no-border variant="full" alignment="left" width-adjustment="160px">
+    <uxdot-example slot="image" alignment="left" width-adjustment="160px">
       <img src="{{ '../switch-best-practice-multiple-options-do-not.svg' | url }}" alt="Four switches stacked vertically with a save button below them">
     </uxdot-example>
     <p>Do not use Switches in a list if a user has to save to see the effects</p>

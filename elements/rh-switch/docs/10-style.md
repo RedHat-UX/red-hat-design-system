@@ -6,7 +6,7 @@ A Switch resembles a slider and includes a status message. When activated, the t
 ### Anatomy
 
 <figure>
-  <uxdot-example width-adjustment="40px">
+  <uxdot-example width-adjustment="222px">
     <img src="{{ '../switch-anatomy.svg' | url }}" alt="with numbers labeling the track, handle, and status message">
   </uxdot-example>
   <figcaption>
@@ -24,11 +24,11 @@ A Switch resembles a slider and includes a status message. When activated, the t
 A Switch is available in both light and dark themes.
 
 <div class="grid xs-two-columns">
-  <uxdot-example width-adjustment="40px">
+  <uxdot-example width-adjustment="170px">
     <img src="{{ '../switch-theme-light.svg'  | url }}" alt="Light theme switch with blue track, white handle, and black text">
   </uxdot-example>
 
-  <uxdot-example width-adjustment="40px">
+  <uxdot-example width-adjustment="170px">
     <img src="{{ '../switch-theme-dark.svg'  | url }}" alt="Dark theme switch with light blue track, black handle, and white text">
   </uxdot-example>
 </div>
@@ -42,7 +42,7 @@ A Switch is the same height as the status message and both are horizontally alig
     <img src="{{ '../switch-configuration-height.svg' | url }}" alt="Switch and status message are 24px tall. Switch is 40px wide.">
   </uxdot-example>
 
-  <uxdot-example width-adjustment="250px">
+  <uxdot-example width-adjustment="466px">
     <img src="{{ '../switch-configuration-alignment.svg'  | url }}" alt="Horizontally aligned switch and status message">
   </uxdot-example>
 </div>
