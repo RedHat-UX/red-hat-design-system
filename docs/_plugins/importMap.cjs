@@ -32,9 +32,8 @@ function logPerf() {
 }
 
 /**
- * @typedef {Object} Options
- *
- * @property {string} [defaultProvider]
+ * @typedef {object} Options
+ * @property {string} [defaultProvider] jspm.io generator provider
  * @property {import('@jspm/generator').Generator['importMap']} [inputMap]
  * @property {import('@jspm/generator').Generator['importMap']} [manualImportMap]
  * @property {string[]} [localPackages=[]]

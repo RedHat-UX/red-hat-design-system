@@ -15,15 +15,6 @@
 <rh-site-status></rh-site-status>
 
 
-## Demo
-
-{% playground tagName=tagName %}{% endplayground %}
-
-<rh-cta>
-  <a href="{{ './demo/' | url }}">Full screen demo</a>
-</rh-cta>
-
-
 ## When to use
 
   - When you need to communicate the operational status of a website or domain
