@@ -10,7 +10,6 @@ import { deprecation } from '@patternfly/pfe-core/decorators.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 import { TabsAriaController } from '@patternfly/pfe-core/controllers/tabs-aria-controller.js';
 import { OverflowController } from '@patternfly/pfe-core/controllers/overflow-controller.js';
-import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
