@@ -56,4 +56,19 @@ export default pfeDevServerConfig({
       }
     },
   ],
+  plugins: [
+    {
+      name: 'watch-demos',
+      serverStart(args) {
+        const fsDemoFilesGlob = new URL('./elements/*/demo/**/*.html', import.meta.url).pathname;
+        args.fileWatcher.add(fsDemoFilesGlob);
+        args.app.use(function(ctx, next) {
+          if (ctx.path.match(/\/|\.css|\.html|\.js$/)) {
+            ctx.etag = `e${Math.random() * Date.now()}`;
+          }
+          return next();
+        });
+      },
+    },
+  ],
 });
