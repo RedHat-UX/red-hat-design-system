@@ -30,7 +30,7 @@ const L2 = html`
  * @summary Allows users to navigate content divided into pages
  *
  * @slot            - An ordered list of links
- * @slot go-to-page - "Go to page" text
+ * @slot go-to-page - "Go to page" text, defaults to "Page"
  * @slot out-of     - "of" text
  *
  * @cssprop {<color>} --rh-pagination-accent-color
@@ -169,7 +169,7 @@ export class RhPagination extends LitElement {
       <div id="numeric" part="numeric">
         <span id="go-to-page" class="${this.variant?.includes('compact') ? 'visually-hidden' : ''}">
           <slot name="go-to-page">
-              Go to page
+            Page
           </slot>
         </span>
         <input inputmode="numeric"
