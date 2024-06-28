@@ -3,12 +3,10 @@
     <fieldset>
       <legend>Nested in a label</legend>
       <label> Dark Mode
-        <rh-switch name="status" aria-describedby="switch-message" checked>
-          <div id="switch-message">
-            <span data-state="on">On</span>
-            <span data-state="off" hidden>Off</span>
-          </div>
-        </rh-switch>
+        <rh-switch name="status"
+                   message-on="On"
+                   message-off="Off"
+                   checked></rh-switch>
       </label>
       <rh-button type="submit">Submit</rh-button>
       <output>Submit to read status</output>

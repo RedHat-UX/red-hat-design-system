@@ -1,85 +1,43 @@
 <rh-context-demo>
-  <form>
-    <fieldset>
-      <legend>Checked with sibling label</legend>
-      <div>
-        <label for="switch-a">Switch A</label>
-        <rh-switch id="switch-a" aria-describedby="messages-a" checked>
-          <div id="messages-a">
-            <span data-state="on">Message when on</span>
-            <span data-state="off" hidden>Message when off</span>
-          </div>
-        </rh-switch>
-      </div>
-      <div>
-        <label for="switch-b">Switch B</label>
-        <rh-switch id="switch-b" aria-describedby="messages-b" checked show-check-icon>
-          <div id="messages-b">
-            <span data-state="on">Message when on</span>
-            <span data-state="off" hidden>Message when off</span>
-          </div>
-        </rh-switch>
-      </div>
-    </fieldset>
+  <rh-switch accessible-label="Checked"
+             message-on="Checked on"
+             message-off="Checked off"
+             checked></rh-switch>
+  <rh-switch accessible-label="Unchecked"
+             message-on="Unchecked on"
+             message-off="Unchecked off"></rh-switch>
 
-    <fieldset>
-      <legend>Checked without sibling label</legend>
-      <div>
-        <rh-switch id="switch-c" accessible-label="Switch C" aria-describedby="messages-c" checked>
-          <div id="messages-c">
-            <span data-state="on">Message when on</span>
-            <span data-state="off" hidden>Message when off</span>
-          </div>
-        </rh-switch>
-      </div>
-      <div>
-        <rh-switch id="switch-d" accessible-label="Switch D" aria-describedby="messages-d" checked show-check-icon>
-          <div id="messages-d">
-            <span data-state="on">Message when on</span>
-            <span data-state="off" hidden>Message when off</span>
-          </div>
-        </rh-switch>
-      </div>
-    </fieldset>
+  <rh-switch accessible-label="Checked with icon"
+             message-on="Checked with icon on"
+             message-off="Checked with icon off"
+             checked
+             show-check-icon></rh-switch>
+  <rh-switch accessible-label="Unchecked with icon"
+             message-on="Unchecked with icon on"
+             message-off="Unchecked with icon off"
+             show-check-icon></rh-switch>
 
-    <fieldset disabled>
-      <legend>Disabled</legend>
-      <div>
-        <rh-switch id="switch-e" accessible-label="Switch E" aria-describedby="messages-e" checked>
-          <div id="messages-e">
-            <span data-state="on">Message when on</span>
-            <span data-state="off" hidden>Message when off</span>
-          </div>
-        </rh-switch>
-      </div>
-      <div>
-        <rh-switch id="switch-f" accessible-label="Switch F" aria-describedby="messages-f" checked show-check-icon>
-          <div id="messages-f">
-            <span data-state="on">Message when on</span>
-            <span data-state="off" hidden>Message when off</span>
-          </div>
-        </rh-switch>
-      </div>
-      <div>
-        <label for="switch-g">Switch G</label>
-        <rh-switch id="switch-g" aria-describedby="messages-g" checked>
-          <div id="messages-g">
-            <span data-state="on">Message when on</span>
-            <span data-state="off" hidden>Message when off</span>
-          </div>
-        </rh-switch>
-      </div>
-      <div>
-        <label for="switch-h">Switch H</label>
-        <rh-switch id="switch-h" aria-describedby="messages-h" checked show-check-icon>
-          <div id="messages-h">
-            <span data-state="on">Message when on</span>
-            <span data-state="off" hidden>Message when off</span>
-          </div>
-        </rh-switch>
-      </div>
-    </fieldset>
-  </form>
+  <rh-switch accessible-label="Checked disabled"
+             message-on="Disabled checked on"
+             message-off="Disabled checked off"
+             checked
+             disabled></rh-switch>
+  <rh-switch accessible-label="Unchecked disabled"
+             message-on="Disabled unchecked on"
+             message-off="Disabled unchecked off"
+             disabled></rh-switch>
+
+  <rh-switch accessible-label="Checked disabled with icon"
+             message-on="Disabled checked with icon on"
+             message-off="Disabled checked with icon off"
+             show-check-icon
+             checked
+             disabled></rh-switch>
+  <rh-switch accessible-label="Unchecked disabled with icon"
+             message-on="Disabled unchecked with icon on"
+             message-off="Disabled unchecked with icon off"
+             show-check-icon
+             disabled></rh-switch>
 </rh-context-demo>
 
 <script type="module">
@@ -93,33 +51,6 @@
     align-items: start;
     flex-wrap: wrap;
     gap: var(--rh-space-lg, 16px);
-  }
-
-  label {
-    color: var(--rh-color-text-primary-on-light, #151515);
-  }
-
-  rh-switch:is(:disabled) ~ label {
-    color: var(--rh-color-text-secondary-on-light, #4d4d4d);
-  }
-
-  [color-palette^="dark"] label {
-   color:  var(--rh-color-text-primary-on-dark, #ffffff)
-  }
-
-  [color-palette^="dark"] rh-switch:is(:disabled) ~ label {
-    color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
-  }
-
-  fieldset {
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: 1fr;
-  }
-
-  fieldset div {
-    display: flex;
-    gap: 1rem;
   }
 </style>
 

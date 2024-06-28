@@ -2,12 +2,12 @@
   <form>
     <fieldset>
       <legend>Checked with label</legend>
-      <rh-switch id="switch-a" aria-describedby="messages-a" accessible-label="Switch A" checked show-check-icon>
-        <div id="messages-a">
-          <span data-state="on">Message when on</span>
-          <span data-state="off" hidden>Message when off</span>
-        </div>
-      </rh-switch>
+      <rh-switch id="switch-a"
+                 accessible-label="Switch A"
+                 message-on="Message when on"
+                 message-off="Message when off"
+                 checked
+                 show-check-icon></rh-switch>
     </fieldset>
   </form>
 </section>
@@ -30,5 +30,4 @@
   label {
     color: var(--rh-color-text-primary-on-light, #151515);
   }
-
 </style>
