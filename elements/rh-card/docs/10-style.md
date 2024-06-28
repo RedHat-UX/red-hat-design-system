@@ -77,7 +77,7 @@ Cards are secondary layouts that shouldn’t command too much attention and blen
   </figure>
   <figure>
     <uxdot-example no-border color-palette="dark">
-      <rh-card color-palette="darker">
+      <rh-card color-palette="dark-alt">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas, a sollicitudin mauris tincidunt.</p>
         <rh-cta href="#">Call to action</rh-cta>
       </rh-card>
