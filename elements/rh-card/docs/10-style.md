@@ -43,45 +43,50 @@ Cards are secondary layouts that shouldn’t command too much attention and blen
 
 <div class="grid">
   <figure>
-    <rh-card>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas, a sollicitudin mauris tincidunt.</p>
-      <rh-cta href="#">Call to action</rh-cta>
-    </rh-card>
+    <uxdot-example no-border color-palette="light">
+      <rh-card>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas, a sollicitudin mauris tincidunt.</p>
+        <rh-cta href="#">Call to action</rh-cta>
+      </rh-card>
+    </uxdot-example>
     <figcaption>
       A light gray card without a border can also be used as an alternate option.
     </figcaption>
   </figure>
   <figure>
-    <rh-card color-palette="lighter">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas, a sollicitudin mauris tincidunt.</p>
-      <rh-cta href="#">Call to action</rh-cta>
-    </rh-card>
+    <uxdot-example no-border color-palette="light">
+      <rh-card color-palette="lighter">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas, a sollicitudin mauris tincidunt.</p>
+        <rh-cta href="#">Call to action</rh-cta>
+      </rh-card>
+    </uxdot-example>
     <figcaption>
       A light gray card with a light gray border can also be used as an alternate option.
     </figcaption>
   </figure>
   <figure>
-    <rh-card color-palette="dark">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas, a sollicitudin mauris tincidunt.</p>
-      <rh-cta href="#">Call to action</rh-cta>
-    </rh-card>
+    <uxdot-example no-border color-palette="dark">
+      <rh-card>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas, a sollicitudin mauris tincidunt.</p>
+        <rh-cta href="#">Call to action</rh-cta>
+      </rh-card>
+    </uxdot-example>
     <figcaption>
       A black card with a dark gray border is the most common use case in the dark theme.
     </figcaption>
   </figure>
-
   <figure>
-    <rh-card color-palette="darker">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas, a sollicitudin mauris tincidunt.</p>
-      <rh-cta href="#">Call to action</rh-cta>
-    </rh-card>
+    <uxdot-example no-border color-palette="dark">
+      <rh-card color-palette="darker">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas, a sollicitudin mauris tincidunt.</p>
+        <rh-cta href="#">Call to action</rh-cta>
+      </rh-card>
+    </uxdot-example>
     <figcaption>
       A dark gray card with a dark gray border can also be used as an alternate option.
     </figcaption>
   </figure>
-
 </div>
-
 
 ### Layout
 
