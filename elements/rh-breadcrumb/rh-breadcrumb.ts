@@ -58,8 +58,6 @@ import styles from './rh-breadcrumb.css';
 
 @customElement('rh-breadcrumb')
 export class RhBreadcrumb extends LitElement {
-  @property({ type: Array }) items: string[] = [];
-
   /**
    * Customize the default `aria-label` on the `<nav>` container.
    * Defaults to "Breadcrumb" if no attribute/property is set.
