@@ -1,8 +1,10 @@
 # Video
-Add a description of the component here.
+
+A Video is a graphical preview of a video overlayed with a play button. When clicked, the video will begin playing.
 
 ## Usage
-Describe how best to use this web component along with best practices.
+
+Use this component if you want to embed a YouTube video on a page. This component only loads the required YouTube embed code when a user clicks on the play button.
 
 ```html
 <rh-video>
