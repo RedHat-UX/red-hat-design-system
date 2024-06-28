@@ -50,15 +50,6 @@
   </table>
 </rh-table>
 
-## Demos
-
-View a live version of this element and see how it can be customized.
-
-{% playground tagName=tagName %}{% endplayground %}
-
-<rh-cta><a href="{{ './demo/' | url }}">Full screen demo</a></rh-cta>
-
-
 ## When to use
 
   - To organize and display structured data

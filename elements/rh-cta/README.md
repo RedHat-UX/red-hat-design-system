@@ -5,14 +5,19 @@ A Call to action is a styled link that directs a user to other pages or sometime
 
 As a link
 ```html
-<rh-cta>
-  <a href="/subscribe">Subscribe</a>
-</rh-cta>
+<rh-cta href="/subscribe">Subscribe</rh-cta>
 ```
 
 As a button
 ```html
 <rh-cta>
   <button>Watch live</button>
+</rh-cta>
+```
+
+With a slotted anchor
+```html
+<rh-cta>
+  <a href="/subscribe">Subscribe</a>
 </rh-cta>
 ```
