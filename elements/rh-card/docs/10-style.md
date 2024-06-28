@@ -50,7 +50,7 @@ Cards are secondary layouts that shouldn’t command too much attention and blen
       </rh-card>
     </uxdot-example>
     <figcaption>
-      A light gray card without a border can also be used as an alternate option.
+      A white card with a light gray border is the most common use case in the light theme.
     </figcaption>
   </figure>
   <figure>
