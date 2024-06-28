@@ -82,7 +82,11 @@ export class RhSwitch extends LitElement {
     const noMessageOn = this.#slots.isEmpty('message-on');
     const noMessageOff = this.#slots.isEmpty('message-off');
     if (noMessageOn || noMessageOff) {
-      this.#internals.ariaDescription = this.#message ?? '';
+      if ('ariaDescription' in ElementInternals) {
+        this.#internals.ariaDescription = this.#message ?? '';
+      } else {
+        this.setAttribute('aria-description', this.#message ?? '');
+      }
     } else {
       const stateSlotName = this.checked ? 'message-on' : 'message-off';
       const stateEls = this.#slots.getSlotted(stateSlotName);
@@ -94,7 +98,7 @@ export class RhSwitch extends LitElement {
         // @ts-expect-error: InternalsController has the wrong type here, this is a FrozenArray
         this.#internals.ariaDescribedByElements = stateEls;
       } else {
-        !isServer && this.setAttribute('aria-describedby', stateEls.map(x => x.id).join(' '));
+        this.setAttribute('aria-describedby', stateEls.map(x => x.id).join(' '));
       }
     }
   }
