@@ -1,0 +1,125 @@
+name: 🪲 Bug report
+description: Something broken? Let us know!
+title: "[bug] `<rh-component-name>` ..."
+labels:
+  - bug
+
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the bug
+      description: >-
+        A clear and concise description of the bug
+      placeholder: >-
+        The arrow icon in the call-to-action button should animate when
+        the user hovers over the CTA, but it doesn't
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: >-
+        If applicable, add screenshots to help explain your problem
+      placeholder: >-
+        Copy/paste or drag screenshots into this textarea 
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        ## Debugging Info
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: >-
+        Steps to reproduce the behaviour. If possible, please provide URLs as well.
+      placeholder: |-
+        1. Go to the [the CTA demo](https://ux.redhat.com/elements/call-to-action/demo)
+        2. (Desktop) Hover over the first CTA on the page
+        3. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+      description: >-
+        A clear and concise description of what you expected to happen
+      placeholder: >-
+        The arrow animates to the right on hover, and back to the left when 
+        the cursor leaves the CTA
+    validations:
+      required: true
+
+  - type: textarea
+    id: code
+    attributes:
+      label: Element HTML
+      description: >-
+       If applicable, enter the outer HTML of the element in question at the time the bug was observed
+      placeholder: >-
+        <rh-cta varient="secondary">
+          <a href="#">Back</a>
+        </rh-cta>
+      render: HTML
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value:  |
+        ---
+        ## Browser and System Info
+        
+        Please fill out more information, including the versions of each browser in which
+        the bug was observed, or in the case of Safari iOS, the **device name**, and **OS version**
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating System (OS)
+      description: >-
+        Which operating system was the bug observed on?
+      multiple: true
+      options:
+        - iOS
+        - macOS
+        - Linux
+        - Windows
+    validations:
+      required: true
+
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Browser
+      description: >-
+        In which browsers was this bug observed?
+      multiple: true
+      options:
+        - Chrome
+        - Safari
+        - Safari iOS
+        - Microsoft Edge
+        - Firefox
+
+  - type: textarea
+    id: browser-more
+    attributes:
+      label: Additional browser or assistive technology info
+      description: >-
+        If applicable, please provide additional browser, screen reader, or other assistive tech info
+      placeholder: |-
+        - Firefox 101
+        - Chrome 100
+        - Safari iOS 15.1, iPhone 12
+    validations:
+      required: false
