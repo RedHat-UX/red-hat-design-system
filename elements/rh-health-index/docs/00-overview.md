@@ -14,15 +14,6 @@
 <rh-health-index grade="A">A</rh-health-index>
 
 
-## Demos
-
-View a live version of this component and see how it can be customized.
-
-{% playground tagName=tagName %}{% endplayground %}
-
-<rh-cta><a href="{{ './demo/' | url }}">Full screen demo</a></rh-cta>
-
-
 ## When to use
 
 - When you need to use severity to communicate the health of something

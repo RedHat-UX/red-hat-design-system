@@ -18,16 +18,6 @@
 <rh-badge number="6" state="important" aria-label="6 overdue tasks">6</rh-badge>
 <rh-badge number="2" state="critical" aria-label="2 errors">2</rh-badge>
 
-
-## Demos
-
-View a live version of this component and see how it can be customized.
-
-{% playground tagName=tagName %}{% endplayground %}
-
-<rh-cta><a href="{{ './demo/' | url }}">Full screen demo</a></rh-cta>
-
-
 ## When to use
 
   - When you need to reflect counts like number of objects, events, or unread items

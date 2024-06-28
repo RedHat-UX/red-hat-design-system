@@ -13,14 +13,6 @@
 <rh-cta variant="primary"
         href="#primary">Primary</rh-cta>
 
-## Demo
-
-View a live version of this element to see how it can be customized.
-
-{% playground tagName=tagName %}{% endplayground %}
-
-<rh-cta href="{{ './demo/' | url }}">Full screen demo</rh-cta>
-
 ## When to use
 
   - When you need users to navigate to a different page or domain
