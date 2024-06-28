@@ -207,7 +207,7 @@ describe('<rh-video>', function() {
       element.consentButton?.focus();
       await sendKeys({ press: ' ' });
       await eventFired('consent-click', 'consentClicked');
-      element.hasConsent = true;
+      element.consented = true;
       snapshot = await a11ySnapshot();
       ({ children } = snapshot);
     });
@@ -235,7 +235,7 @@ describe('<rh-video>', function() {
       </rh-video>`);
       await clickElementAtCenter(element.focusableElement.shadowRoot?.querySelector('button'));
       await eventFired('consent-click', 'consentClicked');
-      element.hasConsent = true;
+      element.consented = true;
       snapshot = await a11ySnapshot();
       ({ children } = snapshot);
     });

@@ -68,7 +68,7 @@ export class RhVideo extends LitElement {
   /**
    * Whether consent consent for cookies
    */
-  @property({ type: Boolean }) hasConsent = false;
+  @property({ type: Boolean }) consented = false;
 
   /**
    * Sets color theme based on parent context
@@ -84,7 +84,7 @@ export class RhVideo extends LitElement {
   #iframe: HTMLIFrameElement | undefined;
 
   get #showConsent() {
-    return this.requireConsent && !this.hasConsent;
+    return this.requireConsent && !this.consented;
   }
 
   get consentButton() {
