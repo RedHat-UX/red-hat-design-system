@@ -55,7 +55,7 @@ article {
   display: none;
 }
 
-#header ::slotted(:is(h1, h2, h3, h4, h5, h6)),
+#header ::slotted([slot]:is(h1, h2, h3, h4, h5, h6)),
 #body ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
   font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
 }
@@ -80,7 +80,7 @@ article {
   margin-block: auto var(--rh-space-xl, 24px);
 }
 
-#header ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+#header ::slotted([slot]:is(h1, h2, h3, h4, h5, h6)) {
   margin: unset;
   font-weight: var(--rh-font-weight-body-text-medium, 500);
   font-size: inherit;
