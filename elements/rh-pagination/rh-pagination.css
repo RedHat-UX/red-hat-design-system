@@ -1,10 +1,28 @@
 :host {
+  --_stepper-size: 48px;
+
   display: block;
   min-height: 4em;
 }
 
+:host([size="sm"]) {
+  --_stepper-size: 34px;
+}
+
 [hidden] {
   display: none !important;
+}
+
+.visually-hidden {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
 
 #container {
@@ -32,6 +50,26 @@
   --_numeric-a-focus-outline-color: var(--rh-pagination-accent-color);
 }
 
+#container.color-palette-lighter {
+  --_rh-pagination-list-a-bg-color: var(--rh-color-surface-light, #e0e0e0);
+  --_rh-pagination-stepper-bg-color: var(--rh-color-surface-light, #e0e0e0);
+}
+
+#container.color-palette-light {
+  --_rh-pagination-list-a-bg-color: var(--rh-color-surface-lighter, #f2f2f2);
+  --_rh-pagination-stepper-bg-color: var(--rh-color-surface-lighter, #f2f2f2);
+}
+
+#container.color-palette-dark {
+  --_rh-pagination-list-a-bg-color: var(--rh-color-surface-dark-alt, #292929);
+  --_rh-pagination-stepper-bg-color: var(--rh-color-surface-dark-alt, #292929);
+}
+
+#container.color-palette-darker {
+  --_rh-pagination-list-a-bg-color: var(--rh-color-surface-dark, #383838);
+  --_rh-pagination-stepper-bg-color: var(--rh-color-surface-dark, #383838);
+}
+
 nav {
   display: contents;
 }
@@ -51,11 +89,11 @@ svg {
   display: grid;
   font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-heading-xs, 1.25rem);
-  height: 48px;
+  height: var(--_stepper-size);
   place-content: center;
   position: relative;
   text-decoration: none;
-  width: 48px;
+  width: var(--_stepper-size);
 }
 
 .stepper:is(:hover, :focus) {
@@ -90,21 +128,21 @@ svg {
 
 .stepper:hover:after,
 .stepper:focus:before {
-  border-block-start-color:
+  border-block-color:
     var(
         --_rh-pagination-border-top-hover-color,
         var(--rh-color-gray-60, #4d4d4d)
       );
-  border-block-start-width: var(--rh-border-width-lg, 3px);
+  border-block-width: var(--rh-border-width-lg, 3px);
 }
 
 .stepper:focus:after {
-  border-block-start-color:
+  border-block-color:
     var(
         --rh-pagination-accent-color,
         var(--rh-color-border-interactive-on-light, #0066cc)
       );
-  border-block-start-width: var(--rh-border-width-md, 2px);
+  border-block-width: var(--rh-border-width-md, 2px);
 }
 
 .stepper svg {
@@ -208,4 +246,41 @@ input:invalid {
   #container {
     flex-wrap: nowrap;
   }
+}
+
+/*****************************************************************************
+ * OPEN VARIANT
+ *****************************************************************************/
+
+:host([variant~="open"]) .stepper {
+  --_rh-pagination-stepper-bg-color: transparent;
+}
+
+:host([variant~="open"]) .stepper:hover:after,
+:host([variant~="open"]) .stepper:focus:before,
+:host([variant~="open"]) .stepper:focus:after {
+  border-block-start-style: none;
+  border-block-end-style: solid;
+  inset-block-end: -1px;
+}
+
+/*****************************************************************************
+ * COMPACT VARIANT
+ *****************************************************************************/
+
+:host([variant~="compact"]) #prev {
+  margin-inline-end: var(--rh-space-lg, 16px);
+}
+
+:host([variant~="compact"]) #numeric {
+  flex: 0;
+  font-size: var(--rh-font-size-body-text-md, 1rem);
+  margin-block: 0;
+  margin-inline-end: var(--rh-space-lg, 16px);
+  margin-inline-start: 0;
+}
+
+:host([variant~="compact"]) #numeric input {
+  align-self: stretch;
+  height: auto;
 }

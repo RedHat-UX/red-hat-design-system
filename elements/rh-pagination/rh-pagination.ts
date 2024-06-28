@@ -30,7 +30,7 @@ const L2 = html`
  * @summary Allows users to navigate content divided into pages
  *
  * @slot            - An ordered list of links
- * @slot go-to-page - "Go to page" text
+ * @slot go-to-page - "Go to page" text, defaults to "Page"
  * @slot out-of     - "of" text
  *
  * @cssprop {<color>} --rh-pagination-accent-color
@@ -78,6 +78,12 @@ export class RhPagination extends LitElement {
   /** Accessible label for the 'last page' button */
   @property({ attribute: 'label-last' }) labelLast = 'last page';
 
+  /** Change pagination size to small */
+  @property({ reflect: true }) size: 'sm' | null = null;
+
+  /** "Open" and "Compact" variants */
+  @property({ reflect: true }) variant?: 'open' | 'compact' | null = null;
+
   @query('input') private input?: HTMLInputElement;
 
   #dir = new DirController(this);
@@ -113,6 +119,18 @@ export class RhPagination extends LitElement {
     super.update(changed);
   }
 
+  #internalColorPalette?: string | null;
+
+  protected willUpdate(): void {
+    /**
+     * TEMPORARY: this fixes the need to access the parents color-palette in order to get the `lightest`
+     * value. This fix will only update the component when switching between light and dark themes as
+     * thats when the consumer requests an update. Switching between lighter -> light for example will
+     * not trigger the component to update at this time. Related: #1395.
+     */
+    this.#internalColorPalette = this.closest('[color-palette]')?.getAttribute('color-palette');
+  }
+
   render() {
     const { on = '' } = this;
     const { mobile, size } = this.#screen;
@@ -123,32 +141,46 @@ export class RhPagination extends LitElement {
     const nextHref = this.#nextLink?.href;
     const lastHref = this.#currentLink === this.#lastLink ? undefined : this.#lastLink?.href;
     const currentPage = this.#currentPage.toString();
+
     return html`
-      <div id="container" class=${classMap({ mobile, [size as string]: true, [dir]: true, [on]: !!on })}>
+      <div id="container"
+           class=${classMap({ mobile, [size as string]: true, [dir]: true, [on]: !!on, [`color-palette-${this.#internalColorPalette}`]: !!this.#internalColorPalette })}>
         <a id="first" class="stepper" href=${ifDefined(firstHref)} ?inert=${!firstHref} aria-label=${labelFirst}>${L2}</a>
         <a id="prev" class="stepper" href=${ifDefined(prevHref)} ?inert=${!prevHref} aria-label=${labelPrevious}>${L1}</a>
 
-        <nav ?hidden=${mobile} ?inert=${mobile} aria-label=${label}>
-          <slot></slot>
-        </nav>
-
+        ${!this.variant?.includes('compact') ?
+          html`
+            <nav ?hidden=${mobile} ?inert=${mobile} aria-label=${label}>
+              <slot></slot>
+            </nav>
+          `
+          : html`
+            ${this.#numericContent(currentPage, lastHref)}
+          `}
         <a id="next" class="stepper" href=${ifDefined(nextHref)} ?inert=${!nextHref} aria-label=${labelNext}>${L1}</a>
         <a id="last" class="stepper" href=${ifDefined(lastHref)} ?inert=${!lastHref} aria-label=${labelLast}>${L2}</a>
+        ${!this.variant?.includes('compact') ? html`${this.#numericContent(currentPage, lastHref)}` : html``}
+      </div>
+    `;
+  }
 
-        <div id="numeric" part="numeric">
-          <span id="go-to-page">
-            <slot name="go-to-page">Go to page</slot>
-          </span>
-          <input inputmode="numeric"
-              required
-              min=1 max=${this.#links?.length ?? 1}
-              aria-labelledby="go-to-page"
-              @change=${this.#onChange}
-              @keyup=${this.#onKeyup}
-              .value=${currentPage}>
-          <slot name="out-of">of</slot>
-          <a href=${ifDefined(lastHref)}>${this.#links?.length}</a>
-        </div>
+  #numericContent(currentPage: string, lastHref?: string, ) {
+    return html`
+      <div id="numeric" part="numeric">
+        <span id="go-to-page" class="${this.variant?.includes('compact') ? 'visually-hidden' : ''}">
+          <slot name="go-to-page">
+            Page
+          </slot>
+        </span>
+        <input inputmode="numeric"
+            required
+            min=1 max=${this.#links?.length ?? 1}
+            aria-labelledby="go-to-page"
+            @change=${this.#onChange}
+            @keyup=${this.#onKeyup}
+            .value=${currentPage}>
+        <slot name="out-of">of</slot>
+        <a href=${ifDefined(lastHref)}>${this.#links?.length}</a>
       </div>
     `;
   }
