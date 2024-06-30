@@ -31,15 +31,6 @@
     labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>
 </rh-tooltip>
 
-
-## Demos
-View a live version of this component and see how it can be customized.
-
-{% playground tagName=tagName %}{% endplayground %}
-
-<rh-cta><a href="{{ './demo/' | url }}">Full screen demo</a></rh-cta>
-
-
 ## When to use 
 - When users need help making a decision
 - When you need to provide more information for icons or icon buttons without labels
