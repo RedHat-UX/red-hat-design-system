@@ -51,10 +51,8 @@ describe('<rh-switch>', function() {
     beforeEach(async function() {
       element = await createFixture<RhSwitch>(html`
         <rh-switch aria-describedby="switch-message" accessible-label="Dark Mode">
-          <div id="switch-message">
-            <span data-state="on">Message when on</span>
-            <span data-state="off" hidden>Message when off</span>
-          </div>
+          <span slot="message-on">Message when <strong>on</strong></span>
+          <span slot="message-off">Message when <strong>off</strong></span>
         </rh-switch>
       `);
     });
