@@ -112,7 +112,8 @@ svg {
   color: var(--rh-color-text-secondary-on-light, #4d4d4d);
 }
 
-:host(:disabled) ::slotted(*) {
+:host(:disabled) ::slotted(*),
+:host(:disabled) slot[name^="message"] span[aria-hidden] {
   color: var(--rh-color-gray-50, #707070);
 }
 
@@ -126,10 +127,6 @@ svg {
 }
 
 :host(:disabled) .dark {
-  --_switch-track-background-color: var(--rh-color-gray-70, #383838);
-}
-
-:host(:disabled) .color-palette-dark {
   --_switch-track-background-color: var(--rh-color-gray-60, #4d4d4d);
 }
 
