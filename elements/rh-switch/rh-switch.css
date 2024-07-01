@@ -85,7 +85,7 @@
   translate:
     calc(
         var(--_switch-width) - (var(--_switch-handle-size) +
-        var(--_margin-inline)) * 1.25
+        (var(--_margin-inline) * 2))
       );
 }
 
@@ -94,7 +94,7 @@
     calc(
         -1 * (
           var(--_switch-width) - (var(--_switch-handle-size) +
-          var(--_margin-inline)) * 1.25
+          (var(--_margin-inline) * 2))
         )
       );
 }
