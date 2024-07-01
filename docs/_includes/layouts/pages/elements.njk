@@ -54,9 +54,10 @@ eleventyComputed:
   <article {% if hasToc and (content | toc).length > 0 %}class="has-toc"{% endif %}>
     <uxdot-header has-subnav>
       <h1 id="{{ slug }}" class="page-title">{{ doc.alias or (slug | deslugify) }}</h1>
-      {%- set demos = element.manifest and element.manifest.getDemos(element.tagName) -%}
-      <rh-subnav slot="subnav">{% for tab in doc.tabs %}{% if loop.last and demos.length > 1 %}
-        {%- set demosUrl = ("/elements/" + slug + "/demos/") -%}
+      {%- set manifest = doc.docsPage.manifest -%}
+      {%- set demos = manifest and manifest.getDemos(doc.docsPage.tagName) -%}
+      {%- set demosUrl -%}/elements/{{ slug }}/demos/{%- endset -%}
+      <rh-subnav slot="subnav">{% for tab in doc.tabs %}{% if loop.last and demos.length %}
         <a {{ 'active' if page.url === demosUrl }} href="{{ demosUrl }}">Demos</a>{% endif %}
         <a {{ 'active' if tab.href == page.url }} href="{{ tab.href }}">
           {{- tab.pageTitle | capitalize -}}
