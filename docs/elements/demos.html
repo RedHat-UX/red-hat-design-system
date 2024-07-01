@@ -78,6 +78,14 @@ playground-project {
       }}
     }
     </script>
+  {%- else -%}
+    <script type="sample/importmap">
+    {
+      "imports": {
+        "@patternfly/icons/": "https://ux.redhat.com/assets/packages/@patternfly/icons/"
+      }
+    }
+    </script>
   {%- endif -%}
   {% for filename, config in playground.files %}
     {%- if not config.label -%}
