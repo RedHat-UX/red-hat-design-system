@@ -197,6 +197,7 @@ export class RhVideo extends LitElement {
     if (iframe) {
       const url = new URL(iframe.getAttribute('src') || '');
       url.searchParams.append('autoplay', '1');
+      url.searchParams.append('rel', '0');
       iframe.src = url.href;
       iframe.classList.add('rh-yt-iframe');
       iframe.allow = 'autoplay';
