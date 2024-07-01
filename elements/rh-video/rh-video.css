@@ -1,0 +1,142 @@
+:host {
+  display: block;
+}
+
+:host([hidden]),
+*[hidden] {
+  display: none !important;
+}
+
+#video,
+#consent {
+  display: inline-flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#video {
+  position: relative;
+  justify-content: stretch;
+}
+
+figure,
+::slotted([slot="thumbnail"]),
+::slotted(iframe) {
+  max-width: 100%;
+}
+
+::slotted(iframe) {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  border: 0;
+}
+
+figure {
+  display: inline-flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+figure.dark {
+  --_caption-text-color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
+}
+
+#consent,
+#watermark {
+  position: absolute;
+  inset: 0;
+}
+
+#consent {
+  justify-content: center;
+  container: consent / inline-size;
+}
+
+#consent-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  text-align: center;
+  z-index: 5;
+}
+
+#consent-message,
+::slotted([slot="consent-message"]) {
+  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  font-size: var(--rh-font-size-heading-xs, 1.25rem);
+  line-height: var(--rh-line-height-heading, 1.3);
+}
+
+#consent-message,
+::slotted([slot="consent-message"]:last-of-type) {
+  margin-block-end: var(--rh-space-lg, 16px);
+}
+
+@container consent (min-width: 576px) {
+  #consent-message,
+  ::slotted([slot="consent-message"]:last-of-type) {
+    margin-block-end: var(--rh-space-xl, 24px);
+  }
+
+  #consent-body {
+    padding: var(--rh-space-xl, 24px);
+  }
+
+  #consent-message {
+    font-size: var(--rh-font-size-heading-sm, 1.5rem);
+  }
+}
+
+#play {
+  position: absolute;
+  inset: 0;
+  display: block;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+}
+
+#play[hidden],
+:is(.video, .consent) ::slotted([slot="thumbnail"]) {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.visually-hidden {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+#icon {
+  position: absolute;
+  inset: calc(50% - 32px);
+}
+
+#autoplay {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 200ms ease-in;
+}
+
+.video #autoplay {
+  opacity: 1;
+}
+
+::slotted([slot="caption"]) {
+  color: var(--_caption-text-color, var(--rh-color-text-secondary-on-light, #4d4d4d));
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+}
+
+::slotted([slot="caption"]:first-of-type) {
+  margin-block-start: var(--rh-space-lg, 16px);
+}
