@@ -18,14 +18,6 @@
   <p slot="caption">Video caption here</p>
 </rh-video>
 
-
-## Demo
-
-{% playground tagName=tagName %}{% endplayground %}
-
-<rh-cta><a href="{{ './demo/' | url }}">Full screen demo</a></rh-cta>
-
-
 ## When to use 
   - 
 
