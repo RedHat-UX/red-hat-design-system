@@ -37,15 +37,15 @@ export class TileSelectEvent extends Event {
  * @slot headline - optional headline / link title
  * @slot - optional body content
  * @slot footer - optional footer
- * @cssprop --rh-tile-text-color - color of text - {@default var(--rh-color-text-primary-on-light, #151515)}
- * @cssprop --rh-tile-text-color-secondary - disabled text and icons - {@default var(--rh-color-text-secondary-on-light, #4d4d4d)}
- * @cssprop --rh-tile-interactive-color - color of interactive elements - {@default var(--rh-color-border-interactive-on-light, #0066cc)}
- * @cssprop --rh-tile-link-color - color of tile link - {@default var(--rh-tile-interactive-color)}
- * @cssprop --rh-tile-link-text-decoration - tile link text decoration - {@default none}
- * @cssprop --rh-tile-background-color - color tile surface - {@default var(--rh-color-surface-lightest, #ffffff)}
- * @cssprop --rh-tile-focus-background-color - color tile surface on focus/hover - {@default var(--rh-color-surface-lighter, #f2f2f2)}
- * @cssprop --rh-tile-disabled-background-color - color tile surface when disabled - {@default var(--rh-color-surface-light, #e0e0e0)}
- * @cssprop --rh-tile-border-color - color of tile border - {@default var(--rh-color-border-subtle-on-light, #c7c7c7)}
+ * @cssprop --rh-tile-text-color - Color of text.<br>Could cause accessibility issues; prefer to use `--rh-color-text-primary-on-light` and `--rh-color-text-primary-on-dark` for theming. {@default var(--rh-color-text-primary-on-light, #151515)}
+ * @cssprop --rh-tile-text-color-secondary - Disabled text and icons.<br>Could cause accessibility issues; prefer to use `--rh-color-text-secondary-on-light` and `--rh-color-text-secondary-on-dark` for theming. {@default var(--rh-color-text-secondary-on-light, #4d4d4d)}
+ * @cssprop --rh-tile-interactive-color - Color of interactive elements.<br>Could cause accessibility issues; prefer to use `--rh-color-border-interactive-on-light` and `--rh-color-border-interactive-on-dark` for theming. {@default var(--rh-color-border-interactive-on-light, #0066cc)}
+ * @cssprop --rh-tile-link-color - Color of tile link. {@default var(--rh-tile-interactive-color)}
+ * @cssprop --rh-tile-link-text-decoration - Tile link text decoration {@default none}
+ * @cssprop --rh-tile-background-color - Color tile surface.<br>Could cause accessibility issues; prefer to use `--rh-color-surface-lightest` and `--rh-color-surface-darkest` for theming. {@default var(--rh-color-surface-lightest, #ffffff)}
+ * @cssprop --rh-tile-focus-background-color - Color tile surface on focus/hover.<br>Could cause accessibility issues; prefer to use `--rh-color-surface-lighter` and `--rh-color-surface-darker` for theming. {@default var(--rh-color-surface-lighter, #f2f2f2)}
+ * @cssprop --rh-tile-disabled-background-color - Color tile surface when disabled.<br>Could cause accessibility issues; prefer to use `--rh-color-surface-light` and `--rh-color-surface-dark` for theming. {@default var(--rh-color-surface-light, #e0e0e0)}
+ * @cssprop --rh-tile-border-color - Color of tile border.<br>Could cause accessibility issues; prefer to use `--rh-color-border-subtle-on-light` and `--rh-color-border-subtle-on-dark` for theming. {@default var(--rh-color-border-subtle-on-light, #c7c7c7)}
  */
 @customElement('rh-tile')
 export class RhTile extends LitElement {

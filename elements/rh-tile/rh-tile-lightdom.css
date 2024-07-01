@@ -1,11 +1,11 @@
 rh-tile a {
-  color: var(--rh-tile-link-color) !important;
-  text-decoration: var(--rh-tile-link-text-decoration, none) !important;
+  color: var(--_link-color) !important;
+  text-decoration: var(--_link-text-decoration, none) !important;
 }
 
 rh-tile:focus-within a,
 rh-tile a:is(:focus, :hover, :active) {
-  --rh-tile-link-text-decoration: underline;
+  --_link-text-decoration: underline;
 }
 
 rh-tile a:not([slot="image"], [slot="headline"]) {
@@ -16,7 +16,7 @@ rh-tile a:not([slot="image"], [slot="headline"]) {
 rh-tile[aria-disabled="true"] a {
   color:
     var(
-        --rh-tile-text-color-secondary,
+        --_text-color-secondary,
         var(--rh-color-text-secondary-on-light, #4d4d4d)
       ) !important;
 }
@@ -25,7 +25,7 @@ rh-tile *:is([slot="image"], [slot="headline"]) a,
 rh-tile a:is([slot="image"], [slot="headline"]) {
   z-index: 1 !important;
   position: static !important;
-  color: var(--rh-tile-link-color) !important;
+  color: var(--_link-color) !important;
 }
 
 rh-tile *:is([slot="image"], [slot="headline"]) a:after,
@@ -33,7 +33,7 @@ rh-tile a:is([slot="image"], [slot="headline"]):after {
   content: "";
   position: absolute;
   inset: 0;
-  display: var(--rh-tile-link-after-display);
+  display: var(--_link-after-display);
 }
 
 rh-tile [slot="headline"] a:after,
@@ -47,10 +47,10 @@ rh-tile [slot="image"]:is(img, svg) {
 }
 
 rh-tile:defined a:is(:focus, :hover, :active) {
-  outline: var(--rh-tile-link-outline) !important;
+  outline: var(--_link-outline) !important;
 }
 
 rh-tile:defined :is([slot="image"], [slot="headline"]) a,
 rh-tile:defined a:is([slot="image"], [slot="headline"]) {
-  --rh-tile-link-outline: none;
+  --_link-outline: none;
 }
