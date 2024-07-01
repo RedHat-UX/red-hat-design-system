@@ -7,6 +7,8 @@
   --_switch-width: 40px;
   --_switch-height: 24px;
   --_switch-handle-size: 14px;
+  --_switch-track-background-color: var(--rh-color-gray-60, #4d4d4d);
+  --_margin-inline: 5px; /* non standard spacer */
 }
 
 #container {
@@ -44,7 +46,9 @@
   outline-offset: var(--rh-space-sm, 6px);
 }
 
-#track {
+/* track */
+#switch:before {
+  content: "";
   display: flex;
   position: absolute;
   width: 100%;
@@ -52,26 +56,21 @@
   border-radius: inherit;
   justify-content: center;
   align-items: center;
-  background-color: var(--_switch-track-background-color, var(--rh-color-gray-60, #4d4d4d));
+  background-color: var(--_switch-track-background-color);
 }
 
-#handle-container {
-  display: flex;
-  place-content: center;
-  place-items: center;
-  position: relative;
-  transition: margin 0.25s ease 0s;
-  margin-inline-end: calc(var(--_switch-width) - var(--_switch-height));
-}
-
-#handle {
+/* handle */
+#switch:after {
+  content: "";
   height: var(--_switch-handle-size);
   width: var(--_switch-handle-size);
   border-radius: var(--rh-border-radius-pill, 64px);
   transform-origin: center;
-  transition-property: height, width;
   z-index: 0;
   background-color: var(--_switch-handle-color, var(--rh-color-surface-lightest, #ffffff));
+  margin-inline: var(--_margin-inline);
+  translate: 0%;
+  transition: translate 0.25s ease 0s;
 }
 
 :host([checked]:not(:disabled)) {
@@ -82,17 +81,30 @@
       );
 }
 
-:host([checked]) #handle-container {
-  margin-inline-start: calc(var(--_switch-width) - var(--_switch-height));
-  margin-inline-end: 0;
+:host([checked]) #switch:after {
+  translate:
+    calc(
+        var(--_switch-width) - (var(--_switch-handle-size) +
+        var(--_margin-inline)) * 1.25
+      );
+}
+
+:host([checked]) .rtl #switch:after {
+  translate:
+    calc(
+        -1 * (
+          var(--_switch-width) - (var(--_switch-handle-size) +
+          var(--_margin-inline)) * 1.25
+        )
+      );
 }
 
 svg {
   fill: currentcolor;
-  margin-inline: var(--rh-space-sm, 6px);
+  margin-inline: var(--_margin-inline);
   font-size: var(--rh-font-size-body-text-xs, 0.75rem);
   color: var(--_switch-handle-color, var(--rh-color-icon-secondary-on-dark, #ffffff));
-  position: relative;
+  position: absolute;
   z-index: 1;
 }
 
@@ -109,7 +121,7 @@ svg {
   --_switch-handle-color: var(--rh-color-surface-dark-alt, #292929);
 }
 
-.dark #handle {
+.dark:after {
   box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
 }
 
