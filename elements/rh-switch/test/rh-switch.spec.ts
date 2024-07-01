@@ -15,12 +15,7 @@ describe('<rh-switch>', function() {
     let snapshot: A11yTreeSnapshot;
     beforeEach(async function() {
       element = await createFixture<RhSwitch>(html`
-        <rh-switch aria-describedby="switch-message" accessible-label="Dark Mode" checked>
-          <div id="switch-message">
-            <span data-state="on">Message when on</span>
-            <span data-state="off" hidden>Message when off</span>
-          </div>
-        </rh-switch>
+        <rh-switch accessible-label="Dark Mode"></rh-switch>
       `);
     });
     it('should upgrade', async function() {
@@ -45,16 +40,57 @@ describe('<rh-switch>', function() {
     });
   });
 
+  describe('with message attributes', function() {
+    let element: RhSwitch;
+    let snapshot: A11yTreeSnapshot;
+    beforeEach(async function() {
+      element = await createFixture<RhSwitch>(html`
+        <rh-switch accessible-label="Dark Mode" message-on="Message when on" message-off="Message when off"></rh-switch>
+      `);
+      await element.updateComplete;
+    });
+
+    it('is accessible', async function() {
+      snapshot = await a11ySnapshot({ selector: 'rh-switch' });
+      expect(snapshot.role).to.equal('switch');
+      expect(snapshot.name).to.be.ok;
+      expect(snapshot.checked).to.be.false;
+    });
+
+    it('should show the message for the unchecked state', async function() {
+      snapshot = await a11ySnapshot({ selector: 'rh-switch' });
+      expect(snapshot.description).to.equal('Message when off');
+    });
+
+    describe('clicking the switch', function() {
+      beforeEach(async function() {
+        element.click();
+        await element.updateComplete;
+        await nextFrame();
+      });
+      it('should be checked', async function() {
+        snapshot = await a11ySnapshot({ selector: 'rh-switch' });
+        expect(element.checked).to.be.true;
+        expect(snapshot.checked).to.be.true;
+      });
+      it('should show the label for the checked state', async function() {
+        snapshot = await a11ySnapshot({ selector: 'rh-switch' });
+        expect(snapshot.description).to.equal('Message when on');
+      });
+    });
+  });
+
   describe('with slotted data-state messages for on and off state announcement', function() {
     let element: RhSwitch;
     let snapshot: A11yTreeSnapshot;
     beforeEach(async function() {
       element = await createFixture<RhSwitch>(html`
-        <rh-switch aria-describedby="switch-message" accessible-label="Dark Mode">
+        <rh-switch accessible-label="Dark Mode">
           <span slot="message-on">Message when <strong>on</strong></span>
           <span slot="message-off">Message when <strong>off</strong></span>
         </rh-switch>
       `);
+      await element.updateComplete;
     });
 
     it('is accessible', async function() {
@@ -92,12 +128,7 @@ describe('<rh-switch>', function() {
     let snapshot: A11yTreeSnapshot;
     beforeEach(async function() {
       element = await createFixture<RhSwitch>(html`
-        <rh-switch checked aria-describedby="switch-message" accessible-label="Change Message">
-          <div id="switch-message">
-            <span data-state="on">Message when on</span>
-            <span data-state="off" hidden>Message when off</span>
-          </div>
-        </rh-switch>
+        <rh-switch checked accessible-label="Change Message" message-on="Message when on" message-off="Message when off"></rh-switch>
       `);
 
       await element.updateComplete;
@@ -116,12 +147,7 @@ describe('<rh-switch>', function() {
     let snapshot: A11yTreeSnapshot;
     beforeEach(async function() {
       element = await createFixture<RhSwitch>(html`
-        <rh-switch aria-describedby="switch-message" accessible-label="Change Message">
-          <div id="switch-message">
-            <span data-state="on">Message when on</span>
-            <span data-state="off" hidden>Message when off</span>
-          </div>
-        </rh-switch>
+        <rh-switch accessible-label="Change Message" message-on="Message when on" message-off="Message when off"></rh-switch>
       `);
 
       await element.updateComplete;
@@ -140,12 +166,7 @@ describe('<rh-switch>', function() {
     let element: RhSwitch;
     beforeEach(async function() {
       element = await createFixture<RhSwitch>(html`
-        <rh-switch checked show-check-icon aria-describedby="switch-message" accessible-label="Change Message" >
-          <div id="switch-message">
-            <span data-state="on">Message when on</span>
-            <span data-state="off" hidden>Message when off</span>
-          </div>
-        </rh-switch>
+        <rh-switch checked show-check-icon accessible-label="Change Message" message-on="Message when on" message-off="Message when off"></rh-switch>
       `);
     });
     it('should display a check icon', async function() {
@@ -165,12 +186,7 @@ describe('<rh-switch>', function() {
       const container = await createFixture<HTMLLabelElement>(html`
         <fieldset>
           <label for="with-label">Dark Mode</label>
-          <rh-switch id="with-label" aria-describedby="switch-messages">
-            <div id="switch-messages">
-              <span data-state="on">Message when on</span>
-              <span data-state="off" hidden>Message when off</span>
-            </div>
-          </rh-switch>
+          <rh-switch id="with-label" message-on="Message when on" message-off="Message when off"></rh-switch>
         </fieldset>
       `);
       label = container.querySelector('label')!;
@@ -210,12 +226,7 @@ describe('<rh-switch>', function() {
       const container = await createFixture<HTMLLabelElement>(html`
         <fieldset>
           <label>Dark Mode
-            <rh-switch aria-describedby="switch-messages">
-              <div id="switch-messages">
-                <span data-state="on">Message when on</span>
-                <span data-state="off" hidden>Message when off</span>
-              </div>
-            </rh-switch>
+            <rh-switch aria-describedby="switch-messages" message-on="Message when on" message-off="Message when off"></rh-switch>
           </label>
         </fieldset>
       `);
