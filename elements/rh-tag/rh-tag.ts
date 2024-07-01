@@ -3,7 +3,8 @@ import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { type ColorPalette } from '@rhds/elements/lib/context/color/provider.js';
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
@@ -57,7 +58,7 @@ export class RhTag extends LitElement {
   /** The color of the label. */
   @property() color?: 'blue' | 'cyan' | 'green' | 'orange' | 'purple' | 'red' | 'grey';
 
-  @colorContextConsumer() private on?: ColorTheme;
+  @colorContextConsumer() private on?: ColorPalette;
 
   /** Represents the state of the anonymous and icon slots */
   #slots = new SlotController(this, 'icon', null);

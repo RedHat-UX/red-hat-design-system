@@ -18,7 +18,7 @@ import { RhTabPanel } from './rh-tab-panel.js';
 
 import { DirController } from '../../lib/DirController.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import styles from './rh-tabs.css';
@@ -119,7 +119,7 @@ export class RhTabs extends LitElement {
   /**
    * Sets color theme based on parent context
    */
-  @colorContextConsumer() private on?: ColorTheme;
+  @colorContextConsumer() private on?: ColorPalette;
 
   @query('[part="tabs"]') private tabList!: HTMLElement;
 

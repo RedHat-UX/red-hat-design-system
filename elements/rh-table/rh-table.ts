@@ -7,9 +7,11 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import { RequestSortEvent, RhSortButton } from './rh-sort-button.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { type ColorPalette } from '../../lib/context/color/provider.js';
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-table.css';
+
 
 /**
  * A table is a container for displaying information. It allows a user to scan, examine, and compare large amounts of data.
@@ -29,7 +31,7 @@ import styles from './rh-table.css';
 export class RhTable extends LitElement {
   static readonly styles = [styles];
 
-  @colorContextConsumer() private on?: ColorTheme;
+  @colorContextConsumer() private on?: ColorPalette;
 
   private static getNodeContentForSort(
     columnIndexToSort: number,
@@ -70,8 +72,6 @@ export class RhTable extends LitElement {
     return this.querySelector('[slot="summary"]') as HTMLElement | undefined;
   }
 
-  #internalColorPalette?: string | null;
-
   #logger = new Logger(this);
 
   connectedCallback() {
@@ -79,22 +79,10 @@ export class RhTable extends LitElement {
     this.#init();
   }
 
-  protected willUpdate(): void {
-    /**
-     * TEMPORARY: this fixes the need to access the parents color-palette in order to get the `lightest`
-     * value.  This fix will only update the component when switching between light and dark themes as
-     * thats when the consumer requests an update.  Switching between lighter -> light for example will
-     * not trigger the component to update at this time.
-     **/
-    this.#internalColorPalette = this.closest('[color-palette]')?.getAttribute('color-palette');
-  }
-
   render() {
     const { on = '' } = this;
     return html`
-      <div id="container" 
-        class="${classMap({ [on]: !!on, [`color-palette-${this.#internalColorPalette}`]: !!this.#internalColorPalette })}" 
-        part="container">
+      <div id="container" class="${classMap({ [on]: !!on })}" part="container">
         <slot @pointerleave="${this.#onPointerleave}"
               @pointerover="${this.#onPointerover}"
               @request-sort="${this.#onRequestSort}" 

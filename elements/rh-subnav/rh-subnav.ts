@@ -8,7 +8,7 @@ import { property } from 'lit/decorators/property.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 import { OverflowController } from '@patternfly/pfe-core/controllers/overflow-controller.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import '@patternfly/elements/pf-icon/pf-icon.js';
@@ -54,7 +54,7 @@ export class RhSubnav extends LitElement {
   /**
    * Sets color theme based on parent context
    */
-  @colorContextConsumer() private on?: ColorTheme;
+  @colorContextConsumer() private on?: ColorPalette;
 
   /**
    * Sets color palette, which affects the element's styles as well as descendants' color theme.

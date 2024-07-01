@@ -27,7 +27,7 @@ a {
   cursor: pointer;
 }
 
-.dark {
+:is(.dark, .darker, .darkest) {
   --_text-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_background-color: var(--rh-color-surface-darkest, #151515);
   --_active-background-color: var(--rh-color-surface-darkest, #151515);

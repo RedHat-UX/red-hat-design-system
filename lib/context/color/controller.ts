@@ -1,4 +1,4 @@
-import type { ColorTheme } from './consumer.js';
+import type { ColorPalette } from './provider.js';
 import type { ReactiveController, ReactiveElement } from 'lit';
 
 import { StyleController } from '@patternfly/pfe-core/controllers/style-controller.js';
@@ -38,26 +38,24 @@ export const contextEvents = new Map<
  * which *must* be set by the `color-palette` attribute
  * This property is set (in most cases) in `color-context.scss`,
  * which is added to components via `StyleController`.
- *
- * In this way, we avoid the need to execute javascript in order to convert from a given
- * `ColorPalette` to a given `ColorTheme`, since those relationships are specified in CSS.
  */
 export abstract class ColorContextController<
   T extends ReactiveElement
 > implements ReactiveController {
   /** The context object which acts as the key for providers and consumers */
-  public static readonly context = createContext<ColorTheme | null>(Symbol('rh-color-context'));
+
+  public static readonly context = createContext<ColorPalette | null>(Symbol('rh-color-context'));
 
   /** The style controller which provides the necessary CSS. */
   protected styleController: StyleController;
 
   /** The last-known color context on the host */
-  protected last: ColorTheme | null = null;
+  protected last: ColorPalette | null = null;
 
   hostUpdate?(): void;
 
   /** callback which updates the context value on consumers */
-  abstract update(next?: ColorTheme | null): void;
+  abstract update(next?: ColorPalette | null): void;
 
   constructor(protected host: T) {
     this.styleController = new StyleController(host, COLOR_CONTEXT_BASE_STYLES);

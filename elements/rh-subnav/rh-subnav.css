@@ -7,8 +7,8 @@
   background-color: var(--_context-background-color, var(--rh-color-surface-lighter, #f2f2f2));
 }
 
-[part="container"]:not(.dark),
-.light {
+[part="container"]:not(.dark, .darker, .darkest),
+:is(.light, .lighter, .lightest) {
   --_subnav-link-text-color: var(--rh-color-text-secondary-on-light, #4d4d4d);
   --_subnav-link-hover-text-color: var(--rh-color-text-primary-on-light, #151515);
   --_subnav-link-hover-border-end-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
@@ -21,7 +21,7 @@
   --_subnav-next-prev-border-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
 }
 
-.dark {
+:is(.dark, .darker, .darkest) {
   --_subnav-link-text-color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
   --_subnav-link-hover-text-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_subnav-link-hover-border-end-color: var(--rh-color-border-subtle-on-dark, #707070);

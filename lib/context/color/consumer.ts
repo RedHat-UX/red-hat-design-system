@@ -8,20 +8,11 @@ import {
 
 import { ContextRequestEvent } from '../event.js';
 
-/**
-   * A Color theme is a context-specific restriction on the available color palettes
-   *
-   * `ColorTheme` is associated with the `on` attribute and the `--context` css property
-   */
-export type ColorTheme = (
-  | 'dark'
-  | 'light'
-  | 'saturated'
-);
+import { type ColorPalette } from './provider.js';
 
 interface ColorContextConsumerOptions<T extends ReactiveElement> extends ColorContextOptions<T> {
   /** Private callback for instances where a consumer is also a provider. */
-  callback?: (value: ColorTheme) => void;
+  callback?: (value: ColorPalette) => void;
 }
 
 /**
@@ -35,7 +26,7 @@ export class ColorContextConsumer<
   #propertyName: keyof T;
 
   get #propertyValue() {
-    return this.host[this.#propertyName] as ColorTheme;
+    return this.host[this.#propertyName] as ColorPalette;
   }
 
   set #propertyValue(x) {
@@ -49,7 +40,7 @@ export class ColorContextConsumer<
 
   #dispose?: () => void;
 
-  #override: ColorTheme | null = null;
+  #override: ColorPalette | null = null;
 
   constructor(host: T, private options?: ColorContextConsumerOptions<T>) {
     super(host);
@@ -75,7 +66,7 @@ export class ColorContextConsumer<
   }
 
   /** Register the dispose callback for hosts that requested multiple updates, then update the colour-context */
-  #contextCallback(value: ColorTheme | null, dispose?: () => void) {
+  #contextCallback(value: ColorPalette | null, dispose?: () => void) {
     // protect against changing providers
     if (dispose && dispose !== this.#dispose) {
       this.#dispose?.();
@@ -85,11 +76,11 @@ export class ColorContextConsumer<
   }
 
   /** Sets the `on` attribute on the host and any children that requested multiple updates */
-  public update(next: ColorTheme | null) {
+  public update(next: ColorPalette | null) {
     const { last } = this;
     if (!this.#override && next !== last) {
       this.last = next;
-      this.#propertyValue = (next ?? undefined) as ColorTheme;
+      this.#propertyValue = (next ?? undefined) as ColorPalette;
     }
     this.options?.callback?.(this.#propertyValue);
   }
