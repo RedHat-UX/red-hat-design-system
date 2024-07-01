@@ -5,6 +5,11 @@ import { classMap } from 'lit/directives/class-map.js';
 
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
+import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
+
+import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
+
 import '@patternfly/elements/pf-icon/pf-icon.js';
 import '@rhds/elements/rh-accordion/rh-accordion.js';
 
@@ -15,8 +20,6 @@ import './rh-footer-links.js';
 import './rh-footer-block.js';
 
 import style from './rh-footer.css';
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
-import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
 function isHeaderTagName(tagName: string) {
   return !!tagName.match(/^H[1-6]$/i);
@@ -84,6 +87,20 @@ export class RhFooter extends LitElement {
 
   #compact = false;
 
+  #slots = new SlotController(
+    this,
+    'base',
+    'header',
+    'logo',
+    'header-primary',
+    'header-secondary',
+    'main',
+    'main-primary',
+    'main-secondary',
+    'main-tertiary',
+    'universal'
+  );
+
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'darker';
 
@@ -147,6 +164,9 @@ export class RhFooter extends LitElement {
               </div>
               <div class="main-secondary" part="main-secondary">
                 <slot name="main-secondary"></slot>
+              </div>
+              <div class="${classMap({ 'main-tertiary': true, 'empty': this.#slots.isEmpty('main-tertiary') })}" part="main-tertiary">
+                <slot name="main-tertiary"></slot>
               </div>
             </slot>
           </div>

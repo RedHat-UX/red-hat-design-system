@@ -109,6 +109,10 @@ footer,
   place-content: start;
 }
 
+.main-tertiary.empty {
+  display: none;
+}
+
 .global-base {
   --rh-footer-link-font-size: var(--rh-font-size-body-text-xs, 0.75rem);
 
