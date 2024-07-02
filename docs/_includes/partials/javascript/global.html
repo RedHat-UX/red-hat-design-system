@@ -1,4 +1,4 @@
-  <script type="importmap">{{ importMap | dump | safe }}</script>
+  <script type="importmap">{{ importMap | dump(2) | safe }}</script>
 
   {# dsd polyfill needs to happen before hydration attempts #}
   <script type="module">
