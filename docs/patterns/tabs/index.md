@@ -38,15 +38,18 @@ use the [Subnav](/elements/subnavigation) element instead.
 
 {% include './patterns/link-to-tab.html' %}
 
-{% set codeblock %}
-
-```html
-{% include './patterns/link-to-tab.html' %}
-```
-
-{% endset %}
-
-<rh-code-block actions="copy">{{ codeblock | safe }}</rh-code-block>
+{%- set linkToTabPattern -%}{%- include './patterns/link-to-tab.html' -%}{%- endset -%}
+{% set closeScriptTag = '</' + 'script>' %}
+<rh-code-block actions="copy">
+  <span slot="action-label-copy">Copy to Clipboard</span>
+  <span slot="action-label-copy" hidden data-code-block-state="active">Copied!</span>
+  <span slot="action-label-wrap">Toggle word wrap</span>
+  <span slot="action-label-wrap" hidden data-code-block-state="active">Toggle overflow</span>
+<script type="text/html">{{ linkToTabPattern
+  | safe
+  | replace(closeScriptTag, '</' + closeScriptTag + '<script' + ' type="text/html">' + 'script>')
+ }}</script>
+</rh-code-block>
 
 [element]: /elements/tabs
 [css-props]: /elements/tabs/code/#css-custom-properties

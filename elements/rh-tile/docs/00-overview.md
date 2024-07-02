@@ -19,15 +19,6 @@
   <div slot="footer">Suspendisse eu turpis elementum</div>
 </rh-tile>
 
-## Demo
-
-View a live version of this element and see how it can be customized.
-
-{% playground tagName=tagName %}{% endplayground %}
-
-<rh-cta><a href="{{ './demo/' | url }}">Full screen demo</a></rh-cta>
-
-
 ## When to use
 
 - When you need to group content in a linked container

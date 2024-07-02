@@ -369,7 +369,7 @@ Do not apply the external link icon to Call to action links.
 
 <uxdot-example width-adjustment="398px" danger>
   <img src="{{ './link-best-practice-6.svg' | url }}" alt="Link component best practice 6">
-</uxdot-example>    
+</uxdot-example>
 
 
 ### Widows

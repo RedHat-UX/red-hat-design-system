@@ -78,7 +78,8 @@ class UxdotSideNav extends LitElement {
     ::slotted(ul) {
       padding-inline: 0;
       padding-block-start: var(--_padding-start);
-      padding-block-end: var(--_padding-end);
+      /* allow overflow to scroll with --_padding-end + section item height */
+      padding-block-end: calc(var(--_padding-end) + (var(--rh-font-size-body-text-lg, 1.125rem) * 1.5) + (var(--rh-space-lg, 16px) * 2));
       list-style: none;
       margin-block: 0 !important;
       height: var(--_max-height);
