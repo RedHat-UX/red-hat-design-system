@@ -1,6 +1,7 @@
 ---
 title: Tabs
 layout: layouts/pages/basic.njk
+closeScriptTag: </script>
 tags:
   - pattern
 ---
@@ -12,21 +13,17 @@ tags:
   import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
 </script>
 
+{% set linkToTabPattern %}{% include './patterns/link-to-tab.html' %}{% endset %}
 
 ## Link to tab
+
+<rh-alert state="warning">Use this pattern sparingly. If your tabs serve only as 
+  page navigation, use the [Subnav](/elements/subnavigation) element 
+  instead.</rh-alert>
 
 Use to activate a particular tab when the page's URL hash refers to an element
 within the tab panel, or to the tab itself.
 
-<rh-alert state="warning">
-
-Use this pattern sparingly. If your tabs serve only as page navigation,
-use the [Subnav](/elements/subnavigation) element instead.
-
-</rh-alert>
-
-{%- set linkToTabPattern -%}{%- include './patterns/link-to-tab.html' -%}{%- endset -%}
-{% set closeScriptTag = '</' + 'script>' %}
 <rh-code-block actions="copy">
   <span slot="action-label-copy">Copy to Clipboard</span>
   <span slot="action-label-copy" hidden data-code-block-state="active">Copied!</span>
