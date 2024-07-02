@@ -59,7 +59,7 @@ Web components allow for encapsulation, which provides a clear boundary between 
 
 #### Web Standard APIs
 
-Web Components use Web Standard APIs, which means the technology is future-proofed, reliable, and supported by every modern browser.
+Because Web Components use Web Standards, the technology is future-proofed, reliable, and supported by every modern browser.
 
 #### Platform and framework agnostic
 
