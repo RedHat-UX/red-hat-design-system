@@ -7,6 +7,7 @@ tags:
 
 <script type="module">
   import '@rhds/elements/rh-tabs/rh-tabs.js';
+  import '@rhds/elements/rh-code-block/rh-code-block.js';
   import '@rhds/elements/rh-button/rh-button.js';
   import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
 </script>
@@ -36,6 +37,16 @@ use the [Subnav](/elements/subnavigation) element instead.
 </nav>
 
 {% include './patterns/link-to-tab.html' %}
+
+{% set codeblock %}
+
+```html
+{% include './patterns/link-to-tab.html' %}
+```
+
+{% endset %}
+
+<rh-code-block actions="copy">{{ codeblock | safe }}</rh-code-block>
 
 [element]: /elements/tabs
 [css-props]: /elements/tabs/code/#css-custom-properties
