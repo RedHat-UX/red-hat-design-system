@@ -47,9 +47,29 @@ Our design system libraries and the documentation website offer assets and guida
 
 ## About web components
 
-Web components are based on a set of web platform APIs that help to create reusable and encapsulated UI elements. Those standards consist of custom elements, shadow DOM, and HTML Templates.
+### What are Web Components?
 
-Because they're able to work with any framework that supports HTML, web components can be used without having to rework all of your code and are less likely to be affected by changes in preferred web stacks. Encapsulation within the shadow DOM prevents a page's code from breaking a component's style and allows for a scalable design system.
+Web components are based on a set of web platform APIs that help to create reusable and encapsulated UI elements. Those standards consist of [custom elements](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements), [shadow DOM](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_shadow_DOM), and [HTML Templates](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_templates_and_slots).
+
+### Why Web Components?
+
+#### Encapsulation
+
+Web components allow for encapsulation, which provides a clear boundary between the component and the website. This makes the components modular and prevents conflicts with page-level CSS and JS, hiding complex logic from the UI, and allowing for a scalable design system. In addition to encapsulating styles, web components also ship complex accessibility features.
+
+#### Web Standard APIs
+
+Web Components use Web Standard APIs, which means the technology is future-proofed, reliable, and supported by every modern browser.
+
+#### Platform and framework agnostic
+
+Because Web Components are built using Web Standards, they are platform and framework agnostic, allowing Red Hat to build and maintain a single Design System library that can be used across the entire enterprise. This makes it easier to switch frameworks if necessary and reduces duplication of efforts.
+
+### Do Web Components affect page performance?
+
+Much of our JavaScript payload is strings of HTML or CSS, which allows us to define new, custom HTML elements. This compresses well and parses quickly.
+
+As HTML and CSS module specifications become more widely imported in browsers, those resources will be shipped as `.html` and `.css` files. The JavaScript that remains will be behavioral&mdash;progressively enhancing the elements in question when it comes online.
 
 <uxdot-feedback>
   <h2>Designers</h2>
