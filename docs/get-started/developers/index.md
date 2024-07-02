@@ -55,7 +55,7 @@ Web components are based on a set of web platform APIs that help to create reusa
 
 #### Encapsulation
 
-Web components allow for encapsulation, which provides a clear boundary between the component and the website. This makes the components modular and prevents conflicts with page-level CSS and JS, hiding complex logic from the UI, and allowing for a scalable design system. In addition to encapsulating styles, web components also ship complex accessibility features.
+Web components allow for encapsulation, which provides a clear boundary between the component and the website. This makes the components modular and prevents conflicts with page-level CSS and JS, hiding complex logic from the UI, and allowing for a scalable design system. In addition to encapsulating styles, web components can also ship complex accessibility features, making it easier for page authors to provide accessible rich experiences.
 
 #### Web Standard APIs
 
