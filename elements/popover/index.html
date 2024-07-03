@@ -36,20 +36,20 @@
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
     "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
     "@lit/context": "/assets/packages/@lit/context/index.js",
-    "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
-    "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
-    "@rhds/tokens/meta.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js",
     "lit-element": "/assets/packages/lit-element/index.js",
+    "lit/static-html.js": "/assets/packages/lit/static-html.js",
     "lit": "/assets/packages/lit/index.js",
     "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
-    "lit/static-html.js": "/assets/packages/lit/static-html.js",
-    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@rhds/tokens/media.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@3.0.0/core.js",
+    "@rhds/tokens/meta.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
+    "@lit-labs/ssr-client/lit-element-hydrate-support.js": "https://ga.jspm.io/npm:@lit-labs/ssr-client@1.1.7/lit-element-hydrate-support.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
-    "@lit-labs/ssr-client/lit-element-hydrate-support.js": "https://ga.jspm.io/npm:@lit-labs/ssr-client@1.1.7/lit-element-hydrate-support.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.esm.js",
     "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
@@ -3690,6 +3690,9 @@
         
                 <ol slot="details">
                     
+                    <li><a href="#coming-soon!">Coming soon!</a>
+            		</li>
+
                     <li><a href="#overview">Overview</a>
             		</li>
 
@@ -3698,6 +3701,9 @@
                 </ol>
                 <ol slot="expanded">
                     
+                    <li><a href="#coming-soon!">Coming soon!</a>
+            		</li>
+
                     <li><a href="#overview">Overview</a>
             		</li>
 
@@ -3711,6 +3717,55 @@
 
     <div class="container">
       <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>
+    :host {
+      display: flex;
+      margin-block-end: var(--rh-space-lg, 16px);
+      align-items: center;
+    }
+
+    svg {
+      width: var(--rh-size-icon-02, 24px);
+    }
+
+    #signifier {
+      display: var(--perma-signifier-display, none);
+    }
+
+    #button {
+      height: 1.75rem;
+      background: none;
+      border: none;
+      display: flex;
+      align-items: center;
+    }
+
+    #button:is(:hover, :focus) {
+      background: var(--rh-color-surface-light, #e0e0e0);
+    }
+
+    ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+      display: flex;
+      margin-block-end: 0 !important;
+      align-items: center;
+      color: inherit;
+      text-decoration: inherit;
+    }
+  </style><!--lit-part TTkZeYC7lsg=-->
+      <!--lit-node 0--><slot ></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button  id="button" aria-label="Copy link to clipboard" aria-label="Copy link to clipboard">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+          <path d="M13.09 2.64a3 3 0 0 0-4.15 0L6.1 5.49a2.93 2.93 0 0 0 0 4.15.63.63 0 0 0 .88 0 .64.64 0 0 0 0-.89 1.65 1.65 0 0 1-.49-1.19A1.66 1.66 0 0 1 7 6.37l2.83-2.84a1.68 1.68 0 1 1 2.37 2.38l-.62.62a.63.63 0 1 0 .89.88l.62-.62a2.93 2.93 0 0 0 0-4.15Z"/>
+          <path d="M8.61 6.77a.64.64 0 0 0 0 .89 1.68 1.68 0 0 1 0 2.37l-2.44 2.44a1.68 1.68 0 0 1-2.38 0 1.7 1.7 0 0 1 0-2.38l.15-.09a.64.64 0 0 0 0-.89.63.63 0 0 0-.88 0l-.15.15a3 3 0 0 0 0 4.15 3 3 0 0 0 4.15 0l2.43-2.44a2.9 2.9 0 0 0 .86-2.07 2.93 2.93 0 0 0-.85-2.13.64.64 0 0 0-.89 0Z"/>
+        </svg>
+      </button>
+    <!--/lit-part--></template>
+  <h2 id="coming-soon!" tabindex="-1">
+    <a href="#coming-soon!">Coming soon!</a>
+      </h2>
+    </uxdot-copy-permalink>
+<p>This element is currently in progress and not yet available for use.</p>
+<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: flex;
       margin-block-end: var(--rh-space-lg, 16px);
