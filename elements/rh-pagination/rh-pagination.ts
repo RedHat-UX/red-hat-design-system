@@ -82,7 +82,7 @@ export class RhPagination extends LitElement {
   @property({ reflect: true }) size: 'sm' | null = null;
 
   /** "Open" and "Compact" variants */
-  @property({ reflect: true }) variant?: 'open' | 'compact' | null = null;
+  @property({ reflect: true }) variant?: 'open' | 'compact' | 'open-compact' | null = null;
 
   @query('input') private input?: HTMLInputElement;
 

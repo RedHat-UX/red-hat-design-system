@@ -252,13 +252,13 @@ input:invalid {
  * OPEN VARIANT
  *****************************************************************************/
 
-:host([variant~="open"]) .stepper {
+:host([variant|="open"]) .stepper {
   --_rh-pagination-stepper-bg-color: transparent;
 }
 
-:host([variant~="open"]) .stepper:hover:after,
-:host([variant~="open"]) .stepper:focus:before,
-:host([variant~="open"]) .stepper:focus:after {
+:host([variant|="open"]) .stepper:hover:after,
+:host([variant|="open"]) .stepper:focus:before,
+:host([variant|="open"]) .stepper:focus:after {
   border-block-start-style: none;
   border-block-end-style: solid;
   inset-block-end: -1px;
@@ -268,11 +268,11 @@ input:invalid {
  * COMPACT VARIANT
  *****************************************************************************/
 
-:host([variant~="compact"]) #prev {
+:host([variant*="compact"]) #prev {
   margin-inline-end: var(--rh-space-lg, 16px);
 }
 
-:host([variant~="compact"]) #numeric {
+:host([variant*="compact"]) #numeric {
   flex: 0;
   font-size: var(--rh-font-size-body-text-md, 1rem);
   margin-block: 0;
@@ -280,7 +280,7 @@ input:invalid {
   margin-inline-start: 0;
 }
 
-:host([variant~="compact"]) #numeric input {
+:host([variant*="compact"]) #numeric input {
   align-self: stretch;
   height: auto;
 }
