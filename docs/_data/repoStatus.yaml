@@ -193,16 +193,16 @@
       status: Ready
 - name: "Popover"
   type: "Element"
-  overallStatus: "Available"
+  overallStatus: "Planned"
   libraries:
     - name: Figma library
       status: Ready
     - name: RH Elements
-      status: Ready
+      status: Planned
     - name: WebRH
-      status: Ready
+      status: Planned
     - name: Documentation
-      status: Ready
+      status: In Progress
 - name: "Skip Link"
   type: "Element"
   overallStatus: "New"
