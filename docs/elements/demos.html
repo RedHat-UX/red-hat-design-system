@@ -102,7 +102,7 @@ playground-project {
     {% set extension = filename.split('.').pop() %}
     {% set demoSlug  = filename.split('.').shift().replace('demo/', '').replaceAll('/', '-') %}
     {% set projectId       %}playground-{{ element.tagName }}-{{ demoSlug }}{% endset %}
-    {% set demoPageUrl     %}/elements/{{ slug }}/demo/{{ config.label | slugify }}/{% endset %}
+    {% set demoPageUrl     %}/elements/{{ slug }}/demo/{%- if demoSlug !== 'index' -%}{{ config.label | slugify }}/{%- endif -%}{% endset %}
     {% set githubSourcePrefix %}https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements{% endset %}
     {% set githubSourceUrl %}{{ githubSourcePrefix }}/{{ element.tagName }}/demo/{{ filename
         | replace('demo/', '')
