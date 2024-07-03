@@ -201,6 +201,7 @@ svg {
 
 #body {
   margin: 0 0 var(--_margin);
+  font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
 ::slotted(*) {
@@ -237,6 +238,12 @@ svg {
 
 ::slotted([slot="title"]) {
   text-transform: uppercase;
+  font-size: var(--rh-font-size-body-text-md, 1rem) !important;
+}
+
+::slotted([slot="headline"]) {
+  margin-block-end: var(--_margin) !important;
+  font-size: var(--rh-font-size-body-text-xl, 1.25rem) !important;
 }
 
 #outer:is(.compact, .checkable) ::slotted([slot="icon"]) {
@@ -245,18 +252,17 @@ svg {
   max-height: var(--rh-size-icon-03, 32px);
 }
 
-#outer:is(.compact, .checkable) ::slotted([slot="headline"]),
-#body {
-  font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+#outer:is(.compact, .checkable) ::slotted([slot="headline"]) {
+  font-size: var(--rh-font-size-body-text-lg, 1.125rem) !important;
 }
 
 #outer:is(.compact, .checkable) #body,
 ::slotted([slot="footer"]) {
-  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
 }
 
 #outer:is(.compact, .checkable) ::slotted([slot="footer"]) {
-  font-size: var(--rh-font-size-body-text-xs, 0.75rem);
+  font-size: var(--rh-font-size-body-text-xs, 0.75rem) !important;
 }
 
 *:is(#image, #tile, #headline, #body, #footer) {
