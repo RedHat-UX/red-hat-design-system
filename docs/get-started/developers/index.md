@@ -67,7 +67,7 @@ Our design system libraries and the documentation website offer assets and guida
 
 ### What are web components?
 
-Every web component is a custom HTML element. Web components are made with standard web platform APIs, and not only with JavaScript frameworks. Those standards include [Custom Elements][ce]; [Shadow DOM][sd]; [HTML templates][te]; [CSS Custom Properties][cssprop] and [Shadow Parts][csspart]; [Element Internals][internals]; [ECMAScript Modules]; and others. These combine to enable developers to write reusable and encapsulated UI elements which work with the browser's in-built component model.
+Every web component is a custom HTML element. Web components are made with standard web platform APIs, and not only with JavaScript frameworks. Those standards include [Custom Elements][ce]; [Shadow DOM][sd]; [HTML templates][te]; [CSS Custom Properties][cssprop] and [Shadow Parts][csspart]; [Element Internals][internals]; [ECMAScript Modules][esm]; and others. These combine to enable developers to write reusable and encapsulated UI elements which work with the browser's in-built component model.
 
 ### Why web components?
 
@@ -100,6 +100,7 @@ We anticipate that if HTML modules and CSS modules become widely implemented in 
 [cssprop]: https://www.w3.org/TR/css-variables/
 [csspart]: https://www.w3.org/TR/css-shadow-parts-1/
 [internals]: https://html.spec.whatwg.org/dev/custom-elements.html#element-internals
+[esm]: https://tc39.es/ecma262/multipage/ecmascript-language-scripts-and-modules.html#sec-modules
 [scoped]: https://github.com/WICG/webcomponents/blob/gh-pages/proposals/Scoped-Custom-Element-Registries.md
 [dsd]: https://html.spec.whatwg.org/dev/scripting.html#attr-template-shadowrootmode
 [dce]: https://github.com/WICG/webcomponents/issues/1009
