@@ -88,14 +88,11 @@ article {
 
 #header ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
   font-size: inherit !important;
+  margin: unset;
 }
 
 #body ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
   font-size: var(--rh-card-heading-font-size, var(--rh-font-size-heading-sm, 1.5rem)) !important;
-}
-
-#header ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-  margin: unset;
 }
 
 #body ::slotted(:not([slot]):first-child) {
