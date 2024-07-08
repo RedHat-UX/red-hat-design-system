@@ -4,8 +4,9 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { state } from 'lit/decorators/state.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
-import '../rh-button/rh-button.js';
-import '../rh-surface/rh-surface.js';
+
+import '@rhds/elements/rh-button/rh-button.js';
+import '@rhds/elements/rh-surface/rh-surface.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
