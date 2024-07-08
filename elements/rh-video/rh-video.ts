@@ -126,9 +126,6 @@ export class RhVideo extends LitElement {
 
   render() {
     const { playClicked, on = '' } = this;
-    const dark = on === 'dark';
-    const svgFill = dark ? '#151515' : 'white';
-    const svgOpacity = dark ? '0.5' : '0.25';
     const hasCaption = this.#slots.hasSlotted('caption');
     const hasThumbnail = this.#slots.hasSlotted('thumbnail');
     const playLabel = this.iframeElement && this.iframeElement.title ? `${this.iframeElement.title} (play video)` : 'Play video';
@@ -174,16 +171,12 @@ export class RhVideo extends LitElement {
               </div>
             </rh-surface>
           ` : ''}
-          <button part="play" id="play"
+          <rh-button part="play" id="play" variant="play"
             ?hidden="${show !== 'thumbnail'}"
             @click="${this.#handlePlayClick}"
             @keyup="${this.#handlePlayKeyup}">
             <span class="visually-hidden"><slot name="play-button-text">${playLabel}</slot></span>
-            <svg id="icon" aria-hidden="true" width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="32" cy="32" r="32" fill="${svgFill}" fill-opacity="${svgOpacity}"/>
-              <path d="M44 32L26 40.6603V23.3397L44 32Z" fill="white"/>
-            </svg>
-          </button>
+          </rh-button>
         </div>
         <figcaption part="caption" ?hidden="${!hasCaption}"><slot name="caption"></slot></figcaption>
       </figure>
