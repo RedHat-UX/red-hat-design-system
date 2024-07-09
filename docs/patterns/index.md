@@ -1,5 +1,6 @@
 ---
 title: Patterns
+sidenavTitle: All Patterns
 summaries:
   announcement: Displays important messages across web properties
   card: Arranges content and interactive elements in a layout
@@ -13,7 +14,20 @@ summaries:
   sticky-banner: Anchors an offer to the bottom edge of a page
   sticky-card: Anchors an offer to the right edge of a page
   video-thumbnail: Overlays a button that indicates video playback
+order: 0
+tags:
+  - pattern
+importElements: 
+  - rh-tile
 ---
+
+<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css' | url }}">
+
+<style>
+  #patterns-nav {
+    margin-block: var(--rh-space--2xl, 32px);
+  }
+</style>
 
 {# NOTE: all images in this view need to be 340 by 200 px in order to maintain same ratio. #}
 
@@ -21,34 +35,35 @@ summaries:
 Patterns compose elements and tokens with content and validation rules to 
 create uniform, accessible experiences.
 
-<div class="multi-column--min-400-wide margin-top--10">
+<nav id="patterns-nav" class="grid xs-two-columns sm-three-columns" aria-label="Patterns">
 {%- for pattern in collections.pattern -%}
+
+  {% if pattern.data.title !== 'Patterns' %}
+
   {%- set slug = pattern.fileSlug -%}
   {%- set summary = pattern.description -%}
   {% if not summary %}
     {%- set summary = summaries[slug] -%}
   {% endif %}
 
-  <div class="padding-stacked">
-    <a href="{{ pattern.url }}">
-      {% example palette="descriptive",
-                 width=340,
-                 wrapperClass=wrapperClass,
-                 alt=pattern.data.title,
-                 srcAbsolute="true",
-                 src=('/assets/patterns/all-patterns-' + slug + '.png') %}
-    </a>
-    <a href="{{ pattern.url }}"><h3>{{ pattern.data.title }}</h3></a>
-    <p>{{ summary }}</p>
-  </div>
+  <rh-tile>
+    <uxdot-example slot="image">
+      <img src="{{ '/assets/patterns/all-patterns-' + slug + '.png' | url }}" alt="{{ pattern.data.title }}">
+    </uxdot-example>
+    <a slot="headline" href="{{ pattern.url }}"><h3>{{ pattern.data.title }}</h3></a>
+    <p slot="footer">{{ summary }}</p>
+  </rh-tile>
+
+  {% endif %}
+
 {% endfor %}
-</div>
+</nav>
 
 ## Make a request
 To request a new element or if updates need to be made to an existing element, 
 [contact us](mailto:digital-design-system@redhat.com).
 
-{% feedback %}
+<uxdot-feedback>
   <h2>Patterns</h2>
   <p>To learn how to use our patterns in your designs, visit the <a href="{{ '/patterns/' | url }}">Patterns</a> section.</p>
-{% endfeedback %}
+</uxdot-feedback>

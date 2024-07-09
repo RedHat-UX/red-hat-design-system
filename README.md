@@ -4,7 +4,7 @@
 
 ## 🎨 For Designers
 
-RHDS provides Adobe XD libraries and design kits to aid in your design work.
+RHDS provides Figma libraries and subsystems to aid in your design work.
 
 ## 💻 For Developers
 

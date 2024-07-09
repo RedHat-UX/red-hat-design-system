@@ -1,0 +1,12 @@
+diff --git a/node_modules/@patternfly/pfe-tools/package.json b/node_modules/@patternfly/pfe-tools/package.json
+index a6b3a7c..1673563 100644
+--- a/node_modules/@patternfly/pfe-tools/package.json
++++ b/node_modules/@patternfly/pfe-tools/package.json
+@@ -22,6 +22,7 @@
+   "exports": {
+     "./config.js": "./config.js",
+     "./custom-elements-manifest/config.js": "./custom-elements-manifest/config.js",
++    "./custom-elements-manifest/lib/Manifest.js": "./custom-elements-manifest/lib/Manifest.js",
+     "./dev-server/config.js": "./dev-server/config.js",
+     "./dev-server/demo.js": "./dev-server/demo.js",
+     "./environment.js": "./environment.js",

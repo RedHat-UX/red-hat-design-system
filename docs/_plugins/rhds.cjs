@@ -86,7 +86,9 @@ const COPY_CONTENT_EXTENSIONS = [
 function getFilesToCopy() {
   // Copy element demo files
   const repoRoot = process.cwd();
-  const tagNames = fs.readdirSync(path.join(repoRoot, 'elements'));
+  const tagNames = fs.readdirSync(path.join(repoRoot, 'elements'), { withFileTypes: true })
+      .filter(ent => ent.isDirectory())
+      .map(ent => ent.name);
 
   /** @type{import('@patternfly/pfe-tools/config.js').PfeConfig}*/
   const config = require('../../.pfe.config.json');
@@ -124,6 +126,11 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
 
   eleventyConfig.addPassthroughCopy({
     'node_modules/element-internals-polyfill': '/assets/packages/element-internals-polyfill',
+  });
+
+  // ensure icons are copied to the assets dir.
+  eleventyConfig.addPassthroughCopy({
+    'node_modules/@patternfly/icons/': '/assets/packages/@patternfly/icons/',
   });
 
   const filesToCopy = getFilesToCopy();
@@ -329,14 +336,20 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   });
 
   /** /assets/rhds.min.css */
-  eleventyConfig.on('eleventy.before', async function({ dir }) {
-    const { readFile, writeFile } = fs.promises;
-    const CleanCSS = await import('clean-css').then(x => x.default);
-    const cleanCSS = new CleanCSS({ sourceMap: true, returnPromise: true });
-    const sourcePath = path.join(process.cwd(), 'node_modules/@rhds/tokens/css/global.css');
-    const outPath = path.join(dir.output, 'assets', 'rhds.min.css');
-    const source = await readFile(sourcePath, 'utf8');
-    const { styles } = await cleanCSS.minify(source);
-    await writeFile(outPath, styles, 'utf8');
-  });
+  // eleventyConfig.on('eleventy.before', async function({ dir }) {
+  //   const { readFile, writeFile } = fs.promises;
+  //   const CleanCSS = await import('clean-css').then(x => x.default);
+  //   const cleanCSS = new CleanCSS({ sourceMap: true, returnPromise: true });
+  //   const outPath = path.join(dir.output, 'assets', 'rhds.min.css');
+  //   /* Tokens */
+  //   const sourcePath = path.join(process.cwd(), 'node_modules/@rhds/tokens/css/global.css');
+  //   const source = await readFile(sourcePath, 'utf8');
+  //   const { styles } = await cleanCSS.minify(source);
+  //   // ensure '_site/assets' exists
+  //   if (!fs.existsSync(dir.output)) {
+  //     const assets = path.join(dir.output, 'assets');
+  //     await fs.mkdirSync(assets, { recursive: true });
+  //   }
+  //   await writeFile(outPath, styles, 'utf8');
+  // });
 };

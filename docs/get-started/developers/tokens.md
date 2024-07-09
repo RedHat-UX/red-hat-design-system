@@ -1,13 +1,13 @@
 ---
-layout: layout-with-subnav.njk
+layout: layouts/pages/basic.njk
 title: Tokens
 heading: Developers
 tags:
   - developers
 permalink: /get-started/developers/tokens/index.html
-subNavCollection: sortedDevelopers
-order: 30
-bodyClasses: element-docs
+subnav:
+  collection: sortedDevelopers
+  order: 30
 ---
 
 ## How to install tokens
@@ -20,9 +20,11 @@ Run the following git command to install RHDS tokens:
   </script>
 </rh-code-block>
 
+
 ## Usage
 
 We use [style-dictionary](https://amzn.github.io/style-dictionary/) to transform our tokens into multiple formats and helpers.
+
 
 ### Import global CSS
 
@@ -38,6 +40,7 @@ Apply defaults to the document root by importing the global stylesheet:
   </style>
   </script>
 </rh-code-block>
+
 
 ### Reset the shadowroot
 
@@ -57,11 +60,13 @@ Reset a component's styles (preventing inheritance) by adding resetStyles to its
   </script>
 </rh-code-block>
 
+
 ### Import tokens as JavaScript objects
 
-{% alert title="Note", state="info" %}
-We strongly recommend using CSS variables (and accompanying snippets), instead of importing tokens as JavaScript objects.
-{% endalert %}
+<rh-alert state="info">
+  <h4 slot="header">Note</h4>
+  <p>We strongly recommend using CSS variables (and accompanying snippets), instead of importing tokens as JavaScript objects.</p>
+</rh-alert>
 
 Import tokens as JavaScript objects:
 
@@ -87,6 +92,7 @@ or for tree-shakable imports:
   </script>
 </rh-code-block>
 
+
 ## Plugins
 
 ### Using editor snippets
@@ -101,9 +107,11 @@ Editor snippets complete prefixes like `--rh-color-brand` to their CSS custom pr
 
 They also provide reverse lookup. For example,  if you want to choose between all the tokens with the  value `#e00`, you can do so by completing the prefix `e00`.
 
+
 #### Load snippets in VSCode 
 
 Download the VSIX bundle that’s linked at the bottom of our [“Release v1.0.0”](https://github.com/RedHat-UX/red-hat-design-tokens/releases/tag/v1.0.0) page.
+
 
 #### Load snippets in Neovim
 
@@ -118,15 +126,18 @@ Use LuaSnip to load snippets in Neovim:
   </script>
 </rh-code-block>
 
+
 ### Stylelint plugin
 
 Install the stylelint plugin to automatically correct token values in your files.
 
 See the [Stylelint Plugin README](https://github.com/RedHat-UX/red-hat-design-tokens/blob/main/plugins/stylelint/README.md) for more info.
 
+
 ### 11ty plugin
 
 The experimental 11ty plugin lets you display token values in an 11ty site.
+
 
 ### vim-hexokinase
 
@@ -159,7 +170,7 @@ Use the following config (lua syntax, for Neovim users) to configure hexokinase 
   </script>
 </rh-code-block>
 
-{% feedback %}
+<uxdot-feedback>
   <h2>Designers</h2>
   <p>To get started using our design system as a designer, go to the <a href="get-started/designers">Designers</a> page.</p>
-{% endfeedback %}
+</uxdot-feedback>

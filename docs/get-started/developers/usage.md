@@ -1,22 +1,26 @@
 ---
-layout: layout-with-subnav.njk
+layout: layouts/pages/basic.njk
 title: Usage
 heading: Developers
 tags:
   - developers
 permalink: /get-started/developers/usage/index.html
-subNavCollection: sortedDevelopers
-order: 20
-bodyClasses: element-docs
+subnav:
+  collection: sortedDevelopers
+  order: 20
+importElements: 
+  - rh-code-block
 ---
 
 ## Usage
 
 Now that you've installed the Red Hat Design System, here's more information about how to use the web components.
 
+
 ### Using react wrappers
 
 React wrappers make it possible to use web components within React JSX files. Follow the steps below to learn how.
+
 
 #### 1. Initial setup
 
@@ -30,6 +34,7 @@ We'll bootstrap our React app using <a href="https://vitejs.dev/guide/#scaffoldi
 
 This command will ask you to provide the project name, framework, and variant.
 
+
 #### 2. Install the `@lit/react` library
 
 Use the following command:
@@ -39,6 +44,7 @@ Use the following command:
   npm install @lit-labs/react
   </script>
 </rh-code-block>
+
 
 #### 3. Import elements and patterns
 
@@ -70,9 +76,11 @@ managing app state between them using react.
   </script>
 </rh-code-block>
 
+
 ### Using RHDS elements with Vue
 
 To get web components to work with Vue, it’s pretty easy and straightforward. Follow the steps below to use web components in a Vue app.
+
 
 #### 1. Initial setup
 
@@ -84,6 +92,7 @@ Add these two lines at the top of the `main.js` file in the `/src/` directory.
   import App from "./App.vue";
   </script>
 </rh-code-block>
+
 
 #### 2. Import elements and patterns
 
@@ -103,12 +112,13 @@ Add the import statements to the top of the `<script>` tag in the file in which 
   </script>
 </rh-code-block>
 
+
 ## Other resources
 
 - [Red Hat Design System Wiki](https://github.com/RedHat-UX/red-hat-design-system/wiki)
 - [Red Hat Brand Standard](https://www.redhat.com/en/about/brand/standards)
 
-{% feedback %}
+<uxdot-feedback>
   <h2>Designers</h2>
   <p>To get started using our design system as a designer, go to the <a href="get-started/designers">Designers</a> page.</p>
-{% endfeedback %}
+</uxdot-feedback>

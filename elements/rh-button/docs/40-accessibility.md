@@ -12,31 +12,49 @@ link
 
 Users should have the ability to navigate to and interact with buttons using their keyboard.
 
-{% example palette="light",
-          class="inline-flex centered",
-          alt="Image of a button group showing focus indicators and tab key labels",
-          src="../button-a11y-keyboard-interactions.png" %}
+<uxdot-example width-adjustment="302px">
+  <img src="{{ '../button-a11y-keyboard-interactions.png' | url }}" alt="Image of a button group showing focus indicators and tab key labels">
+</uxdot-example>
 
-| Key {style="width: 50%" }         | Result                                                    |
-| --------------------------------- | --------------------------------------------------------- |
-| <kbd>Tab</kbd>                    | Moves focus to the next button or interactive element     |
-| <kbd>Shift</kbd> + <kbd>Tab</kbd> | Moves focus to the previous button or interactive element |
-| <kbd>Enter</kbd>                  | Activates an action                                       |
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Key" style="width: 50%">Key</th>
+        <th scope="col" data-label="Result">Result</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Key"><kbd>Tab</kbd></td>
+        <td data-label="Result">Moves focus to the next button or interactive element</td>
+      </tr>
+      <tr>
+        <td data-label="Key"><kbd>Shift</kbd> + <kbd>Tab</kbd></td>
+        <td data-label="Result">Moves focus to the previous button or interactive element</td>
+      </tr>
+      <tr>
+        <td data-label="Key"><kbd>Enter</kbd></td>
+        <td data-label="Result">Activates an action</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
 
 ## Focus order
 
-{% include 'accessibility/focusorder.md' %} For buttons in groups, the focus order is from left to right and top to bottom when stacked. Disabled buttons are not included in the focus order unless they include the `aria-disabled=“true”` attribute and display a [tooltip](/elements/tooltip) when focused.
+{% include 'partials/accessibility/focusorder.md' %} For buttons in groups, the focus order is from left to right and top to bottom when stacked. Disabled buttons are not included in the focus order unless they include the `aria-disabled=“true”` attribute and display a [tooltip](/elements/tooltip) when focused.
 
-{% example palette="light",
-          alt="Image of rows of button groups with numbers; one row has focus indicators only and the other has focus indicators and a tooltip",
-          src="../button-a11y-focus-order.png" %}
+<uxdot-example width-adjustment="509px">
+  <img src="{{ '../button-a11y-focus-order.png' | url }}" alt="Image of rows of button groups with numbers; one row has focus indicators only and the other has focus indicators and a tooltip">
+</uxdot-example>
 
 ## Touch targets
 Buttons in groups are adequately spaced for optimal touch targets.
 
-{% example palette="light",
-          alt="Image of button group with touch targets on top of each button",
-          src="../button-a11y-touch-targets.png" %}
+<uxdot-example width-adjustment="298px">
+  <img src="{{ '../button-a11y-touch-targets.png' | url }}" alt="Image of button group with touch targets on top of each button">
+</uxdot-example>
 
 ## Screen reader guidelines
 
@@ -45,9 +63,9 @@ Buttons should communicate the following to users:
  - The toggle state if it has two states
  - An instruction that a menu will open
 
-{% include 'accessibility/ariaguide.md' %}
-{% include 'accessibility/wcag.md' %}
-{% include 'accessibility/2.1.1-A.md' %}
-{% include 'accessibility/2.1.3-AAA.md' %}
-{% include 'accessibility/2.4.3-A.md' %}
-{% include 'accessibility/2.5.5-AAA.md' %}
+{% include 'partials/accessibility/ariaguide.md' %}
+{% include 'partials/accessibility/wcag.md' %}
+{% include 'partials/accessibility/2.1.1-A.md' %}
+{% include 'partials/accessibility/2.1.3-AAA.md' %}
+{% include 'partials/accessibility/2.4.3-A.md' %}
+{% include 'partials/accessibility/2.5.5-AAA.md' %}

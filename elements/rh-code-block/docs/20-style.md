@@ -5,13 +5,17 @@ container.
 
 ### Anatomy
 
-{% example palette="lightest",
-           alt="Image of code block anatomy showing two annotations",
-           src="../code-block-anatomy.png" %}
-
-1) Code text
-2) Container
-   {.example-notes}
+<figure>
+  <uxdot-example width-adjustment="870px">
+    <img src="{{ '../code-block-anatomy.png' | url }}" alt="Image of code block anatomy showing two annotations">
+  </uxdot-example>
+  <figcaption>
+    <ol>
+      <li>Code text</li>
+      <li>Container</li>
+    </ol>
+  </figcaption>
+</figure>
 
 ## Theme
 
@@ -19,33 +23,36 @@ A code block is available in both light and dark themes.
 
 ### Light theme
 
-{% example palette="lightest",
-           alt="Image of light theme code block",
-           src="../code-block-theme-light.png" %}
+<uxdot-example width-adjustment="872px">
+  <img src="{{ '../code-block-theme-light.png' | url }}" alt="Image of light theme code block">
+</uxdot-example>
+
 
 ### Dark theme
 
-{% example palette="darkest",
-           alt="Image of light dark code block",
-           src="../code-block-theme-dark.png" %}
-
+<uxdot-example color-palette="darkest" width-adjustment="872px">
+  <img src="{{ '../code-block-theme-dark.png' | url }}" alt="Image of dark theme code block">
+</uxdot-example>
 
 ### Configuration
 
 Code block text is always horizontally and vertically centered.
 
-{% example palette="lightest",
-           alt="Image of a code block showing alignment and border radius specs",
-           src="../code-block-configuration.png" %}
+<uxdot-example width-adjustment="872px">
+  <img src="{{ '../code-block-configuration.png' | url }}" alt="Image of a code block showing alignment and border radius specs">
+</uxdot-example>
 
 ## Space
+
 Container spacing reduces as breakpoints get smaller.
 
-{% example palette="lightest",
-           alt="Image of a code block spacing for all breakpoints",
-           src="../code-block-space.png" %}
+<uxdot-example width-adjustment="872px">
+  <img src="{{ '../code-block-space.png' | url }}" alt="Image of a code block spacing for all breakpoints">
+</uxdot-example>
 
-{% spacerTokensTable tokens="--rh-space-lg, --rh-space-xl" %}{% endspacerTokensTable %}
+<rh-table>
+  {% spacerTokensTable tokens="--rh-space-lg, --rh-space-xl" %}{% endspacerTokensTable %}
+</rh-table>
 
 ## Interaction states
 A code block includes only text and is not interactive right now.

@@ -1,9 +1,9 @@
 ## Overview
 {{ tagName | getElementDescription }}
 
-{% example palette="light",
-          alt="An accordion with four collapsed panels and one expanded panel",
-          src="./accordion-sample-element.png" %}
+<uxdot-example>
+  <img src="./accordion-sample-element.png" alt="An accordion with four collapsed panels and one expanded panel">
+</uxdot-example>
 
 {% repoStatusList %}
 
@@ -62,15 +62,8 @@
   </rh-accordion-panel>
 </rh-accordion>
 
+## When to use
 
-## Demos
-  View a live version of this component and see how it can be customized.
-  {% playground tagName=tagName %}{% endplayground %}
-  {% cta href="./demo/", target="_blank" %}
-    View the `<rh-accordion>` demo in a new tab
-  {% endcta %}
-
-##  When to use
   - When space is at a premium and content cannot be displayed all at once
   - When you need to condense a large amount of related information into sections
   - When you need a way for users to read or compare sections of content simultaneously

@@ -1,34 +1,36 @@
-<rh-alert dismissable>
-  <h3 slot="header">Default dismissable</h3>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
-    egestas, a sollicitudin mauris tincidunt.</p>
-  <rh-button slot="actions" variant="link" data-action="dismiss">Dismiss</rh-button>
-  <rh-button slot="actions" variant="link" data-action="confirm">Confirm</rh-button>
-</rh-alert>
+<section id="alert-dismissable">
+  <rh-alert dismissable>
+    <h3 slot="header">Default dismissable</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
+      egestas, a sollicitudin mauris tincidunt.</p>
+    <rh-button slot="actions" variant="link" data-action="dismiss">Dismiss</rh-button>
+    <rh-button slot="actions" variant="link" data-action="confirm">Confirm</rh-button>
+  </rh-alert>
 
-<rh-alert variant="alternate" dismissable>
-  <h3 slot="header">Inline dismissable</h3>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
-    egestas, a sollicitudin mauris tincidunt.</p>
-  <rh-button slot="actions" variant="link" data-action="dismiss">Dismiss</rh-button>
-  <rh-button slot="actions" variant="link" data-action="confirm">Confirm</rh-button>
-</rh-alert>
+  <rh-alert variant="alternate" dismissable>
+    <h3 slot="header">Inline dismissable</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
+      egestas, a sollicitudin mauris tincidunt.</p>
+    <rh-button slot="actions" variant="link" data-action="dismiss">Dismiss</rh-button>
+    <rh-button slot="actions" variant="link" data-action="confirm">Confirm</rh-button>
+  </rh-alert>
 
-<rh-alert toast dismissable>
-  <h3 slot="header">Toast dismissable</h3>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
-    egestas, a sollicitudin mauris tincidunt.</p>
-  <rh-button slot="actions" variant="link" data-action="dismiss">Dismiss</rh-button>
-  <rh-button slot="actions" variant="link" data-action="confirm">Confirm</rh-button>
-</rh-alert>
+  <rh-alert toast dismissable>
+    <h3 slot="header">Toast dismissable</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
+      egestas, a sollicitudin mauris tincidunt.</p>
+    <rh-button slot="actions" variant="link" data-action="dismiss">Dismiss</rh-button>
+    <rh-button slot="actions" variant="link" data-action="confirm">Confirm</rh-button>
+  </rh-alert>
 
-<rh-alert dismissable data-on-close="prevent-default">
-  <h3 slot="header">Dismissable With Prevent Default</h3>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
-    egestas, a sollicitudin mauris tincidunt.</p>
-  <rh-button slot="actions" variant="link" data-action="dismiss">Dismiss</rh-button>
-  <rh-button slot="actions" variant="link" data-action="confirm">Confirm</rh-button>
-</rh-alert>
+  <rh-alert dismissable data-on-close="prevent-default">
+    <h3 slot="header">Dismissable With Prevent Default</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
+      egestas, a sollicitudin mauris tincidunt.</p>
+    <rh-button slot="actions" variant="link" data-action="dismiss">Dismiss</rh-button>
+    <rh-button slot="actions" variant="link" data-action="confirm">Confirm</rh-button>
+  </rh-alert>
+</section>
 
 <script type="module">
   /* eslint-disable no-console */
@@ -47,7 +49,7 @@
 </script>
 
 <style>
-  [data-demo] {
+  #alert-dismissable {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, max(40vh, 40%)));
     grid-auto-rows: min-content;

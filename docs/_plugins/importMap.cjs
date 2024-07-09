@@ -32,9 +32,8 @@ function logPerf() {
 }
 
 /**
- * @typedef {Object} Options
- *
- * @property {string} [defaultProvider]
+ * @typedef {object} Options
+ * @property {string} [defaultProvider] jspm.io generator provider
  * @property {import('@jspm/generator').Generator['importMap']} [inputMap]
  * @property {import('@jspm/generator').Generator['importMap']} [manualImportMap]
  * @property {string[]} [localPackages=[]]
@@ -63,7 +62,7 @@ async function getCachedImportMap({
 
       const nothing = Symbol();
       const providers = {
-        '@patternfly': 'nodemodules',
+        '@patternfly/elements': 'nodemodules',
         ...Object.fromEntries(localPackages?.map(packageName =>
           packageName.match(/@(rhds|patternfly)/) ?
             [nothing]

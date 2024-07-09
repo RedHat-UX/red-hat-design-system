@@ -1,0 +1,20 @@
+<uxdot-header {% if subnav.collection %}has-subnav{% endif %} {% if tokenSearch %}has-search {% endif %}>
+  <h1 id="{{ (heading if heading else title) | lower | slug }}" class="page-title">{{ heading if heading else title }}</h1>
+
+  {% if tokenSearch %}
+    <form slot="search" id="search-tokens" action="/tokens/search">
+      <uxdot-search id="search-input"
+        name="search"
+        aria-label="Search for tokens"
+        placeholder="Enter a token name"></uxdot-search>
+    </form>
+  {% endif %}
+
+  {% if subnav.collection %}
+    <rh-subnav slot="subnav">{% for tab in collections[subnav.collection] | sort(attribute="data.subnav.order") %}
+      <a {{ 'active' if tab.url == page.url }} href="{{ tab.url }}">
+        {{ tab.data.title }}
+      </a>{% endfor %}
+    </rh-subnav>
+  {% endif %}
+</uxdot-header>

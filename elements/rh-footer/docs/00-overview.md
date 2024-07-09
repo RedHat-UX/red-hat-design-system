@@ -1,4 +1,5 @@
 ## Overview
+
 {{ tagName | getElementDescription }}
 
 {% repoStatusList %}
@@ -82,16 +83,10 @@
   </rh-footer-universal>
 </rh-footer>
 
-## Demos
-  View a live version of this component and see how it can be customized.
-  {% playground tagName=tagName %}{% endplayground %}
-  {% cta href="./demo/", target="_blank" %}
-    View the `<rh-footer>` demo in a new tab
-  {% endcta %}
-
 ## When to use
- - When you need a place to put secondary content that does not fit anywhere else
- - When you want to give users persistent access to secondary content outside of the navigation
- - When you need a place to put copyright or legal information
+
+  - When you need a place to put secondary content that does not fit anywhere else
+  - When you want to give users persistent access to secondary content outside of the navigation
+  - When you need a place to put copyright or legal information
 
  {% repoStatusChecklist %}

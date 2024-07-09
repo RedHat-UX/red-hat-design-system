@@ -8,8 +8,10 @@ node_modules
 _site
 docs/pfe.min*
 docs/assets/playgrounds/
+docs/_data/playgrounds.json
 
 # Build artifacts
+!elements
 elements/*/*.js
 elements/*/test/*.js
 react
@@ -24,6 +26,9 @@ test-results.xml
 rhds.min.js
 *LEGAL.txt
 *.tgz
+# copied lightdom shims
+rh-*/rh-*lightdom.css
+rh-*/rh-*lightdom-shim.css
 
 # e2e
 test-results
@@ -96,4 +101,5 @@ $RECYCLE.BIN/
 *.lnk
 
 !declaration.d.ts
-docs/assets/playgrounds/rh-playground.js
+docs/assets/javascript/elements/playground-elements.js
+docs/assets/javascript/elements/assets/playground-typescript-worker-*.js

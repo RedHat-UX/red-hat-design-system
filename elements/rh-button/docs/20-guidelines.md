@@ -22,41 +22,73 @@ Each button has a specific function and the design of each variant signals that
 function to users. Therefore, it is important that each variant is implemented 
 consistently so they communicate the correct actions.
 
-{% example palette="light",
-          alt="Image of the seven available button variant",
-          src="../button-variants.png" %}
+<uxdot-example width-adjustment="494px">
+  <img src="{{ '../button-variants.png' | url }}" alt="Image of the seven available button variant">
+</uxdot-example>
 
-| Variant {style="width: 25%" } | Use case                                                                                                                                                                                                 |
-| ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Danger                        | The most prominent of all the button options. Use them for actions that are potentially destructive like deleting or removing data. These are mostly found in dialogs to emphasize a destructive action. |
-| Primary                       | The most prominent button, use them for the most important action on a page. Try to limit their usage to one per page.                                                                                   |
-| Secondary                     | Buttons with less visual prominence than Primary buttons. Use them for general actions that do not require as much emphasis as Primary button actions.                                                   |
-| Tertiary                      | Buttons with the least visual prominence. Use them to be less striking while still retaining a classic button format. Tertiary buttons are flexible and can be used as needed.                           |
-| Link                          | Labeled buttons with no background or border. Use them with an icon on the left or right of text to further emphasize an action or to create greater visual hierarchy between two buttons.               |
-| Play                          | Use on top of images or near text to play audio or video.                                                                                                                                                |
-| Close                         | Use to close a window.                                                                                                                                                                                   |
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Variant">Variant</th>
+        <th scope="col" data-label="Use case">Use case</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Variant">Danger</td>
+        <td data-label="Use case">The most prominent of all the button options. Use them for actions that are potentially destructive like deleting or removing data. These are mostly found in dialogs to emphasize a destructive action.</td>
+      </tr>
+      <tr>
+        <td data-label="Variant">Primary</td>
+        <td data-label="Use case">The most prominent button, use them for the most important action on a page. Try to limit their usage to one per page.</td>
+      </tr>
+      <tr>
+        <td data-label="Variant">Secondary</td>
+        <td data-label="Use case">Buttons with less visual prominence than Primary buttons. Use them for general actions that do not require as much emphasis as Primary button actions.</td>
+      </tr>
+      <tr>
+        <td data-label="Variant">Tertiary</td>
+        <td data-label="Use case">Buttons with the least visual prominence. Use them to be less striking while still retaining a classic button format. Tertiary buttons are flexible and can be used as needed.</td>
+      </tr>
+      <tr>
+        <td data-label="Variant">Link</td>
+        <td data-label="Use case">Labeled buttons with no background or border. Use them with an icon on the left or right of text to further emphasize an action or to create greater visual hierarchy between two buttons.</td>
+      </tr>
+      <tr>
+        <td data-label="Variant">Play</td>
+        <td data-label="Use case">Use on top of images or near text to play audio or video.</td>
+      </tr>
+      <tr>
+        <td data-label="Variant">Close</td>
+        <td data-label="Use case">Use to close a window.</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
 
 ### Play button
 
 Use a Play button to indicate that audio or video will play when selected.
 
-{% alert title="Helpful tip" %}
-The Play button is both horizontally and vertically centered when placed on an 
-image or photo.
-{% endalert %}
+<rh-alert state="info">
+  <h3 slot="header">Helpful tip</h3>
+  <p>The Play button is both horizontally and vertically centered when placed on an image or photo.</p>
+</rh-alert>
 
-{% example palette="light",
-          alt="Image of play button examples; a video thumbnail on the left and a text layout on the right",
-          src="../button-usage-play.png" %}
+<uxdot-example width-adjustment="806px">
+  <img src="{{ '../button-usage-play.png' | url }}" alt="Image of play button examples; a video thumbnail on the left and a text layout on the right">
+</uxdot-example>
 
 ### Close button
 
 Use a Close button to indicate that a window will close when selected.
 Close buttons are mostly found in [dialogs](/elements/dialog/).
 
-{% example palette="none",
-          alt="Image of a dialog with a close button in the top right corner",
-          src="../button-usage-close.png" %}
+<uxdot-example width-adjustment="1000px" alignment="left" variant="full" no-border>
+  <img src="{{ '../button-usage-close.png' | url }}" alt="Image of a dialog with a close button in the top right corner">
+</uxdot-example>
+
 
 ### Disabled
 
@@ -64,9 +96,9 @@ To indicate that an action is currently unavailable or if a task needs to be
 completed first, most buttons can become disabled. However, the Play and Close 
 buttons do not include a disabled state.
 
-{% example palette="light",
-          alt="Image of five disabled buttons not including play and close buttons, underneath is a dropdown with a disabled button",
-          src="../button-usage-disabled.png" %}
+<uxdot-example width-adjustment="494px">
+  <img src="{{ '../button-usage-disabled.png' | url }}" alt="Image of five disabled buttons not including play and close buttons, underneath is a dropdown with a disabled button">
+</uxdot-example>
 
 ## Writing content
 
@@ -91,25 +123,44 @@ plus)
 When writing link button text labels, use specific and action-focused language 
 that matches what users will see when they arrive at their location.
 
-{% example palette="light",
-          alt="Image of link button text labels",
-          src="../button-link-text-labels.png" %}
+<uxdot-example width-adjustment="525px">
+  <img src="{{ '../button-link-text-labels.png' | url }}" alt="Image of link button text labels">
+</uxdot-example>
 
 ### Button vs. call to action text labels
 
 Button text labels are written to be short and communicate an action whereas 
 call to action text labels are written to entice users to select a link.
 
-{% example palette="light",
-          alt="Image of two buttons on the left and two calls to action on the right",
-          src="../button-vs-cta-text-labels.png" %}
+<uxdot-example width-adjustment="696px">
+  <img src="{{ '../button-vs-cta-text-labels.png' | url }}" alt="Image of two buttons on the left and two calls to action on the right">
+</uxdot-example>
 
 ### Character and word count
 
-| Element {style="width: 33%" } | Character count {style="width: 33%" } | Word count |
-| ----------------------------- | ------------------------------------- | ---------- |
-| Button text labels            | 30                                    | 3          |
-| Link text labels              | 45                                    | 10         |
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Element" style="width: 33%">Element</th>
+        <th scope="col" data-label="Character count" style="width: 33%">Character count</th>
+        <th scope="col" data-label="Word count">Word count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Element">Button text labels</td>
+        <td data-label="Character count">30</td>
+        <td data-label="Word count">3</td>
+      </tr>
+      <tr>
+        <td data-label="Element">Link text labels</td>
+        <td data-label="Character count">45</td>
+        <td data-label="Word count">10</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
 
 ## Layout
 
@@ -126,27 +177,27 @@ consistent across all contexts
 - **Responsiveness** - the most important actions are encountered first when 
 elements are stacked vertically
 
-{% example palette="none",
-          alt="Image of buttons used in a dialog and a form",
-          src="../button-layout-placement.png" %}
+<uxdot-example width-adjustment="1000px" variant="full" no-border alignment="left">
+  <img src="{{ '../button-layout-placement.png' | url }}" alt="Image of buttons used in a dialog and a form">
+</uxdot-example>
 
 ### Hierarchy
 
 Buttons are ordered by hierarchy from left to right. Do not use multiple Danger, 
 Primary, or Close buttons in the same area.
 
-{% example palette="light",
-          alt="Image of buttons grouped by hierarchy from left to right",
-          src="../button-layout-hierarchy.png" %}
+<uxdot-example width-adjustment="797px">
+  <img src="{{ '../button-layout-hierarchy.png' | url }}" alt="Image of buttons grouped by hierarchy from left to right">
+</uxdot-example>
 
 ### Grouping
 
 Grouping buttons is a useful way of aligning buttons that have a relationship. 
 Group buttons logically into sets based on hierarchy and usage.
 
-{% example palette="light",
-          alt="Image of button groups and their hierarchy from left to right",
-          src="../button-layout-grouping.png" %}
+<uxdot-example width-adjustment="740px">
+  <img src="{{ '../button-layout-grouping.png' | url }}" alt="Image of button groups and their hierarchy from left to right">
+</uxdot-example>
 
 ### Space in groups
 
@@ -154,9 +205,9 @@ The standard spacing between each button is `16px`, even for Danger
 buttons. If buttons are stacked, the spacing between each button should be 
 `8px`.
 
-{% example palette="light",
-          alt="Image of button groups and their horizontal and vertical spacing in between each button",
-          src="../button-layout-spacing.png" %}
+<uxdot-example width-adjustment="508px">
+  <img src="{{ '../button-layout-spacing.png' | url }}" alt="Image of button groups and their horizontal and vertical spacing in between each button">
+</uxdot-example>
 
 ## Best practices
 
@@ -164,40 +215,39 @@ buttons. If buttons are stacked, the spacing between each button should be
 
 Buttons should never have more than one line of text.
 
-{% example palette="wrong",
-          alt="Image of a button with two lines of text which is incorrect usage",
-          src="../button-best-practice-1.png" %}
+<uxdot-example width-adjustment="80px" danger>
+  <img src="{{ '../button-best-practice-1.png' | url }}" alt="Image of a button with two lines of text which is incorrect usage">
+</uxdot-example>
 
 ### Multiple buttons
 
 Do not use multiple Danger or Primary buttons in the same area.
 
-{% example palette="wrong",
-          alt="Image of two danger and two primary button groups which is incorrect usage",
-          src="../button-best-practice-2.png" %}
+<uxdot-example width-adjustment="544px" danger>
+  <img src="{{ '../button-best-practice-2.png' | url }}" alt="Image of two danger and two primary button groups which is incorrect usage">
+</uxdot-example>
 
 ### Text labels
 
 Do not write button text labels that are expressive or ambiguous.
 
-{% example palette="wrong",
-          alt="Image of two buttons; one has expressive language and the other has ambiguous language which is incorrect usage ",
-          src="../button-best-practice-3.png" %}
+<uxdot-example width-adjustment="358px" danger>
+  <img src="{{ '../button-best-practice-3.png' | url }}" alt="Image of two buttons; one has expressive language and the other has ambiguous language which is incorrect usage">
+</uxdot-example>
 
 ### Danger button
 
 Do not use a Danger button for non-destructive purposes.
 
-{% example palette="wrong",
-          alt="Image of a search bar using a danger button which is incorrect usage",
-          src="../button-best-practice-4.png" %}
+<uxdot-example width-adjustment="680px" danger>
+  <img src="{{ '../button-best-practice-4.png' | url }}" alt="Image of a search bar using a danger button which is incorrect usage">
+</uxdot-example>
 
 ### Button as a call to action
 
 Do not use buttons as links or change the Primary button styling, use a link or 
 call to action instead.
 
-{% example palette="wrong",
-          alt="Image of text styles with a button underneath that resembles a call to action",
-          src="../button-best-practice-5.png" %}
-
+<uxdot-example width-adjustment="433px" danger>
+  <img src="{{ '../button-best-practice-5.png' | url }}" alt="Image of text styles with a button underneath that resembles a call to action which is incorrect usage">
+</uxdot-example>

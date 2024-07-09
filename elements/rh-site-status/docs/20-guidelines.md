@@ -1,3 +1,5 @@
+<script type="module" src="{{ '/assets/javascript/elements/uxdot-best-practice.js' | url }}"></script>
+
 <style>
   .grid {
     display: grid;
@@ -74,10 +76,10 @@ Website status can be placed higher or lower on a page, it just depends on the t
 
 Website status is usually placed in the [Footer](../../footer/) component, but it may be placed somewhere else if it makes sense to do so.
 
-{% example palette="darkest", 
-  alt="Image of a site status element with a green checkmark and the text 'All systems operational' in a footer element.",
-  src="../site-status-footer-placement.svg"
-%}
+<uxdot-example variant="full" width-adjustment="1000px" alignment="left" no-border>
+  <img src="{{ '../site-status-footer-placement.svg' | url }}" alt="Image of a site status element with a green checkmark and the text 'All systems operational' in a footer element.">
+</uxdot-example>
+
 
 ## Best Practices
 
@@ -87,19 +89,17 @@ To avoid confusion, write link text with the same severity as the status icon.
 
 <div class="grid icons">
   <div>
-    {% example palette="darkest", 
-      alt="Image of a site status element with a correct usage of a green checkmark icon and the text 'All systems operational'.",
-      src="../site-status-icons-do.svg"
-    %}
+    <uxdot-example color-palette="darkest" width-adjustment="200px">
+      <img src="{{ '../site-status-icons-do.svg' | url }}" alt="Image of a site status element with a correct usage of a green checkmark icon and the text 'All systems operational'.">
+    </uxdot-example>
     <h4 class="do"><img src="../do.svg" alt="" /> Do</h4>
     <p>Write link text with the same severity as the status icon and vice versa.</p>
   </div>
 
   <div>
-    {% example palette="darkest", 
-      alt="Image of a site status element with an incorrect usage of an orange red exclamation point icon and the text 'All systems operational'.",
-      src="../site-status-icons-dont.svg"
-    %}
+    <uxdot-example color-palette="darkest" width-adjustment="200px">
+      <img src="{{ '../site-status-icons-dont.svg' | url }}" alt="Image of a site status element with an incorrect usage of an orange red exclamation point icon and the text 'All systems operational'.">
+    </uxdot-example>
     <h4 class="dont"><img src="../dont.svg" alt="" /> Don't</h4>
     <p>Do not make it confusing to understand what the status or severity is.</p>
   </div>
@@ -110,23 +110,19 @@ To avoid confusion, write link text with the same severity as the status icon.
 Always include a status icon, it helps communicate severity visually.
 
 <div class="grid icons">
-  <div>
-    {% example palette="darkest", 
-      alt="Image of a site status element with a correct usage of a green checkmark icon and the text 'All systems operational'.",
-      src="../site-status-icons-do.svg"
-    %}
-    <h4 class="do"><img src="../do.svg" alt="" /> Do</h4>
+  <uxdot-best-practice do>
+    <uxdot-example color-palette="darkest" width-adjustment="200px" slot="image">
+      <img src="{{ '../site-status-icons-do.svg' | url }}" alt="Image of a site status element with a correct usage of a green checkmark icon and the text 'All systems operational'.">
+    </uxdot-example>
     <p>Include an icon to make it easier for users to understand.</p>
-  </div>
+  </uxdot-best-practice>
 
-  <div>
-    {% example palette="darkest", 
-      alt="Image of a site status element with an incorrect usage of an orange red exclamation point icon and the text 'All systems operational'.",
-      src="../site-status-icons-dont-no-icon.svg"
-    %}
-    <h4 class="dont"><img src="../dont.svg" alt="" /> Don't</h4>
+  <uxdot-best-practice dont>
+    <uxdot-example color-palette="darkest" width-adjustment="176px" slot="image">
+      <img src="{{ '../site-status-icons-dont-no-icon.svg' | url }}" alt="Image of a site status element with an incorrect usage of an orange red exclamation point icon and the text 'All systems operational'.">
+    </uxdot-example>
     <p>Do not remove the status icon.</p>
-  </div>
+  </uxdot-best-practice>
 </div>
 
 ## Writing link text too long
@@ -135,19 +131,17 @@ Do not write link text that is too long, it will take users longer to read and m
 
 <div class="grid icons">
   <div>
-    {% example palette="darkest", 
-      alt="Image of a site status element with a correct usage of a green checkmark icon and the text 'All systems operational'.",
-      src="../site-status-icons-do.svg"
-    %}
+    <uxdot-example color-palette="darkest" width-adjustment="200px">
+      <img src="{{ '../site-status-icons-do.svg' | url }}" alt="Image of a site status element with a correct usage of a green checkmark icon and the text 'All systems operational'.">
+    </uxdot-example>
     <h4 class="do"><img src="../do.svg" alt="" /> Do</h4>
     <p>Write link text using as few words as possible.</p>
   </div>
 
   <div>
-    {% example palette="darkest", 
-      alt="Image of a site status element with an incorrect usage of an orange red exclamation point icon and the text 'All systems operational'.",
-      src="../site-status-icons-dont-long-text.svg"
-    %}
+    <uxdot-example color-palette="darkest" width-adjustment="337px">
+      <img src="{{ '../site-status-icons-dont-long-text.svg' | url }}" alt="Image of a site status element with an incorrect usage of an orange red exclamation point icon and the text 'All systems operational'.">
+    </uxdot-example>
     <h4 class="dont"><img src="../dont.svg" alt="" /> Don't</h4>
     <p>Do not include unnecessary words or punctuation.</p>
   </div>  

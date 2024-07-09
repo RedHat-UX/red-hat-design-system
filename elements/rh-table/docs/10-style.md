@@ -2,72 +2,85 @@
 
 Use a table to organize and display data efficiently in a grid with columns and rows. When using a table, consider the structure of the data and how to make it easy for a user to scan, examine, and compare. Although a table can share space with other components and content, consider giving a table extra space on the page to help a user view dense data.
 
-{% example palette="light",
-           alt="Image of table with numbers next to various parts",
-           src="../table-anatomy.png" %}
-
-  1. Title
-  2. Column
-  3. Column title
-  4. Row
-  5. Row title
-  6. Cell
-  7. Divider
-  8. Caption
-  {.example-notes}
+<figure>
+  <uxdot-example width-adjustment="872px">
+    <img src="{{ '../table-anatomy.png' | url }}" alt="Image of table with numbers next to various parts">
+  </uxdot-example>
+  <figcaption>
+    <ol>
+      <li>Title</li>
+      <li>Column</li>
+      <li>Column title</li>
+      <li>Row</li>
+      <li>Row title</li>
+      <li>Cell</li>
+      <li>Divider</li>
+      <li>Caption</li>
+    </ol>
+  </figcaption>
+</figure>
 
 ## Column and row titles
 
 Column and row titles should be a few words that describe the data in that column or row.
 
-{% example palette="light",
-           alt="Image of various tables with no titles, column titles, row titles, and both",
-           src="../table-column-row-titles.png" %}
+<uxdot-example width-adjustment="872px">
+  <img src="{{ '../table-column-row-titles.png' | url }}" alt="Image of various tables with no titles, column titles, row titles, and both">
+</uxdot-example>
+
 
 ## Table title and caption
 
 The table title should make it clear to a user what the data is and what purpose it serves. A caption can be added under the table to provide more information about the data or its source.
 
-{% example palette="light",
-           alt="Image of table with a title on top and a caption underneath",
-           src="../table-title-caption.png" %}
+
+<uxdot-example width-adjustment="872px">
+  <img src="{{ '../table-title-caption.png' | url }}" alt="Image of table with a title on top and a caption underneath">
+</uxdot-example>
+
 
 ## Theme
 
 A table is available in both light and dark themes.
 
 ### Light theme
-{% example palette="light",
-           alt="Light theme table with black text on white surface",
-           src="../table-light-theme.png" %}
+
+<uxdot-example width-adjustment="872px">
+  <img src="{{ '../table-light-theme.png' | url }}" alt="Light theme table with black text on white surface">
+</uxdot-example>
+
 
 ### Dark theme
-{% example palette="darkest",
-           alt="Dark theme table with white text on black surface",
-           src="../table-dark-theme.png" %}
+
+<uxdot-example color-palette="darkest" width-adjustment="872px">
+  <img src="{{ '../table-dark-theme.png' | url }}" alt="Dark theme table with white text on black surface">
+</uxdot-example>
 
 
 ## Scrolling
 
 A scrollbar is visible if content exceeds the width or height of a table. Content can scroll horizontally, vertically, or both.
 
-{% example palette="light",
-           alt="Image of various tables with a scrollbar on the right, on the bottom, and both",
-           src="../table-scrolling.png" %}
+<uxdot-example width-adjustment="872px">
+  <img src="{{ '../table-scrolling.png' | url }}" alt="Image of various tables with a scrollbar on the right, on the bottom, and both">
+</uxdot-example>
+
 
 ## Space
 
 A table has equal spacing within columns, rows, and in between divider lines. The same spacing is also maintained across large and small viewport sizes.
 
-{% example palette="light",
-           alt="Image of table with spacers in between elements",
-           src="../table-space.png" %}
+<uxdot-example width-adjustment="872px">
+  <img src="{{ '../table-space.png' | url }}" alt="Image of table with spacers in between elements">
+</uxdot-example>
 
-{% spacerTokensTable 
-    caption='',
-    headingLevel="3",
-    tokens="--rh-space-lg" %}
-{% endspacerTokensTable %}
+<rh-table>
+  {% spacerTokensTable 
+      caption='',
+      headingLevel="3",
+      tokens="--rh-space-lg" %}
+  {% endspacerTokensTable %}
+</rh-table>
 
 ## Interaction states
 
@@ -79,29 +92,34 @@ On hover, cell rows and columns are highlighted with a semitransparent backgroun
 
 In light theme, a row is highlighted in light gray on white surface colors and white on light gray surface colors. The column highlight remains light blue.
 
-{% example palette="light",
-           alt="Light theme tables with hover effects on a white surface",
-           src="../table-interaction-state-hover.png" %}
+<uxdot-example  width-adjustment="872px">
+  <img src="{{ '../table-interaction-state-hover.png' | url }}" alt="Light theme tables with hover effects on a white surface">
+</uxdot-example>
+
 
 <!--change bg to light gray -->
-{% example palette="lighter-gray",
-           alt="Light theme tables with hover effects on a light gray surface",
-           src="../table-interaction-state-hover-light-gray-surface.png" %}
+<uxdot-example color-palette="lighter" width-adjustment="872px">
+  <img src="{{ '../table-interaction-state-hover-light-gray-surface.png' | url }}" alt="Light theme tables with hover effects on a light gray surface">
+</uxdot-example>
 
 On all dark theme surface colors, the row highlight is white, and the column highlight uses a dark blue.
 
-{% example palette="darkest",
-           alt="Dark theme tables with hover effects on a black surface",
-           src="../table-interaction-state-hover-dark.png" %}
+<uxdot-example color-palette="darkest" width-adjustment="872px">
+  <img src="{{ '../table-interaction-state-hover-dark.png' | url }}" alt="Dark theme tables with hover effects on a black surface">
+</uxdot-example>
+
 
 ### Focus
 
-{% alert state="warning", title="Warning" %} A cell with focus does not display row and column highlighting unless it is hovered. {% endalert %}
+<rh-alert state="warning">
+  <h4 slot="header">Warning</h4>
+  <p>A cell with focus does not display row and column highlighting unless it is hovered.</p>
+</rh-alert>
 
-{% example palette="light",
-           alt="Light theme table cell in focus state",
-           src="../table-interaction-state-focus.png" %}
+<uxdot-example width-adjustment="872px">
+  <img src="{{ '../table-interaction-state-focus.png' | url }}" alt="Light theme table cell in focus state">
+</uxdot-example>
 
-{% example palette="darkest",
-           alt="Dark theme table cell in focus state",
-           src="../table-interaction-state-focus-dark.png" %}
+<uxdot-example color-palette="darkest" width-adjustment="872px">
+  <img src="{{ '../table-interaction-state-focus-dark.png' | url }}" alt="Dark theme table cell in focus state">
+</uxdot-example>

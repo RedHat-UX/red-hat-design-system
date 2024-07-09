@@ -1,30 +1,35 @@
 ---
-layout: layout-tokens.njk
+layout: layouts/pages/basic.njk
 templateEngineOverride: njk
 title: Search Results
-bodyClasses: token-docs
+tokenSearch: true
+importElements:
+  - rh-tile
 ---
 
-<script type="module" src="/assets/search-results.js"></script>
+<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css' | url }}">
 
-<section class="results-section">
+<script type="module" src="/assets/javascript/search-results.js"></script>
+
+<section aria-label="Search results" class="results-section">
   <div id="results" hidden></div>
   <ol id="results-list" hidden></ol>
 </section>
 
-<nav id="collections">
+<h2>Token Categories</h2>
+<nav class="grid xs-two-columns sm-three-columns">
   {% for category in collections.token %}
-  <rh-cta variant="brick" class="token-category" data-category="{{ category.slug }}">
-    <a href="{{ category.url }}">{{ category.title }}</a>
-  </rh-cta>
+  <rh-tile>
+    <a slot="headline" href="{{ category.url }}"><h3>{{category.title | capitalize }}</h3></a>
+  </rh-tile>
   {% endfor %}
   {# there is a mismatch between the token categories as specified
      and the token categories as designed.
      for example "line-height" is a top-level category in the token specification
      but it is categorized under 'typography' in the designs #}
-  <rh-cta hidden variant="brick" class="token-category" data-category="line-height">
-    <a href="/tokens/font/#line-height">Line Height</a>
-  </rh-cta>
+  <rh-tile>
+    <a slot="headline" href="/tokens/font/#line-height"><h3>Line Height</h3></a>
+  </rh-tile>
 </nav>
 
-{% include 'feedback.html' %}
+{% include 'partials/component/feedback.html' %}

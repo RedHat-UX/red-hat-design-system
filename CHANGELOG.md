@@ -1,5 +1,26 @@
 # @rhds/elements
 
+## 1.4.5
+
+### Patch Changes
+
+- 45ab120: **React**: resolve another syntax error in generated modules
+
+## 1.4.4
+
+### Patch Changes
+
+- 0f94d81: **React**: corrected syntax errors in certain generated modules
+- 0f94d81: **React**: moved files from `/react/elements/*` to `/react/*`, and updated the export map to match
+- cbd7c6a: **Custom Elements Manifest**: corrected module paths in the manifest
+- a5853c7: Copies lightdom CSS files into the package root, making it easier to use RHDS with CDNS like UNPKG.
+
+## 1.4.3
+
+### Patch Changes
+
+- 8eebce6: `<rh-tabs>`: improved focus accessibility for keyboard navigation and assistive technology users.'
+
 ## 1.4.2
 
 ### Patch Changes

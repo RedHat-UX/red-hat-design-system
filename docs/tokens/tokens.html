@@ -1,29 +1,33 @@
 ---
-layout: layout-tokens.njk
+layout: layouts/pages/basic.njk
 templateEngineOverride: njk
 permalink: /tokens/{{ cat.slug }}/index.html
-bodyClasses: token-docs
 eleventyComputed:
   title: '{{ (cat.title or cat.slug) | capitalize }} tokens'
+hasToc: false
 pagination:
   size: 1
   alias: cat
   data: collections.token
+tokenSearch: true
+importElements:
+  - rh-table
 ---
 
-<script type="module" src="/assets/elements/uxdot-copy-button.js"></script>
+<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
+<link rel="stylesheet" href="{{ '/styles/samp.css' | url }}">
+
 <style>
-  .variants summary {
-    color: inherit;
-    display: list-item;
+  .variants > td {
+    padding-block: var(--rh-space-md, 8px);
   }
 </style>
 
-<link rel="stylesheet" href="/assets/tokens/tokens.css">
+<script type="module" src="{{ '/assets/javascript/elements/uxdot-copy-button.js' | url }}"></script>
 
 {% category path = cat.path or cat.slug,
             name = cat.path and cat.slug,
             exclude = cat.exclude,
             include = cat.include %}
 
-{% include 'feedback.html' %}
+{% include 'partials/component/feedback.html' %}

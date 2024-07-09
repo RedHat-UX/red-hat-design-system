@@ -1,16 +1,28 @@
 ---
 title: QA and Testing
-tags: accessibility
+sidenavTitle: QA and Testing
+permalink: /accessibility/qa-testing/index.html
+tags:
+  - accessibility
+order: 50
 importElements:
   - rh-blockquote
+  - rh-table
 ---
 
+<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
+<link rel="stylesheet" href="{{ '/styles/samp.css' | url }}">
+
 <style>
-    rh-blockquote {
-        display: block;
-        margin-block: 2em !important;
-        max-width: 36em;
-    }
+  .page-spacing .container rh-table {
+    margin-block-end: var(--rh-space-3xl, 48px);
+  }
+
+  rh-blockquote {
+    display: block;
+    margin-block: 2em !important;
+    max-width: 36em;
+  }
 </style>
 
 ## Accessibility tools
@@ -60,6 +72,7 @@ Keep in mind that testing isn’t easy. With many accessibility checks being jud
 ### Testing technologies
 
 When manually testing web pages for accessibility, the following four tools are invaluable:
+
 - Your keyboard
 - A screen reader
 - A color contrast checker
@@ -68,22 +81,61 @@ When manually testing web pages for accessibility, the following four tools are 
 #### Keyboard testing
 
 If you do nothing else to test your projects, try navigating the entire experience with your keyboard, via the following keys:
-- *<kbd>Tab</kbd> and <kbd>shift+tab</kbd>* to move forward and backward between focusable items (e.g., links, form controls, and scrollable windows).
-- *Arrow keys (<kbd>↑ → ↓ ←</kbd>)* to scroll windows, to operate form controls and tab interfaces, and to navigate through groups of focusable items (like sections of an accordion or options in a menu).
-- *<kbd>Enter</kbd> and/or <kbd>Space</kbd>* to follow links, activate buttons, select list items, and trigger other interactive items, as appropriate.
+
+- _<kbd>Tab</kbd> and <kbd>shift+tab</kbd>_ to move forward and backward between focusable items (e.g., links, form controls, and scrollable windows).
+- _Arrow keys (<kbd>↑ → ↓ ←</kbd>)_ to scroll windows, to operate form controls and tab interfaces, and to navigate through groups of focusable items (like sections of an accordion or options in a menu).
+- _<kbd>Enter</kbd> and/or <kbd>Space</kbd>_ to follow links, activate buttons, select list items, and trigger other interactive items, as appropriate.
 
 #### Screen readers
 
-If you’re feeling ambitious and want to combine testing tasks, perform your keyboard testing with a screen reader turned on.  The screen reader you use for testing depends on the operating system and browser you wish to test. 
+If you’re feeling ambitious and want to combine testing tasks, perform your keyboard testing with a screen reader turned on. The screen reader you use for testing depends on the operating system and browser you wish to test.
 
-| Operating system | Browser | Screen reader                                                                                                                    |
-| ---------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| MacOS            | Safari  | [VoiceOver for Mac](https://support.apple.com/guide/voiceover/turn-voiceover-on-or-off-vo2682/mac) (included with MacOS)         |
-| Windows          | Firefox | [NVDA](https://www.nvaccess.org/download/) (free download)                                                                       |
-| Windows          | Chrome  | [JAWS](https://www.freedomscientific.com/products/software/jaws/) (paid)                                                         |
-| Linux            | Firefox | [Orca](https://help.gnome.org/users/orca/stable/index.html.en)  (included with GNOME desktop environment)                        |
-| Android          | Chrome  | [Talkback](https://support.google.com/accessibility/android/answer/6283677?hl=en&ref_topic=10601571&sjid=4695144848639410734-NC) (included with Android)|
-| iOS              | Safari  | [VoiceOver for iOS](https://support.apple.com/en-sa/guide/iphone/iph3e2e415f/ios) (included with iOS) |
+<rh-table>
+  <table>
+    <caption>
+      Browser and screen reader pairings
+    </caption>
+    <thead>
+      <tr>
+        <th scope="col" data-label="OS">Operating system</th>
+        <th scope="col" data-label="Browser">Browser</th>
+        <th scope="col" data-label="Reader">Screen reader</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="OS">MacOS</td>
+        <td data-label="Browser">Safari</td>
+        <td data-label="Reader"><a href="https://support.apple.com/guide/voiceover/turn-voiceover-on-or-off-vo2682/mac">VoiceOver for Mac</a> (included with MacOS)</td>
+      </tr>
+      <tr>
+        <td data-label="OS">Windows</td>
+        <td data-label="Browser">Firefox</td>
+        <td><a href="https://www.nvaccess.org/download/">NVDA</a> (free download)</td>
+      </tr>
+      <tr>
+        <td data-label="OS">Windows</td>
+        <td data-label="Browser">Chrome</td>
+        <td data-label="Reader"><a href="https://www.freedomscientific.com/products/software/jaws/">JAWS</a> (paid)</td>
+      </tr>
+      <tr>
+        <td data-label="OS">Linux</td>
+        <td data-label="Browser">Firefox</td>
+        <td data-label="Reader"><a href="https://help.gnome.org/users/orca/stable/index.html.en">Orca</a> (included with GNOME desktop environment)</td>
+      </tr>
+      <tr>
+        <td data-label="OS">Android</td>
+        <td data-label="Browser">Chrome</td>
+        <td data-label="Reader"><a href="https://support.google.com/accessibility/android/answer/6283677?hl=en&amp;ref_topic=10601571&amp;sjid=4695144848639410734-NC">Talkback</a> (included with Android)</td>
+      </tr>
+      <tr>
+        <td data-label="OS">iOS</td>
+        <td data-label="Browser">Safari</td>
+        <td data-label="Reader"><a href="https://support.apple.com/en-sa/guide/iphone/iph3e2e415f/ios">VoiceOver for iOS</a> (included with iOS)</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
 
 Deque offers a collection of [screen reader shortcuts](https://dequeuniversity.com/screenreaders/) for all of the above listed technologies.
 

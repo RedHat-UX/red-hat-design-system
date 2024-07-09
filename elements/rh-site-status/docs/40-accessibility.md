@@ -2,10 +2,10 @@
 
 Users should have the ability to move focus to the Website status link if it is used in the Footer component or anywhere else.
 
-{% example palette="none",
-  alt="Image of a site status element with a green checkmark and the text 'All systems operational' in a footer element with focus indicators.",
-  src="../site-status-accessibility-footer.svg"
-%}
+<uxdot-example>
+  <img src="{{ '../site-status-accessibility-footer.svg' | url }}" alt="Image of a site status element with a green checkmark and the text 'All systems operational' in a footer element with focus indicators.">
+</uxdot-example>
+
 
 ## Screen reader guidelines
 
@@ -18,10 +18,9 @@ Website status should communicate the following to users.
 - If the status is still loading
 
 
-{% include 'accessibility/ariaguide.md' %}
-
-{% include 'accessibility/wcag.md' %}
-{% include 'accessibility/2.1.1-A.md' %}
-{% include 'accessibility/2.1.3-AAA.md' %}
-{% include 'accessibility/2.4.3-A.md' %}
-{% include 'accessibility/2.5.5-AAA.md' %}
+{% include 'partials/accessibility/ariaguide.md' %}
+{% include 'partials/accessibility/wcag.md' %}
+{% include 'partials/accessibility/2.1.1-A.md' %}
+{% include 'partials/accessibility/2.1.3-AAA.md' %}
+{% include 'partials/accessibility/2.4.3-A.md' %}
+{% include 'partials/accessibility/2.5.5-AAA.md' %}

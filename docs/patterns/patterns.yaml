@@ -1,4 +1,5 @@
 bodyClasses: element-docs
-layout: layout-basic.njk
+layout: layouts/pages/basic.njk
 importElements:
     - rh-alert
+    - rh-table

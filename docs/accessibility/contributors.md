@@ -1,13 +1,17 @@
 ---
 title: Contributors
-tags: accessibility
+tags: 
+ - accessibility
+order: 50
 ---
 
 ## Overview
 
-{% alert title="Note" %}
-This section covers accessibility for design system contributors. Contributors should also be familiar with accessibility [fundamentals](../), [content](../content), [design](../design), and [development](../design).
-{% endalert %}
+<rh-alert state="info">
+  <h3 slot="header">Note</h3>
+  <p>This section covers accessibility for design system contributors. Contributors should also be familiar with accessibility <a href="../">fundamentals</a>, <a href="../content">content</a>, <a href="../design">design</a>, and <a href="../development">development</a>.</p>
+</rh-alert>
+
 
 ## ARIA issues with shadowDOM
 
@@ -17,6 +21,7 @@ The following resources explain the problem in more detail and provide some work
 - Alice Boxhall's [How Shadow DOM and accessibility are in conflict](https://alice.pages.igalia.com/blog/how-shadow-dom-and-accessibility-are-in-conflict/)
 - Nolan Lawson's [Shadow DOM and accessibility: the trouble with ARIA](https://nolanlawson.com/2022/11/28/shadow-dom-and-accessibility-the-trouble-with-aria/)
 - Leo Balter's [Cross-root ARIA](https://github.com/leobalter/cross-root-aria-delegation/blob/main/explainer.md) explainer
+
 
 ## Accessibility controllers
 
