@@ -1,4 +1,33 @@
-<rh-button>Primary</rh-button>
+<h2 style="font-size: 32px;">Example of primary button</h2>
+
+<br />
+
+<rh-button ariarole="button" label="primary button">Primary button</rh-button>
+
+<br />
+<br/>
+
+<h2 style="font-size: 32px;">Example of proper aria settings when using rh-button as a tab button</h2>
+
+<br />
+<br/>
+
+<rh-button ariarole="tab" ariaselected="true" htmlid="tab1" label="primary tab 1" ariacontrols="tabpanel1">Primary tab 1</rh-button>
+
+<rh-button ariarole="tab" ariaselected="false" htmlid="tab2" label="primary tab 2" ariacontrols="tabpanel2">Primary tab 2</rh-button>
+
+<br />
+<br />
+
+<div id="tabpanel1" role="tabpanel" aria-label="1 of 2" style="border: 3px solid #000; padding: 32px;">
+  <p>Example carousel item</p>
+</div>
+
+<br />
+
+<div id="tabpanel2" role="tabpanel" aria-label="2 of 2" style="border: 3px solid #000; padding: 32px;">
+  <p>Example carousel item</p>
+</div>
 
 <script type="module">
   import '@rhds/elements/rh-button/rh-button.js';

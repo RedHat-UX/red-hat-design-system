@@ -35,10 +35,18 @@ export class RhButton extends LitElement {
   /** Disables the button */
   @property({ reflect: true, type: Boolean }) disabled = false;
 
-  @property({ reflect: true }) type?: 'button' | 'submit' | 'reset';
+  @property({ reflect: true }) type?: 'button' | 'submit' | 'reset' ;
 
   /** Accessible name for the button, use when the button does not have slotted text */
-  @property() label?: string;
+  @property() label?: string;  
+
+  @property() ariarole?: string;
+
+  @property() ariaselected?: boolean;
+
+  @property() ariacontrols?: string;
+
+  @property() htmlid?: string;
 
   /** Form value for the button */
   @property() value?: string;
@@ -96,12 +104,16 @@ export class RhButton extends LitElement {
   override render() {
     const { on = 'light' } = this;
     const hasIcon = this.#hasIcon;
+
     return html`
       <button aria-label="${ifDefined(this.label)}"
               class="${classMap({ hasIcon, [on]: !!on })}"
               part="button"
               type="${ifDefined(this.type)}"
+              role="${ifDefined(this.ariarole)}"
               value="${ifDefined(this.value)}"
+              aria-selected="${ifDefined(this.ariaselected)}"
+              aria-controls="tab-panel-${ifDefined(this.htmlid)}"
               @click="${this.#onClick}"
               ?disabled="${this.disabled || this.#internals.formDisabled}">
         <span aria-hidden="true">
@@ -157,6 +169,7 @@ export class RhButton extends LitElement {
   focus() {
     this._button?.focus();
   }
+
 }
 
 declare global {
