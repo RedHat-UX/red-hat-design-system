@@ -9,7 +9,37 @@ header {
   justify-content: flex-start;
 }
 #container {
-  margin: auto;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-items: flex-start;
+  overflow: hidden;
+  border-radius: var(--_border-radius, var(--rh-border-width-lg, 3px));
+  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  line-height: var(--rh-line-height-body-text, 1.5);
+  border-style: solid;
+  border-width: var(--rh-border-width-sm, 1px);
+}
+
+#container,
+#container.light {
+  color: var(--rh-color-text-primary-on-light, #151515);
+  background-color: var(--rh-color-surface-lightest, #ffffff);
+  border-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
+}
+
+#container.dark {
+  background-color: var(--rh-color-surface-darkest, #151515);
+  color: var(--rh-color-text-primary-on-dark, #ffffff);
+  border-color: var(--rh-color-border-subtle-on-dark, #707070);
+}
+
+#container.darker {
+  background-color: var(--rh-color-surface-darker, #1f1f1f);
+}
+
+#container.lighter {
+  background-color: var(--rh-color-surface-lighter, #f2f2f2);
 }
 #content {
   display: flex;
@@ -34,3 +64,4 @@ header {
 #close-button:hover {
   color: var(--rh-color-text-primary-on-light, #151515);
 }
+
