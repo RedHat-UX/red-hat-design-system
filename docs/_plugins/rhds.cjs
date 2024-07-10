@@ -179,9 +179,9 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
           for (const match of matches) {
             const [, path] = match.match(LIGHTDOM_PATH_RE) ?? [];
             const { pathname } = new URL(path, `file:///${outputPath}`);
-            content = content.replace(`.${path}`, pathname
-                .replace(`/_site/elements/${redirect.old}/`, `/assets/packages/@rhds/elements/elements/${redirect.new}/`)
-                .replace('/demo/', '/'));
+            const filename = pathname.split('/').pop();
+            const replacement = `/assets/packages/@rhds/elements/elements/${prefixedTagName}/${filename}`;
+            content = content.replace(`.${path}`, replacement);
           }
         }
       }
