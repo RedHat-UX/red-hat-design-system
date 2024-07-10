@@ -158,7 +158,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     const { pfeconfig } = eleventyConfig?.globalData ?? {};
     const { aliases } = pfeconfig;
 
-    if (inputPath === './docs/elements/demos.html' ) {
+    if (inputPath === './docs/elements/demo.html' ) {
       const tagNameMatch = outputPath.match(/\/elements\/(?<tagName>[-\w]+)\/demo\//);
       if (tagNameMatch) {
         const { tagName } = tagNameMatch.groups;
