@@ -37,14 +37,14 @@ export class VideoPlayEvent extends Event {
  * A Video is a graphical preview of a video overlayed with a play button. When clicked, the video will begin playing.
  *
  * @fires {ConsentClickEvent} consent-click - "Update preferences" consent button is clicked
- * @fires {VideoClickEvent} play-button-click - play button is clicked
- * @fires {VideoPlayEvent} play - video is about to be played
+ * @fires {VideoClickEvent} play-button-click - Play button is clicked
+ * @fires {VideoPlayEvent} play - Video is about to be played
  * @slot - Place video embed code here; iframe should include a `title` attribute with the video title
- * @slot play-button-text - text for play button; recommended value "Video title (video)"
- * @slot thumbnail - optional thumbnail image on top of video embed; should include `alt` text
- * @slot consent-message - text explaining opt-in to cookies is required, e.g. `<p>View this video by opting in to “Advertising Cookies.”</p>`
- * @slot consent-button-text - text for CTA button to update preferences, e.g. "Update preferences"
- * @slot caption - optional caption below video
+ * @slot play-button-text - Text for play button; recommended value "Video title (video)"
+ * @slot thumbnail - Optional thumbnail image on top of video embed; should include `alt` text
+ * @slot consent-message - Text explaining opt-in to cookies is required, e.g. `<p>View this video by opting in to “Advertising Cookies.”</p>`
+ * @slot consent-button-text - Text for CTA button to update preferences, e.g. "Update preferences"
+ * @slot caption - Optional caption below video
  * @slot autoplay - DO NOT USE! (Used by `rh-video`.)
  * @csspart figure - The outer container for rh-video
  * @csspart video - The container for the video, thumbnail, and play button
@@ -62,12 +62,13 @@ export class RhVideo extends LitElement {
   };
 
   /**
-   * Whether video requires consent consent for cookies
+   * Add to `rh-video` when a video requires consent for cookies
    */
   @property({ type: Boolean, attribute: 'require-consent' }) requireConsent = false;
 
   /**
-   * Whether consent consent for cookies
+   * Boolean flag to flip with JavaScript when cookie consent has been granted or revoked.
+   * See the Require Consent demo for reference.
    */
   @property({ type: Boolean }) consented = false;
 
