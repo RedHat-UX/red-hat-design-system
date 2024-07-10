@@ -35,10 +35,9 @@ export class VideoPlayEvent extends Event {
 
 /**
  * A Video is a graphical preview of a video overlayed with a play button. When clicked, the video will begin playing.
- *
- * @fires {ConsentClickEvent} consent-click - "Update preferences" consent button is clicked
- * @fires {VideoClickEvent} play-button-click - Play button is clicked
- * @fires {VideoPlayEvent} play - Video is about to be played
+ * @fires consent-click - "Update preferences" consent button is clicked
+ * @fires play-button-click - Play button is clicked
+ * @fires play - Video is about to be played
  * @slot - Place video embed code here; iframe should include a `title` attribute with the video title
  * @slot play-button-text - Text for play button; recommended value "Video title (video)"
  * @slot thumbnail - Optional thumbnail image on top of video embed; should include `alt` text
