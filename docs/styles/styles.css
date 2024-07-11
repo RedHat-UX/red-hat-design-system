@@ -189,7 +189,7 @@
     margin-block-start: var(--rh-space-2xl, 32px);
   }
 
-  rh-alert + div.grid {
+  rh-alert + .grid {
     margin-block-start: var(--rh-space-2xl, 32px);
   }
 
