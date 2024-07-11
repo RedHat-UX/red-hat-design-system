@@ -195,14 +195,14 @@ To avoid confusion as to what a Switch will do, always include some kind of stat
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice do>
-    <uxdot-example slot="image" alignment="left" width-adjustment="160px">
+    <uxdot-example slot="image" width-adjustment="160px">
       <img src="{{ '../switch-best-practice-no-status-message-do.svg' | url }}" alt="Switches with Bluetooth as a form label and/or a status message">
     </uxdot-example>
     <p>Ensure the message is clear when a Switch is toggled to the On or Off position and that the form label explains the switch's purpose.</p>
   </uxdot-best-practice>
 
   <uxdot-best-practice dont>
-    <uxdot-example slot="image" alignment="left" width-adjustment="160px">
+    <uxdot-example slot="image"  width-adjustment="160px">
       <img src="{{ '../switch-best-practice-no-status-message-do-not.svg' | url }}" alt="Two switches without a form label or status message">
     </uxdot-example>
     <p>Do not make it unknown to users what a Switch will do when toggled.</p>
@@ -238,14 +238,14 @@ Switches can be used in a list to toggle multiple independent options.
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice do>
-    <uxdot-example slot="image" alignment="left" width-adjustment="160px">
+    <uxdot-example slot="image" width-adjustment="160px">
       <img src="{{ '../switch-best-practice-multiple-options-do.svg' | url }}" alt="Four switches stacked vertically with half of them turned on">
     </uxdot-example>
     <p>Use Switches in a list only if the effects from toggling each Switch are immediate.</p>
   </uxdot-best-practice>
 
   <uxdot-best-practice dont>
-    <uxdot-example slot="image" alignment="left" width-adjustment="160px">
+    <uxdot-example slot="image" width-adjustment="160px">
       <img src="{{ '../switch-best-practice-multiple-options-do-not.svg' | url }}" alt="Four switches stacked vertically with a save button below them">
     </uxdot-example>
     <p>Do not use Switches in a list if a user has to save to see the effects</p>
