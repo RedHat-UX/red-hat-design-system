@@ -23,11 +23,6 @@
   </ol>
 </rh-breadcrumb>
 
-## Demo
-
-{% playground tagName=tagName %}{% endplayground %}
-<rh-cta><a href="{{ './demo/' | url }}">Full screen demo</a></rh-cta>
-
 ## When to use
 
 - When you want to help orient a user and and show where they are in the page hierarchy
