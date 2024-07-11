@@ -158,7 +158,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     const { pfeconfig } = eleventyConfig?.globalData ?? {};
     const { aliases } = pfeconfig;
 
-    if (inputPath === './docs/elements/demos.html' ) {
+    if (inputPath === './docs/elements/demo.html' ) {
       const tagNameMatch = outputPath.match(/\/elements\/(?<tagName>[-\w]+)\/demo\//);
       if (tagNameMatch) {
         const { tagName } = tagNameMatch.groups;
@@ -179,9 +179,9 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
           for (const match of matches) {
             const [, path] = match.match(LIGHTDOM_PATH_RE) ?? [];
             const { pathname } = new URL(path, `file:///${outputPath}`);
-            content = content.replace(`.${path}`, pathname
-                .replace(`/_site/elements/${redirect.old}/`, `/assets/packages/@rhds/elements/elements/${redirect.new}/`)
-                .replace('/demo/', '/'));
+            const filename = pathname.split('/').pop();
+            const replacement = `/assets/packages/@rhds/elements/elements/${prefixedTagName}/${filename}`;
+            content = content.replace(`.${path}`, replacement);
           }
         }
       }
