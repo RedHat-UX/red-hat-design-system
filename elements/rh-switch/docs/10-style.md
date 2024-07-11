@@ -28,7 +28,7 @@ A Switch is available in both light and dark themes.
     <img src="{{ '../switch-theme-light.svg'  | url }}" alt="Light theme switch with blue track, white handle, and black text">
   </uxdot-example>
 
-  <uxdot-example width-adjustment="170px">
+  <uxdot-example width-adjustment="170px" color-palette="darkest">
     <img src="{{ '../switch-theme-dark.svg'  | url }}" alt="Dark theme switch with light blue track, black handle, and white text">
   </uxdot-example>
 </div>
