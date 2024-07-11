@@ -4,14 +4,18 @@ Breadcrumb navigation is composed of links, text, and caret icons as separators.
 
 ### Anatomy
 
-<uxdot-example width-adjustment="295px">
-  <img src="{{ '../breadcrumbs-anatomy.svg'  | url }}" alt="Anatomy of breadcrumbs with numbered annotations pointing to various parts">
-</uxdot-example>
-
-1) Parent page
-2) Separator
-3) Current page
-   {.example-notes}
+<figure>
+  <uxdot-example width-adjustment="295px">
+    <img src="{{ '../breadcrumbs-anatomy.svg'  | url }}" alt="Anatomy of breadcrumbs with numbered annotations pointing to various parts">
+  </uxdot-example>
+  <figcaption>
+     <ol>
+       <li>Parent page</li>
+       <li>Seperator</li>
+       <li>Current page</li>
+     </ol>
+  </figcaption>
+</figure>
 
 ## Theme
 
