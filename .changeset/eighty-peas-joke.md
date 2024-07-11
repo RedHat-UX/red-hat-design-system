@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-<rh-tile>: corrected border color token
+`<rh-tile>`: corrected border color token
