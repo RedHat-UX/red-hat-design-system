@@ -1,11 +1,11 @@
 rh-tile a {
   color: var(--_link-color) !important;
-  text-decoration: var(--_link-text-decoration, none) !important;
+  text-decoration: var(--rh-tile-link-text-decoration, none) !important;
 }
 
 rh-tile:focus-within a,
 rh-tile a:is(:focus, :hover, :active) {
-  --_link-text-decoration: underline;
+  text-decoration: var(--rh-tile-link-text-decoration, underline) !important;
 }
 
 rh-tile a:not([slot="image"], [slot="headline"]) {
