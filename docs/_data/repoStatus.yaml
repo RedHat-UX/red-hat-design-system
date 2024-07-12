@@ -286,6 +286,18 @@
       status: Ready
     - name: Documentation
       status: Ready
+- name: "Switch"
+  type: "Element"
+  overallStatus: "New"
+  libraries:
+    - name: Figma library
+      status: Ready
+    - name: RH Elements
+      status: Ready
+    - name: WebRH
+      status: Planned
+    - name: Documentation
+      status: Ready  
 - name: "Table"
   type: "Element"
   overallStatus: "New"
