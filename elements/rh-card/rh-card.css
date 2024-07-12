@@ -231,6 +231,8 @@
   }
 
   #container.promo.standard {
+    --_promo-standard-inline-padding: var(--rh-space-3xl, 48px);
+
     grid-template: auto / auto auto;
   }
 
