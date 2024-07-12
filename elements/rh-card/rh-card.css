@@ -233,6 +233,7 @@
   #container.promo.standard {
     --_promo-standard-inline-padding: var(--rh-space-3xl, 48px);
 
+    row-gap: 0;
     grid-template: auto / auto auto;
   }
 
@@ -262,7 +263,7 @@
 
 /* full width promo */
 @container card (min-width: 1093px) or (min-width: 100vw) {
-  #container.promo {
+  #container.promo:not(.standard) {
     border-color: transparent;
     gap: var(--rh-space-2xl, 32px);
     padding-inline: var(--rh-space-lg, 16px);
