@@ -1,0 +1,47 @@
+<section>
+  <form>
+    <fieldset>
+      <legend>Reversed Message</legend>
+        <rh-switch id="switch-a"
+                   accessible-label="Switch A"
+                   message-on="Message when on"
+                   message-off="Message when off"
+                   checked
+                   reversed></rh-switch>
+        <div>
+          <label for="switch-b">Switch B</label>
+          <rh-switch id="switch-b"
+                     message-on="Message when on"
+                     message-off="Message when off"
+                     checked
+                     reversed></rh-switch>
+        </div>
+
+    </fieldset>
+  </form>
+</section>
+
+<script type="module">
+  import '@rhds/elements/rh-switch/rh-switch.js';
+</script>
+
+<style>
+  section {
+    margin: 2rem;
+  }
+
+  fieldset {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+  }
+
+  rh-switch {
+    flex-direction: row-reverse;
+  }
+
+  label {
+    color: var(--rh-color-text-primary-on-light, #151515);
+  }
+
+</style>
