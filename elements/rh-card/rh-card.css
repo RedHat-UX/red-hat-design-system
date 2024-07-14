@@ -6,7 +6,7 @@ article {
 }
 
 ::slotted(*) {
-  line-height: inherit !important;
+  line-height: inherit;
 }
 
 #container {
@@ -17,7 +17,7 @@ article {
   overflow: hidden;
   border-radius: var(--_border-radius, var(--rh-border-width-lg, 3px));
   font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif) !important;
-  line-height: var(--rh-line-height-body-text, 1.5) !important;
+  line-height: var(--rh-line-height-body-text, 1.5);
   border-style: solid;
   border-width: var(--rh-border-width-sm, 1px);
 }
@@ -80,11 +80,11 @@ article {
   margin-block: auto var(--rh-space-xl, 24px);
 }
 
-#header ::slotted(:is(h1, h2, h3, h4, h5, h6)),
-#body ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+#container #header ::slotted(:is(h1, h2, h3, h4, h5, h6)),
+#container #body ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
   font-family: inherit !important;
   font-weight: inherit !important;
-  line-height: var(--rh-line-height-heading, 1.3);
+  line-height: var(--rh-line-height-heading, 1.3) !important;
 }
 
 #header ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
