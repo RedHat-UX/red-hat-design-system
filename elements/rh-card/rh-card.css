@@ -3,6 +3,10 @@
   container-type: inline-size;
 }
 
+:host([variant="promo"]) {
+  container-name: card promo;
+}
+
 #header.empty,
 #image.empty,
 #footer.empty,
@@ -198,8 +202,18 @@
   margin: 0;
 }
 
-@container card (min-width: 768px) {
-  #container.promo {
+#container.promo.has-image {
+  grid-template-columns: auto;
+}
+
+@container promo (max-width: 767px) {
+  #container.has-image {
+    grid-template-columns: auto;
+  }
+}
+
+@container promo (min-width: 768px) {
+  #container {
     width: 100%;
 
     --_promo-standard-inline-padding: var(--rh-space-2xl, 32px);
@@ -209,51 +223,51 @@
     grid-template-columns: auto auto;
   }
 
-  #container.promo #image {
+  #container #image {
     order: 0;
     max-width: var(--_promo-image-width);
   }
 
-  #container.promo #body {
+  #container #body {
     max-width: var(--_promo-body-width);
   }
 
-  #container.promo #header {
+  #container #header {
     margin-block-start: var(--rh-space-lg, 16px);
   }
 
-  #container.promo:not(.has-image) #body {
+  #container:not(.has-image) #body {
     max-width: 100cqi;
   }
 
-  #container.promo #header ::slotted(*) {
+  #container #header ::slotted(*) {
     --_promo-heading-size: var(--rh-font-size-body-text-2xl, 1.5rem);
   }
 
-  #container.promo.standard {
+  #container.standard {
     --_promo-standard-inline-padding: var(--rh-space-3xl, 48px);
 
     row-gap: 0;
     grid-template: auto / auto auto;
   }
 
-  #container.promo.standard #footer {
+  #container.standard #footer {
     justify-self: end;
   }
 }
 
-@container card (max-width: 767px) and (width: 100vw) {
-  #container.promo #body {
+@container promo (max-width: 767px) and (width: 100vw) {
+  #container #body {
     margin-block-start: var(--rh-space-4xl, 64px);
   }
 
-  #container.promo #image {
+  #container #image {
     margin-block-end: var(--rh-space-4xl, 64px);
   }
 }
 
-@container card (min-width: 1093px) {
-  #container.promo:not(.has-image) #image.empty {
+@container promo (min-width: 1093px) {
+  #container:not(.has-image) #image.empty {
     display: block !important;
     order: 1;
     grid-column: 2/3;
@@ -262,8 +276,8 @@
 }
 
 /* full width promo */
-@container card (min-width: 1093px) or (min-width: 100vw) {
-  #container.promo:not(.standard) {
+@container promo (min-width: 1093px) or (min-width: 100vw) {
+  #container:not(.standard) {
     border-color: transparent;
     gap: var(--rh-space-2xl, 32px);
     padding-inline: var(--rh-space-lg, 16px);
@@ -271,9 +285,9 @@
     width: calc(100% - 2 * var(--rh-space-lg, 16px));
   }
 
-  #container.promo #header,
-  #container.promo #body,
-  #container.promo #footer {
+  #container #header,
+  #container #body,
+  #container #footer {
     margin-inline: 0;
   }
 }
