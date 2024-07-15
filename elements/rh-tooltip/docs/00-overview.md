@@ -6,7 +6,7 @@
   <img src="{{ './tooltip-sample-element.png' | url }}" alt="A black tooltip on top of a gray disabled button">
 </uxdot-example>
 
-{% repoStatusList %}
+{% repoStatusList repoStatus=repoStatus %}
 
 ## Sample element
 

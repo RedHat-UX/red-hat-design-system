@@ -6,7 +6,7 @@
   <img src="{{ './code-block-sample.png' | url }}" alt="Image of a code block with black code text within a light gray container">
 </uxdot-example>
 
-{% repoStatusList %}
+{% repoStatusList repoStatus=repoStatus %}
 
 
 ## Sample element

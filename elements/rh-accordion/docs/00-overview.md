@@ -5,7 +5,7 @@
   <img src="./accordion-sample-element.png" alt="An accordion with four collapsed panels and one expanded panel">
 </uxdot-example>
 
-{% repoStatusList %}
+{% repoStatusList repoStatus=repoStatus %}
 
 ## Sample element
 

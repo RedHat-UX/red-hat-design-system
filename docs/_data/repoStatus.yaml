@@ -1,4 +1,5 @@
-- name: "Accordion"
+- tagName: rh-accordion
+  name: "Accordion"
   type: "Element"
   overallStatus: "Available"
   libraries:
@@ -202,7 +203,8 @@
       status: Ready
     - name: Documentation
       status: Ready
-- name: "Popover"
+- tagName: rh-popver
+  name: "Popover"
   type: "Element"
   overallStatus: "Available"
   libraries:
@@ -370,3 +372,15 @@
       status: Ready
     - name: Documentation
       status: Ready
+- name: "Popover"
+  type: "Element"
+  overallStatus: "In Progress"
+  libraries:
+    - name: Figma library
+      status: Ready
+    - name: RH Elements
+      status: Planned
+    - name: WebRH
+      status: Planned
+    - name: Documentation
+      status: Planned

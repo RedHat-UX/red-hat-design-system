@@ -6,7 +6,7 @@
   <img src="{{ './cta-sample.png' | url }}" alt="Image of variants including Primary (red background and white text), Secondary (black border and black text), Brick (light gray border and blue text), and Default (blue text and blue icon)">
 </uxdot-example>
 
-{% repoStatusList %}
+{% repoStatusList repoStatus=repoStatus %}
 
 ## Sample element
 

@@ -6,7 +6,7 @@
   <img src="{{ './avatar-sample.png' | url }}" alt="Image of an avatar group with a photo of a woman and text">
 </uxdot-example>
 
-{% repoStatusList %}
+{% repoStatusList repoStatus=repoStatus %}
 
 
 ## Sample element

@@ -80,31 +80,23 @@ const STATUS_CHECKLIST = {
 };
 
 /**
- * Reads repo status data from global data and outputs an array with component keys
- */
-function getRepoData() {
-  const docsPage = this.ctx._;
-  const allStatuses = this.ctx.repoStatus ?? docsPage?.repoStatus ?? [];
-  const title = this.ctx.title ?? docsPage?.title;
-  return allStatuses.find(
-    component => component.name === title && component.type === 'Element'
-  )?.libraries;
-}
-
-/**
  * Calls getRepoData function and outputs a definition list for each component
  * @param {object} [options] list heading render options
  * @param {string} [options.heading] heading text
  * @param {number} [options.level] heading level
  */
-function repoStatusList({ heading = 'Status', level = 2 } = {}) {
-  // Removing Documentation status from the repoStatusList
-  const statusList = getRepoData.call(this)?.filter(repo => repo.name !== 'Documentation');
+function repoStatusList({ repoStatus, heading = 'Status', level = 2 } = {}) {
+    // Removing Documentation status from the repoStatusList
+    const librariesList = this.ctx.doc ?
+      repoStatus.find(x => x.tagName === this.ctx.doc.tagName)
+      ?.libraries?.filter(repo =>
+        repo.name !== 'Documentation')
+       : repoStatus.flatMap(x => x.libraries) ?? [];
 
-  if (!Array.isArray(statusList) || !statusList.length) {
-    return '';
-  } else {
-    return html`
+    if (!Array.isArray(librariesList) || !librariesList.length) {
+      return '';
+    } else {
+      return html`
 <uxdot-repo-status-list>
   <uxdot-copy-permalink slot="header">
     <h${level} id=${heading.toLowerCase()} tabindex="-1" >
@@ -112,7 +104,7 @@ function repoStatusList({ heading = 'Status', level = 2 } = {}) {
     </h${level}>
   </uxdot-copy-permalink>
   <a href="#status-checklist" slot="checklist">What do these mean?</a>
-  <dl>${statusList.map(listItem => html`
+  <dl>${librariesList.map(listItem => html`
     <div>
       <dt>${listItem.name}:</dt>
       <dd>
@@ -129,14 +121,8 @@ function repoStatusList({ heading = 'Status', level = 2 } = {}) {
 /**
  * Reads component status data from global data (see above) and outputs a table for Design/Code status page
  */
-function repoStatusTable() {
-  const docsPage = this.ctx._;
-  const allStatuses = this.ctx.repoStatus ?? docsPage?.repoStatus ?? [];
-  // Filtering out 'Responsive' status from all the libraries
-  const elementsList = allStatuses.map(item => ({
-    ...item,
-    libraries: item.libraries.filter(lib => lib.name !== 'Responsive'),
-  }));
+function repoStatusTable({ repoStatus }) {
+  const elementsList = repoStatus;
 
   if (!Array.isArray(elementsList) || !elementsList.length) {
     return '';
@@ -188,8 +174,14 @@ function repoStatusTable() {
  * @param {string} [options.heading] heading text
  * @param {number} [options.level] heading level
  */
-function repoStatusChecklist({ heading = 'Status checklist', level = 2 } = {}) {
-  const statusList = getRepoData.call(this)?.filter(repo => repo.name !== 'Documentation');
+function repoStatusChecklist({ repoStatus, heading = 'Status checklist', level = 2 } = {}) {
+
+  const statusList = this.ctx.doc ?
+    repoStatus.find(x => x.tagName === this.ctx._.tagName)
+    ?.libraries?.filter(repo =>
+      repo.name !== 'Documentation')
+     : repoStatus.flatMap(x => x.libraries) ?? [];
+
   if (!Array.isArray(statusList) || !statusList.length) {
     return '';
   } else {
