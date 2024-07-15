@@ -6,7 +6,7 @@ article {
 }
 
 ::slotted(*) {
-  line-height: inherit !important;
+  line-height: inherit;
 }
 
 #container {
@@ -16,7 +16,7 @@ article {
   justify-items: flex-start;
   overflow: hidden;
   border-radius: var(--_border-radius, var(--rh-border-width-lg, 3px));
-  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif) !important;
   line-height: var(--rh-line-height-body-text, 1.5);
   border-style: solid;
   border-width: var(--rh-border-width-sm, 1px);
@@ -55,18 +55,18 @@ article {
   display: none;
 }
 
-#header ::slotted(:is(h1, h2, h3, h4, h5, h6)),
-#body ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-}
-
 #header {
   display: flex;
   flex-direction: column;
   gap: var(--rh-space-lg, 16px);
   box-sizing: border-box;
-  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-  font-size: var(--rh-card-header-font-size, var(--rh-font-size-heading-sm, 1.5rem));
+  font-family: var(--rh-card-heading-font-family, var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif)) !important;
+  font-size: var(--rh-card-heading-font-size, var(--rh-font-size-heading-sm, 1.5rem));
+  font-weight:
+    var(
+        --rh-card-heading-font-weight,
+        var(--rh-font-weight-body-text-medium, 500)
+      ) !important;
   margin-block-start: var(--rh-space-lg, 16px);
 }
 
@@ -80,10 +80,20 @@ article {
   margin-block: auto var(--rh-space-xl, 24px);
 }
 
+#container #header ::slotted(:is(h1, h2, h3, h4, h5, h6)),
+#container #body ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  line-height: var(--rh-line-height-heading, 1.3) !important;
+}
+
 #header ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+  font-size: inherit !important;
   margin: unset;
-  font-weight: var(--rh-font-weight-body-text-medium, 500);
-  font-size: inherit;
+}
+
+#body ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+  font-size: var(--rh-card-heading-font-size, var(--rh-font-size-heading-sm, 1.5rem)) !important;
 }
 
 #body ::slotted(:not([slot]):first-child) {

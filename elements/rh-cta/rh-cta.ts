@@ -2,54 +2,30 @@ import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import { DirController } from '../../lib/DirController.js';
 
-import { type ColorPalette } from '../../lib/context/color/provider.js';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
 import style from './rh-cta.css';
 
-import '@patternfly/elements/pf-icon/pf-icon.js';
-
-export interface CtaData {
-  href?: string;
-  text?: string;
-  title?: string;
-  color?: string;
-  type?: string;
-}
-
-const supportedTags = ['a', 'button']; // add input later
 function isSupportedContent(el: Element | null): el is HTMLAnchorElement | HTMLButtonElement {
-  return !!el && supportedTags.includes(el.localName);
-}
-
-const CONTENT = new WeakMap<Element, boolean>();
-function contentInitialized(el: Element | null): boolean {
-  return !!el && !!CONTENT.get(el);
-}
-
-function isButton(element: Element): element is HTMLButtonElement {
-  return element.tagName.toLowerCase() === 'button';
+  return el instanceof HTMLAnchorElement || el instanceof HTMLButtonElement;
 }
 
 /**
  * A call to action is a styled link that entices users to make a selection.
- *
  * @summary     Directs users to other pages or displays extra content
  * @slot
- *              We expect an anchor tag, `<a>` with an `href`, to be the first child inside `rh-cta` element. Less preferred but
- *              allowed for specific use-cases include: `<button>` (note however that the `button` tag is not supported for the
- *              default CTA styles).
- * @attr        color-palette
- *              [**Deprecated**] intended for use in elements that have slotted descendants, will be removed in a future release.
- *              - Sets color palette, which affects the element's styles as well as descendants' color theme. Overrides
- *              parent color context. Your theme will influence these colors so check there first if you are seeing inconsistencies.
- *              See [CSS Custom Properties](#css-custom-properties) for default values.
- *              {@deprecated color-palette intended for usage in elements that have slotted descendants}
+ *              The default slot contains the link text when the `href`
+ *              attribute is set. In case there is no href attribute, an anchor
+ *              tag (`<a href="...">`) should be the first child inside `rh-cta`
+ *              element. Less preferred but allowed for specific use-cases
+ *              include: `<button>` (note however that the `button` tag is not
+ *              supported for the default CTA styles).
  * @csspart     container - container element for slotted CTA
  * @cssprop     {<color>} --rh-cta-color
  *              Sets the cta color
@@ -77,13 +53,16 @@ function isButton(element: Element): element is HTMLButtonElement {
  *              {@default `var(--rh-color-brand-red-on-light, #ee0000)`}
  * @cssprop     --rh-cta-focus-container-background-color
  *              Sets the cta container background color on focus
- *              {@default #0066cc1a}
+ *              {@default transparent}
+ * @cssprop     --rh-cta-focus-container-outline-color
+ *              Sets the cta container outline color on focus
+ *              {@default #0066cc}
  * @cssprop     --rh-cta-focus-border-color
  *              Sets the cta border color on focus
- *              {@default `var(--rh-color-brand-red-on-light, #ee0000)`}
+ *              {@default transparent}
  * @cssprop     --rh-cta-focus-inner-border-color
  *              Sets the cta inner border color on focus
- *              {@default `var(--rh-color-text-primary-on-dark, #ffffff)`}
+ *              {@default transparent}
  * @cssprop     --rh-cta-active-color
  *              Sets the cta color on active. Applicable only for secondary variant
  *              {@default `var(--rh-color-text-primary-on-dark, #ffffff)`}
@@ -129,101 +108,114 @@ export class RhCta extends LitElement {
    */
   @property({ reflect: true }) variant?: 'primary' | 'secondary' | 'brick';
 
+  /**
+   * When set, overrides the default slot. Use *instead* of a slotted anchor tag
+   */
+  @property({ reflect: true }) href?: string;
+
+  /** when `href` is set, the link's `download` attribute */
+  @property() download?: string;
+
+  /** when `href` is set, the link's `referrerpolicy` attribute */
+  @property() referrerpolicy?: string;
+
+  /** when `href` is set, the link's `rel` attribute */
+  @property() rel?: string;
+
+  /** when `href` is set, the link's `target` attribute */
+  @property() target?: string;
+
+  /**
+   * Icon name
+   */
   @property({ reflect: true }) icon?: string;
+
+  /**
+   * Icon set
+   */
+  @property({ attribute: 'icon-set' }) iconSet = 'far';
 
   /**
    * Sets color theme based on parent context
    */
   @colorContextConsumer() private on?: ColorTheme;
 
-  /** The slotted `<a>` or `<button>` element */
-  public cta: HTMLAnchorElement | HTMLButtonElement | null = null;
+  protected override async getUpdateComplete(): Promise<boolean> {
+    if (this.icon) {
+      await import('@patternfly/elements/pf-icon/pf-icon.js');
+    }
+    return super.getUpdateComplete();
+  }
 
-  /** true while the initializer method is running - to prevent double-execution */
-  #initializing = false;
+  /**
+   * The slotted `<a>` or `<button>` element
+   * @deprecated use `data-analytics-` attributes instead
+   */
+  public get cta(): HTMLAnchorElement | HTMLButtonElement | null {
+    return this.#cta;
+  }
+
+  get #cta() {
+    return (
+      this.shadowRoot?.querySelector('a')
+      ?? this.shadowRoot?.querySelector('slot')?.assignedElements().find(isSupportedContent)
+      ?? null
+    );
+  }
 
   /** Is the element in an RTL context? */
   #dir = new DirController(this);
 
   #logger = new Logger(this);
 
-  get #isDefault(): boolean {
-    return !this.hasAttribute('variant');
-  }
-
-  // START DEPRECATION WARNING
-  // note: remove ColorPalette type, and property decorator import above
-  /**
-   * @deprecated do not use the color-palette attribute: Use themable containers (e.g. rh-surface or rh-card) instead
-   */
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
-
-  #mo = new MutationObserver(() => this.#onMutation());
-
-  connectedCallback(): void {
-    super.connectedCallback();
-    this.#mo.observe(this, { attributes: true, attributeFilter: ['color-palette'] });
-  }
-
-  disconnectedCallback(): void {
-    super.disconnectedCallback();
-    this.#mo.disconnect();
-  }
-
-  #onMutation() {
-    this.#logger.warn(
-      'The color-palette attribute is deprecated and will be removed in a future release.'
-    );
-  }
-  // END DEPRECATION WARNING
-
-  render() {
+  override render() {
+    const {
+      download, href, referrerpolicy, rel, target,
+      icon, iconSet,
+      on = '', variant,
+    } = this;
     const rtl = this.#dir.dir === 'rtl';
-    // START DEPRECATION WARNING
-    // note: remove on from classMap below
-    const dark = this.colorPalette?.includes('dark') ? 'dark' : '';
-    const on = this.on ?? dark;
-    // END DEPRECATION WARNING
-    const svg = !!this.#isDefault;
-    const icon = !!this.icon;
-    const iconOrSvg = !!this.#isDefault || !!this.icon;
+    const isDefault = !variant;
+    const svg = isDefault;
+    const iconOrSvg = isDefault || !!icon;
+    const follower = !iconOrSvg ? '' : variant !== 'brick' && icon ? html`<!--
+   --><pf-icon icon=${icon}
+               set=${iconSet ?? 'far'}
+               size="md"></pf-icon>` : variant ? '' : html`<!--
+   --><svg xmlns="http://www.w3.org/2000/svg"
+           viewBox="0 0 31.56 31.56"
+           width="1em"
+           focusable="false"
+           aria-hidden="true">
+        <path d="M15.78 0l-3.1 3.1 10.5 10.49H0v4.38h23.18l-10.5 10.49 3.1 3.1 15.78-15.78L15.78 0z" />
+      </svg>`;
     return html`
-      <span id="container" part="container" class="${classMap({ rtl, [on]: !!on, icon, svg })}">${this.variant === 'brick' && this.icon ? html`
-        <pf-icon icon=${this.icon} size="md" set="far"></pf-icon>` : ''}
-        <slot @slotchange=${this.firstUpdated}></slot>${!iconOrSvg ? '' : this.variant !== 'brick' && this.icon ? html`
-        <pf-icon icon=${this.icon} size="md" set="far"></pf-icon>` : this.variant ? '' : html`
-        <svg xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 31.56 31.56" focusable="false" width="1em" aria-hidden="true">
-          <path d="M15.78 0l-3.1 3.1 10.5 10.49H0v4.38h23.18l-10.5 10.49 3.1 3.1 15.78-15.78L15.78 0z" />
-        </svg>`}
+      <span id="container"
+            part="container"
+            class=${classMap({ rtl, icon: !!icon, svg, [on]: !!on })}
+            @slotchange=${this.firstUpdated}>${variant === 'brick' && icon ? html`
+        <pf-icon size="md"
+                 icon=${icon}
+                 set="${iconSet ?? 'far'}"></pf-icon>` : ''}${href ? html`
+        <a href=${href}
+           download="${ifDefined(download)}"
+           rel="${ifDefined(rel)}"
+           referrerpolicy="${ifDefined(referrerpolicy)}"
+           target="${ifDefined(target)}"><slot></slot>${follower}</a>`
+   : html`<slot></slot>${follower}`}
       </span>
     `;
   }
 
   override firstUpdated() {
-    let [cta] = this.shadowRoot?.querySelector('slot')?.assignedElements() ?? [];
-
-    while (cta instanceof HTMLSlotElement) {
-      [cta] = cta.assignedElements();
-    }
-
-    if (contentInitialized(cta) || this.#initializing) {
-      return;
-    }
-
-    this.#initializing = true;
-
-    // If the first child does not exist or that child is not a supported tag
-    if (!isSupportedContent(cta)) {
+    const { href, variant } = this;
+    const cta = this.#cta;
+    if (href && cta !== this.shadowRoot?.querySelector('a')) {
+      return this.#logger.warn(`When the href attribute is used, slotted content must not be a link`);
+    } else if (!href && !cta) {
       return this.#logger.warn(`The first child in the light DOM must be a supported call-to-action tag (<a>, <button>)`);
-    } else if (isButton(cta) && !this.variant) {
+    } else if (!href && cta instanceof HTMLButtonElement && !variant) {
       return this.#logger.warn(`Button tag is not supported semantically by the default link styles`);
-    } else {
-      // Capture the first child as the CTA element
-      this.cta = cta;
-
-      CONTENT.set(this.cta, true);
-      this.#initializing = false;
     }
   }
 }

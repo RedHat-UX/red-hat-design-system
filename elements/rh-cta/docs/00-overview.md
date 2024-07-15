@@ -10,9 +10,8 @@
 
 ## Sample element
 
-<rh-cta variant="primary">
-  <a href="#primary">Primary</a>
-</rh-cta>
+<rh-cta variant="primary"
+        href="#primary">Primary</rh-cta>
 
 ## When to use
 
