@@ -466,7 +466,7 @@
       --cyan: oklch(70.5% 0.143 231.78);
       --purple-light: oklch(78.72% 0.198 289.56);
       --cyan-dark: oklch(30.5% 0.143 231.78);
-      /* --purple-light: oklch(from var(--purple) calc(l + 10%) c h);*/
+      /* --purple-light: oklch(from var(--purple) calc(l + 10%) c h); */
       /* --cyan-dark: oklch(from var(--cyan) calc(l - 10%) c h); */
       &.purple {
         --rh-color-surface-lightest: var(--purple-light);
@@ -486,8 +486,8 @@
         }
       }
       &.cyan {
-        --rh-audio-player-background-color-on-light: var(--cyan);
-        --rh-audio-player-background-color-on-dark: var(--cyan-dark);
+        --rh-color-surface-lightest: var(--cyan);
+        --rh-color-surface-darkest: var(--cyan-dark);
         --rh-audio-player-range-thumb-color: #ffe953;
         --rh-audio-player-range-progress-color: #ffe953;
       }
