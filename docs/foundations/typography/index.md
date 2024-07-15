@@ -3,7 +3,7 @@ layout: layouts/pages/basic.njk
 title: Overview
 heading: Typography
 sidenavTitle: Typography
-order: 10
+order: 70
 hasToc: true
 tags:
   - foundations

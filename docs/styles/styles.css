@@ -337,4 +337,10 @@
   td.altered-text p:last-child {
     color: var(--rh-color-text-brand-on-light, #ee0000);
   }
+
+  /* Used in Foundations > Typography.
+  Changes text color to green */
+  td.not-altered-text p:last-child {
+    color: var(--rh-color-green-60, #3d7317);
+  }
 }
