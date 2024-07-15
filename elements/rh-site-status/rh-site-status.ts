@@ -192,12 +192,12 @@ export class RhSiteStatus extends LitElement {
     }
   };
 
-  connectedCallback() {
+  override connectedCallback() {
     super.connectedCallback();
     this.#fetch();
   }
 
-  render() {
+  protected override render() {
     const { on = '' } = this;
     return html`
       <div id="container" class="${classMap({ [on]: !!on })}">
