@@ -189,6 +189,13 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     return content;
   });
 
+  eleventyConfig.addFilter('getPrettyName', function(tagName) {
+    const { pfeconfig } = eleventyConfig?.globalData ?? {};
+    const slug = getTagNameSlug(tagName, pfeconfig);
+    const deslugify = eleventyConfig.getFilter('deslugify');
+    return pfeconfig.aliases[tagName] || deslugify(slug);
+  });
+
   eleventyConfig.addFilter('getTitleFromDocs', function(docs) {
     return docs.find(x => x.docsPage?.title)?.alias
       ?? docs[0]?.alias
