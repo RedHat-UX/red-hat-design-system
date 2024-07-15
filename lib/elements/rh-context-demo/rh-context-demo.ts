@@ -24,26 +24,27 @@ export class RhContextDemo extends LitElement {
 
   #internals = this.attachInternals();
 
-  render() {
+  protected override render() {
     const { value = 'darkest' } = this;
     const [on = 'dark'] = value.match(/dark|light/) ?? [];
     return html`
       <rh-surface id="provider"
-                           color-palette="${value}"
-                           class="${classMap({ [on]: true })}"
-                           @change="${this.#onChange}">
+                  color-palette="${value}"
+                  class="${classMap({ [on]: true })}"
+                  @change="${this.#onChange}">
           <div id="picker-container">
             <rh-context-picker id="picker"
                                .value="${this.value}"
                                target="provider"></rh-context-picker>
             <label for="picker">${this.label}</label>
+            <slot name="controls"></slot>
           </div>
         <slot part="demo"></slot>
       </rh-surface>
     `;
   }
 
-  willUpdate(changed: PropertyValues<this>) {
+  protected override willUpdate(changed: PropertyValues<this>) {
     if (changed.has('colorPalette')) {
       this.value = this.colorPalette;
     }
@@ -52,7 +53,7 @@ export class RhContextDemo extends LitElement {
     }
   }
 
-  formStateRestoreCallback(state: string) {
+  protected formStateRestoreCallback(state: string) {
     this.#setValue(state as ColorPalette);
   }
 
