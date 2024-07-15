@@ -37,15 +37,15 @@
     "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit-element": "/assets/packages/lit-element/index.js",
+    "lit": "/assets/packages/lit/index.js",
+    "lit/static-html.js": "/assets/packages/lit/static-html.js",
     "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
     "@rhds/tokens/meta.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js",
-    "lit/static-html.js": "/assets/packages/lit/static-html.js",
-    "lit": "/assets/packages/lit/index.js",
-    "@rhds/tokens/media.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js",
-    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@3.0.0/core.js",
+    "@rhds/tokens/media.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -4036,20 +4036,128 @@
       </h3>
     </uxdot-copy-permalink>
 <p>The vast majority of pages will need only one skip link, unless it is a very complex page with many repeated elements. The purpose of a skip link is to help users navigate a page more quickly and easily. Adding too many skip links detracts from this goal. If you’d like users to be able to jump from one section to the other, consider using <a href="/elements/jump-links/">jump links</a> instead.</p>
-<!--NOTE: ADD IMAGES
-<div class="best-practices-grid">
-    <div>
-        <img slot="header" src="" alt="">
-        <h4 class="correct">Do</h4>
-        <p>Use a skip link to help users avoid tabbing through multiple navigation items.</p>
-    </div>
-    <div>
-        <img slot="header" src="" alt="">
-        <h4 class="wrong">Don't</h4>
-        <p>Do not use more than one skip link per page, unless it’s necessary for a very complex page with many repeated elements.</p>
-    </div>
+<div class="grid sm-two-columns">
+  <uxdot-best-practice  do><template shadowroot="open" shadowrootmode="open"><style>
+    :host {
+      display: block;
+      margin-block: var(--rh-space-2xl, 32px);
+    }
+
+    #container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--rh-space-2xl, 32px);
+      margin-block: var(--rh-space-2xl, 32px);
+    }
+
+    [part="do"] {
+      --_color: var(--rh-color-status-success-on-light, #3d7317);
+    }
+
+    [part="dont"] {
+      --_color: var(--rh-color-status-danger-on-light, #b1380b);
+    }
+
+    span {
+      font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+      font-size: var(--rh-font-size-heading-xs, 1.25rem);
+      font-weight: var(--rh-font-weight-heading-medium, 500);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: var(--rh-space-sm, 4px);
+    }
+
+    pf-icon,
+    span {
+      color: var(--_color);
+    }
+
+    ::slotted(uxdot-example) {
+      margin: 0 !important;
+    }
+
+    figure {
+      margin: 0 !important;
+    }
+  </style><!--lit-part trgzZTESWfQ=-->
+      <figure id="container" part="container">
+        <slot name="image"></slot>
+        <!--lit-part 1bJcFSD3qhY=-->
+          <figcaption part="do">
+            <span><pf-icon set="fas" icon="check-circle" size="md"></pf-icon> Do</span>
+            <slot></slot>
+          </figcaption>
+        <!--/lit-part-->
+        <!--lit-part BRUAAAUVAAA=--><?><!--/lit-part-->
+      </figure>
+    <!--/lit-part--></template>
+    <uxdot-example color-palette="lightest" width-adjustment="468px" slot="image">
+      <img src="../skip-link-best-practice-too-many-do.svg" alt="Wireframe of a webpage with one skip link at the top">
+    </uxdot-example>
+    <p>Use a skip link to help users avoid tabbing through multiple navigation items.</p>
+  </uxdot-best-practice>
+  <uxdot-best-practice  dont><template shadowroot="open" shadowrootmode="open"><style>
+    :host {
+      display: block;
+      margin-block: var(--rh-space-2xl, 32px);
+    }
+
+    #container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--rh-space-2xl, 32px);
+      margin-block: var(--rh-space-2xl, 32px);
+    }
+
+    [part="do"] {
+      --_color: var(--rh-color-status-success-on-light, #3d7317);
+    }
+
+    [part="dont"] {
+      --_color: var(--rh-color-status-danger-on-light, #b1380b);
+    }
+
+    span {
+      font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+      font-size: var(--rh-font-size-heading-xs, 1.25rem);
+      font-weight: var(--rh-font-weight-heading-medium, 500);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: var(--rh-space-sm, 4px);
+    }
+
+    pf-icon,
+    span {
+      color: var(--_color);
+    }
+
+    ::slotted(uxdot-example) {
+      margin: 0 !important;
+    }
+
+    figure {
+      margin: 0 !important;
+    }
+  </style><!--lit-part trgzZTESWfQ=-->
+      <figure id="container" part="container">
+        <slot name="image"></slot>
+        <!--lit-part BRUAAAUVAAA=--><?><!--/lit-part-->
+        <!--lit-part 8xf94iEM4FQ=-->
+          <figcaption part="dont">
+            <span><pf-icon set="fas" icon="times-circle" size="md"></pf-icon> Don't</span>
+            <slot></slot>
+          </figcaption>
+        <!--/lit-part-->
+      </figure>
+    <!--/lit-part--></template>
+    <uxdot-example color-palette="lightest" width-adjustment="468px" slot="image">
+      <img src="../skip-link-best-practice-too-many-dont.svg" alt="Wireframe of a webpage with skip links at the top of the page and at the top of every tile">
+    </uxdot-example>
+    <p>Do not use more than one skip link per page, unless it’s necessary for a very complex page with many repeated elements.</p>
+  </uxdot-best-practice>
 </div>
--->
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: flex;
@@ -4099,20 +4207,128 @@
       </h3>
     </uxdot-copy-permalink>
 <p>“Main content” in a skip link’s text label refers to the content that appears immediately after the navigation. Ensure that users skip only the navigation, or adjust the element's text to give a more accurate description of what will be skipped.</p>
-<!-- Note: Add images
-<div class="best-practices-grid">
-    <div>
-        <img slot="header" src="" alt="">
-        <h4 class="correct">Do</h4>
-        <p>Ensure that users skip only the navigation, or adjust the text of the skip link to give a more accurate description.</p>
-    </div>
-    <div>
-        <img slot="header" src="" alt="">
-        <h4 class="wrong">Don't</h4>
-        <p>Do not allow the skip link to skip content without mentioning it in the skip link.</p>
-    </div>
+<div class="grid sm-two-columns">
+  <uxdot-best-practice  do><template shadowroot="open" shadowrootmode="open"><style>
+    :host {
+      display: block;
+      margin-block: var(--rh-space-2xl, 32px);
+    }
+
+    #container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--rh-space-2xl, 32px);
+      margin-block: var(--rh-space-2xl, 32px);
+    }
+
+    [part="do"] {
+      --_color: var(--rh-color-status-success-on-light, #3d7317);
+    }
+
+    [part="dont"] {
+      --_color: var(--rh-color-status-danger-on-light, #b1380b);
+    }
+
+    span {
+      font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+      font-size: var(--rh-font-size-heading-xs, 1.25rem);
+      font-weight: var(--rh-font-weight-heading-medium, 500);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: var(--rh-space-sm, 4px);
+    }
+
+    pf-icon,
+    span {
+      color: var(--_color);
+    }
+
+    ::slotted(uxdot-example) {
+      margin: 0 !important;
+    }
+
+    figure {
+      margin: 0 !important;
+    }
+  </style><!--lit-part trgzZTESWfQ=-->
+      <figure id="container" part="container">
+        <slot name="image"></slot>
+        <!--lit-part 1bJcFSD3qhY=-->
+          <figcaption part="do">
+            <span><pf-icon set="fas" icon="check-circle" size="md"></pf-icon> Do</span>
+            <slot></slot>
+          </figcaption>
+        <!--/lit-part-->
+        <!--lit-part BRUAAAUVAAA=--><?><!--/lit-part-->
+      </figure>
+    <!--/lit-part--></template>
+    <uxdot-example color-palette="lightest" width-adjustment="468px" slot="image">
+      <img src="../skip-link-best-practice-main-content-do.svg" alt="Wireframe of a webpage with arrow pointing from skip link to the first interactive element on the page">
+    </uxdot-example>
+    <p>Ensure that users skip only the navigation, or adjust the text of the skip link to give a more accurate description.</p>
+  </uxdot-best-practice>
+  <uxdot-best-practice  dont><template shadowroot="open" shadowrootmode="open"><style>
+    :host {
+      display: block;
+      margin-block: var(--rh-space-2xl, 32px);
+    }
+
+    #container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--rh-space-2xl, 32px);
+      margin-block: var(--rh-space-2xl, 32px);
+    }
+
+    [part="do"] {
+      --_color: var(--rh-color-status-success-on-light, #3d7317);
+    }
+
+    [part="dont"] {
+      --_color: var(--rh-color-status-danger-on-light, #b1380b);
+    }
+
+    span {
+      font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+      font-size: var(--rh-font-size-heading-xs, 1.25rem);
+      font-weight: var(--rh-font-weight-heading-medium, 500);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: var(--rh-space-sm, 4px);
+    }
+
+    pf-icon,
+    span {
+      color: var(--_color);
+    }
+
+    ::slotted(uxdot-example) {
+      margin: 0 !important;
+    }
+
+    figure {
+      margin: 0 !important;
+    }
+  </style><!--lit-part trgzZTESWfQ=-->
+      <figure id="container" part="container">
+        <slot name="image"></slot>
+        <!--lit-part BRUAAAUVAAA=--><?><!--/lit-part-->
+        <!--lit-part 8xf94iEM4FQ=-->
+          <figcaption part="dont">
+            <span><pf-icon set="fas" icon="times-circle" size="md"></pf-icon> Don't</span>
+            <slot></slot>
+          </figcaption>
+        <!--/lit-part-->
+      </figure>
+    <!--/lit-part--></template>
+    <uxdot-example color-palette="lightest" width-adjustment="468px" slot="image">
+      <img src="../skip-link-best-practice-main-content-dont.svg" alt="Wireframe of a webpage with arrow pointing from skip link to the second interactive element on the page">
+    </uxdot-example>
+    <p>Do not allow the skip link to skip content without mentioning it in the skip link.</p>
+  </uxdot-best-practice>
 </div>
--->
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: flex;
@@ -4162,20 +4378,128 @@
       </h3>
     </uxdot-copy-permalink>
 <p>To prevent the skip link from being visually distracting, hide a skip link until users navigate to it. The most accessible way to hide it is to position the skip link outside of the viewport, rather than using <code>display: none</code> or the <code>hidden</code> attribute in CSS.</p>
-<!-- Note: Add images
-<div class="best-practices-grid">
-    <div>
-        <img slot="header" src="" alt="Example of a site that does not show a skip link">
-        <h4 class="correct">Do</h4>
-        <p>Hide the skip link by default, until the user navigates to it.</p>
-    </div>
-    <div>
-        <img slot="header" src="" alt="Example of a site that is showing a skip link">
-        <h4 class="wrong">Don't</h4>
-        <p>Do not keep the skip link visible if the user hasn’t navigated to it or if the user has already moved to the main content.</p>
-    </div>
+<div class="grid sm-two-columns">
+  <uxdot-best-practice  do><template shadowroot="open" shadowrootmode="open"><style>
+    :host {
+      display: block;
+      margin-block: var(--rh-space-2xl, 32px);
+    }
+
+    #container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--rh-space-2xl, 32px);
+      margin-block: var(--rh-space-2xl, 32px);
+    }
+
+    [part="do"] {
+      --_color: var(--rh-color-status-success-on-light, #3d7317);
+    }
+
+    [part="dont"] {
+      --_color: var(--rh-color-status-danger-on-light, #b1380b);
+    }
+
+    span {
+      font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+      font-size: var(--rh-font-size-heading-xs, 1.25rem);
+      font-weight: var(--rh-font-weight-heading-medium, 500);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: var(--rh-space-sm, 4px);
+    }
+
+    pf-icon,
+    span {
+      color: var(--_color);
+    }
+
+    ::slotted(uxdot-example) {
+      margin: 0 !important;
+    }
+
+    figure {
+      margin: 0 !important;
+    }
+  </style><!--lit-part trgzZTESWfQ=-->
+      <figure id="container" part="container">
+        <slot name="image"></slot>
+        <!--lit-part 1bJcFSD3qhY=-->
+          <figcaption part="do">
+            <span><pf-icon set="fas" icon="check-circle" size="md"></pf-icon> Do</span>
+            <slot></slot>
+          </figcaption>
+        <!--/lit-part-->
+        <!--lit-part BRUAAAUVAAA=--><?><!--/lit-part-->
+      </figure>
+    <!--/lit-part--></template>
+    <uxdot-example color-palette="lightest" width-adjustment="468px" slot="image">
+      <img src="../skip-link-best-practice-visibility-do.svg" alt="Wireframe of webpage that has a tile in focus and no visible skip link">
+    </uxdot-example>
+    <p>Hide the skip link by default, until the user navigates to it.</p>
+  </uxdot-best-practice>
+  <uxdot-best-practice  dont><template shadowroot="open" shadowrootmode="open"><style>
+    :host {
+      display: block;
+      margin-block: var(--rh-space-2xl, 32px);
+    }
+
+    #container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--rh-space-2xl, 32px);
+      margin-block: var(--rh-space-2xl, 32px);
+    }
+
+    [part="do"] {
+      --_color: var(--rh-color-status-success-on-light, #3d7317);
+    }
+
+    [part="dont"] {
+      --_color: var(--rh-color-status-danger-on-light, #b1380b);
+    }
+
+    span {
+      font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+      font-size: var(--rh-font-size-heading-xs, 1.25rem);
+      font-weight: var(--rh-font-weight-heading-medium, 500);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: var(--rh-space-sm, 4px);
+    }
+
+    pf-icon,
+    span {
+      color: var(--_color);
+    }
+
+    ::slotted(uxdot-example) {
+      margin: 0 !important;
+    }
+
+    figure {
+      margin: 0 !important;
+    }
+  </style><!--lit-part trgzZTESWfQ=-->
+      <figure id="container" part="container">
+        <slot name="image"></slot>
+        <!--lit-part BRUAAAUVAAA=--><?><!--/lit-part-->
+        <!--lit-part 8xf94iEM4FQ=-->
+          <figcaption part="dont">
+            <span><pf-icon set="fas" icon="times-circle" size="md"></pf-icon> Don't</span>
+            <slot></slot>
+          </figcaption>
+        <!--/lit-part-->
+      </figure>
+    <!--/lit-part--></template>
+    <uxdot-example color-palette="lightest" width-adjustment="468px" slot="image">
+      <img src="../skip-link-best-practice-visibility-dont.svg" alt="Wireframe of a webpage that has a tile in focus and a visible skip link">
+    </uxdot-example>
+    <p>Do not keep the skip link visible if the user hasn’t navigated to it or if the user has already moved to the main content.</p>
+  </uxdot-best-practice>
 </div>
--->
 
 
       
