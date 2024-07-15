@@ -23,12 +23,6 @@
 }
 
 @layer layout {
-  [data-demo] {
-    padding: var(--rh-space-xl, 24px);
-    min-height: 100%;
-    height: 100%;
-  }
-
   main {
     display: block;
     position: relative;
@@ -47,6 +41,5 @@
   rh-context-demo {
     min-height: calc(100% + 2 * var(--rh-space-xl, 24px));
     height: auto;
-    margin: calc(-1 * var(--rh-space-xl, 24px));
   }
 }

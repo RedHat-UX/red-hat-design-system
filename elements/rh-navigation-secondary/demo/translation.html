@@ -1,4 +1,4 @@
-<div lang="he" dir="rtl">
+<div id="rtl-nav-secondary" lang="he" dir="rtl">
   <rh-navigation-secondary role="navigation">
     <a href="#" slot="logo" id="logo-id" aria-current="page">
       Red Hat Ansible Automation Platform
@@ -145,27 +145,19 @@
 </div>
 
 <style>
-  /* fixes demo for overflow and display of sticky nav */
-  main {
-    display: contents;
-  }
-
-  [data-demo="rh-navigation-secondary"] {
+  #rtl-nav-secondary {
     padding: 0;
-  }
-
-  /* content space-holder that allows for overflow */
-  #space-holder {
-    min-height: 101vh;
-    padding: var(--_text-padding, var(--rh-space-lg, 16px));
-  }
-
-  @media screen and (min-width: 768px) {
-    #space-holder { --_text-padding: var(--rh-space-2xl, 32px); }
-  }
-
-  @media screen and (min-width: 1440px) {
-    #space-holder { --_text-padding: var(--rh-space-4xl, 64px); }
+    /* content space-holder that allows for overflow */
+    & #space-holder {
+      min-height: 101vh;
+      padding: var(--_text-padding, var(--rh-space-lg, 16px));
+      @media screen and (min-width: 768px) {
+        --_text-padding: var(--rh-space-2xl, 32px);
+      }
+      @media screen and (min-width: 1440px) {
+        --_text-padding: var(--rh-space-4xl, 64px);
+      }
+    }
   }
 </style>
 
