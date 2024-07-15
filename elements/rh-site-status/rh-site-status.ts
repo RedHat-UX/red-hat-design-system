@@ -172,14 +172,6 @@ export class RhSiteStatus extends LitElement {
 
   #domain = location.hostname;
 
-  /** secret testing-only domain override */
-  private set __TESTING_ONLY_DONT_USE_OR_WELL_TELL_YOUR_BOSS__domain__(domain: string) {
-    this.#domain = domain;
-    this.#loading = true;
-    this.requestUpdate();
-    this.#fetch();
-  }
-
   get #icon() {
     const status = this.#component?.status ?? this.#status?.indicator;
     if (status) {
