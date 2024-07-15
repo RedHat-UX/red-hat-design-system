@@ -11,7 +11,8 @@
       status: Ready
     - name: Documentation
       status: Ready
-- name: "Alert"
+- tagName: rh-alert
+  name: "Alert"
   type: "Element"
   overallStatus: "Available"
   libraries:
@@ -23,7 +24,8 @@
       status: Ready
     - name: Documentation
       status: Ready
-- name: "Audio Player"
+- tagName: rh-audio-player
+  name: "Audio Player"
   type: "Element"
   overallStatus: "Available"
   libraries:
@@ -35,7 +37,8 @@
       status: Ready
     - name: Documentation
       status: Ready
-- name: "Avatar"
+- tagName: rh-avatar
+  name: "Avatar"
   type: "Element"
   overallStatus: "Available"
   libraries:
@@ -47,7 +50,8 @@
       status: Ready
     - name: Documentation
       status: Ready
-- name: "Back To Top"
+- tagName: rh-back-to-top
+  name: "Back To Top"
   type: "Element"
   overallStatus: "Available"
   libraries:
@@ -59,7 +63,8 @@
       status: Planned
     - name: Documentation
       status: In Progress
-- name: "Badge"
+- tagName: rh-badge
+  name: "Badge"
   type: "Element"
   overallStatus: "Available"
   libraries:
@@ -71,7 +76,8 @@
       status: Ready
     - name: Documentation
       status: Ready
-- name: "Blockquote"
+- tagName: rh-blockquote
+  name: "Blockquote"
   type: "Element"
   overallStatus: "Available"
   libraries:
@@ -83,7 +89,8 @@
       status: Ready
     - name: Documentation
       status: Ready
-- name: "Button"
+- tagName: rh-button
+  name: "Button"
   type: "Element"
   overallStatus: "Available"
   libraries:
@@ -95,7 +102,8 @@
       status: Ready
     - name: Documentation
       status: Ready
-- name: "Cta"
+- tagName: rh-cta
+  name: "Cta"
   type: "Element"
   overallStatus: "Available"
   libraries:
@@ -107,7 +115,8 @@
       status: Ready
     - name: Documentation
       status: Ready
-- name: "Card"
+- tagName: rh-card
+  name: "Card"
   type: "Element"
   overallStatus: "Available"
   libraries:
@@ -119,7 +128,8 @@
       status: Ready
     - name: Documentation
       status: Ready
-- name: "Code Block"
+- tagName: rh-code-block
+  name: "Code Block"
   type: "Element"
   overallStatus: "Available"
   libraries:
@@ -131,7 +141,8 @@
       status: Ready
     - name: Documentation
       status: Ready
-- name: "Dialog"
+- tagName: rh-dialog
+  name: "Dialog"
   type: "Element"
   overallStatus: "Available"
   libraries:
@@ -143,7 +154,8 @@
       status: Ready
     - name: Documentation
       status: Ready
-- name: "Footer"
+- tagName: rh-footer
+  name: "Footer"
   type: "Element"
   overallStatus: "Available"
   libraries:
@@ -155,7 +167,8 @@
       status: Ready
     - name: Documentation
       status: Ready
-- name: "Health Index"
+- tagName: rh-health-index
+  name: "Health Index"
   type: "Element"
   overallStatus: "Available"
   libraries:
@@ -167,7 +180,8 @@
       status: Planned
     - name: Documentation
       status: Ready
-- name: "Jumplinks"
+- tagName: rh-jump-links
+  name: "Jumplinks"
   type: "Element"
   overallStatus: "Available"
   libraries:
@@ -179,7 +193,8 @@
       status: N/A
     - name: Documentation
       status: Ready
-- name: "Navigation Secondary"
+- tagName: rh-navigation-secondary
+  name: "Navigation Secondary"
   type: "Element"
   overallStatus: "Available"
   libraries:
@@ -191,7 +206,8 @@
       status: Ready
     - name: Documentation
       status: Ready
-- name: "Pagination"
+- tagName: rh-pagination
+  name: "Pagination"
   type: "Element"
   overallStatus: "Available"
   libraries:
@@ -203,7 +219,7 @@
       status: Ready
     - name: Documentation
       status: Ready
-- tagName: rh-popver
+- tagName: rh-popover
   name: "Popover"
   type: "Element"
   overallStatus: "Available"
@@ -211,12 +227,13 @@
     - name: Figma library
       status: Ready
     - name: RH Elements
-      status: Ready
+      status: Planned
     - name: WebRH
-      status: Ready
+      status: Planned
     - name: Documentation
       status: Ready
-- name: "Skip Link"
+- tagName: rh-skip-link
+  name: "Skip Link"
   type: "Element"
   overallStatus: "New"
   libraries:
@@ -228,7 +245,8 @@
       status: Planned
     - name: Documentation
       status: Ready
-- name: "Site Status"
+- tagName: rh-site-status 
+  name: "Site Status"
   type: "Element"
   overallStatus: "New"
   libraries:
@@ -240,7 +258,8 @@
       status: Planned
     - name: Documentation
       status: Ready
-- name: "Spinner"
+- tagName: rh-spinner 
+  name: "Spinner"
   type: "Element"
   overallStatus: "Available"
   libraries:
@@ -252,7 +271,8 @@
       status: Ready
     - name: Documentation
       status: Ready
-- name: "Stat"
+- tagName: rh-stat
+  name: "Stat"
   type: "Element"
   overallStatus: "Available"
   libraries:
@@ -264,7 +284,8 @@
       status: Ready
     - name: Documentation
       status: Ready
-- name: "Subnav"
+- tagName: rh-subnav
+  name: "Subnav"
   type: "Element"
   overallStatus: "Available"
   libraries:
@@ -276,7 +297,8 @@
       status: Ready
     - name: Documentation
       status: Ready
-- name: "Surface"
+- tagName: rh-surface
+  name: "Surface"
   type: "Element"
   overallStatus: "New"
   libraries:
@@ -288,7 +310,8 @@
       status: Ready
     - name: Documentation
       status: Ready
-- name: "Switch"
+- tagName: rh-switch
+  name: "Switch"
   type: "Element"
   overallStatus: "New"
   libraries:
@@ -300,7 +323,8 @@
       status: Planned
     - name: Documentation
       status: Ready  
-- name: "Table"
+- tagName: rh-table
+  name: "Table"
   type: "Element"
   overallStatus: "New"
   libraries:
@@ -312,7 +336,8 @@
       status: Ready
     - name: Documentation
       status: Ready
-- name: "Tabs"
+- tagName: rh-tabs
+  name: "Tabs"
   type: "Element"
   overallStatus: "Available"
   libraries:
@@ -324,7 +349,8 @@
       status: Ready
     - name: Documentation
       status: Ready
-- name: "Tag"
+- tagName: rh-tag
+  name: "Tag"
   type: "Element"
   overallStatus: "Available"
   libraries:
@@ -336,7 +362,8 @@
       status: Ready
     - name: Documentation
       status: Ready
-- name: "Tile"
+- tagName: rh-tile
+  name: "Tile"
   type: "Element"
   overallStatus: "New"
   libraries:
@@ -348,7 +375,8 @@
       status: Ready
     - name: Documentation
       status: Ready
-- name: "Timestamp"
+- tagName: rh-timestamp
+  name: "Timestamp"
   type: "Element"
   overallStatus: "Available"
   libraries:
@@ -360,7 +388,8 @@
       status: Ready
     - name: Documentation
       status: Ready
-- name: "Tooltip"
+- tagName: rh-tooltip
+  name: "Tooltip"
   type: "Element"
   overallStatus: "Available"
   libraries:
@@ -372,15 +401,3 @@
       status: Ready
     - name: Documentation
       status: Ready
-- name: "Popover"
-  type: "Element"
-  overallStatus: "In Progress"
-  libraries:
-    - name: Figma library
-      status: Ready
-    - name: RH Elements
-      status: Planned
-    - name: WebRH
-      status: Planned
-    - name: Documentation
-      status: Planned
