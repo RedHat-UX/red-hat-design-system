@@ -10,12 +10,12 @@ const html = (...args) =>
       .join('\n');
 
 module.exports = function(eleventyConfig) {
-  eleventyConfig.addPairedShortcode('renderCodeDocs', function renderCodeDocs(content, kwargs = {}) {
-    const page = this.context?.doc ?? this.ctx;
-    const renderers = new Renderers(page, kwargs);
-    return renderers.renderAll(content);
-  }
-  );
+  eleventyConfig
+      .addPairedShortcode('renderCodeDocs', function renderCodeDocs(content, kwargs = {}) {
+        const page = this.context?.doc ?? this.ctx;
+        const renderers = new Renderers(page, kwargs);
+        return renderers.renderAll(content);
+      });
 };
 
 function innerMD(content = '') {
