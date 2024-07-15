@@ -1,54 +1,30 @@
-<script type="module">
-  function overrideFetch(ok, status, statusText, json) {
-    window.fetch = new Proxy(window.fetch, {
-      apply: (target, thisArg, args) => {
-        if (args[0] === 'https://status.redhat.com/index.json') {
-          return Promise.resolve({
-            ok,
-            status,
-            statusText,
-            json,
-          });
-        }
-        return target.apply(thisArg, args);
-      },
-    });
-  }
-
-  overrideFetch(
-    true,
-    200,
-    'OK',
-    () => new Promise(resolve => {
-      setTimeout(() => resolve(
-        {
-          page: 'fake data',
-          components: ['fake data'],
-          incidents: 'fake data',
-          status: { indicator: 'none', description: 'All Systems Operational' }
-        }
-      ), 100000);
-    })
-  );
-</script>
-
 <rh-site-status></rh-site-status>
-
-<p>Example of translated loading text</p>
-<rh-context-demo lang="fr">
-  <rh-site-status>
-    <span slot="loading-text">Chargement</span>
-  </rh-site-status>
-</rh-context-demo>
 
 <script type="module">
   import '@rhds/elements/rh-site-status/rh-site-status.js';
-  import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
 </script>
 
-<style>
-  rh-context-demo {
-    height: unset;
-    margin: unset;
-  }
-</style>
+<script>
+  window.fetch = new Proxy(window.fetch, {
+    apply: (target, thisArg, [url, ...args]) => {
+      if (url === 'https://status.redhat.com/index.json') {
+        return Promise.resolve({
+          ok: true,
+          status: 200,
+          statusText: 'OK',
+          async json() {
+            await new Promise(r => setTimeout(r, 100_000));
+            return {
+              page: 'fake data',
+              components: ['fake data'],
+              incidents: 'fake data',
+              status: {indicator: 'none', description: 'All Systems Operational'}
+            }
+          },
+        });
+      } else {
+        return target.apply(thisArg, [url, ...args]);
+      }
+    },
+  });
+</script>

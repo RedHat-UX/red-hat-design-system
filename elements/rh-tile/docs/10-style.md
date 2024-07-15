@@ -153,7 +153,7 @@ Only link tiles have an active state. Selectable tiles have a selected state ins
 Only a selectable tile has a selected state. A link tile has an active state instead.
 
 <uxdot-example width-adjustment="752px">
-  <img src="{{ '../tile-states-selected-light-theme.png' | url }}" alt="When selected, the form input of light theme selectable tiles appears blue and filled or checked">
+  <img src="{{ '../tile-states-selected-light-theme.svg' | url }}" alt="When selected, the form input of light theme selectable tiles appears blue and filled or checked">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="752px">
