@@ -90,6 +90,9 @@ rh-subnav:
  - rh-navigation
  - rh-navigation-secondary
  - skip-navigation
+rh-switch:
+ - rh-button
+ - form
 rh-table:
  - rh-code-block
 rh-tabs: 
