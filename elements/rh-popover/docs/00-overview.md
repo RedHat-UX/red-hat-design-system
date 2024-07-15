@@ -1,7 +1,3 @@
-## Coming soon!
-
-This element is currently in progress and not yet available for use.
-
 ## Overview
 
 A Popover displays content in a non-modal dialog and adds contextual
