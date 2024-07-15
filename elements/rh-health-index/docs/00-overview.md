@@ -22,4 +22,4 @@
 
 
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}

@@ -38,4 +38,4 @@ class="visually-hidden">Hat</span></rh-tag>
   - When you need to tag items of the same category
   - When you need to indicate status
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}

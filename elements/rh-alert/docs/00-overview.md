@@ -20,4 +20,4 @@
 
 [img-sample]: {{ './alert-sample.svg' | url }}
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}

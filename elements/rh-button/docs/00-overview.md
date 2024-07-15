@@ -19,4 +19,4 @@
   - When you need to communicate actions users can take
   - When you need to draw attention to the highest priority action
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}

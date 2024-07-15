@@ -19,4 +19,4 @@
   - When you need to arrange links in different arrangements like in a row or grid
   - When you need to hide or reveal content
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}

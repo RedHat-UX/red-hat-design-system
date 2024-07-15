@@ -23,5 +23,5 @@
   - When you need to pair a data point with supporting text to add more context
   - When you need to display several statistics together in a group
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}
 

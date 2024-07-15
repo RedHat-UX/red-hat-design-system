@@ -19,4 +19,4 @@
   - When the structure or amount of content that's loading is unknown
 
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}

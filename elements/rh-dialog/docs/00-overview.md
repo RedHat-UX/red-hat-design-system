@@ -26,4 +26,4 @@
   - When you need an immediate response from users
   - When you need to notify users of urgent information concerning their current workflow
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}

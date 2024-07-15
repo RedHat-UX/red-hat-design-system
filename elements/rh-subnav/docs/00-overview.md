@@ -26,4 +26,4 @@
   - When you want to allow users to browse high-level and low-level pages in the 
     same experience
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}

@@ -11,4 +11,4 @@
   <img src="{{ 'card.svg' | url }}" alt="Image of a card element">
 </uxdot-example>
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}

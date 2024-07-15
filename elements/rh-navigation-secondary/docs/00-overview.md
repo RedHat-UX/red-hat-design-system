@@ -17,4 +17,4 @@
   - When you need to prevent other navigations from getting overloaded
 
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}

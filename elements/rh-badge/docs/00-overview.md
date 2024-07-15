@@ -23,4 +23,4 @@
   - When you need to reflect counts like number of objects, events, or unread items
 
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}

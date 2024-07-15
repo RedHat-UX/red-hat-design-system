@@ -34,5 +34,5 @@ View a live version of this component and see how it can be customized.
   - When you need to break up large portions of text
 
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}
 

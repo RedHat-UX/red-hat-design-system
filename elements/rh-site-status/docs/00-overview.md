@@ -21,4 +21,4 @@
   - When you need to provide users with a link to a status page where they can learn more
 
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}

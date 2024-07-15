@@ -17,5 +17,5 @@
 
   - When you need to represent a user who has not provided a photo or image
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}
 

@@ -24,4 +24,4 @@ To show the skip link, click this paragraph and hit the "Tab" key on your keyboa
   - When there are blocks of content that are repeated on multiple pages
 
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}

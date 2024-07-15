@@ -28,4 +28,4 @@
 
   - When you need to highlight a block of code while maintaining the formatting
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}

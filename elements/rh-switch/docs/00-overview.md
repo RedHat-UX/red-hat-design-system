@@ -25,4 +25,4 @@
 - When users need to toggle an item on or off
 
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}
