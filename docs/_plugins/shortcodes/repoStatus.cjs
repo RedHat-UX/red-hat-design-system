@@ -86,17 +86,18 @@ const STATUS_CHECKLIST = {
  * @param {number} [options.level] heading level
  */
 function repoStatusList({ repoStatus, heading = 'Status', level = 2 } = {}) {
-    // Removing Documentation status from the repoStatusList
-    const librariesList = this.ctx.doc ?
-      repoStatus.find(x => x.tagName === this.ctx.doc.tagName)
-      ?.libraries?.filter(repo =>
-        repo.name !== 'Documentation')
-       : repoStatus.flatMap(x => x.libraries) ?? [];
+  // Removing Documentation status from the repoStatusList
+  const librariesList = this.ctx.doc ?
+    repoStatus.find(x => x.tagName === this.ctx.doc.tagName)
+        ?.libraries?.filter(repo =>
+          repo.name !== 'Documentation')
+      : repoStatus.flatMap(x => x.libraries) ?? [];
 
-    if (!Array.isArray(librariesList) || !librariesList.length) {
-      return '';
-    } else {
-      return html`
+
+  if (!Array.isArray(librariesList) || !librariesList.length) {
+    return '';
+  } else {
+    return html`
 <uxdot-repo-status-list>
   <uxdot-copy-permalink slot="header">
     <h${level} id=${heading.toLowerCase()} tabindex="-1" >
@@ -175,12 +176,12 @@ function repoStatusTable({ repoStatus }) {
  * @param {number} [options.level] heading level
  */
 function repoStatusChecklist({ repoStatus, heading = 'Status checklist', level = 2 } = {}) {
-
+  // is repoStatus returning undefined ?
   const statusList = this.ctx.doc ?
-    repoStatus.find(x => x.tagName === this.ctx._.tagName)
-    ?.libraries?.filter(repo =>
-      repo.name !== 'Documentation')
-     : repoStatus.flatMap(x => x.libraries) ?? [];
+    repoStatus.find(x => x.tagName === this.ctx.doc.tagName)
+        ?.libraries?.filter(repo =>
+          repo.name !== 'Documentation')
+    : repoStatus.flatMap(x => x.libraries) ?? [];
 
   if (!Array.isArray(statusList) || !statusList.length) {
     return '';
