@@ -232,6 +232,19 @@
       status: Planned
     - name: Documentation
       status: Ready
+- tagName: rh-progress-steps
+  name: "Progess Steps"
+  type: "Element"
+  overallStatus: "Available"
+  libraries:
+    - name: Figma library
+      status: Ready
+    - name: RH Elements
+      status: Planned
+    - name: WebRH
+      status: Planned
+    - name: Documentation
+      status: Ready      
 - tagName: rh-skip-link
   name: "Skip Link"
   type: "Element"
