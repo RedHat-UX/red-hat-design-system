@@ -12,15 +12,17 @@ subnav:
 permalink: /foundations/typography/scale.html
 ---
 
+<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
+
 ## Overview
 
-The type scale includes a range of text sizes and weights designed to support various content needs. There are type scales for both desktop and mobile environments. For more technical details, go to the <a href="#">Tokens</a> section.
+The type scale includes a range of text sizes and weights designed to support various content needs. There are type scales for both desktop and mobile environments. For more technical details, go to the [Tokens](https://ux.redhat.com/tokens/font/) section.
 
 ## Desktop scale
 
 ### Heading
 
-You might see headings with larger sizes or different weights. Those are used for limited bespoke use cases only. Contact the <a href="#">Brand team</a> to learn more about using heading sizes and weights different from the table below.
+You might see headings with larger sizes or different weights. Those are used for limited bespoke use cases only. Contact the [Brand team](https://brand.redhat.com/) to learn more about using heading sizes and weights different from the table below.
 
 <rh-table>
   <table>
@@ -626,3 +628,8 @@ The mobile scale takes effect when the viewport size is less than 768px.
     </tbody>
   </table>
 </rh-table>
+
+<uxdot-feedback>
+  <h2>Foundations</h2>
+  <p>To learn how to use our other foundations in your designs, visit the <a href="/foundations">foundations</a> section.</p>
+</uxdot-feedback>

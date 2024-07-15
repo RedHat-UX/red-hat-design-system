@@ -327,6 +327,14 @@
   }
 
   /* Used in Foundations > Typography.
+  Removes margin below <p>s in table */
+  td.altered-text p,
+  td.not-altered-text p {
+    margin-block-start: 0;
+    margin-block-end: 0;
+  }
+
+  /* Used in Foundations > Typography.
   Adds strikethrough and gray font color to first line in cell */
   td.altered-text p:first-child {
     color: var(--rh-color-gray-40, #a3a3a3);

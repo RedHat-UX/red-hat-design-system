@@ -16,14 +16,14 @@ permalink: /foundations/typography/index.html
 
 ## Get started
 
-To download the font files, go to <a href="#">Google Fonts</a>. To install the fonts using Terminal, go to our <a href="#">GitHub repo</a>. If you need further assistance, contact the <a href="#">Brand team</a> or the <a href="#">Design System team</a>.
+To download the font files, go to [Google Fonts](https://fonts.google.com/?query=MCKL). To install the fonts using Terminal, go to our [GitHub repo](https://github.com/RedHatOfficial/RedHatFont). If you need further assistance, contact the [Brand team](https://brand.redhat.com/) or the [Design System team](https://ux.redhat.com/support/).
 
 ## Font family
 
-The words we choose are an important part of our brand voice and so is the way those words look. The way our words look is established by the fonts we use and the way we use them, also known as typography. The Red Hat font family was designed by type designer <a href="#">Jeremy Mickel</a> in collaboration with the Brand team. To learn more our fonts and typography, go to the <a href="#">Brand standards</a> website.
+The words we choose are an important part of our brand voice and so is the way those words look. The way our words look is established by the fonts we use and the way we use them, also known as typography. The Red Hat font family was designed by type designer Jeremy Mickel in collaboration with the Brand team. To learn more our fonts and typography, go to the [Brand standards](https://www.redhat.com/en/about/brand/standards) website.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="{{ '/assets/typography/type-overview-font-family.png' | url }}" alt="Image of...">
+  <img src="{{ '/assets/typography/type-overview-font-family.png' | url }}" alt=" 3 examples of the Red Hat font family: Display, Text, and Mono. Each example shows a capital letter R and lowercase letter H with overlays pointing out unique design characteristics.">
 </uxdot-example>
 
 ### Red Hat Display
@@ -40,7 +40,7 @@ Red Hat Mono is our monospaced font that was created to distinguish code from ot
 
 ## International
 
-Designs that need to use non-Latin characters should fall back to <a href="#">Noto Sans</a>. By loading language-specific fonts, the design system can accommodate mixed-language content. For more technical details, go to the <a href="#">Tokens</a> section.
+Designs that need to use non-Latin characters should fall back to [Noto Sans](https://fonts.google.com/noto/specimen/Noto+Sans). By loading language-specific fonts, the design system can accommodate mixed-language content. For more technical details, go to the [Tokens](https://ux.redhat.com/tokens/font/) section.
 
 <rh-table>
   <table>
