@@ -98,7 +98,7 @@
       status: Ready
     - name: RH Elements
       status: Ready
-    - name: WebRH
+    - name: RH Shared Libs
       status: Ready
     - name: Documentation
       status: Ready
