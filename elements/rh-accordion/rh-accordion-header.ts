@@ -7,7 +7,6 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
-import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import { DirController } from '../../lib/DirController.js';
@@ -18,10 +17,6 @@ import { consume } from '@lit/context';
 import { context } from './context.js';
 
 import styles from './rh-accordion-header.css';
-
-const isPorHeader =
-  (el: Node): el is HTMLElement =>
-    el instanceof HTMLElement && !!el.tagName.match(/P|^H[1-6]/);
 
 export class AccordionHeaderChangeEvent extends Event {
   declare target: RhAccordionHeader;
@@ -34,13 +29,15 @@ export class AccordionHeaderChangeEvent extends Event {
   }
 }
 
+const isAccordion = (x: EventTarget): x is RhAccordion =>
+  x instanceof HTMLElement && x.localName === 'rh-accordion';
+
 /**
  * Accordion Header
+ * We expect the light DOM of the rh-accordion-header to be a heading level tag (h1, h2, h3, h4, h5, h6)
  * @csspart text - inline element containing the heading text or slotted heading content
  * @csspart accents - container for accents within the header
  * @csspart icon - caret icon
- * @slot
- *       We expect the light DOM of the rh-accordion-header to be a heading level tag (h1, h2, h3, h4, h5, h6)
  * @slot accents
  *       These elements will appear inline by default with the header title, between the header and the chevron
  *       (or after the chevron and header in disclosure mode). There is an option to set the accents placement to bottom
@@ -108,7 +105,7 @@ export class RhAccordionHeader extends LitElement {
 
   #renderHeaderContent() {
     const { accents } = this.ctx ?? {};
-    const headingText = this.headingText ?? this.textContent;
+    const headingText = this.headingText ?? this.#getComposedTextContent();
 
     return html`
       <button id="button"
@@ -127,12 +124,24 @@ export class RhAccordionHeader extends LitElement {
     `;
   }
 
+  #getComposedTextContent(nodes: NodeList | Node[] = this.childNodes) {
+    let text = '';
+    for (const kid of nodes) {
+      if (kid.nodeType === Node.TEXT_NODE) {
+        text += kid.nodeValue;
+      } else if (kid instanceof HTMLSlotElement) {
+        text += this.#getComposedTextContent(kid.assignedNodes());
+      } else if (kid instanceof Element) {
+        text += this.#getComposedTextContent(kid.childNodes);
+      }
+    }
+    return text;
+  }
+
   #onClick(event: MouseEvent) {
-    const expanded = !this.expanded;
-    const acc = event.composedPath().find((x): x is RhAccordion =>
-      x instanceof HTMLElement && x.localName === 'rh-accordion');
-    if (acc) {
-      this.dispatchEvent(new AccordionHeaderChangeEvent(expanded, this, acc));
+    const accordion = event.composedPath().find(isAccordion);
+    if (accordion) {
+      this.dispatchEvent(new AccordionHeaderChangeEvent(!this.expanded, this, accordion));
     }
   }
 }
