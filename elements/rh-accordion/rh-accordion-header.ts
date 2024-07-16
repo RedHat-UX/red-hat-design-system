@@ -36,19 +36,15 @@ export class AccordionHeaderChangeEvent extends Event {
 
 /**
  * Accordion Header
- *
  * @csspart text - inline element containing the heading text or slotted heading content
  * @csspart accents - container for accents within the header
  * @csspart icon - caret icon
- *
  * @slot
  *       We expect the light DOM of the rh-accordion-header to be a heading level tag (h1, h2, h3, h4, h5, h6)
  * @slot accents
  *       These elements will appear inline by default with the header title, between the header and the chevron
  *       (or after the chevron and header in disclosure mode). There is an option to set the accents placement to bottom
- *
  * @fires {AccordionHeaderChangeEvent} change - when the open panels change
- *
  */
 @customElement('rh-accordion-header')
 export class RhAccordionHeader extends LitElement {
@@ -56,7 +52,7 @@ export class RhAccordionHeader extends LitElement {
 
   static readonly styles = [styles];
 
-  static override readonly shadowRootOptions = {
+  static override readonly shadowRootOptions: ShadowRootInit = {
     ...LitElement.shadowRootOptions,
     delegatesFocus: true,
   };
@@ -65,7 +61,7 @@ export class RhAccordionHeader extends LitElement {
 
   @property({ reflect: true, attribute: 'heading-text' }) headingText?: string;
 
-  @property({ reflect: true, attribute: 'heading-tag' }) headingTag?: string;
+  @property({ reflect: true, attribute: 'heading-tag' }) headingTag?: string | number;
 
   /** @deprecated */
   @property({ reflect: true }) icon = 'angle-down';
@@ -76,29 +72,27 @@ export class RhAccordionHeader extends LitElement {
   @property({ attribute: false })
   private ctx?: RhAccordionContext;
 
-  #generatedHtag?: HTMLHeadingElement;
-
-  #logger = new Logger(this);
-
-  #header?: HTMLElement;
-
   #dir = new DirController(this);
+
+  #mo = new MutationObserver(() => this.requestUpdate());
 
   override connectedCallback() {
     super.connectedCallback();
     this.addEventListener('click', this.#onClick);
     this.hidden = true;
     this.id ||= getRandomId(this.localName);
-    this.#initHeader();
+    this.#mo.observe(this, { childList: true });
   }
 
   render() {
     const { on = '' } = this;
     const rtl = this.#dir.dir === 'rtl';
+    const headingTag =
+      this.headingTag ?? this.querySelector?.('h1, h2, h3, h4, h5, h6')?.localName ?? 'h3';
     return html`
       <div id="container" class="${classMap({ [on]: !!on, rtl })}" part="container">
         ${(() => {
-          switch (this.headingTag) {
+          switch (`h${headingTag}`.replace('hh', 'h')) {
             case 'h1': return html`<h1 id="heading">${this.#renderHeaderContent()}</h1>`;
             case 'h2': return html`<h2 id="heading">${this.#renderHeaderContent()}</h2>`;
             case 'h3': return html`<h3 id="heading">${this.#renderHeaderContent()}</h3>`;
@@ -112,37 +106,16 @@ export class RhAccordionHeader extends LitElement {
     `;
   }
 
-  async #initHeader() {
-    if (this.headingText && !this.headingTag) {
-      this.headingTag = 'h3';
-    }
-    this.#header = this.#getOrCreateHeader();
-
-    // prevent double-logging
-    if (this.#header !== this.#generatedHtag) {
-      this.#generatedHtag = undefined;
-    }
-
-    do {
-      await this.updateComplete;
-    } while (!await this.updateComplete);
-
-    // Remove the hidden attribute after upgrade
-    this.hidden = false;
-  }
-
   #renderHeaderContent() {
     const { accents } = this.ctx ?? {};
-    const headingText = this.headingText?.trim() ?? this.#header?.textContent?.trim();
+    const headingText = this.headingText ?? this.textContent;
 
     return html`
       <button id="button"
               class="toggle"
               aria-expanded="${String(!!this.expanded) as 'true' | 'false'}">
         <span id="header-container" class="${ifDefined(accents)}">
-          <span part="text">${headingText ?? html`
-          <slot></slot>`}
-          </span>
+          <span part="text">${headingText?.trim()}</span>
           <span part="accents">
             <slot name="accents"></slot>
           </span>
@@ -152,40 +125,6 @@ export class RhAccordionHeader extends LitElement {
         </svg>
       </button>
     `;
-  }
-
-  #getOrCreateHeader(): HTMLElement | undefined {
-    // Check if there is no nested element or nested textNodes
-    if (!this.firstElementChild && !this.firstChild) {
-      return void this.#logger.warn('No header content provided');
-    } else if (this.firstElementChild) {
-      const [heading, ...otherContent] = Array.from(this.children)
-          .filter((x): x is HTMLElement => !x.hasAttribute('slot') && isPorHeader(x));
-
-      // If there is no content inside the slot, return empty with a warning
-      // else, if there is more than 1 element in the slot, capture the first h-tag
-      if (!heading) {
-        return void this.#logger.warn('No heading information was provided.');
-      } else if (otherContent.length) {
-        this.#logger.warn('Heading currently only supports 1 tag; extra tags will be ignored.');
-      }
-      return heading;
-    } else {
-      if (!this.#generatedHtag) {
-        this.#logger.warn('Header should contain at least 1 heading tag for correct semantics.');
-      }
-      this.#generatedHtag = document.createElement('h3');
-
-      // If a text node was provided but no semantics, default to an h3
-      // otherwise, incorrect semantics were used, create an H3 and try to capture the content
-      if (this.firstChild?.nodeType === Node.TEXT_NODE) {
-        this.#generatedHtag.textContent = this.firstChild.textContent;
-      } else {
-        this.#generatedHtag.textContent = this.textContent;
-      }
-
-      return this.#generatedHtag;
-    }
   }
 
   #onClick(event: MouseEvent) {
