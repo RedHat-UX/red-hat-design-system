@@ -14,6 +14,8 @@ subnav:
 permalink: /foundations/typography/index.html
 ---
 
+<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
+
 ## Get started
 
 To download the font files, go to [Google Fonts](https://fonts.google.com/?query=MCKL). To install the fonts using Terminal, go to our [GitHub repo](https://github.com/RedHatOfficial/RedHatFont). If you need further assistance, contact the [Brand team](https://brand.redhat.com/) or the [Design System team](https://ux.redhat.com/support/).
@@ -22,7 +24,7 @@ To download the font files, go to [Google Fonts](https://fonts.google.com/?query
 
 The words we choose are an important part of our brand voice and so is the way those words look. The way our words look is established by the fonts we use and the way we use them, also known as typography. The Red Hat font family was designed by type designer Jeremy Mickel in collaboration with the Brand team. To learn more our fonts and typography, go to the [Brand standards](https://www.redhat.com/en/about/brand/standards) website.
 
-<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+<uxdot-example width-adjustment="1140px" variant="full" alignment="left" no-border>
   <img src="{{ '/assets/typography/type-overview-font-family.png' | url }}" alt=" 3 examples of the Red Hat font family: Display, Text, and Mono. Each example shows a capital letter R and lowercase letter H with overlays pointing out unique design characteristics.">
 </uxdot-example>
 

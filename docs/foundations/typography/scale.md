@@ -84,7 +84,7 @@ You might see headings with larger sizes or different weights. Those are used fo
 
 ### Body text
 
-Body text can use Italic and Medium styles for emphasis.
+Body text can use italic and medium styles for emphasis.
 
 <rh-table>
   <table>
@@ -146,7 +146,7 @@ Body text can use Italic and Medium styles for emphasis.
 
 ### Code text
 
-Code text may use Italic and Medium styles for emphasis if absolutely necessary.
+Code text may use italic and medium styles for emphasis if absolutely necessary.
 
 <rh-table>
   <table>
