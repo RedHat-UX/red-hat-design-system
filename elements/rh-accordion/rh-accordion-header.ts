@@ -124,7 +124,7 @@ export class RhAccordionHeader extends LitElement {
     `;
   }
 
-  #getComposedTextContent(nodes: NodeList | Node[] = this.childNodes) {
+  #getComposedTextContent(nodes: NodeList | Node[] = this.childNodes ?? []) {
     let text = '';
     for (const kid of nodes) {
       if (kid.nodeType === Node.TEXT_NODE) {
