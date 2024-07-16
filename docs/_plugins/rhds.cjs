@@ -189,7 +189,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     return content;
   });
 
-  eleventyConfig.addFilter('getPrettyName', function(tagName) {
+  eleventyConfig.addFilter('getPrettyElementName', function(tagName) {
     const { pfeconfig } = eleventyConfig?.globalData ?? {};
     const slug = getTagNameSlug(tagName, pfeconfig);
     const deslugify = eleventyConfig.getFilter('deslugify');
