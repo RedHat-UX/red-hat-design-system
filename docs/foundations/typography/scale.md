@@ -14,6 +14,13 @@ permalink: /foundations/typography/scale.html
 
 <link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
 
+<style>
+  table td,
+  table th {
+    width: 20%;
+  }
+</style>
+
 ## Overview
 
 The type scale includes a range of text sizes and weights designed to support various content needs. There are type scales for both desktop and mobile environments. For more technical details, go to the [Tokens](https://ux.redhat.com/tokens/font/) section.
