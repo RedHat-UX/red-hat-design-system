@@ -1,50 +1,53 @@
-<h2>Compact:</h2>
+<div id="constrain">
+  <h2>Compact:</h2>
 
-<rh-pagination variant="compact">
-  <ol>
-    <li><a href="#">1</a></li>
-    <li><a href="#2">2</a></li>
-    <li><a href="#3">3</a></li>
-    <li><a href="#4">4</a></li>
-    <li><a href="#5">5</a></li>
-  </ol>
-</rh-pagination>
+  <rh-pagination>
+    <ol>
+      <li><a href="#">1</a></li>
+      <li><a href="#2">2</a></li>
+      <li><a href="#3">3</a></li>
+      <li><a href="#4">4</a></li>
+      <li><a href="#5">5</a></li>
+    </ol>
+  </rh-pagination>
 
-<h2>Compact + Small:</h2>
+  <h2>Compact + Small:</h2>
 
-<rh-pagination variant="compact" size="sm">
-  <ol>
-    <li><a href="#">1</a></li>
-    <li><a href="#2">2</a></li>
-    <li><a href="#3">3</a></li>
-    <li><a href="#4">4</a></li>
-    <li><a href="#5">5</a></li>
-  </ol>
-</rh-pagination>
+  <rh-pagination size="sm">
+    <ol>
+      <li><a href="#">1</a></li>
+      <li><a href="#2">2</a></li>
+      <li><a href="#3">3</a></li>
+      <li><a href="#4">4</a></li>
+      <li><a href="#5">5</a></li>
+    </ol>
+  </rh-pagination>
 
-<h2>Open-compact:</h2>
+  <h2>Open compact:</h2>
 
-<rh-pagination variant="open-compact">
-  <ol>
-    <li><a href="#">1</a></li>
-    <li><a href="#2">2</a></li>
-    <li><a href="#3">3</a></li>
-    <li><a href="#4">4</a></li>
-    <li><a href="#5">5</a></li>
-  </ol>
-</rh-pagination>
+  <rh-pagination variant="open">
+    <ol>
+      <li><a href="#">1</a></li>
+      <li><a href="#2">2</a></li>
+      <li><a href="#3">3</a></li>
+      <li><a href="#4">4</a></li>
+      <li><a href="#5">5</a></li>
+    </ol>
+  </rh-pagination>
 
-<h2>Open-compact + Small:</h2>
+  <h2>Open compact + Small:</h2>
 
-<rh-pagination variant="open-compact" size="sm">
-  <ol>
-    <li><a href="#">1</a></li>
-    <li><a href="#2">2</a></li>
-    <li><a href="#3">3</a></li>
-    <li><a href="#4">4</a></li>
-    <li><a href="#5">5</a></li>
-  </ol>
-</rh-pagination>
+  <rh-pagination variant="open" size="sm">
+    <ol>
+      <li><a href="#">1</a></li>
+      <li><a href="#2">2</a></li>
+      <li><a href="#3">3</a></li>
+      <li><a href="#4">4</a></li>
+      <li><a href="#5">5</a></li>
+    </ol>
+  </rh-pagination>
+</div>
+
 
 <link rel="stylesheet" href="../rh-pagination-lightdom.css">
 
@@ -53,13 +56,17 @@
 </script>
 
 <style>
-  h2 {
-    margin-block-end: var(--rh-space-xl, 24px);
-    font-size: var(--rh-font-size-heading-md, 1.75rem);
+  #constrain {
+    max-width: var(--rh-breakpoint-xs-max, 767px);
   }
 
-  h2:not(:first-of-type) {
-    border-block-start: 1px solid var(--rh-color-border-subtle-on-light, #c7c7c7);
-    padding-block-start: var(--rh-space-2xl, 32px);
+  rh-pagination:not(:last-of-type) {
+    border-block-end: 1px solid var(--rh-color-border-subtle-on-light, #c7c7c7);
+    padding-block-end: var(--rh-space-2xl, 32px);
+  }
+
+  h2 {
+    margin-block: var(--rh-space-xl, 24px);
+    font-size: var(--rh-font-size-heading-md, 1.75rem);
   }
 </style>

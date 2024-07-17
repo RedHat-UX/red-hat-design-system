@@ -2,12 +2,12 @@
 "@rhds/elements": minor
 ---
 
-`<rh-pagination>`: ✨ Added open, compact, open-compact, and small variants
+`<rh-pagination>`: ✨ Added open variant and small size
 
-Users can now further customize pagination by choosing which variant(s) are most appropriate for their applications.
+Users can now further customize pagination by choosing which variant and size are most appropriate for their applications.
 
 ```html
-<rh-pagination variant="open-compact" size="sm">
+<rh-pagination variant="open" size="sm">
   <ol>
     <li><a href="#">1</a></li>
     <li><a href="#2">2</a></li>

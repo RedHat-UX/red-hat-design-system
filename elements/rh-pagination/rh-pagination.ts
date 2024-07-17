@@ -8,7 +8,6 @@ import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
-import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 import { DirController } from '../../lib/DirController.js';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
@@ -81,14 +80,13 @@ export class RhPagination extends LitElement {
   /** Change pagination size to small */
   @property({ reflect: true }) size: 'sm' | null = null;
 
-  /** "Open" and "Compact" variants */
-  @property({ reflect: true }) variant?: 'open' | 'compact' | 'open-compact' | null = null;
+  /** "Open" variant */
+  @property({ reflect: true }) variant?: 'open' | null = null;
 
   @query('input') private input?: HTMLInputElement;
 
   #dir = new DirController(this);
   #mo = new MutationObserver(() => this.#update());
-  #screen = new ScreenSizeController(this);
   #logger = new Logger(this);
 
   #ol = this.querySelector('ol');
@@ -133,7 +131,6 @@ export class RhPagination extends LitElement {
 
   render() {
     const { on = '' } = this;
-    const { mobile, size } = this.#screen;
     const { dir } = this.#dir;
     const { label, labelFirst, labelPrevious, labelNext, labelLast } = this;
     const firstHref = this.#currentLink === this.#firstLink ? undefined : this.#firstLink?.href;
@@ -144,22 +141,20 @@ export class RhPagination extends LitElement {
 
     return html`
       <div id="container"
-           class=${classMap({ mobile, [size as string]: true, [dir]: true, [on]: !!on, [`color-palette-${this.#internalColorPalette}`]: !!this.#internalColorPalette })}>
+           class=${classMap({ [dir]: true, [on]: !!on, [`color-palette-${this.#internalColorPalette}`]: !!this.#internalColorPalette })}>
         <a id="first" class="stepper" href=${ifDefined(firstHref)} ?inert=${!firstHref} aria-label=${labelFirst}>${L2}</a>
         <a id="prev" class="stepper" href=${ifDefined(prevHref)} ?inert=${!prevHref} aria-label=${labelPrevious}>${L1}</a>
-
-        ${!this.variant?.includes('compact') ?
-          html`
-            <nav ?hidden=${mobile} ?inert=${mobile} aria-label=${label}>
-              <slot></slot>
-            </nav>
-          `
-          : html`
-            ${this.#numericContent(currentPage, lastHref)}
-          `}
+        <nav aria-label=${label}>
+          <slot></slot>
+        </nav>
+        <div id="numeric-middle" part="numeric-middle">
+          ${this.#numericContent(currentPage, lastHref)}
+        </div>
         <a id="next" class="stepper" href=${ifDefined(nextHref)} ?inert=${!nextHref} aria-label=${labelNext}>${L1}</a>
         <a id="last" class="stepper" href=${ifDefined(lastHref)} ?inert=${!lastHref} aria-label=${labelLast}>${L2}</a>
-        ${!this.variant?.includes('compact') ? html`${this.#numericContent(currentPage, lastHref)}` : html``}
+        <div id="numeric-end" part="numeric-end">
+          ${this.#numericContent(currentPage, lastHref)}
+        </div>
       </div>
     `;
   }
@@ -167,7 +162,7 @@ export class RhPagination extends LitElement {
   #numericContent(currentPage: string, lastHref?: string, ) {
     return html`
       <div id="numeric" part="numeric">
-        <span id="go-to-page" class="${this.variant?.includes('compact') ? 'visually-hidden' : ''}">
+        <span id="go-to-page" class="xxs-visually-hidden sm-visually-visible">
           <slot name="go-to-page">
             Page
           </slot>
