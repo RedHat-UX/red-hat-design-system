@@ -38,6 +38,7 @@
   --_rh-pagination-list-a-current-page-border-color: var(--rh-color-border-subtle-on-dark, #707070);
   --_rh-pagination-border-top-hover-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
   --_rh-pagination-stepper-bg-color: var(--rh-color-surface-dark-alt, #292929);
+  --_rh-pagination-stepper-bg-hover-focus-color: var(--rh-color-surface-dark-alt, #292929);
   --_rh-pagination-stepper-hover-focus-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_numeric-a-color: var(--rh-pagination-accent-color);
   --_numeric-a-color-hover: var(--rh-color-interactive-blue-lightest, #b9dafc);
@@ -139,7 +140,11 @@ svg {
 }
 
 .stepper:is(:hover, :focus) {
-  background-color: var(--rh-color-surface-light, #e0e0e0);
+  background-color:
+    var(
+        --_rh-pagination-stepper-bg-hover-focus-color,
+        var(--rh-color-surface-light, #e0e0e0)
+      );
   color:
     var(
         --_rh-pagination-stepper-hover-focus-color,
@@ -151,7 +156,7 @@ svg {
   .stepper:is(:hover, :focus) {
     background-color:
       var(
-          --_rh-pagination-stepper-bg-color,
+          --_rh-pagination-stepper-bg-hover-focus-color,
           var(--rh-color-surface-lighter, #f2f2f2)
         );
   }
@@ -340,6 +345,7 @@ input:invalid {
 
 :host([variant|="open"]) .stepper {
   --_rh-pagination-stepper-bg-color: transparent;
+  --_rh-pagination-stepper-bg-hover-focus-color: transparent;
 }
 
 :host([variant|="open"]) .stepper:hover:after,
