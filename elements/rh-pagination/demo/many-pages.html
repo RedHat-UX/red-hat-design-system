@@ -1,9 +1,4 @@
-<header>
-  <h2>Many Pages</h2>
-  <p>Paginators with many pages must overflow.</p>
-</header>
-
-<rh-pagination id="many-pages">
+<rh-pagination>
   <ol>
     <li><a href="#">1</a></li>
     <li><a href="#2">2</a></li>
@@ -28,22 +23,17 @@
   </ol>
 </rh-pagination>
 
+<p>Paginators with many pages must overflow.</p>
+
 <link rel="stylesheet" href="../rh-pagination-lightdom.css">
+
 <style>
-  [data-demo="rh-pagination"] {
-    gap: var(--rh-space-2xl, 32px);
-    padding: var(--rh-space-xl, 24px) var(--rh-space-4xl, 64px);
-  }
   rh-pagination {
-    justify-self: center;
-  }
-  header {
-    margin-block-end: var(--rh-space-xl, 24px);
+    margin-block-end: var(--rh-space-lg, 16px);
   }
 </style>
+
 <script type="module">
   import '@rhds/elements/rh-button/rh-button.js';
   import '@rhds/elements/rh-pagination/rh-pagination.js';
 </script>
-
-

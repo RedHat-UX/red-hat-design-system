@@ -6,7 +6,7 @@
   <img src="{{ './tag-sample-element.png' | url }}" alt="Two rows of tags; the top row is ‘Filled’ tags and the bottom row is ‘Unfilled’ tags; from left to right, both rows of tags include red, orange, green, cyan, blue, purple, and gray colors">
 </uxdot-example>
 
-{% repoStatusList %}
+{% repoStatusList repoStatus=repoStatus %}
 
 
 ## Sample element
@@ -38,4 +38,4 @@ class="visually-hidden">Hat</span></rh-tag>
   - When you need to tag items of the same category
   - When you need to indicate status
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}

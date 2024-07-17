@@ -123,7 +123,7 @@ A detailed synopsis of our web components and their implementation status.
 
 ## Web component status
 
-{% repoStatusTable %}
+{% repoStatusTable repoStatus=repoStatus %}
 
 </section>
 

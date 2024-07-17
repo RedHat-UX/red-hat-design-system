@@ -6,7 +6,7 @@
   <img src="{{ './button-sample.png' | url }}" alt="Image of Danger, Primary, Secondary, Tertiary, and Link buttons in the first row and Play and Close buttons in the second row">
 </uxdot-example>
 
-{% repoStatusList %}
+{% repoStatusList repoStatus=repoStatus %}
 
 
 ## Sample element
@@ -19,4 +19,4 @@
   - When you need to communicate actions users can take
   - When you need to draw attention to the highest priority action
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}
