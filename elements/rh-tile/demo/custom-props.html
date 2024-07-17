@@ -42,10 +42,18 @@
   }
 
   rh-tile {
+    width: 320px;
+  }
+
+  rh-tile:nth-child(2) {
     --rh-tile-border-color: red;
     --rh-tile-link-color: green;
     --rh-tile-interactive-color: rebeccapurple;
     --rh-tile-background-color: #f2f2f2;
-    width: 320px;
+  }
+
+  rh-tile:nth-child(3) {
+    --rh-tile-border-block-start-width: var(--rh-border-width-lg, 3px);
+    --rh-tile-border-block-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
   }
 </style>

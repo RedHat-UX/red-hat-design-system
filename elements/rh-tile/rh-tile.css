@@ -37,7 +37,11 @@
   padding: var(--_padding);
   font-weight: var(--rh-font-weight-heading-medium, 500);
   border-radius: var(--rh-border-radius-default, 3px);
-  border: var(--rh-border-width-sm, 1px) solid var(--_border-color);
+  border-style: solid;
+  border-width: var(--_border-width);
+  border-color: var(--_border-color);
+  border-block-start-width: var(--rh-tile-border-block-start-width, var(--_border-width));
+  border-block-start-color: var(--rh-tile-border-block-start-color, var(--_border-color));
   background-color: var(--_background-color);
   color: var(--_text-color);
 
@@ -70,6 +74,7 @@
         --rh-tile-disabled-background-color,
         var(--rh-color-surface-light, #e0e0e0)
       );
+  --_border-width: var(--rh-border-width-sm, 1px);
   --_border-color: var(--rh-tile-border-color, var(--rh-color-border-subtle-on-light, #c7c7c7));
   --_link-color: var(--rh-tile-link-color, var(--_interactive-color));
 }

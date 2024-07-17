@@ -46,6 +46,8 @@ export class TileSelectEvent extends Event {
  * @cssprop --rh-tile-focus-background-color - Color tile surface on focus/hover.<br>Could cause accessibility issues; prefer to use `--rh-color-surface-lighter` and `--rh-color-surface-darker` for theming. {@default var(--rh-color-surface-lighter, #f2f2f2)}
  * @cssprop --rh-tile-disabled-background-color - Color tile surface when disabled.<br>Could cause accessibility issues; prefer to use `--rh-color-surface-light` and `--rh-color-surface-dark` for theming. {@default var(--rh-color-surface-light, #e0e0e0)}
  * @cssprop --rh-tile-border-color - Color of tile border.<br>Could cause accessibility issues; prefer to use `--rh-color-border-subtle-on-light` and `--rh-color-border-subtle-on-dark` for theming. {@default var(--rh-color-border-subtle-on-light, #c7c7c7)}
+ * @cssprop --rh-tile-border-block-start-color - Color of tile border "block start" (often "top").<br>Could cause accessibility issues; prefer to use `--rh-color-border-subtle-on-light` and `--rh-color-border-subtle-on-dark` for theming. {@default var(--rh-color-border-subtle-on-light, #c7c7c7)}
+ * @cssprop --rh-tile-border-block-start-width - Width of tile border "block start" (often "top"). {@default var(--rh-border-width-sm, 1px)}
  */
 @customElement('rh-tile')
 export class RhTile extends LitElement {
