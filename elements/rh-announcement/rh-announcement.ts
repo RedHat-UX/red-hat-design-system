@@ -5,6 +5,7 @@ import { classMap } from 'lit/directives/class-map.js';
 import { LitElement, html, svg, type PropertyValues } from 'lit';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 import { colorContextProvider } from '../../lib/context/color/provider.js';
+import { createRef, ref, type Ref } from 'lit/directives/ref.js';
 
 import styles from './rh-announcement.css';
 /**
@@ -26,6 +27,21 @@ import styles from './rh-announcement.css';
  * @csspart     footer
  *              The cta for the banner. Contains the cta slot.
  */
+
+const CLOSE_ICON_SVG = svg`
+  <svg 
+    aria-hidden="true" 
+    fill="currentColor" 
+    height="12px" width="12px" 
+    viewBox="0 0 12 12">
+    <path d="M 8.274 6 L 11.686 2.588 C 12.104 2.17 12.104 1.491 11.686 1.072 L 10.928 0.314 C 10.509 -0.105 9.83 -0.105 9.411 0.314 L 6 3.725 L 2.588 0.314 C 2.17 -0.105 1.491 -0.105 1.072 0.314 L 0.314 1.072 C -0.105 1.491 -0.105 2.169 0.314 2.588 L 3.725 6 L 0.314 9.411 C -0.105 9.83 -0.105 10.509 0.314 10.928 L 1.072 11.686 C 1.491 12.104 2.17 12.104 2.588 11.686 L 6 8.274 L 9.411 11.686 C 9.83 12.104 10.509 12.104 10.928 11.686 L 11.686 10.928 C 12.104 10.509 12.104 9.83 11.686 9.411 L 8.274 6 Z"></path>
+  </svg>`;
+
+  export class AnnouncementCloseEvent extends Event {
+    constructor() {
+      super('close', { bubbles: true, cancelable: true });
+    }
+  } 
 
 @customElement('rh-announcement')
 export class RhAnnouncement extends LitElement {
@@ -50,61 +66,85 @@ export class RhAnnouncement extends LitElement {
     @property({ reflect: true, attribute: 'color-palette' })
       colorPalette?: 'dark' | 'light';
 
-      #slots = new SlotController(this, 'image', null, 'cta');
-  override render() {
-    const { on = '', colorPalette = '' } = this;
-    return html`
-     <div id="container"
-          part="container"
-          class="${classMap({ [on]: !!on, [colorPalette]: !!colorPalette })}">
-        <div id="image"
-             part="image"
-             class="${classMap({ empty: !this.#slots.hasSlotted('image') })}">
-          <slot name="image"></slot>
+    @property({ reflect: true, type: Boolean }) dismissable = false;
+   
+    @property({ type: Number }) imgHeight = 0;
+    @property({ type: Number }) imgWidth = 0;
+    @property({ type: Boolean }) hasImage = false;
+
+    private imageSlotRef: Ref<HTMLSlotElement> = createRef();
+
+    #slots = new SlotController(this, 'image', null, 'cta');
+
+    #closeHandler() {
+      const event = new AnnouncementCloseEvent();
+      if (this.dispatchEvent(event)) {
+        this.remove();
+      }
+    }
+      render() {
+      const { on = '', colorPalette = '' } = this;
+      return html`
+      <div id="container"
+            part="container"
+            class="${classMap({ [on]: !!on, [colorPalette]: !!colorPalette, smallImg: this.hasSmallImg() })}">
+          <div id="row">
+            <div id="image"
+              part="image"
+              class="${classMap({ empty: !this.#slots.hasSlotted('image') })}">
+            <slot name="image" ${ref(this.imageSlotRef)}></slot>
+          </div>
+          <div id="content">
+            <div id="body"
+                part="body"
+                class="${classMap({ empty: !this.querySelector(':not([slot])') })}">
+              <slot></slot>
+            </div>
+            <div id="cta"
+                part="cta"
+                class="${classMap({ empty: !this.#slots.hasSlotted('cta') })}">
+              <slot name="cta"></slot>
+            </div>
+            </div>
+          </div>
+          ${!this.dismissable ? '' : html`
+          <div id="header-actions">
+            <button id="close-button"
+                aria-label="Close"
+                confirm
+                @click=${this.#closeHandler}>${CLOSE_ICON_SVG}</button>
+          </div>`}
         </div>
-        <div id="body"
-             part="body"
-             class="${classMap({ empty: !this.querySelector(':not([slot])') })}">
-          <slot></slot>
-        </div>
-        <div id="cta"
-             part="cta"
-             class="${classMap({ empty: !this.#slots.hasSlotted('cta') })}">
-          <slot name="cta"></slot>
-        </div>
-      </div>
-    `;
+      `;
+    }
+
+  firstUpdated () {
+    const slot = this.imageSlotRef.value;
+    if (slot) {
+      const nodes = slot.assignedNodes({ flatten: true }) as HTMLElement[];
+      const img = nodes.find(node => node instanceof HTMLImageElement) as HTMLImageElement | undefined;
+
+      if (img) {
+        this.imgWidth = img.width;
+        this.imgHeight = img.height;
+        this.hasImage = true;
+        this.requestUpdate();
+      } else {
+        this.hasImage = false;
+      }
+    }
   }
+
+  private hasSmallImg() {
+    return this.imgWidth <= this.imgHeight
+  }
+
 }
-    
+  
 declare global {
   interface HTMLElementTagNameMap {
     'rh-announcement': RhAnnouncement;
   }
 }
-// const CLOSE_ICON_SVG = svg`
-//   <svg
-//     aria-hidden="true"
-//     fill="currentColor"
-//     height="1em" width="1em"
-//     style="vertical-align:-0.125em"
-//     viewBox="0 0 352 512">
-//     <path d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"/>
-//   </svg>`;
-
-  // #slots = new SlotController(this, 'header', null, 'actions');
-
-
-// TODO: update to be specific to announcement
-// #closeHandler() {
-//   const event = new closeEvent();
-//   if (this.dispatchEvent(event)) {
-//     this.remove();
-//   }
-// }
-
-
-
-
 
 
