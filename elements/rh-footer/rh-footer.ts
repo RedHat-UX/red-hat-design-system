@@ -24,9 +24,7 @@ function isHeaderTagName(tagName: string) {
 
 /**
  * A footer displays secondary content and legal information to users who reach the bottom of a page.
- *
  * @summary Displays secondary information at the bottom of a page
- *
  * @csspart base - main footer element, containing all footer content
  * @slot    base - Overrides everything. Do not use.
  * @slot    header - Overrides `header-*`, `logo`, `social-links`
@@ -52,7 +50,6 @@ function isHeaderTagName(tagName: string) {
  * @csspart main-secondary - container fro prose or promotional content
  * @slot    global - must contain `<rh-footer-universal>` {@deprecated - use `universal`}
  * @slot    universal - must contain `<rh-footer-universal>`
- *
  * @cssprop --rh-footer-icon-color - {@default #8a8d90}
  * @cssprop --rh-footer-icon-color-hover - {@default #b8bbbe}
  * @cssprop --rh-footer-border-color - {@default #6a6e73}
@@ -186,14 +183,15 @@ export class RhFooter extends LitElement {
     `;
   }
 
+  private static LISTS_SELECTOR =
+    ':is([slot^=links],[slot=footer-links-primary],[slot=footer-links-secondary]):is(ul)';
+
   /**
    * Get any `<ul>`s that are in the designated link slots
    * and synchronously update each list and header if we need to.
    */
   public updateAccessibility(): void {
-    const listsSelector =
-      ':is([slot^=links],[slot=footer-links-primary],[slot=footer-links-secondary]):is(ul)';
-    for (const list of this.querySelectorAll(listsSelector)) {
+    for (const list of this.querySelectorAll(RhFooter.LISTS_SELECTOR)) {
       // if we already have a label then we assume that the user
       // has wired this up themselves.
       if (!list.hasAttribute('aria-labelledby')) {
