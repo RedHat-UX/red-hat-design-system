@@ -189,6 +189,13 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     return content;
   });
 
+  eleventyConfig.addFilter('getPrettyElementName', function(tagName) {
+    const { pfeconfig } = eleventyConfig?.globalData ?? {};
+    const slug = getTagNameSlug(tagName, pfeconfig);
+    const deslugify = eleventyConfig.getFilter('deslugify');
+    return pfeconfig.aliases[tagName] || deslugify(slug);
+  });
+
   eleventyConfig.addFilter('getTitleFromDocs', function(docs) {
     return docs.find(x => x.docsPage?.title)?.alias
       ?? docs[0]?.alias
@@ -204,7 +211,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
      * @see https://github.com/11ty/eleventy/blob/bf7c0c0cce1b2cb01561f57fdd33db001df4cb7e/src/Plugins/RenderPlugin.js#L89-L93
      * @type {import('@patternfly/pfe-tools/11ty/DocsPage.js').DocsPage}
      */
-    const docsPage = this.ctx._;
+    const docsPage = this.ctx.doc;
     return docsPage.description;
   });
 
@@ -303,18 +310,22 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
 
     try {
       const { glob } = await import('glob');
-      /** @type {(import('@patternfly/pfe-tools/11ty/DocsPage').DocsPage & { repoStatus?: any[] })[]} */
-      const elements = await eleventyConfig.globalData?.elements();
+      const { DocsPage } = await import('@patternfly/pfe-tools/11ty/DocsPage.js');
+      const {
+        Manifest,
+      } = await import('@patternfly/pfe-tools/custom-elements-manifest/lib/Manifest.js');
+
+      const customElementsManifestDocsPages = await eleventyConfig.globalData?.elements();
       const filePaths = (await glob(`elements/*/docs/*.md`, { cwd: process.cwd() }))
           .filter(x => x.match(/\d{1,3}-[\w-]+\.md$/)); // only include new style docs
-      const { repoStatus } = collectionApi.items.find(item => item.data?.repoStatus)?.data || [];
+
       return filePaths
           .map(filePath => {
             const props = getProps(filePath);
-            const docsPage = elements.find(x => x.tagName === props.tagName);
-            if (docsPage) {
-              docsPage.repoStatus = repoStatus;
-            }
+            const [manifest] = Manifest.getAll();
+            const docsPage =
+              customElementsManifestDocsPages.find(x => x.tagName === props.tagName)
+              ?? new DocsPage(manifest);
             const tabs = filePaths
                 .filter(x => x.split('/docs/').at(0) === (`elements/${props.tagName}`))
                 .sort()

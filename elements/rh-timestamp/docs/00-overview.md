@@ -2,7 +2,7 @@
 
 {{ tagName | getElementDescription }}
 
-{% repoStatusList %}
+{% repoStatusList repoStatus=repoStatus %}
 
 
 ## Sample element
@@ -12,4 +12,4 @@
 
 - When you need to customize date and time content
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}

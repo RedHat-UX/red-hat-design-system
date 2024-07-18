@@ -28,10 +28,16 @@ import styles from './rh-card.css';
  *              The body for the card. Contains the default slot.
  * @csspart     footer
  *              The footer for the card. Contains the footer slot.
- * @cssprop     {<length>} --rh-card-header-font-size
- *              Font size for header on card
- *              {@default `1.5rem`}
-*/
+ * @cssprop     --rh-card-heading-font-family
+ *              The font family for headings in the header and body
+ *              {@default --rh-font-family-heading}
+ * @cssprop     --rh-card-heading-font-size
+ *              The font size for headings in the header and body
+ *              {@default --rh-font-size-heading-sm}
+ * @cssprop     --rh-card-heading-font-weight
+ *              The font weight for headings in the header and body
+ *              {@default --rh-font-weight-body-text-medium}
+ */
 @customElement('rh-card')
 export class RhCard extends LitElement {
   static readonly version = '{{version}}';

@@ -6,7 +6,7 @@
   <img src="{{ './switch-overview.svg' | url }}" alt="example of switch that's on">
 </uxdot-example>
 
-{% repoStatusList %}
+{% repoStatusList repoStatus=repoStatus %}
 
 ## Sample element
 
@@ -25,4 +25,4 @@
 - When users need to toggle an item on or off
 
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}

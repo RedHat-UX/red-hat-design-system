@@ -6,7 +6,7 @@
   <img src="{{ './cta-sample.png' | url }}" alt="Image of variants including Primary (red background and white text), Secondary (black border and black text), Brick (light gray border and blue text), and Default (blue text and blue icon)">
 </uxdot-example>
 
-{% repoStatusList %}
+{% repoStatusList repoStatus=repoStatus %}
 
 ## Sample element
 
@@ -19,4 +19,4 @@
   - When you need to arrange links in different arrangements like in a row or grid
   - When you need to hide or reveal content
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}
