@@ -21,6 +21,28 @@ permalink: /foundations/typography/scale.html
   table th {
     width: 20%;
   }
+
+  /* Removes margin below <p>s in table */
+  td.altered-text p,
+  td.not-altered-text p {
+    margin-block-start: 0;
+    margin-block-end: 0;
+  }
+
+  /* Adds strikethrough and gray font color to first line in cell */
+  td.altered-text p:first-child {
+    color: var(--rh-color-gray-40, #a3a3a3);
+  }
+
+  /* Changes text color to red */
+  td.altered-text p:last-child {
+    color: var(--rh-color-text-brand-on-light, #ee0000);
+  }
+
+  /* Changes text color to green */
+  td.not-altered-text p:last-child {
+    color: var(--rh-color-green-60, #3d7317);
+  }
 </style>
 
 ## Overview
