@@ -259,14 +259,14 @@
     --_promo-heading-size: var(--rh-font-size-body-text-2xl, 1.5rem);
   }
 
-  #container.standard {
+  #container.promo.standard {
     --_promo-standard-inline-padding: var(--rh-space-3xl, 48px);
 
     row-gap: 0;
     grid-template: auto / auto auto;
   }
 
-  #container.standard #footer {
+  #container.promo.standard #footer {
     justify-self: end;
   }
 }
