@@ -9,6 +9,8 @@ tags:
 subnav:
   collection: sortedTypography
   order: 2
+importElements:
+  - rh-table
 permalink: /foundations/typography/scale.html
 ---
 

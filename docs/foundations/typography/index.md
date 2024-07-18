@@ -11,6 +11,8 @@ tags:
 subnav:
   collection: sortedTypography
   order: 1
+importElements:
+  - rh-table
 permalink: /foundations/typography/index.html
 ---
 
