@@ -7,7 +7,7 @@
 </uxdot-example>
 
 
-{% repoStatusList %}
+{% repoStatusList repoStatus=repoStatus %}
 
 
 ## Sample element
@@ -27,4 +27,4 @@
   - When you need to group other types of content in the same view like forms, settings, dashboards, etc.
 
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}

@@ -2,7 +2,7 @@
 
 A blockquote is a styled quotation and citation offset from other text styles on the page.
 
-{% repoStatusList %}
+{% repoStatusList repoStatus=repoStatus %}
 
 
 ## Sample element
@@ -34,5 +34,5 @@ View a live version of this component and see how it can be customized.
   - When you need to break up large portions of text
 
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}
 
