@@ -1,15 +1,22 @@
 ---
-title: Card
-layout: layouts/pages/basic.njk
+title: Overview
+heading: Card
+sidenavTitle: Card
+layout: layouts/pages/pattern.njk
 hasToc: true
 order: 20
 tags:
   - pattern
+  - cardPatterns
+subnav:
+  collection: cardPatterns
+  order: 1
 importElements:
   - rh-card
   - rh-cta
   - rh-surface
   - rh-avatar
+  - rh-accordion
 ---
 
 <script type="module">
@@ -19,7 +26,22 @@ importElements:
 <link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
 <link rel="stylesheet" href="{{ '/styles/samp.css' | url }}">
 
-<style>
+<style>  
+  .example > h3,
+  .example-code > h3 {
+    margin-block-end: var(--rh-space-lg, 16px);
+    font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+  }
+
+  .example-code rh-code-block + h3 {
+    margin-block-start: var(--rh-space-lg, 16px);
+  }
+
+  .examples + rh-accordion.disclosure {
+    display: block;
+    margin-block-start: var(--rh-space-2xl, 32px);
+  }
+
   rh-card {
     display: block;
     max-width: 360px;
@@ -92,18 +114,11 @@ it's near. Several cards can be used together to group related information.
 
 </rh-alert>
 
-## Asset
+## Asset cards
 Use to display that an asset can be downloaded. An icon and label group or 
 text may be used to describe the asset.
 
 {% include './patterns/asset.html' %}
-
-## Image
-
-Use to add an image to the basic style above the text.
-Secondary and Default calls to action may be used.
-
-{% include './patterns/image.html' %}
 
 ## List
 Use to display a short amount of content using various list styles. 
