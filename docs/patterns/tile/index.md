@@ -16,7 +16,7 @@ importElements:
 <link rel="stylesheet" href="{{ '/styles/samp.css' | url }}">
 
 <style>
-  .sample-code rh-code-block + rh-cta {
+  .grid + rh-cta {
     margin-block-start: var(--rh-space-lg, 16px);
   }
 
@@ -84,6 +84,6 @@ rh-tile.accented-tile::before {
   pointer-events: none;
 }</script>
     </rh-code-block>
-    <rh-cta><a href="/elements/tile/demos/#demo-accented-tiles">View accented tile demo</a></rh-cta>
   </div>
 </div>
+<rh-cta><a href="/elements/tile/demos/#demo-accented-tiles">View accented tile demo</a></rh-cta>
