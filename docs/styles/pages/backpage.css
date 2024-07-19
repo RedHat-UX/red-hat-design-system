@@ -51,6 +51,10 @@
     font-size: 1rem;  /* Not a RHDS token */
   }
 
+  :where(article .container rh-code-block) {
+    max-width: 56rem;
+  }
+
   aside {
     grid-area: aside;
     padding-inline: var(--rh-space-lg, 16px);
