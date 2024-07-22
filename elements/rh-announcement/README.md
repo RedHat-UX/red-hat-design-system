@@ -2,7 +2,6 @@
 Rh-announcement is a short banner that conveys an important message, such as promoting an event or advertising an organizational or product announcement.
 
 ## Usage
-Add `rh-announcement` to the page.
 
 ### Slots
 
@@ -41,7 +40,10 @@ Add `rh-announcement` to the page.
 </rh-announcement>
 ```
 
-### Dismissable Announcement Banner with dark color pallette and attribute to override image appearing above text.
+### Announcement Banner using attributes
+- dismissable
+- dark color pallette
+- smallimg attribute to override image appearing above text on mobile
 
 ```html
 <rh-announcement dismissable smallimg color-palette="dark">
