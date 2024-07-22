@@ -41,6 +41,7 @@ module.exports = function(eleventyConfig) {
     });
   }
 
+  eleventyConfig.addWatchTarget('docs/patterns/**/*.(html|md)');
   eleventyConfig.addWatchTarget('docs/styles/');
 
   eleventyConfig.addGlobalData('isLocal', isLocal);
