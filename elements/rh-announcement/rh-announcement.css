@@ -31,7 +31,7 @@
   padding: 0 var(--rh-space-lg, 16px);
 }
 
-@media (min-width: 769px) {
+@media (min-width: 768px) {
   #row {
     max-width: 1170px;
     display: flex;
@@ -64,7 +64,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   #container:not(.smallImg) #body {
       padding-top: var(--rh-space-md, 8px);
       padding-bottom: var(--rh-space-md, 8px);
