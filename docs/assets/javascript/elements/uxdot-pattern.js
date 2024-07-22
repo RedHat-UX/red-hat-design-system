@@ -13,6 +13,7 @@ class UxdotPattern extends LitElement {
       container-type: inline-size;
       margin-block-end: var(--rh-space-2xl, 32px);
     }
+
     #container {
       display: grid;
       grid-template-columns: 1fr;
@@ -23,31 +24,38 @@ class UxdotPattern extends LitElement {
       border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle-on-light, #c7c7c7);
       border-radius: var(--rh-border-radius-default, 3px);
     }
+
     #container.dark {
       background-color: var(--_context-background-color);
       color: var(--_context-text);
       border-color: var(--rh-color-border-subtle-on-dark, #707070);
     }
+
     #container h3 {
       margin-block-start: 0;
     }
+
     rh-context-picker {
       grid-area: controls;
       justify-self: flex-end;
     }
+
     #example {
       grid-area: example;
     }
+
     #code {
       grid-area: code;
       display: flex;
       flex-direction: column;
       gap: var(--rh-space-lg, 16px);
     }
+
     #code h3 {
       margin-block-end: var(--rh-space-lg, 16px);
       font-size: var(--rh-font-size-body-text-lg, 1.125rem);
     }
+
     @container host (min-width: 992px) {
       #container {
         grid-template-columns: max-content 1fr;
@@ -68,6 +76,7 @@ class UxdotPattern extends LitElement {
   };
 
   #slots;
+
   #mo;
 
   constructor() {
@@ -75,12 +84,6 @@ class UxdotPattern extends LitElement {
     this.colorPalette = 'lightest';
     this.stacked = false;
     this.#slots = new SlotController(this, 'html', 'css', 'js');
-    this.#mo = new MutationObserver(() => this.#onMutation());
-  }
-
-  connectedCallback() {
-    super.connectedCallback();
-    this.#mo.observe(this, { attributes: true, childList: true, subtree: true });
   }
 
   render() {
@@ -89,7 +92,7 @@ class UxdotPattern extends LitElement {
     const hasJs = this.#slots.hasSlotted('js');
     const allowed = this.allow ?? `lightest, lighter, light, dark, darker, darkest`;
     return html`
-      <rh-surface id="container" part="container">
+      <rh-surface id="container" part="container" @change="${this.#onMutation}">
         <rh-context-picker target="container" value="${this.colorPalette}" allow="${allowed}"></rh-context-picker>
         <div id="example">
           <slot name="heading"><h3>Example</h3></slot>
@@ -116,8 +119,9 @@ class UxdotPattern extends LitElement {
     `;
   }
 
-  #onMutation(mutationList) {
-    console.log(mutationList);
+  #onMutation(changed) {
+    this.colorPalette = changed.colorPalette;
+    this.requestUpdate();
   }
 }
 
