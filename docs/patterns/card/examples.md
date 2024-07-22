@@ -32,12 +32,42 @@ importElements:
   }
 </style>
 
-## Image
+
+## Asset cards
+Use to display that an asset can be downloaded. An icon and label group or 
+text may be used to describe the asset.
+
+{% include './patterns/asset.html' %}
+
+
+## Avatars card
+
+Use to highlight a group of people who engage in an event. A label
+should be included, but including text is optional.
+
+Use the [`<rh-avatar>`](/elements/avatar/) element to element to present
+the list of users.
+
+{% include './patterns/avatars.html' %}
+
+
+## Image card
 
 Use to add an image to the basic style above the text.
 Secondary and Default calls to action may be used.
 
 {% include './patterns/image.html' %}
+
+
+## Title bar card
+
+Use to add a small icon and a label group to the header section. A larger icon
+or a logo may be used.
+
+Alternative title bar styles can be achieved by selecting [card's `header` CSS
+Shadow Part](/elements/card/code/#parts).
+
+{% include './patterns/title-bar.html' %}
 
 
 {% include 'partials/component/feedback.html' %}

@@ -64,46 +64,60 @@ class UxdotPattern extends LitElement {
   static properties = {
     colorPalette: { type: String, reflect: true, attribute: 'color-palette' },
     stacked: { type: Boolean, reflect: true },
+    allow: { type: String, reflect: true },
   };
 
   #slots;
+  #mo;
 
   constructor() {
     super();
+    this.colorPalette = 'lightest';
     this.stacked = false;
     this.#slots = new SlotController(this, 'html', 'css', 'js');
+    this.#mo = new MutationObserver(() => this.#onMutation());
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.#mo.observe(this, { attributes: true, childList: true, subtree: true });
   }
 
   render() {
     const hasHtml = this.#slots.hasSlotted('html');
     const hasCss = this.#slots.hasSlotted('css');
     const hasJs = this.#slots.hasSlotted('js');
+    const allowed = this.allow ?? `lightest, lighter, light, dark, darker, darkest`;
     return html`
       <rh-surface id="container" part="container">
-        <rh-context-picker target="container" value="lightest"></rh-context-picker>
+        <rh-context-picker target="container" value="${this.colorPalette}" allow="${allowed}"></rh-context-picker>
         <div id="example">
-          <h3>Example</h3>
+          <slot name="heading"><h3>Example</h3></slot>
           <slot></slot>
         </div>
         <div id="code">
           ${hasHtml ? html`
           <div id="html">
-            <h3>HTML</h3>
+            <slot name="html-heading"><h3>HTML</h3></slot>
             <slot name="html"></slot>
           </div>` : ``}
           ${hasCss ? html`
           <div id="css">
-            <h3>CSS</h3>
+            <slot name="css-heading"><h3>CSS</h3></slot>
             <slot name="css"></slot>
           </div>` : ``}
           ${hasJs ? html`
           <div id="js">
-            <h3>JS</h3>
+            <slot name="js-heading"><h3>JS</h3></slot>
             <slot name="js"></slot>
           </div>` : ``}
         </div>
       </rh-surface>
     `;
+  }
+
+  #onMutation(mutationList) {
+    console.log(mutationList);
   }
 }
 

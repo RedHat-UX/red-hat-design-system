@@ -26,22 +26,7 @@ importElements:
 <link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
 <link rel="stylesheet" href="{{ '/styles/samp.css' | url }}">
 
-<style>  
-  .example > h3,
-  .example-code > h3 {
-    margin-block-end: var(--rh-space-lg, 16px);
-    font-size: var(--rh-font-size-body-text-lg, 1.125rem);
-  }
-
-  .example-code rh-code-block + h3 {
-    margin-block-start: var(--rh-space-lg, 16px);
-  }
-
-  .examples + rh-accordion.disclosure {
-    display: block;
-    margin-block-start: var(--rh-space-2xl, 32px);
-  }
-
+<style>
   rh-card {
     display: block;
     max-width: 360px;
@@ -58,27 +43,6 @@ importElements:
 
   rh-surface[color-palette^="dark"] rh-card.alt {
     --rh-card-background-color: #3c3f42;
-  }
-
-  rh-card.bar::part(header) {
-    background-color: var(--_background-color, #f0f0f0);
-    text-transform: uppercase;
-    font-weight: var(--rh-font-weight-heading-regular, 300);
-    font-size: var(--rh-font-size-body-text-md, 1rem);
-  }
-
-  rh-card.bar::part(header) {
-    background-color: var(--_header-background-color);
-    text-transform: uppercase;
-    font-weight: var(--rh-font-weight-heading-regular, 300);
-    font-size: var(--rh-font-size-body-text-md, 1rem);
-  }
-
-  rh-card.bar::part(header) {
-    background-color: var(--_header-background-color);
-    text-transform: uppercase;
-    font-weight: var(--rh-font-weight-heading-regular, 300);
-    font-size: var(--rh-font-size-body-text-md, 1rem);
   }
 
   rh-card.full::part(header) {
@@ -114,11 +78,6 @@ it's near. Several cards can be used together to group related information.
 
 </rh-alert>
 
-## Asset cards
-Use to display that an asset can be downloaded. An icon and label group or 
-text may be used to describe the asset.
-
-{% include './patterns/asset.html' %}
 
 ## List
 Use to display a short amount of content using various list styles. 
@@ -134,16 +93,6 @@ call to action may be used or not.
 ## Logo
 Use to display a customer logo in a variety of arrangements. A call to 
 action is required, otherwise use a logo wall.
-
-## Bar
-
-Use to add a small icon and a label group to the header section. A larger icon
-or a logo may be used.
-
-Alternative title bar styles can be achieved by selecting [card's `header` CSS
-Shadow Part](/elements/card/code/#parts).
-
-{% include './patterns/bar.html' %}
 
 
 ## Icon
@@ -181,15 +130,6 @@ calls to action may be used.
 Use to display a short quote with attribution text. Logos, images, and a 
 Secondary call to action may be used or not.
 
-## Avatars
-
-Use to highlight a group of people who engage in an event. A label
-should be included, but including text is optional.
-
-Use the [`<rh-avatar>`](/elements/avatar/) element to element to present
-the list of users.
-
-{% include './patterns/avatars.html' %}
 
 ## Video
 

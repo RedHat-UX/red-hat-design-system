@@ -1,33 +1,36 @@
-<style> 
-  rh-context-picker {
-    margin-block-end: var(--rh-space-lg, 16px);
-  }
-
-  #asset-cards rh-card::part(header) {
+<style>
+  rh-card#example-asset-card2::part(header) {
     margin: 0;
     padding-block-start: var(--rh-space-2xl, 32px);
     padding-inline: var(--rh-space-2xl, 32px);
     background-color: var(--rh-color-surface-lightest, #f2f2f2);
   }
 
-  #asset-cards rh-card h4 {
+  rh-card#example-asset-card2 h4,
+  rh-card#example-asset-card3 h4 {
     margin-block: 0 var(--rh-space-lg, 16px);
-    text-transform: uppercase;
     display: flex;
     gap: var(--rh-space-lg, 16px);
     font-weight: var(--rh-font-weight-heading-regular, 300);
     font-size: var(--rh-font-size-body-text-md, 1rem);
     font-family: var(--rh-font-family-body-text);
+    line-height: var(--rh-line-height-body-text, 1.5);
+    text-transform: uppercase; /* deprecated? */
   }
   
+  rh-card#example-asset-card3::part(footer) {
+    margin-block-end: 0;
+  }
+  
+  /* demo only */
   #asset-cards rh-card svg[slot] {
     border: 1px dashed var(--rh-color-border-interactive-on-light, #0066cc);
   }
-  
-  #asset-cards rh-card.footer-asset::part(footer) {
-    margin-block-end: 0;
+  /* demo only */
+  #asset-cards h3 {
+    margin-block-end: var(--rh-space-lg, 16px);
   }
-
+  /* demo only */
   .fpo-icon {
     width: 1.5em;
     width: 1.5em;
@@ -36,80 +39,118 @@
 </style>
 
 <div id="asset-cards">
-  <rh-context-picker target="asset-cards"
-                     allow="lightest,lighter,darker,darkest"></rh-context-picker>
-  <div class="examples grid sm-three-columns">
-    <div class="example">
-      <h3>Title and link</h3>
-      <rh-card>
-        <svg slot="header" viewBox="0 0 296 171">
-          <rect fill="rgba(0 102 204 / 0.10)" width="296" height="171"/>
-        </svg>
-        <h4>
-          <svg class="fpo-icon" viewBox="0 0 16 16">
-            <rect fill="rgba(0 102 204 / 0.10)" width="16" height="16"/>
-          </svg>
-          <span>Title, Lg</span>
-        </h4>
-        <a href="#">Lorem ipsum dolor sit amet consectetur adipiscing elit</a>
-      </rh-card>
-    </div>
-    <div class="example">
-      <h3>Text and CTA</h3>
-      <rh-card>
-        <svg slot="header" viewBox="0 0 296 171">
-          <rect fill="rgba(0 102 204 / 0.10)" width="296" height="171"/>
-        </svg>
-        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.
-          Nullam elifend elit sed est egestast, a solicitudin mauris
-          tincidunt</p>
-        <rh-cta slot="footer"
-                href="#">Call to action</rh-cta>
-      </rh-card>
-    </div>
-    <div class="example">
-      <h3>Title and link — top</h3>
-      <rh-card class="footer-asset">
-        <h4>Title, Lg</h4>
-        <p><a href="#">Lorem ipsum dolor sit amet consectetur adipiscing elit</a></p>
-        <svg slot="footer" viewBox="0 0 296 171">
-          <rect fill="rgba(0 102 204 / 0.10)" width="296" height="171"/>
-        </svg>
-      </rh-card>
-    </div>
-  </div>
-  <rh-accordion class="disclosure">
-    <rh-accordion-header><h3>View code</h3></rh-accordion-header>
-    <rh-accordion-panel>
-      <div class="examples-code grid sm-two-columns">
-        <div>
-          <rh-code-block>
-            <script type="text/html"><rh-card>
+  <h3>Text and CTA</h3>
+  <uxdot-pattern>
+    <rh-card id="example-asset-card1">
+      <svg slot="header" viewBox="0 0 296 171">
+        <rect fill="rgba(0 102 204 / 0.10)" width="296" height="171"/>
+      </svg>
+      <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.
+        Nullam elifend elit sed est egestast, a solicitudin mauris
+        tincidunt</p>
+      <rh-cta slot="footer"
+              href="#">Call to action</rh-cta>
+    </rh-card>
+    <rh-code-block slot="html" actions="copy">
+      <span slot="action-label-copy">Copy to Clipboard</span>
+      <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
+      <script type="text/html"><rh-card id="example-asset-card1">
   <svg slot="header" viewBox="0 0 296 171">
     <rect fill="rgba(0 102 204 / 0.10)" width="296" height="171"/>
   </svg>
-  <h3>
-    <svg class="fpo-icon" viewBox="0 0 16 16">
-      <rect fill="rgba(0 102 204 / 0.10)" width="16" height="16"/>
-    </svg>
+  <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.
+    Nullam elifend elit sed est egestast, a solicitudin mauris
+    tincidunt</p>
+  <rh-cta slot="footer"
+          href="#">Call to action</rh-cta>
+</rh-card></script>
+    </rh-code-block>
+  </uxdot-pattern>
+
+  <h3>Title and link</h3>
+  <uxdot-pattern>
+    <rh-card id="example-asset-card2">
+      <svg slot="header" viewBox="0 0 296 171">
+        <rect fill="rgba(0 102 204 / 0.10)" width="296" height="171"/>
+      </svg>
+      <h4>
+        <svg class="fpo-icon" viewBox="0 0 16 16">
+          <rect fill="rgba(0 102 204 / 0.10)" width="16" height="16"/>
+        </svg>
+        <span>Title, Lg</span>
+      </h4>
+      <a href="#">Lorem ipsum dolor sit amet consectetur adipiscing elit</a>
+    </rh-card>
+    <rh-code-block slot="html" actions="copy">
+      <span slot="action-label-copy">Copy to Clipboard</span>
+      <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
+      <script type="text/html"><rh-card id="example-asset-card2">
+  <img slot="header" src="path/image.png" alt="Really good alt text">
+  <h4>
+    <rh-icon set="ui" icon="information"></rh-icon>
     <span>Title, Lg</span>
-  </h3>
+  </h4>
   <a href="#">Lorem ipsum dolor sit amet consectetur adipiscing elit</a>
 </rh-card></script>
-          </rh-code-block>
-        </div>
-        <div></div>
-      </div>
-    </rh-accordion-panel>
-  </rh-accordion>
+    </rh-code-block>
+    <rh-code-block slot="css" actions="copy">
+      <span slot="action-label-copy">Copy to Clipboard</span>
+      <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
+      <script type="text/css">rh-card#example-asset-card1::part(header) {
+  margin: 0;
+  padding-block-start: var(--rh-space-2xl, 32px);
+  padding-inline: var(--rh-space-2xl, 32px);
+  background-color: var(--rh-color-surface-lightest, #f2f2f2);
+}
+rh-card#example-asset-card1 h4 {
+  margin-block: 0 var(--rh-space-lg, 16px);
+  display: flex;
+  gap: var(--rh-space-lg, 16px);
+  font-weight: var(--rh-font-weight-heading-regular, 300);
+  font-size: var(--rh-font-size-body-text-md, 1rem);
+  font-family: var(--rh-font-family-body-text);
+  line-height: var(--rh-line-height-body-text, 1.5);
+  text-transform: uppercase;
+}</script>
+    </rh-code-block>
+  </uxdot-pattern>
+
+  <h3>Title and link — top</h3>
+  <uxdot-pattern>
+    <rh-card id="example-asset-card3">
+      <h4>Title, Lg</h4>
+      <p><a href="#">Lorem ipsum dolor sit amet consectetur adipiscing elit</a></p>
+      <svg slot="footer" viewBox="0 0 296 171">
+        <rect fill="rgba(0 102 204 / 0.10)" width="296" height="171"/>
+      </svg>
+    </rh-card>
+    <rh-code-block slot="html" actions="copy">
+      <span slot="action-label-copy">Copy to Clipboard</span>
+      <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
+      <script type="text/html"><rh-card id="example-asset-card3">
+  <h4>Title, Lg</h4>
+  <p><a href="#">Lorem ipsum dolor sit amet consectetur adipiscing elit</a></p>
+  <svg slot="footer" viewBox="0 0 296 171">
+    <rect fill="rgba(0 102 204 / 0.10)" width="296" height="171"/>
+  </svg>
+</rh-card></script>
+    </rh-code-block>
+    <rh-code-block slot="css" actions="copy">
+      <span slot="action-label-copy">Copy to Clipboard</span>
+      <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
+      <script type="text/css">rh-card#example-asset-card3 h4 {
+  margin-block: 0 var(--rh-space-lg, 16px);
+  display: flex;
+  gap: var(--rh-space-lg, 16px);
+  font-weight: var(--rh-font-weight-heading-regular, 300);
+  font-size: var(--rh-font-size-body-text-md, 1rem);
+  font-family: var(--rh-font-family-body-text);
+  line-height: var(--rh-line-height-body-text, 1.5);
+  text-transform: uppercase;
+}
+rh-card#example-asset-card3::part(footer) {
+  margin-block-end: 0;
+}</script>
+    </rh-code-block>
+  </uxdot-pattern>
 </div>
-
-
-<script type="module">
-  document.querySelector('#asset-cards rh-context-picker')
-    .addEventListener('change', function(event) {
-      for (const card of event.target.closest('div').querySelectorAll('rh-card')) {
-        card.colorPalette = event.colorPalette;
-      }
-    })
-</script>
