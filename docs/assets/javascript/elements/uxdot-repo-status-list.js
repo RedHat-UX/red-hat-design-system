@@ -11,6 +11,7 @@ class UxdotRepoStatusList extends LitElement {
     #inner-container {
       border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle-on-light, #c7c7c7);
       border-radius: var(--rh-border-radius-default, 3px);
+      margin-block-start: var(--rh-space-lg, 16px);
     }
 
     #header-container {
