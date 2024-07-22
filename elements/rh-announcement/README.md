@@ -4,7 +4,7 @@ Rh-announcement is a short banner that conveys an important message, such as pro
 ## Usage
 Add `rh-announcement` to the page.
 
-Rh-announcement consists of the following slots: 
+### Slots
 
 `image`
 
@@ -19,7 +19,7 @@ Rh-announcement consists of the following slots:
 - Any text content to be displayed in the banner will go in this slot, generally within a p tag.
 
 
-###Available Attributes
+### Attributes
 
 `dismissable`
 
@@ -29,7 +29,7 @@ Rh-announcement consists of the following slots:
 
 - On screens smaller than 769px, larger images (where image height >= image width) will move above the text and the text will center align. This attribute can be added to override this functionality and keep the image left aligned
 
-###Basic Announcement Banner
+### Basic Announcement Banner
 
 ```html
 <rh-announcement>
@@ -41,7 +41,7 @@ Rh-announcement consists of the following slots:
 </rh-announcement>
 ```
 
-###Dismissable Announcement Banner with dark color pallette and attribute to override image appearing above text.
+### Dismissable Announcement Banner with dark color pallette and attribute to override image appearing above text.
 
 ```html
 <rh-announcement dismissable smallimg color-palette="dark">
