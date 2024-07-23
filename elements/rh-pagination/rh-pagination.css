@@ -211,7 +211,8 @@ input {
   border: 1px solid var(--rh-color-border-subtle-on-light, #c7c7c7);
   border-block-end: 1px solid var(--rh-color-gray-40, #a3a3a3);
   box-sizing: border-box;
-  padding: 2px;
+  padding-block: var(--rh-space-sm, 6px);
+  padding-inline: var(--rh-space-md, 8px);
 }
 
 input:focus {
