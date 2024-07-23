@@ -143,8 +143,12 @@
 }
 
 #container.promo {
-  --_promo-heading-font-weight: var(--rh-font-weight-heading-medium, 500);
-  --_promo-heading-size: var(--rh-font-size-heading-xs, 1.25rem);
+  --_promo-heading-font-weight:
+    var(
+        --rh-card-heading-font-weight,
+        var(--rh-font-weight-body-text-medium, 500)
+      );
+  --_promo-heading-size: var(--rh-card-heading-font-size, var(--rh-font-size-heading-xs, 1.25rem));
   --_promo-paragraph-font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_promo-paragraph-margin-block-end: var(--rh-space-lg, 16px);
   --_promo-standard-inline-padding: var(--rh-space-2xl, 32px);
@@ -176,6 +180,7 @@
 }
 
 .promo #header ::slotted(*) {
+  font-family: var(--rh-card-heading-font-family, var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif)) !important;
   font-size: var(--_promo-heading-size) !important;
   font-weight: var(--_promo-heading-font-weight) !important;
   margin-block-end: var(--_promo-heading-margin-block-end) !important;
@@ -198,7 +203,7 @@
 }
 
 .promo.standard #body ::slotted(:not([slot])) {
-  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  font-family: var(--rh-card-heading-font-family, var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif)) !important;
   font-size: var(--rh-font-size-body-text-xl, 1.25rem) !important;
   font-weight: var(--rh-font-weight-body-text-medium, 500);
   line-height: var(--rh-line-height-heading, 1.3) !important;
@@ -220,7 +225,11 @@
 }
 
 :host([variant="promo"][full-width]) #header ::slotted(*) {
-  --_promo-heading-size: var(--rh-font-size-body-text-2xl, 1.5rem);
+  --_promo-heading-size:
+    var(
+        --rh-card-heading-font-size,
+        var(--rh-font-size-body-text-2xl, 1.5rem)
+      );
 }
 
 :host([variant="promo"][full-width]) .has-image #footer {
@@ -245,7 +254,7 @@
   }
 
   .promo #header ::slotted(*) {
-    --_promo-heading-size: var(--rh-font-size-heading-sm, 1.5rem);
+    --_promo-heading-size: var(--rh-card-heading-font-size, var(--rh-font-size-heading-sm, 1.5rem));
   }
 
   #container.promo.standard {
@@ -273,7 +282,11 @@
   }
 
   :host([variant="promo"][full-width]) #header ::slotted(*) {
-    --_promo-heading-size: var(--rh-font-size-heading-md, 1.75rem);
+    --_promo-heading-size:
+      var(
+          --rh-card-heading-font-size,
+          var(--rh-font-size-heading-md, 1.75rem)
+        );
   }
 
   :host([variant="promo"][full-width]) .has-image #footer {
