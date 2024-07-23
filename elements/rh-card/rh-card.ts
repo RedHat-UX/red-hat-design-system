@@ -19,11 +19,11 @@ import styles from './rh-card.css';
  * @slot        footer
  *              Use this slot for anything that you want to be stuck to the base of the card.
  * @csspart     container
- *              The container for the card. Contains the header, body, and footer.
+ *              The container for the card. Contains the image, header, body, and footer.
  * @csspart     header
  *              The header for the card. Contains the header slot.
  * @csspart     image
- *              The image part for the promo variation for the card. Contains the image slot.
+ *              The image for the promo variant for the card. Contains the image slot.
  * @csspart     body
  *              The body for the card. Contains the default slot.
  * @csspart     footer
@@ -69,9 +69,9 @@ export class RhCard extends LitElement {
   @property({ reflect: true }) variant?: 'promo';
 
   /**
-   * Change a promo with an image + body + footer to use the "full width" style
+   * Change a promo with an image + body + footer to use the `full-width` style
    */
-  @property({ reflect: true, type: Boolean }) fullWidth? = false;
+  @property({ reflect: true, attribute: 'full-width', type: Boolean }) fullWidth? = false;
 
   #slots = new SlotController(this, ...RhCard.slots);
 
