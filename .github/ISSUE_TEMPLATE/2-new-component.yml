@@ -1,14 +1,13 @@
-name: 🎨 New component
-description: Request for new component to be defined. This issue will become the parent issue of design and development tasks.
-title: "[feat] <title>"
+name: 🧩 New component or pattern
+description: Request for new component or pattern to be defined. This issue will become the parent issue of design and development tasks.
+title: "[feat] Create `<rh-component-name>` component/pattern"
 
 labels:
-  - discovery needed
-  - design needed
   - new component
+  - discovery needed
 
 assignees:
-  - paigenotfound404
+  - markcaron
 
 body:
   - type: textarea
@@ -39,18 +38,18 @@ body:
   - type: textarea
     id: image
     attributes:
-      label: Image
+      label: Images
       description: >-
         Paste or drag any images of the component here, e.g. wireframes
     validations:
       required: false
 
   - type: input
-    id: xd-link
+    id: figma-link
     attributes:
-      label: Link to design doc
+      label: Design file
       description: >-
-        Paste a link to the design doc (i.e. XD) for the component
+        Paste a link to the design doc (i.e. Figma) for the component
 
   - type: textarea
     id: other-resources
