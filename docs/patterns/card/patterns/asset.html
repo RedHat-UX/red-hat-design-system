@@ -1,9 +1,17 @@
 <style>
+  rh-card#example-asset-card1::part(header),
   rh-card#example-asset-card2::part(header) {
     margin: 0;
     padding-block-start: var(--rh-space-2xl, 32px);
     padding-inline: var(--rh-space-2xl, 32px);
-    background-color: var(--rh-color-surface-lightest, #f2f2f2);
+    background-color: var(--_header-bg, var(--rh-color-surface-lightest, #f2f2f2));
+  }
+
+  [color-palette^="dark"] rh-card#example-asset-card1::part(header),
+  rh-card#example-asset-card1[color-palette^="dark"]::part(header),
+  [color-palette^="dark"] rh-card#example-asset-card2::part(header),
+  rh-card#example-asset-card2[color-palette^="dark"]::part(header) {
+    --_header-bg: var(--rh-color-gray-70, #383838);
   }
 
   rh-card#example-asset-card2 h4,
@@ -41,6 +49,7 @@
 <div id="asset-cards">
   <h3>Text and CTA</h3>
   <uxdot-pattern>
+    <h4 slot="heading">Example</h4>
     <rh-card id="example-asset-card1">
       <svg slot="header" viewBox="0 0 296 171">
         <rect fill="rgba(0 102 204 / 0.10)" width="296" height="171"/>
@@ -51,6 +60,7 @@
       <rh-cta slot="footer"
               href="#">Call to action</rh-cta>
     </rh-card>
+    <h4 slot="html-heading">HTML</h4>
     <rh-code-block slot="html" actions="copy">
       <span slot="action-label-copy">Copy to Clipboard</span>
       <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
@@ -65,10 +75,26 @@
           href="#">Call to action</rh-cta>
 </rh-card></script>
     </rh-code-block>
+    <h4 slot="css-heading">CSS</h4>
+    <rh-code-block slot="css" actions="copy">
+      <span slot="action-label-copy">Copy to Clipboard</span>
+      <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
+      <script type="text/css">rh-card#example-asset-card1::part(header) {
+  margin: 0;
+  padding-block-start: var(--rh-space-2xl, 32px);
+  padding-inline: var(--rh-space-2xl, 32px);
+  background-color: var(--_header-bg, var(--rh-color-surface-lightest, #f2f2f2));
+}
+[color-palette^="dark"] rh-card#example-asset-card1::part(header),
+rh-card#example-asset-card1[color-palette^="dark"]::part(header) {
+  --_header-bg: var(--rh-color-gray-70, #383838);
+}</script>
+    </rh-code-block>    
   </uxdot-pattern>
 
   <h3>Title and link</h3>
   <uxdot-pattern>
+    <h4 slot="heading">Example</h4>
     <rh-card id="example-asset-card2">
       <svg slot="header" viewBox="0 0 296 171">
         <rect fill="rgba(0 102 204 / 0.10)" width="296" height="171"/>
@@ -81,6 +107,7 @@
       </h4>
       <a href="#">Lorem ipsum dolor sit amet consectetur adipiscing elit</a>
     </rh-card>
+    <h4 slot="html-heading">HTML</h4>
     <rh-code-block slot="html" actions="copy">
       <span slot="action-label-copy">Copy to Clipboard</span>
       <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
@@ -93,16 +120,21 @@
   <a href="#">Lorem ipsum dolor sit amet consectetur adipiscing elit</a>
 </rh-card></script>
     </rh-code-block>
+    <h4 slot="css-heading">CSS</h4>
     <rh-code-block slot="css" actions="copy">
       <span slot="action-label-copy">Copy to Clipboard</span>
       <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
-      <script type="text/css">rh-card#example-asset-card1::part(header) {
+      <script type="text/css">rh-card#example-asset-card2::part(header) {
   margin: 0;
   padding-block-start: var(--rh-space-2xl, 32px);
   padding-inline: var(--rh-space-2xl, 32px);
-  background-color: var(--rh-color-surface-lightest, #f2f2f2);
+  background-color: var(--_header-bg, var(--rh-color-surface-lightest, #f2f2f2));
 }
-rh-card#example-asset-card1 h4 {
+[color-palette^="dark"] rh-card#example-asset-card2::part(header),
+rh-card#example-asset-card2[color-palette^="dark"]::part(header) {
+  --_header-bg: var(--rh-color-gray-70, #383838);
+}
+rh-card#example-asset-card2 h4 {
   margin-block: 0 var(--rh-space-lg, 16px);
   display: flex;
   gap: var(--rh-space-lg, 16px);
@@ -117,6 +149,7 @@ rh-card#example-asset-card1 h4 {
 
   <h3>Title and link — top</h3>
   <uxdot-pattern>
+    <h4 slot="heading">Example</h4>
     <rh-card id="example-asset-card3">
       <h4>Title, Lg</h4>
       <p><a href="#">Lorem ipsum dolor sit amet consectetur adipiscing elit</a></p>
@@ -124,6 +157,7 @@ rh-card#example-asset-card1 h4 {
         <rect fill="rgba(0 102 204 / 0.10)" width="296" height="171"/>
       </svg>
     </rh-card>
+    <h4 slot="html-heading">HTML</h4>
     <rh-code-block slot="html" actions="copy">
       <span slot="action-label-copy">Copy to Clipboard</span>
       <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
@@ -135,6 +169,7 @@ rh-card#example-asset-card1 h4 {
   </svg>
 </rh-card></script>
     </rh-code-block>
+    <h4 slot="css-heading">CSS</h4>
     <rh-code-block slot="css" actions="copy">
       <span slot="action-label-copy">Copy to Clipboard</span>
       <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>

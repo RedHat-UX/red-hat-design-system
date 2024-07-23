@@ -30,6 +30,22 @@ importElements:
     display: block;
     max-width: 360px;
   }
+
+  [color-palette^="light"] :is(a):link {
+    color: var(--rh-color-interactive-blue-darker, #0066cc);
+  }
+
+  [color-palette^="light"] :is(a):hover {
+    color: var(--rh-color-interactive-blue-darkest, #003366);
+  }
+
+  [color-palette^="dark"] :is(a):link {
+    color: var(--rh-color-interactive-blue-lighter, #92c5f9);
+  }
+
+  [color-palette^="dark"] :is(a):hover {
+    color: var(--rh-color-interactive-blue-lightest, #b9dafc);
+  }
 </style>
 
 
@@ -57,6 +73,14 @@ Use to add an image to the basic style above the text.
 Secondary and Default calls to action may be used.
 
 {% include './patterns/image.html' %}
+
+
+## List
+Use to display a short amount of content using various list styles. 
+Secondary and Default calls to action may be used.
+
+
+{% include './patterns/list.html' %}
 
 
 ## Title bar card

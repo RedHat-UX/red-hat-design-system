@@ -79,13 +79,6 @@ it's near. Several cards can be used together to group related information.
 </rh-alert>
 
 
-## List
-Use to display a short amount of content using various list styles. 
-Secondary and Default calls to action may be used.
-
-
-{% include './patterns/list.html' %}
-
 ## Data
 Use to display quick facts or short data points under a label. A Secondary 
 call to action may be used or not.

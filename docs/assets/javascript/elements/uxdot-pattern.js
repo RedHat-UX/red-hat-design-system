@@ -31,8 +31,15 @@ class UxdotPattern extends LitElement {
       border-color: var(--rh-color-border-subtle-on-dark, #707070);
     }
 
-    #container h3 {
-      margin-block-start: 0;
+    #container h3,
+    #container ::slotted(h2),
+    #container ::slotted(h3),
+    #container ::slotted(h4),
+    #container ::slotted(h5),
+    #container ::slotted(h6) {
+      margin-block-start: 0 !important;
+      margin-block-end: var(--rh-space-lg, 16px) !important;
+      font-size: var(--rh-font-size-body-text-lg, 1.125rem) !important;
     }
 
     rh-context-picker {
@@ -49,11 +56,6 @@ class UxdotPattern extends LitElement {
       display: flex;
       flex-direction: column;
       gap: var(--rh-space-lg, 16px);
-    }
-
-    #code h3 {
-      margin-block-end: var(--rh-space-lg, 16px);
-      font-size: var(--rh-font-size-body-text-lg, 1.125rem);
     }
 
     @container host (min-width: 992px) {
@@ -76,8 +78,6 @@ class UxdotPattern extends LitElement {
   };
 
   #slots;
-
-  #mo;
 
   constructor() {
     super();
