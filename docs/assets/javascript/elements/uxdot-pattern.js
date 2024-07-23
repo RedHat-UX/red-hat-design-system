@@ -42,13 +42,25 @@ class UxdotPattern extends LitElement {
       font-size: var(--rh-font-size-body-text-lg, 1.125rem) !important;
     }
 
-    rh-context-picker {
+    #color-picker {
       grid-area: controls;
       justify-self: flex-end;
+      display: flex;
+      align-items: center;
+      gap: var(--rh-space-lg, 16px);
     }
 
     #example {
       grid-area: example;
+    }
+
+    #example ::slotted(*) {
+      display: block;
+      max-width: 360px;
+    }
+
+    :host([stacked]) #example ::slotted(*) {
+      max-width: 100%;
     }
 
     #code {
@@ -58,21 +70,40 @@ class UxdotPattern extends LitElement {
       gap: var(--rh-space-lg, 16px);
     }
 
+    :host([no-colorpicker]) #container {
+      grid-template-areas: "example" "code";
+    }
+
+    :host([no-colorpicker]) #color-picker {
+      display: none !important;
+    }
+
     @container host (min-width: 992px) {
       #container {
         grid-template-columns: max-content 1fr;
         grid-template-areas: "controls controls"
                              "example code";
       }
+
+      :host([no-colorpicker]) #container {
+        grid-template-areas: "example code";
+      }
+
       :host([stacked]) #container {
         grid-template-columns: 1fr;
         grid-template-areas: "controls" "example" "code";
+      }
+
+      :host([stacked][no-colorpicker]) #container {
+        grid-template-areas: "example" "code";
       }
     }
   `;
 
   static properties = {
     colorPalette: { type: String, reflect: true, attribute: 'color-palette' },
+    target: { type: String, reflect: true },
+    noColorPicker: { type: Boolean, reflect: true, attribute: 'no-colorpicker' },
     stacked: { type: Boolean, reflect: true },
     allow: { type: String, reflect: true },
   };
@@ -82,6 +113,8 @@ class UxdotPattern extends LitElement {
   constructor() {
     super();
     this.colorPalette = 'lightest';
+    this.target = 'container';
+    this.noColorPicker = false;
     this.stacked = false;
     this.#slots = new SlotController(this, 'html', 'css', 'js');
   }
@@ -93,7 +126,10 @@ class UxdotPattern extends LitElement {
     const allowed = this.allow ?? `lightest, lighter, light, dark, darker, darkest`;
     return html`
       <rh-surface id="container" part="container" @change="${this.#onMutation}">
-        <rh-context-picker target="container" value="${this.colorPalette}" allow="${allowed}"></rh-context-picker>
+        <label id="color-picker">
+          Color palette
+          <rh-context-picker target="${this.target}" value="${this.colorPalette}" allow="${allowed}"></rh-context-picker>
+        </label>
         <div id="example">
           <slot name="heading"><h3>Example</h3></slot>
           <slot></slot>

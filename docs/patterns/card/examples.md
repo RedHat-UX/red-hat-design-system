@@ -67,6 +67,20 @@ the list of users.
 {% include './patterns/avatars.html' %}
 
 
+## Fast facts card
+Use to display quick facts or short data points under a label. A Secondary 
+call to action may be used or not.
+
+{% include './patterns/fast-facts.html' %}
+
+
+## Icon card
+
+Use to add an icon to the basic style above the text. Secondary and Default 
+calls to action may be used.
+
+{% include './patterns/icon.html' %}
+
 ## Image card
 
 Use to add an image to the basic style above the text.
@@ -75,12 +89,19 @@ Secondary and Default calls to action may be used.
 {% include './patterns/image.html' %}
 
 
-## List
+## List cards
 Use to display a short amount of content using various list styles. 
 Secondary and Default calls to action may be used.
 
 
 {% include './patterns/list.html' %}
+
+
+## Logo cards
+Use to display a customer logo in a variety of arrangements. A call to 
+action is required, otherwise use a logo wall.
+
+{% include './patterns/logos.html' %}
 
 
 ## Title bar card
@@ -92,6 +113,22 @@ Alternative title bar styles can be achieved by selecting [card's `header` CSS
 Shadow Part](/elements/card/code/#parts).
 
 {% include './patterns/title-bar.html' %}
+
+
+## Quote cards
+
+Use to display a short quote with attribution text. Logos, images, and a 
+Secondary call to action may be used or not.
+
+{% include './patterns/quote.html' %}
+
+
+## Video cards
+
+Use to trigger a video that will play in a [Modal dialog](/elements/dialog).
+Different layout configurations may be used.
+
+{% include './patterns/video.html' %}
 
 
 {% include 'partials/component/feedback.html' %}
