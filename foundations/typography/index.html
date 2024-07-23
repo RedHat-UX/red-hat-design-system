@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
       <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Typography | Red Hat design system</title>
+  <title>Overview | Red Hat design system</title>
   <meta name="description" content="This is Red Hat's design system. Using Red Hat brand standards and PatternFly as our foundational design language, we enable designers and developers to concurrently build branded experiences across redhat.com, Red Hat Customer Portal, and beyond.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" type="image/svg+xml" sizes="any" href="/assets/logo-red-hat.svg">
@@ -36,14 +36,14 @@
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
     "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
     "@lit/context": "/assets/packages/@lit/context/index.js",
-    "@rhds/tokens/meta.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js",
     "lit-element": "/assets/packages/lit-element/index.js",
     "lit": "/assets/packages/lit/index.js",
     "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
     "lit/static-html.js": "/assets/packages/lit/static-html.js",
-    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/meta.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/media.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@3.0.0/core.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
@@ -97,8 +97,6 @@
   
     <script type="module">import '@rhds/elements/rh-subnav/rh-subnav.js';</script>
   
-    <script type="module">import '@rhds/elements/rh-blockquote/rh-blockquote.js';</script>
-  
     <script type="module">import '@rhds/elements/rh-table/rh-table.js';</script>
   
 
@@ -124,7 +122,7 @@
     <script type="module" src="/assets/javascript/elements/uxdot-toc.js"></script>
   </head>
 
-  <body dsd-pending="" class=" page-typography">
+  <body dsd-pending="" class=" page-overview">
     <uxdot-skip-navigation><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: block;
@@ -3516,7 +3514,7 @@
 <main id="main">
   <article class="has-toc">
 
-  <uxdot-header><template shadowroot="open" shadowrootmode="open"><style>
+  <uxdot-header  has-subnav><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: block;
       background-color: var(--rh-color-surface-lighter, #f2f2f2);
@@ -3598,7 +3596,7 @@
       }
     }
   </style><!--lit-part z+ZGsWQoJjM=-->
-      <!--lit-node 0--><div id="container" class="  " part="container">
+      <!--lit-node 0--><div id="container" class=" has-subnav " part="container">
         <slot part="heading"></slot>
         <slot name="search" part="search"></slot>
         <slot name="subnav" part="subnav"></slot>
@@ -3608,6 +3606,18 @@
 
   
 
+  
+    <rh-subnav slot="subnav">
+      <a active="" href="/foundations/typography/">
+        Overview
+      </a>
+      <a href="/foundations/typography/scale.html">
+        Scale
+      </a>
+      <a href="/foundations/typography/usage.html">
+        Usage
+      </a>
+    </rh-subnav>
   
 </uxdot-header>
   
@@ -3705,60 +3715,24 @@
         
                 <ol slot="details">
                     
-                    <li><a href="#overview">Overview</a>
-            		</li>
-
                     <li><a href="#get-started">Get started</a>
             		</li>
 
-                    <li><a href="#style">Style</a>
+                    <li><a href="#font-family">Font family</a>
             		</li>
 
-                    <li><a href="#text-options">Text options</a>
-            		</li>
-
-                    <li><a href="#scale">Scale</a>
-            		</li>
-
-                    <li><a href="#usage">Usage</a>
-            		</li>
-
-                    <li><a href="#best-practices">Best practices</a>
-            		</li>
-
-                    <li><a href="#behavior">Behavior</a>
-            		</li>
-
-                    <li><a href="#interaction-states">Interaction states</a>
+                    <li><a href="#international">International</a>
             		</li>
                 </ol>
                 <ol slot="expanded">
                     
-                    <li><a href="#overview">Overview</a>
-            		</li>
-
                     <li><a href="#get-started">Get started</a>
             		</li>
 
-                    <li><a href="#style">Style</a>
+                    <li><a href="#font-family">Font family</a>
             		</li>
 
-                    <li><a href="#text-options">Text options</a>
-            		</li>
-
-                    <li><a href="#scale">Scale</a>
-            		</li>
-
-                    <li><a href="#usage">Usage</a>
-            		</li>
-
-                    <li><a href="#best-practices">Best practices</a>
-            		</li>
-
-                    <li><a href="#behavior">Behavior</a>
-            		</li>
-
-                    <li><a href="#interaction-states">Interaction states</a>
+                    <li><a href="#international">International</a>
             		</li>
                 </ol>
             
@@ -3768,112 +3742,6 @@
 
   <div class="container">
     <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
-<style>
-  .page-typography .container rh-table {
-    margin-block-end: var(--rh-space-3xl, 48px);
-  }
-
-  .page-typography .container .mock-h2 {
-    font-size: var(--rh-font-size-heading-xl, 2.5rem);
-  }
-
-  .page-typography .container .mock-h3 {
-    font-size: var(--rh-font-size-heading-lg, 2.25rem);
-  }
-
-  .page-typography .container .mock-h4 {
-    font-size: var(--rh-font-size-heading-md, 1.75rem);
-  }
-
-  .page-typography .container .mock-h5 {
-    font-size: var(--rh-font-size-heading-sm, 1.5rem);
-  }
-
-  .page-typography .container .mock-title {
-    text-transform: uppercase;
-    color: var(--rh-color-brand-red-on-light, #ee0000);
-    font-weight: var(--rh-font-weight-heading-bold, 700);
-  }
-
-  .page-typography .container .mock-h2 + .mock-h5,
-  .page-typography .container .mock-title + .mock-h2 {
-    margin-block-start: 0;
-  }
-
-  .page-typography .container .mock-body-text {
-    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif) !important;
-  }
-
-  .page-typography .container .mock-header-text {
-    font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif) !important;
-  }
-
-  .page-typography .container .mock-no-margin {
-    margin: 0 !important;
-  }
-
-  .page-typography .container :is(.mock-h2, .mock-h5) {
-    font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
-    margin-block: 1em;
-  }
-
-  .page-typography .container .grid {
-    margin-block-end: var(--rh-space-2xl, 32px);
-  }
-
-</style>
-<section aria-labelledby="overview">
-<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>
-    :host {
-      display: flex;
-      margin-block-end: var(--rh-space-lg, 16px);
-      align-items: center;
-    }
-
-    svg {
-      width: var(--rh-size-icon-02, 24px);
-    }
-
-    #signifier {
-      display: var(--perma-signifier-display, none);
-    }
-
-    #button {
-      height: 1.75rem;
-      background: none;
-      border: none;
-      display: flex;
-      align-items: center;
-    }
-
-    #button:is(:hover, :focus) {
-      background: var(--rh-color-surface-light, #e0e0e0);
-    }
-
-    ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-      display: flex;
-      margin-block-end: 0 !important;
-      align-items: center;
-      color: inherit;
-      text-decoration: inherit;
-    }
-  </style><!--lit-part TTkZeYC7lsg=-->
-      <!--lit-node 0--><slot ></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button  id="button" aria-label="Copy link to clipboard" aria-label="Copy link to clipboard">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-          <path d="M13.09 2.64a3 3 0 0 0-4.15 0L6.1 5.49a2.93 2.93 0 0 0 0 4.15.63.63 0 0 0 .88 0 .64.64 0 0 0 0-.89 1.65 1.65 0 0 1-.49-1.19A1.66 1.66 0 0 1 7 6.37l2.83-2.84a1.68 1.68 0 1 1 2.37 2.38l-.62.62a.63.63 0 1 0 .89.88l.62-.62a2.93 2.93 0 0 0 0-4.15Z"/>
-          <path d="M8.61 6.77a.64.64 0 0 0 0 .89 1.68 1.68 0 0 1 0 2.37l-2.44 2.44a1.68 1.68 0 0 1-2.38 0 1.7 1.7 0 0 1 0-2.38l.15-.09a.64.64 0 0 0 0-.89.63.63 0 0 0-.88 0l-.15.15a3 3 0 0 0 0 4.15 3 3 0 0 0 4.15 0l2.43-2.44a2.9 2.9 0 0 0 .86-2.07 2.93 2.93 0 0 0-.85-2.13.64.64 0 0 0-.89 0Z"/>
-        </svg>
-      </button>
-    <!--/lit-part--></template>
-  <h2 id="overview" tabindex="-1">
-    <a href="#overview">Overview</a>
-      </h2>
-    </uxdot-copy-permalink>
-<p>Typography organizes content and creates hierarchies. It brings consistency to experiences and extends the brand presence across web properties.</p>
-</section>
-<section aria-labelledby="get-started">
 <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: flex;
@@ -3922,9 +3790,7 @@
     <a href="#get-started">Get started</a>
       </h2>
     </uxdot-copy-permalink>
-<p>To get started using our fonts, visit our <a href="https://github.com/RedHatOfficial/RedHatFont" target="_blank">GitHub repo</a>.</p>
-</section>
-<section aria-labelledby="style">
+<p>To download the font files, go to <a href="https://fonts.google.com/?query=MCKL">Google Fonts</a>. To install the fonts using Terminal, go to our <a href="https://github.com/RedHatOfficial/RedHatFont">GitHub repo</a>. If you need further assistance, contact the <a href="https://brand.redhat.com/">Brand team</a> or the <a href="https://ux.redhat.com/support/">Design System team</a>.</p>
 <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: flex;
@@ -3969,30 +3835,161 @@
         </svg>
       </button>
     <!--/lit-part--></template>
-  <h2 id="style" tabindex="-1">
-    <a href="#style">Style</a>
+  <h2 id="font-family" tabindex="-1">
+    <a href="#font-family">Font family</a>
       </h2>
     </uxdot-copy-permalink>
-<p>The Red&nbsp;Hat typeface is a fresh take on the geometric sans genre, taking inspiration from a range of American sans serifs including <em>Tempo</em> and <em>Highway Gothic</em>. These two font families can be used together seamlessly and are available to download <a href="https://github.com/RedHatOfficial/RedHatFont">here</a>.</p>
-  <uxdot-example width-adjustment="75%" no-border="">
-    <img src="https://www.redhat.com/cms/managed-files/BrandStandards-Visual_System-Typography-ASSETS_Hero.svg?itok=QnUDviH1" alt="artwork demonstrating Red Hat Display and Red Hat Text at different font weights">
-  </uxdot-example>
-  <div class="grid xs-two-columns md-three-columns">
-    <div>
-      <h4 id="red-hat-display">Red&nbsp;Hat Display</h4>
-      <p>The Display typeface is low contrast and spaced tightly with a large x-height and open counters.</p>
-    </div>
-    <div>
-      <h4 id="red-hat-text">Red&nbsp;Hat Text</h4>
-      <p>The Text typeface has a slightly smaller x-height, a narrower width for better legibility, and thinned joins for a better performance at small sizes.</p>
-    </div>
-    <div>
-      <h4 id="red-hat-mono">Red&nbsp;Hat Mono</h4>
-      <p>The Mono typeface is our monospaced font that distinguishes code from natural-language text. It should only be used for code snippets or as a stylistic approach for a more technical audience.</p>
-    </div>    
-  </div>
-</section>
-<section aria-labelledby="text-options">
+<p>The words we choose are an important part of our brand voice and so is the way those words look. The way our words look is established by the fonts we use and the way we use them, also known as typography. The Red Hat font family was designed by type designer Jeremy Mickel in collaboration with the Brand team. To learn more our fonts and typography, go to the <a href="https://www.redhat.com/en/about/brand/standards">Brand standards</a> website.</p>
+<uxdot-example width-adjustment="1140px" variant="full" alignment="left" no-border="">
+  <img src="/assets/typography/type-overview-font-family.png" alt=" 3 examples of the Red Hat font family: Display, Text, and Mono. Each example shows a capital letter R and lowercase letter H with overlays pointing out unique design characteristics.">
+</uxdot-example>
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
+    :host {
+      display: flex;
+      margin-block-end: var(--rh-space-lg, 16px);
+      align-items: center;
+    }
+
+    svg {
+      width: var(--rh-size-icon-02, 24px);
+    }
+
+    #signifier {
+      display: var(--perma-signifier-display, none);
+    }
+
+    #button {
+      height: 1.75rem;
+      background: none;
+      border: none;
+      display: flex;
+      align-items: center;
+    }
+
+    #button:is(:hover, :focus) {
+      background: var(--rh-color-surface-light, #e0e0e0);
+    }
+
+    ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+      display: flex;
+      margin-block-end: 0 !important;
+      align-items: center;
+      color: inherit;
+      text-decoration: inherit;
+    }
+  </style><!--lit-part TTkZeYC7lsg=-->
+      <!--lit-node 0--><slot ></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button  id="button" aria-label="Copy link to clipboard" aria-label="Copy link to clipboard">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+          <path d="M13.09 2.64a3 3 0 0 0-4.15 0L6.1 5.49a2.93 2.93 0 0 0 0 4.15.63.63 0 0 0 .88 0 .64.64 0 0 0 0-.89 1.65 1.65 0 0 1-.49-1.19A1.66 1.66 0 0 1 7 6.37l2.83-2.84a1.68 1.68 0 1 1 2.37 2.38l-.62.62a.63.63 0 1 0 .89.88l.62-.62a2.93 2.93 0 0 0 0-4.15Z"/>
+          <path d="M8.61 6.77a.64.64 0 0 0 0 .89 1.68 1.68 0 0 1 0 2.37l-2.44 2.44a1.68 1.68 0 0 1-2.38 0 1.7 1.7 0 0 1 0-2.38l.15-.09a.64.64 0 0 0 0-.89.63.63 0 0 0-.88 0l-.15.15a3 3 0 0 0 0 4.15 3 3 0 0 0 4.15 0l2.43-2.44a2.9 2.9 0 0 0 .86-2.07 2.93 2.93 0 0 0-.85-2.13.64.64 0 0 0-.89 0Z"/>
+        </svg>
+      </button>
+    <!--/lit-part--></template>
+  <h3 id="red-hat-display" tabindex="-1">
+    <a href="#red-hat-display">Red Hat Display</a>
+      </h3>
+    </uxdot-copy-permalink>
+<p>Red Hat Display is used in headlines and to make big statements. Because Red Hat Display is intended for large sizes, it has more of our brand personality and voice.</p>
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
+    :host {
+      display: flex;
+      margin-block-end: var(--rh-space-lg, 16px);
+      align-items: center;
+    }
+
+    svg {
+      width: var(--rh-size-icon-02, 24px);
+    }
+
+    #signifier {
+      display: var(--perma-signifier-display, none);
+    }
+
+    #button {
+      height: 1.75rem;
+      background: none;
+      border: none;
+      display: flex;
+      align-items: center;
+    }
+
+    #button:is(:hover, :focus) {
+      background: var(--rh-color-surface-light, #e0e0e0);
+    }
+
+    ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+      display: flex;
+      margin-block-end: 0 !important;
+      align-items: center;
+      color: inherit;
+      text-decoration: inherit;
+    }
+  </style><!--lit-part TTkZeYC7lsg=-->
+      <!--lit-node 0--><slot ></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button  id="button" aria-label="Copy link to clipboard" aria-label="Copy link to clipboard">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+          <path d="M13.09 2.64a3 3 0 0 0-4.15 0L6.1 5.49a2.93 2.93 0 0 0 0 4.15.63.63 0 0 0 .88 0 .64.64 0 0 0 0-.89 1.65 1.65 0 0 1-.49-1.19A1.66 1.66 0 0 1 7 6.37l2.83-2.84a1.68 1.68 0 1 1 2.37 2.38l-.62.62a.63.63 0 1 0 .89.88l.62-.62a2.93 2.93 0 0 0 0-4.15Z"/>
+          <path d="M8.61 6.77a.64.64 0 0 0 0 .89 1.68 1.68 0 0 1 0 2.37l-2.44 2.44a1.68 1.68 0 0 1-2.38 0 1.7 1.7 0 0 1 0-2.38l.15-.09a.64.64 0 0 0 0-.89.63.63 0 0 0-.88 0l-.15.15a3 3 0 0 0 0 4.15 3 3 0 0 0 4.15 0l2.43-2.44a2.9 2.9 0 0 0 .86-2.07 2.93 2.93 0 0 0-.85-2.13.64.64 0 0 0-.89 0Z"/>
+        </svg>
+      </button>
+    <!--/lit-part--></template>
+  <h3 id="red-hat-text" tabindex="-1">
+    <a href="#red-hat-text">Red Hat Text</a>
+      </h3>
+    </uxdot-copy-permalink>
+<p>Red Hat Text takes all of the personality from Red Hat Display and optimizes it for more demanding applications. It is easy to read in paragraphs and very small sizes.</p>
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
+    :host {
+      display: flex;
+      margin-block-end: var(--rh-space-lg, 16px);
+      align-items: center;
+    }
+
+    svg {
+      width: var(--rh-size-icon-02, 24px);
+    }
+
+    #signifier {
+      display: var(--perma-signifier-display, none);
+    }
+
+    #button {
+      height: 1.75rem;
+      background: none;
+      border: none;
+      display: flex;
+      align-items: center;
+    }
+
+    #button:is(:hover, :focus) {
+      background: var(--rh-color-surface-light, #e0e0e0);
+    }
+
+    ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+      display: flex;
+      margin-block-end: 0 !important;
+      align-items: center;
+      color: inherit;
+      text-decoration: inherit;
+    }
+  </style><!--lit-part TTkZeYC7lsg=-->
+      <!--lit-node 0--><slot ></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button  id="button" aria-label="Copy link to clipboard" aria-label="Copy link to clipboard">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+          <path d="M13.09 2.64a3 3 0 0 0-4.15 0L6.1 5.49a2.93 2.93 0 0 0 0 4.15.63.63 0 0 0 .88 0 .64.64 0 0 0 0-.89 1.65 1.65 0 0 1-.49-1.19A1.66 1.66 0 0 1 7 6.37l2.83-2.84a1.68 1.68 0 1 1 2.37 2.38l-.62.62a.63.63 0 1 0 .89.88l.62-.62a2.93 2.93 0 0 0 0-4.15Z"/>
+          <path d="M8.61 6.77a.64.64 0 0 0 0 .89 1.68 1.68 0 0 1 0 2.37l-2.44 2.44a1.68 1.68 0 0 1-2.38 0 1.7 1.7 0 0 1 0-2.38l.15-.09a.64.64 0 0 0 0-.89.63.63 0 0 0-.88 0l-.15.15a3 3 0 0 0 0 4.15 3 3 0 0 0 4.15 0l2.43-2.44a2.9 2.9 0 0 0 .86-2.07 2.93 2.93 0 0 0-.85-2.13.64.64 0 0 0-.89 0Z"/>
+        </svg>
+      </button>
+    <!--/lit-part--></template>
+  <h3 id="red-hat-mono" tabindex="-1">
+    <a href="#red-hat-mono">Red Hat Mono</a>
+      </h3>
+    </uxdot-copy-permalink>
+<p>Red Hat Mono is our monospaced font that was created to distinguish code from other text. It should only be used when demonstrating code snippets in our communications and specifications.</p>
 <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: flex;
@@ -4037,1110 +4034,35 @@
         </svg>
       </button>
     <!--/lit-part--></template>
-  <h2 id="text-options" tabindex="-1">
-    <a href="#text-options">Text options</a>
+  <h2 id="international" tabindex="-1">
+    <a href="#international">International</a>
       </h2>
     </uxdot-copy-permalink>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
-    :host {
-      display: flex;
-      margin-block-end: var(--rh-space-lg, 16px);
-      align-items: center;
-    }
-
-    svg {
-      width: var(--rh-size-icon-02, 24px);
-    }
-
-    #signifier {
-      display: var(--perma-signifier-display, none);
-    }
-
-    #button {
-      height: 1.75rem;
-      background: none;
-      border: none;
-      display: flex;
-      align-items: center;
-    }
-
-    #button:is(:hover, :focus) {
-      background: var(--rh-color-surface-light, #e0e0e0);
-    }
-
-    ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-      display: flex;
-      margin-block-end: 0 !important;
-      align-items: center;
-      color: inherit;
-      text-decoration: inherit;
-    }
-  </style><!--lit-part TTkZeYC7lsg=-->
-      <!--lit-node 0--><slot ></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button  id="button" aria-label="Copy link to clipboard" aria-label="Copy link to clipboard">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-          <path d="M13.09 2.64a3 3 0 0 0-4.15 0L6.1 5.49a2.93 2.93 0 0 0 0 4.15.63.63 0 0 0 .88 0 .64.64 0 0 0 0-.89 1.65 1.65 0 0 1-.49-1.19A1.66 1.66 0 0 1 7 6.37l2.83-2.84a1.68 1.68 0 1 1 2.37 2.38l-.62.62a.63.63 0 1 0 .89.88l.62-.62a2.93 2.93 0 0 0 0-4.15Z"/>
-          <path d="M8.61 6.77a.64.64 0 0 0 0 .89 1.68 1.68 0 0 1 0 2.37l-2.44 2.44a1.68 1.68 0 0 1-2.38 0 1.7 1.7 0 0 1 0-2.38l.15-.09a.64.64 0 0 0 0-.89.63.63 0 0 0-.88 0l-.15.15a3 3 0 0 0 0 4.15 3 3 0 0 0 4.15 0l2.43-2.44a2.9 2.9 0 0 0 .86-2.07 2.93 2.93 0 0 0-.85-2.13.64.64 0 0 0-.89 0Z"/>
-        </svg>
-      </button>
-    <!--/lit-part--></template>
-  <h3 id="headline" tabindex="-1">
-    <a href="#headline">Headline</a>
-      </h3>
-    </uxdot-copy-permalink>
-<p>Headlines create various levels of content hierarchies.</p>
-  <uxdot-example>
-    <p class="mock-h2">Red&nbsp;Hat Enterprise Linux</p>
-    <p class="mock-h5">Conquer complexity with Red&nbsp;Hat Enterprise Linux 8</p>
-  </uxdot-example>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
-    :host {
-      display: flex;
-      margin-block-end: var(--rh-space-lg, 16px);
-      align-items: center;
-    }
-
-    svg {
-      width: var(--rh-size-icon-02, 24px);
-    }
-
-    #signifier {
-      display: var(--perma-signifier-display, none);
-    }
-
-    #button {
-      height: 1.75rem;
-      background: none;
-      border: none;
-      display: flex;
-      align-items: center;
-    }
-
-    #button:is(:hover, :focus) {
-      background: var(--rh-color-surface-light, #e0e0e0);
-    }
-
-    ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-      display: flex;
-      margin-block-end: 0 !important;
-      align-items: center;
-      color: inherit;
-      text-decoration: inherit;
-    }
-  </style><!--lit-part TTkZeYC7lsg=-->
-      <!--lit-node 0--><slot ></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button  id="button" aria-label="Copy link to clipboard" aria-label="Copy link to clipboard">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-          <path d="M13.09 2.64a3 3 0 0 0-4.15 0L6.1 5.49a2.93 2.93 0 0 0 0 4.15.63.63 0 0 0 .88 0 .64.64 0 0 0 0-.89 1.65 1.65 0 0 1-.49-1.19A1.66 1.66 0 0 1 7 6.37l2.83-2.84a1.68 1.68 0 1 1 2.37 2.38l-.62.62a.63.63 0 1 0 .89.88l.62-.62a2.93 2.93 0 0 0 0-4.15Z"/>
-          <path d="M8.61 6.77a.64.64 0 0 0 0 .89 1.68 1.68 0 0 1 0 2.37l-2.44 2.44a1.68 1.68 0 0 1-2.38 0 1.7 1.7 0 0 1 0-2.38l.15-.09a.64.64 0 0 0 0-.89.63.63 0 0 0-.88 0l-.15.15a3 3 0 0 0 0 4.15 3 3 0 0 0 4.15 0l2.43-2.44a2.9 2.9 0 0 0 .86-2.07 2.93 2.93 0 0 0-.85-2.13.64.64 0 0 0-.89 0Z"/>
-        </svg>
-      </button>
-    <!--/lit-part--></template>
-  <h3 id="blockquote" tabindex="-1">
-    <a href="#blockquote">Blockquote</a>
-      </h3>
-    </uxdot-copy-permalink>
-<p>Blockquotes are emphasized blocks of text that include a quote icon and attribution.</p>
-  <uxdot-example>
-    <rh-blockquote>
-      <p>The moment we have an idea, we can start building the product</p>
-      <span slot="author">John Smith</span>
-      <span slot="title">Senior Director, Dev Ops, Acme Corporation</span>
-    </rh-blockquote>
-  </uxdot-example>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
-    :host {
-      display: flex;
-      margin-block-end: var(--rh-space-lg, 16px);
-      align-items: center;
-    }
-
-    svg {
-      width: var(--rh-size-icon-02, 24px);
-    }
-
-    #signifier {
-      display: var(--perma-signifier-display, none);
-    }
-
-    #button {
-      height: 1.75rem;
-      background: none;
-      border: none;
-      display: flex;
-      align-items: center;
-    }
-
-    #button:is(:hover, :focus) {
-      background: var(--rh-color-surface-light, #e0e0e0);
-    }
-
-    ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-      display: flex;
-      margin-block-end: 0 !important;
-      align-items: center;
-      color: inherit;
-      text-decoration: inherit;
-    }
-  </style><!--lit-part TTkZeYC7lsg=-->
-      <!--lit-node 0--><slot ></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button  id="button" aria-label="Copy link to clipboard" aria-label="Copy link to clipboard">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-          <path d="M13.09 2.64a3 3 0 0 0-4.15 0L6.1 5.49a2.93 2.93 0 0 0 0 4.15.63.63 0 0 0 .88 0 .64.64 0 0 0 0-.89 1.65 1.65 0 0 1-.49-1.19A1.66 1.66 0 0 1 7 6.37l2.83-2.84a1.68 1.68 0 1 1 2.37 2.38l-.62.62a.63.63 0 1 0 .89.88l.62-.62a2.93 2.93 0 0 0 0-4.15Z"/>
-          <path d="M8.61 6.77a.64.64 0 0 0 0 .89 1.68 1.68 0 0 1 0 2.37l-2.44 2.44a1.68 1.68 0 0 1-2.38 0 1.7 1.7 0 0 1 0-2.38l.15-.09a.64.64 0 0 0 0-.89.63.63 0 0 0-.88 0l-.15.15a3 3 0 0 0 0 4.15 3 3 0 0 0 4.15 0l2.43-2.44a2.9 2.9 0 0 0 .86-2.07 2.93 2.93 0 0 0-.85-2.13.64.64 0 0 0-.89 0Z"/>
-        </svg>
-      </button>
-    <!--/lit-part--></template>
-  <h3 id="title" tabindex="-1">
-    <a href="#title">Title</a>
-      </h3>
-    </uxdot-copy-permalink>
-<p>Titles disclose extra information above headlines or other content.</p>
-  <uxdot-example>
-    <div>
-      <p class="mock-title">Linux platforms</p>
-      <p class="mock-h2">Red&nbsp;Hat Enterprise Linux</p>
-    </div>
-  </uxdot-example>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
-    :host {
-      display: flex;
-      margin-block-end: var(--rh-space-lg, 16px);
-      align-items: center;
-    }
-
-    svg {
-      width: var(--rh-size-icon-02, 24px);
-    }
-
-    #signifier {
-      display: var(--perma-signifier-display, none);
-    }
-
-    #button {
-      height: 1.75rem;
-      background: none;
-      border: none;
-      display: flex;
-      align-items: center;
-    }
-
-    #button:is(:hover, :focus) {
-      background: var(--rh-color-surface-light, #e0e0e0);
-    }
-
-    ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-      display: flex;
-      margin-block-end: 0 !important;
-      align-items: center;
-      color: inherit;
-      text-decoration: inherit;
-    }
-  </style><!--lit-part TTkZeYC7lsg=-->
-      <!--lit-node 0--><slot ></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button  id="button" aria-label="Copy link to clipboard" aria-label="Copy link to clipboard">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-          <path d="M13.09 2.64a3 3 0 0 0-4.15 0L6.1 5.49a2.93 2.93 0 0 0 0 4.15.63.63 0 0 0 .88 0 .64.64 0 0 0 0-.89 1.65 1.65 0 0 1-.49-1.19A1.66 1.66 0 0 1 7 6.37l2.83-2.84a1.68 1.68 0 1 1 2.37 2.38l-.62.62a.63.63 0 1 0 .89.88l.62-.62a2.93 2.93 0 0 0 0-4.15Z"/>
-          <path d="M8.61 6.77a.64.64 0 0 0 0 .89 1.68 1.68 0 0 1 0 2.37l-2.44 2.44a1.68 1.68 0 0 1-2.38 0 1.7 1.7 0 0 1 0-2.38l.15-.09a.64.64 0 0 0 0-.89.63.63 0 0 0-.88 0l-.15.15a3 3 0 0 0 0 4.15 3 3 0 0 0 4.15 0l2.43-2.44a2.9 2.9 0 0 0 .86-2.07 2.93 2.93 0 0 0-.85-2.13.64.64 0 0 0-.89 0Z"/>
-        </svg>
-      </button>
-    <!--/lit-part--></template>
-  <h3 id="body-copy" tabindex="-1">
-    <a href="#body-copy">Body copy</a>
-      </h3>
-    </uxdot-copy-permalink>
-<p>Body copy is a block of text that can include links or lists.</p>
-  <uxdot-example>
-    <div>
-      <p>We support Red&nbsp;Hat Enterprise Linux on multiple architectures—from <a href="#">IBM Power servers</a> and IBM Z mainframes to Arm microchips that power cloud workloads—so you can choose the right hardware for the right workload. All while using a single OS with a standardized experience.</p>
-    </div>
-  </uxdot-example>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
-    :host {
-      display: flex;
-      margin-block-end: var(--rh-space-lg, 16px);
-      align-items: center;
-    }
-
-    svg {
-      width: var(--rh-size-icon-02, 24px);
-    }
-
-    #signifier {
-      display: var(--perma-signifier-display, none);
-    }
-
-    #button {
-      height: 1.75rem;
-      background: none;
-      border: none;
-      display: flex;
-      align-items: center;
-    }
-
-    #button:is(:hover, :focus) {
-      background: var(--rh-color-surface-light, #e0e0e0);
-    }
-
-    ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-      display: flex;
-      margin-block-end: 0 !important;
-      align-items: center;
-      color: inherit;
-      text-decoration: inherit;
-    }
-  </style><!--lit-part TTkZeYC7lsg=-->
-      <!--lit-node 0--><slot ></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button  id="button" aria-label="Copy link to clipboard" aria-label="Copy link to clipboard">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-          <path d="M13.09 2.64a3 3 0 0 0-4.15 0L6.1 5.49a2.93 2.93 0 0 0 0 4.15.63.63 0 0 0 .88 0 .64.64 0 0 0 0-.89 1.65 1.65 0 0 1-.49-1.19A1.66 1.66 0 0 1 7 6.37l2.83-2.84a1.68 1.68 0 1 1 2.37 2.38l-.62.62a.63.63 0 1 0 .89.88l.62-.62a2.93 2.93 0 0 0 0-4.15Z"/>
-          <path d="M8.61 6.77a.64.64 0 0 0 0 .89 1.68 1.68 0 0 1 0 2.37l-2.44 2.44a1.68 1.68 0 0 1-2.38 0 1.7 1.7 0 0 1 0-2.38l.15-.09a.64.64 0 0 0 0-.89.63.63 0 0 0-.88 0l-.15.15a3 3 0 0 0 0 4.15 3 3 0 0 0 4.15 0l2.43-2.44a2.9 2.9 0 0 0 .86-2.07 2.93 2.93 0 0 0-.85-2.13.64.64 0 0 0-.89 0Z"/>
-        </svg>
-      </button>
-    <!--/lit-part--></template>
-  <h3 id="code" tabindex="-1">
-    <a href="#code">Code</a>
-      </h3>
-    </uxdot-copy-permalink>
-<p>Code is text that features a monospace font that can be used for coding purposes.</p>
-  <uxdot-example>
-    <pre>      <code>
-for (i = (numElementsReturned - 1); i &gt;= 0; i--) {
-  console.log('Hello World');
-}
-     </code>
-    </pre>
-  </uxdot-example>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
-    :host {
-      display: flex;
-      margin-block-end: var(--rh-space-lg, 16px);
-      align-items: center;
-    }
-
-    svg {
-      width: var(--rh-size-icon-02, 24px);
-    }
-
-    #signifier {
-      display: var(--perma-signifier-display, none);
-    }
-
-    #button {
-      height: 1.75rem;
-      background: none;
-      border: none;
-      display: flex;
-      align-items: center;
-    }
-
-    #button:is(:hover, :focus) {
-      background: var(--rh-color-surface-light, #e0e0e0);
-    }
-
-    ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-      display: flex;
-      margin-block-end: 0 !important;
-      align-items: center;
-      color: inherit;
-      text-decoration: inherit;
-    }
-  </style><!--lit-part TTkZeYC7lsg=-->
-      <!--lit-node 0--><slot ></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button  id="button" aria-label="Copy link to clipboard" aria-label="Copy link to clipboard">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-          <path d="M13.09 2.64a3 3 0 0 0-4.15 0L6.1 5.49a2.93 2.93 0 0 0 0 4.15.63.63 0 0 0 .88 0 .64.64 0 0 0 0-.89 1.65 1.65 0 0 1-.49-1.19A1.66 1.66 0 0 1 7 6.37l2.83-2.84a1.68 1.68 0 1 1 2.37 2.38l-.62.62a.63.63 0 1 0 .89.88l.62-.62a2.93 2.93 0 0 0 0-4.15Z"/>
-          <path d="M8.61 6.77a.64.64 0 0 0 0 .89 1.68 1.68 0 0 1 0 2.37l-2.44 2.44a1.68 1.68 0 0 1-2.38 0 1.7 1.7 0 0 1 0-2.38l.15-.09a.64.64 0 0 0 0-.89.63.63 0 0 0-.88 0l-.15.15a3 3 0 0 0 0 4.15 3 3 0 0 0 4.15 0l2.43-2.44a2.9 2.9 0 0 0 .86-2.07 2.93 2.93 0 0 0-.85-2.13.64.64 0 0 0-.89 0Z"/>
-        </svg>
-      </button>
-    <!--/lit-part--></template>
-  <h3 id="line-length" tabindex="-1">
-    <a href="#line-length">Line length</a>
-      </h3>
-    </uxdot-copy-permalink>
-<p>Headline and body copy line lengths aren’t measured by the number of characters. Instead, all text styles have a <strong>minimum width of three grid columns</strong> and a <strong>maximum width of eight grid columns</strong> on all screen sizes.</p>
-</section>
-<section aria-labelledby="scale">
-<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>
-    :host {
-      display: flex;
-      margin-block-end: var(--rh-space-lg, 16px);
-      align-items: center;
-    }
-
-    svg {
-      width: var(--rh-size-icon-02, 24px);
-    }
-
-    #signifier {
-      display: var(--perma-signifier-display, none);
-    }
-
-    #button {
-      height: 1.75rem;
-      background: none;
-      border: none;
-      display: flex;
-      align-items: center;
-    }
-
-    #button:is(:hover, :focus) {
-      background: var(--rh-color-surface-light, #e0e0e0);
-    }
-
-    ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-      display: flex;
-      margin-block-end: 0 !important;
-      align-items: center;
-      color: inherit;
-      text-decoration: inherit;
-    }
-  </style><!--lit-part TTkZeYC7lsg=-->
-      <!--lit-node 0--><slot ></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button  id="button" aria-label="Copy link to clipboard" aria-label="Copy link to clipboard">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-          <path d="M13.09 2.64a3 3 0 0 0-4.15 0L6.1 5.49a2.93 2.93 0 0 0 0 4.15.63.63 0 0 0 .88 0 .64.64 0 0 0 0-.89 1.65 1.65 0 0 1-.49-1.19A1.66 1.66 0 0 1 7 6.37l2.83-2.84a1.68 1.68 0 1 1 2.37 2.38l-.62.62a.63.63 0 1 0 .89.88l.62-.62a2.93 2.93 0 0 0 0-4.15Z"/>
-          <path d="M8.61 6.77a.64.64 0 0 0 0 .89 1.68 1.68 0 0 1 0 2.37l-2.44 2.44a1.68 1.68 0 0 1-2.38 0 1.7 1.7 0 0 1 0-2.38l.15-.09a.64.64 0 0 0 0-.89.63.63 0 0 0-.88 0l-.15.15a3 3 0 0 0 0 4.15 3 3 0 0 0 4.15 0l2.43-2.44a2.9 2.9 0 0 0 .86-2.07 2.93 2.93 0 0 0-.85-2.13.64.64 0 0 0-.89 0Z"/>
-        </svg>
-      </button>
-    <!--/lit-part--></template>
-  <h2 id="scale" tabindex="-1">
-    <a href="#scale">Scale</a>
-      </h2>
-    </uxdot-copy-permalink>
-<p>The type scale features a range of text sizes and weights created to support the needs of various kinds of content. There’s a type scale for desktop and mobile breakpoints.</p>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
-    :host {
-      display: flex;
-      margin-block-end: var(--rh-space-lg, 16px);
-      align-items: center;
-    }
-
-    svg {
-      width: var(--rh-size-icon-02, 24px);
-    }
-
-    #signifier {
-      display: var(--perma-signifier-display, none);
-    }
-
-    #button {
-      height: 1.75rem;
-      background: none;
-      border: none;
-      display: flex;
-      align-items: center;
-    }
-
-    #button:is(:hover, :focus) {
-      background: var(--rh-color-surface-light, #e0e0e0);
-    }
-
-    ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-      display: flex;
-      margin-block-end: 0 !important;
-      align-items: center;
-      color: inherit;
-      text-decoration: inherit;
-    }
-  </style><!--lit-part TTkZeYC7lsg=-->
-      <!--lit-node 0--><slot ></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button  id="button" aria-label="Copy link to clipboard" aria-label="Copy link to clipboard">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-          <path d="M13.09 2.64a3 3 0 0 0-4.15 0L6.1 5.49a2.93 2.93 0 0 0 0 4.15.63.63 0 0 0 .88 0 .64.64 0 0 0 0-.89 1.65 1.65 0 0 1-.49-1.19A1.66 1.66 0 0 1 7 6.37l2.83-2.84a1.68 1.68 0 1 1 2.37 2.38l-.62.62a.63.63 0 1 0 .89.88l.62-.62a2.93 2.93 0 0 0 0-4.15Z"/>
-          <path d="M8.61 6.77a.64.64 0 0 0 0 .89 1.68 1.68 0 0 1 0 2.37l-2.44 2.44a1.68 1.68 0 0 1-2.38 0 1.7 1.7 0 0 1 0-2.38l.15-.09a.64.64 0 0 0 0-.89.63.63 0 0 0-.88 0l-.15.15a3 3 0 0 0 0 4.15 3 3 0 0 0 4.15 0l2.43-2.44a2.9 2.9 0 0 0 .86-2.07 2.93 2.93 0 0 0-.85-2.13.64.64 0 0 0-.89 0Z"/>
-        </svg>
-      </button>
-    <!--/lit-part--></template>
-  <h3 id="desktop-scale" tabindex="-1">
-    <a href="#desktop-scale">Desktop scale</a>
-      </h3>
-    </uxdot-copy-permalink>
-  <rh-table>
-    <table>
-      <thead>
-        <tr>
-          <th scope="col" data-label="Style">Style</th>
-          <th scope="col" data-label="Font / weight">Font / weight</th>
-          <th scope="col" data-label="Size / Line height">Size / Line height</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td data-label="Style">Headline, 2xl</td>
-          <td data-label="Font / weight"> --- </td>
-          <td data-label="Size / Line height"> --- </td>
-        </tr>
-        <tr>
-          <td data-label="Style">Headline, xl</td>
-          <td data-label="Font / weight"> --- </td>
-          <td data-label="Size / Line height"> --- </td>
-        </tr>
-        <tr>
-          <td data-label="Style">Headline, lg</td>
-          <td data-label="Font / weight"> --- </td>
-          <td data-label="Size / Line height"> --- </td>
-        </tr>
-        <tr>
-          <td data-label="Style">Headline, md</td>
-          <td data-label="Font / weight"> --- </td>
-          <td data-label="Size / Line height"> --- </td>
-        </tr>
-        <tr>
-          <td data-label="Style">Headline, sm</td>
-          <td data-label="Font / weight"> --- </td>
-          <td data-label="Size / Line height"> --- </td>
-        </tr>
-        <tr>
-          <td data-label="Style">Headline, xs</td>
-          <td data-label="Font / weight"> --- </td>
-          <td data-label="Size / Line height"> --- </td>
-        </tr>
-        <tr>
-          <td data-label="Style">Blockquote, lg</td>
-          <td data-label="Font / weight"> --- </td>
-          <td data-label="Size / Line height"> --- </td>
-        </tr>
-        <tr>
-          <td data-label="Style">Blockquote, sm</td>
-          <td data-label="Font / weight"> --- </td>
-          <td data-label="Size / Line height"> --- </td>
-        </tr>
-        <tr>
-          <td data-label="Style">Layout title</td>
-          <td data-label="Font / weight"> --- </td>
-          <td data-label="Size / Line height"> --- </td>
-        </tr>
-        <tr>
-          <td data-label="Style">Card title</td>
-          <td data-label="Font / weight"> --- </td>
-          <td data-label="Size / Line height"> --- </td>
-        </tr>
-        <tr>
-          <td data-label="Style">Body copy, 2xl</td>
-          <td data-label="Font / weight"> --- </td>
-          <td data-label="Size / Line height"> --- </td>
-        </tr>
-        <tr>
-          <td data-label="Style">Body copy, xl</td>
-          <td data-label="Font / weight"> --- </td>
-          <td data-label="Size / Line height"> --- </td>
-        </tr>
-        <tr>
-          <td data-label="Style">Body copy, lg</td>
-          <td data-label="Font / weight"> --- </td>
-          <td data-label="Size / Line height"> --- </td>
-        </tr>
-        <tr>
-          <td data-label="Style">Body copy, md</td>
-          <td data-label="Font / weight"> --- </td>
-          <td data-label="Size / Line height"> --- </td>
-        </tr>
-        <tr>
-          <td data-label="Style">Body copy, sm</td>
-          <td data-label="Font / weight"> --- </td>
-          <td data-label="Size / Line height"> --- </td>
-        </tr>
-        <tr>
-          <td data-label="Style">Body copy, xs</td>
-          <td data-label="Font / weight"> --- </td>
-          <td data-label="Size / Line height"> --- </td>
-        </tr>
-      </tbody>
-    </table>
-  </rh-table>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
-    :host {
-      display: flex;
-      margin-block-end: var(--rh-space-lg, 16px);
-      align-items: center;
-    }
-
-    svg {
-      width: var(--rh-size-icon-02, 24px);
-    }
-
-    #signifier {
-      display: var(--perma-signifier-display, none);
-    }
-
-    #button {
-      height: 1.75rem;
-      background: none;
-      border: none;
-      display: flex;
-      align-items: center;
-    }
-
-    #button:is(:hover, :focus) {
-      background: var(--rh-color-surface-light, #e0e0e0);
-    }
-
-    ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-      display: flex;
-      margin-block-end: 0 !important;
-      align-items: center;
-      color: inherit;
-      text-decoration: inherit;
-    }
-  </style><!--lit-part TTkZeYC7lsg=-->
-      <!--lit-node 0--><slot ></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button  id="button" aria-label="Copy link to clipboard" aria-label="Copy link to clipboard">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-          <path d="M13.09 2.64a3 3 0 0 0-4.15 0L6.1 5.49a2.93 2.93 0 0 0 0 4.15.63.63 0 0 0 .88 0 .64.64 0 0 0 0-.89 1.65 1.65 0 0 1-.49-1.19A1.66 1.66 0 0 1 7 6.37l2.83-2.84a1.68 1.68 0 1 1 2.37 2.38l-.62.62a.63.63 0 1 0 .89.88l.62-.62a2.93 2.93 0 0 0 0-4.15Z"/>
-          <path d="M8.61 6.77a.64.64 0 0 0 0 .89 1.68 1.68 0 0 1 0 2.37l-2.44 2.44a1.68 1.68 0 0 1-2.38 0 1.7 1.7 0 0 1 0-2.38l.15-.09a.64.64 0 0 0 0-.89.63.63 0 0 0-.88 0l-.15.15a3 3 0 0 0 0 4.15 3 3 0 0 0 4.15 0l2.43-2.44a2.9 2.9 0 0 0 .86-2.07 2.93 2.93 0 0 0-.85-2.13.64.64 0 0 0-.89 0Z"/>
-        </svg>
-      </button>
-    <!--/lit-part--></template>
-  <h3 id="mobile-scale" tabindex="-1">
-    <a href="#mobile-scale">Mobile scale</a>
-      </h3>
-    </uxdot-copy-permalink>
-<p>When larger text styles are used on smaller screens, they <strong>automatically decrease in size to fit smaller layouts</strong> better. The mobile type scale is applied when the Tablet, portrait breakpoint is reached or when a screen becomes less than 768px wide.</p>
-  <rh-table>
-    <table>
-      <thead>
-        <tr>
-          <th scope="col" data-label="Style">Style</th>
-          <th scope="col" data-label="Font / weight">Font / weight</th>
-          <th scope="col" data-label="Size / Line height">Size / Line height</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td data-label="Style">Headline, 2xl</td>
-          <td data-label="Font / weight"> --- </td>
-          <td data-label="Size / Line height"> --- </td>
-        </tr>
-        <tr>
-          <td data-label="Style">Headline, xl</td>
-          <td data-label="Font / weight"> --- </td>
-          <td data-label="Size / Line height"> --- </td>
-        </tr>
-        <tr>
-          <td data-label="Style">Headline, lg</td>
-          <td data-label="Font / weight"> --- </td>
-          <td data-label="Size / Line height"> --- </td>
-        </tr>
-        <tr>
-          <td data-label="Style">Headline, md</td>
-          <td data-label="Font / weight"> --- </td>
-          <td data-label="Size / Line height"> --- </td>
-        </tr>
-        <tr>
-          <td data-label="Style">Headline, sm</td>
-          <td data-label="Font / weight"> --- </td>
-          <td data-label="Size / Line height"> --- </td>
-        </tr>
-        <tr>
-          <td data-label="Style">Headline, xs</td>
-          <td data-label="Font / weight"> --- </td>
-          <td data-label="Size / Line height"> --- </td>
-        </tr>
-        <tr>
-          <td data-label="Style">Blockquote, lg</td>
-          <td data-label="Font / weight"> --- </td>
-          <td data-label="Size / Line height"> --- </td>
-        </tr>
-        <tr>
-          <td data-label="Style">Blockquote, sm</td>
-          <td data-label="Font / weight"> --- </td>
-          <td data-label="Size / Line height"> --- </td>
-        </tr>
-        <tr>
-          <td data-label="Style">Layout title</td>
-          <td data-label="Font / weight"> --- </td>
-          <td data-label="Size / Line height"> --- </td>
-        </tr>
-        <tr>
-          <td data-label="Style">Card title</td>
-          <td data-label="Font / weight"> --- </td>
-          <td data-label="Size / Line height"> --- </td>
-        </tr>
-        <tr>
-          <td data-label="Style">Body copy, 2xl</td>
-          <td data-label="Font / weight"> --- </td>
-          <td data-label="Size / Line height"> --- </td>
-        </tr>
-        <tr>
-          <td data-label="Style">Body copy, xl</td>
-          <td data-label="Font / weight"> --- </td>
-          <td data-label="Size / Line height"> --- </td>
-        </tr>
-        <tr>
-          <td data-label="Style">Body copy, lg</td>
-          <td data-label="Font / weight"> --- </td>
-          <td data-label="Size / Line height"> --- </td>
-        </tr>
-        <tr>
-          <td data-label="Style">Body copy, md</td>
-          <td data-label="Font / weight"> --- </td>
-          <td data-label="Size / Line height"> --- </td>
-        </tr>
-        <tr>
-          <td data-label="Style">Body copy, sm</td>
-          <td data-label="Font / weight"> --- </td>
-          <td data-label="Size / Line height"> --- </td>
-        </tr>
-        <tr>
-          <td data-label="Style">Body copy, xs</td>
-          <td data-label="Font / weight"> --- </td>
-          <td data-label="Size / Line height"> --- </td>
-        </tr>      
-      </tbody>
-    </table>  
-  </rh-table>
-</section>
-<section aria-labelledby="usage">
-<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>
-    :host {
-      display: flex;
-      margin-block-end: var(--rh-space-lg, 16px);
-      align-items: center;
-    }
-
-    svg {
-      width: var(--rh-size-icon-02, 24px);
-    }
-
-    #signifier {
-      display: var(--perma-signifier-display, none);
-    }
-
-    #button {
-      height: 1.75rem;
-      background: none;
-      border: none;
-      display: flex;
-      align-items: center;
-    }
-
-    #button:is(:hover, :focus) {
-      background: var(--rh-color-surface-light, #e0e0e0);
-    }
-
-    ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-      display: flex;
-      margin-block-end: 0 !important;
-      align-items: center;
-      color: inherit;
-      text-decoration: inherit;
-    }
-  </style><!--lit-part TTkZeYC7lsg=-->
-      <!--lit-node 0--><slot ></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button  id="button" aria-label="Copy link to clipboard" aria-label="Copy link to clipboard">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-          <path d="M13.09 2.64a3 3 0 0 0-4.15 0L6.1 5.49a2.93 2.93 0 0 0 0 4.15.63.63 0 0 0 .88 0 .64.64 0 0 0 0-.89 1.65 1.65 0 0 1-.49-1.19A1.66 1.66 0 0 1 7 6.37l2.83-2.84a1.68 1.68 0 1 1 2.37 2.38l-.62.62a.63.63 0 1 0 .89.88l.62-.62a2.93 2.93 0 0 0 0-4.15Z"/>
-          <path d="M8.61 6.77a.64.64 0 0 0 0 .89 1.68 1.68 0 0 1 0 2.37l-2.44 2.44a1.68 1.68 0 0 1-2.38 0 1.7 1.7 0 0 1 0-2.38l.15-.09a.64.64 0 0 0 0-.89.63.63 0 0 0-.88 0l-.15.15a3 3 0 0 0 0 4.15 3 3 0 0 0 4.15 0l2.43-2.44a2.9 2.9 0 0 0 .86-2.07 2.93 2.93 0 0 0-.85-2.13.64.64 0 0 0-.89 0Z"/>
-        </svg>
-      </button>
-    <!--/lit-part--></template>
-  <h2 id="usage" tabindex="-1">
-    <a href="#usage">Usage</a>
-      </h2>
-    </uxdot-copy-permalink>
-<p>Each text style has its own unique hierarchy and application. Text styles can be used in layouts and in components to communicate messages or entice users to take an action.</p>
-  <div class="grid xs-two-columns md-three-columns">
-    <div>
-      <h3 id="headline-2xl">Headline, 2xl</h3>
-      <p>The largest headline available. Use in big hero layouts, like Summit or campaign pages. <strong>Reserved for marketing use cases only.</strong></p>
-    </div>
-    <div>
-      <h3 id="headline-xl">Headline, xl</h3>
-      <p>The second largest headline available. Use in hero layouts, like the home page or a product page. <strong>Reserved for marketing use cases only.</strong></p>
-    </div>
-    <div>
-      <h3 id="headline-lg">Headline, lg</h3>
-      <p>The primary headline for important layouts that aren’t the hero. Try and use only once per page, otherwise use the Headline 2 style.</p>
-    </div>
-    <div>
-      <h3 id="headline-md">Headline, md</h3>
-      <p>The secondary headline for important layouts that are lower in hierarchy. Use this style multiple times per page.</p>
-    </div>
-    <div>
-      <h3 id="headline-sm">Headline, sm</h3>
-      <p>The tertiary headline for other layouts lower in hierarchy. Use this style in components like a Card or in multiple layouts per page.</p>
-    </div>
-    <div>
-      <h3 id="headline-xs">Headline, xs</h3>
-      <p>The smallest headline available. Use this style under larger headlines or in select components, like an Accordion.</p>
-    </div>
-    <div>
-      <h3 id="blockquote-lg">Blockquote, lg</h3>
-      <p>The larger style for adding more emphasis to blockquotes. Try not to use this style around other content, otherwise use the <em>Blockquote, sm</em> style.</p>
-    </div>
-    <div>
-      <h3 id="blockquote-sm">Blockquote, sm</h3>
-      <p>The smaller style for all blockquotes. Use this style around other content or in smaller layouts and components, like a Card.</p>
-    </div>
-    <div>
-      <h3 id="layout-title">Layout title</h3>
-      <p>The larger style for an important title. Use this style above larger headlines or above important content in any layout.</p>
-    </div>
-    <div>
-      <h3 id="card-title">Card title</h3>
-      <p>The smaller style for less important titles. Use this style above headlines in smaller layouts only, like a Card.</p>
-    </div>
-    <div>
-      <h3 id="body-copy-2xl">Body copy, 2xl</h3>
-      <p>The largest body copy style. Use this style for long-form content only, like Topic and Article pages. Text should not exceed 8 columns in width for optimal readability.</p>
-    </div>
-    <div>
-      <h3 id="body-copy-xl">Body copy, xl</h3>
-      <p>The largest body copy style. Use this style for long-form content only, like Topic and Article pages. Text should not exceed 8 columns in width for optimal readability.</p>
-    </div>
-    <div>
-      <h3 id="body-copy-lg">Body copy, lg</h3>
-      <p>The base body copy style for marketing use cases only, unless an app interface calls for a larger text size. Text should not exceed 8 columns in width for optimal readability.</p>
-    </div>
-    <div>
-      <h3 id="body-copy-md">Body copy, md</h3>
-      <p>The base body copy style for app interfaces or some smaller components, unless a marketing use case calls for a smaller text size. Text should not exceed 7 columns in width for optimal readability.</p>
-    </div>
-    <div>
-      <h3 id="body-copy-sm">Body copy, sm</h3>
-      <p>The supporting body copy style for all use cases, like under Form fields or for attribution purposes. Text should not exceed 7 columns in width for optimal readability.</p>
-    </div>
-    <div>
-      <h3 id="body-copy-xs">Body copy, xs</h3>
-      <p>The smallest body copy style for legal or footnote use cases only. Text should not exceed 7 columns in width for optimal readability.</p>
-    </div>
-  </div>
-</section>
-<section aria-labelledby="best-practices">
-<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>
-    :host {
-      display: flex;
-      margin-block-end: var(--rh-space-lg, 16px);
-      align-items: center;
-    }
-
-    svg {
-      width: var(--rh-size-icon-02, 24px);
-    }
-
-    #signifier {
-      display: var(--perma-signifier-display, none);
-    }
-
-    #button {
-      height: 1.75rem;
-      background: none;
-      border: none;
-      display: flex;
-      align-items: center;
-    }
-
-    #button:is(:hover, :focus) {
-      background: var(--rh-color-surface-light, #e0e0e0);
-    }
-
-    ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-      display: flex;
-      margin-block-end: 0 !important;
-      align-items: center;
-      color: inherit;
-      text-decoration: inherit;
-    }
-  </style><!--lit-part TTkZeYC7lsg=-->
-      <!--lit-node 0--><slot ></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button  id="button" aria-label="Copy link to clipboard" aria-label="Copy link to clipboard">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-          <path d="M13.09 2.64a3 3 0 0 0-4.15 0L6.1 5.49a2.93 2.93 0 0 0 0 4.15.63.63 0 0 0 .88 0 .64.64 0 0 0 0-.89 1.65 1.65 0 0 1-.49-1.19A1.66 1.66 0 0 1 7 6.37l2.83-2.84a1.68 1.68 0 1 1 2.37 2.38l-.62.62a.63.63 0 1 0 .89.88l.62-.62a2.93 2.93 0 0 0 0-4.15Z"/>
-          <path d="M8.61 6.77a.64.64 0 0 0 0 .89 1.68 1.68 0 0 1 0 2.37l-2.44 2.44a1.68 1.68 0 0 1-2.38 0 1.7 1.7 0 0 1 0-2.38l.15-.09a.64.64 0 0 0 0-.89.63.63 0 0 0-.88 0l-.15.15a3 3 0 0 0 0 4.15 3 3 0 0 0 4.15 0l2.43-2.44a2.9 2.9 0 0 0 .86-2.07 2.93 2.93 0 0 0-.85-2.13.64.64 0 0 0-.89 0Z"/>
-        </svg>
-      </button>
-    <!--/lit-part--></template>
-  <h2 id="best-practices" tabindex="-1">
-    <a href="#best-practices">Best practices</a>
-      </h2>
-    </uxdot-copy-permalink>
-<p>Don't use Red&nbsp;Hat Text for headlines.</p>
-  <uxdot-example danger="">
-    <p class="mock-h2 mock-body-text">Red&nbsp;Hat and open source</p>
-  </uxdot-example>
-<p>Don't use Red&nbsp;Hat Display for body copy.</p>
-  <uxdot-example danger="">
-    <div>
-      <p class="mock-header-text">We believe in collaboration. We believe in choice, control, and freedom. Open source values like meritocracy, community building, and transparency are changing the way we approach business and life.</p>  
-    </div>
-  </uxdot-example>
-<p>Don't space text styles too closely together.</p>
-  <uxdot-example danger="" alignment="left">
-    <p class="mock-title mock-no-margin">Linux platforms</p>
-    <p class="mock-h2 mock-no-margin">Red&nbsp;Hat Enterprise Linux</p>
-  </uxdot-example>
-<p>Don't stack lots of text styles too closely together.</p>
-  <uxdot-example danger="" alignment="left">
-    <p class="mock-h2 mock-no-margin">Headline, xl</p>
-    <p class="mock-h3 mock-no-margin">Headline, lg</p>
-    <p class="mock-h4 mock-no-margin">Headline, min-width</p>
-    <p class="mock-body-text mock-no-margin">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut suscipit aliquet mauris, in consequat lorem ullamcorper a. Curabitur tempor ante vitae ultrices dignissim.</p>
-  </uxdot-example>
-</section>
-<section aria-labelledby="behavior">
-<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>
-    :host {
-      display: flex;
-      margin-block-end: var(--rh-space-lg, 16px);
-      align-items: center;
-    }
-
-    svg {
-      width: var(--rh-size-icon-02, 24px);
-    }
-
-    #signifier {
-      display: var(--perma-signifier-display, none);
-    }
-
-    #button {
-      height: 1.75rem;
-      background: none;
-      border: none;
-      display: flex;
-      align-items: center;
-    }
-
-    #button:is(:hover, :focus) {
-      background: var(--rh-color-surface-light, #e0e0e0);
-    }
-
-    ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-      display: flex;
-      margin-block-end: 0 !important;
-      align-items: center;
-      color: inherit;
-      text-decoration: inherit;
-    }
-  </style><!--lit-part TTkZeYC7lsg=-->
-      <!--lit-node 0--><slot ></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button  id="button" aria-label="Copy link to clipboard" aria-label="Copy link to clipboard">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-          <path d="M13.09 2.64a3 3 0 0 0-4.15 0L6.1 5.49a2.93 2.93 0 0 0 0 4.15.63.63 0 0 0 .88 0 .64.64 0 0 0 0-.89 1.65 1.65 0 0 1-.49-1.19A1.66 1.66 0 0 1 7 6.37l2.83-2.84a1.68 1.68 0 1 1 2.37 2.38l-.62.62a.63.63 0 1 0 .89.88l.62-.62a2.93 2.93 0 0 0 0-4.15Z"/>
-          <path d="M8.61 6.77a.64.64 0 0 0 0 .89 1.68 1.68 0 0 1 0 2.37l-2.44 2.44a1.68 1.68 0 0 1-2.38 0 1.7 1.7 0 0 1 0-2.38l.15-.09a.64.64 0 0 0 0-.89.63.63 0 0 0-.88 0l-.15.15a3 3 0 0 0 0 4.15 3 3 0 0 0 4.15 0l2.43-2.44a2.9 2.9 0 0 0 .86-2.07 2.93 2.93 0 0 0-.85-2.13.64.64 0 0 0-.89 0Z"/>
-        </svg>
-      </button>
-    <!--/lit-part--></template>
-  <h2 id="behavior" tabindex="-1">
-    <a href="#behavior">Behavior</a>
-      </h2>
-    </uxdot-copy-permalink>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
-    :host {
-      display: flex;
-      margin-block-end: var(--rh-space-lg, 16px);
-      align-items: center;
-    }
-
-    svg {
-      width: var(--rh-size-icon-02, 24px);
-    }
-
-    #signifier {
-      display: var(--perma-signifier-display, none);
-    }
-
-    #button {
-      height: 1.75rem;
-      background: none;
-      border: none;
-      display: flex;
-      align-items: center;
-    }
-
-    #button:is(:hover, :focus) {
-      background: var(--rh-color-surface-light, #e0e0e0);
-    }
-
-    ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-      display: flex;
-      margin-block-end: 0 !important;
-      align-items: center;
-      color: inherit;
-      text-decoration: inherit;
-    }
-  </style><!--lit-part TTkZeYC7lsg=-->
-      <!--lit-node 0--><slot ></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button  id="button" aria-label="Copy link to clipboard" aria-label="Copy link to clipboard">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-          <path d="M13.09 2.64a3 3 0 0 0-4.15 0L6.1 5.49a2.93 2.93 0 0 0 0 4.15.63.63 0 0 0 .88 0 .64.64 0 0 0 0-.89 1.65 1.65 0 0 1-.49-1.19A1.66 1.66 0 0 1 7 6.37l2.83-2.84a1.68 1.68 0 1 1 2.37 2.38l-.62.62a.63.63 0 1 0 .89.88l.62-.62a2.93 2.93 0 0 0 0-4.15Z"/>
-          <path d="M8.61 6.77a.64.64 0 0 0 0 .89 1.68 1.68 0 0 1 0 2.37l-2.44 2.44a1.68 1.68 0 0 1-2.38 0 1.7 1.7 0 0 1 0-2.38l.15-.09a.64.64 0 0 0 0-.89.63.63 0 0 0-.88 0l-.15.15a3 3 0 0 0 0 4.15 3 3 0 0 0 4.15 0l2.43-2.44a2.9 2.9 0 0 0 .86-2.07 2.93 2.93 0 0 0-.85-2.13.64.64 0 0 0-.89 0Z"/>
-        </svg>
-      </button>
-    <!--/lit-part--></template>
-  <h3 id="responsive-design" tabindex="-1">
-    <a href="#responsive-design">Responsive design</a>
-      </h3>
-    </uxdot-copy-permalink>
-<p>Text styles decrease in size when screens become smaller. This shift helps users consume content better without additional scrolling.</p>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
-    :host {
-      display: flex;
-      margin-block-end: var(--rh-space-lg, 16px);
-      align-items: center;
-    }
-
-    svg {
-      width: var(--rh-size-icon-02, 24px);
-    }
-
-    #signifier {
-      display: var(--perma-signifier-display, none);
-    }
-
-    #button {
-      height: 1.75rem;
-      background: none;
-      border: none;
-      display: flex;
-      align-items: center;
-    }
-
-    #button:is(:hover, :focus) {
-      background: var(--rh-color-surface-light, #e0e0e0);
-    }
-
-    ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-      display: flex;
-      margin-block-end: 0 !important;
-      align-items: center;
-      color: inherit;
-      text-decoration: inherit;
-    }
-  </style><!--lit-part TTkZeYC7lsg=-->
-      <!--lit-node 0--><slot ></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button  id="button" aria-label="Copy link to clipboard" aria-label="Copy link to clipboard">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-          <path d="M13.09 2.64a3 3 0 0 0-4.15 0L6.1 5.49a2.93 2.93 0 0 0 0 4.15.63.63 0 0 0 .88 0 .64.64 0 0 0 0-.89 1.65 1.65 0 0 1-.49-1.19A1.66 1.66 0 0 1 7 6.37l2.83-2.84a1.68 1.68 0 1 1 2.37 2.38l-.62.62a.63.63 0 1 0 .89.88l.62-.62a2.93 2.93 0 0 0 0-4.15Z"/>
-          <path d="M8.61 6.77a.64.64 0 0 0 0 .89 1.68 1.68 0 0 1 0 2.37l-2.44 2.44a1.68 1.68 0 0 1-2.38 0 1.7 1.7 0 0 1 0-2.38l.15-.09a.64.64 0 0 0 0-.89.63.63 0 0 0-.88 0l-.15.15a3 3 0 0 0 0 4.15 3 3 0 0 0 4.15 0l2.43-2.44a2.9 2.9 0 0 0 .86-2.07 2.93 2.93 0 0 0-.85-2.13.64.64 0 0 0-.89 0Z"/>
-        </svg>
-      </button>
-    <!--/lit-part--></template>
-  <h3 id="desktop" tabindex="-1">
-    <a href="#desktop">Desktop</a>
-      </h3>
-    </uxdot-copy-permalink>
-  <uxdot-example width-adjustment="540px">
-    <img src="/assets/typography/typography-card-desktop.svg" alt="Card typography scale on desktop"> 
-  </uxdot-example>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
-    :host {
-      display: flex;
-      margin-block-end: var(--rh-space-lg, 16px);
-      align-items: center;
-    }
-
-    svg {
-      width: var(--rh-size-icon-02, 24px);
-    }
-
-    #signifier {
-      display: var(--perma-signifier-display, none);
-    }
-
-    #button {
-      height: 1.75rem;
-      background: none;
-      border: none;
-      display: flex;
-      align-items: center;
-    }
-
-    #button:is(:hover, :focus) {
-      background: var(--rh-color-surface-light, #e0e0e0);
-    }
-
-    ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-      display: flex;
-      margin-block-end: 0 !important;
-      align-items: center;
-      color: inherit;
-      text-decoration: inherit;
-    }
-  </style><!--lit-part TTkZeYC7lsg=-->
-      <!--lit-node 0--><slot ></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button  id="button" aria-label="Copy link to clipboard" aria-label="Copy link to clipboard">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-          <path d="M13.09 2.64a3 3 0 0 0-4.15 0L6.1 5.49a2.93 2.93 0 0 0 0 4.15.63.63 0 0 0 .88 0 .64.64 0 0 0 0-.89 1.65 1.65 0 0 1-.49-1.19A1.66 1.66 0 0 1 7 6.37l2.83-2.84a1.68 1.68 0 1 1 2.37 2.38l-.62.62a.63.63 0 1 0 .89.88l.62-.62a2.93 2.93 0 0 0 0-4.15Z"/>
-          <path d="M8.61 6.77a.64.64 0 0 0 0 .89 1.68 1.68 0 0 1 0 2.37l-2.44 2.44a1.68 1.68 0 0 1-2.38 0 1.7 1.7 0 0 1 0-2.38l.15-.09a.64.64 0 0 0 0-.89.63.63 0 0 0-.88 0l-.15.15a3 3 0 0 0 0 4.15 3 3 0 0 0 4.15 0l2.43-2.44a2.9 2.9 0 0 0 .86-2.07 2.93 2.93 0 0 0-.85-2.13.64.64 0 0 0-.89 0Z"/>
-        </svg>
-      </button>
-    <!--/lit-part--></template>
-  <h3 id="mobile" tabindex="-1">
-    <a href="#mobile">Mobile</a>
-      </h3>
-    </uxdot-copy-permalink>
-  <uxdot-example width-adjustment="363px">
-    <img src="/assets/typography/typography-card-mobile.svg" alt="Card typography scale on mobile">  
-  </uxdot-example>
-</section>
-<section aria-labelledby="interaction-states">
-<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>
-    :host {
-      display: flex;
-      margin-block-end: var(--rh-space-lg, 16px);
-      align-items: center;
-    }
-
-    svg {
-      width: var(--rh-size-icon-02, 24px);
-    }
-
-    #signifier {
-      display: var(--perma-signifier-display, none);
-    }
-
-    #button {
-      height: 1.75rem;
-      background: none;
-      border: none;
-      display: flex;
-      align-items: center;
-    }
-
-    #button:is(:hover, :focus) {
-      background: var(--rh-color-surface-light, #e0e0e0);
-    }
-
-    ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-      display: flex;
-      margin-block-end: 0 !important;
-      align-items: center;
-      color: inherit;
-      text-decoration: inherit;
-    }
-  </style><!--lit-part TTkZeYC7lsg=-->
-      <!--lit-node 0--><slot ></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button  id="button" aria-label="Copy link to clipboard" aria-label="Copy link to clipboard">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-          <path d="M13.09 2.64a3 3 0 0 0-4.15 0L6.1 5.49a2.93 2.93 0 0 0 0 4.15.63.63 0 0 0 .88 0 .64.64 0 0 0 0-.89 1.65 1.65 0 0 1-.49-1.19A1.66 1.66 0 0 1 7 6.37l2.83-2.84a1.68 1.68 0 1 1 2.37 2.38l-.62.62a.63.63 0 1 0 .89.88l.62-.62a2.93 2.93 0 0 0 0-4.15Z"/>
-          <path d="M8.61 6.77a.64.64 0 0 0 0 .89 1.68 1.68 0 0 1 0 2.37l-2.44 2.44a1.68 1.68 0 0 1-2.38 0 1.7 1.7 0 0 1 0-2.38l.15-.09a.64.64 0 0 0 0-.89.63.63 0 0 0-.88 0l-.15.15a3 3 0 0 0 0 4.15 3 3 0 0 0 4.15 0l2.43-2.44a2.9 2.9 0 0 0 .86-2.07 2.93 2.93 0 0 0-.85-2.13.64.64 0 0 0-.89 0Z"/>
-        </svg>
-      </button>
-    <!--/lit-part--></template>
-  <h2 id="interaction-states" tabindex="-1">
-    <a href="#interaction-states">Interaction states</a>
-      </h2>
-    </uxdot-copy-permalink>
-<p>Since typography can be used in a variety of components, refer to the specific interaction states that are assigned to each <a href="/elements">component</a> for more information</p>
-</section>
+<p>Designs that need to use non-Latin characters should fall back to <a href="https://fonts.google.com/noto/specimen/Noto+Sans">Noto Sans</a>. By loading language-specific fonts, the design system can accommodate mixed-language content. For more technical details, go to the <a href="https://ux.redhat.com/tokens/font/">Tokens</a> section.</p>
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Language">Language</th>
+        <th scope="col" data-label="Font family">Font family</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Language">Chinese</td>
+        <td data-label="Font family">Noto Sans Simplified Chinese</td>
+      </tr>
+      <tr>
+        <td data-label="Language">Japanese</td>
+        <td data-label="Font family">Noto Sans Japanese</td>
+      </tr>
+      <tr>
+        <td data-label="Language">Korean</td>
+        <td data-label="Font family">Noto Sans Korean</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
 <uxdot-feedback><template shadowroot="open" shadowrootmode="open"><style>
 
     :host {
@@ -5195,7 +4117,6 @@ for (i = (numElementsReturned - 1); i &gt;= 0; i--) {
   <h2 id="foundations">Foundations</h2>
   <p>To learn how to use our other foundations in your designs, visit the <a href="/foundations">foundations</a> section.</p>
 </uxdot-feedback>
-
   </div>
   
   </article>
