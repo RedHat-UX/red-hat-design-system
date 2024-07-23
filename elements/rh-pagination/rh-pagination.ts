@@ -25,13 +25,13 @@ const L2 = html`
 
 /**
  * A paginator allows users to navigate between pages of related content.
- *
  * @summary Allows users to navigate content divided into pages
- *
  * @slot            - An ordered list of links
  * @slot go-to-page - "Go to page" text, defaults to "Page"
  * @slot out-of     - "of" text
- *
+ * @csspart numeric-middle - container for the numeric control at medium screen widths
+ * @csspart numeric-end - container for the numeric control at small and large screen widths
+ * @csspart numeric - shared container for the numeric controls at all widths
  * @cssprop {<color>} --rh-pagination-accent-color
  *          Sets the outline color when the page input has focus.
  *          {@default `var(--rh-color-interactive-blue, #0066cc)`}
