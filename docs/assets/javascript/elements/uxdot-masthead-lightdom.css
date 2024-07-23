@@ -15,6 +15,10 @@ uxdot-masthead [slot="links"] span.display-xs {
   display: none;
 }
 
+uxdot-masthead a[slot="links"]:last-of-type {
+  margin-inline-end: var(--rh-space-md, 8px);
+}
+
 @container uxdot-masthead (min-width: 576px) {
   uxdot-masthead [slot="links"] span.display-xs {
     display: inline;

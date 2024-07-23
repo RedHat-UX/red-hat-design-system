@@ -83,7 +83,7 @@ class UxdotMasthead extends LitElement {
 
     @container (min-width: 992px) {
       #container {
-        grid-template-columns: 1fr max-content max-content;
+        grid-template-columns: 1fr max-content;
       }
 
       slot[name="hamburger"] {
