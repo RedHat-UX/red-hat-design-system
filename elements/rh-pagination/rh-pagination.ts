@@ -29,6 +29,7 @@ const L2 = html`
  * @slot            - An ordered list of links
  * @slot go-to-page - "Go to page" text, defaults to "Page"
  * @slot out-of     - "of" text
+ * @csspart container - pagination container
  * @csspart numeric-middle - container for the numeric control at medium screen widths
  * @csspart numeric-end - container for the numeric control at small and large screen widths
  * @csspart numeric - shared container for the numeric controls at all widths
@@ -140,7 +141,7 @@ export class RhPagination extends LitElement {
     const currentPage = this.#currentPage.toString();
 
     return html`
-      <div id="container"
+      <div id="container" part="container"
            class=${classMap({ [dir]: true, [on]: !!on, [`color-palette-${this.#internalColorPalette}`]: !!this.#internalColorPalette })}>
         <a id="first" class="stepper" href=${ifDefined(firstHref)} ?inert=${!firstHref} aria-label=${labelFirst}>${L2}</a>
         <a id="prev" class="stepper" href=${ifDefined(prevHref)} ?inert=${!prevHref} aria-label=${labelPrevious}>${L1}</a>
