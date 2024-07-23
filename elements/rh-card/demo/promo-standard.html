@@ -1,11 +1,11 @@
 <section id="standard">
   <rh-card variant="promo">
-    <p>The &rdquo;standard&ldquo; Promo. It has a paragraph and a CTA in the &rdquo;image&ldquo; slot.</p>
+    <p>The &rdquo;standard&ldquo; Promo. It has a paragraph in the default slot and a CTA in the footer slot.</p>
     <rh-cta slot="footer" href="#">Call to action</rh-cta>
   </rh-card>
 
-  <rh-card variant="promo">
-    <p>In this &rdquo;standard&ldquo; Promo, the slots get reversed using a class.</p>
+  <rh-card variant="promo" class="reverse">
+    <p>In this &rdquo;standard&ldquo; Promo, the slots can be reversed using a class and the <code>::part()</code> selector.</p>
     <rh-cta slot="footer" href="#">Call to action</rh-cta>
   </rh-card>
 
@@ -22,9 +22,17 @@
 
 <style>
   #standard {
+    container-type: inline-size;
+    container-name: standard;
     display: flex;
     flex-flow: column;
     gap: var(--rh-space-xl, 24px);
     margin: var(--rh-space-lg, 16px);
+  }
+
+  @container standard (min-width: 768px) {
+    .reverse::part(footer) {
+      order: -10;
+    }
   }
 </style>

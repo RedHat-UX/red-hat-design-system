@@ -1,5 +1,5 @@
 <rh-surface color-palette="lighter" id="full-width">
-  <rh-card variant="promo">
+  <rh-card variant="promo" full-width>
     <svg slot="image"
         role="img"
         aria-label="sample image"
@@ -17,7 +17,7 @@
     <rh-cta slot="footer" href="#">Call to action</rh-cta>
   </rh-card>
 
-  <rh-card variant="promo" class="reverse">
+  <rh-card variant="promo" full-width class="reverse">
     <svg slot="image"
         role="img"
         aria-label="sample image"
@@ -30,15 +30,15 @@
             height="100%"
             stroke-dasharray="1 1">
     </svg>
-    <h2 slot="header">Full Width Promo</h2>
-    <p>Using the <code>image</code> part to end-align the image</p>
+    <h2 slot="header">Full Width Promo - reverse</h2>
+    <p>Using the <code>container</code> and <code>image</code> parts to reverse and style the Promo.</p>
     <rh-cta slot="footer" href="#">Call to action</rh-cta>
   </rh-card>
 
-  <rh-card variant="promo">
+  <rh-card variant="promo" full-width>
     <h2 slot="header">Full Width Promo - No Image</h2>
     <p>This Promo is just like the last version, except this version doesn't have an
-       image in the <code>image</code> slot. Content flows around the empty image slot.</p>
+       image in the <code>image</code> slot. Without an image, this turns into a single column component.</p>
     <rh-cta slot="footer" href="#">Call to action</rh-cta>
   </rh-card>
 </rh-surface>
@@ -50,16 +50,25 @@
 </script>
 
 <style>
-  .reverse::part(image) {
-    order: 0;
+  rh-surface:first-of-type {
+    padding-block-start: var(--rh-space-lg, 16px);
   }
 
   #full-width {
     container: full-width / inline-size;
-    width: 100%;
     display: grid;
     gap: var(--rh-space-lg, 16px);
     grid-auto-rows: max-content;
+  }
+
+  @container full-width (min-width: 768px) {
+    .reverse::part(container) {
+      grid-template-columns: 1fr 2fr;
+    }
+    .reverse::part(image) {
+      justify-self: start;
+      order: -10;
+    }
   }
 
   [data-demo] {

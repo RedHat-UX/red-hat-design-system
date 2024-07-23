@@ -1,70 +1,76 @@
-<rh-surface id="container-width" color-palette="light">
-  <rh-card variant="promo">
-    <svg slot="image"
-         width="375"
-         height="249"
-         aria-label="sample image">
-      <rect fill="var(--rh-color-border-interactive-on-light, #0066cc)"
-        fill-opacity="0.1"
-        stroke="var(--rh-color-border-interactive-on-light, #0066cc)"
-        stroke-width="2px"
-        width="100%"
-        height="100%"
-        stroke-dasharray="1 1">
-    </svg>
-    <h2 slot="header">Promo</h2>
-    <p>Featured inline promo card has an image in the <code>image</code> slot,
-      a heading in the <code>header</code> slot, and a <abbr title="call to action">CTA</abbr>
-      in the <code>footer</code> slot, and body content.</p>
-    <rh-cta slot="footer" href="#">Call to action</rh-cta>
-  </rh-card>
 
-  <rh-card variant="promo" class="reverse">
-    <svg slot="image"
-         width="375"
-         height="249"
-         aria-label="sample image">
-      <rect fill="var(--rh-color-border-interactive-on-light, #0066cc)"
-        fill-opacity="0.1"
-        stroke="var(--rh-color-border-interactive-on-light, #0066cc)"
-        stroke-width="2px"
-        width="100%"
-        height="100%"
-        stroke-dasharray="1 1">
-    </svg>
-    <h2 slot="header">End-aligned image</h2>
-    <p>By selecting the <code>image</code> CSS Shadow Part, you may end-align the promo's image.</p>
-    <rh-cta slot="footer" href="#">Call to action</rh-cta>
-  </rh-card>
+<rh-card variant="promo">
+  <svg slot="image"
+       width="375"
+       height="250"
        role="img"
-       role="img"
+       aria-label="sample image">
+    <rect fill="var(--rh-color-border-interactive-on-light, #0066cc)"
+      fill-opacity="0.1"
+      stroke="var(--rh-color-border-interactive-on-light, #0066cc)"
+      stroke-width="2px"
+      width="100%"
+      height="100%"
+      stroke-dasharray="1 1">
+  </svg>
+  <h2 slot="header">Promo</h2>
+  <p>Featured promo card has an image in the <code>image</code> slot,
+    a heading in the <code>header</code> slot, and a <abbr title="call to action">CTA</abbr>
+    in the <code>footer</code> slot, and body content.</p>
+  <rh-cta slot="footer" href="#">Call to action</rh-cta>
+</rh-card>
 
-  <rh-card variant="promo">
-    <h2 slot="header">Featured: no image is okay too</h2>
-    <p>Sometimes, you may not have an image to go with your card. By omitting the slotted image,
-      the promo reverts to a single column.</p>
-    <rh-cta slot="footer" href="#">Call to action</rh-cta>
-  </rh-card>
-</rh-surface>
+<rh-card variant="promo" class="reverse">
+  <svg slot="image"
+       width="375"
+       height="250"
+       role="img"
+       aria-label="sample image">
+    <rect fill="var(--rh-color-border-interactive-on-light, #0066cc)"
+      fill-opacity="0.1"
+      stroke="var(--rh-color-border-interactive-on-light, #0066cc)"
+      stroke-width="2px"
+      width="100%"
+      height="100%"
+      stroke-dasharray="1 1">
+  </svg>
+  <h2 slot="header">Promo reversed</h2>
+  <p>By selecting the <code>image</code>and <code>body</code> CSS Shadow Parts, you can reverse the <code>image</code> and <code>body</code> shadow parts and adjust column widths.</p>
+  <rh-cta slot="footer" href="#">Call to action</rh-cta>
+</rh-card>
+
+<rh-card variant="promo">
+  <h2 slot="header">Featured: no image is okay too</h2>
+  <p>Sometimes, you may not have an image to go with your card. By omitting the slotted image,
+    the promo reverts to a single column.</p>
+  <rh-cta slot="footer" href="#">Call to action</rh-cta>
+</rh-card>
+
 
 <script type="module">
   import '@rhds/elements/rh-cta/rh-cta.js';
   import '@rhds/elements/rh-card/rh-card.js';
-  import '@rhds/elements/rh-surface/rh-surface.js';
 </script>
 
 <style>
-  .reverse::part(image) {
-    order: 0;
+  [data-demo] {
+    display: block;
+    padding: var(--rh-space-lg, 16px);
   }
 
-  #container-width {
-    container: full-width / inline-size;
-    width: 100%;
-    display: grid;
-    gap: var(--rh-space-lg, 16px);
-    grid-auto-rows: max-content;
+  rh-card[variant="promo"] {
+    container-name: promo;
+    container-type: inline-size;
+    margin-block-end: var(--rh-space-3xl, 48px);
   }
 
-  [data-demo] {display: contents;}
+  @container promo (min-width: 768px) {
+    .reverse::part(image) {
+      order: -10;
+      grid-column-end: 1;
+    }
+    .reverse::part(body) {
+      grid-column: span 2;
+    }
+  }
 </style>

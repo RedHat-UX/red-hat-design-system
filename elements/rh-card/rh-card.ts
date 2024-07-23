@@ -63,7 +63,15 @@ export class RhCard extends LitElement {
   @property({ reflect: true, attribute: 'color-palette' })
     colorPalette?: 'darkest' | 'lightest' | 'lighter';
 
+  /**
+   * Change the style of the card to be a "Promo"
+   */
   @property({ reflect: true }) variant?: 'promo';
+
+  /**
+   * Change a promo with an image + body + footer to use the "full width" style
+   */
+  @property({ reflect: true, type: Boolean }) fullWidth? = false;
 
   #slots = new SlotController(this, ...RhCard.slots);
 
