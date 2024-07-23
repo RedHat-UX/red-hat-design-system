@@ -3,29 +3,20 @@ uxdot-masthead {
   container-name: uxdot-masthead;
 }
 
-uxdot-masthead [slot="links"] span {
-  border: 0 !important;
-  clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
-  clip-path: inset(50%) !important;  /* 2 */
-  height: 1px !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  padding: 0 !important;
-  position: absolute !important;
-  width: 1px !important;
-  white-space: nowrap !important;
+uxdot-masthead a[slot="links"] {
+  color: var(--rh-color-text-primary-on-dark, #ffffff) !important;
+}
+
+uxdot-masthead a[slot="links"]:is(:hover, :focus) {
+  color: var(--rh-color-icon-subtle-hover, #a3a3a3) !important;
+}
+
+uxdot-masthead [slot="links"] span.display-xs {
+  display: none;
 }
 
 @container uxdot-masthead (min-width: 576px) {
-  uxdot-masthead [slot="links"] span {
-    clip: unset !important;
-    clip-path: unset !important;
-    height: unset !important;
-    margin: unset !important;
-    overflow: unset !important;
-    padding: unset !important;
-    position: unset !important;
-    width: unset !important;
-    white-space: unset !important;
+  uxdot-masthead [slot="links"] span.display-xs {
+    display: inline;
   }
 }

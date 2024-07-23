@@ -16,7 +16,7 @@ class UxdotMasthead extends LitElement {
 
     #container {
       display: grid;
-      gap: var(--rh-space-lg, 16px);
+      column-gap: var(--rh-space-lg, 16px);
       grid-template-columns: max-content 1fr max-content;
       max-height: var(--uxdot-masthead-max-height, 72px);
       margin-inline: var(--rh-space-md, 8px);
@@ -56,38 +56,28 @@ class UxdotMasthead extends LitElement {
       display: flex;
       flex-direction: row;
       align-items: center;
+      justify-self: flex-start;
       gap: var(--rh-space-md, 8px);
     }
 
-    slot[name="links"]::slotted(a) {
-      --pf-icon--size: 28px;
+    slot[name="links"] {
+      --pf-icon--size: 24px;
+      display: flex;
+      flex-direction: row;
+      column-gap: var(--rh-space-lg, 16px);
+    }
 
+    slot[name="links"]::slotted(a) {
       display: flex;
       flex-direction: row;
       gap: var(--rh-space-lg, 16px);
       align-items: center;
-      color: var(--rh-color-text-on-dark, #ffffff) !important;
-    }
-
-    slot[name="links"]:hover::slotted(a),
-    slot[name="links"]::slotted(a:hover) {
-      color: var(--rh-color-icon-subtle-hover, #a3a3a3) !important;
     }
 
     @container (min-width: 576px) {
       #container {
         gap: var(--rh-space-lg, 16px);
         margin: var(--rh-space-lg, 16px);
-      }
-
-      slot[name="links"]::slotted(span) {
-        clip: rect(0 0 0 0);
-        clip-path: inset(50%);
-        height: 1px;
-        overflow: hidden;
-        position: absolute;
-        white-space: nowrap;
-        width: 1px;
       }
     }
 
@@ -102,11 +92,6 @@ class UxdotMasthead extends LitElement {
 
       slot[name="logo"]::slotted(a) {
         margin-inline-start: var(--rh-space-lg, 16px);
-      }
-
-      slot[name="links"]::slotted(a) {
-
-        gap: var(--rh-space-md, 8px);
       }
     }
 
