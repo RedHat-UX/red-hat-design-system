@@ -36,16 +36,16 @@
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
     "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
     "@lit/context": "/assets/packages/@lit/context/index.js",
-    "lit-element": "/assets/packages/lit-element/index.js",
-    "lit": "/assets/packages/lit/index.js",
-    "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
-    "lit/static-html.js": "/assets/packages/lit/static-html.js",
-    "@rhds/tokens/meta.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
-    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
-    "@rhds/tokens/media.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@3.0.0/core.js",
+    "lit-element": "/assets/packages/lit-element/index.js",
+    "lit": "/assets/packages/lit/index.js",
+    "lit/static-html.js": "/assets/packages/lit/static-html.js",
+    "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
+    "@rhds/tokens/meta.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js",
+    "@rhds/tokens/media.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -206,7 +206,7 @@
 
     #container {
       display: grid;
-      gap: var(--rh-space-lg, 16px);
+      column-gap: var(--rh-space-lg, 16px);
       grid-template-columns: max-content 1fr max-content;
       max-height: var(--uxdot-masthead-max-height, 72px);
       margin-inline: var(--rh-space-md, 8px);
@@ -246,22 +246,22 @@
       display: flex;
       flex-direction: row;
       align-items: center;
+      justify-self: flex-start;
       gap: var(--rh-space-md, 8px);
     }
 
-    slot[name="links"]::slotted(a) {
-      --pf-icon--size: 28px;
+    slot[name="links"] {
+      --pf-icon--size: 24px;
+      display: flex;
+      flex-direction: row;
+      column-gap: var(--rh-space-lg, 16px);
+    }
 
+    slot[name="links"]::slotted(a) {
       display: flex;
       flex-direction: row;
       gap: var(--rh-space-lg, 16px);
       align-items: center;
-      color: var(--rh-color-text-on-dark, #ffffff) !important;
-    }
-
-    slot[name="links"]:hover::slotted(a),
-    slot[name="links"]::slotted(a:hover) {
-      color: var(--rh-color-icon-subtle-hover, #a3a3a3) !important;
     }
 
     @container (min-width: 576px) {
@@ -269,21 +269,11 @@
         gap: var(--rh-space-lg, 16px);
         margin: var(--rh-space-lg, 16px);
       }
-
-      slot[name="links"]::slotted(span) {
-        clip: rect(0 0 0 0);
-        clip-path: inset(50%);
-        height: 1px;
-        overflow: hidden;
-        position: absolute;
-        white-space: nowrap;
-        width: 1px;
-      }
     }
 
     @container (min-width: 992px) {
       #container {
-        grid-template-columns: 1fr max-content max-content;
+        grid-template-columns: 1fr max-content;
       }
 
       slot[name="hamburger"] {
@@ -292,11 +282,6 @@
 
       slot[name="logo"]::slotted(a) {
         margin-inline-start: var(--rh-space-lg, 16px);
-      }
-
-      slot[name="links"]::slotted(a) {
-
-        gap: var(--rh-space-md, 8px);
       }
     }
 
@@ -314,9 +299,10 @@
     <img src="/assets/red-hat-design-system.svg" alt="Red Hat Design System logo" width="188" height="40">
   </a>
   <a href="https://github.com/RedHat-UX/red-hat-design-system" slot="links">
+    <span class="display-xs">Contribute on Github</span>
     <pf-icon set="fab" icon="github" size="lg"></pf-icon>
-    <span>Contribute on Github</span>
   </a>
+  <a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.4.5" slot="links" title="Version 1.4.5" aria-label="Version 1.4.5">v1.4.5</a>
 </uxdot-masthead>
 
 <uxdot-sidenav trigger="hamburger"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus=""><style>
