@@ -11,30 +11,68 @@ subnav:
   collection: sortedDevelopers
   order: 00
 order: 20
+importElements:
+  - rh-card
+  - rh-cta
 ---
 
 <style>
+  .grid > rh-card {
+    display: grid;
+  }
+
+  rh-card > svg[slot] {
+    fill: var(--rh-color-accent-brand-on-light, #ee0000);
+    width: var(--rh-size-icon-07, 80px);
+    margin-block-end: var(--rh-space-lg, 16px);
+  }
+
+  rh-card > p[slot],
+  rh-card > h3[slot] {
+    margin-block: 0;
+  }
+
   #section-encapsulation,
   #section-apis,
   #section-framework {
     display: grid;
-    grid-template-columns: auto 295px;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-template-areas: "image" "content";
     gap: var(--rh-space-2xl, 32px);
   }
 
-  #section-apis {
-    grid-template-columns: 295px auto;
+  #section-encapsulation {
+    margin-block-start: var(--rh-space-2xl, 32px);
+  }
+
+  section > div {
+    grid-area: content;
   }
 
   section > svg {
+    grid-area: image;
     padding: var(--rh-space-2xl, 32px);
     border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle-on-light, #c7c7c7);
     border-radius: var(--rh-border-radius-default, 3px);
   }
 
-  #section-encapsulation svg,
-  #section-framework svg {
-    justify-self: self-end;
+  @media (min-width: 992px) {
+    #section-encapsulation,
+    #section-framework {
+      grid-template-columns: auto 295px;
+      grid-template-areas: "content image";
+    }
+
+    #section-apis {
+      grid-template-columns: 295px auto;
+      grid-template-areas: "image content";
+    }
+
+    #section-encapsulation svg,
+    #section-framework svg {
+      justify-self: self-end;
+    }
   }
 </style>
 
@@ -51,40 +89,54 @@ Read this section to get started and e-mail [design-system@redhat.com](mailto:de
 Our design system libraries and the documentation website offer assets and guidance needed to create digital experiences. Please use these resources to have a better understanding of how to use our design system.
 
 <div class="grid sm-two-columns">
-  <div>
-    <h3>Foundations</h3>
-    <p>
-      <a href="/foundations">Foundations</a> 
-      are how we express our brand through color, space, typography, etc.
-    </p>
-  </div>
-  <div>
-    <h3>Design tokens</h3>
-    <p>
-      <a href="tokens">Design tokens</a> 
-      are how we translate our design language decisions into code.
-    </p>
-  </div>
-  <div>
-    <h3>Documentation</h3>
-    <p>
-      This website offers guidance about how to use our 
+  <rh-card>
+    <svg slot="header" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36">
+      <path d="M10 21.37a.63.63 0 0 0-.62.64.63.63 0 0 0 1.25 0 .64.64 0 0 0-.63-.64Zm-2 0a.63.63 0 0 0-.62.64.63.63 0 0 0 1.25 0 .64.64 0 0 0-.63-.64Z"/>
+      <path d="M22 18.38H5a.62.62 0 0 0-.62.62v12a.62.62 0 0 0 .62.62h17a.62.62 0 0 0 .62-.62V19a.62.62 0 0 0-.62-.62Zm-.62 12H5.62V19.62h15.76Z"/>
+      <path d="M14 22.62h5a.62.62 0 0 0 0-1.24h-5a.62.62 0 1 0 0 1.24Zm5-13h6a.62.62 0 0 0 .62-.62V5a.62.62 0 0 0-.62-.62h-6a.62.62 0 0 0-.62.62v4a.62.62 0 0 0 .62.62Zm.62-4h4.76v2.76h-4.76ZM31 14.38h-6a.62.62 0 0 0-.62.62v4a.62.62 0 0 0 .62.62h6a.62.62 0 0 0 .62-.62v-4a.62.62 0 0 0-.62-.62Zm-.62 4h-4.76v-2.76h4.76ZM6 14.62h6a.62.62 0 0 0 .62-.62v-4a.62.62 0 0 0-.62-.62H6a.62.62 0 0 0-.62.62v4a.62.62 0 0 0 .62.62Zm.62-4h4.76v2.76H6.62Zm20.8 9.81a.61.61 0 0 0-.82.32 9.41 9.41 0 0 1-3 3.75.63.63 0 0 0-.12.88.62.62 0 0 0 .5.24.68.68 0 0 0 .38-.12 10.67 10.67 0 0 0 3.36-4.25.62.62 0 0 0-.3-.82Zm-1.92-9.05a9.47 9.47 0 0 1 1.1 1.87.61.61 0 0 0 .57.37.56.56 0 0 0 .25 0 .62.62 0 0 0 .32-.82 11.07 11.07 0 0 0-1.24-2.13.63.63 0 0 0-1 .76ZM13 9a.58.58 0 0 0 .31-.08 9.23 9.23 0 0 1 .83-.42l.23-.1c.22-.09.44-.18.67-.25a10.17 10.17 0 0 1 1.08-.3c.31-.06.62-.11.94-.14a.62.62 0 1 0-.12-1.24 9 9 0 0 0-1.06.16 9.34 9.34 0 0 0-1 .27l-.17.07a7.61 7.61 0 0 0-.75.28l-.27.11c-.31.14-.61.29-.91.46a.61.61 0 0 0-.31.62A.63.63 0 0 0 13 9Zm-5.57 6.94a9.29 9.29 0 0 0 0 1.06.62.62 0 0 0 1.24 0c0-.32 0-.63.05-.94a.62.62 0 1 0-1.24-.12Z"/>
+    </svg>
+    <h3 slot="header">Foundations</h3>
+    <p>Foundations are how we express our brand through color, space, typography, etc.</p>
+    <rh-cta slot="footer">
+      <a href="/foundations">Our foundations</a>
+    </rh-cta>
+  </rh-card>
+  <rh-card>
+    <svg slot="header" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36">
+      <path d="M28 24.5a.64.64 0 0 0-1.08 0l-3.5 6.19a.64.64 0 0 0 0 .63.62.62 0 0 0 .54.3h7a.62.62 0 0 0 .54-.93Zm-3 5.88 2.43-4.3 2.43 4.3Zm-17-26a3.62 3.62 0 0 0 0 7.24 3.62 3.62 0 0 0 0-7.24Zm0 6a2.38 2.38 0 0 1 0-4.75 2.38 2.38 0 0 1 0 4.75Zm3 14H5a.62.62 0 0 0-.62.62v6a.62.62 0 0 0 .62.62h6a.62.62 0 0 0 .62-.62v-6a.62.62 0 0 0-.62-.62Zm-.62 6H5.62v-4.76h4.76Zm17.18-17.94a.61.61 0 0 0 .88 0l4-4a.61.61 0 0 0 0-.88l-4-4a.61.61 0 0 0-.88 0l-4 4a.61.61 0 0 0 0 .88ZM28 4.88 31.12 8 28 11.12 24.88 8Zm-4.42.26c.27-.84-.84-.95-1.4-1.16a14.83 14.83 0 0 0-9.4.35.63.63 0 0 0 .44 1.17 13.57 13.57 0 0 1 9.56 0 .61.61 0 0 0 .8-.36ZM4.76 22.6a.63.63 0 0 0 .42-.78 13.48 13.48 0 0 1 .32-8.6.62.62 0 0 0-1.16-.44 14.69 14.69 0 0 0-.34 9.4.63.63 0 0 0 .76.42Zm16.11 8.47a13.54 13.54 0 0 1-6.69-.25.63.63 0 0 0-.36 1.2 14.84 14.84 0 0 0 7.31.27.64.64 0 0 0 .48-.75.61.61 0 0 0-.74-.47Zm9.9-18.86a.63.63 0 0 0-.35.82 13.41 13.41 0 0 1-.33 10.7.62.62 0 0 0 .29.83c1.5.67 2.34-5.49 2.25-6.56s-.45-6.33-1.86-5.79Z"/>
+    </svg>
+    <h3 slot="header">Design tokens</h3>
+    <p>Design tokens are how we translate our design language decisions into code.</p>
+    <rh-cta slot="footer">
+      <a href="tokens">Our design tokens</a>
+    </rh-cta>
+  </rh-card>
+  <rh-card>
+    <svg slot="header" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36">
+      <path d="M31 11.38H18.26l-6.82-6.82a.62.62 0 0 0-1.06.44v6.38H5a.62.62 0 0 0-.62.62v19a.62.62 0 0 0 .62.62h26a.62.62 0 0 0 .62-.62V12a.62.62 0 0 0-.62-.62Zm-.62 13H25a.62.62 0 0 0-.62.62v5.38h-5.76V12.62h11.76Zm-.89 1.24-3.87 3.87v-3.87ZM11.62 6.51l5.76 5.75v17.23l-5.76-5.75Zm-6 6.11h4.76V24a.59.59 0 0 0 .18.44l5.93 5.94H5.62Zm20.89 17.76 3.87-3.87v3.87Z"/>
+    </svg>
+    <h3 slot="header">Documentation</h3>
+    <p>This website offers guidance about how to use our 
       <a href="/elements">elements</a> and <a href="/patterns">patterns</a>.
       Learn how to apply them accessibily with
-      <a href="/accessibility/development/">developer-specific guidelines</a>.
-    </p>
-  </div>
-  <div>
-    <h3>GitHub repositories</h3>
-    <p>
-      Explore our code, roadmaps, and discussions in the 
-      <a href="https://github.com/RedHat-UX/red-hat-design-system">
-        Red Hat Design System repo
-      </a> and the <a href="https://github.com/RedHat-UX/red-hat-design-tokens">
-        Red Hat Design Tokens repo
-      </a>.
-    </p>
-  </div>
+      <a href="/accessibility/development/">developer-specific guidelines</a>.</p>
+    <rh-cta slot="footer">
+      <a href="/elements">Our elements</a>
+    </rh-cta>
+  </rh-card>
+  <rh-card>
+    <svg slot="header" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36">
+      <path d="M31 4.38H5a.62.62 0 0 0-.62.62v26a.62.62 0 0 0 .62.62h26a.62.62 0 0 0 .62-.62V5a.62.62 0 0 0-.62-.62Zm-.62 26H5.62V5.62h24.76Z"/>
+      <path d="M17.24 21.54a.62.62 0 0 0 .74-.49l1.24-5.84a.64.64 0 0 0-.48-.75.63.63 0 0 0-.74.54l-1.25 5.84a.64.64 0 0 0 .49.7ZM23.12 18 21 20.11a.63.63 0 1 0 .88.89l2.56-2.56a.62.62 0 0 0 0-.89L21.88 15a.63.63 0 1 0-.88.88Zm-9 3a.63.63 0 0 0 .88-.89L12.88 18 15 15.87c.59-.56-.31-1.46-.88-.88l-2.56 2.56a.62.62 0 0 0 0 .89Z"/>
+    </svg>
+    <h3 slot="header">GitHub repositories</h3>
+    <p>Explore our code, roadmaps, and discussions in the 
+      <a href="https://github.com/RedHat-UX/red-hat-design-system">Red Hat Design System repo</a> and the 
+      <a href="https://github.com/RedHat-UX/red-hat-design-tokens">Red Hat Design Tokens repo</a>.</p>
+    <rh-cta slot="footer">
+      <a href="https://github.com/RedHat-UX/">View our repos</a>
+    </rh-cta>
+  </rh-card>
 </div>
 
 
@@ -97,13 +149,6 @@ Every web component is a custom HTML element. Web Components are made with stand
 ### Why Web Components?
 
 <section id="section-encapsulation">
-  <div>
-
-#### Encapsulation
-
-Web Components encapsulate their templates, styles, and behaviour. They establish a strong boundary between the component's internals and the rest of the website, letting developers write more modular code while avoiding conflicts with page-level CSS and JS. This hides complex logic and templating from the rest of the page's UI, which helps to ship design systems and applications at scale. In addition to encapsulating styles, Web Components can ship complex accessibility patterns, making it easier for page authors to provide accessible rich experiences.
-
-  </div>
   <svg id="encapsulation-image" width="295" height="243" viewBox="0 0 295 243" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect width="295" height="242.357" rx="3" fill="#F2F2F2"/>
     <mask id="mask0_89_60" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="43" y="16" width="210" height="221">
@@ -132,6 +177,13 @@ Web Components encapsulate their templates, styles, and behaviour. They establis
       <path d="M165.293 206.157L155.56 198.113L167.393 193.706L165.293 206.157Z" fill="#A3A3A3"/>
     </g>
   </svg>
+  <div>
+
+#### Encapsulation
+
+Web Components encapsulate their templates, styles, and behaviour. They establish a strong boundary between the component's internals and the rest of the website, letting developers write more modular code while avoiding conflicts with page-level CSS and JS. This hides complex logic and templating from the rest of the page's UI, which helps to ship design systems and applications at scale. In addition to encapsulating styles, Web Components can ship complex accessibility patterns, making it easier for page authors to provide accessible rich experiences.
+
+  </div>
 </section>
 <section id="section-apis">
   <svg id="apis-image" width="294" height="171" viewBox="0 0 294 171" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -160,14 +212,6 @@ Because Web Components are build with web standards, the technology is future-pr
   </div>
 </section>
 <section id="section-framework">
-  <div>
-
-#### Framework agnostic
-
-Web Components are framework agnostic, meaning they can be used in any javascript framework which outputs HTML. This allows Red Hat to build and maintain a single Design System library that can be used across the entire enterprise. This makes it easier to switch frameworks if necessary, without throwing away all their work. Web Components help to break down silos, increase collaboration, reduce duplication of effort.
-
-  </div>
-
   <svg id="framework-image" width="294" height="248" viewBox="0 0 294 248" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect width="294" height="248" rx="3" fill="#F2F2F2"/>
     <mask id="mask0_89_91" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="32" y="24" width="230" height="200">
@@ -190,7 +234,13 @@ Web Components are framework agnostic, meaning they can be used in any javascrip
       <path d="M122.93 120.592L137.269 96.07L165.687 96.0693L179.734 120.243L165.393 144.768L136.979 144.926L122.93 120.592Z" stroke="#151515" stroke-width="4"/>
     </g>
   </svg>
+  <div>
 
+#### Framework agnostic
+
+Web Components are framework agnostic, meaning they can be used in any javascript framework which outputs HTML. This allows Red Hat to build and maintain a single Design System library that can be used across the entire enterprise. This makes it easier to switch frameworks if necessary, without throwing away all their work. Web Components help to break down silos, increase collaboration, reduce duplication of effort.
+
+  </div>
 </section>
 
 ### How do Web Components affect performance?
