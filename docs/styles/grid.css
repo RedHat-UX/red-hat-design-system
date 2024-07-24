@@ -31,6 +31,7 @@
 }
 
 /* content with image layout */
+/* TODO: possibly a separate layout pattern */
 .layout-content-image {
   grid-template-rows: auto;
   grid-template-areas: "image" "content";
@@ -53,9 +54,5 @@
   .layout-content-image.reversed {
     grid-template-columns: 1fr 2fr;
     grid-template-areas: "image content";
-  }
-
-  .layout-content-image svg {
-    justify-self: self-end;
   }
 }
