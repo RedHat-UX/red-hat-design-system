@@ -32,47 +32,15 @@ importElements:
     margin-block: 0;
   }
 
-  #section-encapsulation,
-  #section-apis,
-  #section-framework {
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto;
-    grid-template-areas: "image" "content";
-    gap: var(--rh-space-2xl, 32px);
-  }
-
   #section-encapsulation {
     margin-block-start: var(--rh-space-2xl, 32px);
   }
 
-  section > div {
-    grid-area: content;
-  }
-
-  section > svg {
-    grid-area: image;
-    padding: var(--rh-space-2xl, 32px);
+  svg.image-block  {
+    width: 100%;
+    padding: var(--rh-space-lg, 16px);
     border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle-on-light, #c7c7c7);
     border-radius: var(--rh-border-radius-default, 3px);
-  }
-
-  @media (min-width: 992px) {
-    #section-encapsulation,
-    #section-framework {
-      grid-template-columns: auto 295px;
-      grid-template-areas: "content image";
-    }
-
-    #section-apis {
-      grid-template-columns: 295px auto;
-      grid-template-areas: "image content";
-    }
-
-    #section-encapsulation svg,
-    #section-framework svg {
-      justify-self: self-end;
-    }
   }
 </style>
 
@@ -144,12 +112,22 @@ Our design system libraries and the documentation website offer assets and guida
 
 ### What are Web Components?
 
-Every Web Component is a custom HTML element. Web Components are made with standard web platform APIs, and not only with JavaScript frameworks. Those standards include [Custom Elements][ce], [Shadow DOM][sd], [HTML templates][te], [CSS Custom Properties][cssprop] and [Shadow Parts][csspart], [Element Internals][internals], [ECMAScript Modules][esm], and others. These combine to enable developers to write reusable and encapsulated UI elements which work with the browser's in-built component model.
+Every Web Component is a custom HTML element. Web Components are made with standard web platform APIs, and not only with JavaScript frameworks. Those standards include:
+
+- [Custom Elements][ce]
+- [Shadow DOM][sd]
+- [HTML templates][te]
+- [CSS Custom Properties][cssprop] and [Shadow Parts][csspart]
+- [Element Internals][internals]
+- [ECMAScript Modules][esm]
+- _and others_
+
+These standards combine to enable developers to write reusable and encapsulated UI elements which work with the browser's built-in component model.
 
 ### Why Web Components?
 
-<section id="section-encapsulation">
-  <svg id="encapsulation-image" width="295" height="243" viewBox="0 0 295 243" fill="none" xmlns="http://www.w3.org/2000/svg">
+<section class="grid layout-content-image" id="section-encapsulation">
+  <svg class="image-block" viewBox="0 0 295 243" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect width="295" height="242.357" rx="3" fill="#F2F2F2"/>
     <mask id="mask0_89_60" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="43" y="16" width="210" height="221">
       <path d="M43 16H253V237H43V16Z" fill="#D9D9D9"/>
@@ -177,16 +155,16 @@ Every Web Component is a custom HTML element. Web Components are made with stand
       <path d="M165.293 206.157L155.56 198.113L167.393 193.706L165.293 206.157Z" fill="#A3A3A3"/>
     </g>
   </svg>
-  <div>
+  <div class="content-block">
 
 #### Encapsulation
 
-Web Components encapsulate their templates, styles, and behaviour. They establish a strong boundary between the component's internals and the rest of the website, letting developers write more modular code while avoiding conflicts with page-level CSS and JS. This hides complex logic and templating from the rest of the page's UI, which helps to ship design systems and applications at scale. In addition to encapsulating styles, Web Components can ship complex accessibility patterns, making it easier for page authors to provide accessible rich experiences.
+Web Components encapsulate their templates, styles, and behavior. They establish a strong boundary between the component's internals and the rest of the website, letting developers write more modular code while avoiding conflicts with page-level CSS and JS. This hides complex logic and templating from the rest of the page's UI, which helps to ship design systems and applications at scale. In addition to encapsulating styles, Web Components can ship complex accessibility patterns, making it easier for page authors to provide accessible rich experiences.
 
   </div>
 </section>
-<section id="section-apis">
-  <svg id="apis-image" width="294" height="171" viewBox="0 0 294 171" fill="none" xmlns="http://www.w3.org/2000/svg">
+<section class="grid layout-content-image reversed" id="section-apis">
+  <svg class="image-block" viewBox="0 0 294 171" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect width="294" height="171" rx="3" fill="#f2f2f2"/>
     <mask id="mask0_63_262" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="80" y="24" width="134" height="123">
       <rect x="80.5" y="24" width="133" height="123" fill="white"/>
@@ -203,7 +181,7 @@ Web Components encapsulate their templates, styles, and behaviour. They establis
       <line x1="124" y1="119" x2="168" y2="119" stroke="#151515" stroke-width="2" stroke-dasharray="8 8"/>
     </g>
   </svg>
-  <div>
+  <div class="content-block">
 
 #### Web standards APIs
 
@@ -211,8 +189,8 @@ Because Web Components are built with web standards, the technology is future-pr
 
   </div>
 </section>
-<section id="section-framework">
-  <svg id="framework-image" width="294" height="248" viewBox="0 0 294 248" fill="none" xmlns="http://www.w3.org/2000/svg">
+<section class="grid layout-content-image" id="section-framework">
+  <svg class="image-block" viewBox="0 0 294 248" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect width="294" height="248" rx="3" fill="#F2F2F2"/>
     <mask id="mask0_89_91" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="32" y="24" width="230" height="200">
       <rect x="32" y="24" width="230" height="200" fill="white"/>
@@ -234,11 +212,11 @@ Because Web Components are built with web standards, the technology is future-pr
       <path d="M122.93 120.592L137.269 96.07L165.687 96.0693L179.734 120.243L165.393 144.768L136.979 144.926L122.93 120.592Z" stroke="#151515" stroke-width="4"/>
     </g>
   </svg>
-  <div>
+  <div class="content-block">
 
 #### Framework agnostic
 
-Web Components are framework agnostic, meaning they can be used in any JavaScript framework which outputs HTML. This allows Red Hat to build and maintain a single Design System library that can be used across the entire enterprise. Engineers can then switch frameworks if necessary, without throwing away all their work. Web Components help to break down silos, increase collaboration, and reduce duplication of effort.
+Web Components are framework agnostic, meaning they can be used in any JavaScript framework which outputs HTML. This allows Red Hat to build and maintain a single Design System library that can be used across the entire enterprise. Engineers can then switch frameworks, if necessary, without throwing away all their work. Web Components help to break down silos, increase collaboration, and reduce duplication of effort.
 
   </div>
 </section>
