@@ -70,26 +70,14 @@ const STATUS_CHECKLIST = {
     'Deprecated': 'Component is no longer available in the RH Elements repo',
     'N/A': 'Not planned, not available, or does not apply',
   },
-  'WebRH': {
-    'Ready': 'Component is available in the WebRH repo',
-    'In progress': 'Component will be added to the WebRH repo when finished',
-    'Planned': 'Component should be added to the WebRH repo at a later date',
-    'Deprecated': 'Component is no longer available in the WebRH repo',
+  'RH Shared Libs': {
+    'Ready': 'Component is available in the RH Shared Libs repo',
+    'In progress': 'Component will be added to the RH Shared Libs repo when finished',
+    'Planned': 'Component should be added to the RH Shared Libs repo at a later date',
+    'Deprecated': 'Component is no longer available in the RH Shared Libs repo',
     'N/A': 'Not planned, not available, or does not apply',
   },
 };
-
-/**
- * Reads repo status data from global data and outputs an array with component keys
- */
-function getRepoData() {
-  const docsPage = this.ctx._;
-  const allStatuses = this.ctx.repoStatus ?? docsPage?.repoStatus ?? [];
-  const title = this.ctx.title ?? docsPage?.title;
-  return allStatuses.find(
-    component => component.name === title && component.type === 'Element'
-  )?.libraries;
-}
 
 /**
  * Calls getRepoData function and outputs a definition list for each component
@@ -97,11 +85,16 @@ function getRepoData() {
  * @param {string} [options.heading] heading text
  * @param {number} [options.level] heading level
  */
-function repoStatusList({ heading = 'Status', level = 2 } = {}) {
+function repoStatusList({ repoStatus, heading = 'Status', level = 2 } = {}) {
   // Removing Documentation status from the repoStatusList
-  const statusList = getRepoData.call(this)?.filter(repo => repo.name !== 'Documentation');
+  const librariesList = this.ctx.doc ?
+    repoStatus.find(x => x.tagName === this.ctx.doc.tagName)
+        ?.libraries?.filter(repo =>
+          repo.name !== 'Documentation')
+      : repoStatus.flatMap(x => x.libraries) ?? [];
 
-  if (!Array.isArray(statusList) || !statusList.length) {
+
+  if (!Array.isArray(librariesList) || !librariesList.length) {
     return '';
   } else {
     return html`
@@ -112,7 +105,7 @@ function repoStatusList({ heading = 'Status', level = 2 } = {}) {
     </h${level}>
   </uxdot-copy-permalink>
   <a href="#status-checklist" slot="checklist">What do these mean?</a>
-  <dl>${statusList.map(listItem => html`
+  <dl>${librariesList.map(listItem => html`
     <div>
       <dt>${listItem.name}:</dt>
       <dd>
@@ -129,14 +122,8 @@ function repoStatusList({ heading = 'Status', level = 2 } = {}) {
 /**
  * Reads component status data from global data (see above) and outputs a table for Design/Code status page
  */
-function repoStatusTable() {
-  const docsPage = this.ctx._;
-  const allStatuses = this.ctx.repoStatus ?? docsPage?.repoStatus ?? [];
-  // Filtering out 'Responsive' status from all the libraries
-  const elementsList = allStatuses.map(item => ({
-    ...item,
-    libraries: item.libraries.filter(lib => lib.name !== 'Responsive'),
-  }));
+function repoStatusTable({ repoStatus }) {
+  const elementsList = repoStatus;
 
   if (!Array.isArray(elementsList) || !elementsList.length) {
     return '';
@@ -157,18 +144,16 @@ function repoStatusTable() {
         <th scope="col" data-label="Name">Name</th>
         <th scope="col" data-label="Figma library">Figma library</th>
         <th scope="col" data-label="RH Elements">RH Elements</th>
-        <th scope="col" data-label="webRH">WebRH</th>
+        <th scope="col" data-label="RH Shared Libs">RH Shared Libs</th>
         <th scope="col" data-label="Documentation">Documentation</th>
       </tr>
     </thead>
     <tbody>${elementsList.map(listItem => html`
       <tr>
         <td data-label="Name">
-          <span>
-            <a href="/elements/${listItem.name.toLowerCase().trim().split(' ').join('-')}">${listItem.name}</a>
+          <span><a href="/elements/${listItem.name.toLowerCase().trim().split(' ').join('-')}">${listItem.name}</a>
             ${listItem.overallStatus !== 'Available' ?
-            `<rh-tag color="${STATUS_LEGEND[listItem.overallStatus].color}" variant="${STATUS_LEGEND[listItem.overallStatus].variant}">${listItem.overallStatus}${STATUS_LEGEND[listItem.overallStatus].icon}</rh-tag>` : ''}
-          </span>
+            `<rh-tag color="${STATUS_LEGEND[listItem.overallStatus].color}" variant="${STATUS_LEGEND[listItem.overallStatus].variant}">${listItem.overallStatus}${STATUS_LEGEND[listItem.overallStatus].icon}</rh-tag>` : ''}</span>
         </td>${listItem.libraries.map(lib => html`
         <td data-label="${lib.name}">
           <span>
@@ -190,8 +175,14 @@ function repoStatusTable() {
  * @param {string} [options.heading] heading text
  * @param {number} [options.level] heading level
  */
-function repoStatusChecklist({ heading = 'Status checklist', level = 2 } = {}) {
-  const statusList = getRepoData.call(this)?.filter(repo => repo.name !== 'Documentation');
+function repoStatusChecklist({ repoStatus, heading = 'Status checklist', level = 2 } = {}) {
+  // is repoStatus returning undefined ?
+  const statusList = this.ctx.doc ?
+    repoStatus.find(x => x.tagName === this.ctx.doc.tagName)
+        ?.libraries?.filter(repo =>
+          repo.name !== 'Documentation')
+    : repoStatus.flatMap(x => x.libraries) ?? [];
+
   if (!Array.isArray(statusList) || !statusList.length) {
     return '';
   } else {
