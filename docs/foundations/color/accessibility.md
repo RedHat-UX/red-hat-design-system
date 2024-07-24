@@ -1,6 +1,8 @@
 ---
 layout: layouts/pages/basic.njk
 title: Accessibility
+heading: Color
+sidenavTitle: Color
 hasToc: true
 tags:
   - color
