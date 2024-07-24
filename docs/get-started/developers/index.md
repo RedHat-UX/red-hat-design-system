@@ -144,7 +144,7 @@ Our design system libraries and the documentation website offer assets and guida
 
 ### What are Web Components?
 
-Every web component is a custom HTML element. Web Components are made with standard web platform APIs, and not only with JavaScript frameworks. Those standards include [Custom Elements][ce]; [Shadow DOM][sd]; [HTML templates][te]; [CSS Custom Properties][cssprop] and [Shadow Parts][csspart]; [Element Internals][internals]; [ECMAScript Modules][esm]; and others. These combine to enable developers to write reusable and encapsulated UI elements which work with the browser's in-built component model.
+Every Web Component is a custom HTML element. Web Components are made with standard web platform APIs, and not only with JavaScript frameworks. Those standards include [Custom Elements][ce], [Shadow DOM][sd], [HTML templates][te], [CSS Custom Properties][cssprop] and [Shadow Parts][csspart], [Element Internals][internals], [ECMAScript Modules][esm], and others. These combine to enable developers to write reusable and encapsulated UI elements which work with the browser's in-built component model.
 
 ### Why Web Components?
 
@@ -207,7 +207,7 @@ Web Components encapsulate their templates, styles, and behaviour. They establis
 
 #### Web standards APIs
 
-Because Web Components are build with web standards, the technology is future-proofed, reliable, and supported by every modern browser. As the browser's native component model, Web Components continually benefit from new specifications and features as they are added to the web platform, for example [Scoped Custom Element Registries][scoped].
+Because Web Components are built with web standards, the technology is future-proofed, reliable, and supported by every modern browser. As the browser's native component model, Web Components continually benefit from new specifications and features as they are added to the web platform (e.g.,[Scoped Custom Element Registries][scoped]).
 
   </div>
 </section>
@@ -238,7 +238,7 @@ Because Web Components are build with web standards, the technology is future-pr
 
 #### Framework agnostic
 
-Web Components are framework agnostic, meaning they can be used in any javascript framework which outputs HTML. This allows Red Hat to build and maintain a single Design System library that can be used across the entire enterprise. This makes it easier to switch frameworks if necessary, without throwing away all their work. Web Components help to break down silos, increase collaboration, reduce duplication of effort.
+Web Components are framework agnostic, meaning they can be used in any JavaScript framework which outputs HTML. This allows Red Hat to build and maintain a single Design System library that can be used across the entire enterprise. Engineers can then switch frameworks if necessary, without throwing away all their work. Web Components help to break down silos, increase collaboration, and reduce duplication of effort.
 
   </div>
 </section>
