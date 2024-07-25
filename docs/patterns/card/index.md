@@ -42,41 +42,6 @@ it's near. Several cards can be used together to group related information.
 </rh-alert>
 
 
-## Usage
-
-### Character count
-The recommended maximum character count for the elements of a card are listed below and include spaces.
-
-<rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Element">Element</th>
-        <th scope="col" data-label="Character count">Character count</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Element">Title</td>
-        <td data-label="Character count">20</td>
-      </tr>
-      <tr>
-        <td data-label="Element">Headline</td>
-        <td data-label="Character count">50</td>
-      </tr>
-      <tr>
-        <td data-label="Element">Body text</td>
-        <td data-label="Character count">165</td>
-      </tr>
-      <tr>
-        <td data-label="Element">Footer</td>
-        <td data-label="Character count">55</td>
-      </tr>
-    </tbody>
-  </table>
-</rh-table>
-
-
 ## Customizing cards
 
 To customize a card the design tokens must be altered. These design tokens are 

@@ -9,7 +9,7 @@ tags:
   - cardPatterns
 subnav:
   collection: cardPatterns
-  order: 2
+  order: 3
 importElements:
   - rh-card
   - rh-cta
