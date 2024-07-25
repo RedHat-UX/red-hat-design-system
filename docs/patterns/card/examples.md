@@ -16,6 +16,7 @@ importElements:
   - rh-surface
   - rh-avatar
   - rh-accordion
+  - rh-blockquote
 ---
 
 <script type="module">
@@ -123,12 +124,12 @@ Secondary call to action may be used or not.
 {% include './patterns/quote.html' %}
 
 
-## Video cards
+<!-- ## Video cards
 
 Use to trigger a video that will play in a [Modal dialog](/elements/dialog).
 Different layout configurations may be used.
 
-{% include './patterns/video.html' %}
+{% include './patterns/video.html' %} -->
 
 
 {% include 'partials/component/feedback.html' %}
