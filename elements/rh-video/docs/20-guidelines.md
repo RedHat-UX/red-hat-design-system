@@ -6,7 +6,7 @@ The video element shows a static preview of the video, and this allows the user 
 
 For users that do not have advertising cookies enabled, the video element should display a standard cookie consent thumbnail. This thumbnail includes instructions to enable advertising cookies and a button that will trigger a cookie consent dialog window.
 
-Check the Code subpage for information about attributes and events that will help you implement the cookie consent thumbnail and integrate it with the preferred cookie consent manager. View the Require Consent demo to see a standalone implementation of this functionality.
+Check the [Code subpage](/elements/video/code/) for information about [attributes](/elements/video/code/#rh-video) and [events](/elements/video/code/#rh-video) that will help you implement the cookie consent thumbnail and integrate it with the preferred cookie consent manager. View the [Require Consent demo](/elements/video/demo/require-consent/) to see a standalone implementation of this functionality.
 
 <uxdot-example width-adjustment="555px">
   <img src="{{ '../video-require-consent.svg' | url }}" alt="Video displaying the cookie consent which says, 'View this video by opting into Advertising Cookies.' It also has an 'Update Preferences button'.">
