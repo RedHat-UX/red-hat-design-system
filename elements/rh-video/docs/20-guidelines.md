@@ -41,11 +41,11 @@ The video’s width will dynamically adjust with its parent container. The video
 
 ### Large Viewport Sizes
 
-<img src="#" alt="">
+<img src="{{ '../video-grid-lg-viewports.svg' | url }}" alt="Video with a semitransparent grid in the background. The video only spans half the columns.">
 
 ### Small Viewport sizes
 
-<img src="#" alt="">
+<img src="{{ '../video-grid-sm-viewports.svg' | url }}" alt="Video with a semitransparent grid background on mobile. The video spans all columns on small viewports.">
 
 ## Best Practices
 
