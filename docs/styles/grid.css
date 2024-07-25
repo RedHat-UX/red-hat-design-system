@@ -29,3 +29,30 @@
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
+
+/* content with image layout */
+/* TODO: possibly a separate layout pattern */
+.layout-content-image {
+  grid-template-rows: auto;
+  grid-template-areas: "image" "content";
+}
+
+.layout-content-image > .content-block {
+  grid-area: content;
+}
+
+.layout-content-image > .image-block {
+  grid-area: image;
+}
+
+@container container (min-width: 768px) {
+  .layout-content-image {
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas: "content image";
+  }
+
+  .layout-content-image.reversed {
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas: "image content";
+  }
+}

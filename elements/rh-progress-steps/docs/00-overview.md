@@ -1,3 +1,7 @@
+## Coming soon!
+
+This element is currently in progress and not yet available for use.
+
 ## Overview
 
 Progress steps guide a user through a task with multiple sequential steps 
