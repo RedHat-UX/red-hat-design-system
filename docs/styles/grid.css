@@ -45,7 +45,7 @@
   grid-area: image;
 }
 
-@container container (min-width: 992px) {
+@container container (min-width: 768px) {
   .layout-content-image {
     grid-template-columns: 2fr 1fr;
     grid-template-areas: "content image";

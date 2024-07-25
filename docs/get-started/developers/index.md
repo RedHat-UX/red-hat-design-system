@@ -37,8 +37,8 @@ importElements:
   }
 
   svg.image-block  {
-    justify-self: self-end;
     width: 100%;
+    max-width: 400px;
     padding: var(--rh-space-lg, 16px);
     border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle-on-light, #c7c7c7);
     border-radius: var(--rh-border-radius-default, 3px);
@@ -57,7 +57,7 @@ Read this section to get started and e-mail [design-system@redhat.com](mailto:de
 
 Our design system libraries and the documentation website offer assets and guidance needed to create digital experiences. Please use these resources to have a better understanding of how to use our design system.
 
-<div class="grid sm-two-columns">
+<div class="grid xs-two-columns">
   <rh-card>
     <svg aria-hidden="true" slot="header" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36">
       <path d="M10 21.37a.63.63 0 0 0-.62.64.63.63 0 0 0 1.25 0 .64.64 0 0 0-.63-.64Zm-2 0a.63.63 0 0 0-.62.64.63.63 0 0 0 1.25 0 .64.64 0 0 0-.63-.64Z"/>
