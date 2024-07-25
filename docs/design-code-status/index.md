@@ -2,7 +2,7 @@
 layout: layouts/pages/basic.njk
 title: Design/code status
 hasToc: true
-importElements: 
+importElements:
   - rh-table
   - rh-tag
 ---
@@ -11,9 +11,9 @@ importElements:
 
 <section aria-labelledby="overview">
 
-  ## Overview
-  
-  A detailed synopsis of our web components and their implementation status.
+## Overview
+
+A detailed synopsis of our web components and their implementation status.
 
   <rh-table class="component-status-table">
     <table>
@@ -33,7 +33,7 @@ importElements:
             <span>
               <rh-tag variant="filled" color="gray">
                 Planned
-                <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" role="img">
+                <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" role="img" aria-label="planned icon">
                   <style type="text/css">
                     .planned{fill:#707070;}
                   </style>
@@ -56,7 +56,7 @@ importElements:
             <span>
               <rh-tag variant="outline" color="green">
                 In progress
-                <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" fill="none" role="img">
+                <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" fill="none" role="img" aria-label="in progress icon">
                   <style type="text/css">
                     .inprogress{fill:#63993D;}
                   </style>
@@ -73,7 +73,7 @@ importElements:
             <span>
               <rh-tag variant="filled" color="green">
                 Ready
-                <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 15" fill="none" role="img">
+                <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 15" fill="none" role="img" aria-label="ready icon">
                   <path d="M7 14.5C10.866 14.5 14 11.366 14 7.5C14 3.63401 10.866 0.5 7 0.5C3.13401 0.5 0 3.63401 0 7.5C0 11.366 3.13401 14.5 7 14.5Z" fill="#63993D"/>
                   <path d="M4 7.5L6 9.5L10 5.5" stroke="#E9F7DF" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
@@ -87,7 +87,7 @@ importElements:
             <span>
               <rh-tag variant="filled" color="orange">
                 Deprecated
-                <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 15" fill="none" role="img">
+                <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 15" fill="none" role="img" aria-label="deprecated icon">
                   <path d="M7 14.5C10.866 14.5 14 11.366 14 7.5C14 3.63401 10.866 0.5 7 0.5C3.13401 0.5 0 3.63401 0 7.5C0 11.366 3.13401 14.5 7 14.5Z" fill="#F0561D"/>
                   <path d="M5 9.5L9 5.5" stroke="#FFE3D9" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
                   <path d="M9 9.5L5 5.5" stroke="#FFE3D9" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
@@ -102,7 +102,7 @@ importElements:
             <span>
               <rh-tag variant="outline" color="gray">
                 N/A
-                <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" role="img">
+                <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" role="img" aria-label="not applicable icon">
                   <style type="text/css">
                     .na{fill:#707070;}
                   </style>
@@ -121,11 +121,11 @@ importElements:
 
 <section aria-labelledby="web-component-status">
 
-  ## Web component status
+## Web component status
 
-  {% repoStatusTable %}
+{% repoStatusTable repoStatus=repoStatus %}
 
-</section>   
+</section>
 
 <uxdot-feedback>
   <h2>Release notes</h2>

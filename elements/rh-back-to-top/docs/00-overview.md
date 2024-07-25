@@ -7,7 +7,7 @@
 </uxdot-example>
 
 
-{% repoStatusList %}
+{% repoStatusList repoStatus=repoStatus %}
 
 
 ## Sample
@@ -19,4 +19,4 @@ View the [demos](demos/).
   - When content fills up more than two screens in length at medium and large breakpoints
   - When content fills up more than four screens in length at small breakpoints
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}

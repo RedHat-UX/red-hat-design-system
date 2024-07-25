@@ -9,6 +9,7 @@ importElements:
   - rh-blockquote
   - rh-table
 ---
+
 {# see XD for reference: https://xd.adobe.com/view/c3387de7-c738-43be-aed2-d631e283dde4-966b #}
 
 <link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
@@ -68,31 +69,30 @@ importElements:
 
 </style>
 
-
 <section aria-labelledby="overview">
   
   ## Overview
 
-  Typography organizes content and creates hierarchies. It brings consistency to experiences and extends the brand presence across web properties.
+Typography organizes content and creates hierarchies. It brings consistency to experiences and extends the brand presence across web properties.
 
 </section>
 
 <section aria-labelledby="get-started">
 
-  ## Get started
+## Get started
 
-  To get started using our fonts, visit our <a href="https://github.com/RedHatOfficial/RedHatFont" target="_blank">GitHub repo</a>.
+To get started using our fonts, visit our <a href="https://github.com/RedHatOfficial/RedHatFont" target="_blank">GitHub repo</a>.
 
 </section>
 
 <section aria-labelledby="style">
 
-  ## Style
-  
-  The Red&nbsp;Hat typeface is a fresh take on the geometric sans genre, taking inspiration from a range of American sans serifs including <em>Tempo</em> and <em>Highway Gothic</em>. These two font families can be used together seamlessly and are available to download <a href="https://github.com/RedHatOfficial/RedHatFont">here</a>.
+## Style
+
+The Red&nbsp;Hat typeface is a fresh take on the geometric sans genre, taking inspiration from a range of American sans serifs including <em>Tempo</em> and <em>Highway Gothic</em>. These two font families can be used together seamlessly and are available to download <a href="https://github.com/RedHatOfficial/RedHatFont">here</a>.
 
   <uxdot-example width-adjustment="75%" no-border>
-    <img src="https://www.redhat.com/cms/managed-files/BrandStandards-Visual_System-Typography-ASSETS_Hero.svg?itok=QnUDviH1"/>
+    <img src="https://www.redhat.com/cms/managed-files/BrandStandards-Visual_System-Typography-ASSETS_Hero.svg?itok=QnUDviH1" alt="artwork demonstrating Red Hat Display and Red Hat Text at different font weights"/>
   </uxdot-example>
 
   <div class="grid xs-two-columns md-three-columns">
@@ -113,20 +113,20 @@ importElements:
 
 <section aria-labelledby="text-options">
 
-  ## Text options
+## Text options
 
-  ### Headline
+### Headline
 
-  Headlines create various levels of content hierarchies.
+Headlines create various levels of content hierarchies.
 
   <uxdot-example>
     <p class="mock-h2">Red&nbsp;Hat Enterprise Linux</p>
     <p class="mock-h5">Conquer complexity with Red&nbsp;Hat Enterprise Linux 8</p>
   </uxdot-example>
 
-  ### Blockquote
+### Blockquote
 
-  Blockquotes are emphasized blocks of text that include a quote icon and attribution.
+Blockquotes are emphasized blocks of text that include a quote icon and attribution.
 
   <uxdot-example>
     <rh-blockquote>
@@ -134,11 +134,11 @@ importElements:
       <span slot="author">John Smith</span>
       <span slot="title">Senior Director, Dev Ops, Acme Corporation</span>
     </rh-blockquote>
-  </uxdot-example>  
+  </uxdot-example>
 
-  ### Title
+### Title
 
-  Titles disclose extra information above headlines or other content.
+Titles disclose extra information above headlines or other content.
 
   <uxdot-example>
     <div>
@@ -147,9 +147,9 @@ importElements:
     </div>
   </uxdot-example>
 
-  ### Body copy
+### Body copy
 
-  Body copy is a block of text that can include links or lists.
+Body copy is a block of text that can include links or lists.
 
   <uxdot-example>
     <div>
@@ -157,9 +157,9 @@ importElements:
     </div>
   </uxdot-example>
 
-  ### Code
+### Code
 
-  Code is text that features a monospace font that can be used for coding purposes.
+Code is text that features a monospace font that can be used for coding purposes.
 
   <uxdot-example>
     <pre>
@@ -171,19 +171,19 @@ for (i = (numElementsReturned - 1); i >= 0; i--) {
     </pre>
   </uxdot-example>
 
-  ### Line length
-  
-  Headline and body copy line lengths aren’t measured by the number of characters. Instead, all text styles have a <strong>minimum width of three grid columns</strong> and a <strong>maximum width of eight grid columns</strong> on all screen sizes.
+### Line length
+
+Headline and body copy line lengths aren’t measured by the number of characters. Instead, all text styles have a <strong>minimum width of three grid columns</strong> and a <strong>maximum width of eight grid columns</strong> on all screen sizes.
 
 </section>
 
 <section aria-labelledby="scale">
 
-  ## Scale
-  
-  The type scale features a range of text sizes and weights created to support the needs of various kinds of content. There’s a type scale for desktop and mobile breakpoints.
+## Scale
 
-  ### Desktop scale
+The type scale features a range of text sizes and weights created to support the needs of various kinds of content. There’s a type scale for desktop and mobile breakpoints.
+
+### Desktop scale
 
   <rh-table>
     <table>
@@ -279,9 +279,9 @@ for (i = (numElementsReturned - 1); i >= 0; i--) {
     </table>
   </rh-table>
 
-  ### Mobile scale
+### Mobile scale
 
-  When larger text styles are used on smaller screens, they <strong>automatically decrease in size to fit smaller layouts</strong> better. The mobile type scale is applied when the Tablet, portrait breakpoint is reached or when a screen becomes less than 768px wide.
+When larger text styles are used on smaller screens, they <strong>automatically decrease in size to fit smaller layouts</strong> better. The mobile type scale is applied when the Tablet, portrait breakpoint is reached or when a screen becomes less than 768px wide.
 
   <rh-table>
     <table>
@@ -378,12 +378,11 @@ for (i = (numElementsReturned - 1); i >= 0; i--) {
   </rh-table>
 </section>
 
-
 <section aria-labelledby="usage">
 
-  ## Usage
+## Usage
 
-  Each text style has its own unique hierarchy and application. Text styles can be used in layouts and in components to communicate messages or entice users to take an action.
+Each text style has its own unique hierarchy and application. Text styles can be used in layouts and in components to communicate messages or entice users to take an action.
 
   <div class="grid xs-two-columns md-three-columns">
     <div>
@@ -456,15 +455,15 @@ for (i = (numElementsReturned - 1); i >= 0; i--) {
 
 <section aria-labelledby="best-practices">
 
-  ## Best practices
-  
-  Don't use Red&nbsp;Hat Text for headlines.
+## Best practices
+
+Don't use Red&nbsp;Hat Text for headlines.
 
   <uxdot-example danger>
     <p class="mock-h2 mock-body-text">Red&nbsp;Hat and open source</p>
   </uxdot-example>
 
-  Don't use Red&nbsp;Hat Display for body copy.
+Don't use Red&nbsp;Hat Display for body copy.
 
   <uxdot-example danger>
     <div>
@@ -472,14 +471,14 @@ for (i = (numElementsReturned - 1); i >= 0; i--) {
     </div>
   </uxdot-example>
 
-  Don't space text styles too closely together.
+Don't space text styles too closely together.
 
   <uxdot-example danger alignment="left">
     <p class="mock-title mock-no-margin">Linux platforms</p>
     <p class="mock-h2 mock-no-margin">Red&nbsp;Hat Enterprise Linux</p>
   </uxdot-example>
 
-  Don't stack lots of text styles too closely together.
+Don't stack lots of text styles too closely together.
 
   <uxdot-example danger alignment="left">
     <p class="mock-h2 mock-no-margin">Headline, xl</p>
@@ -492,19 +491,19 @@ for (i = (numElementsReturned - 1); i >= 0; i--) {
 
 <section aria-labelledby="behavior">
 
-  ## Behavior
-  
-  ### Responsive design
-  
-  Text styles decrease in size when screens become smaller. This shift helps users consume content better without additional scrolling.
+## Behavior
 
-  ### Desktop
+### Responsive design
+
+Text styles decrease in size when screens become smaller. This shift helps users consume content better without additional scrolling.
+
+### Desktop
 
   <uxdot-example width-adjustment="540px">
     <img src="/assets/typography/typography-card-desktop.svg" alt="Card typography scale on desktop"> 
   </uxdot-example>
 
-  ### Mobile
+### Mobile
 
   <uxdot-example width-adjustment="363px">
     <img src="/assets/typography/typography-card-mobile.svg" alt="Card typography scale on mobile">  
@@ -515,8 +514,8 @@ for (i = (numElementsReturned - 1); i >= 0; i--) {
   
   ## Interaction states
 
-  Since typography can be used in a variety of components, refer to the specific interaction states that are assigned to each <a href="/elements">component</a> for more information
-  
+Since typography can be used in a variety of components, refer to the specific interaction states that are assigned to each <a href="/elements">component</a> for more information
+
 </section>
 
 <uxdot-feedback>
