@@ -2,6 +2,21 @@
 
 A Video is a graphical preview of a video overlayed with a play button. When clicked, the video will begin playing.
 
+## Installation
+
+If using npm/bundlers:
+
+```bash
+npm install @rhds/elements
+```
+
+Then once installed, import it to your application:
+
+```js
+import '@rhds/elements/rh-video/rh-video.js';
+```
+
+
 ## Usage
 
 Use this component if you want to embed a YouTube video on a page. This component only loads the required YouTube embed code when a user clicks on the play button.
