@@ -1,3 +1,3 @@
-{% renderInstall %}{% endrenderInstall %}
+{% renderInstall lightdoimcss=true %}{% endrenderInstall %}
 
 {% renderCodeDocs hideDescription=true %}{% endrenderCodeDocs %}
