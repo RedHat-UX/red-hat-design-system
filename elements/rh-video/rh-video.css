@@ -59,6 +59,16 @@ figcaption {
   margin-block-start: var(--rh-space-lg, 16px);
 }
 
+figcaption ::slotted(p) {
+  margin-block-start: 0 !important;
+}
+
+::slotted([slot="caption"]) {
+  color: var(--_caption-text-color, var(--rh-color-text-secondary-on-light, #4d4d4d));
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
+  line-height: var(--rh-line-height-body-text, 1.5);
+}
+
 #consent,
 #watermark {
   position: absolute;
@@ -171,10 +181,4 @@ figcaption {
 
 .video #autoplay {
   opacity: 1;
-}
-
-::slotted([slot="caption"]) {
-  color: var(--_caption-text-color, var(--rh-color-text-secondary-on-light, #4d4d4d));
-  font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
-  line-height: var(--rh-line-height-body-text, 1.5);
 }
