@@ -331,6 +331,6 @@
   rh-alert p {
     /* TODO: Document this bug shouldn't have to force the font size
     the component is trying to set internally on #description */
-    font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
+    font-size: var(--rh-font-size-body-text-md, 1rem) !important;
   }
 }
