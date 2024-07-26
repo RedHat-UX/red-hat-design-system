@@ -33,11 +33,9 @@
   --rh-pagination-stepper-color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
   --rh-pagination-background-focused: var(--rh-color-gray-50, #707070);
   --_rh-pagination-list-a-text-color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_rh-pagination-list-a-bg-color: var(--rh-color-surface-dark-alt, #292929);
   --_rh-pagination-list-a-current-page-bg-color: var(--rh-color-surface-darkest, #151515);
   --_rh-pagination-list-a-current-page-border-color: var(--rh-color-border-subtle-on-dark, #707070);
   --_rh-pagination-border-top-hover-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
-  --_rh-pagination-stepper-bg-color: var(--rh-color-surface-dark-alt, #292929);
   --_rh-pagination-stepper-hover-focus-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_numeric-a-color: var(--rh-pagination-accent-color);
   --_numeric-a-color-hover: var(--rh-color-interactive-blue-lightest, #b9dafc);
@@ -65,6 +63,11 @@
 #container.color-palette-darker {
   --_rh-pagination-list-a-bg-color: var(--rh-color-surface-dark, #383838);
   --_rh-pagination-stepper-bg-color: var(--rh-color-surface-dark, #383838);
+}
+
+#container.color-palette-darkest {
+  --_rh-pagination-list-a-bg-color: var(--rh-color-surface-dark-alt, #292929);
+  --_rh-pagination-stepper-bg-color: var(--rh-color-surface-dark-alt, #292929);
 }
 
 .visually-hidden {
