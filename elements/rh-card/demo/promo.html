@@ -82,12 +82,13 @@
   }
 
   @container promo (min-width: 768px) {
-    .reverse::part(image) {
-      order: -10;
-      grid-column-end: 1;
+    .reverse::part(container) {
+      grid-template-columns: 1fr 2fr;
     }
-    .reverse::part(body) {
-      grid-column: span 2;
+
+    .reverse::part(image) {
+      justify-self: start;
+      order: -10;
     }
   }
 </style>
