@@ -70,18 +70,17 @@
       padding-bottom: var(--rh-space-md, 8px);
     }
 
-  #container.smallImg {
-    #row {
+  #container.smallImg #row {
       display: flex;
     }
 
-    #image {
+  #container.smallImg #image {
       flex: 1;
       display: flex;
       align-items: flex-start;
     }
     
-    #content {
+  #container.smallImg #content {
       display: flex;
       flex-direction: column; 
       justify-content: center;
@@ -89,11 +88,10 @@
       text-align: left;
     }
 
-    #cta {
+  #container.smallImg #cta {
       padding-left: var(--rh-space-lg, 16px);
     }
   }
-}
 
 /* Close button */
 #close-button {
