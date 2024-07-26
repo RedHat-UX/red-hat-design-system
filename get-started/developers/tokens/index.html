@@ -36,16 +36,16 @@
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
     "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
     "@lit/context": "/assets/packages/@lit/context/index.js",
-    "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
-    "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "lit-element": "/assets/packages/lit-element/index.js",
     "lit": "/assets/packages/lit/index.js",
+    "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
-    "lit/static-html.js": "/assets/packages/lit/static-html.js",
     "@rhds/tokens/meta.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/media.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@3.0.0/core.js",
-    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "lit/static-html.js": "/assets/packages/lit/static-html.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -96,6 +96,8 @@
     <script type="module">import '@rhds/elements/rh-alert/rh-alert.js';</script>
   
     <script type="module">import '@rhds/elements/rh-subnav/rh-subnav.js';</script>
+  
+    <script type="module">import '@rhds/elements/rh-code-block/rh-code-block.js';</script>
   
 
   
@@ -3661,9 +3663,7 @@
     </uxdot-copy-permalink>
 <p>Run the following git command to install RHDS tokens:</p>
 <rh-code-block>
-  <script type="text/sample-javascript">
-  npm i @rhds/tokens
-  </script>
+  <script type="text/sample-javascript">npm i @rhds/tokens</script>
 </rh-code-block>
 <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
@@ -3764,14 +3764,12 @@
     </uxdot-copy-permalink>
 <p>Apply defaults to the document root by importing the global stylesheet:</p>
 <rh-code-block>
-  <script type="text/html">
-  <link rel="stylesheet" href="/url/to/@rhds/tokens/css/global.css">
-  <style>
-    :is(h1, h2, h3, h4, h5, h6) {
-      font-family: var(--rh-font-family-heading);
-    }
-  </style>
-  </script>
+  <script type="text/html"><link rel="stylesheet" href="/url/to/@rhds/tokens/css/global.css">
+<style>
+  :is(h1, h2, h3, h4, h5, h6) {
+    font-family: var(--rh-font-family-heading);
+  }
+</style></script>
 </rh-code-block>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
@@ -3823,16 +3821,13 @@
     </uxdot-copy-permalink>
 <p>Reset a component's styles (preventing inheritance) by adding resetStyles to its static Constructible Style Sheet list:</p>
 <rh-code-block>
-  <script type="text/sample-javascript">
-  import { resetStyles } from '@rhds/tokens/css/reset.css.js';
-  import style from './rh-jazz-hands.css';
-  </script>
-  <script type="text/sample-javascript">
-  @customElement('rh-jazz-hands')
-  export class RhJazzHands extends LitElement {
-    static readonly styles = [...resetStyles, style];
-  }
-  </script>
+  <script type="text/sample-javascript">import { resetStyles } from '@rhds/tokens/css/reset.css.js';
+import style from './rh-jazz-hands.css';
+</script>
+<script type="text/sample-javascript">@customElement('rh-jazz-hands')
+export class RhJazzHands extends LitElement {
+  static readonly styles = [...resetStyles, style];
+}</script>
 </rh-code-block>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
@@ -3888,21 +3883,15 @@
 </rh-alert>
 <p>Import tokens as JavaScript objects:</p>
 <rh-code-block>
-  <script type="text/sample-javascript">
-  import { tokens } from '@rhds/tokens';
-  </script>
-  <script type="text/sample-javascript">
-  html`<span style="color: ${tokens.get('--rh-color-blue-300')}">I'm blue</span>`;
-  </script>
+  <script type="text/sample-javascript">import { tokens } from '@rhds/tokens';
+</script>
+<script type="text/sample-javascript">html`<span style="color: ${tokens.get('--rh-color-blue-300')}">I'm blue</span>`;</script>
 </rh-code-block>
-<p>or for tree-shakable imports:</p>
+<p>Or tree-shakable imports:</p>
 <rh-code-block>
-  <script type="text/sample-javascript">
-  import { ColorBlue300 } from '@rhds/tokens/values.js';
-  </script>
-  <script type="text/sample-javascript">
-  html`<span style="color: ${ColorBlue300}">I'm blue</span>`;
-  </script>
+  <script type="text/sample-javascript">import { ColorBlue300 } from '@rhds/tokens/values.js';
+</script>
+<script type="text/sample-javascript">html`<span style="color: ${ColorBlue300}">I'm blue</span>`;</script>
 </rh-code-block>
 <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
@@ -4002,9 +3991,7 @@
     </uxdot-copy-permalink>
 <p>Editor snippets complete prefixes like <code>--rh-color-brand</code> to their CSS custom properties, complete with fallback.</p>
 <rh-code-block>
-  <script type="text/css">
-  color: var(--rh-color-brand, #ee0000);
-  </script>
+  <script type="text/css">color: var(--rh-color-brand, #ee0000);</script>
 </rh-code-block>
 <p>They also provide reverse lookup. For example,  if you want to choose between all the tokens with the  value <code>#e00</code>, you can do so by completing the prefix <code>e00</code>.</p>
 <uxdot-copy-permalink  class="h4"><template shadowroot="open" shadowrootmode="open"><style>
@@ -4106,12 +4093,10 @@
     </uxdot-copy-permalink>
 <p>Use LuaSnip to load snippets in Neovim:</p>
 <rh-code-block>
-  <script type="text/sample-javascript">
-  require 'luasnip.loaders.from_vscode'.lazy_load { paths = {
-    -- Path to the built project, perhaps in your `node_modules`
-    '~/Developer/redhat-ux/red-hat-design-tokens/editor/vscode'
-  } }
-  </script>
+  <script type="text/sample-javascript">require 'luasnip.loaders.from_vscode'.lazy_load { paths = {
+  -- Path to the built project, perhaps in your `node_modules`
+  '~/Developer/redhat-ux/red-hat-design-tokens/editor/vscode'
+} }</script>
 </rh-code-block>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
@@ -4263,26 +4248,22 @@
 <p>Vim users can load the <a href="https://github.com/RRethy/vim-hexokinase">vim-hexokinase</a> plugin to display color swatches next to their encoded values in their editor.</p>
 <p>Use the following config (lua syntax, for Neovim users) to configure hexokinase to display color values next to color aliases like <code>{color.brand.red}</code>.</p>
 <rh-code-block>
-  <script type="text/sample-javascript">
-  vim.g.Hexokinase_optInPatterns = {
-    'full_hex', 'triple_hex',
-    'rgb', 'rgba',
-    'hsl', 'hsla',
-    'colour_names',
-  }
-  </script>
-  <script type="text/sample-javascript">
-  vim.g.Hexokinase_ftOptOutPatterns = {
-    json = { 'colour_names' },
-    yaml = { 'colour_names' },
-  }
-  </script>
-  <script type="text/sample-javascript">
-  vim.g.Hexokinase_palettes = {
-    -- replace with path to the built tokens package on your drive
-    vim.fn.expand'~/Developer/redhat-ux/red-hat-design-tokens/editor/neovim/hexokinase.json'
-  }
-  </script>
+  <script type="text/sample-javascript">vim.g.Hexokinase_optInPatterns = {
+  'full_hex', 'triple_hex',
+  'rgb', 'rgba',
+  'hsl', 'hsla',
+  'colour_names',
+}
+</script>
+<script type="text/sample-javascript">vim.g.Hexokinase_ftOptOutPatterns = {
+  json = { 'colour_names' },
+  yaml = { 'colour_names' },
+}
+</script>
+<script type="text/sample-javascript">vim.g.Hexokinase_palettes = {
+  -- replace with path to the built tokens package on your drive
+  vim.fn.expand'~/Developer/redhat-ux/red-hat-design-tokens/editor/neovim/hexokinase.json'
+}</script>
 </rh-code-block>
 <uxdot-feedback><template shadowroot="open" shadowrootmode="open"><style>
 
