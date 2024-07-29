@@ -67,8 +67,17 @@ Themes are expressed in terms of color palettes.
 - `darker`
 - `darkest`
 
+### Context theming
+
+Cards will automatically react to the `color-palette` context provided by a parent element, like `<rh-surface>`.
+
 {% include './patterns/themes.html' %}
 
+### Explicit card theming
+
+Cards can play an active role in theming by declaring a specific `color-palette`.
+
+{% include './patterns/explicit-themes.html' %}
 
 ### Custom theming
 
