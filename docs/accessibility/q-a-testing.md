@@ -2,25 +2,32 @@
 title: QA and Testing
 sidenavTitle: QA and Testing
 permalink: /accessibility/qa-testing/index.html
-tags: 
- - accessibility
-order: 10
+tags:
+  - accessibility
+order: 50
 importElements:
   - rh-blockquote
+  - rh-table
 ---
 
+<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
+<link rel="stylesheet" href="{{ '/styles/samp.css' | url }}">
+
 <style>
-    rh-blockquote {
-        display: block;
-        margin-block: 2em !important;
-        max-width: 36em;
-    }
+  .page-spacing .container rh-table {
+    margin-block-end: var(--rh-space-3xl, 48px);
+  }
+
+  rh-blockquote {
+    display: block;
+    margin-block: 2em !important;
+    max-width: 36em;
+  }
 </style>
 
 ## Accessibility tools
 
 Automated tools can help you quickly identify many potential high-impact accessibility issues. Among such tools are free browser extensions like WebAIM’s WAVE, Deque’s axe DevTools, and IBM's Equal Access Checker.
-
 
 ### WebAIM WAVE
 
@@ -29,7 +36,6 @@ WAVE is an accessibility checker that’s particularly useful for visual users w
 Getting started with WAVE is simple. Just go to a page, click the extension button, and it annotates your screen with icons, based on topic (e.g., headings, color contrast issues, etc.). But it’s more than just a visual tool. Clicking on annotations often gives you the option to view relevant in-page code and WCAG criteria.
 The [WAVE browser extension](https://wave.webaim.org/) is available for Chrome, Firefox, and Edge.
 
-
 ### Deque axe DevTools
 
 Tucked away in your browser’s DevTools panel after installation, Deque’s axe DevTools extension scans your page for accessibility issues and best practices, and then returns a text list of results and code callouts. With its ability to export results, axe DevTools is also useful for documentation, reports, and issue tracking.
@@ -37,7 +43,6 @@ Tucked away in your browser’s DevTools panel after installation, Deque’s axe
 Different WCAG versions (2.0 through 2.2) and conformance levels (A through AAA) can be specified in the extension’s settings. (At Red Hat, we target WCAG 2.1 AA.) And you can toggle best practices results on and off, depending on whether you’re interested solely in strict WCAG conformance. You can read the full list of rules being tested at the [axe-core GitHub repository](https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md).
 
 The [axe DevTools extension](https://www.deque.com/axe/devtools/) is available for Chrome, Firefox, and Edge. The free version allows you to test entire pages. The paid Pro version adds the capability to specify page sections for testing, provides additional export options, and also includes some guided walkthroughs for further testing.
-
 
 ### IBM Equal Access Checker
 
@@ -48,7 +53,6 @@ Running Equal Access Checker in conjunction with a tool like axe DevTools can be
 In addition to WCAG versions 2.0, 2.1, and 2.2, Equal Access Checker can run scans based on IBM’s internal accessibility target. Currently, this target includes all of WCAG 2.1 AA, plus some additional U.S. (Section 508) and European (EN 301 549) standards not covered by WCAG. IBM has posted the [Equal Access testing ruleset](https://www.ibm.com/able/requirements/checker-rule-sets) at their accessibility site.
 
 [Equal Access Checker](https://www.ibm.com/able/toolkit/tools/#develop) can be installed as a browser extension in Chrome, Firefox, and Edge. It’s also available as CI/CD Node packages.
-
 
 ## Testing
 
@@ -65,39 +69,75 @@ Designers can evaluate their designs for things like color contrast, honest affo
 
 Keep in mind that testing isn’t easy. With many accessibility checks being judgment calls (what constitutes good alt text or clear form instructions?), even [experts disagree on accessibility](https://www.w3.org/TR/accessibility-conformance-challenges/#themes-from-research). Seek perfection, but accept progress along the way. Fix obvious errors, and use your best judgment with other potential issues—asking other subject matter experts as you go, if you have access to them.
 
-
 ### Testing technologies
 
 When manually testing web pages for accessibility, the following four tools are invaluable:
+
 - Your keyboard
 - A screen reader
 - A color contrast checker
 - The browser inspector
 
-
 #### Keyboard testing
 
 If you do nothing else to test your projects, try navigating the entire experience with your keyboard, via the following keys:
-- *<kbd>Tab</kbd> and <kbd>shift+tab</kbd>* to move forward and backward between focusable items (e.g., links, form controls, and scrollable windows).
-- *Arrow keys (<kbd>↑ → ↓ ←</kbd>)* to scroll windows, to operate form controls and tab interfaces, and to navigate through groups of focusable items (like sections of an accordion or options in a menu).
-- *<kbd>Enter</kbd> and/or <kbd>Space</kbd>* to follow links, activate buttons, select list items, and trigger other interactive items, as appropriate.
 
+- _<kbd>Tab</kbd> and <kbd>shift+tab</kbd>_ to move forward and backward between focusable items (e.g., links, form controls, and scrollable windows).
+- _Arrow keys (<kbd>↑ → ↓ ←</kbd>)_ to scroll windows, to operate form controls and tab interfaces, and to navigate through groups of focusable items (like sections of an accordion or options in a menu).
+- _<kbd>Enter</kbd> and/or <kbd>Space</kbd>_ to follow links, activate buttons, select list items, and trigger other interactive items, as appropriate.
 
 #### Screen readers
 
-If you’re feeling ambitious and want to combine testing tasks, perform your keyboard testing with a screen reader turned on.  The screen reader you use for testing depends on the operating system and browser you wish to test. 
+If you’re feeling ambitious and want to combine testing tasks, perform your keyboard testing with a screen reader turned on. The screen reader you use for testing depends on the operating system and browser you wish to test.
 
-| Operating system | Browser | Screen reader                                                                                                                    |
-| ---------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| MacOS            | Safari  | [VoiceOver for Mac](https://support.apple.com/guide/voiceover/turn-voiceover-on-or-off-vo2682/mac) (included with MacOS)         |
-| Windows          | Firefox | [NVDA](https://www.nvaccess.org/download/) (free download)                                                                       |
-| Windows          | Chrome  | [JAWS](https://www.freedomscientific.com/products/software/jaws/) (paid)                                                         |
-| Linux            | Firefox | [Orca](https://help.gnome.org/users/orca/stable/index.html.en)  (included with GNOME desktop environment)                        |
-| Android          | Chrome  | [Talkback](https://support.google.com/accessibility/android/answer/6283677?hl=en&ref_topic=10601571&sjid=4695144848639410734-NC) (included with Android)|
-| iOS              | Safari  | [VoiceOver for iOS](https://support.apple.com/en-sa/guide/iphone/iph3e2e415f/ios) (included with iOS) |
+<rh-table>
+  <table>
+    <caption>
+      Browser and screen reader pairings
+    </caption>
+    <thead>
+      <tr>
+        <th scope="col" data-label="OS">Operating system</th>
+        <th scope="col" data-label="Browser">Browser</th>
+        <th scope="col" data-label="Reader">Screen reader</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="OS">MacOS</td>
+        <td data-label="Browser">Safari</td>
+        <td data-label="Reader"><a href="https://support.apple.com/guide/voiceover/turn-voiceover-on-or-off-vo2682/mac">VoiceOver for Mac</a> (included with MacOS)</td>
+      </tr>
+      <tr>
+        <td data-label="OS">Windows</td>
+        <td data-label="Browser">Firefox</td>
+        <td><a href="https://www.nvaccess.org/download/">NVDA</a> (free download)</td>
+      </tr>
+      <tr>
+        <td data-label="OS">Windows</td>
+        <td data-label="Browser">Chrome</td>
+        <td data-label="Reader"><a href="https://www.freedomscientific.com/products/software/jaws/">JAWS</a> (paid)</td>
+      </tr>
+      <tr>
+        <td data-label="OS">Linux</td>
+        <td data-label="Browser">Firefox</td>
+        <td data-label="Reader"><a href="https://help.gnome.org/users/orca/stable/index.html.en">Orca</a> (included with GNOME desktop environment)</td>
+      </tr>
+      <tr>
+        <td data-label="OS">Android</td>
+        <td data-label="Browser">Chrome</td>
+        <td data-label="Reader"><a href="https://support.google.com/accessibility/android/answer/6283677?hl=en&amp;ref_topic=10601571&amp;sjid=4695144848639410734-NC">Talkback</a> (included with Android)</td>
+      </tr>
+      <tr>
+        <td data-label="OS">iOS</td>
+        <td data-label="Browser">Safari</td>
+        <td data-label="Reader"><a href="https://support.apple.com/en-sa/guide/iphone/iph3e2e415f/ios">VoiceOver for iOS</a> (included with iOS)</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
 
 Deque offers a collection of [screen reader shortcuts](https://dequeuniversity.com/screenreaders/) for all of the above listed technologies.
-
 
 #### Color contrast checkers
 
@@ -106,7 +146,6 @@ A [plurality of web accessibility issues](https://webaim.org/projects/million/#c
 TPGi’s [Colour Contrast Analyzer](https://www.tpgi.com/color-contrast-checker/) is a free Mac and Windows application that helps you measure contrast between colors via an eyedropper tool (which lets you test the color of any pixel on your screen) or by typing in color values.
 
 If you’re either not on a device where you can install TPGi’s tool or just want a quick gut check, WebAIM has an [online contrast checker](https://webaim.org/resources/contrastchecker/) that allows you to type in foreground and background color values.
-
 
 #### Browser inspector
 

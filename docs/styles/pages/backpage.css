@@ -51,6 +51,10 @@
     font-size: 1rem;  /* Not a RHDS token */
   }
 
+  :where(article .container rh-code-block) {
+    max-width: 56rem;
+  }
+
   aside {
     grid-area: aside;
     padding-inline: var(--rh-space-lg, 16px);
@@ -100,7 +104,7 @@
   /* not when the h2 is a child of a section */
   .container > :not(section, uxdot-copy-permalink) > :where(uxdot-copy-permalink.h3, h3),
   /* if a section landmark is used */
-  .container > section > :where(uxdot-copy-permalink.h3, h3){
+  .container > section > :where(uxdot-copy-permalink.h3, h3) {
     margin-block-start: var(--rh-space-4xl, 64px);
   }
 

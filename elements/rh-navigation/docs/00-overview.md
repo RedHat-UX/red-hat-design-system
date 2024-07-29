@@ -13,4 +13,4 @@ every page to ensure a consistent user experience across websites.
 ## Demos
 View a live version of this component to see how it can be customized.
 
-<rh-cta><a href="https://codepen.io/heyMP/pen/gOoYXov">View this component in action</rh-cta>
+<rh-cta><a href="https://codepen.io/heyMP/pen/gOoYXov">View this component in action</a></rh-cta>

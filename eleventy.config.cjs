@@ -16,6 +16,8 @@ const litPlugin = require('@lit-labs/eleventy-plugin-lit');
 const isWatch =
   process.argv.includes('--serve') || process.argv.includes('--watch');
 
+const isLocal = !(process.env.CI || process.env.DEPLOY_URL);
+
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function(eleventyConfig) {
   eleventyConfig.setQuietMode(true);
@@ -33,7 +35,16 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('docs/assets/**/*');
   eleventyConfig.addPassthroughCopy('docs/styles/**/*');
 
+  if (isLocal) {
+    eleventyConfig.addPassthroughCopy({
+      'node_modules/playground-elements/playground-*worker*': '.',
+    });
+  }
+
+  eleventyConfig.addWatchTarget('docs/patterns/**/*.(html|md)');
   eleventyConfig.addWatchTarget('docs/styles/');
+
+  eleventyConfig.addGlobalData('isLocal', isLocal);
 
   eleventyConfig.on('eleventy.before', function({ runMode }) {
     eleventyConfig.addGlobalData('runMode', runMode);
@@ -70,12 +81,14 @@ module.exports = function(eleventyConfig) {
     nodemodulesPublicPath: '/assets/packages',
     manualImportMap: {
       imports: {
+        '@rhds/tokens': '/assets/packages/@rhds/tokens/js/tokens.js',
         '@rhds/tokens/': '/assets/packages/@rhds/tokens/js/',
-        '@rhds/elements/': '/assets/packages/@rhds/elements/elements/',
         '@rhds/elements/lib/': '/assets/packages/@rhds/elements/lib/',
+        '@rhds/elements/': '/assets/packages/@rhds/elements/elements/',
         '@patternfly/elements/': '/assets/packages/@patternfly/elements/',
         '@patternfly/icons/': '/assets/packages/@patternfly/icons/',
         '@patternfly/pfe-core/': '/assets/packages/@patternfly/pfe-core/',
+        'playground-elements': 'https://cdn.jsdelivr.net/npm/playground-elements@0.18.1/+esm',
       },
     },
     localPackages: [
@@ -97,18 +110,19 @@ module.exports = function(eleventyConfig) {
       '@patternfly/icons/patternfly/',
       '@patternfly/pfe-core',
       // Vendor
-      'lit',
-      'lit/directives/if-defined.js',
-      'lit/directives/class-map.js',
-      'lit/static-html.js',
-      'lit-element',
-      '@lit/reactive-element',
+      '@floating-ui/core',
+      '@floating-ui/dom',
       '@lit-labs/ssr-client/',
       '@lit-labs/ssr-client/lit-element-hydrate-support.js',
       '@lit/context',
+      '@lit/reactive-element',
+      'lit',
+      'lit-element',
+      'lit/directives/class-map.js',
+      'lit/directives/if-defined.js',
+      'lit/directives/repeat.js',
+      'lit/static-html.js',
       'tslib',
-      '@floating-ui/dom',
-      '@floating-ui/core',
     ],
   });
 

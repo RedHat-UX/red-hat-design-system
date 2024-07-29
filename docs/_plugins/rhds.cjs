@@ -11,11 +11,9 @@ const RHDSAlphabetizeTagsPlugin = require('./alphabetize-tags.cjs');
 const RHDSShortcodesPlugin = require('./shortcodes.cjs');
 const { parse } = require('async-csv');
 
-/** @typedef {object} EleventyTransformContext */
 
 /**
  * Replace paths in demo files from the dev SPA's format to 11ty's format
- * @this {EleventyTransformContext}
  * @param {string} content
  */
 function demoPaths(content) {
@@ -86,7 +84,9 @@ const COPY_CONTENT_EXTENSIONS = [
 function getFilesToCopy() {
   // Copy element demo files
   const repoRoot = process.cwd();
-  const tagNames = fs.readdirSync(path.join(repoRoot, 'elements'));
+  const tagNames = fs.readdirSync(path.join(repoRoot, 'elements'), { withFileTypes: true })
+      .filter(ent => ent.isDirectory())
+      .map(ent => ent.name);
 
   /** @type{import('@patternfly/pfe-tools/config.js').PfeConfig}*/
   const config = require('../../.pfe.config.json');
@@ -187,7 +187,6 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
      * NB: since the data for this shortcode is no a POJO,
      * but a DocsPage instance, 11ty assigns it to this.ctx._
      * @see https://github.com/11ty/eleventy/blob/bf7c0c0cce1b2cb01561f57fdd33db001df4cb7e/src/Plugins/RenderPlugin.js#L89-L93
-     * @type {import('@patternfly/pfe-tools/11ty/DocsPage').DocsPage}
      */
     const docsPage = this.ctx._;
     return docsPage.description;
@@ -224,6 +223,19 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   eleventyConfig.addCollection('sortedColor', async function(collectionApi) {
     const colorCollection = collectionApi.getFilteredByTags('color');
     return colorCollection.sort((a, b) => {
+      if (a.data.order > b.data.order) {
+        return 1;
+      } else if (a.data.order < b.data.order) {
+        return -1;
+      } else {
+        return 0;
+      }
+    });
+  });
+
+  eleventyConfig.addCollection('sortedTypography', async function(collectionApi) {
+    const typographyCollection = collectionApi.getFilteredByTags('typography');
+    return typographyCollection.sort((a, b) => {
       if (a.data.order > b.data.order) {
         return 1;
       } else if (a.data.order < b.data.order) {
@@ -288,7 +300,6 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
 
     try {
       const { glob } = await import('glob');
-      /** @type {(import('@patternfly/pfe-tools/11ty/DocsPage').DocsPage & { repoStatus?: any[] })[]} */
       const elements = await eleventyConfig.globalData?.elements();
       const filePaths = (await glob(`elements/*/docs/*.md`, { cwd: process.cwd() }))
           .filter(x => x.match(/\d{1,3}-[\w-]+\.md$/)); // only include new style docs
