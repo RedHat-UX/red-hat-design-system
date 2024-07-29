@@ -8,6 +8,8 @@ permalink: /get-started/developers/tokens/index.html
 subnav:
   collection: sortedDevelopers
   order: 30
+importElements: 
+  - rh-code-block
 ---
 
 ## How to install tokens
@@ -15,9 +17,7 @@ subnav:
 Run the following git command to install RHDS tokens:
 
 <rh-code-block>
-  <script type="text/sample-javascript">
-  npm i @rhds/tokens
-  </script>
+  <script type="text/sample-javascript">npm i @rhds/tokens</script>
 </rh-code-block>
 
 
@@ -31,14 +31,12 @@ We use [style-dictionary](https://amzn.github.io/style-dictionary/) to transform
 Apply defaults to the document root by importing the global stylesheet:
 
 <rh-code-block>
-  <script type="text/html">
-  <link rel="stylesheet" href="/url/to/@rhds/tokens/css/global.css">
-  <style>
-    :is(h1, h2, h3, h4, h5, h6) {
-      font-family: var(--rh-font-family-heading);
-    }
-  </style>
-  </script>
+  <script type="text/html"><link rel="stylesheet" href="/url/to/@rhds/tokens/css/global.css">
+<style>
+  :is(h1, h2, h3, h4, h5, h6) {
+    font-family: var(--rh-font-family-heading);
+  }
+</style></script>
 </rh-code-block>
 
 
@@ -47,17 +45,13 @@ Apply defaults to the document root by importing the global stylesheet:
 Reset a component's styles (preventing inheritance) by adding resetStyles to its static Constructible Style Sheet list:
 
 <rh-code-block>
-  <script type="text/sample-javascript">
-  import { resetStyles } from '@rhds/tokens/css/reset.css.js';
-  import style from './rh-jazz-hands.css';
-  </script>
-
-  <script type="text/sample-javascript">
-  @customElement('rh-jazz-hands')
-  export class RhJazzHands extends LitElement {
-    static readonly styles = [...resetStyles, style];
-  }
-  </script>
+  <script type="text/sample-javascript">import { resetStyles } from '@rhds/tokens/css/reset.css.js';
+import style from './rh-jazz-hands.css';
+</script>
+<script type="text/sample-javascript">@customElement('rh-jazz-hands')
+export class RhJazzHands extends LitElement {
+  static readonly styles = [...resetStyles, style];
+}</script>
 </rh-code-block>
 
 
@@ -71,25 +65,17 @@ Reset a component's styles (preventing inheritance) by adding resetStyles to its
 Import tokens as JavaScript objects:
 
 <rh-code-block>
-  <script type="text/sample-javascript">
-  import { tokens } from '@rhds/tokens';
-  </script>
-
-  <script type="text/sample-javascript">
-  html`<span style="color: ${tokens.get('--rh-color-blue-300')}">I'm blue</span>`;
-  </script>
+  <script type="text/sample-javascript">import { tokens } from '@rhds/tokens';
+</script>
+<script type="text/sample-javascript">html`<span style="color: ${tokens.get('--rh-color-blue-300')}">I'm blue</span>`;</script>
 </rh-code-block>
 
-or for tree-shakable imports:
+Or tree-shakable imports:
 
 <rh-code-block>
-  <script type="text/sample-javascript">
-  import { ColorBlue300 } from '@rhds/tokens/values.js';
-  </script>
-
-  <script type="text/sample-javascript">
-  html`<span style="color: ${ColorBlue300}">I'm blue</span>`;
-  </script>
+  <script type="text/sample-javascript">import { ColorBlue300 } from '@rhds/tokens/values.js';
+</script>
+<script type="text/sample-javascript">html`<span style="color: ${ColorBlue300}">I'm blue</span>`;</script>
 </rh-code-block>
 
 
@@ -100,9 +86,7 @@ or for tree-shakable imports:
 Editor snippets complete prefixes like `--rh-color-brand` to their CSS custom properties, complete with fallback.
 
 <rh-code-block>
-  <script type="text/css">
-  color: var(--rh-color-brand, #ee0000);
-  </script>
+  <script type="text/css">color: var(--rh-color-brand, #ee0000);</script>
 </rh-code-block>
 
 They also provide reverse lookup. For example,  if you want to choose between all the tokens with the  value `#e00`, you can do so by completing the prefix `e00`.
@@ -118,12 +102,10 @@ Download the VSIX bundle that’s linked at the bottom of our [“Release v1.0.0
 Use LuaSnip to load snippets in Neovim:
 
 <rh-code-block>
-  <script type="text/sample-javascript">
-  require 'luasnip.loaders.from_vscode'.lazy_load { paths = {
-    -- Path to the built project, perhaps in your `node_modules`
-    '~/Developer/redhat-ux/red-hat-design-tokens/editor/vscode'
-  } }
-  </script>
+  <script type="text/sample-javascript">require 'luasnip.loaders.from_vscode'.lazy_load { paths = {
+  -- Path to the built project, perhaps in your `node_modules`
+  '~/Developer/redhat-ux/red-hat-design-tokens/editor/vscode'
+} }</script>
 </rh-code-block>
 
 
@@ -146,28 +128,22 @@ Vim users can load the [vim-hexokinase](https://github.com/RRethy/vim-hexokinase
 Use the following config (lua syntax, for Neovim users) to configure hexokinase to display color values next to color aliases like `{color.brand.red}`.
 
 <rh-code-block>
-  <script type="text/sample-javascript">
-  vim.g.Hexokinase_optInPatterns = {
-    'full_hex', 'triple_hex',
-    'rgb', 'rgba',
-    'hsl', 'hsla',
-    'colour_names',
-  }
-  </script>
-
-  <script type="text/sample-javascript">
-  vim.g.Hexokinase_ftOptOutPatterns = {
-    json = { 'colour_names' },
-    yaml = { 'colour_names' },
-  }
-  </script>
-
-  <script type="text/sample-javascript">
-  vim.g.Hexokinase_palettes = {
-    -- replace with path to the built tokens package on your drive
-    vim.fn.expand'~/Developer/redhat-ux/red-hat-design-tokens/editor/neovim/hexokinase.json'
-  }
-  </script>
+  <script type="text/sample-javascript">vim.g.Hexokinase_optInPatterns = {
+  'full_hex', 'triple_hex',
+  'rgb', 'rgba',
+  'hsl', 'hsla',
+  'colour_names',
+}
+</script>
+<script type="text/sample-javascript">vim.g.Hexokinase_ftOptOutPatterns = {
+  json = { 'colour_names' },
+  yaml = { 'colour_names' },
+}
+</script>
+<script type="text/sample-javascript">vim.g.Hexokinase_palettes = {
+  -- replace with path to the built tokens package on your drive
+  vim.fn.expand'~/Developer/redhat-ux/red-hat-design-tokens/editor/neovim/hexokinase.json'
+}</script>
 </rh-code-block>
 
 <uxdot-feedback>
