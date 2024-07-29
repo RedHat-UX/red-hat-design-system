@@ -29,8 +29,8 @@ importElements:
 
 ## Overview
 
-A card formats content in a small, contained space. It can be used to display a 
-preview of information or provide secondary content in relation to the content 
+A card formats content in a small, contained space. It can be used to display a
+preview of information or provide secondary content in relation to the content
 it's near. Several cards can be used together to group related information.
 
 <rh-alert state="info">
@@ -75,7 +75,6 @@ Themes are expressed in terms of color palettes.
 When using design tokens to apply custom themes, it is important to ensure that the colors used meet [color contrast guidelines][color-contrast].
 
 {% include './patterns/custom-themes.html' %}
-
 
 {% include 'partials/component/feedback.html' %}
 

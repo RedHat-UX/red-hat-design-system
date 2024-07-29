@@ -1,7 +1,7 @@
 ---
 title: Content
 tags:
-  - accessibility
+ - accessibility
 order: 30
 importElements:
   - rh-code-block
