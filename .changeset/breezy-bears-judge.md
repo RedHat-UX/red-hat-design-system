@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-Unsetting margins on slotted headings
+`<rh-card>`:  Corrected slotted header margin
