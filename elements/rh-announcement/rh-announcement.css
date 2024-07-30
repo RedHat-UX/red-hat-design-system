@@ -21,6 +21,10 @@
     background-color: var(--rh-color-surface-lightest, #ffffff); /* Default (light) background */
 }
 
+#container.smallImg {
+  justify-content: flex-start;
+}
+
 /* dark theme */
 #container.dark {
   background-color: var(--rh-color-surface-darkest, #151515);
