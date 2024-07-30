@@ -14,7 +14,7 @@ A video element is a graphical preview of a video overlayed with a play button. 
 
 <div class="grid sm-two-columns">
   <rh-video>
-    <img slot="thumbnail" src="{{ './video-sample.svg' | url }}" alt="Red Hat Logo on a gray background"/>
+    <img slot="thumbnail" src="{{ './video-sample-thumb.svg' | url }}" alt="Red Hat Logo on a gray background"/>
     <template>
       <iframe title="Red Hat OpenShift AI overview" width="900" height="499" src="https://www.youtube.com/embed/Hc8emNr2igU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </template>
