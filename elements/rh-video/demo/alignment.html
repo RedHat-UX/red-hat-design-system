@@ -1,5 +1,5 @@
-<div class="wrap centered">
-  <rh-video>
+<div class="wrap">
+  <rh-video class="centered">
     <img slot="thumbnail" src="https://fakeimg.pl/900x499/282828/eae0d0?text=Centered" alt="Image description"/>
     <template>
       <iframe title="Title of video" width="900" height="499" src="https://www.youtube.com/embed/Hc8emNr2igU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -8,8 +8,8 @@
   </rh-video>
 </div>
 
-<div class="wrap right-aligned">
-  <rh-video>
+<div class="wrap">
+  <rh-video class="right-aligned">
     <img slot="thumbnail" src="https://fakeimg.pl/900x499/282828/eae0d0?text=Right" alt="Image description"/>
     <template>
       <iframe title="Title of video" width="900" height="499" src="https://www.youtube.com/embed/Hc8emNr2igU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -28,11 +28,13 @@
     padding-block-start: var(--rh-space-2xl, 32px);
   }
 
-  .centered rh-video::part(caption) {
+  .centered {
+    justify-content: center;
     text-align: center;
   }
 
-  .right-aligned rh-video::part(caption) {
+  .right-aligned {
+    justify-content: end;
     text-align: end;
   }
 </style>
