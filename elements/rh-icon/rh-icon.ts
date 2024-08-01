@@ -41,7 +41,6 @@ export class IconResolveError extends ErrorEvent {
  * @fires load - Fired when an icon is loaded and rendered
  * @fires error - Fired when an icon fails to load
  * @csspart fallback - Container for the fallback (i.e. slotted) content
- * @cssprop {<length>} --rh-icon--size - size of the icon
  */
 @customElement('rh-icon')
 export class RhIcon extends LitElement {
