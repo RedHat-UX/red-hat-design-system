@@ -1,5 +1,5 @@
 <style>  
-  rh-card#custom-theme-card {
+  .custom-theme-card {
     --rh-color-border-subtle-on-light: #f56e6e;
     --rh-color-surface-lightest: #feeded;
     --rh-color-text-primary-on-light: #5f0000;
@@ -17,7 +17,7 @@
 
 <div id="custom-theming">
   <uxdot-pattern allow="lightest, darkest">
-    <rh-card id="custom-theme-card">
+    <rh-card class="custom-theme-card">
       <h2 slot="header">Card title</h2>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit
         libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id
@@ -27,7 +27,7 @@
     <rh-code-block slot="css" actions="copy">
       <span slot="action-label-copy">Copy to Clipboard</span>
       <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
-      <script type="text/css">rh-card#custom-theme-card {
+      <script type="text/css">.custom-theme-card {
   --rh-color-border-subtle-on-light: #f56e6e;
   --rh-color-surface-lightest: #feeded;
   --rh-color-text-primary-on-light: #5f0000;

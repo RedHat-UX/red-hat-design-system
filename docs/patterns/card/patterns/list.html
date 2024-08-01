@@ -1,6 +1,6 @@
 <style>
-  #example-list-card-flat :is(ol, ul),
-  #example-list-card-dividers :is(ol, ul) {
+  .example-list-card-flat :is(ol, ul),
+  .example-list-card-dividers :is(ol, ul) {
     display: flex;
     flex-flow: column;
     gap: var(--rh-space-lg, 16px);
@@ -9,34 +9,34 @@
     list-style-type: none;
   }
 
-  #example-list-card-dividers :is(ol, ul) li {
+  .example-list-card-dividers :is(ol, ul) li {
     margin-block: 0;
     padding-block: var(--rh-space-lg, 16px);
     border-block-end: 1px solid var(--_divider-color, var(--rh-color-border-subtle-on-light, #c7c7c7));
   }
 
-  [color-palette^="dark"] rh-card#example-list-card-dividers,
-  rh-card#example-list-card-dividers[color-palette^="dark"] {
+  [color-palette^="dark"] .example-list-card-dividers,
+  .example-list-card-dividers[color-palette^="dark"] {
     --_divider-color: var(--rh-color-border-subtle-on-dark, #707070);
   }
 
-  #example-list-card-dividers :is(ol, ul) li:last-child {
+  .example-list-card-dividers :is(ol, ul) li:last-child {
     padding-block-end: 0;
     border-block-end: none;
   }
 
-  rh-card#example-list-card-ordered :is(ol),
-  rh-card#example-list-card-unordered :is(ul) {
+  .example-list-card-ordered :is(ol),
+  .example-list-card-unordered :is(ul) {
     padding-inline-start: var(--rh-space-lg, 16px);
   }
 
-  rh-card#example-list-card-ordered :is(ol) li,
-  rh-card#example-list-card-unordered :is(ul) li {
+  .example-list-card-ordered :is(ol) li,
+  .example-list-card-unordered :is(ul) li {
     margin-block-end: var(--rh-space-lg, 16px);
   }
 
-  rh-card#example-list-card-ordered :is(ol) li:last-child,
-  rh-card#example-list-card-unordered :is(ul) li:last-child {
+  .example-list-card-ordered :is(ol) li:last-child,
+  .example-list-card-unordered :is(ul) li:last-child {
     margin-block-end: 0;
   }
 
@@ -50,7 +50,7 @@
   <h3>Flat list</h3>
   <uxdot-pattern id="list-card-flat">
     <h4 slot="heading">Example</h4>
-    <rh-card id="example-list-card-flat">
+    <rh-card class="example-list-card-flat">
       <ul>
         <li>List text</li>
         <li><a href="#">Linked list text</a></li>
@@ -62,7 +62,7 @@
     <rh-code-block slot="html" actions="copy">
       <span slot="action-label-copy">Copy to Clipboard</span>
       <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
-      <script type="text/html"><rh-card id="example-list-card-flat">
+      <script type="text/html"><rh-card class="example-list-card-flat">
   <ul>
     <li>List text</li>
     <li><a href="#">Linked list text</a></li>
@@ -75,7 +75,7 @@
     <rh-code-block slot="css" actions="copy">
       <span slot="action-label-copy">Copy to Clipboard</span>
       <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
-      <script type="text/css">#example-list-card-flat :is(ol, ul) {
+      <script type="text/css">.example-list-card-flat :is(ol, ul) {
   display: flex;
   flex-flow: column;
   gap: var(--rh-space-lg);
@@ -88,7 +88,7 @@
   <h3>List with dividers</h3>
   <uxdot-pattern id="list-card-dividers">
     <h4 slot="heading">Example</h4>
-    <rh-card id="example-list-card-dividers">
+    <rh-card class="example-list-card-dividers">
       <ul>
         <li>List text</li>
         <li><a href="#">Linked list text</a></li>
@@ -100,7 +100,7 @@
     <rh-code-block slot="html" actions="copy">
       <span slot="action-label-copy">Copy to Clipboard</span>
       <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
-      <script type="text/html"><rh-card id="example-list-card-dividers">
+      <script type="text/html"><rh-card class="example-list-card-dividers">
   <ul>
     <li>List text</li>
     <li><a href="#">Linked list text</a></li>
@@ -113,22 +113,22 @@
     <rh-code-block slot="css" actions="copy">
       <span slot="action-label-copy">Copy to Clipboard</span>
       <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
-      <script type="text/css">#example-list-card-dividers :is(ol, ul) {
+      <script type="text/css">.example-list-card-dividers :is(ol, ul) {
   display: flex;
   flex-flow: column;
   gap: var(--rh-space-lg, 16px);
   padding: 0;
   list-style-type: none;
 }
-#example-list-card-dividers :is(ol, ul) li {
+.example-list-card-dividers :is(ol, ul) li {
   padding-block-end: var(--rh-space-lg, 16px);
   border-block-end: 1px solid var(--_divider-color, var(--rh-color-border-subtle-on-light, #c7c7c7));
 }
-[color-palette^="dark"] rh-card#example-list-card-dividers,
-rh-card#example-list-card-dividers[color-palette^="dark"] {
+[color-palette^="dark"] .example-list-card-dividers,
+.example-list-card-dividers[color-palette^="dark"] {
   --_divider-color: var(--rh-color-border-subtle-on-dark, #707070);
 }
-#example-list-card-dividers :is(ol, ul) li:last-child {
+.example-list-card-dividers :is(ol, ul) li:last-child {
   padding-block-end: 0;
   border-block-end: none;
 }</script>
@@ -138,7 +138,7 @@ rh-card#example-list-card-dividers[color-palette^="dark"] {
   <h3>Ordered list</h3>
   <uxdot-pattern id="list-card-ordered">
     <h4 slot="heading">Example</h4>
-    <rh-card id="example-list-card-ordered">
+    <rh-card class="example-list-card-ordered">
       <ol>
         <li>Ordered list text</li>
         <li><a href="#">Linked ordered list text</a></li>
@@ -150,7 +150,7 @@ rh-card#example-list-card-dividers[color-palette^="dark"] {
     <rh-code-block slot="html" actions="copy">
       <span slot="action-label-copy">Copy to Clipboard</span>
       <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
-      <script type="text/html"><rh-card id="example-list-card-ordered">
+      <script type="text/html"><rh-card class="example-list-card-ordered">
   <ol>
     <li>Ordered list text</li>
     <li><a href="#">Linked ordered list text</a></li>
@@ -163,13 +163,13 @@ rh-card#example-list-card-dividers[color-palette^="dark"] {
     <rh-code-block slot="css" actions="copy">
       <span slot="action-label-copy">Copy to Clipboard</span>
       <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
-      <script type="text/css">rh-card#example-list-card-ordered :is(ol) {
+      <script type="text/css">.example-list-card-ordered :is(ol) {
   padding-inline-start: var(--rh-space-lg, 16px);
 }
-rh-card#example-list-card-ordered :is(ol) li {
+.example-list-card-ordered :is(ol) li {
   margin-block-end: var(--rh-space-lg, 16px);
 }
-rh-card#example-list-card-ordered :is(ol) li:last-child {
+.example-list-card-ordered :is(ol) li:last-child {
   margin-block-end: 0;
 }</script>
     </rh-code-block>
@@ -178,7 +178,7 @@ rh-card#example-list-card-ordered :is(ol) li:last-child {
   <h3>Unordered list</h3>
   <uxdot-pattern id="list-card-unordered">
     <h4 slot="heading">Example</h4>
-    <rh-card id="example-list-card-unordered">
+    <rh-card class="example-list-card-unordered">
       <ul>
         <li>Unordered list text</li>
         <li><a href="#">Linked unordered list text</a></li>
@@ -190,7 +190,7 @@ rh-card#example-list-card-ordered :is(ol) li:last-child {
     <rh-code-block slot="html" actions="copy">
       <span slot="action-label-copy">Copy to Clipboard</span>
       <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
-      <script type="text/html"><rh-card id="example-list-card-unordered">
+      <script type="text/html"><rh-card class="example-list-card-unordered">
   <ul>
     <li>Unordered list text</li>
     <li><a href="#">Linked unordered list text</a></li>
@@ -203,13 +203,13 @@ rh-card#example-list-card-ordered :is(ol) li:last-child {
     <rh-code-block slot="css" actions="copy">
       <span slot="action-label-copy">Copy to Clipboard</span>
       <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
-      <script type="text/css">rh-card#example-list-card-unordered :is(ul) {
+      <script type="text/css">.example-list-card-unordered :is(ul) {
   padding-inline-start: var(--rh-space-lg, 16px);
 }
-rh-card#example-list-card-unordered :is(ul) li {
+.example-list-card-unordered :is(ul) li {
   margin-block-end: var(--rh-space-lg, 16px);
 }
-rh-card#example-list-card-unordered :is(ul) li:last-child {
+.example-list-card-unordered :is(ul) li:last-child {
   margin-block-end: 0;
 }</script>
     </rh-code-block>

@@ -1,12 +1,12 @@
 <style>
-  rh-card#example-image-card::part(header) {
+  .example-image-card::part(header) {
     padding: 0;
     margin: 0;
   }
 </style>
 
 <uxdot-pattern id="image-card">
-  <rh-card id="example-image-card">
+  <rh-card class="example-image-card">
     <img src="../kitten-900x300.jpeg" slot="header" alt="adorable kitten">
     <!-- TODO: Needs image slot, so we can fix the heading below -->
     <!-- <h4 slot="header">Heading, sm</h4> -->
@@ -16,7 +16,7 @@
   <rh-code-block slot="html" actions="copy">
     <span slot="action-label-copy">Copy to Clipboard</span>
     <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
-    <script type="text/html"><rh-card id="example-image-card">
+    <script type="text/html"><rh-card class="example-image-card">
   <img src="../kitten-900x300.jpeg" slot="header" alt="adorable kitten">
   <h4 slot="header">Heading, sm</h4>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit
@@ -27,7 +27,7 @@
   <rh-code-block slot="css" actions="copy">
     <span slot="action-label-copy">Copy to Clipboard</span>
     <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
-    <script type="text/css">rh-card#example-image-card::part(header) {
+    <script type="text/css">.example-image-card::part(header) {
   padding: 0;
   margin: 0;
 }</script>

@@ -1,22 +1,22 @@
 <style>
-  #example-logo-card::part(container) {
+  .example-logo-card::part(container) {
     align-items: center;
   }
 
-  #example-logo-card svg #logo-type,
-  #example-logo-card2 svg #logo-type {
+  .example-logo-card svg #logo-type,
+  .example-logo-card2 svg #logo-type {
     fill: var(--logo-type-fill, var(--rh-color-black, #000));
   }
 
-  [color-palette^="dark"] rh-card#example-logo-card,
-  rh-card#example-logo-card[color-palette^="dark"],
-  [color-palette^="dark"] rh-card#example-logo-card2,
-  rh-card#example-logo-card2[color-palette^="dark"] {
+  [color-palette^="dark"] .example-logo-card,
+  .example-logo-card[color-palette^="dark"],
+  [color-palette^="dark"] .example-logo-card2,
+  .example-logo-card2[color-palette^="dark"] {
     --logo-type-fill: var(--rh-color-white, #fff);
   }
 
   /* demo only */
-  #example-logo-card {
+  .example-logo-card {
     min-width: 360px;
   }
   /* demo only */
@@ -29,7 +29,7 @@
   <h3>CTA only</h3>
   <uxdot-pattern>
     <h4 slot="heading">Example</h4>
-    <rh-card id="example-logo-card">
+    <rh-card class="example-logo-card">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 613 145" height="32" width="135" role="img">
         <title>Red Hat</title>
         <path d="M127.47 83.49c12.51 0 30.61-2.58 30.61-17.46a14 14 0 0 0-.31-3.42l-7.45-32.36c-1.72-7.12-3.23-10.35-15.73-16.6C124.89 8.69 103.76.5 97.51.5 91.69.5 90 8 83.06 8c-6.68 0-11.64-5.6-17.89-5.6-6 0-9.91 4.09-12.93 12.5 0 0-8.41 23.72-9.49 27.16a6.43 6.43 0 0 0-.22 1.94c0 9.22 36.3 39.45 84.94 39.45M160 72.07c1.73 8.19 1.73 9.05 1.73 10.13 0 14-15.74 21.77-36.43 21.77-46.76.03-87.72-27.37-87.72-45.48a18.45 18.45 0 0 1 1.51-7.33C22.27 52 .5 55 .5 74.22c0 31.48 74.59 70.28 133.65 70.28 45.28 0 56.7-20.48 56.7-36.65 0-12.72-11-27.16-30.83-35.78" fill="#e00"></path>
@@ -42,7 +42,7 @@
     <rh-code-block slot="html" actions="copy">
       <span slot="action-label-copy">Copy to Clipboard</span>
       <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
-      <script type="text/html"><rh-card id="example-logo-card">
+      <script type="text/html"><rh-card class="example-logo-card">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 613 145" height="32" width="135" role="img">
     <title>Red Hat</title>
     <path d="M127.47 83.49c12.51 0 30.61-2.58 30.61-17.46a14 14 0 0 0-.31-3.42l-7.45-32.36c-1.72-7.12-3.23-10.35-15.73-16.6C124.89 8.69 103.76.5 97.51.5 91.69.5 90 8 83.06 8c-6.68 0-11.64-5.6-17.89-5.6-6 0-9.91 4.09-12.93 12.5 0 0-8.41 23.72-9.49 27.16a6.43 6.43 0 0 0-.22 1.94c0 9.22 36.3 39.45 84.94 39.45M160 72.07c1.73 8.19 1.73 9.05 1.73 10.13 0 14-15.74 21.77-36.43 21.77-46.76.03-87.72-27.37-87.72-45.48a18.45 18.45 0 0 1 1.51-7.33C22.27 52 .5 55 .5 74.22c0 31.48 74.59 70.28 133.65 70.28 45.28 0 56.7-20.48 56.7-36.65 0-12.72-11-27.16-30.83-35.78" fill="#e00"></path>
@@ -56,16 +56,16 @@
     <rh-code-block slot="css" actions="copy">
       <span slot="action-label-copy">Copy to Clipboard</span>
       <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
-      <script type="text/css">#example-logo-card::part(container) {
+      <script type="text/css">.example-logo-card::part(container) {
   align-items: center;
 }
 
-#example-logo-card svg #logo-type {
+.example-logo-card svg #logo-type {
   fill: var(--logo-type-fill, var(--rh-color-black, #000));
 }
 
-[color-palette^="dark"] rh-card#example-logo-card,
-rh-card#example-logo-card[color-palette^="dark"] {
+[color-palette^="dark"] rh-card.example-logo-card,
+rh-card.example-logo-card[color-palette^="dark"] {
   --logo-type-fill: var(--rh-color-white, #fff);
 }</script>
     </rh-code-block>
@@ -74,7 +74,7 @@ rh-card#example-logo-card[color-palette^="dark"] {
   <h3>Text and CTA</h3>
   <uxdot-pattern>
     <h4 slot="heading">Example</h4>
-    <rh-card id="example-logo-card2">
+    <rh-card class="example-logo-card2">
       <svg slot="header" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 613 145" height="32" width="135" role="img">
         <title>Red Hat</title>
         <path d="M127.47 83.49c12.51 0 30.61-2.58 30.61-17.46a14 14 0 0 0-.31-3.42l-7.45-32.36c-1.72-7.12-3.23-10.35-15.73-16.6C124.89 8.69 103.76.5 97.51.5 91.69.5 90 8 83.06 8c-6.68 0-11.64-5.6-17.89-5.6-6 0-9.91 4.09-12.93 12.5 0 0-8.41 23.72-9.49 27.16a6.43 6.43 0 0 0-.22 1.94c0 9.22 36.3 39.45 84.94 39.45M160 72.07c1.73 8.19 1.73 9.05 1.73 10.13 0 14-15.74 21.77-36.43 21.77-46.76.03-87.72-27.37-87.72-45.48a18.45 18.45 0 0 1 1.51-7.33C22.27 52 .5 55 .5 74.22c0 31.48 74.59 70.28 133.65 70.28 45.28 0 56.7-20.48 56.7-36.65 0-12.72-11-27.16-30.83-35.78" fill="#e00"></path>
@@ -88,7 +88,7 @@ rh-card#example-logo-card[color-palette^="dark"] {
     <rh-code-block slot="html" actions="copy">
       <span slot="action-label-copy">Copy to Clipboard</span>
       <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
-      <script type="text/html"><rh-card id="example-logo-card">
+      <script type="text/html"><rh-card class="example-logo-card">
   <svg slot="header" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 613 145" height="32" width="135" role="img">
     <title>Red Hat</title>
     <path d="M127.47 83.49c12.51 0 30.61-2.58 30.61-17.46a14 14 0 0 0-.31-3.42l-7.45-32.36c-1.72-7.12-3.23-10.35-15.73-16.6C124.89 8.69 103.76.5 97.51.5 91.69.5 90 8 83.06 8c-6.68 0-11.64-5.6-17.89-5.6-6 0-9.91 4.09-12.93 12.5 0 0-8.41 23.72-9.49 27.16a6.43 6.43 0 0 0-.22 1.94c0 9.22 36.3 39.45 84.94 39.45M160 72.07c1.73 8.19 1.73 9.05 1.73 10.13 0 14-15.74 21.77-36.43 21.77-46.76.03-87.72-27.37-87.72-45.48a18.45 18.45 0 0 1 1.51-7.33C22.27 52 .5 55 .5 74.22c0 31.48 74.59 70.28 133.65 70.28 45.28 0 56.7-20.48 56.7-36.65 0-12.72-11-27.16-30.83-35.78" fill="#e00"></path>
@@ -103,12 +103,12 @@ rh-card#example-logo-card[color-palette^="dark"] {
     <rh-code-block slot="css" actions="copy">
       <span slot="action-label-copy">Copy to Clipboard</span>
       <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
-      <script type="text/css">#example-logo-card2 svg #logo-type {
+      <script type="text/css">.example-logo-card2 svg #logo-type {
   fill: var(--logo-type-fill, var(--rh-color-black, #000));
 }
 
-[color-palette^="dark"] rh-card#example-logo-card2,
-rh-card#example-logo-card2[color-palette^="dark"] {
+[color-palette^="dark"] .example-logo-card2,
+.example-logo-card2[color-palette^="dark"] {
   --logo-type-fill: var(--rh-color-white, #fff);
 }</script>
     </rh-code-block>
