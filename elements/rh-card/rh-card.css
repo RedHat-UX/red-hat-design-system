@@ -114,7 +114,7 @@ article {
 
 #header ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
   font-size: inherit !important;
-  margin: unset;
+  margin: unset !important;
 }
 
 #body ::slotted(:is(h1, h2, h3, h4, h5, h6)) {

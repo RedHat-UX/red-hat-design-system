@@ -8,7 +8,7 @@
   <img src="{{  'breadcrumb-sample-element.svg' | url }}" alt="Three placeholder breadcrumb links and a current page breadcrumb">
 </uxdot-example>
 
-{% repoStatusList %}
+{% repoStatusList repoStatus=repoStatus %}
 
 ## Sample element
 
@@ -28,4 +28,4 @@
 - When you want to help orient a user and and show where they are in the page hierarchy
 - When you want to provide a secondary method for navigating to parent pages of the current page
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}
