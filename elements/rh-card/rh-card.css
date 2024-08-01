@@ -20,6 +20,19 @@ article {
   line-height: var(--rh-line-height-body-text, 1.5);
   border-style: solid;
   border-width: var(--rh-border-width-sm, 1px);
+
+  --_interactive-color:
+    var(
+        --rh-card-interactive-color,
+        var(--rh-color-border-interactive-on-light, #0066cc)
+      );
+  --_focus-interactive-color:
+    var(
+        --rh-card-focus-interactive-color,
+        var(--rh-color-interactive-blue-darkest, #003366)
+      );
+  --_interactive-visited-color: var(--rh-color-interactive-purple-darker, #5e40be);
+  --_link-color: var(--rh-card-link-color, var(--_interactive-color));
 }
 
 #container,
@@ -33,6 +46,18 @@ article {
   background-color: var(--rh-color-surface-darkest, #151515);
   color: var(--rh-color-text-primary-on-dark, #ffffff);
   border-color: var(--rh-color-border-subtle-on-dark, #707070);
+
+  --_interactive-color:
+    var(
+        --rh-card-interactive-color,
+        var(--rh-color-border-interactive-on-dark, #92c5f9)
+      );
+  --_focus-interactive-color:
+    var(
+        --rh-card-focus-interactive-color,
+        var(--rh-color-interactive-blue-lightest, #b9dafc)
+      );
+  --_interactive-visited-color: var(--rh-color-interactive-purple-lighter, #b6a6e9);
 }
 
 #container.darker {
@@ -102,6 +127,21 @@ article {
 
 #body ::slotted(:not([slot]):last-child) {
   margin-block-end: 0;
+}
+
+::slotted(a) {
+  color: var(--_link-color) !important;
+}
+
+::slotted(a:hover),
+::slotted(a:focus),
+::slotted(a:focus:visited),
+::slotted(a:active) {
+  color: var(--_focus-interactive-color) !important;
+}
+
+::slotted(a:visited) {
+  color: var(--rh-color-interactive-purple-lighter, #b6a6e9) !important;
 }
 
 @media (min-width: 768px) {

@@ -1,0 +1,76 @@
+<div id="rh-icon-demo-output"></div>
+
+<script type="module">
+  import "@rhds/elements/rh-icon/rh-icon.js";
+  import "@rhds/elements/rh-cta/rh-cta.js";
+
+  import { render, html } from 'lit';
+  import { repeat } from 'lit/directives/repeat.js';
+
+  const importmap = document.querySelector('script[type="importmap"]');
+  const { imports } = JSON.parse(importmap.innerHTML);
+  const icons = Object.keys(imports).filter((key) => key.startsWith("@rhds/icons/dist/"));
+  console.log(icons.length);
+
+  async function renderLink() {
+    render(repeat(['link'], (link) => {
+      return html`
+        <rh-cta href="https://red-hat-icons.netlify.app/">Red Hat Icons sets</rh-cta>
+      `
+    }), document.getElementById('rh-icon-demo-output'));
+  }
+
+  async function renderIcons() {
+    render(repeat(Object.keys(iconMap), (set) => {
+      return html`
+        <div id="icons">
+        <h2 id=${set}>${set}</h2>
+        <ul>
+        ${repeat(iconMap[set], icon => `${set}-${icon}`, icon => html`
+          <li>
+            <rh-icon set="${set}" icon="${icon.replace(/\..*$/, '')}"></rh-icon>
+          </li>`)}
+        </ul>
+        </div>
+      `
+    }), document.getElementById('rh-icon-demo-output'));
+  }
+
+  if (icons.length === 1) {
+    await renderLink();
+  } else {
+    const iconMap = icons.reduce((acc, path) => {
+      const [,,,set,name] = path.split('/');
+      if (!acc[set]) {
+        acc[set] = [];
+      }
+      acc[set].push(name);
+      return acc;
+    }, []);
+
+    await renderIcons();
+  }
+
+
+</script>
+
+
+<style>
+  #icons {
+    margin: var(--rh-space-2xl, 32px);
+  }
+
+  #icons h2 {
+    margin-block-end: var(--rh-space-2xl, 32px);
+  }
+
+  #icons ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--rh-space-lg, 16px);
+  }
+</style>
