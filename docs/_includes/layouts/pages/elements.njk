@@ -56,7 +56,8 @@ eleventyComputed:
 <main id="main">
   <article {% if hasToc and (content | toc).length > 0 %}class="has-toc"{% endif %}>
     <uxdot-header has-subnav>
-      <h1 id="{{ slug }}" class="page-title">{{ doc.alias or (slug | deslugify) }}</h1>
+      {%- set inProgress = doc.docsPage.manifest -%}
+      <h1 id="{{ slug }}" class="page-title">{{ doc.alias or (slug | deslugify) }}{{ ' ⚠️' if (slug === 'popover' or slug === 'navigation-primary' or slug === 'progress-steps') }}</h1>
       {%- set manifest = doc.docsPage.manifest -%}
       {%- set demos = manifest and manifest.getDemos(doc.docsPage.tagName) -%}
       {%- set demosUrl -%}/elements/{{ slug }}/demos/{%- endset -%}

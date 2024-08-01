@@ -36,7 +36,7 @@
                     {% if not (tagName in comingSoonItems) %}
                       <li>
                         <uxdot-sidenav-dropdown-menu-item {{ 'active' if active }}>
-                          <a href="{{ href }}">{{ (fst.alias) or (slug | deslugify) }}</a>
+                          <a href="{{ href }}">{{ (fst.alias) or (slug | deslugify) }}{{ ' ⚠️' if (slug === 'popover' or slug === 'navigation-primary' or slug === 'progress-steps') }}</a>
                         </uxdot-sidenav-dropdown-menu-item>
                       </li>
                     {% endif %}
