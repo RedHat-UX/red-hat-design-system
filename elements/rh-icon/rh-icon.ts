@@ -67,7 +67,7 @@ export class RhIcon extends LitElement {
         .then(mod => mod.default.cloneNode(true));
 
   /** Icon set */
-  @property() set = 'fas';
+  @property() set = 'standard';
 
   /** Icon name */
   @property({ reflect: true }) icon = '';
