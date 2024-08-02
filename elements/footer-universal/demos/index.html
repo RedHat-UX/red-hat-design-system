@@ -36,16 +36,16 @@
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
     "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
     "@lit/context": "/assets/packages/@lit/context/index.js",
-    "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
-    "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
+    "@rhds/tokens/meta.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js",
     "lit-element": "/assets/packages/lit-element/index.js",
     "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@3.0.0/core.js",
-    "@rhds/tokens/meta.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js",
-    "lit/static-html.js": "/assets/packages/lit/static-html.js",
     "lit": "/assets/packages/lit/index.js",
+    "lit/static-html.js": "/assets/packages/lit/static-html.js",
     "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/media.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@3.0.0/core.js",
+    "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -91,8 +91,6 @@
   
     <script type="module">import '@rhds/elements/rh-alert/rh-alert.js';</script>
   
-    <script type="module">import '@rhds/elements/rh-tag/rh-tag.js';</script>
-  
     <script type="module">import '@rhds/elements/rh-cta/rh-cta.js';</script>
   
     <script type="module">import '@rhds/elements/rh-footer/rh-footer.js';</script>
@@ -106,6 +104,8 @@
     <script type="module">import '@rhds/elements/rh-accordion/rh-accordion.js';</script>
   
     <script type="module">import '@rhds/elements/rh-badge/rh-badge.js';</script>
+  
+    <script type="module">import '@rhds/elements/rh-tag/rh-tag.js';</script>
   
     <script type="module">import '@rhds/elements/rh-footer-universal/rh-footer-universal.js';</script>
   
@@ -1453,6 +1453,7 @@
                       <a href="/elements/">All elements </a>
                     </uxdot-sidenav-dropdown-menu-item>
                   </li>
+                    
                       <li>
                         <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
     ::slotted(a) {
@@ -1489,6 +1490,7 @@
                           <a href="/elements/accordion/">Accordion</a>
                         </uxdot-sidenav-dropdown-menu-item>
                       </li>
+                    
                     
                       <li>
                         <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
@@ -1527,6 +1529,7 @@
                         </uxdot-sidenav-dropdown-menu-item>
                       </li>
                     
+                    
                       <li>
                         <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
     ::slotted(a) {
@@ -1563,6 +1566,7 @@
                           <a href="/elements/audio-player/">Audio player</a>
                         </uxdot-sidenav-dropdown-menu-item>
                       </li>
+                    
                     
                       <li>
                         <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
@@ -1601,6 +1605,7 @@
                         </uxdot-sidenav-dropdown-menu-item>
                       </li>
                     
+                    
                       <li>
                         <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
     ::slotted(a) {
@@ -1637,6 +1642,7 @@
                           <a href="/elements/back-to-top/">Back to top</a>
                         </uxdot-sidenav-dropdown-menu-item>
                       </li>
+                    
                     
                       <li>
                         <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
@@ -1675,6 +1681,7 @@
                         </uxdot-sidenav-dropdown-menu-item>
                       </li>
                     
+                    
                       <li>
                         <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
     ::slotted(a) {
@@ -1711,6 +1718,8 @@
                           <a href="/elements/blockquote/">Blockquote</a>
                         </uxdot-sidenav-dropdown-menu-item>
                       </li>
+                    
+                    
                     
                       <li>
                         <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
@@ -1749,6 +1758,7 @@
                         </uxdot-sidenav-dropdown-menu-item>
                       </li>
                     
+                    
                       <li>
                         <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
     ::slotted(a) {
@@ -1785,6 +1795,7 @@
                           <a href="/elements/call-to-action/">Call to action</a>
                         </uxdot-sidenav-dropdown-menu-item>
                       </li>
+                    
                     
                       <li>
                         <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
@@ -1823,6 +1834,7 @@
                         </uxdot-sidenav-dropdown-menu-item>
                       </li>
                     
+                    
                       <li>
                         <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
     ::slotted(a) {
@@ -1859,6 +1871,7 @@
                           <a href="/elements/code-block/">Code block</a>
                         </uxdot-sidenav-dropdown-menu-item>
                       </li>
+                    
                     
                       <li>
                         <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
@@ -1897,6 +1910,7 @@
                         </uxdot-sidenav-dropdown-menu-item>
                       </li>
                     
+                    
                       <li>
                         <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
     ::slotted(a) {
@@ -1934,6 +1948,9 @@
                         </uxdot-sidenav-dropdown-menu-item>
                       </li>
                     
+                    
+                    
+                    
                       <li>
                         <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
     ::slotted(a) {
@@ -1967,9 +1984,10 @@
   </style><!--lit-part kHJJur9OVoU=-->
       <slot></slot>
     <!--/lit-part--></template>
-                          <a href="/elements/navigation-primary/">Navigation (primary)</a>
+                          <a href="/elements/navigation-primary/">Navigation (primary) <rh-tag icon="bell" color="gray">Planned</rh-tag></a>
                         </uxdot-sidenav-dropdown-menu-item>
                       </li>
+                    
                     
                       <li>
                         <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
@@ -2008,6 +2026,7 @@
                         </uxdot-sidenav-dropdown-menu-item>
                       </li>
                     
+                    
                       <li>
                         <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
     ::slotted(a) {
@@ -2045,42 +2064,6 @@
                         </uxdot-sidenav-dropdown-menu-item>
                       </li>
                     
-                      <li>
-                        <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
-      padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
-      width: 100%;
-      border-inline-start:
-        var(--rh-border-width-lg, 3px)
-        solid
-        transparent;
-      font-size: var(--rh-font-size-body-text-md, 1rem);
-      text-decoration: none;
-      color: var(--rh-color-text-primary-on-light, #151515) !important;
-    }
-
-    :host([active]) ::slotted(a) {
-      background: var(--rh-color-surface-lighter, #f2f2f2);
-      border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
-    }
-
-    ::slotted(a:hover) {
-      background: var(--rh-color-surface-lighter, #f2f2f2);
-      border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
-    }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                          <a href="/elements/popover/">Popover</a>
-                        </uxdot-sidenav-dropdown-menu-item>
-                      </li>
                     
                       <li>
                         <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
@@ -2115,9 +2098,48 @@
   </style><!--lit-part kHJJur9OVoU=-->
       <slot></slot>
     <!--/lit-part--></template>
-                          <a href="/elements/progress-steps/">Progress steps</a>
+                          <a href="/elements/popover/">Popover <rh-tag icon="bell" color="gray">Planned</rh-tag></a>
                         </uxdot-sidenav-dropdown-menu-item>
                       </li>
+                    
+                    
+                      <li>
+                        <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
+    ::slotted(a) {
+      display: inline-block;
+      padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
+      width: 100%;
+      border-inline-start:
+        var(--rh-border-width-lg, 3px)
+        solid
+        transparent;
+      font-size: var(--rh-font-size-body-text-md, 1rem);
+      text-decoration: none;
+      color: var(--rh-color-text-primary-on-light, #151515) !important;
+    }
+
+    :host([active]) ::slotted(a) {
+      background: var(--rh-color-surface-lighter, #f2f2f2);
+      border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
+    }
+
+    ::slotted(a:hover) {
+      background: var(--rh-color-surface-lighter, #f2f2f2);
+      border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
+    }
+
+    /* TODO: Remove i believe this is misplaced */
+    /* ::slotted(ul) {
+      list-style: none;
+      padding-inline: var(--rh-space-2xl, 32px);
+    } */
+  </style><!--lit-part kHJJur9OVoU=-->
+      <slot></slot>
+    <!--/lit-part--></template>
+                          <a href="/elements/progress-steps/">Progress steps <rh-tag icon="bell" color="gray">Planned</rh-tag></a>
+                        </uxdot-sidenav-dropdown-menu-item>
+                      </li>
+                    
                     
                       <li>
                         <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
@@ -2156,6 +2178,7 @@
                         </uxdot-sidenav-dropdown-menu-item>
                       </li>
                     
+                    
                       <li>
                         <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
     ::slotted(a) {
@@ -2192,6 +2215,7 @@
                           <a href="/elements/skip-link/">Skip link</a>
                         </uxdot-sidenav-dropdown-menu-item>
                       </li>
+                    
                     
                       <li>
                         <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
@@ -2230,6 +2254,7 @@
                         </uxdot-sidenav-dropdown-menu-item>
                       </li>
                     
+                    
                       <li>
                         <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
     ::slotted(a) {
@@ -2266,6 +2291,7 @@
                           <a href="/elements/statistic/">Statistic</a>
                         </uxdot-sidenav-dropdown-menu-item>
                       </li>
+                    
                     
                       <li>
                         <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
@@ -2304,6 +2330,7 @@
                         </uxdot-sidenav-dropdown-menu-item>
                       </li>
                     
+                    
                       <li>
                         <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
     ::slotted(a) {
@@ -2340,6 +2367,7 @@
                           <a href="/elements/surface/">Surface</a>
                         </uxdot-sidenav-dropdown-menu-item>
                       </li>
+                    
                     
                       <li>
                         <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
@@ -2378,6 +2406,7 @@
                         </uxdot-sidenav-dropdown-menu-item>
                       </li>
                     
+                    
                       <li>
                         <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
     ::slotted(a) {
@@ -2414,6 +2443,7 @@
                           <a href="/elements/tabs/">Tabs</a>
                         </uxdot-sidenav-dropdown-menu-item>
                       </li>
+                    
                     
                       <li>
                         <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
@@ -2452,6 +2482,7 @@
                         </uxdot-sidenav-dropdown-menu-item>
                       </li>
                     
+                    
                       <li>
                         <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
     ::slotted(a) {
@@ -2489,6 +2520,7 @@
                         </uxdot-sidenav-dropdown-menu-item>
                       </li>
                     
+                    
                       <li>
                         <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
     ::slotted(a) {
@@ -2525,6 +2557,7 @@
                           <a href="/elements/timestamp/">Timestamp</a>
                         </uxdot-sidenav-dropdown-menu-item>
                       </li>
+                    
                     
                       <li>
                         <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
