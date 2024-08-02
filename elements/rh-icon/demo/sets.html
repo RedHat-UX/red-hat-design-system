@@ -7,20 +7,15 @@
   import { render, html } from 'lit';
   import { repeat } from 'lit/directives/repeat.js';
 
-  const importmap = document.querySelector('script[type="importmap"]');
-  const { imports } = JSON.parse(importmap.innerHTML);
-  const icons = Object.keys(imports).filter((key) => key.startsWith("@rhds/icons/dist/"));
-  console.log(icons.length);
-
   async function renderLink() {
-    render(repeat(['link'], (link) => {
+    render(repeat(['link'], () => {
       return html`
         <rh-cta href="https://red-hat-icons.netlify.app/">Red Hat Icons sets</rh-cta>
       `
     }), document.getElementById('rh-icon-demo-output'));
   }
 
-  async function renderIcons() {
+  async function renderIcons(iconMap) {
     render(repeat(Object.keys(iconMap), (set) => {
       return html`
         <div id="icons">
@@ -36,6 +31,10 @@
     }), document.getElementById('rh-icon-demo-output'));
   }
 
+  const importmap = document.querySelector('script[type="importmap"]');
+  const { imports } = JSON.parse(importmap.innerHTML);
+  const icons = Object.keys(imports).filter((key) => key.startsWith("@rhds/icons/dist/"));
+
   if (icons.length === 1) {
     await renderLink();
   } else {
@@ -48,10 +47,8 @@
       return acc;
     }, []);
 
-    await renderIcons();
+    await renderIcons(iconMap);
   }
-
-
 </script>
 
 
