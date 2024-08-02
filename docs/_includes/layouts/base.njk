@@ -1,3 +1,15 @@
+---js
+{
+  isPlanned: function(repoStatus, tagName) {
+    const element = repoStatus.find(element => element.tagName === tagName);
+    return element && element.libraries.find(library => library.name === 'RH Elements').status === "Planned";
+  }
+  importElements: [
+    'rh-tag'
+  ]
+}
+---
+
 {%- set extraPageClasses = bodyClasses or "" -%}
 {%- if title -%}
   {% set extraPageClasses = extraPageClasses + ' page-' + title | slug -%}

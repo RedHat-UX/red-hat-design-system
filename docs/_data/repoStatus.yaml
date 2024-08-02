@@ -167,7 +167,21 @@
       status: N/A
     - name: Documentation
       status: Ready
-- name: "Navigation Secondary"
+- tagName: rh-navigation
+  name: "Navigation Primary"
+  type: "Element"
+  overallStatus: "Planned"
+  libraries:
+    - name: Figma library
+      status: Planned
+    - name: RH Elements
+      status: Planned
+    - name: RH Shared Libs
+      status: Planned
+    - name: Documentation
+      status: Planned
+- tagName: rh-navigation-secondary
+  name: "Navigation Secondary"
   type: "Element"
   overallStatus: "Available"
   libraries:
