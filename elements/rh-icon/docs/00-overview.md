@@ -7,16 +7,14 @@
 </uxdot-example>
 
 
-{% repoStatusList %}
+{% repoStatusList repoStatus=repoStatus %}
 
 ## Sample element
 
-
 <rh-icon set="ui" icon="copy"></rh-icon>
-
 
 {# ## When to use
 
   - Add when to use here #}
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}
