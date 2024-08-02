@@ -70,11 +70,11 @@ const STATUS_CHECKLIST = {
     'Deprecated': 'Component is no longer available in the RH Elements repo',
     'N/A': 'Not planned, not available, or does not apply',
   },
-  'WebRH': {
-    'Ready': 'Component is available in the WebRH repo',
-    'In progress': 'Component will be added to the WebRH repo when finished',
-    'Planned': 'Component should be added to the WebRH repo at a later date',
-    'Deprecated': 'Component is no longer available in the WebRH repo',
+  'RH Shared Libs': {
+    'Ready': 'Component is available in the RH Shared Libs repo',
+    'In progress': 'Component will be added to the RH Shared Libs repo when finished',
+    'Planned': 'Component should be added to the RH Shared Libs repo at a later date',
+    'Deprecated': 'Component is no longer available in the RH Shared Libs repo',
     'N/A': 'Not planned, not available, or does not apply',
   },
 };
@@ -157,7 +157,7 @@ function repoStatusTable() {
         <th scope="col" data-label="Name">Name</th>
         <th scope="col" data-label="Figma library">Figma library</th>
         <th scope="col" data-label="RH Elements">RH Elements</th>
-        <th scope="col" data-label="webRH">WebRH</th>
+        <th scope="col" data-label="RH Shared Libs">RH Shared Libs</th>
         <th scope="col" data-label="Documentation">Documentation</th>
       </tr>
     </thead>
