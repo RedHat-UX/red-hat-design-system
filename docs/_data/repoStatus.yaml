@@ -167,8 +167,7 @@
       status: N/A
     - name: Documentation
       status: Ready
-- tagName: rh-navigation
-  name: "Navigation Primary"
+- name: "Navigation (primary)"
   type: "Element"
   overallStatus: "Planned"
   libraries:
@@ -180,8 +179,7 @@
       status: Planned
     - name: Documentation
       status: Planned
-- tagName: rh-navigation-secondary
-  name: "Navigation Secondary"
+- name: "Navigation Secondary"
   type: "Element"
   overallStatus: "Available"
   libraries:
@@ -212,11 +210,23 @@
     - name: Figma library
       status: Ready
     - name: RH Elements
-      status: Ready
+      status: Planned
     - name: WebRH
       status: Ready
     - name: Documentation
       status: Ready
+- name: "Progress steps"
+  type: "Element"
+  overallStatus: "Available"
+  libraries:
+    - name: Figma library
+      status: Ready
+    - name: RH Elements
+      status: Planned
+    - name: WebRH
+      status: Ready
+    - name: Documentation
+      status: Ready      
 - name: "Skip Link"
   type: "Element"
   overallStatus: "New"
