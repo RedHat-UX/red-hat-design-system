@@ -5,7 +5,6 @@ eleventyComputed:
   title: "{{ doc.pageTitle }} | {{ slug | deslugify }}"
   importElements:
     - rh-alert
-    - rh-tag
     - rh-cta
     - rh-footer
     - rh-subnav
@@ -13,6 +12,7 @@ eleventyComputed:
     - rh-table
     - rh-accordion
     - rh-badge
+    - rh-tag
     - "{{ doc.tagName or element.tagName }}"
 ---
 {%- if hasToc %}
@@ -56,7 +56,10 @@ eleventyComputed:
 <main id="main">
   <article {% if hasToc and (content | toc).length > 0 %}class="has-toc"{% endif %}>
     <uxdot-header has-subnav>
-      <h1 id="{{ slug }}" class="page-title">{{ doc.alias or (slug | deslugify) }}</h1>
+      {%- set inProgress = doc.docsPage.manifest -%}
+      {%- set name = (doc.alias) or (slug | deslugify) %}
+      {%- set planned = isPlanned(repoStatus, name) %}
+      <h1 id="{{ slug }}" class="page-title">{{ name }}{% if planned %} <rh-tag icon="bell" color="gray">Planned</rh-tag>{% endif %}</h1>
       {%- set manifest = doc.docsPage.manifest -%}
       {%- set demos = manifest and manifest.getDemos(doc.docsPage.tagName) -%}
       {%- set demosUrl -%}/elements/{{ slug }}/demos/{%- endset -%}

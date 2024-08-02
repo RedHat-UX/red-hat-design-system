@@ -167,6 +167,18 @@
       status: N/A
     - name: Documentation
       status: Ready
+- name: "Navigation (primary)"
+  type: "Element"
+  overallStatus: "Planned"
+  libraries:
+    - name: Figma library
+      status: Planned
+    - name: RH Elements
+      status: Planned
+    - name: RH Shared Libs
+      status: Planned
+    - name: Documentation
+      status: Planned
 - name: "Navigation Secondary"
   type: "Element"
   overallStatus: "Available"
@@ -203,6 +215,18 @@
       status: Ready
     - name: Documentation
       status: Ready
+- name: "Progress steps"
+  type: "Element"
+  overallStatus: "Available"
+  libraries:
+    - name: Figma library
+      status: Ready
+    - name: RH Elements
+      status: Planned
+    - name: RH Shared Libs
+      status: Ready
+    - name: Documentation
+      status: Ready      
 - name: "Skip Link"
   type: "Element"
   overallStatus: "New"
