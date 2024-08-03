@@ -53,7 +53,7 @@ eleventyComputed:
 
 {% include 'partials/component/masthead.njk' %}
 {% include 'partials/component/sidenav.njk' %}
-<main id="main">
+<main id="main" tabindex="-1">
   <article {% if hasToc and (content | toc).length > 0 %}class="has-toc"{% endif %}>
     <uxdot-header has-subnav>
       {%- set inProgress = doc.docsPage.manifest -%}

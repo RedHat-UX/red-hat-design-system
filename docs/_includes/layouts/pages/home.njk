@@ -8,7 +8,7 @@ importElements:
 
 {% include 'partials/component/masthead.njk' %}
 {% include 'partials/component/sidenav.njk' %}
-<main id="main">
+<main id="main" tabindex="-1">
   {{ content | safe }}
   {% include "partials/component/back-to-top.njk" %}
 </main>
