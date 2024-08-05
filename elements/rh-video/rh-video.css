@@ -117,8 +117,6 @@ figcaption ::slotted(p) {
 }
 
 #play {
-  --rh-size-icon-04: var(--rh-length-xl, 24px);
-
   cursor: pointer;
   display: block;
   height: 100%;
@@ -141,7 +139,6 @@ figcaption ::slotted(p) {
   inset-inline-start: 50%;
   position: absolute;
   outline: none;
-  text-align: center;
   transform: translate(-50%);
   width: var(--rh-length-4xl, 64px);
 }
