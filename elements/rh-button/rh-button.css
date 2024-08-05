@@ -470,7 +470,7 @@ button:hover {
   --_hover-color: var(--_play-color);
   --_hover-background-color: var(--_play-hover-background-color);
   --_hover-background-opacity: var(--_play-hover-background-opacity);
-  --_icon-size: var(--rh-size-icon-03, 32px);
+  --_icon-size: var(--rh-size-icon-02, 24px);
 }
 
 :host(:is([variant="play"])) [part="icon"] {
