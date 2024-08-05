@@ -1,33 +1,18 @@
 :host {
-  position: relative;
   display: inline-block;
   line-height: 0;
-  height: fit-content !important;
-  width: fit-content !important;
-  aspect-ratio: 1;
 }
 
 #container {
-  display: grid;
-  grid-template: 1fr / 1fr;
-  place-content: center;
-}
-
-#container.content ::slotted(*) {
-  display: none;
+  display: contents;
 }
 
 svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
   fill: currentcolor;
   aspect-ratio: 1;
 }
 
-.microns svg {
-  width: var(--rh-size-icon-01, 16px);
-}
-
-.standard svg,
-.social svg,
-.ui svg {
-  width: var(--rh-size-icon-03, 32px);
+.standard svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-03, 32px));
 }
