@@ -14,5 +14,5 @@ svg {
 }
 
 .standard svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-03, 32px));
+  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
 }
