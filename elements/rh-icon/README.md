@@ -40,3 +40,11 @@ dimensions in the same area without shifting surrounding content.
 ```
 
 
+## Loading
+
+Icons load _lazily_ by default, meaning that the browser will not attempt to fetch and render the
+icon until it scrolls into view. You can change this with the `loading` attribute;
+see the [docs][docs] for more info.
+
+[docs]: https://ux.redhat.com/elements/icon
+[icon-sets]: https://ux.redhat.com/elements/icon/guidelines/
