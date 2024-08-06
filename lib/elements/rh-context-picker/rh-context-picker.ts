@@ -3,7 +3,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
 import { type ColorPalette } from '../../context/color/provider.js';
-import { colorContextConsumer, type ColorTheme } from '../../context/color/consumer.js';
+import { colorContextConsumer } from '../../context/color/consumer.js';
 
 import type { Color } from '@rhds/tokens/js/types.js';
 import {
@@ -52,7 +52,7 @@ export class RhContextPicker extends LitElement {
 
   @property() value: ColorPalette = 'darkest';
 
-  @colorContextConsumer() private on?: ColorTheme;
+  @colorContextConsumer() private on?: ColorPalette;
 
   @property({
     converter: {

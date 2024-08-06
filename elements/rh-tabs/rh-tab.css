@@ -90,6 +90,15 @@ slot[name="icon"] {
   border-block-end: var(--rh-border-width-sm, 1px) solid transparent;
 }
 
+#button:is(.dark,.darker,.darkest) {
+  --_button-text-color:
+    var(
+        --rh-tabs-link-color,
+        var(--rh-color-text-secondary-on-dark, #c7c7c7)
+      );
+  --_button-focus-outline-color: var(--rh-color-border-interactive-on-dark, #92c5f9);
+}
+
 :host([fill]) #button {
   flex-basis: 100%;
   justify-content: center;
@@ -112,15 +121,6 @@ slot[name="icon"] {
   outline-offset: calc(var(--rh-space-md, 8px) * -1);
 }
 
-#button.dark {
-  --_button-text-color:
-    var(
-        --rh-tabs-link-color,
-        var(--rh-color-text-secondary-on-dark, #c7c7c7)
-      );
-  --_button-focus-outline-color: var(--rh-color-border-interactive-on-dark, #92c5f9);
-}
-
 /* Context switch on attributes */
 #button.active {
   --_button-text-color:
@@ -130,7 +130,7 @@ slot[name="icon"] {
       );
 }
 
-#button.active.dark {
+#button.active:is(.dark,.darker,.darkest) {
   --_button-text-color:
     var(
         --rh-tabs-link-color,
@@ -143,7 +143,7 @@ slot[name="icon"] {
   --_inactive-tab-background-color: var(--rh-color-surface-lighter, #f2f2f2);
 }
 
-#button.dark.box {
+#button.box:is(.dark,.darker,.darkest) {
   --_inactive-tab-background-color: var(--rh-color-surface-dark, #383838);
 }
 

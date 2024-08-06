@@ -45,6 +45,14 @@ circle.track {
   animation-duration: 0;
 }
 
+:is(.dark, .darker, .darkest) circle.dash {
+  stroke: var(--rh-color-accent-base-on-dark, #92c5f9);
+}
+
+:is(.dark, .darker, .darkest) circle.track {
+  stroke: var(--rh-color-gray-60, #4d4d4d);
+}
+
 :host([size="lg"]) svg {
   width: var(--rh-size-icon-06, 64px);
   stroke-width: var(--rh-length-sm, 6px);
@@ -68,22 +76,22 @@ circle.track {
   stroke-width: var(--rh-length-2xs, 3px);
 }
 
-:host([size="sm"]) circle.dash {
-  animation-name: rh-spinner-small-animation-dash;
-  stroke-dasharray: 71;
-  stroke-dashoffset: 71;
-}
-
 :host([size="sm"]) ::slotted(p) {
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
 }
 
-circle.dash.dark {
+circle.dash:is(.dark, .darker, .darkest) {
   stroke: var(--rh-color-accent-base-on-dark, #92c5f9);
 }
 
-circle.track.dark {
+circle.track:is(.dark, .darker, .darkest) {
   stroke: var(--rh-color-gray-70, #383838);
+}
+
+:host([size="sm"]) circle.dash {
+  animation-name: rh-spinner-small-animation-dash;
+  stroke-dasharray: 71;
+  stroke-dashoffset: 71;
 }
 
 @keyframes rh-spinner-animation-dash {

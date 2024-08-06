@@ -11,7 +11,9 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import { DirController } from '../../lib/DirController.js';
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+
+import { type ColorPalette } from '../../lib/context/color/provider.js';
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 
 import { consume } from '@lit/context';
 
@@ -70,7 +72,7 @@ export class RhAccordionHeader extends LitElement {
   /** @deprecated */
   @property({ reflect: true }) icon = 'angle-down';
 
-  @colorContextConsumer() private on?: ColorTheme;
+  @colorContextConsumer() private on?: ColorPalette;
 
   @consume({ context, subscribe: true })
   @property({ attribute: false })

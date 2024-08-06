@@ -6,7 +6,8 @@ import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { type ColorPalette } from '@rhds/elements/lib/context/color/provider.js';
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-menu.css';
 
@@ -31,7 +32,7 @@ export class RhMenu extends LitElement {
 
   @queryAssignedElements() private _menuItems!: HTMLElement[];
 
-  @colorContextConsumer() private on?: ColorTheme;
+  @colorContextConsumer() private on?: ColorPalette;
 
   #tabindex = new RovingTabindexController<HTMLElement>(this, {
     getItems: () => this._menuItems ?? [],

@@ -4,9 +4,10 @@ import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
 import { property } from 'lit/decorators/property.js';
 
-import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
+import { type ColorPalette } from '../../lib/context/color/provider.js';
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 
-import { type ColorTheme, colorContextConsumer } from '../../lib/context/color/consumer.js';
+import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
 import style from './rh-code-block.css';
 
@@ -94,7 +95,7 @@ export class RhCodeBlock extends LitElement {
   /** When set, lines in the code snippet wrap */
   @property({ type: Boolean }) wrap = false;
 
-  @colorContextConsumer() private on?: ColorTheme;
+  @colorContextConsumer() private on?: ColorPalette;
 
   #slots = new SlotController(
     this,

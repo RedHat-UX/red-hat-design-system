@@ -51,7 +51,7 @@
   color: var(--_code-action-color, var(--rh-color-text-primary-on-light, #151515));
 }
 
-.dark .shadow-fab {
+:is(.dark, .darker, .darkest) .shadow-fab {
   --_code-action-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_code-action-hover-focus-active-background: var(--rh-color-surface-dark, #383838);
 }
@@ -261,7 +261,7 @@
   --_code-word-wrap: anywhere;
 }
 
-.dark {
+:is(.dark, .darker, .darkest) {
   --_code-background-color: var(--rh-color-surface-dark-alt, #292929);
   --_code-border-color: var(--rh-color-border-subtle-on-dark, #707070);
   --_code-color: var(--rh-color-text-primary-on-dark, #ffffff);

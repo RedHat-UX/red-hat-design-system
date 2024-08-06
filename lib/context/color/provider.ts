@@ -7,7 +7,7 @@ import {
   type ColorContextOptions,
 } from './controller.js';
 
-import { ColorContextConsumer, type ColorTheme } from './consumer.js';
+import { ColorContextConsumer } from './consumer.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
@@ -19,9 +19,6 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
  * `ColorPalette` is associated with the `color-palette` attribute
  */
 export type ColorPalette = (
-  | 'base'
-  | 'accent'
-  | 'complement'
   | 'light'
   | 'lighter'
   | 'lightest'
@@ -44,18 +41,18 @@ export class ColorContextProvider<
   T extends ReactiveElement
 > extends ColorContextController<T> implements ReactiveController {
   static contexts = new Map(Object.entries({
-    darkest: 'dark' as const,
-    darker: 'dark' as const,
+    darkest: 'darkest' as const,
+    darker: 'darker' as const,
     dark: 'dark' as const,
     light: 'light' as const,
-    lighter: 'light' as const,
-    lightest: 'light' as const,
+    lighter: 'lighter' as const,
+    lightest: 'lightest' as const,
   }));
 
   #attribute: string;
 
   /** Cache of context callbacks. Call each to update consumers */
-  #callbacks = new Set<ContextCallback<ColorTheme | null>>();
+  #callbacks = new Set<ContextCallback<ColorPalette | null>>();
 
   /** Mutation observer which updates consumers when `color-palette` attribute change. */
   #mo = new MutationObserver(() => this.update());
@@ -83,7 +80,7 @@ export class ColorContextProvider<
         .contexts.get(this.host.getAttribute(this.#attribute) ?? '');
   }
 
-  get value(): ColorTheme {
+  get value(): ColorPalette {
     return this.#local ?? this.#consumer.value;
   }
 
@@ -161,7 +158,7 @@ export class ColorContextProvider<
   }
 
   /** Calls the context callback for all consumers */
-  public override async update(force?: ColorTheme) {
+  public override async update(force?: ColorPalette) {
     const { value } = this;
 
     for (const cb of this.#callbacks) {
