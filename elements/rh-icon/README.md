@@ -1,11 +1,42 @@
 # Icon
-Add a description of the component here.
+Icons represents general concepts and can support text as a decorative element.
+The icon element, <rh-icon>, is a container that allows users to add icons of varying
+dimensions in the same area without shifting surrounding content.
 
 ## Usage
-Describe how best to use this web component along with best practices.
+
+- When you want to supplement the meaning of text with a visual element
+- When you need to represent a UI function with an easily recognizable icon
+- When you need an icon to occupy a certain amount of space
+
+
+### Sets
+
+[Icons come in 4 sets,](https://red-hat-icons.netlify.app/) standard (default), microns, UI, and social.
+
+
+#### Standard Icon example
 
 ```html
-<rh-icon>
-
-</rh-icon>
+<rh-icon icon="alert"></rh-icon>
 ```
+
+#### Micron example
+
+```html
+<rh-icon set="microns" icon="checkbox-complete-fill"></rh-icon>
+```
+
+#### UI example
+
+```html
+<rh-icon set="ui" icon="check-circle-fill"></rh-icon>
+```
+
+#### Social example
+
+```html
+<rh-icon set="social" icon="facebook"></rh-icon>
+```
+
+
