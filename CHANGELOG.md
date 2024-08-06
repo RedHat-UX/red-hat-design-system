@@ -1,5 +1,12 @@
 # @rhds/elements
 
+## 1.4.6
+
+### Patch Changes
+
+- 784da94: `<rh-navigation-secondary>`: corrected mobile menu keyboard accessibility, now properly closes when focus leaves
+- d564ef0: `<rh-navigation-secondary>`: improved accessibility
+
 ## 1.4.5
 
 ### Patch Changes
