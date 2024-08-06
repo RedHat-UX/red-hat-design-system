@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
       <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Card | Red Hat design system</title>
+  <title>Overview | Red Hat design system</title>
   <meta name="description" content="This is Red Hat's design system. Using Red Hat brand standards and PatternFly as our foundational design language, we enable designers and developers to concurrently build branded experiences across redhat.com, Red Hat Customer Portal, and beyond.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" type="image/svg+xml" sizes="any" href="/assets/logo-red-hat.svg">
@@ -36,16 +36,16 @@
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
     "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
     "@lit/context": "/assets/packages/@lit/context/index.js",
-    "@rhds/tokens/meta.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js",
-    "lit-element": "/assets/packages/lit-element/index.js",
-    "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
     "lit": "/assets/packages/lit/index.js",
-    "lit/static-html.js": "/assets/packages/lit/static-html.js",
-    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "lit-element": "/assets/packages/lit-element/index.js",
     "@rhds/tokens/media.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@3.0.0/core.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
+    "@rhds/tokens/meta.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js",
+    "lit/static-html.js": "/assets/packages/lit/static-html.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -62,16 +62,16 @@
   },
   "scopes": {
     "https://ga.jspm.io/": {
-      "lit-html": "https://ga.jspm.io/npm:lit-html@3.1.4/lit-html.js",
-      "lit-html/": "https://ga.jspm.io/npm:lit-html@3.1.4/"
+      "lit-html": "https://ga.jspm.io/npm:lit-html@3.2.0/lit-html.js",
+      "lit-html/": "https://ga.jspm.io/npm:lit-html@3.2.0/"
     },
     "/assets/packages/": {
-      "@floating-ui/utils": "https://ga.jspm.io/npm:@floating-ui/utils@0.2.5/dist/floating-ui.utils.mjs",
-      "@floating-ui/utils/dom": "https://ga.jspm.io/npm:@floating-ui/utils@0.2.5/dist/floating-ui.utils.dom.mjs",
+      "@floating-ui/utils": "https://ga.jspm.io/npm:@floating-ui/utils@0.2.6/dist/floating-ui.utils.mjs",
+      "@floating-ui/utils/dom": "https://ga.jspm.io/npm:@floating-ui/utils@0.2.6/dist/floating-ui.utils.dom.mjs",
       "@lit/reactive-element/decorators/": "/assets/packages/@lit/reactive-element/decorators/",
       "lit-element/lit-element.js": "/assets/packages/lit-element/lit-element.js",
-      "lit-html": "https://ga.jspm.io/npm:lit-html@3.1.4/lit-html.js",
-      "lit-html/": "https://ga.jspm.io/npm:lit-html@3.1.4/",
+      "lit-html": "https://ga.jspm.io/npm:lit-html@3.2.0/lit-html.js",
+      "lit-html/": "https://ga.jspm.io/npm:lit-html@3.2.0/",
       "lit/": "/assets/packages/lit/"
     }
   }
@@ -97,7 +97,7 @@
   
     <script type="module">import '@rhds/elements/rh-subnav/rh-subnav.js';</script>
   
-    <script type="module">import '@rhds/elements/rh-tag/rh-tag.js';</script>
+    <script type="module">import '@rhds/elements/rh-code-block/rh-code-block.js';</script>
   
     <script type="module">import '@rhds/elements/rh-alert/rh-alert.js';</script>
   
@@ -108,6 +108,10 @@
     <script type="module">import '@rhds/elements/rh-cta/rh-cta.js';</script>
   
     <script type="module">import '@rhds/elements/rh-surface/rh-surface.js';</script>
+  
+    <script type="module">import '@rhds/elements/rh-avatar/rh-avatar.js';</script>
+  
+    <script type="module">import '@rhds/elements/rh-accordion/rh-accordion.js';</script>
   
 
   
@@ -132,7 +136,7 @@
     <script type="module" src="/assets/javascript/elements/uxdot-toc.js"></script>
   </head>
 
-  <body dsd-pending="" class="element-docs page-card">
+  <body dsd-pending="" class="element-docs page-overview">
     <uxdot-skip-navigation><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: block;
@@ -173,9 +177,17 @@
   </style><!--lit-part kHJJur9OVoU=-->
       <slot></slot>
     <!--/lit-part--></template><a href="#main">Skip to main content</a></uxdot-skip-navigation>
-    <link rel="stylesheet" href="/styles/pages/backpage.css">
+    
+  <link rel="stylesheet" href="/assets/javascript/elements/uxdot-toc-lightdom.css">
+
+<link rel="stylesheet" href="/styles/pages/backpage.css">
 
 <script type="module" src="/assets/javascript/elements/uxdot-feedback.js"></script>
+<script type="module" src="/assets/javascript/elements/uxdot-pattern.js"></script>
+
+<script type="module" src="/assets/javascript/elements/uxdot-toc.js"></script>
+
+
 <uxdot-masthead  role="banner"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: block;
@@ -3543,7 +3555,7 @@
 <main id="main">
   <article class="has-toc">
 
-  <uxdot-header><template shadowroot="open" shadowrootmode="open"><style>
+  <uxdot-header  has-subnav><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: block;
       background-color: var(--rh-color-surface-lighter, #f2f2f2);
@@ -3625,7 +3637,7 @@
       }
     }
   </style><!--lit-part z+ZGsWQoJjM=-->
-      <!--lit-node 0--><div id="container" class="  " part="container">
+      <!--lit-node 0--><div id="container" class=" has-subnav " part="container">
         <slot part="heading"></slot>
         <slot name="search" part="search"></slot>
         <slot name="subnav" part="subnav"></slot>
@@ -3635,6 +3647,18 @@
 
   
 
+  
+    <rh-subnav slot="subnav">
+      <a active="" href="/patterns/card/">
+        Overview
+      </a>
+      <a href="/patterns/card/guidelines/">
+        Guidelines
+      </a>
+      <a href="/patterns/card/examples/">
+        Examples
+      </a>
+    </rh-subnav>
   
 </uxdot-header>
   
@@ -3735,28 +3759,10 @@
                     <li><a href="#overview">Overview</a>
             		</li>
 
-                    <li><a href="#sample-pattern">Sample pattern</a>
+                    <li><a href="#customizing-cards">Customizing cards</a>
             		</li>
 
-                    <li><a href="#sample---slotted-title">Sample - Slotted Title</a>
-            		</li>
-
-                    <li><a href="#sample---alternative-color-scheme">Sample - alternative color scheme</a>
-            		</li>
-
-                    <li><a href="#sample---title-bar">Sample - title bar</a>
-            		</li>
-
-                    <li><a href="#title-bar">Title bar</a>
-            		</li>
-
-                    <li><a href="#image-title-bar">Image title bar</a>
-            		</li>
-
-                    <li><a href="#style">Style</a>
-            		</li>
-
-                    <li><a href="#usage">Usage</a>
+                    <li><a href="#themes">Themes</a>
             		</li>
                 </ol>
                 <ol slot="expanded">
@@ -3764,28 +3770,10 @@
                     <li><a href="#overview">Overview</a>
             		</li>
 
-                    <li><a href="#sample-pattern">Sample pattern</a>
+                    <li><a href="#customizing-cards">Customizing cards</a>
             		</li>
 
-                    <li><a href="#sample---slotted-title">Sample - Slotted Title</a>
-            		</li>
-
-                    <li><a href="#sample---alternative-color-scheme">Sample - alternative color scheme</a>
-            		</li>
-
-                    <li><a href="#sample---title-bar">Sample - title bar</a>
-            		</li>
-
-                    <li><a href="#title-bar">Title bar</a>
-            		</li>
-
-                    <li><a href="#image-title-bar">Image title bar</a>
-            		</li>
-
-                    <li><a href="#style">Style</a>
-            		</li>
-
-                    <li><a href="#usage">Usage</a>
+                    <li><a href="#themes">Themes</a>
             		</li>
                 </ol>
             
@@ -3794,65 +3782,11 @@
   
 
   <div class="container">
-    <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
+    <script type="module">
+  import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+</script>
+<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
 <link rel="stylesheet" href="/styles/samp.css">
-<style>
-  rh-card {
-    display: block;
-    max-width: 360px;
-  }
-
-  rh-surface {
-    width: fit-content;
-  }
-
-  rh-card.alt,
-  rh-surface[color-palette^="light"] rh-card.alt {
-    --rh-card-background-color: #f0f0f0;
-  }
-
-  rh-surface[color-palette^="dark"] rh-card.alt {
-    --rh-card-background-color: #3c3f42;
-  }
-
-  rh-card.bar::part(header) {
-    background-color: var(--_background-color, #f0f0f0);
-    text-transform: uppercase;
-    font-weight: var(--rh-font-weight-heading-regular, 300);
-    font-size: var(--rh-font-size-body-text-md, 1rem);
-  }
-
-  rh-card.bar::part(header) {
-    background-color: var(--_header-background-color);
-    text-transform: uppercase;
-    font-weight: var(--rh-font-weight-heading-regular, 300);
-    font-size: var(--rh-font-size-body-text-md, 1rem);
-  }
-
-  rh-card.bar::part(header) {
-    background-color: var(--_header-background-color);
-    text-transform: uppercase;
-    font-weight: var(--rh-font-weight-heading-regular, 300);
-    font-size: var(--rh-font-size-body-text-md, 1rem);
-  }
-
-  rh-card.full::part(header) {
-    padding-inline: 0;
-    padding-block: 0;
-  }
-
-  rh-card.custom-light-theme {
-    --rh-color-border-subtle-on-light: #EF6461;
-    --rh-color-surface-lightest: #feeded;
-    --rh-color-text-primary-on-light: #30292F;
-  }
-
-  rh-card.custom-dark-theme {
-    --rh-color-border-subtle-on-dark: #5e40be;
-    --rh-color-surface-darkest: #261a4c;
-    --rh-color-text-primary-on-dark: #e8e4f5;
-  }
-</style>
 <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: flex;
@@ -3904,6 +3838,11 @@
 <p>A card formats content in a small, contained space. It can be used to display a
 preview of information or provide secondary content in relation to the content
 it's near. Several cards can be used together to group related information.</p>
+<rh-alert state="info">
+<p>These Card patterns document different design-approved uses of the <code>&lt;rh-card&gt;</code>
+element. <a href="/elements/card">Consult the <code>&lt;rh-card&gt;</code> element documentation</a> for more
+information on how to use the card element.</p>
+</rh-alert>
 <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: flex;
@@ -3948,19 +3887,19 @@ it's near. Several cards can be used together to group related information.</p>
         </svg>
       </button>
     <!--/lit-part--></template>
-  <h2 id="sample-pattern" tabindex="-1">
-    <a href="#sample-pattern">Sample pattern</a>
+  <h2 id="customizing-cards" tabindex="-1">
+    <a href="#customizing-cards">Customizing cards</a>
       </h2>
     </uxdot-copy-permalink>
-<rh-card>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend 
-    elit sed est egestas, a sollicitudin mauris tincidunt. Pellentesque vel 
-    dapibus risus. Nullam aliquam felis orci, eget cursus mi lacinia quis. 
-    Vivamus at felis sem.</p>
-  <rh-cta variant="primary" slot="footer">
-    <a href="#">Call to action</a>
-  </rh-cta>
-</rh-card>
+<p>To customize a card the design tokens must be altered. These design tokens are
+different depending on the context for the card (light or dark theme).</p>
+<p>Examples include:</p>
+<ul>
+<li><a href="/tokens/color/#rh-color-surface-lightest"><code>--rh-color-surface-lightest</code></a></li>
+<li><a href="/tokens/border/#rh-color-border-subtle-on-light"><code>--rh-color-border-subtle-on-light</code></a></li>
+<li><a href="/tokens/font/#rh-color-text-primary-on-light"><code>--rh-color-text-primary-on-light</code></a></li>
+</ul>
+<p>For more information, please see the <a href="/elements/card/code/#css-custom-properties">card css custom properties</a>.</p>
 <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: flex;
@@ -4005,302 +3944,19 @@ it's near. Several cards can be used together to group related information.</p>
         </svg>
       </button>
     <!--/lit-part--></template>
-  <h2 id="sample---slotted-title" tabindex="-1">
-    <a href="#sample---slotted-title">Sample - Slotted Title</a>
+  <h2 id="themes" tabindex="-1">
+    <a href="#themes">Themes</a>
       </h2>
     </uxdot-copy-permalink>
-<rh-card>
-  <h2 slot="header">Headline, sm</h2>
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend 
-    elit sed est egestas, a sollicitudin mauris tincidunt. Pellentesque vel 
-    dapibus risus. Nullam aliquam felis orci, eget cursus milacinia quis. 
-    Vivamus at felis sem.
-  </p>
-  <rh-cta variant="primary" slot="footer">
-    <a href="#">Call to action</a>
-  </rh-cta>
-</rh-card>
-<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>
-    :host {
-      display: flex;
-      margin-block-end: var(--rh-space-lg, 16px);
-      align-items: center;
-    }
-
-    svg {
-      width: var(--rh-size-icon-02, 24px);
-    }
-
-    #signifier {
-      display: var(--perma-signifier-display, none);
-    }
-
-    #button {
-      height: 1.75rem;
-      background: none;
-      border: none;
-      display: flex;
-      align-items: center;
-    }
-
-    #button:is(:hover, :focus) {
-      background: var(--rh-color-surface-light, #e0e0e0);
-    }
-
-    ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-      display: flex;
-      margin-block-end: 0 !important;
-      align-items: center;
-      color: inherit;
-      text-decoration: inherit;
-    }
-  </style><!--lit-part TTkZeYC7lsg=-->
-      <!--lit-node 0--><slot ></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button  id="button" aria-label="Copy link to clipboard" aria-label="Copy link to clipboard">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-          <path d="M13.09 2.64a3 3 0 0 0-4.15 0L6.1 5.49a2.93 2.93 0 0 0 0 4.15.63.63 0 0 0 .88 0 .64.64 0 0 0 0-.89 1.65 1.65 0 0 1-.49-1.19A1.66 1.66 0 0 1 7 6.37l2.83-2.84a1.68 1.68 0 1 1 2.37 2.38l-.62.62a.63.63 0 1 0 .89.88l.62-.62a2.93 2.93 0 0 0 0-4.15Z"/>
-          <path d="M8.61 6.77a.64.64 0 0 0 0 .89 1.68 1.68 0 0 1 0 2.37l-2.44 2.44a1.68 1.68 0 0 1-2.38 0 1.7 1.7 0 0 1 0-2.38l.15-.09a.64.64 0 0 0 0-.89.63.63 0 0 0-.88 0l-.15.15a3 3 0 0 0 0 4.15 3 3 0 0 0 4.15 0l2.43-2.44a2.9 2.9 0 0 0 .86-2.07 2.93 2.93 0 0 0-.85-2.13.64.64 0 0 0-.89 0Z"/>
-        </svg>
-      </button>
-    <!--/lit-part--></template>
-  <h2 id="sample---alternative-color-scheme" tabindex="-1">
-    <a href="#sample---alternative-color-scheme">Sample - alternative color scheme</a>
-      </h2>
-    </uxdot-copy-permalink>
-<rh-card class="alt">
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend 
-    elit sed est egestas, a
-    sollicitudin mauris tincidunt. Pellentesque vel dapibus risus. Nullam 
-    aliquam felis orci, eget cursus mi
-    lacinia quis. Vivamus at felis sem.
-  </p>
-  <rh-cta variant="primary" slot="footer">
-    <a href="#">Call to action</a>
-  </rh-cta>
-</rh-card>
-<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>
-    :host {
-      display: flex;
-      margin-block-end: var(--rh-space-lg, 16px);
-      align-items: center;
-    }
-
-    svg {
-      width: var(--rh-size-icon-02, 24px);
-    }
-
-    #signifier {
-      display: var(--perma-signifier-display, none);
-    }
-
-    #button {
-      height: 1.75rem;
-      background: none;
-      border: none;
-      display: flex;
-      align-items: center;
-    }
-
-    #button:is(:hover, :focus) {
-      background: var(--rh-color-surface-light, #e0e0e0);
-    }
-
-    ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-      display: flex;
-      margin-block-end: 0 !important;
-      align-items: center;
-      color: inherit;
-      text-decoration: inherit;
-    }
-  </style><!--lit-part TTkZeYC7lsg=-->
-      <!--lit-node 0--><slot ></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button  id="button" aria-label="Copy link to clipboard" aria-label="Copy link to clipboard">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-          <path d="M13.09 2.64a3 3 0 0 0-4.15 0L6.1 5.49a2.93 2.93 0 0 0 0 4.15.63.63 0 0 0 .88 0 .64.64 0 0 0 0-.89 1.65 1.65 0 0 1-.49-1.19A1.66 1.66 0 0 1 7 6.37l2.83-2.84a1.68 1.68 0 1 1 2.37 2.38l-.62.62a.63.63 0 1 0 .89.88l.62-.62a2.93 2.93 0 0 0 0-4.15Z"/>
-          <path d="M8.61 6.77a.64.64 0 0 0 0 .89 1.68 1.68 0 0 1 0 2.37l-2.44 2.44a1.68 1.68 0 0 1-2.38 0 1.7 1.7 0 0 1 0-2.38l.15-.09a.64.64 0 0 0 0-.89.63.63 0 0 0-.88 0l-.15.15a3 3 0 0 0 0 4.15 3 3 0 0 0 4.15 0l2.43-2.44a2.9 2.9 0 0 0 .86-2.07 2.93 2.93 0 0 0-.85-2.13.64.64 0 0 0-.89 0Z"/>
-        </svg>
-      </button>
-    <!--/lit-part--></template>
-  <h2 id="sample---title-bar" tabindex="-1">
-    <a href="#sample---title-bar">Sample - title bar</a>
-      </h2>
-    </uxdot-copy-permalink>
-<rh-card class="bar">
-  <h2 slot="header">Headline, sm</h2>
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend 
-    elit sed est egestas, a
-    sollicitudin mauris tincidunt. Pellentesque vel dapibus risus. Nullam 
-    aliquam felis orci, eget cursus mi
-    lacinia quis. Vivamus at felis sem.
-  </p>
-  <rh-cta variant="primary" slot="footer">
-    <a href="#">Call to action</a>
-  </rh-cta>
-</rh-card>
-<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>
-    :host {
-      display: flex;
-      margin-block-end: var(--rh-space-lg, 16px);
-      align-items: center;
-    }
-
-    svg {
-      width: var(--rh-size-icon-02, 24px);
-    }
-
-    #signifier {
-      display: var(--perma-signifier-display, none);
-    }
-
-    #button {
-      height: 1.75rem;
-      background: none;
-      border: none;
-      display: flex;
-      align-items: center;
-    }
-
-    #button:is(:hover, :focus) {
-      background: var(--rh-color-surface-light, #e0e0e0);
-    }
-
-    ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-      display: flex;
-      margin-block-end: 0 !important;
-      align-items: center;
-      color: inherit;
-      text-decoration: inherit;
-    }
-  </style><!--lit-part TTkZeYC7lsg=-->
-      <!--lit-node 0--><slot ></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button  id="button" aria-label="Copy link to clipboard" aria-label="Copy link to clipboard">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-          <path d="M13.09 2.64a3 3 0 0 0-4.15 0L6.1 5.49a2.93 2.93 0 0 0 0 4.15.63.63 0 0 0 .88 0 .64.64 0 0 0 0-.89 1.65 1.65 0 0 1-.49-1.19A1.66 1.66 0 0 1 7 6.37l2.83-2.84a1.68 1.68 0 1 1 2.37 2.38l-.62.62a.63.63 0 1 0 .89.88l.62-.62a2.93 2.93 0 0 0 0-4.15Z"/>
-          <path d="M8.61 6.77a.64.64 0 0 0 0 .89 1.68 1.68 0 0 1 0 2.37l-2.44 2.44a1.68 1.68 0 0 1-2.38 0 1.7 1.7 0 0 1 0-2.38l.15-.09a.64.64 0 0 0 0-.89.63.63 0 0 0-.88 0l-.15.15a3 3 0 0 0 0 4.15 3 3 0 0 0 4.15 0l2.43-2.44a2.9 2.9 0 0 0 .86-2.07 2.93 2.93 0 0 0-.85-2.13.64.64 0 0 0-.89 0Z"/>
-        </svg>
-      </button>
-    <!--/lit-part--></template>
-  <h2 id="title-bar" tabindex="-1">
-    <a href="#title-bar">Title bar</a>
-      </h2>
-    </uxdot-copy-permalink>
-<rh-card class="bar">
-  <h2 slot="header">Card title</h2>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
-    libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
-    elit. Donec id elit non mi porta gravida at eget metus.</p>
-  <rh-cta variant="primary" slot="footer"><a href="#">Footer</a></rh-cta>
-</rh-card>
-<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>
-    :host {
-      display: flex;
-      margin-block-end: var(--rh-space-lg, 16px);
-      align-items: center;
-    }
-
-    svg {
-      width: var(--rh-size-icon-02, 24px);
-    }
-
-    #signifier {
-      display: var(--perma-signifier-display, none);
-    }
-
-    #button {
-      height: 1.75rem;
-      background: none;
-      border: none;
-      display: flex;
-      align-items: center;
-    }
-
-    #button:is(:hover, :focus) {
-      background: var(--rh-color-surface-light, #e0e0e0);
-    }
-
-    ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-      display: flex;
-      margin-block-end: 0 !important;
-      align-items: center;
-      color: inherit;
-      text-decoration: inherit;
-    }
-  </style><!--lit-part TTkZeYC7lsg=-->
-      <!--lit-node 0--><slot ></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button  id="button" aria-label="Copy link to clipboard" aria-label="Copy link to clipboard">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-          <path d="M13.09 2.64a3 3 0 0 0-4.15 0L6.1 5.49a2.93 2.93 0 0 0 0 4.15.63.63 0 0 0 .88 0 .64.64 0 0 0 0-.89 1.65 1.65 0 0 1-.49-1.19A1.66 1.66 0 0 1 7 6.37l2.83-2.84a1.68 1.68 0 1 1 2.37 2.38l-.62.62a.63.63 0 1 0 .89.88l.62-.62a2.93 2.93 0 0 0 0-4.15Z"/>
-          <path d="M8.61 6.77a.64.64 0 0 0 0 .89 1.68 1.68 0 0 1 0 2.37l-2.44 2.44a1.68 1.68 0 0 1-2.38 0 1.7 1.7 0 0 1 0-2.38l.15-.09a.64.64 0 0 0 0-.89.63.63 0 0 0-.88 0l-.15.15a3 3 0 0 0 0 4.15 3 3 0 0 0 4.15 0l2.43-2.44a2.9 2.9 0 0 0 .86-2.07 2.93 2.93 0 0 0-.85-2.13.64.64 0 0 0-.89 0Z"/>
-        </svg>
-      </button>
-    <!--/lit-part--></template>
-  <h2 id="image-title-bar" tabindex="-1">
-    <a href="#image-title-bar">Image title bar</a>
-      </h2>
-    </uxdot-copy-permalink>
-<rh-card class="bar full">
-  <img src="./kitten-900x300.jpeg" slot="header" alt="adorable kitten">
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
-    libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
-    elit. Donec id elit non mi porta gravida at eget metus.</p>
-  <rh-cta slot="footer"><a href="#">Footer</a></rh-cta>
-</rh-card>
-<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>
-    :host {
-      display: flex;
-      margin-block-end: var(--rh-space-lg, 16px);
-      align-items: center;
-    }
-
-    svg {
-      width: var(--rh-size-icon-02, 24px);
-    }
-
-    #signifier {
-      display: var(--perma-signifier-display, none);
-    }
-
-    #button {
-      height: 1.75rem;
-      background: none;
-      border: none;
-      display: flex;
-      align-items: center;
-    }
-
-    #button:is(:hover, :focus) {
-      background: var(--rh-color-surface-light, #e0e0e0);
-    }
-
-    ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-      display: flex;
-      margin-block-end: 0 !important;
-      align-items: center;
-      color: inherit;
-      text-decoration: inherit;
-    }
-  </style><!--lit-part TTkZeYC7lsg=-->
-      <!--lit-node 0--><slot ></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button  id="button" aria-label="Copy link to clipboard" aria-label="Copy link to clipboard">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-          <path d="M13.09 2.64a3 3 0 0 0-4.15 0L6.1 5.49a2.93 2.93 0 0 0 0 4.15.63.63 0 0 0 .88 0 .64.64 0 0 0 0-.89 1.65 1.65 0 0 1-.49-1.19A1.66 1.66 0 0 1 7 6.37l2.83-2.84a1.68 1.68 0 1 1 2.37 2.38l-.62.62a.63.63 0 1 0 .89.88l.62-.62a2.93 2.93 0 0 0 0-4.15Z"/>
-          <path d="M8.61 6.77a.64.64 0 0 0 0 .89 1.68 1.68 0 0 1 0 2.37l-2.44 2.44a1.68 1.68 0 0 1-2.38 0 1.7 1.7 0 0 1 0-2.38l.15-.09a.64.64 0 0 0 0-.89.63.63 0 0 0-.88 0l-.15.15a3 3 0 0 0 0 4.15 3 3 0 0 0 4.15 0l2.43-2.44a2.9 2.9 0 0 0 .86-2.07 2.93 2.93 0 0 0-.85-2.13.64.64 0 0 0-.89 0Z"/>
-        </svg>
-      </button>
-    <!--/lit-part--></template>
-  <h2 id="style" tabindex="-1">
-    <a href="#style">Style</a>
-      </h2>
-    </uxdot-copy-permalink>
-<p>A card can be used in light and dark themes.</p>
+<p>Themes are expressed in terms of color palettes.</p>
+<ul>
+<li><code>lightest</code></li>
+<li><code>lighter</code></li>
+<li><code>light</code></li>
+<li><code>dark</code></li>
+<li><code>darker</code></li>
+<li><code>darkest</code></li>
+</ul>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: flex;
@@ -4345,11 +4001,63 @@ it's near. Several cards can be used together to group related information.</p>
         </svg>
       </button>
     <!--/lit-part--></template>
-  <h3 id="theme" tabindex="-1">
-    <a href="#theme">Theme</a>
+  <h3 id="context-theming" tabindex="-1">
+    <a href="#context-theming">Context theming</a>
       </h3>
     </uxdot-copy-permalink>
-<uxdot-copy-permalink  class="h4"><template shadowroot="open" shadowrootmode="open"><style>
+<p>Cards will automatically react to the <code>color-palette</code> context provided by a parent element, like <code>&lt;rh-surface&gt;</code>.</p>
+<div id="card-themes" class="grid sm-two-columns">
+  <div id="light-theme">
+    <uxdot-pattern stacked="" color-palette="light" allow="light, lighter, lightest">
+      <h3 slot="heading">Light theme</h3>
+      <rh-card>
+        <h2 slot="header">Card title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
+          libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
+          elit. Donec id elit non mi porta gravida at eget metus.</p>
+        <rh-cta slot="footer" href="#">Call to action</rh-cta>
+      </rh-card>
+      <rh-code-block slot="html" actions="copy">
+        <span slot="action-label-copy">Copy to Clipboard</span>
+        <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
+        <script type="text/html"><rh-surface color-palette="light">
+  <rh-card>
+    <h2 slot="header">Card title</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
+      libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
+      elit. Donec id elit non mi porta gravida at eget metus.</p>
+    <rh-cta slot="footer" href="#">Call to action</rh-cta>
+  </rh-card>
+</rh-surface></script>
+      </rh-code-block>
+    </uxdot-pattern>
+  </div>
+  <div id="dark-theme">
+    <uxdot-pattern stacked="" color-palette="dark" allow="dark, darker, darkest">
+      <h3 slot="heading">Dark theme</h3>
+      <rh-card>
+        <h2 slot="header">Card title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
+          libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
+          elit. Donec id elit non mi porta gravida at eget metus.</p>
+        <rh-cta slot="footer" href="#">Call to action</rh-cta>
+      </rh-card>
+      <rh-code-block slot="html" actions="copy">
+        <span slot="action-label-copy">Copy to Clipboard</span>
+        <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
+        <script type="text/html"><rh-surface color-palette="dark">
+  <rh-card>
+    <h2 slot="header">Card title</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
+      libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
+      elit. Donec id elit non mi porta gravida at eget metus.</p>
+    <rh-cta slot="footer" href="#">Call to action</rh-cta>
+  </rh-card>
+</rh-surface></script>
+    </rh-code-block></uxdot-pattern>
+  </div>
+</div>
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: flex;
       margin-block-end: var(--rh-space-lg, 16px);
@@ -4393,76 +4101,32 @@ it's near. Several cards can be used together to group related information.</p>
         </svg>
       </button>
     <!--/lit-part--></template>
-  <h4 id="light-theme" tabindex="-1">
-    <a href="#light-theme">Light Theme</a>
-      </h4>
+  <h3 id="explicit-card-theming" tabindex="-1">
+    <a href="#explicit-card-theming">Explicit card theming</a>
+      </h3>
     </uxdot-copy-permalink>
-<rh-surface color-palette="light">
-  <rh-card>
+<p>Cards can play an active role in theming by declaring a specific <code>color-palette</code>.</p>
+<uxdot-pattern color-palette="light">
+  <h3 slot="heading">Lighter themed card</h3>
+  <rh-card color-palette="lighter">
     <h2 slot="header">Card title</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
       libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
       elit. Donec id elit non mi porta gravida at eget metus.</p>
-    <rh-cta slot="footer"><a href="#">Footer</a></rh-cta>
+    <rh-cta slot="footer" href="#">Call to action</rh-cta>
   </rh-card>
-</rh-surface>
-<uxdot-copy-permalink  class="h4"><template shadowroot="open" shadowrootmode="open"><style>
-    :host {
-      display: flex;
-      margin-block-end: var(--rh-space-lg, 16px);
-      align-items: center;
-    }
-
-    svg {
-      width: var(--rh-size-icon-02, 24px);
-    }
-
-    #signifier {
-      display: var(--perma-signifier-display, none);
-    }
-
-    #button {
-      height: 1.75rem;
-      background: none;
-      border: none;
-      display: flex;
-      align-items: center;
-    }
-
-    #button:is(:hover, :focus) {
-      background: var(--rh-color-surface-light, #e0e0e0);
-    }
-
-    ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-      display: flex;
-      margin-block-end: 0 !important;
-      align-items: center;
-      color: inherit;
-      text-decoration: inherit;
-    }
-  </style><!--lit-part TTkZeYC7lsg=-->
-      <!--lit-node 0--><slot ></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button  id="button" aria-label="Copy link to clipboard" aria-label="Copy link to clipboard">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-          <path d="M13.09 2.64a3 3 0 0 0-4.15 0L6.1 5.49a2.93 2.93 0 0 0 0 4.15.63.63 0 0 0 .88 0 .64.64 0 0 0 0-.89 1.65 1.65 0 0 1-.49-1.19A1.66 1.66 0 0 1 7 6.37l2.83-2.84a1.68 1.68 0 1 1 2.37 2.38l-.62.62a.63.63 0 1 0 .89.88l.62-.62a2.93 2.93 0 0 0 0-4.15Z"/>
-          <path d="M8.61 6.77a.64.64 0 0 0 0 .89 1.68 1.68 0 0 1 0 2.37l-2.44 2.44a1.68 1.68 0 0 1-2.38 0 1.7 1.7 0 0 1 0-2.38l.15-.09a.64.64 0 0 0 0-.89.63.63 0 0 0-.88 0l-.15.15a3 3 0 0 0 0 4.15 3 3 0 0 0 4.15 0l2.43-2.44a2.9 2.9 0 0 0 .86-2.07 2.93 2.93 0 0 0-.85-2.13.64.64 0 0 0-.89 0Z"/>
-        </svg>
-      </button>
-    <!--/lit-part--></template>
-  <h4 id="dark-theme" tabindex="-1">
-    <a href="#dark-theme">Dark Theme</a>
-      </h4>
-    </uxdot-copy-permalink>
-<rh-surface color-palette="dark">
-  <rh-card>
-    <h2 slot="header">Card title</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
-      libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
-      elit. Donec id elit non mi porta gravida at eget metus.</p>
-    <rh-cta slot="footer"><a href="#">Footer</a></rh-cta>
-  </rh-card>
-</rh-surface>
+  <rh-code-block slot="html" actions="copy">
+    <span slot="action-label-copy">Copy to Clipboard</span>
+    <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
+    <script type="text/html"><rh-card color-palette="lighter">
+  <h2 slot="header">Card title</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
+    libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
+    elit. Donec id elit non mi porta gravida at eget metus.</p>
+  <rh-cta slot="footer" href="#">Call to action</rh-cta>
+</rh-card></script>
+  </rh-code-block>
+</uxdot-pattern>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: flex;
@@ -4508,256 +4172,49 @@ it's near. Several cards can be used together to group related information.</p>
       </button>
     <!--/lit-part--></template>
   <h3 id="custom-theming" tabindex="-1">
-    <a href="#custom-theming">Custom Theming</a>
+    <a href="#custom-theming">Custom theming</a>
       </h3>
     </uxdot-copy-permalink>
-<p>To customize a card the design tokens must be altered. These design tokens are different depending on the context for the card (light or dark theme).</p>
-<p>Examples include:</p>
-<ul>
-<li><a href="https://ux.redhat.com/tokens/color/#rh-color-surface-lightest"><code>--rh-color-surface-lightest</code></a></li>
-<li><a href="https://ux.redhat.com/tokens/border/#rh-color-border-subtle-on-light"><code>--rh-color-border-subtle-on-light</code></a></li>
-<li><a href="https://ux.redhat.com/tokens/font/#rh-color-text-primary-on-light"><code>--rh-color-text-primary-on-light</code></a></li>
-</ul>
-<p>For more information, please see the <a href="/elements/card/code/#css-custom-properties">card css custom properties</a>.</p>
-<uxdot-copy-permalink  class="h4"><template shadowroot="open" shadowrootmode="open"><style>
-    :host {
-      display: flex;
-      margin-block-end: var(--rh-space-lg, 16px);
-      align-items: center;
-    }
+<p>When using design tokens to apply custom themes, it is important to ensure that the colors used meet <a href="/accessibility/design/#contrast">color contrast guidelines</a>.</p>
+<style>  
+  .custom-theme-card {
+    --rh-color-border-subtle-on-light: #f56e6e;
+    --rh-color-surface-lightest: #feeded;
+    --rh-color-text-primary-on-light: #5f0000;
+    --rh-color-border-subtle-on-dark: #5e40be;
+    --rh-color-surface-darkest: #3d2785;
+    --rh-color-text-primary-on-dark: #ece6ff;
+  }
 
-    svg {
-      width: var(--rh-size-icon-02, 24px);
-    }
-
-    #signifier {
-      display: var(--perma-signifier-display, none);
-    }
-
-    #button {
-      height: 1.75rem;
-      background: none;
-      border: none;
-      display: flex;
-      align-items: center;
-    }
-
-    #button:is(:hover, :focus) {
-      background: var(--rh-color-surface-light, #e0e0e0);
-    }
-
-    ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-      display: flex;
-      margin-block-end: 0 !important;
-      align-items: center;
-      color: inherit;
-      text-decoration: inherit;
-    }
-  </style><!--lit-part TTkZeYC7lsg=-->
-      <!--lit-node 0--><slot ></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button  id="button" aria-label="Copy link to clipboard" aria-label="Copy link to clipboard">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-          <path d="M13.09 2.64a3 3 0 0 0-4.15 0L6.1 5.49a2.93 2.93 0 0 0 0 4.15.63.63 0 0 0 .88 0 .64.64 0 0 0 0-.89 1.65 1.65 0 0 1-.49-1.19A1.66 1.66 0 0 1 7 6.37l2.83-2.84a1.68 1.68 0 1 1 2.37 2.38l-.62.62a.63.63 0 1 0 .89.88l.62-.62a2.93 2.93 0 0 0 0-4.15Z"/>
-          <path d="M8.61 6.77a.64.64 0 0 0 0 .89 1.68 1.68 0 0 1 0 2.37l-2.44 2.44a1.68 1.68 0 0 1-2.38 0 1.7 1.7 0 0 1 0-2.38l.15-.09a.64.64 0 0 0 0-.89.63.63 0 0 0-.88 0l-.15.15a3 3 0 0 0 0 4.15 3 3 0 0 0 4.15 0l2.43-2.44a2.9 2.9 0 0 0 .86-2.07 2.93 2.93 0 0 0-.85-2.13.64.64 0 0 0-.89 0Z"/>
-        </svg>
-      </button>
-    <!--/lit-part--></template>
-  <h4 id="custom-light-theme" tabindex="-1">
-    <a href="#custom-light-theme">Custom Light Theme</a>
-      </h4>
-    </uxdot-copy-permalink>
-<rh-surface color-palette="light">
-  <rh-card class="custom-light-theme">
-    <h2 slot="header">Card title</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
-      libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
-      elit. Donec id elit non mi porta gravida at eget metus.</p>
-    <rh-cta slot="footer"><a href="#">Footer</a></rh-cta>
-  </rh-card>
-</rh-surface>
-<uxdot-copy-permalink  class="h4"><template shadowroot="open" shadowrootmode="open"><style>
-    :host {
-      display: flex;
-      margin-block-end: var(--rh-space-lg, 16px);
-      align-items: center;
-    }
-
-    svg {
-      width: var(--rh-size-icon-02, 24px);
-    }
-
-    #signifier {
-      display: var(--perma-signifier-display, none);
-    }
-
-    #button {
-      height: 1.75rem;
-      background: none;
-      border: none;
-      display: flex;
-      align-items: center;
-    }
-
-    #button:is(:hover, :focus) {
-      background: var(--rh-color-surface-light, #e0e0e0);
-    }
-
-    ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-      display: flex;
-      margin-block-end: 0 !important;
-      align-items: center;
-      color: inherit;
-      text-decoration: inherit;
-    }
-  </style><!--lit-part TTkZeYC7lsg=-->
-      <!--lit-node 0--><slot ></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button  id="button" aria-label="Copy link to clipboard" aria-label="Copy link to clipboard">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-          <path d="M13.09 2.64a3 3 0 0 0-4.15 0L6.1 5.49a2.93 2.93 0 0 0 0 4.15.63.63 0 0 0 .88 0 .64.64 0 0 0 0-.89 1.65 1.65 0 0 1-.49-1.19A1.66 1.66 0 0 1 7 6.37l2.83-2.84a1.68 1.68 0 1 1 2.37 2.38l-.62.62a.63.63 0 1 0 .89.88l.62-.62a2.93 2.93 0 0 0 0-4.15Z"/>
-          <path d="M8.61 6.77a.64.64 0 0 0 0 .89 1.68 1.68 0 0 1 0 2.37l-2.44 2.44a1.68 1.68 0 0 1-2.38 0 1.7 1.7 0 0 1 0-2.38l.15-.09a.64.64 0 0 0 0-.89.63.63 0 0 0-.88 0l-.15.15a3 3 0 0 0 0 4.15 3 3 0 0 0 4.15 0l2.43-2.44a2.9 2.9 0 0 0 .86-2.07 2.93 2.93 0 0 0-.85-2.13.64.64 0 0 0-.89 0Z"/>
-        </svg>
-      </button>
-    <!--/lit-part--></template>
-  <h4 id="custom-dark-theme" tabindex="-1">
-    <a href="#custom-dark-theme">Custom Dark Theme</a>
-      </h4>
-    </uxdot-copy-permalink>
-<rh-surface color-palette="dark">
-  <rh-card class="custom-dark-theme">
-    <h2 slot="header">Card title</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit 
-      libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id 
-      elit. Donec id elit non mi porta gravida at eget metus.</p>
-    <rh-cta slot="footer"><a href="#">Footer</a></rh-cta>
-  </rh-card>
-</rh-surface>
-<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>
-    :host {
-      display: flex;
-      margin-block-end: var(--rh-space-lg, 16px);
-      align-items: center;
-    }
-
-    svg {
-      width: var(--rh-size-icon-02, 24px);
-    }
-
-    #signifier {
-      display: var(--perma-signifier-display, none);
-    }
-
-    #button {
-      height: 1.75rem;
-      background: none;
-      border: none;
-      display: flex;
-      align-items: center;
-    }
-
-    #button:is(:hover, :focus) {
-      background: var(--rh-color-surface-light, #e0e0e0);
-    }
-
-    ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-      display: flex;
-      margin-block-end: 0 !important;
-      align-items: center;
-      color: inherit;
-      text-decoration: inherit;
-    }
-  </style><!--lit-part TTkZeYC7lsg=-->
-      <!--lit-node 0--><slot ></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button  id="button" aria-label="Copy link to clipboard" aria-label="Copy link to clipboard">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-          <path d="M13.09 2.64a3 3 0 0 0-4.15 0L6.1 5.49a2.93 2.93 0 0 0 0 4.15.63.63 0 0 0 .88 0 .64.64 0 0 0 0-.89 1.65 1.65 0 0 1-.49-1.19A1.66 1.66 0 0 1 7 6.37l2.83-2.84a1.68 1.68 0 1 1 2.37 2.38l-.62.62a.63.63 0 1 0 .89.88l.62-.62a2.93 2.93 0 0 0 0-4.15Z"/>
-          <path d="M8.61 6.77a.64.64 0 0 0 0 .89 1.68 1.68 0 0 1 0 2.37l-2.44 2.44a1.68 1.68 0 0 1-2.38 0 1.7 1.7 0 0 1 0-2.38l.15-.09a.64.64 0 0 0 0-.89.63.63 0 0 0-.88 0l-.15.15a3 3 0 0 0 0 4.15 3 3 0 0 0 4.15 0l2.43-2.44a2.9 2.9 0 0 0 .86-2.07 2.93 2.93 0 0 0-.85-2.13.64.64 0 0 0-.89 0Z"/>
-        </svg>
-      </button>
-    <!--/lit-part--></template>
-  <h2 id="usage" tabindex="-1">
-    <a href="#usage">Usage</a>
-      </h2>
-    </uxdot-copy-permalink>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
-    :host {
-      display: flex;
-      margin-block-end: var(--rh-space-lg, 16px);
-      align-items: center;
-    }
-
-    svg {
-      width: var(--rh-size-icon-02, 24px);
-    }
-
-    #signifier {
-      display: var(--perma-signifier-display, none);
-    }
-
-    #button {
-      height: 1.75rem;
-      background: none;
-      border: none;
-      display: flex;
-      align-items: center;
-    }
-
-    #button:is(:hover, :focus) {
-      background: var(--rh-color-surface-light, #e0e0e0);
-    }
-
-    ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-      display: flex;
-      margin-block-end: 0 !important;
-      align-items: center;
-      color: inherit;
-      text-decoration: inherit;
-    }
-  </style><!--lit-part TTkZeYC7lsg=-->
-      <!--lit-node 0--><slot ></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button  id="button" aria-label="Copy link to clipboard" aria-label="Copy link to clipboard">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-          <path d="M13.09 2.64a3 3 0 0 0-4.15 0L6.1 5.49a2.93 2.93 0 0 0 0 4.15.63.63 0 0 0 .88 0 .64.64 0 0 0 0-.89 1.65 1.65 0 0 1-.49-1.19A1.66 1.66 0 0 1 7 6.37l2.83-2.84a1.68 1.68 0 1 1 2.37 2.38l-.62.62a.63.63 0 1 0 .89.88l.62-.62a2.93 2.93 0 0 0 0-4.15Z"/>
-          <path d="M8.61 6.77a.64.64 0 0 0 0 .89 1.68 1.68 0 0 1 0 2.37l-2.44 2.44a1.68 1.68 0 0 1-2.38 0 1.7 1.7 0 0 1 0-2.38l.15-.09a.64.64 0 0 0 0-.89.63.63 0 0 0-.88 0l-.15.15a3 3 0 0 0 0 4.15 3 3 0 0 0 4.15 0l2.43-2.44a2.9 2.9 0 0 0 .86-2.07 2.93 2.93 0 0 0-.85-2.13.64.64 0 0 0-.89 0Z"/>
-        </svg>
-      </button>
-    <!--/lit-part--></template>
-  <h3 id="character-count" tabindex="-1">
-    <a href="#character-count">Character count</a>
-      </h3>
-    </uxdot-copy-permalink>
-<p>The recommended maximum character count for the elements of a card are listed below and include spaces.</p>
-<rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Element">Element</th>
-        <th scope="col" data-label="Character count">Character count</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Element">Title</td>
-        <td data-label="Character count">20</td>
-      </tr>
-      <tr>
-        <td data-label="Element">Headline</td>
-        <td data-label="Character count">50</td>
-      </tr>
-      <tr>
-        <td data-label="Element">Body text</td>
-        <td data-label="Character count">165</td>
-      </tr>
-      <tr>
-        <td data-label="Element">Footer</td>
-        <td data-label="Character count">55</td>
-      </tr>
-    </tbody>
-  </table>
-</rh-table>
+  /* demo only */
+  #custom-theming uxdot-pattern[color-palette="darkest"] {
+    --rh-color-surface-darkest: #21134d;
+    --rh-color-text-primary-on-dark: #ece6ff;
+  }
+</style>
+<div id="custom-theming">
+  <uxdot-pattern allow="lightest, darkest">
+    <rh-card class="custom-theme-card">
+      <h2 slot="header">Card title</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit
+        libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id
+        elit. Donec id elit non mi porta gravida at eget metus.</p>
+      <rh-cta slot="footer" href="#">Call to action</rh-cta>
+    </rh-card>
+    <rh-code-block slot="css" actions="copy">
+      <span slot="action-label-copy">Copy to Clipboard</span>
+      <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
+      <script type="text/css">.custom-theme-card {
+  --rh-color-border-subtle-on-light: #f56e6e;
+  --rh-color-surface-lightest: #feeded;
+  --rh-color-text-primary-on-light: #5f0000;
+  --rh-color-border-subtle-on-dark: #5e40be;
+  --rh-color-surface-darkest: #3d2785;
+  --rh-color-text-primary-on-dark: #ece6ff;
+}</script>
+    </rh-code-block>
+  </uxdot-pattern>
+</div>
 <uxdot-feedback><template shadowroot="open" shadowrootmode="open"><style>
 
     :host {
@@ -4810,7 +4267,7 @@ it's near. Several cards can be used together to group related information.</p>
       </div>
     <!--/lit-part--></template>
 <p></p><h2 id="other-libraries">Other libraries</h2>
-<p>To learn more about our other libraries, visit <a href="/get-started/">this page</a>.</p><p></p>
+<p>To learn more about our other libraries, visit the <a href="/get-started/">getting started page</a>.</p><p></p>
 </uxdot-feedback>
 
   </div>
