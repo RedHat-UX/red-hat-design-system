@@ -57,8 +57,8 @@ Inline text links (e.g., those within paragraphs and list items in the main body
 
 In fact, you should default to underlining all text links, except for the following:
 
-- Links within visually distinct navigation groupings, like menus and the like.
-- CTAs and other links that include arrows or other decorations to indicate their interactivity.
+- Links within visually distinct navigation groupings, like menus.
+- CTAs and other links accompanied by visual cues (e.g., arrow symbols) to indicate their interactivity.
 
 That said, you still _can_ underline the above, at your discretion.
 
