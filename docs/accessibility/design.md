@@ -62,7 +62,7 @@ In fact, you should default to underlining all text links, except for the follow
 
 That said, you still _can_ underline the above, at your discretion.
 
-If, for some reason, color is the only way to distinguish links within a text block, the contrast ratio between the link and surrounding text _must_ be at least 3:1 in all states (unvisited, visited, active, hovered, and focused). And underlines or other non-color cues _must also_ then be used to signify when the link receives hover and focus.
+If, for some reason, color is the only way to distinguish links within a text block, the contrast ratio between the link and surrounding text _must_ be at least 3:1 in all states (unvisited, visited, active, hovered, and focused). And underlines or other non-color cues _must also_ then be used to signify when the link receives hover and focus, as in the example below:
 
 <uxdot-example width-adjustment="692px" no-border>
   <img src="{{ '/assets/color/contrast-links.png' | url }}" alt="Contrast ratio of a blue link next to black text and an example of a link's darker blue, underlined hover state">
