@@ -45,7 +45,6 @@ rh-breadcrumb > ol > li > a {
 
 rh-breadcrumb > ol > li > a:is(:hover, :focus, :active) {
   color: var(--_breadcrumb-link-color-hover);
-  text-decoration: none;
 }
 
 rh-breadcrumb > ol > li > a:is(:focus, :focus-visible) {
