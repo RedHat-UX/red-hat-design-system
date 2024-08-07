@@ -53,7 +53,7 @@ Small foreground text (non-bold text under 24px and bold text under 19px) must h
 
 #### Links
 
-Inline text links (e.g., those within paragraphs and list items in the main body of a page) should be underlined to make these links easy to discern for all visitors, especially those with visual impairments or situations that could make color differentiation difficult.
+Inline text links (e.g., those within paragraphs and list items in the main body of a page) should be underlined to make these links easy to discern for all visitors, particularly those with visual impairments or in situations that could make color differentiation difficult.
 
 In fact, you should default to underlining all text links, except for the following:
 
