@@ -8,7 +8,6 @@ import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
-import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 import { DirController } from '../../lib/DirController.js';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
@@ -26,13 +25,14 @@ const L2 = html`
 
 /**
  * A paginator allows users to navigate between pages of related content.
- *
  * @summary Allows users to navigate content divided into pages
- *
  * @slot            - An ordered list of links
- * @slot go-to-page - "Go to page" text
+ * @slot go-to-page - "Go to page" text, defaults to "Page"
  * @slot out-of     - "of" text
- *
+ * @csspart container - pagination container
+ * @csspart numeric-middle - container for the numeric control at medium screen widths
+ * @csspart numeric-end - container for the numeric control at small and large screen widths
+ * @csspart numeric - shared container for the numeric controls at all widths
  * @cssprop {<color>} --rh-pagination-accent-color
  *          Sets the outline color when the page input has focus.
  *          {@default `var(--rh-color-interactive-blue, #0066cc)`}
@@ -78,11 +78,16 @@ export class RhPagination extends LitElement {
   /** Accessible label for the 'last page' button */
   @property({ attribute: 'label-last' }) labelLast = 'last page';
 
+  /** Change pagination size to small */
+  @property({ reflect: true }) size: 'sm' | null = null;
+
+  /** "Open" variant */
+  @property({ reflect: true }) variant?: 'open' | null = null;
+
   @query('input') private input?: HTMLInputElement;
 
   #dir = new DirController(this);
   #mo = new MutationObserver(() => this.#update());
-  #screen = new ScreenSizeController(this);
   #logger = new Logger(this);
 
   #ol = this.querySelector('ol');
@@ -113,9 +118,20 @@ export class RhPagination extends LitElement {
     super.update(changed);
   }
 
+  #internalColorPalette?: string | null;
+
+  protected willUpdate(): void {
+    /**
+     * TEMPORARY: this fixes the need to access the parents color-palette in order to get the `lightest`
+     * value. This fix will only update the component when switching between light and dark themes as
+     * thats when the consumer requests an update. Switching between lighter -> light for example will
+     * not trigger the component to update at this time. Related: #1395.
+     */
+    this.#internalColorPalette = this.closest('[color-palette]')?.getAttribute('color-palette');
+  }
+
   render() {
     const { on = '' } = this;
-    const { mobile, size } = this.#screen;
     const { dir } = this.#dir;
     const { label, labelFirst, labelPrevious, labelNext, labelLast } = this;
     const firstHref = this.#currentLink === this.#firstLink ? undefined : this.#firstLink?.href;
@@ -123,32 +139,44 @@ export class RhPagination extends LitElement {
     const nextHref = this.#nextLink?.href;
     const lastHref = this.#currentLink === this.#lastLink ? undefined : this.#lastLink?.href;
     const currentPage = this.#currentPage.toString();
+
     return html`
-      <div id="container" class=${classMap({ mobile, [size as string]: true, [dir]: true, [on]: !!on })}>
+      <div id="container" part="container"
+           class=${classMap({ [dir]: true, [on]: !!on, [`color-palette-${this.#internalColorPalette}`]: !!this.#internalColorPalette })}>
         <a id="first" class="stepper" href=${ifDefined(firstHref)} ?inert=${!firstHref} aria-label=${labelFirst}>${L2}</a>
         <a id="prev" class="stepper" href=${ifDefined(prevHref)} ?inert=${!prevHref} aria-label=${labelPrevious}>${L1}</a>
-
-        <nav ?hidden=${mobile} ?inert=${mobile} aria-label=${label}>
+        <nav aria-label=${label}>
           <slot></slot>
         </nav>
-
+        <div id="numeric-middle" part="numeric-middle">
+          ${this.#numericContent(currentPage, lastHref)}
+        </div>
         <a id="next" class="stepper" href=${ifDefined(nextHref)} ?inert=${!nextHref} aria-label=${labelNext}>${L1}</a>
         <a id="last" class="stepper" href=${ifDefined(lastHref)} ?inert=${!lastHref} aria-label=${labelLast}>${L2}</a>
-
-        <div id="numeric" part="numeric">
-          <span id="go-to-page">
-            <slot name="go-to-page">Go to page</slot>
-          </span>
-          <input inputmode="numeric"
-              required
-              min=1 max=${this.#links?.length ?? 1}
-              aria-labelledby="go-to-page"
-              @change=${this.#onChange}
-              @keyup=${this.#onKeyup}
-              .value=${currentPage}>
-          <slot name="out-of">of</slot>
-          <a href=${ifDefined(lastHref)}>${this.#links?.length}</a>
+        <div id="numeric-end" part="numeric-end">
+          ${this.#numericContent(currentPage, lastHref)}
         </div>
+      </div>
+    `;
+  }
+
+  #numericContent(currentPage: string, lastHref?: string, ) {
+    return html`
+      <div id="numeric" part="numeric">
+        <span id="go-to-page" class="xxs-visually-hidden sm-visually-visible">
+          <slot name="go-to-page">
+            Page
+          </slot>
+        </span>
+        <input inputmode="numeric"
+            required
+            min=1 max=${this.#links?.length ?? 1}
+            aria-labelledby="go-to-page"
+            @change=${this.#onChange}
+            @keyup=${this.#onKeyup}
+            .value=${currentPage}>
+        <slot name="out-of">of</slot>
+        <a href=${ifDefined(lastHref)}>${this.#links?.length}</a>
       </div>
     `;
   }
