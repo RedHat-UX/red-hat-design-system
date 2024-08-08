@@ -202,7 +202,7 @@
         "patch",
         "analyze",
         "playgrounds",
-        "compile",
+        "compile"
       ],
       "files": [
         "docs"
