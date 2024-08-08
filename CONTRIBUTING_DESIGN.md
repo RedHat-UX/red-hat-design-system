@@ -10,7 +10,7 @@ contributing guide](./CONTRIBUTING_DEV.md#prerequisites)
 
 Once set up, run the 11ty development server with the following command:
 ```bash
-npm run watch:docs
+npm run serve
 ```
 
 This will start eleventy and a watch process that will reload the site if `*.njk`, `*.md`, `*.scss`,

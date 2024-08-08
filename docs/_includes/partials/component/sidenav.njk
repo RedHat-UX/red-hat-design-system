@@ -33,10 +33,12 @@
                     {%- set slug = fst.slug -%}
                     {%- set href = '/elements/' + slug + '/' -%}
                     {%- set active = href === page.url -%}
+                    {%- set name = (fst.alias) or (slug | deslugify) %}
+                    {%- set planned = isPlanned(repoStatus, name) %}
                     {% if not (tagName in comingSoonItems) %}
                       <li>
                         <uxdot-sidenav-dropdown-menu-item {{ 'active' if active }}>
-                          <a href="{{ href }}">{{ (fst.alias) or (slug | deslugify) }}</a>
+                          <a href="{{ href }}">{{ (fst.alias) or (slug | deslugify) }}{% if planned %} <rh-tag icon="bell" color="gray">Planned</rh-tag>{% endif %}</a>
                         </uxdot-sidenav-dropdown-menu-item>
                       </li>
                     {% endif %}
