@@ -40,12 +40,11 @@ rh-breadcrumb > ol > li > a {
 }
 
 rh-breadcrumb > ol > li > a {
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 rh-breadcrumb > ol > li > a:is(:hover, :focus, :active) {
   color: var(--_breadcrumb-link-color-hover);
-  text-decoration: underline;
 }
 
 rh-breadcrumb > ol > li > a:is(:focus, :focus-visible) {
@@ -68,6 +67,7 @@ rh-breadcrumb > ol > li > a:visited:hover {
 rh-breadcrumb > ol > li:last-child,
 rh-breadcrumb > ol > li > a[aria-current="page"] {
   color: var(--_breadcrumb-link-color-current-page);
+  text-decoration: none;
 }
 
 rh-breadcrumb > ol > li > a[aria-current="page"] {
