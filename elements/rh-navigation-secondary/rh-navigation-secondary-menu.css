@@ -18,15 +18,9 @@
 
 :host(:not([type="fixed-width"])) #sections {
   display: grid;
-
-  /* TODO remove --rh-secondary-nav-menu-section-grid for v2 */
-  /* stylelint-disable-next-line */
-  grid-template-columns: var(--rh-navigation-secondary-menu-section-grid, var(--rh-secondary-nav-menu-section-grid, repeat(auto-fit, minmax(15.5rem, 1fr))));
+  grid-template-columns: var(--rh-navigation-secondary-menu-section-grid, repeat(auto-fit, minmax(15.5rem, 1fr)));
   grid-template-rows: auto;
-
-  /* TODO remove --rh-secondary-nav-menu-section-grid-gap for v2 */
-  /* stylelint-disable-next-line */
-  gap: var(--rh-navigation-secondary-menu-section-grid-gap, var(--rh-secondary-nav-menu-section-grid-gap, var(--rh-space-2xl, 32px)));
+  gap: var(--rh-navigation-secondary-menu-section-grid-gap, var(--rh-space-2xl, 32px));
 }
 
 ::slotted(:is(ul, ol)) {
@@ -62,10 +56,7 @@
 
   #sections {
     padding: 0;
-
-    /* TODO remove --rh-secondary-nav-menu-section-grid-gap for v2 */
-    /* stylelint-disable-next-line */
-    max-width: var(--rh-navigation-secondary-menu-content-max-width, var(--rh-secondary-nav-menu-content-max-width, 1136px));
+    max-width: var(--rh-navigation-secondary-menu-content-max-width, 1136px);
     margin: auto;
   }
 

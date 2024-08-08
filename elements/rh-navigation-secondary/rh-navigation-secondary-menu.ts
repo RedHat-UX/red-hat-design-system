@@ -79,21 +79,8 @@ export class RhNavigationSecondaryMenu extends LitElement {
   }
 }
 
-@customElement('rh-secondary-nav-menu')
-class RhSecondaryNavMenu extends RhNavigationSecondaryMenu {
-  #logger = new Logger(this);
-
-  constructor() {
-    super();
-    this.#logger.warn(
-      'rh-secondary-nav-menu is deprecated. Use rh-navigation-secondary-menu instead.'
-    );
-  }
-}
-
 declare global {
   interface HTMLElementTagNameMap {
     'rh-navigation-secondary-menu': RhNavigationSecondaryMenu;
-    'rh-secondary-nav-menu': RhSecondaryNavMenu;
   }
 }
