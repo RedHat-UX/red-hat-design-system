@@ -6,7 +6,7 @@
   "license": "MIT",
   "customElements": "custom-elements.json",
   "exports": {
-    ".": "./rhds.min.js",
+    ".": "./elements.js",
     "./lib/*": "./lib/*",
     "./react/*": "./react/*",
     "./*": "./elements/*"
@@ -44,7 +44,7 @@
     "react/**/*",
     "lib/**/*.{js,md,map,css,svg,md,html,txt,d.ts}",
     "custom-elements.json",
-    "rhds.min*"
+    "elements.js"
   ],
   "scripts": {
     "🐒-DEV": "❓ Development aids",
@@ -114,8 +114,8 @@
         "patch",
         "analyze",
         "react-wrappers",
+        "entrypoint",
         "compile",
-        "bundle",
         "copy-css",
         "docs"
       ]
@@ -148,6 +148,19 @@
         "!elements/*/{demo,test}/**/*.js"
       ]
     },
+    "entrypoint": {
+      "command": "npx tsx scripts/generate-entry-point.ts",
+      "dependencies": [
+        "analyze"
+      ],
+      "files": [
+        "custom-elements.json",
+        "scripts/generate-entry-point.ts"
+      ],
+      "output": [
+        "elements.js"
+      ]
+    },
     "react-wrappers": {
       "command": "npx tsx scripts/generate-react-wrappers.ts",
       "dependencies": [
@@ -171,16 +184,6 @@
         "./*/*.css"
       ]
     },
-    "bundle": {
-      "command": "node scripts/bundle.js",
-      "files": [
-        "elements/**/*.{ts,js,map}",
-        "elements/**/*.css"
-      ],
-      "output": [
-        "rhds.min.js"
-      ]
-    },
     "analyze": {
       "command": "cem analyze && node scripts/cem-tokens.js && node scripts/system-tokens.js",
       "files": [
@@ -199,8 +202,7 @@
         "patch",
         "analyze",
         "playgrounds",
-        "compile",
-        "bundle"
+        "compile"
       ],
       "files": [
         "docs"
