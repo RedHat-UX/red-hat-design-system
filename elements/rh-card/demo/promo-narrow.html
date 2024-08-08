@@ -1,0 +1,49 @@
+<section id="narrow">
+  <rh-card variant="promo">
+    <svg slot="image"
+        role="img"
+        aria-label="sample image"
+        width="360" height="158">
+      <rect fill="var(--rh-color-border-interactive-on-light, #0066cc)"
+            fill-opacity="0.1"
+            stroke="var(--rh-color-border-interactive-on-light, #0066cc)"
+            stroke-width="2px"
+            width="100%"
+            height="100%"
+            stroke-dasharray="4 4">
+    </svg>
+    <h2 slot="header">Narrow Promo</h2>
+    <p>Promos narrower than 296px prioritize text by moving the image to the end.</p>
+    <rh-cta slot="footer" href="#">Call to action</rh-cta>
+  </rh-card>
+
+  <rh-card variant="promo">
+    <h2 slot="header">Narrow Promo</h2>
+    <p>A promo can optionally omit the image.</p>
+    <rh-cta slot="footer" href="#">Call to action</rh-cta>
+  </rh-card>
+
+  <rh-card variant="promo">
+    <rh-cta slot="footer" href="#">Call to action</rh-cta>
+    <p>The &rdquo;standard&ldquo; Promo. It has a paragraph and a CTA in the &rdquo;image&ldquo; slot.</p>
+  </rh-card>
+
+  <rh-card variant="promo" color-palette="darkest">
+    <rh-cta slot="footer" href="#">Call to action</rh-cta>
+    <p>A &rdquo;standard&ldquo; Promo with a <code>color-palette</code> attribute added to the <code>&lt;rh-card&gt;</code> tag.</p>
+  </rh-card>
+</section>
+
+<script type="module">
+  import '@rhds/elements/rh-cta/rh-cta.js';
+  import '@rhds/elements/rh-card/rh-card.js';
+</script>
+
+<style>
+  #narrow {
+    width: 296px;
+    display: flex;
+    flex-flow: column;
+    gap: var(--rh-space-xl, 24px);
+  }
+</style>
