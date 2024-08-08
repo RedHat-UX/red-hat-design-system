@@ -11,7 +11,7 @@ docs/assets/playgrounds/
 docs/_data/playgrounds.json
 
 # Build artifacts
-!elements
+elements.js
 elements/*/*.js
 elements/*/test/*.js
 react

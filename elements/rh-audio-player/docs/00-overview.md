@@ -2,7 +2,7 @@
 
 {{ tagName | getElementDescription }}
 
-{% repoStatusList %}
+{% repoStatusList repoStatus=repoStatus %}
 
 ## Sample element
 
@@ -2637,4 +2637,4 @@
 - When you want to feature audio content without directing users to other pages
 - When you want to offer users with reduced hearing abilities a listening alternative using a transcript
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}

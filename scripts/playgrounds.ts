@@ -294,6 +294,7 @@ class PlaygroundDemo {
     const dir = demoSlug === 'index.html' ? '.' : '..';
     const resourcePrefix = `${primaryElementName}-${demoSlug.replace('.html', '')}-inline`;
     let count = 0;
+    // TODO: add an empty stylesheet if none exists
     for (const node of Tools.queryAll<Tools.Element>(this.fragment, Tools.isElementNode)) {
       if (isInlineModule(node)) {
         const moduleName = `${resourcePrefix}-${count++}.js`;

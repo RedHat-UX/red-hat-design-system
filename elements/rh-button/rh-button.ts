@@ -145,8 +145,8 @@ export class RhButton extends LitElement {
         `;
       case 'play':
         return html`
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-            <path d="m12.3 7.5-9-5c-.2-.1-.4-.1-.6 0-.2.1-.3.3-.3.5v10c0 .2.1.4.3.5.1.1.2.1.3.1.1 0 .2 0 .3-.1l9-5c.2-.1.3-.3.3-.5s-.1-.4-.3-.5z"/>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+            <path d="m30.37 15.339-28-15A.752.752 0 0 0 1.264 1v30a.752.752 0 0 0 1.104.661l28-15a.751.751 0 0 0 0-1.322Z"/>
           </svg>
         `;
       default:

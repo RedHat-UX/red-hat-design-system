@@ -24,4 +24,4 @@
   - When you need to enable users to navigate to through pages or locate a specific page number
   - When you need to improve the loading performance of a system
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}

@@ -6,7 +6,7 @@
   <img src="{{ './tooltip-sample-element.png' | url }}" alt="A black tooltip on top of a gray disabled button">
 </uxdot-example>
 
-{% repoStatusList %}
+{% repoStatusList repoStatus=repoStatus %}
 
 ## Sample element
 
@@ -36,4 +36,4 @@
 - When you need to provide more information for icons or icon buttons without labels
 - When you need to define new or unfamiliar UI elements that are not described directly in the user interface
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}

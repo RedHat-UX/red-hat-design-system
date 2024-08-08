@@ -7,7 +7,7 @@
 </uxdot-example>
 
 
-{% repoStatusList %}
+{% repoStatusList repoStatus=repoStatus %}
 
 ## Sample element
 
@@ -25,5 +25,5 @@
 - When you need an alternative to a group of cards with the same calls to action
 - When you need to group content for a radio button or checkbox in a form
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}
 

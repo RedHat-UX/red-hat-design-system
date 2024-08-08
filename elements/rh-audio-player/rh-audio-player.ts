@@ -1,4 +1,4 @@
-import type { RhTooltip } from '../rh-tooltip/rh-tooltip.js';
+import type { RhTooltip } from '@rhds/elements/rh-tooltip/rh-tooltip.js';
 
 import { LitElement, html, type PropertyValues } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
@@ -28,8 +28,8 @@ import buttonStyles from './rh-audio-player-button.css';
 import rangeStyles from './rh-audio-player-range-styles.css';
 import styles from './rh-audio-player.css';
 
-import '../rh-surface/rh-surface.js';
-import '../rh-tooltip/rh-tooltip.js';
+import '@rhds/elements/rh-surface/rh-surface.js';
+import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 
 /**
  * An audio player plays audio clips in the browser and includes other features.

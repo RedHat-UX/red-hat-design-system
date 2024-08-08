@@ -2,7 +2,7 @@
 
 {{ tagName | getElementDescription }}
 
-{% repoStatusList %}
+{% repoStatusList repoStatus=repoStatus %}
 
 
 ## Sample element
@@ -20,4 +20,4 @@
 
 [img-sample]: {{ './alert-sample.svg' | url }}
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}

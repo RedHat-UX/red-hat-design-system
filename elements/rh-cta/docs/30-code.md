@@ -3,9 +3,7 @@
 ## Usage
 
 ```html
-<rh-cta>
-    <a href="#default">Default</a>
-</rh-cta>
+<rh-cta href="#default">Default</rh-cta>
 ```
 
 {% renderCodeDocs hideDescription=true %}{% endrenderCodeDocs %}

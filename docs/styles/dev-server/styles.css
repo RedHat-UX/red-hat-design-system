@@ -24,9 +24,7 @@
 
 @layer layout {
   [data-demo] {
-    padding: var(--rh-space-xl, 24px);
-    min-height: 100%;
-    height: 100%;
+    display: contents;
   }
 
   main {
@@ -45,7 +43,7 @@
 
   /* offset the padding on the demo container from above */
   rh-context-demo {
-    height: calc(100% + 2 * var(--rh-space-xl, 24px));
-    margin: calc(-1 * var(--rh-space-xl, 24px));
+    min-height: calc(100% + 2 * var(--rh-space-xl, 24px));
+    height: auto;
   }
 }

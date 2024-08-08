@@ -1,20 +1,21 @@
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+import { state } from 'lit/decorators/state.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 
 import { RhCue, getFormattedTime } from './rh-cue.js';
 
-import './rh-audio-player-scrolling-text-overflow.js';
-import '../rh-tooltip/rh-tooltip.js';
+import { HeadingLevelContextConsumer } from '@rhds/elements/lib/context/headings/consumer.js';
+import { HeadingLevelContextProvider } from '@rhds/elements/lib/context/headings/provider.js';
 
 import buttonStyles from './rh-audio-player-button.css';
 import panelStyles from './rh-audio-player-panel.css';
 import styles from './rh-transcript.css';
-import { state } from 'lit/decorators/state.js';
 
-import { HeadingLevelContextConsumer } from '../../lib/context/headings/consumer.js';
-import { HeadingLevelContextProvider } from '../../lib/context/headings/provider.js';
+import './rh-audio-player-scrolling-text-overflow.js';
+
+import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 
 const icon = html`
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">

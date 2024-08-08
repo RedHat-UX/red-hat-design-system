@@ -1,6 +1,8 @@
 :host {
   display: block;
-  height: 100%;
+  min-height: 100%;
+  height: auto;
+  position: relative;
 }
 
 .light { color: var(--rh-color-text-primary-on-light, #151515); }
@@ -15,5 +17,6 @@
 
 #provider {
   padding: var(--rh-context-demo-padding, var(--rh-space-xl, 24px));
-  height: calc(100% - 2 * var(--rh-context-demo-padding, var(--rh-space-xl, 24px)));
+  position: absolute;
+  inset: 0;
 }

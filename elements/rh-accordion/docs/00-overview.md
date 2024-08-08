@@ -5,7 +5,7 @@
   <img src="./accordion-sample-element.png" alt="An accordion with four collapsed panels and one expanded panel">
 </uxdot-example>
 
-{% repoStatusList %}
+{% repoStatusList repoStatus=repoStatus %}
 
 ## Sample element
 
@@ -68,4 +68,4 @@
   - When you need to condense a large amount of related information into sections
   - When you need a way for users to read or compare sections of content simultaneously
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}

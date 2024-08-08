@@ -1,36 +1,22 @@
-<section>
-  <rh-cta>
-    <a href="#default">Default</a>
-  </rh-cta>
+<section id="cta-variants">
+  <rh-cta href="#default">Default</rh-cta>
 
-  <rh-cta icon="circle-play">
-    <a href="#default-video">Default Video</a>
-  </rh-cta>
+  <rh-cta icon="play-circle" href="#default-video">Default Video</rh-cta>
 
-  <rh-cta variant="primary">
-    <a href="#primary">Primary</a>
-  </rh-cta>
+  <rh-cta variant="primary" href="#primary">Primary</rh-cta>
 
-  <rh-cta variant="primary" icon="circle-play">
-    <a href="#primary-video">Video</a>
-  </rh-cta>
+  <rh-cta variant="primary" icon="play-circle" href="#primary-video">Video</rh-cta>
 
-  <rh-cta variant="secondary">
-    <a href="#secondary">Secondary</a>
-  </rh-cta>
+  <rh-cta variant="secondary" href="#secondary">Secondary</rh-cta>
 
   <div id="brick">
-    <rh-cta variant="brick">
-      <a href="#brick">Brick</a>
-    </rh-cta>
-    <rh-cta variant="brick" icon="user">
-      <a href="#brick-icon">Brick Icon</a>
-    </rh-cta>
+    <rh-cta variant="brick" href="#brick">Brick</rh-cta>
+    <rh-cta variant="brick" icon="user" href="#brick-icon">Brick Icon</rh-cta>
   </div>
 </section>
 
 <style>
-  section {
+  #cta-variants {
     display: flex;
     gap: var(--rh-space-lg, 16px);
     flex-flow: row wrap;

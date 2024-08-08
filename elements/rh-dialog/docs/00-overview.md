@@ -6,7 +6,7 @@
   <img src="{{ './dialog-sample.png' | url }}" alt="A dialog container with a black headline, black body text, two blue buttons, and a dark gray close button all on a white background on top of a slightly transparent black background">
 </uxdot-example>
 
-{% repoStatusList %}
+{% repoStatusList repoStatus=repoStatus %}
 
 
 ## Sample element
@@ -26,4 +26,4 @@
   - When you need an immediate response from users
   - When you need to notify users of urgent information concerning their current workflow
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}

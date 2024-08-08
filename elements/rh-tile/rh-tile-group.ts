@@ -16,7 +16,7 @@ import styles from './rh-tile-group.css';
 
 /**
  * A group of `<rh-tile>` elements which handles radio selection.
- * @slot - tiles
+ * @slot - Put one or more `rh-tile` elements in this slot
  */
 @customElement('rh-tile-group')
 export class RhTileGroup extends LitElement {

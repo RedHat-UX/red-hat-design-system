@@ -6,7 +6,7 @@
   <img src="{{ './spinner-sample.png' | url }}" alt="Example of a spinner">
 </uxdot-example>
 
-{% repoStatusList %}
+{% repoStatusList repoStatus=repoStatus %}
 
 
 ## Sample element
@@ -19,4 +19,4 @@
   - When the structure or amount of content that's loading is unknown
 
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}

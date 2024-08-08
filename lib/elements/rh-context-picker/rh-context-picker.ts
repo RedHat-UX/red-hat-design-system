@@ -1,11 +1,14 @@
+import type { ColorPalette } from '@rhds/elements/lib/context/color/provider.js';
+import type { Color } from '@rhds/tokens/js/types.js';
+import type { ColorTheme } from '@rhds/elements/lib/context/color/consumer.js';
+
 import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
-import { type ColorPalette } from '../../context/color/provider.js';
-import { colorContextConsumer, type ColorTheme } from '../../context/color/consumer.js';
+import { colorContextConsumer } from '@rhds/elements/lib/context/color/consumer.js';
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
-import type { Color } from '@rhds/tokens/js/types.js';
 import {
   ColorSurfaceDarkest as darkest,
   ColorSurfaceDarker as darker,
@@ -20,7 +23,6 @@ import { classMap } from 'lit/directives/class-map.js';
 import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 
 import style from './rh-context-picker.css';
-import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
 export class ContextChangeEvent extends Event {
   constructor(public colorPalette: ColorPalette) {
