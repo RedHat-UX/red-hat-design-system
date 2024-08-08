@@ -1,6 +1,6 @@
 ---
 title: Video thumbnail
-order: 120
+order: 130
 hasToc: true
 tags:
   - pattern

@@ -256,6 +256,19 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     });
   });
 
+  eleventyConfig.addCollection('sortedTypography', async function(collectionApi) {
+    const typographyCollection = collectionApi.getFilteredByTags('typography');
+    return typographyCollection.sort((a, b) => {
+      if (a.data.order > b.data.order) {
+        return 1;
+      } else if (a.data.order < b.data.order) {
+        return -1;
+      } else {
+        return 0;
+      }
+    });
+  });
+
   eleventyConfig.addCollection('sortedDevelopers', async function(collectionApi) {
     const developersCollection = collectionApi.getFilteredByTags('developers');
     return developersCollection.sort((a, b) => {
