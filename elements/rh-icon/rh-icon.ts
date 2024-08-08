@@ -5,6 +5,7 @@ import { state } from 'lit/decorators/state.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
 import style from './rh-icon.css';
 
@@ -76,6 +77,12 @@ export class RhIcon extends LitElement {
   @property({ reflect: true }) icon = '';
 
   /**
+   * Defines a string value that labels the icon element.
+   * Adds role="img" to element.
+   */
+  @property({ attribute: 'accessible-label' }) accessibleLabel?: string;
+
+  /**
    * Controls how eager the element will be to load the icon data
    * - `eager`: eagerly load the icon, blocking the main thread
    * - `idle`: wait for the browser to attain an idle state before loading
@@ -89,6 +96,8 @@ export class RhIcon extends LitElement {
   #intersecting = false;
 
   #logger = new Logger(this);
+
+  #internals = InternalsController.of(this);
 
   #lazyLoad() {
     RhIcon.io.observe(this);
@@ -113,6 +122,10 @@ export class RhIcon extends LitElement {
   connectedCallback(): void {
     super.connectedCallback();
     RhIcon.instances.add(this);
+    if (this.accessibleLabel) {
+      this.#internals.ariaLabel = this.accessibleLabel;
+    }
+    this.#internals.role = this.accessibleLabel ? 'img' : 'presentation';
   }
 
   willUpdate(changed: PropertyValues<this>): void {
