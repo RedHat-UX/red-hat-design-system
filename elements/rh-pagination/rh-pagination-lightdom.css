@@ -1,9 +1,9 @@
 rh-pagination {
-  --_link-size: 50px;
+  --_link-size: calc(var(--_stepper-size) + 2px);
 }
 
 rh-pagination[size="sm"] {
-  --_link-size: 36px;
+  --_link-size: calc(var(--_stepper-size) + 2px);
 }
 
 rh-pagination > ol {

@@ -1,12 +1,12 @@
 :host {
-  --_stepper-size: 48px;
+  --_stepper-size: var(--rh-length-3xl, 48px);
 
   display: block;
   min-height: 4em;
 }
 
 :host([size="sm"]) {
-  --_stepper-size: 34px;
+  --_stepper-size: var(--rh-length-2xl, 32px);
 }
 
 [hidden] {
