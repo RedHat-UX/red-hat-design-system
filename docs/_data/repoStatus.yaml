@@ -1,406 +1,455 @@
-- name: "Accordion"
+- tagName: rh-accordion
+  name: "Accordion"
   type: "Element"
   overallStatus: "Available"
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: RH Shared Libs
       status: Ready
     - name: Documentation
       status: Ready
-- name: "Alert"
+- tagName: rh-alert
+  name: "Alert"
   type: "Element"
   overallStatus: "Available"
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: RH Shared Libs
       status: Ready
     - name: Documentation
       status: Ready
-- name: "Audio Player"
+- tagName: rh-audio-player
+  name: "Audio Player"
   type: "Element"
   overallStatus: "Available"
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: RH Shared Libs
       status: Ready
     - name: Documentation
       status: Ready
-- name: "Avatar"
+- tagName: rh-avatar
+  name: "Avatar"
   type: "Element"
   overallStatus: "Available"
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: RH Shared Libs
       status: Ready
     - name: Documentation
       status: Ready
-- name: "Back To Top"
+- tagName: rh-back-to-top
+  name: "Back To Top"
   type: "Element"
   overallStatus: "Available"
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: RH Shared Libs
       status: Planned
     - name: Documentation
       status: In Progress
-- name: "Badge"
+- tagName: rh-badge
+  name: "Badge"
   type: "Element"
   overallStatus: "Available"
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: RH Shared Libs
       status: Ready
     - name: Documentation
       status: Ready
-- name: "Blockquote"
+- tagName: rh-blockquote
+  name: "Blockquote"
   type: "Element"
   overallStatus: "Available"
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: RH Shared Libs
       status: Ready
     - name: Documentation
       status: Ready
-- name: "Button"
+- tagName: rh-breadcrumb
+  name: "Breadcrumb"
   type: "Element"
   overallStatus: "Available"
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: RH Shared Libs
       status: Ready
     - name: Documentation
       status: Ready
-- name: "Cta"
+- tagName: rh-button
+  name: "Button"
   type: "Element"
   overallStatus: "Available"
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: RH Shared Libs
       status: Ready
     - name: Documentation
       status: Ready
-- name: "Card"
+- tagName: rh-cta
+  name: "Cta"
   type: "Element"
   overallStatus: "Available"
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: RH Shared Libs
       status: Ready
     - name: Documentation
       status: Ready
-- name: "Code Block"
+- tagName: rh-card
+  name: "Card"
   type: "Element"
   overallStatus: "Available"
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: RH Shared Libs
       status: Ready
     - name: Documentation
       status: Ready
-- name: "Dialog"
+- tagName: rh-code-block
+  name: "Code Block"
   type: "Element"
   overallStatus: "Available"
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: RH Shared Libs
       status: Ready
     - name: Documentation
       status: Ready
-- name: "Footer"
+- tagName: rh-dialog
+  name: "Dialog"
   type: "Element"
   overallStatus: "Available"
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: RH Shared Libs
       status: Ready
     - name: Documentation
       status: Ready
-- name: "Jumplinks"
-  type: "Element"
-  overallStatus: "Available"
-  libraries:
-    - name: Figma library
-      status: N/A
-    - name: Responsive
-      status: N/A
-    - name: RH Elements
-      status: N/A
-    - name: webRH
-      status: N/A
-    - name: Documentation
-      status: Ready
-- name: "Navigation Secondary"
+- tagName: rh-footer
+  name: "Footer"
   type: "Element"
   overallStatus: "Available"
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: RH Shared Libs
       status: Ready
     - name: Documentation
       status: Ready
-- name: "Pagination"
+- tagName: rh-health-index
+  name: "Health Index"
   type: "Element"
   overallStatus: "Available"
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
-      status: Ready
-    - name: Documentation
-      status: Ready
-- name: "Popover"
-  type: "Element"
-  overallStatus: "Available"
-  libraries:
-    - name: Figma library
-      status: Ready
-    - name: Responsive
-      status: Ready
-    - name: RH Elements
-      status: Ready
-    - name: webRH
-      status: Ready
-    - name: Documentation
-      status: Ready
-- name: "Skip Link"
-  type: "Element"
-  overallStatus: "New"
-  libraries:
-    - name: Figma library
-      status: Ready
-    - name: Responsive
-      status: Ready
-    - name: RH Elements
-      status: Ready
-    - name: webRH
+    - name: RH Shared Libs
       status: Planned
     - name: Documentation
       status: Ready
-- name: "Site Status"
+- tagName: rh-jump-links
+  name: "Jumplinks"
   type: "Element"
-  overallStatus: "New"
+  overallStatus: "Available"
+  libraries:
+    - name: Figma library
+      status: N/A
+    - name: RH Elements
+      status: N/A
+    - name: RH Shared Libs
+      status: N/A
+    - name: Documentation
+      status: Ready
+- tagName: rh-navigation-primary      
+  name: "Navigation Primary"
+  type: "Element"
+  overallStatus: "Planned"
+  libraries:
+    - name: Figma library
+      status: Planned
+    - name: RH Elements
+      status: Planned
+    - name: RH Shared Libs
+      status: Planned
+    - name: Documentation
+      status: Planned
+- tagName: rh-navigation-secondary
+  name: "Navigation Secondary"
+  type: "Element"
+  overallStatus: "Available"
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
+    - name: RH Elements
+      status: Ready
+    - name: RH Shared Libs
+      status: Ready
+    - name: Documentation
+      status: Ready
+- tagName: rh-pagination
+  name: "Pagination"
+  type: "Element"
+  overallStatus: "Available"
+  libraries:
+    - name: Figma library
       status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: RH Shared Libs
+      status: Ready
+    - name: Documentation
+      status: Ready
+- tagName: rh-popover
+  name: "Popover"
+  type: "Element"
+  overallStatus: "Available"
+  libraries:
+    - name: Figma library
+      status: Ready
+    - name: RH Elements
+      status: Planned
+    - name: RH Shared Libs
       status: Planned
     - name: Documentation
       status: Ready
-- name: "Spinner"
+- tagName: rh-progress-steps
+  name: "Progess Steps"
   type: "Element"
   overallStatus: "Available"
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
-      status: Ready
-    - name: webRH
-      status: Ready
+      status: Planned
+    - name: RH Shared Libs
+      status: Planned
     - name: Documentation
-      status: Ready
-- name: "Stat"
-  type: "Element"
-  overallStatus: "Available"
-  libraries:
-    - name: Figma library
-      status: Ready
-    - name: Responsive
-      status: Ready
-    - name: RH Elements
-      status: Ready
-    - name: webRH
-      status: Ready
-    - name: Documentation
-      status: Ready
-- name: "Subnav"
-  type: "Element"
-  overallStatus: "Available"
-  libraries:
-    - name: Figma library
-      status: Ready
-    - name: Responsive
-      status: Ready
-    - name: RH Elements
-      status: Ready
-    - name: webRH
-      status: Ready
-    - name: Documentation
-      status: Ready
-- name: "Surface"
+      status: Ready      
+- tagName: rh-skip-link
+  name: "Skip Link"
   type: "Element"
   overallStatus: "New"
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
-      status: Ready
+    - name: RH Shared Libs
+      status: Planned
     - name: Documentation
-      status: Ready
-- name: "Table"
+      status: Ready  
+- tagName: rh-skip-link
+  name: "Skip Link"
   type: "Element"
   overallStatus: "New"
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
-      status: Ready
+    - name: RH Shared Libs
+      status: Planned
     - name: Documentation
       status: Ready
-- name: "Tabs"
-  type: "Element"
-  overallStatus: "Available"
-  libraries:
-    - name: Figma library
-      status: Ready
-    - name: Responsive
-      status: Ready
-    - name: RH Elements
-      status: Ready
-    - name: webRH
-      status: Ready
-    - name: Documentation
-      status: Ready
-- name: "Tag"
-  type: "Element"
-  overallStatus: "Available"
-  libraries:
-    - name: Figma library
-      status: Ready
-    - name: Responsive
-      status: Ready
-    - name: RH Elements
-      status: Ready
-    - name: webRH
-      status: Ready
-    - name: Documentation
-      status: Ready
-- name: "Tile"
+- tagName: rh-site-status 
+  name: "Site Status"
   type: "Element"
   overallStatus: "New"
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
-      status: Ready
+    - name: RH Shared Libs
+      status: Planned
     - name: Documentation
       status: Ready
-- name: "Timestamp"
+- tagName: rh-spinner 
+  name: "Spinner"
   type: "Element"
   overallStatus: "Available"
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
-      status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: RH Shared Libs
       status: Ready
     - name: Documentation
       status: Ready
-- name: "Tooltip"
+- tagName: rh-stat
+  name: "Stat"
   type: "Element"
   overallStatus: "Available"
   libraries:
     - name: Figma library
       status: Ready
-    - name: Responsive
+    - name: RH Elements
+      status: Ready
+    - name: RH Shared Libs
+      status: Ready
+    - name: Documentation
+      status: Ready
+- tagName: rh-subnav
+  name: "Subnav"
+  type: "Element"
+  overallStatus: "Available"
+  libraries:
+    - name: Figma library
       status: Ready
     - name: RH Elements
       status: Ready
-    - name: webRH
+    - name: RH Shared Libs
+      status: Ready
+    - name: Documentation
+      status: Ready
+- tagName: rh-surface
+  name: "Surface"
+  type: "Element"
+  overallStatus: "New"
+  libraries:
+    - name: Figma library
+      status: Ready
+    - name: RH Elements
+      status: Ready
+    - name: RH Shared Libs
+      status: Ready
+    - name: Documentation
+      status: Ready
+- tagName: rh-switch
+  name: "Switch"
+  type: "Element"
+  overallStatus: "New"
+  libraries:
+    - name: Figma library
+      status: Ready
+    - name: RH Elements
+      status: Ready
+    - name: RH Shared Libs
+      status: Planned
+    - name: Documentation
+      status: Ready  
+- tagName: rh-table
+  name: "Table"
+  type: "Element"
+  overallStatus: "New"
+  libraries:
+    - name: Figma library
+      status: Ready
+    - name: RH Elements
+      status: Ready
+    - name: RH Shared Libs
+      status: Ready
+    - name: Documentation
+      status: Ready
+- tagName: rh-tabs
+  name: "Tabs"
+  type: "Element"
+  overallStatus: "Available"
+  libraries:
+    - name: Figma library
+      status: Ready
+    - name: RH Elements
+      status: Ready
+    - name: RH Shared Libs
+      status: Ready
+    - name: Documentation
+      status: Ready
+- tagName: rh-tag
+  name: "Tag"
+  type: "Element"
+  overallStatus: "Available"
+  libraries:
+    - name: Figma library
+      status: Ready
+    - name: RH Elements
+      status: Ready
+    - name: RH Shared Libs
+      status: Ready
+    - name: Documentation
+      status: Ready
+- tagName: rh-tile
+  name: "Tile"
+  type: "Element"
+  overallStatus: "New"
+  libraries:
+    - name: Figma library
+      status: Ready
+    - name: RH Elements
+      status: Ready
+    - name: RH Shared Libs
+      status: Ready
+    - name: Documentation
+      status: Ready
+- tagName: rh-timestamp
+  name: "Timestamp"
+  type: "Element"
+  overallStatus: "Available"
+  libraries:
+    - name: Figma library
+      status: Ready
+    - name: RH Elements
+      status: Ready
+    - name: RH Shared Libs
+      status: Ready
+    - name: Documentation
+      status: Ready
+- tagName: rh-tooltip
+  name: "Tooltip"
+  type: "Element"
+  overallStatus: "Available"
+  libraries:
+    - name: Figma library
+      status: Ready
+    - name: RH Elements
+      status: Ready
+    - name: RH Shared Libs
       status: Ready
     - name: Documentation
       status: Ready

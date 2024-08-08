@@ -2,6 +2,9 @@
   command = "npm run docs"
 
 [[redirects]]
+  from = '/components/get-started/*'
+  to = '/get-started/'
+[[redirects]]
   from = '/components/accordion/*'
   to = '/elements/accordion/:splat'
 [[redirects]]

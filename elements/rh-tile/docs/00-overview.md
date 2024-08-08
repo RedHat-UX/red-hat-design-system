@@ -7,7 +7,7 @@
 </uxdot-example>
 
 
-{% repoStatusList %}
+{% repoStatusList repoStatus=repoStatus %}
 
 ## Sample element
 
@@ -19,20 +19,11 @@
   <div slot="footer">Suspendisse eu turpis elementum</div>
 </rh-tile>
 
-## Demo
-
-View a live version of this element and see how it can be customized.
-
-{% playground tagName=tagName %}{% endplayground %}
-
-<rh-cta><a href="{{ './demo/' | url }}">Full screen demo</a></rh-cta>
-
-
 ## When to use
 
 - When you need to group content in a linked container
 - When you need an alternative to a group of cards with the same calls to action
 - When you need to group content for a radio button or checkbox in a form
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}
 

@@ -2,14 +2,14 @@
   <ul>
     <li>
       <uxdot-sidenav-item {{ 'active' if page.url ===  '/'}}>
-        <a href="{{ '/' | url }}">Home</a>
+        <a href="/">Home</a>
       </uxdot-sidenav-item>
     </li>
 
-    {# 
-      Loop through nav dropdowns 
+    {#
+      Loop through nav dropdowns
       This uses data passed in via the eleventy.config.cjs file in the root
-      TODO: more this data to a global data, ideally this data would be normalized 
+      TODO: more this data to a global data, ideally this data would be normalized
       prior to getting to the component template level.
     #}
     {%- for link in sideNavDropdowns -%}
@@ -25,7 +25,7 @@
                   {%- set active = '/elements/' === page.url -%}
                   <li>
                     <uxdot-sidenav-dropdown-menu-item {{ 'active' if active }}>
-                      <a href="{{ '/elements/' | url }}">All elements </a>
+                      <a href="/elements/">All elements </a>
                     </uxdot-sidenav-dropdown-menu-item>
                   </li>
                   {%- for tagName, docs in collections.elementDocs | groupby('tagName') -%}
@@ -33,10 +33,12 @@
                     {%- set slug = fst.slug -%}
                     {%- set href = '/elements/' + slug + '/' -%}
                     {%- set active = href === page.url -%}
+                    {%- set name = (fst.alias) or (slug | deslugify) %}
+                    {%- set planned = isPlanned(repoStatus, name) %}
                     {% if not (tagName in comingSoonItems) %}
                       <li>
                         <uxdot-sidenav-dropdown-menu-item {{ 'active' if active }}>
-                          <a href="{{ href | url }}">{{ (fst.alias ) or (slug | deslugify) }}</a>
+                          <a href="{{ href }}">{{ (fst.alias) or (slug | deslugify) }}{% if planned %} <rh-tag icon="bell" color="gray">Planned</rh-tag>{% endif %}</a>
                         </uxdot-sidenav-dropdown-menu-item>
                       </li>
                     {% endif %}
@@ -49,20 +51,23 @@
                         <a href="/tokens/">Overview</a>
                       </uxdot-sidenav-dropdown-menu-item>
                     </li>
-                  {% endif %}
-                  
-                  {% if (link.collection !== 'elementDocs') and (link.collection !== 'token') %}
+                  {% endif -%}
+
+                  {%- if (link.collection !== 'elementDocs') and (link.collection !== 'token') -%}
                     {%- set sortedOn = "data.order" %}
                     {%- set sideNavCollection = collections[link.collection] | sort(attribute=sortedOn, case_sensitive=true) %}
                   {% else %}
                     {%- set sideNavCollection = collections[link.collection] %}
-                  {% endif %}
+                  {%- endif -%}
 
                   {%- for sublink in sideNavCollection -%}
                     {%- set active = sublink.url === page.url -%}
                     <li>
                       <uxdot-sidenav-dropdown-menu-item {{ 'active' if active }}>
-                        <a href="{{ sublink.url | url }}">{{ (sublink.data.sidenavTitle) or (sublink.data.title | capitalize) or (sublink.title | capitalize) }}</a>
+                        <a href="{{ sublink.url }}">{{-
+                            (sublink.data.sidenavTitle)
+                         or (sublink.data.title or '' | capitalize)
+                         or (sublink.title or ''| capitalize) -}}</a>
                       </uxdot-sidenav-dropdown-menu-item>
                     </li>
                   {%- endfor -%}
@@ -76,13 +81,19 @@
 
     <li>
       <uxdot-sidenav-item>
-        <a  href="{{ '/design-code-status/' | url }}">Design/code status</a>
+        <a  href="/design-code-status/">Design/code status</a>
       </uxdot-sidenav-item>
     </li>
 
     <li>
       <uxdot-sidenav-item>
-        <a href="{{ '/release-notes/' | url }}">Release notes</a>
+        <a href="/release-notes/">Release notes</a>
+      </uxdot-sidenav-item>
+    </li>
+
+    <li>
+      <uxdot-sidenav-item>
+        <a  href="{{ '/support/' | url }}">Get support</a>
       </uxdot-sidenav-item>
     </li>
 

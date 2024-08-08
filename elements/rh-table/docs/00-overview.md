@@ -7,7 +7,7 @@
 </uxdot-example>
 
 
-{% repoStatusList %}
+{% repoStatusList repoStatus=repoStatus %}
 
 ## Sample element
 
@@ -50,19 +50,10 @@
   </table>
 </rh-table>
 
-## Demos
-
-View a live version of this element and see how it can be customized.
-
-{% playground tagName=tagName %}{% endplayground %}
-
-<rh-cta><a href="{{ './demo/' | url }}">Full screen demo</a></rh-cta>
-
-
 ## When to use
 
   - To organize and display structured data
   - If a user needs to scan, examine, and compare data
   - If a user must navigate to a specific piece of data to complete a task
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}

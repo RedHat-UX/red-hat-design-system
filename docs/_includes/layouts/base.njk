@@ -1,3 +1,12 @@
+---js
+{
+  isPlanned: function(repoStatus, name) {
+    const element = repoStatus.find(element => element.name === name);
+    return element && element.libraries.find(library => library.name === 'RH Elements').status === "Planned";
+  }
+}
+---
+
 {%- set extraPageClasses = bodyClasses or "" -%}
 {%- if title -%}
   {% set extraPageClasses = extraPageClasses + ' page-' + title | slug -%}
@@ -32,6 +41,10 @@
     </noscript>
 
     {% include "../partials/javascript/global.html" %}
+    {%- if hasToc %}
+    <link rel="stylesheet" href="/assets/javascript/elements/uxdot-toc-lightdom.css">
+    <script type="module" src="/assets/javascript/elements/uxdot-toc.js"></script>
+    {%- endif %}
   </head>
 
   <body dsd-pending class="{{ extraPageClasses }}">

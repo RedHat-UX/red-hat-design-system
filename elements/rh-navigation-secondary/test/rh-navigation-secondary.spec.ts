@@ -88,7 +88,7 @@ describe('<rh-navigation-secondary>', async function() {
       });
 
       it('should not have class compact on shadow root nav', async function() {
-        await expect(element.shadowRoot?.querySelector('nav')?.classList.contains('compact')).to.be.false;
+        await expect(element.shadowRoot?.querySelector('[part="nav"]')?.classList.contains('compact')).to.be.false;
       });
 
       it('lightdom passes the a11y audit', async function() {
@@ -138,7 +138,7 @@ describe('<rh-navigation-secondary>', async function() {
       });
 
       it('should have class compact on shadow root nav', function() {
-        expect(element.shadowRoot?.querySelector('nav')?.classList.contains('compact')).to.be.true;
+        expect(element.shadowRoot?.querySelector('[part="nav"]')?.classList.contains('compact')).to.be.true;
       });
 
       it('lightdom passes the a11y audit', async function() {

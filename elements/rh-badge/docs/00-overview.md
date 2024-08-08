@@ -6,7 +6,7 @@
   <img src="./badge-sample-element.png" alt="Two badges; from left to right, one badge has a light gray background with a dark gray counter number and the other badge has a blue background with a white counter number">
 </uxdot-example>
 
-{% repoStatusList %}
+{% repoStatusList repoStatus=repoStatus %}
 
 
 ## Sample element
@@ -18,19 +18,9 @@
 <rh-badge number="6" state="important" aria-label="6 overdue tasks">6</rh-badge>
 <rh-badge number="2" state="critical" aria-label="2 errors">2</rh-badge>
 
-
-## Demos
-
-View a live version of this component and see how it can be customized.
-
-{% playground tagName=tagName %}{% endplayground %}
-
-<rh-cta><a href="{{ './demo/' | url }}">Full screen demo</a></rh-cta>
-
-
 ## When to use
 
   - When you need to reflect counts like number of objects, events, or unread items
 
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}

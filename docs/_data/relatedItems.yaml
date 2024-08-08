@@ -18,6 +18,10 @@ rh-badge:
  - rh-tag
 rh-blockquote: 
  - rh-statistic
+rh-breadcrumb:
+ - rh-link
+ - rh-navigation-secondary
+ - rh-subnav
 rh-button: 
  - rh-alert
  - rh-cta
@@ -41,6 +45,10 @@ rh-footer:
  - rh-popover
  - rh-tooltip
  - rh-site-status
+rh-health-index:
+ - rh-avatar
+ - rh-badge
+ - rh-tag
 rh-jump-links: 
  - rh-pagination
  - rh-progress-steps
@@ -82,6 +90,9 @@ rh-subnav:
  - rh-navigation
  - rh-navigation-secondary
  - skip-navigation
+rh-switch:
+ - rh-button
+ - form
 rh-table:
  - rh-code-block
 rh-tabs: 

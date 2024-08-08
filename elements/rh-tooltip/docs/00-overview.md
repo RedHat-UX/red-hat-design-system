@@ -6,7 +6,7 @@
   <img src="{{ './tooltip-sample-element.png' | url }}" alt="A black tooltip on top of a gray disabled button">
 </uxdot-example>
 
-{% repoStatusList %}
+{% repoStatusList repoStatus=repoStatus %}
 
 ## Sample element
 
@@ -31,18 +31,9 @@
     labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>
 </rh-tooltip>
 
-
-## Demos
-View a live version of this component and see how it can be customized.
-
-{% playground tagName=tagName %}{% endplayground %}
-
-<rh-cta><a href="{{ './demo/' | url }}">Full screen demo</a></rh-cta>
-
-
 ## When to use 
 - When users need help making a decision
 - When you need to provide more information for icons or icon buttons without labels
 - When you need to define new or unfamiliar UI elements that are not described directly in the user interface
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}

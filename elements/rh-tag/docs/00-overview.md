@@ -6,7 +6,7 @@
   <img src="{{ './tag-sample-element.png' | url }}" alt="Two rows of tags; the top row is ‘Filled’ tags and the bottom row is ‘Unfilled’ tags; from left to right, both rows of tags include red, orange, green, cyan, blue, purple, and gray colors">
 </uxdot-example>
 
-{% repoStatusList %}
+{% repoStatusList repoStatus=repoStatus %}
 
 
 ## Sample element
@@ -33,17 +33,9 @@ class="visually-hidden">Hat</span></rh-tag>
 <rh-tag variant="outline" color="purple">Purple</rh-tag>
 <rh-tag variant="outline">Gray</rh-tag>
 
-
-## Demo
-
-{% playground tagName=tagName %}{% endplayground %}
-
-<rh-cta><a href="{{ './demo/' | url }}">Full screen demo</a></rh-cta>
-
-
 ## When to use
   - When you want to highlight an element on a page to draw attention to it or make it more searchable
   - When you need to tag items of the same category
   - When you need to indicate status
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}

@@ -7,21 +7,12 @@
 </uxdot-example>
 
 
-{% repoStatusList %}
+{% repoStatusList repoStatus=repoStatus %}
 
 
 ## Sample element
 
 <rh-site-status></rh-site-status>
-
-
-## Demo
-
-{% playground tagName=tagName %}{% endplayground %}
-
-<rh-cta>
-  <a href="{{ './demo/' | url }}">Full screen demo</a>
-</rh-cta>
 
 
 ## When to use
@@ -30,4 +21,4 @@
   - When you need to provide users with a link to a status page where they can learn more
 
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}

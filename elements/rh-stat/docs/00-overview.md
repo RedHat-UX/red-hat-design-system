@@ -6,7 +6,7 @@
   <img src="{{ './stat-sample-element.png' | url }}" alt="A vertically aligned stack of elements; includes a small red icon, large red data text showing 80% percent, and two lines of black body text">
 </uxdot-example>
 
-{% repoStatusList %}
+{% repoStatusList repoStatus=repoStatus %}
 
 
 ## Sample element
@@ -17,21 +17,11 @@
   <span>of Fortune Global 500 telecommunications companies</span>
 </rh-stat>
 
-
-## Demo
-
-View a live version of this element and see how it can be customized.
-
-{% playground tagName=tagName %}{% endplayground %}
-
-<rh-cta><a href="{{ './demo/' | url }}>Full screen demo</a></rh-cta>
-
-
 ## When to use
 
   - When you need to add visual emphasis to a statistic
   - When you need to pair a data point with supporting text to add more context
   - When you need to display several statistics together in a group
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}
 
