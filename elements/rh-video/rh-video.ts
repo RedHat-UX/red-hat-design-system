@@ -22,7 +22,7 @@ export class ConsentClickEvent extends Event {
 export class VideoClickEvent extends Event {
   declare target: RhVideo;
   constructor() {
-    super('play-button-click', { bubbles: true, cancelable: true });
+    super('request-play', { bubbles: true, cancelable: true });
   }
 }
 
@@ -36,7 +36,7 @@ export class VideoPlayEvent extends Event {
 /**
  * A Video is a graphical preview of a video overlayed with a play button. When clicked, the video will begin playing.
  * @fires consent-click - "Update preferences" consent button is clicked
- * @fires play-button-click - Play button is clicked
+ * @fires request-play - Play button is clicked
  * @fires play - Video is about to be played
  * @slot - Place video embed code here; iframe should include a `title` attribute with the video title
  * @slot play-button-text - Text for play button; recommended value "Video title (video)"
