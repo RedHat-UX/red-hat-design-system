@@ -1,26 +1,12 @@
-<style>
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--rh-space-2xl, 32px);
-  }
-
-  @container (min-width: 567px) {
-    .grid {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-</style>
-
 ## Style
 
 Our icons were designed to be simple, clean, and open. Four icon sets are available: standard, UI, microns, and social media.
 
 ## Theme
 
-Icons can be used in Red Hat’s brand red, black, and two shades of gray. Dark theme uses white instead of black. Blue can also be used for interactive icons. It’s not recommended to use Red Hat red for UI icons or microns. 
+Icons can be used in Red Hat’s brand red, black, and two shades of gray. Dark theme uses white instead of black. Blue can also be used for interactive icons. It’s not recommended to use Red Hat red for UI icons or microns.
 
-<div class="grid">
+<div class="grid sm-two-columns">
   <uxdot-example width-adjustment="208px">
     <img src="../icon-theme-light.svg" alt="Image of five icons in a light theme">
   </uxdot-example>
