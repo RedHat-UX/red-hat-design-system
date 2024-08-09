@@ -72,7 +72,7 @@ Icons are pictograms and are not meant to be used at large sizes. If you need a 
 
 ### Ensure consistency
 
-If icons are being used within elements that are grouped together like in a vertical list of links, they should appear to have the same size. The <code>&lt;rh-icon&gt;</code> element maintains a consistent size and ensures everything is aligned when icons are used near other elements.
+If icons are being used within elements that are grouped together like in a vertical list of links, they should appear to have the same size.
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice do>
