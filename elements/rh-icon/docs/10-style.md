@@ -1,3 +1,17 @@
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--rh-space-2xl, 32px);
+  }
+
+  @container (min-width: 567px) {
+    .grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>
+
 ## Style
 
 Our icons were designed to be simple, clean, and open. Four icon sets are available: standard, UI, microns, and social media.
@@ -7,11 +21,11 @@ Our icons were designed to be simple, clean, and open. Four icon sets are availa
 Icons can be used in Red Hat’s brand red, black, and two shades of gray. Dark theme uses white instead of black. It’s not recommended to use Red Hat red for UI icons or microns.
 
 <div class="grid">
-  <uxdot-example width-adjustment="220px">
+  <uxdot-example width-adjustment="208px">
     <img src="../icon-theme-light.svg" alt="Image of five icons in a light theme">
   </uxdot-example>
 
-  <uxdot-example width-adjustment="220px" color-palette="darkest">
+  <uxdot-example width-adjustment="208px" color-palette="darkest">
     <img src="../icon-theme-dark.svg" alt="Image of a five icons in dark theme">
   </uxdot-example>
 </div>
@@ -27,7 +41,7 @@ Sizes can be set using <code>&lt;rh-icon&gt;</code> which places icons into a tr
   <p><code>&lt;rh-icon&gt;</code> does not put icons in containers of other shapes or add background colors. Additional styling of the base container requires custom CSS.</p>
 </rh-alert>
 
-<uxdot-example width-adjustment="160px">
+<uxdot-example width-adjustment="308px">
   <img src="../icon-sizes.svg" alt="Image displaying icon standard size output.">
 </uxdot-example>
 
