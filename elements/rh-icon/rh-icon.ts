@@ -124,8 +124,8 @@ export class RhIcon extends LitElement {
     RhIcon.instances.add(this);
     if (this.accessibleLabel) {
       this.#internals.ariaLabel = this.accessibleLabel;
+      this.#internals.role = 'img';
     }
-    this.#internals.role = this.accessibleLabel ? 'img' : 'presentation';
   }
 
   willUpdate(changed: PropertyValues<this>): void {
