@@ -65,7 +65,7 @@ More complex `<svg>` elements may require additional descriptive information. On
 
 #### Hiding SVGs
 
-You can hide inline `<svg>` elements from assistive tech with an `aria-hidden="true"` attribute.
+You can hide `<svg>` elements from assistive tech with an `aria-hidden="true"` attribute.
 
 <rh-code-block>
   <script type="text/html"><svg aria-hidden="true">
