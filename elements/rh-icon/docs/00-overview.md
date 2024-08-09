@@ -2,8 +2,8 @@
 
 {{ tagName | getElementDescription }}
 
-<uxdot-example width-adjustment="164px">
-  <img src="./icon-overview.svg" alt="Image of table with four columns and three row">
+<uxdot-example width-adjustment="228px">
+  <img src="./icon-overview.svg" alt="Image of three icons">
 </uxdot-example>
 
 

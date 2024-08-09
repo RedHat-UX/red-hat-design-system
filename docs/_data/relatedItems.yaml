@@ -52,7 +52,7 @@ rh-health-index:
 rh-icon: 
  - rh-alert
  - rh-card
- - rh-navigation-secondary
+ - rh-statistic
 rh-jump-links: 
  - rh-pagination
  - rh-progress-steps
