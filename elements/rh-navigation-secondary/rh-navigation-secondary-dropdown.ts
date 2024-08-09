@@ -153,22 +153,8 @@ export class RhNavigationSecondaryDropdown extends LitElement {
   }
 }
 
-/** @deprecated use rh-navigation-secondary-dropdown */
-@customElement('rh-secondary-nav-dropdown')
-class RhSecondaryNavDropdown extends RhNavigationSecondaryDropdown {
-  #logger = new Logger(this);
-
-  constructor() {
-    super();
-    this.#logger.warn(
-      'rh-secondary-nav-dropdown is deprecated. Use rh-navigation-secondary-dropdown instead.'
-    );
-  }
-}
-
 declare global {
   interface HTMLElementTagNameMap {
     'rh-navigation-secondary-dropdown': RhNavigationSecondaryDropdown;
-    'rh-secondary-nav-dropdown': RhSecondaryNavDropdown;
   }
 }
