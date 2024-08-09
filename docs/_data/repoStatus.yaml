@@ -193,6 +193,19 @@
       status: Planned
     - name: Documentation
       status: Ready
+- tagName: rh-icon
+  name: "Icon"
+  type: "Element"
+  overallStatus: "Available"
+  libraries:
+    - name: Figma library
+      status: Ready
+    - name: RH Elements
+      status: Ready
+    - name: RH Shared Libs
+      status: Planned
+    - name: Documentation
+      status: Ready
 - tagName: rh-jump-links
   name: "Jumplinks"
   type: "Element"
