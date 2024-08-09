@@ -123,6 +123,10 @@ rh-navigation-secondary:not(:defined) > [slot="cta"] {
   display: flex;
 }
 
+rh-navigation-secondary-menu {
+  color: var(--rh-color-text-primary-on-light, #151515);
+}
+
 /* If the component isn't defined hide any sub menus */
 rh-navigation-secondary-menu:not(:defined) {
   display: none;
@@ -180,10 +184,6 @@ rh-navigation-secondary > [slot="nav"] > li:last-of-type {
 rh-navigation-secondary > [slot="nav"] a[aria-expanded="false"],
 rh-navigation-secondary > [slot="nav"] > [slot="nav"] > li > a {
   color: var(--_nav-link-color);
-}
-
-rh-navigation-secondary-menu {
-  color: var(--rh-color-text-primary-on-light, #151515);
 }
 
 rh-navigation-secondary-menu-section > [slot="header"] {
