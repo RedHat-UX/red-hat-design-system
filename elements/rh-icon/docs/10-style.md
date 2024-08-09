@@ -18,7 +18,7 @@ Our icons were designed to be simple, clean, and open. Four icon sets are availa
 
 ## Theme
 
-Icons can be used in Red Hat’s brand red, black, and two shades of gray. Dark theme uses white instead of black. It’s not recommended to use Red Hat red for UI icons or microns.
+Icons can be used in Red Hat’s brand red, black, and two shades of gray. Dark theme uses white instead of black. Blue can also be used for interactive icons. It’s not recommended to use Red Hat red for UI icons or microns. 
 
 <div class="grid">
   <uxdot-example width-adjustment="208px">
