@@ -16,3 +16,7 @@ svg {
 .standard svg {
   width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
 }
+
+.microns svg {
+  width: 12px;
+}
