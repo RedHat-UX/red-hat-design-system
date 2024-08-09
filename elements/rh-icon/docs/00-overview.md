@@ -11,7 +11,9 @@
 
 ## Sample element
 
-<rh-icon set="ui" icon="copy"></rh-icon>
+<rh-icon set="standard" icon="ebook" aria-label="ebook" role="img"></rh-icon>
+
+<rh-cta href="https://github.com/RedHat-UX/red-hat-icons">View the Red Hat Icons repo</rh-cta>
 
 ## When to use
 
