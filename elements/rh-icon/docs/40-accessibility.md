@@ -18,8 +18,7 @@ However, when an icon is accompanied by text, the icon does not need to use acce
     <img src="../icon-accessibility-labeling-icons-2.svg" alt="Image of a download icon with text, an arrow pointing down with an underline beneath it with accompanying download text">
   </uxdot-example>
   <rh-code-block wrap="true">
-    <script type="text/html"><rh-icon icon="download" set="ui"></rh-icon>
-<span>Download</span></script>
+    <script type="text/html"><rh-icon icon="download" set="ui"></rh-icon><span>Download</span></script>
   </rh-code-block>
 </div>
 
