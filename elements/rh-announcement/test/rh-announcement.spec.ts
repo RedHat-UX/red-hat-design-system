@@ -13,9 +13,9 @@ describe('<rh-announcement>', function() {
       element = await createFixture<RhAnnouncement>(html`<rh-announcement></rh-announcement>`);
       const klass = customElements.get('rh-announcement');
       expect(element)
-        .to.be.an.instanceOf(klass)
-        .and
-        .to.be.an.instanceOf(RhAnnouncement);
+          .to.be.an.instanceOf(klass)
+          .and
+          .to.be.an.instanceOf(RhAnnouncement);
     });
-  })
+  });
 });

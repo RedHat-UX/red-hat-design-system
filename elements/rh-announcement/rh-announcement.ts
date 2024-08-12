@@ -2,14 +2,14 @@ import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { LitElement, html, svg, type PropertyValues } from 'lit';
+import { LitElement, html, svg } from 'lit';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 import { colorContextProvider } from '../../lib/context/color/provider.js';
 
 import styles from './rh-announcement.css';
 /**
- * Announcements are flexible surfaces used to group information in a full width banner layout, traditionally across the top of a page. 
- * They are used to announce new features, promos, or news. 
+ * Announcements are flexible surfaces used to group information in a full width banner layout, traditionally across the top of a page.
+ * They are used to announce new features, promos, or news.
  * @summary     Arranges content and interactive elements in a layout
  * @slot        image
  *              If this slot is used, we expect an image tag with a width and height set.

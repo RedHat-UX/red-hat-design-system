@@ -1,24 +1,22 @@
 :host {
-    --_background-color: var(--rh-color-white, #ffffff);
-    display: flex;
-    position: relative;
+  --_background-color: var(--rh-color-white, #ffffff);
+  
+  display: flex;
+  position: relative;
 }
 
 #container {
-    width: 100%;
-    display: flex;
-    text-align: center;
-    align-self: center;
-    justify-content: center;
-    align-items: center;
-    padding-top: var(--rh-space-lg, 16px);
-    padding-bottom: var(--rh-space-lg, 16px);
-    padding-left: var(--rh-space-lg, 16px);
-    padding-right: var(--rh-space-lg, 16px);
-    font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-    line-height: var(--rh-line-height-body-text, 1.5);
-    color: var(--rh-color-text-primary-on-light, #151515); /* Default (light) color */
-    background-color: var(--rh-color-surface-lightest, #ffffff); /* Default (light) background */
+  width: 100%;
+  display: flex;
+  text-align: center;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+  padding: var(--rh-space-lg, 16px);
+  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  line-height: var(--rh-line-height-body-text, 1.5);
+  color: var(--rh-color-text-primary-on-light, #151515); /* Default (light) color */
+  background-color: var(--rh-color-surface-lightest, #ffffff); /* Default (light) background */
 }
 
 #container.imgleft {
@@ -42,6 +40,12 @@
 }
 
 @media (min-width: 768px) {
+  #content {
+    display: flex;
+    align-items: center;
+    font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+  }
+
   #container.dismissable #content {
     margin-right: var(--rh-space-2xl, 32px);
   }
@@ -49,30 +53,25 @@
   #row {
     max-width: 1170px;
     display: flex;
-    flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    flex-direction: row;
+    flex-flow: row nowrap;
   }
-  
+
   #body {
     text-align: left;
-    flex-grow: 1;
+    flex-flow: 1;
     flex-shrink: 1;
     flex-basis: auto;
     min-width: 0;
     padding-left: var(--rh-space-xl, 24px) !important;
     padding-right: var(--rh-space-xl, 24px) !important;
+    font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   }
 
-  #content {
-    display: flex;
-    align-items: center;
-    font-size: var(--rh-font-size-body-text-lg, 18px);
-  }
-
-  #image, #cta {
+  #image,
+  #cta {
     flex-shrink: 0;
     min-width: max-content;
   }
@@ -85,43 +84,42 @@
 
 @media (max-width: 767px) {
   #container:not(.imgleft) #body {
-      padding-top: var(--rh-space-lg, 16px);
-      padding-bottom: var(--rh-space-md, 8px);
-      padding-right: var(--rh-space-lg, 16px);
-    }
+    padding-top: var(--rh-space-lg, 16px);
+    padding-bottom: var(--rh-space-md, 8px);
+    padding-right: var(--rh-space-lg, 16px);
+  }
 
   #container.imgleft #row {
-      display: flex;
-    }
+    display: flex;
+  }
+
+  #content {
+    font-size: var(--rh-font-size-body-text-md, 1rem);
+  }
+
+  #container.imgleft #content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+  }
 
   #container.imgleft.dismissable #content {
     margin-right: var(--rh-space-2xl, 32px);
   }
 
   #container.imgleft #image {
-      flex: 1;
-      display: flex;
-      align-items: flex-start;
-    }
-    
-  #container.imgleft #content {
-      display: flex;
-      flex-direction: column; 
-      justify-content: center;
-      align-items: flex-start; 
-      text-align: left;
-    }
-
-    #container.imgleft #cta {
-        padding-left: var(--rh-space-lg, 16px);
-      }
-
-    #content {
-      font-size: var(--rh-font-size-body-text-md, 16px);
-    }
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
   }
 
-/* Close button */
+  #container.imgleft #cta {
+    padding-left: var(--rh-space-lg, 16px);
+  }
+}
+
 #close-button {
   color: var(--rh-color-text-secondary-on-light, #4d4d4d);
   background-color: transparent;
@@ -138,5 +136,5 @@
 }
 
 .dark #close-button {
-  color: var(--rh-color-text-secondary-on-dark, #ffffff);
+  color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
 }
