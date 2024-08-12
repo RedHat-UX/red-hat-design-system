@@ -65,7 +65,7 @@ export class RhAnnouncement extends LitElement {
   @property({ reflect: true, attribute: 'color-palette' })
     colorPalette?: 'dark' | 'light';
 
-  @property({ reflect: true, type: Boolean }) dismissable = false;
+  @property({ reflect: true, type: Boolean }) dismissible = false;
   @property({ reflect: true, type: Boolean }) imgleft = false;
 
   #slots = new SlotController(this, 'image', null, 'cta');
@@ -82,7 +82,7 @@ export class RhAnnouncement extends LitElement {
     return html`
   <div id="container"
         part="container"
-        class="${classMap({ [on]: !!on, [colorPalette]: !!colorPalette, dismissable: !!this.dismissable, imgleft: !!this.imgleft })}">
+        class="${classMap({ [on]: !!on, [colorPalette]: !!colorPalette, dismissible: !!this.dismissible, imgleft: !!this.imgleft })}">
       <div id="row">
         <div id="image"
           part="image"
@@ -102,7 +102,7 @@ export class RhAnnouncement extends LitElement {
         </div>
         </div>
       </div>
-      ${!this.dismissable ? '' : html`
+      ${!this.dismissible ? '' : html`
       <div id="header-actions">
         <button id="close-button"
             aria-label="Close"
