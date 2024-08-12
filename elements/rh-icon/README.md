@@ -1,12 +1,12 @@
 # Icon
 Icons represents general concepts and can support text as a decorative element.
-The icon element, <rh-icon>, is a container that allows users to add icons of varying
-dimensions in the same area without shifting surrounding content.
+The `<rh-icon>` element allows content and experience authors to add Red Hat icons 
+of varying dimensions in the same area without shifting surrounding content.
 
 ## Usage
 
 - When you want to supplement the meaning of text with a visual element
-- When you need to represent a UI function with an easily recognizable icon
+- When you need to represent a UI function with an approved Red Hat icon
 - When you need an icon to occupy a certain amount of space
 
 
