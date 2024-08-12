@@ -5,7 +5,6 @@ import { classMap } from 'lit/directives/class-map.js';
 import { LitElement, html, svg, type PropertyValues } from 'lit';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 import { colorContextProvider } from '../../lib/context/color/provider.js';
-import { createRef, ref, type Ref } from 'lit/directives/ref.js';
 
 import styles from './rh-announcement.css';
 /**
@@ -67,13 +66,7 @@ export class RhAnnouncement extends LitElement {
     colorPalette?: 'dark' | 'light';
 
   @property({ reflect: true, type: Boolean }) dismissable = false;
-  @property({ reflect: true, type: Boolean }) smallimg = false;
-
-  @property({ type: Number }) imgHeight = 0;
-  @property({ type: Number }) imgWidth = 0;
-  @property({ type: Boolean }) hasImage = false;
-
-  private imageSlotRef: Ref<HTMLSlotElement> = createRef();
+  @property({ reflect: true, type: Boolean }) imgleft = false;
 
   #slots = new SlotController(this, 'image', null, 'cta');
 
@@ -89,12 +82,12 @@ export class RhAnnouncement extends LitElement {
     return html`
   <div id="container"
         part="container"
-        class="${classMap({ [on]: !!on, [colorPalette]: !!colorPalette, smallImg: this.hasSmallImg() })}">
+        class="${classMap({ [on]: !!on, [colorPalette]: !!colorPalette, dismissable: !!this.dismissable, imgleft: !!this.imgleft })}">
       <div id="row">
         <div id="image"
           part="image"
           class="${classMap({ empty: !this.#slots.hasSlotted('image') })}">
-        <slot name="image" ${ref(this.imageSlotRef)}></slot>
+        <slot name="image"></slot>
       </div>
       <div id="content">
         <div id="body"
@@ -118,30 +111,6 @@ export class RhAnnouncement extends LitElement {
       </div>`}
     </div>
   `;
-  }
-
-  firstUpdated() {
-    const slot = this.imageSlotRef.value;
-    if (slot) {
-      const nodes = slot.assignedNodes({ flatten: true }) as HTMLElement[];
-      const img = nodes.find(node => node instanceof HTMLImageElement) as HTMLImageElement | undefined
-
-      if (img) {
-        this.imgWidth = img.width;
-        this.imgHeight = img.height;
-        this.hasImage = true;
-        this.requestUpdate();
-      } else {
-        this.hasImage = false;
-      }
-    }
-  }
-
-  private hasSmallImg() {
-    if (this.smallimg) {
-      return true;
-    }
-    return this.imgWidth <= this.imgHeight;
   }
 }
 
