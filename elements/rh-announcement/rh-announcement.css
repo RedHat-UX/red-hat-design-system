@@ -1,6 +1,6 @@
 :host {
   --_background-color: var(--rh-color-white, #ffffff);
-  
+
   display: flex;
   position: relative;
 }
@@ -43,7 +43,6 @@
   #content {
     display: flex;
     align-items: center;
-    font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   }
 
   #container.dismissable #content {
@@ -67,7 +66,10 @@
     min-width: 0;
     padding-left: var(--rh-space-xl, 24px) !important;
     padding-right: var(--rh-space-xl, 24px) !important;
-    font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+  }
+
+  #body ::slotted(p) {
+    font-size: var(--rh-font-size-body-text-lg, 1.125rem) !important;
   }
 
   #image,
