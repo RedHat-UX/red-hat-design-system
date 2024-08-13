@@ -1,11 +1,11 @@
 <div class="wrapper">
   <rh-card>
-    <rh-video slot="header">
+    <rh-video-embed slot="header">
       <img slot="thumbnail" src="https://fakeimg.pl/900x499/282828/eae0d0" alt="Image description"/>
       <template>
         <iframe title="Title of video" width="900" height="499" src="https://www.youtube.com/embed/Hc8emNr2igU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </template>
-    </rh-video>
+    </rh-video-embed>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       Nullam eleifend elit sed est egestas, a sollicitudin mauris
       tincidunt. Pellentesque vel dapibus risus. Nullam aliquam
@@ -17,12 +17,16 @@
 </div>
 
 <script type="module">
-  import '@rhds/elements/rh-video/rh-video.js';
+  import '@rhds/elements/rh-video-embed/rh-video-embed.js';
   import '@rhds/elements/rh-cta/rh-cta.js';
   import '@rhds/elements/rh-card/rh-card.js';
 </script>
 
 <style>
+  main {
+    display: block;
+  }
+
   .wrapper {
     max-width: 900px;
     display: block;

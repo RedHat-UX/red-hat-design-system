@@ -10,31 +10,31 @@ import '@rhds/elements/rh-surface/rh-surface.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
-import styles from './rh-video.css';
+import styles from './rh-video-embed.css';
 
 export class ConsentClickEvent extends Event {
-  declare target: RhVideo;
+  declare target: RhVideoEmbed;
   constructor() {
     super('consent-click', { bubbles: true, cancelable: true });
   }
 }
 
 export class VideoClickEvent extends Event {
-  declare target: RhVideo;
+  declare target: RhVideoEmbed;
   constructor() {
     super('request-play', { bubbles: true, cancelable: true });
   }
 }
 
 export class VideoPlayEvent extends Event {
-  declare target: RhVideo;
+  declare target: RhVideoEmbed;
   constructor() {
     super('play', { bubbles: true, cancelable: true });
   }
 }
 
 /**
- * A Video is a graphical preview of a video overlayed with a play button. When clicked, the video will begin playing.
+ * A Video embed is a graphical preview of a video overlayed with a play button. When clicked, the embedded YouTube video will begin playing.
  * @fires consent-click - "Update preferences" consent button is clicked
  * @fires request-play - Play button is clicked
  * @fires play - Video is about to be played
@@ -43,16 +43,16 @@ export class VideoPlayEvent extends Event {
  * @slot thumbnail - Optional thumbnail image on top of video embed; should include `alt` text
  * @slot consent-message - Text explaining opt-in to cookies is required, e.g. `<p>View this video by opting in to “Advertising Cookies.”</p>`
  * @slot consent-button-text - Text for CTA button to update preferences, e.g. "Update preferences"
- * @slot caption - Optional caption below video
- * @slot autoplay - DO NOT USE! (Used by `rh-video`.)
- * @csspart figure - The outer container for rh-video
+ * @slot caption - Optional caption below video embed
+ * @slot autoplay - DO NOT USE! (Used by `rh-video-embed`.)
+ * @csspart figure - The outer container for rh-video-embed
  * @csspart video - The container for the video, thumbnail, and play button
  * @csspart consent-body - The container for the consent message and consent button
  * @csspart play - The play button on top of the thumbnail
  * @csspart caption - The container for the caption
  */
-@customElement('rh-video')
-export class RhVideo extends LitElement {
+@customElement('rh-video-embed')
+export class RhVideoEmbed extends LitElement {
   static readonly styles = [styles];
 
   static readonly shadowRootOptions: ShadowRootInit = {
@@ -61,7 +61,7 @@ export class RhVideo extends LitElement {
   };
 
   /**
-   * Add to `rh-video` when a video requires consent for cookies
+   * Add to `rh-video-embed` when a video requires consent for cookies
    */
   @property({ type: Boolean, attribute: 'require-consent' }) requireConsent = false;
 
@@ -249,6 +249,6 @@ export class RhVideo extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'rh-video': RhVideo;
+    'rh-video-embed': RhVideoEmbed;
   }
 }

@@ -1,6 +1,6 @@
 ## Style 
 
-The video element consists of a semitransparent play button with a video thumbnail that overlays the embedded video when it is not playing. There is also an optional slot for a caption that describes the video.
+The video embed element consists of a semitransparent play button with a video thumbnail that overlays the embedded video when it is not playing. There is also an optional slot for a caption that describes the video.
 
 ## Anatomy
 
@@ -19,7 +19,7 @@ The video element consists of a semitransparent play button with a video thumbna
 
 ## Theme
 
-The video element is available in both light and dark themes. It can include either a light or a dark play button, depending on the thumbnail image underneath. If an image is lighter, use a dark play button for accessibility and vice versa.
+The video embed element is available in both light and dark themes. It can include either a light or a dark play button, depending on the thumbnail image underneath. If an image is lighter, use a dark play button for accessibility and vice versa.
 
 <div class="grid xs-two-columns">
   <uxdot-example width-adjustment="420px">
@@ -81,7 +81,7 @@ The play button’s opacity increases upon hover.
 
 ### Focus
 
-On focus, the entire video element is outlined by a focus ring, and the play button uses the same opacity as the hover state.
+On focus, the entire video embed element is outlined by a focus ring, and the play button uses the same opacity as the hover state.
 
 <div class="grid xs-two-columns">
   <uxdot-example width-adjustment="420px">

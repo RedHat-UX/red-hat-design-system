@@ -3,10 +3,10 @@ import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 import { type A11yTreeSnapshot, a11ySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
 import { clickElementAtCenter } from '@patternfly/pfe-tools/test/utils.js';
 import { sendKeys } from '@web/test-runner-commands';
-import { RhVideo } from '@rhds/elements/rh-video/rh-video.js';
+import { RhVideoEmbed } from '@rhds/elements/rh-video-embed/rh-video-embed.js';
 
-describe('<rh-video>', function() {
-  let element: RhVideo;
+describe('<rh-video-embed>', function() {
+  let element: RhVideoEmbed;
   let snapshot: A11yTreeSnapshot;
   let children: A11yTreeSnapshot[];
 
@@ -36,29 +36,29 @@ describe('<rh-video>', function() {
 
   describe('simply instantiating', function() {
     it('imperatively instantiates', function() {
-      expect(document.createElement('rh-video')).to.be.an.instanceof(RhVideo);
+      expect(document.createElement('rh-video-embed')).to.be.an.instanceof(RhVideoEmbed);
     });
 
     it('should upgrade', async function() {
-      element = await createFixture<RhVideo>(html`<rh-video></rh-video>`);
-      const klass = customElements.get('rh-video');
+      element = await createFixture<RhVideoEmbed>(html`<rh-video-embed></rh-video-embed>`);
+      const klass = customElements.get('rh-video-embed');
       expect(element)
           .to.be.an.instanceOf(klass)
           .and
-          .to.be.an.instanceOf(RhVideo);
+          .to.be.an.instanceOf(RhVideoEmbed);
     });
   });
 
   describe('default video', function() {
     beforeEach(async function() {
-      element = await createFixture<RhVideo>(html`
-      <rh-video>
+      element = await createFixture<RhVideoEmbed>(html`
+      <rh-video-embed>
         <img slot="thumbnail" src="https://fakeimg.pl/900x499/282828/eae0d0" alt="fakethumb"/>
         <template>
           <iframe title="videotitle" width="900" height="499" src="https://www.youtube.com/embed/Hc8emNr2igU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </template>
        <p slot="caption">Caption</caption>
-      </rh-video>`);
+      </rh-video-embed>`);
       snapshot = await a11ySnapshot();
       ({ children } = snapshot);
     });
@@ -105,13 +105,13 @@ describe('<rh-video>', function() {
 
   describe('using a keyboard to play', function() {
     beforeEach(async function() {
-      element = await createFixture<RhVideo>(html`
-      <rh-video>
+      element = await createFixture<RhVideoEmbed>(html`
+      <rh-video-embed>
         <img slot="thumbnail" src="https://fakeimg.pl/900x499/282828/eae0d0" alt="fakethumb"/>
         <template>
           <iframe title="videotitle" width="900" height="499" src="https://www.youtube.com/embed/Hc8emNr2igU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </template>
-      </rh-video>`);
+      </rh-video-embed>`);
       element?.focusableElement?.focus();
       await sendKeys({ press: 'Enter' });
       await eventFired('play-click', 'playClicked');
@@ -127,13 +127,13 @@ describe('<rh-video>', function() {
 
   describe('using a mouse to play', function() {
     beforeEach(async function() {
-      element = await createFixture<RhVideo>(html`
-      <rh-video>
+      element = await createFixture<RhVideoEmbed>(html`
+      <rh-video-embed>
         <img slot="thumbnail" src="https://fakeimg.pl/900x499/282828/eae0d0" alt="fakethumb"/>
         <template>
           <iframe title="videotitle" width="900" height="499" src="https://www.youtube.com/embed/Hc8emNr2igU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </template>
-      </rh-video>`);
+      </rh-video-embed>`);
       await clickElementAtCenter(element.focusableElement);
       await eventFired('play-click', 'playClicked');
       await eventFired('play', 'playStarted');
@@ -148,14 +148,14 @@ describe('<rh-video>', function() {
 
   describe('requires consent', function() {
     beforeEach(async function() {
-      element = await createFixture<RhVideo>(html`
-      <rh-video require-consent>
+      element = await createFixture<RhVideoEmbed>(html`
+      <rh-video-embed require-consent>
         <img slot="thumbnail" src="https://fakeimg.pl/900x499/282828/eae0d0" alt="fakethumb"/>
         <template>
           <iframe title="videotitle" width="900" height="499" src="https://www.youtube.com/embed/Hc8emNr2igU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </template>
        <p slot="caption">Caption</caption>
-      </rh-video>`);
+      </rh-video-embed>`);
       snapshot = await a11ySnapshot();
       ({ children } = snapshot);
     });
@@ -197,13 +197,13 @@ describe('<rh-video>', function() {
 
   describe('using a keyboard to update consent', function() {
     beforeEach(async function() {
-      element = await createFixture<RhVideo>(html`
-      <rh-video require-consent>
+      element = await createFixture<RhVideoEmbed>(html`
+      <rh-video-embed require-consent>
         <img slot="thumbnail" src="https://fakeimg.pl/900x499/282828/eae0d0" alt="fakethumb"/>
         <template>
           <iframe title="videotitle" width="900" height="499" src="https://www.youtube.com/embed/Hc8emNr2igU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </template>
-      </rh-video>`);
+      </rh-video-embed>`);
       element.consentButton?.focus();
       await sendKeys({ press: ' ' });
       await eventFired('consent-click', 'consentClicked');
@@ -226,13 +226,13 @@ describe('<rh-video>', function() {
 
   describe('using a mouse to update consent', function() {
     beforeEach(async function() {
-      element = await createFixture<RhVideo>(html`
-      <rh-video require-consent>
+      element = await createFixture<RhVideoEmbed>(html`
+      <rh-video-embed require-consent>
         <img slot="thumbnail" src="https://fakeimg.pl/900x499/282828/eae0d0" alt="fakethumb"/>
         <template>
           <iframe title="videotitle" width="900" height="499" src="https://www.youtube.com/embed/Hc8emNr2igU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </template>
-      </rh-video>`);
+      </rh-video-embed>`);
       await clickElementAtCenter(element.focusableElement.shadowRoot?.querySelector('button'));
       await eventFired('consent-click', 'consentClicked');
       element.consented = true;
