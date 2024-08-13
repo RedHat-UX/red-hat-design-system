@@ -22,6 +22,7 @@ const isLocal = !(process.env.CI || process.env.DEPLOY_URL);
 module.exports = function(eleventyConfig) {
   eleventyConfig.setQuietMode(true);
 
+  eleventyConfig.addWatchTarget('docs/patterns/**/*.html');
   eleventyConfig.watchIgnores?.add('docs/assets/redhat/');
   eleventyConfig.watchIgnores?.add('**/*.spec.ts');
   eleventyConfig.watchIgnores?.add('**/*.d.ts');
@@ -41,6 +42,7 @@ module.exports = function(eleventyConfig) {
     });
   }
 
+  eleventyConfig.addWatchTarget('docs/patterns/**/*.(html|md)');
   eleventyConfig.addWatchTarget('docs/styles/');
 
   eleventyConfig.addGlobalData('isLocal', isLocal);
@@ -176,6 +178,7 @@ module.exports = function(eleventyConfig) {
       'docs/assets/javascript/elements/uxdot-best-practice.js',
       'docs/assets/javascript/elements/uxdot-search.js',
       'docs/assets/javascript/elements/uxdot-toc.js',
+      // 'docs/assets/javascript/elements/uxdot-pattern.js',
       // 'docs/assets/javascript/elements/uxdot-example.js', // Uses context API need to work around issues
       // 'docs/assets/javascript/elements/uxdot-installation-tabs.js', // extends RhTabs so cant DSD yet
     ],

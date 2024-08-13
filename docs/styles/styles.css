@@ -181,6 +181,10 @@
     margin-block-start: var(--rh-space-2xl, 32px);
   }
 
+  :where(uxdot-copy-permalink, h1, h2, h3 ,h4, h5 ,h6) + uxdot-example {
+    margin-block-start: var(--rh-space-lg, 16px);
+  }
+
   figure uxdot-example {
     margin-block-end: 0;
   }
@@ -327,6 +331,6 @@
   rh-alert p {
     /* TODO: Document this bug shouldn't have to force the font size
     the component is trying to set internally on #description */
-    font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
+    font-size: var(--rh-font-size-body-text-md, 1rem) !important;
   }
 }
