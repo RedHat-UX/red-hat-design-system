@@ -43,7 +43,7 @@ export class RhAnnouncement extends LitElement {
   static styles = [styles];
 
   /**
-   * Make an announcement dismissable
+   * Make an announcement dismissible
    */
   @property({ reflect: true, type: Boolean }) dismissible = false;
 
