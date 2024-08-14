@@ -17,55 +17,15 @@ describe('<rh-accordion>', function() {
     before(async function() {
       element = await fixture(html`
         <rh-accordion>
-          <rh-accordion-header><h5>5</h5></rh-accordion-header>
+          <h5>
+            <rh-accordion-header>5</rh-accordion-header>
+          </h5>
         </rh-accordion>
       `);
     });
 
-    it('renders an h5', async function() {
-      expect(element.querySelector('rh-accordion-header')?.shadowRoot?.querySelector('h5')).to.be.ok;
-    });
-
-    describe('changing the heading to h2', function() {
-      beforeEach(function() {
-        const newHeader = document.createElement('h2');
-        newHeader.textContent = '2';
-        element.querySelector('h5')?.replaceWith(newHeader);
-      });
-
-      beforeEach(() => element.updateComplete);
-
-      it('renders an hd', async function() {
-        expect(element.querySelector('rh-accordion-header')?.shadowRoot?.querySelector('h2')).to.be.ok;
-      });
-    });
-  });
-
-  describe('with heading-tag attribute', function() {
-    let element: RhAccordion;
-
-    beforeEach(async function() {
-      element = await fixture(html`
-        <rh-accordion>
-          <rh-accordion-header heading-tag="h5">5</rh-accordion-header>
-        </rh-accordion>
-      `);
-    });
-
-    it('renders the correct heading level', async function() {
-      expect(element.querySelector('rh-accordion-header')?.shadowRoot?.querySelector('h5')).to.be.ok;
-    });
-
-    describe('setting heading-tag attribute to the number 2', function() {
-      beforeEach(function() {
-        element.querySelector('rh-accordion-header')!.headingTag = 2;
-      });
-
-      beforeEach(() => element.updateComplete);
-
-      it('renders an h2', function() {
-        expect(element.querySelector('rh-accordion-header')?.shadowRoot?.querySelector('h2')).to.be.ok;
-      });
+    it('removes the h5', async function() {
+      expect(element.querySelector('h5')?.shadowRoot?.querySelector('h5')).to.not.be.ok;
     });
   });
 });

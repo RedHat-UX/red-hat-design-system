@@ -8,6 +8,7 @@ import { property } from 'lit/decorators/property.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
+import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { DirController } from '../../lib/DirController.js';
@@ -50,11 +51,6 @@ export class RhAccordionHeader extends LitElement {
 
   static readonly styles = [styles];
 
-  static override readonly shadowRootOptions: ShadowRootInit = {
-    ...LitElement.shadowRootOptions,
-    delegatesFocus: true,
-  };
-
   @property({ type: Boolean, reflect: true }) expanded = false;
 
   @colorContextConsumer() private on?: ColorTheme;
@@ -79,9 +75,7 @@ export class RhAccordionHeader extends LitElement {
     const rtl = this.#dir.dir === 'rtl';
     return html`
       <div id="container" class="${classMap({ [on]: !!on, rtl })}">
-        <button id="button"
-                class="toggle"
-                aria-expanded="${String(!!this.expanded) as 'true' | 'false'}">
+        <div id="button" class="toggle">
           <span id="header-container" class="${ifDefined(accents)}">
             <span part="text"><slot></slot></span>
             <span part="accents">
@@ -91,7 +85,7 @@ export class RhAccordionHeader extends LitElement {
           <svg id="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
             <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
           </svg>
-        </button>
+        </div>
       </div>
     `;
   }
@@ -101,6 +95,11 @@ export class RhAccordionHeader extends LitElement {
     if (accordion) {
       this.dispatchEvent(new AccordionHeaderChangeEvent(!this.expanded, this, accordion));
     }
+  }
+
+  @observes('expanded')
+  expandedChanged() {
+    this.#internals.ariaExpanded = String(!!this.expanded) as 'true' | 'false';
   }
 }
 
