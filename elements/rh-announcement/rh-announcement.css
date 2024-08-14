@@ -6,21 +6,13 @@
 }
 
 #container {
-  inline-size: 100%;
-  display: flex;
   text-align: center;
-  align-self: center;
-  justify-content: center;
-  align-items: center;
   padding: var(--rh-space-lg, 16px);
   font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
   line-height: var(--rh-line-height-body-text, 1.5);
   color: var(--rh-color-text-primary-on-light, #151515); /* Default (light) color */
   background-color: var(--rh-color-surface-lightest, #ffffff); /* Default (light) background */
-}
-
-#container.imgleft {
-  justify-content: flex-start;
+  inline-size: 100%;
 }
 
 /* dark theme */
@@ -53,16 +45,12 @@
     max-inline-size: 1170px;
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-    flex-flow: row nowrap;
+    margin-inline: auto;
   }
 
   #body {
     text-align: start;
-    min-inline-size: 0;
-    padding-inline-start: var(--rh-space-xl, 24px) !important;
-    padding-inline-end: var(--rh-space-xl, 24px) !important;
+    padding-inline: var(--rh-space-xl, 24px) !important;
   }
 
   #body ::slotted(p) {
@@ -97,10 +85,6 @@
   }
 
   #container.imgleft #content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
     text-align: start;
   }
 
@@ -110,7 +94,6 @@
 
   #container.imgleft #image {
     flex: 1;
-    display: flex;
     align-items: flex-start;
   }
 
@@ -120,12 +103,7 @@
 }
 
 #close-button {
-  color: var(--rh-color-text-secondary-on-light, #4d4d4d);
-  background-color: transparent;
-  border: none;
   display: flex;
-  align-items: center;
-  justify-content: center;
   cursor: pointer;
   padding: var(--rh-space-lg, 16px);
   margin: 2px;
