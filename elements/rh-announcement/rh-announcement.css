@@ -13,6 +13,7 @@
   line-height: var(--rh-line-height-body-text, 1.5);
   padding: var(--rh-space-lg, 16px);
   text-align: center;
+  container: announcement / inline-size;
 }
 
 /* dark theme */
@@ -31,7 +32,7 @@
   justify-content: center;
 }
 
-@media (min-width: 768px) {
+@container announcement (min-width: 768px) {
   #content {
     align-items: center;
     display: flex;
@@ -69,7 +70,7 @@
   }
 }
 
-@media (max-width: 767px) {
+@container announcement (max-width: 767px) {
   #container:not(.imgleft) #body {
     padding-block-end: var(--rh-space-md, 8px);
     padding-block-start: var(--rh-space-lg, 16px);
