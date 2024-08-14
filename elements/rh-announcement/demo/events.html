@@ -1,0 +1,26 @@
+<rh-announcement dismissible>
+  <img src="https://placehold.co/120x40?text=logo" slot="image" alt="LOGO" width="120" height="40">
+  <p>Quia consequuntur delectus sequi ipsam accusamus illum veritatis at quod deleniti facilis sint.</p>
+  <rh-cta slot="cta">
+    <a href="#">Learn More</a>
+  </rh-cta>
+</rh-announcement>
+
+<script type="module">
+  import '@rhds/elements/rh-cta/rh-cta.js';
+  import '@rhds/elements/rh-announcement/rh-announcement.js';
+
+  const getAnnouncement = document.querySelector('rh-announcement');
+  getAnnouncement.addEventListener('close', closeEvent);
+
+  // Replace with custom close event logic:
+  function closeEvent() {
+    window.alert('Close event fired.')
+  }
+</script>
+
+<style>
+  [data-demo] {
+    display: block;
+  }
+</style>
