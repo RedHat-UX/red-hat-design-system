@@ -6,7 +6,7 @@
 }
 
 #container {
-  width: 100%;
+  inline-size: 100%;
   display: flex;
   text-align: center;
   align-self: center;
@@ -30,7 +30,7 @@
 }
 
 #body {
-  padding-left: var(--rh-space-lg, 16px);
+  padding-inline-start: var(--rh-space-lg, 16px);
 }
 
 #image {
@@ -46,11 +46,11 @@
   }
 
   #container.dismissible #content {
-    margin-right: var(--rh-space-2xl, 32px);
+    margin-inline-end: var(--rh-space-2xl, 32px);
   }
 
   #row {
-    max-width: 1170px;
+    max-inline-size: 1170px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -59,13 +59,13 @@
   }
 
   #body {
-    text-align: left;
+    text-align: start;
     flex-flow: 1;
     flex-shrink: 1;
     flex-basis: auto;
-    min-width: 0;
-    padding-left: var(--rh-space-xl, 24px) !important;
-    padding-right: var(--rh-space-xl, 24px) !important;
+    min-inline-size: 0;
+    padding-inline-start: var(--rh-space-xl, 24px) !important;
+    padding-inline-end: var(--rh-space-xl, 24px) !important;
   }
 
   #body ::slotted(p) {
@@ -75,20 +75,20 @@
   #image,
   #cta {
     flex-shrink: 0;
-    min-width: max-content;
+    min-inline-size: max-content;
   }
 
   #cta {
     display: inline-block;
-    padding-right: var(--rh-space-lg, 16px);
+    padding-inline-end: var(--rh-space-lg, 16px);
   }
 }
 
 @media (max-width: 767px) {
   #container:not(.imgleft) #body {
-    padding-top: var(--rh-space-lg, 16px);
-    padding-bottom: var(--rh-space-md, 8px);
-    padding-right: var(--rh-space-lg, 16px);
+    padding-block-start: var(--rh-space-lg, 16px);
+    padding-block-end: var(--rh-space-md, 8px);
+    padding-inline-end: var(--rh-space-lg, 16px);
   }
 
   #container.imgleft #row {
@@ -104,11 +104,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    text-align: left;
+    text-align: start;
   }
 
   #container.imgleft.dismissible #content {
-    margin-right: var(--rh-space-2xl, 32px);
+    margin-inline-end: var(--rh-space-2xl, 32px);
   }
 
   #container.imgleft #image {
@@ -118,7 +118,7 @@
   }
 
   #container.imgleft #cta {
-    padding-left: var(--rh-space-lg, 16px);
+    padding-inline-start: var(--rh-space-lg, 16px);
   }
 }
 
@@ -133,8 +133,8 @@
   padding: var(--rh-space-lg, 16px);
   margin: 2px;
   position: absolute;
-  top: 0;
-  right: 0;
+  inset-block-start: 0;
+  inset-inline-end: 0;
 }
 
 .dark #close-button {
