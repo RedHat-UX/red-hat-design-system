@@ -17,7 +17,7 @@
 
 /* dark theme */
 #container.dark {
-  background-color: var(--rh-color-surface-darkest, #151515);
+  background-color: var(--rh-color-surface-dark-alt, #292929);
   color: var(--rh-color-text-primary-on-dark, #ffffff);
 }
 
