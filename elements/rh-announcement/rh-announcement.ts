@@ -1,14 +1,23 @@
-import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
+import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { LitElement, html } from 'lit';
+
+import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
+
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 import { colorContextProvider } from '../../lib/context/color/provider.js';
 
+import '@rhds/elements/rh-button/rh-button.js';
+
 import styles from './rh-announcement.css';
 
-import '@rhds/elements/rh-button/rh-button.js';
+export class AnnouncementCloseEvent extends Event {
+  constructor() {
+    super('close', { bubbles: true, cancelable: true });
+  }
+}
+
 /**
  * Announcements are flexible surfaces used to group information in a full width banner layout, traditionally across the top of a page.
  * They are used to announce new features, promos, or news.
@@ -29,17 +38,19 @@ import '@rhds/elements/rh-button/rh-button.js';
  *              The cta for the banner. Contains the cta slot.
  */
 
-export class AnnouncementCloseEvent extends Event {
-  constructor() {
-    super('close', { bubbles: true, cancelable: true });
-  }
-}
-
 @customElement('rh-announcement')
 export class RhAnnouncement extends LitElement {
-  static readonly version = '{{version}}';
-
   static styles = [styles];
+
+  /**
+   * Make an announcement dismissable
+   */
+  @property({ reflect: true, type: Boolean }) dismissible = false;
+
+  /**
+   * Keep the image on the left-hand side of the main announcement content
+   */
+  @property({ reflect: true, type: Boolean }) imgleft = false;
 
   /**
    * Sets color theme based on parent context
@@ -58,17 +69,7 @@ export class RhAnnouncement extends LitElement {
   @property({ reflect: true, attribute: 'color-palette' })
     colorPalette?: 'dark' | 'light';
 
-  @property({ reflect: true, type: Boolean }) dismissible = false;
-  @property({ reflect: true, type: Boolean }) imgleft = false;
-
   #slots = new SlotController(this, 'image', null, 'cta');
-
-  #closeHandler() {
-    const event = new AnnouncementCloseEvent();
-    if (this.dispatchEvent(event)) {
-      this.remove();
-    }
-  }
 
   render() {
     const { on = '', colorPalette = '' } = this;
@@ -105,6 +106,13 @@ export class RhAnnouncement extends LitElement {
       </div>`}
     </div>
   `;
+  }
+
+  #closeHandler() {
+    const event = new AnnouncementCloseEvent();
+    if (this.dispatchEvent(event)) {
+      this.remove();
+    }
   }
 }
 
