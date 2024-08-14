@@ -6,13 +6,13 @@
 }
 
 #container {
-  text-align: center;
-  padding: var(--rh-space-lg, 16px);
-  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-  line-height: var(--rh-line-height-body-text, 1.5);
-  color: var(--rh-color-text-primary-on-light, #151515); /* Default (light) color */
   background-color: var(--rh-color-surface-lightest, #ffffff); /* Default (light) background */
+  color: var(--rh-color-text-primary-on-light, #151515); /* Default (light) color */
+  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
   inline-size: 100%;
+  line-height: var(--rh-line-height-body-text, 1.5);
+  padding: var(--rh-space-lg, 16px);
+  text-align: center;
 }
 
 /* dark theme */
@@ -26,15 +26,15 @@
 }
 
 #image {
+  align-items: center;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 @media (min-width: 768px) {
   #content {
-    display: flex;
     align-items: center;
+    display: flex;
   }
 
   #container.dismissible #content {
@@ -42,15 +42,15 @@
   }
 
   #row {
-    max-inline-size: 1170px;
     display: flex;
     justify-content: center;
     margin-inline: auto;
+    max-inline-size: 1170px;
   }
 
   #body {
-    text-align: start;
     padding-inline: var(--rh-space-xl, 24px) !important;
+    text-align: start;
   }
 
   #body ::slotted(p) {
@@ -71,8 +71,8 @@
 
 @media (max-width: 767px) {
   #container:not(.imgleft) #body {
-    padding-block-start: var(--rh-space-lg, 16px);
     padding-block-end: var(--rh-space-md, 8px);
+    padding-block-start: var(--rh-space-lg, 16px);
     padding-inline-end: var(--rh-space-lg, 16px);
   }
 
@@ -93,8 +93,8 @@
   }
 
   #container.imgleft #image {
-    flex: 1;
     align-items: flex-start;
+    flex: 1;
   }
 
   #container.imgleft #cta {
@@ -103,13 +103,13 @@
 }
 
 #close-button {
-  display: flex;
   cursor: pointer;
-  padding: var(--rh-space-lg, 16px);
-  margin: 2px;
-  position: absolute;
+  display: flex;
   inset-block-start: 0;
   inset-inline-end: 0;
+  margin: 2px;
+  padding: var(--rh-space-lg, 16px);
+  position: absolute;
 }
 
 .dark #close-button {
