@@ -60,8 +60,6 @@
 
   #body {
     text-align: start;
-    flex-shrink: 1;
-    flex-basis: auto;
     min-inline-size: 0;
     padding-inline-start: var(--rh-space-xl, 24px) !important;
     padding-inline-end: var(--rh-space-xl, 24px) !important;
