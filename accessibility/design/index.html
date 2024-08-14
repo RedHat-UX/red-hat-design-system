@@ -37,19 +37,19 @@
     "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit-element": "/assets/packages/lit-element/index.js",
-    "lit": "/assets/packages/lit/index.js",
     "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
-    "lit/static-html.js": "/assets/packages/lit/static-html.js",
+    "@rhds/tokens/media.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
-    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
-    "@rhds/tokens/meta.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js",
-    "@rhds/tokens/media.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@3.0.0/core.js",
+    "lit": "/assets/packages/lit/index.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "lit/static-html.js": "/assets/packages/lit/static-html.js",
+    "@rhds/tokens/meta.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@lit-labs/ssr-client/lit-element-hydrate-support.js": "https://ga.jspm.io/npm:@lit-labs/ssr-client@1.1.7/lit-element-hydrate-support.js",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
+    "@lit-labs/ssr-client/lit-element-hydrate-support.js": "https://ga.jspm.io/npm:@lit-labs/ssr-client@1.1.7/lit-element-hydrate-support.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.esm.js",
     "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
@@ -4227,8 +4227,14 @@
     <a href="#links">Links</a>
       </h4>
     </uxdot-copy-permalink>
-<p>If color is the only way to distinguish between links and surrounding text (e.g., if link underlines are removed within a paragraph), the contrast ratio between the link and surrounding text must be at least 3:1.</p>
-<p>Non-color cues should be used to signify when a link receives hover and focus (e.g., an underline).</p>
+<p>Inline text links (e.g., those within paragraphs and list items in the main body of a page) should be underlined to make these links easy to discern for all visitors, particularly those with visual impairments or in situations that could make color differentiation difficult.</p>
+<p>In fact, you should default to underlining all text links, except for the following:</p>
+<ul>
+<li>Links within visually distinct navigation groupings, like menus.</li>
+<li>CTAs and other links accompanied by visual cues (e.g., arrow symbols) to indicate their interactivity.</li>
+</ul>
+<p>That said, you still <em>can</em> underline the above, at your discretion.</p>
+<p>If, for some reason, color is the only way you can distinguish links within a text block, the contrast ratio between the link and surrounding text <em>must</em> be at least 3:1 in both visited and unvisited states. And underlines or other non-color cues <em>must also</em> then be used to signify when the link receives hover and focus.</p>
 <uxdot-example width-adjustment="692px" no-border="">
   <img src="/assets/color/contrast-links.png" alt="Contrast ratio of a blue link next to black text and an example of a link's darker blue, underlined hover state">
 </uxdot-example>
@@ -4886,7 +4892,7 @@
     <a href="#links-1">Links</a>
       </h3>
     </uxdot-copy-permalink>
-<p>Links should appear clickable and focusable. And, when possible, links and buttons should appear different from one another to give users cues as to their purpose.</p>
+<p>Links should appear clickable and focusable. And, when possible, links and buttons should look different from one another to give users cues as to their purpose.</p>
 <p>If a link opens in a new window, this will have to be indicated both visually and non-visually. Text is preferred, but an icon (with text alternative for assistive tech users) can be used to announce that a new window will open.</p>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
     :host {

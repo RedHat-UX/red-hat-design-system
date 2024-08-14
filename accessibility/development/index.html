@@ -37,19 +37,19 @@
     "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit-element": "/assets/packages/lit-element/index.js",
-    "lit": "/assets/packages/lit/index.js",
     "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
-    "lit/static-html.js": "/assets/packages/lit/static-html.js",
+    "@rhds/tokens/media.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
-    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
-    "@rhds/tokens/meta.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js",
-    "@rhds/tokens/media.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@3.0.0/core.js",
+    "lit": "/assets/packages/lit/index.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "lit/static-html.js": "/assets/packages/lit/static-html.js",
+    "@rhds/tokens/meta.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@lit-labs/ssr-client/lit-element-hydrate-support.js": "https://ga.jspm.io/npm:@lit-labs/ssr-client@1.1.7/lit-element-hydrate-support.js",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
+    "@lit-labs/ssr-client/lit-element-hydrate-support.js": "https://ga.jspm.io/npm:@lit-labs/ssr-client@1.1.7/lit-element-hydrate-support.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.esm.js",
     "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
@@ -4090,7 +4090,7 @@ Instead of an alt attribute, an <code>&lt;svg&gt;</code> element comprising a si
   ...
 </svg></script>
 </rh-code-block>
-<p>More complex <code>&lt;svg&gt;</code> elements may require additional descriptive information. One way of including this      information is via the <code>&lt;desc&gt;</code> element:</p>
+<p>More complex <code>&lt;svg&gt;</code> elements may require additional descriptive information. One way of including this information is via the <code>&lt;desc&gt;</code> element:</p>
 <rh-code-block>
   <script type="text/html"><svg xmlns="http://www.w3.org/2000/svg" role="img">
   <title>Basic image description</title>
@@ -4146,7 +4146,7 @@ Instead of an alt attribute, an <code>&lt;svg&gt;</code> element comprising a si
     <a href="#hiding-svgs">Hiding SVGs</a>
       </h4>
     </uxdot-copy-permalink>
-<p>You can hide inline <code>&lt;svg&gt;</code> elements with an <code>aria-hidden="true"</code> attribute.</p>
+<p>You can hide <code>&lt;svg&gt;</code> elements from assistive tech with an <code>aria-hidden="true"</code> attribute.</p>
 <rh-code-block>
   <script type="text/html"><svg aria-hidden="true">
   ...
@@ -4679,7 +4679,7 @@ Instead of an alt attribute, an <code>&lt;svg&gt;</code> element comprising a si
     <a href="#focus-order-and-roving-tabindex">Focus order and roving tabindex</a>
       </h3>
     </uxdot-copy-permalink>
-<p>Between components, the default method of navigating via keyboard is with the <kbd>Tab</kbd> to move to the next focusable component and <kbd><kbd>Shift</kbd>+<kbd>Tab</kbd></kbd> to move to the previous focusable component. Complex components can have multiple focusable items, so rather than force keyboard users to tab through every focusable item within each component, a <a href="(https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#keyboardnavigationbetweencomponents(thetabsequence))">roving tabindex</a> should be used to allow keyboard users to <kbd>Tab</kbd>/<kbd><kbd>Shift</kbd>+<kbd>Tab</kbd></kbd> into the complex component, arrow keys to navigate within the component, and <kbd>Tab</kbd>/<kbd><kbd>Shift</kbd>+<kbd>Tab</kbd></kbd> back out of the complex component.  (See the WAI-ARIA APG's <a href="https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_roving_tabindex">Managing Focus Within Components Using a Roving tabindex</a>)</p>
+<p>Between components, the default method of navigating via keyboard is with the <kbd>Tab</kbd> to move to the next focusable component and <kbd><kbd>Shift</kbd>+<kbd>Tab</kbd></kbd> to move to the previous focusable component. Complex components can have multiple focusable items, so rather than force keyboard users to tab through every focusable item within each component, a <a href="(https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#keyboardnavigationbetweencomponents(thetabsequence))">roving tabindex</a> should be used to allow keyboard users to <kbd>Tab</kbd>/<kbd><kbd>Shift</kbd>+<kbd>Tab</kbd></kbd> into the complex component, arrow keys to navigate within the component, and <kbd>Tab</kbd>/<kbd><kbd>Shift</kbd>+<kbd>Tab</kbd></kbd> back out of the complex component. (See the WAI-ARIA APG's <a href="https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_roving_tabindex">Managing Focus Within Components Using a Roving tabindex</a>)</p>
 <p>Our complex components, like accordion, secondary navigation, subnavigation, tabs, and tile, use this roving tabindex method via a reactive controller. (Refer to <a href="../contributors/#accessibility-controllers">Contributors: Accessibility controllers</a>)</p>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
