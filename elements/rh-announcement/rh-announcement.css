@@ -60,7 +60,6 @@
 
   #body {
     text-align: start;
-    flex-flow: 1;
     flex-shrink: 1;
     flex-basis: auto;
     min-inline-size: 0;
