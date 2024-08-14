@@ -5,7 +5,7 @@
 `<rh-alert>`: removed deprecated toast boolean attribute
 
   Before: 
-  ```
+  ```html
   <rh-alert toast>
     <h3 slot="header">Default</h3>
     <p>
@@ -16,7 +16,7 @@
   ```
 
   After:
-  ```
+  ```html
   <rh-alert variant="toast">
     <h3 slot="header">Default</h3>
     <p>
