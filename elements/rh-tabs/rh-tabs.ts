@@ -47,16 +47,6 @@ export { RhTab };
 export class RhTabs extends LitElement {
   static readonly styles = [styles];
 
-  /** @deprecated */
-  static isTab(element: HTMLElement): element is RhTab {
-    return element instanceof RhTab;
-  }
-
-  /** @deprecated */
-  static isPanel(element: HTMLElement): element is RhTabPanel {
-    return element instanceof RhTabPanel;
-  }
-
   /**
    * Label for the scroll left button
    */
