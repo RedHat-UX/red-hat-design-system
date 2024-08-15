@@ -30,11 +30,15 @@ export class AnnouncementCloseEvent extends Event {
  *              If this slot is used, we expect a rh-cta component.
  * @csspart     container
  *              The container for the banner. Contains the image, body, and cta.
+ * @csspart     row
+ *              The row for the banner. Contains the image and content divs.
  * @csspart     image
  *              The image for the banner. Contains the image slot.
+ * @csspart     content
+ *              The content container. Contains the body and cta slots.
  * @csspart     body
  *              The body for the banner. Contains the default slot.
- * @csspart     footer
+ * @csspart     cta
  *              The cta for the banner. Contains the cta slot.
  */
 
@@ -77,13 +81,15 @@ export class RhAnnouncement extends LitElement {
   <div id="container"
         part="container"
         class="${classMap({ [on]: !!on, [colorPalette]: !!colorPalette, dismissible: !!this.dismissible, imgleft: !!this.imgleft })}">
-      <div id="row">
+      <div id="row"
+          part="row">
         <div id="image"
           part="image"
           class="${classMap({ empty: !this.#slots.hasSlotted('image') })}">
         <slot name="image"></slot>
       </div>
-      <div id="content">
+      <div id="content"
+          part="content">
         <div id="body"
             part="body"
             class="${classMap({ empty: !this.querySelector(':not([slot])') })}">
