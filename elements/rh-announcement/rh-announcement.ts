@@ -99,10 +99,11 @@ export class RhAnnouncement extends LitElement {
       ${!this.dismissible ? '' : html`
       <div id="header-actions">
         <rh-button id="close-button"
-            aria-label="Close"
             variant="close"
             confirm
-            @click=${this.#closeHandler}></rh-button>
+            @click=${this.#closeHandler}>
+          Close
+        </rh-button>
       </div>`}
     </div>
   `;
