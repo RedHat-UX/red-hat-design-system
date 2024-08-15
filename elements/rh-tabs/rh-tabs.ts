@@ -33,20 +33,15 @@ export { RhTab };
  * Tabs are used to organize and navigate between sections of content.
  * They feature a horizontal or a vertical list of section text labels
  * with a content panel below or to the right of the component.
- *
  * @summary Arranges content in a contained view on the same page
- *
  * @csspart container - outer container
  * @csspart tabs-container - tabs container
  * @csspart tabs - tablist
  * @csspart panels - panels
- *
  * @slot tab - Must contain one or more `<rh-tab>`
  * @slot - Must contain one or more `<rh-tab-panel>`
- *
  * @cssprop {<color>} --rh-tabs-border-color - Tabs Border color {@default `#c7c7c7`}
  * @cssprop {<length>} --rh-tabs-inset - Tabs inset {@default `auto`}
- *
  */
 @customElement('rh-tabs')
 export class RhTabs extends LitElement {
@@ -133,8 +128,8 @@ export class RhTabs extends LitElement {
     isActiveTab: x => x.active,
   });
 
-  #tabindex = new RovingTabindexController(this, {
-    getHTMLElement: () => this.tabList,
+  #tabindex = RovingTabindexController.of(this, {
+    getItemsContainer: () => this.tabList,
     getItems: () => this.tabs ?? [],
   });
 
@@ -227,10 +222,10 @@ export class RhTabs extends LitElement {
   }
 
   #updateActive({ force = false } = {}) {
-    if (!this.#tabindex.activeItem?.disabled) {
+    if (!this.#tabindex.items[this.#tabindex.atFocusedItemIndex]?.disabled) {
       this.tabs?.forEach((tab, i) => {
         if (force || !this.manual) {
-          const active = tab === this.#tabindex.activeItem;
+          const active = tab === this.#tabindex.items[this.#tabindex.atFocusedItemIndex];
           tab.active = active;
           if (active) {
             this.activeIndex = i;
@@ -245,10 +240,9 @@ export class RhTabs extends LitElement {
 
   select(option: RhTab | number) {
     if (typeof option === 'number') {
-      const item = this.tabs[option];
-      this.#tabindex.setActiveItem(item);
+      this.#tabindex.atFocusedItemIndex = option;
     } else {
-      this.#tabindex.setActiveItem(option);
+      this.#tabindex.atFocusedItemIndex = this.#tabindex.items.indexOf(option);
     }
     this.#updateActive({ force: true });
   }

@@ -94,10 +94,14 @@ export class RhNavigationSecondary extends LitElement {
   /** Compact mode  */
   #compact = false;
 
-  #tabindex = new RovingTabindexController(this, {
-    getItems: () => this._nav?.flatMap(slotted =>
+  get #items() {
+    return this._nav?.flatMap(slotted =>
       Array.from(slotted.querySelectorAll<HTMLAnchorElement>(`rh-navigation-secondary-dropdown > a,
-                                                              [slot="nav"] > li > a`))) ?? [],
+                                                              [slot="nav"] > li > a`))) ?? [];
+  }
+
+  #tabindex = RovingTabindexController.of(this, {
+    getItems: () => this.#items,
   });
 
   #internals = InternalsController.of(this, { role: 'navigation' });
@@ -174,7 +178,7 @@ export class RhNavigationSecondary extends LitElement {
                   aria-expanded="${String(expanded) as 'true' | 'false'}"
                   @click="${this.#toggleMobileMenu}"><slot name="mobile-menu">Menu</slot></button>
           <rh-surface color-palette="${dropdownPalette}">
-            <slot name="nav" @slotchange="${() => this.#tabindex.updateItems()}"></slot>
+            <slot name="nav" @slotchange="${() => this.#tabindex.items = this.#items}"></slot>
             <div id="cta" part="cta">
               <slot name="cta"></slot>
             </div>
@@ -257,7 +261,7 @@ export class RhNavigationSecondary extends LitElement {
           this.mobileMenuExpanded = false;
           this.shadowRoot?.querySelector('button')?.focus?.();
         } else {
-          this.#tabindex.activeItem?.focus();
+          this.#tabindex.items[this.#tabindex.atFocusedItemIndex]?.focus();
         }
         this.close();
         this.overlayOpen = false;
@@ -326,8 +330,7 @@ export class RhNavigationSecondary extends LitElement {
       if (!this.mobileMenuExpanded) {
         this.overlayOpen = false;
       }
-      this.#tabindex.setActiveItem(this.#tabindex.nextItem);
-      this.#tabindex.activeItem?.focus();
+      this.#tabindex.atFocusedItemIndex++;
     }
   }
 
@@ -370,7 +373,7 @@ export class RhNavigationSecondary extends LitElement {
     if (dropdown && RhNavigationSecondary.isDropdown(dropdown)) {
       const link = dropdown.querySelector('a');
       if (link) {
-        this.#tabindex.setActiveItem(link);
+        this.#tabindex.atFocusedItemIndex = this.#items.indexOf(link);
       }
       this.#openDropdown(dropdown);
     }
