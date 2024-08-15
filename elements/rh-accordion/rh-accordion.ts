@@ -42,20 +42,14 @@ export class AccordionCollapseEvent extends ComposedEvent {
 
 /**
  * An accordion is a stacked list of panels which allows users to expand or collapse information when selected. They feature panels that consist of a section text label and a caret icon that collapses or expands to reveal more information.
- *
  * @summary Expands or collapses a stacked list of panels
- *
  * @fires {AccordionExpandEvent} expand - when a panel expands
  * @fires {AccordionCollapseEvent} collapse - when a panel collapses
- *
- *
  * @slot
  *       Place the `rh-accordion-header` and `rh-accordion-panel` elements here.
- *
  * @attr  accents
  *        Position accents in the header either inline or bottom
  *        {@default inline}
- *
  */
 @customElement('rh-accordion')
 export class RhAccordion extends LitElement {
@@ -140,7 +134,9 @@ export class RhAccordion extends LitElement {
 
   #expandedIndex: number[] = [];
 
-  #headerIndex = new RovingTabindexController<RhAccordionHeader>(this);
+  #headerIndex = RovingTabindexController.of(this, {
+    getItems: () => this.headers,
+  });
 
   // actually is read in #init, by the `||=` operator
   // eslint-disable-next-line no-unused-private-class-members
@@ -188,7 +184,6 @@ export class RhAccordion extends LitElement {
    */
   async #init() {
     this.#initialized ||= !!await this.updateComplete;
-    this.#headerIndex.initItems(this.headers);
     // Event listener to the accordion header after the accordion has been initialized to add the roving tabindex
     this.addEventListener('focusin', this.#updateActiveHeader);
     this.updateAccessibility();
@@ -211,7 +206,7 @@ export class RhAccordion extends LitElement {
 
   #updateActiveHeader() {
     if (this.#activeHeader) {
-      this.#headerIndex.setActiveItem(this.#activeHeader);
+      this.#headerIndex.atFocusedItemIndex = this.headers.indexOf(this.#activeHeader);
     }
   }
 
