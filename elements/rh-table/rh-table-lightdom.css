@@ -1,27 +1,27 @@
 rh-table {
   --_row-border:
     var(
-      --rh-table-row-border,
-      var(--rh-border-width-sm, 1px)
-      solid
-      var(--rh-color-border-subtle-on-light, #c7c7c7)
-    );
+        --rh-table-row-border,
+        var(--rh-border-width-sm, 1px)
+        solid
+        var(--rh-color-border-subtle-on-light, #c7c7c7)
+      );
   --_row-background-hover-color:
     var(
-      --rh-table-row-background-hover-color,
-      rgb(
-        var(--rh-color-gray-20-rgb, 224 224 224)
-        / var(--rh-opacity-40, 40%)
-      )
-    );
+        --rh-table-row-background-hover-color,
+        rgb(
+          var(--rh-color-gray-20-rgb, 224 224 224)
+          / var(--rh-opacity-40, 40%)
+        )
+      );
   --_column-background-hover-color:
     var(
-      --rh-table-column-background-hover-color,
-      rgb(
-        var(--rh-color-blue-50-rgb, 0 102 204)
-        / var(--rh-opacity-10, 10%)
-      )
-    );
+        --rh-table-column-background-hover-color,
+        rgb(
+          var(--rh-color-blue-50-rgb, 0 102 204)
+          / var(--rh-opacity-10, 10%)
+        )
+      );
 }
 
 rh-table table {
