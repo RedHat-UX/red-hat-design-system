@@ -26,6 +26,10 @@
   padding-inline-start: var(--rh-space-lg, 16px);
 }
 
+#body ::slotted(p) {
+  margin-block: 0 !important;
+}
+
 #image {
   align-items: center;
   display: flex;
