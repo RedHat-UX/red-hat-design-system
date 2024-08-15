@@ -9,7 +9,6 @@ import '@patternfly/elements/pf-icon/pf-icon.js';
 import '@rhds/elements/rh-accordion/rh-accordion.js';
 
 export { RhFooterUniversal } from './rh-footer-universal.js';
-import './rh-global-footer.js';
 import './rh-footer-social-link.js';
 import './rh-footer-links.js';
 import './rh-footer-block.js';
