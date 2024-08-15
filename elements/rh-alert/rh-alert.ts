@@ -85,9 +85,6 @@ export class RhAlert extends LitElement {
    */
   @property({ reflect: true }) variant?: 'alternate' | 'toast' | 'inline';
 
-  /** @deprecated */
-  @property({ reflect: true, type: Boolean }) toast = false;
-
   /**
    * Alert variants have different rules regarding their ability to be dismissed by a user.
    * Default, Info, and Success Inline alerts can be dismissed by a user selecting the close button.
@@ -102,17 +99,6 @@ export class RhAlert extends LitElement {
     const event = new AlertCloseEvent();
     if (this.dispatchEvent(event)) {
       this.remove();
-    }
-  }
-
-  willUpdate(changed: PropertyValues<this>) {
-    // toast as a boolean attr is deprecated, so this replicates the previous behaviour
-    if (changed.has('toast') && this.toast) {
-      this.variant = 'toast';
-    }
-    // variant as a boolean attr is deprecated, so this replicates the previous behaviour
-    if (changed.has('variant') && (this.variant as unknown as boolean) === false) {
-      this.variant = undefined;
     }
   }
 
