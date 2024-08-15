@@ -147,14 +147,6 @@ export class RhCta extends LitElement {
     return super.getUpdateComplete();
   }
 
-  /**
-   * The slotted `<a>` or `<button>` element
-   * @deprecated use `data-analytics-` attributes instead
-   */
-  public get cta(): HTMLAnchorElement | HTMLButtonElement | null {
-    return this.#cta;
-  }
-
   get #cta() {
     return (
       this.shadowRoot?.querySelector('a')
