@@ -96,7 +96,7 @@ export class RhNavigationSecondary extends LitElement {
 
   #tabindex = new RovingTabindexController(this, {
     getItems: () => this._nav?.flatMap(slotted =>
-      Array.from(slotted.querySelectorAll<HTMLAnchorElement>(`:is(rh-navigation-secondary-dropdown,
+      Array.from(slotted.querySelectorAll<HTMLAnchorElement>(`rh-navigation-secondary-dropdown > a,
                                                               [slot="nav"] > li > a`))) ?? [],
   });
 
