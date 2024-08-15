@@ -1,3 +1,15 @@
-{% renderInstall lightdomcss=true %}{% endrenderInstall %}
+{% renderInstall %}{% endrenderInstall %}
+
+## Usage
+
+```html
+<rh-announcement>
+  <img src="https://placehold.co/120x40?text=logo" slot="image" alt="LOGO" width="120" height="40">
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit adipisicing elit adipisicing elit.</p>
+  <rh-cta slot="cta">
+    <a href="#">Learn More</a>
+  </rh-cta>
+</rh-announcement>
+```
 
 {% renderCodeDocs hideDescription=true %}{% endrenderCodeDocs %}
