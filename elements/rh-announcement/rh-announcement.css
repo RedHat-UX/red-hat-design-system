@@ -134,5 +134,5 @@
 }
 
 .dark #close-button:is(:hover, :focus) {
-  color: var(--rh-color-text-primary-on-dark, #ffffff)
+  color: var(--rh-color-text-primary-on-dark, #ffffff);
 }
