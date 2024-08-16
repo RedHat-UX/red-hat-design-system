@@ -14,6 +14,7 @@ summaries:
   sticky-banner: Anchors an offer to the bottom edge of a page
   sticky-card: Anchors an offer to the right edge of a page
   video-thumbnail: Overlays a button that indicates video playback
+  logo-wall: Visual arrangement of logos representing various brands, companies, or organizations
 order: 0
 tags:
   - pattern
