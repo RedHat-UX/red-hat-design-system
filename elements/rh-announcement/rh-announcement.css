@@ -107,7 +107,11 @@
   }
 }
 
+/* Close button */
 #close-button {
+  background-color: transparent;
+  border: none;
+  color: var(--rh-color-text-secondary-on-light, #4d4d4d);
   cursor: pointer;
   display: flex;
   inset-block-start: 0;
@@ -117,6 +121,14 @@
   position: absolute;
 }
 
+#close-button:is(:hover, :focus) {
+  color: var(--rh-color-text-primary-on-light, #151515);
+}
+
 .dark #close-button {
   color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
+}
+
+.dark #close-button:is(:hover, :focus) {
+  color: var(--rh-color-text-primary-on-dark, #ffffff)
 }
