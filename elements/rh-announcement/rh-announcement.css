@@ -5,6 +5,10 @@
   position: relative;
 }
 
+.empty {
+  display: none !important;
+}
+
 #container {
   background-color: var(--rh-color-surface-lightest, #ffffff); /* Default (light) background */
   color: var(--rh-color-text-primary-on-light, #151515); /* Default (light) color */

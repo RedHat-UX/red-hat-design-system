@@ -87,7 +87,7 @@ export class RhAnnouncement extends LitElement {
     return html`
   <div id="container"
         part="container"
-        class="${classMap({ [on]: !!on, [colorPalette]: !!colorPalette, dismissible: !!this.dismissible, imgleft: !!this.imgleft })}">
+        class="${classMap({ [on]: !!on, [colorPalette]: !!colorPalette, dismissible: !!this.dismissible, imgleft: !!this.imgleft, empty: this.#slots.isEmpty(null) })}">
       <div id="row"
           part="row">
         <div id="image"
@@ -99,7 +99,7 @@ export class RhAnnouncement extends LitElement {
           part="content">
         <div id="body"
             part="body"
-            class="${classMap({ empty: !this.querySelector(':not([slot])') })}">
+            class="${classMap({ empty: this.#slots.isEmpty(null) })}">
           <slot></slot>
         </div>
         <div id="cta"
