@@ -144,7 +144,7 @@ class UxdotSideNav extends LitElement {
 
   #closeButton = null;
 
-  #tabindex = new RovingTabindexController(this, {
+  #tabindex = RovingTabindexController.of(this, {
     getItems: () => {
       if (isServer) {
         return [];

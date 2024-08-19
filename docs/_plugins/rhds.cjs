@@ -324,7 +324,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
       const {
         getAllManifests,
       } = await import(
-        '@patternfly/pfe-tools/custom-elements-manifest/custom-elements-manifest.js',
+        '@patternfly/pfe-tools/custom-elements-manifest/custom-elements-manifest.js'
       );
 
       const customElementsManifestDocsPages = await eleventyConfig.globalData?.elements();
