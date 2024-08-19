@@ -21,8 +21,7 @@ importElements:
 
 <link rel="stylesheet" href="{{ '/styles/samp.css' | url }}">
 
-<!-- TODO: Fix this path and reference the file from logo-wall/rh-logo-wall-lightdom.css instead of styles directory-->
-<link rel="stylesheet" href="{{ '/styles/rh-logo-wall-lightdom.css' | url }}" />
+<link rel="stylesheet" href="{{ '../rh-logo-wall-lightdom.css' | url }}" />
 
 ## Within a promo band (bordered)
   {% include './patterns/1x1-grid.html' %}
