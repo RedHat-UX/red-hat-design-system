@@ -56,7 +56,6 @@ button:before {
   display: contents;
 }
 
-
 @container (min-width: 567px) {
   [part="tabs-container"] {
     --_tab-max-width: none;
