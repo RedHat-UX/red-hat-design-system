@@ -6,7 +6,7 @@ import { classMap } from 'lit/directives/class-map.js';
 
 import { ComposedEvent } from '@patternfly/pfe-core';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
-import { bound, observed } from '@patternfly/pfe-core/decorators.js';
+import { bound, observes } from '@patternfly/pfe-core/decorators.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
@@ -48,7 +48,6 @@ export class RhNavigationSecondaryDropdown extends LitElement {
 
   @query('#container') _container?: HTMLElement;
 
-  @observed
   @state() expanded = false;
 
   connectedCallback(): void {
@@ -96,6 +95,7 @@ export class RhNavigationSecondaryDropdown extends LitElement {
    * @param newVal {string} - Boolean value in string form
    * @returns
    */
+  @observes('expanded')
   protected _expandedChanged(oldVal?: 'false' | 'true', newVal?: 'false' | 'true'): void {
     if (newVal === oldVal) {
       return;

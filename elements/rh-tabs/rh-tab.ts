@@ -1,4 +1,3 @@
-import type { PropertyValues } from 'lit';
 import type { RhTabsContext } from './context.js';
 
 import { html, LitElement } from 'lit';
@@ -9,7 +8,7 @@ import { query } from 'lit/decorators/query.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { consume } from '@lit/context';
 
-import { observed } from '@patternfly/pfe-core/decorators.js';
+import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
@@ -54,11 +53,9 @@ export class RhTab extends LitElement {
   static readonly styles = [styles];
 
   /** `active` should be observed, and true when the tab is selected */
-  @observed
   @property({ reflect: true, type: Boolean }) active = false;
 
   /** `disabled` should be observed, and true when the tab is disabled */
-  @observed
   @property({ reflect: true, type: Boolean }) disabled = false;
 
   @consume({ context, subscribe: true })
@@ -101,19 +98,6 @@ export class RhTab extends LitElement {
     `;
   }
 
-  updated(changed: PropertyValues<this>) {
-    if (changed.has('active')) {
-      this.#internals.ariaSelected = String(!!this.active);
-      if (this.active && !changed.get('active')) {
-        this.#activate();
-      }
-    }
-
-    if (changed.has('disabled')) {
-      this.#disabledChanged();
-    }
-  }
-
   #onClick() {
     if (!this.disabled && this.#internals.ariaDisabled !== 'true' && this.ariaDisabled !== 'true') {
       this.#activate();
@@ -125,12 +109,21 @@ export class RhTab extends LitElement {
     this.dispatchEvent(new TabExpandEvent(this.active, this));
   }
 
+  @observes('active')
+  private activeChanged(old: boolean) {
+    this.#internals.ariaSelected = String(!!this.active);
+    if (this.active && !old) {
+      this.#activate();
+    }
+  }
+
   /**
    * if a tab is disabled, then it is also aria-disabled
    * if a tab is removed from disabled its not necessarily
    * not still aria-disabled so we don't remove the aria-disabled
    */
-  #disabledChanged() {
+  @observes('disabled')
+  private disabledChanged() {
     this.#internals.ariaDisabled = String(!!this.disabled);
   }
 }

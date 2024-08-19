@@ -4,7 +4,7 @@ import { property } from 'lit/decorators/property.js';
 
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { bound, initializer, observed } from '@patternfly/pfe-core/decorators.js';
+import { bound, initializer, observes } from '@patternfly/pfe-core/decorators.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
@@ -85,11 +85,9 @@ export class RhDialog extends LitElement {
    */
   @property({ reflect: true }) position?: 'top';
 
-  @observed
   @property({ type: Boolean, reflect: true }) open = false;
 
   /** Optional ID of the trigger element */
-  @observed
   @property() trigger?: string;
 
   @property({ reflect: true }) type?: 'video';
@@ -194,6 +192,7 @@ export class RhDialog extends LitElement {
     }
   }
 
+  @observes('open')
   protected async _openChanged(oldValue?: boolean, newValue?: boolean) {
     if (this.type === 'video') {
       if (oldValue === true && this.open === false) {
@@ -230,6 +229,7 @@ export class RhDialog extends LitElement {
     }
   }
 
+  @observes('trigger')
   protected _triggerChanged() {
     if (this.trigger) {
       this.#triggerElement =

@@ -3,7 +3,7 @@ import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
-import { observed } from '@patternfly/pfe-core/decorators/observed.js';
+import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 import { provide } from '@lit/context';
 
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
@@ -117,10 +117,6 @@ export class RhAccordion extends LitElement {
   }
 
 
-  @observed(function largeChanged(this: RhAccordion) {
-    [...this.headers, ...this.panels].forEach(el => el.toggleAttribute('large', this.large));
-  })
-
   @property({ reflect: true, type: Boolean }) large = false;
 
   @property({ reflect: true, type: Boolean }) bordered = true;
@@ -174,6 +170,11 @@ export class RhAccordion extends LitElement {
       }
     });
     this.ctx = this.#ctx;
+  }
+
+  @observes('large')
+  private largeChanged(this: RhAccordion) {
+    [...this.headers, ...this.panels].forEach(el => el.toggleAttribute('large', this.large));
   }
 
   /**
