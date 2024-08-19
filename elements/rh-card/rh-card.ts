@@ -57,8 +57,12 @@ export class RhCard extends LitElement {
    * Card always resets its context to `base`, unless explicitly provided with a `color-palette`.
    */
   @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' })
-    colorPalette?: 'darkest' | 'lightest' | 'lighter';
+  @property(
+    {
+      reflect: true,
+      attribute: 'color-palette',
+    }
+  ) colorPalette?: 'darkest' | 'lightest' | 'lighter';
 
   /**
    * Change the style of the card to be a "Promo"

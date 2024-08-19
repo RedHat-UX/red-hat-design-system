@@ -822,35 +822,35 @@ export class RhAudioPlayer extends LitElement {
   /**
    * handles media `ended` event
    */
-  #onEnded() {
+  #onEnded(): void {
     this.#paused = true;
   }
 
   /**
    * handles media `loadeddata` event
    */
-  #onLoadeddata() {
+  #onLoadeddata(): void {
     this.requestUpdate();
   }
 
   /**
    * handles media `loadedmetadata` event
    */
-  #onLoadedmetadata() {
+  #onLoadedmetadata(): void {
     this.requestUpdate();
   }
 
   /**
    * handles mute button click to toggle mute
    */
-  #onMuteButton() {
-    !this.muted ? this.mute() : this.unmute();
+  #onMuteButton(): void {
+    return !this.muted ? this.mute() : this.unmute();
   }
 
   /**
    * handles media `pause` event by updating component's `_paused` state
    */
-  #onPause() {
+  #onPause(): void {
     this.#paused = true;
     this.requestUpdate();
   }
@@ -858,7 +858,7 @@ export class RhAudioPlayer extends LitElement {
   /**
    * handles media `play` event by updating component's `_paused` state
    */
-  #onPlay() {
+  #onPlay(): void {
     this.#paused = false;
     this.requestUpdate();
   }
@@ -867,7 +867,7 @@ export class RhAudioPlayer extends LitElement {
    * handles changes to media element playback rate
    * by updating component playbackRate property
    */
-  #onPlaybackRateChange() {
+  #onPlaybackRateChange(): void {
     if (!this.#mediaElement || this.playbackRate !== this.#mediaElement.playbackRate) {
       this.playbackRate = this.#mediaElement?.playbackRate || 1;
     }

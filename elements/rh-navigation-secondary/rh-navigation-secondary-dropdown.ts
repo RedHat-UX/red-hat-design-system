@@ -99,7 +99,7 @@ export class RhNavigationSecondaryDropdown extends LitElement {
     if (newVal === oldVal) {
       return;
     }
-    newVal ? this.#open() : this.#close();
+    return newVal ? this.#open() : this.#close();
   }
 
   /**

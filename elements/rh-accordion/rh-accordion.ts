@@ -341,8 +341,8 @@ export class RhAccordion extends LitElement {
     }
 
     // If the header and panel exist, open both
-    this.#expandHeader(header, index),
-    this.#expandPanel(panel),
+    this.#expandHeader(header, index);
+    this.#expandPanel(panel);
 
     header.focus();
 
