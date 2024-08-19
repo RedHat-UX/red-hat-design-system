@@ -93,7 +93,6 @@ export class RhNavigationSecondaryDropdown extends LitElement {
    * run the `#open()` method, if false run the `#close()` method.
    * @param oldVal {string} - Boolean value in string form
    * @param newVal {string} - Boolean value in string form
-   * @returns
    */
   @observes('expanded')
   protected _expandedChanged(oldVal?: 'false' | 'true', newVal?: 'false' | 'true'): void {
@@ -118,7 +117,6 @@ export class RhNavigationSecondaryDropdown extends LitElement {
 
   /**
    * Sets or removes attributes needed to open a dropdown menu
-   * @returns
    */
   #open(): void {
     const link = this.#slots.getSlotted('link').find(child => child instanceof HTMLAnchorElement);

@@ -45,11 +45,8 @@ export class AccordionCollapseEvent extends ComposedEvent {
  * @summary Expands or collapses a stacked list of panels
  * @fires {AccordionExpandEvent} expand - when a panel expands
  * @fires {AccordionCollapseEvent} collapse - when a panel collapses
- * @slot
- *       Place the `rh-accordion-header` and `rh-accordion-panel` elements here.
- * @attr  accents
- *        Position accents in the header either inline or bottom
- *        {@default inline}
+ * @slot - Place the `rh-accordion-header` and `rh-accordion-panel` elements here.
+ * @attr  [accents=inline] Position accents in the header either inline or bottom
  */
 @customElement('rh-accordion')
 export class RhAccordion extends LitElement {
@@ -311,6 +308,7 @@ export class RhAccordion extends LitElement {
 
   /**
    * Accepts a 0-based index value (integer) for the set of accordion items to expand or collapse.
+   * @param index header index to toggle
    */
   public async toggle(index: number) {
     const { headers } = this;
@@ -326,6 +324,8 @@ export class RhAccordion extends LitElement {
   /**
    * Accepts a 0-based index value (integer) for the set of accordion items to expand.
    * Accepts an optional parent accordion to search for headers and panels.
+   * @param index header index to toggle
+   * @param parentAccordion target accordion to expand in
    */
   public async expand(index: number, parentAccordion?: RhAccordion) {
     const allHeaders: RhAccordionHeader[] = this.#allHeaders(parentAccordion);
@@ -362,6 +362,7 @@ export class RhAccordion extends LitElement {
 
   /**
    * Accepts a 0-based index value (integer) for the set of accordion items to collapse.
+   * @param index header index to collapse
    */
   public async collapse(index: number) {
     const header = this.headers.at(index);
