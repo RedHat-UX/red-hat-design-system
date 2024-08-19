@@ -81,11 +81,6 @@ rh-logo-wall[columns="3"] {
         flex-wrap: wrap;
     }
 }
-@container (max-width: 1199px) {
-    rh-logo-wall {
-        flex-wrap: wrap;
-    }
-}
 @media (max-width: 768px) {
     rh-logo-wall[columns="3"] {
         grid-template-columns: repeat(auto-fill, minmax(var(--logo-wall-logo-min-width), 1fr)) !important
