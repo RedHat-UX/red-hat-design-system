@@ -18,7 +18,7 @@ There are two styles of logo wall: bordered and borderless. Both styles can be e
 
 ## Anatomy
 
-<uxdot-example width-adjustment="600px">
+<uxdot-example width-adjustment="400px">
     <img src="{{ '../style-anatomy.svg' | url }}" alt="Examples of a bordered logo and borderless logo with numbers pointing to the logos and border of the bordered variant.">
 </uxdot-example>
 
@@ -35,7 +35,7 @@ Logo walls can be used in light and dark themes.
 
 ### Light theme
 
-<uxdot-example width-adjustment="600px">
+<uxdot-example width-adjustment="400px">
     <img src="{{ '../style-theme-light.svg' | url }}" alt="Image of bordered and borderless logos against 3 light themed backgrounds.">
 </uxdot-example>
 
@@ -70,11 +70,11 @@ Interaction states are visual representations used to communicate the status of 
 
 ### Hover
 
-<uxdot-example width-adjustment="600px">
+<uxdot-example width-adjustment="400px">
     <img src="{{ '../style-states-hover-light.svg' | url }}" alt="Image showing hover states in light theme. The bordered logo background changes to light gray. The borderless logo has a red border on the bottom.">
 </uxdot-example>
 
-<uxdot-example width-adjustment="600px">
+<uxdot-example width-adjustment="400px">
     <img src="{{ '../style-states-hover-dark.svg' | url }}" alt="Image showing hover states in dark theme. The bordered logo background changes to lighter gray. The borderless logo has a red border on the bottom.">
 </uxdot-example>
 
@@ -84,11 +84,11 @@ Interaction states are visual representations used to communicate the status of 
     The Focus states have the same styles as the Hover states, except for the focus ring.
 </rh-alert>
 
-<uxdot-example width-adjustment="600px">
+<uxdot-example width-adjustment="400px">
     <img src="{{ '../style-states-focus-light.svg' | url }}" alt="Image showing focus states in light theme. The focus states are the same as the hover states with an added focus ring.">
 </uxdot-example>
 
-<uxdot-example width-adjustment="600px">
+<uxdot-example width-adjustment="400px">
     <img src="{{ '../style-states-focus-dark.svg' | url }}" alt="Image showing focus states in dark theme. The focus states are the same as the hover states with an added focus ring.">
 </uxdot-example>
 
@@ -98,11 +98,11 @@ Interaction states are visual representations used to communicate the status of 
     The Active states have the same styles as the Focus states.
 </rh-alert>
 
-<uxdot-example width-adjustment="600px">
+<uxdot-example width-adjustment="400px">
     <img src="{{ '../style-states-focus-light.svg' | url }}" alt="Image showing active states in light theme. They are the same as the focus state.">
 </uxdot-example>
 
-<uxdot-example width-adjustment="600px">
+<uxdot-example width-adjustment="400px">
     <img src="{{ '../style-states-focus-dark.svg' | url }}" alt="Image showing active states in dark theme. They are the same as the focus state.">
 </uxdot-example>
 

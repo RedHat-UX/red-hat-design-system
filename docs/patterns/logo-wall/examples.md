@@ -21,17 +21,20 @@ importElements:
 
 <link rel="stylesheet" href="{{ '/styles/samp.css' | url }}">
 
+<!-- TODO: Fix this path and reference the file from logo-wall/rh-logo-wall-lightdom.css instead of styles directory-->
+<link rel="stylesheet" href="{{ '/styles/rh-logo-wall-lightdom.css' | url }}" />
+
 ## Within a promo band (bordered)
-  {% include './patterns/bordered-single-row.html' %}
+  {% include './patterns/1x1-grid.html' %}
 
 ## Within a promo band (borderless)
-  {% include './patterns/borderless-single-row.html' %}
+  {% include './patterns/1x1-grid-flat.html' %}
 
 ## With 2x2 grid
-  {% include './patterns/bordered-two-by-two.html' %}
+  {% include './patterns/2x2-grid.html' %}
 
 ## With 2x3 grid
-  {% include './patterns/bordered-two-by-three.html' %}
+  {% include './patterns/2x3-grid.html' %}
 
 
 {% include 'partials/component/feedback.html' %}

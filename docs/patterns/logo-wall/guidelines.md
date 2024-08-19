@@ -12,6 +12,9 @@ subnav:
   order: 3
 ---
 
+<script type="module" src="{{ '/assets/javascript/elements/uxdot-best-practice.js' | url }}"></script>
+
+
 ## Usage
 
 Use a logo wall when you need to display multiple Red Hat and/or partner logos in a group. 
@@ -47,95 +50,55 @@ Here are some guidelines to follow if you’re unsure:
 When displaying our partners' logos, it is essential to respect their brand identity by ensuring that their logos meet accessibility standards.
 
 <div class="grid sm-two-columns">
-  <figure>
-    <uxdot-example width-adjustment="600px">
-        <img src="{{ '../guidelines-bestpractices-contrast-do.svg' | url }}" alt="Examples of two Red Hat logos in dark and light themes against background colors that ensure enough color contrast.">
+  <uxdot-best-practice do>
+    <uxdot-example slot="image" alignment="left">
+      <img src="{{ '../guidelines-bestpractices-contrast-do.svg' | url }}" alt="Examples of two Red Hat logos in dark and light themes against background colors that ensure enough color contrast.">
     </uxdot-example>
-    <figcaption part="do">
-        <strong>Do</strong>
-        <p>Ensure that the color contrast between each logo and the background meets accessibility standards.</p>
-    </figcaption>
-  </figure>
-  <figure>
-    <uxdot-example width-adjustment="600px">
-        <img src="{{ '../guidelines-bestpractices-contrast-dont.svg' | url }}" alt="Examples of two Red Hat logos in dark and light themes against background colors that do not provide enough contrast.">
-    </uxdot-example>
-    <figcaption part="dont">
-        <strong>Don't</strong>
-        <p>Place a logo over a background that does not meet accessibility standards.</p>
-    </figcaption>
-  </figure>
-</div>
+    <p>Ensure that the color contrast between each logo and the background meets accessibility standards.</p>
+  </uxdot-best-practice>
 
-### Color contrast
-
-When displaying our partners' logos, it is essential to respect their brand identity by ensuring that their logos meet accessibility standards.
-
-<div class="grid sm-two-columns">
-  <figure>
-    <uxdot-example width-adjustment="600px">
-        <img src="{{ '../guidelines-bestpractices-contrast-do.svg' | url }}" alt="Examples of two Red Hat logos in dark and light themes against background colors that ensure enough color contrast.">
+  <uxdot-best-practice dont>
+    <uxdot-example slot="image" alignment="left">
+      <img src="{{ '../guidelines-bestpractices-contrast-dont.svg' | url }}" alt="Examples of two Red Hat logos in dark and light themes against background colors that do not provide enough contrast.">
     </uxdot-example>
-    <figcaption part="do">
-        <strong>Do</strong>
-        <p>Ensure that the color contrast between each logo and the background meets accessibility standards.</p>
-    </figcaption>
-  </figure>
-  <figure>
-    <uxdot-example width-adjustment="600px">
-        <img src="{{ '../guidelines-bestpractices-contrast-dont.svg' | url }}" alt="Examples of two Red Hat logos in dark and light themes against background colors that do not provide enough contrast.">
-    </uxdot-example>
-    <figcaption part="dont">
-        <strong>Don't</strong>
-        <p>Place a logo over a background that does not meet accessibility standards.</p>
-    </figcaption>
-  </figure>
+    <p>Place a logo over a background that does not meet accessibility standards.</p>
+  </uxdot-best-practice>
 </div>
 
 ### Logo sizes
 
 <div class="grid sm-two-columns">
-  <figure>
-    <uxdot-example width-adjustment="600px">
-        <img src="{{ '../guidelines-bestpractices-sizing-do.png' | url }}" alt="Example of a borderless logo wall with similarly sized logos that represent each partner evenly.">
+  <uxdot-best-practice do>
+    <uxdot-example slot="image" alignment="left">
+      <img src="{{ '../guidelines-bestpractices-sizing-do.png' | url }}" alt="Example of a borderless logo wall with similarly sized logos that represent each partner evenly.">
     </uxdot-example>
-    <figcaption part="do">
-        <strong>Do</strong>
-        <p>Because the size and shape of our partners’ logos can vary, make sure to size them similarly so that each partner is evenly represented.</p>
-    </figcaption>
-  </figure>
-  <figure>
-    <uxdot-example width-adjustment="600px">
-        <img src="{{ '../guidelines-bestpractices-sizing-dont.png' | url }}" alt="Example of a borderless logo wall in which the sizes of logos varies and disproportionately represents each partner.">
+    <p>Because the size and shape of our partners’ logos can vary, make sure to size them similarly so that each partner is evenly represented.</p>  
+  </uxdot-best-practice>
+
+  <uxdot-best-practice dont>
+    <uxdot-example slot="image" alignment="left">
+      <img src="{{ '../guidelines-bestpractices-sizing-dont.png' | url }}" alt="Example of a borderless logo wall in which the sizes of logos varies and disproportionately represents each partner.">
     </uxdot-example>
-    <figcaption part="dont">
-        <strong>Don't</strong>
-        <p>Each logo does not need to be the same height or width.</p>
-    </figcaption>
-  </figure>
+    <p>Each logo does not need to be the same height or width.</p>
+  </uxdot-best-practice>
 </div>
 
 ### Alignment
 
 <div class="grid sm-two-columns">
-  <figure>
-    <uxdot-example width-adjustment="600px">
-        <img src="{{ '../guidelines-bestpractices-align-do.png' | url }}" alt="Example of a borderless logo wall in which each logo is horizontally and vertically aligned in its container.">
+  <uxdot-best-practice do>
+    <uxdot-example slot="image" alignment="left">
+      <img src="{{ '../guidelines-bestpractices-align-do.png' | url }}" alt="Example of a borderless logo wall in which each logo is horizontally and vertically aligned in its container.">
     </uxdot-example>
-    <figcaption part="do">
-        <strong>Do</strong>
-        <p>Align logos vertically and horizontally within a container.</p>
-    </figcaption>
-  </figure>
-  <figure>
-    <uxdot-example width-adjustment="600px">
-        <img src="{{ '../guidelines-bestpractices-align-dont.png' | url }}" alt="Example of a borderless logo wall in which each logo is aligned to the bottom of the container.">
+    <p>Align logos vertically and horizontally within a container.</p>
+  </uxdot-best-practice>
+
+  <uxdot-best-practice dont>
+    <uxdot-example slot="image" alignment="left">
+      <img src="{{ '../guidelines-bestpractices-align-dont.png' | url }}" alt="Example of a borderless logo wall in which each logo is aligned to the bottom of the container.">
     </uxdot-example>
-    <figcaption part="dont">
-        <strong>Don't</strong>
-        <p>Don’t align all logos to the top or bottom of a container.</p>
-    </figcaption>
-  </figure>
+    <p>Don’t align all logos to the top or bottom of a container.</p>
+  </uxdot-best-practice>
 </div>
 
 {% include 'partials/component/feedback.html' %}
