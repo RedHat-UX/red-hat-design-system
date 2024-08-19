@@ -73,6 +73,8 @@ export class RhTab extends LitElement {
     super.connectedCallback();
     this.id ||= getRandomId(this.localName);
     this.addEventListener('click', this.#onClick);
+    this.addEventListener('keydown', this.#onKeydown);
+    this.addEventListener('focus', this.#onFocus);
   }
 
   render() {
@@ -99,6 +101,21 @@ export class RhTab extends LitElement {
       this.#activate();
       if (InternalsController.isSafari) {
         this.focus();
+      }
+    }
+  }
+
+  #onFocus() {
+    if (!this.ctx?.manual && !this.disabled) {
+      this.#activate();
+    }
+  }
+
+  #onKeydown(event: KeyboardEvent) {
+    if (!this.disabled) {
+      switch (event.key) {
+        case 'Enter':
+          this.#activate();
       }
     }
   }
