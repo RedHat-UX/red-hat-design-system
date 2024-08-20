@@ -1,9 +1,12 @@
-import { LitElement, html, type PropertyValues, type TemplateResult } from 'lit';
+import type { IconNameFor, IconSetName } from '@rhds/icons';
+
+import { LitElement, html, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { state } from 'lit/decorators/state.js';
 import { classMap } from 'lit/directives/class-map.js';
 
+import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
@@ -24,7 +27,7 @@ const ric: typeof globalThis.requestIdleCallback =
   ?? (async (f: () => void) => Promise.resolve().then(f));
 
 /** Fired when an icon fails to load */
-export class IconResolveError extends ErrorEvent {
+export class IconResolveErrorEvent extends ErrorEvent {
   constructor(
     set: string,
     icon: string,
@@ -56,7 +59,7 @@ export class RhIcon extends LitElement {
       icon.#intersecting = isIntersecting;
       ric(() => {
         if (icon.#intersecting) {
-          icon.load();
+          icon.#load();
         }
       });
     });
@@ -67,14 +70,14 @@ export class RhIcon extends LitElement {
   private static instances = new Set<RhIcon>();
 
   private static resolve: IconResolverFunction = (set: string, icon: string): Renderable =>
-    import(`@rhds/icons/dist/${set}/${icon}.js`)
+    import(`@rhds/icons/${set}/${icon}.js`)
         .then(mod => mod.default.cloneNode(true));
 
   /** Icon set */
-  @property() set = 'standard';
+  @property({ reflect: true }) set?: IconSetName;
 
   /** Icon name */
-  @property({ reflect: true }) icon = '';
+  @property({ reflect: true }) icon?: IconNameFor<IconSetName>;
 
   /**
    * Defines a string value that labels the icon element.
@@ -99,39 +102,20 @@ export class RhIcon extends LitElement {
 
   #internals = InternalsController.of(this);
 
-  #lazyLoad() {
-    RhIcon.io.observe(this);
-    if (this.#intersecting) {
-      this.load();
-    }
-  }
-
-  #load() {
-    switch (this.loading) {
-      case 'idle': return void ric(() => this.load());
-      case 'lazy': return void this.#lazyLoad();
-      case 'eager': return void this.load();
-    }
-  }
-
-  async #contentChanged() {
-    await this.updateComplete;
-    this.dispatchEvent(new Event('load', { bubbles: true }));
-  }
-
   connectedCallback(): void {
     super.connectedCallback();
     RhIcon.instances.add(this);
-    if (this.accessibleLabel) {
-      this.#internals.ariaLabel = this.accessibleLabel;
-      this.#internals.role = 'img';
-    }
   }
 
-  willUpdate(changed: PropertyValues<this>): void {
-    if (changed.has('icon')) {
-      this.#load();
-    }
+  render(): TemplateResult {
+    const content = this.content ?? '';
+    const { set = 'standard' } = this;
+    return html`
+      <div id="container"
+           class="${classMap({ [set]: set })}"
+      >${content}<span part="fallback"
+                       ?hidden=${!!content}><slot></slot></span></div>
+    `;
   }
 
   disconnectedCallback(): void {
@@ -140,32 +124,56 @@ export class RhIcon extends LitElement {
     RhIcon.instances.delete(this);
   }
 
-  render(): TemplateResult<1> {
-    const content = this.content ?? '';
-    const { set } = this;
-    const classes = { [set]: set };
-    return html`
-      <div id="container" 
-        aria-hidden="true" 
-        class="${classMap(classes)}">
-          ${content}
-        <span part="fallback" ?hidden=${!!content}>
-          <slot></slot>
-        </span>
-      </div>
-    `;
+  @observes('icon')
+  @observes('set')
+  private iconChanged(): void {
+    this.#dispatchLoad();
   }
 
-  protected async load(): Promise<void> {
-    const { set, icon } = this;
+  @observes('accessibleLabel')
+  private accessibleLabelChanged(): void {
+    this.#internals.ariaLabel = this.accessibleLabel ?? null;
+    if (this.accessibleLabel) {
+      this.#internals.role = 'img';
+    } else {
+      this.#internals.role = 'presentation';
+    }
+  }
+
+  @observes('content' as keyof RhIcon)
+  private async contentChanged(old?: unknown) {
+    if (old !== this.content) {
+      await this.updateComplete;
+      this.dispatchEvent(new Event('load', { bubbles: true }));
+    }
+  }
+
+  #lazyLoad() {
+    RhIcon.io.observe(this);
+    if (this.#intersecting) {
+      this.#load();
+    }
+  }
+
+  #dispatchLoad() {
+    switch (this.loading) {
+      case 'idle': return void ric(() => this.#load());
+      case 'lazy': return void this.#lazyLoad();
+      case 'eager': return void this.#load();
+    }
+  }
+
+  async #load() {
+    const { set = 'standard', icon } = this;
     const resolver = RhIcon.resolve;
     if (set && icon && typeof resolver === 'function') {
       try {
         this.content = await resolver(set, icon);
-        this.#contentChanged();
       } catch (error: unknown) {
-        this.#logger.error((error as IconResolveError).message);
-        this.dispatchEvent(new IconResolveError(set, icon, error as Error));
+        if (error instanceof Error) {
+          this.#logger.error(error.message);
+          this.dispatchEvent(new IconResolveErrorEvent(set, icon, error));
+        }
       }
     }
   }

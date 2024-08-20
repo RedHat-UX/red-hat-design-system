@@ -1,5 +1,6 @@
 import { expect, html, oneEvent } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
+import { a11ySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
 import { RhIcon } from '@rhds/elements/rh-icon/rh-icon.js';
 
 describe('<rh-icon>', function() {
@@ -22,22 +23,37 @@ describe('<rh-icon>', function() {
     });
   });
 
-  describe('when the icon has a fallback content', function() {
-    before(async function() {
+  describe('with icon="hat" and fallback content', function() {
+    let event: undefined | Promise<Event>;
+    beforeEach(async function() {
       element = await createFixture(html`
-        <rh-icon icon="no-scrubs">
-          <p>Image failed to load.</p>. 
-        </rh-icon>`);
-      await oneEvent(element, 'error', false);
+        <rh-icon icon="hat">fallback</rh-icon>
+      `);
     });
-    it('should display the fallback', function() {
-      expect(element.shadowRoot!.querySelector('svg')).to.not.be.ok;
-      expect(element).shadowDom.to.equal(`
-        <div id="container" class="standard" aria-hidden="true">
-          <span part="fallback">
-            <slot></slot>
-          </span>
-        </div>`);
+    beforeEach(() => event = oneEvent(element, 'load'));
+    afterEach(() => event = undefined);
+    it('does not display fallback content', async function() {
+      expect(await a11ySnapshot()).to.not.axContainName('fallback');
+    });
+    it('fires "load"', async function() {
+      expect((await event)?.type).to.equal('load');
+    });
+  });
+
+  describe('with icon="invalid-icon-name" and fallback content', function() {
+    let event: undefined | Promise<Event>;
+    beforeEach(async function() {
+      element = await createFixture<RhIcon>(html`
+        <rh-icon icon="invalid-icon-name">fallback</rh-icon>
+      `);
+    });
+    afterEach(() => event = undefined);
+    beforeEach(() => event = oneEvent(element, 'error'));
+    it('fires "error"', async function() {
+      expect((await event)?.type).to.equal('error');
+    });
+    it('displays fallback content', async function() {
+      expect(await a11ySnapshot()).to.axContainName('fallback');
     });
   });
 });
