@@ -67,9 +67,6 @@ export class RhAccordionHeader extends LitElement {
 
   @property({ reflect: true, attribute: 'heading-tag' }) headingTag?: string;
 
-  /** @deprecated */
-  @property({ reflect: true }) icon = 'angle-down';
-
   @colorContextConsumer() private on?: ColorTheme;
 
   @consume({ context, subscribe: true })
