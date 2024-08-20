@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-`<rh-cta>`: removed deprecated public getter for shadow link
+`<rh-cta>`: removed deprecated read-only `cta` property; use `data-analytics` attributes instead
