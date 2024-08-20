@@ -19,7 +19,6 @@
     const node = document.createElement('output')
     const toast = document.querySelector('#toast').content.cloneNode(true);
     toast.querySelector('p.text').innerText = text;
-    // node.innerText = text
     node.appendChild(toast);
     node.classList.add('gui-toast')
     node.setAttribute('role', 'status')
