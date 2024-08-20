@@ -8,8 +8,8 @@ import type { FileOptions, ProjectManifest } from 'playground-elements/shared/wo
 import { getPfeConfig, type PfeConfig } from '@patternfly/pfe-tools/config.js';
 import {
   type DemoRecord,
-  Manifest,
-} from '@patternfly/pfe-tools/custom-elements-manifest/lib/Manifest.js';
+  getAllManifests,
+} from '@patternfly/pfe-tools/custom-elements-manifest/custom-elements-manifest.js';
 
 import { parseFragment, serialize } from 'parse5';
 
@@ -53,7 +53,10 @@ const SRC_SUBRESOURCE_TAGNAMES = new Set([
   'rh-avatar',
 ]);
 
-/** Returns a string with common indent stripped from each line. Useful for templating HTML */
+/**
+ * Returns a string with common indent stripped from each line. Useful for templating HTML
+ * @param str indented string
+ */
 function dedent(str: string) {
   const stripped = str.replace(/^\n/, '');
   const match = stripped.match(/^\s+/);
@@ -386,7 +389,7 @@ class PlaygroundFileMap extends Map<FilePath, FileOptions> {
 
 class PlaygroundConfigMap extends Map<CustomElementName, Pick<ProjectManifest, 'files'>> {
   static async of(pfeConfig: Required<PfeConfig>) {
-    const demos = Manifest.getAll(new URL('../', import.meta.url).pathname)
+    const demos = getAllManifests(new URL('../', import.meta.url).pathname)
         .flatMap(manifest => manifest.getTagNames()
             .flatMap(tagName => manifest.getDemoMetadata(tagName, pfeConfig)));
     const demoManifests = groupBy('primaryElementName', demos);

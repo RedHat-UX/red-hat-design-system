@@ -33,12 +33,12 @@ export class RhMenu extends LitElement {
 
   @colorContextConsumer() private on?: ColorTheme;
 
-  #tabindex = new RovingTabindexController<HTMLElement>(this, {
+  #tabindex = RovingTabindexController.of<HTMLElement>(this, {
     getItems: () => this._menuItems ?? [],
   });
 
   get activeItem() {
-    return this.#tabindex.activeItem;
+    return this.#tabindex.items.at(this.#tabindex.atFocusedItemIndex);
   }
 
   connectedCallback() {
@@ -64,11 +64,11 @@ export class RhMenu extends LitElement {
   }
 
   activateItem(item: HTMLElement) {
-    this.#tabindex.setActiveItem(item);
+    this.#tabindex.atFocusedItemIndex = this._menuItems.indexOf(item);
   }
 
   focus() {
-    this.#tabindex.activeItem?.focus();
+    this._menuItems[this.#tabindex.atFocusedItemIndex]?.focus();
   }
 }
 

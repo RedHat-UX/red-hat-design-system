@@ -27,66 +27,46 @@ function isSupportedContent(el: Element | null): el is HTMLAnchorElement | HTMLB
  *              include: `<button>` (note however that the `button` tag is not
  *              supported for the default CTA styles).
  * @csspart     container - container element for slotted CTA
- * @cssprop     {<color>} --rh-cta-color
+ * @cssprop     {<color>} [--rh-cta-color=var(--rh-color-text-primary-on-dark, #ffffff)]
  *              Sets the cta color
- *              {@default `var(--rh-color-text-primary-on-dark, #ffffff)`}
- * @cssprop     --rh-cta-background-color
+ * @cssprop     [--rh-cta-background-color=var(--rh-color-brand-red-on-light, #ee0000)]
  *              Sets the cta background color
- *              {@default `var(--rh-color-brand-red-on-light, #ee0000)`}
- * @cssprop     --rh-cta-border-color
+ * @cssprop     [--rh-cta-border-color=var(--rh-color-brand-red-on-light, #ee0000)]
  *              Sets the cta border color
- *              {@default `var(--rh-color-brand-red-on-light, #ee0000)`}
- * @cssprop     --rh-cta-hover-color
+ * @cssprop     [--rh-cta-hover-color=var(--rh-color-text-primary-on-dark, #ffffff)]
  *              Sets the cta color on hover
- *              {@default `var(--rh-color-text-primary-on-dark, #ffffff)`}
- * @cssprop     --rh-cta-hover-background-color
+ * @cssprop     [--rh-cta-hover-background-color=var(--rh-color-brand-red-dark, #be0000)]
  *              Sets the cta background color on hover
- *              {@default `var(--rh-color-brand-red-dark, #be0000)`}
- * @cssprop     --rh-cta-hover-border-color
+ * @cssprop     [--rh-cta-hover-border-color=var(--rh-color-brand-red-dark, #be0000)]
  *              Sets the cta boder color on hover
- *              {@default `var(--rh-color-brand-red-dark, #be0000)`}
- * @cssprop     --rh-cta-focus-color
+ * @cssprop     [--rh-cta-focus-color=var(--rh-color-text-primary-on-dark, #ffffff)]
  *              Sets the cta color on focus
- *              {@default `var(--rh-color-text-primary-on-dark, #ffffff)`}
- * @cssprop     --rh-cta-focus-background-color
+ * @cssprop     [--rh-cta-focus-background-color=var(--rh-color-brand-red-on-light, #ee0000)]
  *              Sets the cta background color on focus
- *              {@default `var(--rh-color-brand-red-on-light, #ee0000)`}
- * @cssprop     --rh-cta-focus-container-background-color
+ * @cssprop     [--rh-cta-focus-container-background-color=transparent]
  *              Sets the cta container background color on focus
- *              {@default transparent}
- * @cssprop     --rh-cta-focus-container-outline-color
+ * @cssprop     [--rh-cta-focus-container-outline-color=#0066cc]
  *              Sets the cta container outline color on focus
- *              {@default #0066cc}
- * @cssprop     --rh-cta-focus-border-color
+ * @cssprop     [--rh-cta-focus-border-color=transparent]
  *              Sets the cta border color on focus
- *              {@default transparent}
- * @cssprop     --rh-cta-focus-inner-border-color
+ * @cssprop     [--rh-cta-focus-inner-border-color=transparent]
  *              Sets the cta inner border color on focus
- *              {@default transparent}
- * @cssprop     --rh-cta-active-color
+ * @cssprop     [--rh-cta-active-color=var(--rh-color-text-primary-on-dark, #ffffff)]
  *              Sets the cta color on active. Applicable only for secondary variant
- *              {@default `var(--rh-color-text-primary-on-dark, #ffffff)`}
- * @cssprop     --rh-cta-active-background-color
+ * @cssprop     [--rh-cta-active-background-color=var(--rh-color-brand-red-dark, #be0000)]
  *              Sets the cta background color on active
- *              {@default `var(--rh-color-brand-red-dark, #be0000)`}
- * @cssprop     --rh-cta-active-container-background-color
+ * @cssprop     [--rh-cta-active-container-background-color=#0066cc1a]
  *              Sets the cta container background color on active. Applicable only for default variant
- *              {@default #0066cc1a}
- * @cssprop     --rh-cta-active-inner-border-color
+ * @cssprop     [--rh-cta-active-inner-border-color=var(--rh-color-text-primary-on-dark, #ffffff)]
  *              Sets the cta inner border color on active
- *              {@default `var(--rh-color-text-primary-on-dark, #ffffff)`}
- * @cssprop     --rh-cta-text-decoration
+ * @cssprop     [--rh-cta-text-decoration=none]
  *              Sets the cta text decoration
- *              {@default none}
- * @cssprop     --rh-cta-focus-text-decoration
+ * @cssprop     [--rh-cta-focus-text-decoration=none]
  *              Sets the cta text decoration on focus
- *              {@default none}
- * @cssprop     --rh-cta-hover-text-decoration
+ * @cssprop     [--rh-cta-hover-text-decoration=none]
  *              Sets the cta text decoration on hover
- *              {@default none}
- * @cssprop     --rh-cta-active-text-decoration
+ * @cssprop     [--rh-cta-active-text-decoration=none]
  *              Sets the cta text decoration on active
- *              {@default none}
  */
 @customElement('rh-cta')
 export class RhCta extends LitElement {

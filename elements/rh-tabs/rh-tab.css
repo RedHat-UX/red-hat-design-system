@@ -55,10 +55,11 @@ slot[name="icon"] {
   width: 100%;
   max-width: var(--_tab-max-width, 200px);
   max-height: 100%;
-  padding-block-start: var(--rh-tabs-link-padding-block-start, var(--rh-space-lg, 16px));
-  padding-inline-start: var(--rh-tabs-link-padding-inline-start, var(--rh-space-2xl, 32px));
-  padding-block-end: var(--rh-tabs-link-padding-block-end, var(--rh-space-lg, 16px));
-  padding-inline-end: var(--rh-tabs-link-padding-inline-end, var(--rh-space-2xl, 32px));
+  padding:
+    var(--rh-tabs-link-padding-block-start, var(--rh-space-lg, 16px))
+    var(--rh-tabs-link-padding-inline-end, var(--rh-space-2xl, 32px))
+    var(--rh-tabs-link-padding-block-end, var(--rh-space-lg, 16px))
+    var(--rh-tabs-link-padding-inline-start, var(--rh-space-2xl, 32px));
 }
 
 #button:before,

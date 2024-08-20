@@ -158,6 +158,9 @@ sticky-card:
  - announcement
  - rh-dialog
  - sticky-banner
+rh-video-embed: 
+  - rh-audio-player
+  - rh-button
 video-thumbnail: 
  - rh-audio-player
 
