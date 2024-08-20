@@ -11,7 +11,7 @@ import { OverflowController } from '@patternfly/pfe-core/controllers/overflow-co
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
-import '@patternfly/elements/pf-icon/pf-icon.js';
+import '@rhds/elements/rh-icon/rh-icon.js';
 
 import styles from './rh-subnav.css';
 
@@ -33,7 +33,7 @@ export class RhSubnav extends LitElement {
   protected static readonly scrollIconRight: string = 'angle-right';
 
   /** Icon set to use for the scroll buttons */
-  protected static readonly scrollIconSet: string = 'fas';
+  protected static readonly scrollIconSet: string = 'ui';
 
   private static instances = new Set<RhSubnav>();
 
@@ -120,17 +120,17 @@ export class RhSubnav extends LitElement {
         <button id="previous" tabindex="-1" aria-hidden="true"
                 ?disabled="${!this.#overflow.overflowLeft}"
                 @click="${this.#scrollLeft}">
-          <pf-icon size="sm"
+          <rh-icon size="sm"
                    icon="${scrollIconLeft}"
                    set="${scrollIconSet}"
-                   loading="eager"></pf-icon>
+                   loading="eager"></rh-icon>
         </button>`}
         <slot part="links"
               @slotchange="${this.#onSlotchange}"></slot>${!showScrollButtons ? '' : html`
         <button id="next" tabindex="-1" aria-hidden="true"
                 ?disabled="${!this.#overflow.overflowRight}"
                 @click="${this.#scrollRight}">
-          <pf-icon icon="${scrollIconRight}" set="${scrollIconSet}" loading="eager"></pf-icon>
+          <rh-icon icon="${scrollIconRight}" set="${scrollIconSet}" loading="eager"></rh-icon>
         </button>`}
       </nav>
     `;

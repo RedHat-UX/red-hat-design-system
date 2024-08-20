@@ -22,13 +22,6 @@
     import '/assets/javascript/elements/uxdot-example.js';
   </script>
 
-  {# pficon configuration #}
-  <script type="module">
-    import { PfIcon } from '@patternfly/elements/pf-icon/pf-icon.js';
-    PfIcon.getIconUrl = (set, icon) =>
-      new URL(`/assets/packages/@patternfly/icons/${set}/${icon}.js`, location.origin);
-  </script>
-
   <script async src="https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js"></script>
 
 
