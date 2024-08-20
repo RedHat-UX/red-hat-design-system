@@ -90,20 +90,11 @@ const Toast = text => {
 
   document.addEventListener('click', async function() {
     if (event.target instanceof RhButton) {
-      const tip = event.target.closest('rh-tooltip')
       const { html, icon } = event.target.dataset;
       await navigator.clipboard.writeText(html)
       await Toast(`Copied ${icon}`);
     }
   });
-
-  async function renderLink() {
-    render(repeat(['link'], () => {
-      return html`
-        <rh-cta href="https://red-hat-icons.netlify.app/">Red Hat Icons sets</rh-cta>
-      `
-    }), document.getElementById('rh-icon-demo-output'));
-  }
 
   async function renderIcons(sets) {
     render(repeat(sets, (set) => {
