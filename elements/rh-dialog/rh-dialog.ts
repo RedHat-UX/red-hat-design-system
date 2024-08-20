@@ -146,10 +146,10 @@ export class RhDialog extends LitElement {
                 </footer>
               </div>
               <button id="close-button"
-                  part="close-button"
-                  aria-label="Close dialog"
-                  @keydown=${this.onKeydown}
-                  @click=${this.close}>
+                      part="close-button"
+                      aria-label="Close dialog"
+                      @keydown=${this.onKeydown}
+                      @click=${this.close}>
                 <svg fill="currentColor" viewBox="0 0 352 512">
                   <path d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path>
                 </svg>
@@ -188,7 +188,7 @@ export class RhDialog extends LitElement {
   }
 
   @observes('open')
-  protected async _openChanged(oldValue?: boolean, newValue?: boolean) {
+  protected async _openChanged(oldValue?: boolean, open?: boolean) {
     if (this.type === 'video') {
       if (oldValue === true && this.open === false) {
         this.querySelector('video')?.pause?.();
@@ -198,12 +198,12 @@ export class RhDialog extends LitElement {
         }
       }
     } else if (oldValue == null
-               || newValue == null
+               || open == null
                // loosening types to prevent running these effects in unexpected circumstances
                // eslint-disable-next-line eqeqeq
-               || oldValue == newValue) {
+               || oldValue == open) {
       return;
-    } else if (this.open) {
+    } else if (open) {
       // This prevents background scroll
       document.body.style.overflow = 'hidden';
       await this.updateComplete;
@@ -214,13 +214,15 @@ export class RhDialog extends LitElement {
       // Return scrollability
       document.body.style.overflow = 'auto';
 
+      const event = this.#cancelling ? new DialogCancelEvent() : new DialogCloseEvent();
+
       await this.updateComplete;
 
       if (this.#triggerElement) {
         this.#triggerElement.focus();
       }
 
-      this.dispatchEvent(this.#cancelling ? new DialogCancelEvent() : new DialogCloseEvent());
+      this.dispatchEvent(event);
     }
   }
 
