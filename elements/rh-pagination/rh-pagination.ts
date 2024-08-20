@@ -33,15 +33,12 @@ const L2 = html`
  * @csspart numeric-middle - container for the numeric control at medium screen widths
  * @csspart numeric-end - container for the numeric control at small and large screen widths
  * @csspart numeric - shared container for the numeric controls at all widths
- * @cssprop {<color>} --rh-pagination-accent-color
+ * @cssprop {<color>} [--rh-pagination-accent-color=var(--rh-color-interactive-blue, #0066cc)]
  *          Sets the outline color when the page input has focus.
- *          {@default `var(--rh-color-interactive-blue, #0066cc)`}
- * @cssprop {<color>} --rh-pagination-background-focused
+ * @cssprop {<color>} [--rh-pagination-background-focused=var(--rh-color-gray-20, #c7c7c7)]
  *          Sets the disabled stepper color.
- *          {@default `var(--rh-color-gray-20, #c7c7c7)`}
- * @cssprop {<color>} --rh-pagination-stepper-color
+ * @cssprop {<color>} [--rh-pagination-stepper-color=var(--rh-color-icon-subtle, #707070)]
  *           Sets the stepper color.
- *          {@default `var(--rh-color-icon-subtle, #707070)`}
  */
 @customElement('rh-pagination')
 export class RhPagination extends LitElement {
