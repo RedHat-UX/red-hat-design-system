@@ -72,8 +72,11 @@ export class RhAlert extends LitElement {
    *  - `warning` - Indicates a caution state, like a non-blocking error that might need to be fixed.
    *  - `danger` - Indicates a danger state, like an error that is blocking a user from completing a task.
    */
-  @property({ reflect: true })
-    state: 'default' | 'error' | 'success' | 'warning' | 'danger' | 'info' = 'default';
+  @property(
+    {
+      reflect: true,
+    }
+  ) state: 'default' | 'error' | 'success' | 'warning' | 'danger' | 'info' = 'default';
 
   /**
    * The alternate Inline alert style includes a border instead of a line which
@@ -84,9 +87,6 @@ export class RhAlert extends LitElement {
    * be presented within a specific layout or component.
    */
   @property({ reflect: true }) variant?: 'alternate' | 'toast' | 'inline';
-
-  /** @deprecated */
-  @property({ reflect: true, type: Boolean }) toast = false;
 
   /**
    * Alert variants have different rules regarding their ability to be dismissed by a user.
@@ -102,17 +102,6 @@ export class RhAlert extends LitElement {
     const event = new AlertCloseEvent();
     if (this.dispatchEvent(event)) {
       this.remove();
-    }
-  }
-
-  willUpdate(changed: PropertyValues<this>) {
-    // toast as a boolean attr is deprecated, so this replicates the previous behaviour
-    if (changed.has('toast') && this.toast) {
-      this.variant = 'toast';
-    }
-    // variant as a boolean attr is deprecated, so this replicates the previous behaviour
-    if (changed.has('variant') && (this.variant as unknown as boolean) === false) {
-      this.variant = undefined;
     }
   }
 

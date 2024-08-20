@@ -1,4 +1,4 @@
-import { LitElement, html, isServer } from 'lit';
+import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -15,9 +15,7 @@ import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 /**
  * A switch toggles the state of a setting (between on and off). Switches and checkboxes can often be used interchangeably, but the switch provides a more explicit, visible representation on a setting.
- *
  * @summary  A switch toggles the state of a setting (between on and off).
- *
  * @cssprop --rh-switch-unchecked - The background color of the switch when it is unchecked.
  * @cssprop --rh-switch-checked - The background color of the switch when it is checked.
  * @cssprop --rh-switch-disabled - The background color of the switch when it is disabled.
@@ -95,7 +93,6 @@ export class RhSwitch extends LitElement {
       }
       if ('ariaDescribedByElements' in ElementInternals) {
         // see https://w3c.github.io/aria/#dom-ariamixin
-        // @ts-expect-error: InternalsController has the wrong type here, this is a FrozenArray
         this.#internals.ariaDescribedByElements = stateEls;
       } else {
         this.setAttribute('aria-describedby', stateEls.map(x => x.id).join(' '));

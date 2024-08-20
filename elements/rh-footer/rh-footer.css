@@ -227,8 +227,7 @@ footer,
   grid-template-columns: repeat(1fr, 25%);
   grid-template-rows: repeat(1, min-content auto);
   grid-auto-columns: minmax(0, 1fr);
-  row-gap: var(--rh-space-lg, 16px);
-  column-gap: var(--rh-space-2xl, 32px);
+  gap: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
   grid-auto-flow: column;
 }
 

@@ -10,6 +10,7 @@ import { deprecation } from '@patternfly/pfe-core/decorators.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 import { TabsAriaController } from '@patternfly/pfe-core/controllers/tabs-aria-controller.js';
 import { OverflowController } from '@patternfly/pfe-core/controllers/overflow-controller.js';
+import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
@@ -33,34 +34,19 @@ export { RhTab };
  * Tabs are used to organize and navigate between sections of content.
  * They feature a horizontal or a vertical list of section text labels
  * with a content panel below or to the right of the component.
- *
  * @summary Arranges content in a contained view on the same page
- *
  * @csspart container - outer container
  * @csspart tabs-container - tabs container
  * @csspart tabs - tablist
  * @csspart panels - panels
- *
  * @slot tab - Must contain one or more `<rh-tab>`
  * @slot - Must contain one or more `<rh-tab-panel>`
- *
- * @cssprop {<color>} --rh-tabs-border-color - Tabs Border color {@default `#c7c7c7`}
- * @cssprop {<length>} --rh-tabs-inset - Tabs inset {@default `auto`}
- *
+ * @cssprop {<color>} [--rh-tabs-border-color=#c7c7c7] - Tabs Border color
+ * @cssprop {<length>} [--rh-tabs-inset=auto] - Tabs inset
  */
 @customElement('rh-tabs')
 export class RhTabs extends LitElement {
   static readonly styles = [styles];
-
-  /** @deprecated */
-  static isTab(element: HTMLElement): element is RhTab {
-    return element instanceof RhTab;
-  }
-
-  /** @deprecated */
-  static isPanel(element: HTMLElement): element is RhTabPanel {
-    return element instanceof RhTabPanel;
-  }
 
   /**
    * Label for the scroll left button
@@ -81,7 +67,22 @@ export class RhTabs extends LitElement {
   /**
    * Index of the active tab
    */
-  @property({ type: Number, attribute: 'active-index' }) activeIndex = -1;
+  @property({ attribute: 'active-index', type: Number })
+  get activeIndex() {
+    return this.#activeIndex;
+  }
+
+  set activeIndex(v: number) {
+    this.#tabindex.atFocusedItemIndex = v;
+    this.#activeIndex = v;
+    this.activeTab = this.tabs[v];
+    for (const tab of this.tabs) {
+      if (!this.activeTab?.disabled) {
+        tab.active = tab === this.activeTab;
+      }
+      this.#tabs.panelFor(tab)?.toggleAttribute('hidden', !tab.active);
+    }
+  }
 
   @property({ attribute: false }) activeTab?: RhTab;
 
@@ -135,22 +136,24 @@ export class RhTabs extends LitElement {
     return !this.vertical;
   }
 
+  #activeIndex = -1;
+
   #overflow = new OverflowController(this);
 
   #tabs = new TabsAriaController<RhTab, RhTabPanel>(this, {
-    isTab: (x): x is RhTab => x instanceof RhTab,
-    isPanel: (x): x is RhTabPanel => x instanceof RhTabPanel,
+    isTab: (x): x is RhTab => (x as HTMLElement).localName === 'rh-tab',
+    isPanel: (x): x is RhTabPanel => (x as HTMLElement).localName === 'rh-tab-panel',
     isActiveTab: x => x.active,
   });
 
-  #tabindex = new RovingTabindexController(this, {
-    getHTMLElement: () => this.tabList,
+  #tabindex = RovingTabindexController.of(this, {
+    getItemsContainer: () => this.tabList,
     getItems: () => this.tabs ?? [],
   });
 
   #dir = new DirController(this);
 
-  get tabs() {
+  get tabs(): RhTab[] {
     return this.#tabs.tabs;
   }
 
@@ -173,23 +176,21 @@ export class RhTabs extends LitElement {
     super.connectedCallback();
     this.id ||= getRandomId(this.localName);
     this.addEventListener('expand', this.#onExpand);
+    this.activeIndex = this.#tabindex.atFocusedItemIndex;
   }
 
-  override willUpdate(changed: PropertyValues<this>): void {
-    // RTIC will kick the update cycle whenever the tabs contents change,
-    // so let's just update the context on every cycle
-    if (changed.has('activeIndex')) {
-      this.select(this.activeIndex);
-    } else if (changed.has('activeTab') && this.activeTab) {
-      this.select(this.activeTab);
-    } else {
-      this.#updateActive();
+  override willUpdate(): void {
+    if (!this.manual && this.activeIndex !== this.#tabindex.atFocusedItemIndex) {
+      this.activeIndex = this.#tabindex.atFocusedItemIndex;
     }
     this.ctx = this.#ctx;
   }
 
   async firstUpdated() {
     this.tabList.addEventListener('scroll', this.#overflow.onScroll.bind(this));
+    if (this.tabs.length && this.activeIndex === -1) {
+      this.select(this.tabs.findIndex(x => !x.disabled));
+    }
     this.#onSlotchange();
   }
 
@@ -206,7 +207,7 @@ export class RhTabs extends LitElement {
                     @click="${() => !rtl ? this.#overflow.scrollLeft() : this.#overflow.scrollRight()}">
               <pf-icon icon="angle-left" set="fas" loading="eager"></pf-icon>
             </button>`}
-            <div style="display: contents;" role="tablist">
+            <div id="tablist" role="tablist">
               <slot name="tab"
                     part="tabs"
                     @slotchange="${this.#onSlotchange}"></slot>
@@ -225,6 +226,15 @@ export class RhTabs extends LitElement {
     `;
   }
 
+  @observes('activeTab')
+  protected activeTabChanged(old?: RhTab, activeTab?: RhTab): void {
+    if (activeTab?.disabled) {
+      this.activeIndex = 0;
+    } if (activeTab) {
+      this.activeIndex = this.tabs.indexOf(activeTab);
+    }
+  }
+
   #onSlotchange() {
     this.#overflow.init(this.tabList, this.tabs);
   }
@@ -236,31 +246,13 @@ export class RhTabs extends LitElement {
     }
   }
 
-  #updateActive({ force = false } = {}) {
-    if (!this.#tabindex.activeItem?.disabled) {
-      this.tabs?.forEach((tab, i) => {
-        if (force || !this.manual) {
-          const active = tab === this.#tabindex.activeItem;
-          tab.active = active;
-          if (active) {
-            this.activeIndex = i;
-            this.activeTab = tab;
-          }
-        }
-        this.#tabs.panelFor(tab)?.toggleAttribute('hidden', !tab.active);
-      });
-    }
-    this.#overflow.update();
-  }
-
   select(option: RhTab | number) {
     if (typeof option === 'number') {
-      const item = this.tabs[option];
-      this.#tabindex.setActiveItem(item);
+      this.activeIndex = option;
     } else {
-      this.#tabindex.setActiveItem(option);
+      this.activeIndex = this.#tabindex.items.indexOf(option);
     }
-    this.#updateActive({ force: true });
+    this.#overflow.update();
   }
 }
 

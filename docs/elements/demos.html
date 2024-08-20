@@ -13,6 +13,19 @@ pagination:
 <style>
 playground-project {
   height: 825px;
+  &:fullscreen {
+    height: 100vh;
+    & rh-card {
+      height: 100%;
+      &::part(body) {
+        flex: auto;
+      }
+    }
+    & playground-file-editor,
+    & playground-preview {
+      height: 100%;
+    }
+  }
   &:not(:defined) { opacity: 0; }
   display: flex;
   flex-flow: column;
@@ -34,6 +47,10 @@ playground-project {
     &::part(body) {
       border-block-end: var(--rh-border-width-sm) solid var(--rh-color-border-subtle-on-light);
     }
+    & rh-button[slot="footer"] {
+      display: inline-block;
+      margin-inline-end: auto;
+    }
   }
   & rh-tab-panel {
     display: none !important;
@@ -43,6 +60,7 @@ playground-project {
 
 <script type="module">
   import 'playground-elements';
+  import '@rhds/elements/rh-button/rh-button.js';
   import '@rhds/elements/rh-card/rh-card.js';
   import '@rhds/elements/rh-tabs/rh-tabs.js';
   import {TabExpandEvent} from '@rhds/elements/rh-tabs/rh-tab.js';
@@ -57,6 +75,13 @@ playground-project {
             fileEditor.filename = filename;
           }
         }
+      }
+    })
+  }
+  for (const playground of document.querySelectorAll('playground-project')) {
+    playground.addEventListener('click', function(event) {
+      if (event.target.dataset?.action === 'fullscreen') {
+        playground.requestFullscreen();
       }
     })
   }
@@ -147,10 +172,12 @@ playground-project {
         <playground-file-editor project="{{ projectId }}"
                                 filename="{{ filename }}"
                                 line-numbers></playground-file-editor>
-        <rh-cta slot="footer"
-            ><a href="{{ githubSourceUrl }}">View source on GitHub</a></rh-cta>
-        <rh-cta slot="footer"
-            ><a href="{{ demoPageUrl }}">View Fullscreen</a></rh-cta>
+        <rh-button slot="footer"
+                   variant="tertiary"
+                   data-action="fullscreen"
+                   icon="expand">FullScreen</rh-button>
+        <rh-cta slot="footer" href="{{ githubSourceUrl }}">View source on GitHub</rh-cta>
+        <rh-cta slot="footer" href="{{ demoPageUrl }}">View In Own Tab</rh-cta>
       </rh-card>
     </playground-project>
   {%- endif -%}

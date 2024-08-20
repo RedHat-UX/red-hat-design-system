@@ -50,9 +50,9 @@ export class RhTileGroup extends LitElement {
 
   #tiles: RhTile[] = [];
 
-  #initTiles = false;
-
-  #tabindex = new RovingTabindexController<HTMLElement>(this);
+  #tabindex = RovingTabindexController.of(this, {
+    getItems: () => this.#tiles,
+  });
 
   #internals = InternalsController.of(this);
 
@@ -141,7 +141,7 @@ export class RhTileGroup extends LitElement {
 
   /** Sets focus on active tile */
   focus() {
-    (this.#tabindex?.activeItem || this.#tabindex.firstItem)?.focus();
+    this.#tabindex.items[this.#tabindex.atFocusedItemIndex]?.focus();
   }
 
   /**
@@ -179,12 +179,6 @@ export class RhTileGroup extends LitElement {
       tile.disabledGroup = this.disabled;
       tile.id ||= getRandomId('rh-tile');
     });
-    if (this.#initTiles) {
-      this.#tabindex.updateItems(this.#tiles);
-    } else {
-      this.#initTiles = true;
-      this.#tabindex.initItems(this.#tiles);
-    }
   }
 }
 

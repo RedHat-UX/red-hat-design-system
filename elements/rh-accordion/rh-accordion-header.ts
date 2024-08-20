@@ -53,7 +53,6 @@ export class RhAccordionHeader extends LitElement {
 
   @property({ type: Boolean, reflect: true }) expanded = false;
 
-  @colorContextConsumer() private on?: ColorTheme;
 
   @consume({ context, subscribe: true })
   @property({ attribute: false })

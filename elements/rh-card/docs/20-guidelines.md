@@ -29,6 +29,18 @@
 
 ## Usage
 
+
+Cards are used to display basic content or long paragraphs of text. Secondary and 
+Default calls to action may be used.
+
+<rh-alert state="info">
+
+  For examples of patterns which use or modify Card,
+  see the [card patterns page](/patterns/card).
+
+</rh-alert>
+
+
 ### Variants
 
 There are several card variants that can be used for a variety of use cases.
@@ -147,6 +159,7 @@ There are several card variants that can be used for a variety of use cases.
   </rh-card>
 
 </div>
+
 
 ### Content
 

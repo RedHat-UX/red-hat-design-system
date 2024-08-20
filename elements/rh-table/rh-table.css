@@ -35,7 +35,7 @@
 }
 
 :is(.color-palette-light, .color-palette-lighter) {
-  --rh-table-row-background-color:
+  --rh-table-row-background-hover-color:
     rgb(
         var(
           --_rh-color-white-rgb, /* making private as currently doesn't exist */
@@ -46,7 +46,7 @@
 }
 
 .dark {
-  --rh-table-row-background-color:
+  --rh-table-row-background-hover-color:
     rgb(
         var(
           --_rh-color-white-rgb, /* making private as currently doesn't exist */
@@ -54,7 +54,7 @@
         )
         / var(--rh-opacity-10, 10%)
       );
-  --rh-table-column-background-color:
+  --rh-table-column-background-hover-color:
     rgb(
         var(
           --rh-color-blue-70-rgb,

@@ -3,10 +3,10 @@ const { join } = require('node:path');
 const { pathToFileURL } = require('node:url');
 const { AssetCache } = require('@11ty/eleventy-fetch');
 
-function logPerf() {
+async function logPerf() {
   // We should log performance regressions
   /* eslint-disable no-console */
-  const chalk = require('chalk');
+  const { default: chalk } = await import('chalk');
   const TOTAL = performance.measure('importMap-total', 'importMap-start', 'importMap-end');
   const RESOLVE = performance.measure(
     'importMap-resolve',

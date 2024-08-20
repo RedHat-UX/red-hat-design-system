@@ -9,7 +9,6 @@ import '@patternfly/elements/pf-icon/pf-icon.js';
 import '@rhds/elements/rh-accordion/rh-accordion.js';
 
 export { RhFooterUniversal } from './rh-footer-universal.js';
-import './rh-global-footer.js';
 import './rh-footer-social-link.js';
 import './rh-footer-links.js';
 import './rh-footer-block.js';
@@ -48,16 +47,15 @@ function isHeaderTagName(tagName: string) {
  * @csspart links-accordion-panel - mobile links panel container element
  * @slot    main-secondary - typically contains prose or promotional content
  * @csspart main-secondary - container fro prose or promotional content
- * @slot    global - must contain `<rh-footer-universal>` {@deprecated - use `universal`}
  * @slot    universal - must contain `<rh-footer-universal>`
- * @cssprop --rh-footer-icon-color - {@default #8a8d90}
- * @cssprop --rh-footer-icon-color-hover - {@default #b8bbbe}
- * @cssprop --rh-footer-border-color - {@default #6a6e73}
- * @cssprop --rh-footer-accent-color - {@default #e00}
- * @cssprop --rh-footer-section-side-gap - {@default 16px}
- * @cssprop --rh-footer-links-gap - {@default 8px}
- * @cssprop --rh-footer-link-header-font-size - {@default 0.875em}
- * @cssprop --rh-footer-nojs-min-height - {@default 750px}
+ * @cssprop [--rh-footer-icon-color=#8a8d90]
+ * @cssprop [--rh-footer-icon-color-hover=#b8bbbe]
+ * @cssprop [--rh-footer-border-color=#6a6e73]
+ * @cssprop [--rh-footer-accent-color=#e00]
+ * @cssprop [--rh-footer-section-side-gap=16px]
+ * @cssprop [--rh-footer-links-gap=8px]
+ * @cssprop [--rh-footer-link-header-font-size=0.875em]
+ * @cssprop [--rh-footer-nojs-min-height=750px]
  */
 @customElement('rh-footer')
 export class RhFooter extends LitElement {
@@ -147,7 +145,7 @@ export class RhFooter extends LitElement {
               </div>
             </slot>
           </div>
-          <slot name="universal"><slot name="global"></slot></slot>
+          <slot name="universal"></slot>
         </slot>
       </footer>
     `;
