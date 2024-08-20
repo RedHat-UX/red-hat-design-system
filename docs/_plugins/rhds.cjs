@@ -12,14 +12,13 @@ const RHDSShortcodesPlugin = require('./shortcodes.cjs');
 const { parse } = require('async-csv');
 
 /**
- * @typedef {object} EleventyTransformContext the `this` binding for transform functions
- * @property {string} outputPath the path the page will be written to
- * @property {string} inputPath the path to the page's input file (e.g. template or paginator)
+ * EleventyTransformContext the `this` binding for transform functions
+ * outputPath the path the page will be written to
+ * inputPath the path to the page's input file (e.g. template or paginator)
  */
 
 /**
  * Replace paths in demo files from the dev SPA's format to 11ty's format
- * @this {EleventyTransformContext}
  * @param {string} content the HTML content to replace
  */
 function demoPaths(content) {
@@ -99,7 +98,6 @@ function getFilesToCopy() {
       .filter(ent => ent.isDirectory())
       .map(ent => ent.name);
 
-  /** @type {import('@patternfly/pfe-tools/config.js').PfeConfig} */
   const config = require('../../.pfe.config.json');
 
   // Copy all component and core files to _site
@@ -209,7 +207,6 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
      * NB: since the data for this shortcode is no a POJO,
      * but a DocsPage instance, 11ty assigns it to this.ctx._
      * @see https://github.com/11ty/eleventy/blob/bf7c0c0cce1b2cb01561f57fdd33db001df4cb7e/src/Plugins/RenderPlugin.js#L89-L93
-     * @type {import('@patternfly/pfe-tools/11ty/DocsPage.js').DocsPage}
      */
     const docsPage = this.ctx.doc;
     return docsPage.description;
@@ -325,8 +322,10 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
       const { glob } = await import('glob');
       const { DocsPage } = await import('@patternfly/pfe-tools/11ty/DocsPage.js');
       const {
-        Manifest,
-      } = await import('@patternfly/pfe-tools/custom-elements-manifest/lib/Manifest.js');
+        getAllManifests,
+      } = await import(
+        '@patternfly/pfe-tools/custom-elements-manifest/custom-elements-manifest.js'
+      );
 
       const customElementsManifestDocsPages = await eleventyConfig.globalData?.elements();
       const filePaths = (await glob(`elements/*/docs/*.md`, { cwd: process.cwd() }))
@@ -335,7 +334,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
       return filePaths
           .map(filePath => {
             const props = getProps(filePath);
-            const [manifest] = Manifest.getAll();
+            const [manifest] = getAllManifests();
             const docsPage =
               customElementsManifestDocsPages.find(x => x.tagName === props.tagName)
               ?? new DocsPage(manifest);

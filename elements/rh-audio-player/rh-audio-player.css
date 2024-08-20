@@ -291,8 +291,7 @@ input[type="range"] {
 #time-tooltip {
   width: var(--_time-slider-width);
   flex: 0 0 var(--_time-slider-width);
-  margin-inline-start: 16px;
-  margin-inline-end: 0;
+  margin-inline: 16px 0;
 }
 
 #time {
@@ -338,8 +337,7 @@ input[type="range"] {
 
 #volume-tooltip {
   width: auto;
-  margin-inline-start: 0;
-  margin-inline-end: calc(var(--_icon-gap) / 2);
+  margin-inline: 0 calc(var(--_icon-gap) / 2);
 }
 
 #playback-rate-tooltip,
@@ -470,8 +468,7 @@ rh-menu > button:focus {
 }
 
 #playback-rate-tooltip {
-  margin-inline-start: 10px;
-  margin-inline-end: 2px;
+  margin-inline: 10px 2px;
 }
 
 #playback-rate-stepper,
@@ -654,8 +651,7 @@ rh-menu > button:focus {
   }
 
   :host([layout="full"]) #time-tooltip {
-    margin-inline-start: 0;
-    margin-inline-end: calc(var(--_icon-gap) / 2);
+    margin-inline: 0 calc(var(--_icon-gap) / 2);
   }
 
   :host([layout="full"]) #full-current,

@@ -14,46 +14,26 @@ import styles from './rh-breadcrumb.css';
  * @summary Links displaying a hierarchical location
  * @slot - Place an ordered list (`<ol>`) of your breadcrumbs into the slot
  * @csspart container - container element for slotted breadcrumb
- * @cssprop --rh-breadcrumb-link-color
+ * @cssprop [--rh-breadcrumb-link-color=var(--rh-color-interactive-blue-darker, #0066cc)]
  *         The link color for each anchor in the list
- *         {@default `var(--rh-color-interactive-blue-darker, #0066cc)`}
- *
- * @cssprop --rh-breadcrumb-link-color-current-page
+ * @cssprop [--rh-breadcrumb-link-color-current-page=var(--rh-color-text-primary-on-light, #151515)]
  *         The current page's color
- *         {@default `var(--rh-color-text-primary-on-light, #151515)`}
- *
- * @cssprop --rh-breadcrumb-link-color-current-page-subtle
+ * @cssprop [--rh-breadcrumb-link-color-current-page-subtle=var(--rh-color-text-secondary-on-light, #4d4d4d)]
  *         The current page's color for the `subtle` variant
- *         {@default `var(--rh-color-text-secondary-on-light, #4d4d4d)`}
- *
- * @cssprop --rh-breadcrumb-link-color-hover
+ * @cssprop [--rh-breadcrumb-link-color-hover=var(--rh-color-interactive-blue-darkest, #003366)]
  *         The link color on hover/focus/active for each anchor in the list
- *         {@default `var(--rh-color-interactive-blue-darkest, #003366)`}
- *
- * @cssprop --rh-breadcrumb-link-color-visited
+ * @cssprop [--rh-breadcrumb-link-color-visited=var(--rh-color-interactive-purple-darker, #5e40be)]
  *         The visited color for each breadcrumb link
- *         {@default `var(--rh-color-interactive-purple-darker, #5e40be)`}
- *
- * @cssprop --rh-breadcrumb-link-color-visited-hover
+ * @cssprop [--rh-breadcrumb-link-color-visited-hover=var(--rh-color-interactive-purple-darkest, #21134d)]
  *         The visited color on hover for each breadcrumb link
- *         {@default `var(--rh-color-interactive-purple-darkest, #21134d)`}
- *
- * @cssprop --rh-breadcrumb-link-focus-outline-color
+ * @cssprop [--rh-breadcrumb-link-focus-outline-color=var(--rh-color-border-interactive-on-light, #0066cc)]
  *         The link focus outline color
- *         {@default `var(--rh-color-border-interactive-on-light, #0066cc)`}
- *
- * @cssprop --rh-breadcrumb-li-padding-inline-end
+ * @cssprop [--rh-breadcrumb-li-padding-inline-end=var(--rh-breadcrumb-li-padding-inline-end, 42px)]
  *          Sets the spacing between each breadcrumb item.
- *          {@default `var(--rh-breadcrumb-li-padding-inline-end, 42px)`}
- *
  * @cssprop --rh-breadcrumb-caret-image
  *          The default background image separating each breadcrumb item
- *          {@default `var(--rh-breadcrumb-caret-image, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='15' viewBox='0 0 10 15' fill='none'%3E%3Cg clip-path='url(%23clip0_232_19576)'%3E%3Cpath d='M2.5 14.5L0.5 12.5L5.5 7.5L0.5 2.5L2.5 0.5L9.5 7.5L2.5 14.5Z' fill='%23ffffff'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_232_19576'%3E%3Crect width='10' height='14' fill='white' transform='matrix(-1 0 0 1 10 0.5)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E"))`}
- *
  * @cssprop --rh-breadcrumb-caret-image-subtle
  *          The `subtle` variant background image separating each breadcrumb item
- *          {@default `var(--rh-breadcrumb-caret-image-subtle, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='15' viewBox='0 0 10 15' fill='none'%3E%3Cg clip-path='url(%23clip0_232_19576)'%3E%3Cpath d='M2.5 14.5L0.5 12.5L5.5 7.5L0.5 2.5L2.5 0.5L9.5 7.5L2.5 14.5Z' fill='%23a3a3a3'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_232_19576'%3E%3Crect width='10' height='14' fill='white' transform='matrix(-1 0 0 1 10 0.5)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E"))`}
- *
  */
 
 @customElement('rh-breadcrumb')

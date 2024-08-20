@@ -4,7 +4,7 @@ import { property } from 'lit/decorators/property.js';
 
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { bound, initializer, observed } from '@patternfly/pfe-core/decorators.js';
+import { bound, initializer, observes } from '@patternfly/pfe-core/decorators.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
@@ -44,15 +44,12 @@ async function pauseYoutube(iframe: HTMLIFrameElement) {
 /**
  * A dialog displays important information to users without requiring them to navigate away from the page.
  * @summary Communicates information requiring user input or action
- *
  * @fires {DialogOpenEvent} open - Fires when a user clicks on the trigger or manually opens a dialog.
  * @fires {DialogCloseEvent} close - Fires when either a user clicks on either the close button or the overlay or manually closes a dialog.
  * @fires {DialogCancelEvent} cancel
- *
  * @slot - The default slot can contain any type of content. When the header is not present this unnamed slot appear at the top of the dialog window (to the left of the close button). Otherwise it will appear beneath the header.
  * @slot header - The header is an optional slot that appears at the top of the dialog window. It should be a header tag (h2-h6).
  * @slot footer - Optional footer content. Good place to put action buttons.
- *
  * @csspart overlay - The dialog overlay which lies under the dialog and above the page body
  * @csspart dialog - The dialog element
  * @csspart content - The container for the dialog content
@@ -60,11 +57,9 @@ async function pauseYoutube(iframe: HTMLIFrameElement) {
  * @csspart description - The container for the optional dialog description in the header
  * @csspart close-button - The dialog's close button
  * @csspart footer - Actions footer container
- *
  * @cssprop {<number>} --rh-dialog-video-aspect-ratio
- * @cssprop {<color>} --rh-dialog-close-button-color
+ * @cssprop {<color>} [--rh-dialog-close-button-color=var(--rh-color-icon-secondary-on-dark, #ffffff)]
  *           Sets the dialog close button color.
- *          {@default `var(--rh-color-icon-secondary-on-dark, #ffffff)`}
  */
 @customElement('rh-dialog')
 export class RhDialog extends LitElement {
@@ -85,11 +80,9 @@ export class RhDialog extends LitElement {
    */
   @property({ reflect: true }) position?: 'top';
 
-  @observed
   @property({ type: Boolean, reflect: true }) open = false;
 
   /** Optional ID of the trigger element */
-  @observed
   @property() trigger?: string;
 
   @property({ reflect: true }) type?: 'video';
@@ -153,10 +146,10 @@ export class RhDialog extends LitElement {
                 </footer>
               </div>
               <button id="close-button"
-                  part="close-button"
-                  aria-label="Close dialog"
-                  @keydown=${this.onKeydown}
-                  @click=${this.close}>
+                      part="close-button"
+                      aria-label="Close dialog"
+                      @keydown=${this.onKeydown}
+                      @click=${this.close}>
                 <svg fill="currentColor" viewBox="0 0 352 512">
                   <path d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path>
                 </svg>
@@ -194,7 +187,8 @@ export class RhDialog extends LitElement {
     }
   }
 
-  protected async _openChanged(oldValue?: boolean, newValue?: boolean) {
+  @observes('open')
+  protected async _openChanged(oldValue?: boolean, open?: boolean) {
     if (this.type === 'video') {
       if (oldValue === true && this.open === false) {
         this.querySelector('video')?.pause?.();
@@ -204,12 +198,12 @@ export class RhDialog extends LitElement {
         }
       }
     } else if (oldValue == null
-               || newValue == null
+               || open == null
                // loosening types to prevent running these effects in unexpected circumstances
                // eslint-disable-next-line eqeqeq
-               || oldValue == newValue) {
+               || oldValue == open) {
       return;
-    } else if (this.open) {
+    } else if (open) {
       // This prevents background scroll
       document.body.style.overflow = 'hidden';
       await this.updateComplete;
@@ -220,16 +214,19 @@ export class RhDialog extends LitElement {
       // Return scrollability
       document.body.style.overflow = 'auto';
 
+      const event = this.#cancelling ? new DialogCancelEvent() : new DialogCloseEvent();
+
       await this.updateComplete;
 
       if (this.#triggerElement) {
         this.#triggerElement.focus();
       }
 
-      this.dispatchEvent(this.#cancelling ? new DialogCancelEvent() : new DialogCloseEvent());
+      this.dispatchEvent(event);
     }
   }
 
+  @observes('trigger')
   protected _triggerChanged() {
     if (this.trigger) {
       this.#triggerElement =
@@ -248,7 +245,7 @@ export class RhDialog extends LitElement {
     if (open) {
       const path = event.composedPath();
       const { closeOnOutsideClick } = this.constructor as typeof RhDialog;
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+
       if (closeOnOutsideClick && path.includes(overlay!) && !path.includes(dialog!)) {
         event.preventDefault();
         this.cancel();
@@ -317,9 +314,10 @@ export class RhDialog extends LitElement {
 
   /**
    * Manually closes the dialog.
-   * ```js
-   * dialog.close();
-   * ```
+   * @param [returnValue] dialog return value.
+   * @example ```js
+   *          dialog.close();
+   *          ```
    */
   @bound close(returnValue?: string) {
     if (typeof returnValue === 'string') {

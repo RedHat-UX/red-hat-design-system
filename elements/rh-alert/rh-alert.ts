@@ -72,8 +72,11 @@ export class RhAlert extends LitElement {
    *  - `warning` - Indicates a caution state, like a non-blocking error that might need to be fixed.
    *  - `danger` - Indicates a danger state, like an error that is blocking a user from completing a task.
    */
-  @property({ reflect: true })
-    state: 'default' | 'error' | 'success' | 'warning' | 'danger' | 'info' = 'default';
+  @property(
+    {
+      reflect: true,
+    }
+  ) state: 'default' | 'error' | 'success' | 'warning' | 'danger' | 'info' = 'default';
 
   /**
    * The alternate Inline alert style includes a border instead of a line which
