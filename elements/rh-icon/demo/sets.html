@@ -1,11 +1,105 @@
 <div id="rh-icon-demo-output"></div>
 
 <script type="module">
+/**
+  * Modified: Adam Argyle's Gui Challenges Toast
+  * https://github.com/argyleink/gui-challenges/blob/main/toast/toast.js
+  * Apache License https://github.com/argyleink/gui-challenges/blob/main/LICENSE
+  */
+
+  const init = () => {
+    const node = document.createElement('section')
+    node.classList.add('gui-toast-group')
+
+    document.body.insertAdjacentElement("beforeend",node);
+    return node
+  }
+
+  const createToast = text => {
+    const node = document.createElement('output')
+    const toast = document.querySelector('#toast').content.cloneNode(true);
+    toast.querySelector('p.text').innerText = text;
+    // node.innerText = text
+    node.appendChild(toast);
+    node.classList.add('gui-toast')
+    node.setAttribute('role', 'status')
+    node.setAttribute('aria-live', 'polite')
+
+    return node
+  }
+
+  const addToast = toast => {
+    const { matches:motionOK } = window.matchMedia(
+      '(prefers-reduced-motion: no-preference)'
+    )
+
+    Toaster.children.length && motionOK
+      ? flipToast(toast)
+      : Toaster.appendChild(toast)
+  }
+
+  const Toast = text => {
+    let toast = createToast(text)
+    addToast(toast)
+
+    return new Promise(async (resolve, reject) => {
+      await Promise.allSettled(
+        toast.getAnimations().map(animation =>
+          animation.finished
+        )
+      )
+      Toaster.removeChild(toast)
+      resolve()
+    })
+  }
+
+  // https://aerotwist.com/blog/flip-your-animations/
+  const flipToast = toast => {
+    // FIRST
+    const first = Toaster.offsetHeight
+
+    // add new child to change container size
+    Toaster.appendChild(toast)
+
+    // LAST
+    const last = Toaster.offsetHeight
+
+    // INVERT
+    const invert = last - first
+
+    // PLAY
+    const animation = Toaster.animate([
+      { transform: `translateY(${invert}px)` },
+      { transform: 'translateY(0)' }
+    ], {
+      duration: 150,
+      easing: 'ease-out',
+    })
+
+    animation.startTime = document.timeline.currentTime
+  }
+
+  const Toaster = init()
+  export default Toast
+
   import "@rhds/elements/rh-icon/rh-icon.js";
-  import "@rhds/elements/rh-cta/rh-cta.js";
+  import { RhButton } from "@rhds/elements/rh-button/rh-button.js";
+  import "@rhds/elements/rh-tooltip/rh-tooltip.js";
+  import "@rhds/elements/rh-alert/rh-alert.js";
+
+  import { ui, standard, social, microns } from "@rhds/icons/icons.js";
 
   import { render, html } from 'lit';
   import { repeat } from 'lit/directives/repeat.js';
+
+  document.addEventListener('click', async function() {
+    if (event.target instanceof RhButton) {
+      const tip = event.target.closest('rh-tooltip')
+      const { html, icon } = event.target.dataset;
+      await navigator.clipboard.writeText(html)
+      await Toast(`Copied ${icon}`);
+    }
+  });
 
   async function renderLink() {
     render(repeat(['link'], () => {
@@ -15,59 +109,92 @@
     }), document.getElementById('rh-icon-demo-output'));
   }
 
-  async function renderIcons(iconMap) {
-    render(repeat(Object.keys(iconMap), (set) => {
+  async function renderIcons(sets) {
+    render(repeat(sets, (set) => {
+      const [setName, icons] = set;
       return html`
-        <div id="icons">
-        <h2 id=${set}>${set}</h2>
-        <ul>
-        ${repeat(iconMap[set], icon => `${set}-${icon}`, icon => html`
-          <li>
-            <rh-icon set="${set}" icon="${icon.replace(/\..*$/, '')}"></rh-icon>
-          </li>`)}
-        </ul>
-        </div>
+        <h2 id="${setName}">${setName}</h2>
+        <section aria-labelledby="${setName}">
+        ${repeat(icons, (icon) => {
+          const [iconName, ] = icon;
+          return html`
+           <figure>
+            <rh-icon slot="header" set="${setName}" icon="${iconName}" load="lazy"></rh-icon>
+            <figcaption>
+              <span>${iconName}</span>
+              <rh-tooltip>
+                <rh-button name="toast" variant="link" data-html='<rh-icon set="${setName}" icon="${iconName}"></rh-icon>' data-icon="${iconName}">
+                  <rh-icon set="ui" icon="copy"></rh-icon> Copy
+                </rh-button>
+                <pre slot="content"><code>&lt;rh-icon set="${setName}" icon="${iconName}"&gt;&lt;/rh-icon&gt;</code></pre>
+              </rh-tooltip>
+            </figcaption>
+           </figure>
+          `
+        })}
+        </section>
       `
     }), document.getElementById('rh-icon-demo-output'));
   }
 
-  const importmap = document.querySelector('script[type="importmap"]');
-  const { imports } = JSON.parse(importmap.innerHTML);
-  const icons = Object.keys(imports).filter((key) => key.startsWith("@rhds/icons/dist/"));
+  const sets = new Map();
+  sets.set('ui', ui.entries());
+  sets.set('standard', standard.entries());
+  sets.set('social', social.entries());
+  sets.set('microns', microns.entries());
 
-  if (icons.length === 1) {
-    await renderLink();
-  } else {
-    const iconMap = icons.reduce((acc, path) => {
-      const [,,,set,name] = path.split('/');
-      if (!acc[set]) {
-        acc[set] = [];
-      }
-      acc[set].push(name);
-      return acc;
-    }, []);
+  await renderIcons(sets);
 
-    await renderIcons(iconMap);
-  }
 </script>
+
+<template id="toast">
+  <rh-alert state="success">
+    <h3 slot="header">Success</h3>
+    <p class="text"></p>
+  </rh-alert>
+</template>
 
 
 <style>
-  #icons {
-    margin: var(--rh-space-2xl, 32px);
+  #rh-icon-demo-output {
+    overflow: hidden;
   }
 
-  #icons h2 {
+  section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--rh-space-lg, 16px);
     margin-block-end: var(--rh-space-2xl, 32px);
   }
 
-  #icons ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+
+  figure rh-button::part(button) {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--rh-space-xs, 4px);
+  }
+
+  figure {
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    justify-content: space-between;
+    width: 12rem;
+    margin: 0;
+    padding: var(--rh-space-lg, 16px);
+    border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle-on-light, #c7c7c7);
+    border-radius: var(--rh-border-radius-default, 3px);
+    text-align: center;
+  }
+
+  figcaption {
+    display: flex;
+    flex-direction: column;
     gap: var(--rh-space-lg, 16px);
+    margin-block-start: var(--rh-space-lg, 16px);
+  }
+
+  figcaption span {
+    font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   }
 </style>
