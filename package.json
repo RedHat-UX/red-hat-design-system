@@ -337,6 +337,7 @@
     "wireit": "^0.14.7"
   },
   "optionalDependencies": {
+    "@esbuild/darwin-arm64": "^0.15.18",
     "@esbuild/linux-x64": "^0.23.1",
     "@rollup/rollup-darwin-x64": "4.14.2"
   }
