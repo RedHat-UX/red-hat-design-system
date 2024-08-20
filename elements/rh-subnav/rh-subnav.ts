@@ -27,10 +27,10 @@ export class RhSubnav extends LitElement {
   static readonly styles = [styles];
 
   /** Icon name to use for the scroll left button */
-  protected static readonly scrollIconLeft: string = 'angle-left';
+  protected static readonly scrollIconLeft: string = 'arrow-left';
 
   /** Icon name to use for the scroll right button */
-  protected static readonly scrollIconRight: string = 'angle-right';
+  protected static readonly scrollIconRight: string = 'arrow-right';
 
   /** Icon set to use for the scroll buttons */
   protected static readonly scrollIconSet: string = 'ui';
@@ -120,8 +120,7 @@ export class RhSubnav extends LitElement {
         <button id="previous" tabindex="-1" aria-hidden="true"
                 ?disabled="${!this.#overflow.overflowLeft}"
                 @click="${this.#scrollLeft}">
-          <rh-icon size="sm"
-                   icon="${scrollIconLeft}"
+          <rh-icon icon="${scrollIconLeft}"
                    set="${scrollIconSet}"
                    loading="eager"></rh-icon>
         </button>`}
