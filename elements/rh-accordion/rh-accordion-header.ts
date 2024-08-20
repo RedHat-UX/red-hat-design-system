@@ -53,10 +53,12 @@ export class RhAccordionHeader extends LitElement {
 
   @property({ type: Boolean, reflect: true }) expanded = false;
 
-
   @consume({ context, subscribe: true })
   @property({ attribute: false })
   private ctx?: RhAccordionContext;
+
+  @colorContextConsumer()
+  private on?: ColorTheme;
 
   #dir = new DirController(this);
 
