@@ -127,22 +127,6 @@ export class RhCta extends LitElement {
     return super.getUpdateComplete();
   }
 
-  /**
-   * The slotted `<a>` or `<button>` element
-   * @deprecated use `data-analytics-` attributes instead
-   */
-  public get cta(): HTMLAnchorElement | HTMLButtonElement | null {
-    return this.#cta;
-  }
-
-  get #cta() {
-    return (
-      this.shadowRoot?.querySelector('a')
-      ?? this.shadowRoot?.querySelector('slot')?.assignedElements().find(isSupportedContent)
-      ?? null
-    );
-  }
-
   /** Is the element in an RTL context? */
   #dir = new DirController(this);
 
@@ -189,7 +173,11 @@ export class RhCta extends LitElement {
 
   override firstUpdated() {
     const { href, variant } = this;
-    const cta = this.#cta;
+    const cta =
+         this.shadowRoot?.querySelector('a')
+      ?? this.shadowRoot?.querySelector('slot')?.assignedElements().find(isSupportedContent)
+      ?? null;
+
     if (href && cta !== this.shadowRoot?.querySelector('a')) {
       return this.#logger.warn(`When the href attribute is used, slotted content must not be a link`);
     } else if (!href && !cta) {
