@@ -10,8 +10,8 @@
   const init = () => {
     const node = document.createElement('section')
     node.classList.add('gui-toast-group')
-
-    document.body.insertAdjacentElement("beforeend",node);
+    const output = document.getElementById('rh-icon-demo-output')
+    output.insertAdjacentElement("beforeend",node);
     return node
   }
 
@@ -38,20 +38,16 @@
       : Toaster.appendChild(toast)
   }
 
-  const Toast = text => {
-    let toast = createToast(text)
-    addToast(toast)
+const Toast = text => {
+  let toast = createToast(text);
+  addToast(toast);
 
-    return new Promise(async (resolve, reject) => {
-      await Promise.allSettled(
-        toast.getAnimations().map(animation =>
-          animation.finished
-        )
-      )
-      Toaster.removeChild(toast)
-      resolve()
-    })
-  }
+  const animationPromises = toast.getAnimations().map(animation => animation.finished);
+
+  return Promise.all(animationPromises).then(() => {
+    Toaster.removeChild(toast);
+  });
+};
 
   // https://aerotwist.com/blog/flip-your-animations/
   const flipToast = toast => {
@@ -161,6 +157,9 @@
   }
 
   section {
+    --rh-tooltip-max-width: 50em;
+    --rh-tooltip-content-padding-block-start: 0;
+    --rh-tooltip-content-padding-block-end: 0;
     display: flex;
     flex-wrap: wrap;
     gap: var(--rh-space-lg, 16px);
@@ -196,5 +195,49 @@
 
   figcaption span {
     font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+  }
+
+  .gui-toast-group {
+    position: fixed;
+    z-index: 1;
+    inset-block-start: var(--rh-space-lg, 16px);
+    inset-inline-end: var(--rh-space-lg, 16px);;
+    padding-block-end: var(--rh-space-4xl, 64px);
+
+    display: grid;
+    justify-items: center;
+    justify-content: center;
+    gap: var(--rh-space-lg, 16px);
+
+    /* optimizations */
+    pointer-events: none;
+  }
+
+  .gui-toast {
+    --_duration: 3s;
+    --_travel-distance: 0;
+
+    pointer-events: all;
+    will-change: transform;
+    animation:
+      fade-in .3s ease,
+      slide-in .3s ease,
+      fade-out .3s ease var(--_duration);
+
+    @media (--motionOK) {
+      --_travel-distance: var(--rh-space-4xl, 64px);
+    }
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0 }
+  }
+
+  @keyframes fade-out {
+    to { opacity: 0 }
+  }
+
+  @keyframes slide-in {
+    from { transform: translateY(var(--_travel-distance, var(--rh-space-lg, 16px))) }
   }
 </style>
