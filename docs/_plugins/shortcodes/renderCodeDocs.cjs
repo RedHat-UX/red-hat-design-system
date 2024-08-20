@@ -298,12 +298,8 @@ class Renderers {
               <tr>
                 <td data-label="CSS Property"><code>${prop.name}</code></td>
                 <td data-label="Description">${innerMD(prop.description ?? '')}</td>
-                <td data-label="Default">${!prop.default?.startsWith('#') ? html`
-                  <code>` : html`
-                  <code data-color="${prop.default}"
-                        style="--color:${prop.default}">`}
-                    ${prop.default ?? '—'}
-                  </code>
+                <td data-label="Default">
+                  ${!prop.default?.startsWith('#') ? html`<code>` : html`<code data-color="${prop.default}" style="--color:${prop.default}">`}${prop.default ?? '—'}</code>
                 </td>
               </tr>`).join('\n')}
             </tbody>
