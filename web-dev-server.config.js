@@ -37,6 +37,7 @@ export default pfeDevServerConfig({
       imports: {
         ...await resolveLocal('./lib/**/*.js', spec => [`@rhds/elements/${spec}`, `./${spec}`]),
         ...await resolveLocal('./elements/**/*.js', x => [`@rhds/elements/${x.replace('elements/', '')}`, `./${x}`]),
+        '@rhds/icons/icons.js': './node_modules/@rhds/icons/icons.js',
         ...await getRhdsIconNodemodulesImports(import.meta.url),
       },
     },
@@ -80,19 +81,19 @@ export default pfeDevServerConfig({
 export async function getRhdsIconNodemodulesImports(
   rootUrl,
 ) {
-  const files = await readdir(new URL('./node_modules/@rhds/icons/dist/', rootUrl));
+  const files = await readdir(new URL('./node_modules/@rhds/icons/', rootUrl));
   const dirs = [];
 
   for (const dir of files) {
-    if (!dir.startsWith('.') && (await stat(new URL(`./node_modules/@rhds/icons/dist/${dir}`, rootUrl))).isDirectory()) {
+    if (!dir.startsWith('.') && (await stat(new URL(`./node_modules/@rhds/icons/${dir}`, rootUrl))).isDirectory()) {
       dirs.push(dir);
     }
   }
 
   const specs = await Promise.all(dirs.flatMap(dir =>
-    readdir(new URL(`./node_modules/@rhds/icons/dist/${dir}`, rootUrl))
+    readdir(new URL(`./node_modules/@rhds/icons/${dir}`, rootUrl))
         .then(files => files.filter(x => x.endsWith('.js')))
-        .then(icons => icons.flatMap(icon => `@rhds/icons/dist/${dir}/${icon}`))
+        .then(icons => icons.flatMap(icon => `@rhds/icons/${dir}/${icon}`))
   ));
 
   return Object.fromEntries(specs.flat().map(spec => [spec, `./node_modules/${spec}`]));
