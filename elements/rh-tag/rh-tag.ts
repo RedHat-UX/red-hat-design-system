@@ -13,34 +13,23 @@ import styles from './rh-tag.css';
 
 /**
  * A tag is a caption added to an element for better clarity and user convenience.
- *
  * @summary  Highlights an element to add clarity or draw attention
- *
  * @fires close - when a removable label's close button is clicked
- *
  * @slot icon
  *       Contains the labels's icon, e.g. web-icon-alert-success.
- *
  * @slot
  *       Must contain the text for the label.
- *
  * @csspart icon - container for the label icon
- *
- * @cssprop  {<length>} --rh-tag-margin-inline-end
+ * @cssprop  {<length>} [--rh-tag-margin-inline-end=4px]
  *           The margin at the end of the direction parallel to the flow of the text.
- *           {@default 4px}
- * @cssprop  {<length>} --rh-tag-padding-block-start
+ * @cssprop  {<length>} [--rh-tag-padding-block-start=4px]
  *           The padding at the start of the direction perpendicular to the flow of the text.
- *           {@default 4px}
- * @cssprop  {<length>} --rh-tag-padding-block-end
+ * @cssprop  {<length>} [--rh-tag-padding-block-end=4px]
  *           The padding at the end of the direction perpendicular to the flow of the text.
- *           {@default 4px}
- * @cssprop  {<length>} --rh-tag-padding-inline-start
+ * @cssprop  {<length>} [--rh-tag-padding-inline-start=8px]
  *           The padding at the start of the direction parallel to the flow of the text.
- *           {@default 8px}
- * @cssprop  {<length>} --rh-tag-padding-inline-end
+ * @cssprop  {<length>} [--rh-tag-padding-inline-end=8px]
  *           The padding at the end of the direction parallel to the flow of the text.
- *           {@default 8px}
  * @cssprop --pf-icon--size
  *
  */

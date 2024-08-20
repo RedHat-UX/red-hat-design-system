@@ -11,8 +11,7 @@ div {
 
   flex-direction: column;
   align-items: center;
-  align-content: center;
-  justify-content: space-around;
+  place-content: center space-around;
 }
 
 .dark {
@@ -79,10 +78,10 @@ span,
   margin-top: var(--rh-space-lg, 16px);
 }
 
-:not(.hasIcon) #icon,
-:not(.hasStatistic) #statistic,
-:not(.hasTitle) #title,
-:not(.hasCta) #cta {
+div:not(.hasIcon) #icon,
+div:not(.hasStatistic) #statistic,
+div:not(.hasTitle) #title,
+div:not(.hasCta) #cta {
   display: none;
 }
 

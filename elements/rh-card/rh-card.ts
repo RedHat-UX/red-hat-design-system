@@ -28,15 +28,12 @@ import styles from './rh-card.css';
  *              The body for the card. Contains the default slot.
  * @csspart     footer
  *              The footer for the card. Contains the footer slot.
- * @cssprop     --rh-card-heading-font-family
+ * @cssprop     [--rh-card-heading-font-family=--rh-font-family-heading]
  *              The font family for headings in the header and body
- *              {@default --rh-font-family-heading}
- * @cssprop     --rh-card-heading-font-size
+ * @cssprop     [--rh-card-heading-font-size=--rh-font-size-heading-sm]
  *              The font size for headings in the header and body
- *              {@default --rh-font-size-heading-sm}
- * @cssprop     --rh-card-heading-font-weight
+ * @cssprop     [--rh-card-heading-font-weight=--rh-font-weight-body-text-medium]
  *              The font weight for headings in the header and body
- *              {@default --rh-font-weight-body-text-medium}
  */
 @customElement('rh-card')
 export class RhCard extends LitElement {
@@ -60,8 +57,12 @@ export class RhCard extends LitElement {
    * Card always resets its context to `base`, unless explicitly provided with a `color-palette`.
    */
   @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' })
-    colorPalette?: 'darkest' | 'lightest' | 'lighter';
+  @property(
+    {
+      reflect: true,
+      attribute: 'color-palette',
+    }
+  ) colorPalette?: 'darkest' | 'lightest' | 'lighter';
 
   /**
    * Change the style of the card to be a "Promo"

@@ -24,9 +24,7 @@ function isHeaderTagName(tagName: string) {
 
 /**
  * A footer displays secondary content and legal information to users who reach the bottom of a page.
- *
  * @summary Displays secondary information at the bottom of a page
- *
  * @csspart base - main footer element, containing all footer content
  * @slot    base - Overrides everything. Do not use.
  * @slot    header - Overrides `header-*`, `logo`, `social-links`
@@ -52,15 +50,14 @@ function isHeaderTagName(tagName: string) {
  * @csspart main-secondary - container fro prose or promotional content
  * @slot    global - must contain `<rh-footer-universal>` {@deprecated - use `universal`}
  * @slot    universal - must contain `<rh-footer-universal>`
- *
- * @cssprop --rh-footer-icon-color - {@default #8a8d90}
- * @cssprop --rh-footer-icon-color-hover - {@default #b8bbbe}
- * @cssprop --rh-footer-border-color - {@default #6a6e73}
- * @cssprop --rh-footer-accent-color - {@default #e00}
- * @cssprop --rh-footer-section-side-gap - {@default 16px}
- * @cssprop --rh-footer-links-gap - {@default 8px}
- * @cssprop --rh-footer-link-header-font-size - {@default 0.875em}
- * @cssprop --rh-footer-nojs-min-height - {@default 750px}
+ * @cssprop [--rh-footer-icon-color=#8a8d90] -
+ * @cssprop [--rh-footer-icon-color-hover=#b8bbbe] -
+ * @cssprop [--rh-footer-border-color=#6a6e73] -
+ * @cssprop [--rh-footer-accent-color=#e00] -
+ * @cssprop [--rh-footer-section-side-gap=16px] -
+ * @cssprop [--rh-footer-links-gap=8px] -
+ * @cssprop [--rh-footer-link-header-font-size=0.875em] -
+ * @cssprop [--rh-footer-nojs-min-height=750px] -
  */
 @customElement('rh-footer')
 export class RhFooter extends LitElement {

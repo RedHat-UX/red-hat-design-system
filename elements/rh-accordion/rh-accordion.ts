@@ -3,7 +3,7 @@ import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
-import { observed } from '@patternfly/pfe-core/decorators/observed.js';
+import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 import { provide } from '@lit/context';
 
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
@@ -42,20 +42,11 @@ export class AccordionCollapseEvent extends ComposedEvent {
 
 /**
  * An accordion is a stacked list of panels which allows users to expand or collapse information when selected. They feature panels that consist of a section text label and a caret icon that collapses or expands to reveal more information.
- *
  * @summary Expands or collapses a stacked list of panels
- *
  * @fires {AccordionExpandEvent} expand - when a panel expands
  * @fires {AccordionCollapseEvent} collapse - when a panel collapses
- *
- *
- * @slot
- *       Place the `rh-accordion-header` and `rh-accordion-panel` elements here.
- *
- * @attr  accents
- *        Position accents in the header either inline or bottom
- *        {@default inline}
- *
+ * @slot - Place the `rh-accordion-header` and `rh-accordion-panel` elements here.
+ * @attr  [accents=inline] Position accents in the header either inline or bottom
  */
 @customElement('rh-accordion')
 export class RhAccordion extends LitElement {
@@ -123,10 +114,6 @@ export class RhAccordion extends LitElement {
   }
 
 
-  @observed(function largeChanged(this: RhAccordion) {
-    [...this.headers, ...this.panels].forEach(el => el.toggleAttribute('large', this.large));
-  })
-
   @property({ reflect: true, type: Boolean }) large = false;
 
   @property({ reflect: true, type: Boolean }) bordered = true;
@@ -140,7 +127,9 @@ export class RhAccordion extends LitElement {
 
   #expandedIndex: number[] = [];
 
-  #headerIndex = new RovingTabindexController<RhAccordionHeader>(this);
+  #headerIndex = RovingTabindexController.of(this, {
+    getItems: () => this.headers,
+  });
 
   // actually is read in #init, by the `||=` operator
   // eslint-disable-next-line no-unused-private-class-members
@@ -180,6 +169,11 @@ export class RhAccordion extends LitElement {
     this.ctx = this.#ctx;
   }
 
+  @observes('large')
+  private largeChanged(this: RhAccordion) {
+    [...this.headers, ...this.panels].forEach(el => el.toggleAttribute('large', this.large));
+  }
+
   /**
    * Initialize the accordion by connecting headers and panels
    * with aria controls and labels; set up the default disclosure
@@ -188,7 +182,6 @@ export class RhAccordion extends LitElement {
    */
   async #init() {
     this.#initialized ||= !!await this.updateComplete;
-    this.#headerIndex.initItems(this.headers);
     // Event listener to the accordion header after the accordion has been initialized to add the roving tabindex
     this.addEventListener('focusin', this.#updateActiveHeader);
     this.updateAccessibility();
@@ -211,7 +204,7 @@ export class RhAccordion extends LitElement {
 
   #updateActiveHeader() {
     if (this.#activeHeader) {
-      this.#headerIndex.setActiveItem(this.#activeHeader);
+      this.#headerIndex.atFocusedItemIndex = this.headers.indexOf(this.#activeHeader);
     }
   }
 
@@ -315,6 +308,7 @@ export class RhAccordion extends LitElement {
 
   /**
    * Accepts a 0-based index value (integer) for the set of accordion items to expand or collapse.
+   * @param index header index to toggle
    */
   public async toggle(index: number) {
     const { headers } = this;
@@ -330,6 +324,8 @@ export class RhAccordion extends LitElement {
   /**
    * Accepts a 0-based index value (integer) for the set of accordion items to expand.
    * Accepts an optional parent accordion to search for headers and panels.
+   * @param index header index to toggle
+   * @param parentAccordion target accordion to expand in
    */
   public async expand(index: number, parentAccordion?: RhAccordion) {
     const allHeaders: RhAccordionHeader[] = this.#allHeaders(parentAccordion);
@@ -345,8 +341,8 @@ export class RhAccordion extends LitElement {
     }
 
     // If the header and panel exist, open both
-    this.#expandHeader(header, index),
-    this.#expandPanel(panel),
+    this.#expandHeader(header, index);
+    this.#expandPanel(panel);
 
     header.focus();
 
@@ -366,6 +362,7 @@ export class RhAccordion extends LitElement {
 
   /**
    * Accepts a 0-based index value (integer) for the set of accordion items to collapse.
+   * @param index header index to collapse
    */
   public async collapse(index: number) {
     const header = this.headers.at(index);

@@ -133,10 +133,8 @@ figcaption ::slotted(p) {
 
 #play::part(button) {
   background-color: var(--_video-play-btn-bkg-color, var(--rh-color-surface-darkest, #151515));
-  inset-block-end: 0;
-  inset-block-start: calc(50% - var(--rh-length-2xl, 32px)); /* NOTE: 32px = 1/2 play btn width */
-  inset-inline-end: 0;
-  inset-inline-start: 50%;
+  inset-block: calc(50% - var(--rh-length-2xl, 32px)) 0; /* NOTE: 32px = 1/2 play btn width */
+  inset-inline: 50% 0;
   position: absolute;
   outline: none;
   transform: translate(-50%);

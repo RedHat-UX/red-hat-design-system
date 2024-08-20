@@ -13,6 +13,19 @@ pagination:
 <style>
 playground-project {
   height: 825px;
+  &:fullscreen {
+    height: 100vh;
+    & rh-card {
+      height: 100%;
+      &::part(body) {
+        flex: auto;
+      }
+    }
+    & playground-file-editor,
+    & playground-preview {
+      height: 100%;
+    }
+  }
   &:not(:defined) { opacity: 0; }
   display: flex;
   flex-flow: column;

@@ -144,7 +144,7 @@ class UxdotSideNav extends LitElement {
 
   #closeButton = null;
 
-  #tabindex = new RovingTabindexController(this, {
+  #tabindex = RovingTabindexController.of(this, {
     getItems: () => {
       if (isServer) {
         return [];
@@ -166,7 +166,6 @@ class UxdotSideNav extends LitElement {
       this.addEventListener('expand', this.#onExpandRequest);
       this.addEventListener('keydown', this.#onKeydown.bind(this));
       window.addEventListener('keyup', this.#onKeyup.bind(this));
-      this.#tabindex.updateItems();
     }
   }
 
@@ -228,8 +227,8 @@ class UxdotSideNav extends LitElement {
   async #onExpandRequest(event) {
     if (UxdotSideNav.isDropdown(event.target)) {
       const detailsOpen = event.target.querySelector('details').hasAttribute('open');
-      this.#tabindex.updateItems();
-      this.#tabindex.setActiveItem(event.target.querySelector('summary'));
+      this.#tabindex.atFocusedItemIndex =
+        this.#tabindex.items.indexOf(event.target.querySelector('summary'));
     }
   }
 

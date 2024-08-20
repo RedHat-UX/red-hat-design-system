@@ -19,10 +19,8 @@ import styles from './rh-subnav.css';
  * A subnavigation allows users to navigate between a small number of page links.
  * @summary Organizes content into sections using tabbed pages
  * @slot - Navigation links, expects collection of `<a>` elements
- *
  * @csspart container - container, `<div>` element
  * @csspart links     - `<slot>` element
- *
  */
 @customElement('rh-subnav')
 export class RhSubnav extends LitElement {
@@ -71,7 +69,9 @@ export class RhSubnav extends LitElement {
 
   #allLinkElements: HTMLAnchorElement[] = [];
 
-  #tabindex = new RovingTabindexController(this);
+  #tabindex = RovingTabindexController.of(this, {
+    getItems: () => this.#allLinks,
+  });
 
   #overflow = new OverflowController(this);
 
@@ -141,12 +141,11 @@ export class RhSubnav extends LitElement {
   }
 
   #update() {
-    this.#tabindex.setActiveItem(this.#activeItem);
+    this.#tabindex.atFocusedItemIndex = this.#allLinks.indexOf(this.#activeItem);
   }
 
   #onSlotchange() {
     this.#allLinks = this.links;
-    this.#tabindex.initItems(this.#allLinks);
     this.#overflow.init(this.linkList, this.#allLinks);
     this.#firstLastClasses();
     this.#update();
