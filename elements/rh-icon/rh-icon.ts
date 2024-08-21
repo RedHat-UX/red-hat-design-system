@@ -64,12 +64,7 @@ export class RhIcon extends LitElement {
       });
     });
 
-  private static ioOptions = {
-    root: null,
-    rootMargin: '0px',
-  };
-
-  private static io = new IntersectionObserver(RhIcon.onIntersect, RhIcon.ioOptions);
+  private static io = new IntersectionObserver(RhIcon.onIntersect);
 
   private static instances = new Set<RhIcon>();
 
