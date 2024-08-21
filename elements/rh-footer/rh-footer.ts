@@ -5,7 +5,7 @@ import { classMap } from 'lit/directives/class-map.js';
 
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
-import '@patternfly/elements/pf-icon/pf-icon.js';
+import '@rhds/elements/rh-icon/rh-icon.js';
 import '@rhds/elements/rh-accordion/rh-accordion.js';
 
 export { RhFooterUniversal } from './rh-footer-universal.js';

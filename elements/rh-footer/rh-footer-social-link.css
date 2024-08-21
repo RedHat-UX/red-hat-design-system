@@ -1,7 +1,7 @@
 :host {
   display: block;
 
-  --pf-icon--size: var(--rh-footer--social-icon--size, var(--rh-size-icon-02, 24px));
+  --rh-icon-size: var(--rh-footer--social-icon--size, var(--rh-size-icon-02, 24px));
 }
 
 [hidden] {

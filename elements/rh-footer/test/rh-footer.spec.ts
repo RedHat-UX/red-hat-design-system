@@ -430,8 +430,8 @@ describe('<rh-footer>', function() {
         const element = await fixture<RhFooter>(KITCHEN_SINK_TEMPLATE);
         const socialLink = element.querySelector('rh-footer-social-link');
         await aTimeout(200);
-        // we need to reach into pf-icon to get the actual size of the svg.
-        const icon = socialLink?.querySelector('pf-icon')?.shadowRoot?.querySelector('svg');
+        // we need to reach into rh-icon to get the actual size of the svg.
+        const icon = socialLink?.querySelector('rh-icon')?.shadowRoot?.querySelector('svg');
         if (icon) {
           expect(getComputedStyle(icon).height).to.equal(tokens.get('--rh-size-icon-02'));
         }
