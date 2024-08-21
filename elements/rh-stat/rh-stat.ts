@@ -66,7 +66,6 @@ export class RhStat extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.#updateIcons();
     this.#mo.observe(this, { childList: true });
     this.#onMutation();
   }
@@ -82,7 +81,7 @@ export class RhStat extends LitElement {
     return html`
       <div class="${classMap({ isMobile, hasIcon, hasTitle, hasStatistic, hasCta, [on]: !!on })}">
         <span id="icon" class="${classMap({ [iconSize]: !!iconSize })}">
-          <slot name="icon" @slotchange="${this.#updateIcons}">
+          <slot name="icon">
             ${!this.icon ? '' : html`
               <rh-icon icon="${this.icon}" set="${this.iconSet}"></rh-icon>
             `}
@@ -94,11 +93,6 @@ export class RhStat extends LitElement {
         <span id="cta"><slot name="cta"></slot></span>
       </div>
     `;
-  }
-
-  #updateIcons(): void {
-    this.querySelector('rh-icon[slot="icon"]')
-        ?.setAttribute?.('size', this.size === 'default' ? 'md' : 'lg');
   }
 
   #onMutation() {
