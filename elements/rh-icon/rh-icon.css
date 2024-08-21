@@ -3,10 +3,6 @@
   line-height: 0;
 }
 
-#container {
-  display: contents;
-}
-
 svg {
   width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
   fill: currentcolor;
