@@ -28,7 +28,6 @@ import styles from './rh-stat.css';
  * @slot statistic - Statistic data
  * @slot cta - Call to action
  * @slot - Description of the stat
- * @cssprop --pf-icon--size
  *
  */
 @customElement('rh-stat')
