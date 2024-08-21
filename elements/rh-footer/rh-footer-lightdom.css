@@ -31,7 +31,7 @@
   display: block;
 }
 
-:is(rh-footer) a[slot^="logo"]>img {
+:is(rh-footer) a[slot^="logo"] > img {
   display: block;
   width: auto;
   height: 100%;
@@ -108,13 +108,13 @@ rh-footer-universal:not(:defined):before {
 }
 
 /* Adding styles to logo */
-rh-footer:not(:defined)>[slot="logo"] {
+rh-footer:not(:defined) > [slot="logo"] {
   padding: var(--rh-space-2xl, 32px) var(--_section-side-gap);
 }
 
 /* A11y hide child components */
-rh-footer:not(:defined)> :not([slot="logo"], rh-footer-universal),
-rh-footer-universal:not(:defined)>* {
+rh-footer:not(:defined) > :not([slot="logo"], rh-footer-universal),
+rh-footer-universal:not(:defined) > * {
   border: 0;
   clip: rect(1px, 1px, 1px, 1px);
   height: 1px;
