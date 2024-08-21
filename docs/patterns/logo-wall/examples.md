@@ -19,9 +19,9 @@ importElements:
   import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
 </script>
 
-<link rel="stylesheet" href="{{ '/styles/samp.css' | url }}">
+<link rel="stylesheet" href="/styles/samp.css">
 
-<link rel="stylesheet" href="{{ '../rh-logo-wall-lightdom.css' | url }}" />
+<link rel="stylesheet" href="{{ '../logo-wall-lightdom.css' | url }}" />
 
 ## Within a promo band (bordered)
   {% include './patterns/1x1-grid.html' %}
