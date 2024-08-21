@@ -29,7 +29,7 @@ export class TabExpandEvent extends Event {
 
 /**
  * The tab button for use within a rh-tabs element, must be paired with a rh-tab-panel.
- * @slot icon - Can contain an `<svg>` or `<pf-icon>`
+ * @slot icon - Can contain an `<svg>` or `<rh-icon>`
  * @slot - Tab title text
  * @csspart button - element that contains the interactive part of a tab
  * @csspart icon - icon `<span>` element
