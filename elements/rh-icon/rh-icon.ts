@@ -59,13 +59,17 @@ export class RhIcon extends LitElement {
       icon.#intersecting = isIntersecting;
       ric(() => {
         if (icon.#intersecting) {
-          icon.#load();
+          icon.#dispatchLoad();
         }
       });
     });
 
+  private static ioOptions = {
+    root: null,
+    rootMargin: '0px',
+  };
 
-  private static io = new IntersectionObserver(RhIcon.onIntersect);
+  private static io = new IntersectionObserver(RhIcon.onIntersect, RhIcon.ioOptions);
 
   private static instances = new Set<RhIcon>();
 
@@ -151,19 +155,19 @@ export class RhIcon extends LitElement {
   #lazyLoad() {
     RhIcon.io.observe(this);
     if (this.#intersecting) {
-      this.#load();
+      this.load();
     }
   }
 
   #dispatchLoad() {
     switch (this.loading) {
-      case 'idle': return void ric(() => this.#load());
+      case 'idle': return void ric(() => this.load());
       case 'lazy': return void this.#lazyLoad();
-      case 'eager': return void this.#load();
+      case 'eager': return void this.load();
     }
   }
 
-  async #load() {
+  async load() {
     const { set = 'standard', icon } = this;
     const resolver = RhIcon.resolve;
     if (set && icon && typeof resolver === 'function') {
