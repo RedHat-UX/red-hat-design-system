@@ -47,7 +47,7 @@ color blind user.
 
 ## Color contrast
 
-### Body and Code text
+### Body and code text
 
 Foreground body and code text (non-bold text **under 24px** and bold text **under 19px**) must have a contrast ratio of 4.5:1. Large foreground body and code text (non-bold text of **at least 24px** and bold text of **at least 19px**) must have a contrast ratio of 3:1.
 
@@ -63,7 +63,7 @@ If red text cannot be used, use dark gray or black text against lighter backgrou
 
 <rh-alert state="warning">
   <h4 slot="header">Warning</h4>
-  Black is usually a brand-only color, but it can be used very sparingly for backgrounds only if gray-95 cannot be used.
+  Black is usually a brand-only color, but it can be used very sparingly for backgrounds only if <code>gray-95</code> cannot be used.
 </rh-alert>
 
 <uxdot-example width-adjustment=”100%” variant="full" alignment="left" no-border>
@@ -72,7 +72,11 @@ If red text cannot be used, use dark gray or black text against lighter backgrou
 
 #### WCAG requirements
 
-WCAG 2.0 level AA requires a contrast ratio of at least 4.5:1 for normal text and 3:1 for large text. WCAG 2.1 requires a contrast ratio of at least 3:1 for graphics and UI components like form input borders. Use the table below to confirm you are using color contrast correctly before using red text.
+WCAG 2.0 level AA requires a contrast ratio of at least 4.5:1 for normal text and 3:1 for large text. WCAG 2.1 requires a contrast ratio of at least 3:1 for graphics and UI components like form input borders. Use the table below to confirm you are using color contrast correctly before using red text. 
+
+The font sizes that are considered normal and large are as follows:
+- normal: non-bold text under 18pt/24px and bold text under 14pt/19px
+- large: non-bold text of at least 18pt/24px and bold text of at least 14pt/19px
 
 <rh-table>
   <table>
@@ -149,7 +153,7 @@ WCAG 2.0 level AA requires a contrast ratio of at least 4.5:1 for normal text an
 
 ### Links
 
-Inline links should always be underlined in all states. The contrast ratio between a link and surrounding text must be at least 3:1.
+To differentiate text links from their surrounding text without relying on color contrast, links in all states must be underlined. Links isolated within visually distinct sections (e.g., navigation menus) or with additional visual cues (e.g., CTA arrows) are exempt from this requirement, though you may still add underlines at your discretion.
 
 <uxdot-example width-adjustment=”100%” variant="full" alignment="left" no-border>
   <img alt="Contrast ratio of a blue link next to black text and an example of a link's darker blue, underlined hover state" src="/assets/color/color-a11y-contrast-links.png">
