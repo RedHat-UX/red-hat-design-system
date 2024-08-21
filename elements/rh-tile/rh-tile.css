@@ -209,7 +209,7 @@ input[type="radio"] {
   flex: 0 0 auto;
 }
 
-pf-icon[icon="arrow-right"] {
+rh-icon[icon="arrow-right"] {
   color: var(--_interactive-color);
   width: var(--rh-space-xl, 24px);
   height: var(--rh-space-xl, 24px);
@@ -222,13 +222,13 @@ pf-icon[icon="arrow-right"] {
     var(--rh-animation-timing, cubic-bezier(0.465, 0.183, 0.153, 0.946));
 }
 
-:host(:hover) #footer pf-icon {
+:host(:hover) #footer rh-icon {
   translate: 3px 0;
 }
 
 /* chrome <= 103 */
 @supports not (translate: 0 0) {
-  :host(:hover) #footer pf-icon { transform: translate(3px, 0); }
+  :host(:hover) #footer rh-icon { transform: translate(3px, 0); }
 }
 
 svg {
