@@ -150,19 +150,19 @@ export class RhIcon extends LitElement {
   #lazyLoad() {
     RhIcon.io.observe(this);
     if (this.#intersecting) {
-      this.load();
+      this.#load();
     }
   }
 
   #dispatchLoad() {
     switch (this.loading) {
-      case 'idle': return void ric(() => this.load());
+      case 'idle': return void ric(() => this.#load());
       case 'lazy': return void this.#lazyLoad();
-      case 'eager': return void this.load();
+      case 'eager': return void this.#load();
     }
   }
 
-  async load() {
+  async #load() {
     const { set = 'standard', icon } = this;
     const resolver = RhIcon.resolve;
     if (set && icon && typeof resolver === 'function') {
