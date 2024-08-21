@@ -114,7 +114,7 @@ describe('<rh-tag>', async function() {
       element = await createFixture<RhTag>(html`
         <rh-tag>
           Default
-          <pf-icon slot="icon" icon="info-circle"></pf-icon>
+          <rh-icon set="ui" icon="information"></rh-icon>
         </rh-tag>
       `);
       container = unslotted.shadowRoot!.querySelector('#container')!;

@@ -124,10 +124,15 @@
   color: var(--_icon-color);
   margin-inline-end: var(--rh-tag-margin-inline-end, var(--rh-space-xs, 4px));
 
-  --pf-icon--size: 0.875rem;
+  --rh-icon-size: 1em;
 }
 
 .hasIcon [part="icon"] {
   display: inline-flex;
   align-items: center;
+}
+
+::slotted(svg) {
+  height: 1em;
+  aspect-ratio: 1;
 }
