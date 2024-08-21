@@ -87,13 +87,11 @@ pf-icon {
   margin-inline-start: var(--rh-space-md, 8px);
 }
 
-svg {
+rh-icon {
   vertical-align: middle;
   margin-inline-start: var(--rh-space-md, 8px);
-  display: inline;
+  display: inline-block;
   fill: currentcolor;
-  width: var(--_arrow-size);
-  height: var(--_arrow-size);
   translate: 0 0;
   transition: translate var(--_trans);
 
@@ -157,11 +155,11 @@ a:focus-within,
   --_text-decoration: var(--rh-cta-hover-text-decoration, var(--_hover-text-decoration));
 }
 
-:host(:hover) #container svg {
+:host(:hover) #container rh-icon {
   translate: 3px 0;
 }
 
-:host(:hover) #container.rtl svg {
+:host(:hover) #container.rtl rh-icon {
   translate: -3px 0;
 }
 
@@ -655,12 +653,12 @@ a:focus-within,
 
 /* chrome <= 103 */
 @supports not (translate: 0 0) {
-  svg {
+  rh-icon {
     transform: translate(0, 0);
     transition: transform var(--_trans);
   }
 
-  #container.rtl svg { transform: translate(0, 0) rotate(180deg); }
-  :host(:hover) #container svg { transform: translate(3px, 0); }
-  :host(:hover) #container.rtl svg { transform: translate(-3px, 0) rotate(180deg); }
+  #container.rtl rh-icon { transform: translate(0, 0) rotate(180deg); }
+  :host(:hover) #container rh-icon { transform: translate(3px, 0); }
+  :host(:hover) #container.rtl rh-icon { transform: translate(-3px, 0) rotate(180deg); }
 }
