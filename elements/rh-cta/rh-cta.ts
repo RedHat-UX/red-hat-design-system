@@ -12,8 +12,6 @@ import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/c
 
 import type { IconNameFor, IconSetName } from '@rhds/icons';
 
-import '@rhds/elements/rh-icon/rh-icon.js';
-
 import style from './rh-cta.css';
 
 function isSupportedContent(el: Element | null): el is HTMLAnchorElement | HTMLButtonElement {
