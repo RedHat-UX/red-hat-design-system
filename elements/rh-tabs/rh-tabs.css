@@ -203,7 +203,7 @@ button:disabled {
   color: var(--_overflow-button-disabled-text-color);
 }
 
-.rtl :is(#previousTab, #nextTab) pf-icon {
+.rtl :is(#previousTab, #nextTab) rh-icon {
   rotate: 180deg;
 }
 

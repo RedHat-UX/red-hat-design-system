@@ -55,8 +55,8 @@ a:after,
   --_context-background-color: var(--_background-color) !important;
   --_arrow-size: 13px;
   --_arrow-plus-padding: calc(var(--rh-space-md, 8px) + var(--_arrow-size));
-  --_pf-icon-plus-padding: calc(5px + var(--pf-icon--size));
-  --pf-icon--size: var(--rh-font-size-body-text-lg, 1.125rem);
+  --rh-icon-size: var(--rh-font-size-body-text-lg, 1.125rem);
+  --_rh-icon-plus-padding: calc(5px + var(--rh-icon-size));
 }
 
 .rtl {
@@ -82,11 +82,6 @@ a:after,
 }
 
 /** Default variant arrow icon */
-pf-icon {
-  vertical-align: middle;
-  margin-inline-start: var(--rh-space-md, 8px);
-}
-
 rh-icon {
   vertical-align: middle;
   margin-inline-start: var(--rh-space-md, 8px);
@@ -220,7 +215,7 @@ a:focus-within,
   padding-inline-end: calc(var(--_arrow-plus-padding) + var(--rh-space-xl, 24px)) !important;
 }
 
-:host([variant]) #container.icon pf-icon {
+:host([variant]) #container.icon rh-icon {
   margin-inline-start: var(--rh-space-md, 8px);
 }
 
@@ -647,7 +642,7 @@ a:focus-within,
   --_active-text-decoration: var(--rh-cta-active-text-decoration, underline);
 }
 
-:host([variant="brick"]) #container.icon pf-icon {
+:host([variant="brick"]) #container.icon rh-icon {
   margin-inline: 0;
 }
 
