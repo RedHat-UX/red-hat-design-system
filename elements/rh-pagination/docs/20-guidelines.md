@@ -194,7 +194,7 @@ Container widths of 375px - 768px
 
 ### Compact vs. mobile
 
-<div class="grid sm-two-columns">
+<div class="grid sm-two-columns compact-vs-mobile">
   <uxdot-best-practice do>
     <uxdot-example slot="image" width-adjustment="393px">
       <img src="{{ '../pagination-guidelines-best-practices-4-do.svg' | url }}" alt="Pagination shown on a mobile device with arrows on top and an input field below.">
@@ -208,3 +208,9 @@ Container widths of 375px - 768px
     <p>Do not use the compact configuration in place of the default mobile style of another variant.</p>
   </uxdot-best-practice>
 </div>
+
+<style>
+  .compact-vs-mobile ::part(container) {
+    padding-block-start: 0;
+  }
+</style>
