@@ -2,6 +2,7 @@
 import { pfeDevServerConfig } from '@patternfly/pfe-tools/dev-server/config.js';
 import { glob } from 'glob';
 import { readdir, stat } from 'node:fs/promises';
+import { makeDemoEnv } from './scripts/environment.js';
 
 /**
  * Find all modules in a glob pattern, relative to the repo root, and resolve them as package paths
@@ -27,7 +28,6 @@ export default pfeDevServerConfig({
   litcssOptions,
   importMapOptions: {
     providers: {
-      '@patternfly/icons': 'nodemodules',
       '@rhds/icons': 'nodemodules',
       '@patternfly/elements': 'nodemodules',
       '@patternfly/pfe-tools': 'nodemodules',
@@ -35,14 +35,22 @@ export default pfeDevServerConfig({
     },
     inputMap: {
       imports: {
+        '@rhds/icons': './node_modules/@rhds/icons/icons.js',
         ...await resolveLocal('./lib/**/*.js', spec => [`@rhds/elements/${spec}`, `./${spec}`]),
         ...await resolveLocal('./elements/**/*.js', x => [`@rhds/elements/${x.replace('elements/', '')}`, `./${x}`]),
-        '@rhds/icons/icons.js': './node_modules/@rhds/icons/icons.js',
         ...await getRhdsIconNodemodulesImports(import.meta.url),
       },
     },
   },
   middleware: [
+    async function(ctx, next) {
+      if (ctx.path === '/lib/environment.ts') {
+        ctx.type = 'text/javascript';
+        ctx.body = await makeDemoEnv();
+      } else {
+        return next();
+      }
+    },
     /** redirect requests for /assets/ css to /docs/assets/ */
     function(ctx, next) {
       if (ctx.path.startsWith('/styles/')) {

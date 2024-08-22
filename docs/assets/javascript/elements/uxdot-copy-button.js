@@ -1,6 +1,6 @@
 import { html, css, LitElement, isServer } from 'lit';
 
-import { toast } from '../toast.js';
+import { toast } from '@rhds/elements/lib/toast.js';
 
 if (!isServer) {
   import('@rhds/elements/rh-tooltip/rh-tooltip.js');
