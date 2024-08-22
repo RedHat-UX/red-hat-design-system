@@ -65,13 +65,9 @@ The small pagination button size is `--rh-size-icon-03`. The page input field si
 
 ## Theme
 
-Pagination is available in both light and dark themes. Additionally, because the box variant has a light gray background color that can also be used for surfaces, the button background colors will change based on the container surface color.
+Pagination is available in both light and dark themes. Consumers should strive to place Pagination only on lightest and darkest surface colors to prevent background colors of the box variant from bleeding into the surface background color.
 
 ### Light theme
-
-The box variant button background color changes against `--rh-color-surface-lighter` only. However, the open variant colors do not change.
-
-#### Lightest
 
 <div class="grid sm-two-columns">
   <uxdot-example width-adjustment="348px">
@@ -83,35 +79,7 @@ The box variant button background color changes against `--rh-color-surface-ligh
   </uxdot-example>
 </div>
 
-#### Lighter
-
-<div class="grid sm-two-columns">
-  <uxdot-example width-adjustment="554px" no-border variant="full">
-    <img src="{{ '../pagination-style-theme-lighter-box.svg' | url }}" alt="Lighter theme pagination">
-  </uxdot-example>
-
-  <uxdot-example width-adjustment="554px" no-border variant="full">
-    <img src="{{ '../pagination-style-theme-lighter-open.svg' | url }}" alt="Lighter theme pagination open variant">
-  </uxdot-example>
-</div>
-
-#### Light
-
-<div class="grid sm-two-columns">
-  <uxdot-example width-adjustment="554px" no-border variant="full">
-    <img src="{{ '../pagination-style-theme-light-box.svg' | url }}" alt="Light theme pagination">
-  </uxdot-example>
-
-  <uxdot-example width-adjustment="554px" no-border variant="full">
-    <img src="{{ '../pagination-style-theme-light-open.svg' | url }}" alt="Light theme pagination open variant">
-  </uxdot-example>
-</div>
-
 ### Dark theme
-
-The box variant button background color changes against `--rh-color-surface-darker` only. However, the open variant colors do not change.
-
-#### Darkest
 
 <div class="grid sm-two-columns">
   <uxdot-example width-adjustment="554px" no-border variant="full">
@@ -120,30 +88,6 @@ The box variant button background color changes against `--rh-color-surface-dark
 
   <uxdot-example width-adjustment="554px" no-border variant="full">
     <img src="{{ '../pagination-style-theme-darkest-open.svg' | url }}" alt="Darkest theme pagination open variant">
-  </uxdot-example>
-</div>
-
-#### Darker
-
-<div class="grid sm-two-columns">
-  <uxdot-example width-adjustment="554px" no-border variant="full">
-    <img src="{{ '../pagination-style-theme-darker-box.svg' | url }}" alt="Darker theme pagination">
-  </uxdot-example>
-
-  <uxdot-example width-adjustment="554px" no-border variant="full">
-    <img src="{{ '../pagination-style-theme-darker-open.svg' | url }}" alt="Darker theme pagination open variant">
-  </uxdot-example>
-</div>
-
-#### Dark
-
-<div class="grid sm-two-columns">
-  <uxdot-example width-adjustment="554px" no-border variant="full">
-    <img src="{{ '../pagination-style-theme-dark-box.svg' | url }}" alt="Dark theme pagination">
-  </uxdot-example>
-
-  <uxdot-example width-adjustment="554px" no-border variant="full">
-    <img src="{{ '../pagination-style-theme-dark-open.svg' | url }}" alt="Dark theme pagination open variant">
   </uxdot-example>
 </div>
 

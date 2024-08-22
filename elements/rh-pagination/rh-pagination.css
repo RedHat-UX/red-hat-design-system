@@ -30,8 +30,10 @@
 #container.dark {
   --rh-pagination-accent-color: var(--rh-color-interactive-blue-lighter, #92c5f9);
   --rh-pagination-stepper-color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
+  --_rh-pagination-stepper-bg-color: var(--rh-color-surface-dark-alt, #292929);
   --rh-pagination-background-focused: var(--rh-color-gray-50, #707070);
   --_rh-pagination-list-a-text-color: var(--rh-color-text-primary-on-dark, #ffffff);
+  --_rh-pagination-list-a-bg-color: var(--rh-color-surface-dark-alt, #292929);
   --_rh-pagination-list-a-current-page-bg-color: var(--rh-color-surface-darkest, #151515);
   --_rh-pagination-list-a-current-page-border-color: var(--rh-color-border-subtle-on-dark, #707070);
   --_rh-pagination-border-top-hover-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
@@ -42,31 +44,6 @@
   --_numeric-a-color-visited-hover: var(--rh-color-interactive-purple-lightest, #ece6ff);
   --_numeric-a-focus-color: var(--rh-pagination-accent-color);
   --_numeric-a-focus-outline-color: var(--rh-pagination-accent-color);
-}
-
-#container.color-palette-lighter {
-  --_rh-pagination-list-a-bg-color: var(--rh-color-surface-light, #e0e0e0);
-  --_rh-pagination-stepper-bg-color: var(--rh-color-surface-light, #e0e0e0);
-}
-
-#container.color-palette-light {
-  --_rh-pagination-list-a-bg-color: var(--rh-color-surface-lighter, #f2f2f2);
-  --_rh-pagination-stepper-bg-color: var(--rh-color-surface-lighter, #f2f2f2);
-}
-
-#container.color-palette-dark {
-  --_rh-pagination-list-a-bg-color: var(--rh-color-surface-dark-alt, #292929);
-  --_rh-pagination-stepper-bg-color: var(--rh-color-surface-dark-alt, #292929);
-}
-
-#container.color-palette-darker {
-  --_rh-pagination-list-a-bg-color: var(--rh-color-surface-dark, #383838);
-  --_rh-pagination-stepper-bg-color: var(--rh-color-surface-dark, #383838);
-}
-
-#container.color-palette-darkest {
-  --_rh-pagination-list-a-bg-color: var(--rh-color-surface-dark-alt, #292929);
-  --_rh-pagination-stepper-bg-color: var(--rh-color-surface-dark-alt, #292929);
 }
 
 .visually-hidden {
