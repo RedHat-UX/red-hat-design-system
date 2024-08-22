@@ -54,7 +54,7 @@
 
   render(repeat(iconSets, ([set, icons]) => html`
     <pf-option-group label="${set}" key="${set}">${icons.map(name => html`
-      <pf-option>${name}</pf-option>`)}
+      <pf-option value="${name}"><rh-icon set="${set}" icon="${name}"></rh-icon> ${name}</pf-option>`)}
     </pf-option-group>`), select);
 
   select.addEventListener('change', function() {
