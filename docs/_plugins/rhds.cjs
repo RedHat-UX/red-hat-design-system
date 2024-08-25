@@ -1,3 +1,4 @@
+
 // @ts-check
 const fs = require('node:fs');
 const yaml = require('js-yaml');
@@ -24,7 +25,7 @@ const { parse } = require('async-csv');
 function demoPaths(content) {
   const { outputPath, inputPath } = this;
   const isNested = outputPath.match(/demo\/.+\/index\.html$/);
-  if (inputPath === './docs/elements/demos.html' ) {
+  if (inputPath === './docs/elements/demos.html') {
     const $ = cheerio.load(content);
     $('[href], [src]').each(function() {
       const el = $(this);
@@ -371,21 +372,11 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     }
   });
 
-  /** /assets/rhds.min.css */
-  // eleventyConfig.on('eleventy.before', async function({ dir }) {
-  //   const { readFile, writeFile } = fs.promises;
-  //   const CleanCSS = await import('clean-css').then(x => x.default);
-  //   const cleanCSS = new CleanCSS({ sourceMap: true, returnPromise: true });
-  //   const outPath = path.join(dir.output, 'assets', 'rhds.min.css');
-  //   /* Tokens */
-  //   const sourcePath = path.join(process.cwd(), 'node_modules/@rhds/tokens/css/global.css');
-  //   const source = await readFile(sourcePath, 'utf8');
-  //   const { styles } = await cleanCSS.minify(source);
-  //   // ensure '_site/assets' exists
-  //   if (!fs.existsSync(dir.output)) {
-  //     const assets = path.join(dir.output, 'assets');
-  //     await fs.mkdirSync(assets, { recursive: true });
-  //   }
-  //   await writeFile(outPath, styles, 'utf8');
-  // });
+  /** /assets/javascript/environment.js */
+  eleventyConfig.on('eleventy.before', async function({ dir }) {
+    const { writeFile } = fs.promises;
+    const outPath = path.join(dir.input, '..', 'lib', 'environment.js');
+    const { makeDemoEnv } = await import('../../scripts/environment.js');
+    await writeFile(outPath, await makeDemoEnv(), 'utf8');
+  });
 };

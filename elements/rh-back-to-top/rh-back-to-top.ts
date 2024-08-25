@@ -5,7 +5,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
-import '@patternfly/elements/pf-icon/pf-icon.js';
+import '@rhds/elements/rh-icon/rh-icon.js';
 
 import styles from './rh-back-to-top.css';
 
@@ -87,7 +87,7 @@ export class RhBackToTop extends LitElement {
     return html`
       <a href="${ifDefined(this.href)}" ?hidden="${!this.#visible}" part="trigger">
         <slot>Back to top</slot>
-        <pf-icon icon="angle-up" set="fas"></pf-icon>
+        <rh-icon set="ui" icon="caret-up"></rh-icon>
       </a>
     `;
   }

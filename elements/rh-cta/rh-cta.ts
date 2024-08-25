@@ -10,6 +10,8 @@ import { DirController } from '../../lib/DirController.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
+import type { IconNameFor, IconSetName } from '@rhds/icons';
+
 import style from './rh-cta.css';
 
 function isSupportedContent(el: Element | null): el is HTMLAnchorElement | HTMLButtonElement {
@@ -108,12 +110,12 @@ export class RhCta extends LitElement {
   /**
    * Icon name
    */
-  @property({ reflect: true }) icon?: string;
+  @property({ reflect: true }) icon?: IconNameFor<IconSetName>;
 
   /**
    * Icon set
    */
-  @property({ attribute: 'icon-set' }) iconSet = 'far';
+  @property({ attribute: 'icon-set' }) iconSet: IconSetName = 'ui';
 
   /**
    * Sets color theme based on parent context
@@ -122,7 +124,7 @@ export class RhCta extends LitElement {
 
   protected override async getUpdateComplete(): Promise<boolean> {
     if (this.icon) {
-      await import('@patternfly/elements/pf-icon/pf-icon.js');
+      await import('@rhds/elements/rh-icon/rh-icon.js');
     }
     return super.getUpdateComplete();
   }
@@ -143,24 +145,15 @@ export class RhCta extends LitElement {
     const svg = isDefault;
     const iconOrSvg = isDefault || !!icon;
     const follower = !iconOrSvg ? '' : variant !== 'brick' && icon ? html`<!--
-   --><pf-icon icon=${icon}
-               set=${iconSet ?? 'far'}
-               size="md"></pf-icon>` : variant ? '' : html`<!--
-   --><svg xmlns="http://www.w3.org/2000/svg"
-           viewBox="0 0 31.56 31.56"
-           width="1em"
-           focusable="false"
-           aria-hidden="true">
-        <path d="M15.78 0l-3.1 3.1 10.5 10.49H0v4.38h23.18l-10.5 10.49 3.1 3.1 15.78-15.78L15.78 0z" />
-      </svg>`;
+   --><rh-icon icon=${icon} set=${iconSet ?? 'ui'}></rh-icon>` : variant ? '' : html`<!--
+   --><rh-icon  set="ui" icon="arrow-right"></rh-icon>`;
     return html`
       <span id="container"
             part="container"
             class=${classMap({ rtl, icon: !!icon, svg, [on]: !!on })}
             @slotchange=${this.firstUpdated}>${variant === 'brick' && icon ? html`
-        <pf-icon size="md"
-                 icon=${icon}
-                 set="${iconSet ?? 'far'}"></pf-icon>` : ''}${href ? html`
+        <rh-icon icon=${icon}
+                 set="${iconSet ?? 'ui'}"></rh-icon>` : ''}${href ? html`
         <a href=${href}
            download="${ifDefined(download)}"
            rel="${ifDefined(rel)}"

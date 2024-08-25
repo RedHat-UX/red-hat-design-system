@@ -38,9 +38,9 @@
   display: none;
 }
 
-pf-icon {
-  /* override icon size as default sm variant is incorrect */
-  --pf-icon--size: var(--rh-font-size-body-text-xs, 0.75rem);
+rh-icon {
+  /* Non Standard Icon size */
+  --rh-icon-size: var(--rh-font-size-body-text-xs, 0.75rem);
 
   vertical-align: -0.125rem;
 }
