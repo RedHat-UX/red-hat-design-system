@@ -103,3 +103,4 @@ $RECYCLE.BIN/
 !declaration.d.ts
 docs/assets/javascript/elements/playground-elements.js
 docs/assets/javascript/elements/assets/playground-typescript-worker-*.js
+docs/assets/javascript/environment.js

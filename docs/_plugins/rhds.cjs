@@ -375,7 +375,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   /** /assets/javascript/environment.js */
   eleventyConfig.on('eleventy.before', async function({ dir }) {
     const { writeFile } = fs.promises;
-    const outPath = path.join(dir.output, 'assets', 'javascript', 'environment.js');
+    const outPath = path.join(dir.input, 'assets', 'javascript', 'environment.js');
     const { makeDemoEnv } = await import('../../scripts/environment.js');
     await writeFile(outPath, await makeDemoEnv(), 'utf8');
   });
