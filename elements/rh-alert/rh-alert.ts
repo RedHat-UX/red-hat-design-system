@@ -136,7 +136,7 @@ export class RhAlert extends LitElement {
 
   static init() {
     const node = document.createElement('section');
-    node.classList.add('rh-toast-group');
+    node.classList.add('rh-alert-toast-group');
     // TODO: possibly allow other roots
     document.adoptedStyleSheets = [
       ...document.adoptedStyleSheets ?? [],
