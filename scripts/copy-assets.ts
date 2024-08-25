@@ -9,7 +9,7 @@ for (const srcFile of await glob([
   'elements/*/*-shim.css',
 ])) {
   const destFile = srcFile.replace('elements/', '');
-  await mkdir(dirname(destFile));
+  await mkdir(dirname(destFile), { recursive: true });
   await cp(srcFile, destFile);
   console.log(`${chalk.blue`Copied`} ${srcFile} to ${destFile}`);
 }

@@ -55,8 +55,11 @@ a:after,
   --_context-background-color: var(--_background-color) !important;
   --_arrow-size: 13px;
   --_arrow-plus-padding: calc(var(--rh-space-md, 8px) + var(--_arrow-size));
-  --_pf-icon-plus-padding: calc(5px + var(--pf-icon--size));
-  --pf-icon--size: var(--rh-font-size-body-text-lg, 1.125rem);
+  --rh-icon-size: var(--rh-font-size-body-text-lg, 1.125rem);
+  --_rh-icon-plus-padding:
+    calc(
+        5px + var(--rh-icon-size) /* stylelint-disable-line rhds/no-unknown-token-name */
+      );
 }
 
 .rtl {
@@ -82,18 +85,11 @@ a:after,
 }
 
 /** Default variant arrow icon */
-pf-icon {
+rh-icon {
   vertical-align: middle;
   margin-inline-start: var(--rh-space-md, 8px);
-}
-
-svg {
-  vertical-align: middle;
-  margin-inline-start: var(--rh-space-md, 8px);
-  display: inline;
+  display: inline-block;
   fill: currentcolor;
-  width: var(--_arrow-size);
-  height: var(--_arrow-size);
   translate: 0 0;
   transition: translate var(--_trans);
 
@@ -157,11 +153,11 @@ a:focus-within,
   --_text-decoration: var(--rh-cta-hover-text-decoration, var(--_hover-text-decoration));
 }
 
-:host(:hover) #container svg {
+:host(:hover) #container rh-icon {
   translate: 3px 0;
 }
 
-:host(:hover) #container.rtl svg {
+:host(:hover) #container.rtl rh-icon {
   translate: -3px 0;
 }
 
@@ -222,7 +218,7 @@ a:focus-within,
   padding-inline-end: calc(var(--_arrow-plus-padding) + var(--rh-space-xl, 24px)) !important;
 }
 
-:host([variant]) #container.icon pf-icon {
+:host([variant]) #container.icon rh-icon {
   margin-inline-start: var(--rh-space-md, 8px);
 }
 
@@ -649,18 +645,18 @@ a:focus-within,
   --_active-text-decoration: var(--rh-cta-active-text-decoration, underline);
 }
 
-:host([variant="brick"]) #container.icon pf-icon {
+:host([variant="brick"]) #container.icon rh-icon {
   margin-inline: 0;
 }
 
 /* chrome <= 103 */
 @supports not (translate: 0 0) {
-  svg {
+  rh-icon {
     transform: translate(0, 0);
     transition: transform var(--_trans);
   }
 
-  #container.rtl svg { transform: translate(0, 0) rotate(180deg); }
-  :host(:hover) #container svg { transform: translate(3px, 0); }
-  :host(:hover) #container.rtl svg { transform: translate(-3px, 0) rotate(180deg); }
+  #container.rtl rh-icon { transform: translate(0, 0) rotate(180deg); }
+  :host(:hover) #container rh-icon { transform: translate(3px, 0); }
+  :host(:hover) #container.rtl rh-icon { transform: translate(-3px, 0) rotate(180deg); }
 }

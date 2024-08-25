@@ -1,13 +1,23 @@
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
-import { LitElement, html, svg, type PropertyValues } from 'lit';
+import { type CSSResult, LitElement, html, render, svg } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+import { repeat } from 'lit/directives/repeat.js';
 import { classMap } from 'lit/directives/class-map.js';
+import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import '@rhds/elements/rh-surface/rh-surface.js';
 
 import styles from './rh-alert.css';
+import toastStyles from './rh-alert-toast-styles.css';
+
+interface ToastOptions {
+  id: string;
+  message: string;
+  heading?: string;
+  state?: RhAlert['state'];
+}
 
 // TODO: replace with rh-icon
 const ICONS = {
@@ -57,7 +67,81 @@ export class AlertCloseEvent extends Event {
 export class RhAlert extends LitElement {
   static readonly version = '{{version}}';
 
-  static readonly styles = styles;
+  static readonly styles = [styles];
+
+  private static toaster: HTMLElement;
+
+  private static toasts = new Set<ToastOptions>();
+
+  /**
+   * @see https://aerotwist.com/blog/flip-your-animations/
+   * @param toast
+   */
+  private static flip() {
+    const first = this.toaster.offsetHeight;
+    const last = this.toaster.offsetHeight;
+    const invert = last - first;
+    const animation = this.toaster.animate([
+      { transform: `translateY(${invert}px)` },
+      { transform: 'translateY(0)' },
+    ], {
+      duration: 150,
+      easing: 'ease-out',
+    });
+    animation.startTime = document.timeline.currentTime;
+  };
+
+  private static renderToasts() {
+    render(repeat(this.toasts, x => x.id, toast => html`
+      <rh-alert id="${toast.id}"
+                state="${toast.state}"
+                variant="toast"
+                role="status"
+                aria-live="polite">
+        <h3 slot="header">${toast.heading}</h3>
+        <p class="text">${toast.message}</p>
+      </rh-alert>
+    `), this.toaster);
+  }
+
+  /**
+   * Toast a message with an rh-alert
+   * Consider this as a candidate for adding as a static method on RhAlert
+   * @param options
+   * @param options.message alert text
+   * @param [options.heading] alert heading
+   * @param [options.state] `<rh-alert state="...">`
+   */
+  public static async toast({ message, heading = 'Success', state = 'info' }: ToastOptions) {
+    this.toaster ??= this.init();
+    const id = getRandomId();
+    const toast = { heading, message, state, id };
+    this.toasts.add(toast);
+    const { matches: motionOK } = window.matchMedia('(prefers-reduced-motion: no-preference)');
+    this.renderToasts();
+    const alert = this.toaster.querySelector(`#${id}`);
+    if (this.toaster.children.length && motionOK) {
+      this.flip();
+    }
+    await Promise.all([
+      ...this.toaster.getAnimations().map(x => x.finished),
+      ...(alert?.getAnimations().map(x=>x.finished) ?? []),
+    ]);
+    this.toasts.delete(toast);
+    this.renderToasts();
+  };
+
+  static init() {
+    const node = document.createElement('section');
+    node.classList.add('rh-alert-toast-group');
+    // TODO: possibly allow other roots
+    document.adoptedStyleSheets = [
+      ...document.adoptedStyleSheets ?? [],
+      (toastStyles as unknown as CSSResult).styleSheet!,
+    ];
+    document.body.append(node);
+    return node;
+  }
 
   private get icon() {
     return ICONS.get(this.state.toLowerCase() as this['state']) ?? '';
@@ -72,11 +156,8 @@ export class RhAlert extends LitElement {
    *  - `warning` - Indicates a caution state, like a non-blocking error that might need to be fixed.
    *  - `danger` - Indicates a danger state, like an error that is blocking a user from completing a task.
    */
-  @property(
-    {
-      reflect: true,
-    }
-  ) state: 'default' | 'error' | 'success' | 'warning' | 'danger' | 'info' = 'default';
+  @property({ reflect: true })
+  state: 'default' | 'error' | 'success' | 'warning' | 'danger' | 'info' = 'default';
 
   /**
    * The alternate Inline alert style includes a border instead of a line which
@@ -107,7 +188,7 @@ export class RhAlert extends LitElement {
 
   render() {
     const hasActions = this.#slots.hasSlotted('actions');
-    const hasBody = this.#slots.hasSlotted(SlotController.anonymous as unknown as string);
+    const hasBody = this.#slots.hasSlotted(SlotController.default as unknown as string);
     return html`
       <rh-surface id="container"
            class="${classMap({ hasBody })}"

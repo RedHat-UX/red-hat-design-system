@@ -1,7 +1,7 @@
 
 import { LitElement, html, css, isServer } from 'lit';
 
-import { toast } from '../toast.js';
+import { toast } from '@rhds/elements/lib/toast.js';
 
 class UxdotCopyPermalink extends LitElement {
   static styles = css`

@@ -7,9 +7,11 @@ import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/c
 
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
-import '@patternfly/elements/pf-icon/pf-icon.js';
+import type { IconNameFor, IconSetName } from '@rhds/icons';
+import '@rhds/elements/rh-icon/rh-icon.js';
 
 import styles from './rh-tag.css';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 /**
  * A tag is a caption added to an element for better clarity and user convenience.
@@ -30,15 +32,21 @@ import styles from './rh-tag.css';
  *           The padding at the start of the direction parallel to the flow of the text.
  * @cssprop  {<length>} [--rh-tag-padding-inline-end=8px]
  *           The padding at the end of the direction parallel to the flow of the text.
- * @cssprop --pf-icon--size
  *
  */
 @customElement('rh-tag')
 export class RhTag extends LitElement {
   static readonly styles = [styles];
 
-  /** The icon to display in the label. */
-  @property() icon?: string;
+  /**
+   * The icon to display in the label.
+   */
+  @property({ reflect: true }) icon?: IconNameFor<IconSetName>;
+
+  /**
+   * Icon set to display in the label
+   */
+  @property({ attribute: 'icon-set' }) iconSet: IconSetName = 'ui';
 
   /** The variant of the label. */
   @property() variant?: 'filled' | 'outline' = 'filled';
@@ -62,8 +70,7 @@ export class RhTag extends LitElement {
               [variant ?? '']: !!variant,
               [color ?? '']: !!color })}">
         <slot name="icon" part="icon">
-          <pf-icon ?hidden="${!icon}"
-                   .icon="${icon || undefined as unknown as string}"></pf-icon>
+          <rh-icon ?hidden="${!icon}" icon="${ifDefined(icon)}" set="${this.iconSet}"></rh-icon>
         </slot>
         <slot id="text"></slot>
       </span>
