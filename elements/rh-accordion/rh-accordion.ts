@@ -188,7 +188,7 @@ export class RhAccordion extends LitElement {
   #panelForHeader(header: RhAccordionHeader) {
     const next = header.nextElementSibling;
     if (!RhAccordion.isPanel(next)) {
-      return void this.#logger.error('Sibling element to a header needs to be a panel');
+      return next?.querySelector('rh-accordion-panel');
     } else {
       return next;
     }

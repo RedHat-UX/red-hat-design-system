@@ -5,7 +5,6 @@ import { html, LitElement } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
@@ -63,7 +62,10 @@ export class RhAccordionHeader extends LitElement {
 
   #dir = new DirController(this);
 
-  #internals = InternalsController.of(this, { role: 'heading' });
+  #internals = InternalsController.of(this, {
+    role: 'heading',
+    ariaLevel: '2',
+  });
 
   #heading = new HeadingLevelController(this);
 
@@ -76,7 +78,7 @@ export class RhAccordionHeader extends LitElement {
       this.#internals.ariaLevel = heading.localName.replace('h', '');
       heading.replaceWith(this);
     } else {
-      this.#internals.ariaLevel = this.#heading.level.toString();
+      this.#internals.ariaLevel = Math.max(2, this.#heading.level).toString();
     }
   }
 
