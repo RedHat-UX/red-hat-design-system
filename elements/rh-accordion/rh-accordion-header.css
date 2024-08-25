@@ -47,7 +47,10 @@ a {
 }
 
 :host([expanded]) {
-  border-inline-end: var(--rh-border-width-sm, 1px) solid var(--_border-color, var(--rh-color-border-subtle-on-dark, #707070));
+  border-inline-end:
+    var(--rh-border-width-sm, 1px)
+    solid
+    var(--_border-color, var(--rh-color-border-subtle-on-dark, #707070));
 }
 
 :host(.animating) #button,
@@ -71,7 +74,11 @@ a {
 
 #button {
   width: 100%;
-  padding: var(--_padding-block-start) var(--_padding-inline-end) var(--_padding-block-end) var(--_padding-inline-start);
+  padding:
+    var(--_padding-block-start)
+    var(--_padding-inline-end)
+    var(--_padding-block-end)
+    var(--_padding-inline-start);
   font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
   font-size: var(--_font-size);
   font-weight: var(--rh-font-weight-body-text-medium, 500);
