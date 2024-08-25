@@ -21,7 +21,6 @@ import { context, type RhAccordionContext } from './context.js';
 
 import styles from './rh-accordion.css';
 
-
 export class AccordionExpandEvent extends ComposedEvent {
   constructor(
     public toggle: RhAccordionHeader,
@@ -73,10 +72,7 @@ export class RhAccordion extends LitElement {
   /**
    * Sets accordion header's accents position to inline or bottom
    */
-  @property({
-    attribute: true,
-    reflect: true,
-  }) accents?: 'inline' | 'bottom';
+  @property({ attribute: true, reflect: true }) accents?: 'inline' | 'bottom';
 
   /**
    * Sets and reflects the currently expanded accordion 0-based indexes.
@@ -113,7 +109,6 @@ export class RhAccordion extends LitElement {
     return { accents };
   }
 
-
   @property({ reflect: true, type: Boolean }) large = false;
 
   @property({ reflect: true, type: Boolean }) bordered = true;
@@ -127,8 +122,9 @@ export class RhAccordion extends LitElement {
 
   #expandedIndex: number[] = [];
 
-  #tabindex = RovingTabindexController.of(this, {
-    getItems: () => this.headers,
+  #tabindex: RovingTabindexController<HTMLButtonElement> = RovingTabindexController.of(this, {
+    getItems: () => this.headers.flatMap(x =>
+      x.hasUpdated ? [x.shadowRoot!.querySelector('button')!] : []),
   });
 
   #logger = new Logger(this);
@@ -139,7 +135,6 @@ export class RhAccordion extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.addEventListener('focusin', this.#updateActiveHeader);
     this.addEventListener('change', this.#onChange as EventListener);
     this.#mo.observe(this, { childList: true });
     this.#init();
@@ -188,18 +183,6 @@ export class RhAccordion extends LitElement {
       ...this.#allPanels().map(x => x.updateComplete),
     ]);
     return c && results.every(Boolean);
-  }
-
-  get #activeHeader() {
-    const { headers } = this;
-    const index = headers.findIndex(header => header.matches(':focus,:focus-within'));
-    return index > -1 ? headers.at(index) : undefined;
-  }
-
-  #updateActiveHeader() {
-    if (this.#activeHeader) {
-      this.#tabindex.atFocusedItemIndex = this.headers.indexOf(this.#activeHeader);
-    }
   }
 
   #panelForHeader(header: RhAccordionHeader) {
