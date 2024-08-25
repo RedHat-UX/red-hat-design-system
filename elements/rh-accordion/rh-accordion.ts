@@ -104,12 +104,6 @@ export class RhAccordion extends LitElement {
     }
   }
 
-  get #ctx(): RhAccordionContext {
-    const accents = this.accents ? this.accents : 'inline';
-    const { large } = this;
-    return { accents, large };
-  }
-
   @property({ reflect: true, type: Boolean }) large = false;
 
   @property({ reflect: true, type: Boolean }) bordered = true;
@@ -123,6 +117,8 @@ export class RhAccordion extends LitElement {
 
   #expandedIndex: number[] = [];
 
+  // side effects are used
+  // eslint-disable-next-line no-unused-private-class-members
   #tabindex: RovingTabindexController<HTMLButtonElement> = RovingTabindexController.of(this, {
     getItems: () => this.headers.flatMap(x =>
       x.hasUpdated ? [x.shadowRoot!.querySelector('button')!] : []),
@@ -132,7 +128,7 @@ export class RhAccordion extends LitElement {
 
   #mo = new MutationObserver(() => this.updateAccessibility());
 
-  @provide({ context }) private ctx = this.#ctx;
+  @provide({ context }) private ctx = this.#makeContext();
 
   connectedCallback() {
     super.connectedCallback();
@@ -159,13 +155,6 @@ export class RhAccordion extends LitElement {
     `;
   }
 
-  @observes('accents')
-  @observes('large')
-  @observes('bordered')
-  private contextChanged() {
-    this.ctx = this.#ctx;
-  }
-
   protected override async getUpdateComplete(): Promise<boolean> {
     const c = await super.getUpdateComplete();
     const results = await Promise.all([
@@ -173,6 +162,18 @@ export class RhAccordion extends LitElement {
       ...this.#allPanels().map(x => x.updateComplete),
     ]);
     return c && results.every(Boolean);
+  }
+
+  @observes('accents')
+  @observes('large')
+  @observes('bordered')
+  private contextChanged() {
+    this.ctx = this.#makeContext();
+  }
+
+  #makeContext(): RhAccordionContext {
+    const { accents = 'inline', large } = this;
+    return { accents, large };
   }
 
   #panelForHeader(header: RhAccordionHeader) {
