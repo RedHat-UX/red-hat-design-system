@@ -56,7 +56,10 @@ a:after,
   --_arrow-size: 13px;
   --_arrow-plus-padding: calc(var(--rh-space-md, 8px) + var(--_arrow-size));
   --rh-icon-size: var(--rh-font-size-body-text-lg, 1.125rem);
-  --_rh-icon-plus-padding: calc(5px + var(--rh-icon-size));
+  --_rh-icon-plus-padding:
+    calc(
+        5px + var(--rh-icon-size) /* stylelint-disable-line rhds/no-unknown-token-name */
+      );
 }
 
 .rtl {
