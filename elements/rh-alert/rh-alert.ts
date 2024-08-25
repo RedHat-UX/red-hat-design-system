@@ -99,7 +99,7 @@ export class RhAlert extends LitElement {
                 role="status"
                 aria-live="polite">
         <h3 slot="header">${toast.heading}</h3>
-        <p class="text">${toast.message}</p>
+        <p class="text" ?hidden="${!toast.message}">${toast.message}</p>
       </rh-alert>
     `), this.toaster);
   }

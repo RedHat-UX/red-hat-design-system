@@ -1,6 +1,6 @@
 import { html, css, LitElement, isServer } from 'lit';
 
-import { toast } from '@rhds/elements/lib/toast.js';
+import { RhAlert } from '@rhds/elements/rh-alert/rh-alert.js';
 
 if (!isServer) {
   import('@rhds/elements/rh-tooltip/rh-tooltip.js');
@@ -51,7 +51,7 @@ export class UxdotCopyButton extends LitElement {
     const text = this.copy ?? this.textContent;
     const message = text.trim();
     await navigator.clipboard.writeText(message);
-    toast({ heading: 'Copied', message });
+    RhAlert.toast({ heading: 'Copied', message });
   }
 
   static {

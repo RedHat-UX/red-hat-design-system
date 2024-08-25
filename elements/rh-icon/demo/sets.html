@@ -10,19 +10,19 @@
   import '@patternfly/elements/pf-select/pf-option-group.js';
   import '@rhds/elements/rh-icon/rh-icon.js';
   import '@rhds/elements/rh-tooltip/rh-tooltip.js';
-  import '@rhds/elements/rh-alert/rh-alert.js';
 
+  import { RhAlert } from '@rhds/elements/rh-alert/rh-alert.js';
   import { RhButton } from '@rhds/elements/rh-button/rh-button.js';
+
   import { iconSets } from '@rhds/elements/lib/environment.js';
   import { render, html } from 'lit';
   import { repeat } from 'lit/directives/repeat.js';
-  import { toast } from '@rhds/elements/lib/toast.js';
 
   document.addEventListener('click', async function() {
     if (event.target instanceof RhButton) {
       const { html, icon } = event.target.dataset;
       await navigator.clipboard.writeText(html)
-      await toast({ message: `Copied ${icon}` });
+      await RhAlert.toast({ message: `Copied ${icon}` });
     }
   });
 

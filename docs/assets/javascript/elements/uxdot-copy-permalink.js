@@ -1,7 +1,7 @@
 
 import { LitElement, html, css, isServer } from 'lit';
 
-import { toast } from '@rhds/elements/lib/toast.js';
+import { RhAlert } from '@rhds/elements/rh-alert/rh-alert.js';
 
 class UxdotCopyPermalink extends LitElement {
   static styles = css`
@@ -88,7 +88,7 @@ class UxdotCopyPermalink extends LitElement {
     const [href] = this.allAnchors;
     if (href) {
       await navigator.clipboard.writeText(href);
-      toast({ heading: this.copiedText });
+      RhAlert.toast({ heading: this.copiedText });
     }
   }
 }
