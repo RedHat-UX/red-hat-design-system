@@ -19,6 +19,7 @@ import { consume } from '@lit/context';
 import { context } from './context.js';
 
 import styles from './rh-accordion-header.css';
+import { HeadingLevelController } from '@rhds/elements/lib/context/headings/controller.js';
 
 export class AccordionHeaderChangeEvent extends Event {
   declare target: RhAccordionHeader;
@@ -62,31 +63,39 @@ export class RhAccordionHeader extends LitElement {
 
   #dir = new DirController(this);
 
-  #internals = InternalsController.of(this, { role: 'button' });
+  #internals = InternalsController.of(this, { role: 'heading' });
+
+  #heading = new HeadingLevelController(this);
 
   override connectedCallback() {
     super.connectedCallback();
     this.addEventListener('click', this.#onClick);
     this.id ||= getRandomId(this.localName);
+    const accordion = this.closest('rh-accordion');
+    const heading = this.closest('h1,h2,h3,h4,h5,h6');
+    if (heading && accordion?.contains(heading)) {
+      this.#internals.ariaLevel = heading.localName.replace('h', '');
+      heading.replaceWith(this);
+    } else {
+      this.#internals.ariaLevel = this.#heading.level.toString();
+    }
   }
 
   render() {
-    const { on = '' } = this;
+    const { expanded, on = '' } = this;
     const { accents } = this.ctx ?? {};
     const rtl = this.#dir.dir === 'rtl';
     return html`
-      <div id="container" class="${classMap({ [on]: !!on, rtl })}">
-        <div id="button" class="toggle">
+      <div id="container" class="${classMap({ [on]: !!on, rtl, expanded })}">
+        <button id="button" class="toggle">
           <span id="header-container" class="${ifDefined(accents)}">
             <span part="text"><slot></slot></span>
-            <span part="accents">
-              <slot name="accents"></slot>
-            </span>
+            <span part="accents"><slot name="accents"></slot></span>
           </span>
           <svg id="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
             <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
           </svg>
-        </div>
+        </button>
       </div>
     `;
   }

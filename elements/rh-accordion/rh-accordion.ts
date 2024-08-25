@@ -178,18 +178,7 @@ export class RhAccordion extends LitElement {
    * open
    */
   async #init() {
-    this.#replaceHeaders();
     this.updateAccessibility();
-  }
-
-  #replaceHeaders() {
-    for (const child of this.children) {
-      let header;
-      if (child.matches('h1,h2,h3,h4,h5,h6')
-        && (header = child.querySelector('rh-accordion-header'))) {
-        child.replaceWith(header);
-      }
-    }
   }
 
   protected override async getUpdateComplete(): Promise<boolean> {

@@ -48,10 +48,7 @@ a {
 }
 
 :host([expanded]) {
-  border-inline-end:
-    var(--rh-border-width-sm, 1px)
-    solid
-    var(--_border-color, var(--rh-color-border-subtle-on-dark, #707070));
+  border-inline-end: var(--rh-border-width-sm, 1px) solid var(--_border-color, var(--rh-color-border-subtle-on-dark, #707070));
 }
 
 :host(.animating) #button,
@@ -74,11 +71,7 @@ a {
 }
 
 #button {
-  padding:
-    var(--_padding-block-start)
-    var(--_padding-inline-end)
-    var(--_padding-block-end)
-    var(--_padding-inline-start);
+  padding: var(--_padding-block-start) var(--_padding-inline-end) var(--_padding-block-end) var(--_padding-inline-start);
   font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
   font-size: var(--_font-size, var(--rh-font-size-body-text-lg, 1.125rem));
   font-weight: var(--rh-font-weight-body-text-medium, 500);
@@ -87,10 +80,6 @@ a {
 
 #button #icon {
   fill: var(--_text-color);
-}
-
-#button[aria-expanded="true"] {
-  --_after-background-color: var(--_expanded-background-color);
 }
 
 #button:after {
@@ -122,7 +111,11 @@ span {
   gap: var(--rh-space-md, 8px);
 }
 
-#button[aria-expanded="true"] #icon {
+.expanded #button {
+  --_after-background-color: var(--_expanded-background-color);
+}
+
+.expanded #button #icon {
   rotate: calc(var(--_isRTL, -1) * 180deg);
 }
 
@@ -150,7 +143,6 @@ span {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
   border: 0;
 }
 
