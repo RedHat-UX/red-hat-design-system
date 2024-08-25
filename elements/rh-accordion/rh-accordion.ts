@@ -106,7 +106,8 @@ export class RhAccordion extends LitElement {
 
   get #ctx(): RhAccordionContext {
     const accents = this.accents ? this.accents : 'inline';
-    return { accents };
+    const { large } = this;
+    return { accents, large };
   }
 
   @property({ reflect: true, type: Boolean }) large = false;
@@ -129,7 +130,7 @@ export class RhAccordion extends LitElement {
 
   #logger = new Logger(this);
 
-  #mo = new MutationObserver(() => this.#init());
+  #mo = new MutationObserver(() => this.updateAccessibility());
 
   @provide({ context }) private ctx = this.#ctx;
 
@@ -137,7 +138,18 @@ export class RhAccordion extends LitElement {
     super.connectedCallback();
     this.addEventListener('change', this.#onChange as EventListener);
     this.#mo.observe(this, { childList: true });
-    this.#init();
+    this.updateAccessibility();
+    const { headers } = this;
+    headers.forEach((header, index) => {
+      if (header.expanded) {
+        this.#expandHeader(header, index);
+        const panel = this.#panelForHeader(header);
+        if (panel) {
+          this.#expandPanel(panel);
+          panel.hidden = !panel.expanded;
+        }
+      }
+    });
   }
 
   override render(): TemplateResult {
@@ -147,33 +159,11 @@ export class RhAccordion extends LitElement {
     `;
   }
 
-  async firstUpdated() {
-    const { headers } = this;
-    headers.forEach((header, index) => {
-      if (header.expanded) {
-        this.#expandHeader(header, index);
-        const panel = this.#panelForHeader(header);
-        if (panel) {
-          this.#expandPanel(panel);
-        }
-      }
-    });
-    this.ctx = this.#ctx;
-  }
-
+  @observes('accents')
   @observes('large')
-  private largeChanged(this: RhAccordion) {
-    [...this.headers, ...this.panels].forEach(el => el.toggleAttribute('large', this.large));
-  }
-
-  /**
-   * Initialize the accordion by connecting headers and panels
-   * with aria controls and labels; set up the default disclosure
-   * state if not set by the author; and check the URL for default
-   * open
-   */
-  async #init() {
-    this.updateAccessibility();
+  @observes('bordered')
+  private contextChanged() {
+    this.ctx = this.#ctx;
   }
 
   protected override async getUpdateComplete(): Promise<boolean> {
@@ -269,6 +259,12 @@ export class RhAccordion extends LitElement {
     return this.#allPanels();
   }
 
+  /**
+   * Initialize the accordion by connecting headers and panels
+   * with aria controls and labels; set up the default disclosure
+   * state if not set by the author; and check the URL for default
+   * open
+   */
   public updateAccessibility() {
     const { headers } = this;
 
@@ -278,7 +274,6 @@ export class RhAccordion extends LitElement {
       if (panel) {
         header.setAttribute('aria-controls', panel.id);
         panel.setAttribute('aria-labelledby', header.id);
-        panel.hidden = !panel.expanded;
       }
     }
   }

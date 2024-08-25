@@ -31,7 +31,7 @@
   padding-block-start: var(--rh-space-xl, 24px);
 }
 
-:host([large]) {
+.large {
   --_panel-body-padding-block-start: var(--rh-space-xl, 24px);
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-xl, 24px);
@@ -42,15 +42,12 @@
 .body {
   position: relative;
   overflow: hidden;
+  display: block;
   padding:
     var(--_panel-body-padding-block-start, var(--rh-space-md, 8px))
     var(--_panel-body-padding-inline-end, var(--rh-space-lg, 16px))
     var(--_panel-body-padding-block-end, var(--rh-space-md, 8px))
     var(--_panel-body-padding-inline-start, var(--rh-space-lg, 16px));
-}
-
-:host([large]) .body:last-child {
-  --_panel-body-padding-block-end: var(--rh-space-xl, 24px);
 }
 
 :host([fixed]) {
@@ -64,7 +61,7 @@
   position: unset;
 }
 
-#rhds-container {
+#container {
   border-inline-end:
     1px
     solid
@@ -75,8 +72,7 @@
   background-color: var(--_background-color);
 }
 
-.content[expanded],
-:host([expanded]) .content {
+.content.expanded {
   --_panel-body--before-background-color:
     var(
         --_panel-content-body-accent-color,

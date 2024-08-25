@@ -11,6 +11,9 @@ import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import styles from './rh-accordion-panel.css';
 
+import { consume } from '@lit/context';
+import { context, type RhAccordionContext } from './context.js';
+
 /**
  * Accordion Panel
  *
@@ -30,6 +33,10 @@ export class RhAccordionPanel extends LitElement {
 
   @colorContextConsumer() private on?: ColorTheme;
 
+  @consume({ context, subscribe: true })
+  @property({ attribute: false })
+  private ctx?: RhAccordionContext;
+
   connectedCallback() {
     super.connectedCallback();
     this.id ||= getRandomId(this.localName);
@@ -37,16 +44,14 @@ export class RhAccordionPanel extends LitElement {
   }
 
   override render() {
-    const { on = '' } = this;
+    const { on = '', expanded } = this;
+    const { large = false } = this.ctx ?? {};
     return html`
-      <div id="rhds-container" class="${classMap({ [on]: !!on })}">
-        <div tabindex="-1">
-          <div id="container" class="content" part="container">
-            <div class="body">
-              <slot></slot>
-            </div>
-          </div>
-        </div>
+      <div id="container"
+           class="${classMap({ [on]: !!on, large, expanded, content: true })}"
+           part="container"
+           tabindex="-1">
+        <slot class="body"></slot>
       </div>
     `;
   }
