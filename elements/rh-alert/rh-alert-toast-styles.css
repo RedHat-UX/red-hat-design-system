@@ -5,27 +5,29 @@
   inset-inline-end: var(--rh-space-lg, 16px);
   padding-block-end: var(--rh-space-4xl, 64px);
   display: grid;
-  justify-items: center;
+  justify-items: end;
   justify-content: center;
   gap: var(--rh-space-lg, 16px);
 
   /* optimizations */
   pointer-events: none;
+}
 
-  & rh-alert {
-    --_duration: 3s;
-    --_travel-distance: 0;
+.rh-alert-toast-group rh-alert {
+  --_duration: 8s;
+  --_travel-distance: 0;
 
-    pointer-events: all;
-    will-change: transform;
-    animation:
-      fade-in 0.3s ease,
-      slide-in 0.3s ease,
-      fade-out 0.3s ease var(--_duration);
+  pointer-events: all;
+  will-change: transform;
+  animation:
+    fade-in 0.3s ease,
+    slide-in 0.3s ease,
+    fade-out 0.3s ease var(--_duration);
+}
 
-    @media (--motionOK) {
-      --_travel-distance: var(--rh-space-4xl, 64px);
-    }
+@media (prefers-reduced-motion: no-preference) {
+  .rh-alert-toast-group rh-alert {
+    --_travel-distance: var(--rh-space-4xl, 64px);
   }
 }
 

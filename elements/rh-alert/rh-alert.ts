@@ -3,7 +3,9 @@ import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller
 import { type CSSResult, LitElement, html, render, svg } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+import { repeat } from 'lit/directives/repeat.js';
 import { classMap } from 'lit/directives/class-map.js';
+import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import '@rhds/elements/rh-surface/rh-surface.js';
 
@@ -11,6 +13,7 @@ import styles from './rh-alert.css';
 import toastStyles from './rh-alert-toast-styles.css';
 
 interface ToastOptions {
+  id: string;
   message: string;
   heading?: string;
   state?: RhAlert['state'];
@@ -66,49 +69,19 @@ export class RhAlert extends LitElement {
 
   static readonly styles = [styles];
 
-  private static node: HTMLElement;
+  private static toaster: HTMLElement;
 
-  private static create({ message, heading, state }: Required<ToastOptions>): RhAlert {
-    const container = document.createElement('div');
-    render(html`
-      <rh-alert state="${state}"
-                role="status"
-                aria-live="polite">
-        <h3 slot="header">${heading}</h3>
-        <p class="text">${message}</p>
-      </rh-alert>
-    `, container);
-    return container.firstElementChild as RhAlert;
-  };
-
-  private static add(toast: RhAlert) {
-    const { matches: motionOK } = window.matchMedia('(prefers-reduced-motion: no-preference)');
-    if (this.node.children.length && motionOK) {
-      this.flip(toast);
-    } else {
-      this.node.appendChild(toast);
-    }
-  };
-
-  private static remove(toast: RhAlert) {
-    this.node.removeChild(toast);
-  }
+  private static toasts = new Set<ToastOptions>();
 
   /**
    * @see https://aerotwist.com/blog/flip-your-animations/
    * @param toast
    */
-  private static flip(toast: RhAlert) {
-    // FIRST
-    const first = this.node.offsetHeight;
-    // add new child to change container size
-    this.node.appendChild(toast);
-    // LAST
-    const last = this.node.offsetHeight;
-    // INVERT
+  private static flip() {
+    const first = this.toaster.offsetHeight;
+    const last = this.toaster.offsetHeight;
     const invert = last - first;
-    // PLAY
-    const animation = this.node.animate([
+    const animation = this.toaster.animate([
       { transform: `translateY(${invert}px)` },
       { transform: 'translateY(0)' },
     ], {
@@ -117,6 +90,19 @@ export class RhAlert extends LitElement {
     });
     animation.startTime = document.timeline.currentTime;
   };
+
+  private static renderToasts() {
+    render(repeat(this.toasts, x => x.id, toast => html`
+      <rh-alert id="${toast.id}"
+                state="${toast.state}"
+                variant="toast"
+                role="status"
+                aria-live="polite">
+        <h3 slot="header">${toast.heading}</h3>
+        <p class="text">${toast.message}</p>
+      </rh-alert>
+    `), this.toaster);
+  }
 
   /**
    * Toast a message with an rh-alert
@@ -127,11 +113,22 @@ export class RhAlert extends LitElement {
    * @param [options.state] `<rh-alert state="...">`
    */
   public static async toast({ message, heading = 'Success', state = 'info' }: ToastOptions) {
-    this.node ??= this.init();
-    const toast = this.create({ heading, message, state });
-    this.add(toast);
-    await Promise.all(toast.getAnimations().map(x => x.finished));
-    this.remove(toast);
+    this.toaster ??= this.init();
+    const id = getRandomId();
+    const toast = { heading, message, state, id };
+    this.toasts.add(toast);
+    const { matches: motionOK } = window.matchMedia('(prefers-reduced-motion: no-preference)');
+    this.renderToasts();
+    const alert = this.toaster.querySelector(`#${id}`);
+    if (this.toaster.children.length && motionOK) {
+      this.flip();
+    }
+    await Promise.all([
+      ...this.toaster.getAnimations().map(x => x.finished),
+      ...(alert?.getAnimations().map(x=>x.finished) ?? []),
+    ]);
+    this.toasts.delete(toast);
+    this.renderToasts();
   };
 
   static init() {
