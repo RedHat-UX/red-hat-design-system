@@ -107,7 +107,7 @@ export class RhIcon extends LitElement {
     const { set = 'standard' } = this;
     return html`
       <div id="container"
-           aria-hidden="true"
+           aria-hidden="${String(!!content)}"
            class="${classMap({ [set]: set })}"
       >${content}<span part="fallback"
                        ?hidden=${!!content}><slot></slot></span></div>
