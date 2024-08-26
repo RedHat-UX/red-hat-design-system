@@ -37,17 +37,6 @@ A logo wall is a visual arrangement of logos representing various brands, compan
 
 ## When to use
 
-  - Use a logo wall pattern when you need to display multiple logos in a group. 
-
-## Responsive sizing
-
-Each logo is in a container. The size of each container and logo is determined by the designer but should abide by best practices. Designers should ensure that all logos are of a similar size and proportionate to each other. Logos are centered vertically and horizontally within the container.
-
-Bordered:
-  - Logo sizes may decrease on smaller screens, however the container will retain 16px padding on all sides. Logos are horizontally and vertically aligned.
-
-Borderless:
-  - Logo sizes may decrease on smaller screens. Logo containers can adjust margins and padding for smaller screens. Logos are horizontally and vertically aligned.
-
+Use a logo wall pattern when you need to display multiple logos in a group.
 
 {% include 'partials/component/feedback.html' %}

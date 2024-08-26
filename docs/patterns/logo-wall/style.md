@@ -50,7 +50,9 @@ Logo walls can be used in light and dark themes.
 
 ## Space
 
-Bordered:
+Logo walls define layout rules for spacing logos, and their styles.
+
+### Bordered
  - Logos are evenly spaced.
  - Logos are in a container with 16px of padding on all sides and a corner radius of 3px.
 
@@ -59,7 +61,7 @@ Bordered:
        alt="Example of a bordered logo wall with spacing values.">
 </uxdot-example>
 
-Borderless:
+### Borderless
  - Logos are evenly spaced.
  - Logos are in a container with 16px of top and bottom padding and 8px of left and right padding.
  - All containers using the borderless style have the same height but will likely have different widths depending on the dimensions of the logo.
@@ -88,7 +90,7 @@ Interaction states are visual representations used to communicate the status of 
 ### Focus
 
 <rh-alert state="info">
-  The Focus states have the same styles as the Hover states, except for the focus ring.
+  The focus states have the same styles as the hover states, except for the focus ring.
 </rh-alert>
 
 <uxdot-example width-adjustment="400px">
@@ -104,7 +106,7 @@ Interaction states are visual representations used to communicate the status of 
 ### Active
 
 <rh-alert state="info">
-    The Active states have the same styles as the Focus states.
+  The active states have the same styles as the focus states.
 </rh-alert>
 
 <uxdot-example width-adjustment="400px">
