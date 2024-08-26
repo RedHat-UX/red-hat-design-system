@@ -92,14 +92,14 @@
 - tagName: rh-breadcrumb
   name: "Breadcrumb"
   type: "Element"
-  overallStatus: "Available"
+  overallStatus: "New"
   libraries:
     - name: Figma library
       status: Ready
     - name: RH Elements
       status: Ready
     - name: RH Shared Libs
-      status: Ready
+      status: Planned
     - name: Documentation
       status: Ready
 - tagName: rh-button
@@ -116,7 +116,7 @@
     - name: Documentation
       status: Ready
 - tagName: rh-cta
-  name: "Cta"
+  name: "Call to action"
   type: "Element"
   overallStatus: "Available"
   libraries:
@@ -181,9 +181,9 @@
     - name: Documentation
       status: Ready
 - tagName: rh-health-index
-  name: "Health Index"
+  name: "Health index"
   type: "Element"
-  overallStatus: "Available"
+  overallStatus: "New"
   libraries:
     - name: Figma library
       status: Ready
@@ -196,7 +196,7 @@
 - tagName: rh-icon
   name: "Icon"
   type: "Element"
-  overallStatus: "Available"
+  overallStatus: "New"
   libraries:
     - name: Figma library
       status: Ready
@@ -207,9 +207,9 @@
     - name: Documentation
       status: Ready
 - tagName: rh-jump-links
-  name: "Jumplinks"
+  name: "Jump links"
   type: "Element"
-  overallStatus: "Available"
+  overallStatus: "Planned"
   libraries:
     - name: Figma library
       status: N/A
@@ -272,7 +272,7 @@
     - name: Documentation
       status: Ready
 - tagName: rh-progress-steps
-  name: "Progess Steps"
+  name: "Progress Steps"
   type: "Element"
   overallStatus: "Available"
   libraries:
@@ -287,7 +287,7 @@
 - tagName: rh-skip-link
   name: "Skip Link"
   type: "Element"
-  overallStatus: "New"
+  overallStatus: "Available"
   libraries:
     - name: Figma library
       status: Ready
@@ -297,23 +297,10 @@
       status: Planned
     - name: Documentation
       status: Ready  
-- tagName: rh-skip-link
-  name: "Skip Link"
-  type: "Element"
-  overallStatus: "New"
-  libraries:
-    - name: Figma library
-      status: Ready
-    - name: RH Elements
-      status: Ready
-    - name: RH Shared Libs
-      status: Planned
-    - name: Documentation
-      status: Ready
 - tagName: rh-site-status 
   name: "Site Status"
   type: "Element"
-  overallStatus: "New"
+  overallStatus: "Available"
   libraries:
     - name: Figma library
       status: Ready
@@ -365,7 +352,7 @@
 - tagName: rh-surface
   name: "Surface"
   type: "Element"
-  overallStatus: "New"
+  overallStatus: "Available"
   libraries:
     - name: Figma library
       status: Ready
@@ -391,7 +378,7 @@
 - tagName: rh-table
   name: "Table"
   type: "Element"
-  overallStatus: "New"
+  overallStatus: "Available"
   libraries:
     - name: Figma library
       status: Ready
@@ -430,7 +417,7 @@
 - tagName: rh-tile
   name: "Tile"
   type: "Element"
-  overallStatus: "New"
+  overallStatus: "Available"
   libraries:
     - name: Figma library
       status: Ready
@@ -464,5 +451,18 @@
       status: Ready
     - name: RH Shared Libs
       status: Ready
+    - name: Documentation
+      status: Ready
+- tagName: rh-video-embed
+  name: "Video embed"
+  type: "Element"
+  overallStatus: "New"
+  libraries:
+    - name: Figma library
+      status: Ready
+    - name: RH Elements
+      status: Ready
+    - name: RH Shared Libs
+      status: Planned
     - name: Documentation
       status: Ready
