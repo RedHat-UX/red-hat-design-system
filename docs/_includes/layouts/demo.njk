@@ -18,10 +18,8 @@
   </head>
   <body unresolved>{% if demo.filePath %}
     <main>
-      <div data-demo="{{ demo.tagName }}">
-        {%- include demo.filePath -%}
-      </div>
-    </main> {%- else -%}
+      {%- include demo.filePath -%}
+    </main>{%- else -%}
     <p>No Demo. <a href="https://github.com/redhat-ux/red-hat-design-system/issues/new">Open an issue!</a></p>{%- endif -%}
   </body>
 </html>

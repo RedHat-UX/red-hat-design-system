@@ -10,6 +10,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 import { DirController } from '../../lib/DirController.js';
+import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-pagination.css';
 
@@ -25,26 +26,25 @@ const L2 = html`
 
 /**
  * A paginator allows users to navigate between pages of related content.
- *
  * @summary Allows users to navigate content divided into pages
- *
  * @slot            - An ordered list of links
  * @slot go-to-page - "Go to page" text
  * @slot out-of     - "of" text
- *
- * @cssprop {<color>} --rh-pagination-accent-color
+ * @cssprop {<color>} [--rh-pagination-accent-color=var(--rh-color-interactive-blue, #0066cc)]
  *          Sets the outline color when the page input has focus.
- *          {@default `var(--rh-color-interactive-blue, #0066cc)`}
- * @cssprop {<color>} --rh-pagination-background-focused
+ * @cssprop {<color>} [--rh-pagination-background-focused=var(--rh-color-gray-20, #c7c7c7)]
  *          Sets the disabled stepper color.
- *          {@default `var(--rh-color-gray-20, #c7c7c7)`}
- * @cssprop {<color>} --rh-pagination-stepper-color
+ * @cssprop {<color>} [--rh-pagination-stepper-color=var(--rh-color-icon-subtle, #707070)]
  *           Sets the stepper color.
- *          {@default `var(--rh-color-icon-subtle, #707070)`}
  */
 @customElement('rh-pagination')
 export class RhPagination extends LitElement {
   static readonly version = '{{version}}';
+
+  /**
+   * Sets color theme based on parent context
+   */
+  @colorContextConsumer() private on?: ColorTheme;
 
   static readonly styles = [styles];
 
@@ -108,6 +108,7 @@ export class RhPagination extends LitElement {
   }
 
   render() {
+    const { on = '' } = this;
     const { mobile, size } = this.#screen;
     const { dir } = this.#dir;
     const { label, labelFirst, labelPrevious, labelNext, labelLast } = this;
@@ -117,7 +118,7 @@ export class RhPagination extends LitElement {
     const lastHref = this.#currentLink === this.#lastLink ? undefined : this.#lastLink?.href;
     const currentPage = this.#currentPage.toString();
     return html`
-      <div id="container" class=${classMap({ mobile, [size as string]: true, [dir]: true })}>
+      <div id="container" class=${classMap({ mobile, [size as string]: true, [dir]: true, [on]: !!on })}>
         <a id="first" class="stepper" href=${ifDefined(firstHref)} ?inert=${!firstHref} aria-label=${labelFirst}>${L2}</a>
         <a id="prev" class="stepper" href=${ifDefined(prevHref)} ?inert=${!prevHref} aria-label=${labelPrevious}>${L1}</a>
 

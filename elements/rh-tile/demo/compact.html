@@ -18,7 +18,7 @@
 
 <rh-tile compact bleed>
   <img slot="image" src="https://fakeimg.pl/300x50" alt="300 X 50 placeholder image">
-  <pf-icon slot="icon" icon="aws" set="fab" size="lg"></pf-icon>
+  <rh-icon set="standard" icon="cloud-automation"></rh-icon>
   <h2 slot="headline"><a href="#top">Link</a></h2>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
   <div slot="footer">Suspendisse eu turpis elementum</div>
@@ -44,8 +44,13 @@
 <link rel="stylesheet" href="../rh-tile-lightdom.css">
 
 <style>
+  main {
+    display: block;
+  }
+
   rh-tile {
     margin-inline-end: var(--rh-space-md, 8px);
+    margin-block-end: var(--rh-space-md, 8px);
   }
 </style>
 

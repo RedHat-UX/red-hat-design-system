@@ -13,11 +13,8 @@ export type SpinnerSize = RhSpinner['size'];
  * A spinner indicates that an action is in progress.
  * It appears as an animated circle over the section that is loading,
  * and it may include a text label
- *
  * @summary Notifies users their action is being processed or loaded
- *
  * @slot - Optional text label below the animated circle.
- *
  */
 @customElement('rh-spinner')
 export class RhSpinner extends LitElement {
@@ -43,22 +40,6 @@ export class RhSpinner extends LitElement {
       <slot></slot>
     `;
   }
-
-  // START hack for removal of contextProvider. delete for version 2.0
-  /**
-   * @deprecated Use Color context instead. See https://ux.redhat.com/foundations/color/context/
-   */
-  @property({ attribute: 'color-palette' }) colorPalette?: string;
-
-  willUpdate() {
-    const [cp] = this.getAttribute('color-palette')?.match(/^dark|^light/) ?? [];
-    if (cp) {
-      this.on = cp as 'dark' | 'light';
-      // eslint-disable-next-line no-console
-      console.warn(`[rh-spinner]: do not use color-palette, it is deprecated`);
-    }
-  }
-  // END hack
 }
 
 declare global {

@@ -90,7 +90,7 @@ class Renderers {
      * @see https://github.com/11ty/eleventy/blob/bf7c0c0cce1b2cb01561f57fdd33db001df4cb7e/src/Plugins/RenderPlugin.js#L89-L93
      * @type {DocsPage}
      */
-    this.docsPage = page.ctx._;
+    this.docsPage = page.ctx.doc;
     this.manifest = this.docsPage.manifest;
     Renderers.renderers.set(page, this);
   }

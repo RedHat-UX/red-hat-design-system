@@ -1,6 +1,5 @@
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
@@ -13,17 +12,12 @@ import styles from './rh-table.css';
 
 /**
  * A table is a container for displaying information. It allows a user to scan, examine, and compare large amounts of data.
- *
  * @summary Organizes and displays information from a data set
- *
  * @slot               - an HTML table
  * @slot    summary    - a brief description of the data
- *
- * @cssprop {<color>} --rh-table-row-background-color - deprecated use --rh-table-row-background-hover-color {@default `224 224 224 / 40%`}
- * @cssprop {<color>} --rh-table-column-background-color - deprecated use --rh-table-column-background-hover-color {@default `0 102 204 / 10%`}
- * @cssprop {<color>} --rh-table-row-background-hover-color - row hover background color {@default `224 224 224 / 40%`}
- * @cssprop {<color>} --rh-table-column-background-hover-color - column hover background color {@default `0 102 204 / 10%`}
- * @cssprop --rh-table-row-border - row border {@default `1px solid #c7c7c7`}
+ * @cssprop {<color>} [--rh-table-row-background-hover-color=224 224 224 / 40%] - row hover background color
+ * @cssprop {<color>} [--rh-table-column-background-hover-color=0 102 204 / 10%] - column hover background color
+ * @cssprop [--rh-table-row-border=1px solid #c7c7c7] - row border
  */
 @customElement('rh-table')
 export class RhTable extends LitElement {
@@ -85,7 +79,7 @@ export class RhTable extends LitElement {
      * value.  This fix will only update the component when switching between light and dark themes as
      * thats when the consumer requests an update.  Switching between lighter -> light for example will
      * not trigger the component to update at this time.
-     **/
+     */
     this.#internalColorPalette = this.closest('[color-palette]')?.getAttribute('color-palette');
   }
 
