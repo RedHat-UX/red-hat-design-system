@@ -1,14 +1,14 @@
 ---
 title: Link
-order: 70
+order: 60
 layout: layouts/pages/basic.njk
 hasToc: true
 tags:
 - pattern
 ---
 
-<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
-<link rel="stylesheet" href="{{ '/styles/samp.css' | url }}">
+<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
+<link rel="stylesheet" href="/styles/samp.css">
 
 
 ## Overview
@@ -19,7 +19,7 @@ Links are navigational elements that allow a user to move between content, pages
 ## Sample pattern
 
 <uxdot-example width-adjustment="259px">
-  <img src="{{ './example-links.svg' | url }}" alt="Link component examples">
+  <img src="./example-links.svg" alt="Link component examples">
 </uxdot-example>
 
 
@@ -27,13 +27,13 @@ Links are navigational elements that allow a user to move between content, pages
 
 View a live version of the Call to action link and see how it can be customized.
 
-<rh-cta><a href="{{ '/elements/call-to-action/' | url }}">Customize component via Elements</a></rh-cta>
+<rh-cta><a href="/elements/call-to-action/">Customize component via Elements</a></rh-cta>
 
 
 ## Style
 
 <uxdot-example width-adjustment="630px">
-  <img src="{{ './link-blueprint.svg' | url }}" alt="Link component blueprint">
+  <img src="./link-blueprint.svg" alt="Link component blueprint">
 </uxdot-example>
 
 
@@ -56,11 +56,11 @@ Each link variant has different styles depending on how they are used with or wi
 
 <rh-alert state="info">
   <h4 slot="header">Helpful tip</h4>
-  <p>Visit the <a href="{{ '/elements/call-to-action/' | url }}">Call to action</a> component page to see all available styles.</p>
+  <p>Visit the <a href="/elements/call-to-action/">Call to action</a> component page to see all available styles.</p>
 </rh-alert>
 
 <uxdot-example width-adjustment="584px">
-  <img src="{{ './link-visual-elements.svg' | url }}" alt="Link component visual elements">
+  <img src="./link-visual-elements.svg" alt="Link component visual elements">
 </uxdot-example>
 
 
@@ -70,7 +70,7 @@ An Inline link can be applied to text used on its own at any size outside of a p
 
 <rh-alert state="info">
   <h4 slot="header">Helpful tip</h4>
-  <p>Visit the <a href="{{ '/foundations/typography/' | url }}">Typography</a> page to see available text sizes.</p>
+  <p>Visit the <a href="/foundations/typography/">Typography</a> page to see available text sizes.</p>
 </rh-alert>
 
 
@@ -80,11 +80,11 @@ An Inline link can be applied to text used on its own at any size outside of a p
 
 <rh-alert state="info">
   <h4 slot="header">Helpful tip</h4>
-  <p>Visit the <a href="{{ '/elements/call-to-action/' | url }}">Call to action</a> component page to see light theme examples.</p>
+  <p>Visit the <a href="/elements/call-to-action/">Call to action</a> component page to see light theme examples.</p>
 </rh-alert>
 
 <uxdot-example width-adjustment="770px">
-  <img src="{{ './theme-light.svg' | url }}" alt="Link component, light theme">
+  <img src="./theme-light.svg" alt="Link component, light theme">
 </uxdot-example>
 
 
@@ -92,11 +92,11 @@ An Inline link can be applied to text used on its own at any size outside of a p
 
 <rh-alert state="info">
   <h4 slot="header">Helpful tip</h4>
-  <p>Visit the <a href="{{ '/elements/call-to-action/' | url }}">Call to action</a> component page to see dark theme examples.</p>
+  <p>Visit the <a href="/elements/call-to-action/">Call to action</a> component page to see dark theme examples.</p>
 </rh-alert>
 
 <uxdot-example color-palette="darkest" width-adjustment="770px">
-  <img src="{{ './theme-dark.svg' | url }}" alt="Link component, dark theme"> 
+  <img src="./theme-dark.svg" alt="Link component, dark theme"> 
 </uxdot-example>
 
 
@@ -105,7 +105,7 @@ An Inline link can be applied to text used on its own at any size outside of a p
 Links should be applied when a user needs to jump to content on the same page, visit a page within the same domain, or visit a page within another domain.
 
 <uxdot-example width-adjustment="752px">
-  <img src="{{ './when-to-use.svg' | url }}" alt="Link component usage">
+  <img src="./when-to-use.svg" alt="Link component usage">
 </uxdot-example>
 
 
@@ -119,7 +119,7 @@ Links are navigational elements, so any text needs to **accurately communicate t
 </rh-alert>
 
 <uxdot-example width-adjustment="752px">
-  <img src="{{ './usage-content.svg' | url }}" alt="Link component usage, content">
+  <img src="./usage-content.svg" alt="Link component usage, content">
 </uxdot-example>  
 
 
@@ -139,7 +139,7 @@ Do not apply a link to an action that needs to be triggered instead, like submit
 
 <rh-alert state="default">
   <h4 slot="header">Learn more</h4>
-  <p>Visit the <a href="{{ '/elements/button/' | url }}">Button</a> or <a href="{{ './patterns/form/' | url }}">Form</a> component pages to learn more about how to use buttons and forms.</p>
+  <p>Visit the <a href="/elements/button/">Button</a> or <a href="./patterns/form/">Form</a> component pages to learn more about how to use buttons and forms.</p>
 </rh-alert>
 
 <rh-alert state="info">
@@ -148,7 +148,7 @@ Do not apply a link to an action that needs to be triggered instead, like submit
 </rh-alert>
 
 <uxdot-example width-adjustment="492px">
-  <img src="{{ './usage-buttons.svg' | url }}" alt="Link component usage, buttons">
+  <img src="./usage-buttons.svg" alt="Link component usage, buttons">
 </uxdot-example>
 
 
@@ -174,7 +174,7 @@ A user will be directed to another domain if they select an Inline link with an 
 </rh-alert>
 
 <uxdot-example width-adjustment="508px">
-  <img src="{{ './external-pages.svg' | url }}" alt="Link component, internal vs. external pages">
+  <img src="./external-pages.svg" alt="Link component, internal vs. external pages">
 </uxdot-example>
 
 
@@ -182,51 +182,51 @@ A user will be directed to another domain if they select an Inline link with an 
 
 <rh-alert state="info">
   <h4 slot="header">Helpful tip</h4>
-  <p>Visit the <a href="{{ '/elements/call-to-action/' | url }}">Call to action</a> component page to see available interaction states.</p>
+  <p>Visit the <a href="/elements/call-to-action/">Call to action</a> component page to see available interaction states.</p>
 </rh-alert>
 
 
 ### Link
 
 <uxdot-example width-adjustment="772px">
-  <img src="{{ './interaction-state-link-light.svg' | url }}" alt="Link component interaction state, link (light theme)">
+  <img src="./interaction-state-link-light.svg" alt="Link component interaction state, link (light theme)">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="772px">
-  <img src="{{ './interaction-state-link-dark.svg' | url }}" alt="Link component interaction state, link (dark theme)">
+  <img src="./interaction-state-link-dark.svg" alt="Link component interaction state, link (dark theme)">
 </uxdot-example>
 
 
 ### Hover
 
 <uxdot-example width-adjustment="772px">
-  <img src="{{ './interaction-state-hover-light.svg' | url }}" alt="Link component interaction state, hover (light theme)">
+  <img src="./interaction-state-hover-light.svg" alt="Link component interaction state, hover (light theme)">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="772px">
-  <img src="{{ './interaction-state-hover-dark.svg' | url }}" alt="Link component interaction state, hover (dark theme)">
+  <img src="./interaction-state-hover-dark.svg" alt="Link component interaction state, hover (dark theme)">
 </uxdot-example>
 
 
 ### Focus
 
 <uxdot-example width-adjustment="772px">
-  <img src="{{ './interaction-state-focus-light.svg' | url }}" alt="Link component interaction state, focus (light theme)">
+  <img src="./interaction-state-focus-light.svg" alt="Link component interaction state, focus (light theme)">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="772px">
-  <img src="{{ './interaction-state-focus-dark.svg' | url }}" alt="Link component interaction state, focus (dark theme)">
+  <img src="./interaction-state-focus-dark.svg" alt="Link component interaction state, focus (dark theme)">
 </uxdot-example>
 
 
 ### Active
 
 <uxdot-example width-adjustment="772px">
-  <img src="{{ './interaction-state-active-light.svg' | url }}" alt="Link component interaction state, active (light theme)">
+  <img src="./interaction-state-active-light.svg" alt="Link component interaction state, active (light theme)">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="772px">
-  <img src="{{ './interaction-state-active-dark.svg' | url }}" alt="Link component interaction state, active (dark theme)">
+  <img src="./interaction-state-active-dark.svg" alt="Link component interaction state, active (dark theme)">
 </uxdot-example>
 
 
@@ -238,11 +238,11 @@ A user will be directed to another domain if they select an Inline link with an 
 </rh-alert>
 
 <uxdot-example width-adjustment="531px">
-  <img src="{{ './interaction-state-visited-light.svg' | url }}" alt="Link component interaction state, visited (light theme)">
+  <img src="./interaction-state-visited-light.svg" alt="Link component interaction state, visited (light theme)">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="531px">
-  <img src="{{ './interaction-state-visited-dark.svg' | url }}" alt="Link component interaction state, visited (dark theme)">
+  <img src="./interaction-state-visited-dark.svg" alt="Link component interaction state, visited (dark theme)">
 </uxdot-example>
 
 
@@ -251,7 +251,7 @@ A user will be directed to another domain if they select an Inline link with an 
 When the Tab key is pressed repeatedly, the focus highlights each Inline and Call to action link in order, from left to right and top to bottom.
 
 <uxdot-example width-adjustment="666px">
-  <img src="{{ './tab-order.svg' | url }}" alt="Link component tab order">
+  <img src="./tab-order.svg" alt="Link component tab order">
 </uxdot-example>
 
 
@@ -290,19 +290,19 @@ Both link variants mostly remain the same on large and small screens. Inline lin
 ### Desktop
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="{{ './responsive-design-desktop.svg' | url }}" alt="Link component responsive design, desktop">
+  <img src="./responsive-design-desktop.svg" alt="Link component responsive design, desktop">
 </uxdot-example>
 
 ### Tablet
     
 <uxdot-example width-adjustment="768px" variant="full" alignment="left" no-border>
-  <img src="{{ './responsive-design-tablet.svg' | url }}" alt="Link component responsive design, tablet">
+  <img src="./responsive-design-tablet.svg" alt="Link component responsive design, tablet">
 </uxdot-example>
   
 ### Mobile
 
 <uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border>
-  <img src="{{ './responsive-design-mobile.svg' | url }}" alt="Link component responsive design, mobile">
+  <img src="./responsive-design-mobile.svg" alt="Link component responsive design, mobile">
 </uxdot-example>
 
  
@@ -313,7 +313,7 @@ Both link variants mostly remain the same on large and small screens. Inline lin
 Do not apply lots of links to paragraph text otherwise a user will have trouble reading the content in its entirety before making a selection.
 
 <uxdot-example width-adjustment="561px" danger>
-  <img src="{{ './link-best-practice-1.svg' | url }}" alt="Link component best practice 1">
+  <img src="./link-best-practice-1.svg" alt="Link component best practice 1">
 </uxdot-example>
 
 
@@ -322,7 +322,7 @@ Do not apply lots of links to paragraph text otherwise a user will have trouble 
 Do not use different link variants to direct a user to the same page.
 
 <uxdot-example width-adjustment="561px" danger>
-  <img src="{{ './link-best-practice-2.svg' | url }}" alt="Link component best practice 2">
+  <img src="./link-best-practice-2.svg" alt="Link component best practice 2">
 </uxdot-example>
 
 
@@ -331,7 +331,7 @@ Do not use different link variants to direct a user to the same page.
 When writing link content, avoid ambiguous phrases or a full website URL. A user should have a clear idea of where they are being directed to before they make a selection.
 
 <uxdot-example width-adjustment="455px" danger>
-  <img src="{{ './link-best-practice-3.svg' | url }}" alt="Link component best practice 3">
+  <img src="./link-best-practice-3.svg" alt="Link component best practice 3">
 </uxdot-example>
 
 
@@ -340,7 +340,7 @@ When writing link content, avoid ambiguous phrases or a full website URL. A user
 Do not apply links to long strings of text.
     
 <uxdot-example width-adjustment="561px" danger>
-  <img src="{{ './link-best-practice-4.svg' | url }}" alt="Link component best practice 4">
+  <img src="./link-best-practice-4.svg" alt="Link component best practice 4">
 </uxdot-example>
 
 
@@ -350,11 +350,11 @@ Buttons have different use cases and should not be used to promote offers or oth
 
 <rh-alert state="info">
   <h4 slot="header">Helpful Tip</h4>
-  <p>Visit the <a href="{{ '/elements/button/' | url }}">Button</a> component page to learn more about how to use buttons.</p>
+  <p>Visit the <a href="/elements/button/">Button</a> component page to learn more about how to use buttons.</p>
 </rh-alert>
 
 <uxdot-example width-adjustment="309px" danger>
-  <img src="{{ './link-best-practice-5.svg' | url }}" alt="Link component best practice 5">
+  <img src="./link-best-practice-5.svg" alt="Link component best practice 5">
 </uxdot-example>    
 
 
@@ -364,11 +364,11 @@ Do not apply the external link icon to Call to action links.
 
 <rh-alert state="info">
   <h4 slot="header">Helpful tip</h4>
-  <p>Visit the <a href="{{ '/elements/call-to-action/' | url }}">Call to action</a> component page to learn more about how to use calls to action.</p>
+  <p>Visit the <a href="/elements/call-to-action/">Call to action</a> component page to learn more about how to use calls to action.</p>
 </rh-alert>
 
 <uxdot-example width-adjustment="398px" danger>
-  <img src="{{ './link-best-practice-6.svg' | url }}" alt="Link component best practice 6">
+  <img src="./link-best-practice-6.svg" alt="Link component best practice 6">
 </uxdot-example>
 
 
@@ -377,7 +377,7 @@ Do not apply the external link icon to Call to action links.
 The Default call to action link arrow and the external link icon should not appear by themselves, they should always be connected to at least one word on the same line.
 
 <uxdot-example width-adjustment="360px" danger>
-  <img src="{{ './link-best-practice-7.svg' | url }}" alt="Link component best practice 7">
+  <img src="./link-best-practice-7.svg" alt="Link component best practice 7">
 </uxdot-example>
 
 
@@ -385,7 +385,7 @@ The Default call to action link arrow and the external link icon should not appe
 
 <rh-alert state="info">
   <h4 slot="header">Helpful tip</h4>
-  <p>Visit the <a href="{{ '/foundations/spacing/' | url }}">Spacing</a> page to see spacing values between link variants and other elements.</p>
+  <p>Visit the <a href="/foundations/spacing/">Spacing</a> page to see spacing values between link variants and other elements.</p>
 </rh-alert>
 
 

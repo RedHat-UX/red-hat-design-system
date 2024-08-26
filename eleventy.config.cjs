@@ -35,6 +35,8 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('docs/robots.txt');
   eleventyConfig.addPassthroughCopy('docs/assets/**/*');
   eleventyConfig.addPassthroughCopy('docs/styles/**/*');
+  eleventyConfig.addPassthroughCopy('docs/patterns/**/*.css');
+
 
   if (isLocal) {
     eleventyConfig.addPassthroughCopy({

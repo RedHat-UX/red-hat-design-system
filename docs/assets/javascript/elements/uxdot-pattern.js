@@ -54,7 +54,7 @@ class UxdotPattern extends LitElement {
       grid-area: example;
     }
 
-    #example ::slotted(*) {
+    #example ::slotted(*:not(style)) {
       display: block;
       max-width: 360px;
     }
