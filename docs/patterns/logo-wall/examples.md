@@ -20,8 +20,7 @@ importElements:
 </script>
 
 <link rel="stylesheet" href="/styles/samp.css">
-
-<link rel="stylesheet" href="{{ '../logo-wall-lightdom.css' | url }}" />
+<link rel="stylesheet" href="../logo-wall-lightdom.css">
 
 ## Within a promo band (bordered)
   {% include './patterns/1x1-grid.html' %}

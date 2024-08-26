@@ -25,11 +25,13 @@ A logo wall is a visual arrangement of logos representing various brands, compan
 
 <div class="grid">
   <uxdot-example>
-    <img src="{{ './overview-sample-bordered.png' | url }}" alt="An example of a bordered logo wall with 6 logos each inside of a bordered container.">
+    <img src="./overview-sample-bordered.png"
+         alt="An example of a bordered logo wall with 6 logos each inside of a bordered container.">
   </uxdot-example>
 
   <uxdot-example>
-    <img src="{{ './overview-sample-borderless.png' | url }}" alt="An example of a borderless logo wall with 6 logos.">
+    <img src="./overview-sample-borderless.png"
+         alt="An example of a borderless logo wall with 6 logos.">
   </uxdot-example>
 </div>
 
