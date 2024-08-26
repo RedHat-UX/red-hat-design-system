@@ -1,0 +1,18 @@
+:host {
+  display: inline-block;
+  line-height: 0;
+}
+
+svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
+  fill: currentcolor;
+  aspect-ratio: 1;
+}
+
+.standard svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
+}
+
+.microns svg {
+  width: 12px;
+}

@@ -11,7 +11,9 @@ import { InternalsController } from '@patternfly/pfe-core/controllers/internals-
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
-import '@patternfly/elements/pf-icon/pf-icon.js';
+import type { IconNameFor, IconSetName } from '@rhds/icons';
+
+import '@rhds/elements/rh-icon/rh-icon.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
@@ -69,10 +71,16 @@ export class RhTile extends LitElement {
    */
   @property({ type: Boolean }) compact = false;
 
+
   /**
-   * Icon (must be a member of the fontawesome "far" icon set)
+   * The icon to display in the tile
    */
-  @property() icon?: string;
+  @property({ reflect: true }) icon?: IconNameFor<IconSetName>;
+
+  /**
+   * Icon set to display in the tile
+   */
+  @property({ attribute: 'icon-set' }) iconSet: IconSetName = 'standard';
 
   /**
    * When checkable, the accessible (visually hidden) label for the form control
@@ -203,7 +211,7 @@ export class RhTile extends LitElement {
         <div id="inner">
           <slot id="icon" name="icon" ?hidden="${this.icon === undefined && !hasSlottedIcon}">
             ${this.icon !== undefined ?
-              html`<pf-icon icon="${ifDefined(this.icon)}" size="md" set="far"></pf-icon>`
+              html`<rh-icon icon="${ifDefined(this.icon)}" set="${this.iconSet}"></rh-icon>`
               : html``}
           </slot>
           <div id="content">
@@ -223,7 +231,7 @@ export class RhTile extends LitElement {
             <slot id="body"></slot>
             <div id="footer">
               <slot id="footer-text" name="footer"></slot>${!this.checkable && !this.disabled ? html`
-              <pf-icon icon="arrow-right" size="md" set="fas"></pf-icon>` : !this.checkable ? html`
+              <rh-icon icon="arrow-right" set="ui"></rh-icon>` : !this.checkable ? html`
               <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><g id="uuid-0fd9e805-a455-40ef-9171-f2f334832bf2"><rect width="48" height="48" fill="none"/></g><g id="uuid-48f9e284-0601-4fcd-bbe7-8b444234ac6c"><path d="m24,7c-9.37,0-17,7.63-17,17s7.63,17,17,17,17-7.63,17-17S33.37,7,24,7Zm15,17c0,3.52-1.23,6.76-3.27,9.32L14.68,12.27c2.56-2.04,5.8-3.27,9.32-3.27,8.27,0,15,6.73,15,15Zm-30,0c0-4.03,1.61-7.69,4.2-10.38l21.18,21.18c-2.7,2.6-6.35,4.2-10.38,4.2-8.27,0-15-6.73-15-15Z"/></g></svg>` : ''}
             </div>
           </div>

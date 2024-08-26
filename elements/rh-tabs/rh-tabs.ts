@@ -1,4 +1,4 @@
-import { html, LitElement, type PropertyValues } from 'lit';
+import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -16,15 +16,16 @@ import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import { RhTab, TabExpandEvent } from './rh-tab.js';
 import { RhTabPanel } from './rh-tab-panel.js';
+import '@rhds/elements/rh-icon/rh-icon.js';
 
 import { DirController } from '../../lib/DirController.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
-import styles from './rh-tabs.css';
-
 import { context, type RhTabsContext } from './context.js';
+
+import styles from './rh-tabs.css';
 
 export { RhTab };
 
@@ -205,7 +206,7 @@ export class RhTabs extends LitElement {
                     aria-label="${this.getAttribute('label-scroll-left') ?? 'Scroll left'}"
                     ?disabled="${!this.#overflow.overflowLeft}"
                     @click="${() => !rtl ? this.#overflow.scrollLeft() : this.#overflow.scrollRight()}">
-              <pf-icon icon="angle-left" set="fas" loading="eager"></pf-icon>
+              <rh-icon set="ui" icon="caret-left" loading="eager"></rh-icon>
             </button>`}
             <div id="tablist" role="tablist">
               <slot name="tab"
@@ -217,7 +218,7 @@ export class RhTabs extends LitElement {
                     aria-label="${this.getAttribute('label-scroll-right') ?? 'Scroll right'}"
                     ?disabled="${!this.#overflow.overflowRight}"
                     @click="${() => !rtl ? this.#overflow.scrollRight() : this.#overflow.scrollLeft()}">
-              <pf-icon icon="angle-right" set="fas" loading="eager"></pf-icon>
+               <rh-icon set="ui" icon="caret-right" loading="eager"></rh-icon>
             </button>`}
           </div>
           <slot part="panels" @slotchange="${this.#onSlotchange}"></slot>
