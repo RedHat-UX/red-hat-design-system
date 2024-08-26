@@ -1,57 +1,51 @@
-const { readFileSync } = require('node:fs');
-const { join } = require('node:path');
-
 // for editor highlighting
 const html = String.raw;
-
-// TODO(bennypowers): remove when rh-icon arrives, make it ssr-able
-const getIcon = name => readFileSync(join(__dirname, 'repoStatus', `${name}.svg`), 'utf8');
 
 const STATUS_LEGEND = {
   'Planned': {
     description: 'Ready to be worked on or ready to be released',
     color: 'gray',
     variant: 'filled',
-    icon: getIcon('bell'),
+    icon: html`<rh-icon set="ui" icon="notification-fill">Planned</rh-icon>`,
   },
   'In Progress': {
     description: 'In the design or development process',
     color: 'green',
     variant: 'outline',
-    icon: getIcon('harvey-ball-50'),
+    icon: html`<rh-icon set="ui" icon="harvey-ball-50">✔️</rh-icon>`,
   },
   'Ready': {
     description: 'Ready to use and approved by all team members',
     color: 'green',
     variant: 'filled',
-    icon: getIcon('check'),
+    icon: html`<rh-icon set="ui" icon="check-circle-fill">✔️</rh-icon>`,
   },
   'Deprecated': {
     description: 'No longer supported by RHDS',
     color: 'orange',
     variant: 'filled',
-    icon: getIcon('circle-x'),
+    icon: html`<rh-icon set="ui" icon="close-circle-fill">Deprecated</rh-icon>`,
   },
   'N/A': {
     description: 'Not planned, not available, or does not apply',
     color: 'gray',
     variant: 'outline',
-    icon: getIcon('ban'),
+    icon: html`<rh-icon set="ui" icon="ban">N/A</rh-icon>`,
   },
   'Beta': {
     color: 'purple',
     variant: 'outline',
-    icon: getIcon('wrench'),
+    icon: html`<rh-icon set="ui" icon="build-fill">Beta</rh-icon>`,
   },
   'Experimental': {
     color: 'orange',
     variant: 'outline',
-    icon: getIcon('atom'),
+    icon: html`<rh-icon set="ui" icon="experimental">Beta</rh-icon>`,
   },
   'New': {
     color: 'cyan',
     variant: 'outline',
-    icon: getIcon('sparkles'),
+    icon: html`<rh-icon set="ui" icon="new-fill">New</rh-icon>`,
   },
 };
 

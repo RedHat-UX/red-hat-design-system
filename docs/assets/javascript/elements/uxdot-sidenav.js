@@ -3,13 +3,19 @@ import { LitElement, html, css, isServer } from 'lit';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 
 if (!isServer) {
-  import('@patternfly/elements/pf-icon/pf-icon.js');
+  import('@patternfly/elements/pf-icon/pf-icon.s');
+}
+
+class SSRRoleElement extends LitElement {
+  static properties = {
+    role: { reflect: true },
+  };
 }
 
 /* ************* */
 /* UXDOT-SIDENAV */
 /* ************* */
-class UxdotSideNav extends LitElement {
+class UxdotSideNav extends SSRRoleElement {
   static shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
   static properties = {
     open: { type: Boolean, reflect: true },
@@ -283,7 +289,7 @@ class UxdotSideNav extends LitElement {
 /* ****************** */
 /* UXDOT-SIDENAV-ITEM */
 /* ****************** */
-class UxdotSideNavItem extends LitElement {
+class UxdotSideNavItem extends SSRRoleElement {
   static styles = css`
     :host {
       display: block;
@@ -303,7 +309,7 @@ class UxdotSideNavItem extends LitElement {
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a) {
+    a {
       display: block;
       text-decoration: none;
       color: var(--rh-color-text-primary-on-light, #151515) !important;
@@ -311,7 +317,7 @@ class UxdotSideNavItem extends LitElement {
       padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
@@ -319,16 +325,18 @@ class UxdotSideNavItem extends LitElement {
 
   static properties = {
     active: { type: Boolean },
+    href: { },
   };
 
   constructor() {
     super();
+    this.role = 'menuitem';
     this.active = false;
   }
 
   render() {
     return html`
-      <slot></slot>
+      <a href="${this.href}"><slot></slot></a>
     `;
   }
 }
@@ -336,10 +344,9 @@ class UxdotSideNavItem extends LitElement {
 /* *************************** */
 /* UXDOT-SIDENAV-DROPDOWN */
 /* *************************** */
-class UxdotSideNavDropdown extends LitElement {
+class UxdotSideNavDropdown extends SSRRoleElement {
   static styles = css`
     :host {
-      /* styles here */
       z-index: var(--uxdot-sidenav-z-index, 102);
     }
   `;
@@ -350,6 +357,7 @@ class UxdotSideNavDropdown extends LitElement {
 
   constructor() {
     super();
+    this.role = 'menu';
     this.expanded = false;
   }
 
@@ -367,22 +375,20 @@ class UxdotSideNavDropdown extends LitElement {
   }
 
   async #onClick(event) {
-    const { target } = event;
-    if (target instanceof HTMLAnchorElement) {
-      return;
+    if (!event.composedPath().some(node => node instanceof HTMLAnchorElement)) {
+      event.preventDefault();
+      this.expanded = !this.expanded;
+      this.querySelector('details').toggleAttribute('open', this.expanded);
+      // trigger change event which evokes the mutation on this.expanded
+      this.dispatchEvent(new CustomEvent('expand', {
+        bubbles: true,
+        composed: true,
+        detail: {
+          expanded: this.expanded,
+          toggle: this,
+        },
+      }));
     }
-    event.preventDefault();
-    this.expanded = !this.expanded;
-    this.querySelector('details').toggleAttribute('open', this.expanded);
-    // trigger change event which evokes the mutation on this.expanded
-    this.dispatchEvent(new CustomEvent('expand', {
-      bubbles: true,
-      composed: true,
-      detail: {
-        expanded: this.expanded,
-        toggle: this,
-      },
-    }));
   }
 }
 
@@ -390,14 +396,18 @@ class UxdotSideNavDropdown extends LitElement {
 /* *************************** */
 /* UXDOT-SIDENAV-DROPDOWN-MENU */
 /* *************************** */
-class UxdotSideNavDropdownMenu extends LitElement {
+class UxdotSideNavDropdownMenu extends SSRRoleElement {
   static styles = css`
-    ::slotted(ul) {
-      margin: 0 !important;
-      list-style: none;
+    :host {
+      display: block;
       padding-inline-start: var(--rh-space-2xl, 32px);
     }
   `;
+
+  constructor() {
+    super();
+    this.role = 'menu';
+  }
 
   render() {
     return html`
@@ -409,12 +419,13 @@ class UxdotSideNavDropdownMenu extends LitElement {
 /* ******************************** */
 /* UXDOT-SIDENAV-DROPDOWN-MENU-ITEM */
 /* ******************************** */
-class UxdotSideNavDropdownMenuItem extends LitElement {
+class UxdotSideNavDropdownMenuItem extends SSRRoleElement {
   static styles = css`
-    ::slotted(a) {
-      display: inline-block;
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -424,35 +435,31 @@ class UxdotSideNavDropdownMenuItem extends LitElement {
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
   `;
 
   static properties = {
     active: { type: Boolean },
+    href: { },
   };
 
   constructor() {
     super();
+    this.role = 'menuitem';
     this.active = false;
   }
 
   render() {
     return html`
-      <slot></slot>
+      <a href="${this.href}"><slot></slot></a>
     `;
   }
 }

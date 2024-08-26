@@ -59,7 +59,7 @@ eleventyComputed:
       {%- set inProgress = doc.docsPage.manifest -%}
       {%- set name = (doc.alias) or (slug | deslugify) %}
       {%- set planned = isPlanned(repoStatus, name) %}
-      <h1 id="{{ slug }}" class="page-title">{{ name }}{% if planned %} <rh-tag icon="bell" color="gray">Planned</rh-tag>{% endif %}</h1>
+      <h1 id="{{ slug }}" class="page-title">{{ name }}{% if planned %} <rh-tag icon="notification-fill" color="gray">Planned</rh-tag>{% endif %}</h1>
       {%- set manifest = doc.docsPage.manifest -%}
       {%- set demos = manifest and manifest.getDemos(doc.docsPage.tagName) -%}
       {%- set demosUrl -%}/elements/{{ slug }}/demos/{%- endset -%}

@@ -48,6 +48,7 @@
   ],
   "scripts": {
     "🐒-DEV": "❓ Development aids",
+    "postinstall": "patch-package",
     "start": "wireit",
     "dev": "wireit",
     "serve": "wireit",
