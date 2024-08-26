@@ -1,5 +1,4 @@
 var _PfModal_headerId, _PfModal_triggerElement, _PfModal_header, _PfModal_body, _PfModal_headings, _PfModal_cancelling, _PfModal_slots;
-var PfModal_1;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
@@ -8,7 +7,7 @@ import { query } from 'lit/decorators/query.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { ComposedEvent } from '@patternfly/pfe-core';
-import { bound, initializer, observed } from '@patternfly/pfe-core/decorators.js';
+import { bound, initializer, observes } from '@patternfly/pfe-core/decorators.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { css } from "lit";
@@ -31,38 +30,7 @@ export class ModalOpenEvent extends ComposedEvent {
         this.trigger = trigger;
     }
 }
-/**
- * A **modal** displays important information to a user without requiring them to navigate
- * to a new page.
- * @summary Displays information or helps a user focus on a task
- * @slot - The default slot can contain any type of content. When the header is not present this unnamed slot appear at the top of the modal window (to the left of the close button). Otherwise it will appear beneath the header.
- * @slot header - The header is an optional slot that appears at the top of the modal window. It should be a header tag (h2-h6).
- * @slot footer - Optional footer content. Good place to put action buttons.
- * @fires {ModalOpenEvent} open - Fires when a user clicks on the trigger or manually opens a modal.
- * @fires {ModalCloseEvent} close - Fires when either a user clicks on either the close button or the overlay or manually closes a modal.
- * @csspart overlay - The modal overlay which lies under the dialog and above the page body
- * @csspart dialog - The dialog element
- * @csspart content - The container for the dialog content
- * @csspart header - The container for the optional dialog header
- * @csspart description - The container for the optional dialog description in the header
- * @csspart close-button - The modal's close button
- * @csspart footer - Actions footer container
- * @cssprop {<length>} --pf-c-modal-box--ZIndex {@default 500}
- * @cssprop {<length>} --pf-c-modal-box--Width - Width of the modal {@default calc(100% - 2rem)}
- * @cssprop {<length>} --pf-c-modal-box--MaxWidth - Max width of the modal {@default calc(100% - 2rem)}
- * @cssprop {<length>} --pf-c-modal-box--m-sm--sm--MaxWidth - Max width of the small variant modal {@default 35rem}
- * @cssprop {<length>} --pf-c-modal-box--m-md--MaxWidth - Max width of the small variant modal {@default 52.5rem}
- * @cssprop {<length>} --pf-c-modal-box--m-lg--lg--MaxWidth - Max width of the large variant modal {@default 70rem}
- * @cssprop {<length>} --pf-c-modal-box--MaxHeight - Max height of the modal {@default calc(100% - 3rem)}
- * @cssprop {<length>} --pf-c-modal-box--BoxShadow - {@default var(--pf-global--BoxShadow--xl)}
- * @cssprop {<length>} --pf-c-modal-box__title--FontSize - {@default 1.5rem}
- * @cssprop {<length>} --pf-c-modal-box--m-align-top--MarginTop - {@default 2rem}
- * @cssprop {<length>} --pf-c-modal-box--m-align-top--MaxWidth
- * @cssprop {<length>} --pf-c-modal-box--m-align-top--MaxHeight
- * @cssprop {<color>} --pf-c-modal-box--BackgroundColor - {@default #fff}
- * @cssprop --pf-c-modal-box__title--FontFamily - default font family for header-slotted headings
- */
-let PfModal = PfModal_1 = class PfModal extends LitElement {
+let PfModal = class PfModal extends LitElement {
     constructor() {
         super(...arguments);
         this.open = false;
@@ -146,7 +114,7 @@ let PfModal = PfModal_1 = class PfModal extends LitElement {
             __classPrivateFieldGet(this, _PfModal_headings, "f")[0].id = __classPrivateFieldGet(this, _PfModal_headerId, "f");
         }
     }
-    async _openChanged(oldValue, newValue) {
+    async openChanged(oldValue, newValue) {
         // loosening types to prevent running these effects in unexpected circumstances
         // eslint-disable-next-line eqeqeq
         if (oldValue == null || newValue == null || oldValue == newValue) {
@@ -170,7 +138,7 @@ let PfModal = PfModal_1 = class PfModal extends LitElement {
             this.dispatchEvent(__classPrivateFieldGet(this, _PfModal_cancelling, "f") ? new ModalCancelEvent() : new ModalCloseEvent());
         }
     }
-    _triggerChanged() {
+    triggerChanged() {
         if (this.trigger) {
             __classPrivateFieldSet(this, _PfModal_triggerElement, this.getRootNode()
                 .getElementById(this.trigger), "f");
@@ -251,6 +219,7 @@ let PfModal = PfModal_1 = class PfModal extends LitElement {
      * ```js
      * modal.close();
      * ```
+     * @param returnValue dialog return value
      */
     close(returnValue) {
         if (typeof returnValue === 'string') {
@@ -273,6 +242,7 @@ PfModal.shadowRootOptions = {
 PfModal.styles = [style];
 /** Should the dialog close when user clicks outside the dialog? */
 PfModal.closeOnOutsideClick = false;
+PfModal.version = "4.0.0";
 __decorate([
     property({ reflect: true })
 ], PfModal.prototype, "variant", void 0);
@@ -280,11 +250,9 @@ __decorate([
     property({ reflect: true })
 ], PfModal.prototype, "position", void 0);
 __decorate([
-    observed,
     property({ type: Boolean, reflect: true })
 ], PfModal.prototype, "open", void 0);
 __decorate([
-    observed,
     property()
 ], PfModal.prototype, "trigger", void 0);
 __decorate([
@@ -299,6 +267,12 @@ __decorate([
 __decorate([
     initializer()
 ], PfModal.prototype, "_init", null);
+__decorate([
+    observes('open')
+], PfModal.prototype, "openChanged", null);
+__decorate([
+    observes('trigger')
+], PfModal.prototype, "triggerChanged", null);
 __decorate([
     bound
 ], PfModal.prototype, "onTriggerClick", null);
@@ -320,7 +294,7 @@ __decorate([
 __decorate([
     bound
 ], PfModal.prototype, "close", null);
-PfModal = PfModal_1 = __decorate([
+PfModal = __decorate([
     customElement('pf-modal')
 ], PfModal);
 export { PfModal };

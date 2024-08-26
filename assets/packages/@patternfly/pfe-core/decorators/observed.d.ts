@@ -6,28 +6,24 @@ type TypedFieldDecorator<T> = (proto: T, key: string | keyof T) => void;
  * Works on any class field. When using on lit observed properties,
  * Make sure `@observed` is to the left (i.e. called after) the `@property`
  * or `@state` decorator.
- *
  * @example observing a lit property
- * ```ts
- * @observed @property() foo = 'bar';
+ *          ```ts
+ *          @observed @property() foo = 'bar';
  *
- * protected _fooChanged(oldValue?: string, newValue?: string) {}
- * ```
- *
+ *          protected _fooChanged(oldValue?: string, newValue?: string) {}
+ *          ```
  * @example using a custom callback
- * ```ts
- * @observed('_myCallback') size = 'lg';
+ *          ```ts
+ *          @observed('_myCallback') size = 'lg';
  *
- * _myCallback(_, size) {...}
- * ```
- *
+ *          _myCallback(_, size) {...}
+ *          ```
  * @example using an arrow function
- * ```ts
- * @observed((oldVal, newVal) => console.log(`Size changed from ${oldVal} to ${newVal}`))
- * ```
+ *          ```ts
+ *          @observed((oldVal, newVal) => console.log(`Size changed from ${oldVal} to ${newVal}`))
+ *          ```
  */
+export declare function observed<T extends ReactiveElement, V>(cb: ChangeCallback<T, V>): TypedFieldDecorator<T>;
 export declare function observed<T extends ReactiveElement>(methodName: string): TypedFieldDecorator<T>;
-export declare function observed<T extends ReactiveElement>(cb: ChangeCallback<T>): TypedFieldDecorator<T>;
 export declare function observed<T extends ReactiveElement>(proto: T, key: string): void;
-export declare function observeProperty<T extends ReactiveElement>(proto: T, key: string & keyof T, callbackOrMethod?: ChangeCallback<T>): void;
 export {};

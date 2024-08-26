@@ -44,7 +44,14 @@ export declare class FloatingDOMController implements ReactiveController {
     get styles(): StyleInfo;
     constructor(host: ReactiveControllerHost, options: FloatingDOMControllerOptions);
     hostDisconnected(): void;
-    /** Show the floating DOM */
+    /**
+     * Show the floating DOM
+     * @param [options={}]
+     * @param options.offset
+     * @param options.placement
+     * @param options.flip
+     * @param options.fallbackPlacements
+     * */
     show({ offset, placement, flip, fallbackPlacements }?: ShowOptions): Promise<void>;
     /** Hide the floating DOM */
     hide(): Promise<void>;

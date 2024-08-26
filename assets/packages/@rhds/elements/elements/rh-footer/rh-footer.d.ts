@@ -1,8 +1,7 @@
 import { LitElement } from 'lit';
-import '@patternfly/elements/pf-icon/pf-icon.js';
+import '@rhds/elements/rh-icon/rh-icon.js';
 import '@rhds/elements/rh-accordion/rh-accordion.js';
 export { RhFooterUniversal } from './rh-footer-universal.js';
-import './rh-global-footer.js';
 import './rh-footer-social-link.js';
 import './rh-footer-links.js';
 import './rh-footer-block.js';
@@ -10,9 +9,7 @@ import { type ColorPalette } from '../../lib/context/color/provider.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 /**
  * A footer displays secondary content and legal information to users who reach the bottom of a page.
- *
  * @summary Displays secondary information at the bottom of a page
- *
  * @csspart base - main footer element, containing all footer content
  * @slot    base - Overrides everything. Do not use.
  * @slot    header - Overrides `header-*`, `logo`, `social-links`
@@ -36,17 +33,15 @@ import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
  * @csspart links-accordion-panel - mobile links panel container element
  * @slot    main-secondary - typically contains prose or promotional content
  * @csspart main-secondary - container fro prose or promotional content
- * @slot    global - must contain `<rh-footer-universal>` {@deprecated - use `universal`}
  * @slot    universal - must contain `<rh-footer-universal>`
- *
- * @cssprop --rh-footer-icon-color - {@default #8a8d90}
- * @cssprop --rh-footer-icon-color-hover - {@default #b8bbbe}
- * @cssprop --rh-footer-border-color - {@default #6a6e73}
- * @cssprop --rh-footer-accent-color - {@default #e00}
- * @cssprop --rh-footer-section-side-gap - {@default 16px}
- * @cssprop --rh-footer-links-gap - {@default 8px}
- * @cssprop --rh-footer-link-header-font-size - {@default 0.875em}
- * @cssprop --rh-footer-nojs-min-height - {@default 750px}
+ * @cssprop [--rh-footer-icon-color=#8a8d90]
+ * @cssprop [--rh-footer-icon-color-hover=#b8bbbe]
+ * @cssprop [--rh-footer-border-color=#6a6e73]
+ * @cssprop [--rh-footer-accent-color=#e00]
+ * @cssprop [--rh-footer-section-side-gap=16px]
+ * @cssprop [--rh-footer-links-gap=8px]
+ * @cssprop [--rh-footer-link-header-font-size=0.875em]
+ * @cssprop [--rh-footer-nojs-min-height=750px]
  */
 export declare class RhFooter extends LitElement {
     #private;
@@ -64,7 +59,8 @@ export declare class RhFooter extends LitElement {
      */
     protected screenSize: ScreenSizeController;
     connectedCallback(): void;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
+    private static LISTS_SELECTOR;
     /**
      * Get any `<ul>`s that are in the designated link slots
      * and synchronously update each list and header if we need to.

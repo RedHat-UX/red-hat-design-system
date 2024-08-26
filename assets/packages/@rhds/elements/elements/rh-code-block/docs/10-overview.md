@@ -6,7 +6,7 @@
   <img src="{{ './code-block-sample.png' | url }}" alt="Image of a code block with black code text within a light gray container">
 </uxdot-example>
 
-{% repoStatusList %}
+{% repoStatusList repoStatus=repoStatus %}
 
 
 ## Sample element
@@ -28,4 +28,4 @@
 
   - When you need to highlight a block of code while maintaining the formatting
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}

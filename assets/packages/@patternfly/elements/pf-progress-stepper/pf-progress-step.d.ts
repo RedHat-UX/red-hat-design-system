@@ -1,4 +1,4 @@
-import type { PropertyValues } from 'lit';
+import type { PropertyValues, TemplateResult } from 'lit';
 import { LitElement } from 'lit';
 /**
  * @slot -
@@ -7,7 +7,6 @@ import { LitElement } from 'lit';
  *       Longer description of the current step.
  * @slot icon
  *       Overrides the icon property
- *
  */
 export declare class PfProgressStep extends LitElement {
     #private;
@@ -23,7 +22,7 @@ export declare class PfProgressStep extends LitElement {
     variant?: 'pending' | 'info' | 'success' | 'warning' | 'danger';
     /** Indicates if this item is the current active item. */
     current: boolean;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): TemplateResult<1>;
     updated(changed: PropertyValues<this>): void;
 }
 declare global {

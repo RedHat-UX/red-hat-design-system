@@ -7,8 +7,6 @@ import { ClientRectObject } from '@floating-ui/core';
 import type { ComputePositionConfig as ComputePositionConfig_2 } from '@floating-ui/core';
 import { ComputePositionReturn } from '@floating-ui/core';
 import { Coords } from '@floating-ui/core';
-import type { Derivable as Derivable_2 } from '@floating-ui/core';
-import { detectOverflow } from '@floating-ui/core';
 import type { DetectOverflowOptions as DetectOverflowOptions_2 } from '@floating-ui/core';
 import { Dimensions } from '@floating-ui/core';
 import { ElementContext } from '@floating-ui/core';
@@ -18,13 +16,11 @@ import { getOverflowAncestors } from '@floating-ui/utils/dom';
 import type { HideOptions as HideOptions_2 } from '@floating-ui/core';
 import { InlineOptions } from '@floating-ui/core';
 import { Length } from '@floating-ui/core';
-import type { LimitShiftOptions } from '@floating-ui/core';
+import { LimitShiftOptions } from '@floating-ui/core';
 import type { Middleware as Middleware_2 } from '@floating-ui/core';
 import { MiddlewareData } from '@floating-ui/core';
 import { MiddlewareReturn } from '@floating-ui/core';
 import type { MiddlewareState as MiddlewareState_2 } from '@floating-ui/core';
-import { offset } from '@floating-ui/core';
-import { OffsetOptions } from '@floating-ui/core';
 import { Padding } from '@floating-ui/core';
 import { Placement } from '@floating-ui/core';
 import { Rect } from '@floating-ui/core';
@@ -44,7 +40,7 @@ export { Alignment }
  * appears centered to the reference element.
  * @see https://floating-ui.com/docs/arrow
  */
-export declare const arrow: (options: ArrowOptions | Derivable_2<ArrowOptions>) => Middleware;
+export declare const arrow: (options: ArrowOptions | Derivable<ArrowOptions>) => Middleware;
 
 export declare type ArrowOptions = Prettify<Omit<ArrowOptions_2, 'element'> & {
     element: Element;
@@ -56,7 +52,7 @@ export declare type ArrowOptions = Prettify<Omit<ArrowOptions_2, 'element'> & {
  * preferred placement. Alternative to `flip`.
  * @see https://floating-ui.com/docs/autoPlacement
  */
-export declare const autoPlacement: (options?: AutoPlacementOptions | Derivable_2<AutoPlacementOptions>) => Middleware;
+export declare const autoPlacement: (options?: AutoPlacementOptions | Derivable<AutoPlacementOptions>) => Middleware;
 
 export declare type AutoPlacementOptions = Prettify<Omit<AutoPlacementOptions_2, 'boundary'> & DetectOverflowOptions>;
 
@@ -70,37 +66,37 @@ export declare type AutoPlacementOptions = Prettify<Omit<AutoPlacementOptions_2,
  */
 export declare function autoUpdate(reference: ReferenceElement, floating: FloatingElement, update: () => void, options?: AutoUpdateOptions): () => void;
 
-export declare type AutoUpdateOptions = Partial<{
+export declare interface AutoUpdateOptions {
     /**
      * Whether to update the position when an overflow ancestor is scrolled.
      * @default true
      */
-    ancestorScroll: boolean;
+    ancestorScroll?: boolean;
     /**
      * Whether to update the position when an overflow ancestor is resized. This
      * uses the native `resize` event.
      * @default true
      */
-    ancestorResize: boolean;
+    ancestorResize?: boolean;
     /**
      * Whether to update the position when either the reference or floating
      * elements resized. This uses a `ResizeObserver`.
      * @default true
      */
-    elementResize: boolean;
+    elementResize?: boolean;
     /**
      * Whether to update the position when the reference relocated on the screen
      * due to layout shift.
      * @default true
      */
-    layoutShift: boolean;
+    layoutShift?: boolean;
     /**
      * Whether to update on every animation frame if necessary. Only use if you
      * need to update the position in response to an animation using transforms.
      * @default false
      */
-    animationFrame: boolean;
-}>;
+    animationFrame?: boolean;
+}
 
 export { Axis }
 
@@ -135,7 +131,15 @@ export { Coords }
 
 export declare type Derivable<T> = (state: MiddlewareState) => T;
 
-export { detectOverflow }
+/**
+ * Resolves with an object of overflow side offsets that determine how much the
+ * element is overflowing a given clipping boundary on each side.
+ * - positive = overflowing the boundary by that number of pixels
+ * - negative = how many pixels left before it will overflow
+ * - 0 = lies flush with the boundary
+ * @see https://floating-ui.com/docs/detectOverflow
+ */
+export declare const detectOverflow: (state: MiddlewareState, options?: DetectOverflowOptions | Derivable<DetectOverflowOptions>) => Promise<SideObject>;
 
 export declare type DetectOverflowOptions = Prettify<Omit<DetectOverflowOptions_2, 'boundary'> & {
     boundary?: Boundary;
@@ -158,7 +162,7 @@ export declare interface Elements {
  * clipping boundary. Alternative to `autoPlacement`.
  * @see https://floating-ui.com/docs/flip
  */
-export declare const flip: (options?: FlipOptions | Derivable_2<FlipOptions>) => Middleware;
+export declare const flip: (options?: FlipOptions | Derivable<FlipOptions>) => Middleware;
 
 export declare type FlipOptions = Prettify<Omit<FlipOptions_2, 'boundary'> & DetectOverflowOptions>;
 
@@ -171,7 +175,7 @@ export { getOverflowAncestors }
  * when it is not in the same clipping context as the reference element.
  * @see https://floating-ui.com/docs/hide
  */
-export declare const hide: (options?: HideOptions | Derivable_2<HideOptions>) => Middleware;
+export declare const hide: (options?: HideOptions | Derivable<HideOptions>) => Middleware;
 
 export declare type HideOptions = Prettify<Omit<HideOptions_2, 'boundary'> & DetectOverflowOptions>;
 
@@ -180,7 +184,7 @@ export declare type HideOptions = Prettify<Omit<HideOptions_2, 'boundary'> & Det
  * over multiple lines, such as hyperlinks or range selections.
  * @see https://floating-ui.com/docs/inline
  */
-export declare const inline: (options?: InlineOptions | Derivable_2<InlineOptions>) => Middleware;
+export declare const inline: (options?: InlineOptions | Derivable<InlineOptions>) => Middleware;
 
 export { InlineOptions }
 
@@ -189,10 +193,12 @@ export { Length }
 /**
  * Built-in `limiter` that will stop `shift()` at a certain point.
  */
-export declare const limitShift: (options?: LimitShiftOptions | Derivable_2<LimitShiftOptions>) => {
+export declare const limitShift: (options?: LimitShiftOptions | Derivable<LimitShiftOptions>) => {
     options: any;
     fn: (state: MiddlewareState) => Coords;
 };
+
+export { LimitShiftOptions }
 
 export declare type Middleware = Prettify<Omit<Middleware_2, 'fn'> & {
     fn(state: MiddlewareState): Promisable<MiddlewareReturn>;
@@ -216,9 +222,43 @@ export declare interface NodeScroll {
     scrollTop: number;
 }
 
-export { offset }
+/**
+ * Modifies the placement by translating the floating element along the
+ * specified axes.
+ * A number (shorthand for `mainAxis` or distance), or an axes configuration
+ * object may be passed.
+ * @see https://floating-ui.com/docs/offset
+ */
+export declare const offset: (options?: OffsetOptions) => Middleware;
 
-export { OffsetOptions }
+export declare type OffsetOptions = OffsetValue | Derivable<OffsetValue>;
+
+declare type OffsetValue = number | {
+    /**
+     * The axis that runs along the side of the floating element. Represents
+     * the distance (gutter or margin) between the reference and floating
+     * element.
+     * @default 0
+     */
+    mainAxis?: number;
+    /**
+     * The axis that runs along the alignment of the floating element.
+     * Represents the skidding between the reference and floating element.
+     * @default 0
+     */
+    crossAxis?: number;
+    /**
+     * The same axis as `crossAxis` but applies only to aligned placements
+     * and inverts the `end` alignment. When set to a number, it overrides the
+     * `crossAxis` value.
+     *
+     * A positive number will move the floating element in the direction of
+     * the opposite edge to the one that is aligned, while a negative number
+     * the reverse.
+     * @default null
+     */
+    alignmentAxis?: number | null;
+};
 
 export { Padding }
 
@@ -273,7 +313,7 @@ export { RootBoundary }
  * keep it in view when it will overflow the clipping boundary.
  * @see https://floating-ui.com/docs/shift
  */
-export declare const shift: (options?: ShiftOptions | Derivable_2<ShiftOptions>) => Middleware;
+export declare const shift: (options?: ShiftOptions | Derivable<ShiftOptions>) => Middleware;
 
 export declare type ShiftOptions = Prettify<Omit<ShiftOptions_2, 'boundary'> & DetectOverflowOptions>;
 
@@ -287,7 +327,7 @@ export { SideObject }
  * width of the reference element.
  * @see https://floating-ui.com/docs/size
  */
-export declare const size: (options?: SizeOptions | Derivable_2<SizeOptions>) => Middleware;
+export declare const size: (options?: SizeOptions | Derivable<SizeOptions>) => Middleware;
 
 export declare type SizeOptions = Prettify<Omit<SizeOptions_2, 'apply' | 'boundary'> & DetectOverflowOptions & {
     /**
@@ -309,6 +349,7 @@ export { Strategy }
  */
 export declare interface VirtualElement {
     getBoundingClientRect(): ClientRectObject;
+    getClientRects?(): Array<ClientRectObject> | DOMRectList;
     contextElement?: Element;
 }
 

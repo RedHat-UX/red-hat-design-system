@@ -16,15 +16,12 @@ export declare class DialogOpenEvent extends Event {
 /**
  * A dialog displays important information to users without requiring them to navigate away from the page.
  * @summary Communicates information requiring user input or action
- *
  * @fires {DialogOpenEvent} open - Fires when a user clicks on the trigger or manually opens a dialog.
  * @fires {DialogCloseEvent} close - Fires when either a user clicks on either the close button or the overlay or manually closes a dialog.
  * @fires {DialogCancelEvent} cancel
- *
  * @slot - The default slot can contain any type of content. When the header is not present this unnamed slot appear at the top of the dialog window (to the left of the close button). Otherwise it will appear beneath the header.
  * @slot header - The header is an optional slot that appears at the top of the dialog window. It should be a header tag (h2-h6).
  * @slot footer - Optional footer content. Good place to put action buttons.
- *
  * @csspart overlay - The dialog overlay which lies under the dialog and above the page body
  * @csspart dialog - The dialog element
  * @csspart content - The container for the dialog content
@@ -32,11 +29,9 @@ export declare class DialogOpenEvent extends Event {
  * @csspart description - The container for the optional dialog description in the header
  * @csspart close-button - The dialog's close button
  * @csspart footer - Actions footer container
- *
  * @cssprop {<number>} --rh-dialog-video-aspect-ratio
- * @cssprop {<color>} --rh-dialog-close-button-color
+ * @cssprop {<color>} [--rh-dialog-close-button-color=var(--rh-color-icon-secondary-on-dark, #ffffff)]
  *           Sets the dialog close button color.
- *          {@default `var(--rh-color-icon-secondary-on-dark, #ffffff)`}
  */
 export declare class RhDialog extends LitElement {
     #private;
@@ -62,10 +57,10 @@ export declare class RhDialog extends LitElement {
     private dialog?;
     private closeButton?;
     connectedCallback(): void;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
     disconnectedCallback(): void;
     protected _init(): Promise<void>;
-    protected _openChanged(oldValue?: boolean, newValue?: boolean): Promise<void>;
+    protected _openChanged(oldValue?: boolean, open?: boolean): Promise<void>;
     protected _triggerChanged(): void;
     private onTriggerClick;
     private onClick;
@@ -89,9 +84,10 @@ export declare class RhDialog extends LitElement {
     showModal(): void;
     /**
      * Manually closes the dialog.
-     * ```js
-     * dialog.close();
-     * ```
+     * @param [returnValue] dialog return value.
+     * @example ```js
+     *          dialog.close();
+     *          ```
      */
     close(returnValue?: string): void;
 }

@@ -1,5 +1,11 @@
-import { LitElement, type PropertyValues } from 'lit';
+import { LitElement } from 'lit';
 import '@rhds/elements/rh-surface/rh-surface.js';
+interface ToastOptions {
+    id: string;
+    message: string;
+    heading?: string;
+    state?: RhAlert['state'];
+}
 export declare class AlertCloseEvent extends Event {
     constructor();
 }
@@ -20,7 +26,25 @@ export declare class AlertCloseEvent extends Event {
 export declare class RhAlert extends LitElement {
     #private;
     static readonly version = "{{version}}";
-    static readonly styles: CSSStyleSheet;
+    static readonly styles: CSSStyleSheet[];
+    private static toaster;
+    private static toasts;
+    /**
+     * @see https://aerotwist.com/blog/flip-your-animations/
+     * @param toast
+     */
+    private static flip;
+    private static renderToasts;
+    /**
+     * Toast a message with an rh-alert
+     * Consider this as a candidate for adding as a static method on RhAlert
+     * @param options
+     * @param options.message alert text
+     * @param [options.heading] alert heading
+     * @param [options.state] `<rh-alert state="...">`
+     */
+    static toast({ message, heading, state }: ToastOptions): Promise<void>;
+    static init(): HTMLElement;
     private get icon();
     /**
      * Communicates the urgency of a message and is denoted by various styling configurations.
@@ -41,8 +65,6 @@ export declare class RhAlert extends LitElement {
      * be presented within a specific layout or component.
      */
     variant?: 'alternate' | 'toast' | 'inline';
-    /** @deprecated */
-    toast: boolean;
     /**
      * Alert variants have different rules regarding their ability to be dismissed by a user.
      * Default, Info, and Success Inline alerts can be dismissed by a user selecting the close button.
@@ -50,11 +72,11 @@ export declare class RhAlert extends LitElement {
      * All Toast alerts can be dismissed by a user selecting the close button or waiting for them to time out.
      */
     dismissable: boolean;
-    willUpdate(changed: PropertyValues<this>): void;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {
         'rh-alert': RhAlert;
     }
 }
+export {};

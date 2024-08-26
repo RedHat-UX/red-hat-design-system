@@ -1,34 +1,26 @@
-import { LitElement, type PropertyValues } from 'lit';
+import { LitElement } from 'lit';
 import { RhTab } from './rh-tab.js';
 import { RhTabPanel } from './rh-tab-panel.js';
+import '@rhds/elements/rh-icon/rh-icon.js';
 import { type ColorPalette } from '../../lib/context/color/provider.js';
 export { RhTab };
 /**
  * Tabs are used to organize and navigate between sections of content.
  * They feature a horizontal or a vertical list of section text labels
  * with a content panel below or to the right of the component.
- *
  * @summary Arranges content in a contained view on the same page
- *
  * @csspart container - outer container
  * @csspart tabs-container - tabs container
  * @csspart tabs - tablist
  * @csspart panels - panels
- *
  * @slot tab - Must contain one or more `<rh-tab>`
  * @slot - Must contain one or more `<rh-tab-panel>`
- *
- * @cssprop {<color>} --rh-tabs-border-color - Tabs Border color {@default `#c7c7c7`}
- * @cssprop {<length>} --rh-tabs-inset - Tabs inset {@default `auto`}
- *
+ * @cssprop {<color>} [--rh-tabs-border-color=#c7c7c7] - Tabs Border color
+ * @cssprop {<length>} [--rh-tabs-inset=auto] - Tabs inset
  */
 export declare class RhTabs extends LitElement {
     #private;
     static readonly styles: CSSStyleSheet[];
-    /** @deprecated */
-    static isTab(element: HTMLElement): element is RhTab;
-    /** @deprecated */
-    static isPanel(element: HTMLElement): element is RhTabPanel;
     /**
      * Label for the scroll left button
      */
@@ -45,7 +37,8 @@ export declare class RhTabs extends LitElement {
     /**
      * Index of the active tab
      */
-    activeIndex: number;
+    get activeIndex(): number;
+    set activeIndex(v: number);
     activeTab?: RhTab;
     /**
      * Sets color context for child components, overrides parent context
@@ -78,9 +71,10 @@ export declare class RhTabs extends LitElement {
     get panels(): (RhTabPanel | undefined)[];
     private ctx;
     connectedCallback(): void;
-    willUpdate(changed: PropertyValues<this>): void;
+    willUpdate(): void;
     firstUpdated(): Promise<void>;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
+    protected activeTabChanged(old?: RhTab, activeTab?: RhTab): void;
     select(option: RhTab | number): void;
 }
 declare global {

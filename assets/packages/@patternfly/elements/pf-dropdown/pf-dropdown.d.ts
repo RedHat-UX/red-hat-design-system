@@ -1,4 +1,4 @@
-import { LitElement, type PropertyValues } from 'lit';
+import { LitElement, type PropertyValues, type TemplateResult } from 'lit';
 import '@patternfly/elements/pf-button/pf-button.js';
 export declare class PfDropdownSelectEvent extends Event {
     originalEvent: Event | KeyboardEvent;
@@ -12,21 +12,11 @@ export declare class PfDropdownSelectEvent extends Event {
  * @slot toggle - Custom toggle button
  * @slot menu - when using a custom toggle, you must slot a `<pf-dropdown-menu>` in alongside it
  * @csspart menu - The dropdown menu wrapper
- * @cssprop {<length>} --pf-c-dropdown__menu--PaddingTop
- *          Dropdown top padding
- *          {@default `0.5rem`}
- * @cssprop {<length>} --pf-c-tooltip__content--PaddingRight
- *          Dropdown right padding
- *          {@default `0.5rem`}
- * @cssprop {<length>} --pf-c-dropdown__menu--ZIndex
- *          Dropdown z-index
- *          {@default `200`}
- * @cssprop --pf-c-dropdown__menu--BoxShadow
- *          Dropdown box shadow
- *          {@default `0 0.25rem 0.5rem 0rem rgba(3, 3, 3, 0.12), 0 0 0.25rem 0 rgba(3, 3, 3, 0.06)`}
- * @cssprop {<length>} --pf-c-dropdown__menu--Top
- *          Dropdown top
- *          {@default `100% + 0.25rem`}
+ * @cssprop {<length>} [--pf-c-dropdown__menu--PaddingTop=0.5rem] Dropdown top padding
+ * @cssprop {<length>} [--pf-c-tooltip__content--PaddingRight=0.5rem] Dropdown right padding
+ * @cssprop {<length>} [--pf-c-dropdown__menu--ZIndex=200] Dropdown z-index
+ * @cssprop [--pf-c-dropdown__menu--BoxShadow=0 0.25rem 0.5rem 0rem rgba(3, 3, 3, 0.12), 0 0 0.25rem 0 rgba(3, 3, 3, 0.06)] Dropdown box shadow
+ * @cssprop {<length>} [--pf-c-dropdown__menu--Top=100% + 0.25rem] Dropdown top
  * @fires {PfDropdownSelectEvent} select - when a user select dropdown value
  * @fires open - when the dropdown toggles open
  * @fires close - when the dropdown toggles closed
@@ -34,13 +24,7 @@ export declare class PfDropdownSelectEvent extends Event {
 export declare class PfDropdown extends LitElement {
     #private;
     static readonly styles: CSSStyleSheet[];
-    static readonly shadowRootOptions: {
-        delegatesFocus: boolean;
-        mode: ShadowRootMode;
-        slotAssignment?: SlotAssignmentMode | undefined;
-        customElements?: CustomElementRegistry | undefined;
-        registry?: CustomElementRegistry | undefined;
-    };
+    static readonly shadowRootOptions: ShadowRootInit;
     /**
      * When disabled, the dropdown can still be toggled open and closed via keyboard, but menu items cannot be activated.
      */
@@ -54,7 +38,7 @@ export declare class PfDropdown extends LitElement {
     private ctx;
     protected getUpdateComplete(): Promise<boolean>;
     willUpdate(changed: PropertyValues): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): TemplateResult<1>;
     firstUpdated(): void;
     updated(changed: PropertyValues<this>): void;
     /**

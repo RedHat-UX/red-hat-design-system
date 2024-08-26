@@ -6,7 +6,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { bound, initializer, observed } from '@patternfly/pfe-core/decorators.js';
+import { bound, initializer, observes } from '@patternfly/pfe-core/decorators.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 import { css } from "lit";
@@ -39,15 +39,12 @@ async function pauseYoutube(iframe) {
 /**
  * A dialog displays important information to users without requiring them to navigate away from the page.
  * @summary Communicates information requiring user input or action
- *
  * @fires {DialogOpenEvent} open - Fires when a user clicks on the trigger or manually opens a dialog.
  * @fires {DialogCloseEvent} close - Fires when either a user clicks on either the close button or the overlay or manually closes a dialog.
  * @fires {DialogCancelEvent} cancel
- *
  * @slot - The default slot can contain any type of content. When the header is not present this unnamed slot appear at the top of the dialog window (to the left of the close button). Otherwise it will appear beneath the header.
  * @slot header - The header is an optional slot that appears at the top of the dialog window. It should be a header tag (h2-h6).
  * @slot footer - Optional footer content. Good place to put action buttons.
- *
  * @csspart overlay - The dialog overlay which lies under the dialog and above the page body
  * @csspart dialog - The dialog element
  * @csspart content - The container for the dialog content
@@ -55,11 +52,9 @@ async function pauseYoutube(iframe) {
  * @csspart description - The container for the optional dialog description in the header
  * @csspart close-button - The dialog's close button
  * @csspart footer - Actions footer container
- *
  * @cssprop {<number>} --rh-dialog-video-aspect-ratio
- * @cssprop {<color>} --rh-dialog-close-button-color
+ * @cssprop {<color>} [--rh-dialog-close-button-color=var(--rh-color-icon-secondary-on-dark, #ffffff)]
  *           Sets the dialog close button color.
- *          {@default `var(--rh-color-icon-secondary-on-dark, #ffffff)`}
  */
 let RhDialog = RhDialog_1 = class RhDialog extends LitElement {
     constructor() {
@@ -115,10 +110,10 @@ let RhDialog = RhDialog_1 = class RhDialog extends LitElement {
                 </footer>
               </div>
               <button id="close-button"
-                  part="close-button"
-                  aria-label="Close dialog"
-                  @keydown=${this.onKeydown}
-                  @click=${this.close}>
+                      part="close-button"
+                      aria-label="Close dialog"
+                      @keydown=${this.onKeydown}
+                      @click=${this.close}>
                 <svg fill="currentColor" viewBox="0 0 352 512">
                   <path d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path>
                 </svg>
@@ -151,7 +146,7 @@ let RhDialog = RhDialog_1 = class RhDialog extends LitElement {
             __classPrivateFieldGet(this, _RhDialog_headings, "f")[0].id = __classPrivateFieldGet(this, _RhDialog_headerId, "f");
         }
     }
-    async _openChanged(oldValue, newValue) {
+    async _openChanged(oldValue, open) {
         if (this.type === 'video') {
             if (oldValue === true && this.open === false) {
                 this.querySelector('video')?.pause?.();
@@ -162,13 +157,13 @@ let RhDialog = RhDialog_1 = class RhDialog extends LitElement {
             }
         }
         else if (oldValue == null
-            || newValue == null
+            || open == null
             // loosening types to prevent running these effects in unexpected circumstances
             // eslint-disable-next-line eqeqeq
-            || oldValue == newValue) {
+            || oldValue == open) {
             return;
         }
-        else if (this.open) {
+        else if (open) {
             // This prevents background scroll
             document.body.style.overflow = 'hidden';
             await this.updateComplete;
@@ -179,11 +174,12 @@ let RhDialog = RhDialog_1 = class RhDialog extends LitElement {
         else {
             // Return scrollability
             document.body.style.overflow = 'auto';
+            const event = __classPrivateFieldGet(this, _RhDialog_cancelling, "f") ? new DialogCancelEvent() : new DialogCloseEvent();
             await this.updateComplete;
             if (__classPrivateFieldGet(this, _RhDialog_triggerElement, "f")) {
                 __classPrivateFieldGet(this, _RhDialog_triggerElement, "f").focus();
             }
-            this.dispatchEvent(__classPrivateFieldGet(this, _RhDialog_cancelling, "f") ? new DialogCancelEvent() : new DialogCloseEvent());
+            this.dispatchEvent(event);
         }
     }
     _triggerChanged() {
@@ -201,7 +197,6 @@ let RhDialog = RhDialog_1 = class RhDialog extends LitElement {
         if (open) {
             const path = event.composedPath();
             const { closeOnOutsideClick } = this.constructor;
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             if (closeOnOutsideClick && path.includes(overlay) && !path.includes(dialog)) {
                 event.preventDefault();
                 this.cancel();
@@ -263,9 +258,10 @@ let RhDialog = RhDialog_1 = class RhDialog extends LitElement {
     }
     /**
      * Manually closes the dialog.
-     * ```js
-     * dialog.close();
-     * ```
+     * @param [returnValue] dialog return value.
+     * @example ```js
+     *          dialog.close();
+     *          ```
      */
     close(returnValue) {
         if (typeof returnValue === 'string') {
@@ -292,11 +288,9 @@ __decorate([
     property({ reflect: true })
 ], RhDialog.prototype, "position", void 0);
 __decorate([
-    observed,
     property({ type: Boolean, reflect: true })
 ], RhDialog.prototype, "open", void 0);
 __decorate([
-    observed,
     property()
 ], RhDialog.prototype, "trigger", void 0);
 __decorate([
@@ -314,6 +308,12 @@ __decorate([
 __decorate([
     initializer()
 ], RhDialog.prototype, "_init", null);
+__decorate([
+    observes('open')
+], RhDialog.prototype, "_openChanged", null);
+__decorate([
+    observes('trigger')
+], RhDialog.prototype, "_triggerChanged", null);
 __decorate([
     bound
 ], RhDialog.prototype, "onTriggerClick", null);

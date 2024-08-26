@@ -66,10 +66,8 @@ export declare class RhSiteStatus extends LitElement {
      * Sets color theme based on parent context
      */
     private on?;
-    /** secret testing-only domain override */
-    private set __TESTING_ONLY_DONT_USE_OR_WELL_TELL_YOUR_BOSS__domain__(value);
     connectedCallback(): void;
-    render(): import("lit").TemplateResult<1>;
+    protected render(): import("lit-html").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

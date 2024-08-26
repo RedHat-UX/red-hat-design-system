@@ -76,7 +76,7 @@
 .green {
   --_content-color: var(--rh-color-green-70, #204d00);
   --_background-color: var(--rh-color-green-10, #e9f7df);
-  --_before-border-color: var(--rh-color-green-20, #d1f1bb);
+  --_before-border-color: var(--rh-color-green-30, #afdc8f);
   --_icon-color: var(--rh-color-green-60, #3d7317);
 }
 
@@ -124,10 +124,15 @@
   color: var(--_icon-color);
   margin-inline-end: var(--rh-tag-margin-inline-end, var(--rh-space-xs, 4px));
 
-  --pf-icon--size: 0.875rem;
+  --rh-icon-size: 1em;
 }
 
 .hasIcon [part="icon"] {
   display: inline-flex;
   align-items: center;
+}
+
+::slotted(svg) {
+  height: 1em;
+  aspect-ratio: 1;
 }

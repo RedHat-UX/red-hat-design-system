@@ -12,6 +12,8 @@ export declare class TabsAriaController<Tab extends HTMLElement = HTMLElement, P
     get tabs(): Tab[];
     get activeTab(): Tab | undefined;
     /**
+     * @param host controller host
+     * @param options controller options
      * @example Usage in PfTab
      *          ```ts
      *          new TabsController(this, {

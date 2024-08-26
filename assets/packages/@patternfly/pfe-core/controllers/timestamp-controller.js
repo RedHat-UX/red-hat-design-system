@@ -28,7 +28,8 @@ export class TimestampController {
             return __classPrivateFieldGet(this, _TimestampController_instances, "m", _TimestampController_getTimeRelative).call(this);
         }
         else {
-            let { displaySuffix, locale } = __classPrivateFieldGet(this, _TimestampController_options, "f");
+            let { displaySuffix } = __classPrivateFieldGet(this, _TimestampController_options, "f");
+            const { locale } = __classPrivateFieldGet(this, _TimestampController_options, "f");
             if (__classPrivateFieldGet(this, _TimestampController_options, "f").utc) {
                 displaySuffix || (displaySuffix = 'UTC');
             }
@@ -66,7 +67,11 @@ _a = TimestampController, _TimestampController_date = new WeakMap(), _TimestampC
 }, _TimestampController_getTimeRelative = function _TimestampController_getTimeRelative() {
     const date = __classPrivateFieldGet(this, _TimestampController_date, "f");
     const { locale } = __classPrivateFieldGet(this, _TimestampController_options, "f");
-    const rtf = new Intl.RelativeTimeFormat(locale, { localeMatcher: 'best fit', numeric: 'auto', style: 'long' });
+    const rtf = new Intl.RelativeTimeFormat(locale, {
+        localeMatcher: 'best fit',
+        numeric: 'auto',
+        style: 'long',
+    });
     const ms = date.getTime() - Date.now();
     const tense = ms > 0 ? 1 : -1;
     let qty = 0;

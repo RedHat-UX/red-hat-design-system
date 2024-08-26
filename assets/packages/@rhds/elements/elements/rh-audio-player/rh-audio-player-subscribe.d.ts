@@ -15,7 +15,7 @@ export declare class RhAudioPlayerSubscribe extends LitElement {
     heading?: string;
     label?: string;
     private body?;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
     set menuLabel(label: string);
     get menuLabel(): string;
     scrollText(): void;

@@ -7,18 +7,6 @@ import { property } from 'lit/decorators/property.js';
 import { styleMap } from 'lit/directives/style-map.js';
 import { css } from "lit";
 const styles = css `:host {\n  display: flex;\n\n  --_background-image: var(--pf-c-background-image--BackgroundImage);\n}\n\n#outer-container {\n  display: contents;\n}\n\n#container {\n  padding: 0;\n  margin: 0;\n  background-color: transparent;\n}\n\n#container::after {\n  display: block;\n  position: fixed;\n  top:  0;\n  left: 0;\n  z-index: -1;\n  width: 100%;\n  height: 100%;\n  content: "";\n  background-color: var(--pf-c-background-image--BackgroundColor, var(--pf-global--BackgroundColor--dark-100, #151515));\n  background-image: var(--_background-image);\n  filter: var(--pf-c-background-image--Filter, url("#image_overlay"));\n  background-repeat:  no-repeat;\n  background-size: cover;\n}\n\nslot[name="filter"] {\n  display: none;\n}\n\nslot[part="content"] {\n  display: block;\n  position: relative;\n  z-index: 1;\n  color: white;\n}\n\n@media screen and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {\n  #container::after {\n    background-image: var(--pf-c-background-image--BackgroundImage-2x, var(--_background-image-2x, var(--_background-image)));\n  }\n}\n\n@media screen and (min-width: 576px) {\n  #container::after {\n    background-image: var(--pf-c-background-image--BackgroundImage--sm, var(--_background-image-sm, var(--_background-image)));\n  }\n}\n\n@media screen and (min-width: 576px) and (-webkit-min-device-pixel-ratio: 2), (min-width: 576px) and (min-resolution: 192dpi) {\n  #container::after {\n    background-image: var(--pf-c-background-image--BackgroundImage--sm-2x, var(--_background-image-sm-2x, var(--_background-image)));\n  }\n}\n\n@media screen and (min-width: 992px) {\n  #container::after {\n    background-image: var(--pf-c-background-image--BackgroundImage--lg, var(--_background-image-lg, var(--_background-image)));\n  }\n}\n`;
-/**
- * A **background image** allows you to place an image in the background of your page or area of a page.
- * @summary Allows users to place an image in the background of your page or area of a page.
- * @slot filter - Overrides the default svg filter for the background image.
- * @cssprop {<color>} --pf-c-background-image--BackgroundColor {@default `#151515`}
- * @cssprop --pf-c-background-image--BackgroundImage
- * @cssprop --pf-c-background-image--BackgroundImage-2x
- * @cssprop --pf-c-background-image--BackgroundImage--sm
- * @cssprop --pf-c-background-image--BackgroundImage--sm-2x
- * @cssprop --pf-c-background-image--BackgroundImage--lg
- * @cssprop --pf-c-background-image--Filter {@default `url("#image_overlay")`}
- */
 let PfBackgroundImage = class PfBackgroundImage extends LitElement {
     constructor() {
         super(...arguments);
@@ -86,6 +74,7 @@ _PfBackgroundImage_onSlotChange = function _PfBackgroundImage_onSlotChange() {
     }
 };
 PfBackgroundImage.styles = [styles];
+PfBackgroundImage.version = "4.0.0";
 __decorate([
     property({ reflect: true })
 ], PfBackgroundImage.prototype, "src", void 0);

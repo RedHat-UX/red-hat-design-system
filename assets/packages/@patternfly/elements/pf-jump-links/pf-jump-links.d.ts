@@ -1,4 +1,4 @@
-import { LitElement } from 'lit';
+import { LitElement, type TemplateResult } from 'lit';
 import '@patternfly/elements/pf-icon/pf-icon.js';
 /**
  * **Jump links** allow users to navigate to sections within a page.
@@ -61,7 +61,7 @@ export declare class PfJumpLinks extends LitElement {
     connectedCallback(): void;
     firstUpdated(): void;
     updated(changed: Map<string, unknown>): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

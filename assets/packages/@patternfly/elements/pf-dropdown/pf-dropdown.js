@@ -23,32 +23,6 @@ export class PfDropdownSelectEvent extends Event {
         this.value = value;
     }
 }
-/**
- * A **dropdown** presents a menu of actions or links in a constrained space that
- * will trigger a process or navigate to a new location.
- * @slot - Must contain one or more `<pf-dropdown-item>` or `<pf-dropdown-group>`
- * @slot toggle - Custom toggle button
- * @slot menu - when using a custom toggle, you must slot a `<pf-dropdown-menu>` in alongside it
- * @csspart menu - The dropdown menu wrapper
- * @cssprop {<length>} --pf-c-dropdown__menu--PaddingTop
- *          Dropdown top padding
- *          {@default `0.5rem`}
- * @cssprop {<length>} --pf-c-tooltip__content--PaddingRight
- *          Dropdown right padding
- *          {@default `0.5rem`}
- * @cssprop {<length>} --pf-c-dropdown__menu--ZIndex
- *          Dropdown z-index
- *          {@default `200`}
- * @cssprop --pf-c-dropdown__menu--BoxShadow
- *          Dropdown box shadow
- *          {@default `0 0.25rem 0.5rem 0rem rgba(3, 3, 3, 0.12), 0 0 0.25rem 0 rgba(3, 3, 3, 0.06)`}
- * @cssprop {<length>} --pf-c-dropdown__menu--Top
- *          Dropdown top
- *          {@default `100% + 0.25rem`}
- * @fires {PfDropdownSelectEvent} select - when a user select dropdown value
- * @fires open - when the dropdown toggles open
- * @fires close - when the dropdown toggles closed
- */
 let PfDropdown = class PfDropdown extends LitElement {
     constructor() {
         super(...arguments);
@@ -240,6 +214,7 @@ PfDropdown.shadowRootOptions = {
     ...LitElement.shadowRootOptions,
     delegatesFocus: true,
 };
+PfDropdown.version = "4.0.0";
 __decorate([
     property({ type: Boolean, reflect: true })
 ], PfDropdown.prototype, "disabled", void 0);

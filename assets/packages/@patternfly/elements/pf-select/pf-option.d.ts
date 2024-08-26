@@ -1,4 +1,4 @@
-import { LitElement, type PropertyValues } from 'lit';
+import { LitElement, type TemplateResult } from 'lit';
 /**
  * Option within a listbox
  * @slot -
@@ -33,9 +33,9 @@ export declare class PfOption extends LitElement {
      */
     set setSize(setSize: number | null);
     get setSize(): number | null;
-    connectedCallback(): void;
-    render(): import("lit-html").TemplateResult<1>;
-    willUpdate(changed: PropertyValues<this>): void;
+    render(): TemplateResult<1>;
+    private selectedChanged;
+    private disabledChanged;
     /**
      * text content within option (used for filtering)
      */

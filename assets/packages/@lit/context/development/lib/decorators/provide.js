@@ -65,10 +65,10 @@ export function provide({ context: context, }) {
             if (descriptor === undefined) {
                 const valueMap = new WeakMap();
                 newDescriptor = {
-                    get: function () {
+                    get() {
                         return valueMap.get(this);
                     },
-                    set: function (value) {
+                    set(value) {
                         controllerMap.get(this).setValue(value);
                         valueMap.set(this, value);
                     },
@@ -80,7 +80,7 @@ export function provide({ context: context, }) {
                 const oldSetter = descriptor.set;
                 newDescriptor = {
                     ...descriptor,
-                    set: function (value) {
+                    set(value) {
                         controllerMap.get(this).setValue(value);
                         oldSetter?.call(this, value);
                     },

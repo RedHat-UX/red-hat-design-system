@@ -4,7 +4,7 @@ export declare class RhFooterSocialLink extends LitElement {
     static readonly styles: CSSStyleSheet;
     icon?: string;
     connectedCallback(): void;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
     updated(): void;
 }
 declare global {

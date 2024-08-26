@@ -1,4 +1,6 @@
 import { LitElement } from 'lit';
+import type { IconNameFor, IconSetName } from '@rhds/icons';
+import '@rhds/elements/rh-icon/rh-icon.js';
 /**
  * A statistic showcases a data point or quick fact visually.
  *
@@ -11,7 +13,6 @@ import { LitElement } from 'lit';
  * @slot statistic - Statistic data
  * @slot cta - Call to action
  * @slot - Description of the stat
- * @cssprop --pf-icon--size
  *
  */
 export declare class RhStat extends LitElement {
@@ -19,8 +20,14 @@ export declare class RhStat extends LitElement {
     static readonly version = "{{version}}";
     static readonly styles: CSSStyleSheet[];
     private on?;
-    /** The icon to display in the statistic */
-    icon?: string;
+    /**
+     * The icon to display in the statistic
+     */
+    icon?: IconNameFor<IconSetName>;
+    /**
+     * Icon set to display in the statistic
+     */
+    iconSet: IconSetName;
     /** Whether the title or statistic should be displayed on top in the statistic */
     top: 'default' | 'statistic';
     /** The size of the statistic */
@@ -28,7 +35,7 @@ export declare class RhStat extends LitElement {
     /** Whether the statistic is in a mobile view or not for styling */
     isMobile: boolean;
     connectedCallback(): void;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

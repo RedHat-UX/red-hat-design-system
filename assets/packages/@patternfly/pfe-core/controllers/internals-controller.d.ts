@@ -1,4 +1,4 @@
-import type { ReactiveController, ReactiveControllerHost } from 'lit';
+import { type ReactiveController, type ReactiveControllerHost } from 'lit';
 interface InternalsControllerOptions extends Partial<ARIAMixin> {
     getHTMLElement?(): HTMLElement;
 }
@@ -12,12 +12,16 @@ export declare class InternalsController implements ReactiveController, ARIAMixi
     readonly states: unknown;
     readonly willValidate: ElementInternals['willValidate'];
     readonly validationMessage: ElementInternals['validationMessage'];
+    static getLabels(host: ReactiveControllerHost): Element[];
+    static isSafari: boolean;
     static of(host: ReactiveControllerHost, options?: InternalsControllerOptions): InternalsController;
     role: string | null;
     ariaActivedescendant: string | null;
     ariaAtomic: string | null;
     ariaAutoComplete: string | null;
     ariaBusy: string | null;
+    ariaBrailleLabel: string | null;
+    ariaBrailleRoleDescription: string | null;
     ariaChecked: string | null;
     ariaColCount: string | null;
     ariaColIndex: string | null;
@@ -58,19 +62,19 @@ export declare class InternalsController implements ReactiveController, ARIAMixi
     /** WARNING: be careful of cross-root ARIA browser support */
     ariaActiveDescendantElement: Element | null;
     /** WARNING: be careful of cross-root ARIA browser support */
-    ariaControlsElements: Element | null;
+    ariaControlsElements: Element[] | null;
     /** WARNING: be careful of cross-root ARIA browser support */
-    ariaDescribedByElements: Element | null;
+    ariaDescribedByElements: Element[] | null;
     /** WARNING: be careful of cross-root ARIA browser support */
-    ariaDetailsElements: Element | null;
+    ariaDetailsElements: Element[] | null;
     /** WARNING: be careful of cross-root ARIA browser support */
-    ariaErrorMessageElements: Element | null;
+    ariaErrorMessageElements: Element[] | null;
     /** WARNING: be careful of cross-root ARIA browser support */
-    ariaFlowToElements: Element | null;
+    ariaFlowToElements: Element[] | null;
     /** WARNING: be careful of cross-root ARIA browser support */
-    ariaLabelledByElements: Element | null;
+    ariaLabelledByElements: Element[] | null;
     /** WARNING: be careful of cross-root ARIA browser support */
-    ariaOwnsElements: Element | null;
+    ariaOwnsElements: Element[] | null;
     /** True when the control is disabled via it's containing fieldset element */
     get formDisabled(): boolean;
     get labels(): NodeList;
@@ -90,7 +94,7 @@ export declare class InternalsController implements ReactiveController, ARIAMixi
      * Because of that, `this.internals` may not be available in the decorator setter
      * so we cheat here with nullish coalescing assignment operator `??=`;
      */
-    private attach;
+    private attachOrRetrieveInternals;
     private initializeOptions;
     hostConnected?(): void;
     setFormValue(...args: Parameters<ElementInternals['setFormValue']>): void;
@@ -99,5 +103,18 @@ export declare class InternalsController implements ReactiveController, ARIAMixi
     reportValidity(...args: Parameters<ElementInternals['reportValidity']>): boolean;
     submit(): void;
     reset(): void;
+}
+/** @see https://w3c.github.io/aria/#ref-for-dom-ariamixin-ariaactivedescendantelement-1 */
+declare global {
+    interface ARIAMixin {
+        ariaActiveDescendantElement: Element | null;
+        ariaControlsElements: readonly Element[] | null;
+        ariaDescribedByElements: readonly Element[] | null;
+        ariaDetailsElements: readonly Element[] | null;
+        ariaErrorMessageElements: readonly Element[] | null;
+        ariaFlowToElements: readonly Element[] | null;
+        ariaLabelledByElements: readonly Element[] | null;
+        ariaOwnsElements: readonly Element[] | null;
+    }
 }
 export {};

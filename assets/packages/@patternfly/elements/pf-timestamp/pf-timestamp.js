@@ -11,9 +11,6 @@ const BooleanStringConverter = {
         return !value || value === 'true';
     },
 };
-/**
- * A **timestamp** provides consistent formats for displaying date and time values.
- */
 let PfTimestamp = class PfTimestamp extends LitElement {
     constructor() {
         super(...arguments);
@@ -50,6 +47,7 @@ let PfTimestamp = class PfTimestamp extends LitElement {
 };
 _PfTimestamp_timestamp = new WeakMap();
 PfTimestamp.styles = [style];
+PfTimestamp.version = "4.0.0";
 __decorate([
     property({ reflect: true, attribute: 'date-format' })
 ], PfTimestamp.prototype, "dateFormat", void 0);

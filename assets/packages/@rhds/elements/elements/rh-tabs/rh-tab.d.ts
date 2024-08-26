@@ -1,4 +1,3 @@
-import type { PropertyValues } from 'lit';
 import { LitElement } from 'lit';
 export declare class TabExpandEvent extends Event {
     active: boolean;
@@ -7,30 +6,26 @@ export declare class TabExpandEvent extends Event {
 }
 /**
  * The tab button for use within a rh-tabs element, must be paired with a rh-tab-panel.
- *
- * @slot icon - Can contain an `<svg>` or `<pf-icon>`
+ * @slot icon - Can contain an `<svg>` or `<rh-icon>`
  * @slot - Tab title text
- *
  * @csspart button - element that contains the interactive part of a tab
  * @csspart icon - icon `<span>` element
  * @csspart text - tile text `<span>` element
- *
- * @cssprop {<color>} --rh-tabs-link-color - Tab link text color {@default `#4d4d4d`}
- * @cssprop {<color>} --rh-tabs-active-border-color - Tab active border color {@default `#ff442b`}
- * @cssprop {<length>} --rh-tabs-link-padding-inline-start - Tab padding inline start {@default `32px`}
- * @cssprop {<length>} --rh-tabs-link-padding-block-start - Tab padding block start {@default `16px`}
- * @cssprop {<length>} --rh-tabs-link-padding-inline-end - Tab padding inline end {@default 32px`}
- * @cssprop {<length>} --rh-tabs-link-padding-block-end - Tab padding block end {@default `16px`}
- *
+ * @cssprop {<color>} [--rh-tabs-link-color=#4d4d4d] - Tab link text color
+ * @cssprop {<color>} [--rh-tabs-active-border-color=#ff442b] - Tab active border color
+ * @cssprop {<length>} [--rh-tabs-link-padding-inline-start=32px] - Tab padding inline start
+ * @cssprop {<length>} [--rh-tabs-link-padding-block-start=16px] - Tab padding block start
+ * @cssprop {<length>} [--rh-tabs-link-padding-inline-end=32px`] - Tab padding inline end
+ * @cssprop {<length>} [--rh-tabs-link-padding-block-end=16px] - Tab padding block end
  * @fires { TabExpandEvent } expand - when a tab expands
  */
 export declare class RhTab extends LitElement {
     #private;
     static readonly version = "{{version}}";
     static readonly styles: CSSStyleSheet[];
-    /** `active` should be observed, and true when the tab is selected */
+    /** True when the tab is selected */
     active: boolean;
-    /** `disabled` should be observed, and true when the tab is disabled */
+    /** True when the tab is disabled */
     disabled: boolean;
     private ctx?;
     /**
@@ -40,8 +35,14 @@ export declare class RhTab extends LitElement {
     private icons;
     private button;
     connectedCallback(): void;
-    render(): import("lit").TemplateResult<1>;
-    updated(changed: PropertyValues<this>): void;
+    render(): import("lit-html").TemplateResult<1>;
+    private activeChanged;
+    /**
+     * if a tab is disabled, then it is also aria-disabled
+     * if a tab is removed from disabled its not necessarily
+     * not still aria-disabled so we don't remove the aria-disabled
+     */
+    private disabledChanged;
 }
 declare global {
     interface HTMLElementTagNameMap {

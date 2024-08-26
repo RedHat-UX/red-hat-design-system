@@ -1,6 +1,6 @@
 {
   "name": "@floating-ui/core",
-  "version": "1.6.0",
+  "version": "1.6.7",
   "description": "Positioning library for floating elements: tooltips, popovers, dropdowns, and more",
   "publishConfig": {
     "access": "public"
@@ -43,7 +43,7 @@
     "positioning"
   ],
   "dependencies": {
-    "@floating-ui/utils": "^0.2.1"
+    "@floating-ui/utils": "^0.2.7"
   },
   "devDependencies": {
     "config": "0.0.0"
@@ -51,7 +51,8 @@
   "scripts": {
     "test": "vitest run",
     "test:watch": "vitest watch",
-    "lint": "biome lint .",
+    "lint": "eslint .",
+    "format": "prettier --write .",
     "clean": "rimraf dist out-tsc",
     "dev": "rollup -c -w",
     "build": "rollup -c",

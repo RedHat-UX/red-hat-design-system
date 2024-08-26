@@ -1,52 +1,47 @@
-import { observedController, PropertyObserverController, } from '../controllers/property-observer-controller.js';
+import { PropertyObserverController } from '../controllers/property-observer-controller.js';
+// eslint-disable-next-line jsdoc/require-jsdoc
 export function observed(...as) {
-    /** @observed('_myCustomChangeCallback') */
     if (as.length === 1) {
-        const [methodNameOrCallback] = as;
-        return function (proto, key) {
-            proto.constructor
-                .addInitializer(x => new PropertyObserverController(x));
-            observeProperty(proto, key, methodNameOrCallback);
-        };
+        const [methodNameOrCb] = as;
+        return configuredDecorator(methodNameOrCb);
     }
     else {
-        const [proto, key] = as;
-        proto.constructor
-            .addInitializer(x => new PropertyObserverController(x));
-        observeProperty(proto, key);
+        return executeBareDecorator(...as);
     }
 }
-export function observeProperty(proto, key, callbackOrMethod) {
-    const descriptor = Object.getOwnPropertyDescriptor(proto, key);
-    Object.defineProperty(proto, key, {
-        ...descriptor,
-        configurable: true,
-        set(newVal) {
-            const oldVal = this[key];
-            // first, call any pre-existing setters, e.g. `@property`
-            descriptor?.set?.call(this, newVal);
-            // if the user passed a callback, call it
-            // e.g. `@observed((_, newVal) => console.log(newVal))`
-            // safe to call before connectedCallback, because it's impossible to get a `this` ref.
-            if (typeof callbackOrMethod === 'function') {
-                callbackOrMethod.call(this, oldVal, newVal);
-            }
-            else {
-                // if the user passed a string method name, call it on `this`
-                // e.g. `@observed('_renderOptions')`
-                // otherwise, use a default method name e.g. `_fooChanged`
-                const actualMethodName = callbackOrMethod || `_${key}Changed`;
-                // if the component has already connected to the DOM, run the callback
-                // otherwise, If the component has not yet connected to the DOM,
-                // cache the old and new values. See PropertyObserverController above
-                if (this.hasUpdated) {
-                    this[actualMethodName]?.(oldVal, newVal);
-                }
-                else {
-                    this[observedController].cache(key, actualMethodName, oldVal, newVal);
-                }
-            }
-        },
-    });
+/**
+ * @param proto element prototype
+ * @param propertyName propertyName
+ * @example ```typescript
+ *          @observed @property() foo?: string;
+ *          ```
+ */
+function executeBareDecorator(proto, propertyName) {
+    const klass = proto.constructor;
+    klass.addInitializer(x => initialize(x, propertyName, x[`_${propertyName}Changed`]));
+}
+/**
+ * @param methodNameOrCb string name of callback or function
+ * @example ```typescript
+ *          @observed('_myCallback') @property() foo?: string;
+ *          @observed((old) => console.log(old)) @property() bar?: string;
+ *          ```
+ */
+function configuredDecorator(methodNameOrCb) {
+    return function (proto, key) {
+        const propertyName = key;
+        const klass = proto.constructor;
+        if (typeof methodNameOrCb === 'function') {
+            const callback = methodNameOrCb;
+            klass.addInitializer(x => initialize(x, propertyName, callback));
+        }
+        else {
+            klass.addInitializer(x => initialize(x, propertyName, x[methodNameOrCb]));
+        }
+    };
+}
+function initialize(instance, propertyName, callback) {
+    const controller = new PropertyObserverController(instance, { propertyName, callback });
+    instance.addController(controller);
 }
 //# sourceMappingURL=observed.js.map

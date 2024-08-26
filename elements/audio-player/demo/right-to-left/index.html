@@ -12,28 +12,30 @@
 
     <script type="importmap">{
   "imports": {
+    "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
     "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
     "@lit/context": "/assets/packages/@lit/context/index.js",
-    "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
-    "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "lit-element": "/assets/packages/lit-element/index.js",
     "lit": "/assets/packages/lit/index.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@3.0.0/core.js",
+    "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.0/core.js",
+    "@rhds/tokens/media.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/meta.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js",
     "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
     "lit/static-html.js": "/assets/packages/lit/static-html.js",
-    "@rhds/tokens/media.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js",
-    "@rhds/tokens/meta.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js",
-    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
     "@lit-labs/ssr-client/lit-element-hydrate-support.js": "https://ga.jspm.io/npm:@lit-labs/ssr-client@1.1.7/lit-element-hydrate-support.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
-    "fuse.js": "/assets/packages/fuse.js/dist/fuse.esm.js",
     "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
     "@rhds/elements/lib/": "/assets/packages/@rhds/elements/lib/",
     "@rhds/elements/": "/assets/packages/@rhds/elements/elements/",
+    "@rhds/icons/": "/assets/packages/@rhds/icons/",
+    "@rhds/icons/icons.js": "/assets/packages/@rhds/icons/icons.js",
     "@patternfly/elements/": "/assets/packages/@patternfly/elements/",
     "@patternfly/icons/": "/assets/packages/@patternfly/icons/",
     "@patternfly/pfe-core/": "/assets/packages/@patternfly/pfe-core/",
@@ -61,167 +63,167 @@
     </script>
   </head>
   <body unresolved>
-    <main>
-      <div data-demo="rh-audio-player"><!-- Options for demo -->
-<form>
-  <label>Layout:
-    <select name="layout">
-      <option value="full" selected>Full</option>
-      <option value="compact-wide">Compact Wide</option>
-      <option value="compact">Compact</option>
-      <option value="">Mini</option>
-    </select>
-  </label>
-</form>
+    <main><section id="rtl">
+  <!-- Options for demo -->
+  <form>
+    <label>Layout:
+      <select name="layout">
+        <option value="full" selected>Full</option>
+        <option value="compact-wide">Compact Wide</option>
+        <option value="compact">Compact</option>
+        <option value="">Mini</option>
+      </select>
+    </label>
+  </form>
 
-<!-- Right to left layout will display based on form checkbox -->
+  <!-- Right to left layout will display based on form checkbox -->
 
-<rh-audio-player lang="he"
-                 dir="rtl"
-                 layout="full"
-                 poster="https://deow9bq0xqvbj.cloudfront.net/ep-logo/pbblog15366739/Copy_of_podcast_5__x3k5r4.jpg">
-  <p slot="series">מדברים פתוח</p>
-  <h3 slot="title">מדברים פתוח - תום פטאהיי - המסע מאתיופיה להייטק</h3>
-  <rh-audio-player-about slot="about" label="אודות ההסכת">
-    <h4 slot="heading">אודות הפרק</h4>
-    <p>בפרק הזה תום שיתף אותנו על המסלול שעשה מהילדות באתיופיה אל הייטק הישראלי.
-      דיברנו על תנאי הפתיחה של העולים מאתיופיה דיברנו על הקשיים על ההצלחות ועל הכישלנות.</p>
-    <rh-avatar slot="profile"
-               name="אילן פינטו"
-               src="https://deow9bq0xqvbj.cloudfront.net/image-logo/15366739/ALm5wu1GYAPF0EO3GvWnZxLHsbiMsp-C2DfXxzhR9K3o6vM=s96-c_300x300.jpg"></rh-avatar>
-  </rh-audio-player-about>
-  <audio crossorigin="anonymous" slot="media" controls>
-    <source type="audio/mp3"
-            srclang="he"
-            src="https://mcdn.podbean.com/mf/web/7i9q6v/tom_haftaa.mp3">
-  </audio>
-  <rh-audio-player-subscribe slot="subscribe" label="הירשם">
-    <h4 slot="heading">הירשם</h4>
-    <p>הירשמו פה:</p>
-    <a slot="link"
-       href="https://www.podbean.com/site/podcatcher/index/blog/gppMmVUk8uG0"
-       target="_blank"
-       title="Listen on Apple Podcasts"
-       data-analytics-linktype="cta"
-       data-analytics-text="Listen on Apple Podcasts"
-       data-analytics-category="Hero|Listen on Apple Podcasts">
-      <img src="https://www.redhat.com/cms/managed-files/badge_apple-podcast-white.svg"
-           alt="Listen on Apple Podcasts">
-    </a>
-    <a slot="link"
-       href="https://open.spotify.com/show/1lR9GVeDtZgkCM9gu0X4ZT"
-       target="_blank"
-       title="Listen on Spotify"
-       data-analytics-linktype="cta"
-       data-analytics-text="Listen on Spotify"
-       data-analytics-category="Hero|Listen on Spotify">
-      <img src="https://www.redhat.com/cms/managed-files/badge_spotify.svg"
-           alt="Listen on Spotify">
-    </a>
-    <a slot="link"
-       href="https://podcasts.google.com/feed/aHR0cHM6Ly9mZWVkLnBvZGJlYW4uY29tL3RhbGtpbmdPcGVuL2ZlZWQueG1s"
-       target="_blank"
-       title="Listen on Google Podcasts"
-       data-analytics-linktype="cta"
-       data-analytics-text="Listen on Google Podcasts"
-       data-analytics-category="Hero|Listen on Google Podcasts">
-      <img src="https://www.redhat.com/cms/managed-files/badge_google-podcast.svg"
-           alt="Listen on Google Podcasts">
-    </a>
-    <a slot="link"
-       href="https://feed.podbean.com/talkingOpen/feed.xml"
-       target="_blank"
-       title="Subscribe via RSS Feed"
-       data-analytics-linktype="cta"
-       data-analytics-text="Subscribe via RSS Feed"
-       data-analytics-category="Hero|Subscribe via RSS Feed">
-      <img class="img-fluid"
-           src="https://www.redhat.com/cms/managed-files/badge_RSS-feed.svg"
-           alt="Subscribe via RSS Feed">
-    </a>
-  </rh-audio-player-subscribe>
-  <rh-transcript id="regular"
-                 slot="transcript"
-                 label="תמליל">
-    <h4 slot="heading">תמליל</h4>
-    <rh-cue start="00:05"
-            voice="ג'וש סלומון">
-      ברוכים הבאים לפודקאסט מדברים פתוח של רדהט ישראל.
-    </rh-cue>
-    <rh-cue start="00:09"
-            voice="ג'וש סלומון">
-      אני ג'וש סלומון.
-    </rh-cue>
-    <rh-cue start="00:11"
-            voice="אילן פינטו">
-      ואני אילן פינטו ויחד נגיש לכם פודקאסט בעברית על כל מה שחשוב ומעניין.
-    </rh-cue>
-    <rh-cue start="00:15"
-            voice="אילן פינטו">
-      ורדהט עם דגש על טכנולוגיה, אבל לא רק
-    </rh-cue>
-    <rh-cue start="00:18"
-            voice="אילן פינטו">
-      מדברים פתוח.
-    </rh-cue>
-    <rh-cue start="00:19"
-            voice="ג'וש סלומון">
-      מתחילים!
-    </rh-cue>
-    <rh-cue start="00:24"
-            voice="ג'וש סלומון">
-      שלום לכולם וברוכים הבאים לעוד פרק של מדברים פתוח.
-    </rh-cue>
-    <rh-cue start="00:28"
-            voice="ג'וש סלומון">
-      הפודקאסט של רדת ישראל והפעם פרק ראשון בסדרה חדשה פודקאסט בהפתעה.
-    </rh-cue>
-    <rh-cue start="00:35"
-            voice="ג'וש סלומון">
-      אחרי שכמה מרואיינים הבריזו לנו.
-    </rh-cue>
-    <rh-cue start="00:38"
-            voice="אילן פינטו">
-      היום לא נזכיר שמות, לא נזכיר לנו נזכיר שמות.
-    </rh-cue>
-    <rh-cue start="00:41"
-            voice="ג'וש סלומון">
-      עילן, לא נזכיר שמות אוהד גם אותך זה, נזכיר.
-    </rh-cue>
-    <rh-cue start="00:44"
-            voice="ג'וש סלומון">
-      הלכנו למטבחון ושאלנו מי מוכן לבוא לפודקאסט.
-    </rh-cue>
-    <rh-cue start="00:48"
-            voice="אילן פינטו">
-      לא, אבל רגע צריך להגיד שהרבה זמן רצינו לעשות.
-    </rh-cue>
-    <rh-cue start="00:51"
-            voice="אילן פינטו">
-      פרק על דיורסיטי אן קריוזן ויצא לנו טוב.
-    </rh-cue>
-    <rh-cue start="00:56"
-            voice="אילן פינטו">
-      יצא לנו טוב, אז היום את מי יש לנו?
-    </rh-cue>
-  </rh-transcript>
-</rh-audio-player>
+  <rh-audio-player lang="he"
+                   dir="rtl"
+                   layout="full"
+                   poster="https://deow9bq0xqvbj.cloudfront.net/ep-logo/pbblog15366739/Copy_of_podcast_5__x3k5r4.jpg">
+    <p slot="series">מדברים פתוח</p>
+    <h3 slot="title">מדברים פתוח - תום פטאהיי - המסע מאתיופיה להייטק</h3>
+    <rh-audio-player-about slot="about" label="אודות ההסכת">
+      <h4 slot="heading">אודות הפרק</h4>
+      <p>בפרק הזה תום שיתף אותנו על המסלול שעשה מהילדות באתיופיה אל הייטק הישראלי.
+        דיברנו על תנאי הפתיחה של העולים מאתיופיה דיברנו על הקשיים על ההצלחות ועל הכישלנות.</p>
+      <rh-avatar slot="profile"
+                 name="אילן פינטו"
+                 src="https://deow9bq0xqvbj.cloudfront.net/image-logo/15366739/ALm5wu1GYAPF0EO3GvWnZxLHsbiMsp-C2DfXxzhR9K3o6vM=s96-c_300x300.jpg"></rh-avatar>
+    </rh-audio-player-about>
+    <audio crossorigin="anonymous" slot="media" controls>
+      <source type="audio/mp3"
+              srclang="he"
+              src="https://mcdn.podbean.com/mf/web/7i9q6v/tom_haftaa.mp3">
+    </audio>
+    <rh-audio-player-subscribe slot="subscribe" label="הירשם">
+      <h4 slot="heading">הירשם</h4>
+      <p>הירשמו פה:</p>
+      <a slot="link"
+         href="https://www.podbean.com/site/podcatcher/index/blog/gppMmVUk8uG0"
+         target="_blank"
+         title="Listen on Apple Podcasts"
+         data-analytics-linktype="cta"
+         data-analytics-text="Listen on Apple Podcasts"
+         data-analytics-category="Hero|Listen on Apple Podcasts">
+        <img src="https://www.redhat.com/cms/managed-files/badge_apple-podcast-white.svg"
+             alt="Listen on Apple Podcasts">
+      </a>
+      <a slot="link"
+         href="https://open.spotify.com/show/1lR9GVeDtZgkCM9gu0X4ZT"
+         target="_blank"
+         title="Listen on Spotify"
+         data-analytics-linktype="cta"
+         data-analytics-text="Listen on Spotify"
+         data-analytics-category="Hero|Listen on Spotify">
+        <img src="https://www.redhat.com/cms/managed-files/badge_spotify.svg"
+             alt="Listen on Spotify">
+      </a>
+      <a slot="link"
+         href="https://podcasts.google.com/feed/aHR0cHM6Ly9mZWVkLnBvZGJlYW4uY29tL3RhbGtpbmdPcGVuL2ZlZWQueG1s"
+         target="_blank"
+         title="Listen on Google Podcasts"
+         data-analytics-linktype="cta"
+         data-analytics-text="Listen on Google Podcasts"
+         data-analytics-category="Hero|Listen on Google Podcasts">
+        <img src="https://www.redhat.com/cms/managed-files/badge_google-podcast.svg"
+             alt="Listen on Google Podcasts">
+      </a>
+      <a slot="link"
+         href="https://feed.podbean.com/talkingOpen/feed.xml"
+         target="_blank"
+         title="Subscribe via RSS Feed"
+         data-analytics-linktype="cta"
+         data-analytics-text="Subscribe via RSS Feed"
+         data-analytics-category="Hero|Subscribe via RSS Feed">
+        <img class="img-fluid"
+             src="https://www.redhat.com/cms/managed-files/badge_RSS-feed.svg"
+             alt="Subscribe via RSS Feed">
+      </a>
+    </rh-audio-player-subscribe>
+    <rh-transcript id="regular"
+                   slot="transcript"
+                   label="תמליל">
+      <h4 slot="heading">תמליל</h4>
+      <rh-cue start="00:05"
+              voice="ג'וש סלומון">
+        ברוכים הבאים לפודקאסט מדברים פתוח של רדהט ישראל.
+      </rh-cue>
+      <rh-cue start="00:09"
+              voice="ג'וש סלומון">
+        אני ג'וש סלומון.
+      </rh-cue>
+      <rh-cue start="00:11"
+              voice="אילן פינטו">
+        ואני אילן פינטו ויחד נגיש לכם פודקאסט בעברית על כל מה שחשוב ומעניין.
+      </rh-cue>
+      <rh-cue start="00:15"
+              voice="אילן פינטו">
+        ורדהט עם דגש על טכנולוגיה, אבל לא רק
+      </rh-cue>
+      <rh-cue start="00:18"
+              voice="אילן פינטו">
+        מדברים פתוח.
+      </rh-cue>
+      <rh-cue start="00:19"
+              voice="ג'וש סלומון">
+        מתחילים!
+      </rh-cue>
+      <rh-cue start="00:24"
+              voice="ג'וש סלומון">
+        שלום לכולם וברוכים הבאים לעוד פרק של מדברים פתוח.
+      </rh-cue>
+      <rh-cue start="00:28"
+              voice="ג'וש סלומון">
+        הפודקאסט של רדת ישראל והפעם פרק ראשון בסדרה חדשה פודקאסט בהפתעה.
+      </rh-cue>
+      <rh-cue start="00:35"
+              voice="ג'וש סלומון">
+        אחרי שכמה מרואיינים הבריזו לנו.
+      </rh-cue>
+      <rh-cue start="00:38"
+              voice="אילן פינטו">
+        היום לא נזכיר שמות, לא נזכיר לנו נזכיר שמות.
+      </rh-cue>
+      <rh-cue start="00:41"
+              voice="ג'וש סלומון">
+        עילן, לא נזכיר שמות אוהד גם אותך זה, נזכיר.
+      </rh-cue>
+      <rh-cue start="00:44"
+              voice="ג'וש סלומון">
+        הלכנו למטבחון ושאלנו מי מוכן לבוא לפודקאסט.
+      </rh-cue>
+      <rh-cue start="00:48"
+              voice="אילן פינטו">
+        לא, אבל רגע צריך להגיד שהרבה זמן רצינו לעשות.
+      </rh-cue>
+      <rh-cue start="00:51"
+              voice="אילן פינטו">
+        פרק על דיורסיטי אן קריוזן ויצא לנו טוב.
+      </rh-cue>
+      <rh-cue start="00:56"
+              voice="אילן פינטו">
+        יצא לנו טוב, אז היום את מי יש לנו?
+      </rh-cue>
+    </rh-transcript>
+  </rh-audio-player>
+</section>
 
-<link rel="stylesheet" href="../rh-audio-player-lightdom.css">
+<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-audio-player/rh-audio-player-lightdom.css">
 
 <style>
-  [data-demo="rh-audio-player"] {
-    padding: var(--rh-space-xl, 24px);
-  }
+  #rtl {
+    margin: var(--rh-space-xl, 24px);
+    & label {
+      display: flex;
+      align-items: center;
+    }
 
-  label {
-    display: flex;
-    align-items: center;
-  }
-
-  select {
-    margin-left: var(--rh-space-md, 8px);
-    flex: 1 0 auto;
+    & select {
+      margin-left: var(--rh-space-md, 8px);
+      flex: 1 0 auto;
+    }
   }
 </style>
 
@@ -233,6 +235,5 @@
     player.layout = form.layout.value || undefined;
   });
 </script>
-</div>
-    </main></body>
+</main></body>
 </html>

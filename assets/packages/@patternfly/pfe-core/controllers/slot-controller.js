@@ -7,6 +7,7 @@ function isObjectConfigSpread(config) {
 /**
  * If it's a named slot, return its children,
  * for the default slot, look for direct children not assigned to a slot
+ * @param n slot name
  */
 const isSlot = (n) => (child) => n === SlotController.default ? !child.hasAttribute('slot')
     : child.getAttribute('slot') === n;
@@ -39,7 +40,8 @@ export class SlotController {
         });
         _SlotController_initSlot.set(this, (slotName) => {
             const name = slotName || _a.default;
-            const elements = __classPrivateFieldGet(this, _SlotController_nodes, "f").get(name)?.slot?.assignedElements?.() ?? __classPrivateFieldGet(this, _SlotController_instances, "m", _SlotController_getChildrenForSlot).call(this, name);
+            const elements = __classPrivateFieldGet(this, _SlotController_nodes, "f").get(name)?.slot?.assignedElements?.()
+                ?? __classPrivateFieldGet(this, _SlotController_instances, "m", _SlotController_getChildrenForSlot).call(this, name);
             const selector = slotName ? `slot[name="${slotName}"]` : 'slot:not([name])';
             const slot = this.host.shadowRoot?.querySelector?.(selector) ?? null;
             const hasContent = !!elements.length;
@@ -87,21 +89,19 @@ export class SlotController {
     /**
      * Given a slot name or slot names, returns elements assigned to the requested slots as an array.
      * If no value is provided, it returns all children not assigned to a slot (without a slot attribute).
-     *
+     * @param slotNames slots to query
      * @example Get header-slotted elements
-     * ```js
-     * this.getSlotted('header')
-     * ```
-     *
+     *          ```js
+     *          this.getSlotted('header')
+     *          ```
      * @example Get header- and footer-slotted elements
-     * ```js
-     * this.getSlotted('header', 'footer')
-     * ```
-     *
+     *          ```js
+     *          this.getSlotted('header', 'footer')
+     *          ```
      * @example Get default-slotted elements
-     * ```js
-     * this.getSlotted();
-     * ```
+     *          ```js
+     *          this.getSlotted();
+     *          ```
      */
     getSlotted(...slotNames) {
         if (!slotNames.length) {
@@ -113,25 +113,22 @@ export class SlotController {
     }
     /**
      * Returns a boolean statement of whether or not any of those slots exists in the light DOM.
-     *
      * @param names The slot names to check.
      * @example this.hasSlotted('header');
      */
     hasSlotted(...names) {
-        const { anonymous } = _a;
-        const slotNames = Array.from(names, x => x == null ? anonymous : x);
+        const slotNames = Array.from(names, x => x == null ? _a.default : x);
         if (!slotNames.length) {
-            slotNames.push(anonymous);
+            slotNames.push(_a.default);
         }
         return slotNames.some(x => __classPrivateFieldGet(this, _SlotController_nodes, "f").get(x)?.hasContent ?? false);
     }
     /**
      * Whether or not all the requested slots are empty.
-     *
-     * @param  slots The slot name.  If no value is provided, it returns the default slot.
+     * @param  names The slot names to query.  If no value is provided, it returns the default slot.
      * @example this.isEmpty('header', 'footer');
      * @example this.isEmpty();
-     * @returns {Boolean}
+     * @returns
      */
     isEmpty(...names) {
         return !this.hasSlotted(...names);

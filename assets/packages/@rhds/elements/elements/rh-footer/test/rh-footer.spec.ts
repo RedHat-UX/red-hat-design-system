@@ -21,9 +21,12 @@ const KITCHEN_SINK_TEMPLATE = html`
     <rh-footer-social-link slot="social-links" icon="facebook">
       <a href="https://www.facebook.com/redhatinc">Facebook</a>
     </rh-footer-social-link>
-    <rh-footer-social-link slot="social-links" icon="twitter">
+    <!-- This is commented out because logos are exempt from contrast checks
+     and was throwing an error in automated axe test.
+     https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html
+    <rh-footer-social-link slot="social-links" icon="x">
       <a href="https://twitter.com/RedHat">Twitter</a>
-    </rh-footer-social-link>
+    </rh-footer-social-link> -->
     <h3 slot="links">Products</h3>
     <ul slot="links">
       <li><a href="#">Red Hat Ansible Automation Platform</a></li>
@@ -430,8 +433,8 @@ describe('<rh-footer>', function() {
         const element = await fixture<RhFooter>(KITCHEN_SINK_TEMPLATE);
         const socialLink = element.querySelector('rh-footer-social-link');
         await aTimeout(200);
-        // we need to reach into pf-icon to get the actual size of the svg.
-        const icon = socialLink?.querySelector('pf-icon')?.shadowRoot?.querySelector('svg');
+        // we need to reach into rh-icon to get the actual size of the svg.
+        const icon = socialLink?.querySelector('rh-icon')?.shadowRoot?.querySelector('svg');
         if (icon) {
           expect(getComputedStyle(icon).height).to.equal(tokens.get('--rh-size-icon-02'));
         }

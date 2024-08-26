@@ -1,4 +1,4 @@
-import { LitElement } from 'lit';
+import { LitElement, type TemplateResult } from 'lit';
 import { PfDropdownItem } from './pf-dropdown-item.js';
 /**
  * A **dropdown** presents a menu of actions or links in a constrained space that will trigger a
@@ -8,18 +8,12 @@ import { PfDropdownItem } from './pf-dropdown-item.js';
 export declare class PfDropdownMenu extends LitElement {
     #private;
     static readonly styles: CSSStyleSheet[];
-    static readonly shadowRootOptions: {
-        delegatesFocus: boolean;
-        mode: ShadowRootMode;
-        slotAssignment?: SlotAssignmentMode | undefined;
-        customElements?: CustomElementRegistry | undefined;
-        registry?: CustomElementRegistry | undefined;
-    };
+    static readonly shadowRootOptions: ShadowRootInit;
     private ctx?;
     /**
      * current active descendant in menu
      */
-    get activeItem(): HTMLElement | undefined;
+    get activeItem(): HTMLElement | null;
     /**
      * index of current active descendant in menu
      */
@@ -27,7 +21,7 @@ export declare class PfDropdownMenu extends LitElement {
     get items(): PfDropdownItem[];
     connectedCallback(): void;
     protected willUpdate(): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

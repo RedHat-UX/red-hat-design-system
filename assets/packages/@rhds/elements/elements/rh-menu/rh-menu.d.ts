@@ -14,15 +14,16 @@ export declare class RhMenu extends LitElement {
     static shadowRootOptions: {
         delegatesFocus: boolean;
         mode: ShadowRootMode;
-        slotAssignment?: SlotAssignmentMode | undefined;
-        customElements?: CustomElementRegistry | undefined;
-        registry?: CustomElementRegistry | undefined;
+        serializable?: boolean;
+        slotAssignment?: SlotAssignmentMode;
+        customElements?: CustomElementRegistry;
+        registry?: CustomElementRegistry;
     };
     private _menuItems;
     private on?;
     get activeItem(): HTMLElement | undefined;
     connectedCallback(): void;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
     activateItem(item: HTMLElement): void;
     focus(): void;
 }

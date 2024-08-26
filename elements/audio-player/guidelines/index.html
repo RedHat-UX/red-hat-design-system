@@ -33,28 +33,30 @@
 
       <script type="importmap">{
   "imports": {
+    "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
     "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
     "@lit/context": "/assets/packages/@lit/context/index.js",
-    "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
-    "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "lit-element": "/assets/packages/lit-element/index.js",
     "lit": "/assets/packages/lit/index.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@3.0.0/core.js",
+    "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.0/core.js",
+    "@rhds/tokens/media.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/meta.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js",
     "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
     "lit/static-html.js": "/assets/packages/lit/static-html.js",
-    "@rhds/tokens/media.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js",
-    "@rhds/tokens/meta.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js",
-    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
     "@lit-labs/ssr-client/lit-element-hydrate-support.js": "https://ga.jspm.io/npm:@lit-labs/ssr-client@1.1.7/lit-element-hydrate-support.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
-    "fuse.js": "/assets/packages/fuse.js/dist/fuse.esm.js",
     "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
     "@rhds/elements/lib/": "/assets/packages/@rhds/elements/lib/",
     "@rhds/elements/": "/assets/packages/@rhds/elements/elements/",
+    "@rhds/icons/": "/assets/packages/@rhds/icons/",
+    "@rhds/icons/icons.js": "/assets/packages/@rhds/icons/icons.js",
     "@patternfly/elements/": "/assets/packages/@patternfly/elements/",
     "@patternfly/icons/": "/assets/packages/@patternfly/icons/",
     "@patternfly/pfe-core/": "/assets/packages/@patternfly/pfe-core/",
@@ -115,13 +117,6 @@
     import '/assets/javascript/elements/uxdot-copy-permalink.js';
     import '/assets/javascript/elements/uxdot-sidenav.js';
     import '/assets/javascript/elements/uxdot-example.js';
-  </script>
-
-  
-  <script type="module">
-    import { PfIcon } from '@patternfly/elements/pf-icon/pf-icon.js';
-    PfIcon.getIconUrl = (set, icon) =>
-      new URL(`/assets/packages/@patternfly/icons/${set}/${icon}.js`, location.origin);
   </script>
 
   <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js"></script>
@@ -447,8 +442,7 @@
       <!--lit-node 6--><div id="overlay" part="overlay" hidden></div>
     <!--/lit-part--></template>
   <ul>
-    <li>
-      <uxdot-sidenav-item><template shadowroot="open" shadowrootmode="open"><style>
+    <uxdot-sidenav-item  href="/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: block;
       border-inline-start:
@@ -467,7 +461,7 @@
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a) {
+    a {
       display: block;
       text-decoration: none;
       color: var(--rh-color-text-primary-on-light, #151515) !important;
@@ -475,21 +469,16 @@
       padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-        <a href="/">Home</a>
-      </uxdot-sidenav-item>
-    </li>
-
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/"><slot></slot></a>
+    <!--/lit-part--></template>Home</uxdot-sidenav-item>
     <li>
-        <uxdot-sidenav-dropdown><template shadowroot="open" shadowrootmode="open"><style>
+        <uxdot-sidenav-dropdown role="menu"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
-      /* styles here */
       z-index: var(--uxdot-sidenav-z-index, 102);
     }
   </style><!--lit-part kHJJur9OVoU=-->
@@ -497,24 +486,22 @@
     <!--/lit-part--></template>
           <details>
             <summary>About</summary>
-            <uxdot-sidenav-dropdown-menu><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(ul) {
-      margin: 0 !important;
-      list-style: none;
+            <uxdot-sidenav-dropdown-menu role="menu"><template shadowroot="open" shadowrootmode="open"><style>
+    :host {
+      display: block;
       padding-inline-start: var(--rh-space-2xl, 32px);
     }
   </style><!--lit-part kHJJur9OVoU=-->
       <slot></slot>
     <!--/lit-part--></template>
-              <ul>
+              
                 
-                  
-                  <li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+                <uxdot-sidenav-dropdown-menu-item  href="/about/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -524,32 +511,23 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/about/">About the Design System</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li><li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/about/"><slot></slot></a>
+    <!--/lit-part--></template>About the Design System</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/about/how-we-build/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -559,32 +537,23 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/about/how-we-build/">How we build</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li><li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/about/how-we-build/"><slot></slot></a>
+    <!--/lit-part--></template>How we build</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/about/roadmap/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -594,36 +563,25 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/about/roadmap/">Roadmap</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li>
-              </ul>
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/about/roadmap/"><slot></slot></a>
+    <!--/lit-part--></template>Roadmap</uxdot-sidenav-dropdown-menu-item>
             </uxdot-sidenav-dropdown-menu>
           </details>
-        
-      </uxdot-sidenav-dropdown></li>
+        </uxdot-sidenav-dropdown>
+      </li>
     <li>
-        <uxdot-sidenav-dropdown><template shadowroot="open" shadowrootmode="open"><style>
+        <uxdot-sidenav-dropdown role="menu"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
-      /* styles here */
       z-index: var(--uxdot-sidenav-z-index, 102);
     }
   </style><!--lit-part kHJJur9OVoU=-->
@@ -631,24 +589,22 @@
     <!--/lit-part--></template>
           <details>
             <summary>Get started</summary>
-            <uxdot-sidenav-dropdown-menu><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(ul) {
-      margin: 0 !important;
-      list-style: none;
+            <uxdot-sidenav-dropdown-menu role="menu"><template shadowroot="open" shadowrootmode="open"><style>
+    :host {
+      display: block;
       padding-inline-start: var(--rh-space-2xl, 32px);
     }
   </style><!--lit-part kHJJur9OVoU=-->
       <slot></slot>
     <!--/lit-part--></template>
-              <ul>
+              
                 
-                  
-                  <li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+                <uxdot-sidenav-dropdown-menu-item  href="/get-started/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -658,32 +614,23 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/get-started/">Overview</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li><li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/get-started/"><slot></slot></a>
+    <!--/lit-part--></template>Overview</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/get-started/designers/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -693,32 +640,23 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/get-started/designers/">Designers</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li><li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/get-started/designers/"><slot></slot></a>
+    <!--/lit-part--></template>Designers</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/get-started/developers/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -728,36 +666,25 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/get-started/developers/">Developers</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li>
-              </ul>
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/get-started/developers/"><slot></slot></a>
+    <!--/lit-part--></template>Developers</uxdot-sidenav-dropdown-menu-item>
             </uxdot-sidenav-dropdown-menu>
           </details>
-        
-      </uxdot-sidenav-dropdown></li>
+        </uxdot-sidenav-dropdown>
+      </li>
     <li>
-        <uxdot-sidenav-dropdown><template shadowroot="open" shadowrootmode="open"><style>
+        <uxdot-sidenav-dropdown role="menu"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
-      /* styles here */
       z-index: var(--uxdot-sidenav-z-index, 102);
     }
   </style><!--lit-part kHJJur9OVoU=-->
@@ -765,24 +692,22 @@
     <!--/lit-part--></template>
           <details>
             <summary>Foundations</summary>
-            <uxdot-sidenav-dropdown-menu><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(ul) {
-      margin: 0 !important;
-      list-style: none;
+            <uxdot-sidenav-dropdown-menu role="menu"><template shadowroot="open" shadowrootmode="open"><style>
+    :host {
+      display: block;
       padding-inline-start: var(--rh-space-2xl, 32px);
     }
   </style><!--lit-part kHJJur9OVoU=-->
       <slot></slot>
     <!--/lit-part--></template>
-              <ul>
+              
                 
-                  
-                  <li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+                <uxdot-sidenav-dropdown-menu-item  href="/foundations/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -792,32 +717,23 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/foundations/">Overview</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li><li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/foundations/"><slot></slot></a>
+    <!--/lit-part--></template>Overview</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/foundations/color/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -827,32 +743,23 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/foundations/color/">Color</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li><li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/foundations/color/"><slot></slot></a>
+    <!--/lit-part--></template>Color</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/foundations/grid/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -862,32 +769,23 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/foundations/grid/">Grid</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li><li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/foundations/grid/"><slot></slot></a>
+    <!--/lit-part--></template>Grid</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/foundations/personalization/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -897,32 +795,23 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/foundations/personalization/">Personalization patterns</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li><li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/foundations/personalization/"><slot></slot></a>
+    <!--/lit-part--></template>Personalization patterns</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/foundations/spacing/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -932,32 +821,23 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/foundations/spacing/">Spacing</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li><li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/foundations/spacing/"><slot></slot></a>
+    <!--/lit-part--></template>Spacing</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/foundations/typography/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -967,36 +847,25 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/foundations/typography/">Typography</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li>
-              </ul>
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/foundations/typography/"><slot></slot></a>
+    <!--/lit-part--></template>Typography</uxdot-sidenav-dropdown-menu-item>
             </uxdot-sidenav-dropdown-menu>
           </details>
-        
-      </uxdot-sidenav-dropdown></li>
+        </uxdot-sidenav-dropdown>
+      </li>
     <li>
-        <uxdot-sidenav-dropdown><template shadowroot="open" shadowrootmode="open"><style>
+        <uxdot-sidenav-dropdown role="menu"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
-      /* styles here */
       z-index: var(--uxdot-sidenav-z-index, 102);
     }
   </style><!--lit-part kHJJur9OVoU=-->
@@ -1004,24 +873,22 @@
     <!--/lit-part--></template>
           <details>
             <summary>Tokens</summary>
-            <uxdot-sidenav-dropdown-menu><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(ul) {
-      margin: 0 !important;
-      list-style: none;
+            <uxdot-sidenav-dropdown-menu role="menu"><template shadowroot="open" shadowrootmode="open"><style>
+    :host {
+      display: block;
       padding-inline-start: var(--rh-space-2xl, 32px);
     }
   </style><!--lit-part kHJJur9OVoU=-->
       <slot></slot>
     <!--/lit-part--></template>
-              <ul>
+              
                 
-                  
-                    <li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+                  <uxdot-sidenav-dropdown-menu-item  href="/tokens/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -1031,33 +898,24 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/tokens/">Overview</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li>
-                  <li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/tokens/"><slot></slot></a>
+    <!--/lit-part--></template>Overview</uxdot-sidenav-dropdown-menu-item>
+                <uxdot-sidenav-dropdown-menu-item  href="/tokens/color/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -1067,32 +925,23 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/tokens/color/">Global color</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li><li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/tokens/color/"><slot></slot></a>
+    <!--/lit-part--></template>Global color</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/tokens/box-shadow/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -1102,32 +951,23 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/tokens/box-shadow/">box shadow</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li><li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/tokens/box-shadow/"><slot></slot></a>
+    <!--/lit-part--></template>box shadow</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/tokens/font/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -1137,32 +977,23 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/tokens/font/">Typography</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li><li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/tokens/font/"><slot></slot></a>
+    <!--/lit-part--></template>Typography</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/tokens/border/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -1172,32 +1003,23 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/tokens/border/">border</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li><li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/tokens/border/"><slot></slot></a>
+    <!--/lit-part--></template>border</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/tokens/opacity/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -1207,32 +1029,23 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/tokens/opacity/">opacity</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li><li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/tokens/opacity/"><slot></slot></a>
+    <!--/lit-part--></template>opacity</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/tokens/space/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -1242,32 +1055,23 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/tokens/space/">space</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li><li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/tokens/space/"><slot></slot></a>
+    <!--/lit-part--></template>space</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/tokens/length/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -1277,32 +1081,23 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/tokens/length/">length</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li><li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/tokens/length/"><slot></slot></a>
+    <!--/lit-part--></template>length</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/tokens/icon/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -1312,32 +1107,23 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/tokens/icon/">Icon</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li><li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/tokens/icon/"><slot></slot></a>
+    <!--/lit-part--></template>Icon</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/tokens/breakpoint/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -1347,32 +1133,23 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/tokens/breakpoint/">Breakpoints</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li><li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/tokens/breakpoint/"><slot></slot></a>
+    <!--/lit-part--></template>Breakpoints</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/tokens/media/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -1382,36 +1159,25 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/tokens/media/">Media Queries</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li>
-              </ul>
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/tokens/media/"><slot></slot></a>
+    <!--/lit-part--></template>Media Queries</uxdot-sidenav-dropdown-menu-item>
             </uxdot-sidenav-dropdown-menu>
           </details>
-        
-      </uxdot-sidenav-dropdown></li>
+        </uxdot-sidenav-dropdown>
+      </li>
     <li>
-        <uxdot-sidenav-dropdown  open><template shadowroot="open" shadowrootmode="open"><style>
+        <uxdot-sidenav-dropdown  open role="menu"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
-      /* styles here */
       z-index: var(--uxdot-sidenav-z-index, 102);
     }
   </style><!--lit-part kHJJur9OVoU=-->
@@ -1419,22 +1185,20 @@
     <!--/lit-part--></template>
           <details open="">
             <summary>Elements</summary>
-            <uxdot-sidenav-dropdown-menu><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(ul) {
-      margin: 0 !important;
-      list-style: none;
+            <uxdot-sidenav-dropdown-menu role="menu"><template shadowroot="open" shadowrootmode="open"><style>
+    :host {
+      display: block;
       padding-inline-start: var(--rh-space-2xl, 32px);
     }
   </style><!--lit-part kHJJur9OVoU=-->
       <slot></slot>
     <!--/lit-part--></template>
-              <ul>
-                <li>
-                    <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+              <uxdot-sidenav-dropdown-menu-item  href="/elements/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -1444,34 +1208,25 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                      <a href="/elements/">All elements </a>
-                    </uxdot-sidenav-dropdown-menu-item>
-                  </li>
-                    
-                      <li>
-                        <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/elements/"><slot></slot></a>
+    <!--/lit-part--></template>All elements</uxdot-sidenav-dropdown-menu-item>
+                  
+                  <uxdot-sidenav-dropdown-menu-item  href="/elements/accordion/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -1481,35 +1236,28 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/elements/accordion/"><slot></slot></a>
     <!--/lit-part--></template>
-                          <a href="/elements/accordion/">Accordion</a>
-                        </uxdot-sidenav-dropdown-menu-item>
-                      </li>
-                    
-                    
-                      <li>
-                        <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+                    Accordion
+                  </uxdot-sidenav-dropdown-menu-item>
+                  
+                  
+                  <uxdot-sidenav-dropdown-menu-item  href="/elements/alert/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -1519,35 +1267,28 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/elements/alert/"><slot></slot></a>
     <!--/lit-part--></template>
-                          <a href="/elements/alert/">Alert</a>
-                        </uxdot-sidenav-dropdown-menu-item>
-                      </li>
-                    
-                    
-                      <li>
-                        <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+                    Alert
+                  </uxdot-sidenav-dropdown-menu-item>
+                  
+                  
+                  <uxdot-sidenav-dropdown-menu-item  href="/elements/audio-player/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -1557,35 +1298,28 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/elements/audio-player/"><slot></slot></a>
     <!--/lit-part--></template>
-                          <a href="/elements/audio-player/">Audio player</a>
-                        </uxdot-sidenav-dropdown-menu-item>
-                      </li>
-                    
-                    
-                      <li>
-                        <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+                    Audio player
+                  </uxdot-sidenav-dropdown-menu-item>
+                  
+                  
+                  <uxdot-sidenav-dropdown-menu-item  href="/elements/avatar/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -1595,35 +1329,28 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/elements/avatar/"><slot></slot></a>
     <!--/lit-part--></template>
-                          <a href="/elements/avatar/">Avatar</a>
-                        </uxdot-sidenav-dropdown-menu-item>
-                      </li>
-                    
-                    
-                      <li>
-                        <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+                    Avatar
+                  </uxdot-sidenav-dropdown-menu-item>
+                  
+                  
+                  <uxdot-sidenav-dropdown-menu-item  href="/elements/back-to-top/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -1633,35 +1360,28 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/elements/back-to-top/"><slot></slot></a>
     <!--/lit-part--></template>
-                          <a href="/elements/back-to-top/">Back to top</a>
-                        </uxdot-sidenav-dropdown-menu-item>
-                      </li>
-                    
-                    
-                      <li>
-                        <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+                    Back to top
+                  </uxdot-sidenav-dropdown-menu-item>
+                  
+                  
+                  <uxdot-sidenav-dropdown-menu-item  href="/elements/badge/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -1671,35 +1391,28 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/elements/badge/"><slot></slot></a>
     <!--/lit-part--></template>
-                          <a href="/elements/badge/">Badge</a>
-                        </uxdot-sidenav-dropdown-menu-item>
-                      </li>
-                    
-                    
-                      <li>
-                        <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+                    Badge
+                  </uxdot-sidenav-dropdown-menu-item>
+                  
+                  
+                  <uxdot-sidenav-dropdown-menu-item  href="/elements/blockquote/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -1709,36 +1422,28 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/elements/blockquote/"><slot></slot></a>
     <!--/lit-part--></template>
-                          <a href="/elements/blockquote/">Blockquote</a>
-                        </uxdot-sidenav-dropdown-menu-item>
-                      </li>
-                    
-                    
-                    
-                      <li>
-                        <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+                    Blockquote
+                  </uxdot-sidenav-dropdown-menu-item>
+                  
+                  
+                  <uxdot-sidenav-dropdown-menu-item  href="/elements/breadcrumb/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -1748,35 +1453,28 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/elements/breadcrumb/"><slot></slot></a>
     <!--/lit-part--></template>
-                          <a href="/elements/button/">Button</a>
-                        </uxdot-sidenav-dropdown-menu-item>
-                      </li>
-                    
-                    
-                      <li>
-                        <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+                    Breadcrumb
+                  </uxdot-sidenav-dropdown-menu-item>
+                  
+                  
+                  <uxdot-sidenav-dropdown-menu-item  href="/elements/button/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -1786,35 +1484,28 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/elements/button/"><slot></slot></a>
     <!--/lit-part--></template>
-                          <a href="/elements/call-to-action/">Call to action</a>
-                        </uxdot-sidenav-dropdown-menu-item>
-                      </li>
-                    
-                    
-                      <li>
-                        <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+                    Button
+                  </uxdot-sidenav-dropdown-menu-item>
+                  
+                  
+                  <uxdot-sidenav-dropdown-menu-item  href="/elements/call-to-action/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -1824,35 +1515,28 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/elements/call-to-action/"><slot></slot></a>
     <!--/lit-part--></template>
-                          <a href="/elements/card/">Card</a>
-                        </uxdot-sidenav-dropdown-menu-item>
-                      </li>
-                    
-                    
-                      <li>
-                        <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+                    Call to action
+                  </uxdot-sidenav-dropdown-menu-item>
+                  
+                  
+                  <uxdot-sidenav-dropdown-menu-item  href="/elements/card/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -1862,35 +1546,28 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/elements/card/"><slot></slot></a>
     <!--/lit-part--></template>
-                          <a href="/elements/code-block/">Code block</a>
-                        </uxdot-sidenav-dropdown-menu-item>
-                      </li>
-                    
-                    
-                      <li>
-                        <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+                    Card
+                  </uxdot-sidenav-dropdown-menu-item>
+                  
+                  
+                  <uxdot-sidenav-dropdown-menu-item  href="/elements/code-block/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -1900,35 +1577,28 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/elements/code-block/"><slot></slot></a>
     <!--/lit-part--></template>
-                          <a href="/elements/dialog/">Dialog</a>
-                        </uxdot-sidenav-dropdown-menu-item>
-                      </li>
-                    
-                    
-                      <li>
-                        <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+                    Code block
+                  </uxdot-sidenav-dropdown-menu-item>
+                  
+                  
+                  <uxdot-sidenav-dropdown-menu-item  href="/elements/dialog/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -1938,37 +1608,28 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/elements/dialog/"><slot></slot></a>
     <!--/lit-part--></template>
-                          <a href="/elements/footer/">Footer</a>
-                        </uxdot-sidenav-dropdown-menu-item>
-                      </li>
-                    
-                    
-                    
-                    
-                      <li>
-                        <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+                    Dialog
+                  </uxdot-sidenav-dropdown-menu-item>
+                  
+                  
+                  <uxdot-sidenav-dropdown-menu-item  href="/elements/footer/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -1978,35 +1639,29 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/elements/footer/"><slot></slot></a>
     <!--/lit-part--></template>
-                          <a href="/elements/navigation-primary/">Navigation (primary) <rh-tag icon="bell" color="gray">Planned</rh-tag></a>
-                        </uxdot-sidenav-dropdown-menu-item>
-                      </li>
-                    
-                    
-                      <li>
-                        <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+                    Footer
+                  </uxdot-sidenav-dropdown-menu-item>
+                  
+                  
+                  
+                  <uxdot-sidenav-dropdown-menu-item  href="/elements/health-index/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -2016,35 +1671,28 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/elements/health-index/"><slot></slot></a>
     <!--/lit-part--></template>
-                          <a href="/elements/navigation-secondary/">Navigation (secondary)</a>
-                        </uxdot-sidenav-dropdown-menu-item>
-                      </li>
-                    
-                    
-                      <li>
-                        <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+                    Health index
+                  </uxdot-sidenav-dropdown-menu-item>
+                  
+                  
+                  <uxdot-sidenav-dropdown-menu-item  href="/elements/icon/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -2054,35 +1702,29 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/elements/icon/"><slot></slot></a>
     <!--/lit-part--></template>
-                          <a href="/elements/pagination/">Pagination</a>
-                        </uxdot-sidenav-dropdown-menu-item>
-                      </li>
-                    
-                    
-                      <li>
-                        <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+                    Icon
+                  </uxdot-sidenav-dropdown-menu-item>
+                  
+                  
+                  
+                  <uxdot-sidenav-dropdown-menu-item  href="/elements/navigation-primary/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -2092,35 +1734,28 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/elements/navigation-primary/"><slot></slot></a>
     <!--/lit-part--></template>
-                          <a href="/elements/popover/">Popover <rh-tag icon="bell" color="gray">Planned</rh-tag></a>
-                        </uxdot-sidenav-dropdown-menu-item>
-                      </li>
-                    
-                    
-                      <li>
-                        <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+                    Navigation (primary)
+                  </uxdot-sidenav-dropdown-menu-item>
+                  
+                  
+                  <uxdot-sidenav-dropdown-menu-item  href="/elements/navigation-secondary/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -2130,35 +1765,28 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/elements/navigation-secondary/"><slot></slot></a>
     <!--/lit-part--></template>
-                          <a href="/elements/progress-steps/">Progress steps <rh-tag icon="bell" color="gray">Planned</rh-tag></a>
-                        </uxdot-sidenav-dropdown-menu-item>
-                      </li>
-                    
-                    
-                      <li>
-                        <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+                    Navigation (secondary)
+                  </uxdot-sidenav-dropdown-menu-item>
+                  
+                  
+                  <uxdot-sidenav-dropdown-menu-item  href="/elements/pagination/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -2168,35 +1796,28 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/elements/pagination/"><slot></slot></a>
     <!--/lit-part--></template>
-                          <a href="/elements/site-status/">Site status</a>
-                        </uxdot-sidenav-dropdown-menu-item>
-                      </li>
-                    
-                    
-                      <li>
-                        <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+                    Pagination
+                  </uxdot-sidenav-dropdown-menu-item>
+                  
+                  
+                  <uxdot-sidenav-dropdown-menu-item  href="/elements/popover/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -2206,35 +1827,28 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/elements/popover/"><slot></slot></a>
     <!--/lit-part--></template>
-                          <a href="/elements/skip-link/">Skip link</a>
-                        </uxdot-sidenav-dropdown-menu-item>
-                      </li>
-                    
-                    
-                      <li>
-                        <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+                    Popover <rh-tag icon="notification-fill" color="gray">Planned</rh-tag>
+                  </uxdot-sidenav-dropdown-menu-item>
+                  
+                  
+                  <uxdot-sidenav-dropdown-menu-item  href="/elements/progress-steps/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -2244,35 +1858,28 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/elements/progress-steps/"><slot></slot></a>
     <!--/lit-part--></template>
-                          <a href="/elements/spinner/">Spinner</a>
-                        </uxdot-sidenav-dropdown-menu-item>
-                      </li>
-                    
-                    
-                      <li>
-                        <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+                    Progress steps
+                  </uxdot-sidenav-dropdown-menu-item>
+                  
+                  
+                  <uxdot-sidenav-dropdown-menu-item  href="/elements/site-status/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -2282,35 +1889,28 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/elements/site-status/"><slot></slot></a>
     <!--/lit-part--></template>
-                          <a href="/elements/statistic/">Statistic</a>
-                        </uxdot-sidenav-dropdown-menu-item>
-                      </li>
-                    
-                    
-                      <li>
-                        <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+                    Site status
+                  </uxdot-sidenav-dropdown-menu-item>
+                  
+                  
+                  <uxdot-sidenav-dropdown-menu-item  href="/elements/skip-link/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -2320,35 +1920,28 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/elements/skip-link/"><slot></slot></a>
     <!--/lit-part--></template>
-                          <a href="/elements/subnavigation/">Subnavigation</a>
-                        </uxdot-sidenav-dropdown-menu-item>
-                      </li>
-                    
-                    
-                      <li>
-                        <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+                    Skip link
+                  </uxdot-sidenav-dropdown-menu-item>
+                  
+                  
+                  <uxdot-sidenav-dropdown-menu-item  href="/elements/spinner/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -2358,35 +1951,28 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/elements/spinner/"><slot></slot></a>
     <!--/lit-part--></template>
-                          <a href="/elements/surface/">Surface</a>
-                        </uxdot-sidenav-dropdown-menu-item>
-                      </li>
-                    
-                    
-                      <li>
-                        <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+                    Spinner
+                  </uxdot-sidenav-dropdown-menu-item>
+                  
+                  
+                  <uxdot-sidenav-dropdown-menu-item  href="/elements/statistic/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -2396,35 +1982,28 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/elements/statistic/"><slot></slot></a>
     <!--/lit-part--></template>
-                          <a href="/elements/table/">Table</a>
-                        </uxdot-sidenav-dropdown-menu-item>
-                      </li>
-                    
-                    
-                      <li>
-                        <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+                    Statistic
+                  </uxdot-sidenav-dropdown-menu-item>
+                  
+                  
+                  <uxdot-sidenav-dropdown-menu-item  href="/elements/subnavigation/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -2434,35 +2013,28 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/elements/subnavigation/"><slot></slot></a>
     <!--/lit-part--></template>
-                          <a href="/elements/tabs/">Tabs</a>
-                        </uxdot-sidenav-dropdown-menu-item>
-                      </li>
-                    
-                    
-                      <li>
-                        <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+                    Subnavigation
+                  </uxdot-sidenav-dropdown-menu-item>
+                  
+                  
+                  <uxdot-sidenav-dropdown-menu-item  href="/elements/surface/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -2472,35 +2044,28 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/elements/surface/"><slot></slot></a>
     <!--/lit-part--></template>
-                          <a href="/elements/tag/">Tag</a>
-                        </uxdot-sidenav-dropdown-menu-item>
-                      </li>
-                    
-                    
-                      <li>
-                        <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+                    Surface
+                  </uxdot-sidenav-dropdown-menu-item>
+                  
+                  
+                  <uxdot-sidenav-dropdown-menu-item  href="/elements/switch/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -2510,35 +2075,28 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/elements/switch/"><slot></slot></a>
     <!--/lit-part--></template>
-                          <a href="/elements/tile/">Tile</a>
-                        </uxdot-sidenav-dropdown-menu-item>
-                      </li>
-                    
-                    
-                      <li>
-                        <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+                    Switch
+                  </uxdot-sidenav-dropdown-menu-item>
+                  
+                  
+                  <uxdot-sidenav-dropdown-menu-item  href="/elements/table/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -2548,35 +2106,28 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/elements/table/"><slot></slot></a>
     <!--/lit-part--></template>
-                          <a href="/elements/timestamp/">Timestamp</a>
-                        </uxdot-sidenav-dropdown-menu-item>
-                      </li>
-                    
-                    
-                      <li>
-                        <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+                    Table
+                  </uxdot-sidenav-dropdown-menu-item>
+                  
+                  
+                  <uxdot-sidenav-dropdown-menu-item  href="/elements/tabs/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -2586,37 +2137,183 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/elements/tabs/"><slot></slot></a>
     <!--/lit-part--></template>
-                          <a href="/elements/tooltip/">Tooltip</a>
-                        </uxdot-sidenav-dropdown-menu-item>
-                      </li>
-                    
-              </ul>
+                    Tabs
+                  </uxdot-sidenav-dropdown-menu-item>
+                  
+                  
+                  <uxdot-sidenav-dropdown-menu-item  href="/elements/tag/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
+      padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
+      width: 100%;
+      height: 100%;
+      border-inline-start:
+        var(--rh-border-width-lg, 3px)
+        solid
+        transparent;
+      font-size: var(--rh-font-size-body-text-md, 1rem);
+      text-decoration: none;
+      color: var(--rh-color-text-primary-on-light, #151515) !important;
+    }
+
+    :host([active]) a {
+      background: var(--rh-color-surface-lighter, #f2f2f2);
+      border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
+    }
+
+    a:hover {
+      background: var(--rh-color-surface-lighter, #f2f2f2);
+      border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
+    }
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/elements/tag/"><slot></slot></a>
+    <!--/lit-part--></template>
+                    Tag
+                  </uxdot-sidenav-dropdown-menu-item>
+                  
+                  
+                  <uxdot-sidenav-dropdown-menu-item  href="/elements/tile/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
+      padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
+      width: 100%;
+      height: 100%;
+      border-inline-start:
+        var(--rh-border-width-lg, 3px)
+        solid
+        transparent;
+      font-size: var(--rh-font-size-body-text-md, 1rem);
+      text-decoration: none;
+      color: var(--rh-color-text-primary-on-light, #151515) !important;
+    }
+
+    :host([active]) a {
+      background: var(--rh-color-surface-lighter, #f2f2f2);
+      border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
+    }
+
+    a:hover {
+      background: var(--rh-color-surface-lighter, #f2f2f2);
+      border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
+    }
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/elements/tile/"><slot></slot></a>
+    <!--/lit-part--></template>
+                    Tile
+                  </uxdot-sidenav-dropdown-menu-item>
+                  
+                  
+                  <uxdot-sidenav-dropdown-menu-item  href="/elements/timestamp/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
+      padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
+      width: 100%;
+      height: 100%;
+      border-inline-start:
+        var(--rh-border-width-lg, 3px)
+        solid
+        transparent;
+      font-size: var(--rh-font-size-body-text-md, 1rem);
+      text-decoration: none;
+      color: var(--rh-color-text-primary-on-light, #151515) !important;
+    }
+
+    :host([active]) a {
+      background: var(--rh-color-surface-lighter, #f2f2f2);
+      border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
+    }
+
+    a:hover {
+      background: var(--rh-color-surface-lighter, #f2f2f2);
+      border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
+    }
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/elements/timestamp/"><slot></slot></a>
+    <!--/lit-part--></template>
+                    Timestamp
+                  </uxdot-sidenav-dropdown-menu-item>
+                  
+                  
+                  <uxdot-sidenav-dropdown-menu-item  href="/elements/tooltip/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
+      padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
+      width: 100%;
+      height: 100%;
+      border-inline-start:
+        var(--rh-border-width-lg, 3px)
+        solid
+        transparent;
+      font-size: var(--rh-font-size-body-text-md, 1rem);
+      text-decoration: none;
+      color: var(--rh-color-text-primary-on-light, #151515) !important;
+    }
+
+    :host([active]) a {
+      background: var(--rh-color-surface-lighter, #f2f2f2);
+      border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
+    }
+
+    a:hover {
+      background: var(--rh-color-surface-lighter, #f2f2f2);
+      border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
+    }
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/elements/tooltip/"><slot></slot></a>
+    <!--/lit-part--></template>
+                    Tooltip
+                  </uxdot-sidenav-dropdown-menu-item>
+                  
+                  
+                  <uxdot-sidenav-dropdown-menu-item  href="/elements/video-embed/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
+      padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
+      width: 100%;
+      height: 100%;
+      border-inline-start:
+        var(--rh-border-width-lg, 3px)
+        solid
+        transparent;
+      font-size: var(--rh-font-size-body-text-md, 1rem);
+      text-decoration: none;
+      color: var(--rh-color-text-primary-on-light, #151515) !important;
+    }
+
+    :host([active]) a {
+      background: var(--rh-color-surface-lighter, #f2f2f2);
+      border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
+    }
+
+    a:hover {
+      background: var(--rh-color-surface-lighter, #f2f2f2);
+      border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
+    }
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/elements/video-embed/"><slot></slot></a>
+    <!--/lit-part--></template>
+                    Video embed
+                  </uxdot-sidenav-dropdown-menu-item>
+                  
             </uxdot-sidenav-dropdown-menu>
           </details>
-        
-      </uxdot-sidenav-dropdown></li>
+        </uxdot-sidenav-dropdown>
+      </li>
     <li>
-        <uxdot-sidenav-dropdown><template shadowroot="open" shadowrootmode="open"><style>
+        <uxdot-sidenav-dropdown role="menu"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
-      /* styles here */
       z-index: var(--uxdot-sidenav-z-index, 102);
     }
   </style><!--lit-part kHJJur9OVoU=-->
@@ -2624,24 +2321,22 @@
     <!--/lit-part--></template>
           <details>
             <summary>Patterns</summary>
-            <uxdot-sidenav-dropdown-menu><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(ul) {
-      margin: 0 !important;
-      list-style: none;
+            <uxdot-sidenav-dropdown-menu role="menu"><template shadowroot="open" shadowrootmode="open"><style>
+    :host {
+      display: block;
       padding-inline-start: var(--rh-space-2xl, 32px);
     }
   </style><!--lit-part kHJJur9OVoU=-->
       <slot></slot>
     <!--/lit-part--></template>
-              <ul>
+              
                 
-                  
-                  <li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+                <uxdot-sidenav-dropdown-menu-item  href="/patterns/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -2651,32 +2346,23 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/patterns/">All Patterns</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li><li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/patterns/"><slot></slot></a>
+    <!--/lit-part--></template>All Patterns</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/patterns/announcement/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -2686,32 +2372,23 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/patterns/announcement/">Announcement</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li><li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/patterns/announcement/"><slot></slot></a>
+    <!--/lit-part--></template>Announcement</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/patterns/card/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -2721,32 +2398,23 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/patterns/card/">Card</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li><li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/patterns/card/"><slot></slot></a>
+    <!--/lit-part--></template>Card</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/patterns/disclosure/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -2756,32 +2424,23 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/patterns/disclosure/">Disclosure</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li><li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/patterns/disclosure/"><slot></slot></a>
+    <!--/lit-part--></template>Disclosure</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/patterns/filter/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -2791,32 +2450,23 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/patterns/filter/">Filter</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li><li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/patterns/filter/"><slot></slot></a>
+    <!--/lit-part--></template>Filter</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/patterns/form/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -2826,32 +2476,23 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/patterns/form/">Form</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li><li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/patterns/form/"><slot></slot></a>
+    <!--/lit-part--></template>Form</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/patterns/link/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -2861,32 +2502,23 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/patterns/link-with-icon/">Link with icon</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li><li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/patterns/link/"><slot></slot></a>
+    <!--/lit-part--></template>Link</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/patterns/link-with-icon/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -2896,32 +2528,23 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/patterns/link/">Link</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li><li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/patterns/link-with-icon/"><slot></slot></a>
+    <!--/lit-part--></template>Link with icon</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/patterns/logo-wall/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -2931,32 +2554,23 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/patterns/search-bar/">Search bar</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li><li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/patterns/logo-wall/"><slot></slot></a>
+    <!--/lit-part--></template>Logo wall</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/patterns/search-bar/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -2966,32 +2580,23 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/patterns/skip-navigation/">Skip navigation</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li><li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/patterns/search-bar/"><slot></slot></a>
+    <!--/lit-part--></template>Search bar</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/patterns/skip-navigation/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -3001,32 +2606,23 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/patterns/sticky-banner/">Sticky banner</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li><li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/patterns/skip-navigation/"><slot></slot></a>
+    <!--/lit-part--></template>Skip navigation</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/patterns/sticky-banner/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -3036,32 +2632,23 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/patterns/sticky-card/">Sticky card</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li><li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/patterns/sticky-banner/"><slot></slot></a>
+    <!--/lit-part--></template>Sticky banner</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/patterns/sticky-card/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -3071,32 +2658,23 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/patterns/tabs/">Tabs</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li><li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/patterns/sticky-card/"><slot></slot></a>
+    <!--/lit-part--></template>Sticky card</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/patterns/tabs/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -3106,36 +2684,77 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/patterns/tabs/"><slot></slot></a>
+    <!--/lit-part--></template>Tabs</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/patterns/tile/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
+      padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
+      width: 100%;
+      height: 100%;
+      border-inline-start:
+        var(--rh-border-width-lg, 3px)
+        solid
+        transparent;
+      font-size: var(--rh-font-size-body-text-md, 1rem);
+      text-decoration: none;
+      color: var(--rh-color-text-primary-on-light, #151515) !important;
+    }
 
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/patterns/video-thumbnail/">Video thumbnail</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li>
-              </ul>
+    :host([active]) a {
+      background: var(--rh-color-surface-lighter, #f2f2f2);
+      border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
+    }
+
+    a:hover {
+      background: var(--rh-color-surface-lighter, #f2f2f2);
+      border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
+    }
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/patterns/tile/"><slot></slot></a>
+    <!--/lit-part--></template>Tile</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/patterns/video-thumbnail/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
+      padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
+      width: 100%;
+      height: 100%;
+      border-inline-start:
+        var(--rh-border-width-lg, 3px)
+        solid
+        transparent;
+      font-size: var(--rh-font-size-body-text-md, 1rem);
+      text-decoration: none;
+      color: var(--rh-color-text-primary-on-light, #151515) !important;
+    }
+
+    :host([active]) a {
+      background: var(--rh-color-surface-lighter, #f2f2f2);
+      border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
+    }
+
+    a:hover {
+      background: var(--rh-color-surface-lighter, #f2f2f2);
+      border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
+    }
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/patterns/video-thumbnail/"><slot></slot></a>
+    <!--/lit-part--></template>Video thumbnail</uxdot-sidenav-dropdown-menu-item>
             </uxdot-sidenav-dropdown-menu>
           </details>
-        
-      </uxdot-sidenav-dropdown></li>
+        </uxdot-sidenav-dropdown>
+      </li>
     <li>
-        <uxdot-sidenav-dropdown><template shadowroot="open" shadowrootmode="open"><style>
+        <uxdot-sidenav-dropdown role="menu"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
-      /* styles here */
       z-index: var(--uxdot-sidenav-z-index, 102);
     }
   </style><!--lit-part kHJJur9OVoU=-->
@@ -3143,24 +2762,22 @@
     <!--/lit-part--></template>
           <details>
             <summary>Accessibility</summary>
-            <uxdot-sidenav-dropdown-menu><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(ul) {
-      margin: 0 !important;
-      list-style: none;
+            <uxdot-sidenav-dropdown-menu role="menu"><template shadowroot="open" shadowrootmode="open"><style>
+    :host {
+      display: block;
       padding-inline-start: var(--rh-space-2xl, 32px);
     }
   </style><!--lit-part kHJJur9OVoU=-->
       <slot></slot>
     <!--/lit-part--></template>
-              <ul>
+              
                 
-                  
-                  <li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+                <uxdot-sidenav-dropdown-menu-item  href="/accessibility/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -3170,32 +2787,23 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/accessibility/">Fundamentals</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li><li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/accessibility/"><slot></slot></a>
+    <!--/lit-part--></template>Fundamentals</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/accessibility/content/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -3205,32 +2813,23 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/accessibility/content/">Content</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li><li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/accessibility/content/"><slot></slot></a>
+    <!--/lit-part--></template>Content</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/accessibility/design/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -3240,32 +2839,23 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/accessibility/design/">Design</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li><li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/accessibility/design/"><slot></slot></a>
+    <!--/lit-part--></template>Design</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/accessibility/development/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -3275,32 +2865,23 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/accessibility/development/">Development</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li><li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/accessibility/development/"><slot></slot></a>
+    <!--/lit-part--></template>Development</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/accessibility/contributors/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -3310,32 +2891,23 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/accessibility/contributors/">Contributors</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li><li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/accessibility/contributors/"><slot></slot></a>
+    <!--/lit-part--></template>Contributors</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/accessibility/qa-testing/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -3345,32 +2917,23 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/accessibility/qa-testing/">QA and Testing</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li><li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/accessibility/qa-testing/"><slot></slot></a>
+    <!--/lit-part--></template>QA and Testing</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/accessibility/assistive-tech/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -3380,32 +2943,23 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/accessibility/assistive-tech/">Assistive technologies</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li><li>
-                      <uxdot-sidenav-dropdown-menu-item><template shadowroot="open" shadowrootmode="open"><style>
-    ::slotted(a) {
-      display: inline-block;
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/accessibility/assistive-tech/"><slot></slot></a>
+    <!--/lit-part--></template>Assistive technologies</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/accessibility/resources/" role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
+    a {
+      display: block;
       padding: var(--rh-space-md, 8px) 0 var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
       width: 100%;
+      height: 100%;
       border-inline-start:
         var(--rh-border-width-lg, 3px)
         solid
@@ -3415,36 +2969,26 @@
       color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
-    :host([active]) ::slotted(a) {
+    :host([active]) a {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-
-    /* TODO: Remove i believe this is misplaced */
-    /* ::slotted(ul) {
-      list-style: none;
-      padding-inline: var(--rh-space-2xl, 32px);
-    } */
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
-    <!--/lit-part--></template>
-                        <a href="/accessibility/resources/">Resources</a>
-                      </uxdot-sidenav-dropdown-menu-item>
-                    </li>
-              </ul>
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href="/accessibility/resources/"><slot></slot></a>
+    <!--/lit-part--></template>Resources</uxdot-sidenav-dropdown-menu-item>
             </uxdot-sidenav-dropdown-menu>
           </details>
-        
-      </uxdot-sidenav-dropdown></li>
+        </uxdot-sidenav-dropdown>
+      </li>
     
 
     <li>
-      <uxdot-sidenav-item><template shadowroot="open" shadowrootmode="open"><style>
+      <uxdot-sidenav-item role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: block;
       border-inline-start:
@@ -3463,7 +3007,7 @@
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a) {
+    a {
       display: block;
       text-decoration: none;
       color: var(--rh-color-text-primary-on-light, #151515) !important;
@@ -3471,19 +3015,19 @@
       padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href=""><slot></slot></a>
     <!--/lit-part--></template>
         <a href="/design-code-status/">Design/code status</a>
       </uxdot-sidenav-item>
     </li>
 
     <li>
-      <uxdot-sidenav-item><template shadowroot="open" shadowrootmode="open"><style>
+      <uxdot-sidenav-item role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: block;
       border-inline-start:
@@ -3502,7 +3046,7 @@
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a) {
+    a {
       display: block;
       text-decoration: none;
       color: var(--rh-color-text-primary-on-light, #151515) !important;
@@ -3510,19 +3054,19 @@
       padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href=""><slot></slot></a>
     <!--/lit-part--></template>
         <a href="/release-notes/">Release notes</a>
       </uxdot-sidenav-item>
     </li>
 
     <li>
-      <uxdot-sidenav-item><template shadowroot="open" shadowrootmode="open"><style>
+      <uxdot-sidenav-item role="menuitem"><template shadowroot="open" shadowrootmode="open"><style>
     :host {
       display: block;
       border-inline-start:
@@ -3541,7 +3085,7 @@
       border-inline-start-color: var(--rh-color-accent-brand-on-light, #ee0000);
     }
 
-    ::slotted(a) {
+    a {
       display: block;
       text-decoration: none;
       color: var(--rh-color-text-primary-on-light, #151515) !important;
@@ -3549,12 +3093,12 @@
       padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
     }
 
-    ::slotted(a:hover) {
+    a:hover {
       background: var(--rh-color-surface-lighter, #f2f2f2);
       border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
     }
-  </style><!--lit-part kHJJur9OVoU=-->
-      <slot></slot>
+  </style><!--lit-part t+vH+BPevHI=-->
+      <!--lit-node 0--><a href=""><slot></slot></a>
     <!--/lit-part--></template>
         <a href="/support/">Get support</a>
       </uxdot-sidenav-item>
@@ -4188,7 +3732,38 @@
       </h3>
     </uxdot-copy-permalink>
 <p>The description and title help add context to an audio clip. The description is optional, but the title is mandatory.</p>
-<rh-alert state="warning">
+<rh-alert  state="warning"><template shadowroot="open" shadowrootmode="open"><style>:host{--_background-color:var(--rh-color-teal-10, #daf2f2);--_border-color:var(--rh-color-teal-50, #37a3a3);--_header-color:var(--rh-color-teal-70, #004d4d);--_icon-color:var(--rh-color-teal-50, #37a3a3);--_font-family:var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);display:block;max-width:var(--_max-width,initial)}:host([hidden]){display:none}#container{border-width:var(--rh-border-width-md,2px);border-style:solid;border-block-start-color:var(--_border-color);border-inline-start-color:var(--_border-inline-color,transparent);border-block-end-color:var(--_border-block-end-color,transparent);border-inline-end-color:var(--_border-inline-color,transparent);background-color:var(--_background-color);box-shadow:var(--_box-shadow,none);padding:var(--rh-space-lg,16px);display:grid;grid-template-columns:min-content 1fr;gap:var(--rh-space-xs,4px);font-family:var(--_font-family)}#left-column{display:inline-block;vertical-align:top}#middle-column{display:inline-block;vertical-align:top}header{display:flex;align-items:center;justify-content:flex-start}.hasBody header{margin-block-end:var(--rh-space-xs,4px)}header ::slotted(*){font-family:var(--_font-family)!important;font-size:var(--rh-font-size-body-text-sm, .875rem)!important;font-weight:var(--rh-font-weight-heading-bold,700)!important;margin:0!important}header ::slotted(:is(h1,h2,h3,h4,h5,h6)){padding-block:2px var(--rh-space-xs,4px)!important}#header-actions{margin-inline-end:var(--rh-space-xs,4px)}#header{color:var(--_header-color);flex:1 1 auto}#icon{display:flex;align-items:center;justify-content:center;width:var(--rh-size-icon-02,24px);height:var(--rh-size-icon-02,24px);color:var(--_icon-color)}#close-button{color:var(--rh-color-text-secondary-on-light,#4d4d4d);background-color:transparent;border:none;height:var(--rh-length-xl,24px);width:var(--rh-length-xl,24px);cursor:pointer}#close-button:hover{color:var(--rh-color-text-primary-on-light,#151515)}#description{font-size:var(--rh-font-size-body-text-sm, .875rem)}#description>::slotted(*){margin-block:0!important;padding:0!important}footer.hasActions{margin-block-start:var(--rh-space-lg,16px)}footer ::slotted([slot=actions]:not(rh-button[variant=link i])){margin-inline-end:var(--rh-space-xl,24px)!important;padding:0!important;border:none!important;background-color:transparent!important;color:var(--rh-color-interactive-blue-darker,#06c)!important;font-size:var(--rh-font-size-body-text-sm, .875rem)!important;font-family:var(--_font-family)!important}footer ::slotted([slot=actions]:focus){text-decoration:underline!important;color:var(--rh-color-interactive-blue-darkest,#036)!important}footer ::slotted([slot=actions]:hover){cursor:pointer!important;text-decoration:underline!important;color:var(--rh-color-interactive-blue-darkest,#036)!important}footer ::slotted(rh-button[variant=link i]){display:inline-block;translate:calc(-1 * var(--rh-space-lg,16px))}:host([state=info i]){--_border-color:var(--rh-color-blue-40, #4394e5);--_icon-color:var(--rh-color-blue-40, #4394e5);--_header-color:var(--rh-color-blue-70, #003366);--_background-color:var(--rh-color-blue-10, #e0f0ff)}:host([state=success i]){--_border-color:var(--rh-color-green-60, #3d7317);--_icon-color:var(--rh-color-green-60, #3d7317);--_header-color:var(--rh-color-green-70, #204d00);--_background-color:var(--rh-color-green-10, #e9f7df)}:host([state=warning i]){--_border-color:var(--rh-color-yellow-40, #dca614);--_icon-color:var(--rh-color-yellow-40, #dca614);--_header-color:var(--rh-color-yellow-70, #73480b);--_background-color:var(--rh-color-yellow-10, #fff4cc)}:host([state=danger i]){--_border-color:#c9190b;--_icon-color:#c9190b;--_header-color:#7d1007;--_background-color:var(--rh-color-red-10, #fce3e3)}:host([variant=toast i]){--_background-color:var(--rh-color-surface-lightest, #ffffff);--_max-width:550px;--_box-shadow:var(--rh-box-shadow-lg, 0 6px 8px 2px rgba(21, 21, 21, 0.3))}:host([variant=alternate i]){--_border-inline-color:var(--_border-color);--_border-block-end-color:var(--_border-color)}</style><!--lit-part mOQBf7vnIRQ=-->
+      <!--lit-node 0--><rh-surface 
+           
+           
+           
+            id="container" role="alert" aria-hidden="false" color-palette="lightest" class="  " defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host(:is([color-palette^=dark])){--context:dark;--_context-text:var(--rh-color-text-primary-on-dark, #ffffff)}:host(:is([color-palette^=light],[color-palette=base])){--context:light;--_context-text:var(--rh-color-text-primary-on-light, #151515)}:host(:is([color-palette=lightest])){--_context-background-color:var(--rh-color-surface-lightest, #ffffff)}:host(:is([color-palette=lighter])){--_context-background-color:var(--rh-color-surface-lighter, #f2f2f2)}:host(:is([color-palette=light])){--_context-background-color:var(--rh-color-surface-light, #e0e0e0)}:host(:is([color-palette=base])){--_context-background-color:var(--rh-color-surface-lightest, #ffffff)}:host(:is([color-palette=dark])){--_context-background-color:var(--rh-color-surface-dark, #383838)}:host(:is([color-palette=darker])){--_context-background-color:var(--rh-color-surface-darker, #1f1f1f)}:host(:is([color-palette=darkest])){--_context-background-color:var(--rh-color-surface-darkest, #151515)}:host{display:block;background-color:var(--_context-background-color);color:var(--_context-text)}</style><!--lit-part 843u56Ok1Mg=--><!--lit-node 0--><slot ></slot><!--/lit-part--></template>
+        <div id="left-column">
+          <div id="icon"><!--lit-part m+S4si98lns=-->
+      <!--lit-node 0--><svg
+          aria-hidden="true"
+          fill="currentColor"
+          height="1em" width="1em"
+          style="vertical-align:-0.125em"
+          viewBox="0 0 576 512">
+        <!--lit-node 1--><path d="M569.517 440.013C587.975 472.007 564.806 512 527.94 512H48.054c-36.937 0-59.999-40.055-41.577-71.987L246.423 23.985c18.467-32.009 64.72-31.951 83.154 0l239.94 416.028zM288 354c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z"/>
+      </svg><!--/lit-part--></div>
+        </div>
+        <div id="middle-column">
+          <header>
+            <div id="header">
+              <slot name="header"></slot>
+            </div><!--lit-part--><!--/lit-part-->
+          </header>
+          <div id="description">
+            <slot></slot>
+          </div>
+          <!--lit-node 11--><footer class="  ">
+            <slot name="actions"></slot>
+          </footer>
+        </div>
+      </rh-surface>
+    <!--/lit-part--></template>
   <h3 slot="header">Warning</h3>
   <p>The description and title are not included in the Mini size players.</p>
 </rh-alert>
@@ -4465,7 +4040,38 @@
       </h3>
     </uxdot-copy-permalink>
 <p>The Compact size can span the width of a browser window and be anchored to the top or bottom of a page.</p>
-<rh-alert state="warning">
+<rh-alert  state="warning"><template shadowroot="open" shadowrootmode="open"><style>:host{--_background-color:var(--rh-color-teal-10, #daf2f2);--_border-color:var(--rh-color-teal-50, #37a3a3);--_header-color:var(--rh-color-teal-70, #004d4d);--_icon-color:var(--rh-color-teal-50, #37a3a3);--_font-family:var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);display:block;max-width:var(--_max-width,initial)}:host([hidden]){display:none}#container{border-width:var(--rh-border-width-md,2px);border-style:solid;border-block-start-color:var(--_border-color);border-inline-start-color:var(--_border-inline-color,transparent);border-block-end-color:var(--_border-block-end-color,transparent);border-inline-end-color:var(--_border-inline-color,transparent);background-color:var(--_background-color);box-shadow:var(--_box-shadow,none);padding:var(--rh-space-lg,16px);display:grid;grid-template-columns:min-content 1fr;gap:var(--rh-space-xs,4px);font-family:var(--_font-family)}#left-column{display:inline-block;vertical-align:top}#middle-column{display:inline-block;vertical-align:top}header{display:flex;align-items:center;justify-content:flex-start}.hasBody header{margin-block-end:var(--rh-space-xs,4px)}header ::slotted(*){font-family:var(--_font-family)!important;font-size:var(--rh-font-size-body-text-sm, .875rem)!important;font-weight:var(--rh-font-weight-heading-bold,700)!important;margin:0!important}header ::slotted(:is(h1,h2,h3,h4,h5,h6)){padding-block:2px var(--rh-space-xs,4px)!important}#header-actions{margin-inline-end:var(--rh-space-xs,4px)}#header{color:var(--_header-color);flex:1 1 auto}#icon{display:flex;align-items:center;justify-content:center;width:var(--rh-size-icon-02,24px);height:var(--rh-size-icon-02,24px);color:var(--_icon-color)}#close-button{color:var(--rh-color-text-secondary-on-light,#4d4d4d);background-color:transparent;border:none;height:var(--rh-length-xl,24px);width:var(--rh-length-xl,24px);cursor:pointer}#close-button:hover{color:var(--rh-color-text-primary-on-light,#151515)}#description{font-size:var(--rh-font-size-body-text-sm, .875rem)}#description>::slotted(*){margin-block:0!important;padding:0!important}footer.hasActions{margin-block-start:var(--rh-space-lg,16px)}footer ::slotted([slot=actions]:not(rh-button[variant=link i])){margin-inline-end:var(--rh-space-xl,24px)!important;padding:0!important;border:none!important;background-color:transparent!important;color:var(--rh-color-interactive-blue-darker,#06c)!important;font-size:var(--rh-font-size-body-text-sm, .875rem)!important;font-family:var(--_font-family)!important}footer ::slotted([slot=actions]:focus){text-decoration:underline!important;color:var(--rh-color-interactive-blue-darkest,#036)!important}footer ::slotted([slot=actions]:hover){cursor:pointer!important;text-decoration:underline!important;color:var(--rh-color-interactive-blue-darkest,#036)!important}footer ::slotted(rh-button[variant=link i]){display:inline-block;translate:calc(-1 * var(--rh-space-lg,16px))}:host([state=info i]){--_border-color:var(--rh-color-blue-40, #4394e5);--_icon-color:var(--rh-color-blue-40, #4394e5);--_header-color:var(--rh-color-blue-70, #003366);--_background-color:var(--rh-color-blue-10, #e0f0ff)}:host([state=success i]){--_border-color:var(--rh-color-green-60, #3d7317);--_icon-color:var(--rh-color-green-60, #3d7317);--_header-color:var(--rh-color-green-70, #204d00);--_background-color:var(--rh-color-green-10, #e9f7df)}:host([state=warning i]){--_border-color:var(--rh-color-yellow-40, #dca614);--_icon-color:var(--rh-color-yellow-40, #dca614);--_header-color:var(--rh-color-yellow-70, #73480b);--_background-color:var(--rh-color-yellow-10, #fff4cc)}:host([state=danger i]){--_border-color:#c9190b;--_icon-color:#c9190b;--_header-color:#7d1007;--_background-color:var(--rh-color-red-10, #fce3e3)}:host([variant=toast i]){--_background-color:var(--rh-color-surface-lightest, #ffffff);--_max-width:550px;--_box-shadow:var(--rh-box-shadow-lg, 0 6px 8px 2px rgba(21, 21, 21, 0.3))}:host([variant=alternate i]){--_border-inline-color:var(--_border-color);--_border-block-end-color:var(--_border-color)}</style><!--lit-part mOQBf7vnIRQ=-->
+      <!--lit-node 0--><rh-surface 
+           
+           
+           
+            id="container" role="alert" aria-hidden="false" color-palette="lightest" class="  " defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host(:is([color-palette^=dark])){--context:dark;--_context-text:var(--rh-color-text-primary-on-dark, #ffffff)}:host(:is([color-palette^=light],[color-palette=base])){--context:light;--_context-text:var(--rh-color-text-primary-on-light, #151515)}:host(:is([color-palette=lightest])){--_context-background-color:var(--rh-color-surface-lightest, #ffffff)}:host(:is([color-palette=lighter])){--_context-background-color:var(--rh-color-surface-lighter, #f2f2f2)}:host(:is([color-palette=light])){--_context-background-color:var(--rh-color-surface-light, #e0e0e0)}:host(:is([color-palette=base])){--_context-background-color:var(--rh-color-surface-lightest, #ffffff)}:host(:is([color-palette=dark])){--_context-background-color:var(--rh-color-surface-dark, #383838)}:host(:is([color-palette=darker])){--_context-background-color:var(--rh-color-surface-darker, #1f1f1f)}:host(:is([color-palette=darkest])){--_context-background-color:var(--rh-color-surface-darkest, #151515)}:host{display:block;background-color:var(--_context-background-color);color:var(--_context-text)}</style><!--lit-part 843u56Ok1Mg=--><!--lit-node 0--><slot ></slot><!--/lit-part--></template>
+        <div id="left-column">
+          <div id="icon"><!--lit-part m+S4si98lns=-->
+      <!--lit-node 0--><svg
+          aria-hidden="true"
+          fill="currentColor"
+          height="1em" width="1em"
+          style="vertical-align:-0.125em"
+          viewBox="0 0 576 512">
+        <!--lit-node 1--><path d="M569.517 440.013C587.975 472.007 564.806 512 527.94 512H48.054c-36.937 0-59.999-40.055-41.577-71.987L246.423 23.985c18.467-32.009 64.72-31.951 83.154 0l239.94 416.028zM288 354c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z"/>
+      </svg><!--/lit-part--></div>
+        </div>
+        <div id="middle-column">
+          <header>
+            <div id="header">
+              <slot name="header"></slot>
+            </div><!--lit-part--><!--/lit-part-->
+          </header>
+          <div id="description">
+            <slot></slot>
+          </div>
+          <!--lit-node 11--><footer class="  ">
+            <slot name="actions"></slot>
+          </footer>
+        </div>
+      </rh-surface>
+    <!--/lit-part--></template>
   <h3 slot="header">Warning</h3>
   <p>When a Compact size is used full-width, the contextual menu button is replaced by a close button and there is no access to features.</p>
 </rh-alert>
@@ -5369,9 +4975,10 @@
     position: sticky;
     justify-content: flex-end;
     width: 100%;
-    bottom: 32px;
+    bottom: 0px;
     margin-block-start: -64px;
     padding-inline-end: 32px;
+    padding-block-end: 32px;
    }
 </style>
 <script type="module">import '@rhds/elements/rh-back-to-top/rh-back-to-top.js';</script>

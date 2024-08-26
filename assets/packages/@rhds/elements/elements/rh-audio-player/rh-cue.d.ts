@@ -30,7 +30,7 @@ export declare class RhCue extends LitElement {
     get startTime(): Seconds;
     get endTime(): Seconds;
     get downloadText(): string | undefined;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

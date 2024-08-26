@@ -3,7 +3,7 @@ import { type ColorPalette } from '../../lib/context/color/provider.js';
 import { RhTile } from './rh-tile.js';
 /**
  * A group of `<rh-tile>` elements which handles radio selection.
- * @slot - tiles
+ * @slot - Put one or more `rh-tile` elements in this slot
  */
 export declare class RhTileGroup extends LitElement {
     #private;
@@ -40,7 +40,7 @@ export declare class RhTileGroup extends LitElement {
     constructor();
     firstUpdated(): void;
     willUpdate(changed: PropertyValues<this>): void;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
     /** Sets focus on active tile */
     focus(): void;
     /**

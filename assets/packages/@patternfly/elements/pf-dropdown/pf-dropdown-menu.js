@@ -1,4 +1,4 @@
-var _PfDropdownMenu_instances, _PfDropdownMenu_internals, _PfDropdownMenu_tabindex, _PfDropdownMenu_onItemChange, _PfDropdownMenu_onSlotChange, _PfDropdownMenu_onMenuitemFocusin, _PfDropdownMenu_onMenuitemClick, _PfDropdownMenu_getSlottedItems;
+var _PfDropdownMenu_instances, _PfDropdownMenu_internals, _PfDropdownMenu_items_get, _PfDropdownMenu_tabindex, _PfDropdownMenu_onItemChange, _PfDropdownMenu_onSlotChange, _PfDropdownMenu_onMenuitemFocusin, _PfDropdownMenu_onMenuitemClick, _PfDropdownMenu_focusItem, _PfDropdownMenu_getSlottedItems;
 import { __classPrivateFieldGet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
@@ -16,36 +16,28 @@ function isDisabledItemClick(event) {
     const item = event.composedPath().find((x) => x instanceof PfDropdownItem);
     return !!item?.disabled;
 }
-/**
- * A **dropdown** presents a menu of actions or links in a constrained space that will trigger a
- * process or navigate to a new location.
- * @slot - Must contain one or more `<pf-dropdown-item>` or `<pf-dropdown-group>`
- */
 let PfDropdownMenu = class PfDropdownMenu extends LitElement {
     constructor() {
         super(...arguments);
         _PfDropdownMenu_instances.add(this);
         _PfDropdownMenu_internals.set(this, InternalsController.of(this, { role: 'menu' }));
-        _PfDropdownMenu_tabindex.set(this, new RovingTabindexController(this, {
-            getItems: () => this.items.map(x => x.menuItem),
+        _PfDropdownMenu_tabindex.set(this, RovingTabindexController.of(this, {
+            getItems: () => __classPrivateFieldGet(this, _PfDropdownMenu_instances, "a", _PfDropdownMenu_items_get),
         }));
     }
     /**
      * current active descendant in menu
      */
     get activeItem() {
-        return __classPrivateFieldGet(this, _PfDropdownMenu_tabindex, "f").activeItem ?? __classPrivateFieldGet(this, _PfDropdownMenu_tabindex, "f").firstItem;
+        return __classPrivateFieldGet(this, _PfDropdownMenu_tabindex, "f").items.at(__classPrivateFieldGet(this, _PfDropdownMenu_tabindex, "f").atFocusedItemIndex)
+            ?? __classPrivateFieldGet(this, _PfDropdownMenu_tabindex, "f").atFocusableItems.at(0)
+            ?? null;
     }
     /**
      * index of current active descendant in menu
      */
     get activeIndex() {
-        if (!__classPrivateFieldGet(this, _PfDropdownMenu_tabindex, "f").activeItem) {
-            return -1;
-        }
-        else {
-            return __classPrivateFieldGet(this, _PfDropdownMenu_tabindex, "f").items.indexOf(__classPrivateFieldGet(this, _PfDropdownMenu_tabindex, "f").activeItem);
-        }
+        return __classPrivateFieldGet(this, _PfDropdownMenu_tabindex, "f").atFocusedItemIndex;
     }
     get items() {
         return __classPrivateFieldGet(this, _PfDropdownMenu_instances, "m", _PfDropdownMenu_getSlottedItems).call(this, this.shadowRoot?.querySelector('slot'));
@@ -70,22 +62,24 @@ let PfDropdownMenu = class PfDropdownMenu extends LitElement {
 _PfDropdownMenu_internals = new WeakMap();
 _PfDropdownMenu_tabindex = new WeakMap();
 _PfDropdownMenu_instances = new WeakSet();
+_PfDropdownMenu_items_get = function _PfDropdownMenu_items_get() {
+    return this.items.map(x => x.menuItem);
+};
 _PfDropdownMenu_onItemChange = function _PfDropdownMenu_onItemChange(event) {
     if (event instanceof DropdownItemChange) {
-        __classPrivateFieldGet(this, _PfDropdownMenu_tabindex, "f").updateItems();
+        __classPrivateFieldGet(this, _PfDropdownMenu_instances, "m", _PfDropdownMenu_onSlotChange).call(this);
     }
 };
 _PfDropdownMenu_onSlotChange = function _PfDropdownMenu_onSlotChange() {
-    __classPrivateFieldGet(this, _PfDropdownMenu_tabindex, "f").updateItems();
+    __classPrivateFieldGet(this, _PfDropdownMenu_tabindex, "f").items = __classPrivateFieldGet(this, _PfDropdownMenu_instances, "a", _PfDropdownMenu_items_get);
 };
 _PfDropdownMenu_onMenuitemFocusin = function _PfDropdownMenu_onMenuitemFocusin(event) {
     if (this.ctx?.disabled) {
         event.preventDefault();
         event.stopPropagation();
     }
-    else if (event.target instanceof PfDropdownItem
-        && event.target.menuItem !== __classPrivateFieldGet(this, _PfDropdownMenu_tabindex, "f").activeItem) {
-        __classPrivateFieldGet(this, _PfDropdownMenu_tabindex, "f").setActiveItem(event.target.menuItem);
+    else if (event.target instanceof PfDropdownItem) {
+        __classPrivateFieldGet(this, _PfDropdownMenu_instances, "m", _PfDropdownMenu_focusItem).call(this, event.target.menuItem);
     }
 };
 _PfDropdownMenu_onMenuitemClick = function _PfDropdownMenu_onMenuitemClick(event) {
@@ -93,9 +87,14 @@ _PfDropdownMenu_onMenuitemClick = function _PfDropdownMenu_onMenuitemClick(event
         event.preventDefault();
         event.stopPropagation();
     }
-    else if (event.target instanceof PfDropdownItem
-        && event.target.menuItem !== __classPrivateFieldGet(this, _PfDropdownMenu_tabindex, "f").activeItem) {
-        __classPrivateFieldGet(this, _PfDropdownMenu_tabindex, "f").setActiveItem(event.target.menuItem);
+    else if (event.target instanceof PfDropdownItem) {
+        __classPrivateFieldGet(this, _PfDropdownMenu_instances, "m", _PfDropdownMenu_focusItem).call(this, event.target.menuItem);
+    }
+};
+_PfDropdownMenu_focusItem = function _PfDropdownMenu_focusItem(item) {
+    const itemIndex = __classPrivateFieldGet(this, _PfDropdownMenu_tabindex, "f").items.indexOf(item);
+    if (itemIndex !== __classPrivateFieldGet(this, _PfDropdownMenu_tabindex, "f").atFocusedItemIndex) {
+        __classPrivateFieldGet(this, _PfDropdownMenu_tabindex, "f").atFocusedItemIndex = itemIndex;
     }
 };
 _PfDropdownMenu_getSlottedItems = function _PfDropdownMenu_getSlottedItems(slot) {
@@ -121,6 +120,7 @@ PfDropdownMenu.shadowRootOptions = {
     ...LitElement.shadowRootOptions,
     delegatesFocus: true,
 };
+PfDropdownMenu.version = "4.0.0";
 __decorate([
     consume({ context, subscribe: true }),
     state()

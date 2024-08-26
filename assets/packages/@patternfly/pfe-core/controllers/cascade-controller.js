@@ -3,7 +3,7 @@ import { bound } from '../decorators/bound.js';
 import { debounce } from '../functions/debounce.js';
 import { Logger } from './logger.js';
 /**
- * @deprecated: use context, especially via `@patternfly/pfe-core/functions/context.js`;
+ * @deprecated use context, especially via `@patternfly/pfe-core/functions/context.js`;
  */
 export class CascadeController {
     constructor(host, options) {
@@ -34,6 +34,7 @@ export class CascadeController {
     /**
      * Handles the cascading of properties to nested components when new elements are added
      * Attribute updates/additions are handled by the attribute callback
+     * @param [nodeList=this.host.children]
      */
     cascadeProperties(nodeList = this.host.children) {
         if (this.host.isConnected) {
@@ -65,6 +66,8 @@ export class CascadeController {
      * Gets the configured attribute name for the decorated property,
      * falling back to the lowercased property name, and caches the attribute name
      * with it's designated child selectors for value-propagation on change
+     * @param propName
+     * @param cascade
      */
     initProp(propName, cascade) {
         for (const nodeItem of [cascade].flat(Infinity).filter(Boolean)) {
@@ -95,6 +98,8 @@ export class CascadeController {
     }
     /**
      * Copy the named attribute to a target element.
+     * @param name attr name
+     * @param el element
      */
     async _copyAttribute(name, el) {
         this.logger.log(`copying ${name} to ${el}`);

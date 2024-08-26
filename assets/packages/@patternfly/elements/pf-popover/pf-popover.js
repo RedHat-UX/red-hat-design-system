@@ -1,7 +1,6 @@
 var _PfPopover_instances, _PfPopover_hideDialog, _PfPopover_referenceTrigger, _PfPopover_float, _PfPopover_slots, _PfPopover_getReferenceTrigger, _PfPopover_triggerChanged, _PfPopover_onKeydown, _PfPopover_outsideClick;
-var PfPopover_1;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
-import { LitElement, nothing, html } from 'lit';
+import { LitElement, nothing, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { query } from 'lit/decorators/query.js';
@@ -10,13 +9,12 @@ import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { FloatingDOMController } from '@patternfly/pfe-core/controllers/floating-dom-controller.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
+import { deprecation } from '@patternfly/pfe-core/decorators/deprecation.js';
 import { bound } from '@patternfly/pfe-core/decorators/bound.js';
 import { ComposedEvent, StringListConverter } from '@patternfly/pfe-core/core.js';
 import '@patternfly/elements/pf-button/pf-button.js';
 import { css } from "lit";
 const styles = css `:host {\n  display: inline;\n  --_floating-arrow-size: var(--pf-c-popover__arrow--Width, var(--pf-global--arrow--width-lg, 1.5625rem));\n  --_header-text-color: var(--pf-c-popover__title-text--Color, inherit);\n  --_header-icon-color: var(--pf-c-popover__title-icon--Color, var(--pf-global--Color--100, #151515));\n  --_animation-speed: var(--pf-popover--animation-speed, 300ms);\n  --_z-index: var(--pf-popover--z-index, 9999);\n}\n\n.visually-hidden {\n  position: fixed;\n  top: 0;\n  left: 0;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  white-space: nowrap;\n  border: 0;\n}\n\n[hidden] {\n  display: none !important;\n}\n\n#container {\n  display: inline-flex;\n  position: relative;\n}\n\n#trigger {\n  display: inline-block;\n  position: relative;\n}\n\n#arrow {\n  display: block;\n  position: absolute;\n  background-color: var(--pf-c-popover__arrow--BackgroundColor, var(--pf-global--BackgroundColor--100, #fff));\n  box-shadow: var(\n    --pf-c-popover__arrow--BoxShadow,\n    var(--pf-global--BoxShadow--lg, 0 0.5rem 1rem 0 rgba(3, 3, 3, 0.16), 0 0 0.375rem 0 rgba(3, 3, 3, 0.08))\n  );\n  content: '';\n  height: var(--pf-c-popover__arrow--Height, var(--pf-global--arrow--width-lg, 1.5625rem));\n  width: var(--pf-c-popover__arrow--Width, var(--pf-global--arrow--width-lg, 1.5625rem));\n  rotate: 45deg;\n  z-index: -1;\n  pointer-events: none;\n}\n\n#popover {\n  display: block;\n  position: absolute;\n  opacity: 0;\n  z-index: -1;\n  transition: visibility 0s, opacity var(--_animation-speed) cubic-bezier(0.54, 1.5, 0.38, 1.11) 0s;\n  left: 0;\n  top: 0;\n  translate: var(--_floating-content-translate);\n  box-shadow: var(\n    --pf-c-popover--BoxShadow,\n    var(--pf-global--BoxShadow--lg, 0 0.5rem 1rem 0 rgba(3, 3, 3, 0.16), 0 0 0.375rem 0 rgba(3, 3, 3, 0.08))\n  );\n  border: 0;\n  padding: 0;\n  visibility: hidden;\n}\n\n#popover[open] {\n  opacity: 1;\n  z-index: var(--_z-index);\n  visibility: visible;\n}\n\n[part='content'] {\n  position: relative;\n  padding: var(--pf-c-popover__content--PaddingTop, var(--pf-global--spacer--md, 1rem))\n    var(--pf-c-popover__content--PaddingRight, var(--pf-global--spacer--md, 1rem))\n    var(--pf-c-popover__content--PaddingBottom, var(--pf-global--spacer--md, 1rem))\n    var(--pf-c-popover__content--PaddingLeft, var(--pf-global--spacer--md, 1rem));\n  word-break: break-word;\n  line-height: var(--pf-c-popover--line-height, 1.5);\n  font-size: var(--pf-c-popover__content--FontSize, var(--pf-global--FontSize--sm, 0.875rem));\n  color: var(--pf-c-popover__content--Color, var(--pf-global--Color--100, #151515));\n  background-color: var(--pf-c-popover__content--BackgroundColor, var(--pf-global--BackgroundColor--100, #fff));\n  max-width: var(\n    --pf-c-popover--MaxWidth,\n    calc(var(--pf-c-popover__content--PaddingLeft, 1rem) + var(--pf-c-popover__content--PaddingRight, 1rem) + 18.75rem)\n  );\n  min-width: var(\n    --pf-c-popover--MinWidth,\n    calc(var(--pf-c-popover__content--PaddingLeft, 1rem) + var(--pf-c-popover__content--PaddingRight, 1rem) + 18.75rem)\n  );\n  width: max-content;\n}\n\n[part='close-button'] {\n  cursor: pointer;\n  position: absolute;\n  right: var(\n    --pf-c-popover--c-button--Right,\n    calc(var(--pf-c-popover__content--PaddingRight, 1rem) - var(--pf-global--spacer--md, 1rem))\n  );\n  top: var(\n    --pf-c-popover--c-button--Top,\n    calc(var(--pf-c-popover__content--PaddingTop, 1rem) - var(--pf-global--spacer--form-element, 0.375rem))\n  );\n}\n\n[part='content'] > [part='close-button']:not([hidden]) ~ *:not([hidden]) {\n  padding-right: var(--pf-c-popover--c-button--sibling--PaddingRight, var(--pf-global--spacer--2xl, 3rem));\n}\n\n[part='header'] {\n  display: flex;\n  align-items: baseline;\n}\n\n[part='icon'] {\n  color: var(--_header-icon-color);\n  margin-right: var(--pf-c-popover__title-icon--MarginRight, var(--pf-global--spacer--sm, 0.5rem));\n}\n\n[part='icon'] ::slotted(*),\n[part='icon'] * {\n  vertical-align: -0.125em;\n}\n\n[part='icon'],\n[part='heading']::slotted(:is(h2, h3, h4, h5, h6)),\n[part='heading'] :is(h2, h3, h4, h5, h6) {\n  font-size: var(--pf-c-popover__title--FontSize, var(--pf-global--FontSize--md, 1rem));\n  font-weight: var(--pf-global--FontWeight--normal, 400);\n  --pf-icon--size: var(\n    --pf-c-popover__title--FontSize,\n    var(--pf-global--FontSize--md, var(--pf-global--icon--FontSize--md, 1em))\n  );\n}\n\n[part='heading']::slotted(:is(h2, h3, h4, h5, h6)),\n[part='heading'] :is(h2, h3, h4, h5, h6) {\n  color: var(--_header-text-color);\n  margin-top: 0;\n  margin-bottom: var(--pf-c-popover__title--MarginBottom, var(--pf-global--spacer--sm, 0.5rem));\n  line-height: var(--pf-c-popover__title--LineHeight, var(--pf-global--LineHeight--md, 1.5));\n  font-family: var(\n    --pf-c-popover__title--FontFamily,\n    var(\n      --pf-global--FontFamily--heading--sans-serif,\n      'RedHatDisplay',\n      'Overpass',\n      overpass,\n      helvetica,\n      arial,\n      sans-serif\n    )\n  );\n}\n\n[part='body'] {\n  display: block;\n  word-wrap: break-word;\n}\n\n[part='footer'] {\n  margin-top: var(--pf-c-popover__footer--MarginTop, var(--pf-global--spacer--md, 1rem));\n}\n\n:host([alert-severity='default']) {\n  --_header-text-color: var(--pf-c-popover--m-default__title-text--Color, var(--pf-global--default-color--300, #003737));\n  --_header-icon-color: var(--pf-c-popover--m-default__title-icon--Color, var(--pf-global--default-color--200, #009596));\n}\n\n:host([alert-severity='info']) {\n  --_header-text-color: var(--pf-c-popover--m-info__title-text--Color, var(--pf-global--info-color--200, #002952));\n  --_header-icon-color: var(--pf-c-popover--m-info__title-icon--Color, var(--pf-global--info-color--100, #2b9af3));\n}\n\n:host([alert-severity='warning']) {\n  --_header-icon-color: var(--pf-c-popover--m-warning__title-icon--Color, var(--pf-global--warning-color--100, #f0ab00));\n  --_header-text-color: var(--pf-c-popover--m-warning__title-text--Color, var(--pf-global--warning-color--200, #795600));\n}\n\n:host([alert-severity='success']) {\n  --_header-icon-color: var(--pf-c-popover--m-success__title-icon--Color, var(--pf-global--success-color--100, #3e8635));\n  --_header-text-color: var(--pf-c-popover--m-success__title-text--Color, var(--pf-global--success-color--200, #1e4f18));\n}\n\n:host([alert-severity='danger']) {\n  --_header-icon-color: var(--pf-c-popover--m-danger__title-icon--Color, var(--pf-global--danger-color--100, #c9190b));\n  --_header-text-color: var(--pf-c-popover--m-danger__title-text--Color, var(--pf-global--danger-color--200, #a30000));\n}\n`;
-import { deprecation } from '@patternfly/pfe-core/decorators/deprecation.js';
-const headingLevels = [2, 3, 4, 5, 6];
 export class PopoverHideEvent extends ComposedEvent {
     constructor() {
         super('hide');
@@ -37,137 +35,7 @@ export class PopoverShownEvent extends ComposedEvent {
         super('shown');
     }
 }
-/**
- * A **Popover** displays content in a non-modal dialog and adds contextual information or provides resources via text and links.
- * @summary Toggle the visibility of helpful or contextual information.
- * @slot -
- *         The default slot holds invoking element.
- *         Typically this would be an icon, button, or other small sized element.
- * @slot heading
- *       This slot renders the content that will be displayed inside of the header of the popover.
- *       Typically this would be a heading element.
- * @slot icon
- *       This slot renders the icon that will be displayed inside the header of the popover,
- *       before the heading.
- * @slot body
- *       This slot renders the content that will be displayed inside of the body of the popover.
- * @slot footer
- *       This slot renders the content that will be displayed inside of the footer of the popover.
- * @csspart container - The component wrapper
- * @csspart content - The content wrapper
- * @csspart header - The header element; only visible if both an icon annd heading are provided.
- * @csspart heading - The heading element
- * @csspart icon - The header icon
- * @csspart close-button - The close button
- * @csspart body - The container for the body content
- * @csspart footer - The container for the footer content
- * @cssprop {<length>} --pf-c-popover__arrow--Height
- *          Height of the arrow
- *          {@default `1.5625rem`}
- * @cssprop {<length>} --pf-c-popover__arrow--Width
- *          Width of the arrow
- *          {@default `1.5625rem`}
- * @cssprop {<color>} --pf-c-popover__title-text--Color
- *          Heading font color
- *          {@default `inherit`}
- * @cssprop {<color>} --pf-c-popover__title-icon--Color
- *          Heading icon font color
- *          {@default `#151515`}
- * @cssprop {<color>} --pf-c-popover__arrow--BackgroundColor
- *          Arrow background color
- *          {@default `#fff`}
- * @cssprop --pf-c-popover__arrow--BoxShadow
- *          Arrow box shadow
- *          {@default `0 0.5rem 1rem 0 rgba(3, 3, 3, 0.16), 0 0 0.375rem 0 rgba(3, 3, 3, 0.08)`}
- * @cssprop --pf-c-popover--BoxShadow
- *          Popover box shadow
- *          {@default `0 0.5rem 1rem 0 rgba(3, 3, 3, 0.16), 0 0 0.375rem 0 rgba(3, 3, 3, 0.08)`}
- * @cssprop {<length>} --pf-c-tooltip__content--PaddingTop
- *          Popover top padding
- *          {@default `1rem`}
- * @cssprop {<length>} --pf-c-tooltip__content--PaddingRight
- *          Popover right padding
- *          {@default `1rem`}
- * @cssprop {<length>} --pf-c-tooltip__content--PaddingBottom
- *          Popover bottom padding
- *          {@default `1rem`}
- * @cssprop {<length>} --pf-c-tooltip__content--PaddingLeft
- *          Popover left padding
- *          {@default `1rem`}
- * @cssprop {<number>} --pf-c-popover--line-height
- *          Popover line height
- *          {@default `1.5`}
- * @cssprop {<length>} --pf-c-popover__content--FontSize
- *          Popover font-size
- *          {@default `0.875rem`}
- * @cssprop {<color>} --pf-c-popover__content--BackgroundColor
- *          Popover background color
- *          {@default `#fff`}
- * @cssprop {<length>} --pf-c-popover--MaxWidth
- *          Popover max-width
- *          {@default `20.75rem`}
- * @cssprop {<length>} --pf-c-popover--MinWidth
- *          Popover min-width
- *          {@default `20.75rem`}
- * @cssprop {<number>} --pf-c-popover--c-button--Right
- *          Close button right position
- *          {@default `0}
- * @cssprop {<number>} --pf-c-popover--c-button--Top
- *          Close button top position
- *          {@default `0`}
- * @cssprop {<length>} --pf-c-popover--c-button--sibling--PaddingRight
- *          Padding between close button and its immediate sibling
- *          {@default `3rem`}
- * @cssprop {<length>} --pf-c-popover__title-icon--MarginRight
- *          Heading icon right margin
- *          {@default `0.5rem`}
- * @cssprop {<length>} --pf-c-popover__title--FontSize
- *          Header font-size
- *          {@default `1rem`}
- * @cssprop {<length>} --pf-c-popover__title--MarginBottom
- *          Header bottom margin
- *          {@default `0.5rem`}
- * @cssprop {<number>} --pf-c-popover__title--LineHeight
- *          Header line height
- *          {@default `1.5`}
- * @cssprop {<string>} --pf-c-popover__title--FontFamily
- *          Header font-family
- *          {@default `'RedHatDisplay', 'Overpass', overpass, helvetica, arial, sans-serif`}
- * @cssprop {<length>} --pf-c-popover__footer--MarginTop
- *          Footer top margin
- *          {@default `1rem`}
- * @cssprop {<color>} --pf-c-popover--m-default__title-text--Color
- *          Default alert heading color
- *          {@default `#003737`}
- * @cssprop {<color>} --pf-c-popover--m-default__title-icon--Color
- *          Default alert icon color
- *          {@default `#009596`}
- * @cssprop {<color>} --pf-c-popover--m-info__title-text--Color
- *          Default alert heading color
- *          {@default `#002952`}
- * @cssprop {<color>} --pf-c-popover--m-info__title-icon--Color
- *          Default alert icon color
- *          {@default `#2b9af3`}
- * @cssprop {<color>} --pf-c-popover--m-warning__title-text--Color
- *          Default alert heading color
- *          {@default `#795600`}
- * @cssprop {<color>} --pf-c-popover--m-warning__title-icon--Color
- *          Default alert icon color
- *          {@default `#f0ab00`}
- * @cssprop {<color>} --pf-c-popover--m-success__title-text--Color
- *          Default alert heading color
- *          {@default `#1e4f18`}
- * @cssprop {<color>} --pf-c-popover--m-success__title-icon--Color
- *          Default alert icon color
- *          {@default `#3e8635`}
- * @cssprop {<color>} --pf-c-popover--m-danger__title-text--Color
- *          Default alert heading color
- *          {@default `#a30000`}
- * @cssprop {<color>} --pf-c-popover--m-danger__title-icon--Color
- *          Default alert icon color
- *          {@default `#c9190b`}
- */
-let PfPopover = PfPopover_1 = class PfPopover extends LitElement {
+let PfPopover = class PfPopover extends LitElement {
     constructor() {
         super();
         _PfPopover_instances.add(this);
@@ -206,7 +74,9 @@ let PfPopover = PfPopover_1 = class PfPopover extends LitElement {
                     return;
             }
         });
-        this.addEventListener('keydown', __classPrivateFieldGet(this, _PfPopover_onKeydown, "f"));
+        if (!isServer) {
+            this.addEventListener('keydown', __classPrivateFieldGet(this, _PfPopover_onKeydown, "f"));
+        }
     }
     render() {
         const { alignment, anchor, styles } = __classPrivateFieldGet(this, _PfPopover_float, "f");
@@ -233,7 +103,7 @@ let PfPopover = PfPopover_1 = class PfPopover extends LitElement {
       <slot id="heading" name="heading" part="heading" ?hidden=${!hasHeading}>${headingContent}</slot>
     `;
         const headerIcon = this.icon
-            ?? PfPopover_1.alertIcons.get(this.alertSeverity)
+            ?? PfPopover.alertIcons.get(this.alertSeverity)
             ?? '';
         return html `
       <div id="container"
@@ -284,13 +154,14 @@ let PfPopover = PfPopover_1 = class PfPopover extends LitElement {
     }
     disconnectedCallback() {
         super.disconnectedCallback();
-        PfPopover_1.instances.delete(this);
+        PfPopover.instances.delete(this);
         __classPrivateFieldGet(this, _PfPopover_referenceTrigger, "f")?.removeEventListener('click', this.toggle);
         __classPrivateFieldGet(this, _PfPopover_referenceTrigger, "f")?.removeEventListener('keydown', __classPrivateFieldGet(this, _PfPopover_onKeydown, "f"));
     }
     /**
      * Removes event listeners from the old trigger element and attaches
      * them to the new trigger element.
+     * @param changed changed props
      */
     willUpdate(changed) {
         if (changed.has('trigger')) {
@@ -301,7 +172,12 @@ let PfPopover = PfPopover_1 = class PfPopover extends LitElement {
      * Toggle the popover
      */
     async toggle() {
-        __classPrivateFieldGet(this, _PfPopover_float, "f").open ? this.hide() : this.show();
+        if (__classPrivateFieldGet(this, _PfPopover_float, "f").open) {
+            this.hide();
+        }
+        else {
+            this.show();
+        }
     }
     /**
      * Opens the popover
@@ -319,7 +195,7 @@ let PfPopover = PfPopover_1 = class PfPopover extends LitElement {
         });
         this._popover?.show();
         this.dispatchEvent(new PopoverShownEvent());
-        PfPopover_1.instances.add(this);
+        PfPopover.instances.add(this);
     }
     /**
      * Closes the popover
@@ -329,7 +205,7 @@ let PfPopover = PfPopover_1 = class PfPopover extends LitElement {
         await __classPrivateFieldGet(this, _PfPopover_float, "f").hide();
         this._popover?.close();
         this.dispatchEvent(new PopoverHiddenEvent());
-        PfPopover_1.instances.delete(this);
+        PfPopover.instances.delete(this);
         __classPrivateFieldSet(this, _PfPopover_hideDialog, true, "f");
         this.requestUpdate();
     }
@@ -341,8 +217,12 @@ _PfPopover_slots = new WeakMap();
 _PfPopover_onKeydown = new WeakMap();
 _PfPopover_instances = new WeakSet();
 _PfPopover_getReferenceTrigger = function _PfPopover_getReferenceTrigger() {
-    const root = this.getRootNode();
-    return !this.trigger ? null : root.getElementById(this.trigger);
+    if (isServer || !this.trigger) {
+        return null;
+    }
+    else {
+        return this.getRootNode().getElementById(this.trigger);
+    }
 };
 _PfPopover_triggerChanged = function _PfPopover_triggerChanged() {
     const oldReferenceTrigger = __classPrivateFieldGet(this, _PfPopover_referenceTrigger, "f");
@@ -370,14 +250,17 @@ PfPopover.alertIcons = new Map(Object.entries({
     danger: 'circle-exclamation',
 }));
 (() => {
-    document.addEventListener('click', function (event) {
-        for (const instance of PfPopover_1.instances) {
-            if (!instance.noOutsideClick) {
-                __classPrivateFieldGet(instance, _PfPopover_instances, "m", _PfPopover_outsideClick).call(instance, event);
+    if (!isServer) {
+        document.addEventListener('click', function (event) {
+            for (const instance of PfPopover.instances) {
+                if (!instance.noOutsideClick) {
+                    __classPrivateFieldGet(instance, _PfPopover_instances, "m", _PfPopover_outsideClick).call(instance, event);
+                }
             }
-        }
-    });
+        });
+    }
 })();
+PfPopover.version = "4.0.0";
 __decorate([
     property({ reflect: true })
 ], PfPopover.prototype, "position", void 0);
@@ -464,7 +347,7 @@ __decorate([
 __decorate([
     bound
 ], PfPopover.prototype, "hide", null);
-PfPopover = PfPopover_1 = __decorate([
+PfPopover = __decorate([
     customElement('pf-popover')
 ], PfPopover);
 export { PfPopover };

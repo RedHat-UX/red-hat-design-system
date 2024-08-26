@@ -1,4 +1,4 @@
-import { LitElement } from 'lit';
+import { LitElement, type TemplateResult } from 'lit';
 /**
  * Table body
  * @slot - Place element content here
@@ -6,7 +6,7 @@ import { LitElement } from 'lit';
 export declare class PfTbody extends LitElement {
     static readonly styles: CSSStyleSheet[];
     connectedCallback(): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

@@ -1,15 +1,13 @@
-import { LitElement } from 'lit';
+import { LitElement, type TemplateResult } from 'lit';
 /**
  * @slot - Tab panel content
- *
- * @cssprop {<color>} --pf-c-tab-content--m-light-300 {@default `#f0f0f0`}
- *
+ * @cssprop {<color>} [--pf-c-tab-content--m-light-300=#f0f0f0]
  * @csspart container - container for the panel content
  */
 export declare class PfTabPanel extends LitElement {
     static readonly styles: CSSStyleSheet[];
     private ctx?;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): TemplateResult<1>;
     connectedCallback(): void;
     willUpdate(): void;
 }

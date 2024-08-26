@@ -1,0 +1,1 @@
+{"version":3,"file":"environment.js","sourceRoot":"","sources":["environment.ts"],"names":[],"mappings":"AAAA;;;;GAIG;AACH,OAAO,EAAE,CAAC","sourcesContent":["/**\n * This file will be overwritten by the eleventy build,\n * but it's necessary to keep it here so that the jspm generator\n * finds a module at this path when starting the dev server\n */\nexport {};\n"]}

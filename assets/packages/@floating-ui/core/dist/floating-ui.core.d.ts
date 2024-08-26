@@ -48,31 +48,31 @@ export declare interface ArrowOptions {
  */
 export declare const autoPlacement: (options?: AutoPlacementOptions | Derivable<AutoPlacementOptions>) => Middleware;
 
-export declare type AutoPlacementOptions = Partial<DetectOverflowOptions & {
+export declare interface AutoPlacementOptions extends DetectOverflowOptions {
     /**
      * The axis that runs along the alignment of the floating element. Determines
      * whether to check for most space along this axis.
      * @default false
      */
-    crossAxis: boolean;
+    crossAxis?: boolean;
     /**
      * Choose placements with a particular alignment.
      * @default undefined
      */
-    alignment: Alignment | null;
+    alignment?: Alignment | null;
     /**
      * Whether to choose placements with the opposite alignment if the preferred
      * alignment does not fit.
      * @default true
      */
-    autoAlignment: boolean;
+    autoAlignment?: boolean;
     /**
      * Which placements are allowed to be chosen. Placements must be within the
      * `alignment` option if explicitly set.
      * @default allPlacements (variable)
      */
-    allowedPlacements: Array<Placement>;
-}>;
+    allowedPlacements?: Array<Placement>;
+}
 
 export { Axis }
 
@@ -143,34 +143,34 @@ export declare type Derivable<T> = (state: MiddlewareState) => T;
  */
 export declare function detectOverflow(state: MiddlewareState, options?: DetectOverflowOptions | Derivable<DetectOverflowOptions>): Promise<SideObject>;
 
-export declare type DetectOverflowOptions = Partial<{
+export declare interface DetectOverflowOptions {
     /**
      * The clipping element(s) or area in which overflow will be checked.
      * @default 'clippingAncestors'
      */
-    boundary: Boundary;
+    boundary?: Boundary;
     /**
      * The root clipping area in which overflow will be checked.
      * @default 'viewport'
      */
-    rootBoundary: RootBoundary;
+    rootBoundary?: RootBoundary;
     /**
      * The element in which overflow is being checked relative to a boundary.
      * @default 'floating'
      */
-    elementContext: ElementContext;
+    elementContext?: ElementContext;
     /**
      * Whether to check for overflow using the alternate element's boundary
      * (`clippingAncestors` boundary only).
      * @default false
      */
-    altBoundary: boolean;
+    altBoundary?: boolean;
     /**
      * Virtual padding for the resolved overflow detection offsets.
      * @default 0
      */
-    padding: Padding;
-}>;
+    padding?: Padding;
+}
 
 export { Dimensions }
 
@@ -191,42 +191,42 @@ export declare interface Elements {
  */
 export declare const flip: (options?: FlipOptions | Derivable<FlipOptions>) => Middleware;
 
-export declare type FlipOptions = Partial<DetectOverflowOptions & {
+export declare interface FlipOptions extends DetectOverflowOptions {
     /**
      * The axis that runs along the side of the floating element. Determines
      * whether overflow along this axis is checked to perform a flip.
      * @default true
      */
-    mainAxis: boolean;
+    mainAxis?: boolean;
     /**
      * The axis that runs along the alignment of the floating element. Determines
      * whether overflow along this axis is checked to perform a flip.
      * @default true
      */
-    crossAxis: boolean;
+    crossAxis?: boolean;
     /**
      * Placements to try sequentially if the preferred `placement` does not fit.
      * @default [oppositePlacement] (computed)
      */
-    fallbackPlacements: Array<Placement>;
+    fallbackPlacements?: Array<Placement>;
     /**
      * What strategy to use when no placements fit.
      * @default 'bestFit'
      */
-    fallbackStrategy: 'bestFit' | 'initialPlacement';
+    fallbackStrategy?: 'bestFit' | 'initialPlacement';
     /**
      * Whether to allow fallback to the perpendicular axis of the preferred
      * placement, and if so, which side direction along the axis to prefer.
      * @default 'none' (disallow fallback)
      */
-    fallbackAxisSideDirection: 'none' | 'start' | 'end';
+    fallbackAxisSideDirection?: 'none' | 'start' | 'end';
     /**
      * Whether to flip to placements with the opposite alignment if they fit
      * better.
      * @default true
      */
-    flipAlignment: boolean;
-}>;
+    flipAlignment?: boolean;
+}
 
 export declare type FloatingElement = any;
 
@@ -237,12 +237,12 @@ export declare type FloatingElement = any;
  */
 export declare const hide: (options?: HideOptions | Derivable<HideOptions>) => Middleware;
 
-export declare type HideOptions = Partial<DetectOverflowOptions & {
+export declare interface HideOptions extends DetectOverflowOptions {
     /**
      * The strategy used to determine when to hide the floating element.
      */
-    strategy: 'referenceHidden' | 'escaped';
-}>;
+    strategy?: 'referenceHidden' | 'escaped';
+}
 
 /**
  * Provides improved positioning for inline reference elements that can span
@@ -251,23 +251,23 @@ export declare type HideOptions = Partial<DetectOverflowOptions & {
  */
 export declare const inline: (options?: InlineOptions | Derivable<InlineOptions>) => Middleware;
 
-export declare type InlineOptions = Partial<{
+export declare interface InlineOptions {
     /**
      * Viewport-relative `x` coordinate to choose a `ClientRect`.
      * @default undefined
      */
-    x: number;
+    x?: number;
     /**
      * Viewport-relative `y` coordinate to choose a `ClientRect`.
      * @default undefined
      */
-    y: number;
+    y?: number;
     /**
      * Represents the padding around a disjoined rect when choosing it.
      * @default 2
      */
-    padding: Padding;
-}>;
+    padding?: Padding;
+}
 
 export { Length }
 
@@ -279,37 +279,37 @@ export declare const limitShift: (options?: LimitShiftOptions | Derivable<LimitS
     fn: (state: MiddlewareState) => Coords;
 };
 
-declare type LimitShiftOffset = number | Partial<{
+declare type LimitShiftOffset = number | {
     /**
      * Offset the limiting of the axis that runs along the alignment of the
      * floating element.
      */
-    mainAxis: number;
+    mainAxis?: number;
     /**
      * Offset the limiting of the axis that runs along the side of the
      * floating element.
      */
-    crossAxis: number;
-}>;
+    crossAxis?: number;
+};
 
-export declare type LimitShiftOptions = Partial<{
+export declare interface LimitShiftOptions {
     /**
      * Offset when limiting starts. `0` will limit when the opposite edges of the
      * reference and floating elements are aligned.
      * - positive = start limiting earlier
      * - negative = start limiting later
      */
-    offset: LimitShiftOffset | Derivable<LimitShiftOffset>;
+    offset?: LimitShiftOffset | Derivable<LimitShiftOffset>;
     /**
      * Whether to limit the axis that runs along the alignment of the floating
      * element.
      */
-    mainAxis: boolean;
+    mainAxis?: boolean;
     /**
      * Whether to limit the axis that runs along the side of the floating element.
      */
-    crossAxis: boolean;
-}>;
+    crossAxis?: boolean;
+}
 
 export declare type Middleware = {
     name: string;
@@ -385,20 +385,20 @@ export declare const offset: (options?: OffsetOptions) => Middleware;
 
 export declare type OffsetOptions = OffsetValue | Derivable<OffsetValue>;
 
-declare type OffsetValue = number | Partial<{
+declare type OffsetValue = number | {
     /**
      * The axis that runs along the side of the floating element. Represents
      * the distance (gutter or margin) between the reference and floating
      * element.
      * @default 0
      */
-    mainAxis: number;
+    mainAxis?: number;
     /**
      * The axis that runs along the alignment of the floating element.
      * Represents the skidding between the reference and floating element.
      * @default 0
      */
-    crossAxis: number;
+    crossAxis?: number;
     /**
      * The same axis as `crossAxis` but applies only to aligned placements
      * and inverts the `end` alignment. When set to a number, it overrides the
@@ -409,8 +409,8 @@ declare type OffsetValue = number | Partial<{
      * the reverse.
      * @default null
      */
-    alignmentAxis: number | null;
-}>;
+    alignmentAxis?: number | null;
+};
 
 export { Padding }
 
@@ -467,28 +467,28 @@ export declare type RootBoundary = 'viewport' | 'document' | Rect;
  */
 export declare const shift: (options?: ShiftOptions | Derivable<ShiftOptions>) => Middleware;
 
-export declare type ShiftOptions = Partial<DetectOverflowOptions & {
+export declare interface ShiftOptions extends DetectOverflowOptions {
     /**
      * The axis that runs along the alignment of the floating element. Determines
      * whether overflow along this axis is checked to perform shifting.
      * @default true
      */
-    mainAxis: boolean;
+    mainAxis?: boolean;
     /**
      * The axis that runs along the side of the floating element. Determines
      * whether overflow along this axis is checked to perform shifting.
      * @default false
      */
-    crossAxis: boolean;
+    crossAxis?: boolean;
     /**
      * Accepts a function that limits the shifting done in order to prevent
      * detachment.
      */
-    limiter: {
+    limiter?: {
         fn: (state: MiddlewareState) => Coords;
         options?: any;
     };
-}>;
+}
 
 export { Side }
 
@@ -502,17 +502,17 @@ export { SideObject }
  */
 export declare const size: (options?: SizeOptions | Derivable<SizeOptions>) => Middleware;
 
-export declare type SizeOptions = Partial<DetectOverflowOptions & {
+export declare interface SizeOptions extends DetectOverflowOptions {
     /**
      * Function that is called to perform style mutations to the floating element
      * to change its size.
      * @default undefined
      */
-    apply(args: MiddlewareState & {
+    apply?(args: MiddlewareState & {
         availableWidth: number;
         availableHeight: number;
     }): void | Promise<void>;
-}>;
+}
 
 export { Strategy }
 

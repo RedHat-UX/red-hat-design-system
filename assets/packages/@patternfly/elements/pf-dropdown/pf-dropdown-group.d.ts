@@ -1,4 +1,4 @@
-import { LitElement } from 'lit';
+import { LitElement, type TemplateResult } from 'lit';
 /**
  * Represents a group of items for a dropdown component.
  * @slot
@@ -6,18 +6,12 @@ import { LitElement } from 'lit';
  */
 export declare class PfDropdownGroup extends LitElement {
     static readonly styles: CSSStyleSheet[];
-    static readonly shadowRootOptions: {
-        delegatesFocus: boolean;
-        mode: ShadowRootMode;
-        slotAssignment?: SlotAssignmentMode | undefined;
-        customElements?: CustomElementRegistry | undefined;
-        registry?: CustomElementRegistry | undefined;
-    };
+    static readonly shadowRootOptions: ShadowRootInit;
     /**
      * The label for the group of dropdown items.
      */
     label?: string;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

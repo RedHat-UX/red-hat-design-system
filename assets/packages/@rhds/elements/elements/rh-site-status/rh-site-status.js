@@ -8,7 +8,7 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 import '../rh-spinner/rh-spinner.js';
 import { css } from "lit";
-const styles = css `:host{display:inline-flex}#container{display:inline-flex;padding:var(--rh-space-lg,16px);background:var(--rh-color-surface-light,#e0e0e0);border-radius:var(--rh-border-radius-default,3px);min-width:150px}#container.dark{background:var(--rh-color-surface-dark,#383838)}a{display:inline-flex;font-size:var(--rh-font-size-body-text-sm, .875rem);text-decoration:none;align-items:center;gap:var(--rh-space-md,8px);color:var(--rh-color-text-primary-on-light,#151515);text-transform:lowercase}.dark a{color:var(--rh-color-text-primary-on-dark,#fff)}span:first-letter{text-transform:uppercase}a:focus{outline:var(--rh-border-width-md,2px) solid var(--rh-color-border-interactive-on-light,#0066cc);border-radius:var(--rh-border-radius-default,3px)}a:is(:hover,:focus){text-decoration:underline}.dark a:focus{outline-color:var(--rh-color-border-interactive-on-dark,#92c5f9)}`;
+const styles = css `:host{display:inline-block}#container{display:inline-flex;padding:var(--rh-space-lg,16px);background:var(--rh-color-surface-light,#e0e0e0);border-radius:var(--rh-border-radius-default,3px);min-width:150px}#container.dark{background:var(--rh-color-surface-dark,#383838)}a{display:inline-flex;font-size:var(--rh-font-size-body-text-sm, .875rem);text-decoration:none;align-items:center;gap:var(--rh-space-md,8px);color:var(--rh-color-text-primary-on-light,#151515);text-transform:lowercase}.dark a{color:var(--rh-color-text-primary-on-dark,#fff)}span:first-letter{text-transform:uppercase}a:focus{outline:var(--rh-border-width-md,2px) solid var(--rh-color-border-interactive-on-light,#0066cc);border-radius:var(--rh-border-radius-default,3px)}a:is(:hover,:focus){text-decoration:underline}.dark a:focus{outline-color:var(--rh-color-border-interactive-on-dark,#92c5f9)}`;
 const STATUS_ICONS = Object.freeze({
     'ok': svg `
     <path d="M8 16.5C12.4183 16.5 16 12.9183 16 8.5C16 4.08172 12.4183 0.5 8 0.5C3.58172 0.5 0 4.08172 0 8.5C0 12.9183 3.58172 16.5 8 16.5Z" fill="#63993D"/>
@@ -84,13 +84,6 @@ let RhSiteStatus = RhSiteStatus_1 = _a = class RhSiteStatus extends LitElement {
         _RhSiteStatus_loading.set(this, true);
         _RhSiteStatus_logger.set(this, new Logger(this));
         _RhSiteStatus_domain.set(this, location.hostname);
-    }
-    /** secret testing-only domain override */
-    set __TESTING_ONLY_DONT_USE_OR_WELL_TELL_YOUR_BOSS__domain__(domain) {
-        __classPrivateFieldSet(this, _RhSiteStatus_domain, domain, "f");
-        __classPrivateFieldSet(this, _RhSiteStatus_loading, true, "f");
-        this.requestUpdate();
-        __classPrivateFieldGet(this, _RhSiteStatus_instances, "m", _RhSiteStatus_fetch).call(this);
     }
     ;
     connectedCallback() {

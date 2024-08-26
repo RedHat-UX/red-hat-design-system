@@ -1,4 +1,4 @@
-import { LitElement } from 'lit';
+import { LitElement, type TemplateResult } from 'lit';
 import '@patternfly/elements/pf-button/pf-button.js';
 export declare class RequestSortEvent extends Event {
     key: string;
@@ -17,7 +17,7 @@ export declare class PfTh extends LitElement {
     sortDirection?: 'asc' | 'desc';
     key: string;
     connectedCallback(): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): TemplateResult<1>;
     sort(): void;
 }
 declare global {

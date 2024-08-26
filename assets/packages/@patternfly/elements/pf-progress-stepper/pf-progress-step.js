@@ -1,5 +1,4 @@
 var _PfProgressStep_slots, _PfProgressStep_internals;
-var PfProgressStep_1;
 import { __classPrivateFieldGet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
@@ -16,16 +15,7 @@ const ICONS = new Map(Object.entries({
     warning: { icon: 'exclamation-triangle' },
     info: { icon: 'resources-full', set: 'patternfly' },
 }));
-/**
- * @slot -
- *       Short description of the current step.
- * @slot description
- *       Longer description of the current step.
- * @slot icon
- *       Overrides the icon property
- *
- */
-let PfProgressStep = PfProgressStep_1 = class PfProgressStep extends LitElement {
+let PfProgressStep = class PfProgressStep extends LitElement {
     constructor() {
         super(...arguments);
         /** Indicates if this item is the current active item. */
@@ -38,7 +28,7 @@ let PfProgressStep = PfProgressStep_1 = class PfProgressStep extends LitElement 
         const icon = this.icon ?? ICONS.get(this.variant ?? 'default')?.icon;
         const set = this.iconSet ?? ICONS.get(this.variant ?? 'default')?.set;
         const { parentTagName } = this.constructor;
-        const { compact = false } = this.closest(parentTagName) ?? {};
+        const { compact = false } = this.closest?.(parentTagName) ?? {};
         return html `
       <div id="connector" class="${classMap({ compact })}">
         <slot id="icon" name="icon">
@@ -54,7 +44,6 @@ let PfProgressStep = PfProgressStep_1 = class PfProgressStep extends LitElement 
     `;
     }
     updated(changed) {
-        super.updated?.(changed);
         if (changed.has('current')) {
             __classPrivateFieldGet(this, _PfProgressStep_internals, "f").ariaCurrent = String(!!this.current);
         }
@@ -64,6 +53,7 @@ _PfProgressStep_slots = new WeakMap();
 _PfProgressStep_internals = new WeakMap();
 PfProgressStep.parentTagName = 'pf-progress-stepper';
 PfProgressStep.styles = [style];
+PfProgressStep.version = "4.0.0";
 __decorate([
     property()
 ], PfProgressStep.prototype, "description", void 0);
@@ -79,7 +69,7 @@ __decorate([
 __decorate([
     property({ type: Boolean, reflect: true })
 ], PfProgressStep.prototype, "current", void 0);
-PfProgressStep = PfProgressStep_1 = __decorate([
+PfProgressStep = __decorate([
     customElement('pf-progress-step')
 ], PfProgressStep);
 export { PfProgressStep };

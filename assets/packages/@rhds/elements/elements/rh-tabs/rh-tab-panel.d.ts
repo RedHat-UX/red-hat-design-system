@@ -14,7 +14,7 @@ export declare class RhTabPanel extends LitElement {
      */
     private on?;
     connectedCallback(): void;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

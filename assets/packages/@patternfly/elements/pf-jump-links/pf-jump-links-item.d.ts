@@ -1,4 +1,4 @@
-import { LitElement } from 'lit';
+import { LitElement, type TemplateResult } from 'lit';
 /**
  * @cssprop --pf-c-jump-links__link--PaddingTop -- padding around the link
  * @cssprop --pf-c-jump-links__link--PaddingRight
@@ -10,20 +10,13 @@ import { LitElement } from 'lit';
 export declare class PfJumpLinksItem extends LitElement {
     #private;
     static readonly styles: CSSStyleSheet[];
-    static readonly shadowRootOptions: {
-        delegatesFocus: boolean;
-        mode: ShadowRootMode;
-        slotAssignment?: SlotAssignmentMode | undefined;
-        customElements?: CustomElementRegistry | undefined;
-        registry?: CustomElementRegistry | undefined;
-    };
+    static readonly shadowRootOptions: ShadowRootInit;
     /** Whether this item is active. */
     active: boolean;
     /** hypertext reference for this link */
     href?: string;
-    connectedCallback(): void;
-    render(): import("lit-html").TemplateResult<1>;
-    private activeChanged;
+    render(): TemplateResult<1>;
+    protected activeChanged(): void;
 }
 declare global {
     interface HTMLElementTagNameMap {

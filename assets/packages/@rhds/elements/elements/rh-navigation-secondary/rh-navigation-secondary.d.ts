@@ -25,8 +25,8 @@ export type NavPalette = Extract<ColorPalette, ('lighter' | 'dark')>;
  *                                         Fires when an dropdown is opened or closed in desktop
  *                                         view or when the mobile menu button is toggled in mobile
  *                                         view.
- * @cssprop {<integer>} --rh-navigation-secondary-z-index - z-index of the navigation-secondary {@default `102`}
- * @cssprop {<integer>} --rh-navigation-secondary-overlay-z-index - z-index of the navigation-secondary-overlay {@default `-1`}
+ * @cssprop {<integer>} [--rh-navigation-secondary-z-index=102] - z-index of the navigation-secondary
+ * @cssprop {<integer>} [--rh-navigation-secondary-overlay-z-index=-1] - z-index of the navigation-secondary-overlay
  */
 export declare class RhNavigationSecondary extends LitElement {
     #private;
@@ -51,7 +51,7 @@ export declare class RhNavigationSecondary extends LitElement {
     static isDropdown(element: Element | null): element is RhNavigationSecondaryDropdown;
     connectedCallback(): Promise<void>;
     disconnectedCallback(): void;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
     /**
      * Opens a specific dropdown based on index.
      * Closes all open dropdowns before opening specified.
@@ -64,14 +64,8 @@ export declare class RhNavigationSecondary extends LitElement {
      */
     close(): void;
 }
-declare class RhSecondaryNav extends RhNavigationSecondary {
-    #private;
-    constructor();
-}
 declare global {
     interface HTMLElementTagNameMap {
         'rh-navigation-secondary': RhNavigationSecondary;
-        'rh-secondary-nav': RhSecondaryNav;
     }
 }
-export {};

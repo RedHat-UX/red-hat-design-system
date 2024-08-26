@@ -9,6 +9,8 @@ export class TabsAriaController {
         return this.tabs.find(x => __classPrivateFieldGet(this, _TabsAriaController_options, "f").isActiveTab(x));
     }
     /**
+     * @param host controller host
+     * @param options controller options
      * @example Usage in PfTab
      *          ```ts
      *          new TabsController(this, {

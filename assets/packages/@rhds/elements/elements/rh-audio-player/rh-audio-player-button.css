@@ -18,8 +18,7 @@ rh-tooltip {
   display: flex;
   height: var(--_button-size);
   width: var(--_button-size);
-  margin-inline-start: var(--_icon-margin);
-  margin-inline-end: var(--_icon-margin);
+  margin-inline: var(--_icon-margin);
 
   --_icon-margin: calc(var(--_icon-gap) / 2 - var(--_icon-padding));
   --_icon-padding: calc((var(--_button-size) - var(--_svg-size)) / 2);

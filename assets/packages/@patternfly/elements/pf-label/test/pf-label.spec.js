@@ -16,12 +16,6 @@ const exampleWithColorAttributeEmpty = html `
 const exampleWithOutlineAttribute = html `
   <pf-label variant="outline">Default Outline</pf-label>
 `;
-const exampleWithIconAttribute = html `
-  <pf-label icon="rh-icon-virtual-storage-stack">Default Icon</pf-label>
-`;
-const exampleWithIconAttributeEmpty = html `
-  <pf-label icon="">Default</pf-label>
-`;
 const exampleWithCompactAttribute = html `
   <pf-label compact>Default Compact</pf-label>
 `;
@@ -81,17 +75,33 @@ describe('<pf-label>', function () {
         expect(getColor(container, 'background-color')).to.deep.equal(hexToRgb('#ffffff'));
         expect(beforeStyles.getPropertyValue('border-color')).to.equal('rgb(210, 210, 210)');
     });
-    it('should render a pf-icon if the icon attribute is present and valid', async function () {
-        const el = await createFixture(exampleWithIconAttribute);
-        await el.updateComplete;
-        const icon = el.shadowRoot.querySelector('pf-icon');
-        expect(icon.icon).to.equal(el.icon);
+    describe('with valid icon attribute', function () {
+        let element;
+        beforeEach(async function () {
+            element = await createFixture(html `
+        <pf-label icon="rh-icon-virtual-storage-stack">Default Icon</pf-label>
+      `);
+            element.updateComplete;
+        });
+        it('should render a pf-icon', async function () {
+            const icon = element.shadowRoot.querySelector('pf-icon');
+            expect(icon.hidden).to.be.false;
+            expect(icon.icon).to.equal(element.icon);
+        });
     });
-    it('should not render a pf-icon if the icon attribute is present but empty', async function () {
-        const el = await createFixture(exampleWithIconAttributeEmpty);
-        await el.updateComplete;
-        const icon = el.shadowRoot.querySelector('pf-icon');
-        expect(icon).to.be.equal(null);
+    describe('with empty icon attribute', function () {
+        let element;
+        beforeEach(async function () {
+            element = await createFixture(html `
+        <pf-label icon="">Default</pf-label>
+      `);
+            element.updateComplete;
+        });
+        it('should not render a pf-icon', async function () {
+            const icon = element.shadowRoot.querySelector('pf-icon');
+            expect(icon.hidden).to.be.true;
+            expect(icon.icon).to.be.undefined;
+        });
     });
     it('should display compact version if the attribute is-compact is present', async function () {
         const el = await createFixture(exampleWithCompactAttribute);

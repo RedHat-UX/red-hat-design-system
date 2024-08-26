@@ -86,14 +86,18 @@ _a = OverflowController, _OverflowController_container = new WeakMap(), _Overflo
     }
     const prevLeft = this.overflowLeft;
     const prevRight = this.overflowRight;
-    this.overflowLeft = !__classPrivateFieldGet(this, _OverflowController_hideOverflowButtons, "f") && !isElementInView(__classPrivateFieldGet(this, _OverflowController_container, "f"), this.firstItem);
-    this.overflowRight = !__classPrivateFieldGet(this, _OverflowController_hideOverflowButtons, "f") && !isElementInView(__classPrivateFieldGet(this, _OverflowController_container, "f"), this.lastItem);
+    this.overflowLeft = !__classPrivateFieldGet(this, _OverflowController_hideOverflowButtons, "f")
+        && !isElementInView(__classPrivateFieldGet(this, _OverflowController_container, "f"), this.firstItem);
+    this.overflowRight = !__classPrivateFieldGet(this, _OverflowController_hideOverflowButtons, "f")
+        && !isElementInView(__classPrivateFieldGet(this, _OverflowController_container, "f"), this.lastItem);
     let scrollButtonsWidth = 0;
     if (this.overflowLeft || this.overflowRight) {
-        scrollButtonsWidth = (__classPrivateFieldGet(this, _OverflowController_container, "f").parentElement?.querySelector('button')?.getBoundingClientRect().width || 0) * 2;
+        scrollButtonsWidth =
+            (__classPrivateFieldGet(this, _OverflowController_container, "f").parentElement?.querySelector('button')?.getBoundingClientRect().width || 0)
+                * 2;
     }
-    this.showScrollButtons = !__classPrivateFieldGet(this, _OverflowController_hideOverflowButtons, "f") &&
-        __classPrivateFieldGet(this, _OverflowController_container, "f").scrollWidth > (__classPrivateFieldGet(this, _OverflowController_container, "f").clientWidth + scrollButtonsWidth);
+    this.showScrollButtons = !__classPrivateFieldGet(this, _OverflowController_hideOverflowButtons, "f")
+        && __classPrivateFieldGet(this, _OverflowController_container, "f").scrollWidth > (__classPrivateFieldGet(this, _OverflowController_container, "f").clientWidth + scrollButtonsWidth);
     // only request update if there has been a change
     if ((prevLeft !== this.overflowLeft) || (prevRight !== this.overflowRight)) {
         this.host.requestUpdate();
@@ -102,7 +106,7 @@ _a = OverflowController, _OverflowController_container = new WeakMap(), _Overflo
 _OverflowController_instances_1 = { value: new Set() };
 (() => {
     // on resize check for overflows to add or remove scroll buttons
-    window.addEventListener('resize', () => {
+    globalThis.addEventListener?.('resize', () => {
         for (const instance of __classPrivateFieldGet(_a, _a, "f", _OverflowController_instances_1)) {
             instance.onScroll();
         }

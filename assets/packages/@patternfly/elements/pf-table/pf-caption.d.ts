@@ -1,11 +1,11 @@
-import { LitElement } from 'lit';
+import { LitElement, type TemplateResult } from 'lit';
 /**
  * Caption
  * @slot - Place element content here
  */
 export declare class PfCaption extends LitElement {
     static readonly styles: CSSStyleSheet[];
-    render(): import("lit-html").TemplateResult<1>;
+    render(): TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

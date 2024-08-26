@@ -8,7 +8,7 @@ import {} from '../../context/color/provider.js';
 import { ContextChangeEvent } from '../rh-context-picker/rh-context-picker.js';
 import '@rhds/elements/rh-surface/rh-surface.js';
 import { css } from "lit";
-const style = css `:host{display:block;height:100%}.light{color:var(--rh-color-text-primary-on-light,#151515)}.dark{color:var(--rh-color-text-primary-on-dark,#fff)}#picker-container{display:flex;align-items:center;margin-block-end:var(--rh-context-demo-padding,var(--rh-space-xl,24px));gap:var(--rh-space-lg,16px)}#provider{padding:var(--rh-context-demo-padding,var(--rh-space-xl,24px));height:calc(100% - 2 * var(--rh-context-demo-padding,var(--rh-space-xl,24px)))}`;
+const style = css `:host{display:block;min-height:100%;height:auto;position:relative}.light{color:var(--rh-color-text-primary-on-light,#151515)}.dark{color:var(--rh-color-text-primary-on-dark,#fff)}#picker-container{display:flex;align-items:center;margin-block-end:var(--rh-context-demo-padding,var(--rh-space-xl,24px));gap:var(--rh-space-lg,16px)}#provider{padding:var(--rh-context-demo-padding,var(--rh-space-xl,24px));position:absolute;inset:0}`;
 let RhContextDemo = class RhContextDemo extends LitElement {
     constructor() {
         super(...arguments);
@@ -23,14 +23,15 @@ let RhContextDemo = class RhContextDemo extends LitElement {
         const [on = 'dark'] = value.match(/dark|light/) ?? [];
         return html `
       <rh-surface id="provider"
-                           color-palette="${value}"
-                           class="${classMap({ [on]: true })}"
-                           @change="${__classPrivateFieldGet(this, _RhContextDemo_instances, "m", _RhContextDemo_onChange)}">
+                  color-palette="${value}"
+                  class="${classMap({ [on]: true })}"
+                  @change="${__classPrivateFieldGet(this, _RhContextDemo_instances, "m", _RhContextDemo_onChange)}">
           <div id="picker-container">
             <rh-context-picker id="picker"
                                .value="${this.value}"
                                target="provider"></rh-context-picker>
             <label for="picker">${this.label}</label>
+            <slot name="controls"></slot>
           </div>
         <slot part="demo"></slot>
       </rh-surface>

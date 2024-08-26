@@ -10,11 +10,8 @@ const styles = css `:host{display:inline-block;text-align:center;width:max-conte
  * A spinner indicates that an action is in progress.
  * It appears as an animated circle over the section that is loading,
  * and it may include a text label
- *
  * @summary Notifies users their action is being processed or loaded
- *
  * @slot - Optional text label below the animated circle.
- *
  */
 let RhSpinner = class RhSpinner extends LitElement {
     constructor() {
@@ -23,7 +20,6 @@ let RhSpinner = class RhSpinner extends LitElement {
          * Preset sizes for the spinner
          */
         this.size = 'lg';
-        // END hack
     }
     render() {
         const { on = '' } = this;
@@ -35,14 +31,6 @@ let RhSpinner = class RhSpinner extends LitElement {
       <slot></slot>
     `;
     }
-    willUpdate() {
-        const [cp] = this.getAttribute('color-palette')?.match(/^dark|^light/) ?? [];
-        if (cp) {
-            this.on = cp;
-            // eslint-disable-next-line no-console
-            console.warn(`[rh-spinner]: do not use color-palette, it is deprecated`);
-        }
-    }
 };
 RhSpinner.styles = [styles];
 __decorate([
@@ -51,9 +39,6 @@ __decorate([
 __decorate([
     colorContextConsumer()
 ], RhSpinner.prototype, "on", void 0);
-__decorate([
-    property({ attribute: 'color-palette' })
-], RhSpinner.prototype, "colorPalette", void 0);
 RhSpinner = __decorate([
     customElement('rh-spinner')
 ], RhSpinner);

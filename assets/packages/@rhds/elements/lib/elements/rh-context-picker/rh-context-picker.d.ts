@@ -1,6 +1,6 @@
-import { LitElement } from 'lit';
-import { type ColorPalette } from '../../context/color/provider.js';
+import type { ColorPalette } from '@rhds/elements/lib/context/color/provider.js';
 import type { Color } from '@rhds/tokens/js/types.js';
+import { LitElement } from 'lit';
 import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 export declare class ContextChangeEvent extends Event {
     colorPalette: ColorPalette;
@@ -18,7 +18,7 @@ export declare class RhContextPicker extends LitElement {
     value: ColorPalette;
     private on?;
     allow: ColorPalette[];
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
     formStateRestoreCallback(state: string): void;
     firstUpdated(): void;
     focus(): void;

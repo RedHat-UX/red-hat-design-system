@@ -11,17 +11,10 @@ export declare class RhNavigationSecondaryMenuSection extends LitElement {
     #private;
     static readonly styles: CSSStyleSheet[];
     connectedCallback(): void;
-    render(): import("lit").TemplateResult<1>;
-}
-/** @deprecated use rh-navigation-secondary-menu-section */
-declare class RhSecondaryNavMenuSection extends RhNavigationSecondaryMenuSection {
-    #private;
-    constructor();
+    render(): import("lit-html").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {
         'rh-navigation-secondary-menu-section': RhNavigationSecondaryMenuSection;
-        'rh-secondary-nav-menu-section': RhSecondaryNavMenuSection;
     }
 }
-export {};

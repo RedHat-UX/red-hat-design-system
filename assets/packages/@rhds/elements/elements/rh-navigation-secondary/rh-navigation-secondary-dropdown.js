@@ -1,4 +1,4 @@
-var _RhNavigationSecondaryDropdown_instances, _RhNavigationSecondaryDropdown_slots, _RhNavigationSecondaryDropdown_logger, _RhNavigationSecondaryDropdown_highlight, _RhNavigationSecondaryDropdown_mo, _RhNavigationSecondaryDropdown_open, _RhNavigationSecondaryDropdown_close, _RhNavigationSecondaryDropdown_mutationsCallback, _RhSecondaryNavDropdown_logger;
+var _RhNavigationSecondaryDropdown_instances, _RhNavigationSecondaryDropdown_slots, _RhNavigationSecondaryDropdown_logger, _RhNavigationSecondaryDropdown_highlight, _RhNavigationSecondaryDropdown_mo, _RhNavigationSecondaryDropdown_open, _RhNavigationSecondaryDropdown_close, _RhNavigationSecondaryDropdown_mutationsCallback;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
@@ -7,7 +7,7 @@ import { query } from 'lit/decorators/query.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { ComposedEvent } from '@patternfly/pfe-core';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
-import { bound, observed } from '@patternfly/pfe-core/decorators.js';
+import { bound, observes } from '@patternfly/pfe-core/decorators.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { RhNavigationSecondaryMenu } from './rh-navigation-secondary-menu.js';
@@ -71,13 +71,12 @@ let RhNavigationSecondaryDropdown = class RhNavigationSecondaryDropdown extends 
      * run the `#open()` method, if false run the `#close()` method.
      * @param oldVal {string} - Boolean value in string form
      * @param newVal {string} - Boolean value in string form
-     * @returns
      */
     _expandedChanged(oldVal, newVal) {
         if (newVal === oldVal) {
             return;
         }
-        newVal ? __classPrivateFieldGet(this, _RhNavigationSecondaryDropdown_instances, "m", _RhNavigationSecondaryDropdown_open).call(this) : __classPrivateFieldGet(this, _RhNavigationSecondaryDropdown_instances, "m", _RhNavigationSecondaryDropdown_close).call(this);
+        return newVal ? __classPrivateFieldGet(this, _RhNavigationSecondaryDropdown_instances, "m", _RhNavigationSecondaryDropdown_open).call(this) : __classPrivateFieldGet(this, _RhNavigationSecondaryDropdown_instances, "m", _RhNavigationSecondaryDropdown_close).call(this);
     }
     /**
      * When a dropdown is clicked set expanded to the opposite of the expanded property
@@ -125,9 +124,11 @@ __decorate([
     query('#container')
 ], RhNavigationSecondaryDropdown.prototype, "_container", void 0);
 __decorate([
-    observed,
     state()
 ], RhNavigationSecondaryDropdown.prototype, "expanded", void 0);
+__decorate([
+    observes('expanded')
+], RhNavigationSecondaryDropdown.prototype, "_expandedChanged", null);
 __decorate([
     bound
 ], RhNavigationSecondaryDropdown.prototype, "_clickHandler", null);
@@ -135,16 +136,4 @@ RhNavigationSecondaryDropdown = __decorate([
     customElement('rh-navigation-secondary-dropdown')
 ], RhNavigationSecondaryDropdown);
 export { RhNavigationSecondaryDropdown };
-/** @deprecated use rh-navigation-secondary-dropdown */
-let RhSecondaryNavDropdown = class RhSecondaryNavDropdown extends RhNavigationSecondaryDropdown {
-    constructor() {
-        super();
-        _RhSecondaryNavDropdown_logger.set(this, new Logger(this));
-        __classPrivateFieldGet(this, _RhSecondaryNavDropdown_logger, "f").warn('rh-secondary-nav-dropdown is deprecated. Use rh-navigation-secondary-dropdown instead.');
-    }
-};
-_RhSecondaryNavDropdown_logger = new WeakMap();
-RhSecondaryNavDropdown = __decorate([
-    customElement('rh-secondary-nav-dropdown')
-], RhSecondaryNavDropdown);
 //# sourceMappingURL=rh-navigation-secondary-dropdown.js.map

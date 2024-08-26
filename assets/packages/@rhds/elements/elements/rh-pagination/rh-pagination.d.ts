@@ -2,26 +2,28 @@ import type { PropertyValues } from 'lit';
 import { LitElement } from 'lit';
 /**
  * A paginator allows users to navigate between pages of related content.
- *
  * @summary Allows users to navigate content divided into pages
- *
  * @slot            - An ordered list of links
- * @slot go-to-page - "Go to page" text
+ * @slot go-to-page - "Go to page" text, defaults to "Page"
  * @slot out-of     - "of" text
- *
- * @cssprop {<color>} --rh-pagination-accent-color
+ * @csspart container - pagination container
+ * @csspart numeric-middle - container for the numeric control at medium screen widths
+ * @csspart numeric-end - container for the numeric control at small and large screen widths
+ * @csspart numeric - shared container for the numeric controls at all widths
+ * @cssprop [--rh-pagination-accent-color=var(--rh-color-interactive-blue, #0066cc)]
  *          Sets the outline color when the page input has focus.
- *          {@default `var(--rh-color-interactive-blue, #0066cc)`}
- * @cssprop {<color>} --rh-pagination-background-focused
+ * @cssprop [--rh-pagination-background-focused=var(--rh-color-gray-20, #c7c7c7)]
  *          Sets the disabled stepper color.
- *          {@default `var(--rh-color-gray-20, #c7c7c7)`}
- * @cssprop {<color>} --rh-pagination-stepper-color
+ * @cssprop [--rh-pagination-stepper-color=var(--rh-color-icon-subtle, #707070)]
  *           Sets the stepper color.
- *          {@default `var(--rh-color-icon-subtle, #707070)`}
  */
 export declare class RhPagination extends LitElement {
     #private;
     static readonly version = "{{version}}";
+    /**
+     * Sets color theme based on parent context
+     */
+    private on?;
     static readonly styles: CSSStyleSheet[];
     /**
      * Override `overflow` values set from HTML or JS.
@@ -41,11 +43,15 @@ export declare class RhPagination extends LitElement {
     labelNext: string;
     /** Accessible label for the 'last page' button */
     labelLast: string;
+    /** Change pagination size to small */
+    size: 'sm' | null;
+    /** "Open" variant */
+    variant?: 'open' | null;
     private input?;
     connectedCallback(): void;
     disconnectedCallback(): void;
     update(changed: PropertyValues<this>): void;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
     /** Navigate to the first page */
     first(): Promise<number>;
     /** Navigate to the previous page */

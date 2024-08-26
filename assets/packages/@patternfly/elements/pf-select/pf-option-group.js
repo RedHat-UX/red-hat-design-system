@@ -7,11 +7,6 @@ import { property } from 'lit/decorators/property.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { css } from "lit";
 const styles = css `:host {\n  display: block;\n  border-bottom: 1px solid var(--pf-global--BorderColor--100, #d2d2d2);\n}\n\n:host([disabled]) {\n  pointer-events: none;\n  cursor: not-allowed;\n  color: var(--pf-global--Color--200, #6a6e73) !important;\n  background-color: var(--pf-theme--color--surface--lighter, #f0f0f0) !important;\n  border-color: var(--pf-theme--color--surface--lighter, #f0f0f0) !important;\n  --_active-descendant-color: var(--pf-theme--color--surface--lighter, #f0f0f0) !important;\n  --_svg-color: var(--pf-global--Color--200, #6a6e73) !important;\n}\n\nslot {\n  display: block;\n  padding: var(--pf-global--spacer--md, 1rem) 0;\n}\n\nslot[name="label"] {\n  font-size: var(--pf-global--FontSize--xs, 0.75rem);\n  color: var(--pf-global--Color--dark-200, #6a6e73);\n  padding: var(--pf-global--spacer--md, 1rem) var(--pf-global--spacer--md, 1rem) 0;\n}\n`;
-/**
- * Group of options within a listbox
- * @slot - `<pf-option>` or `<hr>` elements
- * @slot label - Group label. Overrides the `label` attribute.
- */
 let PfOptionGroup = class PfOptionGroup extends LitElement {
     constructor() {
         super(...arguments);
@@ -35,6 +30,7 @@ let PfOptionGroup = class PfOptionGroup extends LitElement {
 };
 _PfOptionGroup_internals = new WeakMap();
 PfOptionGroup.styles = [styles];
+PfOptionGroup.version = "4.0.0";
 __decorate([
     property()
 ], PfOptionGroup.prototype, "label", void 0);

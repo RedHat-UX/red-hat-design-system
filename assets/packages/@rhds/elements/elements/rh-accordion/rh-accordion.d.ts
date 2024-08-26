@@ -15,20 +15,11 @@ export declare class AccordionCollapseEvent extends ComposedEvent {
 }
 /**
  * An accordion is a stacked list of panels which allows users to expand or collapse information when selected. They feature panels that consist of a section text label and a caret icon that collapses or expands to reveal more information.
- *
  * @summary Expands or collapses a stacked list of panels
- *
  * @fires {AccordionExpandEvent} expand - when a panel expands
  * @fires {AccordionCollapseEvent} collapse - when a panel collapses
- *
- *
- * @slot
- *       Place the `rh-accordion-header` and `rh-accordion-panel` elements here.
- *
- * @attr  accents
- *        Position accents in the header either inline or bottom
- *        {@default inline}
- *
+ * @slot - Place the `rh-accordion-header` and `rh-accordion-panel` elements here.
+ * @attr  [accents=inline] Position accents in the header either inline or bottom
  */
 export declare class RhAccordion extends LitElement {
     #private;
@@ -61,18 +52,27 @@ export declare class RhAccordion extends LitElement {
     private ctx;
     connectedCallback(): void;
     render(): TemplateResult;
-    firstUpdated(): Promise<void>;
     protected getUpdateComplete(): Promise<boolean>;
+    private contextChanged;
     get headers(): RhAccordionHeader[];
     get panels(): RhAccordionPanel[];
+    /**
+     * Initialize the accordion by connecting headers and panels
+     * with aria controls and labels; set up the default disclosure
+     * state if not set by the author; and check the URL for default
+     * open
+     */
     updateAccessibility(): void;
     /**
      * Accepts a 0-based index value (integer) for the set of accordion items to expand or collapse.
+     * @param index header index to toggle
      */
     toggle(index: number): Promise<void>;
     /**
      * Accepts a 0-based index value (integer) for the set of accordion items to expand.
      * Accepts an optional parent accordion to search for headers and panels.
+     * @param index header index to toggle
+     * @param parentAccordion target accordion to expand in
      */
     expand(index: number, parentAccordion?: RhAccordion): Promise<void>;
     /**
@@ -81,6 +81,7 @@ export declare class RhAccordion extends LitElement {
     expandAll(): Promise<void>;
     /**
      * Accepts a 0-based index value (integer) for the set of accordion items to collapse.
+     * @param index header index to collapse
      */
     collapse(index: number): Promise<void>;
     /**

@@ -2,7 +2,7 @@
 
 {{ tagName | getElementDescription }}
 
-{% repoStatusList %}
+{% repoStatusList repoStatus=repoStatus %}
 
 ## Sample element
 
@@ -17,4 +17,4 @@
   - When you need to prevent other navigations from getting overloaded
 
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}

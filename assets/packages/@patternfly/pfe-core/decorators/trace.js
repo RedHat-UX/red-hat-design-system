@@ -1,4 +1,7 @@
-/** Logs the result of a class method */
+/**
+ * Logs the result of a class method
+ * @param tag log tag, prepended to outputs
+ */
 export function trace(tag) {
     return function (_, key, descriptor) {
         const { value: f } = descriptor;

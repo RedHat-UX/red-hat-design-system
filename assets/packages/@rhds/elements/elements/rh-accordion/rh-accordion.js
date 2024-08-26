@@ -1,11 +1,11 @@
-var _RhAccordion_instances, _a, _RhAccordion_ctx_get, _RhAccordion_expandedIndex, _RhAccordion_headerIndex, _RhAccordion_initialized, _RhAccordion_logger, _RhAccordion_mo, _RhAccordion_init, _RhAccordion_activeHeader_get, _RhAccordion_updateActiveHeader, _RhAccordion_panelForHeader, _RhAccordion_expandHeader, _RhAccordion_expandPanel, _RhAccordion_collapseHeader, _RhAccordion_collapsePanel, _RhAccordion_onChange, _RhAccordion_allHeaders, _RhAccordion_allPanels, _RhAccordion_getIndex;
+var _RhAccordion_instances, _a, _RhAccordion_expandedIndex, _RhAccordion_tabindex, _RhAccordion_logger, _RhAccordion_mo, _RhAccordion_makeContext, _RhAccordion_panelForHeader, _RhAccordion_expandHeader, _RhAccordion_expandPanel, _RhAccordion_collapseHeader, _RhAccordion_collapsePanel, _RhAccordion_onChange, _RhAccordion_allHeaders, _RhAccordion_allPanels, _RhAccordion_getIndex;
 var RhAccordion_1;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { observed } from '@patternfly/pfe-core/decorators/observed.js';
+import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 import { provide } from '@lit/context';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 import { colorContextConsumer } from '../../lib/context/color/consumer.js';
@@ -33,20 +33,11 @@ export class AccordionCollapseEvent extends ComposedEvent {
 }
 /**
  * An accordion is a stacked list of panels which allows users to expand or collapse information when selected. They feature panels that consist of a section text label and a caret icon that collapses or expands to reveal more information.
- *
  * @summary Expands or collapses a stacked list of panels
- *
  * @fires {AccordionExpandEvent} expand - when a panel expands
  * @fires {AccordionCollapseEvent} collapse - when a panel collapses
- *
- *
- * @slot
- *       Place the `rh-accordion-header` and `rh-accordion-panel` elements here.
- *
- * @attr  accents
- *        Position accents in the header either inline or bottom
- *        {@default inline}
- *
+ * @slot - Place the `rh-accordion-header` and `rh-accordion-panel` elements here.
+ * @attr  [accents=inline] Position accents in the header either inline or bottom
  */
 let RhAccordion = RhAccordion_1 = _a = class RhAccordion extends LitElement {
     constructor() {
@@ -56,13 +47,14 @@ let RhAccordion = RhAccordion_1 = _a = class RhAccordion extends LitElement {
         this.bordered = true;
         this.expandedSets = new Set();
         _RhAccordion_expandedIndex.set(this, []);
-        _RhAccordion_headerIndex.set(this, new RovingTabindexController(this));
-        // actually is read in #init, by the `||=` operator
+        // side effects are used
         // eslint-disable-next-line no-unused-private-class-members
-        _RhAccordion_initialized.set(this, false);
+        _RhAccordion_tabindex.set(this, RovingTabindexController.of(this, {
+            getItems: () => this.headers.flatMap(x => x.hasUpdated ? [x.shadowRoot.querySelector('button')] : []),
+        }));
         _RhAccordion_logger.set(this, new Logger(this));
-        _RhAccordion_mo.set(this, new MutationObserver(() => __classPrivateFieldGet(this, _RhAccordion_instances, "m", _RhAccordion_init).call(this)));
-        this.ctx = __classPrivateFieldGet(this, _RhAccordion_instances, "a", _RhAccordion_ctx_get);
+        _RhAccordion_mo.set(this, new MutationObserver(() => this.updateAccessibility()));
+        this.ctx = __classPrivateFieldGet(this, _RhAccordion_instances, "m", _RhAccordion_makeContext).call(this);
     }
     static isAccordion(target) {
         return target instanceof RhAccordion_1;
@@ -104,15 +96,7 @@ let RhAccordion = RhAccordion_1 = _a = class RhAccordion extends LitElement {
         super.connectedCallback();
         this.addEventListener('change', __classPrivateFieldGet(this, _RhAccordion_instances, "m", _RhAccordion_onChange));
         __classPrivateFieldGet(this, _RhAccordion_mo, "f").observe(this, { childList: true });
-        __classPrivateFieldGet(this, _RhAccordion_instances, "m", _RhAccordion_init).call(this);
-    }
-    render() {
-        const { on = '' } = this;
-        return html `
-      <div id="container" class="${classMap({ [on]: !!on })}"><slot></slot></div>
-    `;
-    }
-    async firstUpdated() {
+        this.updateAccessibility();
         const { headers } = this;
         headers.forEach((header, index) => {
             if (header.expanded) {
@@ -120,10 +104,16 @@ let RhAccordion = RhAccordion_1 = _a = class RhAccordion extends LitElement {
                 const panel = __classPrivateFieldGet(this, _RhAccordion_instances, "m", _RhAccordion_panelForHeader).call(this, header);
                 if (panel) {
                     __classPrivateFieldGet(this, _RhAccordion_instances, "m", _RhAccordion_expandPanel).call(this, panel);
+                    panel.hidden = !panel.expanded;
                 }
             }
         });
-        this.ctx = __classPrivateFieldGet(this, _RhAccordion_instances, "a", _RhAccordion_ctx_get);
+    }
+    render() {
+        const { on = '' } = this;
+        return html `
+      <div id="container" class="${classMap({ [on]: !!on })}"><slot></slot></div>
+    `;
     }
     async getUpdateComplete() {
         const c = await super.getUpdateComplete();
@@ -133,26 +123,35 @@ let RhAccordion = RhAccordion_1 = _a = class RhAccordion extends LitElement {
         ]);
         return c && results.every(Boolean);
     }
+    contextChanged() {
+        this.ctx = __classPrivateFieldGet(this, _RhAccordion_instances, "m", _RhAccordion_makeContext).call(this);
+    }
     get headers() {
         return __classPrivateFieldGet(this, _RhAccordion_instances, "m", _RhAccordion_allHeaders).call(this);
     }
     get panels() {
         return __classPrivateFieldGet(this, _RhAccordion_instances, "m", _RhAccordion_allPanels).call(this);
     }
+    /**
+     * Initialize the accordion by connecting headers and panels
+     * with aria controls and labels; set up the default disclosure
+     * state if not set by the author; and check the URL for default
+     * open
+     */
     updateAccessibility() {
         const { headers } = this;
         // For each header in the accordion, attach the aria connections
-        headers.forEach(header => {
+        for (const header of headers) {
             const panel = __classPrivateFieldGet(this, _RhAccordion_instances, "m", _RhAccordion_panelForHeader).call(this, header);
             if (panel) {
                 header.setAttribute('aria-controls', panel.id);
                 panel.setAttribute('aria-labelledby', header.id);
-                panel.hidden = !panel.expanded;
             }
-        });
+        }
     }
     /**
      * Accepts a 0-based index value (integer) for the set of accordion items to expand or collapse.
+     * @param index header index to toggle
      */
     async toggle(index) {
         const { headers } = this;
@@ -167,6 +166,8 @@ let RhAccordion = RhAccordion_1 = _a = class RhAccordion extends LitElement {
     /**
      * Accepts a 0-based index value (integer) for the set of accordion items to expand.
      * Accepts an optional parent accordion to search for headers and panels.
+     * @param index header index to toggle
+     * @param parentAccordion target accordion to expand in
      */
     async expand(index, parentAccordion) {
         const allHeaders = __classPrivateFieldGet(this, _RhAccordion_instances, "m", _RhAccordion_allHeaders).call(this, parentAccordion);
@@ -179,9 +180,9 @@ let RhAccordion = RhAccordion_1 = _a = class RhAccordion extends LitElement {
             return;
         }
         // If the header and panel exist, open both
-        __classPrivateFieldGet(this, _RhAccordion_instances, "m", _RhAccordion_expandHeader).call(this, header, index),
-            __classPrivateFieldGet(this, _RhAccordion_instances, "m", _RhAccordion_expandPanel).call(this, panel),
-            header.focus();
+        __classPrivateFieldGet(this, _RhAccordion_instances, "m", _RhAccordion_expandHeader).call(this, header, index);
+        __classPrivateFieldGet(this, _RhAccordion_instances, "m", _RhAccordion_expandPanel).call(this, panel);
+        header.focus();
         this.dispatchEvent(new AccordionExpandEvent(header, panel));
         await this.updateComplete;
     }
@@ -195,6 +196,7 @@ let RhAccordion = RhAccordion_1 = _a = class RhAccordion extends LitElement {
     }
     /**
      * Accepts a 0-based index value (integer) for the set of accordion items to collapse.
+     * @param index header index to collapse
      */
     async collapse(index) {
         const header = this.headers.at(index);
@@ -217,43 +219,18 @@ let RhAccordion = RhAccordion_1 = _a = class RhAccordion extends LitElement {
     }
 };
 _RhAccordion_expandedIndex = new WeakMap();
-_RhAccordion_headerIndex = new WeakMap();
-_RhAccordion_initialized = new WeakMap();
+_RhAccordion_tabindex = new WeakMap();
 _RhAccordion_logger = new WeakMap();
 _RhAccordion_mo = new WeakMap();
 _RhAccordion_instances = new WeakSet();
-_RhAccordion_ctx_get = function _RhAccordion_ctx_get() {
-    const accents = this.accents ? this.accents : 'inline';
-    return { accents };
-};
-_RhAccordion_init = 
-/**
- * Initialize the accordion by connecting headers and panels
- * with aria controls and labels; set up the default disclosure
- * state if not set by the author; and check the URL for default
- * open
- */
-async function _RhAccordion_init() {
-    __classPrivateFieldSet(this, _RhAccordion_initialized, __classPrivateFieldGet(this, _RhAccordion_initialized, "f") || !!await this.updateComplete, "f");
-    __classPrivateFieldGet(this, _RhAccordion_headerIndex, "f").initItems(this.headers);
-    // Event listener to the accordion header after the accordion has been initialized to add the roving tabindex
-    this.addEventListener('focusin', __classPrivateFieldGet(this, _RhAccordion_instances, "m", _RhAccordion_updateActiveHeader));
-    this.updateAccessibility();
-};
-_RhAccordion_activeHeader_get = function _RhAccordion_activeHeader_get() {
-    const { headers } = this;
-    const index = headers.findIndex(header => header.matches(':focus,:focus-within'));
-    return index > -1 ? headers.at(index) : undefined;
-};
-_RhAccordion_updateActiveHeader = function _RhAccordion_updateActiveHeader() {
-    if (__classPrivateFieldGet(this, _RhAccordion_instances, "a", _RhAccordion_activeHeader_get)) {
-        __classPrivateFieldGet(this, _RhAccordion_headerIndex, "f").setActiveItem(__classPrivateFieldGet(this, _RhAccordion_instances, "a", _RhAccordion_activeHeader_get));
-    }
+_RhAccordion_makeContext = function _RhAccordion_makeContext() {
+    const { accents = 'inline', large } = this;
+    return { accents, large };
 };
 _RhAccordion_panelForHeader = function _RhAccordion_panelForHeader(header) {
     const next = header.nextElementSibling;
     if (!RhAccordion_1.isPanel(next)) {
-        return void __classPrivateFieldGet(this, _RhAccordion_logger, "f").error('Sibling element to a header needs to be a panel');
+        return next?.querySelector('rh-accordion-panel');
     }
     else {
         return next;
@@ -315,10 +292,7 @@ _RhAccordion_getIndex = function _RhAccordion_getIndex(el) {
 RhAccordion.version = '{{version}}';
 RhAccordion.styles = [styles];
 __decorate([
-    property({
-        attribute: true,
-        reflect: true,
-    })
+    property({ attribute: true, reflect: true })
 ], RhAccordion.prototype, "accents", void 0);
 __decorate([
     property({
@@ -327,9 +301,6 @@ __decorate([
     })
 ], RhAccordion.prototype, "expandedIndex", null);
 __decorate([
-    observed(function largeChanged() {
-        [...this.headers, ...this.panels].forEach(el => el.toggleAttribute('large', this.large));
-    }),
     property({ reflect: true, type: Boolean })
 ], RhAccordion.prototype, "large", void 0);
 __decorate([
@@ -345,6 +316,11 @@ __decorate([
 __decorate([
     provide({ context })
 ], RhAccordion.prototype, "ctx", void 0);
+__decorate([
+    observes('accents'),
+    observes('large'),
+    observes('bordered')
+], RhAccordion.prototype, "contextChanged", null);
 RhAccordion = RhAccordion_1 = __decorate([
     customElement('rh-accordion')
 ], RhAccordion);

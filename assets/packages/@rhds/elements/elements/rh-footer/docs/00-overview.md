@@ -2,7 +2,7 @@
 
 {{ tagName | getElementDescription }}
 
-{% repoStatusList %}
+{% repoStatusList repoStatus=repoStatus %}
 
 ## Sample element
 <rh-footer data-analytics-region="page-footer">
@@ -89,4 +89,4 @@
   - When you want to give users persistent access to secondary content outside of the navigation
   - When you need a place to put copyright or legal information
 
- {% repoStatusChecklist %}
+ {% repoStatusChecklist repoStatus=repoStatus %}

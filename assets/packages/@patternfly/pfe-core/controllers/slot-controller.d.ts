@@ -38,37 +38,33 @@ export declare class SlotController implements ReactiveController {
     /**
      * Given a slot name or slot names, returns elements assigned to the requested slots as an array.
      * If no value is provided, it returns all children not assigned to a slot (without a slot attribute).
-     *
+     * @param slotNames slots to query
      * @example Get header-slotted elements
-     * ```js
-     * this.getSlotted('header')
-     * ```
-     *
+     *          ```js
+     *          this.getSlotted('header')
+     *          ```
      * @example Get header- and footer-slotted elements
-     * ```js
-     * this.getSlotted('header', 'footer')
-     * ```
-     *
+     *          ```js
+     *          this.getSlotted('header', 'footer')
+     *          ```
      * @example Get default-slotted elements
-     * ```js
-     * this.getSlotted();
-     * ```
+     *          ```js
+     *          this.getSlotted();
+     *          ```
      */
     getSlotted<T extends Element = Element>(...slotNames: string[]): T[];
     /**
      * Returns a boolean statement of whether or not any of those slots exists in the light DOM.
-     *
      * @param names The slot names to check.
      * @example this.hasSlotted('header');
      */
     hasSlotted(...names: (string | null | undefined)[]): boolean;
     /**
      * Whether or not all the requested slots are empty.
-     *
-     * @param  slots The slot name.  If no value is provided, it returns the default slot.
+     * @param  names The slot names to query.  If no value is provided, it returns the default slot.
      * @example this.isEmpty('header', 'footer');
      * @example this.isEmpty();
-     * @returns {Boolean}
+     * @returns
      */
     isEmpty(...names: (string | null | undefined)[]): boolean;
 }

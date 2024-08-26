@@ -1,4 +1,5 @@
-import { LitElement, type PropertyValues } from 'lit';
+import { LitElement, type TemplateResult } from 'lit';
+import { PfChip } from './pf-chip.js';
 export declare class PfChipGroupExpandEvent extends Event {
     constructor();
 }
@@ -11,19 +12,27 @@ export declare class PfChipGroupRemoveEvent extends Event {
  * @fires remove - Fires when chip group is closed/removed
  * @slot category-name
  *      Category name text for chip group category. If this prop is supplied chip group with have a label and category styling applied
- * @slot
- *      Should be <Chip> elements.
+ * @slot - `<pf-chip>` elements.
+ * @cssprop [--pf-c-chip-group__list--MarginBottom=calc(var(--pf-global--spacer--xs, 0.25rem) * -1)]
+ * @cssprop [--pf-c-chip-group__list--MarginRight=calc(var(--pf-global--spacer--xs, 0.25rem) * -1)]
+ * @cssprop [--pf-c-chip-group--m-category--PaddingTop=var(--pf-global--spacer--xs, 0.25rem)]
+ * @cssprop [--pf-c-chip-group--m-category--PaddingRight=var(--pf-global--spacer--xs, 0.25rem)]
+ * @cssprop [--pf-c-chip-group--m-category--PaddingBottom=var(--pf-global--spacer--xs, 0.25rem)]
+ * @cssprop [--pf-c-chip-group--m-category--PaddingLeft=var(--pf-global--spacer--sm, 0.5rem)]
+ * @cssprop [--pf-c-chip-group--m-category--BorderRadius=var(--pf-global--BorderRadius--sm, 3px)]
+ * @cssprop [--pf-c-chip-group--m-category--BackgroundColor=var(--pf-global--BackgroundColor--200, #f0f0f0)]
+ * @cssprop [--pf-c-chip-group__label--MarginRight=var(--pf-global--spacer--sm, 0.5rem)]
+ * @cssprop [--pf-c-chip-group__label--FontSize=var(--pf-global--FontSize--sm, 0.875rem)]
+ * @cssprop [--pf-c-chip-group__label--MaxWidth=18ch]
+ * @cssprop [--pf-c-chip-group__close--MarginTop=calc(var(--pf-global--spacer--xs, 0.25rem) * -1)]
+ * @cssprop [--pf-c-chip-group__close--MarginBottom=calc(var(--pf-global--spacer--xs, 0.25rem) * -1)]
+ * @cssprop [--pf-c-chip-group__list-item--MarginRight=var(--pf-global--spacer--xs, 0.25rem)]
+ * @cssprop [--pf-c-chip-group__list-item--MarginBottom=var(--pf-global--spacer--xs, 0.25rem)]
  */
 export declare class PfChipGroup extends LitElement {
     #private;
     static readonly styles: CSSStyleSheet[];
-    static readonly shadowRootOptions: {
-        delegatesFocus: boolean;
-        mode: ShadowRootMode;
-        slotAssignment?: SlotAssignmentMode | undefined;
-        customElements?: CustomElementRegistry | undefined;
-        registry?: CustomElementRegistry | undefined;
-    };
+    static readonly shadowRootOptions: ShadowRootInit;
     /**
      * Accessible label for chip group that does not have a category name
      */
@@ -55,9 +64,6 @@ export declare class PfChipGroup extends LitElement {
     private _overflowChip?;
     private _button?;
     private _categorySlotted?;
-    constructor();
-    render(): import("lit-html").TemplateResult<1>;
-    updated(changed: PropertyValues<this>): void;
     /**
      * active chip that receives focus when group receives focus
      */
@@ -68,10 +74,17 @@ export declare class PfChipGroup extends LitElement {
      */
     get hasCategory(): boolean;
     get remaining(): number;
+    constructor();
+    render(): TemplateResult<1>;
+    /**
+     * updates chips when they change
+     */
+    private chipsChanged;
     /**
      * Activates the specified chip and sets focus on it
+     * @param chip pf-chip element
      */
-    focusOnChip(chip: HTMLElement): void;
+    focusOnChip(chip: PfChip): void;
 }
 declare global {
     interface HTMLElementTagNameMap {

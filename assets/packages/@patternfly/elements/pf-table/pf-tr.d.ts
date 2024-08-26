@@ -25,7 +25,7 @@ export declare class PfTr extends LitElement {
     expanded: boolean | string;
     connectedCallback(): void;
     willUpdate(changed: PropertyValues<this>): void;
-    render(): (false | "" | import("lit-html").TemplateResult<1>)[];
+    render(): (false | '' | import('lit-html').TemplateResult<1>)[];
 }
 declare global {
     interface HTMLElementTagNameMap {

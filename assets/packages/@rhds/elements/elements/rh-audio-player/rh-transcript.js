@@ -3,17 +3,17 @@ import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tsli
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+import { state } from 'lit/decorators/state.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 import { RhCue, getFormattedTime } from './rh-cue.js';
-import './rh-audio-player-scrolling-text-overflow.js';
-import '../rh-tooltip/rh-tooltip.js';
+import { HeadingLevelContextConsumer } from '@rhds/elements/lib/context/headings/consumer.js';
+import { HeadingLevelContextProvider } from '@rhds/elements/lib/context/headings/provider.js';
 import buttonStyles from "./rh-audio-player-button.css.js";
 import panelStyles from "./rh-audio-player-panel.css.js";
 import { css } from "lit";
 const styles = css `.panel-toolbar{display:flex;align-items:center;justify-content:flex-end;border:1px solid var(--_static-border-color);color:var(--_static-text-color);background-color:var(--_static-surface-color)}#download-tooltip,label{flex:0 0 auto}#download-tooltip{margin-inline-start:var(--rh-space-md,8px);--_svg-size:18px}#cues{display:block;max-height:240px;overflow-y:auto;border:1px solid var(--_static-border-color);padding:var(--_player-padding,var(--rh-space-md,8px));color:var(--_static-text-color);background-color:var(--_static-surface-color)}`;
-import { state } from 'lit/decorators/state.js';
-import { HeadingLevelContextConsumer } from '../../lib/context/headings/consumer.js';
-import { HeadingLevelContextProvider } from '../../lib/context/headings/provider.js';
+import './rh-audio-player-scrolling-text-overflow.js';
+import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 const icon = html `
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
     <path d="M7.56 12.45a.63.63 0 0 0 .88 0l4-4a.63.63 0 1 0-.88-.89L8.63 10.5V2A.62.62 0 0 0 8 1.38a.63.63 0 0 0-.63.62v8.5L4.44 7.56a.63.63 0 1 0-.88.89ZM14 14.38H2a.63.63 0 1 0 0 1.25h12a.63.63 0 0 0 0-1.25Z"/>

@@ -32,6 +32,9 @@ export declare class ScrollSpyController implements ReactiveController {
     set threshold(v: number | number[]);
     constructor(host: ReactiveControllerHost & HTMLElement, options: ScrollSpyControllerOptions);
     hostConnected(): void;
-    /** Explicitly set the active item */
+    /**
+     * Explicitly set the active item
+     * @param link usually an `<a>`
+     */
     setActive(link: EventTarget | null): Promise<void>;
 }

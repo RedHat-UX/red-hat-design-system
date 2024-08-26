@@ -1,33 +1,62 @@
-export const observedController = Symbol('observed properties controller');
-/** This controller holds a cache of observed property values which were set before the element updated */
+var _PropertyObserverController_instances, _PropertyObserverController_neverRan, _PropertyObserverController_init;
+import { __classPrivateFieldGet, __classPrivateFieldSet } from "tslib";
+import { notEqual } from 'lit';
+const UNINITIALIZED = Symbol('uninitialized');
 export class PropertyObserverController {
-    delete(key) {
-        this.values.delete(key);
-    }
-    constructor(host) {
+    constructor(host, options) {
+        _PropertyObserverController_instances.add(this);
         this.host = host;
-        this.values = new Map();
-        if (PropertyObserverController.hosts.get(host)) {
-            return PropertyObserverController.hosts.get(host);
-        }
-        host.addController(this);
-        host[observedController] = this;
+        this.options = options;
+        this.oldVal = UNINITIALIZED;
+        _PropertyObserverController_neverRan.set(this, true);
+    }
+    hostConnected() {
+        __classPrivateFieldGet(this, _PropertyObserverController_instances, "m", _PropertyObserverController_init).call(this);
     }
     /** Set any cached valued accumulated between constructor and connectedCallback */
-    hostUpdate() {
-        for (const [key, [methodName, [oldVal, newVal]]] of this.values) {
-            // @ts-expect-error: be cool, typescript
-            this.host[methodName]?.(oldVal, newVal);
-            this.delete(key);
+    async hostUpdate() {
+        __classPrivateFieldGet(this, _PropertyObserverController_instances, "m", _PropertyObserverController_init).call(this);
+        const { oldVal, options: { waitFor, propertyName, callback } } = this;
+        if (!callback) {
+            throw new Error(`no callback for ${propertyName}`);
+        }
+        const newVal = this.host[propertyName];
+        this.oldVal = newVal;
+        if (newVal !== oldVal) {
+            switch (waitFor) {
+                case 'connected':
+                    if (!this.host.isConnected) {
+                        const origConnected = this.host.connectedCallback;
+                        await new Promise(resolve => {
+                            this.host.connectedCallback = function () {
+                                resolve(origConnected?.call(this));
+                            };
+                        });
+                    }
+                    break;
+                case 'firstUpdated':
+                    if (!this.host.hasUpdated) {
+                        await this.host.updateComplete;
+                    }
+                    break;
+                case 'updated':
+                    await this.host.updateComplete;
+                    break;
+            }
+        }
+        const Class = this.host.constructor;
+        const hasChanged = Class
+            .getPropertyOptions(this.options.propertyName)
+            .hasChanged ?? notEqual;
+        if (__classPrivateFieldGet(this, _PropertyObserverController_neverRan, "f") || hasChanged(oldVal, newVal)) {
+            callback.call(this.host, oldVal, newVal);
+            __classPrivateFieldSet(this, _PropertyObserverController_neverRan, false, "f");
         }
     }
-    /** Once the element has updated, we no longer need this controller, so we remove it */
-    hostUpdated() {
-        this.host.removeController(this);
-    }
-    cache(key, methodName, ...vals) {
-        this.values.set(key, [methodName, vals]);
-    }
 }
-PropertyObserverController.hosts = new WeakMap();
+_PropertyObserverController_neverRan = new WeakMap(), _PropertyObserverController_instances = new WeakSet(), _PropertyObserverController_init = function _PropertyObserverController_init() {
+    if (this.oldVal === UNINITIALIZED) {
+        this.oldVal = this.host[this.options.propertyName];
+    }
+};
 //# sourceMappingURL=property-observer-controller.js.map

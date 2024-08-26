@@ -1,7 +1,6 @@
 import { html, expect, oneEvent, nextFrame } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
-import { PfAvatar } from '@patternfly/elements/pf-avatar/pf-avatar.js';
-import { AvatarLoadEvent } from '../BaseAvatar';
+import { PfAvatar, PfAvatarLoadEvent } from '@patternfly/elements/pf-avatar/pf-avatar.js';
 describe('<pf-avatar>', function () {
     it('imperatively instantiates', function () {
         expect(document.createElement('pf-avatar')).to.be.an.instanceof(PfAvatar);
@@ -35,7 +34,7 @@ describe('<pf-avatar>', function () {
         beforeEach(async function () {
             element = await createFixture(html `<pf-avatar @load="${onLoad}"></pf-avatar>`);
             setTimeout(() => element.src = datauri);
-            await oneEvent(element, 'load', false);
+            await oneEvent(element, 'load');
         });
         it('loads the image', function () {
             expect(loaded).to.equal(datauri);

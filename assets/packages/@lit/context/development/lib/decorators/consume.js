@@ -43,8 +43,7 @@ export function consume({ context, subscribe, }) {
                 new ContextConsumer(this, {
                     context,
                     callback: (value) => {
-                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                        this[nameOrContext.name] = value;
+                        protoOrTarget.set.call(this, value);
                     },
                     subscribe,
                 });

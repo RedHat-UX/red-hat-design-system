@@ -6,7 +6,7 @@
 /**
  * Creates a typed Context.
  *
- * Contexts are compared with with strict equality.
+ * Contexts are compared with strict equality.
  *
  * If you want two separate `createContext()` calls to referer to the same
  * context, then use a key that will by equal under strict equality like a

@@ -12,12 +12,13 @@ export declare class RhSkipLink extends LitElement {
     static shadowRootOptions: {
         delegatesFocus: boolean;
         mode: ShadowRootMode;
-        slotAssignment?: SlotAssignmentMode | undefined;
-        customElements?: CustomElementRegistry | undefined;
-        registry?: CustomElementRegistry | undefined;
+        serializable?: boolean;
+        slotAssignment?: SlotAssignmentMode;
+        customElements?: CustomElementRegistry;
+        registry?: CustomElementRegistry;
     };
     static readonly styles: CSSStyleSheet[];
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

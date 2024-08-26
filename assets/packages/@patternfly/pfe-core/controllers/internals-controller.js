@@ -1,11 +1,16 @@
 var _InternalsController_instances, _InternalsController_polyfillDisabledPseudo;
 import { __classPrivateFieldGet, __decorate } from "tslib";
+import { isServer, } from 'lit';
 function isARIAMixinProp(key) {
     return key === 'role' || key.startsWith('aria');
 }
 const protos = new WeakMap();
 let constructingAllowed = false;
-/** reactively forward the internals object's aria mixin prototype */
+/**
+ * reactively forward the internals object's aria mixin prototype
+ * @param target
+ * @param key
+ */
 function aria(target, key) {
     if (!protos.has(target)) {
         protos.set(target, new Set());
@@ -22,13 +27,16 @@ function aria(target, key) {
         configurable: false,
         get() {
             // @ts-expect-error: because i'm bad, i'm bad
-            return this.attach()[key];
+            const internals = this.attachOrRetrieveInternals();
+            return internals[key];
         },
         set(value) {
+            // @ts-expect-error: ya know it!
+            const internals = this.attachOrRetrieveInternals();
             // @ts-expect-error: shamone!
-            this.attach()[key] = value;
+            internals[key] = value;
             this.host.requestUpdate();
-        }
+        },
     });
     protos.get(target).add(key);
 }
@@ -42,20 +50,28 @@ function getLabelText(label) {
     }
 }
 export class InternalsController {
+    static getLabels(host) {
+        return Array.from(this.instances.get(host)?.internals.labels ?? []);
+    }
     static of(host, options) {
         constructingAllowed = true;
         // implement the singleton pattern
         // using a public static constructor method is much easier to manage,
         // due to the quirks of our typescript config
-        const instance = InternalsController.instances.get(host) ??
-            new InternalsController(host, options);
+        const instance = InternalsController.instances.get(host)
+            ?? new InternalsController(host, options);
         instance.initializeOptions(options);
         constructingAllowed = false;
         return instance;
     }
     /** True when the control is disabled via it's containing fieldset element */
     get formDisabled() {
-        return this.element?.matches(':disabled') || this._formDisabled;
+        if (isServer) {
+            return this._formDisabled;
+        }
+        else {
+            return this.element?.matches(':disabled') || this._formDisabled;
+        }
     }
     get labels() {
         return this.internals.labels;
@@ -65,12 +81,19 @@ export class InternalsController {
     }
     /** A best-attempt based on observed behaviour in FireFox 115 on fedora 38 */
     get computedLabelText() {
-        return this.internals.ariaLabel ||
-            Array.from(this.internals.labels)
+        return this.internals.ariaLabel
+            || Array.from(this.internals.labels)
                 .reduce((acc, label) => `${acc}${getLabelText(label)}`, '');
     }
     get element() {
-        return this.host instanceof HTMLElement ? this.host : this.options?.getHTMLElement?.();
+        if (isServer) {
+            // FIXME(bennyp): a little white lie, which may break
+            // when the controller is applied to non-lit frameworks.
+            return this.host;
+        }
+        else {
+            return this.host instanceof HTMLElement ? this.host : this.options?.getHTMLElement?.();
+        }
     }
     constructor(host, options) {
         _InternalsController_instances.add(this);
@@ -81,6 +104,8 @@ export class InternalsController {
         this.ariaAtomic = null;
         this.ariaAutoComplete = null;
         this.ariaBusy = null;
+        this.ariaBrailleLabel = null;
+        this.ariaBrailleRoleDescription = null;
         this.ariaChecked = null;
         this.ariaColCount = null;
         this.ariaColIndex = null;
@@ -139,9 +164,9 @@ export class InternalsController {
             throw new Error('InternalsController must be constructed with `InternalsController.for()`');
         }
         if (!this.element) {
-            throw new Error('InternalsController must be instantiated with an HTMLElement or a `getHTMLElement` function');
+            throw new Error(`InternalsController must be instantiated with an HTMLElement or a \`getHTMLElement\` function`);
         }
-        this.attach();
+        this.attachOrRetrieveInternals();
         this.initializeOptions(options);
         InternalsController.instances.set(host, this);
         __classPrivateFieldGet(this, _InternalsController_instances, "m", _InternalsController_polyfillDisabledPseudo).call(this);
@@ -155,7 +180,7 @@ export class InternalsController {
      * Because of that, `this.internals` may not be available in the decorator setter
      * so we cheat here with nullish coalescing assignment operator `??=`;
      */
-    attach() {
+    attachOrRetrieveInternals() {
         this.internals ?? (this.internals = this.element.attachInternals());
         return this.internals;
     }
@@ -201,6 +226,7 @@ _InternalsController_instances = new WeakSet(), _InternalsController_polyfillDis
     };
 };
 InternalsController.instances = new WeakMap();
+InternalsController.isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 __decorate([
     aria
 ], InternalsController.prototype, "role", void 0);
@@ -216,6 +242,12 @@ __decorate([
 __decorate([
     aria
 ], InternalsController.prototype, "ariaBusy", void 0);
+__decorate([
+    aria
+], InternalsController.prototype, "ariaBrailleLabel", void 0);
+__decorate([
+    aria
+], InternalsController.prototype, "ariaBrailleRoleDescription", void 0);
 __decorate([
     aria
 ], InternalsController.prototype, "ariaChecked", void 0);

@@ -1,4 +1,4 @@
-import { LitElement } from 'lit';
+import { LitElement, type TemplateResult } from 'lit';
 /**
  * Table data cell
  * @slot - Place element content here
@@ -9,7 +9,7 @@ export declare class PfTd extends LitElement {
     compoundExpand?: string;
     expanded: boolean;
     connectedCallback(): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

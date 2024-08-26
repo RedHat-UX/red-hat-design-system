@@ -1,4 +1,4 @@
-import type { PropertyValues } from 'lit';
+import type { PropertyValues, TemplateResult } from 'lit';
 import { LitElement } from 'lit';
 import { type DateTimeFormat } from '@patternfly/pfe-core/controllers/timestamp-controller.js';
 /**
@@ -21,7 +21,7 @@ export declare class PfTimestamp extends LitElement {
     get time(): string;
     connectedCallback(): void;
     willUpdate(changedProperties: PropertyValues<this>): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

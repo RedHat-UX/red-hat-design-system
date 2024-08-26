@@ -64,10 +64,6 @@ const StringOrBooleanConverter = {
         }
     },
 };
-/**
- * Table row
- * @slot - Place element content here
- */
 let PfTr = class PfTr extends LitElement {
     constructor() {
         super(...arguments);
@@ -142,6 +138,7 @@ _PfTr_onClick = function _PfTr_onClick() {
     this.dispatchEvent(new RequestExpandEvent());
 };
 PfTr.styles = [styles];
+PfTr.version = "4.0.0";
 __decorate([
     property({
         reflect: true,

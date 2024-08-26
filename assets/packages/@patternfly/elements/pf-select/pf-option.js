@@ -5,19 +5,10 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { queryAssignedNodes } from 'lit/decorators/query-assigned-nodes.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
+import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 import { css } from "lit";
-const styles = css `:host {\n  display: block;\n}\n\n:host([hidden]),\n*[hidden] {\n  display: none !important;\n}\n\n:host([disabled]) {\n  pointer-events: none !important;\n  cursor: not-allowed !important;\n}\n\n:host(:focus) #outer,\n:host(:hover) #outer,\n:host([aria-selected="true"]) {\n  background-color: #e0e0e0;\n}\n\n#outer {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  justify-content: flex-start;\n  padding: var(--pf-global--spacer--sm, 0.5rem) var(--pf-global--spacer--md, 1rem);\n  min-height: calc(44px - 2 * var(--pf-global--spacer--sm, 0.5rem));\n  min-width: calc(44px - 2 * var(--pf-global--spacer--md, 1rem));\n}\n\n#outer.active {\n  background-color: var(--_active-descendant-color, var(--pf-theme--color--surface--lighter, #f0f0f0));\n}\n\n:host([disabled]) #outer {\n  color: var(--pf-global--Color--dark-200, #6a6e73) !important;\n}\n\ninput[type="checkbox"] {\n  margin-inline-end: 1em;\n  display: var(--_pf-option-checkboxes-display, none);\n  pointer-events: none;\n  flex: 0 0 auto;\n}\n\nspan {\n  flex: 1 1 auto;\n}\n\nsvg {\n  font-size: var(--pf-c-select__menu-item-icon--FontSize, var(--pf-global--icon--FontSize--sm, 0.675rem));\n  color: var(--_svg-color, var(--pf-theme--color--accent, #0066cc));\n  width: 1em;\n  height: 1em;\n  margin-inline-start: 1em;\n  text-align: right;\n  flex: 0 0 auto;\n  display: var(--_pf-option-svg-display, block);\n}\n\n#description {\n  display: block;\n  flex: 1 0 100%;\n}\n\nslot[name="description"] {\n  font-size: var(--pf-global--FontSize--xs, 0.75rem);\n  color: var(--pf-global--Color--dark-200, #6a6e73);\n}\n\n::slotted([slot="icon"]) {\n  margin-inline-end: 0.5em;\n}\n\n`;
-/**
- * Option within a listbox
- * @slot -
- *        option text
- * @slot icon
- *        optional icon
- * @slot description
- *        optional description
- */
+const styles = css `:host {\n  display: block;\n}\n\n:host([hidden]),\n*[hidden] {\n  display: none !important;\n}\n\n:host([disabled]) {\n  pointer-events: none !important;\n  cursor: not-allowed !important;\n}\n\n:host(:focus) #outer,\n:host(:hover) #outer,\n#outer.selected {\n  background-color: #e0e0e0;\n}\n\n#outer {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  justify-content: flex-start;\n  padding: var(--pf-global--spacer--sm, 0.5rem) var(--pf-global--spacer--md, 1rem);\n  min-height: calc(44px - 2 * var(--pf-global--spacer--sm, 0.5rem));\n  min-width: calc(44px - 2 * var(--pf-global--spacer--md, 1rem));\n}\n\n#outer.active {\n  background-color: var(--_active-descendant-color, var(--pf-theme--color--surface--lighter, #f0f0f0));\n}\n\n:host([disabled]) #outer {\n  color: var(--pf-global--Color--dark-200, #6a6e73) !important;\n}\n\ninput[type="checkbox"] {\n  margin-inline-end: 1em;\n  display: var(--_pf-option-checkboxes-display, none);\n  pointer-events: none;\n  flex: 0 0 auto;\n}\n\nspan {\n  flex: 1 1 auto;\n}\n\nsvg {\n  font-size: var(--pf-c-select__menu-item-icon--FontSize, var(--pf-global--icon--FontSize--sm, 0.675rem));\n  color: var(--_svg-color, var(--pf-theme--color--accent, #0066cc));\n  width: 1em;\n  height: 1em;\n  margin-inline-start: 1em;\n  text-align: right;\n  flex: 0 0 auto;\n  display: var(--_pf-option-svg-display, block);\n}\n\n#description {\n  display: block;\n  flex: 1 0 100%;\n}\n\nslot[name="description"] {\n  font-size: var(--pf-global--FontSize--xs, 0.75rem);\n  color: var(--pf-global--Color--dark-200, #6a6e73);\n}\n\n::slotted([slot="icon"]) {\n  margin-inline-end: 0.5em;\n}\n\n`;
 let PfOption = class PfOption extends LitElement {
     constructor() {
         super(...arguments);
@@ -69,16 +60,12 @@ let PfOption = class PfOption extends LitElement {
             return 0;
         }
     }
-    connectedCallback() {
-        super.connectedCallback();
-        this.id || (this.id = getRandomId());
-    }
     render() {
-        const { disabled, active } = this;
+        const { disabled, active, selected } = this;
         return html `
-      <div id="outer" class="${classMap({ active, disabled })}">
+      <div id="outer" class="${classMap({ active, disabled, selected })}">
         <input type="checkbox"
-               aria-hidden="true"
+               inert
                role="presentation"
                tabindex="-1"
                ?checked="${this.selected}"
@@ -86,7 +73,7 @@ let PfOption = class PfOption extends LitElement {
         <slot name="icon"></slot>
         <span>
           <slot name="create"></slot>
-          <slot></slot>
+          <slot>${this.value}</slot>
         </span>
         <svg ?hidden="${!this.selected}"
              viewBox="0 0 512 512"
@@ -98,15 +85,11 @@ let PfOption = class PfOption extends LitElement {
       </div>
     `;
     }
-    willUpdate(changed) {
-        if (changed.has('selected')
-            // don't fire on initialization
-            && !(changed.get('selected') === undefined) && this.selected === false) {
-            __classPrivateFieldGet(this, _PfOption_internals, "f").ariaSelected = this.selected ? 'true' : 'false';
-        }
-        if (changed.has('disabled')) {
-            __classPrivateFieldGet(this, _PfOption_internals, "f").ariaDisabled = String(!!this.disabled);
-        }
+    selectedChanged() {
+        __classPrivateFieldGet(this, _PfOption_internals, "f").ariaSelected = String(!!this.selected);
+    }
+    disabledChanged() {
+        __classPrivateFieldGet(this, _PfOption_internals, "f").ariaDisabled = String(!!this.disabled);
     }
     /**
      * text content within option (used for filtering)
@@ -118,6 +101,7 @@ let PfOption = class PfOption extends LitElement {
 _PfOption_value = new WeakMap();
 _PfOption_internals = new WeakMap();
 PfOption.styles = [styles];
+PfOption.version = "4.0.0";
 __decorate([
     property({ type: Boolean, reflect: true })
 ], PfOption.prototype, "disabled", void 0);
@@ -125,10 +109,10 @@ __decorate([
     property({ reflect: true })
 ], PfOption.prototype, "value", null);
 __decorate([
-    property({ type: Boolean })
+    property({ type: Boolean, reflect: true })
 ], PfOption.prototype, "selected", void 0);
 __decorate([
-    property({ type: Boolean })
+    property({ type: Boolean, reflect: true })
 ], PfOption.prototype, "active", void 0);
 __decorate([
     property()
@@ -136,6 +120,12 @@ __decorate([
 __decorate([
     queryAssignedNodes({ slot: '', flatten: true })
 ], PfOption.prototype, "_slottedText", void 0);
+__decorate([
+    observes('selected')
+], PfOption.prototype, "selectedChanged", null);
+__decorate([
+    observes('disabled')
+], PfOption.prototype, "disabledChanged", null);
 PfOption = __decorate([
     customElement('pf-option')
 ], PfOption);

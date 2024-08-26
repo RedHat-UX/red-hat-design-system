@@ -18,13 +18,12 @@ export declare class RhNavigationSecondaryDropdown extends LitElement {
     _container?: HTMLElement;
     expanded: boolean;
     connectedCallback(): void;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
     /**
      * When expanded property changes, check the new value, if true
      * run the `#open()` method, if false run the `#close()` method.
      * @param oldVal {string} - Boolean value in string form
      * @param newVal {string} - Boolean value in string form
-     * @returns
      */
     protected _expandedChanged(oldVal?: 'false' | 'true', newVal?: 'false' | 'true'): void;
     /**
@@ -34,15 +33,8 @@ export declare class RhNavigationSecondaryDropdown extends LitElement {
      */
     private _clickHandler;
 }
-/** @deprecated use rh-navigation-secondary-dropdown */
-declare class RhSecondaryNavDropdown extends RhNavigationSecondaryDropdown {
-    #private;
-    constructor();
-}
 declare global {
     interface HTMLElementTagNameMap {
         'rh-navigation-secondary-dropdown': RhNavigationSecondaryDropdown;
-        'rh-secondary-nav-dropdown': RhSecondaryNavDropdown;
     }
 }
-export {};

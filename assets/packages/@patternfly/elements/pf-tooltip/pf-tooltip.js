@@ -1,6 +1,6 @@
 var _PfTooltip_instances, _PfTooltip_invoker_get, _PfTooltip_content_get, _PfTooltip_referenceTrigger, _PfTooltip_float, _PfTooltip_invokerChanged, _PfTooltip_getReferenceTrigger, _PfTooltip_updateTrigger;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { styleMap } from 'lit/directives/style-map.js';
@@ -12,90 +12,6 @@ import { css } from "lit";
 const styles = css `:host {\n  --_timestamp-text-decoration: underline dashed 1px;\n  --_timestamp-text-underline-offset: 4px;\n  display: inline;\n}\n\n* { box-sizing: border-box; }\n\n#container {\n  display: inline-flex;\n  position: relative;\n  max-width: 100%;\n  --_floating-arrow-size: var(--pf-c-tooltip__arrow--Width, 0.5rem);\n}\n\n#tooltip,\n#tooltip::after {\n  position: absolute;\n}\n\n#tooltip {\n  --_timestamp-text-decoration: none;\n  --_timestamp-text-underline-offset: initial;\n  display: block;\n  opacity: 0;\n  pointer-events: none;\n  z-index: 10000;\n  transition: opacity 300ms cubic-bezier(0.54, 1.5, 0.38, 1.11) 0s;\n  text-align: center;\n  word-break: break-word;\n  translate: var(--_floating-content-translate);\n  max-width: calc(100vw - 10px);\n  width: max-content;\n  top: 0;\n  left: 0;\n  will-change: opacity;\n  line-height: var(--pf-c-tooltip--line-height, 1.5);\n  max-width: var(--pf-c-tooltip--MaxWidth, 18.75rem);\n  box-shadow: var(--pf-c-tooltip--BoxShadow,\n    var(--pf-global--BoxShadow--md,\n      0 0.25rem 0.5rem 0rem rgba(3, 3, 3, 0.12),\n      0 0 0.25rem 0 rgba(3, 3, 3, 0.06)));\n  padding:\n    var(--pf-c-tooltip__content--PaddingTop,\n      var(--pf-global--spacer--sm, 0.5rem))\n    var(--pf-c-tooltip__content--PaddingRight,\n      var(--pf-global--spacer--sm, 0.5rem))\n    var(--pf-c-tooltip__content--PaddingBottom,\n      var(--pf-global--spacer--sm, 0.5rem))\n    var(--pf-c-tooltip__content--PaddingLeft,\n      var(--pf-global--spacer--sm, 0.5rem));\n  font-size: var(--pf-c-tooltip__content--FontSize,\n    var(--pf-global--FontSize--sm, 0.875rem));\n  color: var(--pf-c-tooltip__content--Color,\n    var(--pf-global--Color--light-100, #ffffff));\n  background-color: var(--pf-c-tooltip__content--BackgroundColor,\n    var(--pf-global--BackgroundColor--dark-100, #151515));\n}\n\n#tooltip::after {\n  display: block;\n  content: '';\n  rotate: 45deg;\n  width: var(--_floating-arrow-size);\n  height: var(--_floating-arrow-size);\n  will-change: left top right bottom;\n  background-color: var(--pf-c-tooltip__content--BackgroundColor,\n    var(--pf-global--BackgroundColor--dark-100, #151515));\n}\n\n.open #tooltip {\n  opacity: 1;\n}\n\n/* LEFT */\n.left #tooltip::after          { right: calc(-0.5 * var(--_floating-arrow-size)); }\n.left.center #tooltip::after   { top: calc(50% - 0.5 * var(--_floating-arrow-size)); }\n.left.start #tooltip::after    { top: var(--_floating-arrow-size); }\n.left.end #tooltip::after      { bottom: var(--_floating-arrow-size); }\n\n/* TOP */\n.top #tooltip::after           { top: calc(100% - 0.5 * var(--_floating-arrow-size)); }\n.top.center #tooltip::after    { right: calc(50% - 0.5 * var(--_floating-arrow-size)); }\n.top.start #tooltip::after     { left: var(--_floating-arrow-size); }\n.top.end #tooltip::after       { right: var(--_floating-arrow-size); }\n\n/* RIGHT */\n.right #tooltip::after         { right: calc(100% - 0.5 * var(--_floating-arrow-size)); }\n.right.center #tooltip::after  { top: calc(50% - 0.5 * var(--_floating-arrow-size)); }\n.right.start #tooltip::after   { top: var(--_floating-arrow-size); }\n.right.end #tooltip::after     { bottom: var(--_floating-arrow-size); }\n\n/* BOTTOM */\n.bottom #tooltip::after        { bottom: calc(100% - 0.5 * var(--_floating-arrow-size)); }\n.bottom.center #tooltip::after { right: calc(50% - 0.5 * var(--_floating-arrow-size)); }\n.bottom.start #tooltip::after  { left: var(--_floating-arrow-size); }\n.bottom.end #tooltip::after    { right: var(--_floating-arrow-size); }\n\n`;
 const EnterEvents = ['focusin', 'tap', 'click', 'mouseenter'];
 const ExitEvents = ['focusout', 'blur', 'mouseleave'];
-/**
- * A **tooltip** is in-app messaging used to identify elements on a page with short,
- * clarifying text.
- * @summary Toggle the visibility of helpful or contextual information.
- * @slot
- *       This slot wraps around the element that should be used to invoke the tooltip content to display.
- *       Typically this would be an icon, button, or other small sized element.
- * @slot content
- *       This slot renders the content that will be displayed inside of the tooltip.
- *       Typically this would include a string of text without any additional elements.
- *       This element is wrapped with a div inside of the component to give it the stylings and background colors.
- * @cssprop     {<color>} --pf-c-tooltip__content--BackgroundColor
- *              Sets the background color for the tooltip content.
- *              {@default `#1b1d21`}
- * @cssprop     {<color>} --pf-c-tooltip__content--Color
- *              Sets the font color for the tooltip content.
- *              {@default `#e0e0e0`}
- * @cssprop     {<number>} --pf-c-tooltip--line-height
- *              Sets the font color for the tooltip content.
- *              {@default `1.5`}
- * @cssprop     {<length>} --pf-c-tooltip--MaxWidth
- *              Maximum width for the tooltip.
- *              {@default `18.75rem`}
- * @cssprop     --pf-c-tooltip--BoxShadow
- *              Box shadow for the tooltip.
- *              {@default `0 0.25rem 0.5rem 0rem rgba(3, 3, 3, 0.12), 0 0 0.25rem 0 rgba(3, 3, 3, 0.06)`}
- * @cssprop     {<length>} --pf-c-tooltip__content--PaddingTop
- *              Top padding for the tooltip.
- *              {@default `0.5rem`}
- * @cssprop     {<length>} --pf-c-tooltip__content--PaddingRight
- *              Right padding for the tooltip.
- *              {@default `0.5rem`}
- * @cssprop     {<length>} --pf-c-tooltip__content--PaddingBottom
- *              Bottom padding for the tooltip.
- *              {@default `0.5rem`}
- * @cssprop     {<length>} --pf-c-tooltip__content--PaddingLeft
- *              Left Padding for the tooltip.
- *              {@default `0.5rem`}
- * @cssprop     --pf-c-tooltip__content--FontSize
- *              Font size for the tooltip content.
- *              {@default `0.875rem`}
- * @cssprop     {<length>} --pf-c-tooltip__arrow--Width
- *              Tooltip arrow width.
- *              {@default `0.5rem`}
- * @cssprop     {<length>} --pf-c-tooltip__arrow--Height
- *              Tooltip arrow height.
- *              {@default `0.5rem`}
- * @cssprop     --pf-c-tooltip__arrow--m-top--TranslateX
- *              Positions the tooltip arrow along the x axis for `top` positioned arrows.
- *              {@default `-50%`}
- * @cssprop     --pf-c-tooltip__arrow--m-top--TranslateY
- *              Positions the tooltip arrow along the y axis for `top` positioned arrows.
- *              {@default `50%`}
- * @cssprop     --pf-c-tooltip__arrow--m-top--Rotate
- *              Rotates the tooltip arrow based on degrees of movement for `top` positioned arrows.
- *              {@default `45deg`}
- * @cssprop     --pf-c-tooltip__arrow--m-right--TranslateX
- *              Positions the tooltip arrow along the x axis for `right` positioned arrows.
- *              {@default `-50%`}
- * @cssprop     --pf-c-tooltip__arrow--m-right--TranslateY
- *              Positions the tooltip arrow along the y axis for `right` positioned arrows.
- *              {@default `-50%`}
- * @cssprop     --pf-c-tooltip__arrow--m-right--Rotate
- *              Rotates the tooltip arrow based on degrees of movement for `right` positioned arrows.
- *              {@default `45deg`}
- * @cssprop     --pf-c-tooltip__arrow--m-bottom--TranslateX
- *              Positions the tooltip arrow along the x axis for `bottom` positioned arrows.
- *              {@default `-50%`}
- * @cssprop     --pf-c-tooltip__arrow--m-bottom--TranslateY
- *              Positions the tooltip arrow along the y axis for `bottom` positioned arrows.
- *              {@default `-50%`}
- * @cssprop     --pf-c-tooltip__arrow--m-bottom--Rotate
- *              Rotates the tooltip arrow based on degrees of movement for `bottom` positioned arrows.
- *              {@default `45deg`}
- * @cssprop     --pf-c-tooltip__arrow--m-left--TranslateX
- *              Positions the tooltip arrow along the x axis for `left` positioned arrows.
- *              {@default `50%`}
- * @cssprop     --pf-c-tooltip__arrow--m-left--TranslateY
- *              Positions the tooltip arrow along the y axis for `left` positioned arrows.
- *              {@default `-50%`}
- * @cssprop     --pf-c-tooltip__arrow--m-left--Rotate
- *              Rotates the tooltip arrow based on degrees of movement for `left` positioned arrows.
- *              {@default `45deg`}
- */
 let PfTooltip = class PfTooltip extends LitElement {
     constructor() {
         super(...arguments);
@@ -129,6 +45,7 @@ let PfTooltip = class PfTooltip extends LitElement {
     /**
      * Removes event listeners from the old trigger element and attaches
      * them to the new trigger element.
+     * @param changed changed properties
      */
     willUpdate(changed) {
         if (changed.has('trigger')) {
@@ -190,32 +107,35 @@ _PfTooltip_getReferenceTrigger = function _PfTooltip_getReferenceTrigger() {
         .getElementById(this.trigger?.normalize() ?? '');
 };
 _PfTooltip_updateTrigger = function _PfTooltip_updateTrigger() {
-    const oldReferenceTrigger = __classPrivateFieldGet(this, _PfTooltip_referenceTrigger, "f");
-    __classPrivateFieldSet(this, _PfTooltip_referenceTrigger, this.trigger instanceof HTMLElement ? this.trigger
-        : typeof this.trigger === 'string' ? __classPrivateFieldGet(this, _PfTooltip_instances, "m", _PfTooltip_getReferenceTrigger).call(this)
-            : null, "f");
-    for (const evt of EnterEvents) {
-        if (__classPrivateFieldGet(this, _PfTooltip_referenceTrigger, "f")) {
-            this.removeEventListener(evt, this.show);
-            __classPrivateFieldGet(this, _PfTooltip_referenceTrigger, "f").addEventListener(evt, this.show);
+    if (!isServer) {
+        const oldReferenceTrigger = __classPrivateFieldGet(this, _PfTooltip_referenceTrigger, "f");
+        __classPrivateFieldSet(this, _PfTooltip_referenceTrigger, this.trigger instanceof HTMLElement ? this.trigger
+            : typeof this.trigger === 'string' ? __classPrivateFieldGet(this, _PfTooltip_instances, "m", _PfTooltip_getReferenceTrigger).call(this)
+                : null, "f");
+        for (const evt of EnterEvents) {
+            if (__classPrivateFieldGet(this, _PfTooltip_referenceTrigger, "f")) {
+                this.removeEventListener(evt, this.show);
+                __classPrivateFieldGet(this, _PfTooltip_referenceTrigger, "f").addEventListener(evt, this.show);
+            }
+            else {
+                oldReferenceTrigger?.removeEventListener(evt, this.show);
+                this.addEventListener(evt, this.show);
+            }
         }
-        else {
-            oldReferenceTrigger?.removeEventListener(evt, this.show);
-            this.addEventListener(evt, this.show);
-        }
-    }
-    for (const evt of ExitEvents) {
-        if (__classPrivateFieldGet(this, _PfTooltip_referenceTrigger, "f")) {
-            this.removeEventListener(evt, this.hide);
-            __classPrivateFieldGet(this, _PfTooltip_referenceTrigger, "f").addEventListener(evt, this.hide);
-        }
-        else {
-            oldReferenceTrigger?.removeEventListener(evt, this.hide);
-            this.addEventListener(evt, this.hide);
+        for (const evt of ExitEvents) {
+            if (__classPrivateFieldGet(this, _PfTooltip_referenceTrigger, "f")) {
+                this.removeEventListener(evt, this.hide);
+                __classPrivateFieldGet(this, _PfTooltip_referenceTrigger, "f").addEventListener(evt, this.hide);
+            }
+            else {
+                oldReferenceTrigger?.removeEventListener(evt, this.hide);
+                this.addEventListener(evt, this.hide);
+            }
         }
     }
 };
 PfTooltip.styles = [styles];
+PfTooltip.version = "4.0.0";
 __decorate([
     property()
 ], PfTooltip.prototype, "position", void 0);

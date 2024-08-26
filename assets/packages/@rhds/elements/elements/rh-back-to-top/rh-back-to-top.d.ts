@@ -1,5 +1,5 @@
 import { LitElement, type PropertyValues } from 'lit';
-import '@patternfly/elements/pf-icon/pf-icon.js';
+import '@rhds/elements/rh-icon/rh-icon.js';
 /**
  * Back to top component is a fragment link that allows users to quickly navigate
  * to the top of a lengthy content page.
@@ -25,7 +25,7 @@ export declare class RhBackToTop extends LitElement {
     connectedCallback(): void;
     disconnectedCallback(): void;
     willUpdate(changed: PropertyValues<this>): void;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

@@ -7,13 +7,6 @@ import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { context } from './context.js';
 import { css } from "lit";
 const styles = css `:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n\n:host([box="light"]) {\n  background-color: var(--pf-c-tab-content--m-light-300, var(--pf-global--BackgroundColor--light-300, #f0f0f0));\n}\n`;
-/**
- * @slot - Tab panel content
- *
- * @cssprop {<color>} --pf-c-tab-content--m-light-300 {@default `#f0f0f0`}
- *
- * @csspart container - container for the panel content
- */
 let PfTabPanel = class PfTabPanel extends LitElement {
     render() {
         return html `
@@ -47,6 +40,7 @@ let PfTabPanel = class PfTabPanel extends LitElement {
     }
 };
 PfTabPanel.styles = [styles];
+PfTabPanel.version = "4.0.0";
 __decorate([
     consume({ context, subscribe: true }),
     state()

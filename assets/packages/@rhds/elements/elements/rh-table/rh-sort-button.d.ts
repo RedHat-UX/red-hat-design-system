@@ -19,7 +19,7 @@ export declare class RhSortButton extends LitElement {
     sortDirection?: 'asc' | 'desc';
     /** The column name associated with this button (for screen readers) */
     column?: string;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
     /**
      * Dispatch a request-sort event in ascending (asc) or descending (desc) order
      */

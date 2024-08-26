@@ -1,7 +1,6 @@
-import { rectToClientRect, autoPlacement as autoPlacement$1, shift as shift$1, flip as flip$1, size as size$1, hide as hide$1, arrow as arrow$1, inline as inline$1, limitShift as limitShift$1, computePosition as computePosition$1 } from '@floating-ui/core';
-export { detectOverflow, offset } from '@floating-ui/core';
+import { rectToClientRect, detectOverflow as detectOverflow$1, offset as offset$1, autoPlacement as autoPlacement$1, shift as shift$1, flip as flip$1, size as size$1, hide as hide$1, arrow as arrow$1, inline as inline$1, limitShift as limitShift$1, computePosition as computePosition$1 } from '@floating-ui/core';
 import { round, createCoords, max, min, floor } from '@floating-ui/utils';
-import { getComputedStyle, isHTMLElement, isElement, getWindow, isWebKit, getDocumentElement, getNodeName, isOverflowElement, getNodeScroll, getOverflowAncestors, getParentNode, isLastTraversableNode, isContainingBlock, isTableElement, getContainingBlock } from '@floating-ui/utils/dom';
+import { getComputedStyle, isHTMLElement, isElement, getWindow, isWebKit, getFrameElement, getDocumentElement, isTopLayer, getNodeName, isOverflowElement, getNodeScroll, getOverflowAncestors, getParentNode, isLastTraversableNode, isContainingBlock, isTableElement, getContainingBlock } from '@floating-ui/utils/dom';
 export { getOverflowAncestors } from '@floating-ui/utils/dom';
 
 function getCssDimensions(element) {
@@ -106,7 +105,7 @@ function getBoundingClientRect(element, includeScale, isFixedStrategy, offsetPar
     const win = getWindow(domElement);
     const offsetWin = offsetParent && isElement(offsetParent) ? getWindow(offsetParent) : offsetParent;
     let currentWin = win;
-    let currentIFrame = currentWin.frameElement;
+    let currentIFrame = getFrameElement(currentWin);
     while (currentIFrame && offsetParent && offsetWin !== currentWin) {
       const iframeScale = getScale(currentIFrame);
       const iframeRect = currentIFrame.getBoundingClientRect();
@@ -120,7 +119,7 @@ function getBoundingClientRect(element, includeScale, isFixedStrategy, offsetPar
       x += left;
       y += top;
       currentWin = getWindow(currentIFrame);
-      currentIFrame = currentWin.frameElement;
+      currentIFrame = getFrameElement(currentWin);
     }
   }
   return rectToClientRect({
@@ -128,17 +127,6 @@ function getBoundingClientRect(element, includeScale, isFixedStrategy, offsetPar
     height,
     x,
     y
-  });
-}
-
-const topLayerSelectors = [':popover-open', ':modal'];
-function isTopLayer(floating) {
-  return topLayerSelectors.some(selector => {
-    try {
-      return floating.matches(selector);
-    } catch (e) {
-      return false;
-    }
   });
 }
 
@@ -323,7 +311,7 @@ function getClippingRect(_ref) {
     rootBoundary,
     strategy
   } = _ref;
-  const elementClippingAncestors = boundary === 'clippingAncestors' ? getClippingElementAncestors(element, this._c) : [].concat(boundary);
+  const elementClippingAncestors = boundary === 'clippingAncestors' ? isTopLayer(element) ? [] : getClippingElementAncestors(element, this._c) : [].concat(boundary);
   const clippingAncestors = [...elementClippingAncestors, rootBoundary];
   const firstClippingAncestor = clippingAncestors[0];
   const clippingRect = clippingAncestors.reduce((accRect, clippingAncestor) => {
@@ -385,6 +373,10 @@ function getRectRelativeToOffsetParent(element, offsetParent, strategy) {
   };
 }
 
+function isStaticPositioned(element) {
+  return getComputedStyle(element).position === 'static';
+}
+
 function getTrueOffsetParent(element, polyfill) {
   if (!isHTMLElement(element) || getComputedStyle(element).position === 'fixed') {
     return null;
@@ -398,29 +390,41 @@ function getTrueOffsetParent(element, polyfill) {
 // Gets the closest ancestor positioned element. Handles some edge cases,
 // such as table ancestors and cross browser bugs.
 function getOffsetParent(element, polyfill) {
-  const window = getWindow(element);
-  if (!isHTMLElement(element) || isTopLayer(element)) {
-    return window;
+  const win = getWindow(element);
+  if (isTopLayer(element)) {
+    return win;
+  }
+  if (!isHTMLElement(element)) {
+    let svgOffsetParent = getParentNode(element);
+    while (svgOffsetParent && !isLastTraversableNode(svgOffsetParent)) {
+      if (isElement(svgOffsetParent) && !isStaticPositioned(svgOffsetParent)) {
+        return svgOffsetParent;
+      }
+      svgOffsetParent = getParentNode(svgOffsetParent);
+    }
+    return win;
   }
   let offsetParent = getTrueOffsetParent(element, polyfill);
-  while (offsetParent && isTableElement(offsetParent) && getComputedStyle(offsetParent).position === 'static') {
+  while (offsetParent && isTableElement(offsetParent) && isStaticPositioned(offsetParent)) {
     offsetParent = getTrueOffsetParent(offsetParent, polyfill);
   }
-  if (offsetParent && (getNodeName(offsetParent) === 'html' || getNodeName(offsetParent) === 'body' && getComputedStyle(offsetParent).position === 'static' && !isContainingBlock(offsetParent))) {
-    return window;
+  if (offsetParent && isLastTraversableNode(offsetParent) && isStaticPositioned(offsetParent) && !isContainingBlock(offsetParent)) {
+    return win;
   }
-  return offsetParent || getContainingBlock(element) || window;
+  return offsetParent || getContainingBlock(element) || win;
 }
 
 const getElementRects = async function (data) {
   const getOffsetParentFn = this.getOffsetParent || getOffsetParent;
   const getDimensionsFn = this.getDimensions;
+  const floatingDimensions = await getDimensionsFn(data.floating);
   return {
     reference: getRectRelativeToOffsetParent(data.reference, await getOffsetParentFn(data.floating), data.strategy),
     floating: {
       x: 0,
       y: 0,
-      ...(await getDimensionsFn(data.floating))
+      width: floatingDimensions.width,
+      height: floatingDimensions.height
     }
   };
 };
@@ -490,9 +494,11 @@ function observeMove(element, onMove) {
           return refresh();
         }
         if (!ratio) {
+          // If the reference is clipped, the ratio is 0. Throttle the refresh
+          // to prevent an infinite loop of updates.
           timeoutId = setTimeout(() => {
             refresh(false, 1e-7);
-          }, 100);
+          }, 1000);
         } else {
           refresh(false, ratio);
         }
@@ -597,6 +603,25 @@ function autoUpdate(reference, floating, update, options) {
 }
 
 /**
+ * Resolves with an object of overflow side offsets that determine how much the
+ * element is overflowing a given clipping boundary on each side.
+ * - positive = overflowing the boundary by that number of pixels
+ * - negative = how many pixels left before it will overflow
+ * - 0 = lies flush with the boundary
+ * @see https://floating-ui.com/docs/detectOverflow
+ */
+const detectOverflow = detectOverflow$1;
+
+/**
+ * Modifies the placement by translating the floating element along the
+ * specified axes.
+ * A number (shorthand for `mainAxis` or distance), or an axes configuration
+ * object may be passed.
+ * @see https://floating-ui.com/docs/offset
+ */
+const offset = offset$1;
+
+/**
  * Optimizes the visibility of the floating element by choosing the placement
  * that has the most space available automatically, without needing to specify a
  * preferred placement. Alternative to `flip`.
@@ -676,4 +701,4 @@ const computePosition = (reference, floating, options) => {
   });
 };
 
-export { arrow, autoPlacement, autoUpdate, computePosition, flip, hide, inline, limitShift, platform, shift, size };
+export { arrow, autoPlacement, autoUpdate, computePosition, detectOverflow, flip, hide, inline, limitShift, offset, platform, shift, size };

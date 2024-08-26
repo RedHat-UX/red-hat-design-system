@@ -17,7 +17,9 @@ export class StyleController {
         if (this.stylesAdopted || !(this.host.renderRoot instanceof ShadowRoot)) {
             return;
         }
-        const styles = [this.styles].flatMap(x => getCompatibleStyle(x)).filter(x => !!x);
+        const styles = [this.styles]
+            .flatMap(x => getCompatibleStyle(x))
+            .filter(x => !!x);
         if (supportsAdoptingStyleSheets) {
             this.host.renderRoot.adoptedStyleSheets = [
                 ...styles.map(x => x instanceof CSSStyleSheet ? x : x.styleSheet),

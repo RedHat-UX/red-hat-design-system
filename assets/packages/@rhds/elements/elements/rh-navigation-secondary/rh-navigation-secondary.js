@@ -1,4 +1,4 @@
-var _RhNavigationSecondary_instances, _a, _RhNavigationSecondary_logger, _RhNavigationSecondary_logoCopy, _RhNavigationSecondary_dir, _RhNavigationSecondary_compact, _RhNavigationSecondary_tabindex, _RhNavigationSecondary_internals, _RhNavigationSecondary_screenSize, _RhNavigationSecondary_onExpandRequest, _RhNavigationSecondary_onFocusout, _RhNavigationSecondary_onOverlayClick, _RhNavigationSecondary_onKeydown, _RhNavigationSecondary_onKeyup, _RhNavigationSecondary_onTabKeyup, _RhNavigationSecondary_onTabKeydown, _RhNavigationSecondary_getDropdownIndex, _RhNavigationSecondary_dropdownByIndex, _RhNavigationSecondary_expand, _RhNavigationSecondary_allDropdowns, _RhNavigationSecondary_closeDropdown, _RhNavigationSecondary_openDropdown, _RhNavigationSecondary_onOverlayChange, _RhNavigationSecondary_upgradeAccessibility, _RhNavigationSecondary_toggleMobileMenu, _RhSecondaryNav_logger;
+var _RhNavigationSecondary_instances, _a, _RhNavigationSecondary_logger, _RhNavigationSecondary_logoCopy, _RhNavigationSecondary_dir, _RhNavigationSecondary_compact, _RhNavigationSecondary_items_get, _RhNavigationSecondary_tabindex, _RhNavigationSecondary_internals, _RhNavigationSecondary_screenSize, _RhNavigationSecondary_onExpandRequest, _RhNavigationSecondary_onFocusout, _RhNavigationSecondary_onOverlayClick, _RhNavigationSecondary_onKeydown, _RhNavigationSecondary_onKeyup, _RhNavigationSecondary_onTabKeyup, _RhNavigationSecondary_onTabKeydown, _RhNavigationSecondary_getDropdownIndex, _RhNavigationSecondary_dropdownByIndex, _RhNavigationSecondary_expand, _RhNavigationSecondary_allDropdowns, _RhNavigationSecondary_closeDropdown, _RhNavigationSecondary_openDropdown, _RhNavigationSecondary_onOverlayChange, _RhNavigationSecondary_upgradeAccessibility, _RhNavigationSecondary_toggleMobileMenu;
 var RhNavigationSecondary_1;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
@@ -52,8 +52,8 @@ function focusableChildElements(parent) {
  *                                         Fires when an dropdown is opened or closed in desktop
  *                                         view or when the mobile menu button is toggled in mobile
  *                                         view.
- * @cssprop {<integer>} --rh-navigation-secondary-z-index - z-index of the navigation-secondary {@default `102`}
- * @cssprop {<integer>} --rh-navigation-secondary-overlay-z-index - z-index of the navigation-secondary-overlay {@default `-1`}
+ * @cssprop {<integer>} [--rh-navigation-secondary-z-index=102] - z-index of the navigation-secondary
+ * @cssprop {<integer>} [--rh-navigation-secondary-overlay-z-index=-1] - z-index of the navigation-secondary-overlay
  */
 let RhNavigationSecondary = RhNavigationSecondary_1 = _a = class RhNavigationSecondary extends LitElement {
     constructor() {
@@ -65,10 +65,8 @@ let RhNavigationSecondary = RhNavigationSecondary_1 = _a = class RhNavigationSec
         _RhNavigationSecondary_dir.set(this, new DirController(this));
         /** Compact mode  */
         _RhNavigationSecondary_compact.set(this, false);
-        _RhNavigationSecondary_tabindex.set(this, new RovingTabindexController(this, {
-            getItems: () => this._nav?.flatMap(slotted => Array.from(slotted.querySelectorAll(`:is(rh-navigation-secondary-dropdown,
-                                                                  rh-secondary-nav-dropdown) > a,
-                                                              [slot="nav"] > li > a`))) ?? [],
+        _RhNavigationSecondary_tabindex.set(this, RovingTabindexController.of(this, {
+            getItems: () => __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "a", _RhNavigationSecondary_items_get),
         }));
         _RhNavigationSecondary_internals.set(this, InternalsController.of(this, { role: 'navigation' }));
         /**
@@ -133,7 +131,7 @@ let RhNavigationSecondary = RhNavigationSecondary_1 = _a = class RhNavigationSec
                   aria-expanded="${String(expanded)}"
                   @click="${__classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_toggleMobileMenu)}"><slot name="mobile-menu">Menu</slot></button>
           <rh-surface color-palette="${dropdownPalette}">
-            <slot name="nav" @slotchange="${() => __classPrivateFieldGet(this, _RhNavigationSecondary_tabindex, "f").updateItems()}"></slot>
+            <slot name="nav" @slotchange="${() => __classPrivateFieldGet(this, _RhNavigationSecondary_tabindex, "f").items = __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "a", _RhNavigationSecondary_items_get)}"></slot>
             <div id="cta" part="cta">
               <slot name="cta"></slot>
             </div>
@@ -179,6 +177,10 @@ _RhNavigationSecondary_tabindex = new WeakMap();
 _RhNavigationSecondary_internals = new WeakMap();
 _RhNavigationSecondary_screenSize = new WeakMap();
 _RhNavigationSecondary_instances = new WeakSet();
+_RhNavigationSecondary_items_get = function _RhNavigationSecondary_items_get() {
+    return this._nav?.flatMap(slotted => Array.from(slotted.querySelectorAll(`rh-navigation-secondary-dropdown > a,
+                                                              [slot="nav"] > li > a`))) ?? [];
+};
 _RhNavigationSecondary_onExpandRequest = function _RhNavigationSecondary_onExpandRequest(event) {
     if (event instanceof SecondaryNavDropdownExpandEvent) {
         const index = __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_getDropdownIndex).call(this, event.target);
@@ -196,7 +198,7 @@ _RhNavigationSecondary_onExpandRequest = function _RhNavigationSecondary_onExpan
 };
 _RhNavigationSecondary_onFocusout = function _RhNavigationSecondary_onFocusout(event) {
     const target = event.relatedTarget;
-    if (target?.closest('rh-navigation-secondary, rh-secondary-nav') === this || target === null) {
+    if (target?.closest('rh-navigation-secondary') === this || target === null) {
         // if the focus is still inside the rh-navigation-secondary exit
         return;
     }
@@ -223,7 +225,7 @@ _RhNavigationSecondary_onKeydown = function _RhNavigationSecondary_onKeydown(eve
                 this.shadowRoot?.querySelector('button')?.focus?.();
             }
             else {
-                __classPrivateFieldGet(this, _RhNavigationSecondary_tabindex, "f").activeItem?.focus();
+                __classPrivateFieldGet(this, _RhNavigationSecondary_tabindex, "f").items[__classPrivateFieldGet(this, _RhNavigationSecondary_tabindex, "f").atFocusedItemIndex]?.focus();
             }
             this.close();
             this.overlayOpen = false;
@@ -291,8 +293,7 @@ _RhNavigationSecondary_onTabKeydown = function _RhNavigationSecondary_onTabKeydo
         if (!this.mobileMenuExpanded) {
             this.overlayOpen = false;
         }
-        __classPrivateFieldGet(this, _RhNavigationSecondary_tabindex, "f").setActiveItem(__classPrivateFieldGet(this, _RhNavigationSecondary_tabindex, "f").nextItem);
-        __classPrivateFieldGet(this, _RhNavigationSecondary_tabindex, "f").activeItem?.focus();
+        __classPrivateFieldGet(this, _RhNavigationSecondary_tabindex, "f").atFocusedItemIndex++;
     }
 };
 _RhNavigationSecondary_getDropdownIndex = function _RhNavigationSecondary_getDropdownIndex(element) {
@@ -320,13 +321,13 @@ _RhNavigationSecondary_expand = function _RhNavigationSecondary_expand(index) {
     if (dropdown && RhNavigationSecondary_1.isDropdown(dropdown)) {
         const link = dropdown.querySelector('a');
         if (link) {
-            __classPrivateFieldGet(this, _RhNavigationSecondary_tabindex, "f").setActiveItem(link);
+            __classPrivateFieldGet(this, _RhNavigationSecondary_tabindex, "f").atFocusedItemIndex = __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "a", _RhNavigationSecondary_items_get).indexOf(link);
         }
         __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_openDropdown).call(this, dropdown);
     }
 };
 _RhNavigationSecondary_allDropdowns = function _RhNavigationSecondary_allDropdowns() {
-    return Array.from(this.querySelectorAll('rh-navigation-secondary-dropdown, rh-secondary-nav-dropdown'));
+    return Array.from(this.querySelectorAll('rh-navigation-secondary-dropdown'));
 };
 _RhNavigationSecondary_closeDropdown = function _RhNavigationSecondary_closeDropdown(dropdown) {
     if (dropdown.expanded === false) {
@@ -386,15 +387,4 @@ RhNavigationSecondary = RhNavigationSecondary_1 = __decorate([
     customElement('rh-navigation-secondary')
 ], RhNavigationSecondary);
 export { RhNavigationSecondary };
-let RhSecondaryNav = class RhSecondaryNav extends RhNavigationSecondary {
-    constructor() {
-        super();
-        _RhSecondaryNav_logger.set(this, new Logger(this));
-        __classPrivateFieldGet(this, _RhSecondaryNav_logger, "f").warn('rh-secondary-nav is deprecated. Use rh-navigation-secondary instead.');
-    }
-};
-_RhSecondaryNav_logger = new WeakMap();
-RhSecondaryNav = __decorate([
-    customElement('rh-secondary-nav')
-], RhSecondaryNav);
 //# sourceMappingURL=rh-navigation-secondary.js.map

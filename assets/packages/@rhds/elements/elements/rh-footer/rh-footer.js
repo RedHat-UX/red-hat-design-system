@@ -1,4 +1,5 @@
 var _RhFooter_instances, _RhFooter_logger, _RhFooter_compact, _RhFooter_renderLinksTemplate;
+var RhFooter_1;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { property } from 'lit/decorators/property.js';
@@ -6,10 +7,9 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
-import '@patternfly/elements/pf-icon/pf-icon.js';
+import '@rhds/elements/rh-icon/rh-icon.js';
 import '@rhds/elements/rh-accordion/rh-accordion.js';
 export { RhFooterUniversal } from './rh-footer-universal.js';
-import './rh-global-footer.js';
 import './rh-footer-social-link.js';
 import './rh-footer-links.js';
 import './rh-footer-block.js';
@@ -21,9 +21,7 @@ function isHeaderTagName(tagName) {
 }
 /**
  * A footer displays secondary content and legal information to users who reach the bottom of a page.
- *
  * @summary Displays secondary information at the bottom of a page
- *
  * @csspart base - main footer element, containing all footer content
  * @slot    base - Overrides everything. Do not use.
  * @slot    header - Overrides `header-*`, `logo`, `social-links`
@@ -47,19 +45,17 @@ function isHeaderTagName(tagName) {
  * @csspart links-accordion-panel - mobile links panel container element
  * @slot    main-secondary - typically contains prose or promotional content
  * @csspart main-secondary - container fro prose or promotional content
- * @slot    global - must contain `<rh-footer-universal>` {@deprecated - use `universal`}
  * @slot    universal - must contain `<rh-footer-universal>`
- *
- * @cssprop --rh-footer-icon-color - {@default #8a8d90}
- * @cssprop --rh-footer-icon-color-hover - {@default #b8bbbe}
- * @cssprop --rh-footer-border-color - {@default #6a6e73}
- * @cssprop --rh-footer-accent-color - {@default #e00}
- * @cssprop --rh-footer-section-side-gap - {@default 16px}
- * @cssprop --rh-footer-links-gap - {@default 8px}
- * @cssprop --rh-footer-link-header-font-size - {@default 0.875em}
- * @cssprop --rh-footer-nojs-min-height - {@default 750px}
+ * @cssprop [--rh-footer-icon-color=#8a8d90]
+ * @cssprop [--rh-footer-icon-color-hover=#b8bbbe]
+ * @cssprop [--rh-footer-border-color=#6a6e73]
+ * @cssprop [--rh-footer-accent-color=#e00]
+ * @cssprop [--rh-footer-section-side-gap=16px]
+ * @cssprop [--rh-footer-links-gap=8px]
+ * @cssprop [--rh-footer-link-header-font-size=0.875em]
+ * @cssprop [--rh-footer-nojs-min-height=750px]
  */
-let RhFooter = class RhFooter extends LitElement {
+let RhFooter = RhFooter_1 = class RhFooter extends LitElement {
     constructor() {
         super(...arguments);
         _RhFooter_instances.add(this);
@@ -139,7 +135,7 @@ let RhFooter = class RhFooter extends LitElement {
               </div>
             </slot>
           </div>
-          <slot name="universal"><slot name="global"></slot></slot>
+          <slot name="universal"></slot>
         </slot>
       </footer>
     `;
@@ -149,8 +145,7 @@ let RhFooter = class RhFooter extends LitElement {
      * and synchronously update each list and header if we need to.
      */
     updateAccessibility() {
-        const listsSelector = ':is([slot^=links],[slot=footer-links-primary],[slot=footer-links-secondary]):is(ul)';
-        for (const list of this.querySelectorAll(listsSelector)) {
+        for (const list of this.querySelectorAll(RhFooter_1.LISTS_SELECTOR)) {
             // if we already have a label then we assume that the user
             // has wired this up themselves.
             if (!list.hasAttribute('aria-labelledby')) {
@@ -203,11 +198,12 @@ _RhFooter_renderLinksTemplate = function _RhFooter_renderLinksTemplate(isMobile 
 };
 RhFooter.version = '{{version}}';
 RhFooter.styles = [style];
+RhFooter.LISTS_SELECTOR = ':is([slot^=links],[slot=footer-links-primary],[slot=footer-links-secondary]):is(ul)';
 __decorate([
     colorContextProvider(),
     property({ reflect: true, attribute: 'color-palette' })
 ], RhFooter.prototype, "colorPalette", void 0);
-RhFooter = __decorate([
+RhFooter = RhFooter_1 = __decorate([
     customElement('rh-footer')
 ], RhFooter);
 export { RhFooter };

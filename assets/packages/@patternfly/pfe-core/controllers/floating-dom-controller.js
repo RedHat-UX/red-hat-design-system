@@ -1,6 +1,6 @@
 var _FloatingDOMController_instances, _FloatingDOMController_open, _FloatingDOMController_opening, _FloatingDOMController_cleanup, _FloatingDOMController_anchor, _FloatingDOMController_alignment, _FloatingDOMController_styles, _FloatingDOMController_placement, _FloatingDOMController_options, _FloatingDOMController_invoker_get, _FloatingDOMController_content_get, _FloatingDOMController_arrow_get, _FloatingDOMController_update;
 import { __classPrivateFieldGet, __classPrivateFieldSet } from "tslib";
-import { autoUpdate, computePosition, offset as offsetMiddleware, shift as shiftMiddleware, flip as flipMiddleware, arrow as arrowMiddleware } from '@floating-ui/dom';
+import { autoUpdate, computePosition, offset as offsetMiddleware, shift as shiftMiddleware, flip as flipMiddleware, arrow as arrowMiddleware, } from '@floating-ui/dom';
 /**
  * Controls floating DOM within a web component, e.g. tooltips and popovers
  */
@@ -44,7 +44,7 @@ export class FloatingDOMController {
         _FloatingDOMController_options.set(this, void 0);
         host.addController(this);
         __classPrivateFieldSet(this, _FloatingDOMController_options, {
-            invoker: (host instanceof HTMLElement ? () => host : () => undefined),
+            invoker: (() => host),
             shift: true,
             ...options,
         }, "f");
@@ -52,7 +52,14 @@ export class FloatingDOMController {
     hostDisconnected() {
         __classPrivateFieldGet(this, _FloatingDOMController_cleanup, "f")?.call(this);
     }
-    /** Show the floating DOM */
+    /**
+     * Show the floating DOM
+     * @param [options={}]
+     * @param options.offset
+     * @param options.placement
+     * @param options.flip
+     * @param options.fallbackPlacements
+     * */
     async show({ offset, placement, flip, fallbackPlacements } = {}) {
         const invoker = __classPrivateFieldGet(this, _FloatingDOMController_instances, "a", _FloatingDOMController_invoker_get);
         const content = __classPrivateFieldGet(this, _FloatingDOMController_instances, "a", _FloatingDOMController_content_get);
@@ -99,7 +106,7 @@ _FloatingDOMController_open = new WeakMap(), _FloatingDOMController_opening = ne
     if (!invoker || !content) {
         return;
     }
-    const { x, y, placement: _placement, middlewareData } = await computePosition(invoker, content, {
+    const { x, y, placement: _placement, middlewareData, } = await computePosition(invoker, content, {
         strategy: 'absolute',
         placement,
         middleware: [
@@ -107,7 +114,7 @@ _FloatingDOMController_open = new WeakMap(), _FloatingDOMController_opening = ne
             shift && shiftMiddleware({ padding }),
             arrow && arrowMiddleware({ element: arrow, padding: arrow.offsetHeight / 2 }),
             flip && flipMiddleware({ padding, fallbackPlacements }),
-        ].filter(Boolean)
+        ].filter(Boolean),
     });
     if (arrow) {
         const { x: arrowX, y: arrowY } = middlewareData.arrow || {};

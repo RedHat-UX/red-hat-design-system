@@ -1,14 +1,12 @@
 import { LitElement } from 'lit';
 import { type ColorPalette } from '../../lib/context/color/provider.js';
-import '@patternfly/elements/pf-icon/pf-icon.js';
+import '@rhds/elements/rh-icon/rh-icon.js';
 /**
  * A subnavigation allows users to navigate between a small number of page links.
  * @summary Organizes content into sections using tabbed pages
  * @slot - Navigation links, expects collection of `<a>` elements
- *
  * @csspart container - container, `<div>` element
  * @csspart links     - `<slot>` element
- *
  */
 export declare class RhSubnav extends LitElement {
     #private;
@@ -35,7 +33,7 @@ export declare class RhSubnav extends LitElement {
     private linkList;
     connectedCallback(): void;
     disconnectedCallback(): void;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
     firstUpdated(): void;
 }
 declare global {

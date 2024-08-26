@@ -20,7 +20,7 @@ export declare class RhAudioPlayerAbout extends LitElement {
     /** Title of audio track */
     mediatitle?: string;
     private content?;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
     set menuLabel(label: string);
     get menuLabel(): string;
     scrollText(): void;

@@ -1,4 +1,4 @@
-import { LitElement } from 'lit';
+import { LitElement, type TemplateResult } from 'lit';
 /**
  * @cssprop --pf-c-jump-links__list__list__link--PaddingTop -- padding around each link
  * @cssprop --pf-c-jump-links__list__list__link--PaddingBottom
@@ -6,7 +6,7 @@ import { LitElement } from 'lit';
  */
 export declare class PfJumpLinksList extends LitElement {
     static readonly styles: CSSStyleSheet[];
-    render(): import("lit-html").TemplateResult<1>;
+    render(): TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

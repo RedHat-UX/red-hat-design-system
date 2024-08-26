@@ -8,9 +8,9 @@ export declare class RhContextDemo extends LitElement {
     value: ColorPalette;
     label: string;
     colorPalette: ColorPalette;
-    render(): import("lit").TemplateResult<1>;
-    willUpdate(changed: PropertyValues<this>): void;
-    formStateRestoreCallback(state: string): void;
+    protected render(): import("lit-html").TemplateResult<1>;
+    protected willUpdate(changed: PropertyValues<this>): void;
+    protected formStateRestoreCallback(state: string): void;
 }
 declare global {
     interface HTMLElementTagNameMap {

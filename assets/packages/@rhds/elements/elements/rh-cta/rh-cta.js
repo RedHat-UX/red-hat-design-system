@@ -1,179 +1,130 @@
-var _RhCta_instances, _RhCta_initializing, _RhCta_dir, _RhCta_logger, _RhCta_isDefault_get, _RhCta_mo, _RhCta_onMutation;
-import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
+var _RhCta_dir, _RhCta_logger;
+import { __classPrivateFieldGet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { DirController } from '../../lib/DirController.js';
-import {} from '../../lib/context/color/provider.js';
 import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 import { css } from "lit";
-const style = css `:host{display:inline-flex;position:relative;z-index:0;align-items:center;max-width:max-content}::slotted(*){vertical-align:middle!important;white-space:break-spaces!important;word-break:break-word!important;display:inline!important;color:inherit!important;font-family:inherit!important;font-size:inherit!important;font-weight:inherit!important;line-height:inherit!important;text-decoration:var(--rh-cta-text-decoration)!important;z-index:2!important}::slotted(a):after{display:block;content:"";position:absolute;inset:0;z-index:3}::slotted(button),::slotted(input){background-color:transparent;border:medium none;margin:0;padding:0;text-align:left}#container{position:relative;white-space:nowrap;color:var(--rh-cta-color);font-family:var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-lg, 1.125rem);font-weight:600;line-height:var(--rh-line-height-body-text, 1.5);background-color:var(--rh-cta-background-color);border-color:var(--rh-cta-border-color,transparent);border-radius:var(--rh-border-radius-default,3px);border-width:var(--rh-border-width-sm,1px);--_context-background-color:var(--rh-cta-background-color)!important;--_arrow-size:13px;--_arrow-plus-padding:calc(var(--rh-space-md, 8px) + var(--_arrow-size));--_pf-icon-plus-padding:calc(5px + var(--pf-icon--size));--pf-icon--size:var(--rh-font-size-body-text-lg, 1.125rem)}.rtl{text-align:right}#container:after{--_offset:2px;content:"";display:block;height:calc(100% - var(--_offset) * 2);width:calc(100% - var(--_offset) * 2);box-sizing:border-box;position:absolute;top:var(--_offset);left:var(--_offset);border-width:var(--rh-border-width-sm,1px);border-radius:2px;outline:0;pointer-events:none}pf-icon{vertical-align:middle;margin-inline-start:var(--rh-space-md,8px)}svg{vertical-align:middle;margin-inline-start:var(--rh-space-md,8px);display:inline;fill:currentcolor;width:var(--_arrow-size);height:var(--_arrow-size);translate:0 0;transition:translate var(--_trans);--_trans:var(--rh-animation-speed, 0.3s) var(--rh-animation-timing, cubic-bezier(0.465, 0.183, 0.153, 0.946))}#container.rtl svg{rotate:180deg}::slotted(:focus),:host(:is(:focus,:focus-within)),:host(:is(:focus,:focus-within)) ::slotted(*){outline:0!important}:host(:is(:focus,:focus-within)){--rh-cta-background-color:var(--rh-cta-focus-background-color)}:host(:is(:focus,:focus-within)) #container{border-color:var(--rh-cta-focus-border-color);background-color:var(--rh-cta-focus-container-background-color,var(--rh-cta-focus-background-color));--rh-cta-color:var(--rh-cta-focus-color);--rh-cta-text-decoration:var(--rh-cta-focus-text-decoration)}:host(:is(:focus,:focus-within)) #container:after{border-style:solid;border-color:var(--rh-cta-focus-inner-border-color)}:host(:hover) #container{color:var(--rh-cta-hover-color);border-color:var(--rh-cta-hover-border-color);background-color:var(--rh-cta-hover-background-color);--rh-cta-text-decoration:var(--rh-cta-hover-text-decoration)}:host(:hover) #container svg{translate:3px 0}:host(:hover) #container.rtl svg{translate:-3px 0}:host(:active){background-color:var(--rh-cta-active-background-color)}:host(:active) #container{--rh-cta-background-color:var(\n        --rh-cta-active-container-background-color,\n        var(--rh-cta-active-background-color)\n      )}:host(:active) #container:after{border-style:solid;border-color:var(--rh-cta-active-inner-border-color)!important}:host([variant]) #container{font-size:var(--rh-font-size-body-text-md, 1rem);border-radius:var(--rh-border-radius-default,3px);border-width:var(--rh-border-width-sm,1px);padding-inline:var(--rh-space-2xl,32px);padding-block:var(--rh-space-lg,16px)}:host([variant]) #container ::slotted(*){display:inline-flex!important;text-align:center!important}:host([variant$=ary]) #container ::slotted(*){font-size:var(--rh-cta-font-size-priority, var(--rh-font-size-body-text-md, 1rem))}:host([variant]) #container.icon ::slotted(*){display:inline!important}:host([variant]) #container.svg ::slotted(*){padding-inline-end:calc(var(--_arrow-plus-padding) + var(--rh-space-xl,24px))!important}:host([variant]) #container.icon pf-icon{margin-inline-start:var(--rh-space-md,8px)}:host(:not([variant])){--rh-cta-background-color:transparent;--rh-cta-border-color:transparent;--rh-cta-color:var(--rh-color-interactive-blue-darker, #0066cc);--rh-cta-hover-background-color:transparent;--rh-cta-hover-border-color:transparent;--rh-cta-hover-inner-border-color:transparent;--rh-cta-hover-color:var(--rh-color-interactive-blue-darkest, #003366);--rh-cta-hover-text-decoration:none;--rh-cta-focus-background-color:transparent;--rh-cta-focus-container-background-color:#0066cc1a;--rh-cta-focus-border-color:transparent;--rh-cta-focus-inner-border-color:transparent;--rh-cta-focus-color:var(--rh-color-interactive-blue-darker, #0066cc);--rh-cta-focus-text-decoration:none;--rh-cta-active-container-background-color:#0066cc1a;--rh-cta-active-inner-border-color:transparent;--rh-cta-active-text-decoration:none}:host(:not([variant])) .dark{--rh-cta-color:var(--rh-color-interactive-blue-lighter, #92c5f9);--rh-cta-hover-color:var(--rh-color-interactive-blue-lightest, #b9dafc);--rh-cta-focus-container-background-color:#73bcf740;--rh-cta-focus-border-color:transparent;--rh-cta-focus-color:var(--rh-color-interactive-blue-lighter, #92c5f9);--rh-cta-focus-inner-border-color:transparent;--rh-cta-focus-text-decoration:none;--rh-cta-active-container-background-color:#73bcf740;--rh-cta-active-text-decoration:none}:host([variant=primary]) #container{border-style:solid;--rh-cta-background-color:var(--rh-color-brand-red-on-light, #ee0000);--rh-cta-border-color:var(--rh-color-brand-red-on-light, #ee0000);--rh-cta-color:var(--rh-color-text-primary-on-dark, #ffffff);--rh-cta-hover-background-color:var(--rh-color-brand-red-dark, #a60000);--rh-cta-hover-border-color:var(--rh-color-brand-red-dark, #a60000);--rh-cta-hover-color:var(--rh-color-text-primary-on-dark, #ffffff);--rh-cta-focus-background-color:var(--rh-color-brand-red-on-light, #ee0000);--rh-cta-focus-border-color:var(--rh-color-brand-red-on-light, #ee0000);--rh-cta-focus-color:var(--rh-color-text-primary-on-dark, #ffffff);--rh-cta-focus-inner-border-color:var(--rh-color-text-primary-on-dark, #ffffff);--rh-cta-active-background-color:var(--rh-color-brand-red-dark, #a60000);--rh-cta-active-inner-border-color:var(--rh-color-text-primary-on-dark, #ffffff)}:host([variant=primary]) #container.dark{--rh-cta-hover-border-color:var(--rh-color-brand-red-dark, #a60000)}:host([variant=secondary]) #container{border-style:solid;--rh-cta-background-color:transparent;--rh-cta-border-color:var(--rh-color-border-strong-on-light, #151515);--rh-cta-color:var(--rh-color-text-primary-on-light, #151515);--rh-cta-hover-background-color:var(--rh-color-surface-darkest, #151515);--rh-cta-hover-border-color:var(--rh-color-border-strong-on-light, #151515);--rh-cta-hover-color:var(--rh-color-text-primary-on-dark, #ffffff);--rh-cta-focus-background-color:var(--rh-color-surface-lighter, #f2f2f2);--rh-cta-focus-border-color:var(--rh-color-border-strong-on-light, #151515);--rh-cta-focus-color:var(--rh-color-surface-darkest, #151515);--rh-cta-focus-inner-border-color:var(--rh-color-border-strong-on-light, #151515);--rh-cta-active-color:var(--rh-color-text-primary-on-dark, #ffffff);--rh-cta-active-background-color:var(--rh-color-border-strong-on-light, #151515);--rh-cta-active-inner-border-color:var(--rh-color-surface-light, #e0e0e0)}:host([variant=secondary]) #container.dark{--rh-cta-border-color:var(--rh-color-border-strong-on-dark, #ffffff);--rh-cta-color:var(--rh-color-text-primary-on-dark, #ffffff);--rh-cta-hover-background-color:var(--rh-color-surface-lightest, #ffffff);--rh-cta-hover-border-color:var(--rh-color-border-strong-on-dark, #ffffff);--rh-cta-hover-color:var(--rh-color-text-primary-on-light, #151515);--rh-cta-focus-background-color:var(--rh-color-surface-dark, #383838);--rh-cta-focus-border-color:var(--rh-color-border-strong-on-dark, #ffffff);--rh-cta-focus-inner-border-color:var(--rh-color-border-strong-on-dark, #ffffff);--rh-cta-focus-color:var(--rh-color-text-primary-on-dark, #ffffff);--rh-cta-active-color:var(--rh-color-text-primary-on-light, #151515);--rh-cta-active-background-color:var(--rh-color-surface-lightest, #ffffff);--rh-cta-active-inner-border-color:var(--rh-color-border-strong-on-light, #151515)}:host([variant=brick]){display:inline-block!important;max-width:100%;width:100%}:host([variant=brick]) #container{border-style:solid;font-family:var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);font-weight:var(--rh-font-weight-body-text-regular,400);display:flex;flex-flow:row wrap;gap:var(--rh-space-md,8px);justify-content:center;align-items:center;--rh-cta-background-color:transparent;--rh-cta-border-color:var(--rh-color-border-subtle-on-light, #c7c7c7);--rh-cta-color:var(--rh-color-interactive-blue-darker, #0066cc);--rh-cta-hover-background-color:var(--rh-color-surface-lighter, #f2f2f2);--rh-cta-hover-border-color:var(--rh-color-border-subtle-on-light, #c7c7c7);--rh-cta-hover-color:var(--rh-color-interactive-blue-darkest, #003366);--rh-cta-hover-text-decoration:underline;--rh-cta-focus-color:var(--rh-color-interactive-blue-darker, #0066cc);--rh-cta-focus-border-color:var(--rh-color-border-subtle-on-light, #c7c7c7);--rh-cta-focus-inner-border-color:var(--rh-color-border-subtle-on-light, #c7c7c7);--rh-cta-focus-text-decoration:none;--rh-cta-active-background-color:var(--rh-color-surface-lighter, #f2f2f2);--rh-cta-active-inner-border-color:var(--rh-color-border-subtle-on-light, #c7c7c7);--rh-cta-active-text-decoration:underline}:host([variant=brick]) #container.dark{--rh-cta-border-color:var(--rh-color-border-subtle-on-dark, #707070);--rh-cta-color:var(--rh-color-interactive-blue-lighter, #92c5f9);--rh-cta-hover-background-color:var(--rh-color-surface-darker, #1f1f1f);--rh-cta-hover-border-color:var(--rh-color-border-subtle-on-dark, #707070);--rh-cta-hover-color:var(--rh-color-interactive-blue-lightest, #b9dafc);--rh-cta-hover-text-decoration:underline;--rh-cta-focus-color:var(--rh-color-interactive-blue-lighter, #92c5f9);--rh-cta-focus-border-color:var(--rh-color-border-subtle-on-dark, #707070);--rh-cta-focus-inner-border-color:var(--rh-color-border-subtle-on-dark, #707070);--rh-cta-focus-text-decoration:none;--rh-cta-active-background-color:var(--rh-color-surface-darker, #1f1f1f);--rh-cta-active-inner-border-color:var(--rh-color-border-subtle-on-dark, #707070);--rh-cta-active-text-decoration:underline}:host([variant=brick]) #container.icon pf-icon{margin-inline:0}@supports not (translate:0 0){svg{transform:translate(0,0);transition:transform var(--_trans)}#container.rtl svg{transform:translate(0,0) rotate(180deg)}:host(:hover) #container svg{transform:translate(3px,0)}:host(:hover) #container.rtl svg{transform:translate(-3px,0) rotate(180deg)}}`;
-import '@patternfly/elements/pf-icon/pf-icon.js';
-const supportedTags = ['a', 'button']; // add input later
+const style = css `:host{display:inline-flex;position:relative;z-index:0;align-items:center;max-width:max-content}::slotted(:is(a,button,input)),a{vertical-align:middle!important;white-space:break-spaces!important;word-break:break-word!important;display:inline!important;color:inherit!important;font-family:inherit!important;font-size:inherit!important;font-weight:inherit!important;line-height:inherit!important;text-decoration:var(--_text-decoration)!important;z-index:2!important}::slotted(a):after,a:after{display:block;content:"";position:absolute;inset:0;z-index:3}::slotted(button),::slotted(input){background-color:transparent;border:medium none;margin:0;padding:0;text-align:left}#container{position:relative;white-space:nowrap;color:var(--_color);font-family:var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-lg, 1.125rem);font-weight:600;line-height:var(--rh-line-height-body-text, 1.5);background-color:var(--_background-color);border-color:var(--_border-color,transparent);border-radius:var(--rh-border-radius-default,3px);border-width:var(--rh-border-width-sm,1px);--_context-background-color:var(--_background-color)!important;--_arrow-size:13px;--_arrow-plus-padding:calc(var(--rh-space-md, 8px) + var(--_arrow-size));--rh-icon-size:var(--rh-font-size-body-text-lg, 1.125rem);--_rh-icon-plus-padding:calc(\n        5px + var(--rh-icon-size) \n      )}.rtl{text-align:right}#container:after{--_offset:2px;content:"";display:block;height:calc(100% - var(--_offset) * 2);width:calc(100% - var(--_offset) * 2);box-sizing:border-box;position:absolute;top:var(--_offset);left:var(--_offset);border-width:var(--rh-border-width-sm,1px);border-radius:2px;outline:0;pointer-events:none}rh-icon{vertical-align:middle;margin-inline-start:var(--rh-space-md,8px);display:inline-block;fill:currentcolor;translate:0 0;transition:translate var(--_trans);--_trans:var(--rh-animation-speed, 0.3s) var(--rh-animation-timing, cubic-bezier(0.465, 0.183, 0.153, 0.946))}#container.rtl svg{rotate:180deg}::slotted(:focus),:host(:is(:focus,:focus-within)),:host(:is(:focus,:focus-within)) ::slotted(:is(a,button,input)),a:focus,a:focus-within{outline:0!important}:host(:is(:focus,:focus-within)){--_background-color:var(--rh-cta-focus-background-color)}:host(:is(:focus,:focus-within)) #container{border-color:var(--_focus-border-color);background-color:var(--_focus-container-background-color,var(--_focus-background-color));color:var(--rh-cta-focus-color);outline:var(--rh-border-width-md,2px) solid var(--rh-cta-focus-container-outline-color,var(--rh-cta-focus-outline-color));outline-offset:2px;--_color:var(--_focus-color);--_text-decoration:var(--_focus-text-decoration)}:host(:is(:focus,:focus-within)) #container:after{border-style:solid;border-color:var(--_focus-inner-border-color)}:host(:hover) #container{color:var(--_hover-color);border-color:var(--_hover-border-color);background-color:var(--_hover-background-color);--_text-decoration:var(--rh-cta-hover-text-decoration, var(--_hover-text-decoration))}:host(:hover) #container rh-icon{translate:3px 0}:host(:hover) #container.rtl rh-icon{translate:-3px 0}:host(:active){background-color:var(--_background-color)}:host(:active) #container{--_background-color:var(\n        --rh-cta-background-color,\n        var(\n          --rh-cta-active-container-background-color,\n          var(--rh-cta-active-background-color)\n        )\n      )}:host(:active) #container:after{border-style:solid;border-color:var(--_active-inner-border-color)!important}:host([variant]) #container{font-size:var(--rh-font-size-body-text-md, 1rem);border-radius:var(--rh-border-radius-default,3px);border-width:var(--rh-border-width-sm,1px);padding-inline:var(--rh-space-2xl,32px);padding-block:var(--rh-space-lg,16px)}:host([variant]) #container ::slotted(:is(a,button,input)),:host([variant]) #container a{display:inline-flex!important;text-align:center!important}:host([variant$=ary]) #container ::slotted(:is(a,button,input)),:host([variant$=ary]) #container a{font-size:var(--rh-cta-font-size-priority, var(--rh-font-size-body-text-md, 1rem))}:host([variant]) #container.icon ::slotted(:is(a,button,input)),:host([variant]) #container.icon a{display:inline!important}:host([variant]) #container.svg ::slotted(:is(a,button,input)),:host([variant]) #container.svg a{padding-inline-end:calc(var(--_arrow-plus-padding) + var(--rh-space-xl,24px))!important}:host([variant]) #container.icon rh-icon{margin-inline-start:var(--rh-space-md,8px)}:host(:not([variant])){--_background-color:var(--rh-cta-background-color, transparent);--_border-color:var(--rh-cta-border-color, transparent);--_color:var(--rh-cta-color, var(--rh-color-interactive-blue-darker, #0066cc));--_hover-background-color:var(--rh-cta-hover-background-color, transparent);--_hover-border-color:var(--rh-cta-hover-border-color, transparent);--_hover-color:var(--rh-cta-hover-color, var(--rh-color-interactive-blue-darkest, #003366));--_hover-text-decoration:var(--rh-cta-hover-text-decoration, none);--_focus-background-color:var(--rh-cta-focus-background-color, transparent);--_focus-container-background-color:var(--rh-cta-focus-container-background-color, #0066cc1a);--_focus-border-color:var(--rh-cta-focus-border-color, transparent);--_focus-color:var(--rh-cta-focus-color, var(--rh-color-interactive-blue-darker, #0066cc));--_focus-inner-border-color:var(--rh-cta-focus-inner-border-color, transparent);--_focus-text-decoration:var(--rh-cta-focus-text-decoration, none);--_active-container-background-color:var(--rh-cta-active-container-background-color, #0066cc1a);--_active-inner-border-color:var(--rh-cta-active-inner-border-color, transparent);--_active-text-decoration:var(--rh-cta-active-text-decoration, none)}:host(:not([variant])) .dark{--_color:var(--rh-cta-color, var(--rh-color-interactive-blue-lighter, #92c5f9));--_hover-color:var(--rh-cta-hover-color, var(--rh-color-interactive-blue-lightest, #b9dafc));--_focus-container-background-color:var(--rh-cta-focus-container-background-color, #73bcf740);--_focus-border-color:var(--rh-cta-focus-border-color, transparent);--_focus-color:var(--rh-cta-focus-color, var(--rh-color-interactive-blue-lighter, #92c5f9));--_focus-inner-border-color:var(--rh-cta-focus-inner-border-color, transparent);--_focus-text-decoration:var(--rh-cta-focus-text-decoration, none);--_active-container-background-color:var(--rh-cta-active-container-background-color, #73bcf740);--_active-text-decoration:var(--rh-cta-active-text-decoration, none)}:host([variant=primary]) #container{border-style:solid;--_background-color:var(--rh-cta-background-color, var(--rh-color-brand-red-on-light, #ee0000));--_border-color:var(--rh-cta-border-color, var(--rh-color-brand-red-on-light, #ee0000));--_color:var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));--_hover-background-color:var(\n        --rh-cta-hover-background-color,\n        var(\n          --rh-color-brand-red-dark,\n          #a60000\n        )\n      );--_hover-border-color:var(\n        --rh-cta-hover-border-color,\n        var(\n          --rh-color-brand-red-dark,\n          #a60000\n        )\n      );--_hover-color:var(\n        --rh-cta-hover-color,\n        var(\n          --rh-color-text-primary-on-dark,\n          #ffffff\n        )\n      );--_focus-background-color:var(\n        --rh-cta-focus-background-color,\n        var(\n          --rh-color-brand-red-on-light,\n          #ee0000\n        )\n      );--_focus-border-color:var(\n        --rh-cta-focus-border-color,\n        var(\n          --rh-color-brand-red-on-light,\n          #ee0000\n        )\n      );--_focus-color:var(\n        --rh-cta-focus-color,\n        var(\n          --rh-color-text-primary-on-dark,\n          #ffffff\n        )\n      );--_focus-inner-border-color:var(\n        --rh-cta-focus-inner-border-color,\n        var(\n          --rh-color-text-primary-on-dark,\n          #ffffff\n        )\n      );--_active-background-color:var(\n        --rh-cta-active-background-color,\n        var(\n          --rh-color-brand-red-dark,\n          #a60000\n        )\n      );--_active-inner-border-color:var(\n        --rh-cta-active-inner-border-color,\n        var(\n          --rh-color-text-primary-on-dark,\n          #ffffff\n        )\n      )}:host([variant=primary]) #container.dark{--_hover-border-color:var(--rh-cta-hover-border-color, var(--rh-color-brand-red-dark, #a60000))}:host([variant=secondary]) #container{border-style:solid;--_background-color:var(--rh-cta-background-color, transparent);--_border-color:var(--rh-cta-border-color, var(--rh-color-text-primary-on-light, #151515));--_color:var(--rh-cta-color, var(--rh-color-text-primary-on-light, #151515));--_hover-background-color:var(\n        --rh-cta-hover-background-color,\n        var(\n          --rh-color-surface-darkest,\n          #151515\n        )\n      );--_hover-border-color:var(\n        --rh-cta-hover-border-color,\n        var(\n          --rh-color-border-strong-on-light,\n          #151515\n        )\n      );--_hover-color:var(\n        --rh-cta-hover-color,\n        var(\n          --rh-color-text-primary-on-dark,\n          #ffffff\n        )\n      );--_focus-background-color:var(\n        --rh-cta-focus-background-color,\n        var(\n          --rh-color-surface-lighter,\n          #f2f2f2\n        )\n      );--_focus-border-color:var(\n        --rh-cta-focus-border-color,\n        var(\n          --rh-color-border-strong-on-light,\n          #151515\n        )\n      );--_focus-color:var(\n        --rh-cta-focus-color,\n        var(\n          --rh-color-surface-darkest,\n          #151515\n        )\n      );--_focus-inner-border-color:var(\n        --rh-cta-focus-inner-border-color,\n        var(\n          --rh-color-border-strong-on-light,\n          #151515\n        )\n      );--_active-color:var(\n        --rh-cta-active-color,\n        var(\n          --rh-color-text-primary-on-dark,\n          #ffffff\n        )\n      );--_active-background-color:var(\n        --rh-cta-active-background-color,\n        var(\n          --rh-color-border-strong-on-light,\n          #151515\n        )\n      );--_active-inner-border-color:var(\n        --rh-cta-active-inner-border-color,\n        var(\n          --rh-color-surface-light,\n          #e0e0e0\n        )\n      )}:host([variant=secondary]) #container.dark{--_border-color:var(--rh-cta-border-color, var(--rh-color-border-strong-on-dark, #ffffff));--_color:var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));--_hover-background-color:var(\n        --rh-cta-hover-background-color,\n        var(\n          --rh-color-surface-lightest,\n          #ffffff\n        )\n      );--_hover-border-color:var(\n        --rh-cta-hover-border-color,\n        var(\n          --rh-color-border-strong-on-dark,\n          #ffffff\n        )\n      );--_hover-color:var(--rh-cta-hover-color, var(--rh-color-text-primary-on-light, #151515));--_focus-background-color:var(\n        --rh-cta-focus-background-color,\n        var(\n          --rh-color-surface-dark,\n          #383838\n        )\n      );--_focus-border-color:var(\n        --rh-cta-focus-border-color,\n        var(\n          --rh-color-border-strong-on-dark,\n          #ffffff\n        )\n      );--_focus-inner-border-color:var(\n        --rh-cta-focus-inner-border-color,\n        var(\n          --rh-color-border-strong-on-dark,\n          #ffffff\n        )\n      );--_focus-color:var(--rh-cta-focus-color, var(--rh-color-text-primary-on-dark, #ffffff));--_active-color:var(--rh-cta-active-color, var(--rh-color-text-primary-on-light, #151515));--_active-background-color:var(\n        --rh-cta-active-background-color,\n        var(\n          --rh-color-surface-lightest,\n          #ffffff\n        )\n      );--_active-inner-border-color:var(\n        --rh-cta-active-inner-border-color,\n        var(\n          --rh-color-border-strong-on-light,\n          #151515\n        )\n      )}:host([variant=brick]){display:inline-block!important;max-width:100%;width:100%}:host([variant=brick]) #container{border-style:solid;font-family:var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);font-weight:var(--rh-font-weight-body-text-regular,400);display:flex;flex-flow:row wrap;gap:var(--rh-space-md,8px);justify-content:center;align-items:center;--_background-color:var(--rh-cta-background-color, transparent);--_border-color:var(--rh-cta-border-color, var(--rh-color-border-subtle-on-light, #c7c7c7));--_color:var(--rh-cta-color, var(--rh-color-interactive-blue-darker, #0066cc));--_hover-background-color:var(\n        --rh-cta-hover-background-color,\n        var(\n          --rh-color-surface-lighter,\n          #f2f2f2\n        )\n      );--_hover-border-color:var(\n        --rh-cta-hover-border-color,\n        var(\n          --rh-color-border-subtle-on-light,\n          #c7c7c7\n        )\n      );--_hover-color:var(--rh-cta-hover-color, var(--rh-color-interactive-blue-darkest, #003366));--_hover-text-decoration:var(--rh-cta-hover-text-decoration, none);--_focus-color:var(--rh-cta-focus-color, var(--rh-color-interactive-blue-darker, #0066cc));--_focus-border-color:var(\n        --rh-cta-focus-border-color,\n        var(\n          --rh-color-border-subtle-on-light,\n          #c7c7c7\n        )\n      );--_focus-inner-border-color:var(\n        --rh-cta-focus-inner-border-color,\n        var(\n          --rh-color-border-subtle-on-light,\n          #c7c7c7\n        )\n      );--_focus-text-decoration:var(--rh-cta-focus-text-decoration, none);--_active-background-color:var(\n        --rh-cta-active-background-color,\n        var(\n          --rh-color-surface-lighter,\n          #f2f2f2\n        )\n      );--_active-inner-border-color:var(\n        --rh-cta-active-inner-border-color,\n        var(\n          --rh-color-border-subtle-on-light,\n          #c7c7c7\n        )\n      );--_active-text-decoration:var(--rh-cta-active-text-decoration, none)}:host([variant=brick]) #container.dark{--_border-color:var(--rh-cta-border-color, var(--rh-color-border-subtle-on-dark, #707070));--_color:var(--rh-cta-color, var(--rh-color-interactive-blue-lighter, #92c5f9));--_hover-background-color:var(\n        --rh-cta-hover-background-color,\n        var(\n          --rh-color-surface-darker,\n          #1f1f1f\n        )\n      );--_hover-border-color:var(\n        --rh-cta-hover-border-color,\n        var(\n          --rh-color-border-subtle-on-dark,\n          #707070\n        )\n      );--_hover-color:var(--rh-cta-hover-color, var(--rh-color-interactive-blue-lightest, #b9dafc));--_hover-text-decoration:var(--rh-cta-hover-text-decoration, underline);--_focus-color:var(--rh-cta-focus-color, var(--rh-color-interactive-blue-lighter, #92c5f9));--_focus-border-color:var(\n        --rh-cta-focus-border-color,\n        var(\n          --rh-color-border-subtle-on-dark,\n          #707070\n        )\n      );--_focus-inner-border-color:var(\n        --rh-cta-focus-inner-border-color,\n        var(\n          --rh-color-border-subtle-on-dark,\n          #707070\n        )\n      );--_focus-text-decoration:var(--rh-cta-focus-text-decoration, none);--_active-background-color:var(\n        --rh-cta-active-background-color,\n        var(\n          --rh-color-surface-darker,\n          #1f1f1f\n        )\n      );--_active-inner-border-color:var(\n        --rh-cta-active-inner-border-color,\n        var(\n          --rh-color-border-subtle-on-dark,\n          #707070\n        )\n      );--_active-text-decoration:var(--rh-cta-active-text-decoration, underline)}:host([variant=brick]) #container.icon rh-icon{margin-inline:0}@supports not (translate:0 0){rh-icon{transform:translate(0,0);transition:transform var(--_trans)}#container.rtl rh-icon{transform:translate(0,0) rotate(180deg)}:host(:hover) #container rh-icon{transform:translate(3px,0)}:host(:hover) #container.rtl rh-icon{transform:translate(-3px,0) rotate(180deg)}}`;
 function isSupportedContent(el) {
-    return !!el && supportedTags.includes(el.localName);
-}
-const CONTENT = new WeakMap();
-function contentInitialized(el) {
-    return !!el && !!CONTENT.get(el);
-}
-function isButton(element) {
-    return element.tagName.toLowerCase() === 'button';
+    return el instanceof HTMLAnchorElement || el instanceof HTMLButtonElement;
 }
 /**
  * A call to action is a styled link that entices users to make a selection.
- *
  * @summary     Directs users to other pages or displays extra content
  * @slot
- *              We expect an anchor tag, `<a>` with an `href`, to be the first child inside `rh-cta` element. Less preferred but
- *              allowed for specific use-cases include: `<button>` (note however that the `button` tag is not supported for the
- *              default CTA styles).
- * @attr        color-palette
- *              [**Deprecated**] intended for use in elements that have slotted descendants, will be removed in a future release.
- *              - Sets color palette, which affects the element's styles as well as descendants' color theme. Overrides
- *              parent color context. Your theme will influence these colors so check there first if you are seeing inconsistencies.
- *              See [CSS Custom Properties](#css-custom-properties) for default values.
- *              {@deprecated color-palette intended for usage in elements that have slotted descendants}
+ *              The default slot contains the link text when the `href`
+ *              attribute is set. In case there is no href attribute, an anchor
+ *              tag (`<a href="...">`) should be the first child inside `rh-cta`
+ *              element. Less preferred but allowed for specific use-cases
+ *              include: `<button>` (note however that the `button` tag is not
+ *              supported for the default CTA styles).
  * @csspart     container - container element for slotted CTA
- * @cssprop     {<color>} --rh-cta-color
+ * @cssprop     {<color>} [--rh-cta-color=var(--rh-color-text-primary-on-dark, #ffffff)]
  *              Sets the cta color
- *              {@default `var(--rh-color-text-primary-on-dark, #ffffff)`}
- * @cssprop     --rh-cta-background-color
+ * @cssprop     [--rh-cta-background-color=var(--rh-color-brand-red-on-light, #ee0000)]
  *              Sets the cta background color
- *              {@default `var(--rh-color-brand-red-on-light, #ee0000)`}
- * @cssprop     --rh-cta-border-color
+ * @cssprop     [--rh-cta-border-color=var(--rh-color-brand-red-on-light, #ee0000)]
  *              Sets the cta border color
- *              {@default `var(--rh-color-brand-red-on-light, #ee0000)`}
- * @cssprop     --rh-cta-hover-color
+ * @cssprop     [--rh-cta-hover-color=var(--rh-color-text-primary-on-dark, #ffffff)]
  *              Sets the cta color on hover
- *              {@default `var(--rh-color-text-primary-on-dark, #ffffff)`}
- * @cssprop     --rh-cta-hover-background-color
+ * @cssprop     [--rh-cta-hover-background-color=var(--rh-color-brand-red-dark, #be0000)]
  *              Sets the cta background color on hover
- *              {@default `var(--rh-color-brand-red-dark, #be0000)`}
- * @cssprop     --rh-cta-hover-border-color
+ * @cssprop     [--rh-cta-hover-border-color=var(--rh-color-brand-red-dark, #be0000)]
  *              Sets the cta boder color on hover
- *              {@default `var(--rh-color-brand-red-dark, #be0000)`}
- * @cssprop     --rh-cta-focus-color
+ * @cssprop     [--rh-cta-focus-color=var(--rh-color-text-primary-on-dark, #ffffff)]
  *              Sets the cta color on focus
- *              {@default `var(--rh-color-text-primary-on-dark, #ffffff)`}
- * @cssprop     --rh-cta-focus-background-color
+ * @cssprop     [--rh-cta-focus-background-color=var(--rh-color-brand-red-on-light, #ee0000)]
  *              Sets the cta background color on focus
- *              {@default `var(--rh-color-brand-red-on-light, #ee0000)`}
- * @cssprop     --rh-cta-focus-container-background-color
+ * @cssprop     [--rh-cta-focus-container-background-color=transparent]
  *              Sets the cta container background color on focus
- *              {@default #0066cc1a}
- * @cssprop     --rh-cta-focus-border-color
+ * @cssprop     [--rh-cta-focus-container-outline-color=#0066cc]
+ *              Sets the cta container outline color on focus
+ * @cssprop     [--rh-cta-focus-border-color=transparent]
  *              Sets the cta border color on focus
- *              {@default `var(--rh-color-brand-red-on-light, #ee0000)`}
- * @cssprop     --rh-cta-focus-inner-border-color
+ * @cssprop     [--rh-cta-focus-inner-border-color=transparent]
  *              Sets the cta inner border color on focus
- *              {@default `var(--rh-color-text-primary-on-dark, #ffffff)`}
- * @cssprop     --rh-cta-active-color
+ * @cssprop     [--rh-cta-active-color=var(--rh-color-text-primary-on-dark, #ffffff)]
  *              Sets the cta color on active. Applicable only for secondary variant
- *              {@default `var(--rh-color-text-primary-on-dark, #ffffff)`}
- * @cssprop     --rh-cta-active-background-color
+ * @cssprop     [--rh-cta-active-background-color=var(--rh-color-brand-red-dark, #be0000)]
  *              Sets the cta background color on active
- *              {@default `var(--rh-color-brand-red-dark, #be0000)`}
- * @cssprop     --rh-cta-active-container-background-color
+ * @cssprop     [--rh-cta-active-container-background-color=#0066cc1a]
  *              Sets the cta container background color on active. Applicable only for default variant
- *              {@default #0066cc1a}
- * @cssprop     --rh-cta-active-inner-border-color
+ * @cssprop     [--rh-cta-active-inner-border-color=var(--rh-color-text-primary-on-dark, #ffffff)]
  *              Sets the cta inner border color on active
- *              {@default `var(--rh-color-text-primary-on-dark, #ffffff)`}
- * @cssprop     --rh-cta-text-decoration
+ * @cssprop     [--rh-cta-text-decoration=none]
  *              Sets the cta text decoration
- *              {@default none}
- * @cssprop     --rh-cta-focus-text-decoration
+ * @cssprop     [--rh-cta-focus-text-decoration=none]
  *              Sets the cta text decoration on focus
- *              {@default none}
- * @cssprop     --rh-cta-hover-text-decoration
+ * @cssprop     [--rh-cta-hover-text-decoration=none]
  *              Sets the cta text decoration on hover
- *              {@default none}
- * @cssprop     --rh-cta-active-text-decoration
+ * @cssprop     [--rh-cta-active-text-decoration=none]
  *              Sets the cta text decoration on active
- *              {@default none}
  */
 let RhCta = class RhCta extends LitElement {
     constructor() {
         super(...arguments);
-        _RhCta_instances.add(this);
-        /** The slotted `<a>` or `<button>` element */
-        this.cta = null;
-        /** true while the initializer method is running - to prevent double-execution */
-        _RhCta_initializing.set(this, false);
+        /**
+         * Icon set
+         */
+        this.iconSet = 'ui';
         /** Is the element in an RTL context? */
         _RhCta_dir.set(this, new DirController(this));
         _RhCta_logger.set(this, new Logger(this));
-        _RhCta_mo.set(this, new MutationObserver(() => __classPrivateFieldGet(this, _RhCta_instances, "m", _RhCta_onMutation).call(this)));
     }
-    connectedCallback() {
-        super.connectedCallback();
-        __classPrivateFieldGet(this, _RhCta_mo, "f").observe(this, { attributes: true, attributeFilter: ['color-palette'] });
+    async getUpdateComplete() {
+        if (this.icon) {
+            await import('@rhds/elements/rh-icon/rh-icon.js');
+        }
+        return super.getUpdateComplete();
     }
-    disconnectedCallback() {
-        super.disconnectedCallback();
-        __classPrivateFieldGet(this, _RhCta_mo, "f").disconnect();
-    }
-    // END DEPRECATION WARNING
     render() {
+        const { download, href, referrerpolicy, rel, target, icon, iconSet, on = '', variant, } = this;
         const rtl = __classPrivateFieldGet(this, _RhCta_dir, "f").dir === 'rtl';
-        // START DEPRECATION WARNING
-        // note: remove on from classMap below
-        const dark = this.colorPalette?.includes('dark') ? 'dark' : '';
-        const on = this.on ?? dark;
-        // END DEPRECATION WARNING
-        const svg = !!__classPrivateFieldGet(this, _RhCta_instances, "a", _RhCta_isDefault_get);
-        const icon = !!this.icon;
-        const iconOrSvg = !!__classPrivateFieldGet(this, _RhCta_instances, "a", _RhCta_isDefault_get) || !!this.icon;
+        const isDefault = !variant;
+        const svg = isDefault;
+        const iconOrSvg = isDefault || !!icon;
+        const follower = !iconOrSvg ? '' : variant !== 'brick' && icon ? html `<!--
+   --><rh-icon icon=${icon} set=${iconSet ?? 'ui'}></rh-icon>` : variant ? '' : html `<!--
+   --><rh-icon  set="ui" icon="arrow-right"></rh-icon>`;
         return html `
-      <span id="container" part="container" class="${classMap({ rtl, [on]: !!on, icon, svg })}">${this.variant === 'brick' && this.icon ? html `
-        <pf-icon icon=${this.icon} size="md" set="far"></pf-icon>` : ''}
-        <slot @slotchange=${this.firstUpdated}></slot>${!iconOrSvg ? '' : this.variant !== 'brick' && this.icon ? html `
-        <pf-icon icon=${this.icon} size="md" set="far"></pf-icon>` : this.variant ? '' : html `
-        <svg xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 31.56 31.56" focusable="false" width="1em" aria-hidden="true">
-          <path d="M15.78 0l-3.1 3.1 10.5 10.49H0v4.38h23.18l-10.5 10.49 3.1 3.1 15.78-15.78L15.78 0z" />
-        </svg>`}
+      <span id="container"
+            part="container"
+            class=${classMap({ rtl, icon: !!icon, svg, [on]: !!on })}
+            @slotchange=${this.firstUpdated}>${variant === 'brick' && icon ? html `
+        <rh-icon icon=${icon}
+                 set="${iconSet ?? 'ui'}"></rh-icon>` : ''}${href ? html `
+        <a href=${href}
+           download="${ifDefined(download)}"
+           rel="${ifDefined(rel)}"
+           referrerpolicy="${ifDefined(referrerpolicy)}"
+           target="${ifDefined(target)}"><slot></slot>${follower}</a>`
+            : html `<slot></slot>${follower}`}
       </span>
     `;
     }
     firstUpdated() {
-        let [cta] = this.shadowRoot?.querySelector('slot')?.assignedElements() ?? [];
-        while (cta instanceof HTMLSlotElement) {
-            [cta] = cta.assignedElements();
+        const { href, variant } = this;
+        const cta = this.shadowRoot?.querySelector('a')
+            ?? this.shadowRoot?.querySelector('slot')?.assignedElements().find(isSupportedContent)
+            ?? null;
+        if (href && cta !== this.shadowRoot?.querySelector('a')) {
+            return __classPrivateFieldGet(this, _RhCta_logger, "f").warn(`When the href attribute is used, slotted content must not be a link`);
         }
-        if (contentInitialized(cta) || __classPrivateFieldGet(this, _RhCta_initializing, "f")) {
-            return;
-        }
-        __classPrivateFieldSet(this, _RhCta_initializing, true, "f");
-        // If the first child does not exist or that child is not a supported tag
-        if (!isSupportedContent(cta)) {
+        else if (!href && !cta) {
             return __classPrivateFieldGet(this, _RhCta_logger, "f").warn(`The first child in the light DOM must be a supported call-to-action tag (<a>, <button>)`);
         }
-        else if (isButton(cta) && !this.variant) {
+        else if (!href && cta instanceof HTMLButtonElement && !variant) {
             return __classPrivateFieldGet(this, _RhCta_logger, "f").warn(`Button tag is not supported semantically by the default link styles`);
-        }
-        else {
-            // Capture the first child as the CTA element
-            this.cta = cta;
-            CONTENT.set(this.cta, true);
-            __classPrivateFieldSet(this, _RhCta_initializing, false, "f");
         }
     }
 };
-_RhCta_initializing = new WeakMap();
 _RhCta_dir = new WeakMap();
 _RhCta_logger = new WeakMap();
-_RhCta_mo = new WeakMap();
-_RhCta_instances = new WeakSet();
-_RhCta_isDefault_get = function _RhCta_isDefault_get() {
-    return !this.hasAttribute('variant');
-};
-_RhCta_onMutation = function _RhCta_onMutation() {
-    __classPrivateFieldGet(this, _RhCta_logger, "f").warn('The color-palette attribute is deprecated and will be removed in a future release.');
-};
 RhCta.version = '{{version}}';
 RhCta.styles = [style];
 __decorate([
@@ -181,13 +132,28 @@ __decorate([
 ], RhCta.prototype, "variant", void 0);
 __decorate([
     property({ reflect: true })
+], RhCta.prototype, "href", void 0);
+__decorate([
+    property()
+], RhCta.prototype, "download", void 0);
+__decorate([
+    property()
+], RhCta.prototype, "referrerpolicy", void 0);
+__decorate([
+    property()
+], RhCta.prototype, "rel", void 0);
+__decorate([
+    property()
+], RhCta.prototype, "target", void 0);
+__decorate([
+    property({ reflect: true })
 ], RhCta.prototype, "icon", void 0);
+__decorate([
+    property({ attribute: 'icon-set' })
+], RhCta.prototype, "iconSet", void 0);
 __decorate([
     colorContextConsumer()
 ], RhCta.prototype, "on", void 0);
-__decorate([
-    property({ reflect: true, attribute: 'color-palette' })
-], RhCta.prototype, "colorPalette", void 0);
 RhCta = __decorate([
     customElement('rh-cta')
 ], RhCta);

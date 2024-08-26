@@ -1,10 +1,10 @@
 // pf-accordion/pf-accordion-header.js
 import { createComponent } from '@lit/react';
 import react from 'react';
-import { PfAccordionHeader as elementClass } from '@patternfly/elements/pf-accordion/pf-accordion-header.js';
+import { PfAccordionHeader } from '@patternfly/elements/pf-accordion/pf-accordion-header.js';
 export const AccordionHeader = createComponent({
   tagName: 'pf-accordion-header',
-  elementClass,
+  elementClass: PfAccordionHeader,
   react,
   events: {
     onChange: 'change',

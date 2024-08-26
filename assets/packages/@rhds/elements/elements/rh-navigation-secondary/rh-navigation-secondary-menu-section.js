@@ -1,4 +1,4 @@
-var _RhNavigationSecondaryMenuSection_instances, _RhNavigationSecondaryMenuSection_logger, _RhNavigationSecondaryMenuSection_updateAccessibility, _RhSecondaryNavMenuSection_logger;
+var _RhNavigationSecondaryMenuSection_instances, _RhNavigationSecondaryMenuSection_logger, _RhNavigationSecondaryMenuSection_updateAccessibility;
 import { __classPrivateFieldGet, __decorate } from "tslib";
 import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
@@ -61,16 +61,4 @@ RhNavigationSecondaryMenuSection = __decorate([
     customElement('rh-navigation-secondary-menu-section')
 ], RhNavigationSecondaryMenuSection);
 export { RhNavigationSecondaryMenuSection };
-/** @deprecated use rh-navigation-secondary-menu-section */
-let RhSecondaryNavMenuSection = class RhSecondaryNavMenuSection extends RhNavigationSecondaryMenuSection {
-    constructor() {
-        super();
-        _RhSecondaryNavMenuSection_logger.set(this, new Logger(this));
-        __classPrivateFieldGet(this, _RhSecondaryNavMenuSection_logger, "f").warn(`rh-secondary-nav-menu-section is deprecated. Use rh-navigation-secondary-menu-section instead.`);
-    }
-};
-_RhSecondaryNavMenuSection_logger = new WeakMap();
-RhSecondaryNavMenuSection = __decorate([
-    customElement('rh-secondary-nav-menu-section')
-], RhSecondaryNavMenuSection);
 //# sourceMappingURL=rh-navigation-secondary-menu-section.js.map

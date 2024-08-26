@@ -31,7 +31,7 @@ export declare class RhTooltip extends LitElement {
     content?: string;
     private on?;
     connectedCallback(): void;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
     /** Show the tooltip */
     show(): Promise<void>;
     /** Hide the tooltip */

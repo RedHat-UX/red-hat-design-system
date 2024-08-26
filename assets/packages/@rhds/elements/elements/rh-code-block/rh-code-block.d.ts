@@ -31,7 +31,7 @@ export declare class RhCodeBlock extends LitElement {
     private on?;
     connectedCallback(): void;
     disconnectedCallback(): void;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
     protected firstUpdated(): void;
     protected updated(changed: PropertyValues<this>): void;
 }

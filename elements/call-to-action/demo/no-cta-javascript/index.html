@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
+    <title>No Cta Javascript | Red Hat Design System</title>
+
+    <link rel="preconnect" href="https://ga.jspm.io">
+
+    <link rel="stylesheet" href="/styles/dev-server/styles.css" media="all">
+
+    <script type="importmap">{
+  "imports": {
+    "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
+    "tslib": "/assets/packages/tslib/tslib.es6.mjs",
+    "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
+    "@lit/context": "/assets/packages/@lit/context/index.js",
+    "lit-element": "/assets/packages/lit-element/index.js",
+    "lit": "/assets/packages/lit/index.js",
+    "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.0/core.js",
+    "@rhds/tokens/media.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/meta.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js",
+    "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
+    "lit/static-html.js": "/assets/packages/lit/static-html.js",
+    "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
+    "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
+    "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
+    "@lit-labs/ssr-client/lit-element-hydrate-support.js": "https://ga.jspm.io/npm:@lit-labs/ssr-client@1.1.7/lit-element-hydrate-support.js",
+    "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
+    "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
+    "@rhds/elements/lib/": "/assets/packages/@rhds/elements/lib/",
+    "@rhds/elements/": "/assets/packages/@rhds/elements/elements/",
+    "@rhds/icons/": "/assets/packages/@rhds/icons/",
+    "@rhds/icons/icons.js": "/assets/packages/@rhds/icons/icons.js",
+    "@patternfly/elements/": "/assets/packages/@patternfly/elements/",
+    "@patternfly/icons/": "/assets/packages/@patternfly/icons/",
+    "@patternfly/pfe-core/": "/assets/packages/@patternfly/pfe-core/",
+    "playground-elements": "https://cdn.jsdelivr.net/npm/playground-elements@0.18.1/+esm"
+  },
+  "scopes": {
+    "https://ga.jspm.io/": {
+      "lit-html": "https://ga.jspm.io/npm:lit-html@3.2.0/lit-html.js",
+      "lit-html/": "https://ga.jspm.io/npm:lit-html@3.2.0/"
+    },
+    "/assets/packages/": {
+      "@floating-ui/utils": "https://ga.jspm.io/npm:@floating-ui/utils@0.2.7/dist/floating-ui.utils.mjs",
+      "@floating-ui/utils/dom": "https://ga.jspm.io/npm:@floating-ui/utils@0.2.7/dist/floating-ui.utils.dom.mjs",
+      "@lit/reactive-element/decorators/": "/assets/packages/@lit/reactive-element/decorators/",
+      "lit-element/lit-element.js": "/assets/packages/lit-element/lit-element.js",
+      "lit-html": "https://ga.jspm.io/npm:lit-html@3.2.0/lit-html.js",
+      "lit-html/": "https://ga.jspm.io/npm:lit-html@3.2.0/",
+      "lit/": "/assets/packages/lit/"
+    }
+  }
+}</script>
+    <script async src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
+    <script type="module">
+      import 'element-internals-polyfill';
+    </script>
+  </head>
+  <body unresolved>
+    <main><link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-cta/rh-cta-lightdom-shim.css">
+<p>&lt;rh-cta&gt; where JavaScript is not loaded, while loading a `lightdom-shim.css`.</p>
+
+<section id="variants">
+  <h2>Variants</h2>
+  <rh-cta><a href="#default">Default</a></rh-cta>
+  <rh-cta icon="play-circle"><a href="#default-video">Default Video</a></rh-cta>
+  <rh-cta variant="primary"><a href="#primary">Primary</a></rh-cta>
+  <rh-cta variant="primary" icon="play-circle"><a href="#primary-video">Video</a></rh-cta>
+  <rh-cta variant="secondary"><a href="#secondary">Secondary</a></rh-cta>
+  <rh-cta variant="brick"><a href="#brick">Brick</a></rh-cta>
+  <rh-cta variant="brick" icon="play-circle"><a href="#brick-video">Brick Video</a></rh-cta>
+</section>
+
+<rh-surface  color-palette="darkest"><template shadowroot="open" shadowrootmode="open"><style>:host(:is([color-palette^=dark])){--context:dark;--_context-text:var(--rh-color-text-primary-on-dark, #ffffff)}:host(:is([color-palette^=light],[color-palette=base])){--context:light;--_context-text:var(--rh-color-text-primary-on-light, #151515)}:host(:is([color-palette=lightest])){--_context-background-color:var(--rh-color-surface-lightest, #ffffff)}:host(:is([color-palette=lighter])){--_context-background-color:var(--rh-color-surface-lighter, #f2f2f2)}:host(:is([color-palette=light])){--_context-background-color:var(--rh-color-surface-light, #e0e0e0)}:host(:is([color-palette=base])){--_context-background-color:var(--rh-color-surface-lightest, #ffffff)}:host(:is([color-palette=dark])){--_context-background-color:var(--rh-color-surface-dark, #383838)}:host(:is([color-palette=darker])){--_context-background-color:var(--rh-color-surface-darker, #1f1f1f)}:host(:is([color-palette=darkest])){--_context-background-color:var(--rh-color-surface-darkest, #151515)}:host{display:block;background-color:var(--_context-background-color);color:var(--_context-text)}</style><!--lit-part 843u56Ok1Mg=--><!--lit-node 0--><slot ></slot><!--/lit-part--></template>
+  <h2>Dark Colour Context</h2>
+  <rh-cta><a href="#default">Default</a></rh-cta>
+  <rh-cta icon="play-circle"><a href="#default-video">Default Video</a></rh-cta>
+  <rh-cta variant="primary"><a href="#primary">Primary</a></rh-cta>
+  <rh-cta variant="primary" icon="play-circle"><a href="#primary-video">Video</a></rh-cta>
+  <rh-cta variant="secondary"><a href="#secondary">Secondary</a></rh-cta>
+  <rh-cta variant="brick"><a href="#brick">Brick</a></rh-cta>
+  <rh-cta variant="brick" icon="play-circle"><a href="#brick-video">Brick Video</a></rh-cta>
+</rh-surface>
+
+<section dir="rtl" lang="he">
+  <header lang="en" dir="ltr">
+    <h2>Right-to-Left Languages</h2>
+  </header>
+
+  <div>
+    <rh-cta>
+      <a href="#default">ברירת מחדל</a>
+    </rh-cta>
+
+    <rh-cta icon="play-circle">
+      <a href="#default-video">ברירת מחדל - וידאו</a>
+    </rh-cta>
+
+    <rh-cta variant="primary">
+      <a href="#primary">ראשי</a>
+    </rh-cta>
+
+    <rh-cta variant="primary" icon="play-circle">
+      <a href="#primary-video">ראשי - וידאו</a>
+    </rh-cta>
+
+    <rh-cta variant="secondary">
+      <a href="#secondary">משני</a>
+    </rh-cta>
+
+    <rh-cta variant="brick">
+      <a href="#brick">לבנה</a>
+    </rh-cta>
+
+    <rh-cta variant="brick" icon="user">
+      <a href="#brick-icon">לבנה עם אייקון</a>
+    </rh-cta>
+  </div>
+</section>
+
+<section dir="rtl" lang="he">
+  <header dir="ltr" lang="en">
+    <h2>Deep Shadow RTL</h2>
+    <p>
+      When the CTA is found within the shadow root of an element which is itself within a RTL context,
+      it's own contents should also be displayed right-to-left, including the various box models, the placement
+      of the icon, and the direction of the arrow. Authors should not need to specify the direction with the
+      <code>dir="rtl"</code> attribute if it is added to a containing element.
+      In this demo, the shadow root's host element has a light blue background colour, in order distinguish it from the document content.
+    </p>
+  </header>
+  <shadow-root>
+    <template shadowrootmode="open">
+      <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-cta/rh-cta-lightdom-shim.css">
+      <style>
+        :host {
+          width: 100%;
+          padding: var(--rh-space-xl, 24px);
+          background-color: var(--rh-color-blue-50, #e7f1fa);
+          display: flex;
+          flex-flow: row wrap;
+          gap: 16px;
+          align-items: center;
+        }
+      </style>
+
+      <rh-cta id="deep">
+        <a href="#default">ברירת מחדל</a>
+      </rh-cta>
+
+      <rh-cta icon="play-circle">
+        <a href="#default-video">ברירת מחדל - וידאו</a>
+      </rh-cta>
+
+      <rh-cta variant="primary">
+        <a href="#primary">ראשי</a>
+      </rh-cta>
+
+      <rh-cta variant="primary" icon="play-circle">
+        <a href="#primary-video">ראשי - וידאו</a>
+      </rh-cta>
+
+      <rh-cta variant="secondary">
+        <a href="#secondary">משני</a>
+      </rh-cta>
+
+      <rh-cta variant="brick">
+        <a href="#brick">לבנה</a>
+      </rh-cta>
+
+      <rh-cta variant="brick" icon="user">
+        <a href="#brick-icon">לבנה עם אייקון</a>
+      </rh-cta>
+    </template>
+  </shadow-root>
+</section>
+
+<style>
+shadow-root:not(:defined) {
+  display: block;
+  opacity: 1;
+}
+
+header[lang="en"] {
+  width: 100%;
+}
+</style>
+
+<script type="module">
+  import '@rhds/elements/rh-surface/rh-surface.js';
+
+  // import('/assets/dsd-polyfill.js');
+  // TODO: DSD poly wont load in local dev dynamically
+  // imported from /assets path loading inline here:
+  if (!('shadowRootMode' in HTMLTemplateElement.prototype)) {
+    (function attachShadowRoots(root) {
+      // find all templates with a shadowrootmode attribute
+      root.querySelectorAll('template[shadowrootmode]').forEach(template => {
+        // get the mode: open or closed
+        const mode = template.getAttribute('shadowrootmode');
+        // attach a shadow to the component
+        const shadowRoot = template.parentNode.attachShadow({ mode });
+        // append the content in the template
+        shadowRoot.appendChild(template.content);
+        // remove the template
+        template.remove();
+        attachShadowRoots(shadowRoot);
+      });
+    })(document);
+  }
+  document.body.removeAttribute('dsd-pending');
+
+  customElements.define('shadow-root', class ShadowRootElement extends HTMLElement { });
+</script>
+</main></body>
+</html>

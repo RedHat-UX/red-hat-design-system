@@ -5,7 +5,6 @@ import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { query } from 'lit/decorators/query.js';
 import { consume } from '@lit/context';
-import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { context } from './context.js';
 import { css } from "lit";
 const styles = css `:host {\n  display: block;\n  width: 100%;\n  text-align: left;\n  white-space: nowrap;\n  border: none;\n  cursor: pointer;\n  font-size: var(\n    --pf-c-dropdown__menu-item--FontSize,\n    var(--pf-global--FontSize--md, 1rem)\n  );\n  font-weight: var(\n    --pf-c-dropdown__menu-item--FontWeight,\n    var(--pf-global--FontWeight--normal, 400)\n  );\n  line-height: var(\n    --pf-c-dropdown__menu-item--LineHeight,\n    var(--pf-global--LineHeight--md, 1.5)\n  );\n  color: var(\n    --pf-c-dropdown__menu-item--Color,\n    var(--pf-global--Color--dark-100, #151515)\n  );\n  background-color: var(\n    --pf-c-dropdown__menu-item--BackgroundColor,\n    transparent\n  );\n  border: 3px solid var(\n    --pf-c-dropdown__menu-item--BackgroundColor,\n    transparent\n  );\n}\n\n:host([hidden]),\n[hidden] {\n  display: none !important;\n}\n\n:host([disabled]),\n.disabled {\n  &, & a {\n    cursor: not-allowed;\n  }\n  --pf-c-dropdown__menu-item--Color: var(\n    --pf-c-dropdown__menu-item--disabled--Color,\n    var(--pf-global--Color--dark-200, #6a6e73)\n  );\n  --pf-c-dropdown__menu-item--BackgroundColor: var(\n    --pf-c-dropdown__menu-item--disabled--BackgroundColor,\n    transparent\n  );\n}\n\n:host(:hover) {\n  --pf-c-dropdown__menu-item--Color: var(\n    --pf-c-dropdown__menu-item--hover--Color,\n    var(--pf-global--Color--dark-100, #151515)\n  );\n  --pf-c-dropdown__menu-item--BackgroundColor: var(\n    --pf-c-dropdown__menu-item--hover--BackgroundColor,\n    var(--pf-global--BackgroundColor--light-300, #f0f0f0)\n  );\n  text-decoration: none;\n}\n\n:host(:focus-within) {\n  border: 3px solid var(--pf-global--link--Color, #0066cc);\n}\n\n#menuitem {\n  position: relative;\n  display: flex;\n  align-items: stretch;\n  justify-content: space-between;\n  flex-wrap: wrap;\n  padding: var(\n      --pf-c-dropdown__menu-item--PaddingTop,\n      var(--pf-global--spacer--sm, 0.5rem)\n    )\n    var(\n      --pf-c-dropdown__menu-item--PaddingRight,\n      var(--pf-global--spacer--md, 1rem)\n    )\n    var(\n      --pf-c-dropdown__menu-item--PaddingBottom,\n      var(--pf-global--spacer--sm, 0.5rem)\n    )\n    var(\n      --pf-c-dropdown__menu-item--PaddingLeft,\n      var(--pf-global--spacer--md, 1rem)\n    );\n}\n\n#item {\n  display: flex;\n  align-items: center;\n}\n\n#item:focus {\n  outline: none;\n}\n\n#item::after {\n  content: '';\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n}\n\n#description {\n  display: block;\n  flex: 1 0 100%;\n  font-size: var(\n    --pf-c-dropdown__menu-item-description--FontSize, var(\n      --pf-global--FontSize--sm, 0.75rem\n    )\n  );\n  color: var(\n    --pf-c-dropdown__menu-item-description--Color, var(\n      --pf-global--Color--dark-200, #6a6e73\n    )\n  );\n  word-break: break-all;\n}\n\na {\n  color: var(\n    --pf-c-dropdown__menu-item--Color,\n    var(--pf-global--Color--dark-100, #151515)\n  ) !important;\n  text-decoration: none !important;\n}\n\nslot:not([name]){\n  flex: 1 0 44px;\n  min-height: 44px;\n}\n\nslot[name="icon"]::slotted(*) {\n  margin-inline-end: 0.5em;\n}\n`;
@@ -14,42 +13,6 @@ export class DropdownItemChange extends Event {
         super('change', { bubbles: true, cancelable: true });
     }
 }
-/**
- * Represents an item for a dropdown component.
- * @slot icon
- *      Optional slot for an icon
- * @slot description
- *      Optional slot for item description
- * @slot -
- *      Content for the dropdown item
- * @cssprop {<length>} --pf-c-dropdown__menu-item--FontSize
- *          Dropdown item font size
- *          {@default `1rem`}
- * @cssprop {<length>} --pf-c-dropdown__menu-item--FontWeight
- *          Dropdown item font weight
- *          {@default `400`}
- * @cssprop {<length>} --pf-c-dropdown__menu-item--LineHeight
- *          Dropdown item line height
- *          {@default `1.5`}
- * @cssprop {<length>} --pf-c-dropdown__menu-item--Color
- *          Dropdown item color
- *          {@default `#151515`}
- * @cssprop {<length>} --pf-c-dropdown__menu-item--BackgroundColor
- *          Dropdown item background color
- *          {@default `transparent`}
- * @cssprop {<length>} --pf-c-dropdown__menu-item--PaddingTop
- *          Dropdown item padding top
- *          {@default `0.5rem`}
- * @cssprop {<length>} --pf-c-dropdown__menu-item--PaddingRight
- *          Dropdown item padding right
- *          {@default `1rem`}
- * @cssprop {<length>} --pf-c-dropdown__menu-item--PaddingBottom
- *          Dropdown item padding bottom
- *          {@default `0.5rem`}
- * @cssprop {<length>} --pf-c-dropdown__menu-item--PaddingLeft
- *          Dropdown item padding left
- *          {@default `1rem`}
- */
 let PfDropdownItem = class PfDropdownItem extends LitElement {
     constructor() {
         super(...arguments);
@@ -91,6 +54,7 @@ PfDropdownItem.shadowRootOptions = {
     ...LitElement.shadowRootOptions,
     delegatesFocus: true,
 };
+PfDropdownItem.version = "4.0.0";
 __decorate([
     property({ reflect: true })
 ], PfDropdownItem.prototype, "value", void 0);

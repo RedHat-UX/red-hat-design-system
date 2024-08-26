@@ -1,4 +1,4 @@
-import { LitElement, type PropertyValues } from 'lit';
+import { LitElement, type PropertyValues, type TemplateResult } from 'lit';
 export declare class DropdownItemChange extends Event {
     constructor();
 }
@@ -10,43 +10,37 @@ export declare class DropdownItemChange extends Event {
  *      Optional slot for item description
  * @slot -
  *      Content for the dropdown item
- * @cssprop {<length>} --pf-c-dropdown__menu-item--FontSize
+ * @cssprop {<length>} [--pf-c-dropdown__menu-item--FontSize=1rem]
  *          Dropdown item font size
- *          {@default `1rem`}
- * @cssprop {<length>} --pf-c-dropdown__menu-item--FontWeight
+ *
+ * @cssprop {<length>} [--pf-c-dropdown__menu-item--FontWeight=400]
  *          Dropdown item font weight
- *          {@default `400`}
- * @cssprop {<length>} --pf-c-dropdown__menu-item--LineHeight
+ *
+ * @cssprop {<length>} [--pf-c-dropdown__menu-item--LineHeight=1.5]
  *          Dropdown item line height
- *          {@default `1.5`}
- * @cssprop {<length>} --pf-c-dropdown__menu-item--Color
+ *
+ * @cssprop {<length>} [--pf-c-dropdown__menu-item--Color=#151515]
  *          Dropdown item color
- *          {@default `#151515`}
- * @cssprop {<length>} --pf-c-dropdown__menu-item--BackgroundColor
+ *
+ * @cssprop {<length>} [--pf-c-dropdown__menu-item--BackgroundColor=transparent]
  *          Dropdown item background color
- *          {@default `transparent`}
- * @cssprop {<length>} --pf-c-dropdown__menu-item--PaddingTop
+ *
+ * @cssprop {<length>} [--pf-c-dropdown__menu-item--PaddingTop=0.5rem]
  *          Dropdown item padding top
- *          {@default `0.5rem`}
- * @cssprop {<length>} --pf-c-dropdown__menu-item--PaddingRight
+ *
+ * @cssprop {<length>} [--pf-c-dropdown__menu-item--PaddingRight=1rem]
  *          Dropdown item padding right
- *          {@default `1rem`}
- * @cssprop {<length>} --pf-c-dropdown__menu-item--PaddingBottom
+ *
+ * @cssprop {<length>} [--pf-c-dropdown__menu-item--PaddingBottom=0.5rem]
  *          Dropdown item padding bottom
- *          {@default `0.5rem`}
- * @cssprop {<length>} --pf-c-dropdown__menu-item--PaddingLeft
+ *
+ * @cssprop {<length>} [--pf-c-dropdown__menu-item--PaddingLeft=1rem]
  *          Dropdown item padding left
- *          {@default `1rem`}
+ *
  */
 export declare class PfDropdownItem extends LitElement {
     static readonly styles: CSSStyleSheet[];
-    static readonly shadowRootOptions: {
-        delegatesFocus: boolean;
-        mode: ShadowRootMode;
-        slotAssignment?: SlotAssignmentMode | undefined;
-        customElements?: CustomElementRegistry | undefined;
-        registry?: CustomElementRegistry | undefined;
-    };
+    static readonly shadowRootOptions: ShadowRootInit;
     /**
      * The value associated with the dropdown item.
      * This value can be used to identify the selected item
@@ -71,7 +65,7 @@ export declare class PfDropdownItem extends LitElement {
     /** @internal */
     menuItem: HTMLElement;
     protected updated(changed: PropertyValues<this>): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

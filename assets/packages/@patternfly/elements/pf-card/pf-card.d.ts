@@ -1,50 +1,52 @@
-import { BaseCard } from './BaseCard.js';
+import { LitElement, type TemplateResult } from 'lit';
 /**
  * A **card** is a square or rectangular container that can contain any kind of content.
  * Cards symbolize units of information, and each one acts as an entry point for
  * users to access more details. For example, in dashboards and catalog views, cards
  * function as a preview of a detailed page. Cards may also be used in data displays
  * like card views, or for positioning content on a page.
- *
  * @summary Gives a preview of information in a small layout
- *
  * @slot header
- *       If this slot is used, we expect a heading level tag (h1, h2, h3, h4, h5, h6).
- *       An icon, svg, or use of the icon component are also valid in this region.
- * @slot - Any content that is not designated for the header or footer slot, will go to this slot.
+ *       When included, defines the contents of a card. Card headers can contain images as well as
+ *       the title of a card and an actions menu represented by the right-aligned kebab.
+ *       In most cases, your card should include a header. The only exceptions are when cards being
+ *       used as a layout element to create a white background behind other content.
+ * @slot title
+ *       Communicates the title of a card if it's not included in the header.
+ *       If a card will be utilized as a selectable and clickable card, the title needs to be made as a linked text to trigger action and indicate interaction.
+ * @slot - Body. Provides details about the item. A card body can include any combination of static
+ *         text and/or active content.
  * @slot footer
- *       Use this slot for anything that you want to be stuck to the base of the card.
- *
+ *       Contains external links, actions, or static text at the bottom of a card.
  * @csspart header - The container for *header* content
  * @csspart body - The container for *body* content
  * @csspart footer - The container for *footer* content
- *
- *
- * @cssproperty {<color>} --pf-c-card--BackgroundColor {@default `#ffffff`}
- * @cssproperty {<color>} --pf-c-card--BoxShadow {@default `0 0.0625rem 0.125rem 0 rgba(3, 3, 3, 0.12), 0 0 0.125rem 0 rgba(3, 3, 3, 0.06)`}
- * @cssproperty {<color>} --pf-c-card--size-compact__body--FontSize {@default `.875rem`}
- * @cssproperty {<color>} --pf-c-card--size-compact__footer--FontSize {@default `1rem`}
- * @cssproperty {<color>} --pf-c-card--size-compact--first-child--PaddingTop {@default `1.5rem`}
- * @cssproperty {<color>} --pf-c-card--size-compact--child--PaddingRight {@default `1rem`}
- * @cssproperty {<color>} --pf-c-card--size-compact--child--PaddingBottom {@default `1rem`}
- * @cssproperty {<color>} --pf-c-card--size-compact--child--PaddingLeft {@default `1rem`}
- * @cssproperty {<color>} --pf-c-card--size-compact__title--not--last-child--PaddingBottom {@default `.5rem`}
- * @cssproperty {<color>} --pf-c-card--size-large__title--FontSize {@default `1.25rem`}
- * @cssproperty {<color>} --pf-c-card--size-large--first-child--PaddingTop {@default `2rem`}
- * @cssproperty {<color>} --pf-c-card--size-large--child--PaddingRight {@default `2rem`}
- * @cssproperty {<color>} --pf-c-card--size-large--child--PaddingBottom {@default `2rem`}
- * @cssproperty {<color>} --pf-c-card--size-large--child--PaddingLeft {@default `2rem`}
- * @cssproperty {<color>} --pf-c-card--size-large__title--not--last-child--PaddingBottom {@default `1.5rem`}
- * @cssproperty {<color>} --pf-c-card--m-flat--BorderWidth {@default `1px solid #d2d2d2`}
- * @cssproperty {<color>} --pf-c-card--m-plain--BoxShadow {@default `none`}
- * @cssproperty {<color>} --pf-c-card--m-plain--BackgroundColor {@default `transparent`}
- * @cssproperty {<color>} --pf-c-card--m-rounded--BorderRadius {@default `3px`}
- * @cssproperty {<color>} --pf-c-card--m-full-height--Height {@default `100%`}
- * @cssproperty {<color>} --pf-c-card__title--FontFamily {@default `"RedHatDisplayUpdated", helvetica, arial, sans-serif`}
- * @cssproperty {<color>} --pf-c-card__title--FontSize {@default `1rem`}
- * @cssproperty {<color>} --pf-c-card__title--FontWeight {@default `700`}
+ * @cssprop {<color>} [--pf-c-card--BackgroundColor=#ffffff]
+ * @cssprop {<color>} [--pf-c-card--BoxShadow=0 0.0625rem 0.125rem 0 rgba(3, 3, 3, 0.12), 0 0 0.125rem 0 rgba(3, 3, 3, 0.06)]
+ * @cssprop {<color>} [--pf-c-card--size-compact__body--FontSize=.875rem]
+ * @cssprop {<color>} [--pf-c-card--size-compact__footer--FontSize=1rem]
+ * @cssprop {<color>} [--pf-c-card--size-compact--first-child--PaddingTop=1.5rem]
+ * @cssprop {<color>} [--pf-c-card--size-compact--child--PaddingRight=1rem]
+ * @cssprop {<color>} [--pf-c-card--size-compact--child--PaddingBottom=1rem]
+ * @cssprop {<color>} [--pf-c-card--size-compact--child--PaddingLeft=1rem]
+ * @cssprop {<color>} [--pf-c-card--size-compact__title--not--last-child--PaddingBottom=.5rem]
+ * @cssprop {<color>} [--pf-c-card--size-large__title--FontSize=1.25rem]
+ * @cssprop {<color>} [--pf-c-card--size-large--first-child--PaddingTop=2rem]
+ * @cssprop {<color>} [--pf-c-card--size-large--child--PaddingRight=2rem]
+ * @cssprop {<color>} [--pf-c-card--size-large--child--PaddingBottom=2rem]
+ * @cssprop {<color>} [--pf-c-card--size-large--child--PaddingLeft=2rem]
+ * @cssprop {<color>} [--pf-c-card--size-large__title--not--last-child--PaddingBottom=1.5rem]
+ * @cssprop {<color>} [--pf-c-card--m-flat--BorderWidth=1px solid #d2d2d2]
+ * @cssprop {<color>} [--pf-c-card--m-plain--BoxShadow=none]
+ * @cssprop {<color>} [--pf-c-card--m-plain--BackgroundColor=transparent]
+ * @cssprop {<color>} [--pf-c-card--m-rounded--BorderRadius=3px]
+ * @cssprop {<color>} [--pf-c-card--m-full-height--Height=100]
+ * @cssprop {<color>} [--pf-c-card__title--FontFamily="RedHatDisplayUpdated", helvetica, arial, sans-serif]
+ * @cssprop {<color>} [--pf-c-card__title--FontSize=1rem]
+ * @cssprop {<color>} [--pf-c-card__title--FontWeight=700]
  */
-export declare class PfCard extends BaseCard {
+export declare class PfCard extends LitElement {
+    #private;
     static readonly styles: CSSStyleSheet[];
     /**
      * Optionally provide a size for the card and the card contents.
@@ -54,17 +56,18 @@ export declare class PfCard extends BaseCard {
      */
     size?: 'compact' | 'large';
     /**
-    * Optionally apply a border radius for the drop shadow and/or border.
-    */
+     * Optionally apply a border radius for the drop shadow and/or border.
+     */
     rounded: boolean;
     /**
-   * Optionally allow the card to take up the full height of the parent element.
-   */
+     * Optionally allow the card to take up the full height of the parent element.
+     */
     fullHeight: boolean;
     /**
      * Optionally remove the border on the card container.
      */
     plain: boolean;
+    render(): TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

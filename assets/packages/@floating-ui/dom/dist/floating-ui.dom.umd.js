@@ -63,9 +63,18 @@
   function isTableElement(element) {
     return ['table', 'td', 'th'].includes(getNodeName(element));
   }
-  function isContainingBlock(element) {
+  function isTopLayer(element) {
+    return [':popover-open', ':modal'].some(selector => {
+      try {
+        return element.matches(selector);
+      } catch (e) {
+        return false;
+      }
+    });
+  }
+  function isContainingBlock(elementOrCss) {
     const webkit = isWebKit();
-    const css = getComputedStyle(element);
+    const css = isElement(elementOrCss) ? getComputedStyle(elementOrCss) : elementOrCss;
 
     // https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block#identifying_the_containing_block
     return css.transform !== 'none' || css.perspective !== 'none' || (css.containerType ? css.containerType !== 'normal' : false) || !webkit && (css.backdropFilter ? css.backdropFilter !== 'none' : false) || !webkit && (css.filter ? css.filter !== 'none' : false) || ['transform', 'perspective', 'filter'].some(value => (css.willChange || '').includes(value)) || ['paint', 'layout', 'strict', 'content'].some(value => (css.contain || '').includes(value));
@@ -75,6 +84,8 @@
     while (isHTMLElement(currentNode) && !isLastTraversableNode(currentNode)) {
       if (isContainingBlock(currentNode)) {
         return currentNode;
+      } else if (isTopLayer(currentNode)) {
+        return null;
       }
       currentNode = getParentNode(currentNode);
     }
@@ -98,8 +109,8 @@
       };
     }
     return {
-      scrollLeft: element.pageXOffset,
-      scrollTop: element.pageYOffset
+      scrollLeft: element.scrollX,
+      scrollTop: element.scrollY
     };
   }
   function getParentNode(node) {
@@ -139,9 +150,13 @@
     const isBody = scrollableAncestor === ((_node$ownerDocument2 = node.ownerDocument) == null ? void 0 : _node$ownerDocument2.body);
     const win = getWindow(scrollableAncestor);
     if (isBody) {
-      return list.concat(win, win.visualViewport || [], isOverflowElement(scrollableAncestor) ? scrollableAncestor : [], win.frameElement && traverseIframes ? getOverflowAncestors(win.frameElement) : []);
+      const frameElement = getFrameElement(win);
+      return list.concat(win, win.visualViewport || [], isOverflowElement(scrollableAncestor) ? scrollableAncestor : [], frameElement && traverseIframes ? getOverflowAncestors(frameElement) : []);
     }
     return list.concat(scrollableAncestor, getOverflowAncestors(scrollableAncestor, [], traverseIframes));
+  }
+  function getFrameElement(win) {
+    return win.parent && Object.getPrototypeOf(win.parent) ? win.frameElement : null;
   }
 
   function getCssDimensions(element) {
@@ -246,7 +261,7 @@
       const win = getWindow(domElement);
       const offsetWin = offsetParent && isElement(offsetParent) ? getWindow(offsetParent) : offsetParent;
       let currentWin = win;
-      let currentIFrame = currentWin.frameElement;
+      let currentIFrame = getFrameElement(currentWin);
       while (currentIFrame && offsetParent && offsetWin !== currentWin) {
         const iframeScale = getScale(currentIFrame);
         const iframeRect = currentIFrame.getBoundingClientRect();
@@ -260,7 +275,7 @@
         x += left;
         y += top;
         currentWin = getWindow(currentIFrame);
-        currentIFrame = currentWin.frameElement;
+        currentIFrame = getFrameElement(currentWin);
       }
     }
     return core.rectToClientRect({
@@ -268,17 +283,6 @@
       height,
       x,
       y
-    });
-  }
-
-  const topLayerSelectors = [':popover-open', ':modal'];
-  function isTopLayer(floating) {
-    return topLayerSelectors.some(selector => {
-      try {
-        return floating.matches(selector);
-      } catch (e) {
-        return false;
-      }
     });
   }
 
@@ -463,7 +467,7 @@
       rootBoundary,
       strategy
     } = _ref;
-    const elementClippingAncestors = boundary === 'clippingAncestors' ? getClippingElementAncestors(element, this._c) : [].concat(boundary);
+    const elementClippingAncestors = boundary === 'clippingAncestors' ? isTopLayer(element) ? [] : getClippingElementAncestors(element, this._c) : [].concat(boundary);
     const clippingAncestors = [...elementClippingAncestors, rootBoundary];
     const firstClippingAncestor = clippingAncestors[0];
     const clippingRect = clippingAncestors.reduce((accRect, clippingAncestor) => {
@@ -525,6 +529,10 @@
     };
   }
 
+  function isStaticPositioned(element) {
+    return getComputedStyle(element).position === 'static';
+  }
+
   function getTrueOffsetParent(element, polyfill) {
     if (!isHTMLElement(element) || getComputedStyle(element).position === 'fixed') {
       return null;
@@ -538,29 +546,41 @@
   // Gets the closest ancestor positioned element. Handles some edge cases,
   // such as table ancestors and cross browser bugs.
   function getOffsetParent(element, polyfill) {
-    const window = getWindow(element);
-    if (!isHTMLElement(element) || isTopLayer(element)) {
-      return window;
+    const win = getWindow(element);
+    if (isTopLayer(element)) {
+      return win;
+    }
+    if (!isHTMLElement(element)) {
+      let svgOffsetParent = getParentNode(element);
+      while (svgOffsetParent && !isLastTraversableNode(svgOffsetParent)) {
+        if (isElement(svgOffsetParent) && !isStaticPositioned(svgOffsetParent)) {
+          return svgOffsetParent;
+        }
+        svgOffsetParent = getParentNode(svgOffsetParent);
+      }
+      return win;
     }
     let offsetParent = getTrueOffsetParent(element, polyfill);
-    while (offsetParent && isTableElement(offsetParent) && getComputedStyle(offsetParent).position === 'static') {
+    while (offsetParent && isTableElement(offsetParent) && isStaticPositioned(offsetParent)) {
       offsetParent = getTrueOffsetParent(offsetParent, polyfill);
     }
-    if (offsetParent && (getNodeName(offsetParent) === 'html' || getNodeName(offsetParent) === 'body' && getComputedStyle(offsetParent).position === 'static' && !isContainingBlock(offsetParent))) {
-      return window;
+    if (offsetParent && isLastTraversableNode(offsetParent) && isStaticPositioned(offsetParent) && !isContainingBlock(offsetParent)) {
+      return win;
     }
-    return offsetParent || getContainingBlock(element) || window;
+    return offsetParent || getContainingBlock(element) || win;
   }
 
   const getElementRects = async function (data) {
     const getOffsetParentFn = this.getOffsetParent || getOffsetParent;
     const getDimensionsFn = this.getDimensions;
+    const floatingDimensions = await getDimensionsFn(data.floating);
     return {
       reference: getRectRelativeToOffsetParent(data.reference, await getOffsetParentFn(data.floating), data.strategy),
       floating: {
         x: 0,
         y: 0,
-        ...(await getDimensionsFn(data.floating))
+        width: floatingDimensions.width,
+        height: floatingDimensions.height
       }
     };
   };
@@ -630,9 +650,11 @@
             return refresh();
           }
           if (!ratio) {
+            // If the reference is clipped, the ratio is 0. Throttle the refresh
+            // to prevent an infinite loop of updates.
             timeoutId = setTimeout(() => {
               refresh(false, 1e-7);
-            }, 100);
+            }, 1000);
           } else {
             refresh(false, ratio);
           }
@@ -737,6 +759,25 @@
   }
 
   /**
+   * Resolves with an object of overflow side offsets that determine how much the
+   * element is overflowing a given clipping boundary on each side.
+   * - positive = overflowing the boundary by that number of pixels
+   * - negative = how many pixels left before it will overflow
+   * - 0 = lies flush with the boundary
+   * @see https://floating-ui.com/docs/detectOverflow
+   */
+  const detectOverflow = core.detectOverflow;
+
+  /**
+   * Modifies the placement by translating the floating element along the
+   * specified axes.
+   * A number (shorthand for `mainAxis` or distance), or an axes configuration
+   * object may be passed.
+   * @see https://floating-ui.com/docs/offset
+   */
+  const offset = core.offset;
+
+  /**
    * Optimizes the visibility of the floating element by choosing the placement
    * that has the most space available automatically, without needing to specify a
    * preferred placement. Alternative to `flip`.
@@ -816,23 +857,17 @@
     });
   };
 
-  Object.defineProperty(exports, "detectOverflow", {
-    enumerable: true,
-    get: function () { return core.detectOverflow; }
-  });
-  Object.defineProperty(exports, "offset", {
-    enumerable: true,
-    get: function () { return core.offset; }
-  });
   exports.arrow = arrow;
   exports.autoPlacement = autoPlacement;
   exports.autoUpdate = autoUpdate;
   exports.computePosition = computePosition;
+  exports.detectOverflow = detectOverflow;
   exports.flip = flip;
   exports.getOverflowAncestors = getOverflowAncestors;
   exports.hide = hide;
   exports.inline = inline;
   exports.limitShift = limitShift;
+  exports.offset = offset;
   exports.platform = platform;
   exports.shift = shift;
   exports.size = size;

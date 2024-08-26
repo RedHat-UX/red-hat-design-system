@@ -24,12 +24,12 @@ let RhMenu = class RhMenu extends LitElement {
     constructor() {
         super(...arguments);
         _RhMenu_instances.add(this);
-        _RhMenu_tabindex.set(this, new RovingTabindexController(this, {
+        _RhMenu_tabindex.set(this, RovingTabindexController.of(this, {
             getItems: () => this._menuItems ?? [],
         }));
     }
     get activeItem() {
-        return __classPrivateFieldGet(this, _RhMenu_tabindex, "f").activeItem;
+        return __classPrivateFieldGet(this, _RhMenu_tabindex, "f").items.at(__classPrivateFieldGet(this, _RhMenu_tabindex, "f").atFocusedItemIndex);
     }
     connectedCallback() {
         super.connectedCallback();
@@ -46,10 +46,10 @@ let RhMenu = class RhMenu extends LitElement {
     `;
     }
     activateItem(item) {
-        __classPrivateFieldGet(this, _RhMenu_tabindex, "f").setActiveItem(item);
+        __classPrivateFieldGet(this, _RhMenu_tabindex, "f").atFocusedItemIndex = this._menuItems.indexOf(item);
     }
     focus() {
-        __classPrivateFieldGet(this, _RhMenu_tabindex, "f").activeItem?.focus();
+        this._menuItems[__classPrivateFieldGet(this, _RhMenu_tabindex, "f").atFocusedItemIndex]?.focus();
     }
 };
 _RhMenu_tabindex = new WeakMap();

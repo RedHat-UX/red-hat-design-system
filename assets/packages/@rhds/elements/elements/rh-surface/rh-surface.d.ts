@@ -25,7 +25,7 @@ export declare class RhSurface extends LitElement {
      * See [CSS Custom Properties](#css-custom-properties) for default values
      */
     colorPalette?: ColorPalette;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

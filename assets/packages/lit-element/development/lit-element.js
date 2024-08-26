@@ -7,11 +7,11 @@
  * The main LitElement module, which defines the {@linkcode LitElement} base
  * class and related APIs.
  *
- *  LitElement components can define a template and a set of observed
+ * LitElement components can define a template and a set of observed
  * properties. Changing an observed property triggers a re-render of the
  * element.
  *
- *  Import {@linkcode LitElement} and {@linkcode html} from this module to
+ * Import {@linkcode LitElement} and {@linkcode html} from this module to
  * create a component:
  *
  *  ```js
@@ -224,7 +224,7 @@ export const _$LE = {
 };
 // IMPORTANT: do not change the property name or the assignment expression.
 // This line will be used in regexes to search for LitElement usage.
-(globalThis.litElementVersions ??= []).push('4.0.4');
+(globalThis.litElementVersions ??= []).push('4.1.0');
 if (DEV_MODE && globalThis.litElementVersions.length > 1) {
     issueWarning('multiple-versions', `Multiple versions of Lit loaded. Loading multiple versions ` +
         `is not recommended.`);

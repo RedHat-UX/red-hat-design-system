@@ -1,10 +1,12 @@
 // pf-clipboard-copy/pf-clipboard-copy.js
 import { createComponent } from '@lit/react';
 import react from 'react';
-import { PfClipboardCopy as elementClass } from '@patternfly/elements/pf-clipboard-copy/pf-clipboard-copy.js';
+import { PfClipboardCopy } from '@patternfly/elements/pf-clipboard-copy/pf-clipboard-copy.js';
 export const ClipboardCopy = createComponent({
   tagName: 'pf-clipboard-copy',
-  elementClass,
+  elementClass: PfClipboardCopy,
   react,
-  events: {},
+  events: {
+    onCopy: 'copy',
+  },
 });

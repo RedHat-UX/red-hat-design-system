@@ -1,4 +1,4 @@
-var _RhTileGroup_instances, _RhTileGroup_tiles, _RhTileGroup_initTiles, _RhTileGroup_tabindex, _RhTileGroup_internals, _RhTileGroup_selectTile, _RhTileGroup_onSelect, _RhTileGroup_onSlotchange;
+var _RhTileGroup_instances, _RhTileGroup_tiles, _RhTileGroup_tabindex, _RhTileGroup_internals, _RhTileGroup_selectTile, _RhTileGroup_onSelect, _RhTileGroup_onSlotchange;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
@@ -11,10 +11,10 @@ import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 import { colorContextProvider } from '../../lib/context/color/provider.js';
 import { RhTile, TileSelectEvent } from './rh-tile.js';
 import { css } from "lit";
-const styles = css `:host([disabled]){pointer-events:none}`;
+const styles = css `:host{display:grid;grid-template-columns:repeat(auto-fit,320px);gap:var(--rh-space-2xl,32px)}:host([disabled]){pointer-events:none}`;
 /**
  * A group of `<rh-tile>` elements which handles radio selection.
- * @slot - tiles
+ * @slot - Put one or more `rh-tile` elements in this slot
  */
 let RhTileGroup = class RhTileGroup extends LitElement {
     /**
@@ -43,8 +43,9 @@ let RhTileGroup = class RhTileGroup extends LitElement {
          */
         this.radio = false;
         _RhTileGroup_tiles.set(this, []);
-        _RhTileGroup_initTiles.set(this, false);
-        _RhTileGroup_tabindex.set(this, new RovingTabindexController(this));
+        _RhTileGroup_tabindex.set(this, RovingTabindexController.of(this, {
+            getItems: () => __classPrivateFieldGet(this, _RhTileGroup_tiles, "f"),
+        }));
         _RhTileGroup_internals.set(this, InternalsController.of(this));
         this.addEventListener('slotchange', __classPrivateFieldGet(this, _RhTileGroup_instances, "m", _RhTileGroup_onSlotchange));
         this.addEventListener('select', __classPrivateFieldGet(this, _RhTileGroup_instances, "m", _RhTileGroup_onSelect));
@@ -81,7 +82,7 @@ let RhTileGroup = class RhTileGroup extends LitElement {
     }
     /** Sets focus on active tile */
     focus() {
-        (__classPrivateFieldGet(this, _RhTileGroup_tabindex, "f")?.activeItem || __classPrivateFieldGet(this, _RhTileGroup_tabindex, "f").firstItem)?.focus();
+        __classPrivateFieldGet(this, _RhTileGroup_tabindex, "f").items[__classPrivateFieldGet(this, _RhTileGroup_tabindex, "f").atFocusedItemIndex]?.focus();
     }
     /**
      * Programatically select a tile
@@ -117,17 +118,9 @@ let RhTileGroup = class RhTileGroup extends LitElement {
             tile.disabledGroup = this.disabled;
             tile.id || (tile.id = getRandomId('rh-tile'));
         });
-        if (__classPrivateFieldGet(this, _RhTileGroup_initTiles, "f")) {
-            __classPrivateFieldGet(this, _RhTileGroup_tabindex, "f").updateItems(__classPrivateFieldGet(this, _RhTileGroup_tiles, "f"));
-        }
-        else {
-            __classPrivateFieldSet(this, _RhTileGroup_initTiles, true, "f");
-            __classPrivateFieldGet(this, _RhTileGroup_tabindex, "f").initItems(__classPrivateFieldGet(this, _RhTileGroup_tiles, "f"));
-        }
     }
 };
 _RhTileGroup_tiles = new WeakMap();
-_RhTileGroup_initTiles = new WeakMap();
 _RhTileGroup_tabindex = new WeakMap();
 _RhTileGroup_internals = new WeakMap();
 _RhTileGroup_instances = new WeakSet();

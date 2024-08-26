@@ -12,28 +12,30 @@
 
     <script type="importmap">{
   "imports": {
+    "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
     "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
     "@lit/context": "/assets/packages/@lit/context/index.js",
-    "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
-    "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "lit-element": "/assets/packages/lit-element/index.js",
     "lit": "/assets/packages/lit/index.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@3.0.0/core.js",
+    "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.0/core.js",
+    "@rhds/tokens/media.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/meta.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js",
     "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
     "lit/static-html.js": "/assets/packages/lit/static-html.js",
-    "@rhds/tokens/media.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js",
-    "@rhds/tokens/meta.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js",
-    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
     "@lit-labs/ssr-client/lit-element-hydrate-support.js": "https://ga.jspm.io/npm:@lit-labs/ssr-client@1.1.7/lit-element-hydrate-support.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
-    "fuse.js": "/assets/packages/fuse.js/dist/fuse.esm.js",
     "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
     "@rhds/elements/lib/": "/assets/packages/@rhds/elements/lib/",
     "@rhds/elements/": "/assets/packages/@rhds/elements/elements/",
+    "@rhds/icons/": "/assets/packages/@rhds/icons/",
+    "@rhds/icons/icons.js": "/assets/packages/@rhds/icons/icons.js",
     "@patternfly/elements/": "/assets/packages/@patternfly/elements/",
     "@patternfly/icons/": "/assets/packages/@patternfly/icons/",
     "@patternfly/pfe-core/": "/assets/packages/@patternfly/pfe-core/",
@@ -61,12 +63,10 @@
     </script>
   </head>
   <body unresolved>
-    <main>
-      <div data-demo="rh-site-status"><form id="demo-form">
-  <rh-site-status id="status"></rh-site-status>
-  <label for="domain"></label>
+    <main><form id="demo-form">
+  <label for="domain">Domain</label>
   <pf-select id="domain">
-    <pf-option>redhat.com</pf-option>
+    <pf-option>status.redhat.com</pf-option>
     <pf-option>access.redhat.com</pf-option>
     <pf-option>bugzilla.redhat.com</pf-option>
     <pf-option>cloud.redhat.com</pf-option>
@@ -76,25 +76,52 @@
     <pf-option>docs.redhat.com</pf-option>
     <pf-option>intelligence.redhat.com</pf-option>
   </pf-select>
+  <rh-site-status></rh-site-status>
 </form>
-
-<script type="module">
-  import '@rhds/elements/rh-site-status/rh-site-status.js';
-  import '@patternfly/elements/pf-select/pf-select.js';
-  document.getElementById('domain').addEventListener('change', function(event) {
-    document.getElementById('status').__TESTING_ONLY_DONT_USE_OR_WELL_TELL_YOUR_BOSS__domain__ = event.target.value;
-  })
-</script>
 
 <style>
 #demo-form {
+  height: min-content;
+  align-items: center;;
   display: flex;
+  padding: var(--rh-space-xl, 24px);
   gap: var(--rh-space-md, 8px);
   & #domain {
     flex: 1;
   }
 }
 </style>
-</div>
-    </main></body>
+
+<script type="module">
+  import '@rhds/elements/rh-site-status/rh-site-status.js';
+  // `<rh-site-status>` ordinarily fetched status information from the current domain
+  // i.e. the hostname of the site which the site-status element is served from
+  // The purpose of this demo is to show the status of other domains.
+  // WARNING: This technique is not meant to be imitated on production sites,
+  //          it's for information purposes only
+  import { PfSelect } from '@patternfly/elements/pf-select/pf-select.js';
+  const select = document.getElementById('domain')
+  const form = document.getElementById('demo-form');
+  const originalFetch = window.fetch;
+  select.addEventListener('change', function(event) {
+    if (event.target instanceof PfSelect) {
+      // remove the previous status element
+      document.body.querySelector('rh-site-status').remove();
+      // override the fetch call to the
+      window.fetch = new Proxy(originalFetch, {
+        apply(target, thisArg, [url, ...args]) {
+          if (url.endsWith('.redhat.com/index.json')) {
+            const domain = event.target.value;
+            return target.apply(thisArg, [`https://${domain}/index.json`, ...args]);
+          } else {
+            return target.apply(thisArg, [url, ...args]);
+          }
+        },
+      });
+      // add a new site-status element
+      form.append(document.createElement('rh-site-status'));
+    }
+  })
+</script>
+</main></body>
 </html>

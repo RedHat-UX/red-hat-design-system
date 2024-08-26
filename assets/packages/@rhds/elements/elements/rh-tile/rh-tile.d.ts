@@ -1,5 +1,6 @@
 import { LitElement, type PropertyValues } from 'lit';
-import '@patternfly/elements/pf-icon/pf-icon.js';
+import type { IconNameFor, IconSetName } from '@rhds/icons';
+import '@rhds/elements/rh-icon/rh-icon.js';
 import { type ColorPalette } from '../../lib/context/color/provider.js';
 export declare class TileSelectEvent extends Event {
     force?: boolean | undefined;
@@ -8,9 +9,7 @@ export declare class TileSelectEvent extends Event {
 }
 /**
  * A tile is a flexible layout with a clickable and contained surface.
- *
  * @summary Creates a clickable, contained surface
- *
  * @fires {TileSelectEvent} select - when tile is clicked
  * @slot image - optional image on top of tile
  * @slot icon - optional icon
@@ -18,15 +17,15 @@ export declare class TileSelectEvent extends Event {
  * @slot headline - optional headline / link title
  * @slot - optional body content
  * @slot footer - optional footer
- * @cssprop --rh-tile-text-color - color of text - {@default var(--rh-color-text-primary-on-light, #151515)}
- * @cssprop --rh-tile-text-color-secondary - disabled text and icons - {@default var(--rh-color-text-secondary-on-light, #4d4d4d)}
- * @cssprop --rh-tile-interactive-color - color of interactive elements - {@default var(--rh-color-border-interactive-on-light, #0066cc)}
- * @cssprop --rh-tile-link-color - color of tile link - {@default var(--rh-tile-interactive-color)}
- * @cssprop --rh-tile-link-text-decoration - tile link text decoration - {@default none}
- * @cssprop --rh-tile-background-color - color tile surface - {@default var(--rh-color-surface-lightest, #ffffff)}
- * @cssprop --rh-tile-focus-background-color - color tile surface on focus/hover - {@default var(--rh-color-surface-lighter, #f2f2f2)}
- * @cssprop --rh-tile-disabled-background-color - color tile surface when disabled - {@default var(--rh-color-surface-light, #e0e0e0)}
- * @cssprop --rh-tile-border-color - color of tile border - {@default var(--rh-color-border-subtle-on-light, #c7c7c7)}
+ * @cssprop [--rh-tile-text-color=var(--rh-color-text-primary-on-light, #151515)] - Color of text.<br>Could cause accessibility issues; prefer to use `--rh-color-text-primary-on-light` and `--rh-color-text-primary-on-dark` for theming.
+ * @cssprop [--rh-tile-text-color-secondary=var(--rh-color-text-secondary-on-light, #4d4d4d)] - Disabled text and icons.<br>Could cause accessibility issues; prefer to use `--rh-color-text-secondary-on-light` and `--rh-color-text-secondary-on-dark` for theming.
+ * @cssprop [--rh-tile-interactive-color=var(--rh-color-border-interactive-on-light, #0066cc)] - Color of interactive elements.<br>Could cause accessibility issues; prefer to use `--rh-color-border-interactive-on-light` and `--rh-color-border-interactive-on-dark` for theming.
+ * @cssprop [--rh-tile-link-color=var(--rh-tile-interactive-color)] - Color of tile link.
+ * @cssprop [--rh-tile-link-text-decoration=none] - Tile link text decoration
+ * @cssprop [--rh-tile-background-color=var(--rh-color-surface-lightest, #ffffff)] - Color tile surface.<br>Could cause accessibility issues; prefer to use `--rh-color-surface-lightest` and `--rh-color-surface-darkest` for theming.
+ * @cssprop [--rh-tile-focus-background-color=var(--rh-color-surface-lighter, #f2f2f2)] - Color tile surface on focus/hover.<br>Could cause accessibility issues; prefer to use `--rh-color-surface-lighter` and `--rh-color-surface-darker` for theming.
+ * @cssprop [--rh-tile-disabled-background-color=var(--rh-color-surface-light, #e0e0e0)] - Color tile surface when disabled.<br>Could cause accessibility issues; prefer to use `--rh-color-surface-light` and `--rh-color-surface-dark` for theming.
+ * @cssprop [--rh-tile-border-color=var(--rh-color-border-subtle-on-light, #c7c7c7)] - Color of tile border.<br>Could cause accessibility issues; prefer to use `--rh-color-border-subtle-on-light` and `--rh-color-border-subtle-on-dark` for theming.
  */
 export declare class RhTile extends LitElement {
     #private;
@@ -47,9 +46,13 @@ export declare class RhTile extends LitElement {
      */
     compact: boolean;
     /**
-     * Icon (must be a member of the fontawesome "far" icon set)
+     * The icon to display in the tile
      */
-    icon?: string;
+    icon?: IconNameFor<IconSetName>;
+    /**
+     * Icon set to display in the tile
+     */
+    iconSet: IconSetName;
     /**
      * When checkable, the accessible (visually hidden) label for the form control
      * If not set, the text content of the tile element will be used instead.
@@ -109,7 +112,7 @@ export declare class RhTile extends LitElement {
      * @param changed - the reactive properties which changed this cycle, and their old values
      */
     willUpdate(changed: PropertyValues<this>): Promise<void>;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
     formDisabledCallback(): Promise<void>;
     formStateRestoreCallback(state: string, mode: string): Promise<void>;
     setCustomValidity(message: string): void;

@@ -12,8 +12,9 @@ export declare class RhAccordionPanel extends LitElement {
     expanded: boolean;
     colorPalette?: ColorPalette;
     private on?;
+    private ctx?;
     connectedCallback(): void;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

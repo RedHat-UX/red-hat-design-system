@@ -1,4 +1,4 @@
-import { LitElement } from 'lit';
+import { LitElement, type TemplateResult } from 'lit';
 import { ComposedEvent } from '@patternfly/pfe-core';
 export declare class ModalCancelEvent extends ComposedEvent {
     constructor();
@@ -29,30 +29,24 @@ export declare class ModalOpenEvent extends ComposedEvent {
  * @csspart description - The container for the optional dialog description in the header
  * @csspart close-button - The modal's close button
  * @csspart footer - Actions footer container
- * @cssprop {<length>} --pf-c-modal-box--ZIndex {@default 500}
- * @cssprop {<length>} --pf-c-modal-box--Width - Width of the modal {@default calc(100% - 2rem)}
- * @cssprop {<length>} --pf-c-modal-box--MaxWidth - Max width of the modal {@default calc(100% - 2rem)}
- * @cssprop {<length>} --pf-c-modal-box--m-sm--sm--MaxWidth - Max width of the small variant modal {@default 35rem}
- * @cssprop {<length>} --pf-c-modal-box--m-md--MaxWidth - Max width of the small variant modal {@default 52.5rem}
- * @cssprop {<length>} --pf-c-modal-box--m-lg--lg--MaxWidth - Max width of the large variant modal {@default 70rem}
- * @cssprop {<length>} --pf-c-modal-box--MaxHeight - Max height of the modal {@default calc(100% - 3rem)}
- * @cssprop {<length>} --pf-c-modal-box--BoxShadow - {@default var(--pf-global--BoxShadow--xl)}
- * @cssprop {<length>} --pf-c-modal-box__title--FontSize - {@default 1.5rem}
- * @cssprop {<length>} --pf-c-modal-box--m-align-top--MarginTop - {@default 2rem}
+ * @cssprop {<length>} [--pf-c-modal-box--ZIndex=500]
+ * @cssprop {<length>} [--pf-c-modal-box--Width=calc(100 - 2rem)] - Width of the modal
+ * @cssprop {<length>} [--pf-c-modal-box--MaxWidth=calc(100 - 2rem)] - Max width of the modal
+ * @cssprop {<length>} [--pf-c-modal-box--m-sm--sm--MaxWidth=35rem] - Max width of the small variant modal
+ * @cssprop {<length>} [--pf-c-modal-box--m-md--MaxWidth=52.5rem] - Max width of the small variant modal
+ * @cssprop {<length>} [--pf-c-modal-box--m-lg--lg--MaxWidth=70rem] - Max width of the large variant modal
+ * @cssprop {<length>} [--pf-c-modal-box--MaxHeight=calc(100 - 3rem)] - Max height of the modal
+ * @cssprop {<length>} [--pf-c-modal-box--BoxShadow=var(--pf-global--BoxShadow--xl)] -
+ * @cssprop {<length>} [--pf-c-modal-box__title--FontSize=1.5rem] -
+ * @cssprop {<length>} [--pf-c-modal-box--m-align-top--MarginTop=2rem] -
  * @cssprop {<length>} --pf-c-modal-box--m-align-top--MaxWidth
  * @cssprop {<length>} --pf-c-modal-box--m-align-top--MaxHeight
- * @cssprop {<color>} --pf-c-modal-box--BackgroundColor - {@default #fff}
+ * @cssprop {<color>} [--pf-c-modal-box--BackgroundColor=#fff] -
  * @cssprop --pf-c-modal-box__title--FontFamily - default font family for header-slotted headings
  */
 export declare class PfModal extends LitElement implements HTMLDialogElement {
     #private;
-    static readonly shadowRootOptions: {
-        delegatesFocus: boolean;
-        mode: ShadowRootMode;
-        slotAssignment?: SlotAssignmentMode | undefined;
-        customElements?: CustomElementRegistry | undefined;
-        registry?: CustomElementRegistry | undefined;
-    };
+    static readonly shadowRootOptions: ShadowRootInit;
     static readonly styles: CSSStyleSheet[];
     /** Should the dialog close when user clicks outside the dialog? */
     protected static closeOnOutsideClick: boolean;
@@ -74,11 +68,11 @@ export declare class PfModal extends LitElement implements HTMLDialogElement {
     private dialog?;
     private closeButton?;
     connectedCallback(): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): TemplateResult<1>;
     disconnectedCallback(): void;
     protected _init(): Promise<void>;
-    protected _openChanged(oldValue?: boolean, newValue?: boolean): Promise<void>;
-    protected _triggerChanged(): void;
+    protected openChanged(oldValue?: boolean, newValue?: boolean): Promise<void>;
+    protected triggerChanged(): void;
     private onTriggerClick;
     private onClick;
     private onKeydown;
@@ -104,6 +98,7 @@ export declare class PfModal extends LitElement implements HTMLDialogElement {
      * ```js
      * modal.close();
      * ```
+     * @param returnValue dialog return value
      */
     close(returnValue?: string): void;
 }

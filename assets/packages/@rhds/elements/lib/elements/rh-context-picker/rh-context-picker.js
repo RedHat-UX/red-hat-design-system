@@ -4,14 +4,13 @@ import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tsli
 import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import {} from '../../context/color/provider.js';
-import { colorContextConsumer } from '../../context/color/consumer.js';
+import { colorContextConsumer } from '@rhds/elements/lib/context/color/consumer.js';
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { ColorSurfaceDarkest as darkest, ColorSurfaceDarker as darker, ColorSurfaceDark as dark, ColorSurfaceLight as light, ColorSurfaceLighter as lighter, ColorSurfaceLightest as lightest, } from '@rhds/tokens/color.js';
 import { classMap } from 'lit/directives/class-map.js';
 import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 import { css } from "lit";
 const style = css `:host{display:inline-flex;position:relative}*{box-sizing:border-box}#container{display:contents;--thumb-color:var(--rh-color-interactive-blue-darker, #0066cc)}#container.on-dark{--thumb-color:var(--rh-color-interactive-blue-lighter, #92c5f9)}.darkest{--c:var(--rh-color-surface-darkest, #151515)}.darker{--c:var(--rh-color-surface-darker, #1f1f1f)}.dark{--c:var(--rh-color-surface-dark, #383838)}.light{--c:var(--rh-color-surface-light, #e0e0e0)}.lighter{--c:var(--rh-color-surface-lighter, #f2f2f2)}.lightest{--c:var(--rh-color-surface-lightest, #ffffff)}:is(.dark,.darker,.darkest){--alt-color:var(--rh-color-surface-light, #e0e0e0)}:is(.light,.lighter,.lightest){--alt-color:var(--rh-color-surface-dark, #383838)}:is(:focus,:hover){--alt-color:var(--thumb-color)}input{appearance:none;display:block;position:relative;width:var(--rh-size-icon-03,32px);height:var(--rh-size-icon-03,32px);border-radius:50%;margin-block:8px;margin-inline:4px}input:before{display:block;content:"";background:var(--c);border-radius:50%;position:absolute;inset:0;outline:var(--alt-color) solid 2px}input:checked:after{display:block;content:"";background:var(--alt-color);border-radius:50%;position:absolute;inset:6px}input:focus{outline:var(--thumb-color) solid 4px}label,rh-tooltip span{text-transform:capitalize}.visually-hidden{position:fixed;top:0;left:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}`;
-import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 export class ContextChangeEvent extends Event {
     constructor(colorPalette) {
         super('change', { bubbles: true, cancelable: true });

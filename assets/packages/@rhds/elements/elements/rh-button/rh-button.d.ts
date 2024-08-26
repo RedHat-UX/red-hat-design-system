@@ -16,9 +16,10 @@ export declare class RhButton extends LitElement {
     static readonly shadowRootOptions: {
         delegatesFocus: boolean;
         mode: ShadowRootMode;
-        slotAssignment?: SlotAssignmentMode | undefined;
-        customElements?: CustomElementRegistry | undefined;
-        registry?: CustomElementRegistry | undefined;
+        serializable?: boolean;
+        slotAssignment?: SlotAssignmentMode;
+        customElements?: CustomElementRegistry;
+        registry?: CustomElementRegistry;
     };
     /** Disables the button */
     disabled: boolean;

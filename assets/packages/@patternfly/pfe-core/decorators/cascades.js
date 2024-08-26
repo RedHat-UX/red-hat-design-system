@@ -1,7 +1,8 @@
 import { CascadeController } from '../controllers/cascade-controller.js';
 /**
  * Cascades the decorated attribute to children
- * @deprecated: use context, especially via `@patternfly/pfe-core/functions/context.js`;
+ * @param items
+ * @deprecated use context, especially via `@patternfly/pfe-core/functions/context.js`;
  */
 export function cascades(...items) {
     return function (proto, key) {

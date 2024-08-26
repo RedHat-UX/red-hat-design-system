@@ -1,4 +1,4 @@
-import { LitElement } from 'lit';
+import { LitElement, type TemplateResult } from 'lit';
 /**
  * Group of options within a listbox
  * @slot - `<pf-option>` or `<hr>` elements
@@ -11,7 +11,7 @@ export declare class PfOptionGroup extends LitElement {
     label?: string;
     /** whether group is disabled */
     disabled: boolean;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {
