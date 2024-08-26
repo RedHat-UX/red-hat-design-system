@@ -16,8 +16,8 @@
   flex-basis: 100%;
   justify-content: center;
   align-items: center;
-  min-width: var(--logo-wall-logo-min-width, 130px);
-  max-width: var(--logo-wall-logo-max-width, 190px);
+  min-width: var(--logo-wall-logo-min-width);
+  max-width: var(--logo-wall-logo-max-width);
 }
 
 .logo-wall--bordered > * {
@@ -46,8 +46,8 @@
 
 .logo-wall img {
   max-width: 100%;
-  max-height: var(--logo-wall-logo-max-height, 40px);
-  min-height: var(--logo-wall-logo-min-height, 40px);
+  max-height: var(--logo-wall-logo-max-height);
+  min-height: var(--logo-wall-logo-min-height);
 }
 
 [color-palette^="dark"] .logo-wall--bordered > :hover {
