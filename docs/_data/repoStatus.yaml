@@ -207,9 +207,9 @@
     - name: Documentation
       status: Ready
 - tagName: rh-jump-links
-  name: "Jumplinks"
+  name: "Jump links"
   type: "Element"
-  overallStatus: "Available"
+  overallStatus: "Planned"
   libraries:
     - name: Figma library
       status: N/A
