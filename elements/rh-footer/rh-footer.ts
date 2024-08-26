@@ -48,14 +48,14 @@ function isHeaderTagName(tagName: string) {
  * @slot    main-secondary - typically contains prose or promotional content
  * @csspart main-secondary - container fro prose or promotional content
  * @slot    universal - must contain `<rh-footer-universal>`
- * @cssprop [--rh-footer-icon-color=#8a8d90] -
- * @cssprop [--rh-footer-icon-color-hover=#b8bbbe] -
- * @cssprop [--rh-footer-border-color=#6a6e73] -
- * @cssprop [--rh-footer-accent-color=#e00] -
- * @cssprop [--rh-footer-section-side-gap=16px] -
- * @cssprop [--rh-footer-links-gap=8px] -
- * @cssprop [--rh-footer-link-header-font-size=0.875em] -
- * @cssprop [--rh-footer-nojs-min-height=750px] -
+ * @cssprop [--rh-footer-icon-color=#8a8d90]
+ * @cssprop [--rh-footer-icon-color-hover=#b8bbbe]
+ * @cssprop [--rh-footer-border-color=#6a6e73]
+ * @cssprop [--rh-footer-accent-color=#e00]
+ * @cssprop [--rh-footer-section-side-gap=16px]
+ * @cssprop [--rh-footer-links-gap=8px]
+ * @cssprop [--rh-footer-link-header-font-size=0.875em]
+ * @cssprop [--rh-footer-nojs-min-height=750px]
  */
 @customElement('rh-footer')
 export class RhFooter extends LitElement {
@@ -181,14 +181,15 @@ export class RhFooter extends LitElement {
     `;
   }
 
+  private static LISTS_SELECTOR =
+    ':is([slot^=links],[slot=footer-links-primary],[slot=footer-links-secondary]):is(ul)';
+
   /**
    * Get any `<ul>`s that are in the designated link slots
    * and synchronously update each list and header if we need to.
    */
   public updateAccessibility(): void {
-    const listsSelector =
-      ':is([slot^=links],[slot=footer-links-primary],[slot=footer-links-secondary]):is(ul)';
-    for (const list of this.querySelectorAll(listsSelector)) {
+    for (const list of this.querySelectorAll(RhFooter.LISTS_SELECTOR)) {
       // if we already have a label then we assume that the user
       // has wired this up themselves.
       if (!list.hasAttribute('aria-labelledby')) {

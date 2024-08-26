@@ -53,20 +53,6 @@ Add `<rh-accordion>` to the page, and write `<rh-accordion-header>` /
 </rh-accordion>
 ```
 
-### Bordered Accordion
-
-```html
-<rh-accordion bordered>
-  <rh-accordion-header>
-    <h2>Item One</h2>
-  </rh-accordion-header>
-  <rh-accordion-panel>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod 
-    tempor incididunt ut labore et dolore magna aliqua.</p>
-  </rh-accordion-panel>
-</rh-accordion>
-```
-
 ## Questions and Feedback
 
 Questions? Comments? Feedback? Need help installing or implementing?

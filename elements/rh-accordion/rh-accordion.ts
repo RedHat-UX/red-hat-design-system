@@ -21,7 +21,6 @@ import { context, type RhAccordionContext } from './context.js';
 
 import styles from './rh-accordion.css';
 
-
 export class AccordionExpandEvent extends ComposedEvent {
   constructor(
     public toggle: RhAccordionHeader,
@@ -73,10 +72,7 @@ export class RhAccordion extends LitElement {
   /**
    * Sets accordion header's accents position to inline or bottom
    */
-  @property({
-    attribute: true,
-    reflect: true,
-  }) accents?: 'inline' | 'bottom';
+  @property({ attribute: true, reflect: true }) accents?: 'inline' | 'bottom';
 
   /**
    * Sets and reflects the currently expanded accordion 0-based indexes.
@@ -108,12 +104,6 @@ export class RhAccordion extends LitElement {
     }
   }
 
-  get #ctx(): RhAccordionContext {
-    const accents = this.accents ? this.accents : 'inline';
-    return { accents };
-  }
-
-
   @property({ reflect: true, type: Boolean }) large = false;
 
   @property({ reflect: true, type: Boolean }) bordered = true;
@@ -127,35 +117,24 @@ export class RhAccordion extends LitElement {
 
   #expandedIndex: number[] = [];
 
-  #headerIndex = RovingTabindexController.of(this, {
-    getItems: () => this.headers,
-  });
-
-  // actually is read in #init, by the `||=` operator
+  // side effects are used
   // eslint-disable-next-line no-unused-private-class-members
-  #initialized = false;
+  #tabindex: RovingTabindexController<HTMLButtonElement> = RovingTabindexController.of(this, {
+    getItems: () => this.headers.flatMap(x =>
+      x.hasUpdated ? [x.shadowRoot!.querySelector('button')!] : []),
+  });
 
   #logger = new Logger(this);
 
-  #mo = new MutationObserver(() => this.#init());
+  #mo = new MutationObserver(() => this.updateAccessibility());
 
-  @provide({ context }) private ctx = this.#ctx;
+  @provide({ context }) private ctx = this.#makeContext();
 
   connectedCallback() {
     super.connectedCallback();
     this.addEventListener('change', this.#onChange as EventListener);
     this.#mo.observe(this, { childList: true });
-    this.#init();
-  }
-
-  override render(): TemplateResult {
-    const { on = '' } = this;
-    return html`
-      <div id="container" class="${classMap({ [on]: !!on })}"><slot></slot></div>
-    `;
-  }
-
-  async firstUpdated() {
+    this.updateAccessibility();
     const { headers } = this;
     headers.forEach((header, index) => {
       if (header.expanded) {
@@ -163,28 +142,17 @@ export class RhAccordion extends LitElement {
         const panel = this.#panelForHeader(header);
         if (panel) {
           this.#expandPanel(panel);
+          panel.hidden = !panel.expanded;
         }
       }
     });
-    this.ctx = this.#ctx;
   }
 
-  @observes('large')
-  private largeChanged(this: RhAccordion) {
-    [...this.headers, ...this.panels].forEach(el => el.toggleAttribute('large', this.large));
-  }
-
-  /**
-   * Initialize the accordion by connecting headers and panels
-   * with aria controls and labels; set up the default disclosure
-   * state if not set by the author; and check the URL for default
-   * open
-   */
-  async #init() {
-    this.#initialized ||= !!await this.updateComplete;
-    // Event listener to the accordion header after the accordion has been initialized to add the roving tabindex
-    this.addEventListener('focusin', this.#updateActiveHeader);
-    this.updateAccessibility();
+  override render(): TemplateResult {
+    const { on = '' } = this;
+    return html`
+      <div id="container" class="${classMap({ [on]: !!on })}"><slot></slot></div>
+    `;
   }
 
   protected override async getUpdateComplete(): Promise<boolean> {
@@ -196,22 +164,22 @@ export class RhAccordion extends LitElement {
     return c && results.every(Boolean);
   }
 
-  get #activeHeader() {
-    const { headers } = this;
-    const index = headers.findIndex(header => header.matches(':focus,:focus-within'));
-    return index > -1 ? headers.at(index) : undefined;
+  @observes('accents')
+  @observes('large')
+  @observes('bordered')
+  private contextChanged() {
+    this.ctx = this.#makeContext();
   }
 
-  #updateActiveHeader() {
-    if (this.#activeHeader) {
-      this.#headerIndex.atFocusedItemIndex = this.headers.indexOf(this.#activeHeader);
-    }
+  #makeContext(): RhAccordionContext {
+    const { accents = 'inline', large } = this;
+    return { accents, large };
   }
 
   #panelForHeader(header: RhAccordionHeader) {
     const next = header.nextElementSibling;
     if (!RhAccordion.isPanel(next)) {
-      return void this.#logger.error('Sibling element to a header needs to be a panel');
+      return next?.querySelector('rh-accordion-panel');
     } else {
       return next;
     }
@@ -292,18 +260,23 @@ export class RhAccordion extends LitElement {
     return this.#allPanels();
   }
 
+  /**
+   * Initialize the accordion by connecting headers and panels
+   * with aria controls and labels; set up the default disclosure
+   * state if not set by the author; and check the URL for default
+   * open
+   */
   public updateAccessibility() {
     const { headers } = this;
 
     // For each header in the accordion, attach the aria connections
-    headers.forEach(header => {
+    for (const header of headers) {
       const panel = this.#panelForHeader(header);
       if (panel) {
         header.setAttribute('aria-controls', panel.id);
         panel.setAttribute('aria-labelledby', header.id);
-        panel.hidden = !panel.expanded;
       }
-    });
+    }
   }
 
   /**
