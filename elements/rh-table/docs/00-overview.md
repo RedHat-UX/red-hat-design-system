@@ -7,7 +7,7 @@
 </uxdot-example>
 
 
-{% repoStatusList %}
+{% repoStatusList repoStatus=repoStatus %}
 
 ## Sample element
 
@@ -56,4 +56,4 @@
   - If a user needs to scan, examine, and compare data
   - If a user must navigate to a specific piece of data to complete a task
 
-{% repoStatusChecklist %}
+{% repoStatusChecklist repoStatus=repoStatus %}

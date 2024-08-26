@@ -6,7 +6,7 @@ import { classMap } from 'lit/directives/class-map.js';
 
 import { ComposedEvent } from '@patternfly/pfe-core';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
-import { bound, observed } from '@patternfly/pfe-core/decorators.js';
+import { bound, observes } from '@patternfly/pfe-core/decorators.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
@@ -48,7 +48,6 @@ export class RhNavigationSecondaryDropdown extends LitElement {
 
   @query('#container') _container?: HTMLElement;
 
-  @observed
   @state() expanded = false;
 
   connectedCallback(): void {
@@ -94,13 +93,13 @@ export class RhNavigationSecondaryDropdown extends LitElement {
    * run the `#open()` method, if false run the `#close()` method.
    * @param oldVal {string} - Boolean value in string form
    * @param newVal {string} - Boolean value in string form
-   * @returns
    */
+  @observes('expanded')
   protected _expandedChanged(oldVal?: 'false' | 'true', newVal?: 'false' | 'true'): void {
     if (newVal === oldVal) {
       return;
     }
-    newVal ? this.#open() : this.#close();
+    return newVal ? this.#open() : this.#close();
   }
 
   /**
@@ -118,7 +117,6 @@ export class RhNavigationSecondaryDropdown extends LitElement {
 
   /**
    * Sets or removes attributes needed to open a dropdown menu
-   * @returns
    */
   #open(): void {
     const link = this.#slots.getSlotted('link').find(child => child instanceof HTMLAnchorElement);
@@ -153,22 +151,8 @@ export class RhNavigationSecondaryDropdown extends LitElement {
   }
 }
 
-/** @deprecated use rh-navigation-secondary-dropdown */
-@customElement('rh-secondary-nav-dropdown')
-class RhSecondaryNavDropdown extends RhNavigationSecondaryDropdown {
-  #logger = new Logger(this);
-
-  constructor() {
-    super();
-    this.#logger.warn(
-      'rh-secondary-nav-dropdown is deprecated. Use rh-navigation-secondary-dropdown instead.'
-    );
-  }
-}
-
 declare global {
   interface HTMLElementTagNameMap {
     'rh-navigation-secondary-dropdown': RhNavigationSecondaryDropdown;
-    'rh-secondary-nav-dropdown': RhSecondaryNavDropdown;
   }
 }

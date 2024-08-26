@@ -1,57 +1,51 @@
-const { readFileSync } = require('node:fs');
-const { join } = require('node:path');
-
 // for editor highlighting
 const html = String.raw;
-
-// TODO(bennypowers): remove when rh-icon arrives, make it ssr-able
-const getIcon = name => readFileSync(join(__dirname, 'repoStatus', `${name}.svg`), 'utf8');
 
 const STATUS_LEGEND = {
   'Planned': {
     description: 'Ready to be worked on or ready to be released',
     color: 'gray',
     variant: 'filled',
-    icon: getIcon('bell'),
+    icon: html`<rh-icon set="ui" icon="notification-fill">Planned</rh-icon>`,
   },
   'In Progress': {
     description: 'In the design or development process',
     color: 'green',
     variant: 'outline',
-    icon: getIcon('harvey-ball-50'),
+    icon: html`<rh-icon set="ui" icon="harvey-ball-50">✔️</rh-icon>`,
   },
   'Ready': {
     description: 'Ready to use and approved by all team members',
     color: 'green',
     variant: 'filled',
-    icon: getIcon('check'),
+    icon: html`<rh-icon set="ui" icon="check-circle-fill">✔️</rh-icon>`,
   },
   'Deprecated': {
     description: 'No longer supported by RHDS',
     color: 'orange',
     variant: 'filled',
-    icon: getIcon('circle-x'),
+    icon: html`<rh-icon set="ui" icon="close-circle-fill">Deprecated</rh-icon>`,
   },
   'N/A': {
     description: 'Not planned, not available, or does not apply',
     color: 'gray',
     variant: 'outline',
-    icon: getIcon('ban'),
+    icon: html`<rh-icon set="ui" icon="ban">N/A</rh-icon>`,
   },
   'Beta': {
     color: 'purple',
     variant: 'outline',
-    icon: getIcon('wrench'),
+    icon: html`<rh-icon set="ui" icon="build-fill">Beta</rh-icon>`,
   },
   'Experimental': {
     color: 'orange',
     variant: 'outline',
-    icon: getIcon('atom'),
+    icon: html`<rh-icon set="ui" icon="experimental">Beta</rh-icon>`,
   },
   'New': {
     color: 'cyan',
     variant: 'outline',
-    icon: getIcon('sparkles'),
+    icon: html`<rh-icon set="ui" icon="new-fill">New</rh-icon>`,
   },
 };
 
@@ -70,26 +64,14 @@ const STATUS_CHECKLIST = {
     'Deprecated': 'Component is no longer available in the RH Elements repo',
     'N/A': 'Not planned, not available, or does not apply',
   },
-  'WebRH': {
-    'Ready': 'Component is available in the WebRH repo',
-    'In progress': 'Component will be added to the WebRH repo when finished',
-    'Planned': 'Component should be added to the WebRH repo at a later date',
-    'Deprecated': 'Component is no longer available in the WebRH repo',
+  'RH Shared Libs': {
+    'Ready': 'Component is available in the RH Shared Libs repo',
+    'In progress': 'Component will be added to the RH Shared Libs repo when finished',
+    'Planned': 'Component should be added to the RH Shared Libs repo at a later date',
+    'Deprecated': 'Component is no longer available in the RH Shared Libs repo',
     'N/A': 'Not planned, not available, or does not apply',
   },
 };
-
-/**
- * Reads repo status data from global data and outputs an array with component keys
- */
-function getRepoData() {
-  const docsPage = this.ctx._;
-  const allStatuses = this.ctx.repoStatus ?? docsPage?.repoStatus ?? [];
-  const title = this.ctx.title ?? docsPage?.title;
-  return allStatuses.find(
-    component => component.name === title && component.type === 'Element'
-  )?.libraries;
-}
 
 /**
  * Calls getRepoData function and outputs a definition list for each component
@@ -97,11 +79,16 @@ function getRepoData() {
  * @param {string} [options.heading] heading text
  * @param {number} [options.level] heading level
  */
-function repoStatusList({ heading = 'Status', level = 2 } = {}) {
+function repoStatusList({ repoStatus, heading = 'Status', level = 2 } = {}) {
   // Removing Documentation status from the repoStatusList
-  const statusList = getRepoData.call(this)?.filter(repo => repo.name !== 'Documentation');
+  const librariesList = this.ctx.doc ?
+    repoStatus.find(x => x.tagName === this.ctx.doc.tagName)
+        ?.libraries?.filter(repo =>
+          repo.name !== 'Documentation')
+      : repoStatus.flatMap(x => x.libraries) ?? [];
 
-  if (!Array.isArray(statusList) || !statusList.length) {
+
+  if (!Array.isArray(librariesList) || !librariesList.length) {
     return '';
   } else {
     return html`
@@ -112,7 +99,7 @@ function repoStatusList({ heading = 'Status', level = 2 } = {}) {
     </h${level}>
   </uxdot-copy-permalink>
   <a href="#status-checklist" slot="checklist">What do these mean?</a>
-  <dl>${statusList.map(listItem => html`
+  <dl>${librariesList.map(listItem => html`
     <div>
       <dt>${listItem.name}:</dt>
       <dd>
@@ -129,14 +116,8 @@ function repoStatusList({ heading = 'Status', level = 2 } = {}) {
 /**
  * Reads component status data from global data (see above) and outputs a table for Design/Code status page
  */
-function repoStatusTable() {
-  const docsPage = this.ctx._;
-  const allStatuses = this.ctx.repoStatus ?? docsPage?.repoStatus ?? [];
-  // Filtering out 'Responsive' status from all the libraries
-  const elementsList = allStatuses.map(item => ({
-    ...item,
-    libraries: item.libraries.filter(lib => lib.name !== 'Responsive'),
-  }));
+function repoStatusTable({ repoStatus }) {
+  const elementsList = repoStatus;
 
   if (!Array.isArray(elementsList) || !elementsList.length) {
     return '';
@@ -157,7 +138,7 @@ function repoStatusTable() {
         <th scope="col" data-label="Name">Name</th>
         <th scope="col" data-label="Figma library">Figma library</th>
         <th scope="col" data-label="RH Elements">RH Elements</th>
-        <th scope="col" data-label="webRH">WebRH</th>
+        <th scope="col" data-label="RH Shared Libs">RH Shared Libs</th>
         <th scope="col" data-label="Documentation">Documentation</th>
       </tr>
     </thead>
@@ -188,8 +169,14 @@ function repoStatusTable() {
  * @param {string} [options.heading] heading text
  * @param {number} [options.level] heading level
  */
-function repoStatusChecklist({ heading = 'Status checklist', level = 2 } = {}) {
-  const statusList = getRepoData.call(this)?.filter(repo => repo.name !== 'Documentation');
+function repoStatusChecklist({ repoStatus, heading = 'Status checklist', level = 2 } = {}) {
+  // is repoStatus returning undefined ?
+  const statusList = this.ctx.doc ?
+    repoStatus.find(x => x.tagName === this.ctx.doc.tagName)
+        ?.libraries?.filter(repo =>
+          repo.name !== 'Documentation')
+    : repoStatus.flatMap(x => x.libraries) ?? [];
+
   if (!Array.isArray(statusList) || !statusList.length) {
     return '';
   } else {

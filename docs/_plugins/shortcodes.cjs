@@ -4,8 +4,9 @@ const {
   RepoStatusTable,
 } = require('./shortcodes/repoStatus.cjs');
 const RenderInstallation = require('./shortcodes/renderInstallation.cjs');
+const RenderCodeDocs = require('./shortcodes/renderCodeDocs.cjs');
 const SpacerTokensTable = require('./shortcodes/spacerTokensTable.cjs');
-const renderCodeDocs = require('./shortcodes/renderCodeDocs.cjs');
+const UxdotPattern = require('./shortcodes/uxdotPattern.cjs');
 
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(RepoStatusList);
@@ -13,5 +14,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(RepoStatusTable);
   eleventyConfig.addPlugin(RenderInstallation);
   eleventyConfig.addPlugin(SpacerTokensTable);
-  eleventyConfig.addPlugin(renderCodeDocs);
+  eleventyConfig.addPlugin(RenderCodeDocs);
+  eleventyConfig.addPlugin(UxdotPattern);
 };

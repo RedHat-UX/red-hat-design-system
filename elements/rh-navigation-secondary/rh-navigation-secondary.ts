@@ -66,8 +66,8 @@ function focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
  *                                         Fires when an dropdown is opened or closed in desktop
  *                                         view or when the mobile menu button is toggled in mobile
  *                                         view.
- * @cssprop {<integer>} --rh-navigation-secondary-z-index - z-index of the navigation-secondary {@default `102`}
- * @cssprop {<integer>} --rh-navigation-secondary-overlay-z-index - z-index of the navigation-secondary-overlay {@default `-1`}
+ * @cssprop {<integer>} [--rh-navigation-secondary-z-index=102] - z-index of the navigation-secondary
+ * @cssprop {<integer>} [--rh-navigation-secondary-overlay-z-index=-1] - z-index of the navigation-secondary-overlay
  */
 @customElement('rh-navigation-secondary')
 export class RhNavigationSecondary extends LitElement {
@@ -94,11 +94,14 @@ export class RhNavigationSecondary extends LitElement {
   /** Compact mode  */
   #compact = false;
 
-  #tabindex = new RovingTabindexController(this, {
-    getItems: () => this._nav?.flatMap(slotted =>
-      Array.from(slotted.querySelectorAll<HTMLAnchorElement>(`:is(rh-navigation-secondary-dropdown,
-                                                                  rh-secondary-nav-dropdown) > a,
-                                                              [slot="nav"] > li > a`))) ?? [],
+  get #items() {
+    return this._nav?.flatMap(slotted =>
+      Array.from(slotted.querySelectorAll<HTMLAnchorElement>(`rh-navigation-secondary-dropdown > a,
+                                                              [slot="nav"] > li > a`))) ?? [];
+  }
+
+  #tabindex = RovingTabindexController.of(this, {
+    getItems: () => this.#items,
   });
 
   #internals = InternalsController.of(this, { role: 'navigation' });
@@ -175,7 +178,7 @@ export class RhNavigationSecondary extends LitElement {
                   aria-expanded="${String(expanded) as 'true' | 'false'}"
                   @click="${this.#toggleMobileMenu}"><slot name="mobile-menu">Menu</slot></button>
           <rh-surface color-palette="${dropdownPalette}">
-            <slot name="nav" @slotchange="${() => this.#tabindex.updateItems()}"></slot>
+            <slot name="nav" @slotchange="${() => this.#tabindex.items = this.#items}"></slot>
             <div id="cta" part="cta">
               <slot name="cta"></slot>
             </div>
@@ -221,7 +224,7 @@ export class RhNavigationSecondary extends LitElement {
    */
   #onFocusout(event: FocusEvent) {
     const target = event.relatedTarget as HTMLElement;
-    if (target?.closest('rh-navigation-secondary, rh-secondary-nav') === this || target === null) {
+    if (target?.closest('rh-navigation-secondary') === this || target === null) {
       // if the focus is still inside the rh-navigation-secondary exit
       return;
     } else {
@@ -258,7 +261,7 @@ export class RhNavigationSecondary extends LitElement {
           this.mobileMenuExpanded = false;
           this.shadowRoot?.querySelector('button')?.focus?.();
         } else {
-          this.#tabindex.activeItem?.focus();
+          this.#tabindex.items[this.#tabindex.atFocusedItemIndex]?.focus();
         }
         this.close();
         this.overlayOpen = false;
@@ -327,8 +330,7 @@ export class RhNavigationSecondary extends LitElement {
       if (!this.mobileMenuExpanded) {
         this.overlayOpen = false;
       }
-      this.#tabindex.setActiveItem(this.#tabindex.nextItem);
-      this.#tabindex.activeItem?.focus();
+      this.#tabindex.atFocusedItemIndex++;
     }
   }
 
@@ -371,7 +373,7 @@ export class RhNavigationSecondary extends LitElement {
     if (dropdown && RhNavigationSecondary.isDropdown(dropdown)) {
       const link = dropdown.querySelector('a');
       if (link) {
-        this.#tabindex.setActiveItem(link);
+        this.#tabindex.atFocusedItemIndex = this.#items.indexOf(link);
       }
       this.#openDropdown(dropdown);
     }
@@ -382,7 +384,7 @@ export class RhNavigationSecondary extends LitElement {
    */
   #allDropdowns(): RhNavigationSecondaryDropdown[] {
     return Array.from(
-      this.querySelectorAll('rh-navigation-secondary-dropdown, rh-secondary-nav-dropdown')
+      this.querySelectorAll('rh-navigation-secondary-dropdown')
     );
   }
 
@@ -468,19 +470,8 @@ export class RhNavigationSecondary extends LitElement {
   }
 }
 
-@customElement('rh-secondary-nav')
-class RhSecondaryNav extends RhNavigationSecondary {
-  #logger = new Logger(this);
-
-  constructor() {
-    super();
-    this.#logger.warn('rh-secondary-nav is deprecated. Use rh-navigation-secondary instead.');
-  }
-}
-
 declare global {
   interface HTMLElementTagNameMap {
     'rh-navigation-secondary': RhNavigationSecondary;
-    'rh-secondary-nav': RhSecondaryNav;
   }
 }

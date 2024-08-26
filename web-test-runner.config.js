@@ -5,5 +5,12 @@ export default pfeTestRunnerConfig({
   litcssOptions,
   tsconfig: 'tsconfig.json',
   files: ['elements/**/*.spec.ts'],
-  ...process.argv.includes('--default-reporter') && { reporter: 'default' },
+  importMapOptions: {
+    providers: {
+      '@rhds/icons': 'nodemodules',
+      '@patternfly/pfe-tools': 'nodemodules',
+      '@patternfly/pfe-core': 'nodemodules',
+    },
+  },
 });
+

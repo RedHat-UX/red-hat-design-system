@@ -60,7 +60,7 @@ describe('<rh-stat>', function() {
     beforeEach(async function() {
       element = await fixture<RhStat>(html`
         <rh-stat titleplacement="below" size="large" top="statistic">
-            <pf-icon slot="icon" icon="atom"></pf-icon>
+            <rh-icon slot="icon" set="standard" icon="atom"></rh-icon>
             <span slot="title">Overwrite Title</span>
             <p>Stat body that includes two lines and a footnote.</p>
             <span slot="statistic">Overwrite Statistic</span>
@@ -91,7 +91,7 @@ describe('<rh-stat>', function() {
 
       it('displays icon', function() {
         const rect = element.querySelector('[slot="icon"]')?.getBoundingClientRect();
-        expect(rect?.width).to.equal(parseInt(tokens.get('--rh-size-icon-04')));
+        expect(rect?.width).to.equal(parseInt(tokens.get('--rh-size-icon-06')));
       });
     });
 
@@ -107,13 +107,6 @@ describe('<rh-stat>', function() {
         expect(slot?.length).to.equal(1);
         const fontSize = window.getComputedStyle(slot![0]).getPropertyValue('font-size');
         expect(fontSize).to.equal('20px');
-      });
-
-      it('has correct icon size for icon slot', function() {
-        const slot = element.querySelectorAll('pf-icon');
-        expect(slot?.length).to.equal(1);
-        const size = slot![0].getAttribute('size');
-        expect(size).to.equal('lg');
       });
 
       it('has correct font size for statistic slot', function() {

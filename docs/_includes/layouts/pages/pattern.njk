@@ -8,18 +8,18 @@ importElements:
   - rh-code-block
 ---
 {% if hasToc %}
-  <link rel="stylesheet" href="{{ '/assets/javascript/elements/uxdot-toc-lightdom.css' | url }}">
+  <link rel="stylesheet" href="/assets/javascript/elements/uxdot-toc-lightdom.css">
 {% endif %}
-<link rel="stylesheet" href="{{ '/styles/pages/backpage.css' | url }}">
+<link rel="stylesheet" href="/styles/pages/backpage.css">
 
-<script type="module" src="{{ '/assets/javascript/elements/uxdot-feedback.js' | url }}"></script>
-<script type="module" src="{{ '/assets/javascript/elements/uxdot-pattern.js' | url }}"></script>
+<script type="module" src="/assets/javascript/elements/uxdot-feedback.js"></script>
+<script type="module" src="/assets/javascript/elements/uxdot-pattern.js"></script>
 {% if hasToc %}
-<script type="module" src="{{ '/assets/javascript/elements/uxdot-toc.js' | url }}"></script>
+<script type="module" src="/assets/javascript/elements/uxdot-toc.js"></script>
 {% endif %}
 {% if tokenSearch %}
-<script type="module" src="{{ '/assets/javascript/elements/uxdot-search.js' | url }}"></script>
-<script type="module" src="{{ '/assets/javascript/tokens.js' | url }}"></script>
+<script type="module" src="/assets/javascript/elements/uxdot-search.js"></script>
+<script type="module" src="/assets/javascript/tokens.js"></script>
 {% endif %}
 {% include 'partials/component/masthead.njk' %}
 {% include 'partials/component/sidenav.njk' %}
@@ -39,7 +39,7 @@ importElements:
   <div class="container">
     {{ content | safe }}
   </div>
-  
+
   </article>
   {% include "partials/component/back-to-top.njk" %}
 </main>

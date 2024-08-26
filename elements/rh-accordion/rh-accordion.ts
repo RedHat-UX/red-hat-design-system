@@ -3,7 +3,7 @@ import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
-import { observed } from '@patternfly/pfe-core/decorators/observed.js';
+import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 import { provide } from '@lit/context';
 
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
@@ -20,7 +20,6 @@ import { RhAccordionPanel } from './rh-accordion-panel.js';
 import { context, type RhAccordionContext } from './context.js';
 
 import styles from './rh-accordion.css';
-
 
 export class AccordionExpandEvent extends ComposedEvent {
   constructor(
@@ -42,20 +41,11 @@ export class AccordionCollapseEvent extends ComposedEvent {
 
 /**
  * An accordion is a stacked list of panels which allows users to expand or collapse information when selected. They feature panels that consist of a section text label and a caret icon that collapses or expands to reveal more information.
- *
  * @summary Expands or collapses a stacked list of panels
- *
  * @fires {AccordionExpandEvent} expand - when a panel expands
  * @fires {AccordionCollapseEvent} collapse - when a panel collapses
- *
- *
- * @slot
- *       Place the `rh-accordion-header` and `rh-accordion-panel` elements here.
- *
- * @attr  accents
- *        Position accents in the header either inline or bottom
- *        {@default inline}
- *
+ * @slot - Place the `rh-accordion-header` and `rh-accordion-panel` elements here.
+ * @attr  [accents=inline] Position accents in the header either inline or bottom
  */
 @customElement('rh-accordion')
 export class RhAccordion extends LitElement {
@@ -82,10 +72,7 @@ export class RhAccordion extends LitElement {
   /**
    * Sets accordion header's accents position to inline or bottom
    */
-  @property({
-    attribute: true,
-    reflect: true,
-  }) accents?: 'inline' | 'bottom';
+  @property({ attribute: true, reflect: true }) accents?: 'inline' | 'bottom';
 
   /**
    * Sets and reflects the currently expanded accordion 0-based indexes.
@@ -117,16 +104,6 @@ export class RhAccordion extends LitElement {
     }
   }
 
-  get #ctx(): RhAccordionContext {
-    const accents = this.accents ? this.accents : 'inline';
-    return { accents };
-  }
-
-
-  @observed(function largeChanged(this: RhAccordion) {
-    [...this.headers, ...this.panels].forEach(el => el.toggleAttribute('large', this.large));
-  })
-
   @property({ reflect: true, type: Boolean }) large = false;
 
   @property({ reflect: true, type: Boolean }) bordered = true;
@@ -140,33 +117,24 @@ export class RhAccordion extends LitElement {
 
   #expandedIndex: number[] = [];
 
-  #headerIndex = new RovingTabindexController<RhAccordionHeader>(this);
-
-  // actually is read in #init, by the `||=` operator
+  // side effects are used
   // eslint-disable-next-line no-unused-private-class-members
-  #initialized = false;
+  #tabindex: RovingTabindexController<HTMLButtonElement> = RovingTabindexController.of(this, {
+    getItems: () => this.headers.flatMap(x =>
+      x.hasUpdated ? [x.shadowRoot!.querySelector('button')!] : []),
+  });
 
   #logger = new Logger(this);
 
-  #mo = new MutationObserver(() => this.#init());
+  #mo = new MutationObserver(() => this.updateAccessibility());
 
-  @provide({ context }) private ctx = this.#ctx;
+  @provide({ context }) private ctx = this.#makeContext();
 
   connectedCallback() {
     super.connectedCallback();
     this.addEventListener('change', this.#onChange as EventListener);
     this.#mo.observe(this, { childList: true });
-    this.#init();
-  }
-
-  override render(): TemplateResult {
-    const { on = '' } = this;
-    return html`
-      <div id="container" class="${classMap({ [on]: !!on })}"><slot></slot></div>
-    `;
-  }
-
-  async firstUpdated() {
+    this.updateAccessibility();
     const { headers } = this;
     headers.forEach((header, index) => {
       if (header.expanded) {
@@ -174,24 +142,17 @@ export class RhAccordion extends LitElement {
         const panel = this.#panelForHeader(header);
         if (panel) {
           this.#expandPanel(panel);
+          panel.hidden = !panel.expanded;
         }
       }
     });
-    this.ctx = this.#ctx;
   }
 
-  /**
-   * Initialize the accordion by connecting headers and panels
-   * with aria controls and labels; set up the default disclosure
-   * state if not set by the author; and check the URL for default
-   * open
-   */
-  async #init() {
-    this.#initialized ||= !!await this.updateComplete;
-    this.#headerIndex.initItems(this.headers);
-    // Event listener to the accordion header after the accordion has been initialized to add the roving tabindex
-    this.addEventListener('focusin', this.#updateActiveHeader);
-    this.updateAccessibility();
+  override render(): TemplateResult {
+    const { on = '' } = this;
+    return html`
+      <div id="container" class="${classMap({ [on]: !!on })}"><slot></slot></div>
+    `;
   }
 
   protected override async getUpdateComplete(): Promise<boolean> {
@@ -203,22 +164,22 @@ export class RhAccordion extends LitElement {
     return c && results.every(Boolean);
   }
 
-  get #activeHeader() {
-    const { headers } = this;
-    const index = headers.findIndex(header => header.matches(':focus,:focus-within'));
-    return index > -1 ? headers.at(index) : undefined;
+  @observes('accents')
+  @observes('large')
+  @observes('bordered')
+  private contextChanged() {
+    this.ctx = this.#makeContext();
   }
 
-  #updateActiveHeader() {
-    if (this.#activeHeader) {
-      this.#headerIndex.setActiveItem(this.#activeHeader);
-    }
+  #makeContext(): RhAccordionContext {
+    const { accents = 'inline', large } = this;
+    return { accents, large };
   }
 
   #panelForHeader(header: RhAccordionHeader) {
     const next = header.nextElementSibling;
     if (!RhAccordion.isPanel(next)) {
-      return void this.#logger.error('Sibling element to a header needs to be a panel');
+      return next?.querySelector('rh-accordion-panel');
     } else {
       return next;
     }
@@ -299,22 +260,28 @@ export class RhAccordion extends LitElement {
     return this.#allPanels();
   }
 
+  /**
+   * Initialize the accordion by connecting headers and panels
+   * with aria controls and labels; set up the default disclosure
+   * state if not set by the author; and check the URL for default
+   * open
+   */
   public updateAccessibility() {
     const { headers } = this;
 
     // For each header in the accordion, attach the aria connections
-    headers.forEach(header => {
+    for (const header of headers) {
       const panel = this.#panelForHeader(header);
       if (panel) {
         header.setAttribute('aria-controls', panel.id);
         panel.setAttribute('aria-labelledby', header.id);
-        panel.hidden = !panel.expanded;
       }
-    });
+    }
   }
 
   /**
    * Accepts a 0-based index value (integer) for the set of accordion items to expand or collapse.
+   * @param index header index to toggle
    */
   public async toggle(index: number) {
     const { headers } = this;
@@ -330,6 +297,8 @@ export class RhAccordion extends LitElement {
   /**
    * Accepts a 0-based index value (integer) for the set of accordion items to expand.
    * Accepts an optional parent accordion to search for headers and panels.
+   * @param index header index to toggle
+   * @param parentAccordion target accordion to expand in
    */
   public async expand(index: number, parentAccordion?: RhAccordion) {
     const allHeaders: RhAccordionHeader[] = this.#allHeaders(parentAccordion);
@@ -345,8 +314,8 @@ export class RhAccordion extends LitElement {
     }
 
     // If the header and panel exist, open both
-    this.#expandHeader(header, index),
-    this.#expandPanel(panel),
+    this.#expandHeader(header, index);
+    this.#expandPanel(panel);
 
     header.focus();
 
@@ -366,6 +335,7 @@ export class RhAccordion extends LitElement {
 
   /**
    * Accepts a 0-based index value (integer) for the set of accordion items to collapse.
+   * @param index header index to collapse
    */
   public async collapse(index: number) {
     const header = this.headers.at(index);

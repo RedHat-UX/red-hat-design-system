@@ -193,6 +193,10 @@
     margin-block-start: var(--rh-space-2xl, 32px);
   }
 
+  rh-alert + .grid {
+    margin-block-start: var(--rh-space-2xl, 32px);
+  }
+
   rh-table {
     margin-block: var(--rh-space-3xl, 48px);
   }

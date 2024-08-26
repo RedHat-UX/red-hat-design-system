@@ -1,8 +1,8 @@
-import { expect, html, oneEvent } from '@open-wc/testing';
+import { expect, html, nextFrame } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 import { clickElementAtOffset } from '@patternfly/pfe-tools/test/utils.js';
 import { sendKeys } from '@web/test-runner-commands';
-import { RhDialog } from '@rhds/elements/rh-dialog/rh-dialog.js';
+import { DialogCancelEvent, DialogCloseEvent, DialogOpenEvent, RhDialog } from '@rhds/elements/rh-dialog/rh-dialog.js';
 import { RhButton } from '@rhds/elements/rh-button/rh-button.js';
 
 function press(key: string) {
@@ -22,74 +22,90 @@ describe('<rh-dialog>', function() {
         .and
         .to.be.an.instanceOf(RhDialog);
   });
+
   describe('with a trigger', function() {
     let element: RhDialog;
     let trigger: RhButton;
+    type DialogEvent = DialogOpenEvent | DialogCloseEvent | DialogCancelEvent;
+    const events = new Map<DialogEvent['type'], DialogEvent>();
+
     const updateComplete = () => element.updateComplete;
+
     beforeEach(async function() {
+      const storeEvent = (event: DialogEvent) => events.set(event.type, event);
       element = await createFixture(html`
-        <rh-dialog trigger="trigger">
+        <rh-dialog trigger="trigger"
+                   @cancel="${storeEvent}"
+                   @open="${storeEvent}"
+                   @close="${storeEvent}">
           <h2 slot="header">Header</h2>
           <p>Body</p>
           <rh-button slot="footer">Footer Action</rh-button>
         </rh-dialog>
         <rh-button id="trigger">Open</rh-button>
       `);
-      trigger = document.getElementById('trigger')!;
+      trigger = document.getElementById('trigger')! as RhButton;
     });
+
+    afterEach(function() {
+      events.clear();
+    });
+
     describe('clicking the trigger', function() {
-      let openEventPromise: Promise<Event>;
-      let closeEventPromise: Promise<Event>;
-      let cancelEventPromise: Promise<Event>;
-      beforeEach(function() {
-        openEventPromise = oneEvent(element, 'open');
-        closeEventPromise = oneEvent(element, 'close');
-        cancelEventPromise = oneEvent(element, 'cancel');
-      });
       beforeEach(() => trigger.click());
       beforeEach(updateComplete);
+      beforeEach(nextFrame);
+
       it('opens the dialog', function() {
         expect(element.open).to.be.true;
       });
+
       it('fires "open" event', async function() {
-        const openEvent = await openEventPromise;
-        expect(openEvent.type).to.equal('open');
+        expect(events.get('open')).to.be.an.instanceof(DialogOpenEvent);
       });
-      describe('pressing Escape', function() {
+
+      describe('Escape', function() {
         beforeEach(press('Escape'));
         beforeEach(updateComplete);
+        beforeEach(nextFrame);
+
         it('closes the dialog', function() {
           expect(element.open).to.be.false;
         });
-        it('fires the cancel event', async function() {
-          const cancelEvent = await cancelEventPromise;
-          expect(cancelEvent.type).to.equal('cancel');
+
+        it('fires "cancel" event', async function() {
+          expect(events.get('cancel')).to.be.an.instanceof(DialogCancelEvent);
         });
       });
+
       describe('clicking outside the dialog', function() {
         beforeEach(() => clickElementAtOffset(document.body, [10, 10]));
         beforeEach(updateComplete);
+
         it('closes the dialog', function() {
           expect(element.open).to.be.false;
         });
-        it('fires the cancel event', async function() {
-          const cancelEvent = await cancelEventPromise;
-          expect(cancelEvent.type).to.equal('cancel');
+
+        it('fires "cancel" event', async function() {
+          expect(events.get('cancel')).to.be.an.instanceof(DialogCancelEvent);
         });
       });
+
       describe('clicking the close button', function() {
         // ordinarily we try our best to avoid querying the shadow root in test files
         // in this case, we feel justified in making an exception, because the "close-button"
         // css part is already included in the element's public API.
         // NOTE: we query specifically for the element with that part, not by shadow class or id
-        beforeEach(() => element.shadowRoot.querySelector('[part="close-button"]')?.click());
+        beforeEach(() => element.shadowRoot?.querySelector<HTMLElement>('[part="close-button"]')?.click());
         beforeEach(updateComplete);
+        beforeEach(nextFrame);
+
         it('closes the dialog', function() {
           expect(element.open).to.be.false;
         });
-        it('fires the close event', async function() {
-          const closeEvent = await closeEventPromise;
-          expect(closeEvent.type).to.equal('close');
+
+        it('fires "close" event', async function() {
+          expect(events.get('close')).to.be.an.instanceof(DialogCloseEvent);
         });
       });
     });

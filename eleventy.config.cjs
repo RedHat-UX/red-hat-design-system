@@ -35,6 +35,8 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('docs/robots.txt');
   eleventyConfig.addPassthroughCopy('docs/assets/**/*');
   eleventyConfig.addPassthroughCopy('docs/styles/**/*');
+  eleventyConfig.addPassthroughCopy('docs/patterns/**/*.css');
+
 
   if (isLocal) {
     eleventyConfig.addPassthroughCopy({
@@ -85,6 +87,8 @@ module.exports = function(eleventyConfig) {
         '@rhds/tokens/': '/assets/packages/@rhds/tokens/js/',
         '@rhds/elements/lib/': '/assets/packages/@rhds/elements/lib/',
         '@rhds/elements/': '/assets/packages/@rhds/elements/elements/',
+        '@rhds/icons/': '/assets/packages/@rhds/icons/',
+        '@rhds/icons/icons.js': '/assets/packages/@rhds/icons/icons.js',
         '@patternfly/elements/': '/assets/packages/@patternfly/elements/',
         '@patternfly/icons/': '/assets/packages/@patternfly/icons/',
         '@patternfly/pfe-core/': '/assets/packages/@patternfly/pfe-core/',
@@ -103,7 +107,13 @@ module.exports = function(eleventyConfig) {
       '@rhds/tokens',
       '@rhds/tokens/media.js',
       '@rhds/tokens/meta.js',
+      '@rhds/icons/',
+      '@rhds/icons/microns/',
+      '@rhds/icons/social/',
+      '@rhds/icons/standard/',
+      '@rhds/icons/ui/',
       '@patternfly/elements',
+      '@patternfly/icons/',
       '@patternfly/icons/far/',
       '@patternfly/icons/fas/',
       '@patternfly/icons/fab/',
