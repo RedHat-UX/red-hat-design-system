@@ -1,47 +1,4 @@
-<style>
-  .example-2x2-grid {
-    align-items: flex-start;
-  }
-  .example-2x2-grid .promo-text {
-    grid-column: span 2;
-  }
-  .example-2x2-grid .promo-text p {
-    font-size: var(--rh-font-size-body-text-md, 1rem);
-  }
-</style>
-<div>
-  <uxdot-pattern stacked>
-    <h4 slot="heading">Example</h4>
-    <div class="grid sm-three-columns example-2x2-grid">
-      <div class="promo-text">
-        <h4>Need a business partner?</h4>
-        <p>In the digital transformation journey we’re on, there’s a lot of change. There’s a need to reach markets quickly. And to do that we need productive developers who are able to get ideas into production safely, in a day, every day. </p>
-        <rh-cta variant="primary" href="#">Find a business partner</rh-cta>
-      </div>
-      <div class="logo-wall logo-wall--two-columns logo-wall--bordered">
-        <a href="#">
-          <img src="../google-cloud.svg" class="logo-wall--light" alt="Logo for Red Hat partner Google Cloud">
-          <img src="../google-cloud-dark.svg" class="logo-wall--dark" alt="Logo for Red Hat partner Google Cloud">
-        </a>
-        <a href="#">
-          <img src="../capgemini.svg" class="logo-wall--light" alt="Logo for Red Hat partner Capgemini">
-          <img src="../capgemini.svg" class="logo-wall--dark" alt="Logo for Red Hat partner Capgemini">
-        </a>
-        <a href="#">
-          <img src="../cisco.svg" class="logo-wall--light" alt="Logo for Red Hat partner Cisco">
-          <img src="../cisco.svg" class="logo-wall--dark" alt="Logo for Red Hat partner Cisco">
-        </a>
-        <a href="#">
-          <img src="../gitlab.svg" class="logo-wall--light" alt="Logo for Red Hat partner Gitlab">
-          <img src="../gitlab-dark.svg" class="logo-wall--dark" alt="Logo for Red Hat partner Gitlab">
-        </a>
-      </div>
-    </div>
-    <h4 slot="html-heading">HTML</h4>
-    <rh-code-block slot="html" actions="copy">
-      <span slot="action-label-copy">Copy to Clipboard</span>
-      <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
-      <script type="text/html"><div class="grid sm-three-columns example-2x2-grid">
+<div class="grid sm-three-columns example-2x2-grid">
   <div class="promo-text">
     <h4>Need a business partner?</h4>
     <p>In the digital transformation journey we’re on, there’s a lot of change. There’s a need to reach markets quickly. And to do that we need productive developers who are able to get ideas into production safely, in a day, every day. </p>
@@ -65,106 +22,21 @@
       <img src="../gitlab-dark.svg" class="logo-wall--dark" alt="Logo for Red Hat partner Gitlab">
     </a>
   </div>
-</div></script></rh-code-block>
-  <h4 slot="css-heading">CSS</h4>
-  <rh-code-block slot="css" actions="copy">
-    <span slot="action-label-copy">Copy to Clipboard</span>
-    <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
-    <script type="text/css">:root {
-  --logo-wall-logo-max-height: 40px;
-  --logo-wall-logo-min-height: 40px;
-  --logo-wall-logo-max-width: 190px;
-  --logo-wall-logo-min-width: 130px;
-}
-
-.example-2x2-grid {
-  align-items: flex-start;
-}
-
-.example-2x2-grid .promo-text {
-  grid-column: span 2;
-}
-
-.example-2x2-grid .promo-text p {
-  font-size: var(--rh-font-size-body-text-md, 1rem);
-}
-
-.logo-wall {
-  display: flex;
-  gap: var(--rh-space-2xl, 32px);
-  justify-content: center;
-}
-
-.logo-wall > * {
-  display: flex;
-  flex-basis: 100%;
-  justify-content: center;
-  align-items: center;
-  min-width: var(--logo-wall-logo-min-width, 130px);
-  max-width: var(--logo-wall-logo-max-width, 190px);
-}
-
-.logo-wall--bordered > * {
-  border: 1px solid var(--rh-color-gray-30, #c7c7c7);
-  border-radius: var(--rh-border-radius-default, 3px);
-  padding: var(--rh-space-lg, 16px);
-}
-
-.logo-wall--bordered > *:hover {
-  background-color: var(--rh-color-gray-10, #F2F2F2);
-  cursor: pointer;
-}
-
-.logo-wall--bordered > *:is(:focus, :active) {
-  outline: 2px solid var(--rh-color-accent-base-on-light, #0066cc);
-  outline-offset: 0px;
-}
-
-.logo-wall > * a:after {
-  z-index: 3;
-  content: "";
-  position: absolute;
-  inset: 0;
-  display: block
-}
-
-.logo-wall img {
-  max-width: 100%;
-  max-height: var(--logo-wall-logo-max-height, 40px);
-  min-height: var(--logo-wall-logo-min-height, 40px);
-}
-
-[color-palette^="dark"] .logo-wall--bordered > :hover {
-  background-color: var(--rh-color-gray-60, #4D4D4D);
-}
-
-[color-palette^="dark"] .logo-wall--bordered > :is(:focus, :active) {
-  background-color: var(--rh-color-gray-60, #4D4D4D);
-}
-
-[color-palette^="dark"] .logo-wall--light {
-  display: none;
-}
-
-[color-palette^="light"] .logo-wall--dark {
-  display: none;
-}
-
-.logo-wall--two-columns {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-@media (max-width: 1199px) {
-  .logo-wall {
-    flex-wrap: wrap;
-  }
-}
-
-@container host (max-width: 992px) {
-  .logo-wall {
-    flex-wrap: wrap;
-  }
-}</script></rh-code-block>
-  </uxdot-pattern>
 </div>
+
+<link rel="stylesheet" href="logo-wall-lightdom.css">
+
+<style>
+  .example-2x2-grid {
+    align-items: flex-start;
+  }
+
+  .example-2x2-grid .promo-text {
+    grid-column: span 2;
+  }
+
+  .example-2x2-grid .promo-text p {
+    font-size: var(--rh-font-size-body-text-md, 1rem);
+  }
+</style>
+

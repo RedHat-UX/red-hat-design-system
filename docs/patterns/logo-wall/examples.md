@@ -23,16 +23,24 @@ importElements:
 <link rel="stylesheet" href="../logo-wall-lightdom.css">
 
 ## Within a promo band (bordered)
-  {% include './patterns/1x1-grid.html' %}
+
+{% uxdotPattern stacked=true, css='./logo-wall-lightdom.css' %}
+{% include './patterns/1x1-grid.html' %}
+{% enduxdotPattern %}
 
 ## Within a promo band (borderless)
-  {% include './patterns/1x1-grid-flat.html' %}
+{% uxdotPattern stacked=true, css='./logo-wall-lightdom.css' %}
+{% include './patterns/1x1-grid-flat.html' %}
+{% enduxdotPattern %}
 
 ## With 2x2 grid
-  {% include './patterns/2x2-grid.html' %}
+{% uxdotPattern stacked=true, css='./logo-wall-lightdom.css' %}
+{% include './patterns/2x2-grid.html' %}
+{% enduxdotPattern %}
 
 ## With 2x3 grid
-  {% include './patterns/2x3-grid.html' %}
-
+{% uxdotPattern stacked=true, css='./logo-wall-lightdom.css' %}
+{% include './patterns/2x3-grid.html' %}
+{% enduxdotPattern %}
 
 {% include 'partials/component/feedback.html' %}

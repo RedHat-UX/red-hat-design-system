@@ -27,13 +27,13 @@
 }
 
 .logo-wall--bordered > *:hover {
-  background-color: var(--rh-color-gray-10, #F2F2F2);
+  background-color: var(--rh-color-gray-10, #f2f2f2);
   cursor: pointer;
 }
 
 .logo-wall--bordered > *:is(:focus, :active) {
   outline: 2px solid var(--rh-color-accent-base-on-light, #0066cc);
-  outline-offset: 0px;
+  outline-offset: 0;
 }
 
 .logo-wall > * a:after {
@@ -41,7 +41,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  display: block
+  display: block;
 }
 
 .logo-wall img {
@@ -51,11 +51,11 @@
 }
 
 [color-palette^="dark"] .logo-wall--bordered > :hover {
-  background-color: var(--rh-color-gray-60, #4D4D4D);
+  background-color: var(--rh-color-gray-60, #4d4d4d);
 }
 
 [color-palette^="dark"] .logo-wall--bordered > :is(:focus, :active) {
-  background-color: var(--rh-color-gray-60, #4D4D4D);
+  background-color: var(--rh-color-gray-60, #4d4d4d);
 }
 
 [color-palette^="dark"] .logo-wall--light {
@@ -67,17 +67,17 @@
 }
 
 .logo-wall--borderless > * {
-  padding: var(--rh-space-lg, 16px) var(--rh-space-md, 8px) var(--rh-space-lg, 16px) var(--rh-space-md, 8px);
+  padding: var(--rh-space-lg, 16px) var(--rh-space-md, 8px);
 }
 
 .logo-wall--borderless > :hover {
-  box-shadow: 0px 3px var(--rh-color-accent-brand-on-light, #ee0000);
+  box-shadow: 0 3px var(--rh-color-accent-brand-on-light, #ee0000);
 }
 
 .logo-wall--borderless > :is(:focus, :active) {
-  box-shadow: 0px 3px var(--rh-color-accent-brand-on-light, #ee0000);
+  box-shadow: 0 3px var(--rh-color-accent-brand-on-light, #ee0000);
   outline: 2px solid var(--rh-color-accent-base-on-light, #0066cc);
-  outline-offset: 0px;
+  outline-offset: 0;
 }
 
 .logo-wall--two-columns {
