@@ -116,7 +116,7 @@
     - name: Documentation
       status: Ready
 - tagName: rh-cta
-  name: "Cta"
+  name: "Call to action"
   type: "Element"
   overallStatus: "Available"
   libraries:
@@ -272,7 +272,7 @@
     - name: Documentation
       status: Ready
 - tagName: rh-progress-steps
-  name: "Progess Steps"
+  name: "Progress Steps"
   type: "Element"
   overallStatus: "Available"
   libraries:
