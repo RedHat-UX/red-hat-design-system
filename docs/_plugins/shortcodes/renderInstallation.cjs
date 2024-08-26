@@ -13,7 +13,10 @@ function renderInstall(content, {
    * @see https://github.com/11ty/eleventy/blob/bf7c0c0cce1b2cb01561f57fdd33db001df4cb7e/src/Plugins/RenderPlugin.js#L89-L93
    * @type {DocsPage}
    */
-  const docsPage = this.ctx.doc;
+  
+  // const docsPage = this.ctx.doc;
+  console.log(this.context?.doc, this.ctx.doc);
+  const docsPage = this.context?.doc ?? this.ctx;
 
   const lightdomcssblock = /* md */`
 ### Lightdom CSS
