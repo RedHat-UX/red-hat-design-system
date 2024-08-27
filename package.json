@@ -7,10 +7,6 @@
   "customElements": "custom-elements.json",
   "exports": {
     ".": "./elements.js",
-    "./elements/rh-icon/rh-icon.js": {
-      "node": "./elements/rh-icon/rh-icon-ssr.js",
-      "default": "./elements/rh-icon/rh-icon.js"
-    },
     "./lib/*": "./lib/*",
     "./react/*": "./react/*",
     "./*": "./elements/*"

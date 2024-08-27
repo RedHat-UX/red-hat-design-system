@@ -5,12 +5,17 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { state } from 'lit/decorators/state.js';
 import { classMap } from 'lit/directives/class-map.js';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
 import style from './rh-icon.css';
+
+if (isServer) {
+  await import('./ssr.js');
+}
 
 type Renderable = unknown;
 
@@ -49,6 +54,7 @@ export class IconResolveErrorEvent extends ErrorEvent {
  * @csspart fallback - Container for the fallback (i.e. slotted) content
  * @cssprop --rh-icon-size - Override default icon size
  */
+@customElement('rh-icon')
 export class RhIcon extends LitElement {
   public static readonly styles: CSSStyleSheet[] = [style];
 
@@ -104,14 +110,31 @@ export class RhIcon extends LitElement {
 
   render(): TemplateResult {
     const { set = 'standard' } = this;
-    const content = this.content ?? '';
+    const content = this.#getContent();
     return html`
       <div id="container"
            aria-hidden="${String(!!content)}"
-           class="${classMap({ [set]: set })}">${content}${content ? '' : html`
-        <span part="fallback" ?hidden=${!!content}><slot></slot></span>`}
+           class="${classMap({ [set]: set, isServer })}">${!isServer ? content
+        : unsafeHTML(content as unknown as string)}${content ? '' : html`
+        <span part="fallback"><slot></slot></span>`}
       </div>
     `;
+  }
+
+  #getContent() {
+    if (isServer) {
+      const { set = 'standard', icon } = this;
+      return globalThis.RH_ICONS.get(set)?.get(icon as never) ?? '';
+    } else {
+      return this.content ?? '';
+    }
+  }
+
+  updated() {
+    // terrible workaround for apparent lit bug: icons render twice, once for
+    // ssr, then again for client-side.
+    // updated() is not called on server
+    this.shadowRoot?.querySelector('.isServer')?.remove();
   }
 
   disconnectedCallback(): void {
@@ -174,10 +197,6 @@ export class RhIcon extends LitElement {
       }
     }
   }
-}
-
-if (!isServer) {
-  customElements.define('rh-icon', RhIcon);
 }
 
 declare global {

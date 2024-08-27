@@ -185,7 +185,7 @@ module.exports = function(eleventyConfig) {
       'docs/assets/javascript/elements/uxdot-search.js',
       'docs/assets/javascript/elements/uxdot-toc.js',
       'elements/rh-tag/rh-tag.js',
-      'elements/rh-icon/rh-icon-ssr.js',
+      'elements/rh-icon/rh-icon.js',
       // 'docs/assets/javascript/elements/uxdot-pattern.js',
       // 'docs/assets/javascript/elements/uxdot-example.js', // Uses context API need to work around issues
       // 'docs/assets/javascript/elements/uxdot-installation-tabs.js', // extends RhTabs so cant DSD yet
