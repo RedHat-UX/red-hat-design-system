@@ -82,9 +82,14 @@ Released August 27, 2024
         <td data-label="Notes">Removed deprecated <code>&lt;rh-global-footer&gt;</code> element and deprecated <code>global</code> slot. Use <code>&lt;rh-footer-universal&gt;</code> element and <code>universal</code> slot.</td>
       </tr>
       <tr>
-        <td data-label="Change"><code>&lt;rh-cta&gt;</code> API changes</td>
+        <td data-label="Change"><code>&lt;rh-cta&gt;</code> HTML API changes</td>
         <td data-label="Type"><rh-tag color="red">Major</rh-tag></td>
         <td data-label="Notes">Removed read-only <code>cta</code> property; use <code>data-analytics</code> attributes instead.</td>
+      </tr>
+      <tr>
+        <td data-label="Change"><code>&lt;rh-tabs&gt;</code> JavaScript API changes</td>
+        <td data-label="Type"><rh-tag color="red">Major</rh-tag></td>
+        <td data-label="Notes">Removed deprectated <code>RhTabs.isTab()</code> and <code>RhTabs.isPanel()<code> static class methods.</td>
       </tr>
       <tr>
         <td data-label="Change"><code>&lt;rh-tabs&gt;</code> API changes</td>
@@ -114,7 +119,7 @@ Released August 27, 2024
       <tr>
         <td data-label="Change"><code>&lt;rh-cta&gt;</code> API changes</td>
         <td data-label="Type"><rh-tag color="red">Major</rh-tag></td>
-        <td data-label="Notes">Removed deprecated <code>color-palette</code> attribute.</td>
+        <td data-label="Notes">Removed previously-deprecated <code>color-palette</code> attribute.</td>
       </tr>
       <tr>
         <td data-label="Change"><code>&lt;rh-alert&gt;</code> API changes</td>
@@ -177,16 +182,6 @@ Released August 27, 2024
         <td data-label="Notes">The <code>toast</code> method allows for toast-like alert messages.</td>
       </tr>
       <tr>
-        <td data-label="Change">Fix <code>&lt;rh-tile-group&gt;</code> grid layout</td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">Corrected application of grid layout to slotted elements.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Updated <code>&lt;rh-cta&gt;</code> focus states</td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">Changed focus states to mimic hover states and an additional outline.</td>
-      </tr>
-      <tr>
         <td data-label="Change">Added dark color palette to <code>&lt;rh-pagination&gt;</code></td>
         <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
         <td data-label="Notes">Users can now set <code>color-palette="dark"</code> on pagination.</td>
@@ -210,6 +205,16 @@ Released August 27, 2024
         <td data-label="Change">Added <code>icon-set</code> attribute to <code>&lt;rh-cta&gt;</code></td>
         <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
         <td data-label="Notes">Users can now choose an <code>icon-set</code> in their call-to-action.</td>
+      </tr>
+      <tr>
+        <td data-label="Change">Fix <code>&lt;rh-tile-group&gt;</code> grid layout</td>
+        <td data-label="Type"><rh-tag color="gray">Patch</rh-tag></td>
+        <td data-label="Notes">Corrected application of grid layout to slotted elements.</td>
+      </tr>
+      <tr>
+        <td data-label="Change">Updated <code>&lt;rh-cta&gt;</code> focus states</td>
+        <td data-label="Type"><rh-tag color="gray">Patch</rh-tag></td>
+        <td data-label="Notes">Changed focus states to mimic hover states and an additional outline.</td>
       </tr>
     </tbody>
   </table>
