@@ -4,7 +4,7 @@
 
 `<rh-footer>`: removed deprecated `<rh-global-footer>` element and deprecated `global` slot. Use `<rh-footer-universal>` element and `universal` slot.
 
-**Before:**
+Before:
 
 ```html
 <rh-footer>
@@ -15,7 +15,7 @@
 </rh-footer>
 ```
 
-**After:**
+After:
 
 ```html
 <rh-footer>

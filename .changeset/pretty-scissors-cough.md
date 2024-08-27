@@ -4,7 +4,7 @@
 
 `<rh-table>`: removed deprecated CSS custom properties
 
-**Before:**
+Before:
 
 ```css
 rh-table.custom-table {
@@ -13,7 +13,7 @@ rh-table.custom-table {
 }
 ```
 
-**After:**
+After:
 
 ```css
 rh-table.custom-table {
