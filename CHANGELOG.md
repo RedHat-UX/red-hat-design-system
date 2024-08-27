@@ -1,5 +1,438 @@
 # @rhds/elements
 
+## 2.0.0
+
+### Major Changes
+
+- fa2c4d2: `<rh-accordion>`: Removed the `heading-tag` and `heading-text` attributes from the `rh-accordion-header` element.
+  `<h2>` (etc.) elements are no longer valid content for `<rh-accordion-header>`,
+  but users are encouraged to wrap accordion headers in the appropriate heading element, in case javascript fails to load.
+
+  Before:
+
+  ```html
+  <rh-accordion>
+    <rh-accordion-header>
+      <h2>First Header</h2>
+    </rh-accordion-header>
+    <rh-accordion-panel>...</rh-accordion-panel>
+  </rh-accordion>
+  ```
+
+  After:
+
+  ```html
+  <rh-accordion>
+    <h2><rh-accordion-header>First Header</rh-accordion-header></h2>
+    <rh-accordion-panel>...</rh-accordion-panel>
+  </rh-accordion>
+  ```
+
+- fa2c4d2: `<rh-accordion>`: removed the unused `icon` part and attribute from `<rh-accordion-header>`
+- fa2c4d2: `<rh-accordion>`: removed the (previously undocumented) `container` part from `<rh-accordion-header>`
+- fa2c4d2: `<rh-footer>`: removed deprecated `<rh-global-footer>` element and deprecated `global` slot. Use `<rh-footer-universal>` element and `universal` slot.
+
+  Before:
+
+  ```html
+  <rh-footer>
+    <!-- ... -->
+    <rh-global-footer slot="global">
+      <!-- ... -->
+    </rh-global-footer>
+  </rh-footer>
+  ```
+
+  After:
+
+  ```html
+  <rh-footer>
+    <!-- ... -->
+    <rh-footer-universal slot="universal">
+      <!-- ... -->
+    </rh-footer-universal>
+  </rh-footer>
+  ```
+
+- fa2c4d2: `<rh-tabs>`: removed deprecated `RhTabs.isTab()` and `RhTabs.isPanel()` static class methods.
+- fa2c4d2: `<rh-cta>`: removed read-only `cta` property; use `data-analytics` attributes instead
+- fa2c4d2: Removed the `rhds.min.js` entrypoint and replaced it with a module that reexports all our element modules.
+
+  Before:
+
+  ```js
+  import "@rhds/elements"; // get the minified bundle
+  import "@rhds/elements/rh-cta/rh-cta.js";
+  // => DOMException: 'rh-cta' has already been defined as a custom element
+  ```
+
+  After:
+
+  ```js
+  import "@rhds/elements"; // get the entrypoint module
+  import "@rhds/elements/rh-cta/rh-cta.js";
+  // => get the same module referenced in the entry point
+  ```
+
+- 8a061e9: `<rh-tabs>`: Removed the deprectated attribute that sets the theme for the tabs and panels
+  Please use the `--rh-tabs-active-border-color` CSS property directly.
+
+  Before:
+
+  ```html
+  <rh-tabs theme="base">
+    <!-- ... -->
+  </rh-tabs>
+  ```
+
+  After:
+
+  ```html
+  <rh-tabs
+    style="--rh-tabs-active-border-color: var(--rh-color-border-interactive-on-light, #0066cc)"
+  >
+    <!-- ... -->
+  </rh-tabs>
+
+  <rh-tabs
+    color-palette="darkest"
+    style="--rh-tabs-active-border-color: var(--rh-color-border-interactive-on-dark, #92c5f9)"
+  >
+    <!-- ... -->
+  </rh-tabs>
+  ```
+
+- 8e68a6a: `<rh-dialog>`: removed deprecated `--rh-modal-video-aspect-ratio` CSS custom property
+
+  Before:
+
+  ```css
+  rh-dialog.custom-dialog {
+    --rh-modal-video-aspect-ratio: 3/2;
+  }
+  ```
+
+  After:
+
+  ```css
+  rh-dialog.custom-dialog {
+    --rh-dialog-video-aspect-ratio: 3/2;
+  }
+  ```
+
+- 8e68a6a: `<rh-footer>`: removed deprecated CSS custom properties
+
+  Before:
+
+  ```css
+  rh-footer.custom-footer {
+    --rh-color-link-inline-on-dark: cyan;
+    --rh-color-link-inline-hover-on-dark: cornflowerblue;
+    --rh-color-link-inline-focus-on-dark: cornflowerblue;
+    --rh-color-link-inline-visited-on-dark: cornflowerblue;
+  }
+  ```
+
+  After:
+
+  ```css
+  rh-footer.custom-footer {
+    --rh-color-interactive-blue-lighter: cyan;
+    --rh-color-interactive-blue-lightest: cornflowerblue;
+  }
+  ```
+
+- fa2c4d2: `<rh-accordion>`: remove unused `bordered` attribute
+- fa2c4d2: `<rh-spinner>`: remove deprecated `color-palette` attribute
+
+  Before:
+
+  ```html
+  <rh-spinner color-palette="darkest"></rh-spinner>
+  ```
+
+  After:
+
+  ```html
+  <rh-surface color-palette="darkest">
+    <rh-spinner></rh-spinner>
+  </rh-surface>
+  ```
+
+- fa2c4d2: `<rh-cta>`: Removed previously-deprecated `color-palette` attribute
+
+  Use themable containers (e.g. `<rh-surface>` or `<rh-card>`) instead.
+
+  Before:
+
+  ```html
+  <rh-cta color-palette="dark" href="#default">Default</rh-cta>
+  ```
+
+  After:
+
+  ```html
+  <rh-surface color-palette="dark">
+    <rh-cta href="#default">Default</rh-cta>
+  </rh-surface>
+  ```
+
+- fa2c4d2: `<rh-alert>`: removed deprecated toast boolean attribute
+
+  Before:
+
+  ```html
+  <rh-alert toast>
+    <h3 slot="header">Default</h3>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend
+      elit sed est egestas, a sollicitudin mauris tincidunt.
+    </p>
+  </rh-alert>
+  ```
+
+  After:
+
+  ```html
+  <rh-alert variant="toast">
+    <h3 slot="header">Default</h3>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend
+      elit sed est egestas, a sollicitudin mauris tincidunt.
+    </p>
+  </rh-alert>
+  ```
+
+- fa2c4d2: `<rh-table>`: removed deprecated CSS custom properties
+
+  Before:
+
+  ```css
+  rh-table.custom-table {
+    --rh-table-row-background-color: crimson;
+    --rh-table-column-background-color: royalblue;
+  }
+  ```
+
+  After:
+
+  ```css
+  rh-table.custom-table {
+    --rh-table-row-background-hover-color: crimson;
+    --rh-table-column-background-hover-color: royalblue;
+  }
+  ```
+
+- fa2c4d2: `<rh-navigation-secondary>` removed deprecated alias `rh-secondary-nav`
+
+  Before:
+
+  ```html
+  <rh-secondary-nav>
+    <!-- ... -->
+  </rh-secondary-nav>
+  ```
+
+  After:
+
+  ```html
+  <rh-navigation-secondary>
+    <!-- ... -->
+  </rh-navigation-secondary>
+  ```
+
+- 8e68a6a: `<rh-tabs>`: removed `box` and `vertical` attributes from `<rh-tab>`. Set them
+  on `<rh-tabs>` instead.
+
+  In most cases, you shouldn't need to update your templates, as long as `<rh-tabs>`
+  has the right attributes
+
+### Minor Changes
+
+- fa2c4d2: ✨ Added `<rh-health-index>`
+
+  Health index grades the health or security level of something.
+
+  ```html
+  <rh-health-index grade="A">A</rh-health-index>
+  ```
+
+- fa2c4d2: `<rh-alert>` added static `toast` method
+
+  ```js
+  import { RhAlert } from "@rhds/elements/rh-alert/rh-alert.js";
+
+  RhAlert.toast({
+    state: "warning",
+    heading: "Careful",
+    message: "Toast is high in calories!",
+  });
+  ```
+
+- fa2c4d2: ✨ Added `<rh-video-embed>`
+
+  A video embed is a graphical preview of a video overlayed with a play button. When clicked, the YouTube video will begin playing.
+
+  ```html
+  <rh-video-embed>
+    <img
+      slot="thumbnail"
+      src="https://fakeimg.pl/900x499/282828/eae0d0"
+      alt="Image description"
+    />
+    <template>
+      <iframe
+        title="Title of video"
+        width="900"
+        height="499"
+        src="https://www.youtube.com/embed/Hc8emNr2igU"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+    </template>
+    <p slot="caption">
+      <a class="rh-video-embed-caption-link" href="https://www.redhat.com/"
+        >View the infographic</a
+      >
+    </p>
+  </rh-video-embed>
+  ```
+
+- fa2c4d2: `<rh-pagination>`: ✨ Added open variant and small size
+
+  Users can now further customize pagination by choosing which variant and size are most appropriate for their applications.
+
+  ```html
+  <rh-pagination variant="open" size="sm">
+    <ol>
+      <li><a href="#">1</a></li>
+      <li><a href="#2">2</a></li>
+      <li><a href="#3">3</a></li>
+      <li><a href="#4">4</a></li>
+      <li><a href="#5">5</a></li>
+    </ol>
+  </rh-pagination>
+  ```
+
+- fa2c4d2: `<rh-card>`: ✨ Added promo card variant
+
+  The promo card variant allows users to easily display text and optionally an image side by side.
+
+  ```html
+  <rh-card variant="promo">
+    <img
+      slot="image"
+      alt="product illustration"
+      src="/assets/images/new-product.png"
+    />
+    <h2 slot="header">Try our new product</h2>
+    <p>Our new product is the best in class.</p>
+    <rh-cta slot="footer" href="#">Start a Free Trial</rh-cta>
+  </rh-card>
+  ```
+
+- fa2c4d2: ✨ Added `<rh-breadcrumb>`.
+
+  A breadcrumb navigation is a secondary navigation element consisting of a list of links to the parent pages of the current page in hierarchical order. It helps users find their place within a website or web application.
+
+  ```html
+  <rh-breadcrumb>
+    <ol>
+      <li><a href="../../../..">Home</a></li>
+      <li><a href="../../../">About</a></li>
+      <li><a href="#" aria-current="page">Our Team</a></li>
+    </ol>
+  </rh-breadcrumb>
+  ```
+
+- fa2c4d2: `<rh-pagination>`: ✨ Added support for dark color themes
+
+  ```html
+  <rh-surface color-palette="dark">
+    <rh-pagination>
+      <ol>
+        <li><a href="#">1</a></li>
+        <li><a href="#2">2</a></li>
+        <li><a href="#3">3</a></li>
+        <li><a href="#4">4</a></li>
+        <li><a href="#5">5</a></li>
+      </ol>
+    </rh-pagination>
+  </rh-surface>
+  ```
+
+- fa2c4d2: ✨ Added `<rh-icon>`.
+
+  Icons represents general concepts and can support text as a decorative element. The `<rh-icon>` element allows experience and content authors to add Red Hat icons of varying dimensions in the same area without shifting surrounding content.
+
+  ```html
+  <rh-icon icon="alert"></rh-icon>
+  ```
+
+  `<rh-icon>` has experimental SSR support. It's not ready for production, but if you try it, let us know!
+
+- fa2c4d2: `<rh-cta>`: Added `rh-cta-lightdom-shim.css` as an optional file to help reduce layout shift before element is defined, where declarative shadow DOM is not an option.
+- fa2c4d2: `<rh-cta>`: added `href` attribute. When set, do not slot an anchor or button,
+  instead, slot in the link text.
+
+  These two are equivalent:
+
+  ```html
+  <rh-cta>
+    <a href="/elements">Elements</a>
+  </rh-cta>
+  ```
+
+  ```html
+  <rh-cta href="/elements">Elements</rh-cta>
+  ```
+
+- fa2c4d2: `<rh-card>`: Added CSS custom properties for card headings:
+
+  - `--rh-card-heading-font-family`
+  - `--rh-card-heading-font-size`
+  - `--rh-card-heading-font-weight`
+
+- fa2c4d2: `<rh-cta>`: added `icon-set` attribute to better control icon loading
+
+  ```html
+  <rh-cta icon="success" icon-set="custom">...</rh-cta>
+  ```
+
+- fa2c4d2: ✨ Added `<rh-switch>`
+
+  A switch toggles the state of a setting (between on and off). Switches and checkboxes can often be used interchangeably, but the switch provides a more explicit, visible representation on a setting.
+
+  ```html
+  <rh-switch id="switch-a" accessible-label="Switch A" checked>
+    <span slot="message-on">Message when <strong>on</strong></span>
+    <span slot="message-off">Message when <strong>off</strong></span>
+  </rh-switch>
+  ```
+
+### Patch Changes
+
+- fa2c4d2: `<rh-audio-player>`: enforce typography for headings
+- fa2c4d2: `<rh-card>`: Corrected slotted header margin
+- fa2c4d2: `<rh-tile>`: corrected border color token
+- fa2c4d2: `<rh-tile-group>`: Corrected application of grid layout to slotted elements.
+- fa2c4d2: `<rh-cta>`: lazy-load the icon component dependency
+- fa2c4d2: `<rh-tag>`: update green border color
+- fa2c4d2: `<rh-cta>`: corrected cta tokens public api
+- fa2c4d2: `<rh-cta>`: Changed focus states to mimic hover states + an additional outline.
+- fa2c4d2: `<rh-button variant="play">`: Play icon is now centered in the circle of the button.
+- fa2c4d2: `<rh-breadcrumb>`: improved accessibility by adding underlines to links
+
+  `<rh-navigation-secondary>`: improved accessibility by adding underlines to links
+
+- fa2c4d2: `<rh-site-status>`: fix element layout
+- 784da94: `<rh-navigation-secondary>`: corrected mobile menu keyboard accessibility, now properly closes when focus leaves
+- fa2c4d2: `<rh-accordion-header>`: removed deprecated and unused `icon` property
+- d564ef0: `<rh-navigation-secondary>`: improved accessibility
+- fa2c4d2: `<rh-tile>`: Fixed the headline, title, body text, and footer font-sizes to match the Tile specs for both the default and compact variants
+
 ## 1.4.5
 
 ### Patch Changes
