@@ -118,23 +118,6 @@ button:disabled {
   --_overflow-button-hover-text-color: var(--rh-color-text-primary-on-dark, #ffffff);
 }
 
-:host([theme="base"]) #rhds-container {
-  /* Theme base context */
-  --_active-tab-border-color:
-    var(
-        --rh-tabs-active-border-color,
-        var(--rh-color-border-interactive-on-light, #0066cc)
-      );
-}
-
-:host([theme="base"]) #rhds-container.dark {
-  --_active-tab-border-color:
-    var(
-        --rh-tabs-active-border-color,
-        var(--rh-color-border-interactive-on-dark, #92c5f9)
-      );
-}
-
 :host(:is([centered], [box="inset"])) [part="tabs"] {
   margin-inline: var(--rh-tabs-inset, var(--_inset-inline-margin, auto));
 }
