@@ -192,7 +192,7 @@ class UxdotSideNav extends SSRRoleElement {
           </button>
         </div>
         <nav part="nav" aria-label="Main menu">
-          <slot @slotchange="${() => this.#tabindex.updateItems()}"></slot>
+          <slot></slot>
         </nav>
       </div>
       <div id="overlay" part="overlay" ?hidden=${!this.open}></div>
