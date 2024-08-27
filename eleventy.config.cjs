@@ -11,7 +11,7 @@ const RHDSPlugin = require('./docs/_plugins/rhds.cjs');
 const DesignTokensPlugin = require('./docs/_plugins/tokens.cjs');
 const RHDSMarkdownItPlugin = require('./docs/_plugins/markdown-it.cjs');
 const ImportMapPlugin = require('./docs/_plugins/importMap.cjs');
-const litPlugin = require('@lit-labs/eleventy-plugin-lit');
+const LitPlugin = require('@lit-labs/eleventy-plugin-lit');
 
 const isWatch =
   process.argv.includes('--serve') || process.argv.includes('--watch');
@@ -172,7 +172,7 @@ module.exports = function(eleventyConfig) {
     },
   });
 
-  eleventyConfig.addPlugin(litPlugin, {
+  eleventyConfig.addPlugin(LitPlugin, {
     mode: 'worker',
     componentModules: [
       'docs/assets/javascript/elements/uxdot-skip-navigation.js',
@@ -188,6 +188,7 @@ module.exports = function(eleventyConfig) {
       'docs/assets/javascript/elements/uxdot-best-practice.js',
       'docs/assets/javascript/elements/uxdot-search.js',
       'docs/assets/javascript/elements/uxdot-toc.js',
+      'elements/rh-icon/rh-icon.js',
       // 'docs/assets/javascript/elements/uxdot-pattern.js',
       // 'docs/assets/javascript/elements/uxdot-example.js', // Uses context API need to work around issues
       // 'docs/assets/javascript/elements/uxdot-installation-tabs.js', // extends RhTabs so cant DSD yet

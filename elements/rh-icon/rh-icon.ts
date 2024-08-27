@@ -1,6 +1,6 @@
 import type { IconNameFor, IconSetName } from '@rhds/icons';
 
-import { LitElement, html, type TemplateResult } from 'lit';
+import { LitElement, html, isServer, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { state } from 'lit/decorators/state.js';
@@ -163,14 +163,18 @@ export class RhIcon extends LitElement {
 
   async #load() {
     const { set = 'standard', icon } = this;
-    const resolver = RhIcon.resolve;
-    if (set && icon && typeof resolver === 'function') {
-      try {
-        this.content = await resolver(set, icon);
-      } catch (error: unknown) {
-        if (error instanceof Error) {
-          this.#logger.error(error.message);
-          this.dispatchEvent(new IconResolveErrorEvent(set, icon, error));
+    if (isServer && icon) {
+      this.content = await import('./ssr.js').then(m => m.load({ set, icon }));
+    } else {
+      const resolver = RhIcon.resolve;
+      if (set && icon && typeof resolver === 'function') {
+        try {
+          this.content = await resolver(set, icon);
+        } catch (error: unknown) {
+          if (error instanceof Error) {
+            this.#logger.error(error.message);
+            this.dispatchEvent(new IconResolveErrorEvent(set, icon, error));
+          }
         }
       }
     }
