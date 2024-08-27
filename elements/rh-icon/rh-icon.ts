@@ -95,7 +95,7 @@ export class RhIcon extends LitElement {
   @property() loading?: 'idle' | 'lazy' | 'eager' = 'lazy';
 
   /** Icon content. Any value that lit can render */
-  @state() protected content?: unknown;
+  @state() private content?: unknown;
 
   #intersecting = false;
 
