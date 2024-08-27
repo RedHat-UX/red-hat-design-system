@@ -32,7 +32,7 @@ class UxdotBestPractice extends LitElement {
       gap: var(--rh-space-sm, 4px);
     }
 
-    pf-icon,
+    rh-icon,
     span {
       color: var(--_color);
     }
@@ -57,13 +57,13 @@ class UxdotBestPractice extends LitElement {
         <slot name="image"></slot>
         ${this.do ? html`
           <figcaption part="do">
-            <span><pf-icon set="fas" icon="check-circle" size="md"></pf-icon> Do</span>
+            <span><rh-icon set="ui" icon="check-circle" size="md"></rh-icon>Do</span>
             <slot></slot>
           </figcaption>
         ` : html``}
         ${this.dont && !this.do ? html`
           <figcaption part="dont">
-            <span><pf-icon set="fas" icon="times-circle" size="md"></pf-icon> Don't</span>
+            <span><rh-icon set="ui" icon="close-circle" size="md"></rh-icon> Don't</span>
             <slot></slot>
           </figcaption>
         ` : html``}

@@ -42,13 +42,13 @@ Please [open a discussion thread](https://github.com/orgs/RedHat-UX/discussions/
             <ul slot="links" aria-labelledby="ansible-platform">
               <li>
                 <a href="https://www.ansible.com/integrations">Integrations 
-                <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a>
+                <rh-icon icon="new-window" color="info" size="sm"></rh-icon></a>
               </li>
               <li>
                 <a href="https://www.redhat.com/en/success-stories">Custom success stories</a>
               </li>
               <li>
-                <a href="https://www.redhat.com/en/technologies/management/ansible/what-is-ansible">What is ansible <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a>
+                <a href="https://www.redhat.com/en/technologies/management/ansible/what-is-ansible">What is ansible <rh-icon icon="new-window" color="info" size="sm"></rh-icon></a>
               </li>
               <li>
                 <a href="https://www.ansible.com/overview/it-automation">Why choose Red Hat for automation?</a>
@@ -73,22 +73,22 @@ Please [open a discussion thread](https://github.com/orgs/RedHat-UX/discussions/
                 <a href="https://www.redhat.com/en/technologies/management/ansible/automation-controller">Automation controller</a>
               </li>
               <li>
-                <a href="https://www.ansible.com/products/automation-mesh">Automation mesh <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a>
+                <a href="https://www.ansible.com/products/automation-mesh">Automation mesh <rh-icon icon="new-window" color="info" size="sm"></rh-icon></a>
               </li>
               <li>
                 <a href="https://www.redhat.com/en/technologies/management/ansible/ansible-content-collections">Ansible Content Collections</a>
               </li>
               <li>
-                <a href="https://www.ansible.com/products/automation-hub">Automation Hub <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a>
+                <a href="https://www.ansible.com/products/automation-hub">Automation Hub <rh-icon icon="new-window" color="info" size="sm"></rh-icon></a>
               </li>
               <li>
-                <a href="https://www.ansible.com/products/automation-analytics">Red Hat Insights for Red Hat Ansible Automation Platform <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a>
+                <a href="https://www.ansible.com/products/automation-analytics">Red Hat Insights for Red Hat Ansible Automation Platform <rh-icon icon="new-window" color="info" size="sm"></rh-icon></a>
               </li>
               <li>
-                <a href="https://www.ansible.com/products/automation-services-catalog">Automation services catalog <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a>
+                <a href="https://www.ansible.com/products/automation-services-catalog">Automation services catalog <rh-icon icon="new-window" color="info" size="sm"></rh-icon></a>
               </li>
               <li>
-                <a href="https://www.ansible.com/content-tools">Ansible content tools <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a>
+                <a href="https://www.ansible.com/content-tools">Ansible content tools <rh-icon icon="new-window" color="info" size="sm"></rh-icon></a>
               </li>
             </ul>
             <rh-cta slot="cta">
@@ -104,16 +104,16 @@ Please [open a discussion thread](https://github.com/orgs/RedHat-UX/discussions/
         <rh-navigation-secondary-menu slot="menu">
           <ul>
             <li>
-              <a href="https://www.ansible.com/integrations/cloud">Cloud Automation <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a>
+              <a href="https://www.ansible.com/integrations/cloud">Cloud Automation <rh-icon icon="new-window" color="info" size="sm"></rh-icon></a>
             </li>
             <li>
-              <a href="https://www.ansible.com/use-cases/edge">Edge Automation <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a>
+              <a href="https://www.ansible.com/use-cases/edge">Edge Automation <rh-icon icon="new-window" color="info" size="sm"></rh-icon></a>
             </li>
             <li>
-              <a href="https://www.ansible.com/use-cases/network-automation">Network Automation <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a>
+              <a href="https://www.ansible.com/use-cases/network-automation">Network Automation <rh-icon icon="new-window" color="info" size="sm"></rh-icon></a>
             </li>
             <li>
-              <a href="https://www.ansible.com/use-cases">See all <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a>
+              <a href="https://www.ansible.com/use-cases">See all <rh-icon icon="new-window" color="info" size="sm"></rh-icon></a>
             </li>
           </ul>
         </rh-navigation-secondary-menu>

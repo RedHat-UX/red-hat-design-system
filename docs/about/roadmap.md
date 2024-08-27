@@ -22,7 +22,7 @@ importElements:
   }
 
   rh-tile [icon="github"] {
-    --pf-icon--size: var(--rh-size-icon-03, 32px);
+    --rh-icon-size: var(--rh-size-icon-03, 32px);
   }
 </style>
 
@@ -34,7 +34,7 @@ The roadmap is subject to change based on our users' feedback and needs. If you 
 Check out [our scrum board on GitHub](https://github.com/orgs/RedHat-UX/projects/1/views/18) to see what we're working on from week to week.
 
 <rh-tile compact>
-  <pf-icon slot="image" set="fab" icon="github" size="lg"></pf-icon>
+  <rh-icon slot="image" set="social" icon="github" size="lg"></rh-icon>
   <a slot="headline" href="https://github.com/orgs/RedHat-UX/projects/7/">Roadmap</a>
 </rh-tile>
 
