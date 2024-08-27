@@ -184,7 +184,7 @@ Released August 27, 2024
       <tr>
         <td data-label="Change">Added dark color palette to <code>&lt;rh-pagination&gt;</code></td>
         <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">Users can now set <code>color-palette="dark"</code> on pagination.</td>
+        <td data-label="Notes">Pagination now responds to themable containers like <code>&lt;rh-surface&gt;</code>.</td>
       </tr>
       <tr>
         <td data-label="Change">Added light DOM shim for <code>&lt;rh-cta&gt;</code></td>
