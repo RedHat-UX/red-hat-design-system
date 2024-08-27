@@ -29,8 +29,6 @@ import styles from './rh-tabs.css';
 
 export { RhTab };
 
-/* TODO: Remove attrs in JSDoc below when updated use TabsController after PFE 3.0 release */
-
 /**
  * Tabs are used to organize and navigate between sections of content.
  * They feature a horizontal or a vertical list of section text labels

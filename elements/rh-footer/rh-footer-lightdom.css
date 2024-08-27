@@ -1,28 +1,20 @@
 :is(rh-footer, rh-footer-universal) a {
-  /* TODO remove --rh-color-link-inline-on-dark for v2 */
-  /* stylelint-disable-next-line */
-  color: var(--rh-color-link-inline-on-dark, var(--rh-color-interactive-blue-lighter, #92c5f9));
+  color: var(--rh-color-interactive-blue-lighter, #92c5f9);
   text-decoration: none;
 }
 
 :is(rh-footer, rh-footer-universal) a:hover {
-  /* TODO remove --rh-color-link-inline-hover-on-dark for v2 */
-  /* stylelint-disable-next-line */
-  color: var(--rh-color-link-inline-hover-on-dark, var(--rh-color-interactive-blue-lightest, #b9dafc));
+  color: var(--rh-color-interactive-blue-lightest, #b9dafc);
   text-decoration: underline;
 }
 
 :is(rh-footer, rh-footer-universal) a:is(:focus, :focus-within) {
-  /* TODO remove --rh-color-link-inline-focus-on-dark for v2 */
-  /* stylelint-disable-next-line */
-  color: var(--rh-color-link-inline-focus-on-dark, var(--rh-color-interactive-blue-lightest, #b9dafc));
+  color: var(--rh-color-interactive-blue-lightest, #b9dafc);
   text-decoration: underline;
 }
 
 :is(rh-footer, rh-footer-universal) a:visited {
-  /* TODO remove --rh-color-link-inline-visited-on-dark for v2 */
-  /* stylelint-disable-next-line */
-  color: var(--rh-color-link-inline-visited-on-dark, var(--rh-color-interactive-blue-lightest, #b9dafc));
+  color: var(--rh-color-interactive-blue-lightest, #b9dafc);
   text-decoration: none;
 }
 
