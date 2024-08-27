@@ -2,7 +2,7 @@
 "@rhds/elements": minor
 ---
 
-`<rh-pagination>`: ✨ Added dark color palette
+`<rh-pagination>`: ✨ Added support for dark color themes
 
 ```html
 <rh-surface color-palette="dark">

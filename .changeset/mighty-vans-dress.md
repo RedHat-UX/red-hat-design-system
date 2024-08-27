@@ -4,7 +4,7 @@
 
 `<rh-cta>`: Removed previously-deprecated `color-palette` attribute
 
-Use themable containers (e.g. rh-surface or rh-card) instead.
+Use themable containers (e.g. `<rh-surface>` or `<rh-card>`) instead.
 
 Before:
 
