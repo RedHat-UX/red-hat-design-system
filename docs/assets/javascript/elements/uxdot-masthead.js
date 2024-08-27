@@ -61,7 +61,7 @@ class UxdotMasthead extends LitElement {
     }
 
     slot[name="links"] {
-      --pf-icon--size: 24px;
+      --rh-icon-size: 24px;
       display: flex;
       flex-direction: row;
       column-gap: var(--rh-space-lg, 16px);

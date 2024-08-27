@@ -3,7 +3,7 @@
 {{ tagName | getElementDescription }}
 
 <uxdot-example width-adjustment="346px">
-  <img src="{{ './stat-sample-element.png' | url }}" alt="A vertically aligned stack of elements; includes a small red icon, large red data text showing 80% percent, and two lines of black body text">
+  <img src="./stat-sample-element.png" alt="A vertically aligned stack of elements; includes a small red icon, large red data text showing 80% percent, and two lines of black body text">
 </uxdot-example>
 
 {% repoStatusList repoStatus=repoStatus %}
@@ -12,7 +12,10 @@
 ## Sample element
 
 <rh-stat>
-  <pf-icon slot="icon" set="fas" icon="tower-cell" size="lg" style="color: var(--rh-color-text-brand-on-light, #ee0000);"></pf-icon>
+  <rh-icon slot="icon"
+           icon="telco-cloud"
+           size="lg"
+           style="color: var(--rh-color-text-brand-on-light, #ee0000);"></rh-icon>
   <span slot="statistic">80%</span>
   <span>of Fortune Global 500 telecommunications companies</span>
 </rh-stat>

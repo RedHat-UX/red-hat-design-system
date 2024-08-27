@@ -49,7 +49,6 @@ export class IconResolveErrorEvent extends ErrorEvent {
  * @csspart fallback - Container for the fallback (i.e. slotted) content
  * @cssprop --rh-icon-size - Override default icon size
  */
-@customElement('rh-icon')
 export class RhIcon extends LitElement {
   public static readonly styles: CSSStyleSheet[] = [style];
 
@@ -64,15 +63,16 @@ export class RhIcon extends LitElement {
 
   private static instances = new Set<RhIcon>();
 
-  private static resolve: IconResolverFunction = (set: string, icon: string): Renderable =>
-    import(`@rhds/icons/${set}/${icon}.js`)
-        .then(mod => mod.default.cloneNode(true));
+  public static resolve: IconResolverFunction =
+    (set, icon) =>
+      import(`@rhds/icons/${set}/${icon}.js`)
+          .then(mod => mod.default.cloneNode(true));
 
   /** Icon set */
-  @property({ reflect: true }) set?: IconSetName;
+  @property({ type: String, reflect: true }) set?: IconSetName;
 
   /** Icon name */
-  @property({ reflect: true }) icon?: IconNameFor<IconSetName>;
+  @property({ type: String, reflect: true }) icon?: IconNameFor<IconSetName>;
 
   /**
    * Defines a string value that labels the icon element.
@@ -89,7 +89,7 @@ export class RhIcon extends LitElement {
   @property() loading?: 'idle' | 'lazy' | 'eager' = 'lazy';
 
   /** Icon content. Any value that lit can render */
-  @state() private content?: unknown;
+  @state() protected content?: unknown;
 
   #intersecting = false;
 
@@ -103,14 +103,14 @@ export class RhIcon extends LitElement {
   }
 
   render(): TemplateResult {
-    const content = this.content ?? '';
     const { set = 'standard' } = this;
+    const content = this.content ?? '';
     return html`
       <div id="container"
            aria-hidden="${String(!!content)}"
-           class="${classMap({ [set]: set })}"
-      >${content}<span part="fallback"
-                       ?hidden=${!!content}><slot></slot></span></div>
+           class="${classMap({ [set]: set })}">${content}${content ? '' : html`
+        <span part="fallback" ?hidden=${!!content}><slot></slot></span>`}
+      </div>
     `;
   }
 
@@ -163,22 +163,21 @@ export class RhIcon extends LitElement {
 
   async #load() {
     const { set = 'standard', icon } = this;
-    if (isServer && icon) {
-      this.content = await import('./ssr.js').then(m => m.load({ set, icon }));
-    } else {
-      const resolver = RhIcon.resolve;
-      if (set && icon && typeof resolver === 'function') {
-        try {
-          this.content = await resolver(set, icon);
-        } catch (error: unknown) {
-          if (error instanceof Error) {
-            this.#logger.error(error.message);
-            this.dispatchEvent(new IconResolveErrorEvent(set, icon, error));
-          }
+    if (set && icon) {
+      try {
+        this.content = await RhIcon.resolve?.(set, icon);
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          this.#logger.error(error.message);
+          this.dispatchEvent(new IconResolveErrorEvent(set, icon, error));
         }
       }
     }
   }
+}
+
+if (!isServer) {
+  customElements.define('rh-icon', RhIcon);
 }
 
 declare global {

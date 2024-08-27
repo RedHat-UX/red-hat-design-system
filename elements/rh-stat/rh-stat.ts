@@ -11,8 +11,6 @@ import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
 import type { IconNameFor, IconSetName } from '@rhds/icons';
 
-import '@rhds/elements/rh-icon/rh-icon.js';
-
 import styles from './rh-stat.css';
 
 /**
@@ -68,6 +66,12 @@ export class RhStat extends LitElement {
     super.connectedCallback();
     this.#mo.observe(this, { childList: true });
     this.#onMutation();
+  }
+
+  willUpdate() {
+    if (this.icon) {
+      import('@rhds/elements/rh-icon/rh-icon.js');
+    }
   }
 
   render() {
