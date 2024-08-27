@@ -57,11 +57,6 @@ export declare class RhTabs extends LitElement {
      */
     vertical: boolean;
     /**
-     * Sets the theme for the tabs and panels
-     * @deprecated attribute will be removed in future release, please use the `--rh-tabs-active-border-color` css property directly.
-     */
-    theme?: 'base' | null;
-    /**
      * Sets color theme based on parent context
      */
     private on?;
