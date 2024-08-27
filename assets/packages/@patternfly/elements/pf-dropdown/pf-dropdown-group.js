@@ -17,7 +17,7 @@ PfDropdownGroup.shadowRootOptions = {
     ...LitElement.shadowRootOptions,
     delegatesFocus: true,
 };
-PfDropdownGroup.version = "4.0.0";
+PfDropdownGroup.version = "4.0.1";
 __decorate([
     property({ reflect: true })
 ], PfDropdownGroup.prototype, "label", void 0);

@@ -406,6 +406,24 @@
     },
     {
       "kind": "javascript-module",
+      "path": "ssr-shims.d.ts",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "ssr-shims.js",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "ssr-shims.ts",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
       "path": "controllers/activedescendant-controller.d.ts",
       "declarations": [
         {

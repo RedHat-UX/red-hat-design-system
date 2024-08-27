@@ -141,7 +141,7 @@ PfIcon.onIntersect = records => records.forEach(({ isIntersecting, target }) => 
     __classPrivateFieldSet(icon, _PfIcon_intersecting, isIntersecting, "f");
     ric(() => {
         if (__classPrivateFieldGet(icon, _PfIcon_intersecting, "f")) {
-            icon.load();
+            __classPrivateFieldGet(icon, _PfIcon_instances, "m", _PfIcon_load).call(icon);
         }
     });
 });
@@ -187,7 +187,7 @@ PfIcon.instances = new Set();
  *          ```
  */
 PfIcon.resolve = PfIcon.defaultResolve;
-PfIcon.version = "4.0.0";
+PfIcon.version = "4.0.1";
 __decorate([
     property()
 ], PfIcon.prototype, "set", void 0);

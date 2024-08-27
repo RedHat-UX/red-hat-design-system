@@ -2,9 +2,7 @@ import { LitElement, html, css, isServer } from 'lit';
 
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 
-if (!isServer) {
-  import('@patternfly/elements/pf-icon/pf-icon.s');
-}
+import '@rhds/elements/rh-icon/rh-icon.js';
 
 class SSRRoleElement extends LitElement {
   static properties = {
@@ -190,11 +188,11 @@ class UxdotSideNav extends SSRRoleElement {
               aria-label="Close dialog"
               @keydown=${this.#onKeydownCloseButton}
               @click=${this.toggle}>
-            <pf-icon set="patternfly" icon="close" size="lg"></pf-icon>
+            <rh-icon set="ui" icon="close" size="lg"></rh-icon>
           </button>
         </div>
         <nav part="nav" aria-label="Main menu">
-          <slot @slotchange="${() => this.#tabindex.updateItems()}"></slot>
+          <slot></slot>
         </nav>
       </div>
       <div id="overlay" part="overlay" ?hidden=${!this.open}></div>

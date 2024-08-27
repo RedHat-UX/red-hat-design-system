@@ -20,15 +20,16 @@
     "lit": "/assets/packages/lit/index.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.0/core.js",
-    "@rhds/tokens/media.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js",
     "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/media.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js",
+    "lit/static-html.js": "/assets/packages/lit/static-html.js",
     "@rhds/tokens/meta.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js",
     "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
-    "lit/static-html.js": "/assets/packages/lit/static-html.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
-    "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.0/core.js",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
+    "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
     "@lit-labs/ssr-client/lit-element-hydrate-support.js": "https://ga.jspm.io/npm:@lit-labs/ssr-client@1.1.7/lit-element-hydrate-support.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
@@ -69,7 +70,12 @@
     <div class="hero">
       <div>
         <h2>Back to Top Demo</h2>
-        <p><pf-icon icon="arrow-down"></pf-icon> Scroll down or press tab to show back to top link.</p>
+        <p><rh-icon   icon="arrow-down" set="microns"><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part xygeUsc4cS4=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" microns isServer "><!--lit-part GMDCac3uIG4=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M16.71 11.29a.996.996 0 0 0-1.41 0l-4.29 4.29V2c0-.55-.45-1-1-1s-1 .45-1 1v13.59L4.72 11.3a.987.987 0 0 0-1.41-.02.987.987 0 0 0-.02 1.41l.02.02 5.65 5.65c.29.29.68.44 1.06.44s.77-.15 1.06-.44l5.65-5.65a.996.996 0 0 0 0-1.41Z"/></svg><!--/lit-part--><!--lit-part--><!--/lit-part-->
+      </div>
+    <!--/lit-part--></template></rh-icon> Scroll down or press tab to show back to top link.</p>
         <p>Back to top link will stay above the footer</p>
       </div>
     </div>
@@ -90,7 +96,7 @@
 
 <script type="module">
   import '@rhds/elements/rh-back-to-top/rh-back-to-top.js';
-  import '@patternfly/elements/pf-icon/pf-icon.js';
+  import '@rhds/elements/rh-icon/rh-icon.js';
 </script>
 
 <style>

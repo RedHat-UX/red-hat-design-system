@@ -106,7 +106,7 @@ _PfJumpLinks_onToggle = function _PfJumpLinks_onToggle(event) {
     this.dispatchEvent(new Event('toggle'));
 };
 PfJumpLinks.styles = [style];
-PfJumpLinks.version = "4.0.0";
+PfJumpLinks.version = "4.0.1";
 __decorate([
     property({ reflect: true, type: Boolean })
 ], PfJumpLinks.prototype, "expandable", void 0);

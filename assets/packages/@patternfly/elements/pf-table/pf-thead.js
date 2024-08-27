@@ -26,7 +26,7 @@ _PfThead_onSlotchange = function _PfThead_onSlotchange() {
     }
 };
 PfThead.styles = [styles];
-PfThead.version = "4.0.0";
+PfThead.version = "4.0.1";
 PfThead = __decorate([
     customElement('pf-thead')
 ], PfThead);

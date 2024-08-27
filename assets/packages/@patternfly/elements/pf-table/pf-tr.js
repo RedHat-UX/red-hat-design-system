@@ -138,7 +138,7 @@ _PfTr_onClick = function _PfTr_onClick() {
     this.dispatchEvent(new RequestExpandEvent());
 };
 PfTr.styles = [styles];
-PfTr.version = "4.0.0";
+PfTr.version = "4.0.1";
 __decorate([
     property({
         reflect: true,

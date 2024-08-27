@@ -1,6 +1,5 @@
 import { LitElement } from 'lit';
 import type { IconNameFor, IconSetName } from '@rhds/icons';
-import '@rhds/elements/rh-icon/rh-icon.js';
 /**
  * A statistic showcases a data point or quick fact visually.
  *
@@ -35,6 +34,7 @@ export declare class RhStat extends LitElement {
     /** Whether the statistic is in a mobile view or not for styling */
     isMobile: boolean;
     connectedCallback(): void;
+    willUpdate(): void;
     render(): import("lit-html").TemplateResult<1>;
 }
 declare global {

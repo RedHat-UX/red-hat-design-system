@@ -131,7 +131,7 @@ PfAccordionHeader.shadowRootOptions = {
     ...LitElement.shadowRootOptions,
     delegatesFocus: true,
 };
-PfAccordionHeader.version = "4.0.0";
+PfAccordionHeader.version = "4.0.1";
 __decorate([
     property({ reflect: true })
 ], PfAccordionHeader.prototype, "bordered", void 0);

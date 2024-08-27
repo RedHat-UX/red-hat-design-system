@@ -226,7 +226,7 @@ _InternalsController_instances = new WeakSet(), _InternalsController_polyfillDis
     };
 };
 InternalsController.instances = new WeakMap();
-InternalsController.isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+InternalsController.isSafari = !isServer && /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 __decorate([
     aria
 ], InternalsController.prototype, "role", void 0);

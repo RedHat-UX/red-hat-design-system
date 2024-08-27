@@ -27,7 +27,7 @@ export declare class RhIcon extends LitElement {
     private static onIntersect;
     private static io;
     private static instances;
-    private static resolve;
+    static resolve: IconResolverFunction;
     /** Icon set */
     set?: IconSetName;
     /** Icon name */
@@ -48,6 +48,7 @@ export declare class RhIcon extends LitElement {
     private content?;
     connectedCallback(): void;
     render(): TemplateResult;
+    updated(): void;
     disconnectedCallback(): void;
     private iconChanged;
     private accessibleLabelChanged;

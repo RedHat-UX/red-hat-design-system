@@ -1,16 +1,20 @@
-var _RhIcon_instances, _a, _RhIcon_intersecting, _RhIcon_logger, _RhIcon_internals, _RhIcon_lazyLoad, _RhIcon_dispatchLoad, _RhIcon_load;
+var _RhIcon_instances, _a, _RhIcon_intersecting, _RhIcon_logger, _RhIcon_internals, _RhIcon_getContent, _RhIcon_lazyLoad, _RhIcon_dispatchLoad, _RhIcon_load;
 var RhIcon_1;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { state } from 'lit/decorators/state.js';
 import { classMap } from 'lit/directives/class-map.js';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { css } from "lit";
 const style = css `:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}`;
+if (isServer) {
+    await import('./ssr.js');
+}
 /**
  * requestIdleCallback when available, requestAnimationFrame when not
  * @param f callback
@@ -58,15 +62,22 @@ let RhIcon = RhIcon_1 = _a = class RhIcon extends LitElement {
         RhIcon_1.instances.add(this);
     }
     render() {
-        const content = this.content ?? '';
         const { set = 'standard' } = this;
+        const content = __classPrivateFieldGet(this, _RhIcon_instances, "m", _RhIcon_getContent).call(this);
         return html `
       <div id="container"
            aria-hidden="${String(!!content)}"
-           class="${classMap({ [set]: set })}"
-      >${content}<span part="fallback"
-                       ?hidden=${!!content}><slot></slot></span></div>
+           class="${classMap({ [set]: set, isServer })}">${!isServer ? content
+            : unsafeHTML(content)}${content ? '' : html `
+        <span part="fallback"><slot></slot></span>`}
+      </div>
     `;
+    }
+    updated() {
+        // terrible workaround for apparent lit bug: icons render twice, once for
+        // ssr, then again for client-side.
+        // updated() is not called on server
+        this.shadowRoot?.querySelector('.isServer')?.remove();
     }
     disconnectedCallback() {
         super.disconnectedCallback();
@@ -96,6 +107,15 @@ _RhIcon_intersecting = new WeakMap();
 _RhIcon_logger = new WeakMap();
 _RhIcon_internals = new WeakMap();
 _RhIcon_instances = new WeakSet();
+_RhIcon_getContent = function _RhIcon_getContent() {
+    if (isServer) {
+        const { set = 'standard', icon } = this;
+        return globalThis.RH_ICONS.get(set)?.get(icon) ?? '';
+    }
+    else {
+        return this.content ?? '';
+    }
+};
 _RhIcon_lazyLoad = function _RhIcon_lazyLoad(shouldObserve = true) {
     if (shouldObserve) {
         RhIcon_1.io.observe(this);
@@ -113,10 +133,9 @@ _RhIcon_dispatchLoad = function _RhIcon_dispatchLoad(shouldObserve = true) {
 };
 _RhIcon_load = async function _RhIcon_load() {
     const { set = 'standard', icon } = this;
-    const resolver = RhIcon_1.resolve;
-    if (set && icon && typeof resolver === 'function') {
+    if (set && icon) {
         try {
-            this.content = await resolver(set, icon);
+            this.content = await RhIcon_1.resolve?.(set, icon);
         }
         catch (error) {
             if (error instanceof Error) {
@@ -137,10 +156,10 @@ RhIcon.instances = new Set();
 RhIcon.resolve = (set, icon) => import(`@rhds/icons/${set}/${icon}.js`)
     .then(mod => mod.default.cloneNode(true));
 __decorate([
-    property({ reflect: true })
+    property({ type: String, reflect: true })
 ], RhIcon.prototype, "set", void 0);
 __decorate([
-    property({ reflect: true })
+    property({ type: String, reflect: true })
 ], RhIcon.prototype, "icon", void 0);
 __decorate([
     property({ attribute: 'accessible-label' })

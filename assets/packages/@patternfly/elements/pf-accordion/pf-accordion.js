@@ -300,7 +300,7 @@ _PfAccordion_getIndex = function _PfAccordion_getIndex(el) {
     return -1;
 };
 PfAccordion.styles = [style];
-PfAccordion.version = "4.0.0";
+PfAccordion.version = "4.0.1";
 __decorate([
     property({ reflect: true, type: Boolean })
 ], PfAccordion.prototype, "single", void 0);

@@ -1,6 +1,6 @@
 {
   "name": "@patternfly/pfe-core",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "license": "MIT",
   "description": "PatternFly Elements Core Library",
   "customElements": "custom-elements.json",
@@ -11,6 +11,11 @@
   "exports": {
     ".": "./core.js",
     "./*": "./*",
+    "./ssr-shims.js": {
+      "node": "./ssr-shims.js",
+      "import": "./core.js",
+      "default": "./core.js"
+    },
     "./controllers/*": "./controllers/*",
     "./decorators/*": "./decorators/*",
     "./functions/*": "./functions/*",

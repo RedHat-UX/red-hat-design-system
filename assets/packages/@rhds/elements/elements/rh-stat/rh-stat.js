@@ -8,7 +8,6 @@ import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
-import '@rhds/elements/rh-icon/rh-icon.js';
 import { css } from "lit";
 const styles = css `:host{display:block}div{width:100%;height:100%;display:flex;--_accent-color:var(--rh-color-text-brand-on-light, #ee0000);flex-direction:column;align-items:center;place-content:center space-around}.dark{--_accent-color:var(--rh-color-text-primary-on-dark, #ffffff)}::slotted(*),span{display:block;text-align:center}.hasIcon #icon{color:var(--rh-color-icon-secondary-on-light,#151515)}.md{--rh-icon-size:var(--rh-size-icon-04, 40px)}.lg{--rh-icon-size:var(--rh-size-icon-06, 64px)}.md ::slotted([slot=icon]){width:var(--rh-size-icon-04,40px);aspect-ratio:1}.lg ::slotted([slot=icon]){width:var(--rh-size-icon-06,64px);aspect-ratio:1}.hasIcon ::slotted([slot=icon]),.hasIcon rh-icon{order:1;display:block;color:currentcolor;fill:currentcolor;margin-bottom:16px}.dark #icon{color:var(--rh-color-icon-secondary-on-dark,#fff)}#title{order:1;color:var(--_accent-color);font-size:var(--rh-font-size-body-text-xl, 1.25rem);font-family:var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);font-weight:var(--rh-font-weight-body-text-regular,400);text-transform:uppercase}#statistic{order:2;color:var(--_accent-color);font-size:var(--rh-font-size-heading-lg, 2.25rem);font-weight:var(--rh-font-weight-heading-regular,300);font-family:var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif)}#content{order:3;font-size:var(--rh-font-size-body-text-lg, 1.125rem);font-family:var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);margin-top:var(--rh-space-sm,6px)}#cta{order:4;font-size:var(--rh-font-size-body-text-lg, 1.125rem);font-family:var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);margin-top:var(--rh-space-lg,16px)}div:not(.hasCta) #cta,div:not(.hasIcon) #icon,div:not(.hasStatistic) #statistic,div:not(.hasTitle) #title{display:none}.isMobile #content{font-size:var(--rh-font-size-body-text-lg, 1.125rem)}.isMobile #statistic{font-size:32px}:host([size=large]) #statistic{font-size:var(--rh-font-size-heading-2xl, 3rem)}:host([top=statistic]) #statistic{order:1}:host([top=statistic]) #title{order:2}`;
 /**
@@ -48,6 +47,11 @@ let RhStat = class RhStat extends LitElement {
         super.connectedCallback();
         __classPrivateFieldGet(this, _RhStat_mo, "f").observe(this, { childList: true });
         __classPrivateFieldGet(this, _RhStat_instances, "m", _RhStat_onMutation).call(this);
+    }
+    willUpdate() {
+        if (this.icon) {
+            import('@rhds/elements/rh-icon/rh-icon.js');
+        }
     }
     render() {
         const hasIcon = __classPrivateFieldGet(this, _RhStat_slots, "f").hasSlotted('icon') || !!this.icon;

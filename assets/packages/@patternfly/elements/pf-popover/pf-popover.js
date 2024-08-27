@@ -260,7 +260,7 @@ PfPopover.alertIcons = new Map(Object.entries({
         });
     }
 })();
-PfPopover.version = "4.0.0";
+PfPopover.version = "4.0.1";
 __decorate([
     property({ reflect: true })
 ], PfPopover.prototype, "position", void 0);

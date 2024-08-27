@@ -20,15 +20,16 @@
     "lit": "/assets/packages/lit/index.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.0/core.js",
-    "@rhds/tokens/media.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js",
     "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/media.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js",
+    "lit/static-html.js": "/assets/packages/lit/static-html.js",
     "@rhds/tokens/meta.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js",
     "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
-    "lit/static-html.js": "/assets/packages/lit/static-html.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
-    "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.0/core.js",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
+    "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
     "@lit-labs/ssr-client/lit-element-hydrate-support.js": "https://ga.jspm.io/npm:@lit-labs/ssr-client@1.1.7/lit-element-hydrate-support.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
@@ -71,7 +72,12 @@
     <a href="#">Databases</a>
     <a href="#" active>Servers</a>
     <a href="#">System</a>
-    <a href="#"><pf-icon slot="icon" icon="database" set="fas" size="sm"></pf-icon> Network</a>
+    <a href="#"><rh-icon     slot="icon" icon="data" set="ui" size="sm"><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part xygeUsc4cS4=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui isServer "><!--lit-part E65hbQkpc38=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M23 7c0-3.86-3.14-7-7-7S9 3.14 9 7s3.14 7 7 7 7-3.14 7-7Zm-7 5c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5Zm9 6c-3.86 0-7 3.14-7 7s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7Zm0 12c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5ZM3 0a1 1 0 0 0-1 1v12a1 1 0 0 0 2 0V1a1 1 0 0 0-1-1Zm0 18a1 1 0 0 0-1 1v12a1 1 0 0 0 2 0V19a1 1 0 0 0-1-1Zm9 0a1 1 0 0 0-1 1v12a1 1 0 0 0 2 0V19a1 1 0 0 0-1-1Zm17-4a1 1 0 0 0 1-1V1a1 1 0 0 0-2 0v12a1 1 0 0 0 1 1Z"/></svg><!--/lit-part--><!--lit-part--><!--/lit-part-->
+      </div>
+    <!--/lit-part--></template></rh-icon> Network</a>
     <a href="#">Cloud</a>
   </rh-subnav>
 </div>
@@ -80,7 +86,7 @@
 
 <script type="module">
   import '@rhds/elements/rh-subnav/rh-subnav.js';
-  import '@patternfly/elements/pf-icon/pf-icon.js';
+  import '@rhds/elements/rh-icon/rh-icon.js';
 </script>
 
 <style>

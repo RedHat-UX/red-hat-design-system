@@ -28,6 +28,6 @@ With an slotted icon
 ```html
 <rh-tag color="red">
     Red Tag
-    <pf-icon slot="icon" icon="redhat" set="fab"></pf-icon>
+    <rh-icon slot="icon" icon="like-fill" set="ui"></rh-icon>
 </rh-tag>
 ```
