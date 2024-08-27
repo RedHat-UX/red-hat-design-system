@@ -5,8 +5,6 @@ import { classMap } from 'lit/directives/class-map.js';
 import { query } from 'lit/decorators/query.js';
 import { provide } from '@lit/context';
 
-import { deprecation } from '@patternfly/pfe-core/decorators.js';
-
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 import { TabsAriaController } from '@patternfly/pfe-core/controllers/tabs-aria-controller.js';
 import { OverflowController } from '@patternfly/pfe-core/controllers/overflow-controller.js';
@@ -107,16 +105,6 @@ export class RhTabs extends LitElement {
    * Sets the alignment of the tabs vertical
    */
   @property({ reflect: true, type: Boolean }) vertical = false;
-
-  /**
-   * Sets the theme for the tabs and panels
-   * @deprecated attribute will be removed in future release, please use the `--rh-tabs-active-border-color` css property directly.
-   */
-  @deprecation({
-    alias: 'css property --rh-tabs-active-border-color',
-    reflect: true,
-    attribute: 'theme',
-  }) theme?: 'base' | null = null;
 
   /**
    * Sets color theme based on parent context
