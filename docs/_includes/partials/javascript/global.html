@@ -1,33 +1,25 @@
   <script type="importmap">{{ importMap | dump(2) | safe }}</script>
 
+  {# dsd polyfill needs to happen before hydration attempts #}
   <script type="module">
-    {# lit-element-hydrate-support needs to be included before lit is loaded #}
-    const hydrate = import('@lit-labs/ssr-client/lit-element-hydrate-support.js');
-    {# dsd polyfill needs to happen before hydration attempts #}
-    // Check if we require the declarative shadow DOM polyfill. As of
-    // February 2022, Chrome and Edge have native support, but Firefox
-    // and Safari don't yet.
-    if (!HTMLTemplateElement.prototype.hasOwnProperty('shadowRoot')) {
-      // Fetch the declarative shadow DOM polyfill.
-      const {hydrateShadowRoots} = await import('@webcomponents/template-shadowroot/template-shadowroot.js');
+    import '/assets/javascript/dsd-polyfill.js';
+  </script>
 
-      // Apply the polyfill. This is a one-shot operation, so it is important
-      // it happens after all HTML has been parsed.
-      hydrateShadowRoots(document.body);
+  {# lit-element-hydrate-support needs to be included before lit is loaded #}
+  <script type="module">
+    import '@lit-labs/ssr-client/lit-element-hydrate-support.js';
+  </script>
 
-      // At this point, browsers without native declarative shadow DOM
-      // support can paint the initial state of your components!
-      document.body.removeAttribute('dsd-pending');
-    }
-    await hydrate
-    {# load all components #}
-    {% for tag in importElements %}
-    await import('@rhds/elements/{{tag}}/{{tag}}.js');
-    {% endfor %}
-    {# only load components that need hydrated (aka interactivity) #}
-    await import('/assets/javascript/elements/uxdot-copy-permalink.js');
-    await import('/assets/javascript/elements/uxdot-sidenav.js');
-    await import('/assets/javascript/elements/uxdot-example.js');
+  {# load all components #}
+  {% for tag in importElements %}
+    <script type="module">import '@rhds/elements/{{tag}}/{{tag}}.js';</script>
+  {% endfor %}
+
+  {# only load components that need hydrated (aka interactivity) #}
+  <script type="module">
+    import '/assets/javascript/elements/uxdot-copy-permalink.js';
+    import '/assets/javascript/elements/uxdot-sidenav.js';
+    import '/assets/javascript/elements/uxdot-example.js';
   </script>
 
   <script async src="https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js"></script>
