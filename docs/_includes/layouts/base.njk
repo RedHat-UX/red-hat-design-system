@@ -42,9 +42,6 @@
 
     {% include "../partials/javascript/global.html" %}
     {%- if hasToc %}
-    <script type="module">
-      import '@lit-labs/ssr-client/lit-element-hydrate-support.js';
-    </script>
     <link rel="stylesheet" href="/assets/javascript/elements/uxdot-toc-lightdom.css">
     <script type="module" src="/assets/javascript/elements/uxdot-toc.js"></script>
     {%- endif %}
