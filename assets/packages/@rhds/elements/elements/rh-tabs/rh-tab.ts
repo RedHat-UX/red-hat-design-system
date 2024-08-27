@@ -58,9 +58,7 @@ export class RhTab extends LitElement {
   @property({ attribute: false })
   private ctx?: RhTabsContext;
 
-  /**
-   * Sets color theme based on parent context
-   */
+  /** Sets color theme based on parent context */
   @colorContextConsumer() private on?: ColorTheme;
 
   @queryAssignedElements({ slot: 'icon', flatten: true }) private icons!: HTMLElement[];

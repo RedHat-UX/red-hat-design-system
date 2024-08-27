@@ -39,19 +39,19 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit-element": "/assets/packages/lit-element/index.js",
     "lit": "/assets/packages/lit/index.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/media.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "@rhds/tokens/meta.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js",
     "lit/static-html.js": "/assets/packages/lit/static-html.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
-    "@rhds/tokens/media.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
-    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
-    "@rhds/tokens/meta.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js",
     "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.0/core.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
-    "@lit-labs/ssr-client/lit-element-hydrate-support.js": "https://ga.jspm.io/npm:@lit-labs/ssr-client@1.1.7/lit-element-hydrate-support.js",
-    "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
+    "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
+    "@lit-labs/ssr-client/lit-element-hydrate-support.js": "https://ga.jspm.io/npm:@lit-labs/ssr-client@1.1.7/lit-element-hydrate-support.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
     "@rhds/elements/lib/": "/assets/packages/@rhds/elements/lib/",
@@ -3422,30 +3422,22 @@ playground-project {
     </script><script type="sample/js" filename="demo/rh-footer-index-inline-0.js">import '@rhds/elements/rh-cta/rh-cta.js';
 import '@rhds/elements/rh-footer/rh-footer.js';
 </script><script type="sample/css" filename="rh-footer-lightdom.css" hidden="">:is(rh-footer, rh-footer-universal) a {
-  /* TODO remove --rh-color-link-inline-on-dark for v2 */
-  /* stylelint-disable-next-line */
-  color: var(--rh-color-link-inline-on-dark, var(--rh-color-interactive-blue-lighter, #92c5f9));
+  color: var(--rh-color-interactive-blue-lighter, #92c5f9);
   text-decoration: none;
 }
 
 :is(rh-footer, rh-footer-universal) a:hover {
-  /* TODO remove --rh-color-link-inline-hover-on-dark for v2 */
-  /* stylelint-disable-next-line */
-  color: var(--rh-color-link-inline-hover-on-dark, var(--rh-color-interactive-blue-lightest, #b9dafc));
+  color: var(--rh-color-interactive-blue-lightest, #b9dafc);
   text-decoration: underline;
 }
 
 :is(rh-footer, rh-footer-universal) a:is(:focus, :focus-within) {
-  /* TODO remove --rh-color-link-inline-focus-on-dark for v2 */
-  /* stylelint-disable-next-line */
-  color: var(--rh-color-link-inline-focus-on-dark, var(--rh-color-interactive-blue-lightest, #b9dafc));
+  color: var(--rh-color-interactive-blue-lightest, #b9dafc);
   text-decoration: underline;
 }
 
 :is(rh-footer, rh-footer-universal) a:visited {
-  /* TODO remove --rh-color-link-inline-visited-on-dark for v2 */
-  /* stylelint-disable-next-line */
-  color: var(--rh-color-link-inline-visited-on-dark, var(--rh-color-interactive-blue-lightest, #b9dafc));
+  color: var(--rh-color-interactive-blue-lightest, #b9dafc);
   text-decoration: none;
 }
 
@@ -3560,30 +3552,22 @@ rh-footer-universal rh-footer-copyright {
 }
 </script><script type="sample/js" filename="demo/rh-footer-footer-universal-inline-0.js">import '@rhds/elements/rh-footer/rh-footer-universal.js';
 </script><script type="sample/css" filename="demo/rh-footer-lightdom.css" hidden="">:is(rh-footer, rh-footer-universal) a {
-  /* TODO remove --rh-color-link-inline-on-dark for v2 */
-  /* stylelint-disable-next-line */
-  color: var(--rh-color-link-inline-on-dark, var(--rh-color-interactive-blue-lighter, #92c5f9));
+  color: var(--rh-color-interactive-blue-lighter, #92c5f9);
   text-decoration: none;
 }
 
 :is(rh-footer, rh-footer-universal) a:hover {
-  /* TODO remove --rh-color-link-inline-hover-on-dark for v2 */
-  /* stylelint-disable-next-line */
-  color: var(--rh-color-link-inline-hover-on-dark, var(--rh-color-interactive-blue-lightest, #b9dafc));
+  color: var(--rh-color-interactive-blue-lightest, #b9dafc);
   text-decoration: underline;
 }
 
 :is(rh-footer, rh-footer-universal) a:is(:focus, :focus-within) {
-  /* TODO remove --rh-color-link-inline-focus-on-dark for v2 */
-  /* stylelint-disable-next-line */
-  color: var(--rh-color-link-inline-focus-on-dark, var(--rh-color-interactive-blue-lightest, #b9dafc));
+  color: var(--rh-color-interactive-blue-lightest, #b9dafc);
   text-decoration: underline;
 }
 
 :is(rh-footer, rh-footer-universal) a:visited {
-  /* TODO remove --rh-color-link-inline-visited-on-dark for v2 */
-  /* stylelint-disable-next-line */
-  color: var(--rh-color-link-inline-visited-on-dark, var(--rh-color-interactive-blue-lightest, #b9dafc));
+  color: var(--rh-color-interactive-blue-lightest, #b9dafc);
   text-decoration: none;
 }
 
@@ -4032,30 +4016,22 @@ rh-footer-universal rh-footer-copyright {
     </script><script type="sample/js" filename="demo/rh-footer-index-inline-0.js">import '@rhds/elements/rh-cta/rh-cta.js';
 import '@rhds/elements/rh-footer/rh-footer.js';
 </script><script type="sample/css" filename="rh-footer-lightdom.css" hidden="">:is(rh-footer, rh-footer-universal) a {
-  /* TODO remove --rh-color-link-inline-on-dark for v2 */
-  /* stylelint-disable-next-line */
-  color: var(--rh-color-link-inline-on-dark, var(--rh-color-interactive-blue-lighter, #92c5f9));
+  color: var(--rh-color-interactive-blue-lighter, #92c5f9);
   text-decoration: none;
 }
 
 :is(rh-footer, rh-footer-universal) a:hover {
-  /* TODO remove --rh-color-link-inline-hover-on-dark for v2 */
-  /* stylelint-disable-next-line */
-  color: var(--rh-color-link-inline-hover-on-dark, var(--rh-color-interactive-blue-lightest, #b9dafc));
+  color: var(--rh-color-interactive-blue-lightest, #b9dafc);
   text-decoration: underline;
 }
 
 :is(rh-footer, rh-footer-universal) a:is(:focus, :focus-within) {
-  /* TODO remove --rh-color-link-inline-focus-on-dark for v2 */
-  /* stylelint-disable-next-line */
-  color: var(--rh-color-link-inline-focus-on-dark, var(--rh-color-interactive-blue-lightest, #b9dafc));
+  color: var(--rh-color-interactive-blue-lightest, #b9dafc);
   text-decoration: underline;
 }
 
 :is(rh-footer, rh-footer-universal) a:visited {
-  /* TODO remove --rh-color-link-inline-visited-on-dark for v2 */
-  /* stylelint-disable-next-line */
-  color: var(--rh-color-link-inline-visited-on-dark, var(--rh-color-interactive-blue-lightest, #b9dafc));
+  color: var(--rh-color-interactive-blue-lightest, #b9dafc);
   text-decoration: none;
 }
 
@@ -4170,30 +4146,22 @@ rh-footer-universal rh-footer-copyright {
 }
 </script><script type="sample/js" filename="demo/rh-footer-footer-universal-inline-0.js">import '@rhds/elements/rh-footer/rh-footer-universal.js';
 </script><script type="sample/css" filename="demo/rh-footer-lightdom.css" hidden="">:is(rh-footer, rh-footer-universal) a {
-  /* TODO remove --rh-color-link-inline-on-dark for v2 */
-  /* stylelint-disable-next-line */
-  color: var(--rh-color-link-inline-on-dark, var(--rh-color-interactive-blue-lighter, #92c5f9));
+  color: var(--rh-color-interactive-blue-lighter, #92c5f9);
   text-decoration: none;
 }
 
 :is(rh-footer, rh-footer-universal) a:hover {
-  /* TODO remove --rh-color-link-inline-hover-on-dark for v2 */
-  /* stylelint-disable-next-line */
-  color: var(--rh-color-link-inline-hover-on-dark, var(--rh-color-interactive-blue-lightest, #b9dafc));
+  color: var(--rh-color-interactive-blue-lightest, #b9dafc);
   text-decoration: underline;
 }
 
 :is(rh-footer, rh-footer-universal) a:is(:focus, :focus-within) {
-  /* TODO remove --rh-color-link-inline-focus-on-dark for v2 */
-  /* stylelint-disable-next-line */
-  color: var(--rh-color-link-inline-focus-on-dark, var(--rh-color-interactive-blue-lightest, #b9dafc));
+  color: var(--rh-color-interactive-blue-lightest, #b9dafc);
   text-decoration: underline;
 }
 
 :is(rh-footer, rh-footer-universal) a:visited {
-  /* TODO remove --rh-color-link-inline-visited-on-dark for v2 */
-  /* stylelint-disable-next-line */
-  color: var(--rh-color-link-inline-visited-on-dark, var(--rh-color-interactive-blue-lightest, #b9dafc));
+  color: var(--rh-color-interactive-blue-lightest, #b9dafc);
   text-decoration: none;
 }
 
