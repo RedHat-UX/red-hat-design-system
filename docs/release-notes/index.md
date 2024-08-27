@@ -6,8 +6,8 @@ importElements:
   - rh-tile
 ---
 
-<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css' | url }}">
-<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
+<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
+<link rel="stylesheet" href=" /assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
 
 <style>
   rh-tile {
@@ -20,7 +20,7 @@ importElements:
   }
 
   rh-tile [icon="github"] {
-    --pf-icon--size: var(--rh-size-icon-03, 32px);
+    --rh-icon-size: var(--rh-size-icon-03, 32px);
   }
 </style>
 
@@ -30,7 +30,7 @@ importElements:
 We are continually making changes in order to improve and grow the Red Hat Design System. If you think changes need to be made to a component, foundation, or anything else, please submit a [GitHub issue](https://github.com/RedHat-UX/red-hat-design-system/issues).
 
 <rh-tile compact>
-  <pf-icon slot="image" set="fab" icon="github" size="lg"></pf-icon>
+  <rh-icon slot="image" set="social" icon="github" size="lg"></rh-icon>
   <a slot="headline" href="https://github.com/RedHat-UX/red-hat-design-system/releases">Changelog</a>
 </rh-tile>
 

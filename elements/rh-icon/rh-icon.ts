@@ -1,16 +1,21 @@
 import type { IconNameFor, IconSetName } from '@rhds/icons';
 
-import { LitElement, html, type TemplateResult } from 'lit';
+import { LitElement, html, isServer, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { state } from 'lit/decorators/state.js';
 import { classMap } from 'lit/directives/class-map.js';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
 import style from './rh-icon.css';
+
+if (isServer) {
+  await import('./ssr.js');
+}
 
 type Renderable = unknown;
 
@@ -64,15 +69,16 @@ export class RhIcon extends LitElement {
 
   private static instances = new Set<RhIcon>();
 
-  private static resolve: IconResolverFunction = (set: string, icon: string): Renderable =>
-    import(`@rhds/icons/${set}/${icon}.js`)
-        .then(mod => mod.default.cloneNode(true));
+  public static resolve: IconResolverFunction =
+    (set, icon) =>
+      import(`@rhds/icons/${set}/${icon}.js`)
+          .then(mod => mod.default.cloneNode(true));
 
   /** Icon set */
-  @property({ reflect: true }) set?: IconSetName;
+  @property({ type: String, reflect: true }) set?: IconSetName;
 
   /** Icon name */
-  @property({ reflect: true }) icon?: IconNameFor<IconSetName>;
+  @property({ type: String, reflect: true }) icon?: IconNameFor<IconSetName>;
 
   /**
    * Defines a string value that labels the icon element.
@@ -103,15 +109,32 @@ export class RhIcon extends LitElement {
   }
 
   render(): TemplateResult {
-    const content = this.content ?? '';
     const { set = 'standard' } = this;
+    const content = this.#getContent();
     return html`
       <div id="container"
            aria-hidden="${String(!!content)}"
-           class="${classMap({ [set]: set })}"
-      >${content}<span part="fallback"
-                       ?hidden=${!!content}><slot></slot></span></div>
+           class="${classMap({ [set]: set, isServer })}">${!isServer ? content
+        : unsafeHTML(content as unknown as string)}${content ? '' : html`
+        <span part="fallback"><slot></slot></span>`}
+      </div>
     `;
+  }
+
+  #getContent() {
+    if (isServer) {
+      const { set = 'standard', icon } = this;
+      return globalThis.RH_ICONS.get(set)?.get(icon as never) ?? '';
+    } else {
+      return this.content ?? '';
+    }
+  }
+
+  updated() {
+    // terrible workaround for apparent lit bug: icons render twice, once for
+    // ssr, then again for client-side.
+    // updated() is not called on server
+    this.shadowRoot?.querySelector('.isServer')?.remove();
   }
 
   disconnectedCallback(): void {
@@ -163,10 +186,9 @@ export class RhIcon extends LitElement {
 
   async #load() {
     const { set = 'standard', icon } = this;
-    const resolver = RhIcon.resolve;
-    if (set && icon && typeof resolver === 'function') {
+    if (set && icon) {
       try {
-        this.content = await resolver(set, icon);
+        this.content = await RhIcon.resolve?.(set, icon);
       } catch (error: unknown) {
         if (error instanceof Error) {
           this.#logger.error(error.message);
