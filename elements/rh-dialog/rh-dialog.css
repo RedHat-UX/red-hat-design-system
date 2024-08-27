@@ -169,9 +169,7 @@ footer {
 }
 
 :host([type="video"][open]) [part="dialog"] {
-  /* TODO remove --rh-modal-video-aspect-ratio for v2 */
-  /* stylelint-disable-next-line */
-  --_aspect-ratio: var(--rh-dialog-video-aspect-ratio, var(--rh-modal-video-aspect-ratio, 16/9));
+  --_aspect-ratio: var(--rh-dialog-video-aspect-ratio, 16/9);
 
   aspect-ratio: var(--_aspect-ratio);
   max-width: min(90%, calc(90vh * var(--_aspect-ratio) + var(--offset-top)));
@@ -186,9 +184,7 @@ footer {
 :host([type="video"]) #container,
 :host([type="video"]) [part="content"],
 :host([type="video"]) ::slotted(:not([slot])) {
-  /* TODO remove --rh-modal-video-aspect-ratio for v2 */
-  /* stylelint-disable-next-line */
-  aspect-ratio: var(--rh-dialog-video-aspect-ratio, var(--rh-modal-video-aspect-ratio, 16/9));
+  aspect-ratio: var(--rh-dialog-video-aspect-ratio, 16/9);
 
   /* account for a 1px descrepency between dialog and container aspect ratio */
   width: calc(100% + 1px);
