@@ -1,8 +1,12 @@
 import { pfeCustomElementsManifestConfig } from '@patternfly/pfe-tools/custom-elements-manifest/config.js';
 
 export default pfeCustomElementsManifestConfig({
-  globs: ['elements/*/rh-*.ts', 'elements/*/Rh*.ts'],
-  exclude: ['*.css.js'],
+  globs: ['elements/*/rh-*.ts'],
+  exclude: [
+    '*.css.js',
+    'elements/rh-icon/ssr.ts',
+    'elements/rh-icon/ssr.js',
+  ],
   plugins: [{
     // because analyzer tooling does not support export paths,
     // we here need to 'manually resolve' those paths in the manifest

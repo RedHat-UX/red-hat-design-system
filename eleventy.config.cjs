@@ -11,7 +11,7 @@ const RHDSPlugin = require('./docs/_plugins/rhds.cjs');
 const DesignTokensPlugin = require('./docs/_plugins/tokens.cjs');
 const RHDSMarkdownItPlugin = require('./docs/_plugins/markdown-it.cjs');
 const ImportMapPlugin = require('./docs/_plugins/importMap.cjs');
-const litPlugin = require('@lit-labs/eleventy-plugin-lit');
+const LitPlugin = require('@lit-labs/eleventy-plugin-lit');
 
 const isWatch =
   process.argv.includes('--serve') || process.argv.includes('--watch');
@@ -113,11 +113,6 @@ module.exports = function(eleventyConfig) {
       '@rhds/icons/standard/',
       '@rhds/icons/ui/',
       '@patternfly/elements',
-      '@patternfly/icons/',
-      '@patternfly/icons/far/',
-      '@patternfly/icons/fas/',
-      '@patternfly/icons/fab/',
-      '@patternfly/icons/patternfly/',
       '@patternfly/pfe-core',
       // Vendor
       '@floating-ui/core',
@@ -126,6 +121,7 @@ module.exports = function(eleventyConfig) {
       '@lit-labs/ssr-client/lit-element-hydrate-support.js',
       '@lit/context',
       '@lit/reactive-element',
+      '@webcomponents/template-shadowroot/template-shadowroot.js',
       'lit',
       'lit-element',
       'lit/directives/class-map.js',
@@ -172,7 +168,7 @@ module.exports = function(eleventyConfig) {
     },
   });
 
-  eleventyConfig.addPlugin(litPlugin, {
+  eleventyConfig.addPlugin(LitPlugin, {
     mode: 'worker',
     componentModules: [
       'docs/assets/javascript/elements/uxdot-skip-navigation.js',
@@ -188,13 +184,15 @@ module.exports = function(eleventyConfig) {
       'docs/assets/javascript/elements/uxdot-best-practice.js',
       'docs/assets/javascript/elements/uxdot-search.js',
       'docs/assets/javascript/elements/uxdot-toc.js',
+      'elements/rh-tag/rh-tag.js',
+      'elements/rh-icon/rh-icon.js',
       // 'docs/assets/javascript/elements/uxdot-pattern.js',
       // 'docs/assets/javascript/elements/uxdot-example.js', // Uses context API need to work around issues
       // 'docs/assets/javascript/elements/uxdot-installation-tabs.js', // extends RhTabs so cant DSD yet
     ],
   });
 
-  !isWatch && eleventyConfig.addPlugin(DirectoryOutputPlugin, {
+  !isWatch && !process.env.QUIET && eleventyConfig.addPlugin(DirectoryOutputPlugin, {
     // Customize columns
     columns: {
       filesize: true, // Use `false` to disable
