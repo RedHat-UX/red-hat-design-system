@@ -4,8 +4,8 @@ export default pfeCustomElementsManifestConfig({
   globs: ['elements/*/rh-*.ts'],
   exclude: [
     '*.css.js',
-    'elements/rh-icon/rh-icon-ssr.ts',
-    'elements/rh-icon/rh-icon-ssr.js',
+    'elements/rh-icon/ssr.ts',
+    'elements/rh-icon/ssr.js',
   ],
   plugins: [{
     // because analyzer tooling does not support export paths,
