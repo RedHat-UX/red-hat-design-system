@@ -1,5 +1,5 @@
 ---
-title: Screen reader testing
+title: Screen reader basics
 tags:
   - accessibility
 order: 55
