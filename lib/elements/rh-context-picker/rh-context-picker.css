@@ -13,7 +13,7 @@
   --thumb-color: var(--rh-color-interactive-blue-darker, #0066cc);
 }
 
-#container.on-dark {
+#container.on.dark {
   --thumb-color: var(--rh-color-interactive-blue-lighter, #92c5f9);
 }
 

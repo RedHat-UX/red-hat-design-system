@@ -1,7 +1,7 @@
 :host {
   display: block;
-  background: var(--_context-background-color);
-  color: var(--_context-text);
+  background: var(--rh-color-surface);
+  color: var(--rh-color-text-primary);
 }
 
 [part="container"] {
@@ -146,7 +146,7 @@ button:disabled {
 #nextTab {
   padding-block: 0;
   padding-inline: var(--rh-space-lg, 16px);
-  background-color: var(--_context-background-color);
+  background-color: var(--rh-color-surface);
   color: var(--_overflow-button-text-color);
   position: relative;
   z-index: 2;

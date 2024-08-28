@@ -28,11 +28,14 @@ import styles from './rh-card.css';
  *              The body for the card. Contains the default slot.
  * @csspart     footer
  *              The footer for the card. Contains the footer slot.
- * @cssprop     [--rh-card-heading-font-family=--rh-font-family-heading]
+ * @cssprop     [--rh-card-border-color=var(--rh-border-color-subtle-on-light)]
+ *              Computed from the colour context. Intended to be read for
+ *              theming purposes, rather than set in page css.
+ * @cssprop     [--rh-card-heading-font-family=var(--rh-font-family-heading)]
  *              The font family for headings in the header and body
- * @cssprop     [--rh-card-heading-font-size=--rh-font-size-heading-sm]
+ * @cssprop     [--rh-card-heading-font-size=var(--rh-font-size-heading-sm)]
  *              The font size for headings in the header and body
- * @cssprop     [--rh-card-heading-font-weight=--rh-font-weight-body-text-medium]
+ * @cssprop     [--rh-card-heading-font-weight=var(--rh-font-weight-body-text-medium)]
  *              The font weight for headings in the header and body
  */
 @customElement('rh-card')
@@ -57,12 +60,8 @@ export class RhCard extends LitElement {
    * Card always resets its context to `base`, unless explicitly provided with a `color-palette`.
    */
   @colorContextProvider()
-  @property(
-    {
-      reflect: true,
-      attribute: 'color-palette',
-    }
-  ) colorPalette?: 'darkest' | 'lightest' | 'lighter';
+  @property({ reflect: true, attribute: 'color-palette' })
+  colorPalette?: 'darkest' | 'lightest' | 'lighter';
 
   /**
    * Change the style of the card to be a "Promo"
@@ -87,9 +86,10 @@ export class RhCard extends LitElement {
           | 'footer', boolean>;
     const promo = this.variant === 'promo';
     const standard = promo && slots.body && !slots.image && !slots.header;
-    const computedPalette =
+    const computedPalette = `palette-${(
         !standard ? colorPalette
-      : (colorPalette || 'lightest').replace('est', 'er');
+      : (colorPalette || 'lightest')
+    ).replace('est', 'er')}`.replace(/^palette-$/, '');
     const header = html`
       <div id="header"
            part="header"
@@ -105,7 +105,7 @@ export class RhCard extends LitElement {
     return html`
      <div id="container"
           part="container"
-          class="${classMap({
+          class="on ${classMap({
             [on]: !!on,
             [computedPalette]: !!computedPalette,
             [variant]: !!variant,

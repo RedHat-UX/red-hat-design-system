@@ -1,0 +1,13 @@
+.on.dark {
+  --rh-color-text-primary: var(--rh-color-text-primary-on-dark, #ffffff);
+  --rh-color-border-subtle: var(--rh-color-border-subtle-on-dark, #707070);
+  --rh-color-border-strong: var(--rh-color-border-strong-on-dark, #ffffff);
+  --rh-color-border-interactive: var(--rh-color-border-interactive-on-dark, #92c5f9);
+}
+
+.on.light {
+  --rh-color-text-primary: var(--rh-color-text-primary-on-light, #151515);
+  --rh-color-border-subtle: var(--rh-color-border-subtle-on-light, #c7c7c7);
+  --rh-color-border-strong: var(--rh-color-border-strong-on-light, #151515);
+  --rh-color-border-interactive: var(--rh-color-border-interactive-on-light, #0066cc);
+}

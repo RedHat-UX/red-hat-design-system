@@ -11,6 +11,8 @@ import { ColorContextConsumer, type ColorTheme } from './consumer.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
+import styles from './context-provider.css';
+
 /**
  * A `ColorPalette` is a collection of specific color values
  * Choosing a palette sets both color properties and, if the component is a context provider,
@@ -89,7 +91,7 @@ export class ColorContextProvider<
 
   constructor(host: T, options?: ColorContextProviderOptions<T>) {
     const { attribute = 'color-palette' } = options ?? {};
-    super(host);
+    super(host, styles);
     this.#consumer = new ColorContextConsumer(host, {
       callback: value => this.update(value),
     });

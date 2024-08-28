@@ -52,7 +52,7 @@ a:after,
   border-radius: var(--rh-border-radius-default, 3px);
   border-width: var(--rh-border-width-sm, 1px);
 
-  --_context-background-color: var(--_background-color) !important;
+  --rh-color-surface: var(--_background-color) !important;
   --_arrow-size: 13px;
   --_arrow-plus-padding: calc(var(--rh-space-md, 8px) + var(--_arrow-size));
   --rh-icon-size: var(--rh-font-size-body-text-lg, 1.125rem);

@@ -13,7 +13,7 @@
   --_active-tab-border-open:
     var(--rh-border-width-sm, 1px)
     solid
-    var(--_context-background-color, var(--rh-color-white, #ffffff));
+    var(--rh-color-surface, var(--rh-color-surface-lightest, #ffffff));
 }
 
 .vertical [part="text"] {

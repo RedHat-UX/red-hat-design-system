@@ -2,7 +2,7 @@ import type { ColorPalette } from '@rhds/elements/lib/context/color/provider.js'
 import type { Color } from '@rhds/tokens/js/types.js';
 import type { ColorTheme } from '@rhds/elements/lib/context/color/consumer.js';
 
-import { html, LitElement } from 'lit';
+import { html, LitElement, type ComplexAttributeConverter } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
@@ -30,22 +30,33 @@ export class ContextChangeEvent extends Event {
   }
 }
 
+export const ColorPaletteListConverter: ComplexAttributeConverter = {
+  fromAttribute(list: string) {
+    return list?.split(',')
+        ?.map(x => x.trim())
+        ?.filter(x => paletteNames.includes(x as ColorPalette)) ?? [];
+  },
+  toAttribute(list: ColorPalette[]) {
+    return list.join(',');
+  },
+};
+
+export const paletteMap = new Map<ColorPalette, Color>(Object.entries({
+  lightest,
+  lighter,
+  light,
+  dark,
+  darker,
+  darkest,
+}) as [ColorPalette, Color][]);
+
+export const paletteNames = Array.from(paletteMap, ([name]) => name);
+
 @customElement('rh-context-picker')
 export class RhContextPicker extends LitElement {
   static formAssociated = true;
 
   static readonly styles = [style];
-
-  static readonly palettes = new Map<ColorPalette, Color>(Object.entries({
-    darkest,
-    darker,
-    dark,
-    light,
-    lighter,
-    lightest,
-  }) as [ColorPalette, Color][]);
-
-  private static paletteNames = Array.from(RhContextPicker.palettes, ([name]) => name);
 
   declare shadowRoot: ShadowRoot;
 
@@ -56,18 +67,8 @@ export class RhContextPicker extends LitElement {
 
   @colorContextConsumer() private on?: ColorTheme;
 
-  @property({
-    converter: {
-      fromAttribute(list: string) {
-        return list?.split(',')
-            ?.map(x => x.trim())
-            ?.filter(x => RhContextPicker.paletteNames.includes(x as ColorPalette)) ?? [];
-      },
-      toAttribute(list: ColorPalette[]) {
-        return list.join(',');
-      },
-    },
-  }) allow = RhContextPicker.paletteNames;
+  @property({ converter: ColorPaletteListConverter })
+  allow = paletteNames;
 
   #internals = InternalsController.of(this);
 
@@ -80,7 +81,7 @@ export class RhContextPicker extends LitElement {
            class="visually-hidden">${this.#internals.computedLabelText}</div>
       <div id="container"
            @input="${this.#onInput}"
-           class="${classMap({ [`on-${on}`]: true })}">
+           class="on ${classMap({ [on]: true })}">
         ${allow.map(palette => html`
         <label for="radio-${palette}" class="visually-hidden">${palette}</label>
         <rh-tooltip>

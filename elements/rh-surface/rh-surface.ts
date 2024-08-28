@@ -4,7 +4,6 @@ import { property } from 'lit/decorators/property.js';
 
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
-import contextStyle from '../../lib/context/color/context-color.css';
 import styles from './rh-surface.css';
 
 /**
@@ -24,7 +23,7 @@ import styles from './rh-surface.css';
  */
 @customElement('rh-surface')
 export class RhSurface extends LitElement {
-  static readonly styles = [contextStyle, styles];
+  static readonly styles = [styles];
 
   /**
    * Sets color palette, which affects the element's styles as well as descendants' color theme.
