@@ -134,7 +134,7 @@ To quit JAWS, press <kbd>JAWS-F4</kbd>. If this keypress combination is unavaila
 
 JAWS has a text viewer that appears at the top of the screen and reflects much (though not all) of what is spoken. If it is not running by default on your machine, you can enable it via the JAWS system tray menu.
 
-First open the system tray menu with your mouse or via keyboard shortcuts (<kbd>Insert-J</kbd> or <kbd>CapsLock-Shift-Ctrl-J</kbd>). Then press <kbd>U</kbd> to open the utilities submenu and <kbd>V</kbd> to open the text viewer options. Select “Show Text Viewer” and press Enter to toggle it. Settings for the text viewer can also be opened via this same submenu.
+First open the system tray menu with your mouse or via keyboard shortcuts (<kbd>Insert-J</kbd> or <kbd>CapsLock-Shift-Ctrl-J</kbd>). Then press <kbd>U</kbd> to open the utilities submenu and <kbd>V</kbd> to open the text viewer options. Select “Show Text Viewer” and press <kbd>Enter</kbd> to toggle it. Settings for the text viewer can also be opened via this same submenu.
 
 ### Narrator (Windows)
 
@@ -169,3 +169,28 @@ Once you have the settings how you like them, you can just type `orca` in a term
 
 On mobile devices, you will use touchscreen gestures and taps instead of a keyboard to navigate the page and activate interactive elements.
 For basic navigation, you can swipe right, left, up, and down with one finger to move forward and backward through the page, and then double-tap to activate form controls and links. Each platform has many other gestures for more advanced navigation. View the linked gesture shortcuts pages within each section for more guidance.
+
+### VoiceOver (iOS)
+
+- VoiceOver is included with iOS.
+- Commonly paired with: Safari
+- [Gesture shortcuts](https://dequeuniversity.com/screenreaders/voiceover-ios-shortcuts) (from Deque)
+
+#### Getting started
+
+There are several ways to start and stop VoiceOver in iOS:
+
+- If you’ve added VoiceOver as an Accessibility Shortcut (by going to Settings → Accessibility → Accessibility Shortcut and checking “VoiceOver”), you can toggle it by pressing your side button three times in rapid succession. (On non-Face-ID devices, click the Home button three times, instead.)
+- If you’ve added it to Control Center (by going to Settings → Control Center and pressing the add symbol for “Accessibility Shortcuts”), you can toggle VoiceOver there.
+- If you have Siri enabled, you can say, “Turn VoiceOver on/off.”
+- You can toggle it in your device’s Settings → Accessibility → VoiceOver section. (This is also where you can customize VoiceOver to your preferences.)
+
+#### Bonus tips
+
+##### Using the Rotor
+
+One of VoiceOver’s most powerful tools is the Rotor. The Rotor is a virtual dial you can turn to let you navigate by categories like lines, words, links, form elements, headings, and so on.
+
+Turn the rotor on by placing two fingers on your screen (e.g., thumb and forefinger) and twisting them clockwise or counterclockwise (like turning a dial). VoiceOver will announce the currently-selected category as you twist. For example, twist until you hear “Headings.” If you now swipe up and down on the page, VoiceOver will move from heading to heading, and you can then swipe right and left to have the content around that heading read to you.
+
+The Rotor also includes an option for setting VoiceOver’s speaking rate, if you’d like to adjust that setting.
