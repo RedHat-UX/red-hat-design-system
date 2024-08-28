@@ -75,3 +75,36 @@ When speech is muted, the shortcut for continually reading page content (<kbd>ct
 All that said, while transcript windows can be helpful, there are cases where the audio may not match a transcript exactly. So, when testing, you should confirm any issues with the audio on.
 
 Muting audio may be most useful when demonstrating issues in video meetings, so you can still hear the other participants as you present.
+
+### NVDA (Windows)
+
+- [Download and install](https://www.nvaccess.org/download/) NVDA to use it. It’s free.
+- Commonly paired with: Firefox (and Chrome, if you don’t have access to JAWS)
+- [Keyboard shortcuts](https://dequeuniversity.com/screenreaders/nvda-keyboard-shortcuts) (from Deque)
+
+#### Getting started
+
+Start NVDA by opening it in the Start menu, clicking on its icon, or pressing the <kbd>Windows</kbd> key and typing “NVDA” and then Enter.
+When NVDA starts, a welcome dialog will appear. Here, you can specify what kind of keyboard you’re using. If your keyboard has an <kbd>insert</kbd> key (most full Windows keyboards do), then you can leave “Use CapsLock as an NVDA modifier key” unchecked. The <kbd>insert</kbd> key will be your NVDA modifier key (just referred to as <kbd>NVDA</kbd> from here on in keyboard shortcuts).
+
+If your keyboard does not have an <kbd>insert</kbd> key (many laptop keyboards do not), you should check the “Use CapsLock…” checkbox. <kbd>capslock</kbd> will now be your <kbd>NVDA</kbd> key.
+
+To customize NVDA’s settings, press <kbd>NVDA-n</kbd>. This will bring up an options menu, which you can then navigate with arrows and the <kbd>enter</kbd> key.
+
+To quit NVDA, press <kbd>NVDA-q</kbd>. You can also quit NVDA and access settings via its system tray icon.
+
+#### Bonus tips
+
+##### Displaying the speech viewer
+
+Like MacOS VoiceOver, NVDA offers an option for using the screen reader visually. This speech viewer actually keeps a running log of all content read during a session, for quick reference.
+
+To open the speech viewer, press NVDA-N to open the app’s settings. Press <kbd>t</kbd> to open the tools menu. Arrow down to the “Speech Viewer” option and press <kbd>enter</kbd>. The speech viewer window will appear on your screen. The viewer window has a “Show Speech Viewer on Startup” checkbox, which you can check to make sure it always appears when you run NVDA.
+
+As with VoiceOver’s transcript window, there are cases where audio may not match the speech viewer’s log exactly. So, when testing, confirm any issues with audio on.
+
+##### Creating a portable copy
+
+One handy thing about NVDA is that you can create a portable copy to place on a flash drive and use on any Windows computer. This can be useful if you need to demonstrate something on someone else’s machine, or if you yourself switch computers.
+
+To make a portable copy, start NVDA and open its settings (<kbd>NVDA-n</kbd>). Press <kbd>t</kbd> to open the tools menu. Arrow down to the “Create portable copy” option and press <kbd>enter</kbd>. You can then choose a destination for this copy of NVDA.
