@@ -85,7 +85,7 @@ Muting audio may be most useful when demonstrating issues in video meetings, so 
 #### Getting started
 
 Start NVDA by opening it in the Start menu, clicking on its icon, or pressing the <kbd>Windows</kbd> key and typing “NVDA” and then Enter.
-When NVDA starts, a welcome dialog will appear. Here, you can specify what kind of keyboard you’re using. If your keyboard has an <kbd>Insert</kbd> key (most full Windows keyboards do), then you can leave “Use CapsLock as an NVDA modifier key” unchecked. The <kbd>Insert</kbd> key will be your NVDA modifier key (just referred to as <kbd>NVDA</kbd> from here on in keyboard shortcuts).
+When NVDA starts, a welcome dialog will appear. Here, you can specify what kind of keyboard you’re using. If your keyboard has an <kbd>Insert</kbd> key (most full Windows keyboards do), then you can leave “Use CapsLock as an NVDA modifier key” unchecked. The <kbd>Insert</kbd> key will be assigned as your <kbd>NVDA</kbd> modifier key for keyboard shortcuts).
 
 If your keyboard does not have an <kbd>Insert</kbd> key (many laptop keyboards do not), you should check the “Use CapsLock…” checkbox. <kbd>CapsLock</kbd> will now be your <kbd>NVDA</kbd> key.
 
@@ -120,7 +120,7 @@ To make a portable copy, start NVDA and open its settings (<kbd>NVDA-N</kbd>). P
 
 Start JAWS by opening it in the Start menu, clicking on its icon, or pressing the <kbd>Windows</kbd> key and typing “JAWS” and then Enter.
 
-On keyboards with an <kbd>Insert</kbd> key, that key will be your JAWS modifier key for keyboard shortcuts (referred to as <kbd>JAWS</kbd> from here on when discussing shortcuts). On keyboards without an <kbd>Insert</kbd> key, the <kbd>CapsLock</kbd> key will be your <kbd>JAWS</kbd> key. You can test this out by pressing <kbd>JAWS-F12</kbd> to read out the system time.
+On keyboards with an <kbd>Insert</kbd> key, that key will be assigned as your <kbd>JAWS</kbd> modifier key for keyboard shortcuts. On keyboards without an <kbd>Insert</kbd> key, the <kbd>CapsLock</kbd> key will be your <kbd>JAWS</kbd> key. You can test this out by pressing <kbd>JAWS-F12</kbd> to read out the system time.
 
 To customize your JAWS settings, use its system tray menu. You can press <kbd>Insert-J</kbd> (on a full keyboard) or <kbd>CapsLock-Shift-Ctrl-J</kbd> (on a laptop keyboard) to open this menu. Then press <kbd>O</kbd> for options. Pressing <kbd>B</kbd> for basic settings will then let you switch between keyboard types and adjust other options.
 
@@ -159,7 +159,7 @@ To open Narrator settings when the dashboard is closed, press <kbd>Windows-Ctrl-
 
 To start Orca for the first time and open its settings dialog, type `orca -s` in your terminal program.
 
-Within the settings app, you can indicate whether you are using a full or laptop keyboard, change voice options, etc. As with Windows screen readers, <kbd>Insert</kbd> is the default Orca modifier key used in keyboard shortcuts, but switching to laptop mode assigns <kbd>CapsLock</kbd> to <kbd>Orca</kbd>.
+Within the settings app, you can indicate whether you are using a full or laptop keyboard, change voice options, etc. As with Windows screen readers, <kbd>Insert</kbd> is the default <kbd>Orca</kbd> modifier key used in keyboard shortcuts, but switching to laptop mode assigns <kbd>CapsLock</kbd> to <kbd>Orca</kbd>.
 
 Once you have the settings how you like them, you can just type `orca` in a terminal to start the screen reader in subsequent sessions. To stop Orca, press <kbd>Ctrl-C</kbd> in the same terminal window in which you started it. Or you can use the keyboard shortcut <kbd>Windows-Alt-S</kbd> (or the equivalent keys on your keyboard, like <kbd>Command-Opt-S</kbd> on a Mac) to toggle Orca on and off.
 
