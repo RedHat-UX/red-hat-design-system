@@ -23,6 +23,10 @@
 }
 
 @layer layout {
+  html,
+  body,
+  main { height: 100%; }
+
   [data-demo] {
     display: contents;
   }
