@@ -8,11 +8,31 @@ const html = String.raw;
 // because markdown, we have to replace newlines with a cookie crumb
 const COMMENT = '<!--CSS_SAMPLE_NEWLINE-->';
 
+/** Returns a string with common indent stripped from each line. Useful for templating HTML */
+function dedent(str) {
+  const stripped = str.replace(/^\n/, '');
+  const match = stripped.match(/^\s+/);
+  return match ? stripped.replace(new RegExp(`^${match[0]}`, 'gm'), '') : str;
+}
+
+async function getCss(partial, kwargs) {
+  const Tools = await import('@parse5/tools');
+  let cssContent = kwargs.css ? await readFile(new URL(kwargs.css, kwargs.baseUrl), 'utf-8') : '';
+  for (const styleTag of Tools.queryAll(partial, node =>
+    Tools.isElementNode(node) && node.tagName === 'style')) {
+    cssContent += `\n${dedent(Tools.getTextContent(styleTag))}`;
+    Tools.removeNode(styleTag);
+  }
+  return cssContent.trim();
+}
+
 /** @param {import('@11ty/eleventy').UserConfig} eleventyConfig */
 module.exports = function(eleventyConfig) {
-  eleventyConfig.addPairedShortcode('uxdotPattern', async function(content, kwargs) {
+  eleventyConfig.addPairedShortcode('uxdotPattern', async function(content, kwargs = {}) {
+    const { parseFragment, serialize } = await import('parse5');
+    const partial = parseFragment(content);
     const baseUrl = pathToFileURL(this.page.inputPath);
-    const cssContent = kwargs.css && await readFile(new URL(kwargs.css, baseUrl), 'utf-8');
+    const cssContent = await getCss(partial, { ...kwargs, baseUrl });
     const jsContent = kwargs.js && await readFile(new URL(kwargs.js, baseUrl), 'utf-8');
     return html`
 <uxdot-pattern ${kwargs.stacked ? 'stacked' : ''}>
@@ -22,7 +42,7 @@ module.exports = function(eleventyConfig) {
   <rh-code-block slot="html" actions="copy">
     <span slot="action-label-copy">Copy to Clipboard</span>
     <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
-    <script type="text/html">${content.trim().replaceAll(/\n/gm, COMMENT)}</script>
+    <script type="text/html">${serialize(partial).trim().replaceAll(/\n/gm, COMMENT)}</script>
   </rh-code-block>${!cssContent ? '' : html`
   <h4 slot="css-heading">CSS</h4>
   <rh-code-block slot="css" actions="copy">
