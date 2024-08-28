@@ -37,20 +37,20 @@
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
     "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
     "@lit/context": "/assets/packages/@lit/context/index.js",
+    "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "lit-element": "/assets/packages/lit-element/index.js",
     "lit": "/assets/packages/lit/index.js",
     "lit/static-html.js": "/assets/packages/lit/static-html.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
-    "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
-    "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
+    "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.1/core.js",
     "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/media.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js",
     "@rhds/tokens/meta.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js",
-    "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.1/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
-    "@lit-labs/ssr-client/lit-element-hydrate-support.js": "https://ga.jspm.io/npm:@lit-labs/ssr-client@1.1.7/lit-element-hydrate-support.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
+    "@lit-labs/ssr-client/lit-element-hydrate-support.js": "https://ga.jspm.io/npm:@lit-labs/ssr-client@1.1.7/lit-element-hydrate-support.js",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
@@ -449,10 +449,14 @@
 
     a {
       display: block;
-      text-decoration: none;
-      color: var(--rh-color-text-primary-on-light, #151515) !important;
       font-size: var(--rh-font-size-body-text-lg, 1.125rem);
       padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
+    }
+
+    a,
+    ::slotted(a) {
+      text-decoration: none !important;
+      color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
     a:hover {
@@ -3008,10 +3012,14 @@
 
     a {
       display: block;
-      text-decoration: none;
-      color: var(--rh-color-text-primary-on-light, #151515) !important;
       font-size: var(--rh-font-size-body-text-lg, 1.125rem);
       padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
+    }
+
+    a,
+    ::slotted(a) {
+      text-decoration: none !important;
+      color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
     a:hover {
@@ -3047,10 +3055,14 @@
 
     a {
       display: block;
-      text-decoration: none;
-      color: var(--rh-color-text-primary-on-light, #151515) !important;
       font-size: var(--rh-font-size-body-text-lg, 1.125rem);
       padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
+    }
+
+    a,
+    ::slotted(a) {
+      text-decoration: none !important;
+      color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
     a:hover {
@@ -3086,10 +3098,14 @@
 
     a {
       display: block;
-      text-decoration: none;
-      color: var(--rh-color-text-primary-on-light, #151515) !important;
       font-size: var(--rh-font-size-body-text-lg, 1.125rem);
       padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
+    }
+
+    a,
+    ::slotted(a) {
+      text-decoration: none !important;
+      color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
     a:hover {
