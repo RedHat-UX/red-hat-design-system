@@ -60,9 +60,9 @@ You may now also need the additional step of turning on tab navigation in Safari
 
 ##### Starting VoiceOver
 
-To toggle VoiceOver on and off, press <kbd>command-F5</kbd>. Or, if you have a Touch ID keyboard, hold down <kbd>command</kbd> and quickly press the <kbd>Touch ID</kbd> button three times.
+To toggle VoiceOver on and off, press <kbd>Command-F5</kbd>. Or, if you have a Touch ID keyboard, hold down <kbd>Command</kbd> and quickly press the <kbd>Touch ID</kbd> key three times.
 
-To customize VoiceOver settings (e.g., the voice), open the VoiceOver Utility on your computer (<kbd>command-space</kbd>, and then type “voiceover utility”).
+To customize VoiceOver settings (e.g., the voice), open the VoiceOver Utility on your computer (<kbd>Command-Space</kbd>, and then type “voiceover utility”).
 
 #### Bonus tips
 
@@ -70,7 +70,7 @@ To customize VoiceOver settings (e.g., the voice), open the VoiceOver Utility on
 
 To reinforce what you’re hearing with visual feedback, VoiceOver’s transcript window reflects the content currently being read. If you find listening to VoiceOver too distracting, you can even mute its audio via the “Mute speech” checkbox in the VoiceOver Utility’s Speech tab. The transcript window will continue to appear and display content as if it were being read aloud.
 
-When speech is muted, the shortcut for continually reading page content (<kbd>ctrl-opt-a</kbd>) will be disabled, though you can still use the <kbd>↑ → ↓ ←</kbd> keys to move through and test non-interactive content.
+When speech is muted, the shortcut for continually reading page content (<kbd>Ctrl-Opt-A</kbd>) will be disabled, though you can still use the <kbd>↑ → ↓ ←</kbd> keys to move through and test non-interactive content.
 
 All that said, while transcript windows can be helpful, there are cases where the audio may not match a transcript exactly. So, when testing, you should confirm any issues with the audio on.
 
@@ -85,13 +85,13 @@ Muting audio may be most useful when demonstrating issues in video meetings, so 
 #### Getting started
 
 Start NVDA by opening it in the Start menu, clicking on its icon, or pressing the <kbd>Windows</kbd> key and typing “NVDA” and then Enter.
-When NVDA starts, a welcome dialog will appear. Here, you can specify what kind of keyboard you’re using. If your keyboard has an <kbd>insert</kbd> key (most full Windows keyboards do), then you can leave “Use CapsLock as an NVDA modifier key” unchecked. The <kbd>insert</kbd> key will be your NVDA modifier key (just referred to as <kbd>NVDA</kbd> from here on in keyboard shortcuts).
+When NVDA starts, a welcome dialog will appear. Here, you can specify what kind of keyboard you’re using. If your keyboard has an <kbd>Insert</kbd> key (most full Windows keyboards do), then you can leave “Use CapsLock as an NVDA modifier key” unchecked. The <kbd>Insert</kbd> key will be your NVDA modifier key (just referred to as <kbd>NVDA</kbd> from here on in keyboard shortcuts).
 
-If your keyboard does not have an <kbd>insert</kbd> key (many laptop keyboards do not), you should check the “Use CapsLock…” checkbox. <kbd>capslock</kbd> will now be your <kbd>NVDA</kbd> key.
+If your keyboard does not have an <kbd>Insert</kbd> key (many laptop keyboards do not), you should check the “Use CapsLock…” checkbox. <kbd>CapsLock</kbd> will now be your <kbd>NVDA</kbd> key.
 
-To customize NVDA’s settings, press <kbd>NVDA-n</kbd>. This will bring up an options menu, which you can then navigate with arrows and the <kbd>enter</kbd> key.
+To customize NVDA’s settings, press <kbd>NVDA-N</kbd>. This will bring up an options menu, which you can then navigate with arrows and the <kbd>Enter</kbd> key.
 
-To quit NVDA, press <kbd>NVDA-q</kbd>. You can also quit NVDA and access settings via its system tray icon.
+To quit NVDA, press <kbd>NVDA-Q</kbd>. You can also quit NVDA and access settings via its system tray icon.
 
 #### Bonus tips
 
@@ -99,7 +99,7 @@ To quit NVDA, press <kbd>NVDA-q</kbd>. You can also quit NVDA and access setting
 
 Like MacOS VoiceOver, NVDA offers an option for using the screen reader visually. This speech viewer actually keeps a running log of all content read during a session, for quick reference.
 
-To open the speech viewer, press NVDA-N to open the app’s settings. Press <kbd>t</kbd> to open the tools menu. Arrow down to the “Speech Viewer” option and press <kbd>enter</kbd>. The speech viewer window will appear on your screen. The viewer window has a “Show Speech Viewer on Startup” checkbox, which you can check to make sure it always appears when you run NVDA.
+To open the speech viewer, press <kbd>NVDA-N</kbd> to open the app’s settings. Press <kbd>T</kbd> to open the tools menu. Arrow down to the “Speech Viewer” option and press <kbd>Enter</kbd>. The speech viewer window will appear on your screen. The viewer window has a “Show Speech Viewer on Startup” checkbox, which you can check to make sure it always appears when you run NVDA.
 
 As with VoiceOver’s transcript window, there are cases where audio may not match the speech viewer’s log exactly. So, when testing, confirm any issues with audio on.
 
@@ -107,4 +107,31 @@ As with VoiceOver’s transcript window, there are cases where audio may not mat
 
 One handy thing about NVDA is that you can create a portable copy to place on a flash drive and use on any Windows computer. This can be useful if you need to demonstrate something on someone else’s machine, or if you yourself switch computers.
 
-To make a portable copy, start NVDA and open its settings (<kbd>NVDA-n</kbd>). Press <kbd>t</kbd> to open the tools menu. Arrow down to the “Create portable copy” option and press <kbd>enter</kbd>. You can then choose a destination for this copy of NVDA.
+To make a portable copy, start NVDA and open its settings (<kbd>NVDA-N</kbd>). Press <kbd>T</kbd> to open the tools menu. Arrow down to the “Create portable copy” option and press <kbd>Enter</kbd>. You can then choose a destination for this copy of NVDA.
+
+### JAWS (Windows)
+
+- [Download and install JAWS](https://support.freedomscientific.com/Downloads/JAWS) to use it. It’s commercial software with a trial mode.
+- Commonly paired with: Chrome
+- [Keyboard shortcuts (from the official Freedom Scientific site)](https://www.freedomscientific.com/training/jaws/hotkeys/)
+- [Keyboard shortcuts (from Deque)](https://dequeuniversity.com/screenreaders/jaws-keyboard-shortcuts)
+
+#### Getting started
+
+Start JAWS by opening it in the Start menu, clicking on its icon, or pressing the <kbd>Windows</kbd> key and typing “JAWS” and then Enter.
+
+On keyboards with an <kbd>Insert</kbd> key, that key will be your JAWS modifier key for keyboard shortcuts (referred to as <kbd>JAWS</kbd> from here on when discussing shortcuts). On keyboards without an <kbd>Insert</kbd> key, the <kbd>CapsLock</kbd> key will be your <kbd>JAWS</kbd> key. You can test this out by pressing <kbd>JAWS-F12</kbd> to read out the system time.
+
+To customize your JAWS settings, use its system tray menu. You can press <kbd>Insert-J</kbd> (on a full keyboard) or <kbd>CapsLock-Shift-Ctrl-J</kbd> (on a laptop keyboard) to open this menu. Then press <kbd>O</kbd> for options. Pressing <kbd>B</kbd> for basic settings will then let you switch between keyboard types and adjust other options.
+
+Note: If you have a web browser running when you start JAWS, you may need to restart it before the screen reader will work properly with it.
+
+To quit JAWS, press <kbd>JAWS-F4<kbd>. If this keypress combination is unavailable (e.g., you don’t have function keys), you can quit JAWS and access settings via its system tray icon.
+
+#### Bonus tips
+
+##### JAWS text viewer
+
+JAWS has a text viewer that appears at the top of the screen and reflects much (though not all) of what is spoken. If it is not running by default on your machine, you can enable it via the JAWS system tray menu.
+
+First open the system tray menu with your mouse or via keyboard shortcuts (<kbd>Insert-J</kbd> or <kbd>CapsLock-Shift-Ctrl-J</kbd>). Then press <kbd>U</kbd> to open the utilities submenu and <kbd>V</kbd> to open the text viewer options. Select “Show Text Viewer” and press Enter to toggle it. Settings for the text viewer can also be opened via this same submenu.
