@@ -1,5 +1,7 @@
 ---
 title: Screen reader basics
+sidenavTitle: Screen reader basics
+permalink: /accessibility/screen-readers/index.html
 tags:
   - accessibility
 order: 55

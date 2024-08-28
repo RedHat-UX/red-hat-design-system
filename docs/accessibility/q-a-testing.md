@@ -90,7 +90,7 @@ If you do nothing else to test your projects, try navigating the entire experien
 
 If you’re feeling ambitious and want to combine testing tasks, perform your keyboard testing with a screen reader turned on.
 
-We have a [page covering the basics of screen reader testing](screen-readers.html) on Mac, Windows, Linux, iOS, and Android platforms.
+We have a [page covering the basics of screen reader testing](/accessibility/screen-readers/) on Mac, Windows, Linux, iOS, and Android platforms.
 
 #### Color contrast checkers
 
