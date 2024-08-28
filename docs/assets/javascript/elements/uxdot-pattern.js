@@ -80,7 +80,7 @@ class UxdotPattern extends LitElement {
 
     @container host (min-width: 992px) {
       #container {
-        grid-template-columns: max-content 1fr;
+        grid-template-columns: max-content auto;
         grid-template-areas: "controls controls"
                              "example code";
       }
