@@ -7,45 +7,53 @@ const STATUS_LEGEND = {
     color: 'gray',
     variant: 'filled',
     icon: html`<rh-icon set="ui" icon="notification-fill">Planned</rh-icon>`,
+    iconName: 'notification-fill',
   },
   'In Progress': {
     description: 'In the design or development process',
     color: 'green',
     variant: 'outline',
-    icon: html`<rh-icon set="ui" icon="harvey-ball-50">✔️</rh-icon>`,
+    icon: html`<rh-icon set="ui" icon="harvey-ball-50">WIP</rh-icon>`,
+    iconName: 'harvey-ball-50',
   },
   'Ready': {
     description: 'Ready to use and approved by all team members',
     color: 'green',
     variant: 'filled',
     icon: html`<rh-icon set="ui" icon="check-circle-fill">✔️</rh-icon>`,
+    iconName: 'check-circle-fill',
   },
   'Deprecated': {
     description: 'No longer supported by RHDS',
     color: 'orange',
     variant: 'filled',
     icon: html`<rh-icon set="ui" icon="close-circle-fill">Deprecated</rh-icon>`,
+    iconName: 'close-circle-fill',
   },
   'N/A': {
     description: 'Not planned, not available, or does not apply',
     color: 'gray',
     variant: 'outline',
     icon: html`<rh-icon set="ui" icon="ban">N/A</rh-icon>`,
+    iconName: 'ban',
   },
   'Beta': {
     color: 'purple',
     variant: 'outline',
     icon: html`<rh-icon set="ui" icon="build-fill">Beta</rh-icon>`,
+    iconName: 'build-fill',
   },
   'Experimental': {
     color: 'orange',
     variant: 'outline',
     icon: html`<rh-icon set="ui" icon="experimental">Beta</rh-icon>`,
+    iconName: 'experimental',
   },
   'New': {
     color: 'cyan',
     variant: 'outline',
     icon: html`<rh-icon set="ui" icon="new-fill">New</rh-icon>`,
+    iconName: 'new-fill',
   },
 };
 
@@ -103,8 +111,8 @@ function repoStatusList({ repoStatus, heading = 'Status', level = 2 } = {}) {
     <div>
       <dt>${listItem.name}:</dt>
       <dd>
-        <rh-tag color="${STATUS_LEGEND[listItem.status].color}" variant="${STATUS_LEGEND[listItem.status].variant}">
-        ${listItem.status}${STATUS_LEGEND[listItem.status].icon.trim()}
+        <rh-tag color="${STATUS_LEGEND[listItem.status].color}" variant="${STATUS_LEGEND[listItem.status].variant}" icon="${STATUS_LEGEND[listItem.status]['iconName']}">
+          ${listItem.status}
         </rh-tag>
       </dd>
     </div>`.trim()).join('\n').trim()}
@@ -147,12 +155,12 @@ function repoStatusTable({ repoStatus }) {
         <td data-label="Name">
           <span><a href="/elements/${listItem.name.toLowerCase().trim().split(' ').join('-')}">${listItem.name}</a>
             ${listItem.overallStatus !== 'Available' ?
-            `<rh-tag color="${STATUS_LEGEND[listItem.overallStatus].color}" variant="${STATUS_LEGEND[listItem.overallStatus].variant}">${listItem.overallStatus}${STATUS_LEGEND[listItem.overallStatus].icon}</rh-tag>` : ''}</span>
+            `<rh-tag color="${STATUS_LEGEND[listItem.overallStatus].color}" variant="${STATUS_LEGEND[listItem.overallStatus].variant}" icon="${STATUS_LEGEND[listItem.overallStatus]['iconName']}">${listItem.overallStatus}</rh-tag>` : ''}</span>
         </td>${listItem.libraries.map(lib => html`
         <td data-label="${lib.name}">
           <span>
-            <rh-tag color=${STATUS_LEGEND[lib.status].color} variant=${STATUS_LEGEND[lib.status].variant}>
-              ${lib.status}${STATUS_LEGEND[lib.status].icon.trim()}
+            <rh-tag color="${STATUS_LEGEND[lib.status].color}" variant="${STATUS_LEGEND[lib.status].variant}" icon="${STATUS_LEGEND[lib.status]['iconName']}">
+              ${lib.status}
             </rh-tag>
           </span>
         </td>`).join('\n').trim()}
@@ -202,8 +210,8 @@ function repoStatusChecklist({ repoStatus, heading = 'Status checklist', level =
         <td data-label="Property">${listItem.name}</td>
         <td data-label="Status">
           <span>
-            <rh-tag color=${STATUS_LEGEND[listItem.status].color} variant=${STATUS_LEGEND[listItem.status].variant}>
-              ${listItem.status}${STATUS_LEGEND[listItem.status].icon.trim()}
+            <rh-tag color="${STATUS_LEGEND[listItem.status].color}" variant="${STATUS_LEGEND[listItem.status].variant}" icon="${STATUS_LEGEND[listItem.status]['iconName']}">
+              ${listItem.status}
             </rh-tag>
           </span>
         </td>
