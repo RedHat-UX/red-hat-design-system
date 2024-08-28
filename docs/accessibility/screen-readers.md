@@ -85,7 +85,7 @@ Muting audio may be most useful when demonstrating issues in video meetings, so 
 #### Getting started
 
 Start NVDA by opening it in the Start menu, clicking on its icon, or pressing the <kbd>Windows</kbd> key and typing “NVDA” and then Enter.
-When NVDA starts, a welcome dialog will appear. Here, you can specify what kind of keyboard you’re using. If your keyboard has an <kbd>Insert</kbd> key (most full Windows keyboards do), then you can leave “Use CapsLock as an NVDA modifier key” unchecked. The <kbd>Insert</kbd> key will be assigned as your <kbd>NVDA</kbd> modifier key for keyboard shortcuts).
+When NVDA starts, a welcome dialog will appear. Here, you can specify what kind of keyboard you’re using. If your keyboard has an <kbd>Insert</kbd> key (most full Windows keyboards do), then you can leave “Use CapsLock as an NVDA modifier key” unchecked. The <kbd>Insert</kbd> key will be assigned as your <kbd>NVDA</kbd> modifier key for keyboard shortcuts.
 
 If your keyboard does not have an <kbd>Insert</kbd> key (many laptop keyboards do not), you should check the “Use CapsLock…” checkbox. <kbd>CapsLock</kbd> will now be your <kbd>NVDA</kbd> key.
 
