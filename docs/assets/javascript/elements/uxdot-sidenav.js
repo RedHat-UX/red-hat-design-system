@@ -309,10 +309,14 @@ class UxdotSideNavItem extends SSRRoleElement {
 
     a {
       display: block;
-      text-decoration: none;
-      color: var(--rh-color-text-primary-on-light, #151515) !important;
       font-size: var(--rh-font-size-body-text-lg, 1.125rem);
       padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
+    }
+
+    a,
+    ::slotted(a) {
+      text-decoration: none !important;
+      color: var(--rh-color-text-primary-on-light, #151515) !important;
     }
 
     a:hover {
