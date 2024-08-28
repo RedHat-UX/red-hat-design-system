@@ -1,9 +1,11 @@
 :host([color-palette^="dark"]) {
   --context: dark;
+  --rh-color-theme-inverse: var(--rh-color-white, #ffffff);
 }
 
 :host([color-palette^="light"]) {
   --context: light;
+  --rh-color-theme-inverse: var(--rh-color-black, #000000);
 }
 
 :host([color-palette="lightest"]) {
