@@ -79,6 +79,14 @@
         var(--rh-font-weight-body-text-medium, 500)
       ) !important;
   margin-block-start: var(--rh-space-lg, 16px);
+  background-color: var(--_header-bg, transparent);
+}
+
+:is(#container, #container.light, #container.lighter, #container.lightest) #header {
+  --_header-bg: var(--rh-card-header-background-on-light, transparent);
+}
+:is(#container.dark, #container.darker, #container.darkest) #header {
+  --_header-bg: var(--rh-card-header-background-on-dark, transparent);
 }
 
 #body {
