@@ -194,3 +194,27 @@ One of VoiceOver’s most powerful tools is the Rotor. The Rotor is a virtual di
 Turn the rotor on by placing two fingers on your screen (e.g., thumb and forefinger) and twisting them clockwise or counterclockwise (like turning a dial). VoiceOver will announce the currently-selected category as you twist. For example, twist until you hear “Headings.” If you now swipe up and down on the page, VoiceOver will move from heading to heading, and you can then swipe right and left to have the content around that heading read to you.
 
 The Rotor also includes an option for setting VoiceOver’s speaking rate, if you’d like to adjust that setting.
+
+### TalkBack (Android)
+
+- TalkBack is included with Android.
+- Commonly paired with: Chrome
+- [Gesture shortcuts](https://dequeuniversity.com/screenreaders/talkback-shortcuts) (from Deque)
+
+#### Getting started
+
+There are several ways to start and stop TalkBack for Android:
+
+- Toggle Talkback by pressing and holding both the volume up and volume down buttons simultaneously for a few seconds.
+- If you have Google Assistant enabled, you can say, “Turn TalkBack on/off.”
+- Go to Settings → Accessibility → TalkBack and select or deselect the “Use TalkBack” option. (This is also where you can adjust your screen reader preferences.)
+
+#### Bonus tips
+
+##### Using reading controls
+
+Similar to iOS’s Rotor, Talkback’s reading controls let you navigate by categories like headings, links, or words. To change the current reading controls selection, quickly swipe up and then down (or vice versa) until TalkBack announces the category you want to use.
+
+Once you’re selected a category, swipe up or down to navigate the page by that category, and then right or left to navigate content adjacent to the current heading, link, or whatever else you’ve navigated to.
+
+TalkBack’s speaking rate can also be adjusted within reading controls.
