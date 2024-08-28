@@ -9,7 +9,7 @@ importElements:
 ---
 
 <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
-<link rel="stylesheet" href=" /assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
+<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
 
 <style>
   rh-tile {
