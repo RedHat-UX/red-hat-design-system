@@ -164,3 +164,8 @@ Within the settings app, you can indicate whether you are using a full or laptop
 Once you have the settings how you like them, you can just type `orca` in a terminal to start the screen reader in subsequent sessions. To stop Orca, press <kbd>Ctrl-C</kbd> in the same terminal window in which you started it. Or you can use the keyboard shortcut <kbd>Windows-Alt-S</kbd> (or the equivalent keys on your keyboard, like <kbd>Command-Opt-S</kbd> on a Mac) to toggle Orca on and off.
 
 **Note:** If you have a web browser running when you start Orca, you must restart it before the screen reader will work properly with it.
+
+## Mobile screen readers
+
+On mobile devices, you will use touchscreen gestures and taps instead of a keyboard to navigate the page and activate interactive elements.
+For basic navigation, you can swipe right, left, up, and down with one finger to move forward and backward through the page, and then double-tap to activate form controls and links. Each platform has many other gestures for more advanced navigation. View the linked gesture shortcuts pages within each section for more guidance.
