@@ -18,7 +18,7 @@ const isWatch =
 
 const isLocal = !(process.env.CI || process.env.DEPLOY_URL);
 
-/** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
+/** @param {import('@11ty/eleventy').UserConfig} eleventyConfig */
 module.exports = function(eleventyConfig) {
   eleventyConfig.setQuietMode(true);
 
@@ -83,6 +83,7 @@ module.exports = function(eleventyConfig) {
     nodemodulesPublicPath: '/assets/packages',
     manualImportMap: {
       imports: {
+        'lit/': '/assets/packages/lit/',
         '@rhds/tokens': '/assets/packages/@rhds/tokens/js/tokens.js',
         '@rhds/tokens/': '/assets/packages/@rhds/tokens/js/',
         '@rhds/elements/lib/': '/assets/packages/@rhds/elements/lib/',
@@ -124,6 +125,8 @@ module.exports = function(eleventyConfig) {
       '@webcomponents/template-shadowroot/template-shadowroot.js',
       'lit',
       'lit-element',
+      'lit/decorators/custom-element.js',
+      'lit/decorators/property.js',
       'lit/directives/class-map.js',
       'lit/directives/if-defined.js',
       'lit/directives/repeat.js',

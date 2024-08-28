@@ -8,6 +8,10 @@ node_modules
 _site
 docs/pfe.min*
 docs/assets/playgrounds/
+docs/assets/javascript/elements/uxdot-example.js
+docs/assets/javascript/elements/uxdot-pattern.js
+docs/assets/javascript/elements/*.js.map
+docs/assets/javascript/elements/*.d.ts
 docs/_data/playgrounds.json
 
 # Build artifacts
