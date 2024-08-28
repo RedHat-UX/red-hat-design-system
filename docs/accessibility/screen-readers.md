@@ -126,7 +126,7 @@ To customize your JAWS settings, use its system tray menu. You can press <kbd>In
 
 Note: If you have a web browser running when you start JAWS, you may need to restart it before the screen reader will work properly with it.
 
-To quit JAWS, press <kbd>JAWS-F4<kbd>. If this keypress combination is unavailable (e.g., you don’t have function keys), you can quit JAWS and access settings via its system tray icon.
+To quit JAWS, press <kbd>JAWS-F4</kbd>. If this keypress combination is unavailable (e.g., you don’t have function keys), you can quit JAWS and access settings via its system tray icon.
 
 #### Bonus tips
 
@@ -135,3 +135,16 @@ To quit JAWS, press <kbd>JAWS-F4<kbd>. If this keypress combination is unavailab
 JAWS has a text viewer that appears at the top of the screen and reflects much (though not all) of what is spoken. If it is not running by default on your machine, you can enable it via the JAWS system tray menu.
 
 First open the system tray menu with your mouse or via keyboard shortcuts (<kbd>Insert-J</kbd> or <kbd>CapsLock-Shift-Ctrl-J</kbd>). Then press <kbd>U</kbd> to open the utilities submenu and <kbd>V</kbd> to open the text viewer options. Select “Show Text Viewer” and press Enter to toggle it. Settings for the text viewer can also be opened via this same submenu.
+
+### Narrator (Windows)
+
+- Narrator is included with Windows.
+- Commonly paired with: Edge
+- [Keyboard shortcuts](https://dequeuniversity.com/screenreaders/narrator-keyboard-shortcuts) (from Deque)
+
+#### Getting started
+
+To start and stop Narrator, press <kbd>Windows-Ctrl-Enter</kbd> on your keyboard. Starting Narrator via this shortcut also opens the Narrator dashboard, which includes usage guides and settings.
+
+<kbd>Insert</kbd> and <kbd>CapsLock</kbd> can both be used as Narrator modifier keys. To enable CapsLock as a modifier, press that key twice in quick succession.
+To open Narrator settings when the dashboard is closed, press <kbd>Windows-Ctrl-N</kbd>.
