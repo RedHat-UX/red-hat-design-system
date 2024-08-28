@@ -52,8 +52,3 @@ uxdot-sidenav-dropdown > details > summary:after {
 uxdot-sidenav-dropdown > details[open] > summary:after {
   transform: rotate(135deg);
 }
-
-uxdot-sidenav-item > a {
-  text-decoration: none;
-  color: var(--rh-color-text-primary-on-light, #151515) !important;
-}
