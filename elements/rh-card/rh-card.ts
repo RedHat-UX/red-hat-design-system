@@ -105,7 +105,8 @@ export class RhCard extends LitElement {
     return html`
      <div id="container"
           part="container"
-          class="on ${classMap({
+          class="${classMap({
+            on: true,
             [on]: !!on,
             [computedPalette]: !!computedPalette,
             [variant]: !!variant,
