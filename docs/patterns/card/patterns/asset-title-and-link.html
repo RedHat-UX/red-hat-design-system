@@ -1,0 +1,46 @@
+<rh-card class="example-asset-title-and-link">
+  <svg slot="header"
+       viewBox="0 0 296 171"
+       style="border: 1px dashed var(--rh-color-border-interactive-on-light, #0066cc);">
+    <rect fill="rgba(0 102 204 / 0.10)" width="296" height="171"></rect>
+  </svg>
+  <h4>
+    <svg class="fpo-icon"
+         viewBox="0 0 16 16"
+         style="width: 1.5em;
+                border: 1px dashed var(--rh-color-border-interactive-on-light, #0066cc);">
+      <rect fill="rgba(0 102 204 / 0.10)" width="16" height="16"></rect>
+    </svg>
+    <span>Title, Lg</span>
+  </h4>
+  <a href="#">Lorem ipsum dolor sit amet consectetur adipiscing elit</a>
+</rh-card>
+
+<style>
+  .example-asset-title-and-link {
+    width: 360px;
+    --rh-card-header-background-on-light:
+      var(--rh-color-surface-lighter,
+        var(--rh-color-gray-10,#f2f2f2));
+    --rh-card-header-background-on-dark:
+      var(--rh-color-surface-dark,
+        var(--rh-color-gray-70, #383838));
+
+    &::part(header) {
+      margin: 0;
+      padding-block-start: var(--rh-space-2xl, 32px);
+      padding-inline: var(--rh-space-2xl, 32px);
+    }
+
+    & h4 {
+      margin-block: 0 var(--rh-space-lg, 16px);
+      display: flex;
+      gap: var(--rh-space-lg, 16px);
+      font-weight: var(--rh-font-weight-heading-regular, 300);
+      font-size: var(--rh-font-size-body-text-md, 1rem);
+      font-family: var(--rh-font-family-body-text);
+      line-height: var(--rh-line-height-body-text, 1.5);
+      text-transform: uppercase; /* deprecated? */
+    }
+  }
+</style>

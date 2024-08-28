@@ -23,8 +23,8 @@ importElements:
   import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
 </script>
 
-<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
-<link rel="stylesheet" href="{{ '/styles/samp.css' | url }}">
+<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
+<link rel="stylesheet" href="/styles/samp.css">
 
 <style>
   rh-card {
@@ -54,8 +54,20 @@ importElements:
 Use to display that an asset can be downloaded. An icon and label group or 
 text may be used to describe the asset.
 
-{% include './patterns/asset.html' %}
+### Text and CTA
+{% uxdotPattern %}
+{% include './patterns/asset-text-and-cta.html' %}
+{% enduxdotPattern %}
 
+### Title and Link
+{% uxdotPattern %}
+{% include './patterns/asset-title-and-link.html' %}
+{% enduxdotPattern %}
+
+### Title and Link - Top
+{% uxdotPattern %}
+{% include './patterns/asset-title-and-link-top.html' %}
+{% enduxdotPattern %}
 
 ## Avatars card
 
