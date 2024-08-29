@@ -16,7 +16,7 @@ This page provides some quick guidance for starting, stopping, and changing the 
 When testing with screen readers, our goal is to verify that an assistive tech user will have an experience equivalent to that of any other user. Tests may include the following:
 
 1. Can you use and understand the purpose of all interactive elements on the page?
-2. Can you accomplish all the same tasks with and without assistive tech (e.g., successfully submitting a form, adding items to a cart, etc.)?
+2. Can you accomplish all the same tasks with and without assistive tech (e.g. navigating the site, submitting forms, adding items to a cart, etc.)?
 3. When page contents are read, are you presented with all the meaningful info you would expect as a visual user? (This includes status updates on dynamic pages.)
 
 ### Which browser should I use with my screen reader?
@@ -47,30 +47,26 @@ Each screen reader also has its own set of keyboard shortcuts to navigate and re
 - Commonly paired with: Safari
 - [Keyboard shortcuts (from Deque)](https://dequeuniversity.com/screenreaders/voiceover-keyboard-shortcuts)
 
-#### Getting started
-
-##### Setting up your Mac and Safari
+#### Setting up your Mac and Safari
 
 Before testing with VoiceOver, you may first need to enable keyboard navigation—for both your Mac and for Safari.
 
 To turn on keyboard navigation for your Mac, first go to the Keyboard section in System Settings (or System Preferences in MacOS versions before MacOS 13 Ventura).
-For Ventura and later Macs, turn on the “Keyboard navigation” switch within the Keyboard section. For pre-Ventura Macs, enter the Shortcuts tab panel in the Keyboard section and check the “Use keyboard navigation to move focus between controls” checkbox.
+For Ventura and later Macs, turn on the “Keyboard navigation” switch within this section. For pre-Ventura Macs, enter the Shortcuts tab panel in the Keyboard section and check the “Use keyboard navigation to move focus between controls” checkbox.
 
-You may now also need the additional step of turning on tab navigation in Safari’s application settings. To do so, open Safari’s Preferences/Settings window, enter the Advanced tab, and check the “Press Tab to highlight each item on a webpage” checkbox.
+In Safari, you may now also need the additional step of enabling its tab navigation. To do so, open Safari’s Preferences/Settings window, enter the Advanced tab, and check the “Press Tab to highlight each item on a webpage” checkbox.
 
-##### Starting VoiceOver
+#### Getting started with VoiceOver
 
 To toggle VoiceOver on and off, press <kbd>Command-F5</kbd>. Or, if you have a Touch ID keyboard, hold down <kbd>Command</kbd> and quickly press the <kbd>Touch ID</kbd> key three times.
 
 To customize VoiceOver settings (e.g., the voice), open the VoiceOver Utility on your computer (e.g., via <kbd>Command-Space</kbd> and then typing “voiceover utility”).
 
-#### Bonus tips
-
-##### Using the transcript window and muting VoiceOver
+#### Using the transcript window and muting VoiceOver
 
 To reinforce what you’re hearing with visual feedback, VoiceOver’s transcript window reflects the content currently being read. If VoiceOver's audio is too distracting (e.g., maybe you're presenting it in a meeting and want to hear the other participants), you can even mute it via the “Mute speech” checkbox in the VoiceOver Utility’s Speech tab. The transcript window will continue to appear and display content as if it were being read aloud.
 
-When speech is muted, the shortcut for continually reading page content (<kbd>Ctrl-Opt-A</kbd>) will be disabled, though you can still use the <kbd>↑ → ↓ ←</kbd> keys to move through and test non-interactive content.
+While speech is muted, the shortcut for continually reading page content (<kbd>Ctrl-Opt-A</kbd>) will be deactivated, though you can still use the <kbd>↑ → ↓ ←</kbd> keys to move through and test non-interactive content.
 
 All that said, while transcript windows can be helpful, there are cases where the audio may not match a transcript exactly. So, when testing, confirm any issues with the audio on.
 
@@ -91,9 +87,7 @@ To customize NVDA’s settings, press <kbd>NVDA-N</kbd>. This will bring up an o
 
 To quit NVDA, press <kbd>NVDA-Q</kbd>. You can also quit NVDA and access settings via its system tray icon.
 
-#### Bonus tips
-
-##### Displaying the speech viewer
+#### Displaying the speech viewer
 
 Like MacOS VoiceOver, NVDA offers an option for using the screen reader visually. This speech viewer actually keeps a running log of all content read during a session, for quick reference.
 
@@ -101,7 +95,7 @@ To open the speech viewer, press <kbd>NVDA-N</kbd> to open the app’s settings.
 
 As with VoiceOver’s transcript window, there are cases where audio may not match the speech viewer’s log exactly. So, when testing, confirm any issues with audio on.
 
-##### Creating a portable copy
+#### Creating a portable copy
 
 One handy thing about NVDA is that you can create a portable copy to place on a flash drive and use on any Windows computer. This can be useful if you need to demonstrate something on someone else’s machine, or if you yourself switch computers.
 
@@ -126,9 +120,7 @@ Note: If you have a web browser running when you start JAWS, you may need to res
 
 To quit JAWS, press <kbd>JAWS-F4</kbd>. If this keypress combination is unavailable (e.g., you don’t have function keys), you can quit JAWS and access settings via its system tray icon.
 
-#### Bonus tips
-
-##### JAWS text viewer
+#### Using the JAWS text viewer
 
 JAWS has a text viewer that appears at the top of the screen and reflects much (though not all) of what is spoken. If it is not running by default on your machine, you can enable it via the JAWS system tray menu.
 
@@ -183,9 +175,7 @@ There are several ways to start and stop VoiceOver in iOS:
 - If you have Siri enabled, you can say, “Turn VoiceOver on/off.”
 - You can toggle it in your device’s Settings → Accessibility → VoiceOver section. (This is also where you can customize VoiceOver to your preferences.)
 
-#### Bonus tips
-
-##### Using the Rotor
+#### Using the Rotor
 
 One of VoiceOver’s most powerful tools is the Rotor. The Rotor is a virtual dial you can turn to let you navigate by categories like lines, words, links, form elements, headings, and so on.
 
@@ -207,9 +197,7 @@ There are several ways to start and stop TalkBack for Android:
 - If you have Google Assistant enabled, you can say, “Turn TalkBack on/off.”
 - Go to Settings → Accessibility → TalkBack and select or deselect the “Use TalkBack” option. (This is also where you can adjust your screen reader preferences.)
 
-#### Bonus tips
-
-##### Using reading controls
+#### Using reading controls
 
 Similar to iOS’s Rotor, Talkback’s reading controls let you navigate by categories like headings, links, or words. To change the current reading controls selection, quickly swipe up and then down (or vice versa) until TalkBack announces the category you want to use.
 
