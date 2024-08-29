@@ -9,6 +9,10 @@
   --rh-color-icon-secondary: var(--rh-color-icon-secondary-on-dark, #ffffff);
   --rh-color-text-primary: var(--rh-color-text-primary-on-dark, #ffffff);
   --rh-color-text-secondary: var(--rh-color-text-secondary-on-dark, #c7c7c7);
+  --rh-color-interactive-blue-normal: var(--rh-color-interactive-blue-lighter);
+  --rh-color-interactive-blue-emphasized: var(--rh-color-interactive-blue-lightest);
+  --rh-color-interactive-purple-normal: var(--rh-color-interactive-purple-lighter);
+  --rh-color-interactive-purple-emphasized: var(--rh-color-interactive-purple-lightest);
 }
 
 .on.light {
@@ -22,4 +26,9 @@
   --rh-color-icon-secondary: var(--rh-color-icon-secondary-on-light, #151515);
   --rh-color-text-primary: var(--rh-color-text-primary-on-light, #151515);
   --rh-color-text-secondary: var(--rh-color-text-secondary-on-light, #4d4d4d);
+  --rh-color-interactive-blue-normal: var(--rh-color-interactive-blue-darker);
+  --rh-color-interactive-blue-emphasized: var(--rh-color-interactive-blue-darkest);
+  --rh-color-interactive-purple-normal: var(--rh-color-interactive-purple-darker);
+  --rh-color-interactive-purple-emphasized: var(--rh-color-interactive-purple-darkest);
 }
+
