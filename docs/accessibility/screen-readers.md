@@ -68,13 +68,11 @@ To customize VoiceOver settings (e.g., the voice), open the VoiceOver Utility on
 
 ##### Using the transcript window and muting VoiceOver
 
-To reinforce what you’re hearing with visual feedback, VoiceOver’s transcript window reflects the content currently being read. If you find listening to VoiceOver too distracting, you can even mute its audio via the “Mute speech” checkbox in the VoiceOver Utility’s Speech tab. The transcript window will continue to appear and display content as if it were being read aloud.
+To reinforce what you’re hearing with visual feedback, VoiceOver’s transcript window reflects the content currently being read. If VoiceOver's audio is too distracting (e.g., maybe you're presenting it in a meeting and want to hear the other participants), you can even mute it via the “Mute speech” checkbox in the VoiceOver Utility’s Speech tab. The transcript window will continue to appear and display content as if it were being read aloud.
 
 When speech is muted, the shortcut for continually reading page content (<kbd>Ctrl-Opt-A</kbd>) will be disabled, though you can still use the <kbd>↑ → ↓ ←</kbd> keys to move through and test non-interactive content.
 
-All that said, while transcript windows can be helpful, there are cases where the audio may not match a transcript exactly. So, when testing, you should confirm any issues with the audio on.
-
-Muting audio may be most useful when demonstrating issues in video meetings, so you can still hear the other participants as you present.
+All that said, while transcript windows can be helpful, there are cases where the audio may not match a transcript exactly. So, when testing, confirm any issues with the audio on.
 
 ### NVDA (Windows)
 
