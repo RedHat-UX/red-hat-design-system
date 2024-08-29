@@ -27,19 +27,16 @@ export default pfeDevServerConfig({
   tsconfig: 'tsconfig.json',
   litcssOptions,
   importMapOptions: {
-    providers: {
-      '@rhds/icons': 'nodemodules',
-      '@patternfly/elements': 'nodemodules',
-      '@patternfly/pfe-tools': 'nodemodules',
-      '@patternfly/pfe-core': 'nodemodules',
-    },
     inputMap: {
       imports: {
         '@rhds/icons': './node_modules/@rhds/icons/icons.js',
         ...await resolveLocal('./lib/**/*.js', spec => [`@rhds/elements/${spec}`, `./${spec}`]),
         ...await resolveLocal('./elements/**/*.js', x => [`@rhds/elements/${x.replace('elements/', '')}`, `./${x}`]),
-        ...await getRhdsIconNodemodulesImports(import.meta.url),
+        // ...await getRhdsIconNodemodulesImports(import.meta.url),
       },
+    },
+    resolutions: {
+      '@rhds/icons': './node_modules/@rhds/icons',
     },
   },
   middleware: [

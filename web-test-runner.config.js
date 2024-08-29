@@ -6,11 +6,6 @@ export default pfeTestRunnerConfig({
   tsconfig: 'tsconfig.json',
   files: ['elements/**/*.spec.ts'],
   importMapOptions: {
-    providers: {
-      '@rhds/icons': 'nodemodules',
-      '@patternfly/pfe-tools': 'nodemodules',
-      '@patternfly/pfe-core': 'nodemodules',
-    },
   },
 });
 
