@@ -1,10 +1,10 @@
 ---
-title: Screen reader basics
+title: Screen reader testing basics
 sidenavTitle: Screen reader basics
 permalink: /accessibility/screen-readers/index.html
 tags:
   - accessibility
-order: 55
+order: 56
 ---
 
 ## General info
@@ -62,7 +62,7 @@ You may now also need the additional step of turning on tab navigation in Safari
 
 To toggle VoiceOver on and off, press <kbd>Command-F5</kbd>. Or, if you have a Touch ID keyboard, hold down <kbd>Command</kbd> and quickly press the <kbd>Touch ID</kbd> key three times.
 
-To customize VoiceOver settings (e.g., the voice), open the VoiceOver Utility on your computer (<kbd>Command-Space</kbd>, and then type “voiceover utility”).
+To customize VoiceOver settings (e.g., the voice), open the VoiceOver Utility on your computer (e.g., via <kbd>Command-Space</kbd> and then typing “voiceover utility”).
 
 #### Bonus tips
 
