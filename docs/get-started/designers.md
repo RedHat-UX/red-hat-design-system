@@ -243,9 +243,7 @@ Use these resources to help you stay aligned to our brand and design system whil
 ## Frequently asked questions
 
 <rh-accordion>
-  <rh-accordion-header>
-    <h4>How can I get better at Figma?</h4>
-  </rh-accordion-header>
+  <h3><rh-accordion-header>How can I get better at Figma?</rh-accordion-header></h3>
   <rh-accordion-panel>
     <p>Check out these resources if you want to improve your Figma skills.</p>
     <ul>
@@ -254,27 +252,19 @@ Use these resources to help you stay aligned to our brand and design system whil
       <li>If all else fails, find answers in the <a href="https://help.figma.com/hc/en-us">Figma Help Center</a></li>
     </ul>
   </rh-accordion-panel>
-  <rh-accordion-header>
-    <h4>How do foundational styles, elements, and patterns get updated?</h4>
-  </rh-accordion-header>
+  <h3><rh-accordion-header>How do foundational styles, elements, and patterns get updated?</rh-accordion-header></h3>
   <rh-accordion-panel>
     <p>The design system team meets regularly to discuss work in progress and new issues. Updates are assigned a priority in our GitHub backlog. Once a priority is set and a schedule is agreed upon, design or development work begins. When the work is completed, the Figma libraries, documentation website, and repos are all updated. All updates are tracked in our <a href="https://github.com/RedHat-UX/red-hat-design-system/releases">changelog</a> and listed on the <a href="https://ux.redhat.com/release-notes/">Release notes</a> page. Larger updates are sometimes communicated via a quarterly newsletter e-mail.</p>
   </rh-accordion-panel>
-  <rh-accordion-header>
-    <h4>What if an element or pattern I need is missing?</h4>
-  </rh-accordion-header>
+  <h3><rh-accordion-header>What if an element or pattern I need is missing?</rh-accordion-header></h3>
   <rh-accordion-panel>
     <p>If you think something is missing or you cannot find something, connect with us on Slack or <a href="https://github.com/orgs/RedHat-UX/discussions/new/choose">create a discussion</a>.</p>
   </rh-accordion-panel>
-  <rh-accordion-header>
-    <h4>How can I contribute an idea?</h4>
-  </rh-accordion-header>
+  <h3><rh-accordion-header>How can I contribute an idea?</rh-accordion-header></h3>
   <rh-accordion-panel>
     <p>If you have feedback or you would like to contribute an idea, <a href="https://github.com/orgs/RedHat-UX/discussions/new/choose">create a discussion</a></p>
   </rh-accordion-panel>
-  <rh-accordion-header>
-    <h4>How can I report a bug?</h4>
-  </rh-accordion-header>
+  <h3><rh-accordion-header>How can I report a bug?</rh-accordion-header></h3>
   <rh-accordion-panel>
     <p>If you find a bug, <a href="https://github.com/RedHat-UX/red-hat-design-system/issues/new/choose">create an issue</a> and describe it as thoroughly as possible. If something is broken, e-mail <a href="mailto:design-system@redhat.com" style="white-space: nowrap;">design-system@redhat.com</a> or connect with us on Slack and we will investigate.</p>
   </rh-accordion-panel>    
