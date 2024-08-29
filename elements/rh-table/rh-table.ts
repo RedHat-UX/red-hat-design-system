@@ -60,6 +60,11 @@ export class RhTable extends LitElement {
     return this.querySelectorAll('tbody > tr') as NodeListOf<HTMLTableRowElement> | undefined;
   }
 
+  get #colHeaders(): NodeListOf<HTMLTableCellElement> | undefined {
+    return this.querySelectorAll(
+      'thead > tr > th') as NodeListOf<HTMLTableCellElement> | undefined;
+  }
+
   get #summary(): HTMLElement | undefined {
     return this.querySelector('[slot="summary"]') as HTMLElement | undefined;
   }
@@ -137,6 +142,19 @@ export class RhTable extends LitElement {
   #init() {
     if (this.#table && this.#summary) {
       this.#table.setAttribute('aria-describedby', 'summary');
+    }
+
+    /* Auto-assign `data-label` attributes based on column headers */
+    if (this.#table?.tHead && this.#colHeaders) {
+      this.#rows.forEach((row, index) => {
+        const cells = row.querySelectorAll(':is(td,th)');
+        cells.forEach((cell, index) => {
+          if (!cell.hasAttribute('data-label')) {
+            const colHeader = this.#colHeaders[index].innerText;
+            cell.setAttribute('data-label', colHeader);
+          }
+        });
+      });
     }
   }
 
