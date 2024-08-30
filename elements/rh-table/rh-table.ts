@@ -164,7 +164,6 @@ export class RhTable extends LitElement {
         }
       }
     }
-    }
   }
 
   #onSlotChange() {
