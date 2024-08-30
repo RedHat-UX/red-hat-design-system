@@ -145,16 +145,25 @@ export class RhTable extends LitElement {
     }
 
     /* Auto-assign `data-label` attributes based on column headers */
-    if (this.#table?.tHead && this.#colHeaders) {
-      this.#rows.forEach((row, index) => {
-        const cells = row.querySelectorAll(':is(td,th)');
-        cells.forEach((cell, index) => {
+    if (this.#table?.tHead && this.#colHeaders && this.#rows) {
+      for (const row of this.#rows) {
+        if (!row) {
+          continue;
+        }
+
+        const cells = row.querySelectorAll(':is(td, th)');
+        let headerIndex = 0;
+
+        for (const cell of cells) {
           if (!cell.hasAttribute('data-label')) {
-            const colHeader = this.#colHeaders[index].innerText;
+            const colHeader = this.#colHeaders[headerIndex]?.innerText;
             cell.setAttribute('data-label', colHeader);
           }
-        });
-      });
+
+          headerIndex++;
+        }
+      }
+    }
     }
   }
 
