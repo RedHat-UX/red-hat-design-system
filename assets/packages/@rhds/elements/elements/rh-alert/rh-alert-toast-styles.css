@@ -1,6 +1,6 @@
 .rh-alert-toast-group {
   position: fixed;
-  z-index: 1;
+  z-index: 1000;
   inset-block-start: var(--rh-space-lg, 16px);
   inset-inline-end: var(--rh-space-lg, 16px);
   padding-block-end: var(--rh-space-4xl, 64px);

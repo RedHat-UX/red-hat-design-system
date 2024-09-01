@@ -1,0 +1,8 @@
+import{noChange as R}from"../lit-html.js";import{directive as e,Directive as i,PartType as t}from"../directive.js";import{getCommittedValue as ut,setChildPartValue as ct,insertPart as at,removePart as pt,setCommittedValue as dt}from"../directive-helpers.js";
+/**
+ * @license
+ * Copyright 2017 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+const Jt=(e,s,t)=>{const r=new Map;for(let l=s;l<=t;l++)r.set(e[l],l);return r},Qt=e(class extends i{constructor(e){if(super(e),e.type!==t.CHILD)throw Error("repeat() can only be used in text expressions")}dt(e,s,t){let r;void 0===t?t=s:void 0!==s&&(r=s);const l=[],o=[];let i=0;for(const s of e)l[i]=r?r(s,i):i,o[i]=t(s,i),i++;return{values:o,keys:l}}render(e,s,t){return this.dt(e,s,t).values}update(e,[s,t,r]){const l=ut(e),{values:o,keys:i}=this.dt(s,t,r);if(!Array.isArray(l))return this.ut=i,o;const n=this.ut??=[],f=[];let u,c,d=0,p=l.length-1,a=0,h=o.length-1;for(;d<=p&&a<=h;)if(null===l[d])d++;else if(null===l[p])p--;else if(n[d]===i[a])f[a]=ct(l[d],o[a]),d++,a++;else if(n[p]===i[h])f[h]=ct(l[p],o[h]),p--,h--;else if(n[d]===i[h])f[h]=ct(l[d],o[h]),at(e,f[h+1],l[d]),d++,h--;else if(n[p]===i[a])f[a]=ct(l[p],o[a]),at(e,l[d],l[p]),p--,a++;else if(void 0===u&&(u=Jt(i,a,h),c=Jt(n,d,p)),u.has(n[d]))if(u.has(n[p])){const s=c.get(i[a]),t=void 0!==s?l[s]:null;if(null===t){const s=at(e,l[d]);ct(s,o[a]),f[a]=s}else f[a]=ct(t,o[a]),at(e,l[d],t),l[s]=null;a++}else pt(l[p]),p--;else pt(l[d]),d++;for(;a<=h;){const s=at(e,f[h+1]);ct(s,o[a]),f[a++]=s}for(;d<=p;){const e=l[d++];null!==e&&pt(e)}return this.ut=i,dt(e,f),R}});export{Qt as repeat};
+//# sourceMappingURL=repeat.js.map

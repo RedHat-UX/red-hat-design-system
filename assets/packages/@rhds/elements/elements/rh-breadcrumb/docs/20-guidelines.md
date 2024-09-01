@@ -55,14 +55,14 @@ Size and spacing remain consistent for breadcrumbs at all screen sizes. The brea
 Breadcrumbs should not be used as the main navigation.
 
 <div class="grid sm-two-columns">
-  <uxdot-best-practice do>
+  <uxdot-best-practice variant="do">
     <uxdot-example slot="image" no-border variant="full" alignment="left">
       <img src="{{ '../breadcrumb-when-not-to-use-do.svg' | url }}" alt="breadcrumbs below the primary navigation">
     </uxdot-example>
     <p>Do use breadcrumbs to supplement the primary or secondary navigation element.</p>
   </uxdot-best-practice>
 
-  <uxdot-best-practice dont>
+  <uxdot-best-practice variant="dont">
     <uxdot-example slot="image" no-border variant="full" alignment="left">
       <img src="{{ '../breadcrumb-when-not-to-use-dont.svg' | url }}" alt="breadcrumbs only with placeholder page text">
     </uxdot-example>
@@ -73,14 +73,14 @@ Breadcrumbs should not be used as the main navigation.
 They should also not be used if there is only one level in the page hierarchy or if the current page is at the top of the page hierarchy.
 
 <div class="grid sm-two-columns">
-  <uxdot-best-practice do>
+  <uxdot-best-practice variant="do">
     <uxdot-example slot="image" no-border variant="full" alignment="left">
       <img src="{{ '../breadcrumb-when-not-to-use-do-2.svg' | url }}" alt="one linked breadcrumb and one current page breadcrumb">
     </uxdot-example>
     <p>Do use breadcrumbs if there are at least two levels in a page hierarchy.</p>
   </uxdot-best-practice>
 
-  <uxdot-best-practice dont>
+  <uxdot-best-practice variant="dont">
     <uxdot-example slot="image" no-border variant="full" alignment="left">
       <img src="{{ '../breadcrumb-when-not-to-use-dont-2.svg' | url }}" alt="one current page breadcrumb only">
     </uxdot-example>
@@ -93,14 +93,14 @@ They should also not be used if there is only one level in the page hierarchy or
 Breadcrumbs should be placed consistently above the page title and below the primary (and secondary nav, if it’s used). Any other location on the page is not a common spot for breadcrumbs and is thus less easily found and recognized as breadcrumbs.
 
 <div class="grid sm-two-columns">
-  <uxdot-best-practice do>
+  <uxdot-best-practice variant="do">
     <uxdot-example slot="image" no-border variant="full" alignment="left">
       <img src="{{ '../breadcrumb-consistent-placement-do.svg' | url }}" alt="breadcrumbs placed below mobile navigation">
     </uxdot-example>
     <p>Do place breadcrumbs in a familiar and consistent place for this type of navigation element.</p>
   </uxdot-best-practice>
 
-  <uxdot-best-practice dont>
+  <uxdot-best-practice variant="dont">
     <uxdot-example slot="image" no-border variant="full" alignment="left">
       <img src="{{ '../breadcrumb-consistent-placement-dont.svg' | url }}" alt="breadcrumbs placed above mobile navigation">
     </uxdot-example>
@@ -113,14 +113,14 @@ Breadcrumbs should be placed consistently above the page title and below the pri
 The page titles used in breadcrumbs should be consistent with what is used in the navigation and on the individual pages. Avoid changing the page titles in order to prevent user confusion.
 
 <div class="grid sm-two-columns">
-  <uxdot-best-practice do>
+  <uxdot-best-practice variant="do">
     <uxdot-example slot="image" no-border variant="full" alignment="left">
       <img src="{{ '../breadcrumb-customizing-link-titles-do.svg' | url }}" alt="Page with the title 'What are cloud services?' and current page breadcrumb that says 'What are cloud services?'">
     </uxdot-example>
     <p>Do keep the same page title in the heading and in breadcrumb navigation.</p>
   </uxdot-best-practice>
 
-  <uxdot-best-practice dont>
+  <uxdot-best-practice variant="dont">
     <uxdot-example slot="image" no-border variant="full" alignment="left">
       <img src="{{ '../breadcrumb-customizing-link-titles-dont.svg' | url }}" alt="Page with the title 'What are cloud services?' and current page breadcrumb that says 'Cloud services'">
     </uxdot-example>

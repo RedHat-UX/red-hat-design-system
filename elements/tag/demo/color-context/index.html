@@ -13,25 +13,30 @@
     <script type="importmap">{
   "imports": {
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
+    "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
     "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
     "@lit/context": "/assets/packages/@lit/context/index.js",
+    "lit/decorators/custom-element.js": "/assets/packages/lit/decorators/custom-element.js",
     "lit-element": "/assets/packages/lit-element/index.js",
-    "lit": "/assets/packages/lit/index.js",
     "lit/static-html.js": "/assets/packages/lit/static-html.js",
+    "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
+    "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
+    "lit/decorators/property.js": "/assets/packages/lit/decorators/property.js",
+    "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
+    "lit": "/assets/packages/lit/index.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
-    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
-    "@rhds/tokens/media.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js",
-    "@rhds/tokens/meta.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.1/core.js",
-    "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
-    "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
-    "@lit-labs/ssr-client/lit-element-hydrate-support.js": "https://ga.jspm.io/npm:@lit-labs/ssr-client@1.1.7/lit-element-hydrate-support.js",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
-    "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.1/core.js",
+    "@rhds/tokens/meta.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js",
+    "@rhds/tokens/media.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
+    "lit/": "/assets/packages/lit/",
+    "lit-html/": "/assets/packages/lit-html/",
+    "@lit-labs/ssr-client/lit-element-hydrate-support.js": "/assets/packages/@lit-labs/ssr-client/lit-element-hydrate-support.js",
     "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
     "@rhds/elements/lib/": "/assets/packages/@rhds/elements/lib/",
     "@rhds/elements/": "/assets/packages/@rhds/elements/elements/",
@@ -43,17 +48,12 @@
     "playground-elements": "https://cdn.jsdelivr.net/npm/playground-elements@0.18.1/+esm"
   },
   "scopes": {
-    "https://ga.jspm.io/": {
-      "lit-html": "https://ga.jspm.io/npm:lit-html@3.2.0/lit-html.js",
-      "lit-html/": "https://ga.jspm.io/npm:lit-html@3.2.0/"
-    },
     "/assets/packages/": {
       "@floating-ui/utils": "https://ga.jspm.io/npm:@floating-ui/utils@0.2.7/dist/floating-ui.utils.mjs",
       "@floating-ui/utils/dom": "https://ga.jspm.io/npm:@floating-ui/utils@0.2.7/dist/floating-ui.utils.dom.mjs",
       "@lit/reactive-element/decorators/": "/assets/packages/@lit/reactive-element/decorators/",
       "lit-element/lit-element.js": "/assets/packages/lit-element/lit-element.js",
-      "lit-html": "https://ga.jspm.io/npm:lit-html@3.2.0/lit-html.js",
-      "lit-html/": "https://ga.jspm.io/npm:lit-html@3.2.0/",
+      "lit-html/": "/assets/packages/lit-html/",
       "lit/": "/assets/packages/lit/"
     }
   }
@@ -70,11 +70,10 @@
       <!--lit-node 0--><span id="container"
             class=" filled red ">
         <slot name="icon" part="icon">
-          <!--lit-node 2--><rh-icon    hidden set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part xygeUsc4cS4=-->
+          <!--lit-node 2--><rh-icon    hidden set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="false"
-           class=" ui isServer "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--lit-part 1iYDcPphr4Y=-->
-        <span part="fallback"><slot></slot></span><!--/lit-part-->
+           class=" ui "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--lit-node 2--><span part="fallback" ><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
         </slot>
@@ -85,11 +84,10 @@
       <!--lit-node 0--><span id="container"
             class=" filled orange ">
         <slot name="icon" part="icon">
-          <!--lit-node 2--><rh-icon    hidden set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part xygeUsc4cS4=-->
+          <!--lit-node 2--><rh-icon    hidden set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="false"
-           class=" ui isServer "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--lit-part 1iYDcPphr4Y=-->
-        <span part="fallback"><slot></slot></span><!--/lit-part-->
+           class=" ui "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--lit-node 2--><span part="fallback" ><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
         </slot>
@@ -100,11 +98,10 @@
       <!--lit-node 0--><span id="container"
             class=" filled green ">
         <slot name="icon" part="icon">
-          <!--lit-node 2--><rh-icon    hidden set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part xygeUsc4cS4=-->
+          <!--lit-node 2--><rh-icon    hidden set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="false"
-           class=" ui isServer "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--lit-part 1iYDcPphr4Y=-->
-        <span part="fallback"><slot></slot></span><!--/lit-part-->
+           class=" ui "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--lit-node 2--><span part="fallback" ><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
         </slot>
@@ -115,11 +112,10 @@
       <!--lit-node 0--><span id="container"
             class=" filled cyan ">
         <slot name="icon" part="icon">
-          <!--lit-node 2--><rh-icon    hidden set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part xygeUsc4cS4=-->
+          <!--lit-node 2--><rh-icon    hidden set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="false"
-           class=" ui isServer "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--lit-part 1iYDcPphr4Y=-->
-        <span part="fallback"><slot></slot></span><!--/lit-part-->
+           class=" ui "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--lit-node 2--><span part="fallback" ><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
         </slot>
@@ -130,11 +126,10 @@
       <!--lit-node 0--><span id="container"
             class=" filled blue ">
         <slot name="icon" part="icon">
-          <!--lit-node 2--><rh-icon    hidden set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part xygeUsc4cS4=-->
+          <!--lit-node 2--><rh-icon    hidden set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="false"
-           class=" ui isServer "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--lit-part 1iYDcPphr4Y=-->
-        <span part="fallback"><slot></slot></span><!--/lit-part-->
+           class=" ui "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--lit-node 2--><span part="fallback" ><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
         </slot>
@@ -145,11 +140,10 @@
       <!--lit-node 0--><span id="container"
             class=" filled purple ">
         <slot name="icon" part="icon">
-          <!--lit-node 2--><rh-icon    hidden set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part xygeUsc4cS4=-->
+          <!--lit-node 2--><rh-icon    hidden set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="false"
-           class=" ui isServer "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--lit-part 1iYDcPphr4Y=-->
-        <span part="fallback"><slot></slot></span><!--/lit-part-->
+           class=" ui "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--lit-node 2--><span part="fallback" ><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
         </slot>
@@ -160,11 +154,10 @@
       <!--lit-node 0--><span id="container"
             class=" filled ">
         <slot name="icon" part="icon">
-          <!--lit-node 2--><rh-icon    hidden set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part xygeUsc4cS4=-->
+          <!--lit-node 2--><rh-icon    hidden set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="false"
-           class=" ui isServer "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--lit-part 1iYDcPphr4Y=-->
-        <span part="fallback"><slot></slot></span><!--/lit-part-->
+           class=" ui "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--lit-node 2--><span part="fallback" ><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
         </slot>
@@ -178,11 +171,10 @@
       <!--lit-node 0--><span id="container"
             class=" outline red ">
         <slot name="icon" part="icon">
-          <!--lit-node 2--><rh-icon    hidden set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part xygeUsc4cS4=-->
+          <!--lit-node 2--><rh-icon    hidden set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="false"
-           class=" ui isServer "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--lit-part 1iYDcPphr4Y=-->
-        <span part="fallback"><slot></slot></span><!--/lit-part-->
+           class=" ui "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--lit-node 2--><span part="fallback" ><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
         </slot>
@@ -193,11 +185,10 @@
       <!--lit-node 0--><span id="container"
             class=" outline orange ">
         <slot name="icon" part="icon">
-          <!--lit-node 2--><rh-icon    hidden set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part xygeUsc4cS4=-->
+          <!--lit-node 2--><rh-icon    hidden set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="false"
-           class=" ui isServer "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--lit-part 1iYDcPphr4Y=-->
-        <span part="fallback"><slot></slot></span><!--/lit-part-->
+           class=" ui "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--lit-node 2--><span part="fallback" ><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
         </slot>
@@ -208,11 +199,10 @@
       <!--lit-node 0--><span id="container"
             class=" outline green ">
         <slot name="icon" part="icon">
-          <!--lit-node 2--><rh-icon    hidden set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part xygeUsc4cS4=-->
+          <!--lit-node 2--><rh-icon    hidden set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="false"
-           class=" ui isServer "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--lit-part 1iYDcPphr4Y=-->
-        <span part="fallback"><slot></slot></span><!--/lit-part-->
+           class=" ui "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--lit-node 2--><span part="fallback" ><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
         </slot>
@@ -223,11 +213,10 @@
       <!--lit-node 0--><span id="container"
             class=" outline cyan ">
         <slot name="icon" part="icon">
-          <!--lit-node 2--><rh-icon    hidden set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part xygeUsc4cS4=-->
+          <!--lit-node 2--><rh-icon    hidden set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="false"
-           class=" ui isServer "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--lit-part 1iYDcPphr4Y=-->
-        <span part="fallback"><slot></slot></span><!--/lit-part-->
+           class=" ui "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--lit-node 2--><span part="fallback" ><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
         </slot>
@@ -238,11 +227,10 @@
       <!--lit-node 0--><span id="container"
             class=" outline blue ">
         <slot name="icon" part="icon">
-          <!--lit-node 2--><rh-icon    hidden set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part xygeUsc4cS4=-->
+          <!--lit-node 2--><rh-icon    hidden set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="false"
-           class=" ui isServer "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--lit-part 1iYDcPphr4Y=-->
-        <span part="fallback"><slot></slot></span><!--/lit-part-->
+           class=" ui "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--lit-node 2--><span part="fallback" ><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
         </slot>
@@ -253,11 +241,10 @@
       <!--lit-node 0--><span id="container"
             class=" outline purple ">
         <slot name="icon" part="icon">
-          <!--lit-node 2--><rh-icon    hidden set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part xygeUsc4cS4=-->
+          <!--lit-node 2--><rh-icon    hidden set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="false"
-           class=" ui isServer "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--lit-part 1iYDcPphr4Y=-->
-        <span part="fallback"><slot></slot></span><!--/lit-part-->
+           class=" ui "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--lit-node 2--><span part="fallback" ><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
         </slot>
@@ -268,11 +255,10 @@
       <!--lit-node 0--><span id="container"
             class=" outline ">
         <slot name="icon" part="icon">
-          <!--lit-node 2--><rh-icon    hidden set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part xygeUsc4cS4=-->
+          <!--lit-node 2--><rh-icon    hidden set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="false"
-           class=" ui isServer "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--lit-part 1iYDcPphr4Y=-->
-        <span part="fallback"><slot></slot></span><!--/lit-part-->
+           class=" ui "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--lit-node 2--><span part="fallback" ><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
         </slot>
@@ -286,10 +272,10 @@
       <!--lit-node 0--><span id="container"
             class=" hasIcon filled red ">
         <slot name="icon" part="icon">
-          <!--lit-node 2--><rh-icon    icon="information" set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part xygeUsc4cS4=-->
+          <!--lit-node 2--><rh-icon    icon="information" set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
-           class=" ui isServer "><!--lit-part asGvHyjg8sg=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 15a1 1 0 0 0-1 1v7a1 1 0 1 0 2 0v-7a1 1 0 0 0-1-1Z"/><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm0 30C8.28 30 2 23.72 2 16S8.28 2 16 2s14 6.28 14 14-6.28 14-14 14Z"/><circle cx="16" cy="10" r="1.5"/></svg><!--/lit-part--><!--lit-part--><!--/lit-part-->
+           class=" ui "><!--lit-part asGvHyjg8sg=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 15a1 1 0 0 0-1 1v7a1 1 0 1 0 2 0v-7a1 1 0 0 0-1-1Z"/><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm0 30C8.28 30 2 23.72 2 16S8.28 2 16 2s14 6.28 14 14-6.28 14-14 14Z"/><circle cx="16" cy="10" r="1.5"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
         </slot>
@@ -300,10 +286,10 @@
       <!--lit-node 0--><span id="container"
             class=" hasIcon filled orange ">
         <slot name="icon" part="icon">
-          <!--lit-node 2--><rh-icon    icon="information" set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part xygeUsc4cS4=-->
+          <!--lit-node 2--><rh-icon    icon="information" set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
-           class=" ui isServer "><!--lit-part asGvHyjg8sg=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 15a1 1 0 0 0-1 1v7a1 1 0 1 0 2 0v-7a1 1 0 0 0-1-1Z"/><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm0 30C8.28 30 2 23.72 2 16S8.28 2 16 2s14 6.28 14 14-6.28 14-14 14Z"/><circle cx="16" cy="10" r="1.5"/></svg><!--/lit-part--><!--lit-part--><!--/lit-part-->
+           class=" ui "><!--lit-part asGvHyjg8sg=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 15a1 1 0 0 0-1 1v7a1 1 0 1 0 2 0v-7a1 1 0 0 0-1-1Z"/><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm0 30C8.28 30 2 23.72 2 16S8.28 2 16 2s14 6.28 14 14-6.28 14-14 14Z"/><circle cx="16" cy="10" r="1.5"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
         </slot>
@@ -314,11 +300,10 @@
       <!--lit-node 0--><span id="container"
             class=" filled green ">
         <slot name="icon" part="icon">
-          <!--lit-node 2--><rh-icon    hidden set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part xygeUsc4cS4=-->
+          <!--lit-node 2--><rh-icon    hidden set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="false"
-           class=" ui isServer "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--lit-part 1iYDcPphr4Y=-->
-        <span part="fallback"><slot></slot></span><!--/lit-part-->
+           class=" ui "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--lit-node 2--><span part="fallback" ><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
         </slot>
@@ -334,10 +319,10 @@
       <!--lit-node 0--><span id="container"
             class=" hasIcon filled cyan ">
         <slot name="icon" part="icon">
-          <!--lit-node 2--><rh-icon    icon="information" set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part xygeUsc4cS4=-->
+          <!--lit-node 2--><rh-icon    icon="information" set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
-           class=" ui isServer "><!--lit-part asGvHyjg8sg=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 15a1 1 0 0 0-1 1v7a1 1 0 1 0 2 0v-7a1 1 0 0 0-1-1Z"/><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm0 30C8.28 30 2 23.72 2 16S8.28 2 16 2s14 6.28 14 14-6.28 14-14 14Z"/><circle cx="16" cy="10" r="1.5"/></svg><!--/lit-part--><!--lit-part--><!--/lit-part-->
+           class=" ui "><!--lit-part asGvHyjg8sg=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 15a1 1 0 0 0-1 1v7a1 1 0 1 0 2 0v-7a1 1 0 0 0-1-1Z"/><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm0 30C8.28 30 2 23.72 2 16S8.28 2 16 2s14 6.28 14 14-6.28 14-14 14Z"/><circle cx="16" cy="10" r="1.5"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
         </slot>
@@ -348,10 +333,10 @@
       <!--lit-node 0--><span id="container"
             class=" hasIcon filled blue ">
         <slot name="icon" part="icon">
-          <!--lit-node 2--><rh-icon    icon="information" set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part xygeUsc4cS4=-->
+          <!--lit-node 2--><rh-icon    icon="information" set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
-           class=" ui isServer "><!--lit-part asGvHyjg8sg=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 15a1 1 0 0 0-1 1v7a1 1 0 1 0 2 0v-7a1 1 0 0 0-1-1Z"/><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm0 30C8.28 30 2 23.72 2 16S8.28 2 16 2s14 6.28 14 14-6.28 14-14 14Z"/><circle cx="16" cy="10" r="1.5"/></svg><!--/lit-part--><!--lit-part--><!--/lit-part-->
+           class=" ui "><!--lit-part asGvHyjg8sg=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 15a1 1 0 0 0-1 1v7a1 1 0 1 0 2 0v-7a1 1 0 0 0-1-1Z"/><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm0 30C8.28 30 2 23.72 2 16S8.28 2 16 2s14 6.28 14 14-6.28 14-14 14Z"/><circle cx="16" cy="10" r="1.5"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
         </slot>
@@ -362,10 +347,10 @@
       <!--lit-node 0--><span id="container"
             class=" hasIcon filled purple ">
         <slot name="icon" part="icon">
-          <!--lit-node 2--><rh-icon    icon="information" set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part xygeUsc4cS4=-->
+          <!--lit-node 2--><rh-icon    icon="information" set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
-           class=" ui isServer "><!--lit-part asGvHyjg8sg=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 15a1 1 0 0 0-1 1v7a1 1 0 1 0 2 0v-7a1 1 0 0 0-1-1Z"/><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm0 30C8.28 30 2 23.72 2 16S8.28 2 16 2s14 6.28 14 14-6.28 14-14 14Z"/><circle cx="16" cy="10" r="1.5"/></svg><!--/lit-part--><!--lit-part--><!--/lit-part-->
+           class=" ui "><!--lit-part asGvHyjg8sg=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 15a1 1 0 0 0-1 1v7a1 1 0 1 0 2 0v-7a1 1 0 0 0-1-1Z"/><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm0 30C8.28 30 2 23.72 2 16S8.28 2 16 2s14 6.28 14 14-6.28 14-14 14Z"/><circle cx="16" cy="10" r="1.5"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
         </slot>
@@ -381,10 +366,10 @@
       <!--lit-node 0--><span id="container"
             class=" hasIcon filled ">
         <slot name="icon" part="icon">
-          <!--lit-node 2--><rh-icon    icon="information" set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part xygeUsc4cS4=-->
+          <!--lit-node 2--><rh-icon    icon="information" set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
-           class=" ui isServer "><!--lit-part asGvHyjg8sg=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 15a1 1 0 0 0-1 1v7a1 1 0 1 0 2 0v-7a1 1 0 0 0-1-1Z"/><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm0 30C8.28 30 2 23.72 2 16S8.28 2 16 2s14 6.28 14 14-6.28 14-14 14Z"/><circle cx="16" cy="10" r="1.5"/></svg><!--/lit-part--><!--lit-part--><!--/lit-part-->
+           class=" ui "><!--lit-part asGvHyjg8sg=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 15a1 1 0 0 0-1 1v7a1 1 0 1 0 2 0v-7a1 1 0 0 0-1-1Z"/><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm0 30C8.28 30 2 23.72 2 16S8.28 2 16 2s14 6.28 14 14-6.28 14-14 14Z"/><circle cx="16" cy="10" r="1.5"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
         </slot>
@@ -398,10 +383,10 @@
       <!--lit-node 0--><span id="container"
             class=" hasIcon outline red ">
         <slot name="icon" part="icon">
-          <!--lit-node 2--><rh-icon    icon="information" set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part xygeUsc4cS4=-->
+          <!--lit-node 2--><rh-icon    icon="information" set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
-           class=" ui isServer "><!--lit-part asGvHyjg8sg=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 15a1 1 0 0 0-1 1v7a1 1 0 1 0 2 0v-7a1 1 0 0 0-1-1Z"/><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm0 30C8.28 30 2 23.72 2 16S8.28 2 16 2s14 6.28 14 14-6.28 14-14 14Z"/><circle cx="16" cy="10" r="1.5"/></svg><!--/lit-part--><!--lit-part--><!--/lit-part-->
+           class=" ui "><!--lit-part asGvHyjg8sg=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 15a1 1 0 0 0-1 1v7a1 1 0 1 0 2 0v-7a1 1 0 0 0-1-1Z"/><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm0 30C8.28 30 2 23.72 2 16S8.28 2 16 2s14 6.28 14 14-6.28 14-14 14Z"/><circle cx="16" cy="10" r="1.5"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
         </slot>
@@ -412,10 +397,10 @@
       <!--lit-node 0--><span id="container"
             class=" hasIcon outline orange ">
         <slot name="icon" part="icon">
-          <!--lit-node 2--><rh-icon    icon="information" set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part xygeUsc4cS4=-->
+          <!--lit-node 2--><rh-icon    icon="information" set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
-           class=" ui isServer "><!--lit-part asGvHyjg8sg=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 15a1 1 0 0 0-1 1v7a1 1 0 1 0 2 0v-7a1 1 0 0 0-1-1Z"/><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm0 30C8.28 30 2 23.72 2 16S8.28 2 16 2s14 6.28 14 14-6.28 14-14 14Z"/><circle cx="16" cy="10" r="1.5"/></svg><!--/lit-part--><!--lit-part--><!--/lit-part-->
+           class=" ui "><!--lit-part asGvHyjg8sg=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 15a1 1 0 0 0-1 1v7a1 1 0 1 0 2 0v-7a1 1 0 0 0-1-1Z"/><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm0 30C8.28 30 2 23.72 2 16S8.28 2 16 2s14 6.28 14 14-6.28 14-14 14Z"/><circle cx="16" cy="10" r="1.5"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
         </slot>
@@ -426,11 +411,10 @@
       <!--lit-node 0--><span id="container"
             class=" outline green ">
         <slot name="icon" part="icon">
-          <!--lit-node 2--><rh-icon    hidden set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part xygeUsc4cS4=-->
+          <!--lit-node 2--><rh-icon    hidden set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="false"
-           class=" ui isServer "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--lit-part 1iYDcPphr4Y=-->
-        <span part="fallback"><slot></slot></span><!--/lit-part-->
+           class=" ui "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--lit-node 2--><span part="fallback" ><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
         </slot>
@@ -446,10 +430,10 @@
       <!--lit-node 0--><span id="container"
             class=" hasIcon outline cyan ">
         <slot name="icon" part="icon">
-          <!--lit-node 2--><rh-icon    icon="information" set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part xygeUsc4cS4=-->
+          <!--lit-node 2--><rh-icon    icon="information" set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
-           class=" ui isServer "><!--lit-part asGvHyjg8sg=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 15a1 1 0 0 0-1 1v7a1 1 0 1 0 2 0v-7a1 1 0 0 0-1-1Z"/><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm0 30C8.28 30 2 23.72 2 16S8.28 2 16 2s14 6.28 14 14-6.28 14-14 14Z"/><circle cx="16" cy="10" r="1.5"/></svg><!--/lit-part--><!--lit-part--><!--/lit-part-->
+           class=" ui "><!--lit-part asGvHyjg8sg=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 15a1 1 0 0 0-1 1v7a1 1 0 1 0 2 0v-7a1 1 0 0 0-1-1Z"/><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm0 30C8.28 30 2 23.72 2 16S8.28 2 16 2s14 6.28 14 14-6.28 14-14 14Z"/><circle cx="16" cy="10" r="1.5"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
         </slot>
@@ -460,10 +444,10 @@
       <!--lit-node 0--><span id="container"
             class=" hasIcon outline blue ">
         <slot name="icon" part="icon">
-          <!--lit-node 2--><rh-icon    icon="information" set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part xygeUsc4cS4=-->
+          <!--lit-node 2--><rh-icon    icon="information" set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
-           class=" ui isServer "><!--lit-part asGvHyjg8sg=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 15a1 1 0 0 0-1 1v7a1 1 0 1 0 2 0v-7a1 1 0 0 0-1-1Z"/><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm0 30C8.28 30 2 23.72 2 16S8.28 2 16 2s14 6.28 14 14-6.28 14-14 14Z"/><circle cx="16" cy="10" r="1.5"/></svg><!--/lit-part--><!--lit-part--><!--/lit-part-->
+           class=" ui "><!--lit-part asGvHyjg8sg=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 15a1 1 0 0 0-1 1v7a1 1 0 1 0 2 0v-7a1 1 0 0 0-1-1Z"/><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm0 30C8.28 30 2 23.72 2 16S8.28 2 16 2s14 6.28 14 14-6.28 14-14 14Z"/><circle cx="16" cy="10" r="1.5"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
         </slot>
@@ -474,10 +458,10 @@
       <!--lit-node 0--><span id="container"
             class=" hasIcon outline purple ">
         <slot name="icon" part="icon">
-          <!--lit-node 2--><rh-icon    icon="information" set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part xygeUsc4cS4=-->
+          <!--lit-node 2--><rh-icon    icon="information" set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
-           class=" ui isServer "><!--lit-part asGvHyjg8sg=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 15a1 1 0 0 0-1 1v7a1 1 0 1 0 2 0v-7a1 1 0 0 0-1-1Z"/><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm0 30C8.28 30 2 23.72 2 16S8.28 2 16 2s14 6.28 14 14-6.28 14-14 14Z"/><circle cx="16" cy="10" r="1.5"/></svg><!--/lit-part--><!--lit-part--><!--/lit-part-->
+           class=" ui "><!--lit-part asGvHyjg8sg=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 15a1 1 0 0 0-1 1v7a1 1 0 1 0 2 0v-7a1 1 0 0 0-1-1Z"/><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm0 30C8.28 30 2 23.72 2 16S8.28 2 16 2s14 6.28 14 14-6.28 14-14 14Z"/><circle cx="16" cy="10" r="1.5"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
         </slot>
@@ -493,10 +477,10 @@
       <!--lit-node 0--><span id="container"
             class=" hasIcon outline ">
         <slot name="icon" part="icon">
-          <!--lit-node 2--><rh-icon    icon="information" set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part xygeUsc4cS4=-->
+          <!--lit-node 2--><rh-icon    icon="information" set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
-           class=" ui isServer "><!--lit-part asGvHyjg8sg=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 15a1 1 0 0 0-1 1v7a1 1 0 1 0 2 0v-7a1 1 0 0 0-1-1Z"/><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm0 30C8.28 30 2 23.72 2 16S8.28 2 16 2s14 6.28 14 14-6.28 14-14 14Z"/><circle cx="16" cy="10" r="1.5"/></svg><!--/lit-part--><!--lit-part--><!--/lit-part-->
+           class=" ui "><!--lit-part asGvHyjg8sg=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 15a1 1 0 0 0-1 1v7a1 1 0 1 0 2 0v-7a1 1 0 0 0-1-1Z"/><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm0 30C8.28 30 2 23.72 2 16S8.28 2 16 2s14 6.28 14 14-6.28 14-14 14Z"/><circle cx="16" cy="10" r="1.5"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
         </slot>

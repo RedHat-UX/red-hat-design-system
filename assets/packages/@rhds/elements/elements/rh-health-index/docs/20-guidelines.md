@@ -109,14 +109,14 @@ Health index can also be inserted inline with text and components. In such cases
 Letter grades and severity level colors are designed to work together. Mixing them up will cause users to be confused as to what the health of something actually is.
 
 <div class="grid sm-two-columns">
-  <uxdot-best-practice do>
+  <uxdot-best-practice variant="do">
     <uxdot-example color-palette="lightest" width-adjustment="176px" slot="image">
       <img src="{{ '../guidelines-best-practice-1-do.svg' | url }}" alt="Small, default, and large size health index components displaying correct letter grades and severity colors.">
     </uxdot-example>
     <p>Keep letter grades and severity level colors consistent.</p>
   </uxdot-best-practice>
 
-  <uxdot-best-practice dont>
+  <uxdot-best-practice variant="dont">
     <uxdot-example color-palette="lightest" width-adjustment="176px" slot="image">
       <img src="{{ '../guidelines-best-practice-1-dont.svg' | url }}" alt="Small, default, and large size health index components displaying incorrect letter grades and severity colors.">
     </uxdot-example>
@@ -130,14 +130,14 @@ Letter grades and severity level colors are designed to work together. Mixing th
 Light theme components are designed only to work in the light theme, and dark theme components are designed to work only in the dark theme.
 
 <div class="grid sm-two-columns">
-  <uxdot-best-practice do>
+  <uxdot-best-practice variant="do">
     <uxdot-example color-palette="darkest" width-adjustment="176px" slot="image">
       <img src="{{ '../guidelines-best-practice-2-do.svg' | url }}" alt="Dark theme small, default, and large size health index components.">
     </uxdot-example>
     <p>Use the correct components in the correct theme.</p>
   </uxdot-best-practice>
 
-  <uxdot-best-practice dont>
+  <uxdot-best-practice variant="dont">
     <uxdot-example color-palette="darkest" width-adjustment="176px" slot="image">
       <img src="{{ '../guidelines-best-practice-2-dont.svg' | url }}" alt="Light theme small, default, and large size health index components used incorrectly in the dark theme.">
     </uxdot-example>
@@ -151,14 +151,14 @@ Light theme components are designed only to work in the light theme, and dark th
 Each variant is unique and designed to meet a specific user need.
 
 <div class="grid sm-two-columns">
-  <uxdot-best-practice do>
+  <uxdot-best-practice variant="do">
     <uxdot-example color-palette="lightest" width-adjustment="176px" slot="image">
       <img src="{{ '../guidelines-best-practice-3-do.svg' | url }}" alt="Small, default, and large size health index components displaying correct letter grades and severity colors.">
     </uxdot-example>
     <p>Use the available variants as intended.</p>
   </uxdot-best-practice>
 
-  <uxdot-best-practice dont>
+  <uxdot-best-practice variant="dont">
     <uxdot-example color-palette="lightest" width-adjustment="278px" slot="image">
       <img src="{{ '../guidelines-best-practice-3-dont.svg' | url }}" alt="Large size health index component displaying extra text and an incorrect combination of styles.">
     </uxdot-example>

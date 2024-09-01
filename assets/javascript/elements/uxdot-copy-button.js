@@ -1,60 +1,52 @@
-import { html, css, LitElement, isServer } from 'lit';
-
+var _UxdotCopyButton_instances, _UxdotCopyButton_internals, _UxdotCopyButton_onClick;
+import { __classPrivateFieldGet, __decorate } from "tslib";
+import { html, LitElement } from 'lit';
+import { property } from 'lit/decorators/property.js';
+import { customElement } from 'lit/decorators/custom-element.js';
 import { RhAlert } from '@rhds/elements/rh-alert/rh-alert.js';
-
-if (!isServer) {
-  import('@rhds/elements/rh-tooltip/rh-tooltip.js');
-}
-
-
-export class UxdotCopyButton extends LitElement {
-  static is = 'uxdot-copy-button';
-  static properties = { copy: {} };
-  static styles = css`
-    button {
-      display: inline-flex;
-      align-items: center;
-      color: inherit;
-      border-radius: var(--rh-border-radius-default);
-      border-width: 0;
-      padding: var(--rh-space-xs);
-      background: none;
-      cursor: pointer;
-      &:is(:focus, :active, :hover) {
-        background: var(--rh-color-interactive-blue-lightest);
-        opacity: 1;
-      }
+import '@rhds/elements/rh-tooltip/rh-tooltip.js';
+import '@rhds/elements/rh-icon/rh-icon.js';
+import { css } from "lit";
+const styles = css `button{color:inherit;border-radius:var(--rh-border-radius-default);border-width:0;background:0 0;display:inline-flex;align-items:center;gap:var(--rh-space-xs);padding-inline:var(--rh-space-xs)}code{padding:var(--rh-space-xs) var(--rh-space-md);background:var(--rh-color-surface-light);font-size:var(--rh-font-size-code-md);font-weight:var(--rh-font-weight-code-regular);font-family:var(--rh-font-family-code);line-height:var(--rh-line-height-code)}:host(:empty) code{display:none}:is(rh-icon,#caption){display:none}:host(:state(rendered)) button:is(:focus,:active,:hover),:host(:state(rendered)) button:is(:focus,:active,:hover) code{background:var(--rh-color-interactive-blue-lightest);opacity:1}:host(:state(rendered)) :is(rh-icon,#caption){display:initial}`;
+let UxdotCopyButton = class UxdotCopyButton extends LitElement {
+    constructor() {
+        super(...arguments);
+        _UxdotCopyButton_instances.add(this);
+        this.icon = 'copy';
+        _UxdotCopyButton_internals.set(this, this.attachInternals());
     }
-    svg,
-    ::slotted(svg) {
-      width: 24px;
-      fill: currentcolor;
-    }
-  `;
-
-  render() {
-    return html`
+    render() {
+        return html `
       <rh-tooltip position="left-start">
-        <code slot="content">${this.copy ?? 'Click to copy'}</code>
-        <button @click="${this.#onClick}">
-          <slot>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-              <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"/>
-            </svg>
-          </slot>
+        <span id="caption" slot="content">${this.copy ?? 'Click to copy'}</span>
+        <button @click="${__classPrivateFieldGet(this, _UxdotCopyButton_instances, "m", _UxdotCopyButton_onClick)}">
+          <code><slot></slot></code>
+          <rh-icon set="ui" icon="${this.icon}"></rh-icon>
         </button>
       </rh-tooltip>
     `;
-  }
-
-  async #onClick() {
-    const text = this.copy ?? this.textContent;
+    }
+    firstUpdated() {
+        __classPrivateFieldGet(this, _UxdotCopyButton_internals, "f").states.add('rendered');
+    }
+};
+_UxdotCopyButton_internals = new WeakMap();
+_UxdotCopyButton_instances = new WeakSet();
+_UxdotCopyButton_onClick = async function _UxdotCopyButton_onClick() {
+    const text = this.copy ?? this.textContent ?? '';
     const message = text.trim();
     await navigator.clipboard.writeText(message);
     RhAlert.toast({ heading: 'Copied', message });
-  }
-
-  static {
-    customElements.define(this.is, this);
-  }
-}
+};
+UxdotCopyButton.styles = [styles];
+__decorate([
+    property()
+], UxdotCopyButton.prototype, "copy", void 0);
+__decorate([
+    property()
+], UxdotCopyButton.prototype, "icon", void 0);
+UxdotCopyButton = __decorate([
+    customElement('uxdot-copy-button')
+], UxdotCopyButton);
+export { UxdotCopyButton };
+//# sourceMappingURL=uxdot-copy-button.js.map

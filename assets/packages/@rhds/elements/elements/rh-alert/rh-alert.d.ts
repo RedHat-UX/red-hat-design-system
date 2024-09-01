@@ -1,7 +1,7 @@
 import { LitElement } from 'lit';
 import '@rhds/elements/rh-surface/rh-surface.js';
 interface ToastOptions {
-    id: string;
+    id?: string;
     message: string;
     heading?: string;
     state?: RhAlert['state'];

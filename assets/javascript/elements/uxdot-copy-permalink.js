@@ -1,96 +1,57 @@
-
-import { LitElement, html, css, isServer } from 'lit';
-
+var _UxdotCopyPermalink_instances, _UxdotCopyPermalink_internals, _UxdotCopyPermalink_copyLink;
+import { __classPrivateFieldGet, __decorate } from "tslib";
+import { LitElement, html } from 'lit';
+import { customElement } from 'lit/decorators/custom-element.js';
+import { property } from 'lit/decorators/property.js';
 import { RhAlert } from '@rhds/elements/rh-alert/rh-alert.js';
-
-class UxdotCopyPermalink extends LitElement {
-  static styles = css`
-    :host {
-      display: flex;
-      margin-block-end: var(--rh-space-lg, 16px);
-      align-items: center;
+import '@rhds/elements/rh-icon/rh-icon.js';
+import { css } from "lit";
+const styles = css `:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:0 0;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}`;
+let UxdotCopyPermalink = class UxdotCopyPermalink extends LitElement {
+    constructor() {
+        super(...arguments);
+        _UxdotCopyPermalink_instances.add(this);
+        this.copyButtonLabel = 'Copy link to clipboard';
+        this.copiedText = 'Link copied';
+        _UxdotCopyPermalink_internals.set(this, this.attachInternals());
     }
-
-    svg {
-      width: var(--rh-size-icon-02, 24px);
-    }
-
-    #signifier {
-      display: var(--perma-signifier-display, none);
-    }
-
-    #button {
-      height: 1.75rem;
-      background: none;
-      border: none;
-      display: flex;
-      align-items: center;
-    }
-
-    #button:is(:hover, :focus) {
-      background: var(--rh-color-surface-light, #e0e0e0);
-    }
-
-    ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-      display: flex;
-      margin-block-end: 0 !important;
-      align-items: center;
-      color: inherit;
-      text-decoration: inherit;
-    }
-  `;
-
-  static properties = {
-    copyButtonLabel: { type: String, attribute: 'copy-button-label' },
-    copiedText: { type: String, attribute: 'copied-text' },
-  };
-
-  constructor() {
-    super();
-    this.copyButtonLabel = this.getAttribute('copy-button-label') ?? 'Copy link to clipboard';
-    this.copiedText = this.getAttribute('copied-text') ?? 'Link copied';
-    this.allAnchors = null;
-  }
-
-  connectedCallback() {
-    super.connectedCallback();
-    if (!isServer) {
-      const children = this.shadowRoot.querySelector('slot').assignedElements({ flatten: true });
-      this.allAnchors = this.#getLinks(children);
-    }
-  }
-
-  render() {
-    return html`
-      <slot @slotchange=${this.#handleSlotchange}></slot>
+    render() {
+        return html `
+      <slot></slot>
       <span id="signifier">(permalink)</span>
-      <button @click="${this.#copyLink}" id="button" aria-label="Copy link to clipboard" aria-label="${this.copyButtonLabel}">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-          <path d="M13.09 2.64a3 3 0 0 0-4.15 0L6.1 5.49a2.93 2.93 0 0 0 0 4.15.63.63 0 0 0 .88 0 .64.64 0 0 0 0-.89 1.65 1.65 0 0 1-.49-1.19A1.66 1.66 0 0 1 7 6.37l2.83-2.84a1.68 1.68 0 1 1 2.37 2.38l-.62.62a.63.63 0 1 0 .89.88l.62-.62a2.93 2.93 0 0 0 0-4.15Z"/>
-          <path d="M8.61 6.77a.64.64 0 0 0 0 .89 1.68 1.68 0 0 1 0 2.37l-2.44 2.44a1.68 1.68 0 0 1-2.38 0 1.7 1.7 0 0 1 0-2.38l.15-.09a.64.64 0 0 0 0-.89.63.63 0 0 0-.88 0l-.15.15a3 3 0 0 0 0 4.15 3 3 0 0 0 4.15 0l2.43-2.44a2.9 2.9 0 0 0 .86-2.07 2.93 2.93 0 0 0-.85-2.13.64.64 0 0 0-.89 0Z"/>
-        </svg>
+      <button @click="${__classPrivateFieldGet(this, _UxdotCopyPermalink_instances, "m", _UxdotCopyPermalink_copyLink)}"
+              id="button"
+              aria-label="${this.copyButtonLabel}">
+        <rh-icon set="ui" icon="link"></rh-icon>
       </button>
     `;
-  }
-
-  #handleSlotchange(e) {
-    const children = e.target.assignedElements({ flatten: true });
-    this.allAnchors = this.#getLinks(children);
-  }
-
-  #getLinks(slottedChildren) {
-    return slottedChildren.map(child => {
-      return child.querySelector('a');
-    });
-  }
-
-  async #copyLink() {
-    const [href] = this.allAnchors;
-    if (href) {
-      await navigator.clipboard.writeText(href);
-      RhAlert.toast({ heading: this.copiedText });
     }
-  }
-}
-
-customElements.define('uxdot-copy-permalink', UxdotCopyPermalink);
+    firstUpdated() {
+        __classPrivateFieldGet(this, _UxdotCopyPermalink_internals, "f").states.add('rendered');
+    }
+};
+_UxdotCopyPermalink_internals = new WeakMap();
+_UxdotCopyPermalink_instances = new WeakSet();
+_UxdotCopyPermalink_copyLink = async function _UxdotCopyPermalink_copyLink() {
+    const [link] = this.shadowRoot
+        ?.querySelector('slot')
+        ?.assignedElements({ flatten: true })
+        ?.map(child => child.querySelector('a'))
+        ?.filter(x => !!x) ?? [];
+    if (link) {
+        await navigator.clipboard.writeText(link.href);
+        RhAlert.toast({ message: this.copiedText });
+    }
+};
+UxdotCopyPermalink.styles = [styles];
+__decorate([
+    property({ attribute: 'copy-button-label' })
+], UxdotCopyPermalink.prototype, "copyButtonLabel", void 0);
+__decorate([
+    property({ attribute: 'copied-text' })
+], UxdotCopyPermalink.prototype, "copiedText", void 0);
+UxdotCopyPermalink = __decorate([
+    customElement('uxdot-copy-permalink')
+], UxdotCopyPermalink);
+export { UxdotCopyPermalink };
+//# sourceMappingURL=uxdot-copy-permalink.js.map
