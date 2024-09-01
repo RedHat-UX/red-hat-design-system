@@ -55,10 +55,9 @@
     max-width: 56rem;
   }
 
-  aside {
+  uxdot-toc {
     grid-area: aside;
     padding-inline: var(--rh-space-lg, 16px);
-    position: relative;
   }
 
   /* when a section is used */
@@ -122,13 +121,13 @@
   }
 
   @container main (min-width: 576px) {
-    aside {
+    uxdot-toc {
       padding-inline: var(--rh-space-2xl, 32px);
     }
   }
 
   @container main (min-width: 768px) {
-    aside {
+    uxdot-toc {
       padding-inline: var(--rh-space-3xl, 48px);
     }
   }
@@ -138,7 +137,7 @@
       row-gap: var(--rh-space-6xl, 96px);
     }
 
-    aside {
+    uxdot-toc {
       padding-inline: var(--rh-space-6xl, 96px);
     }
   }
@@ -163,9 +162,8 @@
         "content aside";
     }
 
-    aside {
-      padding-inline-start: 0;
-      padding-inline-end: var(--rh-space-2xl, 32px);
+    uxdot-toc {
+      padding-inline: 0 var(--rh-space-2xl, 32px);
       max-width: 320px;
     }
   }
