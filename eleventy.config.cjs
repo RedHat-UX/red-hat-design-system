@@ -92,6 +92,10 @@ module.exports = function(eleventyConfig) {
     manualImportMap: {
       imports: {
         'lit/': '/assets/packages/lit/',
+        'lit-html': '/assets/packages/lit-html/lit-html.js',
+        'lit-html/': '/assets/packages/lit-html/',
+        '@lit-labs/ssr-client/lit-element-hydrate-support.js':
+          '/assets/packages/@lit-labs/ssr-client/lit-element-hydrate-support.js',
         '@rhds/tokens': '/assets/packages/@rhds/tokens/js/tokens.js',
         '@rhds/tokens/': '/assets/packages/@rhds/tokens/js/',
         '@rhds/elements/lib/': '/assets/packages/@rhds/elements/lib/',
@@ -127,12 +131,12 @@ module.exports = function(eleventyConfig) {
       '@floating-ui/core',
       '@floating-ui/dom',
       '@lit-labs/ssr-client/',
-      '@lit-labs/ssr-client/lit-element-hydrate-support.js',
       '@lit/context',
       '@lit/reactive-element',
       '@webcomponents/template-shadowroot/template-shadowroot.js',
       'lit',
       'lit-element',
+      'lit-html',
       'lit/decorators/custom-element.js',
       'lit/decorators/property.js',
       'lit/directives/class-map.js',
