@@ -12,6 +12,7 @@ docs/assets/javascript/elements/uxdot-sidenav.js
 docs/assets/javascript/elements/uxdot-toc.js
 docs/assets/javascript/elements/uxdot-header.js
 docs/assets/javascript/elements/uxdot-feedback.js
+docs/assets/javascript/elements/uxdot-hero.js
 docs/assets/javascript/elements/uxdot-copy-button.js
 docs/assets/javascript/elements/uxdot-copy-permalink.js
 docs/_data/playgrounds.json
