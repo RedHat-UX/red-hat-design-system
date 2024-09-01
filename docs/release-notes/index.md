@@ -25,12 +25,22 @@ importElements:
     --rh-icon-size: var(--rh-size-icon-03, 32px);
   }
 
-  [data-label="Change"] {
-    width: 30%;
-  }
+  @media (min-width: 768px) {
+    [data-label="Change"] {
+      width: 30%;
+    }
 
-  [data-label="Type"] {
-    width: 10%;
+    [data-label="Type"] {
+      width: 10%;
+    }
+  }
+  @media (max-width: 768px) {
+    rh-table thead ~ tbody tr :is(th, td) {
+      display: block;
+    }
+    rh-table thead ~ tbody tr :is(td,th):before {
+      margin-inline-end: var(--rh-length-2xs, 3px);
+    }
   }
 </style>
 

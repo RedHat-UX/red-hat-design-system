@@ -72,13 +72,13 @@ If you are placing text by itself on a grid, a comfortable line length is betwee
 ### Using headings
 
 <div class="grid sm-two-columns">
-  <uxdot-best-practice do>
+  <uxdot-best-practice variant="do">
     <uxdot-example color-palette="lightest" width-adjustment="418px" slot="image">
       <img src="/assets/typography/type-usage-best-practice-1-do.svg" alt="Example of a heading set correctly in Red Hat Display.">
     </uxdot-example>
     <p>Use the correct font family for the correct use case.</p>
   </uxdot-best-practice>
-  <uxdot-best-practice dont>
+  <uxdot-best-practice variant="dont">
     <uxdot-example color-palette="lightest" width-adjustment="418px" slot="image">
       <img src="{{ '/assets/typography/type-usage-best-practice-1-dont.svg' | url }}" alt="Example of a heading set incorrectly in Red Hat Text.">
     </uxdot-example>
@@ -89,13 +89,13 @@ If you are placing text by itself on a grid, a comfortable line length is betwee
 ### Using body text
 
 <div class="grid sm-two-columns">
-  <uxdot-best-practice do>
+  <uxdot-best-practice variant="do">
     <uxdot-example color-palette="lightest" width-adjustment="418px" slot="image">
       <img src="/assets/typography/type-usage-best-practice-2-do.svg" alt="Example of body text set correctly in Red Hat Text.">
     </uxdot-example>
     <p>Use the correct font family for the correct use case.</p>
   </uxdot-best-practice>
-  <uxdot-best-practice dont>
+  <uxdot-best-practice variant="dont">
     <uxdot-example color-palette="lightest" width-adjustment="418px" slot="image">
       <img src="{{ '/assets/typography/type-usage-best-practice-2-dont.svg' | url }}" alt="Example of body text set incorrectly in Red Hat Display.">
     </uxdot-example>
@@ -106,13 +106,13 @@ If you are placing text by itself on a grid, a comfortable line length is betwee
 ### Spacing in between text styles
 
 <div class="grid sm-two-columns">
-  <uxdot-best-practice do>
+  <uxdot-best-practice variant="do">
     <uxdot-example color-palette="lightest" width-adjustment="418px" slot="image">
       <img src="/assets/typography/type-usage-best-practice-3-do.svg" alt="Example of comfortable spacing in between various text styles which is correct.">
     </uxdot-example>
     <p>Use comfortable spacing in between text styles.</p>
   </uxdot-best-practice>
-  <uxdot-best-practice dont>
+  <uxdot-best-practice variant="dont">
     <uxdot-example color-palette="lightest" width-adjustment="418px" slot="image">
       <img src="{{ '/assets/typography/type-usage-best-practice-3-dont.svg' | url }}" alt="Example of uncomfortable spacing in between various text styles which is incorrect.">
     </uxdot-example>

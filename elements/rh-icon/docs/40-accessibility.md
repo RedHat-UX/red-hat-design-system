@@ -29,15 +29,15 @@ However, when an icon is accompanied by text, the icon does not need to use acce
 An <code>&lt;rh-icon&gt;</code> is hidden from assistive technology by default. If an icon is presentational, there’s no need to  change the markup to hide the icon.
 
 <div class="grid sm-two-columns">
-  <uxdot-best-practice do>
-    <rh-code-block slot="image" wrap="true">
-      <script type="text/html"><rh-icon icon="butterfly"></rh-icon></script>
-    </rh-code-block>
-    <p>Icons will be hidden from assistive technology by default</code></p>
+  <uxdot-best-practice variant="do">
+    <rh-code-block slot="image"
+                   wrap="true">
+      <script type="text/html"><rh-icon icon="butterfly"></rh-icon></script></rh-code-block>
+    <p>Icons will be hidden from assistive technology by default</p>
   </uxdot-best-practice>
-
-  <uxdot-best-practice dont>
-    <rh-code-block slot="image" wrap="true">
+  <uxdot-best-practice variant="dont">
+    <rh-code-block slot="image"
+                   wrap="true">
       <script type="text/html"><rh-icon icon="butterfly" aria-hidden="true"></rh-icon></script>
     </rh-code-block>
     <p>There is no need to add the additional <code>aria-hidden="true"</code></p>
