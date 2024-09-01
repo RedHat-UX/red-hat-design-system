@@ -138,6 +138,8 @@
       "command": "tspc",
       "files": [
         "elements/**/*.ts",
+        "docs/assets/javascript/**/*.ts",
+        "docs/assets/javascript/**/*.css",
         "lib/**/*.css",
         "lib/**/*.ts"
       ],
@@ -146,6 +148,7 @@
         "elements/**/*.{d.ts,js,map}",
         "lib/**/*.{d.ts,js,map}",
         "elements/rh-secondary-nav/test/fixtures.js",
+        "docs/assets/javascript/**/*.d.ts",
         "!elements/*/{demo,test}/**/*.js"
       ]
     },
