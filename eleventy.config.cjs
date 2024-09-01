@@ -197,6 +197,7 @@ module.exports = function(eleventyConfig) {
       'docs/assets/javascript/elements/uxdot-best-practice.js',
       'docs/assets/javascript/elements/uxdot-search.js',
       'docs/assets/javascript/elements/uxdot-toc.js',
+      'elements/rh-button/rh-button.js',
       'elements/rh-tag/rh-tag.js',
       'elements/rh-icon/rh-icon.js',
       'elements/rh-skip-link/rh-skip-link.js',
