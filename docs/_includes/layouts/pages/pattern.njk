@@ -7,16 +7,10 @@ importElements:
   - rh-subnav
   - rh-code-block
 ---
-{% if hasToc %}
-  <link rel="stylesheet" href="/assets/javascript/elements/uxdot-toc-lightdom.css">
-{% endif %}
 <link rel="stylesheet" href="/styles/pages/backpage.css">
 
 <script type="module" src="/assets/javascript/elements/uxdot-feedback.js"></script>
 <script type="module" src="/assets/javascript/elements/uxdot-pattern.js"></script>
-{% if hasToc %}
-<script type="module" src="/assets/javascript/elements/uxdot-toc.js"></script>
-{% endif %}
 {% if tokenSearch %}
 <script type="module" src="/assets/javascript/elements/uxdot-search.js"></script>
 <script type="module" src="/assets/javascript/tokens.js"></script>
@@ -29,11 +23,9 @@ importElements:
 
   {% include 'partials/component/header.njk' %}
   {% if hasToc and (content | toc).length > 0 %}
-    <aside>
-      <uxdot-toc summary="On this page">
-        {{ content | toc | safe }}
-      </uxdot-toc>
-    </aside>
+  <uxdot-toc summary="On this page">
+    {{ content | toc | safe }}
+  </uxdot-toc>
   {% endif %}
 
   <div class="container">
