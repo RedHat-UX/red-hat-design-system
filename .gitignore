@@ -9,6 +9,7 @@ _site
 docs/pfe.min*
 docs/assets/playgrounds/
 docs/assets/javascript/elements/uxdot-sidenav.js
+docs/assets/javascript/elements/uxdot-toc.js
 docs/_data/playgrounds.json
 
 # Build artifacts

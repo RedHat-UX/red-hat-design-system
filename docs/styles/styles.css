@@ -23,37 +23,37 @@
 
 @layer base {
   body {
-    color: var(--rh-color-text-primary-on-light, #151515);
+    color: var(--rh-color-text-primary-on-light);
   }
 
   :where(p, ul, ol, dl) {
-    font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+    font-size: var(--rh-font-size-body-text-lg);
   }
 
   :where(h1, h2, h3, h4, h5, h6) {
-    font-weight: var(--rh-font-weight-heading-medium, 500);
+    font-weight: var(--rh-font-weight-heading-medium);
   }
 
   a {
-    color: var(--rh-color-interactive-blue-darker, #0066cc);
+    color: var(--rh-color-interactive-blue-darker);
   }
 
   a:hover {
-    color: var(--rh-color-interactive-blue-darkest, #003366);
+    color: var(--rh-color-interactive-blue-darkest);
   }
 
   a:visited {
-    color: var(--rh-color-interactive-purple-darker, #5e40be);
+    color: var(--rh-color-interactive-purple-darker);
   }
 
   hr {
     border-block-start:
-      var(--rh-border-width-sm, 1px)
+      var(--rh-border-width-sm)
       solid
-      var(--rh-color-border-subtle-on-light, #c7c7c7);
+      var(--rh-color-border-subtle-on-light);
     border-inline: none;
     border-block-end: none;
-    margin-block-end: var(--rh-space-2xl, 32px);
+    margin-block-end: var(--rh-space-2xl);
   }
 
   figure > img {
@@ -61,7 +61,7 @@
   }
 
   figcaption {
-    color: var(--rh-color-text-secondary-on-light, #4d4d4d);
+    color: var(--rh-color-text-secondary-on-light);
   }
 }
 
@@ -74,7 +74,7 @@
 
   :target {
     /* Set padding for #hash links */
-    scroll-margin-top: calc(var(--uxdot-masthead-max-height) + var(--rh-space-5xl, 80px));
+    scroll-margin-top: calc(var(--uxdot-masthead-max-height) + var(--rh-space-5xl));
   }
 
   body {
@@ -92,18 +92,15 @@
 
   main {
     grid-area: main;
-    border-inline-start:
-      var(--rh-border-width-sm, 1px)
-      solid
-      var(--rh-color-border-subtle-on-light, #c7c7c7);
+    border-inline-start: var(--rh-border-width-sm) solid var(--rh-color-border-subtle-on-light);
     container-type: inline-size;
     container-name: main;
     padding-block-start: var(--uxdot-masthead-max-height);
   }
 
   .container {
-    padding-inline: var(--rh-space-lg, 16px);
-    padding-block-end: var(--rh-space-lg, 16px);
+    padding-inline: var(--rh-space-lg);
+    padding-block-end: var(--rh-space-lg);
   }
 
   uxdot-masthead {
@@ -139,50 +136,48 @@
 
   @container main (min-width: 576px) {
     .container {
-      padding-inline: var(--rh-space-2xl, 32px);
-      padding-block-end: var(--rh-space-2xl, 32px);
+      padding-inline: var(--rh-space-2xl);
+      padding-block-end: var(--rh-space-2xl);
     }
   }
 
   @container main (min-width: 768px) {
     .container {
-      padding-inline: var(--rh-space-3xl, 48px);
-      padding-block-end: var(--rh-space-3xl, 48px);
+      padding-inline: var(--rh-space-3xl);
+      padding-block-end: var(--rh-space-3xl);
     }
   }
 
   @container main (min-width: 992px) {
     .container {
       max-width: var(--container-max-width);
-      padding-inline: var(--rh-space-6xl, 96px);
-      padding-block-start: 0;
-      padding-block-end: var(--rh-space-6xl, 96px);
+      padding-inline: var(--rh-space-6xl);
+      padding-block: 0 var(--rh-space-6xl);
     }
   }
 }
 
 @layer flow {
   :where(p, ul, ol, dl) {
-    margin-block-start: var(--rh-space-lg, 16px);
-    margin-block-end: var(--rh-space-2xl, 32px);
+    margin-block: var(--rh-space-lg) var(--rh-space-2xl);
   }
 
   :where(li) {
-    margin-block: var(--rh-space-md, 8px);
+    margin-block: var(--rh-space-md);
   }
 
   :where(h1, h2, h3, h4, h5, h6) {
-    margin-block-end: var(--rh-space-lg, 16px);
+    margin-block-end: var(--rh-space-lg);
   }
 
   :where(h1, h2, h3, h4, h5, h6) + :where(h2, h3, h4, h5, h6),
   /* any where copy-permalink is used as a sibling to another */
   :where(uxdot-copy-permalink + uxdot-copy-permalink) {
-    margin-block-start: var(--rh-space-2xl, 32px);
+    margin-block-start: var(--rh-space-2xl);
   }
 
   :where(uxdot-copy-permalink, h1, h2, h3 ,h4, h5 ,h6) + uxdot-example {
-    margin-block-start: var(--rh-space-lg, 16px);
+    margin-block-start: var(--rh-space-lg);
   }
 
   figure uxdot-example {
@@ -190,15 +185,15 @@
   }
 
   rh-alert + uxdot-example {
-    margin-block-start: var(--rh-space-2xl, 32px);
+    margin-block-start: var(--rh-space-2xl);
   }
 
   rh-alert + .grid {
-    margin-block-start: var(--rh-space-2xl, 32px);
+    margin-block-start: var(--rh-space-2xl);
   }
 
   rh-table {
-    margin-block: var(--rh-space-3xl, 48px);
+    margin-block: var(--rh-space-3xl);
   }
 
   /* TODO: look into this do we need this rule? */
@@ -207,12 +202,12 @@
   }
 
   rh-alert + rh-alert {
-    margin-block-start: var(--rh-space-xl, 24px);
+    margin-block-start: var(--rh-space-xl);
   }
 
   uxdot-example + figcaption,
   figcaption + uxdot-example {
-    margin-block: var(--rh-space-xl, 24px);
+    margin-block: var(--rh-space-xl);
   }
 }
 
@@ -226,11 +221,11 @@
   **/
 
   :where(code) {
-    padding-inline: var(--rh-space-xs, 4px);
-    background: var(--rh-color-surface-light, #e0e0e0);
-    border-radius: var(--rh-border-radius-default, 3px);
-    font-size: var(--rh-font-size-code-md, 1rem);
-    font-weight: var(--rh-font-weight-code-regular, 400);
+    padding-inline: var(--rh-space-xs);
+    background: var(--rh-color-surface-light);
+    border-radius: var(--rh-border-radius-default);
+    font-size: var(--rh-font-size-code-md);
+    font-weight: var(--rh-font-weight-code-regular);
   }
 
   :where(code:empty) {
@@ -243,20 +238,20 @@
   }
 
   :where(kbd) {
-    --_uxdot-kbd-color-border: var(--rh-color-border-subtle-on-light, #c7c7c7);
+    --_uxdot-kbd-color-border: var(--rh-color-border-subtle-on-light);
 
-    background-color: var(--rh-color-surface-lightest, #ffffff);
-    border-radius: var(--rh-border-radius-default, 3px);
-    border: var(--rh-border-width-sm, 1px) solid var(--_uxdot-kbd-color-border);
+    background-color: var(--rh-color-surface-lightest);
+    border-radius: var(--rh-border-radius-default);
+    border: var(--rh-border-width-sm) solid var(--_uxdot-kbd-color-border);
     box-shadow: 0 2px 0 1px var(--_uxdot-kbd-color-border);
     cursor: default;
-    font-size: var(--rh-font-size-body-text-md, 1rem);
+    font-size: var(--rh-font-size-body-text-md);
     line-height: 1;
     min-width: 0.75rem;
     display: inline-block;
     text-align: center;
-    padding: 2px var(--rh-space-sm, 6px);
-    margin-inline: var(--rh-space-xs, 4px);
+    padding: 2px var(--rh-space-sm);
+    margin-inline: var(--rh-space-xs);
     position: relative;
     top: -1px;
   }
@@ -292,16 +287,16 @@
     * Sticky table of contents pattern w/o subnav
     * progressive enhancement sticky, using :has()
     **/
-  uxdot-header + aside > uxdot-toc {
+  uxdot-header + uxdot-toc {
     position: sticky;
 
     /* masthead height (72px) + padding (32px) */
-    top: calc(var(--uxdot-masthead-max-height, 72px) + var(--rh-space-2xl, 32px));
+    top: calc(var(--uxdot-masthead-max-height) + var(--rh-space-2xl));
   }
 
-  uxdot-header:has(rh-subnav) + aside > uxdot-toc {
+  uxdot-header:has(rh-subnav) + uxdot-toc {
     /* masthead height (72px) + subnav height 56px  + padding (32px) */
-    top: calc(var(--uxdot-masthead-max-height, 72px) + 56px + var(--rh-space-2xl, 32px));
+    top: calc(var(--uxdot-masthead-max-height) + 56px + var(--rh-space-2xl));
   }
 
   @container main (min-width: 768px) {
@@ -335,6 +330,6 @@
   rh-alert p {
     /* TODO: Document this bug shouldn't have to force the font size
     the component is trying to set internally on #description */
-    font-size: var(--rh-font-size-body-text-md, 1rem) !important;
+    font-size: var(--rh-font-size-body-text-md) !important;
   }
 }
