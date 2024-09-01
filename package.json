@@ -328,6 +328,7 @@
     "markdown-it-attrs": "^4.2.0",
     "markdownlint-cli2": "^0.13.0",
     "parse5": "^7.1.2",
+    "patch-package": "^8.0.0",
     "playground-elements": "^0.18.1",
     "postcss-pxtorem": "^6.1.0",
     "renamer": "^5.0.2",
