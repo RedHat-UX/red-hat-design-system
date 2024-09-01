@@ -25,13 +25,12 @@ const isLocal = !(process.env.CI || process.env.DEPLOY_URL);
 module.exports = function(eleventyConfig) {
   eleventyConfig.setQuietMode(true);
 
-  let ranOnce = false;
-  eleventyConfig.on('eleventy.before', async function({ runMode }) {
-    if (!ranOnce) {
-      await exec('npx tspc');
-      ranOnce = true;
-    }
+  eleventyConfig.on('eleventy.before', function({ runMode }) {
     eleventyConfig.addGlobalData('runMode', runMode);
+  });
+
+  eleventyConfig.on('eleventy.before', async function() {
+    await exec('npx tspc');
   });
 
   eleventyConfig.addWatchTarget('docs/patterns/**/*.html');

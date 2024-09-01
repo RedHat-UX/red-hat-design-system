@@ -8,16 +8,10 @@ node_modules
 _site
 docs/pfe.min*
 docs/assets/playgrounds/
-docs/assets/javascript/elements/uxdot-sidenav.js
-docs/assets/javascript/elements/uxdot-toc.js
-docs/assets/javascript/elements/uxdot-header.js
-docs/assets/javascript/elements/uxdot-masthead.js
-docs/assets/javascript/elements/uxdot-feedback.js
-docs/assets/javascript/elements/uxdot-hero.js
-docs/assets/javascript/elements/uxdot-repo-status-list.js
-docs/assets/javascript/elements/uxdot-search.js
-docs/assets/javascript/elements/uxdot-copy-button.js
-docs/assets/javascript/elements/uxdot-copy-permalink.js
+docs/assets/javascript/elements/*.js
+!docs/assets/javascript/elements/uxdot-example.js
+!docs/assets/javascript/elements/uxdot-installation-tabs.js
+!docs/assets/javascript/elements/uxdot-pattern.js
 docs/_data/playgrounds.json
 
 # Build artifacts
