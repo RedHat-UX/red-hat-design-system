@@ -13,6 +13,9 @@ const RHDSMarkdownItPlugin = require('./docs/_plugins/markdown-it.cjs');
 const ImportMapPlugin = require('./docs/_plugins/importMap.cjs');
 const LitPlugin = require('@lit-labs/eleventy-plugin-lit');
 
+const util = require('node:util');
+const exec = util.promisify(require('node:child_process').exec);
+
 const isWatch =
   process.argv.includes('--serve') || process.argv.includes('--watch');
 
@@ -21,6 +24,15 @@ const isLocal = !(process.env.CI || process.env.DEPLOY_URL);
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function(eleventyConfig) {
   eleventyConfig.setQuietMode(true);
+
+  let ranOnce = false;
+  eleventyConfig.on('eleventy.before', async function({ runMode }) {
+    if (!ranOnce) {
+      await exec('npx tspc');
+      ranOnce = true;
+    }
+    eleventyConfig.addGlobalData('runMode', runMode);
+  });
 
   eleventyConfig.addWatchTarget('docs/patterns/**/*.html');
   eleventyConfig.watchIgnores?.add('docs/assets/redhat/');
@@ -48,10 +60,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addWatchTarget('docs/styles/');
 
   eleventyConfig.addGlobalData('isLocal', isLocal);
-
-  eleventyConfig.on('eleventy.before', function({ runMode }) {
-    eleventyConfig.addGlobalData('runMode', runMode);
-  });
 
   eleventyConfig.addGlobalData('sideNavDropdowns', [
     { 'title': 'About', 'url': '/about', 'collection': 'about' },
@@ -83,6 +91,7 @@ module.exports = function(eleventyConfig) {
     nodemodulesPublicPath: '/assets/packages',
     manualImportMap: {
       imports: {
+        'lit/': '/assets/packages/lit/',
         '@rhds/tokens': '/assets/packages/@rhds/tokens/js/tokens.js',
         '@rhds/tokens/': '/assets/packages/@rhds/tokens/js/',
         '@rhds/elements/lib/': '/assets/packages/@rhds/elements/lib/',
@@ -124,6 +133,8 @@ module.exports = function(eleventyConfig) {
       '@webcomponents/template-shadowroot/template-shadowroot.js',
       'lit',
       'lit-element',
+      'lit/decorators/custom-element.js',
+      'lit/decorators/property.js',
       'lit/directives/class-map.js',
       'lit/directives/if-defined.js',
       'lit/directives/repeat.js',
