@@ -55,14 +55,14 @@ The association between an icon and a certain meaning can be strengthened by how
 Icons are pictograms and are not meant to be used at large sizes. If you need a visual element that is larger than 100px, use an [illustration](https://www.redhat.com/en/about/brand/standards/illustration) instead.
 
 <div class="grid sm-two-columns">
-  <uxdot-best-practice do>
+  <uxdot-best-practice variant="do">
     <uxdot-example slot="image" width-adjustment="360px">
       <img src="../icon-best-practices-size-limit-do.svg" alt="Image of icon at correct size">
     </uxdot-example>
     <p>Use icons at 100px or smaller.</p>
   </uxdot-best-practice>
 
-  <uxdot-best-practice dont>
+  <uxdot-best-practice variant="dont">
     <uxdot-example slot="image" width-adjustment="360px">
       <img src="../icon-best-practices-size-limit-dont.svg" alt="Image of icon at incorrect size">
     </uxdot-example>
@@ -75,14 +75,14 @@ Icons are pictograms and are not meant to be used at large sizes. If you need a 
 If icons are being used within elements that are grouped together like in a vertical list of links, they should appear to have the same size.
 
 <div class="grid sm-two-columns">
-  <uxdot-best-practice do>
+  <uxdot-best-practice variant="do">
     <uxdot-example slot="image" width-adjustment="267px">
       <img src="../icon-best-practices-consistent-sizes-do.svg" alt="Image of icon at correct consistency in sizing">
     </uxdot-example>
     <p>Use <code>&lt;rh-icon&gt;</code> to ensure consistency and alignment.</p>
   </uxdot-best-practice>
 
-  <uxdot-best-practice dont>
+  <uxdot-best-practice variant="dont">
     <uxdot-example slot="image" width-adjustment="267px">
       <img src="../icon-best-practices-consistent-sizes-dont.svg" alt="Image of icon at incorrect consistency in sizing">
     </uxdot-example>
@@ -95,14 +95,14 @@ If icons are being used within elements that are grouped together like in a vert
 Use an icon that is familiar, can be commonly understood (ideally across cultures), and makes sense when paired with text.
 
 <div class="grid sm-two-columns">
-  <uxdot-best-practice do>
+  <uxdot-best-practice variant="do">
     <uxdot-example slot="image" width-adjustment="101px">
       <img src="../icon-best-practices-familiar-meanings-do-1.svg" alt="Image of pencil icon representing familiar meaning on a edit avatar link">
     </uxdot-example>
     <p>A pencil icon is often used to represent the ability to edit something.</p>
   </uxdot-best-practice>
 
-  <uxdot-best-practice dont>
+  <uxdot-best-practice variant="dont">
     <uxdot-example slot="image" width-adjustment="109px">
       <img src="../icon-best-practices-familiar-meanings-dont-1.svg" alt="Image of utensils icon representing unfamiliar meaning on an edit avatar link">
     </uxdot-example>
@@ -115,14 +115,14 @@ Use an icon that is familiar, can be commonly understood (ideally across culture
 If the meaning of two icons might be related, use the icon that could typically be seen more often. This helps users quickly recognize what interactions are possible.
 
 <div class="grid sm-two-columns">
-  <uxdot-best-practice do>
+  <uxdot-best-practice variant="do">
     <uxdot-example slot="image" width-adjustment="65px">
       <img src="../icon-best-practices-familiar-meanings-do-2.svg" alt="Image of x icon representing familiar meaning of a close action">
     </uxdot-example>
     <p>An X icon is very commonly used to indicate that something can be closed.</p>
   </uxdot-best-practice>
 
-  <uxdot-best-practice dont>
+  <uxdot-best-practice variant="dont">
     <uxdot-example slot="image" width-adjustment="65px">
       <img src="../icon-best-practices-familiar-meanings-dont-2.svg" alt="Image of trash can icon representing unfamiliar meaning of a close action">
     </uxdot-example>
