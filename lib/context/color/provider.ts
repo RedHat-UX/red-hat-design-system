@@ -11,7 +11,7 @@ import { ColorContextConsumer, type ColorTheme } from './consumer.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
-import styles from './context-provider.css';
+import styles from '@rhds/tokens/css/color-context-provider.css';
 
 /**
  * A `ColorPalette` is a collection of specific color values
