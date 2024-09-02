@@ -95,6 +95,7 @@
       "service": true,
       "command": "web-dev-server --watch",
       "dependencies": [
+        "compile",
         "analyze"
       ]
     },
