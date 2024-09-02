@@ -144,6 +144,7 @@
         "elements/**/*.{d.ts,js,map}",
         "lib/**/*.{d.ts,js,map}",
         "elements/rh-secondary-nav/test/fixtures.js",
+        "docs/assets/javascript/**/*.j",
         "docs/assets/javascript/**/*.d.ts",
         "docs/assets/javascript/**/*.js.map",
         "!elements/*/{demo,test}/**/*.js"
