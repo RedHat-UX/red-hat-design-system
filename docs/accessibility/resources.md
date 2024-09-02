@@ -45,7 +45,7 @@ order: 60
 
 ## Training
 
-- [Free Web Accessibility course on Udacity](https://classroom.udacity.com/courses/ud891)
+- [Free Web Accessibility course on Udacity](https://www.udacity.com/course/web-accessibility--ud891)
 - [Deque University ](https://dequeuniversity.com/)
 - [EdX Accessibility Courses](https://www.edx.org/learn/accessibility)
 - [WebAIM Training](https://webaim.org/services/training/)

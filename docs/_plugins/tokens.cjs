@@ -118,15 +118,15 @@ function table({ tokens, name = '', docs, options } = {}) {
               </samp>
             </td>
             <td data-label="Token name">
-              <uxdot-copy-button><code>--${token.name}</code></uxdot-copy-button>
+              <uxdot-copy-button>--${token.name}</uxdot-copy-button>
             </td>
             <td data-label="Value">
-              ${( isDimension ? `<uxdot-copy-button><code>${token.$value}</code></uxdot-copy-button>`
-                : isColor ? `<uxdot-copy-button style="--color: ${token.$value}"><code>${token.$value}</code></uxdot-copy-button> `
+              ${( isDimension ? `<code>${token.$value}<code>`
+                : isColor ? `<code style="--color: ${token.$value}">${token.$value}</code> `
                 : isWeight ? `
-                  <uxdot-copy-button class="numerical"><code>${token.$value}</uxdot-copy-button>
-                  <uxdot-copy-button class="common"><code>${token.attributes?.aliases?.[0] ?? ''}</code></uxdot-copy-button>`
-                : `<uxdot-copy-button><code>${token.$value}</code></uxdot-copy-button>`
+                  <code class="numerical">${token.$value}</code>
+                  <code class="common">${token.attributes?.aliases?.[0] ?? ''}</code>`
+                : `<code>${token.$value}</code>`
               )}
             </td>
             <td data-label="Use case">${token.$description ?? ''}</td>
@@ -138,9 +138,7 @@ function table({ tokens, name = '', docs, options } = {}) {
                 <summary title="Color function variants">Color function variants</summary>
                   <rh-table>
                     <table class="${classes}"
-                    style="${styleMap({
-                '--samp-color': isColor ? token.$value : 'initial',
-              })}">
+                          style="${styleMap({ '--samp-color': isColor ? token.$value : 'initial' })}">
                       <thead>
                       <tr>
                         <th scope="col" data-label="Example"><abbr title="Example">Ex.</abbr></th>
@@ -149,23 +147,23 @@ function table({ tokens, name = '', docs, options } = {}) {
                         <th scope="col" data-label="Use case">Use case</th>
                         <th scope="col" data-label="Copy"></th>
                       </tr>
-                    </thead>     
-                    <tbody>                  
+                    </thead>
+                    <tbody>
                     <tr id="${token.name}-rgb" style="--color: rgb(${r}, ${g}, ${b})">
                       <td class="sample"><samp class="${classes}">${token.path.includes('text') ? 'Aa' : docs?.example ?? ''}</samp></td>
                       <td ${options.attrs({ type: 'name', token })} class="token name">
-                        <uxdot-copy-button><code>--${token.name}-rgb</code></uxdot-copy-button>
+                        <uxdot-copy-button>--${token.name}-rgb</uxdot-copy-button>
                       </td>
-                      <td><uxdot-copy-button><code>rgb(${r}, ${g}, ${b})</code></uxdot-copy-button></td>
+                      <td><code>rgb(${r}, ${g}, ${b})</code></td>
                       <td>To modify opacity</td>
                       ${copyCell(token)}
                     </tr>
                     <tr id="${token.name}-hsl" style="--color: hsl(${h} ${s}% ${l}%)">
                       <td class="sample"><samp class="${classes}">${token.path.includes('text') ? 'Aa' : docs?.example ?? ''}</samp></td>
                       <td ${options.attrs({ type: 'name', token })} class="token name">
-                        <uxdot-copy-button><code>--${token.name}-hsl</code></uxdot-copy-button>
+                        <uxdot-copy-button>--${token.name}-hsl</uxdot-copy-button>
                       </td>
-                      <td><uxdot-copy-button><code>hsl(${h} ${s}% ${l}%)</code></uxdot-copy-button></td>
+                      <td><code>hsl(${h} ${s}% ${l}%)</code></td>
                       <td>To modify opacity</td>
                       ${copyCell(token)}
                     </tr>

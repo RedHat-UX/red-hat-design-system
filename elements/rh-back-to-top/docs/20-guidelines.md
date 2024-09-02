@@ -48,13 +48,13 @@ Once the user clicks the back to top button, they will be taken to the top of th
 Having only one persistent back to top button ensures that users are able to scroll up to the top easily. Having “Back to top” buttons at the bottom of multiple sections adds to visual clutter and may lead to users ignoring the button.
 
 <div class="grid">
-  <uxdot-best-practice do>
+  <uxdot-best-practice variant="do">
     <uxdot-example slot="image" variant="full" no-border alignment="left" width-adjustment="468px">
       <img src="../one-back-to-top-do.svg" alt="Image of wireframe with one back to top button">
     </uxdot-example>
     <p>Have one back to top button in the bottom right corner of the page.</p>
   </uxdot-best-practice>
-  <uxdot-best-practice dont>
+  <uxdot-best-practice variant="dont">
     <uxdot-example slot="image" variant="full" no-border alignment="left" width-adjustment="468px">
       <img src="../one-back-to-top-dont.svg" alt="Image of wireframe with back to top buttons below each content section">
     </uxdot-example>
@@ -67,13 +67,13 @@ Having only one persistent back to top button ensures that users are able to scr
 We recommend retaining the “Back to top” text to ensure that users understand the button’s purpose.
 
 <div class="grid">
-  <uxdot-best-practice do>
+  <uxdot-best-practice variant="do">
     <uxdot-example slot="image" variant="full" width-adjustment="90px" no-border alignment="left">
       <img src="../back-to-top.svg" alt="Image of back to top button with “back to top” text and icon">
     </uxdot-example>
     <p>Keep the descriptive “Back to top” text in the button.</p>
   </uxdot-best-practice>
-  <uxdot-best-practice dont>
+  <uxdot-best-practice variant="dont">
     <uxdot-example slot="image" variant="full" width-adjustment="24px" no-border alignment="left">
       <img src="../back-to-top-icon-only.svg" alt="Image of back to top button with icon only" >
     </uxdot-example>
@@ -86,13 +86,13 @@ We recommend retaining the “Back to top” text to ensure that users understan
 Ensure that there is enough space between the button and the edges of the page for users to click it easily at any screen size. In addition to making it easier for users to click, this will also prevent the scrollbars from overlapping the button.
 
 <div class="grid">
-  <uxdot-best-practice do>
+  <uxdot-best-practice variant="do">
     <uxdot-example slot="image" variant="full" no-border alignment="left" width-adjustment="356px">
       <img src="../back-to-top-spacing-do.svg" alt="Image of back to top button enough spacing from scroll bars">
     </uxdot-example>
     <p>Add ample space between the right and bottom edges.</p>
   </uxdot-best-practice>
-  <uxdot-best-practice dont>
+  <uxdot-best-practice variant="dont">
     <uxdot-example slot="image" variant="full" no-border alignment="left" width-adjustment="356px">
       <img src="../back-to-top-spacing-dont.svg" alt="Image of back to top button with very little spacing next to scrollbars">
     </uxdot-example>

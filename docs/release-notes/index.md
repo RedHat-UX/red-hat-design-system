@@ -9,7 +9,7 @@ importElements:
 ---
 
 <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
-<link rel="stylesheet" href=" /assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
+<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
 
 <style>
   rh-tile {
@@ -25,12 +25,22 @@ importElements:
     --rh-icon-size: var(--rh-size-icon-03, 32px);
   }
 
-  [data-label="Change"] {
-    width: 30%;
-  }
+  @media (min-width: 768px) {
+    [data-label="Change"] {
+      width: 30%;
+    }
 
-  [data-label="Type"] {
-    width: 10%;
+    [data-label="Type"] {
+      width: 10%;
+    }
+  }
+  @media (max-width: 768px) {
+    rh-table thead ~ tbody tr :is(th, td) {
+      display: block;
+    }
+    rh-table thead ~ tbody tr :is(td,th):before {
+      margin-inline-end: var(--rh-length-2xs, 3px);
+    }
   }
 </style>
 
@@ -82,17 +92,17 @@ Released August 27, 2024
         <td data-label="Notes">Removed deprecated <code>&lt;rh-global-footer&gt;</code> element and deprecated <code>global</code> slot. Use <code>&lt;rh-footer-universal&gt;</code> element and <code>universal</code> slot.</td>
       </tr>
       <tr>
-        <td data-label="Change"><code>&lt;rh-cta&gt;</code> HTML API changes</td>
+        <td data-label="Change"><code>&lt;rh-cta&gt;</code> API changes</td>
         <td data-label="Type"><rh-tag color="red">Major</rh-tag></td>
         <td data-label="Notes">Removed read-only <code>cta</code> property; use <code>data-analytics</code> attributes instead.</td>
       </tr>
       <tr>
         <td data-label="Change"><code>&lt;rh-tabs&gt;</code> JavaScript API changes</td>
         <td data-label="Type"><rh-tag color="red">Major</rh-tag></td>
-        <td data-label="Notes">Removed deprectated <code>RhTabs.isTab()</code> and <code>RhTabs.isPanel()<code> static class methods.</td>
+        <td data-label="Notes">Removed deprectated <code>RhTabs.isTab()</code> and <code>RhTabs.isPanel()</code> static class methods.</td>
       </tr>
       <tr>
-        <td data-label="Change"><code>&lt;rh-tabs&gt;</code> API changes</td>
+        <td data-label="Change"><code>&lt;rh-tabs&gt;</code> HTML/CSS API changes</td>
         <td data-label="Type"><rh-tag color="red">Major</rh-tag></td>
         <td data-label="Notes">Removed deprectated <code>theme</code> attribute for the tabs and panels; use the <code>--rh-tabs-active-border-color</code> CSS property directly.</td>
       </tr>
@@ -254,7 +264,7 @@ Released April 22, 2024
       <tr>
         <td data-label="Change">Added <code>&lt;rh-skip-link&gt;</code></td>
         <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">A skip link is used to skip repetitive content on a page. It is hidden by default and can be activated by hitting the <kbd>Tab<kbd> key after loading/refreshing a page.</td>
+        <td data-label="Notes">A skip link is used to skip repetitive content on a page. It is hidden by default and can be activated by hitting the <kbd>Tab</kbd> key after loading/refreshing a page.</td>
       </tr>
       <tr>
         <td data-label="Change">Updated <code>&lt;rh-code-block&gt;</code></td>
@@ -324,7 +334,7 @@ Released January 11, 2024
       <tr>
         <td data-label="Change">Updated to <code>RH Tokens 2.0</code></td>
         <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">Uses RHDS Tokens version 2.0. <a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.3.0">See release notes</a> for important info regarding this update.</td>
+        <td data-label="Notes">Uses RHDS Tokens version 2.0. <a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.3.0">See v1.3 release notes</a> for important info regarding this update.</td>
       </tr>
       <tr>
         <td data-label="Change">Updated <code>&lt;rh-tabs-panel&gt;</code></td>

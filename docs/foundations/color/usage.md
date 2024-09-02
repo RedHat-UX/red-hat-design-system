@@ -233,14 +233,14 @@ Brand team first. If you need one or more custom design tokens, contact
 the [Design system](https://github.com/RedHat-UX/red-hat-design-system/discussions) team first. 
 
 <div class="grid sm-two-columns">
-  <uxdot-best-practice do>
+  <uxdot-best-practice variant="do">
     <uxdot-example slot="image" no-border variant="full" alignment="left">
       <img src="/assets/color/best-practices-custom-themes-correct.svg" alt="Blue submit button, blue default call to action, black tooltip, and blue switch">
     </uxdot-example>
     <p>Use the color variants already available for elements and patterns.</p>
   </uxdot-best-practice>
 
-  <uxdot-best-practice dont>
+  <uxdot-best-practice variant="dont">
     <uxdot-example slot="image" no-border variant="full" alignment="left">
       <img src="/assets/color/best-practices-custom-themes-wrong.svg" alt="Magenta button, brand red default call to action, green tooltip, and dark orange switch">
     </uxdot-example>
@@ -257,13 +257,13 @@ section of color or an image background with low contrast, consider
 using elements and patterns from the desaturated theme instead.
 
 <div class="grid sm-two-columns">
-  <uxdot-best-practice do>
+  <uxdot-best-practice variant="do">
     <uxdot-example slot="image" no-border variant="full" alignment="left">
       <img src="/assets/color/best-practices-sufficient-contrast-correct.svg" alt="Examples of a blue button against a light gray background and a red CTA against a black background">
     </uxdot-example>
     <p>Use a surface color token for background to ensure accessibility, or use a <a href="{{ '../accessibility/#tools' | url }}">tool</a> to check proper contrast.</p>
   </uxdot-best-practice>
-  <uxdot-best-practice dont>
+  <uxdot-best-practice variant="dont">
     <uxdot-example slot="image" no-border variant="full" alignment="left">
       <img src="{{ '/assets/color/best-practices-sufficient-contrast-wrong.svg' | url }}" alt="Examples of a blue button against a red background and a red CTA against a blue background">
     </uxdot-example>

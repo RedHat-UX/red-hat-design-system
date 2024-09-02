@@ -32,7 +32,7 @@ Surface elements are used only when another container like card or blockquote wo
 Avoid using surface inside of other containers. Use the appropriate `color-palette` on the container instead
 
 <div class="grid">
-  <uxdot-best-practice dont>
+  <uxdot-best-practice variant="dont">
     <uxdot-example slot="image">
       <h2>⚠️ Avoid</h2>
       <rh-surface color-palette="dark">
@@ -40,7 +40,7 @@ Avoid using surface inside of other containers. Use the appropriate `color-palet
       </rh-surface>
     </rh-card>
   </uxdot-best-practice>
-  <uxdot-best-practice do>
+  <uxdot-best-practice variant="do">
     <uxdot-example slot="image" color-palette="darkest">
       <h2>✅ Good</h2>
       <div>
