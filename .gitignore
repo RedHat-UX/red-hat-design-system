@@ -11,7 +11,6 @@ docs/assets/playgrounds/
 docs/assets/javascript/elements/*.js.map
 docs/assets/javascript/elements/*.d.ts
 docs/assets/javascript/elements/*.js
-!docs/assets/javascript/elements/uxdot-installation-tabs.js
 docs/_data/playgrounds.json
 
 # Build artifacts
