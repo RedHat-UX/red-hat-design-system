@@ -121,12 +121,12 @@ function table({ tokens, name = '', docs, options } = {}) {
               <uxdot-copy-button>--${token.name}</uxdot-copy-button>
             </td>
             <td data-label="Value">
-              ${( isDimension ? `<uxdot-copy-button>${token.$value}</uxdot-copy-button>`
-                : isColor ? `<uxdot-copy-button style="--color: ${token.$value}">${token.$value}</uxdot-copy-button> `
+              ${( isDimension ? `<code>${token.$value}<code>`
+                : isColor ? `<code style="--color: ${token.$value}">${token.$value}</code> `
                 : isWeight ? `
-                  <uxdot-copy-button class="numerical">${token.$value}</uxdot-copy-button>
-                  <uxdot-copy-button class="common">${token.attributes?.aliases?.[0] ?? ''}</uxdot-copy-button>`
-                : `<uxdot-copy-button>${token.$value}</uxdot-copy-button>`
+                  <code class="numerical">${token.$value}</code>
+                  <code class="common">${token.attributes?.aliases?.[0] ?? ''}</code>`
+                : `<code>${token.$value}</code>`
               )}
             </td>
             <td data-label="Use case">${token.$description ?? ''}</td>
@@ -154,7 +154,7 @@ function table({ tokens, name = '', docs, options } = {}) {
                       <td ${options.attrs({ type: 'name', token })} class="token name">
                         <uxdot-copy-button>--${token.name}-rgb</uxdot-copy-button>
                       </td>
-                      <td><uxdot-copy-button><code>rgb(${r}, ${g}, ${b})</code></uxdot-copy-button></td>
+                      <td><code>rgb(${r}, ${g}, ${b})</code></td>
                       <td>To modify opacity</td>
                       ${copyCell(token)}
                     </tr>
@@ -163,7 +163,7 @@ function table({ tokens, name = '', docs, options } = {}) {
                       <td ${options.attrs({ type: 'name', token })} class="token name">
                         <uxdot-copy-button>--${token.name}-hsl</uxdot-copy-button>
                       </td>
-                      <td><uxdot-copy-button>hsl(${h} ${s}% ${l}%)</uxdot-copy-button></td>
+                      <td><code>hsl(${h} ${s}% ${l}%)</code></td>
                       <td>To modify opacity</td>
                       ${copyCell(token)}
                     </tr>

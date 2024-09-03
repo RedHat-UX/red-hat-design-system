@@ -1,6 +1,8 @@
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 
+import { property } from 'lit/decorators/property.js';
+
 import styles from './rh-skip-link.css';
 
 /**
@@ -10,19 +12,21 @@ import styles from './rh-skip-link.css';
  *
  * @summary Skip to the main content of a page
  *
- * @slot - Place an anchor tag with an `href` that targets an ID of the main content on the page.
+ * @slot - An anchor tag targeting the main page content by id hash.
+ *         Or, if the `href` attribute is set, the text of the link.
  */
 @customElement('rh-skip-link')
 export class RhSkipLink extends LitElement {
   static shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
+
   static readonly styles = [styles];
 
+  @property({ reflect: true }) href?: string;
+
   render() {
-    return html`
-      <div id="container">
-        <slot></slot>
-      </div>
-    `;
+    return this.href ?
+        html`<a id="container" href="${this.href}"><slot></slot></a>`
+      : html`<div id="container"><slot></slot></div>`;
   }
 }
 
