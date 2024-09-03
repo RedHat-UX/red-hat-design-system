@@ -5,11 +5,8 @@ import '@rhds/elements/rh-icon/rh-icon.js';
  * to the top of a lengthy content page.
  *
  * @summary A shortcut to the top of the page content
- *
  * @csspart trigger - back to top link anchor element
-
  * @slot - Text for the back to top link
- *
  */
 export declare class RhBackToTop extends LitElement {
     #private;
