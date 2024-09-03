@@ -9,10 +9,11 @@ import { ContextChangeEvent } from '../rh-context-picker/rh-context-picker.js';
 import '@rhds/elements/rh-surface/rh-surface.js';
 
 import style from './rh-context-demo.css';
+import surfaceStyles from '@rhds/tokens/css/color-context-consumer.css';
 
 @customElement('rh-context-demo')
 export class RhContextDemo extends LitElement {
-  static readonly styles = [style];
+  static readonly styles = [style, surfaceStyles];
 
   static formAssociated = true;
 
