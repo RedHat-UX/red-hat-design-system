@@ -52,6 +52,7 @@ rules:
     - 100
     - ignorePattern: /--rh-font-family-/
 
+  rhds/deprecated: true
   rhds/token-values: true
 
   rhds/no-unknown-token-name:
@@ -118,7 +119,7 @@ rules:
   media-feature-range-notation: prefix
 
 plugins:
-  - ./node_modules/@rhds/tokens/plugins/stylelint.cjs
+  - ./node_modules/@rhds/tokens/plugins/stylelint.js
   - '@stylistic/stylelint-plugin'
 
 overrides:
