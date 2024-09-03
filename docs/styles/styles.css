@@ -35,22 +35,19 @@
   }
 
   a {
-    color: var(--rh-color-interactive-blue-darker);
+    color: var(--rh-color-interactive-primary-default-on-light);
   }
 
   a:hover {
-    color: var(--rh-color-interactive-blue-darkest);
+    color: var(--rh-color-interactive-primary-hover-on-light);
   }
 
   a:visited {
-    color: var(--rh-color-interactive-purple-darker);
+    color: var(--rh-color-interactive-primary-visited-default-on-light);
   }
 
   hr {
-    border-block-start:
-      var(--rh-border-width-sm)
-      solid
-      var(--rh-color-border-subtle-on-light);
+    border-block-start: var(--rh-border-width-sm) solid var(--rh-color-border-subtle-on-light);
     border-inline: none;
     border-block-end: none;
     margin-block-end: var(--rh-space-2xl);

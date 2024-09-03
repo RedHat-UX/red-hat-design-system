@@ -5,7 +5,7 @@
 .grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--rh-space-2xl, 32px);
+  gap: var(--rh-space-2xl);
 }
 
 @container container (min-width: 576px) {
@@ -31,6 +31,7 @@
 }
 
 /* content with image layout */
+
 /* TODO: possibly a separate layout pattern */
 .layout-content-image {
   grid-template-rows: auto;
@@ -56,3 +57,4 @@
     grid-template-areas: "image content";
   }
 }
+
