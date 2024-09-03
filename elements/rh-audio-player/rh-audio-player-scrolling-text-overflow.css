@@ -59,7 +59,7 @@ slot {
 #fade {
   position: absolute;
   height: 150%;
-  content: " ";
+  content: ' ';
   top: -25%;
   right: 0;
   width: 3em;

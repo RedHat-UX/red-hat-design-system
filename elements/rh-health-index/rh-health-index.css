@@ -118,7 +118,7 @@
 
 :is(.lg, .xl) .box:after {
   display: block;
-  content: "";
+  content: '';
   min-height: var(--rh-length-xs, 4px);
   z-index: 10;
   background-color: var(--_color-20);
@@ -132,7 +132,7 @@
 
 :is(.lg, .xl) .box.active:before {
   display: block;
-  content: "";
+  content: '';
   inset-inline: -1px;
   inset-block: -2px;
   z-index: -1;

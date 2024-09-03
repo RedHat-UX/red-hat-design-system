@@ -7,7 +7,7 @@
 
 /** Add the separator to blocks in the middle */
 :host(:not(:last-of-type, :first-of-type)):after {
-  content: "";
+  content: '';
   display: block;
   height: 1px;
   width: 100%;

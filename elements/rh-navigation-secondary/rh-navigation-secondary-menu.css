@@ -16,7 +16,7 @@
   padding: var(--rh-space-xl, 24px);
 }
 
-:host(:not([type="fixed-width"])) #sections {
+:host(:not([type='fixed-width'])) #sections {
   display: grid;
   grid-template-columns:
     var(
@@ -54,7 +54,7 @@
     overflow-y: scroll;
   }
 
-  :host([layout="fixed-width"]) #container {
+  :host([layout='fixed-width']) #container {
     position: absolute;
     inset: var(--_nav-height) auto auto auto;
     margin-top: 0;
@@ -67,7 +67,7 @@
     margin: auto;
   }
 
-  :host([layout="fixed-width"]) #sections {
+  :host([layout='fixed-width']) #sections {
     padding: var(--rh-space-2xl, 32px);
   }
 }

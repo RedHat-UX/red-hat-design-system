@@ -65,7 +65,7 @@
 }
 
 /* @todo: should I move these styles to light dom css file? */
-::slotted([slot="summary"]) {
+::slotted([slot='summary']) {
   display: block;
   padding: var(--rh-space-xl, 24px) var(--rh-space-lg, 16px) 0 var(--rh-space-lg, 16px);
   color: var(--rh-color-text-secondary-on-light, #4d4d4d);
@@ -76,6 +76,6 @@
   line-height: var(--rh-line-height-body-text, 1.5);
 }
 
-.dark ::slotted([slot="summary"]) {
+.dark ::slotted([slot='summary']) {
   color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
 }

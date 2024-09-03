@@ -31,8 +31,10 @@ export default pfeDevServerConfig({
     inputMap: {
       imports: {
         '@rhds/icons': './node_modules/@rhds/icons/icons.js',
-        '@rhds/tokens/css/color-context-consumer.css': './node_modules/@rhds/tokens/css/color-context-consumer.css',
-        '@rhds/tokens/css/color-context-provider.css': './node_modules/@rhds/tokens/css/color-context-provider.css',
+        '@rhds/tokens/css/color-context-consumer.css':
+          './node_modules/@rhds/tokens/css/color-context-consumer.css',
+        '@rhds/tokens/css/color-context-provider.css':
+          './node_modules/@rhds/tokens/css/color-context-provider.css',
         ...await resolveLocal('./lib/**/*.js', spec => [`@rhds/elements/${spec}`, `./${spec}`]),
         ...await resolveLocal('./elements/**/*.js', x => [`@rhds/elements/${x.replace('elements/', '')}`, `./${x}`]),
         // ...await getRhdsIconNodemodulesImports(import.meta.url),

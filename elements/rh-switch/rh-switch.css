@@ -48,7 +48,7 @@
 
 /* track */
 #switch:before {
-  content: "";
+  content: '';
   display: flex;
   position: absolute;
   width: 100%;
@@ -61,7 +61,7 @@
 
 /* handle */
 #switch:after {
-  content: "";
+  content: '';
   height: var(--_switch-handle-size);
   width: var(--_switch-handle-size);
   border-radius: var(--rh-border-radius-pill, 64px);
@@ -113,7 +113,7 @@ svg {
 }
 
 :host(:disabled) ::slotted(*),
-:host(:disabled) slot[name^="message"] span[aria-hidden] {
+:host(:disabled) slot[name^='message'] span[aria-hidden] {
   color: var(--rh-color-gray-50, #707070);
 }
 
@@ -135,7 +135,7 @@ svg {
 }
 
 :host(:disabled) .dark ::slotted(*),
-:host(:disabled) .dark slot[name^="message"] span[aria-hidden] {
+:host(:disabled) .dark slot[name^='message'] span[aria-hidden] {
   color: var(--rh-color-gray-40, #a3a3a3);
 }
 

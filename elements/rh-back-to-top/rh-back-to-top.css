@@ -4,7 +4,7 @@
   bottom: var(--rh-space-xl, 24px);
 }
 
-[part="trigger"] {
+[part='trigger'] {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -28,13 +28,16 @@
   border: var(--rh-border-width-md, 2px) solid transparent;
 }
 
-[part="trigger"]:is(:hover, :focus) {
-  outline: var(--rh-border-width-md, 2px) solid var(--rh-color-interactive-primary-hover-on-light, #003366);
+[part='trigger']:is(:hover, :focus) {
+  outline:
+    var(--rh-border-width-md, 2px)
+    solid
+    var(--rh-color-interactive-primary-hover-on-light, #003366);
   border: var(--rh-border-width-md, 2px) solid var(--rh-color-border-strong-on-dark, #ffffff);
   background-color: var(--rh-color-interactive-primary-hover-on-light, #003366);
 }
 
-[part="trigger"][hidden] {
+[part='trigger'][hidden] {
   display: none;
 }
 

@@ -20,7 +20,7 @@
   z-index: var(--rh-navigation-secondary-z-index, 102);
 }
 
-:host([color-palette="dark"]) {
+:host([color-palette='dark']) {
   --_current-active-child-border-color: var(--rh-color-brand-red-on-dark, #ee0000);
 }
 
@@ -50,8 +50,8 @@ nav.rtl {
     max-content;
   grid-template-columns: 1fr max-content;
   grid-template-areas:
-    "logo menu"
-    "main main";
+    'logo menu'
+    'main main';
   height: fit-content;
   min-height: var(--_min-height);
   max-height: 100vh;
@@ -66,17 +66,17 @@ rh-surface {
   width: 100%;
 }
 
-::slotted([slot="nav"]),
-::slotted([slot="cta"]) {
+::slotted([slot='nav']),
+::slotted([slot='cta']) {
   grid-area: unset !important;
 }
 
-#container.expanded ::slotted([slot="nav"]),
-#container.expanded ::slotted([slot="cta"]) {
+#container.expanded ::slotted([slot='nav']),
+#container.expanded ::slotted([slot='cta']) {
   display: flex !important;
 }
 
-#container.expanded ::slotted([slot="nav"]) {
+#container.expanded ::slotted([slot='nav']) {
   list-style: none;
   flex-direction: column;
   padding: 2rem 1rem 0;
@@ -88,7 +88,7 @@ rh-surface {
   margin: 0 !important;
 }
 
-#container.expanded ::slotted([slot="cta"]) {
+#container.expanded ::slotted([slot='cta']) {
   padding: 2rem 1rem;
 }
 
@@ -114,7 +114,7 @@ button:hover {
 
 button:after {
   box-sizing: content-box !important;
-  content: "";
+  content: '';
   display: block;
   width: var(--_chevron-size);
   height: var(--_chevron-size);
@@ -123,7 +123,7 @@ button:after {
   transform: var(--_chevron-transform-collapsed);
 }
 
-button[aria-expanded="true"]:after {
+button[aria-expanded='true']:after {
   transform: var(--_chevron-transform-expanded);
 }
 
@@ -131,13 +131,13 @@ button:focus {
   border-block-start-color: var(--rh-color-text-brand-on-light, #ee0000);
 }
 
-:host([color-palette="dark"]) button {
+:host([color-palette='dark']) button {
   background-color: var(--rh-color-surface);
 }
 
 button:active,
-button[aria-expanded="true"],
-:host([color-palette="dark"]) button[aria-expanded="true"] {
+button[aria-expanded='true'],
+:host([color-palette='dark']) button[aria-expanded='true'] {
   --_chevron-color: var(--rh-color-text-primary-on-light, #151515);
 
   color: var(--rh-color-text-primary-on-light, #151515);
@@ -146,11 +146,11 @@ button[aria-expanded="true"],
   border-block-end: none;
 }
 
-:host([color-palette="dark"]) button:active {
+:host([color-palette='dark']) button:active {
   color: var(--rh-color-text-primary-on-dark, #ffffff);
 }
 
-:host([color-palette="dark"]) button[aria-expanded="true"]:active {
+:host([color-palette='dark']) button[aria-expanded='true']:active {
   color: var(--rh-color-text-primary-on-light, #151515);
 }
 
@@ -159,14 +159,14 @@ button[aria-expanded="true"],
     margin-inline-end: var(--rh-space-2xl, 32px);
   }
 
-  #container.expanded ::slotted([slot="nav"]) {
+  #container.expanded ::slotted([slot='nav']) {
     padding:
       var(--rh-space-2xl, 32px)
       var(--rh-space-2xl, 32px)
       0 !important;
   }
 
-  #container.expanded ::slotted([slot="cta"]) {
+  #container.expanded ::slotted([slot='cta']) {
     padding: var(--rh-space-2xl, 32px) !important;
   }
 }
@@ -177,7 +177,7 @@ button[aria-expanded="true"],
   }
 
   #container {
-    grid-template-areas: "logo main";
+    grid-template-areas: 'logo main';
     grid-template-rows: auto;
     grid-template-columns: max-content 1fr;
     height: 100%;
@@ -190,7 +190,7 @@ button[aria-expanded="true"],
     justify-content: space-between;
   }
 
-  #container.expanded ::slotted([slot="nav"]) {
+  #container.expanded ::slotted([slot='nav']) {
     max-height: calc(100vh - var(--_nav-min-height));
   }
 

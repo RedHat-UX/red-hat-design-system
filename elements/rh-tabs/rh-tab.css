@@ -16,7 +16,7 @@
     var(--rh-color-surface);
 }
 
-.vertical [part="text"] {
+.vertical [part='text'] {
   max-width: 100%;
   overflow-wrap: break-word;
 }
@@ -25,7 +25,7 @@
   display: none !important;
 }
 
-slot[name="icon"] {
+slot[name='icon'] {
   display: block;
 }
 
@@ -59,7 +59,7 @@ slot[name="icon"] {
 #button:after {
   position: absolute;
   inset: 0;
-  content: "";
+  content: '';
   border-style: solid;
   padding: 0;
   margin: 0;
@@ -93,7 +93,7 @@ slot[name="icon"] {
   pointer-events: none;
 }
 
-:host([aria-disabled="true"]) #button {
+:host([aria-disabled='true']) #button {
   cursor: default;
 }
 
@@ -133,7 +133,7 @@ slot[name="icon"] {
   text-align: start;
 }
 
-[part="icon"] {
+[part='icon'] {
   margin-inline-end: var(--rh-space-md, 8px);
 }
 

@@ -26,8 +26,8 @@
   grid-template-columns: min-content minmax(max-content, 250px);
   grid-template-rows: min-content min-content;
   grid-template-areas:
-    "a t"
-    "a s";
+    'a t'
+    'a s';
 }
 
 #title {
@@ -45,20 +45,20 @@
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
 }
 
-:host([layout="block"]) #container,
+:host([layout='block']) #container,
 #container.mobile {
   text-align: center;
   place-items: center;
   gap: 0;
   grid-template-columns: minmax(max-content, 250px);
-  grid-template-areas: "a" "t" "s";
+  grid-template-areas: 'a' 't' 's';
   grid-template-rows:
     minmax(var(--rh-avatar-size, var(--rh-size-icon-06, 64px)), var(--rh-size-icon-06, 64px))
     min-content
     auto;
 }
 
-:host([layout="block"]) :is(img, canvas, svg),
+:host([layout='block']) :is(img, canvas, svg),
 #container.mobile :is(img, canvas, svg) {
   margin-block-end: var(--rh-space-lg, 16px);
 }
@@ -73,13 +73,18 @@ slot {
   text-decoration: none;
 }
 
-::slotted(a:visited) { color: var(--rh-color-interactive-primary-visited-default-on-light, #5e40be); }
+::slotted(a:visited) {
+  color: var(--rh-color-interactive-primary-visited-default-on-light, #5e40be);
+}
 
 ::slotted(a:active),
 ::slotted(a:hover) { color: var(--rh-color-interactive-primary-hover-on-light, #003366); }
 
 .dark ::slotted(a) { color: var(--rh-color-interactive-primary-default-on-dark, #92c5f9); }
-.dark ::slotted(a:visited) { color: var(--rh-color-interactive-primary-visited-default-on-dark, #b6a6e9); }
+
+.dark ::slotted(a:visited) {
+  color: var(--rh-color-interactive-primary-visited-default-on-dark, #b6a6e9);
+}
 
 .dark ::slotted(a:active),
 .dark ::slotted(a:hover) { color: var(--rh-color-interactive-primary-hover-on-dark, #b9dafc); }

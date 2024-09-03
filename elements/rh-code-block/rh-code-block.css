@@ -70,8 +70,8 @@
   place-items: center;
   grid-template-columns: auto min-content;
   grid-template-areas:
-    "code actions"
-    "expand expand";
+    'code actions'
+    'expand expand';
   column-gap: var(--_code-main-spacer);
   padding-inline-start: var(--_code-main-spacer);
   padding-block-end: var(--_code-main-spacer);
@@ -118,7 +118,7 @@
   display: grid;
   column-gap: var(--rh-space-lg, 16px);
   grid-area: code;
-  grid-template-areas: "lines code";
+  grid-template-areas: 'lines code';
   grid-template-columns: min-content 1fr;
   grid-template-rows: 1fr;
   position: relative;
@@ -210,7 +210,7 @@
 }
 
 .truncated #content-lines:before {
-  content: "";
+  content: '';
   display: block;
   position: sticky;
   z-index: 2;
@@ -232,7 +232,7 @@
 }
 
 :not(.wrap) #actions:before {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   z-index: 2;
@@ -273,7 +273,7 @@
   --_block-end-overflow-gradient: linear-gradient(0deg, #292929 0%, rgba(41, 41, 41, 0) 100%);
 }
 
-[name="legend"]::slotted(dl) {
+[name='legend']::slotted(dl) {
   display: grid;
   grid-template-columns: max-content auto;
   margin-block: var(--rh-space-lg, 16px);

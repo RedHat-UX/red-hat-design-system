@@ -20,27 +20,27 @@
   padding-right: var(--rh-space-md, 8px);
 }
 
-:host([state="info"]) {
+:host([state='info']) {
   --_color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_background-color: var(--rh-color-accent-base-on-light, #0066cc);
 }
 
-:host([state="success"]) {
+:host([state='success']) {
   --_color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_background-color: var(--rh-color-green-60, #3d7317);
 }
 
-:host([state="moderate"]) {
+:host([state='moderate']) {
   --_color: var(--rh-color-text-primary-on-light, #151515);
   --_background-color: var(--rh-color-yellow-40, #dca614);
 }
 
-:host([state="important"]) {
+:host([state='important']) {
   --_color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_background-color: var(--rh-color-red-60, #a60000);
 }
 
-:host([state="critical"]) {
+:host([state='critical']) {
   --_color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_background-color: var(--rh-color-red-60, #a60000);
 }

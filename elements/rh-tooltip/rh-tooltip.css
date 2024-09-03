@@ -82,7 +82,7 @@
 
 #tooltip:after {
   display: block;
-  content: "";
+  content: '';
   rotate: 45deg;
   width: var(--_floating-arrow-size);
   height: var(--_floating-arrow-size);
@@ -128,9 +128,9 @@
 .right.end #tooltip:after { bottom: var(--_floating-arrow-size); }
 .bottom.end #tooltip:after { right: var(--_floating-arrow-size); }
 
-:host([position="left"]),
-:host([position="right"]) {
-  --_text-alignment: "start";
+:host([position='left']),
+:host([position='right']) {
+  --_text-alignment: 'start';
 }
 
 .dark {

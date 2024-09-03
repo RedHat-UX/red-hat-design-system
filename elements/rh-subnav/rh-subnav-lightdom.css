@@ -13,7 +13,7 @@ rh-subnav:not(:defined) a {
 }
 
 rh-subnav:not(:defined) a:after {
-  content: "" !important;
+  content: '' !important;
   position: absolute !important;
   inset: 0 !important;
   width: 100% !important;
