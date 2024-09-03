@@ -5,6 +5,7 @@
 `<rh-subnav>`:
  - removed Roving Tabindex keyboard navigation in favor of tab based navigation.
  - add `accessible-label` attribute to explicitly label landmark.
+ - corrects overflow icons
 
  ```
  <rh-subnav accessible-label="Customer service">
