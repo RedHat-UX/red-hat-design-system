@@ -1,11 +1,11 @@
 import { LitElement, html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
+import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { query } from 'lit/decorators/query.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 import { property } from 'lit/decorators/property.js';
 
-import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 import { OverflowController } from '@patternfly/pfe-core/controllers/overflow-controller.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
@@ -14,6 +14,7 @@ import { colorContextProvider, type ColorPalette } from '../../lib/context/color
 import '@rhds/elements/rh-icon/rh-icon.js';
 
 import styles from './rh-subnav.css';
+
 
 /**
  * A subnavigation allows users to navigate between a small number of page links.
@@ -27,13 +28,13 @@ export class RhSubnav extends LitElement {
   static readonly styles = [styles];
 
   /** Icon name to use for the scroll left button */
-  protected static readonly scrollIconLeft: string = 'arrow-left';
+  protected static readonly scrollIconLeft = 'caret-left';
 
   /** Icon name to use for the scroll right button */
-  protected static readonly scrollIconRight: string = 'arrow-right';
+  protected static readonly scrollIconRight = 'caret-right';
 
   /** Icon set to use for the scroll buttons */
-  protected static readonly scrollIconSet: string = 'ui';
+  protected static readonly scrollIconSet = 'ui';
 
   private static instances = new Set<RhSubnav>();
 
@@ -63,19 +64,15 @@ export class RhSubnav extends LitElement {
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
+  @property({ attribute: 'accessible-label' }) accessibleLabel = 'subnavigation';
+
   @queryAssignedElements() private links!: HTMLAnchorElement[];
 
   @query('[part="links"]') private linkList!: HTMLElement;
 
   #allLinkElements: HTMLAnchorElement[] = [];
 
-  #tabindex = RovingTabindexController.of(this, {
-    getItems: () => this.#allLinks,
-  });
-
   #overflow = new OverflowController(this);
-
-  #mo = new MutationObserver(() => this.#update());
 
   get #allLinks() {
     return this.#allLinkElements;
@@ -94,21 +91,14 @@ export class RhSubnav extends LitElement {
     return this.#allLinks.at(-1) as HTMLAnchorElement;
   }
 
-  get #activeItem(): HTMLAnchorElement {
-    const activeLink = this.#allLinks.find(link => link.matches('[active]'));
-    return activeLink ?? this.#firstLink;
-  }
-
   connectedCallback() {
     super.connectedCallback();
     RhSubnav.instances.add(this);
-    this.#mo.observe(this, { subtree: true, attributes: true, attributeFilter: ['active'] });
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
     RhSubnav.instances.delete(this);
-    this.#mo.disconnect();
   }
 
   render() {
@@ -116,7 +106,7 @@ export class RhSubnav extends LitElement {
     const { showScrollButtons } = this.#overflow;
     const { on = '' } = this;
     return html`
-      <nav part="container" class="${classMap({ [on]: !!on })}">${!showScrollButtons ? '' : html`
+      <nav part="container" aria-label="${this.accessibleLabel}" class="${classMap({ [on]: !!on })}">${!showScrollButtons ? '' : html`
         <button id="previous" tabindex="-1" aria-hidden="true"
                 ?disabled="${!this.#overflow.overflowLeft}"
                 @click="${this.#scrollLeft}">
@@ -139,15 +129,10 @@ export class RhSubnav extends LitElement {
     this.linkList.addEventListener('scroll', this.#overflow.onScroll.bind(this));
   }
 
-  #update() {
-    this.#tabindex.atFocusedItemIndex = this.#allLinks.indexOf(this.#activeItem);
-  }
-
   #onSlotchange() {
     this.#allLinks = this.links;
     this.#overflow.init(this.linkList, this.#allLinks);
     this.#firstLastClasses();
-    this.#update();
   }
 
   #firstLastClasses() {
