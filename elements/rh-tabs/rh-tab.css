@@ -7,13 +7,13 @@
         --_active-tab-border-color,
         var(
           --rh-tabs-active-border-color,
-          var(--rh-color-accent-brand-on-light, #ee0000)
+          var(--rh-color-accent-brand)
         )
       );
   --_active-tab-border-open:
     var(--rh-border-width-sm, 1px)
     solid
-    var(--rh-color-surface, var(--rh-color-surface-lightest, #ffffff));
+    var(--rh-color-surface);
 }
 
 .vertical [part="text"] {
@@ -30,12 +30,8 @@ slot[name="icon"] {
 }
 
 #button {
-  --_button-text-color:
-    var(
-        --rh-tabs-link-color,
-        var(--rh-color-text-secondary-on-light, #4d4d4d)
-      );
-  --_button-focus-outline-color: var(--rh-color-border-interactive-on-light, #0066cc);
+  --_button-text-color: var(--rh-tabs-link-color, var(--rh-color-text-secondary));
+  --_button-focus-outline-color: var(--rh-color-border-interactive);
 
   margin: 0;
   font-family: inherit;
@@ -106,34 +102,22 @@ slot[name="icon"] {
 }
 
 :host(:is(:focus, :focus-visible)) #button {
-  outline: 1px auto var(--rh-color-interactive-blue-darker, #0066cc);
+  outline: 1px auto var(--rh-color-interactive-primary-default);
   outline-offset: calc(var(--rh-space-md, 8px) * -1);
 }
 
 #button.dark {
-  --_button-text-color:
-    var(
-        --rh-tabs-link-color,
-        var(--rh-color-text-secondary-on-dark, #c7c7c7)
-      );
-  --_button-focus-outline-color: var(--rh-color-border-interactive-on-dark, #92c5f9);
+  --_button-text-color: var(--rh-tabs-link-color, var(--rh-color-text-secondary));
+  --_button-focus-outline-color: var(--rh-color-border-interactive);
 }
 
 /* Context switch on attributes */
 #button.active {
-  --_button-text-color:
-    var(
-        --rh-tabs-link-color,
-        var(--rh-color-text-primary-on-light, #151515)
-      );
+  --_button-text-color: var(--rh-tabs-link-color, var(--rh-color-text-primary));
 }
 
 #button.active.dark {
-  --_button-text-color:
-    var(
-        --rh-tabs-link-color,
-        var(--rh-color-text-primary-on-dark, #ffffff)
-      );
+  --_button-text-color: var(--rh-tabs-link-color, var(--rh-color-text-primary));
 }
 
 /* Box context */

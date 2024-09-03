@@ -20,7 +20,7 @@ rh-pagination li > a {
   border: var(--rh-border-width-sm, 1px) solid transparent;
   color: var(--_rh-pagination-list-a-text-color, var(--rh-color-text-primary-on-light, #151515));
   display: grid;
-  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-xl, 1.25rem);
   height: var(--_link-size);
   place-content: center;
@@ -40,7 +40,7 @@ rh-pagination li > a:focus {
   outline-color:
     var(
         --rh-pagination-accent-color,
-        var(--rh-color-interactive-blue-darker, #0066cc)
+        var(--rh-color-interactive-primary-default-on-light, #0066cc)
       );
 }
 

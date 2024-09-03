@@ -1,5 +1,5 @@
 :host {
-  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-md, 1rem);
   font-weight: var(--rh-font-weight-heading-regular, 300);
   line-height: var(--rh-line-height-body-text, 1.5);
@@ -51,7 +51,7 @@
   --_focus-interactive-color:
     var(
         --rh-tile-focus-interactive-color,
-        var(--rh-color-interactive-blue-darkest, #003366)
+        var(--rh-color-interactive-primary-hover-on-light, #003366)
       );
   --_text-color: var(--rh-tile-text-color, var(--rh-color-text-primary-on-light, #151515));
   --_text-color-secondary:
@@ -83,7 +83,7 @@
   --_focus-interactive-color:
     var(
         --rh-tile-focus-interactive-color,
-        var(--rh-color-interactive-blue-lightest, #b9dafc)
+        var(--rh-color-interactive-primary-hover-on-dark, #b9dafc)
       );
   --_text-color: var(--rh-tile-text-color, var(--rh-color-text-primary-on-dark, #ffffff));
   --_text-color-secondary:

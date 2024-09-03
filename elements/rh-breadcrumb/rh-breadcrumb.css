@@ -6,37 +6,37 @@
   --_breadcrumb-link-color:
     var(
         --rh-breadcrumb-link-color,
-        var(--rh-color-interactive-blue-darker, #0066cc)
+        var(--rh-color-interactive-primary-default)
       );
   --_breadcrumb-link-color-current-page:
     var(
         --rh-breadcrumb-link-color-current-page,
-        var(--rh-color-text-primary-on-light, #151515)
+        var(--rh-color-text-primary)
       );
   --_breadcrumb-link-color-current-page-subtle:
     var(
         --rh-breadcrumb-link-color-current-page-subtle,
-        var(--rh-color-text-secondary-on-light, #4d4d4d)
+        var(--rh-color-text-secondary)
       );
   --_breadcrumb-link-color-hover:
     var(
         --rh-breadcrumb-link-color-hover,
-        var(--rh-color-interactive-blue-darkest, #003366)
+        var(--rh-color-interactive-primary-hover)
       );
   --_breadcrumb-link-color-visited:
     var(
         --rh-breadcrumb-link-color-visited,
-        var(--rh-color-interactive-purple-darker, #5e40be)
+        var(--rh-color-interactive-primary-visited-default)
       );
   --_breadcrumb-link-color-visited-hover:
     var(
         --rh-breadcrumb-link-color-visited-hover,
-        var(--rh-color-interactive-purple-darkest, #21134d)
+        var(--rh-color-interactive-primary-visited-hover)
       );
   --_breadcrumb-link-focus-outline-color:
     var(
         --rh-breadcrumb-link-focus-outline-color,
-        var(--rh-color-border-interactive-on-light, #0066cc)
+        var(--rh-color-border-interactive)
       );
 
   display: block;
@@ -50,36 +50,36 @@
   --_breadcrumb-link-color:
     var(
         --rh-breadcrumb-link-color,
-        var(--rh-color-interactive-blue-lighter, #92c5f9)
+        var(--rh-color-interactive-primary-default)
       );
   --_breadcrumb-link-color-current-page:
     var(
         --rh-breadcrumb-link-color-current-page,
-        var(--rh-color-text-primary-on-dark, #ffffff)
+        var(--rh-color-text-primary)
       );
   --_breadcrumb-link-color-current-page-subtle:
     var(
         --rh-breadcrumb-link-color-current-page-subtle,
-        var(--rh-color-text-secondary-on-dark, #c7c7c7)
+        var(--rh-color-text-secondary)
       );
   --_breadcrumb-link-color-hover:
     var(
         --rh-breadcrumb-link-color-hover,
-        var(--rh-color-interactive-blue-lightest, #b9dafc)
+        var(--rh-color-interactive-primary-hover)
       );
   --_breadcrumb-link-color-visited:
     var(
         --rh-breadcrumb-link-color-visited,
-        var(--rh-color-interactive-purple-lighter, #b6a6e9)
+        var(--rh-color-interactive-primary-visited-default)
       );
   --_breadcrumb-link-color-visited-hover:
     var(
         --rh-breadcrumb-link-color-visited-hover,
-        var(--rh-color-interactive-purple-lightest, #ece6ff)
+        var(--rh-color-interactive-primary-visited-hover)
       );
   --_breadcrumb-link-focus-outline-color:
     var(
         --rh-breadcrumb-link-focus-outline-color,
-        var(--rh-color-border-interactive-on-dark, #92c5f9)
+        var(--rh-color-border-interactive)
       );
 }

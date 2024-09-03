@@ -1,20 +1,20 @@
 :is(rh-footer, rh-footer-universal) a {
-  color: var(--rh-color-interactive-blue-lighter, #92c5f9);
+  color: var(--rh-color-interactive-primary-default-on-dark, #92c5f9);
   text-decoration: none;
 }
 
 :is(rh-footer, rh-footer-universal) a:hover {
-  color: var(--rh-color-interactive-blue-lightest, #b9dafc);
+  color: var(--rh-color-interactive-primary-hover-on-dark, #b9dafc);
   text-decoration: underline;
 }
 
 :is(rh-footer, rh-footer-universal) a:is(:focus, :focus-within) {
-  color: var(--rh-color-interactive-blue-lightest, #b9dafc);
+  color: var(--rh-color-interactive-primary-hover-on-dark, #b9dafc);
   text-decoration: underline;
 }
 
 :is(rh-footer, rh-footer-universal) a:visited {
-  color: var(--rh-color-interactive-blue-lightest, #b9dafc);
+  color: var(--rh-color-interactive-primary-hover-on-dark, #b9dafc);
   text-decoration: none;
 }
 
@@ -31,7 +31,7 @@
 }
 
 :is(rh-footer, rh-footer-universal) :is(h1, h2, h3, h4, h5, h6) {
-  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   line-height: var(--rh-line-height-heading, 1.3);
 }
 

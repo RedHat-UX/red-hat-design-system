@@ -3,7 +3,7 @@
   --_border-color: var(--rh-color-teal-50, #37a3a3);
   --_header-color: var(--rh-color-teal-70, #004d4d);
   --_icon-color: var(--rh-color-teal-50, #37a3a3);
-  --_font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  --_font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
 
   display: block;
   max-width: var(--_max-width, initial);
@@ -109,7 +109,7 @@ footer ::slotted([slot="actions"]:not(rh-button[variant="link" i])) {
   padding: 0 !important;
   border: none !important;
   background-color: transparent !important;
-  color: var(--rh-color-interactive-blue-darker, #0066cc) !important;
+  color: var(--rh-color-interactive-primary-default-on-light, #0066cc) !important;
   font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
   font-family: var(--_font-family) !important;
 }
@@ -117,13 +117,13 @@ footer ::slotted([slot="actions"]:not(rh-button[variant="link" i])) {
 /* TODO: separate focus and hover styles */
 footer ::slotted([slot="actions"]:focus) {
   text-decoration: underline !important;
-  color: var(--rh-color-interactive-blue-darkest, #003366) !important;
+  color: var(--rh-color-interactive-primary-hover-on-light, #003366) !important;
 }
 
 footer ::slotted([slot="actions"]:hover) {
   cursor: pointer !important;
   text-decoration: underline !important;
-  color: var(--rh-color-interactive-blue-darkest, #003366) !important;
+  color: var(--rh-color-interactive-primary-hover-on-light, #003366) !important;
 }
 
 footer ::slotted(rh-button[variant="link" i]) {

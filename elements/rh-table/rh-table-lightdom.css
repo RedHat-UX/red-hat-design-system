@@ -57,17 +57,17 @@ rh-table :is(tr, col) {
 }
 
 rh-table a {
-  color: var(--rh-color-interactive-blue-darker, #0066cc);
+  color: var(--rh-color-interactive-primary-default-on-light, #0066cc);
   text-decoration: none;
 }
 
 rh-table a:hover {
-  color: var(--rh-color-interactive-blue-darkest, #003366);
+  color: var(--rh-color-interactive-primary-hover-on-light, #003366);
   text-decoration: underline;
 }
 
 rh-table caption {
-  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   font-weight: var(--rh-font-weight-heading-bold, 700);
   line-height: var(--rh-line-height-body-text, 1.5);

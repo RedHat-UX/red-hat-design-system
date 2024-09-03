@@ -103,19 +103,19 @@ button:disabled {
 #rhds-container {
   display: contents;
 
-  --_border-color: var(--rh-tabs-border-color, var(--rh-color-border-subtle-on-light, #c7c7c7));
-  --_arrow-color: var(--rh-color-accent-base-on-light, #0066cc);
-  --_overflow-button-text-color: var(--rh-color-text-secondary-on-light, #4d4d4d);
+  --_border-color: var(--rh-tabs-border-color, var(--rh-color-border-subtle));
+  --_arrow-color: var(--rh-color-accent-base);
+  --_overflow-button-text-color: var(--rh-color-text-secondary);
   --_overflow-button-disabled-text-color: #d2d2d2;
-  --_overflow-button-hover-text-color: var(--rh-color-text-primary-on-light, #151515);
+  --_overflow-button-hover-text-color: var(--rh-color-text-primary);
 }
 
 #rhds-container.dark {
-  --_border-color: var(--rh-tabs-border-color, var(--rh-color-border-subtle-on-dark, #707070));
-  --_arrow-color: var(--rh-color-accent-base-on-dark, #92c5f9);
-  --_overflow-button-text-color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
+  --_border-color: var(--rh-tabs-border-color, var(--rh-color-border-subtle));
+  --_arrow-color: var(--rh-color-accent-base);
+  --_overflow-button-text-color: var(--rh-color-text-secondary);
   --_overflow-button-disabled-text-color: var(--rh-color-gray-50, #707070);
-  --_overflow-button-hover-text-color: var(--rh-color-text-primary-on-dark, #ffffff);
+  --_overflow-button-hover-text-color: var(--rh-color-text-primary);
 }
 
 :host(:is([centered], [box="inset"])) [part="tabs"] {
@@ -158,7 +158,7 @@ button:disabled {
 
 #previousTab:hover,
 #nextTab:hover {
-  color: var(--_overflow-button-hover-text-color, var(--rh-color-text-primary-on-light, #151515));
+  color: var(--_overflow-button-hover-text-color, var(--rh-color-text-primary));
 }
 
 #previousTab:before,

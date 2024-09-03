@@ -4,7 +4,7 @@
 
 [part="container"] {
   display: flex;
-  background-color: var(--rh-color-surface, var(--rh-color-surface-lighter, #f2f2f2));
+  background-color: var(--rh-color-surface);
 }
 
 [part="container"]:not(.dark),
@@ -97,7 +97,7 @@
     solid
     var(
         --_subnav-link-focus-outline-color,
-        var(--rh-color-interactive-blue-darker, #0066cc)
+        var(--rh-color-interactive-primary-default-on-light, #0066cc)
       ) !important;
   outline-offset: -8px !important;
   border-radius: 10px !important;

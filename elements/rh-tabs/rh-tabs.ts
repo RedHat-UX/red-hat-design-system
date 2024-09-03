@@ -185,7 +185,7 @@ export class RhTabs extends LitElement {
     const { on = '' } = this;
     const rtl = this.#dir.dir === 'rtl';
     return html`
-      <div id="rhds-container" class="${classMap({ [on]: !!on, rtl })}">
+      <div id="rhds-container" class="${classMap({ on: true, [on]: !!on, rtl })}">
         <div part="container" class="${classMap({ overflow: this.#overflow.showScrollButtons })}">
           <div part="tabs-container">${!this.#overflow.showScrollButtons ? '' : html`
             <button id="previousTab" tabindex="-1"
