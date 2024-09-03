@@ -110,14 +110,14 @@ To avoid confusion, write link text with the same severity as the status icon.
 Always include a status icon, it helps communicate severity visually.
 
 <div class="grid icons">
-  <uxdot-best-practice do>
+  <uxdot-best-practice variant="do">
     <uxdot-example color-palette="darkest" width-adjustment="200px" slot="image">
       <img src="{{ '../site-status-icons-do.svg' | url }}" alt="Image of a site status element with a correct usage of a green checkmark icon and the text 'All systems operational'.">
     </uxdot-example>
     <p>Include an icon to make it easier for users to understand.</p>
   </uxdot-best-practice>
 
-  <uxdot-best-practice dont>
+  <uxdot-best-practice variant="dont">
     <uxdot-example color-palette="darkest" width-adjustment="176px" slot="image">
       <img src="{{ '../site-status-icons-dont-no-icon.svg' | url }}" alt="Image of a site status element with an incorrect usage of an orange red exclamation point icon and the text 'All systems operational'.">
     </uxdot-example>
