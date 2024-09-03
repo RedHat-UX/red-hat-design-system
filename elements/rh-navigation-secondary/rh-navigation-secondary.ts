@@ -93,12 +93,6 @@ export class RhNavigationSecondary extends LitElement {
   /** Compact mode  */
   #compact = false;
 
-  get #items() {
-    return this._nav?.flatMap(slotted =>
-      Array.from(slotted.querySelectorAll<HTMLAnchorElement>(`rh-navigation-secondary-dropdown > a,
-                                                              [slot="nav"] > li > a`))) ?? [];
-  }
-
   #internals = InternalsController.of(this, { role: 'navigation' });
 
   /**
