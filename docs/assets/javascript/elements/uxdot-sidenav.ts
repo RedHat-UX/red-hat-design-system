@@ -4,8 +4,6 @@ import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
-import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
-
 import '@rhds/elements/rh-icon/rh-icon.js';
 
 import styles from './uxdot-sidenav.css';
@@ -28,15 +26,6 @@ export class UxdotSideNav extends LitElement {
 
   #closeButton: HTMLElement | null = null;
 
-  #tabindex = RovingTabindexController.of(this, {
-    getItems: () => isServer ? [] : this.shadowRoot?.querySelector('slot')
-        ?.assignedElements({ flatten: true })
-        ?.flatMap(slotted => Array.from(slotted.querySelectorAll<UxdotSideNavItem>([
-          'uxdot-sidenav-dropdown > details > summary',
-          'uxdot-sidenav-item',
-          'details[open] uxdot-sidenav-dropdown-menu-item',
-        ].join()))) ?? [],
-  });
 
   async connectedCallback() {
     super.connectedCallback();
@@ -48,7 +37,6 @@ export class UxdotSideNav extends LitElement {
     if (!isServer) {
       this.#triggerElement?.addEventListener('click', this.#onTriggerClick.bind(this));
       this.addEventListener('click', this.#onClick.bind(this));
-      this.addEventListener('expand', this.#onExpandRequest);
       this.addEventListener('keydown', this.#onKeydown.bind(this));
       window.addEventListener('keyup', this.#onKeyup.bind(this));
     }
@@ -106,13 +94,6 @@ export class UxdotSideNav extends LitElement {
     const path = event.composedPath();
     if (!path.includes(this)) {
       this.toggle();
-    }
-  }
-
-  async #onExpandRequest(event: Event) {
-    if (event.target instanceof UxdotSideNavDropdown) {
-      this.#tabindex.atFocusedItemIndex =
-        this.#tabindex.items.indexOf(event.target.querySelector('summary') as UxdotSideNavItem);
     }
   }
 
