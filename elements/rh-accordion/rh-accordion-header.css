@@ -51,7 +51,7 @@ a {
 #button,
 #button:before,
 #button:after {
-  background-color: var(--rh-surface-color);
+  background-color: var(--rh-color-surface);
 }
 
 #icon {
