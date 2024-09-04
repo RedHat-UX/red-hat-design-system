@@ -2,6 +2,10 @@ extends:
   - stylelint-config-standard
   - '@stylistic/stylelint-config'
 
+plugins:
+  - ./node_modules/@rhds/tokens/plugins/stylelint.js
+  - '@stylistic/stylelint-plugin'
+
 ignoreFiles:
   - node_modules/**/*
 
@@ -117,10 +121,6 @@ rules:
       --rh-color-black: --rh-color-gray-100
 
   media-feature-range-notation: prefix
-
-plugins:
-  - ./node_modules/@rhds/tokens/plugins/stylelint.js
-  - '@stylistic/stylelint-plugin'
 
 overrides:
   - files:
