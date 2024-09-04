@@ -35,7 +35,7 @@
           "header header"
           "content aside";
 
-        & aside {
+        & .aside {
           height: max-content;
           max-width: 320px;
           padding-inline: 0 var(--rh-space-2xl);
@@ -45,7 +45,7 @@
           top: calc(var(--uxdot-masthead-max-height) + var(--rh-space-2xl));
         }
 
-        &:has(uxdot-header[has-subnav]) aside {
+        &:has(uxdot-header[has-subnav]) .aside {
           /* masthead height (72px) + sub-nav height (56px) + padding (32px) */
           top: calc(var(--uxdot-masthead-max-height) + 56px + var(--rh-space-2xl));
         }
@@ -57,7 +57,7 @@
     grid-area: header;
   }
 
-  aside {
+  .aside {
     grid-area: aside;
     padding-inline: var(--rh-space-lg);
 

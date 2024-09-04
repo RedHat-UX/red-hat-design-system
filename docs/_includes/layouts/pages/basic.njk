@@ -22,11 +22,11 @@ importElements:
 
   {% include 'partials/component/header.njk' %}
   {% if hasToc and (content | toc).length > 0 %}
-  <aside>
+  <div class="aside">
     <uxdot-toc summary="On this page">
       {{ content | toc | safe }}
     </uxdot-toc>
-  </aside>
+  </div>
   {% endif %}
 
   <div class="container">
