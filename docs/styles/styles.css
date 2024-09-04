@@ -278,32 +278,12 @@
     position: sticky;
     top: -54px; /* masthead height (72px) + subnav height (56px) - header mobile height (182px) */
     z-index: 2;
-  }
 
-  /**
-    * Sticky table of contents pattern w/o subnav
-    * progressive enhancement sticky, using :has()
-    **/
-  uxdot-header + uxdot-toc {
-    position: sticky;
-
-    /* masthead height (72px) + padding (32px) */
-    top: calc(var(--uxdot-masthead-max-height) + var(--rh-space-2xl));
-  }
-
-  uxdot-header:has(rh-subnav) + uxdot-toc {
-    /* masthead height (72px) + subnav height 56px  + padding (32px) */
-    top: calc(var(--uxdot-masthead-max-height) + 56px + var(--rh-space-2xl));
-  }
-
-  @container main (min-width: 768px) {
-    uxdot-header:has(rh-subnav) {
+    @container main (min-width: 768px) {
       top: -70px; /* masthead (72px) + subnav (56px) - header tablet (198px) */
     }
-  }
 
-  @container main (min-width: 992px) {
-    uxdot-header:has(rh-subnav) {
+    @container main (min-width: 992px) {
       top: -118px; /* masthead (72px) + subnav (56px) - header desktop (246px) */
     }
   }
