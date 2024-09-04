@@ -7,7 +7,6 @@
   height: var(--_max-height);
   top: 0;
   z-index: var(--uxdot-sidenav-z-index, 2);
-  overflow: scroll;
 }
 
 :host([open]) {
@@ -19,7 +18,7 @@
   display: none;
 }
 
-[part="close-button"] {
+[part='close-button'] {
   color: var(--rh-color-text-primary-on-light);
   background-color: transparent;
   border: none;
@@ -32,7 +31,7 @@
   position: relative;
   background-color: var(--rh-color-surface-lightest);
   width: auto;
-  height: 100%;
+  overflow-y: scroll;
 }
 
 #close-button-container {
@@ -46,7 +45,7 @@
   border-radius: var(--rh-border-radius-default, 3px);
 }
 
-[part="overlay"] {
+[part='overlay'] {
   --_gray-90-rgb: var(--rh-color-gray-90-rgb);
 
   display: none;
@@ -72,7 +71,7 @@
   background-color: var(--rh-color-surface-lightest);
 }
 
-:host([open]) [part="overlay"] {
+:host([open]) [part='overlay'] {
   display: block;
 }
 
@@ -113,7 +112,7 @@
     display: none;
   }
 
-  :host([open]) [part="overlay"] {
+  :host([open]) [part='overlay'] {
     display: none;
   }
 }
