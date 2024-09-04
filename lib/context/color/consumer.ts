@@ -8,7 +8,7 @@ import {
 
 import { ContextRequestEvent } from '../event.js';
 
-import styles from '@rhds/tokens/css/color-context-consumer.css';
+import styles from '@rhds/tokens/css/color-context-consumer.css.js';
 
 /**
    * A Color theme is a context-specific restriction on the available color palettes

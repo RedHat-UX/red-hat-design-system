@@ -1,5 +1,7 @@
 import type { ColorTheme } from './consumer.js';
-import { ReactiveElement, type ReactiveController } from 'lit';
+import type { CSSResult, ReactiveController } from 'lit';
+
+import { ReactiveElement } from 'lit';
 
 import { StyleController } from '@patternfly/pfe-core/controllers/style-controller.js';
 
@@ -54,7 +56,7 @@ export abstract class ColorContextController<
   /** callback which updates the context value on consumers */
   abstract update(next?: ColorTheme | null): void;
 
-  constructor(protected host: T, styles: CSSStyleSheet) {
+  constructor(protected host: T, styles: CSSStyleSheet | CSSResult) {
     new StyleController(host, styles);
     if (this.host instanceof ReactiveElement) {
       const Class = (this.host.constructor as typeof ReactiveElement);
