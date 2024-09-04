@@ -2,7 +2,7 @@
 # Creating repoStatus data for a new component
 #
 # - tagName: rh-jazz-hands 
-#   name: Jazz hands  - name should match the same format as sidenav
+#   name: Jazz hands  - name should match the same format as sidenav, typically uppercase first word rest lower.
 #   type: "Element" 
 #   overallStatus: "Available" - options: "N/A", "Planned", "Available"
 #   libraries:  - Array of 4 name/status key values pairs (Figma library, RH Elements, RH Shared Libs, Documentation)
