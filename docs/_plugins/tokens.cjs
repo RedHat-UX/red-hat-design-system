@@ -45,6 +45,9 @@ function table({ tokens, name = '', docs, options } = {}) {
       </thead>
       <tbody>
       ${tokens.map(token => {
+    if (!token.path) {
+      return '';
+    }
     const { r, g, b } = token.attributes?.rgb ?? {};
     const { h, s, l } = token.attributes?.hsl ?? {};
     const isColor = !!token.path.includes('color');
