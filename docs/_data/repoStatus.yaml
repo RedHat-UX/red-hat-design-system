@@ -1,3 +1,15 @@
+# Guidelines:
+# Creating repoStatus data for a new component
+#
+# - tagName: rh-jazz-hands 
+#   name: Jazz hands  - name should match the same format as sidenav
+#   type: "Element" 
+#   overallStatus: "Available" - options: "N/A", "Planned", "Available"
+#   libraries:  - Array of 4 name/status key values pairs (Figma library, RH Elements, RH Shared Libs, Documentation)
+#     - name: Figma library
+#       status: Ready  - options: Ready, Planned, N/A
+#     ...
+#
 - tagName: rh-accordion
   name: "Accordion"
   type: "Element"
@@ -25,7 +37,7 @@
     - name: Documentation
       status: Ready
 - tagName: rh-audio-player
-  name: "Audio Player"
+  name: "Audio player"
   type: "Element"
   overallStatus: "Available"
   libraries:
@@ -51,7 +63,7 @@
     - name: Documentation
       status: Ready
 - tagName: rh-back-to-top
-  name: "Back To Top"
+  name: "Back to top"
   type: "Element"
   overallStatus: "Available"
   libraries:
@@ -142,7 +154,7 @@
     - name: Documentation
       status: Ready
 - tagName: rh-code-block
-  name: "Code Block"
+  name: "Code block"
   type: "Element"
   overallStatus: "Available"
   libraries:
@@ -220,7 +232,7 @@
     - name: Documentation
       status: Ready
 - tagName: rh-navigation-primary      
-  name: "Navigation Primary"
+  name: "Navigation (primary)"
   type: "Element"
   overallStatus: "Planned"
   libraries:
@@ -233,7 +245,7 @@
     - name: Documentation
       status: Planned
 - tagName: rh-navigation-secondary
-  name: "Navigation Secondary"
+  name: "Navigation (secondary)"
   type: "Element"
   overallStatus: "Available"
   libraries:
@@ -272,7 +284,7 @@
     - name: Documentation
       status: Ready
 - tagName: rh-progress-steps
-  name: "Progress Steps"
+  name: "Progress steps"
   type: "Element"
   overallStatus: "Available"
   libraries:
@@ -285,7 +297,7 @@
     - name: Documentation
       status: Ready      
 - tagName: rh-skip-link
-  name: "Skip Link"
+  name: "Skip link"
   type: "Element"
   overallStatus: "Available"
   libraries:
@@ -298,7 +310,7 @@
     - name: Documentation
       status: Ready  
 - tagName: rh-site-status 
-  name: "Site Status"
+  name: "Site status"
   type: "Element"
   overallStatus: "Available"
   libraries:
@@ -324,7 +336,7 @@
     - name: Documentation
       status: Ready
 - tagName: rh-stat
-  name: "Stat"
+  name: "Statistic"
   type: "Element"
   overallStatus: "Available"
   libraries:
@@ -337,7 +349,7 @@
     - name: Documentation
       status: Ready
 - tagName: rh-subnav
-  name: "Subnav"
+  name: "Subnavigation"
   type: "Element"
   overallStatus: "Available"
   libraries:
