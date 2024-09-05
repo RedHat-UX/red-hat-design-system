@@ -6,7 +6,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
 import { colorContextProvider } from '@rhds/elements/lib/context/color/provider.js';
-import { colorContextConsumer } from '@rhds/elements/lib/context/color/consumer.js';
+import consumerStyles from '@rhds/tokens/css/color-context-consumer.css.js';
 
 import styles from './rh-surface.css';
 import { state } from 'lit/decorators/state.js';
@@ -29,7 +29,7 @@ import { classMap } from 'lit/directives/class-map.js';
  */
 @customElement('rh-surface')
 export class RhSurface extends LitElement {
-  static readonly styles = [styles];
+  static readonly styles = [styles, consumerStyles];
 
   /**
    * Sets color palette, which affects the element's styles as well as descendants' color theme.
@@ -40,10 +40,12 @@ export class RhSurface extends LitElement {
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
-  @colorContextConsumer() @state() private on?: ColorTheme;
+  get #on() {
+    return this.colorPalette?.replace(/e(st|r)/, '') ?? 'light';
+  }
 
   render() {
-    return html`<slot class="${classMap({ on: true, [this.on ?? 'light']: true })}" @slotchange=${this.#onSlotchange}></slot>`;
+    return html`<slot class="${classMap({ on: true, [this.#on]: true })}" @slotchange=${this.#onSlotchange}></slot>`;
   }
 
   #onSlotchange() {
