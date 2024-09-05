@@ -64,6 +64,10 @@ export class RhSubnav extends LitElement {
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
+  /**
+   * Customize the default `aria-label` on the `<nav>` container.
+   * Defaults to "subnavigation" if no attribute/property is set.
+   */
   @property({ attribute: 'accessible-label' }) accessibleLabel = 'subnavigation';
 
   @queryAssignedElements() private links!: HTMLAnchorElement[];
