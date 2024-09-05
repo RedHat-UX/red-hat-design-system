@@ -317,7 +317,6 @@ export class RhNavigationSecondary extends LitElement {
       if (!lastFocusable) {
         return;
       }
-      event.preventDefault();
       this.close();
       if (!this.mobileMenuExpanded) {
         this.overlayOpen = false;
