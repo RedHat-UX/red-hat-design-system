@@ -103,6 +103,10 @@ export class RhNavigationSecondary extends LitElement {
 
   @queryAssignedElements({ slot: 'nav' }) private _nav?: HTMLElement[];
 
+  /**
+   * Customize the default `aria-label` on the `<nav>` container.
+   * Defaults to "secondary" if no attribute/property is set.
+   */
   @property({ attribute: 'accessible-label' }) accessibleLabel = 'secondary';
 
   /**
