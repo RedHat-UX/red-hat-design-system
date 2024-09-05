@@ -118,9 +118,9 @@ export class RhContextPicker extends LitElement {
   }
 
   #onChange(event: Event) {
-    if (event instanceof ContextChangeEvent) {
-      event.stopPropagation();
-    }
+    // if (event instanceof ContextChangeEvent) {
+    //  event.stopPropagation();
+    // }
   }
 
   #onInput(event: Event) {
