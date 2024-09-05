@@ -4,7 +4,9 @@ templateEngineOverride: njk
 permalink: /tokens/{{ cat.slug }}/index.html
 eleventyComputed:
   title: '{{ (cat.title or cat.slug) | capitalize }} tokens'
-hasToc: false
+hasToc: true
+tocTags:
+  - h3
 pagination:
   size: 1
   alias: cat

@@ -183,15 +183,32 @@ samp.breakpoint img {
 }
 
 rh-card.swatches {
+  --rh-card-header-background-on-light: var(--rh-color-surface-light);
+  --rh-card-header-background-on-dark: var(--rh-color-surface-dark);
+
+  &::part(header) {
+    margin: 0;
+    padding: var(--rh-space-lg) var(--rh-space-2xl);
+    flex-direction: row;
+    gap: var(--rh-space-lg);
+    font-weight: var(--rh-font-weight-heading-regular);
+    font-size: var(--rh-font-size-body-text-md);
+    font-family: var(--rh-font-family-body-text);
+    align-items: center;
+    flex-flow: row wrap;
+  }
+
+  & h4 {
+    font-weight: inherit !important;
+    font-size: inherit !important;
+    font-family: inherit !important;
+    text-transform: uppercase; /* deprecated? */
+  }
+
   &::part(body) {
     display: flex;
     flex-wrap: wrap;
     gap: var(--rh-space-md);
-  }
-
-  &::part(header) {
-    align-items: center;
-    flex-flow: row wrap;
   }
 
   & label {

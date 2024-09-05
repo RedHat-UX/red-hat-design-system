@@ -90,6 +90,7 @@ module.exports = function(eleventyConfig) {
     nodemodulesPublicPath: '/assets/packages',
     manualImportMap: {
       imports: {
+        'tinycolor2': '/assets/packages/tinycolor2/esm/tinycolor.js',
         'lit/': '/assets/packages/lit/',
         'lit-html': '/assets/packages/lit-html/lit-html.js',
         'lit-html/': '/assets/packages/lit-html/',
@@ -111,6 +112,7 @@ module.exports = function(eleventyConfig) {
     localPackages: [
       // ux-dot dependencies
       'fuse.js',
+      'tinycolor2',
       'element-internals-polyfill',
 
       // RHDS dependencies
