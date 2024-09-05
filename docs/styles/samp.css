@@ -143,7 +143,7 @@ samp.box-shadow {
 }
 
 /* Border */
-samp.border {
+samp.border:not(.swatch) {
   width: var(--rh-length-2xl);
   aspect-ratio: 2;
   display: block;
@@ -266,6 +266,11 @@ rh-card.swatches {
       transition: color var(--rh-animation-speed) var(--rh-animation-timing);
       font-size: var(--rh-font-size-heading-lg);
       font-weight: var(--rh-font-weight-heading-bold);
+    }
+
+    &.border {
+      border-color: var(--swatch-color);
+      border-width: var(--rh-border-width-lg);
     }
 
     &.icon {

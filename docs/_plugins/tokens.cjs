@@ -300,6 +300,8 @@ module.exports = function RHDSPlugin(eleventyConfig, pluginOptions = { }) {
        * 2. for each remaining object, recurse
        */
       return !options.parent && !options.path.includes('.') ? [
+        dedent(await getDescription(collection, pluginOptions)),
+           await table({ tokens: collection, options, name, docs }),
         ...await Promise.all(children.map(category)),
         ...await Promise.all(include.map(path => category({ path, level: level + 1 }))),
       ].join('\n')
@@ -339,6 +341,10 @@ function themeTokensCard({ level, slug, themeTokens }) {
     <samp class="swatch icon ${classMap(getLightness(token.name))}"
           style="--swatch-color: var(--${token.name})">
       <rh-icon icon="unknown-fill" set="ui"></rh-icon>
+      <span>--${token.name}</span>
+    </samp>` : token.path.includes('border') ? /* html */ `
+    <samp class="swatch border ${classMap(getLightness(token.name))}"
+          style="--swatch-color: var(--${token.name})">
       <span>--${token.name}</span>
     </samp>` : `
     <samp class="swatch color ${classMap(getLightness(token.name))}"

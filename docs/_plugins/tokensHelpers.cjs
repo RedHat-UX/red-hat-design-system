@@ -39,6 +39,9 @@ function getFilePathGuess(collection) {
 
 /** Get the markdown description in a category's docs extension */
 function getDescription(collection, options) {
+  if (collection.$description) {
+    return collection.$description;
+  }
   const {
     filePath = getFilePathGuess(collection),
     description = '',
