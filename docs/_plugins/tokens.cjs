@@ -292,16 +292,14 @@ module.exports = function RHDSPlugin(eleventyConfig, pluginOptions = { }) {
 
       const childrenTokens = Object.values(collection).filter(x => x.$value);
 
-      const { tokens, ...opts } = options;
-
       /**
        * 0. render the description
        * 1. get all the top-level $value-bearing objects and render them
        * 2. for each remaining object, recurse
        */
-      return !options.parent && !options.path.includes('.') ? [
+      return (!options.parent && !options.path.includes('.')) || include.includes(options.path) ? [
         dedent(await getDescription(collection, pluginOptions)),
-           await table({ tokens: collection, options, name, docs }),
+        await table({ tokens: collection, options, name, docs }),
         ...await Promise.all(children.map(category)),
         ...await Promise.all(include.map(path => category({ path, level: level + 1 }))),
       ].join('\n')
@@ -342,7 +340,7 @@ function themeTokensCard({ level, slug, themeTokens }) {
     ${themeTokens.map(token => token.path.includes('text') ? /* html*/`
     <samp class="swatch font ${classMap(getLightness(token.name))}"
           style="--swatch-color: var(--${token.name})">
-      <span>Aa (--${token.name})</span>
+      <span>Aa</span> <span>--${token.name}</span>
     </samp>` : token.path.includes('icon') ? /* html */ `
     <samp class="swatch icon ${classMap(getLightness(token.name))}"
           style="--swatch-color: var(--${token.name})">
