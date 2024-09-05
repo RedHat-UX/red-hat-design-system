@@ -1,6 +1,5 @@
 import { LitElement, html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
-import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { query } from 'lit/decorators/query.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
