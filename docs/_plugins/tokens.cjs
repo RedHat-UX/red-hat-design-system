@@ -1,6 +1,7 @@
 const { join } = require('node:path');
 const tokensJSON = require('@rhds/tokens/json/rhds.tokens.json');
-const Color = require('tinycolor2');
+const { tokens: tokensMeta } = require('@rhds/tokens/meta.js');
+const tinycolor = require('tinycolor2');
 
 const {
   capitalize,
@@ -282,7 +283,7 @@ module.exports = function RHDSPlugin(eleventyConfig, pluginOptions = { }) {
       if (parts.at(0) === 'color' && parts.length === 2) {
         const prefix = `rh-color-${parts.at(1)}`;
 
-        for (const token of await import('@rhds/tokens/meta.js').then(x => x.tokens.values())) {
+        for (const token of tokensMeta.values()) {
           if (isThemeColorToken(token) && token.name.startsWith(prefix)) {
             themeTokens.push(token);
           }
@@ -313,26 +314,46 @@ module.exports = function RHDSPlugin(eleventyConfig, pluginOptions = { }) {
     });
 };
 
-function themeTokensCard({ level, slug, themeTokens, isText }) {
+function themeTokensCard({ level, slug, themeTokens }) {
   return !themeTokens.length ? '' : /* html*/`
   <rh-card id="surface-${slug}"
               class="swatches"
-              color-palette="lightest">
-    <h${level+1} slot="header">Theme Tokens</h${level+1}>
+                                                                              c o l o r - p a l e t t e = " l i g h t e s t " >                
+    <h${level + 1} slot="header">Theme Tokens</h${level + 1}>
     <label for="picker-${slug}" slot="header">Color Palette</label>
     <rh-context-picker id="picker-${slug}"
                        slot="header"
                        allow="lightest,darkest"
                        target="surface-${slug}"></rh-context-picker>
     ${themeTokens.map(token => token.path.includes('text') ? /* html*/`
-    <samp class="swatch font"
+    <samp class="swatch font ${classMap(getLightness(token.name))}"
           style="--swatch-color: var(--${token.name})">
       <span>Aa (--${token.name})</span>
     </samp>` : `
-    <samp class="swatch color"
+    <samp class="swatch color ${classMap(getLightness(token.name))}"
           style="--swatch-color: var(--${token.name})">
       <span>--${token.name}</span>
     </samp>`).join('')}
   </rh-card>`;
+}
+
+const deref = $value =>
+  'rh-' + $value.replace(/{(.*)}/, '$1').replaceAll('.', '-');
+
+function getLightness(name) {
+  try {
+    const token = tokensMeta.get(`--${name}`);
+    const value = token.$value || token.original.$value.find(x => x.endsWith('lightest}') || x.endsWith('light}'));
+    const derefed = `--${deref(value)}`;
+    const derefedToken = token?.$value ? token : tokensMeta.get(derefed);
+
+    const color = tinycolor(derefedToken.$value);
+    const isDark = color.isDark();
+    const isLight = color.isLight();
+    return { isDark, isLight };
+  } catch (error) {
+    console.log(error);
+    return {}
+  }
 }
 
