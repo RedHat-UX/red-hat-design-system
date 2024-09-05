@@ -341,21 +341,16 @@ const deref = $value =>
   `rh-${$value.replace(/{(.*)}/, '$1').replaceAll('.', '-')}`;
 
 function getLightness(name) {
-  try {
-    const token = tokensMeta.get(`--${name}`);
-    const value =
-         token.$value
-      || token.original.$value.find(x => x.endsWith('lightest}') || x.endsWith('light}'));
-    const derefed = `--${deref(value)}`;
-    const derefedToken = token?.$value ? token : tokensMeta.get(derefed);
+  const token = tokensMeta.get(`--${name}`);
+  const value =
+       token.$value
+    || token.original.$value.find(x => x.endsWith('lightest}') || x.endsWith('light}'));
+  const derefed = `--${deref(value)}`;
+  const derefedToken = token?.$value ? token : tokensMeta.get(derefed);
 
-    const color = tinycolor(derefedToken.$value);
-    const isDark = color.isDark();
-    const isLight = color.isLight();
-    return { isDark, isLight };
-  } catch (error) {
-    console.log(error);
-    return {};
-  }
+  const color = tinycolor(derefedToken.$value);
+  const isDark = color.isDark();
+  const isLight = color.isLight();
+  return { isDark, isLight };
 }
 
