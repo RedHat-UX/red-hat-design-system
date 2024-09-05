@@ -1,10 +1,9 @@
-var _UxdotSideNav_instances, _UxdotSideNav_triggerElement, _UxdotSideNav_closeButton, _UxdotSideNav_tabindex, _UxdotSideNav_onTriggerClick, _UxdotSideNav_onClick, _UxdotSideNav_onExpandRequest, _UxdotSideNav_onKeydownCloseButton, _UxdotSideNav_onKeydown, _UxdotSideNav_onKeyup, _UxdotSideNav_onTabKeyup, _UxdotSideNavDropdown_instances, _UxdotSideNavDropdown_onClick;
+var _UxdotSideNav_instances, _UxdotSideNav_triggerElement, _UxdotSideNav_closeButton, _UxdotSideNav_onTriggerClick, _UxdotSideNav_onClick, _UxdotSideNav_onKeydownCloseButton, _UxdotSideNav_onKeydown, _UxdotSideNav_onKeyup, _UxdotSideNav_onTabKeyup, _UxdotSideNavDropdown_instances, _UxdotSideNavDropdown_onClick;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html, isServer } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 import { css } from "lit";
 const styles = css `:host{--_padding-start:var(--uxdot-sidenav-padding-start, var(--rh-space-2xl));--_padding-end:var(--uxdot-sidenav-padding-end, var(--rh-space-2xl));--_max-height:100dvh;width:100%;height:var(--_max-height);top:0;z-index:var(--uxdot-sidenav-z-index,2)}:host([open]){display:block!important;position:fixed!important}:host(:not([open])){display:none}[part=close-button]{color:var(--rh-color-text-primary-on-light);background-color:transparent;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}#container{position:relative;background-color:var(--rh-color-surface-lightest);overflow-y:scroll;width:auto;height:100dvh}#close-button-container{padding-inline:var(--rh-space-md);padding-block:var(--rh-space-lg);max-height:var(--uxdot-masthead-max-height,72px)}#close-button:focus{outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-light);border-radius:var(--rh-border-radius-default,3px)}[part=overlay]{--_gray-90-rgb:var(--rh-color-gray-90-rgb);display:none;background-color:rgb(var(--_gray-90-rgb) / var(--rh-opacity-60));position:fixed;top:0;height:100dvh;width:100dvw;z-index:-1}::slotted(ul){padding-inline:0;padding-block:var(--_padding-start) calc(var(--_padding-end) + (var(--rh-font-size-body-text-lg) * 1.5) + (var(--rh-space-lg) * 2));list-style:none;margin-block:0!important;height:var(--_max-height);overflow-y:scroll;background-color:var(--rh-color-surface-lightest)}:host([open]) [part=overlay]{display:block}@media (min-width:320px){:host{--uxdot-sidenav-width:320px;width:var(--uxdot-sidenav-width);box-shadow:var(--rh-box-shadow-lg)}#container{width:var(--uxdot-sidenav-width,320px)}}@media (min-width:576px){#close-button-container{padding:var(--rh-space-lg)}}@media (min-width:992px){:host{--uxdot-siznav-z-index:1;position:fixed;top:var(--uxdot-masthead-max-height,72px);height:calc(var(--_max-height) - var(--uxdot-masthead-max-height,72px));box-shadow:unset}:host(:not([open])){display:block}#close-button-container{display:none}:host([open]) [part=overlay]{display:none}}`;
@@ -19,15 +18,6 @@ let UxdotSideNav = class UxdotSideNav extends LitElement {
         this.open = false;
         _UxdotSideNav_triggerElement.set(this, null);
         _UxdotSideNav_closeButton.set(this, null);
-        _UxdotSideNav_tabindex.set(this, RovingTabindexController.of(this, {
-            getItems: () => isServer ? [] : this.shadowRoot?.querySelector('slot')
-                ?.assignedElements({ flatten: true })
-                ?.flatMap(slotted => Array.from(slotted.querySelectorAll([
-                'uxdot-sidenav-dropdown > details > summary',
-                'uxdot-sidenav-item',
-                'details[open] uxdot-sidenav-dropdown-menu-item',
-            ].join()))) ?? [],
-        }));
     }
     async connectedCallback() {
         super.connectedCallback();
@@ -38,7 +28,6 @@ let UxdotSideNav = class UxdotSideNav extends LitElement {
         if (!isServer) {
             __classPrivateFieldGet(this, _UxdotSideNav_triggerElement, "f")?.addEventListener('click', __classPrivateFieldGet(this, _UxdotSideNav_instances, "m", _UxdotSideNav_onTriggerClick).bind(this));
             this.addEventListener('click', __classPrivateFieldGet(this, _UxdotSideNav_instances, "m", _UxdotSideNav_onClick).bind(this));
-            this.addEventListener('expand', __classPrivateFieldGet(this, _UxdotSideNav_instances, "m", _UxdotSideNav_onExpandRequest));
             this.addEventListener('keydown', __classPrivateFieldGet(this, _UxdotSideNav_instances, "m", _UxdotSideNav_onKeydown).bind(this));
             window.addEventListener('keyup', __classPrivateFieldGet(this, _UxdotSideNav_instances, "m", _UxdotSideNav_onKeyup).bind(this));
         }
@@ -91,7 +80,6 @@ let UxdotSideNav = class UxdotSideNav extends LitElement {
 };
 _UxdotSideNav_triggerElement = new WeakMap();
 _UxdotSideNav_closeButton = new WeakMap();
-_UxdotSideNav_tabindex = new WeakMap();
 _UxdotSideNav_instances = new WeakSet();
 _UxdotSideNav_onTriggerClick = function _UxdotSideNav_onTriggerClick(event) {
     event.preventDefault();
@@ -101,12 +89,6 @@ _UxdotSideNav_onClick = function _UxdotSideNav_onClick(event) {
     const path = event.composedPath();
     if (!path.includes(this)) {
         this.toggle();
-    }
-};
-_UxdotSideNav_onExpandRequest = async function _UxdotSideNav_onExpandRequest(event) {
-    if (event.target instanceof UxdotSideNavDropdown) {
-        __classPrivateFieldGet(this, _UxdotSideNav_tabindex, "f").atFocusedItemIndex =
-            __classPrivateFieldGet(this, _UxdotSideNav_tabindex, "f").items.indexOf(event.target.querySelector('summary'));
     }
 };
 _UxdotSideNav_onKeydownCloseButton = function _UxdotSideNav_onKeydownCloseButton(event) {
