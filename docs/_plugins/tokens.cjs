@@ -240,18 +240,36 @@ module.exports = function RHDSPlugin(eleventyConfig, pluginOptions = { }) {
         return '';
       }
 
-      const include =
-        Array.isArray(options.include) ?
-        options.include : [options.include].filter(Boolean);
+      async function renderIncludes(options) {
+        if (!options.include) {
+          return '';
+        } else if (Array.isArray(options.include)) {
+          return Promise.all(options.include.map(include =>
+            renderIncludes({ include })));
+        } else {
+          const path = options.include;
+          const parts = path.split('.');
 
-      const { parent, key } =
-        getParentCollection(
-          options,
-          eleventyConfig.globalData.tokens
-          ?? eleventyConfig.globalData?.tokenCategories
-        );
+          const { include, ...nextOptions } = options;
 
-      const collection = parent[key] ?? {};
+          nextOptions.tokens = parts.reduce((collection, key) => {
+            nextOptions.parent = collection;
+            return collection[key];
+          }, tokensJSON);
+
+          nextOptions.path = path;
+          nextOptions.name = parts.at(0);
+          nextOptions.level = 2;
+          nextOptions.include = [];
+
+          const r = await category(nextOptions);
+          return r;
+        }
+      }
+
+      const { parent, key } = getParentCollection(options, tokensJSON);
+
+      const collection = (parent ?? tokensJSON)[key ?? path] ?? {};
       const docs = getDocs(collection, options);
       const heading = docs?.heading ?? capitalize(name.replace('-', ' '));
       const slug = slugify(`${parentName} ${name}`.trim()).toLowerCase();
@@ -279,30 +297,35 @@ module.exports = function RHDSPlugin(eleventyConfig, pluginOptions = { }) {
 
       const parts = path.split('.');
 
-      const themeTokens = [];
+      options.themeTokens = [];
+
       if (parts.at(0) === 'color' && parts.length === 2) {
         const prefix = `rh-color-${parts.at(1)}`;
-
         for (const token of tokensMeta.values()) {
           if (isThemeColorToken(token) && token.name.startsWith(prefix)) {
-            themeTokens.push(token);
+            options.themeTokens.push(token);
           }
         }
       }
 
+
       const childrenTokens = Object.values(collection).filter(x => x.$value);
+
+      const commonItems = [
+        `<div class="description">\n\n${(dedent(await getDescription(collection, pluginOptions)))}\n\n</div>`,
+        themeTokensCard(options),
+        await table({ tokens: collection, options, name, docs }),
+        await table({ tokens: childrenTokens, options, name, docs }),
+        ...await Promise.all(children.map(category)),
+        await renderIncludes(options),
+      ];
 
       /**
        * 0. render the description
        * 1. get all the top-level $value-bearing objects and render them
        * 2. for each remaining object, recurse
        */
-      return (!options.parent && !options.path.includes('.')) || include.includes(options.path) ? [
-        dedent(await getDescription(collection, pluginOptions)),
-        await table({ tokens: collection, options, name, docs }),
-        ...await Promise.all(children.map(category)),
-        ...await Promise.all(include.map(path => category({ path, level: level + 1 }))),
-      ].join('\n')
+      return !options.parent ? commonItems.join('\n')
       : dedent(/* html */`${(level >= 4) ? /* html */`
         <div class="token-category level-2" data-name="${name}" data-slug="${slug}">` : /* html */`
         <section id="${name}"
@@ -314,20 +337,17 @@ module.exports = function RHDSPlugin(eleventyConfig, pluginOptions = { }) {
           <uxdot-copy-permalink class="h${level}">
             <h${level} id="${slug}"><a href="#${slug}">${heading}</a></h${level}>
           </uxdot-copy-permalink>
-          <div class="description">\n\n${(dedent(await getDescription(collection, pluginOptions)))}\n\n</div>
-          ${themeTokensCard({ slug, themeTokens, level })}
-          ${await table({ tokens: collection, options, name, docs })}
-          ${await table({ tokens: childrenTokens, options, name, docs })}
-          ${(await Promise.all(children.map(category))).join('\n')}
-          ${(await Promise.all(include.map(path => category({ path, level: level + 1 })))).join('\n')}${(level >= 4) ? /* html */`
+          ${commonItems.join('\n')}
+          ${(level >= 4) ? /* html */`
         </div>` : /* html */`
-        </section>
-      `}`);
+        </section>`}
+        ${await renderIncludes(options)}
+      `);
     });
 };
 
 function themeTokensCard({ level, slug, themeTokens }) {
-  return !themeTokens.length ? '' : /* html*/`
+  return !themeTokens?.length ? '' : /* html*/`
   <rh-card id="surface-${slug}"
            class="swatches"
            color-palette="lightest">

@@ -1,6 +1,7 @@
 [
   {
     "slug": "color",
+    "path": "color",
     "exclude": [
       "border",
       "text",
@@ -8,7 +9,8 @@
     ]
   },
   {
-    "slug": "box-shadow"
+    "slug": "box-shadow",
+    "path": "box-shadow"
   },
   {
     "slug": "font",
@@ -22,23 +24,31 @@
     "include": "color.border"
   },
   {
-    "slug": "opacity"
+    "slug": "opacity",
+    "path": "opacity"
   },
   {
-    "slug": "space"
+    "slug": "space",
+    "path": "space"
   },
   {
-    "slug": "length"
+    "slug": "length",
+    "path": "length"
   },
   {
     "slug": "icon",
     "path": "size.icon",
-    "include": "color.icon"
+    "include": [
+      "size.icon",
+      "color.icon"
+    ]
   },
   {
-    "slug": "breakpoint"
+    "slug": "breakpoint",
+    "path": "breakpoint"
   },
   {
-    "slug": "media"
+    "slug": "media",
+    "path": "media"
   }
 ]
