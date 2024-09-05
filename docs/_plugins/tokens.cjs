@@ -290,7 +290,7 @@ module.exports = function RHDSPlugin(eleventyConfig, pluginOptions = { }) {
         }
       }
 
-      const nextTokens = Object.values(collection).filter(x => x.$value);
+      const childrenTokens = Object.values(collection).filter(x => x.$value);
 
       const { tokens, ...opts } = options;
 
@@ -307,13 +307,19 @@ module.exports = function RHDSPlugin(eleventyConfig, pluginOptions = { }) {
       ].join('\n')
       : dedent(/* html */`${(level >= 4) ? /* html */`
         <div class="token-category level-2" data-name="${name}" data-slug="${slug}">` : /* html */`
-        <section id="${name}" class="token-category level-${level - 1}" data-name="${name}" data-slug="${slug}">`}
+        <section id="${name}"
+                 class="token-category level-${level - 1}"
+                 data-name="${name}"
+                 data-parent="${options.parent?.path}"
+                 data-path="${options.path}"
+                 data-slug="${slug}">`}
           <uxdot-copy-permalink class="h${level}">
             <h${level} id="${slug}"><a href="#${slug}">${heading}</a></h${level}>
           </uxdot-copy-permalink>
           <div class="description">\n\n${(dedent(await getDescription(collection, pluginOptions)))}\n\n</div>
           ${themeTokensCard({ slug, themeTokens, level })}
-          ${await table({ tokens: nextTokens, options, name, docs })}
+          ${await table({ tokens: collection, options, name, docs })}
+          ${await table({ tokens: childrenTokens, options, name, docs })}
           ${(await Promise.all(children.map(category))).join('\n')}
           ${(await Promise.all(include.map(path => category({ path, level: level + 1 })))).join('\n')}${(level >= 4) ? /* html */`
         </div>` : /* html */`
