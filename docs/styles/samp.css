@@ -186,6 +186,9 @@ rh-card.swatches {
   --rh-card-header-background-on-light: var(--rh-color-surface-light);
   --rh-card-header-background-on-dark: var(--rh-color-surface-dark);
 
+  &[color-palette^="light"] { --_offset: -0.3 }
+  &[color-palette^="dark"] { --_offset: 0.3; }
+
   &::part(header) {
     margin: 0;
     padding: var(--rh-space-lg) var(--rh-space-2xl);
@@ -233,7 +236,7 @@ rh-card.swatches {
     }
 
     &.color {
-      transition: background-color var(--rh-animation-speed) var(--rh-animation-timing);
+      transition: background-color, border-color var(--rh-animation-speed) var(--rh-animation-timing);
       display: inline;
       position: relative;
       background-color: var(--swatch-color);
@@ -241,7 +244,9 @@ rh-card.swatches {
       font-family: var(--rh-font-family-body-text);
       font-size: var(--rh-font-size-body-text-sm);
       border-radius: var(--rh-border-radius-pill);
-      border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
+      border-width: var(--rh-border-width-sm);
+      border-style: solid;
+      border-color: oklch(from var(--swatch-color) calc(l + var(--_offset)) c h);
       &.isLight { color: var(--rh-color-text-primary-on-light); }
       &.isDark { color: var(--rh-color-text-primary-on-dark); }
     }
