@@ -2,7 +2,7 @@
 "@rhds/elements": minor
 ---
 
-`<rh-navigation-secondary>`
+`<rh-navigation-secondary>`:
  - removed Roving Tabindex keyboard navigation in favor of tab based navigation.
  - add `accessible-label` attribute to explicitly label landmark.
 
