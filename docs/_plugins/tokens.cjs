@@ -1,6 +1,6 @@
 const { join } = require('node:path');
-const tokensJSON = require('@rhds/tokens/json/rhds.tokens.json');
 const { tokens: tokensMeta } = require('@rhds/tokens/meta.js');
+const tokensJSON = require('@rhds/tokens/json/rhds.tokens.json');
 const tinycolor = require('tinycolor2');
 
 const {
@@ -317,8 +317,8 @@ module.exports = function RHDSPlugin(eleventyConfig, pluginOptions = { }) {
 function themeTokensCard({ level, slug, themeTokens }) {
   return !themeTokens.length ? '' : /* html*/`
   <rh-card id="surface-${slug}"
-              class="swatches"
-                                                                              c o l o r - p a l e t t e = " l i g h t e s t " >                
+           class="swatches"
+           color-palette="lightest">
     <h${level + 1} slot="header">Theme Tokens</h${level + 1}>
     <label for="picker-${slug}" slot="header">Color Palette</label>
     <rh-context-picker id="picker-${slug}"
@@ -338,12 +338,14 @@ function themeTokensCard({ level, slug, themeTokens }) {
 }
 
 const deref = $value =>
-  'rh-' + $value.replace(/{(.*)}/, '$1').replaceAll('.', '-');
+  `rh-${$value.replace(/{(.*)}/, '$1').replaceAll('.', '-')}`;
 
 function getLightness(name) {
   try {
     const token = tokensMeta.get(`--${name}`);
-    const value = token.$value || token.original.$value.find(x => x.endsWith('lightest}') || x.endsWith('light}'));
+    const value =
+         token.$value
+      || token.original.$value.find(x => x.endsWith('lightest}') || x.endsWith('light}'));
     const derefed = `--${deref(value)}`;
     const derefedToken = token?.$value ? token : tokensMeta.get(derefed);
 
@@ -353,7 +355,7 @@ function getLightness(name) {
     return { isDark, isLight };
   } catch (error) {
     console.log(error);
-    return {}
+    return {};
   }
 }
 
