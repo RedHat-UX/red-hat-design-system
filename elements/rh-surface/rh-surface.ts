@@ -9,7 +9,6 @@ import { colorContextProvider } from '@rhds/elements/lib/context/color/provider.
 import consumerStyles from '@rhds/tokens/css/color-context-consumer.css.js';
 
 import styles from './rh-surface.css';
-import { state } from 'lit/decorators/state.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 /**
