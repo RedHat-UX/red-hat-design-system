@@ -101,7 +101,7 @@
     },
     "serve": {
       "service": true,
-      "command": "eleventy --serve",
+      "command": "eleventy --serve --incremental",
       "dependencies": [
         "analyze",
         "playgrounds"
