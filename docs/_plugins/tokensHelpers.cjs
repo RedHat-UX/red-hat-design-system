@@ -24,18 +24,8 @@ function styleMap(objt) {
 
 /** When recursing over the token categories, it's helpful to get the containing category for things like docs and key names */
 function getParentCollection(options, tokens) {
-  let parent = options.parent ?? tokens;
-
-  let collection;
-
+  const parent = options.parent ?? tokens;
   const key = options.path.split('.').pop();
-  options.path.split('.').forEach((part, i, a) => {
-    collection = parent[part];
-    if (a[i + 1]) {
-      parent = collection;
-    }
-  });
-
   return { parent, key };
 }
 
@@ -64,8 +54,6 @@ function getDescription(collection, options) {
   }
 }
 
-/** @typedef {ReturnType<import('@rhds/tokens/js/meta.js')['tokens']['get']>} DesignToken */
-/** @typedef {import('custom-elements-manifest').CssCustomProperty} CssCustomProperty */
 /** @param {DesignToken|CssCustomProperty} token*/
 function getVariableSyntax(token) {
   return `var(--${token.name}, ${escapeDoubleQuotes(token.$value ?? token.default)})`;

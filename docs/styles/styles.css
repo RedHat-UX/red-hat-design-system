@@ -58,7 +58,7 @@
   }
 
   figcaption {
-    color: var(--rh-color-text-secondary-on-light);
+    color: var(--rh-color-text-secondary, var(--rh-color-text-secondary-on-light));
   }
 }
 

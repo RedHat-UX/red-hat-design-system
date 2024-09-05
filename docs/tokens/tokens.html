@@ -16,15 +16,40 @@ importElements:
 
 <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
 <link rel="stylesheet" href="/styles/samp.css">
-<script type="module" src="/assets/javascript/elements/uxdot-copy-button.js"></script>
+<script type="module">
+  import '/assets/javascript/elements/uxdot-copy-button.js';
+  import '@rhds/elements/rh-card/rh-card.js';
+  import { ContextChangeEvent } from '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+  document.addEventListener('change', function(event) {
+    if (event instanceof ContextChangeEvent) {
+      updateSwatches();
+    }
+  });
+
+  const swatches = document.querySelectorAll('.swatches .swatch');
+  async function updateSwatches() {
+    const tinycolor = await import('tinycolor2').then(x => x.default);
+    for (const swatch of swatches) {
+      const value = getComputedStyle(swatch).getPropertyValue('--swatch-color');
+      const color = tinycolor(value);
+      const isDark = color.isDark();
+      const isLight = color.isLight();
+      const token = swatch.textContent;
+      swatch.classList.toggle('isDark', isDark);
+      swatch.classList.toggle('isLight', isLight);
+    }
+  }
+
+  updateSwatches();
+</script>
 
 <style>
   .variants > td {
-    padding-block: var(--rh-space-md, 8px);
+    padding-block: var(--rh-space-md);
   }
 
   uxdot-copy-permalink ~ .token-category > uxdot-copy-permalink {
-    margin-block-start: var(--rh-space-2xl, 32px);
+    margin-block-start: var(--rh-space-2xl);
   }
 </style>
 

@@ -1,5 +1,6 @@
 const { join } = require('node:path');
 const tokensJSON = require('@rhds/tokens/json/rhds.tokens.json');
+const Color = require('tinycolor2');
 
 const {
   capitalize,
@@ -11,6 +12,8 @@ const {
   styleMap,
 } = require('./tokensHelpers.cjs');
 
+const isThemeColorToken = token =>
+  token.$type === 'color' && Array.isArray(token.original?.$value);
 
 function classMap(classInfo) {
   return Object.keys(classInfo)
@@ -45,7 +48,7 @@ function table({ tokens, name = '', docs, options } = {}) {
       </thead>
       <tbody>
       ${tokens.map(token => {
-    if (!token.path) {
+    if (!token.path || name === 'attributes' || name === 'original' || token.name === '_') {
       return '';
     }
     const { r, g, b } = token.attributes?.rgb ?? {};
@@ -192,7 +195,7 @@ function getTokenDocs(path) {
 }
 
 /**
- * @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig
+ * @param {import('@11ty/eleventy').UserConfig} eleventyConfig
  * @param {PluginOptions} [pluginOptions]
  */
 module.exports = function RHDSPlugin(eleventyConfig, pluginOptions = { }) {
@@ -228,18 +231,26 @@ module.exports = function RHDSPlugin(eleventyConfig, pluginOptions = { }) {
       const path = options.path ?? '.';
       const level = options.level ?? 2;
       const exclude = options.exclude ?? [];
+
+      const name = options.name ?? path.split('.').pop();
+
+      // these are token metadata, don't display them
+      if (name === 'attributes' || name === 'original' || name === '_') {
+        return '';
+      }
+
       const include =
         Array.isArray(options.include) ?
         options.include : [options.include].filter(Boolean);
 
-      const name = options.name ?? path.split('.').pop();
       const { parent, key } =
         getParentCollection(
           options,
           eleventyConfig.globalData.tokens
           ?? eleventyConfig.globalData?.tokenCategories
         );
-      const collection = parent[key];
+
+      const collection = parent[key] ?? {};
       const docs = getDocs(collection, options);
       const heading = docs?.heading ?? capitalize(name.replace('-', ' '));
       const slug = slugify(`${parentName} ${name}`.trim()).toLowerCase();
@@ -250,58 +261,78 @@ module.exports = function RHDSPlugin(eleventyConfig, pluginOptions = { }) {
        * @example isChildEntry(['500', tokens.color.blue.500]); // false
        */
       const isChildEntry = ([key, value]) =>
-        !value.$value
-                                  && typeof value === 'object'
-                                  && !key.startsWith('$')
-                                  && !exclude.includes(key);
+        typeof value === 'object'
+        && value !== null
+        && !value.$value
+        && !key.startsWith('$')
+        && !exclude.includes(key);
 
       const children = Object.entries(collection)
           .filter(isChildEntry)
-          .map(([key], i, a) => ({
-            path: key,
+          .map(([key]) => ({
+            path: `${options.path}.${key}`.replace('..', '.'),
             parent: collection,
             level: level + 1,
             parentName: `${parentName} ${name}`.trim(),
-            isLast: i === a.length - 1,
           }));
+
+      const parts = path.split('.');
+
+      const themeTokens = [];
+      if (parts.at(0) === 'color' && parts.length === 2) {
+        const prefix = `rh-color-${parts.at(1)}`;
+
+        for (const token of await import('@rhds/tokens/meta.js').then(x => x.tokens.values())) {
+          if (isThemeColorToken(token) && token.name.startsWith(prefix)) {
+            themeTokens.push(token);
+          }
+        }
+      }
+
+      const nextTokens = Object.values(collection).filter(x => x.$value);
 
       /**
        * 0. render the description
        * 1. get all the top-level $value-bearing objects and render them
        * 2. for each remaining object, recurse
        */
-      return dedent(/* html */`
-        ${(level >= 4) ? /* html */`
-          <div class="token-category level-2">
-        ` : /* html */`
-          <section id="${name}" class="token-category level-${level - 1}">
-        `}
+      return dedent(/* html */`${(level >= 4) ? /* html */`
+        <div class="token-category level-2" data-name="${name}" data-slug="${slug}">` : /* html */`
+        <section id="${name}" class="token-category level-${level - 1}" data-name="${name}" data-slug="${slug}">`}
           <uxdot-copy-permalink class="h${level}">
             <h${level} id="${slug}"><a href="#${slug}">${heading}</a></h${level}>
-          </uxdot-copy-permalink> 
-            <div class="description">
-
-            ${(dedent(await getDescription(collection, pluginOptions)))}
-
-            </div>
-            
-            ${await table({
-    tokens: Object.values(collection).filter(x => x.$value),
-    options,
-    name,
-    docs,
-  })}
-            ${(await Promise.all(children.map(category))).join('\n')}
-            ${(await Promise.all(include.map((path, i, a) => category({
-    path,
-    level: level + 1,
-    isLast: !a[i + 1],
-  })))).join('\n')}
-          ${(level >= 4) ? /* html */`
-            </div>
-          ` : /* html */`
-            </section>
-          `}
-        `);
+          </uxdot-copy-permalink>
+          <div class="description">\n\n${(dedent(await getDescription(collection, pluginOptions)))}\n\n</div>
+          ${themeTokensCard({ slug, themeTokens, level })}
+          ${await table({ tokens: nextTokens, options, name, docs })}
+          ${(await Promise.all(children.map(category))).join('\n')}
+          ${(await Promise.all(include.map(path => category({ path, level: level + 1 })))).join('\n')}${(level >= 4) ? /* html */`
+        </div>` : /* html */`
+        </section>
+      `}`);
     });
 };
+
+function themeTokensCard({ level, slug, themeTokens, isText }) {
+  return !themeTokens.length ? '' : /* html*/`
+  <rh-card id="surface-${slug}"
+              class="swatches"
+              color-palette="lightest">
+    <h${level+1} slot="header">Theme Tokens</h${level+1}>
+    <label for="picker-${slug}" slot="header">Color Palette</label>
+    <rh-context-picker id="picker-${slug}"
+                       slot="header"
+                       allow="lightest,darkest"
+                       target="surface-${slug}"></rh-context-picker>
+    ${themeTokens.map(token => token.path.includes('text') ? /* html*/`
+    <samp class="swatch font"
+          style="--swatch-color: var(--${token.name})">
+      <span>Aa (--${token.name})</span>
+    </samp>` : `
+    <samp class="swatch color"
+          style="--swatch-color: var(--${token.name})">
+      <span>--${token.name}</span>
+    </samp>`).join('')}
+  </rh-card>`;
+}
+
