@@ -230,7 +230,7 @@ module.exports = function RHDSPlugin(eleventyConfig, pluginOptions = { }) {
       const parentName = options.parentName ?? '';
 
       const path = options.path ?? '.';
-      const level = options.level ?? 2;
+      const level = options.level ?? 1;
       const exclude = options.exclude ?? [];
 
       const name = options.name ?? path.split('.').pop();
@@ -292,12 +292,18 @@ module.exports = function RHDSPlugin(eleventyConfig, pluginOptions = { }) {
 
       const nextTokens = Object.values(collection).filter(x => x.$value);
 
+      const { tokens, ...opts } = options;
+
       /**
        * 0. render the description
        * 1. get all the top-level $value-bearing objects and render them
        * 2. for each remaining object, recurse
        */
-      return dedent(/* html */`${(level >= 4) ? /* html */`
+      return !options.parent && !options.path.includes('.') ? [
+        ...await Promise.all(children.map(category)),
+        ...await Promise.all(include.map(path => category({ path, level: level + 1 }))),
+      ].join('\n')
+      : dedent(/* html */`${(level >= 4) ? /* html */`
         <div class="token-category level-2" data-name="${name}" data-slug="${slug}">` : /* html */`
         <section id="${name}" class="token-category level-${level - 1}" data-name="${name}" data-slug="${slug}">`}
           <uxdot-copy-permalink class="h${level}">
@@ -329,6 +335,11 @@ function themeTokensCard({ level, slug, themeTokens }) {
     <samp class="swatch font ${classMap(getLightness(token.name))}"
           style="--swatch-color: var(--${token.name})">
       <span>Aa (--${token.name})</span>
+    </samp>` : token.path.includes('icon') ? /* html */ `
+    <samp class="swatch icon ${classMap(getLightness(token.name))}"
+          style="--swatch-color: var(--${token.name})">
+      <rh-icon icon="unknown-fill" set="ui"></rh-icon>
+      <span>--${token.name}</span>
     </samp>` : `
     <samp class="swatch color ${classMap(getLightness(token.name))}"
           style="--swatch-color: var(--${token.name})">
