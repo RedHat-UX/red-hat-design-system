@@ -105,7 +105,6 @@ export class RhContextPicker extends LitElement {
     for (const label of this.#internals.labels) {
       label.addEventListener('click', () => this.focus());
     }
-    const oldTarget = this.#target;
     if (this.target) {
       const root = this.getRootNode() as Document | ShadowRoot;
       this.#target = root.getElementById(this.target);
@@ -113,14 +112,6 @@ export class RhContextPicker extends LitElement {
     } else {
       this.#target = this.closest('rh-surface');
     }
-    oldTarget?.removeEventListener('change', this.#onChange);
-    this.#target?.addEventListener('change', this.#onChange);
-  }
-
-  #onChange(event: Event) {
-    // if (event instanceof ContextChangeEvent) {
-    //  event.stopPropagation();
-    // }
   }
 
   #onInput(event: Event) {
