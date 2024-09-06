@@ -28,6 +28,8 @@ export default pfeDevServerConfig({
   litcssOptions,
   importMapOptions: {
     providers: {
+      'construct-style-sheets-polyfill': 'nodemodules',
+      'prism-esm': 'nodemodules',
       '@rhds/icons': 'nodemodules',
       '@patternfly/elements': 'nodemodules',
       '@patternfly/pfe-tools': 'nodemodules',

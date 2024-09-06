@@ -1,4 +1,4 @@
-import { LitElement, html, type PropertyValues } from 'lit';
+import { CSSResult, LitElement, html, type PropertyValues } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
@@ -9,11 +9,22 @@ import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller
 import { type ColorTheme, colorContextConsumer } from '../../lib/context/color/consumer.js';
 
 import style from './rh-code-block.css';
+import type { DirectiveResult } from 'lit-html/directive.js';
 
 /* TODO
  * - style slotted and shadow fake-fabs
  * - manage state of copy and wrap, including if they are slotted. see actions.html
  */
+
+/**
+ * Returns a string with common indent stripped from each line. Useful for templating HTML
+ * @param str indented string
+ */
+function dedent(str: string) {
+  const stripped = str.replace(/^\n/, '');
+  const match = stripped.match(/^\s+/);
+  return match ? stripped.replace(new RegExp(`^${match[0]}`, 'gm'), '') : str;
+}
 
 interface CodeLineHeightsInfo {
   lines: string[];
@@ -82,8 +93,23 @@ export class RhCodeBlock extends LitElement {
     },
   }) actions: ('copy' | 'wrap')[] = [];
 
+  @property() highlighting?: 'client';
+
+  @property() language?:
+    | 'html'
+    | 'css'
+    | 'javascript'
+    | 'typescript'
+    | 'bash'
+    | 'ruby'
+    | 'yaml'
+    | 'json';
+
   /** When set, the code block displays with compact spacing */
   @property({ type: Boolean, reflect: true }) compact = false;
+
+  /** When set, the code block source code will be dedented */
+  @property({ type: Boolean, reflect: true }) dedent = false;
 
   /** When set, the code block is resizable */
   @property({ type: Boolean, reflect: true }) resizable = false;
@@ -107,6 +133,8 @@ export class RhCodeBlock extends LitElement {
     'legend',
   );
 
+  #prismOutput?: DirectiveResult;
+
   #ro = new ResizeObserver(() => this.#computeLineNumbers());
 
   #lineHeights: `${string}px`[] = [];
@@ -128,21 +156,26 @@ export class RhCodeBlock extends LitElement {
     const actions = !!this.actions.length;
     return html`
       <div id="container"
-           class="${classMap({ [on]: !!on,
-                                actions,
-                                compact,
-                                expandable,
-                                fullHeight,
-                                resizable,
-                                truncated,
-                                wrap })}"
+           class="${classMap({ on: true, [on]: !!on,
+                               actions,
+                               compact,
+                               expandable,
+                               fullHeight,
+                               resizable,
+                               truncated,
+                               wrap })}"
            @code-action="${this.#onCodeAction}">
         <div id="content-lines">
           <div id="sizers" aria-hidden="true"></div>
           <ol id="line-numbers" aria-hidden="true">${this.#lineHeights.map((height, i) => html`
             <li style="${styleMap({ height })}">${i + 1}</li>`)}
           </ol>
-          <slot id="content" @slotchange="${this.#computeLineNumbers}"></slot>
+          <pre id="prism-output"
+               class="language-${this.language}"
+               ?hidden="${!this.#prismOutput}">${this.#prismOutput}</pre>
+          <slot id="content"
+                ?hidden="${!!this.#prismOutput}"
+                @slotchange="${this.#onSlotChange}"></slot>
         </div>
 
         <div id="actions"
@@ -172,6 +205,7 @@ export class RhCodeBlock extends LitElement {
           </svg>
         </button>
       </div>
+
       <slot name="legend" ?hidden="${this.#slots.isEmpty('legend')}"></slot>
     `;
   }
@@ -186,7 +220,35 @@ export class RhCodeBlock extends LitElement {
     }
   }
 
-  #wrapChanged() {
+  async #onSlotChange() {
+    switch (this.highlighting) {
+      case 'client': await this.#highlightWithPrism();
+    }
+    this.#computeLineNumbers();
+  }
+
+  async #highlightWithPrism() {
+    const { highlight, prismStyles } = await import('./prism.js');
+    const scripts = this.querySelectorAll('script[type]:not([type="javascript"])');
+    const preprocess = this.dedent ? dedent : x => x;
+    const textContent = preprocess(Array.from(scripts, x => x.textContent).join(''));
+    const old = this.#prismOutput;
+    this.#prismOutput = await highlight(textContent, this.language);
+    const styleSheet =
+        prismStyles instanceof CSSStyleSheet ? prismStyles
+      : (prismStyles as CSSResult).styleSheet;
+    if (!this.shadowRoot!.adoptedStyleSheets.includes(styleSheet!)) {
+      this.shadowRoot!.adoptedStyleSheets = [
+        ...this.shadowRoot!.adoptedStyleSheets as CSSStyleSheet[],
+        styleSheet!,
+      ];
+    }
+    this.requestUpdate('#prismOutput', old);
+    await this.updateComplete;
+  }
+
+  async #wrapChanged() {
+    await this.updateComplete;
     this.#computeLineNumbers();
     // TODO: handle slotted fabs
     const slot = this.shadowRoot?.querySelector<HTMLSlotElement>('slot[name="action-label-wrap"]');
@@ -198,18 +260,27 @@ export class RhCodeBlock extends LitElement {
     this.requestUpdate();
   }
 
+  #getSlottedCodeElements() {
+    const slot = this.shadowRoot?.getElementById('content') as HTMLSlotElement;
+    return slot.assignedElements().flatMap(x =>
+        x instanceof HTMLScriptElement
+        || x instanceof HTMLPreElement ? [x]
+      : []);
+  }
+
+  #getPrismCodeElements() {
+    const container = this.shadowRoot?.getElementById('prism-output') as HTMLSlotElement;
+    return Array.from(container.children);
+  }
+
   /**
    * Clone the text content and connect it to the document, in order to calculate the number of lines
    * @license MIT
    * Portions copyright prism.js authors (MIT license)
    */
-  #computeLineNumbers() {
-    const slot = this.shadowRoot?.getElementById('content') as HTMLSlotElement;
-
-    const codes: HTMLElement[] = slot.assignedElements().flatMap(x =>
-        x instanceof HTMLScriptElement
-        || x instanceof HTMLPreElement ? [x]
-      : []);
+  async #computeLineNumbers() {
+    await this.updateComplete;
+    const codes = this.#prismOutput ? this.#getPrismCodeElements() : this.#getSlottedCodeElements();
 
     const infos: CodeLineHeightsInfo[] = codes.map(element => {
       const sizer = document.createElement('span');
