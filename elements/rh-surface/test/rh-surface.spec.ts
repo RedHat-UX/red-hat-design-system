@@ -1,6 +1,9 @@
+import type { TemplateResult } from 'lit';
+
 import { expect, fixture, html, nextFrame, aTimeout } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
-import { RhSurface } from '../rh-surface.js';
+
+import { RhSurface } from '@rhds/elements/rh-surface/rh-surface.js';
 
 import {
   ContextConsumer,
@@ -20,7 +23,7 @@ describe('<rh-surface>', function() {
   describe('simply instantiating', function() {
     let element: RhSurface;
     let consumer: ContextConsumer;
-    const updateComplete = () => element.updateComplete;
+    const updateComplete = () => Promise.all([element.updateComplete, consumer?.updateComplete]);
     beforeEach(async function() {
       element = await createFixture<RhSurface>(html`<rh-surface></rh-surface>`);
     });
@@ -42,7 +45,7 @@ describe('<rh-surface>', function() {
           element.append(consumer);
         });
         beforeEach(updateComplete);
-        it.only('should notify the children', function() {
+        it('should notify the children', function() {
           expect(consumer.on).to.equal('dark');
         });
       });

@@ -13,12 +13,22 @@ import {
 
 @customElement('test-context-consumer')
 export class ContextConsumer extends ReactiveElement {
-  @colorContextConsumer() on?: ColorTheme;
+  @colorContextConsumer()
+  @property({ reflect: true })
+  on?: ColorTheme;
+
+  connectedCallback(): void {
+    super.connectedCallback();
+    console.log('hi');
+  }
 }
 
 @customElement('test-context-consumer-provider')
 export class ContextConsumerProvider extends ReactiveElement {
-  @colorContextConsumer() on?: ColorTheme;
+  @colorContextConsumer()
+  @property({ reflect: true })
+  on?: ColorTheme;
+
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 }
@@ -28,6 +38,8 @@ export class ContextProviderConsumer extends ReactiveElement {
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
-  @colorContextConsumer() on?: ColorTheme;
+  @colorContextConsumer()
+  @property({ reflect: true })
+  on?: ColorTheme;
 }
 
