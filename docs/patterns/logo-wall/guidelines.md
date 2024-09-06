@@ -61,7 +61,7 @@ Logo sizes may decrease on smaller screens. Logo containers can adjust margins a
 When displaying our partners' logos, it is essential to respect their brand identity by ensuring that their logos meet accessibility standards.
 
 <div class="grid sm-two-columns">
-  <uxdot-best-practice do>
+  <uxdot-best-practice variant="do">
     <uxdot-example slot="image" alignment="left">
       <img src="../guidelines-bestpractices-contrast-do.svg"
            alt="Examples of two Red Hat logos in dark and light themes against background colors that ensure enough color contrast.">
@@ -69,7 +69,7 @@ When displaying our partners' logos, it is essential to respect their brand iden
     <p>Ensure that the color contrast between each logo and the background meets accessibility standards.</p>
   </uxdot-best-practice>
 
-  <uxdot-best-practice dont>
+  <uxdot-best-practice variant="dont">
     <uxdot-example slot="image" alignment="left">
       <img src="../guidelines-bestpractices-contrast-dont.svg"
            alt="Examples of two Red Hat logos in dark and light themes against background colors that do not provide enough contrast.">
@@ -81,7 +81,7 @@ When displaying our partners' logos, it is essential to respect their brand iden
 ### Logo sizes
 
 <div class="grid sm-two-columns">
-  <uxdot-best-practice do>
+  <uxdot-best-practice variant="do">
     <uxdot-example slot="image" alignment="left">
       <img src="../guidelines-bestpractices-sizing-do.png"
            alt="Example of a borderless logo wall with similarly sized logos that represent each partner evenly.">
@@ -89,7 +89,7 @@ When displaying our partners' logos, it is essential to respect their brand iden
     <p>Because the size and shape of our partners’ logos can vary, make sure to size them similarly so that each partner is evenly represented.</p>  
   </uxdot-best-practice>
 
-  <uxdot-best-practice dont>
+  <uxdot-best-practice variant="dont">
     <uxdot-example slot="image" alignment="left">
       <img src="../guidelines-bestpractices-sizing-dont.png"
            alt="Example of a borderless logo wall in which the sizes of logos varies and disproportionately represents each partner.">
@@ -101,7 +101,7 @@ When displaying our partners' logos, it is essential to respect their brand iden
 ### Alignment
 
 <div class="grid sm-two-columns">
-  <uxdot-best-practice do>
+  <uxdot-best-practice variant="do">
     <uxdot-example slot="image" alignment="left">
       <img src="../guidelines-bestpractices-align-do.png"
            alt="Example of a borderless logo wall in which each logo is horizontally and vertically aligned in its container.">
@@ -109,7 +109,7 @@ When displaying our partners' logos, it is essential to respect their brand iden
     <p>Align logos vertically and horizontally within a container.</p>
   </uxdot-best-practice>
 
-  <uxdot-best-practice dont>
+  <uxdot-best-practice variant="dont">
     <uxdot-example slot="image" alignment="left">
       <img src="../guidelines-bestpractices-align-dont.png"
            alt="Example of a borderless logo wall in which each logo is aligned to the bottom of the container.">
