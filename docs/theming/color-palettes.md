@@ -98,8 +98,6 @@ visual tension.</p>
        src="/assets/theming/illustrations-and-imagery.png">
 </uxdot-example>
 
-<!-- ATTN: content below this line should be revised to emphasize "palettes" over "context" and integrated into the above -->
-
 <style>
   .card-snippet-grid {
     display: grid;
@@ -107,7 +105,7 @@ visual tension.</p>
     gap: var(--rh-space-4xl)  var(--rh-space-lg);
     padding: var(--rh-space-4xl);
     border-radius: var(--rh-border-radius-default);
-    border: solid var(--rh-border-width-sm) var(--rh-color-border-subtle-on-light);
+    border: solid var(--rh-border-width-sm) var(--rh-color-border-subtle);
     & pre[class^="language-"] {
       margin: 0;
     }
@@ -115,9 +113,9 @@ visual tension.</p>
 </style>
 
 Red Hat Design System comes with a contextual color-theming feature called 
-"Color Context", designed to make page developers' and content authors' jobs
+"Color palettes", designed to make page developers' and content authors' jobs
 easier and to improve customers' digital experiences. Authors and developers who
-adopt the color context system will produce accessible, branded experiences with 
+adopt the color palette system will produce accessible, branded experiences with 
 less effort and greater cross-property consistency.
 
 <rh-blockquote>
@@ -125,15 +123,15 @@ less effort and greater cross-property consistency.
 </rh-blockquote>
 
 ## How Color Context works
-<abbr title="red hat design system">RHDS</abbr>' color context system is an 
+<abbr title="red hat design system">RHDS</abbr>' color palette system is an 
 *HTML* and *CSS* system with some supporting JavaScript[1].
-The color context system has two main parts: **providers** and **consumers**. 
-Providers actively define a color theme, while consumers passively accept their 
+The color palette system has two main parts: **providers** and **consumers**. 
+Providers actively define a color paleete, while consumers passively accept their 
 theme from the nearest provider ancestor.
 
-### Color context providers
-Context **providers** define a **color palette** for themselves and their child 
-elements. There are currently six main color palettes:
+### Color palette providers
+**Providers** define the **color palette** for themselves and their child 
+elements. There are six main color palettes:
 1. lightest
 1. lighter
 1. light
@@ -183,9 +181,10 @@ this HTML:
 </div>
 
 
-### Color context consumers
-Context **consumers**, which adopt a **color theme**. There are two main 
-color themes, corresponding to the above palettes:
+### Color consumers
+**Consumers**, which adopt a **color theme**. Color themes correspond to the  
+active color palette, and represent the quality of the background colour:
+
 1. light
 1. dark
 
@@ -193,10 +192,12 @@ Child elements which are providers will automatically adapt, applying their own
 **color theme** as needed. Page authors *do not need to and should not customize*
 colors of consumer elements.
 
-Color context containers can be nested, such that child elements will always 
+Color palette containers can be nested, such that child elements will always 
 adopt the color theme corresponding to the nearest container's palette.
 
-Extending our card example from above, if our page author then adds an `<rh-cta>` to the card, it will *automatically* adopt the dark color theme. The page author need not and should not customize the CTA.
+Extending our card example from above, if our page author then adds an 
+`<rh-cta>` to the card, it will *automatically* adopt the dark color theme. The 
+page author need not and should not customize the CTA.
 
 <div class="card-snippet-grid">
 
@@ -241,12 +242,12 @@ Extending our card example from above, if our page author then adds an `<rh-cta>
 </div>
 
 <rh-blockquote>
-  Color context lets authors write more HTML, and less CSS and JavaScript
+  Color palettes lets authors write more HTML, and less CSS and JavaScript
 </rh-blockquote>
 
 ### Combination elements
 Some elements are both providers and consumers. Card, for example is both a 
-provider and a consumer. It can accept the color theme of its context and it 
+provider and a consumer. It can accept the color theme of its parent context and it 
 can also set its own color palette.
 
 <rh-context-demo id="cards-demo">
