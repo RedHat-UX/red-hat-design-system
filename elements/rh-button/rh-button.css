@@ -281,10 +281,6 @@ button > span {
   --_play-hover-background-color: rgb(var(--_white-rgb) / var(--rh-opacity-80, 80%));
 }
 
-#rhds-container {
-  display: contents;
-}
-
 :host([hidden]),
 [hidden] {
   display: none !important;
