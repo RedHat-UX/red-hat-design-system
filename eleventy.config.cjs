@@ -61,13 +61,14 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addGlobalData('isLocal', isLocal);
 
   eleventyConfig.addGlobalData('sideNavDropdowns', [
-    { 'title': 'About', 'url': '/about', 'collection': 'about' },
-    { 'title': 'Get started', 'url': '/get-started', 'collection': 'getstarted' },
-    { 'title': 'Foundations', 'url': '/foundations', 'collection': 'foundations' },
-    { 'title': 'Tokens', 'url': '/tokens', 'collection': 'token' },
-    { 'title': 'Elements', 'url': '/elements', 'collection': 'elementDocs' },
-    { 'title': 'Patterns', 'url': '/patterns', 'collection': 'pattern' },
-    { 'title': 'Accessibility', 'url': '/accessibility', 'collection': 'accessibility' },
+    { title: 'About', url: '/about', collection: 'about' },
+    { title: 'Get started', url: '/get-started', collection: 'getstarted' },
+    { title: 'Foundations', url: '/foundations', collection: 'foundations' },
+    { title: 'Tokens', url: '/tokens', collection: 'token' },
+    { title: 'Elements', url: '/elements', collection: 'elementDocs' },
+    { title: 'Patterns', url: '/patterns', collection: 'pattern' },
+    { title: 'Theming', url: '/theming', collection: 'theming' },
+    { title: 'Accessibility', url: '/accessibility', collection: 'accessibility' },
   ]);
 
   eleventyConfig.addPlugin(RHDSMarkdownItPlugin);
