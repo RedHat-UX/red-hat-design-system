@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-`<rh-accordion>`: removed Roving Tabindex keyboard navigation in favor of tab based navigation.
+`<rh-accordion>`: removed arrow-key keyboard navigation in favor of tab navigation.

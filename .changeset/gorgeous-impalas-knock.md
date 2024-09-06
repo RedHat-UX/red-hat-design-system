@@ -3,7 +3,7 @@
 ---
 
 `<rh-subnav>`:
- - removed Roving Tabindex keyboard navigation in favor of tab based navigation.
+ - removed arrow-key keyboard navigation in favor of tab navigation.
  - add `accessible-label` attribute to explicitly label landmark.
  - corrects overflow icons
 
