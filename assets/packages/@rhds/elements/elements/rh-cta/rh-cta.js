@@ -77,7 +77,7 @@ let RhCta = class RhCta extends LitElement {
         _RhCta_logger.set(this, new Logger(this));
     }
     async getUpdateComplete() {
-        if (this.icon) {
+        if (this.icon || !this.variant) {
             await import('@rhds/elements/rh-icon/rh-icon.js');
         }
         return super.getUpdateComplete();
