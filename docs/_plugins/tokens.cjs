@@ -347,8 +347,8 @@ module.exports = function RHDSPlugin(eleventyConfig, pluginOptions = { }) {
 };
 
 
-export function getRandomId(prefix = 'pfe') {
-    return `${prefix}-${Math.random().toString(36).substr(2, 9)}`;
+function getRandomId(prefix = 'pfe') {
+  return `${prefix}-${Math.random().toString(36).substr(2, 9)}`;
 }
 
 function themeTokensCard({ level, slug, themeTokens }) {
