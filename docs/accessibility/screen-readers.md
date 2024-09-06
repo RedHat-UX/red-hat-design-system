@@ -136,8 +136,7 @@ First open the system tray menu with your mouse or via keyboard shortcuts (<kbd>
 
 To start and stop Narrator, press <kbd>Windows-Ctrl-Enter</kbd> on your keyboard. Starting Narrator via this shortcut also opens the Narrator dashboard, which includes usage guides and settings.
 
-<kbd>Insert</kbd> and <kbd>CapsLock</kbd> can both be used as Narrator modifier keys. To enable CapsLock as a modifier, press that key twice in quick succession.
-To open Narrator settings when the dashboard is closed, press <kbd>Windows-Ctrl-N</kbd>.
+<kbd>Insert</kbd> and <kbd>CapsLock</kbd> can both be assigned as Narrator modifier keys in its settings. To open Narrator settings when the dashboard is closed, press <kbd>Windows-Ctrl-N</kbd>.
 
 ### Orca (Linux)
 
