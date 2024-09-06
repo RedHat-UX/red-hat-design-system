@@ -6,8 +6,6 @@ import { property } from 'lit/decorators/property.js';
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 import { provide } from '@lit/context';
 
-import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
-
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
@@ -116,13 +114,6 @@ export class RhAccordion extends LitElement {
   protected expandedSets = new Set<number>();
 
   #expandedIndex: number[] = [];
-
-  // side effects are used
-  // eslint-disable-next-line no-unused-private-class-members
-  #tabindex: RovingTabindexController<HTMLButtonElement> = RovingTabindexController.of(this, {
-    getItems: () => this.headers.flatMap(x =>
-      x.hasUpdated ? [x.shadowRoot!.querySelector('button')!] : []),
-  });
 
   #logger = new Logger(this);
 
