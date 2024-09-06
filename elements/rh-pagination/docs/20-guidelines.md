@@ -142,13 +142,13 @@ Container widths of 375px - 768px
 ### No input field
 
 <div class="grid sm-two-columns">
-  <uxdot-best-practice do>
+  <uxdot-best-practice variant="do">
     <uxdot-example slot="image" width-adjustment="372px">
       <img src="{{ '../pagination-guidelines-best-practices-1-do.svg' | url }}" alt="Size SM truncated pagination with input below pages.">
     </uxdot-example>
     <p>The page input field needs to be visible when there is truncation or when only the navigation controls are available.</p>
   </uxdot-best-practice>
-  <uxdot-best-practice dont>
+  <uxdot-best-practice variant="dont">
     <uxdot-example slot="image" width-adjustment="372px">
       <img src="../pagination-guidelines-best-practices-1-dont.svg" alt="Size SM truncated pagination without an input.">
     </uxdot-example>
@@ -159,13 +159,13 @@ Container widths of 375px - 768px
 ### Truncation
 
 <div class="grid sm-two-columns">
-  <uxdot-best-practice do>
+  <uxdot-best-practice variant="do">
     <uxdot-example slot="image" width-adjustment="372px">
       <img src="{{ '../pagination-guidelines-best-practices-2-do.svg' | url }}" alt="Size SM truncated pagination with eight pages.">
     </uxdot-example>
     <p>Truncation occurs automatically when there are more than seven pages.</p>
   </uxdot-best-practice>
-  <uxdot-best-practice dont>
+  <uxdot-best-practice variant="dont">
     <uxdot-example slot="image" width-adjustment="270px">
       <img src="../pagination-guidelines-best-practices-2-dont.svg" alt="Pagination that is truncating only four pages is incorrect usage">
     </uxdot-example>
@@ -177,13 +177,13 @@ Container widths of 375px - 768px
 ### Order or alignment
 
 <div class="grid sm-two-columns">
-  <uxdot-best-practice do>
+  <uxdot-best-practice variant="do">
     <uxdot-example slot="image" width-adjustment="372px">
       <img src="{{ '../pagination-guidelines-best-practices-3-do.svg' | url }}" alt="Pagination with input field center aligned below pagination">
     </uxdot-example>
     <p>Use the built-in alignment options for the page input field. If your language is read right to left, view the “Right to left” pagination demo.</p>
   </uxdot-best-practice>
-  <uxdot-best-practice dont>
+  <uxdot-best-practice variant="dont">
     <uxdot-example slot="image" width-adjustment="372px">
       <img src="../pagination-guidelines-best-practices-3-dont.svg" alt="Truncated pagination with the input field on top and right aligned.">
     </uxdot-example>
@@ -195,13 +195,13 @@ Container widths of 375px - 768px
 ### Compact vs. mobile
 
 <div class="grid sm-two-columns compact-vs-mobile">
-  <uxdot-best-practice do>
+  <uxdot-best-practice variant="do">
     <uxdot-example slot="image" width-adjustment="393px">
       <img src="{{ '../pagination-guidelines-best-practices-4-do.svg' | url }}" alt="Pagination shown on a mobile device with arrows on top and an input field below.">
     </uxdot-example>
     <p>Use the default mobile style that comes with each variant.</p>
   </uxdot-best-practice>
-  <uxdot-best-practice dont>
+  <uxdot-best-practice variant="dont">
     <uxdot-example slot="image" width-adjustment="393px">
       <img src="../pagination-guidelines-best-practices-4-dont.svg" alt="Pagination shown on a mobile device with input field in between arrows.">
     </uxdot-example>

@@ -54,14 +54,14 @@ The video’s width will dynamically adjust with its parent container. The video
 Display the play button in a consistent, predictable spot for all videos.
 
 <div class="grid xs-two-columns">
-  <uxdot-best-practice do>
+  <uxdot-best-practice variant="do">
     <uxdot-example color-palette="lightest" width-adjustment="420px" slot="image">
       <img src="{{ '../guidelines-best-practice-1-do.svg' | url }}" alt="Video with vertically and horizontally centered play button">
     </uxdot-example>
     <p>Keep the play button centered horizontally and vertically.</p>
   </uxdot-best-practice>
 
-  <uxdot-best-practice dont>
+  <uxdot-best-practice variant="dont">
     <uxdot-example color-palette="lightest" width-adjustment="420px" slot="image">
       <img src="{{ '../guidelines-best-practice-1-dont.svg' | url }}" alt="Video with play button in the bottom right">
     </uxdot-example>
@@ -75,14 +75,14 @@ Display the play button in a consistent, predictable spot for all videos.
 A video embed element and should have the same aspect ratio as the video it’s displaying.
 
 <div class="grid xs-two-columns">
-  <uxdot-best-practice do>
+  <uxdot-best-practice variant="do">
     <uxdot-example color-palette="lightest" width-adjustment="420px" slot="image">
       <img src="{{ '../guidelines-best-practice-2-do.svg' | url }}" alt="Video embed with a correct, 16:9 aspect ratio">
     </uxdot-example>
     <p>The video embed element should display a video using its original aspect ratio.</p>
   </uxdot-best-practice>
 
-  <uxdot-best-practice dont>
+  <uxdot-best-practice variant="dont">
     <uxdot-example color-palette="lightest" width-adjustment="420px" slot="image">
       <img src="{{ '../guidelines-best-practice-2-dont.svg' | url }}" alt="Video embed with a very narrow aspect ratio">
     </uxdot-example>

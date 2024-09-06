@@ -13,6 +13,9 @@ const RHDSMarkdownItPlugin = require('./docs/_plugins/markdown-it.cjs');
 const ImportMapPlugin = require('./docs/_plugins/importMap.cjs');
 const LitPlugin = require('@lit-labs/eleventy-plugin-lit');
 
+const util = require('node:util');
+const exec = util.promisify(require('node:child_process').exec);
+
 const isWatch =
   process.argv.includes('--serve') || process.argv.includes('--watch');
 
@@ -21,6 +24,14 @@ const isLocal = !(process.env.CI || process.env.DEPLOY_URL);
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function(eleventyConfig) {
   eleventyConfig.setQuietMode(true);
+
+  eleventyConfig.on('eleventy.before', function({ runMode }) {
+    eleventyConfig.addGlobalData('runMode', runMode);
+  });
+
+  eleventyConfig.on('eleventy.before', async function() {
+    await exec('npx tspc');
+  });
 
   eleventyConfig.addWatchTarget('docs/patterns/**/*.html');
   eleventyConfig.watchIgnores?.add('docs/assets/redhat/');
@@ -48,10 +59,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addWatchTarget('docs/styles/');
 
   eleventyConfig.addGlobalData('isLocal', isLocal);
-
-  eleventyConfig.on('eleventy.before', function({ runMode }) {
-    eleventyConfig.addGlobalData('runMode', runMode);
-  });
 
   eleventyConfig.addGlobalData('sideNavDropdowns', [
     { 'title': 'About', 'url': '/about', 'collection': 'about' },
@@ -83,6 +90,11 @@ module.exports = function(eleventyConfig) {
     nodemodulesPublicPath: '/assets/packages',
     manualImportMap: {
       imports: {
+        'lit/': '/assets/packages/lit/',
+        'lit-html': '/assets/packages/lit-html/lit-html.js',
+        'lit-html/': '/assets/packages/lit-html/',
+        '@lit-labs/ssr-client/lit-element-hydrate-support.js':
+          '/assets/packages/@lit-labs/ssr-client/lit-element-hydrate-support.js',
         '@rhds/tokens': '/assets/packages/@rhds/tokens/js/tokens.js',
         '@rhds/tokens/': '/assets/packages/@rhds/tokens/js/',
         '@rhds/elements/lib/': '/assets/packages/@rhds/elements/lib/',
@@ -118,12 +130,14 @@ module.exports = function(eleventyConfig) {
       '@floating-ui/core',
       '@floating-ui/dom',
       '@lit-labs/ssr-client/',
-      '@lit-labs/ssr-client/lit-element-hydrate-support.js',
       '@lit/context',
       '@lit/reactive-element',
       '@webcomponents/template-shadowroot/template-shadowroot.js',
       'lit',
       'lit-element',
+      'lit-html',
+      'lit/decorators/custom-element.js',
+      'lit/decorators/property.js',
       'lit/directives/class-map.js',
       'lit/directives/if-defined.js',
       'lit/directives/repeat.js',
@@ -171,12 +185,10 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(LitPlugin, {
     mode: 'worker',
     componentModules: [
-      'docs/assets/javascript/elements/uxdot-skip-navigation.js',
       'docs/assets/javascript/elements/uxdot-masthead.js',
       'docs/assets/javascript/elements/uxdot-header.js',
       'docs/assets/javascript/elements/uxdot-sidenav.js',
       'docs/assets/javascript/elements/uxdot-hero.js',
-      'docs/assets/javascript/elements/uxdot-feedback.js',
       'docs/assets/javascript/elements/uxdot-feedback.js',
       'docs/assets/javascript/elements/uxdot-copy-permalink.js',
       'docs/assets/javascript/elements/uxdot-copy-button.js',
@@ -184,8 +196,11 @@ module.exports = function(eleventyConfig) {
       'docs/assets/javascript/elements/uxdot-best-practice.js',
       'docs/assets/javascript/elements/uxdot-search.js',
       'docs/assets/javascript/elements/uxdot-toc.js',
+      'elements/rh-button/rh-button.js',
       'elements/rh-tag/rh-tag.js',
       'elements/rh-icon/rh-icon.js',
+      'elements/rh-skip-link/rh-skip-link.js',
+      'elements/rh-footer/rh-footer-universal.js',
       // 'docs/assets/javascript/elements/uxdot-pattern.js',
       // 'docs/assets/javascript/elements/uxdot-example.js', // Uses context API need to work around issues
       // 'docs/assets/javascript/elements/uxdot-installation-tabs.js', // extends RhTabs so cant DSD yet

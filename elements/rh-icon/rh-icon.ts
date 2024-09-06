@@ -114,9 +114,8 @@ export class RhIcon extends LitElement {
     return html`
       <div id="container"
            aria-hidden="${String(!!content)}"
-           class="${classMap({ [set]: set, isServer })}">${!isServer ? content
-        : unsafeHTML(content as unknown as string)}${content ? '' : html`
-        <span part="fallback"><slot></slot></span>`}
+           class="${classMap({ [set]: set })}">${!isServer ? content
+        : unsafeHTML(content as unknown as string)}<span part="fallback" ?hidden="${content}"><slot></slot></span>
       </div>
     `;
   }
@@ -128,13 +127,6 @@ export class RhIcon extends LitElement {
     } else {
       return this.content ?? '';
     }
-  }
-
-  updated() {
-    // terrible workaround for apparent lit bug: icons render twice, once for
-    // ssr, then again for client-side.
-    // updated() is not called on server
-    this.shadowRoot?.querySelector('.isServer')?.remove();
   }
 
   disconnectedCallback(): void {
