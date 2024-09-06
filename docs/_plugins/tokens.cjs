@@ -346,13 +346,10 @@ module.exports = function RHDSPlugin(eleventyConfig, pluginOptions = { }) {
     });
 };
 
-
-function getRandomId(prefix = 'pfe') {
-  return `${prefix}-${Math.random().toString(36).substr(2, 9)}`;
-}
+let count = 1
 
 function themeTokensCard({ level, slug, themeTokens }) {
-  slug ||= getRandomId('token');
+  slug ||= count++;
   return !themeTokens?.length ? '' : /* html*/`
   <rh-card id="surface-${slug}"
            class="swatches"
