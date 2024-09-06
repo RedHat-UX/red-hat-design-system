@@ -16,11 +16,6 @@ export class ContextConsumer extends ReactiveElement {
   @colorContextConsumer()
   @property({ reflect: true })
   on?: ColorTheme;
-
-  connectedCallback(): void {
-    super.connectedCallback();
-    console.log('hi');
-  }
 }
 
 @customElement('test-context-consumer-provider')
