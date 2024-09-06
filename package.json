@@ -48,7 +48,6 @@
   ],
   "scripts": {
     "🐒-DEV": "❓ Development aids",
-    "postinstall": "patch-package",
     "start": "wireit",
     "dev": "wireit",
     "serve": "wireit",
@@ -86,6 +85,7 @@
       "service": true,
       "command": "web-dev-server --open --watch",
       "dependencies": [
+        "patch",
         "analyze",
         "playgrounds",
         "watch:docs"
@@ -95,13 +95,16 @@
       "service": true,
       "command": "web-dev-server --watch",
       "dependencies": [
+        "patch",
+        "compile",
         "analyze"
       ]
     },
     "serve": {
       "service": true,
-      "command": "eleventy --serve",
+      "command": "eleventy --serve --incremental",
       "dependencies": [
+        "patch",
         "analyze",
         "playgrounds"
       ]
