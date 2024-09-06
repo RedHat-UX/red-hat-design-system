@@ -15,11 +15,8 @@ eleventyComputed:
     - rh-tag
     - "{{ doc.tagName or element.tagName }}"
 ---
-{%- if hasToc %}
-<link rel="stylesheet" href="/assets/javascript/elements/uxdot-toc-lightdom.css">
-{%- endif %}
 {% if doc.pageTitle == 'Code' %}
-  <link rel="stylesheet" href="{{ '/styles/pages/code.css' | url }}">
+<link rel="stylesheet" href="/styles/pages/code.css">
 {% endif %}
 <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
 <link rel="stylesheet" href="/assets/packages/@rhds/tokens/css/global.css">
@@ -72,11 +69,9 @@ eleventyComputed:
     </uxdot-header>
 
     {% if hasToc and (content | toc).length > 0 %}
-    <aside>
-      <uxdot-toc summary="On this page">
-        {{ content | toc | safe }}
-      </uxdot-toc>
-    </aside>
+    <uxdot-toc summary="On this page">
+      {{ content | toc | safe }}
+    </uxdot-toc>
     {% endif %}
 
     <div class="container">

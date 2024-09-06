@@ -123,7 +123,7 @@ export class RhCta extends LitElement {
   @colorContextConsumer() private on?: ColorTheme;
 
   protected override async getUpdateComplete(): Promise<boolean> {
-    if (this.icon) {
+    if (this.icon || !this.variant) {
       await import('@rhds/elements/rh-icon/rh-icon.js');
     }
     return super.getUpdateComplete();

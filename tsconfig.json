@@ -1,6 +1,7 @@
 {
   "include": [
     "./elements",
+    "./docs/assets/javascript/elements",
     "./lib",
     "./declaration.d.ts"
   ],

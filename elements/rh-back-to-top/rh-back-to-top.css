@@ -1,7 +1,8 @@
 :host {
-  position: absolute;
-  right: var(--rh-space-xl, 24px);
-  bottom: var(--rh-space-xl, 24px);
+  position: fixed;
+  z-index: 1000;
+  inset-inline-end: var(--rh-space-xl, 24px);
+  inset-block-end: var(--rh-space-xl, 24px);
 }
 
 [part="trigger"] {
@@ -54,7 +55,7 @@ span {
 
 @media (min-width: 768px) {
   :host {
-    right: var(--rh-back-to-top-position-right, var(--rh-space-3xl, 48px));
-    bottom: var(--rh-back-to-top-position-bottom, var(--rh-space-3xl, 48px));
+    inset-inline-end: var(--rh-space-3xl, 48px);
+    inset-block-end: var(--rh-space-3xl, 48px);
   }
 }

@@ -99,7 +99,7 @@ rh-navigation-secondary > [slot="nav"] {
 
 rh-navigation-secondary > [slot="logo"],
 rh-navigation-secondary > [slot="nav"] {
-  line-height: var(--rh-line-height-body-text, 1.5);
+  line-height: var(--rh-line-height-heading, 1.3);
 }
 
 rh-navigation-secondary > [slot="cta"] {
