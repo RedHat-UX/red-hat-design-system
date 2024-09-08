@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
 import { customElement } from 'lit/decorators/custom-element.js';
@@ -9,6 +9,10 @@ import {
   colorContextProvider,
   type ColorPalette,
 } from '@rhds/elements/lib/context/color/provider.js';
+import {
+  colorContextConsumer,
+  type ColorTheme,
+} from '@rhds/elements/lib/context/color/consumer.js';
 
 import {
   ColorPaletteListConverter,
@@ -30,6 +34,8 @@ export class UxdotPattern extends LitElement {
   @property({ reflect: true, attribute: 'color-palette' })
   colorPalette: ColorPalette = 'lightest';
 
+  @colorContextConsumer() private on?: ColorTheme;
+
   @property({ reflect: true })
   target = 'container';
 
@@ -45,20 +51,21 @@ export class UxdotPattern extends LitElement {
   #slots = new SlotController(this, 'html', 'css', 'js');
 
   render() {
-    const { noColorPicker, stacked } = this;
+    const { noColorPicker, stacked, on = 'light' } = this;
     const hasHtml = this.#slots.hasSlotted('html');
     const hasCss = this.#slots.hasSlotted('css');
     const hasJs = this.#slots.hasSlotted('js');
-    const dark = this.colorPalette.startsWith('dark');
-    const light = this.colorPalette.startsWith('light');
+
+    const target = isServer || (this.target === 'container') ? this.target
+      : (this.getRootNode() as Document).getElementById(this.target);
     return html`
       <rh-surface id="container"
                   part="container"
-                  class="on ${classMap({ dark, light, noColorPicker, stacked })}">
+                  class="${classMap({ on: true, [on]: true, noColorPicker, stacked })}">
         <form id="color-picker" @submit="${(e: Event) => e.preventDefault()}">
           <label for="picker">Color palette</label>
           <rh-context-picker id="picker"
-                             target="${this.target}"
+                             .target="${target}"
                              value="${this.colorPalette}"
                              @change="${this.#onChange}"
                              .allow="${this.allow}"></rh-context-picker>

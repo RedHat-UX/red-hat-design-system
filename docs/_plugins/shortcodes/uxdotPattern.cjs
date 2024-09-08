@@ -37,8 +37,11 @@ module.exports = function(eleventyConfig) {
     const baseUrl = pathToFileURL(this.page.inputPath);
     const cssContent = await getCss(partial, { ...kwargs, baseUrl });
     const jsContent = kwargs.js && await readFile(new URL(kwargs.js, baseUrl), 'utf-8');
+    const attrs = Object.entries(kwargs)
+        .map(([name, value]) => name === '__keywords' ? '' : `${value ? name : ''}${value === true || value === false ? '' : `="${value}"`}`)
+        .join(' ');
     return html`
-<uxdot-pattern ${kwargs.stacked ? 'stacked' : ''} ${!kwargs.allow ? '' : `allow="${kwargs.allow}"`}>
+<uxdot-pattern ${attrs}>
   <h4 slot="heading">Example</h4>
   ${content}
   <h4 slot="html-heading">HTML</h4>

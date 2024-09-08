@@ -8,7 +8,7 @@
 #container {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-areas: "controls" "example" "code";
+  grid-template-areas: 'controls' 'example' 'code';
   gap: var(--rh-space-2xl, 32px) var(--rh-space-4xl, 64px);
   padding: var(--rh-space-2xl, 32px);
   border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
@@ -16,6 +16,8 @@
   background-color: var(--rh-color-surface);
   color: var(--rh-color-text-primary);
   border-color: var(--rh-color-border-subtle);
+
+  --rh-color-surface: inherit;
 }
 
 #container h3,
@@ -40,11 +42,6 @@
   grid-area: example;
 }
 
-#example ::slotted(*:not(style)) {
-  display: block;
-  max-width: 360px;
-}
-
 :host([stacked]) #example ::slotted(*) {
   max-width: 100%;
 }
@@ -57,7 +54,7 @@
 }
 
 #container.noColorPicker {
-  grid-template-areas: "example" "code";
+  grid-template-areas: 'example' 'code';
 }
 
 #color-picker.noColorPicker {
@@ -68,20 +65,20 @@
   #container {
     grid-template-columns: max-content auto;
     grid-template-areas:
-      "controls controls"
-      "example code";
+      'controls controls'
+      'example code';
   }
 
   #container.noColorPicker {
-    grid-template-areas: "example code";
+    grid-template-areas: 'example code';
   }
 
   #container.stacked {
     grid-template-columns: 1fr;
-    grid-template-areas: "controls" "example" "code";
+    grid-template-areas: 'controls' 'example' 'code';
   }
 
   #container.stacked.noColorPicker {
-    grid-template-areas: "example" "code";
+    grid-template-areas: 'example' 'code';
   }
 }
