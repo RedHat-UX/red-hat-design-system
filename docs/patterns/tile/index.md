@@ -4,23 +4,13 @@ heading: Tile
 sidenavTitle: Tile
 layout: layouts/pages/pattern.njk
 hasToc: true
-order: 20
+order: 120
 tags:
   - pattern
   - tilePatterns
 subnav:
   collection: tilePatterns
   order: 1
----
-
----
-title: Tile
-layout: layouts/pages/basic.njk
-hasToc: true
-order: 120
-tags:
-  - pattern
-importElements:
 ---
 
 <link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
