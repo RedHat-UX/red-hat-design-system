@@ -38,7 +38,7 @@
   font-weight: var(--rh-font-weight-heading-medium, 500);
   border-radius: var(--rh-border-radius-default, 3px);
   border: var(--rh-border-width-sm, 1px) solid var(--_border-color);
-  background-color: var(--_background-color);
+  background-color: var(--rh-tile-background-color, var(--rh-color-surface));
   color: var(--_text-color);
 
   --_padding: var(--rh-space-2xl, 32px);
@@ -47,7 +47,6 @@
   --_focus-interactive-color: var(--rh-tile-focus-interactive-color, var(--rh-color-interactive-primary-hover));
   --_text-color: var(--rh-tile-text-color, var(--rh-color-text-primary));
   --_text-color-secondary: var(--rh-tile-text-color-secondary, var(--rh-color-text-secondary));
-  --_background-color: var(--rh-tile-background-color, var(--rh-color-surface));
   --_focus-background-color: var(--rh-tile-focus-background-color, var(--rh-color-surface-lighter, #f2f2f2));
   --_disabled-background-color: var(--rh-tile-disabled-background-color, var(--rh-color-surface-light, #e0e0e0));
   --_border-color: var(--rh-tile-border-color, var(--rh-color-border-subtle));
@@ -59,7 +58,6 @@
   --_focus-interactive-color: var(--rh-tile-focus-interactive-color, var(--rh-color-interactive-primary-hover));
   --_text-color: var(--rh-tile-text-color, var(--rh-color-text-primary));
   --_text-color-secondary: var(--rh-tile-text-color-secondary, var(--rh-color-text-secondary));
-  --_background-color: var(--rh-tile-background-color, var(--rh-color-surface-darkest, #151515));
   --_focus-background-color: var(--rh-tile-focus-background-color, var(--rh-color-surface-darker, #1f1f1f));
   --_disabled-background-color: var(--rh-tile-disabled-background-color, var(--rh-color-surface-dark, #383838));
   --_border-color: var(--rh-tile-border-color, var(--rh-color-border-subtle));
