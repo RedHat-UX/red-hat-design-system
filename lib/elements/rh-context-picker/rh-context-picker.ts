@@ -61,7 +61,7 @@ export class RhContextPicker extends LitElement {
   declare shadowRoot: ShadowRoot;
 
   /** ID of context element to toggle (same root) */
-  @property() target?: string;
+  @property() target?: string | HTMLElement;
 
   @property() value: ColorPalette = 'darkest';
 
@@ -105,7 +105,10 @@ export class RhContextPicker extends LitElement {
     for (const label of this.#internals.labels) {
       label.addEventListener('click', () => this.focus());
     }
-    if (this.target) {
+    if (this.target instanceof HTMLElement) {
+      this.#target = this.target;
+      this.sync();
+    } else if (this.target) {
       const root = this.getRootNode() as Document | ShadowRoot;
       this.#target = root.getElementById(this.target);
       this.sync();
