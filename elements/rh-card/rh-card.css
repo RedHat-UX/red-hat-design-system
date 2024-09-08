@@ -33,27 +33,27 @@
   color: var(--rh-color-text-primary);
 }
 
-#container.on.light {
+.on.light {
   --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
 }
 
-#container.on.dark {
+.on.dark {
   --rh-color-surface: var(--rh-color-surface-darkest, #151515);
 }
 
-#container.palette-light {
+#container.on.palette-light {
   --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
 }
 
-#container.palette-dark {
+#container.on.palette-dark {
   --rh-color-surface: var(--rh-color-surface-darkest, #151515);
 }
 
-#container.palette-darker {
+#container.on.palette-darker {
   --rh-color-surface: var(--rh-color-surface-darker, #1f1f1f);
 }
 
-#container.palette-lighter {
+#container.on.palette-lighter {
   --rh-color-surface: var(--rh-color-surface-lighter, #f2f2f2);
 }
 
