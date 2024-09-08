@@ -11,7 +11,7 @@ module.exports = function RHDSPlugin(eleventyConfig, pluginOptions = { }) {
 
   eleventyConfig.addGlobalData('tokens', tokensJSON);
 
-  eleventyConfig.addCollection('token', function() {
+  eleventyConfig.addCollection('tokenCategory', function() {
     return [
       { path: 'color', exclude: ['border', 'text', 'icon'] },
       { path: 'box-shadow' },
@@ -23,16 +23,16 @@ module.exports = function RHDSPlugin(eleventyConfig, pluginOptions = { }) {
       { slug: 'icon', path: 'size.icon', include: ['size.icon', 'color.icon'] },
       { path: 'breakpoint' },
       { path: 'media' },
-    ].map(cat => {
-      cat.slug ??= cat.path?.replace('.', '-') ?? '';
-
-      const tokens = resolveTokens(cat.path);
-
+    ].map(tokenCategory => {
+      tokenCategory.slug ??= tokenCategory.path?.replace('.', '-') ?? '';
+      const tokens = resolveTokens(tokenCategory.path);
       const docs = tokens?.$extensions?.['com.redhat.ux'];
-      const title = docs?.heading ?? cat.slug.replaceAll('-', ' ');
-      const url = `/tokens/${cat.slug}/`;
-
-      return { ...cat, title, docs, url };
+      return {
+        ...tokenCategory,
+        docs,
+        title: docs?.heading ?? tokenCategory.slug.replaceAll('-', ' '),
+        url: `/tokens/${tokenCategory.slug}/`,
+      };
     });
   });
 

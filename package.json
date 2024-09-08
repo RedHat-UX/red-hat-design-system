@@ -320,6 +320,7 @@
     "custom-elements-manifest": "^2.1.0",
     "element-internals-polyfill": "^1.3.11",
     "eleventy-plugin-dart-sass": "^1.0.3",
+    "eleventy-plugin-helmet": "^0.2.2",
     "eleventy-plugin-nesting-toc": "^1.3.0",
     "es-module-shims": "^1.10.0",
     "eslint": "^9.9.0",

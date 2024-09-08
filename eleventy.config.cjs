@@ -12,6 +12,7 @@ const DesignTokensPlugin = require('./docs/_plugins/tokens.cjs');
 const RHDSMarkdownItPlugin = require('./docs/_plugins/markdown-it.cjs');
 const ImportMapPlugin = require('./docs/_plugins/importMap.cjs');
 const LitPlugin = require('@lit-labs/eleventy-plugin-lit');
+const HelmetPlugin = require('eleventy-plugin-helmet');
 
 const util = require('node:util');
 const exec = util.promisify(require('node:child_process').exec);
@@ -64,13 +65,14 @@ module.exports = function(eleventyConfig) {
     { title: 'About', url: '/about', collection: 'about' },
     { title: 'Get started', url: '/get-started', collection: 'getstarted' },
     { title: 'Foundations', url: '/foundations', collection: 'foundations' },
-    { title: 'Tokens', url: '/tokens', collection: 'token' },
+    { title: 'Tokens', url: '/tokens', collection: 'tokenCategory' },
     { title: 'Elements', url: '/elements', collection: 'elementDocs' },
     { title: 'Patterns', url: '/patterns', collection: 'pattern' },
     { title: 'Theming', url: '/theming', collection: 'theming' },
     { title: 'Accessibility', url: '/accessibility', collection: 'accessibility' },
   ]);
 
+  eleventyConfig.addPlugin(HelmetPlugin);
   eleventyConfig.addPlugin(RHDSMarkdownItPlugin);
 
   /** Table of Contents Shortcode */

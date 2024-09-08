@@ -8,7 +8,6 @@ const {
   copyCell,
   resolveTokens,
   getDocs,
-  dedent,
   isThemeColorToken,
   styleMap,
   classMap,
@@ -37,12 +36,12 @@ module.exports = class TokensPage {
   data() {
     return {
       layout: 'layouts/pages/basic.njk',
-      permalink: data => !data?.cat?.slug ? null
-        : `/tokens/${data.cat.slug}/index.html`,
+      permalink: ({ tokenCategory }) => !tokenCategory?.slug ? null
+        : `/tokens/${tokenCategory.slug}/index.html`,
       eleventyComputed: {
-        title: data =>
-          data.title
-            || `${capitalize(data.cat.title || data.cat.slug)} tokens`,
+        title: ({ title, tokenCategory }) =>
+          title
+            || `${capitalize(tokenCategory.title || tokenCategory.slug)} tokens`,
       },
       hasToc: true,
       tocTags: [
@@ -50,8 +49,8 @@ module.exports = class TokensPage {
       ],
       pagination: {
         size: 1,
-        alias: 'cat',
-        data: 'collections.token',
+        alias: 'tokenCategory',
+        data: 'collections.tokenCategory',
       },
       tokenSearch: true,
       importElements: [
@@ -84,7 +83,6 @@ module.exports = class TokensPage {
   getThemeTokens(options) {
     const parts = options.path?.split('.') ?? [];
     const themeTokens = [];
-
     if (parts.at(0) === 'color' && parts.length === 2) {
       const prefix = `rh-color-${parts.at(1)}`;
       for (const token of tokensMeta.values()) {
@@ -96,11 +94,8 @@ module.exports = class TokensPage {
     return themeTokens;
   }
 
-  /**
-   * Generate an HTML table of tokens
-   * @param {Options} options options
-   */
-  renderTable(options) {
+  /** @param {Options} options */
+  async renderTable(options) {
     const tokens = Object.values(options.tokens).filter(x => x.$value);
     const { name } = options;
     const example = getDocs(options.tokens)?.example ?? '';
@@ -109,7 +104,7 @@ module.exports = class TokensPage {
       return '';
     }
 
-    return dedent(html`
+    return html`
       <rh-table>
         <table>
           <thead>
@@ -122,114 +117,117 @@ module.exports = class TokensPage {
             </tr>
           </thead>
           <tbody>
-          ${tokens.map(token => {
-    if (!token.path || name === 'attributes' || name === 'original' || token.name === '_') {
-      return '';
-    }
-    const { r, g, b } = token.attributes?.rgb ?? {};
-    const { h, s, l } = token.attributes?.hsl ?? {};
-    const isColor = !!token.path.includes('color');
-    const isCrayon = isColor && token.name.match(/0$/);
-    const isDimension = token.$type === 'dimension';
-    const isHSLorRGB = isColor && !!token.name.match(/(hsl|rgb)$/);
-    const isFamily = !!token.path.includes('family');
-    const isFont = !!token.path.includes('font');
-    const isRadius = !!token.path.includes('radius');
-    const isSize = !!token.path.includes('size');
-    const isWeight = !!token.path.includes('weight');
-    const isWidth = !!token.path.includes('width');
-    const isLight =
-          token.path.includes('on-light')
-          || (token.attributes?.subitem !== 'on-light'
-          && token.attributes?.subitem !== 'on-dark');
-    const isOpacity = !!token.path.includes('opacity');
-    const isSpace = !!token.path.includes('space');
-    const isBreakpoint = !!token.path.includes('breakpoint');
-    const isHeading = !!token.path.includes('heading');
+            ${(await Promise.all(tokens.map(async token => {
+              if (!token.path
+                  || name === 'attributes'
+                  || name === 'original'
+                  || token.name === '_') {
+                return '';
+              }
+              const { r, g, b } = token.attributes?.rgb ?? {};
+              const { h, s, l } = token.attributes?.hsl ?? {};
+              const isColor = !!token.path.includes('color');
+              const isCrayon = isColor && token.name.match(/0$/);
+              const isDimension = token.$type === 'dimension';
+              const isHSLorRGB = isColor && !!token.name.match(/(hsl|rgb)$/);
+              const isFamily = !!token.path.includes('family');
+              const isFont = !!token.path.includes('font');
+              const isRadius = !!token.path.includes('radius');
+              const isSize = !!token.path.includes('size');
+              const isWeight = !!token.path.includes('weight');
+              const isWidth = !!token.path.includes('width');
+              const isLight =
+                token.path.includes('on-light')
+                || (token.attributes?.subitem !== 'on-light'
+                && token.attributes?.subitem !== 'on-dark');
+              const isOpacity = !!token.path.includes('opacity');
+              const isSpace = !!token.path.includes('space');
+              const isBreakpoint = !!token.path.includes('breakpoint');
+              const isHeading = !!token.path.includes('heading');
 
-    const classes = classMap({
-      'light': isLight,
-      'dark': !isLight,
-      'color': isColor,
-      'crayon': isCrayon,
-      'dimension': isDimension,
-      'family': isFamily,
-      'font': isFont,
-      'radius': isRadius,
-      'size': isSize,
-      'weight': isWeight,
-      'width': isWidth,
-      'box-shadow': token.path.includes('box-shadow'),
-      'border': token.path.includes('border'),
-      'sm': token.path.includes('sm'),
-      'md': token.path.includes('md'),
-      'lg': token.path.includes('lg'),
-      'opacity': isOpacity,
-      'space': isSpace,
-      'length': token.path.includes('length'),
-      'icon': token.path.includes('icon'),
-      'breakpoint': isBreakpoint,
-      'heading': isHeading,
-      'code': token.path.includes('code'),
-    });
+              const classes = classMap({
+                light: isLight,
+                dark: !isLight,
+                color: isColor,
+                crayon: isCrayon,
+                dimension: isDimension,
+                family: isFamily,
+                font: isFont,
+                radius: isRadius,
+                size: isSize,
+                weight: isWeight,
+                width: isWidth,
+                ['box-shadow']: token.path.includes('box-shadow'),
+                border: token.path.includes('border'),
+                sm: token.path.includes('sm'),
+                md: token.path.includes('md'),
+                lg: token.path.includes('lg'),
+                opacity: isOpacity,
+                space: isSpace,
+                length: token.path.includes('length'),
+                icon: token.path.includes('icon'),
+                breakpoint: isBreakpoint,
+                heading: isHeading,
+                code: token.path.includes('code'),
+              });
 
-    return isHSLorRGB ? '' : html`
-              <tr id="${token.name}"
-                  class="${classes}"
-                  style="${styleMap({
-      '--samp-radius': isRadius ? token.$value : 'initial',
-      '--samp-width': isWidth ? token.$value : 'initial',
-      '--samp-color': isColor ? token.$value : 'initial',
-      '--samp-opacity': isOpacity ? token.$value : 'initial',
-      '--samp-space': isSpace ? token.$value : 'initial',
-      '--samp-font-family': isFamily ? token.$value : 'var(--rh-font-family-body-text)',
-      '--samp-font-size': isSize ? token.$value : 'var(--rh-font-size-heading-md)',
-      '--samp-font-weight': isWeight ? token.$value : 'var(--rh-font-weight-body-text-regular)',
-      [`--samp-${token.$type === 'dimension' ? `${name}-size` : name}`]: token.$value,
-      [`${token.$type === 'dimension' && token.attributes.category === 'space' ? `--samp-${name}-color` : ``}`]: isSpace ? token.original['$extensions']['com.redhat.ux'].color : '',
-    })}">
-                <td data-label="Example">
-                  <samp class="${classes}">
+            return isHSLorRGB ? '' : html`
+            <tr id="${token.name}"
+              class="${classes}"
+              style="${styleMap({
+                '--samp-radius': isRadius ? token.$value : 'initial',
+                '--samp-width': isWidth ? token.$value : 'initial',
+                '--samp-color': isColor ? token.$value : 'initial',
+                '--samp-opacity': isOpacity ? token.$value : 'initial',
+                '--samp-space': isSpace ? token.$value : 'initial',
+                '--samp-font-family': isFamily ? token.$value : 'var(--rh-font-family-body-text)',
+                '--samp-font-size': isSize ? token.$value : 'var(--rh-font-size-heading-md)',
+                '--samp-font-weight': isWeight ? token.$value : 'var(--rh-font-weight-body-text-regular)',
+                [`--samp-${token.$type === 'dimension' ? `${name}-size` : name}`]: token.$value,
+                [`${token.$type === 'dimension' && token.attributes.category === 'space' ? `--samp-${name}-color` : ``}`]: isSpace ? token.original['$extensions']['com.redhat.ux'].color : '',
+              })}">
+              <td data-label="Example">
+                <samp class="${classes}">
                   ${isSpace ? `<span class="${parseInt(token.$value) < 16 ? `offset` : ''}">${parseInt(token.$value)}</span>` : ``}
                   ${isColor && token.path.includes('text') ? 'Aa'
                   : isFont ? (example || token.attributes?.aliases?.[0] || 'Aa')
                   : name === 'breakpoint' ? `
-                    <img src="/assets/breakpoints/device-${token.name}.svg" role="presentation">`
+                  <img src="/assets/breakpoints/device-${token.name}.svg" role="presentation">`
                   : example}
-                  </samp>
-                </td>
-                <td data-label="Token name">
-                  <uxdot-copy-button>--${token.name}</uxdot-copy-button>
-                </td>
-                <td data-label="Value">
-                  ${( isDimension ? `<code>${token.$value}<code>`
-                    : isColor ? `<code style="--color: ${token.$value}">${token.$value}</code> `
-                    : isWeight ? `
-                      <code class="numerical">${token.$value}</code>
-                      <code class="common">${token.attributes?.aliases?.[0] ?? ''}</code>`
-                    : `<code>${token.$value}</code>`
+                </samp>
+              </td>
+              <td data-label="Token name">
+                <uxdot-copy-button>--${token.name}</uxdot-copy-button>
+              </td>
+              <td data-label="Value">
+                ${( isDimension ? `<code>${token.$value}<code>`
+                  : isColor ? `<code style="--color: ${token.$value}">${token.$value}</code> `
+                  : isWeight ? `
+                  <code class="numerical">${token.$value}</code>
+                  <code class="common">${token.attributes?.aliases?.[0] ?? ''}</code>`
+                  : `<code>${token.$value}</code>`
                   )}
-                </td>
-                <td data-label="Use case">${token.$description ?? ''}</td>
-                ${copyCell(token)}
-              </tr>${!isCrayon ? '' : `
-              <tr class="variants">
-                <td colspan="5">
-                  <details>
-                    <summary title="Color function variants">Color function variants</summary>
-                      <rh-table>
-                        <table class="${classes}"
-                              style="${styleMap({ '--samp-color': isColor ? token.$value : 'initial' })}">
-                          <thead>
-                          <tr>
-                            <th scope="col" data-label="Example"><abbr title="Example">Ex.</abbr></th>
-                            <th scope="col" data-label="Token name">Token name</th>
-                            <th scope="col" data-label="Value">Value</th>
-                            <th scope="col" data-label="Use case">Use case</th>
-                            <th scope="col" data-label="Copy"></th>
-                          </tr>
-                        </thead>
-                        <tbody>
+              </td>
+              <td data-label="Use case">${await this.renderTemplate(token.$description ?? '', 'md')}</td>
+              ${copyCell(token)}
+            </tr>${!isCrayon ? '' : `
+            <tr class="variants">
+              <td colspan="5">
+                <details>
+                  <summary title="Color function variants">Color function variants</summary>
+                  <rh-table>
+                    <table class="${classes}"
+                      style="${styleMap({ '--samp-color': isColor ? token.$value : 'initial' })}">
+                      <thead>
+                        <tr>
+                          <th scope="col" data-label="Example"><abbr title="Example">Ex.</abbr></th>
+                          <th scope="col" data-label="Token name">Token name</th>
+                          <th scope="col" data-label="Value">Value</th>
+                          <th scope="col" data-label="Use case">Use case</th>
+                          <th scope="col" data-label="Copy"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
                         <tr id="${token.name}-rgb" style="--color: rgb(${r}, ${g}, ${b})">
                           <td class="sample">
                             <samp class="${classes}">${token.path.includes('text') ? 'Aa' : example}</samp>
@@ -252,17 +250,17 @@ module.exports = class TokensPage {
                           <td>To modify opacity</td>
                           ${copyCell(token)}
                         </tr>
-                        </tbody>
-                      </table>
-                    </rh-table>
-                  </details>
-                </td>
-              </tr>
+                      </tbody>
+                    </table>
+                  </rh-table>
+                </details>
+              </td>
+            </tr>
             `}`;
-  }).map(dedent).join('\n')}
+            }))).join('\n')}
           </tbody>
         </table>
-      </rh-table>`).trim();
+      </rh-table>`.trim();
   }
 
   /** @param {Options} options */
@@ -356,15 +354,9 @@ module.exports = class TokensPage {
 
     return html`
       ${permalink}
-
-      <div class="description">
-
-        ${dedent(options.tokens.$description ?? '')}
-
-      </div>
-
+      <div class="description">${await this.renderTemplate(options.tokens.$description ?? '', 'md')}</div>
       ${this.renderThemeTokensCard(options)}
-      ${this.renderTable(options)}
+      ${await this.renderTable(options)}
       ${await this.renderChildren(options)}
       ${await this.renderIncludes(options)}
     `;
@@ -387,16 +379,7 @@ module.exports = class TokensPage {
      * 1. get all the top-level $value-bearing objects and render them
      * 2. for each remaining object, recurse
      */
-    if (!options.parent) {
-      return html`
-        <div class="token-category"
-          data-name="${options.name}"
-          data-path="${options.path}"
-          data-slug="${options.slug}">
-          ${content}
-        </div>
-      `;
-    } else if (options.level >= 4) {
+    if (options.level >= 4) {
       return html`
         <div class="token-category level-2"
           data-name="${options.name}"
@@ -420,17 +403,17 @@ module.exports = class TokensPage {
     }
   }
 
-  async render({ cat }) {
-    const { exclude, include, path, slug } = cat;
+  async render({ tokenCategory }) {
+    const { exclude, include, path, slug } = tokenCategory;
     const name = path.split('.').pop();
     const tokens = resolveTokens(path);
-    return dedent(html`
-      <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
-      <link rel="stylesheet" href="/styles/samp.css">
-      <link rel="stylesheet" href="/styles/tokens-pages.css">
-      <script type="module" src="/assets/javascript/tokens-pages.js"></script>
+    return html`
+      <link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
+      <link rel="stylesheet" data-helmet href="/styles/samp.css">
+      <link rel="stylesheet" data-helmet href="/styles/tokens-pages.css">
+      <script type="module" data-helmet src="/assets/javascript/tokens-pages.js"></script>
       ${await this.renderCategory({ tokens, name, path, slug, level: 1, exclude, include })}
       ${await this.renderFile('./docs/_includes/partials/component/feedback.html')}
-    `);
+    `;
   }
 };
