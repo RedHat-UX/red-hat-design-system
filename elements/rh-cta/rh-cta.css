@@ -278,7 +278,7 @@ a:focus-within,
 
   --_background-color: var(--rh-cta-background-color, var(--rh-color-brand-red));
   --_border-color: var(--rh-cta-border-color, var(--rh-color-brand-red));
-  --_color: var(--rh-cta-color, var(--rh-color-text-primary));
+  --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
   --_hover-background-color: var(--rh-cta-hover-background-color, var(--rh-color-brand-red));
   --_hover-border-color: var(--rh-cta-hover-border-color, var(--rh-color-brand-red));
   --_hover-color: var(--rh-cta-hover-color, var(--rh-color-text-primary));
