@@ -10,9 +10,11 @@ import styles from './uxdot-header.css';
 
 import { colorContextProvider } from '@rhds/elements/lib/context/color/provider.js';
 
+import colorContextProviderCss from '@rhds/tokens/css/color-context-provider.css.js';
+
 @customElement('uxdot-header')
 export class UxdotHeader extends LitElement {
-  static styles = [styles];
+  static styles = [styles, colorContextProviderCss];
 
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' })

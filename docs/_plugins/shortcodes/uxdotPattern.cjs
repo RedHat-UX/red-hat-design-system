@@ -8,7 +8,10 @@ const html = String.raw;
 // because markdown, we have to replace newlines with a cookie crumb
 const COMMENT = '<!--CSS_SAMPLE_NEWLINE-->';
 
-/** Returns a string with common indent stripped from each line. Useful for templating HTML */
+/**
+ * Returns a string with common indent stripped from each line. Useful for templating HTML
+ * @param {string} str
+ */
 function dedent(str) {
   const stripped = str.replace(/^\n/, '');
   const match = stripped.match(/^\s+/);
@@ -35,7 +38,7 @@ module.exports = function(eleventyConfig) {
     const cssContent = await getCss(partial, { ...kwargs, baseUrl });
     const jsContent = kwargs.js && await readFile(new URL(kwargs.js, baseUrl), 'utf-8');
     return html`
-<uxdot-pattern ${kwargs.stacked ? 'stacked' : ''}>
+<uxdot-pattern ${kwargs.stacked ? 'stacked' : ''} ${!kwargs.allow ? '' : `allow="${kwargs.allow}"`}>
   <h4 slot="heading">Example</h4>
   ${content}
   <h4 slot="html-heading">HTML</h4>
@@ -64,7 +67,7 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addTransform('uxdot-pattern-restore-newlines', function(content) {
     const { outputPath } = this;
-    if (outputPath.match(/\/patterns\/.*\/examples\//)) {
+    if (outputPath.match(/\/patterns\/.*(\/examples\/)?/)) {
       const $ = cheerio.load(content);
       $([
         'script[type="text/css"]',
