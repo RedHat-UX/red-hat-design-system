@@ -4,6 +4,8 @@ import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
+import '@rhds/elements/rh-surface/rh-surface.js';
+
 import styles from './uxdot-header.css';
 
 @customElement('uxdot-header')
@@ -17,11 +19,11 @@ export class UxdotHeader extends LitElement {
   render() {
     const { hasSubnav, hasSearch } = this;
     return html`
-      <div id="container" class=${classMap({ hasSubnav, hasSearch })} part="container">
+      <rh-surface color-palette="lighter" id="container" class=${classMap({ hasSubnav, hasSearch })} part="container">
         <slot part="heading"></slot>
         <slot name="search" part="search"></slot>
         <slot name="subnav" part="subnav"></slot>
-      </div>
+      </rh-surface>
     `;
   }
 }

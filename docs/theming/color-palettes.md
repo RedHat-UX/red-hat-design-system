@@ -3,9 +3,11 @@ title: Color Palettes
 bodyClasses: element-docs
 order: 2
 ---
-<link rel="stylesheet" href="/assets/packages/@rhds/elements/rh-pagination/rh-pagination-lightdom.css">
+<link rel="stylesheet"
+      data-helmet
+      href="/assets/packages/@rhds/elements/rh-pagination/rh-pagination-lightdom.css">
 
-<script type="module">
+<script type="module" data-helmet>
   import '@rhds/elements/rh-accordion/rh-accordion.js';
   import '@rhds/elements/rh-audio-player/rh-audio-player.js';
   import '@rhds/elements/rh-blockquote/rh-blockquote.js';

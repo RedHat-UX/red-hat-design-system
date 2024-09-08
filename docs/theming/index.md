@@ -2,7 +2,7 @@
 title: Overview
 order: 1
 ---
-<style>
+<style data-helmet>
   .card-grid {
     display: grid;
     gap: var(--rh-space-2xl, 32px);
@@ -10,9 +10,9 @@ order: 1
   }
 </style>
 
-<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
+<link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
 
-<script type="module">
+<script type="module" data-helmet>
   import '@rhds/elements/rh-cta/rh-cta.js';
   import '@rhds/elements/rh-tile/rh-tile.js';
 </script>

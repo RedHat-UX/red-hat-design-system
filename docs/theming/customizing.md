@@ -3,7 +3,7 @@ title: Customizing
 bodyClasses: element-docs
 order: 3
 ---
-<script type="module">
+<script type="module" data-helmet>
   import '@rhds/elements/rh-blockquote/rh-blockquote.js';
   import '@rhds/elements/rh-cta/rh-cta.js';
   import '@rhds/elements/rh-card/rh-card.js';

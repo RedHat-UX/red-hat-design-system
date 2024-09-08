@@ -11,20 +11,19 @@ tags:
 subnav:
   collection: cardPatterns
   order: 1
-importElements:
-  - rh-card
-  - rh-cta
-  - rh-surface
-  - rh-avatar
-  - rh-accordion
 ---
 
-<script type="module">
+<script type="module" data-helmet>
   import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+  import '@rhds/elements/rh-card/rh-card.js';
+  import '@rhds/elements/rh-cta/rh-cta.js';
+  import '@rhds/elements/rh-surface/rh-surface.js';
+  import '@rhds/elements/rh-avatar/rh-avatar.js';
+  import '@rhds/elements/rh-accordion/rh-accordion.js';
 </script>
 
-<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
-<link rel="stylesheet" href="{{ '/styles/samp.css' | url }}">
+<link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
+<link rel="stylesheet" data-helmet href="/styles/samp.css">
 
 
 ## Overview
@@ -41,7 +40,6 @@ it's near. Several cards can be used together to group related information.
 
 </rh-alert>
 
-
 ## Customizing cards
 
 To customize a card the design tokens must be altered. These design tokens are 
@@ -54,7 +52,6 @@ Examples include:
 - [`--rh-color-text-primary-on-light`](/tokens/font/#rh-color-text-primary-on-light)
 
 For more information, please see the [card css custom properties][css-props].
-
 
 ## Themes
 

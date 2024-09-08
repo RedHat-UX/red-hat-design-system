@@ -10,23 +10,22 @@ tags:
 subnav:
   collection: cardPatterns
   order: 3
-importElements:
-  - rh-card
-  - rh-cta
-  - rh-surface
-  - rh-avatar
-  - rh-accordion
-  - rh-blockquote
 ---
 
-<script type="module">
+<script type="module" data-helmet>
   import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+  import '@rhds/elements/rh-card/rh-card.js';
+  import '@rhds/elements/rh-cta/rh-cta.js';
+  import '@rhds/elements/rh-surface/rh-surface.js';
+  import '@rhds/elements/rh-avatar/rh-avatar.js';
+  import '@rhds/elements/rh-accordion/rh-accordion.js';
+  import '@rhds/elements/rh-blockquote/rh-blockquote.js';
 </script>
 
-<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
-<link rel="stylesheet" href="/styles/samp.css">
+<link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
+<link rel="stylesheet" data-helmet href="/styles/samp.css">
 
-<style>
+<style data-helmet>
   rh-card {
     display: block;
     max-width: 360px;
@@ -48,7 +47,6 @@ importElements:
     color: var(--rh-color-interactive-blue-lightest, #b9dafc);
   }
 </style>
-
 
 ## Asset cards
 Use to display that an asset can be downloaded. An icon and label group or 

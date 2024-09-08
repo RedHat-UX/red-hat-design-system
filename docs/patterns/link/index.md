@@ -7,8 +7,8 @@ tags:
 - pattern
 ---
 
-<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
-<link rel="stylesheet" href="/styles/samp.css">
+<link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
+<link rel="stylesheet" data-helmet href="/styles/samp.css">
 
 
 ## Overview
@@ -27,7 +27,7 @@ Links are navigational elements that allow a user to move between content, pages
 
 View a live version of the Call to action link and see how it can be customized.
 
-<rh-cta><a href="/elements/call-to-action/">Customize component via Elements</a></rh-cta>
+<rh-cta href="/elements/call-to-action/">Customize component via Elements</rh-cta>
 
 
 ## Style

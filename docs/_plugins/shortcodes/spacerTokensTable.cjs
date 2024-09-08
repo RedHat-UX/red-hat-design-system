@@ -10,7 +10,7 @@ module.exports = function(eleventyConfig) {
     function(content, {
       tokens = '',
       style,
-      headline,
+      headline = '',
       headingLevel = '3',
       caption = '',
       wrapperClass,
