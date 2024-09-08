@@ -1,4 +1,5 @@
 :host {
+  display: block;
   container-name: card;
   container-type: inline-size;
 }
