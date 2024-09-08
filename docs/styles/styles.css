@@ -224,7 +224,7 @@
 
   :where(code) {
     padding-inline: var(--rh-space-xs);
-    background: var(--rh-color-surface-light);
+    background: oklch(from var(--rh-color-surface) calc(l - 0.05) c h);
     border-radius: var(--rh-border-radius-default);
     font-size: var(--rh-font-size-code-md);
     font-weight: var(--rh-font-weight-code-regular);

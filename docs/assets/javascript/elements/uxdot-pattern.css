@@ -61,6 +61,11 @@
   display: none !important;
 }
 
+#example slot[name='heading'] {
+  display: block;
+  grid-column: -1/1;
+}
+
 @container host (min-width: 992px) {
   #container {
     grid-template-columns: max-content auto;

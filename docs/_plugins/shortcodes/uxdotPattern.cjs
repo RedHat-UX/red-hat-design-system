@@ -69,20 +69,15 @@ module.exports = function(eleventyConfig) {
   });
 
   eleventyConfig.addTransform('uxdot-pattern-restore-newlines', function(content) {
-    const { outputPath } = this;
-    if (outputPath.match(/\/patterns\/.*(\/examples\/)?/)) {
-      const $ = cheerio.load(content);
-      $([
-        'script[type="text/css"]',
-        'script[type="text/html"]',
-        'script[type="sample/javascript"]',
-      ].join()).each(function() {
-        const el = $(this);
-        el.text(el.text().replaceAll(COMMENT, '\n'));
-      });
-      return $.html();
-    } else {
-      return content;
-    }
+    const $ = cheerio.load(content);
+    $([
+      'uxdot-pattern script[type="text/css"]',
+      'uxdot-pattern script[type="text/html"]',
+      'uxdot-pattern script[type="sample/javascript"]',
+    ].join()).each(function() {
+      const el = $(this);
+      el.text(el.text().replaceAll(COMMENT, '\n'));
+    });
+    return $.html();
   });
 };

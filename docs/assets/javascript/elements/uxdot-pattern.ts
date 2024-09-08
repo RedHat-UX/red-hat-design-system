@@ -70,7 +70,7 @@ export class UxdotPattern extends LitElement {
                              @change="${this.#onChange}"
                              .allow="${this.allow}"></rh-context-picker>
         </form>
-        <div id="example">
+        <div id="example" part="example">
           <slot name="heading"><h3>Example</h3></slot>
           <slot></slot>
         </div>

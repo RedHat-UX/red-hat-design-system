@@ -5,9 +5,10 @@ order: 2
 ---
 <link rel="stylesheet"
       data-helmet
-      href="/assets/packages/@rhds/elements/rh-pagination/rh-pagination-lightdom.css">
+      href="/assets/packages/@rhds/elements/elements/rh-pagination/rh-pagination-lightdom.css">
 
 <script type="module" data-helmet>
+  import '/assets/javascript/elements/uxdot-pattern.js';
   import '@rhds/elements/rh-accordion/rh-accordion.js';
   import '@rhds/elements/rh-audio-player/rh-audio-player.js';
   import '@rhds/elements/rh-blockquote/rh-blockquote.js';
@@ -19,6 +20,47 @@ order: 2
   import '@rhds/elements/rh-tag/rh-tag.js';
   import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
 </script>
+
+<style data-helmet>
+  #elements-grid {
+    &::part(example) {
+      display: block;
+      width: auto;
+    }
+  }
+  #elements {
+    min-height: auto;
+    display: grid;
+    place-content: center;
+    gap: var(--rh-space-sm);
+    grid-template:
+      "disclosure disclosure disclosure"
+      "cta audio-player card"
+      "pagination pagination card"
+      "p p card"
+      "tabs tabs tabs" / 1fr 1fr 2fr;
+    grid-template-rows: repeat(5, min-content);
+    & p { grid-area: p; }
+    & rh-card { grid-area: card; }
+    & rh-disclosure { grid-area: disclosure; }
+    & rh-cta { grid-area: cta; }
+    & rh-pagination { grid-area: pagination; }
+    & rh-tabs { grid-area: tabs; }
+    & rh-audio-player {
+      grid-area: audio-player;
+      max-width: 250px;
+    }
+  }
+
+  .card-snippet-grid::part(example) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: var(--rh-space-lg);
+    & rh-card::part(header) {
+      flex-flow: row;
+    }
+  }
+</style>
 
 ## What are color palettes
 There are various color palettes within our design system. The palettes you will use the 
@@ -58,28 +100,7 @@ elements and patterns have dark counterparts.
   requirements.</p>
 </rh-alert>
 
-<rh-context-demo id="elements" color-palette="lightest"></rh-context-demo>
-
-<div hidden>
-
-### Desaturated color-palette <rh-tag color="purple">Beta</rh-tag>
-
-The desaturated theme can be used when elements or patterns need to be placed on 
-large areas of color or some of the surface gray values.
-
-<rh-alert>
-  <h4 slot="header">Update from the team</h4>
-  <p>The design system team is working on creating desaturated theme best
-  practices in the near future. <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">Contact
-  us</a> if you would like to contribute.</p>
-</rh-alert>
-
-<uxdot-example>
-  <img alt="examples of white call to action variants against dark blue and dark gray surfaces",
-       src="/assets/theming/desaturated-theme.png">
-</uxdot-example>
-
-</div>
+{% uxdotPattern id="elements-grid", stacked=true %}{% include './elements.html' %}{% enduxdotPattern %}
 
 ### Illustrations and imagery
 
@@ -100,31 +121,17 @@ visual tension.</p>
        src="/assets/theming/illustrations-and-imagery.png">
 </uxdot-example>
 
-<style>
-  .card-snippet-grid {
-    display: grid;
-    grid-template: 1fr 1fr / 1fr 1fr;
-    gap: var(--rh-space-4xl)  var(--rh-space-lg);
-    padding: var(--rh-space-4xl);
-    border-radius: var(--rh-border-radius-default);
-    border: solid var(--rh-border-width-sm) var(--rh-color-border-subtle);
-    & pre[class^="language-"] {
-      margin: 0;
-    }
-  }
-</style>
-
 Red Hat Design System comes with a contextual color-theming feature called 
 "Color palettes", designed to make page developers' and content authors' jobs
 easier and to improve customers' digital experiences. Authors and developers who
 adopt the color palette system will produce accessible, branded experiences with 
 less effort and greater cross-property consistency.
 
-<rh-blockquote>
-  HTML design systems help teams ship better digital experiences, faster.
-</rh-blockquote>
+<rh-card>
+  <rh-blockquote>HTML design systems help teams ship better digital experiences, faster.</rh-blockquote>
+</rh-card>
 
-## How Color Context works
+## How Color works in RHDS
 <abbr title="red hat design system">RHDS</abbr>' color palette system is an 
 *HTML* and *CSS* system with some supporting JavaScript[1].
 The color palette system has two main parts: **providers** and **consumers**. 
@@ -146,17 +153,7 @@ Authors may define the color palette of a container using the `color-palette` HT
 attribute. So for example, to create a card with the darkest color palette, use 
 this HTML:
 
-<div class="card-snippet-grid">
-
-```html
-<rh-card>
-  <p>
-    This card uses the default
-    color palette.
-  </p>
-</rh-card>
-```
-
+{% uxdotPattern class="card-snippet-grid" %}
 <rh-card>
   <p>
     This card uses the default
@@ -164,24 +161,13 @@ this HTML:
   </p>
 </rh-card>
 
-```html
 <rh-card color-palette="darkest">
   <p>
     This card uses the author-set
     "darkest" color palette.
   </p>
 </rh-card>
-```
-
-<rh-card color-palette="darkest">
-  <p>
-    This card uses the author-set
-    "darkest" color palette.
-  </p>
-</rh-card>
-
-</div>
-
+{% enduxdotPattern %}
 
 ### Color consumers
 **Consumers**, which adopt a **color theme**. Color themes correspond to the  
@@ -201,9 +187,7 @@ Extending our card example from above, if our page author then adds an
 `<rh-cta>` to the card, it will *automatically* adopt the dark color theme. The 
 page author need not and should not customize the CTA.
 
-<div class="card-snippet-grid">
-
-```html
+{% uxdotPattern class="card-snippet-grid" %}
 <rh-card>
   <p>
     The card <em>and</em> 
@@ -211,26 +195,6 @@ page author need not and should not customize the CTA.
   </p>
   <rh-cta slot="footer">Fine!</rh-cta>
 </rh-card>
-```
-
-<rh-card>
-  <p>
-    The card <em>and</em> 
-    CTA use the default colors.
-  </p>
-  <rh-cta slot="footer">Fine!</rh-cta>
-</rh-card>
-
-```html
-<rh-card color-palette="darkest">
-  <p>
-    The card uses the "darkest" palette.
-    The CTA is automatically themed
-    with the "dark" theme.
-  </p>
-  <rh-cta slot="footer">Nice!</rh-cta>
-</rh-card>
-```
 
 <rh-card color-palette="darkest">
   <p>
@@ -240,68 +204,51 @@ page author need not and should not customize the CTA.
   </p>
   <rh-cta slot="footer">Nice!</rh-cta>
 </rh-card>
+{% enduxdotPattern %}
 
-</div>
-
-<rh-blockquote>
-  Color palettes lets authors write more HTML, and less CSS and JavaScript
-</rh-blockquote>
+<rh-card>
+  <rh-blockquote>
+    Color palettes lets authors write more HTML, and less CSS and JavaScript
+  </rh-blockquote>
+</rh-card>
 
 ### Combination elements
 Some elements are both providers and consumers. Card, for example is both a 
 provider and a consumer. It can accept the color theme of its parent context and it 
 can also set its own color palette.
 
-<rh-context-demo id="cards-demo">
-  <rh-card>
-    <h2 slot="header">Consumer</h2>
-    <rh-tag slot="header"
-            icon="info"
-            color="purple">passive</rh-tag>
-    <p>
-      This card acts as a consumer.
-      It will always receive its parent's <code>ColorTheme</code>.
-    </p>
-    <rh-cta slot="footer">
-      <a href="/elements/card/">Read card docs</a>
-    </rh-cta>
-  </rh-card>
-  <rh-card id="provider-card"
-           color-palette="lightest">
-    <h2 slot="header">Provider</h2>
-    <rh-tag slot="header"
-            icon="info"
-            color="green">active</rh-tag>
-    <p>
-      This card acts as a provider.
-      Try changing this card's 
-      <code>color-palette</code>
-      and see how it affects this card's children.
-    </p>
-    <label>
-      Set this card's color palette.
-      <rh-context-picker target="provider-card" value="lightest"></rh-context-picker>
-    </label>
-    <rh-cta slot="footer">
-      <a href="/elements/call-to-action/">Read CTA docs</a>
-    </rh-cta>
-  </rh-card>
-</rh-context-demo>
+{% uxdotPattern class="card-snippet-grid" %}
+<rh-card>
+  <h2 slot="header">Consumer</h2>
+  <rh-tag slot="header"
+          icon="info"
+          color="purple">passive</rh-tag>
+  <p>This card acts as a consumer.
+    It will always receive its parent's <code>ColorTheme</code>.</p>
+  <rh-cta slot="footer"
+          href="/elements/card/">Read card docs</rh-cta>
+</rh-card>
 
-<style>
-  #cards-demo::part(demo) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--rh-space-lg);
-  }
-  #cards-demo rh-card::part(header) {
-    flex-direction: row;
-  }
-  #cards-demo h2 {
-    margin-inline-end: auto;
-  }
-</style>
+<rh-card id="provider-card" color-palette="lightest">
+  <h2 slot="header">Provider</h2>
+  <rh-tag slot="header"
+          icon="info"
+          color="green">active</rh-tag>
+  <p>This card acts as a provider.
+    Try changing this card's 
+    <code>color-palette</code>
+    and see how it affects this card's children.
+  </p>
+  <label for="provider-picker">
+    Set this card's color palette.
+    <rh-context-picker id="provider-picker"
+                       target="provider-card"
+                       value="lightest"></rh-context-picker>
+  </label>
+  <rh-cta slot="footer" href="/elements/call-to-action/">Read CTA docs</rh-cta>
+</rh-card>
 
+{% enduxdotPattern %}
 
 <!-- This is a footer -->
 <uxdot-feedback>
