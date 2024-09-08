@@ -182,7 +182,8 @@ module.exports = class TokensPage {
                 '--samp-space': isSpace ? token.$value : 'initial',
                 '--samp-font-family': isFamily ? token.$value : 'var(--rh-font-family-body-text)',
                 '--samp-font-size': isSize ? token.$value : 'var(--rh-font-size-heading-md)',
-                '--samp-font-weight': isWeight ? token.$value : 'var(--rh-font-weight-body-text-regular)',
+                '--samp-font-weight':
+                  isWeight ? token.$value : 'var(--rh-font-weight-body-text-regular)',
                 [`--samp-${token.$type === 'dimension' ? `${name}-size` : name}`]: token.$value,
                 [`${token.$type === 'dimension' && token.attributes.category === 'space' ? `--samp-${name}-color` : ``}`]: isSpace ? token.original['$extensions']['com.redhat.ux'].color : '',
               })}">
