@@ -134,6 +134,7 @@ module.exports = function(eleventyConfig) {
       '@lit/reactive-element',
       '@webcomponents/template-shadowroot/template-shadowroot.js',
       'prism-esm',
+      'prism-esm/',
       'lit',
       'lit-element',
       'lit-html',
