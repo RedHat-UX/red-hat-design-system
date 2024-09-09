@@ -50,6 +50,7 @@
 
 .pullquote-card {
   min-width: 360px;
+  margin: var(--rh-space-2xl);
 
   &.right {
     float: right;
