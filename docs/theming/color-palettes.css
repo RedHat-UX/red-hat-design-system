@@ -56,3 +56,8 @@
     float: right;
   }
 }
+
+/* TODO(adamjohnson): fix this with container queries in audio player */
+rh-audio-player::part(toolbar) {
+  --_time-slider-base: 100px;
+}
