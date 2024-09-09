@@ -39,10 +39,8 @@
 
 .shadow-fab:is(:hover, :focus, :active) {
   background:
-    var(
-        --_code-action-hover-focus-active-background,
-        var(--rh-color-surface-light, #e0e0e0)
-      );
+    var(--_code-action-hover-focus-active-background,
+      var(--rh-color-surface-light, #e0e0e0));
 }
 
 .shadow-fab svg {
@@ -83,10 +81,8 @@
     solid
     var(--_code-border-color, var(--rh-color-border-subtle-on-light, #c7c7c7));
   border-block-start-width:
-    var(
-        --rh-code-block-border-block-start-width,
-        var(--rh-border-width-sm, 1px)
-      );
+    var(--rh-code-block-border-block-start-width,
+      var(--rh-border-width-sm, 1px));
 }
 
 #container.expandable {
@@ -220,15 +216,11 @@
   pointer-events: none;
   grid-column: -1/1;
   background:
-    var(
-        --_block-end-overflow-gradient,
-        linear-gradient(
-          0deg,
-          #f2f2f2 0%,
-          rgba(242, 242, 242, 0)
-          100%
-        )
-      );
+    var(--_block-end-overflow-gradient,
+      linear-gradient(0deg,
+      #f2f2f2 0%,
+      rgba(242, 242, 242, 0)
+      100%));
 }
 
 :not(.wrap) #actions:before {
@@ -241,15 +233,11 @@
   width: var(--rh-space-4xl, 64px);
   pointer-events: none;
   background:
-    var(
-        --_inline-end-overflow-gradient,
-        linear-gradient(
-          270deg,
-          #f2f2f2 0%,
-          rgba(242, 242, 242, 0)
-          100%
-        )
-      );
+    var(--_inline-end-overflow-gradient,
+      linear-gradient(270deg,
+      #f2f2f2 0%,
+      rgba(242, 242, 242, 0)
+      100%));
 }
 
 :not(.actions) #actions {

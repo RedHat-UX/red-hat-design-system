@@ -53,10 +53,8 @@ rh-cta[color-palette^='dark']:not(:defined, [variant]) {
 rh-cta:not(:defined):focus-within {
   border-color: var(--rh-cta-focus-border-color);
   background-color:
-    var(
-        --rh-cta-focus-container-background-color,
-        var(--rh-cta-focus-background-color)
-      );
+    var(--rh-cta-focus-container-background-color,
+      var(--rh-cta-focus-background-color));
 
   --rh-cta-color: var(--rh-cta-focus-color);
   --rh-cta-text-decoration: var(--rh-cta-focus-text-decoration);
@@ -197,12 +195,8 @@ rh-cta[variant$='ary']:not(:defined) * {
 
 rh-cta[variant='primary']:not(:defined) *:focus {
   outline:
-    var(
-        --rh-border-width-sm,
-        1px
-      ) solid var(
-        --rh-color-text-primary-on-dark,
-        #ffffff
-      ) !important;
+    var(--rh-border-width-sm,
+      1px) solid var(--rh-color-text-primary-on-dark,
+      #ffffff) !important;
   outline-offset: -2px;
 }

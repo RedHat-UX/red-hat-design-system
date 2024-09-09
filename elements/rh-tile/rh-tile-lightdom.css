@@ -15,10 +15,8 @@ rh-tile a:not([slot='image'], [slot='headline']) {
 
 rh-tile[aria-disabled='true'] a {
   color:
-    var(
-        --_text-color-secondary,
-        var(--rh-color-text-secondary)
-      ) !important;
+    var(--_text-color-secondary,
+      var(--rh-color-text-secondary)) !important;
 }
 
 rh-tile *:is([slot='image'], [slot='headline']) a,

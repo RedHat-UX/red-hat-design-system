@@ -81,10 +81,8 @@
   font-family: var(--rh-card-heading-font-family, var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif)) !important;
   font-size: var(--rh-card-heading-font-size, var(--rh-font-size-heading-sm, 1.5rem));
   font-weight:
-    var(
-        --rh-card-heading-font-weight,
-        var(--rh-font-weight-body-text-medium, 500)
-      ) !important;
+    var(--rh-card-heading-font-weight,
+      var(--rh-font-weight-body-text-medium, 500)) !important;
   margin-block-start: var(--rh-space-lg, 16px);
   background-color: var(--_header-bg, transparent);
 }
@@ -160,10 +158,8 @@
 
 #container.promo {
   --_promo-heading-font-weight:
-    var(
-        --rh-card-heading-font-weight,
-        var(--rh-font-weight-body-text-medium, 500)
-      );
+    var(--rh-card-heading-font-weight,
+      var(--rh-font-weight-body-text-medium, 500));
   --_promo-heading-size: var(--rh-card-heading-font-size, var(--rh-font-size-heading-xs, 1.25rem));
   --_promo-paragraph-font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_promo-paragraph-margin-block-end: var(--rh-space-lg, 16px);
@@ -244,10 +240,8 @@
 
 :host([variant='promo'][full-width]) #header ::slotted(*) {
   --_promo-heading-size:
-    var(
-        --rh-card-heading-font-size,
-        var(--rh-font-size-body-text-2xl, 1.5rem)
-      );
+    var(--rh-card-heading-font-size,
+      var(--rh-font-size-body-text-2xl, 1.5rem));
 }
 
 :host([variant='promo'][full-width]) .has-image #footer {
@@ -301,10 +295,8 @@
 
   :host([variant='promo'][full-width]) #header ::slotted(*) {
     --_promo-heading-size:
-      var(
-          --rh-card-heading-font-size,
-          var(--rh-font-size-heading-md, 1.75rem)
-        );
+      var(--rh-card-heading-font-size,
+        var(--rh-font-size-heading-md, 1.75rem));
   }
 
   :host([variant='promo'][full-width]) .has-image #footer {

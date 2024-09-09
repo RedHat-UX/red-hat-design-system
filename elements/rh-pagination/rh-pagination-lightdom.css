@@ -38,10 +38,8 @@ rh-pagination li > a:focus {
   outline-offset: -2px;
   outline: var(--rh-border-width-md, 2px) solid transparent;
   outline-color:
-    var(
-        --rh-pagination-accent-color,
-        var(--rh-color-interactive-primary-default)
-      );
+    var(--rh-pagination-accent-color,
+      var(--rh-color-interactive-primary-default));
 }
 
 rh-pagination li > a:hover:after,

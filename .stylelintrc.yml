@@ -24,6 +24,7 @@ rules:
     - ignoreShorthands:
         - /grid/
 
+  media-feature-range-notation: prefix
   number-max-precision: 6
   no-descending-specificity:
     - true
@@ -50,11 +51,15 @@ rules:
   '@stylistic/string-quotes': single
   '@stylistic/selector-combinator-space-after': always
   '@stylistic/selector-combinator-space-before': always
+  '@stylistic/function-parentheses-newline-inside': never-multi-line
+  '@stylistic/function-comma-newline-after': always-multi-line
   '@stylistic/indentation':
-   - 2
-   - indentInsideParens: 'once-at-root-twice-in-block'
+    - 2
+    - indentInsideParens: 'once-at-root-twice-in-block'
   '@stylistic/max-line-length':
     - 100
+    - ignore:
+      - non-comments
     - ignorePattern: /--rh-font-family-/
 
   rhds/deprecated: true
@@ -64,7 +69,6 @@ rules:
     - true
     - allowed:
       - --rh-icon-size
-  media-feature-range-notation: prefix
 
 overrides:
   - files:

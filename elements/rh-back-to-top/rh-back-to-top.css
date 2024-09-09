@@ -11,13 +11,9 @@
   justify-content: center;
   color: var(--rh-color-text-primary-on-dark, #ffffff);
   background-color:
-    var(
-        --rh-back-to-top-background-color,
-        var(
-          --rh-color-accent-base-on-light,
-          #0066cc
-        )
-      );
+    var(--rh-back-to-top-background-color,
+      var(--rh-color-accent-base-on-light,
+      #0066cc));
   text-decoration: none;
   font-size: var(--rh-font-size-body-text-xs, 0.75rem);
   padding-inline: var(--rh-space-md, 8px);

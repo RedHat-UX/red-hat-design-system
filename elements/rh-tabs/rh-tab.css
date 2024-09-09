@@ -3,13 +3,9 @@
   flex: none;
 
   --_active-tab-border:
-    var(--rh-border-width-lg, 3px) solid var(
-        --_active-tab-border-color,
-        var(
-          --rh-tabs-active-border-color,
-          var(--rh-color-accent-brand)
-        )
-      );
+    var(--rh-border-width-lg, 3px) solid var(--_active-tab-border-color,
+      var(--rh-tabs-active-border-color,
+      var(--rh-color-accent-brand)));
   --_active-tab-border-open:
     var(--rh-border-width-sm, 1px)
     solid

@@ -75,28 +75,22 @@
 
 :host([checked]:not(:disabled)) {
   --_switch-track-background-color:
-    var(
-        --_switch-checked,
-        var(--rh-color-accent-base-on-light, #0066cc)
-      );
+    var(--_switch-checked,
+      var(--rh-color-accent-base-on-light, #0066cc));
 }
 
 :host([checked]) #switch:after {
   translate:
-    calc(
-        var(--_switch-width) - (var(--_switch-handle-size) +
-        (var(--_margin-inline) * 2))
-      );
+    calc(var(--_switch-width) - (var(--_switch-handle-size) +
+      (var(--_margin-inline) * 2)));
 }
 
 :host([checked]) .rtl #switch:after {
   translate:
-    calc(
-        -1 * (
-          var(--_switch-width) - (var(--_switch-handle-size) +
-          (var(--_margin-inline) * 2))
-        )
-      );
+    calc(-1 * (
+        var(--_switch-width) - (var(--_switch-handle-size) +
+        (var(--_margin-inline) * 2))
+      ));
 }
 
 svg {
@@ -145,8 +139,6 @@ svg {
 
 :host([checked]:not(:disabled)) .dark {
   --_switch-track-background-color:
-    var(
-        --_switch-checked,
-        var(--rh-color-accent-base-on-dark, #92c5f9)
-      );
+    var(--_switch-checked,
+      var(--rh-color-accent-base-on-dark, #92c5f9));
 }
