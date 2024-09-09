@@ -59,7 +59,7 @@ rules:
   '@stylistic/max-line-length':
     - 100
     - ignore:
-      - non-comments
+      - comments
     - ignorePattern: /--rh-font-family-/
 
   rhds/deprecated: true
