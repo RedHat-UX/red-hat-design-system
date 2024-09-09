@@ -29,9 +29,7 @@ Add `<rh-accordion>` to the page, and write `<rh-accordion-header>` /
 
 ```html
 <rh-accordion>
-  <rh-accordion-header>
-    <h2>Item One</h2>
-  </rh-accordion-header>
+  <h2><rh-accordion-header>Item One</rh-accordion-header></h2>
   <rh-accordion-panel>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod 
     tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -43,9 +41,7 @@ Add `<rh-accordion>` to the page, and write `<rh-accordion-header>` /
 
 ```html
 <rh-accordion large>
-  <rh-accordion-header>
-    <h2>Item One</h2>
-  </rh-accordion-header>
+  <h2><rh-accordion-header>Item One</rh-accordion-header></h2>
   <rh-accordion-panel>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do 
     eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
