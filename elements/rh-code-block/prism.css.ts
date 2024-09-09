@@ -1,4 +1,6 @@
-code[class*="language-"],
+import { css } from 'lit';
+
+export const prismStyles = css` code[class*="language-"],
 pre[class*="language-"] {
   color: var(--_code-color);
   font-family: var(--rh-font-family-code, RedHatMono, "Red Hat Mono", "Courier New", Courier, monospace);
@@ -68,3 +70,4 @@ code[class*="language-"] ::selection {
 
 .language-css .token.string,
 .style .token.string { color: var(--_operator-color); }
+`;

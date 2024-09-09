@@ -38,4 +38,4 @@ export async function highlight(textContent: string, language: RhCodeBlock['lang
   return unsafeHTML(highlighted);
 }
 
-export { default as prismStyles } from './prism.css';
+export { prismStyles } from './prism.css.js';
