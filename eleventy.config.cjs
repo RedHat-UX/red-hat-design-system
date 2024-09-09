@@ -48,6 +48,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('docs/assets/**/*');
   eleventyConfig.addPassthroughCopy('docs/styles/**/*');
   eleventyConfig.addPassthroughCopy('docs/patterns/**/*.css');
+  eleventyConfig.addPassthroughCopy('docs/theming/**/*.css');
 
 
   if (isLocal) {
