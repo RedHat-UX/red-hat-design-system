@@ -93,6 +93,7 @@ module.exports = function(eleventyConfig) {
         'lit/': '/assets/packages/lit/',
         'lit-html': '/assets/packages/lit-html/lit-html.js',
         'lit-html/': '/assets/packages/lit-html/',
+        'prism-esm/': '/assets/packages/prism-esm/',
         '@lit-labs/ssr-client/lit-element-hydrate-support.js':
           '/assets/packages/@lit-labs/ssr-client/lit-element-hydrate-support.js',
         '@rhds/tokens': '/assets/packages/@rhds/tokens/js/tokens.js',
