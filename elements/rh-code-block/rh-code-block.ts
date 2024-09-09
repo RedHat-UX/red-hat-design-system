@@ -229,11 +229,6 @@ export class RhCodeBlock extends LitElement {
 
   async #highlightWithPrism() {
     const { highlight, prismStyles } = await import('./prism.js');
-    const scripts = this.querySelectorAll('script[type]:not([type="javascript"])');
-    const preprocess = this.dedent ? dedent : (x: string) => x;
-    const textContent = preprocess(Array.from(scripts, x => x.textContent).join(''));
-    const old = this.#prismOutput;
-    this.#prismOutput = await highlight(textContent, this.language);
     const styleSheet =
         prismStyles instanceof CSSStyleSheet ? prismStyles
       : (prismStyles as CSSResult).styleSheet;
@@ -243,7 +238,11 @@ export class RhCodeBlock extends LitElement {
         styleSheet!,
       ];
     }
-    this.requestUpdate('#prismOutput', old);
+    const scripts = this.querySelectorAll('script[type]:not([type="javascript"])');
+    const preprocess = this.dedent ? dedent : (x: string) => x;
+    const textContent = preprocess(Array.from(scripts, x => x.textContent).join(''));
+    this.#prismOutput = await highlight(textContent, this.language);
+    this.requestUpdate('#prismOutput', {});
     await this.updateComplete;
   }
 
@@ -279,6 +278,10 @@ export class RhCodeBlock extends LitElement {
    * Portions copyright prism.js authors (MIT license)
    */
   async #computeLineNumbers() {
+    if (this.#prismOutput) {
+      return;
+    }
+
     await this.updateComplete;
     const codes = this.#prismOutput ? this.#getPrismCodeElements() : this.#getSlottedCodeElements();
 

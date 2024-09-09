@@ -1,8 +1,10 @@
 import type { RhCodeBlock } from './rh-code-block.js';
 import { Prism } from 'prism-esm';
+import { Plugin as LineNumbers } from 'prism-esm/plugins/line-numbers/prism-line-numbers.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 
 const prism = new Prism({ manual: true });
+LineNumbers(prism);
 
 /**
  * Autoload a supported language
@@ -39,3 +41,4 @@ export async function highlight(textContent: string, language: RhCodeBlock['lang
 }
 
 export { prismStyles } from './prism.css.js';
+
