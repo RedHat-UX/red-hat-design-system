@@ -101,8 +101,8 @@ module.exports = function(eleventyConfig) {
         '@lit-labs/ssr-client/lit-element-hydrate-support.js':
           '/assets/packages/@lit-labs/ssr-client/lit-element-hydrate-support.js',
         '@rhds/tokens': '/assets/packages/@rhds/tokens/js/tokens.js',
-        '@rhds/tokens/': '/assets/packages/@rhds/tokens/js/',
         '@rhds/tokens/css/': '/assets/packages/@rhds/tokens/css/',
+        '@rhds/tokens/': '/assets/packages/@rhds/tokens/js/',
         '@rhds/elements/lib/': '/assets/packages/@rhds/elements/lib/',
         '@rhds/elements/': '/assets/packages/@rhds/elements/elements/',
         '@rhds/icons/': '/assets/packages/@rhds/icons/',
