@@ -99,10 +99,10 @@ span {
 #header-container {
   display: flex;
   gap: var(--rh-space-md, 8px);
+}
 
-  &.bottom {
-    flex-direction: column;
-  }
+#header-container.bottom {
+  flex-direction: column;
 }
 
 #header-text {
