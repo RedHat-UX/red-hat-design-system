@@ -230,7 +230,7 @@ export class RhCodeBlock extends LitElement {
   async #highlightWithPrism() {
     const { highlight, prismStyles } = await import('./prism.js');
     const scripts = this.querySelectorAll('script[type]:not([type="javascript"])');
-    const preprocess = this.dedent ? dedent : x => x;
+    const preprocess = this.dedent ? dedent : (x: string) => x;
     const textContent = preprocess(Array.from(scripts, x => x.textContent).join(''));
     const old = this.#prismOutput;
     this.#prismOutput = await highlight(textContent, this.language);
