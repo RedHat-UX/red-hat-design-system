@@ -293,3 +293,27 @@ svg {
 *:is(#image, #tile, #headline, #body, #footer) {
   z-index: 2;
 }
+
+:host([color-palette='lightest']) #outer {
+  --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
+}
+
+:host([color-palette='lighter']) #outer {
+  --rh-color-surface: var(--rh-color-surface-lighter, #f2f2f2);
+}
+
+:host([color-palette='light']) #outer {
+  --rh-color-surface: var(--rh-color-surface-light, #e0e0e0);
+}
+
+:host([color-palette='dark']) #outer {
+  --rh-color-surface: var(--rh-color-surface-dark, #383838);
+}
+
+:host([color-palette='darker']) #outer {
+  --rh-color-surface: var(--rh-color-surface-darker, #1f1f1f);
+}
+
+:host([color-palette='darkest']) #outer {
+  --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+}
