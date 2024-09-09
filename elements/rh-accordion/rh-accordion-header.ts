@@ -92,7 +92,7 @@ export class RhAccordionHeader extends LitElement {
                 class="toggle"
                 @click="${this.#onClick}">
           <span id="header-container" class="${classMap({ [accents ?? '']: !!accents })}">
-            <span part="text"><slot></slot></span>
+            <span id="header-text" part="text"><slot></slot></span>
             <span part="accents"><slot name="accents"></slot></span>
           </span>
           <svg id="icon"
