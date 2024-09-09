@@ -9,6 +9,9 @@ order: 2
       href="/assets/packages/@rhds/elements/elements/rh-pagination/rh-pagination-lightdom.css">
 <link rel="stylesheet"
       data-helmet
+      href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
+<link rel="stylesheet"
+      data-helmet
       href="../color-palettes.css">
 
 <script type="module" data-helmet>
