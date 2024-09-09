@@ -1,6 +1,8 @@
 :host {
   display: inline-flex;
   position: relative;
+  container-name: host;
+  container-type: inline-size;
 }
 
 * {
@@ -8,8 +10,6 @@
 }
 
 #container {
-  display: contents;
-
   --thumb-color: var(--rh-color-interactive-blue-darker, #0066cc);
 }
 
