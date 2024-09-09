@@ -34,6 +34,8 @@ rules:
       ignoreTypes:
         - heading
         - actions
+        - rendered
+        - pending
 
   selector-pseudo-element-no-unknown:
     - true

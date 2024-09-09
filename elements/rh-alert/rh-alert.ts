@@ -13,7 +13,7 @@ import styles from './rh-alert.css';
 import toastStyles from './rh-alert-toast-styles.css';
 
 interface ToastOptions {
-  id: string;
+  id?: string;
   message: string;
   heading?: string;
   state?: RhAlert['state'];

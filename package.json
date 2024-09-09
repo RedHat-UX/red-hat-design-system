@@ -1,6 +1,6 @@
 {
   "name": "@rhds/elements",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Red Hat Design System Elements",
   "type": "module",
   "license": "MIT",
@@ -48,7 +48,6 @@
   ],
   "scripts": {
     "🐒-DEV": "❓ Development aids",
-    "postinstall": "patch-package",
     "start": "wireit",
     "dev": "wireit",
     "serve": "wireit",
@@ -86,8 +85,9 @@
       "service": true,
       "command": "web-dev-server --open --watch",
       "dependencies": [
-        "compile",
-        "watch:compile",
+        "patch",
+        "analyze",
+        "playgrounds",
         "watch:docs"
       ]
     },
@@ -95,28 +95,27 @@
       "service": true,
       "command": "web-dev-server --watch",
       "dependencies": [
-        "analyze",
+        "patch",
         "compile",
-        "watch:compile"
+        "analyze"
       ]
     },
     "serve": {
       "service": true,
-      "command": "eleventy --serve",
+      "command": "eleventy --serve --incremental",
       "dependencies": [
+        "patch",
         "analyze",
-        "playgrounds",
-        "compile",
-        "watch:compile"
+        "playgrounds"
       ]
     },
     "build": {
       "dependencies": [
         "patch",
+        "compile",
         "analyze",
         "react-wrappers",
         "entrypoint",
-        "compile",
         "copy-css",
         "docs"
       ]
@@ -138,6 +137,8 @@
       "command": "tspc",
       "files": [
         "elements/**/*.ts",
+        "docs/assets/javascript/**/*.ts",
+        "docs/assets/javascript/**/*.css",
         "lib/**/*.css",
         "lib/**/*.ts"
       ],
@@ -146,6 +147,9 @@
         "elements/**/*.{d.ts,js,map}",
         "lib/**/*.{d.ts,js,map}",
         "elements/rh-secondary-nav/test/fixtures.js",
+        "docs/assets/javascript/elements/*.js",
+        "docs/assets/javascript/**/*.d.ts",
+        "docs/assets/javascript/**/*.js.map",
         "!elements/*/{demo,test}/**/*.js"
       ]
     },
@@ -325,9 +329,11 @@
     "git-branch": "^2.0.1",
     "image-size": "^1.1.1",
     "leasot": "^14.4.0",
+    "lit-html": "^3.2.0",
     "markdown-it-attrs": "^4.2.0",
     "markdownlint-cli2": "^0.13.0",
     "parse5": "^7.1.2",
+    "patch-package": "^8.0.0",
     "playground-elements": "^0.18.1",
     "postcss-pxtorem": "^6.1.0",
     "renamer": "^5.0.2",

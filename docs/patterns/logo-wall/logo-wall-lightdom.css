@@ -1,12 +1,18 @@
 :root {
+  --logo-wall-container-max-width: 1070px;
   --logo-wall-logo-max-height: 40px;
   --logo-wall-logo-min-height: 40px;
   --logo-wall-logo-max-width: 190px;
   --logo-wall-logo-min-width: 130px;
 }
 
+.logo-wall-container {
+  container: logo-wall-container / inline-size;
+}
+
 .logo-wall {
   display: flex;
+  flex-wrap: wrap;
   gap: var(--rh-space-2xl, 32px);
   justify-content: center;
 }
@@ -80,36 +86,33 @@
   outline-offset: 0;
 }
 
-.logo-wall--two-columns {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
+.logo-wall--two-columns,
 .logo-wall--three-columns {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
 }
 
-@media (max-width: 1199px) {
-  .logo-wall {
-    flex-wrap: wrap;
-  }
-}
-
-@container host (max-width: 992px) {
-  .logo-wall {
-    flex-wrap: wrap;
-  }
-}
-
-@media (max-width: 768px) {
+@container logo-wall-container (min-width: 300px) {
+  .logo-wall--two-columns,
   .logo-wall--three-columns {
-    grid-template-columns: repeat(auto-fill, minmax(var(--logo-wall-logo-min-width), 1fr)) !important;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@container host (max-width: 768px) {
+@container logo-wall-container (min-width: 450px) {
   .logo-wall--three-columns {
-    grid-template-columns: repeat(auto-fill, minmax(var(--logo-wall-logo-min-width), 1fr)) !important;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@container logo-wall-container (min-width: 992px) {
+  .logo-wall {
+    flex-wrap: nowrap;
+    max-width: var(--logo-wall-container-max-width, 1070px);
+  }
+}
+
+@container logo-wall-container (min-width: 1200px) {
+  .logo-wall {
+    max-width: none;
   }
 }
