@@ -26,13 +26,13 @@ order: 2
   import '@rhds/elements/rh-tile/rh-tile.js';
 </script>
 
-## What are color palettes
-
 Red Hat Design System comes with a contextual color-theming feature called 
 "Color palettes", designed to make page developers' and content authors' jobs
 easier and to improve customers' digital experiences. Authors and developers who
 adopt the color palette system will produce accessible, branded experiences with 
 less effort and greater cross-property consistency.
+
+## What are color palettes
 
 There are various color palettes within our design system. The palettes you will 
 use the most for the majority of your projects are the lightest and darkest 
@@ -48,10 +48,14 @@ themes.
 ### How color palettes work
 
 <abbr title="red hat design system">RHDS</abbr>' color palette system is an 
-*HTML* and *CSS* system with some supporting JavaScript[1].
+*HTML* and *CSS* system with some supporting JavaScript[^1].
 The color palette system has two main parts: **providers** and **consumers**. 
-Providers actively define a color paleete, while consumers passively accept 
+Providers actively define a color palette, while consumers passively accept 
 their theme from the nearest provider ancestor.
+
+<rh-card class="pullquote-card right">
+  <rh-blockquote>HTML design systems help teams ship better digital experiences, faster.</rh-blockquote>
+</rh-card>
 
 Color palettes allow for the creation of different experiences using the same 
 design system. When a color palette is changed, elements change including color, 
@@ -97,10 +101,6 @@ visual tension.</p>
   <img alt="correct uses of an illustration with a transparent background and one illustration incorrectly using a white background in a dark theme area",
        src="/assets/theming/illustrations-and-imagery.png">
 </uxdot-example>
-
-<rh-card class="pullquote-card right">
-  <rh-blockquote>HTML design systems help teams ship better digital experiences, faster.</rh-blockquote>
-</rh-card>
 
 ### Color palette providers
 **Providers** define the **color palette** for themselves and their child 
@@ -228,3 +228,5 @@ To learn how to use our other foundations in your designs, visit the
 [foundations](/foundations) section.
 
 </uxdot-feedback>
+
+[^1]: As the web platform [improves](https://results.web-platform-tests.org/results/css/css-values/attr-container-style-query.html?label=experimental&label=master&aligned), the <abbr>RHDS</abbr> authors expect that eventually no JavaScript will be required for this feature.
