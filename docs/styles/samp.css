@@ -194,6 +194,7 @@ samp.swatch {
   display: inline;
   position: relative;
 
+  /* stylelint-disable-next-line no-descending-specificity */
   & span {
     display: block;
     width: max-content;

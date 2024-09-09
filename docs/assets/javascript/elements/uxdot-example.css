@@ -32,14 +32,14 @@
   width: var(--_width, 100%);
 }
 
-:host([variant="full"]) #container {
+:host([variant='full']) #container {
   padding: 0;
 }
 
 :host([danger]) #container {
   --rh-color-border-subtle: var(--rh-color-border-status-danger-on-light);
 
-  background-image: url("/assets/best-practices-danger-icon.svg");
+  background-image: url('/assets/best-practices-danger-icon.svg');
   background-position-x: 8px;
   background-position-y: 8px;
   background-repeat: no-repeat;

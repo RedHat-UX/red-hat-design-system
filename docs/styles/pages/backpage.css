@@ -4,16 +4,16 @@
     width: 100%;
     grid-template-columns: 1fr;
     grid-template-areas:
-      "header"
-      "content";
+      'header'
+      'content';
     row-gap: var(--rh-space-4xl);
   }
 
   article.has-toc {
     grid-template-areas:
-      "header"
-      "aside"
-      "content";
+      'header'
+      'aside'
+      'content';
   }
 
   uxdot-header {
@@ -146,21 +146,19 @@
   @container main (min-width: 1440px) {
     article {
       grid-template-columns:
-        minmax(
-            var(--container-min-width),
-            var(--container-max-width)
-          )
+        minmax(var(--container-min-width),
+          var(--container-max-width))
         minmax(14rem, 1fr);
       grid-template-areas:
-        "header header"
-        "content content";
+        'header header'
+        'content content';
     }
 
     article.has-toc {
       grid-template-areas:
-        "header header"
-        "content aside";
-      
+        'header header'
+        'content aside';
+
       & uxdot-toc {
         padding-inline: 0 var(--rh-space-2xl);
         max-width: 320px;
