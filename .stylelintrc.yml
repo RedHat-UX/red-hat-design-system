@@ -58,9 +58,7 @@ rules:
     - indentInsideParens: 'once-at-root-twice-in-block'
   '@stylistic/max-line-length':
     - 100
-    - ignore:
-      - comments
-    - ignorePattern: /--rh-font-family-/
+    - ignorePattern: /(--rh-font-family-|https:\/\/)/
 
   rhds/deprecated: true
   rhds/token-values: true
