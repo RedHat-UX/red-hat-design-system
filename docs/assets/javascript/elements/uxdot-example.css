@@ -37,7 +37,7 @@
 }
 
 :host([danger]) #container {
-  --rh-color-border-subtle: var(--rh-color-border-status-danger-on-light);
+  --rh-color-border-subtle: var(--rh-color-border-destructive);
 
   background-image: url('/assets/best-practices-danger-icon.svg');
   background-position-x: 8px;
