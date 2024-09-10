@@ -88,6 +88,36 @@ light elements and patterns have dark counterparts.
   requirements.</p>
 </rh-alert>
 
+### Inline color palettes  <rh-tag color="purple">Beta</rh-tag>
+
+Inlining a color palette is when a section switches palette and looks different 
+than the rest of the page or interface. Some use cases include highlighting an 
+important section on a page or adding a sidebar to an interface. Use inline 
+theming only for major shifts in color. For minor shifts, use a different 
+surface color from the same theme.
+
+<rh-alert>
+  <h4 slot="header">Update from the team</h4>
+  <p>The design system team is working on creating inline theming best
+     practices in the near future. <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">Contact
+     us</a> if you would like to contribute.</p>
+</rh-alert>
+
+<uxdot-example color-palette="lighter">
+  <img alt="wireframe of a dark theme section sandwiched by two light theme sections",
+       src="/assets/theming/inline-theming-1.png">
+</uxdot-example>
+
+<uxdot-example color-palette="lighter">
+  <img alt="wireframe of cards in a dark theme section extending into a light theme section",
+       src="/assets/theming/inline-theming-2.png">
+</uxdot-example>
+
+<uxdot-example color-palette="lighter">
+  <img alt="wireframe of dark theme navigation framing the top and left sides of a light theme content area",
+       src="/assets/theming/inline-theming-3.png">
+</uxdot-example>
+
 ## Illustrations and imagery
 
 Illustrations and imagery should align to the theme. The light theme should 
