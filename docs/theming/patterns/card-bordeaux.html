@@ -1,0 +1,72 @@
+<rh-card class="theme-bordeaux list-with-dividers">
+  <ul>
+    <li>This card uses a custom theme</li>
+    <li><a href="#">Links also are affected</a></li>
+    <li>See how it reacts when you change the color-palette</li>
+  </ul>
+  <rh-cta slot="footer" href="#">Call to action</rh-cta>
+</rh-card>
+
+<rh-card id="bordeaux-card-provider" class="theme-bordeaux">
+  <p>You can also set a color palette on a specific element</p>
+  <label for="bordeaux-card-picker">Set this card's color palette.</label>
+  <rh-context-picker id="bordeax-card-picker"
+                     target="bordeaux-card-provider"
+                     allow="darkest, lighter, lightest"></rh-context-picker>
+</rh-card>
+
+<style>
+  :root {
+    --bordeaux-darkest: #19050a;
+    --bordeaux-darker: #260710;
+    --bordeaux-dark: #330915;
+    --bordeaux-light: #99455d;
+    --bordeaux-lighter: #cca2ae;
+    --bordeaux-lightest: #f2e8eb;
+  }
+
+  .theme-bordeaux {
+    --rh-color-surface-darkest: var(--bordeaux-darkest);
+    --rh-color-surface-darker: var(--bordeaux-darker);
+    --rh-color-surface-dark: var(--bordeaux-dark);
+    --rh-color-surface-light: var(--bordeaux-light);
+    --rh-color-surface-lighter: var(--bordeaux-lighter);
+    --rh-color-surface-lightest: var(--bordeaux-lightest);
+    --rh-color-border-interactive-on-dark: var(--bordeaux-lightest);
+    --rh-color-border-interactive-on-light: var(--bordeaux-darkest);
+    --rh-color-interactive-primary-default-on-dark: var(--bordeaux-lighter);
+    --rh-color-interactive-primary-default-on-light: var(--bordeaux-darker);
+    --rh-color-interactive-primary-hover-on-dark: var(--bordeaux-light);
+    --rh-color-interactive-primary-hover-on-light: var(--bordeaux-dark);
+    --rh-color-interactive-primary-focus-on-dark: var(--bordeaux-light);
+    --rh-color-interactive-primary-focus-on-light: var(--bordeaux-dark);
+    --rh-color-interactive-primary-active-on-dark: var(--bordeaux-light);
+    --rh-color-interactive-primary-active-on-light: var(--bordeaux-dark);
+    --rh-color-border-subtle-on-dark: var(--bordeaux-lighter);
+    --rh-color-border-subtle-on-light: var(--bordeaux-darker);
+  }
+
+  .list-with-dividers {
+    & ul {
+      display: flex;
+      flex-flow: column;
+      gap: var(--rh-space-lg);
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      & li {
+        margin-block: 0;
+        padding-block: var(--rh-space-lg);
+        border-block-end: 1px solid var(--rh-color-border-subtle);
+        &:last-child {
+          padding-block-end: 0;
+          border-block-end: none;
+        }
+      }
+    }
+    & h3 {
+      margin-block-end: var(--rh-space-lg);
+    }
+  }
+
+</style>

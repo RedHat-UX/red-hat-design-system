@@ -1,37 +1,51 @@
 ---
 title: Customizing
 bodyClasses: element-docs
+hasToc: true
 order: 3
 ---
+<link rel="stylesheet"
+      data-helmet
+      href="../color-palettes.css">
+
 <script type="module" data-helmet>
-  import '@rhds/elements/rh-blockquote/rh-blockquote.js';
-  import '@rhds/elements/rh-cta/rh-cta.js';
-  import '@rhds/elements/rh-card/rh-card.js';
-  import '@rhds/elements/rh-tag/rh-tag.js';
+  import '/assets/javascript/elements/uxdot-pattern.js';
   import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
+  import '@rhds/elements/rh-accordion/rh-accordion.js';
+  import '@rhds/elements/rh-audio-player/rh-audio-player.js';
+  import '@rhds/elements/rh-blockquote/rh-blockquote.js';
+  import '@rhds/elements/rh-button/rh-button.js';
+  import '@rhds/elements/rh-card/rh-card.js';
+  import '@rhds/elements/rh-cta/rh-cta.js';
+  import '@rhds/elements/rh-pagination/rh-pagination.js';
+  import '@rhds/elements/rh-tabs/rh-tabs.js';
+  import '@rhds/elements/rh-tag/rh-tag.js';
+  import '@rhds/elements/rh-tile/rh-tile.js';
 </script>
 
-- "Applying a theme" means setting token values
-- prefer to customize 'semantic' (i.e. alias) tokens rather than 'base' (i.e. 
-crayon) tokens
+Red Hat Design System is composed of tokens, elements, and patterns, each layer
+building on the last. Theming emerges as a design possibility from the
+composition of those smaller pieces. By setting custom values for themable
+design tokens, elements, sections, or entire pages can take on a new color 
+scheme, layout density, etc. Custom themes can apply to multiple color-palettes
+and to both the `light` and `dark` backgrounds.
+
+When applying a theme, designers and developers need only set the values for the
+relevant color properties in the design system. For example, a Bordeaux theme
+might look like this:
+
+{% uxdotPattern class="card-snippet-grid", stacked=true %}
+{% include './patterns/card-bordeaux.html' %}
+{% enduxdotPattern %}
+
+When writing themes, use the semantic, themable tokens such as
+`--rh-color-interactive-primary-default-on-light` rather than the crayon tokens
+e.g. `--rh-color-purple-10`.
+
 - set token values on `:root` for whole pages, or on a selector for a class 
 (e.g. 3-card promo band)
 - brag about your customizations! did other teams use it, or something similar? 
   maybe it should be added upstream to the design system?
-
-```css
-.theme-pink {
-  --rh-color-surface-lightest: #feeded;
-  --rh-color-surface-darkest: var(--rh-color-brand-red-darkest, #5f0000);
-  --rh-color-text-primary-on-light: #131313;
-}
-
-.product-grid {
-  & rh-card {
-    --rh-border-radius-default: 10px;
-  }
-}
-```
 
 ### Custom theme
 
