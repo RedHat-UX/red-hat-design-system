@@ -104,6 +104,7 @@
       "service": true,
       "command": "eleventy --serve --incremental",
       "dependencies": [
+        "compile",
         "patch",
         "analyze",
         "playgrounds"
