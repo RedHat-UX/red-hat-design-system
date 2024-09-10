@@ -93,8 +93,10 @@ export class RhCodeBlock extends LitElement {
     },
   }) actions: ('copy' | 'wrap')[] = [];
 
+  /** When set to "client", `<rh-code-block>` will automatically highlight the source code using Prism.js */
   @property() highlighting?: 'client';
 
+  /** When set along with `highlighting="client"`, this grammar will be used to highlight source code */
   @property() language?:
     | 'html'
     | 'css'
