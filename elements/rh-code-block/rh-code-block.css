@@ -287,14 +287,17 @@
   gap: var(--rh-space-md, 8px);
 }
 
+.on {
+  --_cdata-color: var(--rh-color-text-secondary);
+  --_comment-color: var(--rh-color-text-secondary);
+  --_comment-block-color: var(--rh-color-text-secondary);
+  --_doctype-color: var(--rh-color-text-secondary);
+}
+
 .on,
 .on.light {
   --_default-color: var(--rh-color-gray-95, #151515);
   --_selected-text-background: var(--rh-color-blue-10, #e0f0ff);
-  --_comment-color: var(--rh-color-gray-60, #4d4d4d);
-  --_comment-block-color: var(--rh-color-gray-60, #4d4d4d);
-  --_doctype-color: var(--rh-color-gray-60, #4d4d4d);
-  --_cdata-color: var(--rh-color-gray-60, #4d4d4d);
   --_punctuation-color: var(--rh-color-gray-40, #a3a3a3);
   --_namespace-color: var(--rh-color-gray-95, #151515);
   --_property-color: var(--rh-color-purple-50, #5e40be);
@@ -327,10 +330,6 @@
 .on.dark {
   --_default-color: var(--rh-color-gray-20, #e0e0e0);
   --_selected-text-background: var(--rh-color-gray-95, #151515);
-  --_comment-color: var(--rh-color-gray-50, #707070);
-  --_comment-block-color: var(--rh-color-gray-50, #707070);
-  --_doctype-color: var(--rh-color-gray-50, #707070);
-  --_cdata-color: var(--rh-color-gray-50, #707070);
   --_punctuation-color: var(--rh-color-gray-20, #e0e0e0);
   --_namespace-color: var(--rh-color-red-40, #f56e6e);
   --_property-color: var(--rh-color-yellow-40, #dca614);
