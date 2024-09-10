@@ -197,6 +197,8 @@ export class RhCodeBlock extends LitElement {
 
         <button id="expand"
                 ?hidden="${!expandable}"
+                aria-controls="content-lines"
+                aria-expanded="${String(!!fullHeight) as 'true' | 'false'}"
                 @click="${this.#onClickExpand}">
           <slot name="show-more" ?hidden="${this.fullHeight}">Show more</slot>
           <slot name="show-less" ?hidden="${!this.fullHeight}">Show less</slot>
