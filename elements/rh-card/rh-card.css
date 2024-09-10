@@ -2,6 +2,7 @@
   display: block;
   container-name: card;
   container-type: inline-size;
+  height: max-content;
 }
 
 #header.empty,
@@ -42,19 +43,27 @@
 }
 
 #container.on.palette-light {
+  --rh-color-surface: var(--rh-color-surface-light, #e0e0e0);
+}
+
+#container.on.palette-lighter {
+  --rh-color-surface: var(--rh-color-surface-lighter, #f2f2f2);
+}
+
+#container.on.palette-lightest {
   --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
 }
 
 #container.on.palette-dark {
-  --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+  --rh-color-surface: var(--rh-color-surface-dark, #383838);
 }
 
 #container.on.palette-darker {
   --rh-color-surface: var(--rh-color-surface-darker, #1f1f1f);
 }
 
-#container.on.palette-lighter {
-  --rh-color-surface: var(--rh-color-surface-lighter, #f2f2f2);
+#container.on.palette-darkest {
+  --rh-color-surface: var(--rh-color-surface-darkest, #151515);
 }
 
 #header,
@@ -186,7 +195,7 @@
 }
 
 .promo.has-footer #footer {
-  margin-block: 0 var(--rh-space-xl, 24px);
+  margin-block: var(--rh-space-xl, 24px) 0;
   margin-inline: 0;
 }
 
@@ -280,7 +289,7 @@
 
   .promo.standard #footer {
     flex: 0 0 auto;
-    margin-block-start: 0;
+    margin-block: 0;
   }
 
   :host([variant='promo'][full-width]) #container {
