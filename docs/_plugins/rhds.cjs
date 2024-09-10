@@ -1,12 +1,13 @@
-
+/// <reference lib="ESNext.Array"/>
 // @ts-check
 const fs = require('node:fs');
-const yaml = require('js-yaml');
 const path = require('node:path');
+const exec = require('node:util').promisify(require('node:child_process').exec);
+const { glob } = require('node:fs/promises');
+const yaml = require('js-yaml');
 const _slugify = require('slugify');
 const slugify = typeof _slugify === 'function' ? _slugify : _slugify.default;
 const capitalize = require('capitalize');
-const exec = require('node:util').promisify(require('node:child_process').exec);
 const cheerio = require('cheerio');
 const RHDSAlphabetizeTagsPlugin = require('./alphabetize-tags.cjs');
 const RHDSShortcodesPlugin = require('./shortcodes.cjs');
@@ -24,6 +25,9 @@ const { parse } = require('async-csv');
  */
 function demoPaths(content) {
   const { outputPath, inputPath } = this;
+  if (!outputPath) {
+    return '';
+  }
   const isNested = outputPath.match(/demo\/.+\/index\.html$/);
   if (inputPath === './docs/elements/demos.html') {
     const $ = cheerio.load(content);
@@ -112,8 +116,8 @@ function getFilesToCopy() {
 }
 
 /**
- * @param {{ slug: number; }} a first
- * @param {{ slug: number; }} b next
+ * @param {{ slug: string; }} a first
+ * @param {{ slug: string; }} b next
  */
 function alphabeticallyBySlug(a, b) {
   return (
@@ -123,7 +127,10 @@ function alphabeticallyBySlug(a, b) {
   );
 }
 
-/** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig user config */
+/**
+ * @param {import('@11ty/eleventy').UserConfig} eleventyConfig user config
+ * @param {{tagsToAlphabetize: string[]}} opts
+ */
 module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   eleventyConfig.addDataExtension('yml, yaml', contents => yaml.load(contents));
 
@@ -320,7 +327,6 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     }
 
     try {
-      const { glob } = await import('glob');
       const { DocsPage } = await import('@patternfly/pfe-tools/11ty/DocsPage.js');
       const {
         getAllManifests,
@@ -329,23 +335,20 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
       );
 
       const customElementsManifestDocsPages = await eleventyConfig.globalData?.elements();
-      const filePaths = (await glob(`elements/*/docs/*.md`, { cwd: process.cwd() }))
+      const filePaths = (await Array.fromAsync(glob(`elements/*/docs/*.md`, { cwd: process.cwd() })))
           .filter(x => x.match(/\d{1,3}-[\w-]+\.md$/)); // only include new style docs
-
-      return filePaths
-          .map(filePath => {
-            const props = getProps(filePath);
-            const [manifest] = getAllManifests();
-            const docsPage =
+      return filePaths.map(filePath => {
+        const props = getProps(filePath);
+        const [manifest] = getAllManifests();
+        const docsPage =
               customElementsManifestDocsPages.find(x => x.tagName === props.tagName)
               ?? new DocsPage(manifest);
-            const tabs = filePaths
-                .filter(x => x.split('/docs/').at(0) === (`elements/${props.tagName}`))
-                .sort()
-                .map(x => getProps(x));
-            return { docsPage, tabs, ...props };
-          })
-          .sort(alphabeticallyBySlug);
+        const tabs = filePaths
+            .filter(x => x.split('/docs/').at(0) === (`elements/${props.tagName}`))
+            .sort()
+            .map(x => getProps(x));
+        return { docsPage, tabs, ...props };
+      }).sort(alphabeticallyBySlug);
     } catch (e) {
       // it's important to surface this
       // eslint-disable-next-line no-console
@@ -353,6 +356,9 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
       throw e;
     }
   });
+
+  eleventyConfig.addWatchTarget('docs/patterns/**/patterns/*.html');
+  eleventyConfig.addWatchTarget('docs/theming/**/patterns/*.html');
 
   for (const tagName of fs.readdirSync(path.join(process.cwd(), './elements/'))) {
     const dir = path.join(process.cwd(), './elements/', tagName, 'docs/');

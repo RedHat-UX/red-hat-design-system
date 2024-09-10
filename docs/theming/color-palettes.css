@@ -5,31 +5,6 @@
   }
 }
 
-#elements {
-  min-height: auto;
-  display: grid;
-  place-content: center;
-  gap: var(--rh-space-sm);
-  grid-template:
-    'disclosure disclosure disclosure'
-    'cta audio-player card'
-    'pagination pagination card'
-    'p p card'
-    'tabs tabs tabs' / 1fr 1fr 2fr;
-  grid-template-rows: repeat(5, min-content);
-  & p { grid-area: p; }
-  & rh-card { grid-area: card; }
-  & rh-disclosure { grid-area: disclosure; }
-  & rh-cta { grid-area: cta; }
-  & rh-pagination { grid-area: pagination; }
-  & rh-tabs { grid-area: tabs; }
-
-  & rh-audio-player {
-    grid-area: audio-player;
-    max-width: 250px;
-  }
-}
-
 .card-snippet-grid::part(example) {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));

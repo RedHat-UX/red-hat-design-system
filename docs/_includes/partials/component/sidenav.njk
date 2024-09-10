@@ -8,7 +8,7 @@
   #}
   {%- for link in sideNavDropdowns -%}
   {%- set active = link.url === page.url -%}
-  {%- set open = link.url in page.url -%}
+  {%- set open = page.url and link.url in page.url -%}
   <uxdot-sidenav-dropdown {{ 'open' if open }}>
     <details {{ 'open' if open }}>
       <summary>{{ link.title }}</summary>
