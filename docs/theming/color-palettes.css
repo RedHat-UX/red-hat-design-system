@@ -42,3 +42,7 @@
 rh-audio-player::part(toolbar) {
   --_time-slider-base: 100px;
 }
+
+label + rh-switch {
+  margin-inline-end: var(--rh-space-md);
+}

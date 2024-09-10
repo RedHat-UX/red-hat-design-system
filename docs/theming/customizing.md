@@ -18,9 +18,13 @@ order: 3
   import '@rhds/elements/rh-card/rh-card.js';
   import '@rhds/elements/rh-cta/rh-cta.js';
   import '@rhds/elements/rh-pagination/rh-pagination.js';
+  import '@rhds/elements/rh-switch/rh-switch.js';
   import '@rhds/elements/rh-tabs/rh-tabs.js';
   import '@rhds/elements/rh-tag/rh-tag.js';
   import '@rhds/elements/rh-tile/rh-tile.js';
+  document.getElementById('bordeaux-page-switch').addEventListener('change', function() {
+    document.body.classList.toggle('theme-bordeaux', this.checked);
+  });
 </script>
 
 Red Hat Design System is composed of tokens, elements, and patterns, each layer
@@ -30,24 +34,44 @@ design tokens, elements, sections, or entire pages can take on a new color
 scheme, layout density, etc. Custom themes can apply to multiple color-palettes
 and to both the `light` and `dark` backgrounds.
 
-When applying a theme, designers and developers need only set the values for the
-relevant color properties in the design system. For example, a Bordeaux theme
-might look like this:
+## Custom themes
+
+To create a custom theme, designers and developers need only set the values for 
+the relevant color properties in the design system. For example, a _Bordeaux_ 
+theme might look like this:
 
 {% uxdotPattern class="card-snippet-grid", stacked=true %}
 {% include './patterns/card-bordeaux.html' %}
 {% enduxdotPattern %}
 
-When writing themes, use the semantic, themable tokens such as
+<rh-alert>When writing themes, use the semantic, themable tokens such as
 `--rh-color-interactive-primary-default-on-light` rather than the crayon tokens
-e.g. `--rh-color-purple-10`.
+e.g. `--rh-color-purple-10`.</rh-alert>
+
+<rh-alert state="warning">
+  <h4 slot="header">Careful!</h4>
+
+Do not set the "computed" theme tokens, e.g.
+`--rh-color-interactive-primary-default`, those will always be calculated for
+you from their `-on-light` and `-on-dark` versions.
+
+</rh-alert>
+
+<rh-card>
+  <label for="bordeaux-page-switch">
+    What would it look like to set that theme on an entire page?
+  </label>
+  <rh-switch id="bordeaux-page-switch"
+             message-on="Bordeaux"
+             message-off="Raleigh"></rh-switch>
+</rh-card>
 
 - set token values on `:root` for whole pages, or on a selector for a class 
 (e.g. 3-card promo band)
 - brag about your customizations! did other teams use it, or something similar? 
   maybe it should be added upstream to the design system?
 
-### Custom theme
+## When to use custom themes
 
 A custom theme may be used for very specific brand projects like campaigns. 
 However, the light and dark themes are fine for the majority of other projects. 
