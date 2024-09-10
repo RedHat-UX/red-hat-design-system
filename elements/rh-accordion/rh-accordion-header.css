@@ -70,7 +70,6 @@ a {
     var(--_padding-inline-start);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   font-size: var(--_font-size);
-  font-weight: var(--rh-font-weight-body-text-medium, 500);
   color: var(--rh-color-text-primary);
 }
 
@@ -98,10 +97,14 @@ span {
 #header-container {
   display: flex;
   gap: var(--rh-space-md, 8px);
+}
 
-  &.bottom {
-    flex-direction: column;
-  }
+#header-container.bottom {
+  flex-direction: column;
+}
+
+#header-text {
+  font-weight: var(--rh-font-weight-heading-bold, 700);
 }
 
 [part='accents'] {
