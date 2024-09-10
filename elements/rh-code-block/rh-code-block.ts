@@ -1,15 +1,17 @@
+import type { DirectiveResult } from 'lit-html/directive.js';
 import { CSSResult, LitElement, html, type PropertyValues } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
 import { property } from 'lit/decorators/property.js';
+import { ifDefined } from 'lit-html/directives/if-defined.js';
 
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
 import { type ColorTheme, colorContextConsumer } from '../../lib/context/color/consumer.js';
 
 import style from './rh-code-block.css';
-import type { DirectiveResult } from 'lit-html/directive.js';
+
 
 /* TODO
  * - style slotted and shadow fake-fabs
@@ -167,7 +169,7 @@ export class RhCodeBlock extends LitElement {
                                truncated,
                                wrap })}"
            @code-action="${this.#onCodeAction}">
-        <div id="content-lines">
+        <div id="content-lines" tabindex="${ifDefined((fullHeight || undefined) && 0)}">
           <div id="sizers" aria-hidden="true"></div>
           <ol id="line-numbers" aria-hidden="true">${this.#lineHeights.map((height, i) => html`
             <li style="${styleMap({ height })}">${i + 1}</li>`)}
