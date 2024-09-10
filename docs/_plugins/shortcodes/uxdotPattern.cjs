@@ -29,23 +29,27 @@ async function getCss(partial, kwargs) {
   return cssContent.trim();
 }
 
+const dash = s => s.replace(/([A-Z])/g, '-$1');
+
+const attrMap = attrs => Object.entries(attrs)
+    .map(([name, value]) => `${value ? dash(name) : ''}${value === true || value === false ? '' : `="${value}"`}`)
+    .join(' ');
+
 /** @param {import('@11ty/eleventy').UserConfig} eleventyConfig */
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPairedShortcode('uxdotPattern', async function(content, kwargs = {}) {
+    const { __keywords, js, fullHeight, ...patternArgs } = kwargs;
     const { parseFragment, serialize } = await import('parse5');
     const partial = parseFragment(content);
     const baseUrl = pathToFileURL(this.page.inputPath);
     const cssContent = await getCss(partial, { ...kwargs, baseUrl });
-    const jsContent = kwargs.js && await readFile(new URL(kwargs.js, baseUrl), 'utf-8');
-    const attrs = Object.entries(kwargs)
-        .map(([name, value]) => name === '__keywords' ? '' : `${value ? name : ''}${value === true || value === false ? '' : `="${value}"`}`)
-        .join(' ');
+    const jsContent = js && await readFile(new URL(js, baseUrl), 'utf-8');
     return html`
-<uxdot-pattern ${attrs}>
+<uxdot-pattern ${attrMap(patternArgs)}>
   <h4 slot="heading">Example</h4>
   ${content}
   <h4 slot="html-heading">HTML</h4>
-  <rh-code-block slot="html" actions="copy">
+  <rh-code-block slot="html" actions="copy" ${attrMap({ fullHeight })}>
     <span slot="action-label-copy">Copy to Clipboard</span>
     <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
     <script type="text/html">${serialize(partial).trim().replaceAll(/\n/gm, COMMENT)}</script>

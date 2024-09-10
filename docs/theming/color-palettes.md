@@ -46,7 +46,9 @@ themes.
        alt="examples of several elements against a white surface">
 </uxdot-example>
 
-{% uxdotPattern id="elements-grid", stacked=true %}{% include './patterns/elements.html' %}{% enduxdotPattern %}
+{% uxdotPattern id="elements-grid", stacked=true %}
+{% include './patterns/collage.html' %}
+{% enduxdotPattern %}
 
 ### How color palettes work
 
@@ -86,7 +88,7 @@ light elements and patterns have dark counterparts.
   requirements.</p>
 </rh-alert>
 
-### Illustrations and imagery
+## Illustrations and imagery
 
 Illustrations and imagery should align to the theme. The light theme should 
 feature imagery with light colors and vice versa. Imagery with high contrast is 
@@ -104,6 +106,8 @@ visual tension.</p>
   <img alt="correct uses of an illustration with a transparent background and one illustration incorrectly using a white background in a dark theme area",
        src="/assets/theming/illustrations-and-imagery.png">
 </uxdot-example>
+
+## Color theme consumers and theme tokens
 
 ### Color palette providers
 **Providers** define the **color palette** for themselves and their child 
@@ -123,20 +127,8 @@ Authors may define the color palette of a container using the `color-palette` HT
 attribute. So for example, to create a card with the darkest color palette, use 
 this HTML:
 
-{% uxdotPattern class="card-snippet-grid" %}
-<rh-card>
-  <p>
-    This card uses the default
-    color palette.
-  </p>
-</rh-card>
-
-<rh-card color-palette="darkest">
-  <p>
-    This card uses the author-set
-    "darkest" color palette.
-  </p>
-</rh-card>
+{% uxdotPattern class="card-snippet-grid", fullHeight=true %}
+{% include './patterns/card-default-vs-set-palette.html' %}
 {% enduxdotPattern %}
 
 ### Color theme consumers
@@ -157,23 +149,8 @@ Extending our card example from above, if our page author then adds an
 `<rh-cta>` to the card, it will *automatically* adopt the dark color theme. The 
 page author need not and should not customize the CTA.
 
-{% uxdotPattern class="card-snippet-grid" %}
-<rh-card>
-  <p>
-    The card <em>and</em> CTA respond to the theme of their container.
-    On a light container, the CTA uses the light theme, and dark on dark.
-  </p>
-  <rh-cta slot="footer">Fine!</rh-cta>
-</rh-card>
-
-<rh-card color-palette="darkest">
-  <p>
-    The card uses the "darkest" palette.
-    The CTA is always themed with the "dark" theme, because the card
-    sets its own palette, rather than responding to it's container's.
-  </p>
-  <rh-cta slot="footer">Nice!</rh-cta>
-</rh-card>
+{% uxdotPattern class="card-snippet-grid", fullHeight=true %}
+{% include './patterns/card-child-consumers.html' %}
 {% enduxdotPattern %}
 
 <rh-card class="pullquote-card right">
@@ -185,51 +162,15 @@ page author need not and should not customize the CTA.
 To summarize: color providers can have one of up to six palettes, three dark and 
 three light, and they provide a `dark` or `light` theme to their children.
 
-### Combination elements
+## Combination elements
 Some elements are both providers and consumers. Card, for example is both a 
 provider and a consumer. It can accept the color theme of its parent context and it 
 can also set its own color palette.
 
-{% uxdotPattern class="card-snippet-grid" %}
-<rh-card>
-  <h2 slot="header">Consumer</h2>
-  <rh-tag slot="header"
-          icon="info"
-          color="purple">passive</rh-tag>
-  <p>This card acts as a consumer.
-    It will always receive its parent's <code>ColorTheme</code>.</p>
-  <rh-cta slot="footer"
-          href="/elements/card/">Read card docs</rh-cta>
-</rh-card>
-
-<rh-card id="provider-card" color-palette="lightest">
-  <h2 slot="header">Provider</h2>
-  <rh-tag slot="header"
-          icon="info"
-          color="green">active</rh-tag>
-  <p>This card acts as a provider.
-    Try changing this card's 
-    <code>color-palette</code>
-    and see how it affects this card's children.
-  </p>
-  <label for="provider-picker">
-    Set this card's color palette.
-    <rh-context-picker id="provider-picker"
-                       target="provider-card"
-                       value="lightest"></rh-context-picker>
-  </label>
-  <rh-cta slot="footer" href="/elements/call-to-action/">Read CTA docs</rh-cta>
-</rh-card>
-
+{% uxdotPattern class="card-snippet-grid", fullHeight=true %}
+{% include './patterns/card-consumer-provider.html' %}
 {% enduxdotPattern %}
 
-<!-- This is a footer -->
-<uxdot-feedback>
-
-## Foundations
-To learn how to use our other foundations in your designs, visit the
-[foundations](/foundations) section.
-
-</uxdot-feedback>
+{% include 'partials/component/feedback.html' %}
 
 [^1]: As the web platform [improves](https://results.web-platform-tests.org/results/css/css-values/attr-container-style-query.html?label=experimental&label=master&aligned), the <abbr>RHDS</abbr> authors expect that eventually no JavaScript will be required for this feature.

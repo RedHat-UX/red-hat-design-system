@@ -47,11 +47,17 @@
 
     & rh-card { grid-area: card; }
     & rh-cta { grid-area: cta; }
-    & rh-pagination { grid-area: pagination; }
     & rh-tabs { grid-area: tabs; }
 
     & rh-disclosure,
     & rh-accordion { grid-area: disclosure; }
+
+    & rh-pagination {
+      grid-area: pagination;
+      &::part(numeric) {
+        display: none;
+      }
+    }
 
     & rh-audio-player {
       grid-area: audio-player;
@@ -59,11 +65,11 @@
       justify-self: center;
     }
 
+    & p { margin: 0; }
     & > p {
       grid-area: p;
       font-size: var(--rh-font-size-body-text-2xl);
       font-weight: var(--rh-font-weight-heading-bold);
-      margin: 0;
     }
   }
 </style>

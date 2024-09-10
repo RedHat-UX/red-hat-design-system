@@ -5,10 +5,16 @@
   }
 }
 
-.card-snippet-grid::part(example) {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-  gap: var(--rh-space-lg);
+.card-snippet-grid {
+  &::part(example) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: var(--rh-space-lg);
+  }
+
+  & h4[slot='heading'] {
+    margin: 0;
+  }
 
   & rh-card::part(header) {
     flex-flow: row;
