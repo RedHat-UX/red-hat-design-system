@@ -137,8 +137,6 @@ To make a portable copy:
 
 #### Getting started
 
-To start JAWS:
-
 You can start JAWS via any of the following methods:
 
 - Open it in the Windows Start menu.
