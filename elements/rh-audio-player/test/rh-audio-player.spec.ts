@@ -205,6 +205,7 @@ describe('<rh-audio-player>', function() {
       `);
     });
     beforeEach(sleep(100));
+    beforeEach(() => element.updateComplete);
     it('has spanish-language buttons', function() {
       expect(getShadowElementBySelector('#time')?.getAttribute('aria-label'), 'time slider label').to.equal('Buscar');
     });

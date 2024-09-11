@@ -1,14 +1,14 @@
-*[part="body"] {
+*[part='body'] {
   max-height: 240px;
   overflow-y: auto;
 }
 
-::slotted([slot="link"]) {
+::slotted([slot='link']) {
   display: block;
 }
 
 @media (min-width: 576px) {
-  slot[part="links"] {
+  slot[part='links'] {
     display: flex;
     align-items: stretch;
     justify-content: space-between;

@@ -84,6 +84,11 @@ export class RhTabs extends LitElement {
   @property({ attribute: false }) activeTab?: RhTab;
 
   /**
+   * Sets color theme based on parent context
+   */
+  @colorContextConsumer() private on?: ColorTheme;
+
+  /**
    * Sets color context for child components, overrides parent context
    */
   @colorContextProvider()
@@ -103,11 +108,6 @@ export class RhTabs extends LitElement {
    * Sets the alignment of the tabs vertical
    */
   @property({ reflect: true, type: Boolean }) vertical = false;
-
-  /**
-   * Sets color theme based on parent context
-   */
-  @colorContextConsumer() private on?: ColorTheme;
 
   @query('[part="tabs"]') private tabList!: HTMLElement;
 
@@ -185,7 +185,7 @@ export class RhTabs extends LitElement {
     const { on = '' } = this;
     const rtl = this.#dir.dir === 'rtl';
     return html`
-      <div id="rhds-container" class="${classMap({ [on]: !!on, rtl })}">
+      <div id="rhds-container" class="${classMap({ on: true, [on]: !!on, rtl })}">
         <div part="container" class="${classMap({ overflow: this.#overflow.showScrollButtons })}">
           <div part="tabs-container">${!this.#overflow.showScrollButtons ? '' : html`
             <button id="previousTab" tabindex="-1"

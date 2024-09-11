@@ -1,28 +1,19 @@
+import { customElement } from 'lit/decorators/custom-element.js';
+
 import { RhTabs } from '@rhds/elements/rh-tabs/rh-tabs.js';
+import { TabExpandEvent } from '@rhds/elements/rh-tabs/rh-tab.js';
 
 import '@rhds/elements/rh-alert/rh-alert.js';
 
 const TABS_KEY = 'rhds-installation-tabs-selected-index';
 
+@customElement('uxdot-installation-tabs')
 export class InstallationTabs extends RhTabs {
   static stored = localStorage.getItem(TABS_KEY);
 
-  static is = 'uxdot-installation-tabs';
-
-  static {
-    customElements.define(this.is, this);
-  }
-
-  #onExpand(event) {
-    // TODO: when tabs is decoupled from PFE, update the event type here
-    if (event.constructor.name === 'TabExpandEvent') {
-      localStorage.setItem(TABS_KEY, this.activeIndex.toString());
-    }
-  }
-
   constructor() {
     super();
-    this.box = true;
+    this.box = 'box';
     this.vertical = true;
   }
 
@@ -41,5 +32,11 @@ export class InstallationTabs extends RhTabs {
       }
     }
     this.addEventListener('expand', this.#onExpand);
+  }
+
+  #onExpand(event: Event) {
+    if (event instanceof TabExpandEvent) {
+      localStorage.setItem(TABS_KEY, this.activeIndex.toString());
+    }
   }
 }

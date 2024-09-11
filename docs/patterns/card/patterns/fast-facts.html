@@ -1,83 +1,13 @@
-<style>
-  .example-fast-facts-card :is(ol, ul) {
-    display: flex;
-    flex-flow: column;
-    gap: var(--rh-space-xl, 32px);
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-  }
-
-  .example-fast-facts-card :is(ol, ul) li {
-    margin-block: 0;
-    padding-block-end: var(--rh-space-xl, 32px);
-    border-block-end: 1px solid var(--_divider-color, var(--rh-color-border-subtle-on-light, #c7c7c7));
-  }
-
-  [color-palette^="dark"] rh-card.example-fast-facts-card,
-  rh-card.example-fast-facts-card[color-palette^="dark"] {
-    --_divider-color: var(--rh-color-border-subtle-on-dark, #707070);
-  }
-
-  .example-fast-facts-card :is(ol, ul) li:last-child {
-    padding-block-end: 0;
-    border-block-end: none;
-  }
-
-  .example-fast-facts-card :is(ol, ul) li :first-child {
-    margin-block-start: 0;
-  }
-
-  .example-fast-facts-card :is(ol, ul) li :last-child {
-    margin-block-end: 0;
-  }
-
-  .example-fast-facts-card :is(h4) {
-    margin-block-end: 0 var(--rh-space-lg, 16px);
-    font-weight: var(--rh-font-weight-heading-regular, 300);
-    font-size: var(--rh-font-size-body-text-md, 1rem);
-    font-family: var(--rh-font-family-body-text);
-    line-height: var(--rh-line-height-body-text, 1.5);
-    text-transform: uppercase; /* deprecated? */
-  }
-
-  /* demo only */
-  .example-fast-facts-card {
-    min-width: 360px;
-  }
-  /* demo only */
-  .example-fast-facts-card svg[slot] {
-    width: 80px;
-    border: 1px dashed var(--rh-color-border-interactive-on-light, #0066cc);
-  }
-</style>
-
-<uxdot-pattern id="fast-facts-card">
-  <rh-card class="example-fast-facts-card">
-    <svg slot="header" viewBox="0 0 80 80">
-      <rect fill="rgba(0 102 204 / 0.10)" width="80" height="80"/>
-    </svg>
-    <ul>
-      <li>
-        <h4>Title, lg</h4>
-        <p>Lorem ipsum dolor sit amet</p>
-      </li>
-      <li>
-        <h4>Title, lg</h4>
-        <p>Lorem ipsum dolor sit amet</p>
-      </li>
-      <li>
-        <h4>Title, lg</h4>
-        <p>Lorem ipsum dolor sit amet</p>
-      </li>
-    </ul>
-    <rh-cta slot="footer" href="#">Call to action</rh-cta>
-  </rh-card>
-  <rh-code-block slot="html" actions="copy">
-    <span slot="action-label-copy">Copy to Clipboard</span>
-    <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
-    <script type="text/html"><rh-card class="example-fast-facts-card">
-  <rh-icon set="standard" icon="info"></rh-icon>
+<rh-card class="example-fast-facts-card">
+  <svg slot="header" width="80" height="80">
+    <rect fill="var(--rh-color-border-interactive)"
+          fill-opacity="0.1"
+          stroke-dasharray="4"
+          stroke-width="1"
+          stroke="var(--rh-color-border-interactive)"
+          width="80"
+          height="80"/>
+  </svg>
   <ul>
     <li>
       <h4>Title, lg</h4>
@@ -93,45 +23,42 @@
     </li>
   </ul>
   <rh-cta slot="footer" href="#">Call to action</rh-cta>
-</rh-card></script>
-  </rh-code-block>
-  <rh-code-block slot="css" actions="copy">
-    <span slot="action-label-copy">Copy to Clipboard</span>
-    <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
-    <script type="text/css">.example-fast-facts-card :is(ol, ul) {
-  display: flex;
-  flex-flow: column;
-  gap: var(--rh-space-xl, 32px);
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-.example-fast-facts-card :is(ol, ul) li {
-  margin-block: 0;
-  padding-block-end: var(--rh-space-xl, 32px);
-  border-block-end: 1px solid var(--_divider-color, var(--rh-color-border-subtle-on-light, #c7c7c7));
-}
-[color-palette^="dark"] rh-card.example-fast-facts-card,
-rh-card.example-fast-facts-card[color-palette^="dark"] {
-  --_divider-color: var(--rh-color-border-subtle-on-dark, #707070);
-}
-.example-fast-facts-card :is(ol, ul) li:last-child {
-  padding-block-end: 0;
-  border-block-end: none;
-}
-.example-fast-facts-card :is(ol, ul) li :first-child {
-  margin-block-start: 0;
-}
-.example-fast-facts-card :is(ol, ul) li :last-child {
-  margin-block-end: 0;
-}
-.example-fast-facts-card :is(h4) {
-  margin-block-end: 0 var(--rh-space-lg, 16px);
-  font-weight: var(--rh-font-weight-heading-regular, 300);
-  font-size: var(--rh-font-size-body-text-md, 1rem);
-  font-family: var(--rh-font-family-body-text);
-  line-height: var(--rh-line-height-body-text, 1.5);
-  text-transform: uppercase; /* deprecated? */
-}</script>
-  </rh-code-block>
-</uxdot-pattern>
+</rh-card>
+
+<style>
+  .example-fast-facts-card {
+    width: 360px;
+    & ul {
+      display: flex;
+      flex-flow: column;
+      gap: var(--rh-space-xl);
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      & li {
+        margin-block: 0;
+        padding-block-end: var(--rh-space-xl);
+        border-block-end: 1px solid var(--rh-color-border-subtle);
+        &:last-child {
+          padding-block-end: 0;
+          border-block-end: none;
+        }
+        & :first-child {
+          margin-block-start: 0;
+        }
+
+        & :last-child {
+          margin-block-end: 0;
+        }
+      }
+    }
+    & h4 {
+      margin-block-end: 0 var(--rh-space-lg);
+      font-weight: var(--rh-font-weight-heading-regular);
+      font-size: var(--rh-font-size-body-text-md);
+      font-family: var(--rh-font-family-body-text);
+      line-height: var(--rh-line-height-body-text);
+      text-transform: uppercase; /* deprecated? */
+    }
+  }
+</style>

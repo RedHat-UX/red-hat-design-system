@@ -64,7 +64,7 @@ async function getCachedImportMap({
       const providers = {
         '@patternfly/elements': 'nodemodules',
         ...Object.fromEntries(localPackages?.map(packageName =>
-          packageName.match(/@(rhds|patternfly)/) ?
+          packageName.match(/@patternfly/) ?
             [nothing]
             : [packageName, 'nodemodules']) ?? []),
       };

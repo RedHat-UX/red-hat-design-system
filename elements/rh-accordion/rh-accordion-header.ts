@@ -87,7 +87,7 @@ export class RhAccordionHeader extends LitElement {
     const { accents, large = false } = this.ctx ?? {};
     const rtl = this.#dir.dir === 'rtl';
     return html`
-      <div id="container" class="${classMap({ [on]: !!on, rtl, large, expanded })}">
+      <div id="container" class="${classMap({ on: true, [on]: !!on, rtl, large, expanded })}">
         <button id="button"
                 class="toggle"
                 @click="${this.#onClick}">

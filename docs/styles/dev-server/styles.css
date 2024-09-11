@@ -6,10 +6,10 @@
   layout,
   third-party;
 
-@import url("../reset.css") layer(reset);
-@import url("../fonts.css") layer(fonts);
-@import url("../typography.css") layer(typography);
-@import url("../third-party/prism-rhds.css") layer(third-party);
+@import url('../reset.css') layer(reset);
+@import url('../fonts.css') layer(fonts);
+@import url('../typography.css') layer(typography);
+@import url('../third-party/prism-rhds.css') layer(third-party);
 
 @layer base {
   /**
@@ -23,6 +23,10 @@
 }
 
 @layer layout {
+  html,
+  body,
+  main { height: 100%; }
+
   [data-demo] {
     display: contents;
   }

@@ -75,6 +75,9 @@
       ],
       "@rhds/tokens/color.*": [
         "./node_modules/@rhds/tokens/js/color.*"
+      ],
+      "@rhds/tokens/css/*": [
+        "./node_modules/@rhds/tokens/css/*"
       ]
     }
   }
