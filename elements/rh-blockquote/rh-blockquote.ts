@@ -54,9 +54,9 @@ export class RhBlockquote extends LitElement {
   @property({ reflect: true }) size: 'default' | 'large' = 'default';
 
   render() {
-    const { on = '' } = this;
+    const { highlight, on = '' } = this;
     return html`
-      <figure id="container" class="${classMap({ [on]: !!on })}">
+      <figure id="container" class="${classMap({ highlight, [on]: !!on })}">
         <rh-icon set="standard" icon="quotemark-open"></rh-icon>
         <blockquote id="quote">
           <slot></slot>
