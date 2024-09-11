@@ -88,11 +88,11 @@ While transcript windows can be helpful, there are cases where the audio may not
 
 #### Getting started
 
-To start NVDA:
+You can start NVDA via any of the following methods:
 
-1. Open it in the Windows Start menu.
-2. Press the <kbd>Windows</kbd> key, type <code>nvda</code> and then <kbd>Enter</kbd>.
-3. Click the NVDA desktop shortcut icon (if available).
+- Open it in the Windows Start menu.
+- Press the <kbd>Windows</kbd> key, type <code>nvda</code> and then <kbd>Enter</kbd>.
+- Click the NVDA desktop shortcut icon (if available).
 
 When NVDA starts, a welcome dialog will appear. Here, you can specify what kind of keyboard you’re using, so NVDA knows what to use as your <kbd>NVDA</kbd> modifier key for keyboard shortcuts:
 
@@ -139,9 +139,11 @@ To make a portable copy:
 
 To start JAWS:
 
-1. Open it in the Windows Start menu.
-2. Press the <kbd>Windows</kbd> key, type <code>jaws</code> and then <kbd>Enter</kbd>.
-3. Click the JAWS desktop shortcut icon (if available).
+You can start JAWS via any of the following methods:
+
+- Open it in the Windows Start menu.
+- Press the <kbd>Windows</kbd> key, type <code>jaws</code> and then <kbd>Enter</kbd>.
+- Click the JAWS desktop shortcut icon (if available).
 
 On keyboards with an <kbd>Insert</kbd> key, that key will be assigned as your <kbd>JAWS</kbd> modifier key for keyboard shortcuts. On keyboards without an <kbd>Insert</kbd> key, the <kbd>CapsLock</kbd> key will be your <kbd>JAWS</kbd> key. You can test this out by pressing <kbd>JAWS-F12</kbd> to read out the system time.
 
