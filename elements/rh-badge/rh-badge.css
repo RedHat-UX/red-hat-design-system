@@ -6,7 +6,7 @@ span {
   white-space: nowrap;
   text-align: center;
   aspect-ratio: var(--_aspect-ratio);
-  background-color: var(--rh-color-surface-lighter);
+  background-color: var(--rh-color-surface-lighter, #f2f2f2);
   border-radius: var(--rh-border-radius-pill, 64px);
   color: var(--rh-color-text-primary);
   min-width: var(--_badge-size);
@@ -16,29 +16,15 @@ span {
   padding-inline: var(--rh-space-md, 8px);
 }
 
-.info { background-color: var(--rh-color-status-note); }
-.success { background-color: var(--rh-color-status-success); }
-.moderate { background-color: var(--rh-color-status-caution); }
-.important { background-color: var(--rh-color-status-warning); }
-.critical { background-color: var(--rh-color-status-danger); }
+.on.dark { background-color: var(--rh-color-surface-darker, #1f1f1f); }
+.on.info { background-color: var(--rh-color-status-note); }
+.on.success { background-color: var(--rh-color-status-success); }
+.on.moderate { background-color: var(--rh-color-status-caution); }
+.on.important { background-color: var(--rh-color-status-warning); }
+.on.critical { background-color: var(--rh-color-status-danger); }
 
 .info.on.light { color: var(--rh-color-text-primary-on-dark, #ffffff); }
 
 :is(.info,.success,.moderate,.important,.critical).on.dark {
   color: var(--rh-color-text-primary-on-light, #151515);
 }
-
-/* TODO: remove when adopting themable tokens */
-
-/*
-.on.moderate:is(.light, .dark) {
-  color: var(--rh-color-text-primary-on-light, #151515);
-}
-
-.on.light.info,
-.on.light.success,
-.on.light.important,
-.on.light.critical {
-  color: var(--rh-color-text-primary-on-dark, #ffffff);
-}
-*/
