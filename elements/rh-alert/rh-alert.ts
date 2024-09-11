@@ -11,6 +11,7 @@ import '@rhds/elements/rh-surface/rh-surface.js';
 
 import styles from './rh-alert.css';
 import toastStyles from './rh-alert-toast-styles.css';
+import consumerStyles from '@rhds/tokens/css/color-context-consumer.css.js';
 
 interface ToastOptions {
   id?: string;
@@ -65,9 +66,7 @@ export class AlertCloseEvent extends Event {
  */
 @customElement('rh-alert')
 export class RhAlert extends LitElement {
-  static readonly version = '{{version}}';
-
-  static readonly styles = [styles];
+  static readonly styles = [styles, consumerStyles];
 
   private static toaster: HTMLElement;
 
@@ -189,9 +188,16 @@ export class RhAlert extends LitElement {
   render() {
     const hasActions = this.#slots.hasSlotted('actions');
     const hasBody = this.#slots.hasSlotted(SlotController.default as unknown as string);
+    const { state, variant = '' } = this;
     return html`
       <rh-surface id="container"
-           class="${classMap({ hasBody })}"
+           class="${classMap({
+             hasBody,
+             on: true,
+             light: true,
+             [state]: true,
+             [variant]: !!variant,
+           })}"
            role="alert"
            aria-hidden="false"
            color-palette="lightest">
