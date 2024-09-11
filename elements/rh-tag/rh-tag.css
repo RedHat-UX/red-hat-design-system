@@ -11,7 +11,7 @@
     var(--rh-tag-padding-inline-end, var(--rh-space-md, 8px))
     var(--rh-tag-padding-block-end, var(--rh-space-xs, 4px))
     var(--rh-tag-padding-inline-start, var(--rh-space-md, 8px));
-  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
   background-color: var(--_background-color, var(--rh-color-surface-lighter, #f2f2f2));
   border: 0;
@@ -30,7 +30,7 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  content: "";
+  content: '';
   border-radius: var(--rh-border-radius-pill, 64px);
   border:
     var(--rh-border-width-sm, 1px)
@@ -117,7 +117,7 @@
   --_content-color: var(--rh-color-red-60, #a60000);
 }
 
-[part="icon"] {
+[part='icon'] {
   display: none;
   pointer-events: none;
   font-size: 0.875rem;
@@ -127,7 +127,7 @@
   --rh-icon-size: 1em;
 }
 
-.hasIcon [part="icon"] {
+.hasIcon [part='icon'] {
   display: inline-flex;
   align-items: center;
 }

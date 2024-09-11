@@ -3,6 +3,8 @@ import { pfeDevServerConfig } from '@patternfly/pfe-tools/dev-server/config.js';
 import { glob } from 'glob';
 import { readdir, stat } from 'node:fs/promises';
 import { makeDemoEnv } from './scripts/environment.js';
+import { parse, serialize } from 'parse5';
+import { query, isElementNode, getTextContent, setTextContent } from '@parse5/tools';
 
 /**
  * Find all modules in a glob pattern, relative to the repo root, and resolve them as package paths
@@ -18,6 +20,7 @@ async function resolveLocal(pattern, fn) {
 export const litcssOptions = {
   include: (/** @type{string[]}*/(/** @type{unknown}*/([
     /elements\/rh-[\w-]+\/[\w-]+\.css$/,
+    /@rhds\/tokens\/css\/.*\.css$/,
     /lib\/.*\.css$/,
   ]))),
   exclude: /lightdom/,
@@ -27,19 +30,17 @@ export default pfeDevServerConfig({
   tsconfig: 'tsconfig.json',
   litcssOptions,
   importMapOptions: {
-    providers: {
-      '@rhds/icons': 'nodemodules',
-      '@patternfly/elements': 'nodemodules',
-      '@patternfly/pfe-tools': 'nodemodules',
-      '@patternfly/pfe-core': 'nodemodules',
-    },
     inputMap: {
       imports: {
         '@rhds/icons': './node_modules/@rhds/icons/icons.js',
         ...await resolveLocal('./lib/**/*.js', spec => [`@rhds/elements/${spec}`, `./${spec}`]),
         ...await resolveLocal('./elements/**/*.js', x => [`@rhds/elements/${x.replace('elements/', '')}`, `./${x}`]),
-        ...await getRhdsIconNodemodulesImports(import.meta.url),
+        // ...await getRhdsIconNodemodulesImports(import.meta.url),
       },
+    },
+    resolutions: {
+      '@rhds/icons': './node_modules/@rhds/icons',
+      '@rhds/tokens': './node_modules/@rhds/tokens',
     },
   },
   middleware: [
@@ -63,6 +64,27 @@ export default pfeDevServerConfig({
     function(ctx, next) {
       if (!ctx.path.includes('node_modules') && ctx.path.match(/.*\/(lib|elements)\/.*\.js/)) {
         ctx.redirect(ctx.path.replace('.js', '.ts'));
+      } else {
+        return next();
+      }
+    },
+    /** manually inject icon import map with trailing slash - jspm generator doesn't yet support trailing slash */
+    async function(ctx, next) {
+      if (ctx.path.endsWith('/') && !ctx.path.includes('.')) {
+        await next();
+        const document = parse(ctx.body);
+        const importMapNode = query(document, node =>
+          isElementNode(node)
+            && node.tagName === 'script'
+            && node.attrs.some(attr =>
+              attr.name === 'type'
+                && attr.value === 'importmap'));
+        if (importMapNode && isElementNode(importMapNode)) {
+          const json = JSON.parse(getTextContent(importMapNode));
+          json.imports['@rhds/icons/'] = '/node_modules/@rhds/icons/';
+          setTextContent(importMapNode, JSON.stringify(json, null, 2));
+        }
+        ctx.body = serialize(document);
       } else {
         return next();
       }

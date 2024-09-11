@@ -61,7 +61,7 @@ class Item {
 }
 
 class Toc {
-  constructor(htmlstring = '', options = defaults) {
+  constructor(htmlstring = '', options = {}) {
     this.options = { ...defaults, ...options };
     const selector = this.options.tags.join(',');
     this.root = new Item();

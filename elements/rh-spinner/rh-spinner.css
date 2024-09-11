@@ -10,7 +10,7 @@
 }
 
 ::slotted(p) {
-  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   font-weight: var(--rh-font-weight-body-text-regular, 400);
   line-height: var(--rh-line-height-body-text, 1.5);
 }
@@ -45,36 +45,36 @@ circle.track {
   animation-duration: 0;
 }
 
-:host([size="lg"]) svg {
+:host([size='lg']) svg {
   width: var(--rh-size-icon-06, 64px);
   stroke-width: var(--rh-length-sm, 6px);
 }
 
-:host([size="lg"]) ::slotted(p) {
+:host([size='lg']) ::slotted(p) {
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
 }
 
-:host([size="md"]) svg {
+:host([size='md']) svg {
   width: var(--rh-size-icon-04, 40px);
   stroke-width: var(--rh-length-xs, 4px);
 }
 
-:host([size="md"]) ::slotted(p) {
+:host([size='md']) ::slotted(p) {
   font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
-:host([size="sm"]) svg {
+:host([size='sm']) svg {
   width: var(--rh-size-icon-01, 16px);
   stroke-width: var(--rh-length-2xs, 3px);
 }
 
-:host([size="sm"]) circle.dash {
+:host([size='sm']) circle.dash {
   animation-name: rh-spinner-small-animation-dash;
   stroke-dasharray: 71;
   stroke-dashoffset: 71;
 }
 
-:host([size="sm"]) ::slotted(p) {
+:host([size='sm']) ::slotted(p) {
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
 }
 

@@ -3,16 +3,18 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 
-import { type ColorPalette } from '../../context/color/provider.js';
+import { colorContextProvider, type ColorPalette } from '../../context/color/provider.js';
 import { ContextChangeEvent } from '../rh-context-picker/rh-context-picker.js';
 
 import '@rhds/elements/rh-surface/rh-surface.js';
 
 import style from './rh-context-demo.css';
 
+import surfaceStyles from '@rhds/tokens/css/color-context-consumer.css.js';
+
 @customElement('rh-context-demo')
 export class RhContextDemo extends LitElement {
-  static readonly styles = [style];
+  static readonly styles = [style, surfaceStyles];
 
   static formAssociated = true;
 
@@ -20,6 +22,7 @@ export class RhContextDemo extends LitElement {
 
   @property() label = 'Color Palette';
 
+  @colorContextProvider()
   @property({ attribute: 'color-palette', reflect: true }) colorPalette = this.value;
 
   #internals = this.attachInternals();
@@ -30,7 +33,7 @@ export class RhContextDemo extends LitElement {
     return html`
       <rh-surface id="provider"
                   color-palette="${value}"
-                  class="${classMap({ [on]: true })}"
+                  class="${classMap({ on: true, [on]: true })}"
                   @change="${this.#onChange}">
           <div id="picker-container">
             <rh-context-picker id="picker"

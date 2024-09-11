@@ -22,9 +22,9 @@ importElements:
   - rh-tile
 ---
 
-<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css' | url }}">
+<link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
 
-<style>
+<style data-helmet>
   #patterns-nav {
     margin-block: var(--rh-space--2xl, 32px);
   }
@@ -49,7 +49,7 @@ create uniform, accessible experiences.
 
   <rh-tile>
     <uxdot-example slot="image">
-      <img src="{{ '/assets/patterns/all-patterns-' + slug + '.png' | url }}" alt="{{ pattern.data.title }}">
+      <img src="{/assets/patterns/all-patterns-{{ slug }}.png" alt="{{ pattern.data.title }}">
     </uxdot-example>
     <a slot="headline" href="{{ pattern.url }}"><h3>{{ pattern.data.title }}</h3></a>
     <p slot="footer">{{ summary }}</p>
@@ -66,5 +66,5 @@ To request a new element or if updates need to be made to an existing element,
 
 <uxdot-feedback>
   <h2>Patterns</h2>
-  <p>To learn how to use our patterns in your designs, visit the <a href="{{ '/patterns/' | url }}">Patterns</a> section.</p>
+  <p>To learn how to use our patterns in your designs, visit the <a href="/patterns/">Patterns</a> section.</p>
 </uxdot-feedback>

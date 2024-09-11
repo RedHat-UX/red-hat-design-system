@@ -9,7 +9,7 @@ importElements:
   - rh-tile
 ---
 
-<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css' | url }}">
+<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
 
 
 <section aria-labelledby="overview">
@@ -24,43 +24,43 @@ importElements:
   <nav class="grid xs-two-columns sm-three-columns">
     <rh-tile compact bleed>
       <uxdot-example color-palette="dark" slot="image" no-border>
-        <img src="{{ '/elements/dialog/screenshot.png' | url }}" alt="Dialog">
+        <img src="/elements/dialog/screenshot.png" alt="Dialog">
       </uxdot-example>
       <h3 slot="headline"><a href="#pattern-1-dialog" slot="headline">Dialog</a></h3>
     </rh-tile>
     <rh-tile compact bleed>
       <uxdot-example slot="image" transparent no-border>
-        <img src="{{ '/assets/patterns/all-patterns-sticky-banner.png' | url }}" alt="Sticky banner">
+        <img src="/assets/patterns/all-patterns-sticky-banner.png" alt="Sticky banner">
       </uxdot-example>
       <h3 slot="headline"><a href="#pattern-2-sticky-banner" slot="headline">Sticky banner</a></h3>
     </rh-tile>
     <rh-tile compact bleed>
       <uxdot-example slot="image" transparent no-border>
-        <img src="{{ '/assets/patterns/all-patterns-sticky-card.png' | url }}" alt="Sticky card">
+        <img src="/assets/patterns/all-patterns-sticky-card.png" alt="Sticky card">
       </uxdot-example>
       <h3 slot="headline"><a href="#pattern-3-sticky-card" slot="headline">Sticky card</a></h3>
     </rh-tile>
     <rh-tile compact bleed>
       <uxdot-example slot="image" no-border color-palette="lighter">
-        <img src="{{ '/assets/patterns/all-patterns-announcement.png' | url }}" alt="Announcement">
+        <img src="/assets/patterns/all-patterns-announcement.png" alt="Announcement">
       </uxdot-example>
       <h3 slot="headline"><a href="#pattern-4-announcement">Announcement</a></h3>
     </rh-tile>
     <rh-tile compact bleed>
       <uxdot-example slot="image" transparent  no-border>
-        <img src="{{ '/elements/card/screenshot.svg' | url }}" alt="Card">
+        <img src="/elements/card/screenshot.svg" alt="Card">
       </uxdot-example>
       <h3 slot="headline"><a href="#pattern-5-in-page-card">In-page card</a></h3>
     </rh-tile>
     <rh-tile compact bleed>
       <uxdot-example slot="image" transparent no-border>
-        <img src="{{ '/elements/tabs/screenshot.png' | url }}" alt="Tabs">
+        <img src="/elements/tabs/screenshot.png" alt="Tabs">
       </uxdot-example>
       <h3 slot="headline"><a href="#pattern-6-active-tab">Active tab</a></h3>
     </rh-tile>
     <rh-tile compact bleed>
       <uxdot-example slot="image" transparent no-border>
-        <img src="{{ '/elements/alert/screenshot.svg' | url }}" alt="Alert">
+        <img src="/elements/alert/screenshot.svg" alt="Alert">
       </uxdot-example>
       <h3 slot="headline"><a href="#pattern-7-inline-alert">In-page alert</a></h3>
     </rh-tile>
@@ -106,7 +106,7 @@ importElements:
   A dialog can be used both on desktop and mobile.
 
   <uxdot-example variant="full">
-    <img src="{{ '/assets/optimization/modal.svg' | url }}" alt="Dialog">
+    <img src="/assets/optimization/modal.svg" alt="Dialog">
   </uxdot-example>
 
   ### How to use { id="dialog-how-to-use"}
@@ -149,7 +149,7 @@ importElements:
   </ul>
 
   <uxdot-example variant="full">
-    <img src="{{ '/assets/optimization/sticky-banner.svg' | url }}" alt="Sticky banner">
+    <img src="/assets/optimization/sticky-banner.svg" alt="Sticky banner">
   </uxdot-example>
 
   ### How to use { id="sticky-banner-how-to-use"}
@@ -200,7 +200,7 @@ importElements:
   </ul>
 
   <uxdot-example variant="full">
-    <img src="{{ '/assets/optimization/sticky-card.svg' | url }}" alt="Sticky card">
+    <img src="/assets/optimization/sticky-card.svg" alt="Sticky card">
   </uxdot-example>
 
   ### How to use { id="sticky-card-how-to-use"}
@@ -231,7 +231,7 @@ importElements:
   An announcement can be used to display an important message at the top of a website, but is not limited to one page at a time. An announcement can either have a themed background image or solid color background. For colored backgrounds, we suggest using <a href="https://ux.redhat.com/foundations/color/" target="_blank">alert styles</a>.
 
   <uxdot-example variant="full">
-    <img src="{{ '/assets/optimization/announcement.svg' | url }}" alt="Announcement">
+    <img src="/assets/optimization/announcement.svg" alt="Announcement">
   </uxdot-example>
 
   ### How to use { id="announcement-how-to-use"}
@@ -277,7 +277,7 @@ importElements:
   </ul>
 
   <uxdot-example variant="full">
-    <img src="{{ '/assets/optimization/card.svg' | url }}" alt="Card">
+    <img src="/assets/optimization/card.svg" alt="Card">
   </uxdot-example>
 
   ### How to use { id="in-page-card-how-to-use" }
@@ -307,7 +307,7 @@ importElements:
   Active tab uses the existing tab component design and only customizes the active tab within the tab set (no custom design work is needed).
 
   <uxdot-example variant="full">
-    <img src="{{ '/assets/optimization/tabs.svg' | url }}" alt="Tabs">
+    <img src="/assets/optimization/tabs.svg" alt="Tabs">
   </uxdot-example>
 
   ### How to use { id="active-tab-how-to-use" }
@@ -342,7 +342,7 @@ importElements:
   <p>An inline-alert only includes text, but no images. It can also include a single or two links that direct a user to other pages.</p>
 
   <uxdot-example variant="full">
-    <img src="{{ '/assets/optimization/alert.svg' | url }}" alt="Alert">
+    <img src="/assets/optimization/alert.svg" alt="Alert">
   </uxdot-example>
 
   If a user closes an inline alert, consider if or when it should be displayed again for the same user. It could be suppressed for a week, month, or forever depending on the goal of the project. The <a href="https://ux.redhat.com/elements/alert/" target="_blank">alert component</a> in Adobe XD has two styles, normal and alternate, and either can be used.

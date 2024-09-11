@@ -1,5 +1,3 @@
-import type { RhTileGroup } from './rh-tile-group.js';
-
 import { LitElement, html, type PropertyValues } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
@@ -202,6 +200,7 @@ export class RhTile extends LitElement {
             checked,
             desaturated,
             disabled,
+            on: true,
             [on]: !!on,
           })}">
         <slot id="image"

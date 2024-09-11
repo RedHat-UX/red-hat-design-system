@@ -142,7 +142,7 @@ export class RhAccordion extends LitElement {
   override render(): TemplateResult {
     const { on = '' } = this;
     return html`
-      <div id="container" class="${classMap({ [on]: !!on })}"><slot></slot></div>
+      <div id="container" class="${classMap({ on: true, [on]: !!on })}"><slot></slot></div>
     `;
   }
 

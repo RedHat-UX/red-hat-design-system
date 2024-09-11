@@ -84,7 +84,7 @@ export class RhTab extends LitElement {
       <div id="button"
            part="button"
            ?disabled="${this.disabled}"
-           class="${classMap({ active, box, vertical, first, last, [on]: !!on })}">
+           class="${classMap({ active, box, vertical, first, last, on: true, [on]: !!on })}">
         <slot name="icon"
               part="icon"
               ?hidden="${!this.icons.length}"

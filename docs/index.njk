@@ -2,10 +2,10 @@
 layout: layouts/pages/home.njk
 title: Home
 ---
-<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
-<link rel="stylesheet" href="/styles/pages/home.css">
+<link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
+<link rel="stylesheet" data-helmet href="/styles/pages/home.css">
 
-<script type="module">
+<script type="module" data-helmet>
   import '@rhds/elements/rh-card/rh-card.js';
   import '@rhds/elements/rh-cta/rh-cta.js';
   import '@rhds/elements/rh-tile/rh-tile.js';
@@ -67,7 +67,7 @@ title: Home
     <rh-cta variant="secondary" slot="footer">
       <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">Join the discussion</a>
     </rh-cta>
-  </div>  
+  </rh-card>
 </div>
 
 

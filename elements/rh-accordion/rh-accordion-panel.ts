@@ -48,7 +48,7 @@ export class RhAccordionPanel extends LitElement {
     const { large = false } = this.ctx ?? {};
     return html`
       <div id="container"
-           class="${classMap({ [on]: !!on, large, expanded, content: true })}"
+           class="${classMap({ on: true, [on]: !!on, large, expanded, content: true })}"
            part="container"
            tabindex="-1">
         <slot class="body"></slot>

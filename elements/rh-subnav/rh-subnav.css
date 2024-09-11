@@ -2,39 +2,23 @@
   display: block;
 }
 
-[part="container"] {
+[part='container'] {
   display: flex;
-  background-color: var(--_context-background-color, var(--rh-color-surface-lighter, #f2f2f2));
+  background-color: var(--rh-color-surface);
+
+  --_subnav-link-text-color: var(--rh-color-text-secondary);
+  --_subnav-link-hover-text-color: var(--rh-color-text-primary);
+  --_subnav-link-hover-border-end-color: var(--rh-color-border-subtle);
+  --_subnav-link-active-border-end-color: var(--rh-color-accent-brand);
+  --_subnav-link-visited-text-color: var(--rh-color-text-secondary);
+  --_subnav-link-focus-outline-color: var(--rh-color-border-interactive);
+  --_subnav-next-prev-button-text-color: var(--rh-color-text-secondary);
+  --_subnav-next-prev-disabled-text-color: var(--rh-color-border-subtle);
+  --_subnav-next-prev-hover-text-color: var(--rh-color-text-primary);
+  --_subnav-next-prev-border-color: var(--rh-color-border-subtle);
 }
 
-[part="container"]:not(.dark),
-.light {
-  --_subnav-link-text-color: var(--rh-color-text-secondary-on-light, #4d4d4d);
-  --_subnav-link-hover-text-color: var(--rh-color-text-primary-on-light, #151515);
-  --_subnav-link-hover-border-end-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
-  --_subnav-link-active-border-end-color: var(--rh-color-accent-brand-on-light, #ee0000);
-  --_subnav-link-visited-text-color: var(--rh-color-text-secondary-on-light, #4d4d4d);
-  --_subnav-link-focus-outline-color: var(--rh-color-border-interactive-on-light, #0066cc);
-  --_subnav-next-prev-button-text-color: var(--rh-color-text-secondary-on-light, #4d4d4d);
-  --_subnav-next-prev-disabled-text-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
-  --_subnav-next-prev-hover-text-color: var(--rh-color-text-primary-on-light, #151515);
-  --_subnav-next-prev-border-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
-}
-
-.dark {
-  --_subnav-link-text-color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
-  --_subnav-link-hover-text-color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_subnav-link-hover-border-end-color: var(--rh-color-border-subtle-on-dark, #707070);
-  --_subnav-link-active-border-end-color: var(--rh-color-accent-brand-on-dark, #ee0000);
-  --_subnav-link-visited-text-color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
-  --_subnav-link-focus-outline-color: var(--rh-color-border-interactive-on-dark, #92c5f9);
-  --_subnav-next-prev-button-text-color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
-  --_subnav-next-prev-disabled-text-color: var(--rh-color-border-subtle-on-dark, #707070);
-  --_subnav-next-prev-hover-text-color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_subnav-next-prev-border-color: var(--rh-color-border-subtle-on-dark, #707070);
-}
-
-[part="links"] {
+[part='links'] {
   display: flex;
   position: relative;
   bottom: 0;
@@ -49,15 +33,13 @@
   padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px) !important;
   text-decoration: none !important;
   color:
-    var(
-        --_subnav-link-text-color,
-        var(--rh-color-text-secondary-on-light, #4d4d4d)
-      ) !important;
+    var(--_subnav-link-text-color,
+      var(--rh-color-text-secondary)) !important;
   position: relative !important;
 }
 
 ::slotted(a):after {
-  content: "" !important;
+  content: '' !important;
   position: absolute !important;
   inset: 0 !important;
   width: 100% !important;
@@ -68,47 +50,37 @@
 ::slotted(a:active),
 ::slotted(a[active]) {
   color:
-    var(
-        --_subnav-link-hover-text-color,
-        var(--rh-color-text-secondary-on-light, #4d4d4d)
-      ) !important;
+    var(--_subnav-link-hover-text-color,
+      var(--rh-color-text-secondary)) !important;
 }
 
 ::slotted(a:hover):after {
   border-block-end-color:
-    var(
-        --_subnav-link-hover-border-end-color,
-        var(--rh-color-border-subtle-on-light, #c7c7c7)
-      ) !important;
+    var(--_subnav-link-hover-border-end-color,
+      var(--rh-color-border-subtle)) !important;
 }
 
 ::slotted(a:active):after,
 ::slotted(a[active]):after {
   border-block-end-color:
-    var(
-        --_subnav-link-active-border-end-color,
-        var(--rh-color-accent-brand-on-light, #ee0000)
-      ) !important;
+    var(--_subnav-link-active-border-end-color,
+      var(--rh-color-accent-brand)) !important;
 }
 
 ::slotted(a:focus-visible) {
   outline:
     var(--rh-border-width-md, 2px)
     solid
-    var(
-        --_subnav-link-focus-outline-color,
-        var(--rh-color-interactive-blue-darker, #0066cc)
-      ) !important;
+    var(--_subnav-link-focus-outline-color,
+      var(--rh-color-interactive-primary-default)) !important;
   outline-offset: -8px !important;
   border-radius: 10px !important;
 }
 
 ::slotted(a:visited) {
   color:
-    var(
-        --_subnav-link-visited-text-color,
-        var(--rh-color-text-primary-on-light, #151515)
-      ) !important;
+    var(--_subnav-link-visited-text-color,
+      var(--rh-color-text-primary)) !important;
 }
 
 button {
@@ -118,10 +90,8 @@ button {
   background-color: transparent;
   border: none;
   color:
-    var(
-        --_subnav-next-prev-button-text-color,
-        var(--rh-color-text-secondary-on-light, #4d4d4d)
-      );
+    var(--_subnav-next-prev-button-text-color,
+      var(--rh-color-text-secondary));
 }
 
 button:disabled {
@@ -130,13 +100,13 @@ button:disabled {
 }
 
 button:hover {
-  color: var(--_subnav-next-prev-hover-text-color, var(--rh-color-text-primary-on-light, #151515));
+  color: var(--_subnav-next-prev-hover-text-color, var(--rh-color-text-primary));
 }
 
 button:before {
   position: absolute;
   inset: 0;
-  content: "";
+  content: '';
   border-block-end: var(--rh-border-width-lg, 3px) solid transparent;
 }
 
@@ -148,12 +118,12 @@ button:hover:before {
   border-inline-end:
     var(--rh-border-width-sm, 1px)
     solid
-    var(--_subnav-next-prev-border-color, var(--rh-color-border-subtle-on-light, #c7c7c7));
+    var(--_subnav-next-prev-border-color, var(--rh-color-border-subtle));
 }
 
 #next {
   border-inline-start:
     var(--rh-border-width-sm, 1px)
     solid
-    var(--_subnav-next-prev-border-color, var(--rh-color-border-subtle-on-light, #c7c7c7));
+    var(--_subnav-next-prev-border-color, var(--rh-color-border-subtle));
 }

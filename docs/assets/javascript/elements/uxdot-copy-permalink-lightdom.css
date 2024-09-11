@@ -6,7 +6,7 @@ uxdot-copy-permalink > :is(h1,h2,h3,h4,h5,h6) > a {
 
 uxdot-copy-permalink > :is(h1,h2,h3,h4,h5,h6) > a:hover:before {
   display: block;
-  content: "#";
+  content: '#';
   position: absolute;
   inset-inline-start: -1em;
 }

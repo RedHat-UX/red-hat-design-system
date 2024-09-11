@@ -61,7 +61,7 @@ export class RhSubnav extends LitElement {
    * See [CSS Custom Properties](#css-custom-properties) for default values
    */
   @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette = 'lighter';
 
   /**
    * Customize the default `aria-label` on the `<nav>` container.

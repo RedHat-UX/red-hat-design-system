@@ -8,6 +8,8 @@ import {
 
 import { ContextRequestEvent } from '../event.js';
 
+import styles from '@rhds/tokens/css/color-context-consumer.css.js';
+
 /**
    * A Color theme is a context-specific restriction on the available color palettes
    *
@@ -52,7 +54,7 @@ export class ColorContextConsumer<
   #override: ColorTheme | null = null;
 
   constructor(host: T, private options?: ColorContextConsumerOptions<T>) {
-    super(host);
+    super(host, styles);
     this.#propertyName = options?.propertyName ?? 'on' as keyof T;
   }
 
@@ -95,7 +97,9 @@ export class ColorContextConsumer<
   }
 }
 
-export function colorContextConsumer<T extends ReactiveElement>(options?: ColorContextOptions<T>) {
+export function colorContextConsumer<
+  T extends ReactiveElement
+>(options?: ColorContextOptions<T>) {
   return function(proto: T, _propertyName: string | keyof T) {
     const propertyName = _propertyName as keyof T;
     (proto.constructor as typeof ReactiveElement).addInitializer(instance => {

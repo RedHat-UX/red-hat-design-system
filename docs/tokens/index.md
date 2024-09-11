@@ -1,6 +1,6 @@
 ---
 layout: layouts/pages/basic.njk
-title: Overview
+title: Overvie
 hasToc: true
 tokenSearch: true
 importElements: 
@@ -8,10 +8,10 @@ importElements:
   - rh-code-block
 ---
 
-<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css' | url }}">
+<link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
 
-<style>
-  .page-overview .container .grid {
+<style data-helmet>
+.page-overvie .container .grid {
     margin-block: var(--rh-space--2xl, 32px);
   }
 
