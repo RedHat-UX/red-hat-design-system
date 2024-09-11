@@ -288,6 +288,7 @@
     "@rhds/icons": "^1.1.1",
     "@rhds/tokens": "^2.1.0-next.11",
     "lit": "^3.2.0",
+    "prism-esm": "^1.29.0-fix.4",
     "tslib": "^2.6.3"
   },
   "devDependencies": {

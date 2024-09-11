@@ -36,6 +36,7 @@
     "sourceMap": true,
     "strict": true,
     "target": "es2020",
+    "skipLibCheck": true,
     "useDefineForClassFields": false,
     "typeRoots": [
       "./node_modules/@types",
