@@ -33,6 +33,14 @@
   --_about-heading-display: flex;
   --_box-shadow: var(--rh-box-shadow-md, 0 4px 6px 1px rgba(21, 21, 21, 0.25));
   --_secondary-opacity: var(--rh-audio-player-secondary-opacity, 1);
+  --_text-color: var(--rh-audio-player-text-color, var(--rh-color-text-primary));
+  --_border-color: var(--rh-color-border-subtle);
+  --_surface-color:
+    var(--rh-audio-player-background-color,
+      var(--rh-color-surface-lightest, #ffffff));
+  --_secondary-text-color:
+    var(--rh-audio-player-secondary-text-color,
+      var(--rh-color-text-secondary));
   --rh-tooltip-content-padding-block-start: var(--rh-space-md, 8px);
   --rh-tooltip-content-padding-block-end: var(--rh-space-md, 8px);
   --rh-tooltip-content-padding-inline-start: var(--rh-space-md, 8px);
@@ -49,7 +57,7 @@
   --_border-color: rgba(0, 0, 0, 0.5);
   --_secondary-text-color:
     var(--rh-audio-player-secondary-text-color,
-      var(--rh-color-text-primary-on-light, #151515));
+      var(--rh-color-text-primary));
   --_range-track-color: rgb(255 255 255 / 0.5);
   --_secondary-opacity: var(--rh-audio-player-secondary-opacity, 0.75);
   --_static-border-color: transparent;
@@ -57,41 +65,25 @@
   --_static-overlay-color: rgba(0, 0, 0, 0.5);
 }
 
-#container.light {
-  --_text-color: var(--rh-audio-player-text-color, var(--rh-color-text-primary-on-light, #151515));
-  --_border-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
-  --_surface-color:
-    var(--rh-audio-player-background-color,
-      var(--rh-color-surface-lightest, #ffffff));
-  --_secondary-text-color:
-    var(--rh-audio-player-secondary-text-color,
-      var(--rh-color-text-secondary-on-light, #4d4d4d));
-}
-
 #container.dark {
-  --_text-color: var(--rh-audio-player-text-color, var(--rh-color-text-primary-on-dark, #ffffff));
-  --_border-color: var(--rh-color-border-subtle-on-dark, #707070);
   --_surface-color:
     var(--rh-audio-player-background-color,
       var(--rh-color-surface-darkest, #151515));
   --_box-shadow: none;
-  --_secondary-text-color:
-    var(--rh-audio-player-secondary-text-color,
-      var(--rh-color-text-secondary-on-dark, #c7c7c7));
-  --_static-border-color: var(--rh-color-border-subtle-on-dark, #707070);
-  --_static-text-color: var(--rh-color-text-primary-on-dark, #ffffff);
+  --_static-border-color: var(--rh-color-border-subtle);
+  --_static-text-color: var(--rh-color-text-primary);
   --_static-highlight-color: var(--rh-color-surface-dark, #383838);
-  --_static-underline-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
+  --_static-underline-color: var(--rh-color-border-subtle);
   --_static-surface-color: var(--rh-color-surface-darkest, #151515);
   --_static-surface-focus-color: var(--rh-color-surface-dark, #383838);
 }
 
 #container,
 #container.dark.has-accent-color {
-  --_static-border-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
-  --_static-text-color: var(--rh-color-text-primary-on-light, #151515);
-  --_static-highlight-color: var(--rh-color-interactive-primary-hover-on-dark, #b9dafc);
-  --_static-undeline-color: var(--rh-color-border-subtle-on-dark, #707070);
+  --_static-border-color: var(--rh-color-border-subtle);
+  --_static-text-color: var(--rh-color-text-primary);
+  --_static-highlight-color: var(--rh-color-interactive-primary-hover);
+  --_static-undeline-color: var(--rh-color-border-subtle);
   --_static-surface-color: var(--rh-color-surface-lightest, #ffffff);
   --_static-surface-focus-color: var(--rh-color-surface-light, #e0e0e0);
   --rh-audio-player-scrolling-text-overflow-background-color: var(--_surface-color);
@@ -435,7 +427,7 @@ rh-menu > button:focus {
 }
 
 #container.has-accent-color rh-menu > button {
-  color: var(--rh-color-text-primary-on-dark, #ffffff);
+  color: var(--rh-color-text-primary);
 }
 
 #container.rtl rh-menu > button {

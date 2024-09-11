@@ -1,17 +1,13 @@
 :host {
   --_button-size: 40px;
   --_svg-size: var(--rh-size-icon-03, 32px);
-  --_outline:
-    var(--rh-border-width-md, 2px)
-    solid
-    var(--rh-color-border-interactive-on-light, #0066cc);
 }
 
-#container.dark {
+#container {
   --_outline:
     var(--rh-border-width-md, 2px)
     solid
-    var(--rh-color-border-interactive-on-dark, #92c5f9);
+    var(--rh-color-border-interactive);
 }
 
 rh-tooltip {
