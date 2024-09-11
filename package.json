@@ -1,6 +1,6 @@
 {
   "name": "@rhds/elements",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Red Hat Design System Elements",
   "type": "module",
   "license": "MIT",
@@ -104,6 +104,7 @@
       "service": true,
       "command": "eleventy --serve --incremental",
       "dependencies": [
+        "compile",
         "patch",
         "analyze",
         "playgrounds"
@@ -147,7 +148,7 @@
         "elements/**/*.{d.ts,js,map}",
         "lib/**/*.{d.ts,js,map}",
         "elements/rh-secondary-nav/test/fixtures.js",
-        "docs/assets/javascript/**/*.j",
+        "docs/assets/javascript/elements/*.js",
         "docs/assets/javascript/**/*.d.ts",
         "docs/assets/javascript/**/*.js.map",
         "!elements/*/{demo,test}/**/*.js"
