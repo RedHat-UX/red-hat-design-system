@@ -81,10 +81,7 @@ export class RhAccordion extends LitElement {
    * </pf-accordion>
    * ```
    */
-  @property({
-    attribute: 'expanded-index',
-    converter: NumberListConverter,
-  })
+  @property({ attribute: 'expanded-index', converter: NumberListConverter })
   get expandedIndex() {
     return this.#expandedIndex;
   }

@@ -55,6 +55,14 @@
   background-color: var(--rh-color-surface);
 }
 
+.expanded.on.light {
+  --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
+}
+
+.expanded.on.dark {
+  --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+}
+
 .body:after {
   content: '';
   position: absolute;

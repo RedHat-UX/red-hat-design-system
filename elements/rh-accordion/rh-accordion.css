@@ -1,6 +1,4 @@
 #container {
-  height: 100%;
-  width: 100%;
   color: var(--rh-color-text-primary);
   background-color: var(--rh-color-surface);
 }
