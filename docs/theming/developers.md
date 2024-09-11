@@ -3,6 +3,31 @@ title: Developers
 order: 4
 ---
 
+<link rel="stylesheet"
+      data-helmet
+      href="/assets/packages/@rhds/elements/elements/rh-pagination/rh-pagination-lightdom.css">
+<link rel="stylesheet"
+      data-helmet
+      href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
+<link rel="stylesheet"
+      data-helmet
+      href="../color-palettes.css">
+
+<script type="module" data-helmet>
+  import '/assets/javascript/elements/uxdot-pattern.js';
+  import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
+  import '@rhds/elements/rh-accordion/rh-accordion.js';
+  import '@rhds/elements/rh-audio-player/rh-audio-player.js';
+  import '@rhds/elements/rh-blockquote/rh-blockquote.js';
+  import '@rhds/elements/rh-button/rh-button.js';
+  import '@rhds/elements/rh-card/rh-card.js';
+  import '@rhds/elements/rh-cta/rh-cta.js';
+  import '@rhds/elements/rh-pagination/rh-pagination.js';
+  import '@rhds/elements/rh-tabs/rh-tabs.js';
+  import '@rhds/elements/rh-tag/rh-tag.js';
+  import '@rhds/elements/rh-tile/rh-tile.js';
+</script>
+
 ## Context Protocol
 
 ## Style Queries
