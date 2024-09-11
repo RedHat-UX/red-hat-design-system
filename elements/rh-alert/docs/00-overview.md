@@ -2,14 +2,21 @@
 
 {{ tagName | getElementDescription }}
 
-{% repoStatusList repoStatus=repoStatus %}
-
-
-## Sample element
-
 <uxdot-example width-adjustment="538px">
   <img src="{{ 'alert-sample.svg' | url }}" alt="Two examples of the alert element" width="538px">
 </uxdot-example>
+
+{% repoStatusList repoStatus=repoStatus %}
+
+## Sample element
+
+<rh-alert state="success" dismissable>
+  <h3 slot="header">Success</h3>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
+    egestas, a sollicitudin mauris tincidunt.</p>
+  <rh-button slot="actions" variant="secondary" data-action="confirm">Confirm</rh-button>
+  <rh-button slot="actions" variant="link" data-action="dismiss">Cancel</rh-button>
+</rh-alert>
 
 ## When to use
 
