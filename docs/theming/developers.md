@@ -45,8 +45,8 @@ And your document css sets the desired color context:
 ```css
 .custom-surface {
   container: surface;
-  & .dark { --rh-background-context: dark; }
-  & .light { --rh-background-context: light; }
+  &.dark { --rh-background-context: dark; }
+  &.light { --rh-background-context: light; }
 }
 ```
 
@@ -60,9 +60,12 @@ Internally / in shared CSS:
 
 ## Art Direction
 
-Art direction is the process of 
+Art direction is the process of selecting art assets based on the context in 
+which they are used.
 
 ### Inline SVG
+
+Page authors using _inline SVG_ can use theme tokens to style graphics.
 
 ```html
 <svg slot="header" width="80" height="80">
@@ -76,6 +79,9 @@ Art direction is the process of
 </svg>
 ```
 
+This approach _does not work_ with svg loaded through the `<img>` tag, or with 
+raster graphics, however another approach is in development which could help:
+
 ### `<rh-picture>` <rh-tag icon="notification-fill">Planned</rh-tag>
 
 ```html
@@ -84,3 +90,5 @@ Art direction is the process of
   <img src="../google-cloud.svg" alt="Logo for Red Hat partner Google Cloud">
 <rh-picture>
 ```
+
+Join the [discussion](https://github.com/orgs/RedHat-UX/discussions/1780)
