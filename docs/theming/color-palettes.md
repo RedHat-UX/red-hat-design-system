@@ -103,9 +103,9 @@ creating themable, responsive graphics.
        src="/assets/theming/illustrations-and-imagery.png">
 </uxdot-example>
 
-## Color consumers and theme tokens
+## Backgrounds and theme tokens
 
-### Color palette providers
+### Color palettes
 
 **Providers** define the **color palette** for themselves and their child 
 elements. There are six color palettes in RHDS:
@@ -131,7 +131,7 @@ use this HTML:
 A color palette provider is a **surface** on which a particular color palette is
 active, as well as a **container** for themable consumer elements.
 
-### Color consumers
+### Backgrounds
 
 Consumers are elements which automatically adapt to their background surface.
 Color **Consumers** adopt a **background** color based on the palette of the 
