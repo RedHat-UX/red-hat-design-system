@@ -31,11 +31,11 @@ The announcement’s width will dynamically adjust with its parent container.
 
 ### Large Viewport Sizes
 
-<img src="{{ '../announcement-grid-lg-viewports.svg' | url }}" alt="Announcement element with a semitransparent grid in the background. The announcement spans all columns on large viewports.">
+<img src="../announcement-grid-lg-viewports.svg" alt="Announcement element with a semitransparent grid in the background. The announcement spans all columns on large viewports.">
 
 ### Small Viewport sizes
 
-<img src="{{ '../announcement-grid-sm-viewports.svg' | url }}" alt="Announcement element with a semitransparent grid background on mobile. The announcement spans all columns on small viewports.">
+<img src="../announcement-grid-sm-viewports.svg" alt="Announcement element with a semitransparent grid background on mobile. The announcement spans all columns on small viewports.">
 
 ## Best Practices
 
@@ -46,14 +46,14 @@ Only include copy up to 150 characters in the main slot of the announcement comp
 <div class="grid xs-two-columns">
   <uxdot-best-practice do>
     <uxdot-example color-palette="lightest" width-adjustment="420px" slot="image">
-      <img src="{{ '../guidelines-best-practice-1-do.svg' | url }}" alt="ALT TEXT HERE">
+      <img src="../guidelines-best-practice-1-do.svg" alt="ALT TEXT HERE">
     </uxdot-example>
     <p>Body copy with up to 150 characters.</p>
   </uxdot-best-practice>
 
   <uxdot-best-practice dont>
     <uxdot-example color-palette="lightest" width-adjustment="420px" slot="image">
-      <img src="{{ '../guidelines-best-practice-1-dont.svg' | url }}" alt="ALT TEXT HERE">
+      <img src="../guidelines-best-practice-1-dont.svg" alt="ALT TEXT HERE">
     </uxdot-example>
     <p>Do not put more than 150 characters into the main slot.</p>
   </uxdot-best-practice>
