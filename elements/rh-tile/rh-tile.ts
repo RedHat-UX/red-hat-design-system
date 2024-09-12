@@ -135,6 +135,8 @@ export class RhTile extends LitElement {
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
+  /** When true, the icon representing the link changes from an arrow to a padlock */
+  @property({ type: Boolean, attribute: 'private-link' }) privateLink = false;
   /**
    * Sets color theme based on parent context
    */
@@ -229,14 +231,24 @@ export class RhTile extends LitElement {
             </div>
             <slot id="body"></slot>
             <div id="footer">
-              <slot id="footer-text" name="footer"></slot>${!this.checkable && !this.disabled ? html`
-              <rh-icon icon="arrow-right" set="ui"></rh-icon>` : !this.checkable ? html`
-              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><g id="uuid-0fd9e805-a455-40ef-9171-f2f334832bf2"><rect width="48" height="48" fill="none"/></g><g id="uuid-48f9e284-0601-4fcd-bbe7-8b444234ac6c"><path d="m24,7c-9.37,0-17,7.63-17,17s7.63,17,17,17,17-7.63,17-17S33.37,7,24,7Zm15,17c0,3.52-1.23,6.76-3.27,9.32L14.68,12.27c2.56-2.04,5.8-3.27,9.32-3.27,8.27,0,15,6.73,15,15Zm-30,0c0-4.03,1.61-7.69,4.2-10.38l21.18,21.18c-2.7,2.6-6.35,4.2-10.38,4.2-8.27,0-15-6.73-15-15Z"/></g></svg>` : ''}
+              <slot id="footer-text" name="footer"></slot>${this.#renderLinkIcon()}
             </div>
           </div>
         </div>
       </div>
     `;
+  }
+
+  #renderLinkIcon() {
+    if (this.checkable) {
+      return '';
+    } else if (this.disabled) {
+      return html`<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><g id="uuid-0fd9e805-a455-40ef-9171-f2f334832bf2"><rect width="48" height="48" fill="none"/></g><g id="uuid-48f9e284-0601-4fcd-bbe7-8b444234ac6c"><path d="m24,7c-9.37,0-17,7.63-17,17s7.63,17,17,17,17-7.63,17-17S33.37,7,24,7Zm15,17c0,3.52-1.23,6.76-3.27,9.32L14.68,12.27c2.56-2.04,5.8-3.27,9.32-3.27,8.27,0,15,6.73,15,15Zm-30,0c0-4.03,1.61-7.69,4.2-10.38l21.18,21.18c-2.7,2.6-6.35,4.2-10.38,4.2-8.27,0-15-6.73-15-15Z"/></g></svg>`;
+    } else if (this.privateLink) {
+      return html`<rh-icon set="ui" icon="padlock-locked"></rh-icon>`;
+    } else {
+      return html`<rh-icon icon="arrow-right" set="ui"></rh-icon>`;
+    }
   }
 
   async formDisabledCallback() {
