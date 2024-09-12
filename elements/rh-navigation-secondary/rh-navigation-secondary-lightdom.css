@@ -97,8 +97,8 @@ rh-navigation-secondary > [slot='nav'] {
     var(--rh-space-lg, 16px);
 }
 
-rh-navigation-secondary > [slot="logo"],
-rh-navigation-secondary > [slot="nav"] {
+rh-navigation-secondary > [slot='logo'],
+rh-navigation-secondary > [slot='nav'] {
   line-height: var(--rh-line-height-heading, 1.3);
 }
 
