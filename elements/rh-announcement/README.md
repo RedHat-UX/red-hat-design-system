@@ -27,12 +27,6 @@ promoting an event or advertising an organizational or product announcement.
 - If this attribute is added, a close button will appear in the top right 
   corner. Clicking this will hide the banner.
 
-`smallimg`
-
-- On screens smaller than 769px, larger images (where image height >= image 
-  width) will move above the text and the text will center align. This attribute 
-  can be added to override this functionality and keep the image left aligned
-
 ### Basic Announcement Banner
 
 ```html
@@ -50,10 +44,9 @@ promoting an event or advertising an organizational or product announcement.
 ### Announcement Banner using attributes
 - dismissable
 - dark color pallette
-- smallimg attribute to override image appearing above text on mobile
 
 ```html
-<rh-announcement dismissable smallimg color-palette="dark">
+<rh-announcement dismissable color-palette="dark">
   <img slot="image"
        alt="summit logo"
        src="/images/summit.png">

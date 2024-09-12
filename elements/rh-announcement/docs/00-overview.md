@@ -29,8 +29,9 @@ promoting an event or advertising an organizational or product announcement.
     </rect>
     <text x="17"
           y="30"
-          style="font-family: var(--rh-font-family-code); font-size: var(--rh-font-size-body-text-md);"
-          fill="var(--rh-color-blue-50)">Image</text>
+          fill="var(--rh-color-blue-50)"
+          style="font-family: var(--rh-font-family-code);
+                 font-size: var(--rh-font-size-body-text-md);">Image</text>
   </svg>
   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit adipisicing elit adipisicing elit.</p>
   <rh-cta slot="cta">

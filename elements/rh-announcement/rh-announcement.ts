@@ -82,27 +82,29 @@ export class RhAnnouncement extends LitElement {
            part="container"
            class="${classMap({ on: true, [on]: !!on, [colorPalette]: true, dismissable, imgleft, empty: this.#slots.isEmpty(null) })}">
         <div id="row"
-            part="row">
+             part="row">
           <div id="image"
-            part="image"
-            class="${classMap({ empty: !this.#slots.hasSlotted('image') })}">
+               part="image"
+               class="${classMap({ empty: !this.#slots.hasSlotted('image') })}">
           <slot name="image"></slot>
         </div>
         <div id="content"
-            part="content">
+             part="content">
           <div id="body"
-              part="body"
-              class="${classMap({ empty: this.#slots.isEmpty(null) })}">
+               part="body"
+               class="${classMap({ empty: this.#slots.isEmpty(null) })}">
             <slot></slot>
           </div>
           <div id="cta"
-              part="cta"
-              class="${classMap({ empty: !this.#slots.hasSlotted('cta') })}">
+               part="cta"
+               class="${classMap({ empty: !this.#slots.hasSlotted('cta') })}">
             <slot name="cta"></slot>
           </div>
           </div>
         </div>
-        <div id="header-actions" ?hidden="${!this.dismissable}" ?inert="${!this.dismissable}">
+        <div id="header-actions"
+             ?hidden="${!this.dismissable}"
+             ?inert="${!this.dismissable}">
           <rh-button id="close-button"
                   accessible-label="Close"
                   confirm
