@@ -5,7 +5,7 @@ Use an accordion to organize a large amount of content into sections. This allow
 Using an accordion provides an easy way to organize content while reducing page scrolling, but at the expense of hiding information or burdening users with more clicks. There is a chance that important information will be missed or not immediately noticed by users. Therefore, if reading important information is critical to the user experience or if important information requires more focus and less clicking, it is advised to not use an accordion.
 
 ### Accordion vs. disclosure 
-An accordion is used to organize important information whereas a [Disclosure](/patterns/dislosure/) can be used to organize secondary information that might not be critical to read or impact the experience. An accordion can also accommodate multiple sections of content, whereas a disclosure can only accommodate one.
+An accordion is used to organize important information whereas a [Disclosure](/patterns/disclosure/) can be used to organize secondary information that might not be critical to read or impact the experience. An accordion can also accommodate multiple sections of content, whereas a disclosure can only accommodate one.
 
 <uxdot-example>
    <img src="{{ '../accordion-vs-disclosure.png' | url }}" alt="Comparison of how to use accordion vs. disclosure elements showing an accordion on top and a disclosure on the bottom">
