@@ -1,7 +1,12 @@
+// for editor highlighting
+const html = String.raw;
+const markdown = String.raw;
+
 async function generateImportMap(packageName, tagName) {
   const { Generator } = await import('@jspm/generator');
   const generator = new Generator({
     providers: {
+      '@rhds/elements': 'jspm.io',
       [packageName]: 'jspm.io',
     },
   });
@@ -9,10 +14,11 @@ async function generateImportMap(packageName, tagName) {
   return JSON.stringify(generator.getMap(), null, 2);
 }
 
-const html = String.raw;
-
 /**
  * @param {string} content
+ * @param {object} [options]
+ * @param {boolean} [options.lightdomcss]
+ * @param {string} [options.cdnVersion]
  */
 async function renderInstall(content, {
   lightdomcss = false,
@@ -32,7 +38,7 @@ async function renderInstall(content, {
         .dependencies['@patternfly/elements']
         .version;
 
-  const cdnContent = /* markdown */`
+  const cdnContent = markdown`
 
 ~~~html
 <script type="module">
@@ -57,7 +63,7 @@ async function renderInstall(content, {
 
 `;
 
-  const npmContent = /* markdown*/`
+  const npmContent = markdown`
 
 ~~~shell
 npm install ${docsPage.manifest.packageJson.name}
@@ -71,7 +77,7 @@ npm install ${docsPage.manifest.packageJson.name}
 
 `;
 
-  const jspmContent = /* markdown */`
+  const jspmContent = markdown`
 
 ~~~html
 <script type="module">
