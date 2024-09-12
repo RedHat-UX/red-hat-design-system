@@ -287,7 +287,6 @@ a {
   pointer-events: none;
   font-size: 0.875rem;
   color: var(--_icon-color);
-  margin-inline-end: var(--rh-tag-margin-inline-end, var(--rh-space-xs, 4px));
 
   --rh-icon-size: 1em;
 }
@@ -300,5 +299,4 @@ a {
 ::slotted(svg) {
   height: 1em;
   aspect-ratio: 1;
-}
 }
