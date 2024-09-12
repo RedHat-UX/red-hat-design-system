@@ -1,5 +1,19 @@
 # @rhds/elements
 
+## 2.0.1
+
+### Patch Changes
+
+- 1ec3653: `<rh-footer-universal>`: improve compatibility with <abbr title="Server side rendering">SSR</abbr>
+- f77af9a: `<rh-navigation-secondary>`: corrected visibility of the borders when using the dark color palette
+- 1ec3653: `<rh-alert>`: fixed styles and typings for the `RhAlert.toast()` method
+- fecbe5d: `<rh-button>`: corrected style issue which caused layout side effects
+- 1ec3653: `<rh-icon>`: prevent error when hydrating server-side-rendered icons
+- cb5e01a: `<rh-cta>`: corrected icon not loading on default variant
+- f4fcd78: `<rh-back-to-top>`: builds-in the style guidelines in: back to top is fixed and always on top. Note that this change removes previously undocumented CSS custom properties `--rh-back-to-top-position-right` and `--rh-back-to-top-position-bottom`.
+- 5323a21: `<rh-tooltip>`: added border radius style to match specifications
+- b558e00: `<rh-navigation-secondary>`: corrected logo slot text line-height
+
 ## 2.0.0
 
 ### Major Changes

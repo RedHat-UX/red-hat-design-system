@@ -1,6 +1,6 @@
 {
   "name": "@rhds/elements",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Red Hat Design System Elements",
   "type": "module",
   "license": "MIT",
@@ -48,7 +48,6 @@
   ],
   "scripts": {
     "🐒-DEV": "❓ Development aids",
-    "postinstall": "patch-package",
     "start": "wireit",
     "dev": "wireit",
     "serve": "wireit",
@@ -86,6 +85,7 @@
       "service": true,
       "command": "web-dev-server --open --watch",
       "dependencies": [
+        "patch",
         "compile",
         "analyze",
         "playgrounds",
@@ -96,6 +96,7 @@
       "service": true,
       "command": "web-dev-server --watch",
       "dependencies": [
+        "patch",
         "compile",
         "analyze"
       ]
@@ -104,6 +105,7 @@
       "service": true,
       "command": "eleventy --serve --incremental",
       "dependencies": [
+        "patch",
         "compile",
         "analyze",
         "playgrounds"
@@ -147,6 +149,9 @@
         "elements/**/*.{d.ts,js,map}",
         "lib/**/*.{d.ts,js,map}",
         "elements/rh-secondary-nav/test/fixtures.js",
+        "docs/assets/javascript/elements/*.js",
+        "docs/assets/javascript/**/*.d.ts",
+        "docs/assets/javascript/**/*.js.map",
         "!elements/*/{demo,test}/**/*.js"
       ]
     },

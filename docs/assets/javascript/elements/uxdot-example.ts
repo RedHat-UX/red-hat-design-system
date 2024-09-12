@@ -20,24 +20,35 @@ import styles from './uxdot-example.css';
 export class UxdotExample extends LitElement {
   static styles = [styles];
 
+  /**
+   * Sets color context for child components, overrides parent context
+   */
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' })
   colorPalette?: ColorPalette;
 
+  /**
+   * Sets color theme based on parent context
+   */
   @colorContextConsumer() private on?: ColorTheme;
 
+  /* force a transparent background */
   @property({ type: Boolean })
   transparent = false;
 
+  /* full width variant with no padding */
   @property({ type: String, reflect: true })
   variant?: 'full';
 
+  /* width in pixels, defaults to 100% */
   @property({ type: String, attribute: 'width-adjustment' })
   widthAdjustment = '100%';
 
+  /* display a border around the example content */
   @property({ type: Boolean, attribute: 'no-border' })
   noBorder = false;
 
+  /* danger status */
   @property({ type: Boolean, reflect: true })
   danger = false;
 
