@@ -8,6 +8,8 @@ import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 import { colorContextProvider } from '../../lib/context/color/provider.js';
 
+import '@rhds/elements/rh-button/rh-button.js';
+
 import styles from './rh-announcement.css';
 
 export class AnnouncementCloseEvent extends Event {
@@ -45,9 +47,9 @@ export class RhAnnouncement extends LitElement {
   static styles = [styles];
 
   /**
-   * Make an announcement dismissible
+   * Make an announcement dismissable
    */
-  @property({ reflect: true, type: Boolean }) dismissible = false;
+  @property({ reflect: true, type: Boolean }) dismissable = false;
 
   /**
    * Keep the image on the left-hand side of the main announcement content
@@ -74,42 +76,41 @@ export class RhAnnouncement extends LitElement {
   #slots = new SlotController(this, 'image', null, 'cta');
 
   render() {
-    const { on = '', colorPalette = '' } = this;
+    const { dismissable, imgleft, on = '', colorPalette = 'lightest' } = this;
     return html`
-  <div id="container"
-        part="container"
-        class="${classMap({ [on]: !!on, [colorPalette]: !!colorPalette, dismissible: !!this.dismissible, imgleft: !!this.imgleft, empty: this.#slots.isEmpty(null) })}">
-      <div id="row"
-          part="row">
-        <div id="image"
-          part="image"
-          class="${classMap({ empty: !this.#slots.hasSlotted('image') })}">
-        <slot name="image"></slot>
+      <div id="container"
+           part="container"
+           class="${classMap({ on: true, [on]: !!on, [colorPalette]: true, dismissable, imgleft, empty: this.#slots.isEmpty(null) })}">
+        <div id="row"
+            part="row">
+          <div id="image"
+            part="image"
+            class="${classMap({ empty: !this.#slots.hasSlotted('image') })}">
+          <slot name="image"></slot>
+        </div>
+        <div id="content"
+            part="content">
+          <div id="body"
+              part="body"
+              class="${classMap({ empty: this.#slots.isEmpty(null) })}">
+            <slot></slot>
+          </div>
+          <div id="cta"
+              part="cta"
+              class="${classMap({ empty: !this.#slots.hasSlotted('cta') })}">
+            <slot name="cta"></slot>
+          </div>
+          </div>
+        </div>
+        <div id="header-actions" ?hidden="${!this.dismissable}" ?inert="${!this.dismissable}">
+          <rh-button id="close-button"
+                  accessible-label="Close"
+                  confirm
+                  variant="close"
+                  @click=${this.#closeHandler}></rh-button>
+        </div>
       </div>
-      <div id="content"
-          part="content">
-        <div id="body"
-            part="body"
-            class="${classMap({ empty: this.#slots.isEmpty(null) })}">
-          <slot></slot>
-        </div>
-        <div id="cta"
-            part="cta"
-            class="${classMap({ empty: !this.#slots.hasSlotted('cta') })}">
-          <slot name="cta"></slot>
-        </div>
-        </div>
-      </div>
-      ${!this.dismissible ? '' : html`
-      <div id="header-actions">
-        <rh-button id="close-button"
-                accessible-label="Close"
-                confirm
-                variant="close"
-                @click=${this.#closeHandler}></rh-button>
-      </div>`}
-    </div>
-  `;
+    `;
   }
 
   #closeHandler() {

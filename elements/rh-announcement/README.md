@@ -20,7 +20,7 @@ Rh-announcement is a short banner that conveys an important message, such as pro
 
 ### Attributes
 
-`dismissible`
+`dismissable`
 
 - If this attribute is added, a close button will appear in the top right corner. Clicking this will hide the banner.
 
@@ -60,12 +60,12 @@ Rh-announcement is a short banner that conveys an important message, such as pro
 ```
 
 ### Announcement Banner using attributes
-- dismissible
+- dismissable
 - dark color pallette
 - smallimg attribute to override image appearing above text on mobile
 
 ```html
-<rh-announcement dismissible smallimg color-palette="dark">
+<rh-announcement dismissable smallimg color-palette="dark">
   <svg slot="image"
        width="80"
        height="48"
