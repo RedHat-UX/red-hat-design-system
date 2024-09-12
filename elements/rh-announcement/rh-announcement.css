@@ -11,8 +11,8 @@
 
 #container {
   background-color: var(--rh-color-surface-lightest, #ffffff); /* Default (light) background */
-  color: var(--rh-color-text-primary-on-light, #151515); /* Default (light) color */
-  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  color: var(--rh-color-text-primary); /* Default (light) color */
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   inline-size: 100%;
   line-height: var(--rh-line-height-body-text, 1.5);
   padding: var(--rh-space-lg, 16px);
@@ -23,7 +23,6 @@
 /* dark theme */
 #container.dark {
   background-color: var(--rh-color-surface-dark-alt, #292929);
-  color: var(--rh-color-text-primary-on-dark, #ffffff);
 }
 
 #body {
@@ -80,8 +79,7 @@
 
 @container announcement (max-width: 767px) {
   #container:not(.imgleft) #body {
-    padding-block-end: var(--rh-space-md, 8px);
-    padding-block-start: var(--rh-space-lg, 16px);
+    padding-block: var(--rh-space-lg, 16px) var(--rh-space-md, 8px);
     padding-inline-end: var(--rh-space-lg, 16px);
   }
 
@@ -109,30 +107,4 @@
   #container.imgleft #cta {
     padding-inline-start: var(--rh-space-lg, 16px);
   }
-}
-
-/* Close button */
-#close-button {
-  background-color: transparent;
-  border: none;
-  color: var(--rh-color-text-secondary-on-light, #4d4d4d);
-  cursor: pointer;
-  display: flex;
-  inset-block-start: 0;
-  inset-inline-end: 0;
-  margin: 2px;
-  padding: var(--rh-space-lg, 16px);
-  position: absolute;
-}
-
-#close-button:is(:hover, :focus) {
-  color: var(--rh-color-text-primary-on-light, #151515);
-}
-
-.dark #close-button {
-  color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
-}
-
-.dark #close-button:is(:hover, :focus) {
-  color: var(--rh-color-text-primary-on-dark, #ffffff);
 }
