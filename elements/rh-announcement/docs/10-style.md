@@ -19,15 +19,15 @@ An announcement consists of an image, a short blurb of text and a CTA.
 
 ## Theme
 
-The announcement element is available in both light and dark themes.
+The announcement element is available on both light and dark [backgrounds](/theming/color-palettes/#backgrounds).
 
 <div class="grid xs-two-columns">
   <uxdot-example width-adjustment="420px">
-    <img src="../announcement-theme-light.svg" alt="ALT TEXT HERE">
+    <img src="../announcement-theme-light.svg" alt="rh-announcement element on a light background">
   </uxdot-example>
 
   <uxdot-example width-adjustment="420px" color-palette="darkest">
-    <img src="../announcement-theme-dark.svg" alt="ALT TEXT HERE">
+    <img src="../announcement-theme-dark.svg" alt="rh-announcement element on a dark background">
   </uxdot-example>
 </div>
 
@@ -52,11 +52,11 @@ Description goes here.
 
 <div class="grid xs-two-columns">
   <uxdot-example width-adjustment="420px">
-    <img src="../announcement-hover-light.svg" alt="ALT TEXT HERE">
+    <img src="../announcement-hover-light.svg" alt="rh-announcement showing hover styles">
   </uxdot-example>
 
   <uxdot-example width-adjustment="420px" color-palette="darkest">
-    <img src="../announcement-hover-dark.svg" alt="ALT TEXT HERE">
+    <img src="../announcement-hover-dark.svg" alt="rh-announcement showing hover styles on a dark background">
   </uxdot-example>
 </div>
 
@@ -66,11 +66,13 @@ Focus description goes here.
 
 <div class="grid xs-two-columns">
   <uxdot-example width-adjustment="420px">
-    <img src="../announcement-focus-light.svg" alt="ALT TEXT HERE">
+    <img src="../announcement-focus-light.svg"
+         alt="rh-announcement showing hover styles">
   </uxdot-example>
 
   <uxdot-example width-adjustment="420px" color-palette="darkest">
-    <img src="../announcement-focus-dark.svg" alt="ALT TEXT HERE">
+    <img src="../announcement-focus-dark.svg"
+         alt="rh-announcement showing hover styles on a dark background">
   </uxdot-example>
 </div>
 
@@ -80,10 +82,11 @@ Active description goes here.
 
 <div class="grid xs-two-columns">
   <uxdot-example width-adjustment="420px">
-    <img src="../announcement-active-light.svg" alt="ALT TEXT HERE">
+    <img src="../announcement-active-light.svg"
+         alt="rh-announcement showing active styles">
   </uxdot-example>
-
   <uxdot-example width-adjustment="420px" color-palette="darkest">
-    <img src="../announcement-active-dark.svg" alt="ALT TEXT HERE">
+    <img src="../announcement-active-dark.svg"
+         alt="rh-announcement showing active styles on a dark background">
   </uxdot-example>
 </div>

@@ -5,7 +5,7 @@
 Rh-announcement is a short banner that conveys an important message, such as promoting an event or advertising an organizational or product announcement.
 
 <uxdot-example width-adjustment="555px">
-  <img src="./announcement-sample.svg" alt="INSERT ALT TEXT">
+  <img src="./announcement-sample.svg" alt="sample screenshot of rh-announcement element">
 </uxdot-example>
 
 {% repoStatusList repoStatus=repoStatus %}
@@ -18,9 +18,9 @@ Rh-announcement is a short banner that conveys an important message, such as pro
        height="48"
        role="img"
        aria-label="Sample image">
-    <rect fill="var(--rh-color-border-interactive-on-light, #0066cc)"
+    <rect fill="var(--rh-color-border-interactive)"
       fill-opacity="0.1"
-      stroke="var(--rh-color-border-interactive-on-light, #0066cc)"
+      stroke="var(--rh-color-border-interactive)"
       stroke-width="2px"
       width="100%"
       height="100%"
@@ -28,10 +28,8 @@ Rh-announcement is a short banner that conveys an important message, such as pro
     </rect>
     <text x="17"
           y="30"
-          style="font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace); font-size: var(--rh-font-size-body-text-md, 1rem);"
-          fill="var(--rh-color-blue-50, #0066CC)">
-            Image
-    </text>
+          style="font-family: var(--rh-font-family-code); font-size: var(--rh-font-size-body-text-md);"
+          fill="var(--rh-color-blue-50)">Image</text>
   </svg>
   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit adipisicing elit adipisicing elit.</p>
   <rh-cta slot="cta">
