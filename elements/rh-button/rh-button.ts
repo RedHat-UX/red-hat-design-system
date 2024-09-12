@@ -49,6 +49,9 @@ export class RhButton extends LitElement {
   /** Shorthand for the `icon` slot, the value is icon name */
   @property() icon?: string;
 
+  /** Icon set for the `icon` property - 'ui' by default */
+  @property({ attribute: 'icon-set' }) iconSet?: string;
+
   @query('button') private _button!: HTMLButtonElement;
 
   /**
@@ -105,7 +108,7 @@ export class RhButton extends LitElement {
               @click="${this.#onClick}"
               ?disabled="${this.disabled || this.#internals.formDisabled}">
         <span aria-hidden="true">
-          <slot id="icon" part="icon" name="icon">${this.#renderDefaultIcon()}</slot>
+          <slot id="icon" part="icon" name="icon">${this.#renderIcon()}</slot>
         </span>
         <span aria-hidden=${String(!!this.label) as 'true' | 'false'}><slot id="text" ></slot></span>
       </button>
@@ -133,24 +136,14 @@ export class RhButton extends LitElement {
    *          <base-icon icon=${this.icon}></base-icon>
    *          ```
    */
-  #renderDefaultIcon(): TemplateResult | string {
+  #renderIcon(): TemplateResult | string {
     switch (this.variant.toLowerCase()) {
-      // TODO: revisit when rh-icon is ready
-      // return html`<rh-icon icon=${this.variant}></rh-icon>`;
       case 'close':
-        return html`
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-            <path d="M12.54 11.46 8.92 7.83l3.45-3.46a.63.63 0 0 0 0-.88.61.61 0 0 0-.88 0L8 6.94 4.54 3.46a.61.61 0 0 0-.88 0 .63.63 0 0 0 0 .88l3.49 3.49-3.66 3.66a.61.61 0 0 0 0 .88.63.63 0 0 0 .88 0L8 8.71l3.63 3.63a.63.63 0 0 0 .88 0 .61.61 0 0 0 .03-.88Z"/>
-          </svg>
-        `;
+        return html`<rh-icon set="ui" icon="close"></rh-icon>`;
       case 'play':
-        return html`
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-            <path d="m30.37 15.339-28-15A.752.752 0 0 0 1.264 1v30a.752.752 0 0 0 1.104.661l28-15a.751.751 0 0 0 0-1.322Z"/>
-          </svg>
-        `;
+        return html`<rh-icon set="ui" icon="play"></rh-icon>`;
       default:
-        return '';
+        return html`<rh-icon set="${this.iconSet ?? 'ui'}" icon="${this.icon}"></rh-icon>`;
     }
   }
 
