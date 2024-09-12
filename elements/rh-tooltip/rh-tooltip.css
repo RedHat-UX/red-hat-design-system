@@ -28,12 +28,13 @@
   word-break: break-word;
   translate: var(--_floating-content-translate);
   width: max-content;
-  top: 0;
-  left: 0;
+  inset-block-start: 0;
+  inset-inline-start: 0;
   will-change: opacity;
   line-height: var(--rh-line-height-body-text, 1.5);
   box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
   max-width: var(--rh-tooltip-max-width, var(--rh-tooltip--MaxWidth, 18.75rem));
+  border-radius: var(--rh-border-radius-default, 3px);
 
   /* WARNING: properties containing `__`are deprecated and will be removed */
   padding:
@@ -71,8 +72,6 @@
   width: var(--_floating-arrow-size);
   height: var(--_floating-arrow-size);
   will-change: left top right bottom;
-
-  /* WARNING: properties containing `__`are deprecated and will be removed */
   background-color:
     var(--rh-tooltip-content-background-color,
       var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515)));
@@ -87,28 +86,28 @@
 }
 
 /* PLAIN */
-.left #tooltip:after { right: calc(-0.5 * var(--_floating-arrow-size)); }
-.top #tooltip:after { top: calc(100% - 0.5 * var(--_floating-arrow-size)); }
-.right #tooltip:after { right: calc(100% - 0.5 * var(--_floating-arrow-size)); }
-.bottom #tooltip:after { bottom: calc(100% - 0.5 * var(--_floating-arrow-size)); }
+.left #tooltip:after { inset-inline-start: calc(-0.5 * var(--_floating-arrow-size)); }
+.top #tooltip:after { inset-block-start: calc(100% - 0.5 * var(--_floating-arrow-size)); }
+.right #tooltip:after { inset-inline-end: calc(100% - 0.5 * var(--_floating-arrow-size)); }
+.bottom #tooltip:after { inset-block-end: calc(100% - 0.5 * var(--_floating-arrow-size)); }
 
 /* CENTER */
-.left.center #tooltip:after { top: calc(50% - 0.5 * var(--_floating-arrow-size)); }
-.top.center #tooltip:after { right: calc(50% - 0.5 * var(--_floating-arrow-size)); }
-.right.center #tooltip:after { top: calc(50% - 0.5 * var(--_floating-arrow-size)); }
-.bottom.center #tooltip:after { right: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+.left.center #tooltip:after { inset-block-start: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+.top.center #tooltip:after { inset-inline-end: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+.right.center #tooltip:after { inset-block-start: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+.bottom.center #tooltip:after { inset-inline-end: calc(50% - 0.5 * var(--_floating-arrow-size)); }
 
 /* START */
-.left.start #tooltip:after { top: var(--_floating-arrow-size); }
-.top.start #tooltip:after { left: var(--_floating-arrow-size); }
-.right.start #tooltip:after { top: var(--_floating-arrow-size); }
-.bottom.start #tooltip:after { left: var(--_floating-arrow-size); }
+.left.start #tooltip:after { inset-block-start: var(--_floating-arrow-size); }
+.top.start #tooltip:after { inset-inline-start: var(--_floating-arrow-size); }
+.right.start #tooltip:after { inset-block-start: var(--_floating-arrow-size); }
+.bottom.start #tooltip:after { inset-inline-start: var(--_floating-arrow-size); }
 
 /* END */
-.left.end #tooltip:after { bottom: var(--_floating-arrow-size); }
-.top.end #tooltip:after { right: var(--_floating-arrow-size); }
-.right.end #tooltip:after { bottom: var(--_floating-arrow-size); }
-.bottom.end #tooltip:after { right: var(--_floating-arrow-size); }
+.left.end #tooltip:after { inset-block-end: var(--_floating-arrow-size); }
+.top.end #tooltip:after { inset-inline-end: var(--_floating-arrow-size); }
+.right.end #tooltip:after { inset-block-end: var(--_floating-arrow-size); }
+.bottom.end #tooltip:after { inset-inline-end: var(--_floating-arrow-size); }
 
 :host([position='left']),
 :host([position='right']) {
