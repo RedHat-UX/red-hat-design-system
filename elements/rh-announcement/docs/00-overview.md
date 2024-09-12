@@ -2,7 +2,8 @@
 
 {{ tagName | getElementDescription }}
 
-Rh-announcement is a short banner that conveys an important message, such as promoting an event or advertising an organizational or product announcement.
+Announcement is a short banner that conveys an important message, such as 
+promoting an event or advertising an organizational or product announcement.
 
 <uxdot-example width-adjustment="555px">
   <img src="./announcement-sample.svg" alt="sample screenshot of rh-announcement element">
