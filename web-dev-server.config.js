@@ -23,7 +23,7 @@ export const litcssOptions = {
     /@rhds\/tokens\/css\/.*\.css$/,
     /lib\/.*\.css$/,
   ]))),
-  exclude: /lightdom/,
+  exclude: [/lightdom/, /node_modules\/@rhds\/tokens\/css\/global\.css/],
 };
 
 export default pfeDevServerConfig({
