@@ -7,20 +7,20 @@ const styles = css `:host{display:block;container-type:inline-size;container-nam
 let UxdotToc = class UxdotToc extends LitElement {
     render() {
         return html `
-      <aside id="container" part="container">
+      <div id="container" part="container">
         <details>
           <summary id="summary">${this.summary}</summary>
-          <nav aria-describedby="summary">
+          <nav aria-labelledby="summary">
             <slot name="details"></slot>
           </nav>
         </details>
         <div id="expanded">
           <div id="summary">${this.summary}</div>
-          <nav>
+          <nav aria-labelledby="summary">
             <slot name="expanded"></slot>
           </nav>
         </div>
-      </aside>
+      </div>
     `;
     }
 };
