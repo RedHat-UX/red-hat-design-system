@@ -5,7 +5,8 @@
   position: relative;
 }
 
-rh-surface { color: var(--rh-color-text-primary); }
+rh-surface,
+.on { color: var(--rh-color-text-primary); }
 
 #picker-container {
   display: flex;

@@ -49,10 +49,26 @@ export class RhTag extends LitElement {
   @property({ attribute: 'icon-set' }) iconSet: IconSetName = 'ui';
 
   /** The variant of the label. */
-  @property() variant?: 'filled' | 'outline' = 'filled';
+  @property() variant?: 'filled' | 'outline' | 'desaturated' = 'filled';
+
+  /** The variant of the label. */
+  @property() size?: 'compact';
+
+  /** optional href for linked tag. */
+  @property() href?: string;
 
   /** The color of the label. */
-  @property() color?: 'blue' | 'cyan' | 'green' | 'orange' | 'purple' | 'red' | 'grey';
+  @property() color?:
+    | 'red'
+    | 'red-orange'
+    | 'orange'
+    | 'yellow'
+    | 'green'
+    | 'cyan' // deprecated
+    | 'teal'
+    | 'blue'
+    | 'purple'
+    | 'gray';
 
   @colorContextConsumer() private on?: ColorTheme;
 
@@ -60,19 +76,25 @@ export class RhTag extends LitElement {
   #slots = new SlotController(this, 'icon', null);
 
   override render() {
-    const { variant, color, icon, on = '' } = this;
+    const { icon, size, variant = 'filled', color = 'gray', on = 'light' } = this;
     const hasIcon = !!icon || this.#slots.hasSlotted('icon');
     return html`
       <span id="container"
             class="${classMap({
               hasIcon,
-              [on]: !!on,
-              [variant ?? '']: !!variant,
-              [color ?? '']: !!color })}">
+              compact: size === 'compact',
+              teal: color === 'cyan' || color === 'teal',
+              on: true,
+              [on]: true,
+              [variant]: true,
+              [color]: true })}">
         <slot name="icon" part="icon">
           <rh-icon ?hidden="${!icon}" icon="${ifDefined(icon)}" set="${this.iconSet}"></rh-icon>
-        </slot>
-        <slot id="text"></slot>
+        </slot>${!this.href ? html`
+        <slot id="text"></slot>` : html`
+        <a href="${this.href}">
+          <slot id="text"></slot>
+        </a>`}
       </span>
     `;
   }

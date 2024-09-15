@@ -1,3 +1,7 @@
+.container > rh-alert {
+  width: 100%;
+}
+
 #elements-grid {
   &::part(example) {
     display: block;
@@ -21,12 +25,21 @@
   }
 }
 
+.surface-grid,
 .tile-grid {
   display: grid;
   padding: 0;
   list-style-type: none;
-  grid-template-columns: 1fr 1fr 1fr;
   gap: var(--rh-space-sm);
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.surface-grid {
+  grid-template-columns: 1fr 1fr;
+}
+
+.icon-card {
+  --rh-icon-size: var(--rh-size-icon-07);
 }
 
 .pullquote-card {

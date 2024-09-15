@@ -1,6 +1,6 @@
 {
   "name": "@rhds/elements",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Red Hat Design System Elements",
   "type": "module",
   "license": "MIT",
@@ -48,7 +48,6 @@
   ],
   "scripts": {
     "🐒-DEV": "❓ Development aids",
-    "postinstall": "patch-package",
     "start": "wireit",
     "dev": "wireit",
     "serve": "wireit",
@@ -86,6 +85,7 @@
       "service": true,
       "command": "web-dev-server --open --watch",
       "dependencies": [
+        "patch",
         "compile",
         "analyze",
         "playgrounds",
@@ -96,6 +96,7 @@
       "service": true,
       "command": "web-dev-server --watch",
       "dependencies": [
+        "patch",
         "compile",
         "analyze"
       ]
@@ -104,6 +105,7 @@
       "service": true,
       "command": "eleventy --serve --incremental",
       "dependencies": [
+        "patch",
         "compile",
         "analyze",
         "playgrounds"
@@ -147,6 +149,9 @@
         "elements/**/*.{d.ts,js,map}",
         "lib/**/*.{d.ts,js,map}",
         "elements/rh-secondary-nav/test/fixtures.js",
+        "docs/assets/javascript/elements/*.js",
+        "docs/assets/javascript/**/*.d.ts",
+        "docs/assets/javascript/**/*.js.map",
         "!elements/*/{demo,test}/**/*.js"
       ]
     },
@@ -286,8 +291,9 @@
     "@lit/context": "^1.1.2",
     "@patternfly/pfe-core": "^4.0.1",
     "@rhds/icons": "^1.1.1",
-    "@rhds/tokens": "^2.1.0-next.11",
+    "@rhds/tokens": "^2.1.0-next.13",
     "lit": "^3.2.0",
+    "prism-esm": "^1.29.0-fix.4",
     "tslib": "^2.6.3"
   },
   "devDependencies": {
@@ -342,6 +348,7 @@
     "ts-patch": "^3.2.1",
     "tsx": "^4.17.0",
     "typescript": "^5.5.4",
+    "typescript-transform-lit-css": "^2.0.0",
     "wireit": "^0.14.7"
   },
   "optionalDependencies": {

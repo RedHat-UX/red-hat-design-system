@@ -18,9 +18,7 @@ expands to reveal more information.
 ## Sample pattern
 
 <rh-accordion>
-  <rh-accordion-header>
-    <h2>Results from Customer Portal</h2>
-  </rh-accordion-header>
+  <h2><rh-accordion-header>Results from Customer Portal</rh-accordion-header></h2>
   <rh-accordion-panel>
     <p>Amet dolor deserunt consectetur enim. Amet irure esse est minim sint eu 
       aliquip officia nulla dolore proident. Voluptate dolore nisi aute ut amet 
@@ -230,9 +228,7 @@ The interaction states in the collapsed state are the same as the expanded
 state.
 
 <rh-accordion>
-  <rh-accordion-header>
-    <h2>Officia eu id pariatur enim exercitation ipsum laboris irure reprehenderit</h2>
-  </rh-accordion-header>
+  <h2><rh-accordion-header>Officia eu id pariatur enim exercitation ipsum laboris irure reprehenderit</rh-accordion-header></h2>
   <rh-accordion-panel>
     <p>Amet dolor deserunt consectetur enim. Amet irure esse est minim sint eu aliquip officia nulla dolore proident. Voluptate dolore nisi aute ut amet quis elit. Id voluptate et ipsum commodo aute do. Eu excepteur sunt ex nostrud sit cillum eu excepteur aliqua fugiat. Tempor ad exercitation amet ad tempor esse.</p>
     <p>Aliqua aliqua do fugiat incididunt voluptate eiusmod. Pariatur laborum aliquip cupidatat esse amet. Velit fugiat irure amet enim proident labore qui eu excepteur. Sit tempor officia ex nisi dolor. Culpa exercitation ad aliquip duis mollit ipsum.</p>

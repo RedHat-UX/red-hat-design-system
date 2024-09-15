@@ -42,6 +42,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.watchIgnores?.add('elements/*/test/');
   eleventyConfig.watchIgnores?.add('lib/elements/*/test/');
   eleventyConfig.addPassthroughCopy('docs/patterns/**/*.{svg,jpg,jpeg,png}');
+  eleventyConfig.addPassthroughCopy('elements/*/demo/**/*.{svg,jpg,jpeg,png}');
   eleventyConfig.addPassthroughCopy('docs/CNAME');
   eleventyConfig.addPassthroughCopy('docs/.nojekyll');
   eleventyConfig.addPassthroughCopy('docs/robots.txt');
@@ -98,6 +99,7 @@ module.exports = function(eleventyConfig) {
         'lit/': '/assets/packages/lit/',
         'lit-html': '/assets/packages/lit-html/lit-html.js',
         'lit-html/': '/assets/packages/lit-html/',
+        'prism-esm/': '/assets/packages/prism-esm/',
         '@lit-labs/ssr-client/lit-element-hydrate-support.js':
           '/assets/packages/@lit-labs/ssr-client/lit-element-hydrate-support.js',
         '@rhds/tokens': '/assets/packages/@rhds/tokens/js/tokens.js',
@@ -142,6 +144,8 @@ module.exports = function(eleventyConfig) {
       '@lit/context',
       '@lit/reactive-element',
       '@webcomponents/template-shadowroot/template-shadowroot.js',
+      'prism-esm',
+      'prism-esm/',
       'lit',
       'lit-element',
       'lit-html',

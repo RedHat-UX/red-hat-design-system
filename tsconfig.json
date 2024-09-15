@@ -36,6 +36,7 @@
     "sourceMap": true,
     "strict": true,
     "target": "es2020",
+    "skipLibCheck": true,
     "useDefineForClassFields": false,
     "typeRoots": [
       "./node_modules/@types",
@@ -43,9 +44,9 @@
     ],
     "plugins": [
       {
-        "transform": "@patternfly/pfe-tools/typescript/transformers/css-imports.cjs",
+        "transform": "typescript-transform-lit-css",
         "inline": true,
-        "minify": true
+        "cssnano": true
       },
       {
         "name": "typescript-lit-html-plugin"
