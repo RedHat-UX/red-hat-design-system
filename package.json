@@ -348,6 +348,7 @@
     "ts-patch": "^3.2.1",
     "tsx": "^4.17.0",
     "typescript": "^5.5.4",
+    "typescript-transform-lit-css": "^2.0.0",
     "wireit": "^0.14.7"
   },
   "optionalDependencies": {
