@@ -20,6 +20,7 @@ import { I18nController } from '../../lib/I18nController.js';
 import { RhMenu } from '../rh-menu/rh-menu.js';
 import { RhCue, getFormattedTime } from './rh-cue.js';
 import { RhAudioPlayerAbout } from './rh-audio-player-about.js';
+import { RhAudioPlayerRateSelectEvent } from './rh-audio-player-rate-stepper.js';
 import { RhAudioPlayerSubscribe } from './rh-audio-player-subscribe.js';
 import { RhTranscript } from './rh-transcript.js';
 import { RhAudioPlayerScrollingTextOverflow } from './rh-audio-player-scrolling-text-overflow.js';
@@ -239,14 +240,6 @@ export class RhAudioPlayer extends LitElement {
 
   #unmutedVolume = this.volume;
 
-  #pbrMin = 0.25;
-
-  #pbrMax = 2;
-
-  #pbrStep = 0.25;
-
-  #pbrFixed = 2;
-
   #styles?: CSSStyleDeclaration;
 
   // this is used inasmuch as children receive the context,
@@ -346,16 +339,6 @@ export class RhAudioPlayer extends LitElement {
       this.#hideMenu();
       this.#resizeObserver.unobserve(this);
     }
-  }
-
-  /**
-   * gets list of allowable playback rates
-   */
-  get #playbackRates() {
-    return [
-      ...Array(Math.round(this.#pbrMax / this.#pbrStep)).keys()].map(k =>
-      k * this.#pbrStep + this.#pbrMin
-    );
   }
 
   /**
@@ -535,9 +518,14 @@ export class RhAudioPlayer extends LitElement {
 
           <span id="current">${this.#elapsedText}</span>
 
-          <div class="spacer"></div>${this.#isMini ? '' : html`
+          <div class="spacer"></div>
 
-          ${this.#playbackRateTemplate('playback-rate')}`}
+          <rh-audio-player-rate-stepper id="playback-rate"
+                                        @playback-rate-select="${this.#onPlaybackRateSelect}"
+                                        ?hidden="${this.#isFull || this.#isMini}"
+                                        .disabled="${!this.#mediaElement}"
+                                        .playbackRate="${this.playbackRate}"
+                                        .label="${this.#translation.get('speed')}"></rh-audio-player-rate-stepper>
 
           ${this.#isMobileSafari ? '' : html`
 
@@ -576,7 +564,12 @@ export class RhAudioPlayer extends LitElement {
 
           <div class="full-spacer"></div>
 
-          ${this.#playbackRateTemplate('full-playback-rate')}
+          <rh-audio-player-rate-stepper id="full-playback-rate"
+                                        @playback-rate-select="${this.#onPlaybackRateSelect}"
+                                        ?hidden="${!this.#isFull}"
+                                        .disabled="${!this.#mediaElement}"
+                                        .playbackRate="${this.playbackRate}"
+                                        .label="${this.#translation.get('speed')}"></rh-audio-player-rate-stepper>
 
           <rh-tooltip id="rewind-tooltip">
             <button id="rewind"
@@ -639,38 +632,12 @@ export class RhAudioPlayer extends LitElement {
                     @click="${() => this.#selectOpenPanel(x.panel)}">
               ${x.panel.menuLabel}
             </button>`)}
-            <rh-tooltip id="mini-playback-rate-tooltip" class="playback-rate" ?hidden="${this.layout !== 'mini'}">
-              <div id="mini-playback-rate-stepper" class="stepper">
-                <button id="mini-playback-rate-stepdown"
-                        class="playback-rate-step"
-                        tabindex="-1"
-                        aria-hidden="true"
-                        ?disabled="${!this.#mediaElement || this.playbackRate < 0.5}"
-                        @click="${this.decrementPlaybackrate}">
-                  ${RhAudioPlayer.icons.playbackRateSlower}
-                </button>
-                <select id="mini-playback-rate"
-                        aria-label="${this.#translation.get('speed')}"
-                        ?disabled=${!this.#mediaElement}
-                        @click="${this.#onPlaybackRateSelect}"
-                        @change="${this.#onPlaybackRateSelect}"
-                        .value=${this.playbackRate?.toFixed(this.#pbrFixed)}>${this.#playbackRates.map(step=>html`
-                  <option .value=${step.toFixed(this.#pbrFixed)}
-                    ?selected=${this.playbackRate.toFixed(this.#pbrFixed) === step.toFixed(this.#pbrFixed)}>
-                    ${step.toFixed(this.#pbrFixed)}x
-                  </option>`)}
-                </select>
-                <button id="mini-playback-rate-stepup"
-                        class="playback-rate-step"
-                        tabindex="-1"
-                        aria-hidden="true"
-                        ?disabled="${!this.#mediaElement || this.playbackRate > 1.75}"
-                        @click="${this.incrementPlaybackrate}">
-                  ${RhAudioPlayer.icons.playbackRateFaster}
-                </button>
-              </div>
-              <span slot="content">${this.#translation.get('speed')}</span>
-            </rh-tooltip>
+            <rh-audio-player-rate-stepper id="mini-playback-rate"
+                                          @playback-rate-select="${this.#onPlaybackRateSelect}"
+                                          ?hidden="${!this.#isMini}"
+                                          .disabled="${!this.#mediaElement}"
+                                          .playbackRate="${this.playbackRate}"
+                                          .label="${this.#translation.get('speed')}"></rh-audio-player-rate-stepper>
           </rh-menu>`}
           <rh-tooltip id="close-tooltip">
             <button id="close"
@@ -713,53 +680,6 @@ export class RhAudioPlayer extends LitElement {
         </div>
       </rh-surface>
     `;
-  }
-
-  /** template for playback rate controls */
-  #playbackRateTemplate(id: 'playback-rate' | 'mini-playback-rate' | 'full-playback-rate') {
-    switch (id) {
-      case 'mini-playback-rate':
-        if (this.layout !== 'mini') {
-          return;
-        }
-      // eslint-disable-next-line no-fallthrough
-      default:
-        console.log(id);
-        return html`
-          <rh-tooltip id="${id}-tooltip">
-            <div id="${id}-stepper">
-              <button id="${id}-stepdown"
-                      class="playback-rate-step"
-                      tabindex="-1"
-                      aria-hidden="true"
-                      ?disabled="${!this.#mediaElement || this.playbackRate < 0.5}"
-                      @click="${this.decrementPlaybackrate}">
-                ${RhAudioPlayer.icons.playbackRateSlower}
-              </button>
-              <select id="${id}"
-                      aria-label="${this.#translation.get('speed')}"
-                      ?disabled=${!this.#mediaElement}
-                      @click="${this.#onPlaybackRateSelect}"
-                      @change="${this.#onPlaybackRateSelect}"
-                      .value=${this.playbackRate?.toFixed(this.#pbrFixed)}>${this.#playbackRates.map(step=>html`
-                <option .value=${step.toFixed(this.#pbrFixed)}
-                  ?selected=${this.playbackRate.toFixed(this.#pbrFixed) === step.toFixed(this.#pbrFixed)}>
-                  ${step.toFixed(this.#pbrFixed)}x
-                </option>`)}
-              </select>
-              <button id="${id}-stepup"
-                      class="playback-rate-step"
-                      tabindex="-1"
-                      aria-hidden="true"
-                      ?disabled="${!this.#mediaElement || this.playbackRate > 1.75}"
-                      @click="${this.incrementPlaybackrate}">
-                ${RhAudioPlayer.icons.playbackRateFaster}
-              </button>
-            </div>
-            <span slot="content">${this.#translation.get('speed')}</span>
-          </rh-tooltip>
-    `;
-    }
   }
 
   async firstUpdated() {
@@ -926,11 +846,10 @@ export class RhAudioPlayer extends LitElement {
    * by updating component playbackRate property
    */
   #onPlaybackRateSelect(event: Event) {
-    if (this.#mediaElement) {
-      const target = event?.target as HTMLSelectElement;
-      const val = !target || !target.value ? 1.00 : parseFloat(target.value);
-      const pbr = this.#validPlaybackRate(val);
-      this.#mediaElement.playbackRate = this.playbackRate = pbr;
+    console.log(event);
+    if (event instanceof RhAudioPlayerRateSelectEvent && this.#mediaElement) {
+      this.playbackRate = event.playbackRate;
+      this.#mediaElement.playbackRate = event.playbackRate;
     }
   }
 
@@ -1064,17 +983,6 @@ export class RhAudioPlayer extends LitElement {
   }
 
   /**
-   * ensures playback rate value falls between playback rate minimum and maximum values
-   */
-  #validPlaybackRate(number: number) {
-    // ensures number between min and maxk
-    const inRange = Math.max(this.#pbrMin, Math.min(this.#pbrMax, number));
-    // used to round number to nearest step
-    const multiplier = 1 / this.#pbrStep;
-    return Math.round(inRange * multiplier) / multiplier;
-  }
-
-  /**
    * opens particular panel open or closes panels if none given
    */
   #selectOpenPanel(
@@ -1194,7 +1102,8 @@ export class RhAudioPlayer extends LitElement {
 
   #onWindowClick = (event: MouseEvent) => {
     const menu = this.shadowRoot?.getElementById('menu-button');
-    if (!menu || !event.composedPath().includes(menu)) {
+    const path = event.composedPath();
+    if (!menu || !path.includes(menu) && !path.some(x => x instanceof RhMenu)) {
       this.#hideMenu();
     }
   };
@@ -1215,28 +1124,6 @@ export class RhAudioPlayer extends LitElement {
   unmute() {
     if (this.#mediaElement) {
       this.#mediaElement.volume = Math.max(this.#unmutedVolume, 0.1);
-    }
-  }
-
-  /**
-   * Increases media playback rate by playback rate step value
-   */
-  incrementPlaybackrate() {
-    if (this.#mediaElement) {
-      this.#mediaElement.playbackRate =
-        this.playbackRate =
-        this.#validPlaybackRate(this.#mediaElement.playbackRate + this.#pbrStep);
-    }
-  }
-
-  /**
-   * Decreases media playback rate by playback rate step value
-   */
-  decrementPlaybackrate() {
-    if (this.#mediaElement) {
-      this.#mediaElement.playbackRate =
-        this.playbackRate =
-        this.#validPlaybackRate(this.#mediaElement.playbackRate - this.#pbrStep);
     }
   }
 
