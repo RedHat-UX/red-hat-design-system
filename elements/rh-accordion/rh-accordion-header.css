@@ -155,6 +155,14 @@ span {
   inset-inline-start: 0;
 }
 
+.expanded.on.light {
+  --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
+}
+
+.expanded.on.dark {
+  --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+}
+
 @container (min-width: 576px) {
   #header-container:not(.bottom) {
     flex-direction: row;

@@ -44,8 +44,6 @@ export class TabExpandEvent extends Event {
  */
 @customElement('rh-tab')
 export class RhTab extends LitElement {
-  static readonly version = '{{version}}';
-
   static readonly styles = [styles];
 
   /** True when the tab is selected */
