@@ -187,7 +187,7 @@ export class RhAudioPlayer extends LitElement {
    *   - `compact-wide`: like compact but full width
    *   - `full`: maximal controls and artwork
    */
-  @property({ reflect: true }) layout?: 'mini' | 'compact' | 'compact-wide' | 'full';
+  @property({ reflect: true }) layout: 'mini' | 'compact' | 'compact-wide' | 'full' = 'mini';
 
   /** URL to audio's artwork */
   @property({ reflect: true }) poster?: string;
@@ -449,7 +449,7 @@ export class RhAudioPlayer extends LitElement {
   }
 
   render() {
-    const { on = '' } = this;
+    const { expanded, mediatitle, on = 'light', layout, poster } = this;
     const { dir } = this.#dir;
     const { open, styles = {} } = this.#menufloat;
     const showMenu = this.#hasMenu;
@@ -482,17 +482,22 @@ export class RhAudioPlayer extends LitElement {
           class="${classMap({
               [on]: !!on,
               [dir]: true,
+              [layout]: true,
+              expanded,
+              'mediatitle': mediatitle !== undefined,
+              'poster': poster !== undefined,
               'show-menu': showMenu,
               'has-accent-color': accentColor,
               'mobile-safari': !!this.#isMobileSafari,
             })}">
         <input type="hidden" value=${this.#readyState}>
         <slot id="media" name="media" @slotchange="${this.#initMediaElement}"></slot>
-        <div class="${this.expanded ? 'expanded' : ''}"
+        <div id="toolbar"
+             class="${this.expanded ? 'expanded' : ''}"
              part="toolbar"
              aria-controls="media"
-             aria-label="Media Controls">${!this.poster ? '' : html`
-          <div id="poster"><img .src="${this.poster}" aria-hidden="true"></div>`}
+             aria-label="Media Controls">${!poster ? '' : html`
+          <div id="poster"><img .src="${poster}" aria-hidden="true"></div>`}
           <rh-tooltip id="play-tooltip">
             <button id="play"
                     aria-label="${playlabel}"
@@ -516,15 +521,15 @@ export class RhAudioPlayer extends LitElement {
 
           <rh-tooltip id="time-tooltip">
             <input id="time"
-                      class="toolbar-button"
-                      aria-label="${this.#translation.get('seek')}"
-                      min="0"
-                      max="100"
-                      step="1"
-                      type="range"
-                      value="${currentTimePct}"
-                      ?disabled="${this.duration === 0}"
-                      @input=${this.#onTimeSlider}>
+                   class="toolbar-button"
+                   aria-label="${this.#translation.get('seek')}"
+                   min="0"
+                   max="100"
+                   step="1"
+                   type="range"
+                   value="${currentTimePct}"
+                   ?disabled="${this.duration === 0}"
+                   @input=${this.#onTimeSlider}>
             <span slot="content">${this.#translation.get('seek')}</span>
           </rh-tooltip>
 
@@ -532,7 +537,7 @@ export class RhAudioPlayer extends LitElement {
 
           <div class="spacer"></div>${this.#isMini ? '' : html`
 
-          ${this.#playbackRateTemplate()}`}
+          ${this.#playbackRateTemplate('playback-rate')}`}
 
           ${this.#isMobileSafari ? '' : html`
 
@@ -607,7 +612,9 @@ export class RhAudioPlayer extends LitElement {
             <span slot="content">${this.#translation.get('advance')}</span>
           </rh-tooltip>`}${!this.#hasMenu ? '' : html`
 
-          <rh-tooltip id="menu-tooltip" slot="button" position="${this.#menuOpen ? 'left' : 'top'}">
+          <rh-tooltip id="menu-tooltip"
+                      slot="button"
+                      position="${this.#menuOpen ? 'left' : 'top'}">
             <button id="menu-button"
                     class="toolbar-button"
                     aria-label="${this.#translation.get('menu')}"
@@ -632,6 +639,38 @@ export class RhAudioPlayer extends LitElement {
                     @click="${() => this.#selectOpenPanel(x.panel)}">
               ${x.panel.menuLabel}
             </button>`)}
+            <rh-tooltip id="mini-playback-rate-tooltip" class="playback-rate" ?hidden="${this.layout !== 'mini'}">
+              <div id="mini-playback-rate-stepper" class="stepper">
+                <button id="mini-playback-rate-stepdown"
+                        class="playback-rate-step"
+                        tabindex="-1"
+                        aria-hidden="true"
+                        ?disabled="${!this.#mediaElement || this.playbackRate < 0.5}"
+                        @click="${this.decrementPlaybackrate}">
+                  ${RhAudioPlayer.icons.playbackRateSlower}
+                </button>
+                <select id="mini-playback-rate"
+                        aria-label="${this.#translation.get('speed')}"
+                        ?disabled=${!this.#mediaElement}
+                        @click="${this.#onPlaybackRateSelect}"
+                        @change="${this.#onPlaybackRateSelect}"
+                        .value=${this.playbackRate?.toFixed(this.#pbrFixed)}>${this.#playbackRates.map(step=>html`
+                  <option .value=${step.toFixed(this.#pbrFixed)}
+                    ?selected=${this.playbackRate.toFixed(this.#pbrFixed) === step.toFixed(this.#pbrFixed)}>
+                    ${step.toFixed(this.#pbrFixed)}x
+                  </option>`)}
+                </select>
+                <button id="mini-playback-rate-stepup"
+                        class="playback-rate-step"
+                        tabindex="-1"
+                        aria-hidden="true"
+                        ?disabled="${!this.#mediaElement || this.playbackRate > 1.75}"
+                        @click="${this.incrementPlaybackrate}">
+                  ${RhAudioPlayer.icons.playbackRateFaster}
+                </button>
+              </div>
+              <span slot="content">${this.#translation.get('speed')}</span>
+            </rh-tooltip>
           </rh-menu>`}
           <rh-tooltip id="close-tooltip">
             <button id="close"
@@ -677,41 +716,50 @@ export class RhAudioPlayer extends LitElement {
   }
 
   /** template for playback rate controls */
-  #playbackRateTemplate(id = 'playback-rate') {
-    return html`
-      <rh-tooltip id="${id}-tooltip">
-        <div id="${id}-stepper">
-          <button id="${id}-stepdown"
-                  class="playback-rate-step"
-                  tabindex="-1"
-                  aria-hidden="true"
-                  ?disabled="${!this.#mediaElement || this.playbackRate < 0.5}"
-                  @click="${this.decrementPlaybackrate}">
-            ${RhAudioPlayer.icons.playbackRateSlower}
-          </button>
-          <select id="${id}"
-                  aria-label="${this.#translation.get('speed')}"
-                  ?disabled=${!this.#mediaElement}
-                  @click="${this.#onPlaybackRateSelect}"
-                  @change="${this.#onPlaybackRateSelect}"
-                  .value=${this.playbackRate?.toFixed(this.#pbrFixed)}>${this.#playbackRates.map(step=>html`
-            <option .value=${step.toFixed(this.#pbrFixed)}
-              ?selected=${this.playbackRate.toFixed(this.#pbrFixed) === step.toFixed(this.#pbrFixed)}>
-              ${step.toFixed(this.#pbrFixed)}x
-            </option>`)}
-          </select>
-          <button id="${id}-stepup"
-                  class="playback-rate-step"
-                  tabindex="-1"
-                  aria-hidden="true"
-                  ?disabled="${!this.#mediaElement || this.playbackRate > 1.75}"
-                  @click="${this.incrementPlaybackrate}">
-            ${RhAudioPlayer.icons.playbackRateFaster}
-          </button>
-        </div>
-        <span slot="content">${this.#translation.get('speed')}</span>
-      </rh-tooltip>
+  #playbackRateTemplate(id: 'playback-rate' | 'mini-playback-rate' | 'full-playback-rate') {
+    switch (id) {
+      case 'mini-playback-rate':
+        if (this.layout !== 'mini') {
+          return;
+        }
+      // eslint-disable-next-line no-fallthrough
+      default:
+        console.log(id);
+        return html`
+          <rh-tooltip id="${id}-tooltip">
+            <div id="${id}-stepper">
+              <button id="${id}-stepdown"
+                      class="playback-rate-step"
+                      tabindex="-1"
+                      aria-hidden="true"
+                      ?disabled="${!this.#mediaElement || this.playbackRate < 0.5}"
+                      @click="${this.decrementPlaybackrate}">
+                ${RhAudioPlayer.icons.playbackRateSlower}
+              </button>
+              <select id="${id}"
+                      aria-label="${this.#translation.get('speed')}"
+                      ?disabled=${!this.#mediaElement}
+                      @click="${this.#onPlaybackRateSelect}"
+                      @change="${this.#onPlaybackRateSelect}"
+                      .value=${this.playbackRate?.toFixed(this.#pbrFixed)}>${this.#playbackRates.map(step=>html`
+                <option .value=${step.toFixed(this.#pbrFixed)}
+                  ?selected=${this.playbackRate.toFixed(this.#pbrFixed) === step.toFixed(this.#pbrFixed)}>
+                  ${step.toFixed(this.#pbrFixed)}x
+                </option>`)}
+              </select>
+              <button id="${id}-stepup"
+                      class="playback-rate-step"
+                      tabindex="-1"
+                      aria-hidden="true"
+                      ?disabled="${!this.#mediaElement || this.playbackRate > 1.75}"
+                      @click="${this.incrementPlaybackrate}">
+                ${RhAudioPlayer.icons.playbackRateFaster}
+              </button>
+            </div>
+            <span slot="content">${this.#translation.get('speed')}</span>
+          </rh-tooltip>
     `;
+    }
   }
 
   async firstUpdated() {
