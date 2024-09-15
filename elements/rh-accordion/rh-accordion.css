@@ -1,8 +1,10 @@
 #container {
-  height: 100%;
-  width: 100%;
   color: var(--rh-color-text-primary);
   background-color: var(--rh-color-surface);
+
+  &.expanded {
+    box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
+  }
 }
 
 ::slotted(rh-accordion-header:first-child) {
@@ -18,7 +20,6 @@
 ::slotted(rh-accordion-header:is([expanded])) {
   display: block;
   border-block-end: 0;
-  box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
 }
 
 ::slotted(rh-accordion-panel:is([expanded])) {

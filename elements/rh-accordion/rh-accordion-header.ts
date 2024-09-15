@@ -47,8 +47,6 @@ const isAccordion = (x: EventTarget): x is RhAccordion =>
  */
 @customElement('rh-accordion-header')
 export class RhAccordionHeader extends LitElement {
-  static readonly version = '{{version}}';
-
   static readonly styles = [styles];
 
   @property({ type: Boolean, reflect: true }) expanded = false;

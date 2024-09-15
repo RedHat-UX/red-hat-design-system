@@ -5,6 +5,7 @@ import type { ColorTheme } from '@rhds/elements/lib/context/color/consumer.js';
 import { html, LitElement, type ComplexAttributeConverter } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+import { classMap } from 'lit/directives/class-map.js';
 
 import { colorContextConsumer } from '@rhds/elements/lib/context/color/consumer.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
@@ -18,14 +19,16 @@ import {
   ColorSurfaceLightest as lightest,
 } from '@rhds/tokens/color.js';
 
-import { classMap } from 'lit/directives/class-map.js';
-
 import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 
 import style from './rh-context-picker.css';
 
 export class ContextChangeEvent extends Event {
-  constructor(public colorPalette: ColorPalette) {
+  constructor(
+    public colorPalette: ColorPalette,
+    /** the context provider targeted by this element */
+    public provider: HTMLElement | null,
+  ) {
     super('change', { bubbles: true, cancelable: true });
   }
 }
@@ -129,7 +132,7 @@ export class RhContextPicker extends LitElement {
 
   #setValue(value: this['value']) {
     this.#internals.setFormValue(value);
-    if (value !== this.value && this.dispatchEvent(new ContextChangeEvent(value))) {
+    if (value !== this.value && this.dispatchEvent(new ContextChangeEvent(value, this.#target))) {
       this.value = value;
       this.sync();
     }
