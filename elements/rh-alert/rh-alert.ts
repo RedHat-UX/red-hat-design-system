@@ -29,7 +29,6 @@ const ICONS = new Map(Object.entries({
   warning: 'warning-fill',
   danger: 'error-fill',
   info: 'information-fill',
-  close: 'close',
 }));
 
 export class AlertCloseEvent extends Event {
@@ -166,7 +165,7 @@ export class RhAlert extends LitElement {
 
   #slots = new SlotController(this, 'header', null, 'actions');
 
-  #closeHandler() {
+  #onClose() {
     const event = new AlertCloseEvent();
     if (this.dispatchEvent(event)) {
       this.remove();
@@ -198,10 +197,11 @@ export class RhAlert extends LitElement {
               <slot name="header"></slot>
             </div>${!this.dismissable && this.variant !== 'toast' ? '' : html`
             <div id="header-actions">
-              <rh-button variant="close"
+              <rh-button id="close-button"
+                         variant="close"
                          accessible-label="Close"
                          confirm
-                         @click=${this.#closeHandler}></rh-button>
+                         @click=${this.#onClose}></rh-button>
             </div>`}
           </header>
           <div id="description">
