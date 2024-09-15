@@ -10,6 +10,14 @@
   border-radius: var(--rh-border-radius-default, 3px);
 }
 
+rh-icon {
+  color: inherit;
+}
+
+button {
+  color: var(--_text-color);
+}
+
 #container {
   display: flex;
   flex-direction: column;
@@ -109,7 +117,6 @@ rh-audio-player-rate-stepper {
 #mini-playback-rate {
   margin-inline: auto;
 }
-
 
 ::slotted(rh-audio-player-about),
 ::slotted(rh-audio-player-subscribe),
@@ -238,6 +245,12 @@ rh-tooltip > label {
   display: none;
 }
 
+#rewind,
+#forward {
+  display: grid;
+  place-items: center;
+}
+
 #mediaseries,
 #mediatitle {
   text-overflow: ellipsis;
@@ -308,8 +321,8 @@ input[type='range'] {
   line-height: var(--rh-line-height-code, 1.5);
 }
 
-.rtl #mute svg {
-  transform: rotate(180deg);
+.rtl #mute rh-icon {
+  rotate: 180deg;
 }
 
 #volume-tooltip {
@@ -321,12 +334,12 @@ input[type='range'] {
   margin: 0;
 
   --_icon-gap: 16px;
-  --_svg-size: 18px;
+  --rh-icon-size: 18px;
 }
 
 #full-play-tooltip {
   --_button-size: 56px;
-  --_icon-padding: calc((var(--_button-size) - var(--_svg-size)) / 2);
+  --_icon-padding: calc((var(--_button-size) - var(--rh-icon-size)) / 2);
   --_icon-margin: calc(var(--_icon-gap) / 2);
 }
 
@@ -334,7 +347,7 @@ input[type='range'] {
 #mute-tooltip,
 #close-tooltip,
 #menu-tooltip {
-  --_svg-size: var(--rh-size-icon-02, 24px);
+  --rh-icon-size: var(--rh-size-icon-02, 24px);
 }
 
 #menu-button {
@@ -430,9 +443,9 @@ rh-menu > button:focus {
   background-color: var(--_text-color);
 }
 
-#play svg,
-#full-play svg {
-  fill: var(--rh-audio-player-icon-background-color, var(--_surface-color));
+#play,
+#full-play {
+  color: var(--rh-audio-player-icon-background-color, var(--_surface-color));
 }
 
 .expanded {
@@ -524,7 +537,7 @@ rh-menu > button:focus {
     }
 
     &:not(.mini) #mute-tooltip {
-      --_svg-size: var(--rh-size-icon-02, 24px);
+      --rh-icon-size: var(--rh-size-icon-02, 24px);
     }
 
     &.full {
@@ -536,6 +549,10 @@ rh-menu > button:focus {
       & #toolbar {
         padding-inline-end: var(--_player-padding);
         width: calc(var(--_player-width) - var(--_poster-size) - var(--_icon-gap) * 3);
+      }
+
+      &.expanded #toolbar {
+        width: auto;
       }
 
       & #time-tooltip {
@@ -575,10 +592,6 @@ rh-menu > button:focus {
 
       & #menu {
         flex: 0 0 auto;
-      }
-
-      & #menu-tooltip svg {
-        transform: rotate(90deg);
       }
 
       & #full-title {
