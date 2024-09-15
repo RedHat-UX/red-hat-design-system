@@ -42,7 +42,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.watchIgnores?.add('elements/*/test/');
   eleventyConfig.watchIgnores?.add('lib/elements/*/test/');
   eleventyConfig.addPassthroughCopy('docs/patterns/**/*.{svg,jpg,jpeg,png}');
-  eleventyConfig.addPassthroughCopy('elements/*/demo/*.{svg,jpg,jpeg,png}');
+  eleventyConfig.addPassthroughCopy('elements/*/demo/**/*.{svg,jpg,jpeg,png}');
   eleventyConfig.addPassthroughCopy('docs/CNAME');
   eleventyConfig.addPassthroughCopy('docs/.nojekyll');
   eleventyConfig.addPassthroughCopy('docs/robots.txt');
