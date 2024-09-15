@@ -12,8 +12,36 @@ subnav:
   collection: sortedColor
   order: 1
 permalink: /foundations/color/index.html
-
+crayons:
+  - red
+  - red-orange
+  - orange
+  - yellow
+  - green
+  - teal
+  - blue
+  - purple
+  - gray
 ---
+<style data-helmet>
+#crayons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  & .crayons-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    & li {
+      padding: 0;
+      margin: 0;
+      & samp {
+        display: block;
+        padding: var(--rh-space-md) var(--rh-space-lg);
+      }
+    }
+  }
+}
+</style>
 
 ## Introduction
 
@@ -58,7 +86,27 @@ Our design system includes multiple sets of colors known as **"crayon" colors**.
   <img src="/assets/color/primitive-and-semantic-colors.png" alt="Example of how crayon color tokens are aliased to semantic tokens, which are used to style a button">
 </uxdot-example>
 
+## Color tokens
 
+Read more about our colour tokens on the [tokens page](/tokens/).
+
+<section id="crayons-grid">
+{%- for crayon in crayons -%}
+  <div>
+    <h3>{{ crayon | title }}</h3>
+    <ol class="crayons-list">
+      {%- for _, token in tokens.color[crayon] -%}
+      {%- if token.$value and not r/-(rgb|hsl)$/.test(token.name) -%}
+      <li>
+        <samp style="background-color: var(--{{token.name}});
+                     color: {{ 'black' if token.attributes.isLight else 'white' }}">{{ token.name }}</samp>
+      </li>
+      {%- endif -%}
+      {%- endfor -%}
+    </ol>
+  </div>
+{%- endfor -%}
+</section>
 
 <uxdot-feedback>
   <h2>Foundations</h2>
