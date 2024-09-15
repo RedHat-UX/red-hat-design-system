@@ -621,7 +621,7 @@ export class RhAudioPlayer extends LitElement {
 
           <rh-menu id="menu"
                    aria-labelledby="menu-button"
-                   aria-hidden="${String(!this.#menuOpen) as 'true' | 'false'}"
+                   ?inert="${!this.#menuOpen}"
                    style="${styleMap(styles)}"
                    class="${classMap({ open })}"
                    @keydown="${this.#onMenuKeydown}"

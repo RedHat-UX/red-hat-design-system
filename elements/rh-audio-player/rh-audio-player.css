@@ -377,6 +377,7 @@ rh-menu {
   z-index: 2;
 }
 
+rh-menu[inert],
 rh-menu[aria-hidden='true'],
 rh-menu[aria-hidden='true'] > * {
   z-index: -1;
@@ -401,6 +402,7 @@ rh-menu::part(menu) {
   border: none;
 }
 
+rh-menu:not([inert])::part(menu),
 rh-menu[aria-hidden='false']::part(menu) {
   opacity: 1;
   pointer-events: all;
