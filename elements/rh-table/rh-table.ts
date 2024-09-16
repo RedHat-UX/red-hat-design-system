@@ -145,7 +145,7 @@ export class RhTable extends LitElement {
     }
 
     /* Auto-assign `data-label` attributes based on column headers */
-    if (this.#table?.tHead && this.#colHeaders && this.#rows) {
+    if (this.#table?.tHead && this.#colHeaders.length && this.#rows) {
       for (const row of this.#rows) {
         if (!row) {
           continue;
