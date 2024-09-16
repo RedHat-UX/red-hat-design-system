@@ -4,14 +4,12 @@
   tokens,
   typography,
   base,
-  layout,
-  third-party;
+  layout;
 
   @import url('../reset.css') layer(reset);
   @import url('../fonts.css') layer(fonts);
   @import url('/node_modules/@rhds/tokens/css/global.css') layer(tokens);
   @import url('../typography.css') layer(typography);
-  @import url('../third-party/prism-rhds.css') layer(third-party);
 
   @layer base {
     /**
