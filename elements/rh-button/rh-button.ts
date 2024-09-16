@@ -1,3 +1,5 @@
+import type { IconNameFor, IconSetName } from '@rhds/icons';
+
 import { LitElement, html, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
@@ -10,7 +12,6 @@ import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/c
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
 import styles from './rh-button.css';
-import type { IconNameFor, IconSetName } from '@rhds/icons';
 
 /**
  * A button is clickable text or an icon that triggers an action on the page or in the background.
@@ -94,6 +95,9 @@ export class RhButton extends LitElement {
       case 'play':
         this.icon = variant;
         break;
+    }
+    if (this.#hasIcon) {
+      import('@rhds/elements/rh-icon/rh-icon.js');
     }
   }
 
