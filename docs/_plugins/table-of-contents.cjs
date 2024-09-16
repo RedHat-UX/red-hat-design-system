@@ -1,5 +1,4 @@
 // @ts-check
-/// <reference lib="ESNext.Set"/>
 
 /** @license adapted from code (c) Jordan Shermer MIT license*/
 
