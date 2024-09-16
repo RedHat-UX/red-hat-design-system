@@ -27,6 +27,7 @@ crayons:
 #crayons-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--rh-space-2xl);
   & .crayons-list {
     margin: 0;
     padding: 0;
@@ -36,6 +37,7 @@ crayons:
       margin: 0;
       & samp {
         display: block;
+        font-family: var(--rh-font-size-body-text-md);
         padding: var(--rh-space-md) var(--rh-space-lg);
       }
     }
