@@ -118,7 +118,7 @@
         "analyze",
         "react-wrappers",
         "entrypoint",
-        "copy-css",
+        "copy-assets",
         "docs"
       ]
     },
@@ -181,7 +181,7 @@
         "react/**/*"
       ]
     },
-    "copy-css": {
+    "copy-assets": {
       "command": "npx tsx scripts/copy-assets.ts",
       "files": [
         "elements/*/*.css",
