@@ -37,7 +37,8 @@ crayons:
       margin: 0;
       & samp {
         display: block;
-        font-family: var(--rh-font-size-body-text-md);
+        font-size: var(--rh-font-size-body-text-md);
+        font-family: var(--rh-font-family-code);
         padding: var(--rh-space-md) var(--rh-space-lg);
       }
     }
