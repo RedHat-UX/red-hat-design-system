@@ -50,6 +50,10 @@ class UxdotPattern extends LitElement {
       gap: var(--rh-space-lg, 16px);
     }
 
+    rh-context-picker {
+      container: unset;
+    }
+
     #example {
       grid-area: example;
     }
@@ -80,7 +84,7 @@ class UxdotPattern extends LitElement {
 
     @container host (min-width: 992px) {
       #container {
-        grid-template-columns: max-content 1fr;
+        grid-template-columns: minmax(320px, max-content) 1fr;
         grid-template-areas: "controls controls"
                              "example code";
       }
