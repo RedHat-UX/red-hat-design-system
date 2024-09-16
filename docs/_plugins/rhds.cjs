@@ -1,4 +1,5 @@
 /// <reference lib="ESNext.Array"/>
+
 // @ts-check
 const fs = require('node:fs');
 const path = require('node:path');
@@ -8,7 +9,6 @@ const yaml = require('js-yaml');
 const _slugify = require('slugify');
 const slugify = typeof _slugify === 'function' ? _slugify : _slugify.default;
 const capitalize = require('capitalize');
-const cheerio = require('cheerio');
 const RHDSAlphabetizeTagsPlugin = require('./alphabetize-tags.cjs');
 const RHDSShortcodesPlugin = require('./shortcodes.cjs');
 const { parse } = require('async-csv');
@@ -23,28 +23,39 @@ const { parse } = require('async-csv');
  * Replace paths in demo files from the dev SPA's format to 11ty's format
  * @param {string} content the HTML content to replace
  */
-function demoPaths(content) {
+async function demoPaths(content) {
   const { outputPath, inputPath } = this;
   if (!outputPath) {
     return '';
   }
   const isNested = outputPath.match(/demo\/.+\/index\.html$/);
   if (inputPath === './docs/elements/demos.html') {
-    const $ = cheerio.load(content);
-    $('[href], [src]').each(function() {
-      const el = $(this);
-      const attr = el.attr('href') ? 'href' : 'src';
-      const val = el.attr(attr);
-      if (!val) {
-        return;
+    const { parse, serialize } = await import('parse5');
+    const {
+      queryAll,
+      isElementNode,
+      getAttribute,
+      setAttribute,
+      hasAttribute,
+    } = await import('@parse5/tools');
+    const document = parse(content);
+    for (const node of queryAll(document, node =>
+      isElementNode(node)
+        && (hasAttribute(node, 'href')
+         || hasAttribute(node, 'src')))) {
+      if (isElementNode(node)) {
+        const attr = hasAttribute(node, 'href') ? 'href' : 'src';
+        const val = getAttribute(node, attr);
+        if (!val) {
+          return;
+        } else if (!val.startsWith('http') && !val.startsWith('/') && !val.startsWith('#')) {
+          setAttribute(node, attr, `${isNested ? '../' : ''}${val}`);
+        } else if (val.startsWith('/elements/rh-')) {
+          setAttribute(node, attr, val.replace('/elements/rh-', '/'));
+        }
       }
-      if (!val.startsWith('http') && !val.startsWith('/') && !val.startsWith('#')) {
-        el.attr(attr, `${isNested ? '../' : ''}${val}`);
-      } else if (val.startsWith('/elements/rh-')) {
-        el.attr(attr, val.replace('/elements/rh-', '/'));
-      }
-    });
-    return $.html();
+    }
+    return serialize(document);
   }
   return content;
 }
