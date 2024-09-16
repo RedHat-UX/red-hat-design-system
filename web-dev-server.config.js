@@ -1,7 +1,6 @@
 // @ts-check
 import { pfeDevServerConfig } from '@patternfly/pfe-tools/dev-server/config.js';
-import { glob } from 'glob';
-import { readdir, stat } from 'node:fs/promises';
+import { readdir, stat, glob } from 'node:fs/promises';
 import { makeDemoEnv } from './scripts/environment.js';
 import { parse, serialize } from 'parse5';
 import { query, isElementNode, getTextContent, setTextContent } from '@parse5/tools';
@@ -12,9 +11,12 @@ import { query, isElementNode, getTextContent, setTextContent } from '@parse5/to
  * @param {(spec: string) => [string, string]} fn
  */
 async function resolveLocal(pattern, fn) {
-  return glob(pattern, { ignore: ['**/test/**'] })
-      .then(files => files.map(fn))
-      .then(Object.fromEntries);
+  const TEST_RE = /\/test\//;
+  const files = [];
+  for await (const file of glob(pattern, { exclude: x => !TEST_RE.test(x) })) {
+    files.push(file);
+  }
+  return Object.fromEntries(files.map(fn));
 }
 
 export const litcssOptions = {
