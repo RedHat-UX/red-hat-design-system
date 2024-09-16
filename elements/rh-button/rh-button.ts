@@ -10,6 +10,7 @@ import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/c
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
 import styles from './rh-button.css';
+import type { IconNameFor, IconSetName } from '@rhds/icons';
 
 /**
  * A button is clickable text or an icon that triggers an action on the page or in the background.
@@ -47,10 +48,10 @@ export class RhButton extends LitElement {
   @property() name?: string;
 
   /** Shorthand for the `icon` slot, the value is icon name */
-  @property() icon?: string;
+  @property() icon?: IconNameFor<IconSetName>;
 
   /** Icon set for the `icon` property - 'ui' by default */
-  @property({ attribute: 'icon-set' }) iconSet?: string;
+  @property({ attribute: 'icon-set' }) iconSet?: IconSetName;
 
   @query('button') private _button!: HTMLButtonElement;
 
