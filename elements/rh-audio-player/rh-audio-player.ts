@@ -1072,6 +1072,7 @@ export class RhAudioPlayer extends LitElement {
   async #onMenuKeydown(event: KeyboardEvent) {
     if (event.key === 'Escape') {
       await this.#hideMenu();
+      this.shadowRoot?.querySelector<HTMLButtonElement>('#menu-button')?.focus();
     }
   }
 
