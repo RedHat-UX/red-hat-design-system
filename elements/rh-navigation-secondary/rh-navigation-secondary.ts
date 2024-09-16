@@ -7,6 +7,7 @@ import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js
 
 import { ComposedEvent } from '@patternfly/pfe-core';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import '@rhds/elements/rh-surface/rh-surface.js';
@@ -53,7 +54,6 @@ function focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
 
 /**
  * The Secondary navigation is used to connect a series of pages together. It displays wayfinding content and links relevant to the page it is placed on. It should be used in conjunction with the [primary navigation](../navigation-primary).
- *
  * @summary Propagates related content across a series of pages
  * @slot logo           - Logo added to the main nav bar, expects `<a>Text</a> | <a><svg/></a> | <a><img/></a>` element
  * @slot nav            - Navigation list added to the main nav bar, expects `<ul>` element
@@ -66,12 +66,45 @@ function focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
  *                                         Fires when an dropdown is opened or closed in desktop
  *                                         view or when the mobile menu button is toggled in mobile
  *                                         view.
- * @cssprop {<integer>} --rh-navigation-secondary-z-index - z-index of the navigation-secondary {@default `102`}
- * @cssprop {<integer>} --rh-navigation-secondary-overlay-z-index - z-index of the navigation-secondary-overlay {@default `-1`}
+ * @cssprop {<integer>} [--rh-navigation-secondary-z-index=102] - z-index of the navigation-secondary
+ * @cssprop {<integer>} [--rh-navigation-secondary-overlay-z-index=-1] - z-index of the navigation-secondary-overlay
  */
 @customElement('rh-navigation-secondary')
 export class RhNavigationSecondary extends LitElement {
   static readonly styles = [styles];
+
+  private static instances = new Set<RhNavigationSecondary>();
+
+  static {
+    globalThis.addEventListener('keyup', (event: KeyboardEvent) => {
+      const { instances } = RhNavigationSecondary;
+      for (const instance of instances) {
+        instance.#onKeyup(event);
+      }
+    }, { capture: false });
+  }
+
+
+  #logger = new Logger(this);
+  #logoCopy: HTMLElement | null = null;
+
+  /** Is the element in an RTL context? */
+  #dir = new DirController(this);
+
+  /** Compact mode  */
+  #compact = false;
+
+  get #items() {
+    return this._nav?.flatMap(slotted =>
+      Array.from(slotted.querySelectorAll<HTMLAnchorElement>(`rh-navigation-secondary-dropdown > a,
+                                                              [slot="nav"] > li > a`))) ?? [];
+  }
+
+  #tabindex = RovingTabindexController.of(this, {
+    getItems: () => this.#items,
+  });
+
+  #internals = InternalsController.of(this, { role: 'navigation' });
 
   /**
    * Color palette darker | lighter (default: lighter)
@@ -81,27 +114,6 @@ export class RhNavigationSecondary extends LitElement {
 
   @queryAssignedElements({ slot: 'nav' }) private _nav?: HTMLElement[];
 
-  #logger = new Logger(this);
-
-  #logoCopy: HTMLElement | null = null;
-
-  /**
-   * The accessible label for the <nav> element
-   */
-  #label = 'secondary';
-
-  /** Is the element in an RTL context? */
-  #dir = new DirController(this);
-
-  /** Compact mode  */
-  #compact = false;
-
-  #tabindex = new RovingTabindexController(this, {
-    getItems: () => this._nav?.flatMap(slotted =>
-      Array.from(slotted.querySelectorAll<HTMLAnchorElement>(`:is(rh-navigation-secondary-dropdown,
-                                                                  rh-secondary-nav-dropdown) > a,
-                                                              [slot="nav"] > li > a`))) ?? [],
-  });
 
   /**
    * `mobileMenuExpanded` property is toggled when the mobile menu button is clicked,
@@ -137,6 +149,7 @@ export class RhNavigationSecondary extends LitElement {
 
   async connectedCallback() {
     super.connectedCallback();
+    RhNavigationSecondary.instances.add(this);
     this.#compact = !this.#screenSize.matches.has('md');
     this.addEventListener('expand-request', this.#onExpandRequest);
     this.addEventListener('overlay-change', this.#onOverlayChange);
@@ -145,15 +158,19 @@ export class RhNavigationSecondary extends LitElement {
     this.#upgradeAccessibility();
   }
 
+  disconnectedCallback(): void {
+    super.disconnectedCallback();
+    RhNavigationSecondary.instances.delete(this);
+  }
+
   render() {
     const expanded = this.mobileMenuExpanded;
     const rtl = this.#dir.dir === 'rtl';
     // CTA must always be 'lightest' on mobile screens
     const dropdownPalette = this.#compact ? 'lightest' : this.colorPalette;
     return html`
-      <nav part="nav"
-           class="${classMap({ compact: this.#compact, rtl })}"
-           aria-label="${this.#label}">
+      <div part="nav"
+           class="${classMap({ compact: this.#compact, rtl })}">
         ${this.#logoCopy}
         <div id="container" part="container" class="${classMap({ expanded })}">
           <slot name="logo" id="logo"></slot>
@@ -161,13 +178,13 @@ export class RhNavigationSecondary extends LitElement {
                   aria-expanded="${String(expanded) as 'true' | 'false'}"
                   @click="${this.#toggleMobileMenu}"><slot name="mobile-menu">Menu</slot></button>
           <rh-surface color-palette="${dropdownPalette}">
-            <slot name="nav" @slotchange="${() => this.#tabindex.updateItems()}"></slot>
+            <slot name="nav" @slotchange="${() => this.#tabindex.items = this.#items}"></slot>
             <div id="cta" part="cta">
               <slot name="cta"></slot>
             </div>
           </rh-surface>
         </div>
-      </nav>
+      </div>
       <rh-navigation-secondary-overlay
           .open="${this.overlayOpen}"
           @click="${this.#onOverlayClick}"
@@ -207,7 +224,7 @@ export class RhNavigationSecondary extends LitElement {
    */
   #onFocusout(event: FocusEvent) {
     const target = event.relatedTarget as HTMLElement;
-    if (target?.closest('rh-navigation-secondary, rh-secondary-nav') === this || target === null) {
+    if (target?.closest('rh-navigation-secondary') === this || target === null) {
       // if the focus is still inside the rh-navigation-secondary exit
       return;
     } else {
@@ -244,21 +261,42 @@ export class RhNavigationSecondary extends LitElement {
           this.mobileMenuExpanded = false;
           this.shadowRoot?.querySelector('button')?.focus?.();
         } else {
-          this.#tabindex.activeItem?.focus();
+          this.#tabindex.items[this.#tabindex.atFocusedItemIndex]?.focus();
         }
         this.close();
         this.overlayOpen = false;
         break;
       }
       case 'Tab':
-        this.#onTabEvent(event);
+        this.#onTabKeydown(event);
         break;
       default:
         break;
     }
   }
 
-  #onTabEvent(event: KeyboardEvent) {
+  #onKeyup(event: KeyboardEvent) {
+    switch (event.key) {
+      case 'Tab':
+        this.#onTabKeyup(event);
+        break;
+      default:
+        break;
+    }
+  }
+
+  #onTabKeyup(event: KeyboardEvent) {
+    if (!this.mobileMenuExpanded) {
+      return;
+    }
+    const { target } = event;
+    if (!this.contains(target as HTMLElement)) {
+      this.#toggleMobileMenu();
+      this.overlayOpen = false;
+    }
+  }
+
+  #onTabKeydown(event: KeyboardEvent) {
     // target is the element we are leaving with tab press
     const target = event.target as HTMLElement;
     // get target parent dropdown
@@ -277,7 +315,9 @@ export class RhNavigationSecondary extends LitElement {
         return;
       } else {
         this.close();
-        this.overlayOpen = false;
+        if (!this.mobileMenuExpanded) {
+          this.overlayOpen = false;
+        }
       }
     } else {
       // is the target the last focusableChildren element in the dropdown
@@ -287,9 +327,10 @@ export class RhNavigationSecondary extends LitElement {
       }
       event.preventDefault();
       this.close();
-      this.overlayOpen = false;
-      this.#tabindex.setActiveItem(this.#tabindex.nextItem);
-      this.#tabindex.activeItem?.focus();
+      if (!this.mobileMenuExpanded) {
+        this.overlayOpen = false;
+      }
+      this.#tabindex.atFocusedItemIndex++;
     }
   }
 
@@ -332,7 +373,7 @@ export class RhNavigationSecondary extends LitElement {
     if (dropdown && RhNavigationSecondary.isDropdown(dropdown)) {
       const link = dropdown.querySelector('a');
       if (link) {
-        this.#tabindex.setActiveItem(link);
+        this.#tabindex.atFocusedItemIndex = this.#items.indexOf(link);
       }
       this.#openDropdown(dropdown);
     }
@@ -343,7 +384,7 @@ export class RhNavigationSecondary extends LitElement {
    */
   #allDropdowns(): RhNavigationSecondaryDropdown[] {
     return Array.from(
-      this.querySelectorAll('rh-navigation-secondary-dropdown, rh-secondary-nav-dropdown')
+      this.querySelectorAll('rh-navigation-secondary-dropdown')
     );
   }
 
@@ -389,11 +430,8 @@ export class RhNavigationSecondary extends LitElement {
     this.removeAttribute('role');
     // remove aria-labelledby from slotted `<ul>` on upgrade
     this.querySelector(':is([slot="nav"]):is(ul)')?.removeAttribute('aria-labelledby');
-    // transfer the aria-label to the shadow <nav>
-    if (this.hasAttribute('aria-label')) {
-      this.#label = this.getAttribute('aria-label') ?? 'secondary';
-      this.removeAttribute('aria-label');
-    }
+    // if the accessibleLabel attr is undefined, check aria-label if undefined use default
+    this.#internals.ariaLabel = 'secondary';
   }
 
   /**
@@ -432,19 +470,8 @@ export class RhNavigationSecondary extends LitElement {
   }
 }
 
-@customElement('rh-secondary-nav')
-class RhSecondaryNav extends RhNavigationSecondary {
-  #logger = new Logger(this);
-
-  constructor() {
-    super();
-    this.#logger.warn('rh-secondary-nav is deprecated. Use rh-navigation-secondary instead.');
-  }
-}
-
 declare global {
   interface HTMLElementTagNameMap {
     'rh-navigation-secondary': RhNavigationSecondary;
-    'rh-secondary-nav': RhSecondaryNav;
   }
 }

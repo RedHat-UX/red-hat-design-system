@@ -1,12 +1,14 @@
+import type { ColorPalette } from '@rhds/elements/lib/context/color/provider.js';
+import type { Color } from '@rhds/tokens/js/types.js';
+import type { ColorTheme } from '@rhds/elements/lib/context/color/consumer.js';
+
 import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { query } from 'lit/decorators/query.js';
 
-import { type ColorPalette } from '../../context/color/provider.js';
-import { colorContextConsumer, type ColorTheme } from '../../context/color/consumer.js';
+import { colorContextConsumer } from '@rhds/elements/lib/context/color/consumer.js';
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
-import type { Color } from '@rhds/tokens/js/types.js';
 import {
   ColorSurfaceDarkest as darkest,
   ColorSurfaceDarker as darker,
@@ -16,7 +18,6 @@ import {
   ColorSurfaceLightest as lightest,
 } from '@rhds/tokens/color.js';
 
-import { styleMap } from 'lit/directives/style-map.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import '@rhds/elements/rh-tooltip/rh-tooltip.js';
@@ -44,15 +45,6 @@ export class RhContextPicker extends LitElement {
     lightest,
   }) as [ColorPalette, Color][]);
 
-  private static offsets: Partial<Record<ColorPalette, number>> = {
-    darkest: -4,
-    darker: -3,
-    dark: -3,
-    light: -1,
-    lighter: 1,
-    lightest: 2,
-  };
-
   private static paletteNames = Array.from(RhContextPicker.palettes, ([name]) => name);
 
   declare shadowRoot: ShadowRoot;
@@ -61,8 +53,6 @@ export class RhContextPicker extends LitElement {
   @property() target?: string;
 
   @property() value: ColorPalette = 'darkest';
-
-  @query('#context-range') private range?: HTMLInputElement;
 
   @colorContextConsumer() private on?: ColorTheme;
 
@@ -79,44 +69,29 @@ export class RhContextPicker extends LitElement {
     },
   }) allow = RhContextPicker.paletteNames;
 
-  #offset = RhContextPicker.offsets[this.value];
-
-  #internals = this.attachInternals();
+  #internals = InternalsController.of(this);
 
   #target: HTMLElement | null = null;
 
-  willUpdate() {
-    this.#offset = RhContextPicker.offsets[this.value];
-  }
-
   render() {
-    const { on = 'dark', value = 'darkest' } = this;
-    const derivedLabel = this.#internals.ariaLabel
-      ?? Array.from(this.#internals.labels, x => x.textContent).join();
+    const { allow, on = 'dark', value = 'darkest' } = this;
     return html`
-      <div id="container" class="${classMap({ [on]: true })}">
-          <input id="context-range"
-                 class="${classMap({ [value]: true })}"
-                 name="range"
-                 type="range"
-                 list="palettes"
-                 min="0"
-                 max="${this.allow.length - 1}"
-                .value="${this.allow.indexOf(this.value).toString()}"
-                 aria-label="${derivedLabel}"
-                 style="${styleMap({
-                   '--count': `${this.allow.length}`,
-                   '--offset': `${this.#offset}px`,
-                  })}"
-                 @input="${this.#onInput}">
-          <datalist id="palettes">${this.allow.map(palette => html`
-            <option id="option-${palette}"
-                    value="${palette}"
-                    title="${palette}"
-                    @click="${() => this.#setValue(palette)}">
-              <span class="visually-hidden">${palette}</span>
-            </option>`)}
-          </datalist>
+      <div id="host-label"
+           class="visually-hidden">${this.#internals.computedLabelText}</div>
+      <div id="container"
+           @input="${this.#onInput}"
+           class="${classMap({ [`on-${on}`]: true })}">
+        ${allow.map(palette => html`
+        <label for="radio-${palette}" class="visually-hidden">${palette}</label>
+        <rh-tooltip>
+          <span slot="content">${palette}</span>
+          <input id="radio-${palette}" class="${classMap({ [palette]: true })}"
+                 name="palette"
+                 type="radio"
+                 value="${palette}"
+                 aria-describedby="host-label"
+                 ?checked="${value === palette}">`)}
+        </rh-tooltip>
       </div>
     `;
   }
@@ -126,6 +101,9 @@ export class RhContextPicker extends LitElement {
   }
 
   firstUpdated() {
+    for (const label of this.#internals.labels) {
+      label.addEventListener('click', () => this.focus());
+    }
     const oldTarget = this.#target;
     if (this.target) {
       const root = this.getRootNode() as Document | ShadowRoot;
@@ -145,11 +123,11 @@ export class RhContextPicker extends LitElement {
   }
 
   #onInput(event: Event) {
-    if (event.target instanceof HTMLInputElement) {
+    if (event.target instanceof HTMLInputElement && event.target.checked) {
       event.stopPropagation();
-      const value = this.allow.at(+event.target.value);
+      const { value } = event.target;
       if (value) {
-        this.#setValue(value);
+        this.#setValue(value as this['value']);
       }
     }
   }
@@ -160,6 +138,13 @@ export class RhContextPicker extends LitElement {
       this.value = value;
       this.sync();
     }
+  }
+
+  override focus() {
+    const input: HTMLInputElement | null =
+         this.shadowRoot.querySelector('input[checked]')
+      ?? this.shadowRoot.querySelector('input');
+    input?.focus();
   }
 
   sync() {

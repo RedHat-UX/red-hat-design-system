@@ -65,15 +65,10 @@ describe('<rh-card>', function() {
       shouldUpgrade(element);
     });
 
-    describe('heading in body', function() {
+    describe('heading', function() {
       it('should have initial font-size', function() {
-        const expectedEl = document.createElement('h3');
-        expectedEl.textContent = 'a';
-        document.body.append(expectedEl);
-        const expected = getComputedStyle(expectedEl).getPropertyValue('font-size');
-        expectedEl.remove();
         expect(getComputedStyle(element.querySelector('h3')!).getPropertyValue('font-size'))
-            .to.equal(expected);
+            .to.equal(remToPx(tokens.get('--rh-font-size-heading-sm').$value));
       });
     });
 

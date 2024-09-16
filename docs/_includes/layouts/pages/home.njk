@@ -1,0 +1,16 @@
+---
+layout: layouts/base.njk
+importElements:
+  - rh-cta
+  - rh-footer
+  - rh-tag
+---
+
+{% include 'partials/component/masthead.njk' %}
+{% include 'partials/component/sidenav.njk' %}
+<main id="main">
+  {{ content | safe }}
+  {% include "partials/component/back-to-top.njk" %}
+</main>
+{% include 'partials/component/footer.njk' %}
+

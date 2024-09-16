@@ -1,4 +1,4 @@
-<div lang="he" dir="rtl">
+<div id="rtl-nav-secondary" lang="he" dir="rtl">
   <rh-navigation-secondary role="navigation">
     <a href="#" slot="logo" id="logo-id" aria-current="page">
       Red Hat Ansible Automation Platform
@@ -16,14 +16,14 @@
                 <li>
                   <a href="#">
                     אינטגרציות
-                    <pf-icon set="patternfly" icon="arrow" size="sm" loading="idle"></pf-icon>
+                    <rh-icon set="ui" icon="arrow-right" size="sm" loading="idle"></rh-icon>
                   </a>
                 </li>
                 <li><a href="#">סיפורי הצלחה מותאמים אישית</a></li>
                 <li>
                   <a href="#">
                     מה זה Ansible
-                    <pf-icon set="patternfly" icon="arrow" size="sm" loading="idle"></pf-icon>
+                    <rh-icon set="ui" icon="arrow-right" size="sm" loading="idle"></rh-icon>
                   </a>
                 </li>
                 <li><a href="#">למה לבחור Red Hat לאוטומציה?</a></li>
@@ -43,32 +43,32 @@
                 <li>
                   <a href="#">
                     רשת אוטומציה
-                    <pf-icon set="patternfly" icon="arrow" size="sm" loading="idle"></pf-icon>
+                    <rh-icon set="ui" icon="arrow-right" size="sm" loading="idle"></rh-icon>
                   </a>
                 </li>
                 <li><a href="#">אוספי תוכן של Ansible</a></li>
                 <li>
                   <a href="#">
                     רכזת אוטומציה
-                    <pf-icon set="patternfly" icon="arrow" size="sm" loading="idle"></pf-icon>
+                    <rh-icon set="ui" icon="arrow-right" size="sm" loading="idle"></rh-icon>
                   </a>
                 </li>
                 <li>
                   <a href="#">
                     Red Hat Insights עבור Red Hat Ansible Automation Platform
-                    <pf-icon set="patternfly" icon="arrow" size="sm" loading="idle"></pf-icon>
+                    <rh-icon set="ui" icon="arrow-right" size="sm" loading="idle"></rh-icon>
                   </a>
                 </li>
                 <li>
                   <a href="#">
                     קטלוג שירותי אוטומציה
-                    <pf-icon set="patternfly" icon="arrow" size="sm" loading="idle"></pf-icon>
+                    <rh-icon set="ui" icon="arrow-right" size="sm" loading="idle"></rh-icon>
                   </a>
                 </li>
                 <li>
                   <a href="#">
                     כלי תוכן Ansible
-                    <pf-icon set="patternfly" icon="arrow" size="sm" loading="idle"></pf-icon>
+                    <rh-icon set="ui" icon="arrow-right" size="sm" loading="idle"></rh-icon>
                   </a>
                 </li>
               </ul>
@@ -87,19 +87,19 @@
               <li>
                 <a href="#">
                   תַשׁתִית
-                  <pf-icon set="patternfly" icon="arrow" size="sm" loading="idle"></pf-icon>
+                  <rh-icon set="ui" icon="arrow-right" size="sm" loading="idle"></rh-icon>
                 </a>
               </li>
               <li>
                 <a href="#">
                   יישומים
-                  <pf-icon set="patternfly" icon="arrow" size="sm" loading="idle"></pf-icon>
+                  <rh-icon set="ui" icon="arrow-right" size="sm" loading="idle"></rh-icon>
                 </a>
               </li>
               <li>
                 <a href="#">
                   רשתות
-                  <pf-icon set="patternfly" icon="arrow" size="sm" loading="idle"></pf-icon>
+                  <rh-icon set="ui" icon="arrow-right" size="sm" loading="idle"></rh-icon>
                 </a>
               </li>
             </ul>
@@ -107,19 +107,19 @@
               <li>
                 <a href="#">
                   מיכלים
-                  <pf-icon set="patternfly" icon="arrow" size="sm" loading="idle"></pf-icon>
+                  <rh-icon set="ui" icon="arrow-right" size="sm" loading="idle"></rh-icon>
                 </a>
               </li>
               <li>
                 <a href="#">
                   בִּטָחוֹן
-                  <pf-icon set="patternfly" icon="arrow" size="sm" loading="idle"></pf-icon>
+                  <rh-icon set="ui" icon="arrow-right" size="sm" loading="idle"></rh-icon>
                 </a>
               </li>
               <li>
                 <a href="#">
                   ענן
-                  <pf-icon set="patternfly" icon="arrow" size="sm" loading="idle"></pf-icon>
+                  <rh-icon set="ui" icon="arrow-right" size="sm" loading="idle"></rh-icon>
                 </a>
               </li>
             </ul>
@@ -145,27 +145,19 @@
 </div>
 
 <style>
-  /* fixes demo for overflow and display of sticky nav */
-  main {
-    display: contents;
-  }
-
-  [data-demo="rh-navigation-secondary"] {
+  #rtl-nav-secondary {
     padding: 0;
-  }
-
-  /* content space-holder that allows for overflow */
-  #space-holder {
-    min-height: 101vh;
-    padding: var(--_text-padding, var(--rh-space-lg, 16px));
-  }
-
-  @media screen and (min-width: 768px) {
-    #space-holder { --_text-padding: var(--rh-space-2xl, 32px); }
-  }
-
-  @media screen and (min-width: 1440px) {
-    #space-holder { --_text-padding: var(--rh-space-4xl, 64px); }
+    /* content space-holder that allows for overflow */
+    & #space-holder {
+      min-height: 101vh;
+      padding: var(--_text-padding, var(--rh-space-lg, 16px));
+      @media screen and (min-width: 768px) {
+        --_text-padding: var(--rh-space-2xl, 32px);
+      }
+      @media screen and (min-width: 1440px) {
+        --_text-padding: var(--rh-space-4xl, 64px);
+      }
+    }
   }
 </style>
 

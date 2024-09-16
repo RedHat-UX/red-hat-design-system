@@ -1,7 +1,8 @@
 :host {
-  position: absolute;
-  right: var(--rh-space-xl, 24px);
-  bottom: var(--rh-space-xl, 24px);
+  position: fixed;
+  z-index: 1000;
+  inset-inline-end: var(--rh-space-xl, 24px);
+  inset-block-end: var(--rh-space-xl, 24px);
 }
 
 [part="trigger"] {
@@ -38,9 +39,9 @@
   display: none;
 }
 
-pf-icon {
-  /* override icon size as default sm variant is incorrect */
-  --pf-icon--size: var(--rh-font-size-body-text-xs, 0.75rem);
+rh-icon {
+  /* Non Standard Icon size */
+  --rh-icon-size: var(--rh-font-size-body-text-xs, 0.75rem);
 
   vertical-align: -0.125rem;
 }
@@ -54,7 +55,7 @@ span {
 
 @media (min-width: 768px) {
   :host {
-    right: var(--rh-back-to-top-position-right, var(--rh-space-3xl, 48px));
-    bottom: var(--rh-back-to-top-position-bottom, var(--rh-space-3xl, 48px));
+    inset-inline-end: var(--rh-space-3xl, 48px);
+    inset-block-end: var(--rh-space-3xl, 48px);
   }
 }

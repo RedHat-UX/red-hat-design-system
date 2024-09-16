@@ -1,4 +1,3 @@
-import type { PropertyValues } from 'lit';
 import type { RhTabsContext } from './context.js';
 
 import { html, LitElement } from 'lit';
@@ -9,11 +8,11 @@ import { query } from 'lit/decorators/query.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { consume } from '@lit/context';
 
-import { observed } from '@patternfly/pfe-core/decorators.js';
+import { observes } from '@patternfly/pfe-core/decorators/observes.js';
+import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-
-import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import { context } from './context.js';
 
@@ -30,59 +29,50 @@ export class TabExpandEvent extends Event {
 
 /**
  * The tab button for use within a rh-tabs element, must be paired with a rh-tab-panel.
- *
- * @slot icon - Can contain an `<svg>` or `<pf-icon>`
+ * @slot icon - Can contain an `<svg>` or `<rh-icon>`
  * @slot - Tab title text
- *
- * @csspart button - `<button>` element
+ * @csspart button - element that contains the interactive part of a tab
  * @csspart icon - icon `<span>` element
  * @csspart text - tile text `<span>` element
- *
- * @cssprop {<color>} --rh-tabs-link-color - Tab link text color {@default `#4d4d4d`}
- * @cssprop {<color>} --rh-tabs-active-border-color - Tab active border color {@default `#ff442b`}
- * @cssprop {<length>} --rh-tabs-link-padding-inline-start - Tab padding inline start {@default `32px`}
- * @cssprop {<length>} --rh-tabs-link-padding-block-start - Tab padding block start {@default `16px`}
- * @cssprop {<length>} --rh-tabs-link-padding-inline-end - Tab padding inline end {@default 32px`}
- * @cssprop {<length>} --rh-tabs-link-padding-block-end - Tab padding block end {@default `16px`}
- *
+ * @cssprop {<color>} [--rh-tabs-link-color=#4d4d4d] - Tab link text color
+ * @cssprop {<color>} [--rh-tabs-active-border-color=#ff442b] - Tab active border color
+ * @cssprop {<length>} [--rh-tabs-link-padding-inline-start=32px] - Tab padding inline start
+ * @cssprop {<length>} [--rh-tabs-link-padding-block-start=16px] - Tab padding block start
+ * @cssprop {<length>} [--rh-tabs-link-padding-inline-end=32px`] - Tab padding inline end
+ * @cssprop {<length>} [--rh-tabs-link-padding-block-end=16px] - Tab padding block end
  * @fires { TabExpandEvent } expand - when a tab expands
  */
 @customElement('rh-tab')
 export class RhTab extends LitElement {
-  static shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
-
   static readonly version = '{{version}}';
 
   static readonly styles = [styles];
 
-  /** `active` should be observed, and true when the tab is selected */
-  @observed
+  /** True when the tab is selected */
   @property({ reflect: true, type: Boolean }) active = false;
 
-  /** `disabled` should be observed, and true when the tab is disabled */
-  @observed
+  /** True when the tab is disabled */
   @property({ reflect: true, type: Boolean }) disabled = false;
 
   @consume({ context, subscribe: true })
   @property({ attribute: false })
   private ctx?: RhTabsContext;
 
-  /**
-   * Sets color theme based on parent context
-   */
+  /** Sets color theme based on parent context */
   @colorContextConsumer() private on?: ColorTheme;
 
   @queryAssignedElements({ slot: 'icon', flatten: true }) private icons!: HTMLElement[];
 
-  @query('button') private button!: HTMLButtonElement;
+  @query('#button') private button!: HTMLButtonElement;
 
-  #internals = this.attachInternals();
+  #internals = InternalsController.of(this, { role: 'tab' });
 
   override connectedCallback() {
     super.connectedCallback();
     this.id ||= getRandomId(this.localName);
     this.addEventListener('click', this.#onClick);
-    this.#internals.role = 'tab';
+    this.addEventListener('keydown', this.#onKeydown);
+    this.addEventListener('focus', this.#onFocus);
   }
 
   render() {
@@ -91,31 +81,40 @@ export class RhTab extends LitElement {
     const first = firstTab === this;
     const last = lastTab === this;
     return html`
-      <div id="container" class="${classMap({ active, box, vertical, first, last, [on]: !!on })}">
-        <button part="button" ?disabled="${this.disabled}">
-          <slot name="icon"
-                part="icon"
-                ?hidden="${!this.icons.length}"
-                @slotchange="${() => this.requestUpdate()}"></slot>
-          <slot part="text"></slot>
-        </button>
+      <div id="button"
+           part="button"
+           ?disabled="${this.disabled}"
+           class="${classMap({ active, box, vertical, first, last, [on]: !!on })}">
+        <slot name="icon"
+              part="icon"
+              ?hidden="${!this.icons.length}"
+              @slotchange="${() => this.requestUpdate()}"></slot>
+        <slot part="text"></slot>
       </div>
     `;
-  }
-
-  updated(changed: PropertyValues<this>) {
-    if (changed.has('active') && this.active && !changed.get('active')) {
-      this.#activate();
-    }
-    if (changed.has('disabled')) {
-      this.#disabledChanged();
-    }
   }
 
   #onClick() {
     if (!this.disabled && this.#internals.ariaDisabled !== 'true' && this.ariaDisabled !== 'true') {
       this.#activate();
-      this.focus(); // safari fix
+      if (InternalsController.isSafari) {
+        this.focus();
+      }
+    }
+  }
+
+  #onFocus() {
+    if (!this.ctx?.manual && !this.disabled) {
+      this.#activate();
+    }
+  }
+
+  #onKeydown(event: KeyboardEvent) {
+    if (!this.disabled) {
+      switch (event.key) {
+        case 'Enter':
+          this.#activate();
+      }
     }
   }
 
@@ -123,17 +122,22 @@ export class RhTab extends LitElement {
     this.dispatchEvent(new TabExpandEvent(this.active, this));
   }
 
+  @observes('active')
+  private activeChanged(old: boolean) {
+    this.#internals.ariaSelected = String(!!this.active);
+    if (this.active && !old) {
+      this.#activate();
+    }
+  }
+
   /**
    * if a tab is disabled, then it is also aria-disabled
    * if a tab is removed from disabled its not necessarily
    * not still aria-disabled so we don't remove the aria-disabled
    */
-  #disabledChanged() {
+  @observes('disabled')
+  private disabledChanged() {
     this.#internals.ariaDisabled = String(!!this.disabled);
-  }
-
-  focus() {
-    this.button.focus();
   }
 }
 

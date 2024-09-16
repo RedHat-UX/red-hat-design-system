@@ -9,8 +9,9 @@ import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
+import type { IconNameFor, IconSetName } from '@rhds/icons';
+
 import styles from './rh-stat.css';
-import { ifDefined } from 'lit/directives/if-defined.js';
 
 /**
  * A statistic showcases a data point or quick fact visually.
@@ -24,7 +25,6 @@ import { ifDefined } from 'lit/directives/if-defined.js';
  * @slot statistic - Statistic data
  * @slot cta - Call to action
  * @slot - Description of the stat
- * @cssprop --pf-icon--size
  *
  */
 @customElement('rh-stat')
@@ -35,8 +35,15 @@ export class RhStat extends LitElement {
 
   @colorContextConsumer() private on?: ColorTheme;
 
-  /** The icon to display in the statistic */
-  @property({ reflect: true, type: String }) icon?: string;
+  /**
+   * The icon to display in the statistic
+   */
+  @property({ reflect: true }) icon?: IconNameFor<IconSetName>;
+
+  /**
+   * Icon set to display in the statistic
+   */
+  @property({ attribute: 'icon-set' }) iconSet: IconSetName = 'standard';
 
   /** Whether the title or statistic should be displayed on top in the statistic */
   @property({ reflect: true, type: String }) top: 'default' | 'statistic' = 'default';
@@ -57,9 +64,14 @@ export class RhStat extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.#updateIcons();
     this.#mo.observe(this, { childList: true });
     this.#onMutation();
+  }
+
+  willUpdate() {
+    if (this.icon) {
+      import('@rhds/elements/rh-icon/rh-icon.js');
+    }
   }
 
   render() {
@@ -68,14 +80,15 @@ export class RhStat extends LitElement {
     const hasStatistic = this.#slots.hasSlotted('statistic');
     const hasCta = this.#slots.hasSlotted('cta');
     const isMobile = !this.#screenSize.matches.has('sm');
+    const iconSize = this.size === 'default' ? 'md' : 'lg';
     const { on = '' } = this;
     return html`
       <div class="${classMap({ isMobile, hasIcon, hasTitle, hasStatistic, hasCta, [on]: !!on })}">
-        <span id="icon">
-          <slot name="icon" @slotchange="${this.#updateIcons}">${!this.icon ? '' : /* TODO: replace with rh-icon */html`
-            <pf-icon size=${this.size === 'default' ? 'md' : 'lg'}
-                     icon=${this.icon}
-                     set="${ifDefined(this.getAttribute('icon-set') ?? undefined)}"></pf-icon>`}
+        <span id="icon" class="${classMap({ [iconSize]: !!iconSize })}">
+          <slot name="icon">
+            ${!this.icon ? '' : html`
+              <rh-icon icon="${this.icon}" set="${this.iconSet}"></rh-icon>
+            `}
           </slot>
         </span>
         <span id="title"><slot name="title"></slot></span>
@@ -84,11 +97,6 @@ export class RhStat extends LitElement {
         <span id="cta"><slot name="cta"></slot></span>
       </div>
     `;
-  }
-
-  #updateIcons(): void {
-    this.querySelector('pf-icon[slot="icon"]')
-        ?.setAttribute?.('size', this.size === 'default' ? 'md' : 'lg');
   }
 
   #onMutation() {

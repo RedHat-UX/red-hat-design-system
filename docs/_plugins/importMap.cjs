@@ -3,10 +3,10 @@ const { join } = require('node:path');
 const { pathToFileURL } = require('node:url');
 const { AssetCache } = require('@11ty/eleventy-fetch');
 
-function logPerf() {
+async function logPerf() {
   // We should log performance regressions
   /* eslint-disable no-console */
-  const chalk = require('chalk');
+  const { default: chalk } = await import('chalk');
   const TOTAL = performance.measure('importMap-total', 'importMap-start', 'importMap-end');
   const RESOLVE = performance.measure(
     'importMap-resolve',
@@ -32,9 +32,8 @@ function logPerf() {
 }
 
 /**
- * @typedef {Object} Options
- *
- * @property {string} [defaultProvider]
+ * @typedef {object} Options
+ * @property {string} [defaultProvider] jspm.io generator provider
  * @property {import('@jspm/generator').Generator['importMap']} [inputMap]
  * @property {import('@jspm/generator').Generator['importMap']} [manualImportMap]
  * @property {string[]} [localPackages=[]]
@@ -63,7 +62,7 @@ async function getCachedImportMap({
 
       const nothing = Symbol();
       const providers = {
-        '@patternfly': 'nodemodules',
+        '@patternfly/elements': 'nodemodules',
         ...Object.fromEntries(localPackages?.map(packageName =>
           packageName.match(/@(rhds|patternfly)/) ?
             [nothing]

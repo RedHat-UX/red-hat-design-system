@@ -1,4 +1,4 @@
-import type { RhTooltip } from '../rh-tooltip/rh-tooltip.js';
+import type { RhTooltip } from '@rhds/elements/rh-tooltip/rh-tooltip.js';
 
 import { LitElement, html, type PropertyValues } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
@@ -28,8 +28,8 @@ import buttonStyles from './rh-audio-player-button.css';
 import rangeStyles from './rh-audio-player-range-styles.css';
 import styles from './rh-audio-player.css';
 
-import '../rh-surface/rh-surface.js';
-import '../rh-tooltip/rh-tooltip.js';
+import '@rhds/elements/rh-surface/rh-surface.js';
+import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 
 /**
  * An audio player plays audio clips in the browser and includes other features.
@@ -40,16 +40,16 @@ import '../rh-tooltip/rh-tooltip.js';
  * @slot about - optional `rh-audio-player-about` panel with attribution
  * @slot subscribe - optional `rh-audio-player-subscribe` panel with links to subscribe
  * @slot transcript - optional `rh-transcript` panel with `rh-cue` elements
- * @cssprop --rh-audio-player-background-color - color of player background - {@default var(--rh-color-surface-lightest, #ffffff)}
- * @cssprop --rh-audio-player-icon-background-color {@default var(--rh-audio-player-background-color)}
- * @cssprop --rh-audio-player-border-color - color of player border - {@default var(--rh-color-border-subtle-on-light, #d2d2d2)}
- * @cssprop --rh-audio-player-secondary-text-color - player secondary text color - {@default var(--rh-color-text-secondary-on-light, #6a6e73)}
- * @cssprop --rh-audio-player-secondary-opacity - player secondary opacity used for partially faded elements - {@default 0.75}
- * @cssprop --rh-audio-player-range-thumb-color - color of time and volume range slider thumb - {@default var(--rh-color-accent-brand-on-light, #ee0000)}
- * @cssprop --rh-tooltip-content-padding-block-start - padding top on tooltips - {@default var(--rh-space-md, 8px)}
- * @cssprop --rh-tooltip-content-padding-block-end - padding bottom on tooltips - {@default var(--rh-space-md, 8px)}
- * @cssprop --rh-tooltip-content-padding-inline-start - padding left on tooltips -  {@default var(--rh-space-md, 8px)}
- * @cssprop --rh-tooltip-content-padding-inline-end - padding right on tooltips - {@default var(--rh-space-md, 8px)}
+ * @cssprop [--rh-audio-player-background-color=var(--rh-color-surface-lightest, #ffffff)] - color of player background -
+ * @cssprop [--rh-audio-player-icon-background-color=var(--rh-audio-player-background-color)]
+ * @cssprop [--rh-audio-player-border-color=var(--rh-color-border-subtle-on-light, #d2d2d2)] - color of player border -
+ * @cssprop [--rh-audio-player-secondary-text-color=var(--rh-color-text-secondary-on-light, #6a6e73)] - player secondary text color -
+ * @cssprop [--rh-audio-player-secondary-opacity=0.75] - player secondary opacity used for partially faded elements -
+ * @cssprop [--rh-audio-player-range-thumb-color=var(--rh-color-accent-brand-on-light, #ee0000)] - color of time and volume range slider thumb -
+ * @cssprop [--rh-tooltip-content-padding-block-start=var(--rh-space-md, 8px)] - padding top on tooltips -
+ * @cssprop [--rh-tooltip-content-padding-block-end=var(--rh-space-md, 8px)] - padding bottom on tooltips -
+ * @cssprop [--rh-tooltip-content-padding-inline-start=var(--rh-space-md, 8px)] - padding left on tooltips -
+ * @cssprop [--rh-tooltip-content-padding-inline-end=var(--rh-space-md, 8px)] - padding right on tooltips -
  * @csspart panel - expandable panel
  * @csspart toolbar - main controls
  * @csspart about - about the episode panel
@@ -822,35 +822,35 @@ export class RhAudioPlayer extends LitElement {
   /**
    * handles media `ended` event
    */
-  #onEnded() {
+  #onEnded(): void {
     this.#paused = true;
   }
 
   /**
    * handles media `loadeddata` event
    */
-  #onLoadeddata() {
+  #onLoadeddata(): void {
     this.requestUpdate();
   }
 
   /**
    * handles media `loadedmetadata` event
    */
-  #onLoadedmetadata() {
+  #onLoadedmetadata(): void {
     this.requestUpdate();
   }
 
   /**
    * handles mute button click to toggle mute
    */
-  #onMuteButton() {
-    !this.muted ? this.mute() : this.unmute();
+  #onMuteButton(): void {
+    return !this.muted ? this.mute() : this.unmute();
   }
 
   /**
    * handles media `pause` event by updating component's `_paused` state
    */
-  #onPause() {
+  #onPause(): void {
     this.#paused = true;
     this.requestUpdate();
   }
@@ -858,7 +858,7 @@ export class RhAudioPlayer extends LitElement {
   /**
    * handles media `play` event by updating component's `_paused` state
    */
-  #onPlay() {
+  #onPlay(): void {
     this.#paused = false;
     this.requestUpdate();
   }
@@ -867,7 +867,7 @@ export class RhAudioPlayer extends LitElement {
    * handles changes to media element playback rate
    * by updating component playbackRate property
    */
-  #onPlaybackRateChange() {
+  #onPlaybackRateChange(): void {
     if (!this.#mediaElement || this.playbackRate !== this.#mediaElement.playbackRate) {
       this.playbackRate = this.#mediaElement?.playbackRate || 1;
     }

@@ -281,11 +281,6 @@ button > span {
   --_play-hover-background-color: rgb(var(--_white-rgb) / var(--rh-opacity-80, 80%));
 }
 
-:host,
-#rhds-container {
-  display: contents;
-}
-
 :host([hidden]),
 [hidden] {
   display: none !important;
@@ -470,7 +465,12 @@ button:hover {
   --_hover-color: var(--_play-color);
   --_hover-background-color: var(--_play-hover-background-color);
   --_hover-background-opacity: var(--_play-hover-background-opacity);
-  --_icon-size: var(--rh-size-icon-04, 40px);
+  --_icon-size: var(--rh-size-icon-02, 24px);
+}
+
+:host(:is([variant="play"])) [part="icon"] {
+  position: relative;
+  inset-inline-start: 3px;
 }
 
 :host(:is([variant="play" i], [variant="close" i])) button {

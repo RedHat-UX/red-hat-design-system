@@ -18,9 +18,8 @@
 
 [part="tabs-container"]:before {
   position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  inset-inline-end: 0;
+  inset: 0;
   border-width: 0 0 var(--rh-border-width-sm, 1px);
   border-color: var(--_border-color);
   border-style: solid;
@@ -47,11 +46,14 @@
 [part="tabs"]:before,
 button:before {
   position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  inset-block-end: 0;
+  inset-inline: 0;
   content: "";
   border-style: solid;
+}
+
+#tablist {
+  display: contents;
 }
 
 @container (min-width: 567px) {
@@ -148,8 +150,6 @@ button:disabled {
   color: var(--_overflow-button-text-color);
   position: relative;
   z-index: 2;
-
-  --pf-icon--size: 14px;
 }
 
 #nextTab {
@@ -186,7 +186,7 @@ button:disabled {
   color: var(--_overflow-button-disabled-text-color);
 }
 
-.rtl :is(#previousTab, #nextTab) pf-icon {
+.rtl :is(#previousTab, #nextTab) rh-icon {
   rotate: 180deg;
 }
 

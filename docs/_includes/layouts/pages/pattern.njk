@@ -1,0 +1,40 @@
+---
+layout: layouts/base.njk
+importElements:
+  - rh-cta
+  - rh-footer
+  - rh-alert
+  - rh-subnav
+  - rh-code-block
+---
+<link rel="stylesheet" href="/styles/pages/backpage.css">
+
+<script type="module" src="/assets/javascript/elements/uxdot-feedback.js"></script>
+<script type="module" src="/assets/javascript/elements/uxdot-pattern.js"></script>
+{% if tokenSearch %}
+<script type="module" src="/assets/javascript/elements/uxdot-search.js"></script>
+<script type="module" src="/assets/javascript/tokens.js"></script>
+{% endif %}
+{% include 'partials/component/masthead.njk' %}
+{% include 'partials/component/sidenav.njk' %}
+
+<main id="main">
+  <article {% if hasToc and (content | toc).length > 0 %}class="has-toc"{% endif %}>
+
+  {% include 'partials/component/header.njk' %}
+  {% if hasToc and (content | toc).length > 0 %}
+  <div class="aside">
+    <uxdot-toc summary="On this page">
+      {{ content | toc | safe }}
+    </uxdot-toc>
+  </div>
+  {% endif %}
+
+  <div class="container">
+    {{ content | safe }}
+  </div>
+
+  </article>
+  {% include "partials/component/back-to-top.njk" %}
+</main>
+{% include 'partials/component/footer.njk' %}

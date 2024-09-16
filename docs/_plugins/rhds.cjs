@@ -1,3 +1,4 @@
+
 // @ts-check
 const fs = require('node:fs');
 const yaml = require('js-yaml');
@@ -11,17 +12,20 @@ const RHDSAlphabetizeTagsPlugin = require('./alphabetize-tags.cjs');
 const RHDSShortcodesPlugin = require('./shortcodes.cjs');
 const { parse } = require('async-csv');
 
-/** @typedef {object} EleventyTransformContext */
+/**
+ * EleventyTransformContext the `this` binding for transform functions
+ * outputPath the path the page will be written to
+ * inputPath the path to the page's input file (e.g. template or paginator)
+ */
 
 /**
  * Replace paths in demo files from the dev SPA's format to 11ty's format
- * @this {EleventyTransformContext}
- * @param {string} content
+ * @param {string} content the HTML content to replace
  */
 function demoPaths(content) {
   const { outputPath, inputPath } = this;
   const isNested = outputPath.match(/demo\/.+\/index\.html$/);
-  if (inputPath === './docs/elements/demos.html' ) {
+  if (inputPath === './docs/elements/demos.html') {
     const $ = cheerio.load(content);
     $('[href], [src]').each(function() {
       const el = $(this);
@@ -42,11 +46,12 @@ function demoPaths(content) {
 }
 
 // Rewrite DEMO lightdom css relative URLs
-const LIGHTDOM_HREF_RE = /href="\.(?<pathname>.*-lightdom\.css)"/g;
+const LIGHTDOM_HREF_RE = /href="\.(?<pathname>.*-lightdom.*\.css)"/g;
 const LIGHTDOM_PATH_RE = /href="\.(.*)"/;
 
 /**
- * @param {string | number | Date} dateStr
+ * @param {string | number | Date} dateStr iso date string
+ * @param {Intl.DateTimeFormatOptions} options date format options
  */
 function prettyDate(dateStr, options = {}) {
   const { dateStyle = 'medium' } = options;
@@ -54,6 +59,10 @@ function prettyDate(dateStr, options = {}) {
       .format(new Date(dateStr));
 }
 
+/**
+ * @param {string} tagName e.g. pf-jazz-hands
+ * @param {import("@patternfly/pfe-tools/config.js").PfeConfig} config pfe tools repo config
+ */
 function getTagNameSlug(tagName, config) {
   const name = config?.aliases?.[tagName] ?? tagName.replace(`${config?.tagPrefix ?? 'rh'}-`, '');
   return slugify(name, {
@@ -86,9 +95,10 @@ const COPY_CONTENT_EXTENSIONS = [
 function getFilesToCopy() {
   // Copy element demo files
   const repoRoot = process.cwd();
-  const tagNames = fs.readdirSync(path.join(repoRoot, 'elements'));
+  const tagNames = fs.readdirSync(path.join(repoRoot, 'elements'), { withFileTypes: true })
+      .filter(ent => ent.isDirectory())
+      .map(ent => ent.name);
 
-  /** @type{import('@patternfly/pfe-tools/config.js').PfeConfig}*/
   const config = require('../../.pfe.config.json');
 
   // Copy all component and core files to _site
@@ -101,6 +111,10 @@ function getFilesToCopy() {
   }));
 }
 
+/**
+ * @param {{ slug: number; }} a first
+ * @param {{ slug: number; }} b next
+ */
 function alphabeticallyBySlug(a, b) {
   return (
       a.slug < b.slug ? -1
@@ -109,7 +123,7 @@ function alphabeticallyBySlug(a, b) {
   );
 }
 
-/** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
+/** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig user config */
 module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   eleventyConfig.addDataExtension('yml, yaml', contents => yaml.load(contents));
 
@@ -126,6 +140,11 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     'node_modules/element-internals-polyfill': '/assets/packages/element-internals-polyfill',
   });
 
+  // ensure icons are copied to the assets dir.
+  eleventyConfig.addPassthroughCopy({
+    'node_modules/@patternfly/icons/': '/assets/packages/@patternfly/icons/',
+  });
+
   const filesToCopy = getFilesToCopy();
   eleventyConfig.addPassthroughCopy(filesToCopy, {
     filter: /** @param {string} path pathname */path => !path.endsWith('.html'),
@@ -138,7 +157,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     const { pfeconfig } = eleventyConfig?.globalData ?? {};
     const { aliases } = pfeconfig;
 
-    if (inputPath === './docs/elements/demos.html' ) {
+    if (inputPath === './docs/elements/demo.html' ) {
       const tagNameMatch = outputPath.match(/\/elements\/(?<tagName>[-\w]+)\/demo\//);
       if (tagNameMatch) {
         const { tagName } = tagNameMatch.groups;
@@ -151,22 +170,29 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
 
         // does the tagName exist in the aliases object?
         const key = Object.keys(modifiedAliases).find(key => modifiedAliases[key] === tagName);
-
-        const prefixedTagName = `${pfeconfig?.tagPrefix}-${tagName}`;
+        const { deslugify } = await import('@patternfly/pfe-tools/config.js');
+        const prefixedTagName = deslugify(tagName, path.join(__dirname, '../..'));
         const redirect = { new: key ?? prefixedTagName, old: tagName };
         const matches = content.match(LIGHTDOM_HREF_RE);
         if (matches) {
           for (const match of matches) {
             const [, path] = match.match(LIGHTDOM_PATH_RE) ?? [];
             const { pathname } = new URL(path, `file:///${outputPath}`);
-            content = content.replace(`.${path}`, pathname
-                .replace(`/_site/elements/${redirect.old}/`, `/assets/packages/@rhds/elements/elements/${redirect.new}/`)
-                .replace('/demo/', '/'));
+            const filename = pathname.split('/').pop();
+            const replacement = `/assets/packages/@rhds/elements/elements/${prefixedTagName}/${filename}`;
+            content = content.replace(`.${path}`, replacement);
           }
         }
       }
     }
     return content;
+  });
+
+  eleventyConfig.addFilter('getPrettyElementName', function(tagName) {
+    const { pfeconfig } = eleventyConfig?.globalData ?? {};
+    const slug = getTagNameSlug(tagName, pfeconfig);
+    const deslugify = eleventyConfig.getFilter('deslugify');
+    return pfeconfig.aliases[tagName] || deslugify(slug);
   });
 
   eleventyConfig.addFilter('getTitleFromDocs', function(docs) {
@@ -182,9 +208,8 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
      * NB: since the data for this shortcode is no a POJO,
      * but a DocsPage instance, 11ty assigns it to this.ctx._
      * @see https://github.com/11ty/eleventy/blob/bf7c0c0cce1b2cb01561f57fdd33db001df4cb7e/src/Plugins/RenderPlugin.js#L89-L93
-     * @type {import('@patternfly/pfe-tools/11ty/DocsPage').DocsPage}
      */
-    const docsPage = this.ctx._;
+    const docsPage = this.ctx.doc;
     return docsPage.description;
   });
 
@@ -219,6 +244,19 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   eleventyConfig.addCollection('sortedColor', async function(collectionApi) {
     const colorCollection = collectionApi.getFilteredByTags('color');
     return colorCollection.sort((a, b) => {
+      if (a.data.order > b.data.order) {
+        return 1;
+      } else if (a.data.order < b.data.order) {
+        return -1;
+      } else {
+        return 0;
+      }
+    });
+  });
+
+  eleventyConfig.addCollection('sortedTypography', async function(collectionApi) {
+    const typographyCollection = collectionApi.getFilteredByTags('typography');
+    return typographyCollection.sort((a, b) => {
       if (a.data.order > b.data.order) {
         return 1;
       } else if (a.data.order < b.data.order) {
@@ -283,18 +321,24 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
 
     try {
       const { glob } = await import('glob');
-      /** @type {(import('@patternfly/pfe-tools/11ty/DocsPage').DocsPage & { repoStatus?: any[] })[]} */
-      const elements = await eleventyConfig.globalData?.elements();
+      const { DocsPage } = await import('@patternfly/pfe-tools/11ty/DocsPage.js');
+      const {
+        getAllManifests,
+      } = await import(
+        '@patternfly/pfe-tools/custom-elements-manifest/custom-elements-manifest.js'
+      );
+
+      const customElementsManifestDocsPages = await eleventyConfig.globalData?.elements();
       const filePaths = (await glob(`elements/*/docs/*.md`, { cwd: process.cwd() }))
           .filter(x => x.match(/\d{1,3}-[\w-]+\.md$/)); // only include new style docs
-      const { repoStatus } = collectionApi.items.find(item => item.data?.repoStatus)?.data || [];
+
       return filePaths
           .map(filePath => {
             const props = getProps(filePath);
-            const docsPage = elements.find(x => x.tagName === props.tagName);
-            if (docsPage) {
-              docsPage.repoStatus = repoStatus;
-            }
+            const [manifest] = getAllManifests();
+            const docsPage =
+              customElementsManifestDocsPages.find(x => x.tagName === props.tagName)
+              ?? new DocsPage(manifest);
             const tabs = filePaths
                 .filter(x => x.split('/docs/').at(0) === (`elements/${props.tagName}`))
                 .sort()
@@ -328,15 +372,11 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     }
   });
 
-  /** /assets/rhds.min.css */
+  /** /assets/javascript/environment.js */
   eleventyConfig.on('eleventy.before', async function({ dir }) {
-    const { readFile, writeFile } = fs.promises;
-    const CleanCSS = await import('clean-css').then(x => x.default);
-    const cleanCSS = new CleanCSS({ sourceMap: true, returnPromise: true });
-    const sourcePath = path.join(process.cwd(), 'node_modules/@rhds/tokens/css/global.css');
-    const outPath = path.join(dir.output, 'assets', 'rhds.min.css');
-    const source = await readFile(sourcePath, 'utf8');
-    const { styles } = await cleanCSS.minify(source);
-    await writeFile(outPath, styles, 'utf8');
+    const { writeFile } = fs.promises;
+    const outPath = path.join(dir.input, '..', 'lib', 'environment.js');
+    const { makeDemoEnv } = await import('../../scripts/environment.js');
+    await writeFile(outPath, await makeDemoEnv(), 'utf8');
   });
 };

@@ -1,4 +1,7 @@
-<rh-navigation-secondary color-palette="dark" role="navigation" aria-label="main">
+<rh-navigation-secondary id="navigation-secondary-dark"
+                         color-palette="dark"
+                         role="navigation"
+                         aria-label="main">
   <a href="#" slot="logo" id="logo-id" aria-current="page">
     Red Hat Advanced Cluster Management for Kubernetes
   </a>
@@ -11,14 +14,14 @@
             <li>
               <a href="#">
                 Integrations
-                <pf-icon set="patternfly" icon="arrow" size="sm" loading="idle"></pf-icon>
+                <rh-icon set="ui" icon="arrow-right" size="sm" loading="idle"></rh-icon>
               </a>
             </li>
             <li><a href="#">Custom success stories</a></li>
             <li>
               <a href="#">
                 What is ansible
-                <pf-icon set="patternfly" icon="arrow" size="sm" loading="idle"></pf-icon>
+                <rh-icon set="ui" icon="arrow-right" size="sm" loading="idle"></rh-icon>
               </a>
             </li>
             <li><a href="#">Why choose Red Hat for automation?</a></li>
@@ -39,14 +42,14 @@
               <li>
                 <a href="#">
                   Integrations
-                  <pf-icon set="patternfly" icon="arrow" size="sm" loading="idle"></pf-icon>
+                  <rh-icon set="ui" icon="arrow-right" size="sm" loading="idle"></rh-icon>
                 </a>
               </li>
               <li><a href="#">Custom success stories</a></li>
               <li>
                 <a href="#">
                   What is ansible
-                  <pf-icon set="patternfly" icon="arrow" size="sm" loading="idle"></pf-icon>
+                  <rh-icon set="ui" icon="arrow-right" size="sm" loading="idle"></rh-icon>
                 </a>
               </li>
               <li><a href="#">Why choose Red Hat for automation?</a></li>
@@ -170,18 +173,13 @@
 
   /* Dark demo with long logo text */
   @media screen and (min-width: 358px) {
-    rh-navigation-secondary[color-palette="dark"] {
+    rh-navigation-secondary {
       --rh-navigation-secondary-logo-max-width: 13.4em;
     }
   }
 
-  /* fixes demo for overflow and display of sticky nav */
-  main {
-    display: contents;
-  }
-
   /* dark variant must be on a dark background as per design spec */
-  [data-demo="rh-navigation-secondary"] {
+  #navigation-secondary-dark {
     padding: 0;
   }
 
@@ -191,18 +189,16 @@
     padding: var(--_text-padding, var(--rh-space-lg, 16px));
     background-color: var(--rh-color-surface-darker, #1f1f1f);
     color: var(--rh-color-text-primary-on-dark, #ffffff);
-  }
+    @media screen and (min-width: 768px) {
+      --_text-padding: var(--rh-space-2xl, 32px);
+    }
 
-  #space-holder a {
-    color: var(--rh-color-accent-base-on-dark, #73bcf7);
-  }
-
-  @media screen and (min-width: 768px) {
-    #space-holder { --_text-padding: var(--rh-space-2xl, 32px); }
-  }
-
-  @media screen and (min-width: 1440px) {
-    #space-holder { --_text-padding: var(--rh-space-4xl, 64px); }
+    @media screen and (min-width: 1440px) {
+      --_text-padding: var(--rh-space-4xl, 64px);
+    }
+    & a {
+      color: var(--rh-color-accent-base-on-dark, #73bcf7);
+    }
   }
 </style>
 

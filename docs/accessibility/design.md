@@ -1,13 +1,16 @@
 ---
 title: Design
-tags: accessibility
+tags:
+  - accessibility
+order: 40
 ---
 
 ## Overview
 
-{% alert title="Note" %}
-This section covers design accessibility. Designers should also be familiar with accessibility [fundamentals](../), [content](../content), and [development](../development).
-{% endalert %}
+<rh-alert state="info">
+  <h3 slot="header">Note</h3>
+  <p>This section covers design accessibility. Designers should also be familiar with accessibility <a href="../">fundamentals</a>, <a href="../content">content</a>, and <a href="../development">development</a>.</p>
+</rh-alert>
 
 ## Layout and hierarchy
 
@@ -32,9 +35,9 @@ If one element has the same function as another, both should be labeled the same
 
 When considering methods of communication or feedback, do not use color alone. Ensure there is a text label, icon, underline, or other visual cue to communicate meaning. Consider how the following elements would look to a color blind user.
 
-{% example palette="light",
-          alt="Dialog with a red-orange Leave button, a form field with a red bottom border, and progress steps without labels",
-          src="/assets/color/using-color-alone.png" %}
+<uxdot-example width-adjustment="872px" no-border>
+  <img src="{{ '/assets/color/using-color-alone.png' | url }}" alt="Dialog with a red-orange Leave button, a form field with a red bottom border, and progress steps without labels">
+</uxdot-example>
 
 ### Contrast
 
@@ -44,19 +47,26 @@ We strive to adhere to [WCAG 2.1 AA contrast ratio standards](https://www.w3.org
 
 Small foreground text (non-bold text under 24px and bold text under 19px) must have a contrast ratio of 4.5:1 and large foreground text (non-bold text of at least 24px and bold text of at least 19px) must have a contrast ratio of 3:1.
 
-{% example palette="light",
-          alt="Contrast ratios for dark gray sections with black text that uses different weights and fonts",
-          src="/assets/color/contrast-text.png" %}
+<uxdot-example width-adjustment="872px" no-border>
+  <img src="{{ '/assets/color/contrast-text.png' | url }}" alt="Contrast ratios for dark gray sections with black text that uses different weights and fonts">
+</uxdot-example>
 
 #### Links
 
-If color is the only way to distinguish between links and surrounding text (e.g., if link underlines are removed within a paragraph), the contrast ratio between the link and surrounding text must be at least 3:1.
+Inline text links (e.g., those within paragraphs and list items in the main body of a page) should be underlined to make these links easy to discern for all visitors, particularly those with visual impairments or in situations that could make color differentiation difficult.
 
-Non-color cues should be used to signify when a link receives hover and focus (e.g., an underline).
+In fact, you should default to underlining all text links, except for the following:
 
-{% example palette="light",
-          alt="Contrast ratio of a blue link next to black text and an example of a link's darker blue, underlined hover state",
-          src="/assets/color/contrast-links.png" %}
+- Links within visually distinct navigation groupings, like menus.
+- CTAs and other links accompanied by visual cues (e.g., arrow symbols) to indicate their interactivity.
+
+That said, you still _can_ underline the above, at your discretion.
+
+If, for some reason, color is the only way you can distinguish links within a text block, the contrast ratio between the link and surrounding text _must_ be at least 3:1 in both visited and unvisited states. And underlines or other non-color cues _must also_ then be used to signify when the link receives hover and focus.
+
+<uxdot-example width-adjustment="692px" no-border>
+  <img src="{{ '/assets/color/contrast-links.png' | url }}" alt="Contrast ratio of a blue link next to black text and an example of a link's darker blue, underlined hover state">
+</uxdot-example>
 
 #### Graphical objects and UI components
 
@@ -68,9 +78,9 @@ Non-color cues must be also used to signify when an object or component receives
 
 It is acceptable to layer colors with the same hue, saturation, or lightness on white, black, or gray. However, layering them near or on top of each other might cause vibration. If you need to layer colors, follow [WCAG 2.1 AA](https://www.w3.org/WAI/WCAG21/Understanding/) requirements.
 
-{% example palette="light",
-          alt="Red CTA against a white background, blue button against a light gray background, and a light red-orange button against a black background",
-          src="/assets/color/contrast-layering.png" %}
+<uxdot-example width-adjustment="872px" no-border>
+  <img src="{{ '/assets/color/contrast-layering.png' | url }}" alt="Red CTA against a white background, blue button against a light gray background, and a light red-orange button against a black background">
+</uxdot-example>
 
 #### Further help
 
@@ -92,7 +102,7 @@ Any decorative images that add no meaningful information to an experience should
 
 An image used as a link or button is always meaningful (i.e., not decorative) and must be both labeled properly and exposed to assistive tech, except in the following cases:
 
-- The image is accompanied by sufficient descriptive text that is also within the containing link or button, *or*
+- The image is accompanied by sufficient descriptive text that is also within the containing link or button, _or_
 - The containing link or button has an aria-label or aria-labelledby value applied to it.
 
 ## Motion and audiovisual content
@@ -101,7 +111,7 @@ An image used as a link or button is always meaningful (i.e., not decorative) an
 
 The following guidelines should be followed to make animated content accessible to users that may have motion sensitivity or who experience seizures:
 
-- Any animations lasting five seconds or more require mechanisms for stopping or hiding it. 
+- Any animations lasting five seconds or more require mechanisms for stopping or hiding it.
 - Any text that’s animated or that automatically changes needs a way to be viewed statically.
 - Any flashing or blinking content should do so fewer than three times per second.
 
@@ -109,7 +119,7 @@ The following guidelines should be followed to make animated content accessible 
 
 Designers must provide ways to pause and/or mute video content if the video:
 
-- Has no audio and lasts longer than five seconds, *or* 
+- Has no audio and lasts longer than five seconds, _or_
 - Has audio and lasts longer than three seconds.
 
 These guidelines apply whether or not the video autoplays.
@@ -126,7 +136,7 @@ Essential information should not be conveyed by sound alone. For example, if a t
 
 ### Links
 
-Links should appear clickable and focusable. And, when possible, links and buttons should appear different from one another to give users cues as to their purpose.
+Links should appear clickable and focusable. And, when possible, links and buttons should look different from one another to give users cues as to their purpose.
 
 If a link opens in a new window, this will have to be indicated both visually and non-visually. Text is preferred, but an icon (with text alternative for assistive tech users) can be used to announce that a new window will open.
 
@@ -148,9 +158,10 @@ Keyboard and assistive tech users must also have the ability to perform path- an
 
 The act of focusing on an element should not cause the element to change the interface’s context. For example, if a user places keyboard focus on a link, that action shouldn’t automatically send them to a new page.
 
-{% alert title="Note" %}
-A change in a page’s content does not always mean that the context has changed. Learn more about what constitutes a [change in context](https://www.w3.org/WAI/WCAG21/Understanding/on-focus#dfn-changes-of-context).
-{% endalert %}
+<rh-alert state="info">
+  <h2 slot="header">Note</h2>
+  <p>A change in a page’s content does not always mean that the context has changed. Learn more about what constitutes a <a href="https://www.w3.org/WAI/WCAG21/Understanding/on-focus#dfn-changes-of-context">change in context</a>.</p>
+</rh-alert>
 
 If keyboard focus appears to be trapped in a subsection, instructions for exiting this section via keyboard will need to be available. For example, if pressing the tab key does not allow the user to exit an embedded video or learning module on a page, another method (e.g., pressing the <kbd>escape</kbd> key or some key combo) must exist, and instructions must be presented to all users.
 
@@ -166,7 +177,7 @@ Long lines of text can be difficult to read. Character counts for one line of te
 
 ### Alignment
 
-For left-to-right languages, left-aligned text is the easiest to read and skim. The same is true of right-aligned text for right-to-left languages. 
+For left-to-right languages, left-aligned text is the easiest to read and skim. The same is true of right-aligned text for right-to-left languages.
 
 Center-aligned text can be used sparingly, but it should be avoided for paragraphs.
 

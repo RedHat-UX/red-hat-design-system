@@ -1,6 +1,6 @@
 extends:
   - stylelint-config-standard
-  - stylelint-stylistic/config
+  - '@stylistic/stylelint-config'
 
 ignoreFiles:
   - node_modules/**/*
@@ -34,19 +34,21 @@ rules:
       ignoreTypes:
         - heading
         - actions
+        - rendered
+        - pending
 
   selector-pseudo-element-no-unknown:
     - true
     - ignorePseudoElements:
       - /part(.*)/
 
-  stylistic/string-quotes: double
-  stylistic/selector-combinator-space-after: always
-  stylistic/selector-combinator-space-before: always
-  stylistic/indentation:
+  '@stylistic/string-quotes': double
+  '@stylistic/selector-combinator-space-after': always
+  '@stylistic/selector-combinator-space-before': always
+  '@stylistic/indentation':
    - 2
    - indentInsideParens: 'once-at-root-twice-in-block'
-  stylistic/max-line-length:
+  '@stylistic/max-line-length':
     - 100
     - ignorePattern: /--rh-font-family-/
 
@@ -117,7 +119,7 @@ rules:
 
 plugins:
   - ./node_modules/@rhds/tokens/plugins/stylelint.cjs
-  - stylelint-stylistic
+  - '@stylistic/stylelint-plugin'
 
 overrides:
   - files:
@@ -125,9 +127,9 @@ overrides:
     defaultSeverity: warning
     extends: stylelint-config-standard-scss
     rules:
-      stylistic/block-closing-brace-newline-after: null
+      '@stylistic/block-closing-brace-newline-after': null
       scss/at-if-closing-brace-newline-after: always-last-in-chain
-      stylistic/max-line-length:
+      '@stylistic/max-line-length':
         - 120
         - ignorePattern: /--rh-font-family-/
 

@@ -1,15 +1,18 @@
 ---
 title: Development
-tags: accessibility
+tags:
+  - accessibility
+order: 40
 importElements:
   - rh-code-block
 ---
 
 ## Overview
 
-{% alert title="Note" %}
-This section covers development accessibility. Developers should also be familiar with accessibility [fundamentals](../), [content](../content), and [design](../design).
-{% endalert %}
+<rh-alert state="info">
+  <h3 slot="header">Note</h3>
+  <p>This section covers development accessibility. Developers should also be familiar with accessibility <a href="../">fundamentals</a>, <a href="../content">content</a>, and <a href="../design">design</a>.</p>
+</rh-alert>
 
 While our elements themselves were developed and tested with accessibility in mind, components can still be rendered inaccessible in how they are used. The HTML slotted within a component could be inaccessible, or CSS variables and part selectors could be used in a way that renders the component inaccessible. Therefore, you should always consider how your particular use of a component may impact its accessibility.
 
@@ -24,8 +27,8 @@ Visit our [Content section](https://deploy-preview-1340--red-hat-design-system.n
 
 Icon fonts are a nifty visual hack that you shouldn’t use.
 
-- They put your site at risk of failing [WCAG Success Criterion 1.1.1](https://www.w3.org/WAI/WCAG21/Techniques/failures/F3.html). 
-- Because assistive tech can’t reliably interpret them, the icons may be rendered “[inaccurate, nonsensical, redundant, or unpredictable](https://www.w3.org/WAI/GL/wiki/Icon_Font_with_an_On-Screen_Text_Alternative).”  
+- They put your site at risk of failing [WCAG Success Criterion 1.1.1](https://www.w3.org/WAI/WCAG21/Techniques/failures/F3.html).
+- Because assistive tech can’t reliably interpret them, the icons may be rendered “[inaccurate, nonsensical, redundant, or unpredictable](https://www.w3.org/WAI/GL/wiki/Icon_Font_with_an_On-Screen_Text_Alternative).”
 - And if the font file doesn’t load (or is overridden by the user), the icons may not display properly for visual users.
 
 To make icon fonts accessible, you often have to re-hack what’s already a hack. So best just to avoid them altogether.
@@ -50,7 +53,7 @@ Instead of an alt attribute, an `<svg>` element comprising a simple image can in
 </svg></script>
 </rh-code-block>
 
-More complex `<svg>` elements may require additional descriptive information. One way of including this      information is via the `<desc>` element:
+More complex `<svg>` elements may require additional descriptive information. One way of including this information is via the `<desc>` element:
 
 <rh-code-block>
   <script type="text/html"><svg xmlns="http://www.w3.org/2000/svg" role="img">
@@ -62,7 +65,7 @@ More complex `<svg>` elements may require additional descriptive information. On
 
 #### Hiding SVGs
 
-You can hide inline `<svg>` elements with an `aria-hidden="true"` attribute.
+You can hide `<svg>` elements from assistive tech with an `aria-hidden="true"` attribute.
 
 <rh-code-block>
   <script type="text/html"><svg aria-hidden="true">
@@ -74,7 +77,7 @@ Carie Fisher explores several patterns (including the above) for embedding acces
 
 ## Web standards and semantics
 
-The W3C establishes standards for the web. Browsers work according to these standards. And assistive technologies, like screen readers, are designed to work with this standard as well. When everything follows the same standard, it’s easy to be accessible. It’s what we do outside of the standards that has potential to make the web inaccessible. 
+The W3C establishes standards for the web. Browsers work according to these standards. And assistive technologies, like screen readers, are designed to work with this standard as well. When everything follows the same standard, it’s easy to be accessible. It’s what we do outside of the standards that has potential to make the web inaccessible.
 
 Semantic HTML, using the standard HTML tags based on their meaning, is how we can communicate our intent to both the browser and assistive tech. For example, `<a>` and `<h1>` indicate meaning while `<div>` and `<span>` do not. For interactive components that aren’t covered by semantic HTML, refer to the Accessible Rich Internet Applications (ARIA) W3C specification. ARIA also allows us to specify certain regions of a page as [landmarks](https://www.w3.org/WAI/ARIA/apg/practices/landmark-regions/) that screen reader users can skip to.
 
@@ -105,6 +108,7 @@ Accessibility solutions provider Deque Solutions offers training via its educati
 Heydon Pickering describes his [Inclusive Components](https://inclusive-components.design/) as "a blog trying to be a pattern library, with a focus on inclusive design." Each post covers a specific type of component—like a card or a data table—and provides a step-by-step explanation of how to make it more accessible. A more comprehensive list of components can be found in the [Inclusive Components book](http://book.inclusive-components.design/).
 
 ## Interactivity
+
 The following World Wide Web Consortium (W3C) Web Content Accessibility Guidelines (WCAG) 2.1 A and AA apply to developing interactive elements:
 
 - Ensure that content that appears on hover or focus is dismissable, hoverable, and persistent for keyboard and mouse users. ([1.4.13 Content on Hover or Focus - Level AA](https://www.w3.org/WAI/WCAG22/Understanding/content-on-hover-or-focus.html))
@@ -113,9 +117,10 @@ The following World Wide Web Consortium (W3C) Web Content Accessibility Guidelin
 - Align focus order with visual order and DOM order. ([2.4.3 Focus Order - Level AA](https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html))
 - Ensure that the keyboard focus indicator is visible. ([2.4.7 Focus Visible - Level AA](https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html))
 
-{% alert title="Tip" %}
-For more on keyboard navigation, see the WAI ARIA Authoring Practices Guide's  (APG) [Developing a Keyboard Interface](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/).
-{% endalert %}
+<rh-alert state="info">
+  <h3 slot="header">Tip</h3>
+  <p>For more on keyboard navigation, see the WAI ARIA Authoring Practices Guide's  (APG) <a href="https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/">Developing a Keyboard Interface</a>.</p>
+</rh-alert>
 
 ### Hiding elements
 
@@ -123,28 +128,30 @@ The following World Wide Web Consortium (W3C) Web Content Accessibility Guidelin
 
 - Ensure content that appears or disappears on changes to mouse hover or keyboard focus is dismissable, hoverable, and persistent. ([1.4.13 Content on Hover or Focus - Level AA](https://www.w3.org/WAI/WCAG21/Understanding/content-on-hover-or-focus.html))
 
-{% alert title="Tip" %}
-For more on dynamic content, see the Mozilla Developer Network's (MDN) [ARIA live regions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions).
-{% endalert %}
+<rh-alert state="info">
+  <h3 slot="header">Tip</h3>
+  <p>For more on dynamic content, see the Mozilla Developer Network's (MDN) <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions">ARIA live regions</a>.</p>
+</rh-alert>
 
 ### Disabled elements
+
 For disabled composite components, such as fieldsets, radio groups, menus, and listboxes, [WAI-ARIA recommends](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#focusabilityofdisabledcontrols)] that elements of these components remain focusable.
 
 Users should still be able to read options within the composite group even if they cannot activate or trigger them. For example, a disabled dropdown menu should allow users to toggle it open via keyboard and focus on options even when activating the options is disabled.
 
 ### Keyboard navigation and focus events
 
-When handling focus consider the following: 
+When handling focus consider the following:
+
 - The focus indicator should be visible.
 - Some element must be in focus at all times.
 - Focus is consistent and predictable.
 
 For more information see the WAI-ARIA APG's [Fundamental Keyboard Navigation Conventions](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_generalnav) and [Discernible and Predictable Keyboard Focus](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#discernibleandpredictablekeyboardfocus).
 
-
 ### Focus order and roving tabindex
 
-Between components, the default method of navigating via keyboard is with the <kbd>Tab</kbd> to move to the next focusable component and <kbd>Shift+Tab</kbd> to move to the previous focusable component. Complex components can have multiple focusable items, so rather than force keyboard users to tab through every focusable item within each component, a [roving tabindex]((https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#keyboardnavigationbetweencomponents(thetabsequence))) should be used to allow keyboard users to <kbd>Tab</kbd>/<kbd>Shift+Tab</kbd> into the complex component, arrow keys to navigate within the component, and <kbd>Tab</kbd>/<kbd>Shift+Tab</kbd> back out of the complex component.  (See the WAI-ARIA APG's [Managing Focus Within Components Using a Roving tabindex](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_roving_tabindex))
+Between components, the default method of navigating via keyboard is with the <kbd>Tab</kbd> to move to the next focusable component and <kbd><kbd>Shift</kbd>+<kbd>Tab</kbd></kbd> to move to the previous focusable component. Complex components can have multiple focusable items, so rather than force keyboard users to tab through every focusable item within each component, a [roving tabindex](<(https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#keyboardnavigationbetweencomponents(thetabsequence))>) should be used to allow keyboard users to <kbd>Tab</kbd>/<kbd><kbd>Shift</kbd>+<kbd>Tab</kbd></kbd> into the complex component, arrow keys to navigate within the component, and <kbd>Tab</kbd>/<kbd><kbd>Shift</kbd>+<kbd>Tab</kbd></kbd> back out of the complex component. (See the WAI-ARIA APG's [Managing Focus Within Components Using a Roving tabindex](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_roving_tabindex))
 
 Our complex components, like accordion, secondary navigation, subnavigation, tabs, and tile, use this roving tabindex method via a reactive controller. (Refer to [Contributors: Accessibility controllers](../contributors/#accessibility-controllers))
 
@@ -155,7 +162,6 @@ If the focus cannot be moved away from a focusable element by keyboard alone, a 
 - [WCAG 2.1.2: No keyboard trap](https://www.w3.org/WAI/WCAG21/Understanding/no-keyboard-trap.html)
 - [WCAG 2.1, Technique G21: Ensuring that users are not trapped in content](https://www.w3.org/WAI/WCAG21/Techniques/general/G21)
 - [CSUN: Web Accessibility Criteria - Keyboard Traps](https://www.csun.edu/universal-design-center/web-accessibility-criteria-keyboard-traps#:~:text=Keyboard%20traps%20occur%20when%20a,menus%2C%20or%20even%20on%20hyperlinks.)
-
 
 ## Error Handling
 

@@ -2,6 +2,8 @@ import type { ReactiveElement } from 'lit';
 
 import { expect, html, nextFrame, aTimeout } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
+import { a11ySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
+
 import { setViewport, sendKeys } from '@web/test-runner-commands';
 
 import { RhTabs, RhTab } from '@rhds/elements/rh-tabs/rh-tabs.js';
@@ -21,6 +23,8 @@ async function allUpdates(element: ReactiveElement) {
 describe('<rh-tabs>', function() {
   let element: RhTabs;
 
+  const updateComplete = () => allUpdates(element);
+
   beforeEach(async function() {
     element = await createFixture<RhTabs>(html`
       <rh-tabs>
@@ -36,8 +40,10 @@ describe('<rh-tabs>', function() {
         <rh-tab-panel>Cloud</rh-tab-panel>
       </rh-tabs>
     `);
-    await allUpdates(element);
   });
+
+  beforeEach(updateComplete);
+  beforeEach(nextFrame);
 
   it('should upgrade', async function() {
     const klass = customElements.get('rh-tabs');
@@ -50,6 +56,7 @@ describe('<rh-tabs>', function() {
   describe('vertical tabs', function() {
     it('should have vertical styles', async function() {
       element.setAttribute('vertical', '');
+      await updateComplete();
       await nextFrame();
       const tabs = element.shadowRoot!.querySelector('[part="tabs"]')!;
       const tabsVerticalStyles = getComputedStyle(tabs).flexDirection;
@@ -60,9 +67,10 @@ describe('<rh-tabs>', function() {
   describe('box tabs', function() {
     it('should have box styles', async function() {
       element.setAttribute('box', '');
+      await updateComplete();
       await nextFrame();
       const tab = element.querySelector('rh-tab');
-      const button = tab.shadowRoot!.querySelector('button')!;
+      const button = tab!.shadowRoot!.querySelector('#button')!;
       const buttonBeforeStyles = getComputedStyle(button, '::before').borderInlineStartWidth;
       expect(buttonBeforeStyles).to.be.equal(tokens.get('--rh-border-width-sm'));
     });
@@ -71,6 +79,7 @@ describe('<rh-tabs>', function() {
   describe('inset tabs', function() {
     it('should have inset styles', async function() {
       element.setAttribute('box', 'inset');
+      await updateComplete();
       await nextFrame();
       const insetEl = element.shadowRoot!.querySelector(`[part="tabs"]`)!;
       const insetStyles = getComputedStyle(insetEl).marginInline;
@@ -86,24 +95,33 @@ describe('<rh-tabs>', function() {
 
     beforeEach(async function() {
       [firstItem, secondItem] = element.querySelectorAll<RhTab>('rh-tab');
-      lastItem = [...element.querySelectorAll<RhTab>('rh-tab')].pop();
+      lastItem = [...element.querySelectorAll<RhTab>('rh-tab')].pop()!;
       await sendKeys({ press: 'Tab' });
       initialActiveElement = document.activeElement;
     });
 
-    it('should focus a this first jump-links-item', function() {
+    beforeEach(updateComplete);
+    beforeEach(nextFrame);
+
+    it('should focus first tab item', function() {
       expect(document.activeElement).to.equal(firstItem);
     });
 
     describe('pressing right arrow key', function() {
       beforeEach(async function() {
         await sendKeys({ press: 'ArrowRight' });
-        await allUpdates(element);
-        await nextFrame();
       });
+
+      beforeEach(updateComplete);
+      beforeEach(nextFrame);
 
       it('should focus a rh-tab button', function() {
         expect(document.activeElement).to.be.an.instanceof(RhTab);
+      });
+
+      it('should specify the selected tab to assistive technology', async function() {
+        const snapshot = await a11ySnapshot();
+        expect(snapshot.children?.find(x => x.selected)?.name).to.equal(secondItem.textContent);
       });
 
       it('should change focus when keyboard navigation is used', function() {
@@ -118,9 +136,10 @@ describe('<rh-tabs>', function() {
     describe('pressing left arrow key', function() {
       beforeEach(async function() {
         await sendKeys({ press: 'ArrowLeft' });
-        await allUpdates(element);
-        await nextFrame();
       });
+
+      beforeEach(updateComplete);
+      beforeEach(nextFrame);
 
       it('should focus a rh-tab button', function() {
         expect(document.activeElement).to.be.an.instanceof(RhTab);
@@ -133,14 +152,133 @@ describe('<rh-tabs>', function() {
       it('should focus the last rh-tab item', function() {
         expect(document.activeElement).to.equal(lastItem);
       });
+
+      it('should specify the selected tab to assistive technology as last item', async function() {
+        const snapshot = await a11ySnapshot();
+        expect(snapshot.children?.find(x => x.selected)?.name).to.equal(lastItem.textContent);
+      });
+    });
+  });
+
+  describe('manual activation', function() {
+    let firstItem: RhTab;
+    let secondItem: RhTab;
+    let lastItem: RhTab;
+    let initialActiveElement: Element | null;
+
+    beforeEach(async function() {
+      element.setAttribute('manual', '');
+      await updateComplete();
+      await nextFrame();
+      [firstItem, secondItem] = element.querySelectorAll<RhTab>('rh-tab');
+      lastItem = [...element.querySelectorAll<RhTab>('rh-tab')].pop()!;
+      await sendKeys({ press: 'Tab' });
+      initialActiveElement = document.activeElement;
+    });
+
+    beforeEach(updateComplete);
+    beforeEach(nextFrame);
+
+    describe('pressing right arrow key', function() {
+      beforeEach(async function() {
+        await sendKeys({ press: 'ArrowRight' });
+      });
+
+      beforeEach(updateComplete);
+      beforeEach(nextFrame);
+
+      it('should focus a rh-tab button', function() {
+        expect(document.activeElement).to.be.an.instanceof(RhTab);
+      });
+
+      it('should specify the focused tab to assistive technology as second tab', async function() {
+        const snapshot = await a11ySnapshot();
+        expect(snapshot.children?.find(x => x.focused)?.name).to.equal(secondItem.textContent);
+      });
+
+      it('should specify the selected tab to assistive technology as first tab', async function() {
+        const snapshot = await a11ySnapshot();
+        expect(snapshot.children?.find(x => x.selected)?.name).to.equal(firstItem.textContent);
+      });
+
+      it('should change focus when keyboard navigation is used', function() {
+        expect(document.activeElement).to.not.equal(initialActiveElement);
+      });
+
+      it('should focus the second rh-tab item', function() {
+        expect(document.activeElement).to.equal(secondItem);
+      });
+
+      describe('pressing enter key', function() {
+        beforeEach(async function() {
+          await sendKeys({ press: 'Enter' });
+        });
+
+        beforeEach(updateComplete);
+        beforeEach(nextFrame);
+
+        it('should activate second item', async function() {
+          const snapshot = await a11ySnapshot();
+          expect(snapshot.children?.find(x => x.focused)?.name).to.equal(secondItem.textContent);
+          expect(snapshot.children?.find(x => x.selected)?.name).to.equal(secondItem.textContent);
+        });
+      });
+    });
+
+    describe('pressing left arrow key', function() {
+      beforeEach(async function() {
+        await sendKeys({ press: 'ArrowLeft' });
+      });
+
+      beforeEach(updateComplete);
+      beforeEach(nextFrame);
+
+      it('should focus a rh-tab button', function() {
+        expect(document.activeElement).to.be.an.instanceof(RhTab);
+      });
+
+      it('should change focus when keyboard navigation is used', function() {
+        expect(document.activeElement).to.not.equal(initialActiveElement);
+      });
+
+      it('should focus the last rh-tab item', function() {
+        expect(document.activeElement).to.equal(lastItem);
+      });
+
+      it('should specify the focused tab to assistive technology as last tab', async function() {
+        const snapshot = await a11ySnapshot();
+        expect(snapshot.children?.find(x => x.focused)?.name).to.equal(lastItem.textContent);
+      });
+
+      it('should specify the selected tab to assistive technology as first tab', async function() {
+        const snapshot = await a11ySnapshot();
+        expect(snapshot.children?.find(x => x.selected)?.name).to.equal(firstItem.textContent);
+      });
+
+      describe('pressing enter key', function() {
+        beforeEach(async function() {
+          await sendKeys({ press: 'Enter' });
+        });
+
+        beforeEach(updateComplete);
+        beforeEach(nextFrame);
+
+        it('should activate last item', async function() {
+          const snapshot = await a11ySnapshot();
+          expect(snapshot.children?.find(x => x.focused)?.name).to.equal(lastItem.textContent);
+          expect(snapshot.children?.find(x => x.selected)?.name).to.equal(lastItem.textContent);
+        });
+      });
     });
   });
 
   describe('on small screen', function() {
     beforeEach(async function() {
       await setViewport({ width: 320, height: 640 });
-      await allUpdates(element);
     });
+
+    beforeEach(updateComplete);
+    beforeEach(nextFrame);
 
     it('should overflow if too wide', async function() {
       const tabs = element.shadowRoot!.querySelector('[part="tabs"]')!;
@@ -155,8 +293,10 @@ describe('<rh-tabs>', function() {
         body = document.querySelector('body')!;
         body.setAttribute('dir', 'rtl');
         element.connectedCallback();
-        await allUpdates(element);
       });
+
+      beforeEach(updateComplete);
+      beforeEach(nextFrame);
 
       it('previousTab should be disabled', async function() {
         const previousTab: HTMLButtonElement = element.shadowRoot!.querySelector('#previousTab')!;

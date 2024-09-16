@@ -1,18 +1,19 @@
+## Coming soon!
+
+This element is currently in progress and not yet available for use.
+
 ## Overview
-  A Popover displays content in a non-modal dialog and adds contextual 
-  information or provides resources via text and links.
+
+A Popover displays content in a non-modal dialog and adds contextual
+information or provides resources via text and links.
+
+{% repoStatusList repoStatus=repoStatus %} 
 
 ## Sample element
-  ![Popover component sample]({{ './popover-sample-component.svg' 
-  | url }}){style="--inline-img-max-width:424px;"}
 
-{#
+<uxdot-example width-adjustment="424px">
+  <img src="{{ './popover-sample-component.svg' | url }}" alt="Popover component sample">
+</uxdot-example>
 
-## Demos
-  View a live version of this component and see how it can be customized.
-  {% playground tagName=tagName %}{% endplayground %}
-  {% cta href="./demo/", target="_blank" %}
-    View the `<rh-popover>` demo in a new tab
-  {% endcta %}
 
-#}
+{% repoStatusChecklist repoStatus=repoStatus %}

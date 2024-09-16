@@ -2,33 +2,29 @@
 
 {{ tagName | getElementDescription }}
 
-{% example palette="light",
-           alt="A vertically aligned stack of elements; includes a small red icon, large red data text showing 80% percent, and two lines of black body text",
-           src="stat-sample-element.png" %}
+<uxdot-example width-adjustment="346px">
+  <img src="./stat-sample-element.png" alt="A vertically aligned stack of elements; includes a small red icon, large red data text showing 80% percent, and two lines of black body text">
+</uxdot-example>
 
-{% repoStatusList %}
+{% repoStatusList repoStatus=repoStatus %}
+
 
 ## Sample element
-  <rh-stat>
-    <pf-icon slot="icon" set="fas" icon="tower-cell" size="lg" style="color:#ee0000"></pf-icon>
-    <span slot="statistic">80%</span>
-    <span>of Fortune Global 500 telecommunications companies</span>
-  </rh-stat>
 
-<hr style="margin-block:var(--rh-space-xl) var(--rh-space-5xl);">
-
-## Demo
-  View a live version of this element and see how it can be customized.
-
-  {% playground tagName=tagName %}{% endplayground %}
-  {% cta href="./demo/", target="_blank" %}
-    View the `<rh-stat>` demo in a new tab
-  {% endcta %}
-
+<rh-stat>
+  <rh-icon slot="icon"
+           icon="telco-cloud"
+           size="lg"
+           style="color: var(--rh-color-text-brand-on-light, #ee0000);"></rh-icon>
+  <span slot="statistic">80%</span>
+  <span>of Fortune Global 500 telecommunications companies</span>
+</rh-stat>
 
 ## When to use
-- When you need to add visual emphasis to a statistic
-- When you need to pair a data point with supporting text to add more context
-- When you need to display several statistics together in a group
 
-{% repoStatusChecklist %}
+  - When you need to add visual emphasis to a statistic
+  - When you need to pair a data point with supporting text to add more context
+  - When you need to display several statistics together in a group
+
+{% repoStatusChecklist repoStatus=repoStatus %}
+

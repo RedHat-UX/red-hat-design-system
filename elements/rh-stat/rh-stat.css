@@ -11,8 +11,7 @@ div {
 
   flex-direction: column;
   align-items: center;
-  align-content: center;
-  justify-content: space-around;
+  place-content: center space-around;
 }
 
 .dark {
@@ -26,22 +25,34 @@ span,
 }
 
 .hasIcon #icon {
-  width: var(--rh-size-icon-04, 40px);
-  height: var(--rh-size-icon-04, 40px);
   color: var(--rh-color-icon-secondary-on-light, #151515);
 }
 
+.md {
+  --rh-icon-size: var(--rh-size-icon-04, 40px);
+}
+
+.lg {
+  --rh-icon-size: var(--rh-size-icon-06, 64px);
+}
+
+.md ::slotted([slot="icon"]) {
+  width: var(--rh-size-icon-04, 40px);
+  aspect-ratio: 1;
+}
+
+.lg ::slotted([slot="icon"]) {
+  width: var(--rh-size-icon-06, 64px);
+  aspect-ratio: 1;
+}
+
 .hasIcon ::slotted([slot="icon"]),
-.hasIcon pfe-icon[size="md"] {
+.hasIcon rh-icon {
   order: 1;
   display: block;
   color: currentcolor;
   fill: currentcolor;
   margin-bottom: 16px;
-  width: 100%;
-  height: 100%;
-
-  --pf-icon--size: 100%;
 }
 
 .dark #icon {
@@ -79,10 +90,10 @@ span,
   margin-top: var(--rh-space-lg, 16px);
 }
 
-:not(.hasIcon) #icon,
-:not(.hasStatistic) #statistic,
-:not(.hasTitle) #title,
-:not(.hasCta) #cta {
+div:not(.hasIcon) #icon,
+div:not(.hasStatistic) #statistic,
+div:not(.hasTitle) #title,
+div:not(.hasCta) #cta {
   display: none;
 }
 

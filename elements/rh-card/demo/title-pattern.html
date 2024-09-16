@@ -1,0 +1,79 @@
+<section id="card-pattern-title">
+
+  <rh-card>
+    <h2 slot="header">Title, lg</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+       Nullam eleifend elit sed est egestas, a sollicitudin mauris tincidunt.
+       Pellentesque vel dapibus risus.</p>
+    <rh-cta><a href="#">Call to action</a></rh-cta>
+  </rh-card>
+
+  <rh-card>
+    <h2 slot="header">Title, lg</h2>
+    <svg class="sample" width="160" height="80"><rect/></svg>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+       Nullam eleifend elit sed est egestas, a sollicitudin mauris tincidunt.
+       Pellentesque vel dapibus risus.</p>
+    <rh-cta><a href="#">Call to action</a></rh-cta>
+  </rh-card>
+
+  <rh-card color-palette="lighter">
+    <h2 slot="header">Title, lg</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+       Nullam eleifend elit sed est egestas, a sollicitudin mauris tincidunt.
+       Pellentesque vel dapibus risus.</p>
+    <rh-cta><a href="#">Call to action</a></rh-cta>
+  </rh-card>
+
+  <rh-card color-palette="lighter">
+    <h2 slot="header">Title, lg</h2>
+    <svg class="sample" width="160" height="80"><rect/></svg>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+       Nullam eleifend elit sed est egestas, a sollicitudin mauris tincidunt.
+       Pellentesque vel dapibus risus.</p>
+    <rh-cta><a href="#">Call to action</a></rh-cta>
+  </rh-card>
+
+</section>
+
+<style>
+  svg.sample {
+    border: 1px dashed var(--rh-color-border-interactive-on-light, #0066cc);
+    & rect { width: 100%; height: 100%; fill: rgba(0 102 204 / 0.10) }
+  }
+  #card-pattern-title {
+    display: grid;
+    gap: var(--rh-space-md, 16px);
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    & rh-card,
+    &::part(container) {
+      height: 100%;
+      &::part(header) {
+        margin: 0;
+        padding:
+          var(--rh-space-lg, 16px)
+          var(--rh-space-2xl, 32px);
+        background-color: var(--rh-color-surface-light, #e0e0e0);
+      }
+      &::part(body) {
+        display: flex;
+        flex-flow: column;
+      }
+      & h2 {
+        text-transform: uppercase;
+        font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+        font-size: var(--rh-font-size-body-text-md, 1rem);
+        font-weight: var(--rh-font-weight-body-text-regular, 400);
+      }
+      & svg {
+        align-self: center;
+        margin-block-end: var(--rh-space-2xl, 32px);
+      }
+    }
+  }
+</style>
+
+<script type="module">
+  import '@rhds/elements/rh-card/rh-card.js';
+  import '@rhds/elements/rh-cta/rh-cta.js';
+</script>

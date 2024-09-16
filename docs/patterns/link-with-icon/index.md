@@ -1,49 +1,61 @@
 ---
 title: Link with icon
-layout: layout-basic.njk
+order: 70
+layout: layouts/pages/basic.njk
+hasToc: true
 tags:
   - pattern
 ---
+
+<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
+<link rel="stylesheet" href="/styles/samp.css">
+
 
 ## Overview
 
 Link with icon features an icon that adds context to the link itself. It’s positioned to the left or on top of a link, depending on orientation.
 
+
 ## Sample pattern
 
-{% example palette="none",
-           alt="Link with icon",
-           src="./link-with-icon.svg" %}
+<uxdot-example width-adjustment="484px">
+  <img src="./link-with-icon.svg" alt="Link with icon">
+</uxdot-example>
+
 
 ## Style
 
 Link with icon is available in light and dark themes. It’s a grouping of a small icon near a link, similar to how a list item is a grouping of a bullet point near text. The icon chosen should represent what a user will get when they click on or tap the link. It acts as a functional addition instead of only visual.
 
-{% example palette="light",
-           alt="Link with icon specs",
-           src="./link-with-icon-style.svg" %}
+<uxdot-example width-adjustment="484px">
+  <img src="./link-with-icon-style.svg" alt="Link with icon specs">
+</uxdot-example>
+
 
 ### Theme
 
-{% example palette="light",
-           alt="Link with icon theme light",
-           src="./link-with-icon-theme-light.svg" %}
-  
-{% example palette="darkest",
-           alt="Link with icon theme dark",
-           src="./link-with-icon-theme-dark.svg" %}
+<uxdot-example width-adjustment="484px">
+  <img src="./link-with-icon-theme-light.svg" alt="Link with icon theme light">
+</uxdot-example>
+
+<uxdot-example color-palette="darkest" width-adjustment="484px">
+  <img src="./link-with-icon-theme-dark.svg" alt="Link with icon theme dark">
+</uxdot-example>
+
 
 ## Usage
 
 Use link with icon to increase the visual interest of a link without using a call to action style. Link with icon can replace links that are used on their own, but not in a paragraph of text.
 
+
 ## Best practices
 
 Don't increase the icon size because the link text size will appear smaller.
 
-{% example palette="wrong",
-           alt="Link with icon icon size issue",
-           src="./link-with-icon-best-practices.svg" %}
+<uxdot-example width-adjustment="484px" danger>
+  <img src="./link-with-icon-best-practices.svg" alt="Link with icon icon size issue">
+</uxdot-example>
+
 
 ## Behavior
 
@@ -51,44 +63,49 @@ Don't increase the icon size because the link text size will appear smaller.
 
 Link with icon can be used on large and small screens. When the width of the link exceeds the width of its container, the text will break to two lines.
 
-{% example palette="none",
-           alt="Link with icon responsive desktop",
-           src="./link-with-icon-responsive.svg" %}
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="./link-with-icon-responsive.svg" alt="Link with icon responsive desktop">
+</uxdot-example>
 
-{% example palette="none",
-           alt="Link with icon responsive mobile",
-           src="./link-with-icon-responsive-mobile.svg" %}
+<figure>
+  <uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border>
+    <img src="./link-with-icon-responsive-mobile.svg" alt="Link with icon responsive mobile">
+  </uxdot-example>
+  <figcaption>Some text styles reduce in size on small screens. Learn more about typography on mobile</figcaption>
+</figure>
 
-Some text styles reduce in size on small screens. Learn more about typography on mobile
-{.footnote}
 
 ### Alignment
 
 The icon and the link are always vertically-aligned.
 
-{% example palette="light",
-           alt="Link with icon alignment",
-           src="./link-with-icon-alignment-1.svg" %}
+<uxdot-example width-adjustment="269px">
+  <img src="./link-with-icon-alignment-1.svg" alt="Link with icon alignment">
+</uxdot-example>
 
-{% example palette="light",
-           alt="Link with icon alignment",
-           src="./link-with-icon-alignment-2.svg" %}
+<uxdot-example width-adjustment="269px">
+  <img src="./link-with-icon-alignment-2.svg" alt="Link with icon alignment">
+</uxdot-example>
+
 
 ## Interaction states
 
 The link has the same interaction states as a Link whereas the icon doesn't have any interaction states.
 
+
 ## Spacing
 
 Link with icon uses [space tokens](/tokens/space/) to define spacing values between elements.
 
-{% example palette="light",
-           alt="Link with icon spacing",
-           src="./link-with-icon-spacing.svg" %}
+<uxdot-example width-adjustment="484px">
+  <img src="./link-with-icon-spacing.svg" alt="Link with icon spacing">
+</uxdot-example>
 
-{% include 'feedback.html' %}
+<rh-table>
+{% spacerTokensTable 
+  tokens="--rh-space-lg" %}
+{% endspacerTokensTable %}
+</rh-table>
 
 
-
-
-
+{% include 'partials/component/feedback.html' %}

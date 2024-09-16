@@ -2,112 +2,73 @@ import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import { DirController } from '../../lib/DirController.js';
 
-import { type ColorPalette } from '../../lib/context/color/provider.js';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+
+import type { IconNameFor, IconSetName } from '@rhds/icons';
 
 import style from './rh-cta.css';
 
-import '@patternfly/elements/pf-icon/pf-icon.js';
-
-export interface CtaData {
-  href?: string;
-  text?: string;
-  title?: string;
-  color?: string;
-  type?: string;
-}
-
-const supportedTags = ['a', 'button']; // add input later
 function isSupportedContent(el: Element | null): el is HTMLAnchorElement | HTMLButtonElement {
-  return !!el && supportedTags.includes(el.localName);
-}
-
-const CONTENT = new WeakMap<Element, boolean>();
-function contentInitialized(el: Element | null): boolean {
-  return !!el && !!CONTENT.get(el);
-}
-
-function isButton(element: Element): element is HTMLButtonElement {
-  return element.tagName.toLowerCase() === 'button';
+  return el instanceof HTMLAnchorElement || el instanceof HTMLButtonElement;
 }
 
 /**
  * A call to action is a styled link that entices users to make a selection.
- *
  * @summary     Directs users to other pages or displays extra content
  * @slot
- *              We expect an anchor tag, `<a>` with an `href`, to be the first child inside `rh-cta` element. Less preferred but
- *              allowed for specific use-cases include: `<button>` (note however that the `button` tag is not supported for the
- *              default CTA styles).
- * @attr        color-palette
- *              [**Deprecated**] intended for use in elements that have slotted descendants, will be removed in a future release.
- *              - Sets color palette, which affects the element's styles as well as descendants' color theme. Overrides
- *              parent color context. Your theme will influence these colors so check there first if you are seeing inconsistencies.
- *              See [CSS Custom Properties](#css-custom-properties) for default values.
- *              {@deprecated color-palette intended for usage in elements that have slotted descendants}
+ *              The default slot contains the link text when the `href`
+ *              attribute is set. In case there is no href attribute, an anchor
+ *              tag (`<a href="...">`) should be the first child inside `rh-cta`
+ *              element. Less preferred but allowed for specific use-cases
+ *              include: `<button>` (note however that the `button` tag is not
+ *              supported for the default CTA styles).
  * @csspart     container - container element for slotted CTA
- * @cssprop     {<color>} --rh-cta-color
+ * @cssprop     {<color>} [--rh-cta-color=var(--rh-color-text-primary-on-dark, #ffffff)]
  *              Sets the cta color
- *              {@default `var(--rh-color-text-primary-on-dark, #ffffff)`}
- * @cssprop     --rh-cta-background-color
+ * @cssprop     [--rh-cta-background-color=var(--rh-color-brand-red-on-light, #ee0000)]
  *              Sets the cta background color
- *              {@default `var(--rh-color-brand-red-on-light, #ee0000)`}
- * @cssprop     --rh-cta-border-color
+ * @cssprop     [--rh-cta-border-color=var(--rh-color-brand-red-on-light, #ee0000)]
  *              Sets the cta border color
- *              {@default `var(--rh-color-brand-red-on-light, #ee0000)`}
- * @cssprop     --rh-cta-hover-color
+ * @cssprop     [--rh-cta-hover-color=var(--rh-color-text-primary-on-dark, #ffffff)]
  *              Sets the cta color on hover
- *              {@default `var(--rh-color-text-primary-on-dark, #ffffff)`}
- * @cssprop     --rh-cta-hover-background-color
+ * @cssprop     [--rh-cta-hover-background-color=var(--rh-color-brand-red-dark, #be0000)]
  *              Sets the cta background color on hover
- *              {@default `var(--rh-color-brand-red-dark, #be0000)`}
- * @cssprop     --rh-cta-hover-border-color
+ * @cssprop     [--rh-cta-hover-border-color=var(--rh-color-brand-red-dark, #be0000)]
  *              Sets the cta boder color on hover
- *              {@default `var(--rh-color-brand-red-dark, #be0000)`}
- * @cssprop     --rh-cta-focus-color
+ * @cssprop     [--rh-cta-focus-color=var(--rh-color-text-primary-on-dark, #ffffff)]
  *              Sets the cta color on focus
- *              {@default `var(--rh-color-text-primary-on-dark, #ffffff)`}
- * @cssprop     --rh-cta-focus-background-color
+ * @cssprop     [--rh-cta-focus-background-color=var(--rh-color-brand-red-on-light, #ee0000)]
  *              Sets the cta background color on focus
- *              {@default `var(--rh-color-brand-red-on-light, #ee0000)`}
- * @cssprop     --rh-cta-focus-container-background-color
+ * @cssprop     [--rh-cta-focus-container-background-color=transparent]
  *              Sets the cta container background color on focus
- *              {@default #0066cc1a}
- * @cssprop     --rh-cta-focus-border-color
+ * @cssprop     [--rh-cta-focus-container-outline-color=#0066cc]
+ *              Sets the cta container outline color on focus
+ * @cssprop     [--rh-cta-focus-border-color=transparent]
  *              Sets the cta border color on focus
- *              {@default `var(--rh-color-brand-red-on-light, #ee0000)`}
- * @cssprop     --rh-cta-focus-inner-border-color
+ * @cssprop     [--rh-cta-focus-inner-border-color=transparent]
  *              Sets the cta inner border color on focus
- *              {@default `var(--rh-color-text-primary-on-dark, #ffffff)`}
- * @cssprop     --rh-cta-active-color
+ * @cssprop     [--rh-cta-active-color=var(--rh-color-text-primary-on-dark, #ffffff)]
  *              Sets the cta color on active. Applicable only for secondary variant
- *              {@default `var(--rh-color-text-primary-on-dark, #ffffff)`}
- * @cssprop     --rh-cta-active-background-color
+ * @cssprop     [--rh-cta-active-background-color=var(--rh-color-brand-red-dark, #be0000)]
  *              Sets the cta background color on active
- *              {@default `var(--rh-color-brand-red-dark, #be0000)`}
- * @cssprop     --rh-cta-active-container-background-color
+ * @cssprop     [--rh-cta-active-container-background-color=#0066cc1a]
  *              Sets the cta container background color on active. Applicable only for default variant
- *              {@default #0066cc1a}
- * @cssprop     --rh-cta-active-inner-border-color
+ * @cssprop     [--rh-cta-active-inner-border-color=var(--rh-color-text-primary-on-dark, #ffffff)]
  *              Sets the cta inner border color on active
- *              {@default `var(--rh-color-text-primary-on-dark, #ffffff)`}
- * @cssprop     --rh-cta-text-decoration
+ * @cssprop     [--rh-cta-text-decoration=none]
  *              Sets the cta text decoration
- *              {@default none}
- * @cssprop     --rh-cta-focus-text-decoration
+ * @cssprop     [--rh-cta-focus-text-decoration=none]
  *              Sets the cta text decoration on focus
- *              {@default none}
- * @cssprop     --rh-cta-hover-text-decoration
+ * @cssprop     [--rh-cta-hover-text-decoration=none]
  *              Sets the cta text decoration on hover
- *              {@default none}
- * @cssprop     --rh-cta-active-text-decoration
+ * @cssprop     [--rh-cta-active-text-decoration=none]
  *              Sets the cta text decoration on active
- *              {@default none}
  */
 @customElement('rh-cta')
 export class RhCta extends LitElement {
@@ -129,101 +90,93 @@ export class RhCta extends LitElement {
    */
   @property({ reflect: true }) variant?: 'primary' | 'secondary' | 'brick';
 
-  @property({ reflect: true }) icon?: string;
+  /**
+   * When set, overrides the default slot. Use *instead* of a slotted anchor tag
+   */
+  @property({ reflect: true }) href?: string;
+
+  /** when `href` is set, the link's `download` attribute */
+  @property() download?: string;
+
+  /** when `href` is set, the link's `referrerpolicy` attribute */
+  @property() referrerpolicy?: string;
+
+  /** when `href` is set, the link's `rel` attribute */
+  @property() rel?: string;
+
+  /** when `href` is set, the link's `target` attribute */
+  @property() target?: string;
+
+  /**
+   * Icon name
+   */
+  @property({ reflect: true }) icon?: IconNameFor<IconSetName>;
+
+  /**
+   * Icon set
+   */
+  @property({ attribute: 'icon-set' }) iconSet: IconSetName = 'ui';
 
   /**
    * Sets color theme based on parent context
    */
   @colorContextConsumer() private on?: ColorTheme;
 
-  /** The slotted `<a>` or `<button>` element */
-  public cta: HTMLAnchorElement | HTMLButtonElement | null = null;
-
-  /** true while the initializer method is running - to prevent double-execution */
-  #initializing = false;
+  protected override async getUpdateComplete(): Promise<boolean> {
+    if (this.icon || !this.variant) {
+      await import('@rhds/elements/rh-icon/rh-icon.js');
+    }
+    return super.getUpdateComplete();
+  }
 
   /** Is the element in an RTL context? */
   #dir = new DirController(this);
 
   #logger = new Logger(this);
 
-  get #isDefault(): boolean {
-    return !this.hasAttribute('variant');
-  }
-
-  // START DEPRECATION WARNING
-  // note: remove ColorPalette type, and property decorator import above
-  /**
-   * @deprecated do not use the color-palette attribute: Use themable containers (e.g. rh-surface or rh-card) instead
-   */
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
-
-  #mo = new MutationObserver(() => this.#onMutation());
-
-  connectedCallback(): void {
-    super.connectedCallback();
-    this.#mo.observe(this, { attributes: true, attributeFilter: ['color-palette'] });
-  }
-
-  disconnectedCallback(): void {
-    super.disconnectedCallback();
-    this.#mo.disconnect();
-  }
-
-  #onMutation() {
-    this.#logger.warn(
-      'The color-palette attribute is deprecated and will be removed in a future release.'
-    );
-  }
-  // END DEPRECATION WARNING
-
-  render() {
+  override render() {
+    const {
+      download, href, referrerpolicy, rel, target,
+      icon, iconSet,
+      on = '', variant,
+    } = this;
     const rtl = this.#dir.dir === 'rtl';
-    // START DEPRECATION WARNING
-    // note: remove on from classMap below
-    const dark = this.colorPalette?.includes('dark') ? 'dark' : '';
-    const on = this.on ?? dark;
-    // END DEPRECATION WARNING
-    const svg = !!this.#isDefault;
-    const icon = !!this.icon;
-    const iconOrSvg = !!this.#isDefault || !!this.icon;
+    const isDefault = !variant;
+    const svg = isDefault;
+    const iconOrSvg = isDefault || !!icon;
+    const follower = !iconOrSvg ? '' : variant !== 'brick' && icon ? html`<!--
+   --><rh-icon icon=${icon} set=${iconSet ?? 'ui'}></rh-icon>` : variant ? '' : html`<!--
+   --><rh-icon  set="ui" icon="arrow-right"></rh-icon>`;
     return html`
-      <span id="container" part="container" class="${classMap({ rtl, [on]: !!on, icon, svg })}">${this.variant === 'brick' && this.icon ? html`
-        <pf-icon icon=${this.icon} size="md" set="far"></pf-icon>` : ''}
-        <slot @slotchange=${this.firstUpdated}></slot>${!iconOrSvg ? '' : this.variant !== 'brick' && this.icon ? html`
-        <pf-icon icon=${this.icon} size="md" set="far"></pf-icon>` : this.variant ? '' : html`
-        <svg xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 31.56 31.56" focusable="false" width="1em" aria-hidden="true">
-          <path d="M15.78 0l-3.1 3.1 10.5 10.49H0v4.38h23.18l-10.5 10.49 3.1 3.1 15.78-15.78L15.78 0z" />
-        </svg>`}
+      <span id="container"
+            part="container"
+            class=${classMap({ rtl, icon: !!icon, svg, [on]: !!on })}
+            @slotchange=${this.firstUpdated}>${variant === 'brick' && icon ? html`
+        <rh-icon icon=${icon}
+                 set="${iconSet ?? 'ui'}"></rh-icon>` : ''}${href ? html`
+        <a href=${href}
+           download="${ifDefined(download)}"
+           rel="${ifDefined(rel)}"
+           referrerpolicy="${ifDefined(referrerpolicy)}"
+           target="${ifDefined(target)}"><slot></slot>${follower}</a>`
+   : html`<slot></slot>${follower}`}
       </span>
     `;
   }
 
   override firstUpdated() {
-    let [cta] = this.shadowRoot?.querySelector('slot')?.assignedElements() ?? [];
+    const { href, variant } = this;
+    const cta =
+         this.shadowRoot?.querySelector('a')
+      ?? this.shadowRoot?.querySelector('slot')?.assignedElements().find(isSupportedContent)
+      ?? null;
 
-    while (cta instanceof HTMLSlotElement) {
-      [cta] = cta.assignedElements();
-    }
-
-    if (contentInitialized(cta) || this.#initializing) {
-      return;
-    }
-
-    this.#initializing = true;
-
-    // If the first child does not exist or that child is not a supported tag
-    if (!isSupportedContent(cta)) {
+    if (href && cta !== this.shadowRoot?.querySelector('a')) {
+      return this.#logger.warn(`When the href attribute is used, slotted content must not be a link`);
+    } else if (!href && !cta) {
       return this.#logger.warn(`The first child in the light DOM must be a supported call-to-action tag (<a>, <button>)`);
-    } else if (isButton(cta) && !this.variant) {
+    } else if (!href && cta instanceof HTMLButtonElement && !variant) {
       return this.#logger.warn(`Button tag is not supported semantically by the default link styles`);
-    } else {
-      // Capture the first child as the CTA element
-      this.cta = cta;
-
-      CONTENT.set(this.cta, true);
-      this.#initializing = false;
     }
   }
 }
