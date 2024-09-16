@@ -21,7 +21,7 @@ module.exports = class IconsPage {
           padding: 0;
           list-style-type: none;
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(95px, auto));
+          grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
           gap: var(--rh-space-sm);
         }
       </style>
@@ -65,7 +65,7 @@ module.exports = class IconsPage {
         <rh-button accessible-label="Copy icon HTML for ${set} ${icon}"
                    icon="${icon}"
                    icon-set="${set}"
-                   variant="link">${icon}</rh-button>
+                   variant="tertiary">${icon}</rh-button>
       </li>
     `;
   }
