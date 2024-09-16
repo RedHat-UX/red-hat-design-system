@@ -56,13 +56,7 @@ rh-icon {
   }
 }
 
-:host([highlight]) {
-  --_border-width: 8px;
-  --_border-color: #43adaf;
-  --_border-style: solid;
-}
-
-:host([highlight]) figure {
-  border-inline-start: var(--_border-width) var(--_border-style) var(--_border-color);
+.highlight {
+  border-inline-start: var(--rh-length-md, 8px) solid var(--rh-color-accent-brand);
   padding-inline-start: var(--rh-length-xl, 24px);
 }

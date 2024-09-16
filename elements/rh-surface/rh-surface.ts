@@ -1,5 +1,4 @@
 import type { ColorPalette } from '@rhds/elements/lib/context/color/provider.js';
-import type { ColorTheme } from '@rhds/elements/lib/context/color/consumer.js';
 
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
@@ -39,12 +38,16 @@ export class RhSurface extends LitElement {
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
-  get #on() {
-    return this.colorPalette?.replace(/e(st|r)/, '') ?? 'light';
-  }
-
   render() {
-    return html`<slot class="${classMap({ on: true, [this.#on]: true })}" @slotchange=${this.#onSlotchange}></slot>`;
+    const { colorPalette = 'lightest' } = this;
+    const on = colorPalette?.replace(/e(st|r)/, '') ?? 'light';
+    return html`<slot id="slot"
+                      class="${classMap({
+                        on: true,
+                        [on]: true,
+                        [`palette-${colorPalette}`]: true,
+                      })}"
+                      @slotchange=${this.#onSlotchange}></slot>`;
   }
 
   #onSlotchange() {
