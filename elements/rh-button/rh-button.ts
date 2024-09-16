@@ -95,11 +95,16 @@ export class RhButton extends LitElement {
   }
 
   override render() {
-    const { on = 'light' } = this;
+    const { danger, variant, on = 'light' } = this;
     const hasIcon = this.#hasIcon;
     return html`
       <button aria-label="${ifDefined(this.label)}"
-              class="${classMap({ hasIcon, [on]: !!on })}"
+              class="${classMap({
+                danger,
+                hasIcon,
+                [on]: !!on,
+                [variant]: true,
+              })}"
               part="button"
               type="${ifDefined(this.type)}"
               value="${ifDefined(this.value)}"

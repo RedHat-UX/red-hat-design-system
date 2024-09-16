@@ -317,7 +317,7 @@ button:hover {
  *                            *
  ******************************/
 
-:host([danger]) button {
+button.danger {
   --_default-color: var(--_danger-color);
   --_default-background-color: var(--_danger-background-color);
   --_default-border-color: var(--_danger-border-color);
@@ -338,7 +338,7 @@ button:hover {
  *                            *
  ******************************/
 
-:host([variant='secondary' i]) button {
+button.secondary {
   --_default-color: var(--_secondary-color);
   --_default-background-color: var(--_secondary-background-color);
   --_default-border-color: var(--_secondary-border-color);
@@ -362,7 +362,7 @@ button:hover {
  *                            *
  ******************************/
 
-:host([variant='tertiary' i]) button {
+button.tertiary {
   --_default-color: var(--_tertiary-color);
   --_default-background-color: var(--_tertiary-background-color);
   --_default-border-color: var(--_tertiary-border-color);
@@ -385,8 +385,12 @@ button:hover {
  *                            *
  ******************************/
 
-:host([variant='link' i]) button {
-  display: inline;
+button.link {
+  display: inline-flex;
+
+  & rh-icon {
+    order: 1;
+  }
 
   --_default-color: var(--_link-color);
   --_default-background-color: var(--_link-background-color);
@@ -409,7 +413,7 @@ button:hover {
  *                            *
  ******************************/
 
-:host([variant='close' i]) button {
+button.close {
   --_default-color: var(--_close-color);
   --_default-background-color: var(--_close-background-color);
   --_active-color: var(--_close-active-color);
@@ -433,27 +437,25 @@ button:hover {
  *                            *
  ******************************/
 
-:host([variant='play' i]) {
-  & button {
-    border-radius: 100%;
-    width: var(--rh-length-4xl, 64px);
+button.play {
+  border-radius: 100%;
+  width: var(--rh-length-4xl, 64px);
 
-    --rh-icon-size: var(--rh-size-icon-02, 24px);
-    --_default-color: var(--_play-color);
-    --_default-background-color: var(--_play-background-color);
-    --_default-background-opacity: var(--_play-background-opacity);
-    --_active-color: var(--_play-color);
-    --_active-background-color: var(--_play-active-background-color);
-    --_active-background-opacity: var(--_play-active-background-opacity);
-    --_focus-color: var(--_play-color);
-    --_focus-background-color: var(--_play-focus-background-color);
-    --_focus-background-opacity: var(--_play-focus-background-opacity);
-    --_focus-outline-color: var(--_play-focus-outline-color);
-    --_hover-color: var(--_play-color);
-    --_hover-background-color: var(--_play-hover-background-color);
-    --_hover-background-opacity: var(--_play-hover-background-opacity);
-    --_icon-size: var(--rh-size-icon-02, 24px);
-  }
+  --rh-icon-size: var(--rh-size-icon-02, 24px);
+  --_default-color: var(--_play-color);
+  --_default-background-color: var(--_play-background-color);
+  --_default-background-opacity: var(--_play-background-opacity);
+  --_active-color: var(--_play-color);
+  --_active-background-color: var(--_play-active-background-color);
+  --_active-background-opacity: var(--_play-active-background-opacity);
+  --_focus-color: var(--_play-color);
+  --_focus-background-color: var(--_play-focus-background-color);
+  --_focus-background-opacity: var(--_play-focus-background-opacity);
+  --_focus-outline-color: var(--_play-focus-outline-color);
+  --_hover-color: var(--_play-color);
+  --_hover-background-color: var(--_play-hover-background-color);
+  --_hover-background-opacity: var(--_play-hover-background-opacity);
+  --_icon-size: var(--rh-size-icon-02, 24px);
 
   & [part='icon'] {
     display: contents;
@@ -464,35 +466,30 @@ button:hover {
   }
 }
 
-:host(:is([variant='play' i], [variant='close' i])) button {
+button:is(.play,.close) {
   aspect-ratio: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 0;
+
+  /* visually hidden */
+  & #text {
+    display: inline;
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
 }
 
 :host(:is([variant='play' i], [variant='close' i])) {
   line-height: 0;
-}
-
-:host(:is([variant='play' i], [variant='close' i])) svg {
-  fill: currentcolor;
-  stroke: currentcolor;
-}
-
-/* visually hidden */
-:host(:is([variant='play' i], [variant='close' i])) #text {
-  display: inline;
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  padding: 0 !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  clip: rect(0, 0, 0, 0) !important;
-  white-space: nowrap !important;
-  border: 0 !important;
 }
 
 /******************************
@@ -527,7 +524,7 @@ button[disabled] {
  *                            *
  ******************************/
 
-:host([variant='secondary' i][danger]) button {
+button.secondary.danger {
   --_default-color: var(--_secondary-danger-color);
   --_default-background-color: transparent;
   --_default-border-color: var(--_danger-background-color);
