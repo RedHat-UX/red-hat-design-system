@@ -1,4 +1,5 @@
 // @ts-check
+/// <reference lib="ESNext.Set"/>
 
 /** @license adapted from code (c) Jordan Shermer MIT license*/
 
@@ -8,7 +9,7 @@
 const ignoreAttribute = 'data-toc-exclude';
 
 const defaults = {
-  tags: ['h2', 'h3', 'h4'],
+  tags: ['h2'],
   /** @type{string[]} */
   ignoredElements: [],
 };
@@ -83,17 +84,27 @@ class Toc {
    * @param {Options} options
    */
   constructor(htmlstring = '', options) {
-    const { queryAll, hasAttribute, isElementNode } = options.Tools;
-    const { parse } = options.Parse5;
-    this.options = { ...defaults, ...options };
-    this.root = new Item(options);
+    this.html = htmlstring;
+    this.options = options;
+    this.root = new Item(this.options);
     this.root.parent = this.root;
 
-    const document = parse(htmlstring);
+    this.parse();
+  }
 
-    const headings = queryAll(document, node => isElementNode(node)
-      && this.options.tags.includes(node.tagName)
-      && !this.options.ignoredElements.includes(node.tagName)
+  parse() {
+    const { parse } = this.options.Parse5;
+    const { queryAll, hasAttribute, isElementNode } = this.options.Tools;
+
+    const document = parse(this.html);
+
+    const tagSet =
+      new Set(this.options.tags)
+          .difference(new Set(this.options.ignoredElements));
+
+    const headings = queryAll(document, node =>
+      isElementNode(node)
+      && tagSet.has(node.tagName)
       && hasAttribute(node, 'id')
       && !hasAttribute(node, ignoreAttribute));
 
@@ -101,7 +112,7 @@ class Toc {
 
     for (const heading of headings) {
       if (isElementNode(heading)) {
-        const current = new Item(options, heading);
+        const current = new Item(this.options, heading);
         const parent = getParent(previous, current);
         current.parent = parent;
         parent.children.push(current);
@@ -126,7 +137,15 @@ module.exports = {
                              async function(content, opts) {
                                const Parse5 = await import('parse5');
                                const Tools = await import('@parse5/tools');
-                               const toc = new Toc(content, { ...options, ...opts, Parse5, Tools });
+                               const toc = new Toc(content, {
+                                 ...defaults,
+                                 ...options,
+                                 ...opts,
+                                 tags: opts?.tags || options?.tags,
+                                 Parse5,
+                                 Tools,
+                                 page: this.page,
+                               });
                                const html = toc.serialize();
                                return html;
                              });

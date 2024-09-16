@@ -4,6 +4,7 @@ const html = String.raw;
 module.exports = class IconsPage {
   async data() {
     return {
+      permalink: '/icons/index.html',
       layout: 'layouts/pages/basic.njk',
       title: 'Icons',
       hasToc: true,
@@ -27,23 +28,28 @@ module.exports = class IconsPage {
 
       <p>Click icons to copy their HTML elements</p>
 
-      <section id="social-icons">
-        <h2>Social Icons</h2>
+      <section>
+        <h2 id="social-icons">Social Icons</h2>
+        <p>These icons represent or link to social media companies</p>
         <ul class="icon-set">${this.renderIcons('social', icons)}</ul>
       </section>
 
-      <section id="standard-icons">
-        <h2>Standard Icons</h2>
+      <section>
+        <h2 id="standard-icons">Standard Icons</h2>
+        <p>Use these icons as graphics, and at large sizes</p>
+        <rh-alert state="warning">Avoid using these for UI elements like buttons</rh-alert>
         <ul class="icon-set">${this.renderIcons('standard', icons)}</ul>
       </section>
 
-      <section id="ui-icons">
-        <h2>UI Icons</h2>
+      <section>
+        <h2 id="ui-icons">UI Icons</h2>
+        <p>Use these icons in UI controls like buttons and form fields</p>
         <ul class="icon-set">${this.renderIcons('ui', icons)}</ul>
       </section>
 
-      <section id="micron-icons">
-        <h2>Microns</h2>
+      <section>
+        <h2 id="micron-icons">Microns</h2>
+        <p>Microns is a funny word</p>
         <ul class="icon-set">${this.renderIcons('microns', icons)}</ul>
       </section>
     `;
