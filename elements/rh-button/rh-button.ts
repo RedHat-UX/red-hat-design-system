@@ -106,7 +106,9 @@ export class RhButton extends LitElement {
               @click="${this.#onClick}"
               ?disabled="${this.disabled || this.#internals.formDisabled}">
         <span aria-hidden="true">
-          <slot id="icon" part="icon" name="icon">${this.#renderIcon()}</slot>
+          <slot id="icon"
+                part="icon"
+                name="icon">${this.#renderIcon()}</slot>
         </span>
         <span aria-hidden=${String(!!this.label) as 'true' | 'false'}><slot id="text" ></slot></span>
       </button>
