@@ -191,7 +191,7 @@ export class RhTile extends LitElement {
   }
 
   render() {
-    const { bleed, compact, checkable, checked, desaturated, on = '' } = this;
+    const { bleed, compact, checkable, checked, colorPalette, desaturated, on = 'light' } = this;
     const disabled = this.disabledGroup || this.disabled || this.#internals.formDisabled;
     const hasSlottedIcon = this.#slots.hasSlotted('icon');
     return html`
@@ -203,7 +203,8 @@ export class RhTile extends LitElement {
             desaturated,
             disabled,
             on: true,
-            [on]: !!on,
+            [on]: true,
+            [`palette-${colorPalette}`]: !!colorPalette,
           })}">
         <slot id="image"
               name="image"

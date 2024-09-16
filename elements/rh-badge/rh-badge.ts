@@ -1,6 +1,9 @@
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+import { classMap } from 'lit-html/directives/class-map.js';
+
+import { colorContextConsumer } from '@rhds/elements/lib/context/color/consumer.js';
 
 import styles from './rh-badge.css';
 
@@ -18,14 +21,19 @@ import styles from './rh-badge.css';
  */
 @customElement('rh-badge')
 export class RhBadge extends LitElement {
-  static readonly version = '{{version}}';
-
   static readonly styles = [styles];
+
+  @colorContextConsumer() private on?: string;
 
   /**
    * Denotes the state-of-affairs this badge represents
    */
-  @property({ reflect: true }) state?: 'info' | 'success' | 'moderate' | 'important' | 'critical';
+  @property({ reflect: true }) state?:
+    | 'info'
+    | 'success'
+    | 'moderate'
+    | 'important'
+    | 'critical';
 
   /**
    * Sets a numeric value for a badge.
@@ -42,13 +50,18 @@ export class RhBadge extends LitElement {
   @property({ reflect: true, type: Number }) threshold?: number;
 
   override render() {
-    const { threshold, number, textContent } = this;
+    const { threshold, number, textContent, on = '', state = '' } = this;
     const displayText =
         (threshold && number && (threshold < number)) ? `${threshold.toString()}+`
       : (number != null) ? number.toString()
       : textContent ?? '';
+
     return html`
-      <span>${displayText}</span>
+      <span class="${classMap({
+        on: true,
+        [on]: !!on,
+        [state]: !!state,
+      })}">${displayText}</span>
     `;
   }
 }
