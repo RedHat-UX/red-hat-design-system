@@ -61,8 +61,7 @@ export class RhTable extends LitElement {
   }
 
   get #colHeaders(): NodeListOf<HTMLTableCellElement> | undefined {
-    return this.querySelectorAll(
-      'thead > tr > th') as NodeListOf<HTMLTableCellElement> | undefined;
+    return this.querySelectorAll<HTMLTableCellElement>('thead > tr > th');
   }
 
   get #summary(): HTMLElement | undefined {
