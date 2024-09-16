@@ -137,7 +137,7 @@ export class RhButton extends LitElement {
   #renderIcon(): TemplateResult {
     switch (this.variant.toLowerCase()) {
       case 'close':
-        return html`<rh-icon set="ui" icon="close"></rh-icon>`;
+        return html`<rh-icon set="microns" icon="close"></rh-icon>`;
       case 'play':
         return html`<rh-icon set="ui" icon="play-fill"></rh-icon>`;
       default:

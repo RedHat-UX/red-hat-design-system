@@ -62,22 +62,10 @@ button > span {
   display: flex;
   gap: var(--rh-space-sm, 6px);
   align-items: center;
-
-  & button {
-    /* position: absolute; */
-    inset: 0;
-
-    & > span {
-      display: block;
-    }
-  }
+  padding-inline-start: calc(var(--rh-space-lg, 16px) * 0.75);
 
   & [part='icon'] {
-    display: inline-flex;
-    align-items: center;
-
-    /* position: absolute; */
-    width: 16px;
+    display: contents;
   }
 }
 
@@ -445,29 +433,35 @@ button:hover {
  *                            *
  ******************************/
 
-:host([variant='play' i]) button {
-  border-radius: 100%;
-  width: var(--rh-length-4xl, 64px);
+:host([variant='play' i]) {
+  & button {
+    border-radius: 100%;
+    width: var(--rh-length-4xl, 64px);
 
-  --_default-color: var(--_play-color);
-  --_default-background-color: var(--_play-background-color);
-  --_default-background-opacity: var(--_play-background-opacity);
-  --_active-color: var(--_play-color);
-  --_active-background-color: var(--_play-active-background-color);
-  --_active-background-opacity: var(--_play-active-background-opacity);
-  --_focus-color: var(--_play-color);
-  --_focus-background-color: var(--_play-focus-background-color);
-  --_focus-background-opacity: var(--_play-focus-background-opacity);
-  --_focus-outline-color: var(--_play-focus-outline-color);
-  --_hover-color: var(--_play-color);
-  --_hover-background-color: var(--_play-hover-background-color);
-  --_hover-background-opacity: var(--_play-hover-background-opacity);
-  --_icon-size: var(--rh-size-icon-02, 24px);
-}
+    --rh-icon-size: var(--rh-size-icon-02, 24px);
+    --_default-color: var(--_play-color);
+    --_default-background-color: var(--_play-background-color);
+    --_default-background-opacity: var(--_play-background-opacity);
+    --_active-color: var(--_play-color);
+    --_active-background-color: var(--_play-active-background-color);
+    --_active-background-opacity: var(--_play-active-background-opacity);
+    --_focus-color: var(--_play-color);
+    --_focus-background-color: var(--_play-focus-background-color);
+    --_focus-background-opacity: var(--_play-focus-background-opacity);
+    --_focus-outline-color: var(--_play-focus-outline-color);
+    --_hover-color: var(--_play-color);
+    --_hover-background-color: var(--_play-hover-background-color);
+    --_hover-background-opacity: var(--_play-hover-background-opacity);
+    --_icon-size: var(--rh-size-icon-02, 24px);
+  }
 
-:host(:is([variant='play'])) [part='icon'] {
-  position: relative;
-  inset-inline-start: 3px;
+  & [part='icon'] {
+    display: contents;
+  }
+
+  & rh-icon {
+    translate: 10%; /* perceptually center play icon only */
+  }
 }
 
 :host(:is([variant='play' i], [variant='close' i])) button {
