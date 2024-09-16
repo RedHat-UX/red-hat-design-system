@@ -64,7 +64,7 @@ button > span {
   align-items: center;
 
   & button {
-    position: absolute;
+    /* position: absolute; */
     inset: 0;
 
     & > span {
@@ -75,7 +75,8 @@ button > span {
   & [part='icon'] {
     display: inline-flex;
     align-items: center;
-    position: absolute;
+
+    /* position: absolute; */
     width: 16px;
   }
 }
@@ -477,10 +478,8 @@ button:hover {
   padding: 0;
 }
 
-:host(:is([variant='play' i], [variant='close' i])) [part='icon'] {
-  display: inline-block;
-  width: var(--_icon-size, var(--rh-size-icon-01, 16px));
-  height: var(--_icon-size, var(--rh-size-icon-01, 16px));
+:host(:is([variant='play' i], [variant='close' i])) {
+  line-height: 0;
 }
 
 :host(:is([variant='play' i], [variant='close' i])) svg {

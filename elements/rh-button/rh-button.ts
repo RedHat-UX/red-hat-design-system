@@ -83,19 +83,12 @@ export class RhButton extends LitElement {
   @colorContextConsumer() private on?: ColorTheme;
 
   get #hasIcon() {
-    return !!this.icon;
+    return this.variant === 'play' || this.variant === 'close' || !!this.icon;
   }
 
   #internals = InternalsController.of(this);
 
   override willUpdate() {
-    const variant = this.variant.toLowerCase();
-    switch (variant) {
-      case 'close':
-      case 'play':
-        this.icon = variant;
-        break;
-    }
     if (this.#hasIcon) {
       import('@rhds/elements/rh-icon/rh-icon.js');
     }
@@ -141,12 +134,12 @@ export class RhButton extends LitElement {
    *          <base-icon icon=${this.icon}></base-icon>
    *          ```
    */
-  #renderIcon(): TemplateResult | string {
+  #renderIcon(): TemplateResult {
     switch (this.variant.toLowerCase()) {
       case 'close':
         return html`<rh-icon set="ui" icon="close"></rh-icon>`;
       case 'play':
-        return html`<rh-icon set="ui" icon="play"></rh-icon>`;
+        return html`<rh-icon set="ui" icon="play-fill"></rh-icon>`;
       default:
         return html`<rh-icon set="${this.iconSet ?? 'ui'}" icon="${this.icon}"></rh-icon>`;
     }
