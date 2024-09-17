@@ -54,6 +54,8 @@ module.exports = class IconsPage {
         <h2 id="micron-icons">Microns</h2>
         <ul class="icon-set">${this.renderIcons('microns', icons)}</ul>
       </section>
+
+      ${this.renderFile('./_includes/partials/component/feedback.html', 'njk')}
     `;
   }
 
