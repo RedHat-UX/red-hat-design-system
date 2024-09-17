@@ -24,6 +24,9 @@ import styles from './rh-table.css';
 export class RhTable extends LitElement {
   static readonly styles = [styles];
 
+  /**
+   * Auto-generates header labels for responsive layout
+   */
   @property({ reflect: true }) responsive?: 'stack';
 
   @colorContextConsumer() private on?: ColorTheme;
