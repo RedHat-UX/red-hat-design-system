@@ -1,0 +1,35 @@
+<rh-card class="example-card-list-with-dividers">
+  <ul>
+    <li>List text</li>
+    <li><a href="#">Linked list text</a></li>
+    <li>List text two lines Lorem ipsum dolor sit amet, consectetur adipiscing elit nulla vitae elit</li>
+  </ul>
+  <rh-cta slot="footer" href="#">Call to action</rh-cta>
+</rh-card>
+
+<style>
+  .example-card-list-with-dividers {
+    width: 360px;
+    & ul {
+      display: flex;
+      flex-flow: column;
+      gap: var(--rh-space-lg);
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      & li {
+        margin-block: 0;
+        padding-block: var(--rh-space-lg);
+        border-block-end: 1px solid var(--rh-color-border-subtle);
+        &:last-child {
+          padding-block-end: 0;
+          border-block-end: none;
+        }
+      }
+    }
+    & h3 {
+      margin-block-end: var(--rh-space-lg);
+    }
+  }
+</style>
+

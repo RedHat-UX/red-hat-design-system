@@ -171,12 +171,7 @@ class PlaygroundDemo {
   }
 
   private addCommonCss() {
-    const cssPrefix = this.demo.filePath.match(DEMO_FILEPATH_IS_MAIN_DEMO_RE) ? '' : '../';
-    this.append(this.createStyleLink(`${cssPrefix}reset.css`),
-                Tools.createTextNode('\n'),
-                this.createStyleLink(`${cssPrefix}fonts.css`),
-                Tools.createTextNode('\n'),
-                this.createStyleLink(`${cssPrefix}typography.css`));
+    this.append(this.createStyleLink(`/styles/demo/styles.css`));
   }
 
   private getFinalContent() {

@@ -22,16 +22,16 @@ a {
   color: currentcolor;
 }
 
-a[id$="text"] {
+a[id$='text'] {
   border-block-end: 1px dotted transparent;
 }
 
-a[id$="text"]:hover {
+a[id$='text']:hover {
   background-color: var(--_static-surface-color);
   border-block-end-color: var(--_static-underline-color);
 }
 
-a[active][id$="text"] {
+a[active][id$='text'] {
   color: var(--_static-text-color);
   background-color: var(--_static-highlight-color);
 }
@@ -51,11 +51,11 @@ h6 {
 }
 
 #voice {
-  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
 }
 
 #start {
-  font-family: var(--rh-font-family-code, RedHatMono, "Red Hat Mono", "Courier New", Courier, monospace);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
 }
 
 a #start {

@@ -1,28 +1,20 @@
-<style>
-  /* demo only */
-  .example-icon-card svg[slot] {
-    width: 80px;
-    border: 1px dashed var(--rh-color-border-interactive-on-light, #0066cc);
-  }
-</style>
-
-<uxdot-pattern id="icon-card">
-  <rh-card class="example-icon-card">
-    <svg slot="header" viewBox="0 0 80 80">
-      <rect fill="rgba(0 102 204 / 0.10)" width="80" height="80"/>
-    </svg>
-    <h4 slot="header">Heading, sm</h4>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas, a sollicitudin mauris tincidunt. Pellentesque vel dapibus risus.
-    <rh-cta slot="footer" href="#">Call to action</rh-cta>
-  </rh-card>
-  <rh-code-block slot="html" actions="copy">
-    <span slot="action-label-copy">Copy to Clipboard</span>
-    <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
-    <script type="text/html"><rh-card>
-  <rh-icon slot="header" set="standard" icon="coffee-beans"></rh-icon>
+<rh-card class="example-icon-card">
+  <svg slot="header" width="80" height="80">
+    <rect fill="var(--rh-color-border-interactive)"
+          fill-opacity="0.1"
+          stroke-dasharray="4"
+          stroke-width="1"
+          stroke="var(--rh-color-border-interactive)"
+          width="80"
+          height="80"/>
+  </svg>
   <h4 slot="header">Heading, sm</h4>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas, a sollicitudin mauris tincidunt. Pellentesque vel dapibus risus.
   <rh-cta slot="footer" href="#">Call to action</rh-cta>
-</rh-card></script>
-  </rh-code-block>
-</uxdot-pattern>
+</rh-card>
+
+<style>
+  .example-icon-card {
+    width: 360px;
+  }
+</style>

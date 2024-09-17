@@ -1,0 +1,89 @@
+:host {
+  display: block;
+  container-name: host;
+  container-type: inline-size;
+  margin-block-end: var(--rh-space-2xl, 32px);
+}
+
+#container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: 'controls' 'example' 'code';
+  gap: var(--rh-space-2xl, 32px) var(--rh-space-4xl, 64px);
+  padding: var(--rh-space-2xl, 32px);
+  border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+  border-radius: var(--rh-border-radius-default, 3px);
+  background-color: var(--rh-color-surface);
+  color: var(--rh-color-text-primary);
+  border-color: var(--rh-color-border-subtle);
+
+  --rh-color-surface: inherit;
+}
+
+#container h3,
+#container ::slotted(h2),
+#container ::slotted(h3),
+#container ::slotted(h4),
+#container ::slotted(h5),
+#container ::slotted(h6) {
+  margin-block: 0 var(--rh-space-lg, 16px) !important;
+  font-size: var(--rh-font-size-body-text-lg, 1.125rem) !important;
+}
+
+#color-picker {
+  grid-area: controls;
+  justify-self: flex-end;
+  display: flex;
+  align-items: center;
+  gap: var(--rh-space-lg, 16px);
+}
+
+#example {
+  grid-area: example;
+}
+
+:host([stacked]) #example ::slotted(*) {
+  max-width: 100%;
+}
+
+#code {
+  grid-area: code;
+  display: flex;
+  flex-direction: column;
+  gap: var(--rh-space-lg, 16px);
+}
+
+#container.noColorPicker {
+  grid-template-areas: 'example' 'code';
+}
+
+#color-picker.noColorPicker {
+  display: none !important;
+}
+
+#example slot[name='heading'] {
+  display: block;
+  grid-column: -1/1;
+}
+
+@container host (min-width: 992px) {
+  #container {
+    grid-template-columns: max-content auto;
+    grid-template-areas:
+      'controls controls'
+      'example code';
+  }
+
+  #container.noColorPicker {
+    grid-template-areas: 'example code';
+  }
+
+  #container.stacked {
+    grid-template-columns: 1fr;
+    grid-template-areas: 'controls' 'example' 'code';
+  }
+
+  #container.stacked.noColorPicker {
+    grid-template-areas: 'example' 'code';
+  }
+}

@@ -2,8 +2,13 @@ extends:
   - stylelint-config-standard
   - '@stylistic/stylelint-config'
 
+plugins:
+  - ./node_modules/@rhds/tokens/plugins/stylelint.js
+  - '@stylistic/stylelint-plugin'
+
 ignoreFiles:
   - node_modules/**/*
+  - docs/assets/javascript/elements/*.js
 
 rules:
   alpha-value-notation: number # TODO: fix for `percentage` in tokens
@@ -19,6 +24,7 @@ rules:
     - ignoreShorthands:
         - /grid/
 
+  media-feature-range-notation: prefix
   number-max-precision: 6
   no-descending-specificity:
     - true
@@ -42,84 +48,25 @@ rules:
     - ignorePseudoElements:
       - /part(.*)/
 
-  '@stylistic/string-quotes': double
+  '@stylistic/string-quotes': single
   '@stylistic/selector-combinator-space-after': always
   '@stylistic/selector-combinator-space-before': always
+  '@stylistic/function-parentheses-newline-inside': never-multi-line
+  '@stylistic/function-comma-newline-after': always-multi-line
   '@stylistic/indentation':
-   - 2
-   - indentInsideParens: 'once-at-root-twice-in-block'
+    - 2
+    - indentInsideParens: 'once-at-root-twice-in-block'
   '@stylistic/max-line-length':
     - 100
-    - ignorePattern: /--rh-font-family-/
+    - ignorePattern: /(--rh-font-family-|https:\/\/)/
 
+  rhds/deprecated: true
   rhds/token-values: true
 
   rhds/no-unknown-token-name:
     - true
-    - migrations:
-      # reds
-      --rh-color-red-50: --rh-color-red-10
-      --rh-color-red-100: --rh-color-red-20
-      --rh-color-red-200: --rh-color-red-30
-      --rh-color-red-300: --rh-color-red-40
-      --rh-color-red-400: --rh-color-red-50
-      --rh-color-red-500: --rh-color-red-50
-      --rh-color-red-600: --rh-color-red-60
-      --rh-color-red-700: --rh-color-red-60
-      --rh-color-red-800: --rh-color-red-70
-      # oranges
-      --rh-color-orange-50: --rh-color-orange-10
-      --rh-color-orange-100: --rh-color-orange-30
-      --rh-color-orange-300: --rh-color-orange-40
-      --rh-color-orange-500: --rh-color-orange-60
-      --rh-color-orange-700: --rh-color-orange-70
-      # yellows (previously golds)
-      --rh-color-gold-50: --rh-color-yellow-10
-      --rh-color-gold-400: --rh-color-yellow-40
-      --rh-color-gold-600: --rh-color-yellow-70
-      # greens
-      --rh-color-green-50: --rh-color-green-10
-      --rh-color-green-100: --rh-color-green-20
-      --rh-color-green-500: --rh-color-green-60
-      --rh-color-green-600: --rh-color-green-70
-      # teals (previously cyans)
-      --rh-color-cyan-50: --rh-color-teal-10
-      --rh-color-cyan-100: --rh-color-teal-30
-      --rh-color-cyan-300: --rh-color-teal-50
-      --rh-color-cyan-400: --rh-color-teal-60
-      --rh-color-cyan-500: --rh-color-teal-70
-      # blues
-      --rh-color-blue-50: --rh-color-blue-10
-      --rh-color-blue-100: --rh-color-blue-20
-      --rh-color-blue-200: --rh-color-blue-30
-      --rh-color-blue-250: --rh-color-blue-40
-      --rh-color-blue-400: --rh-color-blue-50
-      --rh-color-blue-500: --rh-color-blue-60
-      --rh-color-blue-600: --rh-color-blue-70
-      # purples
-      --rh-color-purple-50: --rh-color-purple-10
-      --rh-color-purple-100: --rh-color-purple-20
-      --rh-color-purple-300: --rh-color-purple-40
-      --rh-color-purple-500: --rh-color-purple-60
-      --rh-color-purple-700: --rh-color-purple-70
-      # grays
-      --rh-color-gray-05: --rh-color-gray-10
-      --rh-color-gray-10: --rh-color-gray-20
-      --rh-color-gray-20: --rh-color-gray-30
-      --rh-color-gray-30: --rh-color-gray-40
-      --rh-color-gray-40: --rh-color-gray-50
-      --rh-color-gray-50: --rh-color-gray-60
-      --rh-color-gray-60: --rh-color-gray-70
-      --rh-color-gray-70: --rh-color-gray-80
-      --rh-color-gray-80: --rh-color-gray-90
-      --rh-color-gray-90: --rh-color-gray-95
-      --rh-color-black: --rh-color-gray-100
-
-  media-feature-range-notation: prefix
-
-plugins:
-  - ./node_modules/@rhds/tokens/plugins/stylelint.cjs
-  - '@stylistic/stylelint-plugin'
+    - allowed:
+      - --rh-icon-size
 
 overrides:
   - files:

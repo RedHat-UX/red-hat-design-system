@@ -7,7 +7,7 @@
 
 /** Add the separator to blocks in the middle */
 :host(:not(:last-of-type, :first-of-type)):after {
-  content: "";
+  content: '';
   display: block;
   height: 1px;
   width: 100%;
@@ -35,6 +35,6 @@
 
 .content ::slotted(*) {
   color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
-  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   font-weight: var(--rh-font-weight-body-text-regular, 400);
 }

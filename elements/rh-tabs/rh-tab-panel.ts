@@ -16,8 +16,6 @@ import styles from './rh-tab-panel.css';
  */
 @customElement('rh-tab-panel')
 export class RhTabPanel extends LitElement {
-  static readonly version = '{{version}}';
-
   static readonly styles = [styles];
 
   /**
@@ -48,7 +46,7 @@ export class RhTabPanel extends LitElement {
   render() {
     const { on = '' } = this;
     return html`
-      <div id="rhds-container" class="${classMap({ [on]: !!on })}">
+      <div id="rhds-container" class="${classMap({ on: true, [on]: !!on })}">
         <slot></slot>
       </div>
     `;

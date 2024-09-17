@@ -1,8 +1,12 @@
 import { expect, html, aTimeout, oneEvent } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
+import { a11ySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
 
 import { setViewport, sendKeys, sendMouse } from '@web/test-runner-commands';
+import { clickElementAtCenter } from '@patternfly/pfe-tools/test/utils.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
+
+import { querySelectorDeep } from 'query-selector-shadow-dom';
 
 import { RhAudioPlayer } from '../rh-audio-player.js';
 import { RhAudioPlayerAbout } from '../rh-audio-player-about.js';
@@ -12,8 +16,17 @@ import { RhAudioPlayerSubscribe } from '../rh-audio-player-subscribe.js';
 import { RhCue } from '../rh-cue.js';
 import { RhTranscript } from '../rh-transcript.js';
 
+
+function press(key: string) {
+  return async function() {
+    await sendKeys({ press: key });
+  };
+}
+
 describe('<rh-audio-player>', function() {
   let element: RhAudioPlayer;
+
+  const updateComplete = () => element.updateComplete;
 
   // ACTIONS
 
@@ -63,7 +76,7 @@ describe('<rh-audio-player>', function() {
   }
 
   async function clickMute() {
-    const button = getShadowElementBySelector('#mute') as HTMLButtonElement;
+    const button = querySelectorDeep('#mute') as HTMLButtonElement;
     button!.click();
     await element.updateComplete;
   }
@@ -84,7 +97,7 @@ describe('<rh-audio-player>', function() {
   }
 
   async function clickMenu() {
-    const button = getShadowElementBySelector('#menu') as HTMLButtonElement;
+    const button = querySelectorDeep('#menu') as HTMLButtonElement;
     const x = button.offsetLeft + 5;
     const y = button.offsetTop + 5;
     await sendMouse({ type: 'click', position: [x, y] });
@@ -100,7 +113,7 @@ describe('<rh-audio-player>', function() {
   }
 
   async function clickClose() {
-    const button = getShadowElementBySelector('#close') as HTMLButtonElement;
+    const button = querySelectorDeep('#close') as HTMLButtonElement;
     const x = button.offsetLeft + 5;
     const y = button.offsetTop + 5;
     await sendMouse({ type: 'click', position: [x, y] });
@@ -115,12 +128,12 @@ describe('<rh-audio-player>', function() {
   */
 
   async function clickForward() {
-    const button = getShadowElementBySelector('#forward') as HTMLButtonElement;
+    const button = querySelectorDeep('#forward') as HTMLButtonElement;
     button!.click();
   }
 
   async function clickRewind() {
-    const button = getShadowElementBySelector('#rewind') as HTMLButtonElement;
+    const button = querySelectorDeep('#rewind') as HTMLButtonElement;
     button!.click();
   }
 
@@ -130,16 +143,13 @@ describe('<rh-audio-player>', function() {
     };
   }
 
-  async function tab() {
-    await sendKeys({ press: 'Tab' });
-  }
-
   /**
    * seeks via setting the time range slider input
+   * @param percent how much
    */
   function seekViaSlider(percent: 0 | 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 100) {
     return async function() {
-      const range = getShadowElementBySelector('#time') as HTMLInputElement;
+      const range = querySelectorDeep('#time') as HTMLInputElement;
       const x = Math.floor(range.offsetLeft + range.offsetWidth * (percent / 100));
       const y = Math.floor(range.offsetTop + range.offsetHeight / 2);
       await sendMouse({ type: 'click', position: [x, y] });
@@ -153,11 +163,6 @@ describe('<rh-audio-player>', function() {
   }
 
   // ASSERTIONS
-
-  // TODO: use testing actions to click on specific pixels, rather than shadowroot queries. this will also test layout accuracy to a degree
-  function getShadowElementBySelector(query: string) {
-    return element?.shadowRoot?.querySelector(query);
-  }
 
   function getShadowElementByAriaLabel(label: string) {
     return element?.shadowRoot?.querySelector(`[aria-label="${label}"]`);
@@ -205,8 +210,9 @@ describe('<rh-audio-player>', function() {
       `);
     });
     beforeEach(sleep(100));
+    beforeEach(() => element.updateComplete);
     it('has spanish-language buttons', function() {
-      expect(getShadowElementBySelector('#time')?.getAttribute('aria-label'), 'time slider label').to.equal('Buscar');
+      expect(querySelectorDeep('#time')?.getAttribute('aria-label'), 'time slider label').to.equal('Buscar');
     });
   });
 
@@ -258,42 +264,46 @@ describe('<rh-audio-player>', function() {
     describe('without layout', function() {
       beforeEach(setupForLayout());
       it('has width', assertHasWidth);
-      it('displays the correct elements', function() {
-        expect(getShadowElementByAriaLabel('Play'), 'Play').to.exist.and.to.be.visible;
-        expect(getShadowElementByAriaLabel('Seek'), 'Seek').to.exist.and.to.be.visible;
-        expect(getShadowElementByAriaLabel('Mute'), 'Mute').to.exist.and.to.be.visible;
-        expect(getShadowElementByAriaLabel('More options'), 'More options').to.exist.and.to.be.visible;
+      it('displays the correct elements', async function() {
+        expect(await a11ySnapshot())
+            .to.axContainName('Play')
+            .and.to.axContainName('Seek')
+            .and.to.axContainName('Mute')
+            .and.to.axContainName('More options');
       });
     });
 
     describe('compact layout', function() {
       beforeEach(setupForLayout('compact'));
       it('has width', assertHasWidth);
-      it('displays the correct elements', function() {
-        expect(getShadowElementByAriaLabel('Play'), 'Play').to.exist.and.to.be.visible;
-        expect(getShadowElementByAriaLabel('Seek'), 'Seek').to.exist.and.to.be.visible;
-        expect(getShadowElementByAriaLabel('Mute'), 'Mute').to.exist.and.to.be.visible;
-        expect(getShadowElementByAriaLabel('Speed'), 'Speed').to.exist.and.to.be.visible;
-        expect(getShadowElementByAriaLabel('Volume'), 'Volume').to.exist.and.to.be.visible;
-        expect(getShadowElementByAriaLabel('More options'), 'More options').to.exist.and.to.be.visible;
+      it('displays the correct elements', async function() {
+        expect(await a11ySnapshot())
+            .to.axContainName('Play')
+            .and.to.axContainName('Seek')
+            .and.to.axContainName('Mute')
+            .and.to.axContainName('Speed')
+            .and.to.axContainName('Volume')
+            .and.to.axContainName('More options');
       });
     });
 
     describe('compact-wide layout', function() {
       beforeEach(setupForLayout('compact-wide'));
       it('has width', assertHasWidth);
-      it('displays the correct elements', function() {
-        expect(getShadowElementByAriaLabel('Play'), 'Play').to.exist.and.to.be.visible;
-        expect(getShadowElementByAriaLabel('Seek'), 'Seek').to.exist.and.to.be.visible;
-        expect(getShadowElementByAriaLabel('Mute'), 'Mute').to.exist.and.to.be.visible;
-        expect(getShadowElementByAriaLabel('Speed'), 'Speed').to.exist.and.to.be.visible;
-        expect(getShadowElementByAriaLabel('Volume'), 'Volume').to.exist.and.to.be.visible;
-        expect(getShadowElementByAriaLabel('More options'), 'More options').to.exist.and.to.be.visible;
+      it('displays the correct elements', async function() {
+        expect(await a11ySnapshot())
+            .to.axContainName('Play')
+            .and.to.axContainName('Seek')
+            .and.to.axContainName('Mute')
+            .and.to.axContainName('Speed')
+            .and.to.axContainName('Volume')
+            .and.to.axContainName('More options');
       });
 
-      it('has mute button enabled', function() {
-        const button = getShadowElementBySelector('#mute') as HTMLButtonElement;
-        expect(button?.disabled, 'state').to.be.false;
+      it('has mute button enabled', async function() {
+        expect(await a11ySnapshot())
+            .axQuery({ name: 'Mute' })
+            .to.not.have.axProperty('disabled', true);
       });
 
       describe('setting volume to 0.5', function() {
@@ -336,10 +346,8 @@ describe('<rh-audio-player>', function() {
           });
           describe('then pressing Enter on the keyboard', function() {
             beforeEach(sleep(100));
-            beforeEach(async function() {
-              await sendKeys({ press: 'Enter' });
-              await element.updateComplete;
-            });
+            beforeEach(press('Enter'));
+            beforeEach(updateComplete);
             it('plays', function() {
               expect(element.paused, 'paused').to.be.false;
             });
@@ -365,31 +373,37 @@ describe('<rh-audio-player>', function() {
         });
       });
 
-      describe('testing playback rate', function() {
+      describe('clicking playback rate select', function() {
         beforeEach(waitForCanplaythrough);
-        let startrate: number;
-        it('sets playback rate', async function() {
-          const pbr = getShadowElementBySelector('#playback-rate') as HTMLSelectElement;
-          pbr.selectedIndex = 0;
-          pbr.click();
-          await element.updateComplete;
-          expect(element?.playbackRate).to.equal(0.25);
+        beforeEach(async function() {
+          await clickElementAtCenter(querySelectorDeep('rh-audio-player-rate-stepper:not([hidden]) select')!);
         });
-
-        it('increments playback rate', async function() {
-          const down = getShadowElementBySelector('#playback-rate-stepdown') as HTMLButtonElement;
-          startrate = element?.playbackRate;
-          down?.click();
-          await element.updateComplete;
-          expect(element?.playbackRate).to.equal(startrate - 0.25);
+        describe('ArrowUp, Enter', function() {
+          beforeEach(press('ArrowUp'));
+          beforeEach(press('Enter'));
+          it('sets playback rate', function() {
+            expect(element?.playbackRate).to.equal(0.75);
+          });
         });
+      });
 
-        it('decrements playback rate', async function() {
-          const up = getShadowElementBySelector('#playback-rate-stepup') as HTMLButtonElement;
-          startrate = element?.playbackRate;
-          up?.click();
-          await element.updateComplete;
-          expect(element?.playbackRate).to.equal(startrate + 0.25);
+      describe('clicking rate stepdown', function() {
+        beforeEach(waitForCanplaythrough);
+        beforeEach(async function() {
+          await clickElementAtCenter(querySelectorDeep('#stepdown')!);
+        });
+        it('sets playback rate', function() {
+          expect(element?.playbackRate).to.equal(0.75);
+        });
+      });
+
+      describe('clicking rate stepup', function() {
+        beforeEach(waitForCanplaythrough);
+        beforeEach(async function() {
+          await clickElementAtCenter(querySelectorDeep('#stepup')!);
+        });
+        it('sets playback rate', function() {
+          expect(element?.playbackRate).to.equal(1.25);
         });
       });
     });
@@ -408,50 +422,66 @@ describe('<rh-audio-player>', function() {
       describe('tabbable controls', function() {
         beforeEach(waitForCanplaythrough);
         beforeEach(seek(1));
-        describe('tab 1', function() {
-          beforeEach(tab);
+        describe('Tab (1)', function() {
+          beforeEach(press('Tab'));
           it('has width', assertHasWidth);
 
-          it('focuses seek range', function() {
-            expect(element.shadowRoot?.activeElement?.getAttribute('aria-label')).to.equal('Seek');
+          it('focuses seek range', async function() {
+            expect(await a11ySnapshot())
+                .axTreeFocusedNode
+                .to.have.axName('Seek');
           });
-          describe('tab 2', function() {
-            beforeEach(tab);
-            it('focuses mute button', function() {
-              expect(element.shadowRoot?.activeElement?.getAttribute('aria-label')).to.equal('Mute');
+          describe('Tab (2)', function() {
+            beforeEach(press('Tab'));
+            it('focuses mute button', async function() {
+              expect(await a11ySnapshot())
+                  .axTreeFocusedNode
+                  .to.have.axName('Mute');
             });
-            describe('tab 3', function() {
-              beforeEach(tab);
-              it('focuses volume slider', function() {
-                expect(element.shadowRoot?.activeElement?.getAttribute('aria-label')).to.equal('Volume');
+            describe('Tab (3)', function() {
+              beforeEach(press('Tab'));
+              it('focuses volume slider', async function() {
+                expect(await a11ySnapshot())
+                    .axTreeFocusedNode
+                    .to.have.axName('Volume');
               });
-              describe('tab 4', function() {
-                beforeEach(tab);
-                it('focuses speed select', function() {
-                  expect(element.shadowRoot?.activeElement?.getAttribute('aria-label')).to.equal('Speed');
+              describe('Tab (4)', function() {
+                beforeEach(press('Tab'));
+                it('focuses speed select', async function() {
+                  expect(await a11ySnapshot())
+                      .axTreeFocusedNode
+                      .to.have.axName('Speed');
                 });
-                describe('tab 5', function() {
-                  beforeEach(tab);
-                  it('focuses rewind button', function() {
-                    expect(element.shadowRoot?.activeElement?.getAttribute('aria-label')).to.equal('Rewind 15 seconds');
+                describe('Tab (5)', function() {
+                  beforeEach(press('Tab'));
+                  it('focuses rewind button', async function() {
+                    expect(await a11ySnapshot())
+                        .axTreeFocusedNode
+                        .to.have.axName('Rewind 15 seconds');
                   });
-                  describe('tab 6', function() {
-                    beforeEach(tab);
-                    it('focuses play button', function() {
-                      expect(element.shadowRoot?.activeElement?.getAttribute('aria-label')).to.equal('Play');
+                  describe('Tab (6)', function() {
+                    beforeEach(press('Tab'));
+                    it('focuses play button', async function() {
+                      expect(await a11ySnapshot())
+                          .axTreeFocusedNode
+                          .to.have.axName('Play');
                     });
-                    describe('tab 7', function() {
-                      beforeEach(tab);
-                      it('focuses advance button', function() {
-                        expect(element.shadowRoot?.activeElement?.getAttribute('aria-label')).to.equal('Advance 15 seconds');
+                    describe('Tab (7)', function() {
+                      beforeEach(press('Tab'));
+                      it('focuses advance button', async function() {
+                        expect(await a11ySnapshot())
+                            .axTreeFocusedNode
+                            .to.have.axName('Advance 15 seconds');
                       });
-                      describe('tab 8', function() {
-                        beforeEach(tab);
-                        it('focuses menu button', function() {
-                          expect(element.shadowRoot?.activeElement?.getAttribute('aria-label')).to.equal('More options');
+                      describe('Tab (8)', function() {
+                        beforeEach(press('Tab'));
+                        it('focuses menu button', async function() {
+                          expect(await a11ySnapshot())
+                              .axTreeFocusedNode
+                              .to.have.axName('More options');
                         });
-                        describe('tab 9', function() {
-                          beforeEach(tab);
+                        describe('Tab (9)', function() {
+                          beforeEach(press('Tab'));
                           it('reaches the end of focusable elements', function() {
                             expect(element.shadowRoot?.activeElement).to.be.null;
                           });
@@ -466,24 +496,29 @@ describe('<rh-audio-player>', function() {
         });
       });
 
-      it('displays the correct elements', function() {
-        expect(getShadowElementBySelector('#full-play'), 'Play').to.exist.and.to.be.visible;
-        expect(getShadowElementByAriaLabel('Seek'), 'Seek').to.exist.and.to.be.visible;
-        expect(getShadowElementByAriaLabel('Mute'), 'Mute').to.exist.and.to.be.visible;
-        expect(getShadowElementByAriaLabel('Speed'), 'Speed').to.exist.and.to.be.visible;
-        expect(getShadowElementByAriaLabel('Volume'), 'Volume').to.exist.and.to.be.visible;
+      it('displays the correct elements', async function() {
+        expect(await a11ySnapshot())
+            .to.axContainName('Play')
+            .and.to.axContainName('Seek')
+            .and.to.axContainName('Mute')
+            .and.to.axContainName('Speed')
+            .and.to.axContainName('Volume')
+            .and.to.axContainName('More options');
       });
 
       // TODO: repeat this suite in mobile
-      it('rewind is disabled', function() {
-        const rw = getShadowElementBySelector('#rewind') as HTMLButtonElement;
-        expect(rw?.disabled).to.be.true;
+      it('rewind is disabled', async function() {
+        expect(await a11ySnapshot()).to.axContainQuery({
+          name: 'Rewind 15 seconds',
+          disabled: true,
+        });
       });
 
       // TODO: repeat this suite in mobile
-      it('forward is not disabled', function() {
-        const fw = getShadowElementBySelector('#forward') as HTMLButtonElement;
-        expect(fw?.disabled).to.be.false;
+      it('forward is not disabled', async function() {
+        expect(await a11ySnapshot())
+            .axQuery({ name: 'Advance 15 seconds' })
+            .to.not.have.axProperty('disabled', true);
       });
 
       describe('clicking the forward button', function() {
@@ -496,9 +531,10 @@ describe('<rh-audio-player>', function() {
           expect(currentTime > starttime).to.be.true;
         });
 
-        it('enables rewind', function() {
-          const rw = getShadowElementBySelector('#rewind') as HTMLButtonElement;
-          expect(rw?.disabled).to.be.false;
+        it('enables rewind', async function() {
+          expect(await a11ySnapshot())
+              .axQuery({ name: 'Rewind 15 seconds' })
+              .to.not.have.axProperty('disabled', true);
         });
 
         describe('then clicking the rewind button', function() {
@@ -517,29 +553,38 @@ describe('<rh-audio-player>', function() {
 
       describe('testing playback rate', function() {
         beforeEach(waitForCanplaythrough);
-        let startrate: number;
-        it('sets playback rate', async function() {
-          const pbr = getShadowElementBySelector('#full-playback-rate') as HTMLSelectElement;
-          pbr.selectedIndex = 0;
-          pbr.click();
-          await element.updateComplete;
-          expect(element?.playbackRate).to.equal(0.25);
+        describe('clicking playback rate select', function() {
+          beforeEach(waitForCanplaythrough);
+          beforeEach(async function() {
+            await clickElementAtCenter(querySelectorDeep('rh-audio-player-rate-stepper:not([hidden]) select')!);
+          });
+          describe('ArrowUp, Enter', function() {
+            beforeEach(press('ArrowUp'));
+            beforeEach(press('Enter'));
+            it('sets playback rate', function() {
+              expect(element?.playbackRate).to.equal(0.75);
+            });
+          });
         });
 
-        it('increments playback rate', async function() {
-          const down = getShadowElementBySelector('#full-playback-rate-stepdown') as HTMLButtonElement;
-          startrate = element?.playbackRate;
-          down?.click();
-          await element.updateComplete;
-          expect(element?.playbackRate).to.equal(startrate - 0.25);
+        describe('clicking rate stepdown', function() {
+          beforeEach(waitForCanplaythrough);
+          beforeEach(async function() {
+            await clickElementAtCenter(querySelectorDeep('rh-audio-player-rate-stepper:not([hidden]) #stepdown')!);
+          });
+          it('sets playback rate', function() {
+            expect(element?.playbackRate).to.equal(0.75);
+          });
         });
 
-        it('decrements playback rate', async function() {
-          const up = getShadowElementBySelector('#full-playback-rate-stepup') as HTMLButtonElement;
-          startrate = element?.playbackRate;
-          up?.click();
-          await element.updateComplete;
-          expect(element?.playbackRate).to.equal(startrate + 0.25);
+        describe('clicking rate stepup', function() {
+          beforeEach(waitForCanplaythrough);
+          beforeEach(async function() {
+            await clickElementAtCenter(querySelectorDeep('rh-audio-player-rate-stepper:not([hidden]) #stepup')!);
+          });
+          it('sets playback rate', function() {
+            expect(element?.playbackRate).to.equal(1.25);
+          });
         });
       });
     });
@@ -599,7 +644,7 @@ describe('<rh-audio-player>', function() {
         expect(getShadowElementByAriaLabel('Mute'), 'Mute').to.exist.and.to.be.visible;
       });
       it('has mute button enabled', function() {
-        const button = getShadowElementBySelector('#mute') as HTMLButtonElement;
+        const button = querySelectorDeep('#mute') as HTMLButtonElement;
         expect(button?.disabled, 'state').to.be.false;
       });
     });
@@ -608,7 +653,7 @@ describe('<rh-audio-player>', function() {
       beforeEach(setupForLayout('full'));
       it('has width', assertHasWidth);
       it('displays the correct elements', function() {
-        expect(getShadowElementBySelector('#play'), 'Play').to.exist.and.to.be.visible;
+        expect(querySelectorDeep('#play'), 'Play').to.exist.and.to.be.visible;
         expect(getShadowElementByAriaLabel('Seek'), 'Seek').to.exist.and.to.be.visible;
         expect(getShadowElementByAriaLabel('Mute'), 'Mute').to.exist.and.to.be.visible;
       });

@@ -7,9 +7,8 @@ importElements:
   - rh-tile
 ---
 
-<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css' | url }}">
-
-<script type="module" src="/assets/javascript/search-results.js"></script>
+<link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
+<script type="module" data-helmet src="/assets/javascript/search-results.js"></script>
 
 <section aria-label="Search results" class="results-section">
   <div id="results" hidden></div>
@@ -18,7 +17,7 @@ importElements:
 
 <h2>Token Categories</h2>
 <nav class="grid xs-two-columns sm-three-columns">
-  {% for category in collections.token %}
+  {% for category in collections.tokenCategory %}
   <rh-tile>
     <a slot="headline" href="{{ category.url }}"><h3>{{category.title | capitalize }}</h3></a>
   </rh-tile>

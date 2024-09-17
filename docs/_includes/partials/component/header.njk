@@ -1,3 +1,8 @@
+<script type="module" data-helmet>
+  import '/assets/javascript/elements/uxdot-header.js';
+  import '/assets/javascript/elements/uxdot-search.js';
+</script>
+
 <uxdot-header {% if subnav.collection %}has-subnav{% endif %} {% if tokenSearch %}has-search {% endif %}>
   <h1 id="{{ (heading if heading else title) | lower | slug }}" class="page-title">{{ heading if heading else title }}</h1>
 
@@ -11,7 +16,7 @@
   {% endif %}
 
   {% if subnav.collection %}
-    <rh-subnav slot="subnav">{% for tab in collections[subnav.collection] | sort(attribute="data.subnav.order") %}
+    <rh-subnav slot="subnav" accessible-label="{{heading}}">{% for tab in collections[subnav.collection] | sort(attribute="data.subnav.order") %}
       <a {{ 'active' if tab.url == page.url }} href="{{ tab.url }}">
         {{ tab.data.title }}
       </a>{% endfor %}

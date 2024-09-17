@@ -1,12 +1,18 @@
 :root {
+  --logo-wall-container-max-width: 1070px;
   --logo-wall-logo-max-height: 40px;
   --logo-wall-logo-min-height: 40px;
   --logo-wall-logo-max-width: 190px;
   --logo-wall-logo-min-width: 130px;
 }
 
+.logo-wall-container {
+  container: logo-wall-container / inline-size;
+}
+
 .logo-wall {
   display: flex;
+  flex-wrap: wrap;
   gap: var(--rh-space-2xl, 32px);
   justify-content: center;
 }
@@ -26,6 +32,10 @@
   padding: var(--rh-space-lg, 16px);
 }
 
+.logo-wall--borderless > * {
+  padding: var(--rh-space-lg, 16px) var(--rh-space-md, 8px);
+}
+
 .logo-wall--bordered > *:hover {
   background-color: var(--rh-color-gray-10, #f2f2f2);
   cursor: pointer;
@@ -38,7 +48,7 @@
 
 .logo-wall > * a:after {
   z-index: 3;
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   display: block;
@@ -50,24 +60,20 @@
   min-height: var(--logo-wall-logo-min-height);
 }
 
-[color-palette^="dark"] .logo-wall--bordered > :hover {
+[color-palette^='dark'] .logo-wall--bordered > :hover {
   background-color: var(--rh-color-gray-60, #4d4d4d);
 }
 
-[color-palette^="dark"] .logo-wall--bordered > :is(:focus, :active) {
+[color-palette^='dark'] .logo-wall--bordered > :is(:focus, :active) {
   background-color: var(--rh-color-gray-60, #4d4d4d);
 }
 
-[color-palette^="dark"] .logo-wall--light {
+[color-palette^='dark'] .logo-wall--light {
   display: none;
 }
 
-[color-palette^="light"] .logo-wall--dark {
+[color-palette^='light'] .logo-wall--dark {
   display: none;
-}
-
-.logo-wall--borderless > * {
-  padding: var(--rh-space-lg, 16px) var(--rh-space-md, 8px);
 }
 
 .logo-wall--borderless > :hover {
@@ -80,36 +86,26 @@
   outline-offset: 0;
 }
 
-.logo-wall--two-columns {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
+.logo-wall--two-columns,
 .logo-wall--three-columns {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
 }
 
-@media (max-width: 1199px) {
-  .logo-wall {
-    flex-wrap: wrap;
-  }
-}
-
-@container host (max-width: 992px) {
-  .logo-wall {
-    flex-wrap: wrap;
-  }
-}
-
-@media (max-width: 768px) {
+@container logo-wall-container (min-width: 300px) {
+  .logo-wall--two-columns,
   .logo-wall--three-columns {
-    grid-template-columns: repeat(auto-fill, minmax(var(--logo-wall-logo-min-width), 1fr)) !important;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@container host (max-width: 768px) {
+@container logo-wall-container (min-width: 450px) {
   .logo-wall--three-columns {
-    grid-template-columns: repeat(auto-fill, minmax(var(--logo-wall-logo-min-width), 1fr)) !important;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@container logo-wall-container (min-width: 1200px) {
+  .logo-wall {
+    max-width: none;
   }
 }

@@ -1,5 +1,6 @@
 const markdownItAnchor = require('markdown-it-anchor');
 const markdownItAttrs = require('markdown-it-attrs');
+const markdownItFootnote = require('markdown-it-footnote');
 
 const { makePermalink } = markdownItAnchor.permalink;
 
@@ -38,5 +39,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.amendLibrary('md', /** @param {import('markdown-it')} md*/md => md
       .set({ html: true, breaks: false })
       .use(markdownItAnchor, { permalink: rhdsPermalink() })
+      .use(markdownItFootnote)
       .use(markdownItAttrs));
 };
