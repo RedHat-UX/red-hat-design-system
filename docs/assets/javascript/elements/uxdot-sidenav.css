@@ -47,7 +47,7 @@
 }
 
 [part="nav"] {
-  padding-block: var(--rh-space-2xl, 32px);
+  padding-block: var(--rh-space-lg, 16px);
 }
 
 [part="overlay"] {
