@@ -781,7 +781,6 @@ export class RhAudioPlayer extends LitElement {
    * by updating component playbackRate property
    */
   #onPlaybackRateSelect(event: Event) {
-    console.log(event);
     if (event instanceof RhAudioPlayerRateSelectEvent && this.#mediaElement) {
       this.playbackRate = event.playbackRate;
       this.#mediaElement.playbackRate = event.playbackRate;
