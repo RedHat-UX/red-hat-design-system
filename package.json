@@ -341,6 +341,7 @@
     "patch-package": "^8.0.0",
     "playground-elements": "^0.18.1",
     "postcss-pxtorem": "^6.1.0",
+    "query-selector-shadow-dom": "^1.0.1",
     "renamer": "^5.0.2",
     "spandx": "^3.0.0",
     "stylelint-config-standard": "^36.0.1",
