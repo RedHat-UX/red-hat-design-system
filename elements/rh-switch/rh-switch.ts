@@ -28,8 +28,6 @@ export class RhSwitch extends LitElement {
 
   static readonly formAssociated = true;
 
-  @property({ reflect: true }) label?: string;
-
   @property({ reflect: true, type: Boolean, attribute: 'show-check-icon' }) showCheckIcon = false;
 
   @property({ reflect: true, type: Boolean }) checked = false;
