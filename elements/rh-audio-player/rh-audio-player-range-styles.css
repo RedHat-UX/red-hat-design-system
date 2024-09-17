@@ -41,8 +41,8 @@ input[type='range'] {
   --_track-height: var(--rh-length-xs, 4px);
   --_thumb-disabled-color: rgb(0 0 0 / 0.5);
   --_track-color: rgb(0 0 0 / 0.5);
-  --_interactive-color: var(--rh-color-border-interactive-on-light, #0066cc);
-  --_accent-color: var(--rh-color-accent-brand-on-light, #ee0000);
+  --_interactive-color: var(--rh-color-border-interactive);
+  --_accent-color: var(--rh-color-accent-brand);
   --_outline: var(--rh-border-width-md, 2px) solid var(--_interactive-color);
   --_thumb-color: var(--rh-audio-player-range-thumb-color, var(--_accent-color));
   --_progress-color: var(--rh-audio-player-range-progress-color, var(--_accent-color));
@@ -60,8 +60,8 @@ input[type='range'][hidden] {
 .dark input[type='range'] {
   --_thumb-disabled-color: rgb(255 255 255 / 0.5);
   --_track-color: rgb(255 255 255 / 0.5);
-  --_interactive-color: var(--rh-color-border-interactive-on-dark, #92c5f9);
-  --_accent-color: var(--rh-color-accent-brand-on-dark, #ee0000);
+  --_interactive-color: var(--rh-color-border-interactive);
+  --_accent-color: var(--rh-color-accent-brand);
 }
 
 input[type='range']:focus {
