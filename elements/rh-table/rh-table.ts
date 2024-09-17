@@ -166,7 +166,7 @@ export class RhTable extends LitElement {
 
         cells.forEach((cell, index) => {
           if (!cell.hasAttribute('data-label')) {
-            const colHeader = this.#colHeaders ? this.#colHeaders[index].innerText : '';
+            const colHeader = this.#colHeaders?.[index]?.innerText || '';
             cell.setAttribute('data-label', colHeader);
           }
         });
