@@ -23,9 +23,18 @@ module.exports = class IconsPage {
         .icon-set {
           padding: 0;
           list-style-type: none;
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-          gap: var(--rh-space-sm);
+          display: flex;
+          align-items: start;
+          align-content: start;
+          gap: var(--rh-space-2xl);
+          & li {
+            display: flex;
+            width: 163.33px;
+            flex-direction: column;
+            flex-shrink: 0;
+            align-items: start;
+            gap: var(--rh-space-md);
+          }
         }
       </style>
 
