@@ -1,5 +1,6 @@
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
+import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
@@ -22,6 +23,8 @@ import styles from './rh-table.css';
 @customElement('rh-table')
 export class RhTable extends LitElement {
   static readonly styles = [styles];
+
+  @property({ reflect: true }) responsive?: 'stack';
 
   @colorContextConsumer() private on?: ColorTheme;
 
@@ -139,28 +142,27 @@ export class RhTable extends LitElement {
   }
 
   #init() {
+    const { responsive } = this;
+
     if (this.#table && this.#summary) {
       this.#table.setAttribute('aria-describedby', 'summary');
     }
 
-    /* Auto-assign `data-label` attributes based on column headers */
-    if (this.#table?.tHead && this.#colHeaders.length && this.#rows) {
+    /* If responsive attribute set, auto-assign `data-label` attributes based on column headers */
+    if (responsive && this.#table?.tHead && this.#colHeaders?.length && this.#rows) {
       for (const row of this.#rows) {
         if (!row) {
           continue;
         }
 
         const cells = row.querySelectorAll(':is(td, th)');
-        let headerIndex = 0;
 
-        for (const cell of cells) {
+        cells.forEach((cell, index) => {
           if (!cell.hasAttribute('data-label')) {
-            const colHeader = this.#colHeaders[headerIndex]?.innerText;
+            const colHeader = this.#colHeaders ? this.#colHeaders[index].innerText : '';
             cell.setAttribute('data-label', colHeader);
           }
-
-          headerIndex++;
-        }
+        });
       }
     }
   }
