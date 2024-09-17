@@ -1,6 +1,12 @@
 
 ## Keyboard interactions
 
+A user should have the ability to navigate to and interact with alerts using their keyboard.
+
+<uxdot-example width-adjustment="456px">
+  <img src="../alert-a11y-keyboard-interactions.svg" alt="Example of the keyboard navigation tab stops on both inline and toast variant alerts">
+</uxdot-example>
+
 <rh-table>
   <table>
     <thead>
@@ -28,10 +34,10 @@
 
 ## Focus order
 
-A logical focus order helps visitors understand and operate our websites. Elements need to receive focus in an order that preserves meaning. Therefore the focus order should make sense and not jump around randomly.
+A logical focus order helps users understand and operate our websites and products. Elements need to receive focus in an order that preserves meaning. Therefore the focus order should make sense and not jump around randomly.
 
-<uxdot-example width-adjustment="490px">
-  <img src="../alert-focus-order.svg" alt="Focus goes to action buttons and to the close button last" width="490px">
+<uxdot-example width-adjustment="456px">
+  <img src="../alert-a11y-focus-order.svg" alt="Focus goes to action buttons and to the close button last" width="490px">
 </uxdot-example>
 
 {% include 'partials/accessibility/ariaguide.md' %}
