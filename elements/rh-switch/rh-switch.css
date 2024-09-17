@@ -51,6 +51,10 @@
     --_switch-track-background-color: var(--rh-color-gray-40, #a3a3a3); /* no disabled token yet */
     --_switch-handle-color: var(--rh-color-surface-dark-alt, #292929);
 
+    &.checked {
+      --_switch-track-background-color: var(--rh-color-accent-base);
+    }
+
     &:after {
       box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
     }
