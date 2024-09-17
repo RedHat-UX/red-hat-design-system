@@ -19,6 +19,8 @@ import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
  * @cssprop --rh-switch-unchecked - The background color of the switch when it is unchecked.
  * @cssprop --rh-switch-checked - The background color of the switch when it is checked.
  * @cssprop --rh-switch-disabled - The background color of the switch when it is disabled.
+ * @slot message-on message content when checked. Overrides the `message-on` attribute.
+ * @slot message-off message content when unchecked. Overrides the `message-off` attribute.
  */
 @customElement('rh-switch')
 export class RhSwitch extends LitElement {
@@ -102,33 +104,22 @@ export class RhSwitch extends LitElement {
 
   render() {
     const rtl = this.#dir.dir === 'rtl';
-    const { on = '' } = this;
+    const { on = 'light', reversed, checked } = this;
+    const slots = html`
+      <slot class="message" name="message-on" ?hidden="${!this.checked}">
+        <span aria-hidden="true">${this.messageOn}</span>
+      </slot>
+      <slot class="message" name="message-off" ?hidden="${this.checked}">
+        <span aria-hidden="true">${this.messageOff}</span>
+      </slot>`;
     return html`
       <div id="container"
            part="container"
-           class="${classMap({ [on]: !!on, rtl })}">
-        ${this.reversed ? html`
-          <slot></slot>
-          ${this.#switchTemplate()}
-        ` : html`
-          ${this.#switchTemplate()}
-          <slot></slot>
-        `}
-        <slot name="message-on" ?hidden="${!this.checked}">
-          <span aria-hidden="true">${this.messageOn}</span>
-        </slot>
-        <slot name="message-off" ?hidden="${this.checked}">
-          <span aria-hidden="true">${this.messageOff}</span>
-        </slot>
-      </div>
-    `;
-  }
-
-  #switchTemplate() {
-    return html`
-      <div id="switch" part="switch">
-        ${this.showCheckIcon ? html`
+           class="${classMap({ checked, on: true, [on]: true, rtl })}">
+        ${reversed ? slots : ''}
+        <div id="switch" part="switch">
           <svg id="toggle"
+            ?hidden="${!this.showCheckIcon}"
                role="presentation"
                fill="currentColor"
                height="1em"
@@ -136,7 +127,8 @@ export class RhSwitch extends LitElement {
                viewBox="0 0 512 512">
             <path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z" />
           </svg>
-        ` : ``}
+        </div>
+        ${reversed ? '' : slots}
       </div>
     `;
   }
