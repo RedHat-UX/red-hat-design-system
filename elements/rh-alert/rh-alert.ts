@@ -92,7 +92,6 @@ export class RhAlert extends LitElement {
 
   /**
    * Toast a message with an rh-alert
-   * Consider this as a candidate for adding as a static method on RhAlert
    * @param options
    * @param options.message alert text
    * @param [options.heading] alert heading
