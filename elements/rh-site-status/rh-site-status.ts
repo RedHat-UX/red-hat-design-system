@@ -198,9 +198,9 @@ export class RhSiteStatus extends LitElement {
   }
 
   protected override render() {
-    const { on = '' } = this;
+    const { on = 'light' } = this;
     return html`
-      <div id="container" class="${classMap({ [on]: !!on })}">
+      <div id="container" class="${classMap({ on: true, [on]: true })}">
         <a href="https://status.redhat.com/"
            aria-busy="${String(this.#loading) as 'true' | 'false'}"
            aria-live="polite">${this.#loading ? html`
