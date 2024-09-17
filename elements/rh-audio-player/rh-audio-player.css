@@ -441,11 +441,7 @@ rh-menu > button:focus {
 #full-play {
   border-radius: 50%;
   background-color: var(--_text-color);
-}
-
-#play,
-#full-play {
-  color: var(--rh-audio-player-icon-background-color, var(--_surface-color));
+  color: var(--rh-audio-player-icon-background-color, var(--_text-color));
 }
 
 .expanded {
