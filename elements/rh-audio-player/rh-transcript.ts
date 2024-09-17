@@ -53,6 +53,34 @@ export class RhTranscript extends LitElement {
     parent: new HeadingLevelContextConsumer(this),
   });
 
+  set autoscrollLabel(label: string) {
+    this._autoscroll = label;
+  }
+
+  get autoscrollLabel(): string {
+    return this._autoscroll || 'Autoscroll';
+  }
+
+  set downloadLabel(label: string) {
+    this._download = label;
+  }
+
+  get downloadLabel(): string {
+    return this._download || 'Download';
+  }
+
+  get downloadText() {
+    return this._cues.map(cue =>cue.downloadText).join('\n\n');
+  }
+
+  set menuLabel(label: string) {
+    this._label = label;
+  }
+
+  get menuLabel(): string {
+    return this.label || this._label || 'About the episode';
+  }
+
   render() {
     return html`
       <rh-audio-player-scrolling-text-overflow part="heading">
@@ -75,30 +103,6 @@ export class RhTranscript extends LitElement {
       </div>
       <slot id="cues"></slot>
     `;
-  }
-
-  set autoscrollLabel(label: string) {
-    this._autoscroll = label;
-  }
-
-  get autoscrollLabel(): string {
-    return this._autoscroll || 'Autoscroll';
-  }
-
-  set downloadLabel(label: string) {
-    this._download = label;
-  }
-
-  get downloadLabel(): string {
-    return this._download || 'Download';
-  }
-
-  set menuLabel(label: string) {
-    this._label = label;
-  }
-
-  get menuLabel(): string {
-    return this.label || this._label || 'About the episode';
   }
 
   #updateCues(currentTime?: number) {
@@ -155,10 +159,6 @@ export class RhTranscript extends LitElement {
 
   #onDownloadClick() {
     this.dispatchEvent(new Event('transcriptdownload', { bubbles: true }));
-  }
-
-  get downloadText() {
-    return this._cues.map(cue =>cue.downloadText).join('\n\n');
   }
 
   setActiveCues(currentTime = 0) {

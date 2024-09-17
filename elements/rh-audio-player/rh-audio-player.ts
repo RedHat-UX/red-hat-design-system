@@ -369,10 +369,11 @@ export class RhAudioPlayer extends LitElement {
       <rh-surface id="container"
           color-palette="${ifDefined(this.colorPalette)}"
           class="${classMap({
-              [on]: !!on,
+              [on]: true,
               [dir]: true,
               [layout]: true,
               expanded,
+              'on': true,
               'mediatitle': mediatitle !== undefined,
               'poster': poster !== undefined,
               'show-menu': showMenu,

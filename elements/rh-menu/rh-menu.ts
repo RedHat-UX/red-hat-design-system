@@ -49,10 +49,10 @@ export class RhMenu extends LitElement {
   }
 
   render() {
-    const { on = '' } = this;
+    const { on = 'light' } = this;
     return html`
       <slot part="menu"
-            class="${classMap({ [on]: !!on })}"
+            class="${classMap({ on: true, [on]: true })}"
             @slotchange="${this.#onSlotchange}"></slot>
     `;
   }
