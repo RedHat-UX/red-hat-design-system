@@ -6,7 +6,7 @@ module.exports = class IconsPage {
     return {
       permalink: '/foundations/icons/index.html',
       layout: 'layouts/pages/basic.njk',
-      title: 'Icons',
+      title: 'Iconography',
       hasToc: true,
       icons: await import('@rhds/icons'),
       tags: [
@@ -49,23 +49,23 @@ module.exports = class IconsPage {
          <a href="/elements/icon/code/">implementing icons</a>.</p>
 
       <section>
-        <h2 id="social-icons">Social Icons</h2>
-        <ul class="icon-set">${this.renderIcons('social', icons)}</ul>
-      </section>
-
-      <section>
-        <h2 id="standard-icons">Standard Icons</h2>
+        <h2 id="standard-icons">Standard icons</h2>
         <ul class="icon-set">${this.renderIcons('standard', icons)}</ul>
       </section>
 
       <section>
-        <h2 id="ui-icons">UI Icons</h2>
+        <h2 id="ui-icons">UI icons</h2>
         <ul class="icon-set">${this.renderIcons('ui', icons)}</ul>
       </section>
 
       <section>
         <h2 id="micron-icons">Microns</h2>
         <ul class="icon-set">${this.renderIcons('microns', icons)}</ul>
+      </section>
+
+      <section>
+        <h2 id="social-icons">Social icons</h2>
+        <ul class="icon-set">${this.renderIcons('social', icons)}</ul>
       </section>
 
       ${await this.renderFile('./docs/_includes/partials/component/feedback.html', 'njk')}
