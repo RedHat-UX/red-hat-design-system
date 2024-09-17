@@ -46,6 +46,10 @@
   border-radius: var(--rh-border-radius-default, 3px);
 }
 
+[part="nav"] {
+  padding-block: var(--rh-space-lg, 16px);
+}
+
 [part="overlay"] {
   --_gray-90-rgb: var(--rh-color-gray-90-rgb);
 
