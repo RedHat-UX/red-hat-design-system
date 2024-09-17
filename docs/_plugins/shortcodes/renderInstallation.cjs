@@ -33,11 +33,6 @@ async function renderInstall(content, {
 
   const packageVersion = require('../../../package.json').version;
 
-  const pfeVersion =
-    require('../../../package-lock.json')
-        .dependencies['@patternfly/elements']
-        .version;
-
   const cdnContent = markdown`
 
 ~~~html
@@ -53,7 +48,6 @@ async function renderInstall(content, {
   {
     "imports": {
       "@rhds/elements/": "https://www.redhatstatic.com/dx/${cdnVersion}/@rhds/elements@${packageVersion}/elements/",
-      "@patternfly/elements/": "https://www.redhatstatic.com/dx/${cdnVersion}/@patternfly/elements@${pfeVersion}/"
     }
   }
 </script>
