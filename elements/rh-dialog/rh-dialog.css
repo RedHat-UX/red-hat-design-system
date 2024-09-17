@@ -23,8 +23,10 @@
 }
 
 /* NOTE: @deprecated, use `::backdrop` instead. Remove for RHDS v3. */
-[part="overlay"] {
-  background-color: var(--rh-dialog-overlay-background-color, var(--rh-dialog-backdrop-background-color));
+[part='overlay'] {
+  background-color:
+    var(--rh-dialog-overlay-background-color,
+      var(--rh-dialog-backdrop-background-color));
   block-size: 100%;
   inset-block-start: 0;
   inset-inline-start: 0;
@@ -36,34 +38,34 @@
   background-color: var(--rh-dialog-backdrop-background-color);
 }
 
-[part="dialog"] {
+[part='dialog'] {
   background-color: transparent;
   border: 0;
-  padding-bottom: var(--rh-space-2xl, 32px); /* NOTE: allows box-shadow to not be cut off on the bottom */
+  padding-bottom: var(--rh-space-2xl, 32px); /* NOTE: don't cut off box-shadow at the bottom */
   inline-size: 100%;
 }
 
-:host([width]) [part="dialog"],
-:host([variant]) [part="dialog"] {
+:host([width]) [part='dialog'],
+:host([variant]) [part='dialog'] {
   margin-inline: 0;
 }
 
-:host([width="small"]) [part="dialog"],
-:host([variant="small"]) [part="dialog"] {
+:host([width='small']) [part='dialog'],
+:host([variant='small']) [part='dialog'] {
   --_box-width: 35rem;
 }
 
-:host([width="medium"]) [part="dialog"],
-:host([variant="medium"]) [part="dialog"] {
+:host([width='medium']) [part='dialog'],
+:host([variant='medium']) [part='dialog'] {
   --_box-width: 52.5rem;
 }
 
-:host([width="large"]) [part="dialog"],
-:host([variant="large"]) [part="dialog"] {
+:host([width='large']) [part='dialog'],
+:host([variant='large']) [part='dialog'] {
   --_box-width: 70rem;
 }
 
-[part="content"] {
+[part='content'] {
   background-color: var(--rh-color-surface-lightest, #ffffff);
   border-radius: var(--rh-border-radius-default, 3px);
   box-shadow: var(--rh-box-shadow-xl, 0 8px 24px 3px rgba(21, 21, 21, 0.35));
@@ -79,42 +81,42 @@
   position: relative;
 }
 
-[part="header"] {
+[part='header'] {
   background-color: var(--rh-color-surface-lightest, #ffffff);
   padding-block-end: var(--rh-space-sm, 6px);
   position: sticky;
   top: calc(-1 * var(--rh-space-xl, 24px));
 }
 
-[part="header"][hidden] + [part="body"] {
+[part='header'][hidden] + [part='body'] {
   max-width: calc(100% - var(--rh-space-xl, 24px));
 }
 
 @media (min-width: 1200px) {
-  [part="content"] {
+  [part='content'] {
     padding: var(--rh-space-2xl, 32px);
   }
 
-  [part="header"] {
+  [part='header'] {
     top: calc(-1 * var(--rh-space-2xl, 32px));
   }
 
-  [part="header"][hidden] + [part="body"] {
+  [part='header'][hidden] + [part='body'] {
     max-width: calc(100% - var(--rh-space-2xl, 32px));
   }
 }
 
-[part="content"] ::slotted([slot="header"]) {
+[part='content'] ::slotted([slot='header']) {
   margin-top: 0 !important;
 }
 
-[part="header"] ::slotted(:is(h1,h2,h3,h4,h5,h6)[slot="header"]) {
-  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+[part='header'] ::slotted(:is(h1,h2,h3,h4,h5,h6)[slot='header']) {
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-heading-sm, 1.5rem);
   font-weight: var(--rh-font-weight-body-text-regular, 400);
 }
 
-[part="close-button"] {
+[part='close-button'] {
   color: var(--rh-color-icon-subtle, #707070);
   cursor: pointer;
   display: block;
@@ -124,28 +126,28 @@
   z-index: 500;
 }
 
-[part="close-button"]::part(button) {
+[part='close-button']::part(button) {
   padding: var(--rh-space-xl, 24px);
 }
 
 @media (min-width: 1200px) {
-  [part="close-button"]::part(button) {
-    padding: var(--rh-space-xxl, 32px);
+  [part='close-button']::part(button) {
+    padding: var(--rh-space-2xl, 32px);
   }
 }
 
-:host([position="top"]) #dialog {
+:host([position='top']) #dialog {
   margin-block-start: 0;
   max-inline-size: none;
   inline-size: 100%;
 }
 
-:host([position="top"]) #content {
+:host([position='top']) #content {
   margin-inline: 0;
-  max-inline-size: calc(100% - min(var(--rh-space-2xl,32px) * 2, var(--rh-space-2xl,32px)));
+  max-inline-size: calc(100% - min(var(--rh-space-2xl, 32px) * 2, var(--rh-space-2xl, 32px)));
 }
 
-[part="footer"] {
+[part='footer'] {
   align-items: center;
   display: flex;
   gap: var(--rh-space-md, 8px);
@@ -157,38 +159,40 @@
   --offset-right: var(--offset);
 
   display: contents;
-  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
 }
 
-:host([type="video"]) [part="close-button"] {
+:host([type='video']) [part='close-button'] {
   color: var(--rh-color-icon-secondary-on-dark, #ffffff);
   inset-inline-end: var(--offset-right);
   inset-block-start: var(--offset-top);
 }
 
-:host([type="video"]) #close-button::part(button) {
+:host([type='video']) #close-button::part(button) {
   padding-inline: var(--rh-space-md, 8px);
   padding-block: var(--rh-space-lg, 16px);
 }
 
-:host([type="video"]) #close-button::part(icon) {
-  filter: drop-shadow(1px 0 1px var(--rh-dialog-backdrop-background-color))
+:host([type='video']) #close-button::part(icon) {
+  filter: drop-shadow(1px 0 1px var(--rh-dialog-backdrop-background-color));
 }
 
-:host([type="video"]) [part="content"] {
+:host([type='video']) [part='content'] {
   background-color: var(--rh-color-surface-darkest, #151515);
   overflow: hidden;
   padding: 0;
 }
 
-:host([type="video"]) {
+:host([type='video']) {
   --_gray-90-rgb: var(--rh-color-gray-90-rgb, 31 31 31);
   --rh-dialog-backdrop-background-color: rgb(var(--_gray-90-rgb) / var(--rh-opacity-60, 60%));
 
-  background-color: var(--rh-dialog-overlay-background-color, var(--rh-dialog-backdrop-background-color));
+  background-color:
+    var(--rh-dialog-overlay-background-color,
+      var(--rh-dialog-backdrop-background-color));
 }
 
-:host([type="video"][open]) [part="dialog"] {
+:host([type='video'][open]) [part='dialog'] {
   --_aspect-ratio: var(--rh-dialog-video-aspect-ratio, 16/9);
 
   aspect-ratio: var(--_aspect-ratio);
@@ -196,18 +200,18 @@
   padding: 0;
 }
 
-:host([type="video"]) #rhds-wrapper.mobile [part="close-button"] {
+:host([type='video']) #rhds-wrapper.mobile [part='close-button'] {
   --offset-right: var(--rh-space-sm, 6px);
 }
 
-:host([type="video"]) [part="content"],
-:host([type="video"]) ::slotted(:not([slot])) {
+:host([type='video']) [part='content'],
+:host([type='video']) ::slotted(:not([slot])) {
   aspect-ratio: var(--rh-dialog-video-aspect-ratio, 16/9);
   max-inline-size: none;
   inline-size: 100%;
 }
 
-:host([type="video"]) ::slotted(:not([slot])) {
+:host([type='video']) ::slotted(:not([slot])) {
   inset: 0;
   position: absolute;
 }
