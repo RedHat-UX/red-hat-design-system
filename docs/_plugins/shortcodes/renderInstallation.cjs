@@ -60,7 +60,7 @@ async function renderInstall(content, {
   const npmContent = markdown`
 
 ~~~shell
-npm install ${docsPage.manifest.packageJson.name}
+npm install @rhds/elements
 ~~~
 
 ~~~html
@@ -83,7 +83,7 @@ npm install ${docsPage.manifest.packageJson.name}
 
 ~~~html
 <script type="importmap">
-${await generateImportMap(docsPage.manifest.packageJson.name, docsPage.tagName)}
+${await generateImportMap('@rhds/elements', docsPage.tagName)}
 </script>
 ~~~
 
