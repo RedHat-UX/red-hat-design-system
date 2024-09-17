@@ -4,11 +4,14 @@ const html = String.raw;
 module.exports = class IconsPage {
   async data() {
     return {
-      permalink: '/icons/index.html',
+      permalink: '/icons/foundations/index.html',
       layout: 'layouts/pages/basic.njk',
       title: 'Icons',
       hasToc: true,
       icons: await import('@rhds/icons'),
+      tags: [
+        'foundations',
+      ],
     };
   }
 
