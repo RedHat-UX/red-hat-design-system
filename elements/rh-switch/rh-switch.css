@@ -3,12 +3,6 @@
   outline: none;
   vertical-align: top;
   cursor: pointer;
-
-  --_switch-width: 40px;
-  --_switch-height: 24px;
-  --_switch-handle-size: 14px;
-  --_switch-track-background-color: var(--rh-color-gray-60, #4d4d4d);
-  --_margin-inline: 5px; /* non standard spacer */
 }
 
 [hidden] {
@@ -19,10 +13,55 @@
   display: inline-flex;
   align-items: center;
   gap: var(--rh-space-lg, 16px);
+
+  --_margin-inline: 5px; /* non standard spacer */
+  --_switch-width: 40px;
+  --_switch-height: 24px;
+  --_switch-handle-size: 14px;
+  --_switch-track-background-color: var(--rh-color-gray-60, #4d4d4d);
+  --_switch-handle-color: var(--rh-color-surface-lightest, #ffffff);
+
+  & .message {
+    color: var(--rh-color-text-secondary);
+  }
+
+  &.checked {
+    --_switch-track-background-color: var(--rh-color-accent-base);
+
+    & .message {
+      color: var(--rh-color-text-primary);
+    }
+
+    & #switch:after {
+      translate:
+        calc(var(--_switch-width) - (var(--_switch-handle-size) +
+          (var(--_margin-inline) * 2)));
+    }
+
+    &.rtl #switch:after {
+      translate:
+        calc(-1 * (
+            var(--_switch-width) - (var(--_switch-handle-size) +
+            (var(--_margin-inline) * 2))
+          ));
+    }
+  }
+
+  &.dark {
+    --_switch-track-background-color: var(--rh-color-gray-40, #a3a3a3); /* no disabled token yet */
+    --_switch-handle-color: var(--rh-color-surface-dark-alt, #292929);
+
+    &:after {
+      box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
+    }
+  }
 }
 
-.message {
-  color: var(--rh-color-text-secondary);
+rh-icon {
+  margin-inline: var(--_margin-inline);
+  color: var(--_switch-handle-color);
+  position: absolute;
+  z-index: 1;
 }
 
 #switch {
@@ -33,11 +72,6 @@
   width: var(--_switch-width);
   height: var(--_switch-height);
   border-radius: var(--rh-border-radius-pill, 64px);
-
-  :host(:is(:focus, :focus-within)) & {
-    outline: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive);
-    outline-offset: var(--rh-space-sm, 6px);
-  }
 
   /* track */
   &:before {
@@ -60,59 +94,16 @@
     border-radius: var(--rh-border-radius-pill, 64px);
     transform-origin: center;
     z-index: 0;
-    background-color: var(--_switch-handle-color, var(--rh-color-surface-lightest, #ffffff));
+    background-color: var(--_switch-handle-color);
     margin-inline: var(--_margin-inline);
     translate: 0%;
     transition: translate 0.25s ease 0s;
   }
 }
 
-.checked {
-  --_switch-track-background-color:
-    var(--_switch-checked,
-      var(--rh-color-accent-base));
-
-  & .message {
-    color: var(--rh-color-text-primary);
-  }
-
-  & #switch:after {
-    translate:
-      calc(var(--_switch-width) - (var(--_switch-handle-size) +
-        (var(--_margin-inline) * 2)));
-  }
-
-  &.rtl #switch:after {
-    translate:
-      calc(-1 * (
-          var(--_switch-width) - (var(--_switch-handle-size) +
-          (var(--_margin-inline) * 2))
-        ));
-  }
-}
-
-svg {
-  fill: currentcolor;
-  margin-inline: var(--_margin-inline);
-  font-size: var(--rh-font-size-body-text-xs, 0.75rem);
-  color: var(--_switch-handle-color, var(--rh-color-icon-secondary));
-  position: absolute;
-  z-index: 1;
-}
-
-.dark {
-  --_switch-track-background-color: var(--rh-color-gray-40, #a3a3a3); /* no disabled token yet */
-  --_switch-handle-color: var(--rh-color-surface-dark-alt, #292929);
-
-  &:after {
-    box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
-  }
-
-  &.checked {
-    --_switch-track-background-color:
-      var(--_switch-checked,
-        var(--rh-color-accent-base));
-  }
+:host(:is(:focus, :focus-within)) #switch {
+  outline: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive);
+  outline-offset: var(--rh-space-sm, 6px);
 }
 
 :host(:disabled) {
@@ -121,16 +112,18 @@ svg {
 
   --_switch-track-background-color: var(--rh-color-gray-30, #c7c7c7);
 
-  & .message {
-    color: var(--rh-color-gray-50, #707070);
-  }
+  & #container {
+    & .message {
+      color: var(--rh-color-gray-50, #707070);
+    }
 
-  & .dark {
-    --_switch-track-background-color: var(--rh-color-gray-60, #4d4d4d);
+    &.dark {
+      --_switch-track-background-color: var(--rh-color-gray-60, #4d4d4d);
 
-    & ::slotted(*),
-    & span {
-      color: var(--rh-color-gray-40, #a3a3a3);
+      & ::slotted(*),
+      & span {
+        color: var(--rh-color-gray-40, #a3a3a3);
+      }
     }
   }
 }
