@@ -171,7 +171,7 @@ describe('<rh-switch>', function() {
     });
     it('should display a check icon', async function() {
       // TODO: can we test this without inspecting the private shadowRoot?
-      const svg = element.shadowRoot.querySelector('svg');
+      const svg = element.shadowRoot?.querySelector('rh-icon');
       expect(svg).to.be.ok;
       expect(svg?.hasAttribute('hidden')).to.be.false;
     });
