@@ -4,7 +4,7 @@ const html = String.raw;
 module.exports = class IconsPage {
   async data() {
     return {
-      permalink: '/icons/foundations/index.html',
+      permalink: '/foundations/icons/index.html',
       layout: 'layouts/pages/basic.njk',
       title: 'Icons',
       hasToc: true,
