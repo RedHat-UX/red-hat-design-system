@@ -20,6 +20,7 @@ import { I18nController } from '../../lib/I18nController.js';
 import { RhMenu } from '../rh-menu/rh-menu.js';
 import { RhCue, getFormattedTime } from './rh-cue.js';
 import { RhAudioPlayerAbout } from './rh-audio-player-about.js';
+import { RhAudioPlayerRateSelectEvent } from './rh-audio-player-rate-stepper.js';
 import { RhAudioPlayerSubscribe } from './rh-audio-player-subscribe.js';
 import { RhTranscript } from './rh-transcript.js';
 import { RhAudioPlayerScrollingTextOverflow } from './rh-audio-player-scrolling-text-overflow.js';
@@ -30,6 +31,7 @@ import styles from './rh-audio-player.css';
 
 import '@rhds/elements/rh-surface/rh-surface.js';
 import '@rhds/elements/rh-tooltip/rh-tooltip.js';
+import '@rhds/elements/rh-icon/rh-icon.js';
 
 /**
  * An audio player plays audio clips in the browser and includes other features.
@@ -61,99 +63,6 @@ export class RhAudioPlayer extends LitElement {
   static readonly styles = [buttonStyles, styles, rangeStyles];
 
   private static instances = new Set<RhAudioPlayer>();
-
-  // TODO: use rh-icon
-  private static icons = {
-    close: html`
-      <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
-        <path d="M14.3,12l3.4-3.4c0.4-0.4,0.4-1.1,0-1.5l-0.8-0.8c-0.4-0.4-1.1-0.4-1.5,0L12,9.7L8.6,6.3
-        c-0.4-0.4-1.1-0.4-1.5,0L6.3,7.1c-0.4,0.4-0.4,1.1,0,1.5L9.7,12l-3.4,3.4c-0.4,0.4-0.4,1.1,0,1.5l0.8,0.8c0.4,0.4,1.1,0.4,1.5,0
-        l3.4-3.4l3.4,3.4c0.4,0.4,1.1,0.4,1.5,0l0.8-0.8c0.4-0.4,0.4-1.1,0-1.5L14.3,12z"/>
-      </svg>
-    `,
-    download: html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-        <path d="M7.56 12.45a.63.63 0 0 0 .88 0l4-4a.63.63 0 1 0-.88-.89L8.63 10.5V2A.62.62 0 0 0 8 1.38a.63.63 0 0 0-.63.62v8.5L4.44 7.56a.63.63 0 1 0-.88.89ZM14 14.38H2a.63.63 0 1 0 0 1.25h12a.63.63 0 0 0 0-1.25Z"/>
-      </svg>
-    `,
-    forward: html`
-      <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 32 32">
-        <path d="M28,6.6L22.4,2v3.7h-7.4C9,5.7,4,10.6,4,16.7c0,6.1,5,11.1,11.1,11.1h7.4V26h-1.8h-5.5c-5.1,0-9.2-4.1-9.2-9.2
-          c0-5.1,4.1-9.2,9.2-9.2h5.5h1.8v3.7L28,6.6z"/>
-        <g>
-          <path d="M10.4,19.5h1.8v-5l-1.8,0.8v-1l2.2-0.9h0.7v6.2h1.9v1h-4.8V19.5z"/>
-          <path d="M16.4,19.6l0.7-0.8c0.6,0.5,1.2,0.8,1.9,0.8c0.9,0,1.5-0.6,1.5-1.4c0-0.8-0.6-1.3-1.5-1.3
-            c-0.5,0-0.9,0.1-1.4,0.4L16.8,17l0.2-3.7h4.3v1h-3.3l-0.1,2c0.5-0.2,1-0.3,1.5-0.3c1.4,0,2.4,0.9,2.4,2.1c0,1.4-1.1,2.4-2.7,2.4
-            C18,20.5,17.1,20.2,16.4,19.6z"/>
-        </g>
-      </svg>
-    `,
-    menuKebab: html`
-      <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
-        <circle cx="12" cy="22" r="2"/>
-        <circle cx="12" cy="12" r="2"/>
-        <circle cx="12" cy="2" r="2"/>
-      </svg>
-    `,
-    menuMeatball: html`
-      <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
-        <circle cx="22" cy="12" r="2"/>
-        <circle cx="12" cy="12" r="2"/>
-        <circle cx="2" cy="12" r="2"/>
-      </svg>
-    `,
-    pause: html`
-      <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
-        <rect x="15.3" y="2.1" width="4.4" height="19.9"/>
-        <rect x="4.3" y="2.1" width="4.4" height="19.9"/>
-      </svg>
-    `,
-    play: html`
-      <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
-        <path d="M23.2,12L5.6,20.8V3.2L23.2,12z"/>
-      </svg>
-    `,
-    playbackRateFaster: html`
-      <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 14 14">
-        <path d="M11.2,7.7l-5.9,5.9c-0.4,0.4-1.1,0.4-1.5,0c0,0,0,0,0,0l-1-1c-0.4-0.4-0.4-1.1,0-1.5c0,0,0,0,0,0L7,7
-          L2.8,2.8c-0.4-0.4-0.4-1.1,0-1.5c0,0,0,0,0,0l1-1c0.4-0.4,1.1-0.4,1.5,0c0,0,0,0,0,0l5.9,5.9C11.6,6.7,11.6,7.3,11.2,7.7
-          C11.2,7.7,11.2,7.7,11.2,7.7z"/>
-      </svg>
-    `,
-    playbackRateSlower: html`
-      <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 14 14">
-        <path d="M2.8,7.7l5.9,5.9c0.4,0.4,1.1,0.4,1.5,0c0,0,0,0,0,0l1-1c0.4-0.4,0.4-1.1,0-1.5c0,0,0,0,0,0L7,7
-          l4.2-4.2c0.4-0.4,0.4-1.1,0-1.5c0,0,0,0,0,0l-1-1c-0.4-0.4-1.1-0.4-1.5,0c0,0,0,0,0,0L2.8,6.3C2.4,6.7,2.4,7.3,2.8,7.7
-          C2.8,7.7,2.8,7.7,2.8,7.7z"/>
-      </svg>
-    `,
-    rewind: html`
-      <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 32 32">
-        <g>
-          <path d="M10.4,19.5h1.8v-5l-1.8,0.8v-1l2.2-0.9h0.7v6.2h1.9v1h-4.8V19.5z"/>
-          <path d="M16.4,19.6l0.7-0.8c0.6,0.5,1.2,0.8,1.9,0.8c0.9,0,1.5-0.6,1.5-1.4c0-0.8-0.6-1.3-1.5-1.3
-            c-0.5,0-0.9,0.1-1.4,0.4L16.8,17l0.2-3.7h4.3v1h-3.3l-0.1,2c0.5-0.2,1-0.3,1.5-0.3c1.4,0,2.4,0.9,2.4,2.1c0,1.4-1.1,2.4-2.7,2.4
-            C18,20.5,17.1,20.2,16.4,19.6z"/>
-        </g>
-        <path d="M4,6.6L9.5,2v3.7h7.4c6.1,0,11.1,5,11.1,11.1c0,6.1-5,11.1-11.1,11.1H9.5V26h1.8h5.5
-          c5.1,0,9.2-4.1,9.2-9.2c0-5.1-4.1-9.2-9.2-9.2h-5.5H9.5v3.7L4,6.6z"/>
-      </svg>
-    `,
-    volumeMax: html`
-      <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
-        <path d="M14.2,2.2v2.2c4.3,0,7.6,3.4,7.6,7.6s-3.4,7.6-7.6,7.6v2.2c5.5,0,9.8-4.4,9.8-9.8S19.6,2.2,14.2,2.2z"/>
-        <path d="M14.2,6.5v2.2c1.9,0,3.3,1.4,3.3,3.3s-1.4,3.3-3.3,3.3v2.2c3.1,0,5.5-2.4,5.5-5.5S17.2,6.5,14.2,6.5z"/>
-        <path d="M12,2.2L5.3,7.6H2.2C1,7.6,0,8.6,0,9.8v4.4c0,1.2,1,2.2,2.2,2.2h3.2l6.7,5.5V2.2z"/>
-      </svg>
-    `,
-    volumeMuted: html`
-      <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
-        <polygon points="23.4,8.7 21.9,7.3 18.6,10.6 15.4,7.3 13.9,8.7 17.2,12 13.9,15.3 15.4,16.7 18.6,13.4 21.9,16.7 
-          23.4,15.3 20.1,12 "/>
-        <path d="M11.6,3L5.5,8H2.6c-1.1,0-2,0.9-2,2v4c0,1.1,0.9,2,2,2h2.9l6.1,5V3z"/>
-      </svg>
-    `,
-  };
 
   static enUS = {
     'play': 'Play',
@@ -187,7 +96,7 @@ export class RhAudioPlayer extends LitElement {
    *   - `compact-wide`: like compact but full width
    *   - `full`: maximal controls and artwork
    */
-  @property({ reflect: true }) layout?: 'mini' | 'compact' | 'compact-wide' | 'full';
+  @property({ reflect: true }) layout: 'mini' | 'compact' | 'compact-wide' | 'full' = 'mini';
 
   /** URL to audio's artwork */
   @property({ reflect: true }) poster?: string;
@@ -238,14 +147,6 @@ export class RhAudioPlayer extends LitElement {
   #paused = true;
 
   #unmutedVolume = this.volume;
-
-  #pbrMin = 0.25;
-
-  #pbrMax = 2;
-
-  #pbrStep = 0.25;
-
-  #pbrFixed = 2;
 
   #styles?: CSSStyleDeclaration;
 
@@ -349,16 +250,6 @@ export class RhAudioPlayer extends LitElement {
   }
 
   /**
-   * gets list of allowable playback rates
-   */
-  get #playbackRates() {
-    return [
-      ...Array(Math.round(this.#pbrMax / this.#pbrStep)).keys()].map(k =>
-      k * this.#pbrStep + this.#pbrMin
-    );
-  }
-
-  /**
    * gets media media time if set
    */
   get #mediaEnd() {
@@ -449,11 +340,10 @@ export class RhAudioPlayer extends LitElement {
   }
 
   render() {
-    const { on = '' } = this;
+    const { expanded, mediatitle, on = 'light', layout, poster } = this;
     const { dir } = this.#dir;
     const { open, styles = {} } = this.#menufloat;
     const showMenu = this.#hasMenu;
-    const muteicon = !this.muted ? RhAudioPlayer.icons.volumeMax : RhAudioPlayer.icons.volumeMuted;
     const mutelabel = !this.muted ? this.#translation.get('mute') : this.#translation.get('unmute');
     const rewinddisabled =
       !this.#mediaElement
@@ -469,7 +359,6 @@ export class RhAudioPlayer extends LitElement {
         !this.paused ? this.#translation.get('pause')
       : this.#translation.get('play');
     const playdisabled = this.#readyState < 3 && this.duration < 1;
-    const playicon = !this.paused ? RhAudioPlayer.icons.pause : RhAudioPlayer.icons.play;
 
     const currentTimeQ = (this.currentTime / this.duration);
     const currentTimePct = (Number.isNaN(currentTimeQ) ? 0 : currentTimeQ) * 100;
@@ -480,19 +369,25 @@ export class RhAudioPlayer extends LitElement {
       <rh-surface id="container"
           color-palette="${ifDefined(this.colorPalette)}"
           class="${classMap({
-              [on]: !!on,
+              [on]: true,
               [dir]: true,
+              [layout]: true,
+              expanded,
+              'on': true,
+              'mediatitle': mediatitle !== undefined,
+              'poster': poster !== undefined,
               'show-menu': showMenu,
               'has-accent-color': accentColor,
               'mobile-safari': !!this.#isMobileSafari,
             })}">
         <input type="hidden" value=${this.#readyState}>
         <slot id="media" name="media" @slotchange="${this.#initMediaElement}"></slot>
-        <div class="${this.expanded ? 'expanded' : ''}"
+        <div id="toolbar"
+             class="${this.expanded ? 'expanded' : ''}"
              part="toolbar"
              aria-controls="media"
-             aria-label="Media Controls">${!this.poster ? '' : html`
-          <div id="poster"><img .src="${this.poster}" aria-hidden="true"></div>`}
+             aria-label="Media Controls">${!poster ? '' : html`
+          <div id="poster"><img .src="${poster}" aria-hidden="true"></div>`}
           <rh-tooltip id="play-tooltip">
             <button id="play"
                     aria-label="${playlabel}"
@@ -500,7 +395,7 @@ export class RhAudioPlayer extends LitElement {
                     ?disabled=${!this.#mediaElement || playdisabled}
                     @click=${this.#onPlayClick}
                     @focus=${this.#onPlayFocus}>
-              ${playicon}
+              <rh-icon set="ui" icon="${this.paused ? 'play-fill' : 'pause-fill'}"></rh-icon>
             </button>
             <span slot="content">${playlabel}</span>
           </rh-tooltip>
@@ -516,23 +411,28 @@ export class RhAudioPlayer extends LitElement {
 
           <rh-tooltip id="time-tooltip">
             <input id="time"
-                      class="toolbar-button"
-                      aria-label="${this.#translation.get('seek')}"
-                      min="0"
-                      max="100"
-                      step="1"
-                      type="range"
-                      value="${currentTimePct}"
-                      ?disabled="${this.duration === 0}"
-                      @input=${this.#onTimeSlider}>
+                   class="toolbar-button"
+                   aria-label="${this.#translation.get('seek')}"
+                   min="0"
+                   max="100"
+                   step="1"
+                   type="range"
+                   value="${currentTimePct}"
+                   ?disabled="${this.duration === 0}"
+                   @input=${this.#onTimeSlider}>
             <span slot="content">${this.#translation.get('seek')}</span>
           </rh-tooltip>
 
           <span id="current">${this.#elapsedText}</span>
 
-          <div class="spacer"></div>${this.#isMini ? '' : html`
+          <div class="spacer"></div>
 
-          ${this.#playbackRateTemplate()}`}
+          <rh-audio-player-rate-stepper id="playback-rate"
+                                        @playback-rate-select="${this.#onPlaybackRateSelect}"
+                                        ?hidden="${this.#isFull || this.#isMini}"
+                                        .disabled="${!this.#mediaElement}"
+                                        .playbackRate="${this.playbackRate}"
+                                        .label="${this.#translation.get('speed')}"></rh-audio-player-rate-stepper>
 
           ${this.#isMobileSafari ? '' : html`
 
@@ -542,7 +442,7 @@ export class RhAudioPlayer extends LitElement {
                     class="toolbar-button"
                     ?disabled=${!this.#mediaElement}
                     @click=${this.#onMuteButton}>
-              ${muteicon}
+              <rh-icon set="ui" icon="${this.muted ? 'mute-fill' : 'volume-up-fill'}"></rh-icon>
             </button>
             <span slot="content">${mutelabel}</span>
           </rh-tooltip>${this.#isMini ? '' : html`
@@ -571,7 +471,12 @@ export class RhAudioPlayer extends LitElement {
 
           <div class="full-spacer"></div>
 
-          ${this.#playbackRateTemplate('full-playback-rate')}
+          <rh-audio-player-rate-stepper id="full-playback-rate"
+                                        @playback-rate-select="${this.#onPlaybackRateSelect}"
+                                        ?hidden="${this.expanded || !this.#isFull}"
+                                        .disabled="${!this.#mediaElement}"
+                                        .playbackRate="${this.playbackRate}"
+                                        .label="${this.#translation.get('speed')}"></rh-audio-player-rate-stepper>
 
           <rh-tooltip id="rewind-tooltip">
             <button id="rewind"
@@ -579,7 +484,14 @@ export class RhAudioPlayer extends LitElement {
                     class="toolbar-button"
                     ?disabled=${rewinddisabled}
                     @click=${() => this.rewind()}>
-              ${RhAudioPlayer.icons.rewind}
+              <svg xmlns="http://www.w3.org/2000/svg"
+                   viewBox="0 0 32 32"
+                   class="scrubber"
+                   role="presentation">
+                <path d="M10.4,19.5h1.8v-5l-1.8,0.8v-1l2.2-0.9h0.7v6.2h1.9v1h-4.8V19.5z"/>
+                <path d="M16.4,19.6l0.7-0.8c0.6,0.5,1.2,0.8,1.9,0.8c0.9,0,1.5-0.6,1.5-1.4c0-0.8-0.6-1.3-1.5-1.3 c-0.5,0-0.9,0.1-1.4,0.4L16.8,17l0.2-3.7h4.3v1h-3.3l-0.1,2c0.5-0.2,1-0.3,1.5-0.3c1.4,0,2.4,0.9,2.4,2.1c0,1.4-1.1,2.4-2.7,2.4 C18,20.5,17.1,20.2,16.4,19.6z"/>
+                <path d="M4,6.6L9.5,2v3.7h7.4c6.1,0,11.1,5,11.1,11.1c0,6.1-5,11.1-11.1,11.1H9.5V26h1.8h5.5 c5.1,0,9.2-4.1,9.2-9.2c0-5.1-4.1-9.2-9.2-9.2h-5.5H9.5v3.7L4,6.6z"/>
+              </svg>
             </button>
             <span slot="content">${this.#translation.get('rewind')}</span>
           </rh-tooltip>
@@ -591,7 +503,7 @@ export class RhAudioPlayer extends LitElement {
                     ?disabled=${!this.#mediaElement || playdisabled}
                     @click=${this.#onPlayClick}
                     @focus=${this.#onPlayFocus}>
-              ${playicon}
+              <rh-icon set="ui" icon="${this.paused ? 'play-fill' : 'pause-fill'}"></rh-icon>
             </button>
             <span slot="content">${playlabel}</span>
           </rh-tooltip>
@@ -602,28 +514,38 @@ export class RhAudioPlayer extends LitElement {
                     class="toolbar-button"
                     ?disabled=${forwarddisabled}
                     @click=${() => this.forward()}>
-              ${RhAudioPlayer.icons.forward}
+              <svg xmlns="http://www.w3.org/2000/svg"
+                   viewBox="0 0 32 32"
+                   class="scrubber"
+                   role="presentation">
+                <path d="M10.4,19.5h1.8v-5l-1.8,0.8v-1l2.2-0.9h0.7v6.2h1.9v1h-4.8V19.5z"/>
+                <path d="M16.4,19.6l0.7-0.8c0.6,0.5,1.2,0.8,1.9,0.8c0.9,0,1.5-0.6,1.5-1.4c0-0.8-0.6-1.3-1.5-1.3 c-0.5,0-0.9,0.1-1.4,0.4L16.8,17l0.2-3.7h4.3v1h-3.3l-0.1,2c0.5-0.2,1-0.3,1.5-0.3c1.4,0,2.4,0.9,2.4,2.1c0,1.4-1.1,2.4-2.7,2.4 C18,20.5,17.1,20.2,16.4,19.6z"/>
+                <path d="M28,6.6L22.4,2v3.7h-7.4C9,5.7,4,10.6,4,16.7c0,6.1,5,11.1,11.1,11.1h7.4V26h-1.8h-5.5c-5.1,0-9.2-4.1-9.2-9.2 c0-5.1,4.1-9.2,9.2-9.2h5.5h1.8v3.7L28,6.6z"/>
+              </svg>
             </button>
             <span slot="content">${this.#translation.get('advance')}</span>
           </rh-tooltip>`}${!this.#hasMenu ? '' : html`
 
-          <rh-tooltip id="menu-tooltip" slot="button" position="${this.#menuOpen ? 'left' : 'top'}">
+          <rh-tooltip id="menu-tooltip"
+                      slot="button"
+                      position="${this.#menuOpen ? 'left' : 'top'}">
             <button id="menu-button"
                     class="toolbar-button"
                     aria-label="${this.#translation.get('menu')}"
                     aria-controls="menu"
                     aria-haspopup="true"
                     @click="${this.#onMenuToggle}">
-              ${RhAudioPlayer.icons.menuKebab}
+              <rh-icon set="ui" icon="ellipsis-horizontal-fill"></rh-icon>
             </button>
             <span slot="content">${this.#translation.get('menu')}</span>
           </rh-tooltip>
 
           <rh-menu id="menu"
                    aria-labelledby="menu-button"
-                   aria-hidden="${String(!this.#menuOpen) as 'true' | 'false'}"
+                   ?inert="${!this.#menuOpen}"
                    style="${styleMap(styles)}"
                    class="${classMap({ open })}"
+                   .getItems="${(items: HTMLElement[]) => this.#getMenuItems(items)}"
                    @keydown="${this.#onMenuKeydown}"
                    @focusout="${this.#onMenuFocusout}">${this.#panels.map(x => !x.panel ? '' : html`
             <button id="${x.id}-menu-item"
@@ -632,6 +554,12 @@ export class RhAudioPlayer extends LitElement {
                     @click="${() => this.#selectOpenPanel(x.panel)}">
               ${x.panel.menuLabel}
             </button>`)}
+            <rh-audio-player-rate-stepper id="mini-playback-rate"
+                                          @playback-rate-select="${this.#onPlaybackRateSelect}"
+                                          ?hidden="${!this.#isMini}"
+                                          .disabled="${!this.#mediaElement}"
+                                          .playbackRate="${this.playbackRate}"
+                                          .label="${this.#translation.get('speed')}"></rh-audio-player-rate-stepper>
           </rh-menu>`}
           <rh-tooltip id="close-tooltip">
             <button id="close"
@@ -641,7 +569,7 @@ export class RhAudioPlayer extends LitElement {
                     aria-controls="panel"
                     @click="${this.#selectOpenPanel}"
                     @keydown="${this.#onCloseKeydown}">
-              ${RhAudioPlayer.icons.close}
+              <rh-icon set="ui" icon="close"></rh-icon>
             </button>
             <span slot="content">${this.#translation.get('close')}</span>
           </rh-tooltip>
@@ -676,44 +604,6 @@ export class RhAudioPlayer extends LitElement {
     `;
   }
 
-  /** template for playback rate controls */
-  #playbackRateTemplate(id = 'playback-rate') {
-    return html`
-      <rh-tooltip id="${id}-tooltip">
-        <div id="${id}-stepper">
-          <button id="${id}-stepdown"
-                  class="playback-rate-step"
-                  tabindex="-1"
-                  aria-hidden="true"
-                  ?disabled="${!this.#mediaElement || this.playbackRate < 0.5}"
-                  @click="${this.decrementPlaybackrate}">
-            ${RhAudioPlayer.icons.playbackRateSlower}
-          </button>
-          <select id="${id}"
-                  aria-label="${this.#translation.get('speed')}"
-                  ?disabled=${!this.#mediaElement}
-                  @click="${this.#onPlaybackRateSelect}"
-                  @change="${this.#onPlaybackRateSelect}"
-                  .value=${this.playbackRate?.toFixed(this.#pbrFixed)}>${this.#playbackRates.map(step=>html`
-            <option .value=${step.toFixed(this.#pbrFixed)}
-              ?selected=${this.playbackRate.toFixed(this.#pbrFixed) === step.toFixed(this.#pbrFixed)}>
-              ${step.toFixed(this.#pbrFixed)}x
-            </option>`)}
-          </select>
-          <button id="${id}-stepup"
-                  class="playback-rate-step"
-                  tabindex="-1"
-                  aria-hidden="true"
-                  ?disabled="${!this.#mediaElement || this.playbackRate > 1.75}"
-                  @click="${this.incrementPlaybackrate}">
-            ${RhAudioPlayer.icons.playbackRateFaster}
-          </button>
-        </div>
-        <span slot="content">${this.#translation.get('speed')}</span>
-      </rh-tooltip>
-    `;
-  }
-
   async firstUpdated() {
     // waiting for next render so that rh-menu is present in shadow root
     await this.updateComplete;
@@ -736,6 +626,21 @@ export class RhAudioPlayer extends LitElement {
     await this.#translation.loadTranslation(url, lang);
     this.#updateMenuLabels();
     this.#updateTranscriptLabels();
+  }
+
+  #getMenuItems(items: HTMLElement[]) {
+    const ministepperid = 'mini-playback-rate';
+    if (this.#isMini) {
+      return [
+        ...items.filter(x => x.id !== ministepperid),
+        ...this.shadowRoot
+            ?.getElementById(ministepperid)
+            ?.shadowRoot
+            ?.querySelectorAll('.tabbable') ?? [],
+      ];
+    } else {
+      return items;
+    }
   }
 
   #updateMenuLabels() {
@@ -878,11 +783,9 @@ export class RhAudioPlayer extends LitElement {
    * by updating component playbackRate property
    */
   #onPlaybackRateSelect(event: Event) {
-    if (this.#mediaElement) {
-      const target = event?.target as HTMLSelectElement;
-      const val = !target || !target.value ? 1.00 : parseFloat(target.value);
-      const pbr = this.#validPlaybackRate(val);
-      this.#mediaElement.playbackRate = this.playbackRate = pbr;
+    if (event instanceof RhAudioPlayerRateSelectEvent && this.#mediaElement) {
+      this.playbackRate = event.playbackRate;
+      this.#mediaElement.playbackRate = event.playbackRate;
     }
   }
 
@@ -1016,17 +919,6 @@ export class RhAudioPlayer extends LitElement {
   }
 
   /**
-   * ensures playback rate value falls between playback rate minimum and maximum values
-   */
-  #validPlaybackRate(number: number) {
-    // ensures number between min and maxk
-    const inRange = Math.max(this.#pbrMin, Math.min(this.#pbrMax, number));
-    // used to round number to nearest step
-    const multiplier = 1 / this.#pbrStep;
-    return Math.round(inRange * multiplier) / multiplier;
-  }
-
-  /**
    * opens particular panel open or closes panels if none given
    */
   #selectOpenPanel(
@@ -1072,6 +964,7 @@ export class RhAudioPlayer extends LitElement {
   async #onMenuKeydown(event: KeyboardEvent) {
     if (event.key === 'Escape') {
       await this.#hideMenu();
+      this.shadowRoot?.querySelector<HTMLButtonElement>('#menu-button')?.focus();
     }
   }
 
@@ -1146,7 +1039,8 @@ export class RhAudioPlayer extends LitElement {
 
   #onWindowClick = (event: MouseEvent) => {
     const menu = this.shadowRoot?.getElementById('menu-button');
-    if (!menu || !event.composedPath().includes(menu)) {
+    const path = event.composedPath();
+    if (!menu || !path.includes(menu) && !path.some(x => x instanceof RhMenu)) {
       this.#hideMenu();
     }
   };
@@ -1167,28 +1061,6 @@ export class RhAudioPlayer extends LitElement {
   unmute() {
     if (this.#mediaElement) {
       this.#mediaElement.volume = Math.max(this.#unmutedVolume, 0.1);
-    }
-  }
-
-  /**
-   * Increases media playback rate by playback rate step value
-   */
-  incrementPlaybackrate() {
-    if (this.#mediaElement) {
-      this.#mediaElement.playbackRate =
-        this.playbackRate =
-        this.#validPlaybackRate(this.#mediaElement.playbackRate + this.#pbrStep);
-    }
-  }
-
-  /**
-   * Decreases media playback rate by playback rate step value
-   */
-  decrementPlaybackrate() {
-    if (this.#mediaElement) {
-      this.#mediaElement.playbackRate =
-        this.playbackRate =
-        this.#validPlaybackRate(this.#mediaElement.playbackRate - this.#pbrStep);
     }
   }
 

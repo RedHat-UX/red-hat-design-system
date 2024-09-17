@@ -2,15 +2,14 @@ uxdot-toc > ol {
   columns: 16rem auto;
   list-style: none;
   padding: 0;
-  margin-block-start: var(--rh-space-lg, 16px);
-  margin-block-end: 0;
+  margin-block: var(--rh-space-lg) 0;
 }
 
 uxdot-toc > ol > li {
   display: list-item;
-  margin-inline-start: var(--rh-space-lg, 16px);
-  margin-block-end: var(--rh-space-lg, 16px);
-  padding-inline-start: var(--rh-space-lg, 16px);
+  margin-inline-start: var(--rh-space-lg);
+  margin-block-end: var(--rh-space-lg);
+  padding-inline-start: var(--rh-space-lg);
 }
 
 uxdot-toc > ol > li:first-of-type {
@@ -34,6 +33,6 @@ uxdot-toc > ol > li > a {
   }
 
   uxdot-toc > ol > li:first-of-type {
-    margin-block-start: var(--rh-space-md, 8px);
+    margin-block-start: var(--rh-space-md);
   }
 }

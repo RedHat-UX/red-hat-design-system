@@ -1,11 +1,14 @@
+import type { ColorPalette } from '@rhds/elements/lib/context/color/provider.js';
+
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+import { colorContextProvider } from '@rhds/elements/lib/context/color/provider.js';
+import consumerStyles from '@rhds/tokens/css/color-context-consumer.css.js';
 
-import contextStyle from '../../lib/context/color/context-color.css';
 import styles from './rh-surface.css';
+import { classMap } from 'lit/directives/class-map.js';
 
 /**
  * Surfaces are content containers with a color palette which provide a theme
@@ -24,7 +27,7 @@ import styles from './rh-surface.css';
  */
 @customElement('rh-surface')
 export class RhSurface extends LitElement {
-  static readonly styles = [contextStyle, styles];
+  static readonly styles = [styles, consumerStyles];
 
   /**
    * Sets color palette, which affects the element's styles as well as descendants' color theme.
@@ -36,7 +39,15 @@ export class RhSurface extends LitElement {
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   render() {
-    return html`<slot @slotchange=${this.#onSlotchange}></slot>`;
+    const { colorPalette = 'lightest' } = this;
+    const on = colorPalette?.replace(/e(st|r)/, '') ?? 'light';
+    return html`<slot id="slot"
+                      class="${classMap({
+                        on: true,
+                        [on]: true,
+                        [`palette-${colorPalette}`]: true,
+                      })}"
+                      @slotchange=${this.#onSlotchange}></slot>`;
   }
 
   #onSlotchange() {

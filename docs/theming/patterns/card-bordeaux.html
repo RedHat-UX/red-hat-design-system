@@ -1,0 +1,75 @@
+<rh-card class="theme-bordeaux list-with-dividers">
+  <ul>
+    <li>This card uses a custom theme</li>
+    <li><a href="#">Links also are affected</a></li>
+    <li>See how it reacts when you change the color-palette</li>
+  </ul>
+  <rh-cta slot="footer" href="#">Call to action</rh-cta>
+</rh-card>
+
+<rh-card id="bordeaux-card-provider" class="theme-bordeaux">
+  <rh-blockquote>You can also set a color palette on a specific element</rh-blockquote>
+  <label for="bordeaux-card-picker" slot="footer">Set this card's color palette.</label>
+  <rh-context-picker id="bordeax-card-picker"
+                     target="bordeaux-card-provider"
+                     allow="darkest, lighter, lightest"
+                     slot="footer"></rh-context-picker>
+</rh-card>
+
+<style>
+  .theme-bordeaux {
+    --bordeaux-darkest: #19050a;
+    --bordeaux-darker: #260710;
+    --bordeaux-dark: #330915;
+    --bordeaux-dark-alt: #290711;
+    --bordeaux-brand-dark: #7f1734;
+    --bordeaux-brand-light: #d52757;
+    --bordeaux-light: #a55d71;
+    --bordeaux-lighter: #d9b9c2;
+    --bordeaux-lightest: #f2e8eb;
+    --rh-color-surface-darkest: var(--bordeaux-darkest);
+    --rh-color-surface-darker: var(--bordeaux-darker);
+    --rh-color-surface-dark: var(--bordeaux-dark);
+    --rh-color-surface-dark-alt: var(--bordeaux-dark-alt);
+    --rh-color-surface-light: var(--bordeaux-light);
+    --rh-color-surface-lighter: var(--bordeaux-lighter);
+    --rh-color-surface-lightest: var(--bordeaux-lightest);
+    --rh-color-border-interactive-on-dark: var(--bordeaux-lightest);
+    --rh-color-border-interactive-on-light: var(--bordeaux-darkest);
+    --rh-color-interactive-primary-default-on-dark: var(--bordeaux-lighter);
+    --rh-color-interactive-primary-default-on-light: var(--bordeaux-darker);
+    --rh-color-interactive-primary-hover-on-dark: var(--bordeaux-light);
+    --rh-color-interactive-primary-hover-on-light: var(--bordeaux-dark);
+    --rh-color-interactive-primary-focus-on-dark: var(--bordeaux-light);
+    --rh-color-interactive-primary-focus-on-light: var(--bordeaux-dark);
+    --rh-color-interactive-primary-active-on-dark: var(--bordeaux-light);
+    --rh-color-interactive-primary-active-on-light: var(--bordeaux-dark);
+    --rh-color-border-subtle-on-dark: var(--bordeaux-lighter);
+    --rh-color-border-subtle-on-light: var(--bordeaux-darker);
+    --rh-color-icon-primary-on-light: var(--bordeaux-brand-dark);
+    --rh-color-icon-primary-on-dark: var(--bordeaux-brand-light);
+  }
+
+  .list-with-dividers {
+    & ul {
+      display: flex;
+      flex-flow: column;
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      & li {
+        margin-block: 0;
+        padding-block: var(--rh-space-lg);
+        border-block-end: 1px solid var(--rh-color-border-subtle);
+        &:last-child {
+          padding-block-end: 0;
+          border-block-end: none;
+        }
+      }
+    }
+    & h3 {
+      margin-block-end: var(--rh-space-lg);
+    }
+  }
+
+</style>

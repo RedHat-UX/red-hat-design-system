@@ -16,12 +16,7 @@ import styles from './rh-transcript.css';
 import './rh-audio-player-scrolling-text-overflow.js';
 
 import '@rhds/elements/rh-tooltip/rh-tooltip.js';
-
-const icon = html`
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-    <path d="M7.56 12.45a.63.63 0 0 0 .88 0l4-4a.63.63 0 1 0-.88-.89L8.63 10.5V2A.62.62 0 0 0 8 1.38a.63.63 0 0 0-.63.62v8.5L4.44 7.56a.63.63 0 1 0-.88.89ZM14 14.38H2a.63.63 0 1 0 0 1.25h12a.63.63 0 0 0 0-1.25Z"/>
-  </svg>
-`;
+import '@rhds/elements/rh-icon/rh-icon.js';
 
 /**
  * Audio Player Transcript Panel
@@ -58,28 +53,6 @@ export class RhTranscript extends LitElement {
     parent: new HeadingLevelContextConsumer(this),
   });
 
-  render() {
-    return html`
-      <rh-audio-player-scrolling-text-overflow part="heading">
-        <slot name="heading">${this.#headings.wrap(this.menuLabel)}</slot>
-      </rh-audio-player-scrolling-text-overflow>
-      <div class="panel-toolbar" part="toolbar">${this._cues.length < 0 ? '' : html`
-        <label>
-          <input id="autoscroll"
-                 type="checkbox"
-                 ?checked="${this.#autoscroll}"
-                 @click="${this.#onScrollClick}">
-            ${this.autoscrollLabel}
-        </label>
-        <rh-tooltip id="download-tooltip">
-          <button id="download" @click="${this.#onDownloadClick}" aria-label="${this.downloadLabel}">${icon}</button>
-          <span slot="content">${this.downloadLabel}</span>
-        </rh-tooltip>`}
-      </div>
-      <slot id="cues"></slot>
-    `;
-  }
-
   set autoscrollLabel(label: string) {
     this._autoscroll = label;
   }
@@ -96,12 +69,40 @@ export class RhTranscript extends LitElement {
     return this._download || 'Download';
   }
 
+  get downloadText() {
+    return this._cues.map(cue =>cue.downloadText).join('\n\n');
+  }
+
   set menuLabel(label: string) {
     this._label = label;
   }
 
   get menuLabel(): string {
     return this.label || this._label || 'About the episode';
+  }
+
+  render() {
+    return html`
+      <rh-audio-player-scrolling-text-overflow part="heading">
+        <slot name="heading">${this.#headings.wrap(this.menuLabel)}</slot>
+      </rh-audio-player-scrolling-text-overflow>
+      <div class="panel-toolbar" part="toolbar">${this._cues.length < 0 ? '' : html`
+        <label>
+          <input id="autoscroll"
+                 type="checkbox"
+                 ?checked="${this.#autoscroll}"
+                 @click="${this.#onScrollClick}">
+            ${this.autoscrollLabel}
+        </label>
+        <rh-tooltip id="download-tooltip">
+          <button id="download" @click="${this.#onDownloadClick}" aria-label="${this.downloadLabel}">
+            <rh-icon set="ui" icon="download"></rh-icon>
+          </button>
+          <span slot="content">${this.downloadLabel}</span>
+        </rh-tooltip>`}
+      </div>
+      <slot id="cues"></slot>
+    `;
   }
 
   #updateCues(currentTime?: number) {
@@ -158,10 +159,6 @@ export class RhTranscript extends LitElement {
 
   #onDownloadClick() {
     this.dispatchEvent(new Event('transcriptdownload', { bubbles: true }));
-  }
-
-  get downloadText() {
-    return this._cues.map(cue =>cue.downloadText).join('\n\n');
   }
 
   setActiveCues(currentTime = 0) {

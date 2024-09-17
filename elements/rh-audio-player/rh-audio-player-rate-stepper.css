@@ -1,0 +1,48 @@
+:host,
+button,
+select,
+rh-tooltip,
+rh-icon {
+  color: inherit;
+}
+
+:host,
+div {
+  display: flex;
+  align-items: center;
+}
+
+select {
+  font-size: var(--rh-font-size-code-md, 1rem);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  appearance: none;
+  line-height: 36px;
+  padding: 2px 0;
+  border: none;
+  background: transparent;
+}
+
+.rtl {
+  text-align: right;
+}
+
+button {
+  border: none;
+  background: transparent;
+  height: var(--_button-size, 40px);
+  min-width: var(--_button-size, 40px);
+  padding: 0;
+}
+
+select:focus,
+button:focus {
+  outline: var(--_outline);
+}
+
+button[disabled],
+select[disabled] {
+  filter: grayscale(1);
+  opacity: 0.5;
+  cursor: not-allowed;
+  border: none;
+}

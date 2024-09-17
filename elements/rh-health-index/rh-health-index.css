@@ -11,7 +11,7 @@
   align-items: center;
   width: max-content;
   font-size: var(--rh-font-size-body-text-md, 1rem);
-  font-family: var(--rh-font-family-code, RedHatMono, "Red Hat Mono", "Courier New", Courier, monospace);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
   line-height: var(--_box-size);
   text-transform: uppercase;
 
@@ -23,7 +23,7 @@
   --_color-text-inactive: var(--rh-color-gray-70, #383838);
   --_color-text: var(--_color-text-inactive);
   --_color-fill: var(--rh-color-surface-lightest, #ffffff);
-  --_color-border: var(--rh-color-border-subtle-on-light, #c7c7c7);
+  --_color-border: var(--rh-color-border-subtle);
 }
 
 #grade {
@@ -118,7 +118,7 @@
 
 :is(.lg, .xl) .box:after {
   display: block;
-  content: "";
+  content: '';
   min-height: var(--rh-length-xs, 4px);
   z-index: 10;
   background-color: var(--_color-20);
@@ -132,7 +132,7 @@
 
 :is(.lg, .xl) .box.active:before {
   display: block;
-  content: "";
+  content: '';
   inset-inline: -1px;
   inset-block: -2px;
   z-index: -1;
@@ -198,10 +198,6 @@
  * Dark Color Theme
  *****************************************************************************/
 
-#container.dark {
-  --_color-border: var(--rh-color-border-subtle-on-dark, #707070);
-}
-
 #container.dark .box {
   --_color-text-active: var(--rh-color-white, #ffffff);
   --_color-fill: var(--rh-color-surface-darkest, #151515);
@@ -243,7 +239,7 @@
 }
 
 .dark .e {
-  --_color-10: var(--rh-color-red-orange-50, #f4784a);
+  --_color-10: var(--rh-color-red-orange-50, #f0561d);
   --_color-25: var(--rh-color-red-orange-10, #ffe3d9);
   --_color-30: var(--rh-color-red-orange-30, #f89b78);
 }

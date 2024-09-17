@@ -1,5 +1,7 @@
 [build]
   command = "npm run docs"
+[build.environment]
+  NODE_OPTIONS = "--max_old_space_size=8192"
 
 [[redirects]]
   from = '/components/get-started/*'
