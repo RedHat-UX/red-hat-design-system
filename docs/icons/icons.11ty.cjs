@@ -26,30 +26,29 @@ module.exports = class IconsPage {
         }
       </style>
 
-      <p>Click icons to copy their HTML elements</p>
+      <h2 id="overview">Overview</h2>
+      <p>Click the names of icons to copy their HTML code to your clipboard. To learn more about
+         how to use icons in each set, visit <a href="/elements/icon/guidelines/">Guidelines for the
+         icon element</a>. The icon element's page also has more information about
+         <a href="/elements/icon/code/">implementing icons</a>.</p>
 
       <section>
         <h2 id="social-icons">Social Icons</h2>
-        <p>These icons represent or link to social media companies</p>
         <ul class="icon-set">${this.renderIcons('social', icons)}</ul>
       </section>
 
       <section>
         <h2 id="standard-icons">Standard Icons</h2>
-        <p>Use these icons as graphics, and at large sizes</p>
-        <rh-alert state="warning">Avoid using these for UI elements like buttons</rh-alert>
         <ul class="icon-set">${this.renderIcons('standard', icons)}</ul>
       </section>
 
       <section>
         <h2 id="ui-icons">UI Icons</h2>
-        <p>Use these icons in UI controls like buttons and form fields</p>
         <ul class="icon-set">${this.renderIcons('ui', icons)}</ul>
       </section>
 
       <section>
         <h2 id="micron-icons">Microns</h2>
-        <p>Microns is a funny word</p>
         <ul class="icon-set">${this.renderIcons('microns', icons)}</ul>
       </section>
     `;
@@ -62,10 +61,9 @@ module.exports = class IconsPage {
   renderIcon({ set, icon }) {
     return html`
       <li>
+        <rh-icon set="${set}" icon="${icon}"></rh-icon>
         <rh-button accessible-label="Copy icon HTML for ${set} ${icon}"
-                   icon="${icon}"
-                   icon-set="${set}"
-                   variant="tertiary">${icon}</rh-button>
+                   variant="link">${icon}</rh-button>
       </li>
     `;
   }
