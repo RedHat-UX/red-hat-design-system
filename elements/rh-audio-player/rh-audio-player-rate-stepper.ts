@@ -16,6 +16,14 @@ import styles from './rh-audio-player-rate-stepper.css';
 export class RhAudioPlayerRateStepper extends LitElement {
   static readonly styles = [styles];
 
+  private static pbrMin = 0.25;
+
+  private static pbrMax = 2;
+
+  private static pbrStep = 0.25;
+
+  private static pbrFixed = 2;
+
   /** Playback rate */
   @property({ reflect: true, type: Number, attribute: 'playback-rate' }) playbackRate = 1;
 
@@ -27,55 +35,50 @@ export class RhAudioPlayerRateStepper extends LitElement {
 
   #dir = new DirController(this);
 
-  #pbrMin = 0.25;
-
-  #pbrMax = 2;
-
-  #pbrStep = 0.25;
-
-  #pbrFixed = 2;
-
   /**
    * gets list of allowable playback rates
    */
   get #playbackRates() {
+    const { pbrMax, pbrStep, pbrMin } = RhAudioPlayerRateStepper;
     return [
-      ...Array(Math.round(this.#pbrMax / this.#pbrStep)).keys()].map(k =>
-      k * this.#pbrStep + this.#pbrMin
+      ...Array(Math.round(pbrMax / pbrStep)).keys()].map(k =>
+      k * pbrStep + pbrMin
     );
   }
 
 
   /** template for playback rate controls */
   render() {
+    const { pbrFixed } = RhAudioPlayerRateStepper;
     const rtl = this.#dir.dir === 'rtl';
 
     return html`
       <rh-tooltip class="${classMap({ rtl })}">
         <div>
           <button id="stepdown"
-                  class="playback-rate-step"
+                  class="tabbable playback-rate-step"
                   tabindex="-1"
-                  aria-hidden="true"
+                  aria-label="<"
                   ?disabled="${this.disabled || this.playbackRate < 0.5}"
                   @click="${this.#dec}">
             <rh-icon icon="caret-left" set="microns"></rh-icon>
           </button>
           <select id="playback-rate"
+                  class="tabbable"
                   aria-label="${ifDefined(this.label)}"
                   ?disabled="${this.disabled}"
                   @click="${this.#onPlaybackRateSelect}"
                   @change="${this.#onPlaybackRateSelect}"
-                  .value="${this.playbackRate?.toFixed(this.#pbrFixed)}">${this.#playbackRates.map(step => html`
-            <option .value="${step.toFixed(this.#pbrFixed)}"
-                    ?selected=${this.playbackRate.toFixed(this.#pbrFixed) === step.toFixed(this.#pbrFixed)}>
-              ${step.toFixed(this.#pbrFixed)}x
+                  .value="${this.playbackRate?.toFixed(pbrFixed)}">${this.#playbackRates.map(step => html`
+            <option .value="${step.toFixed(pbrFixed)}"
+                    ?selected=${this.playbackRate.toFixed(pbrFixed) === step.toFixed(pbrFixed)}>
+              ${step.toFixed(pbrFixed)}x
             </option>`)}
           </select>
           <button id="stepup"
-                  class="playback-rate-step"
+                  class="tabbable playback-rate-step"
                   tabindex="-1"
-                  aria-hidden="true"
+                  aria-label=">"
                   ?disabled="${this.disabled || this.playbackRate > 1.75}"
                   @click="${this.#inc}">
             <rh-icon icon="caret-right" set="microns"></rh-icon>
@@ -94,10 +97,11 @@ export class RhAudioPlayerRateStepper extends LitElement {
   }
 
   #validPlaybackRate(number: number) {
+    const { pbrMax, pbrStep, pbrMin } = RhAudioPlayerRateStepper;
     // ensures number between min and maxk
-    const inRange = Math.max(this.#pbrMin, Math.min(this.#pbrMax, number));
+    const inRange = Math.max(pbrMin, Math.min(pbrMax, number));
     // used to round number to nearest step
-    const multiplier = 1 / this.#pbrStep;
+    const multiplier = 1 / pbrStep;
     return Math.round(inRange * multiplier) / multiplier;
   }
 
@@ -105,14 +109,14 @@ export class RhAudioPlayerRateStepper extends LitElement {
    * Increases media playback rate by playback rate step value
    */
   #inc() {
-    this.#fire(this.playbackRate + this.#pbrStep);
+    this.#fire(this.playbackRate + RhAudioPlayerRateStepper.pbrStep);
   }
 
   /**
    * Decreases media playback rate by playback rate step value
    */
   #dec() {
-    this.#fire(this.playbackRate - this.#pbrStep);
+    this.#fire(this.playbackRate - RhAudioPlayerRateStepper.pbrStep);
   }
 
   #fire(rate: number) {

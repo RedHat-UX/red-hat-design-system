@@ -543,6 +543,7 @@ export class RhAudioPlayer extends LitElement {
                    ?inert="${!this.#menuOpen}"
                    style="${styleMap(styles)}"
                    class="${classMap({ open })}"
+                   .getItems="${items => this.#getMenuItems(items)}"
                    @keydown="${this.#onMenuKeydown}"
                    @focusout="${this.#onMenuFocusout}">${this.#panels.map(x => !x.panel ? '' : html`
             <button id="${x.id}-menu-item"
@@ -623,6 +624,21 @@ export class RhAudioPlayer extends LitElement {
     await this.#translation.loadTranslation(url, lang);
     this.#updateMenuLabels();
     this.#updateTranscriptLabels();
+  }
+
+  #getMenuItems(items: HTMLElement[]) {
+    const ministepperid = 'mini-playback-rate';
+    if (this.#isMini) {
+      return [
+        ...items.filter(x => x.id !== ministepperid),
+        ...this.shadowRoot
+            ?.getElementById(ministepperid)
+            ?.shadowRoot
+            ?.querySelectorAll('.tabbable') ?? [],
+      ];
+    } else {
+      return items;
+    }
   }
 
   #updateMenuLabels() {
