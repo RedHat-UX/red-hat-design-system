@@ -15,7 +15,7 @@ module.exports = class IconsPage {
     };
   }
 
-  render({ icons }) {
+  async render({ icons }) {
     return html`
       <script type="module" src="icons.js" data-helmet></script>
 
@@ -68,7 +68,7 @@ module.exports = class IconsPage {
         <ul class="icon-set">${this.renderIcons('microns', icons)}</ul>
       </section>
 
-      ${this.renderFile('./docs/_includes/partials/component/feedback.html', 'njk')}
+      ${await this.renderFile('./docs/_includes/partials/component/feedback.html', 'njk')}
     `;
   }
 
