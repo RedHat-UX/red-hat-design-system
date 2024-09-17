@@ -37,6 +37,10 @@ export class RhButton extends LitElement {
   /** Disables the button */
   @property({ reflect: true, type: Boolean }) disabled = false;
 
+  /**
+   * button type
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#type
+   */
   @property({ reflect: true }) type?: 'button' | 'submit' | 'reset';
 
   /** Accessible name for the button, use when the button does not have slotted text */
@@ -102,7 +106,8 @@ export class RhButton extends LitElement {
               class="${classMap({
                 danger,
                 hasIcon,
-                [on]: !!on,
+                on: true,
+                [on]: true,
                 [variant]: true,
               })}"
               part="button"
