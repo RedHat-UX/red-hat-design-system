@@ -33,7 +33,7 @@ The default alert is inline. At minimum, the status icon and title needs to be v
   <img src="../alert-style-variant-inline.svg" alt="Two examples of an inline alert">\
 </uxdot-example>
 
-### Inline, alternate
+### Inline alternate
 
 There is an alternate inline alert where the border covers all sides.
 
