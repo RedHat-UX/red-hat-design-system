@@ -27,6 +27,7 @@ module.exports = class IconsPage {
           align-items: start;
           align-content: start;
           gap: var(--rh-space-2xl);
+          flex-wrap: wrap;
           & li {
             display: flex;
             width: 163.33px;
@@ -34,6 +35,9 @@ module.exports = class IconsPage {
             flex-shrink: 0;
             align-items: start;
             gap: var(--rh-space-md);
+            & rh-icon {
+              margin-inline-start: var(--rh-space-lg);
+            }
           }
         }
       </style>
