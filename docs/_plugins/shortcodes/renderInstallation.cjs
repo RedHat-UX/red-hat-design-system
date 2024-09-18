@@ -71,7 +71,9 @@ npm install @rhds/elements
 
 `;
 
-  const jspmContent = markdown`
+  let jspmContent = '';
+  try {
+    jspmContent = markdown`
 
 ~~~html
 <script type="module">
@@ -89,6 +91,10 @@ ${await generateImportMap('@rhds/elements', docsPage.tagName)}
 
 </details>
 `;
+  } catch (error) {
+    console.error(error);
+    jspmContent = `Could not generate import map using JSPM: ${error.message}`;
+  }
 
   return html`
 <script type="module" src="/assets/javascript/elements/uxdot-installation-tabs.js"></script>
