@@ -304,6 +304,12 @@
       top: -118px; /* masthead (72px) + subnav (56px) - header desktop (246px) */
     }
   }
+
+  #edit-this-page {
+    border-block-start: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
+    margin-block-start: var(--rh-space-6xl);
+    padding-block-start: var(--rh-space-lg);
+  }
 }
 
 @layer overrides {
