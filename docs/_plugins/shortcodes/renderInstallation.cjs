@@ -102,6 +102,7 @@ ${await generateImportMap('@rhds/elements', docsPage.tagName)}
 
 <section class="band">
   <h2>Installation</h2>
+  <p>Learn more about how to install on our <a href="/get-started/developers/installation/">getting started docs</a>.</p>
   <uxdot-installation-tabs>
     <rh-tab slot="tab">Red Hat CDN</rh-tab>
     <rh-tab-panel>${cdnContent}</rh-tab-panel>
