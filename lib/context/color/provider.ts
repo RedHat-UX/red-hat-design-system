@@ -134,7 +134,10 @@ export class ColorContextProvider<
     this.#mo.disconnect();
   }
 
-  /** Was the context event fired requesting our colour-context context? */
+  /**
+   * Was the context event fired requesting our colour-context context?
+   * @param event some event
+   */
   #isColorContextEvent(
     event: ContextRequestEvent<UnknownContext>
   ): event is ContextRequestEvent<typeof ColorContextController.context> {
@@ -145,6 +148,7 @@ export class ColorContextProvider<
    * Provider part of context API
    * When a child connects, claim its context-request event
    * and add its callback to the Set of children if it requests multiple updates
+   * @param event context-request event
    */
   async #onChildContextRequestEvent(event: ContextRequestEvent<UnknownContext>) {
     // only handle ContextEvents relevant to colour context
@@ -162,7 +166,10 @@ export class ColorContextProvider<
     }
   }
 
-  /** Calls the context callback for all consumers */
+  /**
+   * Calls the context callback for all consumers
+   * @param [force] override theme
+   */
   public override async update(force?: ColorTheme) {
     const { value } = this;
 
@@ -172,7 +179,10 @@ export class ColorContextProvider<
   }
 }
 
-/** Makes this element a color context provider which updates its consumers when the decorated field changes */
+/**
+ * Makes this element a color context provider which updates its consumers when the decorated field changes
+ * @param options options
+ */
 export function colorContextProvider<T extends ReactiveElement>(options?: ColorContextOptions<T>) {
   return function(proto: T, _propertyName: string) {
     const propertyName = _propertyName as keyof T;
