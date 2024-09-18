@@ -73,9 +73,12 @@ export class RhTable extends LitElement {
 
   #logger = new Logger(this);
 
+  #mo = new MutationObserver(() => this.#init);
+
   connectedCallback() {
     super.connectedCallback();
     this.#init();
+    this.#mo.observe(this, { childList: true });
   }
 
   protected willUpdate(): void {
@@ -105,6 +108,11 @@ export class RhTable extends LitElement {
         <slot id="summary" name="summary"></slot>
       </div>
     `;
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.#mo.disconnect();
   }
 
   #onPointerleave() {
