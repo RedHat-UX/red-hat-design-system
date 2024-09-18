@@ -1,5 +1,6 @@
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
+import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
@@ -60,6 +61,10 @@ export class RhTable extends LitElement {
     return this.querySelectorAll('tbody > tr') as NodeListOf<HTMLTableRowElement> | undefined;
   }
 
+  get #colHeaders(): NodeListOf<HTMLTableCellElement> | undefined {
+    return this.querySelectorAll<HTMLTableCellElement>('thead > tr > th');
+  }
+
   get #summary(): HTMLElement | undefined {
     return this.querySelector('[slot="summary"]') as HTMLElement | undefined;
   }
@@ -68,9 +73,12 @@ export class RhTable extends LitElement {
 
   #logger = new Logger(this);
 
+  #mo = new MutationObserver(() => this.#init);
+
   connectedCallback() {
     super.connectedCallback();
     this.#init();
+    this.#mo.observe(this, { childList: true });
   }
 
   protected willUpdate(): void {
@@ -100,6 +108,11 @@ export class RhTable extends LitElement {
         <slot id="summary" name="summary"></slot>
       </div>
     `;
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.#mo.disconnect();
   }
 
   #onPointerleave() {
@@ -141,6 +154,16 @@ export class RhTable extends LitElement {
   #init() {
     if (this.#table && this.#summary) {
       this.#table.setAttribute('aria-describedby', 'summary');
+    }
+
+    /* If responsive attribute set, auto-assign `data-label` attributes based on column headers */
+    if (this.#table?.tHead && this.#colHeaders?.length && this.#rows) {
+      for (const row of this.#rows) {
+        row?.querySelectorAll<HTMLElement>(':is(td, th)')
+            .forEach((cell, index) => {
+              cell.dataset.label ||= this.#colHeaders?.[index]?.innerText || '';
+            });
+      }
     }
   }
 
