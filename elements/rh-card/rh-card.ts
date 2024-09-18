@@ -41,14 +41,7 @@ import styles from './rh-card.css';
  */
 @customElement('rh-card')
 export class RhCard extends LitElement {
-  static readonly version = '{{version}}';
-
   static styles = [styles];
-
-  /**
-   * Sets color theme based on parent context
-   */
-  @colorContextConsumer() private on?: ColorTheme;
 
   /**
    * Sets color palette, which affects the element's styles as well as descendants' color theme.
@@ -59,8 +52,7 @@ export class RhCard extends LitElement {
    * Card always resets its context to `base`, unless explicitly provided with a `color-palette`.
    */
   @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' })
-  colorPalette?: ColorPalette;
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   /**
    * Change the style of the card to be a "Promo"
@@ -71,6 +63,8 @@ export class RhCard extends LitElement {
    * Change a promo with an image + body + footer to use the `full-width` style
    */
   @property({ reflect: true, attribute: 'full-width', type: Boolean }) fullWidth? = false;
+
+  @colorContextConsumer() private on?: ColorTheme;
 
   #slots = new SlotController(this, 'header', 'image', null, 'footer');
 
@@ -107,7 +101,7 @@ export class RhCard extends LitElement {
   }
 
   override render() {
-    const { on = '', variant = '' } = this;
+    const { on = 'light', variant = '' } = this;
     const promo = this.variant === 'promo';
     const standard = this.#isStandardPromo;
     const computedPalette = this.#computedPalette;
@@ -131,12 +125,12 @@ export class RhCard extends LitElement {
      <div id="container"
           part="container"
           class="${classMap({
-            'on': true,
-            [on]: !!on,
-            [variant]: !!variant,
-            'palette': !!this.colorPalette,
             standard,
+            'on': true,
+            [on]: true,
+            [variant]: !!variant,
             [`palette-${computedPalette}`]: !!computedPalette,
+            'palette': !!this.colorPalette,
             'has-body': hasBody,
             'has-header': hasHeader,
             'has-footer': hasFooter,
