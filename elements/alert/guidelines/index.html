@@ -48,13 +48,13 @@
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
     "lit": "/assets/packages/lit/index.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.1/core.js",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.1/core.js",
-    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/media.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/meta.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "lit/": "/assets/packages/lit/",
     "lit-html/": "/assets/packages/lit-html/",
@@ -680,6 +680,9 @@
                     <li><a href="#writing-content">Writing content</a>
             		</li>
 
+                    <li><a href="#actions">Actions</a>
+            		</li>
+
                     <li><a href="#layout">Layout</a>
             		</li>
 
@@ -698,6 +701,9 @@
             		</li>
 
                     <li><a href="#writing-content">Writing content</a>
+            		</li>
+
+                    <li><a href="#actions">Actions</a>
             		</li>
 
                     <li><a href="#layout">Layout</a>
@@ -736,7 +742,7 @@
     <a href="#guidelines">Guidelines</a>
       </h2>
     </uxdot-copy-permalink>
-<p>An alert is best used to notify a user of a change or attract their attention about other messages.</p>
+<p>In general, use an alert to communicate essential information to a user in a prominent way.</p>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:0 0;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
@@ -751,11 +757,11 @@
     <!--/lit-part--></template></rh-icon>
       </button>
     <!--/lit-part--></template>
-  <h3 id="using-an-inline-alert" tabindex="-1">
-    <a href="#using-an-inline-alert">Using an Inline alert</a>
+  <h3 id="when-to-use-an-inline-alert" tabindex="-1">
+    <a href="#when-to-use-an-inline-alert">When to use an inline alert</a>
       </h3>
     </uxdot-copy-permalink>
-<p>An Inline alert is used to present a local message or return feedback as the result of a user action, like if a form is submitted with errors.</p>
+<p>Use an inline alert to communicate a short message about a specific user action within a component or layout. An inline alert appears in a content area and disappears when a user closes it or navigates away from the page. For example, use an inline alert to inform a user their form was submitted with errors.</p>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:0 0;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
@@ -770,11 +776,11 @@
     <!--/lit-part--></template></rh-icon>
       </button>
     <!--/lit-part--></template>
-  <h3 id="using-a-toast-alert" tabindex="-1">
-    <a href="#using-a-toast-alert">Using a Toast alert</a>
+  <h3 id="when-to-use-a-toast-alert" tabindex="-1">
+    <a href="#when-to-use-a-toast-alert">When to use a toast alert</a>
       </h3>
     </uxdot-copy-permalink>
-<p>A Toast alert is used to present a global message about an event, update, or confirmation, like the result of a user action that cannot be presented within a specific layout or component.</p>
+<p>Use a toast alert to communicate a time-based update, confirmation, or other short message to a user without blocking their workflow. A toast alert overlays content in the top right corner of a page and disappears when a user closes it or when it times out. For example, use a toast alert to inform a user their information was submitted successfully.</p>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:0 0;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
@@ -789,18 +795,11 @@
     <!--/lit-part--></template></rh-icon>
       </button>
     <!--/lit-part--></template>
-  <h3 id="severity" tabindex="-1">
-    <a href="#severity">Severity</a>
+  <h3 id="communicating-severity" tabindex="-1">
+    <a href="#communicating-severity">Communicating severity</a>
       </h3>
     </uxdot-copy-permalink>
-<p>Severity communicates the <strong>urgency</strong> of a message and is denoted by various styling configurations.</p>
-<ul>
-<li><strong>Default</strong> - Indicates generic information or a message with no severity</li>
-<li><strong>Info</strong> - Indicates helpful information or a message with very little to no severity</li>
-<li><strong>Success</strong> - Indicates a success state, like if a process was completed without errors</li>
-<li><strong>Warning</strong> - Indicates a caution state, like a non-blocking error that might need to be fixed</li>
-<li><strong>Danger</strong> - Indicates a danger state, like an error that is blocking a user from completing a task</li>
-</ul>
+<p>The five severity levels for alerts are Default, Info, Success, Warning, and Danger. Each level communicates a specific urgency.</p>
 <rh-alert  state="info"><template shadowroot="open" shadowrootmode="open"><style>:host{--_background-color:var(--rh-color-teal-10, #daf2f2);--_border-color:var(--rh-color-teal-50, #37a3a3);--_header-color:var(--rh-color-teal-70, #004d4d);--_icon-color:var(--rh-color-teal-50, #37a3a3);--_font-family:var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);display:block;max-width:var(--_max-width,initial)}:host([hidden]){display:none}#container{border-width:var(--rh-border-width-md,2px);border-style:solid;border-block-start-color:var(--_border-color);border-inline-start-color:var(--_border-inline-color,transparent);border-block-end-color:var(--_border-block-end-color,transparent);border-inline-end-color:var(--_border-inline-color,transparent);background-color:var(--_background-color);box-shadow:var(--_box-shadow,none);padding:var(--rh-space-lg,16px);display:grid;grid-template-columns:min-content 1fr;gap:var(--rh-space-xs,4px);font-family:var(--_font-family)}#left-column{display:inline-block;vertical-align:top}#middle-column{display:inline-block;vertical-align:top}header{display:flex;align-items:center;justify-content:flex-start}.hasBody header{margin-block-end:var(--rh-space-xs,4px)}header ::slotted(*){font-family:var(--_font-family)!important;font-size:var(--rh-font-size-body-text-sm, .875rem)!important;font-weight:var(--rh-font-weight-heading-bold,700)!important;margin:0!important}header ::slotted(:is(h1,h2,h3,h4,h5,h6)){padding-block:2px var(--rh-space-xs,4px)!important}#header-actions{margin-inline-end:var(--rh-space-xs,4px)}#header{color:var(--_header-color);flex:1 1 auto}#icon{display:flex;align-items:center;justify-content:center;width:var(--rh-size-icon-02,24px);height:var(--rh-size-icon-02,24px);color:var(--_icon-color)}#close-button{color:var(--rh-color-text-secondary-on-light,#4d4d4d);background-color:transparent;border:none;height:var(--rh-length-xl,24px);width:var(--rh-length-xl,24px);cursor:pointer}#close-button:hover{color:var(--rh-color-text-primary-on-light,#151515)}#description{font-size:var(--rh-font-size-body-text-sm, .875rem)}#description>::slotted(*){margin-block:0!important;padding:0!important}footer.hasActions{margin-block-start:var(--rh-space-lg,16px)}footer ::slotted([slot=actions]:not(rh-button[variant=link i])){margin-inline-end:var(--rh-space-xl,24px)!important;padding:0!important;border:none!important;background-color:transparent!important;color:var(--rh-color-interactive-blue-darker,#06c)!important;font-size:var(--rh-font-size-body-text-sm, .875rem)!important;font-family:var(--_font-family)!important}footer ::slotted([slot=actions]:focus){text-decoration:underline!important;color:var(--rh-color-interactive-blue-darkest,#036)!important}footer ::slotted([slot=actions]:hover){cursor:pointer!important;text-decoration:underline!important;color:var(--rh-color-interactive-blue-darkest,#036)!important}footer ::slotted(rh-button[variant=link i]){display:inline-block;translate:calc(-1 * var(--rh-space-lg,16px))}:host([state=info i]){--_border-color:var(--rh-color-blue-40, #4394e5);--_icon-color:var(--rh-color-blue-40, #4394e5);--_header-color:var(--rh-color-blue-70, #003366);--_background-color:var(--rh-color-blue-10, #e0f0ff)}:host([state=success i]){--_border-color:var(--rh-color-green-60, #3d7317);--_icon-color:var(--rh-color-green-60, #3d7317);--_header-color:var(--rh-color-green-70, #204d00);--_background-color:var(--rh-color-green-10, #e9f7df)}:host([state=warning i]){--_border-color:var(--rh-color-yellow-40, #dca614);--_icon-color:var(--rh-color-yellow-40, #dca614);--_header-color:var(--rh-color-yellow-70, #73480b);--_background-color:var(--rh-color-yellow-10, #fff4cc)}:host([state=danger i]){--_border-color:#c9190b;--_icon-color:#c9190b;--_header-color:#7d1007;--_background-color:var(--rh-color-red-10, #fce3e3)}:host([variant=toast i]){--_background-color:var(--rh-color-surface-lightest, #ffffff);--_max-width:550px;--_box-shadow:var(--rh-box-shadow-lg, 0 6px 8px 2px rgba(21, 21, 21, 0.3))}:host([variant=alternate i]){--_border-inline-color:var(--_border-color);--_border-block-end-color:var(--_border-color)}</style><!--lit-part mOQBf7vnIRQ=-->
       <!--lit-node 0--><rh-surface 
            
@@ -833,12 +832,11 @@
         </div>
       </rh-surface>
     <!--/lit-part--></template>
-  <h3 slot="header">Learn More</h3>
-  <p>Visit the <a href="/foundations/color">Color</a> foundation page to learn more about how to use colors 
-for status and severity.</p>
+  <h3 slot="header">Helpful tip</h3>
+  <p>Visit the <a href="/foundations/color">Color</a> page to learn more about using severity colors.</p>
 </rh-alert>
-<uxdot-example width-adjustment="728px">
-  <img src="../alert-severity.svg" alt="Examples of the different colors indicating alert severity" width="728px">
+<uxdot-example width-adjustment="928px">
+  <img src="../alert-guidelines-severity.svg" alt="Examples of the different colors indicating alert severity" width="728px">
 </uxdot-example>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:0 0;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -858,49 +856,12 @@ for status and severity.</p>
     <a href="#dismissal">Dismissal</a>
       </h3>
     </uxdot-copy-permalink>
-<p>Alert variants have different rules regarding their ability to be dismissed by a user.</p>
-<ul>
-<li>Default, Info, and Success Inline alerts can be dismissed by a user selecting the close button</li>
-<li>Warning and Danger Inline alerts can be dismissed by a user resolving the issues caused by the alert</li>
-<li>All Toast alerts can be dismissed by a user selecting the close button or waiting for them to time out</li>
-</ul>
-<rh-alert  state="warning"><template shadowroot="open" shadowrootmode="open"><style>:host{--_background-color:var(--rh-color-teal-10, #daf2f2);--_border-color:var(--rh-color-teal-50, #37a3a3);--_header-color:var(--rh-color-teal-70, #004d4d);--_icon-color:var(--rh-color-teal-50, #37a3a3);--_font-family:var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);display:block;max-width:var(--_max-width,initial)}:host([hidden]){display:none}#container{border-width:var(--rh-border-width-md,2px);border-style:solid;border-block-start-color:var(--_border-color);border-inline-start-color:var(--_border-inline-color,transparent);border-block-end-color:var(--_border-block-end-color,transparent);border-inline-end-color:var(--_border-inline-color,transparent);background-color:var(--_background-color);box-shadow:var(--_box-shadow,none);padding:var(--rh-space-lg,16px);display:grid;grid-template-columns:min-content 1fr;gap:var(--rh-space-xs,4px);font-family:var(--_font-family)}#left-column{display:inline-block;vertical-align:top}#middle-column{display:inline-block;vertical-align:top}header{display:flex;align-items:center;justify-content:flex-start}.hasBody header{margin-block-end:var(--rh-space-xs,4px)}header ::slotted(*){font-family:var(--_font-family)!important;font-size:var(--rh-font-size-body-text-sm, .875rem)!important;font-weight:var(--rh-font-weight-heading-bold,700)!important;margin:0!important}header ::slotted(:is(h1,h2,h3,h4,h5,h6)){padding-block:2px var(--rh-space-xs,4px)!important}#header-actions{margin-inline-end:var(--rh-space-xs,4px)}#header{color:var(--_header-color);flex:1 1 auto}#icon{display:flex;align-items:center;justify-content:center;width:var(--rh-size-icon-02,24px);height:var(--rh-size-icon-02,24px);color:var(--_icon-color)}#close-button{color:var(--rh-color-text-secondary-on-light,#4d4d4d);background-color:transparent;border:none;height:var(--rh-length-xl,24px);width:var(--rh-length-xl,24px);cursor:pointer}#close-button:hover{color:var(--rh-color-text-primary-on-light,#151515)}#description{font-size:var(--rh-font-size-body-text-sm, .875rem)}#description>::slotted(*){margin-block:0!important;padding:0!important}footer.hasActions{margin-block-start:var(--rh-space-lg,16px)}footer ::slotted([slot=actions]:not(rh-button[variant=link i])){margin-inline-end:var(--rh-space-xl,24px)!important;padding:0!important;border:none!important;background-color:transparent!important;color:var(--rh-color-interactive-blue-darker,#06c)!important;font-size:var(--rh-font-size-body-text-sm, .875rem)!important;font-family:var(--_font-family)!important}footer ::slotted([slot=actions]:focus){text-decoration:underline!important;color:var(--rh-color-interactive-blue-darkest,#036)!important}footer ::slotted([slot=actions]:hover){cursor:pointer!important;text-decoration:underline!important;color:var(--rh-color-interactive-blue-darkest,#036)!important}footer ::slotted(rh-button[variant=link i]){display:inline-block;translate:calc(-1 * var(--rh-space-lg,16px))}:host([state=info i]){--_border-color:var(--rh-color-blue-40, #4394e5);--_icon-color:var(--rh-color-blue-40, #4394e5);--_header-color:var(--rh-color-blue-70, #003366);--_background-color:var(--rh-color-blue-10, #e0f0ff)}:host([state=success i]){--_border-color:var(--rh-color-green-60, #3d7317);--_icon-color:var(--rh-color-green-60, #3d7317);--_header-color:var(--rh-color-green-70, #204d00);--_background-color:var(--rh-color-green-10, #e9f7df)}:host([state=warning i]){--_border-color:var(--rh-color-yellow-40, #dca614);--_icon-color:var(--rh-color-yellow-40, #dca614);--_header-color:var(--rh-color-yellow-70, #73480b);--_background-color:var(--rh-color-yellow-10, #fff4cc)}:host([state=danger i]){--_border-color:#c9190b;--_icon-color:#c9190b;--_header-color:#7d1007;--_background-color:var(--rh-color-red-10, #fce3e3)}:host([variant=toast i]){--_background-color:var(--rh-color-surface-lightest, #ffffff);--_max-width:550px;--_box-shadow:var(--rh-box-shadow-lg, 0 6px 8px 2px rgba(21, 21, 21, 0.3))}:host([variant=alternate i]){--_border-inline-color:var(--_border-color);--_border-block-end-color:var(--_border-color)}</style><!--lit-part mOQBf7vnIRQ=-->
-      <!--lit-node 0--><rh-surface 
-           
-           
-           
-            id="container" role="alert" aria-hidden="false" color-palette="lightest" class="  " defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host(:is([color-palette^=dark])){--context:dark;--_context-text:var(--rh-color-text-primary-on-dark, #ffffff)}:host(:is([color-palette^=light],[color-palette=base])){--context:light;--_context-text:var(--rh-color-text-primary-on-light, #151515)}:host(:is([color-palette=lightest])){--_context-background-color:var(--rh-color-surface-lightest, #ffffff)}:host(:is([color-palette=lighter])){--_context-background-color:var(--rh-color-surface-lighter, #f2f2f2)}:host(:is([color-palette=light])){--_context-background-color:var(--rh-color-surface-light, #e0e0e0)}:host(:is([color-palette=base])){--_context-background-color:var(--rh-color-surface-lightest, #ffffff)}:host(:is([color-palette=dark])){--_context-background-color:var(--rh-color-surface-dark, #383838)}:host(:is([color-palette=darker])){--_context-background-color:var(--rh-color-surface-darker, #1f1f1f)}:host(:is([color-palette=darkest])){--_context-background-color:var(--rh-color-surface-darkest, #151515)}:host{display:block;background-color:var(--_context-background-color);color:var(--_context-text)}</style><!--lit-part 843u56Ok1Mg=--><!--lit-node 0--><slot ></slot><!--/lit-part--></template>
-        <div id="left-column">
-          <div id="icon"><!--lit-part m+S4si98lns=-->
-      <!--lit-node 0--><svg
-          aria-hidden="true"
-          fill="currentColor"
-          height="1em" width="1em"
-          style="vertical-align:-0.125em"
-          viewBox="0 0 576 512">
-        <!--lit-node 1--><path d="M569.517 440.013C587.975 472.007 564.806 512 527.94 512H48.054c-36.937 0-59.999-40.055-41.577-71.987L246.423 23.985c18.467-32.009 64.72-31.951 83.154 0l239.94 416.028zM288 354c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z"/>
-      </svg><!--/lit-part--></div>
-        </div>
-        <div id="middle-column">
-          <header>
-            <div id="header">
-              <slot name="header"></slot>
-            </div><!--lit-part--><!--/lit-part-->
-          </header>
-          <div id="description">
-            <slot></slot>
-          </div>
-          <!--lit-node 11--><footer class="  ">
-            <slot name="actions"></slot>
-          </footer>
-        </div>
-      </rh-surface>
-    <!--/lit-part--></template>
-  <h3 slot="header">Warning</h3>
-  <p>If an issue cannot be resolved on the current page or if a user needs to correct a situation outside of the experience, use a <a href="/elements/dialog">Dialog</a> instead.</p>
-</rh-alert>
-<uxdot-example width-adjustment="538px">
-  <img src="../alert-dismissal-examples.svg" alt="Alert element dismissal examples" width="538px">
+<p>Depending on the message, an inline alert can be dismissible or not dismissible. The close button should not be included if it is critical that a user read or interact with the alert. A toast alert is always dismissible.</p>
+<uxdot-example width-adjustment="880px">
+  <img src="../alert-guidelines-dismissible-inline.svg" alt="Alert element dismissal inline examples" width="538px">
+</uxdot-example>
+<uxdot-example width-adjustment="456px">
+  <img src="../alert-guidelines-dismissible-toast.svg" alt="Alert element dismissal toast examples" width="538px">
 </uxdot-example>
 <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:0 0;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -920,79 +881,81 @@ for status and severity.</p>
     <a href="#writing-content">Writing content</a>
       </h2>
     </uxdot-copy-permalink>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:0 0;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button 
-              id="button"
-              aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container"
-           aria-hidden="true"
-           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h3 id="title" tabindex="-1">
-    <a href="#title">Title</a>
-      </h3>
-    </uxdot-copy-permalink>
-<p>The title should fit on one line at any screen size and would typically be only one to three words, if the alert includes body text. If the alert does not contain body text, however, the title can be a concise, full sentence. The title can also communicate the severity of the alert, e.g. <strong>Warning</strong> or <strong>Success</strong>.</p>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:0 0;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button 
-              id="button"
-              aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container"
-           aria-hidden="true"
-           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h3 id="body" tabindex="-1">
-    <a href="#body">Body</a>
-      </h3>
-    </uxdot-copy-permalink>
-<p>The body would ideally be one brief sentence. This is especially important for toast alerts because users may receive more than one at a time. Not all alerts will require body text if the title is enough to convey the message.</p>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:0 0;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button 
-              id="button"
-              aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container"
-           aria-hidden="true"
-           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h3 id="character-count" tabindex="-1">
-    <a href="#character-count">Character count</a>
-      </h3>
-    </uxdot-copy-permalink>
-<p>The recommended maximum character count for the elements of an alert are listed below and include spaces.</p>
+<p>Both alert variants have limited space therefore content should be short and concise. A user should be able to quickly scan the content and know what steps to take next.</p>
 <rh-table>
   <table>
     <thead>
       <tr>
         <th scope="col" data-label="Element">Element</th>
         <th scope="col" data-label="Character count">Character count</th>
+        <th scope="col" data-label="How to write">How to write</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td data-label="Element">Title text</td>
         <td data-label="Character count">60</td>
+        <td data-label="How to write">
+          <ul>
+            <li>Short and descriptive</li>
+            <li>Try and communicate the primary message using only title text</li>
+            <li>Must communicate severity</li>
+            <li>Write less words if there is body text</li>
+            <li>Write more words if there is no body text</li>
+          </ul>
+        </td>
       </tr>
+      <tr>
+        <td data-label="Element">Body text</td>
+        <td data-label="Character count">150</td>
+        <td data-label="How to write">
+          <ul>
+            <li>Write 1 - 2 concise sentences and include links if necessary</li>
+            <li>Be concise and explain how to resolve an issue</li>
+            <li>Optional if title text accurately communicates the message</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td data-label="Element">Action text</td>
+        <td data-label="Character count">20 per button</td>
+        <td data-label="How to write">
+          <ul>
+            <li>Write 1 - 3 short words</li>
+            <li>Clearly write an action that a user can take</li>
+            <li>No long words or phrases</li>
+          </ul>
+        </td>
+      </tr>            
     </tbody>
   </table>
 </rh-table>
+<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:0 0;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+  <h2 id="actions" tabindex="-1">
+    <a href="#actions">Actions</a>
+      </h2>
+    </uxdot-copy-permalink>
+<p>Actions enable a user to perform a specific action in relation to the alert message. Both alert variants may include actions, but no more than two. Actions require using specific elements, however including actions is optional.</p>
+<ul>
+<li>Primary action - use the Secondary button element</li>
+<li>Secondary action - use the Link button element</li>
+</ul>
+<uxdot-example width-adjustment="928px">
+  <img src="../alert-guidelines-actions.svg" alt="Example of button action text">
+</uxdot-example>
 <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:0 0;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
@@ -1029,12 +992,12 @@ for status and severity.</p>
     <a href="#inline">Inline</a>
       </h3>
     </uxdot-copy-permalink>
-<p>An Inline alert can be placed toward the <strong>top of a layout</strong> if the message applies globally or <strong>inline near specific content</strong> if the message applies locally. Depending on where they are used, an Inline alert can span the width of a grid or container, so there is no set width.</p>
-<uxdot-example variant="full">
-  <img src="../alert-positioning-inline-global.svg" alt="Example of an inline alert at the top of a layout">
+<p>An inline alert appears at the top of a content area or close to an item needing attention. The width varies based on content and layout. They can expand to fill a container or related content area.</p>
+<uxdot-example variant="full" no-border="">
+  <img src="../alert-guidelines-layout-inline-1.svg" alt="Example of an inline alert at the top of a layout">
 </uxdot-example>
-<uxdot-example variant="full">
-  <img src="../alert-positioning-inline-local.svg" alt="Example of an inline alert inside a form">
+<uxdot-example variant="full" no-border="">
+  <img src="../alert-guidelines-layout-inline-2.svg" alt="Example of an inline alert inside a form">
 </uxdot-example>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:0 0;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1054,19 +1017,13 @@ for status and severity.</p>
     <a href="#toast">Toast</a>
       </h3>
     </uxdot-copy-permalink>
-<p>A Toast alert slides in from the top right edge of the screen and overlaps any content underneath. They can be set as <strong>persistent</strong> or <strong>temporary</strong> depending on the message that needs to be communicated to a user.</p>
+<p>A toast alert slides in from the top right corner of a page and then disappears when a user closes it or when it times out. A toast alert can be set as persistent or temporary depending on the message.</p>
 <ul>
-<li><strong>Persistent</strong> - Set if the content will be relevant after a task is complete</li>
-<li><strong>Temporary</strong> - Set if the content will be be acknowledged and no
-longer relevant</li>
+<li>Persistent - does not disappear unless dismissed by a user</li>
+<li>Temporary - disappears after eight seconds unless dismissed by a user first</li>
 </ul>
-<p>If a Toast alert is set to persistent, a close button needs to be included so a user can dismiss the alert if desired.</p>
-<uxdot-example variant="full">
-  <img src="../alert-positioning-toast-persistent.svg" alt="Toast alert with a link in the body text includes a close button">
-</uxdot-example>
-<p>If a Toast alert is set to be temporary or time out, the alert will disappear after <strong>eight seconds</strong>. A user might want to dismiss the alert before then, in which case a close button needs be included.</p>
-<uxdot-example>
-  <img src="../alert-positioning-toast-temporary.svg" alt="Toast alert without actions or links includes a close button">
+<uxdot-example variant="full" no-border="">
+  <img src="../alert-guidelines-layout-toast.svg" alt="Toast alert with a link in the body text includes a close button">
 </uxdot-example>
 <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:0 0;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1104,12 +1061,12 @@ longer relevant</li>
     <a href="#stacking">Stacking</a>
       </h3>
     </uxdot-copy-permalink>
-<p>When multiple Toast alerts are triggered around the same time, they will stack on top of each other. The most recent alert is placed at the top of the stack and pushes the other alerts down. When stacked Toast alerts are dismissed by a user or time out, the remaining alerts will slide up and fill the empty space.</p>
-<uxdot-example variant="full">
-  <img src="../alert-behavior-stack-1.svg" alt="Three toast alerts are stacked in the top left corner of a layout">
+<p>When multiple toast alerts appear one after the other, they stack. The most recent alert appears at the top and pushes the rest down. When an alert disappears, the rest will fill the empty space.</p>
+<uxdot-example variant="full" no-border="">
+  <img src="../alert-guidelines-behavior-1.svg" alt="Three toast alerts are stacked in the top left corner of a layout">
 </uxdot-example>
-<uxdot-example variant="full">
-  <img src="../alert-behavior-stack-2.svg" alt="Only one toast alert in the stack from the previous image is left">
+<uxdot-example variant="full" no-border="">
+  <img src="../alert-guidelines-behavior-2.svg" alt="Only one toast alert in the stack from the previous image is left">
 </uxdot-example>
 <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:0 0;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1147,9 +1104,12 @@ longer relevant</li>
     <a href="#large-screens">Large screens</a>
       </h3>
     </uxdot-copy-permalink>
-<p>The maximum width of a Toast alert on large screens is <strong>six grid columns</strong>.</p>
-<uxdot-example variant="full">
-  <img src="../alert-responsive-large-screens.svg" alt="Toast alert spans six grid columns, while inline alert spans all grid columns">
+<p>On large screens, inline alert height is determined by the amount of content included. Inline alert width is determined by the width of its container or related content area. Toast alert height is also determined by content, but its max width is 480px.</p>
+<uxdot-example variant="full" no-border="">
+  <img src="../alert-guidelines-responsive-large-screens-1.svg" alt="Example of inline alert spanning content column width">
+</uxdot-example>
+<uxdot-example variant="full" no-border="">
+  <img src="../alert-guidelines-responsive-large-screens-2.svg" alt="Example of a toast alert at content width">
 </uxdot-example>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:0 0;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1169,9 +1129,9 @@ longer relevant</li>
     <a href="#small-screens">Small screens</a>
       </h3>
     </uxdot-copy-permalink>
-<p>On small screens, both alert variants will span the full column of the layout. Toast alerts will continue to stack on top of each other, so be mindful of how much vertical space the group will occupy if multiple Toast alerts need to be displayed.</p>
-<uxdot-example variant="full" alignment="left" width-adjustment="360px" no-border="">
-  <img src="../alert-responsive-small-screens.svg" alt="Toast and inline alerts span full column of small screen layout">
+<p>On small screens, both alert variants will span one column and toast alerts will continue to stack.</p>
+<uxdot-example>
+  <img src="../alert-guidelines-responsive-small-screens.svg" alt="Example of toast and inline alerts span full column of small screen layout">
 </uxdot-example>
 <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:0 0;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1205,58 +1165,44 @@ longer relevant</li>
     <!--/lit-part--></template></rh-icon>
       </button>
     <!--/lit-part--></template>
-  <h3 id="inline-as-toast" tabindex="-1">
-    <a href="#inline-as-toast">Inline as Toast</a>
+  <h3 id="mixing-use-cases" tabindex="-1">
+    <a href="#mixing-use-cases">Mixing use cases</a>
       </h3>
     </uxdot-copy-permalink>
-<p>Do not use an Inline alert to communicate messages about important events, updates, or confirmations.</p>
-<uxdot-example danger="">
-  <img src="../alert-bestpractice-1.svg" alt="Inline alert is incorrectly positioned like a toast alert">
-</uxdot-example>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:0 0;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button 
-              id="button"
-              aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
+<uxdot-best-practice  variant="do"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);display:flex;flex-direction:row;align-items:center;gap:var(--rh-space-sm);color:var(--_bp-color)}#do{--_bp-color:var(--rh-color-status-success-on-light, #3d7317)}#dont{--_bp-color:var(--rh-color-status-danger-on-light, #b1380b)}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="do">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="check-circle" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
-           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+           class=" ui "><!--lit-part 1yXX22gF5E4=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 32C7.178 32 0 24.822 0 16S7.178 0 16 0s16 7.178 16 16-7.178 16-16 16Zm0-30C8.28 2 2 8.28 2 16s6.28 14 14 14 14-6.28 14-14S23.72 2 16 2Z"/><path d="M14 21.792a1.49 1.49 0 0 1-1.06-.439l-4.647-4.646a1 1 0 1 1 1.414-1.414L14 19.586l8.293-8.293a1 1 0 1 1 1.414 1.414l-8.646 8.647a1.494 1.494 0 0 1-1.06.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
       </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Do<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
     <!--/lit-part--></template>
-  <h3 id="toast-as-inline" tabindex="-1">
-    <a href="#toast-as-inline">Toast as Inline</a>
-      </h3>
-    </uxdot-copy-permalink>
-<p>Do not use a Toast alert to present simple information or inline messages.</p>
-<uxdot-example danger="">
-  <img src="../alert-bestpractice-2.svg" alt="Toast alert incorrectly placed inline with a layout">
-</uxdot-example>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:0 0;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button 
-              id="button"
-              aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
+  <img slot="image" src="../alert-guidelines-best-practice-do.svg" alt="Example of using correct variants">
+  <p>Use the correct alert variants for the correct use cases.</p>
+</uxdot-best-practice>
+<uxdot-best-practice  variant="dont"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);display:flex;flex-direction:row;align-items:center;gap:var(--rh-space-sm);color:var(--_bp-color)}#do{--_bp-color:var(--rh-color-status-success-on-light, #3d7317)}#dont{--_bp-color:var(--rh-color-status-danger-on-light, #b1380b)}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="dont">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="close-circle" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
-           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+           class=" ui "><!--lit-part 7SANv4gSl/4=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M21.707 10.293a1 1 0 0 0-1.414 0L16 14.586l-4.293-4.293a1 1 0 1 0-1.414 1.414L14.586 16l-4.293 4.293a1 1 0 1 0 1.414 1.414L16 17.414l4.293 4.293a.997.997 0 0 0 1.414 0 1 1 0 0 0 0-1.414L17.414 16l4.293-4.293a1 1 0 0 0 0-1.414Z"/><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm0 30C8.28 30 2 23.72 2 16S8.28 2 16 2s14 6.28 14 14-6.28 14-14 14Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
       </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Don&#39;t<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
     <!--/lit-part--></template>
-  <h3 id="different-variants" tabindex="-1">
-    <a href="#different-variants">Different variants</a>
-      </h3>
-    </uxdot-copy-permalink>
-<p>Do not use both variants when stacking.</p>
-<uxdot-example danger="">
-  <img src="../alert-bestpractice-3.svg" alt="Toast and inline alerts incorrectly stacked in top left corner of page">
-</uxdot-example>
+  <img slot="image" src="../alert-guidelines-best-practice-dont.svg" alt="Example of using incorrect variants">
+  <p>Do not use an inline alert for toast alert use cases and vice versa.</p>
+</uxdot-best-practice>
 
 
       
