@@ -4,13 +4,13 @@
 
 <rh-alert state="warning">
   <h3 slot="header">Warning</h3>
-  <p>Ensure that the table follows the recommendations on the <a href="{{ '../tab' | url }}">accessibility tab</a> so that the table works with assistive technology.</p>
+  <p>Ensure that the table follows the recommendations on the <a href="../tab">accessibility tab</a> so that the table works with assistive technology.</p>
 </rh-alert>
 
 
 ### Title
 
-Specify the title of the table using a `caption` element.
+Specify the title of the table using a `<caption>` element.
 
 ```html
 <rh-table>
@@ -25,7 +25,11 @@ Specify the title of the table using a `caption` element.
 
 ### Responsive tables
 
-`<rh-table>` will automatically reformat to a "stacked" presentation for small screens and mobile devices and auto-generate each table cell heading for its responsive layout. To customize or override individual table cell headings on mobile devices, use a `data-label` attribute on the `<td>` element you want to customize.
+`<rh-table>` will automatically reformat to a "stacked" presentation in narrow 
+containers such as on small screens and mobile devices, or in page sidebars, and 
+auto-generate each table cell heading for its responsive layout. To customize or 
+override individual table cell headings on mobile devices, use a `data-label` 
+attribute on the `<td>` element you want to customize.
 
 ```html
 <rh-table>
@@ -70,7 +74,8 @@ Specify the title of the table using a `caption` element.
 
 ### Column highlighting
 
-To enable column highlighting, the `table` element must also include a `col` element for each column in the table, typically wrapped with a `colgroup`.
+To enable column highlighting, the `<table>` element must also include a `<col>` 
+element for each column in the table, typically wrapped with a `<colgroup>`.
 
 ```html
 <rh-table>
@@ -90,7 +95,8 @@ To enable column highlighting, the `table` element must also include a `col` ele
 
 ### Sorting
 
-To enable sorting on a column, add an `rh-sort-button` as the last child of the `th` cell.
+To enable sorting on a column, add an `<rh-sort-button>` as the last child of 
+the `<th>` cell.
 
 ```html
 <rh-table>
