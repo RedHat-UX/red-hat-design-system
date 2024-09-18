@@ -98,7 +98,13 @@ ${await generateImportMap('@rhds/elements', docsPage.tagName)}
   }
 
   return html`
-<script type="module" src="/assets/javascript/elements/uxdot-installation-tabs.js"></script>
+<script data-helmet type="module" src="/assets/javascript/elements/uxdot-installation-tabs.js"></script>
+
+<style data-helmet>
+uxdot-installation-tabs pre[class^="language-"] {
+  max-width: 80cqw;
+}
+</style>
 
 <section class="band">
   <h2>Installation</h2>
