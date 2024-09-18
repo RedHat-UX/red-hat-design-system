@@ -36,6 +36,9 @@ module.exports = class IconsPage {
             flex-shrink: 0;
             align-items: start;
             gap: var(--rh-space-md);
+            & rh-button::part(button) {
+              text-align: start;
+            }
             & rh-icon {
               margin-inline-start: var(--rh-space-lg);
             }
