@@ -25,10 +25,10 @@ Specify the title of the table using a `caption` element.
 
 ### Responsive tables
 
-To enable responsive reformatting for small screens and mobile devices, use the `responsive="stack"` attribute. This will auto-generate table cell headings for the smaller presentations. To customize or override individual table cell headings on mobile devices, use a `data-label` attribute on the `<td>` element you want to customize.
+`<rh-table>` will automatically reformat to a "stacked" presentation for small screens and mobile devices and auto-generate each table cell heading for its responsive layout. To customize or override individual table cell headings on mobile devices, use a `data-label` attribute on the `<td>` element you want to customize.
 
 ```html
-<rh-table responsive="stack">
+<rh-table>
   <table>
     <caption>
       Concerts
@@ -57,9 +57,9 @@ To enable responsive reformatting for small screens and mobile devices, use the 
         <td headers="concerts-venue">West Wing</td>
       </tr>
       <tr>
-        <td headers="concerts-date" data-label="Custom heading">14 April</td>
-        <td headers="concerts-event">The What</td>
-        <td headers="concerts-venue">Main Hall</td>
+        <td headers="concerts-date" data-label="Custom heading 1">14 April</td>
+        <td headers="concerts-event" data-label="Custom heading 2">The What</td>
+        <td headers="concerts-venue" data-label="Custom heading 3">Main Hall</td>
       </tr>
     </tbody>
   </table>
@@ -93,7 +93,7 @@ To enable column highlighting, the `table` element must also include a `col` ele
 To enable sorting on a column, add an `rh-sort-button` as the last child of the `th` cell.
 
 ```html
-<rh-table responsive="stack">
+<rh-table>
   <table>
     <caption>
       Concerts
@@ -120,7 +120,7 @@ To enable sorting on a column, add an `rh-sort-button` as the last child of the 
 Additional information about the data in the table should be slotted into the `summary` slot after the `table` element.
 
 ```html
-<rh-table responsive="stack">
+<rh-table>
   <table>
     <caption>
       Concerts

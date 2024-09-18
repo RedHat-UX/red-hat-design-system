@@ -24,11 +24,6 @@ import styles from './rh-table.css';
 export class RhTable extends LitElement {
   static readonly styles = [styles];
 
-  /**
-   * Auto-generates header labels for responsive layout
-   */
-  @property({ reflect: true }) responsive?: 'stack';
-
   @colorContextConsumer() private on?: ColorTheme;
 
   private static getNodeContentForSort(
@@ -149,14 +144,12 @@ export class RhTable extends LitElement {
   }
 
   #init() {
-    const { responsive } = this;
-
     if (this.#table && this.#summary) {
       this.#table.setAttribute('aria-describedby', 'summary');
     }
 
     /* If responsive attribute set, auto-assign `data-label` attributes based on column headers */
-    if (responsive && this.#table?.tHead && this.#colHeaders?.length && this.#rows) {
+    if (this.#table?.tHead && this.#colHeaders?.length && this.#rows) {
       for (const row of this.#rows) {
         row?.querySelectorAll<HTMLElement>(':is(td, th)')
             .forEach((cell, index) => {
