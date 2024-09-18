@@ -141,7 +141,8 @@ export class ColorContextProvider<
   #isColorContextEvent(
     event: ContextRequestEvent<UnknownContext>
   ): event is ContextRequestEvent<typeof ColorContextController.context> {
-    return event.target !== this.host && event.context === ColorContextController.context;
+    return event.composedPath().at(0) !== this.host
+      && event.context === ColorContextController.context;
   }
 
   /**
@@ -153,7 +154,6 @@ export class ColorContextProvider<
   async #onChildContextRequestEvent(event: ContextRequestEvent<UnknownContext>) {
     // only handle ContextEvents relevant to colour context
     if (this.#isColorContextEvent(event)) {
-      // claim the context-request event for ourselves (required by context protocol)
       event.stopPropagation();
 
       // Run the callback to initialize the child's colour-context
