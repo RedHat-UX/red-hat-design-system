@@ -520,23 +520,23 @@ rh-menu > button:focus {
           margin: 0 auto;
         }
       }
+
+      & #toolbar {
+        justify-content: center;
+        width: auto;
+        padding: var(--_player-padding) calc((100% - var(--_player-width) - 2px) / 2);
+      }
+
+      & #time-tooltip,
+      & #time {
+        width: var(--_time-slider-width);
+        flex: 0 0 var(--_time-slider-width);
+        margin-inline-start: var(--rh-space-md, 8px);
+      }
     }
 
     &.compact #toolbar {
       padding-inline-end: var(--_player-padding);
-    }
-
-    &.compact-wide #toolbar {
-      justify-content: center;
-      width: auto;
-      padding: var(--_player-padding) calc((100% - var(--_player-width) - 2px) / 2);
-    }
-
-    &.compact-wide #time-tooltip,
-    &.compact-wide #time {
-      width: var(--_time-slider-width);
-      flex: 0 0 var(--_time-slider-width);
-      margin-inline-start: var(--rh-space-md, 8px);
     }
 
     &:not(.mini) #mute-tooltip {
@@ -602,6 +602,8 @@ rh-menu > button:focus {
         flex: 0 0 454px;
       }
 
+      /* this will complain either way */
+      /* stylelint-disable-next-line no-descending-specificity */
       & #panel {
         padding-block-start: var(--rh-length-md, 8px);
       }
@@ -694,26 +696,6 @@ rh-menu > button:focus {
       --_player-width: 712px;
       --_time-slider-base: 314px;
 
-      &.expanded {
-        & #poster {
-          display: inline-block;
-          padding-inline-end: var(--rh-length-lg, 16px);
-
-          & > img {
-            margin-inline-end: 0;
-          }
-        }
-
-        & #full-title {
-          flex: 0 0 calc(100% - 168px);
-        }
-
-        &.rtl #poster > img {
-          right: calc(-184px - var(--_player-padding));
-          left: unset;
-        }
-      }
-
       &:not(.expanded) {
         --_poster-size: 184px;
 
@@ -732,6 +714,26 @@ rh-menu > button:focus {
             position: absolute;
             left: calc(-184px - var(--_player-padding));
           }
+        }
+      }
+
+      &.expanded {
+        & #poster {
+          display: inline-block;
+          padding-inline-end: var(--rh-length-lg, 16px);
+
+          & > img {
+            margin-inline-end: 0;
+          }
+        }
+
+        & #full-title {
+          flex: 0 0 calc(100% - 168px);
+        }
+
+        &.rtl #poster > img {
+          right: calc(-184px - var(--_player-padding));
+          left: unset;
         }
       }
     }
