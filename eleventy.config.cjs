@@ -50,7 +50,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('docs/styles/**/*');
   eleventyConfig.addPassthroughCopy('docs/patterns/**/*.css');
   eleventyConfig.addPassthroughCopy('docs/theming/**/*.css');
-  eleventyConfig.addPassthroughCopy('docs/foundations/icons/**/*.{css,js}');
+  eleventyConfig.addPassthroughCopy('docs/foundations/**/*.{css,js}');
 
 
   if (isLocal) {

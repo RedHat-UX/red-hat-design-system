@@ -4,10 +4,11 @@ const html = String.raw;
 module.exports = class IconsPage {
   async data() {
     return {
-      permalink: '/foundations/icons/index.html',
+      permalink: '/foundations/iconography/index.html',
       layout: 'layouts/pages/basic.njk',
       title: 'Iconography',
       hasToc: true,
+      order: 25,
       icons: await import('@rhds/icons'),
       tags: [
         'foundations',
