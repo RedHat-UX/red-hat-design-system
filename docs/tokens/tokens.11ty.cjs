@@ -26,6 +26,8 @@ const {
  * @property {DesignToken[]} [themeTokens] theme tokens in the category
  * @property {string[]} [exclude] token paths to exclude from render
  * @property {string[]} [include] token paths to include in render
+ * @property {Set<string>} [seenPaths] which token paths have we already
+ * rendered
  */
 /* eslint-enable jsdoc/check-tag-names */
 
@@ -365,6 +367,10 @@ module.exports = class TokensPage {
 
   /** @param {Options} options */
   async renderCategory(options) {
+    if (options.seenPaths?.has(options.path)) {
+      return '';
+    }
+    options.seenPaths?.add(options.path);
     // these are token metadata, don't display them
     switch (options.name) {
       case 'attributes':
@@ -383,23 +389,23 @@ module.exports = class TokensPage {
     if (options.level >= 4) {
       return html`
         <div class="token-category level-2"
-          data-name="${options.name}"
-          data-parent="${options.parent?.name}"
-          data-path="${options.path}"
-          data-slug="${options.slug}">
+             data-name="${options.name}"
+             data-parent="${options.parent?.name}"
+             data-path="${options.path}"
+             data-slug="${options.slug}">
           ${content}
         </div>
       `;
     } else {
       return html`
-        <section id="${options.name}"
-          class="token-category level-${options.level - 1}"
-          data-name="${options.name}"
-          data-parent="${options.parent?.name}"
-          data-path="${options.path}"
-          data-slug="${options.slug}">
+        <div id="${options.path.replace('.', '-')}-section"
+             class="token-category level-${options.level - 1}"
+             data-name="${options.name}"
+             data-parent="${options.parent?.name}"
+             data-path="${options.path}"
+             data-slug="${options.slug}">
           ${content}
-        </section>
+        </div>
       `;
     }
   }
@@ -408,12 +414,13 @@ module.exports = class TokensPage {
     const { exclude, include, path, slug } = tokenCategory;
     const name = path.split('.').pop();
     const tokens = resolveTokens(path);
+    const seenPaths = new Set();
     return html`
       <link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
       <link rel="stylesheet" data-helmet href="/styles/samp.css">
       <link rel="stylesheet" data-helmet href="/styles/tokens-pages.css">
       <script type="module" data-helmet src="/assets/javascript/tokens-pages.js"></script>
-      ${await this.renderCategory({ tokens, name, path, slug, level: 1, exclude, include })}
+      ${await this.renderCategory({ tokens, name, path, slug, level: 1, exclude, include, seenPaths })}
       ${await this.renderFile('./docs/_includes/partials/component/feedback.html')}
     `;
   }

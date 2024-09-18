@@ -23,6 +23,9 @@ export class InstallationTabs extends RhTabs {
       this.querySelectorAll('rh-tab'),
       x => x.updateComplete,
     ));
+    for (const pre of this.querySelectorAll<HTMLElement>('rh-tab-panel > pre')) {
+      pre.style.maxWidth = '100cqw';
+    }
     if (InstallationTabs.stored !== null) {
       const index = parseInt(InstallationTabs.stored);
       if (!Number.isNaN(index)

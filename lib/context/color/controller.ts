@@ -5,12 +5,14 @@ import { ReactiveElement } from 'lit';
 
 import { StyleController } from '@patternfly/pfe-core/controllers/style-controller.js';
 
-import { createContext, type ContextRequestEvent } from '../event.js';
+import { createContext, type ContextRequestEvent, type UnknownContext } from '../event.js';
 
 export interface ColorContextOptions<T extends ReactiveElement> {
   prefix?: string;
   propertyName?: keyof T;
 }
+
+type ColorContext = typeof ColorContextController.context;
 
 /**
 * Maps from consumer host elements to already-fired request events
@@ -30,8 +32,12 @@ export interface ColorContextOptions<T extends ReactiveElement> {
 */
 export const contextEvents = new Map<
   ReactiveElement,
-  ContextRequestEvent<typeof ColorContextController.context>
+  ContextRequestEvent<ColorContext>
 >();
+
+export const isColorContextEvent =
+  (event: ContextRequestEvent<UnknownContext>): event is ContextRequestEvent<ColorContext> =>
+    event.context === ColorContextController.context;
 
 /**
  * Color context is derived from the `--context` css custom property,

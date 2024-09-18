@@ -1,6 +1,5 @@
 const { readFile } = require('node:fs/promises');
 const { pathToFileURL } = require('node:url');
-const cheerio = require('cheerio');
 
 // for editor highlighting
 const html = String.raw;
@@ -39,6 +38,13 @@ const attrMap = attrs => Object.entries(attrs)
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPairedShortcode('uxdotPattern', async function(content, kwargs = {}) {
     const { __keywords, js, fullHeight, ...patternArgs } = kwargs;
+    if ('allow' in patternArgs) {
+      const allowed = patternArgs.allow.split(',').map(x => x.trim());
+      patternArgs.colorPalette ??= 'lightest';
+      while (allowed.length && !allowed.includes(patternArgs.colorPalette)) {
+        patternArgs.colorPalette = allowed.shift();
+      }
+    }
     const { parseFragment, serialize } = await import('parse5');
     const partial = parseFragment(content);
     const baseUrl = pathToFileURL(this.page.inputPath);
@@ -72,16 +78,28 @@ module.exports = function(eleventyConfig) {
 `;
   });
 
-  eleventyConfig.addTransform('uxdot-pattern-restore-newlines', function(content) {
-    const $ = cheerio.load(content);
-    $([
-      'uxdot-pattern script[type="text/css"]',
-      'uxdot-pattern script[type="text/html"]',
-      'uxdot-pattern script[type="sample/javascript"]',
-    ].join()).each(function() {
-      const el = $(this);
-      el.text(el.text().replaceAll(COMMENT, '\n'));
-    });
-    return $.html();
+  eleventyConfig.addTransform('uxdot-pattern-restore-newlines', async function(content) {
+    const { parse, serialize } = await import('parse5');
+    const {
+      queryAll,
+      isElementNode,
+      getAttribute,
+      getTextContent,
+      setTextContent,
+    } = await import('@parse5/tools');
+    const document = parse(content);
+    const isUxDotPattern = node =>
+      isElementNode(node)
+        && node.tagName === 'uxdot-pattern';
+    const isSampleScript = node =>
+      isElementNode(node)
+        && node.tagName === 'script'
+        && getAttribute(node, 'type').match(/(text\/(css|html))|sample\/javascript/);
+    for (const pattern of queryAll(document, isUxDotPattern)) {
+      for (const node of queryAll(pattern, isSampleScript)) {
+        setTextContent(node, getTextContent(node).replaceAll(COMMENT, '\n'));
+      }
+    }
+    return serialize(document);
   });
 };

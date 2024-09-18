@@ -118,7 +118,7 @@
         "analyze",
         "react-wrappers",
         "entrypoint",
-        "copy-css",
+        "copy-assets",
         "docs"
       ]
     },
@@ -181,7 +181,7 @@
         "react/**/*"
       ]
     },
-    "copy-css": {
+    "copy-assets": {
       "command": "npx tsx scripts/copy-assets.ts",
       "files": [
         "elements/*/*.css",
@@ -291,7 +291,7 @@
     "@lit/context": "^1.1.2",
     "@patternfly/pfe-core": "^4.0.1",
     "@rhds/icons": "^1.1.1",
-    "@rhds/tokens": "^2.1.0-next.11",
+    "@rhds/tokens": "^2.1.0-next.13",
     "lit": "^3.2.0",
     "prism-esm": "^1.29.0-fix.4",
     "tslib": "^2.6.3"
@@ -341,6 +341,7 @@
     "patch-package": "^8.0.0",
     "playground-elements": "^0.18.1",
     "postcss-pxtorem": "^6.1.0",
+    "query-selector-shadow-dom": "^1.0.1",
     "renamer": "^5.0.2",
     "spandx": "^3.0.0",
     "stylelint-config-standard": "^36.0.1",
@@ -348,6 +349,7 @@
     "ts-patch": "^3.2.1",
     "tsx": "^4.17.0",
     "typescript": "^5.5.4",
+    "typescript-transform-lit-css": "^2.0.0",
     "wireit": "^0.14.7"
   },
   "optionalDependencies": {

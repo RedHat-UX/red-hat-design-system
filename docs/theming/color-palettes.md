@@ -37,13 +37,12 @@ less effort and greater cross-property consistency.
 
 ## What are color palettes
 
-There are various color palettes within our design system. The palettes you will 
-use the most for the majority of your projects are the lightest and darkest 
-themes.
+<abbr title="red hat design system">RHDS</abbr> defines six color palettes They range from lightest to darkest, and those
+are the two palettes you will use the most for the majority of your projects.
 
 <uxdot-example>
-  <img src="/assets/theming/light-theme.png"
-       alt="examples of several elements against a white surface">
+  <img alt="examples of several elements against a white surface"
+       src="/assets/theming/light-theme.png">
 </uxdot-example>
 
 {% uxdotPattern id="elements-grid", stacked=true %}
@@ -56,10 +55,11 @@ themes.
 *HTML* and *CSS* system with some supporting JavaScript[^1].
 The color palette system has two main parts: **providers** and **consumers**. 
 Providers actively define a color palette, while consumers passively accept 
-their theme from the nearest provider ancestor.
+their background color from the nearest provider ancestor.
 
 <rh-card class="pullquote-card right">
-  <rh-blockquote>HTML design systems help teams ship better digital experiences, faster.</rh-blockquote>
+  <rh-blockquote>HTML design systems help teams ship better digital experiences, 
+    faster.</rh-blockquote>
 </rh-card>
 
 Color palettes allow for the creation of different experiences using the same 
@@ -68,8 +68,8 @@ space, text, and more. Layouts, content, and imagery usually stay the same.
 
 ## Choosing a color palette
 
-How you choose a color palette is based on content, user experience, and accessibility 
-needs.
+How you choose a color palette is based on content, user experience, and 
+accessibility needs.
 
 ### Lightest color palette
 
@@ -83,65 +83,32 @@ light elements and patterns have dark counterparts.
 
 <rh-alert state="warning">
   <h4 slot="header">Brand red and accessibility</h4>
-  <p>Do not apply the Red Hat red color to text in dark environments
-  unless it meets <a href="https://www.w3.org/WAI/WCAG21/Understanding/">WCAG 2.1 AA</a>
-  requirements.</p>
+
+  Do not apply the Red Hat red color to text in dark environments unless it 
+  meets [WCAG 2.1 AA][wcag21aa] requirements.
+
 </rh-alert>
-
-### Inline color palettes  <rh-tag color="purple">Beta</rh-tag>
-
-Inlining a color palette is when a section switches palette and looks different 
-than the rest of the page or interface. Some use cases include highlighting an 
-important section on a page or adding a sidebar to an interface. Use inline 
-theming only for major shifts in color. For minor shifts, use a different 
-surface color from the same theme.
-
-<rh-alert>
-  <h4 slot="header">Update from the team</h4>
-  <p>The design system team is working on creating inline theming best
-     practices in the near future. <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">Contact
-     us</a> if you would like to contribute.</p>
-</rh-alert>
-
-<uxdot-example color-palette="lighter">
-  <img alt="wireframe of a dark theme section sandwiched by two light theme sections",
-       src="/assets/theming/inline-theming-1.png">
-</uxdot-example>
-
-<uxdot-example color-palette="lighter">
-  <img alt="wireframe of cards in a dark theme section extending into a light theme section",
-       src="/assets/theming/inline-theming-2.png">
-</uxdot-example>
-
-<uxdot-example color-palette="lighter">
-  <img alt="wireframe of dark theme navigation framing the top and left sides of a light theme content area",
-       src="/assets/theming/inline-theming-3.png">
-</uxdot-example>
 
 ## Illustrations and imagery
 
-Illustrations and imagery should align to the theme. The light theme should 
-feature imagery with light colors and vice versa. Imagery with high contrast is 
-only acceptable if it has a transparent background. If you cannot find 
-theme-specific imagery, contact the Brand team.
-
-<rh-alert>
-  <h4 slot="header">More information</h4>
-  <p>High contrast is using bright elements, patterns, or images in dark
-environments and vice versa. This is useful to focus attention or create
-visual tension.</p>
-</rh-alert>
+Illustrations and imagery should align to the color palette. The light color 
+palette should feature imagery with light colors and vice versa. Imagery with 
+high contrast is only acceptable if it has a transparent background. If you 
+cannot find color-palette-specific imagery, contact the Brand team. Developers
+have a number of [art-direction][artdirection] techniques at their disposal for
+creating themable, responsive graphics.
 
 <uxdot-example>
-  <img alt="correct uses of an illustration with a transparent background and one illustration incorrectly using a white background in a dark theme area",
+  <img alt="correct uses of an illustration with a transparent background and one illustration incorrectly using a white background on a surface with a dark color palette area"
        src="/assets/theming/illustrations-and-imagery.png">
 </uxdot-example>
 
-## Color theme consumers and theme tokens
+## Backgrounds and theme tokens
 
-### Color palette providers
+### Color palettes
+
 **Providers** define the **color palette** for themselves and their child 
-elements. There are six main color palettes:
+elements. There are six color palettes in RHDS:
 
 <ol class="tile-grid">
   <li><rh-tile color-palette="lightest">Lightest</rh-tile></li>
@@ -153,27 +120,50 @@ elements. There are six main color palettes:
 </ol>
 
 Context providers typically use the `lightest` color palette as the default. 
-Authors may define the color palette of a container using the `color-palette` HTML
-attribute. So for example, to create a card with the darkest color palette, use 
-this HTML:
+Authors may define the color palette of a container using the `color-palette` 
+HTML attribute. So for example, to create a card with the darkest color palette, 
+use this HTML:
 
 {% uxdotPattern class="card-snippet-grid", fullHeight=true %}
 {% include './patterns/card-default-vs-set-palette.html' %}
 {% enduxdotPattern %}
 
-### Color theme consumers
-**Consumers**, which adopt a **color theme**. Color themes correspond to the  
-active color palette, and represent the quality of the background colour:
+A color palette provider is a **surface** on which a particular color palette is
+active, as well as a **container** for themable consumer elements.
 
-1. light
-1. dark
+### Backgrounds
 
-Child elements which are providers will automatically adapt, applying their own 
-**color theme** as needed. Page authors *do not need to and should not customize*
-colors of consumer elements.
+Consumers are elements which automatically adapt to their background surface.
+Color **Consumers** adopt a **background** color based on the palette of the 
+surface they are on. In other words, the background of a consumer corresponds to 
+the color palette of it's containing surface. There are two backgrounds in RHDS:
 
-Color palette containers can be nested, such that child elements will always 
-adopt the color theme corresponding to the nearest container's palette.
+<ul class="surface-grid">
+  <li>
+    <rh-card class="icon-card" color-palette="lightest">
+      <rh-icon slot="header" icon="sun"></rh-icon>
+      <span slot="header">Light</span>
+    </rh-card>
+  </li>
+
+  <li>
+    <rh-card class="icon-card" color-palette="darkest">
+      <rh-icon slot="header" icon="umbrella"></rh-icon>
+      <span slot="header">Dark</span>
+    </rh-card></li>
+</ul>
+
+These backgrounds don't represent a specific colour, but rather they indicate 
+whether the background is light or dark. This is so things like icons, text,
+and border colours can be chosen which will contrast enough with the background
+to remain legible. In other words, the background is the *color context* in
+which a consumer finds itself.
+
+<rh-alert>Page authors *do not need to and should not customize* colors of 
+  consumer elements, but instead should set custom values for [theme 
+  tokens][theming]. Color palette containers can be nested, such that child 
+  elements will always adopt the color theme corresponding to the nearest 
+  container's palette.</rh-alert>
 
 Extending our card example from above, if our page author then adds an 
 `<rh-cta>` to the card, it will *automatically* adopt the dark color theme. The 
@@ -184,23 +174,68 @@ page author need not and should not customize the CTA.
 {% enduxdotPattern %}
 
 <rh-card class="pullquote-card right">
-  <rh-blockquote>
-    Color palettes lets authors write more HTML, simpler CSS, and less JavaScript
-  </rh-blockquote>
+  <rh-blockquote>Color palettes lets authors write more HTML, simpler CSS, and 
+    less JavaScript</rh-blockquote>
 </rh-card>
 
-To summarize: color providers can have one of up to six palettes, three dark and 
-three light, and they provide a `dark` or `light` theme to their children.
+To summarize: color providers can adopt one six palettes, three dark and 
+three light, and they provide a `dark` or `light` background to their children.
 
 ## Combination elements
+
 Some elements are both providers and consumers. Card, for example is both a 
-provider and a consumer. It can accept the color theme of its parent context and it 
-can also set its own color palette.
+provider and a consumer. It can accept the color theme of its parent context and 
+it can also set its own color palette.
 
 {% uxdotPattern class="card-snippet-grid", fullHeight=true %}
 {% include './patterns/card-consumer-provider.html' %}
 {% enduxdotPattern %}
 
+## Inline color palettes  <rh-tag color="purple">Beta</rh-tag>
+
+Inlining a color palette is when a section switches palette and looks different 
+than the rest of the page or interface. Some use cases include highlighting an 
+important section on a page or adding a sidebar to an interface. Use inline 
+palettes only for major shifts in color. For minor shifts, use a related color 
+palette, e.g. from `lightest` to `light`.
+
+<rh-alert>
+  <h4 slot="header">Update from the team</h4>
+
+  The design system team is working on creating inline color palette best 
+  practices in the near future. [Contact us][contact] if you would like to 
+  contribute.
+
+</rh-alert>
+
+<uxdot-example color-palette="lighter">
+  <img alt="wireframe of a dark palette section sandwiched by two light palette sections"
+       src="/assets/theming/inline-theming-1.png">
+</uxdot-example>
+
+<uxdot-example color-palette="lighter">
+  <img alt="wireframe of cards in a dark palette section extending into a light palette section"
+       src="/assets/theming/inline-theming-2.png">
+</uxdot-example>
+
+<uxdot-example color-palette="lighter">
+  <img alt="wireframe of dark palette navigation framing the top and left sides of a light palette content area"
+       src="/assets/theming/inline-theming-3.png">
+</uxdot-example>
+
+<rh-alert>
+  <h4 slot="header">More information</h4>
+  <p>High contrast is using bright elements, patterns, or images in dark
+environments and vice versa. This is useful to focus attention or create
+visual tension.</p>
+</rh-alert>
+
 {% include 'partials/component/feedback.html' %}
 
-[^1]: As the web platform [improves](https://results.web-platform-tests.org/results/css/css-values/attr-container-style-query.html?label=experimental&label=master&aligned), the <abbr>RHDS</abbr> authors expect that eventually no JavaScript will be required for this feature.
+[^1]: As the web platform [improves][wpt], the <abbr>RHDS</abbr> authors expect that eventually no JavaScript will be required for this feature.
+
+[wpt]: https://results.web-platform-tests.org/results/css/css-values/attr-container-style-query.html?label=experimental&label=master&aligned
+[contact]: https://github.com/RedHat-UX/red-hat-design-system/discussions
+[artdirection]: /theming/developers/#art-direction
+[theming]: /theming/customizing/
+[wcag21aa]: https://www.w3.org/WAI/WCAG21/Understanding/
