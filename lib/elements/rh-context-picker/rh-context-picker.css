@@ -1,8 +1,6 @@
 :host {
   display: inline-flex;
   position: relative;
-  container-name: host;
-  container-type: inline-size;
 }
 
 * {

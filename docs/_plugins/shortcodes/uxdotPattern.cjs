@@ -38,6 +38,13 @@ const attrMap = attrs => Object.entries(attrs)
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPairedShortcode('uxdotPattern', async function(content, kwargs = {}) {
     const { __keywords, js, fullHeight, ...patternArgs } = kwargs;
+    if ('allow' in patternArgs) {
+      const allowed = patternArgs.allow.split(',').map(x => x.trim());
+      patternArgs.colorPalette ??= 'lightest';
+      while (allowed.length && !allowed.includes(patternArgs.colorPalette)) {
+        patternArgs.colorPalette = allowed.shift();
+      }
+    }
     const { parseFragment, serialize } = await import('parse5');
     const partial = parseFragment(content);
     const baseUrl = pathToFileURL(this.page.inputPath);

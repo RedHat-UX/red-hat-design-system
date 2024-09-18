@@ -1,0 +1,109 @@
+<h2>Basic table</h2>
+<rh-table responsive="stack">
+  <table>
+    <col>
+    <col>
+    <col>
+    <thead>
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Event</th>
+        <th scope="col">Venue</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>12 February</td>
+        <td>
+          <a href="">Waltz with Strauss</a>
+        </td>
+        <td>Main Hall</td>
+      </tr>
+      <tr>
+        <td>24 March</td>
+        <td>The Obelisks</td>
+        <td>West Wing</td>
+      </tr>
+      <tr>
+        <td data-label="Custom 1">14 April</td>
+        <td data-label="Custom 2">The What</td>
+        <td data-label="Custom 3">Main Hall</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
+
+<h2>Table with <code>rowspans</code></h2>
+<rh-table responsive="stack">
+  <table>
+    <col>
+    <col>
+    <col>
+    <thead>
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Event</th>
+        <th scope="col">Venue</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>12 February</td>
+        <td rowspan="2">
+          <a href="">Waltz with Strauss</a>
+        </td>
+        <td>Main Hall</td>
+      </tr>
+      <tr>
+        <td>24 March</td>
+        <td>West Wing</td>
+      </tr>
+      <tr>
+        <td data-label="Custom 1">14 April</td>
+        <td data-label="Custom 2">The What</td>
+        <td data-label="Custom 3">Main Hall</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
+
+<h2>Non-responsive table</h2>
+<rh-table>
+  <table>
+    <col>
+    <col>
+    <col>
+    <thead>
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Event</th>
+        <th scope="col">Venue</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>12 February</td>
+        <td>
+          <a href="">Waltz with Strauss</a>
+        </td>
+        <td>Main Hall</td>
+      </tr>
+      <tr>
+        <td>24 March</td>
+        <td>The Obelisks</td>
+        <td>West Wing</td>
+      </tr>
+      <tr>
+        <td data-label="Custom 1">14 April</td>
+        <td data-label="Custom 2">The What</td>
+        <td data-label="Custom 3">Main Hall</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
+
+<link rel="stylesheet" href="../rh-table-lightdom.css">
+
+<script type="module">
+  import '@rhds/elements/rh-table/rh-table.js';
+</script>

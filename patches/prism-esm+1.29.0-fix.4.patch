@@ -1,0 +1,15 @@
+diff --git a/node_modules/prism-esm/package.json b/node_modules/prism-esm/package.json
+index 077879d..a56a67e 100644
+--- a/node_modules/prism-esm/package.json
++++ b/node_modules/prism-esm/package.json
+@@ -4,6 +4,10 @@
+ 	"description": "A prism fork intended for ESM",
+ 	"type": "module",
+ 	"main": "prism.js",
++	"exports": {
++		".": "./prism.js",
++		"./*": "./*"
++	},
+ 	"style": "themes/prism.css",
+ 	"engines": {
+ 		"node": ">=6"
