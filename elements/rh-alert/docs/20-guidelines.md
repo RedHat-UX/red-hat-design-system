@@ -159,7 +159,7 @@ On large screens, inline alert height is determined by the amount of content inc
 
 On small screens, both alert variants will span one column and toast alerts will continue to stack.
 
-<uxdot-example variant="full" no-border>
+<uxdot-example>
   <img src="../alert-guidelines-responsive-small-screens.svg" alt="Example of toast and inline alerts span full column of small screen layout">
 </uxdot-example>
 

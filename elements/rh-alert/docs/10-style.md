@@ -66,7 +66,10 @@ Refer to these documentation pages for interaction states.
   <img src="../alert-style-spacing-2.svg" alt="Diagram of spacing for toast alerts">
 </uxdot-example>
 
-<uxdot-example width-adjustment="752px" alignment="left" variant="full" no-border>
+<uxdot-example width-adjustment="752px"
+               alignment="left"
+               variant="full"
+               no-border>
   <img src="../alert-style-spacing-3.svg" alt="Diagram of spacing for alerts on mobile">
 </uxdot-example>
 
