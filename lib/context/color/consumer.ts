@@ -76,7 +76,12 @@ export class ColorContextConsumer<
     contextEvents.delete(this.host);
   }
 
-  /** Register the dispose callback for hosts that requested multiple updates, then update the colour-context */
+  /**
+   * Register the dispose callback for hosts that requested multiple updates,
+   * then update the colour-context
+   * @param value the color theme
+   * @param dispose cleanup callback
+   */
   #contextCallback(value: ColorTheme | null, dispose?: () => void) {
     // protect against changing providers
     if (dispose && dispose !== this.#dispose) {
@@ -86,7 +91,10 @@ export class ColorContextConsumer<
     this.update(value);
   }
 
-  /** Sets the `on` attribute on the host and any children that requested multiple updates */
+  /**
+   * Sets the `on` attribute on the host and any children that requested multiple updates
+   * @param next the color theme
+   */
   public update(next: ColorTheme | null) {
     const { last } = this;
     if (!this.#override && next !== last) {
@@ -97,6 +105,10 @@ export class ColorContextConsumer<
   }
 }
 
+/**
+ * Makes this element a color context consumer
+ * @param options options
+ */
 export function colorContextConsumer<
   T extends ReactiveElement
 >(options?: ColorContextOptions<T>) {
