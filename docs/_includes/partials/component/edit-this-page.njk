@@ -9,6 +9,7 @@
       {% endif %}
     {% endfor %}
   {% endif %}
-
-  <a href="https://github.com/RedHat-UX/red-hat-design-system/blob/main/{{ inputPath or page.inputPath }}?plain=1">Edit this page on GitHub</a>
+  {# remove ./ leading on path #}
+  {% set editPath = (inputPath or page.inputPath)  | replace('./', '/') %}
+  <a href="https://github.com/RedHat-UX/red-hat-design-system/blob/main{{ editPath }}?plain=1">Edit this page on GitHub</a>
 </div> 
