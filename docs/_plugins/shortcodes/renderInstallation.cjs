@@ -92,6 +92,7 @@ ${await generateImportMap('@rhds/elements', docsPage.tagName)}
 </details>
 `;
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error(error);
     jspmContent = `Could not generate import map using JSPM: ${error.message}`;
   }
