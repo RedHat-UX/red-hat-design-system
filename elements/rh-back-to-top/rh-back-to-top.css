@@ -23,6 +23,7 @@
   line-height: var(--rh-line-height-body-text, 1.5);
   outline: var(--rh-border-width-md, 2px) solid transparent;
   border: var(--rh-border-width-md, 2px) solid transparent;
+  pointer-events: all;
 }
 
 [part='trigger']:is(:hover, :focus) {
