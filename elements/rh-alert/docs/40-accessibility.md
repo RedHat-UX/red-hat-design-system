@@ -1,4 +1,3 @@
-
 ## Keyboard interactions
 
 A user should have the ability to navigate to and interact with alerts using their keyboard.
@@ -17,15 +16,15 @@ A user should have the ability to navigate to and interact with alerts using the
     </thead>
     <tbody>
       <tr>
-        <td data-label="Key">Tab</td>
-        <td data-label="Result">Moves focus from the close button to the next interactive element</td>
+        <td data-label="Key"><kbd>Tab</kbd></td>
+        <td data-label="Result">Moves focus to the next interactive element (e.g., from the close button to the first action button in the alert)</td>
       </tr>
       <tr>
-        <td data-label="Key">Shift + Tab</td>
-        <td data-label="Result">Moves focus back to the close button</td>
+        <td data-label="Key"><kbd>Shift</kbd> + <kbd>Tab</kbd></td>
+        <td data-label="Result">Moves focus to the previous interactive element (e.g., from the first action button in the alert back to the close button)</td>
       </tr>
       <tr>
-        <td data-label="Key">Enter</td>
+        <td data-label="Key"><kbd>Enter</kbd></td>
         <td data-label="Result">Selects the close button, action, or link/td>
       </tr>
     </tbody>

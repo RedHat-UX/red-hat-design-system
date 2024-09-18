@@ -30,7 +30,7 @@ An alert is a layout including an icon, title, text, actions, and a close button
 The default alert is inline. At minimum, the status icon and title needs to be visible.
 
 <uxdot-example width-adjustment="408px">
-  <img src="../alert-style-variant-inline.svg" alt="Two examples of an inline alert">\
+  <img src="../alert-style-variant-inline.svg" alt="Two examples of an inline alert">
 </uxdot-example>
 
 ### Inline alternate
@@ -56,13 +56,13 @@ Refer to these documentation pages for interaction states.
 
 - [Button](/elements/button/style/#interaction-states)
 
-## Spacing
+## Space
 
 <uxdot-example width-adjustment="456px">
   <img src="../alert-style-spacing-1.svg" alt="Diagram of spacing for inline alerts">
 </uxdot-example>
 
-<uxdot-example variant="full">
+<uxdot-example variant="full" no-border>
   <img src="../alert-style-spacing-2.svg" alt="Diagram of spacing for toast alerts">
 </uxdot-example>
 
