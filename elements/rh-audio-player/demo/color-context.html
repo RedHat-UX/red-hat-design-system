@@ -1,15 +1,6 @@
 <rh-context-demo id="player-context-demo" target="player">
   <form slot="controls">
-    <label>Poster: <input name="poster"
-      type="checkbox"
-      checked></label>
-    <label>Custom color theme:
-      <select name="custom">
-        <option value="purple">Purple</option>
-        <option value="purple img">Purple with Image</option>
-        <option value="cyan">Cyan</option>
-      </select>
-    </label>
+    <label>Poster: <input name="poster" type="checkbox" checked></label>
     <label>Layout:
       <select name="layout">
         <option value="full" selected>Full</option>
@@ -463,13 +454,10 @@
   function updateDemo() {
     const data = new FormData(form);
     const values = Object.fromEntries(data.entries());
-    const { custom, layout } = values;
-    const colorClass = custom || '';
+    const { layout } = values;
     player.layout = layout;
-    player.className = colorClass;
-    player.hasAccentColor = custom.match(/^(cyan|purple)/);
     player.poster =
-          !values.poster || colorClass === 'purple img' ? undefined
+          !values.poster ? undefined
         : 'https://www.redhat.com/cms/managed-files/CLH-S7-ep1.png';
   }
 
