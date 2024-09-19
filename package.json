@@ -291,10 +291,11 @@
     "@lit/context": "^1.1.2",
     "@patternfly/pfe-core": "^4.0.1",
     "@rhds/icons": "^1.1.1",
-    "@rhds/tokens": "^2.1.0-next.13",
+    "@rhds/tokens": "^2.1.0-next.14",
     "lit": "^3.2.0",
     "prism-esm": "^1.29.0-fix.5",
-    "tslib": "^2.7.0"
+    "tslib": "^2.7.0",
+    "web-dev-server-plugin-lit-css": "^3.0.1"
   },
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
