@@ -3,6 +3,10 @@
   max-width: var(--_max-width, initial);
 }
 
+[hidden] {
+  display: none !important;
+}
+
 header {
   display: flex;
   align-items: center;
