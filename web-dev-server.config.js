@@ -1,48 +1,129 @@
 // @ts-check
 import { pfeDevServerConfig } from '@patternfly/pfe-tools/dev-server/config.js';
-import { readdir, stat, glob } from 'node:fs/promises';
+import { glob } from 'node:fs/promises';
 import { makeDemoEnv } from './scripts/environment.js';
 import { parse, serialize } from 'parse5';
-import { query, isElementNode, getTextContent, setTextContent } from '@parse5/tools';
+import {
+  createElement,
+  getAttribute,
+  getTextContent,
+  isElementNode,
+  query,
+  setAttribute,
+  setTextContent,
+  spliceChildren,
+} from '@parse5/tools';
 
 /**
  * Find all modules in a glob pattern, relative to the repo root, and resolve them as package paths
  * @param {string} pattern
- * @param {(spec: string) => [string, string]} fn
+ * @param {([spec, path]: [string, string]) => [string, string]} fn
  */
 async function resolveLocal(pattern, fn) {
-  const TEST_RE = /\/test\//;
+  const TEST_RE = /\/test\/|(\.d\.ts$)/;
+  // eslint-disable-next-line jsdoc/check-tag-names
+  /** @type [string, string][] */
   const files = [];
-  for await (const file of glob(pattern, { exclude: x => !TEST_RE.test(x) })) {
-    files.push(file);
+  for await (const file of glob(pattern)) {
+    if (!TEST_RE.test(file)) {
+      files.push([file.replace('.ts', '.js'), file]);
+    }
   }
   return Object.fromEntries(files.map(fn));
 }
 
-export const litcssOptions = {
-  include: (/** @type{string[]}*/(/** @type{unknown}*/([
-    /elements\/rh-[\w-]+\/[\w-]+\.css$/,
-    /@rhds\/tokens\/css\/.*\.css$/,
-    /lib\/.*\.css$/,
-  ]))),
-  exclude: [/lightdom/, /node_modules\/@rhds\/tokens\/css\/global\.css/],
+/**
+ * manually inject icon import map with trailing slash.
+ * jspm generator doesn't yet support trailing slash
+ * @param {import('@parse5/tools').Document} document
+ */
+function injectManuallyResolvedIconsToImportMap(document) {
+  const importMapNode = query(document, node =>
+    isElementNode(node)
+      && node.tagName === 'script'
+      && node.attrs.some(attr =>
+        attr.name === 'type'
+          && attr.value === 'importmap'));
+  if (importMapNode && isElementNode(importMapNode)) {
+    const json = JSON.parse(getTextContent(importMapNode));
+    json.imports['@rhds/icons/'] = '/node_modules/@rhds/icons/';
+    json.imports['@rhds/tokens/'] = '/node_modules/@rhds/tokens/js/';
+    json.imports['@rhds/tokens/css/'] = '/node_modules/@rhds/tokens/css/';
+    json.imports['@floating-ui/dom'] =
+      '/node_modules/@floating-ui/dom/dist/floating-ui.dom.browser.min.mjs';
+    json.imports['@floating-ui/core'] =
+      '/node_modules/@floating-ui/core/dist/floating-ui.core.browser.min.mjs';
+    setTextContent(importMapNode, JSON.stringify(json, null, 2));
+  }
+}
+
+/**
+ * add context picker to dev sserver chrome
+ * @param {import('@parse5/tools').Document} document
+ */
+function transformDevServerHTML(document) {
+  const surfaceId = 'rhds-dev-server-main';
+  // replace the <main> element with a surface
+  const main = query(document, x =>
+    isElementNode(x)
+    && x.tagName === 'main');
+  if (main && isElementNode(main)) {
+    main.tagName = 'rh-surface';
+    setAttribute(main, 'color-palette', 'lightest');
+    setAttribute(main, 'id', surfaceId);
+    setAttribute(main, 'role', 'main');
+  }
+  // add a context picker to header, targeting main
+  const header = query(document, x =>
+    isElementNode(x)
+      && getAttribute(x, 'id') === 'main-header');
+  if (header && isElementNode(header)) {
+    const picker = createElement('rh-context-picker');
+    setAttribute(picker, 'target', surfaceId);
+    setAttribute(picker, 'value', 'lightest');
+    const logoBar = query(header, node =>
+      isElementNode(node)
+        && getAttribute(node, 'class') === 'logo-bar');
+    if (logoBar) {
+      spliceChildren(logoBar, 4, 0, picker);
+    }
+  }
+  // import surface and picker
+  const module = query(document, x =>
+    isElementNode(x)
+      && x.tagName === 'script'
+      && getAttribute(x, 'type') === 'module');
+  if (module) {
+    setTextContent(module, /* js */`${getTextContent(module)}
+    import '@rhds/elements/rh-surface/rh-surface.js';
+    import '@rhds/elements/rh-tooltip/rh-tooltip.js';
+    import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';`);
+  }
+}
+
+const imports = {
+  ...await resolveLocal('./lib/**/*.ts', ([spec, path]) =>
+    [`@rhds/elements/${spec}`, `./${path}`]),
+  ...await resolveLocal('./elements/**/*.ts', ([x, path]) =>
+    [`@rhds/elements/${x.replace('elements/', '')}`, `./${path}`]),
 };
 
 export default pfeDevServerConfig({
   tsconfig: 'tsconfig.json',
-  litcssOptions,
+  litcssOptions: {
+    exclude: /(lightdom)|node_modules\/@rhds\/tokens\/css\/global\.css/,
+    include: [
+      /elements\/rh-[\w-]+\/[\w-]+\.css$/,
+      /@rhds\/tokens\/css\/.*\.css$/,
+      /lib\/.*\.css$/,
+    ],
+  },
   importMapOptions: {
-    inputMap: {
-      imports: {
-        '@rhds/icons': './node_modules/@rhds/icons/icons.js',
-        ...await resolveLocal('./lib/**/*.js', spec => [`@rhds/elements/${spec}`, `./${spec}`]),
-        ...await resolveLocal('./elements/**/*.js', x => [`@rhds/elements/${x.replace('elements/', '')}`, `./${x}`]),
-        // ...await getRhdsIconNodemodulesImports(import.meta.url),
-      },
-    },
+    typeScript: true,
+    inputMap: { imports },
     resolutions: {
-      '@rhds/icons': './node_modules/@rhds/icons',
-      '@rhds/tokens': './node_modules/@rhds/tokens',
+      'lit': 'lit',
+      '@rhds/tokens': '@rhds/tokens',
     },
   },
   middleware: [
@@ -54,7 +135,11 @@ export default pfeDevServerConfig({
         return next();
       }
     },
-    /** redirect requests for /assets/ css to /docs/assets/ */
+    /**
+     * redirect requests for /assets/ css to /docs/assets/
+     * @param ctx koa context
+     * @param next next koa middleware
+     */
     function(ctx, next) {
       if (ctx.path.startsWith('/styles/')) {
         ctx.redirect(`/docs${ctx.path}`);
@@ -62,7 +147,11 @@ export default pfeDevServerConfig({
         return next();
       }
     },
-    /** redirect requests for /(lib|elements)/*.js to *.ts */
+    /**
+     * redirect requests for /(lib|elements)/*.js to *.ts
+     * @param ctx koa context
+     * @param next next koa middleware
+     */
     function(ctx, next) {
       if (!ctx.path.includes('node_modules') && ctx.path.match(/.*\/(lib|elements)\/.*\.js/)) {
         ctx.redirect(ctx.path.replace('.js', '.ts'));
@@ -70,22 +159,16 @@ export default pfeDevServerConfig({
         return next();
       }
     },
-    /** manually inject icon import map with trailing slash - jspm generator doesn't yet support trailing slash */
+    /**
+     * @param ctx koa context
+     * @param next next koa middleware
+     */
     async function(ctx, next) {
       if (ctx.path.endsWith('/') && !ctx.path.includes('.')) {
         await next();
         const document = parse(ctx.body);
-        const importMapNode = query(document, node =>
-          isElementNode(node)
-            && node.tagName === 'script'
-            && node.attrs.some(attr =>
-              attr.name === 'type'
-                && attr.value === 'importmap'));
-        if (importMapNode && isElementNode(importMapNode)) {
-          const json = JSON.parse(getTextContent(importMapNode));
-          json.imports['@rhds/icons/'] = '/node_modules/@rhds/icons/';
-          setTextContent(importMapNode, JSON.stringify(json, null, 2));
-        }
+        injectManuallyResolvedIconsToImportMap(document);
+        transformDevServerHTML(document);
         ctx.body = serialize(document);
       } else {
         return next();
@@ -109,25 +192,4 @@ export default pfeDevServerConfig({
   ],
 });
 
-// eslint-disable-next-line jsdoc/require-jsdoc
-export async function getRhdsIconNodemodulesImports(
-  rootUrl,
-) {
-  const files = await readdir(new URL('./node_modules/@rhds/icons/', rootUrl));
-  const dirs = [];
-
-  for (const dir of files) {
-    if (!dir.startsWith('.') && (await stat(new URL(`./node_modules/@rhds/icons/${dir}`, rootUrl))).isDirectory()) {
-      dirs.push(dir);
-    }
-  }
-
-  const specs = await Promise.all(dirs.flatMap(dir =>
-    readdir(new URL(`./node_modules/@rhds/icons/${dir}`, rootUrl))
-        .then(files => files.filter(x => x.endsWith('.js')))
-        .then(icons => icons.flatMap(icon => `@rhds/icons/${dir}/${icon}`))
-  ));
-
-  return Object.fromEntries(specs.flat().map(spec => [spec, `./node_modules/${spec}`]));
-}
 
