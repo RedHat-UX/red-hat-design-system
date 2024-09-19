@@ -155,12 +155,12 @@ export class RhTable extends LitElement {
       this.#table.setAttribute('aria-describedby', 'summary');
     }
 
-    /* 
+    /**
      * Fail criteria:
      * - If rowspan exists anywhere in the table, the auto-generated heading labels won't work
      * - If colspan exists in the <thead>, the auto-generated heading labels won't work
      * - If colspan exists in the <tbody>, the auto-generated heading labels partially work (only assigning the first)
-     * 
+     *
      * So we bail for now...
      */
     if (this.querySelector('[colspan], [rowspan]')) {
