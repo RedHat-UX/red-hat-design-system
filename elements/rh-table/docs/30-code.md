@@ -26,10 +26,9 @@ Specify the title of the table using a `<caption>` element.
 ### Responsive tables
 
 `<rh-table>` will automatically reformat to a "stacked" presentation in narrow 
-containers such as on small screens and mobile devices, or in page sidebars, and 
-auto-generate each table cell heading for its responsive layout. To customize or 
-override individual table cell headings on mobile devices, use a `data-label` 
-attribute on the `<td>` element you want to customize.
+containers such as on small screens and mobile devices or in page sidebars. For simple table structures, each table cell heading will be auto-generated for its responsive layout.
+
+For complex tables (i.e., including `colspan` or `rowspan` attributes), or to customize or override individual table cell headings on mobile devices, use a `data-label` attribute on the `<td>` elements to label them.
 
 ```html
 <rh-table>
