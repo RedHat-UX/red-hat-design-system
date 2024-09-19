@@ -49,7 +49,7 @@ Each screen reader also has its own set of keyboard shortcuts to navigate and re
 
 #### Setting up your Mac and Safari
 
-Before testing with VoiceOver, you may first need to enable keyboard navigation—for both your Mac and for Safari.
+Before testing with VoiceOver, you may need to enable keyboard navigation—for both your Mac and Safari.
 
 To turn on keyboard navigation for your Mac:
 
