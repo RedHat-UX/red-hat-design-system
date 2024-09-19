@@ -103,10 +103,9 @@ export class RhDialog extends LitElement {
 
   #screenSize = new ScreenSizeController(this);
 
-  @query('#rhds-wrapper') private rhdsWrapper?: HTMLElement | null;
-  @query('#dialog') private dialog?: HTMLDialogElement | null;
-  @query('#content') private content?: HTMLElement | null;
-  @query('#close-button') private closeButton?: HTMLElement | null;
+  @query('#dialog') private dialog!: HTMLDialogElement;
+  @query('#content') private content!: HTMLElement;
+  @query('#close-button') private closeButton!: HTMLElement;
 
   get videoColorPalette() {
     return this.type === 'video' ? 'dark' : 'lightest';
@@ -118,13 +117,20 @@ export class RhDialog extends LitElement {
   #body: Element[] = [];
   #headings: Element[] = [];
   #cancelling = false;
+  #lastTabbable: HTMLElement = this.closeButton;
 
   #slots = new SlotController(this, null, 'header', 'description', 'footer');
 
   connectedCallback() {
     super.connectedCallback();
-    this.addEventListener('keydown', this.onKeydown);
+    this.addEventListener('keydown', this.#onKeyDown);
     this.addEventListener('click', this.onClick);
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.removeEventListener('keydown', this.#onKeyDown);
+    this.#triggerElement?.removeEventListener('click', this.onTriggerClick);
   }
 
   render() {
@@ -143,15 +149,13 @@ export class RhDialog extends LitElement {
         <dialog id="dialog"
                 part="dialog"
                 aria-labelledby=${ifDefined(this.accessibleLabel ? undefined : headerId)}
-                aria-label=${ifDefined(this.accessibleLabel ? this.accessibleLabel : (!headerId ? triggerLabel : undefined))}
-                @keydown=${this.trapFocus}>
+                aria-label=${ifDefined(this.accessibleLabel ? this.accessibleLabel : (!headerId ? triggerLabel : undefined))}>
           <div id="container">
             <div id="content" part="content" class=${classMap({ hasHeader, hasDescription, hasFooter })}>
               <rh-button variant="close"
                          id="close-button"
                          part="close-button"
                          type="button"
-                         @keydown=${this.onKeydown}
                          @click=${this.close}>
                 <span class="visually-hidden">Close Dialog</span>
               </rh-button>
@@ -172,12 +176,6 @@ export class RhDialog extends LitElement {
         </dialog>
       </rh-surface>
     `;
-  }
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    this.removeEventListener('keydown', this.onKeydown);
-    this.#triggerElement?.removeEventListener('click', this.onTriggerClick);
   }
 
   @initializer()
@@ -262,12 +260,12 @@ export class RhDialog extends LitElement {
     }
   }
 
-  @bound private trapFocus(event: KeyboardEvent) {
+  #trapFocus() {
     // https://github.com/KittyGiraudel/focusable-selectors
+    // TODO: Add RHDS focusable elements (?)
     const notInert = ':not([inert]):not([inert] *)';
     const notNegTabIndex = ':not([tabindex^="-"])';
     const notDisabled = ':not(:disabled)';
-    // TODO: Add RHDS focusable elements (?)
     const focusableSelectorList = [
       `a[href]${notInert}${notNegTabIndex}`,
       `area[href]${notInert}${notNegTabIndex}`,
@@ -285,39 +283,35 @@ export class RhDialog extends LitElement {
       `[tabindex]${notInert}${notNegTabIndex}`,
     ];
 
-    const focusableSlottedElements = this.querySelectorAll(focusableSelectorList.join(','));
-    const firstElement = focusableSlottedElements ? focusableSlottedElements[0] : this.closeButton;
-    const lastElement = focusableSlottedElements ?
-          [...focusableSlottedElements].at(-1) : this.closeButton;
+    const focusableSlottedElements =
+      this.querySelectorAll<HTMLElement>(focusableSelectorList.join(','));
+    const hasLastElement = focusableSlottedElements.length > 0;
+    this.#lastTabbable = hasLastElement ?
+          focusableSlottedElements[focusableSlottedElements.length - 1] : this.closeButton;
+  }
 
-    const isTabPressed = event.key === 'Tab';
-
-    if (!isTabPressed) {
-      return;
-    }
-
-    if (focusableSlottedElements.length === 0) {
+  #handleTab(event: KeyboardEvent) {
+    // No focusable elements except close button:
+    if (this.#lastTabbable === this.closeButton) {
       event.preventDefault();
-      this.closeButton?.focus();
+      this.closeButton.focus();
       return;
     }
-
-    if (event.shiftKey) {
-      // If Shift + Tab is pressed and we're at the first slotted focusable element, move focus to the `closeButton`
-      if (document.activeElement === firstElement) {
-        event.preventDefault();
-        this.closeButton?.focus();
-      } // TODO: If Shift + Tab is pressed and focus is on the `closeButton`, move focus to the `lastElement`
-    } else {
-      // If Tab is pressed and we're at the last focusable element, wrap to the Close Modal rh-button
-      if (document.activeElement === lastElement) {
-        event.preventDefault();
-        this.closeButton?.focus();
-      }
+    // With focusable elements in dialog:
+    if (document.activeElement === this.#lastTabbable) {
+      event.preventDefault();
+      this.closeButton.focus();
     }
   }
 
-  @bound private onKeydown(event: KeyboardEvent) {
+  #handleShiftTab(event: KeyboardEvent) {
+    if (document.activeElement === this && this.shadowRoot?.activeElement === this.closeButton) {
+      event.preventDefault();
+      this.#lastTabbable.focus();
+    }
+  }
+
+  #onKeyDown(event: KeyboardEvent) {
     switch (event.key) {
       case 'Escape':
       case 'Esc':
@@ -329,6 +323,12 @@ export class RhDialog extends LitElement {
           this.showModal();
         }
         return;
+      case 'Tab':
+        if (event.shiftKey) {
+          this.#handleShiftTab(event);
+          return;
+        }
+        this.#handleTab(event);
     }
   }
 
@@ -368,6 +368,7 @@ export class RhDialog extends LitElement {
    */
   @bound show() {
     this.dialog?.showModal();
+    this.#trapFocus();
     this.open = true;
   }
 
