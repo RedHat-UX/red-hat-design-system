@@ -4,7 +4,7 @@ const html = String.raw;
 const STATUS_LEGEND = {
   'Planned': {
     description: 'Ready to be worked on or ready to be released',
-    color: 'gray',
+    color: 'purple',
     variant: 'filled',
     icon: html`<rh-icon set="ui" icon="notification-fill">Planned</rh-icon>`,
     iconName: 'notification-fill',
