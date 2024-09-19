@@ -46,9 +46,6 @@ module.exports = class TokensPage {
             || `${capitalize(tokenCategory.title || tokenCategory.slug)} tokens`,
       },
       hasToc: true,
-      tocTags: [
-        'h2',
-      ],
       pagination: {
         size: 1,
         alias: 'tokenCategory',

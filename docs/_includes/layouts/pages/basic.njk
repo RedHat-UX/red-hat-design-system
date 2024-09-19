@@ -20,8 +20,8 @@ layout: layouts/base.njk
 {% include 'partials/component/sidenav.njk' %}
 
 {%- if hasToc -%}
-  {%- set tags = tocTags or ['h2'] -%}
-  {%- set table = content | toc(tags=tocTags) -%}
+  {%- set tagsForThisPageToc = tocTags or ['h2'] -%}
+  {%- set table = content | toc(tags=tagsForThisPageToc) -%}
 {%- endif -%}
 
 <rh-surface id="main"
