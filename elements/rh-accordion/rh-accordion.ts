@@ -170,6 +170,16 @@ export class RhAccordion extends LitElement {
     return c && results.every(Boolean);
   }
 
+  override firstUpdated() {
+    this.headers.forEach((header, index) => {
+      if (header.expanded) {
+        this.#expandedIndexSet.add(index);
+      }
+    });
+    this.expandedIndex = [...this.#expandedIndexSet];
+    this.#expanded = !!this.#expandedIndex.length;
+  }
+
   @observes('accents')
   @observes('large')
   @observes('bordered')
