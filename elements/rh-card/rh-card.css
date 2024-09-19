@@ -16,6 +16,15 @@
   line-height: inherit;
 }
 
+::slotted(a) { color: var(--rh-color-interactive-primary-default); }
+::slotted(a:hover) { color: var(--rh-color-interactive-primary-hover); }
+::slotted(a:focus-within) { color: var(--rh-color-interactive-primary-focus); }
+::slotted(a:active) { color: var(--rh-color-interactive-primary-active); }
+::slotted(a:visited) { color: var(--rh-color-interactive-primary-visited-default); }
+::slotted(a:visited:hover) { color: var(--rh-color-interactive-primary-visited-hover); }
+::slotted(a:visited:focus-within) { color: var(--rh-color-interactive-primary-visited-focus); }
+::slotted(a:visited:active) { color: var(--rh-color-interactive-primary-visited-active); }
+
 #container {
   align-self: stretch;
   display: flex;
