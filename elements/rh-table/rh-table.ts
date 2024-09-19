@@ -1,6 +1,5 @@
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
@@ -154,6 +153,18 @@ export class RhTable extends LitElement {
   #init() {
     if (this.#table && this.#summary) {
       this.#table.setAttribute('aria-describedby', 'summary');
+    }
+
+    /**
+     * Fail criteria:
+     * - If rowspan exists anywhere in the table, the auto-generated heading labels won't work
+     * - If colspan exists in the <thead>, the auto-generated heading labels won't work
+     * - If colspan exists in the <tbody>, the auto-generated heading labels partially work (only assigning the first)
+     *
+     * So we bail for now...
+     */
+    if (this.querySelector('[colspan], [rowspan]')) {
+      return;
     }
 
     /* If responsive attribute set, auto-assign `data-label` attributes based on column headers */
