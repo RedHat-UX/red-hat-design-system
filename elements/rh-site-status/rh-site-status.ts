@@ -122,7 +122,7 @@ const isStatusPageResponse = (data: unknown): data is SummaryResponse => {
  * Website status communicates the operational status of a website or domain using a status icon and
  * link. It is usually located in the Footer component.
  * @summary Communicates operational status of a website or domain
- * @slot loading-text - Text to display while loading the status defaults to "Loading"
+ * @slot - loading-text - Text to display while loading the status defaults to "Loading"
  */
 @customElement('rh-site-status')
 export class RhSiteStatus extends LitElement {

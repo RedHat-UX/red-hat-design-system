@@ -11,13 +11,13 @@ import styles from './rh-card.css';
 /**
  * Cards are flexible surfaces used to group information in a small layout. They give small previews of information or provide secondary content in relation to the content it's near. Several cards can be used together to group related information.
  * @summary     Arranges content and interactive elements in a layout
- * @slot        header
+ * @slot        header -
  *              If this slot is used, we expect a heading level tag (h1, h2, h3, h4, h5, h6).
  *              An icon, svg, or use of the icon component are also valid in this region.
- * @slot        image
+ * @slot        image -
  *              Use this slot for the promo variant of the card. Images & CTA's are most often slotted here.
- * @slot        Any content that is not designated for the header or footer slot, will go to this slot.
- * @slot        footer
+ * @slot        - Any content that is not designated for the header or footer slot, will go to this slot.
+ * @slot        footer -
  *              Use this slot for anything that you want to be stuck to the base of the card.
  * @csspart     container
  *              The container for the card. Contains the image, header, body, and footer.

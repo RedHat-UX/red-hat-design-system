@@ -20,8 +20,8 @@ import '@rhds/elements/rh-icon/rh-icon.js';
  * @cssprop --rh-switch-unchecked - The background color of the switch when it is unchecked.
  * @cssprop --rh-switch-checked - The background color of the switch when it is checked.
  * @cssprop --rh-switch-disabled - The background color of the switch when it is disabled.
- * @slot message-on message content when checked. Overrides the `message-on` attribute.
- * @slot message-off message content when unchecked. Overrides the `message-off` attribute.
+ * @slot message-on - message content when checked. Overrides the `message-on` attribute.
+ * @slot message-off - message content when unchecked. Overrides the `message-off` attribute.
  */
 @customElement('rh-switch')
 export class RhSwitch extends LitElement {
