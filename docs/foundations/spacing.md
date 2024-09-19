@@ -5,26 +5,40 @@ order: 40
 hasToc: true
 tags:
   - foundations
-importElements:
-  - rh-table
+spacerTokens:
+  - --rh-space-xs
+  - --rh-space-sm
+  - --rh-space-md
+  - --rh-space-lg
+  - --rh-space-xl
+  - --rh-space-2xl
+  - --rh-space-3xl
+  - --rh-space-4xl
+  - --rh-space-5xl
+  - --rh-space-6xl
+  - --rh-space-7xl
 ---
 <link data-helmet rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
 <link data-helmet rel="stylesheet" href="/styles/samp.css">
+
+<script data-helmet type="module">
+  import '@rhds/elements/rh-table/rh-table.js';
+</script>
 
 <style data-helmet>
   .page-spacing .container rh-table {
     margin-block-end: var(--rh-space-3xl);
   }
-</style
+</style>
 
 <section aria-labelledby="overview">
 
   ## Overview
 
-  Spacers are visual cues used to define fixed amounts of space between 
-  elements. They make it easy for designers to maintain consistent spacing 
-  across components and patterns as well as simplify the handoff process between 
-  designers and developers. Consistent spacing helps maintain balance and rhythm 
+  Spacers are visual cues used to define fixed amounts of space between
+  elements. They make it easy for designers to maintain consistent spacing
+  across components and patterns as well as simplify the handoff process between
+  designers and developers. Consistent spacing helps maintain balance and rhythm
   across the system.
 
 </section>
@@ -49,12 +63,7 @@ importElements:
   different spacers instead.
 
   <rh-table>
-    {% spacerTokensTable 
-      headline="", 
-      caption="", 
-      headingLevel="4",
-      tokens="--rh-space-xs,--rh-space-sm,--rh-space-md,--rh-space-lg,--rh-space-xl,--rh-space-2xl,--rh-space-3xl,--rh-space-4xl,--rh-space-5xl,--rh-space-6xl,--rh-space-7xl"%}
-    {% endspacerTokensTable %}
+  {% spacerTokensTable headingLevel="4", tokens=spacerTokens %}{% endspacerTokensTable %}
   </rh-table>
 
   ### Applying spacers
@@ -118,47 +127,16 @@ importElements:
   style, visit the [Typography page](../typography).
 
   <rh-table>
-    <table>
-      <thead>
-        <tr>
-          <th scope="col" data-label="Headline style">Headline style</th>
-          <th scope="col" data-label="Text style">Text style</th>
-          <th scope="col" data-label="Spacer">Spacer</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td data-label="Headline style">Headline, 2xl</td>
-          <td data-label="Text style">Body copy, lg</td>
-          <td data-label="Spacer"><img src="/assets/spacing/24px.svg" alt="24px spacer"></td>
-        </tr>
-        <tr>
-          <td data-label="Headline style">Headline, xl</td>
-          <td data-label="Text style">Body copy, lg</td>
-          <td data-label="Spacer"><img src="/assets/spacing/24px.svg" alt="24px spacer"></td>
-        </tr>
-        <tr>
-          <td data-label="Headline style">Headline, lg</td>
-          <td data-label="Text style">Body copy, lg</td>
-          <td data-label="Spacer"><img src="/assets/spacing/16px.svg" alt="16px spacer"></td>
-        </tr>
-        <tr>
-          <td data-label="Headline style">Headline, md</td>
-          <td data-label="Text style">Body copy, lg</td>
-          <td data-label="Spacer"><img src="/assets/spacing/16px.svg" alt="16px spacer"></td>
-        </tr>
-        <tr>
-          <td data-label="Headline style">Headline, sm</td>
-          <td data-label="Text style">Body copy, lg</td>
-          <td data-label="Spacer"><img src="/assets/spacing/16px.svg" alt="16px spacer"></td>
-        </tr>
-        <tr>
-          <td data-label="Headline style">Headline, xs</td>
-          <td data-label="Text style">Body copy, lg</td>
-          <td data-label="Spacer"><img src="/assets/spacing/16px.svg" alt="16px spacer"></td>
-        </tr>
-      </tbody>
-    </table>
+
+ | Headline style | Text style    | Spacer              |
+ | -------------- | ------------- | ------------------- |
+ | Headline, 2xl  | Body copy, lg | ![24px spacer][s24] |
+ | Headline, xl   | Body copy, lg | ![24px spacer][s24] |
+ | Headline, lg   | Body copy, lg | ![16px spacer][s16] |
+ | Headline, md   | Body copy, lg | ![16px spacer][s16] |
+ | Headline, sm   | Body copy, lg | ![16px spacer][s16] |
+ | Headline, xs   | Body copy, lg | ![16px spacer][s16] |
+
   </rh-table>
 
   ### Mobile scale
@@ -168,47 +146,16 @@ importElements:
   visit the [Typography page](../typography).
 
   <rh-table>
-    <table>
-      <thead>
-        <tr>
-          <th scope="col" data-label="Headline style">Headline style</th>
-          <th scope="col" data-label="Text style">Text style</th>
-          <th scope="col" data-label="Spacer">Spacer</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td data-label="Headline style">Headline, xxl</td>
-          <td data-label="Text style">Body copy, md</td>
-          <td data-label="Spacer"><img src="/assets/spacing/24px.svg" alt="24px spacer"></td>
-        </tr>
-        <tr>
-          <td data-label="Headline style">Headline, xl</td>
-          <td data-label="Text style">Body copy, md</td>
-          <td data-label="Spacer"><img src="/assets/spacing/24px.svg" alt="24px spacer"></td>
-        </tr>
-        <tr>
-          <td data-label="Headline style">Headline, lg</td>
-          <td data-label="Text style">Body copy, md</td>
-          <td data-label="Spacer"><img src="/assets/spacing/16px.svg" alt="16px spacer"></td>
-        </tr>
-        <tr>
-          <td data-label="Headline style">Headline, md</td>
-          <td data-label="Text style">Body copy, md</td>
-          <td data-label="Spacer"><img src="/assets/spacing/16px.svg" alt="16px spacer"></td>
-        </tr>
-        <tr>
-          <td data-label="Headline style">Headline, sm</td>
-          <td data-label="Text style">Body copy, md</td>
-          <td data-label="Spacer"><img src="/assets/spacing/16px.svg" alt="16px spacer"></td>
-        </tr>
-        <tr>
-          <td data-label="Headline style">Headline, xs</td>
-          <td data-label="Text style">Body copy, md</td>
-          <td data-label="Spacer"><img src="/assets/spacing/16px.svg" alt="16px spacer"></td>
-        </tr>
-      </tbody>
-    </table>
+
+ | Headline style | Text style    | Spacer              |
+ | -------------- | ------------- | ------------------- |
+ | Headline, xxl  | Body copy, md | ![24px spacer][s24] |
+ | Headline, xl   | Body copy, md | ![24px spacer][s24] |
+ | Headline, lg   | Body copy, md | ![16px spacer][s16] |
+ | Headline, md   | Body copy, md | ![16px spacer][s16] |
+ | Headline, sm   | Body copy, md | ![16px spacer][s16] |
+ | Headline, xs   | Body copy, md | ![16px spacer][s16] |
+
   </rh-table>
 
   ### Headlines and Calls to action
@@ -236,57 +183,18 @@ importElements:
   each text style, visit the [Typography](../typography/) page.
 
   <rh-table>
-    <table>
-      <thead>
-        <tr>
-          <th scope="col" data-label="Text style">Text style</th>
-          <th scope="col" data-label="Spacer (desktop and tablet)">Spacer (desktop and tablet)</th>
-          <th scope="col" data-label="Spacer (mobile)">Spacer (mobile)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td data-label="Text style">Headline, 2xl</td>
-          <td data-label="Spacer (desktop and tablet)"><img src="/assets/spacing/32px.svg" alt="32px spacer"></td>
-          <td data-label="Spacer (mobile)"><img src="/assets/spacing/24px.svg" alt="24px spacer"></td>
-        </tr>
-        <tr>
-          <td data-label="Text style">Headline, xl</td>
-          <td data-label="Spacer (desktop and tablet)"><img src="/assets/spacing/32px.svg" alt="32px spacer"></td>
-          <td data-label="Spacer (mobile)"><img src="/assets/spacing/24px.svg" alt="24px spacer"></td>
-        </tr>
-        <tr>
-          <td data-label="Text style">Headline, lg</td>
-          <td data-label="Spacer (desktop and tablet)"><img src="/assets/spacing/24px.svg" alt="24px spacer"></td>
-          <td data-label="Spacer (mobile)"><img src="/assets/spacing/16px.svg" alt="16px spacer"></td>
-        </tr>
-        <tr>
-          <td data-label="Text style">Headline, md</td>
-          <td data-label="Spacer (desktop and tablet)"><img src="/assets/spacing/24px.svg" alt="24px spacer"></td>
-          <td data-label="Spacer (mobile)"><img src="/assets/spacing/16px.svg" alt="16px spacer"></td>
-        </tr>
-        <tr>
-          <td data-label="Text style">Headline, sm</td>
-          <td data-label="Spacer (desktop and tablet)"><img src="/assets/spacing/24px.svg" alt="24px spacer"></td>
-          <td data-label="Spacer (mobile)"><img src="/assets/spacing/16px.svg" alt="16px spacer"></td>
-        </tr>
-        <tr>
-          <td data-label="Text style">Headline, xs</td>
-          <td data-label="Spacer (desktop and tablet)"><img src="/assets/spacing/24px.svg" alt="24px spacer"></td>
-          <td data-label="Spacer (mobile)"><img src="/assets/spacing/16px.svg" alt="16px spacer"></td>
-        </tr>
-        <tr>
-          <td data-label="Text style">Body copy, lg</td>
-          <td data-label="Spacer (desktop and tablet)"><img src="/assets/spacing/24px.svg" alt="24px spacer"></td>
-          <td data-label="Spacer (mobile)"><img src="/assets/spacing/16px.svg" alt="16px spacer"></td>
-        </tr>
-        <tr>
-          <td data-label="Text style">Body copy, md</td>
-          <td data-label="Spacer (desktop and tablet)"><img src="/assets/spacing/24px.svg" alt="24px spacer"></td>
-          <td data-label="Spacer (mobile)"><img src="/assets/spacing/16px.svg" alt="16px spacer"></td>
-        </tr>
-      </tbody>
-    </table>
+
+ | Text style    | Spacer (desktop and tablet) | Spacer (mobile)     |
+ | ------------- | --------------------------- | ------------------- |
+ | Headline, 2xl | ![32px spacer][s32]         | ![24px spacer][s24] |
+ | Headline, xl  | ![32px spacer][s32]         | ![24px spacer][s24] |
+ | Headline, lg  | ![24px spacer][s24]         | ![16px spacer][s16] |
+ | Headline, md  | ![24px spacer][s24]         | ![16px spacer][s16] |
+ | Headline, sm  | ![24px spacer][s24]         | ![16px spacer][s16] |
+ | Headline, xs  | ![24px spacer][s24]         | ![16px spacer][s16] |
+ | Body copy, lg | ![24px spacer][s24]         | ![16px spacer][s16] |
+ | Body copy, md | ![24px spacer][s24]         | ![16px spacer][s16] |
+
   </rh-table>
 
   ### Headlines and Buttons
@@ -311,50 +219,19 @@ importElements:
 
   The columns indicate which spacer to use between headlines and Buttons,
   depending on the breakpoint. To see the exact size values of each text
-  style, visit the [Typography](../typography) page.
+  style, visit the [Typography](../typography/) page.
 
   <rh-table>
-    <table>
-      <thead>
-        <tr>
-          <th scope="col" data-label="Headline style">Headline style</th>
-          <th scope="col" data-label="Spacer (desktop and tablet)">Spacer (desktop and tablet)</th>
-          <th scope="col" data-label="Spacer (mobile)">Spacer (mobile)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td data-label="Headline style">Headline, 2xl</td>
-          <td data-label="Spacer (desktop and tablet)">Do not use</td>
-          <td data-label="Spacer (mobile)">Do not use</td>
-        </tr>
-        <tr>
-          <td data-label="Headline style">Headline, xl</td>
-          <td data-label="Spacer (desktop and tablet)">Do not use</td>
-          <td data-label="Spacer (mobile)">Do not use</td>
-        </tr>
-        <tr>
-          <td data-label="Headline style">Headline, lg</td>
-          <td data-label="Spacer (desktop and tablet)"><img src="/assets/spacing/32px.svg" alt="32px spacer"></td>
-          <td data-label="Spacer (mobile)"><img src="/assets/spacing/24px.svg" alt="24px spacer"></td>
-        </tr>
-        <tr>
-          <td data-label="Headline style">Headline, md</td>
-          <td data-label="Spacer (desktop and tablet)"><img src="/assets/spacing/32px.svg" alt="32px spacer"></td>
-          <td data-label="Spacer (mobile)"><img src="/assets/spacing/24px.svg" alt="24px spacer"></td>
-        </tr>
-        <tr>
-          <td data-label="Headline style">Headline, sm</td>
-          <td data-label="Spacer (desktop and tablet)"><img src="/assets/spacing/24px.svg" alt="24px spacer"></td>
-          <td data-label="Spacer (mobile)"<img src="/assets/spacing/16px.svg" alt="16px spacer"></td>
-        </tr>
-        <tr>
-          <td data-label="Headline style">Headline, xs</td>
-          <td data-label="Spacer (desktop and tablet)"><img src="/assets/spacing/24px.svg" alt="24px spacer"></td>
-          <td data-label="Spacer (mobile)"><img src="/assets/spacing/16px.svg" alt="16px spacer"></td>
-        </tr>
-      </tbody>
-    </table>
+
+ | Headline style | Spacer (desktop and tablet) | Spacer (mobile)     |
+ | -------------- | --------------------------- | ------------------- |
+ | Headline, 2xl  | Do not use                  | Do not use          |
+ | Headline, xl   | Do not use                  | Do not use          |
+ | Headline, lg   | ![32px spacer][s32]         | ![24px spacer][s24] |
+ | Headline, md   | ![32px spacer][s32]         | ![24px spacer][s24] |
+ | Headline, sm   | ![24px spacer][s24]         |                     |
+ | Headline, xs   | ![24px spacer][s24]         | ![16px spacer][s16] |
+
   </rh-table>
 
   ### Other examples
@@ -365,9 +242,8 @@ importElements:
 
   ### Other use cases
 
-  If you still have questions about how to use spacers with typography,
-  please [contact us](../../get-started) or [create an issue in our GitHub
-  repo][newissue].
+  If you still have questions about how to use spacers with typography, please
+  [contact us][getstarted] or [create an issue in our GitHub repo][newissue].
 
 </section>
 
@@ -455,42 +331,15 @@ importElements:
   ### Scale
 
   <rh-table>
-    <table>
-      <thead>
-        <tr>
-          <th scope="col" data-label="Breakpoint">Breakpoint</th>
-          <th scope="col" data-label="Columns">Columns</th>
-          <th scope="col" data-label="Spacer">Spacer</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td data-label="Breakpoint">Desktop</td>
-          <td data-label="Columns">8 or more</td>
-          <td data-label="Spacer"><img src="/assets/spacing/48px.svg" alt="48px spacer"></td>
-        </tr>
-        <tr>
-          <td data-label="Breakpoint">Desktop</td>
-          <td data-label="Columns">3 &ndash; 7</td>
-          <td data-label="Spacer"><img src="/assets/spacing/32px.svg" alt="32px spacer"></td>
-        </tr>
-        <tr>
-          <td data-label="Breakpoint">Tablet</td>
-          <td data-label="Columns">8 or more</td>
-          <td data-label="Spacer"><img src="/assets/spacing/32px.svg" alt="32px spacer"></td>
-        </tr>
-        <tr>
-          <td data-label="Breakpoint">Tablet</td>
-          <td data-label="Columns">3 &ndash; 7</td>
-          <td data-label="Spacer"><img src="/assets/spacing/24px.svg" alt="24px spacer"></td>
-        </tr>
-        <tr>
-          <td data-label="Breakpoint">Mobile</td>
-          <td data-label="Columns">1 or 2</td>
-          <td data-label="Spacer"><img src="/assets/spacing/16px.svg" alt="16px spacer"></td>
-        </tr>
-      </tbody>
-    </table>
+
+ | Breakpoint | Columns   | Spacer              |
+ | ---------- | --------- | ------------------- |
+ | Desktop    | 8 or more | ![48px spacer][s48] |
+ | Desktop    | 3 – 7     | ![32px spacer][s32] |
+ | Tablet     | 8 or more | ![32px spacer][s32] |
+ | Tablet     | 3 – 7     | ![24px spacer][s24] |
+ | Mobile     | 1 or 2    | ![16px spacer][s16] |
+
   </rh-table>
 
   ### Other components or patterns
@@ -501,15 +350,12 @@ importElements:
     <img src="/assets/spacing/spacing-components-other.svg" alt="Spacing within other components">
   </uxdot-example>
 
-
   ### Other use cases
 
-  If you still have questions about how to use spacers with components,
-  please [contact us](../../get-started) or [create an issue in our GitHub
-  repo][newissue].
+  If you still have questions about how to use spacers with components, please
+  [contact us][getstarted] or [create an issue in our GitHub repo][newissue].
 
 </section>
-
 
 <section aria-labelledby="layout">
 
@@ -572,7 +418,7 @@ importElements:
   ### Other use cases
 
   If you still have questions about how to use spacers in a layout, please
-  [contact us](../../get-started/) or [create an issue in our GitHub repo][newissue].
+  [contact us][getstarted] or [create an issue in our GitHub repo][newissue].
 
 </section>
 
@@ -580,9 +426,9 @@ importElements:
 
   ## Best practices
 
-  Use existing spacers for horizontal and vertical spacing. If a current
-  spacer doesn't meet your needs, [submit a request](../../get-started/)
-  for us to establish new spacers.
+  Use existing spacers for horizontal and vertical spacing. If a current spacer 
+  doesn't meet your needs, [submit a request][getstarted] for us to establish 
+  new spacers.
 
   <uxdot-example variant="full">
     <img src="/assets/spacing/spacing-best-practice-1.svg" alt="Use existing spacers">
@@ -595,4 +441,9 @@ importElements:
   <p>To learn how to use our other foundations in your designs, visit the <a href="/foundations">foundations</a> section.</p>
 </uxdot-feedback>
 
-[newissue]: https://github.com/RedHat-UX/red-hat-design-system/issues/new
+[getstarted]: ../../get-started/
+[newissue]: https://github.com/RedHat-UX/red-hat-design-system/issues/new/
+[s48]: /assets/spacing/48px.svg
+[s32]: /assets/spacing/32px.svg
+[s24]: /assets/spacing/24px.svg
+[s16]: /assets/spacing/16px.svg
