@@ -85,7 +85,7 @@ import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/c
 }</script>
     </rh-code-block>
   </li>
-  <li>This class of `on light` and `on dark` is then used to style your element context switch in shadow CSS.
+  <li>The classes of `on light` and `on dark` are then used to style your element when context switches in the elements shadow CSS.
   <rh-code-block dedent language="css" highlighting="client">
     <script type="text/css">#container {
   color: var(--rh-color-text-primary);
@@ -96,7 +96,7 @@ import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/c
 </rh-code-block>
 </ol>
 
-For more information on what `ColorThemes` are read "[Background](http://localhost:8080/theming/color-palettes/#backgrounds)".
+For more information on what `ColorThemes` are read "[Background](/theming/color-palettes/#backgrounds)".
 
 ### Future state
 
