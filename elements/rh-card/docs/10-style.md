@@ -1,4 +1,4 @@
-<style>
+<style data-helmet>
   .grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -9,6 +9,10 @@
     .grid {
       grid-template-columns: 1fr 1fr;
     }
+  }
+
+  figure rh-card + figcaption {
+    margin-block-start: var(--rh-space-xl, 24px);
   }
 </style>
 

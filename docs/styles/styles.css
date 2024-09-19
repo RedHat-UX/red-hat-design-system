@@ -223,10 +223,6 @@
   figcaption + uxdot-example {
     margin-block: var(--rh-space-xl);
   }
-
-  figure rh-card + figcaption {
-    margin-block-start: var(--rh-space-xl, 24px);
-  }
 }
 
 @layer patterns {
