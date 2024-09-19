@@ -64,7 +64,6 @@
       "ES2022",
       "ES2015.Generator",
       "ESNext.Collection",
-      "ESNext.Iterator",
       "ESNext.AsyncIterable",
       "ESNext.Disposable",
       "ScriptHost"
