@@ -1,6 +1,7 @@
 // @ts-check
 import { pfeDevServerConfig } from '@patternfly/pfe-tools/dev-server/config.js';
 import { glob } from 'node:fs/promises';
+import { join } from 'node:path';
 import { makeDemoEnv } from './scripts/environment.js';
 import { parse, serialize } from 'parse5';
 import {
@@ -17,25 +18,22 @@ import {
 /**
  * Find all modules in a glob pattern, relative to the repo root, and resolve them as package paths
  * @param {string} pattern
- * @param {([spec, path]: [string, string]) => [string, string]} fn
+ * @param {string} [relativeTo='.']
  */
-async function resolveLocal(pattern, fn) {
+async function resolveLocal(pattern, relativeTo = './') {
   const TEST_RE = /\/test\/|(\.d\.ts$)/;
   // eslint-disable-next-line jsdoc/check-tag-names
   /** @type [string, string][] */
   const files = [];
-  for await (const file of glob(pattern)) {
+  for await (const file of glob(pattern, { cwd: join(process.cwd(), relativeTo) })) {
     if (!TEST_RE.test(file)) {
-      files.push([file.replace('.ts', '.js'), file]);
+      files.push([
+        `@rhds/elements/${file.replace('.ts', '.js')}`,
+        join(relativeTo, file).replace('./', '/'),
+      ]);
     }
   }
-  return Object.fromEntries(files.map(fn));
-  // when typescript/node support AsyncIterator helpers
-  // currently stage 2 https://github.com/tc39/proposal-async-iterator-helpers
-  // return Object.entries(await glob(pattern)
-  //    .filter(x => !TEST_RE.test(x))
-  //    .map(file => fn([file.replace('.ts', '.js'), file]))
-  //    .take(Infinity));
+  return Object.fromEntries(files);
 }
 
 /**
@@ -103,30 +101,35 @@ function transformDevServerHTML(document) {
     setTextContent(module, /* js */`${getTextContent(module)}
     import '@rhds/elements/rh-surface/rh-surface.js';
     import '@rhds/elements/rh-tooltip/rh-tooltip.js';
-    import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';`);
+    import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+  `);
   }
 }
 
-const imports = {
-  ...await resolveLocal('./lib/**/*.ts', ([spec, path]) =>
-    [`@rhds/elements/${spec}`, `./${path}`]),
-  ...await resolveLocal('./elements/**/*.ts', ([x, path]) =>
-    [`@rhds/elements/${x.replace('elements/', '')}`, `./${path}`]),
+
+export const litcssOptions = {
+  exclude: [
+    /(lightdom)/,
+    /node_modules\/@rhds\/tokens\/css\/global\.css/,
+  ],
+  include: [
+    /elements\/rh-[\w-]+\/[\w-]+\.css$/,
+    /@rhds\/tokens\/css\/.*\.css$/,
+    /lib\/.*\.css$/,
+  ],
 };
 
 export default pfeDevServerConfig({
   tsconfig: 'tsconfig.json',
-  litcssOptions: {
-    exclude: /(lightdom)|node_modules\/@rhds\/tokens\/css\/global\.css/,
-    include: [
-      /elements\/rh-[\w-]+\/[\w-]+\.css$/,
-      /@rhds\/tokens\/css\/.*\.css$/,
-      /lib\/.*\.css$/,
-    ],
-  },
+  litcssOptions,
   importMapOptions: {
     typeScript: true,
-    inputMap: { imports },
+    inputMap: {
+      imports: {
+        ...await resolveLocal('./lib/**/*.ts'),
+        ...await resolveLocal('./**/*.ts', './elements'),
+      },
+    },
     resolutions: {
       'lit': 'lit',
       '@rhds/tokens': '@rhds/tokens',
@@ -149,18 +152,6 @@ export default pfeDevServerConfig({
     function(ctx, next) {
       if (ctx.path.startsWith('/styles/')) {
         ctx.redirect(`/docs${ctx.path}`);
-      } else {
-        return next();
-      }
-    },
-    /**
-     * redirect requests for /(lib|elements)/*.js to *.ts
-     * @param ctx koa context
-     * @param next next koa middleware
-     */
-    function(ctx, next) {
-      if (!ctx.path.includes('node_modules') && ctx.path.match(/.*\/(lib|elements)\/.*\.js/)) {
-        ctx.redirect(ctx.path.replace('.js', '.ts'));
       } else {
         return next();
       }
