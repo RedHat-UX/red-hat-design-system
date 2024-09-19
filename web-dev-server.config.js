@@ -30,6 +30,12 @@ async function resolveLocal(pattern, fn) {
     }
   }
   return Object.fromEntries(files.map(fn));
+  // when typescript/node support AsyncIterator helpers
+  // currently stage 2 https://github.com/tc39/proposal-async-iterator-helpers
+  // return Object.entries(await glob(pattern)
+  //    .filter(x => !TEST_RE.test(x))
+  //    .map(file => fn([file.replace('.ts', '.js'), file]))
+  //    .take(Infinity));
 }
 
 /**

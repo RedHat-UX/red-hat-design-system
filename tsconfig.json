@@ -58,13 +58,15 @@
     "lib": [
       "DOM.iterable",
       "DOM",
-      "es2015.iterable",
-      "es2020",
-      "es2022",
+      "ES5",
+      "ES6",
+      "ES2020",
+      "ES2022",
+      "ES2015.Generator",
       "ESNext.Collection",
+      "ESNext.Iterator",
+      "ESNext.AsyncIterable",
       "ESNext.Disposable",
-      "es5",
-      "es6",
       "ScriptHost"
     ],
     "paths": {
