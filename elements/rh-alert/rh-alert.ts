@@ -191,7 +191,7 @@ export class RhAlert extends LitElement {
           <rh-icon id="icon" set="ui" icon="${this.icon}"></rh-icon>
         </div>
         <div id="middle-column">
-          <header>
+          <header ?hidden="${this.#slots.isEmpty('header')}">
             <div id="header">
               <slot name="header"></slot>
             </div>${!this.dismissable && this.variant !== 'toast' ? '' : html`
