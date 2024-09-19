@@ -1,5 +1,5 @@
 import type { ColorPalette } from '@rhds/elements/lib/context/color/provider.js';
-import type { Color } from '@rhds/tokens/js/types.js';
+import type { Color } from '@rhds/tokens';
 import type { ColorTheme } from '@rhds/elements/lib/context/color/consumer.js';
 
 import { html, LitElement, type ComplexAttributeConverter } from 'lit';
@@ -78,7 +78,7 @@ export class RhContextPicker extends LitElement {
   #target: HTMLElement | null = null;
 
   render() {
-    const { allow, on = 'dark', value = 'darkest' } = this;
+    const { allow, on = 'dark', value } = this;
     return html`
       <div id="host-label"
            class="visually-hidden">${this.#internals.computedLabelText}</div>
@@ -101,7 +101,9 @@ export class RhContextPicker extends LitElement {
   }
 
   formStateRestoreCallback(state: string) {
-    this.#setValue(state as this['value']);
+    if (state) {
+      this.#setValue(state as this['value']);
+    }
   }
 
   firstUpdated() {
