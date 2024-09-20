@@ -40,7 +40,7 @@ Screen readers provide audio and/or braille descriptions of on-screen elements a
 
 Screen readers are often packaged with operating systems: macOS and iOS devices include VoiceOver, Windows includes Narrator, and Android includes TalkBack. Unix-like systems using GNOME come packaged with the Orca screen reader. Windows users can also install popular third-party screen readers, like JAWS and NVDA.
 
-Visit our [Sccreen reader basics page](/accessibility/screen-readers/) for guidance on testing with screen readers for all platforms.
+Visit our [Screen reader basics page](/accessibility/screen-readers/) for guidance on testing with screen readers for all platforms.
 
 #### Screen magnifiers
 
