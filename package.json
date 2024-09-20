@@ -290,7 +290,7 @@
   "dependencies": {
     "@lit/context": "^1.1.2",
     "@patternfly/pfe-core": "^4.0.1",
-    "@rhds/icons": "^1.1.1",
+    "@rhds/icons": "^1.1.2",
     "@rhds/tokens": "^2.1.0-next.14",
     "lit": "^3.2.0",
     "prism-esm": "^1.29.0-fix.6",
