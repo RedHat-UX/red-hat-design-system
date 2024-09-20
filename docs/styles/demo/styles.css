@@ -9,3 +9,8 @@
 @import url('/assets/packages/@rhds/tokens/css/global.css') layer(tokens);
 @import url('../typography.css') layer(typography);
 
+html,
+body,
+main {
+  height: 100%;
+}
