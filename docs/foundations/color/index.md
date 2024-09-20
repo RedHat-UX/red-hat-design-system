@@ -26,7 +26,7 @@ crayons:
 <style data-helmet>
 #crayons-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(358px, 1fr));
   gap: var(--rh-space-2xl);
   & .crayons-list {
     margin: 0;
