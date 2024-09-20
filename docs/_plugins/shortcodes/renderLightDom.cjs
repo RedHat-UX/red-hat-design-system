@@ -12,7 +12,6 @@ async function renderLightDom(content, {
 } = {}) {
   const docsPage = this.ctx.doc;
   let lightdomContent = '';
-  console.log(docsPage.tagName, shimcss);
 
   if (shimcss === true) {
     lightdomContent = markdown`
@@ -38,7 +37,7 @@ This element has an optional "Lightdom CSS" <em>shim</em> to help reduce <a href
 This element requires you to load "Lightdom CSS" stylesheets for styling deeply slotted elements.
 
 ~~~html
-<link rel="stylesheet" href="${docsPage.tagName}/${docsPage.tagName}-lightdom.css">
+<link rel="stylesheet" href="/path/to/${docsPage.tagName}/${docsPage.tagName}-lightdom.css">
 ~~~
 
 <rh-alert state="info">
