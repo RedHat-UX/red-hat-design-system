@@ -1,18 +1,6 @@
 rh-table {
   container: host / inline-size;
 
-  --_row-border:
-    var(--rh-table-row-border,
-      var(--rh-border-width-sm, 1px)
-      solid
-      var(--rh-color-border-subtle-on-light, #c7c7c7));
-  --_row-background-hover-color:
-    var(--rh-table-row-background-hover-color,
-      rgba(from var(--rh-color-gray-20, #e0e0e0) r g b / 0.4));
-  --_column-background-hover-color:
-    var(--rh-table-column-background-hover-color,
-      rgba(from var(--rh-color-blue-50, #0066cc) r g b / 0.1));
-
   & thead {
     & th {
       position: relative;
@@ -59,11 +47,11 @@ rh-table {
   }
 
   & a {
-    color: var(--rh-color-interactive-primary-default-on-light, #0066cc);
+    color: var(--rh-color-interactive-primary-default);
     text-decoration: none;
 
     &:hover {
-      color: var(--rh-color-interactive-primary-hover-on-light, #003366);
+      color: var(--rh-color-interactive-primary-hover);
       text-decoration: underline;
     }
   }

@@ -14,6 +14,17 @@
   --_scrollbar-size: calc(10 / 16 * 1rem);
   --_scrollbar-thumb-color: var(--rh-color-gray-50, #707070);
   --_scrollbar-track-color: var(--rh-color-border-subtle);
+  --_row-border:
+    var(--rh-table-row-border,
+      var(--rh-border-width-sm, 1px)
+      solid
+      var(--rh-color-border-subtle-on-light, #c7c7c7));
+  --_row-background-hover-color:
+    var(--rh-table-row-background-hover-color,
+      rgba(from var(--rh-color-gray-20, #e0e0e0) r g b / 0.4));
+  --_column-background-hover-color:
+    var(--rh-table-column-background-hover-color,
+      rgba(from var(--rh-color-blue-50, #0066cc) r g b / 0.1));
 }
 
 :host::-webkit-scrollbar {
@@ -34,13 +45,12 @@
   display: block;
 }
 
-:is(.color-palette-light, .color-palette-lighter) {
-  --rh-table-row-background-hover-color: rgba(from var(--rh-color-gray-20, #e0e0e0) r g b / 0.4);
-}
-
+.color-palette-dark,
+.color-palette-darker,
+.color-palette-darkest,
 .dark {
-  --rh-table-row-background-hover-color: rgba(from var(--rh-color-white, #ffffff) r g b / 0.1);
-  --rh-table-column-background-hover-color: rgba(from var(--rh-color-blue-70, #003366) r g b / 0.3);
+  --_row-background-hover-color: rgba(from var(--rh-color-white, #ffffff) r g b / 0.1);
+  --_column-background-hover-color: rgba(from var(--rh-color-blue-70, #003366) r g b / 0.3);
 }
 
 /* @todo: should I move these styles to light dom css file? */
