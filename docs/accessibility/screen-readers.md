@@ -35,11 +35,11 @@ But if you’re either pressed for time or have access to multiple operating sys
 
 ## Computer screen readers
 
-On computers, screen reader testing often lets you perform two tests simultaneously. First, it ensures that all meaningful web content and interactions are available to assistive tech. And second, it helps you verify that your experiences are keyboard operable (which is a [WCAG requirement](https://www.w3.org/WAI/WCAG21/Understanding/keyboard-accessible.html)).
+On computers, screen reader testing often lets you perform two tests simultaneously. First, it ensures that all meaningful web content and interactions are available to assistive tech. Second, it helps you verify that your experiences are keyboard operable (which is a [WCAG requirement](https://www.w3.org/WAI/WCAG21/Understanding/keyboard-accessible.html)).
 
 After turning on your computer’s screen reader and opening your browser, use your keyboard to access the entire experience, top to bottom. Use the <kbd>Tab</kbd>, <kbd>Shift-Tab</kbd>, and <kbd>↑ → ↓ ←</kbd> keys to move among (and within) focusable elements like links, form controls, and interactive components. And you can then use other keys like <kbd>Space</kbd>, <kbd>Enter</kbd>, and <kbd>Escape</kbd> to interact with those elements.
 
-Each screen reader also has its own set of keyboard shortcuts to navigate and read non-interactive content within an experience. Different keypresses can start (or stop) reading the page, jump to the next heading element. move vertically and horizontally among table cells, and so on. Links to keyboard shortcut resources are included in each screen reader’s section, below.
+Each screen reader also has its own set of keyboard shortcuts to navigate and read non-interactive content within an experience. Different keypresses can start (or stop) reading the page, jump to the next heading element, move vertically and horizontally among table cells, and so on. Links to keyboard shortcut resources are included in each screen reader’s section, below.
 
 ### VoiceOver (macOS)
 
@@ -56,7 +56,7 @@ To turn on keyboard navigation for your Mac:
 1. Go to the Keyboard section in System Settings.
 2. Turn on the "Keyboard navigation" switch within this section.
 
-(For MacOS versions prior to MacOS 13 Ventura, enter the Shortcuts tab panel in the System Settings' Keyboard section and check the "Use keyboard navigation..." checkbox.)
+(For MacOS versions before MacOS 13 Ventura, enter the Shortcuts tab panel in the System Settings' Keyboard section and check the "Use keyboard navigation..." checkbox.)
 
 In Safari, you may need the additional step of enabling the browser's tab navigation:
 
@@ -91,7 +91,7 @@ While transcript windows can be helpful, there are cases where the audio may not
 You can start NVDA via any of the following methods:
 
 - Open it in the Windows Start menu.
-- Press the <kbd>Windows</kbd> key, type <code>nvda</code> and then <kbd>Enter</kbd>.
+- Press the <kbd>Windows</kbd> key, type <code>NVDA</code> and then <kbd>Enter</kbd>.
 - Click the NVDA desktop shortcut icon (if available).
 
 When NVDA starts, a welcome dialog will appear. Here, you can specify what kind of keyboard you’re using, so NVDA knows what to use as your <kbd>NVDA</kbd> modifier key for keyboard shortcuts:
@@ -105,7 +105,7 @@ To quit NVDA, press <kbd>NVDA-Q</kbd>. You can also quit NVDA and access setting
 
 #### Displaying the speech viewer
 
-Like MacOS VoiceOver, NVDA offers an option for using the screen reader visually. This speech viewer actually keeps a running log of all content read during a session, for quick reference.
+Like MacOS VoiceOver, NVDA offers an option for using the screen reader visually. This speech viewer keeps a running log of all content read during a session, for quick reference.
 
 To open the speech viewer:
 
@@ -140,7 +140,7 @@ To make a portable copy:
 You can start JAWS via any of the following methods:
 
 - Open it in the Windows Start menu.
-- Press the <kbd>Windows</kbd> key, type <code>jaws</code> and then <kbd>Enter</kbd>.
+- Press the <kbd>Windows</kbd> key, type <code>JAWS</code>, and then <kbd>Enter</kbd>.
 - Click the JAWS desktop shortcut icon (if available).
 
 On keyboards with an <kbd>Insert</kbd> key, that key will be assigned as your <kbd>JAWS</kbd> modifier key for keyboard shortcuts. On keyboards without an <kbd>Insert</kbd> key, the <kbd>CapsLock</kbd> key will be your <kbd>JAWS</kbd> key. You can test this out by pressing <kbd>JAWS-F12</kbd> to read out the system time.
@@ -220,7 +220,7 @@ There are several ways to start and stop VoiceOver in iOS:
 
 One of VoiceOver’s most powerful tools is the Rotor. The Rotor is a virtual dial you can turn to let you navigate by categories like lines, words, links, form elements, headings, and so on.
 
-Turn the rotor on by placing two fingers on your screen (e.g., thumb and forefinger) and twisting them clockwise or counterclockwise (like turning a dial). VoiceOver will announce the currently-selected category as you twist. For example, twist until you hear "Headings." If you now swipe up and down on the page, VoiceOver will move from heading to heading, and you can then swipe right and left to have the content around that heading read to you.
+Turn the rotor on by placing two fingers on your screen (e.g., thumb and forefinger) and twisting them clockwise or counterclockwise (like turning a dial). VoiceOver will announce the currently selected category as you twist. For example, twist until you hear "Headings." If you now swipe up and down on the page, VoiceOver will move from heading to heading, and you can then swipe right and left to have the content around that heading read to you.
 
 The Rotor also includes an option for setting VoiceOver’s speaking rate, if you’d like to adjust that setting.
 
@@ -242,6 +242,6 @@ There are several ways to start and stop TalkBack for Android:
 
 Similar to iOS’s Rotor, Talkback’s reading controls let you navigate by categories like headings, links, or words. To change the current reading controls selection, quickly swipe up and then down (or vice versa) until TalkBack announces the category you want to use.
 
-Once you’re selected a category, swipe up or down to navigate the page by that category, and then right or left to navigate content adjacent to the current heading, link, or whatever else you’ve navigated to.
+Once you’ve selected a category, swipe up or down to navigate the page by that category, and then right or left to navigate content adjacent to the current heading, link, or whatever else you’ve navigated to.
 
 TalkBack’s speaking rate can also be adjusted within reading controls.
