@@ -1,5 +1,7 @@
 {% renderInstall lightdomcss=true %}{% endrenderInstall %}
 
+{% renderLightDom %}{% endrenderLightDom %}
+
 ## Usage
 
 {% renderCodeDocs hideDescription=true %}{% endrenderCodeDocs %}

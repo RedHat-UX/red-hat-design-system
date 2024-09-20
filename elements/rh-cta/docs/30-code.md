@@ -1,5 +1,7 @@
 {% renderInstall lightdomcss=true %}{% endrenderInstall %}
 
+{% renderLightDom shimcss=true %}{% endrenderLightDom %}
+
 ## Usage
 
 ```html
