@@ -36,8 +36,8 @@
 
 :is(.color-palette-light, .color-palette-lighter) {
   --rh-table-row-background-hover-color:
-    rgb(var(--_rh-color-white-rgb, /* making private as currently doesn't exist */
-      255 255 255) / var(--rh-opacity-50, 50%));
+    rgb(var(--rh-color-gray-20-rgb, /* making private as currently doesn't exist */
+      224 224 224) / var(--rh-opacity-40, 40%));
 }
 
 .dark {
