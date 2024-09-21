@@ -9,7 +9,7 @@
 [part='tabs-container'] {
   --_tab-max-width: 200px;
 
-  @container host (min-width: 567px) {
+  @container host (min-width: 768px) {
     --_tab-max-width: none;
   }
 
