@@ -314,6 +314,19 @@ slot[name='icon'] {
       }
     }
 
+    &.vertical {
+      &:not(.box) {
+        &:hover {
+          &:after {
+            border-inline-start:
+              var(--rh-border-width-lg, 3px)
+              solid
+              var(--rh-color-interactive-secondary-default);
+          }
+        }
+      }
+    }
+
     &:not(.vertical, .box) {
       &:hover {
         &:before {
