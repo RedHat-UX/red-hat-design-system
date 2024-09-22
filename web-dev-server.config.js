@@ -50,6 +50,10 @@ function injectManuallyResolvedIconsToImportMap(document) {
           && attr.value === 'importmap'));
   if (importMapNode && isElementNode(importMapNode)) {
     const json = JSON.parse(getTextContent(importMapNode));
+    json.imports['lit'] = '/node_modules/lit/index.js';
+    json.imports['lit/'] = '/node_modules/lit/';
+    json.imports['@patternfly/pfe-core'] = '/node_modules/@patternfly/pfe-core/core.js';
+    json.imports['@patternfly/pfe-core/'] = '/node_modules/@patternfly/pfe-core/';
     json.imports['@rhds/icons/'] = '/node_modules/@rhds/icons/';
     json.imports['@rhds/tokens/'] = '/node_modules/@rhds/tokens/js/';
     json.imports['@rhds/tokens/css/'] = '/node_modules/@rhds/tokens/css/';
@@ -129,10 +133,6 @@ export default pfeDevServerConfig({
         ...await resolveLocal('./lib/**/*.ts'),
         ...await resolveLocal('./**/*.ts', './elements'),
       },
-    },
-    resolutions: {
-      'lit': 'lit',
-      '@rhds/tokens': '@rhds/tokens',
     },
   },
   middleware: [
