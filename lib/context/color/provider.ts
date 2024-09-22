@@ -11,6 +11,8 @@ import { ColorContextConsumer, type ColorTheme } from './consumer.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
+import styles from '@rhds/tokens/css/color-context-provider.css.js';
+
 /**
  * A `ColorPalette` is a collection of specific color values
  * Choosing a palette sets both color properties and, if the component is a context provider,
@@ -89,7 +91,7 @@ export class ColorContextProvider<
 
   constructor(host: T, options?: ColorContextProviderOptions<T>) {
     const { attribute = 'color-palette' } = options ?? {};
-    super(host);
+    super(host, styles);
     this.#consumer = new ColorContextConsumer(host, {
       callback: value => this.update(value),
     });
@@ -132,22 +134,26 @@ export class ColorContextProvider<
     this.#mo.disconnect();
   }
 
-  /** Was the context event fired requesting our colour-context context? */
+  /**
+   * Was the context event fired requesting our colour-context context?
+   * @param event some event
+   */
   #isColorContextEvent(
     event: ContextRequestEvent<UnknownContext>
   ): event is ContextRequestEvent<typeof ColorContextController.context> {
-    return event.target !== this.host && event.context === ColorContextController.context;
+    return event.composedPath().at(0) !== this.host
+      && event.context === ColorContextController.context;
   }
 
   /**
    * Provider part of context API
    * When a child connects, claim its context-request event
    * and add its callback to the Set of children if it requests multiple updates
+   * @param event context-request event
    */
   async #onChildContextRequestEvent(event: ContextRequestEvent<UnknownContext>) {
     // only handle ContextEvents relevant to colour context
     if (this.#isColorContextEvent(event)) {
-      // claim the context-request event for ourselves (required by context protocol)
       event.stopPropagation();
 
       // Run the callback to initialize the child's colour-context
@@ -160,7 +166,10 @@ export class ColorContextProvider<
     }
   }
 
-  /** Calls the context callback for all consumers */
+  /**
+   * Calls the context callback for all consumers
+   * @param [force] override theme
+   */
   public override async update(force?: ColorTheme) {
     const { value } = this;
 
@@ -170,7 +179,10 @@ export class ColorContextProvider<
   }
 }
 
-/** Makes this element a color context provider which updates its consumers when the decorated field changes */
+/**
+ * Makes this element a color context provider which updates its consumers when the decorated field changes
+ * @param options options
+ */
 export function colorContextProvider<T extends ReactiveElement>(options?: ColorContextOptions<T>) {
   return function(proto: T, _propertyName: string) {
     const propertyName = _propertyName as keyof T;

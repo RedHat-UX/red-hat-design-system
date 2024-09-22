@@ -5,13 +5,14 @@ import { classMap } from 'lit/directives/class-map.js';
 
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
+import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import { DirController } from '../../lib/DirController.js';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
-
 import styles from './rh-switch.css';
-import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
+
+import '@rhds/elements/rh-icon/rh-icon.js';
 
 /**
  * A switch toggles the state of a setting (between on and off). Switches and checkboxes can often be used interchangeably, but the switch provides a more explicit, visible representation on a setting.
@@ -19,6 +20,8 @@ import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
  * @cssprop --rh-switch-unchecked - The background color of the switch when it is unchecked.
  * @cssprop --rh-switch-checked - The background color of the switch when it is checked.
  * @cssprop --rh-switch-disabled - The background color of the switch when it is disabled.
+ * @slot message-on - message content when checked. Overrides the `message-on` attribute.
+ * @slot message-off - message content when unchecked. Overrides the `message-off` attribute.
  */
 @customElement('rh-switch')
 export class RhSwitch extends LitElement {
@@ -26,25 +29,27 @@ export class RhSwitch extends LitElement {
 
   static readonly formAssociated = true;
 
-  @property({ reflect: true }) label?: string;
-
-  @property({ reflect: true, type: Boolean, attribute: 'show-check-icon' }) showCheckIcon = false;
-
-  @property({ reflect: true, type: Boolean }) checked = false;
-
-  @property({ reflect: true, type: Boolean }) disabled = false;
-
+  /** invisible, accessible label for screen readers */
   @property({ reflect: true, attribute: 'accessible-label' }) accessibleLabel?: string;
 
+  /** Message to display when the switch is on (i.e. checked) */
   @property({ reflect: true, attribute: 'message-on' }) messageOn?: string;
 
+  /** Message to display when the switch is off (i.e. unchecked) */
   @property({ reflect: true, attribute: 'message-off' }) messageOff?: string;
 
+  /** If the checkmark icon should be displayed when the switch is on */
+  @property({ reflect: true, type: Boolean, attribute: 'show-check-icon' }) showCheckIcon = false;
+
+  /** If the switch is on */
+  @property({ reflect: true, type: Boolean }) checked = false;
+
+  /** If the switch is disabled */
+  @property({ reflect: true, type: Boolean }) disabled = false;
+
+  /** If the switch is reversed: message first, then control */
   @property({ reflect: true, type: Boolean }) reversed = false;
 
-  /**
-   * Sets color theme based on parent context
-   */
   @colorContextConsumer() private on?: ColorTheme;
 
   #internals = InternalsController.of(this, { role: 'switch' });
@@ -102,41 +107,27 @@ export class RhSwitch extends LitElement {
 
   render() {
     const rtl = this.#dir.dir === 'rtl';
-    const { on = '' } = this;
+    const { on = 'light', reversed, checked } = this;
+    const slots = html`
+      <slot class="message" name="message-on" ?hidden="${!this.checked}">
+        <span aria-hidden="true">${this.messageOn}</span>
+      </slot>
+      <slot class="message" name="message-off" ?hidden="${this.checked}">
+        <span aria-hidden="true">${this.messageOff}</span>
+      </slot>`;
     return html`
       <div id="container"
            part="container"
-           class="${classMap({ [on]: !!on, rtl })}">
-        ${this.reversed ? html`
-          <slot></slot>
-          ${this.#switchTemplate()}
-        ` : html`
-          ${this.#switchTemplate()}
-          <slot></slot>
-        `}
-        <slot name="message-on" ?hidden="${!this.checked}">
-          <span aria-hidden="true">${this.messageOn}</span>
-        </slot>
-        <slot name="message-off" ?hidden="${this.checked}">
-          <span aria-hidden="true">${this.messageOff}</span>
-        </slot>
-      </div>
-    `;
-  }
-
-  #switchTemplate() {
-    return html`
-      <div id="switch" part="switch">
-        ${this.showCheckIcon ? html`
-          <svg id="toggle"
-               role="presentation"
-               fill="currentColor"
-               height="1em"
-               width="1em"
-               viewBox="0 0 512 512">
-            <path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z" />
-          </svg>
-        ` : ``}
+           class="${classMap({ checked, on: true, [on]: true, rtl })}">
+        ${reversed ? slots : ''}
+        <div id="switch"
+             part="switch">
+          <rh-icon id="toggle"
+                   icon="checkmark"
+                   set="microns"
+                   ?hidden="${!this.showCheckIcon}"></rh-icon>
+        </div>
+        ${reversed ? '' : slots}
       </div>
     `;
   }

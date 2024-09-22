@@ -44,8 +44,6 @@ export class TabExpandEvent extends Event {
  */
 @customElement('rh-tab')
 export class RhTab extends LitElement {
-  static readonly version = '{{version}}';
-
   static readonly styles = [styles];
 
   /** True when the tab is selected */
@@ -76,7 +74,7 @@ export class RhTab extends LitElement {
   }
 
   render() {
-    const { active, on = '' } = this;
+    const { active, on = 'light' } = this;
     const { box = false, vertical = false, firstTab, lastTab } = this.ctx ?? {};
     const first = firstTab === this;
     const last = lastTab === this;
@@ -84,7 +82,7 @@ export class RhTab extends LitElement {
       <div id="button"
            part="button"
            ?disabled="${this.disabled}"
-           class="${classMap({ active, box, vertical, first, last, [on]: !!on })}">
+           class="${classMap({ active, box, vertical, first, last, on: true, [on]: true })}">
         <slot name="icon"
               part="icon"
               ?hidden="${!this.icons.length}"

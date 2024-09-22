@@ -18,7 +18,6 @@
       <div><rh-health-index grade="E">E</rh-health-index></div>
       <div><rh-health-index grade="F">F</rh-health-index></div>
     </li>
-    
     <li>
       <h2>LG</h2>
       <div><rh-health-index grade="A" size="lg">A</rh-health-index></div>
@@ -28,7 +27,6 @@
       <div><rh-health-index grade="E" size="lg">E</rh-health-index></div>
       <div><rh-health-index grade="F" size="lg">F</rh-health-index></div>
     </li>
-    
     <li>
       <h2>XL</h2>
       <div><rh-health-index grade="A" size="xl">A</rh-health-index></div>
@@ -48,7 +46,7 @@
 </script>
 
 <style>
-.demo {
+  .demo {
     margin: 2rem;
     padding: 0;
     list-style: none;
@@ -58,16 +56,15 @@
     gap: 2rem;
     & h2 {
       font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+      color: var(--rh-color-text-primary);
     }
-    
     & li {
-        margin: 0;
-        padding: 0;
+      margin: 0;
+      padding: 0;
     }
-    
     & rh-surface,
     & div {
-        margin-block-end: 1rem;
+      margin-block-end: 1rem;
     }
-}
+  }
 </style>

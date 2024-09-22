@@ -16,7 +16,7 @@
     "description": "Red Hat Design System",
     "componentSubpath": "elements",
     "stylesheets": [
-      "/docs/styles/dev-server/styles.css"
+      "/docs/styles/demo/dev-server.css"
     ]
   }
 }

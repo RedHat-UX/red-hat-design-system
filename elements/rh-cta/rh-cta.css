@@ -9,7 +9,6 @@
 a,
 ::slotted(:is(a, button, input)) {
   vertical-align: middle !important;
-  white-space: break-spaces !important;
   word-break: break-word !important;
   display: inline !important;
   color: inherit !important;
@@ -21,10 +20,14 @@ a,
   z-index: 2 !important;
 }
 
+::slotted(:is(a, button, input)) {
+  white-space: break-spaces !important;
+}
+
 a:after,
 ::slotted(a):after {
   display: block;
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   z-index: 3;
@@ -43,7 +46,7 @@ a:after,
   position: relative;
   white-space: nowrap;
   color: var(--_color);
-  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   font-weight: 600; /* WARNING: not a token value */
   line-height: var(--rh-line-height-body-text, 1.5);
@@ -52,14 +55,10 @@ a:after,
   border-radius: var(--rh-border-radius-default, 3px);
   border-width: var(--rh-border-width-sm, 1px);
 
-  --_context-background-color: var(--_background-color) !important;
+  --rh-color-surface: var(--_background-color) !important;
   --_arrow-size: 13px;
-  --_arrow-plus-padding: calc(var(--rh-space-md, 8px) + var(--_arrow-size));
   --rh-icon-size: var(--rh-font-size-body-text-lg, 1.125rem);
-  --_rh-icon-plus-padding:
-    calc(
-        5px + var(--rh-icon-size) /* stylelint-disable-line rhds/no-unknown-token-name */
-      );
+  --_rh-icon-plus-padding: calc(5px + var(--rh-icon-size));
 }
 
 .rtl {
@@ -70,7 +69,7 @@ a:after,
 #container:after {
   --_offset: 2px;
 
-  content: "";
+  content: '';
   display: block;
   height: calc(100% - var(--_offset) * 2);
   width: calc(100% - var(--_offset) * 2);
@@ -114,17 +113,13 @@ a:focus-within,
   outline: none !important;
 }
 
-:host(:is(:focus, :focus-within)) {
-  --_background-color: var(--rh-cta-focus-background-color);
-}
-
 :host(:is(:focus, :focus-within)) #container {
+  --_background-color: var(--rh-cta-focus-background-color);
+
   border-color: var(--_focus-border-color);
   background-color:
-    var(
-        --_focus-container-background-color,
-        var(--_focus-background-color)
-      );
+    var(--_focus-container-background-color,
+      var(--_focus-background-color));
   color: var(--rh-cta-focus-color);
   outline:
     var(--rh-border-width-md, 2px)
@@ -165,19 +160,13 @@ a:focus-within,
  * ACTIVE STATE                                                              *
  *****************************************************************************/
 
-:host(:active) {
-  background-color: var(--_background-color);
-}
-
 :host(:active) #container {
+  background-color: var(--_background-color);
+
   --_background-color:
-    var(
-        --rh-cta-background-color,
-        var(
-          --rh-cta-active-container-background-color,
-          var(--rh-cta-active-background-color)
-        )
-      );
+    var(--rh-cta-background-color,
+      var(--rh-cta-active-container-background-color,
+      var(--rh-cta-active-background-color)));
 }
 
 :host(:active) #container:after {
@@ -195,51 +184,63 @@ a:focus-within,
   border-width: var(--rh-border-width-sm, 1px);
   padding-inline: var(--rh-space-2xl, 32px);
   padding-block: var(--rh-space-lg, 16px);
+
+  & a,
+  & ::slotted(:is(a, button, input)) {
+    display: inline-flex !important;
+    text-align: center !important;
+  }
+
+  &.icon {
+    & a,
+    & ::slotted(:is(a, button, input)) {
+      display: inline !important;
+    }
+
+    & rh-icon {
+      margin-inline-start: var(--rh-space-md, 8px);
+    }
+  }
+
+  &.svg {
+    & a,
+    & ::slotted(:is(a, button, input)) {
+      --_arrow-plus-padding: calc(var(--rh-space-md, 8px) + var(--_arrow-size));
+
+      padding-inline-end: calc(var(--_arrow-plus-padding) + var(--rh-space-xl, 24px)) !important;
+    }
+  }
 }
 
-:host([variant]) #container a,
-:host([variant]) #container ::slotted(:is(a, button, input)) {
-  display: inline-flex !important;
-  text-align: center !important;
-}
-
-:host([variant$="ary"]) #container a,
-:host([variant$="ary"]) #container ::slotted(:is(a, button, input)) {
-  font-size: var(--rh-cta-font-size-priority, var(--rh-font-size-body-text-md, 1rem));
-}
-
-:host([variant]) #container.icon a,
-:host([variant]) #container.icon ::slotted(:is(a, button, input)) {
-  display: inline !important;
-}
-
-:host([variant]) #container.svg a,
-:host([variant]) #container.svg ::slotted(:is(a, button, input)) {
-  padding-inline-end: calc(var(--_arrow-plus-padding) + var(--rh-space-xl, 24px)) !important;
-}
-
-:host([variant]) #container.icon rh-icon {
-  margin-inline-start: var(--rh-space-md, 8px);
+:host([variant$='ary']) #container {
+  & a,
+  & ::slotted(:is(a, button, input)) {
+    font-size: var(--rh-cta-font-size-priority, var(--rh-font-size-body-text-md, 1rem));
+  }
 }
 
 /*****************************************************************************
  * DEFAULT
  *****************************************************************************/
 
-:host(:not([variant])) {
+:host(:not([variant])) #container {
   --_background-color: var(--rh-cta-background-color, transparent);
   --_border-color: var(--rh-cta-border-color, transparent);
-  --_color: var(--rh-cta-color, var(--rh-color-interactive-blue-darker, #0066cc));
+  --_color: var(--rh-cta-color, var(--rh-color-interactive-primary-default));
   --_hover-background-color: var(--rh-cta-hover-background-color, transparent);
   --_hover-border-color: var(--rh-cta-hover-border-color, transparent);
-  --_hover-color: var(--rh-cta-hover-color, var(--rh-color-interactive-blue-darkest, #003366));
+  --_hover-color:
+    var(--rh-cta-hover-color,
+      var(--rh-color-interactive-primary-hover));
   --_hover-text-decoration: var(--rh-cta-hover-text-decoration, none);
   --_focus-background-color: var(--rh-cta-focus-background-color, transparent);
 
   /* --rh-color-border-interactive-on-light with 10% opacity */
   --_focus-container-background-color: var(--rh-cta-focus-container-background-color, #0066cc1a);
   --_focus-border-color: var(--rh-cta-focus-border-color, transparent);
-  --_focus-color: var(--rh-cta-focus-color, var(--rh-color-interactive-blue-darker, #0066cc));
+  --_focus-color:
+    var(--rh-cta-focus-color,
+      var(--rh-color-interactive-primary-default));
   --_focus-inner-border-color: var(--rh-cta-focus-inner-border-color, transparent);
   --_focus-text-decoration: var(--rh-cta-focus-text-decoration, none);
 
@@ -247,406 +248,170 @@ a:focus-within,
   --_active-container-background-color: var(--rh-cta-active-container-background-color, #0066cc1a);
   --_active-inner-border-color: var(--rh-cta-active-inner-border-color, transparent);
   --_active-text-decoration: var(--rh-cta-active-text-decoration, none);
-}
 
-:host(:not([variant])) .dark {
-  --_color: var(--rh-cta-color, var(--rh-color-interactive-blue-lighter, #92c5f9));
-  --_hover-color: var(--rh-cta-hover-color, var(--rh-color-interactive-blue-lightest, #b9dafc));
+  &.dark {
+    /* --rh-color-interactive-blue-lighter with 25% opacity */
+    --_focus-container-background-color: var(--rh-cta-focus-container-background-color, #73bcf740);
+    --_focus-border-color: var(--rh-cta-focus-border-color, transparent);
+    --_focus-inner-border-color: var(--rh-cta-focus-inner-border-color, transparent);
+    --_focus-text-decoration: var(--rh-cta-focus-text-decoration, none);
 
-  /* --rh-color-interactive-blue-lighter with 25% opacity */
-  --_focus-container-background-color: var(--rh-cta-focus-container-background-color, #73bcf740);
-  --_focus-border-color: var(--rh-cta-focus-border-color, transparent);
-  --_focus-color: var(--rh-cta-focus-color, var(--rh-color-interactive-blue-lighter, #92c5f9));
-  --_focus-inner-border-color: var(--rh-cta-focus-inner-border-color, transparent);
-  --_focus-text-decoration: var(--rh-cta-focus-text-decoration, none);
-
-  /* --rh-color-interactive-blue-lighter with 25% opacity */
-  --_active-container-background-color: var(--rh-cta-active-container-background-color, #73bcf740);
-  --_active-text-decoration: var(--rh-cta-active-text-decoration, none);
+    /* --rh-color-interactive-blue-lighter with 25% opacity */
+    --_active-container-background-color:
+      var(--rh-cta-active-container-background-color,
+        #73bcf740);
+    --_active-text-decoration: var(--rh-cta-active-text-decoration, none);
+  }
 }
 
 /*****************************************************************************
  * PRIMARY
  *****************************************************************************/
 
-:host([variant="primary"]) #container {
+:host([variant='primary']) #container {
   border-style: solid;
 
-  --_background-color: var(--rh-cta-background-color, var(--rh-color-brand-red-on-light, #ee0000));
-  --_border-color: var(--rh-cta-border-color, var(--rh-color-brand-red-on-light, #ee0000));
+  --_background-color: var(--rh-cta-background-color, var(--rh-color-brand-red));
+  --_border-color: var(--rh-cta-border-color, var(--rh-color-brand-red));
   --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
   --_hover-background-color:
-    var(
-        --rh-cta-hover-background-color,
-        var(
-          --rh-color-brand-red-dark,
-          #a60000
-        )
-      );
-  --_hover-border-color:
-    var(
-        --rh-cta-hover-border-color,
-        var(
-          --rh-color-brand-red-dark,
-          #a60000
-        )
-      );
-  --_hover-color:
-    var(
-        --rh-cta-hover-color,
-        var(
-          --rh-color-text-primary-on-dark,
-          #ffffff
-        )
-      );
-  --_focus-background-color:
-    var(
-        --rh-cta-focus-background-color,
-        var(
-          --rh-color-brand-red-on-light,
-          #ee0000
-        )
-      );
-  --_focus-border-color:
-    var(
-        --rh-cta-focus-border-color,
-        var(
-          --rh-color-brand-red-on-light,
-          #ee0000
-        )
-      );
-  --_focus-color:
-    var(
-        --rh-cta-focus-color,
-        var(
-          --rh-color-text-primary-on-dark,
-          #ffffff
-        )
-      );
-  --_focus-inner-border-color:
-    var(
-        --rh-cta-focus-inner-border-color,
-        var(
-          --rh-color-text-primary-on-dark,
-          #ffffff
-        )
-      );
-  --_active-background-color:
-    var(
-        --rh-cta-active-background-color,
-        var(
-          --rh-color-brand-red-dark,
-          #a60000
-        )
-      );
-  --_active-inner-border-color:
-    var(
-        --rh-cta-active-inner-border-color,
-        var(
-          --rh-color-text-primary-on-dark,
-          #ffffff
-        )
-      );
-}
-
-:host([variant="primary"]) #container.dark {
+    var(--rh-cta-hover-background-color,
+      var(--rh-color-brand-red-dark, #a60000));
   --_hover-border-color: var(--rh-cta-hover-border-color, var(--rh-color-brand-red-dark, #a60000));
+  --_hover-color: var(--rh-cta-hover-color, var(--rh-color-text-primary-on-dark, #ffffff));
+  --_focus-background-color:
+    var(--rh-cta-focus-background-color,
+      var(--rh-color-brand-red-dark, #a60000));
+  --_focus-border-color: var(--rh-cta-focus-border-color, var(--rh-color-brand-red-dark, #a60000));
+  --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary-on-dark, #ffffff));
+  --_focus-inner-border-color: var(--rh-cta-focus-inner-border-color, var(--rh-color-text-primary));
+  --_active-background-color:
+    var(--rh-cta-active-background-color,
+      var(--rh-color-brand-red-dark, #a60000));
+  --_active-inner-border-color:
+    var(--rh-cta-active-inner-border-color,
+      var(--rh-color-text-primary));
 }
 
 /*****************************************************************************
  * SECONDARY
  *****************************************************************************/
 
-:host([variant="secondary"]) #container {
+:host([variant='secondary']) #container {
   border-style: solid;
 
   --_background-color: var(--rh-cta-background-color, transparent);
-  --_border-color: var(--rh-cta-border-color, var(--rh-color-text-primary-on-light, #151515));
-  --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-light, #151515));
+  --_border-color: var(--rh-cta-border-color, var(--rh-color-border-strong));
+  --_color: var(--rh-cta-color, var(--rh-color-text-primary));
   --_hover-background-color:
-    var(
-        --rh-cta-hover-background-color,
-        var(
-          --rh-color-surface-darkest,
-          #151515
-        )
-      );
-  --_hover-border-color:
-    var(
-        --rh-cta-hover-border-color,
-        var(
-          --rh-color-border-strong-on-light,
-          #151515
-        )
-      );
-  --_hover-color:
-    var(
-        --rh-cta-hover-color,
-        var(
-          --rh-color-text-primary-on-dark,
-          #ffffff
-        )
-      );
+    var(--rh-cta-hover-background-color,
+      var(--rh-color-surface-darkest,
+      #151515));
+  --_hover-border-color: var(--rh-cta-hover-border-color, var(--rh-color-border-strong));
+  --_hover-color: var(--rh-cta-hover-color, var(--rh-color-text-primary-on-dark, #ffffff));
   --_focus-background-color:
-    var(
-        --rh-cta-focus-background-color,
-        var(
-          --rh-color-surface-lighter,
-          #f2f2f2
-        )
-      );
-  --_focus-border-color:
-    var(
-        --rh-cta-focus-border-color,
-        var(
-          --rh-color-border-strong-on-light,
-          #151515
-        )
-      );
+    var(--rh-cta-focus-background-color,
+      var(--rh-color-surface-lighter,
+      #f2f2f2));
+  --_focus-border-color: var(--rh-cta-focus-border-color, var(--rh-color-border-strong));
   --_focus-color:
-    var(
-        --rh-cta-focus-color,
-        var(
-          --rh-color-surface-darkest,
-          #151515
-        )
-      );
+    var(--rh-cta-focus-color,
+      var(--rh-color-surface-darkest,
+      #151515));
   --_focus-inner-border-color:
-    var(
-        --rh-cta-focus-inner-border-color,
-        var(
-          --rh-color-border-strong-on-light,
-          #151515
-        )
-      );
-  --_active-color:
-    var(
-        --rh-cta-active-color,
-        var(
-          --rh-color-text-primary-on-dark,
-          #ffffff
-        )
-      );
-  --_active-background-color:
-    var(
-        --rh-cta-active-background-color,
-        var(
-          --rh-color-border-strong-on-light,
-          #151515
-        )
-      );
+    var(--rh-cta-focus-inner-border-color,
+      var(--rh-color-border-strong));
+  --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary));
+  --_active-background-color: var(--rh-cta-active-background-color, var(--rh-color-border-strong));
   --_active-inner-border-color:
-    var(
-        --rh-cta-active-inner-border-color,
-        var(
-          --rh-color-surface-light,
-          #e0e0e0
-        )
-      );
-}
+    var(--rh-cta-active-inner-border-color,
+      var(--rh-color-surface-light,
+      #e0e0e0));
 
-:host([variant="secondary"]) #container.dark {
-  --_border-color: var(--rh-cta-border-color, var(--rh-color-border-strong-on-dark, #ffffff));
-  --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
-  --_hover-background-color:
-    var(
-        --rh-cta-hover-background-color,
-        var(
-          --rh-color-surface-lightest,
-          #ffffff
-        )
-      );
-  --_hover-border-color:
-    var(
-        --rh-cta-hover-border-color,
-        var(
-          --rh-color-border-strong-on-dark,
-          #ffffff
-        )
-      );
-  --_hover-color: var(--rh-cta-hover-color, var(--rh-color-text-primary-on-light, #151515));
-  --_focus-background-color:
-    var(
-        --rh-cta-focus-background-color,
-        var(
-          --rh-color-surface-dark,
-          #383838
-        )
-      );
-  --_focus-border-color:
-    var(
-        --rh-cta-focus-border-color,
-        var(
-          --rh-color-border-strong-on-dark,
-          #ffffff
-        )
-      );
-  --_focus-inner-border-color:
-    var(
-        --rh-cta-focus-inner-border-color,
-        var(
-          --rh-color-border-strong-on-dark,
-          #ffffff
-        )
-      );
-  --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary-on-dark, #ffffff));
-  --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary-on-light, #151515));
-  --_active-background-color:
-    var(
-        --rh-cta-active-background-color,
-        var(
-          --rh-color-surface-lightest,
-          #ffffff
-        )
-      );
-  --_active-inner-border-color:
-    var(
-        --rh-cta-active-inner-border-color,
-        var(
-          --rh-color-border-strong-on-light,
-          #151515
-        )
-      );
+  &.dark {
+    --_hover-background-color:
+      var(--rh-cta-hover-background-color,
+        var(--rh-color-surface-lightest,
+        #ffffff));
+    --_focus-background-color:
+      var(--rh-cta-focus-background-color,
+        var(--rh-color-surface-dark,
+        #383838));
+    --_hover-color: var(--rh-cta-hover-color, var(--rh-color-text-primary-on-light, #151515));
+    --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary));
+    --_active-background-color:
+      var(--rh-cta-active-background-color,
+        var(--rh-color-surface-lightest,
+        #ffffff));
+    --_active-inner-border-color:
+      var(--rh-cta-active-inner-border-color,
+        var(--rh-color-border-strong-on-light,
+        #151515));
+  }
 }
 
 /*****************************************************************************
  * BRICK
  *****************************************************************************/
 
-:host([variant="brick"]) {
+:host([variant='brick']) {
   display: inline-block !important;
   max-width: 100%;
   width: 100%;
-}
 
-:host([variant="brick"]) #container {
-  border-style: solid;
-  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-  font-weight: var(--rh-font-weight-body-text-regular, 400);
-  display: flex;
-  flex-flow: row wrap;
-  gap: var(--rh-space-md, 8px);
-  justify-content: center;
-  align-items: center;
+  & #container {
+    border-style: solid;
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+    font-weight: var(--rh-font-weight-body-text-regular, 400);
+    display: flex;
+    flex-flow: row wrap;
+    gap: var(--rh-space-md, 8px);
+    justify-content: center;
+    align-items: center;
 
-  --_background-color: var(--rh-cta-background-color, transparent);
-  --_border-color: var(--rh-cta-border-color, var(--rh-color-border-subtle-on-light, #c7c7c7));
-  --_color: var(--rh-cta-color, var(--rh-color-interactive-blue-darker, #0066cc));
-  --_hover-background-color:
-    var(
-        --rh-cta-hover-background-color,
-        var(
-          --rh-color-surface-lighter,
-          #f2f2f2
-        )
-      );
-  --_hover-border-color:
-    var(
-        --rh-cta-hover-border-color,
-        var(
-          --rh-color-border-subtle-on-light,
-          #c7c7c7
-        )
-      );
-  --_hover-color: var(--rh-cta-hover-color, var(--rh-color-interactive-blue-darkest, #003366));
-  --_hover-text-decoration: var(--rh-cta-hover-text-decoration, none);
-  --_focus-color: var(--rh-cta-focus-color, var(--rh-color-interactive-blue-darker, #0066cc));
-  --_focus-border-color:
-    var(
-        --rh-cta-focus-border-color,
-        var(
-          --rh-color-border-subtle-on-light,
-          #c7c7c7
-        )
-      );
-  --_focus-inner-border-color:
-    var(
-        --rh-cta-focus-inner-border-color,
-        var(
-          --rh-color-border-subtle-on-light,
-          #c7c7c7
-        )
-      );
-  --_focus-text-decoration: var(--rh-cta-focus-text-decoration, none);
-  --_active-background-color:
-    var(
-        --rh-cta-active-background-color,
-        var(
-          --rh-color-surface-lighter,
-          #f2f2f2
-        )
-      );
-  --_active-inner-border-color:
-    var(
-        --rh-cta-active-inner-border-color,
-        var(
-          --rh-color-border-subtle-on-light,
-          #c7c7c7
-        )
-      );
-  --_active-text-decoration: var(--rh-cta-active-text-decoration, none);
-}
+    --_background-color: var(--rh-cta-background-color, transparent);
+    --_border-color: var(--rh-cta-border-color, var(--rh-color-border-subtle));
+    --_color: var(--rh-cta-color, var(--rh-color-interactive-primary-default));
+    --_hover-background-color:
+      var(--rh-cta-hover-background-color,
+        var(--rh-color-surface-lighter,
+        #f2f2f2));
+    --_hover-border-color: var(--rh-cta-hover-border-color, var(--rh-color-border-subtle));
+    --_hover-color: var(--rh-cta-hover-color, var(--rh-color-interactive-primary-hover));
+    --_hover-text-decoration: var(--rh-cta-hover-text-decoration, none);
+    --_focus-color: var(--rh-cta-focus-color, var(--rh-color-interactive-primary-default));
+    --_focus-border-color: var(--rh-cta-focus-border-color, var(--rh-color-border-subtle));
+    --_focus-inner-border-color:
+      var(--rh-cta-focus-inner-border-color,
+        var(--rh-color-border-subtle));
+    --_focus-text-decoration: var(--rh-cta-focus-text-decoration, none);
+    --_active-background-color:
+      var(--rh-cta-active-background-color,
+        var(--rh-color-surface-lighter,
+        #f2f2f2));
+    --_active-inner-border-color:
+      var(--rh-cta-active-inner-border-color,
+        var(--rh-color-border-subtle));
+    --_active-text-decoration: var(--rh-cta-active-text-decoration, none);
 
-:host([variant="brick"]) #container.dark {
-  --_border-color: var(--rh-cta-border-color, var(--rh-color-border-subtle-on-dark, #707070));
-  --_color: var(--rh-cta-color, var(--rh-color-interactive-blue-lighter, #92c5f9));
-  --_hover-background-color:
-    var(
-        --rh-cta-hover-background-color,
-        var(
-          --rh-color-surface-darker,
-          #1f1f1f
-        )
-      );
-  --_hover-border-color:
-    var(
-        --rh-cta-hover-border-color,
-        var(
-          --rh-color-border-subtle-on-dark,
-          #707070
-        )
-      );
-  --_hover-color: var(--rh-cta-hover-color, var(--rh-color-interactive-blue-lightest, #b9dafc));
-  --_hover-text-decoration: var(--rh-cta-hover-text-decoration, underline);
-  --_focus-color: var(--rh-cta-focus-color, var(--rh-color-interactive-blue-lighter, #92c5f9));
-  --_focus-border-color:
-    var(
-        --rh-cta-focus-border-color,
-        var(
-          --rh-color-border-subtle-on-dark,
-          #707070
-        )
-      );
-  --_focus-inner-border-color:
-    var(
-        --rh-cta-focus-inner-border-color,
-        var(
-          --rh-color-border-subtle-on-dark,
-          #707070
-        )
-      );
-  --_focus-text-decoration: var(--rh-cta-focus-text-decoration, none);
-  --_active-background-color:
-    var(
-        --rh-cta-active-background-color,
-        var(
-          --rh-color-surface-darker,
-          #1f1f1f
-        )
-      );
-  --_active-inner-border-color:
-    var(
-        --rh-cta-active-inner-border-color,
-        var(
-          --rh-color-border-subtle-on-dark,
-          #707070
-        )
-      );
-  --_active-text-decoration: var(--rh-cta-active-text-decoration, underline);
-}
+    &.dark {
+      --_hover-background-color:
+        var(--rh-cta-hover-background-color,
+          var(--rh-color-surface-darker,
+          #1f1f1f));
+      --_hover-text-decoration: var(--rh-cta-hover-text-decoration, underline);
+      --_focus-text-decoration: var(--rh-cta-focus-text-decoration, none);
+      --_active-background-color:
+        var(--rh-cta-active-background-color,
+          var(--rh-color-surface-darker,
+          #1f1f1f));
+      --_active-text-decoration: var(--rh-cta-active-text-decoration, underline);
+    }
 
-:host([variant="brick"]) #container.icon rh-icon {
-  margin-inline: 0;
+    &.icon rh-icon {
+      margin-inline: 0;
+    }
+  }
 }
 
 /* chrome <= 103 */

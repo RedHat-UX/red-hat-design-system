@@ -8,10 +8,10 @@ importElements:
   - rh-alert
 ---
 
-<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
-<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
+<link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
+<link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
 
-<style>
+<style data-helmet>
   rh-tile {
     margin-block: var(--rh-space-3xl, 48px);
     max-width: 320px;
@@ -305,7 +305,7 @@ Released April 22, 2024
   </table>
 </rh-table>
 
-<rh-cta><a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.4.0">View version 1.4 release notes</a></rh-cta>
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.4.0">View version 1.4 release notes</rh-cta>
 
 </section>
 
@@ -420,7 +420,7 @@ Released October 16, 2023
   </table>
 </rh-table>
 
-<rh-cta><a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.2.0">View version 1.2 release notes</a></rh-cta>
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.2.0">View version 1.2 release notes</rh-cta>
 
 </section>
 
@@ -470,7 +470,7 @@ Released July 5, 2023
   </table>
 </rh-table>
 
-<rh-cta><a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.1.0">View version 1.1 release notes</a></rh-cta>
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.1.0">View version 1.1 release notes</rh-cta>
 
 </section>
 
@@ -590,8 +590,7 @@ Released April 3, 2023
   </table>
 </rh-table>
 
-
-<rh-cta><a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.0.0">View version 1.0 release notes</a></rh-cta>
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.0.0">View version 1.0 release notes</rh-cta>
 
 </section>
 

@@ -16,7 +16,7 @@
     <label for="picker">Change this card's color-palette</label>
     <rh-context-picker id="picker"
                        target="custom"
-                       allow="darkest, darker, lighter, lightest"></rh-context-picker>
+                       allow="darkest, lighter, lightest"></rh-context-picker>
     <rh-cta variant="primary" slot="footer">
       <a href="#">Call to action</a>
     </rh-cta>
@@ -87,25 +87,19 @@
       }
     }
     &.bar {
+      --rh-card-header-background-on-light: var(--rh-color-surface-light, #e0e0e0);
+      --rh-card-header-background-on-dark: var(--rh-color-surface-dark, #383838);
       &::part(header) {
         margin: 0;
-        padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
-        text-transform: uppercase;
+        padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
+        flex-direction: row;
+        gap: var(--rh-space-lg, 16px);
         font-weight: var(--rh-font-weight-heading-regular, 300);
         font-size: var(--rh-font-size-body-text-md, 1rem);
-        background-color: var(--bar-header-context-background-color);
-      }
-      &::part(body) {
-        /* margin: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px); */
+        font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+        text-transform: uppercase; /* deprecated? */
       }
     }
-  }
-
-  [color-palette^="light"] {
-    --bar-header-context-background-color: var(--rh-color-surface-light, #e0e0e0);
-  }
-  [color-palette^="dark"] {
-    --bar-header-context-background-color: var(--rh-color-surface-dark, #383838);
   }
 
   label[for="picker"] {

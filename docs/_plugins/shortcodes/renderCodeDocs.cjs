@@ -192,19 +192,21 @@ class Renderers {
           <table>
             <thead>
               <tr>
-                <th scope="col" data-label="DOM Property">DOM Property</th>
-                <th scope="col" data-label="Description">Description</th>
-                <th scope="col" data-label="Type">Type</th>
-                <th scope="col" data-label="Default">Default</th>
+                <th scope="col">Attribute</th>
+                <th scope="col">DOM Property</th>
+                <th scope="col">Description</th>
+                <th scope="col">Type</th>
+                <th scope="col">Default</th>
               </tr>
             </thead>
             <tbody>
               ${attributes.map(attribute => html`
               <tr>
-                <td data-label="DOM Property"><code>${attribute.fieldName}</code></td>
-                <td data-label="Description">${innerMD(attribute.description)}</td>
-                <td data-label="Type">${type(attribute.type?.text ?? 'unknown')}</td>
-                <td data-label="Default">${type(attribute.default ?? 'unknown')}</td>
+                <td><code>${attribute.name}</code></td>
+                <td><code>${attribute.fieldName}</code></td>
+                <td>${innerMD(attribute.description)}</td>
+                <td>${type(attribute.type?.text ?? 'unknown')}</td>
+                <td>${type(attribute.default ?? 'unknown')}</td>
               </tr>`).join('\n')}
             </tbody>
           </table>
@@ -216,19 +218,21 @@ class Renderers {
             <table>
               <thead>
                 <tr>
-                  <th scope="col" data-label="DOM Property">DOM Property</th>
-                  <th scope="col" data-label="Description">Description</th>
-                  <th scope="col" data-label="Type">Type</th>
-                  <th scope="col" data-label="Default">Default</th>
+                  <th scope="col">Attribute</th>
+                  <th scope="col">DOM Property</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Type</th>
+                  <th scope="col">Default</th>
                 </tr>
               </thead>
               <tbody>
                 ${deprecated.map(attribute => html`
                 <tr>
-                  <td data-label="DOM Property"><code>${attribute.fieldName}</code></td>
-                  <td data-label="Description">${innerMD(attribute.description)}</td>
-                  <td data-label="Type">${type(attribute.type?.text ?? 'unknown')}</td>
-                  <td data-label="Default">${type(attribute.default ?? 'unknown')}</td>
+                  <td><code>${attribute.name}</code></td>
+                  <td><code>${attribute.fieldName}</code></td>
+                  <td>${innerMD(attribute.description)}</td>
+                  <td>${type(attribute.type?.text ?? 'unknown')}</td>
+                  <td>${type(attribute.default ?? 'unknown')}</td>
                 </tr>`).join('\n')}
               </tbody>
             </table>
@@ -254,13 +258,13 @@ class Renderers {
           <table>
             <thead>
               <tr>
-                <th data-label="Token">Token</th>
-                <th data-label="Copy">Copy</th>
+                <th>Token</th>
+                <th>Copy</th>
               </tr>
             </thead>
             <tbody>${elTokens.map(token => html`
               <tr>
-                <td data-label="Token">
+                <td>
                   <a href="${getTokenHref(token)}"><code>${token.name}</code></a>
                 </td>
               ${copyCell(token)}
@@ -289,16 +293,16 @@ class Renderers {
           <table class=css-custom-properties>
             <thead>
               <tr>
-                <th scope="col" data-label="CSS Property">CSS Property</th>
-                <th scope="col" data-label="Description">Description</th>
-                <th scope="col" data-label="Default">Default</th>
+                <th scope="col">CSS Property</th>
+                <th scope="col">Description</th>
+                <th scope="col">Default</th>
               </tr>
             </thead>
             <tbody>${cssProperties.map(prop => html`
               <tr>
-                <td data-label="CSS Property"><code>${prop.name}</code></td>
-                <td data-label="Description">${innerMD(prop.description ?? '')}</td>
-                <td data-label="Default">
+                <td><code>${prop.name}</code></td>
+                <td>${innerMD(prop.description ?? '')}</td>
+                <td>
                   ${!prop.default?.startsWith('#') ? html`<code>` : html`<code data-color="${prop.default}" style="--color:${prop.default}">`}${prop.default ?? '—'}</code>
                 </td>
               </tr>`).join('\n')}
@@ -309,16 +313,16 @@ class Renderers {
             <table>
               <thead>
                 <tr>
-                  <th scope="col" data-label="CSS Property">CSS Property</th>
-                  <th scope="col" data-label="Description">Description</th>
-                  <th data-label="">Default</th>
+                  <th scope="col">CSS Property</th>
+                  <th scope="col">Description</th>
+                  <th>Default</th>
                 </tr>
               </thead>
               <tbody>${deprecated.map(prop => html`
                 <tr>
-                  <td data-label="CSS Property"><code>${prop.name}</code></td>
-                  <td data-label="Description">${innerMD(prop.description)}</td>
-                  <td data-label="Default">${innerMD(prop.default ?? '—')}</td>
+                  <td><code>${prop.name}</code></td>
+                  <td>${innerMD(prop.description)}</td>
+                  <td>${innerMD(prop.default ?? '—')}</td>
                 </tr>`).join('\n')}
               </tbody>
             </table>
@@ -341,15 +345,15 @@ class Renderers {
           <table>
             <thead>
               <tr>
-                <th scope="col" data-label="Part Name">Part Name</th>
-                <th scope="col" data-label="Description">Description</th>
+                <th scope="col">Part Name</th>
+                <th scope="col">Description</th>
               </tr>
             </thead>
             <tbody>
               ${parts.map(part => html`
               <tr>
-                <td data-label="Part Name"><code>${part.name}</code></td>
-                <td data-label="Description">${innerMD(part.description)}</td>
+                <td><code>${part.name}</code></td>
+                <td>${innerMD(part.description)}</td>
               </tr>`).join('\n')}
             </tbody>
           </table>
@@ -360,15 +364,15 @@ class Renderers {
             <table>
               <thead>
                 <tr>
-                  <th scope="col" data-label="Part Name">Part Name</th>
-                  <th scope="col" data-label="Description">Description</th>
+                  <th scope="col">Part Name</th>
+                  <th scope="col">Description</th>
                 </tr>
               </thead>
               <tbody>
                 ${deprecated.map(part => html`
                 <tr>
-                  <td data-label="Part Name"><code>${part.name}</code></td>
-                  <td data-label="Description">
+                  <td><code>${part.name}</code></td>
+                  <td>
                     ${innerMD(part.description)}
                     <em>Note: ${part.name} is deprecated. ${innerMD(part.deprecated)}</em>
                   </td>
@@ -394,15 +398,15 @@ class Renderers {
           <table>
             <thead>
               <tr>
-                <th scope="col" data-label="Event Name">Event Name</th>
-                <th scope="col" data-label="Description">Description</th>
+                <th scope="col">Event Name</th>
+                <th scope="col">Description</th>
               </tr>
             </thead>
             <tbody>
               ${events.map(event => html`
               <tr>
-                <td data-label="Event Name"><code>${event.name}</code></td>
-                <td data-label="Description">${innerMD(event.description)}</td>
+                <td><code>${event.name}</code></td>
+                <td>${innerMD(event.description)}</td>
               </tr>`).join('\n')}
             </tbody>
           </table>
@@ -413,15 +417,15 @@ class Renderers {
             <table>
               <thead>
                 <tr>
-                  <th scope="col" data-label="Event Name">Event Name</th>
-                  <th scope="col" data-label="Description">Description</th>
+                  <th scope="col">Event Name</th>
+                  <th scope="col">Description</th>
                 </tr>
               </thead>
               <tbody>
                 ${deprecated.map(event => html`
                 <tr>
-                  <td data-label="Event Name"><code>${event.name}</code></td>
-                  <td data-label="Description">
+                  <td><code>${event.name}</code></td>
+                  <td>
                     ${innerMD(event.description)}
                     <em>Note: ${event.name} is deprecated. ${innerMD(event.deprecated)}</em>
                   </td>
@@ -484,15 +488,15 @@ class Renderers {
           <table>
             <thead>
               <tr>
-                <th scope="col" data-label="Method Name">Method Name</th>
-                <th scope="col" data-label="Description">Description</th>
+                <th scope="col">Method Name</th>
+                <th scope="col">Description</th>
               </tr>
             </thead>
             <tbody>
               ${methods.map(method => html`
               <tr>
-                <td data-label="Method Name"><code>${method.name}(${stringifyParams(method)})</code></td>
-                <td data-label="Description">${innerMD(method.description)}</td>
+                <td><code>${method.name}(${stringifyParams(method)})</code></td>
+                <td>${innerMD(method.description)}</td>
               </tr>`).join('\n')}
             </tbody>
           </table>
@@ -503,15 +507,15 @@ class Renderers {
             <table>
               <thead>
                 <tr>
-                  <th scope="col" data-label="Method Name">Method Name</th>
-                  <th scope="col" data-label="Description">Description</th>
+                  <th scope="col">Method Name</th>
+                  <th scope="col">Description</th>
                 </tr>
               </thead>
               <tbody>
                 ${deprecated.map(method => html`
                 <tr>
-                  <td data-label="Method Name"><code>${method.name}(${stringifyParams(method)})</code></td>
-                  <td data-label="Description">
+                  <td><code>${method.name}(${stringifyParams(method)})</code></td>
+                  <td>
                     ${innerMD(method.description)}
                     <em>Note: ${method.name} is deprecated. ${innerMD(method.deprecated)}</em>
                   </td>
@@ -538,15 +542,15 @@ class Renderers {
           <table>
             <thead>
               <tr>
-                <th scope="col" data-label="Slot Name">Slot Name</th>
-                <th scope="col" data-label="Description">Description</th>
+                <th scope="col">Slot Name</th>
+                <th scope="col">Description</th>
               </tr>
             </thead>
             <tbody>
               ${slots.map(slot => html`
               <tr>
-                <td data-label="Slot Name"><code>${slot.name}</code></td>
-                <td data-label="Description">${innerMD(slot.description)}</td>
+                <td><code>${slot.name}</code></td>
+                <td>${innerMD(slot.description)}</td>
               </tr>`).join('\n')}
             </tbody>
           </table>
@@ -557,15 +561,15 @@ class Renderers {
             <table>
               <thead>
                 <tr>
-                  <th scope="col" data-label="Slot Name">Slot Name</th>
-                  <th scope="col" data-label="Description">Description</th>
+                  <th scope="col">Slot Name</th>
+                  <th scope="col">Description</th>
                 </tr>
               </thead>
               <tbody>
                 ${deprecated.map(slot => html`
                 <tr>
-                  <td data-label="Slot Name"><code>${slot.name}</code></td>
-                  <td data-label="Description">
+                  <td><code>${slot.name}</code></td>
+                  <td>
                     ${innerMD(slot.description)}
                     <em>Note: ${slot.name} is deprecated. ${innerMD(slot.deprecated)}</em>
                   </td>

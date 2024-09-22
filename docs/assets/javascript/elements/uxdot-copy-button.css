@@ -28,7 +28,7 @@ code {
 
 :host(:state(rendered)) button:is(:focus, :active, :hover),
 :host(:state(rendered)) button:is(:focus, :active, :hover) code {
-  background: var(--rh-color-interactive-blue-lightest);
+  background: var(--rh-color-interactive-primary-hover-on-dark);
   opacity: 1;
 }
 

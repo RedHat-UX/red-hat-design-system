@@ -1,9 +1,8 @@
 :host {
   display: block;
-  background-color: var(--rh-color-surface-lighter, #f2f2f2);
-  color: var(--rh-color-text-primary-on-light);
   container-type: inline-size;
   container-name: header;
+  background-color: var(--rh-color-surface);
 }
 
 #container {
@@ -21,15 +20,15 @@
 #container.hasSearch {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-areas: "heading" "search";
+  grid-template-areas: 'heading' 'search';
   gap: var(--rh-space-2xl);
 }
 
-[part="heading"] {
+[part='heading'] {
   grid-area: heading;
 }
 
-::slotted([slot="search"]) {
+::slotted([slot='search']) {
   grid-area: search;
   display: flex;
   flex-direction: column;
@@ -43,7 +42,7 @@
   line-height: var(--uxdot-heading-line-height, var(--rh-line-height-heading)) !important;
 }
 
-::slotted([slot="subnav"]) {
+::slotted([slot='subnav']) {
   margin-block-start: var(--rh-space-2xl);
   inset-inline-start: calc(-1 * var(--rh-space-2xl));
   position: relative;
@@ -69,6 +68,6 @@
 
   #container.hasSearch {
     grid-template-columns: 1fr 1fr;
-    grid-template-areas: "heading search";
+    grid-template-areas: 'heading search';
   }
 }

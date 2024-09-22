@@ -83,31 +83,20 @@ export class RhTabs extends LitElement {
 
   @property({ attribute: false }) activeTab?: RhTab;
 
-  /**
-   * Sets color context for child components, overrides parent context
-   */
+  @colorContextConsumer() private on?: ColorTheme;
+
+  /** Sets color context for child components, overrides parent context */
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
-  /**
-   * Aligns tabs to the center
-   */
+  /** Aligns tabs to the center */
   @property({ reflect: true, type: Boolean }) centered? = false;
 
-  /**
-   * Sets tabs to a boxed style with or without an inset
-   */
+  /** Sets tabs to a boxed style with or without an inset */
   @property({ reflect: true }) box?: 'box' | 'inset';
 
-  /**
-   * Sets the alignment of the tabs vertical
-   */
+  /** Sets the alignment of the tabs vertical */
   @property({ reflect: true, type: Boolean }) vertical = false;
-
-  /**
-   * Sets color theme based on parent context
-   */
-  @colorContextConsumer() private on?: ColorTheme;
 
   @query('[part="tabs"]') private tabList!: HTMLElement;
 
@@ -185,7 +174,7 @@ export class RhTabs extends LitElement {
     const { on = '' } = this;
     const rtl = this.#dir.dir === 'rtl';
     return html`
-      <div id="rhds-container" class="${classMap({ [on]: !!on, rtl })}">
+      <div id="rhds-container" class="${classMap({ on: true, [on]: !!on, rtl })}">
         <div part="container" class="${classMap({ overflow: this.#overflow.showScrollButtons })}">
           <div part="tabs-container">${!this.#overflow.showScrollButtons ? '' : html`
             <button id="previousTab" tabindex="-1"

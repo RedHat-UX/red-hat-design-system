@@ -1,0 +1,30 @@
+<rh-card class="example-asset-text-and-link-top">
+  <h4>Title, Lg</h4>
+  <p><a href="#">Lorem ipsum dolor sit amet consectetur adipiscing elit</a></p>
+  <svg slot="footer"
+       viewBox="0 0 296 171"
+       style="border: 1px dashed var(--rh-color-border-interactive-on-light, #0066cc);">
+    <rect fill="rgba(0 102 204 / 0.10)" width="296" height="171"/>
+  </svg>
+</rh-card>
+
+
+<style>
+  .example-asset-text-and-link-top {
+    width: 360px;
+    &::part(footer) {
+      margin-block-end: 0;
+    }
+
+    & h4 {
+      margin-block: 0 var(--rh-space-lg, 16px);
+      display: flex;
+      gap: var(--rh-space-lg, 16px);
+      font-weight: var(--rh-font-weight-heading-regular, 300);
+      font-size: var(--rh-font-size-body-text-md, 1rem);
+      font-family: var(--rh-font-family-body-text);
+      line-height: var(--rh-line-height-body-text, 1.5);
+      text-transform: uppercase; /* deprecated? */
+    }
+  }
+</style>

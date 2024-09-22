@@ -1,18 +1,20 @@
 import { LitElement, type PropertyValues, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { classMap } from 'lit/directives/class-map.js';
+import { classMap } from 'lit-html/directives/class-map.js';
 
-import { type ColorPalette } from '../../context/color/provider.js';
+import { colorContextProvider, type ColorPalette } from '../../context/color/provider.js';
 import { ContextChangeEvent } from '../rh-context-picker/rh-context-picker.js';
 
 import '@rhds/elements/rh-surface/rh-surface.js';
 
 import style from './rh-context-demo.css';
 
+import consumerStyles from '@rhds/tokens/css/color-context-consumer.css.js';
+
 @customElement('rh-context-demo')
 export class RhContextDemo extends LitElement {
-  static readonly styles = [style];
+  static readonly styles = [style, consumerStyles];
 
   static formAssociated = true;
 
@@ -20,26 +22,27 @@ export class RhContextDemo extends LitElement {
 
   @property() label = 'Color Palette';
 
-  @property({ attribute: 'color-palette', reflect: true }) colorPalette = this.value;
+  @colorContextProvider()
+  @property({ attribute: 'color-palette', reflect: true })
+  colorPalette = this.value;
 
   #internals = this.attachInternals();
 
   protected override render() {
     const { value = 'darkest' } = this;
-    const [on = 'dark'] = value.match(/dark|light/) ?? [];
+    const on = this.value.replace(/est|er/, '');
     return html`
       <rh-surface id="provider"
                   color-palette="${value}"
-                  class="${classMap({ [on]: true })}"
                   @change="${this.#onChange}">
-          <div id="picker-container">
+          <div id="picker-container" class="${classMap({ on: true, [on]: true })}">
             <rh-context-picker id="picker"
                                .value="${this.value}"
                                target="provider"></rh-context-picker>
             <label for="picker">${this.label}</label>
             <slot name="controls"></slot>
           </div>
-        <slot part="demo"></slot>
+        <slot part="demo" class="${classMap({ on: true, [on]: true })}"></slot>
       </rh-surface>
     `;
   }
@@ -58,8 +61,13 @@ export class RhContextDemo extends LitElement {
   }
 
   #onChange(event: Event) {
+    const picker = this.shadowRoot?.getElementById('picker');
     if (event instanceof ContextChangeEvent) {
+      if (event.target !== picker && event.provider && (event.provider !== this)) {
+        return;
+      }
       this.#setValue(event.colorPalette);
+      event.preventDefault();
     }
   }
 

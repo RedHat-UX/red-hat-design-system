@@ -60,6 +60,10 @@ export class RhTable extends LitElement {
     return this.querySelectorAll('tbody > tr') as NodeListOf<HTMLTableRowElement> | undefined;
   }
 
+  get #colHeaders(): NodeListOf<HTMLTableCellElement> | undefined {
+    return this.querySelectorAll<HTMLTableCellElement>('thead > tr > th');
+  }
+
   get #summary(): HTMLElement | undefined {
     return this.querySelector('[slot="summary"]') as HTMLElement | undefined;
   }
@@ -68,9 +72,12 @@ export class RhTable extends LitElement {
 
   #logger = new Logger(this);
 
+  #mo = new MutationObserver(() => this.#init);
+
   connectedCallback() {
     super.connectedCallback();
     this.#init();
+    this.#mo.observe(this, { childList: true });
   }
 
   protected willUpdate(): void {
@@ -84,18 +91,27 @@ export class RhTable extends LitElement {
   }
 
   render() {
-    const { on = '' } = this;
+    const { on = 'light' } = this;
     return html`
-      <div id="container" 
-        class="${classMap({ [on]: !!on, [`color-palette-${this.#internalColorPalette}`]: !!this.#internalColorPalette })}" 
-        part="container">
+      <div id="container"
+           part="container"
+           class="${classMap({
+             on: true,
+             [on]: true,
+             [`color-palette-${this.#internalColorPalette}`]: !!this.#internalColorPalette,
+           })}">
         <slot @pointerleave="${this.#onPointerleave}"
               @pointerover="${this.#onPointerover}"
-              @request-sort="${this.#onRequestSort}" 
+              @request-sort="${this.#onRequestSort}"
               @slotchange="${this.#onSlotChange}"></slot>
         <slot id="summary" name="summary"></slot>
       </div>
     `;
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.#mo.disconnect();
   }
 
   #onPointerleave() {
@@ -137,6 +153,28 @@ export class RhTable extends LitElement {
   #init() {
     if (this.#table && this.#summary) {
       this.#table.setAttribute('aria-describedby', 'summary');
+    }
+
+    /**
+     * Fail criteria:
+     * - If rowspan exists anywhere in the table, the auto-generated heading labels won't work
+     * - If colspan exists in the <thead>, the auto-generated heading labels won't work
+     * - If colspan exists in the <tbody>, the auto-generated heading labels partially work (only assigning the first)
+     *
+     * So we bail for now...
+     */
+    if (this.querySelector('[colspan], [rowspan]')) {
+      return;
+    }
+
+    /* If responsive attribute set, auto-assign `data-label` attributes based on column headers */
+    if (this.#table?.tHead && this.#colHeaders?.length && this.#rows) {
+      for (const row of this.#rows) {
+        row?.querySelectorAll<HTMLElement>(':is(td, th)')
+            .forEach((cell, index) => {
+              cell.dataset.label ||= this.#colHeaders?.[index]?.innerText || '';
+            });
+      }
     }
   }
 

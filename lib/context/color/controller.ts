@@ -1,16 +1,18 @@
 import type { ColorTheme } from './consumer.js';
-import type { ReactiveController, ReactiveElement } from 'lit';
+import type { CSSResult, ReactiveController } from 'lit';
+
+import { ReactiveElement } from 'lit';
 
 import { StyleController } from '@patternfly/pfe-core/controllers/style-controller.js';
 
-import { createContext, type ContextRequestEvent } from '../event.js';
-
-import COLOR_CONTEXT_BASE_STYLES from './context-color.css';
+import { createContext, type ContextRequestEvent, type UnknownContext } from '../event.js';
 
 export interface ColorContextOptions<T extends ReactiveElement> {
   prefix?: string;
   propertyName?: keyof T;
 }
+
+type ColorContext = typeof ColorContextController.context;
 
 /**
 * Maps from consumer host elements to already-fired request events
@@ -30,8 +32,12 @@ export interface ColorContextOptions<T extends ReactiveElement> {
 */
 export const contextEvents = new Map<
   ReactiveElement,
-  ContextRequestEvent<typeof ColorContextController.context>
+  ContextRequestEvent<ColorContext>
 >();
+
+export const isColorContextEvent =
+  (event: ContextRequestEvent<UnknownContext>): event is ContextRequestEvent<ColorContext> =>
+    event.context === ColorContextController.context;
 
 /**
  * Color context is derived from the `--context` css custom property,
@@ -48,9 +54,6 @@ export abstract class ColorContextController<
   /** The context object which acts as the key for providers and consumers */
   public static readonly context = createContext<ColorTheme | null>(Symbol('rh-color-context'));
 
-  /** The style controller which provides the necessary CSS. */
-  protected styleController: StyleController;
-
   /** The last-known color context on the host */
   protected last: ColorTheme | null = null;
 
@@ -59,8 +62,12 @@ export abstract class ColorContextController<
   /** callback which updates the context value on consumers */
   abstract update(next?: ColorTheme | null): void;
 
-  constructor(protected host: T) {
-    this.styleController = new StyleController(host, COLOR_CONTEXT_BASE_STYLES);
+  constructor(protected host: T, styles: CSSStyleSheet | CSSResult) {
+    new StyleController(host, styles);
+    if (this.host instanceof ReactiveElement) {
+      const Class = (this.host.constructor as typeof ReactiveElement);
+      Class.styles = [Class.styles].flat().filter(x => !!x).concat([styles]);
+    }
     host.addController(this);
   }
 }
