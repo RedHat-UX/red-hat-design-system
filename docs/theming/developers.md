@@ -1,4 +1,5 @@
 ---
+templateEngineOverride: njk
 title: Developers
 order: 4
 hasToc: true
@@ -30,9 +31,11 @@ hasToc: true
   import '@rhds/elements/rh-tile/rh-tile.js';
 </script>
 
+{% renderTemplate 'md' %}
 ## Current implementation
 
-RHDS' Theming system is primarily about styles, but it currently relies on JavaScript to work.
+<abbr title="Red Hat Design System">RHDS</abbr>' Theming system is primarily 
+about styles, but it currently relies on JavaScript to work.
 
 ### Context protocol
 
@@ -43,7 +46,7 @@ Our system utilizes this protocol with the setting of the `color-palette`
 attribute on a provider element which makes its context data (in our case, 
 `light` or `dark`) to it's children.  By doing so we can ensure accessible 
 colors are applied given any possible change in context value higher up in the 
-DOM tree. 
+<abbr title="Document Object Model">DOM</abbr> tree. 
 
 This is important not only for helping us maintain our own design guidelines, 
 but also for accessibility compliance and enabling great experiences for all our 
@@ -69,9 +72,19 @@ To make your element a color context provider,
 2. Then add the `@colorContextProvider()` decorator to a property with the
    attribute `color-palette` which is the type `ColorPalette`.
 
-<rh-code-block dedent language="js" highlighting="client">
-  <script type="sample/javascript">{% './docs/theming/code-samples/provider-class.ts' %}</script>
+[contextprotocol]: https://github.com/webcomponents-cg/community-protocols/blob/main/proposals/context.md
+[controllers]: https://lit.dev/docs/composition/controllers/
+[providersrc]: https://github.com/RedHat-UX/red-hat-design-system/blob/main/lib/context/color/provider.ts
+[consumersrc]: https://github.com/RedHat-UX/red-hat-design-system/blob/main/lib/context/color/consumer.ts
+
+{% endrenderTemplate %}
+<rh-code-block dedent
+               full-height
+               language="js"
+               highlighting="client">
+  <script type="sample/javascript">{%- include './code-samples/provider-class.ts' -%}</script>
 </rh-code-block>
+{% renderTemplate 'md' %}
 
 Read "[What are color palettes][palettes]" for more information about the six
 available `color-palettes`.
@@ -91,18 +104,27 @@ To make your element a color context consumer,
 4. Use the theming tokens in your element's shadow styles, being sure.
    to select the element which has the `.on.light`/`.on.dark` classes
 
- <rh-code-block language="js" highlighting="client" full-height>
-   <script type="sample/javascript">{% include './docs/theming/code-samples/consumer-class.ts' %}</script>
- </rh-code-block>
+[palettes]: /theming/color-palettes/
 
- <rh-code-block dedent language="css" highlighting="client">
-   <script type="text/css">
-     #container {
-       color: var(--rh-color-text-primary);
-       background: var(--rh-color-surface);
-     }
-   </script>
- </rh-code-block>
+{% endrenderTemplate %}
+<rh-code-block full-height
+               language="js"
+               highlighting="client">
+  <script type="sample/javascript">{%- include './code-samples/consumer-class.ts' -%}</script>
+</rh-code-block>
+
+<rh-code-block dedent
+               full-height
+               language="css"
+               highlighting="client">
+  <script type="text/css">
+    #container {
+      color: var(--rh-color-text-primary);
+      background: var(--rh-color-surface);
+    }
+  </script>
+</rh-code-block>
+{% renderTemplate 'md' %}
 
 What the `@colorContextConsumer` decorator does, in addition to participating in
 the context event system, is apply a stylesheet from
@@ -110,9 +132,14 @@ the context event system, is apply a stylesheet from
 That stylesheet selects for well-known class names `.on.light` and `.on.dark`,
 and applies values to the theming tokens, depending on the context received.
 
-<rh-code-block dedent language="css" highlighting="client">
-  <script type="text/css">{% './docs/theming/code-samples/consumer-styles.css' %}</script>
+{% endrenderTemplate %}
+<rh-code-block dedent
+               full-height
+               language="css"
+               highlighting="client">
+  <script type="text/css">{%- include './code-samples/consumer-styles.css' -%}</script>
 </rh-code-block>
+{% renderTemplate 'md' %}
 
 For more information on the significance of the context values (i.e.
 `ColorTheme`), read "[Background][backgrounds]".
@@ -136,17 +163,29 @@ In addition to reducing the javascript payload of the design system, style
 queries will allow authors to attach surface styles to any element. For example,
 Your page markup declares a custom surface with some classes:
 
-<rh-code-block dedent language="html" highlighting="client">
+[backgrounds]: /theming/color-palettes/#backgrounds
+[stylequeries]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_size_and_style_queries#container_style_queries_2
+
+{% endrenderTemplate %}
+<rh-code-block dedent
+               full-height
+               language="html"
+               highlighting="client">
   <script type="text/html">
     <div class="custom-surface dark">
       <rh-cta href="#">GO!</rh-cta>
     </div>
   </script>
 </rh-code-block>
+{% renderTemplate 'md' %}
 
 And your document CSS sets the desired color context:
 
-<rh-code-block dedent language="css" highlighting="client">
+{% endrenderTemplate %}
+<rh-code-block dedent 
+               full-height
+               language="css"
+               highlighting="client">
   <script type="text/css">
     .custom-surface {
       container: surface;
@@ -155,17 +194,23 @@ And your document CSS sets the desired color context:
     }
   </script>
 </rh-code-block>
+{% renderTemplate 'md' %}
 
 And you would declare the import a shared stylesheet which activates the theming system,
 similarly to how elements import `@rhds/tokens/css/color-context-consumer.css.js`
 
-<rh-code-block dedent language="css" highlighting="client">
+{% endrenderTemplate %}
+<rh-code-block dedent
+               full-height
+               language="css"
+               highlighting="client">
   <script type="text/css">
     @container style (--rh-context-background: dark) {
       --rh-color-text-primary: var(--rh-color-text-primary-on-dark)
     }
   </script>
 </rh-code-block>
+{% renderTemplate 'md' %}
 
 ## Art Direction
 
@@ -176,7 +221,11 @@ which they are used.
 
 Page authors using _inline SVG_ can use theme tokens to style graphics.
 
-<rh-code-block dedent language="html" highlighting="client">
+{% endrenderTemplate %}
+<rh-code-block dedent
+               full-height
+               language="html"
+               highlighting="client">
   <script type="text/html">
     <svg slot="header" width="80" height="80">
       <rect fill="var(--rh-color-border-interactive)"
@@ -189,13 +238,18 @@ Page authors using _inline SVG_ can use theme tokens to style graphics.
     </svg>
   </script>
 </rh-code-block>
+{% renderTemplate 'md' %}
 
 This approach _does not work_ with svg loaded through the `<img>` tag, or with 
 raster graphics, however another approach is in development which could help:
 
 ### `<rh-picture>` <rh-tag icon="notification-fill" color="purple">Planned</rh-tag>
 
-<rh-code-block dedent language="html" highlighting="client">
+{% endrenderTemplate %}
+<rh-code-block dedent
+               full-height
+               language="html"
+               highlighting="client">
   <script type="text/html">
     <rh-picture>
       <source srcset="../google-cloud-dark.svg" color-theme="dark"></source>
@@ -206,10 +260,3 @@ raster graphics, however another approach is in development which could help:
 
 <rh-cta href="https://github.com/orgs/RedHat-UX/discussions/1780">Join the discussion</rh-cta>
 
-[contextprotocol]: https://github.com/webcomponents-cg/community-protocols/blob/main/proposals/context.md
-[controllers]: https://lit.dev/docs/composition/controllers/
-[providersrc]: https://github.com/RedHat-UX/red-hat-design-system/blob/main/lib/context/color/provider.ts
-[consumersrc]: (https://github.com/RedHat-UX/red-hat-design-system/blob/main/lib/context/color/consumer.ts)
-[palettes]: /theming/color-palettes/
-[stylequeries]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_size_and_style_queries#container_style_queries_2
-[backgrounds]: /theming/color-palettes/#backgrounds
