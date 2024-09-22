@@ -5,6 +5,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { repeat } from 'lit/directives/repeat.js';
 import { classMap } from 'lit/directives/class-map.js';
+import { observes } from '@patternfly/pfe-core/decorators.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import '@rhds/elements/rh-surface/rh-surface.js';
@@ -23,12 +24,12 @@ interface ToastOptions {
 }
 
 const ICONS = new Map(Object.entries({
-  default: 'notification-fill',
-  error: 'error-fill',
+  neutral: 'notification-fill',
   success: 'check-circle-fill',
+  caution: 'warning-fill',
   warning: 'warning-fill',
   danger: 'error-fill',
-  info: 'information-fill',
+  note: 'information-fill',
 }));
 
 export class AlertCloseEvent extends Event {
@@ -129,20 +130,38 @@ export class RhAlert extends LitElement {
   }
 
   private get icon() {
-    return ICONS.get(this.state.toLowerCase()) ?? '';
+    const state = this.state.toLowerCase() as this['state'];
+    switch (state) {
+      case 'info': return ICONS.get('note');
+      case 'default': return ICONS.get('neutral');
+      case 'error': return ICONS.get('danger');
+      default: return ICONS.get(state);
+    }
   }
 
   /**
    * Communicates the urgency of a message and is denoted by various styling configurations.
    *
-   *  - `default` - Indicates generic information or a message with no severity.
-   *  - `info` - Indicates helpful information or a message with very little to no severity.
-   *  - `success` - Indicates a success state, like if a process was completed without errors.
-   *  - `warning` - Indicates a caution state, like a non-blocking error that might need to be fixed.
+   *  - `neutral` - Indicates generic information or a message with no severity.
    *  - `danger` - Indicates a danger state, like an error that is blocking a user from completing a task.
+   *  - `warning` - Indicates a warning state, like a non-blocking error that might need to be fixed.
+   *  - `caution` - Indicates an action or notice which should immediately draw the attention
+   *  - `neutral` - Default state, with no specific meaning
+   *  - `note` - Indicates helpful information or a message with very little to no severity.
+   *  - `success` - Indicates a success state, like if a process was completed without errors.
    */
   @property({ reflect: true })
-  state: 'default' | 'error' | 'success' | 'warning' | 'danger' | 'info' = 'default';
+  state:
+    | 'danger'
+    | 'warning'
+    | 'caution'
+    | 'neutral'
+    | 'note'
+    | 'success'
+    | 'info' // deprecated
+    | 'default' // deprecated
+    | 'error' = // deprecated
+      'neutral';
 
   /**
    * The alternate Inline alert style includes a border instead of a line which
@@ -168,6 +187,26 @@ export class RhAlert extends LitElement {
     const event = new AlertCloseEvent();
     if (this.dispatchEvent(event)) {
       this.remove();
+    }
+  }
+
+  /** Ensures that state is consistent, regardless of input */
+  @observes('state')
+  private stateChanged() {
+    const state = this.state.toLowerCase();
+    switch (state) {
+      case 'info': this.state = 'note'; break;
+      case 'default': this.state = 'neutral'; break;
+      case 'error': this.state = 'danger'; break;
+      case 'danger':
+      case 'warning':
+      case 'caution':
+      case 'neutral':
+      case 'note':
+      case 'success':
+        return;
+      default:
+        this.state = 'neutral';
     }
   }
 

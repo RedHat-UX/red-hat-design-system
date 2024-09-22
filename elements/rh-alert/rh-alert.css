@@ -82,9 +82,9 @@ footer ::slotted(rh-button[variant='link' i]) {
 }
 
 #container.info {
-  --_border-color: var(--rh-color-status-note);
+  --_border-color: var(--rh-color-status-info);
   --_icon-color: var(--rh-color-icon-status-info);
-  --_header-color: var(--rh-color-status-note);
+  --_header-color: var(--rh-color-status-info);
   --_background-color: var(--rh-color-surface-status-info);
 }
 
@@ -93,6 +93,13 @@ footer ::slotted(rh-button[variant='link' i]) {
   --_icon-color: var(--rh-color-icon-status-success);
   --_header-color: var(--rh-color-status-success);
   --_background-color: var(--rh-color-surface-status-success);
+}
+
+#container.caution {
+  --_border-color: var(--rh-color-status-caution);
+  --_icon-color: var(--rh-color-icon-status-caution);
+  --_header-color: var(--rh-color-status-caution);
+  --_background-color: var(--rh-color-surface-status-caution);
 }
 
 #container.warning {
