@@ -25,7 +25,8 @@ import style from './rh-code-block.css';
 function dedent(str: string) {
   const stripped = str.replace(/^\n/, '');
   const match = stripped.match(/^\s+/);
-  return match ? stripped.replace(new RegExp(`^${match[0]}`, 'gm'), '') : str;
+  const out = match ? stripped.replace(new RegExp(`^${match[0]}`, 'gm'), '') : str;
+  return out.trim();
 }
 
 interface CodeLineHeightsInfo {
@@ -273,37 +274,33 @@ export class RhCodeBlock extends LitElement {
       : []);
   }
 
-  #getPrismCodeElements() {
-    const container = this.shadowRoot?.getElementById('prism-output') as HTMLSlotElement;
-    return Array.from(container.children);
-  }
-
   /**
    * Clone the text content and connect it to the document, in order to calculate the number of lines
    * @license MIT
    * Portions copyright prism.js authors (MIT license)
    */
   async #computeLineNumbers() {
-    if (this.#prismOutput) {
-      return;
-    }
-
     await this.updateComplete;
-    const codes = this.#prismOutput ? this.#getPrismCodeElements() : this.#getSlottedCodeElements();
+    const codes =
+        this.#prismOutput ? [this.shadowRoot?.getElementById('prism-output')].filter(x => !!x)
+      : this.#getSlottedCodeElements();
 
     const infos: CodeLineHeightsInfo[] = codes.map(element => {
-      const sizer = document.createElement('span');
-      sizer.className = 'sizer';
-      sizer.innerText = '0';
-      sizer.style.display = 'block';
-      this.shadowRoot?.getElementById('sizers')?.appendChild(sizer);
-      return {
-        lines: element.textContent?.split(/\n(?!$)/g) ?? [],
-        lineHeights: [],
-        sizer,
-        oneLinerHeight: sizer.getBoundingClientRect().height,
-      };
-    });
+      const codeElement = this.#prismOutput ? element.querySelector('code') : element;
+      if (codeElement) {
+        const sizer = document.createElement('span');
+        sizer.className = 'sizer';
+        sizer.innerText = '0';
+        sizer.style.display = 'block';
+        this.shadowRoot?.getElementById('sizers')?.appendChild(sizer);
+        return {
+          lines: element.textContent?.split(/\n(?!$)/g) ?? [],
+          lineHeights: [],
+          sizer,
+          oneLinerHeight: sizer.getBoundingClientRect().height,
+        };
+      }
+    }).filter(x => !!x);
 
     for (const { lines, lineHeights, sizer, oneLinerHeight } of infos) {
       lineHeights[lines.length - 1] = undefined; // why?

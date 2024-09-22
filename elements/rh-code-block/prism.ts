@@ -1,10 +1,9 @@
 import type { RhCodeBlock } from './rh-code-block.js';
 import { Prism } from 'prism-esm';
-import { Plugin as LineNumbers } from 'prism-esm/plugins/line-numbers/prism-line-numbers.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
+import { html } from 'lit';
 
 const prism = new Prism({ manual: true });
-LineNumbers(prism);
 
 /**
  * Autoload a supported language
@@ -37,7 +36,7 @@ async function autoloader(language: RhCodeBlock['language']) {
 export async function highlight(textContent: string, language: RhCodeBlock['language']) {
   await autoloader(language);
   const highlighted = prism.highlight(textContent, prism.languages[language!], language!);
-  return unsafeHTML(highlighted);
+  return html`<code>${unsafeHTML(highlighted)}</code>`;
 }
 
 export { prismStyles } from './prism.css.js';
