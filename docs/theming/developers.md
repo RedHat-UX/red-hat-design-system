@@ -37,16 +37,17 @@ RHDS' Theming system is primarily about styles, but it currently relies on JavaS
 ### Context protocol
 
 The context protocol is an [open protocol][contextprotocol] developed by the web
-components community to support the passing of data between components.
+components community to support passing data between components.
 
-Our system utilizes this protocol with the setting of the `color-palette`
-attribute on a provider element which passes it's context data of `light` or
-`dark` on to it's children.  By doing so we can ensure accessible colors are
-applied given any possible change in context value higher up in the DOM tree. 
+Our system utilizes this protocol with the setting of the `color-palette` 
+attribute on a provider element which makes its context data (in our case, 
+`light` or `dark`) to it's children.  By doing so we can ensure accessible 
+colors are applied given any possible change in context value higher up in the 
+DOM tree. 
 
-This is important not only for helping us ensure we maintain our own design
-guidelines, but also for accessibility compliance and enabling great experiences
-for all our users.
+This is important not only for helping us maintain our own design guidelines, 
+but also for accessibility compliance and enabling great experiences for all our 
+users.
 
 The context protocol is enabled by two [reactive controllers][controllers]: the
 [provider controller][providersrc], and the [consumer controller][consumersrc].
@@ -60,26 +61,19 @@ Custom Elements that implement the provider controller are elements that provide
 their own context, overriding that of their parent.  Elements such as
 `<rh-surface>`, `<rh-card>`, and `<rh-accordion>` are examples of such context
 providers. If a provider contains a set `color-palette` attribute, it will
-override any parent context, and pass it's context on to its children.
+override any parent context, and pass its context on to its children.
 
 To make your element a color context provider,
 
 1. First import the provider controller.
-  <rh-code-block dedent language="js" highlighting="client">
-    <script type="sample/javascript">
-      import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
-    </script>
-  </rh-code-block>
-2. Then add the `@colorContextProvider` decorator to a property with the
-   attribute `color-palette` which is the type `ColorPalette`.  
-  <rh-code-block dedent language="js" highlighting="client">
-    <script type="sample/javascript">
-      @colorContextProvider()
-      @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
-    </script>
-  </rh-code-block>
+2. Then add the `@colorContextProvider()` decorator to a property with the
+   attribute `color-palette` which is the type `ColorPalette`.
 
-Read "[What are color palettes][palettes]" for more information about the sixe
+<rh-code-block dedent language="js" highlighting="client">
+  <script type="sample/javascript">{% './docs/theming/code-samples/provider-class.ts' %}</script>
+</rh-code-block>
+
+Read "[What are color palettes][palettes]" for more information about the six
 available `color-palettes`.
 
 #### Consumers
@@ -90,44 +84,25 @@ consumers.
 
 To make your element a color context consumer,
 
-<ol>
-  <li>First `import` the classMap Lit directive, and the consumer controller
-    <rh-code-block dedent language="js" highlighting="client">
-      <script type="sample/javascript">
-        import { classMap } from 'lit/directives/class-map.js';
-        import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-      </script>
-    </rh-code-block>
-  </li>
-  <li>Then add the `@colorContextConsumer()` decorator to a private property of `on` which is the type of `ColorTheme`.
-    <rh-code-block dedent language="js" highlighting="client">/
-      <script type="sample/javascript">
-        @colorContextConsumer() private on?: ColorTheme;
-      </script>
-    </rh-code-block>
-  </li>
-  <li>Add a classMap that implements the shadow class in your render method
-    <rh-code-block dedent language="js" highlighting="client">
-      <script type="sample/javascript">
-        render() {
-          const { on = 'light' } = this;
-          <div id="container" class="${classMap({ on: true, [on]: !!on })}"></div>
-        }
-      </script>
-    </rh-code-block>
-  </li>
-  <li>The classes of `on light` and `on dark` are then used to style your element when context switches in the elements shadow CSS.
-  <rh-code-block dedent language="css" highlighting="client">
-    <script type="text/css">
-      #container {
-        color: var(--rh-color-text-primary);
-        background: var(--rh-color-surface);
-        &.on.light { --rh-color-surface: var(--rh-color-surface-lightest, #ffffff); }
-        &.on.dark { --rh-color-surface: var(--rh-color-surface-darkest, #151515); }
-      }
-    </script>
-  </rh-code-block>
-</ol>
+1. First `import` the classMap Lit directive, and the consumer controller
+2. Then add the `@colorContextConsumer()` decorator to a private property of
+   `on` which is the type of `ColorTheme`.
+3. Add a classMap that implements the shadow class in your render method
+4. Use the theming tokens in your element's shadow styles, being sure.
+   to select the element which has the `.on.light`/`.on.dark` classes
+
+ <rh-code-block language="js" highlighting="client" full-height>
+   <script type="sample/javascript">{% include './docs/theming/code-samples/consumer-class.ts' %}</script>
+ </rh-code-block>
+
+ <rh-code-block dedent language="css" highlighting="client">
+   <script type="text/css">
+     #container {
+       color: var(--rh-color-text-primary);
+       background: var(--rh-color-surface);
+     }
+   </script>
+ </rh-code-block>
 
 What the `@colorContextConsumer` decorator does, in addition to participating in
 the context event system, is apply a stylesheet from
@@ -136,21 +111,11 @@ That stylesheet selects for well-known class names `.on.light` and `.on.dark`,
 and applies values to the theming tokens, depending on the context received.
 
 <rh-code-block dedent language="css" highlighting="client">
-  <script type="text/css">
-    .on.light {
-      --rh-color-text-primary: var(--rh-color-text-primary-on-light, #151515);
-      /* ...etc */
-    }
-
-    .on.dark {
-      --rh-color-text-primary: var(--rh-color-text-primary-on-dark, #ffffff);
-      /* ...etc */
-    }
-  </script>
+  <script type="text/css">{% './docs/theming/code-samples/consumer-styles.css' %}</script>
 </rh-code-block>
 
-For more information on the significance of the context values (i.e. `ColorTheme`),
-read "[Background][backgrounds]".
+For more information on the significance of the context values (i.e.
+`ColorTheme`), read "[Background][backgrounds]".
 
 ## Future state
 
@@ -158,7 +123,7 @@ In a not so distant future, we will be able to replace the context protocol
 completely and remove this code by implementing the web standard [container
 style queries][stylequeries].
 
-In anticipation of this upcoming browser featuer, we attempt to ensure that our
+In anticipation of this upcoming browser feature, we attempt to ensure that our
 theming system as implemented today using context can easily replaced with style
 queries in the near future.
 
