@@ -2,6 +2,7 @@
   --rh-code-block-callout-size: var(--rh-size-icon-02, 24px);
   --_aspect-ratio: 1;
   --_badge-size: var(--rh-code-block-callout-size);
+  --_badge-padding: 0;
 
   display: block;
   max-width: 1000px;
