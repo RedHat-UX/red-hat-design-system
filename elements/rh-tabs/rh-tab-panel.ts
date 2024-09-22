@@ -54,11 +54,11 @@ export class RhTabPanel extends LitElement {
   }
 
   render() {
-    const { on = '' } = this;
+    const { on = 'light' } = this;
     const { vertical = false, box = false } = this.ctx ?? {};
     const inset = this.ctx?.box === 'inset' ? 'inset' : '';
     return html`
-      <div id="rhds-container" class="${classMap({ on: true, [on]: !!on, box, inset, vertical })}">
+      <div id="container" class="${classMap({ on: true, [on]: true, box, inset, vertical })}">
         <slot></slot>
       </div>
     `;
