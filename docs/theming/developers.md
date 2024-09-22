@@ -32,15 +32,114 @@ hasToc: true
 </script>
 
 {% renderTemplate 'md' %}
-## Current implementation
+
+## Using the theming system
+
+### Themable containers
+### The color-palette attribute
+### Theming whole pages
+
+{% endrenderTemplate %}
+<rh-code-block dedent
+               full-height
+               language="html"
+               highlighting="client">
+  <script type="text/html">
+    <!DOCTYPE html>
+    <html lang="en-US">
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>My Themed Page</title>
+      </head>
+      <body>
+        <rh-surface role="main" color-palette="darker">
+          ...
+        </rh-surface>
+      </body>
+    </html>
+  </script>
+</rh-code-block>
+{% renderTemplate 'md' %}
+
+### Theming individual sections
+
+{% endrenderTemplate %}
+<rh-code-block dedent
+               full-height
+               language="html"
+               highlighting="client">
+  <script type="text/html">
+    <body>
+      <main>
+        <section>
+          Default theme (i.e. lightest)
+        </section>
+        <rh-surface color-palette="darker">
+          ...
+        </rh-surface>
+      </main>
+    </body>
+  </script>
+</rh-code-block>
+{% renderTemplate 'md' %}
+
+## Art Direction
+
+Art direction is the process of selecting art assets based on the context in 
+which they are used.
+
+### Inline SVG
+
+Page authors using _inline SVG_ can use theme tokens to style graphics.
+
+{% endrenderTemplate %}
+<rh-code-block dedent
+               full-height
+               language="html"
+               highlighting="client">
+  <script type="text/html">
+    <svg slot="header" width="80" height="80">
+      <rect fill="var(--rh-color-border-interactive)"
+            fill-opacity="0.1"
+            stroke-dasharray="4"
+            stroke-width="1"
+            stroke="var(--rh-color-border-interactive)"
+            width="80"
+            height="80"/>
+    </svg>
+  </script>
+</rh-code-block>
+{% renderTemplate 'md' %}
+
+This approach _does not work_ with svg loaded through the `<img>` tag, or with 
+raster graphics, however another approach is in development which could help:
+
+### `<rh-picture>` <rh-tag icon="notification-fill" color="purple">Planned</rh-tag>
+
+{% endrenderTemplate %}
+<rh-code-block dedent
+               full-height
+               language="html"
+               highlighting="client">
+  <script type="text/html">
+    <rh-picture>
+      <source srcset="../google-cloud-dark.svg" color-theme="dark"></source>
+      <img src="../google-cloud.svg" alt="Logo for Red Hat partner Google Cloud">
+    <rh-picture>
+  </script>
+</rh-code-block>
+
+<rh-cta href="https://github.com/orgs/RedHat-UX/discussions/1780">Join the discussion</rh-cta>
+{% renderTemplate 'md' %}
+
+## How theming works
+### Current implementation - Context Protocol
 
 <abbr title="Red Hat Design System">RHDS</abbr>' Theming system is primarily 
-about styles, but it currently relies on JavaScript to work.
-
-### Context protocol
-
-The context protocol is an [open protocol][contextprotocol] developed by the web
-components community to support passing data between components.
+about styles. Tt currently relies on JavaScript to work, by way of the [context 
+protocol][contextprotocol] developed by the web components community to support 
+passing data between components.
 
 Our system utilizes this protocol with the setting of the `color-palette` 
 attribute on a provider element which makes its context data (in our case, 
@@ -144,7 +243,7 @@ and applies values to the theming tokens, depending on the context received.
 For more information on the significance of the context values (i.e.
 `ColorTheme`), read "[Background][backgrounds]".
 
-## Future state
+### Future state - style queries  <rh-tag color="purple" icon="notification-fill">Planned</rh-tag>
 
 In a not so distant future, we will be able to replace the context protocol
 completely and remove this code by implementing the web standard [container
@@ -153,8 +252,6 @@ style queries][stylequeries].
 In anticipation of this upcoming browser feature, we attempt to ensure that our
 theming system as implemented today using context can easily replaced with style
 queries in the near future.
-
-### Style queries <rh-tag color="purple" icon="notification-fill">Planned</rh-tag>
 
 <rh-alert>Note, the examples in this section are hypothetical, the final markup
 and styles may not be the same</rh-alert>
@@ -210,53 +307,3 @@ similarly to how elements import `@rhds/tokens/css/color-context-consumer.css.js
     }
   </script>
 </rh-code-block>
-{% renderTemplate 'md' %}
-
-## Art Direction
-
-Art direction is the process of selecting art assets based on the context in 
-which they are used.
-
-### Inline SVG
-
-Page authors using _inline SVG_ can use theme tokens to style graphics.
-
-{% endrenderTemplate %}
-<rh-code-block dedent
-               full-height
-               language="html"
-               highlighting="client">
-  <script type="text/html">
-    <svg slot="header" width="80" height="80">
-      <rect fill="var(--rh-color-border-interactive)"
-            fill-opacity="0.1"
-            stroke-dasharray="4"
-            stroke-width="1"
-            stroke="var(--rh-color-border-interactive)"
-            width="80"
-            height="80"/>
-    </svg>
-  </script>
-</rh-code-block>
-{% renderTemplate 'md' %}
-
-This approach _does not work_ with svg loaded through the `<img>` tag, or with 
-raster graphics, however another approach is in development which could help:
-
-### `<rh-picture>` <rh-tag icon="notification-fill" color="purple">Planned</rh-tag>
-
-{% endrenderTemplate %}
-<rh-code-block dedent
-               full-height
-               language="html"
-               highlighting="client">
-  <script type="text/html">
-    <rh-picture>
-      <source srcset="../google-cloud-dark.svg" color-theme="dark"></source>
-      <img src="../google-cloud.svg" alt="Logo for Red Hat partner Google Cloud">
-    <rh-picture>
-  </script>
-</rh-code-block>
-
-<rh-cta href="https://github.com/orgs/RedHat-UX/discussions/1780">Join the discussion</rh-cta>
-
