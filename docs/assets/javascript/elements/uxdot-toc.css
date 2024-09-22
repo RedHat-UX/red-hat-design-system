@@ -31,7 +31,7 @@ summary {
 }
 
 summary,
-#summary {
+.summary {
   font-family: var(--rh-font-family-body-text);
   font-size: var(--rh-font-size-body-text-xl) !important;
   font-weight: var(--rh-font-weight-body-text-medium);
