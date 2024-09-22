@@ -36,8 +36,8 @@ async function autoloader(language: RhCodeBlock['language']) {
 export async function highlight(textContent: string, language: RhCodeBlock['language']) {
   await autoloader(language);
   const highlighted = prism.highlight(textContent, prism.languages[language!], language!);
-  return html`<code>${unsafeHTML(highlighted)}</code>`;
+  return html`<code class="language-${language}">${unsafeHTML(highlighted)}</code>`;
 }
 
-export { prismStyles } from './prism.css.js';
+export { prismStyles, preRenderedLightDomStyles } from './prism.css.js';
 

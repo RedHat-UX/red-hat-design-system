@@ -12,7 +12,6 @@ import { type ColorTheme, colorContextConsumer } from '../../lib/context/color/c
 
 import style from './rh-code-block.css';
 
-
 /* TODO
  * - style slotted and shadow fake-fabs
  * - manage state of copy and wrap, including if they are slotted. see actions.html
@@ -97,7 +96,7 @@ export class RhCodeBlock extends LitElement {
   }) actions: ('copy' | 'wrap')[] = [];
 
   /** When set to "client", `<rh-code-block>` will automatically highlight the source code using Prism.js */
-  @property() highlighting?: 'client';
+  @property() highlighting?: 'client' | 'prism-prerendered';
 
   /** When set along with `highlighting="client"`, this grammar will be used to highlight source code */
   @property() language?:
@@ -229,9 +228,20 @@ export class RhCodeBlock extends LitElement {
 
   async #onSlotChange() {
     switch (this.highlighting) {
-      case 'client': await this.#highlightWithPrism();
+      case 'client': await this.#highlightWithPrism(); break;
+      case 'prism-prerendered': await this.#applyPrismPrerenderedStyles(); break;
     }
     this.#computeLineNumbers();
+  }
+
+  async #applyPrismPrerenderedStyles() {
+    if (getComputedStyle(this).getPropertyValue('--_styles-applied') !== 'true') {
+      const root = this.getRootNode();
+      if (root instanceof Document || root instanceof ShadowRoot) {
+        const { preRenderedLightDomStyles: { styleSheet } } = await import('./prism.js');
+        root.adoptedStyleSheets = [...root.adoptedStyleSheets, styleSheet!];
+      }
+    }
   }
 
   async #highlightWithPrism() {
