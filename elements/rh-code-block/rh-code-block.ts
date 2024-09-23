@@ -95,8 +95,12 @@ export class RhCodeBlock extends LitElement {
     },
   }) actions: ('copy' | 'wrap')[] = [];
 
-  /** When set to "client", `<rh-code-block>` will automatically highlight the source code using Prism.js */
-  @property() highlighting?: 'client' | 'prism-prerendered';
+  /**
+   * When set to "client", `<rh-code-block>` will automatically highlight the source using Prism.js
+   * When set to "Prerendered", `<rh-code-block>` will apply supported RHDS styles to children with
+   * prismjs classnames in the element's root.
+   */
+  @property() highlighting?: 'client' | 'prerendered';
 
   /** When set along with `highlighting="client"`, this grammar will be used to highlight source code */
   @property() language?:
@@ -229,7 +233,9 @@ export class RhCodeBlock extends LitElement {
   async #onSlotChange() {
     switch (this.highlighting) {
       case 'client': await this.#highlightWithPrism(); break;
-      case 'prism-prerendered': await this.#applyPrismPrerenderedStyles(); break;
+      // TODO: if we ever support other tokenizers e.g. highlightjs,
+      // dispatch here off of some supplemental attribute like `tokenizer="highlightjs"`
+      case 'prerendered': await this.#applyPrismPrerenderedStyles(); break;
     }
     this.#computeLineNumbers();
   }
