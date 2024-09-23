@@ -41,7 +41,7 @@ async function resolveLocal(pattern, relativeTo = './') {
  * jspm generator doesn't yet support trailing slash
  * @param {import('@parse5/tools').Document} document
  */
-function injectManuallyResolvedIconsToImportMap(document) {
+function injectManuallyResolvedModulesToImportMap(document) {
   const importMapNode = query(document, node =>
     isElementNode(node)
       && node.tagName === 'script'
@@ -50,17 +50,17 @@ function injectManuallyResolvedIconsToImportMap(document) {
           && attr.value === 'importmap'));
   if (importMapNode && isElementNode(importMapNode)) {
     const json = JSON.parse(getTextContent(importMapNode));
-    json.imports['lit'] = '/node_modules/lit/index.js';
-    json.imports['lit/'] = '/node_modules/lit/';
-    json.imports['@patternfly/pfe-core'] = '/node_modules/@patternfly/pfe-core/core.js';
-    json.imports['@patternfly/pfe-core/'] = '/node_modules/@patternfly/pfe-core/';
-    json.imports['@rhds/icons/'] = '/node_modules/@rhds/icons/';
-    json.imports['@rhds/tokens/'] = '/node_modules/@rhds/tokens/js/';
-    json.imports['@rhds/tokens/css/'] = '/node_modules/@rhds/tokens/css/';
-    json.imports['@floating-ui/dom'] =
-      '/node_modules/@floating-ui/dom/dist/floating-ui.dom.browser.min.mjs';
-    json.imports['@floating-ui/core'] =
-      '/node_modules/@floating-ui/core/dist/floating-ui.core.browser.min.mjs';
+    Object.assign(json.imports, {
+      'lit': '/node_modules/lit/index.js',
+      'lit/': '/node_modules/lit/',
+      '@patternfly/pfe-core': '/node_modules/@patternfly/pfe-core/core.js',
+      '@patternfly/pfe-core/': '/node_modules/@patternfly/pfe-core/',
+      '@rhds/icons/': '/node_modules/@rhds/icons/',
+      '@rhds/tokens/': '/node_modules/@rhds/tokens/js/',
+      '@rhds/tokens/css/': '/node_modules/@rhds/tokens/css/',
+      '@floating-ui/dom': '/node_modules/@floating-ui/dom/dist/floating-ui.dom.browser.min.mjs',
+      '@floating-ui/core': '/node_modules/@floating-ui/core/dist/floating-ui.core.browser.min.mjs',
+    });
     setTextContent(importMapNode, JSON.stringify(json, null, 2));
   }
 }
@@ -164,7 +164,7 @@ export default pfeDevServerConfig({
       if (ctx.path.endsWith('/') && !ctx.path.includes('.')) {
         await next();
         const document = parse(ctx.body);
-        injectManuallyResolvedIconsToImportMap(document);
+        injectManuallyResolvedModulesToImportMap(document);
         transformDevServerHTML(document);
         ctx.body = serialize(document);
       } else {
