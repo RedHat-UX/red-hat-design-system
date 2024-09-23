@@ -2,6 +2,7 @@
   --rh-code-block-callout-size: var(--rh-size-icon-02, 24px);
   --_aspect-ratio: 1;
   --_badge-size: var(--rh-code-block-callout-size);
+  --_badge-padding: 0;
 
   display: block;
   max-width: 1000px;
@@ -23,6 +24,14 @@
   padding: 0 !important;
   background: transparent !important;
   border: none !important;
+}
+
+:host([highlighting='prerendered']) ::slotted(pre) {
+  opacity: 0;
+  transition:
+    opacity
+    var(--rh-animation-speed)
+    var(--rh-animation-timing, cubic-bezier(0.465, 0.183, 0.153, 0.946));
 }
 
 .shadow-fab {
@@ -63,6 +72,13 @@
 
 #prism-output {
   margin: 0;
+
+  & code {
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+  }
 }
 
 #container {
@@ -143,6 +159,7 @@
   opacity: 0;
   pointer-events: none;
   z-index: -10000;
+  line-height: var(--rh-line-height-code, 1.5);
 }
 
 #line-numbers {
@@ -157,6 +174,11 @@
   color: var(--rh-color-text-secondary);
   font-weight: var(--rh-font-weight-code-regular, 400);
   border-inline-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+
+  li {
+    line-height: var(--rh-line-height-code, 1.5);
+    display: block;
+  }
 }
 
 #actions {
@@ -329,4 +351,8 @@
   --_regex-color: var(--rh-color-green-40, #87bb62);
   --_important-color: var(--rh-color-purple-30, #b6a6e9);
   --_variable-color: var(--rh-color-green-40, #87bb62);
+}
+
+:host([highlighting='client']) #content::slotted(:is(script, pre)) {
+  display: none;
 }

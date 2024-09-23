@@ -89,56 +89,9 @@ If you do nothing else to test your projects, try navigating the entire experien
 
 #### Screen readers
 
-If you’re feeling ambitious and want to combine testing tasks, perform your keyboard testing with a screen reader turned on. The screen reader you use for testing depends on the operating system and browser you wish to test.
+If you’re feeling ambitious and want to combine testing tasks, perform your keyboard testing with a screen reader turned on.
 
-<rh-table>
-  <table>
-    <caption>
-      Browser and screen reader pairings
-    </caption>
-    <thead>
-      <tr>
-        <th scope="col" data-label="OS">Operating system</th>
-        <th scope="col" data-label="Browser">Browser</th>
-        <th scope="col" data-label="Reader">Screen reader</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="OS">MacOS</td>
-        <td data-label="Browser">Safari</td>
-        <td data-label="Reader"><a href="https://support.apple.com/guide/voiceover/turn-voiceover-on-or-off-vo2682/mac">VoiceOver for Mac</a> (included with MacOS)</td>
-      </tr>
-      <tr>
-        <td data-label="OS">Windows</td>
-        <td data-label="Browser">Firefox</td>
-        <td><a href="https://www.nvaccess.org/download/">NVDA</a> (free download)</td>
-      </tr>
-      <tr>
-        <td data-label="OS">Windows</td>
-        <td data-label="Browser">Chrome</td>
-        <td data-label="Reader"><a href="https://www.freedomscientific.com/products/software/jaws/">JAWS</a> (paid)</td>
-      </tr>
-      <tr>
-        <td data-label="OS">Linux</td>
-        <td data-label="Browser">Firefox</td>
-        <td data-label="Reader"><a href="https://help.gnome.org/users/orca/stable/index.html.en">Orca</a> (included with GNOME desktop environment)</td>
-      </tr>
-      <tr>
-        <td data-label="OS">Android</td>
-        <td data-label="Browser">Chrome</td>
-        <td data-label="Reader"><a href="https://support.google.com/accessibility/android/answer/6283677?hl=en&amp;ref_topic=10601571&amp;sjid=4695144848639410734-NC">Talkback</a> (included with Android)</td>
-      </tr>
-      <tr>
-        <td data-label="OS">iOS</td>
-        <td data-label="Browser">Safari</td>
-        <td data-label="Reader"><a href="https://support.apple.com/en-sa/guide/iphone/iph3e2e415f/ios">VoiceOver for iOS</a> (included with iOS)</td>
-      </tr>
-    </tbody>
-  </table>
-</rh-table>
-
-Deque offers a collection of [screen reader shortcuts](https://dequeuniversity.com/screenreaders/) for all of the above listed technologies.
+We have a [page covering the basics of screen reader testing](/accessibility/screen-readers/) on Mac, Windows, Linux, iOS, and Android platforms.
 
 #### Color contrast checkers
 
