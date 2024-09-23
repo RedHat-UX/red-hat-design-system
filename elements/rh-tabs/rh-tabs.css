@@ -100,6 +100,7 @@ button {
   --_overflow-button-text-color: var(--rh-color-text-secondary);
   --_overflow-button-disabled-text-color: #d2d2d2;
   --_overflow-button-hover-text-color: var(--rh-color-text-primary);
+  --_panel-padding: var(--rh-space-2xl, 32px);
 
   &.vertical {
     @container host (min-width: 768px) {
@@ -137,12 +138,22 @@ button {
 
     &.box {
       @container host (min-width: 768px) {
+        --_panel-padding: var(--rh-space-3xl, 48px);
+
         [part='tabs-container'] {
           &:before {
             border-inline-start-width: 0;
             border-inline-end-width: var(--rh-border-width-sm, 1px);
           }
         }
+      }
+    }
+  }
+
+  &:not(.vertical) {
+    &.box {
+      &.inset {
+        --_panel-padding: var(--rh-space-2xl, 32px) var(--rh-space-4xl, 64px);
       }
     }
   }
