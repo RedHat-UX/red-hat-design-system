@@ -191,18 +191,20 @@ export class RhAlert extends LitElement {
   }
 
   /** Ensures that state is consistent, regardless of input */
-  @observes('state')
+  @observes('state', { waitFor: 'updated' })
   private stateChanged() {
     const state = this.state.toLowerCase();
     switch (state) {
-      case 'info': this.state = 'note'; break;
+      // the first three are deprecated pre-DPO status names
+      case 'note': this.state = 'info'; break;
       case 'default': this.state = 'neutral'; break;
       case 'error': this.state = 'danger'; break;
+      // the following are DPO-approved status names
       case 'danger':
       case 'warning':
       case 'caution':
       case 'neutral':
-      case 'note':
+      case 'info':
       case 'success':
         return;
       default:
