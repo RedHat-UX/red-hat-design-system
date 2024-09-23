@@ -146,8 +146,7 @@ export class RhAlert extends LitElement {
    *  - `danger` - Indicates a danger state, like an error that is blocking a user from completing a task.
    *  - `warning` - Indicates a warning state, like a non-blocking error that might need to be fixed.
    *  - `caution` - Indicates an action or notice which should immediately draw the attention
-   *  - `neutral` - Default state, with no specific meaning
-   *  - `note` - Indicates helpful information or a message with very little to no severity.
+   *  - `info` - Indicates helpful information or a message with very little to no severity.
    *  - `success` - Indicates a success state, like if a process was completed without errors.
    */
   @property({ reflect: true })
