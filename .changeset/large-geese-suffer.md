@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-`<rh-tabs>`: added `@container` query support
+`<rh-tabs>`: tabs now adjust to the size of their containing element, not just to the size of the viewport.
