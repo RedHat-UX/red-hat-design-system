@@ -162,7 +162,7 @@ button {
   &:not(.vertical) {
     &.box {
       &.inset {
-        @container host (min-width: 768px) {
+        & [part='container']:not(.overflow) {
           --_panel-padding: var(--rh-space-2xl, 32px) var(--rh-space-4xl, 64px);
         }
       }
