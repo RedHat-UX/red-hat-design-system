@@ -100,7 +100,10 @@ button {
   --_overflow-button-text-color: var(--rh-color-text-secondary);
   --_overflow-button-disabled-text-color: #d2d2d2;
   --_overflow-button-hover-text-color: var(--rh-color-text-primary);
-  --_panel-padding: var(--rh-space-2xl, 32px);
+
+  @container (min-width: 768px) {
+    --_panel-padding: var(--rh-space-2xl, 32px);
+  }
 
   &.vertical {
     @container host (min-width: 768px) {
@@ -150,10 +153,18 @@ button {
     }
   }
 
+  [part='container'] {
+    &.overflow {
+      --_panel-padding: var(--rh-space-lg, 16px);
+    }
+  }
+
   &:not(.vertical) {
     &.box {
       &.inset {
-        --_panel-padding: var(--rh-space-2xl, 32px) var(--rh-space-4xl, 64px);
+        @container host (min-width: 768px) {
+          --_panel-padding: var(--rh-space-2xl, 32px) var(--rh-space-4xl, 64px);
+        }
       }
     }
   }
@@ -167,30 +178,36 @@ button {
   }
 }
 
-:host(:is([centered], [box='inset'])) [part='tabs'] {
-  margin-inline: var(--rh-tabs-inset, var(--_inset-inline-margin, auto));
+/* When overflow */
+[part='container'].overflow {
+  & [part='tabs'] {
+    --_inset-inline-margin: 0;
+
+    position: relative;
+    inset-inline-start: -1px;
+    z-index: 1;
+  }
+
+  & [part='panels'] {
+    --_panels-overflow-padding: var(--rh-space-2xl, 32px);
+  }
 }
 
-/* BOX INSET TABS */
-:host([box='inset']:not([vertical])) [part='tabs'] {
-  --_inset-inline-margin: var(--rh-space-2xl, 32px);
+:host([box='inset']:not([vertical])) {
+  & [part='tabs'] {
+    --_inset-inline-margin: var(--rh-space-2xl, 32px);
+  }
 }
 
-.overflow [part='panels'] {
-  --_panels-overflow-padding: var(--rh-space-2xl, 32px);
+:host(:is([centered], [box='inset'])) {
+  & [part='container']:not(.overflow) {
+    & [part='tabs'] {
+      margin-inline: var(--rh-tabs-inset, var(--_inset-inline-margin, auto));
+    }
+  }
 }
 
 /* OVERFLOW BUTTONS */
-
-/* When overflow no margin (Inset) */
-#previous-tab + [part='tabs'] {
-  --_inset-inline-margin: 0;
-
-  position: relative;
-  inset-inline-start: -1px;
-  z-index: 1;
-}
-
 :is(#previous-tab, #next-tab) {
   padding-block: 0;
   padding-inline: var(--rh-space-lg, 16px);
