@@ -156,9 +156,9 @@ export class RhAlert extends LitElement {
     | 'warning'
     | 'caution'
     | 'neutral'
-    | 'note'
+    | 'info'
     | 'success'
-    | 'info' // deprecated
+    | 'note' // deprecated
     | 'default' // deprecated
     | 'error' = // deprecated
       'neutral';
