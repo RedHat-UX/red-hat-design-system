@@ -21,7 +21,7 @@
       var(--rh-color-border-subtle-on-light, #c7c7c7));
   --_row-background-hover-color:
     var(--rh-table-row-background-hover-color,
-      rgba(from var(--rh-color-gray-20, #e0e0e0) r g b / 0.4));
+      rgba(from var(--rh-color-gray-40, #a3a3a3) r g b / 0.1));
   --_column-background-hover-color:
     var(--rh-table-column-background-hover-color,
       rgba(from var(--rh-color-blue-50, #0066cc) r g b / 0.1));
