@@ -248,11 +248,8 @@ Here's how to integrate `a11ySnapshot` with `<rh-skip-link>`:
 
         it('should have a link with the name, "Skip to main content"', async function() {
           const snapshot = await a11ySnapshot();
-          expect(snapshot).to.deep.equal({
-            role: 'WebArea',
-            name: '',
-            children: [{ role: 'link', name: 'Skip to main content' }],
-          });
+          expect(snapshot).to.axContainRole('link');
+          expect(snapshot).to.axContainName('Skip to main content');
         });
       });
     });
@@ -261,7 +258,7 @@ Here's how to integrate `a11ySnapshot` with `<rh-skip-link>`:
 1. You should see "1/1 test files | 1 passed, 0 failed" output to your terminal.
 1. Congrats, you just implemented `a11ySnapshot` into your testing pipeline! 🎉
 
-In step three above, we're using `a11ySnapshot` to verify the `role` of the link in the lightdom and ensure it has the name, "Skip to main content". Test writers can `console.log()` the contents of `a11ySnapshot` to see other properties to test against.
+In step three above, we're using `a11ySnapshot` and some custom Chai helpers to verify the [role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/link_role) of the link in the lightdom and ensure it has the name, "Skip to main content". Test writers can `console.log()` the contents of `a11ySnapshot` to see other properties to test against. Be sure to check the PatternFly Elements's source for a list of other [custom Chai accessibility helpers](https://github.com/patternfly/patternfly-elements/blob/main/tools/pfe-tools/test/a11y-snapshot.ts#L321-L332) that are available to RHDS users.
 
 This is a very basic example of using `a11ySnapshot`. To see more complex examples, check out the tests for [`<rh-switch>`](https://github.com/RedHat-UX/red-hat-design-system/blob/main/elements/rh-switch/test/rh-switch.spec.ts), [`<rh-site-status>`](https://github.com/RedHat-UX/red-hat-design-system/blob/main/elements/rh-site-status/test/rh-site-status.spec.ts), or [`<rh-icon>`](https://github.com/RedHat-UX/red-hat-design-system/blob/main/elements/rh-icon/test/rh-icon.spec.ts).
 
