@@ -12,7 +12,6 @@ import { type ColorTheme, colorContextConsumer } from '../../lib/context/color/c
 
 import style from './rh-code-block.css';
 
-
 /* TODO
  * - style slotted and shadow fake-fabs
  * - manage state of copy and wrap, including if they are slotted. see actions.html
@@ -25,7 +24,8 @@ import style from './rh-code-block.css';
 function dedent(str: string) {
   const stripped = str.replace(/^\n/, '');
   const match = stripped.match(/^\s+/);
-  return match ? stripped.replace(new RegExp(`^${match[0]}`, 'gm'), '') : str;
+  const out = match ? stripped.replace(new RegExp(`^${match[0]}`, 'gm'), '') : str;
+  return out.trim();
 }
 
 interface CodeLineHeightsInfo {
@@ -95,8 +95,12 @@ export class RhCodeBlock extends LitElement {
     },
   }) actions: ('copy' | 'wrap')[] = [];
 
-  /** When set to "client", `<rh-code-block>` will automatically highlight the source code using Prism.js */
-  @property() highlighting?: 'client';
+  /**
+   * When set to "client", `<rh-code-block>` will automatically highlight the source using Prism.js
+   * When set to "Prerendered", `<rh-code-block>` will apply supported RHDS styles to children with
+   * prismjs classnames in the element's root.
+   */
+  @property() highlighting?: 'client' | 'prerendered';
 
   /** When set along with `highlighting="client"`, this grammar will be used to highlight source code */
   @property() language?:
@@ -228,9 +232,22 @@ export class RhCodeBlock extends LitElement {
 
   async #onSlotChange() {
     switch (this.highlighting) {
-      case 'client': await this.#highlightWithPrism();
+      case 'client': await this.#highlightWithPrism(); break;
+      // TODO: if we ever support other tokenizers e.g. highlightjs,
+      // dispatch here off of some supplemental attribute like `tokenizer="highlightjs"`
+      case 'prerendered': await this.#applyPrismPrerenderedStyles(); break;
     }
     this.#computeLineNumbers();
+  }
+
+  async #applyPrismPrerenderedStyles() {
+    if (getComputedStyle(this).getPropertyValue('--_styles-applied') !== 'true') {
+      const root = this.getRootNode();
+      if (root instanceof Document || root instanceof ShadowRoot) {
+        const { preRenderedLightDomStyles: { styleSheet } } = await import('./prism.js');
+        root.adoptedStyleSheets = [...root.adoptedStyleSheets, styleSheet!];
+      }
+    }
   }
 
   async #highlightWithPrism() {
@@ -273,37 +290,33 @@ export class RhCodeBlock extends LitElement {
       : []);
   }
 
-  #getPrismCodeElements() {
-    const container = this.shadowRoot?.getElementById('prism-output') as HTMLSlotElement;
-    return Array.from(container.children);
-  }
-
   /**
    * Clone the text content and connect it to the document, in order to calculate the number of lines
    * @license MIT
    * Portions copyright prism.js authors (MIT license)
    */
   async #computeLineNumbers() {
-    if (this.#prismOutput) {
-      return;
-    }
-
     await this.updateComplete;
-    const codes = this.#prismOutput ? this.#getPrismCodeElements() : this.#getSlottedCodeElements();
+    const codes =
+        this.#prismOutput ? [this.shadowRoot?.getElementById('prism-output')].filter(x => !!x)
+      : this.#getSlottedCodeElements();
 
     const infos: CodeLineHeightsInfo[] = codes.map(element => {
-      const sizer = document.createElement('span');
-      sizer.className = 'sizer';
-      sizer.innerText = '0';
-      sizer.style.display = 'block';
-      this.shadowRoot?.getElementById('sizers')?.appendChild(sizer);
-      return {
-        lines: element.textContent?.split(/\n(?!$)/g) ?? [],
-        lineHeights: [],
-        sizer,
-        oneLinerHeight: sizer.getBoundingClientRect().height,
-      };
-    });
+      const codeElement = this.#prismOutput ? element.querySelector('code') : element;
+      if (codeElement) {
+        const sizer = document.createElement('span');
+        sizer.className = 'sizer';
+        sizer.innerText = '0';
+        sizer.style.display = 'block';
+        this.shadowRoot?.getElementById('sizers')?.appendChild(sizer);
+        return {
+          lines: element.textContent?.split(/\n(?!$)/g) ?? [],
+          lineHeights: [],
+          sizer,
+          oneLinerHeight: sizer.getBoundingClientRect().height,
+        };
+      }
+    }).filter(x => !!x);
 
     for (const { lines, lineHeights, sizer, oneLinerHeight } of infos) {
       lineHeights[lines.length - 1] = undefined; // why?

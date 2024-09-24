@@ -1,5 +1,7 @@
 {% renderInstall %}{% endrenderInstall %}
 
+{% renderLightDom %}{% endrenderLightDom %}
+
 ## Usage
 
 The content of code-block snippets must be contained within a non-executable 
