@@ -14,6 +14,9 @@ hasToc: true
 <link rel="stylesheet"
       data-helmet
       href="../color-palettes.css">
+<link rel="stylesheet"
+      data-helmet
+      href="../developers.css">
 
 <script type="module" data-helmet>
   import '/assets/javascript/elements/uxdot-pattern.js';
@@ -35,8 +38,26 @@ hasToc: true
 
 ## Using the theming system
 
-### Themable containers
+### Themeable containers
+
+A document, parent HTML element, or special provider elements such as `<rh-surface>` can all be considered a themeable containers.  A themeable container is an element that can have custom classes attached which provide values for the relevant CSS color properties in a [theme](themes).
+
+A common pattern for a themeable container is the full width band.  For example, a `<rh-surface>` may be used as a full-width container and provide the <em>Bordeaux</em> theme values to a set of 3 cards in a grid:
+
+[themes]: /theming/customizing/#custom-themes
+
+{% endrenderTemplate %}
+
+{% uxdotPattern class="band-example", stacked=true, allow="lightest"%}
+{% include './patterns/band.html' %}
+{% enduxdotPattern %}
+
+{% renderTemplate 'md' %}
+
 ### The color-palette attribute
+
+The `color-palette` is an important piece of the theming system.  The attribute is available on specially designated provider elements that actively define a [color palette](palettes), while their children passively accept their background color and text color.  The `color-palette` can be set to six possible values `lightest`, `lighter`, `light`, `dark`, `darker` and `darkest`.  
+
 ### Theming whole pages
 
 {% endrenderTemplate %}
@@ -204,6 +225,7 @@ To make your element a color context consumer,
    to select the element which has the `.on.light`/`.on.dark` classes
 
 [palettes]: /theming/color-palettes/
+
 
 {% endrenderTemplate %}
 <rh-code-block full-height

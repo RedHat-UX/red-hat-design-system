@@ -1,0 +1,7 @@
+.band-example {
+  &::part(example) {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--rh-space-lg);
+  }
+}
