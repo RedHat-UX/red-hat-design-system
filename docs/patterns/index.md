@@ -9,12 +9,14 @@ summaries:
   form: Collects information from a user through inputs
   link: Directs users to other domains or pages
   link-with-icon: Adds additional context or decoration to a link
+  logo-wall: Visual arrangement of logos representing various brands, companies, or organizations
   search-bar: Performs a search and displays relevant content
   skip-navigation: Moves a user down to content by keyboard input
   sticky-banner: Anchors an offer to the bottom edge of a page
   sticky-card: Anchors an offer to the right edge of a page
+  tabs: Programatically activate a tab panel or item inside a tab panel
+  tile: Style Tiles to differentiate them from other page elements
   video-thumbnail: Overlays a button that indicates video playback
-  logo-wall: Visual arrangement of logos representing various brands, companies, or organizations
 order: 0
 tags:
   - pattern
@@ -30,7 +32,7 @@ importElements:
   }
 </style>
 
-{# NOTE: all images in this view need to be 340 by 200 px in order to maintain same ratio. #}
+{# NOTE: all images in this view need to be 680 by 400 px in order to maintain same ratio. #}
 
 ## Overview
 Patterns compose elements and tokens with content and validation rules to 
@@ -42,6 +44,12 @@ create uniform, accessible experiences.
   {% if pattern.data.title !== 'Patterns' %}
 
   {%- set slug = pattern.fileSlug -%}
+
+  {%- set title = pattern.data.heading -%}
+  {% if title == 'Patterns' %}
+    {%- set title = pattern.data.title -%}
+  {% endif %}
+
   {%- set summary = pattern.description -%}
   {% if not summary %}
     {%- set summary = summaries[slug] -%}
@@ -49,10 +57,10 @@ create uniform, accessible experiences.
 
   <rh-tile>
     <uxdot-example slot="image">
-      <img src="{{ '/assets/patterns/all-patterns-' + slug + '.png' | url }}" alt="{{ pattern.data.title }}">
+      <img src="{{ '/assets/patterns/all-patterns-' + slug + '.png' | url }}" alt="{{ title }}">
     </uxdot-example>
-    <a slot="headline" href="{{ pattern.url }}"><h3>{{ pattern.data.title }}</h3></a>
-    <p slot="footer">{{ summary }}</p>
+    <a slot="headline" href="{{ pattern.url }}"><h3>{{ title }}</h3></a>
+    <p style="margin-block: 0;">{{ summary }}</p>
   </rh-tile>
 
   {% endif %}
