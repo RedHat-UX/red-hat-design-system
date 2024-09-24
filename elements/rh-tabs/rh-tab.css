@@ -391,7 +391,7 @@ slot[name='icon'] {
   &.dark {
     --_button-text-color: var(--rh-tabs-link-color, var(--rh-color-text-secondary));
     --_button-focus-outline-color: var(--rh-color-border-interactive);
-    --_inactive-tab-background-color: var(--rh-color-surface-dark, #383838);
+    --_inactive-tab-background-color: var(--rh-color-surface-dark-alt, #292929);
 
     &.active {
       --_button-text-color: var(--rh-tabs-link-color, var(--rh-color-text-primary));
