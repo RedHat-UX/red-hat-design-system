@@ -92,6 +92,7 @@ slot[name='icon'] {
   /* When button is vertical format */
   &.vertical {
     text-align: start;
+    padding-inline: var(--rh-space-lg, 16px);
 
     &.box {
       @container (min-width: 768px) {
