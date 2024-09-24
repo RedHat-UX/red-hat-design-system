@@ -41,7 +41,7 @@ function copyCell(token) {
         <uxdot-copy-button copy="${getTokenHref(token)}" icon="link"></uxdot-copy-button>
       </div>
     </td>
-  `;
+  `.trim();
 }
 
 /** @param {DesignToken} token */
