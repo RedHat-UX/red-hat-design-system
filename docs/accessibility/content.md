@@ -12,34 +12,24 @@ importElements:
 <link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
 
 <style>
-    #func-img {
-      width: 50%;
-      margin: 0 auto;
-      margin-block-start: 0;
-      margin-block-end: var(--rh-space-2xl, 32px);
-      text-align: center;
-    }
-
-    #func-img img {
-        max-width: 500px;
-        margin: 0 auto;
-    }
-
-    rh-blockquote, rh-table {
+    rh-blockquote {
       display: block;
-      margin-block: 2em !important;
-      max-width: 36em;
+      margin-block: 2rem;
+      margin-inline-start: 2.5rem;
+    }
+
+    .limit-width {
+      max-width: 56rem;
+    }
+
+    #func-img {
+      outline: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+      width: 50%;
     }
     
     @container container (min-width: 576px) {
       #func-img {
         padding: var(--rh-space-3xl, 48px);
-      }
-    }
-
-    @container container (min-width: 768px) {
-      #func-img {
-        padding: var(--rh-space-4xl, 64px);
       }
     }
 </style>
@@ -105,7 +95,7 @@ Note that background images inserted into a page via CSS are always considered d
 
 When writing alternative text, it’s important to first consider the image’s context. An image’s meaning or function may be more relevant than its literal depiction. So, the same image may need very different alt text in different contexts.
 
-<uxdot-example width-adjustment="500px" no-border>
+<uxdot-example width-adjustment="500px" no-border class="limit-width">
   <img src="/assets/accessibility/Its_A_Wonderful_Life.jpg" alt="George Bailey hugs his wife, Mary, and holds his daughter, Zuzu, in the movie It's a Wonderful Life">
 </uxdot-example>
 
@@ -115,8 +105,10 @@ Depending on whether a web page is about the plot of the 1946 movie It’s a Won
 
 Images acting as buttons or links are functional, and thus serve different purposes than images supporting the surrounding text.
 
-<figure id="func-img">
-  <a href="https://www.redhat.com/"><img src="/assets/logo-redhat.png" alt="Red Hat homepage"></a>
+<figure>
+  <a href="https://www.redhat.com/">
+    <img id="func-img" src="/assets/logo-redhat.png" alt="Red Hat homepage">
+  </a>
 </figure>
 
 If the above image supplements the text of an article about Red Hat or our products, the appropriate alt text could be something like `"Red Hat, Inc. logo."` But if that image is a link pointing to the corporate homepage, you might want something along the lines of `"Red Hat homepage"` for your alt text:

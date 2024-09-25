@@ -9,11 +9,11 @@ importElements:
 ---
 
 <style>
-    rh-blockquote {
-        display: block;
-        margin-block: 2em !important;
-        max-width: 36em;
-    }
+  rh-blockquote {
+    display: block;
+    margin-block: 2rem;
+    margin-inline-start: 2.5rem;
+  }
 </style>
 
 ## Overview
