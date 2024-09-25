@@ -34,11 +34,11 @@ it('should have a pill shape and padding on left and right only', async function
 });
 
 for (const [state, token] of Object.entries({
-  info: '--rh-color-status-note-on-light',
+  info: '--rh-color-status-info-on-light',
   success: '--rh-color-status-success-on-light',
-  moderate: '--rh-color-status-caution-on-light',
-  important: '--rh-color-status-warning-on-light',
-  critical: '--rh-color-status-danger-on-light',
+  caution: '--rh-color-status-caution-on-light',
+  warning: '--rh-color-status-warning-on-light',
+  danger: '--rh-color-status-danger-on-light',
 })) {
   describe(`state="${state}"`, function() {
     let element: RhBadge;
