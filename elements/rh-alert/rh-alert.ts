@@ -1,11 +1,10 @@
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
-import { type CSSResult, LitElement, html, render } from 'lit';
+import { type CSSResult, LitElement, html, isServer, render } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { repeat } from 'lit/directives/repeat.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { observes } from '@patternfly/pfe-core/decorators.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import '@rhds/elements/rh-surface/rh-surface.js';
@@ -189,15 +188,12 @@ export class RhAlert extends LitElement {
     }
   }
 
-  /** Ensures that state is consistent, regardless of input */
-  @observes('state', { waitFor: 'updated' })
-  private stateChanged() {
-    const state = this.state.toLowerCase();
-    switch (state) {
+  #aliasState(state: string) {
+    switch (state.toLowerCase()) {
       // the first three are deprecated pre-DPO status names
-      case 'note': this.state = 'info'; break;
-      case 'default': this.state = 'neutral'; break;
-      case 'error': this.state = 'danger'; break;
+      case 'note': return 'info';
+      case 'default': return 'neutral';
+      case 'error': return 'danger';
       // the following are DPO-approved status names
       case 'danger':
       case 'warning':
@@ -205,33 +201,43 @@ export class RhAlert extends LitElement {
       case 'neutral':
       case 'info':
       case 'success':
-        return;
+        return state as this['state'];
       default:
-        this.state = 'neutral';
+        return 'neutral';
+    }
+  }
+
+  override connectedCallback() {
+    super.connectedCallback();
+    if (!isServer) {
+      this.requestUpdate();
     }
   }
 
   render() {
-    const hasActions = this.#slots.hasSlotted('actions');
-    const hasBody = this.#slots.hasSlotted(SlotController.default as unknown as string);
-    const { state, variant = '' } = this;
+    const _isServer = isServer && !this.hasUpdated;
+    const hasActions = _isServer || this.#slots.hasSlotted('actions');
+    const hasBody =
+      _isServer || this.#slots.hasSlotted(SlotController.default as unknown as string);
+    const { variant = '' } = this;
+    const state = this.#aliasState(this.state);
     return html`
       <rh-surface id="container"
-           class="${classMap({
-             hasBody,
-             on: true,
-             light: true,
-             [state]: true,
-             [variant]: !!variant,
-           })}"
-           role="alert"
-           aria-hidden="false"
-           color-palette="lightest">
+                  class="${classMap({
+                    hasBody,
+                    on: true,
+                    light: true,
+                    [state]: true,
+                    [variant]: !!variant,
+                  })}"
+                  role="alert"
+                  aria-hidden="false"
+                  color-palette="lightest">
         <div id="left-column">
           <rh-icon id="icon" set="ui" icon="${this.icon}"></rh-icon>
         </div>
         <div id="middle-column">
-          <header ?hidden="${this.#slots.isEmpty('header')}">
+          <header ?hidden="${!_isServer && this.#slots.isEmpty('header')}">
             <div id="header">
               <slot name="header"></slot>
             </div>${!this.dismissable && this.variant !== 'toast' ? '' : html`
