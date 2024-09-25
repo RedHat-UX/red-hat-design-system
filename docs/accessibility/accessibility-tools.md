@@ -56,6 +56,12 @@ Many modern desktop browsers now have accessibility-specific tools incorporated 
 
 Google's Chrome and Microsoft's Edge browsers have several accessibility tools built into DevTools. One of the most straightforward tools to use is [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/). Lighthouse can test for performance, best practices, accessibility, and SEO. It gives a page a score from 0-100% in each of these categories.
 
+<figure>
+  <uxdot-example width-adjustment="900px">
+    <img src="/assets/accessibility/lighthouse-audit.png" alt="Screenshot of a Lighthouse autdit with a score of 100%.">
+  </uxdot-example>
+</figure>
+
 Running an accessibility audit in Lighthouse is recommended to catch errors detectable via automated tooling.
 
 Chrome and Edge also have an "Accessibility Pane" that lets users see information about the currently selected DOM node. This includes properties like:
