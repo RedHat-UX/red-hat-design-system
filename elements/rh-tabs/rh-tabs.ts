@@ -171,13 +171,14 @@ export class RhTabs extends LitElement {
   }
 
   override render() {
-    const { on = '' } = this;
+    const { on = '', vertical = false, box = false, centered = false } = this;
+    const inset = this.box === 'inset' ? 'inset' : '';
     const rtl = this.#dir.dir === 'rtl';
     return html`
-      <div id="rhds-container" class="${classMap({ on: true, [on]: !!on, rtl })}">
+      <div id="rhds-container" class="${classMap({ on: true, [on]: !!on, rtl, vertical, box, inset, centered })}">
         <div part="container" class="${classMap({ overflow: this.#overflow.showScrollButtons })}">
           <div part="tabs-container">${!this.#overflow.showScrollButtons ? '' : html`
-            <button id="previousTab" tabindex="-1"
+            <button id="previous-tab" tabindex="-1"
                     aria-label="${this.getAttribute('label-scroll-left') ?? 'Scroll left'}"
                     ?disabled="${!this.#overflow.overflowLeft}"
                     @click="${() => !rtl ? this.#overflow.scrollLeft() : this.#overflow.scrollRight()}">
@@ -188,7 +189,7 @@ export class RhTabs extends LitElement {
                     part="tabs"
                     @slotchange="${this.#onSlotchange}"></slot>
             </div>${!this.#overflow.showScrollButtons ? '' : html`
-            <button id="nextTab"
+            <button id="next-tab"
                     tabindex="-1"
                     aria-label="${this.getAttribute('label-scroll-right') ?? 'Scroll right'}"
                     ?disabled="${!this.#overflow.overflowRight}"
