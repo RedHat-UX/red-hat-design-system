@@ -39,7 +39,7 @@ To learn more about our Red Hat red color, go to the [Brand
 standards](https://www.redhat.com/en/about/brand/standards) website.
 
 <rh-alert state="warning">
- <h4 slot="header">Usage Warning</h4>
+ <h4 slot="header">Usage warning</h4>
  <p>Do not apply the Red Hat red color to text in dark environments unless
 it meets <a href="https://www.w3.org/WAI/WCAG21/Understanding/">WCAG 2.1 AA</a>
 requirements.</p>
@@ -187,7 +187,10 @@ patterns like [alerts](/elements/alert), [badges](/elements/badge),
     <tbody>
       <tr>
         <td data-label="Status">Info</td>
-        <td data-label="Use case">Use purple to communicate helpful or important information.</td>
+        <td data-label="Use case">
+          <p>Use purple to communicate helpful or important information.</p>
+          <p><em>Note:</em> "Info" was previously called "note/tip."</p>
+        </td>
       </tr>
       <tr>
         <td data-label="Status">Neutral</td>
