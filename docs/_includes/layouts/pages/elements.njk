@@ -8,6 +8,7 @@ eleventyComputed:
 {%- set prettyName -%}{{ (doc.alias or doc.slug or element.slug) | deslugify }}{% endset %}
 {%- set planned = isPlanned(repoStatus, prettyName) %}
 {%- set manifest = doc.docsPage.manifest -%}
+{%- set tagName = doc.tagName or element.tagName -%}
 {%- set demos = manifest and manifest.getDemos(doc.docsPage.tagName) -%}
 {%- set demosUrl -%}/elements/{{ slug }}/demos/{%- endset -%}
 
@@ -59,7 +60,7 @@ eleventyComputed:
 
 {% if not planned %}
 <script type="module" data-helmet>
-  import '@rhds/elements/{{ doc.tagName or element.tagName }}/{{ doc.tagName or element.tagName }}.js';
+  import '@rhds/elements/{{ tagName }}/{{ tagName }}.js';
 </script>
 {% endif %}
 
@@ -87,7 +88,7 @@ eleventyComputed:
 
     <div class="container">
       {{ content | safe }}
-      {% include 'partials/component/feedback.html' %}
+      {% include "partials/component/feedback.html" %}
       {% include "partials/component/edit-this-page.njk" %}
     </div>
 

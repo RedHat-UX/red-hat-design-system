@@ -1,6 +1,6 @@
 import('@patternfly/pfe-tools/11ty/DocsPage.js');
 const { tokens } = require('@rhds/tokens');
-const { copyCell, getTokenHref } = require('../tokensHelpers.cjs');
+const { copyCell, getTokenHref, dedent } = require('../tokensHelpers.cjs');
 
 /** quick and dirty dedent, also provides in-editor syntax highlighting */
 const html = (...args) =>
@@ -157,26 +157,6 @@ class Renderers {
       <section>
         ${mdHeading(content, { level })}
         ${await this.innerMD(content)}
-      </section>`;
-  }
-
-  /** Render the overview of a component page */
-  renderOverview(content) {
-    return html`
-      <section class="overview">
-        <h2>Overview</h2>
-        <div class="example-preview">
-          ${content}
-        </div>
-      </section>
-
-      <section>
-        <h2>Installation</h2>
-
-      ~~~shell
-      npm install ${this.manifest.packageJson.name}
-      ~~~
-
       </section>`;
   }
 
