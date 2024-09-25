@@ -173,7 +173,7 @@ patterns like [alerts](/elements/alert), [badges](/elements/badge),
 
 <rh-alert state="warning">
   <h4 slot="header">Usage Warning</h4>
-  <p>The red-orange color is reserved for danger or error states, do not use it anywhere else.</p>
+  <p>The red-orange color is reserved for danger or error states. Do not use it anywhere else.</p>
 </rh-alert>
 
 <rh-table>
@@ -186,7 +186,7 @@ patterns like [alerts](/elements/alert), [badges](/elements/badge),
     </thead>
     <tbody>
       <tr>
-        <td data-label="Status">Note/Tip</td>
+        <td data-label="Status">Info</td>
         <td data-label="Use case">Use purple to communicate helpful or important information.</td>
       </tr>
       <tr>
@@ -198,12 +198,12 @@ patterns like [alerts](/elements/alert), [badges](/elements/badge),
         <td data-label="Use case">Use green to communicate a success state.</td>
       </tr>
       <tr>
-        <td data-label="Status">Caution</td>
-        <td data-label="Use case">Use yellow to communicate that an issue can be avoided.</td>
+        <td data-label="Status">Warning</td>
+        <td data-label="Use case">Use yellow to communicate that a destructive action might occur if an issue is not resolved.</td>
       </tr>
       <tr>
-        <td data-label="Status">Warning</td>
-        <td data-label="Use case">Use orange to communicate that a destructive action might occur if an issue is not resolved.</td>
+        <td data-label="Status">Caution</td>
+        <td data-label="Use case">Use orange to communicate that an issue can be avoided.</td>
       </tr>
       <tr>
         <td data-label="Status">Danger/Error</td>
