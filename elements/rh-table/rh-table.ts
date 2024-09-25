@@ -87,7 +87,20 @@ export class RhTable extends LitElement {
      * thats when the consumer requests an update.  Switching between lighter -> light for example will
      * not trigger the component to update at this time.
      */
-    this.#internalColorPalette = this.closest('[color-palette]')?.getAttribute('color-palette');
+    const selector = '[color-palette]';
+    function closestShadowRecurse(el: Element | Window | Document | null): Element | null {
+      if (!el || el === document || el === window) {
+        return null;
+      }
+      if ((el as Element).assignedSlot) {
+        el = (el as Element).assignedSlot;
+      }
+      const found = (el as Element).closest(selector);
+      return found ?
+      found
+      : closestShadowRecurse(((el as Element).getRootNode() as ShadowRoot).host);
+    }
+    this.#internalColorPalette = closestShadowRecurse(this)?.getAttribute('color-palette');
   }
 
   render() {
