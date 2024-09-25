@@ -2,7 +2,7 @@
 title: Content
 tags:
  - accessibility
-order: 30
+order: 10
 importElements:
   - rh-code-block
   - rh-blockquote
