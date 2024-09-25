@@ -98,7 +98,9 @@ button {
   --_border-color: var(--rh-tabs-border-color, var(--rh-color-border-subtle));
   --_arrow-color: var(--rh-color-accent-base);
   --_overflow-button-text-color: var(--rh-color-text-secondary);
-  --_overflow-button-disabled-text-color: var(--rh-color-gray-40, #a3a3a3); /* Non Standard usage of crayon token */
+
+  /* Non Standard usage of crayon token */
+  --_overflow-button-disabled-text-color: var(--rh-color-gray-40, #a3a3a3);
   --_overflow-button-hover-text-color: var(--rh-color-text-primary);
 
   @container (min-width: 768px) {
