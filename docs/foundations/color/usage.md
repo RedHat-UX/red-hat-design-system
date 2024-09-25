@@ -209,7 +209,7 @@ patterns like [alerts](/elements/alert), [badges](/elements/badge),
         <td data-label="Use case">Use orange to communicate that an issue can be avoided.</td>
       </tr>
       <tr>
-        <td data-label="Status">Danger/Error</td>
+        <td data-label="Status">Danger</td>
         <td data-label="Use case">Use red-orange to communicate a destructive action or critical error.</td>
       </tr>
     </tbody>
