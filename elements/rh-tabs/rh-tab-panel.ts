@@ -1,16 +1,9 @@
-import type { RhTabsContext } from './context.js';
-
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { consume } from '@lit/context';
-
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-
-import { context } from './context.js';
 
 import styles from './rh-tab-panel.css';
 
@@ -28,10 +21,6 @@ export class RhTabPanel extends LitElement {
    * Sets color theme based on parent context
    */
   @colorContextConsumer() private on?: ColorTheme;
-
-  @consume({ context, subscribe: true })
-  @property({ attribute: false })
-  private ctx?: RhTabsContext;
 
   #internals = this.attachInternals();
 
@@ -55,10 +44,8 @@ export class RhTabPanel extends LitElement {
 
   render() {
     const { on = 'light' } = this;
-    const { vertical = false, box = false } = this.ctx ?? {};
-    const inset = this.ctx?.box === 'inset' ? 'inset' : '';
     return html`
-      <div id="container" class="${classMap({ on: true, [on]: true, box, inset, vertical })}">
+      <div id="container" class="${classMap({ on: true, [on]: true })}">
         <slot></slot>
       </div>
     `;
