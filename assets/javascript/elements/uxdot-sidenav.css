@@ -6,7 +6,7 @@
   width: 100%;
   height: var(--_max-height);
   top: 0;
-  z-index: var(--uxdot-sidenav-z-index, 2);
+  z-index: var(--uxdot-sidenav-z-index, 5);
 }
 
 :host([open]) {

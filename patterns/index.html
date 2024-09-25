@@ -49,9 +49,9 @@
     "lit": "/assets/packages/lit/index.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.1/core.js",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.1/core.js",
     "@rhds/tokens/media.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js",
     "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/meta.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js",
@@ -133,7 +133,7 @@
     <link rel="stylesheet" href="/styles/pages/backpage.css">
 
 <script type="module" src="/assets/javascript/elements/uxdot-feedback.js"></script>
-<uxdot-masthead  role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);position:fixed;inset:0;height:max-content;z-index:var(--uxdot-masthead-z-index,2);container-type:inline-size;container-name:host}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:transparent;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width:576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width:992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
+<uxdot-masthead  role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);position:fixed;inset:0;height:max-content;z-index:var(--uxdot-masthead-z-index,2);container-type:inline-size;container-name:host;z-index:10}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:transparent;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width:576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width:992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
       <div id="container" part="container">
         <slot name="hamburger"></slot>
         <slot name="logo"></slot>
@@ -163,7 +163,7 @@
   <a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v2.0.1" slot="links" title="Version 2.0.1" aria-label="Version 2.0.1">v2.0.1</a>
 </uxdot-masthead>
 
-<uxdot-sidenav  trigger="hamburger"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{--_padding-start:var(--uxdot-sidenav-padding-start, var(--rh-space-2xl));--_padding-end:var(--uxdot-sidenav-padding-end, var(--rh-space-2xl));--_max-height:100dvh;width:100%;height:var(--_max-height);top:0;z-index:var(--uxdot-sidenav-z-index,2)}:host([open]){display:block!important;position:fixed!important}:host(:not([open])){display:none}[part=close-button]{color:var(--rh-color-text-primary-on-light);background-color:transparent;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}#container{position:relative;background-color:var(--rh-color-surface-lightest);overflow-y:scroll;width:auto;height:100dvh}#close-button-container{padding-inline:var(--rh-space-md);padding-block:var(--rh-space-lg);max-height:var(--uxdot-masthead-max-height,72px)}#close-button:focus{outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-light);border-radius:var(--rh-border-radius-default,3px)}[part=nav]{padding-block:var(--rh-space-lg,16px)}[part=overlay]{--_gray-90-rgb:var(--rh-color-gray-90-rgb);display:none;background-color:rgb(var(--_gray-90-rgb) / var(--rh-opacity-60));position:fixed;top:0;height:100dvh;width:100dvw;z-index:-1}::slotted(ul){padding-inline:0;padding-block:var(--_padding-start) calc(var(--_padding-end) + (var(--rh-font-size-body-text-lg) * 1.5) + (var(--rh-space-lg) * 2));list-style:none;margin-block:0!important;height:var(--_max-height);overflow-y:scroll;background-color:var(--rh-color-surface-lightest)}:host([open]) [part=overlay]{display:block}@media (min-width:320px){:host{--uxdot-sidenav-width:320px;width:var(--uxdot-sidenav-width);box-shadow:var(--rh-box-shadow-lg)}#container{width:var(--uxdot-sidenav-width,320px)}}@media (min-width:576px){#close-button-container{padding:var(--rh-space-lg)}}@media (min-width:992px){:host{--uxdot-siznav-z-index:1;position:fixed;top:var(--uxdot-masthead-max-height,72px);height:calc(var(--_max-height) - var(--uxdot-masthead-max-height,72px));box-shadow:unset}:host(:not([open])){display:block}#close-button-container{display:none}:host([open]) [part=overlay]{display:none}}</style><!--lit-part F9UNgxNq0pA=-->
+<uxdot-sidenav  trigger="hamburger"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{--_padding-start:var(--uxdot-sidenav-padding-start, var(--rh-space-2xl));--_padding-end:var(--uxdot-sidenav-padding-end, var(--rh-space-2xl));--_max-height:100dvh;width:100%;height:var(--_max-height);top:0;z-index:var(--uxdot-sidenav-z-index,5)}:host([open]){display:block!important;position:fixed!important}:host(:not([open])){display:none}[part=close-button]{color:var(--rh-color-text-primary-on-light);background-color:transparent;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}#container{position:relative;background-color:var(--rh-color-surface-lightest);overflow-y:scroll;width:auto;height:100dvh}#close-button-container{padding-inline:var(--rh-space-md);padding-block:var(--rh-space-lg);max-height:var(--uxdot-masthead-max-height,72px)}#close-button:focus{outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-light);border-radius:var(--rh-border-radius-default,3px)}[part=nav]{padding-block:var(--rh-space-lg,16px)}[part=overlay]{--_gray-90-rgb:var(--rh-color-gray-90-rgb);display:none;background-color:rgb(var(--_gray-90-rgb) / var(--rh-opacity-60));position:fixed;top:0;height:100dvh;width:100dvw;z-index:-1}::slotted(ul){padding-inline:0;padding-block:var(--_padding-start) calc(var(--_padding-end) + (var(--rh-font-size-body-text-lg) * 1.5) + (var(--rh-space-lg) * 2));list-style:none;margin-block:0!important;height:var(--_max-height);overflow-y:scroll;background-color:var(--rh-color-surface-lightest)}:host([open]) [part=overlay]{display:block}@media (min-width:320px){:host{--uxdot-sidenav-width:320px;width:var(--uxdot-sidenav-width);box-shadow:var(--rh-box-shadow-lg)}#container{width:var(--uxdot-sidenav-width,320px)}}@media (min-width:576px){#close-button-container{padding:var(--rh-space-lg)}}@media (min-width:992px){:host{--uxdot-siznav-z-index:1;position:fixed;top:var(--uxdot-masthead-max-height,72px);height:calc(var(--_max-height) - var(--uxdot-masthead-max-height,72px));box-shadow:unset}:host(:not([open])){display:block}#close-button-container{display:none}:host([open]) [part=overlay]{display:none}}</style><!--lit-part F9UNgxNq0pA=-->
       <div id="container" part="container">
         <div id="close-button-container">
           <!--lit-node 2--><button id="close-button"
@@ -668,105 +668,105 @@ create uniform, accessible experiences.</p>
       <img src="/assets/patterns/all-patterns-announcement.png" alt="Announcement">
     </uxdot-example>
     <a slot="headline" href="/patterns/announcement/"><h3 id="announcement">Announcement</h3></a>
-    <p slot="footer">Displays important messages across web properties</p>
+    <p style="margin-block: 0;">Displays important messages across web properties</p>
   </rh-tile>
   <rh-tile>
     <uxdot-example slot="image">
-      <img src="/assets/patterns/all-patterns-card.png" alt="Overview">
+      <img src="/assets/patterns/all-patterns-card.png" alt="Card">
     </uxdot-example>
-    <a slot="headline" href="/patterns/card/"><h3 id="overview">Overview</h3></a>
-    <p slot="footer">Arranges content and interactive elements in a layout</p>
+    <a slot="headline" href="/patterns/card/"><h3 id="card">Card</h3></a>
+    <p style="margin-block: 0;">Arranges content and interactive elements in a layout</p>
   </rh-tile>
   <rh-tile>
     <uxdot-example slot="image">
       <img src="/assets/patterns/all-patterns-disclosure.png" alt="Disclosure">
     </uxdot-example>
     <a slot="headline" href="/patterns/disclosure/"><h3 id="disclosure">Disclosure</h3></a>
-    <p slot="footer">Toggles the visibility of a content panel</p>
+    <p style="margin-block: 0;">Toggles the visibility of a content panel</p>
   </rh-tile>
   <rh-tile>
     <uxdot-example slot="image">
       <img src="/assets/patterns/all-patterns-filter.png" alt="Filter">
     </uxdot-example>
     <a slot="headline" href="/patterns/filter/"><h3 id="filter">Filter</h3></a>
-    <p slot="footer">Sorts data by predetermined sections and tags</p>
+    <p style="margin-block: 0;">Sorts data by predetermined sections and tags</p>
   </rh-tile>
   <rh-tile>
     <uxdot-example slot="image">
       <img src="/assets/patterns/all-patterns-form.png" alt="Form">
     </uxdot-example>
     <a slot="headline" href="/patterns/form/"><h3 id="form">Form</h3></a>
-    <p slot="footer">Collects information from a user through inputs</p>
+    <p style="margin-block: 0;">Collects information from a user through inputs</p>
   </rh-tile>
   <rh-tile>
     <uxdot-example slot="image">
       <img src="/assets/patterns/all-patterns-link-with-icon.png" alt="Link with icon">
     </uxdot-example>
     <a slot="headline" href="/patterns/link-with-icon/"><h3 id="link-with-icon">Link with icon</h3></a>
-    <p slot="footer">Adds additional context or decoration to a link</p>
+    <p style="margin-block: 0;">Adds additional context or decoration to a link</p>
   </rh-tile>
   <rh-tile>
     <uxdot-example slot="image">
       <img src="/assets/patterns/all-patterns-link.png" alt="Link">
     </uxdot-example>
     <a slot="headline" href="/patterns/link/"><h3 id="link">Link</h3></a>
-    <p slot="footer">Directs users to other domains or pages</p>
+    <p style="margin-block: 0;">Directs users to other domains or pages</p>
   </rh-tile>
   <rh-tile>
     <uxdot-example slot="image">
-      <img src="/assets/patterns/all-patterns-logo-wall.png" alt="Overview">
+      <img src="/assets/patterns/all-patterns-logo-wall.png" alt="Logo wall">
     </uxdot-example>
-    <a slot="headline" href="/patterns/logo-wall/"><h3 id="overview">Overview</h3></a>
-    <p slot="footer">Visual arrangement of logos representing various brands, companies, or organizations</p>
+    <a slot="headline" href="/patterns/logo-wall/"><h3 id="logo-wall">Logo wall</h3></a>
+    <p style="margin-block: 0;">Visual arrangement of logos representing various brands, companies, or organizations</p>
   </rh-tile>
   <rh-tile>
     <uxdot-example slot="image">
       <img src="/assets/patterns/all-patterns-search-bar.png" alt="Search bar">
     </uxdot-example>
     <a slot="headline" href="/patterns/search-bar/"><h3 id="search-bar">Search bar</h3></a>
-    <p slot="footer">Performs a search and displays relevant content</p>
+    <p style="margin-block: 0;">Performs a search and displays relevant content</p>
   </rh-tile>
   <rh-tile>
     <uxdot-example slot="image">
       <img src="/assets/patterns/all-patterns-skip-navigation.png" alt="Skip navigation">
     </uxdot-example>
     <a slot="headline" href="/patterns/skip-navigation/"><h3 id="skip-navigation">Skip navigation</h3></a>
-    <p slot="footer">Moves a user down to content by keyboard input</p>
+    <p style="margin-block: 0;">Moves a user down to content by keyboard input</p>
   </rh-tile>
   <rh-tile>
     <uxdot-example slot="image">
       <img src="/assets/patterns/all-patterns-sticky-banner.png" alt="Sticky banner">
     </uxdot-example>
     <a slot="headline" href="/patterns/sticky-banner/"><h3 id="sticky-banner">Sticky banner</h3></a>
-    <p slot="footer">Anchors an offer to the bottom edge of a page</p>
+    <p style="margin-block: 0;">Anchors an offer to the bottom edge of a page</p>
   </rh-tile>
   <rh-tile>
     <uxdot-example slot="image">
       <img src="/assets/patterns/all-patterns-sticky-card.png" alt="Sticky card">
     </uxdot-example>
     <a slot="headline" href="/patterns/sticky-card/"><h3 id="sticky-card">Sticky card</h3></a>
-    <p slot="footer">Anchors an offer to the right edge of a page</p>
+    <p style="margin-block: 0;">Anchors an offer to the right edge of a page</p>
   </rh-tile>
   <rh-tile>
     <uxdot-example slot="image">
       <img src="/assets/patterns/all-patterns-tabs.png" alt="Tabs">
     </uxdot-example>
     <a slot="headline" href="/patterns/tabs/"><h3 id="tabs">Tabs</h3></a>
-    <p slot="footer"></p>
+    <p style="margin-block: 0;">Programatically activate a tab panel or item inside a tab panel</p>
   </rh-tile>
   <rh-tile>
     <uxdot-example slot="image">
       <img src="/assets/patterns/all-patterns-tile.png" alt="Tile">
     </uxdot-example>
     <a slot="headline" href="/patterns/tile/"><h3 id="tile">Tile</h3></a>
-    <p slot="footer"></p>
+    <p style="margin-block: 0;">Style Tiles to differentiate them from other page elements</p>
   </rh-tile>
   <rh-tile>
     <uxdot-example slot="image">
       <img src="/assets/patterns/all-patterns-video-thumbnail.png" alt="Video thumbnail">
     </uxdot-example>
     <a slot="headline" href="/patterns/video-thumbnail/"><h3 id="video-thumbnail">Video thumbnail</h3></a>
-    <p slot="footer">Overlays a button that indicates video playback</p>
+    <p style="margin-block: 0;">Overlays a button that indicates video playback</p>
   </rh-tile>
 </nav>
 <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:0 0;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
