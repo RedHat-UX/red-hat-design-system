@@ -46,7 +46,7 @@ importElements:
     {% endif %}
     <rh-tile compact bleed {% if comingSoon %}disabled{% endif %}>
       <uxdot-example slot="image" no-border transparent><img src="{{ doc.screenshotPath }}" alt="{{ title }}"></uxdot-example>
-      <h3 slot="headline"><a href="{{ doc.overviewHref | url }}">{{ title }}</a></h3>
+      <h3 slot="headline"><a href="{{ doc.overviewHref }}">{{ title }}</a></h3>
       <p>{{ summary }}</p>
       {% if comingSoon %}<div slot="footer">Coming Soon</div>{% endif %}
     </rh-tile>
@@ -61,5 +61,5 @@ importElements:
 
 <uxdot-feedback>
   <h2>Elements</h2>
-  <p>To learn how to use our elements in your designs, visit the <a href="{{ '/elements/' | url }}">Elements</a> section.</p>
+  <p>To learn how to use our elements in your designs, visit the <a href="/elements/">Elements</a> section.</p>
 </uxdot-feedback>

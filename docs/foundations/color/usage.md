@@ -10,33 +10,33 @@ subnav:
   collection: sortedColor
   order: 2
 permalink: /foundations/color/usage/index.html
-importElements: 
-  - rh-alert
-  - rh-tag
-  - rh-table
 ---
 
-<script type="module" src="{{ '/assets/javascript/elements/uxdot-best-practice.js' | url }}"></script>
+<script data-helmet type="module">
+  import '/assets/javascript/elements/uxdot-best-practice.js';
+  import '@rhds/elements/rh-alert/rh-alert.js';
+  import '@rhds/elements/rh-tag/rh-tag.js';
+  import '@rhds/elements/rh-table/rh-table.js';
+</script>
 
-<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
-
+<link data-helmet
+      rel="stylesheet"
+      href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
 
 ## Using color
 
-Our color palette is designed to work across all digital properties,
-from websites to applications to ads and more. To view our colors as
-design tokens, go to the [Tokens](/tokens) section. If you have
-questions about how to apply the color palette, [contact
-us](https://github.com/RedHat-UX/red-hat-design-system/discussions).
+Our color palette is designed to work across all digital properties, from 
+websites to applications to ads and more. To view our colors as design tokens, 
+go to the [Tokens](/tokens) section. If you have questions about how to apply 
+the color palette, [contact us][contactus].
 
 ### Brand red
 
-Our primary brand color is red. It is important to use it consistently
-and thoughtfully to maximize accessibility and build brand recognition.
-Red is a strong color; use it as an accent instead of filling large
-areas. If you need a color for danger or error states, use red-orange.
-To learn more about our Red Hat red color, go to the [Brand
-standards](https://www.redhat.com/en/about/brand/standards) website.
+Our primary brand color is red. It is important to use it consistently and 
+thoughtfully to maximize accessibility and build brand recognition. Red is a 
+strong color; use it as an accent instead of filling large areas. If you need a 
+color for danger or error states, use red-orange. To learn more about our Red 
+Hat red color, go to the [Brand standards][standards] website.
 
 <rh-alert state="warning">
  <h4 slot="header">Usage Warning</h4>
@@ -46,7 +46,8 @@ requirements.</p>
 </rh-alert>
 
 <uxdot-example>
-  <img src="/assets/color/brand-red.png" alt="spectrum of brand red shades with examples of brand red being used">
+  <img src="/assets/color/brand-red.png"
+       alt="spectrum of brand red shades with examples of brand red being used">
 </uxdot-example>
 
 ### Canvas
@@ -59,7 +60,8 @@ design. If a custom canvas color is lighter or darker than the defaults,
 white or black may be used as surface colors.
 
 <uxdot-example>
-  <img src="/assets/color/canvas.png" alt="swatches of the default canvas colors for dark and light theme and examples of custom canvas colors">
+  <img src="/assets/color/canvas.png"
+       alt="swatches of the default canvas colors for dark and light theme and examples of custom canvas colors">
 </uxdot-example>
 
 ### Surface
@@ -70,7 +72,8 @@ sections. For example, a card (white surface) can be placed in a section
 (light gray surface) on a canvas (white).
 
 <uxdot-example variant="full" no-border>
-  <img src="/assets/color/surface.png" alt="swatches of the default surface colors for dark and light theme and examples of a card in a section with a card">
+  <img src="/assets/color/surface.png"
+       alt="swatches of the default surface colors for dark and light theme and examples of a card in a section with a card">
 </uxdot-example>
 
 ### Layering <rh-tag color="purple">Beta</rh-tag>
@@ -88,7 +91,8 @@ as well as how they stack to create depth and separate content.
 In the light theme, white and gray values alternate when stacked.
 
 <uxdot-example variant="full" no-border>
-  <img src="/assets/color/layering-light-theme.png" alt="A light gray card in a larger, white card, which sits in a light gray section">
+  <img src="/assets/color/layering-light-theme.png"
+       alt="A light gray card in a larger, white card, which sits in a light gray section">
 </uxdot-example>
 
 
@@ -97,7 +101,8 @@ In the light theme, white and gray values alternate when stacked.
 In the dark theme, gray values should get one step lighter when stacked.
 
 <uxdot-example variant="full" no-border>
-  <img src="/assets/color/layering-dark-theme.png" alt="A dark gray card in a larger, darker gray card, which sits in an even dark gray section">
+  <img src="/assets/color/layering-dark-theme.png"
+       alt="A dark gray card in a larger, darker gray card, which sits in an even dark gray section">
 </uxdot-example>
 
 
@@ -126,7 +131,8 @@ represented.
 </rh-alert>
 
 <uxdot-example variant="full">
-  <img src="/assets/color/text.png" alt="Dark and light theme examples of the seven types of semantic colors used by text">
+  <img src="/assets/color/text.png"
+       alt="Dark and light theme examples of the seven types of semantic colors used by text">
 </uxdot-example>
 
 ### Icons
@@ -139,8 +145,7 @@ three categories of icons: Brand, Technology, and UI.
 3.  **UI** - may be different colors depending on how they are used
     within an element or pattern
 
-To learn more about icons, go to the [Brand
-standards](https://www.redhat.com/en/about/brand/standards) website.
+To learn more about icons, go to the [Brand standards][standards] website.
 
 <uxdot-example variant="full">
   <img src="/assets/color/icons.png" alt="Examples of the three icon categories">
@@ -177,45 +182,22 @@ patterns like [alerts](/elements/alert), [badges](/elements/badge),
 </rh-alert>
 
 <rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Status">Status</th>
-        <th scope="col" data-label="Use case">Use case</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Status">Note/Tip</td>
-        <td data-label="Use case">Use purple to communicate helpful or important information.</td>
-      </tr>
-      <tr>
-        <td data-label="Status">Neutral</td>
-        <td data-label="Use case">Use gray to communicate information that will have no impact on a user.</td>
-      </tr>
-      <tr>
-        <td data-label="Status">Success</td>
-        <td data-label="Use case">Use green to communicate a success state.</td>
-      </tr>
-      <tr>
-        <td data-label="Status">Caution</td>
-        <td data-label="Use case">Use yellow to communicate that an issue can be avoided.</td>
-      </tr>
-      <tr>
-        <td data-label="Status">Warning</td>
-        <td data-label="Use case">Use orange to communicate that a destructive action might occur if an issue is not resolved.</td>
-      </tr>
-      <tr>
-        <td data-label="Status">Danger/Error</td>
-        <td data-label="Use case">Use red-orange to communicate a destructive action or critical error.</td>
-      </tr>
-    </tbody>
-  </table>
+
+| Status                                     | Use case                                                                                     |
+| ------------------------------------------ | -------------------------------------------------------------------------------------------- |
+| <rh-tag color="purple">Info</rh-tag>       | Use purple to communicate helpful or important information.                                  |
+| <rh-tag color="gray">Neutral</rh-tag>      | Use gray to communicate information that will have no impact on a user.                      |
+| <rh-tag color="green">Success</rh-tag>     | Use green to communicate a success state.                                                    |
+| <rh-tag color="yellow">Caution</rh-tag>    | Use yellow to communicate that an issue can be avoided.                                      |
+| <rh-tag color="orange">Warning</rh-tag>    | Use orange to communicate that a destructive action might occur if an issue is not resolved. |
+| <rh-tag color="red-orange">Danger</rh-tag> | Use red-orange to communicate a destructive action or critical error.                        |
+
 </rh-table>
 
 
 <uxdot-example width-adjustment="648px">
-  <img src="/assets/color/status.png" alt="Alerts, a form field, and tags that use status colors">
+  <img src="/assets/color/status.png"
+       alt="Alerts, a form field, and tags that use status colors">
 </uxdot-example>
 
 ## Best practices
@@ -230,7 +212,7 @@ only after significant planning and consideration.
 Most projects do not need elements and patterns in a custom theme. If
 you need a custom theme for a campaign or special project, contact the
 Brand team first. If you need one or more custom design tokens, contact
-the [Design system](https://github.com/RedHat-UX/red-hat-design-system/discussions) team first. 
+the [Design system][discussions] team first. 
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
@@ -259,13 +241,15 @@ using elements and patterns from the desaturated theme instead.
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
     <uxdot-example slot="image" no-border variant="full" alignment="left">
-      <img src="/assets/color/best-practices-sufficient-contrast-correct.svg" alt="Examples of a blue button against a light gray background and a red CTA against a black background">
+      <img src="/assets/color/best-practices-sufficient-contrast-correct.svg"
+           alt="Examples of a blue button against a light gray background and a red CTA against a black background">
     </uxdot-example>
-    <p>Use a surface color token for background to ensure accessibility, or use a <a href="{{ '../accessibility/#tools' | url }}">tool</a> to check proper contrast.</p>
+    <p>Use a surface color token for background to ensure accessibility, or use a <a href="../accessibility/#tools">tool</a> to check proper contrast.</p>
   </uxdot-best-practice>
   <uxdot-best-practice variant="dont">
     <uxdot-example slot="image" no-border variant="full" alignment="left">
-      <img src="{{ '/assets/color/best-practices-sufficient-contrast-wrong.svg' | url }}" alt="Examples of a blue button against a red background and a red CTA against a blue background">
+      <img src="/assets/color/best-practices-sufficient-contrast-wrong.svg"
+           alt="Examples of a blue button against a red background and a red CTA against a blue background">
     </uxdot-example>
     <p>Do not use a background color that has a similar hue, saturation, or lightness to foreground elements.</p>
   </uxdot-best-practice>
@@ -273,7 +257,7 @@ using elements and patterns from the desaturated theme instead.
 
 ## Resources
 
-- [Brand standards](https://www.redhat.com/en/about/brand/standards)
+- [Brand standards][standards]
 - [WCAG 2.1](https://www.w3.org/WAI/WCAG21/Understanding/)
 - [WebAIM: Contrast and Color Accessibility](https://webaim.org/articles/contrast/)
 
@@ -281,3 +265,7 @@ using elements and patterns from the desaturated theme instead.
   <h2>Foundations</h2>
   <p>To learn how to use our other foundations in your designs, visit the <a href="/foundations">foundations</a> section.</p>
 </uxdot-feedback>
+
+[contactus]: https://github.com/RedHat-UX/red-hat-design-system/discussions
+[standards]: https://www.redhat.com/en/about/brand/standards
+[discussions]: https://github.com/RedHat-UX/red-hat-design-system/discussions
