@@ -26,7 +26,7 @@ consistency as best as possible.
 </rh-alert>
 
 <uxdot-example width-adjustment="404px">
-  <img src="{{ '../tag-variants-colors.png' | url }}" alt="A row of filled tags with text ‘Filled tags’ underneath and a row 
+  <img src="../tag-variants-colors.png" alt="A row of filled tags with text ‘Filled tags’ underneath and a row 
         of unfilled tags with text ‘Unfilled tags’ underneath">
 </uxdot-example>
 
@@ -42,7 +42,7 @@ of the same color.
 </rh-alert>
 
 <uxdot-example width-adjustment="475px">
-  <img src="{{ '../tag-icons.png' | url }}" alt="A row of tags showing examples of optional icons">
+  <img src="../tag-icons.png" alt="A row of tags showing examples of optional icons">
 </uxdot-example>
 
 
@@ -54,7 +54,7 @@ indicate a status, it should be written to be a descriptive caption to elements
 nearby.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="{{ '../tag-white-tag.png' | url }}" alt="A white tag used on top of two blocks of various text styles">
+  <img src="../tag-white-tag.png" alt="A white tag used on top of two blocks of various text styles">
 </uxdot-example>
 
 
@@ -72,7 +72,7 @@ communicating a danger or error state.
 </rh-alert>
 
 <uxdot-example width-adjustment="503px">
-  <img src="{{ '../tag-status-color.png' | url }}" alt="A row of filled tags with examples of unique status text labels per each color">
+  <img src="../tag-status-color.png" alt="A row of filled tags with examples of unique status text labels per each color">
 </uxdot-example>
 
 
@@ -82,7 +82,7 @@ The text you write can communicate a status as well, so choose a corresponding
 color that makes sense.
 
 <uxdot-example width-adjustment="566px">
-  <img src="{{ '../tag-status-text.png' | url }}" alt="Two groups of two tags with examples of correct status text labels">
+  <img src="../tag-status-text.png" alt="Two groups of two tags with examples of correct status text labels">
 </uxdot-example>
 
 
@@ -95,7 +95,7 @@ possible. If text needs to be longer, use a caption or another text style
 instead.
 
 <uxdot-example width-adjustment="500px">
-  <img src="{{ '../tag-text-labels.png' | url }}" alt="Two groups of two tags with examples of correct and incorrect text labels">
+  <img src="../tag-text-labels.png" alt="Two groups of two tags with examples of correct and incorrect text labels">
 </uxdot-example>
 
 
@@ -125,7 +125,7 @@ A tag can be used on its own or grouped in a row. When there are too many tags
 in one row, a new row will appear.
 
 <uxdot-example width-adjustment="698px">
-  <img src="{{ '../tag-grouping.png' | url }}" alt="Two groups of two tags, one group is three tags in one row and the other group is two tags in one row and one tag in a second row">
+  <img src="../tag-grouping.png" alt="Two groups of two tags, one group is three tags in one row and the other group is two tags in one row and one tag in a second row">
 </uxdot-example>
 
 
@@ -137,7 +137,7 @@ Do not mix variants or tags with and without icons in the same area or
 container.
 
 <uxdot-example width-adjustment="458px" danger>
-  <img src="{{ '../tag-best-practice-1.png' | url }}" alt="Two rows of tags; the first row shows a mix of variants and the second row shows a mix of tags with and without icons, both are incorrect usage">
+  <img src="../tag-best-practice-1.png" alt="Two rows of tags; the first row shows a mix of variants and the second row shows a mix of tags with and without icons, both are incorrect usage">
 </uxdot-example>
 
 
@@ -147,7 +147,7 @@ Do not use light theme tags in the dark theme, [contact us][contact] if you need
 dark theme tags.
 
 <uxdot-example width-adjustment="522px" danger>
-  <img src="{{ '../tag-best-practice-2.png' | url }}" alt="Light theme tags used on a dark background which is incorrect usage">
+  <img src="../tag-best-practice-2.png" alt="Light theme tags used on a dark background which is incorrect usage">
 </uxdot-example>
 
 
@@ -157,7 +157,7 @@ Do not make your own custom tags. If you need a custom set of tags designed,
 [contact us][contact].
 
 <uxdot-example width-adjustment="232px" danger>
-  <img src="{{ '../tag-best-practice-3.png' | url }}" alt="Three tags with custom colors which is incorrect usage">
+  <img src="../tag-best-practice-3.png" alt="Three tags with custom colors which is incorrect usage">
 </uxdot-example>
 
 

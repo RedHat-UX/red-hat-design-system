@@ -11,7 +11,7 @@ importElements:
 ---
 
 <link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
-<link rel="stylesheet" href="{{ '/styles/samp.css' | url }}">
+<link rel="stylesheet" href="/styles/samp.css">
 
 <style>
   .page-spacing .container rh-table {

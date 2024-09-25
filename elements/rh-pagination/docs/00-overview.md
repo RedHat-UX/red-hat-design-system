@@ -5,7 +5,7 @@
 Pagination allows users to navigate between pages of related content.
 
 <uxdot-example width-adjustment="736px">
-  <img src="{{ './pagination-sample.svg' | url }}" alt="Image of four paginations; one is full size showing double truncation and a page input field. One is compact size showing only a page field input. The two below it are the open variants in the same sizes.">
+  <img src="./pagination-sample.svg" alt="Image of four paginations; one is full size showing double truncation and a page input field. One is compact size showing only a page field input. The two below it are the open variants in the same sizes.">
 </uxdot-example>
 
 {% repoStatusList repoStatus=repoStatus %}

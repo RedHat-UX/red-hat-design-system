@@ -7,7 +7,7 @@ Tabs are used to group related content allowing users to navigate a view without
 
 <figure>
   <uxdot-example width-adjustment="872px">
-    <img src="{{ '../tabs-anatomy.png' | url }}" alt="Image of tabs anatomy showing horizontal and vertical open tabs and box tabs with lots of annotations">
+    <img src="../tabs-anatomy.png" alt="Image of tabs anatomy showing horizontal and vertical open tabs and box tabs with lots of annotations">
   </uxdot-example>
   <figcaption>
     <ol>
@@ -28,7 +28,7 @@ Tabs are used to group related content allowing users to navigate a view without
 There are two available variants. Open tabs has a more understated style whereas Box tabs has a more traditional style.
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../tabs-variants.png' | url }}" alt="Image of open tabs on top and box tabs below">
+  <img src="../tabs-variants.png" alt="Image of open tabs on top and box tabs below">
 </uxdot-example>
 
 
@@ -37,7 +37,7 @@ There are two available variants. Open tabs has a more understated style whereas
 There are two available orientations and the only difference is padding.
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../tabs-orientation.png' | url }}" alt="Image of horizontal, vertical, and tabs with overflow buttons showing padding spacers">
+  <img src="../tabs-orientation.png" alt="Image of horizontal, vertical, and tabs with overflow buttons showing padding spacers">
 </uxdot-example>
 
 
@@ -49,7 +49,7 @@ Both variants and orientations are available in both light and dark themes.
 ### Light theme
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../tabs-theme-light.png' | url }}" alt="Image of light theme tabs">
+  <img src="../tabs-theme-light.png" alt="Image of light theme tabs">
 </uxdot-example>
 
 <rh-table>
@@ -109,7 +109,7 @@ Both variants and orientations are available in both light and dark themes.
 ### Dark theme
 
 <uxdot-example color-palette="darkest" width-adjustment="872px">
-  <img src="{{ '../tabs-theme-dark.png' | url }}" alt="Image of dark theme tabs">
+  <img src="../tabs-theme-dark.png" alt="Image of dark theme tabs">
 </uxdot-example>
 
 <rh-table>
@@ -171,7 +171,7 @@ Both variants and orientations are available in both light and dark themes.
 The panel for both orientations of tabs does not have a maximum height and should not scroll.
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../tabs-configuration.png' | url }}" alt="Image of horizontal and vertical tabs construction; several examples showing details like alignment, height, width, and more">
+  <img src="../tabs-configuration.png" alt="Image of horizontal and vertical tabs construction; several examples showing details like alignment, height, width, and more">
 </uxdot-example>
 
 
@@ -180,7 +180,7 @@ The panel for both orientations of tabs does not have a maximum height and shoul
 Overflow buttons are containers with chevron icons that are added to tabs on small breakpoints.
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../tabs-configuration-overflow-buttons.png' | url }}" alt="Image of horizontal and vertical tabs with overflow buttons showing padding spacers">
+  <img src="../tabs-configuration-overflow-buttons.png" alt="Image of horizontal and vertical tabs with overflow buttons showing padding spacers">
 </uxdot-example>
 
 
@@ -189,11 +189,11 @@ Overflow buttons are containers with chevron icons that are added to tabs on sma
 Box tabs are separated by a 1px divider.
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../tabs-space-open.png' | url }}" alt="Image of open tabs spacing for all sizes and orientations">
+  <img src="../tabs-space-open.png" alt="Image of open tabs spacing for all sizes and orientations">
 </uxdot-example>
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../tabs-space-box.png' | url }}" alt="Image of box tabs spacing for all sizes and orientations">
+  <img src="../tabs-space-box.png" alt="Image of box tabs spacing for all sizes and orientations">
 </uxdot-example>
 
 <rh-table>
@@ -211,22 +211,22 @@ Interactive elements include inactive tabs and overflow buttons.
 Inactive tabs and overflow buttons have the same hover state.
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../tabs-open-interaction-state-hover-theme-light.png' | url }}" alt="Image of light theme open tabs hover states">
+  <img src="../tabs-open-interaction-state-hover-theme-light.png" alt="Image of light theme open tabs hover states">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="872px">
-  <img src="{{ '../tabs-open-interaction-state-hover-theme-dark.png' | url }}" alt="Image of dark theme open tabs hover states">
+  <img src="../tabs-open-interaction-state-hover-theme-dark.png" alt="Image of dark theme open tabs hover states">
 </uxdot-example>
 
 
 ### Hover - Box tabs
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../tabs-box-interaction-state-hover-theme-light.png' | url }}" alt="Image of light theme box tabs hover states">
+  <img src="../tabs-box-interaction-state-hover-theme-light.png" alt="Image of light theme box tabs hover states">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="872px">
-  <img src="{{ '../tabs-box-interaction-state-hover-theme-dark.png' | url }}" alt="Image of dark theme box tabs hover states">
+  <img src="../tabs-box-interaction-state-hover-theme-dark.png" alt="Image of dark theme box tabs hover states">
 </uxdot-example>
 
 <rh-table>
@@ -262,11 +262,11 @@ Inactive tabs and overflow buttons have the same hover state.
 </rh-alert>
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../tabs-open-interaction-state-focus-theme-light.png' | url }}" alt="Image of light theme open tabs focus states">
+  <img src="../tabs-open-interaction-state-focus-theme-light.png" alt="Image of light theme open tabs focus states">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="872px">
-  <img src="{{ '../tabs-open-interaction-state-focus-theme-dark.png' | url }}" alt="Image of dark theme open tabs focus states">
+  <img src="../tabs-open-interaction-state-focus-theme-dark.png" alt="Image of dark theme open tabs focus states">
 </uxdot-example>
 
 
@@ -278,11 +278,11 @@ Inactive tabs and overflow buttons have the same hover state.
 </rh-alert>
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../tabs-box-interaction-state-focus-theme-light.png' | url }}" alt="Image of light theme box tabs focus states">
+  <img src="../tabs-box-interaction-state-focus-theme-light.png" alt="Image of light theme box tabs focus states">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="872px">
-  <img src="{{ '../tabs-box-interaction-state-focus-theme-dark.png' | url }}" alt="Image of dark theme box tabs focus states">
+  <img src="../tabs-box-interaction-state-focus-theme-dark.png" alt="Image of dark theme box tabs focus states">
 </uxdot-example>
 
 <rh-table>
@@ -312,11 +312,11 @@ Inactive tabs and overflow buttons have the same hover state.
 </rh-alert>
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../tabs-open-interaction-state-active-theme-light.png' | url }}" alt="Image of light theme open tabs active states">
+  <img src="../tabs-open-interaction-state-active-theme-light.png" alt="Image of light theme open tabs active states">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="872px">
-  <img src="{{ '../tabs-open-interaction-state-active-theme-dark.png' | url }}" alt="Image of dark theme open tabs active states">
+  <img src="../tabs-open-interaction-state-active-theme-dark.png" alt="Image of dark theme open tabs active states">
 </uxdot-example>
 
 
@@ -328,11 +328,11 @@ Inactive tabs and overflow buttons have the same hover state.
 </rh-alert>
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../tabs-box-interaction-state-active-theme-light.png' | url }}" alt="Image of light theme box tabs active states">
+  <img src="../tabs-box-interaction-state-active-theme-light.png" alt="Image of light theme box tabs active states">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="872px">
-  <img src="{{ '../tabs-box-interaction-state-active-theme-dark.png' | url }}" alt="Image of dark theme box tabs active states">
+  <img src="../tabs-box-interaction-state-active-theme-dark.png" alt="Image of dark theme box tabs active states">
 </uxdot-example>
 
 <rh-table>

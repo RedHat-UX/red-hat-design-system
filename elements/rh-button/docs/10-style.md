@@ -8,7 +8,7 @@ used on its own or grouped with other buttons.
 
 <figure>
   <uxdot-example width-adjustment="428px">
-    <img src="{{ '../button-anatomy.png' | url }}" alt="Anatomy image of buttons with numbered annotations">
+    <img src="../button-anatomy.png" alt="Anatomy image of buttons with numbered annotations">
   </uxdot-example>
   <figcaption>
     <ol>
@@ -30,11 +30,11 @@ Buttons are available in both light and dark themes.
 ### Light and dark themes
 
 <uxdot-example width-adjustment="494px">
-  <img src="{{ '../button-theme-light.png' | url }}" alt="Image of light theme Danger, Primary, Secondary, Tertiary, Link, Play, and Close buttons">
+  <img src="../button-theme-light.png" alt="Image of light theme Danger, Primary, Secondary, Tertiary, Link, Play, and Close buttons">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="494px">
-  <img src="{{ '../button-theme-dark.png' | url }}" alt="Image of dark theme Danger, Primary, Secondary, Tertiary, Link, Play, and Close buttons">
+  <img src="../button-theme-dark.png" alt="Image of dark theme Danger, Primary, Secondary, Tertiary, Link, Play, and Close buttons">
 </uxdot-example>
 
 <rh-table>
@@ -120,7 +120,7 @@ horizontally and vertically centered and stays the same size no matter how big
 or small the image gets.
 
 <uxdot-example width-adjustment="818px">
-  <img src="{{ '../button-configuration.png' | url }}" alt="Image of buttons and various specs like border radius, height, icon size, width, alignment, placement, and more">
+  <img src="../button-configuration.png" alt="Image of buttons and various specs like border radius, height, icon size, width, alignment, placement, and more">
 </uxdot-example>
 
 ## Space
@@ -134,7 +134,7 @@ space values when buttons are grouped, go to the [Guidelines](./guidelines) page
 </rh-alert>
 
 <uxdot-example width-adjustment="721px">
-  <img src="{{ '../button-space.png' | url }}" alt="Image of Danger, Primary, Secondary, Tertiary, Link, and Close buttons with spacing values in between">
+  <img src="../button-space.png" alt="Image of Danger, Primary, Secondary, Tertiary, Link, and Close buttons with spacing values in between">
 </uxdot-example>
 
 <rh-table>
@@ -154,11 +154,11 @@ an element or pattern.
 ### Hover
 
 <uxdot-example width-adjustment="495px">
-  <img src="{{ '../button-interaction-state-hover-theme-light.png' | url }}" alt="Image of light theme button hover states">
+  <img src="../button-interaction-state-hover-theme-light.png" alt="Image of light theme button hover states">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="495px">
-  <img src="{{ '../button-interaction-state-hover-theme-dark.png' | url }}" alt="Image of dark theme button hover states">
+  <img src="../button-interaction-state-hover-theme-dark.png" alt="Image of dark theme button hover states">
 </uxdot-example>
 
 <rh-table>
@@ -223,11 +223,11 @@ an element or pattern.
 </rh-alert>
 
 <uxdot-example width-adjustment="530px">
-  <img src="{{ '../button-interaction-state-focus-theme-light.png' | url }}" alt="Image of light theme button focus states">
+  <img src="../button-interaction-state-focus-theme-light.png" alt="Image of light theme button focus states">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="530px">
-  <img src="{{ '../button-interaction-state-focus-theme-dark.png' | url }}" alt="Image of dark theme button focus states">
+  <img src="../button-interaction-state-focus-theme-dark.png" alt="Image of dark theme button focus states">
 </uxdot-example>
 
 
@@ -258,11 +258,11 @@ an element or pattern.
 </rh-alert>
 
 <uxdot-example width-adjustment="530px">
-  <img src="{{ '../button-interaction-state-active-theme-light.png' | url }}" alt="Image of light theme button active states">
+  <img src="../button-interaction-state-active-theme-light.png" alt="Image of light theme button active states">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="530px">
-  <img src="{{ '../button-interaction-state-active-theme-dark.png' | url }}" alt="Image of dark theme button active states">
+  <img src="../button-interaction-state-active-theme-dark.png" alt="Image of dark theme button active states">
 </uxdot-example>
 
 <rh-table>

@@ -16,7 +16,7 @@ importElements:
   - rh-table
 ---
 
-<script type="module" src="{{ '/assets/javascript/elements/uxdot-best-practice.js' | url }}"></script>
+<script type="module" src="/assets/javascript/elements/uxdot-best-practice.js"></script>
 
 <link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
 
@@ -265,7 +265,7 @@ using elements and patterns from the desaturated theme instead.
   </uxdot-best-practice>
   <uxdot-best-practice variant="dont">
     <uxdot-example slot="image" no-border variant="full" alignment="left">
-      <img src="{{ '/assets/color/best-practices-sufficient-contrast-wrong.svg' | url }}" alt="Examples of a blue button against a red background and a red CTA against a blue background">
+      <img src="/assets/color/best-practices-sufficient-contrast-wrong.svg" alt="Examples of a blue button against a red background and a red CTA against a blue background">
     </uxdot-example>
     <p>Do not use a background color that has a similar hue, saturation, or lightness to foreground elements.</p>
   </uxdot-best-practice>

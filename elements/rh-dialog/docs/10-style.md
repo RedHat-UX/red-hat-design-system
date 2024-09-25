@@ -8,7 +8,7 @@ helps users focus on the dialog content.
 
 <figure>
   <uxdot-example width-adjustment="872px">
-    <img src="{{ '../dialog-anatomy.png' | url }}" alt="Anatomy of a dialog with lots of annotations pointing to various parts">
+    <img src="../dialog-anatomy.png" alt="Anatomy of a dialog with lots of annotations pointing to various parts">
   </uxdot-example>
   <figcaption>
     <ol>
@@ -28,7 +28,7 @@ helps users focus on the dialog content.
 A dialog is available in the light theme only.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="{{ '../dialog-theme-light.png' | url }}" alt="Light theme dialog">
+  <img src="../dialog-theme-light.png" alt="Light theme dialog">
 </uxdot-example>
 
 ## Configuration
@@ -37,7 +37,7 @@ The dialog container does not have a maximum height, but too much content in the
 body text section will cause scrolling.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="{{ '../dialog-configuration.png' | url }}" alt="How a dialog container is constructed showing border radius, region, and scrolling details">
+  <img src="../dialog-configuration.png" alt="How a dialog container is constructed showing border radius, region, and scrolling details">
 </uxdot-example>
 
 ## Space
@@ -47,13 +47,13 @@ The amount of space in a dialog reduces as breakpoints get smaller.
 ### Large breakpoints
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="{{ '../dialog-space-breakpoint-large.png' | url }}" alt="A dialog container on a large breakpoint with spacing between all elements">
+  <img src="../dialog-space-breakpoint-large.png" alt="A dialog container on a large breakpoint with spacing between all elements">
 </uxdot-example>
 
 ### Small breakpoints
 
 <uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border>
-  <img src="{{ '../dialog-space-breakpoint-small.png' | url }}" alt="A dialog container on a small breakpoint with spacing between all elements">
+  <img src="../dialog-space-breakpoint-small.png" alt="A dialog container on a small breakpoint with spacing between all elements">
 </uxdot-example>
 
 <rh-table>
@@ -75,7 +75,7 @@ Control and inactive page number buttons have the same hover state. Truncation
 is not interactive so it has no hover state.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="{{ '../dialog-interaction-state-hover.png' | url }}" alt="Light theme dialog hover state example">
+  <img src="../dialog-interaction-state-hover.png" alt="Light theme dialog hover state example">
 </uxdot-example>
 
 <rh-table>
@@ -99,7 +99,7 @@ is not interactive so it has no hover state.
 ### Focus
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="{{ '../dialog-interaction-state-focus.png' | url }}" alt="Light theme dialog focus state example">
+  <img src="../dialog-interaction-state-focus.png" alt="Light theme dialog focus state example">
 </uxdot-example>
 
 <rh-table>
@@ -126,7 +126,7 @@ is not interactive so it has no hover state.
 ### Active
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="{{ '../dialog-interaction-state-active.png' | url }}" alt="Light theme dialog active state example">
+  <img src="../dialog-interaction-state-active.png" alt="Light theme dialog active state example">
 </uxdot-example>
 
 <rh-table>
