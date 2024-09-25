@@ -5,7 +5,7 @@
 }
 
 #inner-container {
-  border: var(--rh-border-width-sm);
+  border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
   border-radius: var(--rh-border-radius-default);
   margin-block-start: var(--rh-space-lg);
 }
