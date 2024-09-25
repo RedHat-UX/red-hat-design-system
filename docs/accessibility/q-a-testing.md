@@ -142,7 +142,7 @@ Chrome and Edge also have an "Accessibility Pane" that lets users see informatio
 Users can optionally check "Enable full-page accessibility tree" to change what's shown in the Elements panel. Doing so will transform the HTML in Elements into a representation of how assistive technology interprets the current page's DOM structure.
 
 <figure>
-  <uxdot-example>
+  <uxdot-example width-adjustment="1167px">
     <img src="/assets/accessibility/accessibility-tree-view.png" alt="Screenshot showing the rendered page content in the browser on the left and the same content in the accessibility tree view on the right in DevTools">
   </uxdot-example>
   <figcaption>
@@ -161,7 +161,7 @@ The Firefox accessibility inspector is largely the same as Chrome and Edge's. Yo
 One neat feature included within Firefox's accessibility inspector is the ability to "Show Tabbing Order". This adds numbered markers to the page which visually demonstrates where each focusable element lands in the tab order.
 
 <figure>
-  <uxdot-example>
+  <uxdot-example width-adjustment="994px">
     <img src="/assets/accessibility/firefox-show-tab-order.png" alt="Screenshot of a page with 'Show Tabbing Order' checked. Each tab stop shows its tab stop number inside a pip.">
   </uxdot-example>
   <figcaption>
