@@ -49,7 +49,7 @@ create uniform, accessible experiences.
 
   <rh-tile>
     <uxdot-example slot="image">
-      <img src="{/assets/patterns/all-patterns-{{ slug }}.png" alt="{{ pattern.data.title }}">
+      <img src="/assets/patterns/all-patterns-{{ slug }}.png" alt="{{ pattern.data.title }}">
     </uxdot-example>
     <a slot="headline" href="{{ pattern.url }}"><h3>{{ pattern.data.title }}</h3></a>
     <p slot="footer">{{ summary }}</p>
