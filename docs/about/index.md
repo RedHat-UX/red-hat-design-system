@@ -25,7 +25,7 @@ rh-card rh-icon {
 }
 </style>
 
-<script type="module" src="{{ '/assets/javascript/elements/uxdot-hero.js' | url }}"></script>
+<script type="module" src="/assets/javascript/elements/uxdot-hero.js"></script>
 
 <section class="intro">
 
@@ -62,7 +62,11 @@ Red Hat teams work across the world in a range of disciplines, from UX research 
 
 ## We rely on our foundations
 
-The Red Hat brand has a strong voice. To make our design system feel like Red Hat, we use foundations like [color](/foundations/color/), [space](foundations/spacing/), and [typography](/foundations/typography/) to enhance our elements and patterns and to align them to Red Hat’s [design language standards](https://www.redhat.com/en/about/brand/standards).
+The Red Hat brand has a strong voice. To make our design system feel like Red 
+Hat, we use foundations like [color](/foundations/color/), 
+[space](/foundations/spacing/), and [typography](/foundations/typography/) to 
+enhance our elements and patterns and to align them to Red Hat’s [design 
+language standards](https://www.redhat.com/en/about/brand/standards).
 
 ### Red Hat brand standards
 
@@ -139,4 +143,5 @@ Whether you are implementing an element or pattern or contributing to the design
   <h2>Release Notes</h2>
   <p>To see what foundations, tokens, elements, or patterns have been released recently, check out <a href="/about/release-notes">our release notes</a>.</p>
 </uxdot-feedback>
+
 
