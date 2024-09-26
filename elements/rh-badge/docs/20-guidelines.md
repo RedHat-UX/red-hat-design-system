@@ -69,8 +69,8 @@ The width of a badge varies based on the counter number. Using a number larger
 than the threshold will display a + at the end. For example, if `999` is the 
 threshold, using `1,000` or larger will display `999+`.
 
-<uxdot-example width-adjustment="174px">
-  <img src="../badge-counter-number.png" alt="Badges with various counter numbers; from left to right, a badge with 1, a badge with 50, a badge with 500, and a badge with 999+">
+<uxdot-example width-adjustment="198px">
+  <img src="../badge-counter-number.svg" alt="Badges with various counter numbers; from left to right, a badge with 1, a badge with 50, a badge with 500, and a badge with 999+">
 </uxdot-example>
 
 
@@ -90,8 +90,8 @@ that are made in a toolbar filter or select list.
 
 Do not allow a badge to display a count over 999.
 
-<uxdot-example danger width-adjustment="75px">
-  <img src="../badge-best-practice-1.png" alt="A badge counting to 1,00,000 which is incorrect usage">
+<uxdot-example danger width-adjustment="74px">
+  <img src="../badge-best-practice-large-number-dont.svg" alt="A badge counting to 1,00,000 which is incorrect usage">
 </uxdot-example>
 
 ### Two badges
@@ -100,7 +100,7 @@ Be careful using two badges. Using color only and the lack of other visual cues
 might make it difficult to differentiate unread or actionable items associated 
 with the badges.
 
-<uxdot-example danger width-adjustment="77px">
-  <img src="../badge-best-practice-2.png" alt="Two badges with the same counter number, but with different background colors and no other unique visual cues which is incorrect usage">
+<uxdot-example danger width-adjustment="85px">
+  <img src="../badge-best-practice-two-badges-dont.svg" alt="Two badges with different background colors and no other unique visual cues which is incorrect usage">
 </uxdot-example>
 
