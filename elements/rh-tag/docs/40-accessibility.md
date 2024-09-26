@@ -1,34 +1,47 @@
-
 ## Implementation
 
-- To provide context, include an <code>aria-label</code> attribute in the markup
-- Ensure the tag is not interactive and cannot have focus
-- Ensure tag information is not conveyed by color alone
-- Ensure that surrounding content can convey the purpose of a tag via assistive technologies
+- Ensure any interactive elements can be navigated to and interacted with via 
+  keyboard and other assistive technologies such as a screen reader
+- Provide an aria-label if a tag group does not have a visible text category 
+  name
+- Ensure a tag that contains a link has descriptive text content
 
 ## Using color
-As a caution, relying on color alone to communicate information causes barriers to access for many readers. Color vision deficient and low vision users may not be able to perceive color differences, and screen readers do not announce colors to non-sighted users.
+As a caution, relying on color alone to communicate information causes barriers 
+to access for many readers. Color vision deficient and low vision users may not 
+be able to perceive color differences, and screen readers do not announce colors 
+to non-sighted users.
 
-Since a tag does not get an accessible name and is not focusable by default, each tag must have adequate contextual information provided in the surrounding layout or user interface to convey the same information the color alone is conveying. A designer or developer could consider using a tag with an icon to supplement using color alone or be sure the text within a tag is as descriptive as possible.
+Since a tag does not get an accessible name and is not focusable by default, 
+each tag must have adequate contextual information provided in the surrounding 
+layout or UI to convey the same information that color alone would convey. 
+Designers and developers should consider using tags with icons instead of color 
+alone or be sure that text within a tag is as descriptive as possible.
 
-Compare Figure 1 to Figure 2. Both figures include a blue informational tag, a red danger tag , and a cyan link tag. In Figure 1, note how difficult it is to determine the differences between the tags due to the lack of visual cues. In Figure 2, including icons and more descriptive text have increased the amount of helpful information available without using color alone.
+Compare Figure 1 to Figure 2. Both examples include blue, red, and green tags. 
+In Figure 1, note how difficult it is to determine the differences between tags 
+due to a lack of visual cues. In Figure 2, including icons and more descriptive 
+text increases the amount of helpful information available without relying on 
+color alone.
 
-### Figure 1
-
-<uxdot-example color-palette="darkest" width-adjustment="164px">
-  <img src="{{ '../tag-a11y-figure-1.png' | url }}" alt="A row of three gray tags that all look the same">
-</uxdot-example>
-
-
-### Figure 2
-
-<uxdot-example color-palette="darkest" width-adjustment="467px">
-  <img src="{{ '../tag-a11y-figure-2.png' | url }}" alt="A row of three gray tags all with a unique icon and a unique text label">
-</uxdot-example>
-
+<div class="grid xs-two-columns">
+  <figure>
+    <uxdot-example width-adjustment="418px">
+      <img src="../tag-a11y-using-color-fig-1.svg"
+           alt="An image of 3 tags, first tag is outline variant with a white background and blue colored text which reads Tag 1.  The second tag is outline variant with white background and red colored text which reads Tag 2. The third tag is an outline variant with white background and green colored text which reads Tag 3.">
+    </uxdot-example>
+    <figcaption><h3>Figure 1</h3></figcaption>
+  </figure>
+  <figure>
+    <uxdot-example width-adjustment="418px">
+      <img src="../tag-a11y-using-color-fig-2.svg"
+           alt="An image of 3 tags, first tag is outline variant with a white background and blue colored text which reads Secure server and has a blue padlock icon.  The second tag is outline variant with white background and red colored text which reads critical error and has a red circle with an exclamation point icon The third tag is an outline variant with white background and green colored text which reads signed successfully and has a green circle icon with a check mark.">
+    </uxdot-example>
+    <figcaption><h3>Figure 2</h3></figcaption>
+  </figure>
+</div>
 
 {% include 'partials/accessibility/ariaguide.md' %}
-
 {% include 'partials/accessibility/wcag.md' %}
 {% include 'partials/accessibility/2.1.1-A.md' %}
 {% include 'partials/accessibility/2.1.3-AAA.md' %}

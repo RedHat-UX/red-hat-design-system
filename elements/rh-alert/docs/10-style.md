@@ -6,7 +6,7 @@ An alert contains title text with an icon, body text, and a close button. They m
 ### Anatomy
 
 <uxdot-example width-adjustment="538px">
-  <img src="{{ '../alert-anatomy.svg' | url }}" alt="Alert with numbers pointing to parts of the element" width="538px">
+  <img src="../alert-anatomy.svg" alt="Alert with numbers pointing to parts of the element" width="538px">
 </uxdot-example>
 
 1. Severity indicator
@@ -24,7 +24,7 @@ An alert contains title text with an icon, body text, and a close button. They m
 The required elements of an Inline alert are a thin top bar or thin border, icon, title, close button, and a container background. Supporting text and buttons may or may not be included below the title to add clarity or optional actions.
 
 <uxdot-example width-adjustment="538px">
-  <img src="{{ '../alert-style-inline.svg' | url }}" alt="Two examples of an inline alert">\
+  <img src="../alert-style-inline.svg" alt="Two examples of an inline alert">\
 </uxdot-example>
 
 ### Inline, alternate
@@ -32,7 +32,7 @@ The required elements of an Inline alert are a thin top bar or thin border, icon
 The alternate Inline alert style includes a border instead of a line which can be used to express more urgency or better grab the attention of a user.
 
 <uxdot-example width-adjustment="538px">
-  <img src="{{ '../alert-style-inline-alt.svg' | url }}" alt="Two examples of an alternate design for inline alerts">
+  <img src="../alert-style-inline-alt.svg" alt="Two examples of an alternate design for inline alerts">
 </uxdot-example>
 
 ### Toast
@@ -40,7 +40,7 @@ The alternate Inline alert style includes a border instead of a line which can b
 The required elements of a Toast alert are a thin top bar, icon, title, close button, and a white container with a subtle drop shadow. Supporting text and buttons may or may not be included below the title to add clarity or optional actions.
 
 <uxdot-example width-adjustment="538px">
-  <img src="{{ '../alert-style-toast.svg' | url }}" alt="Two examples of a toast alert">
+  <img src="../alert-style-toast.svg" alt="Two examples of a toast alert">
 </uxdot-example>
 
 
@@ -51,19 +51,19 @@ Interaction states are visual representations used to communicate the status of 
 ### Hover
 
 <uxdot-example width-adjustment="538px">
-  <img src="{{ '../alert-interaction-states-hover.svg' | url }}" alt="Examples showing hover state">
+  <img src="../alert-interaction-states-hover.svg" alt="Examples showing hover state">
 </uxdot-example>
 
 ### Focus
 
 <uxdot-example width-adjustment="538px">
-  <img src="{{ '../alert-interaction-states-focus.svg' | url }}" alt="Examples showing focus state">
+  <img src="../alert-interaction-states-focus.svg" alt="Examples showing focus state">
 </uxdot-example>
 
 ### Active
 
 <uxdot-example width-adjustment="538px">
-  <img src="{{ '../alert-interaction-states-active.svg' | url }}" alt="Examples showing active state">
+  <img src="../alert-interaction-states-active.svg" alt="Examples showing active state">
 </uxdot-example>
 
 ## Spacing
@@ -71,13 +71,13 @@ Interaction states are visual representations used to communicate the status of 
 ### Inline
 
 <uxdot-example width-adjustment="538px">
-  <img src="{{ '../alert-spacing-inline.svg' | url }}" alt="Diagram of spacing for inline alerts">
+  <img src="../alert-spacing-inline.svg" alt="Diagram of spacing for inline alerts">
 </uxdot-example>
 
 ### Toast
 
 <uxdot-example width-adjustment="538px">
-  <img src="{{ '../alert-spacing-toast.svg' | url }}" alt="Diagram of spacing for toast alerts">
+  <img src="../alert-spacing-toast.svg" alt="Diagram of spacing for toast alerts">
 </uxdot-example>
 
 <rh-table>
@@ -91,6 +91,6 @@ Interaction states are visual representations used to communicate the status of 
 ### Toast (stacked)
 
 <uxdot-example variant="full" no-border>
-  <img src="{{ '../alert-spacing-toast-layout.svg' | url }}" alt="Diagram of spacing between stacked toast alerts">
+  <img src="../alert-spacing-toast-layout.svg" alt="Diagram of spacing between stacked toast alerts">
 </uxdot-example>
 

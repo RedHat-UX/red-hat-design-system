@@ -43,7 +43,7 @@ well.
 </rh-alert>
 
 <uxdot-example width-adjustment="832px">
-  <img src="{{ '../popover-usage-content.svg' | url }}" alt="Popover component usage, content">
+  <img src="../popover-usage-content.svg" alt="Popover component usage, content">
 </uxdot-example>
 
 
@@ -96,7 +96,7 @@ content or is cut off by the edge of the screen when triggered, change the
 orientation.
 
 <uxdot-example width-adjustment="844px">
-  <img src="{{ '../popover-usage-orientation.svg' | url }}" alt="Popover component usage, orientation">
+  <img src="../popover-usage-orientation.svg" alt="Popover component usage, orientation">
 </uxdot-example>
 
 
@@ -106,7 +106,7 @@ Avoid using a black popover on dark backgrounds, it will completely disappear
 into the background.
 
 <uxdot-example color-palette="darkest" width-adjustment="392px" danger>
-  <img src="{{ '../popover-usage-black.svg' | url }}" alt="Popover component usage, black on black">
+  <img src="../popover-usage-black.svg" alt="Popover component usage, black on black">
 </uxdot-example>
 
 
@@ -116,7 +116,7 @@ Avoid using a white popover on light backgrounds, there is not enough contrast
 even with the subtle drop shadow.
 
 <uxdot-example width-adjustment="392px" danger>
-  <img src="{{ '../popover-usage-white.svg' | url }}" alt="Popover component usage, white on white">
+  <img src="../popover-usage-white.svg" alt="Popover component usage, white on white">
 </uxdot-example>
 
 
@@ -130,7 +130,7 @@ a popover, a user must select the close button, make a selection outside of
 the popover, or press the **Escape (esc)** key.
 
 <uxdot-example width-adjustment="832px">
-  <img src="{{ '../popover-behavior-trigger.svg' | url }}" alt="Popover component behavior, trigger">
+  <img src="../popover-behavior-trigger.svg" alt="Popover component behavior, trigger">
 </uxdot-example>
 
 
@@ -141,7 +141,7 @@ trigger. However, an icon is not the only visual element that can trigger a
 popover.
 
 <uxdot-example width-adjustment="406px">
-  <img src="{{ '../popover-behavior-form.svg' | url }}" alt="Popover component behavior, form">
+  <img src="../popover-behavior-form.svg" alt="Popover component behavior, form">
 </uxdot-example>
 
 
@@ -151,7 +151,7 @@ A popover and tooltip are triggered the same way on mobile, by a tap, but
 still have different use cases (see **Usage**).
 
 <uxdot-example width-adjustment="772px">
-  <img src="{{ '../popover-behavior-mobile.svg' | url }}" alt="Popover component behavior, mobile">
+  <img src="../popover-behavior-mobile.svg" alt="Popover component behavior, mobile">
 </uxdot-example>
 
 
@@ -163,13 +163,13 @@ Both popover variants have interaction states.
   <figure>
     <figcaption><h3>Default/Focus (black)</h3></figcaption>
     <uxdot-example width-adjustment="392px">
-      <img src="{{ '../popover-interaction-state-default-focus-black.svg' | url }}" alt="Popover component interaction state, default and focus">
+      <img src="../popover-interaction-state-default-focus-black.svg" alt="Popover component interaction state, default and focus">
     </uxdot-example>
   </figure>
   <figure>
     <figcaption><h3>Default/Focus (white)</h3></figcaption>
     <uxdot-example width-adjustment="392px" color-palette="darkest">
-      <img src="{{ '../popover-interaction-state-default-focus-white.svg' | url }}" alt="Popover component interaction state, default and focus">
+      <img src="../popover-interaction-state-default-focus-white.svg" alt="Popover component interaction state, default and focus">
     </uxdot-example>
   </figure>
 </div>
@@ -218,13 +218,13 @@ Both popover variants have interaction states.
   <figure>
     <figcaption><h4>Hover/Active (black)</h4></figcaption>
     <uxdot-example width-adjustment="392px">
-      <img src="{{ '../popover-interaction-state-hover-active-black.svg' | url }}" alt="Popover component interaction state, hover and active"> 
+      <img src="../popover-interaction-state-hover-active-black.svg" alt="Popover component interaction state, hover and active"> 
     </uxdot-example>
   </figure>
   <figure>
     <figcaption><h4>Hover/Active (white)</h4></figcaption>
     <uxdot-example width-adjustment="392px" color-palette="darkest">
-      <img src="{{ '../popover-interaction-state-hover-active-white.svg' | url }}" alt="Popover component interaction state, hover and active">
+      <img src="../popover-interaction-state-hover-active-white.svg" alt="Popover component interaction state, hover and active">
     </uxdot-example>
   </figure>
 </div>
@@ -276,7 +276,7 @@ the close button must have focus in order for a user to have control over the
 popover and be able to interact with the links or close it.
 
 <uxdot-example width-adjustment="392px">
-  <img src="{{ '../popover-accessibility.svg' | url }}" alt="Popover component accessibility">
+  <img src="../popover-accessibility.svg" alt="Popover component accessibility">
 </uxdot-example>
 
 <rh-table>
@@ -316,7 +316,7 @@ popover and be able to interact with the links or close it.
 Do not embed a popover or tooltip within another popover.
 
 <uxdot-example width-adjustment="479px" danger>
-  <img src="{{ '../popover-best-practice-1.svg' | url }}" alt="Popover component best practice 1">
+  <img src="../popover-best-practice-1.svg" alt="Popover component best practice 1">
 </uxdot-example>
 
 
@@ -325,7 +325,7 @@ Do not embed a popover or tooltip within another popover.
 Do not overload a popover with too much content.
 
 <uxdot-example width-adjustment="432px" danger>
-  <img src="{{ '../popover-best-practice-2.svg' | url }}" alt="Popover component best practice 2">
+  <img src="../popover-best-practice-2.svg" alt="Popover component best practice 2">
 </uxdot-example>
 
 
@@ -334,5 +334,5 @@ Do not overload a popover with too much content.
 Do not remove the close button from a popover.
 
 <uxdot-example width-adjustment="392px" danger>
-  <img src="{{ '../popover-best-practice-3.svg' | url }}" alt="Popover component best practice 3">
+  <img src="../popover-best-practice-3.svg" alt="Popover component best practice 3">
 </uxdot-example>

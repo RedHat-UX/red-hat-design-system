@@ -32,8 +32,8 @@ export class UxdotHeader extends LitElement {
            class=${classMap({ hasSubnav, hasSearch })}>
         <slot part="heading"></slot>
         <slot name="search" part="search"></slot>
-        <slot name="subnav" part="subnav"></slot>
       </div>
+      <slot name="subnav" part="subnav"></slot>
     `;
   }
 }
