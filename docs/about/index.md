@@ -77,16 +77,16 @@ language standards](https://www.redhat.com/en/about/brand/standards).
 
 ### Red Hat brand standards
 
-Red Hat brand standards are the source code for our identity. They govern how we look and sound in all types of media. We follow brand standards to unify Red Hat digital experiences and stay up-to-date with our brand as it grows, improves, and adapts to meet new challenges.
+Red Hat brand standards are the source code for our identity. They govern how we 
+look and sound in all types of media. We follow brand standards to unify Red Hat 
+digital experiences and stay up-to-date with our brand as it grows, improves, 
+and adapts to meet new challenges.
 
-<rh-cta>
-  <a href="https://www.redhat.com/en/about/brand/standards">Learn about the Red Hat brand</a>
-</rh-cta>
+<rh-cta href="https://www.redhat.com/en/about/brand/standards">Learn about the Red Hat brand</rh-cta>
 
 <uxdot-example variant="full" no-border alignment="left" width-adjustment="1140px">
  <img src="../assets/about/about-rhds-brand-standards.png" alt="the words 'brand standards' framed by elements and shapes in ReEd Hat colors">
 </uxdot-example>
-
 
 ### Design tokens
 
@@ -95,9 +95,7 @@ hard-coded values for color, text attributes, spacing, and more. Tokens help us
 keep web components flexible and scalable. Additionally, semantic token names 
 help us assign consistent meanings that correspond with foundational guidelines.
 
-<rh-cta>
-  <a href="/tokens/">Learn about our tokens</a>
-</rh-cta>
+<rh-cta href="/tokens/">Learn about our tokens</rh-cta>
 
 <uxdot-example width-adjustment="807px">
  <img src="/tokens/images/design-tokens-intro.png" alt="Flow showing how a color like brand red becomes a token, how it is named, and how it is applied to a call to action">
@@ -110,9 +108,7 @@ build scalable UI elements and patterns. By using Web Components, it allows
 developers to use our code with encapsulated functionality and styles in any 
 framework or platform.
 
-<rh-cta>
-  <a href="/get-started/developers/#about-web-components">Learn about the benefits of Web Components</a>
-</rh-cta>
+<rh-cta href="/get-started/developers/#about-web-components">Learn about the benefits of Web Components</rh-cta>
 
 <uxdot-example width-adjustment="820px">
  <img src="../assets/about/about-rhds-web-components.svg" alt="Example of a card next to the Web Component's code">
@@ -142,9 +138,7 @@ Like RHDS Web Components, PFE Web Components not only work in any application
 framework, they are evergreen. This means that the components themselves can be 
 upgraded easily, allowing for consistency, scalability, and flexibility.
 
-<rh-cta>
-  <a href="https://patternflyelements.org/">Visit PatternFly Elements</a>
-</rh-cta>
+<rh-cta href="https://patternflyelements.org/">Visit PatternFly Elements</rh-cta>
 
 <uxdot-example width-adjustment="558px">
  <img src="../assets/about/about-rhds-pf-pfe.svg" alt="A back-to-top element that looks the same in RHDS, PatternFly, and PatternFly Elements">
@@ -153,18 +147,17 @@ upgraded easily, allowing for consistency, scalability, and flexibility.
 ## We provide support
 
 Whether you are implementing an element or pattern or contributing to the design 
-system, the RHDS team is here to help. Our [Design/code 
-status](/design-code-status/) table shows where everything is available, 
-including whether they’ve been added to the Red Hat Shared Libraries, which 
-makes our Web Components ready for use in Drupal, React, plain HTML, and other 
-frameworks. We also have multiple ways for you to reach our team about bugs, 
-feature requests, and more.
+system, the RHDS team is here to help. Our [Design/code status][dcs] table shows 
+where everything is available, including whether they’ve been added to the Red 
+Hat Shared Libraries, which makes our Web Components ready for use in Drupal, 
+React, plain HTML, and other frameworks. We also have multiple ways for you to 
+reach our team about bugs, feature requests, and more.
 
-<rh-cta>
-  <a href="/support/">Get support</a>
-</rh-cta>
+<rh-cta href="/support/">Get support</rh-cta>
 
 <uxdot-feedback>
   <h2>Release Notes</h2>
   <p>To see what foundations, tokens, elements, or patterns have been released recently, check out <a href="/about/release-notes">our release notes</a>.</p>
 </uxdot-feedback>
+
+[dcs]: /design-code-status/
