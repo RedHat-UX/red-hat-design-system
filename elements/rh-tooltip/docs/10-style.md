@@ -6,7 +6,7 @@ A tooltip is a container with text that includes an arrow and sometimes a drop s
 ### Anatomy 
 <figure>
   <uxdot-example width-adjustment="274px">
-    <img src="{{ '../tooltip-anatomy.png' | url }}" alt="Anatomy of a tooltip with annotations; number 1 is pointing to the container, number 2 is pointing to the text, number 3 is pointing to the arrow, and number 4 is pointing to the trigger">
+    <img src="../tooltip-anatomy.png" alt="Anatomy of a tooltip with annotations; number 1 is pointing to the container, number 2 is pointing to the text, number 3 is pointing to the arrow, and number 4 is pointing to the trigger">
   </uxdot-example>
   <figcaption>
     <ol>
@@ -27,14 +27,14 @@ A tooltip is available in both light and dark themes. The dark theme tooltip con
 ### Light theme 
 
 <uxdot-example width-adjustment="230px">
-  <img src="{{ '../tooltip-theme-light.png' | url }}" alt="Light theme tooltip which is black">
+  <img src="../tooltip-theme-light.png" alt="Light theme tooltip which is black">
 </uxdot-example>
 
 
 ### Dark theme 
 
 <uxdot-example color-palette="darkest" width-adjustment="230px">
-  <img src="{{ '../tooltip-theme-dark.png' | url }}" alt="Dark theme tooltip which is white">
+  <img src="../tooltip-theme-dark.png" alt="Dark theme tooltip which is white">
 </uxdot-example>
 
 
@@ -43,14 +43,14 @@ A tooltip is available in both light and dark themes. The dark theme tooltip con
 All badges have the same height and border radius.
 
 <uxdot-example width-adjustment="230px">
-  <img src="{{ '../tooltip-configuration.png' | url }}" alt="How a tooltip is constructed showing alignment, border radius, and arrow details">
+  <img src="../tooltip-configuration.png" alt="How a tooltip is constructed showing alignment, border radius, and arrow details">
 </uxdot-example>
 
 
 ## Space 
 
 <uxdot-example width-adjustment="230px">
-  <img src="{{ '../tooltip-space.png' | url }}" alt="Tooltip spacing both within the element and in between the element and trigger">
+  <img src="../tooltip-space.png" alt="Tooltip spacing both within the element and in between the element and trigger">
 </uxdot-example>
 
 <rh-table>
@@ -73,5 +73,5 @@ A tooltip has a `300ms` entry delay on hover by default, but this can be customi
 A tooltip appears near an icon or element on hover, focus, or when tapped. A tooltip contains only text and is not interactive.
 
 <uxdot-example width-adjustment="805px">
-  <img src="{{ '../tooltip-interaction-states.png' | url }}" alt="Tooltip trigger interaction states">
+  <img src="../tooltip-interaction-states.png" alt="Tooltip trigger interaction states">
 </uxdot-example>

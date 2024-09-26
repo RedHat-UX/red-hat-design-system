@@ -5,7 +5,7 @@ A timestamp is a simple line of text that displays date and time values.
 
 <figure>
   <uxdot-example width-adjustment="496px">
-    <img src="{{ '../timestamp-anatomy.png' | url }}" alt="Anatomy of a timestamp which is a simple line of text showing the date first and then the time after">
+    <img src="../timestamp-anatomy.png" alt="Anatomy of a timestamp which is a simple line of text showing the date first and then the time after">
   </uxdot-example>
   <figcaption>
     <ol>
@@ -20,7 +20,7 @@ A timestamp is a simple line of text that displays date and time values.
 The size of a timestamp is determined by the text size it is applied to.
 
 <uxdot-example width-adjustment="661px">
-  <img src="{{ '../timestamp-size.png' | url }}" alt="Two lines of text of various sizes with timestamps applied, one is 18px and the other is 24px">
+  <img src="../timestamp-size.png" alt="Two lines of text of various sizes with timestamps applied, one is 18px and the other is 24px">
 </uxdot-example>
 
 
@@ -28,7 +28,7 @@ The size of a timestamp is determined by the text size it is applied to.
 Two lines of text with timestamps applied, one is showing no styling and the other is showing a dashed underline.
 
 <uxdot-example width-adjustment="496px">
-  <img src="{{ '../timestamp-style-tooltip.png' | url }}" alt="Light theme badge">
+  <img src="../timestamp-style-tooltip.png" alt="Light theme badge">
 </uxdot-example>
 
 

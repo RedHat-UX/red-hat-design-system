@@ -41,7 +41,7 @@ A logical focus order helps keyboard users operate our websites. Elements need t
 </rh-alert>
 
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
-  <img src="{{ '../footer-a11y-focus-order.png' | url }}" alt="Image of a footer showing groups of focus indicators in different regions with annotation numbers">
+  <img src="../footer-a11y-focus-order.png" alt="Image of a footer showing groups of focus indicators in different regions with annotation numbers">
 </uxdot-example>
 
 
@@ -49,13 +49,13 @@ A logical focus order helps keyboard users operate our websites. Elements need t
 Users can open the language selector menu by pressing `Enter` if the trigger has focus. If they do, they can press `Tab` to move focus to the first language. Each language can receive focus from left to right and top to bottom.
 
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
-  <img src="{{ '../footer-a11y-language-selector-a.png' | url }}" alt="Image of a footer with the language selector menu open showing the focus order of languages">
+  <img src="../footer-a11y-language-selector-a.png" alt="Image of a footer with the language selector menu open showing the focus order of languages">
 </uxdot-example>
 
 When the focus is moved outside of the menu, the menu closes.
 
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
-  <img src="{{ '../footer-a11y-language-selector-b.png' | url }}" alt="Image of a footer with the language selector menu open showing the menu closing when focus is moved">
+  <img src="../footer-a11y-language-selector-b.png" alt="Image of a footer with the language selector menu open showing the menu closing when focus is moved">
 </uxdot-example>
 
 

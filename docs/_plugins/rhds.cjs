@@ -4,7 +4,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const exec = require('node:util').promisify(require('node:child_process').exec);
-const { glob } = require('node:fs/promises');
+const { glob, writeFile } = require('node:fs/promises');
 const yaml = require('js-yaml');
 const _slugify = require('slugify');
 const slugify = typeof _slugify === 'function' ? _slugify : _slugify.default;
@@ -227,7 +227,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
      * but a DocsPage instance, 11ty assigns it to this.ctx._
      * @see https://github.com/11ty/eleventy/blob/bf7c0c0cce1b2cb01561f57fdd33db001df4cb7e/src/Plugins/RenderPlugin.js#L89-L93
      */
-    const docsPage = this.ctx.doc;
+    const { docsPage } = this.ctx.doc;
     return docsPage.description;
   });
 
@@ -391,7 +391,6 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
 
   /** /assets/javascript/environment.js */
   eleventyConfig.on('eleventy.before', async function({ dir }) {
-    const { writeFile } = fs.promises;
     const outPath = path.join(dir.input, '..', 'lib', 'environment.js');
     const { makeDemoEnv } = await import('../../scripts/environment.js');
     await writeFile(outPath, await makeDemoEnv(), 'utf8');

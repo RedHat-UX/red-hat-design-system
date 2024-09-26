@@ -3,7 +3,7 @@
 {{ tagName | getElementDescription }}
 
 <uxdot-example width-adjustment="442px">
-  <img src="{{ './button-sample.png' | url }}" alt="Image of Danger, Primary, Secondary, Tertiary, and Link buttons in the first row and Play and Close buttons in the second row">
+  <img src="./button-sample.png" alt="Image of Danger, Primary, Secondary, Tertiary, and Link buttons in the first row and Play and Close buttons in the second row">
 </uxdot-example>
 
 {% repoStatusList repoStatus=repoStatus %}
