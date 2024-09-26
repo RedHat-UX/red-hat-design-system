@@ -48,22 +48,22 @@ Red Hat reflect our core brand traits: open, authentic, helpful, and brave.
   <rh-card>
     <rh-icon slot="header" set="standard" icon="community-people"></rh-icon>
     <h3 slot="header">User-centered</h3>
-    We focus on the people for which we are designing, and this advocacy extends beyond the customer to include the experience of Red Hat associates.
+    <p>We focus on the people for which we are designing, and this advocacy extends beyond the customer to include the experience of Red Hat associates.</p>
   </rh-card>
   <rh-card>
     <rh-icon slot="header" set="standard" icon="handshake"></rh-icon>
     <h3 slot="header">Co-creative</h3>
-    UX design is a team sport. Many people both within Red Hat, and with outside feedback, contribute to creating the user experience.
+    <p>UX design is a team sport. Many people both within Red Hat, and with outside feedback, contribute to creating the user experience.</p>
   </rh-card>
   <rh-card>
     <rh-icon slot="header" set="standard" icon="architect"></rh-icon>
     <h3 slot="header">Holistic</h3>
-    We consider the end-to-end experience, not just a single moment, single website, service encounter, or journey stage.
+    <p>We consider the end-to-end experience, not just a single moment, single website, service encounter, or journey stage.</p>
   </rh-card>
   <rh-card>
     <rh-icon slot="header" set="standard" icon="management-and-automation"></rh-icon>
     <h3 slot="header">Orchestrated</h3>
-    Processes, tools, and roles must be aligned to deliver and maintain an optimal Red Hat digital experience
+    <p>Processes, tools, and roles must be aligned to deliver and maintain an optimal Red Hat digital experience</p>
   </rh-card>
 </div>
 
