@@ -210,14 +210,17 @@ module.exports = function(eleventyConfig) {
       'docs/assets/javascript/elements/uxdot-best-practice.js',
       'docs/assets/javascript/elements/uxdot-search.js',
       'docs/assets/javascript/elements/uxdot-toc.js',
+      // 'docs/assets/javascript/elements/uxdot-pattern.js',
+      // Uses context API need to work around issues
+      // 'docs/assets/javascript/elements/uxdot-example.js',
+      // extends RhTabs so cant DSD yet
+      // 'docs/assets/javascript/elements/uxdot-installation-tabs.js',
       'elements/rh-button/rh-button.js',
       'elements/rh-tag/rh-tag.js',
+      'elements/rh-code-block/rh-code-block.js',
       'elements/rh-icon/rh-icon.js',
       'elements/rh-skip-link/rh-skip-link.js',
       'elements/rh-footer/rh-footer-universal.js',
-      // 'docs/assets/javascript/elements/uxdot-pattern.js',
-      // 'docs/assets/javascript/elements/uxdot-example.js', // Uses context API need to work around issues
-      // 'docs/assets/javascript/elements/uxdot-installation-tabs.js', // extends RhTabs so cant DSD yet
     ],
   });
 

@@ -26,14 +26,6 @@
   border: none !important;
 }
 
-:host([highlighting='prerendered']) ::slotted(pre) {
-  opacity: 0;
-  transition:
-    opacity
-    var(--rh-animation-speed)
-    var(--rh-animation-timing, cubic-bezier(0.465, 0.183, 0.153, 0.946));
-}
-
 .shadow-fab {
   display: flex;
   align-items: center;
