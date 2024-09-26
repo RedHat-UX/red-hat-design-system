@@ -31,7 +31,7 @@ The desaturated heading variant is best used for pages with many link tiles. For
 For a link tile, there are two image sizes available. The Default size has spacing around the entire image. The Full-width image size bleeds to the top, left, and right edges. The default image size is recommended for logos, while illustrations or photos would work well as a full-width image.
 
 <uxdot-example width-adjustment="750px">
-  <img src="{{ '../tile-variants-image-sizes.png' | url }}" alt="Examples of a logo in a tile with the default image size and a photo in a tile with the full-width image size">
+  <img src="../tile-variants-image-sizes.png" alt="Examples of a logo in a tile with the default image size and a photo in a tile with the full-width image size">
 </uxdot-example>
 
 
@@ -122,13 +122,13 @@ The recommended character counts below include spaces. Line counts are based on 
 Like a card, the default tile should have a minimum width of four grid columns, so there is a maximum of three default link tiles in one row.
 
 <uxdot-example width-adjustment="870px">
-  <img src="{{ '../tile-layouts-default-tile.png' | url }}" alt="Three default link tiles in a row">
+  <img src="../tile-layouts-default-tile.png" alt="Three default link tiles in a row">
 </uxdot-example>
 
 The compact link tiles or selectable tiles can condense to a minimum width of three grid columns or a max of four compact tiles in a row.
 
 <uxdot-example width-adjustment="870px">
-  <img src="{{ '../tile-layouts-compact-tile.png' | url }}" alt="Four compact link tiles in a row">
+  <img src="../tile-layouts-compact-tile.png" alt="Four compact link tiles in a row">
 </uxdot-example>
 
 
@@ -139,7 +139,7 @@ The compact link tiles or selectable tiles can condense to a minimum width of th
 The vertical height of a tile will increase as more content is added. The vertical height of multiple tiles in one row matches the height of the tallest tile.
 
 <uxdot-example width-adjustment="870px">
-  <img src="{{ '../tile-behavior-vertical-height.png' | url }}" alt="Three link tiles with different amounts of content have the same height">
+  <img src="../tile-behavior-vertical-height.png" alt="Three link tiles with different amounts of content have the same height">
 </uxdot-example>
 
 
@@ -150,14 +150,14 @@ The vertical height of a tile will increase as more content is added. The vertic
 Do not use a link tile if it needs to link to more than one destination.
 
 <uxdot-example width-adjustment="360px" danger>
-  <img src="{{ '../best-practices-link-tile-actions-1.png' | url }}" alt="Example of an incorrectly used link tile with a call to action in the body">
+  <img src="../best-practices-link-tile-actions-1.png" alt="Example of an incorrectly used link tile with a call to action in the body">
 </uxdot-example> 
 
 
 A link tile should not be used as a button. A link tile is akin to a call to action and should navigate a user somewhere else.
 
 <uxdot-example width-adjustment="360px" danger>
-  <img src="{{ '../best-practices-link-tile-actions-2.png' | url }}" alt="Example of an incorrectly used link tile with “submit” as a heading and no other text">
+  <img src="../best-practices-link-tile-actions-2.png" alt="Example of an incorrectly used link tile with “submit” as a heading and no other text">
 </uxdot-example>
 
 
@@ -166,19 +166,19 @@ A link tile should not be used as a button. A link tile is akin to a call to act
 Do not use different variants of a tile in one tile group.
 
 <uxdot-example width-adjustment="750px" danger>
-  <img src="{{ '../best-practices-tile-groups-1.png' | url }}" alt="Example of an incorrectly styled tile group with a default link tile and a compact link tile">
+  <img src="../best-practices-tile-groups-1.png" alt="Example of an incorrectly styled tile group with a default link tile and a compact link tile">
 </uxdot-example>
 
 When grouped, use the same number of content slots to make them easy to scan.
 
 <uxdot-example width-adjustment="750px" danger>
-  <img src="{{ '../best-practices-tile-groups-2.png' | url }}" alt="Example of an incorrectly styled tile group with one tile that has only text and a second tile that includes a logo and a title">
+  <img src="../best-practices-tile-groups-2.png" alt="Example of an incorrectly styled tile group with one tile that has only text and a second tile that includes a logo and a title">
 </uxdot-example>
 
 If tiles have images, the images should have the same height. This will help the headings of each tile align vertically which also helps users scan more easily.
 
 <uxdot-example width-adjustment="750px" danger>
-  <img src="{{ '../best-practices-tile-groups-3.png' | url }}" alt="Example of an incorrectly styled tile group with two tiles using different image heights">
+  <img src="../best-practices-tile-groups-3.png" alt="Example of an incorrectly styled tile group with two tiles using different image heights">
 </uxdot-example>
 
 
@@ -187,5 +187,5 @@ If tiles have images, the images should have the same height. This will help the
 The footer of a link tile or selectable tile should not include calls to action, links, or buttons, but it can include non-interactive elements, like tags or badges. Ideally, footer content should be able to fit on one line, but it can wrap to two when necessary.
 
 <uxdot-example width-adjustment="360px" danger>
-  <img src="{{ '../best-practices-tile-footer-content.png' | url }}" alt="Example of incorrectly adding a link in the footer of a link tile">
+  <img src="../best-practices-tile-footer-content.png" alt="Example of incorrectly adding a link in the footer of a link tile">
 </uxdot-example>

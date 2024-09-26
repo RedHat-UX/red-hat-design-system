@@ -13,7 +13,7 @@ Use tabs to organize lots of information into logical sections. Consider using a
 Tabs allow users to click through content one section at a time whereas an accordion allows users to view multiple sections of content simultaneously.
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../tabs-vs-accordion.png' | url }}" alt="Image of tabs on top and an accordion below with two panels expanded">
+  <img src="../tabs-vs-accordion.png" alt="Image of tabs on top and an accordion below with two panels expanded">
 </uxdot-example>
 
 
@@ -22,7 +22,7 @@ Tabs allow users to click through content one section at a time whereas an accor
 To reduce cognitive load and a cluttered user interface, avoid using more than three or four tabs.
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../tabs-number-of-tabs.png' | url }}" alt="Image of open tabs with three tabs on top and box tabs with three tabs below">
+  <img src="../tabs-number-of-tabs.png" alt="Image of open tabs with three tabs on top and box tabs with three tabs below">
 </uxdot-example>
 
 
@@ -33,7 +33,7 @@ When choosing one variation over the other, consider where it is being used. If 
 <strong>Box tabs</strong> - use if your design includes a lot of boxes or you want to maintain the classic tabs look and feel
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../tabs-variations.png' | url }}" alt="Image of open tabs on top and box tabs below">
+  <img src="../tabs-variations.png" alt="Image of open tabs on top and box tabs below">
 </uxdot-example>
 
 
@@ -44,7 +44,7 @@ When choosing one orientation over the other, consider the content in the panel,
 - Vertical tabs are placed on the left side of a container and offer users a <strong>left-to-right</strong> reading experience
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../tabs-orientation.png' | url }}" alt="Image of horizontal tabs on top and vertical tabs below">
+  <img src="../tabs-orientation.png" alt="Image of horizontal tabs on top and vertical tabs below">
 </uxdot-example>
 
 
@@ -53,7 +53,7 @@ When choosing one orientation over the other, consider the content in the panel,
 If using horizontal tabs, the default orientation is left aligned, but center aligned is also an option.
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../tabs-alignment.png' | url }}" alt="Image of open tabs with left and center alignment and box tabs with left and center alignment">
+  <img src="../tabs-alignment.png" alt="Image of open tabs with left and center alignment and box tabs with left and center alignment">
 </uxdot-example>
 
 
@@ -67,15 +67,15 @@ An inset is used to ensure consistent alignment and padding between text labels,
 </rh-alert>
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../tabs-inset-open.png' | url }}" alt="Image of open tabs showing detailed inset specs">
+  <img src="../tabs-inset-open.png" alt="Image of open tabs showing detailed inset specs">
 </uxdot-example>
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../tabs-inset-box.png' | url }}" alt="Image of box tabs showing detailed inset specs">
+  <img src="../tabs-inset-box.png" alt="Image of box tabs showing detailed inset specs">
 </uxdot-example>
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../tabs-inset-vertical.png' | url }}" alt="Image of vertical tabs showing detailed inset specs">
+  <img src="../tabs-inset-vertical.png" alt="Image of vertical tabs showing detailed inset specs">
 </uxdot-example>
 
 Certain content layouts may require removing the inset. While this is not a default style, it is possible with custom CSS.
@@ -85,7 +85,7 @@ Certain content layouts may require removing the inset. While this is not a defa
 In certain edge cases, logos can be used instead of text labels.
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../tabs-logos.png' | url }}" alt="Image of open tabs with small logos in place of text labels">
+  <img src="../tabs-logos.png" alt="Image of open tabs with small logos in place of text labels">
 </uxdot-example>
 
 
@@ -99,15 +99,15 @@ The panel is below or to the right of tabs. Use this area to place other element
 </rh-alert>
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../tabs-tab-panel-1.png' | url }}" alt="Image of open tabs with a text block and a card">
+  <img src="../tabs-tab-panel-1.png" alt="Image of open tabs with a text block and a card">
 </uxdot-example>
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../tabs-tab-panel-2.png' | url }}" alt="Image of open tabs with a title and a wide card">
+  <img src="../tabs-tab-panel-2.png" alt="Image of open tabs with a title and a wide card">
 </uxdot-example>
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../tabs-tab-panel-3.png' | url }}" alt="Image of open tabs with a text block and a blockquote">
+  <img src="../tabs-tab-panel-3.png" alt="Image of open tabs with a text block and a blockquote">
 </uxdot-example>
 
 
@@ -118,7 +118,7 @@ The panel is below or to the right of tabs. Use this area to place other element
 Text labels should be concise, scannable, and descriptive of content in the panel. They should not exceed more than two or three short words. If they do, work with a content strategist to shorten them.
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../tabs-text-labels.png' | url }}" alt="Image of open tabs with examples of adequate and long text labels">
+  <img src="../tabs-text-labels.png" alt="Image of open tabs with examples of adequate and long text labels">
 </uxdot-example>
 
 
@@ -153,7 +153,7 @@ Text labels should be short but descriptive.
 The divider line can be set to any width or be the same width as the list of tabs.
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../tabs-layout-horizontal-width.png' | url }}" alt="Image of open tabs with a stretched divider line on top and box tabs with a divider line constrained to the width of text labels below">
+  <img src="../tabs-layout-horizontal-width.png" alt="Image of open tabs with a stretched divider line on top and box tabs with a divider line constrained to the width of text labels below">
 </uxdot-example>
 
 
@@ -162,7 +162,7 @@ The divider line can be set to any width or be the same width as the list of tab
 The divider line will become taller if the height of content in the panel exceeds the height of vertical tabs.
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../tabs-layout-vertical-height.png' | url }}" alt="Image of vertical tabs with a short amount of content in the panel on top and vertical tabs with a long amount of content in the panel below">
+  <img src="../tabs-layout-vertical-height.png" alt="Image of vertical tabs with a short amount of content in the panel on top and vertical tabs with a long amount of content in the panel below">
 </uxdot-example>
 
 
@@ -171,7 +171,7 @@ The divider line will become taller if the height of content in the panel exceed
 Tabs can be used in a card if the layout is wide enough and there are fewer tabs.
 
 <uxdot-example width-adjustment="480px">
-  <img src="{{ '../tabs-layout-card.png' | url }}" alt="Image of open tabs in a card with only two tabs">
+  <img src="../tabs-layout-card.png" alt="Image of open tabs in a card with only two tabs">
 </uxdot-example>
 
 
@@ -187,7 +187,7 @@ If the number of tabs exceeds the container width or breakpoint, overflow button
 </rh-alert>
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../tabs-behavior-overflow.png' | url }}" alt="Image of open tabs at various widths showing overflow buttons on top and box tabs at various widths showing overflow buttons below">
+  <img src="../tabs-behavior-overflow.png" alt="Image of open tabs at various widths showing overflow buttons on top and box tabs at various widths showing overflow buttons below">
 </uxdot-example>
 
 
@@ -196,7 +196,7 @@ If the number of tabs exceeds the container width or breakpoint, overflow button
 When the first tab is active, the left overflow button is disabled. When the last tab is active, the right overflow button is disabled. When a tab that is cut off is selected, the list of tabs shifts so the selected tab is in full view.
 
 <uxdot-example width-adjustment="544px">
-  <img src="{{ '../tabs-behavior-navigating-overflow-tabs.png' | url }}" alt="Image of selecting a cut off tab and the list of tabs shifting to reveal the selected tab in full view">
+  <img src="../tabs-behavior-navigating-overflow-tabs.png" alt="Image of selecting a cut off tab and the list of tabs shifting to reveal the selected tab in full view">
 </uxdot-example>
 
 
@@ -205,7 +205,7 @@ When the first tab is active, the left overflow button is disabled. When the las
 ### Large breakpoints
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="{{ '../tabs-responsive-design-breakpoints-large.png' | url }}" alt="Image of horizontal and vertical tabs on desktop and tablet breakpoints">
+  <img src="../tabs-responsive-design-breakpoints-large.png" alt="Image of horizontal and vertical tabs on desktop and tablet breakpoints">
 </uxdot-example>
 
 
@@ -214,7 +214,7 @@ When the first tab is active, the left overflow button is disabled. When the las
 Vertical tabs switch to horizontal tabs with overflow buttons on small breakpoints.
 
 <uxdot-example width-adjustment="576px" variant="full" alignment="left" no-border>
-  <img src="{{ '../tabs-responsive-design-breakpoints-small.png' | url }}" alt="Image of tabs with overflow buttons on small breakpoints">
+  <img src="../tabs-responsive-design-breakpoints-small.png" alt="Image of tabs with overflow buttons on small breakpoints">
 </uxdot-example>
 
 
@@ -225,7 +225,7 @@ Vertical tabs switch to horizontal tabs with overflow buttons on small breakpoin
 There should be at least two tabs minimum.
 
 <uxdot-example width-adjustment="872px" danger>
-  <img src="{{ '../tabs-best-practice-1.png' | url }}" alt="Image of horizontal open and box tabs with one tab each which is incorrect usage">
+  <img src="../tabs-best-practice-1.png" alt="Image of horizontal open and box tabs with one tab each which is incorrect usage">
 </uxdot-example>
 
 
@@ -234,7 +234,7 @@ There should be at least two tabs minimum.
 Be careful about displaying too many tabs, some of them will become hidden even at large breakpoints.
 
 <uxdot-example width-adjustment="872px" danger>
-  <img src="{{ '../tabs-best-practice-2.png' | url }}" alt="Image of horizontal tabs with five tabs and overflow buttons which is incorrect usage">
+  <img src="../tabs-best-practice-2.png" alt="Image of horizontal tabs with five tabs and overflow buttons which is incorrect usage">
 </uxdot-example>
 
 
@@ -243,7 +243,7 @@ Be careful about displaying too many tabs, some of them will become hidden even 
 Do not add extra spacing or stretch the width of tabs.
 
 <uxdot-example width-adjustment="872px" danger>
-  <img src="{{ '../tabs-best-practice-3.png' | url }}" alt="Image of horizontal tabs with three tabs that are stretched which is incorrect usage">
+  <img src="../tabs-best-practice-3.png" alt="Image of horizontal tabs with three tabs that are stretched which is incorrect usage">
 </uxdot-example>
 
 
@@ -252,5 +252,5 @@ Do not add extra spacing or stretch the width of tabs.
 Overflow buttons should not be visible if all tabs are visible.
 
 <uxdot-example width-adjustment="872px" danger>
-  <img src="{{ '../tabs-best-practice-4.png' | url }}" alt="Image of horizontal tabs with three visible tabs and overflow buttons which is incorrect usage">
+  <img src="../tabs-best-practice-4.png" alt="Image of horizontal tabs with three visible tabs and overflow buttons which is incorrect usage">
 </uxdot-example>

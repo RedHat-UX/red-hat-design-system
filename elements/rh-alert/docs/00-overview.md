@@ -8,7 +8,7 @@
 ## Sample element
 
 <uxdot-example width-adjustment="538px">
-  <img src="{{ 'alert-sample.svg' | url }}" alt="Two examples of the alert element" width="538px">
+  <img src="alert-sample.svg" alt="Two examples of the alert element" width="538px">
 </uxdot-example>
 
 ## When to use
@@ -18,6 +18,6 @@
   - When the severity of a message needs to be indicated
 
 
-[img-sample]: {{ './alert-sample.svg' | url }}
+[img-sample]: ./alert-sample.svg
 
 {% repoStatusChecklist repoStatus=repoStatus %}

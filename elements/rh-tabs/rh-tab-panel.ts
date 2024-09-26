@@ -1,7 +1,6 @@
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
-
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
@@ -44,9 +43,9 @@ export class RhTabPanel extends LitElement {
   }
 
   render() {
-    const { on = '' } = this;
+    const { on = 'light' } = this;
     return html`
-      <div id="rhds-container" class="${classMap({ on: true, [on]: !!on })}">
+      <div id="container" class="${classMap({ on: true, [on]: true })}">
         <slot></slot>
       </div>
     `;

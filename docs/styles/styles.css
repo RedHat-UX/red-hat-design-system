@@ -238,7 +238,7 @@
    * KBD and code pattern
   **/
 
-  :where(code) {
+  :where(code:not([class^='language-'])) {
     padding-inline: var(--rh-space-xs);
     background: oklch(from var(--rh-color-surface) calc(l - 0.05) c h);
     border-radius: var(--rh-border-radius-default);

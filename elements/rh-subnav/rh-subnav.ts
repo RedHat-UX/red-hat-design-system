@@ -39,7 +39,7 @@ export class RhSubnav extends LitElement {
 
   static {
     // on resize check for overflows to add or remove scroll buttons
-    window.addEventListener('resize', () => {
+    globalThis.addEventListener('resize', () => {
       // this appears to be an eslint bug.
       // `this` should refer to the class, but in the minified bundle, it is void
       const { instances } = RhSubnav;

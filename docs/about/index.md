@@ -143,5 +143,3 @@ Whether you are implementing an element or pattern or contributing to the design
   <h2>Release Notes</h2>
   <p>To see what foundations, tokens, elements, or patterns have been released recently, check out <a href="/about/release-notes">our release notes</a>.</p>
 </uxdot-feedback>
-
-

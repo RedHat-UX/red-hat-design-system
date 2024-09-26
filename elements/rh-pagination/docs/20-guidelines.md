@@ -33,7 +33,7 @@ The page input field allows users to type their desired page number, this helps 
 </rh-alert>
 
 <uxdot-example width-adjustment="736px">
-  <img src="{{ '../pagination-guidelines-page-input-field.svg' | url }}" alt="Two groups of pagination; one group shows full sizes with 8 pages and 50 pages of pagination and the other group shows compact sizes with the same amount of pages.">
+  <img src="../pagination-guidelines-page-input-field.svg" alt="Two groups of pagination; one group shows full sizes with 8 pages and 50 pages of pagination and the other group shows compact sizes with the same amount of pages.">
 </uxdot-example>
 
 ### Low page count
@@ -46,7 +46,7 @@ In some edge cases, pagination may need to display a very low page count like on
 </rh-alert>
 
 <uxdot-example width-adjustment="736px">
-  <img src="{{ '../pagination-guidelines-low-page-count.svg' | url }}" alt="Groups of paginations with low page counts; first pagination group shows only 1 page and the second group shows only 3 pages">
+  <img src="../pagination-guidelines-low-page-count.svg" alt="Groups of paginations with low page counts; first pagination group shows only 1 page and the second group shows only 3 pages">
 </uxdot-example>
 
 ### Disabled butons
@@ -54,13 +54,13 @@ In some edge cases, pagination may need to display a very low page count like on
 When the beginning or end of the pagination range is reached, certain control buttons are disabled.
 
 <uxdot-example width-adjustment="736px">
-  <img src="{{ '../pagination-guidelines-disabled-buttons-1.svg' | url }}" alt="Paginations with a variety of disabled control buttons">
+  <img src="../pagination-guidelines-disabled-buttons-1.svg" alt="Paginations with a variety of disabled control buttons">
 </uxdot-example>
 
 The arrow icon color for disabled buttons in both variants is the same.
 
 <uxdot-example width-adjustment="736px">
-  <img src="{{ '../pagination-guidelines-disabled-buttons-2.svg' | url }}" alt="Paginations disabled stepper/arrow icons">
+  <img src="../pagination-guidelines-disabled-buttons-2.svg" alt="Paginations disabled stepper/arrow icons">
 </uxdot-example>
 
 ### Truncation
@@ -73,7 +73,7 @@ If there are more than seven pages, single or double truncation is displayed bas
 </rh-alert>
 
 <uxdot-example width-adjustment="736px">
-  <img src="{{ '../pagination-guidelines-truncation.svg' | url }}" alt="Paginations with a variety of truncation examples">
+  <img src="../pagination-guidelines-truncation.svg" alt="Paginations with a variety of truncation examples">
 </uxdot-example>
 
 
@@ -84,7 +84,7 @@ If there are more than seven pages, single or double truncation is displayed bas
 All of the pagination variants are horizontally centered below content by default.
 
 <uxdot-example width-adjustment="800px">
-  <img src="{{ '../pagination-layout-alignment.svg' | url }}" alt="Four different versions of paginations center aligned to content above.">
+  <img src="../pagination-layout-alignment.svg" alt="Four different versions of paginations center aligned to content above.">
 </uxdot-example>
 
 ## Responsive design
@@ -99,19 +99,19 @@ All of the pagination variants are horizontally centered below content by defaul
 As viewport sizes get smaller, pagination will switch sizes to accommodate the page input field if used on the right. All of the variants behave similarly. If the page input field is used below, pagination will not switch sizes as quickly. This works similarly for the box and open variants at both sizes.
 
 <uxdot-example width-adjustment="1140px" variant="full" alignment="left" no-border>
-  <img src="{{ '../pagination-guidelines-responsive-with-pif-desktop.svg' | url }}" alt="Pagination with the page input field on the right">
+  <img src="../pagination-guidelines-responsive-with-pif-desktop.svg" alt="Pagination with the page input field on the right">
 </uxdot-example>
 
 Container widths greater than 768px
 
 <uxdot-example width-adjustment="576px" variant="full" alignment="left" no-border>
-  <img src="{{ '../pagination-guidelines-responsive-with-pif-tablet.svg' | url }}" alt="Tablet / compact pagination with the page input field on the right">
+  <img src="../pagination-guidelines-responsive-with-pif-tablet.svg" alt="Tablet / compact pagination with the page input field on the right">
 </uxdot-example>
 
 Container widths of 375px - 768px
 
 <uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border>
-  <img src="{{ '../pagination-guidelines-responsive-with-pif-mobile.svg' | url }}" alt="Mobile / compact pagination with the page input field on the bottom">
+  <img src="../pagination-guidelines-responsive-with-pif-mobile.svg" alt="Mobile / compact pagination with the page input field on the bottom">
 </uxdot-example>
 
 Container widths less than 375px
@@ -121,19 +121,19 @@ Container widths less than 375px
 When the page input field is not visible, the field will become visible when the default size switches to the mobile version. This works the same for the box and open variants.
 
 <uxdot-example width-adjustment="1140px" variant="full" alignment="left" no-border>
-  <img src="{{ '../pagination-guidelines-responsive-no-pif-desktop.svg' | url }}" alt="Pagination on desktop without the page input field">
+  <img src="../pagination-guidelines-responsive-no-pif-desktop.svg" alt="Pagination on desktop without the page input field">
 </uxdot-example>
 
 Container widths greater than 768px
 
 <uxdot-example width-adjustment="576px" variant="full" alignment="left" no-border>
-  <img src="{{ '../pagination-guidelines-responsive-no-pif-tablet.svg' | url }}" alt="Tablet / compact pagination with the page input field on the right">
+  <img src="../pagination-guidelines-responsive-no-pif-tablet.svg" alt="Tablet / compact pagination with the page input field on the right">
 </uxdot-example>
 
 Container widths of 375px - 768px
 
 <uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border>
-  <img src="{{ '../pagination-guidelines-responsive-no-pif-mobile.svg' | url }}" alt="Mobile / compact pagination with the page input field on the bottom">
+  <img src="../pagination-guidelines-responsive-no-pif-mobile.svg" alt="Mobile / compact pagination with the page input field on the bottom">
 </uxdot-example>
 
 
@@ -144,7 +144,7 @@ Container widths of 375px - 768px
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
     <uxdot-example slot="image" width-adjustment="372px">
-      <img src="{{ '../pagination-guidelines-best-practices-1-do.svg' | url }}" alt="Size SM truncated pagination with input below pages.">
+      <img src="../pagination-guidelines-best-practices-1-do.svg" alt="Size SM truncated pagination with input below pages.">
     </uxdot-example>
     <p>The page input field needs to be visible when there is truncation or when only the navigation controls are available.</p>
   </uxdot-best-practice>
@@ -161,7 +161,7 @@ Container widths of 375px - 768px
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
     <uxdot-example slot="image" width-adjustment="372px">
-      <img src="{{ '../pagination-guidelines-best-practices-2-do.svg' | url }}" alt="Size SM truncated pagination with eight pages.">
+      <img src="../pagination-guidelines-best-practices-2-do.svg" alt="Size SM truncated pagination with eight pages.">
     </uxdot-example>
     <p>Truncation occurs automatically when there are more than seven pages.</p>
   </uxdot-best-practice>
@@ -179,7 +179,7 @@ Container widths of 375px - 768px
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
     <uxdot-example slot="image" width-adjustment="372px">
-      <img src="{{ '../pagination-guidelines-best-practices-3-do.svg' | url }}" alt="Pagination with input field center aligned below pagination">
+      <img src="../pagination-guidelines-best-practices-3-do.svg" alt="Pagination with input field center aligned below pagination">
     </uxdot-example>
     <p>Use the built-in alignment options for the page input field. If your language is read right to left, view the “Right to left” pagination demo.</p>
   </uxdot-best-practice>
@@ -197,7 +197,7 @@ Container widths of 375px - 768px
 <div class="grid sm-two-columns compact-vs-mobile">
   <uxdot-best-practice variant="do">
     <uxdot-example slot="image" width-adjustment="393px">
-      <img src="{{ '../pagination-guidelines-best-practices-4-do.svg' | url }}" alt="Pagination shown on a mobile device with arrows on top and an input field below.">
+      <img src="../pagination-guidelines-best-practices-4-do.svg" alt="Pagination shown on a mobile device with arrows on top and an input field below.">
     </uxdot-example>
     <p>Use the default mobile style that comes with each variant.</p>
   </uxdot-best-practice>

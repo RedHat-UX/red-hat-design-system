@@ -10,16 +10,16 @@ subnav:
   collection: sortedColor
   order: 2
 permalink: /foundations/color/usage/index.html
-importElements: 
-  - rh-alert
-  - rh-tag
-  - rh-table
 ---
 
-<script type="module" src="{{ '/assets/javascript/elements/uxdot-best-practice.js' | url }}"></script>
+<script data-helmet type="module">
+  import '/assets/javascript/elements/uxdot-best-practice.js';
+  import '@rhds/elements/rh-alert/rh-alert.js';
+  import '@rhds/elements/rh-tag/rh-tag.js';
+  import '@rhds/elements/rh-table/rh-table.js';
+</script>
 
-<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
-
+<link data-helmet rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
 
 ## Using color
 
@@ -39,7 +39,7 @@ To learn more about our Red Hat red color, go to the [Brand
 standards](https://www.redhat.com/en/about/brand/standards) website.
 
 <rh-alert state="warning">
- <h4 slot="header">Usage Warning</h4>
+ <h4 slot="header">Usage warning</h4>
  <p>Do not apply the Red Hat red color to text in dark environments unless
 it meets <a href="https://www.w3.org/WAI/WCAG21/Understanding/">WCAG 2.1 AA</a>
 requirements.</p>
@@ -173,44 +173,20 @@ patterns like [alerts](/elements/alert), [badges](/elements/badge),
 
 <rh-alert state="warning">
   <h4 slot="header">Usage Warning</h4>
-  <p>The red-orange color is reserved for danger or error states, do not use it anywhere else.</p>
+  <p>The red-orange color is reserved for danger or error states. Do not use it anywhere else.</p>
 </rh-alert>
 
 <rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Status">Status</th>
-        <th scope="col" data-label="Use case">Use case</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Status">Note/Tip</td>
-        <td data-label="Use case">Use purple to communicate helpful or important information.</td>
-      </tr>
-      <tr>
-        <td data-label="Status">Neutral</td>
-        <td data-label="Use case">Use gray to communicate information that will have no impact on a user.</td>
-      </tr>
-      <tr>
-        <td data-label="Status">Success</td>
-        <td data-label="Use case">Use green to communicate a success state.</td>
-      </tr>
-      <tr>
-        <td data-label="Status">Caution</td>
-        <td data-label="Use case">Use yellow to communicate that an issue can be avoided.</td>
-      </tr>
-      <tr>
-        <td data-label="Status">Warning</td>
-        <td data-label="Use case">Use orange to communicate that a destructive action might occur if an issue is not resolved.</td>
-      </tr>
-      <tr>
-        <td data-label="Status">Danger/Error</td>
-        <td data-label="Use case">Use red-orange to communicate a destructive action or critical error.</td>
-      </tr>
-    </tbody>
-  </table>
+
+| Status  | Use case                                                                                                        |
+| ------- | --------------------------------------------------------------------------------------------------------------- |
+| Neutral | Use gray to communicate information that will have no impact on a user.                                         |
+| Info    | Use purple to communicate helpful or important information.<br>*Note:* "Info" was previously called "note/tip." |
+| Success | Use green to communicate a success state.                                                                       |
+| Warning | Use yellow to communicate that a destructive action might occur if an issue is not resolved.                    |
+| Caution | Use orange to communicate that an issue can be avoided.                                                         |
+| Danger  | Use red-orange to communicate a destructive action or critical error.                                           |
+
 </rh-table>
 
 
@@ -261,11 +237,11 @@ using elements and patterns from the desaturated theme instead.
     <uxdot-example slot="image" no-border variant="full" alignment="left">
       <img src="/assets/color/best-practices-sufficient-contrast-correct.svg" alt="Examples of a blue button against a light gray background and a red CTA against a black background">
     </uxdot-example>
-    <p>Use a surface color token for background to ensure accessibility, or use a <a href="{{ '../accessibility/#tools' | url }}">tool</a> to check proper contrast.</p>
+    <p>Use a surface color token for background to ensure accessibility, or use a <a href="../accessibility/#tools">tool</a> to check proper contrast.</p>
   </uxdot-best-practice>
   <uxdot-best-practice variant="dont">
     <uxdot-example slot="image" no-border variant="full" alignment="left">
-      <img src="{{ '/assets/color/best-practices-sufficient-contrast-wrong.svg' | url }}" alt="Examples of a blue button against a red background and a red CTA against a blue background">
+      <img src="/assets/color/best-practices-sufficient-contrast-wrong.svg" alt="Examples of a blue button against a red background and a red CTA against a blue background">
     </uxdot-example>
     <p>Do not use a background color that has a similar hue, saturation, or lightness to foreground elements.</p>
   </uxdot-best-practice>
