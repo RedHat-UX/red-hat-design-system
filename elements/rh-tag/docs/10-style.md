@@ -1,13 +1,15 @@
 ## Style
 
-A tag is text on a pill-shaped background. It comes in a variety of colors, styles, and sizes. The text may be linked or include an optional decorative icon.
+A tag is text on a pill-shaped background. It comes in a variety of colors, 
+styles, and sizes. The text may be linked or include an optional decorative 
+icon.
 
 ### Anatomy
 
 <figure>
   <uxdot-example width-adjustment="311px">
     <img src="../tag-style-anatomy.svg"
-         alt="Image of 4 tags, 3 of which are annotated with anatomy features; annotation number 1 is pointing to the Text, annotation number 2 is pointing to theDecorative icon, and annotation number 3 is pointing to the Linked text of a Linked Tag">
+         alt="Image of 4 tags, 3 of which are annotated with anatomy features; annotation number 1 is pointing to the Text, annotation number 2 is pointing to the Decorative icon, and annotation number 3 is pointing to the Linked text of a Linked Tag">
   </uxdot-example>
   <figcaption>
     <ol>
@@ -26,32 +28,34 @@ There are three available tag styles: `Filled`, `Outlined`, and `Desaturated`.
 
 <uxdot-example width-adjustment="231px">
   <img src="../tag-style-variants-style.svg"
-        alt="Image of 3 tags, a filled variant with a red background and red border, an outlined variant with a white background and red border, and a desaturated variant with a white background and dark grey border">
+       alt="Image of 3 tags, a filled variant with a red background and red border, an outlined variant with a white background and red border, and a desaturated variant with a white background and dark grey border">
 </uxdot-example>
 
 ### Color
 
-There are nine available tag colors. The Desaturated style uses only one color for both the border and text.
+There are nine available tag colors. The Desaturated style uses only one color 
+for both the border and text.
 
 <uxdot-example width-adjustment="558px">
   <img src="../tag-style-variants-color.svg"
-        alt="Image of a collection of all the variations of tag, 9 filled, 9 outlined, and 9 desaturated">
+       alt="Image of a collection of all the variations of tag, 9 filled, 9 outlined, and 9 desaturated">
 </uxdot-example>
 
 
 ### Size
 
-There are two available tag sizes. Each style and color has `Default` and `Compact` sizes.
+There are two available tag sizes. Each style and color has `Default` and 
+`Compact` sizes.
 
 <uxdot-example width-adjustment="539px">
   <img src="../tag-style-variants-size.svg"
-        alt="Image of a collection of all the variations of tag, 2 filled one normal sized and one compact, 2 outlined one normal sized and one compact and 2 desaturated one normal sized and one compact">
+       alt="Image of a collection of all the variations of tag, 2 filled one normal sized and one compact, 2 outlined one normal sized and one compact and 2 desaturated one normal sized and one compact">
 </uxdot-example>
 
 <rh-table>
 
-| Tag size | Text size token |
-|----------|-----------------|
+| Tag size | Text size token             |
+| -------- | --------------------------- |
 | Default  | --rh-font-size-body-text-sm |
 | Compact  | --rh-font-size-body-text-xs |
 
@@ -67,10 +71,9 @@ Each tag style, color, and size includes an optional decorative icon.
 </rh-alert>
 
 <uxdot-example width-adjustment="614px">
-  <img src="../tag-style-variants-decorative-icons.svg"
-        alt="Image of a collection of the variations of tag, 2 filled one normal sized and one compact with a check mark icon, 2 outlined one normal sized and one compact with a check mark icon,  and 2 desaturated  one normal sized and one compact with a check mark icon">
+  <img src="../tag-style-variants-decorative-icon.svg"
+       alt="Image of a collection of the variations of tag, 2 filled one normal sized and one compact with a check mark icon, 2 outlined one normal sized and one compact with a check mark icon,  and 2 desaturated  one normal sized and one compact with a check mark icon">
 </uxdot-example>
-
 
 ### Interactivity
 
@@ -78,7 +81,7 @@ Each tag style, color, and size can be text only or linked.
 
 <uxdot-example width-adjustment="760px">
   <img src="../tag-style-variants-interactivity.svg"
-        alt="Image of a collection tags, 3 rows of 4 pairs of icons each pair contains a tag that is normal size and compact.  2nd and 4th column contains a padlock icon.  3rd and 4th column contain links.  First row are all filled, second row is outlined variants, and third row is desaturated.">
+       alt="Image of a collection tags, 3 rows of 4 pairs of icons each pair contains a tag that is normal size and compact.  2nd and 4th column contains a padlock icon.  3rd and 4th column contain links.  First row are all filled, second row is outlined variants, and third row is desaturated.">
 </uxdot-example>
 
 ## Theme
