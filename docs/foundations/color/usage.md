@@ -18,7 +18,7 @@ importElements:
 
 <script type="module" src="/assets/javascript/elements/uxdot-best-practice.js"></script>
 
-<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
+<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
 
 
 ## Using color
@@ -261,7 +261,7 @@ using elements and patterns from the desaturated theme instead.
     <uxdot-example slot="image" no-border variant="full" alignment="left">
       <img src="/assets/color/best-practices-sufficient-contrast-correct.svg" alt="Examples of a blue button against a light gray background and a red CTA against a black background">
     </uxdot-example>
-    <p>Use a surface color token for background to ensure accessibility, or use a <a href="{{ '../accessibility/#tools' | url }}">tool</a> to check proper contrast.</p>
+    <p>Use a surface color token for background to ensure accessibility, or use a <a href="../accessibility/#tools">tool</a> to check proper contrast.</p>
   </uxdot-best-practice>
   <uxdot-best-practice variant="dont">
     <uxdot-example slot="image" no-border variant="full" alignment="left">

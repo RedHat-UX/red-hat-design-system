@@ -16,7 +16,7 @@ importElements:
 permalink: /foundations/typography/index.html
 ---
 
-<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
+<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
 
 ## Get started
 

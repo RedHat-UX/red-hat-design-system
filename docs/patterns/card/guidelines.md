@@ -22,7 +22,7 @@ importElements:
   import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
 </script>
 
-<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
+<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
 <link rel="stylesheet" href="/styles/samp.css">
 
 
