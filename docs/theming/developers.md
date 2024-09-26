@@ -35,24 +35,24 @@ hasToc: true
 
 ## Using the theming system
 
-<abbr title="Red Hat Design System">RHDS</abbr>' theming system is a high-level 
+<abbr title="Red Hat Design System">RHDS</abbr>’ theming system is a high-level 
 expression of the lower-level components of the system, [tokens][tokens], and 
-[elements][elements], and in turn, it factors into the development of the 
-highest level design system component, [patterns][patterns]. In order to use 
+[elements][elements]. In turn, it factors into the development of the 
+highest-level design system component, [patterns][patterns]. To use 
 the theming system, then, developers must already be familiar with our tokens 
-and elements. In other words, theming is the developer's process of 
+and elements. In other words, theming is the developer’s process of 
 orchestrating design tokens with elements, particularly by way of themeable 
-container elements
+container elements.
 
 ### Themeable containers
 
 In <abbr>RHDS</abbr>, special provider elements such as `<rh-surface>`, 
-`<rh-card>`, `<rh-tabs>`, and others are considered themeble containers.  A 
+`<rh-card>`, `<rh-tabs>`, and others are considered themeble containers. A 
 themeable container is an element that can have custom classes attached which 
 provide values for the relevant CSS color properties in a [custom 
 theme][themes].
 
-A common pattern for a themeable container is the full width band.  For example, 
+A common pattern for a themeable container is the full-width band. For example, 
 a `<rh-surface>` may be used as a full-width container and provide the 
 *Bordeaux* theme values to a set of 3 cards in a grid:
 
@@ -61,19 +61,19 @@ a `<rh-surface>` may be used as a full-width container and provide the
                 stacked=true,
                 allow="lightest" %}{% enduxdotPattern %}
 
-### The color-palette attribute
+### The `color-palette` attribute
 
-The `color-palette` is a fundamental aspect of the theming system.  The 
+The `color-palette` attribute is a fundamental aspect of the theming system. The 
 attribute is available on specially designated provider elements that actively 
 define a [color palette][palettes], while their children passively accept their 
-background color and text color.  The `color-palette` can be set to six possible 
-values `lightest`, `lighter`, `light`, `dark`, `darker` and `darkest`.
+background color and text color. The `color-palette` can be set to six possible 
+values `lightest`, `lighter`, `light`, `dark`, `darker,` and `darkest`.
 
 ### Theming whole pages
 
 To theme an entire page, you may replace the `<main>` element with an 
 `<rh-surface role="main">`. This ensures that computed theme tokens propagate to 
-all children, while maintaining the proper [landmark semantics][landmarks].
+all children while maintaining the proper [landmark semantics][landmarks].
 
 ```html rhcodeblock
 <!DOCTYPE html>
@@ -117,20 +117,20 @@ Read more about the design considerations for contrasting sections on the
 ## Writing themes
 
 When theming pages, sections, or elements, developers should carefully review
-the designs they received, and seek to make as few customizations as necessary.
-The ideal order-of-operations is as follows:
+the designs they received and seek to make as few customizations as necessary.
+The ideal order of operations is as follows:
 
 1. Search for an appropriate or approximate [pattern][patterns]
 1. Use element-specific tokens to customize an element e.g. `--rh-card-header-background-on-light`
 1. Use theme tokens to customize the target e.g. `--rh-color-interactive-primary-default-on-light`
 1. Use element CSS Shadow Parts for greater control
 
-<rh-alert state="caution">Avoid setting values for CSS custom properties beginning with an `_`. These should be considered "private" and may change at any time without warning</rh-alert>
+<rh-alert state="caution">Avoid setting values for CSS custom properties beginning with an `_`. These should be considered "private" and may change at any time without warning.</rh-alert>
 
 ## Art Direction
 
 Art direction is the process of selecting art assets based on the context in 
-which they are viewed. In terms of theming, art direction means choosing or 
+which they are viewed. Regarding theming, art direction means choosing or 
 modifying graphics based on the surrounding theme or color palette. There are 
 two ways to approach this:
 
@@ -139,8 +139,8 @@ two ways to approach this:
 
 ### Dynamic graphics
 
-Page authors can create dynamic graphics which respond to their surrounding 
-theme by using _inline SVG_ that references theme tokens. For example, this svg
+Page authors can create dynamic graphics that respond to their surrounding 
+theme by using _inline SVG_ that references theme tokens. For example, this SVG
 graphic uses the `--rh-color-border-interactive` theme token to style a 
 rectangle.
 
@@ -156,15 +156,15 @@ rectangle.
 </svg>
 ```
 
-This approach _does not work_ with svg loaded through the `<img>` tag, or with 
-raster graphics, however another approach is in development which could help:
+This approach _does not work_ with SVG loaded through the `<img>` tag, or with 
+raster graphics; however, another approach is in development that could help:
 
 ### Alternating Graphics
 
 Developers can accomplish graphical art direction in their themed pages by
 swapping linked or raster graphics depending on the context. For example, if
-the Red Hat logo appears on sections with botyh light and dark backgrounds,
-developers should carefully choose the graphic which matches the background.
+the Red Hat logo appears on sections with both light and dark backgrounds,
+developers should carefully choose the graphic that matches the background.
 
 ```html rhcodeblock
 <rh-surface role="section"
@@ -178,10 +178,10 @@ developers should carefully choose the graphic which matches the background.
 
 ### `<rh-picture>` <rh-tag icon="notification-fill" color="purple">Planned</rh-tag>
 
-We're now in the early stages of developing an art direction element for these
-kinds of scenarios, tentatively named `<rh-picture>`. The following speculative
-code block shows how the element may be used in the future to enable responsive
-themable graphics
+We’re now in the early stages of developing an art direction element for these
+scenarios, tentatively named `<rh-picture>`. The following speculative code
+block shows how the element may be used in the future to enable responsive
+themable graphics.
 
 ```html rhcodeblock
 <rh-surface role="section"
@@ -200,41 +200,41 @@ themable graphics
 
 ## How theming works
 
-We developed our theming system with web standards in mind, aiming for it to use
-CSS over JavaScript as much as possible. At the current state of the art, we
-found that some JavaScript is required for the system to work correctly, but in 
-the near  future, we expect to be able to remove all or nearly all of that 
-JavaScript, and have the theming system work entirely (or almost entirely) 
+We developed our theming system with web standards in mind, aiming to use
+CSS over JavaScript as much as possible. At the current state of browser technology,
+we found that some JavaScript is required for the system to work correctly,
+but shortly, we expect to be able to remove all or nearly all of that 
+JavaScript and have the theming system work entirely (or almost entirely) 
 through plain CSS. The following explains how the system currently operates, how
 element authors can hook into it, and what the future holds for theming.
 
 ### Current implementation - Context Protocol
 
-<abbr title="Red Hat Design System">RHDS</abbr>' Theming system is primarily 
-about styles. Tt currently relies on JavaScript to work, by way of the [context 
+<abbr title="Red Hat Design System">RHDS</abbr>’ Theming system is primarily 
+about styles. It currently relies on JavaScript to work, via the [context 
 protocol][contextprotocol] developed by the web components community to support 
 passing data between components.
 
 Our system utilizes this protocol with the setting of the `color-palette` 
 attribute on a provider element which makes its context data (in our case, 
-`light` or `dark`) to it's children.  By doing so we can ensure accessible 
+`light` or `dark`) to its children. By doing so we can ensure accessible 
 colors are applied given any possible change in context value higher up in the 
 <abbr title="Document Object Model">DOM</abbr> tree. 
 
-This is important not only for helping us maintain our own design guidelines, 
-but also for accessibility compliance and enabling great experiences for all our 
+This is important not only for helping us maintain our design guidelines but
+also for accessibility compliance and enabling great experiences for all our 
 users.
 
 The context protocol is enabled by two [reactive controllers][controllers]: the
 [provider controller][providersrc], and the [consumer controller][consumersrc].
-These controllers work in tandem to alternately provide the context data, or
+These controllers work together to provide the context data, or
 consume it as a child element. Custom elements can implement the consumer, the
 provider, or both, depending on the needs of that particular element.
 
 #### Providers
 
 Custom Elements that implement the provider controller are elements that provide
-their own context, overriding that of their parent.  Elements such as
+their own context, overriding that of their parent. Elements such as
 `<rh-surface>`, `<rh-card>`, and `<rh-accordion>` are examples of such context
 providers. If a provider contains a set `color-palette` attribute, it will
 override any parent context, and pass its context on to its children.
@@ -263,7 +263,7 @@ export class RhProvider extends LitElement {
 }
 ```
 
-Read "[What are color palettes][palettes]" for more information about the six
+Read “[What are color palettes][palettes]” for more information about the six
 available `color-palettes`.
 
 #### Consumers
@@ -274,12 +274,13 @@ consumers.
 
 To make your element a color context consumer,
 
-1. First `import` the classMap Lit directive, and the consumer controller
+1. First `import` the [classMap Lit directive](https://lit.dev/docs/templates/directives/#classmap),
+   and the consumer controller.
 2. Then add the `@colorContextConsumer()` decorator to a private property of
    `on` which is the type of `ColorTheme`.
-3. Add a classMap that implements the shadow class in your render method
-4. Use the theming tokens in your element's shadow styles, being sure.
-   to select the element which has the `.on.light`/`.on.dark` classes
+3. Add a classMap that implements the shadow class in your render method.
+4. Use the theming tokens in your element’s shadow styles, being sure
+   to select the element which has the `.on.light`/`.on.dark` classes.
 
 <rh-tabs class="code-tabs">
   <rh-tab slot="tab">TypeScript</rh-tab>
@@ -324,8 +325,8 @@ export class RhConsumer extends LitElement {
 
 What the `@colorContextConsumer` decorator does, in addition to participating in
 the context event system, is apply a stylesheet from
-`@rhds/tokens/css/color-context-consumer.css.js` to the element's shadow root.
-That stylesheet selects for well-known class names `.on.light` and `.on.dark`,
+`@rhds/tokens/css/color-context-consumer.css.js` to the element’s shadow root.
+That stylesheet selects well-known class names `.on.light` and `.on.dark`,
 and applies values to the theming tokens, depending on the context received.
 
 ```css rhcodeblock
@@ -341,24 +342,24 @@ and applies values to the theming tokens, depending on the context received.
 ```
 
 For more information on the significance of the context values (i.e.
-`ColorTheme`), read "[Background][backgrounds]".
+`ColorTheme`), read “[Background][backgrounds]”.
 
 ### Future state - style queries  <rh-tag color="purple" icon="notification-fill">Planned</rh-tag>
 
-In a not so distant future, we will be able to replace the context protocol
+In the not-so-distant future, we will be able to replace the context protocol
 completely and remove this code by implementing the web standard [container
 style queries][stylequeries].
 
 In anticipation of this upcoming browser feature, we attempt to ensure that our
-theming system as implemented today using context can easily replaced with style
-queries in the near future.
+theming system as implemented today using context can easily be replaced with
+style queries in the near future.
 
-<rh-alert>Note, the examples in this section are hypothetical, the final markup
-and styles may not be the same</rh-alert>
+<rh-alert>Note: the examples in this section are hypothetical, the final markup
+and styles may not be the same.</rh-alert>
 
-In addition to reducing the javascript payload of the design system, style
+In addition to reducing the JavaScript payload of the design system, style
 queries will allow authors to attach surface styles to any element. For example,
-Your page markup declares a custom surface with some classes:
+your page markup declares a custom surface with some classes:
 
 ```html rhcodeblock
 <div class="custom-surface dark">
@@ -377,7 +378,7 @@ And your document CSS sets the desired color context:
 ```
 
 And you would declare the import a shared stylesheet which activates the theming system,
-similarly to how elements import `@rhds/tokens/css/color-context-consumer.css.js`
+similarly to how elements import `@rhds/tokens/css/color-context-consumer.css.js`.
 
 ```css rhcodeblock
 @container style (--rh-context-background: dark) {
@@ -391,6 +392,7 @@ similarly to how elements import `@rhds/tokens/css/color-context-consumer.css.js
 [controllers]: https://lit.dev/docs/composition/controllers/
 [elements]: /elements/
 [landmarks]: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/landmark_role
+[palettes]: /theming/color-palettes/
 [patterns]: /patterns/
 [providersrc]: https://github.com/RedHat-UX/red-hat-design-system/blob/main/lib/context/color/provider.ts
 [stylequeries]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_size_and_style_queries#container_style_queries_2
