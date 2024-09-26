@@ -38,12 +38,30 @@ hasToc: true
 
 ## Using the theming system
 
-### Themeable containers
+<abbr title="Red Hat Design System">RHDS</abbr>' theming system is a high-level 
+expression of the lower-level components of the system, [tokens][tokens], and 
+[elements][elements], and in turn, it factors into the development of the 
+highest level design system component, [patterns][patterns]. In order to use 
+the theming system, then, developers must already be familiar with our tokens 
+and elements. In other words, theming is the developer's process of 
+orchestrating design tokens with elements, particularly by way of themable 
+container elements
 
-A document, parent HTML element, or special provider elements such as `<rh-surface>` can all be considered a themeable containers.  A themeable container is an element that can have custom classes attached which provide values for the relevant CSS color properties in a [theme](themes).
+### Themable containers
 
-A common pattern for a themeable container is the full width band.  For example, a `<rh-surface>` may be used as a full-width container and provide the <em>Bordeaux</em> theme values to a set of 3 cards in a grid:
+In <abbr>RHDS</abbr>, special provider elements such as `<rh-surface>`, 
+`<rh-card>`, `<rh-tabs>`, and others are considered themeable containers.  A 
+themeable container is an element that can have custom classes attached which 
+provide values for the relevant CSS color properties in a [custom 
+theme][themes].
 
+A common pattern for a themeable container is the full width band.  For example, 
+a `<rh-surface>` may be used as a full-width container and provide the 
+*Bordeaux* theme values to a set of 3 cards in a grid:
+
+[patterns]: /patterns/
+[tokens]: /tokens/
+[elements]: /elements/
 [themes]: /theming/customizing/#custom-themes
 
 {% endrenderTemplate %}
@@ -56,7 +74,13 @@ A common pattern for a themeable container is the full width band.  For example,
 
 ### The color-palette attribute
 
-The `color-palette` is an important piece of the theming system.  The attribute is available on specially designated provider elements that actively define a [color palette](palettes), while their children passively accept their background color and text color.  The `color-palette` can be set to six possible values `lightest`, `lighter`, `light`, `dark`, `darker` and `darkest`.  
+The `color-palette` is a fundamental aspect of the theming system.  The 
+attribute is available on specially designated provider elements that actively 
+define a [color palette][palettes], while their children passively accept their 
+background color and text color.  The `color-palette` can be set to six possible 
+values `lightest`, `lighter`, `light`, `dark`, `darker` and `darkest`.
+
+[palettes]: /theming/color-palettes/
 
 ### Theming whole pages
 
