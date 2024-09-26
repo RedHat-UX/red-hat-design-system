@@ -12,10 +12,6 @@ meanings.
   for many readers. Go to the <a href="../accessibility/">Accessibility</a> page to learn more.</p>
 </rh-alert>
 
-<uxdot-example width-adjustment="202px">
-  <img src="../badge-variants.png" alt="Image of neutral, default, success, warning, error, and danger badges in a row">
-</uxdot-example>
-
 <rh-table>
   <table>
     <thead>
@@ -42,19 +38,19 @@ meanings.
         <td data-label="Use case">Indicates stability or completion</td>
       </tr>
       <tr>
-        <td data-label="Badge"><rh-badge state="moderate">17<rh-badge></td>
-        <td data-label="Name">Moderate</td>
-        <td data-label="Use case">Indicates caution</td>
+        <td data-label="Badge"><rh-badge state="warning">17<rh-badge></td>
+        <td data-label="Name">Warning</td>
+        <td data-label="Use case">Indicates a warning</td>
       </tr>
       <tr>
-        <td data-label="Badge"><rh-badge state="important">17<rh-badge></td>
-        <td data-label="Name">Important</td>
+        <td data-label="Badge"><rh-badge state="caution">17<rh-badge></td>
+        <td data-label="Name">Caution</td>
+        <td data-label="Use case">Indicates an increased need for caution or attention</td>
+      </tr>
+      <tr>
+        <td data-label="Badge"><rh-badge state="danger">17<rh-badge></td>
+        <td data-label="Name">Danger</td>
         <td data-label="Use case">Indicates an error</td>
-      </tr>
-      <tr>
-        <td data-label="Badge"><rh-badge state="critical">17<rh-badge></td>
-        <td data-label="Name">Critical</td>
-        <td data-label="Use case">Indicates danger or something critical</td>
       </tr>
     </tbody>
   </table>
