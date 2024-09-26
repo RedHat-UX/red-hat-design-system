@@ -46,7 +46,7 @@
         {%- for sublink in sideNavCollection -%}
         {%- set active = sublink.url === page.url -%}
         <uxdot-sidenav-dropdown-menu-item href="{{ sublink.url }}" {{ 'active' if active }}>
-          {{- (sublink.data.sidenavTitle or sublink.data.title or sublink.title) | capitalize -}}
+          {{- (sublink.data.sidenavTitle or sublink.data.title or sublink.title) -}}
         </uxdot-sidenav-dropdown-menu-item>
         {%- endfor -%}
         {% endif %}

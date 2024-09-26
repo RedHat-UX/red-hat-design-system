@@ -4,7 +4,7 @@ sidenavTitle: Screen reader basics
 permalink: /accessibility/screen-readers/index.html
 tags:
   - accessibility
-order: 56
+order: 70
 ---
 
 ## General info
