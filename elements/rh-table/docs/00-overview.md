@@ -3,7 +3,7 @@
 {{ tagName | getElementDescription }}
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ './table-sample-element.png' | url }}" alt="Image of table with four columns and three row">
+  <img src="./table-sample-element.png" alt="Image of table with four columns and three row">
 </uxdot-example>
 
 

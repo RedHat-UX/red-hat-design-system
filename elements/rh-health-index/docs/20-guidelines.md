@@ -20,7 +20,7 @@ There are four available variants: `Small`, `Default`, `Large`, and `Extra large
 
 
 <uxdot-example width-adjustment="752px">
-  <img src="{{ '../guidelines-variants.svg' | url }}" alt="A row of health index components with emphasis descriptions under each size. Small is low, default is medium, large is high, and extra large is highest.">
+  <img src="../guidelines-variants.svg" alt="A row of health index components with emphasis descriptions under each size. Small is low, default is medium, large is high, and extra large is highest.">
 </uxdot-example>
 
 <rh-table>
@@ -70,7 +70,7 @@ When health index shows a grade of “A” and the severity level color is green
 
 
 <uxdot-example width-adjustment="640px">
-  <img src="{{ '../guidelines-severity-levels.svg' | url }}" alt="A 3 by 3 grid of small size health index components. Each row has letter grades A, C, and F. Under each letter grade is text that describes a safe, at risk, or vulnerable state.">
+  <img src="../guidelines-severity-levels.svg" alt="A 3 by 3 grid of small size health index components. Each row has letter grades A, C, and F. Under each letter grade is text that describes a safe, at risk, or vulnerable state.">
 </uxdot-example>
 
 
@@ -89,7 +89,7 @@ Health index should always be placed near helpful text or other content that exp
 Health index can be stacked with other content. In such cases, we recommend using the Small variant, as it does not take focus away from surrounding information.
 
 <uxdot-example width-adjustment="120px">
-  <img src="{{ '../guidelines-layout-stacked.svg' | url }}" alt="A small size health index component with a letter grade A at the bottom of a stack of text.">
+  <img src="../guidelines-layout-stacked.svg" alt="A small size health index component with a letter grade A at the bottom of a stack of text.">
 </uxdot-example>
 
 
@@ -98,7 +98,7 @@ Health index can be stacked with other content. In such cases, we recommend usin
 Health index can also be inserted inline with text and components. In such cases, we recommend using the Large or Extra large variants to maintain equal hierarchy among elements.
 
 <uxdot-example width-adjustment="752px">
-  <img src="{{ '../guidelines-layout-inline.svg' | url }}" alt="An extra large size health index component with a letter grade F in between a heading, body text, and a call to action.">
+  <img src="../guidelines-layout-inline.svg" alt="An extra large size health index component with a letter grade F in between a heading, body text, and a call to action.">
 </uxdot-example>
 
 
@@ -111,14 +111,14 @@ Letter grades and severity level colors are designed to work together. Mixing th
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
     <uxdot-example color-palette="lightest" width-adjustment="176px" slot="image">
-      <img src="{{ '../guidelines-best-practice-1-do.svg' | url }}" alt="Small, default, and large size health index components displaying correct letter grades and severity colors.">
+      <img src="../guidelines-best-practice-1-do.svg" alt="Small, default, and large size health index components displaying correct letter grades and severity colors.">
     </uxdot-example>
     <p>Keep letter grades and severity level colors consistent.</p>
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
     <uxdot-example color-palette="lightest" width-adjustment="176px" slot="image">
-      <img src="{{ '../guidelines-best-practice-1-dont.svg' | url }}" alt="Small, default, and large size health index components displaying incorrect letter grades and severity colors.">
+      <img src="../guidelines-best-practice-1-dont.svg" alt="Small, default, and large size health index components displaying incorrect letter grades and severity colors.">
     </uxdot-example>
     <p>Do not mix up letter grades and severity level colors.</p>
   </uxdot-best-practice>
@@ -132,14 +132,14 @@ Light theme components are designed only to work in the light theme, and dark th
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
     <uxdot-example color-palette="darkest" width-adjustment="176px" slot="image">
-      <img src="{{ '../guidelines-best-practice-2-do.svg' | url }}" alt="Dark theme small, default, and large size health index components.">
+      <img src="../guidelines-best-practice-2-do.svg" alt="Dark theme small, default, and large size health index components.">
     </uxdot-example>
     <p>Use the correct components in the correct theme.</p>
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
     <uxdot-example color-palette="darkest" width-adjustment="176px" slot="image">
-      <img src="{{ '../guidelines-best-practice-2-dont.svg' | url }}" alt="Light theme small, default, and large size health index components used incorrectly in the dark theme.">
+      <img src="../guidelines-best-practice-2-dont.svg" alt="Light theme small, default, and large size health index components used incorrectly in the dark theme.">
     </uxdot-example>
     <p>Do not use components from one theme in another theme.</p>
   </uxdot-best-practice>
@@ -153,14 +153,14 @@ Each variant is unique and designed to meet a specific user need.
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
     <uxdot-example color-palette="lightest" width-adjustment="176px" slot="image">
-      <img src="{{ '../guidelines-best-practice-3-do.svg' | url }}" alt="Small, default, and large size health index components displaying correct letter grades and severity colors.">
+      <img src="../guidelines-best-practice-3-do.svg" alt="Small, default, and large size health index components displaying correct letter grades and severity colors.">
     </uxdot-example>
     <p>Use the available variants as intended.</p>
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
     <uxdot-example color-palette="lightest" width-adjustment="278px" slot="image">
-      <img src="{{ '../guidelines-best-practice-3-dont.svg' | url }}" alt="Large size health index component displaying extra text and an incorrect combination of styles.">
+      <img src="../guidelines-best-practice-3-dont.svg" alt="Large size health index component displaying extra text and an incorrect combination of styles.">
     </uxdot-example>
     <p>Do not combine variants or add other elements like text.</p>
   </uxdot-best-practice>

@@ -16,14 +16,14 @@ Compare Figure 1 to Figure 2. Both figures include a blue informational tag, a r
 ### Figure 1
 
 <uxdot-example color-palette="darkest" width-adjustment="164px">
-  <img src="{{ '../tag-a11y-figure-1.png' | url }}" alt="A row of three gray tags that all look the same">
+  <img src="../tag-a11y-figure-1.png" alt="A row of three gray tags that all look the same">
 </uxdot-example>
 
 
 ### Figure 2
 
 <uxdot-example color-palette="darkest" width-adjustment="467px">
-  <img src="{{ '../tag-a11y-figure-2.png' | url }}" alt="A row of three gray tags all with a unique icon and a unique text label">
+  <img src="../tag-a11y-figure-2.png" alt="A row of three gray tags all with a unique icon and a unique text label">
 </uxdot-example>
 
 

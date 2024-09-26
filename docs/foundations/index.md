@@ -9,7 +9,7 @@ importElements:
   - rh-tile
 ---
 
-<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css' | url }}">
+<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
 
 <section aria-labelledby="overview">
 
@@ -20,28 +20,28 @@ importElements:
   <div class="grid sm-two-columns">
     <rh-tile>
       <uxdot-example variant="full" no-border slot="image">
-        <img src="{{ '/assets/foundations/color.svg' | url }}" alt="Color">
+        <img src="/assets/foundations/color.svg" alt="Color">
       </uxdot-example>
       <h3 slot="headline"><a href="../foundations/color">Color</a></h3>
       <p>Unifies our brand while bringing accessibility and consistency to our digital experiences</p>
     </rh-tile>
     <rh-tile>
       <uxdot-example variant="full" no-border slot="image">
-        <img src="{{ '/assets/foundations/grid.svg' | url }}" alt="Grid">
+        <img src="/assets/foundations/grid.svg" alt="Grid">
       </uxdot-example>
       <h3 slot="headline"><a href="../foundations/grid">Grid</a></h3>
       <p>Provides guidance and structure when positioning elements and components in a layout</p>
     </rh-tile>
     <rh-tile>
       <uxdot-example variant="full" no-border slot="image">
-        <img src="{{ '/assets/foundations/spacing.svg' | url }}" alt="Spacing">
+        <img src="/assets/foundations/spacing.svg" alt="Spacing">
       </uxdot-example>
       <h3 slot="headline"><a href="../foundations/spacing">Spacing</a></h3>
       <p>Defines fixed amounts of space between elements and makes it easy to maintain consistency</p>
     </rh-tile>
     <rh-tile>
       <uxdot-example variant="full" no-border slot="image">
-        <img src="{{ '/assets/foundations/typography.svg' | url }}" alt="Typography">
+        <img src="/assets/foundations/typography.svg" alt="Typography">
       </uxdot-example>
       <h3 slot="headline"><a href="../foundations/typography">Typography</a></h3>
       <p>A system of fonts that creates hierarchies and helps guide a user through an experience</p>
