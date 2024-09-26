@@ -70,8 +70,8 @@ module.exports = function(eleventyConfig) {
     { title: 'Foundations', url: '/foundations', collection: 'foundations' },
     { title: 'Tokens', url: '/tokens', collection: 'tokenCategory' },
     { title: 'Elements', url: '/elements', collection: 'elementDocs' },
-    { title: 'Patterns', url: '/patterns', collection: 'pattern' },
     { title: 'Theming', url: '/theming', collection: 'theming' },
+    { title: 'Patterns', url: '/patterns', collection: 'pattern' },
     { title: 'Accessibility', url: '/accessibility', collection: 'accessibility' },
   ]);
 

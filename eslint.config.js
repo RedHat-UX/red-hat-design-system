@@ -47,6 +47,13 @@ export default tseslint.config(
       },
     },
   },
+  {
+    name: 'local/docs/overrides',
+    files: ['docs/theming/code-samples/*.*'],
+    rules: {
+      '@stylistic/no-multi-spaces': ['off'],
+    },
+  }
 );
 
 
