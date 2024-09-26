@@ -106,7 +106,7 @@ tags:
   }
 </style>
 
-<script type="module" src="{{ '/assets/javascript/elements/uxdot-hero.js' | url }}"></script>
+<script type="module" src="/assets/javascript/elements/uxdot-hero.js"></script>
 
 <uxdot-hero compact>
   <h2 slot="header">We create Red&nbsp;Hat digital experiences</h2>
@@ -124,10 +124,10 @@ tags:
       <p><a href="https://www.redhat.com/en/about/brand/standards">Red Hat brand standards</a> are the source code for our identity. They govern how we look and sound in all types of media. We follow brand standards to unify Red&nbsp;Hat digital experiences and stay up-to-date with our brand as it grows, improves, and adapts to meet new challenges.</p>
     </div>
     <div class="item">
-      <img src="{{ '/assets/about/brand.svg' | url }}" alt="Red Hat brand standards">
+      <img src="/assets/about/brand.svg" alt="Red Hat brand standards">
     </div>
     <div class="item">
-      <img src="{{ '/assets/about/patternfly.svg' | url }}" alt="PatternFly">
+      <img src="/assets/about/patternfly.svg" alt="PatternFly">
     </div>
     <div class="item">
       <h3>PatternFly collaboration</h3>
@@ -138,10 +138,10 @@ tags:
       <p>We leverage similar elements as PatternFly, so designers no longer need to reinvent the wheel when choosing components. For example, an <a href="/elements/accordion/">Accordion</a> used in a Red&nbsp;Hat web application will look the same when used on a website.</p>
     </div>
     <div class="item">
-      <img src="{{ '/assets/about/shared-language.svg' | url }}" alt="Shared language">
+      <img src="/assets/about/shared-language.svg" alt="Shared language">
     </div>
     <div class="item">
-      <img src="{{ '/assets/about/web-components.svg' | url }}" alt="Web components">
+      <img src="/assets/about/web-components.svg" alt="Web components">
     </div>
     <div class="item">
       <h3>Web components</h3>
@@ -156,22 +156,22 @@ tags:
   <h2 id="aria__heading-fundamentals">Fundamentals</h2>
   <div class="grid sm-two-columns">
     <div class="item">
-      <img src="{{ '/assets/about/icon-flexible.svg' | url }}" alt="Flexibility">
+      <img src="/assets/about/icon-flexible.svg" alt="Flexibility">
       <h3>Flexible</h3>
       <p>Our components can be arranged in a number of ways and CSS variables can be used for further customization.</p>
     </div>
     <div class="item">
-      <img src="{{ '/assets/about/icon-accessible.svg' | url }}" alt="Accessibility">
+      <img src="/assets/about/icon-accessible.svg" alt="Accessibility">
       <h3>Accessible</h3>
       <p>The goal of our design system is to create meaningful experiences that work for everyone, regardless of ability.</p>
     </div>
     <div class="item">
-      <img src="{{ '/assets/about/icon-consistent.svg' | url }}" alt="Consistency">
+      <img src="/assets/about/icon-consistent.svg" alt="Consistency">
       <h3>Consistent</h3>
       <p>Our documentation and tools streamline collaboration so teams can create consistent and on-brand experiences.</p>
     </div>
     <div class="item">
-      <img src="{{ '/assets/about/icon-scalable.svg' | url }}" alt="Scalability">
+      <img src="/assets/about/icon-scalable.svg" alt="Scalability">
       <h3>Scalable</h3>
       <p>Our system enables teams to work concurrently across the Red&nbsp;Hat system of websites and beyond.</p>
     </div>

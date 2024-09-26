@@ -8,14 +8,14 @@ Using an accordion provides an easy way to organize content while reducing page 
 An accordion is used to organize important information whereas a [Disclosure](/patterns/dislosure/) can be used to organize secondary information that might not be critical to read or impact the experience. An accordion can also accommodate multiple sections of content, whereas a disclosure can only accommodate one.
 
 <uxdot-example>
-   <img src="{{ '../accordion-vs-disclosure.png' | url }}" alt="Comparison of how to use accordion vs. disclosure elements showing an accordion on top and a disclosure on the bottom">
+   <img src="../accordion-vs-disclosure.png" alt="Comparison of how to use accordion vs. disclosure elements showing an accordion on top and a disclosure on the bottom">
 </uxdot-example>
 
 ### Sizes 
 It is acceptable to use the Small size on large breakpoints, but do not use the Large size on small breakpoints.
 
 <uxdot-example>
-   <img src="{{ '../accordion-sizes-best-practices.png' | url }}" alt="Size comparison of accordions; a wide small size accordion is on top, which is acceptable to use, and a thin large size accordion below it which is not acceptable to use">
+   <img src="../accordion-sizes-best-practices.png" alt="Size comparison of accordions; a wide small size accordion is on top, which is acceptable to use, and a thin large size accordion below it which is not acceptable to use">
 </uxdot-example>
 
 
@@ -24,7 +24,7 @@ It is acceptable to use the Small size on large breakpoints, but do not use the 
 Title text should be written concisely so users know what to expect when they expand a panel. Beware of long character counts especially on small breakpoints or when translated. If title text is too long, create another section. Do not write title text to sound like a call to action, make it as easy as possible for users to understand the content within.
 
 <uxdot-example>
-   <img src="{{ '../accordion-title-text.png' | url }}" alt="Title text examples of various lengths; it should not be too long, too short, or too vague">
+   <img src="../accordion-title-text.png" alt="Title text examples of various lengths; it should not be too long, too short, or too vague">
 </uxdot-example>
 
 1) Title text is too long and should be broken into two sections
@@ -56,21 +56,21 @@ Title text should have fewer characters to help users make sense of what the con
 When a panel is expanded, some content must appear below the title text and chevron icon. Content can include text, cards, images, etc. Text blocks should not exceed `750px` to maintain optimal readability.
 
 <uxdot-example>
-  <img src="{{ '../accordion-panel-content.png' | url }}" alt="Accordion showing different elements you may include in the expanded panel like headings, body text, links, cards, and more">
+  <img src="../accordion-panel-content.png" alt="Accordion showing different elements you may include in the expanded panel like headings, body text, links, cards, and more">
 </uxdot-example>
 
 ### Long title text 
 Title text can be two lines on small breakpoints, but no more.
 
 <uxdot-example width-adjustment="544px">
-  <img src="{{ '../accordion-long-title-text.png' | url }}" alt="Two accordions; one wide accordion with the text title on one line and one thin accordion with the text title on two lines">
+  <img src="../accordion-long-title-text.png" alt="Two accordions; one wide accordion with the text title on one line and one thin accordion with the text title on two lines">
 </uxdot-example>
 
 ## Layout 
 The width of an accordion can be adjusted on large breakpoints to fit fewer columns if necessary.
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../accordion-layout.png' | url }}" alt="A wider accordion placed on a 12-column grid and occupying four grid columns">
+  <img src="../accordion-layout.png" alt="A wider accordion placed on a 12-column grid and occupying four grid columns">
 </uxdot-example>
 
 ## Behavior
@@ -82,18 +82,18 @@ Users can expand and collapse panels one at a time by default. More than one or 
 Users can expand multiple panels simultaneously either stacked on top of each other or not. Expanding one panel does not collapse another.
 
 <uxdot-example width-adjustment="872px" >
-  <img src="{{ '../accordion-expanding-multiple-panels.png' | url }}" alt="Two accordions; one is showing two expanded panels stacked on top of each other and the other is showing two expanded panels and one collapsed panel in between">
+  <img src="../accordion-expanding-multiple-panels.png" alt="Two accordions; one is showing two expanded panels stacked on top of each other and the other is showing two expanded panels and one collapsed panel in between">
 </uxdot-example>
 
 ## Responsive design 
 An accordion changes from the Large size to the Small size as breakpoints get smaller.
 
 <uxdot-example no-border variant="full">
-  <img src="{{ '../accordion-breakpoints-large.png' | url }}" alt="Accordions on large breakpoints">
+  <img src="../accordion-breakpoints-large.png" alt="Accordions on large breakpoints">
 </uxdot-example>
 
 <uxdot-example no-border width-adjustment="576px" alignment="left" variant="full">
-  <img src="{{ '../accordion-breakpoints-small.png' | url }}" alt="Accordions on small breakpoints">
+  <img src="../accordion-breakpoints-small.png" alt="Accordions on small breakpoints">
 </uxdot-example>
 
 ### Breakpoints
@@ -152,14 +152,14 @@ An accordion changes from the Large size to the Small size as breakpoints get sm
 Do not display one panel only, use an expandable section instead.
 
 <uxdot-example danger>
-  <img src="{{ '../accordion-best-practice-1.png' | url }}" alt="Accordion having only one panel is incorrect usage">
+  <img src="../accordion-best-practice-1.png" alt="Accordion having only one panel is incorrect usage">
 </uxdot-example>
 
 ### Text readability 
 Text within panels should not exceed `750px` to maintain optimal readability.
 
 <uxdot-example danger>
-  <img src="{{ '../accordion-best-practice-2.png' | url }}" alt="Accordion with body text exceeding 750px wide which is incorrect usage">
+  <img src="../accordion-best-practice-2.png" alt="Accordion with body text exceeding 750px wide which is incorrect usage">
 </uxdot-example>
 
 
@@ -167,5 +167,5 @@ Text within panels should not exceed `750px` to maintain optimal readability.
 Do not use a dark theme accordion in a light theme environment and vice versa.
 
 <uxdot-example danger>
-  <img src="{{ '../accordion-best-practice-3.png' | url }}" alt="Do not use a dark theme accordion in a light theme environment and vice versa">
+  <img src="../accordion-best-practice-3.png" alt="Do not use a dark theme accordion in a light theme environment and vice versa">
 </uxdot-example>

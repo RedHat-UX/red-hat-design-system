@@ -52,7 +52,7 @@
   }
 
   :where(article .container rh-code-block) {
-    max-width: 56rem;
+    max-width: 56rem; /* warning: magic number */
   }
 
   uxdot-toc {

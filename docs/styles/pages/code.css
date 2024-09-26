@@ -28,3 +28,7 @@ rh-accordion-panel[expanded] rh-table :is(pre, code) {
 rh-accordion-panel[expanded] rh-table :is(th, td) p {
   margin-block: 0;
 }
+
+rh-accordion details summary {
+  font-weight: var(--rh-font-weight-heading-medium, 500);
+}

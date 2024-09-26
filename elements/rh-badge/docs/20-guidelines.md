@@ -9,11 +9,11 @@ meanings.
 <rh-alert state="warning">
   <h3 slot="header">Warning</h3>
   <p>Relying on color alone to communicate information causes barriers to access 
-  for many readers. Go to the <a href="{{ '../accessibility/' | url }}">Accessibility</a> page to learn more.</p>
+  for many readers. Go to the <a href="../accessibility/">Accessibility</a> page to learn more.</p>
 </rh-alert>
 
 <uxdot-example width-adjustment="202px">
-  <img src="{{ '../badge-variants.png' | url }}" alt="Image of neutral, default, success, warning, error, and danger badges in a row">
+  <img src="../badge-variants.png" alt="Image of neutral, default, success, warning, error, and danger badges in a row">
 </uxdot-example>
 
 <rh-table>
@@ -74,7 +74,7 @@ than the threshold will display a + at the end. For example, if `999` is the
 threshold, using `1,000` or larger will display `999+`.
 
 <uxdot-example width-adjustment="174px">
-  <img src="{{ '../badge-counter-number.png' | url }}" alt="Badges with various counter numbers; from left to right, a badge with 1, a badge with 50, a badge with 500, and a badge with 999+">
+  <img src="../badge-counter-number.png" alt="Badges with various counter numbers; from left to right, a badge with 1, a badge with 50, a badge with 500, and a badge with 999+">
 </uxdot-example>
 
 
@@ -85,7 +85,7 @@ A badge is often found in filter toggles to indicate the number of selections
 that are made in a toolbar filter or select list.
 
 <uxdot-example width-adjustment="336px">
-  <img src="{{ '../badge-filtering.png' | url }}" alt="A badge used in a filter dropdown and counting three selected checkboxes within a menu">
+  <img src="../badge-filtering.png" alt="A badge used in a filter dropdown and counting three selected checkboxes within a menu">
 </uxdot-example>
 
 ## Best practices
@@ -95,7 +95,7 @@ that are made in a toolbar filter or select list.
 Do not allow a badge to display a count over 999.
 
 <uxdot-example danger width-adjustment="75px">
-  <img src="{{ '../badge-best-practice-1.png' | url }}" alt="A badge counting to 1,00,000 which is incorrect usage">
+  <img src="../badge-best-practice-1.png" alt="A badge counting to 1,00,000 which is incorrect usage">
 </uxdot-example>
 
 ### Two badges
@@ -105,6 +105,6 @@ might make it difficult to differentiate unread or actionable items associated
 with the badges.
 
 <uxdot-example danger width-adjustment="77px">
-  <img src="{{ '../badge-best-practice-2.png' | url }}" alt="Two badges with the same counter number, but with different background colors and no other unique visual cues which is incorrect usage">
+  <img src="../badge-best-practice-2.png" alt="Two badges with the same counter number, but with different background colors and no other unique visual cues which is incorrect usage">
 </uxdot-example>
 
