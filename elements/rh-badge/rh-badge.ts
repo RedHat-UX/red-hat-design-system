@@ -62,8 +62,8 @@ export class RhBadge extends LitElement {
     const state = this.state.toLowerCase();
     switch (state) {
       // the first four are deprecated pre-DPO status names
-      case 'moderate': this.state = 'caution'; break;
-      case 'important': this.state = 'warning'; break;
+      case 'moderate': this.state = 'warning'; break;
+      case 'important': this.state = 'caution'; break;
       case 'critical': this.state = 'danger'; break;
       case 'note': this.state = 'info'; break;
       // the following are DPO-approved status names
