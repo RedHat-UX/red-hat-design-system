@@ -1,6 +1,6 @@
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
-import { type CSSResult, LitElement, html, render } from 'lit';
+import { type CSSResult, LitElement, html, isServer, render } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { repeat } from 'lit/directives/repeat.js';
@@ -23,12 +23,12 @@ interface ToastOptions {
 }
 
 const ICONS = new Map(Object.entries({
-  default: 'notification-fill',
-  error: 'error-fill',
+  neutral: 'notification-fill',
   success: 'check-circle-fill',
+  caution: 'warning-fill',
   warning: 'warning-fill',
   danger: 'error-fill',
-  info: 'information-fill',
+  note: 'information-fill',
 }));
 
 export class AlertCloseEvent extends Event {
@@ -129,20 +129,37 @@ export class RhAlert extends LitElement {
   }
 
   private get icon() {
-    return ICONS.get(this.state.toLowerCase()) ?? '';
+    const state = this.state.toLowerCase() as this['state'];
+    switch (state) {
+      case 'info': return ICONS.get('note');
+      case 'default': return ICONS.get('neutral');
+      case 'error': return ICONS.get('danger');
+      default: return ICONS.get(state);
+    }
   }
 
   /**
    * Communicates the urgency of a message and is denoted by various styling configurations.
    *
-   *  - `default` - Indicates generic information or a message with no severity.
+   *  - `neutral` - Indicates generic information or a message with no severity.
+   *  - `danger` - Indicates a danger state, like an error that is blocking a user from completing a task.
+   *  - `warning` - Indicates a warning state, like a non-blocking error that might need to be fixed.
+   *  - `caution` - Indicates an action or notice which should immediately draw the attention
    *  - `info` - Indicates helpful information or a message with very little to no severity.
    *  - `success` - Indicates a success state, like if a process was completed without errors.
-   *  - `warning` - Indicates a caution state, like a non-blocking error that might need to be fixed.
-   *  - `danger` - Indicates a danger state, like an error that is blocking a user from completing a task.
    */
   @property({ reflect: true })
-  state: 'default' | 'error' | 'success' | 'warning' | 'danger' | 'info' = 'default';
+  state:
+    | 'danger'
+    | 'warning'
+    | 'caution'
+    | 'neutral'
+    | 'info'
+    | 'success'
+    | 'note' // deprecated
+    | 'default' // deprecated
+    | 'error' = // deprecated
+      'neutral';
 
   /**
    * The alternate Inline alert style includes a border instead of a line which
@@ -171,27 +188,56 @@ export class RhAlert extends LitElement {
     }
   }
 
+  #aliasState(state: string) {
+    switch (state.toLowerCase()) {
+      // the first three are deprecated pre-DPO status names
+      case 'note': return 'info';
+      case 'default': return 'neutral';
+      case 'error': return 'danger';
+      // the following are DPO-approved status names
+      case 'danger':
+      case 'warning':
+      case 'caution':
+      case 'neutral':
+      case 'info':
+      case 'success':
+        return state as this['state'];
+      default:
+        return 'neutral';
+    }
+  }
+
+  override connectedCallback() {
+    super.connectedCallback();
+    if (!isServer) {
+      this.requestUpdate();
+    }
+  }
+
   render() {
-    const hasActions = this.#slots.hasSlotted('actions');
-    const hasBody = this.#slots.hasSlotted(SlotController.default as unknown as string);
-    const { state, variant = '' } = this;
+    const _isServer = isServer && !this.hasUpdated;
+    const hasActions = _isServer || this.#slots.hasSlotted('actions');
+    const hasBody =
+      _isServer || this.#slots.hasSlotted(SlotController.default as unknown as string);
+    const { variant = '' } = this;
+    const state = this.#aliasState(this.state);
     return html`
       <rh-surface id="container"
-           class="${classMap({
-             hasBody,
-             on: true,
-             light: true,
-             [state]: true,
-             [variant]: !!variant,
-           })}"
-           role="alert"
-           aria-hidden="false"
-           color-palette="lightest">
+                  class="${classMap({
+                    hasBody,
+                    on: true,
+                    light: true,
+                    [state]: true,
+                    [variant]: !!variant,
+                  })}"
+                  role="alert"
+                  aria-hidden="false"
+                  color-palette="lightest">
         <div id="left-column">
           <rh-icon id="icon" set="ui" icon="${this.icon}"></rh-icon>
         </div>
         <div id="middle-column">
-          <header ?hidden="${this.#slots.isEmpty('header')}">
+          <header ?hidden="${!_isServer && this.#slots.isEmpty('header')}">
             <div id="header">
               <slot name="header"></slot>
             </div>${!this.dismissable && this.variant !== 'toast' ? '' : html`
