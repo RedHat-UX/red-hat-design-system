@@ -3,7 +3,7 @@
 {{ tagName | getElementDescription }}
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ './tabs-sample.png' | url }}" alt="Image of open tabs, box tabs, and tabs with overflow buttons">
+  <img src="./tabs-sample.png" alt="Image of open tabs, box tabs, and tabs with overflow buttons">
 </uxdot-example>
 
 

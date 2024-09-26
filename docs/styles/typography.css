@@ -49,5 +49,5 @@ body {
 }
 
 :where(p, h1, h2, h3, h4, h5, h6, li) {
-  max-width: 56rem;
+  max-width: 56rem; /* warning: magic number */
 }

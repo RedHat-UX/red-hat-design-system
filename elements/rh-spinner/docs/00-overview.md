@@ -3,7 +3,7 @@
 {{ tagName | getElementDescription }}
 
 <uxdot-example width-adjustment="184px">
-  <img src="{{ './spinner-sample.png' | url }}" alt="Example of a spinner">
+  <img src="./spinner-sample.png" alt="Example of a spinner">
 </uxdot-example>
 
 {% repoStatusList repoStatus=repoStatus %}

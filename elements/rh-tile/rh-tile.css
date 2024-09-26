@@ -85,7 +85,6 @@
   }
 
   & ::slotted([slot='image']) {
-    display: block;
     max-width: 100%;
     margin-top: 0;
     margin-bottom: var(--_padding);

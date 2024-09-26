@@ -96,7 +96,7 @@ palette should feature imagery with light colors and vice versa. Imagery with
 high contrast is only acceptable if it has a transparent background. If you 
 cannot find color-palette-specific imagery, contact the Brand team. Developers
 have a number of [art-direction][artdirection] techniques at their disposal for
-creating themable, responsive graphics.
+creating themeable, responsive graphics.
 
 <uxdot-example>
   <img alt="correct uses of an illustration with a transparent background and one illustration incorrectly using a white background on a surface with a dark color palette area"
@@ -129,7 +129,7 @@ use this HTML:
 {% enduxdotPattern %}
 
 A color palette provider is a **surface** on which a particular color palette is
-active, as well as a **container** for themable consumer elements.
+active, as well as a **container** for themeable consumer elements.
 
 ### Backgrounds
 

@@ -9,7 +9,7 @@ importElements:
   - rh-table  
 ---
 
-<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
+<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
 
 
 ## Building experiences for the web
@@ -39,7 +39,7 @@ By sharing ideas between the PatternFly and RHDDS teams, we create a design lang
 
 <uxdot-example variant="full" no-border alignment="left">
   <figure>
-    <img src="{{ '/assets/about/how-we-build/patternfly.svg' | url }}" alt="Example PatternFly components">
+    <img src="/assets/about/how-we-build/patternfly.svg" alt="Example PatternFly components">
     <figcaption>Examples of PatternFly components</figcaption>
   </figure>
 </uxdot-example>
@@ -57,13 +57,13 @@ PFE components not only work in any application framework, they are <strong>ever
 <div class="grid sm-two-columns">
   <uxdot-example variant="full" no-border alignment="left">
     <figure>
-      <img src="{{ '/assets/about/how-we-build/patternfly-elements.svg' | url }}" alt="Example PFE components">
+      <img src="/assets/about/how-we-build/patternfly-elements.svg" alt="Example PFE components">
       <figcaption>Examples of PFE components that are not themed</figcaption>
     </figure>
   </uxdot-example>
   <uxdot-example variant="full" no-border alignment="left">
     <figure>
-      <img src="{{ '/assets/about/how-we-build/patternfly-elements-rh-themed.svg' | url }}" alt="Example PFE components">
+      <img src="/assets/about/how-we-build/patternfly-elements-rh-themed.svg" alt="Example PFE components">
       <figcaption>Examples of PFE components themed with Red Hat CSS variables</figcaption>
     </figure>
   </uxdot-example>
@@ -89,7 +89,7 @@ PFE components not only work in any application framework, they are <strong>ever
         <td data-label="Implementation">
           <a href="https://www.patternfly.org/v4/" target="_blank">PatternFly components</a>
         </td>
-        <td data-label="Example"><img src="{{ '/assets/about/how-we-build/table-patternfly.svg' | url }}" alt="Example PatternFly components"></td>
+        <td data-label="Example"><img src="/assets/about/how-we-build/table-patternfly.svg" alt="Example PatternFly components"></td>
       </tr>
       <tr>
         <td data-label="Design System">
@@ -98,7 +98,7 @@ PFE components not only work in any application framework, they are <strong>ever
         <td data-label="Implementation">
           <a href="https://patternflyelements.com/components/" target="_blank">PFE components</a>
         </td>
-        <td data-label="Example"><img src="{{ '/assets/about/how-we-build/table-pfe.svg' | url }}" alt="Example PFE components"></td>
+        <td data-label="Example"><img src="/assets/about/how-we-build/table-pfe.svg" alt="Example PFE components"></td>
       </tr>
       <tr>
         <td data-label="Design System">
@@ -106,7 +106,7 @@ PFE components not only work in any application framework, they are <strong>ever
         </td>
         <td data-label="Implementation">
           <a href="https://patternflyelements.com/components/" target="_blank">PFE components</a> themed with Red Hat CSS variables</td>
-        <td data-label="Example"><img src="{{ '/assets/about/how-we-build/table-pfe-rh.svg' | url }}" alt="Example PFE components with Red Hat CSS variables"></td>
+        <td data-label="Example"><img src="/assets/about/how-we-build/table-pfe-rh.svg" alt="Example PFE components with Red Hat CSS variables"></td>
       </tr>
     </tbody>
   </table>
@@ -124,7 +124,7 @@ PFE components not only work in any application framework, they are <strong>ever
   <div>
     <uxdot-example variant="full" no-border alignment="left">
       <figure>
-        <img src="{{ '/assets/about/how-we-build/webrh.png' | url }}" alt="WebRH screenshot">
+        <img src="/assets/about/how-we-build/webrh.png" alt="WebRH screenshot">
         <figcaption>Example of a WebRH pattern being customized in the Schema Editor (formerly Patternkit)</figcaption>
       </figure>
     </uxdot-example>
@@ -167,8 +167,8 @@ PFE components not only work in any application framework, they are <strong>ever
 
 <uxdot-example variant="full" no-border alignment="left">
   <figure class="grid sm-two-columns">
-    <img src="{{ '/assets/about/how-we-build/webdms-1.png' | url }}" alt="Example of WebDMS patterns showing hybrid cloud">
-    <img src="{{ '/assets/about/how-we-build/webdms-2.png' | url }}" alt="Example of WebDMS patterns showing implementation of jumplinks">
+    <img src="/assets/about/how-we-build/webdms-1.png" alt="Example of WebDMS patterns showing hybrid cloud">
+    <img src="/assets/about/how-we-build/webdms-2.png" alt="Example of WebDMS patterns showing implementation of jumplinks">
     <figcaption>Examples of WebDMS applied on top of the Red Hat Design System</figcaption>
   </figure>
 </uxdot-example>
