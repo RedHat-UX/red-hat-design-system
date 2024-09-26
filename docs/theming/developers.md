@@ -63,23 +63,24 @@ The `color-palette` is an important piece of the theming system.  The attribute 
 {% endrenderTemplate %}
 <rh-code-block dedent
                full-height
-               language="html"
-               highlighting="client">
-  <script type="text/html">
-    <!DOCTYPE html>
-    <html lang="en-US">
-      <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width">
-        <title>My Themed Page</title>
-      </head>
-      <body>
-        <rh-surface role="main" color-palette="darker">
-          ...
-        </rh-surface>
-      </body>
-    </html>
-  </script>
+               highlighting="prerendered">
+{% renderTemplate 'md' %}
+```html
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>My Themed Page</title>
+  </head>
+  <body>
+    <rh-surface role="main" color-palette="darker">
+      ...
+    </rh-surface>
+  </body>
+</html>
+```
+{% endrenderTemplate %}
 </rh-code-block>
 {% renderTemplate 'md' %}
 
@@ -88,20 +89,21 @@ The `color-palette` is an important piece of the theming system.  The attribute 
 {% endrenderTemplate %}
 <rh-code-block dedent
                full-height
-               language="html"
-               highlighting="client">
-  <script type="text/html">
-    <body>
-      <main>
-        <section>
-          Default theme (i.e. lightest)
-        </section>
-        <rh-surface color-palette="darker">
-          ...
-        </rh-surface>
-      </main>
-    </body>
-  </script>
+               highlighting="prerendered">
+{% renderTemplate 'md' %}
+```html
+<body>
+  <main>
+    <section>
+      Default theme (i.e. lightest)
+    </section>
+    <rh-surface color-palette="darker">
+      ...
+    </rh-surface>
+  </main>
+</body>
+```
+{% endrenderTemplate %}
 </rh-code-block>
 {% renderTemplate 'md' %}
 
@@ -117,19 +119,20 @@ Page authors using _inline SVG_ can use theme tokens to style graphics.
 {% endrenderTemplate %}
 <rh-code-block dedent
                full-height
-               language="html"
-               highlighting="client">
-  <script type="text/html">
-    <svg slot="header" width="80" height="80">
-      <rect fill="var(--rh-color-border-interactive)"
-            fill-opacity="0.1"
-            stroke-dasharray="4"
-            stroke-width="1"
-            stroke="var(--rh-color-border-interactive)"
-            width="80"
-            height="80"/>
-    </svg>
-  </script>
+               highlighting="prerendered">
+{% renderTemplate 'md' %}
+```html
+<svg slot="header" width="80" height="80">
+  <rect fill="var(--rh-color-border-interactive)"
+        fill-opacity="0.1"
+        stroke-dasharray="4"
+        stroke-width="1"
+        stroke="var(--rh-color-border-interactive)"
+        width="80"
+        height="80"/>
+</svg>
+```
+{% endrenderTemplate %}
 </rh-code-block>
 {% renderTemplate 'md' %}
 
@@ -141,14 +144,15 @@ raster graphics, however another approach is in development which could help:
 {% endrenderTemplate %}
 <rh-code-block dedent
                full-height
-               language="html"
-               highlighting="client">
-  <script type="text/html">
-    <rh-picture>
-      <source srcset="../google-cloud-dark.svg" color-theme="dark"></source>
-      <img src="../google-cloud.svg" alt="Logo for Red Hat partner Google Cloud">
-    <rh-picture>
-  </script>
+               highlighting="prerendered">
+{% renderTemplate 'md' %}
+```html
+<rh-picture>
+  <source srcset="../google-cloud-dark.svg" color-theme="dark"></source>
+  <img src="../google-cloud.svg" alt="Logo for Red Hat partner Google Cloud">
+<rh-picture>
+```
+{% endrenderTemplate %}
 </rh-code-block>
 
 <rh-cta href="https://github.com/orgs/RedHat-UX/discussions/1780">Join the discussion</rh-cta>
@@ -200,9 +204,26 @@ To make your element a color context provider,
 {% endrenderTemplate %}
 <rh-code-block dedent
                full-height
-               language="js"
-               highlighting="client">
-  <script type="sample/javascript">{%- include './code-samples/provider-class.ts' -%}</script>
+               highlighting="prerendered">
+{% renderTemplate 'md' %}
+```ts
+import { LitElement } from 'lit';
+import { customElement } from 'lit/decorators/custom-element.js';
+import { property } from 'lit/decorators/property.js';
+
+import {
+  colorContextProvider,                                    // 1
+  type ColorPalette,
+} from '@rhds/elements/lib/context/color/provider.js';
+
+@customElement('rh-provider')
+export class RhProvider extends LitElement {
+  @colorContextProvider()                                  // 2
+  @property({ reflect: true, attribute: 'color-palette' })
+  colorPalette?: ColorPalette;
+}
+```
+{% endrenderTemplate %}
 </rh-code-block>
 {% renderTemplate 'md' %}
 
@@ -226,25 +247,55 @@ To make your element a color context consumer,
 
 [palettes]: /theming/color-palettes/
 
-
 {% endrenderTemplate %}
-<rh-code-block full-height
-               language="js"
-               highlighting="client">
-  <script type="sample/javascript">{%- include './code-samples/consumer-class.ts' -%}</script>
-</rh-code-block>
+<rh-tabs class="code-tabs">
+  <rh-tab slot="tab">TypeScript</rh-tab>
+  <rh-tab-panel>
+    <rh-code-block dedent
+                   full-height
+                   highlighting="prerendered">
+{%- renderTemplate 'md' -%}
+```ts
+import { LitElement, html } from 'lit';
+import { customElement } from 'lit/decorators/custom-element.js';
+import { classMap } from 'lit/directives/class-map.js';  // 1
+import {
+  colorContextConsumer,
+  type ColorTheme,
+} from '@rhds/elements/lib/context/color/consumer.js';
 
-<rh-code-block dedent
-               full-height
-               language="css"
-               highlighting="client">
-  <script type="text/css">
-    #container {
-      color: var(--rh-color-text-primary);
-      background: var(--rh-color-surface);
-    }
-  </script>
-</rh-code-block>
+@customElement('rh-consumer')
+export class RhConsumer extends LitElement {
+  @colorContextConsumer() private on?: ColorTheme;       // 2
+
+  render() {
+    const { on = 'light' } = this;                       // 3
+    return html`
+      <div id="container"
+           class="${classMap({ on: true, [on]: true })}">
+      </div>`;
+  }
+}
+```
+{% endrenderTemplate %}
+    </rh-code-block>
+  </rh-tab-panel>
+  <rh-tab slot="tab">CSS</rh-tab>
+  <rh-tab-panel>
+    <rh-code-block dedent
+                   full-height
+                   highlighting="prerendered">
+{% renderTemplate 'md' %}
+```css
+#container {
+  color: var(--rh-color-text-primary);
+  background: var(--rh-color-surface);
+}
+```
+{% endrenderTemplate %}
+    </rh-code-block>
+  </rh-tab-panel>
+</rh-tabs>
 {% renderTemplate 'md' %}
 
 What the `@colorContextConsumer` decorator does, in addition to participating in
@@ -256,9 +307,20 @@ and applies values to the theming tokens, depending on the context received.
 {% endrenderTemplate %}
 <rh-code-block dedent
                full-height
-               language="css"
-               highlighting="client">
-  <script type="text/css">{%- include './code-samples/consumer-styles.css' -%}</script>
+               highlighting="prerendered">
+{% renderTemplate 'md' %}
+```css
+.on.light {
+  --rh-color-text-primary: var(--rh-color-text-primary-on-light, #151515);
+   /* etc... */
+}
+
+.on.dark {
+  --rh-color-text-primary: var(--rh-color-text-primary-on-dark, #ffffff);
+   /* etc... */
+}
+```
+{% endrenderTemplate %}
 </rh-code-block>
 {% renderTemplate 'md' %}
 
@@ -288,30 +350,32 @@ Your page markup declares a custom surface with some classes:
 {% endrenderTemplate %}
 <rh-code-block dedent
                full-height
-               language="html"
-               highlighting="client">
-  <script type="text/html">
-    <div class="custom-surface dark">
-      <rh-cta href="#">GO!</rh-cta>
-    </div>
-  </script>
+               highlighting="prerendered">
+{% renderTemplate 'md' %}
+```html
+<div class="custom-surface dark">
+  <rh-cta href="#">GO!</rh-cta>
+</div>
+```
+{% endrenderTemplate %}
 </rh-code-block>
 {% renderTemplate 'md' %}
 
 And your document CSS sets the desired color context:
 
 {% endrenderTemplate %}
-<rh-code-block dedent 
+<rh-code-block dedent
                full-height
-               language="css"
-               highlighting="client">
-  <script type="text/css">
-    .custom-surface {
-      container: surface;
-      &.dark { --rh-background-context: dark; }
-      &.light { --rh-background-context: light; }
-    }
-  </script>
+               highlighting="prerendered">
+{% renderTemplate 'md' %}
+```css
+.custom-surface {
+  container: surface;
+  &.dark { --rh-background-context: dark; }
+  &.light { --rh-background-context: light; }
+}
+```
+{% endrenderTemplate %}
 </rh-code-block>
 {% renderTemplate 'md' %}
 
@@ -321,11 +385,12 @@ similarly to how elements import `@rhds/tokens/css/color-context-consumer.css.js
 {% endrenderTemplate %}
 <rh-code-block dedent
                full-height
-               language="css"
-               highlighting="client">
-  <script type="text/css">
-    @container style (--rh-context-background: dark) {
-      --rh-color-text-primary: var(--rh-color-text-primary-on-dark)
-    }
-  </script>
+               highlighting="prerendered">
+{% renderTemplate 'md' %}
+```css
+@container style (--rh-context-background: dark) {
+  --rh-color-text-primary: var(--rh-color-text-primary-on-dark)
+}
+```
+{% endrenderTemplate %}
 </rh-code-block>

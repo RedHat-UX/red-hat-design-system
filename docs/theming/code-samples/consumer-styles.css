@@ -1,7 +1,0 @@
-.on.light {
-  --rh-color-text-primary: var(--rh-color-text-primary-on-light, #151515); /* ... etc. */
-}
-
-.on.dark {
-  --rh-color-text-primary: var(--rh-color-text-primary-on-dark, #ffffff); /* ... etc. */
-}
