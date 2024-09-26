@@ -112,7 +112,7 @@ footer ::slotted(rh-button[variant='link' i]) {
 #container.warning {
   --_border-color: var(--rh-color-status-warning);
   --_icon-color: var(--rh-color-icon-status-warning);
-  --_header-color: var(--rh-color-yello-70);
+  --_header-color: var(--rh-color-yellow-70);
   --_background-color: var(--rh-color-surface-status-warning);
 }
 
