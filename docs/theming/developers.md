@@ -1,5 +1,4 @@
 ---
-templateEngineOverride: njk
 title: Developers
 order: 4
 hasToc: true
@@ -34,8 +33,6 @@ hasToc: true
   import '@rhds/elements/rh-tile/rh-tile.js';
 </script>
 
-{% renderTemplate 'md' %}
-
 ## Using the theming system
 
 <abbr title="Red Hat Design System">RHDS</abbr>' theming system is a high-level 
@@ -59,18 +56,10 @@ A common pattern for a themeable container is the full width band.  For example,
 a `<rh-surface>` may be used as a full-width container and provide the 
 *Bordeaux* theme values to a set of 3 cards in a grid:
 
-[patterns]: /patterns/
-[tokens]: /tokens/
-[elements]: /elements/
-[themes]: /theming/customizing/#custom-themes
-
-{% endrenderTemplate %}
-
-{% uxdotPattern class="band-example", stacked=true, allow="lightest"%}
-{% include './patterns/band.html' %}
-{% enduxdotPattern %}
-
-{% renderTemplate 'md' %}
+{% uxdotPattern src="./docs/theming/patterns/band.html",
+                class="band-example",
+                stacked=true,
+                allow="lightest" %}{% enduxdotPattern %}
 
 ### The color-palette attribute
 
@@ -80,22 +69,13 @@ define a [color palette][palettes], while their children passively accept their
 background color and text color.  The `color-palette` can be set to six possible 
 values `lightest`, `lighter`, `light`, `dark`, `darker` and `darkest`.
 
-[palettes]: /theming/color-palettes/
-
 ### Theming whole pages
 
 To theme an entire page, you may replace the `<main>` element with an 
 `<rh-surface role="main">`. This ensures that computed theme tokens propagate to 
 all children, while maintaining the proper [landmark semantics][landmarks].
 
-[landmarks]: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/landmark_role
-
-{% endrenderTemplate %}
-<rh-code-block dedent
-               full-height
-               highlighting="prerendered">
-{% renderTemplate 'md' %}
-```html
+```html rhcodeblock
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
@@ -110,9 +90,6 @@ all children, while maintaining the proper [landmark semantics][landmarks].
   </body>
 </html>
 ```
-{% endrenderTemplate %}
-</rh-code-block>
-{% renderTemplate 'md' %}
 
 ### Theming individual sections
 
@@ -120,12 +97,7 @@ You may also theme particular sections, giving them a contrasting color palette.
 Read more about the design considerations for contrasting sections on the
 [color-palettes page](/theming/color-palettes/#inline-color-palettes-beta).
 
-{% endrenderTemplate %}
-<rh-code-block dedent
-               full-height
-               highlighting="prerendered">
-{% renderTemplate 'md' %}
-```html
+```html rhcodeblock
 <body>
   <rh-surface role="main">
     <section aria-labelledby="heading">
@@ -141,9 +113,19 @@ Read more about the design considerations for contrasting sections on the
   </rh-surface>
 </body>
 ```
-{% endrenderTemplate %}
-</rh-code-block>
-{% renderTemplate 'md' %}
+
+## Writing themes
+
+When theming pages, sections, or elements, developers should carefully review
+the designs they received, and seek to make as few customizations as necessary.
+The ideal order-of-operations is as follows:
+
+1. Search for an appropriate or approximate [pattern][patterns]
+1. Use element-specific tokens to customize an element e.g. `--rh-card-header-background-on-light`
+1. Use theme tokens to customize the target e.g. `--rh-color-interactive-primary-default-on-light`
+1. Use element CSS Shadow Parts for greater control
+
+<rh-alert state="caution">Avoid setting values for CSS custom properties beginning with an `_`. These should be considered "private" and may change at any time without warning</rh-alert>
 
 ## Art Direction
 
@@ -162,12 +144,7 @@ theme by using _inline SVG_ that references theme tokens. For example, this svg
 graphic uses the `--rh-color-border-interactive` theme token to style a 
 rectangle.
 
-{% endrenderTemplate %}
-<rh-code-block dedent
-               full-height
-               highlighting="prerendered">
-{% renderTemplate 'md' %}
-```html
+```html rhcodeblock
 <svg slot="header" width="80" height="80">
   <rect fill="var(--rh-color-border-interactive)"
         fill-opacity="0.1"
@@ -178,9 +155,6 @@ rectangle.
         height="80"/>
 </svg>
 ```
-{% endrenderTemplate %}
-</rh-code-block>
-{% renderTemplate 'md' %}
 
 This approach _does not work_ with svg loaded through the `<img>` tag, or with 
 raster graphics, however another approach is in development which could help:
@@ -192,12 +166,7 @@ swapping linked or raster graphics depending on the context. For example, if
 the Red Hat logo appears on sections with botyh light and dark backgrounds,
 developers should carefully choose the graphic which matches the background.
 
-{% endrenderTemplate %}
-<rh-code-block dedent
-               full-height
-               highlighting="prerendered">
-{% renderTemplate 'md' %}
-```html
+```html rhcodeblock
 <rh-surface role="section"
             aria-labelledby="products"
             color-palette="darkest">
@@ -206,9 +175,6 @@ developers should carefully choose the graphic which matches the background.
        src="/assets/logos/products/rhel-on-dark.svg">
 </rh-surface>
 ```
-{% endrenderTemplate %}
-</rh-code-block>
-{% renderTemplate 'md' %}
 
 ### `<rh-picture>` <rh-tag icon="notification-fill" color="purple">Planned</rh-tag>
 
@@ -217,12 +183,7 @@ kinds of scenarios, tentatively named `<rh-picture>`. The following speculative
 code block shows how the element may be used in the future to enable responsive
 themable graphics
 
-{% endrenderTemplate %}
-<rh-code-block dedent
-               full-height
-               highlighting="prerendered">
-{% renderTemplate 'md' %}
-```html
+```html rhcodeblock
 <rh-surface role="section"
             aria-labelledby="products"
             color-palette="darkest">
@@ -234,12 +195,8 @@ themable graphics
   <rh-picture>
 </rh-surface>
 ```
-{% endrenderTemplate %}
-</rh-code-block>
-{% renderTemplate 'md' %}
 
 <rh-cta href="https://github.com/orgs/RedHat-UX/discussions/1780">Join the discussion</rh-cta>
-{% renderTemplate 'md' %}
 
 ## How theming works
 
@@ -288,17 +245,7 @@ To make your element a color context provider,
 2. Then add the `@colorContextProvider()` decorator to a property with the
    attribute `color-palette` which is the type `ColorPalette`.
 
-[contextprotocol]: https://github.com/webcomponents-cg/community-protocols/blob/main/proposals/context.md
-[controllers]: https://lit.dev/docs/composition/controllers/
-[providersrc]: https://github.com/RedHat-UX/red-hat-design-system/blob/main/lib/context/color/provider.ts
-[consumersrc]: https://github.com/RedHat-UX/red-hat-design-system/blob/main/lib/context/color/consumer.ts
-
-{% endrenderTemplate %}
-<rh-code-block dedent
-               full-height
-               highlighting="prerendered">
-{% renderTemplate 'md' %}
-```ts
+```ts rhcodeblock
 import { LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
@@ -315,9 +262,6 @@ export class RhProvider extends LitElement {
   colorPalette?: ColorPalette;
 }
 ```
-{% endrenderTemplate %}
-</rh-code-block>
-{% renderTemplate 'md' %}
 
 Read "[What are color palettes][palettes]" for more information about the six
 available `color-palettes`.
@@ -337,17 +281,11 @@ To make your element a color context consumer,
 4. Use the theming tokens in your element's shadow styles, being sure.
    to select the element which has the `.on.light`/`.on.dark` classes
 
-[palettes]: /theming/color-palettes/
-
-{% endrenderTemplate %}
 <rh-tabs class="code-tabs">
   <rh-tab slot="tab">TypeScript</rh-tab>
   <rh-tab-panel>
-    <rh-code-block dedent
-                   full-height
-                   highlighting="prerendered">
-{%- renderTemplate 'md' -%}
-```ts
+
+```ts rhcodeblock
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';  // 1
@@ -369,26 +307,20 @@ export class RhConsumer extends LitElement {
   }
 }
 ```
-{% endrenderTemplate %}
-    </rh-code-block>
+
   </rh-tab-panel>
   <rh-tab slot="tab">CSS</rh-tab>
   <rh-tab-panel>
-    <rh-code-block dedent
-                   full-height
-                   highlighting="prerendered">
-{% renderTemplate 'md' %}
-```css
+
+```css rhcodeblock
 #container {
   color: var(--rh-color-text-primary);
   background: var(--rh-color-surface);
 }
 ```
-{% endrenderTemplate %}
-    </rh-code-block>
+
   </rh-tab-panel>
 </rh-tabs>
-{% renderTemplate 'md' %}
 
 What the `@colorContextConsumer` decorator does, in addition to participating in
 the context event system, is apply a stylesheet from
@@ -396,12 +328,7 @@ the context event system, is apply a stylesheet from
 That stylesheet selects for well-known class names `.on.light` and `.on.dark`,
 and applies values to the theming tokens, depending on the context received.
 
-{% endrenderTemplate %}
-<rh-code-block dedent
-               full-height
-               highlighting="prerendered">
-{% renderTemplate 'md' %}
-```css
+```css rhcodeblock
 .on.light {
   --rh-color-text-primary: var(--rh-color-text-primary-on-light, #151515);
    /* etc... */
@@ -412,9 +339,6 @@ and applies values to the theming tokens, depending on the context received.
    /* etc... */
 }
 ```
-{% endrenderTemplate %}
-</rh-code-block>
-{% renderTemplate 'md' %}
 
 For more information on the significance of the context values (i.e.
 `ColorTheme`), read "[Background][backgrounds]".
@@ -436,53 +360,39 @@ In addition to reducing the javascript payload of the design system, style
 queries will allow authors to attach surface styles to any element. For example,
 Your page markup declares a custom surface with some classes:
 
-[backgrounds]: /theming/color-palettes/#backgrounds
-[stylequeries]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_size_and_style_queries#container_style_queries_2
-
-{% endrenderTemplate %}
-<rh-code-block dedent
-               full-height
-               highlighting="prerendered">
-{% renderTemplate 'md' %}
-```html
+```html rhcodeblock
 <div class="custom-surface dark">
   <rh-cta href="#">GO!</rh-cta>
 </div>
 ```
-{% endrenderTemplate %}
-</rh-code-block>
-{% renderTemplate 'md' %}
 
 And your document CSS sets the desired color context:
 
-{% endrenderTemplate %}
-<rh-code-block dedent
-               full-height
-               highlighting="prerendered">
-{% renderTemplate 'md' %}
-```css
+```css rhcodeblock
 .custom-surface {
   container: surface;
   &.dark { --rh-background-context: dark; }
   &.light { --rh-background-context: light; }
 }
 ```
-{% endrenderTemplate %}
-</rh-code-block>
-{% renderTemplate 'md' %}
 
 And you would declare the import a shared stylesheet which activates the theming system,
 similarly to how elements import `@rhds/tokens/css/color-context-consumer.css.js`
 
-{% endrenderTemplate %}
-<rh-code-block dedent
-               full-height
-               highlighting="prerendered">
-{% renderTemplate 'md' %}
-```css
+```css rhcodeblock
 @container style (--rh-context-background: dark) {
   --rh-color-text-primary: var(--rh-color-text-primary-on-dark)
 }
 ```
-{% endrenderTemplate %}
-</rh-code-block>
+
+[backgrounds]: /theming/color-palettes/#backgrounds
+[consumersrc]: https://github.com/RedHat-UX/red-hat-design-system/blob/main/lib/context/color/consumer.ts
+[contextprotocol]: https://github.com/webcomponents-cg/community-protocols/blob/main/proposals/context.md
+[controllers]: https://lit.dev/docs/composition/controllers/
+[elements]: /elements/
+[landmarks]: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/landmark_role
+[patterns]: /patterns/
+[providersrc]: https://github.com/RedHat-UX/red-hat-design-system/blob/main/lib/context/color/provider.ts
+[stylequeries]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_size_and_style_queries#container_style_queries_2
+[themes]: /theming/customizing/#custom-themes
+[tokens]: /tokens/

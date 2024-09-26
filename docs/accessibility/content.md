@@ -51,35 +51,23 @@ Wherever meaningful images or other non-text elements are used on a page, you mu
 
 Images loaded via the `<img>` element typically use the alt attribute for their alternative text:
 
-<rh-code-block highlighting="prerendered">
-
-```html
+```html rhcodeblock
 <img src="imagesource.jpg" alt="Description of image"></script>
 ```
 
-</rh-code-block>
-
 Inline SVGs that compose simple images commonly use a combination of the `role="img"` attribute and a `<title>` element as the first child of the `<svg>` element:
 
-<rh-code-block highlighting="prerendered">
-
-```html
+```html rhcodeblock
 <svg role="img">
   <title>Description of image</title>
 </svg>
 ```
 
-</rh-code-block>
-
 Other non-text elements (e.g., ASCII emoticons) may use ARIA attributes, like `aria-label` or `aria-labelledby`:
 
-<rh-code-block highlighting="prerendered">
-
-```html
+```html rhcodeblock
 <span role="img" aria-label="astonished face">:O</span>
 ```
-
-</rh-code-block>
 
 These are not the only means of providing alt text for non-text elements, but they cover many common situations. For less-common cases, view the [WCAG 2.1 documentation](https://www.w3.org/WAI/WCAG21/Understanding/non-text-content.html).
 
@@ -127,23 +115,17 @@ Images acting as buttons or links are functional, and thus serve different purpo
 
 If the above image supplements the text of an article about Red Hat or our products, the appropriate alt text could be something like `"Red Hat, Inc. logo."` But if that image is a link pointing to the corporate homepage, you might want something along the lines of `"Red Hat homepage"` for your alt text:
 
-<rh-code-block highlighting="prerendered">
-
-```html
+```html rhcodeblock
 <a href="https://www.redhat.com/">
   <img src="logo-redhat.png" alt="Red Hat homepage">
 </a>
 ```
 
-</rh-code-block>
-
 ### Grouped images
 
 Grouped images that convey a single meaning (e.g., movie rating stars), can be grouped within an element with a single label (e.g., aria-label) that describes the meaning of the entire group.
 
-<rh-code-block highlighting="prerendered">
-
-```html
+```html rhcodeblock
 <div aria-label="2 of 3 attempts left">
   <img src="pending.jpg" alt>
   <img src="pending.jpg" alt>
@@ -151,19 +133,13 @@ Grouped images that convey a single meaning (e.g., movie rating stars), can be g
 </div>
 ```
 
-</rh-code-block>
-
 Or the first element of the group can have alt text, while the others are hidden:
 
-<rh-code-block highlighting="prerendered">
-
-```html
+```html rhcodeblock
 <img src="pending.jpg" alt="2 of 3 attempts left">
 <img src="pending.jpg" alt>
 <img src="failed.jpg" alt>
 ```
-
-</rh-code-block>
 
 ### Embedded media (and other non-text) titles
 
@@ -171,13 +147,9 @@ Though the techniques may vary, meaningful embedded media objects require text a
 A common technique is labeling objects with ARIA attributes:
 
 
-<rh-code-block highlighting="prerendered">
-
-```html
+```html rhcodeblock
 <video src="video.mp4" aria-label="Deploying applications with OpenShift">
 ```
-
-</rh-code-block>
 
 ## Writing microcopy
 
@@ -193,13 +165,9 @@ Best practices for all microcopy:
 
 In addition to the best practices for all microcopy, adhere to the following best practices for links, when possible.
 
-<rh-code-block highlighting="prerendered">
-
-```html
+```html rhcodeblock
 <a href="signup.html">Sign-up form</a>
 ```
-
-</rh-code-block>
 
 #### Best practices for links
 
@@ -220,14 +188,9 @@ In addition to the best practices for all microcopy, adhere to the following bes
 In addition to the best practices for all microcopy, adhere to the following best practices for buttons, when possible.
 
 
-<rh-code-block highlighting="prerendered">
-
-```html
+```html rhcodeblock
 <button>Save draft</button>
 ```
-
-</rh-code-block>
-
 
 #### Best practices for buttons
 
@@ -239,13 +202,9 @@ In addition to the best practices for all microcopy, adhere to the following bes
 
 In addition to the best practices for all microcopy, adhere to the following best practices for form labels, when possible.
 
-<rh-code-block highlighting="prerendered">
-
-```html
+```html rhcodeblock
 <label>First name</label></script>
 ```
-
-</rh-code-block>
 
 #### Best practices for labels
 
@@ -261,26 +220,16 @@ In addition to the best practices for all microcopy, adhere to the following bes
 Use clear language in headings to describe the content that follows them:
 
 
-<rh-code-block highlighting="prerendered">
-
-```html
+```html rhcodeblock
 <h1>Red Hat Enterprise Linux</h1>
 ```
-
-</rh-code-block>
-
 
 At Red Hat, we use sentence case for our headings:
 
 
-<rh-code-block highlighting="prerendered">
-
-```html
+```html rhcodeblock
 <h2>How companies are using RHEL</h2>
 ```
-
-</rh-code-block>
-
 
 #### Heading levels
 
@@ -304,9 +253,7 @@ Here’s an example of a page outline:
 
 And here’s how that outline would be reflected in a page’s heading structure:
 
-<rh-code-block highlighting="prerendered">
-
-```html
+```html rhcodeblock
 <h1>Midwestern Recipes</h1>
   <h2>Sides</h2>
     <h3>Cheese</h3>
@@ -321,40 +268,27 @@ And here’s how that outline would be reflected in a page’s heading structure
       <h4>Dutch letters</h4>
 ```
 
-</rh-code-block>
-
-
 Note that an `<h1>` is often the first heading on a page:
 
 
-<rh-code-block highlighting="prerendered">
-
-```html
+```html rhcodeblock
 <h1>Midwestern Recipes</h1>
 <h2>Navigation</h2>
 ```
-
-</rh-code-block>
 
 But it doesn’t have to be the first heading on a page. This is also acceptable:
 
 
-<rh-code-block highlighting="prerendered">
-
-```html
+```html rhcodeblock
 <h2>Navigation</h2>
 <h1>Midwestern Recipes</h1>
 ```
-
-</rh-code-block>
 
 ### Page titles
 
 Each web page is required to have a page `<title>` element within its `<head>` that contains meaningful text describing the page’s context and purpose.
 
-<rh-code-block highlighting="prerendered">
-
-```html
+```html rhcodeblock
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -363,8 +297,6 @@ Each web page is required to have a page `<title>` element within its `<head>` t
   <body>...</body>
 </html>
 ```
-
-</rh-code-block>
 
 Titles should be specific to each URL and not duplicated across a site. Otherwise, users (particularly assistive tech users) may not be aware when they’ve landed on a new or updated page. When users move to new pages or change contexts of the current page, the page title should change to reflect this.
 
@@ -377,13 +309,9 @@ As mentioned in the Headings section, page titles and `<h1>` elements often rela
 Non-hidden, non-empty `<iframe>` elements are required to have titles describing their meaning or purpose, similar to alternative text for images.
 
 
-<rh-code-block highlighting="prerendered">
-
-```html
+```html rhcodeblock
 <iframe src="video.html" title="Video: Network automation with Ansible"></iframe>
 ```
-
-</rh-code-block>
 
 Note that, as opposed to a page’s `<title>` element, `<iframe>` tags include title attributes to label them. (Yes, it can be confusing, especially when you consider that there are still more `<title>` elements and title attributes used in other contexts!)
 
@@ -409,9 +337,7 @@ Avoid using tables when a simple list (whether [ordered](https://developer.mozil
 
 For example, the following doesn’t need to be a table:
 
-<rh-code-block highlighting="prerendered">
-
-```html
+```html rhcodeblock
 <table>
   <caption>Groceries</caption>
   <tbody>
@@ -431,13 +357,9 @@ For example, the following doesn’t need to be a table:
 </table>
 ```
 
-</rh-code-block>
-
 Instead, a list would be simpler, easier to understand, and easier to code:
 
-<rh-code-block highlighting="prerendered">
-
-```html
+```html rhcodeblock
 <h3 id="groceries">Groceries</h3>
 <ul aria-labelledby="groceries">
   <li>5 Apples</li>
@@ -445,8 +367,6 @@ Instead, a list would be simpler, easier to understand, and easier to code:
   <li>6 Lemons</li>
 </ul>
 ```
-
-</rh-code-block>
 
 In other words, if it doesn’t _need_ to be a table, then it probably shouldn’t be a table.
 
@@ -615,9 +535,7 @@ All HTML content must be contained within an element that has a `lang` attribute
 
 For pages with multilingual content, each element containing a different language from the one indicated in the `<html>` element should have an appropriate `lang` attribute. For example:
 
-<rh-code-block highlighting="prerendered">
-
-```html
+```html rhcodeblock
 <!DOCTYPE html>
 <html lang="en">
   <head>...</head>
@@ -630,8 +548,6 @@ For pages with multilingual content, each element containing a different languag
   </body>
 </html>
 ```
-
-</rh-code-block>
 
 The W3C has an [article on language tags](https://www.w3.org/International/articles/language-tags/), which covers both how to use them and where to find a full list of them.
 
