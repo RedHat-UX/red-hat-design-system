@@ -1,132 +1,114 @@
-<style>
-  .tag-grid {
-    display: flex;
-    flex-direction: row;
-    gap: var(--rh-space-lg);
-    &.wide {
-      gap: var(--rh-space-3xl);
-    }
-  }
-</style>
-
 ## Style
 
-A tag is colored text on a pill background which may include an optional icon. A 
-tag background can be colored, white, or transparent and it always includes a 
-border.
+A tag is text on a pill-shaped background. It comes in a variety of colors, 
+styles, and sizes. The text may be linked or include an optional decorative 
+icon.
 
 ### Anatomy
 
 <figure>
-  <uxdot-example width-adjustment="554px">
-    <img src="../tag-anatomy.png"
-         alt="Anatomy of a tag with annotations; number 1 is pointing to the container, number 2 is pointing to the text label, and number 3 is pointing to an optional icon">
+  <uxdot-example width-adjustment="311px">
+    <img src="../tag-style-anatomy.svg"
+         alt="Image of 4 tags, 3 of which are annotated with anatomy features; annotation number 1 is pointing to the Text, annotation number 2 is pointing to the Decorative icon, and annotation number 3 is pointing to the Linked text of a Linked Tag">
   </uxdot-example>
   <figcaption>
     <ol>
-      <li>Container and border</li>
-      <li>Text label</li>
-      <li>Optional icon</li>
+      <li>Text</li>
+      <li>Decorative icon</li>
+      <li>Linked text</li>
     </ol>
   </figcaption>
 </figure>
 
-### Variants
+## Variants
 
-There are three available variants, which affect the background and colors. Both 
-variants include an optional slot for displaying a small icon to the left of the 
-text label.
+### Style
 
-<uxdot-example width-adjustment="585px"
-               aria-label="Tags with text describing each variant">
-  <div class="tag-grid wide">
-    <rh-tag color="teal">Filled</rh-tag>
-    <rh-tag variant="outline">Outline</rh-tag>
-    <rh-tag variant="desaturated">Desaturated</rh-tag>
-    <rh-tag icon="information-fill" color="teal">Filled</rh-tag>
-    <rh-tag icon="information-fill" variant="outline">Outline</rh-tag>
-    <rh-tag icon="information-fill" variant="desaturated">Desaturated</rh-tag>
-  </div>
+There are three available tag styles: `Filled`, `Outlined`, and `Desaturated`.
+
+<uxdot-example width-adjustment="231px">
+  <img src="../tag-style-variants-style.svg"
+       alt="Image of 3 tags, a filled variant with a red background and red border, an outlined variant with a white background and red border, and a desaturated variant with a white background and dark grey border">
 </uxdot-example>
 
-## Theming
+### Color
 
-Both variants are available on the light and dark [backgrounds](/theming/color-palettes/#backgrounds).
+There are nine available tag colors. The Desaturated style uses only one color 
+for both the border and text.
 
-### Light Backgrounds
-
-<uxdot-example width-adjustment="404px">
-  <div class="tag-grid">
-    <rh-tag color="red">Red</rh-tag>
-    <rh-tag color="red-orange">Red Orange</rh-tag>
-    <rh-tag color="orange">Orange</rh-tag>
-    <rh-tag color="yellow">Yellow</rh-tag>
-    <rh-tag color="green">Green</rh-tag>
-    <rh-tag color="teal">Teal</rh-tag>
-    <rh-tag color="blue">Blue</rh-tag>
-    <rh-tag color="purple">Purple</rh-tag>
-    <rh-tag color="gray">Gray</rh-tag>
-  </div>
-  <div class="tag-grid">
-    <rh-tag variant="outline" color="red">Red</rh-tag>
-    <rh-tag variant="outline" color="red-orange">Red Orange</rh-tag>
-    <rh-tag variant="outline" color="orange">Orange</rh-tag>
-    <rh-tag variant="outline" color="yellow">Yellow</rh-tag>
-    <rh-tag variant="outline" color="green">Green</rh-tag>
-    <rh-tag variant="outline" color="teal">Teal</rh-tag>
-    <rh-tag variant="outline" color="blue">Blue</rh-tag>
-    <rh-tag variant="outline" color="purple">Purple</rh-tag>
-    <rh-tag variant="outline" color="gray">Gray</rh-tag>
-  </div>
+<uxdot-example width-adjustment="558px">
+  <img src="../tag-style-variants-color.svg"
+       alt="Image of a collection of all the variations of tag, 9 filled, 9 outlined, and 9 desaturated">
 </uxdot-example>
 
-### Dark Backgrounds
+### Size
 
-<uxdot-example width-adjustment="404px" color-palette="darkest">
-  <div class="tag-grid">
-    <rh-tag color="red">Red</rh-tag>
-    <rh-tag color="red-orange">Red Orange</rh-tag>
-    <rh-tag color="orange">Orange</rh-tag>
-    <rh-tag color="yellow">Yellow</rh-tag>
-    <rh-tag color="green">Green</rh-tag>
-    <rh-tag color="teal">Teal</rh-tag>
-    <rh-tag color="blue">Blue</rh-tag>
-    <rh-tag color="purple">Purple</rh-tag>
-    <rh-tag color="gray">Gray</rh-tag>
-  </div>
-  <div class="tag-grid">
-    <rh-tag variant="outline" color="red">Red</rh-tag>
-    <rh-tag variant="outline" color="red-orange">Red Orange</rh-tag>
-    <rh-tag variant="outline" color="orange">Orange</rh-tag>
-    <rh-tag variant="outline" color="yellow">Yellow</rh-tag>
-    <rh-tag variant="outline" color="green">Green</rh-tag>
-    <rh-tag variant="outline" color="teal">Teal</rh-tag>
-    <rh-tag variant="outline" color="blue">Blue</rh-tag>
-    <rh-tag variant="outline" color="purple">Purple</rh-tag>
-    <rh-tag variant="outline" color="gray">Gray</rh-tag>
-  </div>
+There are two available tag sizes. Each style and color has `Default` and 
+`Compact` sizes.
+
+<uxdot-example width-adjustment="539px">
+  <img src="../tag-style-variants-size.svg"
+       alt="Image of a collection of all the variations of tag, 2 filled one normal sized and one compact, 2 outlined one normal sized and one compact and 2 desaturated one normal sized and one compact">
 </uxdot-example>
 
+<rh-table>
 
-## Configuration
+| Tag size | Text size token             |
+| -------- | --------------------------- |
+| Default  | --rh-font-size-body-text-sm |
+| Compact  | --rh-font-size-body-text-xs |
 
-Both variants have the same height and border radius.
+</rh-table>
 
-<uxdot-example width-adjustment="473px">
-  <img src="../tag-configuration.png"
-       alt="How a tag is constructed showing border radius, icon, and height details">
+### Decorative icon
+
+Each tag style, color, and size includes an optional decorative icon.
+
+<rh-alert state="info">
+  <h4 slot="header">Helpful tip</h4>
+  <p><a href="/icons/">Browse the UI Icons</a> to see more options</p>
+</rh-alert>
+
+<uxdot-example width-adjustment="614px">
+  <img src="../tag-style-variants-decorative-icon.svg"
+       alt="Image of a collection of the variations of tag, 2 filled one normal sized and one compact with a check mark icon, 2 outlined one normal sized and one compact with a check mark icon,  and 2 desaturated  one normal sized and one compact with a check mark icon">
 </uxdot-example>
+
+### Interactivity
+
+Each tag style, color, and size can be text only or linked.
+
+<uxdot-example width-adjustment="760px">
+  <img src="../tag-style-variants-interactivity.svg"
+       alt="Image of a collection tags, 3 rows of 4 pairs of icons each pair contains a tag that is normal size and compact.  2nd and 4th column contains a padlock icon.  3rd and 4th column contain links.  First row are all filled, second row is outlined variants, and third row is desaturated.">
+</uxdot-example>
+
+## Theme
+
+Each tag style, color, and size is available in both light and dark themes.
+
+### Light theme
+
+<uxdot-example width-adjustment="738px">
+  <img src="../tag-style-theme-light.svg"
+        alt="Image of a collection light theme variant tags. 6 rows of 9 tags in every variation, filled, outlined, desaturated, with alternating rows the compact size.">
+</uxdot-example>
+
+### Dark theme
+
+<uxdot-example width-adjustment="738px" color-palette="darkest">
+  <img src="../tag-style-theme-dark.svg"
+        alt="Image of a collection dark theme variant tags. 6 rows of 9 tags in every variation, filled, outlined, desaturated, with alternating rows the compact size.">
+</uxdot-example>
+
 
 ## Space
 
-<uxdot-example width-adjustment="404px">
-  <img src="../tag-space-theme-light.png"
-       alt="Light background tag spacing within the element and when grouped">
-</uxdot-example>
+Tags have 8px of space in between each other in a row or when stacked.
 
-<uxdot-example color-palette="darkest" width-adjustment="72px">
-  <img src="../tag-space-theme-dark.png"
-       alt="Dark background tag spacing within the element">
+<uxdot-example width-adjustment="663px">
+  <img src="../tag-style-space.svg"
+        alt="Image of the tags with spacer blocks displayed as annotations">
 </uxdot-example>
 
 <rh-table>
@@ -137,7 +119,24 @@ Both variants have the same height and border radius.
   {% endspacerTokensTable %}
 </rh-table>
 
-
 ## Interaction states
 
-A tag includes only text and an optional icon and is not interactive right now.
+Only tags with linked text have interaction states.
+
+### Hover
+
+The tag border changes to `--rh-border-width-md` or `2px` on hover.
+
+<uxdot-example width-adjustment="555px">
+  <img src="../tag-style-interaction-states-hover.svg"
+        alt="Image of a collection of tags, 4 rows, odd rows normal sized, even rows compact, all tags contain links showing hover state with with bigger border.  First column of tag are filled, second are outlined and third are desaturated.  Last two rows also contain timer icons.">
+</uxdot-example>
+
+### Focus and Active
+
+A focus ring wraps text or the icon and text in both focus and active states. The border also changes as seen in the hover state.
+
+<uxdot-example width-adjustment="555px">
+  <img src="../tag-style-interaction-states-focus-active.svg"
+        alt="Image of a collection of tags, 4 rows, odd rows are normal sized, even rows are compact, all tags contain links.  Each tag is displaying focus style with a focus outline and the bigger border included in the hover state.  First column of tags are filled, second are outlined and third are desaturated.  Last two rows also contain timer icons.">
+</uxdot-example>
