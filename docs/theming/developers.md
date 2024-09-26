@@ -44,13 +44,13 @@ expression of the lower-level components of the system, [tokens][tokens], and
 highest level design system component, [patterns][patterns]. In order to use 
 the theming system, then, developers must already be familiar with our tokens 
 and elements. In other words, theming is the developer's process of 
-orchestrating design tokens with elements, particularly by way of themable 
+orchestrating design tokens with elements, particularly by way of themeable 
 container elements
 
-### Themable containers
+### Themeable containers
 
 In <abbr>RHDS</abbr>, special provider elements such as `<rh-surface>`, 
-`<rh-card>`, `<rh-tabs>`, and others are considered themeable containers.  A 
+`<rh-card>`, `<rh-tabs>`, and others are considered themeble containers.  A 
 themeable container is an element that can have custom classes attached which 
 provide values for the relevant CSS color properties in a [custom 
 theme][themes].
@@ -84,6 +84,12 @@ values `lightest`, `lighter`, `light`, `dark`, `darker` and `darkest`.
 
 ### Theming whole pages
 
+To theme an entire page, you may replace the `<main>` element with an 
+`<rh-surface role="main">`. This ensures that computed theme tokens propagate to 
+all children, while maintaining the proper [landmark semantics][landmarks].
+
+[landmarks]: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/landmark_role
+
 {% endrenderTemplate %}
 <rh-code-block dedent
                full-height
@@ -110,6 +116,10 @@ values `lightest`, `lighter`, `light`, `dark`, `darker` and `darkest`.
 
 ### Theming individual sections
 
+You may also theme particular sections, giving them a contrasting color palette.
+Read more about the design considerations for contrasting sections on the
+[color-palettes page](/theming/color-palettes/#inline-color-palettes-beta).
+
 {% endrenderTemplate %}
 <rh-code-block dedent
                full-height
@@ -117,14 +127,18 @@ values `lightest`, `lighter`, `light`, `dark`, `darker` and `darkest`.
 {% renderTemplate 'md' %}
 ```html
 <body>
-  <main>
-    <section>
-      Default theme (i.e. lightest)
+  <rh-surface role="main">
+    <section aria-labelledby="heading">
+      <h2 id="default">Default palette</h2>
+      <p>Default color palette (i.e. lightest)</p>
     </section>
-    <rh-surface color-palette="darker">
-      ...
+    <rh-surface role="section"
+                aria-labelledby="darker"
+                color-palette="darker">
+      <h2 id="darker">Darker palette</h2>
+      <p>Contrasting color palette (i.e. darker)</p>
     </rh-surface>
-  </main>
+  </rh-surface>
 </body>
 ```
 {% endrenderTemplate %}
@@ -134,11 +148,19 @@ values `lightest`, `lighter`, `light`, `dark`, `darker` and `darkest`.
 ## Art Direction
 
 Art direction is the process of selecting art assets based on the context in 
-which they are used.
+which they are viewed. In terms of theming, art direction means choosing or 
+modifying graphics based on the surrounding theme or color palette. There are 
+two ways to approach this:
 
-### Inline SVG
+1. Dynamic graphics
+2. Alternating graphics
 
-Page authors using _inline SVG_ can use theme tokens to style graphics.
+### Dynamic graphics
+
+Page authors can create dynamic graphics which respond to their surrounding 
+theme by using _inline SVG_ that references theme tokens. For example, this svg
+graphic uses the `--rh-color-border-interactive` theme token to style a 
+rectangle.
 
 {% endrenderTemplate %}
 <rh-code-block dedent
@@ -163,7 +185,12 @@ Page authors using _inline SVG_ can use theme tokens to style graphics.
 This approach _does not work_ with svg loaded through the `<img>` tag, or with 
 raster graphics, however another approach is in development which could help:
 
-### `<rh-picture>` <rh-tag icon="notification-fill" color="purple">Planned</rh-tag>
+### Alternating Graphics
+
+Developers can accomplish graphical art direction in their themed pages by
+swapping linked or raster graphics depending on the context. For example, if
+the Red Hat logo appears on sections with botyh light and dark backgrounds,
+developers should carefully choose the graphic which matches the background.
 
 {% endrenderTemplate %}
 <rh-code-block dedent
@@ -171,18 +198,59 @@ raster graphics, however another approach is in development which could help:
                highlighting="prerendered">
 {% renderTemplate 'md' %}
 ```html
-<rh-picture>
-  <source srcset="../google-cloud-dark.svg" color-theme="dark"></source>
-  <img src="../google-cloud.svg" alt="Logo for Red Hat partner Google Cloud">
-<rh-picture>
+<rh-surface role="section"
+            aria-labelledby="products"
+            color-palette="darkest">
+  <h2 id="products">Products</h2>
+  <img alt="Red Hat Enterprise Linux"
+       src="/assets/logos/products/rhel-on-dark.svg">
+</rh-surface>
 ```
 {% endrenderTemplate %}
 </rh-code-block>
+{% renderTemplate 'md' %}
+
+### `<rh-picture>` <rh-tag icon="notification-fill" color="purple">Planned</rh-tag>
+
+We're now in the early stages of developing an art direction element for these
+kinds of scenarios, tentatively named `<rh-picture>`. The following speculative
+code block shows how the element may be used in the future to enable responsive
+themable graphics
+
+{% endrenderTemplate %}
+<rh-code-block dedent
+               full-height
+               highlighting="prerendered">
+{% renderTemplate 'md' %}
+```html
+<rh-surface role="section"
+            aria-labelledby="products"
+            color-palette="darkest">
+  <h2 id="products">Products</h2>
+  <rh-picture>
+    <source srcset="/assets/logos/products/rhel-on-dark.png" color-theme="dark"></source>
+    <source srcset="/assets/logos/products/rhel-on-light.png" color-theme="light"></source>
+    <img src="/assets/logos/products/rhel.png" alt="Red Hat Enterprise Linux">
+  <rh-picture>
+</rh-surface>
+```
+{% endrenderTemplate %}
+</rh-code-block>
+{% renderTemplate 'md' %}
 
 <rh-cta href="https://github.com/orgs/RedHat-UX/discussions/1780">Join the discussion</rh-cta>
 {% renderTemplate 'md' %}
 
 ## How theming works
+
+We developed our theming system with web standards in mind, aiming for it to use
+CSS over JavaScript as much as possible. At the current state of the art, we
+found that some JavaScript is required for the system to work correctly, but in 
+the near  future, we expect to be able to remove all or nearly all of that 
+JavaScript, and have the theming system work entirely (or almost entirely) 
+through plain CSS. The following explains how the system currently operates, how
+element authors can hook into it, and what the future holds for theming.
+
 ### Current implementation - Context Protocol
 
 <abbr title="Red Hat Design System">RHDS</abbr>' Theming system is primarily 
