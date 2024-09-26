@@ -299,12 +299,12 @@ describe('<rh-tabs>', function() {
       beforeEach(nextFrame);
 
       it('previousTab should be disabled', async function() {
-        const previousTab: HTMLButtonElement = element.shadowRoot!.querySelector('#previousTab')!;
+        const previousTab: HTMLButtonElement = element.shadowRoot!.querySelector('#previous-tab')!;
         expect(previousTab.disabled).to.be.equal(true);
       });
 
       it('click on nextTab should scroll Left', async function() {
-        const nextTab: HTMLButtonElement = element.shadowRoot!.querySelector('#nextTab')!;
+        const nextTab: HTMLButtonElement = element.shadowRoot!.querySelector('#next-tab')!;
         const firstTab = element.querySelector('rh-tab')!;
         const preClickPosition = firstTab.getBoundingClientRect().x;
         nextTab?.click();

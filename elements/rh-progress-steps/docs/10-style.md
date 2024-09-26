@@ -5,7 +5,7 @@ on a thin horizontal or vertical line and organized sequentially from left to
 right or top to bottom.
 
 <uxdot-example width-adjustment="699px">
-  <img src="{{ '../progress-steps-blueprint.svg' | url }}" alt="Progress steps component blueprint">
+  <img src="../progress-steps-blueprint.svg" alt="Progress steps component blueprint">
 </uxdot-example>
 
 
@@ -27,7 +27,7 @@ through each step of the task.
   indicates how much progress a user has made.
 
 <uxdot-example width-adjustment="385px">
-  <img src="{{ '../progress-steps-visual-elements.svg' | url }}" alt="Progress steps component visual elements">  
+  <img src="../progress-steps-visual-elements.svg" alt="Progress steps component visual elements">  
 </uxdot-example>
 
 
@@ -45,7 +45,7 @@ them in **Sentence case** only.
 </rh-alert>
 
 <uxdot-example width-adjustment="687px">
-  <img src="{{ '../progress-steps-text-labels.svg' | url }}" alt="Progress steps component text labels">
+  <img src="../progress-steps-text-labels.svg" alt="Progress steps component text labels">
 </uxdot-example>
 
 
@@ -64,7 +64,7 @@ steps with short text labels.
 </rh-alert>
 
 <uxdot-example width-adjustment="687px">
-  <img src="{{ '../progress-steps-horizontal-orientation.svg' | url }}" alt="Progress steps component horizontal orientation">
+  <img src="../progress-steps-horizontal-orientation.svg" alt="Progress steps component horizontal orientation">
 </uxdot-example>
 
 
@@ -82,7 +82,7 @@ with more words.
 </rh-alert>
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../progress-steps-vertical-orientation.svg' | url }}" alt="Progress steps component vertical orientation">
+  <img src="../progress-steps-vertical-orientation.svg" alt="Progress steps component vertical orientation">
 </uxdot-example>
 
 
@@ -95,28 +95,28 @@ orientation.
 ### Desktop
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="{{ '../progress-steps-responsive-desktop.svg' | url }}" alt="Progress steps component responsive design, desktop">
+  <img src="../progress-steps-responsive-desktop.svg" alt="Progress steps component responsive design, desktop">
 </uxdot-example>
 
 
 ### Tablet
 
 <uxdot-example width-adjustment="768px"  variant="full" alignment="left" no-border>
-  <img src="{{ '../progress-steps-responsive-tablet.svg' | url }}" alt="Progress steps component responsive design, tablet">
+  <img src="../progress-steps-responsive-tablet.svg" alt="Progress steps component responsive design, tablet">
 </uxdot-example>
 
 
 ### Mobile
 
 <uxdot-example width-adjustment="375px" variant="full" alignment="left" no-border>
-  <img src="{{ '../progress-steps-responsive-mobile.svg' | url }}" alt="Progress steps component responsive design, mobile">
+  <img src="../progress-steps-responsive-mobile.svg" alt="Progress steps component responsive design, mobile">
 </uxdot-example>
 
 
 ## Spacing
 
 <uxdot-example width-adjustment="687px">
-  <img src="{{ '../progress-steps-spacing.svg' | url }}" alt="Progress steps component spacing">
+  <img src="../progress-steps-spacing.svg" alt="Progress steps component spacing">
 </uxdot-example>
 
 <rh-table>

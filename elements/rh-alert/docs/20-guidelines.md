@@ -23,12 +23,12 @@ Severity communicates the **urgency** of a message and is denoted by various sty
 
 <rh-alert state="info">
   <h3 slot="header">Learn More</h3>
-  <p>Visit the <a href="{{ '/foundations/color' | url }}">Color</a> foundation page to learn more about how to use colors 
+  <p>Visit the <a href="/foundations/color">Color</a> foundation page to learn more about how to use colors 
 for status and severity.</p>
 </rh-alert>
 
 <uxdot-example width-adjustment="728px">
-  <img src="{{ '../alert-severity.svg' | url }}" alt="Examples of the different colors indicating alert severity" width="728px">
+  <img src="../alert-severity.svg" alt="Examples of the different colors indicating alert severity" width="728px">
 </uxdot-example>
 
 ### Dismissal
@@ -41,11 +41,11 @@ Alert variants have different rules regarding their ability to be dismissed by a
 
 <rh-alert state="warning">
   <h3 slot="header">Warning</h3>
-  <p>If an issue cannot be resolved on the current page or if a user needs to correct a situation outside of the experience, use a <a href="{{ '/elements/dialog' | url }}">Dialog</a> instead.</p>
+  <p>If an issue cannot be resolved on the current page or if a user needs to correct a situation outside of the experience, use a <a href="/elements/dialog">Dialog</a> instead.</p>
 </rh-alert>
 
 <uxdot-example width-adjustment="538px">
-  <img src="{{ '../alert-dismissal-examples.svg' | url }}" alt="Alert element dismissal examples" width="538px">
+  <img src="../alert-dismissal-examples.svg" alt="Alert element dismissal examples" width="538px">
 </uxdot-example>
 
 ## Writing content
@@ -85,11 +85,11 @@ The recommended maximum character count for the elements of an alert are listed 
 An Inline alert can be placed toward the **top of a layout** if the message applies globally or **inline near specific content** if the message applies locally. Depending on where they are used, an Inline alert can span the width of a grid or container, so there is no set width.
 
 <uxdot-example variant="full">
-  <img src="{{ '../alert-positioning-inline-global.svg' | url }}" alt="Example of an inline alert at the top of a layout">
+  <img src="../alert-positioning-inline-global.svg" alt="Example of an inline alert at the top of a layout">
 </uxdot-example>
 
 <uxdot-example variant="full">
-  <img src="{{ '../alert-positioning-inline-local.svg' | url }}" alt="Example of an inline alert inside a form">
+  <img src="../alert-positioning-inline-local.svg" alt="Example of an inline alert inside a form">
 </uxdot-example>
 
 ### Toast
@@ -103,13 +103,13 @@ A Toast alert slides in from the top right edge of the screen and overlaps any c
 If a Toast alert is set to persistent, a close button needs to be included so a user can dismiss the alert if desired.
 
 <uxdot-example variant="full">
-  <img src="{{ '../alert-positioning-toast-persistent.svg' | url }}" alt="Toast alert with a link in the body text includes a close button">
+  <img src="../alert-positioning-toast-persistent.svg" alt="Toast alert with a link in the body text includes a close button">
 </uxdot-example>
 
 If a Toast alert is set to be temporary or time out, the alert will disappear after **eight seconds**. A user might want to dismiss the alert before then, in which case a close button needs be included.
 
 <uxdot-example>
-  <img src="{{ '../alert-positioning-toast-temporary.svg' | url }}" alt="Toast alert without actions or links includes a close button">
+  <img src="../alert-positioning-toast-temporary.svg" alt="Toast alert without actions or links includes a close button">
 </uxdot-example>
 
 
@@ -120,11 +120,11 @@ If a Toast alert is set to be temporary or time out, the alert will disappear af
 When multiple Toast alerts are triggered around the same time, they will stack on top of each other. The most recent alert is placed at the top of the stack and pushes the other alerts down. When stacked Toast alerts are dismissed by a user or time out, the remaining alerts will slide up and fill the empty space.
 
 <uxdot-example variant="full">
-  <img src="{{ '../alert-behavior-stack-1.svg' | url }}" alt="Three toast alerts are stacked in the top left corner of a layout">
+  <img src="../alert-behavior-stack-1.svg" alt="Three toast alerts are stacked in the top left corner of a layout">
 </uxdot-example>
 
 <uxdot-example variant="full">
-  <img src="{{ '../alert-behavior-stack-2.svg' | url }}" alt="Only one toast alert in the stack from the previous image is left">
+  <img src="../alert-behavior-stack-2.svg" alt="Only one toast alert in the stack from the previous image is left">
 </uxdot-example>
 
 ## Responsive design
@@ -134,7 +134,7 @@ When multiple Toast alerts are triggered around the same time, they will stack o
 The maximum width of a Toast alert on large screens is **six grid columns**.
 
 <uxdot-example variant="full">
-  <img src="{{ '../alert-responsive-large-screens.svg' | url }}" alt="Toast alert spans six grid columns, while inline alert spans all grid columns">
+  <img src="../alert-responsive-large-screens.svg" alt="Toast alert spans six grid columns, while inline alert spans all grid columns">
 </uxdot-example>
 
 ### Small screens
@@ -142,7 +142,7 @@ The maximum width of a Toast alert on large screens is **six grid columns**.
 On small screens, both alert variants will span the full column of the layout. Toast alerts will continue to stack on top of each other, so be mindful of how much vertical space the group will occupy if multiple Toast alerts need to be displayed.
 
 <uxdot-example variant="full" alignment="left" width-adjustment="360px" no-border>
-  <img src="{{ '../alert-responsive-small-screens.svg' | url }}" alt="Toast and inline alerts span full column of small screen layout">
+  <img src="../alert-responsive-small-screens.svg" alt="Toast and inline alerts span full column of small screen layout">
 </uxdot-example>
 
 ## Best practices
@@ -152,7 +152,7 @@ On small screens, both alert variants will span the full column of the layout. T
 Do not use an Inline alert to communicate messages about important events, updates, or confirmations.
 
 <uxdot-example danger>
-  <img src="{{ '../alert-bestpractice-1.svg' | url }}" alt="Inline alert is incorrectly positioned like a toast alert">
+  <img src="../alert-bestpractice-1.svg" alt="Inline alert is incorrectly positioned like a toast alert">
 </uxdot-example>
 
 ### Toast as Inline
@@ -160,7 +160,7 @@ Do not use an Inline alert to communicate messages about important events, updat
 Do not use a Toast alert to present simple information or inline messages.
 
 <uxdot-example danger>
-  <img src="{{ '../alert-bestpractice-2.svg' | url }}" alt="Toast alert incorrectly placed inline with a layout">
+  <img src="../alert-bestpractice-2.svg" alt="Toast alert incorrectly placed inline with a layout">
 </uxdot-example>
 
 ### Different variants
@@ -168,5 +168,5 @@ Do not use a Toast alert to present simple information or inline messages.
 Do not use both variants when stacking.
 
 <uxdot-example danger>
-  <img src="{{ '../alert-bestpractice-3.svg' | url }}" alt="Toast and inline alerts incorrectly stacked in top left corner of page">
+  <img src="../alert-bestpractice-3.svg" alt="Toast and inline alerts incorrectly stacked in top left corner of page">
 </uxdot-example>

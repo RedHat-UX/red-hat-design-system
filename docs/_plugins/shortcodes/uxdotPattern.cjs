@@ -1,4 +1,5 @@
 const { readFile } = require('node:fs/promises');
+const { join } = require('node:path');
 const { pathToFileURL } = require('node:url');
 
 // for editor highlighting
@@ -36,8 +37,8 @@ const attrMap = attrs => Object.entries(attrs)
 
 /** @param {import('@11ty/eleventy').UserConfig} eleventyConfig */
 module.exports = function(eleventyConfig) {
-  eleventyConfig.addPairedShortcode('uxdotPattern', async function(content, kwargs = {}) {
-    const { __keywords, js, fullHeight, ...patternArgs } = kwargs;
+  eleventyConfig.addPairedShortcode('uxdotPattern', async function(_content, kwargs = {}) {
+    const { __keywords, src, js, fullHeight, ...patternArgs } = kwargs;
     if ('allow' in patternArgs) {
       const allowed = patternArgs.allow.split(',').map(x => x.trim());
       patternArgs.colorPalette ??= 'lightest';
@@ -46,6 +47,7 @@ module.exports = function(eleventyConfig) {
       }
     }
     const { parseFragment, serialize } = await import('parse5');
+    const content = !src ? _content : await readFile(join(process.cwd(), src), 'utf8');
     const partial = parseFragment(content);
     const baseUrl = pathToFileURL(this.page.inputPath);
     const cssContent = await getCss(partial, { ...kwargs, baseUrl });
@@ -53,7 +55,7 @@ module.exports = function(eleventyConfig) {
     return html`
 <uxdot-pattern ${attrMap(patternArgs)}>
   <h4 slot="heading">Example</h4>
-  ${content}
+  ${content.replaceAll(/\n/gm, COMMENT)}
   <h4 slot="html-heading">HTML</h4>
   <rh-code-block slot="html" actions="copy" ${attrMap({ fullHeight })}>
     <span slot="action-label-copy">Copy to Clipboard</span>
@@ -83,7 +85,7 @@ module.exports = function(eleventyConfig) {
     const {
       queryAll,
       isElementNode,
-      getAttribute,
+      isTextNode,
       getTextContent,
       setTextContent,
     } = await import('@parse5/tools');
@@ -91,12 +93,8 @@ module.exports = function(eleventyConfig) {
     const isUxDotPattern = node =>
       isElementNode(node)
         && node.tagName === 'uxdot-pattern';
-    const isSampleScript = node =>
-      isElementNode(node)
-        && node.tagName === 'script'
-        && getAttribute(node, 'type').match(/(text\/(css|html))|sample\/javascript/);
     for (const pattern of queryAll(document, isUxDotPattern)) {
-      for (const node of queryAll(pattern, isSampleScript)) {
+      for (const node of queryAll(pattern, isTextNode)) {
         setTextContent(node, getTextContent(node).replaceAll(COMMENT, '\n'));
       }
     }

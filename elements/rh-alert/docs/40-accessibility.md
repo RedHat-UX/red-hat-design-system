@@ -31,7 +31,7 @@
 A logical focus order helps visitors understand and operate our websites. Elements need to receive focus in an order that preserves meaning. Therefore the focus order should make sense and not jump around randomly.
 
 <uxdot-example width-adjustment="490px">
-  <img src="{{ '../alert-focus-order.svg' | url }}" alt="Focus goes to action buttons and to the close button last" width="490px">
+  <img src="../alert-focus-order.svg" alt="Focus goes to action buttons and to the close button last" width="490px">
 </uxdot-example>
 
 {% include 'partials/accessibility/ariaguide.md' %}

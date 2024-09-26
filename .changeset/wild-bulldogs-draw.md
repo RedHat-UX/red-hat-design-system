@@ -5,7 +5,8 @@
 Theming: Added [theming tokens][theming] to most elements
 
 Theming tokens let authors respond to the currently-active colour palette, and
-are especially useful when implementing [patterns][patterns] using themable elements.
+are especially useful when implementing [patterns][patterns] using themeable 
+elements.
 
 ```html
 <rh-card class="example-logo-text-and-cta">

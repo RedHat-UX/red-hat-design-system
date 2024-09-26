@@ -8,6 +8,7 @@ eleventyComputed:
 {%- set prettyName -%}{{ (doc.alias or doc.slug or element.slug) | deslugify }}{% endset %}
 {%- set planned = isPlanned(repoStatus, prettyName) %}
 {%- set manifest = doc.docsPage.manifest -%}
+{%- set tagName = doc.tagName or element.tagName -%}
 {%- set demos = manifest and manifest.getDemos(doc.docsPage.tagName) -%}
 {%- set demosUrl -%}/elements/{{ slug }}/demos/{%- endset -%}
 
@@ -15,7 +16,6 @@ eleventyComputed:
 <link rel="stylesheet" data-helmet href="/styles/pages/code.css">
 {% endif %}
 <link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
-<link rel="stylesheet" data-helmet href="/assets/packages/@rhds/tokens/css/global.css">
 {%- if slug == 'audio-player' %}
 <link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-audio-player/rh-audio-player-lightdom.css">
 <noscript data-helmet>
@@ -35,12 +35,6 @@ eleventyComputed:
 <link rel="stylesheet" data-helmet href="/styles/pages/backpage.css">
 <link rel="stylesheet" data-helmet href="/styles/samp.css">
 
-<style data-helmet>
-  rh-accordion details summary {
-    font-weight: var(--rh-font-weight-heading-medium, 500);
-  }
-</style>
-
 <script type="module" data-helmet>
   import "/assets/javascript/elements/uxdot-feedback.js";
   import "/assets/javascript/elements/uxdot-copy-button.js";
@@ -59,7 +53,7 @@ eleventyComputed:
 
 {% if not planned %}
 <script type="module" data-helmet>
-  import '@rhds/elements/{{ doc.tagName or element.tagName }}/{{ doc.tagName or element.tagName }}.js';
+  import '@rhds/elements/{{ tagName }}/{{ tagName }}.js';
 </script>
 {% endif %}
 
@@ -87,7 +81,7 @@ eleventyComputed:
 
     <div class="container">
       {{ content | safe }}
-      {% include 'partials/component/feedback.html' %}
+      {% include "partials/component/feedback.html" %}
       {% include "partials/component/edit-this-page.njk" %}
     </div>
 

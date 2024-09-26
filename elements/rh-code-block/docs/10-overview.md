@@ -3,7 +3,7 @@
 {{ tagName | getElementDescription }}
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ './code-block-sample.png' | url }}" alt="Image of a code block with black code text within a light gray container">
+  <img src="./code-block-sample.png" alt="Image of a code block with black code text within a light gray container">
 </uxdot-example>
 
 {% repoStatusList repoStatus=repoStatus %}
