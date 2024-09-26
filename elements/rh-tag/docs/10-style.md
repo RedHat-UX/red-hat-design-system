@@ -41,7 +41,6 @@ for both the border and text.
        alt="Image of a collection of all the variations of tag, 9 filled, 9 outlined, and 9 desaturated">
 </uxdot-example>
 
-
 ### Size
 
 There are two available tag sizes. Each style and color has `Default` and 
@@ -123,7 +122,6 @@ Tags have 8px of space in between each other in a row or when stacked.
 ## Interaction states
 
 Only tags with linked text have interaction states.
-
 
 ### Hover
 

@@ -3,7 +3,7 @@
 {{ tagName | getElementDescription }}
 
 <uxdot-example width-adjustment="220">
-  <img src="{{ './skip-link.svg' | url }}" alt="Image of a skip link">
+  <img src="./skip-link.svg" alt="Image of a skip link">
 </uxdot-example>
 
 

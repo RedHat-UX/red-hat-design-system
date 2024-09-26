@@ -3,22 +3,22 @@
 
 Jump links are fixed on the page and follow a user as they scroll. It moves
 them to a section of content when the corresponding link is selected. It looks
-visually similar to <a href="{{ '../tabs' | url }}">Open tabs</a>, the only difference is
+visually similar to <a href="../tabs">Open tabs</a>, the only difference is
 the uppercase label on top.
 
 <uxdot-example width-adjustment="537px">
-  <img src="{{ '../jump-links-style.svg' | url }}" alt="Jump links specs" />
+  <img src="../jump-links-style.svg" alt="Jump links specs" />
 </uxdot-example>
 
 
 ### Theme
 
 <uxdot-example width-adjustment="385px">
-  <img src="{{ '../jump-links-theme-light.svg' | url }}" alt="Jump links theme light" />
+  <img src="../jump-links-theme-light.svg" alt="Jump links theme light" />
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="385px">
-  <img src="{{ '../jump-links-theme-dark.svg' | url }}" alt="Jump links theme dark" />
+  <img src="../jump-links-theme-dark.svg" alt="Jump links theme dark" />
 </uxdot-example>
 
 
@@ -43,7 +43,7 @@ how many section links can be included, but no guidelines about how many
 nested section links can be included.
 
 <uxdot-example width-adjustment="129px">
-  <img src="{{ '../jump-links-nested.svg' | url }}" alt="Jump links nested section" />
+  <img src="../jump-links-nested.svg" alt="Jump links nested section" />
 </uxdot-example>
 
 
@@ -53,7 +53,7 @@ A red indicator bar highlights what the active section is. It’s positioned on
 top of the anchor line, not adjacent.
 
 <uxdot-example width-adjustment="206px">
-  <img src="{{ '../jump-links-indicator.svg' | url }}" alt="Jump links active indicator bar" />
+  <img src="../jump-links-indicator.svg" alt="Jump links active indicator bar" />
 </uxdot-example>
 
 
@@ -72,7 +72,7 @@ wrapped in a disclosure which is collapsed until a user expands the panel.
 
 <figure>
   <uxdot-example width-adjustment="992px">
-    <img src="{{ '../jump-links-responsive-desktop.svg' | url }}" alt="Jump links on desktop" style="">
+    <img src="../jump-links-responsive-desktop.svg" alt="Jump links on desktop" style="">
   </uxdot-example>
   <figcaption>On large screens, jump links are displayed in the layout</figcaption>
 </figure>
@@ -82,7 +82,7 @@ wrapped in a disclosure which is collapsed until a user expands the panel.
 
 <figure>
   <uxdot-example width-adjustment="768px">
-    <img src="{{ '../jump-links-responsive-tablet.svg' | url }}" alt="Jump links on tablet">
+    <img src="../jump-links-responsive-tablet.svg" alt="Jump links on tablet">
   </uxdot-example>
   <figcaption>Section links reduce in width as breakpoints get smaller</figcaption>
 </figure>
@@ -92,7 +92,7 @@ wrapped in a disclosure which is collapsed until a user expands the panel.
 
 <figure>
   <uxdot-example width-adjustment="360px">
-    <img src="{{ '../jump-links-responsive-mobile.svg' | url }}" alt="Jump links on mobile">
+    <img src="../jump-links-responsive-mobile.svg" alt="Jump links on mobile">
   </uxdot-example>
   <figcaption>On small screens, jump links are wrapped in a collapsed disclosure</figcaption>
 </figure>
@@ -101,11 +101,11 @@ wrapped in a disclosure which is collapsed until a user expands the panel.
 ## Spacing
 
 <uxdot-example width-adjustment="385px">
-  <img src="{{ '../jump-links-spacing.svg' | url }}" alt="Jump links spacing on desktop" />
+  <img src="../jump-links-spacing.svg" alt="Jump links spacing on desktop" />
 </uxdot-example>
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../jump-links-spacing-2.svg' | url }}" alt="Jump links spacing on mobile" />
+  <img src="../jump-links-spacing-2.svg" alt="Jump links spacing on mobile" />
 </uxdot-example>
 
 {% spacerTokensTable
