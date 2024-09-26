@@ -35,11 +35,11 @@ export class RhBadge extends LitElement {
     | 'warning'
     | 'caution'
     | 'neutral'
-    | 'info'
     | 'success'
-    | 'moderate' /* deprecated */
-    | 'important' /* deprecated */
-    | 'critical' /* deprecated */ =
+    | 'moderate' // deprecated
+    | 'important' // deprecated
+    | 'critical' // deprecated
+    | 'info' =
       'neutral';
 
   /**
