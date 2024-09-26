@@ -18,17 +18,21 @@ summaries:
 order: 0
 tags:
   - pattern
-importElements: 
-  - rh-tile
 ---
 
-<link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
+<link data-helmet
+      rel="stylesheet"
+      href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
 
 <style data-helmet>
   #patterns-nav {
-    margin-block: var(--rh-space--2xl, 32px);
+    margin-block: var(--rh-space--2xl);
   }
 </style>
+
+<script data-helmet type="module">
+  import '@rhds/elements/rh-tile/rh-tile.js';
+</script>
 
 {# NOTE: all images in this view need to be 340 by 200 px in order to maintain same ratio. #}
 
@@ -36,28 +40,27 @@ importElements:
 Patterns compose elements and tokens with content and validation rules to 
 create uniform, accessible experiences.
 
-<nav id="patterns-nav" class="grid xs-two-columns sm-three-columns" aria-label="Patterns">
-{%- for pattern in collections.pattern -%}
-
-  {% if pattern.data.title !== 'Patterns' %}
-
+<nav id="patterns-nav"
+     class="grid xs-two-columns sm-three-columns"
+     aria-label="Patterns">
+  {%- for pattern in collections.pattern -%}
+  {%- if pattern.page.inputPath !== page.inputPath -%}
   {%- set slug = pattern.fileSlug -%}
   {%- set summary = pattern.description -%}
-  {% if not summary %}
+  {%- set title = pattern.data.heading or pattern.data.title -%}
+  {%- if not summary -%}
     {%- set summary = summaries[slug] -%}
-  {% endif %}
-
+  {%- endif -%}
   <rh-tile>
     <uxdot-example slot="image">
-      <img src="/assets/patterns/all-patterns-{{ slug }}.png" alt="{{ pattern.data.title }}">
+      <img alt="{{ title }}"
+           src="/assets/patterns/all-patterns-{{ slug }}.png">
     </uxdot-example>
-    <a slot="headline" href="{{ pattern.url }}"><h3>{{ pattern.data.title }}</h3></a>
+    <a slot="headline" href="{{ pattern.url }}"><h3>{{ title }}</h3></a>
     <p slot="footer">{{ summary }}</p>
   </rh-tile>
-
-  {% endif %}
-
-{% endfor %}
+  {%- endif -%}
+{%- endfor -%}
 </nav>
 
 ## Make a request
