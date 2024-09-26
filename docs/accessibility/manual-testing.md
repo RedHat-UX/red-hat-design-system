@@ -1,6 +1,6 @@
 ---
-title: Manual Testing
-sidenavTitle: Manual Testing
+title: Manual testing
+sidenavTitle: Manual testing
 permalink: /accessibility/manual-testing/index.html
 hasToc: false
 tags:

@@ -1,6 +1,6 @@
 ---
-title: Accessibility Tools
-sidenavTitle: Accessibility Tools
+title: Accessibility tools
+sidenavTitle: Accessibility tools
 permalink: /accessibility/accessibility-tools/index.html
 tags:
   - accessibility

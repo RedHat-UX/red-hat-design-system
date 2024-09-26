@@ -9,29 +9,31 @@ importElements:
   - rh-table
 ---
 
-<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
+<link data-helmet
+      rel="stylesheet"
+      href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
 
-<style>
-    rh-blockquote {
-      display: block;
-      margin-block: 2rem;
-      margin-inline-start: 2.5rem;
-    }
+<style data-helmet>
+  rh-blockquote {
+    display: block;
+    margin-block: 2rem;
+    margin-inline-start: 2.5rem;
+  }
 
-    .limit-width {
-      max-width: 56rem;
-    }
+  .limit-width {
+    max-width: 56rem;
+  }
 
+  #func-img {
+    outline: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+    width: 50%;
+  }
+
+  @container container (min-width: 576px) {
     #func-img {
-      outline: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
-      width: 50%;
+      padding: var(--rh-space-3xl, 48px);
     }
-    
-    @container container (min-width: 576px) {
-      #func-img {
-        padding: var(--rh-space-3xl, 48px);
-      }
-    }
+  }
 </style>
 
 ## Overview
@@ -49,22 +51,34 @@ Wherever meaningful images or other non-text elements are used on a page, you mu
 
 Images loaded via the `<img>` element typically use the alt attribute for their alternative text:
 
-<rh-code-block>
-  <script type="text/html"><img src="imagesource.jpg" alt="Description of image"></script>
+<rh-code-block highlighting="prerendered">
+
+```html
+<img src="imagesource.jpg" alt="Description of image"></script>
+```
+
 </rh-code-block>
 
 Inline SVGs that compose simple images commonly use a combination of the `role="img"` attribute and a `<title>` element as the first child of the `<svg>` element:
 
-<rh-code-block>
-  <script type="text/html"><svg role="img">
+<rh-code-block highlighting="prerendered">
+
+```html
+<svg role="img">
   <title>Description of image</title>
-</svg></script>
+</svg>
+```
+
 </rh-code-block>
 
 Other non-text elements (e.g., ASCII emoticons) may use ARIA attributes, like `aria-label` or `aria-labelledby`:
 
-<rh-code-block>
-  <script type="text/html"><span role="img" aria-label="astonished face">:O</span></script>
+<rh-code-block highlighting="prerendered">
+
+```html
+<span role="img" aria-label="astonished face">:O</span>
+```
+
 </rh-code-block>
 
 These are not the only means of providing alt text for non-text elements, but they cover many common situations. For less-common cases, view the [WCAG 2.1 documentation](https://www.w3.org/WAI/WCAG21/Understanding/non-text-content.html).
@@ -113,30 +127,42 @@ Images acting as buttons or links are functional, and thus serve different purpo
 
 If the above image supplements the text of an article about Red Hat or our products, the appropriate alt text could be something like `"Red Hat, Inc. logo."` But if that image is a link pointing to the corporate homepage, you might want something along the lines of `"Red Hat homepage"` for your alt text:
 
-<rh-code-block>
-  <script type="text/html"><a href="https://www.redhat.com/">
+<rh-code-block highlighting="prerendered">
+
+```html
+<a href="https://www.redhat.com/">
   <img src="logo-redhat.png" alt="Red Hat homepage">
-</a></script>
+</a>
+```
+
 </rh-code-block>
 
 ### Grouped images
 
 Grouped images that convey a single meaning (e.g., movie rating stars), can be grouped within an element with a single label (e.g., aria-label) that describes the meaning of the entire group.
 
-<rh-code-block>
-  <script type="text/html"><div aria-label="2 of 3 attempts left">
+<rh-code-block highlighting="prerendered">
+
+```html
+<div aria-label="2 of 3 attempts left">
   <img src="pending.jpg" alt>
   <img src="pending.jpg" alt>
   <img src="failed.jpg" alt>
-</div></script>
+</div>
+```
+
 </rh-code-block>
 
 Or the first element of the group can have alt text, while the others are hidden:
 
-<rh-code-block>
-  <script type="text/html"><img src="pending.jpg" alt="2 of 3 attempts left">
+<rh-code-block highlighting="prerendered">
+
+```html
+<img src="pending.jpg" alt="2 of 3 attempts left">
 <img src="pending.jpg" alt>
-<img src="failed.jpg" alt></script>
+<img src="failed.jpg" alt>
+```
+
 </rh-code-block>
 
 ### Embedded media (and other non-text) titles
@@ -144,8 +170,13 @@ Or the first element of the group can have alt text, while the others are hidden
 Though the techniques may vary, meaningful embedded media objects require text alternatives—just like images do. This applies to `<video>`. `<audio>`, and `<canvas>` elements; objects; applets; ASCII art; and (if you still use them) multimedia embeds like Flash and Silverlight.
 A common technique is labeling objects with ARIA attributes:
 
-<rh-code-block>
-  <script type="text/html"><video src="video.mp4" aria-label="Deploying applications with OpenShift"></script>
+
+<rh-code-block highlighting="prerendered">
+
+```html
+<video src="video.mp4" aria-label="Deploying applications with OpenShift">
+```
+
 </rh-code-block>
 
 ## Writing microcopy
@@ -162,8 +193,12 @@ Best practices for all microcopy:
 
 In addition to the best practices for all microcopy, adhere to the following best practices for links, when possible.
 
-<rh-code-block>
-  <script type="text/html"><a href="signup.html">Sign-up form</a></script>
+<rh-code-block highlighting="prerendered">
+
+```html
+<a href="signup.html">Sign-up form</a>
+```
+
 </rh-code-block>
 
 #### Best practices for links
@@ -184,9 +219,15 @@ In addition to the best practices for all microcopy, adhere to the following bes
 
 In addition to the best practices for all microcopy, adhere to the following best practices for buttons, when possible.
 
-<rh-code-block>
-  <script type="text/html"><button>Save draft</button></script>
+
+<rh-code-block highlighting="prerendered">
+
+```html
+<button>Save draft</button>
+```
+
 </rh-code-block>
+
 
 #### Best practices for buttons
 
@@ -198,8 +239,12 @@ In addition to the best practices for all microcopy, adhere to the following bes
 
 In addition to the best practices for all microcopy, adhere to the following best practices for form labels, when possible.
 
-<rh-code-block>
-  <script type="text/html"><label>First name</label></script>
+<rh-code-block highlighting="prerendered">
+
+```html
+<label>First name</label></script>
+```
+
 </rh-code-block>
 
 #### Best practices for labels
@@ -215,15 +260,27 @@ In addition to the best practices for all microcopy, adhere to the following bes
 
 Use clear language in headings to describe the content that follows them:
 
-<rh-code-block>
-  <script type="text/html"><h1>Red Hat Enterprise Linux</h1></script>
+
+<rh-code-block highlighting="prerendered">
+
+```html
+<h1>Red Hat Enterprise Linux</h1>
+```
+
 </rh-code-block>
+
 
 At Red Hat, we use sentence case for our headings:
 
-<rh-code-block>
-  <script type="text/html"><h2>How companies are using RHEL</h2></script>
+
+<rh-code-block highlighting="prerendered">
+
+```html
+<h2>How companies are using RHEL</h2>
+```
+
 </rh-code-block>
+
 
 #### Heading levels
 
@@ -247,8 +304,10 @@ Here’s an example of a page outline:
 
 And here’s how that outline would be reflected in a page’s heading structure:
 
-<rh-code-block>
-  <script type="text/html"><h1>Midwestern Recipes</h1>
+<rh-code-block highlighting="prerendered">
+
+```html
+<h1>Midwestern Recipes</h1>
   <h2>Sides</h2>
     <h3>Cheese</h3>
       <h4>Fried cheese curds</h4>
@@ -259,34 +318,52 @@ And here’s how that outline would be reflected in a page’s heading structure
       <h4>Dream bars</h4>
     <h3>Pastries</h3>
       <h4>Kringle</h4>
-      <h4>Dutch letters</h4></script>
+      <h4>Dutch letters</h4>
+```
+
 </rh-code-block>
+
 
 Note that an `<h1>` is often the first heading on a page:
 
-<rh-code-block>
-  <script type="text/html"><h1>Midwestern Recipes</h1>
-<h2>Navigation</h2></script>
+
+<rh-code-block highlighting="prerendered">
+
+```html
+<h1>Midwestern Recipes</h1>
+<h2>Navigation</h2>
+```
+
 </rh-code-block>
 
 But it doesn’t have to be the first heading on a page. This is also acceptable:
 
-<rh-code-block>
-  <script type="text/html"><h2>Navigation</h2>
-<h1>Midwestern Recipes</h1></script>
+
+<rh-code-block highlighting="prerendered">
+
+```html
+<h2>Navigation</h2>
+<h1>Midwestern Recipes</h1>
+```
+
 </rh-code-block>
 
 ### Page titles
 
 Each web page is required to have a page `<title>` element within its `<head>` that contains meaningful text describing the page’s context and purpose.
 
-<rh-code-block>
-  <script type="text/html"><html lang="en">
+<rh-code-block highlighting="prerendered">
+
+```html
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <title>Red Hat Ansible Automation Platform</title>
   </head>
   <body>...</body>
-</html></script>
+</html>
+```
+
 </rh-code-block>
 
 Titles should be specific to each URL and not duplicated across a site. Otherwise, users (particularly assistive tech users) may not be aware when they’ve landed on a new or updated page. When users move to new pages or change contexts of the current page, the page title should change to reflect this.
@@ -299,8 +376,13 @@ As mentioned in the Headings section, page titles and `<h1>` elements often rela
 
 Non-hidden, non-empty `<iframe>` elements are required to have titles describing their meaning or purpose, similar to alternative text for images.
 
-<rh-code-block>
-  <script type="text/html"><iframe src="video.html" title="Video: Network automation with Ansible"></iframe></script>
+
+<rh-code-block highlighting="prerendered">
+
+```html
+<iframe src="video.html" title="Video: Network automation with Ansible"></iframe>
+```
+
 </rh-code-block>
 
 Note that, as opposed to a page’s `<title>` element, `<iframe>` tags include title attributes to label them. (Yes, it can be confusing, especially when you consider that there are still more `<title>` elements and title attributes used in other contexts!)
@@ -327,35 +409,43 @@ Avoid using tables when a simple list (whether [ordered](https://developer.mozil
 
 For example, the following doesn’t need to be a table:
 
-<rh-code-block>
-  <script type="text/html"><table>
+<rh-code-block highlighting="prerendered">
+
+```html
+<table>
   <caption>Groceries</caption>
   <tbody>
     <tr>
       <th scope="row">Apples</th>
-      <td>5</th>
+      <td>5</td>
     </tr>
     <tr>
       <th scope="row">Oranges</th>
-      <td>3</th>
+      <td>3</td>
     </tr>
     <tr>
       <th scope="row">Lemons</th>
-      <td>6</th>
+      <td>6</td>
     </tr>
   </tbody>
-</table></script>
+</table>
+```
+
 </rh-code-block>
 
 Instead, a list would be simpler, easier to understand, and easier to code:
 
-<rh-code-block>
-  <script type="text/html"><h3 id="groceries">Groceries</h3>
+<rh-code-block highlighting="prerendered">
+
+```html
+<h3 id="groceries">Groceries</h3>
 <ul aria-labelledby="groceries">
   <li>5 Apples</li>
   <li>3 Oranges</li>
   <li>6 Lemons</li>
-</ul></script>
+</ul>
+```
+
 </rh-code-block>
 
 In other words, if it doesn’t _need_ to be a table, then it probably shouldn’t be a table.
@@ -525,8 +615,11 @@ All HTML content must be contained within an element that has a `lang` attribute
 
 For pages with multilingual content, each element containing a different language from the one indicated in the `<html>` element should have an appropriate `lang` attribute. For example:
 
-<rh-code-block>
-  <script type="text/html"><html lang="en">
+<rh-code-block highlighting="prerendered">
+
+```html
+<!DOCTYPE html>
+<html lang="en">
   <head>...</head>
   <body>
       <p>Colombian author Gabriel García Márquez wrote that
@@ -535,7 +628,9 @@ For pages with multilingual content, each element containing a different languag
       los seres humanos tenemos tres vidas: pública, privada y
       secreta.”</span>)</p>
   </body>
-</html></script>
+</html>
+```
+
 </rh-code-block>
 
 The W3C has an [article on language tags](https://www.w3.org/International/articles/language-tags/), which covers both how to use them and where to find a full list of them.
