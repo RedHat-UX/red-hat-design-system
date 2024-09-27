@@ -223,7 +223,7 @@ protocol][contextprotocol] developed by the web components community to support
 passing data between components.
 
 Our system utilizes this protocol with the setting of the `color-palette` 
-attribute on a provider element which makes its context data (in our case, 
+attribute on a provider element, which makes its context data (in our case, 
 `light` or `dark`) available to its children. By doing so we ensure accessible 
 colors are applied given any possible change in context value higher up in the 
 <abbr title="Document Object Model">DOM</abbr> tree. 
@@ -233,7 +233,7 @@ also for accessibility compliance and enabling great experiences for all our
 users.
 
 The context protocol is enabled by two [reactive controllers][controllers]: the
-[provider controller][providersrc], and the [consumer controller][consumersrc].
+[provider controller][providersrc] and the [consumer controller][consumersrc].
 The provider and consumer controllers work together. The provider supplies the
 context data, while the consumer receives and uses it within child elements.
 Custom elements can implement the consumer, the provider, or both, depending
@@ -245,7 +245,7 @@ Custom Elements that implement the provider controller are elements that provide
 their own context, overriding that of their parent. Elements such as
 `<rh-surface>`, `<rh-card>`, and `<rh-accordion>` are examples of such context
 providers. If a provider contains a set `color-palette` attribute, it will
-override any parent context, and pass its context on to its children.
+override any parent context and pass its context on to its children.
 
 To make your element a color context provider:
 
@@ -288,7 +288,7 @@ To make your element a color context consumer:
    `on` which is the type of `ColorTheme`.
 3. Add a classMap that implements the shadow class in your render method.
 4. Use the theming tokens in your element’s shadow styles, being sure
-   to select the element which has the `.on.light`/`.on.dark` classes.
+   to select the element that has the `.on.light`/`.on.dark` classes.
 
 <rh-tabs class="code-tabs">
   <rh-tab slot="tab">TypeScript</rh-tab>
@@ -362,7 +362,7 @@ In anticipation of this upcoming browser feature, we attempt to ensure that our
 theming system as implemented today using context can easily be replaced with
 style queries in the near future.
 
-<rh-alert>Note: the examples in this section are hypothetical, the final markup
+<rh-alert>Note: the examples in this section are hypothetical. The final markup
 and styles may not be the same.</rh-alert>
 
 In addition to reducing the JavaScript payload of the design system, style
@@ -385,7 +385,7 @@ And your document CSS sets the desired color context:
 }
 ```
 
-And you would declare the import a shared stylesheet which activates the theming system,
+And you would declare the import a shared stylesheet that activates the theming system,
 similarly to how elements import `@rhds/tokens/css/color-context-consumer.css.js`.
 
 ```css rhcodeblock
