@@ -210,7 +210,7 @@ themable graphics.
 We've developed our theming system with web standards in mind, aiming to use
 CSS over JavaScript as much as possible. At the current state of browser technology,
 we found that some JavaScript is required for the system to work correctly.
-But shortly, we expect to be able to remove all or nearly all of that 
+But we soon expect to be able to remove all (or nearly all) of that 
 JavaScript and have the theming system work entirely (or almost entirely) 
 through plain CSS. The following explains how the system currently operates, how
 element authors can hook into it, and what the future holds for theming.
