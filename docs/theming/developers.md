@@ -234,9 +234,10 @@ users.
 
 The context protocol is enabled by two [reactive controllers][controllers]: the
 [provider controller][providersrc], and the [consumer controller][consumersrc].
-These controllers work together to provide the context data, or
-consume it as a child element. Custom elements can implement the consumer, the
-provider, or both, depending on the needs of that particular element.
+The provider and consumer controllers work together. The provider supplies the
+context data, while the consumer receives and uses it within child elements.
+Custom elements can implement the consumer, the provider, or both, depending
+on the needs of that particular element.
 
 #### Providers
 
