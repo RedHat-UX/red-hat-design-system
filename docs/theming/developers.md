@@ -224,7 +224,7 @@ passing data between components.
 
 Our system utilizes this protocol with the setting of the `color-palette` 
 attribute on a provider element which makes its context data (in our case, 
-`light` or `dark`) to its children. By doing so we ensure accessible 
+`light` or `dark`) available to its children. By doing so we ensure accessible 
 colors are applied given any possible change in context value higher up in the 
 <abbr title="Document Object Model">DOM</abbr> tree. 
 
