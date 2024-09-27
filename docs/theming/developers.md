@@ -67,7 +67,14 @@ The `color-palette` attribute is a fundamental aspect of the theming system. The
 attribute is available on specially designated provider elements that actively 
 define a [color palette][palettes], while their children passively accept their 
 background color and text color. The `color-palette` can be set to six possible 
-values `lightest`, `lighter`, `light`, `dark`, `darker,` and `darkest`.
+values:
+
+  * `lightest`
+  * `lighter`
+  * `light`
+  * `dark`
+  * `darker`
+  * `darkest`
 
 ### Theming whole pages
 
