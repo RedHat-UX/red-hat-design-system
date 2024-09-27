@@ -48,7 +48,7 @@ container elements.
 
 In <abbr>RHDS</abbr>, special provider elements such as `<rh-surface>`, 
 `<rh-card>`, `<rh-tabs>`, and others are considered themeable containers. A 
-themeable container is an element that can have custom classes attached which 
+themeable container is an element that can have custom classes attached, which 
 provide values for the relevant CSS color properties in a [custom 
 theme][themes].
 
