@@ -18,8 +18,6 @@ hasToc: false
   import '@rhds/elements/rh-tile/rh-tile.js';
 </script>
 
-## Overview
-
 The Red Hat Design System features a powerful, flexible, and easy-to-use theming system.
 
 ## What is theming?
