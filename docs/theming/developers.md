@@ -147,7 +147,7 @@ two ways to approach this:
 ### Dynamic graphics
 
 Page authors can create dynamic graphics that respond to their surrounding 
-theme by using _inline SVG_ that references theme tokens. For example, this SVG
+theme by using _inline SVGs_ that reference theme tokens. For example, this SVG
 graphic uses the `--rh-color-border-interactive` theme token to style a 
 rectangle.
 
@@ -163,7 +163,7 @@ rectangle.
 </svg>
 ```
 
-This approach _does not work_ with SVG loaded through the `<img>` tag, or with 
+This approach _does not work_ with SVGs loaded through the `<img>` tag, or with 
 raster graphics; however, another approach is in development that could help.
 
 ### Alternating Graphics
