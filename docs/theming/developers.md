@@ -132,7 +132,7 @@ The ideal order of operations is as follows:
 1. Use theme tokens to customize the target e.g. `--rh-color-interactive-primary-default-on-light`
 1. Use element CSS Shadow Parts for greater control
 
-<rh-alert state="caution">Avoid setting values for CSS custom properties beginning with an `_`. These should be considered "private" and may change at any time without warning.</rh-alert>
+<rh-alert state="caution">Avoid setting values for CSS custom properties beginning with an underscore (`_`). These should be considered "private" and may change at any time without warning.</rh-alert>
 
 ## Art Direction
 
