@@ -35,8 +35,8 @@ hasToc: true
 
 ## Using the theming system
 
-<abbr title="Red Hat Design System">RHDS</abbr>’ theming system is a high-level 
-expression of the lower-level components of the system, [tokens][tokens], and 
+<abbr title="Red Hat Design System">RHDS</abbr>’s theming system is a high-level 
+expression of the lower-level components of the system: [tokens][tokens], and 
 [elements][elements]. In turn, it factors into the development of the 
 highest-level design system component, [patterns][patterns]. To use 
 the theming system, then, developers must already be familiar with our tokens 
