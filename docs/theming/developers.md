@@ -217,7 +217,7 @@ element authors can hook into it, and what the future holds for theming.
 
 ### Current implementation - Context Protocol
 
-<abbr title="Red Hat Design System">RHDS</abbr>’ theming system is primarily 
+<abbr title="Red Hat Design System">RHDS</abbr>’s theming system is primarily 
 about styles. It currently relies on JavaScript to work, via the [context 
 protocol][contextprotocol] developed by the web components community to support 
 passing data between components.
