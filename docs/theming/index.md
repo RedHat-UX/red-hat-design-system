@@ -1,6 +1,7 @@
 ---
 title: Overview
 order: 1
+hasToc: false
 ---
 <style data-helmet>
   .card-grid {
@@ -17,22 +18,21 @@ order: 1
   import '@rhds/elements/rh-tile/rh-tile.js';
 </script>
 
-Red Hat's Design System comes with a powerful, flexible, and easy-to-use
-theming system. Design system elements come with branded, accessible defaults 
-built-in, so that all you need to do to create quintessentially Red Hat 
-experiences is write some HTML. For those occasions when we want to flex our 
-design muscles, our elements come with powerful theming primitives in the form 
-of **slots**, **design tokens**, and **CSS shadow parts** to enable you to theme 
-a single element, a section, a page, or an entire app.
+The Red Hat Design System features a powerful, flexible, and easy-to-use theming system.
+
+## What is theming?
+
+We use theming to modify our elements and patterns so they fit a specific visual style. Themes can be applied to an element, a page, or a UI. A common theming use case is dark theme or dark mode.
+
+## How does it work?
+
+Our design system includes built-in branded and accessible defaults, so all you need to do if you want to create digital experiences that feel like Red Hat is to write a few lines of HTML.
+
+When we want to flex our design muscles, our elements include powerful theming primitives in the form of **slots**, **design tokens**, and **CSS shadow parts**. These primitives enable you to theme a single element, section, page, or entire app UI.
 
 <nav class="card-grid" aria-label="Theming pages">
   <rh-tile>
-    <svg slot="image" viewBox="0 0 296 171">
-      <rect fill="#0066CC" fill-opacity="0.1"
-            stroke="#0066CC" stroke-width="2" stroke-dasharray="1 1"
-            clip-path="fill-box"
-            width="100%" height="100%" />
-    </svg>
+    <img slot="image" src="/assets/theming/color-palettes.svg" alt="">
     <h2 slot="headline">
       <a href="color-palettes/">Color Palettes</a>
     </h2>
@@ -41,12 +41,7 @@ a single element, a section, a page, or an entire app.
   </rh-tile>
 
   <rh-tile>
-    <svg slot="image" viewBox="0 0 296 171">
-      <rect fill="#0066CC" fill-opacity="0.1"
-            stroke="#0066CC" stroke-width="2" stroke-dasharray="1 1"
-            clip-path="fill-box"
-            width="100%" height="100%" />
-    </svg>
+    <img slot="image" src="/assets/theming/customizing.svg" alt="">
     <h2 slot="headline">
       <a href="customizing/">Customizing</a>
     </h2>
@@ -55,12 +50,7 @@ a single element, a section, a page, or an entire app.
   </rh-tile>
 
   <rh-tile>
-    <svg slot="image" viewBox="0 0 296 171">
-      <rect fill="#0066CC" fill-opacity="0.1"
-            stroke="#0066CC" stroke-width="2" stroke-dasharray="1 1"
-            clip-path="fill-box"
-            width="100%" height="100%" />
-    </svg>
+    <img slot="image" src="/assets/theming/developers.svg" alt="">
     <h2 slot="headline">
       <a href="developers/">Developers</a>
     </h2>
