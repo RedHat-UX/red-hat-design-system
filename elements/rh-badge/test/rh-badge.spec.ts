@@ -13,11 +13,11 @@ describe('<rh-badge>', function() {
         .and
         .to.be.an.instanceOf(RhBadge);
   });
-  it(`should have a background color '--rh-color-surface-lighter' when state is unset`, async function() {
+  it(`should have a background color '--rh-color-status-neutral-on-light' when state is unset`, async function() {
     const element = await createFixture <RhBadge>(html`<rh-badge></rh-badge>`);
     // NB: querying shadow root in tests is bad, mmkay?
     const styles = getComputedStyle(element.shadowRoot!.querySelector('.on')!);
-    expect(styles.backgroundColor).to.be.colored(tokens.get('--rh-color-surface-lighter')!);
+    expect(styles.backgroundColor).to.be.colored(tokens.get('--rh-color-status-neutral-on-light')!);
   });
 });
 
@@ -34,11 +34,12 @@ it('should have a pill shape and padding on left and right only', async function
 });
 
 for (const [state, token] of Object.entries({
-  info: '--rh-color-status-note-on-light',
-  success: '--rh-color-status-success-on-light',
-  moderate: '--rh-color-status-caution-on-light',
-  important: '--rh-color-status-warning-on-light',
-  critical: '--rh-color-status-danger-on-light',
+  neutral: '--rh-color-status-neutral',
+  info: '--rh-color-status-info',
+  success: '--rh-color-status-success',
+  caution: '--rh-color-status-caution',
+  warning: '--rh-color-status-warning',
+  danger: '--rh-color-status-danger',
 })) {
   describe(`state="${state}"`, function() {
     let element: RhBadge;
@@ -52,18 +53,17 @@ for (const [state, token] of Object.entries({
       // NB: querying shadow root in tests is bad, mmkay?
       styles = getComputedStyle(element.shadowRoot!.querySelector('.on')!);
     });
-    it(`should have a background color '${token}'`, async function() {
-      expect(styles.backgroundColor).to.be.colored(tokens.get(token)!);
+    it(`should have a background color '${token}-on-light'`, async function() {
+      expect(styles.backgroundColor).to.be.colored(tokens.get(`${token}-on-light`)!);
     });
     describe('on a dark background', function() {
-      const darkToken = token.replace('on-light', 'on-dark');
       beforeEach(async function() {
         await createFixture<RhSurface>(html`
           <rh-surface color-palette="darkest">${element}</rh-surface>
         `);
       });
-      it(`should have a background color '${darkToken}'`, async function() {
-        expect(styles.backgroundColor).to.be.colored(tokens.get(darkToken)!);
+      it(`should have a background color '${token}-on-dark'`, async function() {
+        expect(styles.backgroundColor).to.be.colored(tokens.get(`${token}-on-dark`)!);
       });
     });
   });
