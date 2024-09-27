@@ -207,7 +207,7 @@ themable graphics.
 
 ## How theming works
 
-We developed our theming system with web standards in mind, aiming to use
+We've developed our theming system with web standards in mind, aiming to use
 CSS over JavaScript as much as possible. At the current state of browser technology,
 we found that some JavaScript is required for the system to work correctly.
 But shortly, we expect to be able to remove all or nearly all of that 
