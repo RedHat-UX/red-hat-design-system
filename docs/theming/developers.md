@@ -164,7 +164,7 @@ rectangle.
 ```
 
 This approach _does not work_ with SVG loaded through the `<img>` tag, or with 
-raster graphics; however, another approach is in development that could help:
+raster graphics; however, another approach is in development that could help.
 
 ### Alternating Graphics
 
@@ -209,22 +209,22 @@ themable graphics.
 
 We developed our theming system with web standards in mind, aiming to use
 CSS over JavaScript as much as possible. At the current state of browser technology,
-we found that some JavaScript is required for the system to work correctly,
-but shortly, we expect to be able to remove all or nearly all of that 
+we found that some JavaScript is required for the system to work correctly.
+But shortly, we expect to be able to remove all or nearly all of that 
 JavaScript and have the theming system work entirely (or almost entirely) 
 through plain CSS. The following explains how the system currently operates, how
 element authors can hook into it, and what the future holds for theming.
 
 ### Current implementation - Context Protocol
 
-<abbr title="Red Hat Design System">RHDS</abbr>’ Theming system is primarily 
+<abbr title="Red Hat Design System">RHDS</abbr>’ theming system is primarily 
 about styles. It currently relies on JavaScript to work, via the [context 
 protocol][contextprotocol] developed by the web components community to support 
 passing data between components.
 
 Our system utilizes this protocol with the setting of the `color-palette` 
 attribute on a provider element which makes its context data (in our case, 
-`light` or `dark`) to its children. By doing so we can ensure accessible 
+`light` or `dark`) to its children. By doing so we ensure accessible 
 colors are applied given any possible change in context value higher up in the 
 <abbr title="Document Object Model">DOM</abbr> tree. 
 
@@ -247,7 +247,7 @@ their own context, overriding that of their parent. Elements such as
 providers. If a provider contains a set `color-palette` attribute, it will
 override any parent context, and pass its context on to its children.
 
-To make your element a color context provider,
+To make your element a color context provider:
 
 1. First import the provider controller.
 2. Then add the `@colorContextProvider()` decorator to a property with the
@@ -280,7 +280,7 @@ Context consumers are elements that passively consume the parent context.
 Elements such as `<rh-cta>`, `<rh-badge>` and `<rh-tag>` are examples of
 consumers.
 
-To make your element a color context consumer,
+To make your element a color context consumer:
 
 1. First `import` the [classMap Lit directive](https://lit.dev/docs/templates/directives/#classmap),
    and the consumer controller.
