@@ -24,20 +24,17 @@ export declare class UxdotSideNavItem extends LitElement {
     static styles: CSSStyleSheet[];
     active: boolean;
     href?: string;
-    role: string;
     render(): import("lit-html").TemplateResult<1>;
 }
 export declare class UxdotSideNavDropdown extends LitElement {
     #private;
     static styles: CSSStyleSheet[];
     expanded: boolean;
-    role: string;
     connectedCallback(): void;
     render(): import("lit-html").TemplateResult<1>;
 }
 export declare class UxdotSideNavDropdownMenu extends LitElement {
     static styles: CSSStyleSheet[];
-    role: string;
     render(): import("lit-html").TemplateResult<1>;
 }
 export declare class UxdotSideNavDropdownMenuItem extends UxdotSideNavItem {

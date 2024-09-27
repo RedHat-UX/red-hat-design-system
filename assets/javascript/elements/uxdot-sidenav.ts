@@ -153,8 +153,6 @@ export class UxdotSideNavItem extends LitElement {
 
   @property() href?: string;
 
-  @property({ reflect: true }) role = 'menuitem';
-
   render() {
     const { active } = this;
     return html`
@@ -168,8 +166,6 @@ export class UxdotSideNavDropdown extends LitElement {
   static styles = [dropdownStyles];
 
   @property({ type: Boolean, reflect: true }) expanded = false;
-
-  @property({ reflect: true }) role = 'menu';
 
   connectedCallback() {
     super.connectedCallback();
@@ -205,8 +201,6 @@ export class UxdotSideNavDropdown extends LitElement {
 @customElement('uxdot-sidenav-dropdown-menu')
 export class UxdotSideNavDropdownMenu extends LitElement {
   static styles = [dropdownMenuStyles];
-
-  @property({ reflect: true }) role = 'menu';
 
   render() {
     return html`

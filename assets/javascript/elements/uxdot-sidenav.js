@@ -143,7 +143,6 @@ let UxdotSideNavItem = class UxdotSideNavItem extends LitElement {
     constructor() {
         super(...arguments);
         this.active = false;
-        this.role = 'menuitem';
     }
     render() {
         const { active } = this;
@@ -159,9 +158,6 @@ __decorate([
 __decorate([
     property()
 ], UxdotSideNavItem.prototype, "href", void 0);
-__decorate([
-    property({ reflect: true })
-], UxdotSideNavItem.prototype, "role", void 0);
 UxdotSideNavItem = __decorate([
     customElement('uxdot-sidenav-item')
 ], UxdotSideNavItem);
@@ -171,7 +167,6 @@ let UxdotSideNavDropdown = class UxdotSideNavDropdown extends LitElement {
         super(...arguments);
         _UxdotSideNavDropdown_instances.add(this);
         this.expanded = false;
-        this.role = 'menu';
     }
     connectedCallback() {
         super.connectedCallback();
@@ -206,18 +201,11 @@ UxdotSideNavDropdown.styles = [dropdownStyles];
 __decorate([
     property({ type: Boolean, reflect: true })
 ], UxdotSideNavDropdown.prototype, "expanded", void 0);
-__decorate([
-    property({ reflect: true })
-], UxdotSideNavDropdown.prototype, "role", void 0);
 UxdotSideNavDropdown = __decorate([
     customElement('uxdot-sidenav-dropdown')
 ], UxdotSideNavDropdown);
 export { UxdotSideNavDropdown };
 let UxdotSideNavDropdownMenu = class UxdotSideNavDropdownMenu extends LitElement {
-    constructor() {
-        super(...arguments);
-        this.role = 'menu';
-    }
     render() {
         return html `
       <slot></slot>
@@ -225,9 +213,6 @@ let UxdotSideNavDropdownMenu = class UxdotSideNavDropdownMenu extends LitElement
     }
 };
 UxdotSideNavDropdownMenu.styles = [dropdownMenuStyles];
-__decorate([
-    property({ reflect: true })
-], UxdotSideNavDropdownMenu.prototype, "role", void 0);
 UxdotSideNavDropdownMenu = __decorate([
     customElement('uxdot-sidenav-dropdown-menu')
 ], UxdotSideNavDropdownMenu);
