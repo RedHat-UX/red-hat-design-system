@@ -13,7 +13,7 @@ export class UxdotToc extends LitElement {
 
   render() {
     return html`
-      <aside id="container" part="container">
+      <div id="container" part="container">
         <details>
           <summary id="summary-sm" class="summary">${this.summary}</summary>
           <nav aria-labelledby="summary-sm">
@@ -26,7 +26,7 @@ export class UxdotToc extends LitElement {
             <slot name="expanded"></slot>
           </nav>
         </div>
-      </aside>
+      </div>
     `;
   }
 }

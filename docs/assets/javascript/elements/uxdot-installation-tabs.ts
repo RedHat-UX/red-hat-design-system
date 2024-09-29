@@ -4,7 +4,6 @@ import { RhTabs } from '@rhds/elements/rh-tabs/rh-tabs.js';
 import { TabExpandEvent } from '@rhds/elements/rh-tabs/rh-tab.js';
 
 import '@rhds/elements/rh-alert/rh-alert.js';
-
 const TABS_KEY = 'rhds-installation-tabs-selected-index';
 
 @customElement('uxdot-installation-tabs')

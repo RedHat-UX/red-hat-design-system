@@ -8,6 +8,7 @@
   z-index: var(--uxdot-masthead-z-index, 2);
   container-type: inline-size;
   container-name: host;
+  z-index: 10;
 }
 
 #container {

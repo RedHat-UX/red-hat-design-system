@@ -2,20 +2,27 @@
 
 {{ tagName | getElementDescription }}
 
-{% repoStatusList repoStatus=repoStatus %}
+<uxdot-example width-adjustment="456px">
+  <img alt="Two examples of the alert element"
+       src="alert-overview.svg"
+       width="538px">
+</uxdot-example>
 
+{% repoStatusList repoStatus=repoStatus %}
 
 ## Sample element
 
 <uxdot-example width-adjustment="538px">
-  <img src="alert-sample.svg" alt="Two examples of the alert element" width="538px">
+  <img alt="Two examples of the alert element"
+       src="alert-sample.svg"
+       width="538px">
 </uxdot-example>
 
 ## When to use
 
-  - When additional information needs to be emphasized 
-  - When a user needs to be notified after performing an action
-  - When the severity of a message needs to be indicated
+  - Communicate essential information in a prominent way
+  - Notify a user of a change in status
+  - Communicate urgency using severity
 
 
 [img-sample]: ./alert-sample.svg

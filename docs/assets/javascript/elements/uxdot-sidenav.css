@@ -6,7 +6,7 @@
   width: 100%;
   height: var(--_max-height);
   top: 0;
-  z-index: var(--uxdot-sidenav-z-index, 2);
+  z-index: var(--uxdot-sidenav-z-index, 5);
 }
 
 :host([open]) {
@@ -44,6 +44,10 @@
 #close-button:focus {
   outline: var(--rh-border-width-md) solid var(--rh-color-border-interactive);
   border-radius: var(--rh-border-radius-default, 3px);
+}
+
+[part='nav'] {
+  padding-block: var(--rh-space-lg, 16px);
 }
 
 [part='overlay'] {

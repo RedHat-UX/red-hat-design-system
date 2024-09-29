@@ -9,12 +9,14 @@ summaries:
   form: Collects information from a user through inputs
   link: Directs users to other domains or pages
   link-with-icon: Adds additional context or decoration to a link
+  logo-wall: Visual arrangement of logos representing various brands, companies, or organizations
   search-bar: Performs a search and displays relevant content
   skip-navigation: Moves a user down to content by keyboard input
   sticky-banner: Anchors an offer to the bottom edge of a page
   sticky-card: Anchors an offer to the right edge of a page
+  tabs: Programatically activate a tab panel or item inside a tab panel
+  tile: Style Tiles to differentiate them from other page elements
   video-thumbnail: Overlays a button that indicates video playback
-  logo-wall: Visual arrangement of logos representing various brands, companies, or organizations
 order: 0
 tags:
   - pattern
@@ -46,6 +48,12 @@ create uniform, accessible experiences.
   {%- for pattern in collections.pattern -%}
   {%- if pattern.page.inputPath !== page.inputPath -%}
   {%- set slug = pattern.fileSlug -%}
+
+  {%- set title = pattern.data.heading -%}
+  {% if title == 'Patterns' %}
+    {%- set title = pattern.data.title -%}
+  {% endif %}
+
   {%- set summary = pattern.description -%}
   {%- set title = pattern.data.heading or pattern.data.title -%}
   {%- if not summary -%}

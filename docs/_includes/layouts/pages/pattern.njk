@@ -27,9 +27,11 @@ layout: layouts/base.njk
 
   {% include 'partials/component/header.njk' %}
   {% if hasToc and (content | toc).length > 0 %}
-  <uxdot-toc summary="On this page">
-    {{ content | toc | safe }}
-  </uxdot-toc>
+  <div class="aside">
+    <uxdot-toc summary="On this page">
+      {{ content | toc | safe }}
+    </uxdot-toc>
+  </div>
   {% endif %}
 
   <div class="container">
