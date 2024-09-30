@@ -37,7 +37,7 @@
   border-radius: var(--rh-border-radius-default, 3px);
   border: var(--rh-border-width-sm, 1px) solid var(--_border-color);
   background-color: var(--rh-tile-background-color, var(--rh-color-surface));
-  color: var(--_text-color);
+  color: var(--rh-tile-text-color, var(--rh-color-text-primary));
 
   --_padding: var(--rh-space-2xl, 32px);
   --_margin: var(--rh-space-lg, 16px);
@@ -45,7 +45,6 @@
   --_focus-interactive-color:
     var(--rh-tile-focus-interactive-color,
       var(--rh-color-interactive-primary-hover));
-  --_text-color: var(--rh-tile-text-color, var(--rh-color-text-primary));
   --_text-color-secondary:
     var(--rh-tile-text-color-secondary,
       var(--rh-color-text-secondary));
@@ -132,7 +131,7 @@
   }
 
   &:is(.desaturated, .checkable) {
-    --_link-color: var(--_text-color);
+    --_link-color: var(--rh-tile-text-color, var(--rh-color-text-primary));
   }
 
   &.checkable {
