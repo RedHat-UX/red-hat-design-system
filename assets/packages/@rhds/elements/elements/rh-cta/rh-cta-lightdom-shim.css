@@ -2,7 +2,7 @@ rh-cta:not(:defined) {
   width: fit-content !important;
   display: inline-flex !important;
   color: var(--rh-cta-color);
-  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   font-weight: 600; /* WARNING: not a token value */
   line-height: var(--rh-line-height-body-text, 1.5);
@@ -15,33 +15,33 @@ rh-cta:not(:defined) {
 rh-cta:not(:defined, [variant]) {
   --rh-cta-background-color: transparent;
   --rh-cta-border-color: transparent;
-  --rh-cta-color: var(--rh-color-interactive-blue-darker, #0066cc);
+  --rh-cta-color: var(--rh-color-interactive-primary-default-on-light, #0066cc);
   --rh-cta-hover-background-color: transparent;
   --rh-cta-hover-border-color: transparent;
   --rh-cta-hover-inner-border-color: transparent;
-  --rh-cta-hover-color: var(--rh-color-interactive-blue-darkest, #003366);
+  --rh-cta-hover-color: var(--rh-color-interactive-primary-hover-on-light, #003366);
   --rh-cta-hover-text-decoration: none;
   --rh-cta-focus-background-color: transparent;
   --rh-cta-focus-container-background-color: #0066cc1a;
   --rh-cta-focus-border-color: transparent;
   --rh-cta-focus-inner-border-color: transparent;
-  --rh-cta-focus-color: var(--rh-color-interactive-blue-darker, #0066cc);
+  --rh-cta-focus-color: var(--rh-color-interactive-primary-default-on-light, #0066cc);
   --rh-cta-focus-text-decoration: none;
   --rh-cta-active-container-background-color: #0066cc1a;
   --rh-cta-active-inner-border-color: transparent;
   --rh-cta-active-text-decoration: none;
 }
 
-[data-rh-theme^="dark"] rh-cta:not(:defined, [variant]),
-[color-palette^="dark"] rh-cta:not(:defined, [variant]),
-rh-cta[color-palette^="dark"]:not(:defined, [variant]) {
-  --rh-cta-color: var(--rh-color-interactive-blue-lighter, #92c5f9);
-  --rh-cta-hover-color: var(--rh-color-interactive-blue-lightest, #b9dafc);
+[data-rh-theme^='dark'] rh-cta:not(:defined, [variant]),
+[color-palette^='dark'] rh-cta:not(:defined, [variant]),
+rh-cta[color-palette^='dark']:not(:defined, [variant]) {
+  --rh-cta-color: var(--rh-color-interactive-primary-default-on-dark, #92c5f9);
+  --rh-cta-hover-color: var(--rh-color-interactive-primary-hover-on-dark, #b9dafc);
 
   /* --rh-color-interactive-blue-lighter with 25% opacity */
   --rh-cta-focus-container-background-color: #73bcf740;
   --rh-cta-focus-border-color: transparent;
-  --rh-cta-focus-color: var(--rh-color-interactive-blue-lighter, #92c5f9);
+  --rh-cta-focus-color: var(--rh-color-interactive-primary-default-on-dark, #92c5f9);
   --rh-cta-focus-inner-border-color: transparent;
   --rh-cta-focus-text-decoration: none;
 
@@ -53,10 +53,8 @@ rh-cta[color-palette^="dark"]:not(:defined, [variant]) {
 rh-cta:not(:defined):focus-within {
   border-color: var(--rh-cta-focus-border-color);
   background-color:
-    var(
-        --rh-cta-focus-container-background-color,
-        var(--rh-cta-focus-background-color)
-      );
+    var(--rh-cta-focus-container-background-color,
+      var(--rh-cta-focus-background-color));
 
   --rh-cta-color: var(--rh-cta-focus-color);
   --rh-cta-text-decoration: var(--rh-cta-focus-text-decoration);
@@ -74,7 +72,7 @@ rh-cta:not(:defined):active {
   background-color: var(--rh-cta-active-background-color);
 }
 
-rh-cta[variant="primary"]:not(:defined) {
+rh-cta[variant='primary']:not(:defined) {
   border-style: solid;
 
   --rh-cta-background-color: var(--rh-color-brand-red-on-light, #ee0000);
@@ -91,13 +89,13 @@ rh-cta[variant="primary"]:not(:defined) {
   --rh-cta-active-inner-border-color: var(--rh-color-text-primary-on-dark, #ffffff);
 }
 
-[data-rh-theme^="dark"] rh-cta[variant="primary"]:not(:defined),
-[color-palette^="dark"] rh-cta[variant="primary"]:not(:defined),
-rh-cta[variant="primary"][color-palette^="dark"]:not(:defined) {
+[data-rh-theme^='dark'] rh-cta[variant='primary']:not(:defined),
+[color-palette^='dark'] rh-cta[variant='primary']:not(:defined),
+rh-cta[variant='primary'][color-palette^='dark']:not(:defined) {
   --rh-cta-hover-border-color: var(--rh-color-brand-red-dark, #a60000);
 }
 
-rh-cta[variant="secondary"]:not(:defined) {
+rh-cta[variant='secondary']:not(:defined) {
   border-style: solid;
 
   --rh-cta-background-color: transparent;
@@ -115,9 +113,9 @@ rh-cta[variant="secondary"]:not(:defined) {
   --rh-cta-active-inner-border-color: var(--rh-color-surface-light, #e0e0e0);
 }
 
-[data-rh-them^="dark"] rh-cta[variant="secondary"]:not(:defined),
-[color-palette^="dark"] rh-cta[variant="secondary"]:not(:defined),
-rh-cta[variant="secondary"][color-palette^="dark"]:not(:defined) {
+[data-rh-them^='dark'] rh-cta[variant='secondary']:not(:defined),
+[color-palette^='dark'] rh-cta[variant='secondary']:not(:defined),
+rh-cta[variant='secondary'][color-palette^='dark']:not(:defined) {
   --rh-cta-border-color: var(--rh-color-border-strong-on-dark, #ffffff);
   --rh-cta-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --rh-cta-hover-background-color: var(--rh-color-surface-lightest, #ffffff);
@@ -132,19 +130,19 @@ rh-cta[variant="secondary"][color-palette^="dark"]:not(:defined) {
   --rh-cta-active-inner-border-color: var(--rh-color-border-strong-on-light, #151515);
 }
 
-rh-cta[variant="brick"]:not(:defined) {
+rh-cta[variant='brick']:not(:defined) {
   border-style: solid;
-  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   font-weight: var(--rh-font-weight-body-text-regular, 400);
 
   --rh-cta-background-color: transparent;
   --rh-cta-border-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
-  --rh-cta-color: var(--rh-color-interactive-blue-darker, #0066cc);
+  --rh-cta-color: var(--rh-color-interactive-primary-default-on-light, #0066cc);
   --rh-cta-hover-background-color: var(--rh-color-surface-lighter, #f2f2f2);
   --rh-cta-hover-border-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
-  --rh-cta-hover-color: var(--rh-color-interactive-blue-darkest, #003366);
+  --rh-cta-hover-color: var(--rh-color-interactive-primary-hover-on-light, #003366);
   --rh-cta-hover-text-decoration: underline;
-  --rh-cta-focus-color: var(--rh-color-interactive-blue-darker, #0066cc);
+  --rh-cta-focus-color: var(--rh-color-interactive-primary-default-on-light, #0066cc);
   --rh-cta-focus-border-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
   --rh-cta-focus-inner-border-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
   --rh-cta-focus-text-decoration: none;
@@ -153,16 +151,16 @@ rh-cta[variant="brick"]:not(:defined) {
   --rh-cta-active-text-decoration: underline;
 }
 
-[data-rh-theme^="dark"] rh-cta[variant="brick"]:not(:defined),
-[color-palette^="dark"] rh-cta[variant="brick"]:not(:defined),
-rh-cta[variant="brick"][color-palette^="dark"]:not(:defined) {
+[data-rh-theme^='dark'] rh-cta[variant='brick']:not(:defined),
+[color-palette^='dark'] rh-cta[variant='brick']:not(:defined),
+rh-cta[variant='brick'][color-palette^='dark']:not(:defined) {
   --rh-cta-border-color: var(--rh-color-border-subtle-on-dark, #707070);
-  --rh-cta-color: var(--rh-color-interactive-blue-lighter, #92c5f9);
+  --rh-cta-color: var(--rh-color-interactive-primary-default-on-dark, #92c5f9);
   --rh-cta-hover-background-color: var(--rh-color-surface-darker, #1f1f1f);
   --rh-cta-hover-border-color: var(--rh-color-border-subtle-on-dark, #707070);
-  --rh-cta-hover-color: var(--rh-color-interactive-blue-lightest, #b9dafc);
+  --rh-cta-hover-color: var(--rh-color-interactive-primary-hover-on-dark, #b9dafc);
   --rh-cta-hover-text-decoration: underline;
-  --rh-cta-focus-color: var(--rh-color-interactive-blue-lighter, #92c5f9);
+  --rh-cta-focus-color: var(--rh-color-interactive-primary-default-on-dark, #92c5f9);
   --rh-cta-focus-border-color: var(--rh-color-border-subtle-on-dark, #707070);
   --rh-cta-focus-inner-border-color: var(--rh-color-border-subtle-on-dark, #707070);
   --rh-cta-focus-text-decoration: none;
@@ -191,18 +189,14 @@ rh-cta[variant]:not(:defined) * {
   padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px) !important;
 }
 
-rh-cta[variant$="ary"]:not(:defined) * {
+rh-cta[variant$='ary']:not(:defined) * {
   padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px) !important;
 }
 
-rh-cta[variant="primary"]:not(:defined) *:focus {
+rh-cta[variant='primary']:not(:defined) *:focus {
   outline:
-    var(
-        --rh-border-width-sm,
-        1px
-      ) solid var(
-        --rh-color-text-primary-on-dark,
-        #ffffff
-      ) !important;
+    var(--rh-border-width-sm,
+      1px) solid var(--rh-color-text-primary-on-dark,
+      #ffffff) !important;
   outline-offset: -2px;
 }

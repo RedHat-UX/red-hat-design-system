@@ -7,7 +7,7 @@ A tile is available as a <strong>Link tile</strong> or <strong>Selectable tile</
 
 <figure>
   <uxdot-example width-adjustment="360px">
-    <img src="{{ '../link-tile-anatomy.png' | url }}" alt="Default link tile with numbers pointing to locations of an image, an icon, text, and a footer">
+    <img src="../link-tile-anatomy.png" alt="Default link tile with numbers pointing to locations of an image, an icon, text, and a footer">
   </uxdot-example>
   <figcaption>
     <ol>
@@ -23,7 +23,7 @@ A tile is available as a <strong>Link tile</strong> or <strong>Selectable tile</
 
 <figure>
   <uxdot-example width-adjustment="755px">
-    <img src="{{ '../selectable-tile-anatomy.png' | url }}" alt="Selectable tiles with numbers pointing to locations of text, a checkbox or radio button, and a footer">
+    <img src="../selectable-tile-anatomy.png" alt="Selectable tiles with numbers pointing to locations of text, a checkbox or radio button, and a footer">
   </uxdot-example>
   <figcaption>
     <ol>
@@ -41,7 +41,7 @@ A tile is available as a <strong>Link tile</strong> or <strong>Selectable tile</
 A link tile is available in Default and Compact sizes. A selectable tile has only one size which is based on the size of a compact tile.
 
 <uxdot-example width-adjustment="752px">
-  <img src="{{ '../tile-sizes.png' | url }}" alt="Examples of a link tile, compact tile, and selectable tile to show size differences">
+  <img src="../tile-sizes.png" alt="Examples of a link tile, compact tile, and selectable tile to show size differences">
 </uxdot-example>
 
 
@@ -50,11 +50,11 @@ A link tile is available in Default and Compact sizes. A selectable tile has onl
 Both the link tile and the selectable tile are available in dark and light themes.
 
 <uxdot-example width-adjustment="752px">
-  <img src="{{ '../tile-light-theme.png' | url }}" alt="Light theme tiles use a white background, blue or black heading, black text, and a blue arrow icon">
+  <img src="../tile-light-theme.png" alt="Light theme tiles use a white background, blue or black heading, black text, and a blue arrow icon">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="752px">
-  <img src="{{ '../tile-dark-theme.png' | url }}" alt="Dark theme tiles use a dark gray background, blue or white heading, white text, and a light blue arrow icon">
+  <img src="../tile-dark-theme.png" alt="Dark theme tiles use a dark gray background, blue or white heading, white text, and a light blue arrow icon">
 </uxdot-example>
 
 
@@ -63,11 +63,11 @@ Both the link tile and the selectable tile are available in dark and light theme
 A link tile has a blue heading by default, but a desaturated variant exists for both light and dark themes. The desaturated heading uses either a black or white heading. A selectable tile has a desaturated heading only and does not have the option for a blue heading.
 
 <uxdot-example width-adjustment="752px">
-  <img src="{{ '../tile-heading-color-light-theme.png' | url }}" alt="Examples of a light theme link tile with a blue heading, link tile with a black heading, and selectable tile with a black heading">
+  <img src="../tile-heading-color-light-theme.png" alt="Examples of a light theme link tile with a blue heading, link tile with a black heading, and selectable tile with a black heading">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="752px">
-  <img src="{{ '../tile-heading-color-dark-theme.png' | url }}" alt="Examples of a dark theme link tile with a light blue heading, link tile with a white heading, and selectable tile with a white heading">
+  <img src="../tile-heading-color-dark-theme.png" alt="Examples of a dark theme link tile with a light blue heading, link tile with a white heading, and selectable tile with a white heading">
 </uxdot-example>
 
 
@@ -79,21 +79,21 @@ Space values remain the same at all breakpoints.
 ### Link tile without image
 
 <uxdot-example width-adjustment="752px">
-  <img src="{{ '../space-link-tile-no-image.png' | url }}" alt="Default link tile and compact link tile with spacers showing padding and margins">
+  <img src="../space-link-tile-no-image.png" alt="Default link tile and compact link tile with spacers showing padding and margins">
 </uxdot-example>
 
 
 ### Link tile with an image
 
 <uxdot-example width-adjustment="752px">
-  <img src="{{ '../space-link-tile-with-image.png' | url }}" alt="Link tiles that have full-width and default image sizes with spacers showing padding and margins">
+  <img src="../space-link-tile-with-image.png" alt="Link tiles that have full-width and default image sizes with spacers showing padding and margins">
 </uxdot-example>
 
 
 ### Selectable tile
 
 <uxdot-example width-adjustment="360px">
-  <img src="{{ '../space-selectable-tile.png' | url }}" alt="Selectable tile with spacers showing padding and margins">
+  <img src="../space-selectable-tile.png" alt="Selectable tile with spacers showing padding and margins">
 </uxdot-example>
 
 
@@ -106,11 +106,11 @@ Interaction states are visual representations used to communicate the status of 
 The hover state of a link tile also includes the arrow icon moving 3px to the right.
 
 <uxdot-example width-adjustment="752px">
-  <img src="{{ '../tile-states-hover-light-theme.png' | url }}" alt="On hover, light theme tiles have a light gray background, an underlined (and sometimes darker blue) heading, a darker blue arrow icon">
+  <img src="../tile-states-hover-light-theme.png" alt="On hover, light theme tiles have a light gray background, an underlined (and sometimes darker blue) heading, a darker blue arrow icon">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="752px">
-  <img src="{{ '../tile-states-hover-dark-theme.png' | url }}" alt="On hover, dark theme tiles have a lighter gray background, an underlined (and sometimes lighter blue) heading, a lighter blue arrow icon">
+  <img src="../tile-states-hover-dark-theme.png" alt="On hover, dark theme tiles have a lighter gray background, an underlined (and sometimes lighter blue) heading, a lighter blue arrow icon">
 </uxdot-example>
 
 
@@ -122,11 +122,11 @@ The hover state of a link tile also includes the arrow icon moving 3px to the ri
 </rh-alert>
 
 <uxdot-example width-adjustment="752px">
-  <img src="{{ '../tile-states-focus-light-theme.png' | url }}" alt="Focused light theme tiles have a blue focus ring and use hover state styling">
+  <img src="../tile-states-focus-light-theme.png" alt="Focused light theme tiles have a blue focus ring and use hover state styling">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="752px">
-  <img src="{{ '../tile-states-focus-dark-theme.png' | url }}" alt="Focused dark theme tiles have a light blue focus ring and use hover state styling">
+  <img src="../tile-states-focus-dark-theme.png" alt="Focused dark theme tiles have a light blue focus ring and use hover state styling">
 </uxdot-example>
 
 
@@ -140,11 +140,11 @@ Only link tiles have an active state. Selectable tiles have a selected state ins
 </rh-alert>
 
 <uxdot-example width-adjustment="752px">
-  <img src="{{ '../tile-states-active-light-theme.png' | url }}" alt="Active light theme link tiles use the focus state styles">
+  <img src="../tile-states-active-light-theme.png" alt="Active light theme link tiles use the focus state styles">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="752px">
-  <img src="{{ '../tile-states-active-dark-theme.png' | url }}" alt="Active dark theme link tiles use the focus state styles">
+  <img src="../tile-states-active-dark-theme.png" alt="Active dark theme link tiles use the focus state styles">
 </uxdot-example>
 
 
@@ -153,20 +153,20 @@ Only link tiles have an active state. Selectable tiles have a selected state ins
 Only a selectable tile has a selected state. A link tile has an active state instead.
 
 <uxdot-example width-adjustment="752px">
-  <img src="{{ '../tile-states-selected-light-theme.svg' | url }}" alt="When selected, the form input of light theme selectable tiles appears blue and filled or checked">
+  <img src="../tile-states-selected-light-theme.svg" alt="When selected, the form input of light theme selectable tiles appears blue and filled or checked">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="752px">
-  <img src="{{ '../tile-states-selected-dark-theme.png' | url }}" alt="When selected, the form input of dark theme selectable tiles appears light blue and filled or checked">
+  <img src="../tile-states-selected-dark-theme.png" alt="When selected, the form input of dark theme selectable tiles appears light blue and filled or checked">
 </uxdot-example>
 
 
 ### Disabled
 
 <uxdot-example width-adjustment="752px">
-  <img src="{{ '../tile-states-disabled-light-theme.png' | url }}" alt="Disabled light theme tiles have a light gray background and lighter gray text. Disabled link tiles have a ban icon">
+  <img src="../tile-states-disabled-light-theme.png" alt="Disabled light theme tiles have a light gray background and lighter gray text. Disabled link tiles have a ban icon">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="752px">
-  <img src="{{ '../tile-states-disabled-dark-theme.png' | url }}" alt="Disabled dark theme tiles have a lighter gray background and light gray text. Disabled link tiles have a ban icon">
+  <img src="../tile-states-disabled-dark-theme.png" alt="Disabled dark theme tiles have a lighter gray background and light gray text. Disabled link tiles have a ban icon">
 </uxdot-example>

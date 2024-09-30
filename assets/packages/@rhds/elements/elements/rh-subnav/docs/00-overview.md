@@ -3,7 +3,7 @@
 {{ tagName | getElementDescription }}
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ './subnav-sample.png' | url }}" alt="Image of a subnavigation; a horizontal row of links placed on a light gray bar">
+  <img src="./subnav-sample.png" alt="Image of a subnavigation; a horizontal row of links placed on a light gray bar">
 </uxdot-example>
 
 

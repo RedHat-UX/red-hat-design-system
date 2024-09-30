@@ -1,4 +1,4 @@
-var _RhSubnav_instances, _RhSubnav_allLinkElements, _RhSubnav_tabindex, _RhSubnav_overflow, _RhSubnav_mo, _RhSubnav_allLinks_get, _RhSubnav_allLinks_set, _RhSubnav_firstLink_get, _RhSubnav_lastLink_get, _RhSubnav_activeItem_get, _RhSubnav_update, _RhSubnav_onSlotchange, _RhSubnav_firstLastClasses, _RhSubnav_scrollLeft, _RhSubnav_scrollRight;
+var _RhSubnav_instances, _RhSubnav_allLinkElements, _RhSubnav_overflow, _RhSubnav_allLinks_get, _RhSubnav_allLinks_set, _RhSubnav_firstLink_get, _RhSubnav_lastLink_get, _RhSubnav_onSlotchange, _RhSubnav_firstLastClasses, _RhSubnav_scrollLeft, _RhSubnav_scrollRight;
 var RhSubnav_1;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
@@ -7,13 +7,12 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { query } from 'lit/decorators/query.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 import { property } from 'lit/decorators/property.js';
-import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 import { OverflowController } from '@patternfly/pfe-core/controllers/overflow-controller.js';
 import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 import { colorContextProvider } from '../../lib/context/color/provider.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 import { css } from "lit";
-const styles = css `:host{display:block}[part=container]{display:flex;background-color:var(--_context-background-color,var(--rh-color-surface-lighter,#f2f2f2))}.light,[part=container]:not(.dark){--_subnav-link-text-color:var(--rh-color-text-secondary-on-light, #4d4d4d);--_subnav-link-hover-text-color:var(--rh-color-text-primary-on-light, #151515);--_subnav-link-hover-border-end-color:var(--rh-color-border-subtle-on-light, #c7c7c7);--_subnav-link-active-border-end-color:var(--rh-color-accent-brand-on-light, #ee0000);--_subnav-link-visited-text-color:var(--rh-color-text-secondary-on-light, #4d4d4d);--_subnav-link-focus-outline-color:var(--rh-color-border-interactive-on-light, #0066cc);--_subnav-next-prev-button-text-color:var(--rh-color-text-secondary-on-light, #4d4d4d);--_subnav-next-prev-disabled-text-color:var(--rh-color-border-subtle-on-light, #c7c7c7);--_subnav-next-prev-hover-text-color:var(--rh-color-text-primary-on-light, #151515);--_subnav-next-prev-border-color:var(--rh-color-border-subtle-on-light, #c7c7c7)}.dark{--_subnav-link-text-color:var(--rh-color-text-secondary-on-dark, #c7c7c7);--_subnav-link-hover-text-color:var(--rh-color-text-primary-on-dark, #ffffff);--_subnav-link-hover-border-end-color:var(--rh-color-border-subtle-on-dark, #707070);--_subnav-link-active-border-end-color:var(--rh-color-accent-brand-on-dark, #ee0000);--_subnav-link-visited-text-color:var(--rh-color-text-secondary-on-dark, #c7c7c7);--_subnav-link-focus-outline-color:var(--rh-color-border-interactive-on-dark, #92c5f9);--_subnav-next-prev-button-text-color:var(--rh-color-text-secondary-on-dark, #c7c7c7);--_subnav-next-prev-disabled-text-color:var(--rh-color-border-subtle-on-dark, #707070);--_subnav-next-prev-hover-text-color:var(--rh-color-text-primary-on-dark, #ffffff);--_subnav-next-prev-border-color:var(--rh-color-border-subtle-on-dark, #707070)}[part=links]{display:flex;position:relative;bottom:0;overflow-x:auto;scrollbar-width:none;max-width:100%}::slotted(a){display:block!important;white-space:nowrap!important;padding:var(--rh-space-lg,16px) var(--rh-space-2xl,32px)!important;text-decoration:none!important;color:var(--_subnav-link-text-color,var(--rh-color-text-secondary-on-light,#4d4d4d))!important;position:relative!important}::slotted(a):after{content:""!important;position:absolute!important;inset:0!important;width:100%!important;border-block-end:var(--rh-border-width-lg,3px) solid transparent!important}::slotted(a:active),::slotted(a:hover),::slotted(a[active]){color:var(--_subnav-link-hover-text-color,var(--rh-color-text-secondary-on-light,#4d4d4d))!important}::slotted(a:hover):after{border-block-end-color:var(--_subnav-link-hover-border-end-color,var(--rh-color-border-subtle-on-light,#c7c7c7))!important}::slotted(a:active):after,::slotted(a[active]):after{border-block-end-color:var(--_subnav-link-active-border-end-color,var(--rh-color-accent-brand-on-light,#ee0000))!important}::slotted(a:focus-visible){outline:var(--rh-border-width-md,2px) solid var(--_subnav-link-focus-outline-color,var(--rh-color-interactive-blue-darker,#0066cc))!important;outline-offset:-8px!important;border-radius:10px!important}::slotted(a:visited){color:var(--_subnav-link-visited-text-color,var(--rh-color-text-primary-on-light,#151515))!important}button{position:relative;padding:0 var(--rh-space-lg,16px);margin:0;background-color:transparent;border:none;color:var(--_subnav-next-prev-button-text-color,var(--rh-color-text-secondary-on-light,#4d4d4d))}button:disabled{pointer-events:none;color:var(--_subnav-next-prev-disabled-text-color,var(--rh-color-gray-10,#f2f2f2))}button:hover{color:var(--_subnav-next-prev-hover-text-color,var(--rh-color-text-primary-on-light,#151515))}button:before{position:absolute;inset:0;content:"";border-block-end:var(--rh-border-width-lg,3px) solid transparent}button:hover:before{border-block-end-color:var(--_subnav-link-hover-border-end-color)}#previous{border-inline-end:var(--rh-border-width-sm,1px) solid var(--_subnav-next-prev-border-color,var(--rh-color-border-subtle-on-light,#c7c7c7))}#next{border-inline-start:var(--rh-border-width-sm,1px) solid var(--_subnav-next-prev-border-color,var(--rh-color-border-subtle-on-light,#c7c7c7))}`;
+const styles = css `:host{display:block}[part=container]{display:flex;background-color:var(--rh-color-surface);--_subnav-link-text-color:var(--rh-color-text-secondary);--_subnav-link-hover-text-color:var(--rh-color-text-primary);--_subnav-link-hover-border-end-color:var(--rh-color-border-subtle);--_subnav-link-active-border-end-color:var(--rh-color-accent-brand);--_subnav-link-visited-text-color:var(--rh-color-text-secondary);--_subnav-link-focus-outline-color:var(--rh-color-border-interactive);--_subnav-next-prev-button-text-color:var(--rh-color-text-secondary);--_subnav-next-prev-disabled-text-color:var(--rh-color-border-subtle);--_subnav-next-prev-hover-text-color:var(--rh-color-text-primary);--_subnav-next-prev-border-color:var(--rh-color-border-subtle)}[part=links]{display:flex;position:relative;bottom:0;overflow-x:auto;scrollbar-width:none;max-width:100%}::slotted(a){display:block!important;white-space:nowrap!important;padding:var(--rh-space-lg,16px) var(--rh-space-2xl,32px)!important;text-decoration:none!important;color:var(--_subnav-link-text-color,var(--rh-color-text-secondary))!important;position:relative!important}::slotted(a):after{content:""!important;position:absolute!important;inset:0!important;width:100%!important;border-block-end:var(--rh-border-width-lg,3px) solid #0000!important}::slotted(a:active),::slotted(a:hover),::slotted(a[active]){color:var(--_subnav-link-hover-text-color,var(--rh-color-text-secondary))!important}::slotted(a:hover):after{border-block-end-color:var(--_subnav-link-hover-border-end-color,var(--rh-color-border-subtle))!important}::slotted(a:active):after,::slotted(a[active]):after{border-block-end-color:var(--_subnav-link-active-border-end-color,var(--rh-color-accent-brand))!important}::slotted(a:focus-visible){outline:var(--rh-border-width-md,2px) solid var(--_subnav-link-focus-outline-color,var(--rh-color-interactive-primary-default))!important;outline-offset:-8px!important;border-radius:10px!important}::slotted(a:visited){color:var(--_subnav-link-visited-text-color,var(--rh-color-text-primary))!important}button{position:relative;padding:0 var(--rh-space-lg,16px);margin:0;background-color:initial;border:none;color:var(--_subnav-next-prev-button-text-color,var(--rh-color-text-secondary))}button:disabled{pointer-events:none;color:var(--_subnav-next-prev-disabled-text-color,var(--rh-color-gray-10,#f2f2f2))}button:hover{color:var(--_subnav-next-prev-hover-text-color,var(--rh-color-text-primary))}button:before{position:absolute;inset:0;content:"";border-block-end:var(--rh-border-width-lg,3px) solid #0000}button:hover:before{border-block-end-color:var(--_subnav-link-hover-border-end-color)}#previous{border-inline-end:var(--rh-border-width-sm,1px) solid var(--_subnav-next-prev-border-color,var(--rh-color-border-subtle))}#next{border-inline-start:var(--rh-border-width-sm,1px) solid var(--_subnav-next-prev-border-color,var(--rh-color-border-subtle))}`;
 /**
  * A subnavigation allows users to navigate between a small number of page links.
  * @summary Organizes content into sections using tabbed pages
@@ -25,29 +24,35 @@ let RhSubnav = RhSubnav_1 = class RhSubnav extends LitElement {
     constructor() {
         super(...arguments);
         _RhSubnav_instances.add(this);
+        /**
+         * Sets color palette, which affects the element's styles as well as descendants' color theme.
+         * Overrides parent color context.
+         * Your theme will influence these colors so check there first if you are seeing inconsistencies.
+         * See [CSS Custom Properties](#css-custom-properties) for default values
+         */
+        this.colorPalette = 'lighter';
+        /**
+         * Customize the default `aria-label` on the `<nav>` container.
+         * Defaults to "subnavigation" if no attribute/property is set.
+         */
+        this.accessibleLabel = 'subnavigation';
         _RhSubnav_allLinkElements.set(this, []);
-        _RhSubnav_tabindex.set(this, RovingTabindexController.of(this, {
-            getItems: () => __classPrivateFieldGet(this, _RhSubnav_instances, "a", _RhSubnav_allLinks_get),
-        }));
         _RhSubnav_overflow.set(this, new OverflowController(this));
-        _RhSubnav_mo.set(this, new MutationObserver(() => __classPrivateFieldGet(this, _RhSubnav_instances, "m", _RhSubnav_update).call(this)));
     }
     connectedCallback() {
         super.connectedCallback();
         RhSubnav_1.instances.add(this);
-        __classPrivateFieldGet(this, _RhSubnav_mo, "f").observe(this, { subtree: true, attributes: true, attributeFilter: ['active'] });
     }
     disconnectedCallback() {
         super.disconnectedCallback();
         RhSubnav_1.instances.delete(this);
-        __classPrivateFieldGet(this, _RhSubnav_mo, "f").disconnect();
     }
     render() {
         const { scrollIconSet, scrollIconLeft, scrollIconRight } = this.constructor;
         const { showScrollButtons } = __classPrivateFieldGet(this, _RhSubnav_overflow, "f");
         const { on = '' } = this;
         return html `
-      <nav part="container" class="${classMap({ [on]: !!on })}">${!showScrollButtons ? '' : html `
+      <nav part="container" aria-label="${this.accessibleLabel}" class="${classMap({ [on]: !!on })}">${!showScrollButtons ? '' : html `
         <button id="previous" tabindex="-1" aria-hidden="true"
                 ?disabled="${!__classPrivateFieldGet(this, _RhSubnav_overflow, "f").overflowLeft}"
                 @click="${__classPrivateFieldGet(this, _RhSubnav_instances, "m", _RhSubnav_scrollLeft)}">
@@ -70,9 +75,7 @@ let RhSubnav = RhSubnav_1 = class RhSubnav extends LitElement {
     }
 };
 _RhSubnav_allLinkElements = new WeakMap();
-_RhSubnav_tabindex = new WeakMap();
 _RhSubnav_overflow = new WeakMap();
-_RhSubnav_mo = new WeakMap();
 _RhSubnav_instances = new WeakSet();
 _RhSubnav_allLinks_get = function _RhSubnav_allLinks_get() {
     return __classPrivateFieldGet(this, _RhSubnav_allLinkElements, "f");
@@ -87,18 +90,10 @@ _RhSubnav_firstLink_get = function _RhSubnav_firstLink_get() {
 _RhSubnav_lastLink_get = function _RhSubnav_lastLink_get() {
     return __classPrivateFieldGet(this, _RhSubnav_instances, "a", _RhSubnav_allLinks_get).at(-1);
 };
-_RhSubnav_activeItem_get = function _RhSubnav_activeItem_get() {
-    const activeLink = __classPrivateFieldGet(this, _RhSubnav_instances, "a", _RhSubnav_allLinks_get).find(link => link.matches('[active]'));
-    return activeLink ?? __classPrivateFieldGet(this, _RhSubnav_instances, "a", _RhSubnav_firstLink_get);
-};
-_RhSubnav_update = function _RhSubnav_update() {
-    __classPrivateFieldGet(this, _RhSubnav_tabindex, "f").atFocusedItemIndex = __classPrivateFieldGet(this, _RhSubnav_instances, "a", _RhSubnav_allLinks_get).indexOf(__classPrivateFieldGet(this, _RhSubnav_instances, "a", _RhSubnav_activeItem_get));
-};
 _RhSubnav_onSlotchange = function _RhSubnav_onSlotchange() {
     __classPrivateFieldSet(this, _RhSubnav_instances, this.links, "a", _RhSubnav_allLinks_set);
     __classPrivateFieldGet(this, _RhSubnav_overflow, "f").init(this.linkList, __classPrivateFieldGet(this, _RhSubnav_instances, "a", _RhSubnav_allLinks_get));
     __classPrivateFieldGet(this, _RhSubnav_instances, "m", _RhSubnav_firstLastClasses).call(this);
-    __classPrivateFieldGet(this, _RhSubnav_instances, "m", _RhSubnav_update).call(this);
 };
 _RhSubnav_firstLastClasses = function _RhSubnav_firstLastClasses() {
     __classPrivateFieldGet(this, _RhSubnav_instances, "a", _RhSubnav_firstLink_get).classList.add('first');
@@ -112,15 +107,15 @@ _RhSubnav_scrollRight = function _RhSubnav_scrollRight() {
 };
 RhSubnav.styles = [styles];
 /** Icon name to use for the scroll left button */
-RhSubnav.scrollIconLeft = 'arrow-left';
+RhSubnav.scrollIconLeft = 'caret-left';
 /** Icon name to use for the scroll right button */
-RhSubnav.scrollIconRight = 'arrow-right';
+RhSubnav.scrollIconRight = 'caret-right';
 /** Icon set to use for the scroll buttons */
 RhSubnav.scrollIconSet = 'ui';
 RhSubnav.instances = new Set();
 (() => {
     // on resize check for overflows to add or remove scroll buttons
-    window.addEventListener('resize', () => {
+    globalThis.addEventListener('resize', () => {
         // this appears to be an eslint bug.
         // `this` should refer to the class, but in the minified bundle, it is void
         const { instances } = RhSubnav_1;
@@ -136,6 +131,9 @@ __decorate([
     colorContextProvider(),
     property({ reflect: true, attribute: 'color-palette' })
 ], RhSubnav.prototype, "colorPalette", void 0);
+__decorate([
+    property({ attribute: 'accessible-label' })
+], RhSubnav.prototype, "accessibleLabel", void 0);
 __decorate([
     queryAssignedElements()
 ], RhSubnav.prototype, "links", void 0);

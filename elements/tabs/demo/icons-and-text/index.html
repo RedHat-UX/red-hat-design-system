@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
@@ -8,14 +6,19 @@
 
     <link rel="preconnect" href="https://ga.jspm.io">
 
-    <link rel="stylesheet" href="/styles/dev-server/styles.css" media="all">
+    <link rel="stylesheet" href="/styles/demo/styles.css" media="all">
 
     <script type="importmap">{
   "imports": {
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
+    "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
     "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
+    "prism-esm": "/assets/packages/prism-esm/prism.js",
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/decorators/custom-element.js": "/assets/packages/lit/decorators/custom-element.js",
     "lit-element": "/assets/packages/lit-element/index.js",
@@ -25,18 +28,19 @@
     "lit/decorators/property.js": "/assets/packages/lit/decorators/property.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
     "lit": "/assets/packages/lit/index.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "@rhds/tokens/css/color-context-provider.css.js": "/assets/packages/@rhds/tokens/css/color-context-provider.css.js",
+    "@rhds/tokens/css/color-context-consumer.css.js": "/assets/packages/@rhds/tokens/css/color-context-consumer.css.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
-    "@rhds/tokens/media.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.2/core.js",
-    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
-    "@rhds/tokens/meta.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "lit/": "/assets/packages/lit/",
     "lit-html/": "/assets/packages/lit-html/",
+    "prism-esm/": "/assets/packages/prism-esm/",
     "@lit-labs/ssr-client/lit-element-hydrate-support.js": "/assets/packages/@lit-labs/ssr-client/lit-element-hydrate-support.js",
+    "@rhds/tokens/css/": "/assets/packages/@rhds/tokens/css/",
     "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
     "@rhds/elements/lib/": "/assets/packages/@rhds/elements/lib/",
     "@rhds/elements/": "/assets/packages/@rhds/elements/elements/",
@@ -58,45 +62,46 @@
     }
   }
 }</script>
-    <script async src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
     <script type="module">
+      // dsd polyfill needs to happen before hydration attempts
+      // lit-element-hydrate-support needs to be included before lit is loaded
+      import '/assets/javascript/dsd-polyfill.js';
+      import '@lit-labs/ssr-client/lit-element-hydrate-support.js';
       import 'element-internals-polyfill';
+      // include these, which are often internal to elements, to avoid SSR defer-hydration bugs
+      import '@rhds/elements/rh-icon/rh-icon.js';
+      import '@rhds/elements/rh-surface/rh-surface.js';
+      // load up the demo and picker
+      import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+      import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
     </script>
+
+    <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
   </head>
-  <body unresolved>
+  <body unresolved="">
     <main><rh-tabs>
-  <rh-tab slot="tab"> Users          <rh-icon     slot="icon" icon="users-fill" set="ui" size="sm"><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container"
-           aria-hidden="true"
-           class=" ui "><!--lit-part AztekdXpBdw=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M15.16 20.145A7.936 7.936 0 0 1 14 16c0-1.156.252-2.253.695-3.246a9.47 9.47 0 0 0-2.13-.893A5.503 5.503 0 0 0 15.5 7c0-3.032-2.467-5.5-5.5-5.5S4.5 3.968 4.5 7a5.503 5.503 0 0 0 2.935 4.861C3.441 12.984.5 16.651.5 21a.5.5 0 0 0 .5.5h12.557a11.98 11.98 0 0 1 1.602-1.355Z"/><path d="M24.565 20.861A5.503 5.503 0 0 0 27.5 16c0-3.032-2.467-5.5-5.5-5.5s-5.5 2.468-5.5 5.5a5.503 5.503 0 0 0 2.935 4.862C15.441 21.985 12.5 25.651 12.5 30a.5.5 0 0 0 .5.5h18a.5.5 0 0 0 .5-.5c0-4.349-2.94-8.015-6.935-9.139Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+  <rh-tab slot="tab"> Users <rh-icon slot="icon" icon="users" set="ui"><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container" aria-hidden="true" class=" ui "><!--lit-part s2iv9wMlhyw=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M14 21a1 1 0 0 0-1-1H2.062c.494-3.94 3.866-7 7.938-7 1.249 0 2.445.28 3.555.831a1 1 0 1 0 .89-1.79c-.246-.123-.499-.221-.752-.322A5.987 5.987 0 0 0 16 7c0-3.309-2.691-6-6-6S4 3.691 4 7c0 1.914.904 3.617 2.304 4.717C2.616 13.19 0 16.792 0 21a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1ZM6 7c0-2.206 1.794-4 4-4s4 1.794 4 4-1.794 4-4 4-4-1.794-4-4Z"></path><path d="M25.696 20.717A5.987 5.987 0 0 0 28 16c0-3.309-2.691-6-6-6s-6 2.691-6 6c0 1.914.904 3.617 2.304 4.717C14.616 22.19 12 25.793 12 30a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1c0-4.207-2.616-7.81-6.304-9.283ZM18 16c0-2.206 1.794-4 4-4s4 1.794 4 4-1.794 4-4 4-4-1.794-4-4Zm-3.938 13c.494-3.94 3.866-7 7.938-7s7.444 3.06 7.938 7H14.063Z"></path></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden=""><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon></rh-tab>
   <rh-tab-panel>Users</rh-tab-panel>
-  <rh-tab slot="tab"> Containers     <rh-icon    slot="icon" icon="container" size="sm"><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container"
-           aria-hidden="true"
-           class=" standard "><!--lit-part la2fzp72880=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36"><path d="m30.44 10.46-12.13-7a.62.62 0 0 0-.62 0l-12.13 7a.63.63 0 0 0-.31.54v14a.63.63 0 0 0 .31.54l12.13 7a.64.64 0 0 0 .62 0l12.13-7a.63.63 0 0 0 .31-.54V11a.63.63 0 0 0-.31-.54Zm-.94 14.18L18 31.28 6.5 24.64V11.36L18 4.72l11.5 6.64Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+  <rh-tab slot="tab"> Containers <rh-icon slot="icon" icon="container"><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container" aria-hidden="true" class=" standard "><!--lit-part la2fzp72880=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36"><path d="m30.44 10.46-12.13-7a.62.62 0 0 0-.62 0l-12.13 7a.63.63 0 0 0-.31.54v14a.63.63 0 0 0 .31.54l12.13 7a.64.64 0 0 0 .62 0l12.13-7a.63.63 0 0 0 .31-.54V11a.63.63 0 0 0-.31-.54Zm-.94 14.18L18 31.28 6.5 24.64V11.36L18 4.72l11.5 6.64Z"></path></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden=""><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon></rh-tab>
   <rh-tab-panel>Containers</rh-tab-panel>
-  <rh-tab slot="tab"> Database       <rh-icon    slot="icon" icon="datacenter" size="sm"><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container"
-           aria-hidden="true"
-           class=" standard "><!--lit-part 9qRmUZRwhdg=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36"><path d="M11 26.62a.62.62 0 1 0-.62-.62.61.61 0 0 0 .62.62Zm14 0a.62.62 0 1 0-.62-.62.61.61 0 0 0 .62.62Zm-7 0a.62.62 0 1 0-.62-.62.61.61 0 0 0 .62.62Z"/><path d="M31 4.38H5a.61.61 0 0 0-.62.62v26a.61.61 0 0 0 .62.62h26a.61.61 0 0 0 .62-.62V5a.61.61 0 0 0-.62-.62Zm-.62 26H5.62V5.62h24.76Z"/><path d="M9 21.62h4a.62.62 0 0 0 0-1.24H9a.62.62 0 0 0 0 1.24Zm7 0h4a.62.62 0 0 0 0-1.24h-4a.62.62 0 1 0 0 1.24Zm7 0h4a.62.62 0 0 0 0-1.24h-4a.62.62 0 0 0 0 1.24Zm-14-3h4a.62.62 0 0 0 0-1.24H9a.62.62 0 0 0 0 1.24Zm7 0h4a.62.62 0 0 0 0-1.24h-4a.62.62 0 1 0 0 1.24Zm7 0h4a.62.62 0 0 0 0-1.24h-4a.62.62 0 0 0 0 1.24Zm-14-3h4a.62.62 0 0 0 0-1.24H9a.62.62 0 0 0 0 1.24Zm7 0h4a.62.62 0 1 0 0-1.24h-4a.62.62 0 0 0 0 1.24Zm7 0h4a.62.62 0 1 0 0-1.24h-4a.62.62 0 0 0 0 1.24Zm-14-3h4a.62.62 0 0 0 0-1.24H9a.62.62 0 0 0 0 1.24Zm7 0h4a.62.62 0 0 0 0-1.24h-4a.62.62 0 0 0 0 1.24Zm7 0h4a.62.62 0 1 0 0-1.24h-4a.62.62 0 0 0 0 1.24Zm-14-3h4a.62.62 0 0 0 0-1.24H9a.62.62 0 0 0 0 1.24Zm7 0h4a.62.62 0 0 0 0-1.24h-4a.62.62 0 0 0 0 1.24Zm7 0h4a.62.62 0 1 0 0-1.24h-4a.62.62 0 1 0 0 1.24Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+  <rh-tab slot="tab"> Database: Long SQL Statement <rh-icon slot="icon" icon="datacenter"><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container" aria-hidden="true" class=" standard "><!--lit-part 9qRmUZRwhdg=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36"><path d="M11 26.62a.62.62 0 1 0-.62-.62.61.61 0 0 0 .62.62Zm14 0a.62.62 0 1 0-.62-.62.61.61 0 0 0 .62.62Zm-7 0a.62.62 0 1 0-.62-.62.61.61 0 0 0 .62.62Z"></path><path d="M31 4.38H5a.61.61 0 0 0-.62.62v26a.61.61 0 0 0 .62.62h26a.61.61 0 0 0 .62-.62V5a.61.61 0 0 0-.62-.62Zm-.62 26H5.62V5.62h24.76Z"></path><path d="M9 21.62h4a.62.62 0 0 0 0-1.24H9a.62.62 0 0 0 0 1.24Zm7 0h4a.62.62 0 0 0 0-1.24h-4a.62.62 0 1 0 0 1.24Zm7 0h4a.62.62 0 0 0 0-1.24h-4a.62.62 0 0 0 0 1.24Zm-14-3h4a.62.62 0 0 0 0-1.24H9a.62.62 0 0 0 0 1.24Zm7 0h4a.62.62 0 0 0 0-1.24h-4a.62.62 0 1 0 0 1.24Zm7 0h4a.62.62 0 0 0 0-1.24h-4a.62.62 0 0 0 0 1.24Zm-14-3h4a.62.62 0 0 0 0-1.24H9a.62.62 0 0 0 0 1.24Zm7 0h4a.62.62 0 1 0 0-1.24h-4a.62.62 0 0 0 0 1.24Zm7 0h4a.62.62 0 1 0 0-1.24h-4a.62.62 0 0 0 0 1.24Zm-14-3h4a.62.62 0 0 0 0-1.24H9a.62.62 0 0 0 0 1.24Zm7 0h4a.62.62 0 0 0 0-1.24h-4a.62.62 0 0 0 0 1.24Zm7 0h4a.62.62 0 1 0 0-1.24h-4a.62.62 0 0 0 0 1.24Zm-14-3h4a.62.62 0 0 0 0-1.24H9a.62.62 0 0 0 0 1.24Zm7 0h4a.62.62 0 0 0 0-1.24h-4a.62.62 0 0 0 0 1.24Zm7 0h4a.62.62 0 1 0 0-1.24h-4a.62.62 0 1 0 0 1.24Z"></path></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden=""><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon></rh-tab>
   <rh-tab-panel>Database</rh-tab-panel>
-  <rh-tab slot="tab"> Server         <rh-icon    slot="icon" icon="server" size="sm"><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container"
-           aria-hidden="true"
-           class=" standard "><!--lit-part XYm/0yTCz58=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36"><path d="M27 18.62a.62.62 0 1 0-.62-.62.61.61 0 0 0 .62.62Z"/><path d="M31 12.38H5a.61.61 0 0 0-.62.62v10a.61.61 0 0 0 .62.62h26a.61.61 0 0 0 .62-.62V13a.61.61 0 0 0-.62-.62Zm-.62 10H5.62v-8.76h24.76Z"/><path d="M9 18.62h6a.62.62 0 0 0 0-1.24H9a.62.62 0 0 0 0 1.24Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+  <rh-tab slot="tab"> Server <rh-icon slot="icon" icon="server"><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container" aria-hidden="true" class=" standard "><!--lit-part XYm/0yTCz58=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36"><path d="M27 18.62a.62.62 0 1 0-.62-.62.61.61 0 0 0 .62.62Z"></path><path d="M31 12.38H5a.61.61 0 0 0-.62.62v10a.61.61 0 0 0 .62.62h26a.61.61 0 0 0 .62-.62V13a.61.61 0 0 0-.62-.62Zm-.62 10H5.62v-8.76h24.76Z"></path><path d="M9 18.62h6a.62.62 0 0 0 0-1.24H9a.62.62 0 0 0 0 1.24Z"></path></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden=""><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon></rh-tab>
   <rh-tab-panel>Server</rh-tab-panel>
-  <rh-tab slot="tab"> System         <rh-icon    slot="icon" icon="laptop" size="sm"><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container"
-           aria-hidden="true"
-           class=" standard "><!--lit-part ZerhrCHRrOQ=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36"><path d="M18 9.62a.62.62 0 1 0-.62-.62.61.61 0 0 0 .62.62Z"/><path d="M6 24.62h24a.61.61 0 0 0 .62-.62V9a.61.61 0 0 0-.62-.62h-9a.62.62 0 1 0 0 1.24h8.38v13.76H6.62V9.62H15a.62.62 0 0 0 0-1.24H6a.61.61 0 0 0-.62.62v15a.61.61 0 0 0 .62.62Zm26 1.76H4a.62.62 0 1 0 0 1.24h28a.62.62 0 1 0 0-1.24Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+  <rh-tab slot="tab"> System  <rh-icon slot="icon" icon="laptop"><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container" aria-hidden="true" class=" standard "><!--lit-part ZerhrCHRrOQ=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36"><path d="M18 9.62a.62.62 0 1 0-.62-.62.61.61 0 0 0 .62.62Z"></path><path d="M6 24.62h24a.61.61 0 0 0 .62-.62V9a.61.61 0 0 0-.62-.62h-9a.62.62 0 1 0 0 1.24h8.38v13.76H6.62V9.62H15a.62.62 0 0 0 0-1.24H6a.61.61 0 0 0-.62.62v15a.61.61 0 0 0 .62.62Zm26 1.76H4a.62.62 0 1 0 0 1.24h28a.62.62 0 1 0 0-1.24Z"></path></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden=""><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon></rh-tab>
   <rh-tab-panel>System</rh-tab-panel>
@@ -105,5 +110,11 @@
 <script type="module">
   import '@rhds/elements/rh-tabs/rh-tabs.js';
 </script>
-</main></body>
-</html>
+
+<style>
+  rh-icon {
+    --rh-icon-size: var(--rh-size-icon-03);
+  }
+</style>
+</main>
+</body></html>

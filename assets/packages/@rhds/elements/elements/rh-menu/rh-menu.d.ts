@@ -21,6 +21,11 @@ export declare class RhMenu extends LitElement {
     };
     private _menuItems;
     private on?;
+    /**
+     * override or set to add items to the roving tab index controller
+     * @param items original list of items
+     */
+    getItems(items: HTMLElement[]): HTMLElement[];
     get activeItem(): HTMLElement | undefined;
     connectedCallback(): void;
     render(): import("lit-html").TemplateResult<1>;

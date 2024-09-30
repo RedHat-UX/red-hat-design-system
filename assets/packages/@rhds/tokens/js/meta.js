@@ -1,6 +1,5 @@
 /**
- * Do not edit directly
- * Generated on Wed, 13 Dec 2023 08:19:14 GMT
+ * Do not edit directly, this file was auto-generated.
  */
 
 
@@ -10,13 +9,11 @@ export const tokens = new Map([
     {
       "$type": "duration",
       "$value": "0.3s",
-      "value": "0.3s",
       "filePath": "tokens/animation.yml",
       "isSource": true,
       "original": {
         "$type": "duration",
-        "$value": "0.3s",
-        "value": "0.3s"
+        "$value": "0.3s"
       },
       "name": "rh-animation-speed",
       "attributes": {
@@ -34,18 +31,11 @@ export const tokens = new Map([
     {
       "$type": "cubicBezier",
       "$value": "cubic-bezier(0.465, 0.183, 0.153, 0.946)",
-      "value": "cubic-bezier(0.465, 0.183, 0.153, 0.946)",
       "filePath": "tokens/animation.yml",
       "isSource": true,
       "original": {
         "$type": "cubicBezier",
         "$value": [
-          0.465,
-          0.183,
-          0.153,
-          0.946
-        ],
-        "value": [
           0.465,
           0.183,
           0.153,
@@ -68,13 +58,13 @@ export const tokens = new Map([
     {
       "$value": "1px",
       "$description": "1px border width; Example: Secondary CTA or Button",
-      "value": "1px",
       "filePath": "tokens/border.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "{length.4xs}",
         "$description": "1px border width; Example: Secondary CTA or Button",
-        "value": "{length.4xs}"
+        "$type": "dimension"
       },
       "name": "rh-border-width-sm",
       "attributes": {
@@ -87,9 +77,7 @@ export const tokens = new Map([
         "border",
         "width",
         "sm"
-      ],
-      "comment": "1px border width; Example: Secondary CTA or Button",
-      "$type": "dimension"
+      ]
     }
   ],
   [
@@ -97,13 +85,13 @@ export const tokens = new Map([
     {
       "$value": "2px",
       "$description": "2px border width: Example: Alert",
-      "value": "2px",
       "filePath": "tokens/border.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "{length.3xs}",
         "$description": "2px border width: Example: Alert",
-        "value": "{length.3xs}"
+        "$type": "dimension"
       },
       "name": "rh-border-width-md",
       "attributes": {
@@ -116,9 +104,7 @@ export const tokens = new Map([
         "border",
         "width",
         "md"
-      ],
-      "comment": "2px border width: Example: Alert",
-      "$type": "dimension"
+      ]
     }
   ],
   [
@@ -126,13 +112,13 @@ export const tokens = new Map([
     {
       "$value": "3px",
       "$description": "3px border width: Example: Expanded Accordion panel",
-      "value": "3px",
       "filePath": "tokens/border.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "{length.2xs}",
         "$description": "3px border width: Example: Expanded Accordion panel",
-        "value": "{length.2xs}"
+        "$type": "dimension"
       },
       "name": "rh-border-width-lg",
       "attributes": {
@@ -145,9 +131,7 @@ export const tokens = new Map([
         "border",
         "width",
         "lg"
-      ],
-      "comment": "3px border width: Example: Expanded Accordion panel",
-      "$type": "dimension"
+      ]
     }
   ],
   [
@@ -155,13 +139,11 @@ export const tokens = new Map([
     {
       "$value": "0.0px",
       "$description": "Border radius reset",
-      "value": "0.0px",
       "filePath": "tokens/border.yml",
       "isSource": true,
       "original": {
         "$value": "0.0px",
-        "$description": "Border radius reset",
-        "value": "0.0px"
+        "$description": "Border radius reset"
       },
       "name": "rh-border-radius-sharp",
       "attributes": {
@@ -174,8 +156,7 @@ export const tokens = new Map([
         "border",
         "radius",
         "sharp"
-      ],
-      "comment": "Border radius reset"
+      ]
     }
   ],
   [
@@ -183,13 +164,11 @@ export const tokens = new Map([
     {
       "$description": "3px border radius; Example: Card",
       "$value": "3px",
-      "value": "3px",
       "filePath": "tokens/border.yml",
       "isSource": true,
       "original": {
         "$description": "3px border radius; Example: Card",
-        "$value": "{length.2xs}",
-        "value": "{length.2xs}"
+        "$value": "{length.2xs}"
       },
       "name": "rh-border-radius-default",
       "attributes": {
@@ -202,8 +181,7 @@ export const tokens = new Map([
         "border",
         "radius",
         "default"
-      ],
-      "comment": "3px border radius; Example: Card"
+      ]
     }
   ],
   [
@@ -211,13 +189,11 @@ export const tokens = new Map([
     {
       "$value": "64px",
       "$description": "Pill border radius; Example: Label",
-      "value": "64px",
       "filePath": "tokens/border.yml",
       "isSource": true,
       "original": {
         "$value": "{length.4xl}",
-        "$description": "Pill border radius; Example: Label",
-        "value": "{length.4xl}"
+        "$description": "Pill border radius; Example: Label"
       },
       "name": "rh-border-radius-pill",
       "attributes": {
@@ -230,8 +206,7 @@ export const tokens = new Map([
         "border",
         "radius",
         "pill"
-      ],
-      "comment": "Pill border radius; Example: Label"
+      ]
     }
   ],
   [
@@ -249,9 +224,9 @@ export const tokens = new Map([
         "type": "2xsMax",
         "px": 575
       },
-      "value": "575px",
       "filePath": "tokens/breakpoints.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "575px",
         "$description": "Mobile portrait (max-width)",
@@ -263,15 +238,13 @@ export const tokens = new Map([
         "attributes": {
           "category": "media"
         },
-        "value": "575px"
+        "$type": "dimension"
       },
       "name": "rh-breakpoint-2xs-max",
       "path": [
         "breakpoint",
         "2xsMax"
-      ],
-      "comment": "Mobile portrait (max-width)",
-      "$type": "dimension"
+      ]
     }
   ],
   [
@@ -289,9 +262,9 @@ export const tokens = new Map([
         "type": "xs",
         "px": 576
       },
-      "value": "576px",
       "filePath": "tokens/breakpoints.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "576px",
         "$description": "Mobile portrait",
@@ -303,15 +276,13 @@ export const tokens = new Map([
         "attributes": {
           "category": "media"
         },
-        "value": "576px"
+        "$type": "dimension"
       },
       "name": "rh-breakpoint-xs",
       "path": [
         "breakpoint",
         "xs"
-      ],
-      "comment": "Mobile portrait",
-      "$type": "dimension"
+      ]
     }
   ],
   [
@@ -329,9 +300,9 @@ export const tokens = new Map([
         "type": "xsMax",
         "px": 767
       },
-      "value": "767px",
       "filePath": "tokens/breakpoints.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "767px",
         "$description": "Mobile landscape (max-width)",
@@ -343,15 +314,13 @@ export const tokens = new Map([
         "attributes": {
           "category": "media"
         },
-        "value": "767px"
+        "$type": "dimension"
       },
       "name": "rh-breakpoint-xs-max",
       "path": [
         "breakpoint",
         "xsMax"
-      ],
-      "comment": "Mobile landscape (max-width)",
-      "$type": "dimension"
+      ]
     }
   ],
   [
@@ -369,9 +338,9 @@ export const tokens = new Map([
         "type": "sm",
         "px": 768
       },
-      "value": "768px",
       "filePath": "tokens/breakpoints.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "768px",
         "$description": "Mobile landscape",
@@ -383,15 +352,13 @@ export const tokens = new Map([
         "attributes": {
           "category": "media"
         },
-        "value": "768px"
+        "$type": "dimension"
       },
       "name": "rh-breakpoint-sm",
       "path": [
         "breakpoint",
         "sm"
-      ],
-      "comment": "Mobile landscape",
-      "$type": "dimension"
+      ]
     }
   ],
   [
@@ -409,9 +376,9 @@ export const tokens = new Map([
         "type": "smMax",
         "px": 991
       },
-      "value": "991px",
       "filePath": "tokens/breakpoints.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "991px",
         "$description": "Mobile landscape (max-width)",
@@ -423,15 +390,13 @@ export const tokens = new Map([
         "attributes": {
           "category": "media"
         },
-        "value": "991px"
+        "$type": "dimension"
       },
       "name": "rh-breakpoint-sm-max",
       "path": [
         "breakpoint",
         "smMax"
-      ],
-      "comment": "Mobile landscape (max-width)",
-      "$type": "dimension"
+      ]
     }
   ],
   [
@@ -449,9 +414,9 @@ export const tokens = new Map([
         "type": "md",
         "px": 992
       },
-      "value": "992px",
       "filePath": "tokens/breakpoints.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "992px",
         "$description": "Tablet portrait",
@@ -463,15 +428,13 @@ export const tokens = new Map([
         "attributes": {
           "category": "media"
         },
-        "value": "992px"
+        "$type": "dimension"
       },
       "name": "rh-breakpoint-md",
       "path": [
         "breakpoint",
         "md"
-      ],
-      "comment": "Tablet portrait",
-      "$type": "dimension"
+      ]
     }
   ],
   [
@@ -489,9 +452,9 @@ export const tokens = new Map([
         "type": "mdMax",
         "px": 1199
       },
-      "value": "1199px",
       "filePath": "tokens/breakpoints.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "1199px",
         "$description": "Tablet portrait (max-width)",
@@ -503,15 +466,13 @@ export const tokens = new Map([
         "attributes": {
           "category": "media"
         },
-        "value": "1199px"
+        "$type": "dimension"
       },
       "name": "rh-breakpoint-md-max",
       "path": [
         "breakpoint",
         "mdMax"
-      ],
-      "comment": "Tablet portrait (max-width)",
-      "$type": "dimension"
+      ]
     }
   ],
   [
@@ -529,9 +490,9 @@ export const tokens = new Map([
         "type": "lg",
         "px": 1200
       },
-      "value": "1200px",
       "filePath": "tokens/breakpoints.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "1200px",
         "$description": "Tablet landscape",
@@ -543,15 +504,13 @@ export const tokens = new Map([
         "attributes": {
           "category": "media"
         },
-        "value": "1200px"
+        "$type": "dimension"
       },
       "name": "rh-breakpoint-lg",
       "path": [
         "breakpoint",
         "lg"
-      ],
-      "comment": "Tablet landscape",
-      "$type": "dimension"
+      ]
     }
   ],
   [
@@ -569,9 +528,9 @@ export const tokens = new Map([
         "type": "lgMax",
         "px": 1439
       },
-      "value": "1439px",
       "filePath": "tokens/breakpoints.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "1439px",
         "$description": "Tablet landscape (max-width)",
@@ -583,15 +542,13 @@ export const tokens = new Map([
         "attributes": {
           "category": "media"
         },
-        "value": "1439px"
+        "$type": "dimension"
       },
       "name": "rh-breakpoint-lg-max",
       "path": [
         "breakpoint",
         "lgMax"
-      ],
-      "comment": "Tablet landscape (max-width)",
-      "$type": "dimension"
+      ]
     }
   ],
   [
@@ -609,9 +566,9 @@ export const tokens = new Map([
         "type": "xl",
         "px": 1440
       },
-      "value": "1440px",
       "filePath": "tokens/breakpoints.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "1440px",
         "$description": "Desktop small",
@@ -623,15 +580,13 @@ export const tokens = new Map([
         "attributes": {
           "category": "media"
         },
-        "value": "1440px"
+        "$type": "dimension"
       },
       "name": "rh-breakpoint-xl",
       "path": [
         "breakpoint",
         "xl"
-      ],
-      "comment": "Desktop small",
-      "$type": "dimension"
+      ]
     }
   ],
   [
@@ -649,9 +604,9 @@ export const tokens = new Map([
         "type": "xlMax",
         "px": 1679
       },
-      "value": "1679px",
       "filePath": "tokens/breakpoints.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "1679px",
         "$description": "Desktop small (max-width)",
@@ -663,15 +618,13 @@ export const tokens = new Map([
         "attributes": {
           "category": "media"
         },
-        "value": "1679px"
+        "$type": "dimension"
       },
       "name": "rh-breakpoint-xl-max",
       "path": [
         "breakpoint",
         "xlMax"
-      ],
-      "comment": "Desktop small (max-width)",
-      "$type": "dimension"
+      ]
     }
   ],
   [
@@ -689,9 +642,9 @@ export const tokens = new Map([
         "type": "2xl",
         "px": 1680
       },
-      "value": "1680px",
       "filePath": "tokens/breakpoints.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "1680px",
         "$description": "Desktop large",
@@ -703,15 +656,64 @@ export const tokens = new Map([
         "attributes": {
           "category": "media"
         },
-        "value": "1680px"
+        "$type": "dimension"
       },
       "name": "rh-breakpoint-2xl",
       "path": [
         "breakpoint",
         "2xl"
-      ],
-      "comment": "Desktop large",
-      "$type": "dimension"
+      ]
+    }
+  ],
+  [
+    "--rh-color-accent-base",
+    {
+      "$value": "",
+      "$description": "Responsive `accent-base` color value. Typically read only - use a themable container e.g. `<rh-surface>` Resolves to `--rh-color-accent-base-on-light` on a themable container with a light color palette and `--rh-color-accent-base-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/accent.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.accent.base.on-light}",
+          "{color.accent.base.on-dark}"
+        ],
+        "$description": "Responsive `accent-base` color value. Typically read only - use a themable container e.g. `<rh-surface>` Resolves to `--rh-color-accent-base-on-light` on a themable container with a light color palette and `--rh-color-accent-base-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-accent-base",
+      "attributes": {
+        "category": "color",
+        "type": "accent",
+        "item": "base",
+        "subitem": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "accent",
+        "base",
+        "_"
+      ]
     }
   ],
   [
@@ -719,13 +721,13 @@ export const tokens = new Map([
     {
       "$value": "#0066cc",
       "$description": "Inline link (light theme)",
-      "value": "#0066cc",
       "filePath": "tokens/color/accent.yml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "{color.blue.50}",
         "$description": "Inline link (light theme)",
-        "value": "{color.blue.50}"
+        "$type": "color"
       },
       "name": "rh-color-accent-base-on-light",
       "attributes": {
@@ -759,9 +761,7 @@ export const tokens = new Map([
         "accent",
         "base",
         "on-light"
-      ],
-      "comment": "Inline link (light theme)",
-      "$type": "color"
+      ]
     }
   ],
   [
@@ -769,13 +769,13 @@ export const tokens = new Map([
     {
       "$value": "#92c5f9",
       "$description": "Inline link (dark theme)",
-      "value": "#92c5f9",
       "filePath": "tokens/color/accent.yml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "{color.blue.30}",
         "$description": "Inline link (dark theme)",
-        "value": "{color.blue.30}"
+        "$type": "color"
       },
       "name": "rh-color-accent-base-on-dark",
       "attributes": {
@@ -809,9 +809,58 @@ export const tokens = new Map([
         "accent",
         "base",
         "on-dark"
-      ],
-      "comment": "Inline link (dark theme)",
-      "$type": "color"
+      ]
+    }
+  ],
+  [
+    "--rh-color-accent-brand",
+    {
+      "$value": "",
+      "$description": "Responsive `accent-brand` color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-accent-brand-on-light` on a themable container with a light color palette and `--rh-color-accent-brand-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/accent.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.accent.brand.on-light}",
+          "{color.accent.brand.on-dark}"
+        ],
+        "$description": "Responsive `accent-brand` color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-accent-brand-on-light` on a themable container with a light color palette and `--rh-color-accent-brand-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-accent-brand",
+      "attributes": {
+        "category": "color",
+        "type": "accent",
+        "item": "brand",
+        "subitem": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "accent",
+        "brand",
+        "_"
+      ]
     }
   ],
   [
@@ -819,13 +868,13 @@ export const tokens = new Map([
     {
       "$value": "#ee0000",
       "$description": "Brand red (light theme)",
-      "value": "#ee0000",
       "filePath": "tokens/color/accent.yml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "{color.brand.red.on-light}",
         "$description": "Brand red (light theme)",
-        "value": "{color.brand.red.on-light}"
+        "$type": "color"
       },
       "name": "rh-color-accent-brand-on-light",
       "attributes": {
@@ -859,9 +908,7 @@ export const tokens = new Map([
         "accent",
         "brand",
         "on-light"
-      ],
-      "comment": "Brand red (light theme)",
-      "$type": "color"
+      ]
     }
   ],
   [
@@ -869,13 +916,13 @@ export const tokens = new Map([
     {
       "$value": "#ee0000",
       "$description": "Brand red (dark theme)",
-      "value": "#ee0000",
       "filePath": "tokens/color/accent.yml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "{color.brand.red.on-dark}",
         "$description": "Brand red (dark theme)",
-        "value": "{color.brand.red.on-dark}"
+        "$type": "color"
       },
       "name": "rh-color-accent-brand-on-dark",
       "attributes": {
@@ -909,9 +956,58 @@ export const tokens = new Map([
         "accent",
         "brand",
         "on-dark"
-      ],
-      "comment": "Brand red (dark theme)",
-      "$type": "color"
+      ]
+    }
+  ],
+  [
+    "--rh-color-border-strong",
+    {
+      "$value": "",
+      "$description": "Responsive `border-strong` color value. Typically read only - use a themable container e.g. `<rh-surface>` Resolves to `--rh-color-border-strong-on-light` on a themable container with a light color palette and `--rh-color-border-strong-on-dark` on a themable container with a dark color palette",
+      "filePath": "tokens/color/border.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.border.strong.on-light}",
+          "{color.border.strong.on-dark}"
+        ],
+        "$description": "Responsive `border-strong` color value. Typically read only - use a themable container e.g. `<rh-surface>` Resolves to `--rh-color-border-strong-on-light` on a themable container with a light color palette and `--rh-color-border-strong-on-dark` on a themable container with a dark color palette",
+        "$type": "color"
+      },
+      "name": "rh-color-border-strong",
+      "attributes": {
+        "category": "color",
+        "type": "border",
+        "item": "strong",
+        "subitem": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "border",
+        "strong",
+        "_"
+      ]
     }
   ],
   [
@@ -945,9 +1041,9 @@ export const tokens = new Map([
         },
         "isLight": false
       },
-      "value": "#151515",
       "filePath": "tokens/color/border.yml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "{color.gray.95}",
         "$description": "Strong border color (light theme)",
@@ -955,7 +1051,7 @@ export const tokens = new Map([
           "category": "border",
           "type": "color"
         },
-        "value": "{color.gray.95}"
+        "$type": "color"
       },
       "name": "rh-color-border-strong-on-light",
       "path": [
@@ -963,9 +1059,7 @@ export const tokens = new Map([
         "border",
         "strong",
         "on-light"
-      ],
-      "comment": "Strong border color (light theme)",
-      "$type": "color"
+      ]
     }
   ],
   [
@@ -999,9 +1093,9 @@ export const tokens = new Map([
         },
         "isLight": true
       },
-      "value": "#ffffff",
       "filePath": "tokens/color/border.yml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "{color.white}",
         "$description": "Strong border color (dark theme)",
@@ -1009,7 +1103,7 @@ export const tokens = new Map([
           "category": "border",
           "type": "color"
         },
-        "value": "{color.white}"
+        "$type": "color"
       },
       "name": "rh-color-border-strong-on-dark",
       "path": [
@@ -1017,9 +1111,58 @@ export const tokens = new Map([
         "border",
         "strong",
         "on-dark"
-      ],
-      "comment": "Strong border color (dark theme)",
-      "$type": "color"
+      ]
+    }
+  ],
+  [
+    "--rh-color-border-subtle",
+    {
+      "$value": "",
+      "$description": "Responsive `border-subtle` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-subtle-on-light` on a themable container with a light color palette and `--rh-color-border-subtle-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/border.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.border.subtle.on-light}",
+          "{color.border.subtle.on-dark}"
+        ],
+        "$description": "Responsive `border-subtle` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-subtle-on-light` on a themable container with a light color palette and `--rh-color-border-subtle-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-border-subtle",
+      "attributes": {
+        "category": "color",
+        "type": "border",
+        "item": "subtle",
+        "subitem": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "border",
+        "subtle",
+        "_"
+      ]
     }
   ],
   [
@@ -1053,9 +1196,9 @@ export const tokens = new Map([
         },
         "isLight": true
       },
-      "value": "#c7c7c7",
       "filePath": "tokens/color/border.yml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "{color.gray.30}",
         "$description": "Subtle border color (light theme)",
@@ -1063,7 +1206,7 @@ export const tokens = new Map([
           "category": "border",
           "type": "color"
         },
-        "value": "{color.gray.30}"
+        "$type": "color"
       },
       "name": "rh-color-border-subtle-on-light",
       "path": [
@@ -1071,9 +1214,7 @@ export const tokens = new Map([
         "border",
         "subtle",
         "on-light"
-      ],
-      "comment": "Subtle border color (light theme)",
-      "$type": "color"
+      ]
     }
   ],
   [
@@ -1107,9 +1248,9 @@ export const tokens = new Map([
         },
         "isLight": false
       },
-      "value": "#707070",
       "filePath": "tokens/color/border.yml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "{color.gray.50}",
         "$description": "Subtle border color (dark theme)",
@@ -1117,7 +1258,7 @@ export const tokens = new Map([
           "category": "border",
           "type": "color"
         },
-        "value": "{color.gray.50}"
+        "$type": "color"
       },
       "name": "rh-color-border-subtle-on-dark",
       "path": [
@@ -1125,9 +1266,58 @@ export const tokens = new Map([
         "border",
         "subtle",
         "on-dark"
-      ],
-      "comment": "Subtle border color (dark theme)",
-      "$type": "color"
+      ]
+    }
+  ],
+  [
+    "--rh-color-border-interactive",
+    {
+      "$value": "",
+      "$description": "Responsive `border-interactive` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-interactive-on-light` on a themable container with a light color palette and `--rh-color-border-interactive-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/border.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.border.interactive.on-light}",
+          "{color.border.interactive.on-dark}"
+        ],
+        "$description": "Responsive `border-interactive` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-interactive-on-light` on a themable container with a light color palette and `--rh-color-border-interactive-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-border-interactive",
+      "attributes": {
+        "category": "color",
+        "type": "border",
+        "item": "interactive",
+        "subitem": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "border",
+        "interactive",
+        "_"
+      ]
     }
   ],
   [
@@ -1161,9 +1351,9 @@ export const tokens = new Map([
         },
         "isLight": false
       },
-      "value": "#0066cc",
       "filePath": "tokens/color/border.yml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "{color.blue.50}",
         "$description": "Interactive border color (light theme)",
@@ -1171,7 +1361,7 @@ export const tokens = new Map([
           "category": "border",
           "type": "color"
         },
-        "value": "{color.blue.50}"
+        "$type": "color"
       },
       "name": "rh-color-border-interactive-on-light",
       "path": [
@@ -1179,9 +1369,7 @@ export const tokens = new Map([
         "border",
         "interactive",
         "on-light"
-      ],
-      "comment": "Interactive border color (light theme)",
-      "$type": "color"
+      ]
     }
   ],
   [
@@ -1215,9 +1403,9 @@ export const tokens = new Map([
         },
         "isLight": true
       },
-      "value": "#92c5f9",
       "filePath": "tokens/color/border.yml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "{color.blue.30}",
         "$description": "Interactive border color (dark theme)",
@@ -1225,7 +1413,7 @@ export const tokens = new Map([
           "category": "border",
           "type": "color"
         },
-        "value": "{color.blue.30}"
+        "$type": "color"
       },
       "name": "rh-color-border-interactive-on-dark",
       "path": [
@@ -1233,359 +1421,1179 @@ export const tokens = new Map([
         "border",
         "interactive",
         "on-dark"
-      ],
-      "comment": "Interactive border color (dark theme)",
-      "$type": "color"
+      ]
     }
   ],
   [
-    "--rh-color-brand-red-lightest",
+    "--rh-color-border-destructive",
     {
-      "$value": "#fbc5c5",
-      "$description": "Lightest brand red",
-      "value": "#fbc5c5",
-      "filePath": "tokens/color/brand.yml",
+      "$value": "",
+      "$description": "Responsive `border-destructive` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-destructive-on-light` on a themable container with a light color palette and `--rh-color-border-destructive-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/border.yml",
       "isSource": true,
+      "$type": "color",
       "original": {
-        "$value": "{color.red.20}",
-        "$description": "Lightest brand red",
-        "value": "{color.red.20}"
+        "$value": [
+          "{color.border.destructive.on-light}",
+          "{color.border.destructive.on-dark}"
+        ],
+        "$description": "Responsive `border-destructive` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-destructive-on-light` on a themable container with a light color palette and `--rh-color-border-destructive-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
       },
-      "name": "rh-color-brand-red-lightest",
+      "name": "rh-color-border-destructive",
       "attributes": {
         "category": "color",
-        "type": "brand",
-        "item": "red",
-        "subitem": "lightest",
-        "hex": "fbc5c5",
+        "type": "border",
+        "item": "destructive",
+        "subitem": "_",
+        "hex": "000000",
         "rgb": {
-          "r": 251,
-          "g": 197,
-          "b": 197,
+          "r": 0,
+          "g": 0,
+          "b": 0,
           "a": 1
         },
         "hsl": {
           "h": 0,
-          "s": 87.09677419354838,
-          "l": 87.84313725490196,
+          "s": 0,
+          "l": 0,
           "a": 1
         },
         "hsv": {
           "h": 0,
-          "s": 0.21513944223107562,
-          "v": 0.984313725490196,
+          "s": 0,
+          "v": 0,
           "a": 1
         },
-        "isLight": true
+        "isLight": false
       },
       "path": [
         "color",
-        "brand",
-        "red",
-        "lightest"
-      ],
-      "comment": "Lightest brand red",
-      "$type": "color"
+        "border",
+        "destructive",
+        "_"
+      ]
     }
   ],
   [
-    "--rh-color-brand-red-lighter",
+    "--rh-color-border-destructive-on-light",
     {
-      "$value": "#f9a8a8",
-      "$description": "lighter brand red",
-      "value": "#f9a8a8",
-      "filePath": "tokens/color/brand.yml",
-      "isSource": true,
-      "original": {
-        "$value": "{color.red.30}",
-        "$description": "lighter brand red",
-        "value": "{color.red.30}"
+      "$value": "#b1380b",
+      "$description": "Destructive border color (light theme)",
+      "attributes": {
+        "category": "border",
+        "type": "color",
+        "item": "destructive",
+        "subitem": "on-light",
+        "hex": "b1380b",
+        "rgb": {
+          "r": 177,
+          "g": 56,
+          "b": 11,
+          "a": 1
+        },
+        "hsl": {
+          "h": 16.265060240963855,
+          "s": 88.29787234042554,
+          "l": 36.86274509803921,
+          "a": 1
+        },
+        "hsv": {
+          "h": 16.265060240963855,
+          "s": 0.9378531073446328,
+          "v": 0.6941176470588235,
+          "a": 1
+        },
+        "isLight": false
       },
-      "name": "rh-color-brand-red-lighter",
+      "filePath": "tokens/color/border.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.border.status.danger.on-light}",
+        "$description": "Destructive border color (light theme)",
+        "attributes": {
+          "category": "border",
+          "type": "color"
+        },
+        "$type": "color"
+      },
+      "name": "rh-color-border-destructive-on-light",
+      "path": [
+        "color",
+        "border",
+        "destructive",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-border-destructive-on-dark",
+    {
+      "$value": "#f0561d",
+      "$description": "Destructive border color (dark theme)",
+      "attributes": {
+        "category": "border",
+        "type": "color",
+        "item": "destructive",
+        "subitem": "on-dark",
+        "hex": "f0561d",
+        "rgb": {
+          "r": 240,
+          "g": 86,
+          "b": 29,
+          "a": 1
+        },
+        "hsl": {
+          "h": 16.208530805687207,
+          "s": 87.55186721991701,
+          "l": 52.74509803921569,
+          "a": 1
+        },
+        "hsv": {
+          "h": 16.208530805687207,
+          "s": 0.8791666666666667,
+          "v": 0.9411764705882353,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "filePath": "tokens/color/border.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.border.status.danger.on-dark}",
+        "$description": "Destructive border color (dark theme)",
+        "attributes": {
+          "category": "border",
+          "type": "color"
+        },
+        "$type": "color"
+      },
+      "name": "rh-color-border-destructive-on-dark",
+      "path": [
+        "color",
+        "border",
+        "destructive",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-border-status-danger",
+    {
+      "$value": "",
+      "$description": "Responsive `border-danger` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-danger-on-light` on a themable container with a light color palette and `--rh-color-border-danger-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/border.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.border.status.danger.on-light}",
+          "{color.border.status.danger.on-dark}"
+        ],
+        "$description": "Responsive `border-danger` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-danger-on-light` on a themable container with a light color palette and `--rh-color-border-danger-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-border-status-danger",
       "attributes": {
         "category": "color",
-        "type": "brand",
-        "item": "red",
-        "subitem": "lighter",
-        "hex": "f9a8a8",
+        "type": "border",
+        "item": "status",
+        "subitem": "danger",
+        "state": "_",
+        "hex": "000000",
         "rgb": {
-          "r": 249,
-          "g": 168,
-          "b": 168,
+          "r": 0,
+          "g": 0,
+          "b": 0,
           "a": 1
         },
         "hsl": {
           "h": 0,
-          "s": 87.0967741935484,
-          "l": 81.76470588235294,
+          "s": 0,
+          "l": 0,
           "a": 1
         },
         "hsv": {
           "h": 0,
-          "s": 0.3253012048192771,
-          "v": 0.9764705882352941,
+          "s": 0,
+          "v": 0,
           "a": 1
         },
-        "isLight": true
+        "isLight": false
       },
       "path": [
         "color",
-        "brand",
-        "red",
-        "lighter"
-      ],
-      "comment": "lighter brand red",
-      "$type": "color"
+        "border",
+        "status",
+        "danger",
+        "_"
+      ]
     }
   ],
   [
-    "--rh-color-brand-red-light",
+    "--rh-color-border-status-danger-on-light",
     {
-      "$value": "#f56e6e",
-      "$description": "Light brand red",
-      "value": "#f56e6e",
-      "filePath": "tokens/color/brand.yml",
-      "isSource": true,
-      "original": {
-        "$value": "{color.red.40}",
-        "$description": "Light brand red",
-        "value": "{color.red.40}"
+      "$value": "#b1380b",
+      "$description": "Danger border color (light theme)",
+      "attributes": {
+        "category": "border",
+        "type": "color",
+        "item": "status",
+        "subitem": "danger",
+        "state": "on-light",
+        "hex": "b1380b",
+        "rgb": {
+          "r": 177,
+          "g": 56,
+          "b": 11,
+          "a": 1
+        },
+        "hsl": {
+          "h": 16.265060240963855,
+          "s": 88.29787234042554,
+          "l": 36.86274509803921,
+          "a": 1
+        },
+        "hsv": {
+          "h": 16.265060240963855,
+          "s": 0.9378531073446328,
+          "v": 0.6941176470588235,
+          "a": 1
+        },
+        "isLight": false
       },
-      "name": "rh-color-brand-red-light",
+      "filePath": "tokens/color/border.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.status.danger.on-light}",
+        "$description": "Danger border color (light theme)",
+        "attributes": {
+          "category": "border",
+          "type": "color"
+        },
+        "$type": "color"
+      },
+      "name": "rh-color-border-status-danger-on-light",
+      "path": [
+        "color",
+        "border",
+        "status",
+        "danger",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-border-status-danger-on-dark",
+    {
+      "$value": "#f0561d",
+      "$description": "Danger border color (dark theme)",
+      "attributes": {
+        "category": "border",
+        "type": "color",
+        "item": "status",
+        "subitem": "danger",
+        "state": "on-dark",
+        "hex": "f0561d",
+        "rgb": {
+          "r": 240,
+          "g": 86,
+          "b": 29,
+          "a": 1
+        },
+        "hsl": {
+          "h": 16.208530805687207,
+          "s": 87.55186721991701,
+          "l": 52.74509803921569,
+          "a": 1
+        },
+        "hsv": {
+          "h": 16.208530805687207,
+          "s": 0.8791666666666667,
+          "v": 0.9411764705882353,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "filePath": "tokens/color/border.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.status.danger.on-dark}",
+        "$description": "Danger border color (dark theme)",
+        "attributes": {
+          "category": "border",
+          "type": "color"
+        },
+        "$type": "color"
+      },
+      "name": "rh-color-border-status-danger-on-dark",
+      "path": [
+        "color",
+        "border",
+        "status",
+        "danger",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-border-status-caution",
+    {
+      "$value": "",
+      "$description": "Responsive `border-caution` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-caution-on-light` on a themable container with a light color palette and `--rh-color-border-caution-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/border.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.border.status.caution.on-light}",
+          "{color.border.status.caution.on-dark}"
+        ],
+        "$description": "Responsive `border-caution` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-caution-on-light` on a themable container with a light color palette and `--rh-color-border-caution-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-border-status-caution",
       "attributes": {
         "category": "color",
-        "type": "brand",
-        "item": "red",
-        "subitem": "light",
-        "hex": "f56e6e",
+        "type": "border",
+        "item": "status",
+        "subitem": "caution",
+        "state": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "border",
+        "status",
+        "caution",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-border-status-caution-on-light",
+    {
+      "$value": "#ca6c0f",
+      "$description": "Caution border color (light theme)",
+      "attributes": {
+        "category": "border",
+        "type": "color",
+        "item": "status",
+        "subitem": "caution",
+        "state": "on-light",
+        "hex": "ca6c0f",
+        "rgb": {
+          "r": 202,
+          "g": 108,
+          "b": 15,
+          "a": 1
+        },
+        "hsl": {
+          "h": 29.83957219251337,
+          "s": 86.17511520737327,
+          "l": 42.549019607843135,
+          "a": 1
+        },
+        "hsv": {
+          "h": 29.83957219251337,
+          "s": 0.9257425742574257,
+          "v": 0.792156862745098,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "filePath": "tokens/color/border.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.status.caution.on-light}",
+        "$description": "Caution border color (light theme)",
+        "attributes": {
+          "category": "border",
+          "type": "color"
+        },
+        "$type": "color"
+      },
+      "name": "rh-color-border-status-caution-on-light",
+      "path": [
+        "color",
+        "border",
+        "status",
+        "caution",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-border-status-caution-on-dark",
+    {
+      "$value": "#f5921b",
+      "$description": "Caution border color (dark theme)",
+      "attributes": {
+        "category": "border",
+        "type": "color",
+        "item": "status",
+        "subitem": "caution",
+        "state": "on-dark",
+        "hex": "f5921b",
         "rgb": {
           "r": 245,
-          "g": 110,
-          "b": 110,
+          "g": 146,
+          "b": 27,
           "a": 1
         },
         "hsl": {
-          "h": 0,
-          "s": 87.09677419354841,
-          "l": 69.6078431372549,
+          "h": 32.752293577981646,
+          "s": 91.5966386554622,
+          "l": 53.333333333333336,
           "a": 1
         },
         "hsv": {
-          "h": 0,
-          "s": 0.5510204081632653,
+          "h": 32.752293577981646,
+          "s": 0.889795918367347,
           "v": 0.9607843137254902,
           "a": 1
         },
         "isLight": true
       },
-      "path": [
-        "color",
-        "brand",
-        "red",
-        "light"
-      ],
-      "comment": "Light brand red",
-      "$type": "color"
-    }
-  ],
-  [
-    "--rh-color-brand-red-dark",
-    {
-      "$value": "#a60000",
-      "$description": "Dark brand red/Brand red hover",
-      "value": "#a60000",
-      "filePath": "tokens/color/brand.yml",
+      "filePath": "tokens/color/border.yml",
       "isSource": true,
+      "$type": "color",
       "original": {
-        "$value": "{color.red.60}",
-        "$description": "Dark brand red/Brand red hover",
-        "value": "{color.red.60}"
+        "$value": "{color.status.caution.on-dark}",
+        "$description": "Caution border color (dark theme)",
+        "attributes": {
+          "category": "border",
+          "type": "color"
+        },
+        "$type": "color"
       },
-      "name": "rh-color-brand-red-dark",
-      "attributes": {
-        "category": "color",
-        "type": "brand",
-        "item": "red",
-        "subitem": "dark",
-        "hex": "a60000",
-        "rgb": {
-          "r": 166,
-          "g": 0,
-          "b": 0,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 100,
-          "l": 32.549019607843135,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 1,
-          "v": 0.6509803921568628,
-          "a": 1
-        },
-        "isLight": false
-      },
+      "name": "rh-color-border-status-caution-on-dark",
       "path": [
         "color",
-        "brand",
-        "red",
-        "dark"
-      ],
-      "comment": "Dark brand red/Brand red hover",
-      "$type": "color"
-    }
-  ],
-  [
-    "--rh-color-brand-red-darker",
-    {
-      "$value": "#5f0000",
-      "$description": "Darker brand red",
-      "value": "#5f0000",
-      "filePath": "tokens/color/brand.yml",
-      "isSource": true,
-      "original": {
-        "$value": "{color.red.70}",
-        "$description": "Darker brand red",
-        "value": "{color.red.70}"
-      },
-      "name": "rh-color-brand-red-darker",
-      "attributes": {
-        "category": "color",
-        "type": "brand",
-        "item": "red",
-        "subitem": "darker",
-        "hex": "5f0000",
-        "rgb": {
-          "r": 95,
-          "g": 0,
-          "b": 0,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 100,
-          "l": 18.627450980392158,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 1,
-          "v": 0.37254901960784315,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "brand",
-        "red",
-        "darker"
-      ],
-      "comment": "Darker brand red",
-      "$type": "color"
-    }
-  ],
-  [
-    "--rh-color-brand-red-darkest",
-    {
-      "$value": "#5f0000",
-      "$description": "Darkest brand red",
-      "value": "#5f0000",
-      "filePath": "tokens/color/brand.yml",
-      "isSource": true,
-      "original": {
-        "$value": "{color.red.70}",
-        "$description": "Darkest brand red",
-        "value": "{color.red.70}"
-      },
-      "name": "rh-color-brand-red-darkest",
-      "attributes": {
-        "category": "color",
-        "type": "brand",
-        "item": "red",
-        "subitem": "darkest",
-        "hex": "5f0000",
-        "rgb": {
-          "r": 95,
-          "g": 0,
-          "b": 0,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 100,
-          "l": 18.627450980392158,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 1,
-          "v": 0.37254901960784315,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "brand",
-        "red",
-        "darkest"
-      ],
-      "comment": "Darkest brand red",
-      "$type": "color"
-    }
-  ],
-  [
-    "--rh-color-brand-red-on-dark",
-    {
-      "$value": "#ee0000",
-      "$description": "Brand red on dark background",
-      "value": "#ee0000",
-      "filePath": "tokens/color/brand.yml",
-      "isSource": true,
-      "original": {
-        "$value": "{color.red.50}",
-        "$description": "Brand red on dark background",
-        "value": "{color.red.50}"
-      },
-      "name": "rh-color-brand-red-on-dark",
-      "attributes": {
-        "category": "color",
-        "type": "brand",
-        "item": "red",
-        "subitem": "on-dark",
-        "hex": "ee0000",
-        "rgb": {
-          "r": 238,
-          "g": 0,
-          "b": 0,
-          "a": 1
-        },
-        "hsl": {
-          "h": 0,
-          "s": 100,
-          "l": 46.666666666666664,
-          "a": 1
-        },
-        "hsv": {
-          "h": 0,
-          "s": 1,
-          "v": 0.9333333333333333,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "brand",
-        "red",
+        "border",
+        "status",
+        "caution",
         "on-dark"
-      ],
-      "comment": "Brand red on dark background",
-      "$type": "color"
+      ]
+    }
+  ],
+  [
+    "--rh-color-border-status-warning",
+    {
+      "$value": "",
+      "$description": "Responsive `border-warning` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-warning-on-light` on a themable container with a light color palette and `--rh-color-border-warning-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/border.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.border.status.warning.on-light}",
+          "{color.border.status.warning.on-dark}"
+        ],
+        "$description": "Responsive `border-warning` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-warning-on-light` on a themable container with a light color palette and `--rh-color-border-warning-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-border-status-warning",
+      "attributes": {
+        "category": "color",
+        "type": "border",
+        "item": "status",
+        "subitem": "warning",
+        "state": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "border",
+        "status",
+        "warning",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-border-status-warning-on-light",
+    {
+      "$value": "#dca614",
+      "$description": "Warning border color (light theme)",
+      "attributes": {
+        "category": "border",
+        "type": "color",
+        "item": "status",
+        "subitem": "warning",
+        "state": "on-light",
+        "hex": "dca614",
+        "rgb": {
+          "r": 220,
+          "g": 166,
+          "b": 20,
+          "a": 1
+        },
+        "hsl": {
+          "h": 43.79999999999999,
+          "s": 83.33333333333334,
+          "l": 47.05882352941176,
+          "a": 1
+        },
+        "hsv": {
+          "h": 43.79999999999999,
+          "s": 0.9090909090909092,
+          "v": 0.8627450980392157,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "filePath": "tokens/color/border.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.status.warning.on-light}",
+        "$description": "Warning border color (light theme)",
+        "attributes": {
+          "category": "border",
+          "type": "color"
+        },
+        "$type": "color"
+      },
+      "name": "rh-color-border-status-warning-on-light",
+      "path": [
+        "color",
+        "border",
+        "status",
+        "warning",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-border-status-warning-on-dark",
+    {
+      "$value": "#ffcc17",
+      "$description": "Warning border color (dark theme)",
+      "attributes": {
+        "category": "border",
+        "type": "color",
+        "item": "status",
+        "subitem": "warning",
+        "state": "on-dark",
+        "hex": "ffcc17",
+        "rgb": {
+          "r": 255,
+          "g": 204,
+          "b": 23,
+          "a": 1
+        },
+        "hsl": {
+          "h": 46.81034482758621,
+          "s": 100,
+          "l": 54.509803921568626,
+          "a": 1
+        },
+        "hsv": {
+          "h": 46.81034482758621,
+          "s": 0.9098039215686274,
+          "v": 1,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "filePath": "tokens/color/border.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.status.warning.on-dark}",
+        "$description": "Warning border color (dark theme)",
+        "attributes": {
+          "category": "border",
+          "type": "color"
+        },
+        "$type": "color"
+      },
+      "name": "rh-color-border-status-warning-on-dark",
+      "path": [
+        "color",
+        "border",
+        "status",
+        "warning",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-border-status-neutral",
+    {
+      "$value": "",
+      "$description": "Responsive `border-neutral` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-neutral-on-light` on a themable container with a light color palette and `--rh-color-border-neutral-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/border.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.border.status.neutral.on-light}",
+          "{color.border.status.neutral.on-dark}"
+        ],
+        "$description": "Responsive `border-neutral` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-neutral-on-light` on a themable container with a light color palette and `--rh-color-border-neutral-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-border-status-neutral",
+      "attributes": {
+        "category": "color",
+        "type": "border",
+        "item": "status",
+        "subitem": "neutral",
+        "state": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "border",
+        "status",
+        "neutral",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-border-status-neutral-on-light",
+    {
+      "$value": "#4d4d4d",
+      "$description": "Neutral border color (light theme)",
+      "attributes": {
+        "category": "border",
+        "type": "color",
+        "item": "status",
+        "subitem": "neutral",
+        "state": "on-light",
+        "hex": "4d4d4d",
+        "rgb": {
+          "r": 77,
+          "g": 77,
+          "b": 77,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 30.19607843137255,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.30196078431372547,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "filePath": "tokens/color/border.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.status.neutral.on-light}",
+        "$description": "Neutral border color (light theme)",
+        "attributes": {
+          "category": "border",
+          "type": "color"
+        },
+        "$type": "color"
+      },
+      "name": "rh-color-border-status-neutral-on-light",
+      "path": [
+        "color",
+        "border",
+        "status",
+        "neutral",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-border-status-neutral-on-dark",
+    {
+      "$value": "#c7c7c7",
+      "$description": "Neutral border color (dark theme)",
+      "attributes": {
+        "category": "border",
+        "type": "color",
+        "item": "status",
+        "subitem": "neutral",
+        "state": "on-dark",
+        "hex": "c7c7c7",
+        "rgb": {
+          "r": 199,
+          "g": 199,
+          "b": 199,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 78.03921568627452,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.7803921568627451,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "filePath": "tokens/color/border.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.status.neutral.on-dark}",
+        "$description": "Neutral border color (dark theme)",
+        "attributes": {
+          "category": "border",
+          "type": "color"
+        },
+        "$type": "color"
+      },
+      "name": "rh-color-border-status-neutral-on-dark",
+      "path": [
+        "color",
+        "border",
+        "status",
+        "neutral",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-border-status-info",
+    {
+      "$value": "",
+      "$description": "Responsive `border-info` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-info-on-light` on a themable container with a light color palette and `--rh-color-border-info-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/border.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.border.status.info.on-light}",
+          "{color.border.status.info.on-dark}"
+        ],
+        "$description": "Responsive `border-info` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-info-on-light` on a themable container with a light color palette and `--rh-color-border-info-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-border-status-info",
+      "attributes": {
+        "category": "color",
+        "type": "border",
+        "item": "status",
+        "subitem": "info",
+        "state": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "border",
+        "status",
+        "info",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-border-status-info-on-light",
+    {
+      "$value": "#5e40be",
+      "$description": "Info border color (light theme)",
+      "attributes": {
+        "category": "border",
+        "type": "color",
+        "item": "status",
+        "subitem": "info",
+        "state": "on-light",
+        "hex": "5e40be",
+        "rgb": {
+          "r": 94,
+          "g": 64,
+          "b": 190,
+          "a": 1
+        },
+        "hsl": {
+          "h": 254.2857142857143,
+          "s": 49.60629921259843,
+          "l": 49.80392156862745,
+          "a": 1
+        },
+        "hsv": {
+          "h": 254.2857142857143,
+          "s": 0.6631578947368422,
+          "v": 0.7450980392156863,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "filePath": "tokens/color/border.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.status.info.on-light}",
+        "$description": "Info border color (light theme)",
+        "attributes": {
+          "category": "border",
+          "type": "color"
+        },
+        "$type": "color"
+      },
+      "name": "rh-color-border-status-info-on-light",
+      "path": [
+        "color",
+        "border",
+        "status",
+        "info",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-border-status-info-on-dark",
+    {
+      "$value": "#b6a6e9",
+      "$description": "Info border color (dark theme)",
+      "attributes": {
+        "category": "border",
+        "type": "color",
+        "item": "status",
+        "subitem": "info",
+        "state": "on-dark",
+        "hex": "b6a6e9",
+        "rgb": {
+          "r": 182,
+          "g": 166,
+          "b": 233,
+          "a": 1
+        },
+        "hsl": {
+          "h": 254.32835820895522,
+          "s": 60.36036036036033,
+          "l": 78.23529411764706,
+          "a": 1
+        },
+        "hsv": {
+          "h": 254.32835820895522,
+          "s": 0.2875536480686695,
+          "v": 0.9137254901960784,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "filePath": "tokens/color/border.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.status.info.on-dark}",
+        "$description": "Info border color (dark theme)",
+        "attributes": {
+          "category": "border",
+          "type": "color"
+        },
+        "$type": "color"
+      },
+      "name": "rh-color-border-status-info-on-dark",
+      "path": [
+        "color",
+        "border",
+        "status",
+        "info",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-border-status-success",
+    {
+      "$value": "",
+      "$description": "Responsive `border-success` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-success-on-light` on a themable container with a light color palette and `--rh-color-border-success-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/border.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.border.status.success.on-light}",
+          "{color.border.status.success.on-dark}"
+        ],
+        "$description": "Responsive `border-success` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-success-on-light` on a themable container with a light color palette and `--rh-color-border-success-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-border-status-success",
+      "attributes": {
+        "category": "color",
+        "type": "border",
+        "item": "status",
+        "subitem": "success",
+        "state": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "border",
+        "status",
+        "success",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-border-status-success-on-light",
+    {
+      "$value": "#3d7317",
+      "$description": "Success border color (light theme)",
+      "attributes": {
+        "category": "border",
+        "type": "color",
+        "item": "status",
+        "subitem": "success",
+        "state": "on-light",
+        "hex": "3d7317",
+        "rgb": {
+          "r": 61,
+          "g": 115,
+          "b": 23,
+          "a": 1
+        },
+        "hsl": {
+          "h": 95.21739130434783,
+          "s": 66.66666666666667,
+          "l": 27.058823529411764,
+          "a": 1
+        },
+        "hsv": {
+          "h": 95.21739130434783,
+          "s": 0.7999999999999999,
+          "v": 0.45098039215686275,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "filePath": "tokens/color/border.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.status.success.on-light}",
+        "$description": "Success border color (light theme)",
+        "attributes": {
+          "category": "border",
+          "type": "color"
+        },
+        "$type": "color"
+      },
+      "name": "rh-color-border-status-success-on-light",
+      "path": [
+        "color",
+        "border",
+        "status",
+        "success",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-border-status-success-on-dark",
+    {
+      "$value": "#87bb62",
+      "$description": "Success border color (dark theme)",
+      "attributes": {
+        "category": "border",
+        "type": "color",
+        "item": "status",
+        "subitem": "success",
+        "state": "on-dark",
+        "hex": "87bb62",
+        "rgb": {
+          "r": 135,
+          "g": 187,
+          "b": 98,
+          "a": 1
+        },
+        "hsl": {
+          "h": 95.05617977528091,
+          "s": 39.55555555555555,
+          "l": 55.88235294117647,
+          "a": 1
+        },
+        "hsv": {
+          "h": 95.05617977528091,
+          "s": 0.4759358288770053,
+          "v": 0.7333333333333333,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "filePath": "tokens/color/border.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.status.success.on-dark}",
+        "$description": "Success border color (dark theme)",
+        "attributes": {
+          "category": "border",
+          "type": "color"
+        },
+        "$type": "color"
+      },
+      "name": "rh-color-border-status-success-on-dark",
+      "path": [
+        "color",
+        "border",
+        "status",
+        "success",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-brand-red",
+    {
+      "$value": "",
+      "$description": "Responsive `brand-red` color value. Typically read only - use a themable container e.g. `<rh-surface>` Resolves to `--rh-color-brand-red-on-light` on a themable container with a light color palette and `--rh-color-brand-red-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/brand.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.brand.red.on-light}",
+          "{color.brand.red.on-dark}"
+        ],
+        "$description": "Responsive `brand-red` color value. Typically read only - use a themable container e.g. `<rh-surface>` Resolves to `--rh-color-brand-red-on-light` on a themable container with a light color palette and `--rh-color-brand-red-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-brand-red",
+      "attributes": {
+        "category": "color",
+        "type": "brand",
+        "item": "red",
+        "subitem": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "brand",
+        "red",
+        "_"
+      ]
     }
   ],
   [
@@ -1593,13 +2601,13 @@ export const tokens = new Map([
     {
       "$value": "#ee0000",
       "$description": "Brand red on light background",
-      "value": "#ee0000",
       "filePath": "tokens/color/brand.yml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "{color.red.50}",
         "$description": "Brand red on light background",
-        "value": "{color.red.50}"
+        "$type": "color"
       },
       "name": "rh-color-brand-red-on-light",
       "attributes": {
@@ -1633,9 +2641,3626 @@ export const tokens = new Map([
         "brand",
         "red",
         "on-light"
-      ],
-      "comment": "Brand red on light background",
-      "$type": "color"
+      ]
+    }
+  ],
+  [
+    "--rh-color-brand-red-on-dark",
+    {
+      "$value": "#ee0000",
+      "$description": "Brand red on dark background",
+      "filePath": "tokens/color/brand.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.red.50}",
+        "$description": "Brand red on dark background",
+        "$type": "color"
+      },
+      "name": "rh-color-brand-red-on-dark",
+      "attributes": {
+        "category": "color",
+        "type": "brand",
+        "item": "red",
+        "subitem": "on-dark",
+        "hex": "ee0000",
+        "rgb": {
+          "r": 238,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 100,
+          "l": 46.666666666666664,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 1,
+          "v": 0.9333333333333333,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "brand",
+        "red",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-brand-red-lightest",
+    {
+      "$value": "#fbc5c5",
+      "$description": "Lightest brand red",
+      "filePath": "tokens/color/brand.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.red.20}",
+        "$description": "Lightest brand red",
+        "$type": "color"
+      },
+      "name": "rh-color-brand-red-lightest",
+      "attributes": {
+        "category": "color",
+        "type": "brand",
+        "item": "red",
+        "subitem": "lightest",
+        "hex": "fbc5c5",
+        "rgb": {
+          "r": 251,
+          "g": 197,
+          "b": 197,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 87.09677419354838,
+          "l": 87.84313725490196,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0.21513944223107562,
+          "v": 0.984313725490196,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "brand",
+        "red",
+        "lightest"
+      ]
+    }
+  ],
+  [
+    "--rh-color-brand-red-lighter",
+    {
+      "$value": "#f9a8a8",
+      "$description": "lighter brand red",
+      "filePath": "tokens/color/brand.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.red.30}",
+        "$description": "lighter brand red",
+        "$type": "color"
+      },
+      "name": "rh-color-brand-red-lighter",
+      "attributes": {
+        "category": "color",
+        "type": "brand",
+        "item": "red",
+        "subitem": "lighter",
+        "hex": "f9a8a8",
+        "rgb": {
+          "r": 249,
+          "g": 168,
+          "b": 168,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 87.0967741935484,
+          "l": 81.76470588235294,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0.3253012048192771,
+          "v": 0.9764705882352941,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "brand",
+        "red",
+        "lighter"
+      ]
+    }
+  ],
+  [
+    "--rh-color-brand-red-light",
+    {
+      "$value": "#f56e6e",
+      "$description": "Light brand red",
+      "filePath": "tokens/color/brand.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.red.40}",
+        "$description": "Light brand red",
+        "$type": "color"
+      },
+      "name": "rh-color-brand-red-light",
+      "attributes": {
+        "category": "color",
+        "type": "brand",
+        "item": "red",
+        "subitem": "light",
+        "hex": "f56e6e",
+        "rgb": {
+          "r": 245,
+          "g": 110,
+          "b": 110,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 87.09677419354841,
+          "l": 69.6078431372549,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0.5510204081632653,
+          "v": 0.9607843137254902,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "brand",
+        "red",
+        "light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-brand-red-dark",
+    {
+      "$value": "#a60000",
+      "$description": "Dark brand red/Brand red hover",
+      "filePath": "tokens/color/brand.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.red.60}",
+        "$description": "Dark brand red/Brand red hover",
+        "$type": "color"
+      },
+      "name": "rh-color-brand-red-dark",
+      "attributes": {
+        "category": "color",
+        "type": "brand",
+        "item": "red",
+        "subitem": "dark",
+        "hex": "a60000",
+        "rgb": {
+          "r": 166,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 100,
+          "l": 32.549019607843135,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 1,
+          "v": 0.6509803921568628,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "brand",
+        "red",
+        "dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-brand-red-darker",
+    {
+      "$value": "#5f0000",
+      "$description": "Darker brand red",
+      "filePath": "tokens/color/brand.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.red.70}",
+        "$description": "Darker brand red",
+        "$type": "color"
+      },
+      "name": "rh-color-brand-red-darker",
+      "attributes": {
+        "category": "color",
+        "type": "brand",
+        "item": "red",
+        "subitem": "darker",
+        "hex": "5f0000",
+        "rgb": {
+          "r": 95,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 100,
+          "l": 18.627450980392158,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 1,
+          "v": 0.37254901960784315,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "brand",
+        "red",
+        "darker"
+      ]
+    }
+  ],
+  [
+    "--rh-color-brand-red-darkest",
+    {
+      "$value": "#5f0000",
+      "$description": "Darkest brand red",
+      "filePath": "tokens/color/brand.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.red.70}",
+        "$description": "Darkest brand red",
+        "$type": "color"
+      },
+      "name": "rh-color-brand-red-darkest",
+      "attributes": {
+        "category": "color",
+        "type": "brand",
+        "item": "red",
+        "subitem": "darkest",
+        "hex": "5f0000",
+        "rgb": {
+          "r": 95,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 100,
+          "l": 18.627450980392158,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 1,
+          "v": 0.37254901960784315,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "brand",
+        "red",
+        "darkest"
+      ]
+    }
+  ],
+  [
+    "--rh-color-green-10",
+    {
+      "$value": "#e9f7df",
+      "$description": "Alert - success background",
+      "filePath": "tokens/color/crayon/green.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "#E9F7DF",
+        "$description": "Alert - success background",
+        "$type": "color"
+      },
+      "name": "rh-color-green-10",
+      "attributes": {
+        "category": "color",
+        "type": "green",
+        "item": "10",
+        "hex": "e9f7df",
+        "rgb": {
+          "r": 233,
+          "g": 247,
+          "b": 223,
+          "a": 1
+        },
+        "hsl": {
+          "h": 95.00000000000003,
+          "s": 60.00000000000004,
+          "l": 92.15686274509804,
+          "a": 1
+        },
+        "hsv": {
+          "h": 95.00000000000003,
+          "s": 0.09716599190283401,
+          "v": 0.9686274509803922,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "green",
+        "10"
+      ]
+    }
+  ],
+  [
+    "--rh-color-green-20",
+    {
+      "$value": "#d1f1bb",
+      "$description": "Label - Filled (Green) border color",
+      "filePath": "tokens/color/crayon/green.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "#D1F1BB",
+        "$description": "Label - Filled (Green) border color",
+        "$type": "color"
+      },
+      "name": "rh-color-green-20",
+      "attributes": {
+        "category": "color",
+        "type": "green",
+        "item": "20",
+        "hex": "d1f1bb",
+        "rgb": {
+          "r": 209,
+          "g": 241,
+          "b": 187,
+          "a": 1
+        },
+        "hsl": {
+          "h": 95.55555555555556,
+          "s": 65.85365853658536,
+          "l": 83.92156862745097,
+          "a": 1
+        },
+        "hsv": {
+          "h": 95.55555555555556,
+          "s": 0.2240663900414938,
+          "v": 0.9450980392156862,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "green",
+        "20"
+      ]
+    }
+  ],
+  [
+    "--rh-color-green-30",
+    {
+      "$value": "#afdc8f",
+      "filePath": "tokens/color/crayon/green.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "#AFDC8F",
+        "$type": "color"
+      },
+      "name": "rh-color-green-30",
+      "attributes": {
+        "category": "color",
+        "type": "green",
+        "item": "30",
+        "hex": "afdc8f",
+        "rgb": {
+          "r": 175,
+          "g": 220,
+          "b": 143,
+          "a": 1
+        },
+        "hsl": {
+          "h": 95.06493506493506,
+          "s": 52.380952380952394,
+          "l": 71.17647058823529,
+          "a": 1
+        },
+        "hsv": {
+          "h": 95.06493506493506,
+          "s": 0.35000000000000003,
+          "v": 0.8627450980392157,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "green",
+        "30"
+      ]
+    }
+  ],
+  [
+    "--rh-color-green-40",
+    {
+      "$value": "#87bb62",
+      "filePath": "tokens/color/crayon/green.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "#87BB62",
+        "$type": "color"
+      },
+      "name": "rh-color-green-40",
+      "attributes": {
+        "category": "color",
+        "type": "green",
+        "item": "40",
+        "hex": "87bb62",
+        "rgb": {
+          "r": 135,
+          "g": 187,
+          "b": 98,
+          "a": 1
+        },
+        "hsl": {
+          "h": 95.05617977528091,
+          "s": 39.55555555555555,
+          "l": 55.88235294117647,
+          "a": 1
+        },
+        "hsv": {
+          "h": 95.05617977528091,
+          "s": 0.4759358288770053,
+          "v": 0.7333333333333333,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "green",
+        "40"
+      ]
+    }
+  ],
+  [
+    "--rh-color-green-50",
+    {
+      "$value": "#63993d",
+      "filePath": "tokens/color/crayon/green.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "#63993D",
+        "$type": "color"
+      },
+      "name": "rh-color-green-50",
+      "attributes": {
+        "category": "color",
+        "type": "green",
+        "item": "50",
+        "hex": "63993d",
+        "rgb": {
+          "r": 99,
+          "g": 153,
+          "b": 61,
+          "a": 1
+        },
+        "hsl": {
+          "h": 95.21739130434783,
+          "s": 42.99065420560747,
+          "l": 41.96078431372549,
+          "a": 1
+        },
+        "hsv": {
+          "h": 95.21739130434783,
+          "s": 0.6013071895424836,
+          "v": 0.6,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "green",
+        "50"
+      ]
+    }
+  ],
+  [
+    "--rh-color-green-60",
+    {
+      "$value": "#3d7317",
+      "$description": "Alert - Success accent",
+      "filePath": "tokens/color/crayon/green.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "#3D7317",
+        "$description": "Alert - Success accent",
+        "$type": "color"
+      },
+      "name": "rh-color-green-60",
+      "attributes": {
+        "category": "color",
+        "type": "green",
+        "item": "60",
+        "hex": "3d7317",
+        "rgb": {
+          "r": 61,
+          "g": 115,
+          "b": 23,
+          "a": 1
+        },
+        "hsl": {
+          "h": 95.21739130434783,
+          "s": 66.66666666666667,
+          "l": 27.058823529411764,
+          "a": 1
+        },
+        "hsv": {
+          "h": 95.21739130434783,
+          "s": 0.7999999999999999,
+          "v": 0.45098039215686275,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "green",
+        "60"
+      ]
+    }
+  ],
+  [
+    "--rh-color-green-70",
+    {
+      "$value": "#204d00",
+      "$description": "Alert - Success title text",
+      "filePath": "tokens/color/crayon/green.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "#204D00",
+        "$description": "Alert - Success title text",
+        "$type": "color"
+      },
+      "name": "rh-color-green-70",
+      "attributes": {
+        "category": "color",
+        "type": "green",
+        "item": "70",
+        "hex": "204d00",
+        "rgb": {
+          "r": 32,
+          "g": 77,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 95.06493506493506,
+          "s": 100,
+          "l": 15.098039215686274,
+          "a": 1
+        },
+        "hsv": {
+          "h": 95.06493506493506,
+          "s": 1,
+          "v": 0.30196078431372547,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "green",
+        "70"
+      ]
+    }
+  ],
+  [
+    "--rh-color-green-10-hsl",
+    {
+      "$value": "95.00000000000003 60.00000000000004% 92.15686274509804%",
+      "$type": "color",
+      "original": {
+        "$value": "{color.green.10}",
+        "$type": "color"
+      },
+      "name": "rh-color-green-10-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "green",
+        "item": "10-hsl",
+        "hex": "e9f7df",
+        "rgb": {
+          "r": 233,
+          "g": 247,
+          "b": 223,
+          "a": 1
+        },
+        "hsl": {
+          "h": 95.00000000000003,
+          "s": 60.00000000000004,
+          "l": 92.15686274509804,
+          "a": 1
+        },
+        "hsv": {
+          "h": 95.00000000000003,
+          "s": 0.09716599190283401,
+          "v": 0.9686274509803922,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "green",
+        "10-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-green-10-rgb",
+    {
+      "$value": "233 247 223",
+      "$type": "color",
+      "original": {
+        "$value": "{color.green.10}",
+        "$type": "color"
+      },
+      "name": "rh-color-green-10-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "green",
+        "item": "10-rgb",
+        "hex": "e9f7df",
+        "rgb": {
+          "r": 233,
+          "g": 247,
+          "b": 223,
+          "a": 1
+        },
+        "hsl": {
+          "h": 95.00000000000003,
+          "s": 60.00000000000004,
+          "l": 92.15686274509804,
+          "a": 1
+        },
+        "hsv": {
+          "h": 95.00000000000003,
+          "s": 0.09716599190283401,
+          "v": 0.9686274509803922,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "green",
+        "10-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-green-20-hsl",
+    {
+      "$value": "95.55555555555556 65.85365853658536% 83.92156862745097%",
+      "$type": "color",
+      "original": {
+        "$value": "{color.green.20}",
+        "$type": "color"
+      },
+      "name": "rh-color-green-20-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "green",
+        "item": "20-hsl",
+        "hex": "d1f1bb",
+        "rgb": {
+          "r": 209,
+          "g": 241,
+          "b": 187,
+          "a": 1
+        },
+        "hsl": {
+          "h": 95.55555555555556,
+          "s": 65.85365853658536,
+          "l": 83.92156862745097,
+          "a": 1
+        },
+        "hsv": {
+          "h": 95.55555555555556,
+          "s": 0.2240663900414938,
+          "v": 0.9450980392156862,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "green",
+        "20-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-green-20-rgb",
+    {
+      "$value": "209 241 187",
+      "$type": "color",
+      "original": {
+        "$value": "{color.green.20}",
+        "$type": "color"
+      },
+      "name": "rh-color-green-20-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "green",
+        "item": "20-rgb",
+        "hex": "d1f1bb",
+        "rgb": {
+          "r": 209,
+          "g": 241,
+          "b": 187,
+          "a": 1
+        },
+        "hsl": {
+          "h": 95.55555555555556,
+          "s": 65.85365853658536,
+          "l": 83.92156862745097,
+          "a": 1
+        },
+        "hsv": {
+          "h": 95.55555555555556,
+          "s": 0.2240663900414938,
+          "v": 0.9450980392156862,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "green",
+        "20-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-green-30-hsl",
+    {
+      "$value": "95.06493506493506 52.380952380952394% 71.17647058823529%",
+      "$type": "color",
+      "original": {
+        "$value": "{color.green.30}",
+        "$type": "color"
+      },
+      "name": "rh-color-green-30-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "green",
+        "item": "30-hsl",
+        "hex": "afdc8f",
+        "rgb": {
+          "r": 175,
+          "g": 220,
+          "b": 143,
+          "a": 1
+        },
+        "hsl": {
+          "h": 95.06493506493506,
+          "s": 52.380952380952394,
+          "l": 71.17647058823529,
+          "a": 1
+        },
+        "hsv": {
+          "h": 95.06493506493506,
+          "s": 0.35000000000000003,
+          "v": 0.8627450980392157,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "green",
+        "30-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-green-30-rgb",
+    {
+      "$value": "175 220 143",
+      "$type": "color",
+      "original": {
+        "$value": "{color.green.30}",
+        "$type": "color"
+      },
+      "name": "rh-color-green-30-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "green",
+        "item": "30-rgb",
+        "hex": "afdc8f",
+        "rgb": {
+          "r": 175,
+          "g": 220,
+          "b": 143,
+          "a": 1
+        },
+        "hsl": {
+          "h": 95.06493506493506,
+          "s": 52.380952380952394,
+          "l": 71.17647058823529,
+          "a": 1
+        },
+        "hsv": {
+          "h": 95.06493506493506,
+          "s": 0.35000000000000003,
+          "v": 0.8627450980392157,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "green",
+        "30-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-green-40-hsl",
+    {
+      "$value": "95.05617977528091 39.55555555555555% 55.88235294117647%",
+      "$type": "color",
+      "original": {
+        "$value": "{color.green.40}",
+        "$type": "color"
+      },
+      "name": "rh-color-green-40-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "green",
+        "item": "40-hsl",
+        "hex": "87bb62",
+        "rgb": {
+          "r": 135,
+          "g": 187,
+          "b": 98,
+          "a": 1
+        },
+        "hsl": {
+          "h": 95.05617977528091,
+          "s": 39.55555555555555,
+          "l": 55.88235294117647,
+          "a": 1
+        },
+        "hsv": {
+          "h": 95.05617977528091,
+          "s": 0.4759358288770053,
+          "v": 0.7333333333333333,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "green",
+        "40-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-green-40-rgb",
+    {
+      "$value": "135 187 98",
+      "$type": "color",
+      "original": {
+        "$value": "{color.green.40}",
+        "$type": "color"
+      },
+      "name": "rh-color-green-40-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "green",
+        "item": "40-rgb",
+        "hex": "87bb62",
+        "rgb": {
+          "r": 135,
+          "g": 187,
+          "b": 98,
+          "a": 1
+        },
+        "hsl": {
+          "h": 95.05617977528091,
+          "s": 39.55555555555555,
+          "l": 55.88235294117647,
+          "a": 1
+        },
+        "hsv": {
+          "h": 95.05617977528091,
+          "s": 0.4759358288770053,
+          "v": 0.7333333333333333,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "green",
+        "40-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-green-50-hsl",
+    {
+      "$value": "95.21739130434783 42.99065420560747% 41.96078431372549%",
+      "$type": "color",
+      "original": {
+        "$value": "{color.green.50}",
+        "$type": "color"
+      },
+      "name": "rh-color-green-50-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "green",
+        "item": "50-hsl",
+        "hex": "63993d",
+        "rgb": {
+          "r": 99,
+          "g": 153,
+          "b": 61,
+          "a": 1
+        },
+        "hsl": {
+          "h": 95.21739130434783,
+          "s": 42.99065420560747,
+          "l": 41.96078431372549,
+          "a": 1
+        },
+        "hsv": {
+          "h": 95.21739130434783,
+          "s": 0.6013071895424836,
+          "v": 0.6,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "green",
+        "50-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-green-50-rgb",
+    {
+      "$value": "99 153 61",
+      "$type": "color",
+      "original": {
+        "$value": "{color.green.50}",
+        "$type": "color"
+      },
+      "name": "rh-color-green-50-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "green",
+        "item": "50-rgb",
+        "hex": "63993d",
+        "rgb": {
+          "r": 99,
+          "g": 153,
+          "b": 61,
+          "a": 1
+        },
+        "hsl": {
+          "h": 95.21739130434783,
+          "s": 42.99065420560747,
+          "l": 41.96078431372549,
+          "a": 1
+        },
+        "hsv": {
+          "h": 95.21739130434783,
+          "s": 0.6013071895424836,
+          "v": 0.6,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "green",
+        "50-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-green-60-hsl",
+    {
+      "$value": "95.21739130434783 66.66666666666667% 27.058823529411764%",
+      "$type": "color",
+      "original": {
+        "$value": "{color.green.60}",
+        "$type": "color"
+      },
+      "name": "rh-color-green-60-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "green",
+        "item": "60-hsl",
+        "hex": "3d7317",
+        "rgb": {
+          "r": 61,
+          "g": 115,
+          "b": 23,
+          "a": 1
+        },
+        "hsl": {
+          "h": 95.21739130434783,
+          "s": 66.66666666666667,
+          "l": 27.058823529411764,
+          "a": 1
+        },
+        "hsv": {
+          "h": 95.21739130434783,
+          "s": 0.7999999999999999,
+          "v": 0.45098039215686275,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "green",
+        "60-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-green-60-rgb",
+    {
+      "$value": "61 115 23",
+      "$type": "color",
+      "original": {
+        "$value": "{color.green.60}",
+        "$type": "color"
+      },
+      "name": "rh-color-green-60-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "green",
+        "item": "60-rgb",
+        "hex": "3d7317",
+        "rgb": {
+          "r": 61,
+          "g": 115,
+          "b": 23,
+          "a": 1
+        },
+        "hsl": {
+          "h": 95.21739130434783,
+          "s": 66.66666666666667,
+          "l": 27.058823529411764,
+          "a": 1
+        },
+        "hsv": {
+          "h": 95.21739130434783,
+          "s": 0.7999999999999999,
+          "v": 0.45098039215686275,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "green",
+        "60-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-green-70-hsl",
+    {
+      "$value": "95.06493506493506 100% 15.098039215686274%",
+      "$type": "color",
+      "original": {
+        "$value": "{color.green.70}",
+        "$type": "color"
+      },
+      "name": "rh-color-green-70-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "green",
+        "item": "70-hsl",
+        "hex": "204d00",
+        "rgb": {
+          "r": 32,
+          "g": 77,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 95.06493506493506,
+          "s": 100,
+          "l": 15.098039215686274,
+          "a": 1
+        },
+        "hsv": {
+          "h": 95.06493506493506,
+          "s": 1,
+          "v": 0.30196078431372547,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "green",
+        "70-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-green-70-rgb",
+    {
+      "$value": "32 77 0",
+      "$type": "color",
+      "original": {
+        "$value": "{color.green.70}",
+        "$type": "color"
+      },
+      "name": "rh-color-green-70-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "green",
+        "item": "70-rgb",
+        "hex": "204d00",
+        "rgb": {
+          "r": 32,
+          "g": 77,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 95.06493506493506,
+          "s": 100,
+          "l": 15.098039215686274,
+          "a": 1
+        },
+        "hsv": {
+          "h": 95.06493506493506,
+          "s": 1,
+          "v": 0.30196078431372547,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "green",
+        "70-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-orange-10",
+    {
+      "$value": "#ffe8cc",
+      "$description": "Label - Filled (Orange) background color",
+      "filePath": "tokens/color/crayon/orange.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "#FFE8CC",
+        "$description": "Label - Filled (Orange) background color",
+        "$type": "color"
+      },
+      "name": "rh-color-orange-10",
+      "attributes": {
+        "category": "color",
+        "type": "orange",
+        "item": "10",
+        "hex": "ffe8cc",
+        "rgb": {
+          "r": 255,
+          "g": 232,
+          "b": 204,
+          "a": 1
+        },
+        "hsl": {
+          "h": 32.941176470588225,
+          "s": 100,
+          "l": 90,
+          "a": 1
+        },
+        "hsv": {
+          "h": 32.941176470588225,
+          "s": 0.19999999999999996,
+          "v": 1,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "orange",
+        "10"
+      ]
+    }
+  ],
+  [
+    "--rh-color-orange-20",
+    {
+      "$value": "#fccb8f",
+      "filePath": "tokens/color/crayon/orange.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "#FCCB8F",
+        "$type": "color"
+      },
+      "name": "rh-color-orange-20",
+      "attributes": {
+        "category": "color",
+        "type": "orange",
+        "item": "20",
+        "hex": "fccb8f",
+        "rgb": {
+          "r": 252,
+          "g": 203,
+          "b": 143,
+          "a": 1
+        },
+        "hsl": {
+          "h": 33.02752293577981,
+          "s": 94.78260869565219,
+          "l": 77.45098039215686,
+          "a": 1
+        },
+        "hsv": {
+          "h": 33.02752293577981,
+          "s": 0.43253968253968256,
+          "v": 0.9882352941176471,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "orange",
+        "20"
+      ]
+    }
+  ],
+  [
+    "--rh-color-orange-30",
+    {
+      "$value": "#f8ae54",
+      "$description": "Label - Filled (Orange) border color",
+      "filePath": "tokens/color/crayon/orange.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "#F8AE54",
+        "$description": "Label - Filled (Orange) border color",
+        "$type": "color"
+      },
+      "name": "rh-color-orange-30",
+      "attributes": {
+        "category": "color",
+        "type": "orange",
+        "item": "30",
+        "hex": "f8ae54",
+        "rgb": {
+          "r": 248,
+          "g": 174,
+          "b": 84,
+          "a": 1
+        },
+        "hsl": {
+          "h": 32.926829268292686,
+          "s": 92.13483146067415,
+          "l": 65.09803921568627,
+          "a": 1
+        },
+        "hsv": {
+          "h": 32.926829268292686,
+          "s": 0.6612903225806451,
+          "v": 0.9725490196078431,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "orange",
+        "30"
+      ]
+    }
+  ],
+  [
+    "--rh-color-orange-40",
+    {
+      "$value": "#f5921b",
+      "$description": "Label - Filled (Orange) accent color",
+      "filePath": "tokens/color/crayon/orange.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "#F5921B",
+        "$description": "Label - Filled (Orange) accent color",
+        "$type": "color"
+      },
+      "name": "rh-color-orange-40",
+      "attributes": {
+        "category": "color",
+        "type": "orange",
+        "item": "40",
+        "hex": "f5921b",
+        "rgb": {
+          "r": 245,
+          "g": 146,
+          "b": 27,
+          "a": 1
+        },
+        "hsl": {
+          "h": 32.752293577981646,
+          "s": 91.5966386554622,
+          "l": 53.333333333333336,
+          "a": 1
+        },
+        "hsv": {
+          "h": 32.752293577981646,
+          "s": 0.889795918367347,
+          "v": 0.9607843137254902,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "orange",
+        "40"
+      ]
+    }
+  ],
+  [
+    "--rh-color-orange-50",
+    {
+      "$value": "#ca6c0f",
+      "$description": "Label - Filled (Orange) accent color",
+      "filePath": "tokens/color/crayon/orange.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "#CA6C0F",
+        "$description": "Label - Filled (Orange) accent color",
+        "$type": "color"
+      },
+      "name": "rh-color-orange-50",
+      "attributes": {
+        "category": "color",
+        "type": "orange",
+        "item": "50",
+        "hex": "ca6c0f",
+        "rgb": {
+          "r": 202,
+          "g": 108,
+          "b": 15,
+          "a": 1
+        },
+        "hsl": {
+          "h": 29.83957219251337,
+          "s": 86.17511520737327,
+          "l": 42.549019607843135,
+          "a": 1
+        },
+        "hsv": {
+          "h": 29.83957219251337,
+          "s": 0.9257425742574257,
+          "v": 0.792156862745098,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "orange",
+        "50"
+      ]
+    }
+  ],
+  [
+    "--rh-color-orange-60",
+    {
+      "$value": "#9e4a06",
+      "filePath": "tokens/color/crayon/orange.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "#9E4A06",
+        "$type": "color"
+      },
+      "name": "rh-color-orange-60",
+      "attributes": {
+        "category": "color",
+        "type": "orange",
+        "item": "60",
+        "hex": "9e4a06",
+        "rgb": {
+          "r": 158,
+          "g": 74,
+          "b": 6,
+          "a": 1
+        },
+        "hsl": {
+          "h": 26.842105263157904,
+          "s": 92.68292682926828,
+          "l": 32.15686274509804,
+          "a": 1
+        },
+        "hsv": {
+          "h": 26.842105263157904,
+          "s": 0.9620253164556961,
+          "v": 0.6196078431372549,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "orange",
+        "60"
+      ]
+    }
+  ],
+  [
+    "--rh-color-orange-70",
+    {
+      "$value": "#732e00",
+      "$description": "Label - Filled (Orange) text color",
+      "filePath": "tokens/color/crayon/orange.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "#732E00",
+        "$description": "Label - Filled (Orange) text color",
+        "$type": "color"
+      },
+      "name": "rh-color-orange-70",
+      "attributes": {
+        "category": "color",
+        "type": "orange",
+        "item": "70",
+        "hex": "732e00",
+        "rgb": {
+          "r": 115,
+          "g": 46,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 24,
+          "s": 100,
+          "l": 22.54901960784314,
+          "a": 1
+        },
+        "hsv": {
+          "h": 24,
+          "s": 1,
+          "v": 0.45098039215686275,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "orange",
+        "70"
+      ]
+    }
+  ],
+  [
+    "--rh-color-orange-10-hsl",
+    {
+      "$value": "32.941176470588225 100% 90%",
+      "$type": "color",
+      "original": {
+        "$value": "{color.orange.10}",
+        "$type": "color"
+      },
+      "name": "rh-color-orange-10-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "orange",
+        "item": "10-hsl",
+        "hex": "ffe8cc",
+        "rgb": {
+          "r": 255,
+          "g": 232,
+          "b": 204,
+          "a": 1
+        },
+        "hsl": {
+          "h": 32.941176470588225,
+          "s": 100,
+          "l": 90,
+          "a": 1
+        },
+        "hsv": {
+          "h": 32.941176470588225,
+          "s": 0.19999999999999996,
+          "v": 1,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "orange",
+        "10-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-orange-10-rgb",
+    {
+      "$value": "255 232 204",
+      "$type": "color",
+      "original": {
+        "$value": "{color.orange.10}",
+        "$type": "color"
+      },
+      "name": "rh-color-orange-10-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "orange",
+        "item": "10-rgb",
+        "hex": "ffe8cc",
+        "rgb": {
+          "r": 255,
+          "g": 232,
+          "b": 204,
+          "a": 1
+        },
+        "hsl": {
+          "h": 32.941176470588225,
+          "s": 100,
+          "l": 90,
+          "a": 1
+        },
+        "hsv": {
+          "h": 32.941176470588225,
+          "s": 0.19999999999999996,
+          "v": 1,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "orange",
+        "10-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-orange-20-hsl",
+    {
+      "$value": "33.02752293577981 94.78260869565219% 77.45098039215686%",
+      "$type": "color",
+      "original": {
+        "$value": "{color.orange.20}",
+        "$type": "color"
+      },
+      "name": "rh-color-orange-20-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "orange",
+        "item": "20-hsl",
+        "hex": "fccb8f",
+        "rgb": {
+          "r": 252,
+          "g": 203,
+          "b": 143,
+          "a": 1
+        },
+        "hsl": {
+          "h": 33.02752293577981,
+          "s": 94.78260869565219,
+          "l": 77.45098039215686,
+          "a": 1
+        },
+        "hsv": {
+          "h": 33.02752293577981,
+          "s": 0.43253968253968256,
+          "v": 0.9882352941176471,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "orange",
+        "20-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-orange-20-rgb",
+    {
+      "$value": "252 203 143",
+      "$type": "color",
+      "original": {
+        "$value": "{color.orange.20}",
+        "$type": "color"
+      },
+      "name": "rh-color-orange-20-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "orange",
+        "item": "20-rgb",
+        "hex": "fccb8f",
+        "rgb": {
+          "r": 252,
+          "g": 203,
+          "b": 143,
+          "a": 1
+        },
+        "hsl": {
+          "h": 33.02752293577981,
+          "s": 94.78260869565219,
+          "l": 77.45098039215686,
+          "a": 1
+        },
+        "hsv": {
+          "h": 33.02752293577981,
+          "s": 0.43253968253968256,
+          "v": 0.9882352941176471,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "orange",
+        "20-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-orange-30-hsl",
+    {
+      "$value": "32.926829268292686 92.13483146067415% 65.09803921568627%",
+      "$type": "color",
+      "original": {
+        "$value": "{color.orange.30}",
+        "$type": "color"
+      },
+      "name": "rh-color-orange-30-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "orange",
+        "item": "30-hsl",
+        "hex": "f8ae54",
+        "rgb": {
+          "r": 248,
+          "g": 174,
+          "b": 84,
+          "a": 1
+        },
+        "hsl": {
+          "h": 32.926829268292686,
+          "s": 92.13483146067415,
+          "l": 65.09803921568627,
+          "a": 1
+        },
+        "hsv": {
+          "h": 32.926829268292686,
+          "s": 0.6612903225806451,
+          "v": 0.9725490196078431,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "orange",
+        "30-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-orange-30-rgb",
+    {
+      "$value": "248 174 84",
+      "$type": "color",
+      "original": {
+        "$value": "{color.orange.30}",
+        "$type": "color"
+      },
+      "name": "rh-color-orange-30-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "orange",
+        "item": "30-rgb",
+        "hex": "f8ae54",
+        "rgb": {
+          "r": 248,
+          "g": 174,
+          "b": 84,
+          "a": 1
+        },
+        "hsl": {
+          "h": 32.926829268292686,
+          "s": 92.13483146067415,
+          "l": 65.09803921568627,
+          "a": 1
+        },
+        "hsv": {
+          "h": 32.926829268292686,
+          "s": 0.6612903225806451,
+          "v": 0.9725490196078431,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "orange",
+        "30-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-orange-40-hsl",
+    {
+      "$value": "32.752293577981646 91.5966386554622% 53.333333333333336%",
+      "$type": "color",
+      "original": {
+        "$value": "{color.orange.40}",
+        "$type": "color"
+      },
+      "name": "rh-color-orange-40-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "orange",
+        "item": "40-hsl",
+        "hex": "f5921b",
+        "rgb": {
+          "r": 245,
+          "g": 146,
+          "b": 27,
+          "a": 1
+        },
+        "hsl": {
+          "h": 32.752293577981646,
+          "s": 91.5966386554622,
+          "l": 53.333333333333336,
+          "a": 1
+        },
+        "hsv": {
+          "h": 32.752293577981646,
+          "s": 0.889795918367347,
+          "v": 0.9607843137254902,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "orange",
+        "40-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-orange-40-rgb",
+    {
+      "$value": "245 146 27",
+      "$type": "color",
+      "original": {
+        "$value": "{color.orange.40}",
+        "$type": "color"
+      },
+      "name": "rh-color-orange-40-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "orange",
+        "item": "40-rgb",
+        "hex": "f5921b",
+        "rgb": {
+          "r": 245,
+          "g": 146,
+          "b": 27,
+          "a": 1
+        },
+        "hsl": {
+          "h": 32.752293577981646,
+          "s": 91.5966386554622,
+          "l": 53.333333333333336,
+          "a": 1
+        },
+        "hsv": {
+          "h": 32.752293577981646,
+          "s": 0.889795918367347,
+          "v": 0.9607843137254902,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "orange",
+        "40-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-orange-50-hsl",
+    {
+      "$value": "29.83957219251337 86.17511520737327% 42.549019607843135%",
+      "$type": "color",
+      "original": {
+        "$value": "{color.orange.50}",
+        "$type": "color"
+      },
+      "name": "rh-color-orange-50-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "orange",
+        "item": "50-hsl",
+        "hex": "ca6c0f",
+        "rgb": {
+          "r": 202,
+          "g": 108,
+          "b": 15,
+          "a": 1
+        },
+        "hsl": {
+          "h": 29.83957219251337,
+          "s": 86.17511520737327,
+          "l": 42.549019607843135,
+          "a": 1
+        },
+        "hsv": {
+          "h": 29.83957219251337,
+          "s": 0.9257425742574257,
+          "v": 0.792156862745098,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "orange",
+        "50-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-orange-50-rgb",
+    {
+      "$value": "202 108 15",
+      "$type": "color",
+      "original": {
+        "$value": "{color.orange.50}",
+        "$type": "color"
+      },
+      "name": "rh-color-orange-50-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "orange",
+        "item": "50-rgb",
+        "hex": "ca6c0f",
+        "rgb": {
+          "r": 202,
+          "g": 108,
+          "b": 15,
+          "a": 1
+        },
+        "hsl": {
+          "h": 29.83957219251337,
+          "s": 86.17511520737327,
+          "l": 42.549019607843135,
+          "a": 1
+        },
+        "hsv": {
+          "h": 29.83957219251337,
+          "s": 0.9257425742574257,
+          "v": 0.792156862745098,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "orange",
+        "50-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-orange-60-hsl",
+    {
+      "$value": "26.842105263157904 92.68292682926828% 32.15686274509804%",
+      "$type": "color",
+      "original": {
+        "$value": "{color.orange.60}",
+        "$type": "color"
+      },
+      "name": "rh-color-orange-60-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "orange",
+        "item": "60-hsl",
+        "hex": "9e4a06",
+        "rgb": {
+          "r": 158,
+          "g": 74,
+          "b": 6,
+          "a": 1
+        },
+        "hsl": {
+          "h": 26.842105263157904,
+          "s": 92.68292682926828,
+          "l": 32.15686274509804,
+          "a": 1
+        },
+        "hsv": {
+          "h": 26.842105263157904,
+          "s": 0.9620253164556961,
+          "v": 0.6196078431372549,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "orange",
+        "60-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-orange-60-rgb",
+    {
+      "$value": "158 74 6",
+      "$type": "color",
+      "original": {
+        "$value": "{color.orange.60}",
+        "$type": "color"
+      },
+      "name": "rh-color-orange-60-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "orange",
+        "item": "60-rgb",
+        "hex": "9e4a06",
+        "rgb": {
+          "r": 158,
+          "g": 74,
+          "b": 6,
+          "a": 1
+        },
+        "hsl": {
+          "h": 26.842105263157904,
+          "s": 92.68292682926828,
+          "l": 32.15686274509804,
+          "a": 1
+        },
+        "hsv": {
+          "h": 26.842105263157904,
+          "s": 0.9620253164556961,
+          "v": 0.6196078431372549,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "orange",
+        "60-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-orange-70-hsl",
+    {
+      "$value": "24 100% 22.54901960784314%",
+      "$type": "color",
+      "original": {
+        "$value": "{color.orange.70}",
+        "$type": "color"
+      },
+      "name": "rh-color-orange-70-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "orange",
+        "item": "70-hsl",
+        "hex": "732e00",
+        "rgb": {
+          "r": 115,
+          "g": 46,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 24,
+          "s": 100,
+          "l": 22.54901960784314,
+          "a": 1
+        },
+        "hsv": {
+          "h": 24,
+          "s": 1,
+          "v": 0.45098039215686275,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "orange",
+        "70-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-orange-70-rgb",
+    {
+      "$value": "115 46 0",
+      "$type": "color",
+      "original": {
+        "$value": "{color.orange.70}",
+        "$type": "color"
+      },
+      "name": "rh-color-orange-70-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "orange",
+        "item": "70-rgb",
+        "hex": "732e00",
+        "rgb": {
+          "r": 115,
+          "g": 46,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 24,
+          "s": 100,
+          "l": 22.54901960784314,
+          "a": 1
+        },
+        "hsv": {
+          "h": 24,
+          "s": 1,
+          "v": 0.45098039215686275,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "orange",
+        "70-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-icon-primary",
+    {
+      "$value": "",
+      "$description": "Responsive `icon-primary` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-primary-on-light` on a themable container with a light color palette and `--rh-color-icon-primary-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/icon.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.icon.primary.on-light}",
+          "{color.icon.primary.on-dark}"
+        ],
+        "$description": "Responsive `icon-primary` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-primary-on-light` on a themable container with a light color palette and `--rh-color-icon-primary-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-icon-primary",
+      "attributes": {
+        "category": "color",
+        "type": "icon",
+        "item": "primary",
+        "subitem": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "icon",
+        "primary",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-icon-primary-on-light",
+    {
+      "$value": "#ee0000",
+      "attributes": {
+        "category": "icon",
+        "type": "color",
+        "item": "primary",
+        "subitem": "on-light",
+        "hex": "ee0000",
+        "rgb": {
+          "r": 238,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 100,
+          "l": 46.666666666666664,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 1,
+          "v": 0.9333333333333333,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "filePath": "tokens/color/icon.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.brand.red.on-light}",
+        "attributes": {
+          "category": "icon",
+          "type": "color"
+        },
+        "$type": "color"
+      },
+      "name": "rh-color-icon-primary-on-light",
+      "path": [
+        "color",
+        "icon",
+        "primary",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-icon-primary-on-dark",
+    {
+      "$value": "#ee0000",
+      "attributes": {
+        "category": "icon",
+        "type": "color",
+        "item": "primary",
+        "subitem": "on-dark",
+        "hex": "ee0000",
+        "rgb": {
+          "r": 238,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 100,
+          "l": 46.666666666666664,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 1,
+          "v": 0.9333333333333333,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "filePath": "tokens/color/icon.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.brand.red.on-dark}",
+        "attributes": {
+          "category": "icon",
+          "type": "color"
+        },
+        "$type": "color"
+      },
+      "name": "rh-color-icon-primary-on-dark",
+      "path": [
+        "color",
+        "icon",
+        "primary",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-icon-secondary",
+    {
+      "$value": "",
+      "$description": "Responsive `icon-secondary` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-secondary-on-light` on a themable container with a light color palette and `--rh-color-icon-secondary-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/icon.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.icon.secondary.on-light}",
+          "{color.icon.secondary.on-dark}"
+        ],
+        "$description": "Responsive `icon-secondary` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-secondary-on-light` on a themable container with a light color palette and `--rh-color-icon-secondary-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-icon-secondary",
+      "attributes": {
+        "category": "color",
+        "type": "icon",
+        "item": "secondary",
+        "subitem": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "icon",
+        "secondary",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-icon-secondary-on-light",
+    {
+      "$value": "#151515",
+      "attributes": {
+        "category": "icon",
+        "type": "color",
+        "item": "secondary",
+        "subitem": "on-light",
+        "hex": "151515",
+        "rgb": {
+          "r": 21,
+          "g": 21,
+          "b": 21,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 8.235294117647058,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.08235294117647059,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "filePath": "tokens/color/icon.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.gray.95}",
+        "attributes": {
+          "category": "icon",
+          "type": "color"
+        },
+        "$type": "color"
+      },
+      "name": "rh-color-icon-secondary-on-light",
+      "path": [
+        "color",
+        "icon",
+        "secondary",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-icon-secondary-on-dark",
+    {
+      "$value": "#ffffff",
+      "attributes": {
+        "category": "icon",
+        "type": "color",
+        "item": "secondary",
+        "subitem": "on-dark",
+        "hex": "ffffff",
+        "rgb": {
+          "r": 255,
+          "g": 255,
+          "b": 255,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 100,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 1,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "filePath": "tokens/color/icon.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.white}",
+        "attributes": {
+          "category": "icon",
+          "type": "color"
+        },
+        "$type": "color"
+      },
+      "name": "rh-color-icon-secondary-on-dark",
+      "path": [
+        "color",
+        "icon",
+        "secondary",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-icon-subtle",
+    {
+      "$value": "#707070",
+      "attributes": {
+        "category": "icon",
+        "type": "color",
+        "item": "subtle",
+        "subitem": "_",
+        "hex": "707070",
+        "rgb": {
+          "r": 112,
+          "g": 112,
+          "b": 112,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 43.92156862745098,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.4392156862745098,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "filePath": "tokens/color/icon.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.gray.50}",
+        "attributes": {
+          "category": "icon",
+          "type": "color"
+        },
+        "$type": "color"
+      },
+      "name": "rh-color-icon-subtle",
+      "path": [
+        "color",
+        "icon",
+        "subtle",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-icon-subtle-hover",
+    {
+      "$value": "#a3a3a3",
+      "attributes": {
+        "category": "icon",
+        "type": "color",
+        "item": "subtle",
+        "subitem": "hover",
+        "hex": "a3a3a3",
+        "rgb": {
+          "r": 163,
+          "g": 163,
+          "b": 163,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 63.921568627450974,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.6392156862745098,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "filePath": "tokens/color/icon.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.gray.40}",
+        "attributes": {
+          "category": "icon",
+          "type": "color"
+        },
+        "$type": "color"
+      },
+      "name": "rh-color-icon-subtle-hover",
+      "path": [
+        "color",
+        "icon",
+        "subtle",
+        "hover"
+      ]
+    }
+  ],
+  [
+    "--rh-color-icon-status-danger",
+    {
+      "$value": "",
+      "$description": "Responsive `icon-status-danger` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-status-danger-on-light` on a themable container with a light color palette and `--rh-color-icon-status-danger-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/icon.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.icon.status.danger.on-light}",
+          "{color.icon.status.danger.on-dark}"
+        ],
+        "$description": "Responsive `icon-status-danger` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-status-danger-on-light` on a themable container with a light color palette and `--rh-color-icon-status-danger-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-icon-status-danger",
+      "attributes": {
+        "category": "color",
+        "type": "icon",
+        "item": "status",
+        "subitem": "danger",
+        "state": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "icon",
+        "status",
+        "danger",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-icon-status-danger-on-light",
+    {
+      "$value": "#b1380b",
+      "$description": "Danger status icon color (light theme)",
+      "filePath": "tokens/color/icon.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.status.danger.on-light}",
+        "$description": "Danger status icon color (light theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-icon-status-danger-on-light",
+      "attributes": {
+        "category": "color",
+        "type": "icon",
+        "item": "status",
+        "subitem": "danger",
+        "state": "on-light",
+        "hex": "b1380b",
+        "rgb": {
+          "r": 177,
+          "g": 56,
+          "b": 11,
+          "a": 1
+        },
+        "hsl": {
+          "h": 16.265060240963855,
+          "s": 88.29787234042554,
+          "l": 36.86274509803921,
+          "a": 1
+        },
+        "hsv": {
+          "h": 16.265060240963855,
+          "s": 0.9378531073446328,
+          "v": 0.6941176470588235,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "icon",
+        "status",
+        "danger",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-icon-status-danger-on-dark",
+    {
+      "$value": "#f0561d",
+      "$description": "Danger status icon color (dark theme)",
+      "filePath": "tokens/color/icon.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.status.danger.on-dark}",
+        "$description": "Danger status icon color (dark theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-icon-status-danger-on-dark",
+      "attributes": {
+        "category": "color",
+        "type": "icon",
+        "item": "status",
+        "subitem": "danger",
+        "state": "on-dark",
+        "hex": "f0561d",
+        "rgb": {
+          "r": 240,
+          "g": 86,
+          "b": 29,
+          "a": 1
+        },
+        "hsl": {
+          "h": 16.208530805687207,
+          "s": 87.55186721991701,
+          "l": 52.74509803921569,
+          "a": 1
+        },
+        "hsv": {
+          "h": 16.208530805687207,
+          "s": 0.8791666666666667,
+          "v": 0.9411764705882353,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "icon",
+        "status",
+        "danger",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-icon-status-caution",
+    {
+      "$value": "",
+      "$description": "Responsive `icon-status-caution` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-status-caution-on-light` on a themable container with a light color palette and `--rh-color-icon-status-caution-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/icon.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.icon.status.caution.on-light}",
+          "{color.icon.status.caution.on-dark}"
+        ],
+        "$description": "Responsive `icon-status-caution` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-status-caution-on-light` on a themable container with a light color palette and `--rh-color-icon-status-caution-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-icon-status-caution",
+      "attributes": {
+        "category": "color",
+        "type": "icon",
+        "item": "status",
+        "subitem": "caution",
+        "state": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "icon",
+        "status",
+        "caution",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-icon-status-caution-on-light",
+    {
+      "$value": "#ca6c0f",
+      "$description": "Caution status icon color (light theme)",
+      "filePath": "tokens/color/icon.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.status.caution.on-light}",
+        "$description": "Caution status icon color (light theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-icon-status-caution-on-light",
+      "attributes": {
+        "category": "color",
+        "type": "icon",
+        "item": "status",
+        "subitem": "caution",
+        "state": "on-light",
+        "hex": "ca6c0f",
+        "rgb": {
+          "r": 202,
+          "g": 108,
+          "b": 15,
+          "a": 1
+        },
+        "hsl": {
+          "h": 29.83957219251337,
+          "s": 86.17511520737327,
+          "l": 42.549019607843135,
+          "a": 1
+        },
+        "hsv": {
+          "h": 29.83957219251337,
+          "s": 0.9257425742574257,
+          "v": 0.792156862745098,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "icon",
+        "status",
+        "caution",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-icon-status-caution-on-dark",
+    {
+      "$value": "#f5921b",
+      "$description": "Caution status icon color (dark theme)",
+      "filePath": "tokens/color/icon.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.status.caution.on-dark}",
+        "$description": "Caution status icon color (dark theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-icon-status-caution-on-dark",
+      "attributes": {
+        "category": "color",
+        "type": "icon",
+        "item": "status",
+        "subitem": "caution",
+        "state": "on-dark",
+        "hex": "f5921b",
+        "rgb": {
+          "r": 245,
+          "g": 146,
+          "b": 27,
+          "a": 1
+        },
+        "hsl": {
+          "h": 32.752293577981646,
+          "s": 91.5966386554622,
+          "l": 53.333333333333336,
+          "a": 1
+        },
+        "hsv": {
+          "h": 32.752293577981646,
+          "s": 0.889795918367347,
+          "v": 0.9607843137254902,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "icon",
+        "status",
+        "caution",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-icon-status-warning",
+    {
+      "$value": "",
+      "$description": "Responsive `icon-status-warning` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-status-warning-on-light` on a themable container with a light color palette and `--rh-color-icon-status-warning-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/icon.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.icon.status.warning.on-light}",
+          "{color.icon.status.warning.on-dark}"
+        ],
+        "$description": "Responsive `icon-status-warning` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-status-warning-on-light` on a themable container with a light color palette and `--rh-color-icon-status-warning-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-icon-status-warning",
+      "attributes": {
+        "category": "color",
+        "type": "icon",
+        "item": "status",
+        "subitem": "warning",
+        "state": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "icon",
+        "status",
+        "warning",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-icon-status-warning-on-light",
+    {
+      "$value": "#dca614",
+      "$description": "Warning status icon color (light theme)",
+      "filePath": "tokens/color/icon.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.status.warning.on-light}",
+        "$description": "Warning status icon color (light theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-icon-status-warning-on-light",
+      "attributes": {
+        "category": "color",
+        "type": "icon",
+        "item": "status",
+        "subitem": "warning",
+        "state": "on-light",
+        "hex": "dca614",
+        "rgb": {
+          "r": 220,
+          "g": 166,
+          "b": 20,
+          "a": 1
+        },
+        "hsl": {
+          "h": 43.79999999999999,
+          "s": 83.33333333333334,
+          "l": 47.05882352941176,
+          "a": 1
+        },
+        "hsv": {
+          "h": 43.79999999999999,
+          "s": 0.9090909090909092,
+          "v": 0.8627450980392157,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "icon",
+        "status",
+        "warning",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-icon-status-warning-on-dark",
+    {
+      "$value": "#ffcc17",
+      "$description": "Warning status icon color (dark theme)",
+      "filePath": "tokens/color/icon.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.status.warning.on-dark}",
+        "$description": "Warning status icon color (dark theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-icon-status-warning-on-dark",
+      "attributes": {
+        "category": "color",
+        "type": "icon",
+        "item": "status",
+        "subitem": "warning",
+        "state": "on-dark",
+        "hex": "ffcc17",
+        "rgb": {
+          "r": 255,
+          "g": 204,
+          "b": 23,
+          "a": 1
+        },
+        "hsl": {
+          "h": 46.81034482758621,
+          "s": 100,
+          "l": 54.509803921568626,
+          "a": 1
+        },
+        "hsv": {
+          "h": 46.81034482758621,
+          "s": 0.9098039215686274,
+          "v": 1,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "icon",
+        "status",
+        "warning",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-icon-status-default",
+    {
+      "$value": "",
+      "$description": "Responsive `icon-status-default` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-status-default-on-light` on a themable container with a light color palette and `--rh-color-icon-status-default-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/icon.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.icon.status.default.on-light}",
+          "{color.icon.status.default.on-dark}"
+        ],
+        "$description": "Responsive `icon-status-default` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-status-default-on-light` on a themable container with a light color palette and `--rh-color-icon-status-default-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-icon-status-default",
+      "attributes": {
+        "category": "color",
+        "type": "icon",
+        "item": "status",
+        "subitem": "default",
+        "state": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "icon",
+        "status",
+        "default",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-icon-status-default-on-light",
+    {
+      "$value": "#4d4d4d",
+      "$description": "Default status icon color (light theme)",
+      "filePath": "tokens/color/icon.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.icon.status.neutral.on-light}",
+        "$description": "Default status icon color (light theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-icon-status-default-on-light",
+      "attributes": {
+        "category": "color",
+        "type": "icon",
+        "item": "status",
+        "subitem": "default",
+        "state": "on-light",
+        "hex": "4d4d4d",
+        "rgb": {
+          "r": 77,
+          "g": 77,
+          "b": 77,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 30.19607843137255,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.30196078431372547,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "icon",
+        "status",
+        "default",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-icon-status-default-on-dark",
+    {
+      "$value": "#4d4d4d",
+      "$description": "Default status icon color (dark theme)",
+      "filePath": "tokens/color/icon.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.icon.status.neutral.on-light}",
+        "$description": "Default status icon color (dark theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-icon-status-default-on-dark",
+      "attributes": {
+        "category": "color",
+        "type": "icon",
+        "item": "status",
+        "subitem": "default",
+        "state": "on-dark",
+        "hex": "4d4d4d",
+        "rgb": {
+          "r": 77,
+          "g": 77,
+          "b": 77,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 30.19607843137255,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.30196078431372547,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "icon",
+        "status",
+        "default",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-icon-status-neutral",
+    {
+      "$value": "",
+      "$description": "Responsive `icon-status-neutral` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-status-neutral-on-light` on a themable container with a light color palette and `--rh-color-icon-status-neutral-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/icon.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.icon.status.neutral.on-light}",
+          "{color.icon.status.neutral.on-dark}"
+        ],
+        "$description": "Responsive `icon-status-neutral` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-status-neutral-on-light` on a themable container with a light color palette and `--rh-color-icon-status-neutral-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-icon-status-neutral",
+      "attributes": {
+        "category": "color",
+        "type": "icon",
+        "item": "status",
+        "subitem": "neutral",
+        "state": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "icon",
+        "status",
+        "neutral",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-icon-status-neutral-on-light",
+    {
+      "$value": "#4d4d4d",
+      "$description": "Neutral status icon color (light theme)",
+      "filePath": "tokens/color/icon.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.status.neutral.on-light}",
+        "$description": "Neutral status icon color (light theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-icon-status-neutral-on-light",
+      "attributes": {
+        "category": "color",
+        "type": "icon",
+        "item": "status",
+        "subitem": "neutral",
+        "state": "on-light",
+        "hex": "4d4d4d",
+        "rgb": {
+          "r": 77,
+          "g": 77,
+          "b": 77,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 30.19607843137255,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.30196078431372547,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "icon",
+        "status",
+        "neutral",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-icon-status-neutral-on-dark",
+    {
+      "$value": "#c7c7c7",
+      "$description": "Neutral status icon color (dark theme)",
+      "filePath": "tokens/color/icon.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.status.neutral.on-dark}",
+        "$description": "Neutral status icon color (dark theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-icon-status-neutral-on-dark",
+      "attributes": {
+        "category": "color",
+        "type": "icon",
+        "item": "status",
+        "subitem": "neutral",
+        "state": "on-dark",
+        "hex": "c7c7c7",
+        "rgb": {
+          "r": 199,
+          "g": 199,
+          "b": 199,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 78.03921568627452,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.7803921568627451,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "icon",
+        "status",
+        "neutral",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-icon-status-info",
+    {
+      "$value": "",
+      "$description": "Responsive `icon-status-info` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-status-info-on-light` on a themable container with a light color palette and `--rh-color-icon-status-info-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/icon.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.icon.status.info.on-light}",
+          "{color.icon.status.info.on-dark}"
+        ],
+        "$description": "Responsive `icon-status-info` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-status-info-on-light` on a themable container with a light color palette and `--rh-color-icon-status-info-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-icon-status-info",
+      "attributes": {
+        "category": "color",
+        "type": "icon",
+        "item": "status",
+        "subitem": "info",
+        "state": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "icon",
+        "status",
+        "info",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-icon-status-info-on-light",
+    {
+      "$value": "#5e40be",
+      "$description": "Info status icon color (light theme)",
+      "filePath": "tokens/color/icon.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.status.info.on-light}",
+        "$description": "Info status icon color (light theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-icon-status-info-on-light",
+      "attributes": {
+        "category": "color",
+        "type": "icon",
+        "item": "status",
+        "subitem": "info",
+        "state": "on-light",
+        "hex": "5e40be",
+        "rgb": {
+          "r": 94,
+          "g": 64,
+          "b": 190,
+          "a": 1
+        },
+        "hsl": {
+          "h": 254.2857142857143,
+          "s": 49.60629921259843,
+          "l": 49.80392156862745,
+          "a": 1
+        },
+        "hsv": {
+          "h": 254.2857142857143,
+          "s": 0.6631578947368422,
+          "v": 0.7450980392156863,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "icon",
+        "status",
+        "info",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-icon-status-info-on-dark",
+    {
+      "$value": "#b6a6e9",
+      "$description": "Info status icon color (dark theme)",
+      "filePath": "tokens/color/icon.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.status.info.on-dark}",
+        "$description": "Info status icon color (dark theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-icon-status-info-on-dark",
+      "attributes": {
+        "category": "color",
+        "type": "icon",
+        "item": "status",
+        "subitem": "info",
+        "state": "on-dark",
+        "hex": "b6a6e9",
+        "rgb": {
+          "r": 182,
+          "g": 166,
+          "b": 233,
+          "a": 1
+        },
+        "hsl": {
+          "h": 254.32835820895522,
+          "s": 60.36036036036033,
+          "l": 78.23529411764706,
+          "a": 1
+        },
+        "hsv": {
+          "h": 254.32835820895522,
+          "s": 0.2875536480686695,
+          "v": 0.9137254901960784,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "icon",
+        "status",
+        "info",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-icon-status-success",
+    {
+      "$value": "",
+      "$description": "Responsive `icon-status-success` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-status-success-on-light` on a themable container with a light color palette and `--rh-color-icon-status-success-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/icon.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.icon.status.success.on-light}",
+          "{color.icon.status.success.on-dark}"
+        ],
+        "$description": "Responsive `icon-status-success` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-status-success-on-light` on a themable container with a light color palette and `--rh-color-icon-status-success-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-icon-status-success",
+      "attributes": {
+        "category": "color",
+        "type": "icon",
+        "item": "status",
+        "subitem": "success",
+        "state": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "icon",
+        "status",
+        "success",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-icon-status-success-on-light",
+    {
+      "$value": "#3d7317",
+      "$description": "Success status icon color (light theme)",
+      "filePath": "tokens/color/icon.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.status.success.on-light}",
+        "$description": "Success status icon color (light theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-icon-status-success-on-light",
+      "attributes": {
+        "category": "color",
+        "type": "icon",
+        "item": "status",
+        "subitem": "success",
+        "state": "on-light",
+        "hex": "3d7317",
+        "rgb": {
+          "r": 61,
+          "g": 115,
+          "b": 23,
+          "a": 1
+        },
+        "hsl": {
+          "h": 95.21739130434783,
+          "s": 66.66666666666667,
+          "l": 27.058823529411764,
+          "a": 1
+        },
+        "hsv": {
+          "h": 95.21739130434783,
+          "s": 0.7999999999999999,
+          "v": 0.45098039215686275,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "icon",
+        "status",
+        "success",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-icon-status-success-on-dark",
+    {
+      "$value": "#87bb62",
+      "$description": "Success status icon color (dark theme)",
+      "filePath": "tokens/color/icon.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.status.success.on-dark}",
+        "$description": "Success status icon color (dark theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-icon-status-success-on-dark",
+      "attributes": {
+        "category": "color",
+        "type": "icon",
+        "item": "status",
+        "subitem": "success",
+        "state": "on-dark",
+        "hex": "87bb62",
+        "rgb": {
+          "r": 135,
+          "g": 187,
+          "b": 98,
+          "a": 1
+        },
+        "hsl": {
+          "h": 95.05617977528091,
+          "s": 39.55555555555555,
+          "l": 55.88235294117647,
+          "a": 1
+        },
+        "hsv": {
+          "h": 95.05617977528091,
+          "s": 0.4759358288770053,
+          "v": 0.7333333333333333,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "icon",
+        "status",
+        "success",
+        "on-dark"
+      ]
     }
   ],
   [
@@ -1643,13 +6268,13 @@ export const tokens = new Map([
     {
       "$value": "#ffffff",
       "$description": "Primary canvas (light theme)",
-      "value": "#ffffff",
       "filePath": "tokens/color/canvas.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "{color.white}",
         "$description": "Primary canvas (light theme)",
-        "value": "{color.white}"
+        "$type": "color"
       },
       "name": "rh-color-canvas-white",
       "attributes": {
@@ -1681,9 +6306,7 @@ export const tokens = new Map([
         "color",
         "canvas",
         "white"
-      ],
-      "comment": "Primary canvas (light theme)",
-      "$type": "color"
+      ]
     }
   ],
   [
@@ -1691,13 +6314,13 @@ export const tokens = new Map([
     {
       "$value": "#151515",
       "$description": "Primary canvas (dark theme)",
-      "value": "#151515",
       "filePath": "tokens/color/canvas.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "{color.gray.95}",
         "$description": "Primary canvas (dark theme)",
-        "value": "{color.gray.95}"
+        "$type": "color"
       },
       "name": "rh-color-canvas-black",
       "attributes": {
@@ -1729,23 +6352,189 @@ export const tokens = new Map([
         "color",
         "canvas",
         "black"
-      ],
-      "comment": "Primary canvas (dark theme)",
-      "$type": "color"
+      ]
+    }
+  ],
+  [
+    "--rh-color-canvas-white-hsl",
+    {
+      "$value": "0 0% 100%",
+      "$type": "color",
+      "original": {
+        "$value": "{color.white}",
+        "$type": "color"
+      },
+      "name": "rh-color-canvas-white-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "canvas",
+        "item": "white-hsl",
+        "hex": "ffffff",
+        "rgb": {
+          "r": 255,
+          "g": 255,
+          "b": 255,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 100,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 1,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "canvas",
+        "white-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-canvas-white-rgb",
+    {
+      "$value": "255 255 255",
+      "$type": "color",
+      "original": {
+        "$value": "{color.white}",
+        "$type": "color"
+      },
+      "name": "rh-color-canvas-white-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "canvas",
+        "item": "white-rgb",
+        "hex": "ffffff",
+        "rgb": {
+          "r": 255,
+          "g": 255,
+          "b": 255,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 100,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 1,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "canvas",
+        "white-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-canvas-black-hsl",
+    {
+      "$value": "0 0% 0%",
+      "$type": "color",
+      "original": {
+        "$value": "{color.black}",
+        "$type": "color"
+      },
+      "name": "rh-color-canvas-black-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "canvas",
+        "item": "black-hsl",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "canvas",
+        "black-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-canvas-black-rgb",
+    {
+      "$value": "0 0 0",
+      "$type": "color",
+      "original": {
+        "$value": "{color.black}",
+        "$type": "color"
+      },
+      "name": "rh-color-canvas-black-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "canvas",
+        "item": "black-rgb",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "canvas",
+        "black-rgb"
+      ]
     }
   ],
   [
     "--rh-color-blue-10",
     {
-      "$value": "#E0F0FF",
+      "$value": "#e0f0ff",
       "$description": "Alert - Info background",
-      "value": "#e0f0ff",
       "filePath": "tokens/color/crayon/blue.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#E0F0FF",
         "$description": "Alert - Info background",
-        "value": "#E0F0FF"
+        "$type": "color"
       },
       "name": "rh-color-blue-10",
       "attributes": {
@@ -1777,23 +6566,21 @@ export const tokens = new Map([
         "color",
         "blue",
         "10"
-      ],
-      "comment": "Alert - Info background",
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-blue-20",
     {
-      "$value": "#B9DAFC",
+      "$value": "#b9dafc",
       "$description": "Label - Filled (Blue) border color",
-      "value": "#b9dafc",
       "filePath": "tokens/color/crayon/blue.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#B9DAFC",
         "$description": "Label - Filled (Blue) border color",
-        "value": "#B9DAFC"
+        "$type": "color"
       },
       "name": "rh-color-blue-20",
       "attributes": {
@@ -1825,23 +6612,21 @@ export const tokens = new Map([
         "color",
         "blue",
         "20"
-      ],
-      "comment": "Label - Filled (Blue) border color",
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-blue-30",
     {
-      "$value": "#92C5F9",
+      "$value": "#92c5f9",
       "$description": "Inline link (dark theme)",
-      "value": "#92c5f9",
       "filePath": "tokens/color/crayon/blue.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#92C5F9",
         "$description": "Inline link (dark theme)",
-        "value": "#92C5F9"
+        "$type": "color"
       },
       "name": "rh-color-blue-30",
       "attributes": {
@@ -1873,23 +6658,21 @@ export const tokens = new Map([
         "color",
         "blue",
         "30"
-      ],
-      "comment": "Inline link (dark theme)",
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-blue-40",
     {
-      "$value": "#4394E5",
+      "$value": "#4394e5",
       "$description": "Alert - Info accent",
-      "value": "#4394e5",
       "filePath": "tokens/color/crayon/blue.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#4394E5",
         "$description": "Alert - Info accent",
-        "value": "#4394E5"
+        "$type": "color"
       },
       "name": "rh-color-blue-40",
       "attributes": {
@@ -1921,23 +6704,21 @@ export const tokens = new Map([
         "color",
         "blue",
         "40"
-      ],
-      "comment": "Alert - Info accent",
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-blue-50",
     {
-      "$value": "#0066CC",
+      "$value": "#0066cc",
       "$description": "Label - Filled (Blue) accent color",
-      "value": "#0066cc",
       "filePath": "tokens/color/crayon/blue.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#0066CC",
         "$description": "Label - Filled (Blue) accent color",
-        "value": "#0066CC"
+        "$type": "color"
       },
       "name": "rh-color-blue-50",
       "attributes": {
@@ -1969,23 +6750,21 @@ export const tokens = new Map([
         "color",
         "blue",
         "50"
-      ],
-      "comment": "Label - Filled (Blue) accent color",
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-blue-60",
     {
-      "$value": "#004D99",
+      "$value": "#004d99",
       "$description": "Inline link hover (light theme)",
-      "value": "#004d99",
       "filePath": "tokens/color/crayon/blue.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#004D99",
         "$description": "Inline link hover (light theme)",
-        "value": "#004D99"
+        "$type": "color"
       },
       "name": "rh-color-blue-60",
       "attributes": {
@@ -2017,9 +6796,7 @@ export const tokens = new Map([
         "color",
         "blue",
         "60"
-      ],
-      "comment": "Inline link hover (light theme)",
-      "$type": "color"
+      ]
     }
   ],
   [
@@ -2027,13 +6804,13 @@ export const tokens = new Map([
     {
       "$value": "#003366",
       "$description": "Alert - Info title text",
-      "value": "#003366",
       "filePath": "tokens/color/crayon/blue.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#003366",
         "$description": "Alert - Info title text",
-        "value": "#003366"
+        "$type": "color"
       },
       "name": "rh-color-blue-70",
       "attributes": {
@@ -2065,23 +6842,17 @@ export const tokens = new Map([
         "color",
         "blue",
         "70"
-      ],
-      "comment": "Alert - Info title text",
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-blue-10-hsl",
     {
-      "$type": "color",
       "$value": "209.03225806451616 100% 93.92156862745098%",
-      "value": "209.03225806451616 100% 93.92156862745098%",
-      "filePath": "tokens/color/crayon/blue.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.blue.10}",
-        "value": "{color.blue.10}"
+        "$type": "color"
       },
       "name": "rh-color-blue-10-hsl",
       "attributes": {
@@ -2119,15 +6890,11 @@ export const tokens = new Map([
   [
     "--rh-color-blue-10-rgb",
     {
-      "$type": "color",
       "$value": "224 240 255",
-      "value": "224 240 255",
-      "filePath": "tokens/color/crayon/blue.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.blue.10}",
-        "value": "{color.blue.10}"
+        "$type": "color"
       },
       "name": "rh-color-blue-10-rgb",
       "attributes": {
@@ -2165,15 +6932,11 @@ export const tokens = new Map([
   [
     "--rh-color-blue-20-hsl",
     {
-      "$type": "color",
       "$value": "210.44776119402988 91.78082191780825% 85.68627450980392%",
-      "value": "210.44776119402988 91.78082191780825% 85.68627450980392%",
-      "filePath": "tokens/color/crayon/blue.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.blue.20}",
-        "value": "{color.blue.20}"
+        "$type": "color"
       },
       "name": "rh-color-blue-20-hsl",
       "attributes": {
@@ -2211,15 +6974,11 @@ export const tokens = new Map([
   [
     "--rh-color-blue-20-rgb",
     {
-      "$type": "color",
       "$value": "185 218 252",
-      "value": "185 218 252",
-      "filePath": "tokens/color/crayon/blue.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.blue.20}",
-        "value": "{color.blue.20}"
+        "$type": "color"
       },
       "name": "rh-color-blue-20-rgb",
       "attributes": {
@@ -2257,15 +7016,11 @@ export const tokens = new Map([
   [
     "--rh-color-blue-30-hsl",
     {
-      "$type": "color",
       "$value": "210.29126213592232 89.56521739130436% 77.45098039215685%",
-      "value": "210.29126213592232 89.56521739130436% 77.45098039215685%",
-      "filePath": "tokens/color/crayon/blue.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.blue.30}",
-        "value": "{color.blue.30}"
+        "$type": "color"
       },
       "name": "rh-color-blue-30-hsl",
       "attributes": {
@@ -2303,15 +7058,11 @@ export const tokens = new Map([
   [
     "--rh-color-blue-30-rgb",
     {
-      "$type": "color",
       "$value": "146 197 249",
-      "value": "146 197 249",
-      "filePath": "tokens/color/crayon/blue.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.blue.30}",
-        "value": "{color.blue.30}"
+        "$type": "color"
       },
       "name": "rh-color-blue-30-rgb",
       "attributes": {
@@ -2349,15 +7100,11 @@ export const tokens = new Map([
   [
     "--rh-color-blue-40-hsl",
     {
-      "$type": "color",
       "$value": "210 75.70093457943923% 58.03921568627452%",
-      "value": "210 75.70093457943923% 58.03921568627452%",
-      "filePath": "tokens/color/crayon/blue.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.blue.40}",
-        "value": "{color.blue.40}"
+        "$type": "color"
       },
       "name": "rh-color-blue-40-hsl",
       "attributes": {
@@ -2395,15 +7142,11 @@ export const tokens = new Map([
   [
     "--rh-color-blue-40-rgb",
     {
-      "$type": "color",
       "$value": "67 148 229",
-      "value": "67 148 229",
-      "filePath": "tokens/color/crayon/blue.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.blue.40}",
-        "value": "{color.blue.40}"
+        "$type": "color"
       },
       "name": "rh-color-blue-40-rgb",
       "attributes": {
@@ -2441,15 +7184,11 @@ export const tokens = new Map([
   [
     "--rh-color-blue-50-hsl",
     {
-      "$type": "color",
       "$value": "210 100% 40%",
-      "value": "210 100% 40%",
-      "filePath": "tokens/color/crayon/blue.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.blue.50}",
-        "value": "{color.blue.50}"
+        "$type": "color"
       },
       "name": "rh-color-blue-50-hsl",
       "attributes": {
@@ -2487,15 +7226,11 @@ export const tokens = new Map([
   [
     "--rh-color-blue-50-rgb",
     {
-      "$type": "color",
       "$value": "0 102 204",
-      "value": "0 102 204",
-      "filePath": "tokens/color/crayon/blue.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.blue.50}",
-        "value": "{color.blue.50}"
+        "$type": "color"
       },
       "name": "rh-color-blue-50-rgb",
       "attributes": {
@@ -2533,15 +7268,11 @@ export const tokens = new Map([
   [
     "--rh-color-blue-60-hsl",
     {
-      "$type": "color",
       "$value": "209.80392156862746 100% 30%",
-      "value": "209.80392156862746 100% 30%",
-      "filePath": "tokens/color/crayon/blue.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.blue.60}",
-        "value": "{color.blue.60}"
+        "$type": "color"
       },
       "name": "rh-color-blue-60-hsl",
       "attributes": {
@@ -2579,15 +7310,11 @@ export const tokens = new Map([
   [
     "--rh-color-blue-60-rgb",
     {
-      "$type": "color",
       "$value": "0 77 153",
-      "value": "0 77 153",
-      "filePath": "tokens/color/crayon/blue.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.blue.60}",
-        "value": "{color.blue.60}"
+        "$type": "color"
       },
       "name": "rh-color-blue-60-rgb",
       "attributes": {
@@ -2625,15 +7352,11 @@ export const tokens = new Map([
   [
     "--rh-color-blue-70-hsl",
     {
-      "$type": "color",
       "$value": "210 100% 20%",
-      "value": "210 100% 20%",
-      "filePath": "tokens/color/crayon/blue.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.blue.70}",
-        "value": "{color.blue.70}"
+        "$type": "color"
       },
       "name": "rh-color-blue-70-hsl",
       "attributes": {
@@ -2671,15 +7394,11 @@ export const tokens = new Map([
   [
     "--rh-color-blue-70-rgb",
     {
-      "$type": "color",
       "$value": "0 51 102",
-      "value": "0 51 102",
-      "filePath": "tokens/color/crayon/blue.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.blue.70}",
-        "value": "{color.blue.70}"
+        "$type": "color"
       },
       "name": "rh-color-blue-70-rgb",
       "attributes": {
@@ -2717,8 +7436,8 @@ export const tokens = new Map([
   [
     "--rh-color-white",
     {
-      "$value": "#ffffff",
       "$description": "Lightest surface (light theme) or primary text (dark theme)",
+      "$value": "#ffffff",
       "attributes": {
         "type": "gray",
         "category": "color",
@@ -2743,30 +7462,28 @@ export const tokens = new Map([
         },
         "isLight": true
       },
-      "value": "#ffffff",
       "filePath": "tokens/color/crayon/gray.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
-        "$value": "#ffffff",
         "$description": "Lightest surface (light theme) or primary text (dark theme)",
+        "$value": "#ffffff",
         "attributes": {
           "type": "gray"
         },
-        "value": "#ffffff"
+        "$type": "color"
       },
       "name": "rh-color-white",
       "path": [
         "color",
         "white"
-      ],
-      "comment": "Lightest surface (light theme) or primary text (dark theme)",
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-gray-10",
     {
-      "$value": "#F2F2F2",
+      "$value": "#f2f2f2",
       "$description": "Tertiary surface (light theme)",
       "attributes": {
         "type": "gray",
@@ -2793,31 +7510,29 @@ export const tokens = new Map([
         },
         "isLight": true
       },
-      "value": "#f2f2f2",
       "filePath": "tokens/color/crayon/gray.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#F2F2F2",
         "$description": "Tertiary surface (light theme)",
         "attributes": {
           "type": "gray"
         },
-        "value": "#F2F2F2"
+        "$type": "color"
       },
       "name": "rh-color-gray-10",
       "path": [
         "color",
         "gray",
         "10"
-      ],
-      "comment": "Tertiary surface (light theme)",
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-gray-20",
     {
-      "$value": "#E0E0E0",
+      "$value": "#e0e0e0",
       "$description": "Secondary surface (light theme)",
       "attributes": {
         "type": "gray",
@@ -2844,31 +7559,29 @@ export const tokens = new Map([
         },
         "isLight": true
       },
-      "value": "#e0e0e0",
       "filePath": "tokens/color/crayon/gray.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#E0E0E0",
         "$description": "Secondary surface (light theme)",
         "attributes": {
           "type": "gray"
         },
-        "value": "#E0E0E0"
+        "$type": "color"
       },
       "name": "rh-color-gray-20",
       "path": [
         "color",
         "gray",
         "20"
-      ],
-      "comment": "Secondary surface (light theme)",
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-gray-30",
     {
-      "$value": "#C7C7C7",
+      "$value": "#c7c7c7",
       "$description": "Subtle borders (light theme)",
       "attributes": {
         "type": "gray",
@@ -2895,31 +7608,29 @@ export const tokens = new Map([
         },
         "isLight": true
       },
-      "value": "#c7c7c7",
       "filePath": "tokens/color/crayon/gray.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#C7C7C7",
         "$description": "Subtle borders (light theme)",
         "attributes": {
           "type": "gray"
         },
-        "value": "#C7C7C7"
+        "$type": "color"
       },
       "name": "rh-color-gray-30",
       "path": [
         "color",
         "gray",
         "30"
-      ],
-      "comment": "Subtle borders (light theme)",
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-gray-40",
     {
-      "$value": "#A3A3A3",
+      "$value": "#a3a3a3",
       "$description": "Subtle icon (hover state)",
       "attributes": {
         "type": "gray",
@@ -2946,25 +7657,23 @@ export const tokens = new Map([
         },
         "isLight": true
       },
-      "value": "#a3a3a3",
       "filePath": "tokens/color/crayon/gray.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#A3A3A3",
         "$description": "Subtle icon (hover state)",
         "attributes": {
           "type": "gray"
         },
-        "value": "#A3A3A3"
+        "$type": "color"
       },
       "name": "rh-color-gray-40",
       "path": [
         "color",
         "gray",
         "40"
-      ],
-      "comment": "Subtle icon (hover state)",
-      "$type": "color"
+      ]
     }
   ],
   [
@@ -2997,31 +7706,29 @@ export const tokens = new Map([
         },
         "isLight": false
       },
-      "value": "#707070",
       "filePath": "tokens/color/crayon/gray.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#707070",
         "$description": "Subtle icon",
         "attributes": {
           "type": "gray"
         },
-        "value": "#707070"
+        "$type": "color"
       },
       "name": "rh-color-gray-50",
       "path": [
         "color",
         "gray",
         "50"
-      ],
-      "comment": "Subtle icon",
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-gray-60",
     {
-      "$value": "#4D4D4D",
+      "$value": "#4d4d4d",
       "$description": "Secondary text (light theme)",
       "attributes": {
         "type": "gray",
@@ -3048,25 +7755,23 @@ export const tokens = new Map([
         },
         "isLight": false
       },
-      "value": "#4d4d4d",
       "filePath": "tokens/color/crayon/gray.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#4D4D4D",
         "$description": "Secondary text (light theme)",
         "attributes": {
           "type": "gray"
         },
-        "value": "#4D4D4D"
+        "$type": "color"
       },
       "name": "rh-color-gray-60",
       "path": [
         "color",
         "gray",
         "60"
-      ],
-      "comment": "Secondary text (light theme)",
-      "$type": "color"
+      ]
     }
   ],
   [
@@ -3099,25 +7804,23 @@ export const tokens = new Map([
         },
         "isLight": false
       },
-      "value": "#383838",
       "filePath": "tokens/color/crayon/gray.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#383838",
         "$description": "Tertiary surface (dark theme)",
         "attributes": {
           "type": "gray"
         },
-        "value": "#383838"
+        "$type": "color"
       },
       "name": "rh-color-gray-70",
       "path": [
         "color",
         "gray",
         "70"
-      ],
-      "comment": "Tertiary surface (dark theme)",
-      "$type": "color"
+      ]
     }
   ],
   [
@@ -3150,31 +7853,29 @@ export const tokens = new Map([
         },
         "isLight": false
       },
-      "value": "#292929",
       "filePath": "tokens/color/crayon/gray.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#292929",
         "$description": "Alternative tertiary surface (not available for use with context provider)",
         "attributes": {
           "type": "gray"
         },
-        "value": "#292929"
+        "$type": "color"
       },
       "name": "rh-color-gray-80",
       "path": [
         "color",
         "gray",
         "80"
-      ],
-      "comment": "Alternative tertiary surface (not available for use with context provider)",
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-gray-90",
     {
-      "$value": "#1F1F1F",
+      "$value": "#1f1f1f",
       "$description": "Secondary surface (dark theme)",
       "attributes": {
         "type": "gray",
@@ -3201,25 +7902,23 @@ export const tokens = new Map([
         },
         "isLight": false
       },
-      "value": "#1f1f1f",
       "filePath": "tokens/color/crayon/gray.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#1F1F1F",
         "$description": "Secondary surface (dark theme)",
         "attributes": {
           "type": "gray"
         },
-        "value": "#1F1F1F"
+        "$type": "color"
       },
       "name": "rh-color-gray-90",
       "path": [
         "color",
         "gray",
         "90"
-      ],
-      "comment": "Secondary surface (dark theme)",
-      "$type": "color"
+      ]
     }
   ],
   [
@@ -3252,39 +7951,33 @@ export const tokens = new Map([
         },
         "isLight": false
       },
-      "value": "#151515",
       "filePath": "tokens/color/crayon/gray.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#151515",
         "$description": "Primary surface (dark theme) or primary text (light theme)",
         "attributes": {
           "type": "gray"
         },
-        "value": "#151515"
+        "$type": "color"
       },
       "name": "rh-color-gray-95",
       "path": [
         "color",
         "gray",
         "95"
-      ],
-      "comment": "Primary surface (dark theme) or primary text (light theme)",
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-gray-10-hsl",
     {
-      "$type": "color",
       "$value": "0 0% 94.90196078431372%",
-      "value": "0 0% 94.90196078431372%",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.gray.10}",
-        "value": "{color.gray.10}"
+        "$type": "color"
       },
       "name": "rh-color-gray-10-hsl",
       "attributes": {
@@ -3322,15 +8015,11 @@ export const tokens = new Map([
   [
     "--rh-color-gray-10-rgb",
     {
-      "$type": "color",
       "$value": "242 242 242",
-      "value": "242 242 242",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.gray.10}",
-        "value": "{color.gray.10}"
+        "$type": "color"
       },
       "name": "rh-color-gray-10-rgb",
       "attributes": {
@@ -3368,15 +8057,11 @@ export const tokens = new Map([
   [
     "--rh-color-gray-20-hsl",
     {
-      "$type": "color",
       "$value": "0 0% 87.84313725490196%",
-      "value": "0 0% 87.84313725490196%",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.gray.20}",
-        "value": "{color.gray.20}"
+        "$type": "color"
       },
       "name": "rh-color-gray-20-hsl",
       "attributes": {
@@ -3414,15 +8099,11 @@ export const tokens = new Map([
   [
     "--rh-color-gray-20-rgb",
     {
-      "$type": "color",
       "$value": "224 224 224",
-      "value": "224 224 224",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.gray.20}",
-        "value": "{color.gray.20}"
+        "$type": "color"
       },
       "name": "rh-color-gray-20-rgb",
       "attributes": {
@@ -3460,15 +8141,11 @@ export const tokens = new Map([
   [
     "--rh-color-gray-30-hsl",
     {
-      "$type": "color",
       "$value": "0 0% 78.03921568627452%",
-      "value": "0 0% 78.03921568627452%",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.gray.30}",
-        "value": "{color.gray.30}"
+        "$type": "color"
       },
       "name": "rh-color-gray-30-hsl",
       "attributes": {
@@ -3506,15 +8183,11 @@ export const tokens = new Map([
   [
     "--rh-color-gray-30-rgb",
     {
-      "$type": "color",
       "$value": "199 199 199",
-      "value": "199 199 199",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.gray.30}",
-        "value": "{color.gray.30}"
+        "$type": "color"
       },
       "name": "rh-color-gray-30-rgb",
       "attributes": {
@@ -3552,15 +8225,11 @@ export const tokens = new Map([
   [
     "--rh-color-gray-40-hsl",
     {
-      "$type": "color",
       "$value": "0 0% 63.921568627450974%",
-      "value": "0 0% 63.921568627450974%",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.gray.40}",
-        "value": "{color.gray.40}"
+        "$type": "color"
       },
       "name": "rh-color-gray-40-hsl",
       "attributes": {
@@ -3598,15 +8267,11 @@ export const tokens = new Map([
   [
     "--rh-color-gray-40-rgb",
     {
-      "$type": "color",
       "$value": "163 163 163",
-      "value": "163 163 163",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.gray.40}",
-        "value": "{color.gray.40}"
+        "$type": "color"
       },
       "name": "rh-color-gray-40-rgb",
       "attributes": {
@@ -3644,15 +8309,11 @@ export const tokens = new Map([
   [
     "--rh-color-gray-50-hsl",
     {
-      "$type": "color",
       "$value": "0 0% 43.92156862745098%",
-      "value": "0 0% 43.92156862745098%",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.gray.50}",
-        "value": "{color.gray.50}"
+        "$type": "color"
       },
       "name": "rh-color-gray-50-hsl",
       "attributes": {
@@ -3690,15 +8351,11 @@ export const tokens = new Map([
   [
     "--rh-color-gray-50-rgb",
     {
-      "$type": "color",
       "$value": "112 112 112",
-      "value": "112 112 112",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.gray.50}",
-        "value": "{color.gray.50}"
+        "$type": "color"
       },
       "name": "rh-color-gray-50-rgb",
       "attributes": {
@@ -3736,15 +8393,11 @@ export const tokens = new Map([
   [
     "--rh-color-gray-60-hsl",
     {
-      "$type": "color",
       "$value": "0 0% 30.19607843137255%",
-      "value": "0 0% 30.19607843137255%",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.gray.60}",
-        "value": "{color.gray.60}"
+        "$type": "color"
       },
       "name": "rh-color-gray-60-hsl",
       "attributes": {
@@ -3782,15 +8435,11 @@ export const tokens = new Map([
   [
     "--rh-color-gray-60-rgb",
     {
-      "$type": "color",
       "$value": "77 77 77",
-      "value": "77 77 77",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.gray.60}",
-        "value": "{color.gray.60}"
+        "$type": "color"
       },
       "name": "rh-color-gray-60-rgb",
       "attributes": {
@@ -3828,15 +8477,11 @@ export const tokens = new Map([
   [
     "--rh-color-gray-70-hsl",
     {
-      "$type": "color",
       "$value": "0 0% 21.96078431372549%",
-      "value": "0 0% 21.96078431372549%",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.gray.70}",
-        "value": "{color.gray.70}"
+        "$type": "color"
       },
       "name": "rh-color-gray-70-hsl",
       "attributes": {
@@ -3874,15 +8519,11 @@ export const tokens = new Map([
   [
     "--rh-color-gray-70-rgb",
     {
-      "$type": "color",
       "$value": "56 56 56",
-      "value": "56 56 56",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.gray.70}",
-        "value": "{color.gray.70}"
+        "$type": "color"
       },
       "name": "rh-color-gray-70-rgb",
       "attributes": {
@@ -3920,15 +8561,11 @@ export const tokens = new Map([
   [
     "--rh-color-gray-80-hsl",
     {
-      "$type": "color",
       "$value": "0 0% 16.07843137254902%",
-      "value": "0 0% 16.07843137254902%",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.gray.80}",
-        "value": "{color.gray.80}"
+        "$type": "color"
       },
       "name": "rh-color-gray-80-hsl",
       "attributes": {
@@ -3966,15 +8603,11 @@ export const tokens = new Map([
   [
     "--rh-color-gray-80-rgb",
     {
-      "$type": "color",
       "$value": "41 41 41",
-      "value": "41 41 41",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.gray.80}",
-        "value": "{color.gray.80}"
+        "$type": "color"
       },
       "name": "rh-color-gray-80-rgb",
       "attributes": {
@@ -4012,15 +8645,11 @@ export const tokens = new Map([
   [
     "--rh-color-gray-90-hsl",
     {
-      "$type": "color",
       "$value": "0 0% 12.156862745098039%",
-      "value": "0 0% 12.156862745098039%",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.gray.90}",
-        "value": "{color.gray.90}"
+        "$type": "color"
       },
       "name": "rh-color-gray-90-hsl",
       "attributes": {
@@ -4058,15 +8687,11 @@ export const tokens = new Map([
   [
     "--rh-color-gray-90-rgb",
     {
-      "$type": "color",
       "$value": "31 31 31",
-      "value": "31 31 31",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.gray.90}",
-        "value": "{color.gray.90}"
+        "$type": "color"
       },
       "name": "rh-color-gray-90-rgb",
       "attributes": {
@@ -4104,15 +8729,11 @@ export const tokens = new Map([
   [
     "--rh-color-gray-95-hsl",
     {
-      "$type": "color",
       "$value": "0 0% 8.235294117647058%",
-      "value": "0 0% 8.235294117647058%",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.gray.95}",
-        "value": "{color.gray.95}"
+        "$type": "color"
       },
       "name": "rh-color-gray-95-hsl",
       "attributes": {
@@ -4150,15 +8771,11 @@ export const tokens = new Map([
   [
     "--rh-color-gray-95-rgb",
     {
-      "$type": "color",
       "$value": "21 21 21",
-      "value": "21 21 21",
-      "filePath": "tokens/color/crayon/gray.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.gray.95}",
-        "value": "{color.gray.95}"
+        "$type": "color"
       },
       "name": "rh-color-gray-95-rgb",
       "attributes": {
@@ -4222,1986 +8839,36 @@ export const tokens = new Map([
         },
         "isLight": false
       },
-      "value": "#000000",
       "filePath": "tokens/color/crayon/gray.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#000000",
         "$description": "Brand black (avoid using)",
         "attributes": {
           "type": "gray"
         },
-        "value": "#000000"
+        "$type": "color"
       },
       "name": "rh-color-black",
       "path": [
         "color",
         "black"
-      ],
-      "comment": "Brand black (avoid using)",
-      "$type": "color"
-    }
-  ],
-  [
-    "--rh-color-green-10",
-    {
-      "$value": "#E9F7DF",
-      "$description": "Alert - success background",
-      "value": "#e9f7df",
-      "filePath": "tokens/color/crayon/green.yml",
-      "isSource": true,
-      "original": {
-        "$value": "#E9F7DF",
-        "$description": "Alert - success background",
-        "value": "#E9F7DF"
-      },
-      "name": "rh-color-green-10",
-      "attributes": {
-        "category": "color",
-        "type": "green",
-        "item": "10",
-        "hex": "e9f7df",
-        "rgb": {
-          "r": 233,
-          "g": 247,
-          "b": 223,
-          "a": 1
-        },
-        "hsl": {
-          "h": 95.00000000000003,
-          "s": 60.00000000000004,
-          "l": 92.15686274509804,
-          "a": 1
-        },
-        "hsv": {
-          "h": 95.00000000000003,
-          "s": 0.09716599190283401,
-          "v": 0.9686274509803922,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "green",
-        "10"
-      ],
-      "comment": "Alert - success background",
-      "$type": "color"
-    }
-  ],
-  [
-    "--rh-color-green-20",
-    {
-      "$value": "#D1F1BB",
-      "$description": "Label - Filled (Green) border color",
-      "value": "#d1f1bb",
-      "filePath": "tokens/color/crayon/green.yml",
-      "isSource": true,
-      "original": {
-        "$value": "#D1F1BB",
-        "$description": "Label - Filled (Green) border color",
-        "value": "#D1F1BB"
-      },
-      "name": "rh-color-green-20",
-      "attributes": {
-        "category": "color",
-        "type": "green",
-        "item": "20",
-        "hex": "d1f1bb",
-        "rgb": {
-          "r": 209,
-          "g": 241,
-          "b": 187,
-          "a": 1
-        },
-        "hsl": {
-          "h": 95.55555555555556,
-          "s": 65.85365853658536,
-          "l": 83.92156862745097,
-          "a": 1
-        },
-        "hsv": {
-          "h": 95.55555555555556,
-          "s": 0.2240663900414938,
-          "v": 0.9450980392156862,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "green",
-        "20"
-      ],
-      "comment": "Label - Filled (Green) border color",
-      "$type": "color"
-    }
-  ],
-  [
-    "--rh-color-green-30",
-    {
-      "$value": "#AFDC8F",
-      "value": "#afdc8f",
-      "filePath": "tokens/color/crayon/green.yml",
-      "isSource": true,
-      "original": {
-        "$value": "#AFDC8F",
-        "value": "#AFDC8F"
-      },
-      "name": "rh-color-green-30",
-      "attributes": {
-        "category": "color",
-        "type": "green",
-        "item": "30",
-        "hex": "afdc8f",
-        "rgb": {
-          "r": 175,
-          "g": 220,
-          "b": 143,
-          "a": 1
-        },
-        "hsl": {
-          "h": 95.06493506493506,
-          "s": 52.380952380952394,
-          "l": 71.17647058823529,
-          "a": 1
-        },
-        "hsv": {
-          "h": 95.06493506493506,
-          "s": 0.35000000000000003,
-          "v": 0.8627450980392157,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "green",
-        "30"
-      ],
-      "$type": "color"
-    }
-  ],
-  [
-    "--rh-color-green-40",
-    {
-      "$value": "#87BB62",
-      "value": "#87bb62",
-      "filePath": "tokens/color/crayon/green.yml",
-      "isSource": true,
-      "original": {
-        "$value": "#87BB62",
-        "value": "#87BB62"
-      },
-      "name": "rh-color-green-40",
-      "attributes": {
-        "category": "color",
-        "type": "green",
-        "item": "40",
-        "hex": "87bb62",
-        "rgb": {
-          "r": 135,
-          "g": 187,
-          "b": 98,
-          "a": 1
-        },
-        "hsl": {
-          "h": 95.05617977528091,
-          "s": 39.55555555555555,
-          "l": 55.88235294117647,
-          "a": 1
-        },
-        "hsv": {
-          "h": 95.05617977528091,
-          "s": 0.4759358288770053,
-          "v": 0.7333333333333333,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "green",
-        "40"
-      ],
-      "$type": "color"
-    }
-  ],
-  [
-    "--rh-color-green-50",
-    {
-      "$value": "#63993D",
-      "$description": null,
-      "value": "#63993d",
-      "filePath": "tokens/color/crayon/green.yml",
-      "isSource": true,
-      "original": {
-        "$value": "#63993D",
-        "$description": null,
-        "value": "#63993D"
-      },
-      "name": "rh-color-green-50",
-      "attributes": {
-        "category": "color",
-        "type": "green",
-        "item": "50",
-        "hex": "63993d",
-        "rgb": {
-          "r": 99,
-          "g": 153,
-          "b": 61,
-          "a": 1
-        },
-        "hsl": {
-          "h": 95.21739130434783,
-          "s": 42.99065420560747,
-          "l": 41.96078431372549,
-          "a": 1
-        },
-        "hsv": {
-          "h": 95.21739130434783,
-          "s": 0.6013071895424836,
-          "v": 0.6,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "green",
-        "50"
-      ],
-      "comment": null,
-      "$type": "color"
-    }
-  ],
-  [
-    "--rh-color-green-60",
-    {
-      "$value": "#3D7317",
-      "$description": "Alert - Success accent",
-      "value": "#3d7317",
-      "filePath": "tokens/color/crayon/green.yml",
-      "isSource": true,
-      "original": {
-        "$value": "#3D7317",
-        "$description": "Alert - Success accent",
-        "value": "#3D7317"
-      },
-      "name": "rh-color-green-60",
-      "attributes": {
-        "category": "color",
-        "type": "green",
-        "item": "60",
-        "hex": "3d7317",
-        "rgb": {
-          "r": 61,
-          "g": 115,
-          "b": 23,
-          "a": 1
-        },
-        "hsl": {
-          "h": 95.21739130434783,
-          "s": 66.66666666666667,
-          "l": 27.058823529411764,
-          "a": 1
-        },
-        "hsv": {
-          "h": 95.21739130434783,
-          "s": 0.7999999999999999,
-          "v": 0.45098039215686275,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "green",
-        "60"
-      ],
-      "comment": "Alert - Success accent",
-      "$type": "color"
-    }
-  ],
-  [
-    "--rh-color-green-70",
-    {
-      "$value": "#204D00",
-      "$description": "Alert - Success title text",
-      "value": "#204d00",
-      "filePath": "tokens/color/crayon/green.yml",
-      "isSource": true,
-      "original": {
-        "$value": "#204D00",
-        "$description": "Alert - Success title text",
-        "value": "#204D00"
-      },
-      "name": "rh-color-green-70",
-      "attributes": {
-        "category": "color",
-        "type": "green",
-        "item": "70",
-        "hex": "204d00",
-        "rgb": {
-          "r": 32,
-          "g": 77,
-          "b": 0,
-          "a": 1
-        },
-        "hsl": {
-          "h": 95.06493506493506,
-          "s": 100,
-          "l": 15.098039215686274,
-          "a": 1
-        },
-        "hsv": {
-          "h": 95.06493506493506,
-          "s": 1,
-          "v": 0.30196078431372547,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "green",
-        "70"
-      ],
-      "comment": "Alert - Success title text",
-      "$type": "color"
-    }
-  ],
-  [
-    "--rh-color-green-10-hsl",
-    {
-      "$type": "color",
-      "$value": "95.00000000000003 60.00000000000004% 92.15686274509804%",
-      "value": "95.00000000000003 60.00000000000004% 92.15686274509804%",
-      "filePath": "tokens/color/crayon/green.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.green.10}",
-        "value": "{color.green.10}"
-      },
-      "name": "rh-color-green-10-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "green",
-        "item": "10-hsl",
-        "hex": "e9f7df",
-        "rgb": {
-          "r": 233,
-          "g": 247,
-          "b": 223,
-          "a": 1
-        },
-        "hsl": {
-          "h": 95.00000000000003,
-          "s": 60.00000000000004,
-          "l": 92.15686274509804,
-          "a": 1
-        },
-        "hsv": {
-          "h": 95.00000000000003,
-          "s": 0.09716599190283401,
-          "v": 0.9686274509803922,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "green",
-        "10-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-green-10-rgb",
-    {
-      "$type": "color",
-      "$value": "233 247 223",
-      "value": "233 247 223",
-      "filePath": "tokens/color/crayon/green.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.green.10}",
-        "value": "{color.green.10}"
-      },
-      "name": "rh-color-green-10-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "green",
-        "item": "10-rgb",
-        "hex": "e9f7df",
-        "rgb": {
-          "r": 233,
-          "g": 247,
-          "b": 223,
-          "a": 1
-        },
-        "hsl": {
-          "h": 95.00000000000003,
-          "s": 60.00000000000004,
-          "l": 92.15686274509804,
-          "a": 1
-        },
-        "hsv": {
-          "h": 95.00000000000003,
-          "s": 0.09716599190283401,
-          "v": 0.9686274509803922,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "green",
-        "10-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-green-20-hsl",
-    {
-      "$type": "color",
-      "$value": "95.55555555555556 65.85365853658536% 83.92156862745097%",
-      "value": "95.55555555555556 65.85365853658536% 83.92156862745097%",
-      "filePath": "tokens/color/crayon/green.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.green.20}",
-        "value": "{color.green.20}"
-      },
-      "name": "rh-color-green-20-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "green",
-        "item": "20-hsl",
-        "hex": "d1f1bb",
-        "rgb": {
-          "r": 209,
-          "g": 241,
-          "b": 187,
-          "a": 1
-        },
-        "hsl": {
-          "h": 95.55555555555556,
-          "s": 65.85365853658536,
-          "l": 83.92156862745097,
-          "a": 1
-        },
-        "hsv": {
-          "h": 95.55555555555556,
-          "s": 0.2240663900414938,
-          "v": 0.9450980392156862,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "green",
-        "20-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-green-20-rgb",
-    {
-      "$type": "color",
-      "$value": "209 241 187",
-      "value": "209 241 187",
-      "filePath": "tokens/color/crayon/green.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.green.20}",
-        "value": "{color.green.20}"
-      },
-      "name": "rh-color-green-20-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "green",
-        "item": "20-rgb",
-        "hex": "d1f1bb",
-        "rgb": {
-          "r": 209,
-          "g": 241,
-          "b": 187,
-          "a": 1
-        },
-        "hsl": {
-          "h": 95.55555555555556,
-          "s": 65.85365853658536,
-          "l": 83.92156862745097,
-          "a": 1
-        },
-        "hsv": {
-          "h": 95.55555555555556,
-          "s": 0.2240663900414938,
-          "v": 0.9450980392156862,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "green",
-        "20-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-green-30-hsl",
-    {
-      "$type": "color",
-      "$value": "95.06493506493506 52.380952380952394% 71.17647058823529%",
-      "value": "95.06493506493506 52.380952380952394% 71.17647058823529%",
-      "filePath": "tokens/color/crayon/green.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.green.30}",
-        "value": "{color.green.30}"
-      },
-      "name": "rh-color-green-30-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "green",
-        "item": "30-hsl",
-        "hex": "afdc8f",
-        "rgb": {
-          "r": 175,
-          "g": 220,
-          "b": 143,
-          "a": 1
-        },
-        "hsl": {
-          "h": 95.06493506493506,
-          "s": 52.380952380952394,
-          "l": 71.17647058823529,
-          "a": 1
-        },
-        "hsv": {
-          "h": 95.06493506493506,
-          "s": 0.35000000000000003,
-          "v": 0.8627450980392157,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "green",
-        "30-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-green-30-rgb",
-    {
-      "$type": "color",
-      "$value": "175 220 143",
-      "value": "175 220 143",
-      "filePath": "tokens/color/crayon/green.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.green.30}",
-        "value": "{color.green.30}"
-      },
-      "name": "rh-color-green-30-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "green",
-        "item": "30-rgb",
-        "hex": "afdc8f",
-        "rgb": {
-          "r": 175,
-          "g": 220,
-          "b": 143,
-          "a": 1
-        },
-        "hsl": {
-          "h": 95.06493506493506,
-          "s": 52.380952380952394,
-          "l": 71.17647058823529,
-          "a": 1
-        },
-        "hsv": {
-          "h": 95.06493506493506,
-          "s": 0.35000000000000003,
-          "v": 0.8627450980392157,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "green",
-        "30-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-green-40-hsl",
-    {
-      "$type": "color",
-      "$value": "95.05617977528091 39.55555555555555% 55.88235294117647%",
-      "value": "95.05617977528091 39.55555555555555% 55.88235294117647%",
-      "filePath": "tokens/color/crayon/green.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.green.40}",
-        "value": "{color.green.40}"
-      },
-      "name": "rh-color-green-40-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "green",
-        "item": "40-hsl",
-        "hex": "87bb62",
-        "rgb": {
-          "r": 135,
-          "g": 187,
-          "b": 98,
-          "a": 1
-        },
-        "hsl": {
-          "h": 95.05617977528091,
-          "s": 39.55555555555555,
-          "l": 55.88235294117647,
-          "a": 1
-        },
-        "hsv": {
-          "h": 95.05617977528091,
-          "s": 0.4759358288770053,
-          "v": 0.7333333333333333,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "green",
-        "40-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-green-40-rgb",
-    {
-      "$type": "color",
-      "$value": "135 187 98",
-      "value": "135 187 98",
-      "filePath": "tokens/color/crayon/green.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.green.40}",
-        "value": "{color.green.40}"
-      },
-      "name": "rh-color-green-40-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "green",
-        "item": "40-rgb",
-        "hex": "87bb62",
-        "rgb": {
-          "r": 135,
-          "g": 187,
-          "b": 98,
-          "a": 1
-        },
-        "hsl": {
-          "h": 95.05617977528091,
-          "s": 39.55555555555555,
-          "l": 55.88235294117647,
-          "a": 1
-        },
-        "hsv": {
-          "h": 95.05617977528091,
-          "s": 0.4759358288770053,
-          "v": 0.7333333333333333,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "green",
-        "40-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-green-50-hsl",
-    {
-      "$type": "color",
-      "$value": "95.21739130434783 42.99065420560747% 41.96078431372549%",
-      "value": "95.21739130434783 42.99065420560747% 41.96078431372549%",
-      "filePath": "tokens/color/crayon/green.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.green.50}",
-        "value": "{color.green.50}"
-      },
-      "name": "rh-color-green-50-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "green",
-        "item": "50-hsl",
-        "hex": "63993d",
-        "rgb": {
-          "r": 99,
-          "g": 153,
-          "b": 61,
-          "a": 1
-        },
-        "hsl": {
-          "h": 95.21739130434783,
-          "s": 42.99065420560747,
-          "l": 41.96078431372549,
-          "a": 1
-        },
-        "hsv": {
-          "h": 95.21739130434783,
-          "s": 0.6013071895424836,
-          "v": 0.6,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "green",
-        "50-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-green-50-rgb",
-    {
-      "$type": "color",
-      "$value": "99 153 61",
-      "value": "99 153 61",
-      "filePath": "tokens/color/crayon/green.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.green.50}",
-        "value": "{color.green.50}"
-      },
-      "name": "rh-color-green-50-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "green",
-        "item": "50-rgb",
-        "hex": "63993d",
-        "rgb": {
-          "r": 99,
-          "g": 153,
-          "b": 61,
-          "a": 1
-        },
-        "hsl": {
-          "h": 95.21739130434783,
-          "s": 42.99065420560747,
-          "l": 41.96078431372549,
-          "a": 1
-        },
-        "hsv": {
-          "h": 95.21739130434783,
-          "s": 0.6013071895424836,
-          "v": 0.6,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "green",
-        "50-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-green-60-hsl",
-    {
-      "$type": "color",
-      "$value": "95.21739130434783 66.66666666666667% 27.058823529411764%",
-      "value": "95.21739130434783 66.66666666666667% 27.058823529411764%",
-      "filePath": "tokens/color/crayon/green.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.green.60}",
-        "value": "{color.green.60}"
-      },
-      "name": "rh-color-green-60-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "green",
-        "item": "60-hsl",
-        "hex": "3d7317",
-        "rgb": {
-          "r": 61,
-          "g": 115,
-          "b": 23,
-          "a": 1
-        },
-        "hsl": {
-          "h": 95.21739130434783,
-          "s": 66.66666666666667,
-          "l": 27.058823529411764,
-          "a": 1
-        },
-        "hsv": {
-          "h": 95.21739130434783,
-          "s": 0.7999999999999999,
-          "v": 0.45098039215686275,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "green",
-        "60-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-green-60-rgb",
-    {
-      "$type": "color",
-      "$value": "61 115 23",
-      "value": "61 115 23",
-      "filePath": "tokens/color/crayon/green.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.green.60}",
-        "value": "{color.green.60}"
-      },
-      "name": "rh-color-green-60-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "green",
-        "item": "60-rgb",
-        "hex": "3d7317",
-        "rgb": {
-          "r": 61,
-          "g": 115,
-          "b": 23,
-          "a": 1
-        },
-        "hsl": {
-          "h": 95.21739130434783,
-          "s": 66.66666666666667,
-          "l": 27.058823529411764,
-          "a": 1
-        },
-        "hsv": {
-          "h": 95.21739130434783,
-          "s": 0.7999999999999999,
-          "v": 0.45098039215686275,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "green",
-        "60-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-green-70-hsl",
-    {
-      "$type": "color",
-      "$value": "95.06493506493506 100% 15.098039215686274%",
-      "value": "95.06493506493506 100% 15.098039215686274%",
-      "filePath": "tokens/color/crayon/green.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.green.70}",
-        "value": "{color.green.70}"
-      },
-      "name": "rh-color-green-70-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "green",
-        "item": "70-hsl",
-        "hex": "204d00",
-        "rgb": {
-          "r": 32,
-          "g": 77,
-          "b": 0,
-          "a": 1
-        },
-        "hsl": {
-          "h": 95.06493506493506,
-          "s": 100,
-          "l": 15.098039215686274,
-          "a": 1
-        },
-        "hsv": {
-          "h": 95.06493506493506,
-          "s": 1,
-          "v": 0.30196078431372547,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "green",
-        "70-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-green-70-rgb",
-    {
-      "$type": "color",
-      "$value": "32 77 0",
-      "value": "32 77 0",
-      "filePath": "tokens/color/crayon/green.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.green.70}",
-        "value": "{color.green.70}"
-      },
-      "name": "rh-color-green-70-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "green",
-        "item": "70-rgb",
-        "hex": "204d00",
-        "rgb": {
-          "r": 32,
-          "g": 77,
-          "b": 0,
-          "a": 1
-        },
-        "hsl": {
-          "h": 95.06493506493506,
-          "s": 100,
-          "l": 15.098039215686274,
-          "a": 1
-        },
-        "hsv": {
-          "h": 95.06493506493506,
-          "s": 1,
-          "v": 0.30196078431372547,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "green",
-        "70-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-orange-10",
-    {
-      "$value": "#FFE8CC",
-      "$description": "Label - Filled (Orange) background color",
-      "value": "#ffe8cc",
-      "filePath": "tokens/color/crayon/orange.yml",
-      "isSource": true,
-      "original": {
-        "$value": "#FFE8CC",
-        "$description": "Label - Filled (Orange) background color",
-        "value": "#FFE8CC"
-      },
-      "name": "rh-color-orange-10",
-      "attributes": {
-        "category": "color",
-        "type": "orange",
-        "item": "10",
-        "hex": "ffe8cc",
-        "rgb": {
-          "r": 255,
-          "g": 232,
-          "b": 204,
-          "a": 1
-        },
-        "hsl": {
-          "h": 32.941176470588225,
-          "s": 100,
-          "l": 90,
-          "a": 1
-        },
-        "hsv": {
-          "h": 32.941176470588225,
-          "s": 0.19999999999999996,
-          "v": 1,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "orange",
-        "10"
-      ],
-      "comment": "Label - Filled (Orange) background color",
-      "$type": "color"
-    }
-  ],
-  [
-    "--rh-color-orange-20",
-    {
-      "$value": "#FCCB8F",
-      "value": "#fccb8f",
-      "filePath": "tokens/color/crayon/orange.yml",
-      "isSource": true,
-      "original": {
-        "$value": "#FCCB8F",
-        "value": "#FCCB8F"
-      },
-      "name": "rh-color-orange-20",
-      "attributes": {
-        "category": "color",
-        "type": "orange",
-        "item": "20",
-        "hex": "fccb8f",
-        "rgb": {
-          "r": 252,
-          "g": 203,
-          "b": 143,
-          "a": 1
-        },
-        "hsl": {
-          "h": 33.02752293577981,
-          "s": 94.78260869565219,
-          "l": 77.45098039215686,
-          "a": 1
-        },
-        "hsv": {
-          "h": 33.02752293577981,
-          "s": 0.43253968253968256,
-          "v": 0.9882352941176471,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "orange",
-        "20"
-      ],
-      "$type": "color"
-    }
-  ],
-  [
-    "--rh-color-orange-30",
-    {
-      "$value": "#F8AE54",
-      "$description": "Label - Filled (Orange) border color",
-      "value": "#f8ae54",
-      "filePath": "tokens/color/crayon/orange.yml",
-      "isSource": true,
-      "original": {
-        "$value": "#F8AE54",
-        "$description": "Label - Filled (Orange) border color",
-        "value": "#F8AE54"
-      },
-      "name": "rh-color-orange-30",
-      "attributes": {
-        "category": "color",
-        "type": "orange",
-        "item": "30",
-        "hex": "f8ae54",
-        "rgb": {
-          "r": 248,
-          "g": 174,
-          "b": 84,
-          "a": 1
-        },
-        "hsl": {
-          "h": 32.926829268292686,
-          "s": 92.13483146067415,
-          "l": 65.09803921568627,
-          "a": 1
-        },
-        "hsv": {
-          "h": 32.926829268292686,
-          "s": 0.6612903225806451,
-          "v": 0.9725490196078431,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "orange",
-        "30"
-      ],
-      "comment": "Label - Filled (Orange) border color",
-      "$type": "color"
-    }
-  ],
-  [
-    "--rh-color-orange-40",
-    {
-      "$value": "#F5921B",
-      "$description": "Label - Filled (Orange) accent color",
-      "value": "#f5921b",
-      "filePath": "tokens/color/crayon/orange.yml",
-      "isSource": true,
-      "original": {
-        "$value": "#F5921B",
-        "$description": "Label - Filled (Orange) accent color",
-        "value": "#F5921B"
-      },
-      "name": "rh-color-orange-40",
-      "attributes": {
-        "category": "color",
-        "type": "orange",
-        "item": "40",
-        "hex": "f5921b",
-        "rgb": {
-          "r": 245,
-          "g": 146,
-          "b": 27,
-          "a": 1
-        },
-        "hsl": {
-          "h": 32.752293577981646,
-          "s": 91.5966386554622,
-          "l": 53.333333333333336,
-          "a": 1
-        },
-        "hsv": {
-          "h": 32.752293577981646,
-          "s": 0.889795918367347,
-          "v": 0.9607843137254902,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "orange",
-        "40"
-      ],
-      "comment": "Label - Filled (Orange) accent color",
-      "$type": "color"
-    }
-  ],
-  [
-    "--rh-color-orange-50",
-    {
-      "$value": "#CA6C0F",
-      "$description": "Label - Filled (Orange) accent color",
-      "value": "#ca6c0f",
-      "filePath": "tokens/color/crayon/orange.yml",
-      "isSource": true,
-      "original": {
-        "$value": "#CA6C0F",
-        "$description": "Label - Filled (Orange) accent color",
-        "value": "#CA6C0F"
-      },
-      "name": "rh-color-orange-50",
-      "attributes": {
-        "category": "color",
-        "type": "orange",
-        "item": "50",
-        "hex": "ca6c0f",
-        "rgb": {
-          "r": 202,
-          "g": 108,
-          "b": 15,
-          "a": 1
-        },
-        "hsl": {
-          "h": 29.83957219251337,
-          "s": 86.17511520737327,
-          "l": 42.549019607843135,
-          "a": 1
-        },
-        "hsv": {
-          "h": 29.83957219251337,
-          "s": 0.9257425742574257,
-          "v": 0.792156862745098,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "orange",
-        "50"
-      ],
-      "comment": "Label - Filled (Orange) accent color",
-      "$type": "color"
-    }
-  ],
-  [
-    "--rh-color-orange-60",
-    {
-      "$value": "#9E4A06",
-      "value": "#9e4a06",
-      "filePath": "tokens/color/crayon/orange.yml",
-      "isSource": true,
-      "original": {
-        "$value": "#9E4A06",
-        "value": "#9E4A06"
-      },
-      "name": "rh-color-orange-60",
-      "attributes": {
-        "category": "color",
-        "type": "orange",
-        "item": "60",
-        "hex": "9e4a06",
-        "rgb": {
-          "r": 158,
-          "g": 74,
-          "b": 6,
-          "a": 1
-        },
-        "hsl": {
-          "h": 26.842105263157904,
-          "s": 92.68292682926828,
-          "l": 32.15686274509804,
-          "a": 1
-        },
-        "hsv": {
-          "h": 26.842105263157904,
-          "s": 0.9620253164556961,
-          "v": 0.6196078431372549,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "orange",
-        "60"
-      ],
-      "$type": "color"
-    }
-  ],
-  [
-    "--rh-color-orange-70",
-    {
-      "$value": "#732E00",
-      "$description": "Label - Filled (Orange) text color",
-      "value": "#732e00",
-      "filePath": "tokens/color/crayon/orange.yml",
-      "isSource": true,
-      "original": {
-        "$value": "#732E00",
-        "$description": "Label - Filled (Orange) text color",
-        "value": "#732E00"
-      },
-      "name": "rh-color-orange-70",
-      "attributes": {
-        "category": "color",
-        "type": "orange",
-        "item": "70",
-        "hex": "732e00",
-        "rgb": {
-          "r": 115,
-          "g": 46,
-          "b": 0,
-          "a": 1
-        },
-        "hsl": {
-          "h": 24,
-          "s": 100,
-          "l": 22.54901960784314,
-          "a": 1
-        },
-        "hsv": {
-          "h": 24,
-          "s": 1,
-          "v": 0.45098039215686275,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "orange",
-        "70"
-      ],
-      "comment": "Label - Filled (Orange) text color",
-      "$type": "color"
-    }
-  ],
-  [
-    "--rh-color-orange-10-hsl",
-    {
-      "$type": "color",
-      "$value": "32.941176470588225 100% 90%",
-      "value": "32.941176470588225 100% 90%",
-      "filePath": "tokens/color/crayon/orange.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.orange.10}",
-        "value": "{color.orange.10}"
-      },
-      "name": "rh-color-orange-10-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "orange",
-        "item": "10-hsl",
-        "hex": "ffe8cc",
-        "rgb": {
-          "r": 255,
-          "g": 232,
-          "b": 204,
-          "a": 1
-        },
-        "hsl": {
-          "h": 32.941176470588225,
-          "s": 100,
-          "l": 90,
-          "a": 1
-        },
-        "hsv": {
-          "h": 32.941176470588225,
-          "s": 0.19999999999999996,
-          "v": 1,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "orange",
-        "10-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-orange-10-rgb",
-    {
-      "$type": "color",
-      "$value": "255 232 204",
-      "value": "255 232 204",
-      "filePath": "tokens/color/crayon/orange.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.orange.10}",
-        "value": "{color.orange.10}"
-      },
-      "name": "rh-color-orange-10-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "orange",
-        "item": "10-rgb",
-        "hex": "ffe8cc",
-        "rgb": {
-          "r": 255,
-          "g": 232,
-          "b": 204,
-          "a": 1
-        },
-        "hsl": {
-          "h": 32.941176470588225,
-          "s": 100,
-          "l": 90,
-          "a": 1
-        },
-        "hsv": {
-          "h": 32.941176470588225,
-          "s": 0.19999999999999996,
-          "v": 1,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "orange",
-        "10-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-orange-20-hsl",
-    {
-      "$type": "color",
-      "$value": "33.02752293577981 94.78260869565219% 77.45098039215686%",
-      "value": "33.02752293577981 94.78260869565219% 77.45098039215686%",
-      "filePath": "tokens/color/crayon/orange.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.orange.20}",
-        "value": "{color.orange.20}"
-      },
-      "name": "rh-color-orange-20-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "orange",
-        "item": "20-hsl",
-        "hex": "fccb8f",
-        "rgb": {
-          "r": 252,
-          "g": 203,
-          "b": 143,
-          "a": 1
-        },
-        "hsl": {
-          "h": 33.02752293577981,
-          "s": 94.78260869565219,
-          "l": 77.45098039215686,
-          "a": 1
-        },
-        "hsv": {
-          "h": 33.02752293577981,
-          "s": 0.43253968253968256,
-          "v": 0.9882352941176471,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "orange",
-        "20-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-orange-20-rgb",
-    {
-      "$type": "color",
-      "$value": "252 203 143",
-      "value": "252 203 143",
-      "filePath": "tokens/color/crayon/orange.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.orange.20}",
-        "value": "{color.orange.20}"
-      },
-      "name": "rh-color-orange-20-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "orange",
-        "item": "20-rgb",
-        "hex": "fccb8f",
-        "rgb": {
-          "r": 252,
-          "g": 203,
-          "b": 143,
-          "a": 1
-        },
-        "hsl": {
-          "h": 33.02752293577981,
-          "s": 94.78260869565219,
-          "l": 77.45098039215686,
-          "a": 1
-        },
-        "hsv": {
-          "h": 33.02752293577981,
-          "s": 0.43253968253968256,
-          "v": 0.9882352941176471,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "orange",
-        "20-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-orange-30-hsl",
-    {
-      "$type": "color",
-      "$value": "32.926829268292686 92.13483146067415% 65.09803921568627%",
-      "value": "32.926829268292686 92.13483146067415% 65.09803921568627%",
-      "filePath": "tokens/color/crayon/orange.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.orange.30}",
-        "value": "{color.orange.30}"
-      },
-      "name": "rh-color-orange-30-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "orange",
-        "item": "30-hsl",
-        "hex": "f8ae54",
-        "rgb": {
-          "r": 248,
-          "g": 174,
-          "b": 84,
-          "a": 1
-        },
-        "hsl": {
-          "h": 32.926829268292686,
-          "s": 92.13483146067415,
-          "l": 65.09803921568627,
-          "a": 1
-        },
-        "hsv": {
-          "h": 32.926829268292686,
-          "s": 0.6612903225806451,
-          "v": 0.9725490196078431,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "orange",
-        "30-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-orange-30-rgb",
-    {
-      "$type": "color",
-      "$value": "248 174 84",
-      "value": "248 174 84",
-      "filePath": "tokens/color/crayon/orange.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.orange.30}",
-        "value": "{color.orange.30}"
-      },
-      "name": "rh-color-orange-30-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "orange",
-        "item": "30-rgb",
-        "hex": "f8ae54",
-        "rgb": {
-          "r": 248,
-          "g": 174,
-          "b": 84,
-          "a": 1
-        },
-        "hsl": {
-          "h": 32.926829268292686,
-          "s": 92.13483146067415,
-          "l": 65.09803921568627,
-          "a": 1
-        },
-        "hsv": {
-          "h": 32.926829268292686,
-          "s": 0.6612903225806451,
-          "v": 0.9725490196078431,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "orange",
-        "30-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-orange-40-hsl",
-    {
-      "$type": "color",
-      "$value": "32.752293577981646 91.5966386554622% 53.333333333333336%",
-      "value": "32.752293577981646 91.5966386554622% 53.333333333333336%",
-      "filePath": "tokens/color/crayon/orange.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.orange.40}",
-        "value": "{color.orange.40}"
-      },
-      "name": "rh-color-orange-40-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "orange",
-        "item": "40-hsl",
-        "hex": "f5921b",
-        "rgb": {
-          "r": 245,
-          "g": 146,
-          "b": 27,
-          "a": 1
-        },
-        "hsl": {
-          "h": 32.752293577981646,
-          "s": 91.5966386554622,
-          "l": 53.333333333333336,
-          "a": 1
-        },
-        "hsv": {
-          "h": 32.752293577981646,
-          "s": 0.889795918367347,
-          "v": 0.9607843137254902,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "orange",
-        "40-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-orange-40-rgb",
-    {
-      "$type": "color",
-      "$value": "245 146 27",
-      "value": "245 146 27",
-      "filePath": "tokens/color/crayon/orange.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.orange.40}",
-        "value": "{color.orange.40}"
-      },
-      "name": "rh-color-orange-40-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "orange",
-        "item": "40-rgb",
-        "hex": "f5921b",
-        "rgb": {
-          "r": 245,
-          "g": 146,
-          "b": 27,
-          "a": 1
-        },
-        "hsl": {
-          "h": 32.752293577981646,
-          "s": 91.5966386554622,
-          "l": 53.333333333333336,
-          "a": 1
-        },
-        "hsv": {
-          "h": 32.752293577981646,
-          "s": 0.889795918367347,
-          "v": 0.9607843137254902,
-          "a": 1
-        },
-        "isLight": true
-      },
-      "path": [
-        "color",
-        "orange",
-        "40-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-orange-50-hsl",
-    {
-      "$type": "color",
-      "$value": "29.83957219251337 86.17511520737327% 42.549019607843135%",
-      "value": "29.83957219251337 86.17511520737327% 42.549019607843135%",
-      "filePath": "tokens/color/crayon/orange.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.orange.50}",
-        "value": "{color.orange.50}"
-      },
-      "name": "rh-color-orange-50-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "orange",
-        "item": "50-hsl",
-        "hex": "ca6c0f",
-        "rgb": {
-          "r": 202,
-          "g": 108,
-          "b": 15,
-          "a": 1
-        },
-        "hsl": {
-          "h": 29.83957219251337,
-          "s": 86.17511520737327,
-          "l": 42.549019607843135,
-          "a": 1
-        },
-        "hsv": {
-          "h": 29.83957219251337,
-          "s": 0.9257425742574257,
-          "v": 0.792156862745098,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "orange",
-        "50-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-orange-50-rgb",
-    {
-      "$type": "color",
-      "$value": "202 108 15",
-      "value": "202 108 15",
-      "filePath": "tokens/color/crayon/orange.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.orange.50}",
-        "value": "{color.orange.50}"
-      },
-      "name": "rh-color-orange-50-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "orange",
-        "item": "50-rgb",
-        "hex": "ca6c0f",
-        "rgb": {
-          "r": 202,
-          "g": 108,
-          "b": 15,
-          "a": 1
-        },
-        "hsl": {
-          "h": 29.83957219251337,
-          "s": 86.17511520737327,
-          "l": 42.549019607843135,
-          "a": 1
-        },
-        "hsv": {
-          "h": 29.83957219251337,
-          "s": 0.9257425742574257,
-          "v": 0.792156862745098,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "orange",
-        "50-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-orange-60-hsl",
-    {
-      "$type": "color",
-      "$value": "26.842105263157904 92.68292682926828% 32.15686274509804%",
-      "value": "26.842105263157904 92.68292682926828% 32.15686274509804%",
-      "filePath": "tokens/color/crayon/orange.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.orange.60}",
-        "value": "{color.orange.60}"
-      },
-      "name": "rh-color-orange-60-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "orange",
-        "item": "60-hsl",
-        "hex": "9e4a06",
-        "rgb": {
-          "r": 158,
-          "g": 74,
-          "b": 6,
-          "a": 1
-        },
-        "hsl": {
-          "h": 26.842105263157904,
-          "s": 92.68292682926828,
-          "l": 32.15686274509804,
-          "a": 1
-        },
-        "hsv": {
-          "h": 26.842105263157904,
-          "s": 0.9620253164556961,
-          "v": 0.6196078431372549,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "orange",
-        "60-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-orange-60-rgb",
-    {
-      "$type": "color",
-      "$value": "158 74 6",
-      "value": "158 74 6",
-      "filePath": "tokens/color/crayon/orange.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.orange.60}",
-        "value": "{color.orange.60}"
-      },
-      "name": "rh-color-orange-60-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "orange",
-        "item": "60-rgb",
-        "hex": "9e4a06",
-        "rgb": {
-          "r": 158,
-          "g": 74,
-          "b": 6,
-          "a": 1
-        },
-        "hsl": {
-          "h": 26.842105263157904,
-          "s": 92.68292682926828,
-          "l": 32.15686274509804,
-          "a": 1
-        },
-        "hsv": {
-          "h": 26.842105263157904,
-          "s": 0.9620253164556961,
-          "v": 0.6196078431372549,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "orange",
-        "60-rgb"
-      ]
-    }
-  ],
-  [
-    "--rh-color-orange-70-hsl",
-    {
-      "$type": "color",
-      "$value": "24 100% 22.54901960784314%",
-      "value": "24 100% 22.54901960784314%",
-      "filePath": "tokens/color/crayon/orange.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.orange.70}",
-        "value": "{color.orange.70}"
-      },
-      "name": "rh-color-orange-70-hsl",
-      "attributes": {
-        "category": "color",
-        "type": "orange",
-        "item": "70-hsl",
-        "hex": "732e00",
-        "rgb": {
-          "r": 115,
-          "g": 46,
-          "b": 0,
-          "a": 1
-        },
-        "hsl": {
-          "h": 24,
-          "s": 100,
-          "l": 22.54901960784314,
-          "a": 1
-        },
-        "hsv": {
-          "h": 24,
-          "s": 1,
-          "v": 0.45098039215686275,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "orange",
-        "70-hsl"
-      ]
-    }
-  ],
-  [
-    "--rh-color-orange-70-rgb",
-    {
-      "$type": "color",
-      "$value": "115 46 0",
-      "value": "115 46 0",
-      "filePath": "tokens/color/crayon/orange.yml",
-      "isSource": true,
-      "original": {
-        "$type": "color",
-        "$value": "{color.orange.70}",
-        "value": "{color.orange.70}"
-      },
-      "name": "rh-color-orange-70-rgb",
-      "attributes": {
-        "category": "color",
-        "type": "orange",
-        "item": "70-rgb",
-        "hex": "732e00",
-        "rgb": {
-          "r": 115,
-          "g": 46,
-          "b": 0,
-          "a": 1
-        },
-        "hsl": {
-          "h": 24,
-          "s": 100,
-          "l": 22.54901960784314,
-          "a": 1
-        },
-        "hsv": {
-          "h": 24,
-          "s": 1,
-          "v": 0.45098039215686275,
-          "a": 1
-        },
-        "isLight": false
-      },
-      "path": [
-        "color",
-        "orange",
-        "70-rgb"
       ]
     }
   ],
   [
     "--rh-color-purple-10",
     {
-      "$value": "#ECE6FF",
+      "$value": "#ece6ff",
       "$description": "Label - Filled (Purple) background color",
-      "value": "#ece6ff",
       "filePath": "tokens/color/crayon/purple.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#ECE6FF",
         "$description": "Label - Filled (Purple) background color",
-        "value": "#ECE6FF"
+        "$type": "color"
       },
       "name": "rh-color-purple-10",
       "attributes": {
@@ -6233,23 +8900,21 @@ export const tokens = new Map([
         "color",
         "purple",
         "10"
-      ],
-      "comment": "Label - Filled (Purple) background color",
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-purple-20",
     {
-      "$value": "#D0C5F4",
+      "$value": "#d0c5f4",
       "$description": "Inline link visited hover (dark theme)",
-      "value": "#d0c5f4",
       "filePath": "tokens/color/crayon/purple.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#D0C5F4",
         "$description": "Inline link visited hover (dark theme)",
-        "value": "#D0C5F4"
+        "$type": "color"
       },
       "name": "rh-color-purple-20",
       "attributes": {
@@ -6281,21 +8946,19 @@ export const tokens = new Map([
         "color",
         "purple",
         "20"
-      ],
-      "comment": "Inline link visited hover (dark theme)",
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-purple-30",
     {
-      "$value": "#B6A6E9",
-      "value": "#b6a6e9",
+      "$value": "#b6a6e9",
       "filePath": "tokens/color/crayon/purple.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#B6A6E9",
-        "value": "#B6A6E9"
+        "$type": "color"
       },
       "name": "rh-color-purple-30",
       "attributes": {
@@ -6327,22 +8990,21 @@ export const tokens = new Map([
         "color",
         "purple",
         "30"
-      ],
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-purple-40",
     {
-      "$value": "#876FD4",
+      "$value": "#876fd4",
       "$description": "Inline link visited (dark theme)",
-      "value": "#876fd4",
       "filePath": "tokens/color/crayon/purple.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#876FD4",
         "$description": "Inline link visited (dark theme)",
-        "value": "#876FD4"
+        "$type": "color"
       },
       "name": "rh-color-purple-40",
       "attributes": {
@@ -6374,21 +9036,19 @@ export const tokens = new Map([
         "color",
         "purple",
         "40"
-      ],
-      "comment": "Inline link visited (dark theme)",
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-purple-50",
     {
-      "$value": "#5E40BE",
-      "value": "#5e40be",
+      "$value": "#5e40be",
       "filePath": "tokens/color/crayon/purple.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#5E40BE",
-        "value": "#5E40BE"
+        "$type": "color"
       },
       "name": "rh-color-purple-50",
       "attributes": {
@@ -6420,22 +9080,21 @@ export const tokens = new Map([
         "color",
         "purple",
         "50"
-      ],
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-purple-60",
     {
-      "$value": "#3D2785",
+      "$value": "#3d2785",
       "$description": "Inline link visited (light theme)",
-      "value": "#3d2785",
       "filePath": "tokens/color/crayon/purple.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#3D2785",
         "$description": "Inline link visited (light theme)",
-        "value": "#3D2785"
+        "$type": "color"
       },
       "name": "rh-color-purple-60",
       "attributes": {
@@ -6467,23 +9126,21 @@ export const tokens = new Map([
         "color",
         "purple",
         "60"
-      ],
-      "comment": "Inline link visited (light theme)",
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-purple-70",
     {
-      "$value": "#21134D",
+      "$value": "#21134d",
       "$description": "Inline link visited hover (light theme)",
-      "value": "#21134d",
       "filePath": "tokens/color/crayon/purple.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#21134D",
         "$description": "Inline link visited hover (light theme)",
-        "value": "#21134D"
+        "$type": "color"
       },
       "name": "rh-color-purple-70",
       "attributes": {
@@ -6515,23 +9172,17 @@ export const tokens = new Map([
         "color",
         "purple",
         "70"
-      ],
-      "comment": "Inline link visited hover (light theme)",
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-purple-10-hsl",
     {
-      "$type": "color",
       "$value": "254.4 100% 95.09803921568627%",
-      "value": "254.4 100% 95.09803921568627%",
-      "filePath": "tokens/color/crayon/purple.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.purple.10}",
-        "value": "{color.purple.10}"
+        "$type": "color"
       },
       "name": "rh-color-purple-10-hsl",
       "attributes": {
@@ -6569,15 +9220,11 @@ export const tokens = new Map([
   [
     "--rh-color-purple-10-rgb",
     {
-      "$type": "color",
       "$value": "236 230 255",
-      "value": "236 230 255",
-      "filePath": "tokens/color/crayon/purple.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.purple.10}",
-        "value": "{color.purple.10}"
+        "$type": "color"
       },
       "name": "rh-color-purple-10-rgb",
       "attributes": {
@@ -6615,15 +9262,11 @@ export const tokens = new Map([
   [
     "--rh-color-purple-20-hsl",
     {
-      "$type": "color",
       "$value": "254.0425531914893 68.11594202898556% 86.47058823529412%",
-      "value": "254.0425531914893 68.11594202898556% 86.47058823529412%",
-      "filePath": "tokens/color/crayon/purple.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.purple.20}",
-        "value": "{color.purple.20}"
+        "$type": "color"
       },
       "name": "rh-color-purple-20-hsl",
       "attributes": {
@@ -6661,15 +9304,11 @@ export const tokens = new Map([
   [
     "--rh-color-purple-20-rgb",
     {
-      "$type": "color",
       "$value": "208 197 244",
-      "value": "208 197 244",
-      "filePath": "tokens/color/crayon/purple.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.purple.20}",
-        "value": "{color.purple.20}"
+        "$type": "color"
       },
       "name": "rh-color-purple-20-rgb",
       "attributes": {
@@ -6707,15 +9346,11 @@ export const tokens = new Map([
   [
     "--rh-color-purple-30-hsl",
     {
-      "$type": "color",
       "$value": "254.32835820895522 60.36036036036033% 78.23529411764706%",
-      "value": "254.32835820895522 60.36036036036033% 78.23529411764706%",
-      "filePath": "tokens/color/crayon/purple.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.purple.30}",
-        "value": "{color.purple.30}"
+        "$type": "color"
       },
       "name": "rh-color-purple-30-hsl",
       "attributes": {
@@ -6753,15 +9388,11 @@ export const tokens = new Map([
   [
     "--rh-color-purple-30-rgb",
     {
-      "$type": "color",
       "$value": "182 166 233",
-      "value": "182 166 233",
-      "filePath": "tokens/color/crayon/purple.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.purple.30}",
-        "value": "{color.purple.30}"
+        "$type": "color"
       },
       "name": "rh-color-purple-30-rgb",
       "attributes": {
@@ -6799,15 +9430,11 @@ export const tokens = new Map([
   [
     "--rh-color-purple-40-hsl",
     {
-      "$type": "color",
       "$value": "254.25742574257427 54.010695187165794% 63.33333333333333%",
-      "value": "254.25742574257427 54.010695187165794% 63.33333333333333%",
-      "filePath": "tokens/color/crayon/purple.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.purple.40}",
-        "value": "{color.purple.40}"
+        "$type": "color"
       },
       "name": "rh-color-purple-40-hsl",
       "attributes": {
@@ -6845,15 +9472,11 @@ export const tokens = new Map([
   [
     "--rh-color-purple-40-rgb",
     {
-      "$type": "color",
       "$value": "135 111 212",
-      "value": "135 111 212",
-      "filePath": "tokens/color/crayon/purple.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.purple.40}",
-        "value": "{color.purple.40}"
+        "$type": "color"
       },
       "name": "rh-color-purple-40-rgb",
       "attributes": {
@@ -6891,15 +9514,11 @@ export const tokens = new Map([
   [
     "--rh-color-purple-50-hsl",
     {
-      "$type": "color",
       "$value": "254.2857142857143 49.60629921259843% 49.80392156862745%",
-      "value": "254.2857142857143 49.60629921259843% 49.80392156862745%",
-      "filePath": "tokens/color/crayon/purple.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.purple.50}",
-        "value": "{color.purple.50}"
+        "$type": "color"
       },
       "name": "rh-color-purple-50-hsl",
       "attributes": {
@@ -6937,15 +9556,11 @@ export const tokens = new Map([
   [
     "--rh-color-purple-50-rgb",
     {
-      "$type": "color",
       "$value": "94 64 190",
-      "value": "94 64 190",
-      "filePath": "tokens/color/crayon/purple.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.purple.50}",
-        "value": "{color.purple.50}"
+        "$type": "color"
       },
       "name": "rh-color-purple-50-rgb",
       "attributes": {
@@ -6983,15 +9598,11 @@ export const tokens = new Map([
   [
     "--rh-color-purple-60-hsl",
     {
-      "$type": "color",
       "$value": "254.0425531914894 54.65116279069767% 33.72549019607843%",
-      "value": "254.0425531914894 54.65116279069767% 33.72549019607843%",
-      "filePath": "tokens/color/crayon/purple.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.purple.60}",
-        "value": "{color.purple.60}"
+        "$type": "color"
       },
       "name": "rh-color-purple-60-hsl",
       "attributes": {
@@ -7029,15 +9640,11 @@ export const tokens = new Map([
   [
     "--rh-color-purple-60-rgb",
     {
-      "$type": "color",
       "$value": "61 39 133",
-      "value": "61 39 133",
-      "filePath": "tokens/color/crayon/purple.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.purple.60}",
-        "value": "{color.purple.60}"
+        "$type": "color"
       },
       "name": "rh-color-purple-60-rgb",
       "attributes": {
@@ -7075,15 +9682,11 @@ export const tokens = new Map([
   [
     "--rh-color-purple-70-hsl",
     {
-      "$type": "color",
       "$value": "254.48275862068965 60.416666666666664% 18.823529411764707%",
-      "value": "254.48275862068965 60.416666666666664% 18.823529411764707%",
-      "filePath": "tokens/color/crayon/purple.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.purple.70}",
-        "value": "{color.purple.70}"
+        "$type": "color"
       },
       "name": "rh-color-purple-70-hsl",
       "attributes": {
@@ -7121,15 +9724,11 @@ export const tokens = new Map([
   [
     "--rh-color-purple-70-rgb",
     {
-      "$type": "color",
       "$value": "33 19 77",
-      "value": "33 19 77",
-      "filePath": "tokens/color/crayon/purple.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.purple.70}",
-        "value": "{color.purple.70}"
+        "$type": "color"
       },
       "name": "rh-color-purple-70-rgb",
       "attributes": {
@@ -7167,13 +9766,13 @@ export const tokens = new Map([
   [
     "--rh-color-red-orange-10",
     {
-      "$value": "#FFE3D9",
-      "value": "#ffe3d9",
+      "$value": "#ffe3d9",
       "filePath": "tokens/color/crayon/red-orange.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#FFE3D9",
-        "value": "#FFE3D9"
+        "$type": "color"
       },
       "name": "rh-color-red-orange-10",
       "attributes": {
@@ -7205,20 +9804,19 @@ export const tokens = new Map([
         "color",
         "red-orange",
         "10"
-      ],
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-red-orange-20",
     {
-      "$value": "#FBBEA8",
-      "value": "#fbbea8",
+      "$value": "#fbbea8",
       "filePath": "tokens/color/crayon/red-orange.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#FBBEA8",
-        "value": "#FBBEA8"
+        "$type": "color"
       },
       "name": "rh-color-red-orange-20",
       "attributes": {
@@ -7250,20 +9848,19 @@ export const tokens = new Map([
         "color",
         "red-orange",
         "20"
-      ],
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-red-orange-30",
     {
-      "$value": "#F89B78",
-      "value": "#f89b78",
+      "$value": "#f89b78",
       "filePath": "tokens/color/crayon/red-orange.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#F89B78",
-        "value": "#F89B78"
+        "$type": "color"
       },
       "name": "rh-color-red-orange-30",
       "attributes": {
@@ -7295,20 +9892,19 @@ export const tokens = new Map([
         "color",
         "red-orange",
         "30"
-      ],
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-red-orange-40",
     {
-      "$value": "#F4784A",
-      "value": "#f4784a",
+      "$value": "#f4784a",
       "filePath": "tokens/color/crayon/red-orange.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#F4784A",
-        "value": "#F4784A"
+        "$type": "color"
       },
       "name": "rh-color-red-orange-40",
       "attributes": {
@@ -7340,65 +9936,63 @@ export const tokens = new Map([
         "color",
         "red-orange",
         "40"
-      ],
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-red-orange-50",
     {
-      "$value": "#F4784A",
-      "value": "#f4784a",
+      "$value": "#f0561d",
       "filePath": "tokens/color/crayon/red-orange.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
-        "$value": "#F4784A",
-        "value": "#F4784A"
+        "$value": "#F0561D",
+        "$type": "color"
       },
       "name": "rh-color-red-orange-50",
       "attributes": {
         "category": "color",
         "type": "red-orange",
         "item": "50",
-        "hex": "f4784a",
+        "hex": "f0561d",
         "rgb": {
-          "r": 244,
-          "g": 120,
-          "b": 74,
+          "r": 240,
+          "g": 86,
+          "b": 29,
           "a": 1
         },
         "hsl": {
-          "h": 16.235294117647054,
-          "s": 88.54166666666671,
-          "l": 62.35294117647059,
+          "h": 16.208530805687207,
+          "s": 87.55186721991701,
+          "l": 52.74509803921569,
           "a": 1
         },
         "hsv": {
-          "h": 16.235294117647054,
-          "s": 0.6967213114754098,
-          "v": 0.9568627450980393,
+          "h": 16.208530805687207,
+          "s": 0.8791666666666667,
+          "v": 0.9411764705882353,
           "a": 1
         },
-        "isLight": true
+        "isLight": false
       },
       "path": [
         "color",
         "red-orange",
         "50"
-      ],
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-red-orange-60",
     {
-      "$value": "#B1380B",
-      "value": "#b1380b",
+      "$value": "#b1380b",
       "filePath": "tokens/color/crayon/red-orange.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#B1380B",
-        "value": "#B1380B"
+        "$type": "color"
       },
       "name": "rh-color-red-orange-60",
       "attributes": {
@@ -7430,20 +10024,19 @@ export const tokens = new Map([
         "color",
         "red-orange",
         "60"
-      ],
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-red-orange-70",
     {
-      "$value": "#731F00",
-      "value": "#731f00",
+      "$value": "#731f00",
       "filePath": "tokens/color/crayon/red-orange.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#731F00",
-        "value": "#731F00"
+        "$type": "color"
       },
       "name": "rh-color-red-orange-70",
       "attributes": {
@@ -7475,22 +10068,17 @@ export const tokens = new Map([
         "color",
         "red-orange",
         "70"
-      ],
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-red-orange-10-hsl",
     {
-      "$type": "color",
       "$value": "15.789473684210513 100% 92.54901960784314%",
-      "value": "15.789473684210513 100% 92.54901960784314%",
-      "filePath": "tokens/color/crayon/red-orange.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.red-orange.10}",
-        "value": "{color.red-orange.10}"
+        "$type": "color"
       },
       "name": "rh-color-red-orange-10-hsl",
       "attributes": {
@@ -7528,15 +10116,11 @@ export const tokens = new Map([
   [
     "--rh-color-red-orange-10-rgb",
     {
-      "$type": "color",
       "$value": "255 227 217",
-      "value": "255 227 217",
-      "filePath": "tokens/color/crayon/red-orange.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.red-orange.10}",
-        "value": "{color.red-orange.10}"
+        "$type": "color"
       },
       "name": "rh-color-red-orange-10-rgb",
       "attributes": {
@@ -7574,15 +10158,11 @@ export const tokens = new Map([
   [
     "--rh-color-red-orange-20-hsl",
     {
-      "$type": "color",
       "$value": "15.903614457831333 91.20879120879121% 82.15686274509804%",
-      "value": "15.903614457831333 91.20879120879121% 82.15686274509804%",
-      "filePath": "tokens/color/crayon/red-orange.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.red-orange.20}",
-        "value": "{color.red-orange.20}"
+        "$type": "color"
       },
       "name": "rh-color-red-orange-20-hsl",
       "attributes": {
@@ -7620,15 +10200,11 @@ export const tokens = new Map([
   [
     "--rh-color-red-orange-20-rgb",
     {
-      "$type": "color",
       "$value": "251 190 168",
-      "value": "251 190 168",
-      "filePath": "tokens/color/crayon/red-orange.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.red-orange.20}",
-        "value": "{color.red-orange.20}"
+        "$type": "color"
       },
       "name": "rh-color-red-orange-20-rgb",
       "attributes": {
@@ -7666,15 +10242,11 @@ export const tokens = new Map([
   [
     "--rh-color-red-orange-30-hsl",
     {
-      "$type": "color",
       "$value": "16.406249999999996 90.14084507042254% 72.15686274509804%",
-      "value": "16.406249999999996 90.14084507042254% 72.15686274509804%",
-      "filePath": "tokens/color/crayon/red-orange.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.red-orange.30}",
-        "value": "{color.red-orange.30}"
+        "$type": "color"
       },
       "name": "rh-color-red-orange-30-hsl",
       "attributes": {
@@ -7712,15 +10284,11 @@ export const tokens = new Map([
   [
     "--rh-color-red-orange-30-rgb",
     {
-      "$type": "color",
       "$value": "248 155 120",
-      "value": "248 155 120",
-      "filePath": "tokens/color/crayon/red-orange.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.red-orange.30}",
-        "value": "{color.red-orange.30}"
+        "$type": "color"
       },
       "name": "rh-color-red-orange-30-rgb",
       "attributes": {
@@ -7758,15 +10326,11 @@ export const tokens = new Map([
   [
     "--rh-color-red-orange-40-hsl",
     {
-      "$type": "color",
       "$value": "16.235294117647054 88.54166666666671% 62.35294117647059%",
-      "value": "16.235294117647054 88.54166666666671% 62.35294117647059%",
-      "filePath": "tokens/color/crayon/red-orange.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.red-orange.40}",
-        "value": "{color.red-orange.40}"
+        "$type": "color"
       },
       "name": "rh-color-red-orange-40-hsl",
       "attributes": {
@@ -7804,15 +10368,11 @@ export const tokens = new Map([
   [
     "--rh-color-red-orange-40-rgb",
     {
-      "$type": "color",
       "$value": "244 120 74",
-      "value": "244 120 74",
-      "filePath": "tokens/color/crayon/red-orange.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.red-orange.40}",
-        "value": "{color.red-orange.40}"
+        "$type": "color"
       },
       "name": "rh-color-red-orange-40-rgb",
       "attributes": {
@@ -7850,41 +10410,37 @@ export const tokens = new Map([
   [
     "--rh-color-red-orange-50-hsl",
     {
+      "$value": "16.208530805687207 87.55186721991701% 52.74509803921569%",
       "$type": "color",
-      "$value": "16.235294117647054 88.54166666666671% 62.35294117647059%",
-      "value": "16.235294117647054 88.54166666666671% 62.35294117647059%",
-      "filePath": "tokens/color/crayon/red-orange.yaml",
-      "isSource": true,
       "original": {
-        "$type": "color",
         "$value": "{color.red-orange.50}",
-        "value": "{color.red-orange.50}"
+        "$type": "color"
       },
       "name": "rh-color-red-orange-50-hsl",
       "attributes": {
         "category": "color",
         "type": "red-orange",
         "item": "50-hsl",
-        "hex": "f4784a",
+        "hex": "f0561d",
         "rgb": {
-          "r": 244,
-          "g": 120,
-          "b": 74,
+          "r": 240,
+          "g": 86,
+          "b": 29,
           "a": 1
         },
         "hsl": {
-          "h": 16.235294117647054,
-          "s": 88.54166666666671,
-          "l": 62.35294117647059,
+          "h": 16.208530805687207,
+          "s": 87.55186721991701,
+          "l": 52.74509803921569,
           "a": 1
         },
         "hsv": {
-          "h": 16.235294117647054,
-          "s": 0.6967213114754098,
-          "v": 0.9568627450980393,
+          "h": 16.208530805687207,
+          "s": 0.8791666666666667,
+          "v": 0.9411764705882353,
           "a": 1
         },
-        "isLight": true
+        "isLight": false
       },
       "path": [
         "color",
@@ -7896,41 +10452,37 @@ export const tokens = new Map([
   [
     "--rh-color-red-orange-50-rgb",
     {
+      "$value": "240 86 29",
       "$type": "color",
-      "$value": "244 120 74",
-      "value": "244 120 74",
-      "filePath": "tokens/color/crayon/red-orange.yaml",
-      "isSource": true,
       "original": {
-        "$type": "color",
         "$value": "{color.red-orange.50}",
-        "value": "{color.red-orange.50}"
+        "$type": "color"
       },
       "name": "rh-color-red-orange-50-rgb",
       "attributes": {
         "category": "color",
         "type": "red-orange",
         "item": "50-rgb",
-        "hex": "f4784a",
+        "hex": "f0561d",
         "rgb": {
-          "r": 244,
-          "g": 120,
-          "b": 74,
+          "r": 240,
+          "g": 86,
+          "b": 29,
           "a": 1
         },
         "hsl": {
-          "h": 16.235294117647054,
-          "s": 88.54166666666671,
-          "l": 62.35294117647059,
+          "h": 16.208530805687207,
+          "s": 87.55186721991701,
+          "l": 52.74509803921569,
           "a": 1
         },
         "hsv": {
-          "h": 16.235294117647054,
-          "s": 0.6967213114754098,
-          "v": 0.9568627450980393,
+          "h": 16.208530805687207,
+          "s": 0.8791666666666667,
+          "v": 0.9411764705882353,
           "a": 1
         },
-        "isLight": true
+        "isLight": false
       },
       "path": [
         "color",
@@ -7942,15 +10494,11 @@ export const tokens = new Map([
   [
     "--rh-color-red-orange-60-hsl",
     {
-      "$type": "color",
       "$value": "16.265060240963855 88.29787234042554% 36.86274509803921%",
-      "value": "16.265060240963855 88.29787234042554% 36.86274509803921%",
-      "filePath": "tokens/color/crayon/red-orange.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.red-orange.60}",
-        "value": "{color.red-orange.60}"
+        "$type": "color"
       },
       "name": "rh-color-red-orange-60-hsl",
       "attributes": {
@@ -7988,15 +10536,11 @@ export const tokens = new Map([
   [
     "--rh-color-red-orange-60-rgb",
     {
-      "$type": "color",
       "$value": "177 56 11",
-      "value": "177 56 11",
-      "filePath": "tokens/color/crayon/red-orange.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.red-orange.60}",
-        "value": "{color.red-orange.60}"
+        "$type": "color"
       },
       "name": "rh-color-red-orange-60-rgb",
       "attributes": {
@@ -8034,15 +10578,11 @@ export const tokens = new Map([
   [
     "--rh-color-red-orange-70-hsl",
     {
-      "$type": "color",
       "$value": "16.17391304347826 100% 22.54901960784314%",
-      "value": "16.17391304347826 100% 22.54901960784314%",
-      "filePath": "tokens/color/crayon/red-orange.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.red-orange.70}",
-        "value": "{color.red-orange.70}"
+        "$type": "color"
       },
       "name": "rh-color-red-orange-70-hsl",
       "attributes": {
@@ -8080,15 +10620,11 @@ export const tokens = new Map([
   [
     "--rh-color-red-orange-70-rgb",
     {
-      "$type": "color",
       "$value": "115 31 0",
-      "value": "115 31 0",
-      "filePath": "tokens/color/crayon/red-orange.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.red-orange.70}",
-        "value": "{color.red-orange.70}"
+        "$type": "color"
       },
       "name": "rh-color-red-orange-70-rgb",
       "attributes": {
@@ -8126,15 +10662,13 @@ export const tokens = new Map([
   [
     "--rh-color-red-10",
     {
-      "$value": "#FCE3E3",
-      "$description": null,
-      "value": "#fce3e3",
+      "$value": "#fce3e3",
       "filePath": "tokens/color/crayon/red.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#FCE3E3",
-        "$description": null,
-        "value": "#FCE3E3"
+        "$type": "color"
       },
       "name": "rh-color-red-10",
       "attributes": {
@@ -8166,23 +10700,21 @@ export const tokens = new Map([
         "color",
         "red",
         "10"
-      ],
-      "comment": null,
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-red-20",
     {
-      "$value": "#FBC5C5",
+      "$value": "#fbc5c5",
       "$description": "Lightest brand red",
-      "value": "#fbc5c5",
       "filePath": "tokens/color/crayon/red.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#FBC5C5",
         "$description": "Lightest brand red",
-        "value": "#FBC5C5"
+        "$type": "color"
       },
       "name": "rh-color-red-20",
       "attributes": {
@@ -8214,23 +10746,21 @@ export const tokens = new Map([
         "color",
         "red",
         "20"
-      ],
-      "comment": "Lightest brand red",
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-red-30",
     {
-      "$value": "#F9A8A8",
+      "$value": "#f9a8a8",
       "$description": "Lighter brand red",
-      "value": "#f9a8a8",
       "filePath": "tokens/color/crayon/red.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#F9A8A8",
         "$description": "Lighter brand red",
-        "value": "#F9A8A8"
+        "$type": "color"
       },
       "name": "rh-color-red-30",
       "attributes": {
@@ -8262,23 +10792,21 @@ export const tokens = new Map([
         "color",
         "red",
         "30"
-      ],
-      "comment": "Lighter brand red",
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-red-40",
     {
-      "$value": "#F56E6E",
+      "$value": "#f56e6e",
       "$description": "Light brand red",
-      "value": "#f56e6e",
       "filePath": "tokens/color/crayon/red.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#F56E6E",
         "$description": "Light brand red",
-        "value": "#F56E6E"
+        "$type": "color"
       },
       "name": "rh-color-red-40",
       "attributes": {
@@ -8310,23 +10838,21 @@ export const tokens = new Map([
         "color",
         "red",
         "40"
-      ],
-      "comment": "Light brand red",
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-red-50",
     {
-      "$value": "#EE0000",
+      "$value": "#ee0000",
       "$description": "Brand red (light and dark theme)",
-      "value": "#ee0000",
       "filePath": "tokens/color/crayon/red.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#EE0000",
         "$description": "Brand red (light and dark theme)",
-        "value": "#EE0000"
+        "$type": "color"
       },
       "name": "rh-color-red-50",
       "attributes": {
@@ -8358,23 +10884,21 @@ export const tokens = new Map([
         "color",
         "red",
         "50"
-      ],
-      "comment": "Brand red (light and dark theme)",
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-red-60",
     {
-      "$value": "#A60000",
+      "$value": "#a60000",
       "$description": "Dark brand red",
-      "value": "#a60000",
       "filePath": "tokens/color/crayon/red.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#A60000",
         "$description": "Dark brand red",
-        "value": "#A60000"
+        "$type": "color"
       },
       "name": "rh-color-red-60",
       "attributes": {
@@ -8406,23 +10930,21 @@ export const tokens = new Map([
         "color",
         "red",
         "60"
-      ],
-      "comment": "Dark brand red",
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-red-70",
     {
-      "$value": "#5F0000",
+      "$value": "#5f0000",
       "$description": "Darker brand red",
-      "value": "#5f0000",
       "filePath": "tokens/color/crayon/red.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#5F0000",
         "$description": "Darker brand red",
-        "value": "#5F0000"
+        "$type": "color"
       },
       "name": "rh-color-red-70",
       "attributes": {
@@ -8454,23 +10976,17 @@ export const tokens = new Map([
         "color",
         "red",
         "70"
-      ],
-      "comment": "Darker brand red",
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-red-10-hsl",
     {
-      "$type": "color",
       "$value": "0 80.64516129032265% 93.92156862745098%",
-      "value": "0 80.64516129032265% 93.92156862745098%",
-      "filePath": "tokens/color/crayon/red.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.red.10}",
-        "value": "{color.red.10}"
+        "$type": "color"
       },
       "name": "rh-color-red-10-hsl",
       "attributes": {
@@ -8508,15 +11024,11 @@ export const tokens = new Map([
   [
     "--rh-color-red-10-rgb",
     {
-      "$type": "color",
       "$value": "252 227 227",
-      "value": "252 227 227",
-      "filePath": "tokens/color/crayon/red.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.red.10}",
-        "value": "{color.red.10}"
+        "$type": "color"
       },
       "name": "rh-color-red-10-rgb",
       "attributes": {
@@ -8554,15 +11066,11 @@ export const tokens = new Map([
   [
     "--rh-color-red-20-hsl",
     {
-      "$type": "color",
       "$value": "0 87.09677419354838% 87.84313725490196%",
-      "value": "0 87.09677419354838% 87.84313725490196%",
-      "filePath": "tokens/color/crayon/red.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.red.20}",
-        "value": "{color.red.20}"
+        "$type": "color"
       },
       "name": "rh-color-red-20-hsl",
       "attributes": {
@@ -8600,15 +11108,11 @@ export const tokens = new Map([
   [
     "--rh-color-red-20-rgb",
     {
-      "$type": "color",
       "$value": "251 197 197",
-      "value": "251 197 197",
-      "filePath": "tokens/color/crayon/red.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.red.20}",
-        "value": "{color.red.20}"
+        "$type": "color"
       },
       "name": "rh-color-red-20-rgb",
       "attributes": {
@@ -8646,15 +11150,11 @@ export const tokens = new Map([
   [
     "--rh-color-red-30-hsl",
     {
-      "$type": "color",
       "$value": "0 87.0967741935484% 81.76470588235294%",
-      "value": "0 87.0967741935484% 81.76470588235294%",
-      "filePath": "tokens/color/crayon/red.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.red.30}",
-        "value": "{color.red.30}"
+        "$type": "color"
       },
       "name": "rh-color-red-30-hsl",
       "attributes": {
@@ -8692,15 +11192,11 @@ export const tokens = new Map([
   [
     "--rh-color-red-30-rgb",
     {
-      "$type": "color",
       "$value": "249 168 168",
-      "value": "249 168 168",
-      "filePath": "tokens/color/crayon/red.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.red.30}",
-        "value": "{color.red.30}"
+        "$type": "color"
       },
       "name": "rh-color-red-30-rgb",
       "attributes": {
@@ -8738,15 +11234,11 @@ export const tokens = new Map([
   [
     "--rh-color-red-40-hsl",
     {
-      "$type": "color",
       "$value": "0 87.09677419354841% 69.6078431372549%",
-      "value": "0 87.09677419354841% 69.6078431372549%",
-      "filePath": "tokens/color/crayon/red.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.red.40}",
-        "value": "{color.red.40}"
+        "$type": "color"
       },
       "name": "rh-color-red-40-hsl",
       "attributes": {
@@ -8784,15 +11276,11 @@ export const tokens = new Map([
   [
     "--rh-color-red-40-rgb",
     {
-      "$type": "color",
       "$value": "245 110 110",
-      "value": "245 110 110",
-      "filePath": "tokens/color/crayon/red.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.red.40}",
-        "value": "{color.red.40}"
+        "$type": "color"
       },
       "name": "rh-color-red-40-rgb",
       "attributes": {
@@ -8830,15 +11318,11 @@ export const tokens = new Map([
   [
     "--rh-color-red-50-hsl",
     {
-      "$type": "color",
       "$value": "0 100% 46.666666666666664%",
-      "value": "0 100% 46.666666666666664%",
-      "filePath": "tokens/color/crayon/red.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.red.50}",
-        "value": "{color.red.50}"
+        "$type": "color"
       },
       "name": "rh-color-red-50-hsl",
       "attributes": {
@@ -8876,15 +11360,11 @@ export const tokens = new Map([
   [
     "--rh-color-red-50-rgb",
     {
-      "$type": "color",
       "$value": "238 0 0",
-      "value": "238 0 0",
-      "filePath": "tokens/color/crayon/red.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.red.50}",
-        "value": "{color.red.50}"
+        "$type": "color"
       },
       "name": "rh-color-red-50-rgb",
       "attributes": {
@@ -8922,15 +11402,11 @@ export const tokens = new Map([
   [
     "--rh-color-red-60-hsl",
     {
-      "$type": "color",
       "$value": "0 100% 32.549019607843135%",
-      "value": "0 100% 32.549019607843135%",
-      "filePath": "tokens/color/crayon/red.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.red.60}",
-        "value": "{color.red.60}"
+        "$type": "color"
       },
       "name": "rh-color-red-60-hsl",
       "attributes": {
@@ -8968,15 +11444,11 @@ export const tokens = new Map([
   [
     "--rh-color-red-60-rgb",
     {
-      "$type": "color",
       "$value": "166 0 0",
-      "value": "166 0 0",
-      "filePath": "tokens/color/crayon/red.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.red.60}",
-        "value": "{color.red.60}"
+        "$type": "color"
       },
       "name": "rh-color-red-60-rgb",
       "attributes": {
@@ -9014,15 +11486,11 @@ export const tokens = new Map([
   [
     "--rh-color-red-70-hsl",
     {
-      "$type": "color",
       "$value": "0 100% 18.627450980392158%",
-      "value": "0 100% 18.627450980392158%",
-      "filePath": "tokens/color/crayon/red.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.red.70}",
-        "value": "{color.red.70}"
+        "$type": "color"
       },
       "name": "rh-color-red-70-hsl",
       "attributes": {
@@ -9060,15 +11528,11 @@ export const tokens = new Map([
   [
     "--rh-color-red-70-rgb",
     {
-      "$type": "color",
       "$value": "95 0 0",
-      "value": "95 0 0",
-      "filePath": "tokens/color/crayon/red.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.red.70}",
-        "value": "{color.red.70}"
+        "$type": "color"
       },
       "name": "rh-color-red-70-rgb",
       "attributes": {
@@ -9106,15 +11570,15 @@ export const tokens = new Map([
   [
     "--rh-color-teal-10",
     {
-      "$value": "#DAF2F2",
+      "$value": "#daf2f2",
       "$description": "Alert - Default background",
-      "value": "#daf2f2",
       "filePath": "tokens/color/crayon/teal.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#DAF2F2",
         "$description": "Alert - Default background",
-        "value": "#DAF2F2"
+        "$type": "color"
       },
       "name": "rh-color-teal-10",
       "attributes": {
@@ -9146,21 +11610,19 @@ export const tokens = new Map([
         "color",
         "teal",
         "10"
-      ],
-      "comment": "Alert - Default background",
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-teal-20",
     {
-      "$value": "#B9E5E5",
-      "value": "#b9e5e5",
+      "$value": "#b9e5e5",
       "filePath": "tokens/color/crayon/teal.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#B9E5E5",
-        "value": "#B9E5E5"
+        "$type": "color"
       },
       "name": "rh-color-teal-20",
       "attributes": {
@@ -9192,22 +11654,21 @@ export const tokens = new Map([
         "color",
         "teal",
         "20"
-      ],
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-teal-30",
     {
-      "$value": "#9AD8D8",
+      "$value": "#9ad8d8",
       "$description": "Label (Cyan) border color",
-      "value": "#9ad8d8",
       "filePath": "tokens/color/crayon/teal.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#9AD8D8",
         "$description": "Label (Cyan) border color",
-        "value": "#9AD8D8"
+        "$type": "color"
       },
       "name": "rh-color-teal-30",
       "attributes": {
@@ -9239,21 +11700,19 @@ export const tokens = new Map([
         "color",
         "teal",
         "30"
-      ],
-      "comment": "Label (Cyan) border color",
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-teal-40",
     {
-      "$value": "#63BDBD",
-      "value": "#63bdbd",
+      "$value": "#63bdbd",
       "filePath": "tokens/color/crayon/teal.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#63BDBD",
-        "value": "#63BDBD"
+        "$type": "color"
       },
       "name": "rh-color-teal-40",
       "attributes": {
@@ -9285,22 +11744,21 @@ export const tokens = new Map([
         "color",
         "teal",
         "40"
-      ],
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-teal-50",
     {
-      "$value": "#37A3A3",
+      "$value": "#37a3a3",
       "$description": "Alert - Default accent",
-      "value": "#37a3a3",
       "filePath": "tokens/color/crayon/teal.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#37A3A3",
         "$description": "Alert - Default accent",
-        "value": "#37A3A3"
+        "$type": "color"
       },
       "name": "rh-color-teal-50",
       "attributes": {
@@ -9332,21 +11790,19 @@ export const tokens = new Map([
         "color",
         "teal",
         "50"
-      ],
-      "comment": "Alert - Default accent",
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-teal-60",
     {
       "$value": "#147878",
-      "value": "#147878",
       "filePath": "tokens/color/crayon/teal.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#147878",
-        "value": "#147878"
+        "$type": "color"
       },
       "name": "rh-color-teal-60",
       "attributes": {
@@ -9378,22 +11834,21 @@ export const tokens = new Map([
         "color",
         "teal",
         "60"
-      ],
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-teal-70",
     {
-      "$value": "#004D4D",
+      "$value": "#004d4d",
       "$description": "Alert - Default title text",
-      "value": "#004d4d",
       "filePath": "tokens/color/crayon/teal.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#004D4D",
         "$description": "Alert - Default title text",
-        "value": "#004D4D"
+        "$type": "color"
       },
       "name": "rh-color-teal-70",
       "attributes": {
@@ -9425,23 +11880,17 @@ export const tokens = new Map([
         "color",
         "teal",
         "70"
-      ],
-      "comment": "Alert - Default title text",
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-teal-10-hsl",
     {
-      "$type": "color",
       "$value": "180 47.99999999999998% 90.19607843137254%",
-      "value": "180 47.99999999999998% 90.19607843137254%",
-      "filePath": "tokens/color/crayon/teal.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.teal.10}",
-        "value": "{color.teal.10}"
+        "$type": "color"
       },
       "name": "rh-color-teal-10-hsl",
       "attributes": {
@@ -9479,15 +11928,11 @@ export const tokens = new Map([
   [
     "--rh-color-teal-10-rgb",
     {
-      "$type": "color",
       "$value": "218 242 242",
-      "value": "218 242 242",
-      "filePath": "tokens/color/crayon/teal.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.teal.10}",
-        "value": "{color.teal.10}"
+        "$type": "color"
       },
       "name": "rh-color-teal-10-rgb",
       "attributes": {
@@ -9525,15 +11970,11 @@ export const tokens = new Map([
   [
     "--rh-color-teal-20-hsl",
     {
-      "$type": "color",
       "$value": "180 45.833333333333336% 81.17647058823529%",
-      "value": "180 45.833333333333336% 81.17647058823529%",
-      "filePath": "tokens/color/crayon/teal.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.teal.20}",
-        "value": "{color.teal.20}"
+        "$type": "color"
       },
       "name": "rh-color-teal-20-hsl",
       "attributes": {
@@ -9571,15 +12012,11 @@ export const tokens = new Map([
   [
     "--rh-color-teal-20-rgb",
     {
-      "$type": "color",
       "$value": "185 229 229",
-      "value": "185 229 229",
-      "filePath": "tokens/color/crayon/teal.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.teal.20}",
-        "value": "{color.teal.20}"
+        "$type": "color"
       },
       "name": "rh-color-teal-20-rgb",
       "attributes": {
@@ -9617,15 +12054,11 @@ export const tokens = new Map([
   [
     "--rh-color-teal-30-hsl",
     {
-      "$type": "color",
       "$value": "180 44.28571428571429% 72.54901960784314%",
-      "value": "180 44.28571428571429% 72.54901960784314%",
-      "filePath": "tokens/color/crayon/teal.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.teal.30}",
-        "value": "{color.teal.30}"
+        "$type": "color"
       },
       "name": "rh-color-teal-30-hsl",
       "attributes": {
@@ -9663,15 +12096,11 @@ export const tokens = new Map([
   [
     "--rh-color-teal-30-rgb",
     {
-      "$type": "color",
       "$value": "154 216 216",
-      "value": "154 216 216",
-      "filePath": "tokens/color/crayon/teal.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.teal.30}",
-        "value": "{color.teal.30}"
+        "$type": "color"
       },
       "name": "rh-color-teal-30-rgb",
       "attributes": {
@@ -9709,15 +12138,11 @@ export const tokens = new Map([
   [
     "--rh-color-teal-40-hsl",
     {
-      "$type": "color",
       "$value": "180 40.54054054054054% 56.470588235294116%",
-      "value": "180 40.54054054054054% 56.470588235294116%",
-      "filePath": "tokens/color/crayon/teal.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.teal.40}",
-        "value": "{color.teal.40}"
+        "$type": "color"
       },
       "name": "rh-color-teal-40-hsl",
       "attributes": {
@@ -9755,15 +12180,11 @@ export const tokens = new Map([
   [
     "--rh-color-teal-40-rgb",
     {
-      "$type": "color",
       "$value": "99 189 189",
-      "value": "99 189 189",
-      "filePath": "tokens/color/crayon/teal.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.teal.40}",
-        "value": "{color.teal.40}"
+        "$type": "color"
       },
       "name": "rh-color-teal-40-rgb",
       "attributes": {
@@ -9801,15 +12222,11 @@ export const tokens = new Map([
   [
     "--rh-color-teal-50-hsl",
     {
-      "$type": "color",
       "$value": "180 49.54128440366972% 42.745098039215684%",
-      "value": "180 49.54128440366972% 42.745098039215684%",
-      "filePath": "tokens/color/crayon/teal.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.teal.50}",
-        "value": "{color.teal.50}"
+        "$type": "color"
       },
       "name": "rh-color-teal-50-hsl",
       "attributes": {
@@ -9847,15 +12264,11 @@ export const tokens = new Map([
   [
     "--rh-color-teal-50-rgb",
     {
-      "$type": "color",
       "$value": "55 163 163",
-      "value": "55 163 163",
-      "filePath": "tokens/color/crayon/teal.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.teal.50}",
-        "value": "{color.teal.50}"
+        "$type": "color"
       },
       "name": "rh-color-teal-50-rgb",
       "attributes": {
@@ -9893,15 +12306,11 @@ export const tokens = new Map([
   [
     "--rh-color-teal-60-hsl",
     {
-      "$type": "color",
       "$value": "180 71.42857142857142% 27.450980392156865%",
-      "value": "180 71.42857142857142% 27.450980392156865%",
-      "filePath": "tokens/color/crayon/teal.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.teal.60}",
-        "value": "{color.teal.60}"
+        "$type": "color"
       },
       "name": "rh-color-teal-60-hsl",
       "attributes": {
@@ -9939,15 +12348,11 @@ export const tokens = new Map([
   [
     "--rh-color-teal-60-rgb",
     {
-      "$type": "color",
       "$value": "20 120 120",
-      "value": "20 120 120",
-      "filePath": "tokens/color/crayon/teal.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.teal.60}",
-        "value": "{color.teal.60}"
+        "$type": "color"
       },
       "name": "rh-color-teal-60-rgb",
       "attributes": {
@@ -9985,15 +12390,11 @@ export const tokens = new Map([
   [
     "--rh-color-teal-70-hsl",
     {
-      "$type": "color",
       "$value": "180 100% 15.098039215686274%",
-      "value": "180 100% 15.098039215686274%",
-      "filePath": "tokens/color/crayon/teal.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.teal.70}",
-        "value": "{color.teal.70}"
+        "$type": "color"
       },
       "name": "rh-color-teal-70-hsl",
       "attributes": {
@@ -10031,15 +12432,11 @@ export const tokens = new Map([
   [
     "--rh-color-teal-70-rgb",
     {
-      "$type": "color",
       "$value": "0 77 77",
-      "value": "0 77 77",
-      "filePath": "tokens/color/crayon/teal.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.teal.70}",
-        "value": "{color.teal.70}"
+        "$type": "color"
       },
       "name": "rh-color-teal-70-rgb",
       "attributes": {
@@ -10077,15 +12474,15 @@ export const tokens = new Map([
   [
     "--rh-color-yellow-10",
     {
-      "$value": "#FFF4CC",
+      "$value": "#fff4cc",
       "$description": "Alert - Warning background",
-      "value": "#fff4cc",
       "filePath": "tokens/color/crayon/yellow.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#FFF4CC",
         "$description": "Alert - Warning background",
-        "value": "#FFF4CC"
+        "$type": "color"
       },
       "name": "rh-color-yellow-10",
       "attributes": {
@@ -10117,21 +12514,19 @@ export const tokens = new Map([
         "color",
         "yellow",
         "10"
-      ],
-      "comment": "Alert - Warning background",
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-yellow-20",
     {
-      "$value": "#FFE072",
-      "value": "#ffe072",
+      "$value": "#ffe072",
       "filePath": "tokens/color/crayon/yellow.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#FFE072",
-        "value": "#FFE072"
+        "$type": "color"
       },
       "name": "rh-color-yellow-20",
       "attributes": {
@@ -10163,20 +12558,19 @@ export const tokens = new Map([
         "color",
         "yellow",
         "20"
-      ],
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-yellow-30",
     {
-      "$value": "#FFCC17",
-      "value": "#ffcc17",
+      "$value": "#ffcc17",
       "filePath": "tokens/color/crayon/yellow.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#FFCC17",
-        "value": "#FFCC17"
+        "$type": "color"
       },
       "name": "rh-color-yellow-30",
       "attributes": {
@@ -10208,22 +12602,21 @@ export const tokens = new Map([
         "color",
         "yellow",
         "30"
-      ],
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-yellow-40",
     {
-      "$value": "#DCA614",
+      "$value": "#dca614",
       "$description": "Alert - Warning accent",
-      "value": "#dca614",
       "filePath": "tokens/color/crayon/yellow.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#DCA614",
         "$description": "Alert - Warning accent",
-        "value": "#DCA614"
+        "$type": "color"
       },
       "name": "rh-color-yellow-40",
       "attributes": {
@@ -10255,21 +12648,19 @@ export const tokens = new Map([
         "color",
         "yellow",
         "40"
-      ],
-      "comment": "Alert - Warning accent",
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-yellow-50",
     {
-      "$value": "#B98412",
-      "value": "#b98412",
+      "$value": "#b98412",
       "filePath": "tokens/color/crayon/yellow.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#B98412",
-        "value": "#B98412"
+        "$type": "color"
       },
       "name": "rh-color-yellow-50",
       "attributes": {
@@ -10301,20 +12692,19 @@ export const tokens = new Map([
         "color",
         "yellow",
         "50"
-      ],
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-yellow-60",
     {
-      "$value": "#96640F",
-      "value": "#96640f",
+      "$value": "#96640f",
       "filePath": "tokens/color/crayon/yellow.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#96640F",
-        "value": "#96640F"
+        "$type": "color"
       },
       "name": "rh-color-yellow-60",
       "attributes": {
@@ -10346,22 +12736,21 @@ export const tokens = new Map([
         "color",
         "yellow",
         "60"
-      ],
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-yellow-70",
     {
-      "$value": "#73480B",
+      "$value": "#73480b",
       "$description": "Alert - Warning title text",
-      "value": "#73480b",
       "filePath": "tokens/color/crayon/yellow.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "#73480B",
         "$description": "Alert - Warning title text",
-        "value": "#73480B"
+        "$type": "color"
       },
       "name": "rh-color-yellow-70",
       "attributes": {
@@ -10393,23 +12782,17 @@ export const tokens = new Map([
         "color",
         "yellow",
         "70"
-      ],
-      "comment": "Alert - Warning title text",
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-yellow-10-hsl",
     {
-      "$type": "color",
       "$value": "47.058823529411775 100% 90%",
-      "value": "47.058823529411775 100% 90%",
-      "filePath": "tokens/color/crayon/yellow.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.yellow.10}",
-        "value": "{color.yellow.10}"
+        "$type": "color"
       },
       "name": "rh-color-yellow-10-hsl",
       "attributes": {
@@ -10447,15 +12830,11 @@ export const tokens = new Map([
   [
     "--rh-color-yellow-10-rgb",
     {
-      "$type": "color",
       "$value": "255 244 204",
-      "value": "255 244 204",
-      "filePath": "tokens/color/crayon/yellow.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.yellow.10}",
-        "value": "{color.yellow.10}"
+        "$type": "color"
       },
       "name": "rh-color-yellow-10-rgb",
       "attributes": {
@@ -10493,15 +12872,11 @@ export const tokens = new Map([
   [
     "--rh-color-yellow-20-hsl",
     {
-      "$type": "color",
       "$value": "46.80851063829787 100% 72.35294117647058%",
-      "value": "46.80851063829787 100% 72.35294117647058%",
-      "filePath": "tokens/color/crayon/yellow.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.yellow.20}",
-        "value": "{color.yellow.20}"
+        "$type": "color"
       },
       "name": "rh-color-yellow-20-hsl",
       "attributes": {
@@ -10539,15 +12914,11 @@ export const tokens = new Map([
   [
     "--rh-color-yellow-20-rgb",
     {
-      "$type": "color",
       "$value": "255 224 114",
-      "value": "255 224 114",
-      "filePath": "tokens/color/crayon/yellow.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.yellow.20}",
-        "value": "{color.yellow.20}"
+        "$type": "color"
       },
       "name": "rh-color-yellow-20-rgb",
       "attributes": {
@@ -10585,15 +12956,11 @@ export const tokens = new Map([
   [
     "--rh-color-yellow-30-hsl",
     {
-      "$type": "color",
       "$value": "46.81034482758621 100% 54.509803921568626%",
-      "value": "46.81034482758621 100% 54.509803921568626%",
-      "filePath": "tokens/color/crayon/yellow.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.yellow.30}",
-        "value": "{color.yellow.30}"
+        "$type": "color"
       },
       "name": "rh-color-yellow-30-hsl",
       "attributes": {
@@ -10631,15 +12998,11 @@ export const tokens = new Map([
   [
     "--rh-color-yellow-30-rgb",
     {
-      "$type": "color",
       "$value": "255 204 23",
-      "value": "255 204 23",
-      "filePath": "tokens/color/crayon/yellow.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.yellow.30}",
-        "value": "{color.yellow.30}"
+        "$type": "color"
       },
       "name": "rh-color-yellow-30-rgb",
       "attributes": {
@@ -10677,15 +13040,11 @@ export const tokens = new Map([
   [
     "--rh-color-yellow-40-hsl",
     {
-      "$type": "color",
       "$value": "43.79999999999999 83.33333333333334% 47.05882352941176%",
-      "value": "43.79999999999999 83.33333333333334% 47.05882352941176%",
-      "filePath": "tokens/color/crayon/yellow.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.yellow.40}",
-        "value": "{color.yellow.40}"
+        "$type": "color"
       },
       "name": "rh-color-yellow-40-hsl",
       "attributes": {
@@ -10723,15 +13082,11 @@ export const tokens = new Map([
   [
     "--rh-color-yellow-40-rgb",
     {
-      "$type": "color",
       "$value": "220 166 20",
-      "value": "220 166 20",
-      "filePath": "tokens/color/crayon/yellow.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.yellow.40}",
-        "value": "{color.yellow.40}"
+        "$type": "color"
       },
       "name": "rh-color-yellow-40-rgb",
       "attributes": {
@@ -10769,15 +13124,11 @@ export const tokens = new Map([
   [
     "--rh-color-yellow-50-hsl",
     {
-      "$type": "color",
       "$value": "40.95808383233534 82.26600985221675% 39.80392156862745%",
-      "value": "40.95808383233534 82.26600985221675% 39.80392156862745%",
-      "filePath": "tokens/color/crayon/yellow.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.yellow.50}",
-        "value": "{color.yellow.50}"
+        "$type": "color"
       },
       "name": "rh-color-yellow-50-hsl",
       "attributes": {
@@ -10815,15 +13166,11 @@ export const tokens = new Map([
   [
     "--rh-color-yellow-50-rgb",
     {
-      "$type": "color",
       "$value": "185 132 18",
-      "value": "185 132 18",
-      "filePath": "tokens/color/crayon/yellow.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.yellow.50}",
-        "value": "{color.yellow.50}"
+        "$type": "color"
       },
       "name": "rh-color-yellow-50-rgb",
       "attributes": {
@@ -10861,15 +13208,11 @@ export const tokens = new Map([
   [
     "--rh-color-yellow-60-hsl",
     {
-      "$type": "color",
       "$value": "37.77777777777777 81.81818181818181% 32.35294117647059%",
-      "value": "37.77777777777777 81.81818181818181% 32.35294117647059%",
-      "filePath": "tokens/color/crayon/yellow.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.yellow.60}",
-        "value": "{color.yellow.60}"
+        "$type": "color"
       },
       "name": "rh-color-yellow-60-hsl",
       "attributes": {
@@ -10907,15 +13250,11 @@ export const tokens = new Map([
   [
     "--rh-color-yellow-60-rgb",
     {
-      "$type": "color",
       "$value": "150 100 15",
-      "value": "150 100 15",
-      "filePath": "tokens/color/crayon/yellow.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.yellow.60}",
-        "value": "{color.yellow.60}"
+        "$type": "color"
       },
       "name": "rh-color-yellow-60-rgb",
       "attributes": {
@@ -10953,15 +13292,11 @@ export const tokens = new Map([
   [
     "--rh-color-yellow-70-hsl",
     {
-      "$type": "color",
       "$value": "35.192307692307686 82.53968253968253% 24.705882352941178%",
-      "value": "35.192307692307686 82.53968253968253% 24.705882352941178%",
-      "filePath": "tokens/color/crayon/yellow.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.yellow.70}",
-        "value": "{color.yellow.70}"
+        "$type": "color"
       },
       "name": "rh-color-yellow-70-hsl",
       "attributes": {
@@ -10999,15 +13334,11 @@ export const tokens = new Map([
   [
     "--rh-color-yellow-70-rgb",
     {
-      "$type": "color",
       "$value": "115 72 11",
-      "value": "115 72 11",
-      "filePath": "tokens/color/crayon/yellow.yaml",
-      "isSource": true,
+      "$type": "color",
       "original": {
-        "$type": "color",
         "$value": "{color.yellow.70}",
-        "value": "{color.yellow.70}"
+        "$type": "color"
       },
       "name": "rh-color-yellow-70-rgb",
       "attributes": {
@@ -11043,309 +13374,2475 @@ export const tokens = new Map([
     }
   ],
   [
-    "--rh-color-icon-primary-on-light",
+    "--rh-color-interactive-primary-default",
     {
-      "$value": "#ee0000",
+      "$value": "",
+      "$description": "Responsive `interactive-primary` (e.g. link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-primary-default-on-light` on a themable container with a light color palette and `--rh-color-interactive-primary-default-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.interactive.primary.default.on-light}",
+          "{color.interactive.primary.default.on-dark}"
+        ],
+        "$description": "Responsive `interactive-primary` (e.g. link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-primary-default-on-light` on a themable container with a light color palette and `--rh-color-interactive-primary-default-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-primary-default",
       "attributes": {
-        "category": "icon",
-        "type": "color",
+        "category": "color",
+        "type": "interactive",
         "item": "primary",
-        "subitem": "on-light",
-        "hex": "ee0000",
+        "subitem": "default",
+        "state": "_",
+        "hex": "000000",
         "rgb": {
-          "r": 238,
+          "r": 0,
           "g": 0,
           "b": 0,
           "a": 1
         },
         "hsl": {
           "h": 0,
-          "s": 100,
-          "l": 46.666666666666664,
+          "s": 0,
+          "l": 0,
           "a": 1
         },
         "hsv": {
           "h": 0,
-          "s": 1,
-          "v": 0.9333333333333333,
+          "s": 0,
+          "v": 0,
           "a": 1
         },
         "isLight": false
       },
-      "value": "#ee0000",
-      "filePath": "tokens/color/icon.yml",
-      "isSource": true,
-      "original": {
-        "$value": "{color.brand.red.on-light}",
-        "attributes": {
-          "category": "icon",
-          "type": "color"
-        },
-        "value": "{color.brand.red.on-light}"
-      },
-      "name": "rh-color-icon-primary-on-light",
       "path": [
         "color",
-        "icon",
+        "interactive",
         "primary",
-        "on-light"
-      ],
-      "$type": "color"
+        "default",
+        "_"
+      ]
     }
   ],
   [
-    "--rh-color-icon-primary-on-dark",
+    "--rh-color-interactive-primary-default-on-light",
     {
-      "$value": "#ee0000",
+      "$value": "#0066cc",
+      "$description": "Primary interactive - default (Light theme)",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.blue.50}",
+        "$description": "Primary interactive - default (Light theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-primary-default-on-light",
       "attributes": {
-        "category": "icon",
-        "type": "color",
+        "category": "color",
+        "type": "interactive",
         "item": "primary",
-        "subitem": "on-dark",
-        "hex": "ee0000",
+        "subitem": "default",
+        "state": "on-light",
+        "hex": "0066cc",
         "rgb": {
-          "r": 238,
-          "g": 0,
-          "b": 0,
+          "r": 0,
+          "g": 102,
+          "b": 204,
           "a": 1
         },
         "hsl": {
-          "h": 0,
+          "h": 210,
           "s": 100,
-          "l": 46.666666666666664,
+          "l": 40,
           "a": 1
         },
         "hsv": {
-          "h": 0,
+          "h": 210,
           "s": 1,
-          "v": 0.9333333333333333,
+          "v": 0.8,
           "a": 1
         },
         "isLight": false
       },
-      "value": "#ee0000",
-      "filePath": "tokens/color/icon.yml",
-      "isSource": true,
-      "original": {
-        "$value": "{color.brand.red.on-dark}",
-        "attributes": {
-          "category": "icon",
-          "type": "color"
-        },
-        "value": "{color.brand.red.on-dark}"
-      },
-      "name": "rh-color-icon-primary-on-dark",
       "path": [
         "color",
-        "icon",
+        "interactive",
         "primary",
+        "default",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-primary-default-on-dark",
+    {
+      "$value": "#92c5f9",
+      "$description": "Primary interactive - default (Dark theme)",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.blue.30}",
+        "$description": "Primary interactive - default (Dark theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-primary-default-on-dark",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "primary",
+        "subitem": "default",
+        "state": "on-dark",
+        "hex": "92c5f9",
+        "rgb": {
+          "r": 146,
+          "g": 197,
+          "b": 249,
+          "a": 1
+        },
+        "hsl": {
+          "h": 210.29126213592232,
+          "s": 89.56521739130436,
+          "l": 77.45098039215685,
+          "a": 1
+        },
+        "hsv": {
+          "h": 210.29126213592232,
+          "s": 0.4136546184738956,
+          "v": 0.9764705882352941,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "interactive",
+        "primary",
+        "default",
         "on-dark"
-      ],
-      "$type": "color"
+      ]
     }
   ],
   [
-    "--rh-color-icon-secondary-on-light",
+    "--rh-color-interactive-primary-hover",
     {
-      "$value": "#151515",
+      "$value": "",
+      "$description": "Responsive `interactive-primary` (e.g. link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-primary-hover-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-primary-hover-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.interactive.primary.hover.on-light}",
+          "{color.interactive.primary.hover.on-dark}"
+        ],
+        "$description": "Responsive `interactive-primary` (e.g. link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-primary-hover-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-primary-hover-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-primary-hover",
       "attributes": {
-        "category": "icon",
-        "type": "color",
-        "item": "secondary",
-        "subitem": "on-light",
-        "hex": "151515",
+        "category": "color",
+        "type": "interactive",
+        "item": "primary",
+        "subitem": "hover",
+        "state": "_",
+        "hex": "000000",
         "rgb": {
-          "r": 21,
-          "g": 21,
-          "b": 21,
+          "r": 0,
+          "g": 0,
+          "b": 0,
           "a": 1
         },
         "hsl": {
           "h": 0,
           "s": 0,
-          "l": 8.235294117647058,
+          "l": 0,
           "a": 1
         },
         "hsv": {
           "h": 0,
           "s": 0,
-          "v": 0.08235294117647059,
+          "v": 0,
           "a": 1
         },
         "isLight": false
       },
-      "value": "#151515",
-      "filePath": "tokens/color/icon.yml",
-      "isSource": true,
-      "original": {
-        "$value": "{color.gray.95}",
-        "attributes": {
-          "category": "icon",
-          "type": "color"
-        },
-        "value": "{color.gray.95}"
-      },
-      "name": "rh-color-icon-secondary-on-light",
       "path": [
         "color",
-        "icon",
-        "secondary",
-        "on-light"
-      ],
-      "$type": "color"
+        "interactive",
+        "primary",
+        "hover",
+        "_"
+      ]
     }
   ],
   [
-    "--rh-color-icon-secondary-on-dark",
+    "--rh-color-interactive-primary-hover-on-light",
     {
-      "$value": "#ffffff",
+      "$value": "#003366",
+      "$description": "Primary interactive - hover (Light theme)",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.blue.70}",
+        "$description": "Primary interactive - hover (Light theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-primary-hover-on-light",
       "attributes": {
-        "category": "icon",
-        "type": "color",
-        "item": "secondary",
-        "subitem": "on-dark",
-        "hex": "ffffff",
+        "category": "color",
+        "type": "interactive",
+        "item": "primary",
+        "subitem": "hover",
+        "state": "on-light",
+        "hex": "003366",
         "rgb": {
-          "r": 255,
-          "g": 255,
+          "r": 0,
+          "g": 51,
+          "b": 102,
+          "a": 1
+        },
+        "hsl": {
+          "h": 210,
+          "s": 100,
+          "l": 20,
+          "a": 1
+        },
+        "hsv": {
+          "h": 210,
+          "s": 1,
+          "v": 0.4,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "interactive",
+        "primary",
+        "hover",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-primary-hover-on-dark",
+    {
+      "$value": "#b9dafc",
+      "$description": "Primary interactive - hover (Dark theme)",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.blue.20}",
+        "$description": "Primary interactive - hover (Dark theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-primary-hover-on-dark",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "primary",
+        "subitem": "hover",
+        "state": "on-dark",
+        "hex": "b9dafc",
+        "rgb": {
+          "r": 185,
+          "g": 218,
+          "b": 252,
+          "a": 1
+        },
+        "hsl": {
+          "h": 210.44776119402988,
+          "s": 91.78082191780825,
+          "l": 85.68627450980392,
+          "a": 1
+        },
+        "hsv": {
+          "h": 210.44776119402988,
+          "s": 0.2658730158730159,
+          "v": 0.9882352941176471,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "interactive",
+        "primary",
+        "hover",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-primary-active",
+    {
+      "$value": "",
+      "$description": "Responsive `interactive-primary` (e.g. link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-primary-active-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-primary-active-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.interactive.primary.active.on-light}",
+          "{color.interactive.primary.active.on-dark}"
+        ],
+        "$description": "Responsive `interactive-primary` (e.g. link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-primary-active-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-primary-active-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-primary-active",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "primary",
+        "subitem": "active",
+        "state": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "interactive",
+        "primary",
+        "active",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-primary-active-on-light",
+    {
+      "$value": "#003366",
+      "$description": "Primary interactive - active (Light theme)",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.blue.70}",
+        "$description": "Primary interactive - active (Light theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-primary-active-on-light",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "primary",
+        "subitem": "active",
+        "state": "on-light",
+        "hex": "003366",
+        "rgb": {
+          "r": 0,
+          "g": 51,
+          "b": 102,
+          "a": 1
+        },
+        "hsl": {
+          "h": 210,
+          "s": 100,
+          "l": 20,
+          "a": 1
+        },
+        "hsv": {
+          "h": 210,
+          "s": 1,
+          "v": 0.4,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "interactive",
+        "primary",
+        "active",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-primary-active-on-dark",
+    {
+      "$value": "#b9dafc",
+      "$description": "Primary interactive - active (Dark theme)",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.blue.20}",
+        "$description": "Primary interactive - active (Dark theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-primary-active-on-dark",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "primary",
+        "subitem": "active",
+        "state": "on-dark",
+        "hex": "b9dafc",
+        "rgb": {
+          "r": 185,
+          "g": 218,
+          "b": 252,
+          "a": 1
+        },
+        "hsl": {
+          "h": 210.44776119402988,
+          "s": 91.78082191780825,
+          "l": 85.68627450980392,
+          "a": 1
+        },
+        "hsv": {
+          "h": 210.44776119402988,
+          "s": 0.2658730158730159,
+          "v": 0.9882352941176471,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "interactive",
+        "primary",
+        "active",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-primary-focus",
+    {
+      "$value": "",
+      "$description": "Responsive `interactive-primary` (e.g. link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-primary-focus-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-primary-focus-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.interactive.primary.focus.on-light}",
+          "{color.interactive.primary.focus.on-dark}"
+        ],
+        "$description": "Responsive `interactive-primary` (e.g. link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-primary-focus-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-primary-focus-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-primary-focus",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "primary",
+        "subitem": "focus",
+        "state": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "interactive",
+        "primary",
+        "focus",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-primary-focus-on-light",
+    {
+      "$value": "#003366",
+      "$description": "Primary interactive - focus (Light theme)",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.blue.70}",
+        "$description": "Primary interactive - focus (Light theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-primary-focus-on-light",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "primary",
+        "subitem": "focus",
+        "state": "on-light",
+        "hex": "003366",
+        "rgb": {
+          "r": 0,
+          "g": 51,
+          "b": 102,
+          "a": 1
+        },
+        "hsl": {
+          "h": 210,
+          "s": 100,
+          "l": 20,
+          "a": 1
+        },
+        "hsv": {
+          "h": 210,
+          "s": 1,
+          "v": 0.4,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "interactive",
+        "primary",
+        "focus",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-primary-focus-on-dark",
+    {
+      "$value": "#b9dafc",
+      "$description": "Primary interactive - focus (Dark theme)",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.blue.20}",
+        "$description": "Primary interactive - focus (Dark theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-primary-focus-on-dark",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "primary",
+        "subitem": "focus",
+        "state": "on-dark",
+        "hex": "b9dafc",
+        "rgb": {
+          "r": 185,
+          "g": 218,
+          "b": 252,
+          "a": 1
+        },
+        "hsl": {
+          "h": 210.44776119402988,
+          "s": 91.78082191780825,
+          "l": 85.68627450980392,
+          "a": 1
+        },
+        "hsv": {
+          "h": 210.44776119402988,
+          "s": 0.2658730158730159,
+          "v": 0.9882352941176471,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "interactive",
+        "primary",
+        "focus",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-primary-visited-default",
+    {
+      "$value": "",
+      "$description": "Responsive `interactive-primary-visited` (e.g. visited link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-primary-visited-default-on-light` on a themable container with a light color palette and `--rh-color-interactive-primary-visited-default-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.interactive.primary.visited.default.on-light}",
+          "{color.interactive.primary.visited.default.on-dark}"
+        ],
+        "$description": "Responsive `interactive-primary-visited` (e.g. visited link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-primary-visited-default-on-light` on a themable container with a light color palette and `--rh-color-interactive-primary-visited-default-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-primary-visited-default",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "primary",
+        "subitem": "visited",
+        "state": "default",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "interactive",
+        "primary",
+        "visited",
+        "default",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-primary-visited-default-on-light",
+    {
+      "$value": "#5e40be",
+      "$description": "Primary interactive visited - default (Light theme)",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.purple.50}",
+        "$description": "Primary interactive visited - default (Light theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-primary-visited-default-on-light",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "primary",
+        "subitem": "visited",
+        "state": "default",
+        "hex": "5e40be",
+        "rgb": {
+          "r": 94,
+          "g": 64,
+          "b": 190,
+          "a": 1
+        },
+        "hsl": {
+          "h": 254.2857142857143,
+          "s": 49.60629921259843,
+          "l": 49.80392156862745,
+          "a": 1
+        },
+        "hsv": {
+          "h": 254.2857142857143,
+          "s": 0.6631578947368422,
+          "v": 0.7450980392156863,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "interactive",
+        "primary",
+        "visited",
+        "default",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-primary-visited-default-on-dark",
+    {
+      "$value": "#b6a6e9",
+      "$description": "Primary interactive visited - default (Dark theme)",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.purple.30}",
+        "$description": "Primary interactive visited - default (Dark theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-primary-visited-default-on-dark",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "primary",
+        "subitem": "visited",
+        "state": "default",
+        "hex": "b6a6e9",
+        "rgb": {
+          "r": 182,
+          "g": 166,
+          "b": 233,
+          "a": 1
+        },
+        "hsl": {
+          "h": 254.32835820895522,
+          "s": 60.36036036036033,
+          "l": 78.23529411764706,
+          "a": 1
+        },
+        "hsv": {
+          "h": 254.32835820895522,
+          "s": 0.2875536480686695,
+          "v": 0.9137254901960784,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "interactive",
+        "primary",
+        "visited",
+        "default",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-primary-visited-hover",
+    {
+      "$value": "",
+      "$description": "Responsive `interactive-primary-visited` (e.g. visited link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-primary-visited-hover-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-primary-visited-hover-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.interactive.primary.visited.hover.on-light}",
+          "{color.interactive.primary.visited.hover.on-dark}"
+        ],
+        "$description": "Responsive `interactive-primary-visited` (e.g. visited link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-primary-visited-hover-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-primary-visited-hover-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-primary-visited-hover",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "primary",
+        "subitem": "visited",
+        "state": "hover",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "interactive",
+        "primary",
+        "visited",
+        "hover",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-primary-visited-hover-on-light",
+    {
+      "$value": "#21134d",
+      "$description": "Primary interactive visited - hover (Light theme)",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.purple.70}",
+        "$description": "Primary interactive visited - hover (Light theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-primary-visited-hover-on-light",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "primary",
+        "subitem": "visited",
+        "state": "hover",
+        "hex": "21134d",
+        "rgb": {
+          "r": 33,
+          "g": 19,
+          "b": 77,
+          "a": 1
+        },
+        "hsl": {
+          "h": 254.48275862068965,
+          "s": 60.416666666666664,
+          "l": 18.823529411764707,
+          "a": 1
+        },
+        "hsv": {
+          "h": 254.48275862068965,
+          "s": 0.7532467532467532,
+          "v": 0.30196078431372547,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "interactive",
+        "primary",
+        "visited",
+        "hover",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-primary-visited-hover-on-dark",
+    {
+      "$value": "#ece6ff",
+      "$description": "Primary interactive visited - hover (Dark theme)",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.purple.10}",
+        "$description": "Primary interactive visited - hover (Dark theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-primary-visited-hover-on-dark",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "primary",
+        "subitem": "visited",
+        "state": "hover",
+        "hex": "ece6ff",
+        "rgb": {
+          "r": 236,
+          "g": 230,
           "b": 255,
           "a": 1
         },
         "hsl": {
-          "h": 0,
-          "s": 0,
-          "l": 100,
+          "h": 254.4,
+          "s": 100,
+          "l": 95.09803921568627,
           "a": 1
         },
         "hsv": {
-          "h": 0,
-          "s": 0,
+          "h": 254.4,
+          "s": 0.0980392156862745,
           "v": 1,
           "a": 1
         },
         "isLight": true
       },
-      "value": "#ffffff",
-      "filePath": "tokens/color/icon.yml",
-      "isSource": true,
-      "original": {
-        "$value": "{color.white}",
-        "attributes": {
-          "category": "icon",
-          "type": "color"
-        },
-        "value": "{color.white}"
-      },
-      "name": "rh-color-icon-secondary-on-dark",
       "path": [
         "color",
-        "icon",
-        "secondary",
+        "interactive",
+        "primary",
+        "visited",
+        "hover",
         "on-dark"
-      ],
-      "$type": "color"
+      ]
     }
   ],
   [
-    "--rh-color-icon-subtle",
+    "--rh-color-interactive-primary-visited-active",
     {
-      "$value": "#707070",
+      "$value": "",
+      "$description": "Responsive `interactive-primary-visited` (e.g. visited link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-primary-visited-active-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-primary-visited-active-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.interactive.primary.visited.active.on-light}",
+          "{color.interactive.primary.visited.active.on-dark}"
+        ],
+        "$description": "Responsive `interactive-primary-visited` (e.g. visited link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-primary-visited-active-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-primary-visited-active-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-primary-visited-active",
       "attributes": {
-        "category": "icon",
-        "type": "color",
-        "item": "subtle",
-        "subitem": "_",
-        "hex": "707070",
+        "category": "color",
+        "type": "interactive",
+        "item": "primary",
+        "subitem": "visited",
+        "state": "active",
+        "hex": "000000",
         "rgb": {
-          "r": 112,
-          "g": 112,
-          "b": 112,
+          "r": 0,
+          "g": 0,
+          "b": 0,
           "a": 1
         },
         "hsl": {
           "h": 0,
           "s": 0,
-          "l": 43.92156862745098,
+          "l": 0,
           "a": 1
         },
         "hsv": {
           "h": 0,
           "s": 0,
-          "v": 0.4392156862745098,
+          "v": 0,
           "a": 1
         },
         "isLight": false
       },
-      "value": "#707070",
-      "filePath": "tokens/color/icon.yml",
-      "isSource": true,
-      "original": {
-        "$value": "{color.gray.50}",
-        "attributes": {
-          "category": "icon",
-          "type": "color"
-        },
-        "value": "{color.gray.50}"
-      },
-      "name": "rh-color-icon-subtle",
       "path": [
         "color",
-        "icon",
-        "subtle",
+        "interactive",
+        "primary",
+        "visited",
+        "active",
         "_"
-      ],
-      "$type": "color"
+      ]
     }
   ],
   [
-    "--rh-color-icon-subtle-hover",
+    "--rh-color-interactive-primary-visited-active-on-light",
     {
-      "$value": "#a3a3a3",
+      "$value": "#21134d",
+      "$description": "Primary interactive visited - active (Light theme)",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.purple.70}",
+        "$description": "Primary interactive visited - active (Light theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-primary-visited-active-on-light",
       "attributes": {
-        "category": "icon",
-        "type": "color",
-        "item": "subtle",
-        "subitem": "hover",
-        "hex": "a3a3a3",
+        "category": "color",
+        "type": "interactive",
+        "item": "primary",
+        "subitem": "visited",
+        "state": "active",
+        "hex": "21134d",
         "rgb": {
-          "r": 163,
-          "g": 163,
-          "b": 163,
+          "r": 33,
+          "g": 19,
+          "b": 77,
+          "a": 1
+        },
+        "hsl": {
+          "h": 254.48275862068965,
+          "s": 60.416666666666664,
+          "l": 18.823529411764707,
+          "a": 1
+        },
+        "hsv": {
+          "h": 254.48275862068965,
+          "s": 0.7532467532467532,
+          "v": 0.30196078431372547,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "interactive",
+        "primary",
+        "visited",
+        "active",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-primary-visited-active-on-dark",
+    {
+      "$value": "#ece6ff",
+      "$description": "Primary interactive visited - active (Dark theme)",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.purple.10}",
+        "$description": "Primary interactive visited - active (Dark theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-primary-visited-active-on-dark",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "primary",
+        "subitem": "visited",
+        "state": "active",
+        "hex": "ece6ff",
+        "rgb": {
+          "r": 236,
+          "g": 230,
+          "b": 255,
+          "a": 1
+        },
+        "hsl": {
+          "h": 254.4,
+          "s": 100,
+          "l": 95.09803921568627,
+          "a": 1
+        },
+        "hsv": {
+          "h": 254.4,
+          "s": 0.0980392156862745,
+          "v": 1,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "interactive",
+        "primary",
+        "visited",
+        "active",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-primary-visited-focus",
+    {
+      "$value": "",
+      "$description": "Responsive `interactive-primary-visited` (e.g. visited link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-primary-visited-focus-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-primary-visited-focus-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.interactive.primary.visited.focus.on-light}",
+          "{color.interactive.primary.visited.focus.on-dark}"
+        ],
+        "$description": "Responsive `interactive-primary-visited` (e.g. visited link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-primary-visited-focus-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-primary-visited-focus-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-primary-visited-focus",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "primary",
+        "subitem": "visited",
+        "state": "focus",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
           "a": 1
         },
         "hsl": {
           "h": 0,
           "s": 0,
-          "l": 63.921568627450974,
+          "l": 0,
           "a": 1
         },
         "hsv": {
           "h": 0,
           "s": 0,
-          "v": 0.6392156862745098,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "interactive",
+        "primary",
+        "visited",
+        "focus",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-primary-visited-focus-on-light",
+    {
+      "$value": "#21134d",
+      "$description": "Primary interactive visited - focus (Light theme)",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.purple.70}",
+        "$description": "Primary interactive visited - focus (Light theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-primary-visited-focus-on-light",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "primary",
+        "subitem": "visited",
+        "state": "focus",
+        "hex": "21134d",
+        "rgb": {
+          "r": 33,
+          "g": 19,
+          "b": 77,
+          "a": 1
+        },
+        "hsl": {
+          "h": 254.48275862068965,
+          "s": 60.416666666666664,
+          "l": 18.823529411764707,
+          "a": 1
+        },
+        "hsv": {
+          "h": 254.48275862068965,
+          "s": 0.7532467532467532,
+          "v": 0.30196078431372547,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "interactive",
+        "primary",
+        "visited",
+        "focus",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-primary-visited-focus-on-dark",
+    {
+      "$value": "#ece6ff",
+      "$description": "Primary interactive visited - focus (Dark theme)",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.purple.10}",
+        "$description": "Primary interactive visited - focus (Dark theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-primary-visited-focus-on-dark",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "primary",
+        "subitem": "visited",
+        "state": "focus",
+        "hex": "ece6ff",
+        "rgb": {
+          "r": 236,
+          "g": 230,
+          "b": 255,
+          "a": 1
+        },
+        "hsl": {
+          "h": 254.4,
+          "s": 100,
+          "l": 95.09803921568627,
+          "a": 1
+        },
+        "hsv": {
+          "h": 254.4,
+          "s": 0.0980392156862745,
+          "v": 1,
           "a": 1
         },
         "isLight": true
       },
-      "value": "#a3a3a3",
-      "filePath": "tokens/color/icon.yml",
-      "isSource": true,
-      "original": {
-        "$value": "{color.gray.40}",
-        "attributes": {
-          "category": "icon",
-          "type": "color"
-        },
-        "value": "{color.gray.40}"
-      },
-      "name": "rh-color-icon-subtle-hover",
       "path": [
         "color",
-        "icon",
-        "subtle",
-        "hover"
-      ],
-      "$type": "color"
+        "interactive",
+        "primary",
+        "visited",
+        "focus",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-secondary-default",
+    {
+      "$value": "",
+      "$description": "Responsive `interactive-secondary` (e.g. link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-secondary-default-on-light` on a themable container with a light color palette and `--rh-color-interactive-secondary-default-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.interactive.secondary.default.on-light}",
+          "{color.interactive.secondary.default.on-dark}"
+        ],
+        "$description": "Responsive `interactive-secondary` (e.g. link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-secondary-default-on-light` on a themable container with a light color palette and `--rh-color-interactive-secondary-default-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-secondary-default",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "secondary",
+        "subitem": "default",
+        "state": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "interactive",
+        "secondary",
+        "default",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-secondary-default-on-light",
+    {
+      "$value": "#4d4d4d",
+      "$description": "Secondary interactive - default (Light theme)",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.gray.60}",
+        "$description": "Secondary interactive - default (Light theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-secondary-default-on-light",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "secondary",
+        "subitem": "default",
+        "state": "on-light",
+        "hex": "4d4d4d",
+        "rgb": {
+          "r": 77,
+          "g": 77,
+          "b": 77,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 30.19607843137255,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.30196078431372547,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "interactive",
+        "secondary",
+        "default",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-secondary-default-on-dark",
+    {
+      "$value": "#c7c7c7",
+      "$description": "Secondary interactive - default (Dark theme)",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.gray.30}",
+        "$description": "Secondary interactive - default (Dark theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-secondary-default-on-dark",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "secondary",
+        "subitem": "default",
+        "state": "on-dark",
+        "hex": "c7c7c7",
+        "rgb": {
+          "r": 199,
+          "g": 199,
+          "b": 199,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 78.03921568627452,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.7803921568627451,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "interactive",
+        "secondary",
+        "default",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-secondary-hover",
+    {
+      "$value": "",
+      "$description": "Responsive `interactive-secondary` (e.g. link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-secondary-hover-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-secondary-hover-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.interactive.secondary.hover.on-light}",
+          "{color.interactive.secondary.hover.on-dark}"
+        ],
+        "$description": "Responsive `interactive-secondary` (e.g. link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-secondary-hover-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-secondary-hover-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-secondary-hover",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "secondary",
+        "subitem": "hover",
+        "state": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "interactive",
+        "secondary",
+        "hover",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-secondary-hover-on-light",
+    {
+      "$value": "#4d4d4d",
+      "$description": "Secondary interactive - hover (Light theme)",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.gray.60}",
+        "$description": "Secondary interactive - hover (Light theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-secondary-hover-on-light",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "secondary",
+        "subitem": "hover",
+        "state": "on-light",
+        "hex": "4d4d4d",
+        "rgb": {
+          "r": 77,
+          "g": 77,
+          "b": 77,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 30.19607843137255,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.30196078431372547,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "interactive",
+        "secondary",
+        "hover",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-secondary-hover-on-dark",
+    {
+      "$value": "#c7c7c7",
+      "$description": "Secondary interactive - hover (Dark theme)",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.gray.30}",
+        "$description": "Secondary interactive - hover (Dark theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-secondary-hover-on-dark",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "secondary",
+        "subitem": "hover",
+        "state": "on-dark",
+        "hex": "c7c7c7",
+        "rgb": {
+          "r": 199,
+          "g": 199,
+          "b": 199,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 78.03921568627452,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.7803921568627451,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "interactive",
+        "secondary",
+        "hover",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-secondary-active",
+    {
+      "$value": "",
+      "$description": "Responsive `interactive-secondary` (e.g. link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-secondary-active-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-secondary-active-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.interactive.secondary.active.on-light}",
+          "{color.interactive.secondary.active.on-dark}"
+        ],
+        "$description": "Responsive `interactive-secondary` (e.g. link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-secondary-active-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-secondary-active-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-secondary-active",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "secondary",
+        "subitem": "active",
+        "state": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "interactive",
+        "secondary",
+        "active",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-secondary-active-on-light",
+    {
+      "$value": "#4d4d4d",
+      "$description": "Secondary interactive - active (Light theme)",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.gray.60}",
+        "$description": "Secondary interactive - active (Light theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-secondary-active-on-light",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "secondary",
+        "subitem": "active",
+        "state": "on-light",
+        "hex": "4d4d4d",
+        "rgb": {
+          "r": 77,
+          "g": 77,
+          "b": 77,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 30.19607843137255,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.30196078431372547,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "interactive",
+        "secondary",
+        "active",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-secondary-active-on-dark",
+    {
+      "$value": "#c7c7c7",
+      "$description": "Secondary interactive - active (Dark theme)",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.gray.30}",
+        "$description": "Secondary interactive - active (Dark theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-secondary-active-on-dark",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "secondary",
+        "subitem": "active",
+        "state": "on-dark",
+        "hex": "c7c7c7",
+        "rgb": {
+          "r": 199,
+          "g": 199,
+          "b": 199,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 78.03921568627452,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.7803921568627451,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "interactive",
+        "secondary",
+        "active",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-secondary-focus",
+    {
+      "$value": "",
+      "$description": "Responsive `interactive-secondary` (e.g. link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-secondary-focus-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-secondary-focus-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.interactive.secondary.focus.on-light}",
+          "{color.interactive.secondary.focus.on-dark}"
+        ],
+        "$description": "Responsive `interactive-secondary` (e.g. link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-secondary-focus-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-secondary-focus-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-secondary-focus",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "secondary",
+        "subitem": "focus",
+        "state": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "interactive",
+        "secondary",
+        "focus",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-secondary-focus-on-light",
+    {
+      "$value": "#4d4d4d",
+      "$description": "Secondary interactive - focus (Light theme)",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.gray.60}",
+        "$description": "Secondary interactive - focus (Light theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-secondary-focus-on-light",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "secondary",
+        "subitem": "focus",
+        "state": "on-light",
+        "hex": "4d4d4d",
+        "rgb": {
+          "r": 77,
+          "g": 77,
+          "b": 77,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 30.19607843137255,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.30196078431372547,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "interactive",
+        "secondary",
+        "focus",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-secondary-focus-on-dark",
+    {
+      "$value": "#c7c7c7",
+      "$description": "Secondary interactive - focus (Dark theme)",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.gray.30}",
+        "$description": "Secondary interactive - focus (Dark theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-secondary-focus-on-dark",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "secondary",
+        "subitem": "focus",
+        "state": "on-dark",
+        "hex": "c7c7c7",
+        "rgb": {
+          "r": 199,
+          "g": 199,
+          "b": 199,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 78.03921568627452,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.7803921568627451,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "interactive",
+        "secondary",
+        "focus",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-secondary-visited-default",
+    {
+      "$value": "",
+      "$description": "Responsive `interactive-secondary-visited` (e.g. visited link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-secondary-visited-default-on-light` on a themable container with a light color palette and `--rh-color-interactive-secondary-visited-default-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.interactive.secondary.visited.default.on-light}",
+          "{color.interactive.secondary.visited.default.on-dark}"
+        ],
+        "$description": "Responsive `interactive-secondary-visited` (e.g. visited link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-secondary-visited-default-on-light` on a themable container with a light color palette and `--rh-color-interactive-secondary-visited-default-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-secondary-visited-default",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "secondary",
+        "subitem": "visited",
+        "state": "default",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "interactive",
+        "secondary",
+        "visited",
+        "default",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-secondary-visited-default-on-light",
+    {
+      "$value": "#4d4d4d",
+      "$description": "Secondary interactive visited - default (Light theme)",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.gray.60}",
+        "$description": "Secondary interactive visited - default (Light theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-secondary-visited-default-on-light",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "secondary",
+        "subitem": "visited",
+        "state": "default",
+        "hex": "4d4d4d",
+        "rgb": {
+          "r": 77,
+          "g": 77,
+          "b": 77,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 30.19607843137255,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.30196078431372547,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "interactive",
+        "secondary",
+        "visited",
+        "default",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-secondary-visited-default-on-dark",
+    {
+      "$value": "#c7c7c7",
+      "$description": "Secondary interactive visited - default (Dark theme)",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.gray.30}",
+        "$description": "Secondary interactive visited - default (Dark theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-secondary-visited-default-on-dark",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "secondary",
+        "subitem": "visited",
+        "state": "default",
+        "hex": "c7c7c7",
+        "rgb": {
+          "r": 199,
+          "g": 199,
+          "b": 199,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 78.03921568627452,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.7803921568627451,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "interactive",
+        "secondary",
+        "visited",
+        "default",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-secondary-visited-hover",
+    {
+      "$value": "",
+      "$description": "Responsive `interactive-secondary-visited` (e.g. visited link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-secondary-visited-hover-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-secondary-visited-hover-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.interactive.secondary.visited.hover.on-light}",
+          "{color.interactive.secondary.visited.hover.on-dark}"
+        ],
+        "$description": "Responsive `interactive-secondary-visited` (e.g. visited link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-secondary-visited-hover-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-secondary-visited-hover-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-secondary-visited-hover",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "secondary",
+        "subitem": "visited",
+        "state": "hover",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "interactive",
+        "secondary",
+        "visited",
+        "hover",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-secondary-visited-hover-on-light",
+    {
+      "$value": "#4d4d4d",
+      "$description": "Secondary interactive visited - hover (Light theme)",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.gray.60}",
+        "$description": "Secondary interactive visited - hover (Light theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-secondary-visited-hover-on-light",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "secondary",
+        "subitem": "visited",
+        "state": "hover",
+        "hex": "4d4d4d",
+        "rgb": {
+          "r": 77,
+          "g": 77,
+          "b": 77,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 30.19607843137255,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.30196078431372547,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "interactive",
+        "secondary",
+        "visited",
+        "hover",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-secondary-visited-hover-on-dark",
+    {
+      "$value": "#c7c7c7",
+      "$description": "Secondary interactive visited - hover (Dark theme)",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.gray.30}",
+        "$description": "Secondary interactive visited - hover (Dark theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-secondary-visited-hover-on-dark",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "secondary",
+        "subitem": "visited",
+        "state": "hover",
+        "hex": "c7c7c7",
+        "rgb": {
+          "r": 199,
+          "g": 199,
+          "b": 199,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 78.03921568627452,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.7803921568627451,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "interactive",
+        "secondary",
+        "visited",
+        "hover",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-secondary-visited-active",
+    {
+      "$value": "",
+      "$description": "Responsive `interactive-secondary-visited` (e.g. visited link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-secondary-visited-active-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-secondary-visited-active-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.interactive.secondary.visited.active.on-light}",
+          "{color.interactive.secondary.visited.active.on-dark}"
+        ],
+        "$description": "Responsive `interactive-secondary-visited` (e.g. visited link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-secondary-visited-active-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-secondary-visited-active-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-secondary-visited-active",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "secondary",
+        "subitem": "visited",
+        "state": "active",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "interactive",
+        "secondary",
+        "visited",
+        "active",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-secondary-visited-active-on-light",
+    {
+      "$value": "#4d4d4d",
+      "$description": "Secondary interactive visited - active (Light theme)",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.gray.60}",
+        "$description": "Secondary interactive visited - active (Light theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-secondary-visited-active-on-light",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "secondary",
+        "subitem": "visited",
+        "state": "active",
+        "hex": "4d4d4d",
+        "rgb": {
+          "r": 77,
+          "g": 77,
+          "b": 77,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 30.19607843137255,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.30196078431372547,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "interactive",
+        "secondary",
+        "visited",
+        "active",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-secondary-visited-active-on-dark",
+    {
+      "$value": "#c7c7c7",
+      "$description": "Secondary interactive visited - active (Dark theme)",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.gray.30}",
+        "$description": "Secondary interactive visited - active (Dark theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-secondary-visited-active-on-dark",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "secondary",
+        "subitem": "visited",
+        "state": "active",
+        "hex": "c7c7c7",
+        "rgb": {
+          "r": 199,
+          "g": 199,
+          "b": 199,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 78.03921568627452,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.7803921568627451,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "interactive",
+        "secondary",
+        "visited",
+        "active",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-secondary-visited-focus",
+    {
+      "$value": "",
+      "$description": "Responsive `interactive-secondary-visited` (e.g. visited link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-secondary-visited-focus-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-secondary-visited-focus-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.interactive.secondary.visited.focus.on-light}",
+          "{color.interactive.secondary.visited.focus.on-dark}"
+        ],
+        "$description": "Responsive `interactive-secondary-visited` (e.g. visited link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-secondary-visited-focus-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-secondary-visited-focus-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-secondary-visited-focus",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "secondary",
+        "subitem": "visited",
+        "state": "focus",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "interactive",
+        "secondary",
+        "visited",
+        "focus",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-secondary-visited-focus-on-light",
+    {
+      "$value": "#4d4d4d",
+      "$description": "Secondary interactive visited - focus (Light theme)",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.gray.60}",
+        "$description": "Secondary interactive visited - focus (Light theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-secondary-visited-focus-on-light",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "secondary",
+        "subitem": "visited",
+        "state": "focus",
+        "hex": "4d4d4d",
+        "rgb": {
+          "r": 77,
+          "g": 77,
+          "b": 77,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 30.19607843137255,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.30196078431372547,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "interactive",
+        "secondary",
+        "visited",
+        "focus",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-interactive-secondary-visited-focus-on-dark",
+    {
+      "$value": "#c7c7c7",
+      "$description": "Secondary interactive visited - focus (Dark theme)",
+      "filePath": "tokens/color/interactive.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.gray.30}",
+        "$description": "Secondary interactive visited - focus (Dark theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-interactive-secondary-visited-focus-on-dark",
+      "attributes": {
+        "category": "color",
+        "type": "interactive",
+        "item": "secondary",
+        "subitem": "visited",
+        "state": "focus",
+        "hex": "c7c7c7",
+        "rgb": {
+          "r": 199,
+          "g": 199,
+          "b": 199,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 78.03921568627452,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.7803921568627451,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "interactive",
+        "secondary",
+        "visited",
+        "focus",
+        "on-dark"
+      ]
     }
   ],
   [
@@ -11353,13 +15850,23 @@ export const tokens = new Map([
     {
       "$value": "#b9dafc",
       "$description": "Inline link hover (dark theme)",
-      "value": "#b9dafc",
+      "$extensions": {
+        "com.redhat.ux": {
+          "deprecated": true
+        }
+      },
       "filePath": "tokens/color/interactive.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
-        "$value": "{color.blue.20}",
+        "$value": "{color.interactive.primary.hover.on-dark}",
         "$description": "Inline link hover (dark theme)",
-        "value": "{color.blue.20}"
+        "$extensions": {
+          "com.redhat.ux": {
+            "deprecated": true
+          }
+        },
+        "$type": "color"
       },
       "name": "rh-color-interactive-blue-lightest",
       "attributes": {
@@ -11393,9 +15900,7 @@ export const tokens = new Map([
         "interactive",
         "blue",
         "lightest"
-      ],
-      "comment": "Inline link hover (dark theme)",
-      "$type": "color"
+      ]
     }
   ],
   [
@@ -11403,13 +15908,23 @@ export const tokens = new Map([
     {
       "$value": "#92c5f9",
       "$description": "Inline link (dark theme)",
-      "value": "#92c5f9",
+      "$extensions": {
+        "com.redhat.ux": {
+          "deprecated": true
+        }
+      },
       "filePath": "tokens/color/interactive.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
-        "$value": "{color.blue.30}",
+        "$value": "{color.interactive.primary.default.on-dark}",
         "$description": "Inline link (dark theme)",
-        "value": "{color.blue.30}"
+        "$extensions": {
+          "com.redhat.ux": {
+            "deprecated": true
+          }
+        },
+        "$type": "color"
       },
       "name": "rh-color-interactive-blue-lighter",
       "attributes": {
@@ -11443,9 +15958,7 @@ export const tokens = new Map([
         "interactive",
         "blue",
         "lighter"
-      ],
-      "comment": "Inline link (dark theme)",
-      "$type": "color"
+      ]
     }
   ],
   [
@@ -11453,13 +15966,23 @@ export const tokens = new Map([
     {
       "$value": "#0066cc",
       "$description": "Inline link (light theme)",
-      "value": "#0066cc",
+      "$extensions": {
+        "com.redhat.ux": {
+          "deprecated": true
+        }
+      },
       "filePath": "tokens/color/interactive.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
-        "$value": "{color.blue.50}",
+        "$value": "{color.interactive.primary.default.on-light}",
         "$description": "Inline link (light theme)",
-        "value": "{color.blue.50}"
+        "$extensions": {
+          "com.redhat.ux": {
+            "deprecated": true
+          }
+        },
+        "$type": "color"
       },
       "name": "rh-color-interactive-blue-darker",
       "attributes": {
@@ -11493,9 +16016,7 @@ export const tokens = new Map([
         "interactive",
         "blue",
         "darker"
-      ],
-      "comment": "Inline link (light theme)",
-      "$type": "color"
+      ]
     }
   ],
   [
@@ -11503,13 +16024,23 @@ export const tokens = new Map([
     {
       "$value": "#003366",
       "$description": "Inline link hover (light theme)",
-      "value": "#003366",
+      "$extensions": {
+        "com.redhat.ux": {
+          "deprecated": true
+        }
+      },
       "filePath": "tokens/color/interactive.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
-        "$value": "{color.blue.70}",
+        "$value": "{color.interactive.primary.hover.on-light}",
         "$description": "Inline link hover (light theme)",
-        "value": "{color.blue.70}"
+        "$extensions": {
+          "com.redhat.ux": {
+            "deprecated": true
+          }
+        },
+        "$type": "color"
       },
       "name": "rh-color-interactive-blue-darkest",
       "attributes": {
@@ -11543,9 +16074,7 @@ export const tokens = new Map([
         "interactive",
         "blue",
         "darkest"
-      ],
-      "comment": "Inline link hover (light theme)",
-      "$type": "color"
+      ]
     }
   ],
   [
@@ -11553,13 +16082,23 @@ export const tokens = new Map([
     {
       "$value": "#ece6ff",
       "$description": "Inline link visited hover (dark theme)",
-      "value": "#ece6ff",
+      "$extensions": {
+        "com.redhat.ux": {
+          "deprecated": true
+        }
+      },
       "filePath": "tokens/color/interactive.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
-        "$value": "{color.purple.10}",
+        "$value": "{color.interactive.primary.visited.hover.on-dark}",
         "$description": "Inline link visited hover (dark theme)",
-        "value": "{color.purple.10}"
+        "$extensions": {
+          "com.redhat.ux": {
+            "deprecated": true
+          }
+        },
+        "$type": "color"
       },
       "name": "rh-color-interactive-purple-lightest",
       "attributes": {
@@ -11593,9 +16132,7 @@ export const tokens = new Map([
         "interactive",
         "purple",
         "lightest"
-      ],
-      "comment": "Inline link visited hover (dark theme)",
-      "$type": "color"
+      ]
     }
   ],
   [
@@ -11603,13 +16140,23 @@ export const tokens = new Map([
     {
       "$value": "#b6a6e9",
       "$description": "Inline link visited (dark theme)",
-      "value": "#b6a6e9",
+      "$extensions": {
+        "com.redhat.ux": {
+          "deprecated": true
+        }
+      },
       "filePath": "tokens/color/interactive.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
-        "$value": "{color.purple.30}",
+        "$value": "{color.interactive.primary.visited.default.on-dark}",
         "$description": "Inline link visited (dark theme)",
-        "value": "{color.purple.30}"
+        "$extensions": {
+          "com.redhat.ux": {
+            "deprecated": true
+          }
+        },
+        "$type": "color"
       },
       "name": "rh-color-interactive-purple-lighter",
       "attributes": {
@@ -11643,9 +16190,7 @@ export const tokens = new Map([
         "interactive",
         "purple",
         "lighter"
-      ],
-      "comment": "Inline link visited (dark theme)",
-      "$type": "color"
+      ]
     }
   ],
   [
@@ -11653,13 +16198,23 @@ export const tokens = new Map([
     {
       "$value": "#5e40be",
       "$description": "Inline link visited (light theme)",
-      "value": "#5e40be",
+      "$extensions": {
+        "com.redhat.ux": {
+          "deprecated": true
+        }
+      },
       "filePath": "tokens/color/interactive.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
-        "$value": "{color.purple.50}",
+        "$value": "{color.interactive.primary.visited.default.on-light}",
         "$description": "Inline link visited (light theme)",
-        "value": "{color.purple.50}"
+        "$extensions": {
+          "com.redhat.ux": {
+            "deprecated": true
+          }
+        },
+        "$type": "color"
       },
       "name": "rh-color-interactive-purple-darker",
       "attributes": {
@@ -11693,23 +16248,31 @@ export const tokens = new Map([
         "interactive",
         "purple",
         "darker"
-      ],
-      "comment": "Inline link visited (light theme)",
-      "$type": "color"
+      ]
     }
   ],
   [
     "--rh-color-interactive-purple-darkest",
     {
-      "$value": "#21134d",
+      "$value": "#ece6ff",
       "$description": "Inline link visited hover (light theme)",
-      "value": "#21134d",
+      "$extensions": {
+        "com.redhat.ux": {
+          "deprecated": true
+        }
+      },
       "filePath": "tokens/color/interactive.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
-        "$value": "{color.purple.70}",
+        "$value": "{color.interactive.primary.visited.hover.on-dark}",
         "$description": "Inline link visited hover (light theme)",
-        "value": "{color.purple.70}"
+        "$extensions": {
+          "com.redhat.ux": {
+            "deprecated": true
+          }
+        },
+        "$type": "color"
       },
       "name": "rh-color-interactive-purple-darkest",
       "attributes": {
@@ -11717,22 +16280,562 @@ export const tokens = new Map([
         "type": "interactive",
         "item": "purple",
         "subitem": "darkest",
-        "hex": "21134d",
+        "hex": "ece6ff",
         "rgb": {
-          "r": 33,
-          "g": 19,
+          "r": 236,
+          "g": 230,
+          "b": 255,
+          "a": 1
+        },
+        "hsl": {
+          "h": 254.4,
+          "s": 100,
+          "l": 95.09803921568627,
+          "a": 1
+        },
+        "hsv": {
+          "h": 254.4,
+          "s": 0.0980392156862745,
+          "v": 1,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "interactive",
+        "purple",
+        "darkest"
+      ]
+    }
+  ],
+  [
+    "--rh-color-status-danger",
+    {
+      "$value": "",
+      "$description": "Responsive `status-danger` color value. Typically read-only – use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-status-danger-on-light` on a themable container with a light color palette and `--rh-color-status-danger-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/status.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.status.danger.on-light}",
+          "{color.status.danger.on-dark}"
+        ],
+        "$description": "Responsive `status-danger` color value. Typically read-only – use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-status-danger-on-light` on a themable container with a light color palette and `--rh-color-status-danger-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-status-danger",
+      "attributes": {
+        "category": "color",
+        "type": "status",
+        "item": "danger",
+        "subitem": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "status",
+        "danger",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-status-danger-on-light",
+    {
+      "$value": "#b1380b",
+      "$description": "Danger status color (light theme)",
+      "filePath": "tokens/color/status.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.red-orange.60}",
+        "$description": "Danger status color (light theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-status-danger-on-light",
+      "attributes": {
+        "category": "color",
+        "type": "status",
+        "item": "danger",
+        "subitem": "on-light",
+        "hex": "b1380b",
+        "rgb": {
+          "r": 177,
+          "g": 56,
+          "b": 11,
+          "a": 1
+        },
+        "hsl": {
+          "h": 16.265060240963855,
+          "s": 88.29787234042554,
+          "l": 36.86274509803921,
+          "a": 1
+        },
+        "hsv": {
+          "h": 16.265060240963855,
+          "s": 0.9378531073446328,
+          "v": 0.6941176470588235,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "status",
+        "danger",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-status-danger-on-dark",
+    {
+      "$value": "#f0561d",
+      "$description": "Danger status color (dark theme)",
+      "filePath": "tokens/color/status.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.red-orange.50}",
+        "$description": "Danger status color (dark theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-status-danger-on-dark",
+      "attributes": {
+        "category": "color",
+        "type": "status",
+        "item": "danger",
+        "subitem": "on-dark",
+        "hex": "f0561d",
+        "rgb": {
+          "r": 240,
+          "g": 86,
+          "b": 29,
+          "a": 1
+        },
+        "hsl": {
+          "h": 16.208530805687207,
+          "s": 87.55186721991701,
+          "l": 52.74509803921569,
+          "a": 1
+        },
+        "hsv": {
+          "h": 16.208530805687207,
+          "s": 0.8791666666666667,
+          "v": 0.9411764705882353,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "status",
+        "danger",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-status-caution",
+    {
+      "$value": "",
+      "$description": "Responsive `status-caution` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-status-caution-on-light` on a themable container with a light color palette and `--rh-color-status-caution-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/status.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.status.caution.on-light}",
+          "{color.status.caution.on-dark}"
+        ],
+        "$description": "Responsive `status-caution` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-status-caution-on-light` on a themable container with a light color palette and `--rh-color-status-caution-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-status-caution",
+      "attributes": {
+        "category": "color",
+        "type": "status",
+        "item": "caution",
+        "subitem": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "status",
+        "caution",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-status-caution-on-light",
+    {
+      "$value": "#ca6c0f",
+      "$description": "Caution status color (light theme)",
+      "filePath": "tokens/color/status.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.orange.50}",
+        "$description": "Caution status color (light theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-status-caution-on-light",
+      "attributes": {
+        "category": "color",
+        "type": "status",
+        "item": "caution",
+        "subitem": "on-light",
+        "hex": "ca6c0f",
+        "rgb": {
+          "r": 202,
+          "g": 108,
+          "b": 15,
+          "a": 1
+        },
+        "hsl": {
+          "h": 29.83957219251337,
+          "s": 86.17511520737327,
+          "l": 42.549019607843135,
+          "a": 1
+        },
+        "hsv": {
+          "h": 29.83957219251337,
+          "s": 0.9257425742574257,
+          "v": 0.792156862745098,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "status",
+        "caution",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-status-caution-on-dark",
+    {
+      "$value": "#f5921b",
+      "$description": "Caution status color (dark theme)",
+      "filePath": "tokens/color/status.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.orange.40}",
+        "$description": "Caution status color (dark theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-status-caution-on-dark",
+      "attributes": {
+        "category": "color",
+        "type": "status",
+        "item": "caution",
+        "subitem": "on-dark",
+        "hex": "f5921b",
+        "rgb": {
+          "r": 245,
+          "g": 146,
+          "b": 27,
+          "a": 1
+        },
+        "hsl": {
+          "h": 32.752293577981646,
+          "s": 91.5966386554622,
+          "l": 53.333333333333336,
+          "a": 1
+        },
+        "hsv": {
+          "h": 32.752293577981646,
+          "s": 0.889795918367347,
+          "v": 0.9607843137254902,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "status",
+        "caution",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-status-warning",
+    {
+      "$value": "",
+      "$description": "Responsive `status-warning` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-status-warning-on-light` on a themable container with a light color palette and `--rh-color-status-warning-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/status.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.status.warning.on-light}",
+          "{color.status.warning.on-dark}"
+        ],
+        "$description": "Responsive `status-warning` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-status-warning-on-light` on a themable container with a light color palette and `--rh-color-status-warning-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-status-warning",
+      "attributes": {
+        "category": "color",
+        "type": "status",
+        "item": "warning",
+        "subitem": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "status",
+        "warning",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-status-warning-on-light",
+    {
+      "$value": "#dca614",
+      "$description": "Warning status color (light theme)",
+      "filePath": "tokens/color/status.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.yellow.40}",
+        "$description": "Warning status color (light theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-status-warning-on-light",
+      "attributes": {
+        "category": "color",
+        "type": "status",
+        "item": "warning",
+        "subitem": "on-light",
+        "hex": "dca614",
+        "rgb": {
+          "r": 220,
+          "g": 166,
+          "b": 20,
+          "a": 1
+        },
+        "hsl": {
+          "h": 43.79999999999999,
+          "s": 83.33333333333334,
+          "l": 47.05882352941176,
+          "a": 1
+        },
+        "hsv": {
+          "h": 43.79999999999999,
+          "s": 0.9090909090909092,
+          "v": 0.8627450980392157,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "status",
+        "warning",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-status-warning-on-dark",
+    {
+      "$value": "#ffcc17",
+      "$description": "Warning status color (dark theme)",
+      "filePath": "tokens/color/status.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.yellow.30}",
+        "$description": "Warning status color (dark theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-status-warning-on-dark",
+      "attributes": {
+        "category": "color",
+        "type": "status",
+        "item": "warning",
+        "subitem": "on-dark",
+        "hex": "ffcc17",
+        "rgb": {
+          "r": 255,
+          "g": 204,
+          "b": 23,
+          "a": 1
+        },
+        "hsl": {
+          "h": 46.81034482758621,
+          "s": 100,
+          "l": 54.509803921568626,
+          "a": 1
+        },
+        "hsv": {
+          "h": 46.81034482758621,
+          "s": 0.9098039215686274,
+          "v": 1,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "status",
+        "warning",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-status-neutral",
+    {
+      "$value": "",
+      "$description": "Responsive `status-neutral` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-status-neutral-on-light` on a themable container with a light color palette and `--rh-color-status-neutral-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/status.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.status.neutral.on-light}",
+          "{color.status.neutral.on-dark}"
+        ],
+        "$description": "Responsive `status-neutral` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-status-neutral-on-light` on a themable container with a light color palette and `--rh-color-status-neutral-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-status-neutral",
+      "attributes": {
+        "category": "color",
+        "type": "status",
+        "item": "neutral",
+        "subitem": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "status",
+        "neutral",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-status-neutral-on-light",
+    {
+      "$value": "#4d4d4d",
+      "$description": "Neutral accent color (light theme)",
+      "filePath": "tokens/color/status.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.gray.60}",
+        "$description": "Neutral accent color (light theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-status-neutral-on-light",
+      "attributes": {
+        "category": "color",
+        "type": "status",
+        "item": "neutral",
+        "subitem": "on-light",
+        "hex": "4d4d4d",
+        "rgb": {
+          "r": 77,
+          "g": 77,
           "b": 77,
           "a": 1
         },
         "hsl": {
-          "h": 254.48275862068965,
-          "s": 60.416666666666664,
-          "l": 18.823529411764707,
+          "h": 0,
+          "s": 0,
+          "l": 30.19607843137255,
           "a": 1
         },
         "hsv": {
-          "h": 254.48275862068965,
-          "s": 0.7532467532467532,
+          "h": 0,
+          "s": 0,
           "v": 0.30196078431372547,
           "a": 1
         },
@@ -11740,12 +16843,552 @@ export const tokens = new Map([
       },
       "path": [
         "color",
-        "interactive",
-        "purple",
-        "darkest"
-      ],
-      "comment": "Inline link visited hover (light theme)",
-      "$type": "color"
+        "status",
+        "neutral",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-status-neutral-on-dark",
+    {
+      "$value": "#c7c7c7",
+      "$description": "Neutral accent color (dark theme)",
+      "filePath": "tokens/color/status.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.gray.30}",
+        "$description": "Neutral accent color (dark theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-status-neutral-on-dark",
+      "attributes": {
+        "category": "color",
+        "type": "status",
+        "item": "neutral",
+        "subitem": "on-dark",
+        "hex": "c7c7c7",
+        "rgb": {
+          "r": 199,
+          "g": 199,
+          "b": 199,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 78.03921568627452,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.7803921568627451,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "status",
+        "neutral",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-status-note",
+    {
+      "$value": "",
+      "$description": "Responsive `status-note` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-status-note-on-light` on a themable container with a light color palette and `--rh-color-status-note-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/status.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.status.note.on-light}",
+          "{color.status.note.on-dark}"
+        ],
+        "$description": "Responsive `status-note` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-status-note-on-light` on a themable container with a light color palette and `--rh-color-status-note-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-status-note",
+      "attributes": {
+        "category": "color",
+        "type": "status",
+        "item": "note",
+        "subitem": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "status",
+        "note",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-status-note-on-light",
+    {
+      "$value": "#5e40be",
+      "$description": "Note/tip status color (light theme)",
+      "filePath": "tokens/color/status.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.status.info.on-light}",
+        "$description": "Note/tip status color (light theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-status-note-on-light",
+      "attributes": {
+        "category": "color",
+        "type": "status",
+        "item": "note",
+        "subitem": "on-light",
+        "hex": "5e40be",
+        "rgb": {
+          "r": 94,
+          "g": 64,
+          "b": 190,
+          "a": 1
+        },
+        "hsl": {
+          "h": 254.2857142857143,
+          "s": 49.60629921259843,
+          "l": 49.80392156862745,
+          "a": 1
+        },
+        "hsv": {
+          "h": 254.2857142857143,
+          "s": 0.6631578947368422,
+          "v": 0.7450980392156863,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "status",
+        "note",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-status-note-on-dark",
+    {
+      "$value": "#b6a6e9",
+      "$description": "Note/tip status color (dark theme)",
+      "filePath": "tokens/color/status.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.status.info.on-dark}",
+        "$description": "Note/tip status color (dark theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-status-note-on-dark",
+      "attributes": {
+        "category": "color",
+        "type": "status",
+        "item": "note",
+        "subitem": "on-dark",
+        "hex": "b6a6e9",
+        "rgb": {
+          "r": 182,
+          "g": 166,
+          "b": 233,
+          "a": 1
+        },
+        "hsl": {
+          "h": 254.32835820895522,
+          "s": 60.36036036036033,
+          "l": 78.23529411764706,
+          "a": 1
+        },
+        "hsv": {
+          "h": 254.32835820895522,
+          "s": 0.2875536480686695,
+          "v": 0.9137254901960784,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "status",
+        "note",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-status-info",
+    {
+      "$value": "",
+      "$description": "Responsive `status-info` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-status-info-on-light` on a themable container with a light color palette and `--rh-color-status-info-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/status.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.status.info.on-light}",
+          "{color.status.info.on-dark}"
+        ],
+        "$description": "Responsive `status-info` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-status-info-on-light` on a themable container with a light color palette and `--rh-color-status-info-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-status-info",
+      "attributes": {
+        "category": "color",
+        "type": "status",
+        "item": "info",
+        "subitem": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "status",
+        "info",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-status-info-on-light",
+    {
+      "$value": "#5e40be",
+      "$description": "Info status color (light theme)",
+      "filePath": "tokens/color/status.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.purple.50}",
+        "$description": "Info status color (light theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-status-info-on-light",
+      "attributes": {
+        "category": "color",
+        "type": "status",
+        "item": "info",
+        "subitem": "on-light",
+        "hex": "5e40be",
+        "rgb": {
+          "r": 94,
+          "g": 64,
+          "b": 190,
+          "a": 1
+        },
+        "hsl": {
+          "h": 254.2857142857143,
+          "s": 49.60629921259843,
+          "l": 49.80392156862745,
+          "a": 1
+        },
+        "hsv": {
+          "h": 254.2857142857143,
+          "s": 0.6631578947368422,
+          "v": 0.7450980392156863,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "status",
+        "info",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-status-info-on-dark",
+    {
+      "$value": "#b6a6e9",
+      "$description": "Info status color (dark theme)",
+      "filePath": "tokens/color/status.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.purple.30}",
+        "$description": "Info status color (dark theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-status-info-on-dark",
+      "attributes": {
+        "category": "color",
+        "type": "status",
+        "item": "info",
+        "subitem": "on-dark",
+        "hex": "b6a6e9",
+        "rgb": {
+          "r": 182,
+          "g": 166,
+          "b": 233,
+          "a": 1
+        },
+        "hsl": {
+          "h": 254.32835820895522,
+          "s": 60.36036036036033,
+          "l": 78.23529411764706,
+          "a": 1
+        },
+        "hsv": {
+          "h": 254.32835820895522,
+          "s": 0.2875536480686695,
+          "v": 0.9137254901960784,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "status",
+        "info",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-status-success",
+    {
+      "$value": "",
+      "$description": "Responsive `status-success` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-status-success-on-light` on a themable container with a light color palette and `--rh-color-status-success-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/status.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.status.success.on-light}",
+          "{color.status.success.on-dark}"
+        ],
+        "$description": "Responsive `status-success` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-status-success-on-light` on a themable container with a light color palette and `--rh-color-status-success-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-status-success",
+      "attributes": {
+        "category": "color",
+        "type": "status",
+        "item": "success",
+        "subitem": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "status",
+        "success",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-status-success-on-light",
+    {
+      "$value": "#3d7317",
+      "$description": "Success status color (light theme)",
+      "filePath": "tokens/color/status.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.green.60}",
+        "$description": "Success status color (light theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-status-success-on-light",
+      "attributes": {
+        "category": "color",
+        "type": "status",
+        "item": "success",
+        "subitem": "on-light",
+        "hex": "3d7317",
+        "rgb": {
+          "r": 61,
+          "g": 115,
+          "b": 23,
+          "a": 1
+        },
+        "hsl": {
+          "h": 95.21739130434783,
+          "s": 66.66666666666667,
+          "l": 27.058823529411764,
+          "a": 1
+        },
+        "hsv": {
+          "h": 95.21739130434783,
+          "s": 0.7999999999999999,
+          "v": 0.45098039215686275,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "status",
+        "success",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-status-success-on-dark",
+    {
+      "$value": "#87bb62",
+      "$description": "Success status color (dark theme)",
+      "filePath": "tokens/color/status.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.green.40}",
+        "$description": "Success status color (dark theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-status-success-on-dark",
+      "attributes": {
+        "category": "color",
+        "type": "status",
+        "item": "success",
+        "subitem": "on-dark",
+        "hex": "87bb62",
+        "rgb": {
+          "r": 135,
+          "g": 187,
+          "b": 98,
+          "a": 1
+        },
+        "hsl": {
+          "h": 95.05617977528091,
+          "s": 39.55555555555555,
+          "l": 55.88235294117647,
+          "a": 1
+        },
+        "hsv": {
+          "h": 95.05617977528091,
+          "s": 0.4759358288770053,
+          "v": 0.7333333333333333,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "status",
+        "success",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-surface",
+    {
+      "$value": "",
+      "$description": "Responsive `surface` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to the surface color corresponding to the surface' color palette.",
+      "filePath": "tokens/color/surface.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.surface.lightest}",
+          "{color.surface.lighter}",
+          "{color.surface.light}",
+          "{color.surface.dark}",
+          "{color.surface.darker}",
+          "{color.surface.darkest}"
+        ],
+        "$description": "Responsive `surface` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to the surface color corresponding to the surface' color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-surface",
+      "attributes": {
+        "category": "color",
+        "type": "surface",
+        "item": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "surface",
+        "_"
+      ]
     }
   ],
   [
@@ -11753,13 +17396,13 @@ export const tokens = new Map([
     {
       "$value": "#ffffff",
       "$description": "Primary surface (light theme)",
-      "value": "#ffffff",
       "filePath": "tokens/color/surface.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "{color.white}",
         "$description": "Primary surface (light theme)",
-        "value": "{color.white}"
+        "$type": "color"
       },
       "name": "rh-color-surface-lightest",
       "attributes": {
@@ -11791,9 +17434,7 @@ export const tokens = new Map([
         "color",
         "surface",
         "lightest"
-      ],
-      "comment": "Primary surface (light theme)",
-      "$type": "color"
+      ]
     }
   ],
   [
@@ -11801,13 +17442,13 @@ export const tokens = new Map([
     {
       "$value": "#f2f2f2",
       "$description": "Tertiary surface (light theme)",
-      "value": "#f2f2f2",
       "filePath": "tokens/color/surface.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "{color.gray.10}",
         "$description": "Tertiary surface (light theme)",
-        "value": "{color.gray.10}"
+        "$type": "color"
       },
       "name": "rh-color-surface-lighter",
       "attributes": {
@@ -11839,9 +17480,7 @@ export const tokens = new Map([
         "color",
         "surface",
         "lighter"
-      ],
-      "comment": "Tertiary surface (light theme)",
-      "$type": "color"
+      ]
     }
   ],
   [
@@ -11849,13 +17488,13 @@ export const tokens = new Map([
     {
       "$value": "#e0e0e0",
       "$description": "Secondary surface (light theme)",
-      "value": "#e0e0e0",
       "filePath": "tokens/color/surface.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "{color.gray.20}",
         "$description": "Secondary surface (light theme)",
-        "value": "{color.gray.20}"
+        "$type": "color"
       },
       "name": "rh-color-surface-light",
       "attributes": {
@@ -11887,9 +17526,7 @@ export const tokens = new Map([
         "color",
         "surface",
         "light"
-      ],
-      "comment": "Secondary surface (light theme)",
-      "$type": "color"
+      ]
     }
   ],
   [
@@ -11897,13 +17534,13 @@ export const tokens = new Map([
     {
       "$value": "#383838",
       "$description": "Tertiary surface (dark theme)",
-      "value": "#383838",
       "filePath": "tokens/color/surface.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "{color.gray.70}",
         "$description": "Tertiary surface (dark theme)",
-        "value": "{color.gray.70}"
+        "$type": "color"
       },
       "name": "rh-color-surface-dark",
       "attributes": {
@@ -11935,9 +17572,7 @@ export const tokens = new Map([
         "color",
         "surface",
         "dark"
-      ],
-      "comment": "Tertiary surface (dark theme)",
-      "$type": "color"
+      ]
     }
   ],
   [
@@ -11945,13 +17580,13 @@ export const tokens = new Map([
     {
       "$value": "#292929",
       "$description": "Alternative tertiary surface (not available for use with context provider)",
-      "value": "#292929",
       "filePath": "tokens/color/surface.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "{color.gray.80}",
         "$description": "Alternative tertiary surface (not available for use with context provider)",
-        "value": "{color.gray.80}"
+        "$type": "color"
       },
       "name": "rh-color-surface-dark-alt",
       "attributes": {
@@ -11983,9 +17618,7 @@ export const tokens = new Map([
         "color",
         "surface",
         "dark-alt"
-      ],
-      "comment": "Alternative tertiary surface (not available for use with context provider)",
-      "$type": "color"
+      ]
     }
   ],
   [
@@ -11993,13 +17626,13 @@ export const tokens = new Map([
     {
       "$value": "#1f1f1f",
       "$description": "Secondary surface (dark theme)",
-      "value": "#1f1f1f",
       "filePath": "tokens/color/surface.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "{color.gray.90}",
         "$description": "Secondary surface (dark theme)",
-        "value": "{color.gray.90}"
+        "$type": "color"
       },
       "name": "rh-color-surface-darker",
       "attributes": {
@@ -12031,9 +17664,7 @@ export const tokens = new Map([
         "color",
         "surface",
         "darker"
-      ],
-      "comment": "Secondary surface (dark theme)",
-      "$type": "color"
+      ]
     }
   ],
   [
@@ -12041,13 +17672,13 @@ export const tokens = new Map([
     {
       "$value": "#151515",
       "$description": "Primary surface (dark theme)",
-      "value": "#151515",
       "filePath": "tokens/color/surface.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "{color.gray.95}",
         "$description": "Primary surface (dark theme)",
-        "value": "{color.gray.95}"
+        "$type": "color"
       },
       "name": "rh-color-surface-darkest",
       "attributes": {
@@ -12079,9 +17710,1129 @@ export const tokens = new Map([
         "color",
         "surface",
         "darkest"
-      ],
-      "comment": "Primary surface (dark theme)",
-      "$type": "color"
+      ]
+    }
+  ],
+  [
+    "--rh-color-surface-status-danger",
+    {
+      "$value": "",
+      "$description": "Responsive `surface-status-danger` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-surface-status-danger-on-light` on a themable container with a light color palette and `--rh-color-surface-status-danger-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/surface.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.surface.status.danger.on-light}",
+          "{color.surface.status.danger.on-dark}"
+        ],
+        "$description": "Responsive `surface-status-danger` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-surface-status-danger-on-light` on a themable container with a light color palette and `--rh-color-surface-status-danger-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-surface-status-danger",
+      "attributes": {
+        "category": "color",
+        "type": "surface",
+        "item": "status",
+        "subitem": "danger",
+        "state": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "surface",
+        "status",
+        "danger",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-surface-status-danger-on-light",
+    {
+      "$value": "#ffe3d9",
+      "$description": "Danger status surface color (light theme)",
+      "filePath": "tokens/color/surface.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.red-orange.10}",
+        "$description": "Danger status surface color (light theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-surface-status-danger-on-light",
+      "attributes": {
+        "category": "color",
+        "type": "surface",
+        "item": "status",
+        "subitem": "danger",
+        "state": "on-light",
+        "hex": "ffe3d9",
+        "rgb": {
+          "r": 255,
+          "g": 227,
+          "b": 217,
+          "a": 1
+        },
+        "hsl": {
+          "h": 15.789473684210513,
+          "s": 100,
+          "l": 92.54901960784314,
+          "a": 1
+        },
+        "hsv": {
+          "h": 15.789473684210513,
+          "s": 0.14901960784313728,
+          "v": 1,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "surface",
+        "status",
+        "danger",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-surface-status-danger-on-dark",
+    {
+      "$value": "#ffe3d9",
+      "$description": "Danger status surface color (dark theme)",
+      "filePath": "tokens/color/surface.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.red-orange.10}",
+        "$description": "Danger status surface color (dark theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-surface-status-danger-on-dark",
+      "attributes": {
+        "category": "color",
+        "type": "surface",
+        "item": "status",
+        "subitem": "danger",
+        "state": "on-dark",
+        "hex": "ffe3d9",
+        "rgb": {
+          "r": 255,
+          "g": 227,
+          "b": 217,
+          "a": 1
+        },
+        "hsl": {
+          "h": 15.789473684210513,
+          "s": 100,
+          "l": 92.54901960784314,
+          "a": 1
+        },
+        "hsv": {
+          "h": 15.789473684210513,
+          "s": 0.14901960784313728,
+          "v": 1,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "surface",
+        "status",
+        "danger",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-surface-status-caution",
+    {
+      "$value": "",
+      "$description": "Responsive `surface-status-caution` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-surface-status-caution-on-light` on a themable container with a light color palette and `--rh-color-surface-status-caution-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/surface.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.surface.status.caution.on-light}",
+          "{color.surface.status.caution.on-dark}"
+        ],
+        "$description": "Responsive `surface-status-caution` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-surface-status-caution-on-light` on a themable container with a light color palette and `--rh-color-surface-status-caution-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-surface-status-caution",
+      "attributes": {
+        "category": "color",
+        "type": "surface",
+        "item": "status",
+        "subitem": "caution",
+        "state": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "surface",
+        "status",
+        "caution",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-surface-status-caution-on-light",
+    {
+      "$value": "#ffe8cc",
+      "$description": "Caution status surface color (light theme)",
+      "filePath": "tokens/color/surface.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.orange.10}",
+        "$description": "Caution status surface color (light theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-surface-status-caution-on-light",
+      "attributes": {
+        "category": "color",
+        "type": "surface",
+        "item": "status",
+        "subitem": "caution",
+        "state": "on-light",
+        "hex": "ffe8cc",
+        "rgb": {
+          "r": 255,
+          "g": 232,
+          "b": 204,
+          "a": 1
+        },
+        "hsl": {
+          "h": 32.941176470588225,
+          "s": 100,
+          "l": 90,
+          "a": 1
+        },
+        "hsv": {
+          "h": 32.941176470588225,
+          "s": 0.19999999999999996,
+          "v": 1,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "surface",
+        "status",
+        "caution",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-surface-status-caution-on-dark",
+    {
+      "$value": "#ffe8cc",
+      "$description": "Caution status surface color (dark theme)",
+      "filePath": "tokens/color/surface.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.orange.10}",
+        "$description": "Caution status surface color (dark theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-surface-status-caution-on-dark",
+      "attributes": {
+        "category": "color",
+        "type": "surface",
+        "item": "status",
+        "subitem": "caution",
+        "state": "on-dark",
+        "hex": "ffe8cc",
+        "rgb": {
+          "r": 255,
+          "g": 232,
+          "b": 204,
+          "a": 1
+        },
+        "hsl": {
+          "h": 32.941176470588225,
+          "s": 100,
+          "l": 90,
+          "a": 1
+        },
+        "hsv": {
+          "h": 32.941176470588225,
+          "s": 0.19999999999999996,
+          "v": 1,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "surface",
+        "status",
+        "caution",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-surface-status-warning",
+    {
+      "$value": "",
+      "$description": "Responsive `surface-status-warning` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-surface-status-warning-on-light` on a themable container with a light color palette and `--rh-color-surface-status-warning-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/surface.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.surface.status.warning.on-light}",
+          "{color.surface.status.warning.on-dark}"
+        ],
+        "$description": "Responsive `surface-status-warning` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-surface-status-warning-on-light` on a themable container with a light color palette and `--rh-color-surface-status-warning-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-surface-status-warning",
+      "attributes": {
+        "category": "color",
+        "type": "surface",
+        "item": "status",
+        "subitem": "warning",
+        "state": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "surface",
+        "status",
+        "warning",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-surface-status-warning-on-light",
+    {
+      "$value": "#fff4cc",
+      "$description": "Warning status surface color (light theme)",
+      "filePath": "tokens/color/surface.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.yellow.10}",
+        "$description": "Warning status surface color (light theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-surface-status-warning-on-light",
+      "attributes": {
+        "category": "color",
+        "type": "surface",
+        "item": "status",
+        "subitem": "warning",
+        "state": "on-light",
+        "hex": "fff4cc",
+        "rgb": {
+          "r": 255,
+          "g": 244,
+          "b": 204,
+          "a": 1
+        },
+        "hsl": {
+          "h": 47.058823529411775,
+          "s": 100,
+          "l": 90,
+          "a": 1
+        },
+        "hsv": {
+          "h": 47.058823529411775,
+          "s": 0.19999999999999996,
+          "v": 1,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "surface",
+        "status",
+        "warning",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-surface-status-warning-on-dark",
+    {
+      "$value": "#73480b",
+      "$description": "Warning status surface color (dark theme)",
+      "filePath": "tokens/color/surface.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.yellow.70}",
+        "$description": "Warning status surface color (dark theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-surface-status-warning-on-dark",
+      "attributes": {
+        "category": "color",
+        "type": "surface",
+        "item": "status",
+        "subitem": "warning",
+        "state": "on-dark",
+        "hex": "73480b",
+        "rgb": {
+          "r": 115,
+          "g": 72,
+          "b": 11,
+          "a": 1
+        },
+        "hsl": {
+          "h": 35.192307692307686,
+          "s": 82.53968253968253,
+          "l": 24.705882352941178,
+          "a": 1
+        },
+        "hsv": {
+          "h": 35.192307692307686,
+          "s": 0.9043478260869565,
+          "v": 0.45098039215686275,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "surface",
+        "status",
+        "warning",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-surface-status-default",
+    {
+      "$value": "",
+      "$description": "Responsive `surface-status-default` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-surface-status-default-on-light` on a themable container with a light color palette and `--rh-color-surface-status-default-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/surface.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.surface.status.default.on-light}",
+          "{color.surface.status.default.on-dark}"
+        ],
+        "$description": "Responsive `surface-status-default` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-surface-status-default-on-light` on a themable container with a light color palette and `--rh-color-surface-status-default-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-surface-status-default",
+      "attributes": {
+        "category": "color",
+        "type": "surface",
+        "item": "status",
+        "subitem": "default",
+        "state": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "surface",
+        "status",
+        "default",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-surface-status-default-on-light",
+    {
+      "$value": "#f2f2f2",
+      "$description": "Default status surface color (light theme)",
+      "filePath": "tokens/color/surface.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.surface.status.neutral.on-light}",
+        "$description": "Default status surface color (light theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-surface-status-default-on-light",
+      "attributes": {
+        "category": "color",
+        "type": "surface",
+        "item": "status",
+        "subitem": "default",
+        "state": "on-light",
+        "hex": "f2f2f2",
+        "rgb": {
+          "r": 242,
+          "g": 242,
+          "b": 242,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 94.90196078431372,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.9490196078431372,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "surface",
+        "status",
+        "default",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-surface-status-default-on-dark",
+    {
+      "$value": "#f2f2f2",
+      "$description": "Default status surface color (dark theme)",
+      "filePath": "tokens/color/surface.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.surface.status.neutral.on-light}",
+        "$description": "Default status surface color (dark theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-surface-status-default-on-dark",
+      "attributes": {
+        "category": "color",
+        "type": "surface",
+        "item": "status",
+        "subitem": "default",
+        "state": "on-dark",
+        "hex": "f2f2f2",
+        "rgb": {
+          "r": 242,
+          "g": 242,
+          "b": 242,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 94.90196078431372,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.9490196078431372,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "surface",
+        "status",
+        "default",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-surface-status-neutral",
+    {
+      "$value": "",
+      "$description": "Responsive `surface-status-neutral` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-surface-status-neutral-on-light` on a themable container with a light color palette and `--rh-color-surface-status-neutral-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/surface.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.surface.status.neutral.on-light}",
+          "{color.surface.status.neutral.on-dark}"
+        ],
+        "$description": "Responsive `surface-status-neutral` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-surface-status-neutral-on-light` on a themable container with a light color palette and `--rh-color-surface-status-neutral-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-surface-status-neutral",
+      "attributes": {
+        "category": "color",
+        "type": "surface",
+        "item": "status",
+        "subitem": "neutral",
+        "state": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "surface",
+        "status",
+        "neutral",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-surface-status-neutral-on-light",
+    {
+      "$value": "#f2f2f2",
+      "$description": "Neutral status surface color (light theme)",
+      "filePath": "tokens/color/surface.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.gray.10}",
+        "$description": "Neutral status surface color (light theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-surface-status-neutral-on-light",
+      "attributes": {
+        "category": "color",
+        "type": "surface",
+        "item": "status",
+        "subitem": "neutral",
+        "state": "on-light",
+        "hex": "f2f2f2",
+        "rgb": {
+          "r": 242,
+          "g": 242,
+          "b": 242,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 94.90196078431372,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.9490196078431372,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "surface",
+        "status",
+        "neutral",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-surface-status-neutral-on-dark",
+    {
+      "$value": "#f2f2f2",
+      "$description": "Neutral status surface color (dark theme)",
+      "filePath": "tokens/color/surface.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.gray.10}",
+        "$description": "Neutral status surface color (dark theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-surface-status-neutral-on-dark",
+      "attributes": {
+        "category": "color",
+        "type": "surface",
+        "item": "status",
+        "subitem": "neutral",
+        "state": "on-dark",
+        "hex": "f2f2f2",
+        "rgb": {
+          "r": 242,
+          "g": 242,
+          "b": 242,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 94.90196078431372,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0.9490196078431372,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "surface",
+        "status",
+        "neutral",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-surface-status-info",
+    {
+      "$value": "",
+      "$description": "Responsive `surface-status-info` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-surface-status-info-on-light` on a themable container with a light color palette and `--rh-color-surface-status-info-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/surface.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.surface.status.info.on-light}",
+          "{color.surface.status.info.on-dark}"
+        ],
+        "$description": "Responsive `surface-status-info` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-surface-status-info-on-light` on a themable container with a light color palette and `--rh-color-surface-status-info-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-surface-status-info",
+      "attributes": {
+        "category": "color",
+        "type": "surface",
+        "item": "status",
+        "subitem": "info",
+        "state": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "surface",
+        "status",
+        "info",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-surface-status-info-on-light",
+    {
+      "$value": "#ece6ff",
+      "$description": "Info status surface color (light theme)",
+      "filePath": "tokens/color/surface.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.purple.10}",
+        "$description": "Info status surface color (light theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-surface-status-info-on-light",
+      "attributes": {
+        "category": "color",
+        "type": "surface",
+        "item": "status",
+        "subitem": "info",
+        "state": "on-light",
+        "hex": "ece6ff",
+        "rgb": {
+          "r": 236,
+          "g": 230,
+          "b": 255,
+          "a": 1
+        },
+        "hsl": {
+          "h": 254.4,
+          "s": 100,
+          "l": 95.09803921568627,
+          "a": 1
+        },
+        "hsv": {
+          "h": 254.4,
+          "s": 0.0980392156862745,
+          "v": 1,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "surface",
+        "status",
+        "info",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-surface-status-info-on-dark",
+    {
+      "$value": "#ece6ff",
+      "$description": "Info status surface color (dark theme)",
+      "filePath": "tokens/color/surface.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.purple.10}",
+        "$description": "Info status surface color (dark theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-surface-status-info-on-dark",
+      "attributes": {
+        "category": "color",
+        "type": "surface",
+        "item": "status",
+        "subitem": "info",
+        "state": "on-dark",
+        "hex": "ece6ff",
+        "rgb": {
+          "r": 236,
+          "g": 230,
+          "b": 255,
+          "a": 1
+        },
+        "hsl": {
+          "h": 254.4,
+          "s": 100,
+          "l": 95.09803921568627,
+          "a": 1
+        },
+        "hsv": {
+          "h": 254.4,
+          "s": 0.0980392156862745,
+          "v": 1,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "surface",
+        "status",
+        "info",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-surface-status-success",
+    {
+      "$value": "",
+      "$description": "Responsive `surface-status-success` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-surface-status-success-on-light` on a themable container with a light color palette and `--rh-color-surface-status-success-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/surface.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.surface.status.success.on-light}",
+          "{color.surface.status.success.on-dark}"
+        ],
+        "$description": "Responsive `surface-status-success` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-surface-status-success-on-light` on a themable container with a light color palette and `--rh-color-surface-status-success-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-surface-status-success",
+      "attributes": {
+        "category": "color",
+        "type": "surface",
+        "item": "status",
+        "subitem": "success",
+        "state": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "surface",
+        "status",
+        "success",
+        "_"
+      ]
+    }
+  ],
+  [
+    "--rh-color-surface-status-success-on-light",
+    {
+      "$value": "#e9f7df",
+      "$description": "Success status surface color (light theme)",
+      "filePath": "tokens/color/surface.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.green.10}",
+        "$description": "Success status surface color (light theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-surface-status-success-on-light",
+      "attributes": {
+        "category": "color",
+        "type": "surface",
+        "item": "status",
+        "subitem": "success",
+        "state": "on-light",
+        "hex": "e9f7df",
+        "rgb": {
+          "r": 233,
+          "g": 247,
+          "b": 223,
+          "a": 1
+        },
+        "hsl": {
+          "h": 95.00000000000003,
+          "s": 60.00000000000004,
+          "l": 92.15686274509804,
+          "a": 1
+        },
+        "hsv": {
+          "h": 95.00000000000003,
+          "s": 0.09716599190283401,
+          "v": 0.9686274509803922,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "surface",
+        "status",
+        "success",
+        "on-light"
+      ]
+    }
+  ],
+  [
+    "--rh-color-surface-status-success-on-dark",
+    {
+      "$value": "#e9f7df",
+      "$description": "Success status surface color (dark theme)",
+      "filePath": "tokens/color/surface.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "{color.green.10}",
+        "$description": "Success status surface color (dark theme)",
+        "$type": "color"
+      },
+      "name": "rh-color-surface-status-success-on-dark",
+      "attributes": {
+        "category": "color",
+        "type": "surface",
+        "item": "status",
+        "subitem": "success",
+        "state": "on-dark",
+        "hex": "e9f7df",
+        "rgb": {
+          "r": 233,
+          "g": 247,
+          "b": 223,
+          "a": 1
+        },
+        "hsl": {
+          "h": 95.00000000000003,
+          "s": 60.00000000000004,
+          "l": 92.15686274509804,
+          "a": 1
+        },
+        "hsv": {
+          "h": 95.00000000000003,
+          "s": 0.09716599190283401,
+          "v": 0.9686274509803922,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "surface",
+        "status",
+        "success",
+        "on-dark"
+      ]
+    }
+  ],
+  [
+    "--rh-color-text-primary",
+    {
+      "$value": "",
+      "$description": "Responsive `text-primary` color value. Typically read only - use a themable container e.g. `<rh-surface>` Resolves to `--rh-color-text-primary-on-light` on a themable container with a light color palette and `--rh-color-text-primary-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/text.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.text.primary.on-light}",
+          "{color.text.primary.on-dark}"
+        ],
+        "$description": "Responsive `text-primary` color value. Typically read only - use a themable container e.g. `<rh-surface>` Resolves to `--rh-color-text-primary-on-light` on a themable container with a light color palette and `--rh-color-text-primary-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-text-primary",
+      "attributes": {
+        "category": "color",
+        "type": "text",
+        "item": "primary",
+        "subitem": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "text",
+        "primary",
+        "_"
+      ]
     }
   ],
   [
@@ -12115,9 +18866,9 @@ export const tokens = new Map([
         },
         "isLight": false
       },
-      "value": "#151515",
       "filePath": "tokens/color/text.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "{color.gray.95}",
         "$description": "Primary text color for light theme",
@@ -12125,7 +18876,7 @@ export const tokens = new Map([
           "category": "typography",
           "type": "color"
         },
-        "value": "{color.gray.95}"
+        "$type": "color"
       },
       "name": "rh-color-text-primary-on-light",
       "path": [
@@ -12133,9 +18884,7 @@ export const tokens = new Map([
         "text",
         "primary",
         "on-light"
-      ],
-      "comment": "Primary text color for light theme",
-      "$type": "color"
+      ]
     }
   ],
   [
@@ -12169,9 +18918,9 @@ export const tokens = new Map([
         },
         "isLight": true
       },
-      "value": "#ffffff",
       "filePath": "tokens/color/text.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "{color.white}",
         "$description": "Primary text color for dark theme",
@@ -12179,7 +18928,7 @@ export const tokens = new Map([
           "category": "typography",
           "type": "color"
         },
-        "value": "{color.white}"
+        "$type": "color"
       },
       "name": "rh-color-text-primary-on-dark",
       "path": [
@@ -12187,9 +18936,58 @@ export const tokens = new Map([
         "text",
         "primary",
         "on-dark"
-      ],
-      "comment": "Primary text color for dark theme",
-      "$type": "color"
+      ]
+    }
+  ],
+  [
+    "--rh-color-text-secondary",
+    {
+      "$value": "",
+      "$description": "Responsive `text-secondary` color value. Typically read only - use a themable container e.g. `<rh-surface>` Resolves to `--rh-color-text-secondary-on-light` on a themable container with a light color palette and `--rh-color-text-secondary-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/text.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.text.secondary.on-light}",
+          "{color.text.secondary.on-dark}"
+        ],
+        "$description": "Responsive `text-secondary` color value. Typically read only - use a themable container e.g. `<rh-surface>` Resolves to `--rh-color-text-secondary-on-light` on a themable container with a light color palette and `--rh-color-text-secondary-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-text-secondary",
+      "attributes": {
+        "category": "color",
+        "type": "text",
+        "item": "secondary",
+        "subitem": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "text",
+        "secondary",
+        "_"
+      ]
     }
   ],
   [
@@ -12223,9 +19021,9 @@ export const tokens = new Map([
         },
         "isLight": false
       },
-      "value": "#4d4d4d",
       "filePath": "tokens/color/text.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "{color.gray.60}",
         "$description": "Secondary text color for light theme",
@@ -12233,7 +19031,7 @@ export const tokens = new Map([
           "category": "typography",
           "type": "color"
         },
-        "value": "{color.gray.60}"
+        "$type": "color"
       },
       "name": "rh-color-text-secondary-on-light",
       "path": [
@@ -12241,9 +19039,7 @@ export const tokens = new Map([
         "text",
         "secondary",
         "on-light"
-      ],
-      "comment": "Secondary text color for light theme",
-      "$type": "color"
+      ]
     }
   ],
   [
@@ -12277,9 +19073,9 @@ export const tokens = new Map([
         },
         "isLight": true
       },
-      "value": "#c7c7c7",
       "filePath": "tokens/color/text.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "{color.gray.30}",
         "$description": "Secondary text color for dark theme",
@@ -12287,7 +19083,7 @@ export const tokens = new Map([
           "category": "typography",
           "type": "color"
         },
-        "value": "{color.gray.30}"
+        "$type": "color"
       },
       "name": "rh-color-text-secondary-on-dark",
       "path": [
@@ -12295,9 +19091,58 @@ export const tokens = new Map([
         "text",
         "secondary",
         "on-dark"
-      ],
-      "comment": "Secondary text color for dark theme",
-      "$type": "color"
+      ]
+    }
+  ],
+  [
+    "--rh-color-text-brand",
+    {
+      "$value": "",
+      "$description": "Responsive `text-brand` color value. Typically read only - use a themable container e.g. `<rh-surface>` Resolves to `--rh-color-text-brand-on-light` on a themable container with a light color palette and `--rh-color-text-brand-on-dark` on a themable container with a dark color palette.",
+      "filePath": "tokens/color/text.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": [
+          "{color.text.brand.on-light}",
+          "{color.text.brand.on-dark}"
+        ],
+        "$description": "Responsive `text-brand` color value. Typically read only - use a themable container e.g. `<rh-surface>` Resolves to `--rh-color-text-brand-on-light` on a themable container with a light color palette and `--rh-color-text-brand-on-dark` on a themable container with a dark color palette.",
+        "$type": "color"
+      },
+      "name": "rh-color-text-brand",
+      "attributes": {
+        "category": "color",
+        "type": "text",
+        "item": "brand",
+        "subitem": "_",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "text",
+        "brand",
+        "_"
+      ]
     }
   ],
   [
@@ -12331,9 +19176,9 @@ export const tokens = new Map([
         },
         "isLight": false
       },
-      "value": "#ee0000",
       "filePath": "tokens/color/text.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "{color.brand.red.on-light}",
         "$description": "Brand text color for light theme",
@@ -12341,7 +19186,7 @@ export const tokens = new Map([
           "category": "typography",
           "type": "color"
         },
-        "value": "{color.brand.red.on-light}"
+        "$type": "color"
       },
       "name": "rh-color-text-brand-on-light",
       "path": [
@@ -12349,9 +19194,7 @@ export const tokens = new Map([
         "text",
         "brand",
         "on-light"
-      ],
-      "comment": "Brand text color for light theme",
-      "$type": "color"
+      ]
     }
   ],
   [
@@ -12385,9 +19228,9 @@ export const tokens = new Map([
         },
         "isLight": false
       },
-      "value": "#ee0000",
       "filePath": "tokens/color/text.yaml",
       "isSource": true,
+      "$type": "color",
       "original": {
         "$value": "{color.brand.red.on-dark}",
         "$description": "Brand text color for dark theme",
@@ -12395,7 +19238,7 @@ export const tokens = new Map([
           "category": "typography",
           "type": "color"
         },
-        "value": "{color.brand.red.on-dark}"
+        "$type": "color"
       },
       "name": "rh-color-text-brand-on-dark",
       "path": [
@@ -12403,9 +19246,167 @@ export const tokens = new Map([
         "text",
         "brand",
         "on-dark"
-      ],
-      "comment": "Brand text color for dark theme",
-      "$type": "color"
+      ]
+    }
+  ],
+  [
+    "--rh-color-white-hsl",
+    {
+      "$value": "0 0% 100%",
+      "$type": "color",
+      "original": {
+        "$value": "{color.white}",
+        "$type": "color"
+      },
+      "name": "rh-color-white-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "white-hsl",
+        "hex": "ffffff",
+        "rgb": {
+          "r": 255,
+          "g": 255,
+          "b": 255,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 100,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 1,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "white-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-white-rgb",
+    {
+      "$value": "255 255 255",
+      "$type": "color",
+      "original": {
+        "$value": "{color.white}",
+        "$type": "color"
+      },
+      "name": "rh-color-white-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "white-rgb",
+        "hex": "ffffff",
+        "rgb": {
+          "r": 255,
+          "g": 255,
+          "b": 255,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 100,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 1,
+          "a": 1
+        },
+        "isLight": true
+      },
+      "path": [
+        "color",
+        "white-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-black-hsl",
+    {
+      "$value": "0 0% 0%",
+      "$type": "color",
+      "original": {
+        "$value": "{color.black}",
+        "$type": "color"
+      },
+      "name": "rh-color-black-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "black-hsl",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "black-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-black-rgb",
+    {
+      "$value": "0 0 0",
+      "$type": "color",
+      "original": {
+        "$value": "{color.black}",
+        "$type": "color"
+      },
+      "name": "rh-color-black-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "black-rgb",
+        "hex": "000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 0,
+          "v": 0,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "black-rgb"
+      ]
     }
   ],
   [
@@ -12417,15 +19418,15 @@ export const tokens = new Map([
           "example": "Display"
         }
       },
-      "$value": "RedHatDisplay, \"Red Hat Display\", \"Noto Sans Arabic\", \"Noto Sans Hebrew\", \"Noto Sans JP\", \"Noto Sans KR\", \"Noto Sans Malayalam\", \"Noto Sans SC\", \"Noto Sans TC\", \"Noto Sans Thai\", Helvetica, Arial, sans-serif",
+      "$value": "RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif",
       "attributes": {
         "category": "typography",
         "type": "font-family",
         "item": "heading"
       },
-      "value": "RedHatDisplay, \"Red Hat Display\", \"Noto Sans Arabic\", \"Noto Sans Hebrew\", \"Noto Sans JP\", \"Noto Sans KR\", \"Noto Sans Malayalam\", \"Noto Sans SC\", \"Noto Sans TC\", \"Noto Sans Thai\", Helvetica, Arial, sans-serif",
       "filePath": "tokens/font/family.yml",
       "isSource": true,
+      "$type": "fontFamily",
       "original": {
         "$description": "Heading font family",
         "$extensions": {
@@ -12452,30 +19453,14 @@ export const tokens = new Map([
           "category": "typography",
           "type": "font-family"
         },
-        "value": [
-          "RedHatDisplay",
-          "Red Hat Display",
-          "Noto Sans Arabic",
-          "Noto Sans Hebrew",
-          "Noto Sans JP",
-          "Noto Sans KR",
-          "Noto Sans Malayalam",
-          "Noto Sans SC",
-          "Noto Sans TC",
-          "Noto Sans Thai",
-          "Helvetica",
-          "Arial",
-          "sans-serif"
-        ]
+        "$type": "fontFamily"
       },
       "name": "rh-font-family-heading",
       "path": [
         "font",
         "family",
         "heading"
-      ],
-      "comment": "Heading font family",
-      "$type": "fontFamily"
+      ]
     }
   ],
   [
@@ -12487,15 +19472,15 @@ export const tokens = new Map([
           "example": "Body text"
         }
       },
-      "$value": "RedHatText, \"Red Hat Text\", \"Noto Sans Arabic\", \"Noto Sans Hebrew\", \"Noto Sans JP\", \"Noto Sans KR\", \"Noto Sans Malayalam\", \"Noto Sans SC\", \"Noto Sans TC\", \"Noto Sans Thai\", Helvetica, Arial, sans-serif",
+      "$value": "RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif",
       "attributes": {
         "category": "typography",
         "type": "font-family",
         "item": "body-text"
       },
-      "value": "RedHatText, \"Red Hat Text\", \"Noto Sans Arabic\", \"Noto Sans Hebrew\", \"Noto Sans JP\", \"Noto Sans KR\", \"Noto Sans Malayalam\", \"Noto Sans SC\", \"Noto Sans TC\", \"Noto Sans Thai\", Helvetica, Arial, sans-serif",
       "filePath": "tokens/font/family.yml",
       "isSource": true,
+      "$type": "fontFamily",
       "original": {
         "$description": "Body text font family",
         "$extensions": {
@@ -12522,30 +19507,14 @@ export const tokens = new Map([
           "category": "typography",
           "type": "font-family"
         },
-        "value": [
-          "RedHatText",
-          "Red Hat Text",
-          "Noto Sans Arabic",
-          "Noto Sans Hebrew",
-          "Noto Sans JP",
-          "Noto Sans KR",
-          "Noto Sans Malayalam",
-          "Noto Sans SC",
-          "Noto Sans TC",
-          "Noto Sans Thai",
-          "Helvetica",
-          "Arial",
-          "sans-serif"
-        ]
+        "$type": "fontFamily"
       },
       "name": "rh-font-family-body-text",
       "path": [
         "font",
         "family",
         "body-text"
-      ],
-      "comment": "Body text font family",
-      "$type": "fontFamily"
+      ]
     }
   ],
   [
@@ -12557,15 +19526,15 @@ export const tokens = new Map([
           "example": "Code"
         }
       },
-      "$value": "RedHatMono, \"Red Hat Mono\", \"Courier New\", Courier, monospace",
+      "$value": "RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace",
       "attributes": {
         "category": "typography",
         "type": "font-family",
         "item": "code"
       },
-      "value": "RedHatMono, \"Red Hat Mono\", \"Courier New\", Courier, monospace",
       "filePath": "tokens/font/family.yml",
       "isSource": true,
+      "$type": "fontFamily",
       "original": {
         "$description": "Code font family",
         "$extensions": {
@@ -12584,22 +19553,14 @@ export const tokens = new Map([
           "category": "typography",
           "type": "font-family"
         },
-        "value": [
-          "RedHatMono",
-          "Red Hat Mono",
-          "Courier New",
-          "Courier",
-          "monospace"
-        ]
+        "$type": "fontFamily"
       },
       "name": "rh-font-family-code",
       "path": [
         "font",
         "family",
         "code"
-      ],
-      "comment": "Code font family",
-      "$type": "fontFamily"
+      ]
     }
   ],
   [
@@ -12613,9 +19574,9 @@ export const tokens = new Map([
         "item": "body-text",
         "subitem": "xs"
       },
-      "value": "0.75rem",
       "filePath": "tokens/font/size.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "0.75rem",
         "$description": "12px font size",
@@ -12623,7 +19584,7 @@ export const tokens = new Map([
           "category": "typography",
           "type": "font-size"
         },
-        "value": "0.75rem"
+        "$type": "dimension"
       },
       "name": "rh-font-size-body-text-xs",
       "path": [
@@ -12631,9 +19592,7 @@ export const tokens = new Map([
         "size",
         "body-text",
         "xs"
-      ],
-      "comment": "12px font size",
-      "$type": "dimension"
+      ]
     }
   ],
   [
@@ -12647,9 +19606,9 @@ export const tokens = new Map([
         "item": "body-text",
         "subitem": "sm"
       },
-      "value": "0.875rem",
       "filePath": "tokens/font/size.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "0.875rem",
         "$description": "14px font size",
@@ -12657,7 +19616,7 @@ export const tokens = new Map([
           "category": "typography",
           "type": "font-size"
         },
-        "value": "0.875rem"
+        "$type": "dimension"
       },
       "name": "rh-font-size-body-text-sm",
       "path": [
@@ -12665,9 +19624,7 @@ export const tokens = new Map([
         "size",
         "body-text",
         "sm"
-      ],
-      "comment": "14px font size",
-      "$type": "dimension"
+      ]
     }
   ],
   [
@@ -12681,9 +19638,9 @@ export const tokens = new Map([
         "item": "body-text",
         "subitem": "md"
       },
-      "value": "1rem",
       "filePath": "tokens/font/size.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "1rem",
         "$description": "16px font size",
@@ -12691,7 +19648,7 @@ export const tokens = new Map([
           "category": "typography",
           "type": "font-size"
         },
-        "value": "1rem"
+        "$type": "dimension"
       },
       "name": "rh-font-size-body-text-md",
       "path": [
@@ -12699,9 +19656,7 @@ export const tokens = new Map([
         "size",
         "body-text",
         "md"
-      ],
-      "comment": "16px font size",
-      "$type": "dimension"
+      ]
     }
   ],
   [
@@ -12715,9 +19670,9 @@ export const tokens = new Map([
         "item": "body-text",
         "subitem": "lg"
       },
-      "value": "1.125rem",
       "filePath": "tokens/font/size.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "1.125rem",
         "$description": "18px font size",
@@ -12725,7 +19680,7 @@ export const tokens = new Map([
           "category": "typography",
           "type": "font-size"
         },
-        "value": "1.125rem"
+        "$type": "dimension"
       },
       "name": "rh-font-size-body-text-lg",
       "path": [
@@ -12733,9 +19688,7 @@ export const tokens = new Map([
         "size",
         "body-text",
         "lg"
-      ],
-      "comment": "18px font size",
-      "$type": "dimension"
+      ]
     }
   ],
   [
@@ -12749,9 +19702,9 @@ export const tokens = new Map([
         "item": "body-text",
         "subitem": "xl"
       },
-      "value": "1.25rem",
       "filePath": "tokens/font/size.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "1.25rem",
         "$description": "20px font size",
@@ -12759,7 +19712,7 @@ export const tokens = new Map([
           "category": "typography",
           "type": "font-size"
         },
-        "value": "1.25rem"
+        "$type": "dimension"
       },
       "name": "rh-font-size-body-text-xl",
       "path": [
@@ -12767,9 +19720,7 @@ export const tokens = new Map([
         "size",
         "body-text",
         "xl"
-      ],
-      "comment": "20px font size",
-      "$type": "dimension"
+      ]
     }
   ],
   [
@@ -12783,9 +19734,9 @@ export const tokens = new Map([
         "item": "body-text",
         "subitem": "2xl"
       },
-      "value": "1.5rem",
       "filePath": "tokens/font/size.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "1.5rem",
         "$description": "24px font size",
@@ -12793,7 +19744,7 @@ export const tokens = new Map([
           "category": "typography",
           "type": "font-size"
         },
-        "value": "1.5rem"
+        "$type": "dimension"
       },
       "name": "rh-font-size-body-text-2xl",
       "path": [
@@ -12801,9 +19752,7 @@ export const tokens = new Map([
         "size",
         "body-text",
         "2xl"
-      ],
-      "comment": "24px font size",
-      "$type": "dimension"
+      ]
     }
   ],
   [
@@ -12817,9 +19766,9 @@ export const tokens = new Map([
         "item": "code",
         "subitem": "xs"
       },
-      "value": "0.75rem",
       "filePath": "tokens/font/size.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "{font.size.body-text.xs}",
         "$description": "12px font size",
@@ -12827,7 +19776,7 @@ export const tokens = new Map([
           "category": "typography",
           "type": "font-size"
         },
-        "value": "{font.size.body-text.xs}"
+        "$type": "dimension"
       },
       "name": "rh-font-size-code-xs",
       "path": [
@@ -12835,9 +19784,7 @@ export const tokens = new Map([
         "size",
         "code",
         "xs"
-      ],
-      "comment": "12px font size",
-      "$type": "dimension"
+      ]
     }
   ],
   [
@@ -12851,9 +19798,9 @@ export const tokens = new Map([
         "item": "code",
         "subitem": "sm"
       },
-      "value": "0.875rem",
       "filePath": "tokens/font/size.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "{font.size.body-text.sm}",
         "$description": "14px font size",
@@ -12861,7 +19808,7 @@ export const tokens = new Map([
           "category": "typography",
           "type": "font-size"
         },
-        "value": "{font.size.body-text.sm}"
+        "$type": "dimension"
       },
       "name": "rh-font-size-code-sm",
       "path": [
@@ -12869,9 +19816,7 @@ export const tokens = new Map([
         "size",
         "code",
         "sm"
-      ],
-      "comment": "14px font size",
-      "$type": "dimension"
+      ]
     }
   ],
   [
@@ -12885,9 +19830,9 @@ export const tokens = new Map([
         "item": "code",
         "subitem": "md"
       },
-      "value": "1rem",
       "filePath": "tokens/font/size.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "{font.size.body-text.md}",
         "$description": "16px font size",
@@ -12895,7 +19840,7 @@ export const tokens = new Map([
           "category": "typography",
           "type": "font-size"
         },
-        "value": "{font.size.body-text.md}"
+        "$type": "dimension"
       },
       "name": "rh-font-size-code-md",
       "path": [
@@ -12903,9 +19848,7 @@ export const tokens = new Map([
         "size",
         "code",
         "md"
-      ],
-      "comment": "16px font size",
-      "$type": "dimension"
+      ]
     }
   ],
   [
@@ -12919,9 +19862,9 @@ export const tokens = new Map([
         "item": "code",
         "subitem": "lg"
       },
-      "value": "1.125rem",
       "filePath": "tokens/font/size.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "{font.size.body-text.lg}",
         "$description": "18px font size",
@@ -12929,7 +19872,7 @@ export const tokens = new Map([
           "category": "typography",
           "type": "font-size"
         },
-        "value": "{font.size.body-text.lg}"
+        "$type": "dimension"
       },
       "name": "rh-font-size-code-lg",
       "path": [
@@ -12937,9 +19880,7 @@ export const tokens = new Map([
         "size",
         "code",
         "lg"
-      ],
-      "comment": "18px font size",
-      "$type": "dimension"
+      ]
     }
   ],
   [
@@ -12953,9 +19894,9 @@ export const tokens = new Map([
         "item": "code",
         "subitem": "xl"
       },
-      "value": "1.25rem",
       "filePath": "tokens/font/size.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "{font.size.body-text.xl}",
         "$description": "20px font size",
@@ -12963,7 +19904,7 @@ export const tokens = new Map([
           "category": "typography",
           "type": "font-size"
         },
-        "value": "{font.size.body-text.xl}"
+        "$type": "dimension"
       },
       "name": "rh-font-size-code-xl",
       "path": [
@@ -12971,9 +19912,7 @@ export const tokens = new Map([
         "size",
         "code",
         "xl"
-      ],
-      "comment": "20px font size",
-      "$type": "dimension"
+      ]
     }
   ],
   [
@@ -12987,9 +19926,9 @@ export const tokens = new Map([
         "item": "code",
         "subitem": "2xl"
       },
-      "value": "1.5rem",
       "filePath": "tokens/font/size.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "{font.size.body-text.2xl}",
         "$description": "24px font size",
@@ -12997,7 +19936,7 @@ export const tokens = new Map([
           "category": "typography",
           "type": "font-size"
         },
-        "value": "{font.size.body-text.2xl}"
+        "$type": "dimension"
       },
       "name": "rh-font-size-code-2xl",
       "path": [
@@ -13005,9 +19944,7 @@ export const tokens = new Map([
         "size",
         "code",
         "2xl"
-      ],
-      "comment": "24px font size",
-      "$type": "dimension"
+      ]
     }
   ],
   [
@@ -13021,9 +19958,9 @@ export const tokens = new Map([
         "item": "heading",
         "subitem": "xs"
       },
-      "value": "1.25rem",
       "filePath": "tokens/font/size.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "1.25rem",
         "$description": "h6 heading font size",
@@ -13031,7 +19968,7 @@ export const tokens = new Map([
           "category": "typography",
           "type": "font-size"
         },
-        "value": "1.25rem"
+        "$type": "dimension"
       },
       "name": "rh-font-size-heading-xs",
       "path": [
@@ -13039,9 +19976,7 @@ export const tokens = new Map([
         "size",
         "heading",
         "xs"
-      ],
-      "comment": "h6 heading font size",
-      "$type": "dimension"
+      ]
     }
   ],
   [
@@ -13055,9 +19990,9 @@ export const tokens = new Map([
         "item": "heading",
         "subitem": "sm"
       },
-      "value": "1.5rem",
       "filePath": "tokens/font/size.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "1.5rem",
         "$description": "h5 heading font size",
@@ -13065,7 +20000,7 @@ export const tokens = new Map([
           "category": "typography",
           "type": "font-size"
         },
-        "value": "1.5rem"
+        "$type": "dimension"
       },
       "name": "rh-font-size-heading-sm",
       "path": [
@@ -13073,9 +20008,7 @@ export const tokens = new Map([
         "size",
         "heading",
         "sm"
-      ],
-      "comment": "h5 heading font size",
-      "$type": "dimension"
+      ]
     }
   ],
   [
@@ -13089,9 +20022,9 @@ export const tokens = new Map([
         "item": "heading",
         "subitem": "md"
       },
-      "value": "1.75rem",
       "filePath": "tokens/font/size.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "1.75rem",
         "$description": "h4 heading font size",
@@ -13099,7 +20032,7 @@ export const tokens = new Map([
           "category": "typography",
           "type": "font-size"
         },
-        "value": "1.75rem"
+        "$type": "dimension"
       },
       "name": "rh-font-size-heading-md",
       "path": [
@@ -13107,9 +20040,7 @@ export const tokens = new Map([
         "size",
         "heading",
         "md"
-      ],
-      "comment": "h4 heading font size",
-      "$type": "dimension"
+      ]
     }
   ],
   [
@@ -13123,9 +20054,9 @@ export const tokens = new Map([
         "item": "heading",
         "subitem": "lg"
       },
-      "value": "2.25rem",
       "filePath": "tokens/font/size.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "2.25rem",
         "$description": "h3 heading font size",
@@ -13133,7 +20064,7 @@ export const tokens = new Map([
           "category": "typography",
           "type": "font-size"
         },
-        "value": "2.25rem"
+        "$type": "dimension"
       },
       "name": "rh-font-size-heading-lg",
       "path": [
@@ -13141,9 +20072,7 @@ export const tokens = new Map([
         "size",
         "heading",
         "lg"
-      ],
-      "comment": "h3 heading font size",
-      "$type": "dimension"
+      ]
     }
   ],
   [
@@ -13157,9 +20086,9 @@ export const tokens = new Map([
         "item": "heading",
         "subitem": "xl"
       },
-      "value": "2.5rem",
       "filePath": "tokens/font/size.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "2.5rem",
         "$description": "h2 heading font size",
@@ -13167,7 +20096,7 @@ export const tokens = new Map([
           "category": "typography",
           "type": "font-size"
         },
-        "value": "2.5rem"
+        "$type": "dimension"
       },
       "name": "rh-font-size-heading-xl",
       "path": [
@@ -13175,9 +20104,7 @@ export const tokens = new Map([
         "size",
         "heading",
         "xl"
-      ],
-      "comment": "h2 heading font size",
-      "$type": "dimension"
+      ]
     }
   ],
   [
@@ -13191,9 +20118,9 @@ export const tokens = new Map([
         "item": "heading",
         "subitem": "2xl"
       },
-      "value": "3rem",
       "filePath": "tokens/font/size.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "3rem",
         "$description": "h1 heading font size",
@@ -13201,7 +20128,7 @@ export const tokens = new Map([
           "category": "typography",
           "type": "font-size"
         },
-        "value": "3rem"
+        "$type": "dimension"
       },
       "name": "rh-font-size-heading-2xl",
       "path": [
@@ -13209,9 +20136,7 @@ export const tokens = new Map([
         "size",
         "heading",
         "2xl"
-      ],
-      "comment": "h1 heading font size",
-      "$type": "dimension"
+      ]
     }
   ],
   [
@@ -13221,26 +20146,20 @@ export const tokens = new Map([
       "$value": 400,
       "attributes": {
         "category": "typography",
-        "type": "font-weight",
-        "aliases": [
-          "regular",
-          "normal",
-          "book"
-        ],
+        "type": "weight",
         "item": "body-text",
         "subitem": "regular"
       },
-      "value": 400,
       "filePath": "tokens/font/weight.yml",
       "isSource": true,
+      "$type": "fontWeight",
       "original": {
         "$description": "Regular font weight",
         "$value": 400,
         "attributes": {
-          "category": "typography",
-          "type": "font-weight"
+          "category": "typography"
         },
-        "value": 400
+        "$type": "fontWeight"
       },
       "name": "rh-font-weight-body-text-regular",
       "path": [
@@ -13248,9 +20167,7 @@ export const tokens = new Map([
         "weight",
         "body-text",
         "regular"
-      ],
-      "comment": "Regular font weight",
-      "$type": "fontWeight"
+      ]
     }
   ],
   [
@@ -13260,24 +20177,20 @@ export const tokens = new Map([
       "$value": 500,
       "attributes": {
         "category": "typography",
-        "type": "font-weight",
-        "aliases": [
-          "medium"
-        ],
+        "type": "weight",
         "item": "body-text",
         "subitem": "medium"
       },
-      "value": 500,
       "filePath": "tokens/font/weight.yml",
       "isSource": true,
+      "$type": "fontWeight",
       "original": {
         "$description": "Medium font weight",
         "$value": 500,
         "attributes": {
-          "category": "typography",
-          "type": "font-weight"
+          "category": "typography"
         },
-        "value": 500
+        "$type": "fontWeight"
       },
       "name": "rh-font-weight-body-text-medium",
       "path": [
@@ -13285,9 +20198,7 @@ export const tokens = new Map([
         "weight",
         "body-text",
         "medium"
-      ],
-      "comment": "Medium font weight",
-      "$type": "fontWeight"
+      ]
     }
   ],
   [
@@ -13297,26 +20208,20 @@ export const tokens = new Map([
       "$value": 400,
       "attributes": {
         "category": "typography",
-        "type": "font-weight",
-        "aliases": [
-          "regular",
-          "normal",
-          "book"
-        ],
+        "type": "weight",
         "item": "code",
         "subitem": "regular"
       },
-      "value": 400,
       "filePath": "tokens/font/weight.yml",
       "isSource": true,
+      "$type": "fontWeight",
       "original": {
         "$description": "Regular font weight",
         "$value": 400,
         "attributes": {
-          "category": "typography",
-          "type": "font-weight"
+          "category": "typography"
         },
-        "value": 400
+        "$type": "fontWeight"
       },
       "name": "rh-font-weight-code-regular",
       "path": [
@@ -13324,9 +20229,7 @@ export const tokens = new Map([
         "weight",
         "code",
         "regular"
-      ],
-      "comment": "Regular font weight",
-      "$type": "fontWeight"
+      ]
     }
   ],
   [
@@ -13336,24 +20239,20 @@ export const tokens = new Map([
       "$value": 500,
       "attributes": {
         "category": "typography",
-        "type": "font-weight",
-        "aliases": [
-          "medium"
-        ],
+        "type": "weight",
         "item": "code",
         "subitem": "medium"
       },
-      "value": 500,
       "filePath": "tokens/font/weight.yml",
       "isSource": true,
+      "$type": "fontWeight",
       "original": {
         "$description": "Medium font weight",
         "$value": 500,
         "attributes": {
-          "category": "typography",
-          "type": "font-weight"
+          "category": "typography"
         },
-        "value": 500
+        "$type": "fontWeight"
       },
       "name": "rh-font-weight-code-medium",
       "path": [
@@ -13361,9 +20260,7 @@ export const tokens = new Map([
         "weight",
         "code",
         "medium"
-      ],
-      "comment": "Medium font weight",
-      "$type": "fontWeight"
+      ]
     }
   ],
   [
@@ -13373,24 +20270,20 @@ export const tokens = new Map([
       "$value": 300,
       "attributes": {
         "category": "typography",
-        "type": "font-weight",
-        "aliases": [
-          "light"
-        ],
+        "type": "weight",
         "item": "heading",
         "subitem": "regular"
       },
-      "value": 300,
       "filePath": "tokens/font/weight.yml",
       "isSource": true,
+      "$type": "fontWeight",
       "original": {
         "$description": "Regular font weight for headings",
         "$value": 300,
         "attributes": {
-          "category": "typography",
-          "type": "font-weight"
+          "category": "typography"
         },
-        "value": 300
+        "$type": "fontWeight"
       },
       "name": "rh-font-weight-heading-regular",
       "path": [
@@ -13398,9 +20291,7 @@ export const tokens = new Map([
         "weight",
         "heading",
         "regular"
-      ],
-      "comment": "Regular font weight for headings",
-      "$type": "fontWeight"
+      ]
     }
   ],
   [
@@ -13410,24 +20301,20 @@ export const tokens = new Map([
       "$value": 500,
       "attributes": {
         "category": "typography",
-        "type": "font-weight",
-        "aliases": [
-          "medium"
-        ],
+        "type": "weight",
         "item": "heading",
         "subitem": "medium"
       },
-      "value": 500,
       "filePath": "tokens/font/weight.yml",
       "isSource": true,
+      "$type": "fontWeight",
       "original": {
         "$description": "Medium font weight for headings",
         "$value": 500,
         "attributes": {
-          "category": "typography",
-          "type": "font-weight"
+          "category": "typography"
         },
-        "value": 500
+        "$type": "fontWeight"
       },
       "name": "rh-font-weight-heading-medium",
       "path": [
@@ -13435,9 +20322,7 @@ export const tokens = new Map([
         "weight",
         "heading",
         "medium"
-      ],
-      "comment": "Medium font weight for headings",
-      "$type": "fontWeight"
+      ]
     }
   ],
   [
@@ -13447,24 +20332,20 @@ export const tokens = new Map([
       "$value": 700,
       "attributes": {
         "category": "typography",
-        "type": "font-weight",
-        "aliases": [
-          "bold"
-        ],
+        "type": "weight",
         "item": "heading",
         "subitem": "bold"
       },
-      "value": 700,
       "filePath": "tokens/font/weight.yml",
       "isSource": true,
+      "$type": "fontWeight",
       "original": {
         "$description": "Bold font weight for headings",
         "$value": 700,
         "attributes": {
-          "category": "typography",
-          "type": "font-weight"
+          "category": "typography"
         },
-        "value": 700
+        "$type": "fontWeight"
       },
       "name": "rh-font-weight-heading-bold",
       "path": [
@@ -13472,9 +20353,7 @@ export const tokens = new Map([
         "weight",
         "heading",
         "bold"
-      ],
-      "comment": "Bold font weight for headings",
-      "$type": "fontWeight"
+      ]
     }
   ],
   [
@@ -13487,7 +20366,6 @@ export const tokens = new Map([
         "type": "letter-spacing",
         "item": "text"
       },
-      "value": "0.0125rem",
       "filePath": "tokens/font/letter-spacing.yml",
       "isSource": true,
       "original": {
@@ -13496,16 +20374,14 @@ export const tokens = new Map([
         "attributes": {
           "category": "typography",
           "type": "letter-spacing"
-        },
-        "value": "0.0125rem"
+        }
       },
       "name": "rh-letter-spacing-body-text",
       "path": [
         "letter-spacing",
         "body",
         "text"
-      ],
-      "comment": "Extra letter spacing for small body text sizes"
+      ]
     }
   ],
   [
@@ -13517,7 +20393,6 @@ export const tokens = new Map([
         "category": "typography",
         "type": "line-height"
       },
-      "value": 1.3,
       "filePath": "tokens/font/line-height.yml",
       "isSource": true,
       "original": {
@@ -13526,15 +20401,13 @@ export const tokens = new Map([
         "attributes": {
           "category": "typography",
           "type": "line-height"
-        },
-        "value": 1.3
+        }
       },
       "name": "rh-line-height-heading",
       "path": [
         "line-height",
         "heading"
-      ],
-      "comment": "Line height for headings"
+      ]
     }
   ],
   [
@@ -13546,7 +20419,6 @@ export const tokens = new Map([
         "category": "typography",
         "type": "line-height"
       },
-      "value": 1.5,
       "filePath": "tokens/font/line-height.yml",
       "isSource": true,
       "original": {
@@ -13555,15 +20427,13 @@ export const tokens = new Map([
         "attributes": {
           "category": "typography",
           "type": "line-height"
-        },
-        "value": 1.5
+        }
       },
       "name": "rh-line-height-body-text",
       "path": [
         "line-height",
         "body-text"
-      ],
-      "comment": "Line height for body text"
+      ]
     }
   ],
   [
@@ -13575,7 +20445,6 @@ export const tokens = new Map([
         "category": "typography",
         "type": "line-height"
       },
-      "value": 1.5,
       "filePath": "tokens/font/line-height.yml",
       "isSource": true,
       "original": {
@@ -13584,15 +20453,13 @@ export const tokens = new Map([
         "attributes": {
           "category": "typography",
           "type": "line-height"
-        },
-        "value": 1.5
+        }
       },
       "name": "rh-line-height-code",
       "path": [
         "line-height",
         "code"
-      ],
-      "comment": "Line height for code"
+      ]
     }
   ],
   [
@@ -13606,9 +20473,9 @@ export const tokens = new Map([
         "item": "01",
         "px": 16
       },
-      "value": "16px",
       "filePath": "tokens/length/icon.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "{length.lg}",
         "$description": "16px icon box",
@@ -13616,16 +20483,14 @@ export const tokens = new Map([
           "category": "icon",
           "type": "size"
         },
-        "value": "{length.lg}"
+        "$type": "dimension"
       },
       "name": "rh-size-icon-01",
       "path": [
         "size",
         "icon",
         "01"
-      ],
-      "comment": "16px icon box",
-      "$type": "dimension"
+      ]
     }
   ],
   [
@@ -13639,9 +20504,9 @@ export const tokens = new Map([
         "item": "02",
         "px": 24
       },
-      "value": "24px",
       "filePath": "tokens/length/icon.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "{length.xl}",
         "$description": "24px icon box",
@@ -13649,16 +20514,14 @@ export const tokens = new Map([
           "category": "icon",
           "type": "size"
         },
-        "value": "{length.xl}"
+        "$type": "dimension"
       },
       "name": "rh-size-icon-02",
       "path": [
         "size",
         "icon",
         "02"
-      ],
-      "comment": "24px icon box",
-      "$type": "dimension"
+      ]
     }
   ],
   [
@@ -13672,9 +20535,9 @@ export const tokens = new Map([
         "item": "03",
         "px": 32
       },
-      "value": "32px",
       "filePath": "tokens/length/icon.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "{length.2xl}",
         "$description": "32px icon box",
@@ -13682,16 +20545,14 @@ export const tokens = new Map([
           "category": "icon",
           "type": "size"
         },
-        "value": "{length.2xl}"
+        "$type": "dimension"
       },
       "name": "rh-size-icon-03",
       "path": [
         "size",
         "icon",
         "03"
-      ],
-      "comment": "32px icon box",
-      "$type": "dimension"
+      ]
     }
   ],
   [
@@ -13705,9 +20566,9 @@ export const tokens = new Map([
         "item": "04",
         "px": 40
       },
-      "value": "40px",
       "filePath": "tokens/length/icon.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "40px",
         "$description": "40px icon box",
@@ -13715,16 +20576,14 @@ export const tokens = new Map([
           "category": "icon",
           "type": "size"
         },
-        "value": "40px"
+        "$type": "dimension"
       },
       "name": "rh-size-icon-04",
       "path": [
         "size",
         "icon",
         "04"
-      ],
-      "comment": "40px icon box",
-      "$type": "dimension"
+      ]
     }
   ],
   [
@@ -13738,9 +20597,9 @@ export const tokens = new Map([
         "item": "05",
         "px": 48
       },
-      "value": "48px",
       "filePath": "tokens/length/icon.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "{length.3xl}",
         "$description": "48px icon box",
@@ -13748,16 +20607,14 @@ export const tokens = new Map([
           "category": "icon",
           "type": "size"
         },
-        "value": "{length.3xl}"
+        "$type": "dimension"
       },
       "name": "rh-size-icon-05",
       "path": [
         "size",
         "icon",
         "05"
-      ],
-      "comment": "48px icon box",
-      "$type": "dimension"
+      ]
     }
   ],
   [
@@ -13771,9 +20628,9 @@ export const tokens = new Map([
         "item": "06",
         "px": 64
       },
-      "value": "64px",
       "filePath": "tokens/length/icon.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "{length.4xl}",
         "$description": "64px icon box",
@@ -13781,16 +20638,14 @@ export const tokens = new Map([
           "category": "icon",
           "type": "size"
         },
-        "value": "{length.4xl}"
+        "$type": "dimension"
       },
       "name": "rh-size-icon-06",
       "path": [
         "size",
         "icon",
         "06"
-      ],
-      "comment": "64px icon box",
-      "$type": "dimension"
+      ]
     }
   ],
   [
@@ -13804,9 +20659,9 @@ export const tokens = new Map([
         "item": "07",
         "px": 80
       },
-      "value": "80px",
       "filePath": "tokens/length/icon.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "{length.5xl}",
         "$description": "80px icon box",
@@ -13814,16 +20669,14 @@ export const tokens = new Map([
           "category": "icon",
           "type": "size"
         },
-        "value": "{length.5xl}"
+        "$type": "dimension"
       },
       "name": "rh-size-icon-07",
       "path": [
         "size",
         "icon",
         "07"
-      ],
-      "comment": "80px icon box",
-      "$type": "dimension"
+      ]
     }
   ],
   [
@@ -13837,9 +20690,9 @@ export const tokens = new Map([
         "item": "08",
         "px": 96
       },
-      "value": "96px",
       "filePath": "tokens/length/icon.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "{length.6xl}",
         "$description": "96px icon box",
@@ -13847,16 +20700,14 @@ export const tokens = new Map([
           "category": "icon",
           "type": "size"
         },
-        "value": "{length.6xl}"
+        "$type": "dimension"
       },
       "name": "rh-size-icon-08",
       "path": [
         "size",
         "icon",
         "08"
-      ],
-      "comment": "96px icon box",
-      "$type": "dimension"
+      ]
     }
   ],
   [
@@ -13870,9 +20721,9 @@ export const tokens = new Map([
         "item": "09",
         "px": 128
       },
-      "value": "128px",
       "filePath": "tokens/length/icon.yml",
       "isSource": true,
+      "$type": "dimension",
       "original": {
         "$value": "{length.7xl}",
         "$description": "128px icon box",
@@ -13880,801 +20731,14 @@ export const tokens = new Map([
           "category": "icon",
           "type": "size"
         },
-        "value": "{length.7xl}"
+        "$type": "dimension"
       },
       "name": "rh-size-icon-09",
       "path": [
         "size",
         "icon",
         "09"
-      ],
-      "comment": "128px icon box",
-      "$type": "dimension"
-    }
-  ],
-  [
-    "--rh-length-4xs",
-    {
-      "$value": "1px",
-      "$description": "1px length token",
-      "value": "1px",
-      "filePath": "tokens/length/length.yaml",
-      "isSource": true,
-      "original": {
-        "$value": "1px",
-        "$description": "1px length token",
-        "value": "1px"
-      },
-      "name": "rh-length-4xs",
-      "attributes": {
-        "category": "length",
-        "type": "4xs",
-        "px": 1
-      },
-      "path": [
-        "length",
-        "4xs"
-      ],
-      "comment": "1px length token",
-      "$type": "dimension"
-    }
-  ],
-  [
-    "--rh-length-3xs",
-    {
-      "$value": "2px",
-      "$description": "2px length token",
-      "value": "2px",
-      "filePath": "tokens/length/length.yaml",
-      "isSource": true,
-      "original": {
-        "$value": "2px",
-        "$description": "2px length token",
-        "value": "2px"
-      },
-      "name": "rh-length-3xs",
-      "attributes": {
-        "category": "length",
-        "type": "3xs",
-        "px": 2
-      },
-      "path": [
-        "length",
-        "3xs"
-      ],
-      "comment": "2px length token",
-      "$type": "dimension"
-    }
-  ],
-  [
-    "--rh-length-2xs",
-    {
-      "$value": "3px",
-      "$description": "3px length token",
-      "value": "3px",
-      "filePath": "tokens/length/length.yaml",
-      "isSource": true,
-      "original": {
-        "$value": "3px",
-        "$description": "3px length token",
-        "value": "3px"
-      },
-      "name": "rh-length-2xs",
-      "attributes": {
-        "category": "length",
-        "type": "2xs",
-        "px": 3
-      },
-      "path": [
-        "length",
-        "2xs"
-      ],
-      "comment": "3px length token",
-      "$type": "dimension"
-    }
-  ],
-  [
-    "--rh-length-xs",
-    {
-      "$value": "4px",
-      "$description": "4px length token",
-      "value": "4px",
-      "filePath": "tokens/length/length.yaml",
-      "isSource": true,
-      "original": {
-        "$value": "4px",
-        "$description": "4px length token",
-        "value": "4px"
-      },
-      "name": "rh-length-xs",
-      "attributes": {
-        "category": "length",
-        "type": "xs",
-        "px": 4
-      },
-      "path": [
-        "length",
-        "xs"
-      ],
-      "comment": "4px length token",
-      "$type": "dimension"
-    }
-  ],
-  [
-    "--rh-length-sm",
-    {
-      "$value": "6px",
-      "$description": "6px length token",
-      "value": "6px",
-      "filePath": "tokens/length/length.yaml",
-      "isSource": true,
-      "original": {
-        "$value": "6px",
-        "$description": "6px length token",
-        "value": "6px"
-      },
-      "name": "rh-length-sm",
-      "attributes": {
-        "category": "length",
-        "type": "sm",
-        "px": 6
-      },
-      "path": [
-        "length",
-        "sm"
-      ],
-      "comment": "6px length token",
-      "$type": "dimension"
-    }
-  ],
-  [
-    "--rh-length-md",
-    {
-      "$value": "8px",
-      "$description": "8px length token",
-      "value": "8px",
-      "filePath": "tokens/length/length.yaml",
-      "isSource": true,
-      "original": {
-        "$value": "8px",
-        "$description": "8px length token",
-        "value": "8px"
-      },
-      "name": "rh-length-md",
-      "attributes": {
-        "category": "length",
-        "type": "md",
-        "px": 8
-      },
-      "path": [
-        "length",
-        "md"
-      ],
-      "comment": "8px length token",
-      "$type": "dimension"
-    }
-  ],
-  [
-    "--rh-length-lg",
-    {
-      "$value": "16px",
-      "$description": "16px length token",
-      "value": "16px",
-      "filePath": "tokens/length/length.yaml",
-      "isSource": true,
-      "original": {
-        "$value": "16px",
-        "$description": "16px length token",
-        "value": "16px"
-      },
-      "name": "rh-length-lg",
-      "attributes": {
-        "category": "length",
-        "type": "lg",
-        "px": 16
-      },
-      "path": [
-        "length",
-        "lg"
-      ],
-      "comment": "16px length token",
-      "$type": "dimension"
-    }
-  ],
-  [
-    "--rh-length-xl",
-    {
-      "$value": "24px",
-      "$description": "24px length token",
-      "value": "24px",
-      "filePath": "tokens/length/length.yaml",
-      "isSource": true,
-      "original": {
-        "$value": "24px",
-        "$description": "24px length token",
-        "value": "24px"
-      },
-      "name": "rh-length-xl",
-      "attributes": {
-        "category": "length",
-        "type": "xl",
-        "px": 24
-      },
-      "path": [
-        "length",
-        "xl"
-      ],
-      "comment": "24px length token",
-      "$type": "dimension"
-    }
-  ],
-  [
-    "--rh-length-2xl",
-    {
-      "$value": "32px",
-      "$description": "32px length token",
-      "value": "32px",
-      "filePath": "tokens/length/length.yaml",
-      "isSource": true,
-      "original": {
-        "$value": "32px",
-        "$description": "32px length token",
-        "value": "32px"
-      },
-      "name": "rh-length-2xl",
-      "attributes": {
-        "category": "length",
-        "type": "2xl",
-        "px": 32
-      },
-      "path": [
-        "length",
-        "2xl"
-      ],
-      "comment": "32px length token",
-      "$type": "dimension"
-    }
-  ],
-  [
-    "--rh-length-3xl",
-    {
-      "$value": "48px",
-      "$description": "48px length token",
-      "value": "48px",
-      "filePath": "tokens/length/length.yaml",
-      "isSource": true,
-      "original": {
-        "$value": "48px",
-        "$description": "48px length token",
-        "value": "48px"
-      },
-      "name": "rh-length-3xl",
-      "attributes": {
-        "category": "length",
-        "type": "3xl",
-        "px": 48
-      },
-      "path": [
-        "length",
-        "3xl"
-      ],
-      "comment": "48px length token",
-      "$type": "dimension"
-    }
-  ],
-  [
-    "--rh-length-4xl",
-    {
-      "$value": "64px",
-      "$description": "64px length token",
-      "value": "64px",
-      "filePath": "tokens/length/length.yaml",
-      "isSource": true,
-      "original": {
-        "$value": "64px",
-        "$description": "64px length token",
-        "value": "64px"
-      },
-      "name": "rh-length-4xl",
-      "attributes": {
-        "category": "length",
-        "type": "4xl",
-        "px": 64
-      },
-      "path": [
-        "length",
-        "4xl"
-      ],
-      "comment": "64px length token",
-      "$type": "dimension"
-    }
-  ],
-  [
-    "--rh-length-5xl",
-    {
-      "$value": "80px",
-      "$description": "80px length token",
-      "value": "80px",
-      "filePath": "tokens/length/length.yaml",
-      "isSource": true,
-      "original": {
-        "$value": "80px",
-        "$description": "80px length token",
-        "value": "80px"
-      },
-      "name": "rh-length-5xl",
-      "attributes": {
-        "category": "length",
-        "type": "5xl",
-        "px": 80
-      },
-      "path": [
-        "length",
-        "5xl"
-      ],
-      "comment": "80px length token",
-      "$type": "dimension"
-    }
-  ],
-  [
-    "--rh-length-6xl",
-    {
-      "$value": "96px",
-      "$description": "96px length token",
-      "value": "96px",
-      "filePath": "tokens/length/length.yaml",
-      "isSource": true,
-      "original": {
-        "$value": "96px",
-        "$description": "96px length token",
-        "value": "96px"
-      },
-      "name": "rh-length-6xl",
-      "attributes": {
-        "category": "length",
-        "type": "6xl",
-        "px": 96
-      },
-      "path": [
-        "length",
-        "6xl"
-      ],
-      "comment": "96px length token",
-      "$type": "dimension"
-    }
-  ],
-  [
-    "--rh-length-7xl",
-    {
-      "$value": "128px",
-      "$description": "128px length token",
-      "value": "128px",
-      "filePath": "tokens/length/length.yaml",
-      "isSource": true,
-      "original": {
-        "$value": "128px",
-        "$description": "128px length token",
-        "value": "128px"
-      },
-      "name": "rh-length-7xl",
-      "attributes": {
-        "category": "length",
-        "type": "7xl",
-        "px": 128
-      },
-      "path": [
-        "length",
-        "7xl"
-      ],
-      "comment": "128px length token",
-      "$type": "dimension"
-    }
-  ],
-  [
-    "--rh-space-xs",
-    {
-      "$value": "4px",
-      "$description": "4px spacer",
-      "$extensions": {
-        "com.redhat.ux": {
-          "color": "#ec861b"
-        }
-      },
-      "value": "4px",
-      "filePath": "tokens/length/space.yaml",
-      "isSource": true,
-      "original": {
-        "$value": "{length.xs}",
-        "$description": "4px spacer",
-        "$extensions": {
-          "com.redhat.ux": {
-            "color": "#ec861b"
-          }
-        },
-        "value": "{length.xs}"
-      },
-      "name": "rh-space-xs",
-      "attributes": {
-        "category": "space",
-        "type": "xs",
-        "px": 4
-      },
-      "path": [
-        "space",
-        "xs"
-      ],
-      "comment": "4px spacer",
-      "$type": "dimension"
-    }
-  ],
-  [
-    "--rh-space-sm",
-    {
-      "$value": "6px",
-      "$description": "6px spacer",
-      "$extensions": {
-        "com.redhat.ux": {
-          "color": "#f3d53c"
-        }
-      },
-      "value": "6px",
-      "filePath": "tokens/length/space.yaml",
-      "isSource": true,
-      "original": {
-        "$value": "{length.sm}",
-        "$description": "6px spacer",
-        "$extensions": {
-          "com.redhat.ux": {
-            "color": "#f3d53c"
-          }
-        },
-        "value": "{length.sm}"
-      },
-      "name": "rh-space-sm",
-      "attributes": {
-        "category": "space",
-        "type": "sm",
-        "px": 6
-      },
-      "path": [
-        "space",
-        "sm"
-      ],
-      "comment": "6px spacer",
-      "$type": "dimension"
-    }
-  ],
-  [
-    "--rh-space-md",
-    {
-      "$value": "8px",
-      "$description": "8px spacer",
-      "$extensions": {
-        "com.redhat.ux": {
-          "color": "#9bd917"
-        }
-      },
-      "value": "8px",
-      "filePath": "tokens/length/space.yaml",
-      "isSource": true,
-      "original": {
-        "$value": "{length.md}",
-        "$description": "8px spacer",
-        "$extensions": {
-          "com.redhat.ux": {
-            "color": "#9bd917"
-          }
-        },
-        "value": "{length.md}"
-      },
-      "name": "rh-space-md",
-      "attributes": {
-        "category": "space",
-        "type": "md",
-        "px": 8
-      },
-      "path": [
-        "space",
-        "md"
-      ],
-      "comment": "8px spacer",
-      "$type": "dimension"
-    }
-  ],
-  [
-    "--rh-space-lg",
-    {
-      "$value": "16px",
-      "$description": "16px spacer",
-      "$extensions": {
-        "com.redhat.ux": {
-          "color": "#51a549"
-        }
-      },
-      "value": "16px",
-      "filePath": "tokens/length/space.yaml",
-      "isSource": true,
-      "original": {
-        "$value": "{length.lg}",
-        "$description": "16px spacer",
-        "$extensions": {
-          "com.redhat.ux": {
-            "color": "#51a549"
-          }
-        },
-        "value": "{length.lg}"
-      },
-      "name": "rh-space-lg",
-      "attributes": {
-        "category": "space",
-        "type": "lg",
-        "px": 16
-      },
-      "path": [
-        "space",
-        "lg"
-      ],
-      "comment": "16px spacer",
-      "$type": "dimension"
-    }
-  ],
-  [
-    "--rh-space-xl",
-    {
-      "$value": "24px",
-      "$description": "24px spacer",
-      "$extensions": {
-        "com.redhat.ux": {
-          "color": "#1b8793"
-        }
-      },
-      "value": "24px",
-      "filePath": "tokens/length/space.yaml",
-      "isSource": true,
-      "original": {
-        "$value": "{length.xl}",
-        "$description": "24px spacer",
-        "$extensions": {
-          "com.redhat.ux": {
-            "color": "#1b8793"
-          }
-        },
-        "value": "{length.xl}"
-      },
-      "name": "rh-space-xl",
-      "attributes": {
-        "category": "space",
-        "type": "xl",
-        "px": 24
-      },
-      "path": [
-        "space",
-        "xl"
-      ],
-      "comment": "24px spacer",
-      "$type": "dimension"
-    }
-  ],
-  [
-    "--rh-space-2xl",
-    {
-      "$value": "32px",
-      "$description": "32px spacer",
-      "$extensions": {
-        "com.redhat.ux": {
-          "color": "#1893d2"
-        }
-      },
-      "value": "32px",
-      "filePath": "tokens/length/space.yaml",
-      "isSource": true,
-      "original": {
-        "$value": "{length.2xl}",
-        "$description": "32px spacer",
-        "$extensions": {
-          "com.redhat.ux": {
-            "color": "#1893d2"
-          }
-        },
-        "value": "{length.2xl}"
-      },
-      "name": "rh-space-2xl",
-      "attributes": {
-        "category": "space",
-        "type": "2xl",
-        "px": 32
-      },
-      "path": [
-        "space",
-        "2xl"
-      ],
-      "comment": "32px spacer",
-      "$type": "dimension"
-    }
-  ],
-  [
-    "--rh-space-3xl",
-    {
-      "$value": "48px",
-      "$description": "48px spacer",
-      "$extensions": {
-        "com.redhat.ux": {
-          "color": "#6743c6"
-        }
-      },
-      "value": "48px",
-      "filePath": "tokens/length/space.yaml",
-      "isSource": true,
-      "original": {
-        "$value": "{length.3xl}",
-        "$description": "48px spacer",
-        "$extensions": {
-          "com.redhat.ux": {
-            "color": "#6743c6"
-          }
-        },
-        "value": "{length.3xl}"
-      },
-      "name": "rh-space-3xl",
-      "attributes": {
-        "category": "space",
-        "type": "3xl",
-        "px": 48
-      },
-      "path": [
-        "space",
-        "3xl"
-      ],
-      "comment": "48px spacer",
-      "$type": "dimension"
-    }
-  ],
-  [
-    "--rh-space-4xl",
-    {
-      "$value": "64px",
-      "$description": "64px spacer",
-      "$extensions": {
-        "com.redhat.ux": {
-          "color": "#341974"
-        }
-      },
-      "value": "64px",
-      "filePath": "tokens/length/space.yaml",
-      "isSource": true,
-      "original": {
-        "$value": "{length.4xl}",
-        "$description": "64px spacer",
-        "$extensions": {
-          "com.redhat.ux": {
-            "color": "#341974"
-          }
-        },
-        "value": "{length.4xl}"
-      },
-      "name": "rh-space-4xl",
-      "attributes": {
-        "category": "space",
-        "type": "4xl",
-        "px": 64
-      },
-      "path": [
-        "space",
-        "4xl"
-      ],
-      "comment": "64px spacer",
-      "$type": "dimension"
-    }
-  ],
-  [
-    "--rh-space-5xl",
-    {
-      "$value": "80px",
-      "$description": "80px spacer",
-      "$extensions": {
-        "com.redhat.ux": {
-          "color": "#b300b3"
-        }
-      },
-      "value": "80px",
-      "filePath": "tokens/length/space.yaml",
-      "isSource": true,
-      "original": {
-        "$value": "{length.5xl}",
-        "$description": "80px spacer",
-        "$extensions": {
-          "com.redhat.ux": {
-            "color": "#b300b3"
-          }
-        },
-        "value": "{length.5xl}"
-      },
-      "name": "rh-space-5xl",
-      "attributes": {
-        "category": "space",
-        "type": "5xl",
-        "px": 80
-      },
-      "path": [
-        "space",
-        "5xl"
-      ],
-      "comment": "80px spacer",
-      "$type": "dimension"
-    }
-  ],
-  [
-    "--rh-space-6xl",
-    {
-      "$value": "96px",
-      "$description": "96px spacer",
-      "$extensions": {
-        "com.redhat.ux": {
-          "color": "#f279a1"
-        }
-      },
-      "value": "96px",
-      "filePath": "tokens/length/space.yaml",
-      "isSource": true,
-      "original": {
-        "$value": "{length.6xl}",
-        "$description": "96px spacer",
-        "$extensions": {
-          "com.redhat.ux": {
-            "color": "#f279a1"
-          }
-        },
-        "value": "{length.6xl}"
-      },
-      "name": "rh-space-6xl",
-      "attributes": {
-        "category": "space",
-        "type": "6xl",
-        "px": 96
-      },
-      "path": [
-        "space",
-        "6xl"
-      ],
-      "comment": "96px spacer",
-      "$type": "dimension"
-    }
-  ],
-  [
-    "--rh-space-7xl",
-    {
-      "$value": "128px",
-      "$description": "128px spacer",
-      "$extensions": {
-        "com.redhat.ux": {
-          "color": "#bf1d1d"
-        }
-      },
-      "value": "128px",
-      "filePath": "tokens/length/space.yaml",
-      "isSource": true,
-      "original": {
-        "$value": "{length.7xl}",
-        "$description": "128px spacer",
-        "$extensions": {
-          "com.redhat.ux": {
-            "color": "#bf1d1d"
-          }
-        },
-        "value": "{length.7xl}"
-      },
-      "name": "rh-space-7xl",
-      "attributes": {
-        "category": "space",
-        "type": "7xl",
-        "px": 128
-      },
-      "path": [
-        "space",
-        "7xl"
-      ],
-      "comment": "128px spacer",
-      "$type": "dimension"
+      ]
     }
   ],
   [
@@ -14687,9 +20751,9 @@ export const tokens = new Map([
           "title": "Extra Small"
         }
       },
-      "value": "(min-width: 576px)",
       "filePath": "tokens/media.yml",
       "isSource": true,
+      "$type": "mediaQuery",
       "original": {
         "$description": "Mobile portrait",
         "$value": {
@@ -14700,9 +20764,7 @@ export const tokens = new Map([
             "title": "Extra Small"
           }
         },
-        "value": {
-          "min-width": "{breakpoint.xs}"
-        }
+        "$type": "mediaQuery"
       },
       "name": "rh-media-xs",
       "attributes": {
@@ -14712,9 +20774,7 @@ export const tokens = new Map([
       "path": [
         "media",
         "xs"
-      ],
-      "comment": "Mobile portrait",
-      "$type": "mediaQuery"
+      ]
     }
   ],
   [
@@ -14727,9 +20787,9 @@ export const tokens = new Map([
           "title": "Small"
         }
       },
-      "value": "(min-width: 768px)",
       "filePath": "tokens/media.yml",
       "isSource": true,
+      "$type": "mediaQuery",
       "original": {
         "$description": "Mobile landscape",
         "$value": {
@@ -14740,9 +20800,7 @@ export const tokens = new Map([
             "title": "Small"
           }
         },
-        "value": {
-          "min-width": "{breakpoint.sm}"
-        }
+        "$type": "mediaQuery"
       },
       "name": "rh-media-sm",
       "attributes": {
@@ -14752,9 +20810,7 @@ export const tokens = new Map([
       "path": [
         "media",
         "sm"
-      ],
-      "comment": "Mobile landscape",
-      "$type": "mediaQuery"
+      ]
     }
   ],
   [
@@ -14767,9 +20823,9 @@ export const tokens = new Map([
           "title": "Medium"
         }
       },
-      "value": "(min-width: 992px)",
       "filePath": "tokens/media.yml",
       "isSource": true,
+      "$type": "mediaQuery",
       "original": {
         "$description": "Tablet portrait",
         "$value": {
@@ -14780,9 +20836,7 @@ export const tokens = new Map([
             "title": "Medium"
           }
         },
-        "value": {
-          "min-width": "{breakpoint.md}"
-        }
+        "$type": "mediaQuery"
       },
       "name": "rh-media-md",
       "attributes": {
@@ -14792,9 +20846,7 @@ export const tokens = new Map([
       "path": [
         "media",
         "md"
-      ],
-      "comment": "Tablet portrait",
-      "$type": "mediaQuery"
+      ]
     }
   ],
   [
@@ -14807,9 +20859,9 @@ export const tokens = new Map([
           "title": "Large"
         }
       },
-      "value": "(min-width: 1200px)",
       "filePath": "tokens/media.yml",
       "isSource": true,
+      "$type": "mediaQuery",
       "original": {
         "$description": "Tablet landscape",
         "$value": {
@@ -14820,9 +20872,7 @@ export const tokens = new Map([
             "title": "Large"
           }
         },
-        "value": {
-          "min-width": "{breakpoint.lg}"
-        }
+        "$type": "mediaQuery"
       },
       "name": "rh-media-lg",
       "attributes": {
@@ -14832,9 +20882,7 @@ export const tokens = new Map([
       "path": [
         "media",
         "lg"
-      ],
-      "comment": "Tablet landscape",
-      "$type": "mediaQuery"
+      ]
     }
   ],
   [
@@ -14847,9 +20895,9 @@ export const tokens = new Map([
           "title": "Extra Large"
         }
       },
-      "value": "(min-width: 1440px)",
       "filePath": "tokens/media.yml",
       "isSource": true,
+      "$type": "mediaQuery",
       "original": {
         "$description": "Desktop small",
         "$value": {
@@ -14860,9 +20908,7 @@ export const tokens = new Map([
             "title": "Extra Large"
           }
         },
-        "value": {
-          "min-width": "{breakpoint.xl}"
-        }
+        "$type": "mediaQuery"
       },
       "name": "rh-media-xl",
       "attributes": {
@@ -14872,9 +20918,7 @@ export const tokens = new Map([
       "path": [
         "media",
         "xl"
-      ],
-      "comment": "Desktop small",
-      "$type": "mediaQuery"
+      ]
     }
   ],
   [
@@ -14887,9 +20931,9 @@ export const tokens = new Map([
           "title": "Extra Extra Large"
         }
       },
-      "value": "(min-width: 1680px)",
       "filePath": "tokens/media.yml",
       "isSource": true,
+      "$type": "mediaQuery",
       "original": {
         "$description": "Desktop Large",
         "$value": {
@@ -14900,9 +20944,7 @@ export const tokens = new Map([
             "title": "Extra Extra Large"
           }
         },
-        "value": {
-          "min-width": "{breakpoint.2xl}"
-        }
+        "$type": "mediaQuery"
       },
       "name": "rh-media-2xl",
       "attributes": {
@@ -14912,9 +20954,7 @@ export const tokens = new Map([
       "path": [
         "media",
         "2xl"
-      ],
-      "comment": "Desktop Large",
-      "$type": "mediaQuery"
+      ]
     }
   ],
   [
@@ -14922,13 +20962,11 @@ export const tokens = new Map([
     {
       "$value": "0%",
       "$description": "0% opacity",
-      "value": "0%",
       "filePath": "tokens/opacity.yml",
       "isSource": true,
       "original": {
         "$value": "0%",
-        "$description": "0% opacity",
-        "value": "0%"
+        "$description": "0% opacity"
       },
       "name": "rh-opacity-0",
       "attributes": {
@@ -14938,8 +20976,7 @@ export const tokens = new Map([
       "path": [
         "opacity",
         "0"
-      ],
-      "comment": "0% opacity"
+      ]
     }
   ],
   [
@@ -14947,13 +20984,11 @@ export const tokens = new Map([
     {
       "$value": "10%",
       "$description": "10% opacity",
-      "value": "10%",
       "filePath": "tokens/opacity.yml",
       "isSource": true,
       "original": {
         "$value": "10%",
-        "$description": "10% opacity",
-        "value": "10%"
+        "$description": "10% opacity"
       },
       "name": "rh-opacity-10",
       "attributes": {
@@ -14963,8 +20998,7 @@ export const tokens = new Map([
       "path": [
         "opacity",
         "10"
-      ],
-      "comment": "10% opacity"
+      ]
     }
   ],
   [
@@ -14972,13 +21006,11 @@ export const tokens = new Map([
     {
       "$value": "20%",
       "$description": "20% opacity",
-      "value": "20%",
       "filePath": "tokens/opacity.yml",
       "isSource": true,
       "original": {
         "$value": "20%",
-        "$description": "20% opacity",
-        "value": "20%"
+        "$description": "20% opacity"
       },
       "name": "rh-opacity-20",
       "attributes": {
@@ -14988,8 +21020,7 @@ export const tokens = new Map([
       "path": [
         "opacity",
         "20"
-      ],
-      "comment": "20% opacity"
+      ]
     }
   ],
   [
@@ -14997,13 +21028,11 @@ export const tokens = new Map([
     {
       "$value": "30%",
       "$description": "30% opacity",
-      "value": "30%",
       "filePath": "tokens/opacity.yml",
       "isSource": true,
       "original": {
         "$value": "30%",
-        "$description": "30% opacity",
-        "value": "30%"
+        "$description": "30% opacity"
       },
       "name": "rh-opacity-30",
       "attributes": {
@@ -15013,8 +21042,7 @@ export const tokens = new Map([
       "path": [
         "opacity",
         "30"
-      ],
-      "comment": "30% opacity"
+      ]
     }
   ],
   [
@@ -15022,13 +21050,11 @@ export const tokens = new Map([
     {
       "$value": "40%",
       "$description": "40% opacity",
-      "value": "40%",
       "filePath": "tokens/opacity.yml",
       "isSource": true,
       "original": {
         "$value": "40%",
-        "$description": "40% opacity",
-        "value": "40%"
+        "$description": "40% opacity"
       },
       "name": "rh-opacity-40",
       "attributes": {
@@ -15038,8 +21064,7 @@ export const tokens = new Map([
       "path": [
         "opacity",
         "40"
-      ],
-      "comment": "40% opacity"
+      ]
     }
   ],
   [
@@ -15047,13 +21072,11 @@ export const tokens = new Map([
     {
       "$value": "50%",
       "$description": "50% opacity",
-      "value": "50%",
       "filePath": "tokens/opacity.yml",
       "isSource": true,
       "original": {
         "$value": "50%",
-        "$description": "50% opacity",
-        "value": "50%"
+        "$description": "50% opacity"
       },
       "name": "rh-opacity-50",
       "attributes": {
@@ -15063,8 +21086,7 @@ export const tokens = new Map([
       "path": [
         "opacity",
         "50"
-      ],
-      "comment": "50% opacity"
+      ]
     }
   ],
   [
@@ -15072,13 +21094,11 @@ export const tokens = new Map([
     {
       "$value": "60%",
       "$description": "60% opacity",
-      "value": "60%",
       "filePath": "tokens/opacity.yml",
       "isSource": true,
       "original": {
         "$value": "60%",
-        "$description": "60% opacity",
-        "value": "60%"
+        "$description": "60% opacity"
       },
       "name": "rh-opacity-60",
       "attributes": {
@@ -15088,8 +21108,7 @@ export const tokens = new Map([
       "path": [
         "opacity",
         "60"
-      ],
-      "comment": "60% opacity"
+      ]
     }
   ],
   [
@@ -15097,13 +21116,11 @@ export const tokens = new Map([
     {
       "$value": "70%",
       "$description": "70% opacity",
-      "value": "70%",
       "filePath": "tokens/opacity.yml",
       "isSource": true,
       "original": {
         "$value": "70%",
-        "$description": "70% opacity",
-        "value": "70%"
+        "$description": "70% opacity"
       },
       "name": "rh-opacity-70",
       "attributes": {
@@ -15113,8 +21130,7 @@ export const tokens = new Map([
       "path": [
         "opacity",
         "70"
-      ],
-      "comment": "70% opacity"
+      ]
     }
   ],
   [
@@ -15122,13 +21138,11 @@ export const tokens = new Map([
     {
       "$value": "80%",
       "$description": "80% opacity",
-      "value": "80%",
       "filePath": "tokens/opacity.yml",
       "isSource": true,
       "original": {
         "$value": "80%",
-        "$description": "80% opacity",
-        "value": "80%"
+        "$description": "80% opacity"
       },
       "name": "rh-opacity-80",
       "attributes": {
@@ -15138,8 +21152,7 @@ export const tokens = new Map([
       "path": [
         "opacity",
         "80"
-      ],
-      "comment": "80% opacity"
+      ]
     }
   ],
   [
@@ -15147,13 +21160,11 @@ export const tokens = new Map([
     {
       "$value": "90%",
       "$description": "90% opacity",
-      "value": "90%",
       "filePath": "tokens/opacity.yml",
       "isSource": true,
       "original": {
         "$value": "90%",
-        "$description": "90% opacity",
-        "value": "90%"
+        "$description": "90% opacity"
       },
       "name": "rh-opacity-90",
       "attributes": {
@@ -15163,8 +21174,7 @@ export const tokens = new Map([
       "path": [
         "opacity",
         "90"
-      ],
-      "comment": "90% opacity"
+      ]
     }
   ],
   [
@@ -15172,13 +21182,11 @@ export const tokens = new Map([
     {
       "$value": "100%",
       "$description": "100% opacity",
-      "value": "100%",
       "filePath": "tokens/opacity.yml",
       "isSource": true,
       "original": {
         "$value": "100%",
-        "$description": "100% opacity",
-        "value": "100%"
+        "$description": "100% opacity"
       },
       "name": "rh-opacity-100",
       "attributes": {
@@ -15188,8 +21196,7 @@ export const tokens = new Map([
       "path": [
         "opacity",
         "100"
-      ],
-      "comment": "100% opacity"
+      ]
     }
   ],
   [
@@ -15197,25 +21204,19 @@ export const tokens = new Map([
     {
       "$description": "Small box shadow",
       "$value": "0 2px 4px 0 rgba(21, 21, 21, 0.2)",
-      "value": "0 2px 4px 0 rgba(21, 21, 21, 0.2)",
       "filePath": "tokens/shadow.yml",
       "isSource": true,
+      "$type": "shadow",
       "original": {
         "$description": "Small box shadow",
         "$value": {
-          "offsetX": 0,
+          "offsetX": "0",
           "offsetY": "{length.3xs}",
           "blur": "{length.xs}",
-          "spread": 0,
+          "spread": "0",
           "color": "rgba(21, 21, 21, 0.2)"
         },
-        "value": {
-          "offsetX": 0,
-          "offsetY": "{length.3xs}",
-          "blur": "{length.xs}",
-          "spread": 0,
-          "color": "rgba(21, 21, 21, 0.2)"
-        }
+        "$type": "shadow"
       },
       "name": "rh-box-shadow-sm",
       "attributes": {
@@ -15225,9 +21226,7 @@ export const tokens = new Map([
       "path": [
         "box-shadow",
         "sm"
-      ],
-      "comment": "Small box shadow",
-      "$type": "shadow"
+      ]
     }
   ],
   [
@@ -15235,25 +21234,19 @@ export const tokens = new Map([
     {
       "$description": "Medium box shadow",
       "$value": "0 4px 6px 1px rgba(21, 21, 21, 0.25)",
-      "value": "0 4px 6px 1px rgba(21, 21, 21, 0.25)",
       "filePath": "tokens/shadow.yml",
       "isSource": true,
+      "$type": "shadow",
       "original": {
         "$description": "Medium box shadow",
         "$value": {
-          "offsetX": 0,
+          "offsetX": "0",
           "offsetY": "{length.xs}",
           "blur": "{length.sm}",
           "spread": "{length.4xs}",
           "color": "rgba(21, 21, 21, 0.25)"
         },
-        "value": {
-          "offsetX": 0,
-          "offsetY": "{length.xs}",
-          "blur": "{length.sm}",
-          "spread": "{length.4xs}",
-          "color": "rgba(21, 21, 21, 0.25)"
-        }
+        "$type": "shadow"
       },
       "name": "rh-box-shadow-md",
       "attributes": {
@@ -15263,9 +21256,7 @@ export const tokens = new Map([
       "path": [
         "box-shadow",
         "md"
-      ],
-      "comment": "Medium box shadow",
-      "$type": "shadow"
+      ]
     }
   ],
   [
@@ -15273,25 +21264,19 @@ export const tokens = new Map([
     {
       "$description": "Large box shadow",
       "$value": "0 6px 8px 2px rgba(21, 21, 21, 0.3)",
-      "value": "0 6px 8px 2px rgba(21, 21, 21, 0.3)",
       "filePath": "tokens/shadow.yml",
       "isSource": true,
+      "$type": "shadow",
       "original": {
         "$description": "Large box shadow",
         "$value": {
-          "offsetX": 0,
+          "offsetX": "0",
           "offsetY": "{length.sm}",
           "blur": "{length.md}",
           "spread": "{length.3xs}",
           "color": "rgba(21, 21, 21, 0.3)"
         },
-        "value": {
-          "offsetX": 0,
-          "offsetY": "{length.sm}",
-          "blur": "{length.md}",
-          "spread": "{length.3xs}",
-          "color": "rgba(21, 21, 21, 0.3)"
-        }
+        "$type": "shadow"
       },
       "name": "rh-box-shadow-lg",
       "attributes": {
@@ -15301,9 +21286,7 @@ export const tokens = new Map([
       "path": [
         "box-shadow",
         "lg"
-      ],
-      "comment": "Large box shadow",
-      "$type": "shadow"
+      ]
     }
   ],
   [
@@ -15311,25 +21294,19 @@ export const tokens = new Map([
     {
       "$description": "Extra large box shadow",
       "$value": "0 8px 24px 3px rgba(21, 21, 21, 0.35)",
-      "value": "0 8px 24px 3px rgba(21, 21, 21, 0.35)",
       "filePath": "tokens/shadow.yml",
       "isSource": true,
+      "$type": "shadow",
       "original": {
         "$description": "Extra large box shadow",
         "$value": {
-          "offsetX": 0,
+          "offsetX": "0",
           "offsetY": "{length.md}",
           "blur": "{length.xl}",
           "spread": "{length.2xs}",
           "color": "rgba(21, 21, 21, 0.35)"
         },
-        "value": {
-          "offsetX": 0,
-          "offsetY": "{length.md}",
-          "blur": "{length.xl}",
-          "spread": "{length.2xs}",
-          "color": "rgba(21, 21, 21, 0.35)"
-        }
+        "$type": "shadow"
       },
       "name": "rh-box-shadow-xl",
       "attributes": {
@@ -15339,9 +21316,742 @@ export const tokens = new Map([
       "path": [
         "box-shadow",
         "xl"
-      ],
-      "comment": "Extra large box shadow",
-      "$type": "shadow"
+      ]
+    }
+  ],
+  [
+    "--rh-length-4xs",
+    {
+      "$value": "1px",
+      "$description": "1px length token",
+      "filePath": "tokens/length/length.yaml",
+      "isSource": true,
+      "$type": "dimension",
+      "original": {
+        "$value": "1px",
+        "$description": "1px length token",
+        "$type": "dimension"
+      },
+      "name": "rh-length-4xs",
+      "attributes": {
+        "category": "length",
+        "type": "4xs",
+        "px": 1
+      },
+      "path": [
+        "length",
+        "4xs"
+      ]
+    }
+  ],
+  [
+    "--rh-length-3xs",
+    {
+      "$value": "2px",
+      "$description": "2px length token",
+      "filePath": "tokens/length/length.yaml",
+      "isSource": true,
+      "$type": "dimension",
+      "original": {
+        "$value": "2px",
+        "$description": "2px length token",
+        "$type": "dimension"
+      },
+      "name": "rh-length-3xs",
+      "attributes": {
+        "category": "length",
+        "type": "3xs",
+        "px": 2
+      },
+      "path": [
+        "length",
+        "3xs"
+      ]
+    }
+  ],
+  [
+    "--rh-length-2xs",
+    {
+      "$value": "3px",
+      "$description": "3px length token",
+      "filePath": "tokens/length/length.yaml",
+      "isSource": true,
+      "$type": "dimension",
+      "original": {
+        "$value": "3px",
+        "$description": "3px length token",
+        "$type": "dimension"
+      },
+      "name": "rh-length-2xs",
+      "attributes": {
+        "category": "length",
+        "type": "2xs",
+        "px": 3
+      },
+      "path": [
+        "length",
+        "2xs"
+      ]
+    }
+  ],
+  [
+    "--rh-length-xs",
+    {
+      "$value": "4px",
+      "$description": "4px length token",
+      "filePath": "tokens/length/length.yaml",
+      "isSource": true,
+      "$type": "dimension",
+      "original": {
+        "$value": "4px",
+        "$description": "4px length token",
+        "$type": "dimension"
+      },
+      "name": "rh-length-xs",
+      "attributes": {
+        "category": "length",
+        "type": "xs",
+        "px": 4
+      },
+      "path": [
+        "length",
+        "xs"
+      ]
+    }
+  ],
+  [
+    "--rh-length-sm",
+    {
+      "$value": "6px",
+      "$description": "6px length token",
+      "filePath": "tokens/length/length.yaml",
+      "isSource": true,
+      "$type": "dimension",
+      "original": {
+        "$value": "6px",
+        "$description": "6px length token",
+        "$type": "dimension"
+      },
+      "name": "rh-length-sm",
+      "attributes": {
+        "category": "length",
+        "type": "sm",
+        "px": 6
+      },
+      "path": [
+        "length",
+        "sm"
+      ]
+    }
+  ],
+  [
+    "--rh-length-md",
+    {
+      "$value": "8px",
+      "$description": "8px length token",
+      "filePath": "tokens/length/length.yaml",
+      "isSource": true,
+      "$type": "dimension",
+      "original": {
+        "$value": "8px",
+        "$description": "8px length token",
+        "$type": "dimension"
+      },
+      "name": "rh-length-md",
+      "attributes": {
+        "category": "length",
+        "type": "md",
+        "px": 8
+      },
+      "path": [
+        "length",
+        "md"
+      ]
+    }
+  ],
+  [
+    "--rh-length-lg",
+    {
+      "$value": "16px",
+      "$description": "16px length token",
+      "filePath": "tokens/length/length.yaml",
+      "isSource": true,
+      "$type": "dimension",
+      "original": {
+        "$value": "16px",
+        "$description": "16px length token",
+        "$type": "dimension"
+      },
+      "name": "rh-length-lg",
+      "attributes": {
+        "category": "length",
+        "type": "lg",
+        "px": 16
+      },
+      "path": [
+        "length",
+        "lg"
+      ]
+    }
+  ],
+  [
+    "--rh-length-xl",
+    {
+      "$value": "24px",
+      "$description": "24px length token",
+      "filePath": "tokens/length/length.yaml",
+      "isSource": true,
+      "$type": "dimension",
+      "original": {
+        "$value": "24px",
+        "$description": "24px length token",
+        "$type": "dimension"
+      },
+      "name": "rh-length-xl",
+      "attributes": {
+        "category": "length",
+        "type": "xl",
+        "px": 24
+      },
+      "path": [
+        "length",
+        "xl"
+      ]
+    }
+  ],
+  [
+    "--rh-length-2xl",
+    {
+      "$value": "32px",
+      "$description": "32px length token",
+      "filePath": "tokens/length/length.yaml",
+      "isSource": true,
+      "$type": "dimension",
+      "original": {
+        "$value": "32px",
+        "$description": "32px length token",
+        "$type": "dimension"
+      },
+      "name": "rh-length-2xl",
+      "attributes": {
+        "category": "length",
+        "type": "2xl",
+        "px": 32
+      },
+      "path": [
+        "length",
+        "2xl"
+      ]
+    }
+  ],
+  [
+    "--rh-length-3xl",
+    {
+      "$value": "48px",
+      "$description": "48px length token",
+      "filePath": "tokens/length/length.yaml",
+      "isSource": true,
+      "$type": "dimension",
+      "original": {
+        "$value": "48px",
+        "$description": "48px length token",
+        "$type": "dimension"
+      },
+      "name": "rh-length-3xl",
+      "attributes": {
+        "category": "length",
+        "type": "3xl",
+        "px": 48
+      },
+      "path": [
+        "length",
+        "3xl"
+      ]
+    }
+  ],
+  [
+    "--rh-length-4xl",
+    {
+      "$value": "64px",
+      "$description": "64px length token",
+      "filePath": "tokens/length/length.yaml",
+      "isSource": true,
+      "$type": "dimension",
+      "original": {
+        "$value": "64px",
+        "$description": "64px length token",
+        "$type": "dimension"
+      },
+      "name": "rh-length-4xl",
+      "attributes": {
+        "category": "length",
+        "type": "4xl",
+        "px": 64
+      },
+      "path": [
+        "length",
+        "4xl"
+      ]
+    }
+  ],
+  [
+    "--rh-length-5xl",
+    {
+      "$value": "80px",
+      "$description": "80px length token",
+      "filePath": "tokens/length/length.yaml",
+      "isSource": true,
+      "$type": "dimension",
+      "original": {
+        "$value": "80px",
+        "$description": "80px length token",
+        "$type": "dimension"
+      },
+      "name": "rh-length-5xl",
+      "attributes": {
+        "category": "length",
+        "type": "5xl",
+        "px": 80
+      },
+      "path": [
+        "length",
+        "5xl"
+      ]
+    }
+  ],
+  [
+    "--rh-length-6xl",
+    {
+      "$value": "96px",
+      "$description": "96px length token",
+      "filePath": "tokens/length/length.yaml",
+      "isSource": true,
+      "$type": "dimension",
+      "original": {
+        "$value": "96px",
+        "$description": "96px length token",
+        "$type": "dimension"
+      },
+      "name": "rh-length-6xl",
+      "attributes": {
+        "category": "length",
+        "type": "6xl",
+        "px": 96
+      },
+      "path": [
+        "length",
+        "6xl"
+      ]
+    }
+  ],
+  [
+    "--rh-length-7xl",
+    {
+      "$value": "128px",
+      "$description": "128px length token",
+      "filePath": "tokens/length/length.yaml",
+      "isSource": true,
+      "$type": "dimension",
+      "original": {
+        "$value": "128px",
+        "$description": "128px length token",
+        "$type": "dimension"
+      },
+      "name": "rh-length-7xl",
+      "attributes": {
+        "category": "length",
+        "type": "7xl",
+        "px": 128
+      },
+      "path": [
+        "length",
+        "7xl"
+      ]
+    }
+  ],
+  [
+    "--rh-space-xs",
+    {
+      "$value": "4px",
+      "$description": "4px spacer",
+      "$extensions": {
+        "com.redhat.ux": {
+          "color": "#ec861b"
+        }
+      },
+      "filePath": "tokens/length/space.yaml",
+      "isSource": true,
+      "$type": "dimension",
+      "original": {
+        "$value": "{length.xs}",
+        "$description": "4px spacer",
+        "$extensions": {
+          "com.redhat.ux": {
+            "color": "#ec861b"
+          }
+        },
+        "$type": "dimension"
+      },
+      "name": "rh-space-xs",
+      "attributes": {
+        "category": "space",
+        "type": "xs",
+        "px": 4
+      },
+      "path": [
+        "space",
+        "xs"
+      ]
+    }
+  ],
+  [
+    "--rh-space-sm",
+    {
+      "$value": "6px",
+      "$description": "6px spacer",
+      "$extensions": {
+        "com.redhat.ux": {
+          "color": "#f3d53c"
+        }
+      },
+      "filePath": "tokens/length/space.yaml",
+      "isSource": true,
+      "$type": "dimension",
+      "original": {
+        "$value": "{length.sm}",
+        "$description": "6px spacer",
+        "$extensions": {
+          "com.redhat.ux": {
+            "color": "#f3d53c"
+          }
+        },
+        "$type": "dimension"
+      },
+      "name": "rh-space-sm",
+      "attributes": {
+        "category": "space",
+        "type": "sm",
+        "px": 6
+      },
+      "path": [
+        "space",
+        "sm"
+      ]
+    }
+  ],
+  [
+    "--rh-space-md",
+    {
+      "$value": "8px",
+      "$description": "8px spacer",
+      "$extensions": {
+        "com.redhat.ux": {
+          "color": "#9bd917"
+        }
+      },
+      "filePath": "tokens/length/space.yaml",
+      "isSource": true,
+      "$type": "dimension",
+      "original": {
+        "$value": "{length.md}",
+        "$description": "8px spacer",
+        "$extensions": {
+          "com.redhat.ux": {
+            "color": "#9bd917"
+          }
+        },
+        "$type": "dimension"
+      },
+      "name": "rh-space-md",
+      "attributes": {
+        "category": "space",
+        "type": "md",
+        "px": 8
+      },
+      "path": [
+        "space",
+        "md"
+      ]
+    }
+  ],
+  [
+    "--rh-space-lg",
+    {
+      "$value": "16px",
+      "$description": "16px spacer",
+      "$extensions": {
+        "com.redhat.ux": {
+          "color": "#51a549"
+        }
+      },
+      "filePath": "tokens/length/space.yaml",
+      "isSource": true,
+      "$type": "dimension",
+      "original": {
+        "$value": "{length.lg}",
+        "$description": "16px spacer",
+        "$extensions": {
+          "com.redhat.ux": {
+            "color": "#51a549"
+          }
+        },
+        "$type": "dimension"
+      },
+      "name": "rh-space-lg",
+      "attributes": {
+        "category": "space",
+        "type": "lg",
+        "px": 16
+      },
+      "path": [
+        "space",
+        "lg"
+      ]
+    }
+  ],
+  [
+    "--rh-space-xl",
+    {
+      "$value": "24px",
+      "$description": "24px spacer",
+      "$extensions": {
+        "com.redhat.ux": {
+          "color": "#1b8793"
+        }
+      },
+      "filePath": "tokens/length/space.yaml",
+      "isSource": true,
+      "$type": "dimension",
+      "original": {
+        "$value": "{length.xl}",
+        "$description": "24px spacer",
+        "$extensions": {
+          "com.redhat.ux": {
+            "color": "#1b8793"
+          }
+        },
+        "$type": "dimension"
+      },
+      "name": "rh-space-xl",
+      "attributes": {
+        "category": "space",
+        "type": "xl",
+        "px": 24
+      },
+      "path": [
+        "space",
+        "xl"
+      ]
+    }
+  ],
+  [
+    "--rh-space-2xl",
+    {
+      "$value": "32px",
+      "$description": "32px spacer",
+      "$extensions": {
+        "com.redhat.ux": {
+          "color": "#1893d2"
+        }
+      },
+      "filePath": "tokens/length/space.yaml",
+      "isSource": true,
+      "$type": "dimension",
+      "original": {
+        "$value": "{length.2xl}",
+        "$description": "32px spacer",
+        "$extensions": {
+          "com.redhat.ux": {
+            "color": "#1893d2"
+          }
+        },
+        "$type": "dimension"
+      },
+      "name": "rh-space-2xl",
+      "attributes": {
+        "category": "space",
+        "type": "2xl",
+        "px": 32
+      },
+      "path": [
+        "space",
+        "2xl"
+      ]
+    }
+  ],
+  [
+    "--rh-space-3xl",
+    {
+      "$value": "48px",
+      "$description": "48px spacer",
+      "$extensions": {
+        "com.redhat.ux": {
+          "color": "#6743c6"
+        }
+      },
+      "filePath": "tokens/length/space.yaml",
+      "isSource": true,
+      "$type": "dimension",
+      "original": {
+        "$value": "{length.3xl}",
+        "$description": "48px spacer",
+        "$extensions": {
+          "com.redhat.ux": {
+            "color": "#6743c6"
+          }
+        },
+        "$type": "dimension"
+      },
+      "name": "rh-space-3xl",
+      "attributes": {
+        "category": "space",
+        "type": "3xl",
+        "px": 48
+      },
+      "path": [
+        "space",
+        "3xl"
+      ]
+    }
+  ],
+  [
+    "--rh-space-4xl",
+    {
+      "$value": "64px",
+      "$description": "64px spacer",
+      "$extensions": {
+        "com.redhat.ux": {
+          "color": "#341974"
+        }
+      },
+      "filePath": "tokens/length/space.yaml",
+      "isSource": true,
+      "$type": "dimension",
+      "original": {
+        "$value": "{length.4xl}",
+        "$description": "64px spacer",
+        "$extensions": {
+          "com.redhat.ux": {
+            "color": "#341974"
+          }
+        },
+        "$type": "dimension"
+      },
+      "name": "rh-space-4xl",
+      "attributes": {
+        "category": "space",
+        "type": "4xl",
+        "px": 64
+      },
+      "path": [
+        "space",
+        "4xl"
+      ]
+    }
+  ],
+  [
+    "--rh-space-5xl",
+    {
+      "$value": "80px",
+      "$description": "80px spacer",
+      "$extensions": {
+        "com.redhat.ux": {
+          "color": "#b300b3"
+        }
+      },
+      "filePath": "tokens/length/space.yaml",
+      "isSource": true,
+      "$type": "dimension",
+      "original": {
+        "$value": "{length.5xl}",
+        "$description": "80px spacer",
+        "$extensions": {
+          "com.redhat.ux": {
+            "color": "#b300b3"
+          }
+        },
+        "$type": "dimension"
+      },
+      "name": "rh-space-5xl",
+      "attributes": {
+        "category": "space",
+        "type": "5xl",
+        "px": 80
+      },
+      "path": [
+        "space",
+        "5xl"
+      ]
+    }
+  ],
+  [
+    "--rh-space-6xl",
+    {
+      "$value": "96px",
+      "$description": "96px spacer",
+      "$extensions": {
+        "com.redhat.ux": {
+          "color": "#f279a1"
+        }
+      },
+      "filePath": "tokens/length/space.yaml",
+      "isSource": true,
+      "$type": "dimension",
+      "original": {
+        "$value": "{length.6xl}",
+        "$description": "96px spacer",
+        "$extensions": {
+          "com.redhat.ux": {
+            "color": "#f279a1"
+          }
+        },
+        "$type": "dimension"
+      },
+      "name": "rh-space-6xl",
+      "attributes": {
+        "category": "space",
+        "type": "6xl",
+        "px": 96
+      },
+      "path": [
+        "space",
+        "6xl"
+      ]
+    }
+  ],
+  [
+    "--rh-space-7xl",
+    {
+      "$value": "128px",
+      "$description": "128px spacer",
+      "$extensions": {
+        "com.redhat.ux": {
+          "color": "#bf1d1d"
+        }
+      },
+      "filePath": "tokens/length/space.yaml",
+      "isSource": true,
+      "$type": "dimension",
+      "original": {
+        "$value": "{length.7xl}",
+        "$description": "128px spacer",
+        "$extensions": {
+          "com.redhat.ux": {
+            "color": "#bf1d1d"
+          }
+        },
+        "$type": "dimension"
+      },
+      "name": "rh-space-7xl",
+      "attributes": {
+        "category": "space",
+        "type": "7xl",
+        "px": 128
+      },
+      "path": [
+        "space",
+        "7xl"
+      ]
     }
   ]
 ]);

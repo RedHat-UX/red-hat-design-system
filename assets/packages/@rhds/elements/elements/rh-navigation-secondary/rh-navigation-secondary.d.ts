@@ -38,6 +38,11 @@ export declare class RhNavigationSecondary extends LitElement {
     colorPalette: NavPalette;
     private _nav?;
     /**
+     * Customize the default `aria-label` on the `<nav>` container.
+     * Defaults to "secondary" if no attribute/property is set.
+     */
+    accessibleLabel: string;
+    /**
      * `mobileMenuExpanded` property is toggled when the mobile menu button is clicked,
      * a focusout event occurs, or on an overlay click event.  It also switches state
      * when the viewport changes breakpoints depending on if a dropdown is open or not.

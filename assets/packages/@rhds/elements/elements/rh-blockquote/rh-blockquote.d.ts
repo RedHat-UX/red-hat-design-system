@@ -1,5 +1,6 @@
 import { LitElement } from 'lit';
 import { type ColorPalette } from '../../lib/context/color/provider.js';
+import '@rhds/elements/rh-icon/rh-icon.js';
 /**
  * A blockquote for displaying quote, author, and author title.
  *

@@ -16,6 +16,9 @@ let InstallationTabs = InstallationTabs_1 = class InstallationTabs extends RhTab
     async firstUpdated() {
         super.firstUpdated?.();
         await Promise.all(Array.from(this.querySelectorAll('rh-tab'), x => x.updateComplete));
+        for (const pre of this.querySelectorAll('rh-tab-panel > pre')) {
+            pre.style.maxWidth = '100cqw';
+        }
         if (InstallationTabs_1.stored !== null) {
             const index = parseInt(InstallationTabs_1.stored);
             if (!Number.isNaN(index)

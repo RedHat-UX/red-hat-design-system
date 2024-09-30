@@ -5,7 +5,7 @@
 All elements within a secondary navigation are focus stops. Pressing <code>Enter</code> when a menu has focus will expand or collapse it. Otherwise, users will be directed to a new page. If the height of the menu is taller than the viewport height due to lots of content, focus is trapped within the panel until the menu is collapsed.
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../nav-secondary-a11y-keyboard-interactions.png' | url }}" alt="Image of secondary navigations with diagrams of what happens when Tab or Enter keys are pressed">
+  <img src="../nav-secondary-a11y-keyboard-interactions.png" alt="Image of secondary navigations with diagrams of what happens when Tab or Enter keys are pressed">
 </uxdot-example>
 
 ### Keyboard events

@@ -23,7 +23,6 @@ export declare class AccordionCollapseEvent extends ComposedEvent {
  */
 export declare class RhAccordion extends LitElement {
     #private;
-    static readonly version = "{{version}}";
     static readonly styles: CSSStyleSheet[];
     static isAccordion(target: EventTarget | null): target is RhAccordion;
     static isHeader(target: EventTarget | null): target is RhAccordionHeader;
@@ -33,6 +32,20 @@ export declare class RhAccordion extends LitElement {
      * Sets accordion header's accents position to inline or bottom
      */
     accents?: 'inline' | 'bottom';
+    /**
+     * If this accordion uses large styles
+     */
+    large: boolean;
+    /**
+     * If this accordion has a border
+     */
+    bordered: boolean;
+    /**
+     * Color Palette for this accordion.
+     * @see https://ux.redhat.com/theming/color-palettes/
+     */
+    colorPalette?: ColorPalette;
+    private on?;
     /**
      * Sets and reflects the currently expanded accordion 0-based indexes.
      * Use commas to separate multiple indexes.
@@ -44,18 +57,16 @@ export declare class RhAccordion extends LitElement {
      */
     get expandedIndex(): number[];
     set expandedIndex(value: number[]);
-    large: boolean;
-    bordered: boolean;
-    colorPalette?: ColorPalette;
-    private on?;
-    protected expandedSets: Set<number>;
+    /** All headers for this accordion */
+    get headers(): RhAccordionHeader[];
+    /** All panels for this accordion */
+    get panels(): RhAccordionPanel[];
     private ctx;
     connectedCallback(): void;
     render(): TemplateResult;
     protected getUpdateComplete(): Promise<boolean>;
+    firstUpdated(): void;
     private contextChanged;
-    get headers(): RhAccordionHeader[];
-    get panels(): RhAccordionPanel[];
     /**
      * Initialize the accordion by connecting headers and panels
      * with aria controls and labels; set up the default disclosure
@@ -92,5 +103,9 @@ export declare class RhAccordion extends LitElement {
 declare global {
     interface HTMLElementTagNameMap {
         'rh-accordion': RhAccordion;
+    }
+    interface HTMLElementEventMap {
+        'expand': AccordionExpandEvent;
+        'collapse': AccordionCollapseEvent;
     }
 }

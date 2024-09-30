@@ -3,13 +3,10 @@
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_text-color: var(--rh-color-text-primary-on-light, #151515);
-  --_active-text-color: var(--rh-color-text-primary-on-light, #151515);
-  --_background-color: var(--rh-color-surface-lightest, #ffffff);
-  --_active-background-color: var(--_rhds-background-color, #f2f2f2);
+  --_active-text-color: var(--rh-color-text-primary);
   --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
-  --_expanded-background-color: var(--rh-color-accent-brand-on-light, #ee0000);
+  --_expanded-background-color: var(--rh-color-accent-brand);
   --_isRTL: -1;
 }
 
@@ -17,22 +14,14 @@
   font-size: 100%;
   padding: 0;
   margin: 0;
-  color: var(--rh-color-text-primary-on-light, #151515);
-  background-color: var(--_rhds-background-color, var(--rh-color-surface-lightest, #ffffff));
+  color: var(--rh-color-text-primary);
+  background-color: var(--rh-color-surface);
   font-weight: var(--rh-font-weight-heading-medium, 500);
 }
 
 button,
 a {
   cursor: pointer;
-}
-
-.dark {
-  --_text-color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_background-color: var(--rh-color-surface-darkest, #151515);
-  --_active-background-color: var(--rh-color-surface-darkest, #151515);
-  --_active-text-color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_expanded-background-color: var(--rh-color-accent-brand-on-dark, #ee0000);
 }
 
 .rtl {
@@ -50,19 +39,19 @@ a {
   border-inline-end:
     var(--rh-border-width-sm, 1px)
     solid
-    var(--_border-color, var(--rh-color-border-subtle-on-dark, #707070));
+    var(--rh-color-border-subtle);
 }
 
 :host(.animating) #button,
 :host([expanded]) #button {
-  border-inline-end-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
-  border-inline-start-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
+  border-inline-end-color: var(--rh-color-border-subtle);
+  border-inline-start-color: var(--rh-color-border-subtle);
 }
 
 #button,
 #button:before,
 #button:after {
-  background-color: var(--_background-color, transparent);
+  background-color: var(--rh-color-surface);
 }
 
 #icon {
@@ -79,14 +68,13 @@ a {
     var(--_padding-inline-end)
     var(--_padding-block-end)
     var(--_padding-inline-start);
-  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   font-size: var(--_font-size);
-  font-weight: var(--rh-font-weight-body-text-medium, 500);
-  color: var(--_text-color);
+  color: var(--rh-color-text-primary);
 }
 
 #button #icon {
-  fill: var(--_text-color);
+  fill: currentcolor;
 }
 
 #button:after {
@@ -100,7 +88,7 @@ span {
   text-align: start;
 }
 
-[part="container"] {
+[part='container'] {
   display: flex;
   gap: var(--rh-space-xl, 24px);
   container-type: inline-size;
@@ -109,20 +97,24 @@ span {
 #header-container {
   display: flex;
   gap: var(--rh-space-md, 8px);
-
-  &.bottom {
-    flex-direction: column;
-  }
 }
 
-[part="accents"] {
+#header-container.bottom {
+  flex-direction: column;
+}
+
+#header-text {
+  font-weight: var(--rh-font-weight-heading-bold, 700);
+}
+
+[part='accents'] {
   display: flex;
   flex-wrap: wrap;
   gap: var(--rh-space-md, 8px);
 }
 
 .expanded #button {
-  --_after-background-color: var(--_expanded-background-color);
+  --_after-background-color: var(--rh-color-accent-brand);
 }
 
 .expanded #button #icon {
@@ -132,7 +124,7 @@ span {
 #button:hover,
 #button:active,
 #button:focus {
-  background-color: var(--_active-background-color);
+  background-color: var(--rh-color-surface);
 }
 
 #button:hover span,
@@ -157,10 +149,18 @@ span {
 }
 
 .toggle:after {
-  content: "";
+  content: '';
   position: absolute;
   inset-block: 0;
   inset-inline-start: 0;
+}
+
+.expanded.on.light {
+  --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
+}
+
+.expanded.on.dark {
+  --rh-color-surface: var(--rh-color-surface-darkest, #151515);
 }
 
 @container (min-width: 576px) {

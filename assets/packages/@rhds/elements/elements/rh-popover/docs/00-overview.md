@@ -12,7 +12,7 @@ information or provides resources via text and links.
 ## Sample element
 
 <uxdot-example width-adjustment="424px">
-  <img src="{{ './popover-sample-component.svg' | url }}" alt="Popover component sample">
+  <img src="./popover-sample-component.svg" alt="Popover component sample">
 </uxdot-example>
 
 

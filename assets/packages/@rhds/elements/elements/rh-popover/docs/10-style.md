@@ -19,7 +19,7 @@ A popover should include text and interactive elements like a close button and
 links.
 
 <uxdot-example width-adjustment="538px">
-  <img src="{{ '../popover-style.svg' | url }}" alt="Popover component blueprint">
+  <img src="../popover-style.svg" alt="Popover component blueprint">
 </uxdot-example>
 
 
@@ -30,7 +30,7 @@ on the content and color of the background.
 
 <rh-alert state="warning">
  <h4 slot="header">Warning</h4>
-  <p>A heading does not need to be included, but if links are not included either, use a <a href="{{ '/elements/tooltip' | url }}">Tooltip</a> component instead.</p>
+  <p>A heading does not need to be included, but if links are not included either, use a <a href="/elements/tooltip">Tooltip</a> component instead.</p>
 </rh-alert>
 
 <div class="grid">
@@ -40,7 +40,7 @@ on the content and color of the background.
       <p>Use on light background.</p>
     </figcaption>
     <uxdot-example width-adjustment="392px" variant="full" no-border>
-      <img src="{{ '../popover-black.svg' | url }}" alt="Popover component, black variant">
+      <img src="../popover-black.svg" alt="Popover component, black variant">
     </uxdot-example>
   </figure>
   <figure>
@@ -49,14 +49,14 @@ on the content and color of the background.
       <p>Use on dark background.</p>
     </figcaption>
     <uxdot-example width-adjustment="392px" variant="full" no-border>
-      <img src="{{ '../popover-white.svg' | url }}" alt="Popover component, white variant">
+      <img src="../popover-white.svg" alt="Popover component, white variant">
     </uxdot-example>
   </figure>
   <figure>
     <figcaption><h4>With heading</h4></figcaption>
     <p>Use for messages that require a heading.</p>
     <uxdot-example width-adjustment="392px" variant="full" no-border>
-      <img src="{{ '../popover-with-heading.svg' | url }}" alt="Popover component, with heading variant">
+      <img src="../popover-with-heading.svg" alt="Popover component, with heading variant">
     </uxdot-example>
   </figure>
   <figure>
@@ -65,7 +65,7 @@ on the content and color of the background.
       <p>Use for messages that do not require a heading.</p>
     </figcaption>
     <uxdot-example width-adjustment="392px" variant="full" no-border>
-      <img src="{{ '../popover-without-heading.svg' | url }}" alt="Popover component, without heading variant">
+      <img src="../popover-without-heading.svg" alt="Popover component, without heading variant">
     </uxdot-example>
   </figure>
   <figure>
@@ -74,7 +74,7 @@ on the content and color of the background.
       <p>A drop shadow gives a popover subtle elevation above light backgrounds.</p>
     </figcaption>
     <uxdot-example width-adjustment="392px" variant="full" no-border>
-      <img src="{{ '../popover-with-drop-shadow.svg' | url }}" alt="Popover component, with drop shadow variant">
+      <img src="../popover-with-drop-shadow.svg" alt="Popover component, with drop shadow variant">
     </uxdot-example>
   </figure>
   <figure>
@@ -83,7 +83,7 @@ on the content and color of the background.
       <p>A drop shadow cannot be seen on dark backgrounds, so it is not included.</p> 
     </figcaption>
     <uxdot-example width-adjustment="392px" variant="full" no-border>
-      <img src="{{ '../popover-without-drop-shadow.svg' | url }}" alt="Popover component, without drop shadow variant">
+      <img src="../popover-without-drop-shadow.svg" alt="Popover component, without drop shadow variant">
     </uxdot-example>
   </figure>
 </div>
@@ -91,7 +91,7 @@ on the content and color of the background.
 
 ## Theme
 
-For popovers and [tooltips]({{ '/elements/tooltip' | url }}),
+For popovers and [tooltips](/elements/tooltip),
 the themes are inverted. For example, light theme popovers are **black* and
 should be used on light backgrounds; dark theme popovers are **white** and
 should be used on dark backgrounds.
@@ -99,14 +99,14 @@ should be used on dark backgrounds.
 ### Black (light backgrounds)
 
 <uxdot-example width-adjustment="392px">
-  <img src="{{ '../popover-theme-light.svg' | url }}" alt="Popover component, light theme">
+  <img src="../popover-theme-light.svg" alt="Popover component, light theme">
 </uxdot-example>
 
 
 ### White (dark backgrounds)
 
 <uxdot-example color-palette="darkest" width-adjustment="392px">
-  <img src="{{ '../popover-theme-dark.svg' | url }}" alt="Popover component, dark theme">
+  <img src="../popover-theme-dark.svg" alt="Popover component, dark theme">
 </uxdot-example>
 
 
@@ -118,14 +118,14 @@ screens.
 ### Large screens
 
 <uxdot-example width-adjustment="1000px" variant="full" no-border alignment="left">
-  <img src="{{ '../popover-responsive-design-lg.svg' | url }}" alt="Popover component responsive design, large screens">
+  <img src="../popover-responsive-design-lg.svg" alt="Popover component responsive design, large screens">
 </uxdot-example>
 
 
 ### Small screens
 
 <uxdot-example width-adjustment="360px" variant="full" no-border alignment="left">
-  <img src="{{ '../popover-responsive-design-sm.svg' | url }}" alt="Popover component responsive design, small screens">
+  <img src="../popover-responsive-design-sm.svg" alt="Popover component responsive design, small screens">
 </uxdot-example>
 
 
@@ -134,7 +134,7 @@ screens.
 Each popover orientation contains the same amount of spacing in between the component and icon.
 
 <uxdot-example palette="lightest" width-adjustment="392px">
-  <img src="{{ '../popover-spacing.svg' | url }}" alt="Popover component spacing">
+  <img src="../popover-spacing.svg" alt="Popover component spacing">
 </uxdot-example>
 
 <rh-table>

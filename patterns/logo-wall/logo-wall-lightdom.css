@@ -32,6 +32,10 @@
   padding: var(--rh-space-lg, 16px);
 }
 
+.logo-wall--borderless > * {
+  padding: var(--rh-space-lg, 16px) var(--rh-space-md, 8px);
+}
+
 .logo-wall--bordered > *:hover {
   background-color: var(--rh-color-gray-10, #f2f2f2);
   cursor: pointer;
@@ -44,7 +48,7 @@
 
 .logo-wall > * a:after {
   z-index: 3;
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   display: block;
@@ -56,24 +60,20 @@
   min-height: var(--logo-wall-logo-min-height);
 }
 
-[color-palette^="dark"] .logo-wall--bordered > :hover {
+[color-palette^='dark'] .logo-wall--bordered > :hover {
   background-color: var(--rh-color-gray-60, #4d4d4d);
 }
 
-[color-palette^="dark"] .logo-wall--bordered > :is(:focus, :active) {
+[color-palette^='dark'] .logo-wall--bordered > :is(:focus, :active) {
   background-color: var(--rh-color-gray-60, #4d4d4d);
 }
 
-[color-palette^="dark"] .logo-wall--light {
+[color-palette^='dark'] > .logo-wall-container .logo-wall--light {
   display: none;
 }
 
-[color-palette^="light"] .logo-wall--dark {
+[color-palette^='light'] > .logo-wall-container .logo-wall--dark {
   display: none;
-}
-
-.logo-wall--borderless > * {
-  padding: var(--rh-space-lg, 16px) var(--rh-space-md, 8px);
 }
 
 .logo-wall--borderless > :hover {
@@ -101,13 +101,6 @@
 @container logo-wall-container (min-width: 450px) {
   .logo-wall--three-columns {
     grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@container logo-wall-container (min-width: 992px) {
-  .logo-wall {
-    flex-wrap: nowrap;
-    max-width: var(--logo-wall-container-max-width, 1070px);
   }
 }
 

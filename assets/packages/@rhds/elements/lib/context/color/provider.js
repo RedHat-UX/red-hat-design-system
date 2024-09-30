@@ -3,6 +3,7 @@ import { __classPrivateFieldGet, __classPrivateFieldSet } from "tslib";
 import { contextEvents, ColorContextController, } from './controller.js';
 import { ColorContextConsumer } from './consumer.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
+import styles from '@rhds/tokens/css/color-context-provider.css.js';
 /**
  * `ColorContextProvider` is responsible to derive a context value from CSS and provide it to its
  * descendents.
@@ -16,7 +17,7 @@ export class ColorContextProvider extends ColorContextController {
     }
     constructor(host, options) {
         const { attribute = 'color-palette' } = options ?? {};
-        super(host);
+        super(host, styles);
         _ColorContextProvider_instances.add(this);
         _ColorContextProvider_attribute.set(this, void 0);
         /** Cache of context callbacks. Call each to update consumers */
@@ -71,7 +72,10 @@ export class ColorContextProvider extends ColorContextController {
         __classPrivateFieldGet(this, _ColorContextProvider_callbacks, "f").forEach(x => __classPrivateFieldGet(this, _ColorContextProvider_callbacks, "f").delete(x));
         __classPrivateFieldGet(this, _ColorContextProvider_mo, "f").disconnect();
     }
-    /** Calls the context callback for all consumers */
+    /**
+     * Calls the context callback for all consumers
+     * @param [force] override theme
+     */
     async update(force) {
         const { value } = this;
         for (const cb of __classPrivateFieldGet(this, _ColorContextProvider_callbacks, "f")) {
@@ -83,17 +87,18 @@ _a = ColorContextProvider, _ColorContextProvider_attribute = new WeakMap(), _Col
     return _a
         .contexts.get(this.host.getAttribute(__classPrivateFieldGet(this, _ColorContextProvider_attribute, "f")) ?? '');
 }, _ColorContextProvider_isColorContextEvent = function _ColorContextProvider_isColorContextEvent(event) {
-    return event.target !== this.host && event.context === ColorContextController.context;
+    return event.composedPath().at(0) !== this.host
+        && event.context === ColorContextController.context;
 }, _ColorContextProvider_onChildContextRequestEvent = 
 /**
  * Provider part of context API
  * When a child connects, claim its context-request event
  * and add its callback to the Set of children if it requests multiple updates
+ * @param event context-request event
  */
 async function _ColorContextProvider_onChildContextRequestEvent(event) {
     // only handle ContextEvents relevant to colour context
     if (__classPrivateFieldGet(this, _ColorContextProvider_instances, "m", _ColorContextProvider_isColorContextEvent).call(this, event)) {
-        // claim the context-request event for ourselves (required by context protocol)
         event.stopPropagation();
         // Run the callback to initialize the child's colour-context
         event.callback(this.value);
@@ -111,7 +116,10 @@ ColorContextProvider.contexts = new Map(Object.entries({
     lighter: 'light',
     lightest: 'light',
 }));
-/** Makes this element a color context provider which updates its consumers when the decorated field changes */
+/**
+ * Makes this element a color context provider which updates its consumers when the decorated field changes
+ * @param options options
+ */
 export function colorContextProvider(options) {
     return function (proto, _propertyName) {
         const propertyName = _propertyName;

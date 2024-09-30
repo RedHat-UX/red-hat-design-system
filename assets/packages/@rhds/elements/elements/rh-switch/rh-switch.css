@@ -3,18 +3,111 @@
   outline: none;
   vertical-align: top;
   cursor: pointer;
+}
 
-  --_switch-width: 40px;
-  --_switch-height: 24px;
-  --_switch-handle-size: 14px;
-  --_switch-track-background-color: var(--rh-color-gray-60, #4d4d4d);
-  --_margin-inline: 5px; /* non standard spacer */
+[hidden] {
+  display: none !important;
 }
 
 #container {
   display: inline-flex;
   align-items: center;
   gap: var(--rh-space-lg, 16px);
+
+  --_margin-inline: 5px; /* non standard spacer */
+  --_switch-width: 40px;
+  --_switch-height: 24px;
+  --_switch-handle-size: 14px;
+  --_switch-track-background-color: var(--rh-color-gray-60, #4d4d4d);
+  --_switch-handle-color: var(--rh-color-surface-lightest, #ffffff);
+
+  #switch {
+    align-items: center;
+    display: inline-flex;
+    flex-shrink: 0;
+    position: relative;
+    width: var(--_switch-width);
+    height: var(--_switch-height);
+    border-radius: var(--rh-border-radius-pill, 64px);
+
+    /* track */
+    &:before {
+      content: '';
+      display: flex;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--_switch-track-background-color);
+    }
+
+    /* handle */
+    &:after {
+      content: '';
+      height: var(--_switch-handle-size);
+      width: var(--_switch-handle-size);
+      border-radius: var(--rh-border-radius-pill, 64px);
+      transform-origin: center;
+      z-index: 0;
+      background-color: var(--_switch-handle-color);
+      margin-inline: var(--_margin-inline);
+      translate: 0%;
+      transition: translate 0.25s ease 0s;
+    }
+  }
+
+  & .message {
+    color: var(--rh-color-text-secondary);
+  }
+
+  &.checked {
+    --_switch-track-background-color: var(--rh-color-accent-base);
+
+    & .message {
+      color: var(--rh-color-text-primary);
+    }
+
+    & #switch:after {
+      translate:
+        calc(var(--_switch-width) - (var(--_switch-handle-size) +
+          (var(--_margin-inline) * 2)));
+    }
+
+    &.rtl #switch:after {
+      translate:
+        calc(-1 * (
+            var(--_switch-width) - (var(--_switch-handle-size) +
+            (var(--_margin-inline) * 2))
+          ));
+    }
+  }
+
+  &.dark {
+    --_switch-track-background-color: var(--rh-color-gray-40, #a3a3a3); /* no disabled token yet */
+    --_switch-handle-color: var(--rh-color-surface-dark-alt, #292929);
+
+    &.checked {
+      --_switch-track-background-color: var(--rh-color-accent-base);
+    }
+
+    &:after {
+      box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
+    }
+  }
+}
+
+rh-icon {
+  margin-inline: var(--_margin-inline);
+  color: var(--_switch-handle-color);
+  position: absolute;
+  z-index: 1;
+}
+
+:host(:is(:focus, :focus-within)) #container #switch {
+  outline: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive);
+  outline-offset: var(--rh-space-sm, 6px);
 }
 
 :host(:disabled) {
@@ -22,131 +115,19 @@
   cursor: not-allowed;
 
   --_switch-track-background-color: var(--rh-color-gray-30, #c7c7c7);
-}
 
-[hidden] {
-  display: none !important;
-}
+  & #container {
+    & .message {
+      color: var(--rh-color-gray-50, #707070);
+    }
 
-#switch {
-  align-items: center;
-  display: inline-flex;
-  flex-shrink: 0;
-  position: relative;
-  width: var(--_switch-width);
-  height: var(--_switch-height);
-  border-radius: var(--rh-border-radius-pill, 64px);
-}
+    &.dark {
+      --_switch-track-background-color: var(--rh-color-gray-60, #4d4d4d);
 
-:host(:is(:focus, :focus-within)) #switch {
-  outline:
-    var(--rh-border-width-md, 2px)
-    solid
-    var(--_switch-focus-outline-color, var(--rh-color-border-interactive-on-light, #0066cc));
-  outline-offset: var(--rh-space-sm, 6px);
-}
-
-/* track */
-#switch:before {
-  content: "";
-  display: flex;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: inherit;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--_switch-track-background-color);
-}
-
-/* handle */
-#switch:after {
-  content: "";
-  height: var(--_switch-handle-size);
-  width: var(--_switch-handle-size);
-  border-radius: var(--rh-border-radius-pill, 64px);
-  transform-origin: center;
-  z-index: 0;
-  background-color: var(--_switch-handle-color, var(--rh-color-surface-lightest, #ffffff));
-  margin-inline: var(--_margin-inline);
-  translate: 0%;
-  transition: translate 0.25s ease 0s;
-}
-
-:host([checked]:not(:disabled)) {
-  --_switch-track-background-color:
-    var(
-        --_switch-checked,
-        var(--rh-color-accent-base-on-light, #0066cc)
-      );
-}
-
-:host([checked]) #switch:after {
-  translate:
-    calc(
-        var(--_switch-width) - (var(--_switch-handle-size) +
-        (var(--_margin-inline) * 2))
-      );
-}
-
-:host([checked]) .rtl #switch:after {
-  translate:
-    calc(
-        -1 * (
-          var(--_switch-width) - (var(--_switch-handle-size) +
-          (var(--_margin-inline) * 2))
-        )
-      );
-}
-
-svg {
-  fill: currentcolor;
-  margin-inline: var(--_margin-inline);
-  font-size: var(--rh-font-size-body-text-xs, 0.75rem);
-  color: var(--_switch-handle-color, var(--rh-color-icon-secondary-on-dark, #ffffff));
-  position: absolute;
-  z-index: 1;
-}
-
-:host(:not([checked])) ::slotted(*) {
-  color: var(--rh-color-text-secondary-on-light, #4d4d4d);
-}
-
-:host(:disabled) ::slotted(*),
-:host(:disabled) slot[name^="message"] span[aria-hidden] {
-  color: var(--rh-color-gray-50, #707070);
-}
-
-.dark {
-  --_switch-track-background-color: var(--rh-color-gray-40, #a3a3a3); /* no disabled token yet */
-  --_switch-handle-color: var(--rh-color-surface-dark-alt, #292929);
-}
-
-.dark:after {
-  box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
-}
-
-:host(:disabled) .dark {
-  --_switch-track-background-color: var(--rh-color-gray-60, #4d4d4d);
-}
-
-:host(:not([checked])) .dark ::slotted(*) {
-  color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
-}
-
-:host(:disabled) .dark ::slotted(*),
-:host(:disabled) .dark slot[name^="message"] span[aria-hidden] {
-  color: var(--rh-color-gray-40, #a3a3a3);
-}
-
-:host(:is(:focus, :focus-within)) .dark {
-  --_switch-focus-outline-color: var(--rh-color-border-interactive-on-dark, #92c5f9);
-}
-
-:host([checked]:not(:disabled)) .dark {
-  --_switch-track-background-color:
-    var(
-        --_switch-checked,
-        var(--rh-color-accent-base-on-dark, #92c5f9)
-      );
+      & ::slotted(*),
+      & span {
+        color: var(--rh-color-gray-40, #a3a3a3);
+      }
+    }
+  }
 }

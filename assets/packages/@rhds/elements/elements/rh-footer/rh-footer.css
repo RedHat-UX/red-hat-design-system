@@ -1,7 +1,7 @@
 :host {
   /* apply sensible defaults based on redhat standards. */
   color: var(--rh-color-white, #ffffff);
-  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   line-height: var(--rh-line-height-body-text, 1.5);
   font-weight: var(--_font-weight);
   font-size: initial;
@@ -26,7 +26,7 @@ footer,
 }
 
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif) !important;
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif) !important;
   line-height: var(--rh-line-height-heading, 1.3) !important;
 }
 
@@ -49,7 +49,7 @@ footer,
   padding: var(--rh-space-xs, 4px);
   top: 0;
   right: 0;
-  font-family: var(--rh-font-family-code, RedHatMono, "Red Hat Mono", "Courier New", Courier, monospace);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
   font-size: var(--rh-font-size-code-xs, 0.75rem);
 }
 
@@ -73,7 +73,7 @@ footer,
 
 .header:after {
   display: none;
-  content: "";
+  content: '';
   background-color: var(--_border-color);
   height: var(--rh-length-4xs, 1px);
   position: absolute;
@@ -118,11 +118,11 @@ footer,
   display: grid;
   grid-template-columns: 1fr;
   grid-template-areas:
-    "logo"
-    "primary"
-    "spacer"
-    "secondary"
-    "tertiary";
+    'logo'
+    'primary'
+    'spacer'
+    'secondary'
+    'tertiary';
   gap: var(--rh-space-2xl, 32px) var(--rh-space-xl, 24px);
 }
 
@@ -222,7 +222,7 @@ footer,
   display: flex;
 }
 
-[part="base"]:not(.isMobile) .links {
+[part='base']:not(.isMobile) .links {
   display: grid;
   grid-template-columns: repeat(1fr, 25%);
   grid-template-rows: repeat(1, min-content auto);
@@ -231,87 +231,87 @@ footer,
   grid-auto-flow: column;
 }
 
-[part="base"]:not(.isMobile) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(1)) {
+[part='base']:not(.isMobile) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(1)) {
   grid-column: 1/2;
   grid-row: 1/2;
 }
 
-[part="base"]:not(.isMobile) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(2)) {
+[part='base']:not(.isMobile) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(2)) {
   grid-column: 2/3;
   grid-row: 1/2;
 }
 
-[part="base"]:not(.isMobile) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(3)) {
+[part='base']:not(.isMobile) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(3)) {
   grid-column: 3/4;
   grid-row: 1/2;
 }
 
-[part="base"]:not(.isMobile) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(4)) {
+[part='base']:not(.isMobile) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(4)) {
   grid-column: 4/5;
   grid-row: 1/2;
 }
 
-[part="base"]:not(.isMobile) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(5)) {
+[part='base']:not(.isMobile) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(5)) {
   grid-column: 1/2;
   grid-row: 3/4;
 }
 
-[part="base"]:not(.isMobile) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(6)) {
+[part='base']:not(.isMobile) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(6)) {
   grid-column: 2/3;
   grid-row: 3/4;
 }
 
-[part="base"]:not(.isMobile) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(7)) {
+[part='base']:not(.isMobile) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(7)) {
   grid-column: 3/4;
   grid-row: 3/4;
 }
 
-[part="base"]:not(.isMobile) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(8)) {
+[part='base']:not(.isMobile) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(8)) {
   grid-column: 4/5;
   grid-row: 3/4;
 }
 
-[part="base"]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(1))) {
+[part='base']:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(1))) {
   grid-column: 1/2;
   grid-row: 2/3;
 }
 
-[part="base"]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(2))) {
+[part='base']:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(2))) {
   grid-column: 2/3;
   grid-row: 2/3;
 }
 
-[part="base"]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(3))) {
+[part='base']:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(3))) {
   grid-column: 3/4;
   grid-row: 2/3;
 }
 
-[part="base"]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(4))) {
+[part='base']:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(4))) {
   grid-column: 4/5;
   grid-row: 2/3;
 }
 
-[part="base"]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(5))) {
+[part='base']:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(5))) {
   grid-column: 1/2;
   grid-row: 4/5;
 }
 
-[part="base"]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(6))) {
+[part='base']:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(6))) {
   grid-column: 2/3;
   grid-row: 4/5;
 }
 
-[part="base"]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(7))) {
+[part='base']:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(7))) {
   grid-column: 3/4;
   grid-row: 4/5;
 }
 
-[part="base"]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(8))) {
+[part='base']:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(8))) {
   grid-column: 4/5;
   grid-row: 4/5;
 }
 
-[part="base"]:not(.isMobile) .links ::slotted(ul) {
+[part='base']:not(.isMobile) .links ::slotted(ul) {
   gap: var(--rh-footer-links-gap, var(--rh-space-lg, 16px));
   display: flex;
   flex-direction: column;
@@ -326,10 +326,8 @@ footer,
   margin-block: 0 !important;
   margin-block-start: var(--_link-header-margin, 0) !important;
   font-size:
-    var(
-        --rh-footer-link-header-font-size,
-        var(--rh-font-size-body-text-sm, 0.875rem)
-      ) !important;
+    var(--rh-footer-link-header-font-size,
+      var(--rh-font-size-body-text-sm, 0.875rem)) !important;
   color: var(--rh-color-text-primary-on-dark, #ffffff) !important;
 }
 
@@ -355,19 +353,19 @@ rh-accordion-header:hover {
   .global-base {
     grid-template-columns: 4fr 4fr 4fr;
     grid-template-areas:
-      "logo      logo      logo"
-      "primary   primary   primary"
-      "spacer    spacer    spacer"
-      "secondary secondary secondary";
+      'logo      logo      logo'
+      'primary   primary   primary'
+      'spacer    spacer    spacer'
+      'secondary secondary secondary';
   }
 
   .global-base:is(.hasTertiary) {
     grid-template-columns: 4fr 4fr 4fr;
     grid-template-areas:
-      "logo      logo      logo"
-      "primary   primary   primary"
-      "spacer    spacer    spacer"
-      "secondary secondary tertiary";
+      'logo      logo      logo'
+      'primary   primary   primary'
+      'spacer    spacer    spacer'
+      'secondary secondary tertiary';
   }
 }
 
@@ -377,8 +375,8 @@ rh-accordion-header:hover {
     grid-template-columns: auto 10fr 2fr;
     grid-template-rows: max-content max-content;
     grid-template-areas:
-      "logo primary  tertiary"
-      "logo secondary tertiary";
+      'logo primary  tertiary'
+      'logo secondary tertiary';
     gap: 24px 32px;
   }
 

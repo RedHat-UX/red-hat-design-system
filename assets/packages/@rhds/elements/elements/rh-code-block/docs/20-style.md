@@ -7,7 +7,7 @@ container.
 
 <figure>
   <uxdot-example width-adjustment="870px">
-    <img src="{{ '../code-block-anatomy.png' | url }}" alt="Image of code block anatomy showing two annotations">
+    <img src="../code-block-anatomy.png" alt="Image of code block anatomy showing two annotations">
   </uxdot-example>
   <figcaption>
     <ol>
@@ -24,14 +24,14 @@ A code block is available in both light and dark themes.
 ### Light theme
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../code-block-theme-light.png' | url }}" alt="Image of light theme code block">
+  <img src="../code-block-theme-light.png" alt="Image of light theme code block">
 </uxdot-example>
 
 
 ### Dark theme
 
 <uxdot-example color-palette="darkest" width-adjustment="872px">
-  <img src="{{ '../code-block-theme-dark.png' | url }}" alt="Image of dark theme code block">
+  <img src="../code-block-theme-dark.png" alt="Image of dark theme code block">
 </uxdot-example>
 
 ### Configuration
@@ -39,7 +39,7 @@ A code block is available in both light and dark themes.
 Code block text is always horizontally and vertically centered.
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../code-block-configuration.png' | url }}" alt="Image of a code block showing alignment and border radius specs">
+  <img src="../code-block-configuration.png" alt="Image of a code block showing alignment and border radius specs">
 </uxdot-example>
 
 ## Space
@@ -47,7 +47,7 @@ Code block text is always horizontally and vertically centered.
 Container spacing reduces as breakpoints get smaller.
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../code-block-space.png' | url }}" alt="Image of a code block spacing for all breakpoints">
+  <img src="../code-block-space.png" alt="Image of a code block spacing for all breakpoints">
 </uxdot-example>
 
 <rh-table>

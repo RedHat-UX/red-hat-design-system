@@ -1,12 +1,18 @@
 :host {
-  display: inline-block;
   line-height: 0;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  place-content: center;
+}
+
+#container {
+  display: contents;
 }
 
 svg {
   width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
   fill: currentcolor;
-  aspect-ratio: 1;
+  aspect-ratio: 1/1;
 }
 
 .standard svg {

@@ -2,23 +2,12 @@
   display: none;
   overflow: hidden;
   will-change: height;
-  color: var(--rh-color-surface-darkest, #151515);
 
-  --_background-color: var(--rh-color-surface-lightest, #ffffff);
-  --_panel-color: var(--rh-color-surface-darkest, #151515);
   --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
-  --_panel-content-body-accent-color: var(--rh-color-accent-brand-on-light, #ee0000);
   --_panel-body-padding-block-start: var(--rh-space-lg, 16px);
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-lg, 16px);
   --_panel-body-padding-inline-start: var(--rh-space-xl, 24px);
-}
-
-.dark {
-  --_background-color: var(--rh-color-surface-darkest, #151515);
-  --_panel-color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_panel-content-body-accent-color: var(--rh-color-accent-brand-on-dark, #ee0000);
-  --_panel-border-inline-end-color: var(--rh-color-border-subtle-on-dark, #707070);
 }
 
 :host ::slotted(*) {
@@ -62,37 +51,31 @@
 }
 
 #container {
-  border-inline-end:
-    1px
-    solid
-    var(
-        --_panel-border-inline-end-color,
-        var(--rh-color-border-subtle-on-light, #c7c7c7)
-      );
-  background-color: var(--_background-color);
+  border-inline-end: 1px solid var(--rh-color-border-subtle);
+  background-color: var(--rh-color-surface);
 }
 
-.content.expanded {
-  --_panel-body--before-background-color:
-    var(
-        --_panel-content-body-accent-color,
-        var(--rh-color-accent-base-on-light, #0066cc)
-      );
+.expanded.on.light {
+  --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
+}
+
+.expanded.on.dark {
+  --rh-color-surface: var(--rh-color-surface-darkest, #151515);
 }
 
 .body:after {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
-  width: var(--_panel-body--before--Width, var(--rh-border-width-lg, 3px));
-  background-color: var(--_panel-body--before-background-color, transparent);
+  width: var(--rh-border-width-lg, 3px);
+  background-color: var(--rh-color-accent-brand);
   inset-block: 0;
   inset-inline-start: 0;
 }
 
 .content {
-  color: var(--_panel-color, var(--rh-color-surface-darkest, #151515));
+  color: var(--rh-color-text-primary);
   font-size: var(--_panel-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
 }

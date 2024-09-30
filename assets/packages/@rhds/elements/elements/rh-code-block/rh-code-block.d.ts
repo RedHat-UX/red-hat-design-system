@@ -20,8 +20,18 @@ export declare class RhCodeBlock extends LitElement {
     private static actions;
     static styles: CSSStyleSheet[];
     actions: ('copy' | 'wrap')[];
+    /**
+     * When set to "client", `<rh-code-block>` will automatically highlight the source using Prism.js
+     * When set to "Prerendered", `<rh-code-block>` will apply supported RHDS styles to children with
+     * prismjs classnames in the element's root.
+     */
+    highlighting?: 'client' | 'prerendered';
+    /** When set along with `highlighting="client"`, this grammar will be used to highlight source code */
+    language?: 'html' | 'css' | 'javascript' | 'typescript' | 'bash' | 'ruby' | 'yaml' | 'json';
     /** When set, the code block displays with compact spacing */
     compact: boolean;
+    /** When set, the code block source code will be dedented */
+    dedent: boolean;
     /** When set, the code block is resizable */
     resizable: boolean;
     /** When set, the code block occupies it's full height, without scrolling */

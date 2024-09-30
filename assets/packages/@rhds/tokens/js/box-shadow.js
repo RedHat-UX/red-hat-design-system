@@ -1,32 +1,10 @@
 /**
- * Do not edit directly
- * Generated on Wed, 13 Dec 2023 08:19:14 GMT
+ * Do not edit directly, this file was auto-generated.
  *
- * @license
- * MIT License
- *
- * Copyright (c) 2022 Red Hat UX
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- *
+ * @license Copyright (c) 2022 Red Hat UX MIT License
  */
-export const BoxShadowSm = { "offsetX": "0", "offsetY": "2px", "blur": "4px", "spread": "0", "color": "rgba(21," };
-export const BoxShadowMd = { "offsetX": "0", "offsetY": "4px", "blur": "6px", "spread": "1px", "color": "rgba(21," };
-export const BoxShadowLg = { "offsetX": "0", "offsetY": "6px", "blur": "8px", "spread": "2px", "color": "rgba(21," };
-export const BoxShadowXl = { "offsetX": "0", "offsetY": "8px", "blur": "24px", "spread": "3px", "color": "rgba(21," };
+export const BoxShadowSm = { "offsetX": "0", "offsetY": "2px", "blur": "4px", "spread": "0", "color": "rgba(21, 21, 21, 0.2)" };
+export const BoxShadowMd = { "offsetX": "0", "offsetY": "4px", "blur": "6px", "spread": "1px", "color": "rgba(21, 21, 21, 0.25)" };
+export const BoxShadowLg = { "offsetX": "0", "offsetY": "6px", "blur": "8px", "spread": "2px", "color": "rgba(21, 21, 21, 0.3)" };
+export const BoxShadowXl = { "offsetX": "0", "offsetY": "8px", "blur": "24px", "spread": "3px", "color": "rgba(21, 21, 21, 0.35)" };
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYm94LXNoYWRvdy5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbImJveC1zaGFkb3cudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7R0FJRztBQUdILE1BQU0sQ0FBQyxNQUFNLFdBQVcsR0FBRyxFQUFDLFNBQVMsRUFBQyxHQUFHLEVBQUMsU0FBUyxFQUFDLEtBQUssRUFBQyxNQUFNLEVBQUMsS0FBSyxFQUFDLFFBQVEsRUFBQyxHQUFHLEVBQUMsT0FBTyxFQUFDLHVCQUF1QixFQUFDLENBQUM7QUFDckgsTUFBTSxDQUFDLE1BQU0sV0FBVyxHQUFHLEVBQUMsU0FBUyxFQUFDLEdBQUcsRUFBQyxTQUFTLEVBQUMsS0FBSyxFQUFDLE1BQU0sRUFBQyxLQUFLLEVBQUMsUUFBUSxFQUFDLEtBQUssRUFBQyxPQUFPLEVBQUMsd0JBQXdCLEVBQUMsQ0FBQztBQUN4SCxNQUFNLENBQUMsTUFBTSxXQUFXLEdBQUcsRUFBQyxTQUFTLEVBQUMsR0FBRyxFQUFDLFNBQVMsRUFBQyxLQUFLLEVBQUMsTUFBTSxFQUFDLEtBQUssRUFBQyxRQUFRLEVBQUMsS0FBSyxFQUFDLE9BQU8sRUFBQyx1QkFBdUIsRUFBQyxDQUFDO0FBQ3ZILE1BQU0sQ0FBQyxNQUFNLFdBQVcsR0FBRyxFQUFDLFNBQVMsRUFBQyxHQUFHLEVBQUMsU0FBUyxFQUFDLEtBQUssRUFBQyxNQUFNLEVBQUMsTUFBTSxFQUFDLFFBQVEsRUFBQyxLQUFLLEVBQUMsT0FBTyxFQUFDLHdCQUF3QixFQUFDLENBQUMifQ==

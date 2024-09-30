@@ -2,31 +2,25 @@
   display: block;
   container-type: inline-size;
   container-name: host;
-  margin-block-end: var(--rh-space-2xl, 32px);
+  margin-block-end: var(--rh-space-2xl);
 }
 
 :host([transparent]) {
-  --_context-background-color: transparent;
+  --rh-color-surface: transparent;
 }
 
 #container {
-  padding: var(--rh-space-2xl, 32px);
+  padding: var(--rh-space-2xl);
   display: flex;
   flex-direction: column;
   align-items: var(--_alignment, center);
   justify-content: center;
-  border-width: var(--rh-border-width-sm, 1px);
+  border-width: var(--rh-border-width-sm);
   border-style: solid;
-  border-color: var(--_border-color, var(--rh-color-border-subtle-on-light, #c7c7c7));
-  border-radius: var(--rh-border-radius-default, 3px);
-  background-color: var(--_context-background-color, var(--rh-color-surface-lightest, #ffffff));
-  color: var(--_context-text, var(--rh-color-text-primary-on-light, #151515));
-}
-
-#container.dark {
-  --_border-color: var(--rh-color-border-subtle-on-dark, #707070);
-
-  color: var(--_context-text, var(--rh-color-text-primary-on-dark, #ffffff));
+  border-color: var(--rh-color-border-subtle);
+  border-radius: var(--rh-border-radius-default);
+  background-color: var(--rh-color-surface);
+  color: var(--rh-color-text-primary);
 }
 
 ::slotted(*) {
@@ -38,15 +32,14 @@
   width: var(--_width, 100%);
 }
 
-:host([variant="full"]) #container {
+:host([variant='full']) #container {
   padding: 0;
 }
 
 :host([danger]) #container {
-  /* stylelint-disable-next-line rhds/no-unknown-token-name */
-  --_border-color: var(--rh-color-border-status-danger-on-light, #f0561d);
+  --rh-color-border-subtle: var(--rh-color-border-destructive);
 
-  background-image: url("/assets/best-practices-danger-icon.svg");
+  background-image: url('/assets/best-practices-danger-icon.svg');
   background-position-x: 8px;
   background-position-y: 8px;
   background-repeat: no-repeat;
@@ -58,12 +51,12 @@
 
 @container host (min-width: 576px) {
   #container {
-    padding: var(--rh-space-3xl, 48px);
+    padding: var(--rh-space-3xl);
   }
 }
 
 @container host (min-width: 768px) {
   #container {
-    padding: var(--rh-space-4xl, 64px);
+    padding: var(--rh-space-4xl);
   }
 }

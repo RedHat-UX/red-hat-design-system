@@ -17,6 +17,7 @@ export declare class RhTable extends LitElement {
     connectedCallback(): void;
     protected willUpdate(): void;
     render(): import("lit-html").TemplateResult<1>;
+    disconnectedCallback(): void;
 }
 declare global {
     interface HTMLElementTagNameMap {

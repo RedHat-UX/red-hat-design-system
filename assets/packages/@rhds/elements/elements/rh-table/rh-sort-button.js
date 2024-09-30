@@ -6,7 +6,7 @@ import { classMap } from 'lit/directives/class-map.js';
 import { ComposedEvent } from '@patternfly/pfe-core';
 import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 import { css } from "lit";
-const styles = css `#sort-button{background-color:transparent;border:0;color:var(--rh-color-text-primary-on-light,#151515)}#sort-button.dark{color:var(--rh-color-text-primary-on-dark,#fff)}#sort-button:after{content:"";position:absolute;inset:0;cursor:pointer}#sort-button #sort-indicator{color:currentcolor}.visually-hidden{position:fixed;top:0;left:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}`;
+const styles = css `#sort-button{background-color:initial;border:0;color:var(--rh-color-text-primary-on-light,#151515)}#sort-button.dark{color:var(--rh-color-text-primary-on-dark,#fff)}#sort-button:after{content:"";position:absolute;inset:0;cursor:pointer}#sort-button #sort-indicator{color:currentcolor}.visually-hidden{position:fixed;top:0;left:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}`;
 const DIRECTIONS_OPPOSITES = { asc: 'desc', desc: 'asc' };
 export class RequestSortEvent extends ComposedEvent {
     constructor(direction) {

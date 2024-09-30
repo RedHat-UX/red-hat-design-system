@@ -28,7 +28,7 @@ signals that function to users. Therefore, it is important that each variant is
 implemented consistently so they communicate the correct actions.
 
 <uxdot-example width-adjustment="788px">
-  <img src="{{ '../cta-variants.png' | url }}" alt="Image of the Primary, 
+  <img src="../cta-variants.png" alt="Image of the Primary, 
     Secondary, Brick, and Default variants with descriptive text labels below">
 </uxdot-example>
 
@@ -77,7 +77,7 @@ To indicate that a link is currently unavailable, calls to action can become
 disabled.
 
 <uxdot-example width-adjustment="529px">
-  <img src="{{ '../cta-disabled.png' | url }}" alt="Image of disabled Primary, 
+  <img src="../cta-disabled.png" alt="Image of disabled Primary, 
     Secondary, Brick, and Default variants">
 </uxdot-example>
 
@@ -89,7 +89,7 @@ communicate various topics, but the icons must be the same color, height, style,
 etc.
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../cta-brick-icons.png' | url }}" alt="Image of Brick variants 
+  <img src="../cta-brick-icons.png" alt="Image of Brick variants 
     with an icon on the left of text and on top of text">
 </uxdot-example>
 
@@ -111,7 +111,7 @@ announce text to users
 - Do not use any other icons except for the ones that are included
 
 <uxdot-example width-adjustment="411px">
-  <img src="{{ '../cta-text-labels.png' | url }}" alt="Image of Default variants 
+  <img src="../cta-text-labels.png" alt="Image of Default variants 
     showing how to incorrectly and correctly write text labels">
 </uxdot-example>
 
@@ -121,7 +121,7 @@ Text labels can be inviting as well as to the point, vague messaging does not
 help our users make informed decisions.
 
 <uxdot-example width-adjustment="458px">
-  <img src="{{ '../cta-clarity-of-language.png' | url }}" alt="Image of how to 
+  <img src="../cta-clarity-of-language.png" alt="Image of how to 
     incorrectly and correctly use clear and straightforward language">
 </uxdot-example>
 
@@ -131,7 +131,7 @@ Users do not want to spend more time reading than necessary, so write text
 labels with as few words as possible.
 
 <uxdot-example width-adjustment="675px">
-  <img src="{{ '../cta-long-text-labels-1.png' | url }}" alt="Image of comparing 
+  <img src="../cta-long-text-labels-1.png" alt="Image of comparing 
     very long and shortened text labels">
 </uxdot-example>
 
@@ -145,7 +145,7 @@ to certain languages. This can be avoided by writing less text.
 </rh-alert>
 
 <uxdot-example width-adjustment="360px">
-  <img src="{{ '../cta-long-text-labels-2.png' | url }}" alt="Image of Primary, 
+  <img src="../cta-long-text-labels-2.png" alt="Image of Primary, 
     Default, and Brick variants within a small breakpoint showing each text 
     label breaking to two lines">
 </uxdot-example>
@@ -157,7 +157,7 @@ Call to action text labels are written to entice users to select a link whereas
 button text labels are written to be short and communicate an action.
 
 <uxdot-example width-adjustment="689px">
-  <img src="{{ '../cta-call-to-action-vs-button-text-labels.png' | url }}" 
+  <img src="../cta-call-to-action-vs-button-text-labels.png" 
     alt="Image of comparing text labels in calls to action versus text labels in 
     buttons">
 </uxdot-example>
@@ -205,7 +205,7 @@ important. Variants that are lower in hierarchy can be used more than one time
 per page.
 
 <uxdot-example width-adjustment="720px">
-  <img src="{{ '../cta-layout-hierarchy.png' | url }}" alt="Image of calls to 
+  <img src="../cta-layout-hierarchy.png" alt="Image of calls to 
     action hierarchy and usage guidance">
 </uxdot-example>
 
@@ -217,12 +217,12 @@ lists, and more. It is commonly used as the last element in a group so users can
 read about something first and then proceed further if they are interested.
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../cta-placement-examples-1.png' | url }}" alt="Image of calls 
+  <img src="../cta-placement-examples-1.png" alt="Image of calls 
     to action used in context including under a text block and within a card">
 </uxdot-example>
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../cta-placement-examples-2.png' | url }}" alt="Image of calls 
+  <img src="../cta-placement-examples-2.png" alt="Image of calls 
     to action used in context including within a grid and in a list">
 </uxdot-example>
 
@@ -233,7 +233,7 @@ Variants that are lower in hierarchy can be grouped with Primary as well as used
 more than once per page.
 
 <uxdot-example width-adjustment="650px">
-  <img src="{{ '../cta-layout-grouping.png' | url }}" alt="Image of call to 
+  <img src="../cta-layout-grouping.png" alt="Image of call to 
     action groups and their hierarchy from left to right">
 </uxdot-example>
 
@@ -248,7 +248,7 @@ Brick variants are flexible and can stretch to fit different column widths.
 </rh-alert>
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../cta-layout-bricks.png' | url }}" alt="Image of Brick variants 
+  <img src="../cta-layout-bricks.png" alt="Image of Brick variants 
     stretched to fit a variety of grid formations">
 </uxdot-example>
 
@@ -264,14 +264,14 @@ Horizontal and vertical spacing between Primary and Secondary variants is
 </rh-alert>
 
 <uxdot-example width-adjustment="473px">
-  <img src="{{ '../cta-layout-space-in-groups-1.png' | url }}" alt="Image of 
+  <img src="../cta-layout-space-in-groups-1.png" alt="Image of 
     24px spacers in between Primary and Secondary variants">
 </uxdot-example>
 
 Horizontal and vertical spacing between the Default variant is `24px`.
 
 <uxdot-example width-adjustment="705px">
-  <img src="{{ '../cta-layout-space-in-groups-2.png' | url }}" alt="Image of 
+  <img src="../cta-layout-space-in-groups-2.png" alt="Image of 
     24px spacers in between Default variants">
 </uxdot-example>
 
@@ -279,7 +279,7 @@ Horizontal and vertical spacing between Brick variants should be the same as
 grid gutters.
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../cta-layout-space-in-groups-3.png' | url }}" alt="Image of a 
+  <img src="../cta-layout-space-in-groups-3.png" alt="Image of a 
     variety of space values in between Brick variants">
 </uxdot-example>
 
@@ -292,7 +292,7 @@ A Brick variant can hide and reveal a panel of content when selected like an
 selected at a time like [tabs](/elements/tabs/).
 
 <uxdot-example width-adjustment="1000px">
-  <img src="{{ '../cta-bricks-hide-and-reveal.png' | url }}" alt="Image of Brick 
+  <img src="../cta-bricks-hide-and-reveal.png" alt="Image of Brick 
     variants with a panel open showing a variety of styles and content 
     formations">
 </uxdot-example>
@@ -306,13 +306,13 @@ labels, a second row appears.
 
 <uxdot-example width-adjustment="1000px" variant="full" no-border 
 alignment="left">
-<img src="{{ '../cta-breakpoints-large.png' | url }}" alt="Image of calls to 
+<img src="../cta-breakpoints-large.png" alt="Image of calls to 
   action in a layout on a large breakpoint showing them all in one row">
 </uxdot-example>
 
 <uxdot-example width-adjustment="576px" variant="full" no-border 
 alignment="left">
-<img src="{{ '../cta-breakpoints-small.png' | url }}" alt="Image of calls to 
+<img src="../cta-breakpoints-small.png" alt="Image of calls to 
   action in a layout on a small breakpoint showing two variants in one row and 
   one variant in a second row">
 </uxdot-example>
@@ -325,7 +325,7 @@ alignment="left">
 Do not change the styles of any variant.
 
 <uxdot-example width-adjustment="407px" danger>
-  <img src="{{ '../cta-best-practice-1.png' | url }}" alt="Image of several 
+  <img src="../cta-best-practice-1.png" alt="Image of several 
     variants with brand new styles which is incorrect usage">
 </uxdot-example>
 
@@ -334,7 +334,7 @@ Do not change the styles of any variant.
 Do not use more than one Primary variant on any page.
 
 <uxdot-example width-adjustment="407px" danger>
-  <img src="{{ '../cta-best-practice-2.png' | url }}" alt="Image of two Primary 
+  <img src="../cta-best-practice-2.png" alt="Image of two Primary 
     variants in one row which is incorrect usage">
 </uxdot-example>
 
@@ -343,7 +343,7 @@ Do not use more than one Primary variant on any page.
 Do not group different Brick variants together, use one variant per grid.
 
 <uxdot-example width-adjustment="407px" danger>
-  <img src="{{ '../cta-best-practice-3.png' | url }}" alt="Image of Brick 
+  <img src="../cta-best-practice-3.png" alt="Image of Brick 
     variants in one row with and without icons which is incorrect usage">
 </uxdot-example>
 
@@ -353,7 +353,7 @@ Do not group different Brick variants together, use one variant per grid.
 Do not group more than two different variants together.	
 
 <uxdot-example width-adjustment="483px" danger>
-  <img src="{{ '../cta-best-practice-4.png' | url }}" alt="Image of Primary, 
+  <img src="../cta-best-practice-4.png" alt="Image of Primary, 
     Secondary, and Default variants in one row which is incorrect usage">
 </uxdot-example>
 
@@ -369,7 +369,7 @@ first on the left.
   </rh-alert>
 
 <uxdot-example width-adjustment="533px" danger>
-  <img src="{{ '../cta-best-practice-5.png' | url }}" alt="Image of the Primary 
+  <img src="../cta-best-practice-5.png" alt="Image of the Primary 
     variant last in a row which is incorrect usage">
 </uxdot-example>
 
@@ -379,7 +379,7 @@ Do not group more than three variants together otherwise the risk of [choice
 paralysis][paralysis]{target="_blank"} greatly increases.
 
 <uxdot-example width-adjustment="659px" danger>
-  <img src="{{ '../cta-best-practice-6.png' | url }}" alt="Image of two rows of 
+  <img src="../cta-best-practice-6.png" alt="Image of two rows of 
     calls to action with four variants in each row which is incorrect usage">
 </uxdot-example>
 
@@ -388,7 +388,7 @@ paralysis][paralysis]{target="_blank"} greatly increases.
 Do not add extra spacing or stretch the width of any variant except for Bricks.
 
 <uxdot-example width-adjustment="672px" danger>
-  <img src="{{ '../cta-best-practice-7.png' | url }}" alt="Image of Primary and 
+  <img src="../cta-best-practice-7.png" alt="Image of Primary and 
     Secondary variants stretched which is incorrect usage">
 </uxdot-example>
 

@@ -9,7 +9,7 @@ focus will directed users to a new page.
 </rh-alert>
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../subnav-a11y-keyboard-interactions.png' | url }}" alt="Image of desktop and mobile subnavigations with diagrams of what happens when Tab keys are pressed">
+  <img src="../subnav-a11y-keyboard-interactions.png" alt="Image of desktop and mobile subnavigations with diagrams of what happens when Tab keys are pressed">
 </uxdot-example>
 
 <rh-table>
@@ -47,7 +47,7 @@ move horizontally within the list of links or be moved to another interactive
 element.
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../subnav-a11y-focus-order.png' | url }}" alt="Image of desktop and mobile subnavigations showing the focus order from left to right">
+  <img src="../subnav-a11y-focus-order.png" alt="Image of desktop and mobile subnavigations showing the focus order from left to right">
 </uxdot-example>
 
 
@@ -56,7 +56,7 @@ element.
 Links are adequately spaced for optimal touch targets.
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../subnav-a11y-touch-targets.png' | url }}" alt="Image of desktop and mobile subnavigations showing adequate touch target spacing">
+  <img src="../subnav-a11y-touch-targets.png" alt="Image of desktop and mobile subnavigations showing adequate touch target spacing">
 </uxdot-example>
 
 {% include 'partials/accessibility/ariaguide.md' %}

@@ -1,30 +1,7 @@
 /**
- * Do not edit directly
- * Generated on Wed, 13 Dec 2023 08:19:14 GMT
+ * Do not edit directly, this file was auto-generated.
  *
- * @license
- * MIT License
- *
- * Copyright (c) 2022 Red Hat UX
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- *
+ * @license Copyright (c) 2022 Red Hat UX MIT License
  */
 import type { Color } from "./types.js";
 export declare const BorderWidthSm = "1px";
@@ -39,3 +16,17 @@ export declare const ColorBorderSubtleOnLight: Color;
 export declare const ColorBorderSubtleOnDark: Color;
 export declare const ColorBorderInteractiveOnLight: Color;
 export declare const ColorBorderInteractiveOnDark: Color;
+export declare const ColorBorderDestructiveOnLight: Color;
+export declare const ColorBorderDestructiveOnDark: Color;
+export declare const ColorBorderStatusDangerOnLight: Color;
+export declare const ColorBorderStatusDangerOnDark: Color;
+export declare const ColorBorderStatusCautionOnLight: Color;
+export declare const ColorBorderStatusCautionOnDark: Color;
+export declare const ColorBorderStatusWarningOnLight: Color;
+export declare const ColorBorderStatusWarningOnDark: Color;
+export declare const ColorBorderStatusNeutralOnLight: Color;
+export declare const ColorBorderStatusNeutralOnDark: Color;
+export declare const ColorBorderStatusInfoOnLight: Color;
+export declare const ColorBorderStatusInfoOnDark: Color;
+export declare const ColorBorderStatusSuccessOnLight: Color;
+export declare const ColorBorderStatusSuccessOnDark: Color;

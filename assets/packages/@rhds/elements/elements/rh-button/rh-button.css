@@ -3,10 +3,6 @@
   height: max-content;
 }
 
-:host([hidden]) {
-  display: none !important;
-}
-
 [hidden] {
   display: none !important;
 }
@@ -36,7 +32,7 @@ button {
 button:after {
   position: absolute;
   inset: 0;
-  content: "";
+  content: '';
   border-style: solid;
   border-color: var(--_border-color);
   border-width: var(--_border-width);
@@ -47,16 +43,16 @@ button > span {
   display: contents;
 }
 
-:host(:is(:disabled, [aria-disabled="true"])),
-:host(:is(:disabled, [aria-disabled="true"])) #container,
-:host(:is(:disabled, [aria-disabled="true"])) button,
-:host(:is(:disabled, [aria-disabled="true"])[danger]) button,
-:host(:is(:disabled, [aria-disabled="true"])[variant="link"]) button {
+:host(:is(:disabled, [aria-disabled='true'])),
+:host(:is(:disabled, [aria-disabled='true'])) #container,
+:host(:is(:disabled, [aria-disabled='true'])) button,
+:host(:is(:disabled, [aria-disabled='true'])[danger]) button,
+:host(:is(:disabled, [aria-disabled='true'])[variant='link']) button {
   pointer-events: none;
   cursor: default;
 }
 
-[part="icon"] {
+[part='icon'] {
   display: none;
   pointer-events: none;
 }
@@ -64,42 +60,36 @@ button > span {
 .hasIcon {
   position: relative;
   display: flex;
+  gap: var(--rh-space-sm, 6px);
   align-items: center;
+  padding-inline-start: calc(var(--rh-space-lg, 16px) * 0.75);
+
+  & [part='icon'] {
+    display: contents;
+  }
 }
 
-.hasIcon [part="icon"] {
-  display: inline-flex;
-  align-items: center;
-  position: absolute;
-  width: 16px;
-}
-
-[part="icon"] ::slotted(*) {
+[part='icon'] ::slotted(*) {
   width: 16px;
   max-width: 16px;
   height: 16px;
   max-height: 16px;
 }
 
-.hasIcon button {
-  position: absolute;
-  inset: 0;
-}
-
 .light {
   /* PRIMARY */
   --_primary-color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_primary-background-color: var(--rh-color-interactive-blue-darker, #0066cc);
+  --_primary-background-color: var(--rh-color-interactive-primary-default-on-light, #0066cc);
   --_primary-border-color: transparent;
   --_primary-border-width: var(--rh-border-width-sm, 1px);
   --_primary-active-color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_primary-active-background-color: var(--rh-color-interactive-blue-darkest, #003366);
+  --_primary-active-background-color: var(--rh-color-interactive-primary-hover-on-light, #003366);
   --_primary-active-border-width: var(--rh-border-width-sm, 1px);
   --_primary-focus-color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_primary-focus-background-color: var(--rh-color-interactive-blue-darkest, #003366);
+  --_primary-focus-background-color: var(--rh-color-interactive-primary-hover-on-light, #003366);
   --_primary-focus-border-width: var(--rh-border-width-md, 2px);
   --_primary-hover-color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_primary-hover-background-color: var(--rh-color-interactive-blue-darkest, #003366);
+  --_primary-hover-background-color: var(--rh-color-interactive-primary-hover-on-light, #003366);
   --_primary-hover-border-width: var(--rh-border-width-sm, 1px);
 
   /* DANGER */
@@ -119,22 +109,22 @@ button > span {
   --_danger-hover-border-color: transparent;
 
   /* SECONDARY */
-  --_secondary-color: var(--rh-color-interactive-blue-darker, #0066cc);
+  --_secondary-color: var(--rh-color-interactive-primary-default-on-light, #0066cc);
   --_secondary-danger-color: var(--rh-color-red-60, #a60000);
   --_secondary-background-color: transparent;
-  --_secondary-border-color: var(--rh-color-interactive-blue-darker, #0066cc);
+  --_secondary-border-color: var(--rh-color-interactive-primary-default-on-light, #0066cc);
   --_secondary-border-width: var(--rh-border-width-sm, 1px);
-  --_secondary-active-color: var(--rh-color-interactive-blue-darker, #0066cc);
+  --_secondary-active-color: var(--rh-color-interactive-primary-default-on-light, #0066cc);
   --_secondary-active-background-color: transparent;
-  --_secondary-active-border-color: var(--rh-color-interactive-blue-darker, #0066cc);
+  --_secondary-active-border-color: var(--rh-color-interactive-primary-default-on-light, #0066cc);
   --_secondary-active-border-width: var(--rh-border-width-md, 2px);
-  --_secondary-focus-color: var(--rh-color-interactive-blue-darker, #0066cc);
+  --_secondary-focus-color: var(--rh-color-interactive-primary-default-on-light, #0066cc);
   --_secondary-focus-background-color: transparent;
-  --_secondary-focus-border-color: var(--rh-color-interactive-blue-darker, #0066cc);
+  --_secondary-focus-border-color: var(--rh-color-interactive-primary-default-on-light, #0066cc);
   --_secondary-focus-border-width: var(--rh-border-width-md, 2px);
-  --_secondary-hover-color: var(--rh-color-interactive-blue-darker, #0066cc);
+  --_secondary-hover-color: var(--rh-color-interactive-primary-default-on-light, #0066cc);
   --_secondary-hover-background-color: transparent;
-  --_secondary-hover-border-color: var(--rh-color-interactive-blue-darker, #0066cc);
+  --_secondary-hover-border-color: var(--rh-color-interactive-primary-default-on-light, #0066cc);
   --_secondary-hover-border-width: var(--rh-border-width-md, 2px);
 
   /* TERTIARY */
@@ -156,13 +146,13 @@ button > span {
   --_tertiary-hover-border-width: var(--rh-border-width-md, 2px);
 
   /* LINK */
-  --_link-color: var(--rh-color-interactive-blue-darker, #0066cc);
+  --_link-color: var(--rh-color-interactive-primary-default-on-light, #0066cc);
   --_link-background-color: transparent;
   --_link-active-color: var(--rh-color-blue-70, #003366);
   --_link-active-background-color: transparent;
   --_link-focus-color: var(--rh-color-blue-70, #003366);
   --_link-focus-background-color: transparent;
-  --_link-focus-outline-color: var(--rh-color-interactive-blue-darker, #0066cc);
+  --_link-focus-outline-color: var(--rh-color-interactive-primary-default-on-light, #0066cc);
   --_link-hover-color: var(--rh-color-blue-70, #003366);
   --_link-hover-background-color: transparent;
 
@@ -173,7 +163,7 @@ button > span {
   --_close-active-background-color: transparent;
   --_close-focus-color: var(--rh-color-icon-secondary-on-light, #151515);
   --_close-focus-background-color: transparent;
-  --_close-focus-outline-color: var(--rh-color-interactive-blue-darker, #0066cc);
+  --_close-focus-outline-color: var(--rh-color-interactive-primary-default-on-light, #0066cc);
   --_close-hover-color: var(--rh-color-icon-secondary-on-light, #151515);
   --_close-hover-background-color: transparent;
 
@@ -183,24 +173,24 @@ button > span {
   --_play-background-color: rgb(var(--_gray-90-rgb) / var(--rh-opacity-50, 50%));
   --_play-active-background-color: rgb(var(--_gray-90-rgb) / var(--rh-opacity-80, 80%));
   --_play-focus-background-color: rgb(var(--_gray-90-rgb) / var(--rh-opacity-80, 80%));
-  --_play-focus-outline-color: var(--rh-color-interactive-blue-darker, #0066cc);
+  --_play-focus-outline-color: var(--rh-color-interactive-primary-default-on-light, #0066cc);
   --_play-hover-background-color: rgb(var(--_gray-90-rgb) / var(--rh-opacity-80, 80%));
 }
 
 .dark {
-  --_focus-outline-color: var(--rh-color-interactive-blue-lighter, #92c5f9);
+  --_focus-outline-color: var(--rh-color-interactive-primary-default-on-dark, #92c5f9);
 
   /* PRIMARY */
   --_primary-color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_primary-background-color: var(--rh-color-interactive-blue-darker, #0066cc);
+  --_primary-background-color: var(--rh-color-interactive-primary-default-on-light, #0066cc);
   --_primary-border-color: transparent;
   --_primary-border-width: var(--rh-border-width-sm, 1px);
   --_primary-active-color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_primary-active-background-color: var(--rh-color-interactive-blue-darkest, #003366);
+  --_primary-active-background-color: var(--rh-color-interactive-primary-hover-on-light, #003366);
   --_primary-focus-color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_primary-focus-background-color: var(--rh-color-interactive-blue-darkest, #003366);
+  --_primary-focus-background-color: var(--rh-color-interactive-primary-hover-on-light, #003366);
   --_primary-hover-color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_primary-hover-background-color: var(--rh-color-interactive-blue-darkest, #003366);
+  --_primary-hover-background-color: var(--rh-color-interactive-primary-hover-on-light, #003366);
 
   /* DANGER */
   --_danger-color: var(--rh-color-text-primary-on-light, #151515);
@@ -218,22 +208,22 @@ button > span {
   --_danger-hover-border-color: transparent;
 
   /* SECONDARY */
-  --_secondary-color: var(--rh-color-interactive-blue-lighter, #92c5f9);
+  --_secondary-color: var(--rh-color-interactive-primary-default-on-dark, #92c5f9);
   --_secondary-danger-color: var(--rh-color-red-30, #f9a8a8);
   --_secondary-background-color: transparent;
-  --_secondary-border-color: var(--rh-color-interactive-blue-lighter, #92c5f9);
+  --_secondary-border-color: var(--rh-color-interactive-primary-default-on-dark, #92c5f9);
   --_secondary-border-width: var(--rh-border-width-sm, 1px);
-  --_secondary-active-color: var(--rh-color-interactive-blue-lighter, #92c5f9);
+  --_secondary-active-color: var(--rh-color-interactive-primary-default-on-dark, #92c5f9);
   --_secondary-active-background-color: transparent;
-  --_secondary-active-border-color: var(--rh-color-interactive-blue-lighter, #92c5f9);
+  --_secondary-active-border-color: var(--rh-color-interactive-primary-default-on-dark, #92c5f9);
   --_secondary-active-border-width: var(--rh-border-width-md, 2px);
-  --_secondary-focus-color: var(--rh-color-interactive-blue-lighter, #92c5f9);
+  --_secondary-focus-color: var(--rh-color-interactive-primary-default-on-dark, #92c5f9);
   --_secondary-focus-background-color: transparent;
-  --_secondary-focus-border-color: var(--rh-color-interactive-blue-lighter, #92c5f9);
+  --_secondary-focus-border-color: var(--rh-color-interactive-primary-default-on-dark, #92c5f9);
   --_secondary-focus-border-width: var(--rh-border-width-md, 2px);
-  --_secondary-hover-color: var(--rh-color-interactive-blue-lighter, #92c5f9);
+  --_secondary-hover-color: var(--rh-color-interactive-primary-default-on-dark, #92c5f9);
   --_secondary-hover-background-color: transparent;
-  --_secondary-hover-border-color: var(--rh-color-interactive-blue-lighter, #92c5f9);
+  --_secondary-hover-border-color: var(--rh-color-interactive-primary-default-on-dark, #92c5f9);
   --_secondary-hover-border-width: var(--rh-border-width-md, 2px);
 
   /* TERTIARY */
@@ -255,21 +245,21 @@ button > span {
   --_tertiary-hover-border-width: var(--rh-border-width-md, 2px);
 
   /* LINK */
-  --_link-color: var(--rh-color-interactive-blue-lighter, #92c5f9);
+  --_link-color: var(--rh-color-interactive-primary-default-on-dark, #92c5f9);
   --_link-background-color: transparent;
-  --_link-active-color: var(--rh-color-interactive-blue-lightest, #b9dafc);
+  --_link-active-color: var(--rh-color-interactive-primary-hover-on-dark, #b9dafc);
   --_link-active-background-color: transparent;
-  --_link-focus-color: var(--rh-color-interactive-blue-lightest, #b9dafc);
+  --_link-focus-color: var(--rh-color-interactive-primary-hover-on-dark, #b9dafc);
   --_link-focus-background-color: transparent;
-  --_link-focus-outline-color: var(--rh-color-interactive-blue-lighter, #92c5f9);
-  --_link-hover-color: var(--rh-color-interactive-blue-lightest, #b9dafc);
+  --_link-focus-outline-color: var(--rh-color-interactive-primary-default-on-dark, #92c5f9);
+  --_link-hover-color: var(--rh-color-interactive-primary-hover-on-dark, #b9dafc);
   --_link-hover-background-color: transparent;
 
   /* CLOSE */
   --_close-color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
   --_close-background-color: transparent;
   --_close-focus-background-color: transparent;
-  --_close-focus-outline-color: var(--rh-color-interactive-blue-lighter, #92c5f9);
+  --_close-focus-outline-color: var(--rh-color-interactive-primary-default-on-dark, #92c5f9);
 
   /* PLAY */
   --_white-rgb: 255 255 255;
@@ -277,13 +267,8 @@ button > span {
   --_play-background-color: rgb(var(--_white-rgb) / var(--rh-opacity-50, 50%));
   --_play-active-background-color: rgb(var(--_white-rgb) / var(--rh-opacity-80, 80%));
   --_play-focus-background-color: rgb(var(--_white-rgb) / var(--rh-opacity-80, 80%));
-  --_play-focus-outline-color: var(--rh-color-interactive-blue-lighter, #92c5f9);
+  --_play-focus-outline-color: var(--rh-color-interactive-primary-default-on-dark, #92c5f9);
   --_play-hover-background-color: rgb(var(--_white-rgb) / var(--rh-opacity-80, 80%));
-}
-
-:host([hidden]),
-[hidden] {
-  display: none !important;
 }
 
 rh-icon {
@@ -317,7 +302,7 @@ button:focus {
   outline:
     var(--rh-border-width-md, 2px)
     solid
-    var(--_focus-outline-color, var(--rh-color-interactive-blue-darker, #0066cc));
+    var(--_focus-outline-color, var(--rh-color-interactive-primary-default-on-light, #0066cc));
 }
 
 button:hover {
@@ -332,7 +317,7 @@ button:hover {
  *                            *
  ******************************/
 
-:host([danger]) button {
+button.danger {
   --_default-color: var(--_danger-color);
   --_default-background-color: var(--_danger-background-color);
   --_default-border-color: var(--_danger-border-color);
@@ -353,7 +338,7 @@ button:hover {
  *                            *
  ******************************/
 
-:host([variant="secondary" i]) button {
+button.secondary {
   --_default-color: var(--_secondary-color);
   --_default-background-color: var(--_secondary-background-color);
   --_default-border-color: var(--_secondary-border-color);
@@ -377,7 +362,7 @@ button:hover {
  *                            *
  ******************************/
 
-:host([variant="tertiary" i]) button {
+button.tertiary {
   --_default-color: var(--_tertiary-color);
   --_default-background-color: var(--_tertiary-background-color);
   --_default-border-color: var(--_tertiary-border-color);
@@ -400,8 +385,12 @@ button:hover {
  *                            *
  ******************************/
 
-:host([variant="link" i]) button {
-  display: inline;
+button.link {
+  display: inline-flex;
+
+  & rh-icon {
+    order: 1;
+  }
 
   --_default-color: var(--_link-color);
   --_default-background-color: var(--_link-background-color);
@@ -424,7 +413,7 @@ button:hover {
  *                            *
  ******************************/
 
-:host([variant="close" i]) button {
+button.close {
   --_default-color: var(--_close-color);
   --_default-background-color: var(--_close-background-color);
   --_active-color: var(--_close-active-color);
@@ -448,10 +437,11 @@ button:hover {
  *                            *
  ******************************/
 
-:host([variant="play" i]) button {
+button.play {
   border-radius: 100%;
   width: var(--rh-length-4xl, 64px);
 
+  --rh-icon-size: var(--rh-size-icon-02, 24px);
   --_default-color: var(--_play-color);
   --_default-background-color: var(--_play-background-color);
   --_default-background-opacity: var(--_play-background-opacity);
@@ -466,44 +456,40 @@ button:hover {
   --_hover-background-color: var(--_play-hover-background-color);
   --_hover-background-opacity: var(--_play-hover-background-opacity);
   --_icon-size: var(--rh-size-icon-02, 24px);
+
+  & [part='icon'] {
+    display: contents;
+  }
+
+  & rh-icon {
+    translate: 10%; /* perceptually center play icon only */
+  }
 }
 
-:host(:is([variant="play"])) [part="icon"] {
-  position: relative;
-  inset-inline-start: 3px;
-}
-
-:host(:is([variant="play" i], [variant="close" i])) button {
+button:is(.play,.close) {
   aspect-ratio: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 0;
+
+  /* visually hidden */
+  & #text {
+    display: inline;
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
 }
 
-:host(:is([variant="play" i], [variant="close" i])) [part="icon"] {
-  display: inline-block;
-  width: var(--_icon-size, var(--rh-size-icon-01, 16px));
-  height: var(--_icon-size, var(--rh-size-icon-01, 16px));
-}
-
-:host(:is([variant="play" i], [variant="close" i])) svg {
-  fill: currentcolor;
-  stroke: currentcolor;
-}
-
-/* visually hidden */
-:host(:is([variant="play" i], [variant="close" i])) #text {
-  display: inline;
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  padding: 0 !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  clip: rect(0, 0, 0, 0) !important;
-  white-space: nowrap !important;
-  border: 0 !important;
+:host(:is([variant='play' i], [variant='close' i])) {
+  line-height: 0;
 }
 
 /******************************
@@ -514,13 +500,18 @@ button:hover {
 
 :host(:disabled) button,
 :host(:disabled[danger]) button,
-:host(:disabled[variant="link"]) button,
+:host(:disabled[variant='link']) button,
 button[disabled] {
   pointer-events: none;
   cursor: default;
 
   --_color: var(--rh-color-text-secondary-on-light, #4d4d4d);
   --_background-color: var(--rh-color-surface-light, #e0e0e0);
+
+  &.dark {
+    --_color: var(--rh-color-gray-40, #a3a3a3);
+    --_background-color: var(--rh-color-surface-dark, #383838);
+  }
 }
 
 :host(:disabled) button:after {
@@ -533,7 +524,7 @@ button[disabled] {
  *                            *
  ******************************/
 
-:host([variant="secondary" i][danger]) button {
+button.secondary.danger {
   --_default-color: var(--_secondary-danger-color);
   --_default-background-color: transparent;
   --_default-border-color: var(--_danger-background-color);
@@ -548,6 +539,6 @@ button[disabled] {
   --_hover-border-color: var(--_danger-hover-border-color);
 }
 
-:host(:not([disabled])) .hasIcon [part="icon"] {
+:host(:not([disabled])) .hasIcon [part='icon'] {
   cursor: pointer;
 }

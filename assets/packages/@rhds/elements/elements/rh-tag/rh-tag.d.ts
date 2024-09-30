@@ -5,10 +5,8 @@ import '@rhds/elements/rh-icon/rh-icon.js';
  * A tag is a caption added to an element for better clarity and user convenience.
  * @summary  Highlights an element to add clarity or draw attention
  * @fires close - when a removable label's close button is clicked
- * @slot icon
- *       Contains the labels's icon, e.g. web-icon-alert-success.
- * @slot
- *       Must contain the text for the label.
+ * @slot icon -  Contains the labels's icon, e.g. web-icon-alert-success.
+ * @slot      -  Must contain the text for the label.
  * @csspart icon - container for the label icon
  * @cssprop  {<length>} [--rh-tag-margin-inline-end=4px]
  *           The margin at the end of the direction parallel to the flow of the text.
@@ -34,9 +32,13 @@ export declare class RhTag extends LitElement {
      */
     iconSet: IconSetName;
     /** The variant of the label. */
-    variant?: 'filled' | 'outline';
+    variant?: 'filled' | 'outline' | 'desaturated';
+    /** The variant of the label. */
+    size?: 'compact';
+    /** optional href for linked tag. */
+    href?: string;
     /** The color of the label. */
-    color?: 'blue' | 'cyan' | 'green' | 'orange' | 'purple' | 'red' | 'grey';
+    color?: 'red' | 'red-orange' | 'orange' | 'yellow' | 'green' | 'cyan' | 'teal' | 'blue' | 'purple' | 'gray';
     private on?;
     render(): import("lit-html").TemplateResult<1>;
 }

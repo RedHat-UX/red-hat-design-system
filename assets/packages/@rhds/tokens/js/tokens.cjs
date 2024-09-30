@@ -1,6 +1,5 @@
 /**
- * Do not edit directly
- * Generated on Wed, 13 Dec 2023 08:19:14 GMT
+ * Do not edit directly, this file was auto-generated.
  */
 
 
@@ -86,12 +85,20 @@ exports.tokens = new Map([
     "1680px"
   ],
   [
+    "--rh-color-accent-base",
+    null
+  ],
+  [
     "--rh-color-accent-base-on-light",
     "#0066cc"
   ],
   [
     "--rh-color-accent-base-on-dark",
     "#92c5f9"
+  ],
+  [
+    "--rh-color-accent-brand",
+    null
   ],
   [
     "--rh-color-accent-brand-on-light",
@@ -102,12 +109,20 @@ exports.tokens = new Map([
     "#ee0000"
   ],
   [
+    "--rh-color-border-strong",
+    null
+  ],
+  [
     "--rh-color-border-strong-on-light",
     "#151515"
   ],
   [
     "--rh-color-border-strong-on-dark",
     "#ffffff"
+  ],
+  [
+    "--rh-color-border-subtle",
+    null
   ],
   [
     "--rh-color-border-subtle-on-light",
@@ -118,12 +133,112 @@ exports.tokens = new Map([
     "#707070"
   ],
   [
+    "--rh-color-border-interactive",
+    null
+  ],
+  [
     "--rh-color-border-interactive-on-light",
     "#0066cc"
   ],
   [
     "--rh-color-border-interactive-on-dark",
     "#92c5f9"
+  ],
+  [
+    "--rh-color-border-destructive",
+    null
+  ],
+  [
+    "--rh-color-border-destructive-on-light",
+    "#b1380b"
+  ],
+  [
+    "--rh-color-border-destructive-on-dark",
+    "#f0561d"
+  ],
+  [
+    "--rh-color-border-status-danger",
+    null
+  ],
+  [
+    "--rh-color-border-status-danger-on-light",
+    "#b1380b"
+  ],
+  [
+    "--rh-color-border-status-danger-on-dark",
+    "#f0561d"
+  ],
+  [
+    "--rh-color-border-status-caution",
+    null
+  ],
+  [
+    "--rh-color-border-status-caution-on-light",
+    "#ca6c0f"
+  ],
+  [
+    "--rh-color-border-status-caution-on-dark",
+    "#f5921b"
+  ],
+  [
+    "--rh-color-border-status-warning",
+    null
+  ],
+  [
+    "--rh-color-border-status-warning-on-light",
+    "#dca614"
+  ],
+  [
+    "--rh-color-border-status-warning-on-dark",
+    "#ffcc17"
+  ],
+  [
+    "--rh-color-border-status-neutral",
+    null
+  ],
+  [
+    "--rh-color-border-status-neutral-on-light",
+    "#4d4d4d"
+  ],
+  [
+    "--rh-color-border-status-neutral-on-dark",
+    "#c7c7c7"
+  ],
+  [
+    "--rh-color-border-status-info",
+    null
+  ],
+  [
+    "--rh-color-border-status-info-on-light",
+    "#5e40be"
+  ],
+  [
+    "--rh-color-border-status-info-on-dark",
+    "#b6a6e9"
+  ],
+  [
+    "--rh-color-border-status-success",
+    null
+  ],
+  [
+    "--rh-color-border-status-success-on-light",
+    "#3d7317"
+  ],
+  [
+    "--rh-color-border-status-success-on-dark",
+    "#87bb62"
+  ],
+  [
+    "--rh-color-brand-red",
+    null
+  ],
+  [
+    "--rh-color-brand-red-on-light",
+    "#ee0000"
+  ],
+  [
+    "--rh-color-brand-red-on-dark",
+    "#ee0000"
   ],
   [
     "--rh-color-brand-red-lightest",
@@ -150,12 +265,288 @@ exports.tokens = new Map([
     "#5f0000"
   ],
   [
-    "--rh-color-brand-red-on-dark",
+    "--rh-color-green-10",
+    "#e9f7df"
+  ],
+  [
+    "--rh-color-green-20",
+    "#d1f1bb"
+  ],
+  [
+    "--rh-color-green-30",
+    "#afdc8f"
+  ],
+  [
+    "--rh-color-green-40",
+    "#87bb62"
+  ],
+  [
+    "--rh-color-green-50",
+    "#63993d"
+  ],
+  [
+    "--rh-color-green-60",
+    "#3d7317"
+  ],
+  [
+    "--rh-color-green-70",
+    "#204d00"
+  ],
+  [
+    "--rh-color-green-10-hsl",
+    "95.00000000000003 60.00000000000004% 92.15686274509804%"
+  ],
+  [
+    "--rh-color-green-10-rgb",
+    "233 247 223"
+  ],
+  [
+    "--rh-color-green-20-hsl",
+    "95.55555555555556 65.85365853658536% 83.92156862745097%"
+  ],
+  [
+    "--rh-color-green-20-rgb",
+    "209 241 187"
+  ],
+  [
+    "--rh-color-green-30-hsl",
+    "95.06493506493506 52.380952380952394% 71.17647058823529%"
+  ],
+  [
+    "--rh-color-green-30-rgb",
+    "175 220 143"
+  ],
+  [
+    "--rh-color-green-40-hsl",
+    "95.05617977528091 39.55555555555555% 55.88235294117647%"
+  ],
+  [
+    "--rh-color-green-40-rgb",
+    "135 187 98"
+  ],
+  [
+    "--rh-color-green-50-hsl",
+    "95.21739130434783 42.99065420560747% 41.96078431372549%"
+  ],
+  [
+    "--rh-color-green-50-rgb",
+    "99 153 61"
+  ],
+  [
+    "--rh-color-green-60-hsl",
+    "95.21739130434783 66.66666666666667% 27.058823529411764%"
+  ],
+  [
+    "--rh-color-green-60-rgb",
+    "61 115 23"
+  ],
+  [
+    "--rh-color-green-70-hsl",
+    "95.06493506493506 100% 15.098039215686274%"
+  ],
+  [
+    "--rh-color-green-70-rgb",
+    "32 77 0"
+  ],
+  [
+    "--rh-color-orange-10",
+    "#ffe8cc"
+  ],
+  [
+    "--rh-color-orange-20",
+    "#fccb8f"
+  ],
+  [
+    "--rh-color-orange-30",
+    "#f8ae54"
+  ],
+  [
+    "--rh-color-orange-40",
+    "#f5921b"
+  ],
+  [
+    "--rh-color-orange-50",
+    "#ca6c0f"
+  ],
+  [
+    "--rh-color-orange-60",
+    "#9e4a06"
+  ],
+  [
+    "--rh-color-orange-70",
+    "#732e00"
+  ],
+  [
+    "--rh-color-orange-10-hsl",
+    "32.941176470588225 100% 90%"
+  ],
+  [
+    "--rh-color-orange-10-rgb",
+    "255 232 204"
+  ],
+  [
+    "--rh-color-orange-20-hsl",
+    "33.02752293577981 94.78260869565219% 77.45098039215686%"
+  ],
+  [
+    "--rh-color-orange-20-rgb",
+    "252 203 143"
+  ],
+  [
+    "--rh-color-orange-30-hsl",
+    "32.926829268292686 92.13483146067415% 65.09803921568627%"
+  ],
+  [
+    "--rh-color-orange-30-rgb",
+    "248 174 84"
+  ],
+  [
+    "--rh-color-orange-40-hsl",
+    "32.752293577981646 91.5966386554622% 53.333333333333336%"
+  ],
+  [
+    "--rh-color-orange-40-rgb",
+    "245 146 27"
+  ],
+  [
+    "--rh-color-orange-50-hsl",
+    "29.83957219251337 86.17511520737327% 42.549019607843135%"
+  ],
+  [
+    "--rh-color-orange-50-rgb",
+    "202 108 15"
+  ],
+  [
+    "--rh-color-orange-60-hsl",
+    "26.842105263157904 92.68292682926828% 32.15686274509804%"
+  ],
+  [
+    "--rh-color-orange-60-rgb",
+    "158 74 6"
+  ],
+  [
+    "--rh-color-orange-70-hsl",
+    "24 100% 22.54901960784314%"
+  ],
+  [
+    "--rh-color-orange-70-rgb",
+    "115 46 0"
+  ],
+  [
+    "--rh-color-icon-primary",
+    null
+  ],
+  [
+    "--rh-color-icon-primary-on-light",
     "#ee0000"
   ],
   [
-    "--rh-color-brand-red-on-light",
+    "--rh-color-icon-primary-on-dark",
     "#ee0000"
+  ],
+  [
+    "--rh-color-icon-secondary",
+    null
+  ],
+  [
+    "--rh-color-icon-secondary-on-light",
+    "#151515"
+  ],
+  [
+    "--rh-color-icon-secondary-on-dark",
+    "#ffffff"
+  ],
+  [
+    "--rh-color-icon-subtle",
+    "#707070"
+  ],
+  [
+    "--rh-color-icon-subtle-hover",
+    "#a3a3a3"
+  ],
+  [
+    "--rh-color-icon-status-danger",
+    null
+  ],
+  [
+    "--rh-color-icon-status-danger-on-light",
+    "#b1380b"
+  ],
+  [
+    "--rh-color-icon-status-danger-on-dark",
+    "#f0561d"
+  ],
+  [
+    "--rh-color-icon-status-caution",
+    null
+  ],
+  [
+    "--rh-color-icon-status-caution-on-light",
+    "#ca6c0f"
+  ],
+  [
+    "--rh-color-icon-status-caution-on-dark",
+    "#f5921b"
+  ],
+  [
+    "--rh-color-icon-status-warning",
+    null
+  ],
+  [
+    "--rh-color-icon-status-warning-on-light",
+    "#dca614"
+  ],
+  [
+    "--rh-color-icon-status-warning-on-dark",
+    "#ffcc17"
+  ],
+  [
+    "--rh-color-icon-status-default",
+    null
+  ],
+  [
+    "--rh-color-icon-status-default-on-light",
+    "#4d4d4d"
+  ],
+  [
+    "--rh-color-icon-status-default-on-dark",
+    "#4d4d4d"
+  ],
+  [
+    "--rh-color-icon-status-neutral",
+    null
+  ],
+  [
+    "--rh-color-icon-status-neutral-on-light",
+    "#4d4d4d"
+  ],
+  [
+    "--rh-color-icon-status-neutral-on-dark",
+    "#c7c7c7"
+  ],
+  [
+    "--rh-color-icon-status-info",
+    null
+  ],
+  [
+    "--rh-color-icon-status-info-on-light",
+    "#5e40be"
+  ],
+  [
+    "--rh-color-icon-status-info-on-dark",
+    "#b6a6e9"
+  ],
+  [
+    "--rh-color-icon-status-success",
+    null
+  ],
+  [
+    "--rh-color-icon-status-success-on-light",
+    "#3d7317"
+  ],
+  [
+    "--rh-color-icon-status-success-on-dark",
+    "#87bb62"
   ],
   [
     "--rh-color-canvas-white",
@@ -164,6 +555,22 @@ exports.tokens = new Map([
   [
     "--rh-color-canvas-black",
     "#151515"
+  ],
+  [
+    "--rh-color-canvas-white-hsl",
+    "0 0% 100%"
+  ],
+  [
+    "--rh-color-canvas-white-rgb",
+    "255 255 255"
+  ],
+  [
+    "--rh-color-canvas-black-hsl",
+    "0 0% 0%"
+  ],
+  [
+    "--rh-color-canvas-black-rgb",
+    "0 0 0"
   ],
   [
     "--rh-color-blue-10",
@@ -378,174 +785,6 @@ exports.tokens = new Map([
     "#000000"
   ],
   [
-    "--rh-color-green-10",
-    "#e9f7df"
-  ],
-  [
-    "--rh-color-green-20",
-    "#d1f1bb"
-  ],
-  [
-    "--rh-color-green-30",
-    "#afdc8f"
-  ],
-  [
-    "--rh-color-green-40",
-    "#87bb62"
-  ],
-  [
-    "--rh-color-green-50",
-    "#63993d"
-  ],
-  [
-    "--rh-color-green-60",
-    "#3d7317"
-  ],
-  [
-    "--rh-color-green-70",
-    "#204d00"
-  ],
-  [
-    "--rh-color-green-10-hsl",
-    "95.00000000000003 60.00000000000004% 92.15686274509804%"
-  ],
-  [
-    "--rh-color-green-10-rgb",
-    "233 247 223"
-  ],
-  [
-    "--rh-color-green-20-hsl",
-    "95.55555555555556 65.85365853658536% 83.92156862745097%"
-  ],
-  [
-    "--rh-color-green-20-rgb",
-    "209 241 187"
-  ],
-  [
-    "--rh-color-green-30-hsl",
-    "95.06493506493506 52.380952380952394% 71.17647058823529%"
-  ],
-  [
-    "--rh-color-green-30-rgb",
-    "175 220 143"
-  ],
-  [
-    "--rh-color-green-40-hsl",
-    "95.05617977528091 39.55555555555555% 55.88235294117647%"
-  ],
-  [
-    "--rh-color-green-40-rgb",
-    "135 187 98"
-  ],
-  [
-    "--rh-color-green-50-hsl",
-    "95.21739130434783 42.99065420560747% 41.96078431372549%"
-  ],
-  [
-    "--rh-color-green-50-rgb",
-    "99 153 61"
-  ],
-  [
-    "--rh-color-green-60-hsl",
-    "95.21739130434783 66.66666666666667% 27.058823529411764%"
-  ],
-  [
-    "--rh-color-green-60-rgb",
-    "61 115 23"
-  ],
-  [
-    "--rh-color-green-70-hsl",
-    "95.06493506493506 100% 15.098039215686274%"
-  ],
-  [
-    "--rh-color-green-70-rgb",
-    "32 77 0"
-  ],
-  [
-    "--rh-color-orange-10",
-    "#ffe8cc"
-  ],
-  [
-    "--rh-color-orange-20",
-    "#fccb8f"
-  ],
-  [
-    "--rh-color-orange-30",
-    "#f8ae54"
-  ],
-  [
-    "--rh-color-orange-40",
-    "#f5921b"
-  ],
-  [
-    "--rh-color-orange-50",
-    "#ca6c0f"
-  ],
-  [
-    "--rh-color-orange-60",
-    "#9e4a06"
-  ],
-  [
-    "--rh-color-orange-70",
-    "#732e00"
-  ],
-  [
-    "--rh-color-orange-10-hsl",
-    "32.941176470588225 100% 90%"
-  ],
-  [
-    "--rh-color-orange-10-rgb",
-    "255 232 204"
-  ],
-  [
-    "--rh-color-orange-20-hsl",
-    "33.02752293577981 94.78260869565219% 77.45098039215686%"
-  ],
-  [
-    "--rh-color-orange-20-rgb",
-    "252 203 143"
-  ],
-  [
-    "--rh-color-orange-30-hsl",
-    "32.926829268292686 92.13483146067415% 65.09803921568627%"
-  ],
-  [
-    "--rh-color-orange-30-rgb",
-    "248 174 84"
-  ],
-  [
-    "--rh-color-orange-40-hsl",
-    "32.752293577981646 91.5966386554622% 53.333333333333336%"
-  ],
-  [
-    "--rh-color-orange-40-rgb",
-    "245 146 27"
-  ],
-  [
-    "--rh-color-orange-50-hsl",
-    "29.83957219251337 86.17511520737327% 42.549019607843135%"
-  ],
-  [
-    "--rh-color-orange-50-rgb",
-    "202 108 15"
-  ],
-  [
-    "--rh-color-orange-60-hsl",
-    "26.842105263157904 92.68292682926828% 32.15686274509804%"
-  ],
-  [
-    "--rh-color-orange-60-rgb",
-    "158 74 6"
-  ],
-  [
-    "--rh-color-orange-70-hsl",
-    "24 100% 22.54901960784314%"
-  ],
-  [
-    "--rh-color-orange-70-rgb",
-    "115 46 0"
-  ],
-  [
     "--rh-color-purple-10",
     "#ece6ff"
   ],
@@ -647,7 +886,7 @@ exports.tokens = new Map([
   ],
   [
     "--rh-color-red-orange-50",
-    "#f4784a"
+    "#f0561d"
   ],
   [
     "--rh-color-red-orange-60",
@@ -691,11 +930,11 @@ exports.tokens = new Map([
   ],
   [
     "--rh-color-red-orange-50-hsl",
-    "16.235294117647054 88.54166666666671% 62.35294117647059%"
+    "16.208530805687207 87.55186721991701% 52.74509803921569%"
   ],
   [
     "--rh-color-red-orange-50-rgb",
-    "244 120 74"
+    "240 86 29"
   ],
   [
     "--rh-color-red-orange-60-hsl",
@@ -966,28 +1205,196 @@ exports.tokens = new Map([
     "115 72 11"
   ],
   [
-    "--rh-color-icon-primary-on-light",
-    "#ee0000"
+    "--rh-color-interactive-primary-default",
+    null
   ],
   [
-    "--rh-color-icon-primary-on-dark",
-    "#ee0000"
+    "--rh-color-interactive-primary-default-on-light",
+    "#0066cc"
   ],
   [
-    "--rh-color-icon-secondary-on-light",
-    "#151515"
+    "--rh-color-interactive-primary-default-on-dark",
+    "#92c5f9"
   ],
   [
-    "--rh-color-icon-secondary-on-dark",
-    "#ffffff"
+    "--rh-color-interactive-primary-hover",
+    null
   ],
   [
-    "--rh-color-icon-subtle",
-    "#707070"
+    "--rh-color-interactive-primary-hover-on-light",
+    "#003366"
   ],
   [
-    "--rh-color-icon-subtle-hover",
-    "#a3a3a3"
+    "--rh-color-interactive-primary-hover-on-dark",
+    "#b9dafc"
+  ],
+  [
+    "--rh-color-interactive-primary-active",
+    null
+  ],
+  [
+    "--rh-color-interactive-primary-active-on-light",
+    "#003366"
+  ],
+  [
+    "--rh-color-interactive-primary-active-on-dark",
+    "#b9dafc"
+  ],
+  [
+    "--rh-color-interactive-primary-focus",
+    null
+  ],
+  [
+    "--rh-color-interactive-primary-focus-on-light",
+    "#003366"
+  ],
+  [
+    "--rh-color-interactive-primary-focus-on-dark",
+    "#b9dafc"
+  ],
+  [
+    "--rh-color-interactive-primary-visited-default",
+    null
+  ],
+  [
+    "--rh-color-interactive-primary-visited-default-on-light",
+    "#5e40be"
+  ],
+  [
+    "--rh-color-interactive-primary-visited-default-on-dark",
+    "#b6a6e9"
+  ],
+  [
+    "--rh-color-interactive-primary-visited-hover",
+    null
+  ],
+  [
+    "--rh-color-interactive-primary-visited-hover-on-light",
+    "#21134d"
+  ],
+  [
+    "--rh-color-interactive-primary-visited-hover-on-dark",
+    "#ece6ff"
+  ],
+  [
+    "--rh-color-interactive-primary-visited-active",
+    null
+  ],
+  [
+    "--rh-color-interactive-primary-visited-active-on-light",
+    "#21134d"
+  ],
+  [
+    "--rh-color-interactive-primary-visited-active-on-dark",
+    "#ece6ff"
+  ],
+  [
+    "--rh-color-interactive-primary-visited-focus",
+    null
+  ],
+  [
+    "--rh-color-interactive-primary-visited-focus-on-light",
+    "#21134d"
+  ],
+  [
+    "--rh-color-interactive-primary-visited-focus-on-dark",
+    "#ece6ff"
+  ],
+  [
+    "--rh-color-interactive-secondary-default",
+    null
+  ],
+  [
+    "--rh-color-interactive-secondary-default-on-light",
+    "#4d4d4d"
+  ],
+  [
+    "--rh-color-interactive-secondary-default-on-dark",
+    "#c7c7c7"
+  ],
+  [
+    "--rh-color-interactive-secondary-hover",
+    null
+  ],
+  [
+    "--rh-color-interactive-secondary-hover-on-light",
+    "#4d4d4d"
+  ],
+  [
+    "--rh-color-interactive-secondary-hover-on-dark",
+    "#c7c7c7"
+  ],
+  [
+    "--rh-color-interactive-secondary-active",
+    null
+  ],
+  [
+    "--rh-color-interactive-secondary-active-on-light",
+    "#4d4d4d"
+  ],
+  [
+    "--rh-color-interactive-secondary-active-on-dark",
+    "#c7c7c7"
+  ],
+  [
+    "--rh-color-interactive-secondary-focus",
+    null
+  ],
+  [
+    "--rh-color-interactive-secondary-focus-on-light",
+    "#4d4d4d"
+  ],
+  [
+    "--rh-color-interactive-secondary-focus-on-dark",
+    "#c7c7c7"
+  ],
+  [
+    "--rh-color-interactive-secondary-visited-default",
+    null
+  ],
+  [
+    "--rh-color-interactive-secondary-visited-default-on-light",
+    "#4d4d4d"
+  ],
+  [
+    "--rh-color-interactive-secondary-visited-default-on-dark",
+    "#c7c7c7"
+  ],
+  [
+    "--rh-color-interactive-secondary-visited-hover",
+    null
+  ],
+  [
+    "--rh-color-interactive-secondary-visited-hover-on-light",
+    "#4d4d4d"
+  ],
+  [
+    "--rh-color-interactive-secondary-visited-hover-on-dark",
+    "#c7c7c7"
+  ],
+  [
+    "--rh-color-interactive-secondary-visited-active",
+    null
+  ],
+  [
+    "--rh-color-interactive-secondary-visited-active-on-light",
+    "#4d4d4d"
+  ],
+  [
+    "--rh-color-interactive-secondary-visited-active-on-dark",
+    "#c7c7c7"
+  ],
+  [
+    "--rh-color-interactive-secondary-visited-focus",
+    null
+  ],
+  [
+    "--rh-color-interactive-secondary-visited-focus-on-light",
+    "#4d4d4d"
+  ],
+  [
+    "--rh-color-interactive-secondary-visited-focus-on-dark",
+    "#c7c7c7"
   ],
   [
     "--rh-color-interactive-blue-lightest",
@@ -1019,7 +1426,95 @@ exports.tokens = new Map([
   ],
   [
     "--rh-color-interactive-purple-darkest",
-    "#21134d"
+    "#ece6ff"
+  ],
+  [
+    "--rh-color-status-danger",
+    null
+  ],
+  [
+    "--rh-color-status-danger-on-light",
+    "#b1380b"
+  ],
+  [
+    "--rh-color-status-danger-on-dark",
+    "#f0561d"
+  ],
+  [
+    "--rh-color-status-caution",
+    null
+  ],
+  [
+    "--rh-color-status-caution-on-light",
+    "#ca6c0f"
+  ],
+  [
+    "--rh-color-status-caution-on-dark",
+    "#f5921b"
+  ],
+  [
+    "--rh-color-status-warning",
+    null
+  ],
+  [
+    "--rh-color-status-warning-on-light",
+    "#dca614"
+  ],
+  [
+    "--rh-color-status-warning-on-dark",
+    "#ffcc17"
+  ],
+  [
+    "--rh-color-status-neutral",
+    null
+  ],
+  [
+    "--rh-color-status-neutral-on-light",
+    "#4d4d4d"
+  ],
+  [
+    "--rh-color-status-neutral-on-dark",
+    "#c7c7c7"
+  ],
+  [
+    "--rh-color-status-note",
+    null
+  ],
+  [
+    "--rh-color-status-note-on-light",
+    "#5e40be"
+  ],
+  [
+    "--rh-color-status-note-on-dark",
+    "#b6a6e9"
+  ],
+  [
+    "--rh-color-status-info",
+    null
+  ],
+  [
+    "--rh-color-status-info-on-light",
+    "#5e40be"
+  ],
+  [
+    "--rh-color-status-info-on-dark",
+    "#b6a6e9"
+  ],
+  [
+    "--rh-color-status-success",
+    null
+  ],
+  [
+    "--rh-color-status-success-on-light",
+    "#3d7317"
+  ],
+  [
+    "--rh-color-status-success-on-dark",
+    "#87bb62"
+  ],
+  [
+    "--rh-color-surface",
+    null
   ],
   [
     "--rh-color-surface-lightest",
@@ -1050,12 +1545,104 @@ exports.tokens = new Map([
     "#151515"
   ],
   [
+    "--rh-color-surface-status-danger",
+    null
+  ],
+  [
+    "--rh-color-surface-status-danger-on-light",
+    "#ffe3d9"
+  ],
+  [
+    "--rh-color-surface-status-danger-on-dark",
+    "#ffe3d9"
+  ],
+  [
+    "--rh-color-surface-status-caution",
+    null
+  ],
+  [
+    "--rh-color-surface-status-caution-on-light",
+    "#ffe8cc"
+  ],
+  [
+    "--rh-color-surface-status-caution-on-dark",
+    "#ffe8cc"
+  ],
+  [
+    "--rh-color-surface-status-warning",
+    null
+  ],
+  [
+    "--rh-color-surface-status-warning-on-light",
+    "#fff4cc"
+  ],
+  [
+    "--rh-color-surface-status-warning-on-dark",
+    "#73480b"
+  ],
+  [
+    "--rh-color-surface-status-default",
+    null
+  ],
+  [
+    "--rh-color-surface-status-default-on-light",
+    "#f2f2f2"
+  ],
+  [
+    "--rh-color-surface-status-default-on-dark",
+    "#f2f2f2"
+  ],
+  [
+    "--rh-color-surface-status-neutral",
+    null
+  ],
+  [
+    "--rh-color-surface-status-neutral-on-light",
+    "#f2f2f2"
+  ],
+  [
+    "--rh-color-surface-status-neutral-on-dark",
+    "#f2f2f2"
+  ],
+  [
+    "--rh-color-surface-status-info",
+    null
+  ],
+  [
+    "--rh-color-surface-status-info-on-light",
+    "#ece6ff"
+  ],
+  [
+    "--rh-color-surface-status-info-on-dark",
+    "#ece6ff"
+  ],
+  [
+    "--rh-color-surface-status-success",
+    null
+  ],
+  [
+    "--rh-color-surface-status-success-on-light",
+    "#e9f7df"
+  ],
+  [
+    "--rh-color-surface-status-success-on-dark",
+    "#e9f7df"
+  ],
+  [
+    "--rh-color-text-primary",
+    null
+  ],
+  [
     "--rh-color-text-primary-on-light",
     "#151515"
   ],
   [
     "--rh-color-text-primary-on-dark",
     "#ffffff"
+  ],
+  [
+    "--rh-color-text-secondary",
+    null
   ],
   [
     "--rh-color-text-secondary-on-light",
@@ -1066,6 +1653,10 @@ exports.tokens = new Map([
     "#c7c7c7"
   ],
   [
+    "--rh-color-text-brand",
+    null
+  ],
+  [
     "--rh-color-text-brand-on-light",
     "#ee0000"
   ],
@@ -1074,16 +1665,32 @@ exports.tokens = new Map([
     "#ee0000"
   ],
   [
+    "--rh-color-white-hsl",
+    "0 0% 100%"
+  ],
+  [
+    "--rh-color-white-rgb",
+    "255 255 255"
+  ],
+  [
+    "--rh-color-black-hsl",
+    "0 0% 0%"
+  ],
+  [
+    "--rh-color-black-rgb",
+    "0 0 0"
+  ],
+  [
     "--rh-font-family-heading",
-    "RedHatDisplay, \"Red Hat Display\", \"Noto Sans Arabic\", \"Noto Sans Hebrew\", \"Noto Sans JP\", \"Noto Sans KR\", \"Noto Sans Malayalam\", \"Noto Sans SC\", \"Noto Sans TC\", \"Noto Sans Thai\", Helvetica, Arial, sans-serif"
+    "RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif"
   ],
   [
     "--rh-font-family-body-text",
-    "RedHatText, \"Red Hat Text\", \"Noto Sans Arabic\", \"Noto Sans Hebrew\", \"Noto Sans JP\", \"Noto Sans KR\", \"Noto Sans Malayalam\", \"Noto Sans SC\", \"Noto Sans TC\", \"Noto Sans Thai\", Helvetica, Arial, sans-serif"
+    "RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif"
   ],
   [
     "--rh-font-family-code",
-    "RedHatMono, \"Red Hat Mono\", \"Courier New\", Courier, monospace"
+    "RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace"
   ],
   [
     "--rh-font-size-body-text-xs",
@@ -1238,6 +1845,90 @@ exports.tokens = new Map([
     "128px"
   ],
   [
+    "--rh-media-xs",
+    "(min-width: 576px)"
+  ],
+  [
+    "--rh-media-sm",
+    "(min-width: 768px)"
+  ],
+  [
+    "--rh-media-md",
+    "(min-width: 992px)"
+  ],
+  [
+    "--rh-media-lg",
+    "(min-width: 1200px)"
+  ],
+  [
+    "--rh-media-xl",
+    "(min-width: 1440px)"
+  ],
+  [
+    "--rh-media-2xl",
+    "(min-width: 1680px)"
+  ],
+  [
+    "--rh-opacity-0",
+    "0%"
+  ],
+  [
+    "--rh-opacity-10",
+    "10%"
+  ],
+  [
+    "--rh-opacity-20",
+    "20%"
+  ],
+  [
+    "--rh-opacity-30",
+    "30%"
+  ],
+  [
+    "--rh-opacity-40",
+    "40%"
+  ],
+  [
+    "--rh-opacity-50",
+    "50%"
+  ],
+  [
+    "--rh-opacity-60",
+    "60%"
+  ],
+  [
+    "--rh-opacity-70",
+    "70%"
+  ],
+  [
+    "--rh-opacity-80",
+    "80%"
+  ],
+  [
+    "--rh-opacity-90",
+    "90%"
+  ],
+  [
+    "--rh-opacity-100",
+    "100%"
+  ],
+  [
+    "--rh-box-shadow-sm",
+    "0 2px 4px 0 rgba(21, 21, 21, 0.2)"
+  ],
+  [
+    "--rh-box-shadow-md",
+    "0 4px 6px 1px rgba(21, 21, 21, 0.25)"
+  ],
+  [
+    "--rh-box-shadow-lg",
+    "0 6px 8px 2px rgba(21, 21, 21, 0.3)"
+  ],
+  [
+    "--rh-box-shadow-xl",
+    "0 8px 24px 3px rgba(21, 21, 21, 0.35)"
+  ],
+  [
     "--rh-length-4xs",
     "1px"
   ],
@@ -1336,89 +2027,5 @@ exports.tokens = new Map([
   [
     "--rh-space-7xl",
     "128px"
-  ],
-  [
-    "--rh-media-xs",
-    "(min-width: 576px)"
-  ],
-  [
-    "--rh-media-sm",
-    "(min-width: 768px)"
-  ],
-  [
-    "--rh-media-md",
-    "(min-width: 992px)"
-  ],
-  [
-    "--rh-media-lg",
-    "(min-width: 1200px)"
-  ],
-  [
-    "--rh-media-xl",
-    "(min-width: 1440px)"
-  ],
-  [
-    "--rh-media-2xl",
-    "(min-width: 1680px)"
-  ],
-  [
-    "--rh-opacity-0",
-    "0%"
-  ],
-  [
-    "--rh-opacity-10",
-    "10%"
-  ],
-  [
-    "--rh-opacity-20",
-    "20%"
-  ],
-  [
-    "--rh-opacity-30",
-    "30%"
-  ],
-  [
-    "--rh-opacity-40",
-    "40%"
-  ],
-  [
-    "--rh-opacity-50",
-    "50%"
-  ],
-  [
-    "--rh-opacity-60",
-    "60%"
-  ],
-  [
-    "--rh-opacity-70",
-    "70%"
-  ],
-  [
-    "--rh-opacity-80",
-    "80%"
-  ],
-  [
-    "--rh-opacity-90",
-    "90%"
-  ],
-  [
-    "--rh-opacity-100",
-    "100%"
-  ],
-  [
-    "--rh-box-shadow-sm",
-    "0 2px 4px 0 rgba(21, 21, 21, 0.2)"
-  ],
-  [
-    "--rh-box-shadow-md",
-    "0 4px 6px 1px rgba(21, 21, 21, 0.25)"
-  ],
-  [
-    "--rh-box-shadow-lg",
-    "0 6px 8px 2px rgba(21, 21, 21, 0.3)"
-  ],
-  [
-    "--rh-box-shadow-xl",
-    "0 8px 24px 3px rgba(21, 21, 21, 0.35)"
   ]
 ]);

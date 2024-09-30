@@ -1,0 +1,4 @@
+import rules from './stylelint/rules.js';
+import stylelint from 'stylelint';
+export default rules.map(ruleFunction => stylelint.createPlugin(ruleFunction.ruleName, ruleFunction));
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic3R5bGVsaW50LmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsic3R5bGVsaW50LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLE9BQU8sS0FBSyxNQUFNLHNCQUFzQixDQUFDO0FBQ3pDLE9BQU8sU0FBUyxNQUFNLFdBQVcsQ0FBQztBQUVsQyxlQUFlLEtBQUssQ0FBQyxHQUFHLENBQUMsWUFBWSxDQUFDLEVBQUUsQ0FDdEMsU0FBUyxDQUFDLFlBQVksQ0FBQyxZQUFZLENBQUMsUUFBUSxFQUFFLFlBQVksQ0FBQyxDQUFDLENBQUMifQ==

@@ -2,6 +2,7 @@ import { LitElement, type PropertyValues } from 'lit';
 import { type ColorPalette } from '../../lib/context/color/provider.js';
 import '@rhds/elements/rh-surface/rh-surface.js';
 import '@rhds/elements/rh-tooltip/rh-tooltip.js';
+import '@rhds/elements/rh-icon/rh-icon.js';
 /**
  * An audio player plays audio clips in the browser and includes other features.
  * @summary Plays audio clips and includes other features
@@ -31,7 +32,6 @@ export declare class RhAudioPlayer extends LitElement {
     #private;
     static readonly styles: CSSStyleSheet[];
     private static instances;
-    private static icons;
     static enUS: {
         play: string;
         pause: string;
@@ -61,7 +61,7 @@ export declare class RhAudioPlayer extends LitElement {
      *   - `compact-wide`: like compact but full width
      *   - `full`: maximal controls and artwork
      */
-    layout?: 'mini' | 'compact' | 'compact-wide' | 'full';
+    layout: 'mini' | 'compact' | 'compact-wide' | 'full';
     /** URL to audio's artwork */
     poster?: string;
     /** Playback volume */
@@ -104,14 +104,6 @@ export declare class RhAudioPlayer extends LitElement {
      * Unmutes media volume
      */
     unmute(): void;
-    /**
-     * Increases media playback rate by playback rate step value
-     */
-    incrementPlaybackrate(): void;
-    /**
-     * Decreases media playback rate by playback rate step value
-     */
-    decrementPlaybackrate(): void;
     /**
      * Pauses playback
      */

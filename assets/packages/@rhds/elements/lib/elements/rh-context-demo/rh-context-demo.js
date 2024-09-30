@@ -3,12 +3,13 @@ import { __classPrivateFieldGet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { classMap } from 'lit/directives/class-map.js';
-import {} from '../../context/color/provider.js';
+import { classMap } from 'lit-html/directives/class-map.js';
+import { colorContextProvider } from '../../context/color/provider.js';
 import { ContextChangeEvent } from '../rh-context-picker/rh-context-picker.js';
 import '@rhds/elements/rh-surface/rh-surface.js';
 import { css } from "lit";
-const style = css `:host{display:block;min-height:100%;height:auto;position:relative}.light{color:var(--rh-color-text-primary-on-light,#151515)}.dark{color:var(--rh-color-text-primary-on-dark,#fff)}#picker-container{display:flex;align-items:center;margin-block-end:var(--rh-context-demo-padding,var(--rh-space-xl,24px));gap:var(--rh-space-lg,16px)}#provider{padding:var(--rh-context-demo-padding,var(--rh-space-xl,24px));position:absolute;inset:0}`;
+const style = css `:host{display:block;min-height:100%;height:auto;position:relative}.on,rh-surface{color:var(--rh-color-text-primary)}#picker-container{display:flex;align-items:center;margin-block-end:var(--rh-context-demo-padding,var(--rh-space-xl,24px));gap:var(--rh-space-lg,16px)}#provider{padding:var(--rh-context-demo-padding,var(--rh-space-xl,24px));position:absolute;inset:0}`;
+import consumerStyles from '@rhds/tokens/css/color-context-consumer.css.js';
 let RhContextDemo = class RhContextDemo extends LitElement {
     constructor() {
         super(...arguments);
@@ -20,20 +21,19 @@ let RhContextDemo = class RhContextDemo extends LitElement {
     }
     render() {
         const { value = 'darkest' } = this;
-        const [on = 'dark'] = value.match(/dark|light/) ?? [];
+        const on = this.value.replace(/est|er/, '');
         return html `
       <rh-surface id="provider"
                   color-palette="${value}"
-                  class="${classMap({ [on]: true })}"
                   @change="${__classPrivateFieldGet(this, _RhContextDemo_instances, "m", _RhContextDemo_onChange)}">
-          <div id="picker-container">
+          <div id="picker-container" class="${classMap({ on: true, [on]: true })}">
             <rh-context-picker id="picker"
                                .value="${this.value}"
                                target="provider"></rh-context-picker>
             <label for="picker">${this.label}</label>
             <slot name="controls"></slot>
           </div>
-        <slot part="demo"></slot>
+        <slot part="demo" class="${classMap({ on: true, [on]: true })}"></slot>
       </rh-surface>
     `;
     }
@@ -52,8 +52,13 @@ let RhContextDemo = class RhContextDemo extends LitElement {
 _RhContextDemo_internals = new WeakMap();
 _RhContextDemo_instances = new WeakSet();
 _RhContextDemo_onChange = function _RhContextDemo_onChange(event) {
+    const picker = this.shadowRoot?.getElementById('picker');
     if (event instanceof ContextChangeEvent) {
+        if (event.target !== picker && event.provider && (event.provider !== this)) {
+            return;
+        }
         __classPrivateFieldGet(this, _RhContextDemo_instances, "m", _RhContextDemo_setValue).call(this, event.colorPalette);
+        event.preventDefault();
     }
 };
 _RhContextDemo_setValue = function _RhContextDemo_setValue(value) {
@@ -62,7 +67,7 @@ _RhContextDemo_setValue = function _RhContextDemo_setValue(value) {
         this.value = value;
     }
 };
-RhContextDemo.styles = [style];
+RhContextDemo.styles = [style, consumerStyles];
 RhContextDemo.formAssociated = true;
 __decorate([
     property()
@@ -71,6 +76,7 @@ __decorate([
     property()
 ], RhContextDemo.prototype, "label", void 0);
 __decorate([
+    colorContextProvider(),
     property({ attribute: 'color-palette', reflect: true })
 ], RhContextDemo.prototype, "colorPalette", void 0);
 RhContextDemo = __decorate([

@@ -5,7 +5,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 import { css } from "lit";
-const styles = css `:host{display:flex;overflow:hidden;flex-direction:column;align-items:stretch;width:100%;min-height:1em}:host([hidden]),[hidden]{display:none!important}#outer{position:relative;width:100%;min-width:6em;flex:1 0 auto;overflow-y:visible;--_fade-color:var(\n        --rh-audio-player-scrolling-text-overflow-background-color,\n        var(--rh-color-surface-lightest, #ffffff)\n      )}#outer.dark{--_fade-color:var(\n        --rh-audio-player-scrolling-text-overflow-background-color,\n        var(--rh-color-surface-darkest, #151515)\n      )}#outer.rtl{text-align:right}#inner{margin:0 auto;white-space:nowrap;overflow:hidden;position:absolute;top:0;bottom:0;min-height:100%}slot{display:inline-block}::slotted(*){margin:0!important}#fade{position:absolute;height:150%;content:" ";top:-25%;right:0;width:3em;box-shadow:-1em 0 1.5em 0 var(--_fade-color) inset}.rtl #fade{left:0;right:unset;box-shadow:1em 0 1.5em 0 var(--_fade-color) inset}slot.scrolling.scrollable{animation:ltr var(--_animation-ms,1s) ease-out}.rtl slot.scrolling.scrollable{animation:rtl var(--_animation-ms,1s) ease-out}@keyframes ltr{0%{transform:translate(0,0)}100%{transform:translate(-100%,0)}}@keyframes rtl{0%{transform:translate(0,0)}100%{transform:translate(100%,0)}}`;
+const styles = css `:host{display:flex;overflow:hidden;flex-direction:column;align-items:stretch;width:100%;min-height:1em}:host([hidden]),[hidden]{display:none!important}#outer{position:relative;width:100%;min-width:6em;flex:1 0 auto;overflow-y:visible;--_fade-color:var(--rh-audio-player-scrolling-text-overflow-background-color,var(--rh-color-surface-lightest,#fff))}#outer.dark{--_fade-color:var(--rh-audio-player-scrolling-text-overflow-background-color,var(--rh-color-surface-darkest,#151515))}#outer.rtl{text-align:right}#inner{margin:0 auto;white-space:nowrap;overflow:hidden;position:absolute;top:0;bottom:0;min-height:100%}slot{display:inline-block}::slotted(*){margin:0!important}#fade{position:absolute;height:150%;content:" ";top:-25%;right:0;width:3em;box-shadow:-1em 0 1.5em 0 var(--_fade-color) inset}.rtl #fade{left:0;right:unset;box-shadow:1em 0 1.5em 0 var(--_fade-color) inset}slot.scrolling.scrollable{animation:ltr var(--_animation-ms,1s) ease-out}.rtl slot.scrolling.scrollable{animation:rtl var(--_animation-ms,1s) ease-out}@keyframes ltr{0%{transform:translate(0)}to{transform:translate(-100%)}}@keyframes rtl{0%{transform:translate(0)}to{transform:translate(100%)}}`;
 /**
  * Audio Player Scrolling Text Overflow
  * @slot - inline text to scroll if wider than host
@@ -17,7 +17,11 @@ let RhAudioPlayerScrollingTextOverflow = class RhAudioPlayerScrollingTextOverflo
         super(...arguments);
         _RhAudioPlayerScrollingTextOverflow_instances.add(this);
         _RhAudioPlayerScrollingTextOverflow_scrolling.set(this, false);
-        _RhAudioPlayerScrollingTextOverflow_style.set(this, getComputedStyle(this));
+        _RhAudioPlayerScrollingTextOverflow_style.set(this, void 0);
+    }
+    connectedCallback() {
+        super.connectedCallback();
+        __classPrivateFieldSet(this, _RhAudioPlayerScrollingTextOverflow_style, getComputedStyle(this), "f");
     }
     firstUpdated() {
         const letters = this.textContent?.length || 0;
@@ -26,15 +30,15 @@ let RhAudioPlayerScrollingTextOverflow = class RhAudioPlayerScrollingTextOverflo
         this.requestUpdate();
     }
     render() {
-        const { on = '' } = this;
-        const { direction } = __classPrivateFieldGet(this, _RhAudioPlayerScrollingTextOverflow_style, "f");
+        const { on = 'light' } = this;
+        const { direction } = __classPrivateFieldGet(this, _RhAudioPlayerScrollingTextOverflow_style, "f") ?? {};
         return html `
       <div id="outer"
-        class="${classMap({ [on]: !!on, [direction || 'auto']: true })}"
-        @mouseover=${this.startScrolling}
-        @mouseout=${this.stopScrolling}
-        @focus=${this.startScrolling}
-        @blur=${this.stopScrolling}>
+           class="${classMap({ [on]: true, [direction || 'auto']: true })}"
+           @mouseover=${this.startScrolling}
+           @mouseout=${this.stopScrolling}
+           @focus=${this.startScrolling}
+           @blur=${this.stopScrolling}>
         <div id="inner">
           <slot class="${__classPrivateFieldGet(this, _RhAudioPlayerScrollingTextOverflow_scrolling, "f") ? 'scrolling' : ''} ${__classPrivateFieldGet(this, _RhAudioPlayerScrollingTextOverflow_instances, "a", _RhAudioPlayerScrollingTextOverflow_isScrollable_get) ? 'scrollable' : ''}"></slot>
         </div>

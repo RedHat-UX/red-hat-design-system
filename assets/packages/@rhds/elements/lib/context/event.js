@@ -4,6 +4,7 @@
  */
 /**
  * A function which creates a Context value object
+ * @param key context key
  */
 export function createContext(key) {
     return key;

@@ -1,5 +1,5 @@
+import type { ColorPalette } from '@rhds/elements/lib/context/color/provider.js';
 import { LitElement } from 'lit';
-import { type ColorPalette } from '../../lib/context/color/provider.js';
 /**
  * Surfaces are content containers with a color palette which provide a theme
  * (i.e. a background color as well as accessible font colors) to their child
@@ -17,10 +17,11 @@ import { type ColorPalette } from '../../lib/context/color/provider.js';
  */
 export declare class RhSurface extends LitElement {
     #private;
-    static readonly styles: CSSStyleSheet[];
+    static readonly styles: (CSSStyleSheet | import("lit").CSSResult)[];
     /**
-     * Sets color palette, which affects the element's styles as well as descendants' color theme.
-     * Overrides parent color context.
+     * Sets color palette, which affects the element's styles as well as
+     * descendants' color theme. The default surface color palette is 'lightest',
+     * Surface always overrides the parent's color context.
      * Your theme will influence these colors so check there first if you are seeing inconsistencies.
      * See [CSS Custom Properties](#css-custom-properties) for default values
      */

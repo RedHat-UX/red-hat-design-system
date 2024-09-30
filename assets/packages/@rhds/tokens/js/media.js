@@ -1,30 +1,7 @@
 /**
- * Do not edit directly
- * Generated on Wed, 13 Dec 2023 08:19:14 GMT
+ * Do not edit directly, this file was auto-generated.
  *
- * @license
- * MIT License
- *
- * Copyright (c) 2022 Red Hat UX
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- *
+ * @license Copyright (c) 2022 Red Hat UX MIT License
  */
 export const Breakpoint2xsMax = "575px";
 export const BreakpointXs = "576px";
@@ -44,3 +21,4 @@ export const MediaMd = { "min-width": BreakpointMd };
 export const MediaLg = { "min-width": BreakpointLg };
 export const MediaXl = { "min-width": BreakpointXl };
 export const Media2xl = { "min-width": Breakpoint2xl };
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibWVkaWEuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJtZWRpYS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7OztHQUlHO0FBR0gsTUFBTSxDQUFDLE1BQU0sZ0JBQWdCLEdBQUcsT0FBTyxDQUFDO0FBQ3hDLE1BQU0sQ0FBQyxNQUFNLFlBQVksR0FBRyxPQUFPLENBQUM7QUFDcEMsTUFBTSxDQUFDLE1BQU0sZUFBZSxHQUFHLE9BQU8sQ0FBQztBQUN2QyxNQUFNLENBQUMsTUFBTSxZQUFZLEdBQUcsT0FBTyxDQUFDO0FBQ3BDLE1BQU0sQ0FBQyxNQUFNLGVBQWUsR0FBRyxPQUFPLENBQUM7QUFDdkMsTUFBTSxDQUFDLE1BQU0sWUFBWSxHQUFHLE9BQU8sQ0FBQztBQUNwQyxNQUFNLENBQUMsTUFBTSxlQUFlLEdBQUcsUUFBUSxDQUFDO0FBQ3hDLE1BQU0sQ0FBQyxNQUFNLFlBQVksR0FBRyxRQUFRLENBQUM7QUFDckMsTUFBTSxDQUFDLE1BQU0sZUFBZSxHQUFHLFFBQVEsQ0FBQztBQUN4QyxNQUFNLENBQUMsTUFBTSxZQUFZLEdBQUcsUUFBUSxDQUFDO0FBQ3JDLE1BQU0sQ0FBQyxNQUFNLGVBQWUsR0FBRyxRQUFRLENBQUM7QUFDeEMsTUFBTSxDQUFDLE1BQU0sYUFBYSxHQUFHLFFBQVEsQ0FBQztBQUN0QyxNQUFNLENBQUMsTUFBTSxPQUFPLEdBQUcsRUFBQyxXQUFXLEVBQUMsWUFBWSxFQUFVLENBQUM7QUFDM0QsTUFBTSxDQUFDLE1BQU0sT0FBTyxHQUFHLEVBQUMsV0FBVyxFQUFDLFlBQVksRUFBVSxDQUFDO0FBQzNELE1BQU0sQ0FBQyxNQUFNLE9BQU8sR0FBRyxFQUFDLFdBQVcsRUFBQyxZQUFZLEVBQVUsQ0FBQztBQUMzRCxNQUFNLENBQUMsTUFBTSxPQUFPLEdBQUcsRUFBQyxXQUFXLEVBQUMsWUFBWSxFQUFVLENBQUM7QUFDM0QsTUFBTSxDQUFDLE1BQU0sT0FBTyxHQUFHLEVBQUMsV0FBVyxFQUFDLFlBQVksRUFBVSxDQUFDO0FBQzNELE1BQU0sQ0FBQyxNQUFNLFFBQVEsR0FBRyxFQUFDLFdBQVcsRUFBQyxhQUFhLEVBQVUsQ0FBQyJ9

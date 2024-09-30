@@ -21,7 +21,6 @@ export declare class TabExpandEvent extends Event {
  */
 export declare class RhTab extends LitElement {
     #private;
-    static readonly version = "{{version}}";
     static readonly styles: CSSStyleSheet[];
     /** True when the tab is selected */
     active: boolean;

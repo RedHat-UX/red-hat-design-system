@@ -1,3 +1,4 @@
+import type { IconNameFor, IconSetName } from '@rhds/icons';
 import { LitElement, type TemplateResult } from 'lit';
 /**
  * A button is clickable text or an icon that triggers an action on the page or in the background.
@@ -23,6 +24,10 @@ export declare class RhButton extends LitElement {
     };
     /** Disables the button */
     disabled: boolean;
+    /**
+     * button type
+     * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#type
+     */
     type?: 'button' | 'submit' | 'reset';
     /** Accessible name for the button, use when the button does not have slotted text */
     label?: string;
@@ -31,7 +36,9 @@ export declare class RhButton extends LitElement {
     /** Form name for the button */
     name?: string;
     /** Shorthand for the `icon` slot, the value is icon name */
-    icon?: string;
+    icon?: IconNameFor<IconSetName>;
+    /** Icon set for the `icon` property - 'ui' by default */
+    iconSet?: IconSetName;
     private _button;
     /**
      * Changes the style of the button.

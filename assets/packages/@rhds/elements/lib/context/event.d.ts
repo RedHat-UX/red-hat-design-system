@@ -22,6 +22,7 @@ export type UnknownContext = Context<unknown, unknown>;
 export type ContextType<T extends UnknownContext> = T extends Context<infer _, infer V> ? V : never;
 /**
  * A function which creates a Context value object
+ * @param key context key
  */
 export declare function createContext<ValueType>(key: unknown): Readonly<Context<typeof key, ValueType>>;
 /**

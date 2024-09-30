@@ -138,7 +138,7 @@ export class RhCta extends LitElement {
     const {
       download, href, referrerpolicy, rel, target,
       icon, iconSet,
-      on = '', variant,
+      on = 'light', variant,
     } = this;
     const rtl = this.#dir.dir === 'rtl';
     const isDefault = !variant;
@@ -150,7 +150,7 @@ export class RhCta extends LitElement {
     return html`
       <span id="container"
             part="container"
-            class=${classMap({ rtl, icon: !!icon, svg, [on]: !!on })}
+            class=${classMap({ rtl, icon: !!icon, svg, on: true, [on]: true })}
             @slotchange=${this.firstUpdated}>${variant === 'brick' && icon ? html`
         <rh-icon icon=${icon}
                  set="${iconSet ?? 'ui'}"></rh-icon>` : ''}${href ? html`

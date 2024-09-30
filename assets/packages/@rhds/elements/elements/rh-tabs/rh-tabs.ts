@@ -83,31 +83,20 @@ export class RhTabs extends LitElement {
 
   @property({ attribute: false }) activeTab?: RhTab;
 
-  /**
-   * Sets color context for child components, overrides parent context
-   */
+  @colorContextConsumer() private on?: ColorTheme;
+
+  /** Sets color context for child components, overrides parent context */
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
-  /**
-   * Aligns tabs to the center
-   */
+  /** Aligns tabs to the center */
   @property({ reflect: true, type: Boolean }) centered? = false;
 
-  /**
-   * Sets tabs to a boxed style with or without an inset
-   */
+  /** Sets tabs to a boxed style with or without an inset */
   @property({ reflect: true }) box?: 'box' | 'inset';
 
-  /**
-   * Sets the alignment of the tabs vertical
-   */
+  /** Sets the alignment of the tabs vertical */
   @property({ reflect: true, type: Boolean }) vertical = false;
-
-  /**
-   * Sets color theme based on parent context
-   */
-  @colorContextConsumer() private on?: ColorTheme;
 
   @query('[part="tabs"]') private tabList!: HTMLElement;
 
@@ -182,13 +171,14 @@ export class RhTabs extends LitElement {
   }
 
   override render() {
-    const { on = '' } = this;
+    const { on = '', vertical = false, box = false, centered = false } = this;
+    const inset = this.box === 'inset' ? 'inset' : '';
     const rtl = this.#dir.dir === 'rtl';
     return html`
-      <div id="rhds-container" class="${classMap({ [on]: !!on, rtl })}">
+      <div id="rhds-container" class="${classMap({ on: true, [on]: !!on, rtl, vertical, box, inset, centered })}">
         <div part="container" class="${classMap({ overflow: this.#overflow.showScrollButtons })}">
           <div part="tabs-container">${!this.#overflow.showScrollButtons ? '' : html`
-            <button id="previousTab" tabindex="-1"
+            <button id="previous-tab" tabindex="-1"
                     aria-label="${this.getAttribute('label-scroll-left') ?? 'Scroll left'}"
                     ?disabled="${!this.#overflow.overflowLeft}"
                     @click="${() => !rtl ? this.#overflow.scrollLeft() : this.#overflow.scrollRight()}">
@@ -199,7 +189,7 @@ export class RhTabs extends LitElement {
                     part="tabs"
                     @slotchange="${this.#onSlotchange}"></slot>
             </div>${!this.#overflow.showScrollButtons ? '' : html`
-            <button id="nextTab"
+            <button id="next-tab"
                     tabindex="-1"
                     aria-label="${this.getAttribute('label-scroll-right') ?? 'Scroll right'}"
                     ?disabled="${!this.#overflow.overflowRight}"

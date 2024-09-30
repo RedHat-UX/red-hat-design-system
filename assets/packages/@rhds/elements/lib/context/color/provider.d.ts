@@ -34,8 +34,14 @@ export declare class ColorContextProvider<T extends ReactiveElement> extends Col
      * When a context provider disconnects, it disconnects its mutation observer
      */
     hostDisconnected(): void;
-    /** Calls the context callback for all consumers */
+    /**
+     * Calls the context callback for all consumers
+     * @param [force] override theme
+     */
     update(force?: ColorTheme): Promise<void>;
 }
-/** Makes this element a color context provider which updates its consumers when the decorated field changes */
+/**
+ * Makes this element a color context provider which updates its consumers when the decorated field changes
+ * @param options options
+ */
 export declare function colorContextProvider<T extends ReactiveElement>(options?: ColorContextOptions<T>): (proto: T, _propertyName: string) => void;

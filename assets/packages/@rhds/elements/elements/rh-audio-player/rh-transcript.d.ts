@@ -1,6 +1,7 @@
 import { LitElement } from 'lit';
 import './rh-audio-player-scrolling-text-overflow.js';
 import '@rhds/elements/rh-tooltip/rh-tooltip.js';
+import '@rhds/elements/rh-icon/rh-icon.js';
 /**
  * Audio Player Transcript Panel
  * @slot heading - custom heading for panel
@@ -18,14 +19,14 @@ export declare class RhTranscript extends LitElement {
     private _autoscroll;
     private _download;
     private _cues;
-    render(): import("lit-html").TemplateResult<1>;
     set autoscrollLabel(label: string);
     get autoscrollLabel(): string;
     set downloadLabel(label: string);
     get downloadLabel(): string;
+    get downloadText(): string;
     set menuLabel(label: string);
     get menuLabel(): string;
-    get downloadText(): string;
+    render(): import("lit-html").TemplateResult<1>;
     setActiveCues(currentTime?: number): void;
     setDuration(mediaDuration: number): void;
     scrollText(): void;

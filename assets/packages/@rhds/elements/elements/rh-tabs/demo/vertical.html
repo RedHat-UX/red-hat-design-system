@@ -14,3 +14,19 @@
 <script type="module">
   import '@rhds/elements/rh-tabs/rh-tabs.js';
 </script>
+
+<style>
+  a {
+    color: var(--rh-color-interactive-primary-default);
+    &:hover { color: var(--rh-color-interactive-primary-hover); }
+    &:focus-within { color: var(--rh-color-interactive-primary-focus); }
+    &:active { color: var(--rh-color-interactive-primary-active); }
+    &:visited {
+      color: var(--rh-color-interactive-primary-visited);
+      &:hover { color: var(--rh-color-interactive-primary-visited-hover); }
+      &:focus-within { color: var(--rh-color-interactive-primary-visited-focus); }
+      &:active { color: var(--rh-color-interactive-primary-visited-active); }
+    }
+  }
+</style>
+

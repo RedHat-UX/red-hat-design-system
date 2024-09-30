@@ -1,13 +1,17 @@
 {
   "name": "@rhds/icons",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Red Hat Icons",
   "main": "icons.js",
   "module": "icons.js",
   "types": "icons.d.ts",
   "exports": {
     ".": "./icons.js",
-    "./*": "./*"
+    "./*": "./*",
+    "./standard/*": "./standard/*",
+    "./social/*": "./social/*",
+    "./ui/*": "./ui/*",
+    "./microns/*": "./microns/*"
   },
   "type": "module",
   "scripts": {

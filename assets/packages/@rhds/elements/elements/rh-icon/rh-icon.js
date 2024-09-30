@@ -11,7 +11,7 @@ import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { css } from "lit";
-const style = css `:host{display:inline-block;line-height:0}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}`;
+const style = css `:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}`;
 if (isServer) {
     await import('./ssr.js');
 }

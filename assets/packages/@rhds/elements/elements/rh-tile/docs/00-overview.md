@@ -3,7 +3,7 @@
 {{ tagName | getElementDescription }}
 
 <uxdot-example width-adjustment="752px">
-  <img src="{{ './tile-sample.png' | url }}" alt="Example of a default link tile and a selectable tile">
+  <img src="./tile-sample.png" alt="Example of a default link tile and a selectable tile">
 </uxdot-example>
 
 

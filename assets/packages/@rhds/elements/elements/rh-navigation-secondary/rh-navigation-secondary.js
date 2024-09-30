@@ -1,4 +1,4 @@
-var _RhNavigationSecondary_instances, _a, _RhNavigationSecondary_logger, _RhNavigationSecondary_logoCopy, _RhNavigationSecondary_dir, _RhNavigationSecondary_compact, _RhNavigationSecondary_items_get, _RhNavigationSecondary_tabindex, _RhNavigationSecondary_internals, _RhNavigationSecondary_screenSize, _RhNavigationSecondary_onExpandRequest, _RhNavigationSecondary_onFocusout, _RhNavigationSecondary_onOverlayClick, _RhNavigationSecondary_onKeydown, _RhNavigationSecondary_onKeyup, _RhNavigationSecondary_onTabKeyup, _RhNavigationSecondary_onTabKeydown, _RhNavigationSecondary_getDropdownIndex, _RhNavigationSecondary_dropdownByIndex, _RhNavigationSecondary_expand, _RhNavigationSecondary_allDropdowns, _RhNavigationSecondary_closeDropdown, _RhNavigationSecondary_openDropdown, _RhNavigationSecondary_onOverlayChange, _RhNavigationSecondary_upgradeAccessibility, _RhNavigationSecondary_toggleMobileMenu;
+var _RhNavigationSecondary_instances, _a, _RhNavigationSecondary_logger, _RhNavigationSecondary_logoCopy, _RhNavigationSecondary_dir, _RhNavigationSecondary_compact, _RhNavigationSecondary_internals, _RhNavigationSecondary_screenSize, _RhNavigationSecondary_onExpandRequest, _RhNavigationSecondary_onFocusout, _RhNavigationSecondary_onOverlayClick, _RhNavigationSecondary_onKeydown, _RhNavigationSecondary_onKeyup, _RhNavigationSecondary_onTabKeyup, _RhNavigationSecondary_onTabKeydown, _RhNavigationSecondary_getDropdownIndex, _RhNavigationSecondary_dropdownByIndex, _RhNavigationSecondary_expand, _RhNavigationSecondary_allDropdowns, _RhNavigationSecondary_closeDropdown, _RhNavigationSecondary_openDropdown, _RhNavigationSecondary_onOverlayChange, _RhNavigationSecondary_upgradeAccessibility, _RhNavigationSecondary_toggleMobileMenu;
 var RhNavigationSecondary_1;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
@@ -8,7 +8,6 @@ import { classMap } from 'lit/directives/class-map.js';
 import { state } from 'lit/decorators/state.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 import { ComposedEvent } from '@patternfly/pfe-core';
-import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import '@rhds/elements/rh-surface/rh-surface.js';
@@ -26,7 +25,7 @@ export class SecondaryNavOverlayChangeEvent extends ComposedEvent {
     }
 }
 import { css } from "lit";
-const styles = css `:host{--_chevron-size:calc(var(--rh-font-size-body-text-md, 1rem) * 0.35);--_chevron-thickness:calc(var(--rh-font-size-body-text-md, 1rem) * 0.125);--_chevron-up:45deg;--_chevron-down:-135deg;--_chevron-correction-x:calc(-1 * var(--rh-font-size-body-text-md, 1rem) / 16);--_chevron-correction-y:calc(-1 * var(--rh-font-size-body-text-md, 1rem) / 16);--_chevron-color:var(--_context-text);--_chevron-transform-collapsed:rotate(var(--_chevron-up)) translate(var(--_chevron-correction-x), var(--_chevron-correction-x));--_chevron-transform-expanded:rotate(var(--_chevron-down)) translate(var(--_chevron-correction-y), var(--_chevron-correction-y));--_button-font-color:var(--_context-text);--_nav-max-height:var(--_max-height, max-content);--_nav-min-height:var(--_min-height, 80px);--_current-active-child-border-color:var(--rh-color-brand-red-on-light, #ee0000);--_border-color:transparent;z-index:var(--rh-navigation-secondary-z-index,102)}:host([color-palette=dark]){--_current-active-child-border-color:var(--rh-color-brand-red-on-dark, #ee0000);--_border-color:var(--rh-color-border-subtle-on-dark, #707070)}nav{z-index:var(--rh-navigation-secondary-z-index,102)}nav.rtl{--_chevron-transform-collapsed:rotate(calc(-1 * var(--_chevron-up))) translate(calc(1 * var(--_chevron-correction-y)), var(--_chevron-correction-y));--_chevron-transform-expanded:rotate(calc(-1 * var(--_chevron-down))) translate(calc(1 * var(--_chevron-correction-x)), var(--_chevron-correction-x))}#container{display:grid;position:absolute;width:100%;z-index:var(--rh-navigation-secondary-z-index,102);background-color:var(--_context-background-color);gap:0 var(--rh-space-lg,16px);grid-template-rows:minmax(var(--_nav-min-height),var(--_nav-max-height)) max-content max-content;grid-template-columns:1fr max-content;grid-template-areas:"logo menu" "main main";height:fit-content;min-height:100%;max-height:100vh;overflow-y:auto;border-block-end:var(--rh-border-width-sm,1px) solid var(--_border-color)}rh-surface{grid-area:main;display:flex;flex-direction:column;height:100%;width:100%}::slotted([slot=cta]),::slotted([slot=nav]){grid-area:unset!important}#container.expanded ::slotted([slot=cta]),#container.expanded ::slotted([slot=nav]){display:flex!important}#container.expanded ::slotted([slot=nav]){list-style:none;flex-direction:column;padding:2rem 1rem 0;padding:var(--rh-space-2xl,32px) var(--rh-space-lg,16px) 0 var(--rh-space-lg,16px);margin:0!important}#container.expanded ::slotted([slot=cta]){padding:2rem 1rem}button{grid-area:menu;border:none;display:flex;height:100%;align-items:center;font-family:var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-md, 1rem);padding:var(--rh-space-lg,16px);border-block-start:var(--rh-border-width-lg,3px) solid transparent;margin-inline-end:var(--rh-space-lg,16px);color:var(--_button-font-color);background-color:var(--rh-color-surface-lighter,#f2f2f2);gap:var(--rh-space-md,8px)}button:hover{border-block-start-color:var(--rh-color-text-brand-on-light,#ee0000)}button:after{box-sizing:content-box!important;content:"";display:block;width:var(--_chevron-size);height:var(--_chevron-size);border-inline-end:var(--_chevron-thickness) solid var(--_chevron-color);border-block-end:var(--_chevron-thickness) solid var(--_chevron-color);transform:var(--_chevron-transform-collapsed)}button[aria-expanded=true]:after{transform:var(--_chevron-transform-expanded)}button:focus{border-block-start-color:var(--rh-color-text-brand-on-light,#ee0000)}:host([color-palette=dark]) button{background-color:var(--_context-background-color)}:host([color-palette=dark]) button[aria-expanded=true],button:active,button[aria-expanded=true]{--_chevron-color:var(--rh-color-text-primary-on-light, #151515);color:var(--rh-color-text-primary-on-light,#151515);background-color:var(--rh-color-surface-lightest,#fff);border-block-start-color:var(--rh-color-text-brand-on-light,#ee0000);border-block-end:none}:host([color-palette=dark]) button:active{color:var(--rh-color-text-primary-on-dark,#fff)}:host([color-palette=dark]) button[aria-expanded=true]:active{color:var(--rh-color-text-primary-on-light,#151515)}@media screen and (min-width:768px){button{margin-inline-end:var(--rh-space-2xl,32px)}#container.expanded ::slotted([slot=nav]){padding:var(--rh-space-2xl,32px) var(--rh-space-2xl,32px) 0!important}#container.expanded ::slotted([slot=cta]){padding:var(--rh-space-2xl,32px)!important}}@media screen and (min-width:992px){:host{--_min-height:86px}#container{grid-template-areas:"logo main";grid-template-rows:auto;grid-template-columns:max-content 1fr;height:100%;max-height:initial;overflow-y:initial}rh-surface{flex-direction:row;justify-content:space-between}#container.expanded ::slotted([slot=nav]){max-height:calc(100vh - var(--_nav-min-height))}button{display:none}}`;
+const styles = css `:host{--_chevron-size:calc(var(--rh-font-size-body-text-md, 1rem)*0.35);--_chevron-thickness:calc(var(--rh-font-size-body-text-md, 1rem)*0.125);--_chevron-up:45deg;--_chevron-down:-135deg;--_chevron-correction-x:calc(var(--rh-font-size-body-text-md, 1rem)*-1/16);--_chevron-correction-y:calc(var(--rh-font-size-body-text-md, 1rem)*-1/16);--_chevron-color:var(--rh-color-text-primary);--_chevron-transform-collapsed:rotate(var(--_chevron-up)) translate(var(--_chevron-correction-x),var(--_chevron-correction-x));--_chevron-transform-expanded:rotate(var(--_chevron-down)) translate(var(--_chevron-correction-y),var(--_chevron-correction-y));--_button-font-color:var(--rh-color-text-primary);--_nav-max-height:var(--_max-height,max-content);--_nav-min-height:var(--_min-height,80px);--_current-active-child-border-color:var(--rh-color-brand-red-on-light,#e00);--_border-color:#0000;z-index:var(--rh-navigation-secondary-z-index,102)}:host([color-palette=dark]){--_current-active-child-border-color:var(--rh-color-brand-red-on-dark,#e00);--_border-color:var(--rh-color-border-subtle-on-dark,#707070)}nav{z-index:var(--rh-navigation-secondary-z-index,102)}nav.rtl{--_chevron-transform-collapsed:rotate(calc(var(--_chevron-up)*-1)) translate(calc(var(--_chevron-correction-y)*1),var(--_chevron-correction-y));--_chevron-transform-expanded:rotate(calc(var(--_chevron-down)*-1)) translate(calc(var(--_chevron-correction-x)*1),var(--_chevron-correction-x))}#container{display:grid;position:absolute;width:100%;z-index:var(--rh-navigation-secondary-z-index,102);background-color:var(--rh-color-surface);gap:0 var(--rh-space-lg,16px);grid-template-rows:minmax(var(--_nav-min-height),var(--_nav-max-height)) max-content max-content;grid-template-columns:1fr max-content;grid-template-areas:"logo menu" "main main";height:fit-content;min-height:100%;max-height:100vh;overflow-y:auto;border-block-end:var(--rh-border-width-sm,1px) solid var(--_border-color)}rh-surface{grid-area:main;display:flex;flex-direction:column;height:100%;width:100%}::slotted([slot=cta]),::slotted([slot=nav]){grid-area:unset!important}#container.expanded ::slotted([slot=cta]),#container.expanded ::slotted([slot=nav]){display:flex!important}#container.expanded ::slotted([slot=nav]){list-style:none;flex-direction:column;padding:2rem 1rem 0;padding:var(--rh-space-2xl,32px) var(--rh-space-lg,16px) 0 var(--rh-space-lg,16px);margin:0!important}#container.expanded ::slotted([slot=cta]){padding:2rem 1rem}button{grid-area:menu;border:none;display:flex;height:100%;align-items:center;font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text","Noto Sans Arabic","Noto Sans Hebrew","Noto Sans JP","Noto Sans KR","Noto Sans Malayalam","Noto Sans SC","Noto Sans TC","Noto Sans Thai",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);padding:var(--rh-space-lg,16px);border-block-start:var(--rh-border-width-lg,3px) solid #0000;margin-inline-end:var(--rh-space-lg,16px);color:var(--_button-font-color);background-color:var(--rh-color-surface-lighter,#f2f2f2);gap:var(--rh-space-md,8px)}button:hover{border-block-start-color:var(--rh-color-text-brand-on-light,#e00)}button:after{box-sizing:initial!important;content:"";display:block;width:var(--_chevron-size);height:var(--_chevron-size);border-inline-end:var(--_chevron-thickness) solid var(--_chevron-color);border-block-end:var(--_chevron-thickness) solid var(--_chevron-color);transform:var(--_chevron-transform-collapsed)}button[aria-expanded=true]:after{transform:var(--_chevron-transform-expanded)}button:focus{border-block-start-color:var(--rh-color-text-brand-on-light,#e00)}:host([color-palette=dark]) button{background-color:var(--rh-color-surface)}:host([color-palette=dark]) button[aria-expanded=true],button:active,button[aria-expanded=true]{--_chevron-color:var(--rh-color-text-primary-on-light,#151515);color:var(--rh-color-text-primary-on-light,#151515);background-color:var(--rh-color-surface-lightest,#fff);border-block-start-color:var(--rh-color-text-brand-on-light,#e00);border-block-end:none}:host([color-palette=dark]) button:active{color:var(--rh-color-text-primary-on-dark,#fff)}:host([color-palette=dark]) button[aria-expanded=true]:active{color:var(--rh-color-text-primary-on-light,#151515)}@media screen and (min-width:768px){button{margin-inline-end:var(--rh-space-2xl,32px)}#container.expanded ::slotted([slot=nav]){padding:var(--rh-space-2xl,32px) var(--rh-space-2xl,32px) 0!important}#container.expanded ::slotted([slot=cta]){padding:var(--rh-space-2xl,32px)!important}}@media screen and (min-width:992px){:host{--_min-height:86px}#container{grid-template-areas:"logo main";grid-template-rows:auto;grid-template-columns:max-content 1fr;height:100%;max-height:none;overflow-y:initial}rh-surface{flex-direction:row;justify-content:space-between}#container.expanded ::slotted([slot=nav]){max-height:calc(100vh - var(--_nav-min-height))}button{display:none}}`;
 /* TODO: Abstract this out to a shareable function, should RTI handle something similar? */
 function focusableChildElements(parent) {
     return parent.querySelectorAll(`a,
@@ -65,14 +64,16 @@ let RhNavigationSecondary = RhNavigationSecondary_1 = _a = class RhNavigationSec
         _RhNavigationSecondary_dir.set(this, new DirController(this));
         /** Compact mode  */
         _RhNavigationSecondary_compact.set(this, false);
-        _RhNavigationSecondary_tabindex.set(this, RovingTabindexController.of(this, {
-            getItems: () => __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "a", _RhNavigationSecondary_items_get),
-        }));
         _RhNavigationSecondary_internals.set(this, InternalsController.of(this, { role: 'navigation' }));
         /**
          * Color palette darker | lighter (default: lighter)
          */
         this.colorPalette = 'lighter';
+        /**
+         * Customize the default `aria-label` on the `<nav>` container.
+         * Defaults to "secondary" if no attribute/property is set.
+         */
+        this.accessibleLabel = 'secondary';
         /**
          * `mobileMenuExpanded` property is toggled when the mobile menu button is clicked,
          * a focusout event occurs, or on an overlay click event.  It also switches state
@@ -131,7 +132,7 @@ let RhNavigationSecondary = RhNavigationSecondary_1 = _a = class RhNavigationSec
                   aria-expanded="${String(expanded)}"
                   @click="${__classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_toggleMobileMenu)}"><slot name="mobile-menu">Menu</slot></button>
           <rh-surface color-palette="${dropdownPalette}">
-            <slot name="nav" @slotchange="${() => __classPrivateFieldGet(this, _RhNavigationSecondary_tabindex, "f").items = __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "a", _RhNavigationSecondary_items_get)}"></slot>
+            <slot name="nav"></slot>
             <div id="cta" part="cta">
               <slot name="cta"></slot>
             </div>
@@ -173,14 +174,9 @@ _RhNavigationSecondary_logger = new WeakMap();
 _RhNavigationSecondary_logoCopy = new WeakMap();
 _RhNavigationSecondary_dir = new WeakMap();
 _RhNavigationSecondary_compact = new WeakMap();
-_RhNavigationSecondary_tabindex = new WeakMap();
 _RhNavigationSecondary_internals = new WeakMap();
 _RhNavigationSecondary_screenSize = new WeakMap();
 _RhNavigationSecondary_instances = new WeakSet();
-_RhNavigationSecondary_items_get = function _RhNavigationSecondary_items_get() {
-    return this._nav?.flatMap(slotted => Array.from(slotted.querySelectorAll(`rh-navigation-secondary-dropdown > a,
-                                                              [slot="nav"] > li > a`))) ?? [];
-};
 _RhNavigationSecondary_onExpandRequest = function _RhNavigationSecondary_onExpandRequest(event) {
     if (event instanceof SecondaryNavDropdownExpandEvent) {
         const index = __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_getDropdownIndex).call(this, event.target);
@@ -223,9 +219,6 @@ _RhNavigationSecondary_onKeydown = function _RhNavigationSecondary_onKeydown(eve
             if (!__classPrivateFieldGet(this, _RhNavigationSecondary_screenSize, "f").matches.has('md')) {
                 this.mobileMenuExpanded = false;
                 this.shadowRoot?.querySelector('button')?.focus?.();
-            }
-            else {
-                __classPrivateFieldGet(this, _RhNavigationSecondary_tabindex, "f").items[__classPrivateFieldGet(this, _RhNavigationSecondary_tabindex, "f").atFocusedItemIndex]?.focus();
             }
             this.close();
             this.overlayOpen = false;
@@ -288,12 +281,10 @@ _RhNavigationSecondary_onTabKeydown = function _RhNavigationSecondary_onTabKeydo
         if (!lastFocusable) {
             return;
         }
-        event.preventDefault();
         this.close();
         if (!this.mobileMenuExpanded) {
             this.overlayOpen = false;
         }
-        __classPrivateFieldGet(this, _RhNavigationSecondary_tabindex, "f").atFocusedItemIndex++;
     }
 };
 _RhNavigationSecondary_getDropdownIndex = function _RhNavigationSecondary_getDropdownIndex(element) {
@@ -319,10 +310,6 @@ _RhNavigationSecondary_expand = function _RhNavigationSecondary_expand(index) {
     }
     const dropdown = __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_dropdownByIndex).call(this, index);
     if (dropdown && RhNavigationSecondary_1.isDropdown(dropdown)) {
-        const link = dropdown.querySelector('a');
-        if (link) {
-            __classPrivateFieldGet(this, _RhNavigationSecondary_tabindex, "f").atFocusedItemIndex = __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "a", _RhNavigationSecondary_items_get).indexOf(link);
-        }
         __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_openDropdown).call(this, dropdown);
     }
 };
@@ -353,8 +340,7 @@ _RhNavigationSecondary_upgradeAccessibility = function _RhNavigationSecondary_up
     this.removeAttribute('role');
     // remove aria-labelledby from slotted `<ul>` on upgrade
     this.querySelector(':is([slot="nav"]):is(ul)')?.removeAttribute('aria-labelledby');
-    // if the accessibleLabel attr is undefined, check aria-label if undefined use default
-    __classPrivateFieldGet(this, _RhNavigationSecondary_internals, "f").ariaLabel = 'secondary';
+    __classPrivateFieldGet(this, _RhNavigationSecondary_internals, "f").ariaLabel = this.accessibleLabel;
 };
 _RhNavigationSecondary_toggleMobileMenu = function _RhNavigationSecondary_toggleMobileMenu() {
     this.mobileMenuExpanded = !this.mobileMenuExpanded;
@@ -377,6 +363,9 @@ __decorate([
 __decorate([
     queryAssignedElements({ slot: 'nav' })
 ], RhNavigationSecondary.prototype, "_nav", void 0);
+__decorate([
+    property({ attribute: 'accessible-label' })
+], RhNavigationSecondary.prototype, "accessibleLabel", void 0);
 __decorate([
     state()
 ], RhNavigationSecondary.prototype, "mobileMenuExpanded", void 0);

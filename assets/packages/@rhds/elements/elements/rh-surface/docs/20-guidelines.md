@@ -1,4 +1,4 @@
-<script type="module" src="{{ '/assets/javascript/elements/uxdot-best-practice.js' | url }}"></script>
+<script type="module" src="/assets/javascript/elements/uxdot-best-practice.js"></script>
 
 <style>
 

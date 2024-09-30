@@ -1,42 +1,10 @@
 :host {
-  --_background-color: var(--rh-color-teal-10, #daf2f2);
-  --_border-color: var(--rh-color-teal-50, #37a3a3);
-  --_header-color: var(--rh-color-teal-70, #004d4d);
-  --_icon-color: var(--rh-color-teal-50, #37a3a3);
-  --_font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-
   display: block;
   max-width: var(--_max-width, initial);
 }
 
-:host([hidden]) {
-  display: none;
-}
-
-#container {
-  border-width: var(--rh-border-width-md, 2px);
-  border-style: solid;
-  border-block-start-color: var(--_border-color);
-  border-inline-start-color: var(--_border-inline-color, transparent);
-  border-block-end-color: var(--_border-block-end-color, transparent);
-  border-inline-end-color: var(--_border-inline-color, transparent);
-  background-color: var(--_background-color);
-  box-shadow: var(--_box-shadow, none);
-  padding: var(--rh-space-lg, 16px);
-  display: grid;
-  grid-template-columns: min-content 1fr;
-  gap: var(--rh-space-xs, 4px);
-  font-family: var(--_font-family);
-}
-
-#left-column {
-  display: inline-block;
-  vertical-align: top;
-}
-
-#middle-column {
-  display: inline-block;
-  vertical-align: top;
+[hidden] {
+  display: none !important;
 }
 
 header {
@@ -60,6 +28,122 @@ header ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
   padding-block: 2px var(--rh-space-xs, 4px) !important;  /* 2px is a non standard value */
 }
 
+footer.hasActions {
+  margin-block-start: var(--rh-space-lg, 16px);
+}
+
+footer ::slotted([slot='actions']:not(rh-button[variant='link' i])) {
+  margin-inline-end: var(--rh-space-xl, 24px) !important;
+  padding: 0 !important;
+  border: none !important;
+  background-color: transparent !important;
+  color: var(--rh-color-interactive-primary-default) !important;
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
+  font-family: var(--_font-family) !important;
+}
+
+/* TODO: separate focus and hover styles */
+footer ::slotted([slot='actions']:focus) {
+  text-decoration: underline !important;
+  color: var(--rh-color-interactive-primary-hover) !important;
+}
+
+footer ::slotted([slot='actions']:hover) {
+  cursor: pointer !important;
+  text-decoration: underline !important;
+  color: var(--rh-color-interactive-primary-hover) !important;
+}
+
+footer ::slotted(rh-button[variant='link' i]) {
+  display: inline-block;
+  translate: calc(-1 * var(--rh-space-lg, 16px));
+}
+
+#container {
+  --_background-color: var(--rh-color-teal-10, #daf2f2);
+  --_border-color: var(--rh-color-teal-50, #37a3a3);
+  --_header-color: var(--rh-color-teal-70, #004d4d);
+  --_icon-color: var(--rh-color-teal-50, #37a3a3);
+  --_font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+
+  border-width: var(--rh-border-width-md, 2px);
+  border-style: solid;
+  border-block-start-color: var(--_border-color);
+  border-inline-start-color: var(--_border-inline-color, transparent);
+  border-block-end-color: var(--_border-block-end-color, transparent);
+  border-inline-end-color: var(--_border-inline-color, transparent);
+  background-color: var(--_background-color);
+  box-shadow: var(--_box-shadow, none);
+  padding: var(--rh-space-lg, 16px);
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  gap: var(--rh-space-xs, 4px);
+  font-family: var(--_font-family);
+}
+
+#container.neutral {
+  --_border-color: var(--rh-color-status-neutral);
+  --_icon-color: var(--rh-color-icon-status-neutral);
+  --_header-color: var(--rh-color-text-primary);
+  --_background-color: var(--rh-color-surface-status-neutral);
+}
+
+#container.info {
+  --_border-color: var(--rh-color-status-info);
+  --_icon-color: var(--rh-color-icon-status-info);
+  --_header-color: var(--rh-color-purple-70);
+  --_background-color: var(--rh-color-surface-status-info);
+}
+
+#container.success {
+  --_border-color: var(--rh-color-status-success);
+  --_icon-color: var(--rh-color-icon-status-success);
+  --_header-color: var(--rh-color-green-70);
+  --_background-color: var(--rh-color-surface-status-success);
+}
+
+#container.caution {
+  --_border-color: var(--rh-color-status-caution);
+  --_icon-color: var(--rh-color-icon-status-caution);
+  --_header-color: var(--rh-color-orange-70);
+  --_background-color: var(--rh-color-surface-status-caution);
+}
+
+#container.warning {
+  --_border-color: var(--rh-color-status-warning);
+  --_icon-color: var(--rh-color-icon-status-warning);
+  --_header-color: var(--rh-color-yellow-70);
+  --_background-color: var(--rh-color-surface-status-warning);
+}
+
+#container.danger {
+  --_border-color: var(--rh-color-status-danger);
+  --_icon-color: var(--rh-color-icon-status-danger);
+  --_header-color: var(--rh-color-red-orange-70);
+  --_background-color: var(--rh-color-surface-status-danger);
+}
+
+#container.toast {
+  --_background-color: var(--rh-color-surface-lightest, #ffffff);
+  --_max-width: 550px;
+  --_box-shadow: var(--rh-box-shadow-lg, 0 6px 8px 2px rgba(21, 21, 21, 0.3));
+}
+
+#container.alternate {
+  --_border-inline-color: var(--_border-color);
+  --_border-block-end-color: var(--_border-color);
+}
+
+#left-column {
+  display: inline-block;
+  vertical-align: top;
+}
+
+#middle-column {
+  display: inline-block;
+  vertical-align: top;
+}
+
 #header-actions {
   margin-inline-end: var(--rh-space-xs, 4px);
 }
@@ -79,7 +163,7 @@ header ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
 }
 
 #close-button {
-  color: var(--rh-color-text-secondary-on-light, #4d4d4d);
+  color: var(--rh-color-text-secondary);
   background-color: transparent;
   border: none;
   height: var(--rh-length-xl, 24px);
@@ -88,7 +172,7 @@ header ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
 }
 
 #close-button:hover {
-  color: var(--rh-color-text-primary-on-light, #151515);
+  color: var(--rh-color-text-primary);
 }
 
 #description {
@@ -98,74 +182,4 @@ header ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
 #description > ::slotted(*) {
   margin-block: 0 !important;
   padding: 0 !important;
-}
-
-footer.hasActions {
-  margin-block-start: var(--rh-space-lg, 16px);
-}
-
-footer ::slotted([slot="actions"]:not(rh-button[variant="link" i])) {
-  margin-inline-end: var(--rh-space-xl, 24px) !important;
-  padding: 0 !important;
-  border: none !important;
-  background-color: transparent !important;
-  color: var(--rh-color-interactive-blue-darker, #0066cc) !important;
-  font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
-  font-family: var(--_font-family) !important;
-}
-
-/* TODO: separate focus and hover styles */
-footer ::slotted([slot="actions"]:focus) {
-  text-decoration: underline !important;
-  color: var(--rh-color-interactive-blue-darkest, #003366) !important;
-}
-
-footer ::slotted([slot="actions"]:hover) {
-  cursor: pointer !important;
-  text-decoration: underline !important;
-  color: var(--rh-color-interactive-blue-darkest, #003366) !important;
-}
-
-footer ::slotted(rh-button[variant="link" i]) {
-  display: inline-block;
-  translate: calc(-1 * var(--rh-space-lg, 16px));
-}
-
-:host([state="info" i]) {
-  --_border-color: var(--rh-color-blue-40, #4394e5);
-  --_icon-color: var(--rh-color-blue-40, #4394e5);
-  --_header-color: var(--rh-color-blue-70, #003366);
-  --_background-color: var(--rh-color-blue-10, #e0f0ff);
-}
-
-:host([state="success" i]) {
-  --_border-color: var(--rh-color-green-60, #3d7317);
-  --_icon-color: var(--rh-color-green-60, #3d7317);
-  --_header-color: var(--rh-color-green-70, #204d00);
-  --_background-color: var(--rh-color-green-10, #e9f7df);
-}
-
-:host([state="warning" i]) {
-  --_border-color: var(--rh-color-yellow-40, #dca614);
-  --_icon-color: var(--rh-color-yellow-40, #dca614);
-  --_header-color: var(--rh-color-yellow-70, #73480b);
-  --_background-color: var(--rh-color-yellow-10, #fff4cc);
-}
-
-:host([state="danger" i]) {
-  --_border-color: #c9190b; /* WARNING: not a recognized token value */
-  --_icon-color: #c9190b; /* WARNING: not a recognized token value */
-  --_header-color: #7d1007; /* WARNING: not a recognized token value */
-  --_background-color: var(--rh-color-red-10, #fce3e3);
-}
-
-:host([variant="toast" i]) {
-  --_background-color: var(--rh-color-surface-lightest, #ffffff);
-  --_max-width: 550px;
-  --_box-shadow: var(--rh-box-shadow-lg, 0 6px 8px 2px rgba(21, 21, 21, 0.3));
-}
-
-:host([variant="alternate" i]) {
-  --_border-inline-color: var(--_border-color);
-  --_border-block-end-color: var(--_border-color);
 }

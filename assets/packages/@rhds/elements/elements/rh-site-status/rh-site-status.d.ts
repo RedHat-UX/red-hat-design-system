@@ -1,5 +1,12 @@
 import { LitElement } from 'lit';
-import '../rh-spinner/rh-spinner.js';
+import '@rhds/elements/rh-icon/rh-icon.js';
+import '@rhds/elements/rh-spinner/rh-spinner.js';
+import '@rhds/icons/ui/check-circle.js';
+import '@rhds/icons/ui/check-circle-fill.js';
+import '@rhds/icons/ui/warning-fill.js';
+import '@rhds/icons/ui/warning.js';
+import '@rhds/icons/ui/error.js';
+import '@rhds/icons/ui/error-fill.js';
 type Impact = 'none' | 'minor' | 'major' | 'critical';
 type StatusKey = 'operational' | 'degraded_performance' | 'partial_outage' | 'major_outage';
 interface Page {
@@ -55,7 +62,7 @@ export interface SummaryResponse {
  * Website status communicates the operational status of a website or domain using a status icon and
  * link. It is usually located in the Footer component.
  * @summary Communicates operational status of a website or domain
- * @slot loading-text - Text to display while loading the status defaults to "Loading"
+ * @slot - loading-text - Text to display while loading the status defaults to "Loading"
  */
 export declare class RhSiteStatus extends LitElement {
     #private;

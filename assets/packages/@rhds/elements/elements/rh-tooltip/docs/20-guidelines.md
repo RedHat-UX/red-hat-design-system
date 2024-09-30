@@ -17,7 +17,7 @@ A tooltip and [Popover](/elements/popover) provide more information in context f
 Content in a tooltip is limited to text only. Consider the following when writing tooltip content.
 
 <uxdot-example width-adjustment="725px">
-  <img src="{{ '../tooltip-content.png' | url }}" alt="Various text examples; from left to right, the text length starts very short, but gets longer and longer">
+  <img src="../tooltip-content.png" alt="Various text examples; from left to right, the text length starts very short, but gets longer and longer">
 </uxdot-example>
 
 
@@ -48,7 +48,7 @@ A tooltip's body text should be short and descriptive.
 The correct orientation of a tooltip depends on the amount of content and browser window. If a tooltip covers up important information or gets cut off, choose a different orientation.
 
 <uxdot-example width-adjustment="546px">
-  <img src="{{ '../tooltip-orientation.png' | url }}" alt="Various orientation examples; from left to right and top to bottom, top, right, bottom, and left">
+  <img src="../tooltip-orientation.png" alt="Various orientation examples; from left to right and top to bottom, top, right, bottom, and left">
 </uxdot-example>
 
 
@@ -57,7 +57,7 @@ The correct orientation of a tooltip depends on the amount of content and browse
 When a cursor or focus is moved, the tooltip disappears. On mobile devices, users must tap to trigger a tooltip and then tap again to make it disappear.
 
 <uxdot-example width-adjustment="315px">
-  <img src="{{ '../tooltip-behavior.png' | url }}" alt="Various behavior examples; from top to bottom, how a tooltip behaves when the trigger is hovered, focused, and tapped">
+  <img src="../tooltip-behavior.png" alt="Various behavior examples; from top to bottom, how a tooltip behaves when the trigger is hovered, focused, and tapped">
 </uxdot-example>
 
 
@@ -66,7 +66,7 @@ When a cursor or focus is moved, the tooltip disappears. On mobile devices, user
 A tooltip can generally be used on both large and small breakpoints if the content is not too long.
 
 <uxdot-example width-adjustment="992px" variant="full" alignment="left" no-border>
-  <img src="{{ '../tooltip-responsive-design.png' | url }}" alt="Examples of a tooltip used on large and small breakpoints">
+  <img src="../tooltip-responsive-design.png" alt="Examples of a tooltip used on large and small breakpoints">
 </uxdot-example>
 
 
@@ -77,7 +77,7 @@ A tooltip can generally be used on both large and small breakpoints if the conte
 Do not use a dark theme tooltip in light theme environments.
 
 <uxdot-example width-adjustment="199px" danger>
-  <img src="{{ '../tooltip-best-practice-1.png' | url }}" alt="A dark theme or white tooltip used on a white background is incorrect usage">
+  <img src="../tooltip-best-practice-1.png" alt="A dark theme or white tooltip used on a white background is incorrect usage">
 </uxdot-example>
 
 
@@ -86,7 +86,7 @@ Do not use a dark theme tooltip in light theme environments.
 A tooltip should not be cut off by the browser window. Change the orientation if it does.
 
 <uxdot-example width-adjustment="360px" danger>
-  <img src="{{ '../tooltip-best-practice-2.png' | url }}" alt="If using the top orientation will cause the tooltip to get cut off, that is incorrect usage">
+  <img src="../tooltip-best-practice-2.png" alt="If using the top orientation will cause the tooltip to get cut off, that is incorrect usage">
 </uxdot-example>
 
 
@@ -95,5 +95,5 @@ A tooltip should not be cut off by the browser window. Change the orientation if
 Do not add a tooltip to interface elements or actions that do not require further explanation.
 
 <uxdot-example width-adjustment="205px" danger>
-  <img src="{{ '../tooltip-best-practice-3.png' | url }}" alt="Pairing a tooltip with an element that already has adequate descriptive text is incorrect usage">
+  <img src="../tooltip-best-practice-3.png" alt="Pairing a tooltip with an element that already has adequate descriptive text is incorrect usage">
 </uxdot-example>

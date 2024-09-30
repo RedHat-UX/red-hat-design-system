@@ -40,26 +40,15 @@ export declare class RhTabs extends LitElement {
     get activeIndex(): number;
     set activeIndex(v: number);
     activeTab?: RhTab;
-    /**
-     * Sets color context for child components, overrides parent context
-     */
-    colorPalette?: ColorPalette;
-    /**
-     * Aligns tabs to the center
-     */
-    centered?: boolean | undefined;
-    /**
-     * Sets tabs to a boxed style with or without an inset
-     */
-    box?: 'box' | 'inset';
-    /**
-     * Sets the alignment of the tabs vertical
-     */
-    vertical: boolean;
-    /**
-     * Sets color theme based on parent context
-     */
     private on?;
+    /** Sets color context for child components, overrides parent context */
+    colorPalette?: ColorPalette;
+    /** Aligns tabs to the center */
+    centered?: boolean | undefined;
+    /** Sets tabs to a boxed style with or without an inset */
+    box?: 'box' | 'inset';
+    /** Sets the alignment of the tabs vertical */
+    vertical: boolean;
     private tabList;
     protected get canShowScrollButtons(): boolean;
     get tabs(): RhTab[];

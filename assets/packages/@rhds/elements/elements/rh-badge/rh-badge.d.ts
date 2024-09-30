@@ -2,22 +2,23 @@ import { LitElement } from 'lit';
 /**
  * A badge is used to annotate other information like a label or an object name.
  *
- * - **info**: Indicates informative or low impact
- * - **success**: Indicates stability or completion
- * - **moderate**: Indicates caution
- * - **important**: Indicates an error
- * - **critical**: Indicates danger or something critical
+ *  - `neutral` - Indicates generic information or a message with no severity.
+ *  - `danger` - Indicates a danger state, like an error that is blocking a user from completing a task.
+ *  - `warning` - Indicates a warning state, like a non-blocking error that might need to be fixed.
+ *  - `caution` - Indicates an action or notice which should immediately draw the attention
+ *  - `info` - Indicates helpful information or a message with very little to no severity.
+ *  - `success` - Indicates a success state, like if a process was completed without errors.
  *
  * @summary Annotates information like a label or object
  *
  */
 export declare class RhBadge extends LitElement {
-    static readonly version = "{{version}}";
     static readonly styles: CSSStyleSheet[];
+    private on?;
     /**
      * Denotes the state-of-affairs this badge represents
      */
-    state?: 'info' | 'success' | 'moderate' | 'important' | 'critical';
+    state: 'danger' | 'warning' | 'caution' | 'neutral' | 'success' | 'moderate' | 'important' | 'critical' | 'info';
     /**
      * Sets a numeric value for a badge.
      *
@@ -30,6 +31,8 @@ export declare class RhBadge extends LitElement {
      * the numeric value exceeds the threshold value.
      */
     threshold?: number;
+    /** Ensures that state is consistent, regardless of input */
+    private stateChanged;
     render(): import("lit-html").TemplateResult<1>;
 }
 declare global {

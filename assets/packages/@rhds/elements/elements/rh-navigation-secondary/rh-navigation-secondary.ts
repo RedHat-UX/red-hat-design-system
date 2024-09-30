@@ -6,7 +6,6 @@ import { state } from 'lit/decorators/state.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 
 import { ComposedEvent } from '@patternfly/pfe-core';
-import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
@@ -94,16 +93,6 @@ export class RhNavigationSecondary extends LitElement {
   /** Compact mode  */
   #compact = false;
 
-  get #items() {
-    return this._nav?.flatMap(slotted =>
-      Array.from(slotted.querySelectorAll<HTMLAnchorElement>(`rh-navigation-secondary-dropdown > a,
-                                                              [slot="nav"] > li > a`))) ?? [];
-  }
-
-  #tabindex = RovingTabindexController.of(this, {
-    getItems: () => this.#items,
-  });
-
   #internals = InternalsController.of(this, { role: 'navigation' });
 
   /**
@@ -114,6 +103,11 @@ export class RhNavigationSecondary extends LitElement {
 
   @queryAssignedElements({ slot: 'nav' }) private _nav?: HTMLElement[];
 
+  /**
+   * Customize the default `aria-label` on the `<nav>` container.
+   * Defaults to "secondary" if no attribute/property is set.
+   */
+  @property({ attribute: 'accessible-label' }) accessibleLabel = 'secondary';
 
   /**
    * `mobileMenuExpanded` property is toggled when the mobile menu button is clicked,
@@ -178,7 +172,7 @@ export class RhNavigationSecondary extends LitElement {
                   aria-expanded="${String(expanded) as 'true' | 'false'}"
                   @click="${this.#toggleMobileMenu}"><slot name="mobile-menu">Menu</slot></button>
           <rh-surface color-palette="${dropdownPalette}">
-            <slot name="nav" @slotchange="${() => this.#tabindex.items = this.#items}"></slot>
+            <slot name="nav"></slot>
             <div id="cta" part="cta">
               <slot name="cta"></slot>
             </div>
@@ -260,8 +254,6 @@ export class RhNavigationSecondary extends LitElement {
         if (!this.#screenSize.matches.has('md')) {
           this.mobileMenuExpanded = false;
           this.shadowRoot?.querySelector('button')?.focus?.();
-        } else {
-          this.#tabindex.items[this.#tabindex.atFocusedItemIndex]?.focus();
         }
         this.close();
         this.overlayOpen = false;
@@ -325,12 +317,10 @@ export class RhNavigationSecondary extends LitElement {
       if (!lastFocusable) {
         return;
       }
-      event.preventDefault();
       this.close();
       if (!this.mobileMenuExpanded) {
         this.overlayOpen = false;
       }
-      this.#tabindex.atFocusedItemIndex++;
     }
   }
 
@@ -371,10 +361,6 @@ export class RhNavigationSecondary extends LitElement {
     }
     const dropdown = this.#dropdownByIndex(index);
     if (dropdown && RhNavigationSecondary.isDropdown(dropdown)) {
-      const link = dropdown.querySelector('a');
-      if (link) {
-        this.#tabindex.atFocusedItemIndex = this.#items.indexOf(link);
-      }
       this.#openDropdown(dropdown);
     }
   }
@@ -430,8 +416,7 @@ export class RhNavigationSecondary extends LitElement {
     this.removeAttribute('role');
     // remove aria-labelledby from slotted `<ul>` on upgrade
     this.querySelector(':is([slot="nav"]):is(ul)')?.removeAttribute('aria-labelledby');
-    // if the accessibleLabel attr is undefined, check aria-label if undefined use default
-    this.#internals.ariaLabel = 'secondary';
+    this.#internals.ariaLabel = this.accessibleLabel;
   }
 
   /**

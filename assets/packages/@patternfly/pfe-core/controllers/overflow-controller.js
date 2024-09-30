@@ -30,7 +30,9 @@ export class OverflowController {
             }
         }));
         _OverflowController_ro.set(this, new ResizeObserver(() => {
-            __classPrivateFieldGet(this, _OverflowController_instances, "m", _OverflowController_setOverflowState).call(this);
+            requestAnimationFrame(() => {
+                __classPrivateFieldGet(this, _OverflowController_instances, "m", _OverflowController_setOverflowState).call(this);
+            });
         }));
         this.showScrollButtons = false;
         this.overflowLeft = false;

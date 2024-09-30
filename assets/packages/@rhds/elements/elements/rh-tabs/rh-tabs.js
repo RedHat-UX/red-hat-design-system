@@ -19,7 +19,7 @@ import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 import { colorContextProvider } from '../../lib/context/color/provider.js';
 import { context } from './context.js';
 import { css } from "lit";
-const styles = css `:host{display:block;background:var(--_context-background-color);color:var(--_context-text)}[part=container]{container-type:inline-size}[part=tabs-container]{position:relative;display:flex;overflow:hidden;--_tab-max-width:200px}[part=tabs-container]:before{position:absolute;inset-inline-end:0;inset:0;border-width:0 0 var(--rh-border-width-sm,1px);border-color:var(--_border-color);border-style:solid}[part=panels],[part=tabs]{display:block}[part=tabs]{scrollbar-width:none;position:relative;max-width:100%;overflow-x:auto;display:flex;bottom:0;margin:0;width:auto;font-size:var(--rh-font-size-body-text-md, 1rem)}[part=tabs-container]:before,[part=tabs]:before,button:before{position:absolute;inset-block-end:0;inset-inline:0;content:"";border-style:solid}#tablist{display:contents}@container (min-width:567px){[part=tabs-container]{--_tab-max-width:none}}[part=tabs]:before,button:before{top:0}[part=tabs]:before,button{border:0}button{flex:none;line-height:1;opacity:1}button:before{border-block-start-width:0}button:first-of-type{margin-inline-end:0;translate:0 0}button:nth-of-type(2){margin-inline-start:0;translate:0 0}button:disabled{pointer-events:none}#rhds-container{display:contents;--_border-color:var(--rh-tabs-border-color, var(--rh-color-border-subtle-on-light, #c7c7c7));--_arrow-color:var(--rh-color-accent-base-on-light, #0066cc);--_overflow-button-text-color:var(--rh-color-text-secondary-on-light, #4d4d4d);--_overflow-button-disabled-text-color:#d2d2d2;--_overflow-button-hover-text-color:var(--rh-color-text-primary-on-light, #151515)}#rhds-container.dark{--_border-color:var(--rh-tabs-border-color, var(--rh-color-border-subtle-on-dark, #707070));--_arrow-color:var(--rh-color-accent-base-on-dark, #92c5f9);--_overflow-button-text-color:var(--rh-color-text-secondary-on-dark, #c7c7c7);--_overflow-button-disabled-text-color:var(--rh-color-gray-50, #707070);--_overflow-button-hover-text-color:var(--rh-color-text-primary-on-dark, #ffffff)}:host(:is([centered],[box=inset])) [part=tabs]{margin-inline:var(--rh-tabs-inset,var(--_inset-inline-margin,auto))}:host([box=inset]:not([vertical])) [part=tabs]{--_inset-inline-margin:var(--rh-space-2xl, 32px)}.overflow [part=panels]{--_panels-overflow-padding:var(--rh-space-2xl, 32px)}#previousTab+[part=tabs]{--_inset-inline-margin:0;position:relative;left:-1px;z-index:1}#nextTab,#previousTab{padding-block:0;padding-inline:var(--rh-space-lg,16px);background-color:var(--_context-background-color);color:var(--_overflow-button-text-color);position:relative;z-index:2}#nextTab{left:-1px}#nextTab:hover,#previousTab:hover{color:var(--_overflow-button-hover-text-color,var(--rh-color-text-primary-on-light,#151515))}#nextTab:before,#previousTab:before{border-block-start:var(--rh-border-width-sm,1px) solid transparent;border-block-end:var(--rh-border-width-sm,1px) solid var(--_border-color);border-inline:var(--rh-border-width-sm,1px) solid var(--_border-color)}#previousTab:before{border-inline-width:0 1px}#nextTab:before{border-inline-width:1px 0}#nextTab:hover:before,#previousTab:hover:before{border-block-end:var(--rh-border-width-lg,3px) solid var(--_border-color)}#nextTab:disabled,#previousTab:disabled{color:var(--_overflow-button-disabled-text-color)}.rtl :is(#previousTab,#nextTab) rh-icon{rotate:180deg}@media screen and (min-width:768px){:host([vertical]) [part=container]{display:grid;grid-template-columns:max-content 1fr;grid-template-areas:"tabs panels"}:host([vertical]) [part=tabs-container]{grid-area:tabs;display:inline-flex;flex-direction:column;height:100%;padding:0;overflow:visible}:host([vertical]) [part=panels]{grid-area:panels}:host([vertical]) [part=tabs-container]:before{height:100%;border-block-end-width:0;border-inline-start-width:var(--rh-border-width-sm,1px)}:host([vertical][box]) [part=tabs-container]:before{border-inline-start-width:0;border-inline-end-width:var(--rh-border-width-sm,1px)}:host([vertical]) [part=tabs]{flex-direction:column;flex-grow:1;max-width:15.625rem}}`;
+const styles = css `:host{display:block;background:var(--rh-color-surface);color:var(--rh-color-text-primary);container-name:host;container-type:inline-size}[part=tabs-container]{--_tab-max-width:200px;position:relative;display:flex;overflow:hidden}@container host (min-width: 768px){[part=tabs-container]{--_tab-max-width:none}}[part=tabs-container]:before{position:absolute;inset-inline-end:0;inset:0;border-width:0 0 var(--rh-border-width-sm,1px);border-color:var(--_border-color);border-style:solid}:is([part=tabs],[part=panels]){display:block}[part=tabs]{scrollbar-width:none;position:relative;max-width:100%;overflow-x:auto;display:flex;bottom:0;margin:0;width:auto;font-size:var(--rh-font-size-body-text-md,1rem)}:is([part=tabs-container],[part=tabs],button):before{position:absolute;inset-block-end:0;inset-inline:0;content:"";border-style:solid}:is([part=tabs],button):before{top:0}#tablist{display:contents}[part=tabs]:before,button{border:0}button{flex:none;line-height:1;opacity:1}button:before{border-block-start-width:0}button:first-of-type{margin-inline-end:0;translate:0 0}button:nth-of-type(2){margin-inline-start:0;translate:0 0}button:disabled{pointer-events:none}#rhds-container{display:contents;--_border-color:var(--rh-tabs-border-color,var(--rh-color-border-subtle));--_arrow-color:var(--rh-color-accent-base);--_overflow-button-text-color:var(--rh-color-text-secondary);--_overflow-button-disabled-text-color:var(--rh-color-gray-40,#a3a3a3);--_overflow-button-hover-text-color:var(--rh-color-text-primary)}@container (min-width: 768px){#rhds-container{--_panel-padding:var(--rh-space-2xl,32px)}}@container host (min-width: 768px){#rhds-container.vertical [part=container]{display:grid;grid-template-columns:max-content 1fr;grid-template-areas:"tabs panels"}#rhds-container.vertical [part=tabs-container]{grid-area:tabs;display:inline-flex;flex-direction:column;height:100%;padding:0;overflow:visible}#rhds-container.vertical [part=tabs-container]:before{height:100%;border-block-end-width:0;border-inline-start-width:var(--rh-border-width-sm,1px)}#rhds-container.vertical [part=panels]{grid-area:panels}#rhds-container.vertical [part=tabs]{flex-direction:column;flex-grow:1;max-width:15.625rem}#rhds-container.vertical.box{--_panel-padding:var(--rh-space-3xl,48px)}#rhds-container.vertical.box [part=tabs-container]:before{border-inline-start-width:0;border-inline-end-width:var(--rh-border-width-sm,1px)}}#rhds-container .overflow[part=container]{--_panel-padding:var(--rh-space-lg,16px)}#rhds-container.box.inset:not(.vertical) [part=container]:not(.overflow){--_panel-padding:var(--rh-space-2xl,32px) var(--rh-space-4xl,64px)}#rhds-container.dark{--_border-color:var(--rh-tabs-border-color,var(--rh-color-border-subtle));--_arrow-color:var(--rh-color-accent-base);--_overflow-button-text-color:var(--rh-color-text-secondary);--_overflow-button-disabled-text-color:var(--rh-color-gray-50,#707070);--_overflow-button-hover-text-color:var(--rh-color-text-primary)}.overflow[part=container] [part=tabs]{--_inset-inline-margin:0;position:relative;inset-inline-start:-1px;z-index:1}.overflow[part=container] [part=panels]{--_panels-overflow-padding:var(--rh-space-2xl,32px)}:host([box=inset]:not([vertical])) [part=tabs]{--_inset-inline-margin:var(--rh-space-2xl,32px)}:host(:is([centered],[box=inset])) [part=container]:not(.overflow) [part=tabs]{margin-inline:var(--rh-tabs-inset,var(--_inset-inline-margin,auto))}:is(#previous-tab,#next-tab){padding-block:0;padding-inline:var(--rh-space-lg,16px);background-color:var(--rh-color-surface);color:var(--_overflow-button-text-color);position:relative;z-index:2}:is(#previous-tab,#next-tab):before{border-block-start:var(--rh-border-width-sm,1px) solid #0000;border-block-end:var(--rh-border-width-sm,1px) solid var(--_border-color);border-inline:var(--rh-border-width-sm,1px) solid var(--_border-color)}:is(#previous-tab,#next-tab):hover{color:var(--_overflow-button-hover-text-color,var(--rh-color-text-primary))}:is(#previous-tab,#next-tab):hover:before{border-block-end:var(--rh-border-width-lg,3px) solid var(--_border-color)}:is(#previous-tab,#next-tab):disabled{color:var(--_overflow-button-disabled-text-color)}#next-tab{inset-inline-start:-1px}#next-tab:before{border-inline-width:1px 0}#previous-tab:before{border-inline-width:0 1px}.rtl :is(#previous-tab,#next-tab) rh-icon{rotate:180deg}`;
 export { RhTab };
 /**
  * Tabs are used to organize and navigate between sections of content.
@@ -52,13 +52,9 @@ let RhTabs = class RhTabs extends LitElement {
          * or [manual](https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html)
          */
         this.manual = false;
-        /**
-         * Aligns tabs to the center
-         */
+        /** Aligns tabs to the center */
         this.centered = false;
-        /**
-         * Sets the alignment of the tabs vertical
-         */
+        /** Sets the alignment of the tabs vertical */
         this.vertical = false;
         _RhTabs_activeIndex.set(this, -1);
         _RhTabs_overflow.set(this, new OverflowController(this));
@@ -120,13 +116,14 @@ let RhTabs = class RhTabs extends LitElement {
         __classPrivateFieldGet(this, _RhTabs_instances, "m", _RhTabs_onSlotchange).call(this);
     }
     render() {
-        const { on = '' } = this;
+        const { on = '', vertical = false, box = false, centered = false } = this;
+        const inset = this.box === 'inset' ? 'inset' : '';
         const rtl = __classPrivateFieldGet(this, _RhTabs_dir, "f").dir === 'rtl';
         return html `
-      <div id="rhds-container" class="${classMap({ [on]: !!on, rtl })}">
+      <div id="rhds-container" class="${classMap({ on: true, [on]: !!on, rtl, vertical, box, inset, centered })}">
         <div part="container" class="${classMap({ overflow: __classPrivateFieldGet(this, _RhTabs_overflow, "f").showScrollButtons })}">
           <div part="tabs-container">${!__classPrivateFieldGet(this, _RhTabs_overflow, "f").showScrollButtons ? '' : html `
-            <button id="previousTab" tabindex="-1"
+            <button id="previous-tab" tabindex="-1"
                     aria-label="${this.getAttribute('label-scroll-left') ?? 'Scroll left'}"
                     ?disabled="${!__classPrivateFieldGet(this, _RhTabs_overflow, "f").overflowLeft}"
                     @click="${() => !rtl ? __classPrivateFieldGet(this, _RhTabs_overflow, "f").scrollLeft() : __classPrivateFieldGet(this, _RhTabs_overflow, "f").scrollRight()}">
@@ -137,7 +134,7 @@ let RhTabs = class RhTabs extends LitElement {
                     part="tabs"
                     @slotchange="${__classPrivateFieldGet(this, _RhTabs_instances, "m", _RhTabs_onSlotchange)}"></slot>
             </div>${!__classPrivateFieldGet(this, _RhTabs_overflow, "f").showScrollButtons ? '' : html `
-            <button id="nextTab"
+            <button id="next-tab"
                     tabindex="-1"
                     aria-label="${this.getAttribute('label-scroll-right') ?? 'Scroll right'}"
                     ?disabled="${!__classPrivateFieldGet(this, _RhTabs_overflow, "f").overflowRight}"
@@ -214,6 +211,9 @@ __decorate([
     property({ attribute: false })
 ], RhTabs.prototype, "activeTab", void 0);
 __decorate([
+    colorContextConsumer()
+], RhTabs.prototype, "on", void 0);
+__decorate([
     colorContextProvider(),
     property({ reflect: true, attribute: 'color-palette' })
 ], RhTabs.prototype, "colorPalette", void 0);
@@ -226,9 +226,6 @@ __decorate([
 __decorate([
     property({ reflect: true, type: Boolean })
 ], RhTabs.prototype, "vertical", void 0);
-__decorate([
-    colorContextConsumer()
-], RhTabs.prototype, "on", void 0);
 __decorate([
     query('[part="tabs"]')
 ], RhTabs.prototype, "tabList", void 0);

@@ -1,9 +1,9 @@
 :host {
-  color: var(--rh-color-text-primary-on-light, #151515);
+  color: var(--rh-color-text-primary);
   margin: 0 auto;
   text-align: left;
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
-  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   line-height: var(--rh-line-height-body-text, 1.5);
   font-weight: var(--rh-font-weight-heading-regular, 300);
 }
@@ -24,8 +24,8 @@ blockquote ::slotted(p) {
 }
 
 figcaption {
-  color: var(--rh-color-text-secondary-on-light, #4d4d4d);
-  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  color: var(--rh-color-text-secondary);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
 }
 
@@ -37,47 +37,26 @@ figcaption p {
   font-weight: var(--rh-font-weight-heading-bold, 700);
 }
 
-svg {
-  color: var(--rh-color-icon-primary-on-light, #ee0000);
+rh-icon {
+  color: var(--rh-color-icon-primary);
 }
 
-:host([align="center"]) {
+:host([align='center']) {
   text-align: center;
 }
 
-:host([size="large"]) {
+:host([size='large']) {
   font-size: var(--rh-font-size-body-text-2xl, 1.5rem);
   line-height: var(--rh-line-height-heading, 1.3);
 }
 
 @media (min-width: 700px) {
-  :host([size="large"]) {
+  :host([size='large']) {
     font-size: var(--rh-font-size-heading-md, 1.75rem);
   }
 }
 
-:host([highlight]) {
-  --_border-width: 8px;
-  --_border-color: #43adaf;
-  --_border-style: solid;
-}
-
-:host([highlight]) figure {
-  border-inline-start: var(--_border-width) var(--_border-style) var(--_border-color);
+.highlight {
+  border-inline-start: var(--rh-length-md, 8px) solid var(--rh-color-accent-brand);
   padding-inline-start: var(--rh-length-xl, 24px);
-}
-
-:host([color-palette="darkest"]),
-.dark {
-  color: var(--rh-color-text-primary-on-dark, #ffffff);
-}
-
-:host([color-palette="darkest"]) svg,
-.dark svg {
-  color: var(--rh-color-icon-primary-on-dark, #ee0000);
-}
-
-:host([color-palette="darkest"]) figcaption,
-.dark figcaption {
-  color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
 }

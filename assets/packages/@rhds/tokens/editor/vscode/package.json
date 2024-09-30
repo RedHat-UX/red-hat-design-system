@@ -1,6 +1,6 @@
 {
   "name": "red-hat-design-tokens",
-  "version": "2.0.0",
+  "version": "2.1.0-next.15",
   "publisher": "Red Hat UX",
   "engines": {
     "vscode": "^1.63.0"

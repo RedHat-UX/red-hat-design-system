@@ -22,7 +22,7 @@ rh-breadcrumb > ol > li {
   vertical-align: bottom;
 }
 
-rh-breadcrumb[variant="subtle"] > ol > li {
+rh-breadcrumb[variant='subtle'] > ol > li {
   background-image: var(--_breadcrumb-caret-image-subtle);
 }
 
@@ -65,17 +65,17 @@ rh-breadcrumb > ol > li > a:visited:hover {
 }
 
 rh-breadcrumb > ol > li:last-child,
-rh-breadcrumb > ol > li > a[aria-current="page"] {
+rh-breadcrumb > ol > li > a[aria-current='page'] {
   color: var(--_breadcrumb-link-color-current-page);
   text-decoration: none;
 }
 
-rh-breadcrumb > ol > li > a[aria-current="page"] {
+rh-breadcrumb > ol > li > a[aria-current='page'] {
   cursor: default;
   pointer-events: none;
 }
 
-rh-breadcrumb[variant="subtle"] > ol > li:last-child,
-rh-breadcrumb[variant="subtle"] > ol > li > a[aria-current="page"] {
+rh-breadcrumb[variant='subtle'] > ol > li:last-child,
+rh-breadcrumb[variant='subtle'] > ol > li > a[aria-current='page'] {
   color: var(--_breadcrumb-link-color-current-page-subtle);
 }

@@ -1,1 +1,0 @@
-export declare const tokens: Map<`--rh-${string}`, string|number>;

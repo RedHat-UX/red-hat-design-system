@@ -3,7 +3,7 @@
 Only the call to action can receive focus if included.
 
 <uxdot-example width-adjustment="340px">
-  <img src="{{ '../stat-keyboard-interactions.png' | url }}" alt="Statistic keyboard interactions; pressing Tab will focus the call to action if included and pressing Tab again will move focus to the next interactive element">
+  <img src="../stat-keyboard-interactions.png" alt="Statistic keyboard interactions; pressing Tab will focus the call to action if included and pressing Tab again will move focus to the next interactive element">
 </uxdot-example>
 
 <rh-table>
@@ -33,7 +33,7 @@ Only the call to action can receive focus if included.
 Only the call to action is selectable if included.
 
 <uxdot-example width-adjustment="340px">
-  <img src="{{ '../stat-a11y-touch-targets.png' | url }}" alt="Statistic showing touch target size for call to action if included">
+  <img src="../stat-a11y-touch-targets.png" alt="Statistic showing touch target size for call to action if included">
 </uxdot-example>
 
 {% include 'partials/accessibility/ariaguide.md' %}

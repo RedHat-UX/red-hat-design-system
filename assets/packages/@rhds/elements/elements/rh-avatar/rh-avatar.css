@@ -12,28 +12,26 @@
   color: var(--rh-color-text-secondary-on-light, #4d4d4d);
 
   --_colors:
-    var(
-        --rh-avatar-colors,
-        var(--rh-color-blue-30, #92c5f9)
-        var(--rh-color-teal-50, #37a3a3)
-        var(--rh-color-green-60, #3d7317)
-        var(--rh-color-red-40, #f56e6e)
-        var(--rh-color-purple-60, #3d2785)
-      );
+    var(--rh-avatar-colors,
+      var(--rh-color-blue-30, #92c5f9)
+      var(--rh-color-teal-50, #37a3a3)
+      var(--rh-color-green-60, #3d7317)
+      var(--rh-color-red-40, #f56e6e)
+      var(--rh-color-purple-60, #3d2785));
 
   column-gap: var(--rh-space-lg, 16px);
   width: min-content;
   grid-template-columns: min-content minmax(max-content, 250px);
   grid-template-rows: min-content min-content;
   grid-template-areas:
-    "a t"
-    "a s";
+    'a t'
+    'a s';
 }
 
 #title {
   grid-area: t;
   align-self: end;
-  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   font-weight: var(--rh-font-weight-heading-medium, 500);
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
 }
@@ -45,20 +43,20 @@
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
 }
 
-:host([layout="block"]) #container,
+:host([layout='block']) #container,
 #container.mobile {
   text-align: center;
   place-items: center;
   gap: 0;
   grid-template-columns: minmax(max-content, 250px);
-  grid-template-areas: "a" "t" "s";
+  grid-template-areas: 'a' 't' 's';
   grid-template-rows:
     minmax(var(--rh-avatar-size, var(--rh-size-icon-06, 64px)), var(--rh-size-icon-06, 64px))
     min-content
     auto;
 }
 
-:host([layout="block"]) :is(img, canvas, svg),
+:host([layout='block']) :is(img, canvas, svg),
 #container.mobile :is(img, canvas, svg) {
   margin-block-end: var(--rh-space-lg, 16px);
 }
@@ -69,33 +67,36 @@ slot {
 }
 
 ::slotted(a) {
-  color: var(--rh-color-interactive-blue-darker, #0066cc);
+  color: var(--rh-color-interactive-primary-default-on-light, #0066cc);
   text-decoration: none;
 }
 
-::slotted(a:visited) { color: var(--rh-color-interactive-purple-darker, #5e40be); }
+::slotted(a:visited) {
+  color: var(--rh-color-interactive-primary-visited-default-on-light, #5e40be);
+}
 
 ::slotted(a:active),
-::slotted(a:hover) { color: var(--rh-color-interactive-blue-darkest, #003366); }
+::slotted(a:hover) { color: var(--rh-color-interactive-primary-hover-on-light, #003366); }
 
-.dark ::slotted(a) { color: var(--rh-color-interactive-blue-lighter, #92c5f9); }
-.dark ::slotted(a:visited) { color: var(--rh-color-interactive-purple-lighter, #b6a6e9); }
+.dark ::slotted(a) { color: var(--rh-color-interactive-primary-default-on-dark, #92c5f9); }
+
+.dark ::slotted(a:visited) {
+  color: var(--rh-color-interactive-primary-visited-default-on-dark, #b6a6e9);
+}
 
 .dark ::slotted(a:active),
-.dark ::slotted(a:hover) { color: var(--rh-color-interactive-blue-lightest, #b9dafc); }
+.dark ::slotted(a:hover) { color: var(--rh-color-interactive-primary-hover-on-dark, #b9dafc); }
 
 #container.dark {
   color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
 
   --_colors:
-    var(
-        --rh-avatar-colors,
-        var(--rh-color-blue-50, #0066cc)
-        var(--rh-color-teal-70, #004d4d)
-        var(--rh-color-green-70, #204d00)
-        var(--rh-color-red-50, #ee0000)
-        var(--rh-color-purple-70, #21134d)
-      );
+    var(--rh-avatar-colors,
+      var(--rh-color-blue-50, #0066cc)
+      var(--rh-color-teal-70, #004d4d)
+      var(--rh-color-green-70, #204d00)
+      var(--rh-color-red-50, #ee0000)
+      var(--rh-color-purple-70, #21134d));
 }
 
 img,

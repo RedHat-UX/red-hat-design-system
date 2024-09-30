@@ -8,7 +8,7 @@ import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 import { css } from "lit";
-const styles = css `:host{display:contents}slot{display:inline-flex;align-items:stretch;flex-direction:column;width:max-content}::slotted(a){padding:5px!important}.dark::slotted(a){color:var(--rh-color-interactive-blue-lightest,#b9dafc)!important}.dark::slotted(a:hover){color:var(--rh-color-interactive-blue-lighter,#92c5f9)}.dark::slotted(a:visited){color:var(--rh-color-interactive-purple-lighter,#b6a6e9)!important}.dark::slotted(a:visited:hover){color:var(--rh-color-interactive-purple-lighter,#b6a6e9)!important}`;
+const styles = css `:host{display:contents}slot{display:inline-flex;align-items:stretch;flex-direction:column;width:max-content}::slotted(a){padding:5px!important}.dark::slotted(a){color:var(--rh-color-interactive-primary-hover-on-dark,#b9dafc)!important}.dark::slotted(a:hover){color:var(--rh-color-interactive-primary-default-on-dark,#92c5f9)}.dark::slotted(a:visited){color:var(--rh-color-interactive-primary-visited-default-on-dark,#b6a6e9)!important}.dark::slotted(a:visited:hover){color:var(--rh-color-interactive-primary-visited-default-on-dark,#b6a6e9)!important}`;
 export class MenuToggleEvent extends Event {
     constructor(open, menu) {
         super('toggle', { bubbles: true });
@@ -25,8 +25,15 @@ let RhMenu = class RhMenu extends LitElement {
         super(...arguments);
         _RhMenu_instances.add(this);
         _RhMenu_tabindex.set(this, RovingTabindexController.of(this, {
-            getItems: () => this._menuItems ?? [],
+            getItems: () => this.getItems(this._menuItems),
         }));
+    }
+    /**
+     * override or set to add items to the roving tab index controller
+     * @param items original list of items
+     */
+    getItems(items) {
+        return items;
     }
     get activeItem() {
         return __classPrivateFieldGet(this, _RhMenu_tabindex, "f").items.at(__classPrivateFieldGet(this, _RhMenu_tabindex, "f").atFocusedItemIndex);
@@ -38,18 +45,18 @@ let RhMenu = class RhMenu extends LitElement {
         __classPrivateFieldGet(this, _RhMenu_instances, "m", _RhMenu_onSlotchange).call(this);
     }
     render() {
-        const { on = '' } = this;
+        const { on = 'light' } = this;
         return html `
       <slot part="menu"
-            class="${classMap({ [on]: !!on })}"
+            class="${classMap({ on: true, [on]: true })}"
             @slotchange="${__classPrivateFieldGet(this, _RhMenu_instances, "m", _RhMenu_onSlotchange)}"></slot>
     `;
     }
     activateItem(item) {
-        __classPrivateFieldGet(this, _RhMenu_tabindex, "f").atFocusedItemIndex = this._menuItems.indexOf(item);
+        __classPrivateFieldGet(this, _RhMenu_tabindex, "f").atFocusedItemIndex = __classPrivateFieldGet(this, _RhMenu_tabindex, "f").items.indexOf(item);
     }
     focus() {
-        this._menuItems[__classPrivateFieldGet(this, _RhMenu_tabindex, "f").atFocusedItemIndex]?.focus();
+        __classPrivateFieldGet(this, _RhMenu_tabindex, "f").items[__classPrivateFieldGet(this, _RhMenu_tabindex, "f").atFocusedItemIndex]?.focus();
     }
 };
 _RhMenu_tabindex = new WeakMap();

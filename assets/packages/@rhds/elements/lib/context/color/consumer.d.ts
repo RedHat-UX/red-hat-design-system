@@ -24,8 +24,15 @@ export declare class ColorContextConsumer<T extends ReactiveElement> extends Col
     hostConnected(): Promise<void>;
     /** When a consumer disconnects, it's removed from the list of consumers. */
     hostDisconnected(): void;
-    /** Sets the `on` attribute on the host and any children that requested multiple updates */
+    /**
+     * Sets the `on` attribute on the host and any children that requested multiple updates
+     * @param next the color theme
+     */
     update(next: ColorTheme | null): void;
 }
+/**
+ * Makes this element a color context consumer
+ * @param options options
+ */
 export declare function colorContextConsumer<T extends ReactiveElement>(options?: ColorContextOptions<T>): (proto: T, _propertyName: string | keyof T) => void;
 export {};

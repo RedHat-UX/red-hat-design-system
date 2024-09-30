@@ -1,5 +1,4 @@
 import { LitElement } from 'lit';
-import { type ColorPalette } from '../../lib/context/color/provider.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 /**
  * A subnavigation allows users to navigate between a small number of page links.
@@ -12,11 +11,11 @@ export declare class RhSubnav extends LitElement {
     #private;
     static readonly styles: CSSStyleSheet[];
     /** Icon name to use for the scroll left button */
-    protected static readonly scrollIconLeft: string;
+    protected static readonly scrollIconLeft = "caret-left";
     /** Icon name to use for the scroll right button */
-    protected static readonly scrollIconRight: string;
+    protected static readonly scrollIconRight = "caret-right";
     /** Icon set to use for the scroll buttons */
-    protected static readonly scrollIconSet: string;
+    protected static readonly scrollIconSet = "ui";
     private static instances;
     /**
      * Sets color theme based on parent context
@@ -28,7 +27,12 @@ export declare class RhSubnav extends LitElement {
      * Your theme will influence these colors so check there first if you are seeing inconsistencies.
      * See [CSS Custom Properties](#css-custom-properties) for default values
      */
-    colorPalette?: ColorPalette;
+    colorPalette: string;
+    /**
+     * Customize the default `aria-label` on the `<nav>` container.
+     * Defaults to "subnavigation" if no attribute/property is set.
+     */
+    accessibleLabel: string;
     private links;
     private linkList;
     connectedCallback(): void;

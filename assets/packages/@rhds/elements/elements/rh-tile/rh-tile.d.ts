@@ -100,6 +100,8 @@ export declare class RhTile extends LitElement {
      * Tile always resets its context to `base`, unless explicitly provided with a `color-palette`.
      */
     colorPalette?: ColorPalette;
+    /** When set to "private", the icon representing the link changes from an arrow to a padlock */
+    link?: 'private' | 'public' | 'external';
     /**
      * Sets color theme based on parent context
      */

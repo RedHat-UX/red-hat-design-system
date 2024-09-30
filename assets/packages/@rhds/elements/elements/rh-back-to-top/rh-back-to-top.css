@@ -5,19 +5,15 @@
   inset-block-end: var(--rh-space-xl, 24px);
 }
 
-[part="trigger"] {
+[part='trigger'] {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   color: var(--rh-color-text-primary-on-dark, #ffffff);
   background-color:
-    var(
-        --rh-back-to-top-background-color,
-        var(
-          --rh-color-accent-base-on-light,
-          #0066cc
-        )
-      );
+    var(--rh-back-to-top-background-color,
+      var(--rh-color-accent-base-on-light,
+      #0066cc));
   text-decoration: none;
   font-size: var(--rh-font-size-body-text-xs, 0.75rem);
   padding-inline: var(--rh-space-md, 8px);
@@ -27,15 +23,19 @@
   line-height: var(--rh-line-height-body-text, 1.5);
   outline: var(--rh-border-width-md, 2px) solid transparent;
   border: var(--rh-border-width-md, 2px) solid transparent;
+  pointer-events: all;
 }
 
-[part="trigger"]:is(:hover, :focus) {
-  outline: var(--rh-border-width-md, 2px) solid var(--rh-color-interactive-blue-darkest, #003366);
+[part='trigger']:is(:hover, :focus) {
+  outline:
+    var(--rh-border-width-md, 2px)
+    solid
+    var(--rh-color-interactive-primary-hover-on-light, #003366);
   border: var(--rh-border-width-md, 2px) solid var(--rh-color-border-strong-on-dark, #ffffff);
-  background-color: var(--rh-color-interactive-blue-darkest, #003366);
+  background-color: var(--rh-color-interactive-primary-hover-on-light, #003366);
 }
 
-[part="trigger"][hidden] {
+[part='trigger'][hidden] {
   display: none;
 }
 

@@ -10,11 +10,11 @@ The unlinked page titles and separators in the default variant uses the `--rh-co
 
 <div class="grid xs-two-columns">
   <uxdot-example width-adjustment="295px">
-    <img src="{{ '../breadcrumb-variant-default-light.svg'  | url }}" alt="Light theme breadcrumb with blue links and black text and separators">
+    <img src="../breadcrumb-variant-default-light.svg" alt="Light theme breadcrumb with blue links and black text and separators">
   </uxdot-example>
 
   <uxdot-example width-adjustment="295px" color-palette="darkest">
-    <img src="{{ '../breadcrumb-variant-default-dark.svg'  | url }}" alt="Dark theme breadcrumb with light blue links and white text and separators">
+    <img src="../breadcrumb-variant-default-dark.svg" alt="Dark theme breadcrumb with light blue links and white text and separators">
   </uxdot-example>
 </div>
 
@@ -24,11 +24,11 @@ The unlinked page titles and separators in the default variant uses the `--rh-co
 
 <div class="grid xs-two-columns">
   <uxdot-example width-adjustment="295px">
-    <img src="{{ '../breadcrumb-variant-subtle-light.svg'  | url }}" alt="Light theme breadcrumb with blue links and dark gray text and separators">
+    <img src="../breadcrumb-variant-subtle-light.svg" alt="Light theme breadcrumb with blue links and dark gray text and separators">
   </uxdot-example>
 
   <uxdot-example width-adjustment="295px" color-palette="darkest">
-    <img src="{{ '../breadcrumb-variant-subtle-dark.svg'  | url }}" alt="Dark theme breadcrumb with light blue links and light gray text and separators">
+    <img src="../breadcrumb-variant-subtle-dark.svg" alt="Dark theme breadcrumb with light blue links and light gray text and separators">
   </uxdot-example>
 </div>
 
@@ -39,13 +39,13 @@ Size and spacing remain consistent for breadcrumbs at all screen sizes. The brea
 ### Large breakpoints
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-    <img src="{{ '../breadcrumb-responsive-large-breakpoint.svg' | url }}" alt="partial view of an article page with breadcrumbs at a screen width of 1000px">
+    <img src="../breadcrumb-responsive-large-breakpoint.svg" alt="partial view of an article page with breadcrumbs at a screen width of 1000px">
   </uxdot-example>
 
 ### Small breakpoints
 
 <uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border>
-    <img src="{{ '../breadcrumb-responsive-small-breakpoint.svg' | url }}" alt="partial view of an article page with breadcrumbs at a mobile screen width of 360px">
+    <img src="../breadcrumb-responsive-small-breakpoint.svg" alt="partial view of an article page with breadcrumbs at a mobile screen width of 360px">
   </uxdot-example>
 
 ## Best Practices
@@ -57,14 +57,14 @@ Breadcrumbs should not be used as the main navigation.
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
     <uxdot-example slot="image" no-border variant="full" alignment="left">
-      <img src="{{ '../breadcrumb-when-not-to-use-do.svg' | url }}" alt="breadcrumbs below the primary navigation">
+      <img src="../breadcrumb-when-not-to-use-do.svg" alt="breadcrumbs below the primary navigation">
     </uxdot-example>
     <p>Do use breadcrumbs to supplement the primary or secondary navigation element.</p>
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
     <uxdot-example slot="image" no-border variant="full" alignment="left">
-      <img src="{{ '../breadcrumb-when-not-to-use-dont.svg' | url }}" alt="breadcrumbs only with placeholder page text">
+      <img src="../breadcrumb-when-not-to-use-dont.svg" alt="breadcrumbs only with placeholder page text">
     </uxdot-example>
     <p>Do not use breadcrumb navigation as the main way for users to navigate a website.</p>
   </uxdot-best-practice>
@@ -75,14 +75,14 @@ They should also not be used if there is only one level in the page hierarchy or
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
     <uxdot-example slot="image" no-border variant="full" alignment="left">
-      <img src="{{ '../breadcrumb-when-not-to-use-do-2.svg' | url }}" alt="one linked breadcrumb and one current page breadcrumb">
+      <img src="../breadcrumb-when-not-to-use-do-2.svg" alt="one linked breadcrumb and one current page breadcrumb">
     </uxdot-example>
     <p>Do use breadcrumbs if there are at least two levels in a page hierarchy.</p>
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
     <uxdot-example slot="image" no-border variant="full" alignment="left">
-      <img src="{{ '../breadcrumb-when-not-to-use-dont-2.svg' | url }}" alt="one current page breadcrumb only">
+      <img src="../breadcrumb-when-not-to-use-dont-2.svg" alt="one current page breadcrumb only">
     </uxdot-example>
     <p>Do not use breadcrumbs if the current page is first in the page hierarchy.</p>
   </uxdot-best-practice>
@@ -95,14 +95,14 @@ Breadcrumbs should be placed consistently above the page title and below the pri
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
     <uxdot-example slot="image" no-border variant="full" alignment="left">
-      <img src="{{ '../breadcrumb-consistent-placement-do.svg' | url }}" alt="breadcrumbs placed below mobile navigation">
+      <img src="../breadcrumb-consistent-placement-do.svg" alt="breadcrumbs placed below mobile navigation">
     </uxdot-example>
     <p>Do place breadcrumbs in a familiar and consistent place for this type of navigation element.</p>
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
     <uxdot-example slot="image" no-border variant="full" alignment="left">
-      <img src="{{ '../breadcrumb-consistent-placement-dont.svg' | url }}" alt="breadcrumbs placed above mobile navigation">
+      <img src="../breadcrumb-consistent-placement-dont.svg" alt="breadcrumbs placed above mobile navigation">
     </uxdot-example>
     <p>Do not add breadcrumbs above a primary or secondary navigation element or anywhere else on the page.</p>
   </uxdot-best-practice>
@@ -115,14 +115,14 @@ The page titles used in breadcrumbs should be consistent with what is used in th
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
     <uxdot-example slot="image" no-border variant="full" alignment="left">
-      <img src="{{ '../breadcrumb-customizing-link-titles-do.svg' | url }}" alt="Page with the title 'What are cloud services?' and current page breadcrumb that says 'What are cloud services?'">
+      <img src="../breadcrumb-customizing-link-titles-do.svg" alt="Page with the title 'What are cloud services?' and current page breadcrumb that says 'What are cloud services?'">
     </uxdot-example>
     <p>Do keep the same page title in the heading and in breadcrumb navigation.</p>
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
     <uxdot-example slot="image" no-border variant="full" alignment="left">
-      <img src="{{ '../breadcrumb-customizing-link-titles-dont.svg' | url }}" alt="Page with the title 'What are cloud services?' and current page breadcrumb that says 'Cloud services'">
+      <img src="../breadcrumb-customizing-link-titles-dont.svg" alt="Page with the title 'What are cloud services?' and current page breadcrumb that says 'Cloud services'">
     </uxdot-example>
     <p>Do not change the title in the breadcrumbs only.</p>
   </uxdot-best-practice>

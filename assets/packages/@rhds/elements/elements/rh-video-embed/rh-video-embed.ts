@@ -133,7 +133,7 @@ export class RhVideoEmbed extends LitElement {
       'video' : 'thumbnail';
 
     return html`
-      <figure part="figure" class="${classMap({ [show]: !!show, [on]: !!on })}">
+      <figure part="figure" class="${classMap({ on: true, [show]: !!show, [on]: !!on })}">
         <div part="video" id="video">
           <div aria-hidden="${show !== 'thumbnail'}">
             <slot id="thumbnail" name="thumbnail"></slot>

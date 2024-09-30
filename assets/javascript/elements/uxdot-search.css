@@ -15,7 +15,7 @@ input {
 }
 
 input:focus {
-  border-bottom-color: var(--rh-color-interactive-blue-darker);
+  border-bottom-color: var(--rh-color-interactive-primary-default-on-light);
   border-bottom-width: var(--rh-border-width-md);
 }
 
@@ -61,7 +61,7 @@ li {
   padding: var(--rh-space-md);
 }
 
-li[aria-selected="true"],
+li[aria-selected='true'],
 li:focus-within {
   outline: var(--rh-border-width-md);
 }

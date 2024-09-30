@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
@@ -8,14 +6,19 @@
 
     <link rel="preconnect" href="https://ga.jspm.io">
 
-    <link rel="stylesheet" href="/styles/dev-server/styles.css" media="all">
+    <link rel="stylesheet" href="/styles/demo/styles.css" media="all">
 
     <script type="importmap">{
   "imports": {
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
+    "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
     "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
+    "prism-esm": "/assets/packages/prism-esm/prism.js",
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/decorators/custom-element.js": "/assets/packages/lit/decorators/custom-element.js",
     "lit-element": "/assets/packages/lit-element/index.js",
@@ -25,18 +28,19 @@
     "lit/decorators/property.js": "/assets/packages/lit/decorators/property.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
     "lit": "/assets/packages/lit/index.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "@rhds/tokens/css/color-context-provider.css.js": "/assets/packages/@rhds/tokens/css/color-context-provider.css.js",
+    "@rhds/tokens/css/color-context-consumer.css.js": "/assets/packages/@rhds/tokens/css/color-context-consumer.css.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
-    "@rhds/tokens/media.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/media.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.2/core.js",
-    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
-    "@rhds/tokens/meta.js": "https://ga.jspm.io/npm:@rhds/tokens@2.0.1/js/meta.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "lit/": "/assets/packages/lit/",
     "lit-html/": "/assets/packages/lit-html/",
+    "prism-esm/": "/assets/packages/prism-esm/",
     "@lit-labs/ssr-client/lit-element-hydrate-support.js": "/assets/packages/@lit-labs/ssr-client/lit-element-hydrate-support.js",
+    "@rhds/tokens/css/": "/assets/packages/@rhds/tokens/css/",
     "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
     "@rhds/elements/lib/": "/assets/packages/@rhds/elements/lib/",
     "@rhds/elements/": "/assets/packages/@rhds/elements/elements/",
@@ -58,56 +62,49 @@
     }
   }
 }</script>
-    <script async src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
     <script type="module">
+      // dsd polyfill needs to happen before hydration attempts
+      // lit-element-hydrate-support needs to be included before lit is loaded
+      import '/assets/javascript/dsd-polyfill.js';
+      import '@lit-labs/ssr-client/lit-element-hydrate-support.js';
       import 'element-internals-polyfill';
+      // include these, which are often internal to elements, to avoid SSR defer-hydration bugs
+      import '@rhds/elements/rh-icon/rh-icon.js';
+      import '@rhds/elements/rh-surface/rh-surface.js';
+      // load up the demo and picker
+      import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+      import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
     </script>
+
+    <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
   </head>
-  <body unresolved>
-    <main><p>In this demo, analytics events involving <code>&lt;rh-cta></code> elements are parsed by a
-  document-level analytics event listener. Unlike <code>&lt;pfe-cta></code>, which implemented
-  support for analytics internally, <code>&lt;rh-cta></code> users must implement their own
+  <body unresolved="">
+    <main><p>In this demo, analytics events involving <code>&lt;rh-cta&gt;</code> elements are parsed by a
+  document-level analytics event listener. Unlike <code>&lt;pfe-cta&gt;</code>, which implemented
+  support for analytics internally, <code>&lt;rh-cta&gt;</code> users must implement their own
   analytics code, taking this demo as an example.</p>
 
 <section data-analytics-category="simple">
   <h2>Simple Case: Light DOM</h2>
-  <rh-cta data-analytics-linktype="cta"
-          data-analytics-text="Default">
+  <rh-cta data-analytics-linktype="cta" data-analytics-text="Default">
     <a href="#default">Default</a>
   </rh-cta>
-  <rh-cta variant="primary"
-          data-analytics-linktype="cta"
-          data-analytics-text="Primary">
+  <rh-cta variant="primary" data-analytics-linktype="cta" data-analytics-text="Primary">
     <a href="#primary">Primary</a>
   </rh-cta>
-  <rh-cta variant="secondary"
-          data-analytics-linktype="cta"
-          data-analytics-text="Secondary">
+  <rh-cta variant="secondary" data-analytics-linktype="cta" data-analytics-text="Secondary">
     <a href="#secondary">Secondary</a>
   </rh-cta>
-  <rh-cta variant="brick"
-          data-analytics-linktype="cta"
-          data-analytics-text="Brick">
+  <rh-cta variant="brick" data-analytics-linktype="cta" data-analytics-text="Brick">
     <a href="#brick">Brick</a>
   </rh-cta>
 
   <section data-analytics-category="href-attr">
     <h3>Using <code>href</code> attribute</h3>
-    <rh-cta href="#default"
-            data-analytics-linktype="cta"
-            data-analytics-text="Default">Default</rh-cta>
-    <rh-cta href="#primary"
-            variant="primary"
-            data-analytics-linktype="cta"
-            data-analytics-text="Primary">Primary</rh-cta>
-    <rh-cta href="#secondary"
-            variant="secondary"
-            data-analytics-linktype="cta"
-            data-analytics-text="Secondary">Secondary</rh-cta>
-    <rh-cta href="#brick"
-            variant="brick"
-            data-analytics-linktype="cta"
-            data-analytics-text="Brick">Brick</rh-cta>
+    <rh-cta href="#default" data-analytics-linktype="cta" data-analytics-text="Default">Default</rh-cta>
+    <rh-cta href="#primary" variant="primary" data-analytics-linktype="cta" data-analytics-text="Primary">Primary</rh-cta>
+    <rh-cta href="#secondary" variant="secondary" data-analytics-linktype="cta" data-analytics-text="Secondary">Secondary</rh-cta>
+    <rh-cta href="#brick" variant="brick" data-analytics-linktype="cta" data-analytics-text="Brick">Brick</rh-cta>
   </section>
 </section>
 
@@ -115,24 +112,16 @@
   <h2>Advanced Case: Deep Shadow</h2>
   <shadow-root>
     <template shadowrootmode="open">
-      <rh-cta data-analytics-linktype="cta"
-              data-analytics-text="Default">
+      <rh-cta data-analytics-linktype="cta" data-analytics-text="Default">
         <a href="#default">Default</a>
       </rh-cta>
-      <rh-cta variant="primary"
-              data-analytics-linktype="cta"
-              data-analytics-text="Primary">
+      <rh-cta variant="primary" data-analytics-linktype="cta" data-analytics-text="Primary">
         <a href="#primary">Primary</a>
       </rh-cta>
-      <rh-cta variant="secondary"
-              data-analytics-linktype="cta"
-              data-analytics-text="Secondary">
+      <rh-cta variant="secondary" data-analytics-linktype="cta" data-analytics-text="Secondary">
         <a href="#secondary">Secondary</a>
       </rh-cta>
-      <rh-cta variant="brick"
-              style="width:auto;"
-              data-analytics-linktype="cta"
-              data-analytics-text="Brick">
+      <rh-cta variant="brick" style="width:auto;" data-analytics-linktype="cta" data-analytics-text="Brick">
         <a href="#brick">Brick</a>
       </rh-cta>
     </template>
@@ -140,22 +129,10 @@
   <h3>Using <code>href</code> attribute</h3>
   <shadow-root data-analytics-category="href-attr">
     <template shadowrootmode="open">
-      <rh-cta href="#default"
-              data-analytics-linktype="cta"
-              data-analytics-text="Default">Default</rh-cta>
-      <rh-cta href="#primary"
-              data-analytics-linktype="cta"
-              data-analytics-text="Primary"
-              variant="primary">Primary</rh-cta>
-      <rh-cta href="#secondary"
-              data-analytics-linktype="cta"
-              data-analytics-text="Secondary"
-              variant="secondary">Secondary</rh-cta>
-      <rh-cta href="#brick"
-              style="width:auto;"
-              variant="brick"
-              data-analytics-linktype="cta"
-              data-analytics-text="Brick">Brick</rh-cta>
+      <rh-cta href="#default" data-analytics-linktype="cta" data-analytics-text="Default">Default</rh-cta>
+      <rh-cta href="#primary" data-analytics-linktype="cta" data-analytics-text="Primary" variant="primary">Primary</rh-cta>
+      <rh-cta href="#secondary" data-analytics-linktype="cta" data-analytics-text="Secondary" variant="secondary">Secondary</rh-cta>
+      <rh-cta href="#brick" style="width:auto;" variant="brick" data-analytics-linktype="cta" data-analytics-text="Brick">Brick</rh-cta>
     </template>
   </shadow-root>
 </section>
@@ -163,22 +140,10 @@
 <section data-analytics-category="slotted">
   <h2>Complex Case: Slotted Link, Deep CTA</h2>
   <slotted-link>
-    <a slot="default"
-       data-analytics-linktype="cta"
-       data-analytics-text="Default"
-       href="#default">Default</a>
-    <a slot="primary"
-       data-analytics-linktype="cta"
-       data-analytics-text="Primary"
-       href="#primary">Primary</a>
-    <a slot="secondary"
-       data-analytics-linktype="cta"
-       data-analytics-text="Secondary"
-       href="#secondary">Secondary</a>
-    <a slot="brick"
-       data-analytics-linktype="cta"
-       data-analytics-text="Brick"
-       href="#brick">Brick</a>
+    <a slot="default" data-analytics-linktype="cta" data-analytics-text="Default" href="#default">Default</a>
+    <a slot="primary" data-analytics-linktype="cta" data-analytics-text="Primary" href="#primary">Primary</a>
+    <a slot="secondary" data-analytics-linktype="cta" data-analytics-text="Secondary" href="#secondary">Secondary</a>
+    <a slot="brick" data-analytics-linktype="cta" data-analytics-text="Brick" href="#brick">Brick</a>
   </slotted-link>
 </section>
 
@@ -234,5 +199,5 @@ json-viewer {
     }
   });
 </script>
-</main></body>
-</html>
+</main>
+</body></html>

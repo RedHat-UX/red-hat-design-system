@@ -6,7 +6,8 @@ import { LitElement } from 'lit';
  *
  * @summary Skip to the main content of a page
  *
- * @slot - Place an anchor tag with an `href` that targets an ID of the main content on the page.
+ * @slot - An anchor tag targeting the main page content by id hash.
+ *         Or, if the `href` attribute is set, the text of the link.
  */
 export declare class RhSkipLink extends LitElement {
     static shadowRootOptions: {
@@ -18,6 +19,7 @@ export declare class RhSkipLink extends LitElement {
         registry?: CustomElementRegistry;
     };
     static readonly styles: CSSStyleSheet[];
+    href?: string;
     render(): import("lit-html").TemplateResult<1>;
 }
 declare global {

@@ -2,6 +2,7 @@ var _ColorContextConsumer_instances, _ColorContextConsumer_propertyName, _ColorC
 import { __classPrivateFieldGet, __classPrivateFieldSet } from "tslib";
 import { contextEvents, ColorContextController, } from './controller.js';
 import { ContextRequestEvent } from '../event.js';
+import styles from '@rhds/tokens/css/color-context-consumer.css.js';
 /**
  * A color context consumer receives sets it's context property based on the context provided
  * by the closest color context provider.
@@ -12,7 +13,7 @@ export class ColorContextConsumer extends ColorContextController {
         return __classPrivateFieldGet(this, _ColorContextConsumer_instances, "a", _ColorContextConsumer_propertyValue_get);
     }
     constructor(host, options) {
-        super(host);
+        super(host, styles);
         _ColorContextConsumer_instances.add(this);
         this.options = options;
         _ColorContextConsumer_propertyName.set(this, void 0);
@@ -36,7 +37,10 @@ export class ColorContextConsumer extends ColorContextController {
         __classPrivateFieldSet(this, _ColorContextConsumer_dispose, undefined, "f");
         contextEvents.delete(this.host);
     }
-    /** Sets the `on` attribute on the host and any children that requested multiple updates */
+    /**
+     * Sets the `on` attribute on the host and any children that requested multiple updates
+     * @param next the color theme
+     */
     update(next) {
         const { last } = this;
         if (!__classPrivateFieldGet(this, _ColorContextConsumer_override, "f") && next !== last) {
@@ -59,6 +63,10 @@ _ColorContextConsumer_propertyName = new WeakMap(), _ColorContextConsumer_dispos
     }
     this.update(value);
 };
+/**
+ * Makes this element a color context consumer
+ * @param options options
+ */
 export function colorContextConsumer(options) {
     return function (proto, _propertyName) {
         const propertyName = _propertyName;

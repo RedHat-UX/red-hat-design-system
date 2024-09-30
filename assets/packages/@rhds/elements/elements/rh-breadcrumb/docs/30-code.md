@@ -1,5 +1,7 @@
 {% renderInstall %}{% endrenderInstall %}
 
+{% renderLightDom %}{% endrenderLightDom %}
+
 ## Usage
 
 ```html

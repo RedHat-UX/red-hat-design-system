@@ -3,7 +3,7 @@ import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { css } from "lit";
-const styles = css `:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);display:flex;flex-direction:row;align-items:center;gap:var(--rh-space-sm);color:var(--_bp-color)}#do{--_bp-color:var(--rh-color-status-success-on-light, #3d7317)}#dont{--_bp-color:var(--rh-color-status-danger-on-light, #b1380b)}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}`;
+const styles = css `:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);display:flex;flex-direction:row;align-items:center;gap:var(--rh-space-sm);color:var(--_bp-color)}#do{--_bp-color:var(--rh-color-status-success-on-light,#63993d)}#dont{--_bp-color:var(--rh-color-status-danger-on-light,#f0561d)}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}`;
 let UxdotBestPractice = class UxdotBestPractice extends LitElement {
     constructor() {
         super(...arguments);

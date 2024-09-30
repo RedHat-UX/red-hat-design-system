@@ -1,11 +1,12 @@
 import type { ColorTheme } from './consumer.js';
-import type { ReactiveController, ReactiveElement } from 'lit';
-import { StyleController } from '@patternfly/pfe-core/controllers/style-controller.js';
-import { type ContextRequestEvent } from '../event.js';
+import type { CSSResult, ReactiveController } from 'lit';
+import { ReactiveElement } from 'lit';
+import { type ContextRequestEvent, type UnknownContext } from '../event.js';
 export interface ColorContextOptions<T extends ReactiveElement> {
     prefix?: string;
     propertyName?: keyof T;
 }
+type ColorContext = typeof ColorContextController.context;
 /**
 * Maps from consumer host elements to already-fired request events
 * We hold these in memory in order to re-fire the events every time a new provider connects.
@@ -25,6 +26,7 @@ export interface ColorContextOptions<T extends ReactiveElement> {
 export declare const contextEvents: Map<ReactiveElement, ContextRequestEvent<Readonly<{
     __context__: ColorTheme | null;
 }>>>;
+export declare const isColorContextEvent: (event: ContextRequestEvent<UnknownContext>) => event is ContextRequestEvent<ColorContext>;
 /**
  * Color context is derived from the `--context` css custom property,
  * which *must* be set by the `color-palette` attribute
@@ -40,12 +42,11 @@ export declare abstract class ColorContextController<T extends ReactiveElement> 
     static readonly context: Readonly<{
         __context__: ColorTheme | null;
     }>;
-    /** The style controller which provides the necessary CSS. */
-    protected styleController: StyleController;
     /** The last-known color context on the host */
     protected last: ColorTheme | null;
     hostUpdate?(): void;
     /** callback which updates the context value on consumers */
     abstract update(next?: ColorTheme | null): void;
-    constructor(host: T);
+    constructor(host: T, styles: CSSStyleSheet | CSSResult);
 }
+export {};

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="490" height="115" viewBox="0 0 490 115">
+  <g id="alert-focus-order" transform="translate(-615 -928)">
+    <g id="Inline" transform="translate(615 928)">
+      <rect id="Rectangle" width="490" height="113" transform="translate(0 2)" fill="#f3faf2"/>
+      <g id="Close_-_light_theme" data-name="Close - light theme" transform="translate(458 18)">
+        <g id="Icon">
+          <rect id="Rectangle-2" data-name="Rectangle" width="16" height="16" fill="none"/>
+          <path id="Icon-2" data-name="Icon" d="M8.275,86l3.411-3.411a1.072,1.072,0,0,0,0-1.516l-.758-.758a1.072,1.072,0,0,0-1.516,0L6,83.725,2.589,80.314a1.072,1.072,0,0,0-1.516,0l-.758.758a1.072,1.072,0,0,0,0,1.516L3.725,86,.314,89.411a1.072,1.072,0,0,0,0,1.516l.758.758a1.072,1.072,0,0,0,1.516,0L6,88.275l3.411,3.411a1.072,1.072,0,0,0,1.516,0l.758-.758a1.072,1.072,0,0,0,0-1.516Z" transform="translate(2 -78)" fill="#6a6e73"/>
+        </g>
+      </g>
+      <g id="Links" transform="translate(0 81)">
+        <text id="Continue" transform="translate(125 14)" fill="#06c" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Continue</tspan></text>
+        <text id="Go_back" data-name="Go back" transform="translate(48 14)" fill="#06c" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Go back</tspan></text>
+      </g>
+      <text id="Your_information_has_been_submitted_successfully." data-name="Your information has been submitted successfully." transform="translate(48 47)" fill="#151515" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="14">Your information has been submitted successfully.</tspan></text>
+      <text id="Success" transform="translate(48 21)" fill="#1e4f18" font-size="14" font-family="RedHatText-Medium, Red Hat Text" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="14">Success</tspan></text>
+      <g id="Success-2" data-name="Success" transform="translate(16 18)">
+        <rect id="Rectangle-3" data-name="Rectangle" width="24" height="24" fill="none"/>
+        <path id="Icon-3" data-name="Icon" d="M26,17a9,9,0,1,1-9-9A9,9,0,0,1,26,17ZM15.959,21.765l6.677-6.677a.581.581,0,0,0,0-.821l-.821-.821a.581.581,0,0,0-.821,0l-5.446,5.446-2.542-2.542a.581.581,0,0,0-.821,0l-.821.821a.581.581,0,0,0,0,.821l3.774,3.774a.581.581,0,0,0,.821,0Z" transform="translate(-5 -5)" fill="#3e8635"/>
+      </g>
+      <rect id="Rectangle-4" data-name="Rectangle" width="490" height="2" fill="#3e8635"/>
+    </g>
+    <g id="Focus_indicator_-_dark_theme" data-name="Focus indicator - dark theme" transform="translate(663 1009)">
+      <g id="Rectangle-5" data-name="Rectangle" fill="none" stroke="#06c" stroke-width="2">
+        <rect width="53" height="18" rx="3" stroke="none"/>
+        <rect x="-1" y="-1" width="55" height="20" rx="4" fill="none"/>
+      </g>
+    </g>
+    <g id="Focus_indicator_-_dark_theme-2" data-name="Focus indicator - dark theme" transform="translate(740 1009)">
+      <g id="Rectangle-6" data-name="Rectangle" fill="none" stroke="#06c" stroke-width="2">
+        <rect width="58" height="18" rx="3" stroke="none"/>
+        <rect x="-1" y="-1" width="60" height="20" rx="4" fill="none"/>
+      </g>
+    </g>
+    <g id="Focus_indicator_-_dark_theme-3" data-name="Focus indicator - dark theme" transform="translate(1073 946)">
+      <g id="Rectangle-7" data-name="Rectangle" fill="none" stroke="#06c" stroke-width="2">
+        <rect width="16" height="16" rx="3" stroke="none"/>
+        <rect x="-1" y="-1" width="18" height="18" rx="4" fill="none"/>
+      </g>
+    </g>
+    <g id="Number" transform="translate(475 -1593)">
+      <circle id="Ellipse" cx="10.5" cy="10.5" r="10.5" transform="translate(570 2537)" fill="#b300b3"/>
+      <text id="_3" data-name="3" transform="translate(570 2537)" fill="#fff" font-size="16" font-family="RedHatText-Medium, Red Hat Text" font-weight="500"><tspan x="5.644" y="16">3</tspan></text>
+    </g>
+    <g id="Number-2" data-name="Number" transform="translate(109 -1555)">
+      <circle id="Ellipse-2" data-name="Ellipse" cx="10.5" cy="10.5" r="10.5" transform="translate(570 2537)" fill="#b300b3"/>
+      <text id="_1" data-name="1" transform="translate(570 2537)" fill="#fff" font-size="16" font-family="RedHatText-Medium, Red Hat Text" font-weight="500"><tspan x="7.764" y="16">1</tspan></text>
+    </g>
+    <g id="Number-3" data-name="Number" transform="translate(189 -1555)">
+      <circle id="Ellipse-3" data-name="Ellipse" cx="10.5" cy="10.5" r="10.5" transform="translate(570 2537)" fill="#b300b3"/>
+      <text id="_2" data-name="2" transform="translate(570 2537)" fill="#fff" font-size="16" font-family="RedHatText-Medium, Red Hat Text" font-weight="500"><tspan x="5.94" y="16">2</tspan></text>
+    </g>
+  </g>
+</svg>
