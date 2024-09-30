@@ -1,0 +1,110 @@
+:host {
+  --_background-color: var(--rh-color-white, #ffffff);
+
+  display: flex;
+  position: relative;
+}
+
+.empty {
+  display: none !important;
+}
+
+#container {
+  background-color: var(--rh-color-surface-lightest, #ffffff); /* Default (light) background */
+  color: var(--rh-color-text-primary); /* Default (light) color */
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  inline-size: 100%;
+  line-height: var(--rh-line-height-body-text, 1.5);
+  padding: var(--rh-space-lg, 16px);
+  text-align: center;
+  container: announcement / inline-size;
+}
+
+/* dark theme */
+#container.dark {
+  background-color: var(--rh-color-surface-dark-alt, #292929);
+}
+
+#body {
+  padding-inline-start: var(--rh-space-lg, 16px);
+}
+
+#body ::slotted(p) {
+  margin-block: 0 !important;
+}
+
+#image {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+@container announcement (min-width: 768px) {
+  #content {
+    align-items: center;
+    display: flex;
+  }
+
+  #container.dismissable #content {
+    margin-inline-end: var(--rh-space-2xl, 32px);
+  }
+
+  #row {
+    display: flex;
+    justify-content: center;
+    margin-inline: auto;
+    max-inline-size: 1170px;
+  }
+
+  #body {
+    padding-inline: var(--rh-space-xl, 24px) !important;
+    text-align: start;
+  }
+
+  #body ::slotted(p) {
+    font-size: var(--rh-font-size-body-text-lg, 1.125rem) !important;
+  }
+
+  #image,
+  #cta {
+    flex-shrink: 0;
+    min-inline-size: max-content;
+  }
+
+  #cta {
+    display: inline-block;
+    padding-inline-end: var(--rh-space-lg, 16px);
+  }
+}
+
+@container announcement (max-width: 767px) {
+  #container:not(.imgleft) #body {
+    padding-block: var(--rh-space-lg, 16px) var(--rh-space-md, 8px);
+    padding-inline-end: var(--rh-space-lg, 16px);
+  }
+
+  #container.imgleft #row {
+    display: flex;
+  }
+
+  #content {
+    font-size: var(--rh-font-size-body-text-md, 1rem);
+  }
+
+  #container.imgleft #content {
+    text-align: start;
+  }
+
+  #container.imgleft.dismissable #content {
+    margin-inline-end: var(--rh-space-2xl, 32px);
+  }
+
+  #container.imgleft #image {
+    align-items: flex-start;
+    flex: 1;
+  }
+
+  #container.imgleft #cta {
+    padding-inline-start: var(--rh-space-lg, 16px);
+  }
+}
