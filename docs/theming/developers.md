@@ -58,8 +58,8 @@ a `<rh-surface>` may be used as a full-width container and provide the
 
 {% uxdotPattern src="./docs/theming/patterns/band.html",
                 class="band-example",
-                stacked=true,
-                allow="lightest" %}{% enduxdotPattern %}
+                target="band",
+                stacked=true %}{% enduxdotPattern %}
 
 ### The `color-palette` attribute
 
