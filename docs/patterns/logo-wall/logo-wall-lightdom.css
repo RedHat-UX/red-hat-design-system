@@ -68,11 +68,11 @@
   background-color: var(--rh-color-gray-60, #4d4d4d);
 }
 
-[color-palette^='dark'] .logo-wall--light {
+[color-palette^='dark'] > .logo-wall-container .logo-wall--light {
   display: none;
 }
 
-[color-palette^='light'] .logo-wall--dark {
+[color-palette^='light'] > .logo-wall-container .logo-wall--dark {
   display: none;
 }
 

@@ -1,4 +1,4 @@
-<div class="grid sm-three-columns example-2x2-grid">
+<rh-surface id="example-2x2-grid" class="grid sm-three-columns ">
   <div class="promo-text">
     <h4>Need a business partner?</h4>
     <p>In the digital transformation journey we’re on, there’s a lot of change. There’s a need to reach markets quickly. And to do that we need productive developers who are able to get ideas into production safely, in a day, every day. </p>
@@ -24,21 +24,19 @@
       </a>
     </div>
   </div>
-</div>
+</rh-surface>
 
 <link rel="stylesheet" href="../logo-wall-lightdom.css">
 
 <style>
-  .example-2x2-grid {
+  #example-2x2-grid {
     align-items: flex-start;
-  }
-
-  .example-2x2-grid .promo-text {
-    grid-column: span 2;
-  }
-
-  .example-2x2-grid .promo-text p {
-    font-size: var(--rh-font-size-body-text-md, 1rem);
+    & .promo-text {
+      grid-column: span 2;
+      & p {
+        font-size: var(--rh-font-size-body-text-md, 1rem);
+      }
+    }
   }
 </style>
 

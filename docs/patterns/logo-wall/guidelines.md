@@ -78,6 +78,34 @@ When displaying our partners' logos, it is essential to respect their brand iden
   </uxdot-best-practice>
 </div>
 
+### Art Direction
+
+When alternating graphics depending on the color palette, You should be careful select
+only the themable container which is the direct ancestor of the logo wall.
+
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+    <uxdot-example slot="image" alignment="left">
+      <img src="../guidelines-bestpractices-contrast-do.svg"
+           alt="Examples of two Red Hat logos in dark and light themes against background colors that ensure enough color contrast.">
+    </uxdot-example>
+    <p>Ensure that the color contrast between each logo and the background meets accessibility standards.</p>
+  </uxdot-best-practice>
+
+  <uxdot-best-practice variant="dont">
+    <uxdot-example slot="image" alignment="left">
+      <img src="../guidelines-bestpractices-contrast-dont.svg"
+           alt="Examples of two Red Hat logos in dark and light themes against background colors that do not provide enough contrast.">
+    </uxdot-example>
+    <p>Place a logo over a background that does not meet accessibility standards.</p>
+  </uxdot-best-practice>
+</div>
+
+See [theming developer docs](/theming/developers/) for more information.
+
+<rh-alert>`<rh-picture>` <rh-tag color="purple">Planned</rh-tag> is expected to help 
+with this case</rh-alert>
+
 ### Logo sizes
 
 <div class="grid sm-two-columns">
