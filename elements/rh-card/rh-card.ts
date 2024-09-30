@@ -100,11 +100,19 @@ export class RhCard extends LitElement {
     }
   }
 
+  get #computedContext() {
+    return this.colorPalette ?
+      this.colorPalette?.includes('light') ? 'light' : 'dark'
+      : undefined;
+  }
+
   override render() {
-    const { on = 'light', variant = '' } = this;
     const promo = this.variant === 'promo';
     const standard = this.#isStandardPromo;
     const computedPalette = this.#computedPalette;
+    const computedContext = this.#computedContext;
+    const on = computedContext ?? this.on ?? 'light';
+    const { variant = '' } = this;
     const hasHeader = this.#slots.hasSlotted('header');
     const hasFooter = this.#slots.hasSlotted('footer');
     const hasImage = this.#slots.hasSlotted('image');
