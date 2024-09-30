@@ -94,8 +94,8 @@ Released October 1, 2024
 | `<rh-audio-player>`: added mini playback control | {{p()}} | Mini layout now has playback control. |
 | `<rh-navigation-secondary>`: improved accessibility | {{p()}} | Removed arrow-key keyboard navigation in favor of tab navigation through navigation items and added `accessible-label` attribute to explicitly label landmark. |
 | `<rh-subnav>`: improved accessibility | {{p()}} | Removed arrow-key keyboard navigation in favor of tab navigation through navigation items and added `accessible-label` attribute to explicitly label landmark. |
-| `<rh-table>`: added container query support | {{p()}} | Tables now adjust to the size of their containing element, not just viewport size. |
-| `<rh-tabs>`: added container query support | {{p()}} | Tabs now adjust to the size of their containing element, not just viewport size. |
+| `<rh-table>`: added container query support | {{p()}} | Tables now adjust to the size of their containing element, not the viewport size. |
+| `<rh-tabs>`: added container query support | {{p()}} | Tabs now adjust to the size of their containing element, not the viewport size. |
 | `<rh-tabs>`: added advanced layout support | {{p()}} | Tabs can now participate in advanced layouts, like `display: subgrid`. |
 
 </rh-table>
