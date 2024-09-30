@@ -51,9 +51,9 @@ hasToc: true
   import '@rhds/elements/rh-table/rh-table.js';
 </script>
 
-{% macro j() %}<rh-tag color="red">Major</rh-tag>{% endmacro %}
-{% macro i() %}<rh-tag color="blue">Minor</rh-tag>{% endmacro %}
-{% macro p() %}<rh-tag color="gray">Patch</rh-tag>{% endmacro %}
+{% macro j() %}<rh-tag color="red" size="compact">Major</rh-tag>{% endmacro %}
+{% macro i() %}<rh-tag color="blue" size="compact">Minor</rh-tag>{% endmacro %}
+{% macro p() %}<rh-tag color="gray" size="compact">Patch</rh-tag>{% endmacro %}
 
 ## Changelog
 
