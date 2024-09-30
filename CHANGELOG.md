@@ -23,7 +23,7 @@
   - add `accessible-label` attribute to explicitly label landmark.
   - corrects overflow icons
 
-  ```
+  ```html
   <rh-subnav accessible-label="Customer service">
    <a href="#" active>Help</a>
    <a href="#">Contact Us</a>
