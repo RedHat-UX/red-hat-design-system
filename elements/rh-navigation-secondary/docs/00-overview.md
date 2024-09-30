@@ -7,7 +7,7 @@
 ## Sample element
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ './nav-secondary-sample.png' | url }}" alt="Image of two stacked secondary navigations; one for large breakpoints and the other for small breakpoints">
+  <img src="./nav-secondary-sample.png" alt="Image of two stacked secondary navigations; one for large breakpoints and the other for small breakpoints">
 </uxdot-example>
 
 ## When to use

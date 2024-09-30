@@ -6,12 +6,12 @@ importElements:
   - rh-table
 ---
 
-<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
+<link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
 
 <section aria-labelledby="aria__heading-beta-release-notes">
   <h2 id="aria__heading-beta-release-notes">Beta release notes</h2>
 
-  <a href="{{ '/release-notes' | url }}">Return to Release notes</a>
+  <a href="/release-notes">Return to Release notes</a>
 </section>
 
 <section aria-labelledby="aria__heading-jan-2023">
@@ -182,11 +182,11 @@ importElements:
       <tbody>
         <tr>
           <td data-label"Component name">How we build</td>
-          <td data-label"Notes">Added a <a href="{{ '../about/how-we-build' | url }}">How we build</a> page to the About section, it includes details about how to build branded experiences using the various repos.</td>
+          <td data-label"Notes">Added a <a href="../about/how-we-build">How we build</a> page to the About section, it includes details about how to build branded experiences using the various repos.</td>
         </tr>
         <tr>
           <td data-label"Component name">Overview</td>
-          <td data-label"Notes">Added an <a href="{{ '../get-started' | url }}">Overview</a> page to the Get started section, it includes details about available libraries, how to access libraries, and includes a video of how to use libraries.</td>
+          <td data-label"Notes">Added an <a href="../get-started">Overview</a> page to the Get started section, it includes details about available libraries, how to access libraries, and includes a video of how to use libraries.</td>
         </tr>
         <tr>
           <td data-label"Component name">Design system kit</td>

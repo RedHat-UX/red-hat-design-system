@@ -8,7 +8,7 @@ A blockquote is a styled quotation and citation offset from other text styles on
 ## Sample element
 
 <uxdot-example width-adjustment="593px">
-  <img src="{{ './blockquote-sample.png' | url }}" alt="Image of a blockquote including a quote icon, quotation text, and citation text">
+  <img src="./blockquote-sample.png" alt="Image of a blockquote including a quote icon, quotation text, and citation text">
 </uxdot-example>
 
 
@@ -24,7 +24,7 @@ View a live version of this component and see how it can be customized.
   </rh-blockquote>
 </uxdot-example>
 
-<rh-cta><a href="{{ './demo/' | url }}">Full screen demo</a></rh-cta>
+<rh-cta><a href="./demo/">Full screen demo</a></rh-cta>
   
 
 ## When to use

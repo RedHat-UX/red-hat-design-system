@@ -1,14 +1,24 @@
-/** @license portions MIT Jordan Shermer */
-const cheerio = require('cheerio');
+// @ts-check
+
+/** @license adapted from code (c) Jordan Shermer MIT license*/
+
+/* eslint-disable jsdoc/check-tag-names */
 
 /** Attribute which if found on a heading means the heading is excluded */
 const ignoreAttribute = 'data-toc-exclude';
 
 const defaults = {
-  tags: ['h2', 'h3', 'h4'],
+  tags: ['h2'],
+  /** @type{string[]} */
   ignoredElements: [],
 };
 
+/** @typedef {{ Tools: import('@parse5/tools'), Parse5: import('parse5') } & typeof defaults} Options */
+
+/**
+ * @param {Item} prev
+ * @param {Item} current
+ */
 function getParent(prev, current) {
   if (current.level > prev.level) {
     // child heading
@@ -23,94 +33,120 @@ function getParent(prev, current) {
 }
 
 class Item {
-  constructor($el) {
-    if ($el) {
-      this.slug = $el.attr('id');
-      this.text = $el.text().trim();
-      this.level = +$el.get(0).tagName.slice(1);
-    } else {
-      this.level = 0;
+  /** @type{Item[]} */
+  children = [];
+
+  /** @type{Item} */
+  parent;
+
+  level = 0;
+
+  /**
+   * @param {Options} options
+   * @param {import('@parse5/tools').Element} [element]
+   */
+  constructor(options, element) {
+    this.options = options;
+    if (element) {
+      const { getAttribute, getTextContent } = this.options.Tools;
+      this.slug = getAttribute(element, 'id');
+      this.text = getTextContent(element).trim();
+      this.level = parseInt(element.tagName.replace('h', '')) || 0;
     }
-    this.children = [];
   }
 
-  html() {
-    let markup = '';
+  getItem() {
+    const { createElement, setTextContent, appendChild } = this.options.Tools;
+    const container = this.slug && this.text ? createElement('li') : createElement('span');
     if (this.slug && this.text) {
-      markup += `
-                    <li><a href="#${this.slug}">${this.text}</a>
-            `;
+      const a = createElement('a', { href: `#${this.slug}` });
+      setTextContent(a, this.text);
+      appendChild(container, a);
     }
     if (this.children.length > 0) {
-      markup += `
-                <ol slot="details">
-                    ${this.children.map(item => item.html()).join('\n')}
-                </ol>
-                <ol slot="expanded">
-                    ${this.children.map(item => item.html()).join('\n')}
-                </ol>
-            `;
+      const details = createElement('ol', { slot: 'details' });
+      const expanded = createElement('ol', { slot: 'expanded' });
+      for (const child of this.children) {
+        appendChild(details, child.getItem());
+        appendChild(expanded, child.getItem());
+      }
+      appendChild(container, details);
+      appendChild(container, expanded);
     }
-
-    if (this.slug && this.text) {
-      markup += '\t\t</li>';
-    }
-
-    return markup;
+    return container;
   }
 }
 
 class Toc {
-  constructor(htmlstring = '', options = defaults) {
-    this.options = { ...defaults, ...options };
-    const selector = this.options.tags.join(',');
-    this.root = new Item();
+  /**
+   * @param {string} htmlstring
+   * @param {Options} options
+   */
+  constructor(htmlstring = '', options) {
+    this.html = htmlstring;
+    this.options = options;
+    this.root = new Item(this.options);
     this.root.parent = this.root;
 
-    const $ = cheerio.load(htmlstring);
+    this.parse();
+  }
 
-    const headings = $(selector)
-        .filter('[id]')
-        .filter(`:not([${ignoreAttribute}])`);
+  parse() {
+    const { parse } = this.options.Parse5;
+    const { queryAll, hasAttribute, isElementNode } = this.options.Tools;
 
-    const ignoredElementsSelector = this.options.ignoredElements.join(',');
-    headings.find(ignoredElementsSelector).remove();
+    const document = parse(this.html);
 
-    if (headings.length) {
-      let previous = this.root;
-      headings.each((index, heading) => {
-        const current = new Item($(heading));
+    const tagSet =
+      new Set(this.options.tags)
+          .difference(new Set(this.options.ignoredElements));
+
+    const headings = queryAll(document, node =>
+      isElementNode(node)
+      && tagSet.has(node.tagName)
+      && hasAttribute(node, 'id')
+      && !hasAttribute(node, ignoreAttribute));
+
+    let previous = this.root;
+
+    for (const heading of headings) {
+      if (isElementNode(heading)) {
+        const current = new Item(this.options, heading);
         const parent = getParent(previous, current);
         current.parent = parent;
         parent.children.push(current);
         previous = current;
-      });
+      }
     }
   }
 
-  get() {
-    return this.root;
-  }
-
-  html() {
-    const root = this.get();
-
-    let html = '';
-
-    if (root.children.length) {
-      html += `${root.html()}`;
-    }
-
-    return html;
+  serialize() {
+    const { serialize } = this.options.Parse5;
+    return serialize(this.root.getItem());
   }
 }
 
 module.exports = {
   initArguments: {},
   configFunction: function(eleventyConfig, options = {}) {
-    eleventyConfig.addFilter('toc', (content, opts) => {
-      const toc = new Toc(content, { ...options, ...opts });
-      return toc.html();
-    });
+    eleventyConfig.addFilter('toc', /**
+                                     * @param {string} content
+                                     * @param {typeof defaults} opts
+                                     */
+                             async function(content, opts) {
+                               const Parse5 = await import('parse5');
+                               const Tools = await import('@parse5/tools');
+                               const toc = new Toc(content, {
+                                 ...defaults,
+                                 ...options,
+                                 ...opts,
+                                 tags: opts?.tags || options?.tags,
+                                 Parse5,
+                                 Tools,
+                                 page: this.page,
+                               });
+                               const html = toc.serialize();
+                               return html;
+                             });
   },
 };

@@ -7,21 +7,18 @@ tags:
   - pattern
 ---
 
-<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
-<link rel="stylesheet" href="/styles/samp.css">
-
+<link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
+<link rel="stylesheet" data-helmet href="/styles/samp.css">
 
 ## Overview
 
 Link with icon features an icon that adds context to the link itself. It’s positioned to the left or on top of a link, depending on orientation.
-
 
 ## Sample pattern
 
 <uxdot-example width-adjustment="484px">
   <img src="./link-with-icon.svg" alt="Link with icon">
 </uxdot-example>
-
 
 ## Style
 
@@ -30,7 +27,6 @@ Link with icon is available in light and dark themes. It’s a grouping of a sma
 <uxdot-example width-adjustment="484px">
   <img src="./link-with-icon-style.svg" alt="Link with icon specs">
 </uxdot-example>
-
 
 ### Theme
 
@@ -42,11 +38,9 @@ Link with icon is available in light and dark themes. It’s a grouping of a sma
   <img src="./link-with-icon-theme-dark.svg" alt="Link with icon theme dark">
 </uxdot-example>
 
-
 ## Usage
 
 Use link with icon to increase the visual interest of a link without using a call to action style. Link with icon can replace links that are used on their own, but not in a paragraph of text.
-
 
 ## Best practices
 
@@ -55,7 +49,6 @@ Don't increase the icon size because the link text size will appear smaller.
 <uxdot-example width-adjustment="484px" danger>
   <img src="./link-with-icon-best-practices.svg" alt="Link with icon icon size issue">
 </uxdot-example>
-
 
 ## Behavior
 
@@ -74,7 +67,6 @@ Link with icon can be used on large and small screens. When the width of the lin
   <figcaption>Some text styles reduce in size on small screens. Learn more about typography on mobile</figcaption>
 </figure>
 
-
 ### Alignment
 
 The icon and the link are always vertically-aligned.
@@ -87,11 +79,9 @@ The icon and the link are always vertically-aligned.
   <img src="./link-with-icon-alignment-2.svg" alt="Link with icon alignment">
 </uxdot-example>
 
-
 ## Interaction states
 
 The link has the same interaction states as a Link whereas the icon doesn't have any interaction states.
-
 
 ## Spacing
 
@@ -102,10 +92,7 @@ Link with icon uses [space tokens](/tokens/space/) to define spacing values betw
 </uxdot-example>
 
 <rh-table>
-{% spacerTokensTable 
-  tokens="--rh-space-lg" %}
-{% endspacerTokensTable %}
+{% spacerTokensTable tokens="--rh-space-lg" %}{% endspacerTokensTable %}
 </rh-table>
-
 
 {% include 'partials/component/feedback.html' %}

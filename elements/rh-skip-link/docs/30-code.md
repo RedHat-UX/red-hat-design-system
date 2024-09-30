@@ -1,5 +1,7 @@
 {% renderInstall %}{% endrenderInstall %}
 
+{% renderLightDom shimcss=true %}{% endrenderLightDom %}
+
 ## Usage
 ```html
 <rh-skip-link>

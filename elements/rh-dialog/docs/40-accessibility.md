@@ -3,7 +3,7 @@
 A dialog can be opened by pressing `Enter` when the dialog trigger has focus. When a dialog is open, moving focus using a keyboard is constrained or trapped within the dialog container. Keyboard navigation by pressing `Tab` will cycle focus through the interactive elements until the dialog is closed.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="{{ '../dialog-a11y-keyboard-interactions.png' | url }}" alt="Flowchart of a dialog container outlining several keyboard interactions">
+  <img src="../dialog-a11y-keyboard-interactions.png" alt="Flowchart of a dialog container outlining several keyboard interactions">
 </uxdot-example>
 
 <rh-table>
@@ -51,7 +51,7 @@ When a dialog opens, the element that should receive focus depends on the conten
 Only the close button and any interactive elements are selectable.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="{{ '../dialog-a11y-touch-targets.png' | url }}" alt="A dialog container with three touch targets; one on the close button and one on each button">
+  <img src="../dialog-a11y-touch-targets.png" alt="A dialog container with three touch targets; one on the close button and one on each button">
 </uxdot-example>
 
 

@@ -8,7 +8,7 @@
 ## Sample element
 
 <uxdot-example width-adjustment="442px">
-  <img src="{{ 'card.svg' | url }}" alt="Image of a card element">
+  <img src="card.svg" alt="Image of a card element">
 </uxdot-example>
 
 {% repoStatusChecklist repoStatus=repoStatus %}

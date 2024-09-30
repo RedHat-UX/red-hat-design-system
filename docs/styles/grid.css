@@ -5,7 +5,7 @@
 .grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--rh-space-2xl, 32px);
+  gap: var(--rh-space-2xl);
 }
 
 @container container (min-width: 576px) {
@@ -31,10 +31,11 @@
 }
 
 /* content with image layout */
+
 /* TODO: possibly a separate layout pattern */
 .layout-content-image {
   grid-template-rows: auto;
-  grid-template-areas: "image" "content";
+  grid-template-areas: 'image' 'content';
 }
 
 .layout-content-image > .content-block {
@@ -48,11 +49,11 @@
 @container container (min-width: 768px) {
   .layout-content-image {
     grid-template-columns: 2fr 1fr;
-    grid-template-areas: "content image";
+    grid-template-areas: 'content image';
   }
 
   .layout-content-image.reversed {
     grid-template-columns: 1fr 2fr;
-    grid-template-areas: "image content";
+    grid-template-areas: 'image content';
   }
 }

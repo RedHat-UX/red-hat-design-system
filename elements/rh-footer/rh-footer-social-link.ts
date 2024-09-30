@@ -1,3 +1,5 @@
+import type { IconNameFor } from '@rhds/icons';
+
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
@@ -10,7 +12,8 @@ import style from './rh-footer-social-link.css';
 export class RhFooterSocialLink extends LitElement {
   static readonly styles = style;
 
-  @property() icon?: string;
+  /** Icon for this social link e.g. `'facebook'` */
+  @property() icon?: IconNameFor<'social'>;
 
   #logger = new Logger(this);
 
@@ -31,9 +34,8 @@ export class RhFooterSocialLink extends LitElement {
       newDiv.querySelectorAll('[_rendered]').forEach(i => i.remove());
       // NB: icons are restricted to social set, so as not to require a minor release
       // rh-icon is slated to deal with this problem in-house
-      newDiv.innerHTML = `<rh-icon icon="${this.icon ?? ''}"
-                            set="social"
-                            loading="eager">${newDiv.innerHTML}</rh-icon>`;
+      newDiv.innerHTML =
+        `<rh-icon icon="${this.icon ?? ''}" set="social" loading="eager">${newDiv.innerHTML}</rh-icon>`;
       // add a11y settings
       newDiv.setAttribute('aria-label', newDiv.textContent || '');
       if (!newDiv.getAttribute('aria-label')) {

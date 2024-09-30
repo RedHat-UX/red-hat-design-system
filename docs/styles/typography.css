@@ -1,53 +1,53 @@
 body {
-  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-body-text);
   font-size: 1rem;
-  line-height: var(--rh-line-height-body-text, 1.5);
+  line-height: var(--rh-line-height-body-text);
 }
 
 :where(h1, h2, h3, h4, h5, h6) {
-  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-  line-height: var(--rh-line-height-heading, 1.3);
+  font-family: var(--rh-font-family-heading);
+  line-height: var(--rh-line-height-heading);
 }
 
 :where(code) {
-  font-family: var(--rh-font-family-code, RedHatMono, "Red Hat Mono", "Courier New", Courier, monospace);
-  line-height: var(--rh-line-height-code, 1.5);
+  font-family: var(--rh-font-family-code);
+  line-height: var(--rh-line-height-code);
 }
 
 :where(kbd) {
-  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-body-text);
   font-size: 1rem;
-  line-height: var(--rh-line-height-body-text, 1.5);
+  line-height: var(--rh-line-height-body-text);
 }
 
 :where(h1) {
-  font-size: var(--rh-font-size-heading-2xl, 3rem);
+  font-size: var(--rh-font-size-heading-2xl);
 }
 
 :where(h2) {
-  font-size: var(--rh-font-size-heading-xl, 2.5rem);
+  font-size: var(--rh-font-size-heading-xl);
 }
 
 :where(h3) {
-  font-size: var(--rh-font-size-heading-lg, 2.25rem);
+  font-size: var(--rh-font-size-heading-lg);
 }
 
 :where(h4) {
-  font-size: var(--rh-font-size-heading-md, 1.75rem);
+  font-size: var(--rh-font-size-heading-md);
 }
 
 :where(h5) {
-  font-size: var(--rh-font-size-heading-sm, 1.5rem);
+  font-size: var(--rh-font-size-heading-sm);
 }
 
 :where(h6) {
-  font-size: var(--rh-font-size-heading-xs, 1.25rem);
+  font-size: var(--rh-font-size-heading-xs);
 }
 
 :where(p) {
-  font-size: var(--rh-font-size-body-text-md, 1rem);
+  font-size: var(--rh-font-size-body-text-md);
 }
 
 :where(p, h1, h2, h3, h4, h5, h6, li) {
-  max-width: 56rem;
+  max-width: 56rem; /* warning: magic number */
 }

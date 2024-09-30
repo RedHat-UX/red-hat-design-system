@@ -12,6 +12,7 @@ const DesignTokensPlugin = require('./docs/_plugins/tokens.cjs');
 const RHDSMarkdownItPlugin = require('./docs/_plugins/markdown-it.cjs');
 const ImportMapPlugin = require('./docs/_plugins/importMap.cjs');
 const LitPlugin = require('@lit-labs/eleventy-plugin-lit');
+const HelmetPlugin = require('eleventy-plugin-helmet');
 
 const util = require('node:util');
 const exec = util.promisify(require('node:child_process').exec);
@@ -21,7 +22,7 @@ const isWatch =
 
 const isLocal = !(process.env.CI || process.env.DEPLOY_URL);
 
-/** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
+/** @param {import('@11ty/eleventy').UserConfig} eleventyConfig */
 module.exports = function(eleventyConfig) {
   eleventyConfig.setQuietMode(true);
 
@@ -41,12 +42,15 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.watchIgnores?.add('elements/*/test/');
   eleventyConfig.watchIgnores?.add('lib/elements/*/test/');
   eleventyConfig.addPassthroughCopy('docs/patterns/**/*.{svg,jpg,jpeg,png}');
+  eleventyConfig.addPassthroughCopy('elements/*/demo/**/*.{svg,jpg,jpeg,png}');
   eleventyConfig.addPassthroughCopy('docs/CNAME');
   eleventyConfig.addPassthroughCopy('docs/.nojekyll');
   eleventyConfig.addPassthroughCopy('docs/robots.txt');
   eleventyConfig.addPassthroughCopy('docs/assets/**/*');
   eleventyConfig.addPassthroughCopy('docs/styles/**/*');
   eleventyConfig.addPassthroughCopy('docs/patterns/**/*.css');
+  eleventyConfig.addPassthroughCopy('docs/theming/**/*.css');
+  eleventyConfig.addPassthroughCopy('docs/foundations/**/*.{css,js}');
 
 
   if (isLocal) {
@@ -61,15 +65,17 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addGlobalData('isLocal', isLocal);
 
   eleventyConfig.addGlobalData('sideNavDropdowns', [
-    { 'title': 'About', 'url': '/about', 'collection': 'about' },
-    { 'title': 'Get started', 'url': '/get-started', 'collection': 'getstarted' },
-    { 'title': 'Foundations', 'url': '/foundations', 'collection': 'foundations' },
-    { 'title': 'Tokens', 'url': '/tokens', 'collection': 'token' },
-    { 'title': 'Elements', 'url': '/elements', 'collection': 'elementDocs' },
-    { 'title': 'Patterns', 'url': '/patterns', 'collection': 'pattern' },
-    { 'title': 'Accessibility', 'url': '/accessibility', 'collection': 'accessibility' },
+    { title: 'About', url: '/about', collection: 'about' },
+    { title: 'Get started', url: '/get-started', collection: 'getstarted' },
+    { title: 'Foundations', url: '/foundations', collection: 'foundations' },
+    { title: 'Tokens', url: '/tokens', collection: 'tokenCategory' },
+    { title: 'Elements', url: '/elements', collection: 'elementDocs' },
+    { title: 'Theming', url: '/theming', collection: 'theming' },
+    { title: 'Patterns', url: '/patterns', collection: 'pattern' },
+    { title: 'Accessibility', url: '/accessibility', collection: 'accessibility' },
   ]);
 
+  eleventyConfig.addPlugin(HelmetPlugin);
   eleventyConfig.addPlugin(RHDSMarkdownItPlugin);
 
   /** Table of Contents Shortcode */
@@ -90,12 +96,15 @@ module.exports = function(eleventyConfig) {
     nodemodulesPublicPath: '/assets/packages',
     manualImportMap: {
       imports: {
+        'tinycolor2': '/assets/packages/tinycolor2/esm/tinycolor.js',
         'lit/': '/assets/packages/lit/',
         'lit-html': '/assets/packages/lit-html/lit-html.js',
         'lit-html/': '/assets/packages/lit-html/',
+        'prism-esm/': '/assets/packages/prism-esm/',
         '@lit-labs/ssr-client/lit-element-hydrate-support.js':
           '/assets/packages/@lit-labs/ssr-client/lit-element-hydrate-support.js',
         '@rhds/tokens': '/assets/packages/@rhds/tokens/js/tokens.js',
+        '@rhds/tokens/css/': '/assets/packages/@rhds/tokens/css/',
         '@rhds/tokens/': '/assets/packages/@rhds/tokens/js/',
         '@rhds/elements/lib/': '/assets/packages/@rhds/elements/lib/',
         '@rhds/elements/': '/assets/packages/@rhds/elements/elements/',
@@ -110,6 +119,7 @@ module.exports = function(eleventyConfig) {
     localPackages: [
       // ux-dot dependencies
       'fuse.js',
+      'tinycolor2',
       'element-internals-polyfill',
 
       // RHDS dependencies
@@ -119,6 +129,8 @@ module.exports = function(eleventyConfig) {
       '@rhds/tokens',
       '@rhds/tokens/media.js',
       '@rhds/tokens/meta.js',
+      '@rhds/tokens/css/color-context-provider.css.js',
+      '@rhds/tokens/css/color-context-consumer.css.js',
       '@rhds/icons/',
       '@rhds/icons/microns/',
       '@rhds/icons/social/',
@@ -133,6 +145,8 @@ module.exports = function(eleventyConfig) {
       '@lit/context',
       '@lit/reactive-element',
       '@webcomponents/template-shadowroot/template-shadowroot.js',
+      'prism-esm',
+      'prism-esm/',
       'lit',
       'lit-element',
       'lit-html',
@@ -196,14 +210,17 @@ module.exports = function(eleventyConfig) {
       'docs/assets/javascript/elements/uxdot-best-practice.js',
       'docs/assets/javascript/elements/uxdot-search.js',
       'docs/assets/javascript/elements/uxdot-toc.js',
+      // 'docs/assets/javascript/elements/uxdot-pattern.js',
+      // Uses context API need to work around issues
+      // 'docs/assets/javascript/elements/uxdot-example.js',
+      // extends RhTabs so cant DSD yet
+      // 'docs/assets/javascript/elements/uxdot-installation-tabs.js',
       'elements/rh-button/rh-button.js',
       'elements/rh-tag/rh-tag.js',
+      'elements/rh-code-block/rh-code-block.js',
       'elements/rh-icon/rh-icon.js',
       'elements/rh-skip-link/rh-skip-link.js',
       'elements/rh-footer/rh-footer-universal.js',
-      // 'docs/assets/javascript/elements/uxdot-pattern.js',
-      // 'docs/assets/javascript/elements/uxdot-example.js', // Uses context API need to work around issues
-      // 'docs/assets/javascript/elements/uxdot-installation-tabs.js', // extends RhTabs so cant DSD yet
     ],
   });
 

@@ -114,8 +114,7 @@ A quick start guide for installing the local development tools needed for contri
     </rh-code-block>
 
 3. The project uses [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/) and are run via [Web Test Runner](https://modern-web.dev/docs/test-runner/overview/)
-4. For more detailed information about testing and how we write tests please see our [Testing](https://github.com/RedHat-UX/red-hat-design-system/wiki/Testing)
- [Wiki](https://github.com/RedHat-UX/red-hat-design-system/wiki) page.
+4. For more detailed information about testing and how we write tests please see our [Testing](https://github.com/RedHat-UX/red-hat-design-system/wiki/Testing) page on the Wiki and our [introduction to testing RHDS components](/accessibility/qa-testing/#accessibility-tools-for-ci%2Fcd-pipelines) with Chai A11y aXe and a11ySnapshot.
 ## Writing Code
 
 1.  Please read our Developer Guidelines section of our [Wiki](https://github.com/RedHat-UX/red-hat-design-system/wiki)

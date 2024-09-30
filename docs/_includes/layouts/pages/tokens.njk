@@ -1,10 +1,13 @@
 ---
 layout: layouts/base.njk
-importElements:
-  - rh-tag
 ---
 
-<style>
+<script type="module" data-helmet>
+  import '@rhds/elements/rh-tag/rh-tag.js';
+  import '/assets/javascript/elements/uxdot-header.js';
+</script>
+
+<style data-helmet>
   #search-tokens {
     flex-basis: 50%;
     align-items: center;
@@ -57,25 +60,26 @@ importElements:
 
 {% include 'partials/component/masthead.njk' %}
 {% include 'partials/component/sidenav.njk' %}
-<main>
-  <article >
-    <uxdot-header>
-        <h1 id="{{ title | slugify }}" class="page-title">{{ title }}</h1>
-        <form id="search-tokens" action="/tokens/search">
-          <uxdot-search id="search-input"
-                        name="search"
-                        aria-label="Search for tokens"
-                        placeholder="Enter a token name"></uxdot-search>
-        </form>
-    </uxdot-header>
-    
-    <div class="container">
-      {{ content | safe }}
-    </div>
-    
-    {% include "partials/component/back-to-top.njk" %}
-  </article>
-</main>
+
+<rh-surface id="main"
+            role="main"
+            color-palette="lightest">
+  <uxdot-header>
+    <h1 id="{{ title | slugify }}" class="page-title">{{ title }}</h1>
+    <form id="search-tokens" action="/tokens/search">
+      <uxdot-search id="search-input"
+        name="search"
+        aria-label="Search for tokens"
+        placeholder="Enter a token name"></uxdot-search>
+    </form>
+  </uxdot-header>
+
+  <div class="container">
+    {{ content | safe }}
+  </div>
+
+  {% include "partials/component/back-to-top.njk" %}
+</rh-surface>
 
 {% include 'partials/component/footer.njk' %}
 

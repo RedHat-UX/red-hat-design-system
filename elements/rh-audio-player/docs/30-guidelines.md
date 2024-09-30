@@ -8,7 +8,7 @@ Playing and controlling audio are not the only functions of the audio player. Th
 When choosing one size over the other, consider where it is being used and what controls should be visible to users. Some audio player sizes have limited controls due to space constraints and some sizes occupy more space in a layout than others. Also take into account how an audio player changes size when users expand certain features.
 
 <uxdot-example width-adjustment="712px">
-  <img src="{{ '../audio-player-guidelines-sizes.png' | url }}" alt="Image of all audio player sizes with text labels">
+  <img src="../audio-player-guidelines-sizes.png" alt="Image of all audio player sizes with text labels">
 </uxdot-example>
 
 <rh-table>
@@ -40,14 +40,14 @@ When choosing one size over the other, consider where it is being used and what 
 It is acceptable to remove optional elements, but doing so will change the height or width of the audio player.
 
 <uxdot-example width-adjustment="504px">
-  <img src="{{ '../audio-player-removing-elements.png' | url }}" alt="Image of two Full players; one is without an image and the other is without an image and description text">
+  <img src="../audio-player-removing-elements.png" alt="Image of two Full players; one is without an image and the other is without an image and description text">
 </uxdot-example>
 
 ### Mini player 
 In certain edge cases, the Mini player can hide the volume and contextual menu buttons.
 
 <uxdot-example width-adjustment="712px">
-  <img src="{{ '../audio-player-mini-player.png' | url }}" alt="Image of three Mini players; one is the default state, one is missing the menu button, and one is missing both the volume and menu buttons">
+  <img src="../audio-player-mini-player.png" alt="Image of three Mini players; one is the default state, one is missing the menu button, and one is missing both the volume and menu buttons">
 </uxdot-example>
 
 ## Writing content 
@@ -61,7 +61,7 @@ The description and title help add context to an audio clip. The description is 
 </rh-alert>
 
 <uxdot-example width-adjustment="712px">
-  <img src="{{ '../audio-player-description-and-title.png' | url }}" alt="Image of the Full player and two Compact players; one Compact player has both description and title text and the other Compact player has only title text">
+  <img src="../audio-player-description-and-title.png" alt="Image of the Full player and two Compact players; one Compact player has both description and title text and the other Compact player has only title text">
 </uxdot-example>
 
 
@@ -95,7 +95,7 @@ Using too many characters will cause the description and title to scroll outside
 Compact and Mini players can be used inline with titles, headings, and a call to action.
 
 <uxdot-example width-adjustment="712px">
-  <img src="{{ '../audio-player-layout-inline.png' | url }}" alt="Image of Compact and Mini players used with titles, headings, and calls to action">
+  <img src="../audio-player-layout-inline.png" alt="Image of Compact and Mini players used with titles, headings, and calls to action">
 </uxdot-example>
 
 ### Stacking 
@@ -103,7 +103,7 @@ Compact players can be stacked with headings, text, and horizontal rules.
 
 
 <uxdot-example width-adjustment="712px">
-  <img src="{{ '../audio-player-layout-stacking.png' | url }}" alt="Image of the Compact player in a stacked layout with headers, text, and horizontal rules">
+  <img src="../audio-player-layout-stacking.png" alt="Image of the Compact player in a stacked layout with headers, text, and horizontal rules">
 </uxdot-example>
 
 ### Full-width 
@@ -115,11 +115,11 @@ The Compact size can span the width of a browser window and be anchored to the t
 </rh-alert>
 
 <uxdot-example variant="full" no-border>
-  <img src="{{ '../audio-player-layout-full-width-1.png' | url }}" alt="Image of a full-width Compact player in a light theme context">
+  <img src="../audio-player-layout-full-width-1.png" alt="Image of a full-width Compact player in a light theme context">
 </uxdot-example>
 
 <uxdot-example variant="full" no-border>
-  <img src="{{ '../audio-player-layout-full-width-2.png' | url }}" alt="Image of a full-width Compact player in a dark theme context">
+  <img src="../audio-player-layout-full-width-2.png" alt="Image of a full-width Compact player in a dark theme context">
 </uxdot-example>
 
 ## Behavior 
@@ -128,14 +128,14 @@ The Compact size can span the width of a browser window and be anchored to the t
 When a page loads, audio should **never** start playing automatically without receiving input from a user first.
 
 <uxdot-example width-adjustment="712px">
-  <img src="{{ '../audio-player-behavior-autoplay.png' | url }}" alt="Image of the Full player showing audio stopped">
+  <img src="../audio-player-behavior-autoplay.png" alt="Image of the Full player showing audio stopped">
 </uxdot-example>
 
 ### Scrolling text 
 If the description or title is long, it scrolls from left to right while audio is playing.
 
 <uxdot-example width-adjustment="712px">
-  <img src="{{ '../audio-player-behavior-scrolling-text.png' | url }}" alt="Image of the Full player with description and title text cut off and scrolling from left to right as audio plays">
+  <img src="../audio-player-behavior-scrolling-text.png" alt="Image of the Full player with description and title text cut off and scrolling from left to right as audio plays">
 </uxdot-example>
 
 ## Playback 
@@ -145,42 +145,42 @@ To see a list of all keystroke controls, go to the [Accessibility](../accessibil
 Dragging the current time indicator will jump to a specific time. Arrow keys will rewind or advance audio by 15 seconds.
 
 <uxdot-example width-adjustment="712px">
-  <img src="{{ '../audio-player-playback-seek.png' | url }}" alt="Image of the Full player showing how to seek with a cursor or keyboard">
+  <img src="../audio-player-playback-seek.png" alt="Image of the Full player showing how to seek with a cursor or keyboard">
 </uxdot-example>
 
 ### Unmute/mute 
 Audio can be toggled on or off by pressing the unmute/mute button.
 
 <uxdot-example width-adjustment="712px">
-  <img src="{{ '../audio-player-playback-unmute-mute.png' | url }}" alt="Image of the Full player showing how to toggle the unmute/mute button with a cursor or keyboard">
+  <img src="../audio-player-playback-unmute-mute.png" alt="Image of the Full player showing how to toggle the unmute/mute button with a cursor or keyboard">
 </uxdot-example>
 
 ### Volume 
 Dragging the slider will adjust the volume. Arrow keys will increase or decrease the volume by 25% intervals.
 
 <uxdot-example width-adjustment="712px">
-  <img src="{{ '../audio-player-playback-volume.png' | url }}" alt="Image of the Full player showing how to adjust the volume with a cursor or keyboard">
+  <img src="../audio-player-playback-volume.png" alt="Image of the Full player showing how to adjust the volume with a cursor or keyboard">
 </uxdot-example>
 
 ### Speed 
 The rate of speed can be adjusted by clicking the carets or selecting the speed button and choosing a speed in the menu.
 
 <uxdot-example>
-  <img src="{{ '../audio-player-playback-speed.png' | url }}" alt="Image of the Full player showing how to open the speed menu and selecting another speed with a cursor or keyboard">
+  <img src="../audio-player-playback-speed.png" alt="Image of the Full player showing how to open the speed menu and selecting another speed with a cursor or keyboard">
 </uxdot-example>
 
 ### Rewind/forward 
 Audio rewinds or advances by 15 seconds if either button is pressed.
 
 <uxdot-example width-adjustment="712px">
-  <img src="{{ '../audio-player-playback-rewind-forward.png' | url }}" alt="Image of the Full player showing how to toggle the rewind or forward buttons with a cursor or keyboard">
+  <img src="../audio-player-playback-rewind-forward.png" alt="Image of the Full player showing how to toggle the rewind or forward buttons with a cursor or keyboard">
 </uxdot-example>
 
 ### Play/pause 
 Audio playback can be resumed/stopped by pressing the play/pause button.
 
 <uxdot-example width-adjustment="712px">
-  <img src="{{ '../audio-player-playback-play-pause.png' | url }}" alt="Image of the Full player showing how to toggle the play/pause button with a cursor or keyboard">
+  <img src="../audio-player-playback-play-pause.png" alt="Image of the Full player showing how to toggle the play/pause button with a cursor or keyboard">
 </uxdot-example>
 
 ## Responsive design 
@@ -189,19 +189,19 @@ Audio playback can be resumed/stopped by pressing the play/pause button.
 All audio players can be used on large breakpoints. The Mini player can be stretched to fit any grid or container size.
 
 <uxdot-example variant="full" no-border alignment="left" width-adjustment="1000px">
-  <img src="{{ '../audio-player-responsive-breakpoints-desktop.png' | url }}" alt="Image of the Full, Full without image, and Compact players as well as a stretched Mini player on large breakpoints">
+  <img src="../audio-player-responsive-breakpoints-desktop.png" alt="Image of the Full, Full without image, and Compact players as well as a stretched Mini player on large breakpoints">
 </uxdot-example
 
 The Full player will change to the Compact player and the Compact player will change to the Mini player as breakpoints get smaller.
 
 <uxdot-example variant="full" no-border alignment="left" width-adjustment="768px">
-  <img src="{{ '../audio-player-responsive-breakpoints-tablet.png' | url }}" alt="Image of the Full player and a stretched Compact player on large breakpoints">
+  <img src="../audio-player-responsive-breakpoints-tablet.png" alt="Image of the Full player and a stretched Compact player on large breakpoints">
 </uxdot-example>
 
 ### Small breakpoints 
 
 <uxdot-example variant="full" no-border alignment="left" width-adjustment="576px">
-  <img src="{{ '../audio-player-responsive-breakpoints-mobile.png' | url }}" alt="Image of the Full, Full without image, and Compact players as well as a stretched Mini player on small breakpoints">
+  <img src="../audio-player-responsive-breakpoints-mobile.png" alt="Image of the Full, Full without image, and Compact players as well as a stretched Mini player on small breakpoints">
 </uxdot-example>
 
 ## Best practices 
@@ -210,12 +210,12 @@ The Full player will change to the Compact player and the Compact player will ch
 Be careful when using the Full player near too many other elements.
 
 <uxdot-example width-adjustment="712px" danger>
-  <img src="{{ '../audio-player-best-practice-1.png' | url }}" alt="Image of the Full player used near lots of other elements">
+  <img src="../audio-player-best-practice-1.png" alt="Image of the Full player used near lots of other elements">
 </uxdot-example>
 
 ### Contextual menu 
 Do not alter contextual menu theming.
 
 <uxdot-example width-adjustment="712px" danger>
-  <img src="{{ '../audio-player-best-practice-2.png' | url }}" alt="Image of Compact players with contextual menus that are a different theme than the audio player which is incorrect usage">
+  <img src="../audio-player-best-practice-2.png" alt="Image of Compact players with contextual menus that are a different theme than the audio player which is incorrect usage">
 </uxdot-example>

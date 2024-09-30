@@ -27,7 +27,7 @@ section {
   max-height: inherit;
 }
 
-[part="overlay"] {
+[part='overlay'] {
   position: fixed;
   height: 100%;
   width: 100%;
@@ -36,7 +36,7 @@ section {
   background-color: rgba(3, 3, 3, 0.62);
 }
 
-[part="dialog"] {
+[part='dialog'] {
   position: relative;
   margin: 0 auto;
   width: var(--_box-width, calc(100% - var(--rh-space-2xl, 32px)));
@@ -53,27 +53,27 @@ section {
   font-family: inherit;
 }
 
-:host([width]) [part="dialog"],
-:host([variant]) [part="dialog"] {
+:host([width]) [part='dialog'],
+:host([variant]) [part='dialog'] {
   margin-inline: 0;
 }
 
-:host([width="small"]) [part="dialog"],
-:host([variant="small"]) [part="dialog"] {
+:host([width='small']) [part='dialog'],
+:host([variant='small']) [part='dialog'] {
   --_box-width: 35rem;
 }
 
-:host([width="medium"]) [part="dialog"],
-:host([variant="medium"]) [part="dialog"] {
+:host([width='medium']) [part='dialog'],
+:host([variant='medium']) [part='dialog'] {
   --_box-width: 52.5rem;
 }
 
-:host([width="large"]) [part="dialog"],
-:host([variant="large"]) [part="dialog"] {
+:host([width='large']) [part='dialog'],
+:host([variant='large']) [part='dialog'] {
   --_box-width: 70rem;
 }
 
-[part="content"] {
+[part='content'] {
   overflow-y: auto;
   overscroll-behavior: contain;
   max-height: var(--_box-max-height, calc(100vh - var(--rh-space-3xl, 48px)));
@@ -81,7 +81,7 @@ section {
   border-radius: var(--rh-border-radius-default, 3px);
 }
 
-[part="content"] ::slotted([slot="header"]) {
+[part='content'] ::slotted([slot='header']) {
   margin-top: 0 !important;
 }
 
@@ -91,13 +91,13 @@ header {
   background-color: var(--rh-color-surface-lightest, #ffffff);
 }
 
-header ::slotted(:is(h1,h2,h3,h4,h5,h6)[slot="header"]) {
+header ::slotted(:is(h1,h2,h3,h4,h5,h6)[slot='header']) {
   font-size: var(--rh-font-size-heading-sm, 1.5rem);
   font-weight: var(--rh-font-weight-body-text-regular, 400);
-  font-family: "Red Hat Display", RedHatDisplay, Overpass, Helvetica, sans-serif;
+  font-family: 'Red Hat Display', RedHatDisplay, Overpass, Helvetica, sans-serif;
 }
 
-[part="close-button"] {
+[part='close-button'] {
   color: var(--rh-color-icon-subtle, #707070);
   background-color: transparent;
   border: none;
@@ -113,17 +113,17 @@ header ::slotted(:is(h1,h2,h3,h4,h5,h6)[slot="header"]) {
   right: calc(var(--rh-space-xl, 24px) / -3);
 }
 
-[part="close-button"] > svg {
+[part='close-button'] > svg {
   font-size: 16px;
   width: var(--rh-space-lg, 16px);
   aspect-ratio: 1/1;
 }
 
-[part="close-button"]:is(:hover, :focus-within, :focus-visible) svg:is(svg, :hover) {
+[part='close-button']:is(:hover, :focus-within, :focus-visible) svg:is(svg, :hover) {
   fill: var(--rh-color-icon-secondary-on-light, #151515);
 }
 
-:host([position="top"]) #dialog {
+:host([position='top']) #dialog {
   align-self: start;
   margin-block: var(--rh-space-2xl, 32px);
   margin-inline: var(--rh-space-lg, 16px);
@@ -140,35 +140,35 @@ footer {
 
 #rhds-wrapper {
   display: contents;
-  font-family: "Red Hat Text", RedHatText, Overpass, Helvetica, sans-serif;
+  font-family: 'Red Hat Text', RedHatText, Overpass, Helvetica, sans-serif;
 
   --offset: var(--rh-space-md, 8px);
   --offset-top: var(--offset);
   --offset-right: var(--offset);
 }
 
-:host([type="video"]) {
+:host([type='video']) {
   --rh-dialog-close-button-color: var(--rh-color-icon-secondary-on-dark, #ffffff);
 }
 
-:host([type="video"]) [part="close-button"] {
+:host([type='video']) [part='close-button'] {
   top: var(--offset-top);
   right: var(--offset-right);
   padding: var(--rh-space-sm, 6px);
   color: var(--rh-color-icon-secondary-on-dark, #ffffff);
 }
 
-:host([type="video"]) [part="content"] {
+:host([type='video']) [part='content'] {
   overflow: hidden;
 }
 
-:host([type="video"][open]) [part="overlay"] {
+:host([type='video'][open]) [part='overlay'] {
   --_gray-90-rgb: var(--rh-color-gray-90-rgb, 31 31 31);
 
   background-color: rgb(var(--_gray-90-rgb) / var(--rh-opacity-60, 60%));
 }
 
-:host([type="video"][open]) [part="dialog"] {
+:host([type='video'][open]) [part='dialog'] {
   --_aspect-ratio: var(--rh-dialog-video-aspect-ratio, 16/9);
 
   aspect-ratio: var(--_aspect-ratio);
@@ -177,13 +177,13 @@ footer {
   margin: 0;
 }
 
-:host([type="video"]) #rhds-wrapper.mobile [part="close-button"] {
+:host([type='video']) #rhds-wrapper.mobile [part='close-button'] {
   --offset-right: var(--rh-space-sm, 6px);
 }
 
-:host([type="video"]) #container,
-:host([type="video"]) [part="content"],
-:host([type="video"]) ::slotted(:not([slot])) {
+:host([type='video']) #container,
+:host([type='video']) [part='content'],
+:host([type='video']) ::slotted(:not([slot])) {
   aspect-ratio: var(--rh-dialog-video-aspect-ratio, 16/9);
 
   /* account for a 1px descrepency between dialog and container aspect ratio */

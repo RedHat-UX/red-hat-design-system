@@ -5,7 +5,7 @@
 {{ tagName | getElementDescription }}
 
 <uxdot-example width-adjustment="296px">
-  <img src="{{  'breadcrumb-sample-element.svg' | url }}" alt="Three placeholder breadcrumb links and a current page breadcrumb">
+  <img src="breadcrumb-sample-element.svg" alt="Three placeholder breadcrumb links and a current page breadcrumb">
 </uxdot-example>
 
 {% repoStatusList repoStatus=repoStatus %}

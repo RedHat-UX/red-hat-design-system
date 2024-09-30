@@ -1,0 +1,24 @@
+<rh-tile class="accented-tile">
+  <h2 slot="headline"><a href="#top">Link</a></h2>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</rh-tile>
+
+<style>
+rh-tile.accented-tile {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--rh-border-radius-default);
+  &::before {
+    content: '';
+    position: absolute;
+    z-index: 2;
+    display: block;
+    inset-block-start: 0;
+    inset-inline: 0;
+    border-block-start-color: var(--rh-color-brand-red);
+    border-block-start-width: var(--rh-border-width-lg);
+    border-block-start-style: solid;
+    pointer-events: none;
+  }
+}
+</style>

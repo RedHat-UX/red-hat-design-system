@@ -1,35 +1,50 @@
 :host {
+  --_uxdot-header-padding: var(--rh-space-2xl);
+
   display: block;
-  background-color: var(--rh-color-surface-lighter, #f2f2f2);
-  color: var(--rh-color-text-primary-on-light);
   container-type: inline-size;
   container-name: header;
+  background-color: var(--rh-color-surface);
+
+  @container (min-width: 768px) {
+    --_uxdot-header-padding: var(--rh-space-3xl);
+  }
+
+  @container (min-width: 992px) {
+    --_uxdot-header-padding: var(--rh-space-6xl);
+  }
 }
 
 #container {
   display: block;
-  z-index: 2;
   max-width: 1140px;
-  padding-block-start: var(--_uxdot-header-padding, var(--rh-space-2xl));
-  padding-inline: var(--_uxdot-header-padding, var(--rh-space-2xl));
+  padding-block-start: var(--_uxdot-header-padding,);
+  padding-inline: var(--_uxdot-header-padding);
+
+  &.hasSearch {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: 'heading' 'search';
+    gap: var(--rh-space-2xl);
+  }
+
+  &:not(.hasSubnav) {
+    padding-block-end: var(--_uxdot-header-padding);
+  }
+
+  @container header (min-width: 992px) {
+    &.hasSearch {
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas: 'heading search';
+    }
+  }
 }
 
-#container:not(.hasSubnav) {
-  padding-block-end: var(--_uxdot-header-padding, var(--rh-space-2xl));
-}
-
-#container.hasSearch {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-areas: "heading" "search";
-  gap: var(--rh-space-2xl);
-}
-
-[part="heading"] {
+[part='heading'] {
   grid-area: heading;
 }
 
-::slotted([slot="search"]) {
+::slotted([slot='search']) {
   grid-area: search;
   display: flex;
   flex-direction: column;
@@ -41,34 +56,13 @@
   font-size: var(--uxdot-heading-heading-size, var(--rh-font-size-heading-2xl)) !important;
   font-weight: var(--uxdot-heading-font-weight, var(--rh-font-weight-heading-regular)) !important;
   line-height: var(--uxdot-heading-line-height, var(--rh-line-height-heading)) !important;
+  margin: 0 !important;
 }
 
-::slotted([slot="subnav"]) {
+::slotted([slot='subnav']) {
   margin-block-start: var(--rh-space-2xl);
-  inset-inline-start: calc(-1 * var(--rh-space-2xl));
-  position: relative;
-  width: calc(100% + var(--_uxdot-header-padding, var(--rh-space-2xl)) * 2);
-}
 
-@container header (min-width: 768px) {
-  #container {
-    --_uxdot-header-padding: var(--rh-space-3xl);
-  }
-}
-
-@container header (min-width: 992px) {
-  :host {
-    margin-block-end: var(--rh-space-6xl);
-  }
-
-  #container {
-    top: 100px;
-
-    --_uxdot-header-padding: var(--rh-space-6xl);
-  }
-
-  #container.hasSearch {
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: "heading search";
-  }
+  /* take the header padding and minus the default padding (2xl), for mobile it should maximize
+  soace for the subnav, but for larger viewports it will align the first button text with header */
+  padding-inline: calc(var(--_uxdot-header-padding) - var(--rh-space-2xl));
 }

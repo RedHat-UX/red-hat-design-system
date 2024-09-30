@@ -1,35 +1,15 @@
+<rh-card class="example-image-card">
+  <img src="../kitten-900x300.jpeg" slot="image" alt="adorable kitten">
+  <h4 slot="header">Heading, sm</h4>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.
+  <rh-cta slot="footer" href="#">Call to action</rh-cta>
+</rh-card>
+
 <style>
-  .example-image-card::part(header) {
-    padding: 0;
-    margin: 0;
+  .example-image-card {
+    width: 360px;
+    &::part(image) { order: 0; }
+    &::part(header) { order: 1; }
+    &::part(footer) { order: 2; }
   }
 </style>
-
-<uxdot-pattern id="image-card">
-  <rh-card class="example-image-card">
-    <img src="../kitten-900x300.jpeg" slot="header" alt="adorable kitten">
-    <!-- TODO: Needs image slot, so we can fix the heading below -->
-    <!-- <h4 slot="header">Heading, sm</h4> -->
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.
-    <rh-cta slot="footer" href="#">Call to action</rh-cta>
-  </rh-card>
-  <rh-code-block slot="html" actions="copy">
-    <span slot="action-label-copy">Copy to Clipboard</span>
-    <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
-    <script type="text/html"><rh-card class="example-image-card">
-  <img src="../kitten-900x300.jpeg" slot="header" alt="adorable kitten">
-  <h4 slot="header">Heading, sm</h4>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit
-    libero, a pharetra augue.
-  <rh-cta slot="footer" href="#">Call to action</rh-cta>
-</rh-card></script>
-  </rh-code-block>
-  <rh-code-block slot="css" actions="copy">
-    <span slot="action-label-copy">Copy to Clipboard</span>
-    <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
-    <script type="text/css">.example-image-card::part(header) {
-  padding: 0;
-  margin: 0;
-}</script>
-  </rh-code-block>
-</uxdot-pattern>

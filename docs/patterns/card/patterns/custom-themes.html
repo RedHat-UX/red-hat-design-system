@@ -1,40 +1,18 @@
-<style>  
-  .custom-theme-card {
-    --rh-color-border-subtle-on-light: #f56e6e;
-    --rh-color-surface-lightest: #feeded;
-    --rh-color-text-primary-on-light: #5f0000;
-    --rh-color-border-subtle-on-dark: #5e40be;
-    --rh-color-surface-darkest: #3d2785;
-    --rh-color-text-primary-on-dark: #ece6ff;
-  }
+<rh-card class="custom-theme-card">
+  <h2 slot="header">Card title</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit
+    libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id
+    elit. Donec id elit non mi porta gravida at eget metus.</p>
+  <rh-cta slot="footer" href="#">Call to action</rh-cta>
+</rh-card>
 
-  /* demo only */
-  #custom-theming uxdot-pattern[color-palette="darkest"] {
-    --rh-color-surface-darkest: #21134d;
+<style>
+  .custom-theme-card {
+    --rh-color-border-subtle-on-dark: #5e40be;
+    --rh-color-border-subtle-on-light: #f56e6e;
+    --rh-color-surface-darkest: #3d2785;
+    --rh-color-surface-lightest: #feeded;
     --rh-color-text-primary-on-dark: #ece6ff;
+    --rh-color-text-primary-on-light: #5f0000;
   }
 </style>
-
-<div id="custom-theming">
-  <uxdot-pattern allow="lightest, darkest">
-    <rh-card class="custom-theme-card">
-      <h2 slot="header">Card title</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit
-        libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id
-        elit. Donec id elit non mi porta gravida at eget metus.</p>
-      <rh-cta slot="footer" href="#">Call to action</rh-cta>
-    </rh-card>
-    <rh-code-block slot="css" actions="copy">
-      <span slot="action-label-copy">Copy to Clipboard</span>
-      <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
-      <script type="text/css">.custom-theme-card {
-  --rh-color-border-subtle-on-light: #f56e6e;
-  --rh-color-surface-lightest: #feeded;
-  --rh-color-text-primary-on-light: #5f0000;
-  --rh-color-border-subtle-on-dark: #5e40be;
-  --rh-color-surface-darkest: #3d2785;
-  --rh-color-text-primary-on-dark: #ece6ff;
-}</script>
-    </rh-code-block>
-  </uxdot-pattern>
-</div>

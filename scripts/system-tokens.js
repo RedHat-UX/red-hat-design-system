@@ -1,17 +1,15 @@
-import { readFile, writeFile, stat } from 'node:fs/promises';
+import { glob, readFile, writeFile, stat } from 'node:fs/promises';
 import { tokens } from '@rhds/tokens/meta.js';
 
-import { dirname } from 'node:path';
+import { dirname, join } from 'node:path';
 import { parse } from 'postcss';
-import { glob } from 'glob';
 import valueParser from 'postcss-value-parser';
 
 /**
- * @typedef {object} Token
- * @property {string} name token name
- * @property {string} $description token description
- * @property {string} $type token value type
- * @property {string|unknown} $value token value
+ * name token name
+ * $description token description
+ * $type token value type
+ * $value token value
  */
 
 /* eslint-disable no-console */
@@ -105,10 +103,11 @@ async function getSystemTokensForCEDecl(decl, modPath) {
   const dir = dirname(modPath);
   if (decl.tagName) {
     group('files:');
-    for (const cssFilePath of await glob([
-      `${dir}/${decl.tagName}.css`,
-      `${dir}/${decl.tagName}-lightdom.css`,
-    ], { absolute: true })) {
+    for await (const rel of glob([
+      `elements/${dir}/${decl.tagName}.css`,
+      `elements/${dir}/${decl.tagName}-lightdom.css`,
+    ])) {
+      const cssFilePath = join(process.cwd(), rel);
       log(cssFilePath);
       if (await exists(cssFilePath)) {
         const css = await readFile(cssFilePath, 'utf8');
@@ -139,7 +138,6 @@ function tokensToCEMCssProperties(tokens) {
 /** file to modify */
 const manifestUrl = new URL('../custom-elements.json', import.meta.url);
 
-/** @type {import('custom-elements-manifest').Package} */
 const manifest = JSON.parse(await readFile(manifestUrl, 'utf8'));
 
 for (const mod of manifest.modules) {

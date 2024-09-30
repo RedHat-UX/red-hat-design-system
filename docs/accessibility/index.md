@@ -9,11 +9,11 @@ importElements:
 ---
 
 <style>
-    rh-blockquote {
-        display: block;
-        margin-block: 2em !important;
-        max-width: 36em;
-    }
+  rh-blockquote {
+    display: block;
+    margin-block: 2rem;
+    margin-inline-start: 2.5rem;
+  }
 </style>
 
 ## Overview
@@ -22,7 +22,7 @@ importElements:
 
 The World Health Organization estimates that one-sixth of all people worldwide experience significant disabilities. Most web-related disabilities and limitations affect the eyes, ears, hands, and brain. These can be categorized several different ways: obvious, hidden, permanent, recurring, temporary, situational, etc.
 
-Permanent and recurring disabilities like blindness or paralysis often may be readily apparent to others. But some disabilities aren’t so easily identified, such as deafness, neurodivergence, reading disorders, epilepsy, or migraines.
+Permanent and recurring disabilities like blindness or paralysis often may be readily apparent to others. But some disabilities aren’t so easily identified, such as deafness, <abbr title="attention deficit hyperactivity disorder">ADHD</abbr>, reading disorders, epilepsy, or migraines.
 
 Some disabilities are temporary, like those stemming from injuries, illnesses, surgical recovery, and concussions. And other limitations can be situational. Maybe you’re in a room that’s too noisy for you to hear speech clearly. Perhaps it’s a sunny day, and you can’t distinguish low-contrast colors on your phone screen. Or your computer’s mouse is broken, and you need to navigate via your keyboard.
 

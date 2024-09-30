@@ -1,172 +1,150 @@
 rh-table {
-  --_row-border:
-    var(
-        --rh-table-row-border,
-        var(--rh-border-width-sm, 1px)
-        solid
-        var(--rh-color-border-subtle-on-light, #c7c7c7)
-      );
-  --_row-background-hover-color:
-    var(
-        --rh-table-row-background-hover-color,
-        rgb(
-          var(--rh-color-gray-20-rgb, 224 224 224)
-          / var(--rh-opacity-40, 40%)
-        )
-      );
-  --_column-background-hover-color:
-    var(
-        --rh-table-column-background-hover-color,
-        rgb(
-          var(--rh-color-blue-50-rgb, 0 102 204)
-          / var(--rh-opacity-10, 10%)
-        )
-      );
-}
+  container: host / inline-size;
 
-rh-table table {
-  min-width: 100%;
-  margin: 0 auto;
-  table-layout: fixed;
-  border: 0;
-  border-collapse: collapse;
-}
-
-rh-table thead th {
-  position: relative;
-  padding-top: var(--rh-space-lg, 16px);
-  padding-bottom: var(--rh-space-lg, 16px);
-  text-align: left;
-  font-weight: var(--rh-font-weight-heading-bold, 700);
-}
-
-rh-table tr {
-  border-bottom: var(--_row-border);
-}
-
-rh-table tr:hover {
-  background: var(--_row-background-hover-color);
-}
-
-rh-table tr > * {
-  border: none;
-}
-
-rh-table :is(tr, col) {
-  transition: background 0.3s ease-out;
-}
-
-rh-table a {
-  color: var(--rh-color-interactive-blue-darker, #0066cc);
-  text-decoration: none;
-}
-
-rh-table a:hover {
-  color: var(--rh-color-interactive-blue-darkest, #003366);
-  text-decoration: underline;
-}
-
-rh-table caption {
-  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-  font-size: var(--rh-font-size-body-text-lg, 1.125rem);
-  font-weight: var(--rh-font-weight-heading-bold, 700);
-  line-height: var(--rh-line-height-body-text, 1.5);
-  margin-bottom: var(--rh-space-xl, 24px);
-  text-align: center;
-  font-style: normal;
-}
-
-rh-table :is(th, td) {
-  padding-right: var(--rh-space-lg, 16px);
-  padding-left: var(--rh-space-lg, 16px);
-}
-
-rh-table td {
-  padding-top: var(--rh-space-xl, 24px);
-  padding-bottom: var(--rh-space-xl, 24px);
-}
-
-rh-table :is(col.active) {
-  background: var(--_column-background-hover-color);
-}
-
-@media (max-width: 768px) {
-  rh-table table {
-    display: grid;
+  & thead {
+    & th {
+      position: relative;
+      padding-block: var(--rh-space-lg, 16px);
+      text-align: start;
+      font-weight: var(--rh-font-weight-heading-bold, 700);
+    }
   }
 
-  rh-table thead {
-    display: none;
-    visibility: hidden;
+  & table {
+    min-width: 100%;
+    margin: 0 auto;
+    table-layout: fixed;
+    border: 0;
+    border-collapse: collapse;
   }
 
-  rh-table tbody {
-    display: block;
+  & :is(tr, col) {
+    transition: background 0.3s ease-out;
   }
 
-  rh-table :not(thead) ~ tbody tr {
-    display: grid;
-    grid-auto-columns: auto;
-    grid-auto-flow: column;
+  & :is(th, td) {
+    padding-inline: var(--rh-space-lg, 16px);
   }
 
-  rh-table thead ~ tbody tr {
-    border: none;
-    display: grid;
-    grid-template-columns: 1fr;
-    height: auto;
-    grid-auto-columns: max-content;
-    grid-auto-flow: unset;
+  & :is(col.active) {
+    background: var(--_column-background-hover-color);
   }
 
-  rh-table thead ~ tbody tr:first-child {
-    border-top: var(--_row-border);
+  & tr {
+    border-block-end: var(--_row-border);
+
+    &:hover {
+      background: var(--_row-background-hover-color);
+    }
+
+    & > * {
+      border: none;
+    }
   }
 
-  rh-table thead ~ tbody tr:last-child {
-    border-bottom: var(--_row-border);
+  & td {
+    padding-block: var(--rh-space-xl, 24px);
   }
 
-  rh-table thead ~ tbody tr:nth-child(even) {
-    background: var(--_row-background-hover-color);
+  & a {
+    color: var(--rh-color-interactive-primary-default);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--rh-color-interactive-primary-hover);
+      text-decoration: underline;
+    }
   }
 
-  rh-table thead ~ tbody tr:hover {
-    background: var(---_column-background-hover-color);
-  }
-
-  rh-table thead ~ tbody tr > * {
-    padding: var(--rh-space-lg, 16px);
-  }
-
-  rh-table thead ~ tbody tr th {
-    text-align: center;
-  }
-
-  rh-table thead ~ tbody tr :is(th, td) {
-    padding-top: calc(var(--rh-space-md, 8px) + var(--rh-space-xs, 4px));
-    padding-bottom: calc(var(--rh-space-md, 8px) + var(--rh-space-xs, 4px));
-    display: grid;
-    grid-column-gap: var(--rh-space-lg, 16px);
-    grid-template-columns: 1fr minmax(0, 1.5fr);
-    align-items: start;
-    white-space: normal;
-    word-wrap: break-word;
-    text-align: left;
-  }
-
-  rh-table thead ~ tbody tr :is(td,th):before {
+  & caption {
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+    font-size: var(--rh-font-size-body-text-lg, 1.125rem);
     font-weight: var(--rh-font-weight-heading-bold, 700);
-    text-align: left;
-    content: attr(data-label);
-    display: inline-block;
+    line-height: var(--rh-line-height-body-text, 1.5);
+    margin-block-end: var(--rh-space-xl, 24px);
+    text-align: center;
+    font-style: normal;
   }
+}
 
-  rh-table thead ~ tbody tr:first-child td:first-child {
-    padding-top: var(--rh-space-lg, 16px);
-  }
+@container host (max-width: 768px) {
+  table {
+    display: grid;
 
-  rh-table thead ~ tbody tr:last-child td:last-child {
-    padding-bottom: var(--rh-space-lg, 16px);
+    & *:not(thead) + tbody {
+      & tr {
+        display: grid;
+        grid-auto-columns: auto;
+        grid-auto-flow: column;
+      }
+    }
+
+    & thead {
+      display: none;
+      visibility: hidden;
+
+      & ~ tbody {
+        display: block;
+
+        & tr {
+          border: none;
+          display: grid;
+          grid-template-columns: 1fr;
+          height: auto;
+          grid-auto-columns: max-content;
+          grid-auto-flow: unset;
+
+          &:first-child {
+            border-block-start: var(--_row-border);
+
+            & td:first-child {
+              padding-block-start: var(--rh-space-lg, 16px);
+            }
+
+            & td:last-child {
+              padding-block-end: var(--rh-space-lg, 16px);
+            }
+          }
+
+          &:nth-child(even) {
+            background: var(--_row-background-hover-color);
+          }
+
+          &:last-child {
+            border-block-end: var(--_row-border);
+          }
+
+          &:hover {
+            background: var(---_column-background-hover-color);
+          }
+
+          & > * {
+            padding: var(--rh-space-lg, 16px);
+          }
+
+          & :is(th, td) {
+            padding-block: calc(var(--rh-space-md, 8px) + var(--rh-space-xs, 4px));
+            display: grid;
+            grid-column-gap: var(--rh-space-lg, 16px);
+            grid-template-columns: 1fr minmax(0, 1.5fr);
+            align-items: start;
+            white-space: normal;
+            word-wrap: break-word;
+            text-align: start;
+          }
+
+          & :is(td,th):before {
+            font-weight: var(--rh-font-weight-heading-bold, 700);
+            text-align: start;
+            content: attr(data-label);
+            display: inline-block;
+          }
+
+          & th {
+            text-align: center;
+          }
+        }
+      }
+    }
   }
 }

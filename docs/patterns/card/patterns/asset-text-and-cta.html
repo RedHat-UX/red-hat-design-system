@@ -1,0 +1,34 @@
+<rh-card class="example-asset-text-and-cta">
+  <svg slot="header" width="296" height="171">
+    <rect fill="var(--rh-color-border-interactive)"
+          fill-opacity="0.1"
+          stroke-dasharray="4"
+          stroke-width="1"
+          stroke="var(--rh-color-border-interactive)"
+          width="296"
+          height="171"/>
+  </svg>
+  <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.
+    Nullam elifend elit sed est egestast, a solicitudin mauris
+    tincidunt</p>
+  <rh-cta slot="footer"
+          href="#">Call to action</rh-cta>
+</rh-card>
+
+<style>
+  .example-asset-text-and-cta {
+    width: 360px;
+    --rh-card-header-background-on-light:
+      var(--rh-color-surface-lighter,
+        var(--rh-color-gray-10,#f2f2f2));
+    --rh-card-header-background-on-dark:
+      var(--rh-color-surface-dark,
+        var(--rh-color-gray-70, #383838));
+
+    &::part(header) {
+      margin: 0;
+      padding-block-start: var(--rh-space-2xl, 32px);
+      padding-inline: var(--rh-space-2xl, 32px);
+    }
+  }
+</style>

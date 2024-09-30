@@ -1,16 +1,21 @@
 ---
 layout: layouts/base.njk
-importElements:
-  - rh-cta
-  - rh-footer
-  - rh-tag
 ---
+
+<script type="module" data-helmet>
+  import '@rhds/elements/rh-surface/rh-surface.js';
+  import '@rhds/elements/rh-cta/rh-cta.js';
+  import '@rhds/elements/rh-footer/rh-footer.js';
+  import '@rhds/elements/rh-tag/rh-tag.js';
+</script>
 
 {% include 'partials/component/masthead.njk' %}
 {% include 'partials/component/sidenav.njk' %}
-<main id="main">
+<rh-surface id="main"
+            role="main"
+            color-palette="lightest">
   {{ content | safe }}
   {% include "partials/component/back-to-top.njk" %}
-</main>
+</rh-surface>
 {% include 'partials/component/footer.njk' %}
 

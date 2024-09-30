@@ -1,4 +1,4 @@
-<script type="module" src="{{ '/assets/javascript/elements/uxdot-best-practice.js' | url }}"></script>
+<script type="module" src="/assets/javascript/elements/uxdot-best-practice.js"></script>
 
 <style>
   .grid {
@@ -27,12 +27,12 @@ Users expect to see the back to top button in the bottom right corner. It will o
 On mobile, the element should be positioned 24px from the bottom and from the right of the screen. On screens wider than 768px, it should appear 48px from the bottom and from the right.
 
 <uxdot-example variant="full" width-adjustment="1000px" no-border alignment="left">
-  <img src="{{ '../back-to-top-placement-desktop.jpg' | url }}" alt="Back to top buttons in the bottom right corner of a desktop-sized screen" slot="image">
+  <img src="../back-to-top-placement-desktop.jpg" alt="Back to top buttons in the bottom right corner of a desktop-sized screen" slot="image">
 </uxdot-example>
 
 
 <uxdot-example variant="full" width-adjustment="320px" no-border alignment="left">
-  <img src="{{ '../back-to-top-placement-phone.jpg' | url }}" alt="Back to top buttons in the bottom right corner of a phone-sized screen" slot="image">  
+  <img src="../back-to-top-placement-phone.jpg" alt="Back to top buttons in the bottom right corner of a phone-sized screen" slot="image">  
 </uxdot-example>
 
 ## Behavior

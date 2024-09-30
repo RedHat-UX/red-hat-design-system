@@ -1,33 +1,15 @@
+import type { TemplateResult } from 'lit';
+
 import { expect, fixture, html, nextFrame, aTimeout } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
-import { RhSurface } from '../rh-surface.js';
 
-import { LitElement, type TemplateResult } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
+import { RhSurface } from '@rhds/elements/rh-surface/rh-surface.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../../lib/context/color/consumer.js';
-import { colorContextProvider, type ColorPalette } from '../../../lib/context/color/provider.js';
-
-@customElement('test-context-consumer')
-export class ContextConsumer extends LitElement {
-  @colorContextConsumer() on?: ColorTheme;
-}
-
-@customElement('test-context-consumer-provider')
-export class ContextConsumerProvider extends LitElement {
-  @colorContextConsumer() on?: ColorTheme;
-  @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
-}
-
-@customElement('test-context-provider-consumer')
-export class ContextProviderConsumer extends LitElement {
-  @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
-
-  @colorContextConsumer() on?: ColorTheme;
-}
+import {
+  ContextConsumer,
+  ContextConsumerProvider,
+  ContextProviderConsumer,
+} from './elements.js';
 
 declare global {
   interface HTMLElementTagNameMap {
@@ -40,6 +22,8 @@ declare global {
 describe('<rh-surface>', function() {
   describe('simply instantiating', function() {
     let element: RhSurface;
+    let consumer: ContextConsumer;
+    const updateComplete = () => Promise.all([element.updateComplete, consumer?.updateComplete]);
     beforeEach(async function() {
       element = await createFixture<RhSurface>(html`<rh-surface></rh-surface>`);
     });
@@ -51,17 +35,18 @@ describe('<rh-surface>', function() {
           .to.be.an.instanceOf(RhSurface);
     });
     describe('setting darkest color palette', function() {
-      beforeEach(async function() {
+      beforeEach(function() {
         element.colorPalette = 'darkest';
-        await element.updateComplete;
       });
+      beforeEach(updateComplete);
       describe('then imperatively adding children', function() {
-        beforeEach(async function() {
-          element.append(document.createElement('test-context-consumer'));
-          await element.updateComplete;
+        beforeEach(function() {
+          consumer = document.createElement('test-context-consumer');
+          element.append(consumer);
         });
+        beforeEach(updateComplete);
         it('should notify the children', function() {
-          expect(element.querySelector('test-context-consumer')?.on).to.equal('dark');
+          expect(consumer.on).to.equal('dark');
         });
       });
     });

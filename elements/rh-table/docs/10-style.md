@@ -4,7 +4,7 @@ Use a table to organize and display data efficiently in a grid with columns and 
 
 <figure>
   <uxdot-example width-adjustment="872px">
-    <img src="{{ '../table-anatomy.png' | url }}" alt="Image of table with numbers next to various parts">
+    <img src="../table-anatomy.png" alt="Image of table with numbers next to various parts">
   </uxdot-example>
   <figcaption>
     <ol>
@@ -25,7 +25,7 @@ Use a table to organize and display data efficiently in a grid with columns and 
 Column and row titles should be a few words that describe the data in that column or row.
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../table-column-row-titles.png' | url }}" alt="Image of various tables with no titles, column titles, row titles, and both">
+  <img src="../table-column-row-titles.png" alt="Image of various tables with no titles, column titles, row titles, and both">
 </uxdot-example>
 
 
@@ -35,7 +35,7 @@ The table title should make it clear to a user what the data is and what purpose
 
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../table-title-caption.png' | url }}" alt="Image of table with a title on top and a caption underneath">
+  <img src="../table-title-caption.png" alt="Image of table with a title on top and a caption underneath">
 </uxdot-example>
 
 
@@ -46,14 +46,14 @@ A table is available in both light and dark themes.
 ### Light theme
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../table-light-theme.png' | url }}" alt="Light theme table with black text on white surface">
+  <img src="../table-light-theme.png" alt="Light theme table with black text on white surface">
 </uxdot-example>
 
 
 ### Dark theme
 
 <uxdot-example color-palette="darkest" width-adjustment="872px">
-  <img src="{{ '../table-dark-theme.png' | url }}" alt="Dark theme table with white text on black surface">
+  <img src="../table-dark-theme.png" alt="Dark theme table with white text on black surface">
 </uxdot-example>
 
 
@@ -62,7 +62,7 @@ A table is available in both light and dark themes.
 A scrollbar is visible if content exceeds the width or height of a table. Content can scroll horizontally, vertically, or both.
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../table-scrolling.png' | url }}" alt="Image of various tables with a scrollbar on the right, on the bottom, and both">
+  <img src="../table-scrolling.png" alt="Image of various tables with a scrollbar on the right, on the bottom, and both">
 </uxdot-example>
 
 
@@ -71,7 +71,7 @@ A scrollbar is visible if content exceeds the width or height of a table. Conten
 A table has equal spacing within columns, rows, and in between divider lines. The same spacing is also maintained across large and small viewport sizes.
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../table-space.png' | url }}" alt="Image of table with spacers in between elements">
+  <img src="../table-space.png" alt="Image of table with spacers in between elements">
 </uxdot-example>
 
 <rh-table>
@@ -93,19 +93,19 @@ On hover, cell rows and columns are highlighted with a semitransparent backgroun
 In light theme, a row is highlighted in light gray on white surface colors and white on light gray surface colors. The column highlight remains light blue.
 
 <uxdot-example  width-adjustment="872px">
-  <img src="{{ '../table-interaction-state-hover.png' | url }}" alt="Light theme tables with hover effects on a white surface">
+  <img src="../table-interaction-state-hover.png" alt="Light theme tables with hover effects on a white surface">
 </uxdot-example>
 
 
 <!--change bg to light gray -->
 <uxdot-example color-palette="lighter" width-adjustment="872px">
-  <img src="{{ '../table-interaction-state-hover-light-gray-surface.png' | url }}" alt="Light theme tables with hover effects on a light gray surface">
+  <img src="../table-interaction-state-hover-light-gray-surface.png" alt="Light theme tables with hover effects on a light gray surface">
 </uxdot-example>
 
 On all dark theme surface colors, the row highlight is white, and the column highlight uses a dark blue.
 
 <uxdot-example color-palette="darkest" width-adjustment="872px">
-  <img src="{{ '../table-interaction-state-hover-dark.png' | url }}" alt="Dark theme tables with hover effects on a black surface">
+  <img src="../table-interaction-state-hover-dark.png" alt="Dark theme tables with hover effects on a black surface">
 </uxdot-example>
 
 
@@ -117,9 +117,9 @@ On all dark theme surface colors, the row highlight is white, and the column hig
 </rh-alert>
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../table-interaction-state-focus.png' | url }}" alt="Light theme table cell in focus state">
+  <img src="../table-interaction-state-focus.png" alt="Light theme table cell in focus state">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="872px">
-  <img src="{{ '../table-interaction-state-focus-dark.png' | url }}" alt="Dark theme table cell in focus state">
+  <img src="../table-interaction-state-focus-dark.png" alt="Dark theme table cell in focus state">
 </uxdot-example>

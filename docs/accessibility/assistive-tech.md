@@ -2,7 +2,7 @@
 title: Assistive technologies
 tags:
   - accessibility
-order: 55
+order: 40
 ---
 
 ## What are assistive technologies?
@@ -40,7 +40,7 @@ Screen readers provide audio and/or braille descriptions of on-screen elements a
 
 Screen readers are often packaged with operating systems: macOS and iOS devices include VoiceOver, Windows includes Narrator, and Android includes TalkBack. Unix-like systems using GNOME come packaged with the Orca screen reader. Windows users can also install popular third-party screen readers, like JAWS and NVDA.
 
-Visit our [Accessibility QA and testing page](https://ux.redhat.com/accessibility/qa-testing/#screen-readers) for information on web browser and screen reader combinations.
+Visit our [Screen reader basics page](/accessibility/screen-readers/) for guidance on testing with screen readers for all platforms.
 
 #### Screen magnifiers
 

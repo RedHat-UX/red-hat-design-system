@@ -1,6 +1,7 @@
 @layer
   reset,
   fonts,
+  tokens,
   typography,
   base,
   grid,
@@ -13,17 +14,18 @@
   page,
   overrides;
 
-@import url("not-defined.css") layer(not-defined);
-@import url("reset.css") layer(reset);
-@import url("fonts.css") layer(fonts);
-@import url("typography.css") layer(typography);
-@import url("grid.css") layer(grid);
-@import url("lightdom.css") layer(lightdom);
-@import url("third-party/prism-rhds.css") layer(third-party);
+@import url('not-defined.css') layer(not-defined);
+@import url('reset.css') layer(reset);
+@import url('fonts.css') layer(fonts);
+@import url('/assets/packages/@rhds/tokens/css/global.css') layer(tokens);
+@import url('typography.css') layer(typography);
+@import url('grid.css') layer(grid);
+@import url('lightdom.css') layer(lightdom);
+@import url('third-party/prism-rhds.css') layer(third-party);
 
 @layer base {
   body {
-    color: var(--rh-color-text-primary-on-light);
+    color: var(--rh-color-text-primary);
   }
 
   :where(p, ul, ol, dl) {
@@ -35,22 +37,19 @@
   }
 
   a {
-    color: var(--rh-color-interactive-blue-darker);
+    color: var(--rh-color-interactive-primary-default);
   }
 
   a:hover {
-    color: var(--rh-color-interactive-blue-darkest);
+    color: var(--rh-color-interactive-primary-hover);
   }
 
   a:visited {
-    color: var(--rh-color-interactive-purple-darker);
+    color: var(--rh-color-interactive-primary-visited-default);
   }
 
   hr {
-    border-block-start:
-      var(--rh-border-width-sm)
-      solid
-      var(--rh-color-border-subtle-on-light);
+    border-block-start: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
     border-inline: none;
     border-block-end: none;
     margin-block-end: var(--rh-space-2xl);
@@ -61,7 +60,7 @@
   }
 
   figcaption {
-    color: var(--rh-color-text-secondary-on-light);
+    color: var(--rh-color-text-secondary);
   }
 
   .visually-hidden {
@@ -90,23 +89,28 @@
   body {
     display: grid;
     grid-template-rows: max-content 1fr max-content;
-    grid-template-areas: "header" "main" "footer";
+    grid-template-areas: 'header' 'main' 'footer';
     position: relative;
     min-height: 100dvh;
   }
 
   body:has(uxdot-sidenav:not(:defined)) {
     grid-template-rows: max-content max-content 1fr max-content;
-    grid-template-areas: "header" "nav" "main" "footer";
+    grid-template-areas: 'header' 'nav' 'main' 'footer';
   }
 
-  main {
+  /* stylelint-disable rhds/token-values */
+  #main {
     grid-area: main;
-    border-inline-start: var(--rh-border-width-sm) solid var(--rh-color-border-subtle-on-light);
+    border-inline-start:
+      var(--rh-border-width-sm)
+      solid
+      var(--rh-color-border-subtle, var(--rh-color-border-subtle-on-light));
     container-type: inline-size;
     container-name: main;
     padding-block-start: var(--uxdot-masthead-max-height);
   }
+  /* stylelint-enable rhds/token-values */
 
   .container {
     padding-inline: var(--rh-space-lg);
@@ -130,17 +134,17 @@
       grid-template-rows: max-content 1fr max-content;
       grid-template-columns: minmax(300px, 320px) max-content 1fr;
       grid-template-areas:
-        "header header header"
-        "nav main main"
-        "nav footer footer";
+        'header header header'
+        'nav main main'
+        'nav footer footer';
     }
 
     body:has(uxdot-sidenav:not(:defined)) {
       grid-template-rows: max-content 1fr max-content;
       grid-template-areas:
-        "header header header"
-        "nav main main"
-        "nav footer footer";
+        'header header header'
+        'nav main main'
+        'nav footer footer';
     }
   }
 
@@ -202,6 +206,10 @@
     margin-block-start: var(--rh-space-2xl);
   }
 
+  rh-cta + uxdot-example {
+    margin-block-start: var(--rh-space-2xl);
+  }
+
   rh-table {
     margin-block: var(--rh-space-3xl);
   }
@@ -230,9 +238,9 @@
    * KBD and code pattern
   **/
 
-  :where(code) {
+  :where(code:not([class^='language-'])) {
     padding-inline: var(--rh-space-xs);
-    background: var(--rh-color-surface-light);
+    background: oklch(from var(--rh-color-surface) calc(l - 0.05) c h);
     border-radius: var(--rh-border-radius-default);
     font-size: var(--rh-font-size-code-md);
     font-weight: var(--rh-font-weight-code-regular);
@@ -248,7 +256,7 @@
   }
 
   :where(kbd) {
-    --_uxdot-kbd-color-border: var(--rh-color-border-subtle-on-light);
+    --_uxdot-kbd-color-border: var(--rh-color-border-subtle);
 
     background-color: var(--rh-color-surface-lightest);
     border-radius: var(--rh-border-radius-default);
@@ -299,6 +307,12 @@
     @container main (min-width: 992px) {
       top: -118px; /* masthead (72px) + subnav (56px) - header desktop (246px) */
     }
+  }
+
+  #edit-this-page {
+    border-block-start: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
+    margin-block-start: var(--rh-space-6xl);
+    padding-block-start: var(--rh-space-lg);
   }
 }
 

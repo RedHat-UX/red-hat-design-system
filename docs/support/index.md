@@ -5,12 +5,12 @@ hasToc: false
 tags:
   - support
 importElements:
-  - rh-tile  
+  - rh-tile
   - rh-tag
 ---
 
-<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css' | url }}">
-<style>
+<link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
+<style data-helmet>
   #contact-grid h3 {
     display: flex;
     gap: var(--rh-space-lg, 16px);

@@ -2,7 +2,6 @@
 # this file generates single-page "fullscreen" demos
 # e.g. ux.redhat.com/elements/tile/demo/compact/index.html
 templateEngineOverride: njk
-layout: layouts/demo.njk
 permalink: '{{ demo.permalink }}'
 pagination:
   data: demos
@@ -11,3 +10,40 @@ pagination:
 tags:
   - demo
 ---
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
+    <title>{{ demo.title or demo.tagName }} | Red Hat Design System</title>
+
+    <link rel="preconnect" href="https://ga.jspm.io">
+
+    <link rel="stylesheet" href="/styles/demo/styles.css" media="all">
+
+    <script type="importmap">{{ importMap | dump(2) | safe }}</script>
+    <script type="module">
+      // dsd polyfill needs to happen before hydration attempts
+      // lit-element-hydrate-support needs to be included before lit is loaded
+      import '/assets/javascript/dsd-polyfill.js';
+      import '@lit-labs/ssr-client/lit-element-hydrate-support.js';
+      import 'element-internals-polyfill';
+      // include these, which are often internal to elements, to avoid SSR defer-hydration bugs
+      import '@rhds/elements/rh-icon/rh-icon.js';
+      import '@rhds/elements/rh-surface/rh-surface.js';
+      // load up the demo and picker
+      import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+      import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
+    </script>
+
+    <script async src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
+  </head>
+  <body unresolved>{% if demo.filePath %}
+    <main>
+      {%- include demo.filePath -%}
+    </main>{%- else -%}
+    <p>No Demo. <a href="https://github.com/redhat-ux/red-hat-design-system/issues/new">Open an issue!</a></p>{%- endif -%}
+  </body>
+</html>
+

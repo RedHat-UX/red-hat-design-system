@@ -9,10 +9,8 @@
 
   /* WARNING: properties containing `__`are deprecated and will be removed */
   --_floating-arrow-size:
-    var(
-        --rh-tooltip-arrow-size,
-        var(--rh-tooltip__arrow--Width, 11px)
-      );
+    var(--rh-tooltip-arrow-size,
+      var(--rh-tooltip__arrow--Width, 11px));
 }
 
 #tooltip,
@@ -40,44 +38,27 @@
 
   /* WARNING: properties containing `__`are deprecated and will be removed */
   padding:
-    var(
-        --rh-tooltip-content-padding-block-start,
-        var(--rh-tooltip__content--PaddingTop, var(--rh-space-lg, 16px))
-      )
-    var(
-        --rh-tooltip-content-padding-inline-end,
-        var(--rh-tooltip__content--PaddingRight, var(--rh-space-lg, 16px))
-      )
-    var(
-        --rh-tooltip-content-padding-block-end,
-        var(--rh-tooltip__content--PaddingBottom, var(--rh-space-lg, 16px))
-      )
-    var(
-        --rh-tooltip-content-padding-inline-start,
-        var(--rh-tooltip__content--PaddingLeft, var(--rh-space-lg, 16px))
-      );
+    var(--rh-tooltip-content-padding-block-start,
+      var(--rh-tooltip__content--PaddingTop, var(--rh-space-lg, 16px)))
+    var(--rh-tooltip-content-padding-inline-end,
+      var(--rh-tooltip__content--PaddingRight, var(--rh-space-lg, 16px)))
+    var(--rh-tooltip-content-padding-block-end,
+      var(--rh-tooltip__content--PaddingBottom, var(--rh-space-lg, 16px)))
+    var(--rh-tooltip-content-padding-inline-start,
+      var(--rh-tooltip__content--PaddingLeft, var(--rh-space-lg, 16px)));
 
   /* WARNING: properties containing `__`are deprecated and will be removed */
   font-size:
-    var(
-        --rh-tooltip-content-font-size,
-        var(--rh-tooltip__content--FontSize, var(--rh-font-size-body-text-sm, 0.875rem))
-      );
+    var(--rh-tooltip-content-font-size,
+      var(--rh-tooltip__content--FontSize, var(--rh-font-size-body-text-sm, 0.875rem)));
 
   /* WARNING: properties containing `__`are deprecated and will be removed */
   color:
-    var(
-        --rh-tooltip-content-color,
-        var(--rh-tooltip__content--Color, var(--rh-color-text-primary-on-dark, #ffffff))
-      );
+    var(--rh-tooltip-content-color,
+      var(--rh-tooltip__content--Color, var(--rh-color-text-primary-on-dark, #ffffff)));
   background-color:
-    var(
-        --rh-tooltip-content-background-color,
-        var(
-          --rh-tooltip__content--BackgroundColor,
-          var(--rh-color-surface-darkest, #151515)
-        )
-      );
+    var(--rh-tooltip-content-background-color,
+      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515)));
 }
 
 .initialized #tooltip {
@@ -86,16 +67,14 @@
 
 #tooltip:after {
   display: block;
-  content: "";
+  content: '';
   rotate: 45deg;
   width: var(--_floating-arrow-size);
   height: var(--_floating-arrow-size);
   will-change: left top right bottom;
   background-color:
-    var(
-        --rh-tooltip-content-background-color,
-        var(--rh-color-surface-darkest, #151515)
-      );
+    var(--rh-tooltip-content-background-color,
+      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515)));
 }
 
 .c {
@@ -130,9 +109,9 @@
 .right.end #tooltip:after { inset-block-end: var(--_floating-arrow-size); }
 .bottom.end #tooltip:after { inset-inline-end: var(--_floating-arrow-size); }
 
-:host([position="left"]),
-:host([position="right"]) {
-  --_text-alignment: "start";
+:host([position='left']),
+:host([position='right']) {
+  --_text-alignment: 'start';
 }
 
 .dark {

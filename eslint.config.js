@@ -26,6 +26,8 @@ export default tseslint.config(
       'docs/core',
       'docs/components',
       'docs/assets/playgrounds',
+      'docs/assets/javascript/elements/*.js.map',
+      'docs/assets/javascript/elements/*.d.ts',
       'docs/assets/javascript/elements/*.js',
       'node_modules',
 
@@ -45,6 +47,13 @@ export default tseslint.config(
       },
     },
   },
+  {
+    name: 'local/docs/overrides',
+    files: ['docs/theming/code-samples/*.*'],
+    rules: {
+      '@stylistic/no-multi-spaces': ['off'],
+    },
+  }
 );
 
 

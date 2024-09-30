@@ -8,7 +8,7 @@
   #}
   {%- for link in sideNavDropdowns -%}
   {%- set active = link.url === page.url -%}
-  {%- set open = link.url in page.url -%}
+  {%- set open = page.url and link.url in page.url -%}
   <uxdot-sidenav-dropdown {{ 'open' if open }}>
     <details {{ 'open' if open }}>
       <summary>{{ link.title }}</summary>
@@ -26,17 +26,17 @@
         {% if not (tagName in comingSoonItems) %}
         <uxdot-sidenav-dropdown-menu-item href="{{ href }}" {{ 'active' if active }}>
           {{- fst.alias or (slug | deslugify) -}}
-          {%- if planned -%}<rh-tag icon="notification-fill" color="gray">Planned</rh-tag>{%- endif -%}
+          {%- if planned -%}<rh-tag icon="notification-fill" color="purple">Planned</rh-tag>{%- endif -%}
         </uxdot-sidenav-dropdown-menu-item>
         {% endif %}
         {%- endfor -%}
         {% else %}
-        {% if link.collection === 'token' %}
+        {% if link.collection === 'tokenCategory' %}
         {%- set active = page.url === "/tokens/" %}
         <uxdot-sidenav-dropdown-menu-item href="/tokens/" {{ 'active' if active }}>Overview</uxdot-sidenav-dropdown-menu-item>
         {% endif -%}
 
-        {%- if (link.collection !== 'elementDocs') and (link.collection !== 'token') -%}
+        {%- if (link.collection !== 'elementDocs') and (link.collection !== 'tokenCategory') -%}
         {%- set sortedOn = "data.order" %}
         {%- set sideNavCollection = collections[link.collection] | sort(attribute=sortedOn, case_sensitive=true) %}
         {% else %}
@@ -46,7 +46,7 @@
         {%- for sublink in sideNavCollection -%}
         {%- set active = sublink.url === page.url -%}
         <uxdot-sidenav-dropdown-menu-item href="{{ sublink.url }}" {{ 'active' if active }}>
-          {{- (sublink.data.sidenavTitle or sublink.data.title or sublink.title) | capitalize -}}
+          {{- (sublink.data.sidenavTitle or sublink.data.title or sublink.title) -}}
         </uxdot-sidenav-dropdown-menu-item>
         {%- endfor -%}
         {% endif %}

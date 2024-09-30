@@ -28,6 +28,7 @@ export type ContextType<T extends UnknownContext> = T extends Context<infer _, i
 
 /**
  * A function which creates a Context value object
+ * @param key context key
  */
 export function createContext<ValueType>(
   key: unknown,

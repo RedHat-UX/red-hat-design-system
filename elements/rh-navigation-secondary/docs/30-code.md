@@ -1,5 +1,7 @@
 {% renderInstall lightdomcss=true%}{% endrenderInstall %}
 
+{% renderLightDom %}{% endrenderLightDom %}
+
 ### System Integration
 
 #### Current page indicator

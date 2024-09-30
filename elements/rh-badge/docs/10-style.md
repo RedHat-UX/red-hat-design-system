@@ -5,7 +5,7 @@ A badge is number text on a pill background used to reflect the count of somethi
 
 <figure>
   <uxdot-example width-adjustment="102px">
-    <img src="../badge-anatomy.png" alt="Anatomy of a badge with annotations; number 1 is pointing to the container and number 2 is pointing to the counter number">
+    <img src="../badge-anatomy.svg" alt="Anatomy of a badge with annotations; number 1 is pointing to the container and number 2 is pointing to the counter number">
   </uxdot-example>
   <figcaption>
     <ol>
@@ -17,25 +17,33 @@ A badge is number text on a pill background used to reflect the count of somethi
 
 ## Theme 
 
-A badge is available in the light theme only.
+A badge is available in light and dark theme.
 
-<uxdot-example width-adjustment="72px">
-  <img src="../badge-theme-light.png" alt="Light theme badges">
+### Light theme
+
+<uxdot-example width-adjustment="272px">
+  <img src="../badge-theme-light.svg" alt="Light theme badges">
+</uxdot-example>
+
+### Dark theme
+
+<uxdot-example width-adjustment="272px" color-palette="darkest">
+  <img src="../badge-theme-dark.svg" alt="Dark theme badges">
 </uxdot-example>
 
 ## Configuration 
 
 All badges have the same height and border radius.
 
-<uxdot-example width-adjustment="249px">
-  <img src="../badge-configuration.png" alt="How a badge is constructed showing border radius and height details">  
+<uxdot-example width-adjustment="350px">
+  <img src="../badge-configuration.svg" alt="How a badge is constructed showing border radius and height details">
 </uxdot-example>
 
 
 ## Space and width 
 
-<uxdot-example width-adjustment="199px">
-  <img src="../badge-space-and-width.png" alt="Badge spacing and minimum width">
+<uxdot-example width-adjustment="238px">
+  <img src="../badge-space-and-width.svg" alt="Badge spacing and minimum width">
 </uxdot-example>
 
 <rh-table>
@@ -58,7 +66,7 @@ All badges have the same height and border radius.
     <tbody>
       <tr>
         <td data-label="Property">Minimum width</td>
-        <td data-label="Current value">32px<br>2.0rem</td>
+        <td data-label="Current value">--rh-length-2xl</td>
       </tr>
     </tbody>
   </table>

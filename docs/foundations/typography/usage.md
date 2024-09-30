@@ -21,7 +21,7 @@ permalink: /foundations/typography/usage.html
 Headings are used to establish hierarchy and introduce content.
 
 <uxdot-example width-adjustment="367px">
-  <img src="{{ '/assets/typography/type-usage-headings.svg' | url }}" alt="3 examples of headings: Large, medium, and small.">
+  <img src="/assets/typography/type-usage-headings.svg" alt="3 examples of headings: Large, medium, and small.">
 </uxdot-example>
 
 ### Body text
@@ -29,7 +29,7 @@ Headings are used to establish hierarchy and introduce content.
 Body text is used for blocks of text including inline links and lists. Do not center align too many lines of body text.
 
 <uxdot-example width-adjustment="668px">
-  <img src="{{ '/assets/typography/type-usage-body-text.svg' | url }}" alt="Example of body text with an inline link.">
+  <img src="/assets/typography/type-usage-body-text.svg" alt="Example of body text with an inline link.">
 </uxdot-example>
 
 ### Code text
@@ -37,7 +37,7 @@ Body text is used for blocks of text including inline links and lists. Do not ce
 Code text is used for code snippets or to style text for technical audiences. Do not center align code text.
 
 <uxdot-example width-adjustment="317px">
-  <img src="{{ '/assets/typography/type-usage-code-text.svg' | url }}" alt="Example of code text with 3 lines.">
+  <img src="/assets/typography/type-usage-code-text.svg" alt="Example of code text with 3 lines.">
 </uxdot-example>
 
 ### Title
@@ -45,7 +45,7 @@ Code text is used for code snippets or to style text for technical audiences. Do
 Titles are used above content to explain what can be expected underneath. Titles should always be sentence case and never uppercase.
 
 <uxdot-example width-adjustment="247px">
-  <img src="{{ '/assets/typography/type-usage-title.svg' | url }}" alt="2 examples of titles: Small and large.">
+  <img src="/assets/typography/type-usage-title.svg" alt="2 examples of titles: Small and large.">
 </uxdot-example>
 
 ### Blockquote
@@ -54,7 +54,7 @@ A blockquote is a combination of a quote icon and text styles used to add emphas
 
 
 <uxdot-example width-adjustment="422px">
-  <img src="{{ '/assets/typography/type-usage-blockquote.svg' | url }}" alt="Example of blockquote with quote icon and attribution.">
+  <img src="/assets/typography/type-usage-blockquote.svg" alt="Example of blockquote with quote icon and attribution.">
 </uxdot-example>
 
 ## Line length
@@ -64,7 +64,7 @@ Shorter lines of text tend to be more comfortable to read. As line length increa
 If you are placing text by itself on a grid, a comfortable line length is between 6 and 8 columns. When text is in a fluid layout, set the max-width to 50rem (800px). When text is in a component like a card, the line length is determined by the width of the component.
 
 <uxdot-example width-adjustment="1012px">
-  <img src="{{ '/assets/typography/type-usage-line-length.svg' | url }}" alt="2 examples of line length: The first example shows that comfortable text is between 4 and 8 columns wide. The second example shows that comfortable text is no more than 800 pixels wide.">
+  <img src="/assets/typography/type-usage-line-length.svg" alt="2 examples of line length: The first example shows that comfortable text is between 4 and 8 columns wide. The second example shows that comfortable text is no more than 800 pixels wide.">
 </uxdot-example>
 
 ## Best practices
@@ -80,7 +80,7 @@ If you are placing text by itself on a grid, a comfortable line length is betwee
   </uxdot-best-practice>
   <uxdot-best-practice variant="dont">
     <uxdot-example color-palette="lightest" width-adjustment="418px" slot="image">
-      <img src="{{ '/assets/typography/type-usage-best-practice-1-dont.svg' | url }}" alt="Example of a heading set incorrectly in Red Hat Text.">
+      <img src="/assets/typography/type-usage-best-practice-1-dont.svg" alt="Example of a heading set incorrectly in Red Hat Text.">
     </uxdot-example>
     <p>Do not use Red Hat Text for headings.</p>
   </uxdot-best-practice>
@@ -97,7 +97,7 @@ If you are placing text by itself on a grid, a comfortable line length is betwee
   </uxdot-best-practice>
   <uxdot-best-practice variant="dont">
     <uxdot-example color-palette="lightest" width-adjustment="418px" slot="image">
-      <img src="{{ '/assets/typography/type-usage-best-practice-2-dont.svg' | url }}" alt="Example of body text set incorrectly in Red Hat Display.">
+      <img src="/assets/typography/type-usage-best-practice-2-dont.svg" alt="Example of body text set incorrectly in Red Hat Display.">
     </uxdot-example>
     <p>Do not use Red Hat Display for blocks of body text on websites.</p>
   </uxdot-best-practice>
@@ -114,7 +114,7 @@ If you are placing text by itself on a grid, a comfortable line length is betwee
   </uxdot-best-practice>
   <uxdot-best-practice variant="dont">
     <uxdot-example color-palette="lightest" width-adjustment="418px" slot="image">
-      <img src="{{ '/assets/typography/type-usage-best-practice-3-dont.svg' | url }}" alt="Example of uncomfortable spacing in between various text styles which is incorrect.">
+      <img src="/assets/typography/type-usage-best-practice-3-dont.svg" alt="Example of uncomfortable spacing in between various text styles which is incorrect.">
     </uxdot-example>
     <p>Do not space text too close together. Ensure users can read each style separately.</p>
   </uxdot-best-practice>

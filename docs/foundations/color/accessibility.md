@@ -15,7 +15,7 @@ importElements:
  - rh-table
 ---
 
-<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
+<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
 <style>
 .pass {
   color: var(--rh-color-green-60, #3D7317);

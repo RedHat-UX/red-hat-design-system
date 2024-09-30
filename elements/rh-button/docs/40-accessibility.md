@@ -13,7 +13,7 @@ link
 Users should have the ability to navigate to and interact with buttons using their keyboard.
 
 <uxdot-example width-adjustment="302px">
-  <img src="{{ '../button-a11y-keyboard-interactions.png' | url }}" alt="Image of a button group showing focus indicators and tab key labels">
+  <img src="../button-a11y-keyboard-interactions.png" alt="Image of a button group showing focus indicators and tab key labels">
 </uxdot-example>
 
 <rh-table>
@@ -46,14 +46,14 @@ Users should have the ability to navigate to and interact with buttons using the
 {% include 'partials/accessibility/focusorder.md' %} For buttons in groups, the focus order is from left to right and top to bottom when stacked. Disabled buttons are not included in the focus order unless they include the `aria-disabled=“true”` attribute and display a [tooltip](/elements/tooltip) when focused.
 
 <uxdot-example width-adjustment="509px">
-  <img src="{{ '../button-a11y-focus-order.png' | url }}" alt="Image of rows of button groups with numbers; one row has focus indicators only and the other has focus indicators and a tooltip">
+  <img src="../button-a11y-focus-order.png" alt="Image of rows of button groups with numbers; one row has focus indicators only and the other has focus indicators and a tooltip">
 </uxdot-example>
 
 ## Touch targets
 Buttons in groups are adequately spaced for optimal touch targets.
 
 <uxdot-example width-adjustment="298px">
-  <img src="{{ '../button-a11y-touch-targets.png' | url }}" alt="Image of button group with touch targets on top of each button">
+  <img src="../button-a11y-touch-targets.png" alt="Image of button group with touch targets on top of each button">
 </uxdot-example>
 
 ## Screen reader guidelines

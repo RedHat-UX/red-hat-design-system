@@ -1,8 +1,6 @@
 :host {
   display: inline-flex;
   position: relative;
-  container-name: host;
-  container-type: inline-size;
 }
 
 * {
@@ -10,11 +8,13 @@
 }
 
 #container {
-  --thumb-color: var(--rh-color-interactive-blue-darker, #0066cc);
+  display: contents;
+
+  --thumb-color: var(--rh-color-interactive-primary-default-on-light, #0066cc);
 }
 
-#container.on-dark {
-  --thumb-color: var(--rh-color-interactive-blue-lighter, #92c5f9);
+#container.on.dark {
+  --thumb-color: var(--rh-color-interactive-primary-default-on-dark, #92c5f9);
 }
 
 .darkest { --c: var(--rh-color-surface-darkest, #151515); }
@@ -49,7 +49,7 @@ input {
 
 input:before {
   display: block;
-  content: "";
+  content: '';
   background: var(--c);
   border-radius: 50%;
   position: absolute;
@@ -59,7 +59,7 @@ input:before {
 
 input:checked:after {
   display: block;
-  content: "";
+  content: '';
   background: var(--alt-color);
   border-radius: 50%;
   position: absolute;

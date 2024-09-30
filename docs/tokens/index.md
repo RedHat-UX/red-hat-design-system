@@ -1,6 +1,6 @@
 ---
 layout: layouts/pages/basic.njk
-title: Overview
+title: Overvie
 hasToc: true
 tokenSearch: true
 importElements: 
@@ -8,10 +8,10 @@ importElements:
   - rh-code-block
 ---
 
-<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css' | url }}">
+<link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
 
-<style>
-  .page-overview .container .grid {
+<style data-helmet>
+.page-overvie .container .grid {
     margin-block: var(--rh-space--2xl, 32px);
   }
 
@@ -36,7 +36,7 @@ technologies. Design tokens will soon be directly integrated into all of our
 websites, libraries, and tools.
 
 <uxdot-example width-adjustment="807px">
-  <img alt="Flow showing how a color like brand red becomes a token, how it is named, and how it is applied to a call to action" src="{{ '/tokens/images/design-tokens-intro.png' | url }}">
+  <img alt="Flow showing how a color like brand red becomes a token, how it is named, and how it is applied to a call to action" src="/tokens/images/design-tokens-intro.png">
 </uxdot-example>
 
 ## Installation
@@ -55,63 +55,63 @@ values or if you have an idea for an output format or tool integration.
 <nav class="grid xs-two-columns sm-three-columns">
   <rh-tile compact bleed>
     <uxdot-example slot="image" no-border>
-      <img alt="Tokens for border radius, width, color, and more" src="{{ '/tokens/images/design-tokens-category-border.png' | url }}">
+      <img alt="Tokens for border radius, width, color, and more" src="/tokens/images/design-tokens-category-border.png">
     </uxdot-example>
-    <a slot="headline" href="{{ 'border/' | url }}"><h3>Border</h3></a>
+    <a slot="headline" href="border/"><h3>Border</h3></a>
   </rh-tile>
   <rh-tile compact bleed>
     <uxdot-example slot="image" no-border>
-      <img alt="Tokens for box shadows" src="{{ '/tokens/images/design-tokens-category-box-shadow.png' | url }}">
+      <img alt="Tokens for box shadows" src="/tokens/images/design-tokens-category-box-shadow.png">
     </uxdot-example>
-    <a slot="headline" href="{{ 'box-shadow/' | url }}"><h3>Box shadow</h3></a>
+    <a slot="headline" href="box-shadow/"><h3>Box shadow</h3></a>
   </rh-tile>
   <rh-tile compact bleed>
     <uxdot-example slot="image" no-border>
-      <img alt="Tokens for breakpoint sizes" src="{{ '/tokens/images/design-tokens-category-breakpoint.png' | url }}">
+      <img alt="Tokens for breakpoint sizes" src="/tokens/images/design-tokens-category-breakpoint.png">
     </uxdot-example>
-    <a slot="headline" href="{{ 'breakpoint/' | url }}" slot="headline"><h3>Breakpoint</h3></a>
+    <a slot="headline" href="breakpoint/" slot="headline"><h3>Breakpoint</h3></a>
   </rh-tile>
   <rh-tile compact bleed>
     <uxdot-example slot="image" no-border>
-      <img alt="Tokens for colors" src="{{ '/tokens/images/design-tokens-category-color.png' | url }}">
+      <img alt="Tokens for colors" src="/tokens/images/design-tokens-category-color.png">
     </uxdot-example>
-    <a slot="headline" href="{{ 'color/' | url }}"><h3>Color</h3></a>
+    <a slot="headline" href="color/"><h3>Color</h3></a>
   </rh-tile>
   <rh-tile compact bleed>
     <uxdot-example slot="image" no-border>
-      <img alt="Tokens for icon sizes" src="{{ '/tokens/images/design-tokens-category-icon.png' | url }}">
+      <img alt="Tokens for icon sizes" src="/tokens/images/design-tokens-category-icon.png">
     </uxdot-example>
-    <a slot="headline" href="{{ 'icon/' | url }}"><h3>Icon</h3></a>
+    <a slot="headline" href="icon/"><h3>Icon</h3></a>
   </rh-tile>
   <rh-tile compact bleed>
     <uxdot-example slot="image" no-border>
-      <img alt="Tokens for length values" src="{{ '/tokens/images/design-tokens-category-length.png' | url }}">
+      <img alt="Tokens for length values" src="/tokens/images/design-tokens-category-length.png">
     </uxdot-example>
-    <a slot="headline" href="{{ 'length/' | url }}"><h3>Length</h3></a>
+    <a slot="headline" href="length/"><h3>Length</h3></a>
   </rh-tile>
   <rh-tile compact bleed>
     <uxdot-example slot="image" no-border>
-      <img alt="Tokens for media query sizes" src="{{ '/tokens/images/design-tokens-category-media-query.png' | url }}">
+      <img alt="Tokens for media query sizes" src="/tokens/images/design-tokens-category-media-query.png">
     </uxdot-example>
-    <a slot="headline" href="{{ 'media/' | url }}"><h3>Media query</h3></a>
+    <a slot="headline" href="media/"><h3>Media query</h3></a>
   </rh-tile>
   <rh-tile compact bleed>
     <uxdot-example slot="image" no-border>
-      <img alt="Tokens for opacity values" src="{{ '/tokens/images/design-tokens-category-opacity.png' | url }}">
+      <img alt="Tokens for opacity values" src="/tokens/images/design-tokens-category-opacity.png">
     </uxdot-example>
-    <a slot="headline" href="{{ 'opacity/' | url }}"><h3>Opacity</h3></a>
+    <a slot="headline" href="opacity/"><h3>Opacity</h3></a>
   </rh-tile>
   <rh-tile compact bleed>
     <uxdot-example slot="image" no-border>
-      <img alt="Tokens for spacer sizes" src="{{ '/tokens/images/design-tokens-category-space.png' | url }}">
+      <img alt="Tokens for spacer sizes" src="/tokens/images/design-tokens-category-space.png">
     </uxdot-example>
-    <a slot="headline" href="{{ 'space/' | url }}"><h3>Space</h3></a>
+    <a slot="headline" href="space/"><h3>Space</h3></a>
   </rh-tile>
   <rh-tile compact bleed>
     <uxdot-example slot="image" no-border>
-      <img alt="Tokens for fonts, sizes, weights, line heights, color, and more" src="{{ '/tokens/images/design-tokens-category-typography.png' | url }}">
+      <img alt="Tokens for fonts, sizes, weights, line heights, color, and more" src="/tokens/images/design-tokens-category-typography.png">
     </uxdot-example>
-    <a slot="headline" href="{{ 'font/' | url }}"><h3>Typography</h3></a>
+    <a slot="headline" href="font/"><h3>Typography</h3></a>
   </rh-tile>
 </nav>
 
@@ -160,7 +160,7 @@ designers, developers, engineers, etc. can all use the same tokens and work
 toward consistency even if a token is updated.
 
 <uxdot-example width-adjustment="739px">
-  <img alt="Flow showing how changing a global token like a color will propagate through the entire design system" src="{{ '/tokens/images/design-tokens-why-we-need-tokens.png' | url }}">
+  <img alt="Flow showing how changing a global token like a color will propagate through the entire design system" src="/tokens/images/design-tokens-why-we-need-tokens.png">
 </uxdot-example>
 
 ## Tokens and our design system
@@ -171,7 +171,7 @@ and apply tokens to their designs and code without keeping track of so many
 websites, libraries, and tools.
 
 <uxdot-example width-adjustment="396px">
-  <img alt="Flow showing how tokens can be utilized in design programs as well as applied to various touchpoints like brand, web, and product" src="{{ '/tokens/images/design-tokens-and-our-ds.png' | url }}">
+  <img alt="Flow showing how tokens can be utilized in design programs as well as applied to various touchpoints like brand, web, and product" src="/tokens/images/design-tokens-and-our-ds.png">
 </uxdot-example>
 
 ## Naming tokens
@@ -184,7 +184,7 @@ proceeding from the general to the specific, e.g. `colour` (general), `surface`
 (more specific), `lightest` (most specific).
 
 <uxdot-example width-adjustment="269px">
-  <img alt="Destructive button with a Danger text label showing its assigned token name underneath" src="{{ '/tokens/images/design-tokens-naming.png' | url }}">
+  <img alt="Destructive button with a Danger text label showing its assigned token name underneath" src="/tokens/images/design-tokens-naming.png">
 </uxdot-example>
 
 ### Aliases
@@ -200,7 +200,7 @@ applied across the design system, we only need to change that single alias in
 order for it to propagate everywhere.
 
 <uxdot-example width-adjustment="602px">
-  <img alt="Flow showing how 1 global token is applied to 2 different elements because the alias names are different" src="{{ '/tokens/images/design-tokens-aliases.png' | url }}">
+  <img alt="Flow showing how 1 global token is applied to 2 different elements because the alias names are different" src="/tokens/images/design-tokens-aliases.png">
 </uxdot-example>
 
 ## Themes
@@ -211,7 +211,7 @@ design system while serving multiple design languages that need to meet
 different audience or brand requirements.
 
 <uxdot-example width-adjustment="870px">
-  <img alt="Examples of how tokens are applied to elements in the light and dark themes" src="{{ '/tokens/images/design-tokens-themes.png' | url }}">
+  <img alt="Examples of how tokens are applied to elements in the light and dark themes" src="/tokens/images/design-tokens-themes.png">
 </uxdot-example>
 
 [color]: /tokens/color/

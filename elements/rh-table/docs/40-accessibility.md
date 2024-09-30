@@ -65,7 +65,7 @@ Since tables are inherently complex HTML structures, they can create barriers fo
 If a table is in a container that can receive keyboard focus (e.g., with a `tabindex="0"` attribute), then a user can place focus on the container and scroll the table horizontally or vertically using the arrow keys.
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../table-a11y-keyboard-navigation.png' | url }}" alt="Image of table with scrollbars and purple buttons showing keyboard navigation">
+  <img src="../table-a11y-keyboard-navigation.png" alt="Image of table with scrollbars and purple buttons showing keyboard navigation">
 </uxdot-example>
 
 <rh-table>
@@ -117,7 +117,7 @@ If a table is in a container that can receive keyboard focus (e.g., with a `tabi
 A logical focus order helps keyboard users operate our websites and apps. Elements need to receive focus in an order that preserves meaning, therefore the focus order should make sense and not jump around randomly. Focus within a table moves from top to bottom and left to right.
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../table-a11y-focus-order.png' | url }}" alt="Image of table with links, focus indicators, and numbers showing the focus order">
+  <img src="../table-a11y-focus-order.png" alt="Image of table with links, focus indicators, and numbers showing the focus order">
 </uxdot-example>
 
 
@@ -126,7 +126,7 @@ A logical focus order helps keyboard users operate our websites and apps. Elemen
 Each cell includes enough spacing for selecting interactive elements.
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../table-a11y-touch-targets.png' | url }}" alt="Image of table with links and focus indicators showing touch target size">
+  <img src="../table-a11y-touch-targets.png" alt="Image of table with links and focus indicators showing touch target size">
 </uxdot-example>
 
 

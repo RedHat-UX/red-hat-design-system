@@ -6,177 +6,158 @@ tags:
   - about
 ---
 
-<style>
-  #approach {
-    margin-block-end: var(--rh-space-5xl, 80px);
+<style data-helmet>
+  .red-heading { 
+    color: var(--rh-color-text-brand-on-light);
+    font-size: var(--rh-font-size-heading-xl);
   }
 
-  :is(#approach, #fundamentals) h2 {
-    text-align: center;
-    margin-block-start: var(--rh-space-2xl, 32px);
-    margin-block-end: var(--rh-space-4xl, 64px);
-    font-size: var(--rh-font-size-heading-lg, 2.25rem);
-    max-width: 100%;
+  rh-card rh-icon { 
+    --rh-icon-size: var(--rh-size-icon-07);
+    color: var(--rh-color-icon-primary);
+    width: var(--rh-icon-size);
   }
 
-  :is(#approach, #fundamentals) :is(h2, h3) {
-    font-weight: var(--rh-font-weight-heading-medium, 500);
-  }
-
-  #fundamentals h3 {
-    margin-block: var(--rh-space-2xl, 32px);
-  }
-
-
-  :is(#approach, #fundamentals) .item {
-    display: flex;
-    flex-direction: column;
-
-    justify-content: center;
-  }  
-
-  #approach .item:nth-child(1) {
-    order: 1;
-  }
-
-  #approach .item:nth-child(2) {
-    order: 2;
-  }
-
-  #approach .item:nth-child(3) {
-    order: 4;
-  }
-
-  #approach .item:nth-child(4) {
-    order: 3;
-  }
-
-  #approach .item:nth-child(5) {
-    order: 5;
-  }
-
-  #approach .item:nth-child(6) {
-    order: 6;
-  }
-
-  #approach .item:nth-child(7) {
-    order: 8;
-  }
-
-  #approach .item:nth-child(8) {
-    order: 7;
-  }  
-
-  :is(#approach, #fundamentals) .item p {
-    font-size: var(--rh-font-size-body-text-lg, 1.125rem);
-  }
-
-  #approach .item h3 {
-    margin-block-start: 0;
-  }
-
-  #approach .item img {
-    width: 100%;
-  }
-
-  #fundamentals .grid {
-    margin-block-end: var(--rh-space-4xl, 64px);
-  }
-
-  #fundamentals {
-    text-align: center;
-  }
-
-  #fundamentals .item {
-    text-align: left;
-  }
-
-  #fundamentals .item img {
-    max-width: 70px;
-  }
-
-  hr {
-    margin-block: var(--rh-space-5xl, 80px);
-  }
-
-  @container container (min-width: 576px) {
-    #approach .item:nth-child(n) {
-      order: unset;
-    }
+  .intro h2 {
+    font-size: var(--rh-font-size-heading-xl);
+    color: var(--rh-color-text-brand);
   }
 </style>
 
-<script type="module" src="{{ '/assets/javascript/elements/uxdot-hero.js' | url }}"></script>
+<script data-helmet type="module">
+  import '/assets/javascript/elements/uxdot-hero.js'
+  import '@rhds/elements/rh-icon/rh-icon.js';
+  import '@rhds/elements/rh-card/rh-card.js';
+</script>
 
-<uxdot-hero compact>
-  <h2 slot="header">We create Red&nbsp;Hat digital experiences</h2>
-  <p>Our teams work across the world in a range of disciplines, from UX research and digital design to web development and content strategy. We collaborate to make every digital interaction with Red&nbsp;Hat reflect our core brand traits which are open, authentic, helpful, and brave.</p>
-</uxdot-hero>
+<section class="intro">
 
-<hr>
+## We create Red Hat digital experiences
 
-<section id="approach" aria-labelledby="aria__heading-our-approach">
-  <h2 id="aria__heading-our-approach">Our approach</h2>
-  
-  <div class="grid sm-two-columns">
-    <div class="item">
-      <h3>Brand standards</h3>
-      <p><a href="https://www.redhat.com/en/about/brand/standards">Red Hat brand standards</a> are the source code for our identity. They govern how we look and sound in all types of media. We follow brand standards to unify Red&nbsp;Hat digital experiences and stay up-to-date with our brand as it grows, improves, and adapts to meet new challenges.</p>
-    </div>
-    <div class="item">
-      <img src="{{ '/assets/about/brand.svg' | url }}" alt="Red Hat brand standards">
-    </div>
-    <div class="item">
-      <img src="{{ '/assets/about/patternfly.svg' | url }}" alt="PatternFly">
-    </div>
-    <div class="item">
-      <h3>PatternFly collaboration</h3>
-      <p>We collaborate with <a href="https://www.patternfly.org">PatternFly</a>, an open source design system for enterprise product experiences. Using PatternFly as a foundation, we create intuitive and scalable Red&nbsp;Hat digital experiences the open source way.</p>
-    </div>
-    <div class="item">
-      <h3>Shared language and vision</h3>
-      <p>We leverage similar elements as PatternFly, so designers no longer need to reinvent the wheel when choosing components. For example, an <a href="/elements/accordion/">Accordion</a> used in a Red&nbsp;Hat web application will look the same when used on a website.</p>
-    </div>
-    <div class="item">
-      <img src="{{ '/assets/about/shared-language.svg' | url }}" alt="Shared language">
-    </div>
-    <div class="item">
-      <img src="{{ '/assets/about/web-components.svg' | url }}" alt="Web components">
-    </div>
-    <div class="item">
-      <h3>Web components</h3>
-      <p>Our team is building an open source web component-driven development system to build scalable UI elements. This <a href="https://patternflyelements.com/" target="_blank">open source community project</a> supports many components in our design system.</p>
-    </div>
-  </div>
+Red Hat teams work across the world in a range of disciplines, from UX research 
+and digital design to web development and content strategy. The Red Hat Design 
+System (RHDS) for digital experiences allows designers and developers to build 
+branded user experiences consistently and to make every digital interaction with 
+Red Hat reflect our core brand traits: open, authentic, helpful, and brave.
+
 </section>
 
-<hr>
+## We’re guided by our core principles
 
-<section id="fundamentals" aria-labelledby="aria__heading-fundamentals">
-  <h2 id="aria__heading-fundamentals">Fundamentals</h2>
-  <div class="grid sm-two-columns">
-    <div class="item">
-      <img src="{{ '/assets/about/icon-flexible.svg' | url }}" alt="Flexibility">
-      <h3>Flexible</h3>
-      <p>Our components can be arranged in a number of ways and CSS variables can be used for further customization.</p>
-    </div>
-    <div class="item">
-      <img src="{{ '/assets/about/icon-accessible.svg' | url }}" alt="Accessibility">
-      <h3>Accessible</h3>
-      <p>The goal of our design system is to create meaningful experiences that work for everyone, regardless of ability.</p>
-    </div>
-    <div class="item">
-      <img src="{{ '/assets/about/icon-consistent.svg' | url }}" alt="Consistency">
-      <h3>Consistent</h3>
-      <p>Our documentation and tools streamline collaboration so teams can create consistent and on-brand experiences.</p>
-    </div>
-    <div class="item">
-      <img src="{{ '/assets/about/icon-scalable.svg' | url }}" alt="Scalability">
-      <h3>Scalable</h3>
-      <p>Our system enables teams to work concurrently across the Red&nbsp;Hat system of websites and beyond.</p>
-    </div>
-  </div>
-  <rh-cta variant="secondary">
-    <a href="/get-started">Get started</a>
-  </rh-cta>
-</section>
+<div class="grid sm-two-columns">
+  <rh-card>
+    <rh-icon slot="header" set="standard" icon="community-people"></rh-icon>
+    <h3 slot="header">User-centered</h3>
+    <p>We focus on the people for which we are designing, and this advocacy extends beyond the customer to include the experience of Red Hat associates.</p>
+  </rh-card>
+  <rh-card>
+    <rh-icon slot="header" set="standard" icon="handshake"></rh-icon>
+    <h3 slot="header">Co-creative</h3>
+    <p>UX design is a team sport. Many people both within Red Hat, and with outside feedback, contribute to creating the user experience.</p>
+  </rh-card>
+  <rh-card>
+    <rh-icon slot="header" set="standard" icon="architect"></rh-icon>
+    <h3 slot="header">Holistic</h3>
+    <p>We consider the end-to-end experience, not just a single moment, single website, service encounter, or journey stage.</p>
+  </rh-card>
+  <rh-card>
+    <rh-icon slot="header" set="standard" icon="management-and-automation"></rh-icon>
+    <h3 slot="header">Orchestrated</h3>
+    <p>Processes, tools, and roles must be aligned to deliver and maintain an optimal Red Hat digital experience</p>
+  </rh-card>
+</div>
+
+## We rely on our foundations
+
+The Red Hat brand has a strong voice. To make our design system feel like Red 
+Hat, we use foundations like [color](/foundations/color/), 
+[space](/foundations/spacing/), and [typography](/foundations/typography/) to 
+enhance our elements and patterns and to align them to Red Hat’s [design 
+language standards](https://www.redhat.com/en/about/brand/standards).
+
+### Red Hat brand standards
+
+Red Hat brand standards are the source code for our identity. They govern how we 
+look and sound in all types of media. We follow brand standards to unify Red Hat 
+digital experiences and stay up-to-date with our brand as it grows, improves, 
+and adapts to meet new challenges.
+
+<rh-cta href="https://www.redhat.com/en/about/brand/standards">Learn about the Red Hat brand</rh-cta>
+
+<uxdot-example variant="full" no-border alignment="left" width-adjustment="1140px">
+ <img src="../assets/about/about-rhds-brand-standards.png" alt="the words 'brand standards' framed by elements and shapes in ReEd Hat colors">
+</uxdot-example>
+
+### Design tokens
+
+Our foundations are implemented through design tokens, which are used in lieu of 
+hard-coded values for color, text attributes, spacing, and more. Tokens help us 
+keep web components flexible and scalable. Additionally, semantic token names 
+help us assign consistent meanings that correspond with foundational guidelines.
+
+<rh-cta href="/tokens/">Learn about our tokens</rh-cta>
+
+<uxdot-example width-adjustment="807px">
+ <img src="/tokens/images/design-tokens-intro.png" alt="Flow showing how a color like brand red becomes a token, how it is named, and how it is applied to a call to action">
+</uxdot-example>
+
+## We build Web Components
+
+Our team is building an open source, Web Component-driven development system to 
+build scalable UI elements and patterns. By using Web Components, it allows 
+developers to use our code with encapsulated functionality and styles in any 
+framework or platform.
+
+<rh-cta href="/get-started/developers/#about-web-components">Learn about the benefits of Web Components</rh-cta>
+
+<uxdot-example width-adjustment="820px">
+ <img src="../assets/about/about-rhds-web-components.svg" alt="Example of a card next to the Web Component's code">
+</uxdot-example>
+
+## We look for opportunities to align
+
+### PatternFly
+
+In addition to RHDS, Red Hat uses PatternFly, an open source design system, for 
+its products. We share design and foundations when possible by collaborating 
+with the PatternFly team. When building a new component or updating an existing 
+component, PatternFly is always our first source of inspiration. 
+
+By sharing ideas between the PatternFly and RHDS teams, we create a design 
+language across all of Red Hat, for each stage of the customer lifecycle.
+
+<rh-cta href="https://www.patternfly.org/">Visit PatternFly</rh-cta>
+
+### PatternFly Elements
+
+The PatternFly Elements (PFE) project leverages the PatternFly design system and 
+some code elements to create an accessible and open source Web Component 
+library. 
+
+Like RHDS Web Components, PFE Web Components not only work in any application 
+framework, they are evergreen. This means that the components themselves can be 
+upgraded easily, allowing for consistency, scalability, and flexibility.
+
+<rh-cta href="https://patternflyelements.org/">Visit PatternFly Elements</rh-cta>
+
+<uxdot-example width-adjustment="558px">
+ <img src="../assets/about/about-rhds-pf-pfe.svg" alt="A back-to-top element that looks the same in RHDS, PatternFly, and PatternFly Elements">
+</uxdot-example>
+
+## We provide support
+
+Whether you are implementing an element or pattern or contributing to the design 
+system, the RHDS team is here to help. Our [Design/code status][dcs] table shows 
+where everything is available, including whether they’ve been added to the Red 
+Hat Shared Libraries, which makes our Web Components ready for use in Drupal, 
+React, plain HTML, and other frameworks. We also have multiple ways for you to 
+reach our team about bugs, feature requests, and more.
+
+<rh-cta href="/support/">Get support</rh-cta>
+
+<uxdot-feedback>
+  <h2>Release Notes</h2>
+  <p>To see what foundations, tokens, elements, or patterns have been released recently, check out <a href="/about/release-notes">our release notes</a>.</p>
+</uxdot-feedback>
+
+[dcs]: /design-code-status/

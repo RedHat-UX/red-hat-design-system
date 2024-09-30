@@ -15,7 +15,7 @@ label,
 #download-tooltip {
   margin-inline-start: var(--rh-space-md, 8px);
 
-  --_svg-size: 18px;
+  --rh-icon-size: 18px;
 }
 
 #cues {
@@ -26,4 +26,9 @@ label,
   padding: var(--_player-padding, var(--rh-space-md, 8px));
   color: var(--_static-text-color);
   background-color: var(--_static-surface-color);
+}
+
+button,
+rh-icon {
+  color: inherit;
 }

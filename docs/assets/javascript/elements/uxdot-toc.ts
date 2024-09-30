@@ -15,14 +15,14 @@ export class UxdotToc extends LitElement {
     return html`
       <div id="container" part="container">
         <details>
-          <summary id="summary">${this.summary}</summary>
-          <nav aria-labelledby="summary">
+          <summary id="summary-sm" class="summary">${this.summary}</summary>
+          <nav aria-labelledby="summary-sm">
             <slot name="details"></slot>
           </nav>
         </details>
         <div id="expanded">
-          <div id="summary">${this.summary}</div>
-          <nav aria-labelledby="summary">
+          <div id="summary-expanded" class="summary">${this.summary}</div>
+          <nav aria-labelledby="summary-expanded">
             <slot name="expanded"></slot>
           </nav>
         </div>

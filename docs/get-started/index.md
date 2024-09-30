@@ -8,7 +8,7 @@ importElements:
   - rh-tile
 ---
 
-<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css' | url }}">
+<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
 
 <style>
   #get-started-nav {
@@ -30,13 +30,13 @@ The Red Hat Design System for digital experiences gives designers and developers
     <uxdot-example slot="image" no-border variant="full" transparent>
       <img alt="Row of two cards being resized with a mouse pointer" src="/assets/get-started/designers.svg">
     </uxdot-example>
-    <h3 slot="headline"><a href="{{ './designers' | url }}">Designers</a></h3>
+    <h3 slot="headline"><a href="./designers">Designers</a></h3>
   </rh-tile>
   <rh-tile>
     <uxdot-example slot="image" no-border variant="full" transparent>
       <img alt="Card overlapping code editor user interface" src="/assets/get-started/developers.svg">
     </uxdot-example>
-    <h3 slot="headline"><a href="{{ './developers' | url }}">Developers</a></h3>
+    <h3 slot="headline"><a href="./developers">Developers</a></h3>
   </rh-tile>
 </nav>
 

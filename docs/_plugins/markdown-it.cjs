@@ -1,7 +1,14 @@
 const markdownItAnchor = require('markdown-it-anchor');
 const markdownItAttrs = require('markdown-it-attrs');
+const markdownItFootnote = require('markdown-it-footnote');
+
+/* eslint-disable lit-a11y/anchor-is-valid */
+/* eslint-disable lit-a11y/accessible-name */
 
 const { makePermalink } = markdownItAnchor.permalink;
+
+// for editor highlighting
+const html = String.raw;
 
 /**
  * @see https://github.com/valeriangalliat/markdown-it-anchor/blob/69cbf727367c6b10a553a8549790a6d6df917342/permalink.js#L111-L129
@@ -19,24 +26,48 @@ const rhdsPermalink = makePermalink((slug, opts, anchorOpts, state, idx) => {
   const id = headerOpen.attrs.find(([k]) => k === 'id').at(1);
 
   state.tokens.splice(idx, 2, Object.assign(new state.Token('html_block', '', 0), {
-    content: /* html */`
+    content: html`
 <uxdot-copy-permalink class="${headerOpen.tag}">
   <${headerOpen.tag} ${headerOpen.attrs.map(([key, value]) => `${key}="${value}"`).join(' ')}>
     <a href="#${id}">`.trim(),
   }),
                       inline,
-                      Object.assign(new state.Token('html_block', '', 0), { content: /* html */`
-    </a>
-      </${headerOpen.tag}>
-    </uxdot-copy-permalink>`.trim(),
+                      Object.assign(new state.Token('html_block', '', 0), {
+                        content: html`
+<a>
+  </${headerOpen.tag}>
+</uxdot-copy-permalink>`.trim(),
                       })
   );
 });
 
-/** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
+function rhdsCodeBlock(md) {
+  const orig = md.renderer.rules.fence;
+  // custom renderer for fences
+  md.renderer.rules.fence = function(tokens, idx, options, env, slf) {
+    const rendered = orig.call(this, tokens, idx, options, env, slf);
+    const token = tokens[idx];
+
+    const [lang, block, ...rest] = token.info.split(/\s+/);
+    if (block?.replaceAll('-', '') === 'rhcodeblock') {
+      const redactedToken = { ...token, info: `${lang} ${rest.join(' ')}` };
+      return html`
+        <rh-code-block full-height
+                       dedent
+                       highlighting="prerendered"
+                       ${slf.renderAttrs(redactedToken)}>${rendered}</rh-code-block>`.trim();
+    } else {
+      return rendered;
+    }
+  };
+}
+
+/* @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function(eleventyConfig) {
   eleventyConfig.amendLibrary('md', /** @param {import('markdown-it')} md*/md => md
       .set({ html: true, breaks: false })
       .use(markdownItAnchor, { permalink: rhdsPermalink() })
-      .use(markdownItAttrs));
+      .use(markdownItFootnote)
+      .use(markdownItAttrs)
+      .use(rhdsCodeBlock));
 };

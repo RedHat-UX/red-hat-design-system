@@ -20,29 +20,33 @@ summaries:
 order: 0
 tags:
   - pattern
-importElements: 
-  - rh-tile
 ---
 
-<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css' | url }}">
+<link data-helmet
+      rel="stylesheet"
+      href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
 
-<style>
+<style data-helmet>
   #patterns-nav {
-    margin-block: var(--rh-space--2xl, 32px);
+    margin-block: var(--rh-space--2xl);
   }
 </style>
 
-{# NOTE: all images in this view need to be 680 by 400 px in order to maintain same ratio. #}
+<script data-helmet type="module">
+  import '@rhds/elements/rh-tile/rh-tile.js';
+</script>
+
+{# NOTE: all images in this view need to be 340 by 200 px in order to maintain same ratio. #}
 
 ## Overview
 Patterns compose elements and tokens with content and validation rules to 
 create uniform, accessible experiences.
 
-<nav id="patterns-nav" class="grid xs-two-columns sm-three-columns" aria-label="Patterns">
-{%- for pattern in collections.pattern -%}
-
-  {% if pattern.data.title !== 'Patterns' %}
-
+<nav id="patterns-nav"
+     class="grid xs-two-columns sm-three-columns"
+     aria-label="Patterns">
+  {%- for pattern in collections.pattern -%}
+  {%- if pattern.page.inputPath !== page.inputPath -%}
   {%- set slug = pattern.fileSlug -%}
 
   {%- set title = pattern.data.heading -%}
@@ -51,21 +55,20 @@ create uniform, accessible experiences.
   {% endif %}
 
   {%- set summary = pattern.description -%}
-  {% if not summary %}
+  {%- set title = pattern.data.heading or pattern.data.title -%}
+  {%- if not summary -%}
     {%- set summary = summaries[slug] -%}
-  {% endif %}
-
+  {%- endif -%}
   <rh-tile>
     <uxdot-example slot="image">
-      <img src="{{ '/assets/patterns/all-patterns-' + slug + '.png' | url }}" alt="{{ title }}">
+      <img alt="{{ title }}"
+           src="/assets/patterns/all-patterns-{{ slug }}.png">
     </uxdot-example>
     <a slot="headline" href="{{ pattern.url }}"><h3>{{ title }}</h3></a>
-    <p style="margin-block: 0;">{{ summary }}</p>
+    <p slot="footer">{{ summary }}</p>
   </rh-tile>
-
-  {% endif %}
-
-{% endfor %}
+  {%- endif -%}
+{%- endfor -%}
 </nav>
 
 ## Make a request
@@ -74,5 +77,5 @@ To request a new element or if updates need to be made to an existing element,
 
 <uxdot-feedback>
   <h2>Patterns</h2>
-  <p>To learn how to use our patterns in your designs, visit the <a href="{{ '/patterns/' | url }}">Patterns</a> section.</p>
+  <p>To learn how to use our patterns in your designs, visit the <a href="/patterns/">Patterns</a> section.</p>
 </uxdot-feedback>

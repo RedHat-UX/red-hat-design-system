@@ -40,15 +40,13 @@ const isAccordion = (x: EventTarget): x is RhAccordion =>
  * @csspart text - inline element containing the heading text or slotted heading content
  * @csspart accents - container for accents within the header
  * @slot - accordion toggle content
- * @slot accents
+ * @slot accents -
  *       These elements will appear inline by default with the header title, between the header and the chevron
  *       (or after the chevron and header in disclosure mode). There is an option to set the accents placement to bottom
  * @fires {AccordionHeaderChangeEvent} change - when the open panels change
  */
 @customElement('rh-accordion-header')
 export class RhAccordionHeader extends LitElement {
-  static readonly version = '{{version}}';
-
   static readonly styles = [styles];
 
   @property({ type: Boolean, reflect: true }) expanded = false;
@@ -87,12 +85,12 @@ export class RhAccordionHeader extends LitElement {
     const { accents, large = false } = this.ctx ?? {};
     const rtl = this.#dir.dir === 'rtl';
     return html`
-      <div id="container" class="${classMap({ [on]: !!on, rtl, large, expanded })}">
+      <div id="container" class="${classMap({ on: true, [on]: !!on, rtl, large, expanded })}">
         <button id="button"
                 class="toggle"
                 @click="${this.#onClick}">
           <span id="header-container" class="${classMap({ [accents ?? '']: !!accents })}">
-            <span part="text"><slot></slot></span>
+            <span id="header-text" part="text"><slot></slot></span>
             <span part="accents"><slot name="accents"></slot></span>
           </span>
           <svg id="icon"

@@ -17,8 +17,8 @@
   <head>
     {% include "../partials/meta.html" %}
 
-    <link rel="stylesheet" href="/assets/packages/@rhds/tokens/css/global.css">
     <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="/styles/rh-code-block-lightdom.css">
 
    {# On browsers that don't yet support native declarative shadow DOM, a
       paint can occur after some or all pre-rendered HTML has been parsed,
@@ -45,7 +45,7 @@
   </head>
 
   <body dsd-pending class="{{ extraPageClasses }}">
-    <rh-skip-link><a href="#main">Skip to main content</a></rh-skip-link>
+    <rh-skip-link href="#main">Skip to main content</rh-skip-link>
     {{ content | safe }}
   </body>
 </html>

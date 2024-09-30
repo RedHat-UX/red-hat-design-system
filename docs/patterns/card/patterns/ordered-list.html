@@ -1,0 +1,27 @@
+<rh-card class="example-card-ordered-list">
+  <ol>
+    <li>Ordered list text</li>
+    <li><a href="#">Linked ordered list text</a></li>
+    <li>Ordered List text two lines Lorem ipsum dolor sit amet, consectetur adipiscing elit nulla vitae elit</li>
+  </ol>
+  <rh-cta slot="footer" href="#">Call to action</rh-cta>
+</rh-card>
+
+<style>
+  .example-card-ordered-list {
+    width: 360px;
+    & ol {
+      padding-inline-start: var(--rh-space-lg);
+      & li {
+        margin-block-end: var(--rh-space-lg);
+        &:last-child {
+          margin-block-end: 0;
+        }
+      }
+    }
+    & h3 {
+      margin-block-end: var(--rh-space-lg);
+    }
+  }
+</style>
+

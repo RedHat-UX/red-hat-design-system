@@ -167,7 +167,7 @@ Cards have the potential to contain lots of content, like a combination of
 text, links, images, multimedia, etc. Ensure content serves the use case, but 
 keep things simple at the same time. Don’t use too much content in one card, 
 distribute extra content to other cards or somewhere else on the page. A 
-[Sticky card]({{ '/patterns/sticky-card/' | url }}) is a kind of card that can 
+[Sticky card](/patterns/sticky-card/) is a kind of card that can 
 contain similar content, but it sticks to the side of a page and it’s always 
 present until a user dismisses it.
 
@@ -213,7 +213,7 @@ content. For example, grouping a basic card with a pricing card will look bad
 because they’re not very similar.
 
 <uxdot-example width-adjustment="784px">
-  <img src="{{ '../card-usage-grouping.svg' | url }}" alt="Grouping of a card">
+  <img src="../card-usage-grouping.svg" alt="Grouping of a card">
 </uxdot-example>
 
 These cards can be grouped together because they have similar styles and 
@@ -228,12 +228,12 @@ maximum width of six columns.
 ### Other components
 
 Cards can include complex components if necessary. For example, the 
-[Filter]({{ '/patterns/filter/' | url }}) pattern requires an Accordion or a 
-[Disclosure]({{ '/patterns/disclosure/' | url }}) to sort a content set. Don't 
+[Filter](/patterns/filter/) pattern requires an Accordion or a 
+[Disclosure](/patterns/disclosure/) to sort a content set. Don't 
 place any other complex components in card layouts.
 
 <uxdot-example width-adjustment="664px">
-  <img src="{{ '../card-usage-other.svg' | url }}" alt="Alternative card usage">
+  <img src="../card-usage-other.svg" alt="Alternative card usage">
 </uxdot-example>
 
 ## Best practices
@@ -242,21 +242,21 @@ The minimum width of a card in any layout is four columns and the maximum
 number of cards that can be used in a row is three.
 
 <uxdot-example width-adjustment="872px" danger>
-  <img src="{{ '../card-bestpractice-1.svg' | url }}" alt="Too many cards">
+  <img src="../card-bestpractice-1.svg" alt="Too many cards">
 </uxdot-example>
 
 Don’t use a primary call to action in any card unless the primary action of a 
 page is positioned inside of that card.
 
 <uxdot-example width-adjustment="360px" danger>
-  <img src="{{ '../card-bestpractice-2.svg' | url }}" alt="Card width error">
+  <img src="../card-bestpractice-2.svg" alt="Card width error">
 </uxdot-example>
 
 Don’t use multiple calls to action in one card. Instead, distribute them to 
 other cards.
 
 <uxdot-example width-adjustment="360px">
-  <img src="{{ '../card-bestpractice-3.svg' | url }}" alt="Multiple calls to action">
+  <img src="../card-bestpractice-3.svg" alt="Multiple calls to action">
 </uxdot-example>
 
 ## Behavior
@@ -269,7 +269,7 @@ determined by the tallest card. Don’t place inconsistent amounts of content in
 cards, as this will impact how scannable the group will appear to users.
 
 <uxdot-example width-adjustment="784px">
-  <img src="{{ '../card-behavior-height.svg' | url }}" alt="Card height behavior">
+  <img src="../card-behavior-height.svg" alt="Card height behavior">
 </uxdot-example>
 
 ### Interactivity
@@ -279,7 +279,7 @@ elements inside should all be interactive. Otherwise, each interactive element
 should continue to be interactive, but not the card container.
 
 <uxdot-example width-adjustment="784px">
-  <img src="{{ '../card-behavior-interaction.svg' | url }}" alt="Card interaction">
+  <img src="../card-behavior-interaction.svg" alt="Card interaction">
 </uxdot-example>
 
 ## Interaction states

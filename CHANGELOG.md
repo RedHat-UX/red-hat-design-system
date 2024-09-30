@@ -175,7 +175,7 @@
 
 - fa2c4d2: `<rh-cta>`: Removed previously-deprecated `color-palette` attribute
 
-  Use themable containers (e.g. `<rh-surface>` or `<rh-card>`) instead.
+  Use themeable containers (e.g. `<rh-surface>` or `<rh-card>`) instead.
 
   Before:
 

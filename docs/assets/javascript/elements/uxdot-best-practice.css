@@ -23,12 +23,12 @@ span {
 
 #do {
   /* TODO: remove value after https://github.com/RedHat-UX/red-hat-design-tokens/pull/138 */
-  --_bp-color: var(--rh-color-status-success-on-light, #3d7317);
+  --_bp-color: var(--rh-color-status-success-on-light, #63993d);
 }
 
 #dont {
   /* TODO: remove value after https://github.com/RedHat-UX/red-hat-design-tokens/pull/138 */
-  --_bp-color: var(--rh-color-status-danger-on-light, #b1380b);
+  --_bp-color: var(--rh-color-status-danger-on-light, #f0561d);
 }
 
 ::slotted(uxdot-example) {

@@ -1,17 +1,13 @@
 :host {
   --_button-size: 40px;
-  --_svg-size: var(--rh-size-icon-03, 32px);
-  --_outline:
-    var(--rh-border-width-md, 2px)
-    solid
-    var(--rh-color-border-interactive-on-light, #0066cc);
+  --rh-icon-size: var(--rh-size-icon-03, 32px);
 }
 
-#container.dark {
+#container {
   --_outline:
     var(--rh-border-width-md, 2px)
     solid
-    var(--rh-color-border-interactive-on-dark, #92c5f9);
+    var(--rh-color-border-interactive);
 }
 
 rh-tooltip {
@@ -21,7 +17,7 @@ rh-tooltip {
   margin-inline: var(--_icon-margin);
 
   --_icon-margin: calc(var(--_icon-gap) / 2 - var(--_icon-padding));
-  --_icon-padding: calc((var(--_button-size) - var(--_svg-size)) / 2);
+  --_icon-padding: calc((var(--_button-size) - var(--rh-icon-size)) / 2);
 }
 
 button {
@@ -39,13 +35,6 @@ rh-tooltip * {
 select:focus,
 button:focus {
   outline: var(--_outline);
-}
-
-svg {
-  fill: var(--_text-color);
-  height: var(--_svg-size);
-  width: var(--_svg-size);
-  padding: var(--_icon-padding);
 }
 
 button[disabled],

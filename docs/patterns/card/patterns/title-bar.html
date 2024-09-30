@@ -1,61 +1,26 @@
-<style>
-  .example-title-bar-card::part(header) {
-    margin: 0;
-    padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
-    background-color: var(--_card-title-bg, var(--rh-color-surface-light, #e0e0e0));
-    flex-direction: row;
-    gap: var(--rh-space-lg, 16px);
-  }
-  [color-palette^="dark"] .example-title-bar-card::part(header),
-  .example-title-bar-card[color-palette^="dark"]::part(header) {
-    --_card-title-bg: var(--rh-color-gray-70, #383838);
-  }
-  .example-title-bar-card h4[slot] {
-    font-weight: var(--rh-font-weight-heading-regular, 300);
-    font-size: var(--rh-font-size-body-text-md, 1rem);
-    font-family: var(--rh-font-family-body-text);
-    text-transform: uppercase; /* deprecated? */
-  }
-</style>
-
-<uxdot-pattern id="title-bar-card">
-  <rh-card class="example-title-bar-card">
-    <h4 slot="header">Card title</h4>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit
-      libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id
-      elit. Donec id elit non mi porta gravida at eget metus.</p>
-    <rh-cta slot="footer" href="#">Call to action</rh-cta>
-  </rh-card>
-  <rh-code-block slot="html" actions="copy">
-    <span slot="action-label-copy">Copy to Clipboard</span>
-    <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
-    <script type="text/html"><rh-card class="example-title-bar-card-light">
+<rh-card class="example-title-bar-card">
   <h4 slot="header">Card title</h4>
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit
     libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id
     elit. Donec id elit non mi porta gravida at eget metus.</p>
   <rh-cta slot="footer" href="#">Call to action</rh-cta>
-</rh-card></script>
-  </rh-code-block>
-  <rh-code-block slot="css" actions="copy">
-    <span slot="action-label-copy">Copy to Clipboard</span>
-    <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
-    <script type="text/css">.example-title-bar-card::part(header) {
-  margin: 0;
-  padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
-  background-color: var(--_card-title-bg, var(--rh-color-surface-light, #e0e0e0));
-  flex-direction: row;
-  gap: var(--rh-space-lg, 16px);
-}
-[color-palette^="dark"] .example-title-bar-card::part(header),
-.example-title-bar-card[color-palette^="dark"]::part(header) {
-  --_card-title-bg: var(--rh-color-gray-70, #383838);
-}
-.example-title-bar-card h4[slot] {
-  font-weight: var(--rh-font-weight-heading-regular, 300);
-  font-size: var(--rh-font-size-body-text-md, 1rem);
-  font-family: var(--rh-font-family-body-text);
-  text-transform: uppercase; /* deprecated? */
-}</script>
-  </rh-code-block>
-</uxdot-pattern>
+</rh-card>
+
+<style>
+  .example-title-bar-card {
+    width: 360px;
+    --rh-card-header-background-on-light: var(--rh-color-surface-light);
+    --rh-card-header-background-on-dark: var(--rh-color-surface-dark);
+    &::part(header) {
+      margin: 0;
+      padding: var(--rh-space-lg) var(--rh-space-2xl);
+      flex-direction: row;
+      gap: var(--rh-space-lg);
+      font-weight: var(--rh-font-weight-heading-regular);
+      font-size: var(--rh-font-size-body-text-md);
+      font-family: var(--rh-font-family-body-text);
+      text-transform: uppercase; /* deprecated? */
+    }
+  }
+</style>
+

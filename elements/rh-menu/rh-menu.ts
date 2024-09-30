@@ -34,8 +34,16 @@ export class RhMenu extends LitElement {
   @colorContextConsumer() private on?: ColorTheme;
 
   #tabindex = RovingTabindexController.of<HTMLElement>(this, {
-    getItems: () => this._menuItems ?? [],
+    getItems: () => this.getItems(this._menuItems),
   });
+
+  /**
+   * override or set to add items to the roving tab index controller
+   * @param items original list of items
+   */
+  getItems(items: HTMLElement[]): HTMLElement[] {
+    return items;
+  }
 
   get activeItem() {
     return this.#tabindex.items.at(this.#tabindex.atFocusedItemIndex);
@@ -49,10 +57,10 @@ export class RhMenu extends LitElement {
   }
 
   render() {
-    const { on = '' } = this;
+    const { on = 'light' } = this;
     return html`
       <slot part="menu"
-            class="${classMap({ [on]: !!on })}"
+            class="${classMap({ on: true, [on]: true })}"
             @slotchange="${this.#onSlotchange}"></slot>
     `;
   }
@@ -64,11 +72,11 @@ export class RhMenu extends LitElement {
   }
 
   activateItem(item: HTMLElement) {
-    this.#tabindex.atFocusedItemIndex = this._menuItems.indexOf(item);
+    this.#tabindex.atFocusedItemIndex = this.#tabindex.items.indexOf(item);
   }
 
   focus() {
-    this._menuItems[this.#tabindex.atFocusedItemIndex]?.focus();
+    this.#tabindex.items[this.#tabindex.atFocusedItemIndex]?.focus();
   }
 }
 

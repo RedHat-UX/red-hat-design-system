@@ -104,7 +104,6 @@ rh-tabs:
  - rh-pagination
  - rh-progress-steps
 rh-tag: 
- - rh-avatar
  - rh-badge
  - rh-button
 rh-tile:

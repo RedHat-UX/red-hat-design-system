@@ -1,0 +1,75 @@
+<div id="elements">
+  <rh-disclosure summary="Results from Customer Portal"></rh-disclosure>
+  <rh-accordion>
+    <rh-accordion-header>Results from Customer Portal</rh-accordion-header>
+    <rh-accordion-panel>
+      <p> <rh-tag color="green">Hey now!</rh-tag> They're all looking pretty good! </p>
+    </rh-accordion-panel>
+  </rh-accordion>
+  <rh-cta href="#" variant="primary">Get started</rh-cta>
+  <rh-audio-player layout="mini"></rh-audio-player>
+  <rh-pagination>
+    <ol>
+      <li><a href="#">1</a></li>
+      <li><a href="#2">2</a></li>
+      <li><a href="#3">3</a></li>
+      <li><a href="#4">4</a></li>
+      <li><a href="#5">5</a></li>
+    </ol>
+  </rh-pagination>
+  <rh-card>
+    <p>Create, manage, and dynamically scale automation across your entire enterprise.</p>
+    <rh-cta slot="footer" href="#">Get product details</rh-cta>
+  </rh-card>
+  <p>More cloud choice. Less cloud management.</p>
+  <rh-tabs box="box">
+    <rh-tab slot="tab">App development and delivery</rh-tab>
+    <rh-tab slot="tab">Modernize existing apps</rh-tab>
+    <rh-tab slot="tab">AI/ML</rh-tab>
+    <rh-tab slot="tab">Edge computing</rh-tab>
+  </rh-tabs>
+</div>
+
+<style>
+  #elements {
+    min-height: auto;
+    display: grid;
+    place-content: center;
+    gap: var(--rh-space-2xl);
+    grid-template:
+      'disclosure disclosure disclosure'
+      'cta audio-player card'
+      'pagination pagination card'
+      'p p card'
+      'tabs tabs tabs' / 1fr 1fr 2fr;
+    grid-template-rows: repeat(5, min-content);
+    grid-template-columns: max-content 2fr 3fr;
+
+    & rh-card { grid-area: card; }
+    & rh-cta { grid-area: cta; }
+    & rh-tabs { grid-area: tabs; }
+
+    & rh-disclosure,
+    & rh-accordion { grid-area: disclosure; }
+
+    & rh-pagination {
+      grid-area: pagination;
+      &::part(numeric) {
+        display: none;
+      }
+    }
+
+    & rh-audio-player {
+      grid-area: audio-player;
+      max-width: 340px;
+      justify-self: center;
+    }
+
+    & p { margin: 0; }
+    & > p {
+      grid-area: p;
+      font-size: var(--rh-font-size-body-text-2xl);
+      font-weight: var(--rh-font-weight-heading-bold);
+    }
+  }
+</style>

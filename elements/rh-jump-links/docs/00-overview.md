@@ -9,6 +9,6 @@ is visible in the browser window.
 ## Sample element
 
 <uxdot-example width-adjustment="128px">
-  <img src="{{ './jump-links-sample.svg' | url }}" alt="Jump links sample component" />
+  <img src="./jump-links-sample.svg" alt="Jump links sample component" />
 </uxdot-example>
 

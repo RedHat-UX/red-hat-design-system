@@ -1,46 +1,30 @@
-:host {
-  --_color: var(--rh-color-text-primary-on-light, #151515);
-  --_background-color: var(--rh-color-surface-lighter, #f2f2f2);
-
-  aspect-ratio: var(--_aspect-ratio);
+span {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   position: relative;
   white-space: nowrap;
   text-align: center;
-  background-color: var(--_background-color);
+  aspect-ratio: var(--_aspect-ratio);
   border-radius: var(--rh-border-radius-pill, 64px);
-  color: var(--_color);
+  min-width: var(--_badge-size, var(--rh-length-lg, 16px));
   font-size: var(--rh-font-size-body-text-xs, 0.75rem);
   font-weight: 700;
   line-height: var(--rh-line-height-body-text, 1.5);
-  min-width: var(--_badge-size, var(--rh-length-2xl, 32px));
-  padding-left: var(--rh-space-md, 8px);
-  padding-right: var(--rh-space-md, 8px);
+  padding-inline: var(--_badge-padding, var(--rh-space-md, 8px));
 }
 
-:host([state="info"]) {
-  --_color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_background-color: var(--rh-color-accent-base-on-light, #0066cc);
-}
+.on.dark { color: var(--rh-color-text-primary-on-light, #151515); }
+.on.light { color: var(--rh-color-text-primary-on-dark, #ffffff); }
 
-:host([state="success"]) {
-  --_color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_background-color: var(--rh-color-green-60, #3d7317);
-}
+.on.neutral { background-color: var(--rh-color-status-neutral); }
+.on.info { background-color: var(--rh-color-status-info); }
+.on.success { background-color: var(--rh-color-status-success); }
+.on.caution { background-color: var(--rh-color-status-caution); }
+.on.warning { background-color: var(--rh-color-status-warning); }
+.on.danger { background-color: var(--rh-color-status-danger); }
 
-:host([state="moderate"]) {
-  --_color: var(--rh-color-text-primary-on-light, #151515);
-  --_background-color: var(--rh-color-yellow-40, #dca614);
-}
-
-:host([state="important"]) {
-  --_color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_background-color: var(--rh-color-red-60, #a60000);
-}
-
-:host([state="critical"]) {
-  --_color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_background-color: var(--rh-color-red-60, #a60000);
+.on.light.warning,
+.on.light.caution {
+  color: var(--rh-color-text-primary-on-light, #151515);
 }

@@ -6,7 +6,6 @@ import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/c
 
 import styles from './rh-audio-player-scrolling-text-overflow.css';
 
-
 /**
  * Audio Player Scrolling Text Overflow
  * @slot - inline text to scroll if wider than host
@@ -21,11 +20,16 @@ export class RhAudioPlayerScrollingTextOverflow extends LitElement {
 
   #scrolling = false;
 
-  #style = getComputedStyle(this);
+  #style?: CSSStyleDeclaration;
 
   get #isScrollable() {
     const outer = this.shadowRoot?.getElementById('outer');
     return (outer?.scrollWidth ?? 0) > (outer?.clientWidth ?? 0);
+  }
+
+  connectedCallback(): void {
+    super.connectedCallback();
+    this.#style = getComputedStyle(this);
   }
 
   firstUpdated() {
@@ -36,15 +40,15 @@ export class RhAudioPlayerScrollingTextOverflow extends LitElement {
   }
 
   render() {
-    const { on = '' } = this;
-    const { direction } = this.#style;
+    const { on = 'light' } = this;
+    const { direction } = this.#style ?? {};
     return html`
       <div id="outer"
-        class="${classMap({ [on]: !!on, [direction || 'auto']: true })}"
-        @mouseover=${this.startScrolling}
-        @mouseout=${this.stopScrolling}
-        @focus=${this.startScrolling}
-        @blur=${this.stopScrolling}>
+           class="${classMap({ [on]: true, [direction || 'auto']: true })}"
+           @mouseover=${this.startScrolling}
+           @mouseout=${this.stopScrolling}
+           @focus=${this.startScrolling}
+           @blur=${this.stopScrolling}>
         <div id="inner">
           <slot class="${this.#scrolling ? 'scrolling' : ''} ${this.#isScrollable ? 'scrollable' : ''}"></slot>
         </div>

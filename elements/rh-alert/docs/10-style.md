@@ -1,84 +1,115 @@
-
 ## Style
 
-An alert is a layout including an icon, title, text, actions, and a close button. It comes in a variety of colors depending on status. A toast is a variant of alert. Instead of having a background color, it has a white background with a drop shadow.
+An alert contains title text with an icon, body text, and a close button. They
+may also include action buttons below the text or inline links. There are two
+variants, toast and inline, which serve different purposes.
 
 ### Anatomy
 
-<figure>
-  <uxdot-example width-adjustment="456px">
-    <img src="../alert-style-anatomy.svg" alt="Alert with numbers pointing to parts of the element" width="538px">
-  </uxdot-example>    
-  <figcaption>
-    <ol>
-      <li>Status icon</li>
-      <li>Title</li>
-      <li>Body text</li>
-      <li>Action buttons</li>
-      <li>Close button</li>
-      <li>Color background</li>
-      <li>White background with drop shadow</li>
-    </ol>
-  </figcaption>
-</figure>
+<uxdot-example width-adjustment="538px">
+  <img alt="Alert with numbers pointing to parts of the element"
+       src="../alert-anatomy.svg"
+       width="538px">
+</uxdot-example>
 
+1. Severity indicator
+2. Severity icon
+3. Title
+4. Body
+5. Actions
+6. Close button
+{.example-notes}
 
 ## Variants
 
 ### Inline
 
-The default alert is inline. At minimum, the status icon and title needs to be visible.
+The required elements of an Inline alert are a thin top bar or thin border,
+icon, title, close button, and a container background. Supporting text and
+buttons may or may not be included below the title to add clarity or optional
+actions.
 
-<uxdot-example width-adjustment="408px">
-  <img src="../alert-style-variant-inline.svg" alt="Two examples of an inline alert">
+<uxdot-example width-adjustment="538px">
+  <img alt="Two examples of an inline alert"
+       src="../alert-style-inline.svg">
 </uxdot-example>
 
-### Inline alternate
+### Inline, alternate
 
-There is an alternate inline alert where the border covers all sides.
+The alternate Inline alert style includes a border instead of a line which can
+be used to express more urgency or better grab the attention of a user.
 
-<uxdot-example width-adjustment="408px">
-  <img src="../alert-style-variant-inline-alt.svg" alt="Two examples of an alternate design for inline alerts">
+<uxdot-example width-adjustment="538px">
+  <img alt="Two examples of an alternate design for inline alerts"
+       src="../alert-style-inline-alt.svg">
 </uxdot-example>
 
 ### Toast
 
-Same as the inline alert, at minimum, the status icon and title needs to be visible.
+The required elements of a Toast alert are a thin top bar, icon, title, close
+button, and a white container with a subtle drop shadow. Supporting text and
+buttons may or may not be included below the title to add clarity or optional
+actions.
 
-<uxdot-example width-adjustment="456px">
-  <img src="../alert-style-variant-toast.svg" alt="Two examples of a toast alert">
+<uxdot-example width-adjustment="538px">
+  <img alt="Two examples of a toast alert"
+       src="../alert-style-toast.svg">
 </uxdot-example>
-
 
 ## Interaction states
 
-Refer to these documentation pages for interaction states.
+Interaction states are visual representations used to communicate the status of
+a component or element. The close button and any linked content are the only
+interactive elements in both alert variants.
 
-- [Button](/elements/button/style/#interaction-states)
+### Hover
 
-## Space
-
-<uxdot-example width-adjustment="456px">
-  <img src="../alert-style-spacing-1.svg" alt="Diagram of spacing for inline alerts">
+<uxdot-example width-adjustment="538px">
+  <img alt="Examples showing hover state"
+       src="../alert-interaction-states-hover.svg">
 </uxdot-example>
 
-<uxdot-example variant="full" no-border>
-  <img src="../alert-style-spacing-2.svg" alt="Diagram of spacing for toast alerts">
+### Focus
+
+<uxdot-example width-adjustment="538px">
+  <img alt="Examples showing focus state"
+       src="../alert-interaction-states-focus.svg">
 </uxdot-example>
 
-<uxdot-example width-adjustment="752px"
-               alignment="left"
-               variant="full"
-               no-border>
-  <img src="../alert-style-spacing-3.svg" alt="Diagram of spacing for alerts on mobile">
+### Active
+
+<uxdot-example width-adjustment="538px">
+  <img alt="Examples showing active state"
+       src="../alert-interaction-states-active.svg">
+</uxdot-example>
+
+## Spacing
+
+### Inline
+
+<uxdot-example width-adjustment="538px">
+  <img alt="Diagram of spacing for inline alerts"
+       src="../alert-spacing-inline.svg">
+</uxdot-example>
+
+### Toast
+
+<uxdot-example width-adjustment="538px">
+  <img alt="Diagram of spacing for toast alerts"
+       src="../alert-spacing-toast.svg">
 </uxdot-example>
 
 <rh-table>
 {% spacerTokensTable 
-    caption='',
     headingLevel="4",
     tokens="--rh-space-md, --rh-space-lg, --rh-space-xl" %}
 {% endspacerTokensTable %}
 </rh-table>
 
+### Toast (stacked)
+
+<uxdot-example variant="full" no-border>
+  <img alt="Diagram of spacing between stacked toast alerts"
+       src="../alert-spacing-toast-layout.svg">
+</uxdot-example>
 

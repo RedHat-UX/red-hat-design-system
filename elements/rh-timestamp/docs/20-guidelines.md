@@ -116,7 +116,7 @@ The format of the displayed content can be further customized by setting the cus
 To add a tooltip that displays the timestamp content as a UTC time, you can wrap `rh-timestamp` with `rh-tooltip` and set the `UTC` attribute on an additional `rh-timestamp`.
 
 <uxdot-example width-adjustment="231px">
-  <img src="{{ '../timestamp-tooltip-1.png' | url }}" alt="Timestamp with a tooltip on top showing the time with the UTC acronym at the end">
+  <img src="../timestamp-tooltip-1.png" alt="Timestamp with a tooltip on top showing the time with the UTC acronym at the end">
 </uxdot-example>
 
 <rh-code-block compact>
@@ -128,7 +128,7 @@ To add a tooltip that displays the timestamp content as a UTC time, you can wrap
 </rh-code-block>
 
 <uxdot-example width-adjustment="225px">
-  <img src="{{ '../timestamp-tooltip-2.png' | url }}" alt="Timestamp with a tooltip on top showing the time and the words Coordinated Universal Time at the end">
+  <img src="../timestamp-tooltip-2.png" alt="Timestamp with a tooltip on top showing the time and the words Coordinated Universal Time at the end">
 </uxdot-example>
 
 <rh-code-block compact>
@@ -169,7 +169,7 @@ To display relative time, set the `relative` attribute on `rh-timestamp`.
 To display relative time, set the `relative` attribute on `rh-timestamp`.
 
 <uxdot-example width-adjustment="192px">
-  <img src="{{ '../timestamp-tooltip-3.png' | url }}" alt="Timestamp with a tooltip on top showing what the date and time would be 11 months previous">
+  <img src="../timestamp-tooltip-3.png" alt="Timestamp with a tooltip on top showing what the date and time would be 11 months previous">
 </uxdot-example>
 
 <rh-code-block compact>
@@ -181,7 +181,7 @@ To display relative time, set the `relative` attribute on `rh-timestamp`.
 </rh-code-block>
 
 <uxdot-example width-adjustment="192px">
-  <img src="{{ '../timestamp-tooltip-4.png' | url }}" alt="Timestamp with a tooltip on top showing what the date and time would be in one year">
+  <img src="../timestamp-tooltip-4.png" alt="Timestamp with a tooltip on top showing what the date and time would be in one year">
 </uxdot-example>
 
 <rh-code-block compact>
@@ -239,14 +239,14 @@ Just like text, a timestamp will break to two lines as breakpoints get smaller.
 ### Large breakpoints
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="{{ '../timestamp-breakpoints-large.png' | url }}" alt="Timestamp text on desktop and tablet breakpoints">
+  <img src="../timestamp-breakpoints-large.png" alt="Timestamp text on desktop and tablet breakpoints">
 </uxdot-example>
 
 
 ### Small breakpoints
 
 <uxdot-example width-adjustment="568px" variant="full" alignment="left" no-border>
-  <img src="{{ '../timestamp-breakpoints-small.png' | url }}" alt="Timestamp text on large and small mobile breakpoints with the smallest mobile example breaking to two lines">
+  <img src="../timestamp-breakpoints-small.png" alt="Timestamp text on large and small mobile breakpoints with the smallest mobile example breaking to two lines">
 </uxdot-example>
 
 

@@ -28,14 +28,15 @@
     "importHelpers": true,
     "incremental": true,
     "inlineSources": true,
-    "module": "es2022",
-    "moduleResolution": "node",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
     "verbatimModuleSyntax": true,
     "noEmitOnError": false,
     "rootDir": ".",
     "sourceMap": true,
     "strict": true,
     "target": "es2020",
+    "skipLibCheck": true,
     "useDefineForClassFields": false,
     "typeRoots": [
       "./node_modules/@types",
@@ -43,9 +44,9 @@
     ],
     "plugins": [
       {
-        "transform": "@patternfly/pfe-tools/typescript/transformers/css-imports.cjs",
+        "transform": "typescript-transform-lit-css",
         "inline": true,
-        "minify": true
+        "cssnano": true
       },
       {
         "name": "typescript-lit-html-plugin"
@@ -57,12 +58,14 @@
     "lib": [
       "DOM.iterable",
       "DOM",
-      "es2015.iterable",
-      "es2020",
-      "es2022",
+      "ES5",
+      "ES6",
+      "ES2020",
+      "ES2022",
+      "ES2015.Generator",
+      "ESNext.Collection",
+      "ESNext.AsyncIterable",
       "ESNext.Disposable",
-      "es5",
-      "es6",
       "ScriptHost"
     ],
     "paths": {
@@ -74,6 +77,9 @@
       ],
       "@rhds/tokens/color.*": [
         "./node_modules/@rhds/tokens/js/color.*"
+      ],
+      "@rhds/tokens/css/*": [
+        "./node_modules/@rhds/tokens/css/*"
       ]
     }
   }

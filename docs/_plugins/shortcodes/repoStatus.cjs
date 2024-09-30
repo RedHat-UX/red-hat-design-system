@@ -4,7 +4,7 @@ const html = String.raw;
 const STATUS_LEGEND = {
   'Planned': {
     description: 'Ready to be worked on or ready to be released',
-    color: 'gray',
+    color: 'purple',
     variant: 'filled',
     icon: html`<rh-icon set="ui" icon="notification-fill">Planned</rh-icon>`,
     iconName: 'notification-fill',
@@ -135,36 +135,31 @@ function repoStatusTable({ repoStatus }) {
 <rh-table class="component-status-table">
   <table>
     <colgroup>
-      <col />
-      <col />
-      <col />
-      <col />
-      <col />
+      <col>
+      <col>
+      <col>
+      <col>
+      <col>
     </colgroup>
     <thead>
       <tr>
-        <th scope="col" data-label="Name">Name</th>
-        <th scope="col" data-label="Figma library">Figma library</th>
-        <th scope="col" data-label="RH Elements">RH Elements</th>
-        <th scope="col" data-label="RH Shared Libs">RH Shared Libs</th>
-        <th scope="col" data-label="Documentation">Documentation</th>
+        <th scope="col">Name</th>
+        <th scope="col">Figma library</th>
+        <th scope="col">RH Elements</th>
+        <th scope="col">RH Shared Libs</th>
+        <th scope="col">Documentation</th>
       </tr>
     </thead>
-    <tbody>${elementsList.map(listItem => html`
-      <tr>
-        <td data-label="Name">
-          <span><a href="/elements/${listItem.name.toLowerCase().trim().split(' ').join('-')}">${listItem.name}</a>
-            ${listItem.overallStatus !== 'Available' ?
-            `<rh-tag color="${STATUS_LEGEND[listItem.overallStatus].color}" variant="${STATUS_LEGEND[listItem.overallStatus].variant}" icon="${STATUS_LEGEND[listItem.overallStatus]['iconName']}">${listItem.overallStatus}</rh-tag>` : ''}</span>
+    <tbody>${elementsList.map(listItem => html`<tr>
+        <td><a href="/elements/${listItem.name.toLowerCase().trim().split(' ').join('-')}">${listItem.name}</a> ${listItem.overallStatus !== 'Available' ?
+          `<rh-tag color="${STATUS_LEGEND[listItem.overallStatus].color}"
+                   variant="${STATUS_LEGEND[listItem.overallStatus].variant}"
+                   icon="${STATUS_LEGEND[listItem.overallStatus]['iconName']}">${listItem.overallStatus}</rh-tag>` : ''}
         </td>${listItem.libraries.map(lib => html`
-        <td data-label="${lib.name}">
-          <span>
-            <rh-tag color="${STATUS_LEGEND[lib.status].color}" variant="${STATUS_LEGEND[lib.status].variant}" icon="${STATUS_LEGEND[lib.status]['iconName']}">
-              ${lib.status}
-            </rh-tag>
-          </span>
-        </td>`).join('\n').trim()}
-      </tr>`).join('\n').trim()}
+        <td><rh-tag color="${STATUS_LEGEND[lib.status].color}"
+                    variant="${STATUS_LEGEND[lib.status].variant}"
+                    icon="${STATUS_LEGEND[lib.status]['iconName']}">${lib.status}</rh-tag></td>`).join('').trim()}
+      </tr>`).join('').trim()}
     </tbody>
   </table>
 </rh-table>`;
@@ -194,15 +189,15 @@ function repoStatusChecklist({ repoStatus, heading = 'Status checklist', level =
 <rh-table class="component-status-table">
   <table>
     <colgroup>
-      <col />
-      <col />
-      <col />
+      <col>
+      <col>
+      <col>
     </colgroup>
     <thead>
       <tr>
-        <th scope="col" data-label="Property" width="20%">Property</th>
-        <th scope="col" data-label="Status" width="20%">Status</th>
-        <th scope="col" data-label="Meaning" width="60%">Meaning</th>
+        <th scope="col" width="20%">Property</th>
+        <th scope="col" width="20%">Status</th>
+        <th scope="col" width="60%">Meaning</th>
       </tr>
     </thead>
     <tbody>${statusList.map(listItem => html`
@@ -215,8 +210,8 @@ function repoStatusChecklist({ repoStatus, heading = 'Status checklist', level =
             </rh-tag>
           </span>
         </td>
-        <td data-label="Meaning">${STATUS_CHECKLIST[listItem.name][listItem.status]}</td>
-      </tr>`).join('\n').trim()}
+        <td>${STATUS_CHECKLIST[listItem.name][listItem.status]}</td>
+      </tr>`).join('').trim()}
     </tbody>
   </table>
 </rh-table>

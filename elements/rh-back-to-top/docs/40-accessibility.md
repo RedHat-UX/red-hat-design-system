@@ -3,7 +3,7 @@
 Users should have the ability to navigate to and interact with the back to top button using their keyboard.
 
 <uxdot-example width-adjustment="872px">
-  <img src="{{ '../back-to-top-keyboard-nav.png' | url }}" alt="Example of a page with footer links and a back to top button that has keyboard interaction annotations">
+  <img src="../back-to-top-keyboard-nav.png" alt="Example of a page with footer links and a back to top button that has keyboard interaction annotations">
 </uxdot-example>
 
 <rh-table>

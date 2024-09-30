@@ -1,89 +1,60 @@
 ---
-title: Tile
-layout: layouts/pages/basic.njk
+title: Overview
+heading: Tile
+sidenavTitle: Tile
+layout: layouts/pages/pattern.njk
 hasToc: true
 order: 120
 tags:
   - pattern
-importElements:
-  - rh-tile
-  - rh-cta
-  - rh-surface
-  - rh-code-block
+  - tilePatterns
+subnav:
+  collection: tilePatterns
+  order: 1
 ---
 
-<link rel="stylesheet" href="{{ '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css' | url }}">
-<link rel="stylesheet" href="{{ '/styles/samp.css' | url }}">
-
-<style>
-  .grid + rh-cta {
-    margin-block-start: var(--rh-space-lg, 16px);
-  }
-
-  rh-tile {
-    width: 320px;
-  }
-
-  rh-tile.accented-tile {
-    position: relative;
-    overflow: hidden;
-    border-radius: var(--rh-border-radius-default, 3px);
-  }
-
-  rh-tile.accented-tile::before {
-    content: '';
-    position: absolute;
-    z-index: 2;
-    display: block;
-    inset-block-start: 0;
-    inset-inline: 0;
-    border-block-start-color: var(--rh-color-brand-red-on-light, #ee0000);
-    border-block-start-width: var(--rh-border-width-lg, 3px);
-    border-block-start-style: solid;
-    pointer-events: none;
-  }
-</style>
+<link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
+<link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
+<link rel="stylesheet" data-helmet href="/styles/samp.css">
+<script type="module" data-helmet>
+  import '@rhds/elements/rh-tile/rh-tile.js';
+  import '@rhds/elements/rh-tile/rh-tile-group.js';
+  import '@rhds/elements/rh-cta/rh-cta.js';
+  import '@rhds/elements/rh-surface/rh-surface.js';
+  import '@rhds/elements/rh-code-block/rh-code-block.js';
+</script>
 
 ## Overview
 
 Tiles are flexible layouts with clickable and contained surfaces.
 
+<rh-alert state="info">These Tile patterns document different design-approved 
+  uses of the `<rh-tile>` element. Consult the [`<rh-tile>` element documentation][element]
+  for more information on how to use the tile element.</rh-alert>
 
-## Accented tile
+## Customizing tiles
 
-The accented tile pattern should be used to draw attention to a specifc tile or set of tiles. Be careful not to apply the accented tile pattern to all tiles within a page, otherwise the accent effect will be lost. After all, "if everything is special, then nothing is special."
+Tiles act as both themeable containers and also respond to the color theme from
+their themeable containers. 
 
-<div id="rhds-help-grid" class="grid sm-two-columns">
-  <div class="sample">
-    <h3>Example</h3>
-    <uxdot-example width-adjustment="752px">
-      <rh-tile class="accented-tile">
-        <h2 slot="headline"><a href="#top">Link</a></h2>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      </rh-tile>
-    </uxdot-example>
-  </div>
-  <div class="sample-code">
-    <h3>CSS</h3>
-    <rh-code-block>
-      <script type="text/css">rh-tile.accented-tile {
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--rh-border-radius-default, 3px);
-}
-rh-tile.accented-tile::before {
-  content: '';
-  position: absolute;
-  z-index: 2;
-  display: block;
-  inset-block-start: 0;
-  inset-inline: 0;
-  border-block-start-color: var(--rh-color-brand-red-on-light, #ee0000);
-  border-block-start-width: var(--rh-border-width-lg, 3px);
-  border-block-start-style: solid;
-  pointer-events: none;
-}</script>
-    </rh-code-block>
-  </div>
-</div>
-<rh-cta><a href="/elements/tile/demos/#demo-accented-tiles">View accented tile demo</a></rh-cta>
+Customize tiles by setting custom values for the element's color tokens. By 
+setting the theme tokens for both `dark` and `light` color themes, you can theme 
+an entire page or section.
+
+Examples include:
+
+ - [`--rh-color-border-interactive-on-light`](/tokens/color/#rh-color-border-interactive-on-light)
+ - [`--rh-color-border-interactive-on-dark`](/tokens/color/#rh-color-border-interactive-on-dark)
+ - [`--rh-color-interactive-primary-hover-on-light`](/tokens/color/#rh-color-interactive-primary-hover-on-light)
+ - [`--rh-color-interactive-primary-hover-on-dark`](/tokens/color/#rh-color-interactive-primary-hover-on-dark)
+ - [`--rh-color-text-primary-on-light`](/tokens/color/#rh-color-text-primary-on-light)
+ - [`--rh-color-text-primary-on-dark`](/tokens/color/#rh-color-text-primary-on-dark)
+
+For more information, please see the docs on [theming][theming] and
+[`<rh-tile>` css custom properties][css-props].
+
+{% uxdotPattern stacked=true, target="custom-tiles" %}{% include './patterns/custom-themes.html' %}{% enduxdotPattern %}
+
+[element]: /elements/tile/
+[css-props]: /elements/tile/code/#css-custom-properties
+[theming]: /theming/

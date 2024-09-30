@@ -1,63 +1,32 @@
-<style>
-  .example-avatar-card::part(body) {
-    margin-block-start: var(--rh-space-lg, 16px);
-  }
-
-  .example-avatar-card p {
-    margin-block-start: 0;
-  }
-
-  .example-avatar-card h4 {
-    font-weight: var(--rh-font-weight-heading-regular, 300);
-    font-size: var(--rh-font-size-body-text-md, 1rem);
-    font-family: var(--rh-font-family-body-text);
-    line-height: var(--rh-line-height-body-text, 1.5);
-  }
-</style>
-
-<uxdot-pattern id="avatars-card">
-  <rh-card class="example-avatar-card">
-    <h4 slot="header">Title, Lg</h4>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit
-      libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id
-      elit. Donec id elit non mi porta gravida at eget metus.</p>
-    <rh-avatar name="First name Last name"
-      subtitle="Job title, Company name"></rh-avatar>
-    <rh-avatar name="First name Last name"
-      subtitle="Job title, Company name"></rh-avatar>
-    <rh-avatar name="First name Last name"
-      subtitle="Job title, Company name"></rh-avatar>
-  </rh-card>
-  <rh-code-block slot="html" actions="copy">
-    <span slot="action-label-copy">Copy to Clipboard</span>
-    <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
-    <script type="text/html"><rh-card class="example-avatar-card">
+<rh-card class="example-avatar-card">
   <h4 slot="header">Title, Lg</h4>
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit
     libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id
     elit. Donec id elit non mi porta gravida at eget metus.</p>
   <rh-avatar name="First name Last name"
-    subtitle="Job title, Company name"></rh-avatar>
+             subtitle="Job title, Company name"></rh-avatar>
   <rh-avatar name="First name Last name"
-    subtitle="Job title, Company name"></rh-avatar>
+             subtitle="Job title, Company name"></rh-avatar>
   <rh-avatar name="First name Last name"
-    subtitle="Job title, Company name"></rh-avatar>
-</rh-card></script>
-  </rh-code-block>
-  <rh-code-block slot="css" actions="copy">
-    <span slot="action-label-copy">Copy to Clipboard</span>
-    <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
-    <script type="text/css">.example-avatar-card::part(body) {
-  margin-block-start: var(--rh-space-lg, 16px);
-}
-.example-avatar-card p {
-  margin-block-start: 0;
-}
-.example-avatar-card h4 {
-  font-weight: var(--rh-font-weight-heading-regular, 300);
-  font-size: var(--rh-font-size-body-text-md, 1rem);
-  font-family: var(--rh-font-family-body-text);
-  line-height: var(--rh-line-height-body-text, 1.5);
-}</script>
-  </rh-code-block>
-</uxdot-pattern>
+             subtitle="Job title, Company name"></rh-avatar>
+</rh-card>
+
+<style>
+  .example-avatar-card {
+    width: 360px;
+    &::part(body) {
+      margin-block-start: var(--rh-space-lg, 16px);
+    }
+
+    & p {
+      margin-block-start: 0;
+    }
+
+    & h4 {
+      font-weight: var(--rh-font-weight-heading-regular, 300);
+      font-size: var(--rh-font-size-body-text-md, 1rem);
+      font-family: var(--rh-font-family-body-text);
+      line-height: var(--rh-line-height-body-text, 1.5);
+    }
+  }
+</style>

@@ -1,0 +1,23 @@
+<rh-card>
+  <h2 slot="header">Consumer</h2>
+  <rh-tag slot="header" icon="info" color="purple">passive</rh-tag>
+  <p>This card acts as a consumer.
+    It will always receive its parent's <code>ColorTheme</code>.</p>
+  <rh-cta slot="footer" href="/elements/card/">Read card docs</rh-cta>
+</rh-card>
+
+<rh-card id="provider-card" color-palette="lightest">
+  <h2 slot="header">Provider</h2>
+  <rh-tag slot="header" icon="info" color="green">active</rh-tag>
+  <p>This card acts as a provider.
+    Try changing this card's
+    <code>color-palette</code>
+    and see how it affects this card's children.
+  </p>
+  <label for="provider-picker">
+    Set this card's color palette.
+    <rh-context-picker id="provider-picker" target="provider-card" allow="darkest, lighter, lightest" value="lightest"></rh-context-picker>
+  </label>
+  <rh-cta slot="footer" href="/elements/call-to-action/">Read CTA docs</rh-cta>
+</rh-card>
+

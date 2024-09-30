@@ -1,42 +1,22 @@
+
 ## Keyboard interactions
 
-A user should have the ability to navigate to and interact with alerts using their keyboard.
-
-<uxdot-example width-adjustment="456px">
-  <img src="../alert-a11y-keyboard-interactions.svg" alt="Example of the keyboard navigation tab stops on both inline and toast variant alerts">
-</uxdot-example>
-
 <rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Key">Key</th>
-        <th scope="col" data-label="Result">Result</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Key"><kbd>Tab</kbd></td>
-        <td data-label="Result">Moves focus to the next interactive element (e.g., from the close button to the first action button in the alert)</td>
-      </tr>
-      <tr>
-        <td data-label="Key"><kbd>Shift</kbd> + <kbd>Tab</kbd></td>
-        <td data-label="Result">Moves focus to the previous interactive element (e.g., from the first action button in the alert back to the close button)</td>
-      </tr>
-      <tr>
-        <td data-label="Key"><kbd>Enter</kbd></td>
-        <td data-label="Result">Selects the close button, action, or link/td>
-      </tr>
-    </tbody>
-  </table>
+
+| Key                               | Result                                                                          |
+| --------------------------------- | ------------------------------------------------------------------------------- |
+| <kbd>Tab</kbd>                    | Moves the focus to the Close button or to the next interactive element          |
+| <kbd>Shift</kbd> + <kbd>Tab</kbd> | Moves the focus outside of the component or to the previous interactive element |
+| <kbd>Enter</kbd>                  | Selects the Close button or button link with focus                              |
+
 </rh-table>
 
 ## Focus order
 
-A logical focus order helps users understand and operate our websites and products. Elements need to receive focus in an order that preserves meaning. Therefore the focus order should make sense and not jump around randomly.
+A logical focus order helps visitors understand and operate our websites. Elements need to receive focus in an order that preserves meaning. Therefore the focus order should make sense and not jump around randomly.
 
-<uxdot-example width-adjustment="456px">
-  <img src="../alert-a11y-focus-order.svg" alt="Focus goes to action buttons and to the close button last" width="490px">
+<uxdot-example width-adjustment="490px">
+  <img src="../alert-focus-order.svg" alt="Focus goes to action buttons and to the close button last" width="490px">
 </uxdot-example>
 
 {% include 'partials/accessibility/ariaguide.md' %}

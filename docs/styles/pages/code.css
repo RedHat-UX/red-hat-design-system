@@ -3,13 +3,13 @@
  * Only loaded on the {Element} > Code pages
  **/
 rh-accordion-panel[expanded]::part(container) {
-  background-color: var(--rh-color-surface-lighter, #f2f2f2);
+  background-color: var(--rh-color-surface-lighter);
 }
 
 rh-accordion-panel[expanded] rh-table {
   --rh-table-row-background-hover-color: #f8f8f8;
 
-  background-color: var(--rh-color-surface-lightest, #ffffff);
+  background-color: var(--rh-color-surface-lightest);
   margin: 0;
 }
 
@@ -18,7 +18,7 @@ rh-accordion-panel[expanded] rh-table tbody tr:last-child {
 }
 
 rh-accordion-panel[expanded] rh-table th {
-  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+  font-size: var(--rh-font-size-body-text-sm);
 }
 
 rh-accordion-panel[expanded] rh-table :is(pre, code) {
@@ -27,4 +27,8 @@ rh-accordion-panel[expanded] rh-table :is(pre, code) {
 
 rh-accordion-panel[expanded] rh-table :is(th, td) p {
   margin-block: 0;
+}
+
+rh-accordion details summary {
+  font-weight: var(--rh-font-weight-heading-medium, 500);
 }

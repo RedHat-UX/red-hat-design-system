@@ -2,16 +2,16 @@
 layout: layouts/pages/basic.njk
 title: Release notes
 hasToc: true
-importElements:
-  - rh-tile
-  - rh-tag
-  - rh-alert
 ---
 
-<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
-<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
+<link data-helmet
+      rel="stylesheet"
+      href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
+<link data-helmet
+      rel="stylesheet"
+      href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
 
-<style>
+<style data-helmet>
   rh-tile {
     margin-block: var(--rh-space-3xl, 48px);
     max-width: 320px;
@@ -44,15 +44,67 @@ importElements:
   }
 </style>
 
+<script data-helmet type="module">
+  import '@rhds/elements/rh-tile/rh-tile.js';
+  import '@rhds/elements/rh-tag/rh-tag.js';
+  import '@rhds/elements/rh-alert/rh-alert.js';
+  import '@rhds/elements/rh-table/rh-table.js';
+</script>
+
+{% macro j() %}<rh-tag color="red" size="compact">Major</rh-tag>{% endmacro %}
+{% macro i() %}<rh-tag color="blue" size="compact">Minor</rh-tag>{% endmacro %}
+{% macro p() %}<rh-tag color="gray" size="compact">Patch</rh-tag>{% endmacro %}
 
 ## Changelog
 
-We are continually making changes in order to improve and grow the Red Hat Design System. If you think changes need to be made to a component, foundation, or anything else, please submit a [GitHub issue](https://github.com/RedHat-UX/red-hat-design-system/issues).
+We are continually making changes in order to improve and grow the Red Hat 
+Design System. If you think changes need to be made to a component, foundation, 
+or anything else, please submit a [GitHub issue][issues].
 
 <rh-tile compact>
   <rh-icon slot="image" set="social" icon="github" size="lg"></rh-icon>
   <a slot="headline" href="https://github.com/RedHat-UX/red-hat-design-system/releases">Changelog</a>
 </rh-tile>
+
+<section aria-labelledby="version-2.1.0">
+
+## Version 2.1.0
+Released October 1, 2024
+
+### Highlights
+
+<rh-table>
+
+| Change                              | Type    | Notes |
+| ----------------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Theming: added theming tokens to most elements | {{i()}} | New theming tokens allow page-level and container-level colour palettes on patterns and elements. |
+| `<rh-alert>`: added new `state` colors | {{i()}} | Added `info`, `neutral`, and `caution`. Deprecated `note` (aliasing `info`), `default` (aliasing `neutral`), and `error` (aliasing `danger`). |
+| `<rh-accordion>`: improved accessibility | {{i()}} | Removed arrow-key keyboard navigation in favor of tab navigation through accordion sets. |
+| `<rh-badge>`: added new `state` colors | {{i()}} | Added `danger`, `warning`, `caution`, `neutral`, and `info`. Deprecated `critical` (aliasing `danger`), `important` (aliasing `caution`), `moderate` (aliasing `warning`), and `note` (aliasing `info`). |
+| `<rh-button>`: added `icon-set` attribute | {{i()}} | Added `icon-set="..."` attribute, which corresponds to `<rh-icon set="...">`. |
+| `<rh-card>`: added header background theming API | {{i()}} | Using `--rh-card-header-background-on-light` and `--rh-card-header-background-on-dark` CSS custom props allows for theming the card header's background. |
+| `<rh-code-block>`: added syntax highlighting | {{i()}} | Code blocks now have optional Red Hat color-themed syntax highlighting via client side or server side (prerendered prismjs code-blocks). |
+| `<rh-table>`: improved responsive layout API | {{i()}} | Added auto-generated table cell headings for responsive layout on small screens. |
+| `<rh-tag>`: added new tag colors | {{i()}} | Added `red-orange`, `yellow`, and `teal` colors. Deprecated `cyan`, aliasing it to `teal`. |
+| `<rh-tag>`: added `destaurated` variant | {{i()}} | Added `variant="desaturated"` to reduce visual prominence or to better fit a specific theme or visual style. |
+| `<rh-tag>`: added `size` attribute | {{i()}} | Added `size="compact"` for areas where space is limited. |
+| `<rh-tag>`: added optional `href` attribute | {{i()}} | Adding `href` attribute to `<rh-tag>` removes the need for slotting an anchor element (`<a>`) on linked tags. |
+| `<rh-tile>`: added `private` and `external` link variants | {{i()}} |  Using `link="private"` or `link="external"` indicates whether the link is private or external and changes the tile icon from an arrow to a padlock or external link icons respectively. |
+| `<rh-skip-link>`: added optional `href` attribute | {{i()}} | Adding `href` attribute to `<rh-skip-link>` removes the need for slotting an anchor element (`<a>`). |
+| `<rh-audio-player>`: added mini playback control | {{p()}} | Mini layout now has playback control. |
+| `<rh-navigation-secondary>`: improved accessibility | {{p()}} | Removed arrow-key keyboard navigation in favor of tab navigation through navigation items and added `accessible-label` attribute to explicitly label landmark. |
+| `<rh-subnav>`: improved accessibility | {{p()}} | Removed arrow-key keyboard navigation in favor of tab navigation through navigation items and added `accessible-label` attribute to explicitly label landmark. |
+| `<rh-table>`: added container query support | {{p()}} | Tables now adjust to the size of their containing element, not the viewport size. |
+| `<rh-tabs>`: added container query support | {{p()}} | Tabs now adjust to the size of their containing element, not the viewport size. |
+| `<rh-tabs>`: added advanced layout support | {{p()}} | Tabs can now participate in advanced layouts, like `display: subgrid`. |
+
+</rh-table>
+
+<rh-cta><a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v2.1.0">View all version 2.1 release notes</a></rh-cta>
+
+</section>
+
+</section>
 
 <section aria-labelledby="version-2.0.0">
 
@@ -60,177 +112,50 @@ We are continually making changes in order to improve and grow the Red Hat Desig
 Released August 27, 2024
 
 <rh-alert state="info">
-    <h3 slot="header">Upgrading?</h3>
-    <p>If you're upgrading to version 2.0, <a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v2.0.0">read our changelog</a> for upgrade instructions.</p>
+  <h3 slot="header">Upgrading?</h3>
+  <p>If you're upgrading to version 2.0, <a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v2.0.0">read our changelog</a> for upgrade instructions.</p>
 </rh-alert>
 
 ### Highlights
 
 <rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Change">Change</th>
-        <th scope="col" data-label="Type">Type</th>
-        <th scope="col" data-label="Notes">Notes</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Change"><code>&lt;rh-accordion&gt;</code> accessibility improvements</td>
-        <td data-label="Type"><rh-tag color="red">Major</rh-tag></td>
-        <td data-label="Notes">Removed the <code>heading-tag</code> and <code>heading-text</code> attributes from the <code>rh-accordion-header</code> element to improve accessibility.</td>
-      </tr>
-      <tr>
-        <td data-label="Change"><code>&lt;rh-accordion&gt;</code> API changes</td>
-        <td data-label="Type"><rh-tag color="red">Major</rh-tag></td>
-        <td data-label="Notes">Removed the unused <code>icon</code> part (and attribute) and the (previously undocumented) <code>container</code> part from <code>&lt;rh-accordion-header&gt;</code>. Removed unused <code>bordered</code> attribute.</td>
-      </tr>
-      <tr>
-        <td data-label="Change"><code>&lt;rh-footer&gt;</code> API changes</td>
-        <td data-label="Type"><rh-tag color="red">Major</rh-tag></td>
-        <td data-label="Notes">Removed deprecated <code>&lt;rh-global-footer&gt;</code> element and deprecated <code>global</code> slot. Use <code>&lt;rh-footer-universal&gt;</code> element and <code>universal</code> slot.</td>
-      </tr>
-      <tr>
-        <td data-label="Change"><code>&lt;rh-cta&gt;</code> API changes</td>
-        <td data-label="Type"><rh-tag color="red">Major</rh-tag></td>
-        <td data-label="Notes">Removed read-only <code>cta</code> property; use <code>data-analytics</code> attributes instead.</td>
-      </tr>
-      <tr>
-        <td data-label="Change"><code>&lt;rh-tabs&gt;</code> JavaScript API changes</td>
-        <td data-label="Type"><rh-tag color="red">Major</rh-tag></td>
-        <td data-label="Notes">Removed deprectated <code>RhTabs.isTab()</code> and <code>RhTabs.isPanel()</code> static class methods.</td>
-      </tr>
-      <tr>
-        <td data-label="Change"><code>&lt;rh-tabs&gt;</code> HTML/CSS API changes</td>
-        <td data-label="Type"><rh-tag color="red">Major</rh-tag></td>
-        <td data-label="Notes">Removed deprectated <code>theme</code> attribute for the tabs and panels; use the <code>--rh-tabs-active-border-color</code> CSS property directly.</td>
-      </tr>
-      <tr>
-        <td data-label="Change"><code>&lt;rh-dialog&gt;</code> API changes</td>
-        <td data-label="Type"><rh-tag color="red">Major</rh-tag></td>
-        <td data-label="Notes">Removed deprecated <code>--rh-modal-video-aspect-ratio</code> CSS custom property.</td>
-      </tr>
-      <tr>
-        <td data-label="Change"><code>&lt;rh-footer&gt;</code> API changes</td>
-        <td data-label="Type"><rh-tag color="red">Major</rh-tag></td>
-        <td data-label="Notes">Removed deprecated CSS custom properties.</td>
-      </tr>
-      <tr>
-        <td data-label="Change"><code>&lt;rh-table&gt;</code> API changes</td>
-        <td data-label="Type"><rh-tag color="red">Major</rh-tag></td>
-        <td data-label="Notes">Removed deprecated CSS custom properties.</td>
-      </tr>
-      <tr>
-        <td data-label="Change"><code>&lt;rh-spinner&gt;</code> API changes</td>
-        <td data-label="Type"><rh-tag color="red">Major</rh-tag></td>
-        <td data-label="Notes">Removed deprecated <code>color-palette</code> attribute.</td>
-      </tr>
-      <tr>
-        <td data-label="Change"><code>&lt;rh-cta&gt;</code> API changes</td>
-        <td data-label="Type"><rh-tag color="red">Major</rh-tag></td>
-        <td data-label="Notes">Removed previously-deprecated <code>color-palette</code> attribute.</td>
-      </tr>
-      <tr>
-        <td data-label="Change"><code>&lt;rh-alert&gt;</code> API changes</td>
-        <td data-label="Type"><rh-tag color="red">Major</rh-tag></td>
-        <td data-label="Notes">Removed deprecated <code>toast</code> boolean attribute.</td>
-      </tr>
-      <tr>
-        <td data-label="Change"><code>&lt;rh-navigation-secondary&gt;</code> API changes</td>
-        <td data-label="Type"><rh-tag color="red">Major</rh-tag></td>
-        <td data-label="Notes">Removed deprecated alias <code>&lt;rh-secondary-nav&gt;</code>.</td>
-      </tr>
-      <tr>
-        <td data-label="Change"><code>&lt;rh-tabs&gt;</code> API changes</td>
-        <td data-label="Type"><rh-tag color="red">Major</rh-tag></td>
-        <td data-label="Notes">Removed <code>box</code> and <code>vertical</code> attributes from <code>&lt;rh-tab&gt;</code>; set them on <code>&lt;rh-tabs&gt;</code> instead.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Changed RHDS entrypoint</td>
-        <td data-label="Type"><rh-tag color="red">Major</rh-tag></td>
-        <td data-label="Notes">Removed the <code>rhds.min.js</code> entrypoint and replaced it with a module that reexports all our element modules.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Added <code>&lt;rh-icon&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">Icons represents general concepts and can support text as a decorative element. The <code>&lt;rh-icon&gt;</code> element allows experience and content authors to add Red Hat icons of varying dimensions in the same area without shifting surrounding content.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Added <code>&lt;rh-switch&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">A switch toggles the state of a setting (between on and off). Switches and checkboxes can often be used interchangeably, but the switch provides a more explicit, visible representation on a setting.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Added <code>&lt;rh-health-index&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">Health index grades the health or security level of something.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Added <code>&lt;rh-video-embed&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">A video embed is a graphical preview of a video overlayed with a play button. When clicked, the YouTube video will begin playing.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Added <code>&lt;rh-breadcrumb&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">A breadcrumb navigation is a secondary navigation element consisting of a list of links to the parent pages of the current page in hierarchical order. It helps users find their place within a website or web application.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Added <code>promo</code> variant to <code>&lt;rh-card&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">The promo card variant allows users to easily display text and optionally an image side by side.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Added <code>open</code> variant and <code>small</code> size to <code>&lt;rh-pagination&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">Users can now further customize pagination by choosing which variant and size are most appropriate for their applications.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Added static <code>toast</code> method to <code>&lt;rh-alert&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">The <code>toast</code> method allows for toast-like alert messages.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Added dark color palette to <code>&lt;rh-pagination&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">Pagination now responds to themable containers like <code>&lt;rh-surface&gt;</code>.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Added light DOM shim for <code>&lt;rh-cta&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">Added <code>rh-cta-lightdom-shim.css</code> as an optional file to help reduce layout shift before element is defined, where declarative shadow DOM is not an option.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Added <code>&lt;rh-card&gt;</code> heading custom properties</td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">User can now cumstomize CSS custom properties for card headings.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Added <code>href</code> attribute to <code>&lt;rh-cta&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">Users can now set the <code>href</code> directly on <code>&lt;rh-cta&gt;</code> rather than slotting an anchor tag.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Added <code>icon-set</code> attribute to <code>&lt;rh-cta&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">Users can now choose an <code>icon-set</code> in their call-to-action.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Fix <code>&lt;rh-tile-group&gt;</code> grid layout</td>
-        <td data-label="Type"><rh-tag color="gray">Patch</rh-tag></td>
-        <td data-label="Notes">Corrected application of grid layout to slotted elements.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Updated <code>&lt;rh-cta&gt;</code> focus states</td>
-        <td data-label="Type"><rh-tag color="gray">Patch</rh-tag></td>
-        <td data-label="Notes">Changed focus states to mimic hover states and an additional outline.</td>
-      </tr>
-    </tbody>
-  </table>
+
+| Change                                                     | Type    | Notes |
+| ---------------------------------------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `<rh-accordion>` accessibility improvements                | {{j()}} | Removed the `heading-tag` and `heading-text` attributes from the `rh-accordion-header` element to improve accessibility.                                                                                                                        |
+| `<rh-accordion>` API changes                               | {{j()}} | Removed the unused `icon` part (and attribute) and the (previously undocumented) `container` part from `<rh-accordion-header>`. Removed unused `bordered` attribute.                                                                            |
+| `<rh-footer>` API changes                                  | {{j()}} | Removed deprecated `<rh-global-footer>` element and deprecated `global` slot. Use `<rh-footer-universal>` element and `universal` slot.                                                                                                         |
+| `<rh-cta>` API changes                                     | {{j()}} | Removed read-only `cta` property; use `data-analytics` attributes instead.                                                                                                                                                                      |
+| `<rh-tabs>` JavaScript API changes                         | {{j()}} | Removed deprectated `RhTabs.isTab()` and `RhTabs.isPanel()` static class methods.                                                                                                                                                               |
+| `<rh-tabs>` HTML/CSS API changes                           | {{j()}} | Removed deprectated `theme` attribute for the tabs and panels; use the `--rh-tabs-active-border-color` CSS property directly.                                                                                                                   |
+| `<rh-dialog>` API changes                                  | {{j()}} | Removed deprecated `--rh-modal-video-aspect-ratio` CSS custom property.                                                                                                                                                                         |
+| `<rh-footer>` API changes                                  | {{j()}} | Removed deprecated CSS custom properties.                                                                                                                                                                                                       |
+| `<rh-table>` API changes                                   | {{j()}} | Removed deprecated CSS custom properties.                                                                                                                                                                                                       |
+| `<rh-spinner>` API changes                                 | {{j()}} | Removed deprecated `color-palette` attribute.                                                                                                                                                                                                   |
+| `<rh-cta>` API changes                                     | {{j()}} | Removed previously-deprecated `color-palette` attribute.                                                                                                                                                                                        |
+| `<rh-alert>` API changes                                   | {{j()}} | Removed deprecated `toast` boolean attribute.                                                                                                                                                                                                   |
+| `<rh-navigation-secondary>` API changes                    | {{j()}} | Removed deprecated alias `<rh-secondary-nav>`.                                                                                                                                                                                                  |
+| `<rh-tabs>` API changes                                    | {{j()}} | Removed `box` and `vertical` attributes from `<rh-tab>`; set them on `<rh-tabs>` instead.                                                                                                                                                       |
+| Changed RHDS entrypoint                                    | {{j()}} | Removed the `rhds.min.js` entrypoint and replaced it with a module that reexports all our element modules.                                                                                                                                      |
+| Added `<rh-icon>`                                          | {{i()}} | Icons represents general concepts and can support text as a decorative element. The `<rh-icon>` element allows experience and content authors to add Red Hat icons of varying dimensions in the same area without shifting surrounding content. |
+| Added `<rh-switch>`                                        | {{i()}} | A switch toggles the state of a setting (between on and off). Switches and checkboxes can often be used interchangeably, but the switch provides a more explicit, visible representation on a setting.                                          |
+| Added `<rh-health-index>`                                  | {{i()}} | Health index grades the health or security level of something.                                                                                                                                                                                  |
+| Added `<rh-video-embed>`                                   | {{i()}} | A video embed is a graphical preview of a video overlayed with a play button. When clicked, the YouTube video will begin playing.                                                                                                               |
+| Added `<rh-breadcrumb>`                                    | {{i()}} | A breadcrumb navigation is a secondary navigation element consisting of a list of links to the parent pages of the current page in hierarchical order. It helps users find their place within a website or web application.                     |
+| Added `promo` variant to `<rh-card>`                       | {{i()}} | The promo card variant allows users to easily display text and optionally an image side by side.                                                                                                                                                |
+| Added `open` variant and `small` size to `<rh-pagination>` | {{i()}} | Users can now further customize pagination by choosing which variant and size are most appropriate for their applications.                                                                                                                      |
+| Added static `toast` method to `<rh-alert>`                | {{i()}} | The `toast` method allows for toast-like alert messages.                                                                                                                                                                                        |
+| Added dark color palette to `<rh-pagination>`              | {{i()}} | Pagination now responds to themeable containers like `<rh-surface>`.                                                                                                                                                                            |
+| Added light DOM shim for `<rh-cta>`                        | {{i()}} | Added `rh-cta-lightdom-shim.css` as an optional file to help reduce layout shift before element is defined, where declarative shadow DOM is not an option.                                                                                      |
+| Added `<rh-card>` heading custom properties                | {{i()}} | User can now cumstomize CSS custom properties for card headings.                                                                                                                                                                                |
+| Added `href` attribute to `<rh-cta>`                       | {{i()}} | Users can now set the `href` directly on `<rh-cta>` rather than slotting an anchor tag.                                                                                                                                                         |
+| Added `icon-set` attribute to `<rh-cta>`                   | {{i()}} | Users can now choose an `icon-set` in their call-to-action.                                                                                                                                                                                     |
+| Fix `<rh-tile-group>` grid layout                          | {{p()}} | Corrected application of grid layout to slotted elements.                                                                                                                                                                                       |
+| Updated `<rh-cta>` focus states                            | {{p()}} | Changed focus states to mimic hover states and an additional outline.                                                                                                                                                                           |
+
 </rh-table>
 
-<rh-cta><a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v2.0.0">View version 2.0 release notes</a></rh-cta>
+<rh-cta><a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v2.0.0">View all version 2.0 release notes</a></rh-cta>
 
 </section>
 
@@ -242,70 +167,25 @@ Released April 22, 2024
 ### Highlights
 
 <rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Change">Change</th>
-        <th scope="col" data-label="Type">Type</th>
-        <th scope="col" data-label="Notes">Notes</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Change">Added <code>&lt;rh-site-status&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">Website status communicates the operational status of a website or domain using a status icon and link. It is usually located in the Footer component.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Added <code>&lt;rh-back-to-top&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">Back to top component is a fragment link that allows users to quickly navigate to the top of a lengthy content.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Added <code>&lt;rh-skip-link&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">A skip link is used to skip repetitive content on a page. It is hidden by default and can be activated by hitting the <kbd>Tab</kbd> key after loading/refreshing a page.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Updated <code>&lt;rh-code-block&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">Added line numbers option, "Show more" toggle, copy and wrap actions, to <code>&lt;rh-code-block&gt;</code></td>
-      </tr>
-      <tr>
-        <td data-label="Change">Updated <code>&lt;rh-menu&gt;</code></td>
-        <td data-label="Type"><rh-tag color="gray">Patch</rh-tag></td>
-        <td data-label="Notes">Improved focus accessibility for keyboard navigation users on Firefox.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Updated <code>&lt;rh-button&gt;</code></td>
-        <td data-label="Type"><rh-tag color="gray">Patch</rh-tag></td>
-        <td data-label="Notes">Improved focus accessibility on Firefox.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Updated <code>&lt;rh-accordion&gt;</code></td>
-        <td data-label="Type"><rh-tag color="gray">Patch</rh-tag></td>
-        <td data-label="Notes">Added an accents slot with placement options as inline and bottom.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Updated <code>&lt;rh-alert&gt;</code></td>
-        <td data-label="Type"><rh-tag color="gray">Patch</rh-tag></td>
-        <td data-label="Notes">Make sure alerts always have to correct (lightest) color palette.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Updated <code>&lt;rh-tabs&gt;</code></td>
-        <td data-label="Type"><rh-tag color="gray">Patch</rh-tag></td>
-        <td data-label="Notes">Allow tabs with long text content to fit into different-sized containers.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Updated PatternFly Elements tooling</td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes"><a href="https://github.com/patternfly/patternfly-elements/releases/tag/%40patternfly%2Fpfe-core%403.0.0">Patch update to dependencies</a>, including Lit version 3.</td>
-      </tr>
-    </tbody>
-  </table>
+
+| Change                              | Type    | Notes |
+| ---------------------------------------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Added `<rh-site-status>`            | {{i()}} | Website status communicates the operational status of a website or domain using a status icon and link. It is usually located in the Footer component.                                  |
+| Added `<rh-back-to-top>`            | {{i()}} | Back to top component is a fragment link that allows users to quickly navigate to the top of a lengthy content.                                                                         |
+| Added `<rh-skip-link>`              | {{i()}} | A skip link is used to skip repetitive content on a page. It is hidden by default and can be activated by hitting the <span class="kbd">Tab</span> key after loading/refreshing a page. |
+| Updated `<rh-code-block>`           | {{i()}} | Added line numbers option, "Show more" toggle, copy and wrap actions, to `<rh-code-block>`                                                                                              |
+| Updated `<rh-menu>`                 | {{p()}} | Improved focus accessibility for keyboard navigation users on Firefox.                                                                                                                  |
+| Updated `<rh-button>`               | {{p()}} | Improved focus accessibility on Firefox.                                                                                                                                                |
+| Updated `<rh-accordion>`            | {{p()}} | Added an accents slot with placement options as inline and bottom.                                                                                                                      |
+| Updated `<rh-alert>`                | {{p()}} | Make sure alerts always have to correct (lightest) color palette.                                                                                                                       |
+| Updated `<rh-tabs>`                 | {{p()}} | Allow tabs with long text content to fit into different-sized containers.                                                                                                               |
+| Updated PatternFly Elements tooling | {{i()}} | [Patch update to dependencies][pfepatchlit3], including Lit version 3.                                                                                                                  |
+
 </rh-table>
 
-<rh-cta><a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.4.0">View version 1.4 release notes</a></rh-cta>
+[pfepatchlit3]: https://github.com/patternfly/patternfly-elements/releases/tag/%40patternfly%2Fpfe-core%403.0.0
+
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.4.0">View all version 1.4 release notes</rh-cta>
 
 </section>
 
@@ -317,50 +197,21 @@ Released January 11, 2024
 ### Highlights
 
 <rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Change">Change</th>
-        <th scope="col" data-label="Type">Type</th>
-        <th scope="col" data-label="Notes">Notes</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Change">Added <code>&lt;rh-surface&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">a content container that provides accessible background and font color theming for its child elements.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Updated to <code>RH Tokens 2.0</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">Uses RHDS Tokens version 2.0. <a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.3.0">See v1.3 release notes</a> for important info regarding this update.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Updated <code>&lt;rh-tabs-panel&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">Tab Panels can now have their margin and padding overridden.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Updated <code>&lt;rh-pagination&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">Added <code>numeric</code> CSS shadow part.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Added <code>accessible-label</code> to <code>&lt;rh-tile&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">Tile's form control labels can now be customized.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Fixed <code>&lt;rh-tile&gt;</code> radio and checkboxes</td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">Radio and checkbox tiles now submit their values in <code>&lt;form&gt;</code> elements.</td>
-      </tr>
-    </tbody>
-  </table>
+
+| Change                                  | Type    | Notes                                                                                                      |
+| --------------------------------------- | ------- | ---------------------------------------------------------------------------------------------------------- |
+| Added `<rh-surface>`                    | {{i()}} | a content container that provides accessible background and font color theming for its child elements.     |
+| Updated to `RH Tokens 2.0`              | {{i()}} | Uses RHDS Tokens version 2.0. [See v1.3 release notes][tokens13] for important info regarding this update. |
+| Updated `<rh-tabs-panel>`               | {{i()}} | Tab Panels can now have their margin and padding overridden.                                               |
+| Updated `<rh-pagination>`               | {{i()}} | Added `numeric` CSS shadow part.                                                                           |
+| Added `accessible-label` to `<rh-tile>` | {{i()}} | Tile's form control labels can now be customized.                                                          |
+| Fixed `<rh-tile>` radio and checkboxes  | {{i()}} | Radio and checkbox tiles now submit their values in `<form>` elements.                                     |
+
 </rh-table>
 
-<rh-cta><a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.3.0">View version 1.3 release notes</a></rh-cta>
+[tokens13]: https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.3.0
+
+<rh-cta><a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.3.0">View all version 1.3 release notes</a></rh-cta>
 
 </section>
 
@@ -372,55 +223,20 @@ Released October 16, 2023
 ### Highlights
 
 <rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Change">Change</th>
-        <th scope="col" data-label="Type">Type</th>
-        <th scope="col" data-label="Notes">Notes</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Change">Added <code>&lt;rh-table&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">A table is a container for displaying information. It allows a user to scan, examine, and compare large amounts of data.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Added <code>&lt;rh-tile&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">A tile is a flexible layout with a clickable and contained surface.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Added <code>&lt;rh-timestamp&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">Provides consistent formats for displaying date and time values.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Added <code>&lt;rh-navigation-secondary&gt;</code> current page indicator support</td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">Updated support for a current page indicator using <code>aria-current="page"</code>.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Fixed <code>&lt;rh-card&gt;</code> <code>header</code> slot</td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">Card's header slot now displays items vertically instead of stacking, allowing for more than one item to display in the header.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Improved keyboard navigation on <code>&lt;rh-navigation-secondary&gt;</code></td>
-        <td data-label="Type"><rh-tag color="gray">Patch</rh-tag></td>
-        <td data-label="Notes">Secondary Navigation now has improved keyboard navigation.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Fixed <code>&lt;rh-cta&gt;</code> <code>brick</code> variant</td>
-        <td data-label="Type"><rh-tag color="gray">Patch</rh-tag></td>
-        <td data-label="Notes">Brick variants of calls to action (CTAs) are now full width.</td>
-      </tr>
-    </tbody>
-  </table>
+
+| Change                                                           | Type    | Notes                                                                                                                           |
+| ---------------------------------------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| Added `<rh-table>`                                               | {{i()}} | A table is a container for displaying information. It allows a user to scan, examine, and compare large amounts of data.        |
+| Added `<rh-tile>`                                                | {{i()}} | A tile is a flexible layout with a clickable and contained surface.                                                             |
+| Added `<rh-timestamp>`                                           | {{i()}} | Provides consistent formats for displaying date and time values.                                                                |
+| Added `<rh-navigation-secondary>` current page indicator support | {{i()}} | Updated support for a current page indicator using `aria-current="page"`.                                                       |
+| Fixed `<rh-card>` `header` slot                                  | {{i()}} | Card's header slot now displays items vertically instead of stacking, allowing for more than one item to display in the header. |
+| Improved keyboard navigation on `<rh-navigation-secondary>`      | {{p()}} | Secondary Navigation now has improved keyboard navigation.                                                                      |
+| Fixed `<rh-cta>` `brick` variant                                 | {{p()}} | Brick variants of calls to action (CTAs) are now full width.                                                                    |
+
 </rh-table>
 
-<rh-cta><a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.2.0">View version 1.2 release notes</a></rh-cta>
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.2.0">View all version 1.2 release notes</rh-cta>
 
 </section>
 
@@ -432,45 +248,20 @@ Released July 5, 2023
 ### Highlights
 
 <rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Change">Change</th>
-        <th scope="col" data-label="Type">Type</th>
-        <th scope="col" data-label="Notes">Notes</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Change">Added <code>&lt;rh-card&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">Card creates a component with a header, body, and footer. The header and footer are optional.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Added <code>&lt;rh-audio-player&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">Audio-player creates a custom UI for audio files.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Added <code>&lt;rh-code-block&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">A container for a block of code. May be composed into a toolbar or contain copy buttons or other interactive components.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Added new CSS custom properties for <code>&lt;rh-tooltip&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">New CSS custom properties, like <code>--rh-tooltip-arrow-size</code>, <code>--rh-tooltip-content-background-color</code>, and more!</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Added outline variant for <code>&lt;rh-tag&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">Now you can use <code>variant="outline"</code>.</td>
-      </tr>
-    </tbody>
-  </table>
+
+| Change                                             | Type    | Notes |
+| ---------------------------------------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Added `<rh-card>`                                  | {{i()}} | Card creates a component with a header, body, and footer. The header and footer are optional.                            |
+| Added `<rh-audio-player>`                          | {{i()}} | Audio-player creates a custom UI for audio files.                                                                        |
+| Added `<rh-code-block>`                            | {{i()}} | A container for a block of code. May be composed into a toolbar or contain copy buttons or other interactive components. |
+| Added new CSS custom properties for `<rh-tooltip>` | {{i()}} | New CSS custom properties, like `--rh-tooltip-arrow-size`, `--rh-tooltip-content-background-color`, and more!            |
+| Added outline variant for `<rh-tag>`               | {{i()}} | Now you can use `variant="outline"`.                                                                                     |
+
 </rh-table>
 
-<rh-cta><a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.1.0">View version 1.1 release notes</a></rh-cta>
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.1.0">
+View all version 1.1 release notes
+</rh-cta>
 
 </section>
 
@@ -482,116 +273,32 @@ Released April 3, 2023
 ### Highlights
 
 <rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Change">Change</th>
-        <th scope="col" data-label="Type">Type</th>
-        <th scope="col" data-label="Notes">Notes</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Change">Added <code>&lt;rh-cta&gt;</code></td>
-        <td data-label="Type"><rh-tag color="red">Major</rh-tag></td>
-        <td data-label="Notes">A Call to Action is a styled link that directs a user to other pages or sometimes displays hidden content.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Added <code>&lt;rh-secondary-nav&gt;</code></td>
-        <td data-label="Type"><rh-tag color="red">Major</rh-tag></td>
-        <td data-label="Notes">A non-primary navigation for products and subcategory pages.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Added <code>&lt;rh-global-footer&gt;</code></td>
-        <td data-label="Type"><rh-tag color="red">Major</rh-tag></td>
-        <td data-label="Notes">A standalone global footer component.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Renamed <code>&lt;rh-global-footer&gt;</code> to <code>&lt;rh-footer-universal&gt;</code></td>
-        <td data-label="Type"><rh-tag color="red">Major</rh-tag></td>
-        <td data-label="Notes">Renamed the global slot to universal.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Renamed <code>&lt;rh-secondary-nav&gt;</code> to <code>&lt;rh-navigation-secondary&gt;</code></td>
-        <td data-label="Type"><rh-tag color="red">Major</rh-tag></td>
-        <td data-label="Notes">Renamed the component and all sub components to <code>&lt;rh-navigation-secondary-*&gt;</code>.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Added <code>&lt;rh-spinner&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">Spinner consists of an animated circle and sometimes a message, and it indicates that a section is loading.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Added <code>&lt;rh-button&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">Button is a form-associated custom element. Buttons allow users to perform an action when triggered.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Added <code>&lt;rh-tag&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">A tag is an inline-block element component that provides a distinct visual style for metadata in a UI.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Added <code>&lt;rh-blockquote&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">Displays a quote with author's name and title.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Added <code>&lt;rh-subnav&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">The subnav component is used when an alternate navigation structure is needed to provide additional navigation on a site that does not need the product branding or structural depth that <code>rh-secondary-nav</code> provides.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Added <code>&lt;rh-tabs&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">A tab set of layered content, including tab widgets and their associated tab panel.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Added <code>&lt;rh-accordion&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">Accordion displays multiple, related disclosure widgets.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Added <code>&lt;rh-alert&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">An alert displays auxiliary information on a website. An alert can have one of several states of severity.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Added <code>&lt;rh-avatar&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">An Avatar is a placeholder graphic for a photo or an image that is placed to the left or on top of text.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Added <code>&lt;rh-pagination&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">Pagination is a web component for navigating paginated content.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Added <code>&lt;rh-stat&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">An element which can be used to display statistics inside of an app.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Added <code>&lt;rh-badge&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">A badge is used to annotate other information with numerical content.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Added <code>&lt;rh-tooltip&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">A tooltip displays floating content next to a portion of inline content.</td>
-      </tr>
-      <tr>
-        <td data-label="Change">Added <code>&lt;rh-footer&gt;</code></td>
-        <td data-label="Type"><rh-tag color="blue">Minor</rh-tag></td>
-        <td data-label="Notes">A universal footer component.</td>
-      </tr>
-    </tbody>
-  </table>
+
+| Change                                                      | Type    | Notes |
+| ---------------------------------------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Added `<rh-cta>`                                            | {{j()}} | A Call to Action is a styled link that directs a user to other pages or sometimes displays hidden content.                                                                                                             |
+| Added `<rh-secondary-nav>`                                  | {{j()}} | A non-primary navigation for products and subcategory pages.                                                                                                                                                           |
+| Added `<rh-global-footer>`                                  | {{j()}} | A standalone global footer component.                                                                                                                                                                                  |
+| Renamed `<rh-global-footer>` to `<rh-footer-universal>`     | {{j()}} | Renamed the global slot to universal.                                                                                                                                                                                  |
+| Renamed `<rh-secondary-nav>` to `<rh-navigation-secondary>` | {{j()}} | Renamed the component and all sub components to `<rh-navigation-secondary-*>`.                                                                                                                                         |
+| Added `<rh-spinner>`                                        | {{i()}} | Spinner consists of an animated circle and sometimes a message, and it indicates that a section is loading.                                                                                                            |
+| Added `<rh-button>`                                         | {{i()}} | Button is a form-associated custom element. Buttons allow users to perform an action when triggered.                                                                                                                   |
+| Added `<rh-tag>`                                            | {{i()}} | A tag is an inline-block element component that provides a distinct visual style for metadata in a UI.                                                                                                                 |
+| Added `<rh-blockquote>`                                     | {{i()}} | Displays a quote with author's name and title.                                                                                                                                                                         |
+| Added `<rh-subnav>`                                         | {{i()}} | The subnav component is used when an alternate navigation structure is needed to provide additional navigation on a site that does not need the product branding or structural depth that `rh-secondary-nav` provides. |
+| Added `<rh-tabs>`                                           | {{i()}} | A tab set of layered content, including tab widgets and their associated tab panel.                                                                                                                                    |
+| Added `<rh-accordion>`                                      | {{i()}} | Accordion displays multiple, related disclosure widgets.                                                                                                                                                               |
+| Added `<rh-alert>`                                          | {{i()}} | An alert displays auxiliary information on a website. An alert can have one of several states of severity.                                                                                                             |
+| Added `<rh-avatar>`                                         | {{i()}} | An Avatar is a placeholder graphic for a photo or an image that is placed to the left or on top of text.                                                                                                               |
+| Added `<rh-pagination>`                                     | {{i()}} | Pagination is a web component for navigating paginated content.                                                                                                                                                        |
+| Added `<rh-stat>`                                           | {{i()}} | An element which can be used to display statistics inside of an app.                                                                                                                                                   |
+| Added `<rh-badge>`                                          | {{i()}} | A badge is used to annotate other information with numerical content.                                                                                                                                                  |
+| Added `<rh-tooltip>`                                        | {{i()}} | A tooltip displays floating content next to a portion of inline content.                                                                                                                                               |
+| Added `<rh-footer>`                                         | {{i()}} | A universal footer component.                                                                                                                                                                                          |
+ 
 </rh-table>
 
-
-<rh-cta><a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.0.0">View version 1.0 release notes</a></rh-cta>
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.0.0">View all version 1.0 release notes</rh-cta>
 
 </section>
 
@@ -599,11 +306,17 @@ Released April 3, 2023
 
 ## Older versions
 
-For release notes on older versions, please [view our release notes on GitHub](https://github.com/RedHat-UX/red-hat-design-system/releases).
+For release notes on older versions, please [view our release notes on 
+GitHub][releasenotes].
 
 </section>
 
 <uxdot-feedback>
   <h2>Roadmap</h2>
-  <p>For an up-to-date outline of what we're working on and what we're planning to do in the Red Hat Design System, visit <a href="/about/roadmap">our roadmap</a>.</p>
+  <p>For an up-to-date outline of what we're working on and what we're planning 
+    to do in the Red Hat Design System, visit <a href="/about/roadmap">our 
+      roadmap</a>.</p>
 </uxdot-feedback>
+
+[releasenotes]: https://github.com/RedHat-UX/red-hat-design-system/releases
+[issues]: https://github.com/RedHat-UX/red-hat-design-system/issues

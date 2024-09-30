@@ -1,0 +1,3 @@
+layout: layouts/pages/basic.njk
+tags:
+  - theming

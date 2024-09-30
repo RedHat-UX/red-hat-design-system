@@ -5,7 +5,7 @@
   min-height: 4em;
 }
 
-:host([size="sm"]) {
+:host([size='sm']) {
   --_stepper-size: var(--rh-length-2xl, 32px);
 }
 
@@ -19,6 +19,21 @@
   display: flex;
   gap: var(--rh-space-2xl, 32px) calc(var(--rh-space-xs, 4px) / 2);
   flex-wrap: wrap;
+
+  --rh-pagination-accent-color: var(--rh-color-interactive-primary-default);
+  --_numeric-a-color: var(--rh-pagination-accent-color);
+  --_numeric-a-color-hover: var(--rh-color-interactive-primary-hover);
+  --_numeric-a-color-focus: var(--rh-pagination-accent-color);
+  --_numeric-a-color-focus-outline: var(--rh-pagination-accent-color);
+  --_numeric-a-color-visited: var(--rh-color-interactive-primary-visited-default);
+  --_numeric-a-color-visited-hover: var(--rh-color-interactive-primary-visited-hover);
+  --_list-a-bg-color: var(--rh-color-surface-lighter, #f2f2f2);
+  --_list-a-current-page-border-color: var(--rh-color-border-subtle);
+  --_list-a-current-page-bg-color: var(--rh-color-surface-lightest, #ffffff);
+  --_list-a-text-color: var(--rh-color-text-primary);
+  --_stepper-bg-color: var(--rh-color-surface-lighter, #f2f2f2);
+  --_stepper-hover-focus-color: var(--rh-color-text-primary-on-dark, #ffffff);
+  --_border-top-hover-color: var(--rh-color-gray-60, #4d4d4d);
 }
 
 @container pagination (min-width: 768px) {
@@ -28,22 +43,13 @@
 }
 
 #container.dark {
-  --rh-pagination-accent-color: var(--rh-color-interactive-blue-lighter, #92c5f9);
   --rh-pagination-stepper-color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
-  --_rh-pagination-stepper-bg-color: var(--rh-color-surface-dark-alt, #292929);
   --rh-pagination-background-focused: var(--rh-color-gray-50, #707070);
-  --_rh-pagination-list-a-text-color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_rh-pagination-list-a-bg-color: var(--rh-color-surface-dark-alt, #292929);
-  --_rh-pagination-list-a-current-page-bg-color: var(--rh-color-surface-darkest, #151515);
-  --_rh-pagination-list-a-current-page-border-color: var(--rh-color-border-subtle-on-dark, #707070);
-  --_rh-pagination-border-top-hover-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
-  --_rh-pagination-stepper-hover-focus-color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_numeric-a-color: var(--rh-pagination-accent-color);
-  --_numeric-a-color-hover: var(--rh-color-interactive-blue-lightest, #b9dafc);
-  --_numeric-a-color-visited: var(--rh-color-interactive-purple-lighter, #b6a6e9);
-  --_numeric-a-color-visited-hover: var(--rh-color-interactive-purple-lightest, #ece6ff);
-  --_numeric-a-focus-color: var(--rh-pagination-accent-color);
-  --_numeric-a-focus-outline-color: var(--rh-pagination-accent-color);
+  --_list-a-bg-color: var(--rh-color-surface-dark-alt, #292929);
+  --_list-a-current-page-bg-color: var(--rh-color-surface-darkest, #151515);
+  --_border-top-hover-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
+  --_stepper-bg-color: var(--rh-color-surface-dark-alt, #292929);
+  --_stepper-hover-focus-color: var(--rh-color-text-primary-on-dark, #ffffff);
 }
 
 .visually-hidden {
@@ -100,15 +106,11 @@ svg {
 }
 
 .stepper {
-  background-color:
-    var(
-        --_rh-pagination-stepper-bg-color,
-        var(--rh-color-surface-lighter, #f2f2f2)
-      );
+  background-color: var(--_stepper-bg-color);
   border: var(--rh-border-width-sm, 1px) solid transparent;
   color: var(--rh-pagination-stepper-color, var(--rh-color-gray-50, #707070));
   display: grid;
-  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-heading-xs, 1.25rem);
   height: var(--_stepper-size);
   place-content: center;
@@ -121,18 +123,14 @@ svg {
   border-radius: var(--rh-border-radius-default, 3px);
   outline-offset: -2px;
   outline: var(--rh-border-width-md, 2px) solid transparent;
-  outline-color:
-    var(
-        --rh-pagination-accent-color,
-        var(--rh-color-interactive-blue-darker, #0066cc)
-      );
+  outline-color: var(--rh-pagination-accent-color, var(--rh-color-interactive-primary-default));
 }
 
 .stepper:hover:after,
 .stepper:focus:before,
 .stepper:focus:after {
   border-block-start-style: solid;
-  content: "";
+  content: '';
   left: -1px;
   position: absolute;
   top: -1px;
@@ -141,20 +139,12 @@ svg {
 
 .stepper:hover:after,
 .stepper:focus:before {
-  border-block-color:
-    var(
-        --_rh-pagination-border-top-hover-color,
-        var(--rh-color-gray-60, #4d4d4d)
-      );
+  border-block-color: var(--_border-top-hover-color);
   border-block-width: var(--rh-border-width-lg, 3px);
 }
 
 .stepper:focus:after {
-  border-block-color:
-    var(
-        --rh-pagination-accent-color,
-        var(--rh-color-border-interactive-on-light, #0066cc)
-      );
+  border-block-color: var(--rh-pagination-accent-color, var(--rh-color-border-interactive));
   border-block-width: var(--rh-border-width-md, 2px);
 }
 
@@ -187,7 +177,7 @@ input {
   width: var(--rh-length-4xl, 64px);
   font-size: var(--rh-font-size-body-text-md, 1rem);
   background: var(--rh-color-surface-lightest, #ffffff);
-  border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle-on-light, #c7c7c7);
+  border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
   border-block-end-color: var(--rh-color-gray-40, #a3a3a3);
   box-sizing: border-box;
   padding-block: var(--rh-space-sm, 6px);
@@ -198,7 +188,7 @@ input:focus {
   border:
     var(--rh-border-width-md, 2px)
     solid
-    var(--rh-pagination-accent-color, var(--rh-color-interactive-blue-darker, #0066cc));
+    var(--rh-pagination-accent-color, var(--rh-color-interactive-primary-default));
   padding-block: calc(var(--rh-space-sm, 6px) - 1px);
   padding-inline: calc(var(--rh-space-md, 8px) - 1px);
   outline: none;
@@ -244,32 +234,28 @@ input:invalid:focus {
 
 #numeric a {
   text-decoration: none;
-  color: var(--_numeric-a-color, var(--rh-color-interactive-blue-darker, #0066cc));
+  color: var(--_numeric-a-color);
 }
 
 #numeric a:hover {
-  color: var(--_numeric-a-color-hover, var(--rh-color-interactive-blue-darkest, #003366));
+  color: var(--_numeric-a-color-hover);
   text-decoration: underline;
 }
 
 #numeric a:visited {
-  color: var(--_numeric-a-color-visited, var(--rh-color-interactive-purple-darker, #5e40be));
+  color: var(--_numeric-a-color-visited);
 }
 
 #numeric a:focus {
   border-radius: var(--rh-border-radius-default, 3px);
-  color: var(--_numeric-a-focus-color, var(--rh-color-interactive-blue-darker, #0066cc));
+  color: var(--_numeric-a-color-focus);
   outline: var(--rh-border-width-md, 2px) solid transparent;
-  outline-color:
-    var(
-        --_numeric-a-focus-outline-color,
-        var(--rh-color-border-interactive-on-light, #0066cc)
-      );
+  outline-color: var(--_numeric-a-color-focus-outline);
   text-decoration: underline;
 }
 
 #numeric a:visited:hover {
-  color: var(--_numeric-a-color-visited-hover, var(--rh-color-interactive-purple-darkest, #21134d));
+  color: var(--_numeric-a-color-visited-hover);
 }
 
 @container pagination (min-width: 344px) {
@@ -304,13 +290,13 @@ input:invalid:focus {
  * OPEN VARIANT
  *****************************************************************************/
 
-:host([variant|="open"]) .stepper {
-  --_rh-pagination-stepper-bg-color: transparent;
+:host([variant|='open']) .stepper {
+  --_stepper-bg-color: transparent;
 }
 
-:host([variant|="open"]) .stepper:hover:after,
-:host([variant|="open"]) .stepper:focus:before,
-:host([variant|="open"]) .stepper:focus:after {
+:host([variant|='open']) .stepper:hover:after,
+:host([variant|='open']) .stepper:focus:before,
+:host([variant|='open']) .stepper:focus:after {
   border-block-start-style: none;
   border-block-end-style: solid;
   inset-block-end: -1px;

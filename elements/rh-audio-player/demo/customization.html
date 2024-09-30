@@ -16,7 +16,7 @@
           <option value="full" selected>Full</option>
           <option value="compact-wide">Compact Wide</option>
           <option value="compact">Compact</option>
-          <option value="">Mini</option>
+          <option value="mini">Mini</option>
         </select>
       </label>
     </form>
@@ -453,6 +453,7 @@
 
 <style>
   #customization {
+    height: 100%;
     & form {
       display: contents;
     }
@@ -510,7 +511,7 @@
     const values = Object.fromEntries(data.entries());
     const { custom, layout } = values;
     const colorClass = custom || '';
-    player.layout = layout || undefined;
+    player.layout = layout;
     player.className = colorClass;
     player.hasAccentColor = custom.match(/^(cyan|purple)/);
     player.poster =

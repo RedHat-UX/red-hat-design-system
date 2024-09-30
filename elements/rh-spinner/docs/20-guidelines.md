@@ -18,7 +18,7 @@ The text label should be as brief and general as possible in order to give users
 enough time to read it.
 
 <uxdot-example width-adjustment="721px">
-  <img src="{{ '../spinner-text-label.png' | url }}" alt="Two spinners; one with a short text label, which is acceptable, and one with a very long text label which is not acceptable">
+  <img src="../spinner-text-label.png" alt="Two spinners; one with a short text label, which is acceptable, and one with a very long text label which is not acceptable">
 </uxdot-example>
 
 <rh-table>
@@ -50,7 +50,7 @@ occupies, use a spinner size that matches.
 - If you use the small size without a text label, it should only be used in buttons or other containers of equal size
 
 <uxdot-example width-adjustment="992px" variant="full" alignment="left" no-border>
-  <img src="{{ '../spinner-examples.png' | url }}" alt="Spinner usage examples; from top to bottom, an app, a dialog, a card, and a 
+  <img src="../spinner-examples.png" alt="Spinner usage examples; from top to bottom, an app, a dialog, a card, and a 
 button showing spinners of various sizes with and without text labels">
 </uxdot-example>
 
@@ -60,7 +60,7 @@ button showing spinners of various sizes with and without text labels">
 A spinner is always oriented above the optional text label, if visible.
 
 <uxdot-example width-adjustment="583px">
-  <img src="{{ '../spinner-orientation.png' | url }}" alt="Two spinners; one showing the correct orientation and the other showing an incorrect orientation">
+  <img src="../spinner-orientation.png" alt="Two spinners; one showing the correct orientation and the other showing an incorrect orientation">
 </uxdot-example>
 
 
@@ -78,7 +78,7 @@ centered helps users understand that the whole area is loading instead of one
 specific part.
 
 <uxdot-example width-adjustment="360px" danger>
-  <img src="{{ '../spinner-best-practice-1.png' | url }}" alt="A spinner not horizontally or vertically centered in a container which is incorrect usage">
+  <img src="../spinner-best-practice-1.png" alt="A spinner not horizontally or vertically centered in a container which is incorrect usage">
 </uxdot-example>
 
 
@@ -88,7 +88,7 @@ A tooltip should not be cut off by the browser window. Change the orientation if
 it does.
 
 <uxdot-example width-adjustment="768px" danger>
-  <img src="{{ '../spinner-best-practice-2.png' | url }}" alt="A small spinner used in a large container which is incorrect usage">
+  <img src="../spinner-best-practice-2.png" alt="A small spinner used in a large container which is incorrect usage">
 </uxdot-example>
 
 
@@ -98,5 +98,5 @@ Do not change the orientation, the spinner is always positioned on top of the
 text label.
 
 <uxdot-example width-adjustment="583px" danger>
-  <img src="{{ '../spinner-best-practice-3.png' | url }}" alt="Two spinners with different orientations which is incorrect usage">
+  <img src="../spinner-best-practice-3.png" alt="Two spinners with different orientations which is incorrect usage">
 </uxdot-example>
