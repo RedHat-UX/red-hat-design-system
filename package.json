@@ -292,7 +292,7 @@
     "@lit/context": "^1.1.2",
     "@patternfly/pfe-core": "^4.0.2",
     "@rhds/icons": "^1.1.2",
-    "@rhds/tokens": "^2.1.0-next.15",
+    "@rhds/tokens": "^2.1.0",
     "lit": "^3.2.0",
     "prism-esm": "^1.29.0-fix.6",
     "tslib": "^2.7.0",
