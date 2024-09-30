@@ -66,6 +66,46 @@ or anything else, please submit a [GitHub issue][issues].
   <a slot="headline" href="https://github.com/RedHat-UX/red-hat-design-system/releases">Changelog</a>
 </rh-tile>
 
+<section aria-labelledby="version-2.1.0">
+
+## Version 2.1.0
+Released October 1, 2024
+
+### Highlights
+
+<rh-table>
+
+| Change                              | Type    | Notes |
+| ----------------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Theming: added theming tokens to most elements | {{i()}} | New theming tokens allow page-level and container-level colour palettes on patterns and elements. |
+| `<rh-alert>`: added new `state` colors | {{i()}} | Added `info`, `neutral`, and `caution`. Deprecated `note` (aliasing `info`), `default` (aliasing `neutral`), and `error` (aliasing `danger`) |
+| `<rh-accordion>`: improved accessibility | {{i()}} | Removed arrow-key keyboard navigation in favor of tab navigation through accordion sets |
+| `<rh-badge>`: added new `state` colors | {{i()}} | Added `danger`, `warning`, `caution`, `neutral`, and `info`. Deprecated `critical` (aliasing `danger`), `important` (aliasing `caution`), `moderate` (aliasing `warning`), and `note` (aliasing `info`) |
+| `<rh-button>`: added `icon-set` attribute | {{i()}} | Added `icon-set="..."` attribute, which corresponds to `<rh-icon set="...">` |
+| `<rh-card>`: added header background theming API | {{i()}} | Using `--rh-card-header-background-on-light` and `--rh-card-header-background-on-dark` CSS custom props allows for theming the card header's background |
+| `<rh-code-block>`: added syntax highlighting | {{i()}} | Code blocks now have optional Red Hat color-themed syntax highlighting via client side or server side (prerendered prismjs code-blocks). |
+| `<rh-table>`: improved responsive layout API | {{i()}} | Added auto-generated table cell headings for responsive layout on small screens |
+| `<rh-tag>`: added new tag colors | {{i()}} | Added `red-orange`, `yellow`, and `teal` colors. Deprecated `cyan`, aliasing it to `teal` |
+| `<rh-tag>`: added `destaurated` variant | {{i()}} | Added `variant="desaturated"` to reduce visual prominence or to better fit a specific theme or visual style |
+| `<rh-tag>`: added `size` attribute | {{i()}} | Added `size="compact"` for areas where space is limited |
+| `<rh-tag>`: added optional `href` attribute | {{i()}} | Adding `href` attribute to `<rh-tag>` removes the need for slotting an anchor element (`<a>`) on liked tags |
+| `<rh-tile>`: added `private` and `external` link variants | {{i()}} |  Using `link="private"` or `link="external"` indicates whether the link is private or external and changes the tile icon from an arrow to a padlock or external link icons respectively |
+| `<rh-skip-link>`: added optional `href` attribute | {{i()}} | Adding `href` attribute to `<rh-skip-link>` removes the need for slotting an anchor element (`<a>`) |
+| `<rh-audio-player>`: added mini playback control | {{p()}} | Mini layout now has playback control |
+| `<rh-navigation-secondary>`: improved accessibility | {{p()}} | Removed arrow-key keyboard navigation in favor of tab navigation through navigation items and added `accessible-label` attribute to explicitly label landmark |
+| `<rh-subnav>`: improved accessibility | {{p()}} | Removed arrow-key keyboard navigation in favor of tab navigation through navigation items and added `accessible-label` attribute to explicitly label landmark |
+| `<rh-table>`: added container query support | {{p()}} | Tables now adjust to the size of their containing element, not just viewport size |
+| `<rh-tabs>`: added container query support | {{p()}} | Tabs now adjust to the size of their containing element, not just viewport size |
+| `<rh-tabs>`: added advanced layout support | {{p()}} | Tabs can now participate in advanced layouts, like `display: subgrid` |
+
+</rh-table>
+
+<rh-cta><a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v2.1.0">View all version 2.1 release notes</a></rh-cta>
+
+</section>
+
+</section>
+
 <section aria-labelledby="version-2.0.0">
 
 ## Version 2.0.0
@@ -80,8 +120,8 @@ Released August 27, 2024
 
 <rh-table>
 
-| Change                                                     | Type    | Notes                                                                                                                                                                                                                                           |
-| ---------------------------------------------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Change                                                     | Type    | Notes |
+| ---------------------------------------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `<rh-accordion>` accessibility improvements                | {{j()}} | Removed the `heading-tag` and `heading-text` attributes from the `rh-accordion-header` element to improve accessibility.                                                                                                                        |
 | `<rh-accordion>` API changes                               | {{j()}} | Removed the unused `icon` part (and attribute) and the (previously undocumented) `container` part from `<rh-accordion-header>`. Removed unused `bordered` attribute.                                                                            |
 | `<rh-footer>` API changes                                  | {{j()}} | Removed deprecated `<rh-global-footer>` element and deprecated `global` slot. Use `<rh-footer-universal>` element and `universal` slot.                                                                                                         |
@@ -115,7 +155,7 @@ Released August 27, 2024
 
 </rh-table>
 
-<rh-cta><a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v2.0.0">View version 2.0 release notes</a></rh-cta>
+<rh-cta><a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v2.0.0">View all version 2.0 release notes</a></rh-cta>
 
 </section>
 
@@ -128,8 +168,8 @@ Released April 22, 2024
 
 <rh-table>
 
-| Change                              | Type    | Notes                                                                                                                                                                                   |
-| ----------------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Change                              | Type    | Notes |
+| ---------------------------------------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Added `<rh-site-status>`            | {{i()}} | Website status communicates the operational status of a website or domain using a status icon and link. It is usually located in the Footer component.                                  |
 | Added `<rh-back-to-top>`            | {{i()}} | Back to top component is a fragment link that allows users to quickly navigate to the top of a lengthy content.                                                                         |
 | Added `<rh-skip-link>`              | {{i()}} | A skip link is used to skip repetitive content on a page. It is hidden by default and can be activated by hitting the <span class="kbd">Tab</span> key after loading/refreshing a page. |
@@ -145,7 +185,7 @@ Released April 22, 2024
 
 [pfepatchlit3]: https://github.com/patternfly/patternfly-elements/releases/tag/%40patternfly%2Fpfe-core%403.0.0
 
-<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.4.0">View version 1.4 release notes</rh-cta>
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.4.0">View all version 1.4 release notes</rh-cta>
 
 </section>
 
@@ -171,7 +211,7 @@ Released January 11, 2024
 
 [tokens13]: https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.3.0
 
-<rh-cta><a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.3.0">View version 1.3 release notes</a></rh-cta>
+<rh-cta><a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.3.0">View all version 1.3 release notes</a></rh-cta>
 
 </section>
 
@@ -196,7 +236,7 @@ Released October 16, 2023
 
 </rh-table>
 
-<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.2.0">View version 1.2 release notes</rh-cta>
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.2.0">View all version 1.2 release notes</rh-cta>
 
 </section>
 
@@ -209,8 +249,8 @@ Released July 5, 2023
 
 <rh-table>
 
-| Change                                             | Type    | Notes                                                                                                                    |
-| -------------------------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Change                                             | Type    | Notes |
+| ---------------------------------------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Added `<rh-card>`                                  | {{i()}} | Card creates a component with a header, body, and footer. The header and footer are optional.                            |
 | Added `<rh-audio-player>`                          | {{i()}} | Audio-player creates a custom UI for audio files.                                                                        |
 | Added `<rh-code-block>`                            | {{i()}} | A container for a block of code. May be composed into a toolbar or contain copy buttons or other interactive components. |
@@ -220,7 +260,7 @@ Released July 5, 2023
 </rh-table>
 
 <rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.1.0">
-View version 1.1 release notes
+View all version 1.1 release notes
 </rh-cta>
 
 </section>
@@ -234,8 +274,8 @@ Released April 3, 2023
 
 <rh-table>
 
-| Change                                                      | Type    | Notes                                                                                                                                                                                                                  |
-| ----------------------------------------------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Change                                                      | Type    | Notes |
+| ---------------------------------------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Added `<rh-cta>`                                            | {{j()}} | A Call to Action is a styled link that directs a user to other pages or sometimes displays hidden content.                                                                                                             |
 | Added `<rh-secondary-nav>`                                  | {{j()}} | A non-primary navigation for products and subcategory pages.                                                                                                                                                           |
 | Added `<rh-global-footer>`                                  | {{j()}} | A standalone global footer component.                                                                                                                                                                                  |
@@ -258,7 +298,7 @@ Released April 3, 2023
  
 </rh-table>
 
-<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.0.0">View version 1.0 release notes</rh-cta>
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.0.0">View all version 1.0 release notes</rh-cta>
 
 </section>
 
