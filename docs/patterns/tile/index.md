@@ -24,35 +24,6 @@ subnav:
   import '@rhds/elements/rh-code-block/rh-code-block.js';
 </script>
 
-<style data-helmet>
-  .grid + rh-cta {
-    margin-block-start: var(--rh-space-lg);
-  }
-
-  rh-tile {
-    width: 320px;
-  }
-
-  rh-tile.accented-tile {
-    position: relative;
-    overflow: hidden;
-    border-radius: var(--rh-border-radius-default);
-  }
-
-  rh-tile.accented-tile::before {
-    content: '';
-    position: absolute;
-    z-index: 2;
-    display: block;
-    inset-block-start: 0;
-    inset-inline: 0;
-    border-block-start-color: var(--rh-color-brand-red);
-    border-block-start-width: var--rh-border-width-lg;
-    border-block-start-style: solid;
-    pointer-events: none;
-  }
-</style>
-
 ## Overview
 
 Tiles are flexible layouts with clickable and contained surfaces.
@@ -82,7 +53,7 @@ Examples include:
 For more information, please see the docs on [theming][theming] and
 [`<rh-tile>` css custom properties][css-props].
 
-{% uxdotPattern stacked=true %}{% include './patterns/custom-themes.html' %}{% enduxdotPattern %}
+{% uxdotPattern stacked=true, target="custom-tiles" %}{% include './patterns/custom-themes.html' %}{% enduxdotPattern %}
 
 [element]: /elements/tile/
 [css-props]: /elements/tile/code/#css-custom-properties
