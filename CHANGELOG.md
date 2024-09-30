@@ -1,5 +1,161 @@
 # @rhds/elements
 
+## 2.1.0
+
+### Minor Changes
+
+- 82ffb12: `<rh-tile>`: add `link="private"` attribute, indicating that the link is
+  private, which changes the link icon from an arrow to a padlock, and
+  `link="external"` attribute, which changes the link icon to the "external link"
+  icon
+- 82ffb12: `<rh-card>` added `--rh-card-header-background-on-light` and `--rh-card-header-background-on-dark` CSS custom properties
+
+  ```css
+  rh-card.custom-card {
+    --rh-card-header-background-on-light: cornflowerblue;
+    --rh-card-header-background-on-dark: darkblue;
+  }
+  ```
+
+- 82ffb12: `<rh-subnav>`:
+
+  - removed arrow-key keyboard navigation in favor of tab navigation.
+  - add `accessible-label` attribute to explicitly label landmark.
+  - corrects overflow icons
+
+  ```html
+  <rh-subnav accessible-label="Customer service">
+   <a href="#" active>Help</a>
+   <a href="#">Contact Us</a>
+   <a href="#">FAQ</a>
+  </rh-subnav>
+  ```
+
+- 82ffb12: `<rh-code-block>`: syntax highlighting via prerendered prismjs code-blocks. Use
+  the `highlighting="prerendered"` attribute when rendering code blocks using
+  server side prism, e.g. in a markdown fenced code block.
+
+  ```html
+  <rh-code-block highlighting="prerendered">
+    <pre class="language-css"><code class="language-css"><span class="token selector">a</span> <span class="token punctuation">{</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--rh-color-interactive-primary-default<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span></pre>
+  </rh-code-block>
+  ```
+
+- 82ffb12: `<rh-tag>` added `red-orange`, `yellow`, and `teal` colors. **NOTE** that `cyan` is now deprecated, but will continue to work using the `teal` colors.
+- 82ffb12: `<rh-table>`: added auto-generated table cell headings for responsive layout on small screens.
+- 82ffb12: `<rh-tag>`: added desaturated variant:
+
+  ```html
+  <rh-tag variant="desaturated">New</rh-tag>
+  ```
+
+- 82ffb12: `<rh-tag>`: added `size` attribute.
+
+  ```html
+  <rh-tag size="compact">New</rh-tag>
+  ```
+
+- 82ffb12: `<rh-alert>`: added new states: `info`, `neutral`, and `caution`, and deprecated
+  `note` (now an alias to `info`), `default` (now an alias to `neutral`), and
+  `error` (now an alias to `danger`).
+- 82ffb12: `<rh-button>`: add `icon-set` attribute, corresponding to `<rh-icon set="...">`
+
+  ```html
+  <rh-button icon="giftbox" icon-set="standard">Donate</rh-button>
+  ```
+
+- 82ffb12: `<rh-navigation-secondary>`:
+
+  - removed arrow-key keyboard navigation in favor of tab navigation.
+  - add `accessible-label` attribute to explicitly label landmark.
+
+  ```
+  <rh-navigation-secondary accessible-label="Main">
+   ...
+  </rh-navigation-secondary>
+  ```
+
+- 82ffb12: `<rh-badge>`: added new states:
+
+  - `danger`
+  - `warning`
+  - `caution`
+  - `neutral`
+  - `info`
+
+  We deprecated:
+
+  - `critical` (now an alias to `danger`)
+  - `important` (now an alias to `caution`)
+  - `moderate` (now an alias to `warning`)
+  - `note` (now an alias to `info`)
+
+- 82ffb12: `<rh-skip-link>`: added optional `href` attribute:
+
+  ```html
+  <rh-skip-link href="#main-content">Skip to main content</rh-skip-link>
+  ```
+
+  is equivalent to:
+
+  ```html
+  <rh-skip-link>
+    <a href="#main-content">Skip to main content</a>
+  </rh-skip-link>
+  ```
+
+- 82ffb12: `<rh-code-block>`: Added `highlighting="client"` for client-side syntax highlighting with Red Hat colour scheme
+- 82ffb12: `<rh-tag>`: added `href` attribute
+
+  ```html
+  <rh-tag icon="information-fill" href="/info">Info</rh-tag>
+  ```
+
+- 82ffb12: Theming: Added [theming tokens][theming] to most elements
+
+  Theming tokens let authors respond to the currently-active colour palette, and
+  are especially useful when implementing [patterns][patterns] using themeable
+  elements.
+
+  ```html
+  <rh-card class="example-logo-text-and-cta">
+    <p>Lorem ipsum dolor sit amet, <em>consectetur adipiscing elit</em>.</p>
+    <rh-cta slot="footer" href="#">Call to action</rh-cta>
+  </rh-card>
+
+  <style>
+    .example-logo-text-and-cta {
+      width: 360px;
+      & em {
+        color: var(--rh-color-accent-base);
+      }
+    }
+  </style>
+  ```
+
+  [theming]: ux.redhat.com/theming
+  [patterns]: https://ux.redhat.com/patterns/
+
+### Patch Changes
+
+- 82ffb12: `<rh-audio-player>`: corrected focus when keyboard navigating options menu
+- 82ffb12: `<rh-audio-player>`: use theme tokens
+- 82ffb12: `<rh-accordion>`: Make `<rh-accordion-header>`'s bold.
+- 82ffb12: `<rh-table>`: tables now adjust to the size of their containing element, not to the size of the viewport.
+- 82ffb12: `<rh-accordion>`: removed arrow-key keyboard navigation in favor of tab navigation.
+- 82ffb12: `<rh-audio-player>`: use official red hat icons
+- 82ffb12: `<rh-tabs>`: tabs now adjust to the size of their containing element, not to the size of the viewport.
+- 82ffb12: `<rh-alert>`: hide header when it is empty
+- 82ffb12: `<rh-audio-player>`: add a playback control to the mini layout
+- 82ffb12: `<rh-card>`: style some slotted links
+- 82ffb12: `<rh-tile>`: corrected layout when rendering some image slotted elements
+- 82ffb12: `<rh-tag>`: now supports color [theming](https://ux.redhat.com/theming/)
+- 82ffb12: `<rh-tabs>`: allow tabs to participate in advanced layouts
+- 82ffb12: `<rh-skip-link>`: ensure link is always at top of the page, per guidelines
+- 82ffb12: `<rh-site-status>`: use `<rh-icon>` for status indicators
+
 ## 2.0.1
 
 ### Patch Changes
