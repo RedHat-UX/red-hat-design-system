@@ -24,9 +24,13 @@
   <p>More cloud choice. Less cloud management.</p>
   <rh-tabs box="box">
     <rh-tab slot="tab">App development and delivery</rh-tab>
+    <rh-tab-panel>App development and delivery content</rh-tab-panel>
     <rh-tab slot="tab">Modernize existing apps</rh-tab>
+    <rh-tab-panel>Modernize existing apps content</rh-tab-panel>
     <rh-tab slot="tab">AI/ML</rh-tab>
+    <rh-tab-panel>AI/ML content</rh-tab-panel>
     <rh-tab slot="tab">Edge computing</rh-tab>
+    <rh-tab-panel>Edge computing content</rh-tab-panel>
   </rh-tabs>
 </div>
 
@@ -34,16 +38,18 @@
   #elements {
     min-height: auto;
     display: grid;
-    place-content: center;
     gap: var(--rh-space-2xl);
-    grid-template:
-      'disclosure disclosure disclosure'
-      'cta audio-player card'
-      'pagination pagination card'
-      'p p card'
-      'tabs tabs tabs' / 1fr 1fr 2fr;
-    grid-template-rows: repeat(5, min-content);
-    grid-template-columns: max-content 2fr 3fr;
+    grid-template-areas:
+      'disclosure'
+      'cta'
+      'audio-player'
+      'card'
+      'pagination'
+      'p'
+      'tabs';
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+
 
     & rh-card { grid-area: card; }
     & rh-cta { grid-area: cta; }
@@ -61,8 +67,6 @@
 
     & rh-audio-player {
       grid-area: audio-player;
-      max-width: 340px;
-      justify-self: center;
     }
 
     & p { margin: 0; }
@@ -70,6 +74,33 @@
       grid-area: p;
       font-size: var(--rh-font-size-body-text-2xl);
       font-weight: var(--rh-font-weight-heading-bold);
+    }
+
+    @container (min-width: 768px) {
+      margin: var(--rh-space-2xl);
+      grid-template:
+        'disclosure disclosure '
+        'cta audio-player'
+        'pagination card'
+        'p card'
+        'tabs tabs' / 1fr 1fr;
+      grid-template-rows: repeat(5, min-content);
+      grid-template-columns: 1fr 1fr;
+
+      & rh-audio-player {
+        max-width: 340px;
+      }
+    }
+
+    @container (min-width: 992px) {
+      margin: var(--rh-space-2xl);
+      grid-template:
+        'disclosure disclosure disclosure'
+        'cta audio-player card'
+        'pagination pagination card'
+        'p p card'
+        'tabs tabs tabs' / 1fr 1fr 2fr;
+      grid-template-columns: max-content max-content 3fr;
     }
   }
 </style>
