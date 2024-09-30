@@ -19,16 +19,8 @@
       grid-area: aside;
       padding-inline: var(--rh-space-lg);
 
-      @container main (min-width: 576px) {
-        padding-inline: var(--rh-space-2xl);
-      }
-
-      @container main (min-width: 768px) {
-        padding-inline: var(--rh-space-3xl);
-      }
-
-      @container main (min-width: 992px) {
-        padding-inline: var(--rh-space-6xl);
+      @container main (width >= 1440px) {
+        padding-inline: 0 var(--rh-space-2xl);
       }
     }
 
@@ -127,30 +119,32 @@
     max-width: 56rem; /* warning: magic number */
   }
 
-  @container main (min-width: 576px) {
-    uxdot-toc {
+  uxdot-toc {
+    @container main (width >= 576px) {
       padding-inline: var(--rh-space-2xl);
     }
-  }
 
-  @container main (min-width: 768px) {
-    uxdot-toc {
+    @container main (width >= 768px) {
       padding-inline: var(--rh-space-3xl);
     }
-  }
 
-  @container main (min-width: 992px) {
-    article {
-      row-gap: var(--rh-space-6xl);
+    @container main (width >= 992px) {
+      padding-inline: var(--rh-space-6xl);
     }
 
-    uxdot-toc {
-      padding-inline: var(--rh-space-6xl);
+    @container main (width >= 1440px) {
+      padding-inline: 0;
+    }
+  }
+
+  @container main (width >= 992px) {
+    article {
+      row-gap: var(--rh-space-6xl);
     }
   }
 
   /* this follows the @media queries so that it can override the aside */
-  @container main (min-width: 1440px) {
+  @container main (width >= 1440px) {
     article {
       grid-template-columns:
         minmax(var(--container-min-width),
@@ -167,12 +161,9 @@
         'content aside';
 
       & uxdot-toc {
-        padding-inline: 0 var(--rh-space-2xl);
         max-width: 320px;
         position: sticky;
         height: max-content;
-
-        /* masthead height (72px) + padding (32px) */
         top: calc(var(--uxdot-masthead-max-height) + var(--rh-space-2xl) * 3);
       }
     }
