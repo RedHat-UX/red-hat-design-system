@@ -29,6 +29,12 @@ async function getCss(partial, kwargs) {
   return cssContent.trim();
 }
 
+/**
+ * **LF**
+ * **LF**
+ */
+const NEWLINE_RE = /\n\n/gm;
+
 const dash = s => s.replace(/([A-Z])/g, '-$1');
 
 const attrMap = attrs => Object.entries(attrs)
@@ -55,12 +61,14 @@ module.exports = function(eleventyConfig) {
     return html`
 <uxdot-pattern ${attrMap(patternArgs)}>
   <h4 slot="heading">Example</h4>
-  ${content.replaceAll(/\n/gm, COMMENT)}
+  ${content}
   <h4 slot="html-heading">HTML</h4>
   <rh-code-block slot="html" actions="copy" ${attrMap({ fullHeight })}>
     <span slot="action-label-copy">Copy to Clipboard</span>
-    <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
-    <script type="text/html">${serialize(partial).trim().replaceAll(/\n/gm, COMMENT)}</script>
+    <span slot="action-label-copy"
+          hidden
+          data-code-block-state="active">Copied!</span>
+    <script type="text/html">${serialize(partial).trim().replaceAll(NEWLINE_RE, COMMENT)}</script>
   </rh-code-block>${!cssContent ? '' : html`
   <h4 slot="css-heading">CSS</h4>
   <rh-code-block slot="css" actions="copy">
@@ -68,13 +76,15 @@ module.exports = function(eleventyConfig) {
     <span slot="action-label-copy"
           hidden
           data-code-block-state="active">Copied!</span>
-    <script type="text/css">${cssContent.replaceAll(/\n/gm, COMMENT)}</script>
+    <script type="text/css">${cssContent.replaceAll(NEWLINE_RE, COMMENT)}</script>
   </rh-code-block>`}${!jsContent ? '' : html`
   <h4 slot="css-heading">JavaScript</h4>
   <rh-code-block slot="js" actions="copy">
     <span slot="action-label-copy">Copy to Clipboard</span>
-    <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
-    <script type="sample/javascript">${jsContent.replaceAll(/\n/gm, COMMENT)}</script>`}
+    <span slot="action-label-copy"
+          hidden
+          data-code-block-state="active">Copied!</span>
+    <script type="sample/javascript">${jsContent.replaceAll(NEWLINE_RE, COMMENT)}</script>`}
   </rh-code-block>
 </uxdot-pattern>
 `;
@@ -95,7 +105,7 @@ module.exports = function(eleventyConfig) {
         && node.tagName === 'uxdot-pattern';
     for (const pattern of queryAll(document, isUxDotPattern)) {
       for (const node of queryAll(pattern, isTextNode)) {
-        setTextContent(node, getTextContent(node).replaceAll(COMMENT, '\n'));
+        setTextContent(node, getTextContent(node).replaceAll(COMMENT, '\n\n'));
       }
     }
     return serialize(document);
