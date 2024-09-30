@@ -1,14 +1,7 @@
----
-spacers:
-  - --rh-space-md
-  - --rh-space-lg
-  - --rh-space-xl
----
-
 ## Style
 
-An alert contains title text with an icon, body text, and a close button. They 
-may also include action buttons below the text or inline links. There are two 
+An alert contains title text with an icon, body text, and a close button. They
+may also include action buttons below the text or inline links. There are two
 variants, toast and inline, which serve different purposes.
 
 ### Anatomy
@@ -31,9 +24,9 @@ variants, toast and inline, which serve different purposes.
 
 ### Inline
 
-The required elements of an Inline alert are a thin top bar or thin border, 
-icon, title, close button, and a container background. Supporting text and 
-buttons may or may not be included below the title to add clarity or optional 
+The required elements of an Inline alert are a thin top bar or thin border,
+icon, title, close button, and a container background. Supporting text and
+buttons may or may not be included below the title to add clarity or optional
 actions.
 
 <uxdot-example width-adjustment="538px">
@@ -43,7 +36,7 @@ actions.
 
 ### Inline, alternate
 
-The alternate Inline alert style includes a border instead of a line which can 
+The alternate Inline alert style includes a border instead of a line which can
 be used to express more urgency or better grab the attention of a user.
 
 <uxdot-example width-adjustment="538px">
@@ -53,9 +46,9 @@ be used to express more urgency or better grab the attention of a user.
 
 ### Toast
 
-The required elements of a Toast alert are a thin top bar, icon, title, close 
-button, and a white container with a subtle drop shadow. Supporting text and 
-buttons may or may not be included below the title to add clarity or optional 
+The required elements of a Toast alert are a thin top bar, icon, title, close
+button, and a white container with a subtle drop shadow. Supporting text and
+buttons may or may not be included below the title to add clarity or optional
 actions.
 
 <uxdot-example width-adjustment="538px">
@@ -65,8 +58,8 @@ actions.
 
 ## Interaction states
 
-Interaction states are visual representations used to communicate the status of 
-a component or element. The close button and any linked content are the only 
+Interaction states are visual representations used to communicate the status of
+a component or element. The close button and any linked content are the only
 interactive elements in both alert variants.
 
 ### Hover
@@ -107,7 +100,10 @@ interactive elements in both alert variants.
 </uxdot-example>
 
 <rh-table>
-{% spacerTokensTable headingLevel="4", tokens=spacer%}{% endspacerTokensTable %}
+{% spacerTokensTable 
+    headingLevel="4",
+    tokens="--rh-space-md, --rh-space-lg, --rh-space-xl" %}
+{% endspacerTokensTable %}
 </rh-table>
 
 ### Toast (stacked)
