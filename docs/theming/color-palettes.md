@@ -40,11 +40,6 @@ less effort and greater cross-property consistency.
 <abbr title="red hat design system">RHDS</abbr> defines six color palettes They range from lightest to darkest, and those
 are the two palettes you will use the most for the majority of your projects.
 
-<uxdot-example>
-  <img alt="examples of several elements against a white surface"
-       src="/assets/theming/light-theme.png">
-</uxdot-example>
-
 {% uxdotPattern id="elements-grid", stacked=true %}
 {% include './patterns/collage.html' %}
 {% enduxdotPattern %}
